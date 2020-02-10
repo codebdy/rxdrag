@@ -1,0 +1,208 @@
+::-webkit-scrollbar {
+  width: 0.7rem;
+  height: 0.5rem;
+  background: #232323;
+}
+::-webkit-scrollbar-track {
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background: #535353;
+  transition: all .2s;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #606060;
+}
+
+.element-outline{
+  outline:dashed #70baf7 1px;
+}
+  
+.element-active{
+  outline: #75b325 solid 2px;
+  position:relative;
+}
+
+.dragged{
+  position:relative;
+  //opacity: 0.6;
+}
+
+/*遮住内部子元素，不让其响应dragover事件*/
+.dragged::after{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  background:repeating-linear-gradient(135deg,#DADADA,#F5F5F5 5px);
+  border:#75d678 dashed 2px;
+}
+
+.dragged .element-label{
+  display: none;
+}
+
+.dragover{
+  position:relative;
+  cursor: pointer;
+}
+
+.dragover::before{
+  content:"";
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  outline: #aceeaf solid 1px;
+  background-color: #effcf0;
+}
+
+.element-label{
+  background-color: #E3F2FD;
+  border: 1px solid #DDDDDD;
+  color: #9DA0A4;
+  font-size: 12px;
+  font-weight: normal;
+  left: -1px;
+  line-height: 14px;
+  padding: 0px 7px;
+  position: absolute;
+  height:16px;
+  top: -16px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.element-active > .element-label{
+  background-color: #75b325;
+  border:solid #75b325 1px;
+  color:#fff;
+}
+
+.dragged .element-label{
+  background-color: #E3F2FD;
+  border: 1px solid #DDDDDD;
+  color: #9DA0A4;
+  -moz-opacity:0.6;
+  opacity: 0.6;
+}
+
+.element-toolbar{
+  background-color: #75b325; 
+  color:#fff;
+  position: absolute;
+  top:-29px;
+  right:-2px;
+  padding:3px;
+  padding-bottom: 2px;
+  display: none;
+  width: 106px;
+}
+
+.element-active > .element-toolbar{
+  display: block;
+  z-index: 10;
+}
+
+.element-toolbar .button{
+  display: inline-block;
+  margin:0;
+  padding:4px;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+  border-radius: 2px;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+}
+
+.element-toolbar .button:hover{
+  background: #9bc659;
+}
+
+.mouse-follow{
+  position: fixed;
+  z-index: 999999;
+  cursor: pointer;
+  pointer-events: none;
+  opacity: 0.7;
+  background: #eee;
+}
+
+
+.mini-editor{
+  position: relative;
+}
+
+.mini-editor .mini-editor-toolbar{
+  position: absolute;
+  display: flex;
+  display: -webkit-flex;
+  flex-flow:row;
+  align-items:center;
+  justify-content:center;
+  height: 34px;
+  width: 290px;
+  background: #4f4f4f;
+  color:#a8a8a8;
+  left:0;
+  top:-34px;
+  border-radius: 3px;
+
+}
+
+.mini-editor .mini-editor-canvas{
+  width: 100%;
+  height: 100%;
+}
+
+.mini-editor .sp-button{
+  font-size: 13px;
+  margin:1px;
+  text-align: center;
+  height: 26px;
+  line-height: 26px;
+  cursor: pointer;
+}
+
+.mini-editor .icon-button{
+  width: 26px;
+}
+
+.mini-editor .sp-button.active, .mini-editor .sp-button:hover,.mini-editor-toolbar .sp-headers:hover{
+  background: #424242;
+}
+
+.mini-editor-toolbar .sp-styles, .mini-editor-toolbar .sp-headers{
+  display: flex;
+  align-items:center;
+  justify-content:space-between;
+  line-height: 26px;
+  font-size: 12px;
+  padding:0 6px;
+  cursor: pointer;
+  position: relative;
+}
+
+.mini-editor-toolbar .sp-headers{
+  margin: 3px;
+  width: 90px;
+  border: #525252 solid 1px;
+  background: #424242;
+  color:#fff;
+}
+
+.mini-editor-toolbar .sp-styles{
+  width: 50px;
+}
