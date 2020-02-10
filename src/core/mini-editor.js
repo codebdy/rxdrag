@@ -73,7 +73,7 @@ export class MiniEditor{
     let canvas = createChild('mini-editor-canvas',domElement)
     this.canvas = canvas
 
-    canvas.innerHTML ="欢迎使用 Mini Editor "
+    canvas.innerHTML ="欢迎使用 Mini Editor ,双击该区域试试"
 
     this.canvas.onkeydown = (event)=>{
       if (event.keyCode === 13) {
