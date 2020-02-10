@@ -150,7 +150,7 @@ export class MiniEditor{
     let styleBtn = createChild('sp-button',this.toolbar)
     styleBtn.classList.add('sp-styles')
     styleBtn.title = "Bootstrap Style"
-    styleBtn.innerHTML = `Style <span>▾</span>`
+    styleBtn.innerHTML = `Insert <span>▾</span>`//‹› <>≮≯
 
     styleBtn.onclick = (event)=>{
       console.log('style  s button click')

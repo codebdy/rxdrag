@@ -29,25 +29,25 @@ export class Drawer extends RXComponent{
     this.cssClass('rx-right-area')
     this.layout = new Tab
     this.layout.header.domAttr('title', 'Layout').innerHTML = '<i class="fa fa-th-large"></i>'
-    this.attributes = new Tab
-    this.attributes.header.domAttr('title', 'Attributes').innerHTML = '<i class="fa fa-list-alt"></i>'
+    this.options = new Tab
+    this.options.header.domAttr('title', 'Options').innerHTML = '<i class="fa fa-list-alt"></i>'
 
     this.pushChild(new RXComponent()
                     .cssClass('rx-drawer')
                     .pushChild(new RXComponent()
                       .cssClass('top-header')
                       .pushChild(this.layout.header)
-                      .pushChild(this.attributes.header)
+                      .pushChild(this.options.header)
                     )
                     .pushChild(new RXComponent()
                       .cssClass('tab-contents')
                       .pushChild(this.layout.body)
-                      .pushChild(this.attributes.body)
+                      .pushChild(this.options.body)
                     )
                   )
     this.toolbox = new Toolbox()
     this.layout.pushChild(this.toolbox)
-    this.attributes.body.innerHTML= `<div style="padding:20px;">No element is selected</div>`
+    this.options.body.innerHTML= `<div style="padding:20px;">No element is selected</div>`
   }
 
   render(parentElement){
@@ -55,15 +55,15 @@ export class Drawer extends RXComponent{
     this.layout.header.domOn('onclick', ()=>{
       this.onTabHeaderClick('layout')
     })
-    this.attributes.header.domOn('onclick', ()=>{
-      this.onTabHeaderClick('attributes')
+    this.options.header.domOn('onclick', ()=>{
+      this.onTabHeaderClick('options')
     })
     return this
   }
 
   activeTab(tabId){
     this.layout.active(false)
-    this.attributes.active(false)
+    this.options.active(false)
     this[tabId].active()
   }
 
