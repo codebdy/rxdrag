@@ -22,7 +22,7 @@
 .rx-toolbar{
   height: 44px;
   background: #424242;
-  color:#a8a8a8;
+  color:#f0f1ef;
   display: flex;
   display: -webkit-flex;
   align-items:center;
@@ -66,7 +66,7 @@
   display: flex;
   flex-flow:column;
   height: 100%;
-  color:#a8a8a8;
+  color:#f0f1ef;
   background: #424242; 
 }
 
@@ -76,7 +76,7 @@
   align-items:flex-end;
   height: 44px;
   background: #424242;
-  color:#a8a8a8;
+  color:#f0f1ef;
 }
 
 .rx-drawer .top-header .item{
@@ -123,7 +123,7 @@
   font-size: 13px;
   background: #313131;
   padding:3px 8px;
-  color:#e8e8e8;
+  color:#f0f1ef;
   //border-bottom: #121212 solid 1px;
   cursor: pointer;
 }
