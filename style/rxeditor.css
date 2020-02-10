@@ -153,7 +153,7 @@
   align-items:center;
   justify-content:center;
   height: 34px;
-  width: 290px;
+  width: 200px;
   background: #4f4f4f;
   color:#a8a8a8;
   left:0;
@@ -168,7 +168,7 @@
 }
 
 .mini-editor .sp-button{
-  font-size: 13px;
+  font-size: 15px;
   margin:1px;
   text-align: center;
   height: 26px;

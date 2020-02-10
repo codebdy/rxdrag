@@ -74,16 +74,24 @@ export class MiniEditor{
     this.canvas = canvas
 
     canvas.innerHTML ="欢迎使用 Mini Editor "
+
+    this.canvas.onkeydown = (event)=>{
+      if (event.keyCode === 13) {
+        event.preventDefault()
+        return false
+      }
+    }
+
     domElement.ondblclick = ()=>{
       canvas.contentEditable = true
       canvas.focus()
-
-    }
       this.showToolbar()
 
+    }
+
     canvas.onblur = ()=>{
-      //canvas.contentEditable = false
-      //this.hideToolbar()
+      canvas.contentEditable = false
+      this.hideToolbar()
     }
 
     document.addEventListener("selectionchange", ()=>{
@@ -127,11 +135,11 @@ export class MiniEditor{
     this.toolbar = createChild('mini-editor-toolbar',this.domElement)
 
 
-    this.toolbar.innerHTML = `
-      <div class="sp-dropdown-list sp-headers" title="Bootstrap Style"> 
-      Normal <span>▾</span>
-      </div>
-    `
+    //this.toolbar.innerHTML = `
+    //  <div class="sp-dropdown-list sp-headers" title="Bootstrap Style"> 
+    //  Normal <span>▾</span>
+    //  </div>
+    //`
     this.createBoldBtn()
     this.createItalicBtn()
 
@@ -182,7 +190,7 @@ export class MiniEditor{
     let boldBtn = createChild('sp-button',this.toolbar)
     this.boldBtn = boldBtn
     boldBtn.classList.add('icon-button')
-    boldBtn.innerHTML = 'B'
+    boldBtn.innerHTML = '<b>B</b>'
 
     boldBtn.onclick = (event)=>{
       document.execCommand('bold', false, null)
