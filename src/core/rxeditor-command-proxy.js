@@ -3,6 +3,10 @@ export class RXEditorCommandProxy{
     window.addEventListener("message", (event)=>{
         this.handleMessage(event.data)
     });
+
+    this.focusNode = (node)=>{
+      console.log('focused node:' + node.$id)
+    }
   }
 
   rxeditorReady(){
@@ -16,6 +20,8 @@ export class RXEditorCommandProxy{
       name: 'takeOverDraggingByWorkspace'
     })
   }
+
+
 
   handleMessage(message){
     //console.log('received:' + message.name + ":" + message.rxNameId)

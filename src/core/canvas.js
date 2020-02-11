@@ -4,12 +4,15 @@ export class Canvas extends Node{
   constructor(workspace) {
     super()
     this.activeState = this.normalState
+    this.focusState = this.normalState
     this.parentViewDomElement = workspace;
     this.acceptedChildren=''
     this.exceptChildren = ['BSCol']
     this.heightDropMargin = 0;
     this.widthDropMargin = 0;
     this.padding = '30px';
+
+    this.stateChanged = (oldState, newState)=>{}
   }
 
   getParentViewDomElement(){

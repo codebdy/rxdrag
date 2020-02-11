@@ -120,4 +120,10 @@ export class RXEditor{
     toolboxItem.bindTo(elementId)
   }
 
+  nodeStateChanged(node, oldState, newState){
+    if(newState === node.focusState){
+      this.commandProxy.focusNode(node)
+    }
+  }
+
 }

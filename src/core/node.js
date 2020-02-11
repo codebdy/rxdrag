@@ -99,7 +99,7 @@ export class Node{
     }
 
     this.stateChanged = (oldState, newState)=>{
-
+      rxEditor.nodeStateChanged(this, oldState, newState)
     }
 
   }
@@ -107,7 +107,7 @@ export class Node{
   seedId(){
     if(!Node.idSeed) Node.idSeed = 1
     Node.idSeed ++
-    this.$rxId = Node.idSeed
+    this.$id = Node.idSeed
   }
 
   initStates(){
@@ -121,6 +121,7 @@ export class Node{
   }
 
   changeToState(stateName){
+    if(this.state === this[stateName]) return
     let oldState = this.state
     this.state = this[stateName]
     this.refreshState()

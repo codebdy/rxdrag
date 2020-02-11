@@ -58,6 +58,10 @@ export class CanDropState extends NodeState{
       rxEditor.followMouse(event)
     }
   }
+  this.onClick = (event)=>{
+    rxEditor.clearFocusStates()
+    this.node.changeToState('focusState')
+  }
 
   doDragover(event){
       if(rxEditor.draggedNode){
@@ -135,11 +139,6 @@ export class ActiveState extends CanDropState{
         this.node.changeToState('activeState')
       }
     };
-
-    this.onClick = (event)=>{
-      rxEditor.clearFocusStates()
-      this.node.changeToState('focusState')
-    }
   }
 }
 
