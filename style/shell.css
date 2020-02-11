@@ -135,7 +135,7 @@
   padding:0 8px;
   color:#f0f1ef;
   cursor: pointer;
-  padding-left:16px;
+  padding-left: 35px;
   position: relative;
 }
 
@@ -152,7 +152,7 @@
   width: 0; 
   height: 0;
   top: 7px;
-  left: 4px;
+  left: 19px;
   border-width: 4px;
   border-style: solid;
   border-color: #f0f1ef transparent transparent  transparent;
@@ -168,7 +168,7 @@
   width: 0; 
   height: 0;
   top: 3px;
-  left: 7px;
+  left: 22px;
   border-width: 4px;
   border-style: solid;
   border-color:transparent transparent  transparent #f0f1ef;

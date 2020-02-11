@@ -1,7 +1,9 @@
 import {Canvas} from "./canvas"
+import {CanvasState} from "./canvas-state"
 
 export class RXEditor{
   constructor() {
+    this.state = new CanvasState
   }
 
   hangOn(id, commandProxy){
@@ -19,11 +21,11 @@ export class RXEditor{
   }
 
   render(){
-    this.canvas.render();
+    this.canvas.render()
   }
 
   refresh(){
-    this.canvas.refresh();
+    this.canvas.refresh()
   }
 
   clearDraggedoverStates(){

@@ -53,19 +53,48 @@ export class Toolbar extends RXComponent{
     this.barRight = new RXComponent()
     this.barRight.cssClass('right')
     this.pushChild(this.barRight)
+    var canvasState = this.rxEditorShell.canvasState
+    var outlineBtn = this.creatRightButton('fa-square-o')
+              .active()
+              .title('Show/hide outline')
+              .domOn('onclick',()=>{
+                canvasState.showOutline = !canvasState.showOutline
+                outlineBtn.active(canvasState.showOutline)
+              })
 
-    this.creatRightButton('fa-arrows-h').active()
-    this.creatRightButton('fa-eye').title('Preview')
-    this.creatRightButton('fa-undo')
-    this.creatRightButton('fa-repeat')
-    this.creatRightButton('fa-download')
-    this.creatRightButton('fa-trash')
-    this.creatRightButton('fa-cog')
-    this.creatRightButton('fa-question-circle')
+    var labelBtn = this.creatRightButton('fa-tags')
+              .active()
+              .title('Show/hide Label')
+              .domOn('onclick',()=>{
+                canvasState.showLabel = !canvasState.showLabel
+                labelBtn.active(canvasState.showLabel)
+              })
+
+    var marginBtn = this.creatRightButton('fa-arrows-h')
+              .active()
+              .title('Show/hide margin')
+              .domOn('onclick',()=>{
+                canvasState.showEditMargin = !canvasState.showEditMargin
+                marginBtn.active(canvasState.showEditMargin)
+              })
+              
+    var previewBtn = this.creatRightButton('fa-eye')
+              .title('Preview')
+              .domOn('onclick',()=>{
+                canvasState.preview = !canvasState.preview
+                previewBtn.active(canvasState.preview)
+              })
+
+    this.creatRightButton('fa-undo').title('Undo')
+    this.creatRightButton('fa-repeat').title('Redo')
+    this.creatRightButton('fa-download').title('Download')
+    this.creatRightButton('fa-trash').title('Clear canvas')
+    //this.creatRightButton('fa-cog').title('Settings')
+    this.creatRightButton('fa-question-circle').title('About RXEditor')
 
     this.creatRightButton('fa-bars').domOn('onclick', ()=>{
       rxEditorShell.state.showDrawer = !rxEditorShell.state.showDrawer
-    })
+    }).title('Show/hide drawer ')
   }
 
   creatRightButton(icon){

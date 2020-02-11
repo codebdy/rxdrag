@@ -5,14 +5,15 @@ import {NormalState, ActiveState, FocusState, DragoverState, DisableState, Dragg
 
 export class Node{
   constructor() {
+    //基础数据，持久化也是这部分数据
+    this.$option = {
+      tag:'div',
+      essentialClasses:[]
+    } 
     this.seedId()
-    this.toolboxInfo = {
-      moduleName:'not define',//工具栏组名称
-      elementName:'not define' //工具栏项目名称
-    }
+    this.toolboxInfo = {}
   	this.children=new RXArray
   	this.view = new NodeView()
-    //this.draggable = true
     this.dropMargin = 30;
     this.padding = '30px'
     this.mouseFollowerWidth = '200px'
@@ -341,11 +342,13 @@ export class Node{
 
   toViewModel(){
     let classList = ['element-outline','element'];
+    classList.push.apply(classList, this.$option.essentialClasses)
     classList.push.apply(classList, this.state.classList)
     let styles = {
       padding: this.padding,
       position:'relative'
     }
+
 
     Object.assign(styles, this.state.styles)
 

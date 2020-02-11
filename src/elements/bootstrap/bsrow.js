@@ -9,6 +9,8 @@ export class BSRow extends BSElement{
     this.className = 'BSRow'
     this.heightDropMargin = 15;
     this.acceptedChildren=['BSCol']
+
+    this.$option.essentialClasses = ['row'] 
   }
  
   make(){
@@ -19,7 +21,6 @@ export class BSRow extends BSElement{
     let model = super.toViewModel()
     model.label.text = "Row"
     model.styles.margin = "0"
-    model.classList.push('row')
     return model
   }
 }

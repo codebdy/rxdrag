@@ -1,4 +1,5 @@
 import {RXEditor} from "../core/rxeditor"
+import {CanvasState} from "../core/canvas-state"
 import {Drawer} from "./drawer"
 import {Toolbar} from "./toolbar"
 import initEditor from "./init-editor"
@@ -75,6 +76,7 @@ export class RXEditorFM{
   constructor(){
     initEditor()
     this.state = new EditorState
+    this.canvasState = new CanvasState
     this.itemRxNameIds = []
   }
 

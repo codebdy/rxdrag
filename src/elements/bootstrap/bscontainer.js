@@ -9,6 +9,8 @@ export class BSContainer extends BSElement{
     this.className = 'BSContainer'
     this.heightDropMargin = 15;
     this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv']
+
+    this.$option.essentialClasses = ['container'] 
   }
 
   make(){
@@ -18,7 +20,6 @@ export class BSContainer extends BSElement{
   toViewModel(){
     let model = super.toViewModel()
     model.label.text = "Container"
-    model.classList.push('container')
     return model
   }
 }
