@@ -57,10 +57,10 @@ export class CanDropState extends NodeState{
       this.doDragover(event)
       rxEditor.followMouse(event)
     }
-  }
-  this.onClick = (event)=>{
-    rxEditor.clearFocusStates()
-    this.node.changeToState('focusState')
+    this.onClick = (event)=>{
+      rxEditor.clearFocusStates()
+      this.node.changeToState('focusState')
+    }
   }
 
   doDragover(event){

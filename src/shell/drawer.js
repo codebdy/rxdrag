@@ -1,4 +1,5 @@
 import {RXComponent} from "../basic/rxcomponent"
+import {ObjectState} from "../basic/object-state"
 
 class Tab{
   constructor(){
@@ -23,9 +24,28 @@ class Tab{
   }
 }
 
+class DrawerState extends ObjectState{
+  constructor(){
+    super()
+    this.__activeDrawerTab = 'layout'
+  }
+
+  get activeDrawerTab(){
+    return this.__activeDrawerTab
+  }
+
+  set activeDrawerTab(activeDrawerTab){
+    if(this.__activeDrawerTab == activeDrawerTab){return} 
+    this.__activeDrawerTab = activeDrawerTab
+    this.distributeEvent('activeDrawerTab')
+  }
+}
+
+
 export class Drawer extends RXComponent{
   constructor(){
     super()
+    this.state = new DrawerState
     this.cssClass('rx-right-area')
     this.layout = new Tab
     this.layout.header.domAttr('title', 'Layout').innerHTML = '<i class="fa fa-th-large"></i>'
@@ -48,15 +68,20 @@ export class Drawer extends RXComponent{
     this.toolbox = new Toolbox()
     this.layout.pushChild(this.toolbox)
     this.options.body.innerHTML= `<div style="padding:20px;">No element is selected</div>`
+
+    this.state.watch('activeDrawerTab', (state)=>{
+      this.activeTab(state.activeDrawerTab)
+    })
+    this.activeTab('layout')
   }
 
   render(parentElement){
     super.render(parentElement)
     this.layout.header.domOn('onclick', ()=>{
-      this.onTabHeaderClick('layout')
+      this.state.activeDrawerTab = 'layout'
     })
     this.options.header.domOn('onclick', ()=>{
-      this.onTabHeaderClick('options')
+      this.state.activeDrawerTab = 'options'
     })
     return this
   }
@@ -69,16 +94,36 @@ export class Drawer extends RXComponent{
 
 }
 
+class ToolboxState extends ObjectState{
+  constructor(){
+    super()
+    this.__activedGroup = 'groupContainer'
+  }
+
+  get activedGroup(){
+    return this.__activedGroup
+  }
+
+  set activedGroup(activedGroup){
+    if(this.__activedGroup == activedGroup){return} 
+    this.__activedGroup = activedGroup
+    this.distributeEvent('activedGroup')
+  }
+}
+
 export class Toolbox extends RXComponent{
   constructor(){
     super()
+    this.state = new ToolboxState
+    this.cssClass('toolbox')
     this.assembleToolboxItem = (toolboxInfo)=>{
-      let rxModuleNameId = toolboxInfo.rxModuleNameId
-      if(!this[rxModuleNameId]){
-        this[rxModuleNameId] = new ToolboxGroup(toolboxInfo.moduleName).render(this.$dom)
-      }
+      this.inidGroups()
+      //let rxModuleNameId = toolboxInfo.groupId
+      //if(!this[rxModuleNameId]){
+      //  this[rxModuleNameId] = new ToolboxGroup(toolboxInfo.moduleName).render(this.$dom)
+      //}
 
-      let toolboxItem = this[rxModuleNameId].add(toolboxInfo)
+      let toolboxItem = this[toolboxInfo.groupId].add(toolboxInfo)
 
       toolboxItem.domOn('onmousedown',(event)=>{
         this.draggingFromToolbox(toolboxItem.toolboxInfo.rxNameId)
@@ -97,6 +142,22 @@ export class Toolbox extends RXComponent{
       this.endDragFromToolbox()
     }
 
+
+  }
+
+  inidGroups(){
+    if(!this['groupContainer']){
+      this.groupContainer =  new ToolboxGroup('Container','groupContainer', this.state).render(this.$dom)
+      this.groupContainer.active()
+    }
+
+    if(!this['groupGrid']){
+      this.groupGrid =  new ToolboxGroup('Grid', 'groupGrid', this.state).render(this.$dom)
+    }
+
+    if(!this['groupText']){
+      this.groupText =  new ToolboxGroup('Text','groupText', this.state).render(this.$dom)
+    }
   }
 
   followMouse(event){
@@ -132,22 +193,42 @@ export class Toolbox extends RXComponent{
 }
 
 export class ToolboxGroup extends RXComponent{
-  constructor(title){
+  constructor(title, id, groupsState){
     super()
-    //this.rxEditorShell = rxEditorShell
+    this.id = id
+    this.state = groupsState
+    this.cssClass('tool-group')
+    this.cssClass('group-collapse')
     this.title = new RXComponent()
     this.title.cssClass('group-title')
-    this.title.innerHTML = '<i class="fa fa-caret-down"></i> ' + title
+    this.title.innerHTML = title
     this.pushChild(this.title)
     this.groupBody = new RXComponent()
     this.groupBody.cssClass('group-body')
     this.pushChild(this.groupBody)
+
+    this.domOn('onclick',()=>{
+      this.state.activedGroup = this.id
+    })
+    this.state.watch('activedGroup', (state)=>{
+      this.active(state.activedGroup === this.id)
+    })
   }
 
   add(toolboxInfo){
     let toolboxItem = new ToolboxItem(toolboxInfo).render(this.groupBody.$dom)
     this.groupBody.pushChild(toolboxItem)
     return toolboxItem
+  }
+
+  active(isActive = true){
+    if(!isActive){
+      this.$dom ? this.$dom.classList.add('group-collapse') : this.classList.add('group-collapse')
+    }
+    else{
+      this.$dom ? this.$dom.classList.remove('group-collapse') : this.classList.remove('group-collapse')
+    }
+    return this
   }
 }
 
@@ -176,35 +257,6 @@ class ToolboxItem extends RXComponent{
     this.mouseFollower.cssClass('element')
     this.mouseFollower.innerHTML = this.innerHTML
     this.pushChild(this.mouseFollower)
-    /* let mousFollowerDom = new RXComponent createChild('element', parentDomElement)
-    mousFollowerDom.classList.add('shell-mousefollower')
-    mousFollowerDom.style.display = "none"
-    mousFollowerDom.innerHTML = this.innerHTML
-
-    this.mousFollower = new MousFollower()
-    {
-      domElement:mousFollowerDom,
-      hiden:()=>{
-        this.mousFollower.domElement.style.display = 'none'
-      },
-
-      show:()=>{
-        this.mousFollower.domElement.style.display = 'block'
-      }
-    }
-   this.domElement = createChild('element', parentDomElement)
-    let innerHTML = '<i class="fa fa-arrows"></i> ' + toolboxInfo.elementName
-    this.domElement.innerHTML = innerHTML
-
-    this.domElement.onmousedown= (event)=>{
-      this.mousFollower.offsetX = event.offsetX
-      this.mousFollower.offsetY = event.offsetY
-      rxEditorShell.beginFollowMouse(this.mousFollower)
-      this.mousFollower.show()
-      rxEditorShell.followMouse(event)
-
-      rxEditorShell.draggingFromToolbox(this.toolboxInfo.rxNameId)
-    }*/
   }
 
 }

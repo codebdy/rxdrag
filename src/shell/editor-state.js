@@ -10,9 +10,6 @@ export class EditorState extends ObjectState{
     this.__canRedo = false
     this.__showDrawer = true
     //layout attributes
-    this.__activeDrawerTab = 'layout'
-
-    this.__activedToolboxGroup = "bootstrap"
   }
 
   get screenWidth(){
@@ -74,26 +71,6 @@ export class EditorState extends ObjectState{
     if(this.__showDrawer == showDrawer){return} 
     this.__showDrawer = showDrawer
     this.distributeEvent('showDrawer')
-  }
-
-  get activeDrawerTab(){
-    return this.__activeDrawerTab
-  }
-
-  set activeDrawerTab(activeDrawerTab){
-    if(this.__activeDrawerTab == activeDrawerTab){return} 
-    this.__activeDrawerTab = activeDrawerTab
-    this.distributeEvent('activeDrawerTab')
-  }
-
-  get activedToolboxGroup(){
-    return this.__activedToolboxGroup
-  }
-
-  set activedToolboxGroup(activedToolboxGroup){
-    if(this.__activedToolboxGroup == activedToolboxGroup){return} 
-    this.__activedToolboxGroup = activedToolboxGroup
-    this.distributeEvent('activedToolboxGroup')
   }
 
 }

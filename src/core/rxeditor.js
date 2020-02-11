@@ -56,8 +56,6 @@ export class RXEditor{
     let element = this[moduleId][elementId]
     console.assert(element, 'Can not find element:' + rxNameId)
     element.toolboxInfo.rxNameId =rxNameId
-    element.toolboxInfo.rxModuleNameId = moduleId
-    element.toolboxInfo.rxElementNameId = elementId
     return element
   }
 

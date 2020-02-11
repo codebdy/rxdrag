@@ -76,13 +76,6 @@ export class RXEditorFM{
     initEditor()
     this.state = new EditorState
     this.itemRxNameIds = []
-
-    //this.toolbox = new Toolbox(this)
-
-    //document.onmouseup = (event)=>{
-    //  console.log('shell mouseup')
-    //}
-
   }
 
   assemble(rxNameId){
@@ -104,17 +97,9 @@ export class RXEditorFM{
     })
 
     this.drawer = new Drawer()
-    this.drawer.activeTab('layout')
-    this.drawer.on('onTabHeaderClick', (tabId)=>{
-      this.state.activeDrawerTab = tabId
-    })
 
     this.state.watch('showDrawer', (state)=>{
       this.drawer.$dom.style.width = state.showDrawer ? '250px' : '0'
-    })
-
-    this.state.watch('activeDrawerTab', (state)=>{
-      this.drawer.activeTab(state.activeDrawerTab)
     })
 
     this.commandProxy = new IFrameCommandProxy(this.workspace.iframe)

@@ -3,6 +3,8 @@ import {BSElement} from "./bselement"
 export class BSCol extends BSElement{
   constructor() {
     super()
+    this.toolboxInfo.groupId = 'groupGrid'
+    this.toolboxInfo.elementId = 'column'
     this.toolboxInfo.elementName = "Column"
     this.className = 'BSCol'
     this.widthDropMargin = 15;

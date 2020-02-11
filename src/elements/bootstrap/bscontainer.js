@@ -3,6 +3,8 @@ import {BSElement} from "./bselement"
 export class BSContainer extends BSElement{
   constructor() {
     super()
+    this.toolboxInfo.groupId = 'groupContainer'
+    this.toolboxInfo.elementId = 'container'
     this.toolboxInfo.elementName = "Container"
     this.className = 'BSContainer'
     this.heightDropMargin = 15;
