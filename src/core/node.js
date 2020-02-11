@@ -25,6 +25,11 @@ export class Node{
     //空和空数组都表示所有都不排除
     this.exceptChildren = ''
 
+    this.editMarginStyle = {
+      position:'relative', 
+      padding:'30px'
+    }
+
     this.initStates()
 
     this.mouseFollower = {
@@ -344,13 +349,15 @@ export class Node{
     classList.push.apply(classList, rxEditor.optionClasses)
     classList.push.apply(classList, this.$meta.essentialClasses)
     classList.push.apply(classList, this.state.classList)
-    let styles = {
-      padding: this.padding,
-      position:'relative'
+
+    let styles = {}
+
+    if(rxEditor.state.showEditMargin){
+      Object.assign(styles, this.editMarginStyle)
     }
-
-
     Object.assign(styles, this.state.styles)
+
+    console.log(styles)
 
     return {
       name:'div',

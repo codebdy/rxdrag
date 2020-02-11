@@ -11,6 +11,7 @@ export class BSRow extends BSElement{
     this.acceptedChildren=['BSCol']
 
     this.$meta.essentialClasses = ['row'] 
+    this.editMarginStyle.margin = "0"
   }
  
   make(){
@@ -20,7 +21,6 @@ export class BSRow extends BSElement{
   toViewModel(){
     let model = super.toViewModel()
     model.label.text = "Row"
-    model.styles.margin = "0"
     return model
   }
 }
