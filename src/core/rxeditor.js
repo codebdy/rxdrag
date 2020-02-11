@@ -1,9 +1,13 @@
 import {Canvas} from "./canvas"
 import {CanvasState} from "./canvas-state"
+import {RXArray} from "../basic/rxarray"
 
 export class RXEditor{
   constructor() {
     this.state = new CanvasState
+    this.optionClasses = new RXArray
+    this.optionClasses.add('show-outline')
+    this.optionClasses.add('show-label')
   }
 
   hangOn(id, commandProxy){
@@ -19,8 +23,10 @@ export class RXEditor{
       console.log('canvas mouse up')
     }
 
-    this.state.watch('showOutline', (state)=>{
-      this.canvas.showOutline(state.showOutline)
+    this.state.watch('changed', (state)=>{
+      this.optionClasses.addOrRemove(state.showOutline, 'show-outline')
+      this.optionClasses.addOrRemove(!state.showLabel, 'hide-label')
+      //this.optionClasses.addOrRemove(state.showOutline, 'show-label')
       this.render()
     })
   }

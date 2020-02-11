@@ -45,6 +45,18 @@
   border:#75d678 dashed 2px;
 }
 
+.element-label{
+  display: none;
+}
+
+.show-outline .element-label{
+  display: block;
+}
+
+.hide-label > .element-label{
+  display: none;
+}
+
 .dragged .element-label{
   display: none;
 }
@@ -90,12 +102,14 @@
   background-color: #a4d762;
   border:solid #a4d762 1px;
   color:#fff;
+  display: block;
 }
 
 .focused > .element-label{
   background-color: #75b325;
   border:solid #75b325 1px;
   color:#fff;
+  display: block;
 }
 
 .dragged .element-label{

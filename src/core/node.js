@@ -10,8 +10,6 @@ export class Node{
       tag:'div',
       essentialClasses:[]
     } 
-    this.optionClasses = new RXArray
-    this.optionClasses.add('show-outline')
 
     this.seedId()
     this.toolboxInfo = {}
@@ -341,17 +339,9 @@ export class Node{
     return false    
   }
 
-  showOutline(isShow){
-    this.optionClasses.addOrRemove(isShow, 'show-outline')
-    console.log('showOutline:', this.$id, isShow, this.optionClasses)
-    this.children.forEach((child)=>{
-      child.showOutline(isShow)
-    })
-  }
-
   toViewModel(){
     let classList = ['element'];
-    classList.push.apply(classList, this.optionClasses)
+    classList.push.apply(classList, rxEditor.optionClasses)
     classList.push.apply(classList, this.$meta.essentialClasses)
     classList.push.apply(classList, this.state.classList)
     let styles = {

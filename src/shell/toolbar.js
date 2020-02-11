@@ -101,6 +101,10 @@ export class Toolbar extends RXComponent{
       this.rxEditorShell.state.showDrawer = !state.preview
     })
 
+    canvasState.watch('showOutline',(state)=>{
+      labelBtn.enable(state.showOutline)
+    })
+
     this.creatRightButton('fa-undo').title('Undo')
     this.creatRightButton('fa-repeat').title('Redo')
     this.creatRightButton('fa-download').title('Download')
