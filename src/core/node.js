@@ -5,6 +5,7 @@ import {NormalState, ActiveState, FocusState, DragoverState, DisableState, Dragg
 
 export class Node{
   constructor() {
+    this.seedId()
     this.toolboxInfo = {
       moduleName:'not define',//工具栏组名称
       elementName:'not define' //工具栏项目名称
@@ -97,6 +98,16 @@ export class Node{
       }
     }
 
+    this.stateChanged = (oldState, newState)=>{
+
+    }
+
+  }
+
+  seedId(){
+    if(!Node.idSeed) Node.idSeed = 1
+    Node.idSeed ++
+    this.$rxId = Node.idSeed
   }
 
   initStates(){
@@ -110,8 +121,10 @@ export class Node{
   }
 
   changeToState(stateName){
+    let oldState = this.state
     this.state = this[stateName]
     this.refreshState()
+    this.stateChanged(oldState, this[stateName])
   }
 
   render(){
