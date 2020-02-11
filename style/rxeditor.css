@@ -19,7 +19,11 @@
   outline:dashed #70baf7 1px;
 }
   
-.actived, .focused{
+.actived{
+  outline: #a4d762 solid 1px;
+  position:relative;
+}
+.focused{
   outline: #75b325 solid 2px;
   position:relative;
 }
@@ -82,7 +86,13 @@
   user-select: none;
 }
 
-.actived > .element-label, .focused > .element-label{
+.actived > .element-label{
+  background-color: #a4d762;
+  border:solid #a4d762 1px;
+  color:#fff;
+}
+
+.focused > .element-label{
   background-color: #75b325;
   border:solid #75b325 1px;
   color:#fff;

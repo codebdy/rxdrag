@@ -30,7 +30,7 @@ export class Drawer extends RXComponent{
     this.layout = new Tab
     this.layout.header.domAttr('title', 'Layout').innerHTML = '<i class="fa fa-th-large"></i>'
     this.options = new Tab
-    this.options.header.domAttr('title', 'Options').innerHTML = '<i class="fa fa-list-alt"></i>'
+    this.options.header.domAttr('title', 'Options').innerHTML = '<i class="fa fa-paint-brush"></i>'
 
     this.pushChild(new RXComponent()
                     .cssClass('rx-drawer')
