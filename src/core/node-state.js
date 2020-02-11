@@ -148,12 +148,12 @@ export class FocusState extends NodeState{
     this.classList.push('focused')
 
     this.onBegindrag = (event)=>{
-      if(this.node.draggable){
-        this.preventDefault
-        rxEditor.draggedNode = this.node
-        rxEditor.beginFollowMouse(event)
-        this.node.changeToState('draggedState')
-      }
+      //if(this.node.draggable){
+      this.preventDefault
+      rxEditor.draggedNode = this.node
+      rxEditor.beginFollowMouse(event)
+      this.node.changeToState('draggedState')
+      //}
     };
   }
 }

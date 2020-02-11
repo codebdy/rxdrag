@@ -12,7 +12,7 @@ export class Node{
     }
   	this.children=new RXArray
   	this.view = new NodeView()
-    this.draggable = true
+    //this.draggable = true
     this.dropMargin = 30;
     this.padding = '30px'
     this.mouseFollowerWidth = '200px'
