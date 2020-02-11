@@ -13,10 +13,9 @@ export class RXEditor{
 
     this.commandProxy.rxeditorReady()
     document.onmouseup = (event)=>{
-      this.dropToolboxItem()
-       console.log('canvas mouse up')
+      this.dropElement()
+      console.log('canvas mouse up')
     }
-
   }
 
   render(){
@@ -33,12 +32,16 @@ export class RXEditor{
   clearActiveStates(){
     this.canvas.clearActiveStates()
   }
+  clearFocusStates(){
+    this.canvas.clearFocusStates()
+  }
 
   dragFromToolbox(rxNameId){
     if(this.draggedNode) return
     let element = this.getElementByRxNameId(rxNameId)
     this.draggedNode = element.make()
     this.beginFollowMouse()
+    this.clearFocusStates()
   }
 
   getElementDefine(rxNameId){
@@ -58,11 +61,11 @@ export class RXEditor{
     return element
   }
 
-  dropToolboxItem(){
+  dropElement(){
     this.endFollowMouse()
     if(this.draggedNode){
       this.clearActiveStates()
-      this.draggedNode.changeToState('activeState')
+      this.draggedNode.changeToState('focusState')
       if(this.draggedNode.parent){
         this.draggedNode.parent.changeToState('normalState')
       }

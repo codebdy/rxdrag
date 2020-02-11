@@ -19,7 +19,7 @@
   outline:dashed #70baf7 1px;
 }
   
-.element-active{
+.actived, .focused{
   outline: #75b325 solid 2px;
   position:relative;
 }
@@ -69,21 +69,20 @@
   font-weight: normal;
   left: -1px;
   line-height: 14px;
-  padding: 0px 7px;
+  padding: 0px 2px;
   position: absolute;
   height:16px;
   top: -16px;
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
-  cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 
-.element-active > .element-label{
+.actived > .element-label, .focused > .element-label{
   background-color: #75b325;
   border:solid #75b325 1px;
   color:#fff;
@@ -101,15 +100,15 @@
   background-color: #75b325; 
   color:#fff;
   position: absolute;
-  top:-29px;
+  top:-25px;
   right:-2px;
   padding:3px;
   padding-bottom: 2px;
   display: none;
-  width: 106px;
+  //width: 136px;
 }
 
-.element-active > .element-toolbar{
+.focused > .element-toolbar{
   display: block;
   z-index: 10;
 }
@@ -118,12 +117,12 @@
   display: inline-block;
   margin:0;
   padding:4px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 20px;
   cursor: pointer;
   border-radius: 2px;
   width: 24px;
-  height: 24px;
+  height: 20px;
   text-align: center;
 }
 

@@ -3,6 +3,7 @@ import {Node} from "./node"
 export class Canvas extends Node{
   constructor(workspace) {
     super()
+    this.activeState = this.normalState
     this.parentViewDomElement = workspace;
     this.acceptedChildren=''
     this.exceptChildren = ['BSCol']

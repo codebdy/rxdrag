@@ -1,6 +1,6 @@
 import {NodeView} from "./node-view"
 import {RXArray} from "../basic/rxarray"
-import {NormalState, ActiveState, DragoverState, DisableState, DraggedState} from "./node-state"
+import {NormalState, ActiveState, FocusState, DragoverState, DisableState, DraggedState} from "./node-state"
 
 
 export class Node{
@@ -66,14 +66,28 @@ export class Node{
       this.state.onMouseout(event)
     }
 
+    this.onclick = (event)=>{
+      event.stopPropagation()
+      this.state.onClick(event)
+    }
+
     this.duplicate = ()=>{
       this.changeToState('normalState')
       this.inertAfterSelf(this.clone())
       rxEditor.render()
     }
 
-    this.edit = ()=>{
+    this.edit = (event)=>{
       console.log('Edit')
+      event.stopPropagation()
+    }
+
+    this.up = (event)=>{
+      if(this.parent){
+        this.changeToState('normalState')
+        this.parent.changeToState('focusState')
+        event.stopPropagation()
+      }
     }
 
     this.delete =()=>{
@@ -88,6 +102,7 @@ export class Node{
   initStates(){
     this.normalState = new NormalState(this)
     this.activeState = new ActiveState(this)
+    this.focusState = new FocusState(this)
     this.dragoverState = new DragoverState(this)
     this.draggedState = new DraggedState(this)
     this.disableState = new DisableState(this)
@@ -157,6 +172,15 @@ export class Node{
     }
     this.children.forEach(function(child){  
       child.clearActiveStates()
+    })
+  }
+
+  clearFocusStates(){
+    if(this.state === this.focusState){
+      this.changeToState('normalState')
+    }
+    this.children.forEach(function(child){  
+      child.clearFocusStates()
     })
   }
 
@@ -322,6 +346,9 @@ export class Node{
           }
       },
       toolbar:{
+        up:{
+          onclick:this.up
+        },
         move:{
           onmousedown:this.begindragIcon
         },
@@ -341,6 +368,7 @@ export class Node{
         onmousemove:this.mousemove,
         onmouseover:this.mouseover,
         onmouseout:this.mouseout,
+        onclick:this.onclick,
       }
     }
   }

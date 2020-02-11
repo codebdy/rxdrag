@@ -7,6 +7,7 @@ export class NodeState {
     this.onBegindrag = ()=>{};
     this.onMouseover = (event)=>{};
     this.onMouseout = ()=>{};
+    this.onClick = ()=>{rxEditor.clearFocusStates()};
   }
 
   mouseAtBefore(event){
@@ -123,7 +124,7 @@ export class DragoverState extends CanDropState{
 export class ActiveState extends CanDropState{
   constructor(node) {
     super(node)
-    this.classList.push('element-active')
+    this.classList.push('actived')
     this.onMouseout = ()=>{
       //console.log('mouse out')
       this.node.changeToState('normalState')
@@ -134,6 +135,19 @@ export class ActiveState extends CanDropState{
         this.node.changeToState('activeState')
       }
     };
+
+    this.onClick = (event)=>{
+      rxEditor.clearFocusStates()
+      this.node.changeToState('focusState')
+    }
+  }
+}
+
+export class FocusState extends NodeState{
+  constructor(node) {
+    super(node)
+    this.classList.push('focused')
+
     this.onBegindrag = (event)=>{
       if(this.node.draggable){
         this.preventDefault

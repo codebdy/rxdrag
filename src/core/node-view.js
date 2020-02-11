@@ -23,7 +23,7 @@ export class NodeView{
 
   refreshState(model){
     if(this.domElement){
-      this.domElement.classList.remove('element-active','dragged', 'dragover')
+      this.domElement.classList.remove('actived','focused','dragged', 'dragover')
       this.renderStylesAndClasses(model, this.domElement)
     }
   }
@@ -72,7 +72,7 @@ export class NodeView{
       label.classList.add('element-label')
       label.title = "Can be dragged"
       label.appendChild(document.createTextNode(model.label.text))
-      this.bindEvents(label, model.label.on)
+      //this.bindEvents(label, model.label.on)
       domElement.appendChild(label)
     }
   }
@@ -81,6 +81,7 @@ export class NodeView{
     if(model.toolbar){
       let toolbar = document.createElement('div')
       toolbar.classList.add('element-toolbar')
+      toolbar.appendChild(this.createToolbarButton('Move', 'fa-arrow-up', model.toolbar.up))
       toolbar.appendChild(this.createToolbarButton('Move', 'fa-arrows', model.toolbar.move))
       toolbar.appendChild(this.createToolbarButton('Duplicate', 'fa-copy', model.toolbar.duplicate))
       toolbar.appendChild(this.createToolbarButton('Edit', 'fa-edit', model.toolbar.edit))
