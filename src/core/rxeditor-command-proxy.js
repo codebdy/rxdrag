@@ -22,7 +22,6 @@ export class RXEditorCommandProxy{
   }
 
 
-
   handleMessage(message){
     //console.log('received:' + message.name + ":" + message.rxNameId)
     switch (message.name) {
@@ -39,6 +38,9 @@ export class RXEditorCommandProxy{
 
       case 'endDragFromToolbox':
         this.serveForRXEditor.endDragFromToolbox(message.rxNameId)
+        break;
+      case 'changeCanvasState':
+        this.serveForRXEditor.changeCanvasState(message.state)
         break;
     }
   }

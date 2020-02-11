@@ -69,4 +69,13 @@ export class RXArray extends Array{
     return false
   }
 
+  addOrRemove(isAdd, node){
+    if(isAdd){
+      this.push(node)
+    }
+    else{
+      this.remove(node)
+    }
+  }
+
 }

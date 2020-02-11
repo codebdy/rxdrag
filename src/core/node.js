@@ -6,10 +6,13 @@ import {NormalState, ActiveState, FocusState, DragoverState, DisableState, Dragg
 export class Node{
   constructor() {
     //基础数据，持久化也是这部分数据
-    this.$option = {
+    this.$meta = {
       tag:'div',
       essentialClasses:[]
     } 
+    this.optionClasses = new RXArray
+    this.optionClasses.push('show-outline')
+
     this.seedId()
     this.toolboxInfo = {}
   	this.children=new RXArray
@@ -338,11 +341,19 @@ export class Node{
     return false    
   }
 
+  showOutline(isShow){
+    console.log(isShow)
+    this.optionClasses.addOrRemove(isShow, 'show-outline')
 
+    this.children.forEach((child)=>{
+      child.showOutline(isShow)
+    })
+  }
 
   toViewModel(){
-    let classList = ['element-outline','element'];
-    classList.push.apply(classList, this.$option.essentialClasses)
+    let classList = ['element'];
+    classList.push.apply(classList, this.optionClasses)
+    classList.push.apply(classList, this.$meta.essentialClasses)
     classList.push.apply(classList, this.state.classList)
     let styles = {
       padding: this.padding,

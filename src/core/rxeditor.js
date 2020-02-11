@@ -18,6 +18,11 @@ export class RXEditor{
       this.dropElement()
       console.log('canvas mouse up')
     }
+
+    this.state.watch('showOutline', (state)=>{
+      this.canvas.showOutline(state.showOutline)
+      this.render()
+    })
   }
 
   render(){
@@ -101,8 +106,6 @@ export class RXEditor{
       let mouseFollower = this.draggedNode.createMouseFollower(event)
       this.workspace.appendChild(mouseFollower.domElement)
       this.mouseFollower = mouseFollower
-      //mouseFollower.domElement.style.left = this.followX(event)
-      //mouseFollower.domElement.style.top = this.followY(event)
     }
   }
 
@@ -126,4 +129,10 @@ export class RXEditor{
     }
   }
 
+  changeCanvasState(state){
+    this.state.preview = state.preview
+    this.state.showEditMargin = state.showEditMargin
+    this.state.showOutline = state.showOutline
+    this.state.showLabel = state.showLabel
+  }
 }

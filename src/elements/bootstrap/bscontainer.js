@@ -10,7 +10,7 @@ export class BSContainer extends BSElement{
     this.heightDropMargin = 15;
     this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv']
 
-    this.$option.essentialClasses = ['container'] 
+    this.$meta.essentialClasses = ['container'] 
   }
 
   make(){

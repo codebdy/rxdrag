@@ -20,6 +20,18 @@ export class IFrameCommandProxy{
     })
   }
 
+  changeCanvasState(state){
+    this.sendMessageToRXEditor({
+      name : 'changeCanvasState',
+      state : {
+        preview : state.preview,
+        showEditMargin : state.showEditMargin,
+        showOutline : state.showOutline,
+        showLabel : state.showLabel,
+      }
+    })
+  }
+
   handleMessage(message){
     switch (message.name) {
       case 'rxeditorReady':

@@ -47,9 +47,18 @@
   border-radius: 3px;
 }
 
-.rx-toolbar .toolbar-button:hover, .rx-toolbar .toolbar-button.active{
+.rx-toolbar .toolbar-button.active{
   background: #313131;
 }
+
+.rx-toolbar .toolbar-button:hover{
+  background: #525252;
+}
+
+.rx-toolbar .toolbar-button.active:hover{
+  background: #313131;
+}
+
 
 .rx-toolbar .toolbar-button.disable{
   pointer-events: none;

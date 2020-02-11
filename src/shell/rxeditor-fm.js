@@ -107,6 +107,9 @@ export class RXEditorFM{
     this.commandProxy = new IFrameCommandProxy(this.workspace.iframe)
     this.commandProxy.serveForShell = this
 
+    this.canvasState.watch('changed', (state)=>{
+      this.commandProxy.changeCanvasState(state)
+    })
   }
 
   onRxEditorReady(){
