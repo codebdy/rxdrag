@@ -24,9 +24,8 @@ export class RXEditor{
     }
 
     this.state.watch('changed', (state)=>{
-      this.optionClasses.addOrRemove(state.showOutline, 'show-outline')
-      this.optionClasses.addOrRemove(!state.showLabel, 'hide-label')
-      //this.optionClasses.addOrRemove(state.showOutline, 'show-label')
+      this.optionClasses.tongleOnCondition(state.showOutline, 'show-outline')
+      this.optionClasses.tongleOnCondition(!state.showLabel, 'hide-label')
       this.render()
     })
   }

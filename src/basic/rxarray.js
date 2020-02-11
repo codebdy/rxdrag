@@ -71,8 +71,8 @@ export class RXArray extends Array{
     return false
   }
 
-  addOrRemove(isAdd, node){
-    if(isAdd){
+  tongleOnCondition(condition, node){
+    if(condition){
       this.add(node)
     }
     else{
