@@ -51,6 +51,11 @@
   background: #313131;
 }
 
+.rx-toolbar .toolbar-button.disable{
+  pointer-events: none;
+  color:#999;
+}
+
 .rx-workspace{
   display: flex;
   flex-grow: 1;

@@ -21,6 +21,15 @@ class ToolButton extends RXComponent{
     this.attrs.title = title
     return this
   }
+
+  enable(isEnable){
+    if(!isEnable){
+      this.$dom ? this.$dom.classList.add('disable') : this.classList.add('disable')
+    }
+    else{
+      this.$dom ? this.$dom.classList.remove('disable') : this.classList.remove('disable')
+    }
+  }
 }
 
 
@@ -77,13 +86,20 @@ export class Toolbar extends RXComponent{
                 canvasState.showEditMargin = !canvasState.showEditMargin
                 marginBtn.active(canvasState.showEditMargin)
               })
-              
+
     var previewBtn = this.creatRightButton('fa-eye')
               .title('Preview')
               .domOn('onclick',()=>{
                 canvasState.preview = !canvasState.preview
                 previewBtn.active(canvasState.preview)
               })
+
+    canvasState.watch('preview',(state)=>{
+      outlineBtn.enable(!state.preview)
+      labelBtn.enable(!state.preview)
+      marginBtn.enable(!state.preview)
+      this.rxEditorShell.state.showDrawer = !state.preview
+    })
 
     this.creatRightButton('fa-undo').title('Undo')
     this.creatRightButton('fa-repeat').title('Redo')
@@ -95,6 +111,7 @@ export class Toolbar extends RXComponent{
     this.creatRightButton('fa-bars').domOn('onclick', ()=>{
       rxEditorShell.state.showDrawer = !rxEditorShell.state.showDrawer
     }).title('Show/hide drawer ')
+
   }
 
   creatRightButton(icon){
