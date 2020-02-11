@@ -20,6 +20,11 @@ export class ObjectState{
   }
 
   distributeEvent(attribute){
+    this.distributeEventWithoutGlobal(attribute)
+    this.distributeEventWithoutGlobal('changed')//全局事件
+  }
+
+  distributeEventWithoutGlobal(attribute){
     let handlers = this.envetHandlers[attribute];
     if(handlers){
       handlers.forEach((handler)=>{
