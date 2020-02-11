@@ -56,7 +56,9 @@ export class RXArray extends Array{
   }
 
   add(node){
-    this.push(node)
+    if(!this.contains(node)){
+      this.push(node)
+    }
   }
 
   contains(node){
@@ -71,7 +73,7 @@ export class RXArray extends Array{
 
   addOrRemove(isAdd, node){
     if(isAdd){
-      this.push(node)
+      this.add(node)
     }
     else{
       this.remove(node)

@@ -11,7 +11,7 @@ export class Node{
       essentialClasses:[]
     } 
     this.optionClasses = new RXArray
-    this.optionClasses.push('show-outline')
+    this.optionClasses.add('show-outline')
 
     this.seedId()
     this.toolboxInfo = {}
@@ -217,7 +217,7 @@ export class Node{
 
   createChild(nodeName){
     let child = Node.createNode(this, nodeName)
-    this.children.push(child) 
+    this.children.add(child) 
     return child
   }
 
@@ -239,7 +239,7 @@ export class Node{
 
   pushChild(child){
     child.parent = this
-    this.children.push(child) 
+    this.children.add(child) 
   }
 
   moveInTop(targetParent){
@@ -342,9 +342,8 @@ export class Node{
   }
 
   showOutline(isShow){
-    console.log(isShow)
     this.optionClasses.addOrRemove(isShow, 'show-outline')
-
+    console.log('showOutline:', this.$id, isShow, this.optionClasses)
     this.children.forEach((child)=>{
       child.showOutline(isShow)
     })
