@@ -357,8 +357,6 @@ export class Node{
     }
     Object.assign(styles, this.state.styles)
 
-    console.log(styles)
-
     return {
       name:'div',
       //text:'test',

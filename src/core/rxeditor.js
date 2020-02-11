@@ -85,6 +85,9 @@ export class RXEditor{
 
   endDragFromToolbox(){
     console.log('canvas endDragFromToolbox')
+    if(this.draggedNode){
+      this.draggedNode.changeToState('normalState')
+    }
     this.draggedNode = ''
     this.endFollowMouse()
   }
