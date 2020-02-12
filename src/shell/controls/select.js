@@ -13,6 +13,7 @@ class SlectedList  extends RXComponent{
                     )
     }
   }
+
 }
 
 export class OpSelect extends RXComponent{
@@ -22,8 +23,10 @@ export class OpSelect extends RXComponent{
     this.selected = selected
     this.valueViewer = new OpLabel()
     this.pushChild(this.valueViewer)
-    this.list = new SlectedList(list)
-    this.pushChild(this.list)
+    this.listViewer = new SlectedList(list)
+    this.valueViewer.setText(list[selected])
+    this.valueViewer.setRightIcon('▾')
+    this.pushChild(this.listViewer)
   }
 
 }
