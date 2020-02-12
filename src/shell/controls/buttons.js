@@ -31,21 +31,26 @@ export class RXButton extends RXComponent{
   }
 }
 
+export class OpButton extends RXButton{
+  constructor(){
+    super()
+  }
+}
 
 class ButtonGroupState extends ObjectState{
   constructor(){
     super()
-    this.__activeDrawerTab = 'options'
+    this.__actived = ''//acitved button id
   }
 
-  get activeDrawerTab(){
-    return this.__activeDrawerTab
+  get actived(){
+    return this.__actived
   }
 
-  set activeDrawerTab(activeDrawerTab){
-    if(this.__activeDrawerTab == activeDrawerTab){return} 
-    this.__activeDrawerTab = activeDrawerTab
-    this.distributeEvent('activeDrawerTab')
+  set actived(actived){
+    if(this.__actived == actived){return} 
+    this.__actived = actived
+    this.distributeEvent('actived')
   }
 }
 
