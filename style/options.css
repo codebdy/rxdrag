@@ -1,5 +1,5 @@
 .option-row{
-  padding:10px 0; display:flex; flex-flow:row;
+  padding:4px 0; display:flex; flex-flow:row;
 }
 
 .option-row .option-row-label{
@@ -8,6 +8,24 @@
   color:#c2c2c2
 }
 
+.option-row .option-row-label.sub-label{
+  text-align: center;
+}
+
+.option-row .option-row-label.dropdown::after{
+  position: absolute;
+  content: '';
+  width: 0; 
+  height: 0;
+  top: 13px;
+  right: 7px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #c2c2c2 transparent transparent  transparent;
+  //border-color:transparent transparent  transparent #c2c2c2;
+}
+
+
 .option-row .button-group, .option-row .label-group{
   display:flex; 
   flex-flow:row;
@@ -15,7 +33,7 @@
   flex: 1;
 }
 
-.option-row .button-group .op-button{
+.option-row .op-button{
   display: flex;
   height: 26px;
   align-items: center;
@@ -40,12 +58,12 @@
   cursor: pointer;
 }
 
-.option-row .button-group .op-button.selected{
+.option-row .op-button.selected{
   background:#424242;
 }
 
 
-.option-row .label-group .op-label{
+.option-row .op-label{
   display: flex;
   height: 26px;
   align-items: center;
@@ -56,7 +74,63 @@
   margin:1px;
 }
 
-.option-row .label-group .op-label .right-icon{
+.option-row .op-label .right-icon{
   margin-left: 5px;
   cursor: pointer;
+}
+
+.option-row .op-label .left-icon{
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.option-row .ctl-select{
+  position: relative;
+}
+
+.option-row .select-list{
+  position: absolute;
+  top:26px;
+  width: 100%;
+  margin:0;
+  padding:0;
+  list-style: none;
+  background: #424242;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.4); 
+  display: none;
+}
+
+.option-row .select-list li{
+  height: 26px;
+  line-height: 100%;
+  cursor: pointer;
+  padding:5px 10px;
+}
+
+.option-row .select-list li:hover{
+  background: #75b325;
+}
+
+.ctl-select .op-label{
+  cursor: pointer;
+}
+
+.ctl-multi-select{
+  display:flex; 
+  flex-flow:row;
+  flex-wrap: wrap;
+  flex: 1;
+  position: relative;
+}
+
+.ctl-multi-select .select-list{
+  position: absolute;
+  width: 100%;
+  margin:0;
+  padding:0;
+  top:100%;
+  background: #424242;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.4); 
+  display: flex;
+  flex-flow: column;
 }

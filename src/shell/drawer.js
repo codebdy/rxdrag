@@ -101,15 +101,95 @@ export class Drawer extends RXComponent{
             <div class="option-row">
               <div class="option-row-label">Classes</div> 
               <div class="label-group">
-                <div class="op-label"> 
-                  container-fluid 
-                  <span class="right-icon">▾</span>
+                <div class="ctl-select">
+                  <div class="op-label"> 
+                    container-fluid 
+                    <span class="right-icon">▾</span>
+                  </div>
+                  <ul class="select-list">
+                    <li>container</li>
+                    <li>container-fluid</li>
+                  </ul>
+                </div> 
+              </div>
+            </div>
+            <div class="option-row">
+              <div class="option-row-label dropdown">Size</div> 
+              <div class="label-group">
+                <div class="op-icon-button"> 
+                  ×
+                </div>
+                <div class="ctl-select">
+                  <div class="op-label"> 
+                    col
+                    <span class="right-icon">▾</span>
+                  </div>
+                  <ul class="select-list">
+                    <li>container</li>
+                    <li>container-fluid</li>
+                  </ul>
+                </div> 
+              </div>
+            </div>
+            <div class="option-row">
+              <div class="option-row-label sub-label">SM</div> 
+              <div class="label-group">
+                <div class="op-icon-button"> 
+                  ×
+                </div>
+                <div class="ctl-select">
+                  <div class="op-label"> 
+                    col-sm-3
+                    <span class="right-icon">▾</span>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="option-row">
+              <div class="option-row-label sub-label">MD</div> 
+              <div class="label-group">
+                <div class="op-icon-button"> 
+                  ×
+                </div>
+                <div class="ctl-select">
+                  <div class="op-label"> 
+                    col-md-5
+                    <span class="right-icon">▾</span>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="option-row">
+              <div class="option-row-label sub-label">LG</div> 
+              <div class="label-group">
+                <div class="op-icon-button"> 
+                  ×
+                </div>
+                <div class="ctl-select">
+                  <div class="op-label"> 
+                    col-lg-5
+                    <span class="right-icon">▾</span>
+                  </div>
+                </div> 
+              </div>
+            </div>
+            <div class="option-row">
+              <div class="option-row-label sub-label">XL</div> 
+              <div class="label-group">
+                <div class="op-icon-button"> 
+                  ×
+                </div>
+                <div class="ctl-select">
+                  <div class="op-label"> 
+                    col-xl-5
+                    <span class="right-icon">▾</span>
+                  </div>
                 </div> 
               </div>
             </div>
             <div class="option-row">
               <div class="option-row-label">Classes</div> 
-              <div class="label-group">
+              <div class="ctl-multi-select">
                 <div class="op-label"> 
                   col  
                   <span class="right-icon">×</span>
@@ -128,6 +208,14 @@ export class Drawer extends RXComponent{
                 </div> 
                 <div class="op-icon-button"> 
                   +
+                </div>
+                <div class="select-list">
+                  <div>
+                    col-1 
+                  </div>
+                  <div>
+                    col- 2
+                  </div>
                 </div> 
               </div>
             </div>
@@ -140,7 +228,7 @@ export class Drawer extends RXComponent{
           </div>
         </div>
         <div class="tool-group group-collapse">
-          <div class="group-title">Border</div>
+          <div class="group-title">Layout</div>
           <div class="group-body">
           </div>
         </div>
