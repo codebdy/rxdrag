@@ -106,11 +106,9 @@ export class RXComponent{
   }
 
   setInnerHTML(innerHTML){
+    this.innerHTML = innerHTML
     if(this.$dom){
       this.$dom.innerHTML = innerHTML
-    }
-    else{
-      this.innerHTML = innerHTML
     }
     return this
   }
@@ -119,5 +117,20 @@ export class RXComponent{
     this.$dom.parentNode.removeChild(this.$dom)
   }
 
+  show(){
+    this.style.display = 'block'
+    if(this.$dom){
+      this.$dom.style.display = 'block'
+    }
+    return this
+  }
+
+  hide(){
+    this.style.display = 'none'
+    if(this.$dom){
+      this.$dom.style.display = 'none'
+    }
+    return this
+  }
 
 }
