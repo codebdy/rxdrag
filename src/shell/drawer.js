@@ -27,7 +27,7 @@ class Tab{
 class DrawerState extends ObjectState{
   constructor(){
     super()
-    this.__activeDrawerTab = 'layout'
+    this.__activeDrawerTab = 'options'
   }
 
   get activeDrawerTab(){
@@ -69,20 +69,72 @@ export class Drawer extends RXComponent{
     this.layout.pushChild(this.toolbox)
     //this.options.body.innerHTML= `<div style="padding:20px;">No elements selected</div>`
     this.options.body.innerHTML= `
-      <div style="padding:10px; font-size:13px; display:flexed;flex-flow:column;">
-        <div>Base Classes</div>
-        <div style="background:#424242;margin-top:10px;padding:5px;">
-          <div>container</div>
-          <div>container</div>
-        </div>
+      <div class="options-box">
+        <div class="tool-group no-title-top-border">
+          <div class="group-title">
+            Basic
+          </div>
+          <div class="group-body" style="font-size:13px; ">
+            <div style="padding:10px; display:flex; flex-flow:row;">
+              <div style="width:70px;padding-top:3px;color:#c2c2c2">Heading</div> 
+              <div style="display:flex; flex-flow:row; ">
+                <div style="background:#424242;padding:2px 8px; border-radius:3px;"> 
+                  H1
+                </div> 
+                <div style="background:#424242;padding:2px 8px; border-radius:3px;"> 
+                  H2
+                </div> 
+                <div style="background:#424242;padding:2px 8px; border-radius:3px;"> 
+                  H3
+                </div> 
+              </div>
+            </div>
+            <div style="padding:10px; display:flex; flex-flow:row;">
+              <div style="width:70px;padding-top:3px;color:#c2c2c2">Classes</div> 
+              <div style="display:flex; flex-flow:row; ">
+                <div style="background:#424242;padding:2px 8px; border-radius:3px;"> 
+                  container-fluid 
+                  <span>▾</span>
+                </div> 
+              </div>
+            </div>
+            <div style="padding:10px; display:flex; flex-flow:row;">
+              <div style="width:70px;padding-top:3px;color:#c2c2c2">Classes</div> 
+              <div style="display:flex; flex-flow:row; ">
+                <div style="background:#424242;padding:2px 8px; border-radius:3px;"> 
+                  col 
+                  <span style="font-size:15px; cursor:pointer" >×</span>
+                </div> 
+                <div style="background:#424242;padding:2px 8px; border-radius:3px; margin-left:3px;"> 
+                  col-md 
+                  <span style="font-size:15px; cursor:pointer" >×</span>
+                </div> 
+                <div style="display:flex; align-items:center; justify-content:center; background:#424242;width:30px;height:30px; border-radius:3px; margin-left:3px;"> 
+                  
+                  <span style="font-size:16px;">+</span>
+                </div> 
+              </div>
+            </div>
 
+            <div>
+              <div> <i class="fa fa-square-o"></i> col</div>
+              <div> <i class="fa fa-square-o"></i> H1</div>
+              <div> <i class="fa fa-square-o"></i> H2</div>
+            </div>
+          </div>
+        </div>
+        <div class="tool-group group-collapse">
+          <div class="group-title">Border</div>
+          <div class="group-body">
+          </div>
+        </div>
       </div>
     `
 
     this.state.watch('activeDrawerTab', (state)=>{
       this.activeTab(state.activeDrawerTab)
     })
-    this.activeTab('layout')
+    this.activeTab('options')
   }
 
   render(parentElement){
@@ -157,7 +209,9 @@ export class Toolbox extends RXComponent{
 
   inidGroups(){
     if(!this['groupContainer']){
-      this.groupContainer =  new ToolboxGroup('Container','groupContainer', this.state).render(this.$dom)
+      this.groupContainer =  new ToolboxGroup('Container','groupContainer', this.state)
+                            .cssClass('no-title-top-border')
+                            .render(this.$dom)
       this.groupContainer.active()
     }
 

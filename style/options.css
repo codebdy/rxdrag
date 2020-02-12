@@ -1,0 +1,19 @@
+.options-box .tool-group .group-title{
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  background: #313131;
+  height: 36px;
+  color:#f0f1ef;
+  cursor: pointer;
+  padding-left: 15px;
+  padding-bottom:3px;
+  position: relative;
+  border-bottom:#222 solid 1px;
+  border-top:#424242 solid 1px;
+}
+
+
+.options-box .no-title-top-border .group-title{
+  border-top:transparent solid 1px;
+}

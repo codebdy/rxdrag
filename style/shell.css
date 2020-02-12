@@ -138,10 +138,9 @@
 .rx-drawer .toolbox{
   display: flex;
   flex-flow: column;
-  padding-top:10px;
 }
 
-.rx-drawer .tool-group .group-title{
+.rx-drawer .toolbox .tool-group .group-title{
   display: flex;
   align-items: center;
   font-size: 13px;
@@ -149,41 +148,45 @@
   height: 36px;
   color:#f0f1ef;
   cursor: pointer;
-  padding-left: 35px;
+  padding-left: 15px;
   padding-bottom:3px;
   position: relative;
   border-bottom:#222 solid 1px;
   border-top:#424242 solid 1px;
 }
 
-.rx-drawer .group-body{
+.rx-drawer .toolbox .no-title-top-border .group-title{
+  border-top:transparent solid 1px;
+}
+
+.rx-drawer .toolbox .group-body{
   /*background: #404040;*/
   padding: 0px 10px;
   margin:5px;
 }
 
-.rx-drawer .tool-group .group-title::after{
+.rx-drawer .toolbox .tool-group .group-title::after{
   position: absolute;
   content: '';
   width: 0; 
   height: 0;
-  top: 15px;
-  left: 19px;
+  top: 16px;
+  right: 19px;
   border-width: 4px;
   border-style: solid;
   border-color: #f0f1ef transparent transparent  transparent;
 }
 
-.rx-drawer .tool-group.group-collapse .group-title{
+.rx-drawer .toolbox .tool-group.group-collapse .group-title{
 }
 
-.rx-drawer .tool-group.group-collapse .group-title::after{
+.rx-drawer .toolbox .tool-group.group-collapse .group-title::after{
   position: absolute;
   content: '';
   width: 0; 
   height: 0;
-  top: 11px;
-  left: 22px;
+  top: 12px;
+  right: 17px;
   border-width: 4px;
   border-style: solid;
   border-color:transparent transparent  transparent #f0f1ef;
@@ -191,7 +194,7 @@
 
 
 
-.rx-drawer .group-collapse .group-body{
+.rx-drawer .toolbox .group-collapse .group-body{
   height: 0;
   padding: 0;
   overflow: hidden;
@@ -199,7 +202,7 @@
 }
 
 
-.rx-drawer .group-body .element{
+.rx-drawer .toolbox .group-body .element{
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -213,7 +216,7 @@
   margin:3px;
 }
 
-.rx-drawer .group-body .element:hover{
+.rx-drawer .toolbox .group-body .element:hover{
   color: #75b325;
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.4); 
 }
