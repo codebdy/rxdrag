@@ -2,7 +2,7 @@ import {RXComponent} from "../../basic/rxcomponent"
 import {ObjectState} from "../../basic/object-state"
 
 export class RXButton extends RXComponent{
-  constructor(icon){
+  constructor(){
     super()
   }
 
@@ -32,8 +32,11 @@ export class RXButton extends RXComponent{
 }
 
 export class OpButton extends RXButton{
-  constructor(){
+  constructor(innerHTML, id=''){
     super()
+    this.id = id
+    this.cssClass('op-button')
+    this.innerHTML = innerHTML
   }
 }
 
@@ -59,5 +62,33 @@ export class ButtonGroup extends RXComponent{
     super()
     this.state = new ButtonGroupState
     this.cssClass('button-group')
-   }
+
+    this.state.watch('actived',(state)=>{
+      this.children.forEach((child)=>{
+        child.active(false)
+        if(child.id === state.actived){
+          child.active()
+        }
+      })
+
+      if(this.valueChanged){
+        this.valueChanged(state.actived)
+      }
+    })
+  }
+
+  pushChild(child){
+    this[child.id] = child
+
+    child.domOn('onclick', ()=>{
+      this.state.actived = child.id
+    })
+
+    return super.pushChild(child)
+  }
+
+  active(btnId){
+    this[btnId].active()
+    return this
+  }
 }

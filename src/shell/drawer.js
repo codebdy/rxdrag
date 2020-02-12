@@ -1,5 +1,8 @@
 import {RXComponent} from "../basic/rxcomponent"
 import {ObjectState} from "../basic/object-state"
+import {OptionRow, OptionRowLabel} from "./controls/option-row"
+import {ButtonGroup, OpButton} from "./controls/buttons"
+import {OpSelect} from "./controls/select"
 
 class Tab{
   constructor(){
@@ -67,6 +70,7 @@ export class Drawer extends RXComponent{
                   )
     this.toolbox = new Toolbox()
     this.layout.pushChild(this.toolbox)
+    this.options.pushChild(new OptionBox)
     //this.options.body.innerHTML= `<div style="padding:20px;">No elements selected</div>`
     this.options.body.innerHTML= `
       <div class="toolbox">
@@ -76,34 +80,11 @@ export class Drawer extends RXComponent{
           </div>
           <div class="group-body">
             <div class="option-row">
-              <div class="option-row-label">Heading</div> 
-              <div class="button-group">
-                <div class="op-button"> 
-                  H1
-                </div> 
-                <div class="op-button selected"> 
-                  H2
-                </div> 
-                <div class="op-button"> 
-                  H3
-                </div> 
-                <div class="op-button"> 
-                  H4
-                </div> 
-                <div class="op-button"> 
-                  H5
-                </div> 
-                <div class="op-button"> 
-                  H6
-                </div> 
-              </div>
-            </div>
-            <div class="option-row">
               <div class="option-row-label">Classes</div> 
-              <div class="label-group">
+              
                 <div class="ctl-select">
                   <div class="op-label"> 
-                    container-fluid 
+                    <span>container-fluid </span>
                     <span class="right-icon">▾</span>
                   </div>
                   <ul class="select-list">
@@ -111,7 +92,7 @@ export class Drawer extends RXComponent{
                     <li>container-fluid</li>
                   </ul>
                 </div> 
-              </div>
+              
             </div>
             <div class="option-row-group">
               <div class="option-row">
@@ -278,13 +259,100 @@ class ToolboxState extends ObjectState{
   }
 }
 
+class ToolGroup extends RXComponent{
+  constructor(title, id, groupsState){
+    super()
+    this.id = id
+    this.state = groupsState
+    this.cssClass('tool-group')
+    this.cssClass('group-collapse')
+    this.title = new RXComponent()
+    this.title.cssClass('group-title')
+    this.title.innerHTML = title
+    this.pushChild(this.title)
+    this.groupBody = new RXComponent()
+    this.groupBody.cssClass('group-body')
+    this.pushChild(this.groupBody)
+
+    this.domOn('onclick',()=>{
+      this.state.activedGroup = this.id
+    })
+    this.state.watch('activedGroup', (state)=>{
+      this.active(state.activedGroup === this.id)
+    })
+  }
+
+  active(isActive = true){
+    if(!isActive){
+      this.$dom ? this.$dom.classList.add('group-collapse') : this.classList.add('group-collapse')
+    }
+    else{
+      this.$dom ? this.$dom.classList.remove('group-collapse') : this.classList.remove('group-collapse')
+    }
+    return this
+  }
+}
+
+export class OptionBoxGroup extends ToolGroup{
+  constructor(title, id, groupsState){
+    super(title, id, groupsState)
+  }
+
+  add(optionRow){
+    this.groupBody.pushChild(optionRow)
+    return this
+  }
+}
+
+export class OptionBox extends RXComponent{
+  constructor(){
+    super()
+    this.state = new ToolboxState
+    this.cssClass('toolbox')
+    this.initGroups()
+  }
+
+  initGroups(){
+    let row = new OptionRow()
+    let classesRow = new OptionRow()
+    classesRow.pushChild(new OptionRowLabel('Classes'))
+    classesRow.pushChild(new OpSelect({
+                          container:'container',
+                          'container-fluid':'container-fluid'
+                        }, 'container'))
+
+    this.pushChild(new OptionBoxGroup('Basic','groupBasic', this.state)
+                        .cssClass('no-title-top-border')
+                        .active()
+                        .add(row)
+                        .add(classesRow)
+                  )
+    this.pushChild(new ToolboxGroup('Layout', 'groupLayout', this.state))
+    
+    this.pushChild(new ToolboxGroup('CSS','groupLayout', this.state))
+                          
+    row.pushChild(new OptionRowLabel('Heading'))
+    row.pushChild(new ButtonGroup()
+                      .pushChild(new OpButton('H1', 'h1'))
+                      .pushChild(new OpButton('H2', 'h2'))
+                      .pushChild(new OpButton('H3', 'h3'))
+                      .pushChild(new OpButton('H4', 'h4'))
+                      .pushChild(new OpButton('H5', 'h5'))
+                      .pushChild(new OpButton('H6', 'h6'))
+                      .active('h2')
+      )
+  }
+
+}
+
+
 export class Toolbox extends RXComponent{
   constructor(){
     super()
     this.state = new ToolboxState
     this.cssClass('toolbox')
     this.assembleToolboxItem = (toolboxInfo)=>{
-      this.inidGroups()
+      this.initGroups()
       //let rxModuleNameId = toolboxInfo.groupId
       //if(!this[rxModuleNameId]){
       //  this[rxModuleNameId] = new ToolboxGroup(toolboxInfo.moduleName).render(this.$dom)
@@ -312,7 +380,7 @@ export class Toolbox extends RXComponent{
 
   }
 
-  inidGroups(){
+  initGroups(){
     if(!this['groupContainer']){
       this.groupContainer =  new ToolboxGroup('Container','groupContainer', this.state)
                             .cssClass('no-title-top-border')
@@ -361,43 +429,16 @@ export class Toolbox extends RXComponent{
 
 }
 
-export class ToolboxGroup extends RXComponent{
-  constructor(title, id, groupsState){
-    super()
-    this.id = id
-    this.state = groupsState
-    this.cssClass('tool-group')
-    this.cssClass('group-collapse')
-    this.title = new RXComponent()
-    this.title.cssClass('group-title')
-    this.title.innerHTML = title
-    this.pushChild(this.title)
-    this.groupBody = new RXComponent()
-    this.groupBody.cssClass('group-body')
-    this.pushChild(this.groupBody)
 
-    this.domOn('onclick',()=>{
-      this.state.activedGroup = this.id
-    })
-    this.state.watch('activedGroup', (state)=>{
-      this.active(state.activedGroup === this.id)
-    })
+export class ToolboxGroup extends ToolGroup{
+  constructor(title, id, groupsState){
+    super(title, id, groupsState)
   }
 
   add(toolboxInfo){
     let toolboxItem = new ToolboxItem(toolboxInfo).render(this.groupBody.$dom)
     this.groupBody.pushChild(toolboxItem)
     return toolboxItem
-  }
-
-  active(isActive = true){
-    if(!isActive){
-      this.$dom ? this.$dom.classList.add('group-collapse') : this.classList.add('group-collapse')
-    }
-    else{
-      this.$dom ? this.$dom.classList.remove('group-collapse') : this.classList.remove('group-collapse')
-    }
-    return this
   }
 }
 

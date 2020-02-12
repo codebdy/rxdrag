@@ -70,10 +70,10 @@ export class RXComponent{
     return this
   }
 
-  setInnerHTML(innerHTML){
-    this.innerHTML = innerHTML
-    return this
-  }
+  //setInnerHTML(innerHTML){
+  //  this.innerHTML = innerHTML
+  //  return this
+  //}
 
   render(parentElement){
     this.$dom =  document.createElement(this.elementName)
@@ -102,6 +102,16 @@ export class RXComponent{
     this.children.forEach((child)=>{
       child.render(this.$dom)
     })
+    return this
+  }
+
+  setInnerHTML(innerHTML){
+    if(this.$dom){
+      this.$dom.innerHTML = innerHTML
+    }
+    else{
+      this.innerHTML = innerHTML
+    }
     return this
   }
 

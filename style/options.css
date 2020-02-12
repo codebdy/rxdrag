@@ -58,7 +58,7 @@
   cursor: pointer;
 }
 
-.option-row .op-button.selected{
+.option-row .op-button.active{
   background:#424242;
 }
 
