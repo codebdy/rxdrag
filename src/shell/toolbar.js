@@ -1,34 +1,11 @@
 import {RXComponent} from "../basic/rxcomponent"
+import {RXButton} from "./controls/buttons"
 
-class ToolButton extends RXComponent{
+class ToolButton extends RXButton{
   constructor(icon){
     super()
     this.classList.add('toolbar-button')
     this.innerHTML =`<i class="fa ${icon}" ></i>`
-  }
-
-  active(isActive= true){
-    if(isActive){
-      this.$dom ? this.$dom.classList.add('active') : this.classList.add('active')
-    }
-    else{
-      this.$dom ? this.$dom.classList.remove('active') : this.classList.remove('active')
-    }
-    return this
-  }
-
-  title(title){
-    this.attrs.title = title
-    return this
-  }
-
-  enable(isEnable){
-    if(!isEnable){
-      this.$dom ? this.$dom.classList.add('disable') : this.classList.add('disable')
-    }
-    else{
-      this.$dom ? this.$dom.classList.remove('disable') : this.classList.remove('disable')
-    }
   }
 }
 
