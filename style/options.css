@@ -1,19 +1,62 @@
-.options-box .tool-group .group-title{
+.option-row{
+  padding:10px 0; display:flex; flex-flow:row;
+}
+
+.option-row .option-row-label{
+  width:70px;
+  padding-top:3px;
+  color:#c2c2c2
+}
+
+.option-row .button-group, .option-row .label-group{
+  display:flex; 
+  flex-flow:row;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.option-row .button-group .op-button{
   display: flex;
+  height: 26px;
   align-items: center;
-  font-size: 13px;
-  background: #313131;
-  height: 36px;
-  color:#f0f1ef;
+  padding: 0 5px;
+  background:#535353;
+  border-radius:3px;
+  margin:1px;
   cursor: pointer;
-  padding-left: 15px;
+}
+
+.option-row .op-icon-button{
+  display: flex;
+  height: 26px;
+  width: 26px;
+  font-size: 17px;
+  align-items: center;
+  justify-content: center;
   padding-bottom:3px;
-  position: relative;
-  border-bottom:#222 solid 1px;
-  border-top:#424242 solid 1px;
+  background:#424242;
+  border-radius:3px;
+  margin:1px;
+  cursor: pointer;
+}
+
+.option-row .button-group .op-button.selected{
+  background:#424242;
 }
 
 
-.options-box .no-title-top-border .group-title{
-  border-top:transparent solid 1px;
+.option-row .label-group .op-label{
+  display: flex;
+  height: 26px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  background:#424242;
+  border-radius:3px;
+  margin:1px;
+}
+
+.option-row .label-group .op-label .right-icon{
+  margin-left: 5px;
+  cursor: pointer;
 }

@@ -13,7 +13,7 @@
 }
 
 .rx-right-area{
-  width: 250px;
+  width: 270px;
   box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.5); 
   overflow-x: hidden;
   transition: all 0.3s;
@@ -161,6 +161,7 @@
 
 .rx-drawer .toolbox .group-body{
   /*background: #404040;*/
+  font-size: 13px;
   padding: 0px 10px;
   margin:5px;
 }

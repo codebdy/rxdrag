@@ -69,49 +69,65 @@ export class Drawer extends RXComponent{
     this.layout.pushChild(this.toolbox)
     //this.options.body.innerHTML= `<div style="padding:20px;">No elements selected</div>`
     this.options.body.innerHTML= `
-      <div class="options-box">
+      <div class="toolbox">
         <div class="tool-group no-title-top-border">
           <div class="group-title">
             Basic
           </div>
-          <div class="group-body" style="font-size:13px; ">
-            <div style="padding:10px; display:flex; flex-flow:row;">
-              <div style="width:70px;padding-top:3px;color:#c2c2c2">Heading</div> 
-              <div style="display:flex; flex-flow:row; ">
-                <div style="background:#424242;padding:2px 8px; border-radius:3px;"> 
+          <div class="group-body">
+            <div class="option-row">
+              <div class="option-row-label">Heading</div> 
+              <div class="button-group">
+                <div class="op-button"> 
                   H1
                 </div> 
-                <div style="background:#424242;padding:2px 8px; border-radius:3px;"> 
+                <div class="op-button selected"> 
                   H2
                 </div> 
-                <div style="background:#424242;padding:2px 8px; border-radius:3px;"> 
+                <div class="op-button"> 
                   H3
                 </div> 
+                <div class="op-button"> 
+                  H4
+                </div> 
+                <div class="op-button"> 
+                  H5
+                </div> 
+                <div class="op-button"> 
+                  H6
+                </div> 
               </div>
             </div>
-            <div style="padding:10px; display:flex; flex-flow:row;">
-              <div style="width:70px;padding-top:3px;color:#c2c2c2">Classes</div> 
-              <div style="display:flex; flex-flow:row; ">
-                <div style="background:#424242;padding:2px 8px; border-radius:3px;"> 
+            <div class="option-row">
+              <div class="option-row-label">Classes</div> 
+              <div class="label-group">
+                <div class="op-label"> 
                   container-fluid 
-                  <span>▾</span>
+                  <span class="right-icon">▾</span>
                 </div> 
               </div>
             </div>
-            <div style="padding:10px; display:flex; flex-flow:row;">
-              <div style="width:70px;padding-top:3px;color:#c2c2c2">Classes</div> 
-              <div style="display:flex; flex-flow:row; ">
-                <div style="background:#424242;padding:2px 8px; border-radius:3px;"> 
-                  col 
-                  <span style="font-size:15px; cursor:pointer" >×</span>
+            <div class="option-row">
+              <div class="option-row-label">Classes</div> 
+              <div class="label-group">
+                <div class="op-label"> 
+                  col  
+                  <span class="right-icon">×</span>
                 </div> 
-                <div style="background:#424242;padding:2px 8px; border-radius:3px; margin-left:3px;"> 
-                  col-md 
-                  <span style="font-size:15px; cursor:pointer" >×</span>
+                <div class="op-label"> 
+                  col-md-3  
+                  <span class="right-icon">×</span>
                 </div> 
-                <div style="display:flex; align-items:center; justify-content:center; background:#424242;width:30px;height:30px; border-radius:3px; margin-left:3px;"> 
-                  
-                  <span style="font-size:16px;">+</span>
+                <div class="op-label"> 
+                  col-sm-5  
+                  <span class="right-icon">×</span>
+                </div> 
+                <div class="op-label"> 
+                  col-xl-6  
+                  <span class="right-icon">×</span>
+                </div> 
+                <div class="op-icon-button"> 
+                  +
                 </div> 
               </div>
             </div>
