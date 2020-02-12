@@ -98,10 +98,10 @@ export class Drawer extends RXComponent{
               <div class="option-row">
                 <div class="option-row-label dropdown">Size</div> 
                 <div class="label-group">
-                  <div class="op-icon-button"> 
-                    ×
-                  </div>
                   <div class="ctl-select">
+                    <div class="op-icon-button"> 
+                      ×
+                    </div>
                     <div class="op-label"> 
                       col
                       <span class="right-icon">▾</span>
@@ -319,7 +319,7 @@ export class OptionBox extends RXComponent{
     classesRow.pushChild(new OpSelect({
                           container:'container',
                           'container-fluid':'container-fluid'
-                        }, 'container'))
+                        },'', true))
 
     this.pushChild(new OptionBoxGroup('Basic','groupBasic', this.state)
                         .cssClass('no-title-top-border')

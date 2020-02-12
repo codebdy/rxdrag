@@ -40,6 +40,16 @@ export class OpButton extends RXButton{
   }
 }
 
+export class OpIconButton extends RXButton{
+  constructor(innerHTML){
+    super()
+    this.cssClass('op-icon-button')
+    this.innerHTML = innerHTML
+  }
+}
+
+
+
 class ButtonGroupState extends ObjectState{
   constructor(){
     super()

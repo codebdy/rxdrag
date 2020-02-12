@@ -1,5 +1,6 @@
 import {RXComponent} from "../../basic/rxcomponent"
 import {OpLabel} from "./label"
+import {OpIconButton} from "./buttons"
 
 class SelectItem extends RXComponent{
   constructor(id, value){
@@ -34,14 +35,24 @@ class SlectedList  extends RXComponent{
 }
 
 export class OpSelect extends RXComponent{
-  constructor(list = {}, selected = ''){
+  constructor(list, selected = '', required = false){
     super()
     this.cssClass('ctl-select')
     this.selected = selected
     this.valueViewer = new OpLabel()
+    var emptyValue = '-Select-'
+    if(!required){
+      this.clearBtn = new OpIconButton('×')
+      this.pushChild(this.clearBtn)
+      this.clearBtn.domOn('onclick', ()=>{
+        this.valueViewer.setText(emptyValue)
+        this.selected = ''
+      })
+    }
     this.pushChild(this.valueViewer)
-    this.listViewer = new SlectedList(list)
-    this.valueViewer.setText(list[selected])
+
+    this.listViewer = new SlectedList(list, required)
+    this.valueViewer.setText(selected?list[selected]:emptyValue)
     this.valueViewer.setRightIcon('▾')
     this.pushChild(this.listViewer)
 

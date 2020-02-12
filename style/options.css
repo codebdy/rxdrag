@@ -112,6 +112,11 @@
   background: #75b325;
 }
 
+.ctl-select{
+  display: flex;
+  flex-flow: row;
+}
+
 .ctl-select .op-label{
   cursor: pointer;
 }
