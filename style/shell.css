@@ -142,22 +142,24 @@
 }
 
 .rx-drawer .tool-group .group-title{
+  display: flex;
+  align-items: center;
   font-size: 13px;
-  line-height: 13px;
   background: #313131;
-  height: 26px;
-  padding:0 8px;
+  height: 36px;
   color:#f0f1ef;
   cursor: pointer;
   padding-left: 35px;
+  padding-bottom:3px;
   position: relative;
+  border-bottom:#222 solid 1px;
+  border-top:#424242 solid 1px;
 }
 
 .rx-drawer .group-body{
-  background: #404040;
-  padding: 10px;
-  margin:5px 10px;
-  transition: all 0.2s;
+  /*background: #404040;*/
+  padding: 0px 10px;
+  margin:5px;
 }
 
 .rx-drawer .tool-group .group-title::after{
@@ -165,7 +167,7 @@
   content: '';
   width: 0; 
   height: 0;
-  top: 7px;
+  top: 15px;
   left: 19px;
   border-width: 4px;
   border-style: solid;
@@ -173,7 +175,6 @@
 }
 
 .rx-drawer .tool-group.group-collapse .group-title{
-  border-bottom:#222 solid 1px;
 }
 
 .rx-drawer .tool-group.group-collapse .group-title::after{
@@ -181,7 +182,7 @@
   content: '';
   width: 0; 
   height: 0;
-  top: 3px;
+  top: 11px;
   left: 22px;
   border-width: 4px;
   border-style: solid;
@@ -194,6 +195,7 @@
   height: 0;
   padding: 0;
   overflow: hidden;
+  display: none;
 }
 
 
@@ -203,7 +205,8 @@
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  border: #313131 solid 1px;
+  //border: #313131 solid 1px;
+  //background: #424242;
   color: #c2c2c2;
   font-size: 13px;
   padding:5px 5px;

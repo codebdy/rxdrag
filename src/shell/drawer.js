@@ -67,7 +67,17 @@ export class Drawer extends RXComponent{
                   )
     this.toolbox = new Toolbox()
     this.layout.pushChild(this.toolbox)
-    this.options.body.innerHTML= `<div style="padding:20px;">No element is selected</div>`
+    //this.options.body.innerHTML= `<div style="padding:20px;">No elements selected</div>`
+    this.options.body.innerHTML= `
+      <div style="padding:10px; font-size:13px; display:flexed;flex-flow:column;">
+        <div>Base Classes</div>
+        <div style="background:#424242;margin-top:10px;padding:5px;">
+          <div>container</div>
+          <div>container</div>
+        </div>
+
+      </div>
+    `
 
     this.state.watch('activeDrawerTab', (state)=>{
       this.activeTab(state.activeDrawerTab)
