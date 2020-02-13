@@ -18,10 +18,10 @@ export class RXEditor{
     this.commandProxy = commandProxy
 
     this.commandProxy.rxeditorReady()
-    document.onmouseup = (event)=>{
+    document.addEventListener('mouseup', (event)=>{
       this.dropElement()
       console.log('canvas mouse up')
-    }
+    })
 
     this.state.watch('changed', (state)=>{
       this.optionClasses.tongleOnCondition(state.showOutline, 'show-outline')

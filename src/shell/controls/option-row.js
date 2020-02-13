@@ -39,6 +39,7 @@ export class OptionRowGroup extends RXComponent{
   }
 
   addRow(row){
+    row.rowLabel.cssClass('sub-label')
     this.body.pushChild(row)
     return this
   }

@@ -373,14 +373,14 @@ export class Toolbox extends RXComponent{
       })
     }
 
-    document.onmousemove = (event)=>{
+    document.addEventListener('mousemove', (event)=>{
       this.followMouse(event)
-    }
-    document.onmouseup = (event)=>{
+    })
+    document.addEventListener('mouseup', (event)=>{
       console.log('toolbox mouseup')
       this.endFollowMouse()
       this.endDragFromToolbox()
-    }
+    })
 
 
   }
