@@ -147,7 +147,7 @@ export class RXEditor{
   }
 
   nodeChanged(node){
-    console.log(node)
+    //console.log(node)
     this.canvas.nodeChanged(node)
     this.render()
   }
