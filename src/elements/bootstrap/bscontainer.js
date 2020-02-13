@@ -16,7 +16,7 @@ export class BSContainer extends BSElement{
       label:'Class',
       widget:'OpSelect',
       required:true,
-      group:'basic',
+      group:'layout',
       list:{
         container:'container',
         'container-fluid':'container-fluid',

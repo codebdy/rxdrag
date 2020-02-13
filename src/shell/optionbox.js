@@ -68,8 +68,8 @@ export class OptionBox extends RXComponent{
       return this[group]
     }
 
-    if(group==='basic'){
-      let groupCtrl = new OptionBoxGroup('Basic','basic', this.state)
+    if(group==='layout'){
+      let groupCtrl = new OptionBoxGroup('Layout','layout', this.state)
       this[group] = groupCtrl
       this.pushChild(groupCtrl)
       return groupCtrl
