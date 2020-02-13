@@ -88,8 +88,8 @@ export class OptionBox extends RXComponent{
   }
 
   clear(){
-    if(this['basic']){
-      this['basic'] = ''
+    if(this['layout']){
+      this['layout'] = ''
     }
     this.children.clear()
     this.setInnerHTML('')
