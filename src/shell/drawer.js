@@ -323,8 +323,6 @@ export class OptionBox extends RXComponent{
                         },'', false).cssClass('two-column')
                       )
 
-    let labelRow = new OptionRow().addRowLabel(new OptionRowLabel('Classes'))
-    labelRow.pushChild(new OpLabelsInput())
 
     sizeGroup.addFirstRow(fistRow)
              .addRow(smRow)
@@ -340,11 +338,23 @@ export class OptionBox extends RXComponent{
                         .add(row)
                         .add(classesRow)
                         .add(sizeGroup)
-                        .add(labelRow)
+                        //.add(labelRow)
                   )
-    this.pushChild(new ToolboxGroup('Layout', 'groupLayout', this.state))
+    this.pushChild(new OptionBoxGroup('Layout', 'groupLayout', this.state))
+
+    let classRow = new OptionRow().addRowLabel(new OptionRowLabel('Class'))
+    classRow.pushChild(new OpLabelsInput())
+
+    let styleRow = new OptionRow().addRowLabel(new OptionRowLabel('Style'))
+
+    let attrRow = new OptionRow().addRowLabel(new OptionRowLabel('Attribute'))
+    //styleRow.pushChild(new OpLabelsInput())
     
-    this.pushChild(new ToolboxGroup('CSS','groupCss', this.state))
+    this.pushChild(new OptionBoxGroup('Customize','groupCustomize', this.state)
+                        .add(classRow)
+                        .add(styleRow)
+                        .add(attrRow)
+      )
                           
 
   }
