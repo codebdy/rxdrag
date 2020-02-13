@@ -3,6 +3,7 @@ import {ObjectState} from "../basic/object-state"
 import {OptionRow, OptionRowLabel, OptionRowGroup} from "./controls/option-row"
 import {ButtonGroup, OpButton} from "./controls/buttons"
 import {OpSelect} from "./controls/select"
+import {OpLabelsInput} from "./controls/label"
 
 class Tab{
   constructor(){
@@ -72,7 +73,7 @@ export class Drawer extends RXComponent{
     this.layout.pushChild(this.toolbox)
     this.options.pushChild(new OptionBox)
     //this.options.body.innerHTML= `<div style="padding:20px;">No elements selected</div>`
-    this.options.body.innerHTML= `
+    /*this.options.body.innerHTML= `
       <div class="toolbox">
         <div class="tool-group no-title-top-border">
           <div class="group-title">
@@ -81,7 +82,7 @@ export class Drawer extends RXComponent{
           <div class="group-body">
             <div class="option-row">
                 <div class="option-row-label">Classes</div> 
-                <div class="ctl-multi-select">
+                <div class="op-label-group">
                   <div class="op-label"> 
                     col  
                     <span class="right-icon">×</span>
@@ -101,12 +102,14 @@ export class Drawer extends RXComponent{
                   <div class="op-icon-button"> 
                     +
                   </div>
+                  <div class="label-input">
+                  </div>
                 </div>
             </div>
           </div>
         </div>
       </div>
-    `
+    `*/
 
     this.state.watch('activeDrawerTab', (state)=>{
       this.activeTab(state.activeDrawerTab)
@@ -320,6 +323,9 @@ export class OptionBox extends RXComponent{
                         },'', false).cssClass('two-column')
                       )
 
+    let labelRow = new OptionRow().addRowLabel(new OptionRowLabel('Classes'))
+    labelRow.pushChild(new OpLabelsInput())
+
     sizeGroup.addFirstRow(fistRow)
              .addRow(smRow)
              .addRow(mdRow)
@@ -334,6 +340,7 @@ export class OptionBox extends RXComponent{
                         .add(row)
                         .add(classesRow)
                         .add(sizeGroup)
+                        .add(labelRow)
                   )
     this.pushChild(new ToolboxGroup('Layout', 'groupLayout', this.state))
     

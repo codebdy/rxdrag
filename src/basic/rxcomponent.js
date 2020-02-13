@@ -152,4 +152,18 @@ export class RXComponent{
     return this
   }
 
+  focus(){
+    if(this.$dom){
+      this.$dom.focus()
+    }
+    return this
+  }
+
+  clear(){
+    if(this.$dom){
+      this.$dom.value = ""
+    }
+    return this
+  }
+
 }

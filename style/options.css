@@ -45,7 +45,7 @@
   border-color:transparent transparent  transparent #c2c2c2;
 }
 
-.option-row .button-group, .option-row .label-group{
+.option-row .button-group{
   display:flex; 
   flex-flow:row;
   flex-wrap: wrap;
@@ -156,26 +156,24 @@
   cursor: pointer;
 }
 
-.ctl-multi-select{
+.sub-row-collapse .option-row-group-body{
+  display: none;
+}
+
+.option-row .op-label-group{
   display:flex; 
   flex-flow:row;
   flex-wrap: wrap;
   flex: 1;
-  position: relative;
+}
+.option-row .op-labels-input .label-input{
+  width:100%;
+  margin:1px;
 }
 
-.ctl-multi-select .select-list{
-  position: absolute;
-  width: 100%;
-  margin:0;
-  padding:0;
-  top:100%;
-  background: #424242;
-  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.4); 
-  display: flex;
-  flex-flow: column;
-}
-
-.sub-row-collapse .option-row-group-body{
-  display: none;
+.option-row .op-labels-input .label-input input{
+  background: transparent;
+  color:#fff;
+  border: transparent;
+  outline:transparent;
 }
