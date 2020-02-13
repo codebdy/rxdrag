@@ -38,7 +38,7 @@ export class ToolGroup extends RXComponent{
 export class ToolboxState extends ObjectState{
   constructor(){
     super()
-    this.__activedGroup = 'groupContainer'
+    this.__activedGroup = ''
   }
 
   get activedGroup(){

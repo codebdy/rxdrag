@@ -2,8 +2,6 @@ import {RXComponent} from "../basic/rxcomponent"
 import {ObjectState} from "../basic/object-state"
 import {ToolGroup,ToolboxState} from "./controls/tool-group"
 
-
-
 export class Toolbox extends RXComponent{
   constructor(){
     super()
