@@ -28,6 +28,12 @@ export class BSContainer extends BSElement{
     return new BSContainer
   }
   
+    clone(){
+    let copy = super.clone()
+    copy.$meta.baseClass = this.$meta.baseClass
+    return copy
+  }
+
   toViewModel(){
     let model = super.toViewModel()
     model.label.text = "Container"

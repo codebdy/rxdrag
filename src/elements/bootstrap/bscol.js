@@ -136,6 +136,16 @@ export class BSCol extends BSElement{
     return new BSCol
   }
 
+  clone(){
+    let copy = super.clone()
+    copy.$meta.size.xs = this.$meta.size.xs
+    copy.$meta.size.sm = this.$meta.size.sm
+    copy.$meta.size.md = this.$meta.size.md
+    copy.$meta.size.lg = this.$meta.size.lg
+    copy.$meta.size.xl = this.$meta.size.xl
+    return copy
+  }
+
   toViewModel(){
     let model = super.toViewModel()
     model.label.text = "Column"
