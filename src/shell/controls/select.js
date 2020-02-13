@@ -61,14 +61,19 @@ export class OpSelect extends RXComponent{
       event.stopPropagation()
     })
 
-    document.addEventListener('click', ()=>{
+    document.addEventListener('mousedown', ()=>{
       this.listViewer.hide()
+    })
+
+    this.listViewer.domOn('onmousedown',(event)=>{
+      event.stopPropagation()
     })
 
     this.listViewer.valueChage = (id, value)=>{
       //console.log(id, text)
       this.selected = id
       this.valueViewer.setText(value)
+      this.listViewer.hide()
     }
   }
 
