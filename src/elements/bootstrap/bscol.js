@@ -10,7 +10,14 @@ export class BSCol extends BSElement{
     this.widthDropMargin = 15;
     this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv']
 
-    this.$meta.essentialClasses = ['col'] 
+    this.$meta.baseClass = ['col'] 
+    this.$meta.size = {
+      xs:'col',
+      sm:'',
+      md:'',
+      lg:'',
+      xl:'',
+    }
   }
 
   make(){

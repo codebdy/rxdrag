@@ -8,7 +8,7 @@ export class Node{
     //基础数据，持久化也是这部分数据
     this.$meta = {
       tag:'div',
-      essentialClasses:[]
+      baseClass:[]
     } 
 
     this.seedId()
@@ -347,7 +347,7 @@ export class Node{
   toViewModel(){
     let classList = ['element'];
     classList.push.apply(classList, rxEditor.optionClasses)
-    classList.push.apply(classList, this.$meta.essentialClasses)
+    classList.push.apply(classList, this.$meta.baseClass)
     classList.push.apply(classList, this.state.classList)
 
     let styles = {}
@@ -358,7 +358,7 @@ export class Node{
     Object.assign(styles, this.state.styles)
 
     return {
-      name:'div',
+      name:this.$meta.tag,
       //text:'test',
       styles:styles,
       classList:classList,

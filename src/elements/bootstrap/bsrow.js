@@ -10,7 +10,7 @@ export class BSRow extends BSElement{
     this.heightDropMargin = 15;
     this.acceptedChildren=['BSCol']
 
-    this.$meta.essentialClasses = ['row'] 
+    this.$meta.baseClass = ['row'] 
     this.editMarginStyle.margin = "0"
   }
  
