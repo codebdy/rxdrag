@@ -10,6 +10,8 @@ export class OpLabel extends RXComponent{
     this.textSpan = new RXComponent('span')
     this.textSpan.innerHTML = labelText
     this.pushChild(this.textSpan)
+    this.labelText = labelText
+    this.rightIconClick = (labelText)=>{}
   }
 
   setRightIcon(innerHTML){
@@ -17,6 +19,9 @@ export class OpLabel extends RXComponent{
     iconSpan.cssClass('right-icon')
     iconSpan.innerHTML = innerHTML
     this.pushChild(iconSpan)
+    iconSpan.domOn('onclick', ()=>{
+      this.rightIconClick(this.labelText)
+    })
     return this
   }
 
@@ -56,7 +61,7 @@ export class OpLabelsInput extends RXComponent{
     })
 
     document.addEventListener('mousedown', ()=>{
-        this.hideInput()
+      this.hideInput()
     })
 
     this.inputWraper.domOn('onmousedown',(event)=>{
@@ -74,7 +79,6 @@ export class OpLabelsInput extends RXComponent{
           })
           this.addLabels()
           this.labelGroup.refresh()
-          console.log(this.values,value.split(' '))
         }
         this.hideInput()
       }
@@ -91,7 +95,17 @@ export class OpLabelsInput extends RXComponent{
   addLabels(){
     this.labelGroup.clearChild()
     this.values.forEach((value)=>{
-      this.labelGroup.pushChild(new OpLabel(value).setRightIcon('×'))
+      let label = new OpLabel(value).setRightIcon('×')
+      label.rightIconClick = (labelText)=>{
+        this.removeLabel(labelText)
+      }
+      this.labelGroup.pushChild(label)
     })
+  }
+
+  removeLabel(labelText){
+    this.values.remove(labelText)
+    this.addLabels()
+    this.labelGroup.refresh()
   }
 }
