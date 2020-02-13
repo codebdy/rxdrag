@@ -70,46 +70,9 @@ export class Drawer extends RXComponent{
                     )
                   )
     this.toolbox = new Toolbox()
+    this.optionBox = new OptionBox
     this.layout.pushChild(this.toolbox)
-    this.options.pushChild(new OptionBox)
-    //this.options.body.innerHTML= `<div style="padding:20px;">No elements selected</div>`
-    /*this.options.body.innerHTML= `
-      <div class="toolbox">
-        <div class="tool-group no-title-top-border">
-          <div class="group-title">
-            Basic
-          </div>
-          <div class="group-body">
-            <div class="option-row">
-                <div class="option-row-label">Classes</div> 
-                <div class="op-label-group">
-                  <div class="op-label"> 
-                    col  
-                    <span class="right-icon">×</span>
-                  </div> 
-                  <div class="op-label"> 
-                    col-md-3  
-                    <span class="right-icon">×</span>
-                  </div> 
-                  <div class="op-label"> 
-                    col-sm-5  
-                    <span class="right-icon">×</span>
-                  </div> 
-                  <div class="op-label"> 
-                    col-xl-6  
-                    <span class="right-icon">×</span>
-                  </div> 
-                  <div class="op-icon-button"> 
-                    +
-                  </div>
-                  <div class="label-input">
-                  </div>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `*/
+    this.options.pushChild(this.optionBox)
 
     this.state.watch('activeDrawerTab', (state)=>{
       this.activeTab(state.activeDrawerTab)
@@ -135,11 +98,11 @@ export class Drawer extends RXComponent{
   }
 
   editNode(node){
-    console.log('begin edit:' + node.id)
+    this.optionBox.editNode(node)
   }
 
   cancelEditNode(id){
-    console.log('cancel edit:' + id)
+    this.optionBox.cancelEdit()
   }
 
 }
@@ -211,7 +174,24 @@ export class OptionBox extends RXComponent{
     super()
     this.state = new ToolboxState
     this.cssClass('toolbox')
+    this.noFocusInnerHtml = `<div style="padding:20px;">No elements selected</div>`
+    this.innerHTML = this.noFocusInnerHtml
+    //this.initGroups()
+  }
+
+  editNode(node){
+    this.node = node
+    this.setInnerHTML('')
     this.initGroups()
+    this.children.forEach((child)=>{
+      child.render(this.$dom)
+    })
+  }
+
+  cancelEdit(){
+    this.node = ''
+    this.children.clear()
+    this.setInnerHTML(this.noFocusInnerHtml)
   }
 
   initGroups(){

@@ -80,4 +80,8 @@ export class RXArray extends Array{
     }
   }
 
+  clear(){
+    this.length = 0
+  }
+
 }
