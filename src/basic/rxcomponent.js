@@ -124,6 +124,12 @@ export class RXComponent{
     return this
   }
 
+  refresh(){
+    let parentDomElement = this.$dom.parentNode
+    this.destory()
+    this.render(parentDomElement)
+  }
+
   setInnerHTML(innerHTML){
     this.innerHTML = innerHTML
     if(this.$dom){
@@ -134,6 +140,11 @@ export class RXComponent{
 
   destory(){
     this.$dom.parentNode.removeChild(this.$dom)
+    this.$dom = ''
+  }
+
+  clearChild(){
+    this.children = new RXArray()
   }
 
   show(){

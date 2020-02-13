@@ -35,7 +35,9 @@ export class OpLabelsInput extends RXComponent{
     this.values.push('test2')
     this.values.push('col-md-xx')
     this.labelGroup = new RXComponent().cssClass('op-label-group')
-    this.pushChild(this.labelGroup)
+    this.pushChild(
+        new RXComponent().pushChild(this.labelGroup)
+      )
     this.addButton = new OpIconButton('+')
     this.pushChild(this.addButton)
 
@@ -46,7 +48,7 @@ export class OpLabelsInput extends RXComponent{
     this.inputWraper.hide()
     this.pushChild( this.inputWraper)
 
-    this.showLabels()
+    this.addLabels()
 
     this.addButton.domOn('onclick', ()=>{
       this.inputWraper.show()
@@ -63,9 +65,16 @@ export class OpLabelsInput extends RXComponent{
 
     this.inputWraper.domOn('onkeyup',(event)=>{
       if (event.keyCode == 13) {
-        if(this.inputCtrl.value){
-          this.values.push(this.inputCtrl.value)
-          
+        let value = this.inputCtrl.$dom.value
+        if(value){
+          value.split(' ').forEach((newValue)=>{
+            if(newValue){
+              this.values.add(newValue)
+            }
+          })
+          this.addLabels()
+          this.labelGroup.refresh()
+          console.log(this.values,value.split(' '))
         }
         this.hideInput()
       }
@@ -78,7 +87,9 @@ export class OpLabelsInput extends RXComponent{
 
   }
 
-  showLabels(){
+
+  addLabels(){
+    this.labelGroup.clearChild()
     this.values.forEach((value)=>{
       this.labelGroup.pushChild(new OpLabel(value).setRightIcon('×'))
     })
