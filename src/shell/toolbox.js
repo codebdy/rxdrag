@@ -28,7 +28,6 @@ export class Toolbox extends RXComponent{
       this.followMouse(event)
     })
     document.addEventListener('mouseup', (event)=>{
-      console.log('toolbox mouseup')
       this.endFollowMouse()
       this.endDragFromToolbox()
     })

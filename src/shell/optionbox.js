@@ -50,7 +50,7 @@ export class OptionBox extends RXComponent{
       let field = schema[fieldName]
 
       let input = this.createWidget(this.node.meta, field, fieldName)
-      input.fieldName = fieldName
+      //input.fieldName = fieldName
       input.valueChanged = (value, fdName)=>{
         node.meta[fdName] = value
         this.valueChanged(node)
@@ -83,20 +83,28 @@ export class OptionBox extends RXComponent{
     }
   }
 
-  createWidget(meta, field, fieldName){
-    if(field.widget ==='OpSelect'){
-      return new OpSelect(field.list, meta[fieldName], field.required)
+  createWidget(meta, fieldSchema, fieldName){
+    if(fieldSchema.widget ==='OpSelect'){
+      let opSelect = new OpSelect(fieldSchema.list, fieldName, meta[fieldName], fieldSchema.required)
+      if(fieldSchema.columns === 2){
+        opSelect.cssClass('two-column')
+      }
+      return opSelect;
     }
 
-    if(field.widget ==='OptionRowGroup'){
+    if(fieldSchema.widget ==='OptionRowGroup'){
       let rowGroup = new OptionRowGroup()
       let subMeta = meta[fieldName]
       for(var subFieldName in subMeta){
-        let subSchema = field[subFieldName]
+        let subSchema = fieldSchema[subFieldName]
         let row = new OptionRow()
         row.addRowLabel(new OptionRowLabel(subSchema.label))
-
-        row.pushChild(this.createWidget(subMeta, subSchema, subFieldName))
+        let input = this.createWidget(subMeta, subSchema, subFieldName)
+        input.valueChanged = (value, fdName)=>{
+          subMeta[fdName] = value
+          this.valueChanged(this.node)
+        }
+        row.pushChild(input)
         if(subSchema.isFirst){
           rowGroup.addFirstRow(row)
         }

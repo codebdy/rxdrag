@@ -84,7 +84,6 @@ export class RXEditor{
   }
 
   endDragFromToolbox(){
-    console.log('canvas endDragFromToolbox')
     if(this.draggedNode){
       this.draggedNode.changeToState('normalState')
     }
@@ -148,6 +147,7 @@ export class RXEditor{
   }
 
   nodeChanged(node){
+    console.log(node)
     this.canvas.nodeChanged(node)
     this.render()
   }

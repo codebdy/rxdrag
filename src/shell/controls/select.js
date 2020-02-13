@@ -35,18 +35,22 @@ class SlectedList  extends RXComponent{
 }
 
 export class OpSelect extends RXComponent{
-  constructor(list, selected = '', required = false){
+  constructor(list, fieldName ,selected = '', required = false){
     super()
     this.cssClass('ctl-select')
+    this.fieldName = fieldName
     this.selected = selected
     this.valueViewer = new OpLabel()
-    this.valueChanged = (value)=>{}
+    this.valueChanged = (value, fieldName)=>{}
     var emptyValue = '-Select-'
     if(!required){
       this.clearBtn = new OpIconButton('×')
       this.pushChild(this.clearBtn)
       this.clearBtn.domOn('onclick', ()=>{
         this.valueViewer.setText(emptyValue)
+        if(this.selected){
+          this.valueChanged('', this.fieldName)
+        }
         this.selected = ''
       })
     }
@@ -79,6 +83,8 @@ export class OpSelect extends RXComponent{
       this.valueViewer.setText(value)
       this.listViewer.hide()
     }
+
   }
+
 
 }
