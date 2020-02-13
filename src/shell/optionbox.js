@@ -49,14 +49,16 @@ export class OptionBox extends RXComponent{
     for(var fieldName in schema){
       let field = schema[fieldName]
 
-      let input = this.createWidget(field, fieldName)
+      let input = this.createWidget(this.node.meta, field, fieldName)
       input.fieldName = fieldName
       input.valueChanged = (value, fdName)=>{
         node.meta[fdName] = value
         this.valueChanged(node)
       }
       let row = new OptionRow()
-      row.pushChild(new OptionRowLabel(field.label))
+      if(field.label){
+        row.pushChild(new OptionRowLabel(field.label))
+      }
       row.pushChild(input)
       this.getGroup(field.group).add(row)
     }
@@ -81,9 +83,28 @@ export class OptionBox extends RXComponent{
     }
   }
 
-  createWidget(field, fieldName){
+  createWidget(meta, field, fieldName){
     if(field.widget ==='OpSelect'){
-      return new OpSelect(field.list, this.node.meta[fieldName], field.required)
+      return new OpSelect(field.list, meta[fieldName], field.required)
+    }
+
+    if(field.widget ==='OptionRowGroup'){
+      let rowGroup = new OptionRowGroup()
+      let subMeta = meta[fieldName]
+      for(var subFieldName in subMeta){
+        let subSchema = field[subFieldName]
+        let row = new OptionRow()
+        row.addRowLabel(new OptionRowLabel(subSchema.label))
+
+        row.pushChild(this.createWidget(subMeta, subSchema, subFieldName))
+        if(subSchema.isFirst){
+          rowGroup.addFirstRow(row)
+        }
+        else{
+          rowGroup.addRow(row)
+        }
+      }
+      return rowGroup
     }
   }
 

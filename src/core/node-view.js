@@ -54,7 +54,9 @@ export class NodeView{
       }
 
       model.classList.forEach((className)=>{
-        domElement.classList.add(className)
+        if(className){
+          domElement.classList.add(className)
+        }
       })
       
     }
