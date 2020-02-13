@@ -56,6 +56,10 @@ export class RXEditorCommandProxy{
       case 'changeCanvasState':
         this.serveForRXEditor.changeCanvasState(message.state)
         break;
+
+      case 'nodeChanged':
+        this.serveForRXEditor.nodeChanged(message.node)
+        break;
     }
   }
 

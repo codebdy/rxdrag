@@ -40,6 +40,7 @@ export class OpSelect extends RXComponent{
     this.cssClass('ctl-select')
     this.selected = selected
     this.valueViewer = new OpLabel()
+    this.valueChanged = (value)=>{}
     var emptyValue = '-Select-'
     if(!required){
       this.clearBtn = new OpIconButton('×')
@@ -71,6 +72,9 @@ export class OpSelect extends RXComponent{
 
     this.listViewer.valueChage = (id, value)=>{
       //console.log(id, text)
+      if(id !== this.selected){
+        this.valueChanged(id, this.fieldName)
+      }
       this.selected = id
       this.valueViewer.setText(value)
       this.listViewer.hide()

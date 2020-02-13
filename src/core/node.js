@@ -396,4 +396,15 @@ export class Node{
       }
     }
   }
+
+  nodeChanged(node){
+    if(this.$id === node.id){
+      this.$meta = node.meta
+      return;
+    }
+
+    this.children.forEach((child)=>{
+      child.nodeChanged(node)
+    })
+  }
 }

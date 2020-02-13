@@ -129,6 +129,10 @@ export class RXEditorFM{
         this.commandProxy.endDragFromToolbox()
       }
     })
+
+    this.drawer.optionBox.valueChanged = (node)=>{
+      this.commandProxy.nodeChanged(node)
+    }
   }
 
   renderRight(){

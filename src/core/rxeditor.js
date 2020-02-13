@@ -146,4 +146,9 @@ export class RXEditor{
     this.state.showOutline = state.showOutline
     this.state.showLabel = state.showLabel
   }
+
+  nodeChanged(node){
+    this.canvas.nodeChanged(node)
+    this.render()
+  }
 }

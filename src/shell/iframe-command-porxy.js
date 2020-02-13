@@ -32,6 +32,13 @@ export class IFrameCommandProxy{
     })
   }
 
+  nodeChanged(node){
+    this.sendMessageToRXEditor({
+      name:'nodeChanged',
+      node:node
+    })
+  }
+
   handleMessage(message){
     switch (message.name) {
       case 'rxeditorReady':

@@ -23,7 +23,7 @@ export class OptionBox extends RXComponent{
     this.cssClass('toolbox')
     this.noFocusInnerHtml = `<div style="padding:20px;">No elements selected</div>`
     this.innerHTML = this.noFocusInnerHtml
-    //this.initGroups()
+    this.valueChanged = (node)=>{}
   }
 
   editNode(node){
@@ -50,6 +50,11 @@ export class OptionBox extends RXComponent{
       let field = schema[fieldName]
 
       let input = this.createWidget(field, fieldName)
+      input.fieldName = fieldName
+      input.valueChanged = (value, fdName)=>{
+        node.meta[fdName] = value
+        this.valueChanged(node)
+      }
       let row = new OptionRow()
       row.pushChild(new OptionRowLabel(field.label))
       row.pushChild(input)
@@ -78,7 +83,7 @@ export class OptionBox extends RXComponent{
 
   createWidget(field, fieldName){
     if(field.widget ==='OpSelect'){
-      return new OpSelect(field.list, this.node[fieldName], field.required)
+      return new OpSelect(field.list, this.node.meta[fieldName], field.required)
     }
   }
 
