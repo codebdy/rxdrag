@@ -145,11 +145,10 @@ export class RXEditorFM{
   }
 
   focusNode(node){
-    console.log('focus')
-    //console.log(node)
+    this.drawer.editNode(node)
   }
 
-  unFocusNode($id){
-    console.log('unFocus')
+  unFocusNode(id){
+    this.drawer.cancelEditNode(id)
   }
 }

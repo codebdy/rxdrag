@@ -134,6 +134,14 @@ export class Drawer extends RXComponent{
     this[tabId].active()
   }
 
+  editNode(node){
+    console.log('begin edit:' + node.id)
+  }
+
+  cancelEditNode(id){
+    console.log('cancel edit:' + id)
+  }
+
 }
 
 class ToolboxState extends ObjectState{

@@ -132,7 +132,7 @@ export class RXEditor{
   }
 
   nodeStateChanged(node, oldState, newState){
-    if(newState === node.focusState && newState.name ==='focusState'){
+    if(newState === node.focusState && node.focusState !== node.normalState){
       this.commandProxy.focusNode(node)
     }
     if(oldState === node.focusState && newState !== node.focusState){
