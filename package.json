@@ -1,6 +1,8 @@
 {
   "name": "rxeditor",
-  "version": "1.0.0",
+  "version": "0.0.5",
+  "description": "Bootstrap Visual Editor",
+  "license": "MIT",
   "main": "webpack.config.js",
   "directories": {
     "test": "test"

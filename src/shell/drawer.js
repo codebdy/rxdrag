@@ -182,7 +182,7 @@ export class OptionBox extends RXComponent{
   editNode(node){
     this.node = node
     this.setInnerHTML('')
-    this.initGroups()
+    this.showContent(node)
     this.children.forEach((child)=>{
       child.render(this.$dom)
     })
@@ -194,7 +194,7 @@ export class OptionBox extends RXComponent{
     this.setInnerHTML(this.noFocusInnerHtml)
   }
 
-  initGroups(){
+  showContent(node){
 //------heading
     let row = new OptionRow()
     row.pushChild(new OptionRowLabel('Heading'))
