@@ -27,9 +27,10 @@ export class OptionBox extends RXComponent{
   }
 
   editNode(node){
+    this.clear()
     this.node = node
-    this.setInnerHTML('')
     this.showContent(node)
+    //this.showContent_old(node)
     this.children.forEach((child)=>{
       child.render(this.$dom)
     })
@@ -42,6 +43,54 @@ export class OptionBox extends RXComponent{
   }
 
   showContent(node){
+    var meta =node.meta
+    var schema = node.schema
+
+    for(var fieldName in schema){
+      let field = schema[fieldName]
+
+      let input = this.createWidget(field, fieldName)
+      let row = new OptionRow()
+      row.pushChild(new OptionRowLabel(field.label))
+      row.pushChild(input)
+      this.getGroup(field.group).add(row)
+    }
+
+    if(this.children.length > 0){
+      this.children.first()
+                   .cssClass('no-title-top-border')
+                   .active()
+    }
+  }
+
+  getGroup(group){
+    if(this[group]){
+      return this[group]
+    }
+
+    if(group==='basic'){
+      let groupCtrl = new OptionBoxGroup('Basic','basic', this.state)
+      this[group] = groupCtrl
+      this.pushChild(groupCtrl)
+      return groupCtrl
+    }
+  }
+
+  createWidget(field, fieldName){
+    if(field.widget ==='OpSelect'){
+      return new OpSelect(field.list, this.node[fieldName], field.required)
+    }
+  }
+
+  clear(){
+    if(this['basic']){
+      this['basic'] = ''
+    }
+    this.children.clear()
+    this.setInnerHTML('')
+  }
+
+  showContent_old(node){
 //------heading
     let row = new OptionRow()
     row.pushChild(new OptionRowLabel('Heading'))

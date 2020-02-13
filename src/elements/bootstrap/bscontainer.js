@@ -10,7 +10,18 @@ export class BSContainer extends BSElement{
     this.heightDropMargin = 15;
     this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv']
 
-    this.$meta.baseClass = ['container'] 
+    this.$meta.baseClass = 'container'
+
+    this.$schema.baseClass={
+      label:'Class',
+      widget:'OpSelect',
+      required:true,
+      group:'basic',
+      list:{
+        container:'container',
+        'container-fluid':'container-fluid',
+      }
+    } 
   }
 
   make(){
@@ -20,6 +31,7 @@ export class BSContainer extends BSElement{
   toViewModel(){
     let model = super.toViewModel()
     model.label.text = "Container"
+    model.classList.push(this.$meta.baseClass)
     return model
   }
 }

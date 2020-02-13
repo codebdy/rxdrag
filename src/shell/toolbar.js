@@ -32,7 +32,12 @@ export class Toolbar extends RXComponent{
     this.barCenter.cssClass('center')//#f92472
                    .innerHTML = `
                       <span style="color:#75b325; font-size:22px;font-weight:900;font-family: 'Handlee', cursive;">
-                        RXEditor</span>`
+                        RXEditor</span>
+
+                      <div>
+                      </div>
+
+                  `
     
     this.pushChild(this.barCenter)
 

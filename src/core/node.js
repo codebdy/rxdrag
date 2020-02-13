@@ -8,8 +8,10 @@ export class Node{
     //基础数据，持久化也是这部分数据
     this.$meta = {
       tag:'div',
-      baseClass:[]
-    } 
+    }
+    
+    //Schema 信息，用于构建Option编辑部件
+    this.$schema = {} 
 
     this.seedId()
     this.toolboxInfo = {}
@@ -347,7 +349,7 @@ export class Node{
   toViewModel(){
     let classList = ['element'];
     classList.push.apply(classList, rxEditor.optionClasses)
-    classList.push.apply(classList, this.$meta.baseClass)
+    //classList.push.apply(classList, this.$meta.baseClass)
     classList.push.apply(classList, this.state.classList)
 
     let styles = {}

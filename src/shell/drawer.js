@@ -29,7 +29,7 @@ class Tab{
 class DrawerState extends ObjectState{
   constructor(){
     super()
-    this.__activeDrawerTab = 'options'
+    this.__activeDrawerTab = 'layout'
   }
 
   get activeDrawerTab(){
@@ -75,7 +75,7 @@ export class Drawer extends RXComponent{
     this.state.watch('activeDrawerTab', (state)=>{
       this.activeTab(state.activeDrawerTab)
     })
-    this.activeTab('options')
+    this.activeTab('layout')
   }
 
   render(parentElement){

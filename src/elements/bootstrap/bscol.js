@@ -27,6 +27,7 @@ export class BSCol extends BSElement{
   toViewModel(){
     let model = super.toViewModel()
     model.label.text = "Column"
+    model.classList.push.apply(model.classList, this.$meta.baseClass)
     //model.attributes.contentEditable = false
     return model
   }

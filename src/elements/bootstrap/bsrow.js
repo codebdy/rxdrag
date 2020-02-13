@@ -10,7 +10,7 @@ export class BSRow extends BSElement{
     this.heightDropMargin = 15;
     this.acceptedChildren=['BSCol']
 
-    this.$meta.baseClass = ['row'] 
+    this.$meta.baseClass = 'row' 
     this.editMarginStyle.margin = "0"
   }
  
@@ -21,6 +21,7 @@ export class BSRow extends BSElement{
   toViewModel(){
     let model = super.toViewModel()
     model.label.text = "Row"
+    model.classList.push(this.$meta.baseClass)
     return model
   }
 }
