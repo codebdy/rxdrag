@@ -75,6 +75,20 @@ export class RXComponent{
     return this
   }
 
+  tongle(cssClass){
+    if(this.classList.contains(cssClass)){
+     this.classList.remove(cssClass)
+      if(this.$dom){
+        this.$dom.classList.remove(cssClass)
+      }
+    }
+    else{
+     this.classList.add(cssClass)
+      if(this.$dom){
+        this.$dom.classList.add(cssClass)
+      }
+    }
+  }
   //setInnerHTML(innerHTML){
   //  this.innerHTML = innerHTML
   //  return this

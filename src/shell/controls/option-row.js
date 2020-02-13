@@ -24,17 +24,25 @@ export class OptionRowLabel extends RXComponent{
 }
 
 export class OptionRowGroup extends RXComponent{
-  constructor(){
+  constructor(isShowSub = false){
     super()
     this.cssClass('option-row-group')
     this.body = new OptionRowGroupBody
     this.pushChild(this.body)
+    if(!isShowSub){
+      this.cssClass('sub-row-collapse')
+    }
   }
 
   addFirstRow(row){
     row.rowLabel.cssClass('dropdown')
     this.firstRow = row
     this.unshiftChild(row)
+
+    row.rowLabel.domOn('onclick',()=>{
+      this.tongle('sub-row-collapse')
+    })
+
     return this
   }
 
