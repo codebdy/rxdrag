@@ -8,7 +8,7 @@ export class BSRow extends BSElement{
     this.toolboxInfo.elementName = "Row"
     this.className = 'BSRow'
     this.heightDropMargin = 15;
-    this.acceptedChildren=['BSCol']
+    this.acceptedChildren=['BSCol','BSW100']
 
     this.$meta.baseClass = 'row' 
     this.editMarginStyle.margin = "0"

@@ -10,6 +10,7 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('bootstrap.container')
   rxEditorFM.assemble('bootstrap.row')
   rxEditorFM.assemble('bootstrap.column')
+  rxEditorFM.assemble('bootstrap.w100')
 
   return rxEditorFM
 }

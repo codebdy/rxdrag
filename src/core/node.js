@@ -11,14 +11,13 @@ export class Node{
     }
     
     //Schema 信息，用于构建Option编辑部件
-    this.$schema = {} 
+    this.$schema = {} //备忘：Flexbox: flex container, flex item
 
     this.seedId()
     this.toolboxInfo = {}
   	this.children=new RXArray
   	this.view = new NodeView()
     this.dropMargin = 30;
-    this.padding = '30px'
     this.mouseFollowerWidth = '200px'
 
     //空表示所有都接受，空数组表示都不接受
