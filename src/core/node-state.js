@@ -105,6 +105,7 @@ export class CanDropState extends NodeState{
 export class NormalState extends CanDropState{
   constructor(node) {
     super(node)
+    this.name = "normalState"
     this.onMouseover = (event)=>{
       if(!rxEditor.draggedNode){
         rxEditor.clearActiveStates()
@@ -117,6 +118,7 @@ export class NormalState extends CanDropState{
 export class DragoverState extends CanDropState{
   constructor(node) {
     super(node)
+    this.name = "dragoverState"
     this.classList.push('dragover')
     this.onMouseout = ()=>{
       //console.log('mouse out',this.node.constructor.name)
@@ -128,6 +130,7 @@ export class DragoverState extends CanDropState{
 export class ActiveState extends CanDropState{
   constructor(node) {
     super(node)
+    this.name = "activeState"
     this.classList.push('actived')
     this.onMouseout = ()=>{
       //console.log('mouse out')
@@ -145,6 +148,7 @@ export class ActiveState extends CanDropState{
 export class FocusState extends NodeState{
   constructor(node) {
     super(node)
+    this.name = "focusState"
     this.classList.push('focused')
 
     this.onBegindrag = (event)=>{
@@ -173,6 +177,7 @@ export class DisableState extends NodeState{
 export class DraggedState extends DisableState{
   constructor(node) {
     super(node)
+    this.name = "draggedState"
     this.classList.push('dragged')
     this.onMousemove = (event)=>{
       if(this.node.parent){

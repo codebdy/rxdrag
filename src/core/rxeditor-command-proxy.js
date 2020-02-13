@@ -5,7 +5,23 @@ export class RXEditorCommandProxy{
     });
 
     this.focusNode = (node)=>{
-      console.log('focused node:' + node.$id)
+      this.sendMessage({
+        name: 'focusNode',
+        node:{
+          id:node.$id,
+          state:node.state.name,
+          meta:node.$meta,
+        }
+      })
+    }
+
+    this.unFocusNode = (node)=>{
+      this.sendMessage({
+        name: 'unFocusNode',
+        node:{
+          id:node.$id,
+        }
+      })
     }
   }
 

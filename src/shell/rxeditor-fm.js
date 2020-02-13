@@ -143,4 +143,13 @@ export class RXEditorFM{
   endFollowMouse(){
     this.drawer.toolbox.endFollowMouse()
   }
+
+  focusNode(node){
+    console.log('focus')
+    //console.log(node)
+  }
+
+  unFocusNode($id){
+    console.log('unFocus')
+  }
 }

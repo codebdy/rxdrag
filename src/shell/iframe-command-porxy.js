@@ -44,6 +44,12 @@ export class IFrameCommandProxy{
       case 'takeOverDraggingByWorkspace':
         this.serveForShell.endFollowMouse()
         break;
+      case 'focusNode':
+        this.serveForShell.focusNode(message.node)
+        break;
+      case 'unFocusNode':
+        this.serveForShell.unFocusNode(message.id)
+        break;
     }
   }
 
