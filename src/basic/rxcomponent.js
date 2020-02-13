@@ -41,6 +41,11 @@ export class RXComponent{
     return this
   }
 
+  unshiftChild(child){
+    this.children.unshift(child)
+    return this
+  }
+
   cssClass(className){
     this.classList.add(className)
     return this
@@ -118,9 +123,9 @@ export class RXComponent{
   }
 
   show(){
-    this.style.display = 'block'
+    this.style.display = 'flex'
     if(this.$dom){
-      this.$dom.style.display = 'block'
+      this.$dom.style.display = 'flex'
     }
     return this
   }

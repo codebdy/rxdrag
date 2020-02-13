@@ -1,6 +1,6 @@
 import {RXComponent} from "../basic/rxcomponent"
 import {ObjectState} from "../basic/object-state"
-import {OptionRow, OptionRowLabel} from "./controls/option-row"
+import {OptionRow, OptionRowLabel, OptionRowGroup} from "./controls/option-row"
 import {ButtonGroup, OpButton} from "./controls/buttons"
 import {OpSelect} from "./controls/select"
 
@@ -79,21 +79,6 @@ export class Drawer extends RXComponent{
             Basic
           </div>
           <div class="group-body">
-            <div class="option-row">
-              <div class="option-row-label">Classes</div> 
-              
-                <div class="ctl-select">
-                  <div class="op-label"> 
-                    <span>container-fluid </span>
-                    <span class="right-icon">▾</span>
-                  </div>
-                  <ul class="select-list">
-                    <li>container</li>
-                    <li>container-fluid</li>
-                  </ul>
-                </div> 
-              
-            </div>
             <div class="option-row-group">
               <div class="option-row">
                 <div class="option-row-label dropdown">Size</div> 
@@ -113,63 +98,66 @@ export class Drawer extends RXComponent{
                   </div> 
                 </div>
               </div>
-              <div class="option-row">
-                <div class="option-row-label sub-label">SM</div> 
-                <div class="label-group">
-                  <div class="op-icon-button"> 
-                    ×
-                  </div>
-                  <div class="ctl-select">
-                    <div class="op-label"> 
-                      col-sm-3
-                      <span class="right-icon">▾</span>
+              <div class="option-row-group-body">
+                <div class="option-row">
+                  <div class="option-row-label sub-label">SM</div> 
+                  <div class="label-group">
+                    <div class="op-icon-button"> 
+                      ×
                     </div>
-                  </div> 
+                    <div class="ctl-select">
+                      <div class="op-label"> 
+                        col-sm-3
+                        <span class="right-icon">▾</span>
+                      </div>
+                    </div> 
+                  </div>
+                </div>
+                <div class="option-row">
+                  <div class="option-row-label sub-label">MD</div> 
+                  <div class="label-group">
+                    <div class="op-icon-button"> 
+                      ×
+                    </div>
+                    <div class="ctl-select">
+                      <div class="op-label"> 
+                        col-md-5
+                        <span class="right-icon">▾</span>
+                      </div>
+                    </div> 
+                  </div>
+                </div>
+                <div class="option-row">
+                  <div class="option-row-label sub-label">LG</div> 
+                  <div class="label-group">
+                    <div class="op-icon-button"> 
+                      ×
+                    </div>
+                    <div class="ctl-select">
+                      <div class="op-label"> 
+                        col-lg-5
+                        <span class="right-icon">▾</span>
+                      </div>
+                    </div> 
+                  </div>
+                </div>
+                <div class="option-row">
+                  <div class="option-row-label sub-label">XL</div> 
+                  <div class="label-group">
+                    <div class="op-icon-button"> 
+                      ×
+                    </div>
+                    <div class="ctl-select">
+                      <div class="op-label"> 
+                        col-xl-5
+                        <span class="right-icon">▾</span>
+                      </div>
+                    </div> 
+                  </div>
                 </div>
               </div>
-              <div class="option-row">
-                <div class="option-row-label sub-label">MD</div> 
-                <div class="label-group">
-                  <div class="op-icon-button"> 
-                    ×
-                  </div>
-                  <div class="ctl-select">
-                    <div class="op-label"> 
-                      col-md-5
-                      <span class="right-icon">▾</span>
-                    </div>
-                  </div> 
-                </div>
-              </div>
-              <div class="option-row">
-                <div class="option-row-label sub-label">LG</div> 
-                <div class="label-group">
-                  <div class="op-icon-button"> 
-                    ×
-                  </div>
-                  <div class="ctl-select">
-                    <div class="op-label"> 
-                      col-lg-5
-                      <span class="right-icon">▾</span>
-                    </div>
-                  </div> 
-                </div>
-              </div>
-              <div class="option-row">
-                <div class="option-row-label sub-label">XL</div> 
-                <div class="label-group">
-                  <div class="op-icon-button"> 
-                    ×
-                  </div>
-                  <div class="ctl-select">
-                    <div class="op-label"> 
-                      col-xl-5
-                      <span class="right-icon">▾</span>
-                    </div>
-                  </div> 
-                </div>
-              </div>
-              <div class="option-row">
+            </div>
+            <div class="option-row">
                 <div class="option-row-label">Classes</div> 
                 <div class="ctl-multi-select">
                   <div class="op-label"> 
@@ -200,18 +188,7 @@ export class Drawer extends RXComponent{
                     </div>
                   </div> 
                 </div>
-              </div>
             </div>
-            <div>
-              <div> <i class="fa fa-square-o"></i> col</div>
-              <div> <i class="fa fa-square-o"></i> H1</div>
-              <div> <i class="fa fa-square-o"></i> H2</div>
-            </div>
-          </div>
-        </div>
-        <div class="tool-group group-collapse">
-          <div class="group-title">Layout</div>
-          <div class="group-body">
           </div>
         </div>
       </div>
@@ -313,24 +290,8 @@ export class OptionBox extends RXComponent{
   }
 
   initGroups(){
+//------heading
     let row = new OptionRow()
-    let classesRow = new OptionRow()
-    classesRow.pushChild(new OptionRowLabel('Classes'))
-    classesRow.pushChild(new OpSelect({
-                          container:'container',
-                          'container-fluid':'container-fluid'
-                        },'', true))
-
-    this.pushChild(new OptionBoxGroup('Basic','groupBasic', this.state)
-                        .cssClass('no-title-top-border')
-                        .active()
-                        .add(row)
-                        .add(classesRow)
-                  )
-    this.pushChild(new ToolboxGroup('Layout', 'groupLayout', this.state))
-    
-    this.pushChild(new ToolboxGroup('CSS','groupLayout', this.state))
-                          
     row.pushChild(new OptionRowLabel('Heading'))
     row.pushChild(new ButtonGroup()
                       .pushChild(new OpButton('H1', 'h1'))
@@ -341,6 +302,50 @@ export class OptionBox extends RXComponent{
                       .pushChild(new OpButton('H6', 'h6'))
                       .active('h2')
       )
+//-------classes
+    let classesRow = new OptionRow()
+    classesRow.addRowLabel(new OptionRowLabel('Classes'))
+    classesRow.pushChild(new OpSelect({
+                          container:'container',
+                          'container-fluid':'container-fluid'
+                        },'', true))
+
+//----------Size
+    let sizeGroup = new OptionRowGroup()
+    let fistRow = new OptionRow()
+    fistRow.addRowLabel(new OptionRowLabel('Size'))
+    fistRow.pushChild(new OpSelect({
+                          'col-1':'col-1',
+                          'col-2':'col-2',
+                          'col-3':'col-3',
+                          'col-4':'col-4',
+                          'col-5':'col-5',
+                          'col-6':'col-6',
+                          'col-7':'col-7',
+                          'col-8':'col-8',
+                          'col-9':'col-9',
+                          'col-10':'col-10',
+                          'col-11':'col-11',
+                          'col-12':'col-md-12',
+                          col:'col',
+                        },'', false).cssClass('two-column')
+                      )
+    sizeGroup.addFirstRow(fistRow)
+
+
+
+    this.pushChild(new OptionBoxGroup('Basic','groupBasic', this.state)
+                        .cssClass('no-title-top-border')
+                        .active()
+                        .add(row)
+                        .add(classesRow)
+                        .add(sizeGroup)
+                  )
+    this.pushChild(new ToolboxGroup('Layout', 'groupLayout', this.state))
+    
+    this.pushChild(new ToolboxGroup('CSS','groupLayout', this.state))
+                          
+
   }
 
 }

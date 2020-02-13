@@ -61,9 +61,9 @@ export class OpSelect extends RXComponent{
       event.stopPropagation()
     })
 
-    document.onclick = ()=>{
+    document.addEventListener('click', ()=>{
       this.listViewer.hide()
-    }
+    })
 
     this.listViewer.valueChage = (id, value)=>{
       //console.log(id, text)

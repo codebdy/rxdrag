@@ -89,10 +89,12 @@
 }
 
 .option-row .select-list{
+  display: flex;
+  flex-flow: column;
   position: absolute;
   top:26px;
   margin:0;
-  padding:0;
+  padding:10px;
   list-style: none;
   background: #424242;
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.4); 
@@ -101,11 +103,25 @@
   white-space:nowrap;
 }
 
+.option-row .two-column .select-list{
+  flex-flow: row;
+  flex-wrap: wrap;
+  width: 200px;
+  right:-50%;
+}
+
 .option-row .select-list li{
+  display: flex;
+  flex-wrap: nowrap;
   height: 26px;
+  padding:0 10px;
   line-height: 100%;
   cursor: pointer;
-  padding:5px 10px;
+  align-items: center;
+}
+
+.option-row .two-column .select-list li{
+  width: 50%;
 }
 
 .option-row .select-list li:hover{
