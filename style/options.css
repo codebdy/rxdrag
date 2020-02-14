@@ -17,9 +17,14 @@
   user-select: none;
 }
 
+
 .option-row .option-row-label.sub-label{
   display: flex;
   justify-content: center;
+}
+
+.no-default .option-row-label{
+  color:#7c9161;
 }
 
 .option-row .option-row-label.dropdown{

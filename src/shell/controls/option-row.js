@@ -14,6 +14,18 @@ export class OptionRow extends RXComponent{
     return this
   }
 
+  addInput(input){
+    this.pushChild(input)
+    input.listenDifferentFromDefault(()=>{
+      this.cssClass('no-default')
+    })
+
+    input.listenSameToDefault(()=>{
+      this.removeCssClass('no-default')
+    })
+    return this
+  }
+
 }
 
 export class OptionRowLabel extends RXComponent{

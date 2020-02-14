@@ -25,6 +25,7 @@ export class BSContainer extends BSElement{
         group:'containerOptions',
         onValue:'container-fluid',
         offValue:'container',
+        defaultValue:'container',
       }
     } 
   }

@@ -16,7 +16,7 @@ class SelectItem extends RXComponent{
   }
 }
 
-class SlectedList  extends RXComponent{
+class SelectedList  extends RXComponent{
   constructor(list = {}){
     super('ul')
     this.cssClass('select-list')
@@ -43,7 +43,7 @@ export class OpSelect extends OpInput{
     //this.value = value
     this.valueViewer = new OpLabel()
     //this.valueChanged = (value, fieldName)=>{}
-    var emptyValue = '-Select-'
+    var emptyValue = 'Default'
     if(!required){
       this.clearBtn = new OpIconButton('×')
       this.pushChild(this.clearBtn)
@@ -57,7 +57,7 @@ export class OpSelect extends OpInput{
     }
     this.pushChild(this.valueViewer)
 
-    this.listViewer = new SlectedList(list, required)
+    this.listViewer = new SelectedList(list, required)
     this.valueViewer.setText(value?list[value]:emptyValue)
     this.valueViewer.setRightIcon('▾')
     this.pushChild(this.listViewer)

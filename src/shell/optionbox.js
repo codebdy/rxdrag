@@ -59,9 +59,11 @@ export class OptionBox extends RXComponent{
       })
       let row = new OptionRow()
       if(field.label){
-        row.pushChild(new OptionRowLabel(field.label))
+        row.addRowLabel(new OptionRowLabel(field.label))
       }
-      row.pushChild(input)
+      row.addInput(input)
+      this.setInputDefaultValue(input, field)
+
       this.getGroup(field.group).add(row)
     }
 
@@ -115,7 +117,8 @@ export class OptionBox extends RXComponent{
           subMeta[fdName] = value
           this.valueChanged(this.node)
         })
-        row.pushChild(input)
+        row.addInput(input)
+        this.setInputDefaultValue(input, subSchema)
         if(subSchema.isFirst){
           rowGroup.addFirstRow(row)
         }
@@ -124,6 +127,15 @@ export class OptionBox extends RXComponent{
         }
       }
       return rowGroup
+    }
+  }
+
+  setInputDefaultValue(input, schema){
+    if(schema.defaultValue){
+      input.setDefaultValue(schema.defaultValue)
+    }
+    else{
+      input.setDefaultValue('')
     }
   }
 
