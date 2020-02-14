@@ -18,7 +18,8 @@
 }
 
 .option-row .option-row-label.sub-label{
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .option-row .option-row-label.dropdown{
