@@ -21,6 +21,7 @@ export class Canvas extends Node{
 
   toViewModel(){
     let model = super.toViewModel()
+    model.name = 'div'
     model.styles.width = "100%"
     model.styles['min-height'] = "calc(100vh)"
     model.styles.cursor = 'default'

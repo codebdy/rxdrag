@@ -10,22 +10,10 @@ export class BSW100 extends RXElement{
     this.editMarginStyle.padding = '10px'
     this.widthDropMargin = 15;
     this.acceptedChildren=[]
-
-
   }
 
   make(){
     return new BSW100
-  }
-
-  clone(){
-    let copy = super.clone()
-    copy.$meta.size.xs = this.$meta.size.xs
-    copy.$meta.size.sm = this.$meta.size.sm
-    copy.$meta.size.md = this.$meta.size.md
-    copy.$meta.size.lg = this.$meta.size.lg
-    copy.$meta.size.xl = this.$meta.size.xl
-    return copy
   }
 
   toViewModel(){

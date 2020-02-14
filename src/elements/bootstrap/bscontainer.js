@@ -17,17 +17,16 @@ export class BSContainer extends RXElement{
         label:'Container Options'
       }
     }
-    this.$schema.fields={
-      baseClass:{
-        label:'Fluid',
-        widget:'OpSwitch',
-        required:true,
-        group:'containerOptions',
-        onValue:'container-fluid',
-        offValue:'container',
-        defaultValue:'container',
-      }
-    } 
+    this.$schema.fields.baseClass = {
+      label:'Fluid',
+      widget:'OpSwitch',
+      required:true,
+      group:'containerOptions',
+      onValue:'container-fluid',
+      offValue:'container',
+      defaultValue:'container',
+    }
+     
   }
 
   make(){

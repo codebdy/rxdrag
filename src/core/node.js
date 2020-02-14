@@ -5,14 +5,6 @@ import {NormalState, ActiveState, FocusState, DragoverState, DisableState, Dragg
 
 export class Node{
   constructor() {
-    //基础数据，持久化也是这部分数据
-    this.$meta = {
-      tag:'div',
-    }
-    
-    //Schema 信息，用于构建Option编辑部件
-    this.$schema = {} //备忘：Flexbox: flex container, flex item
-
     this.seedId()
     this.toolboxInfo = {}
   	this.children=new RXArray
@@ -360,7 +352,6 @@ export class Node{
     Object.assign(styles, this.state.styles)
 
     return {
-      name:this.$meta.tag,
       //text:'test',
       styles:styles,
       classList:classList,
