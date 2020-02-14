@@ -39,22 +39,8 @@ export class BSCol extends RXElement{
 
     this.$schema.fields.order = colOrder
 
-    super.addMarginAuto()
-    super.addMarginAll()
-    super.addMarginH()
-    super.addMarginV()
-    super.addMarginTop()
-    super.addMarginBottom()
-    super.addMarginLeft()
-    super.addMarginRight()
-
-    super.addPaddingAll()
-    super.addPaddingH()
-    super.addPaddingV()
-    super.addPaddingTop()
-    super.addPaddingBottom()
-    super.addPaddingLeft()
-    super.addPaddingRight()
+    super.addMargin()
+    super.addPadding()
   }
 
   make(){

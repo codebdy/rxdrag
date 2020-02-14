@@ -28,8 +28,13 @@ export class RXElement extends Node{
     //Schema 信息，用于构建Option编辑部件
     this.$schema = {
       fields:{}
-    } //备忘：Flexbox: flex container, flex item
-
+    } 
+    //备忘：Flexbox: flex container, flex item
+    //Extra:显示，可见性，浮动，图片替换，内容溢出，定位，
+    //      inline、inline-block、inline-table、和 table 元素的垂直对齐
+    //      尺寸
+    //Typography：字体（暂缓），颜色，对齐
+    //Decorations：边框、颜色、阴影，透明度
     this.groups = {
       'margin':{
         label:'Margin',
@@ -161,6 +166,28 @@ export class RXElement extends Node{
     this.$schema.fields.paddingRight = paddingRight
 
     this.addedClassFeilds.push('paddingRight')
+  }
+
+  addMargin(){
+    this.addMarginAuto()
+    this.addMarginAll()
+    this.addMarginH()
+    this.addMarginV()
+    this.addMarginTop()
+    this.addMarginBottom()
+    this.addMarginLeft()
+    this.addMarginRight()
+
+  }
+
+  addPadding(){
+    this.addPaddingAll()
+    this.addPaddingH()
+    this.addPaddingV()
+    this.addPaddingTop()
+    this.addPaddingBottom()
+    this.addPaddingLeft()
+    this.addPaddingRight()
   }
 
   clone(){
