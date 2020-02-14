@@ -19,6 +19,14 @@ export class BSCol extends BSElement{
       xl:'',
     }
 
+    this.$meta.offset = {
+      xs:'',
+      sm:'',
+      md:'',
+      lg:'',
+      xl:'',
+    }
+
     this.$schema.groups = {
       'columnOptions':{
         label:'Column Options'
@@ -140,7 +148,97 @@ export class BSCol extends BSElement{
           },
         },
         //---------------------
-      }//--width
+      },//--width
+      offset:{
+        widget:'OptionRowGroup',
+        group:'columnOptions',
+        xs:{
+          label:'Offset',
+          isFirst:true,
+          widget:'OpSelect',
+          columns:2,
+          list:{
+            'offset-1':'1',
+            'offset-2':'2',
+            'offset-3':'3',
+            'offset-4':'4',
+            'offset-5':'5',
+            'offset-6':'6',
+            'offset-7':'7',
+            'offset-8':'8',
+            'offset-9':'9',
+          },
+        },
+        //---------------------
+        sm:{
+          label:'SM',
+          widget:'OpSelect',
+          columns:2,
+          list:{
+            'offset-sm-1':'1',
+            'offset-sm-2':'2',
+            'offset-sm-3':'3',
+            'offset-sm-4':'4',
+            'offset-sm-5':'5',
+            'offset-sm-6':'6',
+            'offset-sm-7':'7',
+            'offset-sm-8':'8',
+            'offset-sm-9':'9',
+          },
+        },
+        //---------------------
+        md:{
+          label:'MD',
+          widget:'OpSelect',
+          columns:2,
+          list:{
+            'offset-md-1':'1',
+            'offset-md-2':'2',
+            'offset-md-3':'3',
+            'offset-md-4':'4',
+            'offset-md-5':'5',
+            'offset-md-6':'6',
+            'offset-md-7':'7',
+            'offset-md-8':'8',
+            'offset-md-9':'9',
+          },
+        },
+        //---------------------
+        lg:{
+          label:'LG',
+          widget:'OpSelect',
+          columns:2,
+          list:{
+            'offset-lg-1':'1',
+            'offset-lg-2':'2',
+            'offset-lg-3':'3',
+            'offset-lg-4':'4',
+            'offset-lg-5':'5',
+            'offset-lg-6':'6',
+            'offset-lg-7':'7',
+            'offset-lg-8':'8',
+            'offset-lg-9':'9',
+          },
+        },
+        //---------------------
+        xl:{
+          label:'XL',
+          widget:'OpSelect',
+          columns:2,
+          list:{
+            'offset-xl-1':'1',
+            'offset-xl-2':'2',
+            'offset-xl-3':'3',
+            'offset-xl-4':'4',
+            'offset-xl-5':'5',
+            'offset-xl-6':'6',
+            'offset-xl-7':'7',
+            'offset-xl-8':'8',
+            'offset-xl-9':'9',
+          },
+        },
+        //---------------------
+      },//--offset
     } 
 
   }
@@ -156,6 +254,12 @@ export class BSCol extends BSElement{
     copy.$meta.width.md = this.$meta.width.md
     copy.$meta.width.lg = this.$meta.width.lg
     copy.$meta.width.xl = this.$meta.width.xl
+
+    copy.$meta.offset.xs = this.$meta.offset.xs
+    copy.$meta.offset.sm = this.$meta.offset.sm
+    copy.$meta.offset.md = this.$meta.offset.md
+    copy.$meta.offset.lg = this.$meta.offset.lg
+    copy.$meta.offset.xl = this.$meta.offset.xl
     return copy
   }
 
@@ -167,6 +271,12 @@ export class BSCol extends BSElement{
     model.classList.add(this.$meta.width.md)
     model.classList.add(this.$meta.width.lg)
     model.classList.add(this.$meta.width.xl)
+
+    model.classList.add(this.$meta.offset.xs)
+    model.classList.add(this.$meta.offset.sm)
+    model.classList.add(this.$meta.offset.md)
+    model.classList.add(this.$meta.offset.lg)
+    model.classList.add(this.$meta.offset.xl)
     //model.classList.push.apply(model.classList, this.$meta.baseClass)
     //model.attributes.contentEditable = false
     return model

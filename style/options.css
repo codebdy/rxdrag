@@ -120,6 +120,7 @@
   display: none;
   z-index: 100;
   white-space:nowrap;
+  width: 100%;
 }
 
 .option-row .two-column .select-list{
