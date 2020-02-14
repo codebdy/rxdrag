@@ -27,6 +27,15 @@ export class BSCol extends BSElement{
       xl:'',
     }
 
+    this.$meta.marginAuto = {
+      xs:'',
+      sm:'',
+      md:'',
+      lg:'',
+      xl:'',
+    }
+
+
     this.$schema.groups = {
       'columnOptions':{
         label:'Column Options'
@@ -249,6 +258,82 @@ export class BSCol extends BSElement{
         },
         //---------------------
       },//--offset
+
+      marginAuto:{
+        widget:'OptionRowGroup',
+        group:'columnOptions',
+        xs:{
+          label:'Margin Auto',
+          isFirst:true,
+          widget:'OpSelect',
+          list:{
+            'm-auto':'All',
+            'mx-auto':'Horizontal',
+            'my-auto':'Vertical',
+            'ml-auto':'Left',
+            'mr-auto':'Right',
+            'mt-auto':'Top',
+            'mb-auto':'Bottom',
+          },
+        },
+        //---------------------
+        sm:{
+          label:'SM',
+          widget:'OpSelect',
+          list:{
+            'm-sm-auto':'All',
+            'mx-sm-auto':'Horizontal',
+            'my-sm-auto':'Vertical',
+            'ml-sm-auto':'Left',
+            'mr-sm-auto':'Right',
+            'mt-sm-auto':'Top',
+            'mb-sm-auto':'Bottom',
+          },
+        },
+        //---------------------
+        md:{
+          label:'MD',
+          widget:'OpSelect',
+          list:{
+            'm-md-auto':'All',
+            'mx-md-auto':'Horizontal',
+            'my-md-auto':'Vertical',
+            'ml-md-auto':'Left',
+            'mr-md-auto':'Right',
+            'mt-md-auto':'Top',
+            'mb-md-auto':'Bottom',
+          },
+        },
+        //---------------------
+        lg:{
+          label:'LG',
+          widget:'OpSelect',
+          list:{
+            'm-lg-auto':'All',
+            'mx-lg-auto':'Horizontal',
+            'my-lg-auto':'Vertical',
+            'ml-lg-auto':'Left',
+            'mr-lg-auto':'Right',
+            'mt-lg-auto':'Top',
+            'mb-lg-auto':'Bottom',
+          },
+        },
+        //---------------------
+        xl:{
+          label:'XL',
+          widget:'OpSelect',
+          list:{
+            'm-xl-auto':'All',
+            'mx-xl-auto':'Horizontal',
+            'my-xl-auto':'Vertical',
+            'ml-xl-auto':'Left',
+            'mr-xl-auto':'Right',
+            'mt-xl-auto':'Top',
+            'mb-xl-auto':'Bottom',
+          },
+        },
+        //---------------------
+      },//--marginAuto
     } 
 
   }
@@ -270,6 +355,12 @@ export class BSCol extends BSElement{
     copy.$meta.offset.md = this.$meta.offset.md
     copy.$meta.offset.lg = this.$meta.offset.lg
     copy.$meta.offset.xl = this.$meta.offset.xl
+
+    copy.$meta.marginAuto.xs = this.$meta.marginAuto.xs
+    copy.$meta.marginAuto.sm = this.$meta.marginAuto.sm
+    copy.$meta.marginAuto.md = this.$meta.marginAuto.md
+    copy.$meta.marginAuto.lg = this.$meta.marginAuto.lg
+    copy.$meta.marginAuto.xl = this.$meta.marginAuto.xl
     return copy
   }
 
@@ -287,6 +378,12 @@ export class BSCol extends BSElement{
     model.classList.add(this.$meta.offset.md)
     model.classList.add(this.$meta.offset.lg)
     model.classList.add(this.$meta.offset.xl)
+
+    model.classList.add(this.$meta.marginAuto.xs)
+    model.classList.add(this.$meta.marginAuto.sm)
+    model.classList.add(this.$meta.marginAuto.md)
+    model.classList.add(this.$meta.marginAuto.lg)
+    model.classList.add(this.$meta.marginAuto.xl)
     //model.classList.push.apply(model.classList, this.$meta.baseClass)
     //model.attributes.contentEditable = false
     return model
