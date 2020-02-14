@@ -3,6 +3,10 @@ import marginAuto from "./schemas/margin-auto"
 import marginAll from "./schemas/margin-all"
 import marginH from "./schemas/margin-h"
 import marginV from "./schemas/margin-v"
+import marginTop from "./schemas/margin-t"
+import marginBottom from "./schemas/margin-b"
+import marginLeft from "./schemas/margin-l"
+import marginRight from "./schemas/margin-r"
 
 export class RXElement extends Node{
   constructor() {
@@ -59,6 +63,37 @@ export class RXElement extends Node{
     this.addedClassFeilds.push('marginV')
   }
 
+  addMarginTop(){
+    this.$schema.groups.dimension = this.groups.dimension
+    this.$meta.marginTop = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$schema.fields.marginTop = marginTop
+
+    this.addedClassFeilds.push('marginTop')
+  }
+
+  addMarginBottom(){
+    this.$schema.groups.dimension = this.groups.dimension
+    this.$meta.marginBottom = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$schema.fields.marginBottom = marginBottom
+
+    this.addedClassFeilds.push('marginBottom')
+  }
+
+  addMarginLeft(){
+    this.$schema.groups.dimension = this.groups.dimension
+    this.$meta.marginLeft = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$schema.fields.marginLeft = marginLeft
+
+    this.addedClassFeilds.push('marginLeft')
+  }
+
+  addMarginRight(){
+    this.$schema.groups.dimension = this.groups.dimension
+    this.$meta.marginRight = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$schema.fields.marginRight = marginRight
+
+    this.addedClassFeilds.push('marginRight')
+  }
 
   clone(){
     let copy = super.clone()
