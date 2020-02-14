@@ -41,6 +41,7 @@ export class OptionBox extends RXComponent{
   cancelEdit(){
     this.node = ''
     this.children.clear()
+    this.state.activedGroup = ''
     this.setInnerHTML(this.noFocusInnerHtml)
   }
 
