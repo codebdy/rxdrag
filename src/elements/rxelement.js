@@ -1,4 +1,9 @@
 import {Node} from "../core/node"
+import responsiveMeta from "./schemas/responsive-meta"
+import marginAuto from "./schemas/margin-auto"
+import marginAll from "./schemas/margin-all"
+import marginH from "./schemas/margin-h"
+import marginV from "./schemas/margin-v"
 
 export class RXElement extends Node{
   constructor() {
@@ -19,97 +24,42 @@ export class RXElement extends Node{
         label:'Dimension'
       }
     }
-
   }
 
   addMarginAuto(){
     this.$schema.groups.dimension = this.groups.dimension
-    this.$meta.marginAuto = {
-      xs:'',
-      sm:'',
-      md:'',
-      lg:'',
-      xl:'',
-    }
+    this.$meta.marginAuto = responsiveMeta
 
-    this.$schema.fields.marginAuto = {
-      widget:'OptionRowGroup',
-      group:'dimension',
-      xs:{
-        label:'Margin Auto',
-        isFirst:true,
-        widget:'OpSelect',
-        list:{
-          'm-auto':'All',
-          'mx-auto':'Horizontal',
-          'my-auto':'Vertical',
-          'ml-auto':'Left',
-          'mr-auto':'Right',
-          'mt-auto':'Top',
-          'mb-auto':'Bottom',
-        },
-      },
-      //---------------------
-      sm:{
-        label:'SM',
-        widget:'OpSelect',
-        list:{
-          'm-sm-auto':'All',
-          'mx-sm-auto':'Horizontal',
-          'my-sm-auto':'Vertical',
-          'ml-sm-auto':'Left',
-          'mr-sm-auto':'Right',
-          'mt-sm-auto':'Top',
-          'mb-sm-auto':'Bottom',
-        },
-      },
-      //---------------------
-      md:{
-        label:'MD',
-        widget:'OpSelect',
-        list:{
-          'm-md-auto':'All',
-          'mx-md-auto':'Horizontal',
-          'my-md-auto':'Vertical',
-          'ml-md-auto':'Left',
-          'mr-md-auto':'Right',
-          'mt-md-auto':'Top',
-          'mb-md-auto':'Bottom',
-        },
-      },
-      //---------------------
-      lg:{
-        label:'LG',
-        widget:'OpSelect',
-        list:{
-          'm-lg-auto':'All',
-          'mx-lg-auto':'Horizontal',
-          'my-lg-auto':'Vertical',
-          'ml-lg-auto':'Left',
-          'mr-lg-auto':'Right',
-          'mt-lg-auto':'Top',
-          'mb-lg-auto':'Bottom',
-        },
-      },
-      //---------------------
-      xl:{
-        label:'XL',
-        widget:'OpSelect',
-        list:{
-          'm-xl-auto':'All',
-          'mx-xl-auto':'Horizontal',
-          'my-xl-auto':'Vertical',
-          'ml-xl-auto':'Left',
-          'mr-xl-auto':'Right',
-          'mt-xl-auto':'Top',
-          'mb-xl-auto':'Bottom',
-        },
-      },
-      //---------------------
-    }//<--marginAuto
+    this.$schema.fields.marginAuto = marginAuto
 
     this.addedClassFeilds.push('marginAuto')
   }
+
+  addMarginAll(){
+    this.$schema.groups.dimension = this.groups.dimension
+    this.$meta.marginAll = responsiveMeta
+    this.$schema.fields.marginAll = marginAll
+
+    this.addedClassFeilds.push('marginAll')
+  }
+
+  addMarginH(){
+    this.$schema.groups.dimension = this.groups.dimension
+    this.$meta.marginH = responsiveMeta
+    this.$schema.fields.marginH = marginH
+
+
+    this.addedClassFeilds.push('marginH')
+  }
+
+  addMarginV(){
+    this.$schema.groups.dimension = this.groups.dimension
+    this.$meta.marginV = responsiveMeta
+    this.$schema.fields.marginV = marginV
+
+    this.addedClassFeilds.push('marginV')
+  }
+
 
   clone(){
     let copy = super.clone()

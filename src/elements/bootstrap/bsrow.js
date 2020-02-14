@@ -1,4 +1,5 @@
 import {RXElement} from "../rxelement"
+import responsiveMeta from "../schemas/responsive-meta"
 
 export class BSRow extends RXElement{
   constructor(parent) {
@@ -20,20 +21,8 @@ export class BSRow extends RXElement{
       }
     }
     this.$meta.gutters = ''
-    this.$meta.hAlign = {
-      xs:'',
-      sm:'',
-      md:'',
-      lg:'',
-      xl:'',
-    }
-    this.$meta.vAlign = {
-      xs:'',
-      sm:'',
-      md:'',
-      lg:'',
-      xl:'',
-    }
+    this.$meta.hAlign = responsiveMeta
+    this.$meta.vAlign = responsiveMeta
 
     this.$schema.fields.gutters = {
         label:'Gutters',

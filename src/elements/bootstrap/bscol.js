@@ -1,4 +1,5 @@
 import {RXElement} from "../rxelement"
+import responsiveMeta from "../schemas/responsive-meta"
 
 export class BSCol extends RXElement{
   constructor() {
@@ -11,37 +12,14 @@ export class BSCol extends RXElement{
     this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv']
 
     //this.$meta.baseClass = ['col'] 
-    this.$meta.width = {
-      xs:'',
-      sm:'',
-      md:'col-md',
-      lg:'',
-      xl:'',
-    }
+    this.$meta.width = responsiveMeta
+    this.$meta.width.md = 'col-md'
 
-    this.$meta.offset = {
-      xs:'',
-      sm:'',
-      md:'',
-      lg:'',
-      xl:'',
-    }
+    this.$meta.offset = responsiveMeta
 
-    this.$meta.alignSelf = {
-      xs:'',
-      sm:'',
-      md:'',
-      lg:'',
-      xl:'',
-    }
+    this.$meta.alignSelf = responsiveMeta
 
-    this.$meta.order = {
-      xs:'',
-      sm:'',
-      md:'',
-      lg:'',
-      xl:'',
-    }
+    this.$meta.order = responsiveMeta
 
 
     this.$schema.groups = {
@@ -455,6 +433,9 @@ export class BSCol extends RXElement{
     }//<--order
 
     super.addMarginAuto()
+    super.addMarginAll()
+    super.addMarginH()
+    super.addMarginV()
   }
 
   make(){
