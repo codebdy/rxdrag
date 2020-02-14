@@ -33,7 +33,7 @@ export class BSContainer extends BSElement{
     return new BSContainer
   }
   
-    clone(){
+  clone(){
     let copy = super.clone()
     copy.$meta.baseClass = this.$meta.baseClass
     return copy
