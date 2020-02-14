@@ -3,7 +3,9 @@ import {ToolGroup, ToolboxState} from "./controls/tool-group"
 import {OptionRow, OptionRowLabel, OptionRowGroup} from "./controls/option-row"
 import {ButtonGroup, OpButton} from "./controls/buttons"
 import {OpSelect} from "./controls/select"
+import {OpSwitch} from "./controls/switch"
 import {OpLabelsInput} from "./controls/label"
+
 
 export class OptionBoxGroup extends ToolGroup{
   constructor(title, id, groupsState){
@@ -93,6 +95,12 @@ export class OptionBox extends RXComponent{
         opSelect.cssClass('two-column')
       }
       return opSelect;
+    }
+    if(fieldSchema.widget ==='OpSwitch'){
+      let opSwitch = new OpSwitch(meta[fieldName], fieldName)
+      opSwitch.onValue = fieldSchema.onValue
+      opSwitch.offValue = fieldSchema.offValue
+      return opSwitch;
     }
 
     if(fieldSchema.widget ==='OptionRowGroup'){

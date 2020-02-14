@@ -19,14 +19,12 @@ export class BSContainer extends BSElement{
     }
     this.$schema.fields={
       baseClass:{
-        label:'Class',
-        widget:'OpSelect',
+        label:'Fluid',
+        widget:'OpSwitch',
         required:true,
         group:'containerOptions',
-        list:{
-          container:'container',
-          'container-fluid':'container-fluid',
-        }
+        onValue:'container-fluid',
+        offValue:'container',
       }
     } 
   }

@@ -48,11 +48,19 @@ export class RXComponent{
 
   cssClass(className){
     this.classList.add(className)
+    if(this.$dom){
+      this.$dom.classList.add(className)
+    }
     return this
   }
 
   removeCssClass(className){
-    this.classList.remove(className)
+    if(this.classList.contains(className)){
+     this.classList.remove(className)
+      if(this.$dom){
+        this.$dom.classList.remove(className)
+      }
+    }
     return this
   }
 
