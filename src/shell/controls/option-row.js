@@ -1,5 +1,6 @@
 import {RXComponent} from "../../basic/rxcomponent"
 import {ObjectState} from "../../basic/object-state"
+import {OpInput} from "./input"
 
 export class OptionRow extends RXComponent{
   constructor(){
@@ -23,7 +24,7 @@ export class OptionRowLabel extends RXComponent{
   }
 }
 
-export class OptionRowGroup extends RXComponent{
+export class OptionRowGroup extends OpInput{
   constructor(isShowSub = false){
     super()
     this.cssClass('option-row-group')

@@ -1,6 +1,7 @@
 import {RXComponent} from "../../basic/rxcomponent"
 import {OpLabel} from "./label"
 import {OpIconButton} from "./buttons"
+import {OpInput} from "./input"
 
 class SelectItem extends RXComponent{
   constructor(id, value){
@@ -34,30 +35,30 @@ class SlectedList  extends RXComponent{
 
 }
 
-export class OpSelect extends RXComponent{
-  constructor(list, fieldName ,selected = '', required = false){
-    super()
+export class OpSelect extends OpInput{
+  constructor(list, fieldName ,value = '', required = false){
+    super(value, fieldName)
     this.cssClass('ctl-select')
-    this.fieldName = fieldName
-    this.selected = selected
+    //this.fieldName = fieldName
+    //this.value = value
     this.valueViewer = new OpLabel()
-    this.valueChanged = (value, fieldName)=>{}
+    //this.valueChanged = (value, fieldName)=>{}
     var emptyValue = '-Select-'
     if(!required){
       this.clearBtn = new OpIconButton('×')
       this.pushChild(this.clearBtn)
       this.clearBtn.domOn('click', ()=>{
         this.valueViewer.setText(emptyValue)
-        if(this.selected){
-          this.valueChanged('', this.fieldName)
+        if(this.value){
+          this.onValueChanged('', this.fieldName)
         }
-        this.selected = ''
+        this.value = ''
       })
     }
     this.pushChild(this.valueViewer)
 
     this.listViewer = new SlectedList(list, required)
-    this.valueViewer.setText(selected?list[selected]:emptyValue)
+    this.valueViewer.setText(value?list[value]:emptyValue)
     this.valueViewer.setRightIcon('▾')
     this.pushChild(this.listViewer)
 
@@ -76,10 +77,10 @@ export class OpSelect extends RXComponent{
 
     this.listViewer.valueChage = (id, value)=>{
       //console.log(id, text)
-      if(id !== this.selected){
-        this.valueChanged(id, this.fieldName)
+      if(id !== this.value){
+        this.onValueChanged(id, this.fieldName)
       }
-      this.selected = id
+      this.value = id
       this.valueViewer.setText(value)
       this.listViewer.hide()
     }

@@ -1,14 +1,13 @@
 import {RXComponent} from "../../basic/rxcomponent"
+import {OpInput} from "./input"
 
-export class OpSwitch extends RXComponent{
+export class OpSwitch extends OpInput{
   constructor(value, fieldName){
-    super()
-    this.fieldName = fieldName
+    super(value, fieldName)
     this.cssClass('op-switch')
-    this.value = value
     this.onValue = ''
     this.offValue = ''
-    this.valueChanged=(value, fdName)=>{}
+    //this.valueChanged=(value, fdName)=>{}
     this.domOn('click',()=>{
       this.changeValue()
       this.updateState()
@@ -27,7 +26,7 @@ export class OpSwitch extends RXComponent{
     else{
       this.value = this.onValue
     }
-    this.valueChanged(this.value, this.fieldName)
+    this.onValueChanged(this.value, this.fieldName)
   }
 
   updateState(){

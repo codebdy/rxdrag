@@ -1,5 +1,6 @@
 import {RXComponent} from "../../basic/rxcomponent"
 import {OpIconButton} from "./buttons"
+import {OpInput} from "./input"
 import {RXArray} from "../../basic/rxarray"
 
 export class OpLabel extends RXComponent{
@@ -31,7 +32,7 @@ export class OpLabel extends RXComponent{
 
 }
 
-export class OpLabelsInput extends RXComponent{
+export class OpLabelsInput extends OpInput{
   constructor(labelText){
     super()
     this.cssClass('op-labels-input')

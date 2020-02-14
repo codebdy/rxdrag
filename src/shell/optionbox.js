@@ -53,10 +53,10 @@ export class OptionBox extends RXComponent{
 
       let input = this.createWidget(this.node.meta, field, fieldName)
       //input.fieldName = fieldName
-      input.valueChanged = (value, fdName)=>{
+      input.listenValueChaged((value, fdName)=>{
         node.meta[fdName] = value
         this.valueChanged(node)
-      }
+      })
       let row = new OptionRow()
       if(field.label){
         row.pushChild(new OptionRowLabel(field.label))
@@ -111,10 +111,10 @@ export class OptionBox extends RXComponent{
         let row = new OptionRow()
         row.addRowLabel(new OptionRowLabel(subSchema.label))
         let input = this.createWidget(subMeta, subSchema, subFieldName)
-        input.valueChanged = (value, fdName)=>{
+        input.listenValueChaged((value, fdName)=>{
           subMeta[fdName] = value
           this.valueChanged(this.node)
-        }
+        })
         row.pushChild(input)
         if(subSchema.isFirst){
           rowGroup.addFirstRow(row)
