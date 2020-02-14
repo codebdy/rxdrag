@@ -113,7 +113,7 @@ export class NodeView{
 
   bindEvents(element, on){
     for(var eventName in on){
-      element[eventName] = on[eventName]
+      element.addEventListener(eventName, on[eventName])
     }
   }
 

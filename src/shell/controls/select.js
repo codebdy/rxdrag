@@ -9,7 +9,7 @@ class SelectItem extends RXComponent{
     this.value = value
     this.setInnerHTML(value)
     this.selected = (id, value)=>{}
-    this.domOn('onclick', ()=>{
+    this.domOn('click', ()=>{
       this.selected(this.id, this.value)
     })      
   }
@@ -46,7 +46,7 @@ export class OpSelect extends RXComponent{
     if(!required){
       this.clearBtn = new OpIconButton('×')
       this.pushChild(this.clearBtn)
-      this.clearBtn.domOn('onclick', ()=>{
+      this.clearBtn.domOn('click', ()=>{
         this.valueViewer.setText(emptyValue)
         if(this.selected){
           this.valueChanged('', this.fieldName)
@@ -61,7 +61,7 @@ export class OpSelect extends RXComponent{
     this.valueViewer.setRightIcon('▾')
     this.pushChild(this.listViewer)
 
-    this.valueViewer.domOn('onclick',(event)=>{
+    this.valueViewer.domOn('click',(event)=>{
       this.listViewer.show()
       event.stopPropagation()
     })
@@ -70,7 +70,7 @@ export class OpSelect extends RXComponent{
       this.listViewer.hide()
     })
 
-    this.listViewer.domOn('onmousedown',(event)=>{
+    this.listViewer.domOn('mousedown',(event)=>{
       event.stopPropagation()
     })
 

@@ -90,7 +90,7 @@ export class ButtonGroup extends RXComponent{
   pushChild(child){
     this[child.id] = child
 
-    child.domOn('onclick', ()=>{
+    child.domOn('click', ()=>{
       this.state.actived = child.id
     })
 

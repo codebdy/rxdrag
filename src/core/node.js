@@ -366,33 +366,33 @@ export class Node{
       classList:classList,
       label:{
           on:{
-            onmousedown:this.begindragLabel
+            mousedown:this.begindragLabel
           }
       },
       toolbar:{
         up:{
-          onclick:this.up
+          click:this.up
         },
         move:{
-          onmousedown:this.begindragIcon
+          mousedown:this.begindragIcon
         },
         duplicate:{
-          onclick:this.duplicate
+          click:this.duplicate
         },
         edit:{
-          onclick:this.edit
+          click:this.edit
         },
         delete:{
-          onclick:this.delete
+          click:this.delete
         }
       },
       attributes:{},
       on:{
         //onmousedown:this.mousedown,
-        onmousemove:this.mousemove,
-        onmouseover:this.mouseover,
-        onmouseout:this.mouseout,
-        onclick:this.onclick,
+        mousemove:this.mousemove,
+        mouseover:this.mouseover,
+        mouseout:this.mouseout,
+        click:this.onclick,
       }
     }
   }

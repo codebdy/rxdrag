@@ -19,7 +19,7 @@ export class OpLabel extends RXComponent{
     iconSpan.cssClass('right-icon')
     iconSpan.innerHTML = innerHTML
     this.pushChild(iconSpan)
-    iconSpan.domOn('onclick', ()=>{
+    iconSpan.domOn('click', ()=>{
       this.rightIconClick(this.labelText)
     })
     return this
@@ -55,7 +55,7 @@ export class OpLabelsInput extends RXComponent{
 
     this.addLabels()
 
-    this.addButton.domOn('onclick', ()=>{
+    this.addButton.domOn('click', ()=>{
       this.inputWraper.show()
       this.inputCtrl.focus()
     })
@@ -64,11 +64,11 @@ export class OpLabelsInput extends RXComponent{
       this.hideInput()
     })
 
-    this.inputWraper.domOn('onmousedown',(event)=>{
+    this.inputWraper.domOn('mousedown',(event)=>{
       event.stopPropagation()
     })
 
-    this.inputWraper.domOn('onkeyup',(event)=>{
+    this.inputWraper.domOn('keyup',(event)=>{
       if (event.keyCode == 13) {
         let value = this.inputCtrl.$dom.value
         if(value){

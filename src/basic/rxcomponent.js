@@ -22,7 +22,7 @@ export class RXComponent{
 
   domOn(name, callback){
     if(this.$dom){
-      this.$dom[name] = callback
+      this.$dom.addEventListener(name, callback)
     }
     this.domOns[name] = callback
     return this
@@ -123,7 +123,7 @@ export class RXComponent{
     }
 
     for(var eventName in this.domOns){
-      this.$dom[eventName] = this.domOns[eventName]
+      this.$dom.addEventListener(eventName, this.domOns[eventName])
     }
 
     this.children.forEach((child)=>{

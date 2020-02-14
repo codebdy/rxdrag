@@ -16,7 +16,7 @@ export class ToolGroup extends RXComponent{
     this.groupBody.cssClass('group-body')
     this.pushChild(this.groupBody)
 
-    this.domOn('onclick',()=>{
+    this.domOn('click',()=>{
       this.state.activedGroup = this.id
     })
     this.state.watch('activedGroup', (state)=>{

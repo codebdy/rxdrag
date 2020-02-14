@@ -9,7 +9,7 @@ export class OpSwitch extends RXComponent{
     this.onValue = ''
     this.offValue = ''
     this.valueChanged=(value, fdName)=>{}
-    this.domOn('onclick',()=>{
+    this.domOn('click',()=>{
       this.changeValue()
       this.updateState()
     })

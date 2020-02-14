@@ -39,7 +39,7 @@ export class OptionRowGroup extends RXComponent{
     this.firstRow = row
     this.unshiftChild(row)
 
-    row.rowLabel.domOn('onclick',()=>{
+    row.rowLabel.domOn('click',()=>{
       this.tongle('sub-row-collapse')
     })
 

@@ -80,10 +80,10 @@ export class Drawer extends RXComponent{
 
   render(parentElement){
     super.render(parentElement)
-    this.layout.header.domOn('onclick', ()=>{
+    this.layout.header.domOn('click', ()=>{
       this.state.activeDrawerTab = 'layout'
     })
-    this.options.header.domOn('onclick', ()=>{
+    this.options.header.domOn('click', ()=>{
       this.state.activeDrawerTab = 'options'
     })
     return this

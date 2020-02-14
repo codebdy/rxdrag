@@ -16,7 +16,7 @@ export class Toolbox extends RXComponent{
 
       let toolboxItem = this[toolboxInfo.groupId].add(toolboxInfo)
 
-      toolboxItem.domOn('onmousedown',(event)=>{
+      toolboxItem.domOn('mousedown',(event)=>{
         this.draggingFromToolbox(toolboxItem.toolboxInfo.rxNameId)
         toolboxItem.mouseFollower.offsetX = event.offsetX
         toolboxItem.mouseFollower.offsetY = event.offsetY

@@ -48,7 +48,7 @@ export class Toolbar extends RXComponent{
     var outlineBtn = this.creatRightButton('fa-square-o')
               .active()
               .title('Show/hide outline')
-              .domOn('onclick',()=>{
+              .domOn('click',()=>{
                 canvasState.showOutline = !canvasState.showOutline
                 outlineBtn.active(canvasState.showOutline)
               })
@@ -56,7 +56,7 @@ export class Toolbar extends RXComponent{
     var labelBtn = this.creatRightButton('fa-tags')
               .active()
               .title('Show/hide Label')
-              .domOn('onclick',()=>{
+              .domOn('click',()=>{
                 canvasState.showLabel = !canvasState.showLabel
                 labelBtn.active(canvasState.showLabel)
               })
@@ -64,14 +64,14 @@ export class Toolbar extends RXComponent{
     var marginBtn = this.creatRightButton('fa-arrows-h')
               .active()
               .title('Show/hide margin')
-              .domOn('onclick',()=>{
+              .domOn('click',()=>{
                 canvasState.showEditMargin = !canvasState.showEditMargin
                 marginBtn.active(canvasState.showEditMargin)
               })
 
     var previewBtn = this.creatRightButton('fa-eye')
               .title('Preview')
-              .domOn('onclick',()=>{
+              .domOn('click',()=>{
                 canvasState.preview = !canvasState.preview
                 previewBtn.active(canvasState.preview)
               })
@@ -94,7 +94,7 @@ export class Toolbar extends RXComponent{
     //this.creatRightButton('fa-cog').title('Settings')
     this.creatRightButton('fa-question-circle').title('About RXEditor')
 
-    this.creatRightButton('fa-bars').domOn('onclick', ()=>{
+    this.creatRightButton('fa-bars').domOn('click', ()=>{
       rxEditorShell.state.showDrawer = !rxEditorShell.state.showDrawer
     }).title('Show/hide drawer ')
 
@@ -126,19 +126,19 @@ export class Toolbar extends RXComponent{
     this.xsBtn.style.fontSize = '14px'
 
 
-    this.xlBtn.domOns.onclick = (event)=>{
+    this.xlBtn.domOns.click = (event)=>{
       this.rxEditorShell.state.screenWidth = 'xl'
     }
-    this.lgBtn.domOns.onclick = (event)=>{
+    this.lgBtn.domOns.click = (event)=>{
       this.rxEditorShell.state.screenWidth = 'lg'
     }
-    this.mdBtn.domOns.onclick = (event)=>{
+    this.mdBtn.domOns.click = (event)=>{
       this.rxEditorShell.state.screenWidth = 'md'
     }
-    this.smBtn.domOns.onclick = (event)=>{
+    this.smBtn.domOns.click = (event)=>{
       this.rxEditorShell.state.screenWidth = 'sm'
     }
-    this.xsBtn.domOns.onclick = (event)=>{
+    this.xsBtn.domOns.click = (event)=>{
       this.rxEditorShell.state.screenWidth = 'xs'
     }
     
