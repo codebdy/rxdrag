@@ -1,6 +1,6 @@
-import {BSElement} from "./bselement"
+import {RXElement} from "../rxelement"
 
-export class BSRow extends BSElement{
+export class BSRow extends RXElement{
   constructor(parent) {
     super()
     this.toolboxInfo.groupId = 'groupGrid'

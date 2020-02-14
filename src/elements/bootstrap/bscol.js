@@ -1,6 +1,6 @@
-import {BSElement} from "./bselement"
+import {RXElement} from "../rxelement"
 
-export class BSCol extends BSElement{
+export class BSCol extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupGrid'
@@ -12,9 +12,9 @@ export class BSCol extends BSElement{
 
     //this.$meta.baseClass = ['col'] 
     this.$meta.width = {
-      xs:'col',
+      xs:'',
       sm:'',
-      md:'',
+      md:'col-md',
       lg:'',
       xl:'',
     }

@@ -1,6 +1,6 @@
-import {BSElement} from "./bselement"
+import {RXElement} from "../rxelement"
 
-export class BSContainer extends BSElement{
+export class BSContainer extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupContainer'
