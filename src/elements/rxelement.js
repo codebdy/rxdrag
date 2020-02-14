@@ -80,9 +80,9 @@ export class RXElement extends Node{
     let model = super.toViewModel()
     model.name = this.$meta.tag
 
-    for(var fieldName in this.addedClassFeilds){
+    this.addedClassFeilds.forEach((fieldName)=>{
       this.metaFieldToViewModel(model, fieldName)
-    }
+    })
     return model
   }
 
