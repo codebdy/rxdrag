@@ -50,6 +50,10 @@ export class Toolbox extends RXComponent{
     if(!this['groupText']){
       this.groupText =  new ToolboxGroup('Text','groupText', this.state).render(this.$dom)
     }
+
+    if(!this['groupCombination']){
+      this.groupCombination =  new ToolboxGroup('Combination','groupCombination', this.state).render(this.$dom)
+    }
   }
 
   followMouse(event){

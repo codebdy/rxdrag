@@ -125,7 +125,7 @@
 .option-row .two-column .select-list{
   flex-flow: row;
   flex-wrap: wrap;
-  width: 200px;
+  width: 120px;
   right:-50%;
 }
 

@@ -45,9 +45,9 @@ export class OptionBox extends RXComponent{
   showContent(node){
     var meta =node.meta
     var schema = node.schema
-
-    for(var fieldName in schema){
-      let field = schema[fieldName]
+    this.initGroup(schema.groups)
+    for(var fieldName in schema.fields){
+      let field = schema.fields[fieldName]
 
       let input = this.createWidget(this.node.meta, field, fieldName)
       //input.fieldName = fieldName
@@ -70,16 +70,19 @@ export class OptionBox extends RXComponent{
     }
   }
 
+  initGroup(groups){
+    for(var groupName in groups){
+      let group = groups[groupName]
+      let groupCtrl = new OptionBoxGroup(group.label,groupName, this.state)
+      this[groupName] = groupCtrl
+      this.pushChild(groupCtrl)
+    }
+  }
+
+
   getGroup(group){
     if(this[group]){
       return this[group]
-    }
-
-    if(group==='layout'){
-      let groupCtrl = new OptionBoxGroup('Layout','layout', this.state)
-      this[group] = groupCtrl
-      this.pushChild(groupCtrl)
-      return groupCtrl
     }
   }
 

@@ -12,14 +12,21 @@ export class BSContainer extends BSElement{
 
     this.$meta.baseClass = 'container'
 
-    this.$schema.baseClass={
-      label:'Class',
-      widget:'OpSelect',
-      required:true,
-      group:'layout',
-      list:{
-        container:'container',
-        'container-fluid':'container-fluid',
+    this.$schema.groups = {
+      'containerOptions':{
+        label:'Container Options'
+      }
+    }
+    this.$schema.fields={
+      baseClass:{
+        label:'Class',
+        widget:'OpSelect',
+        required:true,
+        group:'containerOptions',
+        list:{
+          container:'container',
+          'container-fluid':'container-fluid',
+        }
       }
     } 
   }
