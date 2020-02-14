@@ -1,8 +1,8 @@
 import {RXElement} from "../rxelement"
-import colWidth from "../schemas/col-width"
-import colOffset from "../schemas/col-offset"
-import colAlignSelf from "../schemas/col-align-self"
-import colOrder from "../schemas/col-order"
+import colWidth from "../schemas/column/col-width"
+import colOffset from "../schemas/column/col-offset"
+import colAlignSelf from "../schemas/column/col-align-self"
+import colOrder from "../schemas/column/col-order"
 
 export class BSCol extends RXElement{
   constructor() {

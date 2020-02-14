@@ -1,6 +1,6 @@
 import {RXElement} from "../rxelement"
-import hAlign from "../schemas/row-h-align"
-import vAlign from "../schemas/row-v-align"
+import hAlign from "../schemas/row/row-h-align"
+import vAlign from "../schemas/row/row-v-align"
 
 export class BSRow extends RXElement{
   constructor(parent) {
