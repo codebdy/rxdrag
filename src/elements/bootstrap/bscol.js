@@ -27,6 +27,22 @@ export class BSCol extends BSElement{
       xl:'',
     }
 
+    this.$meta.alignSelf = {
+      xs:'',
+      sm:'',
+      md:'',
+      lg:'',
+      xl:'',
+    }
+
+    this.$meta.order = {
+      xs:'',
+      sm:'',
+      md:'',
+      lg:'',
+      xl:'',
+    }
+
     this.$meta.marginAuto = {
       xs:'',
       sm:'',
@@ -157,7 +173,8 @@ export class BSCol extends BSElement{
           },
         },
         //---------------------
-      },//--width
+      },//<--width
+
       offset:{
         widget:'OptionRowGroup',
         group:'columnOptions',
@@ -257,7 +274,194 @@ export class BSCol extends BSElement{
           },
         },
         //---------------------
-      },//--offset
+      },//<--offset
+
+      alignSelf:{
+        widget:'OptionRowGroup',
+        group:'columnOptions',
+        xs:{
+          label:'Align Self',
+          isFirst:true,
+          widget:'OpSelect',
+          list:{
+            'align-self-auto':'Auto',
+            'align-self-start':'Start',
+            'align-self-end':'End',
+            'align-self-center':'Center',
+            'align-self-baseline':'Baseline',
+            'align-self-stretch':'Stretch',
+          },
+        },
+        //---------------------
+        sm:{
+          label:'SM',
+          widget:'OpSelect',
+          list:{
+            'align-self-sm-auto':'Auto',
+            'align-self-sm-start':'Start',
+            'align-self-sm-end':'End',
+            'align-self-sm-center':'Center',
+            'align-self-sm-baseline':'Baseline',
+            'align-self-sm-stretch':'Stretch',
+          },
+        },
+        //---------------------
+        md:{
+          label:'MD',
+          widget:'OpSelect',
+          list:{
+            'align-self-md-auto':'Auto',
+            'align-self-md-start':'Start',
+            'align-self-md-end':'End',
+            'align-self-md-center':'Center',
+            'align-self-md-baseline':'Baseline',
+            'align-self-md-stretch':'Stretch',
+          },
+        },
+        //---------------------
+        lg:{
+          label:'LG',
+          widget:'OpSelect',
+          list:{
+            'align-self-lg-auto':'Auto',
+            'align-self-lg-start':'Start',
+            'align-self-lg-end':'End',
+            'align-self-lg-center':'Center',
+            'align-self-lg-baseline':'Baseline',
+            'align-self-lg-stretch':'Stretch',
+          },
+        },
+        //---------------------
+        xl:{
+          label:'XL',
+          widget:'OpSelect',
+          list:{
+            'align-self-xl-auto':'Auto',
+            'align-self-xl-start':'Start',
+            'align-self-xl-end':'End',
+            'align-self-xl-center':'Center',
+            'align-self-xl-baseline':'Baseline',
+            'align-self-xl-stretch':'Stretch',
+          },
+        },
+        //---------------------
+      },//<--alignSelf
+
+      order:{
+        widget:'OptionRowGroup',
+        group:'columnOptions',
+        xs:{
+          label:'Order',
+          isFirst:true,
+          widget:'OpSelect',
+          columns:2,
+          list:{
+            'order-first':'First',
+            'order-last':'Last',
+            'order-1':'1',
+            'order-2':'2',
+            'order-3':'3',
+            'order-4':'4',
+            'order-5':'5',
+            'order-6':'6',
+            'order-7':'7',
+            'order-8':'8',
+            'order-9':'9',
+            'order-10':'10',
+            'order-11':'11',
+            'order-12':'11',
+          },
+        },
+        //---------------------
+        sm:{
+          label:'SM',
+          widget:'OpSelect',
+          columns:2,
+          list:{
+            'order-sm-first':'First',
+            'order-sm-last':'Last',
+            'order-sm-1':'1',
+            'order-sm-2':'2',
+            'order-sm-3':'3',
+            'order-sm-4':'4',
+            'order-sm-5':'5',
+            'order-sm-6':'6',
+            'order-sm-7':'7',
+            'order-sm-8':'8',
+            'order-sm-9':'9',
+            'order-sm-10':'10',
+            'order-sm-11':'11',
+            'order-sm-12':'11',
+          },
+        },
+        //---------------------
+        md:{
+          label:'MD',
+          widget:'OpSelect',
+          columns:2,
+          list:{
+            'order-md-first':'First',
+            'order-md-last':'Last',
+            'order-md-1':'1',
+            'order-md-2':'2',
+            'order-md-3':'3',
+            'order-md-4':'4',
+            'order-md-5':'5',
+            'order-md-6':'6',
+            'order-md-7':'7',
+            'order-md-8':'8',
+            'order-md-9':'9',
+            'order-md-10':'10',
+            'order-md-11':'11',
+            'order-md-12':'11',
+          },
+        },
+        //---------------------
+        lg:{
+          label:'LG',
+          widget:'OpSelect',
+          columns:2,
+          list:{
+            'order-lg-first':'First',
+            'order-lg-last':'Last',
+            'order-lg-1':'1',
+            'order-lg-2':'2',
+            'order-lg-3':'3',
+            'order-lg-4':'4',
+            'order-lg-5':'5',
+            'order-lg-6':'6',
+            'order-lg-7':'7',
+            'order-lg-8':'8',
+            'order-lg-9':'9',
+            'order-lg-10':'10',
+            'order-lg-11':'11',
+            'order-lg-12':'11',
+          },
+        },
+        //---------------------
+        xl:{
+          label:'XL',
+          widget:'OpSelect',
+          columns:2,
+          list:{
+            'order-xl-first':'First',
+            'order-xl-last':'Last',
+            'order-xl-1':'1',
+            'order-xl-2':'2',
+            'order-xl-3':'3',
+            'order-xl-4':'4',
+            'order-xl-5':'5',
+            'order-xl-6':'6',
+            'order-xl-7':'7',
+            'order-xl-8':'8',
+            'order-xl-9':'9',
+            'order-xl-10':'10',
+            'order-xl-11':'11',
+            'order-xl-12':'11',
+          },
+        },
+        //---------------------
+      },//<--order
 
       marginAuto:{
         widget:'OptionRowGroup',
@@ -333,7 +537,8 @@ export class BSCol extends BSElement{
           },
         },
         //---------------------
-      },//--marginAuto
+      },//<--marginAuto
+
     } 
 
   }
@@ -355,6 +560,18 @@ export class BSCol extends BSElement{
     copy.$meta.offset.md = this.$meta.offset.md
     copy.$meta.offset.lg = this.$meta.offset.lg
     copy.$meta.offset.xl = this.$meta.offset.xl
+
+    copy.$meta.alignSelf.xs = this.$meta.alignSelf.xs
+    copy.$meta.alignSelf.sm = this.$meta.alignSelf.sm
+    copy.$meta.alignSelf.md = this.$meta.alignSelf.md
+    copy.$meta.alignSelf.lg = this.$meta.alignSelf.lg
+    copy.$meta.alignSelf.xl = this.$meta.alignSelf.xl
+
+    copy.$meta.order.xs = this.$meta.order.xs
+    copy.$meta.order.sm = this.$meta.order.sm
+    copy.$meta.order.md = this.$meta.order.md
+    copy.$meta.order.lg = this.$meta.order.lg
+    copy.$meta.order.xl = this.$meta.order.xl
 
     copy.$meta.marginAuto.xs = this.$meta.marginAuto.xs
     copy.$meta.marginAuto.sm = this.$meta.marginAuto.sm
@@ -378,6 +595,18 @@ export class BSCol extends BSElement{
     model.classList.add(this.$meta.offset.md)
     model.classList.add(this.$meta.offset.lg)
     model.classList.add(this.$meta.offset.xl)
+
+    model.classList.add(this.$meta.alignSelf.xs)
+    model.classList.add(this.$meta.alignSelf.sm)
+    model.classList.add(this.$meta.alignSelf.md)
+    model.classList.add(this.$meta.alignSelf.lg)
+    model.classList.add(this.$meta.alignSelf.xl)
+
+    model.classList.add(this.$meta.order.xs)
+    model.classList.add(this.$meta.order.sm)
+    model.classList.add(this.$meta.order.md)
+    model.classList.add(this.$meta.order.lg)
+    model.classList.add(this.$meta.order.xl)
 
     model.classList.add(this.$meta.marginAuto.xs)
     model.classList.add(this.$meta.marginAuto.sm)

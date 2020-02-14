@@ -112,6 +112,7 @@
   flex-flow: column;
   position: absolute;
   top:26px;
+  right:0px;
   margin:0;
   padding:0;
   list-style: none;
@@ -126,7 +127,6 @@
   flex-flow: row;
   flex-wrap: wrap;
   width: 120px;
-  right:-50%;
 }
 
 .option-row .select-list li{
