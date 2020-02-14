@@ -47,6 +47,14 @@ export class BSCol extends RXElement{
     super.addMarginBottom()
     super.addMarginLeft()
     super.addMarginRight()
+
+    super.addPaddingAll()
+    super.addPaddingH()
+    super.addPaddingV()
+    super.addPaddingTop()
+    super.addPaddingBottom()
+    super.addPaddingLeft()
+    super.addPaddingRight()
   }
 
   make(){

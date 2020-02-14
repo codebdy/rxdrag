@@ -1,6 +1,6 @@
 export default{
   widget:'OptionRowGroup',
-  group:'dimension',
+  group:'margin',
   xs:{
     label:'Margin Right',
     isFirst:true,

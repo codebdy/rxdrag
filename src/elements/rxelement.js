@@ -8,6 +8,14 @@ import marginBottom from "./schemas/margin-b"
 import marginLeft from "./schemas/margin-l"
 import marginRight from "./schemas/margin-r"
 
+import paddingAll from "./schemas/padding-all"
+import paddingH from "./schemas/padding-h"
+import paddingV from "./schemas/padding-v"
+import paddingTop from "./schemas/padding-t"
+import paddingBottom from "./schemas/padding-b"
+import paddingLeft from "./schemas/padding-l"
+import paddingRight from "./schemas/padding-r"
+
 export class RXElement extends Node{
   constructor() {
     super()
@@ -23,14 +31,17 @@ export class RXElement extends Node{
     } //备忘：Flexbox: flex container, flex item
 
     this.groups = {
-      'dimension':{
-        label:'Dimension'
-      }
+      'margin':{
+        label:'Margin',
+      },
+      'padding':{
+        label:'Padding',
+      },
     }
   }
 
   addMarginAuto(){
-    this.$schema.groups.dimension = this.groups.dimension
+    this.$schema.groups.margin = this.groups.margin
     this.$meta.marginAuto = {xs:'', sm:'', md:'', lg:'', xl:''}
 
     this.$schema.fields.marginAuto = marginAuto
@@ -39,7 +50,7 @@ export class RXElement extends Node{
   }
 
   addMarginAll(){
-    this.$schema.groups.dimension = this.groups.dimension
+    this.$schema.groups.margin = this.groups.margin
     this.$meta.marginAll = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$schema.fields.marginAll = marginAll
 
@@ -47,7 +58,7 @@ export class RXElement extends Node{
   }
 
   addMarginH(){
-    this.$schema.groups.dimension = this.groups.dimension
+    this.$schema.groups.margin = this.groups.margin
     this.$meta.marginH = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$schema.fields.marginH = marginH
 
@@ -56,7 +67,7 @@ export class RXElement extends Node{
   }
 
   addMarginV(){
-    this.$schema.groups.dimension = this.groups.dimension
+    this.$schema.groups.margin = this.groups.margin
     this.$meta.marginV = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$schema.fields.marginV = marginV
 
@@ -64,7 +75,7 @@ export class RXElement extends Node{
   }
 
   addMarginTop(){
-    this.$schema.groups.dimension = this.groups.dimension
+    this.$schema.groups.margin = this.groups.margin
     this.$meta.marginTop = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$schema.fields.marginTop = marginTop
 
@@ -72,7 +83,7 @@ export class RXElement extends Node{
   }
 
   addMarginBottom(){
-    this.$schema.groups.dimension = this.groups.dimension
+    this.$schema.groups.margin = this.groups.margin
     this.$meta.marginBottom = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$schema.fields.marginBottom = marginBottom
 
@@ -80,7 +91,7 @@ export class RXElement extends Node{
   }
 
   addMarginLeft(){
-    this.$schema.groups.dimension = this.groups.dimension
+    this.$schema.groups.margin = this.groups.margin
     this.$meta.marginLeft = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$schema.fields.marginLeft = marginLeft
 
@@ -88,11 +99,68 @@ export class RXElement extends Node{
   }
 
   addMarginRight(){
-    this.$schema.groups.dimension = this.groups.dimension
+    this.$schema.groups.margin = this.groups.margin
     this.$meta.marginRight = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$schema.fields.marginRight = marginRight
 
     this.addedClassFeilds.push('marginRight')
+  }
+//---
+  addPaddingAll(){
+    this.$schema.groups.padding = this.groups.padding
+    this.$meta.paddingAll = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$schema.fields.paddingAll = paddingAll
+
+    this.addedClassFeilds.push('paddingAll')
+  }
+
+  addPaddingH(){
+    this.$schema.groups.padding = this.groups.padding
+    this.$meta.paddingH = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$schema.fields.paddingH = paddingH
+
+
+    this.addedClassFeilds.push('paddingH')
+  }
+
+  addPaddingV(){
+    this.$schema.groups.padding = this.groups.padding
+    this.$meta.paddingV = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$schema.fields.paddingV = paddingV
+
+    this.addedClassFeilds.push('paddingV')
+  }
+
+  addPaddingTop(){
+    this.$schema.groups.padding = this.groups.padding
+    this.$meta.paddingTop = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$schema.fields.paddingTop = paddingTop
+
+    this.addedClassFeilds.push('paddingTop')
+  }
+
+  addPaddingBottom(){
+    this.$schema.groups.padding = this.groups.padding
+    this.$meta.paddingBottom = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$schema.fields.paddingBottom = paddingBottom
+
+    this.addedClassFeilds.push('paddingBottom')
+  }
+
+  addPaddingLeft(){
+    this.$schema.groups.padding = this.groups.padding
+    this.$meta.paddingLeft = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$schema.fields.paddingLeft = paddingLeft
+
+    this.addedClassFeilds.push('paddingLeft')
+  }
+
+  addPaddingRight(){
+    this.$schema.groups.margin = this.groups.margin
+    this.$meta.paddingRight = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$schema.fields.paddingRight = paddingRight
+
+    this.addedClassFeilds.push('paddingRight')
   }
 
   clone(){
