@@ -1,5 +1,4 @@
 import {RXElement} from "../rxelement"
-import responsiveMeta from "../schemas/responsive-meta"
 import colWidth from "../schemas/col-width"
 import colOffset from "../schemas/col-offset"
 import colAlignSelf from "../schemas/col-align-self"
@@ -16,14 +15,14 @@ export class BSCol extends RXElement{
     this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv']
 
     //this.$meta.baseClass = ['col'] 
-    this.$meta.width = responsiveMeta
+    this.$meta.width = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$meta.width.md = 'col-md'
 
-    this.$meta.offset = responsiveMeta
+    this.$meta.offset = {xs:'', sm:'', md:'', lg:'', xl:''}
 
-    this.$meta.alignSelf = responsiveMeta
+    this.$meta.alignSelf = {xs:'', sm:'', md:'', lg:'', xl:''}
 
-    this.$meta.order = responsiveMeta
+    this.$meta.order = {xs:'', sm:'', md:'', lg:'', xl:''}
 
 
     this.$schema.groups = {

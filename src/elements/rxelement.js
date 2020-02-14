@@ -1,5 +1,4 @@
 import {Node} from "../core/node"
-import responsiveMeta from "./schemas/responsive-meta"
 import marginAuto from "./schemas/margin-auto"
 import marginAll from "./schemas/margin-all"
 import marginH from "./schemas/margin-h"
@@ -28,7 +27,7 @@ export class RXElement extends Node{
 
   addMarginAuto(){
     this.$schema.groups.dimension = this.groups.dimension
-    this.$meta.marginAuto = responsiveMeta
+    this.$meta.marginAuto = {xs:'', sm:'', md:'', lg:'', xl:''}
 
     this.$schema.fields.marginAuto = marginAuto
 
@@ -37,7 +36,7 @@ export class RXElement extends Node{
 
   addMarginAll(){
     this.$schema.groups.dimension = this.groups.dimension
-    this.$meta.marginAll = responsiveMeta
+    this.$meta.marginAll = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$schema.fields.marginAll = marginAll
 
     this.addedClassFeilds.push('marginAll')
@@ -45,7 +44,7 @@ export class RXElement extends Node{
 
   addMarginH(){
     this.$schema.groups.dimension = this.groups.dimension
-    this.$meta.marginH = responsiveMeta
+    this.$meta.marginH = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$schema.fields.marginH = marginH
 
 
@@ -54,7 +53,7 @@ export class RXElement extends Node{
 
   addMarginV(){
     this.$schema.groups.dimension = this.groups.dimension
-    this.$meta.marginV = responsiveMeta
+    this.$meta.marginV = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$schema.fields.marginV = marginV
 
     this.addedClassFeilds.push('marginV')

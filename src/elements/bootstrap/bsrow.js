@@ -1,5 +1,4 @@
 import {RXElement} from "../rxelement"
-import responsiveMeta from "../schemas/responsive-meta"
 import hAlign from "../schemas/row-h-align"
 import vAlign from "../schemas/row-v-align"
 
@@ -23,8 +22,8 @@ export class BSRow extends RXElement{
       }
     }
     this.$meta.gutters = ''
-    this.$meta.hAlign = responsiveMeta
-    this.$meta.vAlign = responsiveMeta
+    this.$meta.hAlign = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.vAlign = {xs:'', sm:'', md:'', lg:'', xl:''}
 
     this.$schema.fields.gutters = {
         label:'Gutters',
