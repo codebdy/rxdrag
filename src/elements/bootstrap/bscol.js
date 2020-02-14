@@ -167,6 +167,8 @@ export class BSCol extends BSElement{
             'offset-7':'7',
             'offset-8':'8',
             'offset-9':'9',
+            'offset-10':'10',
+            'offset-11':'11',
           },
         },
         //---------------------
@@ -184,6 +186,8 @@ export class BSCol extends BSElement{
             'offset-sm-7':'7',
             'offset-sm-8':'8',
             'offset-sm-9':'9',
+            'offset-sm-10':'10',
+            'offset-sm-11':'11',
           },
         },
         //---------------------
@@ -201,6 +205,8 @@ export class BSCol extends BSElement{
             'offset-md-7':'7',
             'offset-md-8':'8',
             'offset-md-9':'9',
+            'offset-md-10':'10',
+            'offset-md-11':'11',
           },
         },
         //---------------------
@@ -218,6 +224,8 @@ export class BSCol extends BSElement{
             'offset-lg-7':'7',
             'offset-lg-8':'8',
             'offset-lg-9':'9',
+            'offset-lg-10':'10',
+            'offset-lg-11':'11',
           },
         },
         //---------------------
@@ -235,6 +243,8 @@ export class BSCol extends BSElement{
             'offset-xl-7':'7',
             'offset-xl-8':'8',
             'offset-xl-9':'9',
+            'offset-xl-10':'10',
+            'offset-xl-11':'11',
           },
         },
         //---------------------
