@@ -34,29 +34,15 @@ export class OptionRow extends RXComponent{
 
   setInput(input){
     this.pushChild(input)
+    this.updateLabelColor(input)
     input.listenValueChaged((value)=>{
       this.onValueChanged(value)
       this.updateLabelColor(input)
     })
-
-    /*input.listenDifferentFromDefault(()=>{
-      this.cssClass('no-default')
-    })
-
-    input.listenSameToDefault(()=>{
-      this.removeCssClass('no-default')
-    })
-
-    if(input.isShowingDefault){
-      this.removeCssClass('no-default')
-    }
-    else{
-
-    }*/
   }
 
   updateLabelColor(input){
-    if(input.isShowingDefault){
+    if(input.isShowingDefault()){
       this.removeCssClass('no-default')
     }
     else{

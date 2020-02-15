@@ -79,13 +79,14 @@ export class OpSelect extends OpInput{
       event.stopPropagation()
     })
 
-    this.listViewer.valueChage = (id, value)=>{
+    this.listViewer.valueChage = (id, text)=>{
+      let oldValue = this.value
+      this.value = id
       //console.log(id, text)
-      if(id !== this.value){
+      if(oldValue !== this.value){
         this.onValueChanged(id)
       }
-      this.value = id
-      this.valueViewer.setText(value)
+      this.valueViewer.setText(text)
       this.listViewer.hide()
     }
 

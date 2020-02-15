@@ -70,7 +70,7 @@ export class OptionBox extends RXComponent{
       this.setInputDefaultValue(input, field)*/
       let fieldSchema = schema.fields[fieldName]
       let metaValue = meta[fieldName]
-      console.log('metaValue:', metaValue)
+      //console.log('metaValue:', metaValue)
       let row = new OptionRow(
         fieldSchema.isResponsive ? metaValue[this.screenWidth] : metaValue, 
         fieldSchema.isResponsive ? fieldSchema[this.screenWidth] : fieldSchema, 
