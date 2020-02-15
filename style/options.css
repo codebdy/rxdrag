@@ -174,11 +174,15 @@
 }
 
 .option-row .op-label-group{
-  display:flex; 
   flex-flow:row;
   flex-wrap: wrap;
   flex: 1;
   align-items: center;
+  display: none;
+}
+
+.sub-row-collapse .op-label-group{
+  display: flex;
 }
 
 .option-row .op-label-group .op-label{
