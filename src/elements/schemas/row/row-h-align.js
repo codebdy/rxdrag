@@ -1,10 +1,8 @@
 export default{
-  widget:'OptionRowGroup',
   group:'rowOptions',
   isResponsive:true,
   xs:{
     label:'Align Cols(H)',
-    isFirst:true,
     widget:'OpSelect',
     list:{
       'justify-content-start':'Start',
@@ -16,7 +14,7 @@ export default{
   },
   //---------------------
   sm:{
-    label:'SM',
+    label:'Align Cols(H)',
     widget:'OpSelect',
     list:{
       'justify-content-sm-start':'Start',
@@ -28,7 +26,7 @@ export default{
   },
   //---------------------
   md:{
-    label:'MD',
+    label:'Align Cols(H)',
     widget:'OpSelect',
     list:{
       'justify-content-md-start':'Start',
@@ -40,7 +38,7 @@ export default{
   },
   //---------------------
   lg:{
-    label:'LG',
+    label:'Align Cols(H)',
     widget:'OpSelect',
     list:{
       'justify-content-lg-start':'Start',
@@ -52,7 +50,7 @@ export default{
   },
   //---------------------
   xl:{
-    label:'XL',
+    label:'Align Cols(H)',
     widget:'OpSelect',
     list:{
       'justify-content-xl-start':'Start',

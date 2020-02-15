@@ -1,9 +1,8 @@
 export default{
-  widget:'OptionRowGroup',
   group:'margin',
+  isResponsive:true,
   xs:{
     label:'Margin(H)',
-    isFirst:true,
     widget:'OpSelect',
     list:{
       'mx-0':'0',
@@ -16,7 +15,7 @@ export default{
   },
   //---------------------
   sm:{
-    label:'SM',
+    label:'Margin(H)',
     widget:'OpSelect',
     list:{
       'mx-sm-0':'0',
@@ -29,7 +28,7 @@ export default{
   },
   //---------------------
   md:{
-    label:'MD',
+    label:'Margin(H)',
     widget:'OpSelect',
     list:{
       'mx-md-0':'0',
@@ -42,7 +41,7 @@ export default{
   },
   //---------------------
   lg:{
-    label:'LG',
+    label:'Margin(H)',
     widget:'OpSelect',
     list:{
       'mx-lg-0':'0',
@@ -55,7 +54,7 @@ export default{
   },
   //---------------------
   xl:{
-    label:'XL',
+    label:'Margin(H)',
     widget:'OpSelect',
     list:{
       'mx-xl-0':'0',

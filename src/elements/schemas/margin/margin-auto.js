@@ -1,9 +1,8 @@
 export default{
-  widget:'OptionRowGroup',
   group:'margin',
+  isResponsive:true,
   xs:{
     label:'Margin Auto',
-    isFirst:true,
     widget:'OpSelect',
     list:{
       'm-auto':'All',
@@ -17,7 +16,7 @@ export default{
   },
   //---------------------
   sm:{
-    label:'SM',
+    label:'Margin Auto',
     widget:'OpSelect',
     list:{
       'm-sm-auto':'All',
@@ -31,7 +30,7 @@ export default{
   },
   //---------------------
   md:{
-    label:'MD',
+    label:'Margin Auto',
     widget:'OpSelect',
     list:{
       'm-md-auto':'All',
@@ -45,7 +44,7 @@ export default{
   },
   //---------------------
   lg:{
-    label:'LG',
+    label:'Margin Auto',
     widget:'OpSelect',
     list:{
       'm-lg-auto':'All',
@@ -59,7 +58,7 @@ export default{
   },
   //---------------------
   xl:{
-    label:'XL',
+    label:'Margin Auto',
     widget:'OpSelect',
     list:{
       'm-xl-auto':'All',

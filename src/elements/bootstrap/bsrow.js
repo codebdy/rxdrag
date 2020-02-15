@@ -35,10 +35,10 @@ export class BSRow extends RXElement{
         defaultValue:'',
       }//<----gutters
 
-    //this.$schema.fields.hAlign = hAlign
+    this.$schema.fields.hAlign = hAlign
     this.$schema.fields.vAlign = vAlign
 
-    //super.addMargin()
+    super.addMargin()
     //super.addPadding()
   }
  
