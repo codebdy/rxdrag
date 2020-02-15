@@ -48,8 +48,9 @@ export class OptionRowGroup extends RowBase{
       }
 
       row.listenValueChaged((value, fdName)=>{
-        //node.meta[fdName] = value
-        //this.valueChanged(node)
+        this.value[fdName] = value
+        this.onValueChanged(this.value)
+        this.titleRow.input.setValues(this.getValuesOnLabel())
       })
       row.rowLabel.cssClass('sub-label')
       this.body.pushChild(row)
@@ -71,8 +72,6 @@ export class OptionRowGroup extends RowBase{
         values.push(this.value[fieldName])
       }
     }
-    values.push('m-0')
-    values.push('my-sm-4')
     return values
   }
 

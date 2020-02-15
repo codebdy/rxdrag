@@ -14,7 +14,7 @@ export class RowBase extends RXComponent{
     this.onValueChanged = (value)=>{
       this.valueChangedHandlers.forEach((handler)=>{
         handler(value, this.fieldName)
-        this.updateLabelColor(this.input)
+        //this.updateLabelColor(this.input)
       })
     }
   }

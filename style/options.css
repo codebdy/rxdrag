@@ -181,6 +181,10 @@
   align-items: center;
 }
 
+.option-row .op-label-group .op-label{
+  font-size: 12px;
+}
+
 .option-row .op-label-group .not-set-value{
   font-size: 11px;
   color:#a0a0a0;
