@@ -32,8 +32,43 @@ export class OpLabel extends RXComponent{
 
 }
 
+export class OpLabelGroup extends OpInput{
+  constructor(){
+    super()
+    this.cssClass('op-label-group')
+    this.values = new RXArray
+    this.values.push('test1')
+    this.values.push('test2')
+    this.values.push('ml-md-0')
+   //this.labelGroup = new RXComponent().cssClass('op-label-group')
+    //this.pushChild(
+    //    new RXComponent().pushChild(this.labelGroup)
+    //  )
+
+    this.addLabels()
+
+  }
+
+  addLabels(){
+    this.clearChild()
+    this.values.forEach((value)=>{
+      let label = new OpLabel(value).setRightIcon('×')
+      label.rightIconClick = (labelText)=>{
+        this.removeLabel(labelText)
+      }
+      this.pushChild(label)
+    })
+  }
+
+  removeLabel(labelText){
+    this.values.remove(labelText)
+    this.addLabels()
+    this.refresh()
+  }
+}
+
 export class OpLabelsInput extends OpInput{
-  constructor(labelText){
+  constructor(){
     super()
     this.cssClass('op-labels-input')
     this.values = new RXArray
@@ -110,3 +145,4 @@ export class OpLabelsInput extends OpInput{
     this.labelGroup.refresh()
   }
 }
+

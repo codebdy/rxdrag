@@ -5,25 +5,37 @@ import {OpInput} from "./input"
 import {OpSwitch} from "./switch"
 import {ButtonGroup, OpButton} from "./buttons"
 import {OpSelect} from "./select"
-import {OpLabelsInput} from "./label"
+import {OpLabelGroup} from "./label"
 
-export class OptionRow extends RXComponent{
-  constructor(value, schema, fieldName){
+export class RowBase extends RXComponent{
+  constructor(){
     super()
-    this.cssClass('option-row')
-    this.schema = schema
-    this.value = value
-    this.fieldName = fieldName
-
     this.valueChangedHandlers = new RXArray
-
     this.onValueChanged = (value)=>{
       this.valueChangedHandlers.forEach((handler)=>{
         handler(value, this.fieldName)
         this.updateLabelColor(this.input)
       })
     }
+  }
 
+  listenValueChaged(callback){
+    this.valueChangedHandlers.add(callback)
+  }
+
+  offValueChaged(callback){
+    this.valueChangedHandlers.remove(callback)
+  }
+
+}
+
+export class OptionRow extends RowBase{
+  constructor(value, schema, fieldName){
+    super()
+    this.cssClass('option-row')
+    this.schema = schema
+    this.value = value
+    this.fieldName = fieldName
     this.setLabel(schema.label)
     this.setInput(this.createInput())
   }
@@ -60,15 +72,12 @@ export class OptionRow extends RXComponent{
     if(schema.widget ==='OpSwitch'){
       return new OpSwitch(value, schema)
     }
+    if(schema.widget ==='OpLabelGroup'){
+      return new OpLabelGroup(value)
+    }
+
   }
 
-  listenValueChaged(callback){
-    this.valueChangedHandlers.add(callback)
-  }
-
-  offValueChaged(callback){
-    this.valueChangedHandlers.remove(callback)
-  }
 
 }
 

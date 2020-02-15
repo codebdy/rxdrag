@@ -75,13 +75,7 @@ export class OptionBox extends RXComponent{
       }
 
       row.listenValueChaged((value, fdName)=>{
-        //let fieldSchema = schema.fields[fdName]
-        //if(fieldSchema.isResponsive){
-        //  node.meta[fdName][this.screenWidth] = value
-        //}
-        //else{
-          node.meta[fdName] = value
-        //}
+        node.meta[fdName] = value
         this.valueChanged(node)
       })
 
