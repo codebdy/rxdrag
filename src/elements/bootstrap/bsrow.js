@@ -32,6 +32,7 @@ export class BSRow extends RXElement{
         group:'rowOptions',
         onValue:'',
         offValue:'no-gutters',
+        defaultValue:'',
       }//<----gutters
 
     //this.$schema.fields.hAlign = hAlign
