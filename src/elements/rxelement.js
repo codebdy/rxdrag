@@ -1,8 +1,9 @@
 import {Node} from "../core/node"
 import marginAuto from "./schemas/margin/margin-auto"
 import margin from "./schemas/margin"
-
 import padding from "./schemas/padding"
+import width from "./schemas/sizing/width"
+import height from "./schemas/sizing/height"
 
 export class RXElement extends Node{
   constructor() {
@@ -78,6 +79,18 @@ export class RXElement extends Node{
     this.addedFieldGroups.push('margin')
   }
 
+  addWidth(){
+    this.$schema.groups.dimension = this.groups.dimension
+    this.$meta.width = ''
+    this.$schema.fields.width = width
+  }
+
+  addHeight(){
+    this.$schema.groups.dimension = this.groups.dimension
+    this.$meta.height = ''
+    this.$schema.fields.height = height
+  }
+
   clone(){
     let copy = super.clone()
     copy.$meta.tag = this.$meta.tag
@@ -91,6 +104,9 @@ export class RXElement extends Node{
       this.copyMetaTo(this.$meta[fieldGroupName][fieldName], copy.$meta[fieldGroupName][fieldName])
       }
     })
+
+    copy.$meta.width = this.$meta.width
+    copy.$meta.height = this.$meta.height
     return copy
   }
 
@@ -114,6 +130,9 @@ export class RXElement extends Node{
       this.metaFieldToViewModel(model, this.$meta[fieldGroupName][fieldName])
       }
     })
+
+    model.classList.add(this.$meta.width)
+    model.classList.add(this.$meta.height)
 
     return model
   }

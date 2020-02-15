@@ -7,6 +7,8 @@ export class HTMLDiv extends RXElement{
     this.toolboxInfo.elementId = 'div'
     this.toolboxInfo.elementName = "DIV"
     this.className = 'HTMLDiv'
+    super.addWidth()
+    super.addHeight()
     super.addMargin()
     super.addPadding()
   }
@@ -17,7 +19,7 @@ export class HTMLDiv extends RXElement{
 
   toViewModel(){
     let model = super.toViewModel()
-    model.label.text = "Div"
+    model.label.text = "div"
     //model.classList.push('col')
     return model
   }

@@ -9,7 +9,7 @@ export class BSCol extends RXElement{
     super()
     this.toolboxInfo.groupId = 'groupGrid'
     this.toolboxInfo.elementId = 'column'
-    this.toolboxInfo.elementName = "Column"
+    this.toolboxInfo.elementName = "column"
     this.className = 'BSCol'
     this.widthDropMargin = 15;
     this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv']
