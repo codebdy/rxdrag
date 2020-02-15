@@ -28,7 +28,11 @@ export class OptionBox extends RXComponent{
   resizeScreen(screenWidth){
     this.screenWidth = screenWidth
     if(this.node){
+      //this.initGroup(this.node.schema.groups)
       this.editNode(this.node)
+      let activedGroup = this.state.activedGroup
+      this.state.activedGroup = ''
+      this.state.activedGroup = activedGroup
     }
   }
 
@@ -101,7 +105,7 @@ export class OptionBox extends RXComponent{
   initGroup(groups){
     for(var groupName in groups){
       let group = groups[groupName]
-      let groupCtrl = new OptionBoxGroup(group.label,groupName, this.state)
+      let groupCtrl = new OptionBoxGroup(group.label, groupName, this.state)
       this[groupName] = groupCtrl
       this.pushChild(groupCtrl)
     }
@@ -164,9 +168,6 @@ export class OptionBox extends RXComponent{
   }
 */
   clear(){
-    if(this['layout']){
-      this['layout'] = ''
-    }
     this.children.clear()
     this.setInnerHTML('')
   }
