@@ -133,6 +133,7 @@
   display: none;
   z-index: 100;
   white-space:nowrap;
+  min-width: 70px;
 }
 
 .option-row .two-column .select-list{

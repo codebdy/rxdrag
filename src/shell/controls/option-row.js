@@ -20,6 +20,7 @@ export class OptionRow extends RXComponent{
     this.onValueChanged = (value)=>{
       this.valueChangedHandlers.forEach((handler)=>{
         handler(value, this.fieldName)
+        this.updateLabelColor(this.input)
       })
     }
 
@@ -33,11 +34,11 @@ export class OptionRow extends RXComponent{
   }
 
   setInput(input){
+    this.input = input
     this.pushChild(input)
     this.updateLabelColor(input)
     input.listenValueChaged((value)=>{
       this.onValueChanged(value)
-      this.updateLabelColor(input)
     })
   }
 

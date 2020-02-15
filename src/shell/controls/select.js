@@ -53,10 +53,11 @@ export class OpSelect extends OpInput{
       this.pushChild(this.clearBtn)
       this.clearBtn.domOn('click', ()=>{
         this.valueViewer.setText(emptyValue)
-        if(this.value){
-          this.onValueChanged('')
-        }
+        let oldValue = this.value
         this.value = ''
+        if(oldValue){
+          this.onValueChanged(this.value)
+        }
       })
     }
     this.pushChild(this.valueViewer)
