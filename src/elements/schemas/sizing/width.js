@@ -2,6 +2,7 @@ export default{
   label:'Width',
   group:'dimension',
   widget:'OpSelect',
+  defaultValue:'',
   list:{
     'w-25':'25%',
     'w-50':'50%',

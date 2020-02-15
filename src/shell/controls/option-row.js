@@ -14,8 +14,8 @@ export class RowBase extends RXComponent{
     this.onValueChanged = (value)=>{
       this.valueChangedHandlers.forEach((handler)=>{
         handler(value, this.fieldName)
-        //this.updateLabelColor(this.input)
       })
+      this.updateLabelColor(this.input)
     }
   }
 
@@ -56,10 +56,10 @@ export class OptionRow extends RowBase{
 
   updateLabelColor(input){
     if(input.isShowingDefault()){
-      this.removeCssClass('no-default')
+      this.removeCssClass('changed')
     }
     else{
-      this.cssClass('no-default')
+      this.cssClass('changed')
     }
   }
 

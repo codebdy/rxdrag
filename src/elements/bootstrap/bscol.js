@@ -15,14 +15,14 @@ export class BSCol extends RXElement{
     this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv']
 
     //this.$meta.baseClass = ['col'] 
-    this.$meta.width = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.width.md = 'col-md'
+    this.$meta.colWidth = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.colWidth.md = 'col-md'
 
-    this.$meta.offset = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.colOffset = {xs:'', sm:'', md:'', lg:'', xl:''}
 
-    this.$meta.alignSelf = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.colAlignSelf = {xs:'', sm:'', md:'', lg:'', xl:''}
 
-    this.$meta.order = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.colOrder = {xs:'', sm:'', md:'', lg:'', xl:''}
 
 
     this.$schema.groups = {
@@ -31,10 +31,10 @@ export class BSCol extends RXElement{
       }
     }
 
-    this.$schema.fields.width = colWidth
-    this.$schema.fields.offset = colOffset
-    this.$schema.fields.alignSelf = colAlignSelf
-    this.$schema.fields.order = colOrder
+    this.$schema.fields.colWidth = colWidth
+    this.$schema.fields.colOffset = colOffset
+    this.$schema.fields.colAlignSelf = colAlignSelf
+    this.$schema.fields.colOrder = colOrder
     super.addMargin()
     super.addPadding()
   }
@@ -45,10 +45,10 @@ export class BSCol extends RXElement{
 
   clone(){
     let copy = super.clone()
-    super.copyMetaTo(this.$meta.width, copy.$meta.width)
-    super.copyMetaTo(this.$meta.offset, copy.$meta.offset)
-    super.copyMetaTo(this.$meta.alignSelf, copy.$meta.alignSelf)
-    super.copyMetaTo(this.$meta.order, copy.$meta.order)
+    super.copyMetaTo(this.$meta.colWidth, copy.$meta.colWidth)
+    super.copyMetaTo(this.$meta.colOffset, copy.$meta.colOffset)
+    super.copyMetaTo(this.$meta.colAlignSelf, copy.$meta.colAlignSelf)
+    super.copyMetaTo(this.$meta.colOrder, copy.$meta.colOrder)
 
     return copy
   }
@@ -57,10 +57,10 @@ export class BSCol extends RXElement{
     let model = super.toViewModel()
     model.label.text = "Column"
 
-    super.metaFieldToViewModel(model, this.$meta.width)
-    super.metaFieldToViewModel(model, this.$meta.offset)
-    super.metaFieldToViewModel(model, this.$meta.alignSelf)
-    super.metaFieldToViewModel(model, this.$meta.order)
+    super.metaFieldToViewModel(model, this.$meta.colWidth)
+    super.metaFieldToViewModel(model, this.$meta.colOffset)
+    super.metaFieldToViewModel(model, this.$meta.colAlignSelf)
+    super.metaFieldToViewModel(model, this.$meta.colOrder)
 
     return model
   }

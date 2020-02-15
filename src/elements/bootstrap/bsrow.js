@@ -62,10 +62,9 @@ export class BSRow extends RXElement{
     model.label.text = "Row"
     model.classList.push(this.$meta.baseClass)
     model.classList.push(this.$meta.gutters)
-    model.classList.push('bg-warning')
 
-    super.metaFieldToViewModel(model, 'hAlign')
-    super.metaFieldToViewModel(model, 'vAlign')
+    super.metaFieldToViewModel(model, this.$meta.hAlign)
+    super.metaFieldToViewModel(model, this.$meta.vAlign)
 
     return model
   }

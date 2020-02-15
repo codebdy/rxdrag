@@ -79,10 +79,10 @@ export class OptionRowGroup extends RowBase{
     })
 
     if(showingDefault){
-      this.titleRow.removeCssClass('no-default')
+      this.titleRow.removeCssClass('changed')
     }
     else{
-      this.titleRow.cssClass('no-default')
+      this.titleRow.cssClass('changed')
     }
   }
 

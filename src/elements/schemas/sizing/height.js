@@ -2,6 +2,7 @@ export default{
   label:'Height',
   group:'dimension',
   widget:'OpSelect',
+  defaultValue:'',
   list:{
     'h-25':'25%',
     'h-50':'50%',

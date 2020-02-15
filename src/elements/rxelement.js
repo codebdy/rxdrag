@@ -1,9 +1,9 @@
 import {Node} from "../core/node"
 import marginAuto from "./schemas/margin/margin-auto"
-import margin from "./schemas/margin"
-import padding from "./schemas/padding"
-import width from "./schemas/sizing/width"
-import height from "./schemas/sizing/height"
+import baseMargin from "./schemas/margin"
+import basePadding from "./schemas/padding"
+import baseWidth from "./schemas/sizing/width"
+import baseHeight from "./schemas/sizing/height"
 
 export class RXElement extends Node{
   constructor() {
@@ -51,44 +51,44 @@ export class RXElement extends Node{
 //---
   addPadding(){
     this.$schema.groups.dimension = this.groups.dimension
-    this.$meta.padding = {}
-    this.$meta.padding.all = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.padding.horizontal = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.padding.vertical = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.padding.top = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.padding.bottom = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.padding.left = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.padding.right = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.basePadding = {}
+    this.$meta.basePadding.all = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.basePadding.horizontal = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.basePadding.vertical = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.basePadding.top = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.basePadding.bottom = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.basePadding.left = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.basePadding.right = {xs:'', sm:'', md:'', lg:'', xl:''}
 
-    this.$schema.fields.padding = padding
-    this.addedFieldGroups.push('padding')
+    this.$schema.fields.basePadding = basePadding
+    this.addedFieldGroups.push('basePadding')
   }
 
   addMargin(){
     this.$schema.groups.dimension = this.groups.dimension
-    this.$meta.margin = {}
-    this.$meta.margin.all = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.margin.horizontal = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.margin.vertical = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.margin.top = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.margin.bottom = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.margin.left = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.margin.right = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.baseMargin = {}
+    this.$meta.baseMargin.all = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.baseMargin.horizontal = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.baseMargin.vertical = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.baseMargin.top = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.baseMargin.bottom = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.baseMargin.left = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.baseMargin.right = {xs:'', sm:'', md:'', lg:'', xl:''}
 
-    this.$schema.fields.margin = margin
-    this.addedFieldGroups.push('margin')
+    this.$schema.fields.baseMargin = baseMargin
+    this.addedFieldGroups.push('baseMargin')
   }
 
   addWidth(){
     this.$schema.groups.dimension = this.groups.dimension
-    this.$meta.width = ''
-    this.$schema.fields.width = width
+    this.$meta.baseWidth = ''
+    this.$schema.fields.baseWidth = baseWidth
   }
 
   addHeight(){
     this.$schema.groups.dimension = this.groups.dimension
-    this.$meta.height = ''
-    this.$schema.fields.height = height
+    this.$meta.baseHeight = ''
+    this.$schema.fields.baseHeight = baseHeight
   }
 
   clone(){
@@ -105,8 +105,8 @@ export class RXElement extends Node{
       }
     })
 
-    copy.$meta.width = this.$meta.width
-    copy.$meta.height = this.$meta.height
+    copy.$meta.baseWidth = this.$meta.baseWidth
+    copy.$meta.baseHeight = this.$meta.baseHeight
     return copy
   }
 
@@ -131,8 +131,8 @@ export class RXElement extends Node{
       }
     })
 
-    model.classList.add(this.$meta.width)
-    model.classList.add(this.$meta.height)
+    model.classList.add(this.$meta.baseWidth)
+    model.classList.add(this.$meta.baseHeight)
 
     return model
   }
