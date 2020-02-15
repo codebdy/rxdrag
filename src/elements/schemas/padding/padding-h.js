@@ -1,9 +1,7 @@
 export default{
-  widget:'OptionRowGroup',
-  group:'padding',
+  isResponsive:true,
   xs:{
-    label:'Padding(H)',
-    isFirst:true,
+    label:'Horizontal',
     widget:'OpSelect',
     list:{
       'px-0':'0',
@@ -16,7 +14,7 @@ export default{
   },
   //---------------------
   sm:{
-    label:'SM',
+    label:'Horizontal',
     widget:'OpSelect',
     list:{
       'px-sm-0':'0',
@@ -29,7 +27,7 @@ export default{
   },
   //---------------------
   md:{
-    label:'MD',
+    label:'Horizontal',
     widget:'OpSelect',
     list:{
       'px-md-0':'0',
@@ -42,7 +40,7 @@ export default{
   },
   //---------------------
   lg:{
-    label:'LG',
+    label:'Horizontal',
     widget:'OpSelect',
     list:{
       'px-lg-0':'0',
@@ -55,7 +53,7 @@ export default{
   },
   //---------------------
   xl:{
-    label:'XL',
+    label:'Horizontal',
     widget:'OpSelect',
     list:{
       'px-xl-0':'0',

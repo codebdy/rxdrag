@@ -40,6 +40,7 @@ export class BSRow extends RXElement{
 
     super.addMarginAuto()
     super.addMargin()
+    super.addPadding()
   }
  
   make(){

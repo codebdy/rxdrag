@@ -1,14 +1,8 @@
 import {Node} from "../core/node"
 import marginAuto from "./schemas/margin/margin-auto"
-import margin from "./schemas/margin/margin"
+import margin from "./schemas/margin"
 
-import paddingAll from "./schemas/padding/padding-all"
-import paddingH from "./schemas/padding/padding-h"
-import paddingV from "./schemas/padding/padding-v"
-import paddingTop from "./schemas/padding/padding-t"
-import paddingBottom from "./schemas/padding/padding-b"
-import paddingLeft from "./schemas/padding/padding-l"
-import paddingRight from "./schemas/padding/padding-r"
+import padding from "./schemas/padding"
 
 export class RXElement extends Node{
   constructor() {
@@ -31,17 +25,17 @@ export class RXElement extends Node{
     //Typography：字体（暂缓），颜色，对齐
     //Decorations：边框、颜色、阴影，透明度
     this.groups = {
-      'margin':{
-        label:'Margin',
+      'dimension':{
+        label:'Dimension',
       },
-      'padding':{
-        label:'Padding',
+      'xxxx':{
+        label:'xxx',
       },
     }
   }
 
   addMarginAuto(){
-    this.$schema.groups.margin = this.groups.margin
+    this.$schema.groups.dimension = this.groups.dimension
     this.$meta.marginAuto = {xs:'', sm:'', md:'', lg:'', xl:''}
 
     this.$schema.fields.marginAuto = marginAuto
@@ -50,16 +44,23 @@ export class RXElement extends Node{
   }
 
 //---
-  addPaddingAll(){
-    this.$schema.groups.padding = this.groups.padding
-    this.$meta.paddingAll = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$schema.fields.paddingAll = paddingAll
+  addPadding(){
+    this.$schema.groups.dimension = this.groups.dimension
+    this.$meta.padding = {}
+    this.$meta.padding.all = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.padding.horizontal = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.padding.vertical = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.padding.top = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.padding.bottom = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.padding.left = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.padding.right = {xs:'', sm:'', md:'', lg:'', xl:''}
 
-    this.addedFeilds.push('paddingAll')
+    this.$schema.fields.padding = padding
+    this.addedFieldGroups.push('padding')
   }
 
   addMargin(){
-    this.$schema.groups.margin = this.groups.margin
+    this.$schema.groups.dimension = this.groups.dimension
     this.$meta.margin = {}
     this.$meta.margin.all = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$meta.margin.horizontal = {xs:'', sm:'', md:'', lg:'', xl:''}
