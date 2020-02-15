@@ -133,9 +133,11 @@ export class RXComponent{
   }
 
   refresh(){
-    let parentDomElement = this.$dom.parentNode
-    this.destory()
-    this.render(parentDomElement)
+    if(this.$dom){
+      let parentDomElement = this.$dom.parentNode
+      this.destory()
+      this.render(parentDomElement)
+    }
   }
 
   setInnerHTML(innerHTML){

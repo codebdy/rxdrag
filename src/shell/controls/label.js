@@ -37,31 +37,51 @@ export class OpLabelGroup extends OpInput{
     super()
     this.cssClass('op-label-group')
     this.values = new RXArray
-    this.values.push('test1')
-    this.values.push('test2')
-    this.values.push('ml-md-0')
-   //this.labelGroup = new RXComponent().cssClass('op-label-group')
-    //this.pushChild(
-    //    new RXComponent().pushChild(this.labelGroup)
-    //  )
-
+    this.onRemoveValue = (value)=>{}
     this.addLabels()
+    this.checkEmperty()
+  }
 
+  addLabel(value){
+    if(!value) return
+    this.values.add(value)
+    let label = new OpLabel(value).setRightIcon('×')
+    label.rightIconClick = (labelText)=>{
+      this.removeLabel(labelText)
+      this.onRemoveValue(labelText)
+    }
+    this.pushChild(label)
   }
 
   addLabels(){
     this.clearChild()
     this.values.forEach((value)=>{
-      let label = new OpLabel(value).setRightIcon('×')
-      label.rightIconClick = (labelText)=>{
-        this.removeLabel(labelText)
-      }
-      this.pushChild(label)
+      this.addLabel(value)
     })
+  }
+
+  checkEmperty(){
+    if(this.values.length === 0){
+      this.setInnerHTML('<div class="not-set-value">NOT SET</div>')
+    }
+    else{
+      this.setInnerHTML('')
+    }
+  }
+
+  setValues(values){
+    this.clearChild()
+    this.values.length = 0
+    values.forEach((value)=>{
+      this.addLabel(value)
+    })
+    this.checkEmperty()
+    this.refresh()
   }
 
   removeLabel(labelText){
     this.values.remove(labelText)
+    this.checkEmperty()
     this.addLabels()
     this.refresh()
   }

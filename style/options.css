@@ -178,7 +178,15 @@
   flex-flow:row;
   flex-wrap: wrap;
   flex: 1;
+  align-items: center;
 }
+
+.option-row .op-label-group .not-set-value{
+  font-size: 11px;
+  color:#a0a0a0;
+  padding-top:6px;
+}
+
 .option-row .op-labels-input .label-input{
   width:100%;
   margin:1px;

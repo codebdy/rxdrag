@@ -29,12 +29,13 @@ export class OptionRowGroup extends RowBase{
     this.titleRow.rowLabel.domOn('click',()=>{
       this.tongle('sub-row-collapse')
     })
+    this.titleRow.input.setValues(this.getValuesOnLabel())
 
     this.pushChild(this.titleRow)
     this.body = new OptionRowGroupBody
     this.pushChild(this.body)
 
-      console.log(schema)
+      //console.log(schema)
     for(var fieldName in schema.fields){
       let fieldSchema = schema.fields[fieldName]
       let metaValue = value[fieldName]
@@ -58,6 +59,22 @@ export class OptionRowGroup extends RowBase{
       //this.cssClass('sub-row-collapse')
     //}
   }//
+
+  getValuesOnLabel(){
+    let schema = this.schema
+    let values = []
+    for(var fieldName in schema.fields){
+      if(schema.fields[fieldName].isResponsive){
+        values.push(this.value[fieldName][this.screenWidth])
+      }
+      else{
+        values.push(this.value[fieldName])
+      }
+    }
+    values.push('m-0')
+    values.push('my-sm-4')
+    return values
+  }
 
 }
 
