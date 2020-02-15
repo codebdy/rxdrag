@@ -94,11 +94,14 @@ export class RXEditorFM{
                      .pushChild(this.workspace)
                      .render(this.domElement)
     this.workspace.resizeScreen(this.state.screenWidth)
-    this.state.watch('screenWidth', (state)=>{
-      this.workspace.resizeScreen(state.screenWidth)
-    })
 
     this.drawer = new Drawer()
+    this.drawer.optionBox.screenWidth = this.state.screenWidth
+    
+    this.state.watch('screenWidth', (state)=>{
+      this.workspace.resizeScreen(state.screenWidth)
+      this.drawer.optionBox.screenWidth = state.screenWidth
+    })
 
     this.state.watch('showDrawer', (state)=>{
       this.drawer.$dom.style.width = state.showDrawer ? '250px' : '0'

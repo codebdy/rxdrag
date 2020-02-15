@@ -1,9 +1,9 @@
 export default{
-  widget:'OpSelect',
   group:'rowOptions',
   isResponsive:true,
-  label:'Align Cols(V)',
   xs:{
+    widget:'OpSelect',
+    label:'Align Cols(V)',
     list:{
       'align-items-start':'Start',
       'align-items-end':'End',
@@ -14,6 +14,8 @@ export default{
   },
   //---------------------
   sm:{
+    widget:'OpSelect',
+    label:'Align Cols(V)',
     list:{
       'align-items-sm-start':'Start',
       'align-items-sm-end':'End',
@@ -24,6 +26,8 @@ export default{
   },
   //---------------------
   md:{
+    widget:'OpSelect',
+    label:'Align Cols(V)',
     list:{
       'align-items-md-start':'Start',
       'align-items-md-end':'End',
@@ -34,6 +38,8 @@ export default{
   },
   //---------------------
   lg:{
+    widget:'OpSelect',
+    label:'Align Cols(V)',
     list:{
       'align-items-lg-start':'Start',
       'align-items-lg-end':'End',
@@ -44,6 +50,8 @@ export default{
   },
   //---------------------
   xl:{
+    widget:'OpSelect',
+    label:'Align Cols(V)',
     list:{
       'align-items-xl-start':'Start',
       'align-items-xl-end':'End',

@@ -17,6 +17,7 @@ export class OptionBoxGroup extends ToolGroup{
 export class OptionBox extends RXComponent{
   constructor(){
     super()
+    this.screenWidth = 'md'
     this.state = new ToolboxState
     this.cssClass('toolbox')
     this.noFocusInnerHtml = `<div style="padding:20px;">No elements selected</div>`
@@ -61,9 +62,21 @@ export class OptionBox extends RXComponent{
       row.addInput(input)
       this.setInputDefaultValue(input, field)*/
       let fieldSchema = schema.fields[fieldName]
-      let row = new OptionRow(meta[fieldName], fieldSchema, fieldName)
+      let metaValue = meta[fieldName]
+      let row = new OptionRow(
+        fieldSchema.isResponsive ? metaValue[this.screenWidth] : metaValue, 
+        fieldSchema.isResponsive ? fieldSchema[this.screenWidth] : fieldSchema, 
+        fieldName
+      )
+      
       row.listenValueChaged((value, fdName)=>{
-        node.meta[fdName] = value
+        let fieldSchema = schema.fields[fieldName]
+        if(fieldSchema.isResponsive){
+          node.meta[fdName][this.screenWidth] = value
+        }
+        else{
+          node.meta[fdName] = value
+        }
         this.valueChanged(node)
       })
 

@@ -48,14 +48,22 @@ export class OptionRow extends RXComponent{
   }
 
   createInput(){
-    let schema = this.schema
-
+    let schema = this.getSchema()
+    let value = this.getValue()
     if(schema.widget ==='OpSelect'){
-      return new OpSelect(this.value, schema)
+      return new OpSelect(value, schema)
     }
     if(schema.widget ==='OpSwitch'){
-      return new OpSwitch(this.value, schema)
+      return new OpSwitch(value, schema)
     }
+  }
+
+  getSchema(){
+    return this.schema
+  }
+
+  getValue(){
+    return this.value
   }
 
   listenValueChaged(callback){
@@ -67,6 +75,21 @@ export class OptionRow extends RXComponent{
   }
 
 }
+
+/*export class OptionRowForResponsive extends OptionRow{
+  constructor(value, schema, fieldName){
+    super(value, schema, fieldName)
+  }
+
+  getSchema(){
+    return this.schema.sm
+  }
+
+  getValue(){
+    return this.value.sm
+  }
+
+}*/
 
 export class OptionRowLabel extends RXComponent{
   constructor(label){

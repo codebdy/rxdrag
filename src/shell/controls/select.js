@@ -42,12 +42,13 @@ export class OpSelect extends OpInput{
       this.cssClass('two-column')
     }
     this.cssClass('ctl-select')
+    let list = schema.list
     //this.fieldName = fieldName
     //this.value = value
     this.valueViewer = new OpLabel()
     //this.valueChanged = (value, fieldName)=>{}
     var emptyValue = 'Default'
-    if(!required){
+    if(!schema.required){
       this.clearBtn = new OpIconButton('×')
       this.pushChild(this.clearBtn)
       this.clearBtn.domOn('click', ()=>{
@@ -60,7 +61,7 @@ export class OpSelect extends OpInput{
     }
     this.pushChild(this.valueViewer)
 
-    this.listViewer = new SelectedList(list, required)
+    this.listViewer = new SelectedList(list, schema.required)
     this.valueViewer.setText(value?list[value]:emptyValue)
     this.valueViewer.setRightIcon('▾')
     this.pushChild(this.listViewer)

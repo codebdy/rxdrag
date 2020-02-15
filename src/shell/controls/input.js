@@ -25,13 +25,6 @@ export class OpInput extends RXComponent{
     this.defaultValue = defaultValue
   }
 
-  /*setDefaultValue(defaultValue){
-    this.defaultValue = defaultValue
-    if(defaultValue !== this.value){
-       this.distributeDifferentEvent(this.value)
-    }
-  }*/
-
   distributeSameEvent(value){
     this.sameToDefaultHandlers.forEach((handler)=>{
       handler(value)
