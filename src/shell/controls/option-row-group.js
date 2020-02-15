@@ -51,6 +51,7 @@ export class OptionRowGroup extends RowBase{
         this.value[fdName] = value
         this.onValueChanged(this.value)
         this.titleRow.input.setValues(this.getValuesOnLabel())
+        this.updateLabelColor()
       })
       row.rowLabel.cssClass('sub-label')
       this.body.pushChild(row)
@@ -63,11 +64,27 @@ export class OptionRowGroup extends RowBase{
         }
       })
     }
-
+    this.updateLabelColor()
     //if(!isShowSub){
       //this.cssClass('sub-row-collapse')
     //}
   }//
+
+  updateLabelColor(){
+    var showingDefault = true
+    this.body.children.forEach((row)=>{
+      if(!row.input.isShowingDefault()){
+        showingDefault = false
+      }
+    })
+
+    if(showingDefault){
+      this.titleRow.removeCssClass('no-default')
+    }
+    else{
+      this.titleRow.cssClass('no-default')
+    }
+  }
 
   getValuesOnLabel(){
     let schema = this.schema
