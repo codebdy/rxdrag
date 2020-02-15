@@ -36,34 +36,43 @@ export class OptionRow extends RXComponent{
     this.pushChild(input)
     input.listenValueChaged((value)=>{
       this.onValueChanged(value)
+      this.updateLabelColor(input)
     })
 
-    input.listenDifferentFromDefault(()=>{
+    /*input.listenDifferentFromDefault(()=>{
       this.cssClass('no-default')
     })
 
     input.listenSameToDefault(()=>{
       this.removeCssClass('no-default')
     })
+
+    if(input.isShowingDefault){
+      this.removeCssClass('no-default')
+    }
+    else{
+
+    }*/
+  }
+
+  updateLabelColor(input){
+    if(input.isShowingDefault){
+      this.removeCssClass('no-default')
+    }
+    else{
+      this.cssClass('no-default')
+    }
   }
 
   createInput(){
-    let schema = this.getSchema()
-    let value = this.getValue()
+    let schema = this.schema
+    let value = this.value
     if(schema.widget ==='OpSelect'){
       return new OpSelect(value, schema)
     }
     if(schema.widget ==='OpSwitch'){
       return new OpSwitch(value, schema)
     }
-  }
-
-  getSchema(){
-    return this.schema
-  }
-
-  getValue(){
-    return this.value
   }
 
   listenValueChaged(callback){

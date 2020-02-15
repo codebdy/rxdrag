@@ -5,36 +5,18 @@ export class OpInput extends RXComponent{
   constructor(value='', defaultValue = ''){
     super()
     this.valueChangedHandlers = new RXArray
-    this.differentFromDefaultHandlers = new RXArray
-    this.sameToDefaultHandlers = new RXArray;
 
     this.onValueChanged = (value)=>{
       this.valueChangedHandlers.forEach((handler)=>{
         handler(value)
       })
-
-      if(value === this.defaultValue){
-        this.distributeSameEvent(value)
-      }
-      else{
-        this.distributeDifferentEvent(value)
-      }
-
     }
     this.value = value
     this.defaultValue = defaultValue
   }
 
-  distributeSameEvent(value){
-    this.sameToDefaultHandlers.forEach((handler)=>{
-      handler(value)
-    })
-  }
-
-  distributeDifferentEvent(value){
-    this.differentFromDefaultHandlers.forEach((handler)=>{
-      handler(value)
-    })
+  isShowingDefault(){
+    return this.defaultValue === this.value
   }
 
   listenValueChaged(callback){
@@ -44,21 +26,4 @@ export class OpInput extends RXComponent{
   offValueChaged(callback){
     this.valueChangedHandlers.remove(callback)
   }
-
-  listenDifferentFromDefault(callback){
-    this.differentFromDefaultHandlers.add(callback)
-  }
-
-  offDifferentFromDefault(callback){
-    this.differentFromDefaultHandlers.remove(callback)
-  }
-
-  listenSameToDefault(callback){
-    this.sameToDefaultHandlers.add(callback)
-  }
-
-  offSameToDefault(callback){
-    this.sameToDefaultHandlers.remove(callback)
-  }
-
 } 

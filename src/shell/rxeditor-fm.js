@@ -97,10 +97,10 @@ export class RXEditorFM{
 
     this.drawer = new Drawer()
     this.drawer.optionBox.screenWidth = this.state.screenWidth
-    
+
     this.state.watch('screenWidth', (state)=>{
       this.workspace.resizeScreen(state.screenWidth)
-      this.drawer.optionBox.screenWidth = state.screenWidth
+      this.drawer.optionBox.resizeScreen(state.screenWidth)
     })
 
     this.state.watch('showDrawer', (state)=>{

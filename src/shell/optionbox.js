@@ -25,6 +25,13 @@ export class OptionBox extends RXComponent{
     this.valueChanged = (node)=>{}
   }
 
+  resizeScreen(screenWidth){
+    this.screenWidth = screenWidth
+    if(this.node){
+      this.editNode(this.node)
+    }
+  }
+
   editNode(node){
     this.clear()
     this.node = node
@@ -63,12 +70,13 @@ export class OptionBox extends RXComponent{
       this.setInputDefaultValue(input, field)*/
       let fieldSchema = schema.fields[fieldName]
       let metaValue = meta[fieldName]
+      console.log('metaValue:', metaValue)
       let row = new OptionRow(
         fieldSchema.isResponsive ? metaValue[this.screenWidth] : metaValue, 
         fieldSchema.isResponsive ? fieldSchema[this.screenWidth] : fieldSchema, 
         fieldName
       )
-      
+
       row.listenValueChaged((value, fdName)=>{
         let fieldSchema = schema.fields[fieldName]
         if(fieldSchema.isResponsive){
