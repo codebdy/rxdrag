@@ -32,15 +32,11 @@ export class BSCol extends RXElement{
     }
 
     this.$schema.fields.width = colWidth
-
     this.$schema.fields.offset = colOffset
-
     this.$schema.fields.alignSelf = colAlignSelf
-
     this.$schema.fields.order = colOrder
-
     super.addMargin()
-    //super.addPadding()
+    super.addPadding()
   }
 
   make(){
@@ -61,10 +57,10 @@ export class BSCol extends RXElement{
     let model = super.toViewModel()
     model.label.text = "Column"
 
-    super.metaFieldToViewModel(model, 'width')
-    super.metaFieldToViewModel(model, 'offset')
-    super.metaFieldToViewModel(model, 'alignSelf')
-    super.metaFieldToViewModel(model, 'order')
+    super.metaFieldToViewModel(model, this.$meta.width)
+    super.metaFieldToViewModel(model, this.$meta.offset)
+    super.metaFieldToViewModel(model, this.$meta.alignSelf)
+    super.metaFieldToViewModel(model, this.$meta.order)
 
     return model
   }

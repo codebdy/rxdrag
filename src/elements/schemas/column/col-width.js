@@ -1,9 +1,8 @@
 export default{
-  widget:'OptionRowGroup',
   group:'columnOptions',
+  isResponsive:true,
   xs:{
     label:'Width',
-    isFirst:true,
     widget:'OpSelect',
     columns:2,
     list:{
@@ -25,7 +24,7 @@ export default{
   },
   //---------------------
   sm:{
-    label:'SM',
+    label:'Width',
     widget:'OpSelect',
     columns:2,
     list:{
@@ -47,7 +46,7 @@ export default{
   },
   //---------------------
   md:{
-    label:'MD',
+    label:'Width',
     widget:'OpSelect',
     columns:2,
     list:{
@@ -69,7 +68,7 @@ export default{
   },
   //---------------------
   lg:{
-    label:'LG',
+    label:'Width',
     widget:'OpSelect',
     columns:2,
     list:{
@@ -91,7 +90,7 @@ export default{
   },
   //---------------------
   xl:{
-    label:'XL',
+    label:'Width',
     widget:'OpSelect',
     columns:2,
     list:{

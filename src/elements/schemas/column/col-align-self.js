@@ -1,9 +1,8 @@
 export default{
-  widget:'OptionRowGroup',
   group:'columnOptions',
+  isResponsive:true,
   xs:{
     label:'Align Self',
-    isFirst:true,
     widget:'OpSelect',
     list:{
       'align-self-auto':'Auto',
@@ -16,7 +15,7 @@ export default{
   },
   //---------------------
   sm:{
-    label:'SM',
+    label:'Align Self',
     widget:'OpSelect',
     list:{
       'align-self-sm-auto':'Auto',
@@ -29,7 +28,7 @@ export default{
   },
   //---------------------
   md:{
-    label:'MD',
+    label:'Align Self',
     widget:'OpSelect',
     list:{
       'align-self-md-auto':'Auto',
@@ -42,7 +41,7 @@ export default{
   },
   //---------------------
   lg:{
-    label:'LG',
+    label:'Align Self',
     widget:'OpSelect',
     list:{
       'align-self-lg-auto':'Auto',
@@ -55,7 +54,7 @@ export default{
   },
   //---------------------
   xl:{
-    label:'XL',
+    label:'Align Self',
     widget:'OpSelect',
     list:{
       'align-self-xl-auto':'Auto',
