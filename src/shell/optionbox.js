@@ -1,6 +1,7 @@
 import {RXComponent} from "../basic/rxcomponent"
 import {ToolGroup, ToolboxState} from "./controls/tool-group"
-import {OptionRow} from "./controls/option-row"
+import {OptionRow, OptionResponsiveRow} from "./controls/option-row"
+import {OptionRowGroup} from "./controls/option-row-group"
 
 
 export class OptionBoxGroup extends ToolGroup{
@@ -58,37 +59,29 @@ export class OptionBox extends RXComponent{
     var schema = node.schema
     this.initGroup(schema.groups)
     for(var fieldName in schema.fields){
-      /*
 
-      let input = this.createWidget(this.node.meta, field, fieldName)
-      //input.fieldName = fieldName
-      input.listenValueChaged((value, fdName)=>{
-        node.meta[fdName] = value
-        this.valueChanged(node)
-      })
-      let row = new OptionRow()
-      if(field.label){
-        row.addRowLabel(new OptionRowLabel(field.label))
-      }
-      row.addInput(input)
-      this.setInputDefaultValue(input, field)*/
       let fieldSchema = schema.fields[fieldName]
       let metaValue = meta[fieldName]
       //console.log('metaValue:', metaValue)
-      let row = new OptionRow(
-        fieldSchema.isResponsive ? metaValue[this.screenWidth] : metaValue, 
-        fieldSchema.isResponsive ? fieldSchema[this.screenWidth] : fieldSchema, 
-        fieldName
-      )
+      var row
+      if(fieldSchema.isRowGroup){
+        row = new OptionRowGroup(metaValue, fieldSchema, fieldName, this.screenWidth)
+      }
+      else if(fieldSchema.isResponsive){
+        row = new OptionResponsiveRow(metaValue, fieldSchema, fieldName, this.screenWidth)
+      }
+      else{
+        row = new OptionRow(metaValue, fieldSchema, fieldName)
+      }
 
       row.listenValueChaged((value, fdName)=>{
-        let fieldSchema = schema.fields[fdName]
-        if(fieldSchema.isResponsive){
-          node.meta[fdName][this.screenWidth] = value
-        }
-        else{
+        //let fieldSchema = schema.fields[fdName]
+        //if(fieldSchema.isResponsive){
+        //  node.meta[fdName][this.screenWidth] = value
+        //}
+        //else{
           node.meta[fdName] = value
-        }
+        //}
         this.valueChanged(node)
       })
 

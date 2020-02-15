@@ -38,7 +38,7 @@ export class BSRow extends RXElement{
     this.$schema.fields.hAlign = hAlign
     this.$schema.fields.vAlign = vAlign
 
-    super.addMargin()
+    super.addMarginAuto()
     //super.addPadding()
   }
  

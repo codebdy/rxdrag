@@ -40,7 +40,7 @@ export class BSCol extends RXElement{
     this.$schema.fields.order = colOrder
 
     super.addMargin()
-    super.addPadding()
+    //super.addPadding()
   }
 
   make(){

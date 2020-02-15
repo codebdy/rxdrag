@@ -1,8 +1,7 @@
 export default{
-  group:'margin',
   isResponsive:true,
   xs:{
-    label:'Margin All',
+    label:'All',
     widget:'OpSelect',
     list:{
       'm-0':'0',
@@ -15,7 +14,7 @@ export default{
   },
   //---------------------
   sm:{
-    label:'Margin All',
+    label:'All',
     widget:'OpSelect',
     list:{
       'm-sm-0':'0',
@@ -28,7 +27,7 @@ export default{
   },
   //---------------------
   md:{
-    label:'Margin All',
+    label:'All',
     widget:'OpSelect',
     list:{
       'm-md-0':'0',
@@ -41,7 +40,7 @@ export default{
   },
   //---------------------
   lg:{
-    label:'Margin All',
+    label:'All',
     widget:'OpSelect',
     list:{
       'm-lg-0':'0',
@@ -54,7 +53,7 @@ export default{
   },
   //---------------------
   xl:{
-    label:'Margin All',
+    label:'All',
     widget:'OpSelect',
     list:{
       'm-xl-0':'0',

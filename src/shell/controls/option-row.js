@@ -87,6 +87,23 @@ export class OptionRow extends RXComponent{
 
 }*/
 
+export class OptionResponsiveRow extends OptionRow{
+  constructor(value, schema, fieldName, screenWidth){
+    super(value[screenWidth], schema[screenWidth], fieldName)
+    this.screenWidth = screenWidth
+    this.allValue = value
+    this.allSchema = schema
+
+    this.onValueChanged = (value)=>{
+      this.valueChangedHandlers.forEach((handler)=>{
+        this.allValue[this.screenWidth] = value
+        handler(this.allValue, this.fieldName)
+        this.updateLabelColor(this.input)
+      })
+    }
+  }  
+}
+
 export class OptionRowLabel extends RXComponent{
   constructor(label){
     super()
@@ -95,7 +112,7 @@ export class OptionRowLabel extends RXComponent{
   }
 }
 
-export class OptionRowGroup extends OpInput{
+/*export class OptionRowGroup extends OpInput{
   constructor(isShowSub = false){
     super()
     this.cssClass('option-row-group')
@@ -131,3 +148,4 @@ class OptionRowGroupBody extends RXComponent{
     this.cssClass('option-row-group-body')
   }
 }
+*/
