@@ -35,7 +35,7 @@ export class OptionRowGroup extends RowBase{
     this.body = new OptionRowGroupBody
     this.pushChild(this.body)
 
-      //console.log(schema)
+    //构造子行
     for(var fieldName in schema.fields){
       let fieldSchema = schema.fields[fieldName]
       let metaValue = value[fieldName]
@@ -54,6 +54,14 @@ export class OptionRowGroup extends RowBase{
       })
       row.rowLabel.cssClass('sub-label')
       this.body.pushChild(row)
+    }
+
+    this.titleRow.input.onRemoveValue = (value)=>{
+      this.body.children.forEach((row)=>{
+        if(row.input.value === value){
+          row.input.clear()
+        }
+      })
     }
 
     //if(!isShowSub){

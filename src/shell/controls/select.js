@@ -47,23 +47,18 @@ export class OpSelect extends OpInput{
     //this.value = value
     this.valueViewer = new OpLabel()
     //this.valueChanged = (value, fieldName)=>{}
-    var emptyValue = 'Default'
+    this.emptyValue = 'Default'
     if(!schema.required){
       this.clearBtn = new OpIconButton('×')
       this.pushChild(this.clearBtn)
       this.clearBtn.domOn('click', ()=>{
-        this.valueViewer.setText(emptyValue)
-        let oldValue = this.value
-        this.value = ''
-        if(oldValue){
-          this.onValueChanged(this.value)
-        }
+        this.clear()
       })
     }
     this.pushChild(this.valueViewer)
 
     this.listViewer = new SelectedList(list, schema.required)
-    this.valueViewer.setText(value?list[value]:emptyValue)
+    this.valueViewer.setText(value?list[value]:this.emptyValue)
     this.valueViewer.setRightIcon('▾')
     this.pushChild(this.listViewer)
 
@@ -91,6 +86,15 @@ export class OpSelect extends OpInput{
       this.listViewer.hide()
     }
 
+  }
+
+  clear(){
+    this.valueViewer.setText(this.emptyValue)
+    let oldValue = this.value
+    this.value = ''
+    if(oldValue){
+      this.onValueChanged(this.value)
+    }
   }
 
 
