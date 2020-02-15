@@ -1,7 +1,7 @@
 import {RXComponent} from "../../basic/rxcomponent"
 import {RXArray} from "../../basic/rxarray"
 import {ObjectState} from "../../basic/object-state"
-import {OptionRow, RowBase} from "./option-row"
+import {OptionRow, RowBase, OptionResponsiveRow} from "./option-row"
 import {OpLabel} from "./label"
 
 
@@ -33,6 +33,27 @@ export class OptionRowGroup extends RowBase{
     this.pushChild(this.titleRow)
     this.body = new OptionRowGroupBody
     this.pushChild(this.body)
+
+      console.log(schema)
+    for(var fieldName in schema.fields){
+      let fieldSchema = schema.fields[fieldName]
+      let metaValue = value[fieldName]
+      var row
+      if(fieldSchema.isResponsive){
+        row = new OptionResponsiveRow(metaValue, fieldSchema, fieldName, this.screenWidth)
+      }
+      else{
+        row = new OptionRow(metaValue, fieldSchema, fieldName)
+      }
+
+      row.listenValueChaged((value, fdName)=>{
+        //node.meta[fdName] = value
+        //this.valueChanged(node)
+      })
+      row.rowLabel.cssClass('sub-label')
+      this.body.pushChild(row)
+    }
+
     //if(!isShowSub){
       //this.cssClass('sub-row-collapse')
     //}

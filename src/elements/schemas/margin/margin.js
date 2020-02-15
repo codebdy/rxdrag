@@ -10,7 +10,7 @@ export default{
   group:'margin',
   label:'Margin',
   isRowGroup:true,
-  rows:{
+  fields:{
   	all : marginAll,
   	horizontal : marginH,
   	vertical : marginV,
