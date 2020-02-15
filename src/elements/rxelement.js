@@ -13,7 +13,8 @@ import paddingRight from "./schemas/padding/padding-r"
 export class RXElement extends Node{
   constructor() {
     super()
-    this.addedClassFeilds = []
+    this.addedFeilds = []
+    this.addedFieldGroups = []
     //基础数据，持久化也是这部分数据
     this.$meta = {
       tag:'div',
@@ -45,7 +46,7 @@ export class RXElement extends Node{
 
     this.$schema.fields.marginAuto = marginAuto
 
-    this.addedClassFeilds.push('marginAuto')
+    this.addedFeilds.push('marginAuto')
   }
 
 //---
@@ -54,7 +55,7 @@ export class RXElement extends Node{
     this.$meta.paddingAll = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$schema.fields.paddingAll = paddingAll
 
-    this.addedClassFeilds.push('paddingAll')
+    this.addedFeilds.push('paddingAll')
   }
 
   addMargin(){
@@ -69,15 +70,22 @@ export class RXElement extends Node{
     this.$meta.margin.right = {xs:'', sm:'', md:'', lg:'', xl:''}
 
     this.$schema.fields.margin = margin
+    this.addedFieldGroups.push('margin')
   }
 
   clone(){
     let copy = super.clone()
     copy.$meta.tag = this.$meta.tag
 
-    for(var fieldName in this.addedClassFeilds){
+    for(var fieldName in this.addedFeilds){
       this.copyMetaTo(this.$meta[fieldName], copy.$meta[fieldName])
     }
+
+    this.addedFieldGroups.forEach((fieldGroupName)=>{
+      for(var fieldName in this.$meta[fieldGroupName]){
+      this.copyMetaTo(this.$meta[fieldGroupName][fieldName], copy.$meta[fieldGroupName][fieldName])
+      }
+    })
     return copy
   }
 
@@ -91,15 +99,23 @@ export class RXElement extends Node{
     let model = super.toViewModel()
     model.name = this.$meta.tag
 
-    this.addedClassFeilds.forEach((fieldName)=>{
-      this.metaFieldToViewModel(model, fieldName)
+    this.addedFeilds.forEach((fieldName)=>{
+      this.metaFieldToViewModel(model, this.$meta[fieldName])
     })
+
+
+    this.addedFieldGroups.forEach((fieldGroupName)=>{
+      for(var fieldName in this.$meta[fieldGroupName]){
+      this.metaFieldToViewModel(model, this.$meta[fieldGroupName][fieldName])
+      }
+    })
+
     return model
   }
 
-  metaFieldToViewModel(model, fieldName){
-    for(var name in this.$meta[fieldName]){
-      model.classList.add(this.$meta[fieldName][name])
+  metaFieldToViewModel(model, metaFragment){
+    for(var name in metaFragment){
+      model.classList.add(metaFragment[name])
     }
   }
 
