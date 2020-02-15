@@ -1,9 +1,14 @@
-import {Node} from "../base/node"
+import {RXElement} from "../rxelement"
 
-export class HTMLDiv extends Node{
+export class HTMLDiv extends RXElement{
   constructor() {
     super()
-    this.widthDropMargin = 15;
+    this.toolboxInfo.groupId = 'groupHtml'
+    this.toolboxInfo.elementId = 'div'
+    this.toolboxInfo.elementName = "DIV"
+    this.className = 'HTMLDiv'
+    super.addMargin()
+    super.addPadding()
   }
 
   make(){

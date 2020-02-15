@@ -14,10 +14,14 @@ export class RXElement extends Node{
       tag:'div',
     }
     
+
     //Schema 信息，用于构建Option编辑部件
     this.$schema = {
       fields:{}
     } 
+
+    this.$schema.groups = {}
+
     //备忘：Flexbox: flex container, flex item
     //Extra:显示，可见性，浮动，图片替换，内容溢出，定位，
     //      inline、inline-block、inline-table、和 table 元素的垂直对齐
@@ -28,8 +32,8 @@ export class RXElement extends Node{
       'dimension':{
         label:'Dimension',
       },
-      'xxxx':{
-        label:'xxx',
+      'decorations':{
+        label:'Decorations',
       },
     }
   }
