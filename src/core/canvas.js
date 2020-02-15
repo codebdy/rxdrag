@@ -25,6 +25,9 @@ export class Canvas extends Node{
     model.styles.width = "100%"
     model.styles['min-height'] = "calc(100vh)"
     model.styles.cursor = 'default'
+    model.styles['padding'] = '2px'
+    model.styles['padding-top'] = '25px'
+    //model.styles['padding-right'] = '5px'
     model.classList.push('canvas')
     model.toolbar = ''
     model.label = ''

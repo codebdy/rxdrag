@@ -36,8 +36,11 @@ class SelectedList  extends RXComponent{
 }
 
 export class OpSelect extends OpInput{
-  constructor(list, fieldName ,value = '', required = false){
-    super(value, fieldName)
+  constructor(value, schema){
+    super(value)
+    if(schema.columns === 2){
+      this.cssClass('two-column')
+    }
     this.cssClass('ctl-select')
     //this.fieldName = fieldName
     //this.value = value
@@ -50,7 +53,7 @@ export class OpSelect extends OpInput{
       this.clearBtn.domOn('click', ()=>{
         this.valueViewer.setText(emptyValue)
         if(this.value){
-          this.onValueChanged('', this.fieldName)
+          this.onValueChanged('')
         }
         this.value = ''
       })
@@ -78,7 +81,7 @@ export class OpSelect extends OpInput{
     this.listViewer.valueChage = (id, value)=>{
       //console.log(id, text)
       if(id !== this.value){
-        this.onValueChanged(id, this.fieldName)
+        this.onValueChanged(id)
       }
       this.value = id
       this.valueViewer.setText(value)

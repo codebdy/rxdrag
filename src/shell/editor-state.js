@@ -3,7 +3,7 @@ import {ObjectState} from "../basic/object-state"
 export class EditorState extends ObjectState{
   constructor(){
     super()
-    this.__screenWidth = 'xl'
+    this.__screenWidth = 'md'
     this.__preView = false
     this.__fullscreen = false
     this.__canUndo = false

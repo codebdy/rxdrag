@@ -34,11 +34,11 @@ export class BSRow extends RXElement{
         offValue:'no-gutters',
       }//<----gutters
 
-    this.$schema.fields.hAlign = hAlign
-    this.$schema.fields.vAlign = vAlign
+    //this.$schema.fields.hAlign = hAlign
+    //this.$schema.fields.vAlign = vAlign
 
-    super.addMargin()
-    super.addPadding()
+    //super.addMargin()
+    //super.addPadding()
   }
  
   make(){

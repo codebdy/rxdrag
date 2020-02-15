@@ -1,6 +1,7 @@
 export default{
   widget:'OptionRowGroup',
   group:'rowOptions',
+  isResponsive:true,
   xs:{
     label:'Align Cols(H)',
     isFirst:true,

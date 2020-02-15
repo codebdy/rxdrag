@@ -146,6 +146,9 @@ export class FocusState extends NodeState{
   constructor(node) {
     super(node)
     this.classList.push('focused')
+    this.onClick = (event)=>{
+      event.stopPropagation()
+    }
 
     this.onBegindrag = (event)=>{
       //if(this.node.draggable){

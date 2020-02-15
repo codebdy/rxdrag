@@ -2,46 +2,45 @@ import {RXComponent} from "../../basic/rxcomponent"
 import {RXArray} from "../../basic/rxarray"
 
 export class OpInput extends RXComponent{
-  constructor(value='', fieldName){
+  constructor(value='', defaultValue = ''){
     super()
     this.valueChangedHandlers = new RXArray
     this.differentFromDefaultHandlers = new RXArray
     this.sameToDefaultHandlers = new RXArray;
 
-    this.onValueChanged = (value, fieldName)=>{
+    this.onValueChanged = (value)=>{
       this.valueChangedHandlers.forEach((handler)=>{
-        handler(value, fieldName)
+        handler(value)
       })
 
-      if(value === this.defualtValue){
-        this.distributeSameEvent(value, fieldName)
+      if(value === this.defaultValue){
+        this.distributeSameEvent(value)
       }
       else{
-        this.distributeDifferentEvent(value, fieldName)
+        this.distributeDifferentEvent(value)
       }
 
     }
     this.value = value
-    this.fieldName = fieldName
-    this.defualtValue = ''
+    this.defaultValue = defaultValue
   }
 
-  setDefaultValue(defualtValue){
-    this.defualtValue = defualtValue
-    if(defualtValue !== this.value){
-       this.distributeDifferentEvent(this.value, this.fieldName)
+  /*setDefaultValue(defaultValue){
+    this.defaultValue = defaultValue
+    if(defaultValue !== this.value){
+       this.distributeDifferentEvent(this.value)
     }
-  }
+  }*/
 
-  distributeSameEvent(value, fieldName){
+  distributeSameEvent(value){
     this.sameToDefaultHandlers.forEach((handler)=>{
-      handler(value, fieldName)
+      handler(value)
     })
   }
 
-  distributeDifferentEvent(value, fieldName){
+  distributeDifferentEvent(value){
     this.differentFromDefaultHandlers.forEach((handler)=>{
-      handler(value, fieldName)
+      handler(value)
     })
   }
 

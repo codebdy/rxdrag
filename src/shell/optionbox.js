@@ -1,10 +1,6 @@
 import {RXComponent} from "../basic/rxcomponent"
 import {ToolGroup, ToolboxState} from "./controls/tool-group"
-import {OptionRow, OptionRowLabel, OptionRowGroup} from "./controls/option-row"
-import {ButtonGroup, OpButton} from "./controls/buttons"
-import {OpSelect} from "./controls/select"
-import {OpSwitch} from "./controls/switch"
-import {OpLabelsInput} from "./controls/label"
+import {OptionRow} from "./controls/option-row"
 
 
 export class OptionBoxGroup extends ToolGroup{
@@ -50,7 +46,7 @@ export class OptionBox extends RXComponent{
     var schema = node.schema
     this.initGroup(schema.groups)
     for(var fieldName in schema.fields){
-      let field = schema.fields[fieldName]
+      /*
 
       let input = this.createWidget(this.node.meta, field, fieldName)
       //input.fieldName = fieldName
@@ -63,9 +59,15 @@ export class OptionBox extends RXComponent{
         row.addRowLabel(new OptionRowLabel(field.label))
       }
       row.addInput(input)
-      this.setInputDefaultValue(input, field)
+      this.setInputDefaultValue(input, field)*/
+      let fieldSchema = schema.fields[fieldName]
+      let row = new OptionRow(meta[fieldName], fieldSchema, fieldName)
+      row.listenValueChaged((value, fdName)=>{
+        node.meta[fdName] = value
+        this.valueChanged(node)
+      })
 
-      this.getGroup(field.group).add(row)
+      this.getGroup(fieldSchema.group).add(row)
     }
 
     if(this.children.length > 0){
@@ -91,7 +93,7 @@ export class OptionBox extends RXComponent{
     }
   }
 
-  createWidget(meta, fieldSchema, fieldName){
+/*  createWidget(meta, fieldSchema, fieldName){
     if(fieldSchema.widget ==='OpSelect'){
       let opSelect = new OpSelect(fieldSchema.list, fieldName, meta[fieldName], fieldSchema.required)
       if(fieldSchema.columns === 2){
@@ -139,7 +141,7 @@ export class OptionBox extends RXComponent{
       input.setDefaultValue('')
     }
   }
-
+*/
   clear(){
     if(this['layout']){
       this['layout'] = ''

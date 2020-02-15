@@ -1,21 +1,43 @@
 import {RXComponent} from "../../basic/rxcomponent"
+import {RXArray} from "../../basic/rxarray"
 import {ObjectState} from "../../basic/object-state"
 import {OpInput} from "./input"
+import {OpSwitch} from "./switch"
+import {ButtonGroup, OpButton} from "./buttons"
+import {OpSelect} from "./select"
+import {OpLabelsInput} from "./label"
 
 export class OptionRow extends RXComponent{
-  constructor(){
+  constructor(value, schema, fieldName){
     super()
     this.cssClass('option-row')
+    this.schema = schema
+    this.value = value
+    this.fieldName = fieldName
+
+    this.valueChangedHandlers = new RXArray
+
+    this.onValueChanged = (value)=>{
+      this.valueChangedHandlers.forEach((handler)=>{
+        handler(value, this.fieldName)
+      })
+    }
+
+    this.setLabel(schema.label)
+    this.setInput(this.createInput())
   }
 
-  addRowLabel(rowLabel){
-    this.rowLabel = rowLabel
-    this.pushChild(rowLabel)
-    return this
+  setLabel(labelText){
+    this.rowLabel = new OptionRowLabel(labelText)
+    this.pushChild(this.rowLabel)
   }
 
-  addInput(input){
+  setInput(input){
     this.pushChild(input)
+    input.listenValueChaged((value)=>{
+      this.onValueChanged(value)
+    })
+
     input.listenDifferentFromDefault(()=>{
       this.cssClass('no-default')
     })
@@ -23,7 +45,25 @@ export class OptionRow extends RXComponent{
     input.listenSameToDefault(()=>{
       this.removeCssClass('no-default')
     })
-    return this
+  }
+
+  createInput(){
+    let schema = this.schema
+
+    if(schema.widget ==='OpSelect'){
+      return new OpSelect(this.value, schema)
+    }
+    if(schema.widget ==='OpSwitch'){
+      return new OpSwitch(this.value, schema)
+    }
+  }
+
+  listenValueChaged(callback){
+    this.valueChangedHandlers.add(callback)
+  }
+
+  offValueChaged(callback){
+    this.valueChangedHandlers.remove(callback)
   }
 
 }

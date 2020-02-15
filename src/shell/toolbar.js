@@ -115,15 +115,15 @@ export class Toolbar extends RXComponent{
   }
 
   createScreenSizeButtons(){
-    this.xlBtn = this.creatLeftButton('fa-desktop').title('Extra large: ≥1200px')
+    this.xlBtn = this.creatLeftButton('fa-tv').title('Extra large: ≥1200px')
     this.xlBtn.style.fontSize = '22px'
-    this.xlBtn.style.lineHeight = '34px'
+    this.xlBtn.style.lineHeight = '30px'
 
     this.lgBtn = this.creatLeftButton('fa-desktop').title('Large: ≥992px')
-    this.mdBtn = this.creatLeftButton('fa-tablet').title('Medium:≥768px')
-    this.smBtn = this.creatLeftButton('fa-mobile').title('Small:≥576px')
+    this.mdBtn = this.creatLeftButton('fa-laptop').title('Medium:≥768px')
+    this.smBtn = this.creatLeftButton('fa-tablet').title('Small:≥576px')
     this.xsBtn = this.creatLeftButton('fa-mobile').title('Extra small: <576px')
-    this.xsBtn.style.fontSize = '14px'
+    //this.xsBtn.style.fontSize = '14px'
 
 
     this.xlBtn.domOns.click = (event)=>{
