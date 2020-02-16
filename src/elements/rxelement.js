@@ -4,6 +4,7 @@ import baseMargin from "./schemas/utilities/margin"
 import basePadding from "./schemas/utilities/padding"
 import baseWidth from "./schemas/utilities/sizing/width"
 import baseHeight from "./schemas/utilities/sizing/height"
+import responsiveMeta from "./schemas/responsive"
 
 export class RXElement extends Node{
   constructor() {
@@ -52,13 +53,13 @@ export class RXElement extends Node{
   addPadding(){
     this.$schema.groups.utilities = this.groups.utilities
     this.$meta.basePadding = {}
-    this.$meta.basePadding.all = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.basePadding.horizontal = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.basePadding.vertical = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.basePadding.top = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.basePadding.bottom = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.basePadding.left = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.basePadding.right = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.basePadding.all = Object.assign({}, responsiveMeta)
+    this.$meta.basePadding.horizontal = Object.assign({}, responsiveMeta)
+    this.$meta.basePadding.vertical = Object.assign({}, responsiveMeta)
+    this.$meta.basePadding.top = Object.assign({}, responsiveMeta)
+    this.$meta.basePadding.bottom = Object.assign({}, responsiveMeta)
+    this.$meta.basePadding.left = Object.assign({}, responsiveMeta)
+    this.$meta.basePadding.right = Object.assign({}, responsiveMeta)
 
     this.$schema.fields.basePadding = Object.assign({}, basePadding)
     this.addedFieldGroups.push('basePadding')

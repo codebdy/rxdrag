@@ -3,6 +3,7 @@ import colWidth from "../schemas/column/col-width"
 import colOffset from "../schemas/column/col-offset"
 import colAlignSelf from "../schemas/column/col-align-self"
 import colOrder from "../schemas/column/col-order"
+import responsiveMeta from "../schemas/responsive"
 
 export class BSCol extends RXElement{
   constructor() {
@@ -15,14 +16,14 @@ export class BSCol extends RXElement{
     this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv']
 
     //this.$meta.baseClass = ['col'] 
-    this.$meta.colWidth = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.colWidth = Object.assign({}, responsiveMeta)
     this.$meta.colWidth.md = 'col-md'
 
-    this.$meta.colOffset = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.colOffset = Object.assign({}, responsiveMeta)
 
-    this.$meta.colAlignSelf = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.colAlignSelf = Object.assign({}, responsiveMeta)
 
-    this.$meta.colOrder = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.colOrder = Object.assign({}, responsiveMeta)
 
 
     this.$schema.groups = {
