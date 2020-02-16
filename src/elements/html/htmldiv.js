@@ -6,6 +6,8 @@ import {addonUtilMargin} from "../schemas/utilities/margin"
 import {addonUtilWidth} from "../schemas/utilities/sizing/width"
 import {addonUtilHeight} from "../schemas/utilities/sizing/height"
 import {addonUtilMarginAuto} from "../schemas/utilities/margin/margin-auto"
+import {addonUtilClearfix} from "../schemas/utilities/clearfix"
+import {addonUtilDisplay} from "../schemas/utilities/display"
 
 export class HTMLDiv extends RXElement{
   constructor() {
@@ -21,6 +23,8 @@ export class HTMLDiv extends RXElement{
     addonUtilMargin(this)
     addonUtilPadding(this)
     addonUtilMarginAuto(this)
+    addonUtilClearfix(this)
+    addonUtilDisplay(this)
     //super.addColor()
     //super.addBorder()
     //super.addWidth()
@@ -28,8 +32,8 @@ export class HTMLDiv extends RXElement{
     //super.addMarginAuto()
    // super.addMargin()
     //super.addPadding()
-    super.addClearfix()
-    super.addDisplay()
+    //super.addClearfix()
+    //super.addDisplay()
   }
 
   make(){

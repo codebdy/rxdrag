@@ -1,3 +1,6 @@
+import {OptionFragment} from "../option-fragment"
+import responsiveMeta from "../responsive"
+
 var utilDisplaySchema = {
   group:'utilities',
   isResponsive:true,
@@ -89,9 +92,22 @@ function replaceNone(str){
   }
 }
 
-var utilDisplayToViewModel = (model, metaFragment)=>{
-  //console.log(metaFragment)
-  if(metaFragment){
+class UtilDisplay extends OptionFragment{
+  constructor(){
+    super()
+    this.schema = Object.assign({}, utilDisplaySchema)
+
+    this.metaFragment = Object.assign({}, responsiveMeta) 
+
+    this.fieldName = 'utilDisplay'
+  }
+
+  copyMeta(from, to){
+    super.copyResponsiveMetaTo(from, to)
+  }
+
+  toViewModel(model, meta){
+    let metaFragment = meta[this.fieldName]
     model.classList.add(replaceNone(metaFragment.xs))
     model.classList.add(replaceNone(metaFragment.sm))
     model.classList.add(replaceNone(metaFragment.md))
@@ -100,6 +116,12 @@ var utilDisplayToViewModel = (model, metaFragment)=>{
   }
 }
 
+var addonUtilDisplay = (node)=>{
+  let utilDisplay = new UtilDisplay
+  utilDisplay.addon(node)
+  return utilDisplay
+}
 
-export{utilDisplaySchema, utilDisplayToViewModel}
+export {addonUtilDisplay}
+
 
