@@ -100,6 +100,7 @@ export class OptionBox extends RXComponent{
 
 
   getGroup(group){
+    //console.log(group)
     if(this[group]){
       return this[group]
     }

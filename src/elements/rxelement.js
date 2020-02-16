@@ -43,7 +43,7 @@ export class RXElement extends Node{
     this.$schema.groups.utilities = this.groups.utilities
     this.$meta.marginAuto = {xs:'', sm:'', md:'', lg:'', xl:''}
 
-    this.$schema.fields.marginAuto = marginAuto
+    this.$schema.fields.marginAuto = Object.assign({}, marginAuto)
 
     this.addedFeilds.push('marginAuto')
   }
@@ -60,7 +60,7 @@ export class RXElement extends Node{
     this.$meta.basePadding.left = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$meta.basePadding.right = {xs:'', sm:'', md:'', lg:'', xl:''}
 
-    this.$schema.fields.basePadding = basePadding
+    this.$schema.fields.basePadding = Object.assign({}, basePadding)
     this.addedFieldGroups.push('basePadding')
   }
 
@@ -75,7 +75,7 @@ export class RXElement extends Node{
     this.$meta.baseMargin.left = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$meta.baseMargin.right = {xs:'', sm:'', md:'', lg:'', xl:''}
 
-    this.$schema.fields.baseMargin = baseMargin
+    this.$schema.fields.baseMargin = Object.assign({}, baseMargin)
     this.addedFieldGroups.push('baseMargin')
   }
 

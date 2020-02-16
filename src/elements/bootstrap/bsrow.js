@@ -7,7 +7,7 @@ export class BSRow extends RXElement{
     super()
     this.toolboxInfo.groupId = 'groupGrid'
     this.toolboxInfo.elementId = 'row'
-    this.toolboxInfo.elementName = "row"
+    this.toolboxInfo.elementName = "Row"
     this.className = 'BSRow'
     this.heightDropMargin = 15;
     this.acceptedChildren=['BSCol','BSW100']

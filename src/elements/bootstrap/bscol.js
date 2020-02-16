@@ -9,7 +9,7 @@ export class BSCol extends RXElement{
     super()
     this.toolboxInfo.groupId = 'groupGrid'
     this.toolboxInfo.elementId = 'column'
-    this.toolboxInfo.elementName = "column"
+    this.toolboxInfo.elementName = "Column"
     this.className = 'BSCol'
     this.widthDropMargin = 15;
     this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv']
@@ -33,10 +33,13 @@ export class BSCol extends RXElement{
 
     this.$schema.fields.colWidth = colWidth
     this.$schema.fields.colOffset = colOffset
+    super.addMarginAuto()
     this.$schema.fields.colAlignSelf = colAlignSelf
     this.$schema.fields.colOrder = colOrder
     super.addMargin()
     super.addPadding()
+
+    this.$schema.fields.marginAuto.group = 'columnOptions'
   }
 
   make(){
