@@ -1,26 +1,39 @@
 export class OptionFragment{
   constructor(){
-    this.schema = {
-    }
-
-    //只在初始化时有用，不接收返回值
-    this.metaFragment = {
-    }
-
-    this.fieldName = ''
   }
 
   addon(node){
-    this.node = node
+    //this.node = node
     node.addons.push(this)
     node.addToGroup('utilities')
     node.$meta[this.fieldName] = this.metaFragment
     node.$schema.fields[this.fieldName] = this.schema
   }
 
-  copyMeta(from, to){
+
+  copyResponsiveGroupMetasTo(from, to){
+    for(var fieldName in this.$meta[this.fieldName]){
+      this.copyResponsiveMetaTo(from[fieldName], to[fieldName])
+    }
   }
 
-  toViewModel(model){
+  copyResponsiveMetaTo(from, to){
+    for(var name in from){
+      to[name] = from[name]
+    }
   }
+
+  responsiveMetaGroupToViewModel(model, meta){
+    for(var fieldName in meta){
+      this.responsiveMetaFieldToViewModel(model, meta[fieldName])
+    }
+  }
+
+
+  responsiveMetaFieldToViewModel(model, metaFragment){
+    for(var name in metaFragment){
+      model.classList.add(metaFragment[name])
+    }
+  }
+
 }

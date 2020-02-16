@@ -39,7 +39,7 @@ export class BSCol extends RXElement{
     this.$schema.fields.colOrder = colOrder
     super.addBorder()
     super.addMargin()
-    super.addPadding()
+    //super.addPadding()
 
     this.$schema.fields.marginAuto.group = 'columnOptions'
   }

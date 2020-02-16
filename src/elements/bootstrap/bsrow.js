@@ -42,7 +42,7 @@ export class BSRow extends RXElement{
     super.addBorder()
     super.addMarginAuto()
     super.addMargin()
-    super.addPadding()
+    //super.addPadding()
   }
  
   make(){

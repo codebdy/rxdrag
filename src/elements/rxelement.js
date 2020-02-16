@@ -3,7 +3,7 @@ import {Node} from "../core/node"
 import {utilBorderSchema, utilBorderMeta, utilBorderCopyTo, utilBorderToViewModel} from "./schemas/utilities/border"
 import marginAuto from "./schemas/utilities/margin/margin-auto"
 import {utilMarginSchema, utilMarginMeta} from "./schemas/utilities/margin"
-import {utilPaddingSchema, utilPaddingMeta} from "./schemas/utilities/padding"
+//import {utilPaddingSchema, utilPaddingMeta} from "./schemas/utilities/padding"
 import utilWidth from "./schemas/utilities/sizing/width"
 import utilHeight from "./schemas/utilities/sizing/height"
 import responsiveMeta from "./schemas/responsive"
@@ -69,12 +69,12 @@ export class RXElement extends Node{
   }
 
 //---
-  addPadding(){
+  /*addPadding(){
     this.$schema.groups.utilities = this.groups.utilities
     this.$meta.utilPadding = Object.assign({}, utilPaddingMeta)
     this.$schema.fields.utilPadding = Object.assign({}, utilPaddingSchema)
     this.addedFieldGroups.push('utilPadding')
-  }
+  }*/
 
   addMargin(){
     this.$schema.groups.utilities = this.groups.utilities
@@ -180,7 +180,7 @@ export class RXElement extends Node{
     utilDisplayToViewModel(model, this.$meta.utilDisplay)
 
     this.addons.forEach((addon)=>{
-      addon.toViewModel(model)
+      addon.toViewModel(model, this.$meta)
     })
 
     return model

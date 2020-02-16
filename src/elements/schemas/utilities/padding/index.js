@@ -1,3 +1,5 @@
+import {OptionFragment} from "../../option-fragment"
+
 import paddingAll from "./padding-all"
 import paddingH from "./padding-h"
 import paddingV from "./padding-v"
@@ -32,4 +34,20 @@ var utilPaddingMeta = {
   left : Object.assign({}, responsiveMeta),
 }
 
-export{utilPaddingSchema, utilPaddingMeta}
+export class UtilPadding extends OptionFragment{
+  constructor(){
+    super()
+    this.schema = Object.assign({}, utilPaddingSchema)
+
+    this.metaFragment = Object.assign({}, utilPaddingMeta)
+    this.fieldName = 'utilPadding'
+  }
+
+  copyMeta(from, to){
+    super.copyResponsiveGroupMetasTo(from[this.fieldName], from[to.fieldName])
+  }
+
+  toViewModel(model, meta){
+    super.responsiveMetaGroupToViewModel(model, meta[this.fieldName])
+  }
+}
