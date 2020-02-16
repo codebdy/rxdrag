@@ -10,8 +10,10 @@ export class HTMLDiv extends RXElement{
     super.addBorder()
     super.addWidth()
     super.addHeight()
+    super.addMarginAuto()
     super.addMargin()
     super.addPadding()
+    super.addClearfix()
   }
 
   make(){

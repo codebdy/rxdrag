@@ -85,6 +85,19 @@ export class RXElement extends Node{
     this.$schema.fields.utilHeight = utilHeight
   }
 
+  addClearfix(){
+    this.$schema.fields.utilClearfix = {
+      label:'Clearfix',
+      widget:'OpSwitch',
+      required:true,
+      group:'utilities',
+      onValue:'clearfix',
+      offValue:'',
+      defaultValue:'',
+    }
+    this.$meta.utilClearfix = ''
+  }
+
   clone(){
     let copy = super.clone()
     copy.$meta.tag = this.$meta.tag
@@ -103,6 +116,7 @@ export class RXElement extends Node{
     copy.$meta.utilHeight = this.$meta.utilHeight
 
     utilBorderCopyTo(this, copy)
+    copy.$meta.utilClearfix = this.$meta.utilClearfix
     return copy
   }
 
@@ -131,6 +145,7 @@ export class RXElement extends Node{
     model.classList.add(this.$meta.utilHeight)
 
     utilBorderToViewModel(model, this.$meta.utilBorder)
+    model.classList.add(this.$meta.utilClearfix)
 
     return model
   }
