@@ -2,7 +2,7 @@ import {Node} from "../core/node"
 //import {utilColorSchema, utilColorMeta, utilColorCopyTo, utilColorToViewModel} from "./schemas/utilities/color"
 import {utilBorderSchema, utilBorderMeta, utilBorderCopyTo, utilBorderToViewModel} from "./schemas/utilities/border"
 import marginAuto from "./schemas/utilities/margin/margin-auto"
-import {utilMarginSchema, utilMarginMeta} from "./schemas/utilities/margin"
+//import {utilMarginSchema, utilMarginMeta} from "./schemas/utilities/margin"
 //import {utilPaddingSchema, utilPaddingMeta} from "./schemas/utilities/padding"
 import utilWidth from "./schemas/utilities/sizing/width"
 import utilHeight from "./schemas/utilities/sizing/height"
@@ -69,20 +69,14 @@ export class RXElement extends Node{
   }
 
 //---
-  /*addPadding(){
-    this.$schema.groups.utilities = this.groups.utilities
-    this.$meta.utilPadding = Object.assign({}, utilPaddingMeta)
-    this.$schema.fields.utilPadding = Object.assign({}, utilPaddingSchema)
-    this.addedFieldGroups.push('utilPadding')
-  }*/
 
-  addMargin(){
+  /*addMargin(){
     this.$schema.groups.utilities = this.groups.utilities
     this.$meta.utilMargin = Object.assign({}, utilMarginMeta)
 
     this.$schema.fields.utilMargin = Object.assign({}, utilMarginSchema)
     this.addedFieldGroups.push('utilMargin')
-  }
+  }*/
 
   addWidth(){
     this.$schema.groups.utilities = this.groups.utilities

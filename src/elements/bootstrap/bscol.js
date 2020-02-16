@@ -34,14 +34,14 @@ export class BSCol extends RXElement{
 
     this.$schema.fields.colWidth = colWidth
     this.$schema.fields.colOffset = colOffset
-    super.addMarginAuto()
+    //super.addMarginAuto()
     this.$schema.fields.colAlignSelf = colAlignSelf
     this.$schema.fields.colOrder = colOrder
-    super.addBorder()
-    super.addMargin()
+    //super.addBorder()
+    //super.addMargin()
     //super.addPadding()
 
-    this.$schema.fields.marginAuto.group = 'columnOptions'
+    //this.$schema.fields.marginAuto.group = 'columnOptions'
   }
 
   make(){

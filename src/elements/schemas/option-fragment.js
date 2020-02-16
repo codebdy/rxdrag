@@ -3,8 +3,8 @@ export class OptionFragment{
   }
 
   addon(node){
-    //this.node = node
-    this.addToGroup(node, 'utilities')
+    //console.log(this.schema.group)
+    this.addToGroup(node, this.schema.group)
     node.addons.push(this)
     node.$meta[this.fieldName] = this.metaFragment
     node.$schema.fields[this.fieldName] = this.schema

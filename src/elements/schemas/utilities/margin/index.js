@@ -1,3 +1,4 @@
+import {OptionFragment} from "../../option-fragment"
 import marginAll from "./margin-all"
 import marginH from "./margin-h"
 import marginV from "./margin-v"
@@ -32,4 +33,28 @@ var utilMarginMeta = {
   left : Object.assign({}, responsiveMeta),
 }
 
-export{utilMarginSchema, utilMarginMeta}
+class UtilMargin extends OptionFragment{
+  constructor(){
+    super()
+    this.schema = Object.assign({}, utilMarginSchema)
+
+    this.metaFragment = Object.assign({}, utilMarginMeta)
+    this.fieldName = 'utilMargin'
+  }
+
+  copyMeta(from, to){
+    super.copyResponsiveGroupMetasTo(from[this.fieldName], from[to.fieldName])
+  }
+
+  toViewModel(model, meta){
+    super.responsiveMetaGroupToViewModel(model, meta[this.fieldName])
+  }
+}
+
+var addonUtilMargin = (node)=>{
+  let utilMargin = new UtilMargin
+  utilMargin.addon(node)
+  return utilMargin
+}
+
+export {addonUtilMargin}
