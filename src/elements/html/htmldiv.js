@@ -5,6 +5,7 @@ import {addonUtilPadding} from "../schemas/utilities/padding"
 import {addonUtilMargin} from "../schemas/utilities/margin"
 import {addonUtilWidth} from "../schemas/utilities/sizing/width"
 import {addonUtilHeight} from "../schemas/utilities/sizing/height"
+import {addonUtilMarginAuto} from "../schemas/utilities/margin/margin-auto"
 
 export class HTMLDiv extends RXElement{
   constructor() {
@@ -19,11 +20,12 @@ export class HTMLDiv extends RXElement{
     addonUtilHeight(this)
     addonUtilMargin(this)
     addonUtilPadding(this)
+    addonUtilMarginAuto(this)
     //super.addColor()
     //super.addBorder()
     //super.addWidth()
     //super.addHeight()
-    super.addMarginAuto()
+    //super.addMarginAuto()
    // super.addMargin()
     //super.addPadding()
     super.addClearfix()

@@ -1,11 +1,11 @@
 import {Node} from "../core/node"
 //import {utilColorSchema, utilColorMeta, utilColorCopyTo, utilColorToViewModel} from "./schemas/utilities/color"
 //import {utilBorderSchema, utilBorderMeta, utilBorderCopyTo, utilBorderToViewModel} from "./schemas/utilities/border"
-import marginAuto from "./schemas/utilities/margin/margin-auto"
+//import marginAuto from "./schemas/utilities/margin/margin-auto"
 //import {utilMarginSchema, utilMarginMeta} from "./schemas/utilities/margin"
 //import {utilPaddingSchema, utilPaddingMeta} from "./schemas/utilities/padding"
-import utilWidth from "./schemas/utilities/sizing/width"
-import utilHeight from "./schemas/utilities/sizing/height"
+//import utilWidth from "./schemas/utilities/sizing/width"
+//import utilHeight from "./schemas/utilities/sizing/height"
 import responsiveMeta from "./schemas/responsive"
 import {utilDisplaySchema, utilDisplayToViewModel} from "./schemas/utilities/display"
 
@@ -22,7 +22,6 @@ export class RXElement extends Node{
       tag:'div',
     }
     
-
     //Schema 信息，用于构建Option编辑部件
     this.$schema = {
       fields:{}
@@ -78,11 +77,11 @@ export class RXElement extends Node{
     this.addedFieldGroups.push('utilMargin')
   }*/
 
-  addWidth(){
+  /*addWidth(){
     this.$schema.groups.utilities = this.groups.utilities
     this.$meta.utilWidth = ''
     this.$schema.fields.utilWidth = utilWidth
-  }
+  }*/
 
   //addHeight(){
   //  this.$schema.groups.utilities = this.groups.utilities
@@ -118,11 +117,11 @@ export class RXElement extends Node{
       this.copyMetaTo(this.$meta[fieldName], copy.$meta[fieldName])
     }
 
-    this.addedFieldGroups.forEach((fieldGroupName)=>{
+    /*this.addedFieldGroups.forEach((fieldGroupName)=>{
       for(var fieldName in this.$meta[fieldGroupName]){
       this.copyMetaTo(this.$meta[fieldGroupName][fieldName], copy.$meta[fieldGroupName][fieldName])
       }
-    })
+    })*/
 
     //copy.$meta.utilWidth = this.$meta.utilWidth
     //copy.$meta.utilHeight = this.$meta.utilHeight
@@ -162,7 +161,7 @@ export class RXElement extends Node{
       }
     })
 
-    model.classList.add(this.$meta.utilWidth)
+    //model.classList.add(this.$meta.utilWidth)
     //model.classList.add(this.$meta.utilHeight)
 
     //utilColorToViewModel(model, this.$meta.utilColor)
