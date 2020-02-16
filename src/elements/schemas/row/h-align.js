@@ -1,4 +1,6 @@
-export default{
+import {OptionFragment} from "../option-fragment"
+import responsiveMeta from "../responsive"
+let rowHAlignSchema = {
   group:'rowOptions',
   isResponsive:true,
   xs:{
@@ -62,3 +64,32 @@ export default{
   },
   //---------------------
 }//<--hAlign
+
+class RowHAlign extends OptionFragment{
+  constructor(){
+    super()
+    this.schema = Object.assign({}, rowHAlignSchema)
+
+    this.metaFragment = Object.assign({}, responsiveMeta) 
+
+    this.fieldName = 'rowHAlign'
+  }
+
+  copyMeta(from, to){
+    super.copyResponsiveMetaTo(from, to)
+  }
+
+  toViewModel(model, meta){
+    let metaFragment = meta[this.fieldName]
+    super.responsiveMetaFieldToViewModel(model, metaFragment)
+  }
+}
+
+var addonRowHAlign = (node)=>{
+  let rowHAlign = new RowHAlign
+  rowHAlign.addon(node)
+  return rowHAlign
+}
+
+export {addonRowHAlign}
+

@@ -1,4 +1,7 @@
-export default{
+import {OptionFragment} from "../option-fragment"
+import responsiveMeta from "../responsive"
+
+let rowVAlignSchema = {
   group:'rowOptions',
   isResponsive:true,
   xs:{
@@ -62,3 +65,32 @@ export default{
   },
   //---------------------
  }//<--vAlign
+
+ class RowVAlign extends OptionFragment{
+  constructor(){
+    super()
+    this.schema = Object.assign({}, rowVAlignSchema)
+
+    this.metaFragment = Object.assign({}, responsiveMeta) 
+
+    this.fieldName = 'utilVAlign'
+  }
+
+  copyMeta(from, to){
+    super.copyResponsiveMetaTo(from, to)
+  }
+
+  toViewModel(model, meta){
+    let metaFragment = meta[this.fieldName]
+    super.responsiveMetaFieldToViewModel(model, metaFragment)
+  }
+}
+
+var addonRowVAlign = (node)=>{
+  let rowVAlign = new RowVAlign
+  rowVAlign.addon(node)
+  return rowVAlign
+}
+
+export {addonRowVAlign}
+

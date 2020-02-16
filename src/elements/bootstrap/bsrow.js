@@ -1,6 +1,7 @@
 import {RXElement} from "../rxelement"
-import hAlign from "../schemas/row/row-h-align"
-import vAlign from "../schemas/row/row-v-align"
+import {addonRowGutters} from "../schemas/row/gutters"
+import {addonRowHAlign} from "../schemas/row/h-align"
+import {addonRowVAlign} from "../schemas/row/v-align"
 import responsiveMeta from "../schemas/responsive"
 
 export class BSRow extends RXElement{
@@ -16,33 +17,15 @@ export class BSRow extends RXElement{
     this.$meta.baseClass = 'row' 
     this.editMarginStyle.margin = "0"
 
+    //this.groups.
 
-    this.$schema.groups = {
-      'rowOptions':{
-        label:'Row Options'
-      }
+    this.groups.rowOptions = {
+      label:'Row Options'
     }
-    this.$meta.gutters = ''
-    this.$meta.hAlign =  Object.assign({}, responsiveMeta)
-    this.$meta.vAlign =  Object.assign({}, responsiveMeta)
-
-    this.$schema.fields.gutters = {
-        label:'Gutters',
-        widget:'OpSwitch',
-        required:true,
-        group:'rowOptions',
-        onValue:'',
-        offValue:'no-gutters',
-        defaultValue:'',
-      }//<----gutters
-
-    this.$schema.fields.hAlign = hAlign
-    this.$schema.fields.vAlign = vAlign
-
-    //super.addBorder()
-    //super.addMarginAuto()
-    //super.addMargin()
-    //super.addPadding()
+    
+    addonRowGutters(this)
+    addonRowHAlign(this)
+    addonRowVAlign(this)
   }
  
   make(){
@@ -51,11 +34,7 @@ export class BSRow extends RXElement{
 
   clone(){
     let copy = super.clone()
-    copy.$meta.gutters = this.$meta.gutters
-
-    super.copyMetaTo(this.$meta.hAlign, copy.$meta.hAlign)
-    super.copyMetaTo(this.$meta.vAlign, copy.$meta.vAlign)
-
+    copy.$meta.baseClass = this.$meta.baseClass
     return copy
   }
  
@@ -63,11 +42,6 @@ export class BSRow extends RXElement{
     let model = super.toViewModel()
     model.label.text = "Row"
     model.classList.push(this.$meta.baseClass)
-    model.classList.push(this.$meta.gutters)
-
-    super.metaFieldToViewModel(model, this.$meta.hAlign)
-    super.metaFieldToViewModel(model, this.$meta.vAlign)
-
     return model
   }
 }

@@ -25,15 +25,6 @@ export class HTMLDiv extends RXElement{
     addonUtilMarginAuto(this)
     addonUtilClearfix(this)
     addonUtilDisplay(this)
-    //super.addColor()
-    //super.addBorder()
-    //super.addWidth()
-    //super.addHeight()
-    //super.addMarginAuto()
-   // super.addMargin()
-    //super.addPadding()
-    //super.addClearfix()
-    //super.addDisplay()
   }
 
   make(){
@@ -43,7 +34,6 @@ export class HTMLDiv extends RXElement{
   toViewModel(){
     let model = super.toViewModel()
     model.label.text = "div"
-    //model.classList.push('col')
     return model
   }
 }
