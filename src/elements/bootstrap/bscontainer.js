@@ -27,6 +27,7 @@ export class BSContainer extends RXElement{
       defaultValue:'container',
     }
      
+    super.addBorder()
     super.addMargin()
     super.addPadding()
   }

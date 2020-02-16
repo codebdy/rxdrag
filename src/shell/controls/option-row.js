@@ -6,6 +6,7 @@ import {OpSwitch} from "./switch"
 import {ButtonGroup, OpButton} from "./buttons"
 import {OpSelect} from "./select"
 import {OpLabelGroup} from "./label"
+import {OpBorderInput} from "./border-input"
 
 export class RowBase extends RXComponent{
   constructor(){
@@ -74,6 +75,9 @@ export class OptionRow extends RowBase{
     }
     if(schema.widget ==='OpLabelGroup'){
       return new OpLabelGroup(value)
+    }
+    if(schema.widget ==='OpBorderInput'){
+      return new OpBorderInput(value)
     }
 
   }

@@ -37,6 +37,7 @@ export class BSCol extends RXElement{
     super.addMarginAuto()
     this.$schema.fields.colAlignSelf = colAlignSelf
     this.$schema.fields.colOrder = colOrder
+    super.addBorder()
     super.addMargin()
     super.addPadding()
 

@@ -4,5 +4,6 @@ export class OpBorderInput extends OpInput{
   constructor(){
     super()
     this.cssClass('border-input')
+    this.innerHTML = 'Border-Input'
   }
 }

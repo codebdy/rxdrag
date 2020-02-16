@@ -1,9 +1,10 @@
 import {Node} from "../core/node"
+import {utilBorderSchema, utilBorderMeta} from "./schemas/utilities/border"
 import marginAuto from "./schemas/utilities/margin/margin-auto"
-import baseMargin from "./schemas/utilities/margin"
-import basePadding from "./schemas/utilities/padding"
-import baseWidth from "./schemas/utilities/sizing/width"
-import baseHeight from "./schemas/utilities/sizing/height"
+import {utilMarginSchema, utilMarginMeta} from "./schemas/utilities/margin"
+import {utilPaddingSchema, utilPaddingMeta} from "./schemas/utilities/padding"
+import utilWidth from "./schemas/utilities/sizing/width"
+import utilHeight from "./schemas/utilities/sizing/height"
 import responsiveMeta from "./schemas/responsive"
 
 export class RXElement extends Node{
@@ -40,9 +41,17 @@ export class RXElement extends Node{
     }
   }
 
+  addBorder(){
+    this.$schema.groups.utilities = this.groups.utilities
+    this.$meta.utilBorder = Object.assign({}, utilBorderMeta)
+    this.$schema.fields.utilBorder = Object.assign({}, utilBorderSchema)
+    this.addedFieldGroups.push('utilBorder')
+  }
+
+
   addMarginAuto(){
     this.$schema.groups.utilities = this.groups.utilities
-    this.$meta.marginAuto = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.marginAuto = Object.assign({}, responsiveMeta)
 
     this.$schema.fields.marginAuto = Object.assign({}, marginAuto)
 
@@ -52,44 +61,29 @@ export class RXElement extends Node{
 //---
   addPadding(){
     this.$schema.groups.utilities = this.groups.utilities
-    this.$meta.basePadding = {}
-    this.$meta.basePadding.all = Object.assign({}, responsiveMeta)
-    this.$meta.basePadding.horizontal = Object.assign({}, responsiveMeta)
-    this.$meta.basePadding.vertical = Object.assign({}, responsiveMeta)
-    this.$meta.basePadding.top = Object.assign({}, responsiveMeta)
-    this.$meta.basePadding.bottom = Object.assign({}, responsiveMeta)
-    this.$meta.basePadding.left = Object.assign({}, responsiveMeta)
-    this.$meta.basePadding.right = Object.assign({}, responsiveMeta)
-
-    this.$schema.fields.basePadding = Object.assign({}, basePadding)
-    this.addedFieldGroups.push('basePadding')
+    this.$meta.utilPadding = Object.assign({}, utilPaddingMeta)
+    this.$schema.fields.utilPadding = Object.assign({}, utilPaddingSchema)
+    this.addedFieldGroups.push('utilPadding')
   }
 
   addMargin(){
     this.$schema.groups.utilities = this.groups.utilities
-    this.$meta.baseMargin = {}
-    this.$meta.baseMargin.all = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.baseMargin.horizontal = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.baseMargin.vertical = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.baseMargin.top = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.baseMargin.bottom = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.baseMargin.left = {xs:'', sm:'', md:'', lg:'', xl:''}
-    this.$meta.baseMargin.right = {xs:'', sm:'', md:'', lg:'', xl:''}
+    this.$meta.utilMargin = Object.assign({}, utilMarginMeta)
 
-    this.$schema.fields.baseMargin = Object.assign({}, baseMargin)
-    this.addedFieldGroups.push('baseMargin')
+    this.$schema.fields.utilMargin = Object.assign({}, utilMarginSchema)
+    this.addedFieldGroups.push('utilMargin')
   }
 
   addWidth(){
     this.$schema.groups.utilities = this.groups.utilities
-    this.$meta.baseWidth = ''
-    this.$schema.fields.baseWidth = baseWidth
+    this.$meta.utilWidth = ''
+    this.$schema.fields.utilWidth = utilWidth
   }
 
   addHeight(){
     this.$schema.groups.utilities = this.groups.utilities
-    this.$meta.baseHeight = ''
-    this.$schema.fields.baseHeight = baseHeight
+    this.$meta.utilHeight = ''
+    this.$schema.fields.utilHeight = utilHeight
   }
 
   clone(){
@@ -106,8 +100,8 @@ export class RXElement extends Node{
       }
     })
 
-    copy.$meta.baseWidth = this.$meta.baseWidth
-    copy.$meta.baseHeight = this.$meta.baseHeight
+    copy.$meta.utilWidth = this.$meta.utilWidth
+    copy.$meta.utilHeight = this.$meta.utilHeight
     return copy
   }
 
@@ -132,8 +126,8 @@ export class RXElement extends Node{
       }
     })
 
-    model.classList.add(this.$meta.baseWidth)
-    model.classList.add(this.$meta.baseHeight)
+    model.classList.add(this.$meta.utilWidth)
+    model.classList.add(this.$meta.utilHeight)
 
     return model
   }
