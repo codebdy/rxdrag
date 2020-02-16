@@ -1,9 +1,9 @@
 import {Node} from "../core/node"
-import marginAuto from "./schemas/margin/margin-auto"
-import baseMargin from "./schemas/margin"
-import basePadding from "./schemas/padding"
-import baseWidth from "./schemas/sizing/width"
-import baseHeight from "./schemas/sizing/height"
+import marginAuto from "./schemas/utilities/margin/margin-auto"
+import baseMargin from "./schemas/utilities/margin"
+import basePadding from "./schemas/utilities/padding"
+import baseWidth from "./schemas/utilities/sizing/width"
+import baseHeight from "./schemas/utilities/sizing/height"
 
 export class RXElement extends Node{
   constructor() {
