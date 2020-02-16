@@ -1,7 +1,7 @@
 import {RXElement} from "../rxelement"
 import {addonRowGutters} from "../schemas/row/gutters"
-import {addonRowHAlign} from "../schemas/row/h-align"
-import {addonRowVAlign} from "../schemas/row/v-align"
+import {addonRowJustifyContent} from "../schemas/row/justify-content"
+import {addonRowAlignItems} from "../schemas/row/align-items"
 
 export class BSRow extends RXElement{
   constructor(parent) {
@@ -23,8 +23,8 @@ export class BSRow extends RXElement{
     }
     
     addonRowGutters(this)
-    addonRowHAlign(this)
-    addonRowVAlign(this)
+    addonRowJustifyContent(this)
+    addonRowAlignItems(this)
   }
  
   make(){

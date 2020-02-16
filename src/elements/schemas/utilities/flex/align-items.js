@@ -1,12 +1,8 @@
-import {OptionFragment} from "../option-fragment"
-import responsiveMeta from "../responsive"
-
-let rowVAlignSchema = {
-  group:'rowOptions',
+export default{
   isResponsive:true,
   xs:{
     widget:'OpSelect',
-    label:'Align Cols(V)',
+    label:'Align Items',
     list:{
       'align-items-start':'Start',
       'align-items-end':'End',
@@ -18,7 +14,7 @@ let rowVAlignSchema = {
   //---------------------
   sm:{
     widget:'OpSelect',
-    label:'Align Cols(V)',
+    label:'Align Items',
     list:{
       'align-items-sm-start':'Start',
       'align-items-sm-end':'End',
@@ -30,7 +26,7 @@ let rowVAlignSchema = {
   //---------------------
   md:{
     widget:'OpSelect',
-    label:'Align Cols(V)',
+    label:'Align Items',
     list:{
       'align-items-md-start':'Start',
       'align-items-md-end':'End',
@@ -42,7 +38,7 @@ let rowVAlignSchema = {
   //---------------------
   lg:{
     widget:'OpSelect',
-    label:'Align Cols(V)',
+    label:'Align Items',
     list:{
       'align-items-lg-start':'Start',
       'align-items-lg-end':'End',
@@ -54,7 +50,7 @@ let rowVAlignSchema = {
   //---------------------
   xl:{
     widget:'OpSelect',
-    label:'Align Cols(V)',
+    label:'Align Items',
     list:{
       'align-items-xl-start':'Start',
       'align-items-xl-end':'End',
@@ -64,33 +60,4 @@ let rowVAlignSchema = {
     },
   },
   //---------------------
- }//<--vAlign
-
- class RowVAlign extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = Object.assign({}, rowVAlignSchema)
-
-    this.metaFragment = Object.assign({}, responsiveMeta) 
-
-    this.fieldName = 'utilVAlign'
-  }
-
-  copyMeta(from, to){
-    super.copyResponsiveMetaTo(from, to)
-  }
-
-  toViewModel(model, meta){
-    let metaFragment = meta[this.fieldName]
-    super.responsiveMetaFieldToViewModel(model, metaFragment)
-  }
-}
-
-var addonRowVAlign = (node)=>{
-  let rowVAlign = new RowVAlign
-  rowVAlign.addon(node)
-  return rowVAlign
-}
-
-export {addonRowVAlign}
-
+ }//<--AlignItems
