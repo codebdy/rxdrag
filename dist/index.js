@@ -286,7 +286,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _bsc
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HTMLDiv\", function() { return HTMLDiv; });\n/* harmony import */ var _rxelement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../rxelement */ \"./src/elements/rxelement.js\");\n/* harmony import */ var _schemas_utilities_color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../schemas/utilities/color */ \"./src/elements/schemas/utilities/color/index.js\");\n\r\n\r\n\r\nclass HTMLDiv extends _rxelement__WEBPACK_IMPORTED_MODULE_0__[\"RXElement\"]{\r\n  constructor() {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupHtml'\r\n    this.toolboxInfo.elementId = 'div'\r\n    this.toolboxInfo.elementName = \"DIV\"\r\n    this.className = 'HTMLDiv'\r\n    let utilColor = new _schemas_utilities_color__WEBPACK_IMPORTED_MODULE_1__[\"UtilColor\"]\r\n    utilColor.addon(this)\r\n    //super.addColor()\r\n    super.addBorder()\r\n    super.addWidth()\r\n    super.addHeight()\r\n    super.addMarginAuto()\r\n    super.addMargin()\r\n    super.addPadding()\r\n    super.addClearfix()\r\n    super.addDisplay()\r\n  }\r\n\r\n  make(){\r\n    return new HTMLDiv\r\n  }\r\n\r\n  toViewModel(){\r\n    let model = super.toViewModel()\r\n    model.label.text = \"div\"\r\n    //model.classList.push('col')\r\n    return model\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/html/htmldiv.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HTMLDiv\", function() { return HTMLDiv; });\n/* harmony import */ var _rxelement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../rxelement */ \"./src/elements/rxelement.js\");\n/* harmony import */ var _schemas_utilities_color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../schemas/utilities/color */ \"./src/elements/schemas/utilities/color.js\");\n\r\n\r\n\r\nclass HTMLDiv extends _rxelement__WEBPACK_IMPORTED_MODULE_0__[\"RXElement\"]{\r\n  constructor() {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupHtml'\r\n    this.toolboxInfo.elementId = 'div'\r\n    this.toolboxInfo.elementName = \"DIV\"\r\n    this.className = 'HTMLDiv'\r\n    let utilColor = new _schemas_utilities_color__WEBPACK_IMPORTED_MODULE_1__[\"UtilColor\"]\r\n    utilColor.addon(this)\r\n    //super.addColor()\r\n    super.addBorder()\r\n    super.addWidth()\r\n    super.addHeight()\r\n    super.addMarginAuto()\r\n    super.addMargin()\r\n    super.addPadding()\r\n    super.addClearfix()\r\n    super.addDisplay()\r\n  }\r\n\r\n  make(){\r\n    return new HTMLDiv\r\n  }\r\n\r\n  toViewModel(){\r\n    let model = super.toViewModel()\r\n    model.label.text = \"div\"\r\n    //model.classList.push('col')\r\n    return model\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/html/htmldiv.js?");
 
 /***/ }),
 
@@ -359,6 +359,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  group:'columnOptions',\r\n  isResponsive:true,\r\n  xs:{\r\n    label:'Width',\r\n    widget:'OpSelect',\r\n    columns:2,\r\n    list:{\r\n      'col-1':'1',\r\n      'col-2':'2',\r\n      'col-3':'3',\r\n      'col-4':'4',\r\n      'col-5':'5',\r\n      'col-6':'6',\r\n      'col-7':'7',\r\n      'col-8':'8',\r\n      'col-9':'9',\r\n      'col-10':'10',\r\n      'col-11':'11',\r\n      'col-12':'12',\r\n      'col-auto':'Auto',\r\n      'col':'Col',\r\n    },\r\n  },\r\n  //---------------------\r\n  sm:{\r\n    label:'Width',\r\n    widget:'OpSelect',\r\n    columns:2,\r\n    list:{\r\n      'col-sm-1':'1',\r\n      'col-sm-2':'2',\r\n      'col-sm-3':'3',\r\n      'col-sm-4':'4',\r\n      'col-sm-5':'5',\r\n      'col-sm-6':'6',\r\n      'col-sm-7':'7',\r\n      'col-sm-8':'8',\r\n      'col-sm-9':'9',\r\n      'col-sm-10':'10',\r\n      'col-sm-11':'11',\r\n      'col-sm-12':'12',\r\n      'col-sm-auto':'Auto',\r\n      'col-sm':'Col',\r\n    },\r\n  },\r\n  //---------------------\r\n  md:{\r\n    label:'Width',\r\n    widget:'OpSelect',\r\n    columns:2,\r\n    list:{\r\n      'col-md-1':'1',\r\n      'col-md-2':'2',\r\n      'col-md-3':'3',\r\n      'col-md-4':'4',\r\n      'col-md-5':'5',\r\n      'col-md-6':'6',\r\n      'col-md-7':'7',\r\n      'col-md-8':'8',\r\n      'col-md-9':'9',\r\n      'col-md-10':'10',\r\n      'col-md-11':'11',\r\n      'col-md-12':'12',\r\n      'col-md-auto':'Auto',\r\n      'col-md':'Col',\r\n    },\r\n  },\r\n  //---------------------\r\n  lg:{\r\n    label:'Width',\r\n    widget:'OpSelect',\r\n    columns:2,\r\n    list:{\r\n      'col-lg-1':'1',\r\n      'col-lg-2':'2',\r\n      'col-lg-3':'3',\r\n      'col-lg-4':'4',\r\n      'col-lg-5':'5',\r\n      'col-lg-6':'6',\r\n      'col-lg-7':'7',\r\n      'col-lg-8':'8',\r\n      'col-lg-9':'9',\r\n      'col-lg-10':'10',\r\n      'col-lg-11':'11',\r\n      'col-lg-12':'12',\r\n      'col-lg-auto':'Auto',\r\n      'col-lg':'Col',\r\n    },\r\n  },\r\n  //---------------------\r\n  xl:{\r\n    label:'Width',\r\n    widget:'OpSelect',\r\n    columns:2,\r\n    list:{\r\n      'col-xl-1':'1',\r\n      'col-xl-2':'2',\r\n      'col-xl-3':'3',\r\n      'col-xl-4':'4',\r\n      'col-xl-5':'5',\r\n      'col-xl-6':'6',\r\n      'col-xl-7':'7',\r\n      'col-xl-8':'8',\r\n      'col-xl-9':'9',\r\n      'col-xl-10':'10',\r\n      'col-xl-11':'11',\r\n      'col-xl-12':'12',\r\n      'col-xl-auto':'Auto',\r\n      'col-xl':'Col',\r\n    },\r\n  },\r\n  //---------------------\r\n});//<--width\n\n//# sourceURL=webpack:///./src/elements/schemas/column/col-width.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/option-fragment.js":
+/*!*************************************************!*\
+  !*** ./src/elements/schemas/option-fragment.js ***!
+  \*************************************************/
+/*! exports provided: OptionFragment */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"OptionFragment\", function() { return OptionFragment; });\nclass OptionFragment{\r\n  constructor(){\r\n    this.schema = {\r\n    }\r\n\r\n    //只在初始化时有用，不接收返回值\r\n    this.metaFragment = {\r\n    }\r\n\r\n    this.fieldName = ''\r\n  }\r\n\r\n  addon(node){\r\n    this.node = node\r\n    node.addons.push(this)\r\n    node.addToGroup('utilities')\r\n    node.$meta[this.fieldName] = this.metaFragment\r\n    node.$schema.fields[this.fieldName] = this.schema\r\n  }\r\n\r\n  copyMeta(from, to){\r\n  }\r\n\r\n  toViewModel(model){\r\n  }\r\n}\n\n//# sourceURL=webpack:///./src/elements/schemas/option-fragment.js?");
 
 /***/ }),
 
@@ -458,39 +470,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 
 /***/ }),
 
-/***/ "./src/elements/schemas/utilities/color/background.js":
-/*!************************************************************!*\
-  !*** ./src/elements/schemas/utilities/color/background.js ***!
-  \************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  label:'Background Color',\r\n  widget:'OpSelect',\r\n  list:{\r\n    'bg-primary':'Primary',\r\n    'bg-secondary':'Secondary',\r\n    'bg-success':'Success',\r\n    'bg-danger':'Danger',\r\n    'bg-warning':'Warning',\r\n    'bg-info':'Info',\r\n    'bg-light':'Light',\r\n    'bg-dark':'Dark',\r\n    'bg-white':'White',\r\n    'bg-transparent':'Transparent',\r\n  },\r\n});\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/color/background.js?");
-
-/***/ }),
-
-/***/ "./src/elements/schemas/utilities/color/index.js":
-/*!*******************************************************!*\
-  !*** ./src/elements/schemas/utilities/color/index.js ***!
-  \*******************************************************/
+/***/ "./src/elements/schemas/utilities/color.js":
+/*!*************************************************!*\
+  !*** ./src/elements/schemas/utilities/color.js ***!
+  \*************************************************/
 /*! exports provided: UtilColor */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"UtilColor\", function() { return UtilColor; });\n/* harmony import */ var _text__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./text */ \"./src/elements/schemas/utilities/color/text.js\");\n/* harmony import */ var _background__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./background */ \"./src/elements/schemas/utilities/color/background.js\");\n\r\n\r\n\r\nclass UtilColor{\r\n  constructor(){\r\n    this.schema = {\r\n      group:'utilities',\r\n      label:'Color',\r\n      isRowGroup:true,\r\n      fields:{\r\n        textColor : _text__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\r\n        backgroundColor : _background__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\r\n      }\r\n    }\r\n\r\n    //只在初始化时有用，不接收返回值\r\n    this.metaFragment = {\r\n      textColor : '',\r\n      backgroundColor : '',\r\n    }\r\n\r\n    this.fieldName = 'utilColor'\r\n  }\r\n\r\n  addon(node){\r\n    this.node = node\r\n    node.addons.push(this)\r\n    node.addToGroup('utilities')\r\n    node.$meta[this.fieldName] = this.metaFragment\r\n    node.$schema.fields[this.fieldName] = this.schema\r\n  }\r\n\r\n  copyMeta(from, to){\r\n    to.textColor = from.textColor\r\n    to.backgroundColor = from.backgroundColor\r\n  }\r\n\r\n  toViewModel(model){\r\n    let metaFragment = this.node.$meta[this.fieldName]\r\n    model.classList.add(metaFragment.textColor)\r\n    model.classList.add(metaFragment.backgroundColor)\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/color/index.js?");
-
-/***/ }),
-
-/***/ "./src/elements/schemas/utilities/color/text.js":
-/*!******************************************************!*\
-  !*** ./src/elements/schemas/utilities/color/text.js ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  label:'Text Color',\r\n  widget:'OpSelect',\r\n  list:{\r\n    'text-primary':'Primary',\r\n    'text-secondary':'Secondary',\r\n    'text-success':'Success',\r\n    'text-danger':'Danger',\r\n    'text-warning':'Warning',\r\n    'text-info':'Info',\r\n    'text-light':'Light',\r\n    'text-dark':'Dark',\r\n    'text-muted':'Muted',\r\n    'text-white':'White',\r\n  },\r\n});\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/color/text.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"UtilColor\", function() { return UtilColor; });\n/* harmony import */ var _option_fragment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../option-fragment */ \"./src/elements/schemas/option-fragment.js\");\n\r\n\r\nvar textColor = {\r\n  label:'Text Color',\r\n  widget:'OpSelect',\r\n  list:{\r\n    'text-primary':'Primary',\r\n    'text-secondary':'Secondary',\r\n    'text-success':'Success',\r\n    'text-danger':'Danger',\r\n    'text-warning':'Warning',\r\n    'text-info':'Info',\r\n    'text-light':'Light',\r\n    'text-dark':'Dark',\r\n    'text-muted':'Muted',\r\n    'text-white':'White',\r\n  },\r\n}\r\n\r\nvar backgroundColor = {\r\n  label:'Background Color',\r\n  widget:'OpSelect',\r\n  list:{\r\n    'bg-primary':'Primary',\r\n    'bg-secondary':'Secondary',\r\n    'bg-success':'Success',\r\n    'bg-danger':'Danger',\r\n    'bg-warning':'Warning',\r\n    'bg-info':'Info',\r\n    'bg-light':'Light',\r\n    'bg-dark':'Dark',\r\n    'bg-white':'White',\r\n    'bg-transparent':'Transparent',\r\n  },\r\n}\r\n\r\nclass UtilColor extends _option_fragment__WEBPACK_IMPORTED_MODULE_0__[\"OptionFragment\"]{\r\n  constructor(){\r\n    super()\r\n    this.schema = {\r\n      group:'utilities',\r\n      label:'Color',\r\n      isRowGroup:true,\r\n      fields:{\r\n        textColor : textColor,\r\n        backgroundColor : backgroundColor,\r\n      }\r\n    }\r\n\r\n    this.metaFragment = {\r\n      textColor : '',\r\n      backgroundColor : '',\r\n    }\r\n    this.fieldName = 'utilColor'\r\n  }\r\n\r\n  copyMeta(from, to){\r\n    to.textColor = from.textColor\r\n    to.backgroundColor = from.backgroundColor\r\n  }\r\n\r\n  toViewModel(model){\r\n    let metaFragment = this.node.$meta[this.fieldName]\r\n    model.classList.add(metaFragment.textColor)\r\n    model.classList.add(metaFragment.backgroundColor)\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/color.js?");
 
 /***/ }),
 
