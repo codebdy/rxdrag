@@ -1,6 +1,6 @@
 import {RXElement} from "../rxelement"
-import {UtilColor} from "../schemas/utilities/color"
-import {UtilPadding} from "../schemas/utilities/padding"
+import {addonUtilColor} from "../schemas/utilities/color"
+import {addonUtilPadding} from "../schemas/utilities/padding"
 
 export class HTMLDiv extends RXElement{
   constructor() {
@@ -9,11 +9,8 @@ export class HTMLDiv extends RXElement{
     this.toolboxInfo.elementId = 'div'
     this.toolboxInfo.elementName = "DIV"
     this.className = 'HTMLDiv'
-    let utilColor = new UtilColor
-    utilColor.addon(this)
-
-    let utilPadding = new UtilPadding
-    utilPadding.addon(this)
+    addonUtilColor(this)
+    addonUtilPadding(this)
     //super.addColor()
     super.addBorder()
     super.addWidth()

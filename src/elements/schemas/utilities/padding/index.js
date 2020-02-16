@@ -34,7 +34,7 @@ var utilPaddingMeta = {
   left : Object.assign({}, responsiveMeta),
 }
 
-export class UtilPadding extends OptionFragment{
+class UtilPadding extends OptionFragment{
   constructor(){
     super()
     this.schema = Object.assign({}, utilPaddingSchema)
@@ -51,3 +51,10 @@ export class UtilPadding extends OptionFragment{
     super.responsiveMetaGroupToViewModel(model, meta[this.fieldName])
   }
 }
+
+var addonUtilPadding = (node)=>{
+  let utilPadding = new UtilPadding
+  utilPadding.addon(node)
+}
+
+export {addonUtilPadding}

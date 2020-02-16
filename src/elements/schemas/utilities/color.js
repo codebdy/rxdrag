@@ -34,7 +34,7 @@ var backgroundColor = {
   },
 }
 
-export class UtilColor extends OptionFragment{
+class UtilColor extends OptionFragment{
   constructor(){
     super()
     this.schema = {
@@ -65,3 +65,11 @@ export class UtilColor extends OptionFragment{
     model.classList.add(metaFragment.backgroundColor)
   }
 }
+
+var addonUtilColor = (node)=>{
+  let utilColor = new UtilColor
+  utilColor.addon(node)
+}
+
+export {addonUtilColor}
+
