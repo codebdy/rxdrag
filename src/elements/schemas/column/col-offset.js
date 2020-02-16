@@ -1,4 +1,7 @@
-export default{
+import {OptionFragment} from "../option-fragment"
+import responsiveMeta from "../responsive"
+
+let colOffsetSchema = {
   group:'columnOptions',
   isResponsive:true,
   xs:{
@@ -97,3 +100,31 @@ export default{
   },
   //---------------------
 }//<--offset
+
+class ColOffset extends OptionFragment{
+  constructor(){
+    super()
+    this.schema = Object.assign({}, colOffsetSchema)
+
+    this.metaFragment = Object.assign({}, responsiveMeta) 
+
+    this.fieldName = 'colOffset'
+  }
+
+  copyMeta(from, to){
+    super.copyResponsiveMetaTo(from, to)
+  }
+
+  toViewModel(model, meta){
+    let metaFragment = meta[this.fieldName]
+    super.responsiveMetaFieldToViewModel(model, metaFragment)
+  }
+}
+
+var addonOffset = (node)=>{
+  let colOffset = new ColOffset
+  colOffset.addon(node)
+  return colOffset
+}
+
+export {addonOffset}

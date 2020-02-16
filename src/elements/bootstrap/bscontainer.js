@@ -1,5 +1,7 @@
 import {RXElement} from "../rxelement"
 import {addonFluid} from "../schemas/container/fluid"
+import {addonUtilColor} from "../schemas/utilities/color"
+import {addonUtilBorder} from "../schemas/utilities/border"
 
 export class BSContainer extends RXElement{
   constructor() {
@@ -11,26 +13,13 @@ export class BSContainer extends RXElement{
     this.heightDropMargin = 15;
     this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv']
 
-    //this.$meta.baseClass = 'container'
-
     this.groups.containerOptions = {
       label:'Container Options'
     }
 
     addonFluid(this)
-    /*this.$schema.fields.baseClass = {
-      label:'Fluid',
-      widget:'OpSwitch',
-      required:true,
-      group:'containerOptions',
-      onValue:'container-fluid',
-      offValue:'container',
-      defaultValue:'container',
-    }*/
-     
-    //super.addBorder()
-    //super.addMargin()
-    //super.addPadding()
+    addonUtilColor(this)
+    addonUtilBorder(this)
   }
 
   make(){
@@ -40,7 +29,6 @@ export class BSContainer extends RXElement{
   toViewModel(){
     let model = super.toViewModel()
     model.label.text = "Container"
-    //model.classList.push(this.$meta.baseClass)
     return model
   }
 }
