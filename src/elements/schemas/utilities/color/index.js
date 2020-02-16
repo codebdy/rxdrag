@@ -22,9 +22,10 @@ var utilColorCopyTo = (from, to)=>{
 }
 
 var utilColorToViewModel = (model, metaFragment)=>{
-
-  model.classList.add(metaFragment.textColor)
-  model.classList.add(metaFragment.backgroundColor)
+  if(metaFragment){
+    model.classList.add(metaFragment.textColor)
+    model.classList.add(metaFragment.backgroundColor)
+  }
 }
 
 export{utilColorSchema, utilColorMeta, utilColorCopyTo, utilColorToViewModel}

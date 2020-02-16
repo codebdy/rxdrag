@@ -30,11 +30,13 @@ var utilBorderCopyTo = (from, to)=>{
 }
 
 var utilBorderToViewModel = (model, metaFragment)=>{
-  model.classList.push.apply(model.classList, metaFragment.addBorder)
-  model.classList.push.apply(model.classList, metaFragment.removeBorder)
+  if(metaFragment){
+    model.classList.push.apply(model.classList, metaFragment.addBorder)
+    model.classList.push.apply(model.classList, metaFragment.removeBorder)
 
-  model.classList.add(metaFragment.borderColor)
-  model.classList.add(metaFragment.borderRadius)
+    model.classList.add(metaFragment.borderColor)
+    model.classList.add(metaFragment.borderRadius)
+  }
 }
 
 export{utilBorderSchema, utilBorderMeta, utilBorderCopyTo, utilBorderToViewModel}
