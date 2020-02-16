@@ -1,6 +1,6 @@
 import {Node} from "../core/node"
 //import {utilColorSchema, utilColorMeta, utilColorCopyTo, utilColorToViewModel} from "./schemas/utilities/color"
-import {utilBorderSchema, utilBorderMeta, utilBorderCopyTo, utilBorderToViewModel} from "./schemas/utilities/border"
+//import {utilBorderSchema, utilBorderMeta, utilBorderCopyTo, utilBorderToViewModel} from "./schemas/utilities/border"
 import marginAuto from "./schemas/utilities/margin/margin-auto"
 //import {utilMarginSchema, utilMarginMeta} from "./schemas/utilities/margin"
 //import {utilPaddingSchema, utilPaddingMeta} from "./schemas/utilities/padding"
@@ -52,11 +52,11 @@ export class RXElement extends Node{
     this.$schema.fields.utilColor = Object.assign({}, utilColorSchema)
   }*/
 
-  addBorder(){
+  /*addBorder(){
     this.$schema.groups.utilities = this.groups.utilities
     this.$meta.utilBorder = Object.assign({}, utilBorderMeta)
     this.$schema.fields.utilBorder = Object.assign({}, utilBorderSchema)
-  }
+  }*/
 
 
   addMarginAuto(){
@@ -128,7 +128,7 @@ export class RXElement extends Node{
     copy.$meta.utilHeight = this.$meta.utilHeight
 
     //utilColorCopyTo(this, copy)
-    utilBorderCopyTo(this, copy)
+    //utilBorderCopyTo(this, copy)
     copy.$meta.utilClearfix = this.$meta.utilClearfix
 
     this.copyMetaTo(this.$meta['utilDisplay'], copy.$meta['utilDisplay'])
@@ -166,7 +166,7 @@ export class RXElement extends Node{
     model.classList.add(this.$meta.utilHeight)
 
     //utilColorToViewModel(model, this.$meta.utilColor)
-    utilBorderToViewModel(model, this.$meta.utilBorder)
+    //utilBorderToViewModel(model, this.$meta.utilBorder)
     model.classList.add(this.$meta.utilClearfix)
 
     //this.metaFieldToViewModel(model, this.$meta['utilDisplay'])

@@ -1,5 +1,6 @@
 import {RXElement} from "../rxelement"
 import {addonUtilColor} from "../schemas/utilities/color"
+import {addonUtilBorder} from "../schemas/utilities/border"
 import {addonUtilPadding} from "../schemas/utilities/padding"
 import {addonUtilMargin} from "../schemas/utilities/margin"
 
@@ -11,10 +12,11 @@ export class HTMLDiv extends RXElement{
     this.toolboxInfo.elementName = "DIV"
     this.className = 'HTMLDiv'
     addonUtilColor(this)
+    addonUtilBorder(this)
     addonUtilPadding(this)
     addonUtilMargin(this)
     //super.addColor()
-    super.addBorder()
+    //super.addBorder()
     super.addWidth()
     super.addHeight()
     super.addMarginAuto()

@@ -1,3 +1,4 @@
+import {OptionFragment} from "../../option-fragment"
 import addBorder from "./add"
 import removeBorder from "./remove"
 import borderColor from "./color"
@@ -22,15 +23,25 @@ var utilBorderMeta = {
   borderRadius : '',
 }
 
-var utilBorderCopyTo = (from, to)=>{
-  to.addBorder = from.addBorder.concat()
-  to.removeBorder = from.removeBorder.concat()
-  to.borderColor = from.borderColor
-  to.borderRadius = from.borderRadius
-}
+class UtilBorder extends OptionFragment{
+  constructor(){
+    super()
+    this.schema = Object.assign({}, utilBorderSchema)
 
-var utilBorderToViewModel = (model, metaFragment)=>{
-  if(metaFragment){
+    this.metaFragment = Object.assign({}, utilBorderMeta) 
+
+    this.fieldName = 'utilBorder'
+  }
+
+  copyMeta(from, to){
+    to.addBorder = from.addBorder.concat()
+    to.removeBorder = from.removeBorder.concat()
+    to.borderColor = from.borderColor
+    to.borderRadius = from.borderRadius
+  }
+
+  toViewModel(model, meta){
+    let metaFragment = meta[this.fieldName]
     model.classList.push.apply(model.classList, metaFragment.addBorder)
     model.classList.push.apply(model.classList, metaFragment.removeBorder)
 
@@ -39,4 +50,11 @@ var utilBorderToViewModel = (model, metaFragment)=>{
   }
 }
 
-export{utilBorderSchema, utilBorderMeta, utilBorderCopyTo, utilBorderToViewModel}
+var addonUtilBorder = (node)=>{
+  let utilBorder = new UtilBorder
+  utilBorder.addon(node)
+  return utilBorder
+}
+
+export {addonUtilBorder}
+
