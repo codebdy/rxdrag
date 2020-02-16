@@ -30,8 +30,8 @@ export class RXElement extends Node{
     //Typography：字体（暂缓），颜色，对齐
     //Decorations：边框、颜色、阴影，透明度
     this.groups = {
-      'dimension':{
-        label:'Dimension',
+      'utilities':{
+        label:'Bootstrap Utilities',
       },
       'decorations':{
         label:'Decorations',
@@ -40,7 +40,7 @@ export class RXElement extends Node{
   }
 
   addMarginAuto(){
-    this.$schema.groups.dimension = this.groups.dimension
+    this.$schema.groups.utilities = this.groups.utilities
     this.$meta.marginAuto = {xs:'', sm:'', md:'', lg:'', xl:''}
 
     this.$schema.fields.marginAuto = marginAuto
@@ -50,7 +50,7 @@ export class RXElement extends Node{
 
 //---
   addPadding(){
-    this.$schema.groups.dimension = this.groups.dimension
+    this.$schema.groups.utilities = this.groups.utilities
     this.$meta.basePadding = {}
     this.$meta.basePadding.all = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$meta.basePadding.horizontal = {xs:'', sm:'', md:'', lg:'', xl:''}
@@ -65,7 +65,7 @@ export class RXElement extends Node{
   }
 
   addMargin(){
-    this.$schema.groups.dimension = this.groups.dimension
+    this.$schema.groups.utilities = this.groups.utilities
     this.$meta.baseMargin = {}
     this.$meta.baseMargin.all = {xs:'', sm:'', md:'', lg:'', xl:''}
     this.$meta.baseMargin.horizontal = {xs:'', sm:'', md:'', lg:'', xl:''}
@@ -80,13 +80,13 @@ export class RXElement extends Node{
   }
 
   addWidth(){
-    this.$schema.groups.dimension = this.groups.dimension
+    this.$schema.groups.utilities = this.groups.utilities
     this.$meta.baseWidth = ''
     this.$schema.fields.baseWidth = baseWidth
   }
 
   addHeight(){
-    this.$schema.groups.dimension = this.groups.dimension
+    this.$schema.groups.utilities = this.groups.utilities
     this.$meta.baseHeight = ''
     this.$schema.fields.baseHeight = baseHeight
   }

@@ -7,7 +7,7 @@ import marginLeft from "./margin-l"
 import marginRight from "./margin-r"
 
 export default{
-  group:'dimension',
+  group:'utilities',
   label:'Margin',
   isRowGroup:true,
   fields:{

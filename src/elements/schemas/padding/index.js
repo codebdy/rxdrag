@@ -7,7 +7,7 @@ import paddingLeft from "./padding-l"
 import paddingRight from "./padding-r"
 
 export default{
-  group:'dimension',
+  group:'utilities',
   label:'Padding',
   isRowGroup:true,
   fields:{

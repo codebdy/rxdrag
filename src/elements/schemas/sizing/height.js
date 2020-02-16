@@ -1,6 +1,6 @@
 export default{
   label:'Height',
-  group:'dimension',
+  group:'utilities',
   widget:'OpSelect',
   defaultValue:'',
   list:{
