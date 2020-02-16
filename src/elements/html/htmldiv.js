@@ -8,6 +8,9 @@ import {addonUtilHeight} from "../schemas/utilities/sizing/height"
 import {addonUtilMarginAuto} from "../schemas/utilities/margin/margin-auto"
 import {addonUtilClearfix} from "../schemas/utilities/clearfix"
 import {addonUtilDisplay} from "../schemas/utilities/display"
+import {addonUtilEmbed} from "../schemas/utilities/embed"
+import {addonUtilResponsiveItem} from "../schemas/utilities/embed/responsive-item"
+
 
 export class HTMLDiv extends RXElement{
   constructor() {
@@ -25,6 +28,8 @@ export class HTMLDiv extends RXElement{
     addonUtilMarginAuto(this)
     addonUtilClearfix(this)
     addonUtilDisplay(this)
+    addonUtilEmbed(this)
+    addonUtilResponsiveItem(this)
   }
 
   make(){

@@ -1,5 +1,5 @@
 import {OptionFragment} from "../../option-fragment"
-import aspectRadio from "./aspect-radio"
+import aspectRadio from "./aspect-ratio"
 import responsive from "./responsive"
 
 var utilEmbedSchema = {
@@ -27,20 +27,15 @@ class UtilEmbed extends OptionFragment{
   }
 
   copyMeta(from, to){
-    //to[this.fieldName] = {}
-    //to[this.fieldName].addEmbed = from[this.fieldName].addEmbed.concat()
-    //to[this.fieldName].removeEmbed = from[this.fieldName].removeEmbed.concat()
-    //to[this.fieldName].EmbedColor = from[this.fieldName].EmbedColor
-    //to[this.fieldName].EmbedRadius = from[this.fieldName].EmbedRadius
+    to[this.fieldName] = {}
+    to[this.fieldName].responsive = from[this.fieldName].responsive
+    to[this.fieldName].aspectRadion = from[this.fieldName].aspectRadion
   }
 
   toViewModel(model, meta){
-    //let metaFragment = meta[this.fieldName]
-    //model.classList.push.apply(model.classList, metaFragment.addEmbed)
-    //model.classList.push.apply(model.classList, metaFragment.removeEmbed)
-
-    //model.classList.add(metaFragment.EmbedColor)
-    //model.classList.add(metaFragment.EmbedRadius)
+    let metaFragment = meta[this.fieldName]
+    model.classList.add(metaFragment.responsive)
+    model.classList.add(metaFragment.aspectRadion)
   }
 }
 
