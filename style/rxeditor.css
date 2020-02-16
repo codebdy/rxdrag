@@ -229,3 +229,97 @@
 .mini-editor-toolbar .sp-styles{
   width: 50px;
 }
+
+.d-rx-none{
+  position: relative;
+}
+
+.d-rx-none::after{
+  content:'Hidden';
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  color:#FFF;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 576px) {
+  .d-sm-rx-none{
+    position: relative;
+  }
+
+  .d-sm-rx-none::after{
+  content:'Hidden';
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  color:#FFF;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .d-md-rx-none{
+    position: relative;
+  }
+
+  .d-md-rx-none::after{
+  content:'Hidden';
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  color:#FFF;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+}
+@media (min-width: 992px) {
+  .d-lg-rx-none{
+    position: relative;
+  }
+  .d-lg-rx-none::after{
+  content:'Hidden';
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  color:#FFF;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+}
+@media (min-width: 1200px) {
+  .d-xl-rx-none{
+    position: relative;
+  }
+  .d-xl-rx-none::after{
+  content:'Hidden';
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  color:#FFF;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+}

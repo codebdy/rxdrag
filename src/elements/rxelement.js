@@ -7,6 +7,7 @@ import {utilPaddingSchema, utilPaddingMeta} from "./schemas/utilities/padding"
 import utilWidth from "./schemas/utilities/sizing/width"
 import utilHeight from "./schemas/utilities/sizing/height"
 import responsiveMeta from "./schemas/responsive"
+import {utilDisplaySchema, utilDisplayToViewModel} from "./schemas/utilities/display"
 
 export class RXElement extends Node{
   constructor() {
@@ -105,6 +106,13 @@ export class RXElement extends Node{
     this.$meta.utilClearfix = ''
   }
 
+  addDisplay(){
+    this.$schema.groups.utilities = this.groups.utilities
+    this.$meta.utilDisplay = Object.assign({}, responsiveMeta)
+    this.$schema.fields.utilDisplay = Object.assign({}, utilDisplaySchema)
+
+  }
+
   clone(){
     let copy = super.clone()
     copy.$meta.tag = this.$meta.tag
@@ -125,6 +133,8 @@ export class RXElement extends Node{
     utilColorCopyTo(this, copy)
     utilBorderCopyTo(this, copy)
     copy.$meta.utilClearfix = this.$meta.utilClearfix
+
+    this.copyMetaTo(this.$meta['utilDisplay'], copy.$meta['utilDisplay'])
     return copy
   }
 
@@ -155,6 +165,10 @@ export class RXElement extends Node{
     utilColorToViewModel(model, this.$meta.utilColor)
     utilBorderToViewModel(model, this.$meta.utilBorder)
     model.classList.add(this.$meta.utilClearfix)
+
+    //this.metaFieldToViewModel(model, this.$meta['utilDisplay'])
+    //以特殊形式显示隐藏元素
+    utilDisplayToViewModel(model, this.$meta.utilDisplay)
 
     return model
   }

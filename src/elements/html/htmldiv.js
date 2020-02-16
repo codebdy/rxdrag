@@ -15,6 +15,7 @@ export class HTMLDiv extends RXElement{
     super.addMargin()
     super.addPadding()
     super.addClearfix()
+    super.addDisplay()
   }
 
   make(){
