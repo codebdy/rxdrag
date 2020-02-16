@@ -7,6 +7,7 @@ export class HTMLDiv extends RXElement{
     this.toolboxInfo.elementId = 'div'
     this.toolboxInfo.elementName = "DIV"
     this.className = 'HTMLDiv'
+    super.addColor()
     super.addBorder()
     super.addWidth()
     super.addHeight()

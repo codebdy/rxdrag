@@ -1,4 +1,5 @@
 import {Node} from "../core/node"
+import {utilColorSchema, utilColorMeta, utilColorCopyTo, utilColorToViewModel} from "./schemas/utilities/color"
 import {utilBorderSchema, utilBorderMeta, utilBorderCopyTo, utilBorderToViewModel} from "./schemas/utilities/border"
 import marginAuto from "./schemas/utilities/margin/margin-auto"
 import {utilMarginSchema, utilMarginMeta} from "./schemas/utilities/margin"
@@ -39,6 +40,12 @@ export class RXElement extends Node{
         label:'Decorations',
       },
     }
+  }
+
+  addColor(){
+    this.$schema.groups.utilities = this.groups.utilities
+    this.$meta.utilColor = Object.assign({}, utilColorMeta)
+    this.$schema.fields.utilColor = Object.assign({}, utilColorSchema)
   }
 
   addBorder(){
@@ -115,6 +122,7 @@ export class RXElement extends Node{
     copy.$meta.utilWidth = this.$meta.utilWidth
     copy.$meta.utilHeight = this.$meta.utilHeight
 
+    utilColorCopyTo(this, copy)
     utilBorderCopyTo(this, copy)
     copy.$meta.utilClearfix = this.$meta.utilClearfix
     return copy
@@ -144,6 +152,7 @@ export class RXElement extends Node{
     model.classList.add(this.$meta.utilWidth)
     model.classList.add(this.$meta.utilHeight)
 
+    utilColorToViewModel(model, this.$meta.utilColor)
     utilBorderToViewModel(model, this.$meta.utilBorder)
     model.classList.add(this.$meta.utilClearfix)
 
