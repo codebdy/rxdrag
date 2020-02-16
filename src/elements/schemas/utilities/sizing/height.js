@@ -27,7 +27,7 @@ class UtilHeight extends OptionFragment{
   }
 
   copyMeta(from, to){
-    copy.$meta.utilHeight = from.$meta.utilHeight
+    to.utilHeight = from.utilHeight
   }
 
   toViewModel(model, meta){

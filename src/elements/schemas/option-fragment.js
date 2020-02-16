@@ -15,7 +15,7 @@ export class OptionFragment{
   }
 
   copyResponsiveGroupMetasTo(from, to){
-    for(var fieldName in this.$meta[this.fieldName]){
+    for(var fieldName in from){
       this.copyResponsiveMetaTo(from[fieldName], to[fieldName])
     }
   }

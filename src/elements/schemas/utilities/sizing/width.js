@@ -27,7 +27,7 @@ class UtilWidth extends OptionFragment{
   }
 
   copyMeta(from, to){
-    copy.$meta.utilWidth = from.$meta.utilWidth
+    to.utilWidth = from.utilWidth
   }
 
   toViewModel(model, meta){

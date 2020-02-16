@@ -40,7 +40,7 @@ export class RXElement extends Node{
     copy.$meta.tag = this.$meta.tag
 
     this.addons.forEach((addon)=>{
-      addon.copyMeta(this, copy)
+      addon.copyMeta(this.$meta, copy.$meta)
     })
 
     return copy

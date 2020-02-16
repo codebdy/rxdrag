@@ -34,10 +34,11 @@ class UtilBorder extends OptionFragment{
   }
 
   copyMeta(from, to){
-    to.addBorder = from.addBorder.concat()
-    to.removeBorder = from.removeBorder.concat()
-    to.borderColor = from.borderColor
-    to.borderRadius = from.borderRadius
+    to[this.fieldName] = {}
+    to[this.fieldName].addBorder = from[this.fieldName].addBorder.concat()
+    to[this.fieldName].removeBorder = from[this.fieldName].removeBorder.concat()
+    to[this.fieldName].borderColor = from[this.fieldName].borderColor
+    to[this.fieldName].borderRadius = from[this.fieldName].borderRadius
   }
 
   toViewModel(model, meta){
