@@ -94,7 +94,13 @@ export class OptionRowGroup extends RowBase{
         values.push(this.value[fieldName][this.screenWidth])
       }
       else{
-        values.push(this.value[fieldName])
+        let value = this.value[fieldName]
+        if(value.constructor==Array){
+          values.push.apply(values, value)
+        }
+        else{
+          values.push(this.value[fieldName])
+        }
       }
     }
     return values

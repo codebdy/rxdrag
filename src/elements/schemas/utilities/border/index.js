@@ -2,25 +2,39 @@ import addBorder from "./add"
 import removeBorder from "./remove"
 import borderColor from "./color"
 import borderRadius from "./radius"
-import responsiveMeta from "../../responsive"
 
 var utilBorderSchema = {
   group:'utilities',
   label:'Border',
   isRowGroup:true,
   fields:{
-  	addBorder : addBorder,
-  	removeBorder : removeBorder,
-  	borderColor : borderColor,
-  	borderRadius : borderRadius,
+    addBorder : addBorder,
+    removeBorder : removeBorder,
+    borderColor : borderColor,
+    borderRadius : borderRadius,
   }
 }
 
 var utilBorderMeta = {
-  addBorder : Object.assign({}, responsiveMeta),
-  removeBorder : Object.assign({}, responsiveMeta),
-  borderColor : Object.assign({}, responsiveMeta),
-  borderRadius : Object.assign({}, responsiveMeta),
+  addBorder : [],
+  removeBorder : [],
+  borderColor : '',
+  borderRadius : '',
 }
 
-export{utilBorderSchema, utilBorderMeta}
+var utilBorderCopyTo = (from, to)=>{
+  to.addBorder = from.addBorder.concat()
+  to.removeBorder = from.removeBorder.concat()
+  to.borderColor = from.borderColor
+  to.borderRadius = from.borderRadius
+}
+
+var utilBorderToViewModel = (model, metaFragment)=>{
+  model.classList.push.apply(model.classList, metaFragment.addBorder)
+  model.classList.push.apply(model.classList, metaFragment.removeBorder)
+
+  model.classList.add(metaFragment.borderColor)
+  model.classList.add(metaFragment.borderRadius)
+}
+
+export{utilBorderSchema, utilBorderMeta, utilBorderCopyTo, utilBorderToViewModel}

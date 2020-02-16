@@ -1,5 +1,5 @@
 export default{
-  label:'Color',
+  label:'Border Color',
   widget:'OpSelect',
   list:{
     'border-primary':'Primary',

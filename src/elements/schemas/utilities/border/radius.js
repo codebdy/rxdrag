@@ -1,5 +1,5 @@
 export default{
-  label:'Radius',
+  label:'Border Radius',
   widget:'OpSelect',
   list:{
     'rounded':'Rounded',

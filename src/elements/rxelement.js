@@ -1,5 +1,5 @@
 import {Node} from "../core/node"
-import {utilBorderSchema, utilBorderMeta} from "./schemas/utilities/border"
+import {utilBorderSchema, utilBorderMeta, utilBorderCopyTo, utilBorderToViewModel} from "./schemas/utilities/border"
 import marginAuto from "./schemas/utilities/margin/margin-auto"
 import {utilMarginSchema, utilMarginMeta} from "./schemas/utilities/margin"
 import {utilPaddingSchema, utilPaddingMeta} from "./schemas/utilities/padding"
@@ -45,7 +45,6 @@ export class RXElement extends Node{
     this.$schema.groups.utilities = this.groups.utilities
     this.$meta.utilBorder = Object.assign({}, utilBorderMeta)
     this.$schema.fields.utilBorder = Object.assign({}, utilBorderSchema)
-    this.addedFieldGroups.push('utilBorder')
   }
 
 
@@ -102,6 +101,8 @@ export class RXElement extends Node{
 
     copy.$meta.utilWidth = this.$meta.utilWidth
     copy.$meta.utilHeight = this.$meta.utilHeight
+
+    utilBorderCopyTo(this, copy)
     return copy
   }
 
@@ -128,6 +129,8 @@ export class RXElement extends Node{
 
     model.classList.add(this.$meta.utilWidth)
     model.classList.add(this.$meta.utilHeight)
+
+    utilBorderToViewModel(model, this.$meta.utilBorder)
 
     return model
   }
