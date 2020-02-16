@@ -1,5 +1,5 @@
 import {Node} from "../core/node"
-import {utilColorSchema, utilColorMeta, utilColorCopyTo, utilColorToViewModel} from "./schemas/utilities/color"
+//import {utilColorSchema, utilColorMeta, utilColorCopyTo, utilColorToViewModel} from "./schemas/utilities/color"
 import {utilBorderSchema, utilBorderMeta, utilBorderCopyTo, utilBorderToViewModel} from "./schemas/utilities/border"
 import marginAuto from "./schemas/utilities/margin/margin-auto"
 import {utilMarginSchema, utilMarginMeta} from "./schemas/utilities/margin"
@@ -12,6 +12,9 @@ import {utilDisplaySchema, utilDisplayToViewModel} from "./schemas/utilities/dis
 export class RXElement extends Node{
   constructor() {
     super()
+
+    this.addons = []
+
     this.addedFeilds = []
     this.addedFieldGroups = []
     //基础数据，持久化也是这部分数据
@@ -27,12 +30,6 @@ export class RXElement extends Node{
 
     this.$schema.groups = {}
 
-    //备忘：Flexbox: flex container, flex item
-    //Extra:显示，可见性，浮动，图片替换，内容溢出，定位，
-    //      inline、inline-block、inline-table、和 table 元素的垂直对齐
-    //      尺寸
-    //Typography：字体（暂缓），颜色，对齐
-    //Decorations：边框、颜色、阴影，透明度
     this.groups = {
       'utilities':{
         label:'Bootstrap Utilities',
@@ -41,13 +38,19 @@ export class RXElement extends Node{
         label:'Decorations',
       },
     }
+
+    this.addToGroup = (groupName)=>{
+      this.$schema.groups[groupName] = this.groups[groupName]
+    }
+
   }
 
-  addColor(){
+
+  /*addColor(){
     this.$schema.groups.utilities = this.groups.utilities
     this.$meta.utilColor = Object.assign({}, utilColorMeta)
     this.$schema.fields.utilColor = Object.assign({}, utilColorSchema)
-  }
+  }*/
 
   addBorder(){
     this.$schema.groups.utilities = this.groups.utilities
@@ -130,11 +133,17 @@ export class RXElement extends Node{
     copy.$meta.utilWidth = this.$meta.utilWidth
     copy.$meta.utilHeight = this.$meta.utilHeight
 
-    utilColorCopyTo(this, copy)
+    //utilColorCopyTo(this, copy)
     utilBorderCopyTo(this, copy)
     copy.$meta.utilClearfix = this.$meta.utilClearfix
 
     this.copyMetaTo(this.$meta['utilDisplay'], copy.$meta['utilDisplay'])
+
+    this.addons.forEach((addon)=>{
+      addon.copyMeta(this, copy)
+    })
+
+
     return copy
   }
 
@@ -162,7 +171,7 @@ export class RXElement extends Node{
     model.classList.add(this.$meta.utilWidth)
     model.classList.add(this.$meta.utilHeight)
 
-    utilColorToViewModel(model, this.$meta.utilColor)
+    //utilColorToViewModel(model, this.$meta.utilColor)
     utilBorderToViewModel(model, this.$meta.utilBorder)
     model.classList.add(this.$meta.utilClearfix)
 
@@ -170,8 +179,13 @@ export class RXElement extends Node{
     //以特殊形式显示隐藏元素
     utilDisplayToViewModel(model, this.$meta.utilDisplay)
 
+    this.addons.forEach((addon)=>{
+      addon.toViewModel(model)
+    })
+
     return model
   }
+    //this.addonsCopy = []
 
   metaFieldToViewModel(model, metaFragment){
     for(var name in metaFragment){

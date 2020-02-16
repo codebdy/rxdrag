@@ -1,4 +1,5 @@
 import {RXElement} from "../rxelement"
+import {UtilColor} from "../schemas/utilities/color"
 
 export class HTMLDiv extends RXElement{
   constructor() {
@@ -7,7 +8,9 @@ export class HTMLDiv extends RXElement{
     this.toolboxInfo.elementId = 'div'
     this.toolboxInfo.elementName = "DIV"
     this.className = 'HTMLDiv'
-    super.addColor()
+    let utilColor = new UtilColor
+    utilColor.addon(this)
+    //super.addColor()
     super.addBorder()
     super.addWidth()
     super.addHeight()
