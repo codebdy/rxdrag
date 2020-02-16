@@ -19,11 +19,13 @@ export class Toolbar extends RXComponent{
     this.barLeft = new RXComponent()
     this.barLeft.classList.add('left')
     this.pushChild(this.barLeft)
+    var canvasState = this.rxEditorShell.canvasState
 
     if(withScreenSize){
       this.createScreenSizeButtons()
       rxEditorShell.state.watch('screenWidth', (state)=>{
         this.refreshScreenSizeButtonsState()
+        canvasState.screenWidth = rxEditorShell.state.screenWidth
       })
     }
 
@@ -44,7 +46,6 @@ export class Toolbar extends RXComponent{
     this.barRight = new RXComponent()
     this.barRight.cssClass('right')
     this.pushChild(this.barRight)
-    var canvasState = this.rxEditorShell.canvasState
     var outlineBtn = this.creatRightButton('fa-square-o')
               .active()
               .title('Show/hide outline')

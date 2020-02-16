@@ -21,6 +21,20 @@ export class BSCol extends RXElement{
     addonOffset(this)
     addonAlignSelf(this)
     addonOrder(this)
+    this.setDefaultWidth()
+  }
+
+  setDefaultWidth(){
+    if(window.rxEditor){
+      let width = window.rxEditor.state.screenWidth
+      if(width == 'xs'){
+        this.$meta.colWidth.xs = 'col'
+        return
+      }
+      
+      this.$meta.colWidth[width] = 'col-' + width
+      return
+    }
     this.$meta.colWidth.md = 'col-md'
   }
 

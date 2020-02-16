@@ -140,6 +140,7 @@ export class RXEditor{
   }
 
   changeCanvasState(state){
+    this.state.screenWidth = state.screenWidth
     this.state.preview = state.preview
     this.state.showEditMargin = state.showEditMargin
     this.state.showOutline = state.showOutline

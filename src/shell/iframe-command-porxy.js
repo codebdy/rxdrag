@@ -24,6 +24,7 @@ export class IFrameCommandProxy{
     this.sendMessageToRXEditor({
       name : 'changeCanvasState',
       state : {
+        screenWidth : state.screenWidth,
         preview : state.preview,
         showEditMargin : state.showEditMargin,
         showOutline : state.showOutline,

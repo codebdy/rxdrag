@@ -3,11 +3,24 @@ import {ObjectState} from "../basic/object-state"
 export class CanvasState extends ObjectState{
   constructor(){
     super()
+    this.__screenWidth = 'md'
     this.__preview = false
     this.__showEditMargin = true
     this.__showOutline = true
     this.__showLabel = true
+
   }
+
+  get screenWidth(){
+    return this.__screenWidth
+  }
+
+  set screenWidth(screenWidth){
+    if(this.__screenWidth == screenWidth){return} 
+    this.__screenWidth = screenWidth
+    this.distributeEvent('screenWidth')
+  }
+
 
   get preview(){
     return this.__preview
