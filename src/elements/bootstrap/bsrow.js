@@ -2,7 +2,6 @@ import {RXElement} from "../rxelement"
 import {addonRowGutters} from "../schemas/row/gutters"
 import {addonRowHAlign} from "../schemas/row/h-align"
 import {addonRowVAlign} from "../schemas/row/v-align"
-import responsiveMeta from "../schemas/responsive"
 
 export class BSRow extends RXElement{
   constructor(parent) {
