@@ -1,4 +1,6 @@
-export default{
+import {OptionFragment} from "../../option-fragment"
+
+let utilWidthSchema = {
   label:'Width',
   group:'utilities',
   widget:'OpSelect',
@@ -13,3 +15,31 @@ export default{
     'min-vw-100':'Min 100vw',
   },
 }
+
+class UtilWidth extends OptionFragment{
+  constructor(){
+    super()
+    this.schema = Object.assign({}, utilWidthSchema)
+
+    this.metaFragment = '' 
+
+    this.fieldName = 'utilWidth'
+  }
+
+  copyMeta(from, to){
+    copy.$meta.utilWidth = from.$meta.utilWidth
+  }
+
+  toViewModel(model, meta){
+    model.classList.add(meta[this.fieldName])
+  }
+}
+
+var addonUtilWidth = (node)=>{
+  let utilWidth = new UtilWidth
+  utilWidth.addon(node)
+  return utilWidth
+}
+
+export {addonUtilWidth}
+

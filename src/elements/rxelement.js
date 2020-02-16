@@ -84,11 +84,11 @@ export class RXElement extends Node{
     this.$schema.fields.utilWidth = utilWidth
   }
 
-  addHeight(){
-    this.$schema.groups.utilities = this.groups.utilities
-    this.$meta.utilHeight = ''
-    this.$schema.fields.utilHeight = utilHeight
-  }
+  //addHeight(){
+  //  this.$schema.groups.utilities = this.groups.utilities
+  //  this.$meta.utilHeight = ''
+  //  this.$schema.fields.utilHeight = utilHeight
+  //}
 
   addClearfix(){
     this.$schema.fields.utilClearfix = {
@@ -124,8 +124,8 @@ export class RXElement extends Node{
       }
     })
 
-    copy.$meta.utilWidth = this.$meta.utilWidth
-    copy.$meta.utilHeight = this.$meta.utilHeight
+    //copy.$meta.utilWidth = this.$meta.utilWidth
+    //copy.$meta.utilHeight = this.$meta.utilHeight
 
     //utilColorCopyTo(this, copy)
     //utilBorderCopyTo(this, copy)
@@ -163,7 +163,7 @@ export class RXElement extends Node{
     })
 
     model.classList.add(this.$meta.utilWidth)
-    model.classList.add(this.$meta.utilHeight)
+    //model.classList.add(this.$meta.utilHeight)
 
     //utilColorToViewModel(model, this.$meta.utilColor)
     //utilBorderToViewModel(model, this.$meta.utilBorder)

@@ -3,6 +3,8 @@ import {addonUtilColor} from "../schemas/utilities/color"
 import {addonUtilBorder} from "../schemas/utilities/border"
 import {addonUtilPadding} from "../schemas/utilities/padding"
 import {addonUtilMargin} from "../schemas/utilities/margin"
+import {addonUtilWidth} from "../schemas/utilities/sizing/width"
+import {addonUtilHeight} from "../schemas/utilities/sizing/height"
 
 export class HTMLDiv extends RXElement{
   constructor() {
@@ -13,12 +15,14 @@ export class HTMLDiv extends RXElement{
     this.className = 'HTMLDiv'
     addonUtilColor(this)
     addonUtilBorder(this)
-    addonUtilPadding(this)
+    addonUtilWidth(this)
+    addonUtilHeight(this)
     addonUtilMargin(this)
+    addonUtilPadding(this)
     //super.addColor()
     //super.addBorder()
-    super.addWidth()
-    super.addHeight()
+    //super.addWidth()
+    //super.addHeight()
     super.addMarginAuto()
    // super.addMargin()
     //super.addPadding()
