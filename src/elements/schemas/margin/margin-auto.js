@@ -1,5 +1,5 @@
 export default{
-  group:'dimension',
+  group:'utilities',
   isResponsive:true,
   xs:{
     label:'Margin Auto',
