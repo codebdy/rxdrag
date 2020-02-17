@@ -5,7 +5,7 @@ import {addonUtilPadding} from "../schemas/utilities/padding"
 import {addonUtilMargin} from "../schemas/utilities/margin"
 import {addonUtilWidth} from "../schemas/utilities/sizing/width"
 import {addonUtilHeight} from "../schemas/utilities/sizing/height"
-import {addonUtilMarginAuto} from "../schemas/utilities/margin/margin-auto"
+//import {addonUtilMarginAuto} from "../schemas/utilities/margin/margin-auto"
 import {addonUtilClearfix} from "../schemas/utilities/clearfix"
 import {addonUtilDisplay} from "../schemas/utilities/display"
 import {addonUtilEmbed} from "../schemas/utilities/embed"
@@ -25,7 +25,7 @@ export class HTMLDiv extends RXElement{
     addonUtilHeight(this)
     addonUtilMargin(this)
     addonUtilPadding(this)
-    addonUtilMarginAuto(this)
+    //addonUtilMarginAuto(this)
     addonUtilClearfix(this)
     addonUtilDisplay(this)
     addonUtilEmbed(this)

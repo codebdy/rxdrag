@@ -3,6 +3,7 @@ import {addonWidth} from "../schemas/column/col-width"
 import {addonOffset} from "../schemas/column/col-offset"
 import {addonAlignSelf} from "../schemas/column/col-align-self"
 import {addonOrder} from "../schemas/column/col-order"
+import {addonUtilMarginAuto} from "../schemas/column/margin-auto"
 
 export class BSCol extends RXElement{
   constructor() {
@@ -21,6 +22,7 @@ export class BSCol extends RXElement{
     addonOffset(this)
     addonAlignSelf(this)
     addonOrder(this)
+    addonUtilMarginAuto(this)
     this.setDefaultWidth()
   }
 
