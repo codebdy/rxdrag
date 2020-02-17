@@ -16,7 +16,7 @@ import {addonUtilTextHide} from "../schemas/utilities/text-hide"
 import {addonUtilOverflow} from "../schemas/utilities/overflow"
 import {addonUtilPosition} from "../schemas/utilities/position"
 import {addonUtilScreenReaders} from "../schemas/utilities/screen-readers"
-
+import {addonUtilShadow} from "../schemas/utilities/shadow"
 
 export class HTMLDiv extends RXElement{
   constructor() {
@@ -42,6 +42,7 @@ export class HTMLDiv extends RXElement{
     addonUtilOverflow(this)
     addonUtilPosition(this)
     addonUtilScreenReaders(this)
+    addonUtilShadow(this)
   }
 
   make(){
