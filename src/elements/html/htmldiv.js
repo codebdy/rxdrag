@@ -37,7 +37,7 @@ export class HTMLDiv extends RXElement{
     addonUtilClearfix(this)
     addonUtilDisplay(this)
     addonUtilEmbed(this)
-    addonUtilResponsiveItem(this) //need to move to other place
+    addonUtilResponsiveItem(this) //need to move to other tags
     addonUtilFlex(this)
     addonUtilFloat(this)
     addonUtilTextHide(this)
@@ -46,7 +46,7 @@ export class HTMLDiv extends RXElement{
     addonUtilScreenReaders(this)
     addonUtilShadow(this)
     addonUtilSizing(this)
-    addonUtilStretchedLink(this) //need to move to other place
+    addonUtilStretchedLink(this) //need to move to a tag
   }
 
   make(){
