@@ -77,7 +77,7 @@ export class OptionRow extends RowBase{
       return new OpLabelGroup(value)
     }
     if(schema.widget ==='OpBorderInput'){
-      return new OpBorderInput(value)
+      return new OpBorderInput(value, this.schema)
     }
 
   }

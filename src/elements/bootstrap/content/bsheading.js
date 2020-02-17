@@ -29,6 +29,7 @@ export class BSHeading extends RXElement{
     let model = super.toViewModel()
     model.label.text = "Heading"
     model.innerHTML = 'Heading'
+    model.contentEditable = true
     return model
   }
 }

@@ -1,11 +1,13 @@
 export default{
   label:'Add Border',
   widget:'OpBorderInput',
+  defaultValue:[],
+  specialClass:'add-border',
   list:{
-    'border':'All',
-    'border-top':'Top',
-    'border-right':'Right',
-    'border-bottom':'Bottom',
-    'border-left':'Left',
+    all : 'border',
+    top : 'border-top',
+    right : 'border-right',
+    bottom : 'border-bottom',
+    left : 'border-left',
   },
 }

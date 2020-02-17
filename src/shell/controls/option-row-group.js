@@ -59,8 +59,8 @@ export class OptionRowGroup extends RowBase{
 
     this.titleRow.input.onRemoveValue = (value)=>{
       this.body.children.forEach((row)=>{
-        if(row.input.value === value){
-          row.input.clear()
+        if(row.input.hasValue(value)){
+          row.input.removeValue(value)
         }
       })
     }

@@ -1,11 +1,13 @@
 export default{
   label:'Remove Border',
   widget:'OpBorderInput',
+  defaultValue:[],
+  specialClass:'remove-border',
   list:{
-    'border-0':'Remove All',
-    'border-top-0':'Remove Top',
-    'border-right-0':'Remove Right',
-    'border-bottom-0':'Remove Bottom',
-    'border-left-0':'Remove Left',
+    all : 'border-0',
+    top : 'border-top-0',
+    right : 'border-right-0',
+    bottom : 'border-bottom-0',
+    left : 'border-left-0',
   },
 }

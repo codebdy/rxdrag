@@ -38,4 +38,10 @@ export class OpSwitch extends OpInput{
     }
   }
 
+  removeValue(value){
+    this.value = this.defaultValue
+    this.onValueChanged(this.value)
+    this.updateState()
+  }
+
 }

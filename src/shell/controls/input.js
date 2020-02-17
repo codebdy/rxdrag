@@ -16,7 +16,7 @@ export class OpInput extends RXComponent{
   }
 
   isShowingDefault(){
-    return this.defaultValue === this.value
+    return this.defaultValue == this.value
   }
 
   listenValueChaged(callback){
@@ -25,5 +25,9 @@ export class OpInput extends RXComponent{
 
   offValueChaged(callback){
     this.valueChangedHandlers.remove(callback)
+  }
+
+  hasValue(value){
+    return this.value === value
   }
 } 

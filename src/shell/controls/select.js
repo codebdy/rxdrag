@@ -88,7 +88,7 @@ export class OpSelect extends OpInput{
 
   }
 
-  clear(){
+  removeValue(value){
     this.valueViewer.setText(this.emptyValue)
     let oldValue = this.value
     this.value = ''
