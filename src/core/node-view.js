@@ -36,6 +36,9 @@ export class NodeView{
   }
 
   doRender(model, parentDoment, domElement){
+    if(model.innerHTML){
+      domElement.innerHTML = model.innerHTML
+    }
     this.renderStylesAndClasses(model, domElement)
     this.bindEvents(domElement, model.on)
     this.showTextNode(model,domElement) 
