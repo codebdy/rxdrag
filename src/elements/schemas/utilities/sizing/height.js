@@ -1,8 +1,5 @@
-import {OptionFragment} from "../../option-fragment"
-
-let utilHeightSchema = {
+export default{
   label:'Height',
-  group:'utilities',
   widget:'OpSelect',
   defaultValue:'',
   list:{
@@ -15,31 +12,3 @@ let utilHeightSchema = {
     'min-vh-100':'Min 100vh',
   },
 }
-
-class UtilHeight extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = Object.assign({}, utilHeightSchema)
-
-    this.metaFragment = '' 
-
-    this.fieldName = 'utilHeight'
-  }
-
-  copyMeta(from, to){
-    to.utilHeight = from.utilHeight
-  }
-
-  toViewModel(model, meta){
-    model.classList.add(meta[this.fieldName])
-  }
-}
-
-var addonUtilHeight = (node)=>{
-  let utilHeight = new UtilHeight
-  utilHeight.addon(node)
-  return utilHeight
-}
-
-export {addonUtilHeight}
-

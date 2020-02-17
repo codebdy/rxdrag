@@ -3,8 +3,8 @@ import {addonUtilColor} from "../schemas/utilities/color"
 import {addonUtilBorder} from "../schemas/utilities/border"
 import {addonUtilPadding} from "../schemas/utilities/padding"
 import {addonUtilMargin} from "../schemas/utilities/margin"
-import {addonUtilWidth} from "../schemas/utilities/sizing/width"
-import {addonUtilHeight} from "../schemas/utilities/sizing/height"
+//import {addonUtilWidth} from "../schemas/utilities/sizing/width"
+//import {addonUtilHeight} from "../schemas/utilities/sizing/height"
 //import {addonUtilMarginAuto} from "../schemas/utilities/margin/margin-auto"
 import {addonUtilClearfix} from "../schemas/utilities/clearfix"
 import {addonUtilDisplay} from "../schemas/utilities/display"
@@ -17,6 +17,7 @@ import {addonUtilOverflow} from "../schemas/utilities/overflow"
 import {addonUtilPosition} from "../schemas/utilities/position"
 import {addonUtilScreenReaders} from "../schemas/utilities/screen-readers"
 import {addonUtilShadow} from "../schemas/utilities/shadow"
+import {addonUtilSizing} from "../schemas/utilities/sizing"
 
 export class HTMLDiv extends RXElement{
   constructor() {
@@ -27,8 +28,8 @@ export class HTMLDiv extends RXElement{
     this.className = 'HTMLDiv'
     addonUtilColor(this)
     addonUtilBorder(this)
-    addonUtilWidth(this)
-    addonUtilHeight(this)
+    //addonUtilWidth(this)
+    //addonUtilHeight(this)
     addonUtilMargin(this)
     addonUtilPadding(this)
     //addonUtilMarginAuto(this)
@@ -43,6 +44,7 @@ export class HTMLDiv extends RXElement{
     addonUtilPosition(this)
     addonUtilScreenReaders(this)
     addonUtilShadow(this)
+    addonUtilSizing(this)
   }
 
   make(){
