@@ -60,8 +60,9 @@ class EditorState extends ObjectState{
 }
 
 export class MiniEditor{
-  constructor(){
+  constructor(innerHTML){
     this.state = new EditorState
+    this.innerHTML = innerHTML
   }
 
   hangOn(domElement){
@@ -73,7 +74,7 @@ export class MiniEditor{
     let canvas = createChild('mini-editor-canvas',domElement)
     this.canvas = canvas
 
-    canvas.innerHTML ="欢迎使用 Mini Editor ,双击该区域试试"
+    canvas.innerHTML =this.innerHTML
 
     this.canvas.onkeydown = (event)=>{
       if (event.keyCode === 13) {

@@ -1,3 +1,5 @@
+import {MiniEditor} from './mini-editor'
+
 export class NodeView{
   constructor() {
   }
@@ -36,8 +38,10 @@ export class NodeView{
   }
 
   doRender(model, parentDoment, domElement){
-    if(model.innerHTML){
-      domElement.innerHTML = model.innerHTML
+    if(model.contentEditable){
+      let miniEditor = new  MiniEditor(model.innerHTML)
+      miniEditor.hangOn(domElement)
+      //domElement.innerHTML = model.innerHTML
     }
     this.renderStylesAndClasses(model, domElement)
     this.bindEvents(domElement, model.on)
