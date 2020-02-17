@@ -230,7 +230,7 @@
   width: 50px;
 }
 
-.d-rx-none{
+.d-rx-none, .rx-invisble{
   position: relative;
 }
 
@@ -248,6 +248,19 @@
   justify-content: center;
 }
 
+.rx-invisble::after{
+  content:'Invisible';
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  color:#FFF;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 @media (min-width: 576px) {
   .d-sm-rx-none{
     position: relative;

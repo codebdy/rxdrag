@@ -21,6 +21,8 @@ import {addonUtilSizing} from "../schemas/utilities/sizing"
 import {addonUtilStretchedLink} from "../schemas/utilities/stretched-link"
 import {addonUtilText} from "../schemas/utilities/text"
 import {addonUtilVerticalAlignment} from "../schemas/utilities/vertical-align"
+import {addonUtilVisibility} from "../schemas/utilities/visibility"
+
 
 export class HTMLDiv extends RXElement{
   constructor() {
@@ -51,6 +53,7 @@ export class HTMLDiv extends RXElement{
     addonUtilStretchedLink(this) //need to move to a tag
     addonUtilText(this)
     addonUtilVerticalAlignment(this)
+    addonUtilVisibility(this)
   }
 
   make(){

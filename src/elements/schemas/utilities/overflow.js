@@ -6,8 +6,8 @@ let utilOverflowSchema = {
   widget:'OpSelect',
   defaultValue:'',
   list:{
-    'Overflow-auto':'Auto',
-    'Overflow-hidden':'Hidden',
+    'overflow-auto':'Auto',
+    'overflow-hidden':'Hidden',
   },
 }
 
