@@ -1,53 +1,42 @@
 export default{
-  widget:'OpSwitch',
   isResponsive:true,
   xs:{
-    widget:'OpSelect',
+    widget:'OpSwitch',
     label:'Fill',
-    list:{
-      onValue:'flex-fill',
-      offValue:'',
-      defaultValue:'',
-    },
+    onValue:'flex-fill',
+    offValue:'',
+    defaultValue:'',
   },
   //---------------------
   sm:{
-    widget:'OpSelect',
+    widget:'OpSwitch',
     label:'Fill',
-    list:{
-      onValue:'flex-sm-fill',
-      offValue:'',
-      defaultValue:'',
-    },
+    onValue:'flex-fill',
+    offValue:'',
+    defaultValue:'',
   },
   //---------------------
   md:{
-    widget:'OpSelect',
+    widget:'OpSwitch',
     label:'Fill',
-    list:{
-      onValue:'flex-md-fill',
-      offValue:'',
-      defaultValue:'',
-    },
+    onValue:'flex-fill',
+    offValue:'',
+    defaultValue:'',
   },
   //---------------------
   lg:{
-    widget:'OpSelect',
+    widget:'OpSwitch',
     label:'Fill',
-    list:{
-      onValue:'flex-lg-fill',
-      offValue:'',
-      defaultValue:'',
-    },
+    onValue:'flex-fill',
+    offValue:'',
+    defaultValue:'',
   },
   //---------------------
   xl:{
-    widget:'OpSelect',
+    widget:'OpSwitch',
     label:'Fill',
-    list:{
-      onValue:'flex-xl-fill',
-      offValue:'',
-      defaultValue:'',
-    },
+    onValue:'flex-fill',
+    offValue:'',
+    defaultValue:'',
   },
 }

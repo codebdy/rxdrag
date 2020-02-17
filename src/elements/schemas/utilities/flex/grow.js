@@ -5,7 +5,7 @@ export default{
     label:'Grow',
     list:{
       'flex-grow-0':'0',
-      'flex-grow-0':'1',
+      'flex-grow-1':'1',
     },
   },
   //---------------------
@@ -14,7 +14,7 @@ export default{
     label:'Grow',
     list:{
       'flex-sm-grow-0':'0',
-      'flex-sm-grow-0':'1',
+      'flex-sm-grow-1':'1',
     },
   },
   //---------------------
@@ -23,7 +23,7 @@ export default{
     label:'Grow',
     list:{
       'flex-md-grow-0':'0',
-      'flex-md-grow-0':'1',
+      'flex-md-grow-1':'1',
     },
   },
   //---------------------
@@ -32,7 +32,7 @@ export default{
     label:'Grow',
     list:{
       'flex-lg-grow-0':'0',
-      'flex-lg-grow-0':'1',
+      'flex-lg-grow-1':'1',
     },
   },
   //---------------------
@@ -41,7 +41,7 @@ export default{
     label:'Grow',
     list:{
       'flex-xl-grow-0':'0',
-      'flex-xl-grow-0':'1',
+      'flex-xl-grow-1':'1',
     },
   },
   //---------------------

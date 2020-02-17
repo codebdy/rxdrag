@@ -10,6 +10,7 @@ import {addonUtilClearfix} from "../schemas/utilities/clearfix"
 import {addonUtilDisplay} from "../schemas/utilities/display"
 import {addonUtilEmbed} from "../schemas/utilities/embed"
 import {addonUtilResponsiveItem} from "../schemas/utilities/embed/responsive-item"
+import {addonUtilFlex} from "../schemas/utilities/flex"
 
 
 export class HTMLDiv extends RXElement{
@@ -30,6 +31,7 @@ export class HTMLDiv extends RXElement{
     addonUtilDisplay(this)
     addonUtilEmbed(this)
     addonUtilResponsiveItem(this)
+    addonUtilFlex(this)
   }
 
   make(){

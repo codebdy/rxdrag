@@ -7,8 +7,8 @@ export default{
       'align-items-start':'Start',
       'align-items-end':'End',
       'align-items-center':'Center',
-      'align-items-baseline':'Between',
-      'align-items-stretch':'Around',
+      'align-items-baseline':'Baseline',
+      'align-items-stretch':'Stretch',
     },
   },
   //---------------------
@@ -19,8 +19,8 @@ export default{
       'align-items-sm-start':'Start',
       'align-items-sm-end':'End',
       'align-items-sm-center':'Center',
-      'align-items-sm-baseline':'Between',
-      'align-items-sm-stretch':'Around',
+      'align-items-sm-baseline':'Baseline',
+      'align-items-sm-stretch':'Stretch',
     },
   },
   //---------------------
@@ -31,8 +31,8 @@ export default{
       'align-items-md-start':'Start',
       'align-items-md-end':'End',
       'align-items-md-center':'Center',
-      'align-items-md-baseline':'Between',
-      'align-items-md-stretch':'Around',
+      'align-items-md-baseline':'Baseline',
+      'align-items-md-stretch':'Stretch',
     },
   },
   //---------------------
@@ -43,8 +43,8 @@ export default{
       'align-items-lg-start':'Start',
       'align-items-lg-end':'End',
       'align-items-lg-center':'Center',
-      'align-items-lg-baseline':'Between',
-      'align-items-lg-stretch':'Around',
+      'align-items-lg-baseline':'Baseline',
+      'align-items-lg-stretch':'Stretch',
     },
   },
   //---------------------
@@ -55,9 +55,9 @@ export default{
       'align-items-xl-start':'Start',
       'align-items-xl-end':'End',
       'align-items-xl-center':'Center',
-      'align-items-xl-baseline':'Between',
-      'align-items-xl-stretch':'Around',
+      'align-items-xl-baseline':'Baseline',
+      'align-items-xl-stretch':'Stretch',
     },
   },
   //---------------------
- }//<--AlignItems
+ }

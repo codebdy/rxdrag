@@ -5,7 +5,7 @@ export default{
     label:'Shrink',
     list:{
       'flex-shrink-0':'0',
-      'flex-shrink-0':'1',
+      'flex-shrink-1':'1',
     },
   },
   //---------------------
@@ -14,7 +14,7 @@ export default{
     label:'shrink',
     list:{
       'flex-sm-shrink-0':'0',
-      'flex-sm-shrink-0':'1',
+      'flex-sm-shrink-1':'1',
     },
   },
   //---------------------
@@ -23,7 +23,7 @@ export default{
     label:'Shrink',
     list:{
       'flex-md-shrink-0':'0',
-      'flex-md-shrink-0':'1',
+      'flex-md-shrink-1':'1',
     },
   },
   //---------------------
@@ -32,7 +32,7 @@ export default{
     label:'Shrink',
     list:{
       'flex-lg-shrink-0':'0',
-      'flex-lg-shrink-0':'1',
+      'flex-lg-shrink-1':'1',
     },
   },
   //---------------------
@@ -41,7 +41,7 @@ export default{
     label:'Shrink',
     list:{
       'flex-xl-shrink-0':'0',
-      'flex-xl-shrink-0':'1',
+      'flex-xl-shrink-1':'1',
     },
   },
   //---------------------
