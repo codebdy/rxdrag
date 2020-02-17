@@ -18,6 +18,7 @@ import {addonUtilPosition} from "../schemas/utilities/position"
 import {addonUtilScreenReaders} from "../schemas/utilities/screen-readers"
 import {addonUtilShadow} from "../schemas/utilities/shadow"
 import {addonUtilSizing} from "../schemas/utilities/sizing"
+import {addonUtilStretchedLink} from "../schemas/utilities/stretched-link"
 
 export class HTMLDiv extends RXElement{
   constructor() {
@@ -36,7 +37,7 @@ export class HTMLDiv extends RXElement{
     addonUtilClearfix(this)
     addonUtilDisplay(this)
     addonUtilEmbed(this)
-    addonUtilResponsiveItem(this)
+    addonUtilResponsiveItem(this) //need to move to other place
     addonUtilFlex(this)
     addonUtilFloat(this)
     addonUtilTextHide(this)
@@ -45,6 +46,7 @@ export class HTMLDiv extends RXElement{
     addonUtilScreenReaders(this)
     addonUtilShadow(this)
     addonUtilSizing(this)
+    addonUtilStretchedLink(this) //need to move to other place
   }
 
   make(){
