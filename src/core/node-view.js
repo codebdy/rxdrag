@@ -32,7 +32,7 @@ export class NodeView{
     if(!this.domElement) return;
     this.putDown()
     this.parentDoment = parentDoment
-    this.doRender(model, parentDoment, this.domElement)
+    this.doRefresh(model, parentDoment, this.domElement)
   }
 
   doRender(model, parentDoment, domElement){
@@ -44,6 +44,17 @@ export class NodeView{
     this.showAttributes(model,domElement)
     parentDoment.appendChild(domElement);
   }
+
+  doRefresh(model, parentDoment, domElement){
+    this.renderStylesAndClasses(model, domElement)
+    this.bindEvents(domElement, model.on)
+    //this.showTextNode(model,domElement) 
+    //this.showLabel(model,domElement)
+    //this.showToolbar(model,domElement)
+    this.showAttributes(model,domElement)
+    parentDoment.appendChild(domElement);
+  }
+
 
   renderStylesAndClasses(model, domElement){
     if(domElement){
@@ -113,7 +124,8 @@ export class NodeView{
 
   bindEvents(element, on){
     for(var eventName in on){
-      element.addEventListener(eventName, on[eventName])
+      //element.addEventListener(eventName, on[eventName])
+      element[eventName] = on[eventName]
     }
   }
 

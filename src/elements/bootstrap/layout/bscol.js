@@ -13,7 +13,7 @@ export class BSCol extends RXElement{
     this.toolboxInfo.elementName = "Column"
     this.className = 'BSCol'
     this.widthDropMargin = 15;
-    this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv']
+    this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv', 'BSHeading']
     this.groups.columnOptions = {
       label:'Column Options'
     }
