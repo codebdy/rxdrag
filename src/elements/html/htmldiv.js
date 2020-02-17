@@ -15,6 +15,7 @@ import {addonUtilFloat} from "../schemas/utilities/float"
 import {addonUtilTextHide} from "../schemas/utilities/text-hide"
 import {addonUtilOverflow} from "../schemas/utilities/overflow"
 import {addonUtilPosition} from "../schemas/utilities/position"
+import {addonUtilScreenReaders} from "../schemas/utilities/screen-readers"
 
 
 export class HTMLDiv extends RXElement{
@@ -40,6 +41,7 @@ export class HTMLDiv extends RXElement{
     addonUtilTextHide(this)
     addonUtilOverflow(this)
     addonUtilPosition(this)
+    addonUtilScreenReaders(this)
   }
 
   make(){
