@@ -6,7 +6,6 @@ class UtilClearfix extends OptionFragment{
     this.schema = {
       label:'Clearfix',
       widget:'OpSwitch',
-      required:true,
       group:'utilities',
       onValue:'clearfix',
       offValue:'',

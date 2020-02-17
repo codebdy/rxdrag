@@ -12,6 +12,7 @@ import {addonUtilEmbed} from "../schemas/utilities/embed"
 import {addonUtilResponsiveItem} from "../schemas/utilities/embed/responsive-item"
 import {addonUtilFlex} from "../schemas/utilities/flex"
 import {addonUtilFloat} from "../schemas/utilities/float"
+import {addonUtilTextHide} from "../schemas/utilities/text-hide"
 
 
 export class HTMLDiv extends RXElement{
@@ -34,6 +35,7 @@ export class HTMLDiv extends RXElement{
     addonUtilResponsiveItem(this)
     addonUtilFlex(this)
     addonUtilFloat(this)
+    addonUtilTextHide(this)
   }
 
   make(){
