@@ -1,7 +1,7 @@
-import {BSContainer} from "./bscontainer"
-import {BSRow} from "./bsrow"
-import {BSCol} from "./bscol"
-import {BSW100} from "./bsw100"
+import {BSContainer} from "./layout/bscontainer"
+import {BSRow} from "./layout/bsrow"
+import {BSCol} from "./layout/bscol"
+import {BSW100} from "./layout/bsw100"
 
 export default {
 	container: new BSContainer,

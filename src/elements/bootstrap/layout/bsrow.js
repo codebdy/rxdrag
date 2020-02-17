@@ -1,12 +1,12 @@
-import {RXElement} from "../rxelement"
-import {addonRowGutters} from "../schemas/row/gutters"
-import {addonRowJustifyContent} from "../schemas/row/justify-content"
-import {addonRowAlignItems} from "../schemas/row/align-items"
+import {RXElement} from "../../rxelement"
+import {addonRowGutters} from "../../schemas/row/gutters"
+import {addonRowJustifyContent} from "../../schemas/row/justify-content"
+import {addonRowAlignItems} from "../../schemas/row/align-items"
 
 export class BSRow extends RXElement{
   constructor(parent) {
     super()
-    this.toolboxInfo.groupId = 'groupGrid'
+    this.toolboxInfo.groupId = 'groupLayout'
     this.toolboxInfo.elementId = 'row'
     this.toolboxInfo.elementName = "Row"
     this.className = 'BSRow'

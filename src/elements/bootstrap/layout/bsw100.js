@@ -1,9 +1,9 @@
-import {RXElement} from "../rxelement"
+import {RXElement} from "../../rxelement"
 
 export class BSW100 extends RXElement{
   constructor() {
     super()
-    this.toolboxInfo.groupId = 'groupGrid'
+    this.toolboxInfo.groupId = 'groupLayout'
     this.toolboxInfo.elementId = 'bsw100'
     this.toolboxInfo.elementName = "Row Break"
     this.className = 'BSW100'

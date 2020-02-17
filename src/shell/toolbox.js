@@ -36,19 +36,19 @@ export class Toolbox extends RXComponent{
   }
 
   initGroups(){
-    if(!this['groupContainer']){
-      this.groupContainer =  new ToolboxGroup('Container','groupContainer', this.state)
+    if(!this['groupLayout']){
+      this.groupLayout =  new ToolboxGroup('Layout','groupLayout', this.state)
                             .cssClass('no-title-top-border')
                             .render(this.$dom)
-      this.groupContainer.active()
+      this.groupLayout.active()
     }
 
-    if(!this['groupGrid']){
-      this.groupGrid =  new ToolboxGroup('Grid', 'groupGrid', this.state).render(this.$dom)
+    if(!this['groupContent']){
+      this.groupContent =  new ToolboxGroup('Content', 'groupContent', this.state).render(this.$dom)
     }
 
-    if(!this['groupText']){
-      this.groupText =  new ToolboxGroup('Text','groupText', this.state).render(this.$dom)
+    if(!this['groupComponents']){
+      this.groupComponents =  new ToolboxGroup('Components','groupComponents', this.state).render(this.$dom)
     }
 
     if(!this['groupHtml']){
