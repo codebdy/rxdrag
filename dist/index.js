@@ -286,7 +286,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _bsc
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HTMLDiv\", function() { return HTMLDiv; });\n/* harmony import */ var _rxelement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../rxelement */ \"./src/elements/rxelement.js\");\n/* harmony import */ var _schemas_utilities_color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../schemas/utilities/color */ \"./src/elements/schemas/utilities/color.js\");\n/* harmony import */ var _schemas_utilities_border__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../schemas/utilities/border */ \"./src/elements/schemas/utilities/border/index.js\");\n/* harmony import */ var _schemas_utilities_padding__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../schemas/utilities/padding */ \"./src/elements/schemas/utilities/padding/index.js\");\n/* harmony import */ var _schemas_utilities_margin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../schemas/utilities/margin */ \"./src/elements/schemas/utilities/margin/index.js\");\n/* harmony import */ var _schemas_utilities_clearfix__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../schemas/utilities/clearfix */ \"./src/elements/schemas/utilities/clearfix.js\");\n/* harmony import */ var _schemas_utilities_display__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../schemas/utilities/display */ \"./src/elements/schemas/utilities/display.js\");\n/* harmony import */ var _schemas_utilities_embed__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../schemas/utilities/embed */ \"./src/elements/schemas/utilities/embed/index.js\");\n/* harmony import */ var _schemas_utilities_embed_responsive_item__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../schemas/utilities/embed/responsive-item */ \"./src/elements/schemas/utilities/embed/responsive-item.js\");\n/* harmony import */ var _schemas_utilities_flex__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../schemas/utilities/flex */ \"./src/elements/schemas/utilities/flex/index.js\");\n/* harmony import */ var _schemas_utilities_float__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../schemas/utilities/float */ \"./src/elements/schemas/utilities/float.js\");\n/* harmony import */ var _schemas_utilities_text_hide__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../schemas/utilities/text-hide */ \"./src/elements/schemas/utilities/text-hide.js\");\n/* harmony import */ var _schemas_utilities_overflow__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../schemas/utilities/overflow */ \"./src/elements/schemas/utilities/overflow.js\");\n/* harmony import */ var _schemas_utilities_position__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../schemas/utilities/position */ \"./src/elements/schemas/utilities/position.js\");\n/* harmony import */ var _schemas_utilities_screen_readers__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../schemas/utilities/screen-readers */ \"./src/elements/schemas/utilities/screen-readers.js\");\n/* harmony import */ var _schemas_utilities_shadow__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../schemas/utilities/shadow */ \"./src/elements/schemas/utilities/shadow.js\");\n/* harmony import */ var _schemas_utilities_sizing__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../schemas/utilities/sizing */ \"./src/elements/schemas/utilities/sizing/index.js\");\n/* harmony import */ var _schemas_utilities_stretched_link__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../schemas/utilities/stretched-link */ \"./src/elements/schemas/utilities/stretched-link.js\");\n\r\n\r\n\r\n\r\n\r\n//import {addonUtilWidth} from \"../schemas/utilities/sizing/width\"\r\n//import {addonUtilHeight} from \"../schemas/utilities/sizing/height\"\r\n//import {addonUtilMarginAuto} from \"../schemas/utilities/margin/margin-auto\"\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nclass HTMLDiv extends _rxelement__WEBPACK_IMPORTED_MODULE_0__[\"RXElement\"]{\r\n  constructor() {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupHtml'\r\n    this.toolboxInfo.elementId = 'div'\r\n    this.toolboxInfo.elementName = \"DIV\"\r\n    this.className = 'HTMLDiv'\r\n    Object(_schemas_utilities_color__WEBPACK_IMPORTED_MODULE_1__[\"addonUtilColor\"])(this)\r\n    Object(_schemas_utilities_border__WEBPACK_IMPORTED_MODULE_2__[\"addonUtilBorder\"])(this)\r\n    //addonUtilWidth(this)\r\n    //addonUtilHeight(this)\r\n    Object(_schemas_utilities_margin__WEBPACK_IMPORTED_MODULE_4__[\"addonUtilMargin\"])(this)\r\n    Object(_schemas_utilities_padding__WEBPACK_IMPORTED_MODULE_3__[\"addonUtilPadding\"])(this)\r\n    //addonUtilMarginAuto(this)\r\n    Object(_schemas_utilities_clearfix__WEBPACK_IMPORTED_MODULE_5__[\"addonUtilClearfix\"])(this)\r\n    Object(_schemas_utilities_display__WEBPACK_IMPORTED_MODULE_6__[\"addonUtilDisplay\"])(this)\r\n    Object(_schemas_utilities_embed__WEBPACK_IMPORTED_MODULE_7__[\"addonUtilEmbed\"])(this)\r\n    Object(_schemas_utilities_embed_responsive_item__WEBPACK_IMPORTED_MODULE_8__[\"addonUtilResponsiveItem\"])(this) //need to move to other tags\r\n    Object(_schemas_utilities_flex__WEBPACK_IMPORTED_MODULE_9__[\"addonUtilFlex\"])(this)\r\n    Object(_schemas_utilities_float__WEBPACK_IMPORTED_MODULE_10__[\"addonUtilFloat\"])(this)\r\n    Object(_schemas_utilities_text_hide__WEBPACK_IMPORTED_MODULE_11__[\"addonUtilTextHide\"])(this)\r\n    Object(_schemas_utilities_overflow__WEBPACK_IMPORTED_MODULE_12__[\"addonUtilOverflow\"])(this)\r\n    Object(_schemas_utilities_position__WEBPACK_IMPORTED_MODULE_13__[\"addonUtilPosition\"])(this)\r\n    Object(_schemas_utilities_screen_readers__WEBPACK_IMPORTED_MODULE_14__[\"addonUtilScreenReaders\"])(this)\r\n    Object(_schemas_utilities_shadow__WEBPACK_IMPORTED_MODULE_15__[\"addonUtilShadow\"])(this)\r\n    Object(_schemas_utilities_sizing__WEBPACK_IMPORTED_MODULE_16__[\"addonUtilSizing\"])(this)\r\n    Object(_schemas_utilities_stretched_link__WEBPACK_IMPORTED_MODULE_17__[\"addonUtilStretchedLink\"])(this) //need to move to a tag\r\n  }\r\n\r\n  make(){\r\n    return new HTMLDiv\r\n  }\r\n\r\n  toViewModel(){\r\n    let model = super.toViewModel()\r\n    model.label.text = \"div\"\r\n    return model\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/html/htmldiv.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HTMLDiv\", function() { return HTMLDiv; });\n/* harmony import */ var _rxelement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../rxelement */ \"./src/elements/rxelement.js\");\n/* harmony import */ var _schemas_utilities_color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../schemas/utilities/color */ \"./src/elements/schemas/utilities/color.js\");\n/* harmony import */ var _schemas_utilities_border__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../schemas/utilities/border */ \"./src/elements/schemas/utilities/border/index.js\");\n/* harmony import */ var _schemas_utilities_padding__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../schemas/utilities/padding */ \"./src/elements/schemas/utilities/padding/index.js\");\n/* harmony import */ var _schemas_utilities_margin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../schemas/utilities/margin */ \"./src/elements/schemas/utilities/margin/index.js\");\n/* harmony import */ var _schemas_utilities_clearfix__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../schemas/utilities/clearfix */ \"./src/elements/schemas/utilities/clearfix.js\");\n/* harmony import */ var _schemas_utilities_display__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../schemas/utilities/display */ \"./src/elements/schemas/utilities/display.js\");\n/* harmony import */ var _schemas_utilities_embed__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../schemas/utilities/embed */ \"./src/elements/schemas/utilities/embed/index.js\");\n/* harmony import */ var _schemas_utilities_embed_responsive_item__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../schemas/utilities/embed/responsive-item */ \"./src/elements/schemas/utilities/embed/responsive-item.js\");\n/* harmony import */ var _schemas_utilities_flex__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../schemas/utilities/flex */ \"./src/elements/schemas/utilities/flex/index.js\");\n/* harmony import */ var _schemas_utilities_float__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../schemas/utilities/float */ \"./src/elements/schemas/utilities/float.js\");\n/* harmony import */ var _schemas_utilities_text_hide__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../schemas/utilities/text-hide */ \"./src/elements/schemas/utilities/text-hide.js\");\n/* harmony import */ var _schemas_utilities_overflow__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../schemas/utilities/overflow */ \"./src/elements/schemas/utilities/overflow.js\");\n/* harmony import */ var _schemas_utilities_position__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../schemas/utilities/position */ \"./src/elements/schemas/utilities/position.js\");\n/* harmony import */ var _schemas_utilities_screen_readers__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../schemas/utilities/screen-readers */ \"./src/elements/schemas/utilities/screen-readers.js\");\n/* harmony import */ var _schemas_utilities_shadow__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../schemas/utilities/shadow */ \"./src/elements/schemas/utilities/shadow.js\");\n/* harmony import */ var _schemas_utilities_sizing__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../schemas/utilities/sizing */ \"./src/elements/schemas/utilities/sizing/index.js\");\n/* harmony import */ var _schemas_utilities_stretched_link__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../schemas/utilities/stretched-link */ \"./src/elements/schemas/utilities/stretched-link.js\");\n/* harmony import */ var _schemas_utilities_text__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../schemas/utilities/text */ \"./src/elements/schemas/utilities/text/index.js\");\n\r\n\r\n\r\n\r\n\r\n//import {addonUtilWidth} from \"../schemas/utilities/sizing/width\"\r\n//import {addonUtilHeight} from \"../schemas/utilities/sizing/height\"\r\n//import {addonUtilMarginAuto} from \"../schemas/utilities/margin/margin-auto\"\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nclass HTMLDiv extends _rxelement__WEBPACK_IMPORTED_MODULE_0__[\"RXElement\"]{\r\n  constructor() {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupHtml'\r\n    this.toolboxInfo.elementId = 'div'\r\n    this.toolboxInfo.elementName = \"DIV\"\r\n    this.className = 'HTMLDiv'\r\n    Object(_schemas_utilities_color__WEBPACK_IMPORTED_MODULE_1__[\"addonUtilColor\"])(this)\r\n    Object(_schemas_utilities_border__WEBPACK_IMPORTED_MODULE_2__[\"addonUtilBorder\"])(this)\r\n    //addonUtilWidth(this)\r\n    //addonUtilHeight(this)\r\n    Object(_schemas_utilities_margin__WEBPACK_IMPORTED_MODULE_4__[\"addonUtilMargin\"])(this)\r\n    Object(_schemas_utilities_padding__WEBPACK_IMPORTED_MODULE_3__[\"addonUtilPadding\"])(this)\r\n    //addonUtilMarginAuto(this)\r\n    Object(_schemas_utilities_clearfix__WEBPACK_IMPORTED_MODULE_5__[\"addonUtilClearfix\"])(this)\r\n    Object(_schemas_utilities_display__WEBPACK_IMPORTED_MODULE_6__[\"addonUtilDisplay\"])(this)\r\n    Object(_schemas_utilities_embed__WEBPACK_IMPORTED_MODULE_7__[\"addonUtilEmbed\"])(this)\r\n    Object(_schemas_utilities_embed_responsive_item__WEBPACK_IMPORTED_MODULE_8__[\"addonUtilResponsiveItem\"])(this) //need to move to other tags\r\n    Object(_schemas_utilities_flex__WEBPACK_IMPORTED_MODULE_9__[\"addonUtilFlex\"])(this)\r\n    Object(_schemas_utilities_float__WEBPACK_IMPORTED_MODULE_10__[\"addonUtilFloat\"])(this)\r\n    Object(_schemas_utilities_text_hide__WEBPACK_IMPORTED_MODULE_11__[\"addonUtilTextHide\"])(this)\r\n    Object(_schemas_utilities_overflow__WEBPACK_IMPORTED_MODULE_12__[\"addonUtilOverflow\"])(this)\r\n    Object(_schemas_utilities_position__WEBPACK_IMPORTED_MODULE_13__[\"addonUtilPosition\"])(this)\r\n    Object(_schemas_utilities_screen_readers__WEBPACK_IMPORTED_MODULE_14__[\"addonUtilScreenReaders\"])(this)\r\n    Object(_schemas_utilities_shadow__WEBPACK_IMPORTED_MODULE_15__[\"addonUtilShadow\"])(this)\r\n    Object(_schemas_utilities_sizing__WEBPACK_IMPORTED_MODULE_16__[\"addonUtilSizing\"])(this)\r\n    Object(_schemas_utilities_stretched_link__WEBPACK_IMPORTED_MODULE_17__[\"addonUtilStretchedLink\"])(this) //need to move to a tag\r\n    Object(_schemas_utilities_text__WEBPACK_IMPORTED_MODULE_18__[\"addonUtilText\"])(this)\r\n  }\r\n\r\n  make(){\r\n    return new HTMLDiv\r\n  }\r\n\r\n  toViewModel(){\r\n    let model = super.toViewModel()\r\n    model.label.text = \"div\"\r\n    return model\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/html/htmldiv.js?");
 
 /***/ }),
 
@@ -1055,6 +1055,150 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addonUtilTextHide\", function() { return addonUtilTextHide; });\n/* harmony import */ var _option_fragment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../option-fragment */ \"./src/elements/schemas/option-fragment.js\");\n\r\n\r\nclass UtilTextHide extends _option_fragment__WEBPACK_IMPORTED_MODULE_0__[\"OptionFragment\"]{\r\n  constructor(){\r\n    super()\r\n    this.schema = {\r\n      label:'Text Hide',\r\n      widget:'OpSwitch',\r\n      group:'utilities',\r\n      onValue:'text-hide',\r\n      offValue:'',\r\n      defaultValue:'',\r\n    }\r\n\r\n    this.metaFragment = '' \r\n\r\n    this.fieldName = 'utilTextHide'\r\n  }\r\n\r\n  copyMeta(from, to){\r\n    to.utilTextHide = from.utilTextHide\r\n  }\r\n\r\n  toViewModel(model, meta){\r\n    let metaFragment = meta[this.fieldName]\r\n    model.classList.add(metaFragment)\r\n  }\r\n}\r\n\r\nvar addonUtilTextHide = (node)=>{\r\n  let utilTextHide = new UtilTextHide\r\n  utilTextHide.addon(node)\r\n  return utilTextHide\r\n}\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/text-hide.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/utilities/text/align.js":
+/*!******************************************************!*\
+  !*** ./src/elements/schemas/utilities/text/align.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  isResponsive:true,\r\n  xs:{\r\n    label:'Align',\r\n    widget:'OpSelect',\r\n    list:{\r\n      'text-left':'Left',\r\n      'text-center':'Center',\r\n      'text-right':'Right',\r\n    },\r\n  },\r\n  //---------------------\r\n  sm:{\r\n    label:'Float',\r\n    widget:'OpSelect',\r\n    list:{\r\n      'text-sm-left':'Left',\r\n      'text-sm-center':'Center',\r\n      'text-sm-right':'Right',\r\n    },\r\n  },\r\n  //---------------------\r\n  md:{\r\n    label:'Float',\r\n    widget:'OpSelect',\r\n    list:{\r\n      'text-md-left':'Left',\r\n      'text-md-center':'Center',\r\n      'text-md-right':'Right',\r\n    },\r\n  },\r\n  //---------------------\r\n  lg:{\r\n    label:'Float',\r\n    widget:'OpSelect',\r\n    list:{\r\n      'text-lg-left':'Left',\r\n      'text-lg-center':'Center',\r\n      'text-lg-right':'Right',\r\n    },\r\n  },\r\n  //---------------------\r\n  xl:{\r\n    label:'Float',\r\n    widget:'OpSelect',\r\n    list:{\r\n      'text-xl-left':'Left',\r\n      'text-xl-center':'Center',\r\n      'text-xl-right':'Right',\r\n    },\r\n  },\r\n  //---------------------\r\n});//<--\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/text/align.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/utilities/text/decoration.js":
+/*!***********************************************************!*\
+  !*** ./src/elements/schemas/utilities/text/decoration.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  label:'Clear Decoration',\r\n  widget:'OpSwitch',\r\n  onValue:'text-decoration-none',\r\n  offValue:'',\r\n  defaultValue:'',\r\n});\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/text/decoration.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/utilities/text/index.js":
+/*!******************************************************!*\
+  !*** ./src/elements/schemas/utilities/text/index.js ***!
+  \******************************************************/
+/*! exports provided: addonUtilText */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addonUtilText\", function() { return addonUtilText; });\n/* harmony import */ var _option_fragment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../option-fragment */ \"./src/elements/schemas/option-fragment.js\");\n/* harmony import */ var _responsive__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../responsive */ \"./src/elements/schemas/responsive.js\");\n/* harmony import */ var _justify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./justify */ \"./src/elements/schemas/utilities/text/justify.js\");\n/* harmony import */ var _align__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./align */ \"./src/elements/schemas/utilities/text/align.js\");\n/* harmony import */ var _wrapping__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./wrapping */ \"./src/elements/schemas/utilities/text/wrapping.js\");\n/* harmony import */ var _truncate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./truncate */ \"./src/elements/schemas/utilities/text/truncate.js\");\n/* harmony import */ var _word_break__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./word-break */ \"./src/elements/schemas/utilities/text/word-break.js\");\n/* harmony import */ var _transform__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./transform */ \"./src/elements/schemas/utilities/text/transform.js\");\n/* harmony import */ var _weight__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./weight */ \"./src/elements/schemas/utilities/text/weight.js\");\n/* harmony import */ var _italics__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./italics */ \"./src/elements/schemas/utilities/text/italics.js\");\n/* harmony import */ var _monospace__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./monospace */ \"./src/elements/schemas/utilities/text/monospace.js\");\n/* harmony import */ var _reset_color__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./reset-color */ \"./src/elements/schemas/utilities/text/reset-color.js\");\n/* harmony import */ var _decoration__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./decoration */ \"./src/elements/schemas/utilities/text/decoration.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nvar utilTextSchema = {\r\n  group:'utilities',\r\n  label:'Text',\r\n  isRowGroup:true,\r\n  fields:{\r\n    justify : _justify__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\r\n    align : _align__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\r\n    wrapping : _wrapping__WEBPACK_IMPORTED_MODULE_4__[\"default\"],\r\n    truncate : _truncate__WEBPACK_IMPORTED_MODULE_5__[\"default\"],\r\n    wordBreak : _word_break__WEBPACK_IMPORTED_MODULE_6__[\"default\"],\r\n    transform : _transform__WEBPACK_IMPORTED_MODULE_7__[\"default\"],\r\n    weight : _weight__WEBPACK_IMPORTED_MODULE_8__[\"default\"],\r\n    italics : _italics__WEBPACK_IMPORTED_MODULE_9__[\"default\"],\r\n    monospace : _monospace__WEBPACK_IMPORTED_MODULE_10__[\"default\"],\r\n    resetColor : _reset_color__WEBPACK_IMPORTED_MODULE_11__[\"default\"],\r\n    decoration : _decoration__WEBPACK_IMPORTED_MODULE_12__[\"default\"],\r\n  }\r\n}\r\n\r\nvar utilTextMeta = {\r\n  justify : '',\r\n  align : Object.assign({}, _responsive__WEBPACK_IMPORTED_MODULE_1__[\"default\"]),\r\n  wrapping : '',\r\n  truncate : '',\r\n  wordBreak : '',\r\n  transform : '',\r\n  weight : '',\r\n  italics : '',\r\n  monospace : '',\r\n  resetColor : '',\r\n  decoration : '',\r\n\r\n}\r\n\r\nclass UtilText extends _option_fragment__WEBPACK_IMPORTED_MODULE_0__[\"OptionFragment\"]{\r\n  constructor(){\r\n    super()\r\n    this.schema = Object.assign({}, utilTextSchema)\r\n\r\n    this.metaFragment = Object.assign({}, utilTextMeta) \r\n\r\n    this.fieldName = 'utilText'\r\n  }\r\n\r\n  copyMeta(from, to){\r\n    to[this.fieldName] = {}\r\n    to[this.fieldName].justify = from[this.fieldName].justify\r\n    super.copyResponsiveMetaTo(from[this.fieldName].align, to[this.fieldName].align)\r\n    to[this.fieldName].wrapping = from[this.fieldName].wrapping\r\n    to[this.fieldName].truncate = from[this.fieldName].truncate\r\n    to[this.fieldName].wordBreak = from[this.fieldName].wordBreak\r\n    to[this.fieldName].transform = from[this.fieldName].transform\r\n    to[this.fieldName].weight = from[this.fieldName].weight\r\n    to[this.fieldName].italics = from[this.fieldName].italics\r\n    to[this.fieldName].monospace = from[this.fieldName].monospace\r\n    to[this.fieldName].resetColor = from[this.fieldName].resetColor\r\n    to[this.fieldName].decoration = from[this.fieldName].decoration\r\n\r\n  }\r\n\r\n  toViewModel(model, meta){\r\n    let metaFragment = meta[this.fieldName]\r\n    model.classList.add(metaFragment.justify)\r\n    super.responsiveMetaFieldToViewModel(model, metaFragment.align)\r\n    model.classList.add(metaFragment.wrapping)\r\n    model.classList.add(metaFragment.truncate)\r\n    model.classList.add(metaFragment.wordBreak)\r\n    model.classList.add(metaFragment.transform)\r\n    model.classList.add(metaFragment.weight)\r\n    model.classList.add(metaFragment.italics)\r\n    model.classList.add(metaFragment.monospace)\r\n    model.classList.add(metaFragment.resetColor)\r\n    model.classList.add(metaFragment.decoration)\r\n  }\r\n}\r\n\r\nvar addonUtilText = (node)=>{\r\n  let utilText = new UtilText\r\n  utilText.addon(node)\r\n  return utilText\r\n}\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/text/index.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/utilities/text/italics.js":
+/*!********************************************************!*\
+  !*** ./src/elements/schemas/utilities/text/italics.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  label:'Italic',\r\n  widget:'OpSwitch',\r\n  onValue:'font-italic',\r\n  offValue:'',\r\n  defaultValue:'',\r\n});\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/text/italics.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/utilities/text/justify.js":
+/*!********************************************************!*\
+  !*** ./src/elements/schemas/utilities/text/justify.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  label:'Justify',\r\n  widget:'OpSwitch',\r\n  onValue:'text-justify',\r\n  offValue:'',\r\n  defaultValue:'',\r\n});\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/text/justify.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/utilities/text/monospace.js":
+/*!**********************************************************!*\
+  !*** ./src/elements/schemas/utilities/text/monospace.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  label:'Monospace',\r\n  widget:'OpSwitch',\r\n  onValue:'text-monospace',\r\n  offValue:'',\r\n  defaultValue:'',\r\n});\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/text/monospace.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/utilities/text/reset-color.js":
+/*!************************************************************!*\
+  !*** ./src/elements/schemas/utilities/text/reset-color.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  label:'Reset Color',\r\n  widget:'OpSwitch',\r\n  onValue:'text-reset',\r\n  offValue:'',\r\n  defaultValue:'',\r\n});\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/text/reset-color.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/utilities/text/transform.js":
+/*!**********************************************************!*\
+  !*** ./src/elements/schemas/utilities/text/transform.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  label:'Transform',\r\n  widget:'OpSelect',\r\n  defaultValue:'',\r\n  list:{\r\n    'text-lowercase':'Lowercase',\r\n    'text-uppercase':'Uppercase',\r\n    'text-capitalize':'Capitalize',\r\n  },\r\n});\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/text/transform.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/utilities/text/truncate.js":
+/*!*********************************************************!*\
+  !*** ./src/elements/schemas/utilities/text/truncate.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  label:'Truncate',\r\n  widget:'OpSwitch',\r\n  onValue:'text-truncate',\r\n  offValue:'',\r\n  defaultValue:'',\r\n});\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/text/truncate.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/utilities/text/weight.js":
+/*!*******************************************************!*\
+  !*** ./src/elements/schemas/utilities/text/weight.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  label:'Font weight',\r\n  widget:'OpSelect',\r\n  defaultValue:'',\r\n  list:{\r\n    'font-weight-bold':'Bold',\r\n    'font-weight-bolder':'Bolder',\r\n    'font-weight-normal':'Normal',\r\n    'font-weight-light':'Light',\r\n    'font-weight-lighter':'Lighter',\r\n  },\r\n});\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/text/weight.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/utilities/text/word-break.js":
+/*!***********************************************************!*\
+  !*** ./src/elements/schemas/utilities/text/word-break.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  label:'Word break',\r\n  widget:'OpSwitch',\r\n  onValue:'text-break',\r\n  offValue:'',\r\n  defaultValue:'',\r\n});\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/text/word-break.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/utilities/text/wrapping.js":
+/*!*********************************************************!*\
+  !*** ./src/elements/schemas/utilities/text/wrapping.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  label:'Wrapping',\r\n  widget:'OpSelect',\r\n  defaultValue:'',\r\n  list:{\r\n    'text-wrap':'Wrap',\r\n    'text-nowrap':'Nowrap',\r\n  },\r\n});\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/text/wrapping.js?");
 
 /***/ }),
 

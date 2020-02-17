@@ -19,6 +19,7 @@ import {addonUtilScreenReaders} from "../schemas/utilities/screen-readers"
 import {addonUtilShadow} from "../schemas/utilities/shadow"
 import {addonUtilSizing} from "../schemas/utilities/sizing"
 import {addonUtilStretchedLink} from "../schemas/utilities/stretched-link"
+import {addonUtilText} from "../schemas/utilities/text"
 
 export class HTMLDiv extends RXElement{
   constructor() {
@@ -47,6 +48,7 @@ export class HTMLDiv extends RXElement{
     addonUtilShadow(this)
     addonUtilSizing(this)
     addonUtilStretchedLink(this) //need to move to a tag
+    addonUtilText(this)
   }
 
   make(){
