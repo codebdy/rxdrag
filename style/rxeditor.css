@@ -103,6 +103,7 @@
   height: 100%;
   outline: #aceeaf solid 1px;
   background-color: #effcf0;
+  z-index: -1
 }
 
 /*.element-label{
