@@ -13,6 +13,11 @@ export class RXEditor{
     this.activedLabel = new NodeLabel
     this.focusedLabel = new NodeLabel
     this.focusedLabel.cssClass('focused')
+    this.focusedLabel.domOn('mousedown', (event)=>{
+      if(rxEditor.focusedNode){
+        rxEditor.focusedNode.begindragLabel()
+      }
+    })
 
     this.toolbar = new NodeToolbar
   }

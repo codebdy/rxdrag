@@ -357,7 +357,7 @@ export class Node{
       //text:'test',
       styles:styles,
       classList:classList,
-      label:{
+      /*label:{
           on:{
             onmousedown:this.begindragLabel
           }
@@ -378,7 +378,7 @@ export class Node{
         delete:{
           onclick:this.delete
         }
-      },
+      },*/
       attributes:{},
       on:{
         //onmousedown:this.mousedown,

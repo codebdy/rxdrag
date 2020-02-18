@@ -159,10 +159,12 @@ export class FocusState extends NodeState{
       let dom = node.view.domElement
       rxEditor.focusedLabel.show(node.label, dom, 2)
       rxEditor.toolbar.show(dom)
+      rxEditor.focusedNode = node
     }
     this.leave = ()=>{
       rxEditor.focusedLabel.hide()
       rxEditor.toolbar.hide()
+      rxEditor.focusedNode = ''
     }
     this.onClick = (event)=>{
       event.stopPropagation()

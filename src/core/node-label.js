@@ -4,6 +4,7 @@ export class NodeLabel extends RXComponent{
   constructor(){
     super()
     this.cssClass('node-label')
+    this.domAttr('title', 'Can be draged')
     this.hide()
   }
 

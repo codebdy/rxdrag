@@ -1,12 +1,12 @@
 import {RXComponent} from "../basic/rxcomponent"
 
 class ToolbarButton extends RXComponent{
-  constructor(title, iconName, on){
+  constructor(title, iconName, on, callback){
     super()
     this.cssClass('rx-button')
     this.domAttr('title', title)  
     this.innerHTML = `<i class="fa ${iconName}"></i>`
-    this.domOn(on)
+    this.domOn(on, callback)
   }  
 }
 
@@ -16,11 +16,31 @@ export class NodeToolbar extends RXComponent{
     this.cssClass('node-toolbar')
     this.hide()
 
-    this.pushChild(new ToolbarButton('Focus Parent', 'fa-arrow-up', ()=>{}))
-    this.pushChild(new ToolbarButton('Move', 'fa-arrows', ()=>{}))
-    this.pushChild(new ToolbarButton('Duplicate', 'fa-copy', ()=>{}))
-    this.pushChild(new ToolbarButton('Edit', 'fa-edit', ()=>{}))
-    this.pushChild(new ToolbarButton('Delete', 'fa-trash-o', ()=>{}))
+    this.pushChild(new ToolbarButton('Focus Parent', 'fa-arrow-up', 'click' , ()=>{
+      if(rxEditor.focusedNode){
+        rxEditor.focusedNode.up(event)
+      }
+    }))
+    this.pushChild(new ToolbarButton('Move', 'fa-arrows','mousedown', (event)=>{
+      if(rxEditor.focusedNode){
+        rxEditor.focusedNode.begindragIcon(event)
+      }
+    }))
+    this.pushChild(new ToolbarButton('Duplicate', 'fa-copy', 'click', ()=>{
+      if(rxEditor.focusedNode){
+        rxEditor.focusedNode.duplicate(event)
+      }
+    }))
+    this.pushChild(new ToolbarButton('Edit', 'fa-edit', 'click', ()=>{
+      if(rxEditor.focusedNode){
+        rxEditor.focusedNode.edit(event)
+      }
+    }))
+    this.pushChild(new ToolbarButton('Delete', 'fa-trash-o', 'click', ()=>{
+      if(rxEditor.focusedNode){
+        rxEditor.focusedNode.delete(event)
+      }
+    }))
   }
 
   show(followElement){

@@ -152,11 +152,14 @@
 }*/
 
 .node-toolbar{
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
   background-color: #75b325; 
   color:#fff;
   position: fixed;
-  padding:3px;
-  padding-bottom: 2px;
+  height: 26px;
   width: 136px;
   z-index: 1999999
 }
