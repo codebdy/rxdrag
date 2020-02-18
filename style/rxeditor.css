@@ -191,13 +191,13 @@
   background: #eee;
 }
 
-
+/*===mini-editbar==>*/
 .mini-editor{
   position: relative;
 }
 
-.mini-editor .mini-editor-toolbar{
-  position: absolute;
+.mini-editbar{
+  position: fixed;
   display: flex;
   display: -webkit-flex;
   flex-flow:row;
@@ -207,16 +207,12 @@
   width: 200px;
   background: #4f4f4f;
   color:#a8a8a8;
-  left:0;
-  top:-34px;
   border-radius: 3px;
-
+  z-index: 2999999
 }
 
-.mini-editor .mini-editor-canvas{
-}
 
-.mini-editor .sp-button{
+.mini-editbar .mini-button{
   font-size: 15px;
   margin:1px;
   text-align: center;
@@ -225,15 +221,15 @@
   cursor: pointer;
 }
 
-.mini-editor .icon-button{
+.mini-editbar .icon-button{
   width: 26px;
 }
 
-.mini-editor .sp-button.active, .mini-editor .sp-button:hover,.mini-editor-toolbar .sp-headers:hover{
+.mini-editbar .mini-button.active, .mini-editor .mini-button:hover,.mini-editbar .mini-headers:hover{
   background: #424242;
 }
 
-.mini-editor-toolbar .sp-styles, .mini-editor-toolbar .sp-headers{
+.mini-editbar .mini-styles, .mini-editbar .mini-headers{
   display: flex;
   align-items:center;
   justify-content:space-between;
@@ -244,7 +240,7 @@
   position: relative;
 }
 
-.mini-editor-toolbar .sp-headers{
+.mini-editbar .mini-headers{
   margin: 3px;
   width: 90px;
   border: #525252 solid 1px;
@@ -252,9 +248,11 @@
   color:#fff;
 }
 
-.mini-editor-toolbar .sp-styles{
+.mini-editbar .mini-styles{
   width: 50px;
 }
+
+/*<===mini-editbar==*/
 
 .d-rx-none, .rx-invisble{
   position: relative;

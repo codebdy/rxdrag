@@ -1,5 +1,3 @@
-import {MiniEditor} from './mini-editor'
-
 export class NodeView{
   constructor() {
   }
@@ -8,42 +6,37 @@ export class NodeView{
     this.parentDoment = parentDoment
     this.putDown(parentDoment)
     
-    this.domElement = document.createElement(model.name);
-    this.doRender(model, parentDoment, this.domElement)
+    this.$dom = document.createElement(model.name);
+    this.doRender(model, parentDoment, this.$dom)
   }
 
   renderMouseFollower(model, parentDoment){
     let domElement = document.createElement(model.name);
     this.doRender(model, parentDoment, domElement)
 
-    if(this.domElement){
-      domElement.style.width = this.domElement.clientWidth + 'px'
+    if(this.$dom){
+      domElement.style.width = this.$dom.clientWidth + 'px'
     }
 
     return domElement
   }
 
   refreshState(model){
-    if(this.domElement){
-      //let y = this.domElement.getBoundingClientRect().y
-      this.domElement.classList.remove('actived','focused','dragged', 'dragover')
-      this.renderStylesAndClasses(model, this.domElement)
+    if(this.$dom){
+      //let y = this.$dom.getBoundingClientRect().y
+      this.$dom.classList.remove('actived','focused','dragged', 'dragover')
+      this.renderStylesAndClasses(model, this.$dom)
     }
   }
 
   refresh(model, parentDoment){
-    if(!this.domElement) return;
+    if(!this.$dom) return;
     this.putDown()
     this.parentDoment = parentDoment
-    this.doRefresh(model, parentDoment, this.domElement)
+    this.doRefresh(model, parentDoment, this.$dom)
   }
 
   doRender(model, parentDoment, domElement){
-    //if(model.contentEditable){
-      //let miniEditor = new  MiniEditor(model.innerHTML)
-      //miniEditor.hangOn(domElement)
-      //
-    //}
     domElement.innerHTML = model.innerHTML ? model.innerHTML : ''
     this.renderStylesAndClasses(model, domElement)
     this.bindEvents(domElement, model.on)
@@ -90,9 +83,9 @@ export class NodeView{
   }
 
   putDown(){
-    if(this.domElement){
-      if(this.parentDoment.contains(this.domElement)){
-        this.parentDoment.removeChild(this.domElement);
+    if(this.$dom){
+      if(this.parentDoment.contains(this.$dom)){
+        this.parentDoment.removeChild(this.$dom);
       }
     }
   }

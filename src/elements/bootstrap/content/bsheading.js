@@ -31,6 +31,15 @@ export class BSHeading extends RXElement{
     //model.label.text = "Heading"
     model.innerHTML = 'Heading'
     model.attributes.contentEditable = true
+    model.on.onkeydown = (event)=>{
+      if (event.keyCode === 13) {
+        event.preventDefault()
+        return false
+      }
+    }
+    model.on.onfocus = (event)=>{
+      rxEditor.miniEditbar.show(this.view.$dom)
+    }
     return model
   }
 }

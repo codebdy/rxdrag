@@ -36,7 +36,7 @@ export class Node{
     }
 
     this.begindragLabel = (event)=>{
-      if(this.view.domElement){
+      if(this.view.$dom){
         this.mouseFollower.offsetX = event.offsetX
         this.mouseFollower.offsetY = -18 + event.offsetY
       }
@@ -44,8 +44,8 @@ export class Node{
     }
 
     this.begindragIcon = (event)=>{
-      if(this.view.domElement){
-        this.mouseFollower.offsetX = this.view.domElement.clientWidth - 96 + event.offsetX
+      if(this.view.$dom){
+        this.mouseFollower.offsetX = this.view.$dom.clientWidth - 96 + event.offsetX
         this.mouseFollower.offsetY = -24 + event.offsetY
       }
       this.begindrag(event)
@@ -160,7 +160,7 @@ export class Node{
     }
     this.renderMouseFollower(followerElement)
 
-    this.mouseFollower.domElement = followerElement
+    this.mouseFollower.$dom = followerElement
     return this.mouseFollower
   }
 
@@ -210,7 +210,7 @@ export class Node{
   }
 
   getParentViewDomElement(){
-    return this.parent.view.domElement
+    return this.parent.view.$dom
   }
 
   createChild(nodeName){

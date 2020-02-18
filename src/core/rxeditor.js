@@ -3,6 +3,7 @@ import {CanvasState} from "./canvas-state"
 import {RXArray} from "../basic/rxarray"
 import {NodeLabel} from "./node-label"
 import {NodeToolbar} from "./node-toolbar"
+import {MiniEditbar} from "./mini-editbar"
 
 export class RXEditor{
   constructor() {
@@ -20,6 +21,7 @@ export class RXEditor{
     })
 
     this.toolbar = new NodeToolbar
+    this.miniEditbar = new MiniEditbar
   }
 
   hangOn(id, commandProxy){
@@ -27,6 +29,7 @@ export class RXEditor{
     this.activedLabel.render(this.workspace)
     this.focusedLabel.render(this.workspace)
     this.toolbar.render(this.workspace)
+    this.miniEditbar.render(this.workspace)
     this.canvas = new Canvas(this.workspace)
     this.canvas.render();
     commandProxy.serveForRXEditor = this
@@ -109,8 +112,8 @@ export class RXEditor{
   followMouse(event){
     let mouseFollower = this.mouseFollower
     if(mouseFollower){
-      mouseFollower.domElement.style.left =  this.followX(event)
-      mouseFollower.domElement.style.top = this.followY(event)
+      mouseFollower.$dom.style.left =  this.followX(event)
+      mouseFollower.$dom.style.top = this.followY(event)
       this.commandProxy.takeOverDraggingByWorkspace()
     }
   }
@@ -126,14 +129,14 @@ export class RXEditor{
   beginFollowMouse(){
     if(this.draggedNode){
       let mouseFollower = this.draggedNode.createMouseFollower(event)
-      this.workspace.appendChild(mouseFollower.domElement)
+      this.workspace.appendChild(mouseFollower.$dom)
       this.mouseFollower = mouseFollower
     }
   }
 
   endFollowMouse(){
-    if(this.mouseFollower && this.workspace.contains(this.mouseFollower.domElement)){
-      this.workspace.removeChild(this.mouseFollower.domElement)
+    if(this.mouseFollower && this.workspace.contains(this.mouseFollower.$dom)){
+      this.workspace.removeChild(this.mouseFollower.$dom)
     }
 
     this.mouseFollower = ''

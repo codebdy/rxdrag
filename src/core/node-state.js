@@ -133,7 +133,7 @@ export class ActiveState extends CanDropState{
     super(node)
     this.classList.push('actived')
     this.enter = ()=>{
-      rxEditor.activedLabel.show(node.label, node.view.domElement, 1)
+      rxEditor.activedLabel.show(node.label, node.view.$dom, 1)
     }
     this.leave = ()=>{
       rxEditor.activedLabel.hide()
@@ -156,7 +156,7 @@ export class FocusState extends NodeState{
     super(node)
     this.classList.push('focused')
     this.enter = ()=>{
-      let dom = node.view.domElement
+      let dom = node.view.$dom
       rxEditor.focusedLabel.show(node.label, dom, 2)
       rxEditor.toolbar.show(dom)
       rxEditor.focusedNode = node
