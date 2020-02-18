@@ -32,6 +32,8 @@ export class HTMLDiv extends RXElement{
     this.toolboxInfo.elementName = "DIV"
     this.className = 'HTMLDiv'
     this.label = "div"
+    this.acceptedChildren=''
+    this.exceptChildren = ''
     addonUtilColor(this)
     addonUtilBorder(this)
     //addonUtilWidth(this)

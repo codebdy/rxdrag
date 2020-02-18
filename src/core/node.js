@@ -2,6 +2,15 @@ import {NodeView} from "./node-view"
 import {RXArray} from "../basic/rxarray"
 import {NormalState, ActiveState, FocusState, DragoverState, DisableState, DraggedState} from "./node-state"
 
+function insterAfter(newElement,targetElement){
+  var parent = targetElement.parentNode;
+  if(parent.lastChild == targetElement){
+    parent.appendChild(newElement);
+  }
+  else{
+    parent.insertBefore(newElement,targetElement.nextSibling);
+  }              
+}
 
 export class Node{
   constructor() {
@@ -224,8 +233,12 @@ export class Node{
 
   removeFromParent(){
     if(this.parent){
-      this.view.putDown()
+      //this.view.putDown()
       this.parent.children.remove(this)
+      if(this.parent.view && this.parent.view.$dom
+        && this.view && this.view.dom){
+        parent.view.$dom.removeChild(this.view.dom)
+      }
     }
   }
 
@@ -243,7 +256,10 @@ export class Node{
     if(targetParent.children.first() !== this){
       this.removeFromParent()
       targetParent.unshiftChild(this)
-      rxEditor.refresh()
+      if(targetParent.view && targetParent.view.$dom){
+        targetParent.view.$dom.prepend(this.view.$dom)
+      }
+      //rxEditor.refresh()
     }
     //else{
     //  console.log('Exist In Top')
@@ -254,7 +270,8 @@ export class Node{
     if(targetParent.children.last() !== this){
       this.removeFromParent()
       targetParent.pushChild(this)
-      rxEditor.refresh()
+      targetParent.view.$dom.appendChild(this.view.$dom)
+      //rxEditor.refresh()
     }
     //else{
     //  console.log('Exist In')
@@ -266,7 +283,11 @@ export class Node{
       this.removeFromParent()
       this.parent = brother.parent
       brother.parent.children.inertBefore(this, brother);
-      rxEditor.refresh()
+      if(brother.parent.view && brother.parent.view.$dom
+        && brother.view && brother.view.$dom
+        && this.view && this.view.$dom)
+        brother.parent.view.$dom.insertBefore(this.view.$dom, brother.view.$dom)
+      //rxEditor.refresh()
     }
     //else{
     //  console.log('Exist In Before')
@@ -278,7 +299,12 @@ export class Node{
       this.removeFromParent()
       this.parent = brother.parent
       brother.parent.children.inertAfter(this, brother);
-      rxEditor.refresh()
+      if(brother.view && brother.view.$dom 
+        && this.view && this.view.$dom) {
+        insterAfter(this.view.$dom, brother.view.$dom)
+        //brother.parent.view.$dom.
+      }
+      //rxEditor.refresh()
     }
     //else{
     //  console.log('Exist In After')

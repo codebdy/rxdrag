@@ -157,6 +157,10 @@
 .rx-drawer .toolbox{
   display: flex;
   flex-flow: column;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .rx-drawer .toolbox .tool-group .group-title{
