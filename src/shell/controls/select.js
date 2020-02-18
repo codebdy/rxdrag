@@ -88,13 +88,18 @@ export class OpSelect extends OpInput{
 
   }
 
-  removeValue(value){
+  removeValue(){
     this.valueViewer.setText(this.emptyValue)
     let oldValue = this.value
     this.value = ''
     if(oldValue){
       this.onValueChanged(this.value)
     }
+  }
+
+
+  clear(){
+    this.removeValue()
   }
 
 
