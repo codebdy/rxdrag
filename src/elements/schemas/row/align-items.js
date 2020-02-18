@@ -23,9 +23,9 @@ class RowAlignItems extends OptionFragment{
   }
 }
 
-var addonRowAlignItems = (node)=>{
+var addonRowAlignItems = (node, groupName)=>{
   let rowAlignItems = new RowAlignItems
-  rowAlignItems.addon(node)
+  rowAlignItems.addon(node, groupName)
   return rowAlignItems
 }
 

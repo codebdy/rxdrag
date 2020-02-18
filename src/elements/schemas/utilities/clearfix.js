@@ -27,9 +27,9 @@ class UtilClearfix extends OptionFragment{
   }
 }
 
-var addonUtilClearfix = (node)=>{
+var addonUtilClearfix = (node, groupName)=>{
   let utilClearfix = new UtilClearfix
-  utilClearfix.addon(node)
+  utilClearfix.addon(node, groupName)
   return utilClearfix
 }
 

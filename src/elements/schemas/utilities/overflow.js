@@ -30,9 +30,9 @@ class UtilOverflow extends OptionFragment{
   }
 }
 
-var addonUtilOverflow = (node)=>{
+var addonUtilOverflow = (node, groupName)=>{
   let utilOverflow = new UtilOverflow
-  utilOverflow.addon(node)
+  utilOverflow.addon(node, groupName)
   return utilOverflow
 }
 

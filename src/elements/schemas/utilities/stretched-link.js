@@ -27,9 +27,9 @@ class UtilStretchedLink extends OptionFragment{
   }
 }
 
-var addonUtilStretchedLink = (node)=>{
+var addonUtilStretchedLink = (node, groupName)=>{
   let utilStretchedLink = new UtilStretchedLink
-  utilStretchedLink.addon(node)
+  utilStretchedLink.addon(node, groupName)
   return utilStretchedLink
 }
 

@@ -23,9 +23,9 @@ class RowJustifyContent extends OptionFragment{
   }
 }
 
-var addonRowJustifyContent = (node)=>{
+var addonRowJustifyContent = (node, groupName)=>{
   let rowJustifyContent = new RowJustifyContent
-  rowJustifyContent.addon(node)
+  rowJustifyContent.addon(node, groupName)
   return rowJustifyContent
 }
 

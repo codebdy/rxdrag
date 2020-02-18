@@ -27,9 +27,9 @@ class UtilTextHide extends OptionFragment{
   }
 }
 
-var addonUtilTextHide = (node)=>{
+var addonUtilTextHide = (node, groupName)=>{
   let utilTextHide = new UtilTextHide
-  utilTextHide.addon(node)
+  utilTextHide.addon(node, groupName)
   return utilTextHide
 }
 

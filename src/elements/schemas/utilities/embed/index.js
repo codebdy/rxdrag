@@ -39,9 +39,9 @@ class UtilEmbed extends OptionFragment{
   }
 }
 
-var addonUtilEmbed = (node)=>{
+var addonUtilEmbed = (node, groupName)=>{
   let utilEmbed = new UtilEmbed
-  utilEmbed.addon(node)
+  utilEmbed.addon(node, groupName)
   return utilEmbed
 }
 

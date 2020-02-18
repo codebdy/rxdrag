@@ -29,9 +29,9 @@ class HeadingTag extends OptionFragment{
   }
 }
 
-var addonHeadingTag = (node)=>{
+var addonHeadingTag = (node, groupName)=>{
   let headingTag = new HeadingTag
-  headingTag.addon(node)
+  headingTag.addon(node, groupName)
   return headingTag
 }
 

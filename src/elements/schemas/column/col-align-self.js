@@ -22,9 +22,9 @@ class ColAlignSelf extends OptionFragment{
   }
 }
 
-var addonAlignSelf = (node)=>{
+var addonAlignSelf = (node, groupName)=>{
   let colAlignSelf = new ColAlignSelf
-  colAlignSelf.addon(node)
+  colAlignSelf.addon(node, groupName)
   return colAlignSelf
 }
 

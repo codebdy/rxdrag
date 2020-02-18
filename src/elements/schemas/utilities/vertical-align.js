@@ -34,9 +34,9 @@ class UtilVerticalAlignment extends OptionFragment{
   }
 }
 
-var addonUtilVerticalAlignment = (node)=>{
+var addonUtilVerticalAlignment = (node, groupName)=>{
   let utilVerticalAlignment = new UtilVerticalAlignment
-  utilVerticalAlignment.addon(node)
+  utilVerticalAlignment.addon(node, groupName)
   return utilVerticalAlignment
 }
 

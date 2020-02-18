@@ -51,9 +51,9 @@ class UtilMargin extends OptionFragment{
   }
 }
 
-var addonUtilMargin = (node)=>{
+var addonUtilMargin = (node, groupName)=>{
   let utilMargin = new UtilMargin
-  utilMargin.addon(node)
+  utilMargin.addon(node, groupName)
   return utilMargin
 }
 

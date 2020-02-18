@@ -76,9 +76,9 @@ class UtilFloat extends OptionFragment{
   }
 }
 
-var addonUtilFloat = (node)=>{
+var addonUtilFloat = (node, groupName)=>{
   let utilFloat = new UtilFloat
-  utilFloat.addon(node)
+  utilFloat.addon(node, groupName)
   return utilFloat
 }
 

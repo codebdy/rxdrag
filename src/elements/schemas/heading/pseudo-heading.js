@@ -1,15 +1,16 @@
 import {OptionFragment} from "../option-fragment"
 
 let headingPseudoSchema = {
-  label:'Display',
-  group:'generalOptions',
+  label:'Pseudo Heading',
   widget:'OpSelect',
   defaultValue:'',
   list:{
-    'display-1':'Display 1',
-    'display-2':'Display 2',
-    'display-3':'Display 3',
-    'display-4':'Display 4',
+    'h1':'H1',
+    'h2':'H2',
+    'h3':'H3',
+    'h4':'H4',
+    'h5':'H5',
+    'h6':'H6',
   },
 }
 
@@ -32,9 +33,9 @@ class HeadingPseudo extends OptionFragment{
   }
 }
 
-var addonHeadingPseudo = (node)=>{
+var addonHeadingPseudo = (node, groupName)=>{
   let headingPseudo = new HeadingPseudo
-  headingPseudo.addon(node)
+  headingPseudo.addon(node, groupName)
   return headingPseudo
 }
 

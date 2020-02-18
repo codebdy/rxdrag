@@ -136,9 +136,9 @@ class ColWidth extends OptionFragment{
   }
 }
 
-var addonWidth = (node)=>{
+var addonWidth = (node, groupName)=>{
   let colWidth = new ColWidth
-  colWidth.addon(node)
+  colWidth.addon(node, groupName)
   return colWidth
 }
 

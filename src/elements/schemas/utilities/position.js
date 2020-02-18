@@ -33,9 +33,9 @@ class UtilPosition extends OptionFragment{
   }
 }
 
-var addonUtilPosition = (node)=>{
+var addonUtilPosition = (node, groupName)=>{
   let utilPosition = new UtilPosition
-  utilPosition.addon(node)
+  utilPosition.addon(node, groupName)
   return utilPosition
 }
 

@@ -32,9 +32,9 @@ class HeadingDisplay extends OptionFragment{
   }
 }
 
-var addonHeadingDisplay = (node)=>{
+var addonHeadingDisplay = (node, groupName)=>{
   let headingDisplay = new HeadingDisplay
-  headingDisplay.addon(node)
+  headingDisplay.addon(node, groupName)
   return headingDisplay
 }
 

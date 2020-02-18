@@ -89,9 +89,9 @@ class UtilText extends OptionFragment{
   }
 }
 
-var addonUtilText = (node)=>{
+var addonUtilText = (node, groupName)=>{
   let utilText = new UtilText
-  utilText.addon(node)
+  utilText.addon(node, groupName)
   return utilText
 }
 

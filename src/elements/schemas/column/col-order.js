@@ -22,9 +22,9 @@ class ColOrder extends OptionFragment{
   }
 }
 
-var addonOrder = (node)=>{
+var addonOrder = (node, groupName)=>{
   let colOrder = new ColOrder
-  colOrder.addon(node)
+  colOrder.addon(node, groupName)
   return colOrder
 }
 

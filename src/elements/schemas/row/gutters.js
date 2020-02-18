@@ -28,9 +28,9 @@ class RowGutters extends OptionFragment{
   }
 }
 
-var addonRowGutters = (node)=>{
+var addonRowGutters = (node, groupName)=>{
   let rowGutters = new RowGutters
-  rowGutters.addon(node)
+  rowGutters.addon(node, groupName)
   return rowGutters
 }
 

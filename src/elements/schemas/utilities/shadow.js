@@ -32,9 +32,9 @@ class UtilShadow extends OptionFragment{
   }
 }
 
-var addonUtilShadow = (node)=>{
+var addonUtilShadow = (node, groupName)=>{
   let utilShadow = new UtilShadow
-  utilShadow.addon(node)
+  utilShadow.addon(node, groupName)
   return utilShadow
 }
 

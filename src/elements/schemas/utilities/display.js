@@ -116,9 +116,9 @@ class UtilDisplay extends OptionFragment{
   }
 }
 
-var addonUtilDisplay = (node)=>{
+var addonUtilDisplay = (node, groupName)=>{
   let utilDisplay = new UtilDisplay
-  utilDisplay.addon(node)
+  utilDisplay.addon(node, groupName)
   return utilDisplay
 }
 

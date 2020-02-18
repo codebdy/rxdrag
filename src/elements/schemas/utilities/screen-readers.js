@@ -30,9 +30,9 @@ class UtilScreenReaders extends OptionFragment{
   }
 }
 
-var addonUtilScreenReaders = (node)=>{
+var addonUtilScreenReaders = (node, groupName)=>{
   let utilScreenReaders = new UtilScreenReaders
-  utilScreenReaders.addon(node)
+  utilScreenReaders.addon(node, groupName)
   return utilScreenReaders
 }
 

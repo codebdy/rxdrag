@@ -51,9 +51,9 @@ class UtilBorder extends OptionFragment{
   }
 }
 
-var addonUtilBorder = (node)=>{
+var addonUtilBorder = (node, groupName)=>{
   let utilBorder = new UtilBorder
-  utilBorder.addon(node)
+  utilBorder.addon(node, groupName)
   return utilBorder
 }
 

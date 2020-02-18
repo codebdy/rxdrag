@@ -121,9 +121,9 @@ class ColOffset extends OptionFragment{
   }
 }
 
-var addonOffset = (node)=>{
+var addonOffset = (node, groupName)=>{
   let colOffset = new ColOffset
-  colOffset.addon(node)
+  colOffset.addon(node, groupName)
   return colOffset
 }
 

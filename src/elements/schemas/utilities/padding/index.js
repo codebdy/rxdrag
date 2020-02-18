@@ -52,9 +52,9 @@ class UtilPadding extends OptionFragment{
   }
 }
 
-var addonUtilPadding = (node)=>{
+var addonUtilPadding = (node, groupName)=>{
   let utilPadding = new UtilPadding
-  utilPadding.addon(node)
+  utilPadding.addon(node, groupName)
   return utilPadding
 }
 

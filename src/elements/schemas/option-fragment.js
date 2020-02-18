@@ -2,8 +2,10 @@ export class OptionFragment{
   constructor(){
   }
 
-  addon(node){
-    //console.log(this.schema.group)
+  addon(node, groupName){
+    if(groupName){
+      this.schema.group = groupName
+    }
     this.addToGroup(node, this.schema.group)
     node.addons.push(this)
     if(!node.$meta[this.fieldName]){
@@ -33,7 +35,6 @@ export class OptionFragment{
       this.responsiveMetaFieldToViewModel(model, meta[fieldName])
     }
   }
-
 
   responsiveMetaFieldToViewModel(model, metaFragment){
     for(var name in metaFragment){

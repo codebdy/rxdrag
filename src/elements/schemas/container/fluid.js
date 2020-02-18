@@ -28,9 +28,9 @@ class ContainerFluid extends OptionFragment{
   }
 }
 
-var addonFluid = (node)=>{
+var addonFluid = (node, groupName)=>{
   let containerFluid = new ContainerFluid
-  containerFluid.addon(node)
+  containerFluid.addon(node, groupName)
   return containerFluid
 }
 

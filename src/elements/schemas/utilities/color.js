@@ -66,9 +66,9 @@ class UtilColor extends OptionFragment{
   }
 }
 
-var addonUtilColor = (node)=>{
+var addonUtilColor = (node, groupName)=>{
   let utilColor = new UtilColor
-  utilColor.addon(node)
+  utilColor.addon(node, groupName)
   return utilColor
 }
 

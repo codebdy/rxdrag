@@ -67,9 +67,9 @@ class UtilFlex extends OptionFragment{
   }
 }
 
-var addonUtilFlex = (node)=>{
+var addonUtilFlex = (node, groupName)=>{
   let utilFlex = new UtilFlex
-  utilFlex.addon(node)
+  utilFlex.addon(node, groupName)
   return utilFlex
 }
 

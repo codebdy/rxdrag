@@ -23,9 +23,9 @@ class UtilMarginAuto extends OptionFragment{
   }
 }
 
-var addonUtilMarginAuto = (node)=>{
+var addonUtilMarginAuto = (node, groupName)=>{
   let utilMarginAuto = new UtilMarginAuto
-  utilMarginAuto.addon(node)
+  utilMarginAuto.addon(node, groupName)
   return utilMarginAuto
 }
 

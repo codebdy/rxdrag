@@ -36,9 +36,9 @@ class UtilVisibility extends OptionFragment{
   }
 }
 
-var addonUtilVisibility = (node)=>{
+var addonUtilVisibility = (node, groupName)=>{
   let utilVisibility = new UtilVisibility
-  utilVisibility.addon(node)
+  utilVisibility.addon(node, groupName)
   return utilVisibility
 }
 

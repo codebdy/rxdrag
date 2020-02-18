@@ -40,9 +40,9 @@ class UtilSizing extends OptionFragment{
   }
 }
 
-var addonUtilSizing = (node)=>{
+var addonUtilSizing = (node, groupName)=>{
   let utilSizing = new UtilSizing
-  utilSizing.addon(node)
+  utilSizing.addon(node, groupName)
   return utilSizing
 }
 
