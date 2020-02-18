@@ -51,12 +51,11 @@ class EditorState extends ObjectState{
 }
 
 class BarButton extends RXComponent{
-  constructor(title, iconName, on, callback){
+  constructor(title, callback){
     super()
     this.cssClass('mini-button')
     this.domAttr('title', title)  
-    this.innerHTML = `<i class="fa ${iconName}"></i>`
-    this.domOn(on, callback)
+    this.domOn('click', callback)
   }  
 }
 
@@ -66,14 +65,41 @@ export class MiniEditbar extends RXComponent{
     this.cssClass('mini-editbar')
     this.hide()
 
-    this.pushChild(new BarButton('Focus Parent', 'fa-arrow-up', 'click' , ()=>{
-    }))
-    this.pushChild(new BarButton('Move', 'fa-arrows','mousedown', (event)=>{
-      }))
-    this.pushChild(new BarButton('Duplicate', 'fa-copy', 'click', ()=>{
-    }))
-    this.pushChild(new BarButton('Delete', 'fa-trash-o', 'click', ()=>{
-    }))
+    this.domOn('mousedown', (event)=>{
+      event.preventDefault()
+    })
+  
+
+    this.pushChild(new BarButton('Bold', ()=>{
+      })
+      .cssClass('icon-button')
+      .setInnerHTML('<b>B</b>')
+    )
+    this.pushChild(new BarButton('Italic', ()=>{
+      })
+      .cssClass('icon-button')
+      .setInnerHTML('<i>I</i>')
+    )
+    this.pushChild(new BarButton('Underline', ()=>{
+      })
+      .cssClass('icon-button')
+      .setInnerHTML('<u>U</u>')
+    )
+    this.pushChild(new BarButton('Strike', ()=>{
+      })
+      .cssClass('icon-button')
+      .setInnerHTML('<strike>S</strike>')
+    )
+    this.pushChild(new BarButton('Link', ()=>{
+      })
+      .cssClass('icon-button')
+      .setInnerHTML('<span>⫘</span>')
+    )
+    this.pushChild(new BarButton('Bootstrap Styles', ()=>{
+      })
+      .cssClass('mini-styles')
+      .setInnerHTML('Insert <span>▾</span>')
+    )
   }
 
   show(followElement){
@@ -84,13 +110,14 @@ export class MiniEditbar extends RXComponent{
 
   followElement(domElement){
     let rect = domElement.getBoundingClientRect()
+    let height = 32
     if(this.$dom){
-      this.$dom.style.left = rect.x  + 'px'
-      if(rect.y < 26){
-        this.$dom.style.top = (rect.y + rect.height + 2) + 'px'
+      this.$dom.style.left = (rect.x -1)  + 'px'
+      if(rect.y < height){
+        this.$dom.style.top = (rect.y + rect.height) + 'px'
       }
       else{
-        this.$dom.style.top = (rect.y - 26) + 'px'
+        this.$dom.style.top = (rect.y - height) + 'px'
       }
     }
   }

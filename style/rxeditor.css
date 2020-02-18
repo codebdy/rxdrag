@@ -203,17 +203,16 @@
   flex-flow:row;
   align-items:center;
   justify-content:center;
-  height: 34px;
-  width: 200px;
-  background: #4f4f4f;
-  color:#a8a8a8;
-  border-radius: 3px;
+  padding:2px;
+  background: #313131;
+  color:#c2c2c2;
+  border-radius: 2px;
   z-index: 2999999
 }
 
 
 .mini-editbar .mini-button{
-  font-size: 15px;
+  font-size: 14px;
   margin:1px;
   text-align: center;
   height: 26px;
@@ -225,11 +224,15 @@
   width: 26px;
 }
 
-.mini-editbar .mini-button.active, .mini-editor .mini-button:hover,.mini-editbar .mini-headers:hover{
-  background: #424242;
+.mini-editbar .mini-button:hover{
+  background: #4a4a4a;
 }
 
-.mini-editbar .mini-styles, .mini-editbar .mini-headers{
+.mini-editbar .mini-button.active{
+  background: #4a4a4a;
+}
+
+.mini-editbar .mini-styles{
   display: flex;
   align-items:center;
   justify-content:space-between;
@@ -238,14 +241,6 @@
   padding:0 6px;
   cursor: pointer;
   position: relative;
-}
-
-.mini-editbar .mini-headers{
-  margin: 3px;
-  width: 90px;
-  border: #525252 solid 1px;
-  background: #424242;
-  color:#fff;
 }
 
 .mini-editbar .mini-styles{

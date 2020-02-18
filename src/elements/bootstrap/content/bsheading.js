@@ -40,6 +40,11 @@ export class BSHeading extends RXElement{
     model.on.onfocus = (event)=>{
       rxEditor.miniEditbar.show(this.view.$dom)
     }
+
+    model.on.onblur = (event)=>{
+      rxEditor.miniEditbar.hide()
+    }
+
     return model
   }
 }
