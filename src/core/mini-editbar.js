@@ -141,11 +141,17 @@ export class MiniEditbar extends RXComponent{
       .setInnerHTML('<div style="transform:rotate(45deg)">⫘</div>')
     this.pushChild( linkBtn )
 
-    let btnInsert = new BarButton('Bootstrap Styles', ()=>{
+    let codeBtn = new BarButton('Switch Code Editor', ()=>{
+        this.updateButtonsState()
+      })
+      .cssClass('icon-button')
+      .setInnerHTML('<div"><></div>')
+    this.pushChild( codeBtn )
+    /*let btnInsert = new BarButton('Bootstrap Styles', ()=>{
       })
       .cssClass('mini-styles')
       .setInnerHTML('Insert <span>▾</span>')
-    this.pushChild( btnInsert )
+    this.pushChild( btnInsert )*/
 
     document.addEventListener("selectionchange", (event)=>{
       this.updateButtonsState()

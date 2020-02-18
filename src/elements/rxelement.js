@@ -38,6 +38,7 @@ export class RXElement extends Node{
   clone(){
     let copy = super.clone()
     copy.$meta.tag = this.$meta.tag
+    copy.$meta.innerHTML = this.$meta.innerHTML
 
     this.addons.forEach((addon)=>{
       addon.copyMeta(this.$meta, copy.$meta)
