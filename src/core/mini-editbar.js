@@ -8,6 +8,7 @@ class EditorState extends ObjectState{
     this.__italic = false
     this.__underline = false
     this.__strikeThrough = false
+    this.__isLink = false
   }
 
   get bold(){
@@ -48,6 +49,17 @@ class EditorState extends ObjectState{
     this.__strikeThrough = strikeThrough
     this.distributeEvent('strikeThrough')
   }
+
+  get isLink(){
+    return this.__isLink
+  }
+
+  set isLink(isLink){
+    if(this.__isLink == isLink){return} 
+    this.__isLink = isLink
+    this.distributeEvent('isLink')
+  }
+
 }
 
 class BarButton extends RXComponent{
@@ -57,6 +69,19 @@ class BarButton extends RXComponent{
     this.domAttr('title', title)  
     this.domOn('click', callback)
   }  
+}
+
+const isLink = () => {
+  if (window.getSelection().toString !== '') {
+    let selection = window.getSelection()
+    selection = selection.rangeCount > 0 ? selection.getRangeAt(0) :''
+    if (selection) {
+      if (selection.startContainer.parentNode.tagName === 'A'
+      || selection.endContainer.parentNode.tagName === 'A') {
+        return true
+      } else { return false }
+    } else { return false }
+  }
 }
 
 export class MiniEditbar extends RXComponent{
@@ -104,9 +129,16 @@ export class MiniEditbar extends RXComponent{
     this.pushChild( strikeBtn )
 
     let linkBtn = new BarButton('Link', ()=>{
+        if(this.state.isLink){
+          document.execCommand('unlink', false, ' ')
+        }
+        else{
+          document.execCommand('createLink', false, ' ')
+        }
+        this.updateButtonsState()
       })
       .cssClass('icon-button')
-      .setInnerHTML('<span>⫘</span>')
+      .setInnerHTML('<div style="transform:rotate(45deg)">⫘</div>')
     this.pushChild( linkBtn )
 
     let btnInsert = new BarButton('Bootstrap Styles', ()=>{
@@ -115,7 +147,7 @@ export class MiniEditbar extends RXComponent{
       .setInnerHTML('Insert <span>▾</span>')
     this.pushChild( btnInsert )
 
-    document.addEventListener("selectionchange", ()=>{
+    document.addEventListener("selectionchange", (event)=>{
       this.updateButtonsState()
     })
 
@@ -123,6 +155,7 @@ export class MiniEditbar extends RXComponent{
     this.watchOne('italic', italicBtn)
     this.watchOne('underline', underlineBtn)
     this.watchOne('strikeThrough', strikeBtn)
+    this.watchOne('isLink', linkBtn)
   }
 
   watchOne(stateName, btn){
@@ -148,6 +181,7 @@ export class MiniEditbar extends RXComponent{
     this.state.italic = document.queryCommandState('italic')
     this.state.underline = document.queryCommandState('underline')
     this.state.strikeThrough = document.queryCommandState('strikeThrough')
+    this.state.isLink = isLink()
   }
 
   followElement(domElement){
