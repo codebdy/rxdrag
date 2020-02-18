@@ -52,9 +52,9 @@ export class RXEditor{
     this.canvas.render()
   }
 
-  refresh(){
+  /*refresh(){
     this.canvas.refresh()
-  }
+  }*/
 
   clearDraggedoverStates(){
     this.canvas.clearDraggedoverStates()

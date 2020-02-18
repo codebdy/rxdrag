@@ -153,12 +153,12 @@ export class Node{
     })
   }
 
-  refresh(){
+  /*refresh(){
     this.view.refresh(this.toViewModel(),this.getParentViewDomElement())
     this.children.forEach(function(child){  
       child.refresh()
     })
-  }
+  }*/
 
   createMouseFollower(){
     let followerElement = document.createElement('div')
@@ -314,7 +314,6 @@ export class Node{
   inertAfterSelf(brother){
     brother.parent = this.parent
     this.parent.children.inertAfter(brother, this);
-    this.parent.refresh()
   }
 
   clone(){
