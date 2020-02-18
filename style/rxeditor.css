@@ -63,7 +63,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  z-index: 999999
+  z-index: 1000
 }
 
 .node-label.focused{
@@ -162,7 +162,7 @@
   position: fixed;
   height: 26px;
   width: 100px;
-  z-index: 1999999
+  z-index: 1001
 }
 
 .node-toolbar .rx-button{
@@ -207,7 +207,7 @@
   background: #313131;
   color:#c2c2c2;
   border-radius: 2px;
-  z-index: 2999999
+  z-index: 1002
 }
 
 
@@ -355,3 +355,4 @@
   justify-content: center;
   }
 }
+

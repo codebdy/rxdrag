@@ -84,6 +84,7 @@ const isLink = () => {
   }
 }
 
+
 export class MiniEditbar extends RXComponent{
   constructor(){
     super()
