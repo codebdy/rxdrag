@@ -19,18 +19,13 @@ class HeadingTag extends OptionFragment{
   constructor(){
     super()
     this.schema = Object.assign({}, headingTagSchema)
-
-    this.metaFragment = 'h2' 
-
-    this.fieldName = 'headingTag'
+    this.fieldName = 'tag'
   }
 
   copyMeta(from, to){
-    to.headingTag = from.headingTag
   }
 
   toViewModel(model, meta){
-    model.classList.add(meta[this.fieldName])
   }
 }
 

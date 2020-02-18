@@ -6,7 +6,9 @@ export class OptionFragment{
     //console.log(this.schema.group)
     this.addToGroup(node, this.schema.group)
     node.addons.push(this)
-    node.$meta[this.fieldName] = this.metaFragment
+    if(this.metaFragment){
+      node.$meta[this.fieldName] = this.metaFragment
+    }
     node.$schema.fields[this.fieldName] = this.schema
   }
 

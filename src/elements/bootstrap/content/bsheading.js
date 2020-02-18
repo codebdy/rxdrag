@@ -33,7 +33,6 @@ export class BSHeading extends RXElement{
     let model = super.toViewModel()
 
     parkMiniEditbar(model, this)
-
     return model
   }
 }

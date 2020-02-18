@@ -61,7 +61,6 @@ export class RXElement extends Node{
     this.addons.forEach((addon)=>{
       addon.toViewModel(model, this.$meta)
     })
-
     return model
   }
 }

@@ -11,6 +11,7 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('bootstrap.column')
   rxEditorFM.assemble('bootstrap.w100')
   rxEditorFM.assemble('bootstrap.heading')
+  rxEditorFM.assemble('bootstrap.paragraph')
   rxEditorFM.assemble('html.div')
 
   return rxEditorFM
