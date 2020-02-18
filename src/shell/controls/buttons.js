@@ -79,6 +79,7 @@ export class ButtonGroup extends OpInput{
     this.state.actived = value
     this.updateState()
     this.state.watch('actived',(state)=>{
+      this.value = state.actived
       this.updateState()
       this.onValueChanged(state.actived)
     })
