@@ -155,7 +155,7 @@ export class MiniEditbar extends RXComponent{
     this.watchOne('italic', italicBtn)
     this.watchOne('underline', underlineBtn)
     this.watchOne('strikeThrough', strikeBtn)
-    this.watchOne('isLink', linkBtn)
+    this.watchOne('isLink', linkBtn)    
   }
 
   watchOne(stateName, btn){

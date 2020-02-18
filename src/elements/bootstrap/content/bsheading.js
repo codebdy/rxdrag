@@ -15,6 +15,7 @@ export class BSHeading extends RXElement{
       label:'Heading Options'
     }
     this.$meta.tag = 'h2'
+    this.$meta.innerHTML = "Heading"
     this.label = "Heading"
 
     //addonFluid(this)
@@ -29,7 +30,7 @@ export class BSHeading extends RXElement{
   toViewModel(){
     let model = super.toViewModel()
     //model.label.text = "Heading"
-    model.innerHTML = 'Heading'
+    model.innerHTML = this.$meta.innerHTML
     model.attributes.contentEditable = true
     model.on.onkeydown = (event)=>{
       if (event.keyCode === 13) {
@@ -42,7 +43,13 @@ export class BSHeading extends RXElement{
     }
 
     model.on.onblur = (event)=>{
+      this.$meta.innerHTML = this.view.$dom.innerHTML
       rxEditor.miniEditbar.hide()
+    }
+
+    model.on.onpaste = (event)=>{
+      let plainText  =  event.clipboardData.getData('text/plain'); 
+      document.execCommand('insertText', false, plainText);
     }
 
     return model

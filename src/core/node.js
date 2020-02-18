@@ -294,6 +294,8 @@ export class Node{
 
   clone(){
     let copy = this.make(this.parent)
+    copy.$meta.tag = this.$meta.tag
+    copy.$meta.innerHTML = this.$meta.innerHTML
     this.children.forEach((child)=>{  
       copy.pushChild(child.clone())
     })
