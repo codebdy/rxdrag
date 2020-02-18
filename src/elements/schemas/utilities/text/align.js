@@ -11,7 +11,7 @@ export default{
   },
   //---------------------
   sm:{
-    label:'Float',
+    label:'Align',
     widget:'OpSelect',
     list:{
       'text-sm-left':'Left',
@@ -21,7 +21,7 @@ export default{
   },
   //---------------------
   md:{
-    label:'Float',
+    label:'Align',
     widget:'OpSelect',
     list:{
       'text-md-left':'Left',
@@ -31,7 +31,7 @@ export default{
   },
   //---------------------
   lg:{
-    label:'Float',
+    label:'Align',
     widget:'OpSelect',
     list:{
       'text-lg-left':'Left',
@@ -41,7 +41,7 @@ export default{
   },
   //---------------------
   xl:{
-    label:'Float',
+    label:'Align',
     widget:'OpSelect',
     list:{
       'text-xl-left':'Left',
