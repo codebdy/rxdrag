@@ -4,7 +4,7 @@ export class NodeView{
 
   render(model, parentDoment){
     this.parentDoment = parentDoment
-    //this.putDown(parentDoment)
+    this.putDown(parentDoment)//防止canvas内节点重复添加
     
     this.$dom = document.createElement(model.name);
     this.doRender(model, parentDoment, this.$dom)
@@ -82,12 +82,12 @@ export class NodeView{
     }
   }
 
-  /*putDown(){
+  putDown(){
     if(this.$dom){
       if(this.parentDoment.contains(this.$dom)){
         this.parentDoment.removeChild(this.$dom);
       }
     }
-  }*/
+  }
 
 }
