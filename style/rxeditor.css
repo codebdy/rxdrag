@@ -55,6 +55,7 @@
   padding: 0px 2px;
   position: fixed;
   height:16px;
+  cursor: move;
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;

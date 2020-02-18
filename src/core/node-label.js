@@ -9,6 +9,7 @@ export class NodeLabel extends RXComponent{
   }
 
   show(label, followElement, offset){
+    if(!followElement) return
     super.setInnerHTML(label)
     this.followElement(followElement, offset)
     return super.show()

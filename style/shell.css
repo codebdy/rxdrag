@@ -227,7 +227,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  cursor: pointer;
+  cursor: move;
   //border: #313131 solid 1px;
   //background: #424242;
   color: #c2c2c2;

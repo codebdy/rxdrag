@@ -15,7 +15,7 @@ export class RXEditor{
     this.focusedLabel.cssClass('focused')
     this.focusedLabel.domOn('mousedown', (event)=>{
       if(rxEditor.focusedNode){
-        rxEditor.focusedNode.begindragLabel()
+        rxEditor.focusedNode.begindragLabel(event)
       }
     })
 

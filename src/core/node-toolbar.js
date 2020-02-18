@@ -22,10 +22,12 @@ export class NodeToolbar extends RXComponent{
       }
     }))
     this.pushChild(new ToolbarButton('Move', 'fa-arrows','mousedown', (event)=>{
-      if(rxEditor.focusedNode){
-        rxEditor.focusedNode.begindragIcon(event)
-      }
-    }))
+        if(rxEditor.focusedNode){
+          rxEditor.focusedNode.begindragIcon(event)
+        }
+      })
+      .cssStyle('cursor', 'move')
+    )
     this.pushChild(new ToolbarButton('Duplicate', 'fa-copy', 'click', ()=>{
       if(rxEditor.focusedNode){
         rxEditor.focusedNode.duplicate(event)
@@ -44,6 +46,7 @@ export class NodeToolbar extends RXComponent{
   }
 
   show(followElement){
+    if(!followElement) return
     this.followElement(followElement)
     return super.show()
   }
