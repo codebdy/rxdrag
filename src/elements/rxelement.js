@@ -56,6 +56,7 @@ export class RXElement extends Node{
   toViewModel(){
     let model = super.toViewModel()
     model.name = this.$meta.tag
+    model.innerHTML = this.$meta.innerHTML
 
     this.addons.forEach((addon)=>{
       addon.toViewModel(model, this.$meta)

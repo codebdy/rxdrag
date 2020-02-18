@@ -1,5 +1,6 @@
 import {RXComponent} from "../../basic/rxcomponent"
 import {ObjectState} from "../../basic/object-state"
+import {OpInput} from "./input"
 
 export class RXButton extends RXComponent{
   constructor(){
@@ -67,7 +68,7 @@ class ButtonGroupState extends ObjectState{
   }
 }
 
-export class ButtonGroup extends RXComponent{
+export class ButtonGroup extends OpInput{
   constructor(){
     super()
     this.state = new ButtonGroupState

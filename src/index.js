@@ -1,7 +1,6 @@
 import {RXEditor} from "./core/rxeditor"
 import {RXEditorFM} from "./shell/rxeditor-fm"
 import {RXEditorInline} from "./shell/rxeditor-inline"
-import {MiniEditor} from "./core/mini-editor"
 
 window.createRXEditorFM = ()=>{
   window.rxEditor = new RXEditor
@@ -18,6 +17,3 @@ window.createRXEditorFM = ()=>{
 }
 
 window.rxEditorInline = new RXEditorInline
-
-
-window.MiniEditor = MiniEditor

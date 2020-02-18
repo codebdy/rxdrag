@@ -1,5 +1,6 @@
 import {RXElement} from "../../rxelement"
-//import {addonFluid} from "../../schemas/container/fluid"
+import {addonHeadingTag} from "../../schemas/heading/tag"
+import parkMiniEditbar from "../../../core/park-mini-editbar"
 //import {addonUtilColor} from "../../schemas/utilities/color"
 //import {addonUtilBorder} from "../../schemas/utilities/border"
 
@@ -18,9 +19,7 @@ export class BSHeading extends RXElement{
     this.$meta.innerHTML = "Heading"
     this.label = "Heading"
 
-    //addonFluid(this)
-    //addonUtilColor(this)
-    //addonUtilBorder(this)
+    addonHeadingTag(this)
   }
 
   make(){
@@ -29,28 +28,8 @@ export class BSHeading extends RXElement{
   
   toViewModel(){
     let model = super.toViewModel()
-    //model.label.text = "Heading"
-    model.innerHTML = this.$meta.innerHTML
-    model.attributes.contentEditable = true
-    model.on.onkeydown = (event)=>{
-      if (event.keyCode === 13) {
-        event.preventDefault()
-        return false
-      }
-    }
-    model.on.onfocus = (event)=>{
-      rxEditor.miniEditbar.show(this.view.$dom)
-    }
 
-    model.on.onblur = (event)=>{
-      this.$meta.innerHTML = this.view.$dom.innerHTML
-      rxEditor.miniEditbar.hide()
-    }
-
-    model.on.onpaste = (event)=>{
-      let plainText  =  event.clipboardData.getData('text/plain'); 
-      document.execCommand('insertText', false, plainText);
-    }
+    parkMiniEditbar(model, this)
 
     return model
   }

@@ -79,6 +79,9 @@ export class OptionRow extends RowBase{
     if(schema.widget ==='OpBorderInput'){
       return new OpBorderInput(value, this.schema)
     }
+    if(schema.widget ==='ButtonGroup'){
+      return new ButtonGroup(value, this.schema)
+    }
 
   }
 
