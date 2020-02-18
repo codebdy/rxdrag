@@ -7,7 +7,7 @@ class EditorState extends ObjectState{
     this.__bold = false
     this.__italic = false
     this.__underline = false
-    this.__strikethrough = false
+    this.__strikeThrough = false
   }
 
   get bold(){
@@ -39,14 +39,14 @@ class EditorState extends ObjectState{
     this.__underline = underline
     this.distributeEvent('underline')
   }
-  get strikethrough(){
-    return this.__strikethrough
+  get strikeThrough(){
+    return this.__strikeThrough
   }
 
-  set strikethrough(strikethrough){
-    if(this.__strikethrough == strikethrough){return} 
-    this.__strikethrough = strikethrough
-    this.distributeEvent('strikethrough')
+  set strikeThrough(strikeThrough){
+    if(this.__strikeThrough == strikeThrough){return} 
+    this.__strikeThrough = strikeThrough
+    this.distributeEvent('strikeThrough')
   }
 }
 
@@ -79,45 +79,61 @@ export class MiniEditbar extends RXComponent{
 
     this.pushChild(boldBtn)
 
-    this.pushChild(new BarButton('Italic', ()=>{
+    let italicBtn = new BarButton('Italic', ()=>{
+        document.execCommand('italic', false, null)
+        this.state.italic = !this.state.italic
       })
       .cssClass('icon-button')
       .setInnerHTML('<i>I</i>')
-    )
-    this.pushChild(new BarButton('Underline', ()=>{
+    this.pushChild( italicBtn )
+
+    let underlineBtn = new BarButton('Underline', ()=>{
+        document.execCommand('underline', false, null)
+        this.updateButtonsState()
       })
       .cssClass('icon-button')
       .setInnerHTML('<u>U</u>')
-    )
-    this.pushChild(new BarButton('Strike', ()=>{
+    this.pushChild( underlineBtn )
+
+    let strikeBtn = new BarButton('Strike', ()=>{
+        document.execCommand('strikeThrough', false, null)
+        this.updateButtonsState()
       })
       .cssClass('icon-button')
       .setInnerHTML('<strike>S</strike>')
-    )
-    this.pushChild(new BarButton('Link', ()=>{
+    this.pushChild( strikeBtn )
+
+    let linkBtn = new BarButton('Link', ()=>{
       })
       .cssClass('icon-button')
       .setInnerHTML('<span>⫘</span>')
-    )
-    this.pushChild(new BarButton('Bootstrap Styles', ()=>{
+    this.pushChild( linkBtn )
+
+    let btnInsert = new BarButton('Bootstrap Styles', ()=>{
       })
       .cssClass('mini-styles')
       .setInnerHTML('Insert <span>▾</span>')
-    )
+    this.pushChild( btnInsert )
 
     document.addEventListener("selectionchange", ()=>{
       this.updateButtonsState()
     })
 
-    this.state.watch('bold', ()=>{
-      if(this.state.bold){
-        boldBtn.cssClass('active')
+    this.watchOne('bold', boldBtn)
+    this.watchOne('italic', italicBtn)
+    this.watchOne('underline', underlineBtn)
+    this.watchOne('strikeThrough', strikeBtn)
+  }
+
+  watchOne(stateName, btn){
+    this.state.watch(stateName, ()=>{
+      if(this.state[stateName]){
+        btn.cssClass('active')
       }
       else{
-        boldBtn.removeCssClass('active')
+        btn.removeCssClass('active')
       }
     })
-
   }
 
   show(followElement){
@@ -130,6 +146,8 @@ export class MiniEditbar extends RXComponent{
   updateButtonsState(){
     this.state.bold = document.queryCommandState('bold')
     this.state.italic = document.queryCommandState('italic')
+    this.state.underline = document.queryCommandState('underline')
+    this.state.strikeThrough = document.queryCommandState('strikeThrough')
   }
 
   followElement(domElement){
