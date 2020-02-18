@@ -25,6 +25,7 @@ export class NodeView{
 
   refreshState(model){
     if(this.domElement){
+      //let y = this.domElement.getBoundingClientRect().y
       this.domElement.classList.remove('actived','focused','dragged', 'dragover')
       this.renderStylesAndClasses(model, this.domElement)
     }
@@ -38,16 +39,17 @@ export class NodeView{
   }
 
   doRender(model, parentDoment, domElement){
-    if(model.contentEditable){
-      let miniEditor = new  MiniEditor(model.innerHTML)
-      miniEditor.hangOn(domElement)
-      //domElement.innerHTML = model.innerHTML
-    }
+    //if(model.contentEditable){
+      //let miniEditor = new  MiniEditor(model.innerHTML)
+      //miniEditor.hangOn(domElement)
+      //
+    //}
+    domElement.innerHTML = model.innerHTML ? model.innerHTML : ''
     this.renderStylesAndClasses(model, domElement)
     this.bindEvents(domElement, model.on)
-    this.showTextNode(model,domElement) 
-    this.showLabel(model,domElement)
-    this.showToolbar(model,domElement)
+    //this.showTextNode(model,domElement) 
+    //this.showLabel(model,domElement)
+    //this.showToolbar(model,domElement)
     this.showAttributes(model,domElement)
     parentDoment.appendChild(domElement);
   }
@@ -88,25 +90,27 @@ export class NodeView{
 
   showLabel(model, domElement){
     if(model.label){
-      let label = document.createElement('div')
-      label.classList.add('element-label')
-      label.title = "Can be dragged"
-      label.appendChild(document.createTextNode(model.label.text))
+      this.label = document.createElement('div')
+      this.label.classList.add('element-label')
+      //this.label.title = "Can be dragged"
+      this.label.appendChild(document.createTextNode(model.label.text))
       //this.bindEvents(label, model.label.on)
-      domElement.appendChild(label)
+      domElement.appendChild(this.label)
     }
   }
 
   showToolbar(model, domElement){
     if(model.toolbar){
-      let toolbar = document.createElement('div')
-      toolbar.classList.add('element-toolbar')
-      toolbar.appendChild(this.createToolbarButton('Move', 'fa-arrow-up', model.toolbar.up))
-      toolbar.appendChild(this.createToolbarButton('Move', 'fa-arrows', model.toolbar.move))
-      toolbar.appendChild(this.createToolbarButton('Duplicate', 'fa-copy', model.toolbar.duplicate))
-      toolbar.appendChild(this.createToolbarButton('Edit', 'fa-edit', model.toolbar.edit))
-      toolbar.appendChild(this.createToolbarButton('Delete', 'fa-trash-o', model.toolbar.delete))
-      domElement.appendChild(toolbar)
+      if(!this.toolbar){
+        this.toolbar = document.createElement('div')
+      }
+      this.toolbar.classList.add('element-toolbar')
+      this.toolbar.appendChild(this.createToolbarButton('Move', 'fa-arrow-up', model.toolbar.up))
+      this.toolbar.appendChild(this.createToolbarButton('Move', 'fa-arrows', model.toolbar.move))
+      this.toolbar.appendChild(this.createToolbarButton('Duplicate', 'fa-copy', model.toolbar.duplicate))
+      this.toolbar.appendChild(this.createToolbarButton('Edit', 'fa-edit', model.toolbar.edit))
+      this.toolbar.appendChild(this.createToolbarButton('Delete', 'fa-trash-o', model.toolbar.delete))
+      domElement.appendChild(this.toolbar)
     }
   }
 

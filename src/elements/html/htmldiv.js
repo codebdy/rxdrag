@@ -31,6 +31,7 @@ export class HTMLDiv extends RXElement{
     this.toolboxInfo.elementId = 'div'
     this.toolboxInfo.elementName = "DIV"
     this.className = 'HTMLDiv'
+    this.label = "div"
     addonUtilColor(this)
     addonUtilBorder(this)
     //addonUtilWidth(this)
@@ -62,7 +63,6 @@ export class HTMLDiv extends RXElement{
 
   toViewModel(){
     let model = super.toViewModel()
-    model.label.text = "div"
     return model
   }
 }

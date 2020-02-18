@@ -1,17 +1,27 @@
 import {Canvas} from "./canvas"
 import {CanvasState} from "./canvas-state"
 import {RXArray} from "../basic/rxarray"
+import {NodeLabel} from "./node-label"
+import {NodeToolbar} from "./node-toolbar"
 
 export class RXEditor{
   constructor() {
     this.state = new CanvasState
     this.optionClasses = new RXArray
     this.optionClasses.add('show-outline')
-    this.optionClasses.add('show-label')
+    //this.optionClasses.add('show-label')
+    this.activedLabel = new NodeLabel
+    this.focusedLabel = new NodeLabel
+    this.focusedLabel.cssClass('focused')
+
+    this.toolbar = new NodeToolbar
   }
 
   hangOn(id, commandProxy){
     this.workspace = document.getElementById(id)
+    this.activedLabel.render(this.workspace)
+    this.focusedLabel.render(this.workspace)
+    this.toolbar.render(this.workspace)
     this.canvas = new Canvas(this.workspace)
     this.canvas.render();
     commandProxy.serveForRXEditor = this

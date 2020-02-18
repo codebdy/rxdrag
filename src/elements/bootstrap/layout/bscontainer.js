@@ -12,6 +12,7 @@ export class BSContainer extends RXElement{
     this.className = 'BSContainer'
     this.heightDropMargin = 15;
     this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv']
+    this.label = "Container"
 
     this.groups.containerOptions = {
       label:'Container Options'
@@ -28,7 +29,6 @@ export class BSContainer extends RXElement{
   
   toViewModel(){
     let model = super.toViewModel()
-    model.label.text = "Container"
     return model
   }
 }

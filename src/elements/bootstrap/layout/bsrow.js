@@ -12,6 +12,7 @@ export class BSRow extends RXElement{
     this.className = 'BSRow'
     this.heightDropMargin = 15;
     this.acceptedChildren=['BSCol','BSW100']
+    this.label = "Row"
 
     this.$meta.baseClass = 'row' 
     this.editMarginStyle.margin = "0"
@@ -39,7 +40,6 @@ export class BSRow extends RXElement{
  
   toViewModel(){
     let model = super.toViewModel()
-    model.label.text = "Row"
     model.classList.push(this.$meta.baseClass)
     return model
   }

@@ -9,17 +9,17 @@ var utilBorderSchema = {
   label:'Border',
   isRowGroup:true,
   fields:{
+    borderColor : borderColor,
     addBorder : addBorder,
     removeBorder : removeBorder,
-    borderColor : borderColor,
     borderRadius : borderRadius,
   }
 }
 
 var utilBorderMeta = {
+  borderColor : '',
   addBorder : [],
   removeBorder : [],
-  borderColor : '',
   borderRadius : '',
 }
 

@@ -8,6 +8,9 @@ export class NodeState {
     this.onMouseover = (event)=>{};
     this.onMouseout = ()=>{};
     this.onClick = ()=>{rxEditor.clearFocusStates()};
+    this.enter = ()=>{}
+    this.leave = ()=>{
+    }
   }
 
   mouseAtBefore(event){
@@ -129,6 +132,12 @@ export class ActiveState extends CanDropState{
   constructor(node) {
     super(node)
     this.classList.push('actived')
+    this.enter = ()=>{
+      rxEditor.activedLabel.show(node.label, node.view.domElement, 1)
+    }
+    this.leave = ()=>{
+      rxEditor.activedLabel.hide()
+    }
     this.onMouseout = ()=>{
       //console.log('mouse out')
       this.node.changeToState('normalState')
@@ -146,6 +155,15 @@ export class FocusState extends NodeState{
   constructor(node) {
     super(node)
     this.classList.push('focused')
+    this.enter = ()=>{
+      let dom = node.view.domElement
+      rxEditor.focusedLabel.show(node.label, dom, 2)
+      rxEditor.toolbar.show(dom)
+    }
+    this.leave = ()=>{
+      rxEditor.focusedLabel.hide()
+      rxEditor.toolbar.hide()
+    }
     this.onClick = (event)=>{
       event.stopPropagation()
     }

@@ -15,6 +15,7 @@ export class BSHeading extends RXElement{
       label:'Heading Options'
     }
     this.$meta.tag = 'h2'
+    this.label = "Heading"
 
     //addonFluid(this)
     //addonUtilColor(this)
@@ -27,7 +28,7 @@ export class BSHeading extends RXElement{
   
   toViewModel(){
     let model = super.toViewModel()
-    model.label.text = "Heading"
+    //model.label.text = "Heading"
     model.innerHTML = 'Heading'
     model.contentEditable = true
     return model

@@ -99,6 +99,8 @@ export class Node{
     }
 
     this.stateChanged = (oldState, newState)=>{
+      oldState.leave()
+      newState.enter()
       rxEditor.nodeStateChanged(this, oldState, newState)
     }
 

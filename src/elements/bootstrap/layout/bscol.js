@@ -14,6 +14,7 @@ export class BSCol extends RXElement{
     this.className = 'BSCol'
     this.widthDropMargin = 15;
     this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv', 'BSHeading']
+    this.label = "Column"
     this.groups.columnOptions = {
       label:'Column Options'
     }
@@ -46,7 +47,7 @@ export class BSCol extends RXElement{
 
   toViewModel(){
     let model = super.toViewModel()
-    model.label.text = "Column"
+    //model.label.text = "Column"
     return model
   }
 }
