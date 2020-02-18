@@ -5,7 +5,7 @@ let headingTagSchema = {
   group:'headingOptions',
   widget:'ButtonGroup',
   defaultValue:'',
-  list:{
+  buttons:{
     'h1':'H1',
     'h2':'H2',
     'h3':'H3',
@@ -20,7 +20,7 @@ class HeadingTag extends OptionFragment{
     super()
     this.schema = Object.assign({}, headingTagSchema)
 
-    this.metaFragment = '' 
+    this.metaFragment = 'h2' 
 
     this.fieldName = 'headingTag'
   }

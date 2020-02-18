@@ -69,23 +69,29 @@ class ButtonGroupState extends ObjectState{
 }
 
 export class ButtonGroup extends OpInput{
-  constructor(){
-    super()
+  constructor(value, schema){
+    super(value, schema.defaultValue)
     this.state = new ButtonGroupState
     this.cssClass('button-group')
-
+    for(var id in schema.buttons ){
+      this.pushChild(new OpButton(schema.buttons[id], id))
+    }
+    this.state.actived = value
+    this.updateState()
     this.state.watch('actived',(state)=>{
-      this.children.forEach((child)=>{
-        child.active(false)
-        if(child.id === state.actived){
-          child.active()
-        }
-      })
+      this.updateState()
+      this.onValueChanged(state.actived)
+    })
+  }
 
-      if(this.valueChanged){
-        this.valueChanged(state.actived)
+  updateState(){
+    this.children.forEach((child)=>{
+      child.active(false)
+      if(child.id === this.state.actived){
+        child.active()
       }
     })
+
   }
 
   pushChild(child){
