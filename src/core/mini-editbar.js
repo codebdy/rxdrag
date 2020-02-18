@@ -64,17 +64,21 @@ export class MiniEditbar extends RXComponent{
     super()
     this.cssClass('mini-editbar')
     this.hide()
+    this.state = new EditorState
 
     this.domOn('mousedown', (event)=>{
       event.preventDefault()
     })
   
-
-    this.pushChild(new BarButton('Bold', ()=>{
+    let boldBtn = new BarButton('Bold', ()=>{
+        document.execCommand('bold', false, null)
+        this.updateButtonsState()
       })
       .cssClass('icon-button')
       .setInnerHTML('<b>B</b>')
-    )
+
+    this.pushChild(boldBtn)
+
     this.pushChild(new BarButton('Italic', ()=>{
       })
       .cssClass('icon-button')
@@ -100,12 +104,32 @@ export class MiniEditbar extends RXComponent{
       .cssClass('mini-styles')
       .setInnerHTML('Insert <span>▾</span>')
     )
+
+    document.addEventListener("selectionchange", ()=>{
+      this.updateButtonsState()
+    })
+
+    this.state.watch('bold', ()=>{
+      if(this.state.bold){
+        boldBtn.cssClass('active')
+      }
+      else{
+        boldBtn.removeCssClass('active')
+      }
+    })
+
   }
 
   show(followElement){
     if(!followElement) return
     this.followElement(followElement)
+    this.updateButtonsState()
     return super.show()
+  }
+
+  updateButtonsState(){
+    this.state.bold = document.queryCommandState('bold')
+    this.state.italic = document.queryCommandState('italic')
   }
 
   followElement(domElement){
