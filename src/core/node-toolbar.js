@@ -33,11 +33,11 @@ export class NodeToolbar extends RXComponent{
         rxEditor.focusedNode.duplicate(event)
       }
     }))
-    this.pushChild(new ToolbarButton('Edit', 'fa-edit', 'click', ()=>{
+    /*this.pushChild(new ToolbarButton('Edit', 'fa-edit', 'click', ()=>{
       if(rxEditor.focusedNode){
         rxEditor.focusedNode.edit(event)
       }
-    }))
+    }))*/
     this.pushChild(new ToolbarButton('Delete', 'fa-trash-o', 'click', ()=>{
       if(rxEditor.focusedNode){
         rxEditor.focusedNode.delete(event)
@@ -54,7 +54,7 @@ export class NodeToolbar extends RXComponent{
   followElement(domElement){
     let rect = domElement.getBoundingClientRect()
     if(this.$dom){
-      this.$dom.style.left = (rect.x + rect.width - 135) + 'px'
+      this.$dom.style.left = (rect.x + rect.width - 99) + 'px'
       if(rect.y < 26){
         this.$dom.style.top = (rect.y + rect.height + 2) + 'px'
       }

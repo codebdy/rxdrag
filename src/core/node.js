@@ -357,31 +357,8 @@ export class Node{
       //text:'test',
       styles:styles,
       classList:classList,
-      /*label:{
-          on:{
-            onmousedown:this.begindragLabel
-          }
-      },
-      toolbar:{
-        up:{
-          onclick:this.up
-        },
-        move:{
-          onmousedown:this.begindragIcon
-        },
-        duplicate:{
-          onclick:this.duplicate
-        },
-        edit:{
-          onclick:this.edit
-        },
-        delete:{
-          onclick:this.delete
-        }
-      },*/
       attributes:{},
       on:{
-        //onmousedown:this.mousedown,
         onmousemove:this.mousemove,
         onmouseover:this.mouseover,
         onmouseout:this.mouseout,

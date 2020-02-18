@@ -47,9 +47,6 @@ export class NodeView{
     domElement.innerHTML = model.innerHTML ? model.innerHTML : ''
     this.renderStylesAndClasses(model, domElement)
     this.bindEvents(domElement, model.on)
-    //this.showTextNode(model,domElement) 
-    //this.showLabel(model,domElement)
-    //this.showToolbar(model,domElement)
     this.showAttributes(model,domElement)
     parentDoment.appendChild(domElement);
   }
@@ -57,9 +54,6 @@ export class NodeView{
   doRefresh(model, parentDoment, domElement){
     this.renderStylesAndClasses(model, domElement)
     this.bindEvents(domElement, model.on)
-    //this.showTextNode(model,domElement) 
-    //this.showLabel(model,domElement)
-    //this.showToolbar(model,domElement)
     this.showAttributes(model,domElement)
     parentDoment.appendChild(domElement);
   }
@@ -82,55 +76,10 @@ export class NodeView{
     }
   }
 
-  showTextNode(model, domElement){
-    if(model.text){
-      domElement.appendChild(document.createTextNode(model.text))
-    }
-  }
-
-  showLabel(model, domElement){
-    if(model.label){
-      this.label = document.createElement('div')
-      this.label.classList.add('element-label')
-      //this.label.title = "Can be dragged"
-      this.label.appendChild(document.createTextNode(model.label.text))
-      //this.bindEvents(label, model.label.on)
-      domElement.appendChild(this.label)
-    }
-  }
-
-  showToolbar(model, domElement){
-    if(model.toolbar){
-      if(!this.toolbar){
-        this.toolbar = document.createElement('div')
-      }
-      this.toolbar.classList.add('element-toolbar')
-      this.toolbar.appendChild(this.createToolbarButton('Move', 'fa-arrow-up', model.toolbar.up))
-      this.toolbar.appendChild(this.createToolbarButton('Move', 'fa-arrows', model.toolbar.move))
-      this.toolbar.appendChild(this.createToolbarButton('Duplicate', 'fa-copy', model.toolbar.duplicate))
-      this.toolbar.appendChild(this.createToolbarButton('Edit', 'fa-edit', model.toolbar.edit))
-      this.toolbar.appendChild(this.createToolbarButton('Delete', 'fa-trash-o', model.toolbar.delete))
-      domElement.appendChild(this.toolbar)
-    }
-  }
-
   showAttributes(model, domElement){
     for(var attributeName in model.attributes){
       domElement[attributeName] = model.attributes[attributeName]
     }
-  }
-
-  createToolbarButton(title, iconName, on){
-    let button = document.createElement('div')
-    button.classList.add('button')
-    button.title = title
-    let icon = document.createElement('i')
-    icon.classList.add('fa')
-    icon.classList.add(iconName)
-
-    button.appendChild(icon)
-    this.bindEvents(button, on)
-    return button;
   }
 
   bindEvents(element, on){

@@ -54,14 +54,6 @@ export class Toolbar extends RXComponent{
                 outlineBtn.active(canvasState.showOutline)
               })
 
-    var labelBtn = this.creatRightButton('fa-tags')
-              .active()
-              .title('Show/hide Label')
-              .domOn('click',()=>{
-                canvasState.showLabel = !canvasState.showLabel
-                labelBtn.active(canvasState.showLabel)
-              })
-
     var marginBtn = this.creatRightButton('fa-arrows-h')
               .active()
               .title('Show/hide margin')
@@ -79,13 +71,8 @@ export class Toolbar extends RXComponent{
 
     canvasState.watch('preview',(state)=>{
       outlineBtn.enable(!state.preview)
-      labelBtn.enable(!state.preview)
       marginBtn.enable(!state.preview)
       this.rxEditorShell.state.showDrawer = !state.preview
-    })
-
-    canvasState.watch('showOutline',(state)=>{
-      labelBtn.enable(state.showOutline)
     })
 
     this.creatRightButton('fa-undo').title('Undo')
