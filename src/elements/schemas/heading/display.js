@@ -1,7 +1,7 @@
 import {OptionFragment} from "../option-fragment"
 
 let headingDisplaySchema = {
-  label:'Display',
+  label:'Big Size',
   group:'headingOptions',
   widget:'OpSelect',
   defaultValue:'',

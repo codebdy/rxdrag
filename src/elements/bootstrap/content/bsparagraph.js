@@ -22,7 +22,7 @@ export class BSParagraph extends RXElement{
     this.label = "Paragraph"
 
     addonHeadingPseudo(this, 'paragraphOptions')
-    //addonHeadingDisplay(this)
+    addonHeadingDisplay(this, 'paragraphOptions')
   }
 
   make(){
