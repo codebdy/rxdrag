@@ -130,10 +130,10 @@ export class MiniEditbar extends RXComponent{
 
     let linkBtn = new BarButton('Link', ()=>{
         if(this.state.isLink){
-          document.execCommand('unlink', false, ' ')
+          document.execCommand('unlink', false, null)
         }
         else{
-          document.execCommand('createLink', false, ' ')
+          document.execCommand('createLink', false, '#')
         }
         this.updateButtonsState()
       })
