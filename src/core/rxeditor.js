@@ -44,7 +44,9 @@ export class RXEditor{
     this.state.watch('showOutline', (state)=>{
       this.optionClasses.tongleOnCondition(state.showOutline, 'show-outline')
       this.render()
-      //this.focusedLabel.refresh()
+    })
+    this.state.watch('showEditMargin', (state)=>{
+      this.render()
     })
     this.state.watch('preview', (state)=>{
       if(state.preview){
