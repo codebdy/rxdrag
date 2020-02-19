@@ -285,7 +285,9 @@ export class Node{
     if(targetParent.children.last() !== this){
       this.removeFromParent()
       targetParent.pushChild(this)
-      targetParent.view.$dom.appendChild(this.view.$dom)
+      if(this.view.$dom){
+        targetParent.view.$dom.appendChild(this.view.$dom)
+      }
       //rxEditor.refresh()
     }
     //else{

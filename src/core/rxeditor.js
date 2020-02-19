@@ -1,6 +1,7 @@
 import {Canvas} from "./canvas"
 import {CanvasState} from "./canvas-state"
 import {RXArray} from "../basic/rxarray"
+import {CommandNew} from "./commands"
 import {NodeLabel} from "./node-label"
 import {NodeToolbar} from "./node-toolbar"
 import {MiniEditbar} from "./mini-editbar"
@@ -8,6 +9,8 @@ import {MiniEditbar} from "./mini-editbar"
 export class RXEditor{
   constructor() {
     this.state = new CanvasState
+    this.undoCommands = new RXArray
+    this.redoCommands = new RXArray
     this.optionClasses = new RXArray
     this.optionClasses.add('show-outline')
     //this.optionClasses.add('show-label')
@@ -46,6 +49,7 @@ export class RXEditor{
       this.render()
     })
     this.state.watch('showEditMargin', (state)=>{
+      this.allToNormalState()
       this.render()
     })
     this.state.watch('preview', (state)=>{
@@ -165,11 +169,11 @@ export class RXEditor{
     this.mouseFollower = ''
   }
 
-  bindToolboxItem(toolboxItemName, elementId){
+  /*bindToolboxItem(toolboxItemName, elementId){
     let toolboxItem = new ToolboxItem(toolboxItemName)
 
     toolboxItem.bindTo(elementId)
-  }
+  }*/
 
   nodeStateChanged(node, oldState, newState){
     if(newState === node.focusState && node.focusState !== node.normalState){
@@ -192,5 +196,26 @@ export class RXEditor{
     //console.log(node)
     this.canvas.nodeChanged(node)
     this.render()
+  }
+
+  startCommand(command){
+    this.excutingCommand = this.command
+  }
+
+  finishedComand(){
+    this.undoCommands.push(this.excutingCommand)
+    this.excutingCommand = ''
+  }
+
+  undo(){
+    let command = this.undoCommands.pop()
+    command.undo()
+    this.redoCommands.push(command)
+  }
+
+  redo(){
+    let command = this.redoCommands.pop()
+    command.excute()
+    this.undoCommands.push(command)
   }
 }
