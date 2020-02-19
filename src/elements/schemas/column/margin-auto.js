@@ -17,7 +17,7 @@ class UtilMarginAuto extends OptionFragment{
     super.copyResponsiveMetaTo(from, to)
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
     super.responsiveMetaFieldToViewModel(model, metaFragment)
   }

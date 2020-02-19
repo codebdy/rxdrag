@@ -21,7 +21,7 @@ class UtilTextHide extends OptionFragment{
     to.utilTextHide = from.utilTextHide
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
     model.classList.add(metaFragment)
   }

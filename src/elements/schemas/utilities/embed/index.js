@@ -32,7 +32,7 @@ class UtilEmbed extends OptionFragment{
     to[this.fieldName].aspectRadion = from[this.fieldName].aspectRadion
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
     model.classList.add(metaFragment.responsive)
     model.classList.add(metaFragment.aspectRadion)

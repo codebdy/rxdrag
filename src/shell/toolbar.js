@@ -72,7 +72,7 @@ export class Toolbar extends RXComponent{
     canvasState.watch('preview',(state)=>{
       outlineBtn.enable(!state.preview)
       marginBtn.enable(!state.preview)
-      this.rxEditorShell.state.showDrawer = !state.preview
+      //this.rxEditorShell.state.showDrawer = !state.preview
     })
 
     this.creatRightButton('fa-undo').title('Undo')

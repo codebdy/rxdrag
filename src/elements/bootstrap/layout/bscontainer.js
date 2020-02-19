@@ -27,8 +27,8 @@ export class BSContainer extends RXElement{
     return new BSContainer
   }
   
-  toViewModel(){
+  /*toViewModel(){
     let model = super.toViewModel()
     return model
-  }
+  }*/
 }

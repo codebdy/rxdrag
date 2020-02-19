@@ -21,7 +21,7 @@ class UtilClearfix extends OptionFragment{
     to.utilClearfix = from.utilClearfix
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
     model.classList.add(metaFragment)
   }

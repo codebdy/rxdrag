@@ -41,7 +41,7 @@ class UtilBorder extends OptionFragment{
     to[this.fieldName].borderRadius = from[this.fieldName].borderRadius
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
     model.classList.push.apply(model.classList, metaFragment.addBorder)
     model.classList.push.apply(model.classList, metaFragment.removeBorder)

@@ -33,7 +33,7 @@ class UtilSizing extends OptionFragment{
     to[this.fieldName].height = from[this.fieldName].height
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
     model.classList.add(metaFragment.width)
     model.classList.add(metaFragment.height)

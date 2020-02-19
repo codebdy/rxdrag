@@ -29,7 +29,7 @@ class UtilVerticalAlignment extends OptionFragment{
     to.utilVerticalAlignment = from.utilVerticalAlignment
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     model.classList.add(meta[this.fieldName])
   }
 }

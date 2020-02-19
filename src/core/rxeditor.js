@@ -41,15 +41,32 @@ export class RXEditor{
       console.log('canvas mouse up')
     })
 
-    this.state.watch('changed', (state)=>{
+    this.state.watch('showOutline', (state)=>{
       this.optionClasses.tongleOnCondition(state.showOutline, 'show-outline')
-      this.optionClasses.tongleOnCondition(!state.showLabel, 'hide-label')
       this.render()
+      //this.focusedLabel.refresh()
+    })
+    this.state.watch('preview', (state)=>{
+      if(state.preview){
+        this.preview()
+      }
+      else {
+        this.render()
+      }
     })
   }
 
   render(){
+    if(this.workspace.contains(this.previewDom)){
+      this.workspace.removeChild(this.previewDom);
+      this.previewDom = ''
+    }
     this.canvas.render()
+  }
+
+  preview(){
+    this.allToNormalState()
+    this.previewDom = this.canvas.preview(this.workspace)
   }
 
   /*refresh(){
@@ -64,6 +81,10 @@ export class RXEditor{
   }
   clearFocusStates(){
     this.canvas.clearFocusStates()
+  }
+
+  allToNormalState(){
+    this.canvas.allToNormalState()
   }
 
   dragFromToolbox(rxNameId){

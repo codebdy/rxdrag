@@ -59,7 +59,7 @@ class UtilColor extends OptionFragment{
     to.backgroundColor = from.backgroundColor
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
     model.classList.add(metaFragment.textColor)
     model.classList.add(metaFragment.backgroundColor)

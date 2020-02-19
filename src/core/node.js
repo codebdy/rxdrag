@@ -143,7 +143,15 @@ export class Node{
     this.children.forEach(function(child){  
       child.render()
     })
+  }
 
+  preview(parentDomElement){
+    let dom = this.view.preview(this.toPreviewModel(), parentDomElement)
+    this.children.forEach((child)=>{  
+      child.preview(dom)
+    })
+
+    return dom
   }
 
   refreshState(){
@@ -205,6 +213,13 @@ export class Node{
     }
     this.children.forEach(function(child){  
       child.clearFocusStates()
+    })
+  }
+
+  allToNormalState(){
+    this.changeToState('normalState')
+    this.children.forEach((child)=>{  
+      child.allToNormalState()
     })
   }
 
@@ -388,6 +403,14 @@ export class Node{
         onmouseout:this.mouseout,
         onclick:this.onclick,
       }
+    }
+  }
+
+  toPreviewModel(){
+    return {      
+      styles:{},
+      classList:new RXArray,
+      attributes:{},
     }
   }
 

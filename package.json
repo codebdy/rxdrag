@@ -1,8 +1,8 @@
 {
   "name": "rxeditor",
   "version": "0.0.5",
-  "description": "Bootstrap Visual Editor",
-  "license": "MIT",
+  "description": "",
+  "license": "ISC",
   "main": "webpack.config.js",
   "directories": {
     "test": "test"
@@ -13,12 +13,13 @@
     "watch": "node_modules/.bin/webpack --watch"
   },
   "author": "",
-  "license": "ISC",
   "keywords": [],
-  "description": "",
   "devDependencies": {
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "jszip": "^3.2.2"
   }
 }

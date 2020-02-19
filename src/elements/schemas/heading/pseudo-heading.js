@@ -28,7 +28,7 @@ class HeadingPseudo extends OptionFragment{
     to.headingPseudo = from.headingPseudo
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     model.classList.add(meta[this.fieldName])
   }
 }

@@ -25,7 +25,7 @@ class UtilVisibility extends OptionFragment{
     to.utilVisibility = from.utilVisibility
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
    let metaValue = meta[this.fieldName]
     if(metaValue === 'invisible'){
       model.classList.add('rx-invisble')

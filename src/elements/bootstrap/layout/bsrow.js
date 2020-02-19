@@ -38,9 +38,12 @@ export class BSRow extends RXElement{
     return copy
   }
  
-  toViewModel(){
+/*  toViewModel(){
     let model = super.toViewModel()
-    model.classList.push(this.$meta.baseClass)
     return model
+  }*/
+
+  metaToModel(model){
+    model.classList.push(this.$meta.baseClass)
   }
 }

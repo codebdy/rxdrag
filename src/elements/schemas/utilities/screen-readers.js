@@ -25,7 +25,7 @@ class UtilScreenReaders extends OptionFragment{
     to.utilScreenReaders = from.utilScreenReaders
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     model.classList.add(meta[this.fieldName])
   }
 }

@@ -46,9 +46,9 @@ export class BSCol extends RXElement{
     return new BSCol
   }
 
-  toViewModel(){
+  /*toViewModel(){
     let model = super.toViewModel()
     //model.label.text = "Column"
     return model
-  }
+  }*/
 }

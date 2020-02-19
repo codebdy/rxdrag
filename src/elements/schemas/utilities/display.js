@@ -106,7 +106,7 @@ class UtilDisplay extends OptionFragment{
     super.copyResponsiveMetaTo(from, to)
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
     model.classList.add(replaceNone(metaFragment.xs))
     model.classList.add(replaceNone(metaFragment.sm))

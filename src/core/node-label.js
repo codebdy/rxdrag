@@ -10,6 +10,8 @@ export class NodeLabel extends RXComponent{
 
   show(label, followElement, offset){
     if(!followElement) return
+    this.owner = followElement
+    this.offset = offset
     super.setInnerHTML(label)
     this.followElement(followElement, offset)
     return super.show()
@@ -27,4 +29,10 @@ export class NodeLabel extends RXComponent{
       }
     }
   }
+
+  /*refresh(){
+    if(this.owner){
+      this.followElement(this.owner, this.offset)
+    }
+  }*/
 }

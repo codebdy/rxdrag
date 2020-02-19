@@ -7,6 +7,9 @@ import {IFrameCommandProxy} from "./iframe-command-porxy"
 import {EditorState} from "./editor-state"
 import {RXComponent} from "../basic/rxcomponent"
 
+var JSZip = require("jszip")
+//var zip = new JSZip()
+
 class Workspace extends RXComponent{
   constructor(config){
     super()

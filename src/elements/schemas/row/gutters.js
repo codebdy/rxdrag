@@ -22,7 +22,7 @@ class RowGutters extends OptionFragment{
     to.rowGutters = from.rowGutters
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
     model.classList.add(metaFragment)
   }

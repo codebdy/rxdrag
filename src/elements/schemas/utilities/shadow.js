@@ -27,7 +27,7 @@ class UtilShadow extends OptionFragment{
     to.utilShadow = from.utilShadow
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     model.classList.add(meta[this.fieldName])
   }
 }

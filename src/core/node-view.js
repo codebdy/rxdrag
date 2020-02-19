@@ -6,12 +6,19 @@ export class NodeView{
     this.parentDoment = parentDoment
     this.putDown(parentDoment)//防止canvas内节点重复添加
     
-    this.$dom = document.createElement(model.name);
+    this.$dom = document.createElement(model.name)
     this.doRender(model, parentDoment, this.$dom)
   }
 
+  preview(model, parentDoment){
+    this.putDown(parentDoment)//防止canvas内节点重复添加
+    let previewDom = document.createElement(model.name)
+    this.doRender(model, parentDoment, previewDom)
+    return previewDom
+  }
+
   renderMouseFollower(model, parentDoment){
-    let domElement = document.createElement(model.name);
+    let domElement = document.createElement(model.name)
     this.doRender(model, parentDoment, domElement)
 
     if(this.$dom){

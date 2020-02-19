@@ -46,7 +46,7 @@ class UtilMargin extends OptionFragment{
     super.copyResponsiveGroupMetasTo(from[this.fieldName], to[this.fieldName])
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     super.responsiveMetaGroupToViewModel(model, meta[this.fieldName])
   }
 }

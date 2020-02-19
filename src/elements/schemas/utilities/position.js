@@ -28,7 +28,7 @@ class UtilPosition extends OptionFragment{
     to.utilPosition = from.utilPosition
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     model.classList.add(meta[this.fieldName])
   }
 }

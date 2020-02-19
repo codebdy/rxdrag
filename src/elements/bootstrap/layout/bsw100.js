@@ -18,11 +18,16 @@ export class BSW100 extends RXElement{
     return new BSW100
   }
 
-  toViewModel(){
+  /*toViewModel(){
     let model = super.toViewModel()
     model.classList.add('w-100')
     //model.classList.push.apply(model.classList, this.$meta.baseClass)
     //model.attributes.contentEditable = false
     return model
+  }*/
+
+  metaToModel(model){
+    model.classList.add('w-100')
   }
+
 }

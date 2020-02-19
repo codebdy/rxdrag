@@ -27,7 +27,7 @@ class HeadingDisplay extends OptionFragment{
     to.headingDisplay = from.headingDisplay
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     model.classList.add(meta[this.fieldName])
   }
 }

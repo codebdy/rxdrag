@@ -21,7 +21,7 @@ class UtilStretchedLink extends OptionFragment{
     to.utilStretchedLink = from.utilStretchedLink
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
     model.classList.add(metaFragment)
   }

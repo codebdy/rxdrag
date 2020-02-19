@@ -73,7 +73,7 @@ class UtilText extends OptionFragment{
 
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
     model.classList.add(metaFragment.justify)
     super.responsiveMetaFieldToViewModel(model, metaFragment.align)

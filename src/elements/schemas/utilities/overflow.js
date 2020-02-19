@@ -25,7 +25,7 @@ class UtilOverflow extends OptionFragment{
     to.utilOverflow = from.utilOverflow
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     model.classList.add(meta[this.fieldName])
   }
 }

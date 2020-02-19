@@ -34,5 +34,10 @@ export class Canvas extends Node{
     return model
   }
 
+  toPreviewModel(){
+    let model = super.toPreviewModel()
+    model.name = 'div'
+    return model
+  }
 }
 

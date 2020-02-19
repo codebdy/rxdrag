@@ -25,7 +25,7 @@ class HeadingTag extends OptionFragment{
   copyMeta(from, to){
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
   }
 }
 

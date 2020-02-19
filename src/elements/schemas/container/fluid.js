@@ -22,7 +22,7 @@ class ContainerFluid extends OptionFragment{
     to.containerFluid = from.containerFluid
   }
 
-  toViewModel(model, meta){
+  metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
     model.classList.add(metaFragment)
   }
