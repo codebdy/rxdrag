@@ -14,9 +14,11 @@ export default (model, node, noEnter = true)=>{
   }
 
   model.on.onblur = (event)=>{
-    node.$meta.innerHTML = node.view.$dom.innerHTML
-    rxEditor.miniEditbar.hide()
-    rxEditor.commandManager.finishEditText()
+    if(node.$meta.innerHTML !== node.view.$dom.innerHTML){
+      node.$meta.innerHTML = node.view.$dom.innerHTML
+      rxEditor.miniEditbar.hide()
+      rxEditor.commandManager.finishEditText()
+    }
   }
 
   model.on.onpaste = (event)=>{
