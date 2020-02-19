@@ -11,7 +11,8 @@ export class BSContainer extends RXElement{
     this.toolboxInfo.elementName = "Container"
     this.className = 'BSContainer'
     this.heightDropMargin = 15;
-    this.acceptedChildren=['BSRow','BSContainer', 'HTMLDiv']
+    this.acceptedChildren= ''
+    this.exceptChildren = ['BSCol']
     this.label = "Container"
 
     this.groups.containerOptions = {

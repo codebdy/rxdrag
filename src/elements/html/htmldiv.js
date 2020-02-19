@@ -33,7 +33,7 @@ export class HTMLDiv extends RXElement{
     this.className = 'HTMLDiv'
     this.label = "div"
     this.acceptedChildren=''
-    this.exceptChildren = ''
+    this.exceptChildren = ['BSCol']
     addonUtilColor(this)
     addonUtilBorder(this)
     //addonUtilWidth(this)
