@@ -88,7 +88,7 @@ export class RXEditor{
   }
 
   dragFromToolbox(rxNameId){
-    if(this.draggedNode) return
+    if(this.draggedNode || this.state.preview) return
     let element = this.getElementByRxNameId(rxNameId)
     this.draggedNode = element.make()
     this.beginFollowMouse()
