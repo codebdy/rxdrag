@@ -58,6 +58,9 @@ export class IFrameCommandProxy{
       case 'unFocusNode':
         this.serveForShell.unFocusNode(message.id)
         break;
+      case 'commandsHistoryChanged':
+        this.serveForShell.commandsHistoryChanged(message.canUndo, message.canRedo)
+        break;
     }
   }
 

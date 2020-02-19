@@ -20,6 +20,7 @@ export class Toolbar extends RXComponent{
     this.barLeft.classList.add('left')
     this.pushChild(this.barLeft)
     var canvasState = this.rxEditorShell.canvasState
+    var shellState = this.rxEditorShell.state
 
     if(withScreenSize){
       this.createScreenSizeButtons()
@@ -69,14 +70,19 @@ export class Toolbar extends RXComponent{
                 previewBtn.active(canvasState.preview)
               })
 
+
+    var undoBtn = this.creatRightButton('fa-undo').title('Undo').enable(false)
+    var redoBtn = this.creatRightButton('fa-repeat').title('Redo').enable(false)
+    
     canvasState.watch('preview',(state)=>{
       outlineBtn.enable(!state.preview)
       marginBtn.enable(!state.preview)
       //this.rxEditorShell.state.showDrawer = !state.preview
     })
-
-    this.creatRightButton('fa-undo').title('Undo')
-    this.creatRightButton('fa-repeat').title('Redo')
+    shellState.watch('changed',(state)=>{
+      undoBtn.enable(state.canUndo)
+      redoBtn.enable(state.canRedo)
+    })
     this.creatRightButton('fa-download').title('Download')
     this.creatRightButton('fa-trash').title('Clear canvas')
     //this.creatRightButton('fa-cog').title('Settings')

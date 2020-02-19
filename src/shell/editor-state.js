@@ -4,8 +4,7 @@ export class EditorState extends ObjectState{
   constructor(){
     super()
     this.__screenWidth = 'md'
-    this.__preView = false
-    this.__fullscreen = false
+    //this.__preView = false
     this.__canUndo = false
     this.__canRedo = false
     this.__showDrawer = true
@@ -23,7 +22,7 @@ export class EditorState extends ObjectState{
   }
 
 
-  get preView(){
+  /*get preView(){
     return this.__preView
   }
 
@@ -31,17 +30,7 @@ export class EditorState extends ObjectState{
     if(this.__preView == preView){return} 
     this.__preView = preView
     this.distributeEvent('preView')
-  }
-
-  get fullscreen(){
-    return this.__fullscreen
-  }
-
-  set fullscreen(fullscreen){
-    if(this.__fullscreen == fullscreen){return} 
-    this.__fullscreen = fullscreen
-    this.distributeEvent('fullscreen')
-  }
+  }*/
 
   get canUndo(){
     return this.__canUndo

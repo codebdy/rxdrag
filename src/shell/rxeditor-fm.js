@@ -161,4 +161,9 @@ export class RXEditorFM{
   unFocusNode(id){
     this.drawer.cancelEditNode(id)
   }
+
+  commandsHistoryChanged(canUndo, canRedo){
+    this.state.canUndo = canUndo
+    this.state.canRedo = canRedo
+  }
 }

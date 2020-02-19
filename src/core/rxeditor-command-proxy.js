@@ -29,6 +29,14 @@ export class RXEditorCommandProxy{
     })
   }
 
+  commandsHistoryChanged(canUndo, canRedo){
+    this.sendMessage({
+      name: 'commandsHistoryChanged',
+      canUndo: canUndo,
+      canRedo:canRedo,
+    })
+  }
+
   takeOverDraggingByWorkspace(){
     this.sendMessage({
       name: 'takeOverDraggingByWorkspace'

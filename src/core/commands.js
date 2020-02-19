@@ -89,10 +89,18 @@ export class CommandMove extends CommandMovable{
   }
 }
 
+export class CommandClone{
+  constructor(node) {
+    this.node = node
+  }
+}
+
 export class CommadManager{
   constructor() {
     this.undoCommands = []
     this.redoCommands = []
+    this.onCommandsChanged = (canUndo, canRedo)=>{
+    }
   }
 
   getDraggedNode(){
@@ -110,16 +118,26 @@ export class CommadManager{
     this.startCommand(cmd)
   }
 
+  cloneNode(node){
+    let cmd = new CommandClone(node)
+    this.finished(cmd)
+  }
+
   startCommand(command){
     this.movingCommand = command
   }
 
-  finishedComand(){
+  finishMovingComand(){
     if(this.movingCommand){
-      this.undoCommands.push(this.movingCommand)
+      this.finished(this.movingCommand)
       this.movingCommand = ''
-      this.redoCommands.length = 0
     }
+  }
+
+  finished(command){
+    this.undoCommands.push(command)
+    this.redoCommands.length = 0
+    this.onCommandsChanged(this.undoCommands.length > 0, this.redoCommands.length > 0)
   }
 
   undo(){

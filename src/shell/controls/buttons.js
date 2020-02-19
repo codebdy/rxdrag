@@ -29,6 +29,7 @@ export class RXButton extends RXComponent{
     else{
       this.$dom ? this.$dom.classList.remove('disable') : this.classList.remove('disable')
     }
+    return this
   }
 }
 

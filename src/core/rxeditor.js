@@ -10,6 +10,9 @@ export class RXEditor{
   constructor() {
     this.state = new CanvasState
     this.commandManager = new CommadManager
+    this.commandManager.onCommandsChanged = (canUndo, canRedo)=>{
+      this.commandProxy.commandsHistoryChanged(canUndo, canRedo)
+    }
     this.optionClasses = new RXArray
     this.optionClasses.add('show-outline')
     //this.optionClasses.add('show-label')
@@ -43,6 +46,9 @@ export class RXEditor{
       console.log('canvas mouse up')
     })
 
+    this.state.watch('changed', (state)=>{
+      this.allToNormalState()
+    })
     this.state.watch('showOutline', (state)=>{
       this.optionClasses.tongleOnCondition(state.showOutline, 'show-outline')
       this.render()
@@ -125,14 +131,14 @@ export class RXEditor{
       if(draggedNode.parent){
         draggedNode.parent.changeToState('normalState')
       }
-      this.commandManager.finishedComand()
+      this.commandManager.finishMovingComand()
     }
   }
 
   endDragFromToolbox(){
     if(this.commandManager.movingCommand){
       let draggedNode = this.commandManager.movingCommand.node
-      this.commandManager.finishedComand()
+      this.commandManager.finishMovingComand()
       draggedNode.changeToState('normalState')
     }
     this.endFollowMouse()
