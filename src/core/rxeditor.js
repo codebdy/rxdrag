@@ -127,14 +127,14 @@ export class RXEditor{
       if(draggedNode.parent){
         draggedNode.parent.changeToState('normalState')
       }
-      this.commandManager.finishMovingComand()
+      this.commandManager.finishMoving()
     }
   }
 
   endDragFromToolbox(){
     if(this.commandManager.movingCommand){
       let draggedNode = this.commandManager.movingCommand.node
-      this.commandManager.finishMovingComand()
+      this.commandManager.finishMoving()
       draggedNode.changeToState('normalState')
     }
     this.endFollowMouse()

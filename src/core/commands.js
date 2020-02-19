@@ -74,20 +74,20 @@ class CommandMovable{
   
 }
 
-export class CommandNew extends CommandMovable{
+class CommandNew extends CommandMovable{
   constructor(node) {
    super(node)
   }
 
 }
 
-export class CommandMove extends CommandMovable{
+class CommandMove extends CommandMovable{
   constructor(node) {
    super(node)
   }
 }
 
-export class CommandClone{
+class CommandClone{
   constructor(node, copy) {
     this.node = node
     this.copy = copy
@@ -102,7 +102,7 @@ export class CommandClone{
   }
 }
 
-export class CommandChangeNode{
+class CommandChangeNode{
   constructor(node, oldMeta) {
     this.node = node
     this.oldMeta = oldMeta
@@ -118,6 +118,25 @@ export class CommandChangeNode{
   }
 }
 
+
+class CommandTextEdit{
+  constructor(node) {
+    this.node = node
+    this.oldInnerHtml = node.$meta.innerHTML
+  }
+
+  finished(){
+    this.newInnerHtml = this.node.$meta.innerHTML
+  } 
+
+  redo(){
+    this.node.$meta.innerHTML = this.newInnerHtml
+  }
+
+  undo(){
+    this.node.$meta.innerHTML = this.oldInnerHtml
+  }
+}
 
 export class CommadManager{
   constructor() {
@@ -158,11 +177,21 @@ export class CommadManager{
     this.movingCommand = command
   }
 
-  finishMovingComand(){
+  finishMoving(){
     if(this.movingCommand){
       this.finished(this.movingCommand)
       this.movingCommand = ''
     }
+  }
+
+  startEditText(node){
+    this.textCommand = new CommandTextEdit(node)
+  }
+
+  finishEditText(){
+    this.textCommand.finished()
+    this.finished(this.textCommand)
+    this.textCommand = ''
   }
 
   finished(command){
