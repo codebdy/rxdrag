@@ -82,7 +82,9 @@ export class Node{
 
     this.duplicate = ()=>{
       this.changeToState('normalState')
+      let copy = this.clone()
       this.inertAfterSelf(this.clone())
+      rxEditor.commandManager.duplicate(this, copy)
       rxEditor.render()
     }
 
@@ -418,6 +420,7 @@ export class Node{
   nodeChanged(node){
     if(this.$id === node.id){
       this.$meta = node.meta
+      rxEditor.commandManager.changeNode(this, node.meta)
       return;
     }
 

@@ -90,10 +90,19 @@ export class CommandMove extends CommandMovable{
 }
 
 export class CommandClone{
-  constructor(node) {
+  constructor(node, copy) {
     this.node = node
+    this.copy = copy
   }
 }
+
+export class CommandChangeNode{
+  constructor(node, oldMeta) {
+    this.node = node
+    this.oldMeta = oldMeta
+  }
+}
+
 
 export class CommadManager{
   constructor() {
@@ -118,8 +127,13 @@ export class CommadManager{
     this.startCommand(cmd)
   }
 
-  cloneNode(node){
-    let cmd = new CommandClone(node)
+  duplicate(node, copy){
+    let cmd = new CommandClone(node, copy)
+    this.finished(cmd)
+  }
+
+  changeNode(node, oldMeta){
+    let cmd = new CommandChangeNode(node, oldMeta)
     this.finished(cmd)
   }
 
