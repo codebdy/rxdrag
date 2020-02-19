@@ -54,10 +54,9 @@ class CommandMovable{
   redo(){
     this.node.removeFromParent()
     if(this.newNextSbiling){
-      this.node.insertBefore(this.newNextSbiling)
+      this.node.moveBefore(this.newNextSbiling)
     }
     else if(this.newParent){
-      console.log('redo')
       this.newParent.pushChild(this.node)
     }
   }
@@ -65,7 +64,7 @@ class CommandMovable{
   undo(){
     this.node.removeFromParent()
     if(this.oldnNextSbiling){
-      this.node.insertBefore(this.oldnNextSbiling)
+      this.node.moveBefore(this.oldnNextSbiling)
     }
     else if(this.oldParent)
     {
