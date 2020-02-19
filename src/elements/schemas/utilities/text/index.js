@@ -59,6 +59,7 @@ class UtilText extends OptionFragment{
 
   copyMeta(from, to){
     to[this.fieldName] = {}
+    to[this.fieldName].align = {}
     to[this.fieldName].justify = from[this.fieldName].justify
     super.copyResponsiveMetaTo(from[this.fieldName].align, to[this.fieldName].align)
     to[this.fieldName].wrapping = from[this.fieldName].wrapping

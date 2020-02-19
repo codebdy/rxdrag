@@ -104,7 +104,6 @@ export class Node{
     this.delete =()=>{
       if(confirm("Are you sure to delete?")){
         this.removeFromParent()
-        //rxEditor.render()
       }
     }
 
@@ -246,9 +245,6 @@ export class Node{
         targetParent.view.$dom.prepend(this.view.$dom)
       }
     }
-    //else{
-    //  console.log('Exist In Top')
-    //}
   }
 
   moveIn(targetParent){
@@ -258,11 +254,7 @@ export class Node{
       if(this.view.$dom){
         targetParent.view.$dom.appendChild(this.view.$dom)
       }
-      //rxEditor.refresh()
     }
-    //else{
-    //  console.log('Exist In')
-    //}
   }
 
   moveBefore(brother){
@@ -274,11 +266,7 @@ export class Node{
         && brother.view && brother.view.$dom
         && this.view && this.view.$dom)
         brother.parent.view.$dom.insertBefore(this.view.$dom, brother.view.$dom)
-      //rxEditor.refresh()
     }
-    //else{
-    //  console.log('Exist In Before')
-    //}
   }
 
   moveAfter(brother){
@@ -289,13 +277,8 @@ export class Node{
       if(brother.view && brother.view.$dom 
         && this.view && this.view.$dom) {
         insterAfter(this.view.$dom, brother.view.$dom)
-        //brother.parent.view.$dom.
       }
-      //rxEditor.refresh()
     }
-    //else{
-    //  console.log('Exist In After')
-    //}
   }
 
   removeFromParent(){

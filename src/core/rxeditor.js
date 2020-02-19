@@ -80,10 +80,6 @@ export class RXEditor{
     this.previewDom = this.canvas.preview(this.workspace)
   }
 
-  /*refresh(){
-    this.canvas.refresh()
-  }*/
-
   clearDraggedoverStates(){
     this.canvas.clearDraggedoverStates()
   }
@@ -177,12 +173,6 @@ export class RXEditor{
 
     this.mouseFollower = ''
   }
-
-  /*bindToolboxItem(toolboxItemName, elementId){
-    let toolboxItem = new ToolboxItem(toolboxItemName)
-
-    toolboxItem.bindTo(elementId)
-  }*/
 
   nodeStateChanged(node, oldState, newState){
     if(newState === node.focusState && node.focusState !== node.normalState){
