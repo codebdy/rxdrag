@@ -57,7 +57,7 @@ export class RXEditor{
   }
 
   render(){
-    if(this.workspace.contains(this.previewDom)){
+    if(this.previewDom && this.workspace.contains(this.previewDom)){
       this.workspace.removeChild(this.previewDom);
       this.previewDom = ''
     }
