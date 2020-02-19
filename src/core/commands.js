@@ -92,12 +92,29 @@ export class CommandClone{
     this.node = node
     this.copy = copy
   }
+
+  redo(){
+    this.copy.moveAfter(this.node)
+  }
+
+  undo(){
+    this.copy.removeFromParent()
+  }
 }
 
 export class CommandChangeNode{
   constructor(node, oldMeta) {
     this.node = node
     this.oldMeta = oldMeta
+    this.newMeta = JSON.parse(JSON.stringify(node.$meta))
+  }
+
+  redo(){
+    this.node.$meta = this.newMeta
+  }
+
+  undo(){
+    this.node.$meta = this.oldMeta
   }
 }
 
@@ -130,7 +147,9 @@ export class CommadManager{
     this.finished(cmd)
   }
 
-  changeNode(node, oldMeta){
+  changeNode(node, newNodeData){
+    let oldMeta = JSON.parse(JSON.stringify(node.$meta))
+    node.$meta = newNodeData.meta
     let cmd = new CommandChangeNode(node, oldMeta)
     this.finished(cmd)
   }
