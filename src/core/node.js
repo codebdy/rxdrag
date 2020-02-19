@@ -163,13 +163,6 @@ export class Node{
     })
   }
 
-  /*refresh(){
-    this.view.refresh(this.toViewModel(),this.getParentViewDomElement())
-    this.children.forEach(function(child){  
-      child.refresh()
-    })
-  }*/
-
   createMouseFollower(){
     let followerElement = document.createElement('div')
     followerElement.classList.add('mouse-follow')
@@ -225,15 +218,6 @@ export class Node{
     })
   }
 
-  /*adoptFromToolbox(){
-    let draggedNode = rxEditor.draggedNode
-    if(draggedNode && !draggedNode.parent && this.canAccept(draggedNode)){
-      draggedNode.parent = this
-      draggedNode.render()
-      draggedNode.changeToState('draggedState')
-    }
-  }*/
-
   getParentViewDomElement(){
     return this.parent.view.$dom
   }
@@ -248,28 +232,13 @@ export class Node{
     return this.children.first()
   }
 
-  removeFromParent(){
+  nextSbiling(){
     if(this.parent){
-      //this.view.putDown()
-      this.parent.children.remove(this)
-      if(this.parent.view && this.parent.view.$dom
-        && this.view && this.view.dom){
-        parent.view.$dom.removeChild(this.view.dom)
-      }
+      return this.parent.children.after(this) 
     }
   }
 
-  unshiftChild(child){
-    child.parent = this
-    this.children.unshift(child) 
-  }
-
-  pushChild(child){
-    child.parent = this
-    this.children.add(child) 
-  }
-
-/*  moveInTop(targetParent){
+  moveInTop(targetParent){
     if(targetParent.children.first() !== this){
       this.removeFromParent()
       targetParent.unshiftChild(this)
@@ -327,7 +296,28 @@ export class Node{
     //else{
     //  console.log('Exist In After')
     //}
-  }*/
+  }
+
+  removeFromParent(){
+    if(this.parent){
+      //this.view.putDown()
+      this.parent.children.remove(this)
+      if(this.parent.view && this.parent.view.$dom
+        && this.view && this.view.dom){
+        parent.view.$dom.removeChild(this.view.dom)
+      }
+    }
+  }
+
+  unshiftChild(child){
+    child.parent = this
+    this.children.unshift(child) 
+  }
+
+  pushChild(child){
+    child.parent = this
+    this.children.add(child) 
+  }
 
   inertAfterSelf(brother){
     brother.parent = this.parent

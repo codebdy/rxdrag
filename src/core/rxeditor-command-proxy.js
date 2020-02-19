@@ -68,6 +68,13 @@ export class RXEditorCommandProxy{
       case 'nodeChanged':
         this.serveForRXEditor.nodeChanged(message.node)
         break;
+
+      case 'undo':
+        this.serveForRXEditor.undo()
+        break;
+      case 'redo':
+        this.serveForRXEditor.redo()
+        break;
     }
   }
 

@@ -21,6 +21,8 @@ export class Toolbar extends RXComponent{
     this.pushChild(this.barLeft)
     var canvasState = this.rxEditorShell.canvasState
     var shellState = this.rxEditorShell.state
+    this.undo = ()=>{}
+    this.redo = ()=>{}
 
     if(withScreenSize){
       this.createScreenSizeButtons()
@@ -71,13 +73,25 @@ export class Toolbar extends RXComponent{
               })
 
 
-    var undoBtn = this.creatRightButton('fa-undo').title('Undo').enable(false)
-    var redoBtn = this.creatRightButton('fa-repeat').title('Redo').enable(false)
+    var undoBtn = this.creatRightButton('fa-undo')
+                      .title('Undo')
+                      .enable(false)
+                      .domOn('click', ()=>{
+                        this.undo()
+                      })
+
+    var redoBtn = this.creatRightButton('fa-repeat')
+                      .title('Redo')
+                      .enable(false)
+                      .domOn('click', ()=>{
+                        this.redo()
+                      })
     
     canvasState.watch('preview',(state)=>{
       outlineBtn.enable(!state.preview)
       marginBtn.enable(!state.preview)
-      //this.rxEditorShell.state.showDrawer = !state.preview
+      undoBtn.enable(!state.preview && shellState.canUndo)
+      redoBtn.enable(!state.preview && shellState.canRedo)
     })
     shellState.watch('changed',(state)=>{
       undoBtn.enable(state.canUndo)

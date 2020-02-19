@@ -206,4 +206,17 @@ export class RXEditor{
     this.canvas.nodeChanged(node)
     this.render()
   }
+
+
+  undo(){
+    this.allToNormalState()
+    this.commandManager.undo()
+    this.render()
+  }
+
+  redo(){
+    this.allToNormalState()
+    this.commandManager.redo()
+    this.render()
+  }
 }

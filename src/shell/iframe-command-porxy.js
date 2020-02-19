@@ -40,6 +40,18 @@ export class IFrameCommandProxy{
     })
   }
 
+  redo(){
+    this.sendMessageToRXEditor({
+      name:'redo'
+    })
+  }
+
+  undo(){
+    this.sendMessageToRXEditor({
+      name:'undo'
+    })
+  }
+
   handleMessage(message){
     switch (message.name) {
       case 'rxeditorReady':

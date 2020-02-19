@@ -11,58 +11,35 @@ function insterAfter(newElement,targetElement){
 class CommandMovable{
   constructor(node){
     this.node = node
+    this.oldParent = node.parent
+    this.oldnNextSbiling = node.nextSbiling()
   }
 
   moveInTop(targetParent){
-    let node = this.node
-    if(targetParent.children.first() !== node){
-      node.removeFromParent()
-      targetParent.unshiftChild(node)
-      if(targetParent.view && targetParent.view.$dom){
-        targetParent.view.$dom.prepend(node.view.$dom)
-      }
-    }
+    this.node.moveInTop(targetParent)
+    this.storeNewInfo()
   }
 
+
   moveBefore(brother){
-    let node = this.node
-    if(brother.children.before() !== node){
-      node.removeFromParent()
-      node.parent = brother.parent
-      brother.parent.children.inertBefore(node, brother);
-      if(brother.parent.view && brother.parent.view.$dom
-        && brother.view && brother.view.$dom
-        && node.view && node.view.$dom)
-        brother.parent.view.$dom.insertBefore(node.view.$dom, brother.view.$dom)
-      //rxEditor.refresh()
-    }
+    this.node.moveBefore(brother)
+    this.storeNewInfo()
   }
 
   moveAfter(brother){
-    let node = this.node
-    if(brother.children.after() !== node){
-      node.removeFromParent()
-      node.parent = brother.parent
-      brother.parent.children.inertAfter(node, brother);
-      if(brother.view && brother.view.$dom 
-        && node.view && node.view.$dom) {
-        insterAfter(node.view.$dom, brother.view.$dom)
-        //brother.parent.view.$dom.
-      }
-      //rxEditor.refresh()
-    }
+    this.node.moveAfter(brother)
+    this.storeNewInfo()
   }
 
 
   moveIn(targetParent){
-    let node = this.node
-    if(targetParent.children.last() !== node){
-      node.removeFromParent()
-      targetParent.pushChild(node)
-      if(node.view.$dom){
-        targetParent.view.$dom.appendChild(node.view.$dom)
-      }
-    }
+    this.node. moveIn(targetParent)
+    this.storeNewInfo()
+  }
+
+  storeNewInfo(){
+    this.newParent = this.node.parent
+    this.newNextSbiling = this.node.nextSbiling()
   }
 
   adoptFromToolbox(parent){
@@ -71,6 +48,28 @@ class CommandMovable{
       draggedNode.parent = parent
       draggedNode.render()
       draggedNode.changeToState('draggedState')
+    }
+  }
+
+  redo(){
+    this.node.removeFromParent()
+    if(this.newNextSbiling){
+      this.node.insertBefore(this.newNextSbiling)
+    }
+    else if(this.newParent){
+      console.log('redo')
+      this.newParent.pushChild(this.node)
+    }
+  }
+
+  undo(){
+    this.node.removeFromParent()
+    if(this.oldnNextSbiling){
+      this.node.insertBefore(this.oldnNextSbiling)
+    }
+    else if(this.oldParent)
+    {
+      this.oldParent.pushChild(this.node)
     }
   }
   
@@ -151,19 +150,25 @@ export class CommadManager{
   finished(command){
     this.undoCommands.push(command)
     this.redoCommands.length = 0
-    this.onCommandsChanged(this.undoCommands.length > 0, this.redoCommands.length > 0)
+    this.submitChanged()
   }
 
   undo(){
     let command = this.undoCommands.pop()
     command.undo()
     this.redoCommands.push(command)
+    this.submitChanged()
   }
 
   redo(){
     let command = this.redoCommands.pop()
-    command.excute()
+    command.redo()
     this.undoCommands.push(command)
+    this.submitChanged()
+  }
+
+  submitChanged(){
+    this.onCommandsChanged(this.undoCommands.length > 0, this.redoCommands.length > 0)
   }
 
 }

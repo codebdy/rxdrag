@@ -90,10 +90,10 @@ export class RXEditorFM{
   hangOn(id, config){
     this.domElement = document.getElementById(id)
     this.domElement.classList.add('rx-editor')
-
+    let toolbar = new Toolbar(this, true)
     this.workspace = new Workspace(config)
     new RXComponent().cssClass('rx-left-area')
-                     .pushChild(new Toolbar(this, true))
+                     .pushChild(toolbar)
                      .pushChild(this.workspace)
                      .render(this.domElement)
     this.workspace.resizeScreen(this.state.screenWidth)
@@ -116,6 +116,13 @@ export class RXEditorFM{
     this.canvasState.watch('changed', (state)=>{
       this.commandProxy.changeCanvasState(state)
     })
+
+    toolbar.redo = ()=>{
+      this.commandProxy.redo()
+    }
+    toolbar.undo = ()=>{
+      this.commandProxy.undo()
+    }
   }
 
   onRxEditorReady(){
