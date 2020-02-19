@@ -223,14 +223,14 @@ export class Node{
     })
   }
 
-  adoptFromToolbox(){
+  /*adoptFromToolbox(){
     let draggedNode = rxEditor.draggedNode
     if(draggedNode && !draggedNode.parent && this.canAccept(draggedNode)){
       draggedNode.parent = this
       draggedNode.render()
       draggedNode.changeToState('draggedState')
     }
-  }
+  }*/
 
   getParentViewDomElement(){
     return this.parent.view.$dom
@@ -267,14 +267,13 @@ export class Node{
     this.children.add(child) 
   }
 
-  moveInTop(targetParent){
+/*  moveInTop(targetParent){
     if(targetParent.children.first() !== this){
       this.removeFromParent()
       targetParent.unshiftChild(this)
       if(targetParent.view && targetParent.view.$dom){
         targetParent.view.$dom.prepend(this.view.$dom)
       }
-      //rxEditor.refresh()
     }
     //else{
     //  console.log('Exist In Top')
@@ -326,7 +325,7 @@ export class Node{
     //else{
     //  console.log('Exist In After')
     //}
-  }
+  }*/
 
   inertAfterSelf(brother){
     brother.parent = this.parent

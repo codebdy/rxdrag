@@ -56,7 +56,6 @@ export class CanDropState extends NodeState{
   constructor(node) {
     super(node)
     this.onMousemove = (event)=>{
-      this.node.adoptFromToolbox()
       this.doDragover(event)
       rxEditor.followMouse(event)
     }
@@ -67,39 +66,42 @@ export class CanDropState extends NodeState{
   }
 
   doDragover(event){
-      if(rxEditor.draggedNode){
-        rxEditor.clearDraggedoverStates()
-        if(this.mouseAtLeft(event) || this.mouseAtTop(event)){
-          if(this.node.parent && this.node.parent.canAccept(rxEditor.draggedNode)){
-            rxEditor.draggedNode.moveBefore(this.node)
-            this.node.parent.changeToState('dragoverState')
-          }
-          return
-        }
-        if(this.mouseAtRight(event) || this.mouseAtBottom(event)){
-          if(this.node.parent && this.node.parent.canAccept(rxEditor.draggedNode)){
-            rxEditor.draggedNode.moveAfter(this.node)
-            this.node.parent.changeToState('dragoverState')
-          }
-          return
-        }
+    let command = rxEditor.commandManager.movingCommand
+    if(command){
+      command.adoptFromToolbox(this.node)
+      rxEditor.clearDraggedoverStates()
+      if(this.mouseAtLeft(event) || this.mouseAtTop(event)){
 
-        if(this.mouseAtBefore(event)){
-          if(this.node.canAccept(rxEditor.draggedNode)){
-            rxEditor.draggedNode.moveInTop(this.node)
+        if(this.node.parent && this.node.parent.canAccept(command.node)){
+          command.moveBefore(this.node)
+          this.node.parent.changeToState('dragoverState')
+        }
+        return
+      }
+      if(this.mouseAtRight(event) || this.mouseAtBottom(event)){
+        if(this.node.parent && this.node.parent.canAccept(command.node)){
+          command.moveAfter(this.node)
+          this.node.parent.changeToState('dragoverState')
+        }
+        return
+      }
+
+      if(this.mouseAtBefore(event)){
+        if(this.node.canAccept(command.node)){
+          command.moveInTop(this.node)
+          this.node.changeToState('dragoverState')
+        }
+        return
+      }
+      if(this.mouseAtAfter(event) || this.mouseAtDropArea(event)){
+          //console.log('Before accepted')
+          if(this.node.canAccept(command.node)){
+            command.moveIn(this.node)
             this.node.changeToState('dragoverState')
           }
-          return
-        }
-        if(this.mouseAtAfter(event) || this.mouseAtDropArea(event)){
-            //console.log('Before accepted')
-            if(this.node.canAccept(rxEditor.draggedNode)){
-              rxEditor.draggedNode.moveIn(this.node)
-              this.node.changeToState('dragoverState')
-            }
-         
-        }
+       
       }
+    }
 
   }
 
@@ -109,7 +111,7 @@ export class NormalState extends CanDropState{
   constructor(node) {
     super(node)
     this.onMouseover = (event)=>{
-      if(!rxEditor.draggedNode){
+      if(!rxEditor.commandManager.movingCommand){
         rxEditor.clearActiveStates()
         this.node.changeToState('activeState')
       }
@@ -143,7 +145,7 @@ export class ActiveState extends CanDropState{
       this.node.changeToState('normalState')
     };
     this.onMouseover = (event)=>{
-      if(!rxEditor.draggedNode){
+      if(!rxEditor.commandManager.movingCommand){
         rxEditor.clearActiveStates()
         this.node.changeToState('activeState')
       }
@@ -173,7 +175,7 @@ export class FocusState extends NodeState{
     this.onBegindrag = (event)=>{
       //if(this.node.draggable){
       this.preventDefault
-      rxEditor.draggedNode = this.node
+      rxEditor.commandManager.startMove(this.node)
       rxEditor.beginFollowMouse(event)
       this.node.changeToState('draggedState')
       //}

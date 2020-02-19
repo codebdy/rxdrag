@@ -1,7 +1,7 @@
 import {Canvas} from "./canvas"
 import {CanvasState} from "./canvas-state"
 import {RXArray} from "../basic/rxarray"
-import {CommandNew} from "./commands"
+import {CommadManager} from "./commands"
 import {NodeLabel} from "./node-label"
 import {NodeToolbar} from "./node-toolbar"
 import {MiniEditbar} from "./mini-editbar"
@@ -9,8 +9,7 @@ import {MiniEditbar} from "./mini-editbar"
 export class RXEditor{
   constructor() {
     this.state = new CanvasState
-    this.undoCommands = new RXArray
-    this.redoCommands = new RXArray
+    this.commandManager = new CommadManager
     this.optionClasses = new RXArray
     this.optionClasses.add('show-outline')
     //this.optionClasses.add('show-label')
@@ -94,9 +93,10 @@ export class RXEditor{
   }
 
   dragFromToolbox(rxNameId){
-    if(this.draggedNode || this.state.preview) return
+    if(this.commandManager.movingCommand || this.state.preview) return
     let element = this.getElementByRxNameId(rxNameId)
-    this.draggedNode = element.make()
+    let draggedNode = element.make()
+    this.commandManager.startNew(draggedNode)
     this.beginFollowMouse()
     this.clearFocusStates()
   }
@@ -118,21 +118,23 @@ export class RXEditor{
 
   dropElement(){
     this.endFollowMouse()
-    if(this.draggedNode){
+    if(this.commandManager.movingCommand){
+      let draggedNode = this.commandManager.movingCommand.node
       this.clearActiveStates()
-      this.draggedNode.changeToState('focusState')
-      if(this.draggedNode.parent){
-        this.draggedNode.parent.changeToState('normalState')
+      draggedNode.changeToState('focusState')
+      if(draggedNode.parent){
+        draggedNode.parent.changeToState('normalState')
       }
-      this.draggedNode = ''
+      this.commandManager.finishedComand()
     }
   }
 
   endDragFromToolbox(){
-    if(this.draggedNode){
-      this.draggedNode.changeToState('normalState')
+    if(this.commandManager.movingCommand){
+      let draggedNode = this.commandManager.movingCommand.node
+      this.commandManager.finishedComand()
+      draggedNode.changeToState('normalState')
     }
-    this.draggedNode = ''
     this.endFollowMouse()
   }
 
@@ -154,8 +156,9 @@ export class RXEditor{
   }
 
   beginFollowMouse(){
-    if(this.draggedNode){
-      let mouseFollower = this.draggedNode.createMouseFollower(event)
+    if(this.commandManager.movingCommand){
+      let draggedNode = this.commandManager.movingCommand.node
+      let mouseFollower = draggedNode.createMouseFollower(event)
       this.workspace.appendChild(mouseFollower.$dom)
       this.mouseFollower = mouseFollower
     }
@@ -196,26 +199,5 @@ export class RXEditor{
     //console.log(node)
     this.canvas.nodeChanged(node)
     this.render()
-  }
-
-  startCommand(command){
-    this.excutingCommand = this.command
-  }
-
-  finishedComand(){
-    this.undoCommands.push(this.excutingCommand)
-    this.excutingCommand = ''
-  }
-
-  undo(){
-    let command = this.undoCommands.pop()
-    command.undo()
-    this.redoCommands.push(command)
-  }
-
-  redo(){
-    let command = this.redoCommands.pop()
-    command.excute()
-    this.undoCommands.push(command)
   }
 }
