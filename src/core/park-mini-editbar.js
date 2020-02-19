@@ -16,9 +16,9 @@ export default (model, node, noEnter = true)=>{
   model.on.onblur = (event)=>{
     if(node.$meta.innerHTML !== node.view.$dom.innerHTML){
       node.$meta.innerHTML = node.view.$dom.innerHTML
-      rxEditor.miniEditbar.hide()
       rxEditor.commandManager.finishEditText()
     }
+    rxEditor.miniEditbar.hide()
   }
 
   model.on.onpaste = (event)=>{
