@@ -43,6 +43,14 @@ export class RXEditorCommandProxy{
     })
   }
 
+  saveCodeFiles(innerHTML, json){
+    this.sendMessage({
+      name: 'saveCodeFiles',
+      innerHTML:innerHTML,
+      json:json,
+    })
+  }
+
 
   handleMessage(message){
     //console.log('received:' + message.name + ":" + message.rxNameId)
@@ -57,23 +65,23 @@ export class RXEditorCommandProxy{
       case 'draggingFromToolbox':
         this.serveForRXEditor.dragFromToolbox(message.rxNameId)
         break;
-
       case 'endDragFromToolbox':
         this.serveForRXEditor.endDragFromToolbox(message.rxNameId)
         break;
       case 'changeCanvasState':
         this.serveForRXEditor.changeCanvasState(message.state)
         break;
-
       case 'nodeChanged':
         this.serveForRXEditor.nodeChanged(message.node)
         break;
-
       case 'undo':
         this.serveForRXEditor.undo()
         break;
       case 'redo':
         this.serveForRXEditor.redo()
+        break;
+      case 'download':
+        this.serveForRXEditor.download()
         break;
     }
   }

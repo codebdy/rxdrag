@@ -23,6 +23,7 @@ export class Toolbar extends RXComponent{
     var shellState = this.rxEditorShell.state
     this.undo = ()=>{}
     this.redo = ()=>{}
+    this.download = ()=>{}
 
     if(withScreenSize){
       this.createScreenSizeButtons()
@@ -98,6 +99,9 @@ export class Toolbar extends RXComponent{
       redoBtn.enable(state.canRedo)
     })
     this.creatRightButton('fa-download').title('Download')
+        .domOn('click',()=>{
+          this.download()
+        })
     this.creatRightButton('fa-trash').title('Clear canvas')
     //this.creatRightButton('fa-cog').title('Settings')
     this.creatRightButton('fa-question-circle').title('About RXEditor')

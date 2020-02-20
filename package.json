@@ -20,6 +20,7 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
+    "file-saver": "^2.0.2",
     "jszip": "^3.2.2"
   }
 }

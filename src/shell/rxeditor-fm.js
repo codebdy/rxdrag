@@ -8,6 +8,7 @@ import {EditorState} from "./editor-state"
 import {RXComponent} from "../basic/rxcomponent"
 
 var JSZip = require("jszip")
+var FileSaver = require('file-saver');
 //var zip = new JSZip()
 
 class Workspace extends RXComponent{
@@ -123,6 +124,10 @@ export class RXEditorFM{
     toolbar.undo = ()=>{
       this.commandProxy.undo()
     }
+
+    toolbar.download = ()=>{
+      this.commandProxy.download()
+    }
   }
 
   onRxEditorReady(){
@@ -172,5 +177,18 @@ export class RXEditorFM{
   commandsHistoryChanged(canUndo, canRedo){
     this.state.canUndo = canUndo
     this.state.canRedo = canRedo
+  }
+
+  saveCodeFiles(innerHTML, json){
+    var zip = new JSZip();
+    zip.file("index.html", innerHTML);
+    zip.file("data.json", json);
+    //var img = zip.folder("images");
+    //img.file("smile.gif", imgData, {base64: true});
+    zip.generateAsync({type:"blob"})
+    .then(function(content) {
+        // see FileSaver.js
+        saveAs(content, "RX-HTML.zip");
+    });      
   }
 }

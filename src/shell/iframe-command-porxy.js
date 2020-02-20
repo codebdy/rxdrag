@@ -52,6 +52,12 @@ export class IFrameCommandProxy{
     })
   }
 
+  download(){
+    this.sendMessageToRXEditor({
+      name:'download'
+    })
+  }
+
   handleMessage(message){
     switch (message.name) {
       case 'rxeditorReady':
@@ -72,6 +78,9 @@ export class IFrameCommandProxy{
         break;
       case 'commandsHistoryChanged':
         this.serveForShell.commandsHistoryChanged(message.canUndo, message.canRedo)
+        break;
+      case 'saveCodeFiles':
+        this.serveForShell.saveCodeFiles(message.innerHTML, message.json)
         break;
     }
   }

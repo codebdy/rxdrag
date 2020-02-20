@@ -209,4 +209,10 @@ export class RXEditor{
     this.commandManager.redo()
     this.render()
   }
+
+  download(){
+    let innerHTML = "ddddd"
+    let json = "xxxx"
+    this.commandProxy.saveCodeFiles(innerHTML, json)
+  }
 }
