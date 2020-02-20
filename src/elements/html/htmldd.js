@@ -1,9 +1,10 @@
-import {RXElement} from "../rxelement"
+import {RXTextfieldable} from "./textfieldable"
 import {addonHeadingPseudo} from "../schemas/heading/pseudo-heading"
 import {addonHeadingDisplay} from "../schemas/heading/display"
 import {addonTypyLead} from "../schemas/content/lead"
+import {addonGeneralTextfield} from "../schemas/general/textfield"
 
-export class HTMLDd extends RXElement{
+export class HTMLDd extends RXTextfieldable{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupHtml'
@@ -26,4 +27,6 @@ export class HTMLDd extends RXElement{
   make(){
     return new HTMLDd
   }
+
+
 }

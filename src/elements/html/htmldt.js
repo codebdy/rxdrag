@@ -1,5 +1,4 @@
-import {RXElement} from "../rxelement"
-import parkMiniEditbar from "../../core/park-mini-editbar"
+import {RXTextfieldable} from "./textfieldable"
 import {addonUtilColor} from "../schemas/utilities/color"
 import {addonUtilBorder} from "../schemas/utilities/border"
 import {addonUtilPadding} from "../schemas/utilities/padding"
@@ -9,7 +8,7 @@ import {addonUtilText} from "../schemas/utilities/text"
 //import {addonHeadingDisplay} from "../../schemas/heading/display"
 //import {addonUtilBorder} from "../../schemas/utilities/border"
 
-export class HTMLDt extends RXElement{
+export class HTMLDt extends RXTextfieldable{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupHtml'
@@ -37,13 +36,5 @@ export class HTMLDt extends RXElement{
 
   make(){
     return new HTMLDt
-  }
-  
-  toViewModel(){
-    let model = super.toViewModel()
-
-    parkMiniEditbar(model, this)
-
-    return model
   }
 }
