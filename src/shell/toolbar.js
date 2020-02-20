@@ -25,6 +25,7 @@ export class Toolbar extends RXComponent{
     this.redo = ()=>{}
     this.download = ()=>{}
     this.clearCanvas = ()=>{}
+    this.about = ()=>{}
 
     if(withScreenSize){
       this.createScreenSizeButtons()
@@ -109,6 +110,9 @@ export class Toolbar extends RXComponent{
         })
     //this.creatRightButton('fa-cog').title('Settings')
     this.creatRightButton('fa-question-circle').title('About RXEditor')
+        .domOn('click', ()=>{
+          this.about()
+        })
 
     this.creatRightButton('fa-bars').domOn('click', ()=>{
       rxEditorShell.state.showDrawer = !rxEditorShell.state.showDrawer

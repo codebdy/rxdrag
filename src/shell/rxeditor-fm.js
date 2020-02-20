@@ -6,6 +6,7 @@ import initEditor from "./init-editor"
 import {IFrameCommandProxy} from "./iframe-command-porxy"
 import {EditorState} from "./editor-state"
 import {RXComponent} from "../basic/rxcomponent"
+import {RXModel} from "./controls/model"
 
 var JSZip = require("jszip")
 var FileSaver = require('file-saver');
@@ -92,10 +93,20 @@ export class RXEditorFM{
     this.domElement = document.getElementById(id)
     this.domElement.classList.add('rx-editor')
     let toolbar = new Toolbar(this, true)
+    let aboutModel = new RXModel()
+                     .setContent(`<div style="padding:20px;">
+                                    <p>欢迎使用RXEditor！</p>
+                                    <p>尚未正式发布，仅供测试</p>
+                                    <p>Github: <a href="https://github.com/vularsoft/rxeditor" target="_blank">https://github.com/vularsoft/rxeditor</a></p>
+                                  </div>
+                                 `
+                      )
+
     this.workspace = new Workspace(config)
     new RXComponent().cssClass('rx-left-area')
                      .pushChild(toolbar)
                      .pushChild(this.workspace)
+                     .pushChild(aboutModel)
                      .render(this.domElement)
     this.workspace.resizeScreen(this.state.screenWidth)
 
@@ -133,6 +144,10 @@ export class RXEditorFM{
       if(confirm("Are you sure to clear canvas?")){
         this.commandProxy.clearCanvas()
       }
+    }
+
+    toolbar.about = ()=>{
+      aboutModel.show()
     }
   }
 
