@@ -15,6 +15,7 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('html.div')
   rxEditorFM.assemble('html.p')
   rxEditorFM.assemble('html.small')
+  rxEditorFM.assemble('html.span')
   rxEditorFM.assemble('html.h')
 
   return rxEditorFM

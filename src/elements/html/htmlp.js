@@ -6,7 +6,7 @@ import {addonHeadingDisplay} from "../schemas/heading/display"
 export class HTMLP extends RXElement{
   constructor() {
     super()
-    this.toolboxInfo.groupId = 'groupContent'
+    this.toolboxInfo.groupId = 'groupHtml'
     this.toolboxInfo.elementId = 'htmlP'
     this.toolboxInfo.elementName = "P"
     this.className = 'HTMLP'

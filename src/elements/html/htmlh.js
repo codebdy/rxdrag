@@ -7,7 +7,7 @@ import {addonHeadingDisplay} from "../schemas/heading/display"
 export class HTMLH extends RXElement{
   constructor() {
     super()
-    this.toolboxInfo.groupId = 'groupContent'
+    this.toolboxInfo.groupId = 'groupHtml'
     this.toolboxInfo.elementId = 'htmlH'
     this.toolboxInfo.elementName = "H(1~6)"
     this.className = 'HTMLH'
@@ -21,7 +21,7 @@ export class HTMLH extends RXElement{
     //this.$meta.innerHTML = "Heading"
     this.label = "Heading"
 
-    this.acceptedChildren=['HTMLDiv', 'HTMLSmall']
+    this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLSpan']
 
     addonHeadingTag(this, 'typographyOptions')
     addonHeadingDisplay(this, 'typographyOptions')

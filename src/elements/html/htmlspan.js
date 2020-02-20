@@ -9,22 +9,22 @@ import {addonUtilText} from "../schemas/utilities/text"
 //import {addonHeadingDisplay} from "../../schemas/heading/display"
 //import {addonUtilBorder} from "../../schemas/utilities/border"
 
-export class HTMLSmall extends RXElement{
+export class HTMLSpan extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupHtml'
-    this.toolboxInfo.elementId = 'htmlSmall'
-    this.toolboxInfo.elementName = "Small"
-    this.className = 'HTMLSmall'
+    this.toolboxInfo.elementId = 'htmlSpan'
+    this.toolboxInfo.elementName = "Span"
+    this.className = 'HTMLSpan'
 
     this.editMarginStyle = {}
 
     //this.groups.paragraphOptions = {
-    //  label:'Small Options'
+    //  label:'Span Options'
     //}
-    this.$meta.tag = 'small'
-    this.$meta.innerHTML = "Small text ..."
-    this.label = "Small"
+    this.$meta.tag = 'span'
+    this.$meta.innerHTML = "Span text ..."
+    this.label = "Span"
 
     addonUtilColor(this)
     addonUtilBorder(this)
@@ -36,7 +36,7 @@ export class HTMLSmall extends RXElement{
   }
 
   make(){
-    return new HTMLSmall
+    return new HTMLSpan
   }
   
   toViewModel(){
