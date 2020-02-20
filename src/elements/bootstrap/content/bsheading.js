@@ -22,7 +22,7 @@ export class BSHeading extends RXElement{
     this.label = "Heading"
 
     addonHeadingTag(this)
-    addonHeadingDisplay(this)
+    addonHeadingDisplay(this, 'typographyOptions')
   }
 
   make(){

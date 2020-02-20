@@ -24,6 +24,9 @@ export class RXElement extends Node{
       'utilities':{
         label:'Bootstrap Utilities',
       },
+      'typographyOptions':{
+        label:'Typography Options'
+      },
       'decorations':{
         label:'Decorations',
       },

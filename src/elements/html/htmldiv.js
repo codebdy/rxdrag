@@ -23,6 +23,14 @@ import {addonUtilText} from "../schemas/utilities/text"
 import {addonUtilVerticalAlignment} from "../schemas/utilities/vertical-align"
 import {addonUtilVisibility} from "../schemas/utilities/visibility"
 
+import {addonHeadingPseudo} from "../schemas/heading/pseudo-heading"
+import {addonHeadingDisplay} from "../schemas/heading/display"
+import {addonGridRow} from "../schemas/grid/row"
+import {addonWidth} from "../schemas/column/col-width"
+import {addonOffset} from "../schemas/column/col-offset"
+import {addonAlignSelf} from "../schemas/column/col-align-self"
+import {addonOrder} from "../schemas/column/col-order"
+import {addonUtilMarginAuto} from "../schemas/column/margin-auto"
 
 export class HTMLDiv extends RXElement{
   constructor() {
@@ -34,6 +42,21 @@ export class HTMLDiv extends RXElement{
     this.label = "div"
     this.acceptedChildren=''
     this.exceptChildren = ['BSCol']
+
+    addonHeadingPseudo(this, 'typographyOptions')
+    addonHeadingDisplay(this, 'typographyOptions')
+    addonGridRow(this, 'typographyOptions')
+    let col = addonWidth(this, 'typographyOptions')
+    col.schema.xs.label = 'Column'
+    col.schema.sm.label = 'Column'
+    col.schema.md.label = 'Column'
+    col.schema.lg.label = 'Column'
+    col.schema.xl.label = 'Column'
+    addonOffset(this, 'typographyOptions')
+    addonAlignSelf(this, 'typographyOptions')
+    addonOrder(this, 'typographyOptions')
+    addonUtilMarginAuto(this, 'typographyOptions')
+
     addonUtilColor(this)
     addonUtilBorder(this)
     //addonUtilWidth(this)
