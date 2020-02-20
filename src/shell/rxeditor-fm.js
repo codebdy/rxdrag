@@ -182,7 +182,7 @@ export class RXEditorFM{
   saveCodeFiles(innerHTML, json){
     var zip = new JSZip();
     zip.file("index.html", innerHTML);
-    zip.file("data.json", json);
+    zip.file("data.json", JSON.stringify(json));
     //var img = zip.folder("images");
     //img.file("smile.gif", imgData, {base64: true});
     zip.generateAsync({type:"blob"})

@@ -48,5 +48,13 @@ export class Canvas extends Node{
     return roorDiv.innerHTML
 
   }
+
+  generateJson(){
+    let jsonArray = []
+    this.children.forEach((child)=>{
+      jsonArray.push(child.toJson())
+    })
+    return jsonArray
+  }
 }
 

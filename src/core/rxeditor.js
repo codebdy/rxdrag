@@ -36,6 +36,7 @@ export class RXEditor{
     this.toolbar.render(this.workspace)
     this.miniEditbar.render(this.workspace)
     this.canvas = new Canvas(this.workspace)
+    this.canvas.children = this.load()
     this.canvas.render();
     commandProxy.serveForRXEditor = this
     this.commandProxy = commandProxy
@@ -43,7 +44,6 @@ export class RXEditor{
     this.commandProxy.rxeditorReady()
     document.addEventListener('mouseup', (event)=>{
       this.dropElement()
-      console.log('canvas mouse up')
     })
 
     this.state.watch('changed', (state)=>{
@@ -112,7 +112,7 @@ export class RXEditor{
     let nameArray = rxNameId.split('.')
     let moduleId = nameArray[0]
     let elementId = nameArray[1]
-    let element = this[moduleId][elementId]
+    let element = this.elements[moduleId][elementId]
     console.assert(element, 'Can not find element:' + rxNameId)
     element.toolboxInfo.rxNameId =rxNameId
     return element
@@ -211,13 +211,43 @@ export class RXEditor{
   }
 
   download(){
-    let innerHTML = this.generateHTML()
-    let json = "xxxx"
+    let innerHTML = this.canvas.generateHTML()
+    let json = this.canvas.generateJson()
     this.commandProxy.saveCodeFiles(innerHTML, json)
     this.render()
   }
 
-  generateHTML(){
-    return this.canvas.generateHTML()
+  load(){
+    let data = `[{"name":"BSContainer","meta":{"tag":"div","containerFluid":"container","utilColor":{"textColor":"","backgroundColor":""},"utilBorder":{"borderColor":"","addBorder":[],"removeBorder":[],"borderRadius":""}},"children":[{"name":"BSRow","meta":{"tag":"div","baseClass":"row","rowGutters":"","rowJustifyContent":{"xs":"","sm":"","md":"","lg":"","xl":""},"utilAlignItems":{"xs":"","sm":"","md":"","lg":"","xl":""}},"children":[{"name":"BSCol","meta":{"tag":"div","colWidth":{"xs":"","sm":"","md":"col-md","lg":"","xl":""},"colOffset":{"xs":"","sm":"","md":"","lg":"","xl":""},"colAlignSelf":{"xs":"","sm":"","md":"","lg":"","xl":""},"colOrder":{"xs":"","sm":"","md":"","lg":"","xl":""},"utilMarginAuto":{"xs":"","sm":"","md":"","lg":"","xl":""}},"children":[]},{"name":"BSCol","meta":{"tag":"div","colWidth":{"xs":"","sm":"","md":"col-md","lg":"","xl":""},"colOffset":{"xs":"","sm":"","md":"","lg":"","xl":""},"colAlignSelf":{"xs":"","sm":"","md":"","lg":"","xl":""},"colOrder":{"xs":"","sm":"","md":"","lg":"","xl":""},"utilMarginAuto":{"xs":"","sm":"","md":"","lg":"","xl":""}},"children":[]}]}]},{"name":"HTMLDiv","meta":{"tag":"div","utilColor":{"textColor":"","backgroundColor":"bg-success"},"utilBorder":{"borderColor":"","addBorder":[],"removeBorder":[],"borderRadius":""},"utilMargin":{"all":{"xs":"","sm":"","md":"","lg":"","xl":""},"horizontal":{"xs":"","sm":"","md":"","lg":"","xl":""},"vertical":{"xs":"","sm":"","md":"","lg":"","xl":""},"top":{"xs":"","sm":"","md":"","lg":"","xl":""},"right":{"xs":"","sm":"","md":"","lg":"","xl":""},"bottom":{"xs":"","sm":"","md":"","lg":"","xl":""},"left":{"xs":"","sm":"","md":"","lg":"","xl":""}},"utilPadding":{"all":{"xs":"","sm":"","md":"","lg":"","xl":""},"horizontal":{"xs":"","sm":"","md":"","lg":"","xl":""},"vertical":{"xs":"","sm":"","md":"","lg":"","xl":""},"top":{"xs":"","sm":"","md":"","lg":"","xl":""},"right":{"xs":"","sm":"","md":"","lg":"","xl":""},"bottom":{"xs":"","sm":"","md":"","lg":"","xl":""},"left":{"xs":"","sm":"","md":"","lg":"","xl":""}},"utilClearfix":"","utilDisplay":{"xs":"","sm":"","md":"","lg":"","xl":""},"utilEmbed":{"responsive":"","aspectRadion":""},"utilResponsiveItem":"","utilFlex":{"display":{"xs":"","sm":"","md":"","lg":"","xl":""},"direction":{"xs":"","sm":"","md":"","lg":"","xl":""},"justifyContent":{"xs":"","sm":"","md":"","lg":"","xl":""},"alignItems":{"xs":"","sm":"","md":"","lg":"","xl":""},"alignSelf":{"xs":"","sm":"","md":"","lg":"","xl":""},"fill":{"xs":"","sm":"","md":"","lg":"","xl":""},"grow":{"xs":"","sm":"","md":"","lg":"","xl":""},"shrink":{"xs":"","sm":"","md":"","lg":"","xl":""},"marginAuto":{"xs":"","sm":"","md":"","lg":"","xl":""},"wrap":{"xs":"","sm":"","md":"","lg":"","xl":""},"order":{"xs":"","sm":"","md":"","lg":"","xl":""},"alignContent":{"xs":"","sm":"","md":"","lg":"","xl":""}},"utilFloat":{"xs":"","sm":"","md":"","lg":"","xl":""},"utilTextHide":"","utilOverflow":"","utilPosition":"","utilScreenReaders":"","utilShadow":"","utilSizing":{"width":"","height":""},"utilStretchedLink":"","utilText":{"justify":"","align":{"xs":"","sm":"","md":"","lg":"","xl":""},"wrapping":"","truncate":"","wordBreak":"","transform":"","weight":"","italics":"","monospace":"","resetColor":"","decoration":""},"utilVerticalAlignment":"","utilVisibility":""},"children":[]}]`
+    let dataJson = JSON.parse(data)
+    let nodes = this.loadNodes(dataJson, this.canvas)
+    console.log('load', nodes)
+    return nodes
+  }
+
+  loadNodes(dataArray, parent){
+    let nodes = []
+    dataArray.forEach((child)=>{
+      let node = this.createElement(child.name)
+      if(node){
+        node.$meta = child.meta
+        node.parent = parent
+        nodes.push(node)
+        node.children = this.loadNodes(child.children, node)
+      }
+    })
+
+    return nodes
+  }
+
+  createElement(className){
+    for(var moduleName in this.elements){
+      for(var nodeName in this.elements[moduleName]){
+        let node = this.elements[moduleName][nodeName]
+        if(node.className === className){
+          return node.make()
+        }
+      }
+    }
   }
 }

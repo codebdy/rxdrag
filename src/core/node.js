@@ -390,6 +390,20 @@ export class Node{
     }
   }
 
+  toJson(){
+    let json = {
+      name:this.className,
+      meta:this.$meta,
+      children:[]
+    }
+
+    this.children.forEach((child)=>{
+      json.children.push(child.toJson())
+    })
+
+    return json
+  }
+
   nodeChanged(node){
     if(this.$id === node.id){
       rxEditor.commandManager.changeNode(this, node)
