@@ -11,8 +11,8 @@ export class HTMLSource extends RXElement{
     this.className = 'HTMLSource'
 
 
-    this.groups.imageOptions = {
-      label:'Image Options'
+    this.groups.sourceOptions = {
+      label:'Source Options'
     }
     this.$meta.tag = 'source'
     this.label = "Source"

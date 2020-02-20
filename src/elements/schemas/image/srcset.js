@@ -6,7 +6,7 @@ class ImageSrcset extends OptionFragment{
     this.schema = {
       label:'Srcset',
       widget:'OpTextField',
-      group:'imageOptions',
+      group:'sourceOptions',
       defaultValue:'',
     }
 

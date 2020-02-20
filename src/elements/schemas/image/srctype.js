@@ -4,9 +4,9 @@ class ImageSrcType extends OptionFragment{
   constructor(){
     super()
     this.schema = {
-      label:'SrcType',
+      label:'Type',
       widget:'OpTextField',
-      group:'imageOptions',
+      group:'sourceOptions',
       defaultValue:'',
     }
 
