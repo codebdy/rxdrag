@@ -1623,7 +1623,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HTMLSource\", function() { return HTMLSource; });\n/* harmony import */ var _rxelement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../rxelement */ \"./src/elements/rxelement.js\");\n/* harmony import */ var _schemas_utilities_border__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../schemas/utilities/border */ \"./src/elements/schemas/utilities/border/index.js\");\n/* harmony import */ var _schemas_utilities_padding__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../schemas/utilities/padding */ \"./src/elements/schemas/utilities/padding/index.js\");\n/* harmony import */ var _schemas_utilities_margin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../schemas/utilities/margin */ \"./src/elements/schemas/utilities/margin/index.js\");\n\r\n\r\n\r\n\r\n\r\nclass HTMLSource extends _rxelement__WEBPACK_IMPORTED_MODULE_0__[\"RXElement\"]{\r\n  constructor() {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupHtml'\r\n    this.toolboxInfo.elementId = 'htmlSource'\r\n    this.toolboxInfo.elementName = \"Source\"\r\n    this.className = 'HTMLSource'\r\n\r\n\r\n    //this.groups.paragraphOptions = {\r\n    //  label:'Source Options'\r\n    //}\r\n    this.$meta.tag = 'source'\r\n    this.label = \"Source\"\r\n\r\n    Object(_schemas_utilities_border__WEBPACK_IMPORTED_MODULE_1__[\"addonUtilBorder\"])(this)\r\n    Object(_schemas_utilities_margin__WEBPACK_IMPORTED_MODULE_3__[\"addonUtilMargin\"])(this)\r\n    Object(_schemas_utilities_padding__WEBPACK_IMPORTED_MODULE_2__[\"addonUtilPadding\"])(this)\r\n  }\r\n\r\n  make(){\r\n    return new HTMLSource\r\n  }\r\n  \r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/html/htmlsource.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HTMLSource\", function() { return HTMLSource; });\n/* harmony import */ var _rxelement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../rxelement */ \"./src/elements/rxelement.js\");\n/* harmony import */ var _schemas_image_srcset__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../schemas/image/srcset */ \"./src/elements/schemas/image/srcset.js\");\n/* harmony import */ var _schemas_image_srctype__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../schemas/image/srctype */ \"./src/elements/schemas/image/srctype.js\");\n\r\n\r\n\r\n\r\nclass HTMLSource extends _rxelement__WEBPACK_IMPORTED_MODULE_0__[\"RXElement\"]{\r\n  constructor() {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupHtml'\r\n    this.toolboxInfo.elementId = 'htmlSource'\r\n    this.toolboxInfo.elementName = \"Source\"\r\n    this.className = 'HTMLSource'\r\n\r\n\r\n    this.groups.imageOptions = {\r\n      label:'Image Options'\r\n    }\r\n    this.$meta.tag = 'source'\r\n    this.label = \"Source\"\r\n\r\n    Object(_schemas_image_srcset__WEBPACK_IMPORTED_MODULE_1__[\"addonImageSrcset\"])(this)\r\n    Object(_schemas_image_srctype__WEBPACK_IMPORTED_MODULE_2__[\"addonImageSrcType\"])(this)\r\n  }\r\n\r\n  make(){\r\n    return new HTMLSource\r\n  }\r\n  \r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/html/htmlsource.js?");
 
 /***/ }),
 
@@ -1984,6 +1984,30 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addonImageSrc\", function() { return addonImageSrc; });\n/* harmony import */ var _option_fragment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../option-fragment */ \"./src/elements/schemas/option-fragment.js\");\n\r\n\r\nclass ImageSrc extends _option_fragment__WEBPACK_IMPORTED_MODULE_0__[\"OptionFragment\"]{\r\n  constructor(){\r\n    super()\r\n    this.schema = {\r\n      label:'Src',\r\n      widget:'OpImageSelect',\r\n      group:'imageOptions',\r\n      defaultValue:'',\r\n    }\r\n\r\n    this.metaFragment = '' \r\n\r\n    this.fieldName = 'imageSrc'\r\n  }\r\n\r\n  copyMeta(from, to){\r\n    to[this.fieldName] = from[this.fieldName]\r\n  }\r\n\r\n  metaToModel(model, meta){\r\n    let metaFragment = meta[this.fieldName]\r\n    model.attributes.src = metaFragment\r\n  }\r\n}\r\n\r\nvar addonImageSrc = (node, groupName)=>{\r\n  let imageSrc = new ImageSrc\r\n  imageSrc.addon(node, groupName)\r\n  return imageSrc\r\n}\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/image/src.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/image/srcset.js":
+/*!**********************************************!*\
+  !*** ./src/elements/schemas/image/srcset.js ***!
+  \**********************************************/
+/*! exports provided: addonImageSrcset */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addonImageSrcset\", function() { return addonImageSrcset; });\n/* harmony import */ var _option_fragment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../option-fragment */ \"./src/elements/schemas/option-fragment.js\");\n\r\n\r\nclass ImageSrcset extends _option_fragment__WEBPACK_IMPORTED_MODULE_0__[\"OptionFragment\"]{\r\n  constructor(){\r\n    super()\r\n    this.schema = {\r\n      label:'Srcset',\r\n      widget:'OpTextField',\r\n      group:'imageOptions',\r\n      defaultValue:'',\r\n    }\r\n\r\n    this.metaFragment = '' \r\n\r\n    this.fieldName = 'imageSrcset'\r\n  }\r\n\r\n  copyMeta(from, to){\r\n    to[this.fieldName] = from[this.fieldName]\r\n  }\r\n\r\n  metaToModel(model, meta){\r\n    let metaFragment = meta[this.fieldName]\r\n    model.attributes.srcset = metaFragment\r\n  }\r\n}\r\n\r\nvar addonImageSrcset = (node, groupName)=>{\r\n  let imageSrcset = new ImageSrcset\r\n  imageSrcset.addon(node, groupName)\r\n  return imageSrcset\r\n}\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/image/srcset.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/image/srctype.js":
+/*!***********************************************!*\
+  !*** ./src/elements/schemas/image/srctype.js ***!
+  \***********************************************/
+/*! exports provided: addonImageSrcType */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addonImageSrcType\", function() { return addonImageSrcType; });\n/* harmony import */ var _option_fragment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../option-fragment */ \"./src/elements/schemas/option-fragment.js\");\n\r\n\r\nclass ImageSrcType extends _option_fragment__WEBPACK_IMPORTED_MODULE_0__[\"OptionFragment\"]{\r\n  constructor(){\r\n    super()\r\n    this.schema = {\r\n      label:'SrcType',\r\n      widget:'OpTextField',\r\n      group:'imageOptions',\r\n      defaultValue:'',\r\n    }\r\n\r\n    this.metaFragment = '' \r\n\r\n    this.fieldName = 'imageSrcType'\r\n  }\r\n\r\n  copyMeta(from, to){\r\n    to[this.fieldName] = from[this.fieldName]\r\n  }\r\n\r\n  metaToModel(model, meta){\r\n    let metaFragment = meta[this.fieldName]\r\n    model.attributes['type'] = metaFragment\r\n  }\r\n}\r\n\r\nvar addonImageSrcType = (node, groupName)=>{\r\n  let imageSrcType = new ImageSrcType\r\n  imageSrcType.addon(node, groupName)\r\n  return imageSrcType\r\n}\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/image/srctype.js?");
 
 /***/ }),
 

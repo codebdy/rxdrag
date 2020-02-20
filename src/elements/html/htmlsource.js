@@ -1,7 +1,6 @@
 import {RXElement} from "../rxelement"
-import {addonUtilBorder} from "../schemas/utilities/border"
-import {addonUtilPadding} from "../schemas/utilities/padding"
-import {addonUtilMargin} from "../schemas/utilities/margin"
+import {addonImageSrcset} from "../schemas/image/srcset"
+import {addonImageSrcType} from "../schemas/image/srctype"
 
 export class HTMLSource extends RXElement{
   constructor() {
@@ -12,15 +11,14 @@ export class HTMLSource extends RXElement{
     this.className = 'HTMLSource'
 
 
-    //this.groups.paragraphOptions = {
-    //  label:'Source Options'
-    //}
+    this.groups.imageOptions = {
+      label:'Image Options'
+    }
     this.$meta.tag = 'source'
     this.label = "Source"
 
-    addonUtilBorder(this)
-    addonUtilMargin(this)
-    addonUtilPadding(this)
+    addonImageSrcset(this)
+    addonImageSrcType(this)
   }
 
   make(){
