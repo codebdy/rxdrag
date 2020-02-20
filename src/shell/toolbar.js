@@ -24,6 +24,7 @@ export class Toolbar extends RXComponent{
     this.undo = ()=>{}
     this.redo = ()=>{}
     this.download = ()=>{}
+    this.clearCanvas = ()=>{}
 
     if(withScreenSize){
       this.createScreenSizeButtons()
@@ -103,6 +104,9 @@ export class Toolbar extends RXComponent{
           this.download()
         })
     this.creatRightButton('fa-trash').title('Clear canvas')
+        .domOn('click',()=>{
+          this.clearCanvas()
+        })
     //this.creatRightButton('fa-cog').title('Settings')
     this.creatRightButton('fa-question-circle').title('About RXEditor')
 

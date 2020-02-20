@@ -83,6 +83,9 @@ export class RXEditorCommandProxy{
       case 'download':
         this.serveForRXEditor.download()
         break;
+      case 'clearCanvas':
+        this.serveForRXEditor.clearCanvas()
+        break;
     }
   }
 

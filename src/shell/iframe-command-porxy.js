@@ -58,6 +58,13 @@ export class IFrameCommandProxy{
     })
   }
 
+  clearCanvas(){
+    this.sendMessageToRXEditor({
+      name:'clearCanvas'
+    })
+  }
+
+
   handleMessage(message){
     switch (message.name) {
       case 'rxeditorReady':

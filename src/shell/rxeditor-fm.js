@@ -128,6 +128,12 @@ export class RXEditorFM{
     toolbar.download = ()=>{
       this.commandProxy.download()
     }
+
+    toolbar.clearCanvas = ()=>{
+      if(confirm("Are you sure to clear canvas?")){
+        this.commandProxy.clearCanvas()
+      }
+    }
   }
 
   onRxEditorReady(){
