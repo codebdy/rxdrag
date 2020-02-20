@@ -7,6 +7,8 @@ import {ButtonGroup, OpButton} from "./buttons"
 import {OpSelect} from "./select"
 import {OpLabelGroup} from "./label"
 import {OpBorderInput} from "./border-input"
+import {OpImageSelect} from "./image-select"
+import {OpTextField} from "./textfield"
 
 export class RowBase extends RXComponent{
   constructor(){
@@ -82,26 +84,17 @@ export class OptionRow extends RowBase{
     if(schema.widget ==='ButtonGroup'){
       return new ButtonGroup(value, this.schema)
     }
+    if(schema.widget ==='OpTextField'){
+      return new OpTextField(value, this.schema)
+    }
+    if(schema.widget ==='OpImageSelect'){
+      return new OpImageSelect(value, this.schema)
+    }
 
   }
 
 
 }
-
-/*export class OptionRowForResponsive extends OptionRow{
-  constructor(value, schema, fieldName){
-    super(value, schema, fieldName)
-  }
-
-  getSchema(){
-    return this.schema.sm
-  }
-
-  getValue(){
-    return this.value.sm
-  }
-
-}*/
 
 export class OptionResponsiveRow extends OptionRow{
   constructor(value, schema, fieldName, screenWidth){
@@ -127,41 +120,3 @@ export class OptionRowLabel extends RXComponent{
     this.innerHTML = label
   }
 }
-
-/*export class OptionRowGroup extends OpInput{
-  constructor(isShowSub = false){
-    super()
-    this.cssClass('option-row-group')
-    this.body = new OptionRowGroupBody
-    this.pushChild(this.body)
-    if(!isShowSub){
-      this.cssClass('sub-row-collapse')
-    }
-  }
-
-  addFirstRow(row){
-    row.rowLabel.cssClass('dropdown')
-    this.firstRow = row
-    this.unshiftChild(row)
-
-    row.rowLabel.domOn('click',()=>{
-      this.tongle('sub-row-collapse')
-    })
-
-    return this
-  }
-
-  addRow(row){
-    row.rowLabel.cssClass('sub-label')
-    this.body.pushChild(row)
-    return this
-  }
-}
-
-class OptionRowGroupBody extends RXComponent{
-  constructor(){
-    super()
-    this.cssClass('option-row-group-body')
-  }
-}
-*/

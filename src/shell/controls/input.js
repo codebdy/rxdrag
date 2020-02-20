@@ -2,8 +2,8 @@ import {RXComponent} from "../../basic/rxcomponent"
 import {RXArray} from "../../basic/rxarray"
 
 export class OpInput extends RXComponent{
-  constructor(value='', defaultValue = ''){
-    super()
+  constructor(value='', defaultValue = '', tagName = 'div'){
+    super(tagName)
     this.valueChangedHandlers = new RXArray
 
     this.onValueChanged = (value)=>{

@@ -169,6 +169,13 @@
   cursor: pointer;
 }
 
+.ctl-textfield{
+  background: #424242;
+  color:#d3d3d3;
+  outline:transparent;
+  border:0;
+}
+
 .sub-row-collapse .option-row-group-body{
   display: none;
 }
