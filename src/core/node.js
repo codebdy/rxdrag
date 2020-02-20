@@ -113,6 +113,15 @@ export class Node{
       rxEditor.nodeStateChanged(this, oldState, newState)
     }
 
+    /*this.isTextfield = ()=>{
+      console.log('isTextfield node')
+      return false
+    }*/
+
+  }
+
+  isTextfield() {
+    return false
   }
 
   seedId(){
@@ -316,6 +325,10 @@ export class Node{
   }
 
   canAccept(child){
+    if(this.isTextfield()){
+      return false
+    }
+
     if(this.acceptedChildren  && this.acceptedChildren.length == 0){
       return false
     }
@@ -329,6 +342,7 @@ export class Node{
     }
     return true
   }
+
 
   containsInAccepted(child){
     let childName = child.className

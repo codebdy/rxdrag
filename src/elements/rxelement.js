@@ -1,4 +1,5 @@
 import {Node} from "../core/node"
+import parkMiniEditbar from "../core/park-mini-editbar"
 
 export class RXElement extends Node{
   constructor() {
@@ -23,6 +24,9 @@ export class RXElement extends Node{
     this.groups = {
       'utilities':{
         label:'Bootstrap Utilities',
+      },
+      'generalOptions':{
+        label:'General Options'
       },
       'typographyOptions':{
         label:'Typography Options'
@@ -67,7 +71,17 @@ export class RXElement extends Node{
     this.baseMetaToModel(model)
     this.metaToModel(model)
 
+    if(this.$meta.generalTextfield === 'contentEditable'){
+      parkMiniEditbar(model, this)
+    }
+
     return model
+  }
+
+  isTextfield(){
+    if(this.$meta.generalTextfield === 'contentEditable'){
+      return true
+    }
   }
 
   toPreviewModel(){
