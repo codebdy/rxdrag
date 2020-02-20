@@ -1,7 +1,6 @@
 import {RXElement} from "../rxelement"
-import {addonHeadingPseudo} from "../schemas/heading/pseudo-heading"
-import {addonHeadingDisplay} from "../schemas/heading/display"
-import {addonTypyLead} from "../schemas/content/lead"
+import {addonTypyListUnstyled} from "../schemas/content/list-unstyled"
+import {addonTypyListInline} from "../schemas/content/list-inline"
 
 export class HTMLUl extends RXElement{
   constructor() {
@@ -20,6 +19,9 @@ export class HTMLUl extends RXElement{
     this.$meta.tag = 'ul'
     this.label = "ul"
     this.acceptedChildren=['HTMLLi']
+    
+    addonTypyListUnstyled(this)
+    addonTypyListInline(this)
   }
 
   make(){

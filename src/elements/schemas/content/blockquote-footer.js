@@ -19,7 +19,7 @@ class TypyBlockquoteFooter extends OptionFragment{
   }
 
   copyMeta(from, to){
-    to.typyBlockquoteFooter = from.typyBlockquoteFooter
+    to[this.fieldName] = from[this.fieldName]
   }
 
   metaToModel(model, meta){

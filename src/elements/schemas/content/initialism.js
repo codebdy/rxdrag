@@ -19,7 +19,7 @@ class TypyInitialism extends OptionFragment{
   }
 
   copyMeta(from, to){
-    to.typyInitialism = from.typyInitialism
+    to[this.fieldName] = from[this.fieldName]
   }
 
   metaToModel(model, meta){

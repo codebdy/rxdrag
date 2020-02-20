@@ -1,8 +1,5 @@
 import {RXTextfieldable} from "./textfieldable"
-import {addonHeadingPseudo} from "../schemas/heading/pseudo-heading"
-import {addonHeadingDisplay} from "../schemas/heading/display"
-import {addonTypyLead} from "../schemas/content/lead"
-import {addonGeneralTextfield} from "../schemas/general/textfield"
+import {addonTypyListInlineItem} from "../schemas/content/list-inline-item"
 
 export class HTMLLi extends RXTextfieldable{
   constructor() {
@@ -22,6 +19,8 @@ export class HTMLLi extends RXTextfieldable{
     this.label = "li"
     this.acceptedChildren=''
     this.exceptChildren = ['BSCol']
+
+    addonTypyListInlineItem(this)
   }
 
   make(){

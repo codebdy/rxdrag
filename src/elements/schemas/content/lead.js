@@ -19,7 +19,7 @@ class TypyLead extends OptionFragment{
   }
 
   copyMeta(from, to){
-    to.typyLead = from.typyLead
+    to[this.fieldName] = from[this.fieldName]
   }
 
   metaToModel(model, meta){

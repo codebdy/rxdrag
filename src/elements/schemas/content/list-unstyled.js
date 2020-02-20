@@ -1,21 +1,20 @@
 import {OptionFragment} from "../option-fragment"
 
-class GridRow extends OptionFragment{
+class TypyListUnstyled extends OptionFragment{
   constructor(){
     super()
     this.schema = {
-      label:'Row',
+      label:'List unstyled',
       widget:'OpSwitch',
-      required:true,
       group:'typographyOptions',
-      onValue:'row',
+      onValue:'list-unstyled',
       offValue:'',
       defaultValue:'',
     }
 
     this.metaFragment = '' 
 
-    this.fieldName = 'typyRow'
+    this.fieldName = 'typyListUnstyled'
   }
 
   copyMeta(from, to){
@@ -28,11 +27,11 @@ class GridRow extends OptionFragment{
   }
 }
 
-var addonGridRow = (node, groupName)=>{
-  let gridRow = new GridRow
-  gridRow.addon(node, groupName)
-  return gridRow
+var addonTypyListUnstyled = (node, groupName)=>{
+  let typyListUnstyled = new TypyListUnstyled
+  typyListUnstyled.addon(node, groupName)
+  return typyListUnstyled
 }
 
-export {addonGridRow}
+export {addonTypyListUnstyled}
 

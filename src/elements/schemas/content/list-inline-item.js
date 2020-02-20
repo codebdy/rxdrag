@@ -1,21 +1,20 @@
 import {OptionFragment} from "../option-fragment"
 
-class GridRow extends OptionFragment{
+class TypyListInlineItem extends OptionFragment{
   constructor(){
     super()
     this.schema = {
-      label:'Row',
+      label:'Inline item',
       widget:'OpSwitch',
-      required:true,
       group:'typographyOptions',
-      onValue:'row',
+      onValue:'list-inline-item',
       offValue:'',
       defaultValue:'',
     }
 
     this.metaFragment = '' 
 
-    this.fieldName = 'typyRow'
+    this.fieldName = 'typyListInlineItem'
   }
 
   copyMeta(from, to){
@@ -28,11 +27,11 @@ class GridRow extends OptionFragment{
   }
 }
 
-var addonGridRow = (node, groupName)=>{
-  let gridRow = new GridRow
-  gridRow.addon(node, groupName)
-  return gridRow
+var addonTypyListInlineItem = (node, groupName)=>{
+  let typyListInlineItem = new TypyListInlineItem
+  typyListInlineItem.addon(node, groupName)
+  return typyListInlineItem
 }
 
-export {addonGridRow}
+export {addonTypyListInlineItem}
 

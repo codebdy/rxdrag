@@ -19,7 +19,7 @@ class TypyBlockquote extends OptionFragment{
   }
 
   copyMeta(from, to){
-    to.typyBlockquote = from.typyBlockquote
+    to[this.fieldName] = from[this.fieldName]
   }
 
   metaToModel(model, meta){
