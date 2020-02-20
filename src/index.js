@@ -18,6 +18,9 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('html.cite')
   rxEditorFM.assemble('html.del')
   rxEditorFM.assemble('html.div')
+  rxEditorFM.assemble('html.dl')
+  rxEditorFM.assemble('html.dd')
+  rxEditorFM.assemble('html.dt')
   rxEditorFM.assemble('html.em')
   rxEditorFM.assemble('html.footer')
   rxEditorFM.assemble('html.h')
@@ -29,6 +32,8 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('html.strong')
   rxEditorFM.assemble('html.s')
   rxEditorFM.assemble('html.u')
+  rxEditorFM.assemble('html.ul')
+  rxEditorFM.assemble('html.li')
 
   return rxEditorFM
 }

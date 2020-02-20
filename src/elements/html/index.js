@@ -15,6 +15,11 @@ import {HTMLAbbr} from "./htmlabbr"
 import {HTMLBlockquote} from "./htmlblockquote"
 import {HTMLCite} from "./htmlcite"
 import {HTMLFooter} from "./htmlfooter"
+import {HTMLUl} from "./htmlul"
+import {HTMLLi} from "./htmlli"
+import {HTMLDl} from "./htmldl"
+import {HTMLDt} from "./htmlDt"
+import {HTMLDd} from "./htmlDd"
 
 
 export default {
@@ -23,10 +28,14 @@ export default {
   cite: new HTMLCite,
   del: new HTMLDel,
   div: new HTMLDiv,
+  dl: new HTMLDl,
+  dt: new HTMLDt,
+  dd: new HTMLDd,
   em: new HTMLEm,
   footer: new HTMLFooter,
   h: new HTMLH,
   ins: new HTMLIns,
+  li: new HTMLLi,
   mark:new HTMLMark,
   p: new HTMLP,
   small: new HTMLSmall,
@@ -34,4 +43,5 @@ export default {
   strong: new HTMLStrong,
   s: new HTMLS,
   u: new HTMLU,
+  ul: new HTMLUl,
 }

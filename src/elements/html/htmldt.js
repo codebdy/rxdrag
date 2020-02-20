@@ -9,22 +9,22 @@ import {addonUtilText} from "../schemas/utilities/text"
 //import {addonHeadingDisplay} from "../../schemas/heading/display"
 //import {addonUtilBorder} from "../../schemas/utilities/border"
 
-export class HTMLMark extends RXElement{
+export class HTMLDt extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupHtml'
-    this.toolboxInfo.elementId = 'htmlMark'
-    this.toolboxInfo.elementName = "Mark"
-    this.className = 'HTMLMark'
+    this.toolboxInfo.elementId = 'htmlDt'
+    this.toolboxInfo.elementName = "Dt"
+    this.className = 'HTMLDt'
 
     this.editMarginStyle = {}
 
     //this.groups.paragraphOptions = {
-    //  label:'Mark Options'
+    //  label:'Dt Options'
     //}
-    this.$meta.tag = 'mark'
-    this.$meta.innerHTML = "Hightlight text ..."
-    this.label = "mark"
+    this.$meta.tag = 'dt'
+    this.$meta.innerHTML = "Dt text ..."
+    this.label = "dt"
 
     addonUtilColor(this)
     addonUtilBorder(this)
@@ -36,7 +36,7 @@ export class HTMLMark extends RXElement{
   }
 
   make(){
-    return new HTMLMark
+    return new HTMLDt
   }
   
   toViewModel(){
