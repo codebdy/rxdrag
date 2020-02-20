@@ -27,6 +27,11 @@ import {HTMLVar} from "./htmlvar"
 import {HTMLKbd} from "./htmlkbd"
 import {HTMLSamp} from "./htmlsamp"
 
+import {HTMLImg} from "./htmlimg"
+import {HTMLPicture} from "./htmlpicture"
+import {HTMLSource} from "./htmlsource"
+
+
 
 export default {
   abbr: new HTMLAbbr,
@@ -56,4 +61,9 @@ export default {
   var: new HTMLVar,
   kbd: new HTMLKbd,
   samp: new HTMLSamp,
+
+  img: new HTMLImg,
+  picture: new HTMLPicture,
+  source: new HTMLSource,
+
 }
