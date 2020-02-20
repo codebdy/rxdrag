@@ -35,5 +35,15 @@ export class HTMLImg extends RXElement{
   make(){
     return new HTMLImg
   }
-  
+ 
+  toViewModel(){
+    if(this.$meta.imageSrc){
+      this.editMarginStyle.padding = ''
+    }
+    else{
+      this.editMarginStyle.padding = '20px'
+    }
+    return super.toViewModel()
+  }
+ 
 }

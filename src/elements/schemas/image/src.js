@@ -21,7 +21,7 @@ class ImageSrc extends OptionFragment{
 
   metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
-    model.classList.add(metaFragment)
+    model.attributes.src = metaFragment
   }
 }
 
