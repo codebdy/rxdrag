@@ -18,8 +18,14 @@ import {HTMLFooter} from "./htmlfooter"
 import {HTMLUl} from "./htmlul"
 import {HTMLLi} from "./htmlli"
 import {HTMLDl} from "./htmldl"
-import {HTMLDt} from "./htmlDt"
-import {HTMLDd} from "./htmlDd"
+import {HTMLDt} from "./htmldt"
+import {HTMLDd} from "./htmldd"
+
+import {HTMLCode} from "./htmlcode"
+import {HTMLPre} from "./htmlpre"
+import {HTMLVar} from "./htmlvar"
+import {HTMLKbd} from "./htmlkbd"
+import {HTMLSamp} from "./htmlsamp"
 
 
 export default {
@@ -44,4 +50,10 @@ export default {
   s: new HTMLS,
   u: new HTMLU,
   ul: new HTMLUl,
+
+  code: new HTMLCode,
+  pre: new HTMLPre,
+  var: new HTMLVar,
+  kbd: new HTMLKbd,
+  samp: new HTMLSamp,
 }

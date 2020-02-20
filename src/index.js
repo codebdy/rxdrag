@@ -16,6 +16,7 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('html.abbr')
   rxEditorFM.assemble('html.blockquote')
   rxEditorFM.assemble('html.cite')
+  rxEditorFM.assemble('html.code')
   rxEditorFM.assemble('html.del')
   rxEditorFM.assemble('html.div')
   rxEditorFM.assemble('html.dl')
@@ -25,8 +26,11 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('html.footer')
   rxEditorFM.assemble('html.h')
   rxEditorFM.assemble('html.ins')
+  rxEditorFM.assemble('html.kbd')
   rxEditorFM.assemble('html.mark')
   rxEditorFM.assemble('html.p')
+  rxEditorFM.assemble('html.pre')
+  rxEditorFM.assemble('html.samp')
   rxEditorFM.assemble('html.small')
   rxEditorFM.assemble('html.span')
   rxEditorFM.assemble('html.strong')
@@ -34,6 +38,9 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('html.u')
   rxEditorFM.assemble('html.ul')
   rxEditorFM.assemble('html.li')
+  rxEditorFM.assemble('html.var')
+
+
 
   return rxEditorFM
 }
