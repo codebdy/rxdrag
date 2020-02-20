@@ -226,7 +226,7 @@ export class RXEditor{
   }
 
   loadNodes(dataArray, parent){
-    let nodes = []
+    let nodes = new RXArray
     dataArray.forEach((child)=>{
       let node = this.createElement(child.name)
       if(node){
