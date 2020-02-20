@@ -1351,6 +1351,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
+/***/ "./src/elements/html/htmlh.js":
+/*!************************************!*\
+  !*** ./src/elements/html/htmlh.js ***!
+  \************************************/
+/*! exports provided: HTMLH */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HTMLH\", function() { return HTMLH; });\n/* harmony import */ var _rxelement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../rxelement */ \"./src/elements/rxelement.js\");\n/* harmony import */ var _schemas_heading_tag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../schemas/heading/tag */ \"./src/elements/schemas/heading/tag.js\");\n/* harmony import */ var _schemas_heading_display__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../schemas/heading/display */ \"./src/elements/schemas/heading/display.js\");\n\r\n//import parkMiniEditbar from \"../../../core/park-mini-editbar\"\r\n\r\n\r\n//import {addonUtilBorder} from \"../../schemas/utilities/border\"\r\n\r\nclass HTMLH extends _rxelement__WEBPACK_IMPORTED_MODULE_0__[\"RXElement\"]{\r\n  constructor() {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupContent'\r\n    this.toolboxInfo.elementId = 'htmlH'\r\n    this.toolboxInfo.elementName = \"H(1~6)\"\r\n    this.className = 'HTMLH'\r\n\r\n    //this.editMarginStyle = {}\r\n\r\n    this.groups.headingOptions = {\r\n      label:'Heading Options'\r\n    }\r\n    this.$meta.tag = 'h2'\r\n    //this.$meta.innerHTML = \"Heading\"\r\n    this.label = \"Heading\"\r\n\r\n    this.acceptedChildren=['HTMLDiv', 'HTMLSmall']\r\n\r\n    Object(_schemas_heading_tag__WEBPACK_IMPORTED_MODULE_1__[\"addonHeadingTag\"])(this, 'typographyOptions')\r\n    Object(_schemas_heading_display__WEBPACK_IMPORTED_MODULE_2__[\"addonHeadingDisplay\"])(this, 'typographyOptions')\r\n  }\r\n\r\n  make(){\r\n    return new HTMLH\r\n  }\r\n  \r\n  /*toViewModel(){\r\n    let model = super.toViewModel()\r\n\r\n    parkMiniEditbar(model, this)\r\n    return model\r\n  }*/\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/html/htmlh.js?");
+
+/***/ }),
+
 /***/ "./src/elements/html/htmlp.js":
 /*!************************************!*\
   !*** ./src/elements/html/htmlp.js ***!
@@ -1383,7 +1395,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _htmldiv__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./htmldiv */ \"./src/elements/html/htmldiv.js\");\n/* harmony import */ var _htmlp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./htmlp */ \"./src/elements/html/htmlp.js\");\n/* harmony import */ var _htmlsmall__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./htmlsmall */ \"./src/elements/html/htmlsmall.js\");\n\r\n\r\n\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n\tdiv: new _htmldiv__WEBPACK_IMPORTED_MODULE_0__[\"HTMLDiv\"],\r\n\tp: new _htmlp__WEBPACK_IMPORTED_MODULE_1__[\"HTMLP\"],\r\n\tsmall: new _htmlsmall__WEBPACK_IMPORTED_MODULE_2__[\"HTMLSmall\"],\r\n});\n\n//# sourceURL=webpack:///./src/elements/html/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _htmldiv__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./htmldiv */ \"./src/elements/html/htmldiv.js\");\n/* harmony import */ var _htmlp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./htmlp */ \"./src/elements/html/htmlp.js\");\n/* harmony import */ var _htmlsmall__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./htmlsmall */ \"./src/elements/html/htmlsmall.js\");\n/* harmony import */ var _htmlh__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./htmlh */ \"./src/elements/html/htmlh.js\");\n\r\n\r\n\r\n\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n\tdiv: new _htmldiv__WEBPACK_IMPORTED_MODULE_0__[\"HTMLDiv\"],\r\n\tp: new _htmlp__WEBPACK_IMPORTED_MODULE_1__[\"HTMLP\"],\r\n\tsmall: new _htmlsmall__WEBPACK_IMPORTED_MODULE_2__[\"HTMLSmall\"],\r\n\th: new _htmlh__WEBPACK_IMPORTED_MODULE_3__[\"HTMLH\"],\r\n});\n\n//# sourceURL=webpack:///./src/elements/html/index.js?");
 
 /***/ }),
 
@@ -2379,7 +2391,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _core_rxeditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core/rxeditor */ \"./src/core/rxeditor.js\");\n/* harmony import */ var _shell_rxeditor_fm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shell/rxeditor-fm */ \"./src/shell/rxeditor-fm.js\");\n/* harmony import */ var _shell_rxeditor_inline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shell/rxeditor-inline */ \"./src/shell/rxeditor-inline.js\");\n\r\n\r\n\r\n\r\nwindow.createRXEditorFM = ()=>{\r\n  window.rxEditor = new _core_rxeditor__WEBPACK_IMPORTED_MODULE_0__[\"RXEditor\"]\r\n\r\n  let rxEditorFM = new _shell_rxeditor_fm__WEBPACK_IMPORTED_MODULE_1__[\"RXEditorFM\"]\r\n  rxEditorFM.assemble('bootstrap.container')\r\n  rxEditorFM.assemble('bootstrap.row')\r\n  rxEditorFM.assemble('bootstrap.column')\r\n  rxEditorFM.assemble('bootstrap.w100')\r\n  rxEditorFM.assemble('bootstrap.heading')\r\n  rxEditorFM.assemble('bootstrap.paragraph')\r\n  rxEditorFM.assemble('html.div')\r\n  rxEditorFM.assemble('html.p')\r\n  rxEditorFM.assemble('html.small')\r\n\r\n  return rxEditorFM\r\n}\r\n\r\nwindow.rxEditorInline = new _shell_rxeditor_inline__WEBPACK_IMPORTED_MODULE_2__[\"RXEditorInline\"]\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _core_rxeditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core/rxeditor */ \"./src/core/rxeditor.js\");\n/* harmony import */ var _shell_rxeditor_fm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shell/rxeditor-fm */ \"./src/shell/rxeditor-fm.js\");\n/* harmony import */ var _shell_rxeditor_inline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shell/rxeditor-inline */ \"./src/shell/rxeditor-inline.js\");\n\r\n\r\n\r\n\r\nwindow.createRXEditorFM = ()=>{\r\n  window.rxEditor = new _core_rxeditor__WEBPACK_IMPORTED_MODULE_0__[\"RXEditor\"]\r\n\r\n  let rxEditorFM = new _shell_rxeditor_fm__WEBPACK_IMPORTED_MODULE_1__[\"RXEditorFM\"]\r\n  rxEditorFM.assemble('bootstrap.container')\r\n  rxEditorFM.assemble('bootstrap.row')\r\n  rxEditorFM.assemble('bootstrap.column')\r\n  rxEditorFM.assemble('bootstrap.w100')\r\n  rxEditorFM.assemble('bootstrap.heading')\r\n  rxEditorFM.assemble('bootstrap.paragraph')\r\n  rxEditorFM.assemble('html.div')\r\n  rxEditorFM.assemble('html.p')\r\n  rxEditorFM.assemble('html.small')\r\n  rxEditorFM.assemble('html.h')\r\n\r\n  return rxEditorFM\r\n}\r\n\r\nwindow.rxEditorInline = new _shell_rxeditor_inline__WEBPACK_IMPORTED_MODULE_2__[\"RXEditorInline\"]\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
