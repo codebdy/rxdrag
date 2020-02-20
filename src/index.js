@@ -43,7 +43,12 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('html.li')
   rxEditorFM.assemble('html.var')
 
-
+  rxEditorFM.assemble('html.table')
+  rxEditorFM.assemble('html.thead')
+  rxEditorFM.assemble('html.tbody')
+  rxEditorFM.assemble('html.tr')
+  rxEditorFM.assemble('html.th')
+  rxEditorFM.assemble('html.td')
 
   return rxEditorFM
 }

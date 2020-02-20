@@ -31,6 +31,13 @@ import {HTMLImg} from "./htmlimg"
 import {HTMLPicture} from "./htmlpicture"
 import {HTMLSource} from "./htmlsource"
 
+import {HTMLTable} from "./htmltable"
+import {HTMLThead} from "./htmlthead"
+import {HTMLTbody} from "./htmltbody"
+import {HTMLTr} from "./htmltr"
+import {HTMLTh} from "./htmlth"
+import {HTMLTd} from "./htmltd"
+
 
 
 export default {
@@ -65,5 +72,13 @@ export default {
   img: new HTMLImg,
   picture: new HTMLPicture,
   source: new HTMLSource,
+
+  table: new HTMLTable,
+  thead: new HTMLThead,
+  tbody: new HTMLTbody,
+  tr: new HTMLTr,
+  th: new HTMLTh,
+  td: new HTMLTd,
+
 
 }
