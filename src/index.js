@@ -13,6 +13,8 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('bootstrap.heading')
   rxEditorFM.assemble('bootstrap.paragraph')
   rxEditorFM.assemble('html.div')
+  rxEditorFM.assemble('html.p')
+  rxEditorFM.assemble('html.small')
 
   return rxEditorFM
 }

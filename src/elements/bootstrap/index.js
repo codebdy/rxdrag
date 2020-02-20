@@ -6,10 +6,10 @@ import {BSHeading} from "./content/bsheading"
 import {BSParagraph} from "./content/bsparagraph"
 
 export default {
-	container: new BSContainer,
-	row: new BSRow,
-	column: new BSCol,
-	w100: new BSW100,
-	heading: new BSHeading,
-	paragraph : new BSParagraph,
+  container: new BSContainer,
+  row: new BSRow,
+  column: new BSCol,
+  w100: new BSW100,
+  heading: new BSHeading,
+  paragraph : new BSParagraph,
 }

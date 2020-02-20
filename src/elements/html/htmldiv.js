@@ -25,7 +25,7 @@ import {addonUtilVisibility} from "../schemas/utilities/visibility"
 
 import {addonHeadingPseudo} from "../schemas/heading/pseudo-heading"
 import {addonHeadingDisplay} from "../schemas/heading/display"
-import {addonGridRow} from "../schemas/grid/row"
+import {addonGridRow} from "../schemas/content/row"
 import {addonWidth} from "../schemas/column/col-width"
 import {addonOffset} from "../schemas/column/col-offset"
 import {addonAlignSelf} from "../schemas/column/col-align-self"
@@ -59,8 +59,6 @@ export class HTMLDiv extends RXElement{
 
     addonUtilColor(this)
     addonUtilBorder(this)
-    //addonUtilWidth(this)
-    //addonUtilHeight(this)
     addonUtilMargin(this)
     addonUtilPadding(this)
     //addonUtilMarginAuto(this)
