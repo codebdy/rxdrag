@@ -31,6 +31,10 @@ import {addonOffset} from "../schemas/column/col-offset"
 import {addonAlignSelf} from "../schemas/column/col-align-self"
 import {addonOrder} from "../schemas/column/col-order"
 import {addonUtilMarginAuto} from "../schemas/column/margin-auto"
+import {addonTypyLead} from "../schemas/content/lead"
+import {addonTypyInitialism} from "../schemas/content/Initialism"
+import {addonTypyBlockquote} from "../schemas/content/blockquote"
+import {addonTypyBlockquoteFooter} from "../schemas/content/blockquote-footer"
 
 export class HTMLDiv extends RXElement{
   constructor() {
@@ -56,6 +60,12 @@ export class HTMLDiv extends RXElement{
     addonAlignSelf(this, 'typographyOptions')
     addonOrder(this, 'typographyOptions')
     addonUtilMarginAuto(this, 'typographyOptions')
+    addonTypyLead(this)
+    addonTypyInitialism(this)
+    addonTypyBlockquote(this)
+    addonTypyBlockquoteFooter(this)
+
+
 
     addonUtilColor(this)
     addonUtilBorder(this)
