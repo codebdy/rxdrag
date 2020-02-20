@@ -31,13 +31,22 @@ export class Canvas extends Node{
     model.classList.push('canvas')
     model.toolbar = ''
     model.label = ''
-    return model
+   return model
   }
 
   toPreviewModel(){
     let model = super.toPreviewModel()
     model.name = 'div'
     return model
+  }
+
+  generateHTML(){
+    let roorDiv = document.createElement('div')
+    this.preview(roorDiv)
+
+    //console.log(roorDiv.innerHTML)
+    return roorDiv.innerHTML
+
   }
 }
 

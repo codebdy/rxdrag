@@ -61,6 +61,7 @@ export class RXElement extends Node{
     this.addons.forEach((addon)=>{
       addon.toViewModel(model, this.$meta)
     })*/
+    this.baseMetaToModel(model)
     this.metaToModel(model)
 
     return model
@@ -68,11 +69,12 @@ export class RXElement extends Node{
 
   toPreviewModel(){
     let model = super.toPreviewModel()
+    this.baseMetaToModel(model)
     this.metaToModel(model)
     return model
   }
 
-  metaToModel(model){
+  baseMetaToModel(model){
     let meta = this.$meta
     model.name = meta.tag
     model.innerHTML = meta.innerHTML
@@ -81,4 +83,8 @@ export class RXElement extends Node{
       addon.metaToModel(model, meta)
     })
   }
+
+  metaToModel(model){
+  }
+
 }

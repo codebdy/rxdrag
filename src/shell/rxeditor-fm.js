@@ -187,7 +187,6 @@ export class RXEditorFM{
     //img.file("smile.gif", imgData, {base64: true});
     zip.generateAsync({type:"blob"})
     .then(function(content) {
-        // see FileSaver.js
         saveAs(content, "RX-HTML.zip");
     });      
   }

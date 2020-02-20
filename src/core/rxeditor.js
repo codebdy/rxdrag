@@ -211,8 +211,13 @@ export class RXEditor{
   }
 
   download(){
-    let innerHTML = "ddddd"
+    let innerHTML = this.generateHTML()
     let json = "xxxx"
     this.commandProxy.saveCodeFiles(innerHTML, json)
+    this.render()
+  }
+
+  generateHTML(){
+    return this.canvas.generateHTML()
   }
 }
