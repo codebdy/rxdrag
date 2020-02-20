@@ -2,7 +2,7 @@ import {RXElement} from "../../rxelement"
 import parkMiniEditbar from "../../../core/park-mini-editbar"
 import {addonHeadingPseudo} from "../../schemas/heading/pseudo-heading"
 import {addonHeadingDisplay} from "../../schemas/heading/display"
-//import {addonUtilBorder} from "../../schemas/utilities/border"
+import {addonTypyLead} from "../../schemas/content/lead"
 
 export class BSParagraph extends RXElement{
   constructor() {
@@ -23,6 +23,7 @@ export class BSParagraph extends RXElement{
 
     addonHeadingPseudo(this, 'typographyOptions')
     addonHeadingDisplay(this, 'typographyOptions')
+    addonTypyLead(this, 'typographyOptions')
   }
 
   make(){

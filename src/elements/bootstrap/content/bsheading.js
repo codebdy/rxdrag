@@ -2,7 +2,6 @@ import {RXElement} from "../../rxelement"
 import parkMiniEditbar from "../../../core/park-mini-editbar"
 import {addonHeadingTag} from "../../schemas/heading/tag"
 import {addonHeadingDisplay} from "../../schemas/heading/display"
-//import {addonUtilBorder} from "../../schemas/utilities/border"
 
 export class BSHeading extends RXElement{
   constructor() {

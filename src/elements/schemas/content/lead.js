@@ -1,25 +1,25 @@
 import {OptionFragment} from "../option-fragment"
 
-class GridRow extends OptionFragment{
+class TypyLead extends OptionFragment{
   constructor(){
     super()
     this.schema = {
-      label:'Row',
+      label:'Lead',
       widget:'OpSwitch',
       required:true,
       group:'typographyOptions',
-      onValue:'row',
+      onValue:'lead',
       offValue:'',
       defaultValue:'',
     }
 
     this.metaFragment = '' 
 
-    this.fieldName = 'typyRow'
+    this.fieldName = 'typyLead'
   }
 
   copyMeta(from, to){
-    to.gridRow = from.gridRow
+    to.typyLead = from.typyLead
   }
 
   metaToModel(model, meta){
@@ -28,11 +28,11 @@ class GridRow extends OptionFragment{
   }
 }
 
-var addonGridRow = (node, groupName)=>{
-  let gridRow = new GridRow
-  gridRow.addon(node, groupName)
-  return gridRow
+var addonTypyLead = (node, groupName)=>{
+  let typyLead = new TypyLead
+  typyLead.addon(node, groupName)
+  return typyLead
 }
 
-export {addonGridRow}
+export {addonTypyLead}
 

@@ -1,7 +1,7 @@
 import {RXElement} from "../rxelement"
 import {addonHeadingPseudo} from "../schemas/heading/pseudo-heading"
 import {addonHeadingDisplay} from "../schemas/heading/display"
-//import {addonUtilBorder} from "../../schemas/utilities/border"
+import {addonTypyLead} from "../schemas/content/lead"
 
 export class HTMLP extends RXElement{
   constructor() {
@@ -19,9 +19,11 @@ export class HTMLP extends RXElement{
     //}
     this.$meta.tag = 'p'
     this.label = "p"
+    this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLSpan']
 
     addonHeadingPseudo(this, 'typographyOptions')
     addonHeadingDisplay(this, 'typographyOptions')
+    addonTypyLead(this, 'typographyOptions')
   }
 
   make(){
