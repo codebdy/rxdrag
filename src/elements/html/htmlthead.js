@@ -10,7 +10,7 @@ export class HTMLThead extends RXElement{
     this.toolboxInfo.elementName = "thead"
     this.className = 'HTMLThead'
 
-    //this.editMarginStyle.padding = '20px;'
+    this.editMarginStyle.padding = ''
     //this.editMarginStyle = {}
 
     //this.groups.paragraphOptions = {

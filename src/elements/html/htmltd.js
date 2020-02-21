@@ -9,7 +9,7 @@ export class HTMLTd extends RXTextfieldable{
     this.toolboxInfo.elementName = "td"
     this.className = 'HTMLTd'
 
-    //this.editMarginStyle.padding = '20px;'
+    this.editMarginStyle.padding = '10px'
     //this.editMarginStyle = {}
 
     //this.groups.paragraphOptions = {

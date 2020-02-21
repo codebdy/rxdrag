@@ -10,7 +10,7 @@ export class HTMLTr extends RXElement{
     this.toolboxInfo.elementName = "tr"
     this.className = 'HTMLTr'
 
-    //this.editMarginStyle.padding = '20px;'
+    this.editMarginStyle.padding = ''
     //this.editMarginStyle = {}
 
     //this.groups.paragraphOptions = {

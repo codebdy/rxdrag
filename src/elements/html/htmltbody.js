@@ -10,7 +10,7 @@ export class HTMLTbody extends RXElement{
     this.toolboxInfo.elementName = "tbody"
     this.className = 'HTMLTbody'
 
-    //this.editMarginStyle.padding = '20px;'
+    this.editMarginStyle.padding = ''
     //this.editMarginStyle = {}
 
     //this.groups.paragraphOptions = {

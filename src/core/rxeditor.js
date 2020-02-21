@@ -97,7 +97,7 @@ export class RXEditor{
   dragFromToolbox(rxNameId){
     if(this.commandManager.movingCommand || this.state.preview) return
     let element = this.getElementByRxNameId(rxNameId)
-    let draggedNode = element.make()
+    let draggedNode = element.make().loadConfig()
     this.commandManager.startNew(draggedNode)
     this.beginFollowMouse()
     this.clearFocusStates()
@@ -231,6 +231,9 @@ export class RXEditor{
 
   loadNodes(dataArray, parent){
     let nodes = new RXArray
+    if(!dataArray){
+      return nodes
+    }
     dataArray.forEach((child)=>{
       let node = this.createElement(child.name)
       if(node){

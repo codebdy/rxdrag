@@ -16,13 +16,13 @@ export class Node{
   constructor() {
     this.seedId()
     this.toolboxInfo = {}
-  	this.children=new RXArray
+  	this.children = new RXArray
   	this.view = new NodeView()
     this.dropMargin = 30;
     this.mouseFollowerWidth = '200px'
 
     //空表示所有都接受，空数组表示都不接受
-    this.acceptedChildren=[]
+    this.acceptedChildren = new RXArray
 
     //空和空数组都表示所有都不排除
     this.exceptChildren = ''
@@ -30,6 +30,8 @@ export class Node{
     this.editMarginStyle = {
       padding:'30px',
     }
+
+    this.config = []
 
     this.initStates()
 
@@ -304,16 +306,19 @@ export class Node{
   unshiftChild(child){
     child.parent = this
     this.children.unshift(child) 
+    return this
   }
 
   pushChild(child){
     child.parent = this
     this.children.add(child) 
+    return this
   }
 
   inertAfterSelf(brother){
     brother.parent = this.parent
     this.parent.children.inertAfter(brother, this);
+    return this
   }
 
   clone(){
@@ -427,5 +432,19 @@ export class Node{
     this.children.forEach((child)=>{
       child.nodeChanged(node)
     })
+  }
+
+  loadConfig(){
+    return this
+  }
+
+  setInnerHTML(innerHTML){
+    this.$meta.innerHTML = innerHTML
+    return this
+  }
+
+  setField(fieldName, value){
+    this.$meta[fieldName] = value
+    return this
   }
 }

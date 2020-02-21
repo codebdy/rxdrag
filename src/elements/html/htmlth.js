@@ -9,16 +9,18 @@ export class HTMLTh extends RXTextfieldable{
     this.toolboxInfo.elementName = "th"
     this.className = 'HTMLTh'
 
-    //this.editMarginStyle.padding = '20px;'
-    //this.editMarginStyle = {}
+    //this.editMarginStyle.padding = ''
+    this.editMarginStyle = {}
 
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
     this.$meta.tag = 'th'
+    this.$meta.innerHTML = "TH text ..."
     this.label = "th"
     this.acceptedChildren=''
-    this.exceptChildren = ['BSCol']
+    this.exceptChildren = ['BSCol', 'HTMLThead', 'HTMLTBody', 
+                           'HTMLTh', 'HTMLTr', 'HTMLTd']
 
     //addonTypyThstInthneItem(this)
   }

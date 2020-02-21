@@ -12,7 +12,7 @@ export class RXTextfieldable extends RXElement{
       this.editMarginStyle.padding = ''
     }
     else{
-      this.editMarginStyle.padding = '30px'
+      this.editMarginStyle.padding = '15px'
     }
     return super.toViewModel()
   }
