@@ -2,6 +2,9 @@ import {RXElement} from "../rxelement"
 import {addonTableContextual} from "../schemas/table/contextual"
 import {addonTableStriped} from "../schemas/table/striped"
 import {addonTableBorder} from "../schemas/table/border"
+import {addonTableHover} from "../schemas/table/hover"
+import {addonUtilColor} from "../schemas/utilities/color"
+import {addonUtilText} from "../schemas/utilities/text"
 
 export class HTMLTable extends RXElement{
   constructor() {
@@ -24,6 +27,9 @@ export class HTMLTable extends RXElement{
     addonTableContextual(this)
     addonTableStriped(this)
     addonTableBorder(this)
+    addonTableHover(this)
+    addonUtilColor(this)
+    addonUtilText(this)
   }
 
   make(){

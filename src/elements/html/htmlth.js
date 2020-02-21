@@ -1,5 +1,7 @@
 import {RXTextfieldable} from "./textfieldable"
 import {addonTableContextual} from "../schemas/table/contextual"
+import {addonUtilColor} from "../schemas/utilities/color"
+import {addonUtilText} from "../schemas/utilities/text"
 
 export class HTMLTh extends RXTextfieldable{
   constructor() {
@@ -23,6 +25,8 @@ export class HTMLTh extends RXTextfieldable{
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
     addonTableContextual(this, 'thOptions')
+    addonUtilColor(this)
+    addonUtilText(this)
   }
 
   make(){

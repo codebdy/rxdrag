@@ -1,7 +1,8 @@
 import {RXElement} from "../rxelement"
 import {addonTrScope} from "../schemas/table/scope"
 import {addonTableContextual} from "../schemas/table/contextual"
-//import {addonTypyListInline} from "../schemas/content/list-inline"
+import {addonUtilColor} from "../schemas/utilities/color"
+import {addonUtilText} from "../schemas/utilities/text"
 
 export class HTMLTr extends RXElement{
   constructor() {
@@ -23,6 +24,8 @@ export class HTMLTr extends RXElement{
     
     addonTrScope(this)
     addonTableContextual(this, 'trOptions')
+    addonUtilColor(this)
+    addonUtilText(this)
   }
 
   make(){
