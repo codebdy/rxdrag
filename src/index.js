@@ -10,10 +10,13 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('bootstrap.row')
   rxEditorFM.assemble('bootstrap.column')
   rxEditorFM.assemble('bootstrap.w100')
+  
   rxEditorFM.assemble('bootstrap.heading')
   rxEditorFM.assemble('bootstrap.paragraph')
   rxEditorFM.assemble('bootstrap.table')
   rxEditorFM.assemble('bootstrap.figure')
+
+  rxEditorFM.assemble('bootstrap.alert')
 
   rxEditorFM.assemble('html.abbr')
   rxEditorFM.assemble('html.blockquote')
