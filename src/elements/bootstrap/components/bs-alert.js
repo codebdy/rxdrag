@@ -1,6 +1,7 @@
 import {RXTextfieldable} from "../../html/textfieldable"
 import {HTMLSpan} from "../../html/html-span"
 import {HTMLA} from "../../html/html-a"
+import {BSCloseButton} from "./bs-close-button"
 import {addonAlertContextual} from "../../schemas/components/alert/contextual"
 
 export class BSAlert extends RXTextfieldable{
@@ -48,6 +49,8 @@ export class BSAlert extends RXTextfieldable{
 
     let span2 = new HTMLSpan().setInnerHTML('. Give it a click if you like.')
     this.pushChild(span2)
+
+    this.pushChild(new BSCloseButton)
 
     this.setField('alertContextual', 'alert-primary')
     return this

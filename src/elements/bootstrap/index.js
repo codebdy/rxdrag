@@ -8,6 +8,7 @@ import {BSTable} from "./content/bs-table"
 import {BSFigure} from "./content/bs-figure"
 
 import {BSAlert} from "./components/bs-alert"
+import {BSCloseButton} from "./components/bs-close-button"
 
 export default {
   container : new BSContainer,
@@ -19,4 +20,5 @@ export default {
   table : new BSTable,
   figure : new BSFigure,
   alert : new BSAlert,
+  closeButton : new BSCloseButton,
 }
