@@ -16,6 +16,7 @@ window.createRXEditorFM = ()=>{
 
   rxEditorFM.assemble('html.abbr')
   rxEditorFM.assemble('html.blockquote')
+  rxEditorFM.assemble('html.caption')
   rxEditorFM.assemble('html.cite')
   rxEditorFM.assemble('html.code')
   rxEditorFM.assemble('html.del')

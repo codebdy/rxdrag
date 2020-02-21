@@ -1,13 +1,13 @@
 import {RXTextfieldable} from "./textfieldable"
-//import {addonTypyTdstInthneItem} from "../schemas/content/thst-inthne-item"
+//import {addonTypyCaptionstInthneItem} from "../schemas/content/thst-inthne-item"
 
-export class HTMLTd extends RXTextfieldable{
+export class HTMLCaption extends RXTextfieldable{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupHtml'
-    this.toolboxInfo.elementId = 'htmlTd'
+    this.toolboxInfo.elementId = 'htmlCaption'
     this.toolboxInfo.elementName = "td"
-    this.className = 'HTMLTd'
+    this.className = 'HTMLCaption'
 
     this.editMarginStyle.padding = '10px'
     //this.editMarginStyle = {}
@@ -15,17 +15,17 @@ export class HTMLTd extends RXTextfieldable{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'td'
-    this.label = "td"
+    this.$meta.tag = 'caption'
+    this.label = "caption"
     this.acceptedChildren=''
     this.exceptChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
-    //addonTypyTdstInthneItem(this)
+    //addonTypyCaptionstInthneItem(this)
   }
 
   make(){
-    return new HTMLTd
+    return new HTMLCaption
   }
 
 }

@@ -18,7 +18,7 @@ export class HTMLTable extends RXElement{
     //}
     this.$meta.tag = 'table'
     this.label = "table"
-    this.acceptedChildren=['HTMLThead', 'HTMLTbody', 'HTMLTr']
+    this.acceptedChildren=['HTMLThead', 'HTMLTbody', 'HTMLTr','HTMLCaption']
   }
 
   make(){

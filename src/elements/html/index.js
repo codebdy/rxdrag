@@ -37,7 +37,7 @@ import {HTMLTbody} from "./htmltbody"
 import {HTMLTr} from "./htmltr"
 import {HTMLTh} from "./htmlth"
 import {HTMLTd} from "./htmltd"
-
+import {HTMLCaption} from "./htmlcaption"
 
 
 export default {
@@ -79,6 +79,6 @@ export default {
   tr: new HTMLTr,
   th: new HTMLTh,
   td: new HTMLTd,
-
+  caption: new HTMLCaption,
 
 }
