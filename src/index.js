@@ -17,6 +17,7 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('bootstrap.figure')
 
   rxEditorFM.assemble('bootstrap.alert')
+  rxEditorFM.assemble('bootstrap.badge')
   rxEditorFM.assemble('bootstrap.closeButton')
 
   rxEditorFM.assemble('html.a')

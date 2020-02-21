@@ -26,6 +26,12 @@ export class BSCloseButton extends RXElement{
     return new BSCloseButton
   }
 
+  toViewModel(){
+    let model = super.toViewModel()
+    parkMiniEditbar(model, this)
+    return model
+  }
+
   metaToModel(model){
     model.classList.push('close')
     model.attributes['type'] = 'button'
