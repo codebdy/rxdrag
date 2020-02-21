@@ -1,4 +1,5 @@
 import {RXElement} from "../../rxelement"
+import {HTMLTable} from "../../html/htmltable"
 import {HTMLThead} from "../../html/htmlthead"
 import {HTMLTbody} from "../../html/htmltbody"
 import {HTMLTh} from "../../html/htmlth"
@@ -8,7 +9,7 @@ import {HTMLCaption} from "../../html/htmlcaption"
 
 //import {addonTypyListInline} from "../schemas/content/list-inline"
 
-export class BSTable extends RXElement{
+export class BSTable extends HTMLTable{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupContent'
@@ -26,7 +27,6 @@ export class BSTable extends RXElement{
     this.$meta.baseClass = 'table' 
 
     this.label = "table"
-    this.acceptedChildren=[]
   }
 
   make(){
@@ -35,6 +35,8 @@ export class BSTable extends RXElement{
 
   metaToModel(model){
     model.classList.push(this.$meta.baseClass)
+    //model.classList.push('table-success')
+    //model.classList.push('table-striped')
   }
 
   loadConfig(){

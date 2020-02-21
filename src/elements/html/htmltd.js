@@ -1,5 +1,5 @@
 import {RXTextfieldable} from "./textfieldable"
-//import {addonTypyTdstInthneItem} from "../schemas/content/thst-inthne-item"
+import {addonTableContextual} from "../schemas/table/contextual"
 
 export class HTMLTd extends RXTextfieldable{
   constructor() {
@@ -12,16 +12,16 @@ export class HTMLTd extends RXTextfieldable{
     this.editMarginStyle.padding = '10px'
     //this.editMarginStyle = {}
 
-    //this.groups.paragraphOptions = {
-    //  label:'Paragraph Options'
-    //}
+    this.groups.tdOptions = {
+      label:'Td Options'
+    }
     this.$meta.tag = 'td'
     this.label = "td"
     this.acceptedChildren=''
     this.exceptChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
-    //addonTypyTdstInthneItem(this)
+    addonTableContextual(this, 'tdOptions')
   }
 
   make(){

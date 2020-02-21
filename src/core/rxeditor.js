@@ -219,6 +219,8 @@ export class RXEditor{
 
   clearCanvas(){
     this.canvas.children.length = 0
+    this.focusedLabel.hide()
+    this.toolbar.hide()
     this.render()
   }
 

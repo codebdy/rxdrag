@@ -1,5 +1,6 @@
 import {RXElement} from "../rxelement"
-//import {addonTypyListUnstyled} from "../schemas/content/list-unstyled"
+import {addonTrScope} from "../schemas/table/scope"
+import {addonTableContextual} from "../schemas/table/contextual"
 //import {addonTypyListInline} from "../schemas/content/list-inline"
 
 export class HTMLTr extends RXElement{
@@ -13,13 +14,15 @@ export class HTMLTr extends RXElement{
     this.editMarginStyle.padding = ''
     //this.editMarginStyle = {}
 
-    //this.groups.paragraphOptions = {
-    //  label:'Paragraph Options'
-    //}
+    this.groups.trOptions = {
+      label:'Tr Options'
+    }
     this.$meta.tag = 'tr'
     this.label = "tr"
     this.acceptedChildren=['HTMLTr']
     
+    addonTrScope(this)
+    addonTableContextual(this, 'trOptions')
   }
 
   make(){

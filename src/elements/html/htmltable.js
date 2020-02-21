@@ -1,5 +1,5 @@
 import {RXElement} from "../rxelement"
-//import {addonTypyListUnstyled} from "../schemas/content/list-unstyled"
+import {addonTableContextual} from "../schemas/table/contextual"
 //import {addonTypyListInline} from "../schemas/content/list-inline"
 
 export class HTMLTable extends RXElement{
@@ -13,12 +13,14 @@ export class HTMLTable extends RXElement{
     //this.editMarginStyle.padding = '20px;'
     //this.editMarginStyle = {}
 
-    //this.groups.paragraphOptions = {
-    //  label:'Paragraph Options'
-    //}
+    this.groups.tableOptions = {
+      label:'Table Options'
+    }
     this.$meta.tag = 'table'
     this.label = "table"
     this.acceptedChildren=['HTMLThead', 'HTMLTbody', 'HTMLTr','HTMLCaption']
+
+    addonTableContextual(this)
   }
 
   make(){

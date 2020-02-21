@@ -1,5 +1,5 @@
 import {RXTextfieldable} from "./textfieldable"
-//import {addonTypyThstInthneItem} from "../schemas/content/thst-inthne-item"
+import {addonTableContextual} from "../schemas/table/contextual"
 
 export class HTMLTh extends RXTextfieldable{
   constructor() {
@@ -12,9 +12,9 @@ export class HTMLTh extends RXTextfieldable{
     //this.editMarginStyle.padding = ''
     this.editMarginStyle = {}
 
-    //this.groups.paragraphOptions = {
-    //  label:'Paragraph Options'
-    //}
+    this.groups.thOptions = {
+      label:'Paragraph Options'
+    }
     this.$meta.tag = 'th'
     this.$meta.innerHTML = "TH text ..."
     this.label = "th"
@@ -22,7 +22,7 @@ export class HTMLTh extends RXTextfieldable{
     this.exceptChildren = ['BSCol', 'HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
-    //addonTypyThstInthneItem(this)
+    addonTableContextual(this, 'thOptions')
   }
 
   make(){
