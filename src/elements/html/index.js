@@ -39,6 +39,8 @@ import {HTMLTh} from "./htmlth"
 import {HTMLTd} from "./htmltd"
 import {HTMLCaption} from "./htmlcaption"
 
+import {HTMLFigure} from "./htmlfigure"
+import {HTMLFigcaption} from "./htmlfigcaption"
 
 export default {
   abbr: new HTMLAbbr,
@@ -81,4 +83,6 @@ export default {
   td: new HTMLTd,
   caption: new HTMLCaption,
 
+  figure: new HTMLFigure,
+  figcaption: new HTMLFigcaption,
 }

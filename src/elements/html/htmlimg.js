@@ -6,6 +6,7 @@ import {addonImageAlt} from "../schemas/image/alt"
 import {addonImageFluid} from "../schemas/image/fluid"
 import {addonImageSrc} from "../schemas/image/src"
 import {addonImageThumbnail} from "../schemas/image/thumbnail"
+import {addonFigureImg} from "../schemas/figure/figure-img"
 
 
 export class HTMLImg extends RXElement{
@@ -30,6 +31,7 @@ export class HTMLImg extends RXElement{
     addonUtilBorder(this)
     addonUtilMargin(this)
     addonUtilPadding(this)
+    addonFigureImg(this, 'imageOptions')
   }
 
   make(){

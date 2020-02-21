@@ -25,6 +25,8 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('html.dd')
   rxEditorFM.assemble('html.dt')
   rxEditorFM.assemble('html.em')
+  rxEditorFM.assemble('html.figcaption')
+  rxEditorFM.assemble('html.figure')
   rxEditorFM.assemble('html.footer')
   rxEditorFM.assemble('html.h')
   rxEditorFM.assemble('html.img')
