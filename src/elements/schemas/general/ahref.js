@@ -1,18 +1,18 @@
 import {OptionFragment} from "../option-fragment"
 
-class ImageSrcType extends OptionFragment{
+class AHref extends OptionFragment{
   constructor(){
     super()
     this.schema = {
       label:'Href',
       widget:'OpTextField',
-      group:'sourceOptions',
+      group:'aOptions',
       defaultValue:'',
     }
 
     this.metaFragment = '' 
 
-    this.fieldName = 'imageSrcType'
+    this.fieldName = 'aHref'
   }
 
   copyMeta(from, to){
@@ -21,15 +21,15 @@ class ImageSrcType extends OptionFragment{
 
   metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
-    model.attributes['type'] = metaFragment
+    model.attributes['href'] = metaFragment
   }
 }
 
-var addonImageSrcType = (node, groupName)=>{
-  let imageSrcType = new ImageSrcType
-  imageSrcType.addon(node, groupName)
-  return imageSrcType
+var addonAHref = (node, groupName)=>{
+  let aHref = new AHref
+  aHref.addon(node, groupName)
+  return aHref
 }
 
-export {addonImageSrcType}
+export {addonAHref}
 

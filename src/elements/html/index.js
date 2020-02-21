@@ -42,6 +42,10 @@ import {HTMLCaption} from "./htmlcaption"
 import {HTMLFigure} from "./htmlfigure"
 import {HTMLFigcaption} from "./htmlfigcaption"
 
+import {HTMLA} from "./htmla"
+import {HTMLButton} from "./htmlbutton"
+import {HTMLOl} from "./htmlol"
+
 export default {
   abbr: new HTMLAbbr,
   blockquote: new HTMLBlockquote,
@@ -85,4 +89,8 @@ export default {
 
   figure: new HTMLFigure,
   figcaption: new HTMLFigcaption,
+
+  a: new HTMLA,
+  button: new HTMLButton,
+  ol: new HTMLOl,
 }

@@ -31,8 +31,8 @@ export class RXElement extends Node{
       'typographyOptions':{
         label:'Typography Options'
       },
-      'decorations':{
-        label:'Decorations',
+      'componentsOptions':{
+        label:'Components',
       },
     }
 

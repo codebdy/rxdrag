@@ -22,7 +22,7 @@ export class HTMLImg extends RXElement{
       label:'Image Options'
     }
     this.$meta.tag = 'img'
-    this.label = "Img"
+    this.label = "img"
 
     addonImageSrc(this)
     addonImageFluid(this)

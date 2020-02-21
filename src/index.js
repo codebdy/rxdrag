@@ -18,8 +18,10 @@ window.createRXEditorFM = ()=>{
 
   rxEditorFM.assemble('bootstrap.alert')
 
+  rxEditorFM.assemble('html.a')
   rxEditorFM.assemble('html.abbr')
   rxEditorFM.assemble('html.blockquote')
+  rxEditorFM.assemble('html.button')
   rxEditorFM.assemble('html.caption')
   rxEditorFM.assemble('html.cite')
   rxEditorFM.assemble('html.code')
@@ -37,6 +39,7 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('html.ins')
   rxEditorFM.assemble('html.kbd')
   rxEditorFM.assemble('html.mark')
+  rxEditorFM.assemble('html.ol')
   rxEditorFM.assemble('html.p')
   rxEditorFM.assemble('html.picture')
   rxEditorFM.assemble('html.pre')
