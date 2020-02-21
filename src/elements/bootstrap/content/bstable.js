@@ -21,6 +21,8 @@ export class BSTable extends RXElement{
     //  label:'Paragraph Options'
     //}
     this.$meta.tag = 'table'
+    this.$meta.baseClass = 'table' 
+
     /*this.$meta.innerHTML = `
         <thead>
           <tr>
@@ -59,10 +61,8 @@ export class BSTable extends RXElement{
     return new BSTable
   }
 
-  toViewModel(){
-    let model = super.toViewModel()
-    //model.innerHTML = this.$meta.innerHTML
-    return model
+  metaToModel(model){
+    model.classList.push(this.$meta.baseClass)
   }
 
   loadConfig(){
