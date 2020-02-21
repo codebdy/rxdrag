@@ -4,10 +4,12 @@ import {HTMLSpan} from "../../html/html-span"
 import {HTMLA} from "../../html/html-a"
 import {BSCloseButton} from "./bs-close-button"
 import {addonBadgeContextual} from "../../schemas/components/badge/contextual"
+import {addonBadgePill} from "../../schemas/components/badge/pill"
 import {addonBadgeLink} from "../../schemas/components/badge/link"
 import {addonAHref} from "../../schemas/general/ahref"
 import {addonATarget} from "../../schemas/general/atarget"
 import {addonGeneralTitle} from "../../schemas/general/title"
+
 
 export class BSBadge extends RXElement{
   constructor() {
@@ -29,6 +31,7 @@ export class BSBadge extends RXElement{
     this.acceptedChildren=[]
 
     addonBadgeContextual(this)
+    addonBadgePill(this)
     addonBadgeLink(this)
     addonAHref(this, 'badgeOptions')
     addonATarget(this, 'badgeOptions')
