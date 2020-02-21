@@ -12,6 +12,7 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('bootstrap.w100')
   rxEditorFM.assemble('bootstrap.heading')
   rxEditorFM.assemble('bootstrap.paragraph')
+  rxEditorFM.assemble('bootstrap.table')
 
   rxEditorFM.assemble('html.abbr')
   rxEditorFM.assemble('html.blockquote')

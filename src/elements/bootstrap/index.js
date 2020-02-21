@@ -4,6 +4,7 @@ import {BSCol} from "./layout/bscol"
 import {BSW100} from "./layout/bsw100"
 import {BSHeading} from "./content/bsheading"
 import {BSParagraph} from "./content/bsparagraph"
+import {BSTable} from "./content/bstable"
 
 export default {
   container: new BSContainer,
@@ -12,4 +13,5 @@ export default {
   w100: new BSW100,
   heading: new BSHeading,
   paragraph : new BSParagraph,
+  table : new BSTable,
 }

@@ -7,7 +7,8 @@ export class Canvas extends Node{
     this.focusState = this.normalState
     this.parentViewDomElement = workspace;
     this.acceptedChildren=''
-    this.exceptChildren = ['BSCol','BSW100']
+    this.exceptChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
+                           'HTMLTh', 'HTMLTr', 'HTMLTd']
     this.heightDropMargin = 0;
     this.widthDropMargin = 0;
     this.padding = '30px';
