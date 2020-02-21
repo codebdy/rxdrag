@@ -1,11 +1,11 @@
 import {RXElement} from "../../rxelement"
-import {HTMLTable} from "../../html/htmltable"
-import {HTMLThead} from "../../html/htmlthead"
-import {HTMLTbody} from "../../html/htmltbody"
-import {HTMLTh} from "../../html/htmlth"
-import {HTMLTr} from "../../html/htmltr"
-import {HTMLTd} from "../../html/htmltd"
-import {HTMLCaption} from "../../html/htmlcaption"
+import {HTMLTable} from "../../html/html-table"
+import {HTMLThead} from "../../html/html-thead"
+import {HTMLTbody} from "../../html/html-tbody"
+import {HTMLTh} from "../../html/html-th"
+import {HTMLTr} from "../../html/html-tr"
+import {HTMLTd} from "../../html/html-td"
+import {HTMLCaption} from "../../html/html-caption"
 
 //import {addonTypyListInline} from "../schemas/content/list-inline"
 

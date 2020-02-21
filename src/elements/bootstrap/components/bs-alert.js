@@ -1,6 +1,6 @@
 import {RXTextfieldable} from "../../html/textfieldable"
-import {HTMLSpan} from "../../html/htmlspan"
-import {HTMLA} from "../../html/htmla"
+import {HTMLSpan} from "../../html/html-span"
+import {HTMLA} from "../../html/html-a"
 import {addonAlertContextual} from "../../schemas/components/alert/contextual"
 
 export class BSAlert extends RXTextfieldable{

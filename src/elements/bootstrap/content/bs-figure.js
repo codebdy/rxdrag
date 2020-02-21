@@ -1,7 +1,7 @@
 import {RXElement} from "../../rxelement"
-import {HTMLFigure} from "../../html/htmlfigure"
-import {HTMLFigcaption} from "../../html/htmlfigcaption"
-import {HTMLImg} from "../../html/htmlimg"
+import {HTMLFigure} from "../../html/html-figure"
+import {HTMLFigcaption} from "../../html/html-figcaption"
+import {HTMLImg} from "../../html/html-img"
 //import {addonTypyListInline} from "../schemas/content/list-inline"
 
 export class BSFigure extends HTMLFigure{
