@@ -6,7 +6,6 @@ class RowGutters extends OptionFragment{
     this.schema = {
       label:'Gutters',
       widget:'OpSwitch',
-      required:true,
       group:'rowOptions',
       onValue:'',
       offValue:'no-gutters',
@@ -19,7 +18,7 @@ class RowGutters extends OptionFragment{
   }
 
   copyMeta(from, to){
-    to.rowGutters = from.rowGutters
+    to[this.fieldName] = from[this.fieldName]
   }
 
   metaToModel(model, meta){

@@ -1,5 +1,5 @@
 import {RXElement} from "../rxelement"
-//import {addonTypyListUnstyled} from "../schemas/content/list-unstyled"
+import {addonTheadColor} from "../schemas/table/head-color"
 //import {addonTypyListInline} from "../schemas/content/list-inline"
 
 export class HTMLThead extends RXElement{
@@ -13,13 +13,14 @@ export class HTMLThead extends RXElement{
     this.editMarginStyle.padding = ''
     //this.editMarginStyle = {}
 
-    //this.groups.paragraphOptions = {
-    //  label:'Paragraph Options'
-    //}
+    this.groups.theadOptions = {
+      label:'Thead Options'
+    }
     this.$meta.tag = 'thead'
     this.label = "thead"
     this.acceptedChildren=['HTMLTr']
     
+    addonTheadColor(this)
   }
 
   make(){

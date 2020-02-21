@@ -29,7 +29,7 @@ class TableContextual extends OptionFragment{
   }
 
   copyMeta(from, to){
-    to.tableContextual = from.tableContextual
+    to[this.fieldName] = from[this.fieldName]
   }
 
   metaToModel(model, meta){

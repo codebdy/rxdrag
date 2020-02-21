@@ -22,7 +22,7 @@ class TrScope extends OptionFragment{
   }
 
   copyMeta(from, to){
-    to.trScope = from.trScope
+    to[this.fieldName] = from[this.fieldName]
   }
 
   metaToModel(model, meta){

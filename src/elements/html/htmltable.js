@@ -1,6 +1,7 @@
 import {RXElement} from "../rxelement"
 import {addonTableContextual} from "../schemas/table/contextual"
-//import {addonTypyListInline} from "../schemas/content/list-inline"
+import {addonTableStriped} from "../schemas/table/striped"
+import {addonTableBorder} from "../schemas/table/border"
 
 export class HTMLTable extends RXElement{
   constructor() {
@@ -21,6 +22,8 @@ export class HTMLTable extends RXElement{
     this.acceptedChildren=['HTMLThead', 'HTMLTbody', 'HTMLTr','HTMLCaption']
 
     addonTableContextual(this)
+    addonTableStriped(this)
+    addonTableBorder(this)
   }
 
   make(){
