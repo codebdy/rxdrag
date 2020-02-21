@@ -3,6 +3,8 @@ import {addonTableContextual} from "../schemas/table/contextual"
 import {addonTableStriped} from "../schemas/table/striped"
 import {addonTableBorder} from "../schemas/table/border"
 import {addonTableHover} from "../schemas/table/hover"
+import {addonTableResponsive} from "../schemas/table/responsive"
+
 import {addonUtilColor} from "../schemas/utilities/color"
 import {addonUtilText} from "../schemas/utilities/text"
 
@@ -28,6 +30,7 @@ export class HTMLTable extends RXElement{
     addonTableStriped(this)
     addonTableBorder(this)
     addonTableHover(this)
+    addonTableResponsive(this)
     addonUtilColor(this)
     addonUtilText(this)
   }

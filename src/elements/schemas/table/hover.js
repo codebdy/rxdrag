@@ -6,7 +6,6 @@ class TableHover extends OptionFragment{
     this.schema = {
       label:'Hoverable',
       widget:'OpSwitch',
-      required:true,
       group:'tableOptions',
       onValue:'table-hover',
       offValue:'',
