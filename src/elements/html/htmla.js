@@ -3,6 +3,8 @@ import {RXTextfieldable} from "./textfieldable"
 import {addonAHref} from "../schemas/general/ahref"
 import {addonATarget} from "../schemas/general/atarget"
 import {addonGeneralTitle} from "../schemas/general/title"
+import {addonAlertLink} from "../schemas/components/alert/link"
+
 
 export class HTMLA extends RXTextfieldable{
   constructor() {
@@ -26,6 +28,7 @@ export class HTMLA extends RXTextfieldable{
     addonAHref(this)
     addonATarget(this)
     addonGeneralTitle(this)
+    addonAlertLink(this)
   }
 
   make(){

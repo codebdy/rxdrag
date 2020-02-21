@@ -1,5 +1,6 @@
 import {RXTextfieldable} from "../../html/textfieldable"
 import {HTMLSpan} from "../../html/htmlspan"
+import {HTMLA} from "../../html/htmla"
 import {addonAlertContextual} from "../../schemas/components/alert/contextual"
 
 export class BSAlert extends RXTextfieldable{
@@ -39,6 +40,15 @@ export class BSAlert extends RXTextfieldable{
   loadConfig(){
     let span1 = new HTMLSpan().setInnerHTML('A simple primary alert with ')
     this.pushChild(span1)
+
+    let link = new HTMLA()
+               .setInnerHTML('an example link')
+               .setField('alertLink', 'alert-link')
+    this.pushChild(link)
+
+    let span2 = new HTMLSpan().setInnerHTML('. Give it a click if you like.')
+    this.pushChild(span2)
+
     this.setField('alertContextual', 'alert-primary')
     return this
   }

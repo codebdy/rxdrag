@@ -22,8 +22,8 @@ class GeneralTextfield extends OptionFragment{
   }
 
   metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
-    model.classList.add(metaFragment)
+    //let metaFragment = meta[this.fieldName]
+    //model.classList.add(metaFragment)
     if(meta[this.fieldName] !== 'contentEditable'){
       model.innerHTML = ''
     }
