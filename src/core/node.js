@@ -105,7 +105,9 @@ export class Node{
 
     this.delete =()=>{
       if(confirm("Are you sure to delete?")){
+        this.changeToState('normalState')
         this.removeFromParent()
+        rxEditor.render()
       }
     }
 
