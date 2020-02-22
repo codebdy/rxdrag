@@ -54,9 +54,11 @@ export class NodeToolbar extends RXComponent{
   followElement(domElement){
     let rect = domElement.getBoundingClientRect()
     if(this.$dom){
-      this.$dom.style.left = (rect.x + rect.width - 99) + 'px'
+      let x = (rect.x + rect.width - 99)
+      x = x < 0 ? 0 : x
+      this.$dom.style.left = x + 'px'
       if(rect.y < 26){
-        this.$dom.style.top = (rect.y + rect.height + 2) + 'px'
+        this.$dom.style.top = (rect.y + rect.height) + 'px'
       }
       else{
         this.$dom.style.top = (rect.y - 26) + 'px'
