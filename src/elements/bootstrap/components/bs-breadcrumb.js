@@ -13,6 +13,7 @@ export class BSBreadcrumb extends HTMLNav{
 
     this.editMarginStyle.padding = ''
     //this.editMarginStyle = {}
+    this.label = 'breadcrumb'
 
     this.acceptedChildren=['HTMLLi']
   }
