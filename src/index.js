@@ -66,6 +66,8 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('html.th')
   rxEditorFM.assemble('html.td')
 
+  rxEditorFM.assemble('html.fackleTag')
+
   return rxEditorFM
 }
 
