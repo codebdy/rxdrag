@@ -65,6 +65,12 @@ export class RXEditor{
         this.render()
       }
     })
+
+    this.setCSS(
+      `
+        .btn{background-color: red;}
+      `
+    )
   }
 
   render(){
@@ -259,4 +265,16 @@ export class RXEditor{
       }
     }
   }
+
+  setCSS(cssText){
+    if(!this.styleText){
+      let style = document.createElement('style')
+      let head = document.head || document.getElementsByTagName('head')[0]; 
+      style.type = 'text/css'; 
+      head.appendChild(style);  
+      this.styleText = style
+    }
+    this.styleText.innerHTML = cssText
+  }
+
 }
