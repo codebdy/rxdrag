@@ -8,13 +8,15 @@ export class RXTextfieldable extends RXElement{
   }
 
   toViewModel(){
+    let model = super.toViewModel()
     if(this.$meta.generalTextfield === 'contentEditable'){
-      this.editMarginStyle.padding = ''
+      model.styles.padding = ''
     }
     else{
-      this.editMarginStyle.padding = '15px'
+      model.styles.padding = this.editMarginStyle.padding
     }
-    return super.toViewModel()
+
+    return model
   }
 
 }
