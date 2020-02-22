@@ -68,7 +68,7 @@ export class RXEditor{
 
     this.setCSS(
       `
-        .btn{background-color: red;}
+        /*customized css*/
       `
     )
   }
