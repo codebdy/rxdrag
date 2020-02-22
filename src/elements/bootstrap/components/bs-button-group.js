@@ -1,5 +1,6 @@
 import {HTMLDiv} from "../../html/html-div"
 import {BSButton} from "./bs-button"
+import {addonAriaLabel} from "../../schemas/general/aria-label"
 
 export class BSButtonGroup extends HTMLDiv{
   constructor() {
@@ -15,6 +16,7 @@ export class BSButtonGroup extends HTMLDiv{
     this.$meta.classList.push('btn-group')
 
     this.acceptedChildren=['BSButton']
+    addonAriaLabel(this)
   }
 
   make(){
