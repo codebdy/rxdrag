@@ -37,7 +37,7 @@ export class BSFigure extends HTMLFigure{
   loadConfig(){
     let img = new HTMLImg
     img.$meta.figureImg = 'figure-img'
-    img.setField('imageSrc', 'https://picsum.photos/200')
+    img.setField('imageSrc', /*'https://picsum.photos/200'*/'images/1003-367x267.jpg')
     this.pushChild(img)
 
     let caption = new HTMLFigcaption().setInnerHTML("A caption for the above image.")

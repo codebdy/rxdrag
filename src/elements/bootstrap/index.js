@@ -11,6 +11,7 @@ import {BSAlert} from "./components/bs-alert"
 import {BSBadge} from "./components/bs-badge"
 import {BSBreadcrumb} from "./components/bs-breadcrumb"
 import {BSCloseButton} from "./components/bs-close-button"
+import {BSButton} from "./components/bs-button"
 
 export default {
   container : new BSContainer,
@@ -25,4 +26,5 @@ export default {
   closeButton : new BSCloseButton,
   badge : new BSBadge,
   breadcrumb : new BSBreadcrumb,
+  button : new BSButton,
 }

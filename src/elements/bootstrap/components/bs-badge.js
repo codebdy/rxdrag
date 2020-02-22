@@ -42,6 +42,11 @@ export class BSBadge extends RXElement{
     return new BSBadge
   }
 
+  toViewModel(){
+    let model = super.toViewModel()
+    parkMiniEditbar(model, this)
+    return model
+  }
   metaToModel(model){
     model.classList.push(this.$meta.baseClass)
   }
