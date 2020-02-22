@@ -440,13 +440,4 @@ export class Node{
     return this
   }
 
-  setInnerHTML(innerHTML){
-    this.$meta.innerHTML = innerHTML
-    return this
-  }
-
-  setField(fieldName, value){
-    this.$meta[fieldName] = value
-    return this
-  }
 }

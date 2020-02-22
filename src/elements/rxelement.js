@@ -15,6 +15,7 @@ export class RXElement extends Node{
       tag : 'div',
       classList : [],
       styles : {},
+      attributes : {},
     }
     
     //Schema 信息，用于构建Option编辑部件
@@ -36,6 +37,9 @@ export class RXElement extends Node{
       },
       'componentsOptions':{
         label:'Components',
+      },
+      'customizedOptions':{
+        label:'Customized',
       },
     }
 
@@ -94,6 +98,7 @@ export class RXElement extends Node{
     model.innerHTML = meta.innerHTML
     model.classList.push.apply(model.classList, meta.classList)
     Object.assign(model.styles, meta.styles)
+    Object.assign(model.attributes, meta.attributes)
 
     this.addons.forEach((addon)=>{
       addon.metaToModel(model, meta)
@@ -102,5 +107,37 @@ export class RXElement extends Node{
 
   metaToModel(model){
   }
+
+  setInnerHTML(innerHTML){
+    this.$meta.innerHTML = innerHTML
+    return this
+  }
+
+  setField(fieldName, value){
+    this.$meta[fieldName] = value
+    return this
+  }
+
+  addClass(className){
+    this.$meta.classList.push(className)
+    return this
+  }
+
+  setAttribute(attrName, value){
+    this.$meta.attributes[attrName] = value
+    return this
+  }
+
+  setEditPadding(padding){
+    this.editMarginStyle.padding = padding
+    return this
+  }
+
+  becomeToTextfield(){
+    this.setField('generalTextfield', 'contentEditable')
+    return this
+  }
+
+
 
 }

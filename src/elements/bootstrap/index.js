@@ -9,6 +9,7 @@ import {BSFigure} from "./content/bs-figure"
 
 import {BSAlert} from "./components/bs-alert"
 import {BSBadge} from "./components/bs-badge"
+import {BSBreadcrumb} from "./components/bs-breadcrumb"
 import {BSCloseButton} from "./components/bs-close-button"
 
 export default {
@@ -23,4 +24,5 @@ export default {
   alert : new BSAlert,
   closeButton : new BSCloseButton,
   badge : new BSBadge,
+  breadcrumb : new BSBreadcrumb,
 }
