@@ -36,6 +36,11 @@
   transition: all 0.3s;
 }
 
+.theme-button .icon{
+  width: 20px;
+  height: 20px;
+}
+
 .rx-toolbar{
   height: 44px;
   background: #424242;
