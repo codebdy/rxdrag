@@ -21,7 +21,7 @@ export class HTMLDd extends RXTextfieldable{
     this.$meta.tag = 'dd'
     this.label = "dd"
     this.acceptedChildren=''
-    this.exceptChildren = ['BSCol']
+    this.rejectChildren = ['BSCol']
   }
 
   make(){

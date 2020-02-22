@@ -23,7 +23,7 @@ export class BSAlert extends RXTextfieldable{
     this.$meta.role = 'alert' 
     this.label = "alert"
     this.acceptedChildren=''
-    this.exceptChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
+    this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
     addonAlertContextual(this)

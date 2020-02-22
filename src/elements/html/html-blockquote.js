@@ -18,7 +18,7 @@ export class HTMLBlockquote extends RXElement{
     this.className = 'HTMLBlockquote'
 
     this.acceptedChildren=''
-    this.exceptChildren = ['BSCol']
+    this.rejectChildren = ['BSCol']
 
     //this.editMarginStyle = {}
 

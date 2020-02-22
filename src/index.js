@@ -41,6 +41,7 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('html.ins')
   rxEditorFM.assemble('html.kbd')
   rxEditorFM.assemble('html.mark')
+  rxEditorFM.assemble('html.nav')
   rxEditorFM.assemble('html.ol')
   rxEditorFM.assemble('html.p')
   rxEditorFM.assemble('html.picture')

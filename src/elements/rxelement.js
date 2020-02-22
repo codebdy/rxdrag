@@ -1,4 +1,5 @@
 import {Node} from "../core/node"
+import {RXArray} from "../basic/rxarray"
 import parkMiniEditbar from "../core/park-mini-editbar"
 
 export class RXElement extends Node{
@@ -11,7 +12,9 @@ export class RXElement extends Node{
     this.addedFieldGroups = []
     //基础数据，持久化也是这部分数据
     this.$meta = {
-      tag:'div',
+      tag : 'div',
+      classList : [],
+      styles : {},
     }
     
     //Schema 信息，用于构建Option编辑部件
@@ -62,12 +65,6 @@ export class RXElement extends Node{
  
   toViewModel(){
     let model = super.toViewModel()
-    /*model.name = this.$meta.tag
-    model.innerHTML = this.$meta.innerHTML
-
-    this.addons.forEach((addon)=>{
-      addon.toViewModel(model, this.$meta)
-    })*/
     this.baseMetaToModel(model)
     this.metaToModel(model)
 
@@ -95,6 +92,8 @@ export class RXElement extends Node{
     let meta = this.$meta
     model.name = meta.tag
     model.innerHTML = meta.innerHTML
+    model.classList.push.apply(model.classList, meta.classList)
+    Object.assign(model.styles, meta.styles)
 
     this.addons.forEach((addon)=>{
       addon.metaToModel(model, meta)

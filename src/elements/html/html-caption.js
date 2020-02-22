@@ -18,7 +18,7 @@ export class HTMLCaption extends RXTextfieldable{
     this.$meta.tag = 'caption'
     this.label = "caption"
     this.acceptedChildren=''
-    this.exceptChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
+    this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
     //addonTypyCaptionstInthneItem(this)

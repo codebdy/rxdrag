@@ -45,6 +45,8 @@ import {HTMLFigcaption} from "./html-figcaption"
 import {HTMLA} from "./html-a"
 import {HTMLButton} from "./html-button"
 import {HTMLOl} from "./html-ol"
+import {HTMLNav} from "./html-nav"
+
 
 export default {
   abbr: new HTMLAbbr,
@@ -93,4 +95,5 @@ export default {
   a: new HTMLA,
   button: new HTMLButton,
   ol: new HTMLOl,
+  nav: new HTMLNav
 }

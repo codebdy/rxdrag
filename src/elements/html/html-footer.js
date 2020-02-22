@@ -18,7 +18,7 @@ export class HTMLFooter extends RXElement{
     this.className = 'HTMLFooter'
 
     this.acceptedChildren=''
-    this.exceptChildren = ['BSCol']
+    this.rejectChildren = ['BSCol']
     //this.editMarginStyle = {}
 
     //this.groups.paragraphOptions = {

@@ -45,7 +45,7 @@ export class HTMLDiv extends RXElement{
     this.className = 'HTMLDiv'
     this.label = "div"
     this.acceptedChildren=''
-    this.exceptChildren = ['BSCol']
+    this.rejectChildren = ['BSCol']
 
     addonHeadingPseudo(this, 'typographyOptions')
     addonHeadingDisplay(this, 'typographyOptions')

@@ -18,7 +18,7 @@ export class HTMLLi extends RXTextfieldable{
     this.$meta.tag = 'li'
     this.label = "li"
     this.acceptedChildren=''
-    this.exceptChildren = ['BSCol']
+    this.rejectChildren = ['BSCol']
 
     addonTypyListInlineItem(this)
   }

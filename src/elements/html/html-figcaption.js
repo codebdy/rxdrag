@@ -18,7 +18,7 @@ export class HTMLFigcaption extends RXTextfieldable{
     this.$meta.tag = 'figcaption'
     this.label = "figcaption"
     this.acceptedChildren=''
-    this.exceptChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
+    this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
     addonFigureCaption(this)

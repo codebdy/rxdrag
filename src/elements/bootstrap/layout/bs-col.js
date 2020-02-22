@@ -14,7 +14,7 @@ export class BSCol extends RXElement{
     this.className = 'BSCol'
     this.widthDropMargin = 15;
     this.acceptedChildren=''
-    this.exceptChildren = ['BSCol']
+    this.rejectChildren = ['BSCol']
     this.label = "Column"
     this.groups.columnOptions = {
       label:'Column Options'

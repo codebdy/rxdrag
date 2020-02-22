@@ -20,7 +20,7 @@ export class HTMLTd extends RXTextfieldable{
     this.$meta.tag = 'td'
     this.label = "td"
     this.acceptedChildren=''
-    this.exceptChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
+    this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
     addonTableContextual(this, 'tdOptions')

@@ -25,7 +25,7 @@ export class Node{
     this.acceptedChildren = new RXArray
 
     //空和空数组都表示所有都不排除
-    this.exceptChildren = ''
+    this.rejectChildren = ''
 
     this.editMarginStyle = {
       padding:'30px',
@@ -364,9 +364,9 @@ export class Node{
 
   containsInExcept(child){
     let childName = child.className
-    if(this.exceptChildren){
-      for(var i = 0; i < this.exceptChildren.length; i++){
-        if(this.exceptChildren[i] === childName){
+    if(this.rejectChildren){
+      for(var i = 0; i < this.rejectChildren.length; i++){
+        if(this.rejectChildren[i] === childName){
           return true
         }
       }
