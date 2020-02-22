@@ -7,6 +7,7 @@ import {IFrameCommandProxy} from "./iframe-command-porxy"
 import {EditorState} from "./editor-state"
 import {RXComponent} from "../basic/rxcomponent"
 import {RXModel} from "./controls/model"
+import {ThemeModel} from "./theme-model"
 
 var JSZip = require("jszip")
 var FileSaver = require('file-saver');
@@ -102,13 +103,7 @@ export class RXEditorFM{
                                  `
                       )
 
-    let themeModel = new RXModel()
-                     .setContent(`<div style="padding:20px;">
-                                    <p>Select a theme</p>
-                                    <p></p>
-                                  </div>
-                                 `
-                      )
+    let themeModel = new ThemeModel()
 
     this.workspace = new Workspace(config)
     new RXComponent().cssClass('rx-left-area')
