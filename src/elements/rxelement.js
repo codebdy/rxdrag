@@ -51,8 +51,9 @@ export class RXElement extends Node{
 
   clone(){
     let copy = super.clone()
-    copy.$meta.tag = this.$meta.tag
-    copy.$meta.innerHTML = this.$meta.innerHTML
+    copy.$meta = JSON.parse(JSON.stringify(this.$meta))
+    //copy.$meta.tag = this.$meta.tag
+    //copy.$meta.innerHTML = this.$meta.innerHTML
 
     this.addons.forEach((addon)=>{
       addon.copyMeta(this.$meta, copy.$meta)
@@ -61,11 +62,11 @@ export class RXElement extends Node{
     return copy
   }
 
-  copyMetaTo(from, to){
+  /*copyMetaTo(from, to){
     for(var name in from){
       to[name] = from[name]
     }
-  }
+  }*/
  
   toViewModel(){
     let model = super.toViewModel()
