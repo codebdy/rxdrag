@@ -1,5 +1,11 @@
 import {RXTextfieldable} from "../../html/textfieldable"
 import {HTMLSpan} from "../../html/html-span"
+import {addonButtonContextual} from "../../schemas/components/button/contextual"
+import {addonButtonActive} from "../../schemas/components/button/active"
+import {addonButtonDisabled} from "../../schemas/components/button/disabled"
+import {addonButtonSize} from "../../schemas/components/button/size"
+import {addonButtonTag} from "../../schemas/components/button/tag"
+import {addonButtonType} from "../../schemas/components/button/type"
 
 export class BSButton extends RXTextfieldable{
   constructor() {
@@ -20,6 +26,13 @@ export class BSButton extends RXTextfieldable{
     this.label = "button"
     this.$meta.classList.push('btn')
     this.acceptedChildren=['HTMLSpan','HTMLDiv','BSBadge']
+
+    addonButtonContextual(this)
+    addonButtonSize(this)
+    addonButtonActive(this)
+    addonButtonDisabled(this)
+    addonButtonTag(this)
+    addonButtonType(this)
   }
 
   make(){
@@ -33,7 +46,12 @@ export class BSButton extends RXTextfieldable{
   }*/
 
   metaToModel(model){
-    //model.attributes['type'] = 'button'
+    if(this.$meta.tag == 'a'){
+      model.attributes['role'] = 'button'
+    }
+    if(this.$meta.tag == 'input'){
+      model.attributes['value'] = this.$meta.innerHTML
+    }
     //model.attributes['data-dismiss'] = 'alert'
     //model.attributes['aria-label'] = 'close'
   }

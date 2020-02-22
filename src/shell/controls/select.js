@@ -37,10 +37,11 @@ class SelectedList  extends RXComponent{
 
 export class OpSelect extends OpInput{
   constructor(value, schema){
-    super(value)
+    super(value, schema.defaultValue)
     if(schema.columns === 2){
       this.cssClass('two-column')
     }
+
     this.cssClass('ctl-select')
     let list = schema.list
     //this.fieldName = fieldName
