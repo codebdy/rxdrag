@@ -87,6 +87,28 @@ class CommandMove extends CommandMovable{
   }
 }
 
+class CommandDelete{
+  constructor(node) {
+    this.node = node
+    this.oldParent = node.parent
+    this.oldnNextSbiling = node.nextSbiling()
+  }
+
+  redo(){
+    this.node.removeFromParent()
+  }
+
+  undo(){
+    if(this.oldnNextSbiling){
+      this.node.moveBefore(this.oldnNextSbiling)
+    }
+    else{
+      this.oldParent.pushChild(this.node)
+    }
+
+  }
+}
+
 class CommandClone{
   constructor(node, copy) {
     this.node = node
@@ -170,6 +192,11 @@ export class CommadManager{
     let oldMeta = JSON.parse(JSON.stringify(node.$meta))
     node.$meta = newNodeData.meta
     let cmd = new CommandChangeNode(node, oldMeta)
+    this.finished(cmd)
+  }
+
+  deleteNode(node){
+    let cmd = new CommandDelete(node)
     this.finished(cmd)
   }
 

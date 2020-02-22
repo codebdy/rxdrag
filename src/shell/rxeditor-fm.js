@@ -102,11 +102,20 @@ export class RXEditorFM{
                                  `
                       )
 
+    let themeModel = new RXModel()
+                     .setContent(`<div style="padding:20px;">
+                                    <p>Select a theme</p>
+                                    <p></p>
+                                  </div>
+                                 `
+                      )
+
     this.workspace = new Workspace(config)
     new RXComponent().cssClass('rx-left-area')
                      .pushChild(toolbar)
                      .pushChild(this.workspace)
                      .pushChild(aboutModel)
+                     .pushChild(themeModel)
                      .render(this.domElement)
     this.workspace.resizeScreen(this.state.screenWidth)
 
@@ -148,6 +157,12 @@ export class RXEditorFM{
 
     toolbar.about = ()=>{
       aboutModel.show()
+    }
+
+    toolbar.theme = ()=>{
+
+      themeModel.show()
+      console.log('themeModel')
     }
   }
 

@@ -104,11 +104,12 @@ export class Node{
     }
 
     this.delete =()=>{
-      if(confirm("Are you sure to delete?")){
+      //if(confirm("Are you sure to delete?")){
         this.changeToState('normalState')
         this.removeFromParent()
+        rxEditor.commandManager.deleteNode(this)
         rxEditor.render()
-      }
+      //}
     }
 
     this.stateChanged = (oldState, newState)=>{
