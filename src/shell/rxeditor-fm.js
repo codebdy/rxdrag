@@ -8,6 +8,7 @@ import {EditorState} from "./editor-state"
 import {RXComponent} from "../basic/rxcomponent"
 import {RXModel} from "./controls/model"
 import {ThemeModel} from "./theme-model"
+import {themes} from "./themes"
 
 var JSZip = require("jszip")
 var FileSaver = require('file-saver');
@@ -40,11 +41,10 @@ class Workspace extends RXComponent{
           <head>
             <title>RXEditor Workspace</title>
             <link rel=stylesheet href="${this.config.mainCss}">
-            <link rel="stylesheet" href="${this.config.bootstrapCss}">
-            <link href="${this.config.fontAwesome}" rel="stylesheet">
           </head>
           <body style="background-color:#FFF;padding:0;width:100%; height:100%;">
             <div id="canvas"></div>
+
             <script type="text/javascript" src="${this.config.mainJs}"></script>
             <script>
               rxEditor.hangOn('canvas', new RXEditorCommandProxy);
@@ -129,6 +129,10 @@ export class RXEditorFM{
     this.commandProxy = new IFrameCommandProxy(this.workspace.iframe)
     this.commandProxy.serveForShell = this
 
+    themeModel.onThemeSelected = (theme)=>{
+      this.commandProxy.changeTheme(themes[theme])
+    }
+
     this.canvasState.watch('changed', (state)=>{
       this.commandProxy.changeCanvasState(state)
     })
@@ -155,13 +159,14 @@ export class RXEditorFM{
     }
 
     toolbar.theme = ()=>{
-
       themeModel.show()
-      console.log('themeModel')
     }
   }
 
   onRxEditorReady(){
+    //设置默认主题
+    this.commandProxy.changeTheme(themes['agency'])
+
     this.drawer.render(this.domElement)
     //请求所有可装配元素
     for(var i in this.itemRxNameIds){

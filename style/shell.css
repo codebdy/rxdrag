@@ -276,3 +276,18 @@
   padding: 10px;
   background: #fff;
 }
+
+.model-content-shell{
+  display: flex;
+  flex-flow: row;
+}
+
+.theme-item{
+  padding: 10px;
+  margin:10px;
+  cursor: pointer;
+}
+
+.theme-item:hover{
+  color: blue;
+}

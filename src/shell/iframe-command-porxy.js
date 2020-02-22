@@ -64,6 +64,12 @@ export class IFrameCommandProxy{
     })
   }
 
+  changeTheme(theme){
+    this.sendMessageToRXEditor({
+      name:'changeTheme',
+      theme:theme,
+    })
+  }
 
   handleMessage(message){
     switch (message.name) {

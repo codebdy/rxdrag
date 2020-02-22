@@ -66,11 +66,6 @@ export class RXEditor{
       }
     })
 
-    this.setCSS(
-      `
-        /*customized css*/
-      `
-    )
   }
 
   render(){
@@ -266,7 +261,7 @@ export class RXEditor{
     }
   }
 
-  setCSS(cssText){
+  /*setCSS(cssText){
     if(!this.styleText){
       let style = document.createElement('style')
       let head = document.head || document.getElementsByTagName('head')[0]; 
@@ -275,6 +270,60 @@ export class RXEditor{
       this.styleText = style
     }
     this.styleText.innerHTML = cssText
+  }*/
+
+  changeTheme(theme){
+
+    this.clearCssFiles()
+    //this.clearJsFiles()
+
+    let head = document.head || document.getElementsByTagName('head')[0]; 
+    theme.cssFiles.forEach((cssFile)=>{
+      let link = document.createElement('link')
+      link.setAttribute('href', cssFile)
+      link.setAttribute('rel', 'stylesheet')
+      link.setAttribute('type', 'text/css')
+      this.styleTags.push(link) 
+      head.appendChild(link); 
+    })
+
+    /*let body = document.body || document.getElementsByTagName('body')[0]; 
+    theme.jsFiles.forEach((jsFile)=>{
+      let link = document.createElement('script')
+      link.setAttribute('src', jsFile)
+      this.styleTags.push(link)
+      body.appendChild(link); 
+    })*/
+
   }
+
+  clearCssFiles(){
+    if(this.styleTags){
+      this.styleTags.length = 0
+      let head = document.head || document.getElementsByTagName('head')[0]; 
+      this.styleTags.forEach((tag)=>{
+        head.removeChild(tag)
+      })
+    }
+    else{
+      this.styleTags = []
+    }
+  }
+
+
+  clearJsFiles(){
+    if(this.jsTags){
+      this.jsTags.length = 0
+      let body = document.body || document.getElementsByTagName('body')[0]; 
+      this.jsTags.forEach((tag)=>{
+        //body.removeChild(tag)
+      })
+    }
+    else{
+      this.jsTags = []
+    }
+  }
+
+
 
 }

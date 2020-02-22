@@ -86,6 +86,9 @@ export class RXEditorCommandProxy{
       case 'clearCanvas':
         this.serveForRXEditor.clearCanvas()
         break;
+      case 'changeTheme':
+        this.serveForRXEditor.changeTheme(message.theme)
+        break;
     }
   }
 

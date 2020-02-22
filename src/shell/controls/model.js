@@ -23,4 +23,8 @@ export class RXModel extends RXComponent{
     this.content.setInnerHTML(contentHtml)
     return this
   }
+
+  addContentChild(child){
+    this.content.pushChild(child)
+  }
 }
