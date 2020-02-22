@@ -1,4 +1,6 @@
 import {RXElement} from "../rxelement"
+
+import {addonHTMLId} from "../schemas/general/id"
 import {addonUtilColor} from "../schemas/utilities/color"
 import {addonUtilBorder} from "../schemas/utilities/border"
 import {addonUtilPadding} from "../schemas/utilities/padding"
@@ -47,6 +49,7 @@ export class HTMLDiv extends RXElement{
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol']
 
+    addonHTMLId(this)
     addonHeadingPseudo(this, 'typographyOptions')
     addonHeadingDisplay(this, 'typographyOptions')
     addonGridRow(this, 'typographyOptions')
