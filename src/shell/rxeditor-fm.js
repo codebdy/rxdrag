@@ -80,7 +80,7 @@ class Workspace extends RXComponent{
 
 export class RXEditorFM{
   constructor(){
-    initEditor()
+    //initEditor()
     this.state = new EditorState
     this.canvasState = new CanvasState
     this.itemRxNameIds = []

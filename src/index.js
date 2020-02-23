@@ -1,6 +1,8 @@
 import {RXEditor} from "./core/rxeditor"
 import {RXEditorFM} from "./shell/rxeditor-fm"
-import {RXEditorInline} from "./shell/rxeditor-inline"
+import initEditor from "./shell/init-editor"
+
+initEditor()
 
 window.createRXEditorFM = ()=>{
   window.rxEditor = new RXEditor
@@ -77,5 +79,3 @@ window.createRXEditorFM = ()=>{
 
   return rxEditorFM
 }
-
-window.rxEditorInline = new RXEditorInline
