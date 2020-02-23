@@ -150,6 +150,9 @@ export class RXElement extends Node{
     return this
   }
 
-
+  noTextField(){
+    this.setField('generalTextfield', '')
+    return this
+  }
 
 }

@@ -1,5 +1,5 @@
 import {RXElement} from "../../rxelement"
-import {HTMLA} from "../../html/html-a"
+import {HTMLSpan} from "../../html/html-span"
 import {addonClasses} from "../../schemas/general/classes"
 import {addonAttributes} from "../../schemas/general/attributes"
 
@@ -22,7 +22,6 @@ export class BSNavbarToggler extends RXElement{
     this.label = "toggler"
     this.acceptedChildren=[]
     this.addClass('navbar-toggler')
-    this.$meta.innerHTML = '<span class="navbar-toggler-icon"></span>'
 
     addonClasses(this).setDefaultValue(['navbar-toggler'])
     addonAttributes(this)
@@ -32,4 +31,13 @@ export class BSNavbarToggler extends RXElement{
     return new BSNavbarToggler
   }
 
+  loadConfig(){
+    this.pushChild( new HTMLSpan()
+                    .addClass('navbar-toggler-icon')
+                    .noTextField()
+                    .setInnerHTML('')
+                    .setEditPadding('')
+                  )
+    return this
+  }
 }

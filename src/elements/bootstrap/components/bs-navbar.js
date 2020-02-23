@@ -44,7 +44,10 @@ export class BSNavbar extends HTMLNav{
 
   loadConfig(){
     this.pushChild(new BSNavbarBrand)
-    this.pushChild(new BSNavbarToggler)
+    this.pushChild( 
+      new BSNavbarToggler()
+      .loadConfig()
+    )
     //this.setField('badgeContextual', 'badge-primary')
     //this.setField('innerHTML', 'badge')
     return this
