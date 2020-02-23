@@ -36,11 +36,16 @@ export class Toolbox extends RXComponent{
   }
 
   initGroups(){
-    if(!this['groupLayout']){
-      this.groupLayout =  new ToolboxGroup('Layout','groupLayout', this.state)
+    if(!this['groupTheme']){
+      this.groupTheme =  new ToolboxGroup('Theme UI','groupTheme', this.state)
                             .cssClass('no-title-top-border')
                             .render(this.$dom)
-      this.groupLayout.active()
+      this.groupTheme.active()
+    }
+
+    if(!this['groupLayout']){
+      this.groupLayout =  new ToolboxGroup('Layout','groupLayout', this.state)
+                            .render(this.$dom)
     }
 
     if(!this['groupContent']){

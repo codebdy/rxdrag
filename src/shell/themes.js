@@ -29,6 +29,11 @@ let themes = {
       'themes/agency/js/agency.min.js',
     ],
 
+    toolboxItems:[
+      'agency.navbar',
+      'agency.header',
+    ],
+
   }
 }
 
