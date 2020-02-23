@@ -7,7 +7,7 @@ class Classes extends OptionFragment{
       label:'Classes',
       widget:'OpLabelsInput',
       group:'generalOptions',
-      defaultValue:'',
+      defaultValue:[],
     }
 
     //this.metaFragment = '' 

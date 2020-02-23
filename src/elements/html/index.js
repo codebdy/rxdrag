@@ -46,6 +46,7 @@ import {HTMLA} from "./html-a"
 import {HTMLButton} from "./html-button"
 import {HTMLOl} from "./html-ol"
 import {HTMLNav} from "./html-nav"
+import {HTMLHeader} from "./html-header"
 
 import {HTMLFickleTag} from "./fickle-tag"
 
@@ -98,6 +99,8 @@ export default {
   button: new HTMLButton,
   ol: new HTMLOl,
   nav: new HTMLNav,
+
+  header: new HTMLHeader,
 
   fackleTag :new HTMLFickleTag
 }

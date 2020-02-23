@@ -23,6 +23,7 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('bootstrap.buttonGroup')
   rxEditorFM.assemble('bootstrap.navbar')
   rxEditorFM.assemble('bootstrap.navbarBrand')
+  rxEditorFM.assemble('bootstrap.navbarToggler')
   rxEditorFM.assemble('bootstrap.closeButton')
 
   rxEditorFM.assemble('html.a')
@@ -42,6 +43,7 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('html.figure')
   rxEditorFM.assemble('html.footer')
   rxEditorFM.assemble('html.h')
+  rxEditorFM.assemble('html.header')
   rxEditorFM.assemble('html.img')
   rxEditorFM.assemble('html.ins')
   rxEditorFM.assemble('html.kbd')

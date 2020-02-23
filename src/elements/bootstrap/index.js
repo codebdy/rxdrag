@@ -16,6 +16,7 @@ import {BSButtonGroup} from "./components/bs-button-group"
 
 import {BSNavbar} from "./components/bs-navbar"
 import {BSNavbarBrand} from "./components/bs-navbar-brand"
+import {BSNavbarToggler} from "./components/bs-navbar-toggler"
 
 
 export default {
@@ -35,4 +36,5 @@ export default {
   buttonGroup : new BSButtonGroup,
   navbar : new BSNavbar,
   navbarBrand : new BSNavbarBrand,
+  navbarToggler : new BSNavbarToggler,
 }

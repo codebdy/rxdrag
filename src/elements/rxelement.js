@@ -1,6 +1,8 @@
 import {Node} from "../core/node"
 import {RXArray} from "../basic/rxarray"
 import parkMiniEditbar from "../core/park-mini-editbar"
+import {addonClasses} from "./schemas/general/classes"
+import {addonAttributes} from "./schemas/general/attributes"
 
 export class RXElement extends Node{
   constructor() {
@@ -46,6 +48,9 @@ export class RXElement extends Node{
     this.addToGroup = (groupName)=>{
       this.$schema.groups[groupName] = this.groups[groupName]
     }
+
+    addonClasses(this)
+    addonAttributes(this)
   }
 
   clone(){
