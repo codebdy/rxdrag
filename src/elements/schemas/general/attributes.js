@@ -21,7 +21,7 @@ class Attributes extends OptionFragment{
 
   metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
-    model[this.fieldName] = metaFragment
+    model[this.fieldName] = JSON.parse(JSON.stringify(metaFragment))
   }
 }
 

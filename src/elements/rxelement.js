@@ -46,7 +46,6 @@ export class RXElement extends Node{
     this.addToGroup = (groupName)=>{
       this.$schema.groups[groupName] = this.groups[groupName]
     }
-
   }
 
   clone(){
