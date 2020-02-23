@@ -22,6 +22,7 @@ export class HTMLCode extends RXElement{
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLSpan']
     
     this.becomeToTextfield()
+    this.$meta.innerHTML = 'Code text'
 
     addonHeadingPseudo(this, 'typographyOptions')
     addonHeadingDisplay(this, 'typographyOptions')
