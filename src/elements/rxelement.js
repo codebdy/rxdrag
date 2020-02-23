@@ -3,6 +3,7 @@ import {RXArray} from "../basic/rxarray"
 import parkMiniEditbar from "../core/park-mini-editbar"
 import {addonClasses} from "./schemas/general/classes"
 import {addonAttributes} from "./schemas/general/attributes"
+import {addonGeneralTextfield} from "./schemas/general/textfield"
 
 export class RXElement extends Node{
   constructor() {
@@ -49,6 +50,7 @@ export class RXElement extends Node{
       this.$schema.groups[groupName] = this.groups[groupName]
     }
 
+    addonGeneralTextfield(this)
     addonClasses(this)
     addonAttributes(this)
   }

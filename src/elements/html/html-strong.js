@@ -1,5 +1,4 @@
 import {RXElement} from "../rxelement"
-import parkMiniEditbar from "../../core/park-mini-editbar"
 import {addonUtilColor} from "../schemas/utilities/color"
 import {addonUtilBorder} from "../schemas/utilities/border"
 import {addonUtilPadding} from "../schemas/utilities/padding"
@@ -26,6 +25,7 @@ export class HTMLStrong extends RXElement{
     this.$meta.innerHTML = "Strong text ..."
     this.label = "Strong"
 
+    this.becomeToTextfield()
     addonUtilColor(this)
     addonUtilBorder(this)
     addonUtilMargin(this)
@@ -39,11 +39,4 @@ export class HTMLStrong extends RXElement{
     return new HTMLStrong
   }
   
-  toViewModel(){
-    let model = super.toViewModel()
-
-    parkMiniEditbar(model, this)
-
-    return model
-  }
 }

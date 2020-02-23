@@ -1,5 +1,4 @@
 import {RXElement} from "../rxelement"
-import parkMiniEditbar from "../../core/park-mini-editbar"
 import {addonUtilColor} from "../schemas/utilities/color"
 import {addonUtilBorder} from "../schemas/utilities/border"
 import {addonUtilPadding} from "../schemas/utilities/padding"
@@ -17,8 +16,6 @@ export class HTMLSpan extends RXElement{
     this.toolboxInfo.elementName = "Span"
     this.className = 'HTMLSpan'
 
-    this.editMarginStyle = {}
-
     //this.groups.paragraphOptions = {
     //  label:'Span Options'
     //}
@@ -26,6 +23,7 @@ export class HTMLSpan extends RXElement{
     this.$meta.innerHTML = "Span text ..."
     this.label = "Span"
 
+    this.becomeToTextfield()
     addonUtilColor(this)
     addonUtilBorder(this)
     addonUtilMargin(this)
@@ -39,11 +37,4 @@ export class HTMLSpan extends RXElement{
     return new HTMLSpan
   }
   
-  toViewModel(){
-    let model = super.toViewModel()
-
-    parkMiniEditbar(model, this)
-
-    return model
-  }
 }

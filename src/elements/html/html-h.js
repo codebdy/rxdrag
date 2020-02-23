@@ -1,5 +1,4 @@
 import {RXElement} from "../rxelement"
-//import parkMiniEditbar from "../../../core/park-mini-editbar"
 import {addonHeadingTag} from "../schemas/heading/tag"
 import {addonHeadingDisplay} from "../schemas/heading/display"
 //import {addonUtilBorder} from "../../schemas/utilities/border"
@@ -23,6 +22,7 @@ export class HTMLH extends RXElement{
 
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLSpan']
 
+    this.becomeToTextfield()
     addonHeadingTag(this, 'typographyOptions')
     addonHeadingDisplay(this, 'typographyOptions')
   }
@@ -31,10 +31,4 @@ export class HTMLH extends RXElement{
     return new HTMLH
   }
   
-  /*toViewModel(){
-    let model = super.toViewModel()
-
-    parkMiniEditbar(model, this)
-    return model
-  }*/
 }

@@ -15,7 +15,7 @@ export class BSButton extends RXElement{
     this.toolboxInfo.elementName = "Button"
     this.className = 'BSButton'
 
-    this.editMarginStyle.padding = ''
+    this.editMarginStyle.padding = '20px'
     //this.editMarginStyle = {}
 
     this.groups.buttonOptions = {
@@ -27,6 +27,7 @@ export class BSButton extends RXElement{
     this.$meta.classList.push('btn')
     this.acceptedChildren=['HTMLSpan','HTMLDiv','BSBadge']
 
+    this.becomeToTextfield()
     addonButtonContextual(this)
     addonButtonSize(this)
     addonButtonActive(this)
@@ -57,7 +58,7 @@ export class BSButton extends RXElement{
   }
 
   loadConfig(){
-    this.pushChild(new HTMLSpan().setInnerHTML('Button'))
+    //this.pushChild(new HTMLSpan().setInnerHTML('Button'))
     return this
   }
 }
