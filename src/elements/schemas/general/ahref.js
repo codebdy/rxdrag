@@ -10,7 +10,7 @@ class AHref extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
+    this.metaFragment = '#' 
 
     this.fieldName = 'aHref'
   }

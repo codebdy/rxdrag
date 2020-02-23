@@ -1,5 +1,6 @@
 import {RXElement} from "../../rxelement"
 import {HTMLA} from "../../html/html-a"
+import {addonClasses} from "../../schemas/general/classes"
 
 
 export class BSNavbarBrand extends HTMLA{
@@ -7,10 +8,10 @@ export class BSNavbarBrand extends HTMLA{
     super()
     this.toolboxInfo.groupId = 'groupComponents'
     this.toolboxInfo.elementId = 'bsNavbarBrand'
-    this.toolboxInfo.elementName = "NavbarBrand"
+    this.toolboxInfo.elementName = "Navbar Brand"
     this.className = 'BSNavbarBrand'
 
-    this.editMarginStyle.padding = ''
+    this.editMarginStyle.padding = '20px'
     //this.editMarginStyle = {}
 
     this.groups.navbarBrandOptions = {
@@ -20,6 +21,8 @@ export class BSNavbarBrand extends HTMLA{
     this.acceptedChildren=''
     this.addClass('navbar-brand')
     this.$meta.innerHTML = "Brand"
+
+    addonClasses(this).setDefaultValue(['navbar-brand'])
   }
 
   make(){

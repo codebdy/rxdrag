@@ -42,4 +42,9 @@ export class OptionFragment{
     }
   }
 
+  setDefaultValue(defaultValue){
+    this.schema.defaultValue = defaultValue
+    return this
+  }
+
 }

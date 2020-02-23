@@ -34,5 +34,5 @@ export default {
   button : new BSButton,
   buttonGroup : new BSButtonGroup,
   navbar : new BSNavbar,
-  navbarBrand: new BSNavbarBrand,
+  navbarBrand : new BSNavbarBrand,
 }

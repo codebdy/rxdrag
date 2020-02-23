@@ -36,7 +36,7 @@ export class OpLabelGroup extends OpInput{
   constructor(){
     super()
     this.cssClass('op-label-group')
-    this.values = new RXArray
+    this.value = new RXArray
     this.onRemoveValue = (value)=>{}
     this.addLabels()
     this.checkEmperty()
@@ -44,7 +44,7 @@ export class OpLabelGroup extends OpInput{
 
   addLabel(value){
     if(!value) return
-    this.values.add(value)
+    this.value.add(value)
     let label = new OpLabel(value).setRightIcon('×')
     label.rightIconClick = (labelText)=>{
       this.removeLabel(labelText)
@@ -55,13 +55,13 @@ export class OpLabelGroup extends OpInput{
 
   addLabels(){
     this.clearChild()
-    this.values.forEach((value)=>{
+    this.value.forEach((value)=>{
       this.addLabel(value)
     })
   }
 
   checkEmperty(){
-    if(this.values.length === 0){
+    if(this.value.length === 0){
       this.setInnerHTML('<div class="not-set-value">NOT SET</div>')
     }
     else{
@@ -69,10 +69,10 @@ export class OpLabelGroup extends OpInput{
     }
   }
 
-  setValues(values){
+  setValues(value){
     this.clearChild()
-    this.values.length = 0
-    values.forEach((value)=>{
+    this.value.length = 0
+    value.forEach((value)=>{
       this.addLabel(value)
     })
     this.checkEmperty()
@@ -80,7 +80,7 @@ export class OpLabelGroup extends OpInput{
   }
 
   removeLabel(labelText){
-    this.values.remove(labelText)
+    this.value.remove(labelText)
     this.checkEmperty()
     this.addLabels()
     this.refresh()
@@ -88,14 +88,15 @@ export class OpLabelGroup extends OpInput{
 }
 
 export class OpLabelsInput extends OpInput{
-  constructor(){
-    super()
+  constructor(value, schema){
+    super(value, schema.defaultValue)
     this.cssClass('op-labels-input')
-    this.values = new RXArray
-    this.values.push('test1')
-    this.values.push('test2')
-    this.values.push('col-md-xx')
-    this.labelGroup = new RXComponent().cssClass('op-label-group')
+    this.value = new RXArray
+    this.value.push.apply(this.value, value)
+    //this.value.push('test1')
+    //this.value.push('test2')
+    //this.value.push('col-md-xx')
+    this.labelGroup = new RXComponent().cssClass('op-label-group').show()
     this.pushChild(
         new RXComponent().pushChild(this.labelGroup)
       )
@@ -130,9 +131,10 @@ export class OpLabelsInput extends OpInput{
         if(value){
           value.split(' ').forEach((newValue)=>{
             if(newValue){
-              this.values.add(newValue)
+              this.value.add(newValue)
             }
           })
+          this.onValueChanged(this.value)
           this.addLabels()
           this.labelGroup.refresh()
         }
@@ -150,7 +152,7 @@ export class OpLabelsInput extends OpInput{
 
   addLabels(){
     this.labelGroup.clearChild()
-    this.values.forEach((value)=>{
+    this.value.forEach((value)=>{
       let label = new OpLabel(value).setRightIcon('×')
       label.rightIconClick = (labelText)=>{
         this.removeLabel(labelText)
@@ -160,9 +162,14 @@ export class OpLabelsInput extends OpInput{
   }
 
   removeLabel(labelText){
-    this.values.remove(labelText)
+    this.value.remove(labelText)
     this.addLabels()
     this.labelGroup.refresh()
   }
+
+  isShowingDefault(){
+    return this.defaultValue.sort().toString() === this.value.sort().toString()
+  }
+
 }
 
