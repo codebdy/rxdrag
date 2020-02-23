@@ -6,6 +6,7 @@ import {OpSwitch} from "./switch"
 import {ButtonGroup, OpButton} from "./buttons"
 import {OpSelect} from "./select"
 import {OpLabelsInput} from "./label"
+import {OpLabelGroup} from "./label"
 import {OpNameValueInput} from "./name-value"
 import {OpBorderInput} from "./border-input"
 import {OpImageSelect} from "./image-select"
@@ -93,6 +94,9 @@ export class OptionRow extends RowBase{
     }
     if(schema.widget ==='OpNameValueInput'){
       return new OpNameValueInput(value, this.schema)
+    }
+    if(schema.widget ==='OpLabelGroup'){
+      return new OpLabelGroup(value, this.schema)
     }
 
   }
