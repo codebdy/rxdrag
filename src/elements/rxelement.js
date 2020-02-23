@@ -84,7 +84,7 @@ export class RXElement extends Node{
       parkMiniEditbar(model, this)
       model.styles.padding = ''
     }
-    else{
+    else if(rxEditor.state.showEditMargin){
       model.styles.padding = this.editMarginStyle.padding
     }
 

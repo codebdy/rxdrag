@@ -385,9 +385,9 @@ export class Node{
 
     let styles = {}
 
-    if(rxEditor.state.showEditMargin){
-      Object.assign(styles, this.editMarginStyle)
-    }
+    //if(rxEditor.state.showEditMargin){
+    //  Object.assign(styles, this.editMarginStyle)
+    //}
     Object.assign(styles, this.state.styles)
 
     return {
