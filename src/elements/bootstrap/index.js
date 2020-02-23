@@ -15,6 +15,8 @@ import {BSButton} from "./components/bs-button"
 import {BSButtonGroup} from "./components/bs-button-group"
 
 import {BSNavbar} from "./components/bs-navbar"
+import {BSNavbarBrand} from "./components/bs-navbar-brand"
+
 
 export default {
   container : new BSContainer,
@@ -32,4 +34,5 @@ export default {
   button : new BSButton,
   buttonGroup : new BSButtonGroup,
   navbar : new BSNavbar,
+  navbarBrand: new BSNavbarBrand,
 }
