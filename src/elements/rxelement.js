@@ -50,7 +50,8 @@ export class RXElement extends Node{
       this.$schema.groups[groupName] = this.groups[groupName]
     }
 
-    addonGeneralTextfield(this)
+    //在每个子类中添加
+    //addonGeneralTextfield(this)
     addonClasses(this)
     addonAttributes(this)
   }
