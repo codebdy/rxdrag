@@ -1,7 +1,7 @@
-import {RXTextfieldable} from "./textfieldable"
+import {RXElement} from "../rxelement"
 import {addonTypyListInlineItem} from "../schemas/content/list-inline-item"
 
-export class HTMLLi extends RXTextfieldable{
+export class HTMLLi extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupHtml'
@@ -19,6 +19,7 @@ export class HTMLLi extends RXTextfieldable{
     this.label = "li"
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol']
+    this.becomeToTextfield()
 
     addonTypyListInlineItem(this)
   }

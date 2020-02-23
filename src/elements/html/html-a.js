@@ -1,12 +1,12 @@
 import {RXElement} from "../rxelement"
-import {RXTextfieldable} from "./textfieldable"
+//import {RXTextfieldable} from "./textfieldable"
 import {addonAHref} from "../schemas/general/ahref"
 import {addonATarget} from "../schemas/general/atarget"
 import {addonGeneralTitle} from "../schemas/general/title"
 import {addonAlertLink} from "../schemas/components/alert/link"
 
 
-export class HTMLA extends RXTextfieldable{
+export class HTMLA extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupHtml'
@@ -23,7 +23,7 @@ export class HTMLA extends RXTextfieldable{
     this.$meta.tag = 'a'
     this.label = "a"
     this.$meta.innerHTML = "Sample Link "
-    this.$meta.generalTextfield = 'contentEditable'
+    this.becomeToTextfield()
 
     addonAHref(this)
     addonATarget(this)

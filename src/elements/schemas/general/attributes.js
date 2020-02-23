@@ -21,7 +21,7 @@ class Attributes extends OptionFragment{
 
   metaToModel(model, meta){
     let metaFragment = meta[this.fieldName]
-    model.attributes['aria-label'] = metaFragment
+    model[this.fieldName] = metaFragment
   }
 }
 

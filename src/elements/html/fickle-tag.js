@@ -1,7 +1,7 @@
-import {RXTextfieldable} from "./textfieldable"
+import {RXElement} from "../rxelement"
 //import {addonTypyFickleTagstInlineItem} from "../schemas/content/list-inline-item"
 
-export class HTMLFickleTag extends RXTextfieldable{
+export class HTMLFickleTag extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupHtml'

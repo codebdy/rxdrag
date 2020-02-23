@@ -75,6 +75,10 @@ export class RXElement extends Node{
 
     if(this.$meta.generalTextfield === 'contentEditable'){
       parkMiniEditbar(model, this)
+      model.styles.padding = ''
+    }
+    else{
+      model.styles.padding = this.editMarginStyle.padding
     }
 
     return model

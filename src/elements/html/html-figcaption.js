@@ -1,7 +1,7 @@
-import {RXTextfieldable} from "./textfieldable"
+import {RXElement} from "../rxelement"
 import {addonFigureCaption} from "../schemas/figure/figure-caption"
 
-export class HTMLFigcaption extends RXTextfieldable{
+export class HTMLFigcaption extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupHtml'
@@ -21,6 +21,7 @@ export class HTMLFigcaption extends RXTextfieldable{
     this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
+    this.becomeToTextfield()
     addonFigureCaption(this)
   }
 

@@ -1,9 +1,9 @@
-import {RXTextfieldable} from "./textfieldable"
+import {RXElement} from "../rxelement"
 import {addonHeadingPseudo} from "../schemas/heading/pseudo-heading"
 import {addonHeadingDisplay} from "../schemas/heading/display"
 import {addonTypyLead} from "../schemas/content/lead"
 
-export class HTMLCode extends RXTextfieldable{
+export class HTMLCode extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupHtml'
@@ -20,6 +20,8 @@ export class HTMLCode extends RXTextfieldable{
     this.$meta.tag = 'code'
     this.label = "code"
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLSpan']
+    
+    this.becomeToTextfield()
 
     addonHeadingPseudo(this, 'typographyOptions')
     addonHeadingDisplay(this, 'typographyOptions')

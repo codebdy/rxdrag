@@ -1,9 +1,9 @@
-import {RXTextfieldable} from "./textfieldable"
+import {RXElement} from "../rxelement"
 import {addonTableContextual} from "../schemas/table/contextual"
 import {addonUtilColor} from "../schemas/utilities/color"
 import {addonUtilText} from "../schemas/utilities/text"
 
-export class HTMLTh extends RXTextfieldable{
+export class HTMLTh extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupHtml'
@@ -24,6 +24,7 @@ export class HTMLTh extends RXTextfieldable{
     this.rejectChildren = ['BSCol', 'HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
+    this.becomeToTextfield()
     addonTableContextual(this, 'thOptions')
     addonUtilColor(this)
     addonUtilText(this)

@@ -1,5 +1,8 @@
 import {HTMLNav} from "../../html/html-nav"
+import {BSNavbarBrand} from "./bs-navbar-brand"
+import {BSNavbarToggler} from "./bs-navbar-toggler"
 
+ 
 import {addonUtilPosition} from "../../schemas/utilities/position"
 import {addonNavbarContextual} from "../../schemas/components/navbar/contextual"
 import {addonNavbarExpand} from "../../schemas/components/navbar/expand"
@@ -40,6 +43,8 @@ export class BSNavbar extends HTMLNav{
   }
 
   loadConfig(){
+    this.pushChild(new BSNavbarBrand)
+    this.pushChild(new BSNavbarToggler)
     //this.setField('badgeContextual', 'badge-primary')
     //this.setField('innerHTML', 'badge')
     return this

@@ -1,4 +1,4 @@
-import {RXTextfieldable} from "../../html/textfieldable"
+import {RXElement} from "../../rxelement"
 import {HTMLSpan} from "../../html/html-span"
 import {addonButtonContextual} from "../../schemas/components/button/contextual"
 import {addonButtonActive} from "../../schemas/components/button/active"
@@ -7,7 +7,7 @@ import {addonButtonSize} from "../../schemas/components/button/size"
 import {addonButtonTag} from "../../schemas/components/button/tag"
 import {addonButtonType} from "../../schemas/components/button/type"
 
-export class BSButton extends RXTextfieldable{
+export class BSButton extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupComponents'

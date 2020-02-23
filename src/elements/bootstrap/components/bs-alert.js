@@ -1,10 +1,10 @@
-import {RXTextfieldable} from "../../html/textfieldable"
+import {RXElement} from "../../rxelement"
 import {HTMLSpan} from "../../html/html-span"
 import {HTMLA} from "../../html/html-a"
 import {BSCloseButton} from "./bs-close-button"
 import {addonAlertContextual} from "../../schemas/components/alert/contextual"
 
-export class BSAlert extends RXTextfieldable{
+export class BSAlert extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupComponents'

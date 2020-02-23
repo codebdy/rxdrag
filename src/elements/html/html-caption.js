@@ -1,7 +1,7 @@
-import {RXTextfieldable} from "./textfieldable"
+import {RXElement} from "../rxelement"
 //import {addonTypyCaptionstInthneItem} from "../schemas/content/thst-inthne-item"
 
-export class HTMLCaption extends RXTextfieldable{
+export class HTMLCaption extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupHtml'
@@ -21,7 +21,7 @@ export class HTMLCaption extends RXTextfieldable{
     this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
-    //addonTypyCaptionstInthneItem(this)
+    this.becomeToTextfield()
   }
 
   make(){

@@ -1,10 +1,10 @@
-import {RXTextfieldable} from "./textfieldable"
+import {RXElement} from "../rxelement"
 import {addonHeadingPseudo} from "../schemas/heading/pseudo-heading"
 import {addonHeadingDisplay} from "../schemas/heading/display"
 import {addonTypyLead} from "../schemas/content/lead"
 import {addonGeneralTextfield} from "../schemas/general/textfield"
 
-export class HTMLDd extends RXTextfieldable{
+export class HTMLDd extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupHtml'
@@ -22,6 +22,7 @@ export class HTMLDd extends RXTextfieldable{
     this.label = "dd"
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol']
+    this.becomeToTextfield()
   }
 
   make(){

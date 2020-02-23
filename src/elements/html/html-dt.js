@@ -1,4 +1,4 @@
-import {RXTextfieldable} from "./textfieldable"
+import {RXElement} from "../rxelement"
 import {addonUtilColor} from "../schemas/utilities/color"
 import {addonUtilBorder} from "../schemas/utilities/border"
 import {addonUtilPadding} from "../schemas/utilities/padding"
@@ -8,7 +8,7 @@ import {addonUtilText} from "../schemas/utilities/text"
 //import {addonHeadingDisplay} from "../../schemas/heading/display"
 //import {addonUtilBorder} from "../../schemas/utilities/border"
 
-export class HTMLDt extends RXTextfieldable{
+export class HTMLDt extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupHtml'
@@ -24,6 +24,8 @@ export class HTMLDt extends RXTextfieldable{
     this.$meta.tag = 'dt'
     this.$meta.innerHTML = "Dt text ..."
     this.label = "dt"
+
+    this.becomeToTextfield()
 
     addonUtilColor(this)
     addonUtilBorder(this)
