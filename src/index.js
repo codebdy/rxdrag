@@ -73,6 +73,8 @@ window.createRXEditorFM = ()=>{
 
   rxEditorFM.assemble('html.fackleTag')
 
+  rxEditorFM.assemble('icon.fontAwesome')
+
   return rxEditorFM
 }
 

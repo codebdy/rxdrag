@@ -51,8 +51,8 @@ export class Toolbox extends RXComponent{
       this.groupComponents =  new ToolboxGroup('Components','groupComponents', this.state).render(this.$dom)
     }
 
-    if(!this['groupTemplates']){
-      this.groupTemplates =  new ToolboxGroup('Templates','groupTemplates', this.state).render(this.$dom)
+    if(!this['groupIcons']){
+      this.groupIcons =  new ToolboxGroup('Icons','groupIcons', this.state).render(this.$dom)
     }
     
     if(!this['groupHtml']){

@@ -133,7 +133,7 @@ export class DragoverState extends CanDropState{
 export class ActiveState extends CanDropState{
   constructor(node) {
     super(node)
-    this.classList.push('actived')
+    this.classList.push('mouse-overed')
     this.enter = ()=>{
       rxEditor.activedLabel.show(node.label, node.view.$dom, 1)
     }

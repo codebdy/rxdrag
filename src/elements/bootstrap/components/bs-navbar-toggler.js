@@ -12,7 +12,7 @@ export class BSNavbarToggler extends RXElement{
     this.toolboxInfo.elementName = "Navbar Toggler"
     this.className = 'BSNavbarToggler'
 
-    this.editMarginStyle.padding = ''
+    this.editMarginStyle.padding = '20px'
     //this.editMarginStyle = {}
 
     this.groups.navbarTogglerOptions = {
@@ -20,7 +20,7 @@ export class BSNavbarToggler extends RXElement{
     }
     this.$meta.tag = 'button'
     this.label = "toggler"
-    this.acceptedChildren=[]
+    this.acceptedChildren=""
     this.addClass('navbar-toggler')
 
     addonClasses(this).setDefaultValue(['navbar-toggler'])

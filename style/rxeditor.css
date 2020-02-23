@@ -19,12 +19,12 @@
   outline:dashed #70baf7 1px;
 }
   
-.actived{
+.mouse-overed{
   outline: #a4d762 solid 1px;
   position:relative;
 }
 
-.actived::before{
+.mouse-overed::before{
   content:"";
   position: absolute;
   top:0;
