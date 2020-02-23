@@ -187,4 +187,8 @@ export class RXComponent{
     return this
   }
 
+  insertBefore(child, refence){
+    this.children.inertBefore(child, refence)
+  }
+
 }

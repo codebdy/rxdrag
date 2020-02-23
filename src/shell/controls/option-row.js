@@ -5,8 +5,8 @@ import {OpInput} from "./input"
 import {OpSwitch} from "./switch"
 import {ButtonGroup, OpButton} from "./buttons"
 import {OpSelect} from "./select"
-//import {OpLabelGroup} from "./label"
 import {OpLabelsInput} from "./label"
+import {OpNameValueInput} from "./name-value"
 import {OpBorderInput} from "./border-input"
 import {OpImageSelect} from "./image-select"
 import {OpTextField} from "./textfield"
@@ -91,10 +91,11 @@ export class OptionRow extends RowBase{
     if(schema.widget ==='OpImageSelect'){
       return new OpImageSelect(value, this.schema)
     }
+    if(schema.widget ==='OpNameValueInput'){
+      return new OpNameValueInput(value, this.schema)
+    }
 
   }
-
-
 }
 
 export class OptionResponsiveRow extends OptionRow{

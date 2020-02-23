@@ -345,3 +345,24 @@
 .remove-border.select-left .view{
   border-left:dotted rgba(255,255,255,0.2) 1px;
 }
+
+.op-name-value-input{
+  flex: 1;
+  align-items: center;
+}
+
+.op-name-value-pair{
+  display:flex; 
+  display: -webkit-flex; 
+  flex-flow:row;
+  align-items: center;
+}
+
+.op-name-value-pair .ctl-textfield{
+  width: 100%;
+}
+
+.op-name-value-pair .op-icon-button{
+  width: 24px;
+  height: 24px;
+}

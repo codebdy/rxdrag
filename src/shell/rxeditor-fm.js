@@ -42,7 +42,7 @@ class Workspace extends RXComponent{
             <title>RXEditor Workspace</title>
             <link rel=stylesheet href="${this.config.mainCss}">
           </head>
-          <body style="background-color:#FFF;padding:0;width:100%; height:100%;">
+          <body id="page-top" style="background-color:#FFF;padding:0;width:100%; height:100%;">
             <div id="canvas"></div>
 
             <script type="text/javascript" src="${this.config.mainJs}"></script>
