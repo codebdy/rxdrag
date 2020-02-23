@@ -88,6 +88,10 @@ export class RXElement extends Node{
       model.styles.padding = this.editMarginStyle.padding
     }
 
+    if(rxEditor.state.showEditMargin){
+      model.styles.margin = this.editMarginStyle.margin
+    }
+
     return model
   }
 

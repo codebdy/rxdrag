@@ -2,7 +2,9 @@ import {RXEditor} from "./core/rxeditor"
 import {RXEditorFM} from "./shell/rxeditor-fm"
 import initEditor from "./shell/init-editor"
 
-initEditor()
+window.creatEditorCore = ()=>{
+  initEditor()
+}
 
 window.createRXEditorFM = ()=>{
   window.rxEditor = new RXEditor

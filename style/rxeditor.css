@@ -24,7 +24,7 @@
   position:relative;
 }
 
-.mouse-overed::before{
+/*.mouse-overed::before{
   content:"";
   position: absolute;
   top:0;
@@ -34,7 +34,7 @@
   outline: #aceeaf solid 1px;
   background-color: #effcf0;
   z-index: -1
-}
+}*/
 
 .focused{
   outline: #75b325 solid 2px;

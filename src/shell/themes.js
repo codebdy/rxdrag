@@ -10,6 +10,7 @@ let themes = {
     ],
   },
   agency : {
+    id:'agency',
     cssFiles:[
       'themes/agency/vendor/bootstrap/css/bootstrap.min.css',
       'themes/agency/vendor/fontawesome-free/css/all.min.css',
@@ -31,9 +32,21 @@ let themes = {
 
     uiBlocks:[
       {
-        id:'agency.header'
+        toolboxInfo:{
+          groupId : 'groupTheme',
+          elementId : 'header',
+          elementName : "Header",
+        },
+        
+        json:`
+        [{"name":"BSNavbar","meta":{"tag":"nav","classList":["navbar"],"styles":{},"attributes":{},"navbarContextual":"","navbarExpand":{"xs":"","sm":"","md":"","lg":"","xl":""},"utilPosition":"","htmlId":""},"children":[{"name":"BSNavbarBrand","meta":{"tag":"a","classList":["navbar-brand"],"styles":{},"attributes":{},"innerHTML":"Brand","generalTextfield":"contentEditable","aHref":"#","aTarget":"","generalTitle":"","alertLink":""},"children":[]},{"name":"BSNavbarToggler","meta":{"tag":"button","classList":["navbar-toggler"],"styles":{},"attributes":{}},"children":[{"name":"HTMLSpan","meta":{"tag":"span","classList":["navbar-toggler-icon"],"styles":{},"attributes":{},"innerHTML":"","generalTextfield":"","utilColor":{"textColor":"","backgroundColor":""},"utilBorder":{"borderColor":"","addBorder":[],"removeBorder":[],"borderRadius":""},"utilMargin":{"all":{"xs":"","sm":"","md":"","lg":"","xl":""},"horizontal":{"xs":"","sm":"","md":"","lg":"","xl":""},"vertical":{"xs":"","sm":"","md":"","lg":"","xl":""},"top":{"xs":"","sm":"","md":"","lg":"","xl":""},"right":{"xs":"","sm":"","md":"","lg":"","xl":""},"bottom":{"xs":"","sm":"","md":"","lg":"","xl":""},"left":{"xs":"","sm":"","md":"","lg":"","xl":""}},"utilPadding":{"all":{"xs":"","sm":"","md":"","lg":"","xl":""},"horizontal":{"xs":"","sm":"","md":"","lg":"","xl":""},"vertical":{"xs":"","sm":"","md":"","lg":"","xl":""},"top":{"xs":"","sm":"","md":"","lg":"","xl":""},"right":{"xs":"","sm":"","md":"","lg":"","xl":""},"bottom":{"xs":"","sm":"","md":"","lg":"","xl":""},"left":{"xs":"","sm":"","md":"","lg":"","xl":""}},"utilText":{"justify":"","align":{"xs":"","sm":"","md":"","lg":"","xl":""},"wrapping":"","truncate":"","wordBreak":"","transform":"","weight":"","italics":"","monospace":"","resetColor":"","decoration":""}},"children":[]}]}]
+        `,
       },
     ],
+
+    initialPage:`
+      [{"name":"BSNavbar","meta":{"tag":"nav","classList":["navbar"],"styles":{},"attributes":{},"navbarContextual":"","navbarExpand":{"xs":"","sm":"","md":"","lg":"","xl":""},"utilPosition":"","htmlId":""},"children":[{"name":"BSNavbarBrand","meta":{"tag":"a","classList":["navbar-brand"],"styles":{},"attributes":{},"innerHTML":"Brand","generalTextfield":"contentEditable","aHref":"#","aTarget":"","generalTitle":"","alertLink":""},"children":[]},{"name":"BSNavbarToggler","meta":{"tag":"button","classList":["navbar-toggler"],"styles":{},"attributes":{}},"children":[{"name":"HTMLSpan","meta":{"tag":"span","classList":["navbar-toggler-icon"],"styles":{},"attributes":{},"innerHTML":"","generalTextfield":"","utilColor":{"textColor":"","backgroundColor":""},"utilBorder":{"borderColor":"","addBorder":[],"removeBorder":[],"borderRadius":""},"utilMargin":{"all":{"xs":"","sm":"","md":"","lg":"","xl":""},"horizontal":{"xs":"","sm":"","md":"","lg":"","xl":""},"vertical":{"xs":"","sm":"","md":"","lg":"","xl":""},"top":{"xs":"","sm":"","md":"","lg":"","xl":""},"right":{"xs":"","sm":"","md":"","lg":"","xl":""},"bottom":{"xs":"","sm":"","md":"","lg":"","xl":""},"left":{"xs":"","sm":"","md":"","lg":"","xl":""}},"utilPadding":{"all":{"xs":"","sm":"","md":"","lg":"","xl":""},"horizontal":{"xs":"","sm":"","md":"","lg":"","xl":""},"vertical":{"xs":"","sm":"","md":"","lg":"","xl":""},"top":{"xs":"","sm":"","md":"","lg":"","xl":""},"right":{"xs":"","sm":"","md":"","lg":"","xl":""},"bottom":{"xs":"","sm":"","md":"","lg":"","xl":""},"left":{"xs":"","sm":"","md":"","lg":"","xl":""}},"utilText":{"justify":"","align":{"xs":"","sm":"","md":"","lg":"","xl":""},"wrapping":"","truncate":"","wordBreak":"","transform":"","weight":"","italics":"","monospace":"","resetColor":"","decoration":""}},"children":[]}]}]
+    `,
 
   }
 }
