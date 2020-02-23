@@ -2,7 +2,7 @@ import {HTMLNav} from "../../html/html-nav"
 
 import {addonUtilPosition} from "../../schemas/utilities/position"
 import {addonNavbarContextual} from "../../schemas/components/navbar/contextual"
-
+import {addonNavbarExpand} from "../../schemas/components/navbar/expand"
 
 export class BSNavbar extends HTMLNav{
   constructor() {
@@ -24,6 +24,7 @@ export class BSNavbar extends HTMLNav{
     this.addClass('navbar')
 
     addonNavbarContextual(this)
+    addonNavbarExpand(this)
     addonUtilPosition(this, 'navbarOptions')
   }
 
