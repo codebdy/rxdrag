@@ -21,6 +21,7 @@ window.createRXEditorFM = ()=>{
   rxEditorFM.assemble('bootstrap.breadcrumb')
   rxEditorFM.assemble('bootstrap.button')
   rxEditorFM.assemble('bootstrap.buttonGroup')
+  rxEditorFM.assemble('bootstrap.navbar')
   rxEditorFM.assemble('bootstrap.closeButton')
 
   rxEditorFM.assemble('html.a')

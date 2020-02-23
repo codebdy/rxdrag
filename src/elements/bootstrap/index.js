@@ -14,6 +14,8 @@ import {BSCloseButton} from "./components/bs-close-button"
 import {BSButton} from "./components/bs-button"
 import {BSButtonGroup} from "./components/bs-button-group"
 
+import {BSNavbar} from "./components/bs-navbar"
+
 export default {
   container : new BSContainer,
   row : new BSRow,
@@ -29,4 +31,5 @@ export default {
   breadcrumb : new BSBreadcrumb,
   button : new BSButton,
   buttonGroup : new BSButtonGroup,
+  navbar : new BSNavbar,
 }
