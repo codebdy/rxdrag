@@ -23,6 +23,7 @@ export class RXEditorFM{
     this.state = new EditorState
     this.canvasState = new CanvasState
     this.itemRxNameIds = []
+    this.currentTheme = themes.agency
   }
 
   assemble(rxNameId){
@@ -51,7 +52,7 @@ export class RXEditorFM{
                      .pushChild(aboutModel)
                      .pushChild(themeModel)
                      .render(this.domElement)
-    this.workspace.loadTheme()
+    this.workspace.loadTheme(this.currentTheme)
     this.workspace.resizeScreen(this.state.screenWidth)
 
     this.drawer = new Drawer()
@@ -70,7 +71,9 @@ export class RXEditorFM{
     this.commandProxy.serveForShell = this
 
     themeModel.onThemeSelected = (theme)=>{
-      this.commandProxy.changeTheme(themes[theme])
+      this.currentTheme = theme
+      this.workspace.loadTheme(this.currentTheme)
+      //this.commandProxy.changeTheme(themes[theme])
     }
 
     this.canvasState.watch('changed', (state)=>{
@@ -105,13 +108,13 @@ export class RXEditorFM{
 
   onRxEditorReady(){
     //设置默认主题
-    this.commandProxy.changeTheme(themes['agency'])
+    //this.commandProxy.changeTheme(themes['agency'])
 
     this.drawer.render(this.domElement)
     //请求所有可装配元素
-    for(var i in this.itemRxNameIds){
-      this.commandProxy.requestAssemble(this.itemRxNameIds[i], this.drawer.toolbox.assembleToolboxItem)
-    }
+    //for(var i in this.itemRxNameIds){
+    this.commandProxy.requestAssemble(this.currentTheme, this.drawer.toolbox.assembleToolbox)
+    //}
 
     //跟踪工具拖拽
     this.drawer.toolbox.on('draggingFromToolbox', (rxNameId)=>{

@@ -2,25 +2,28 @@ import {RXComponent} from "../basic/rxcomponent"
 import {ObjectState} from "../basic/object-state"
 import {ToolGroup,ToolboxState} from "./controls/tool-group"
 
+
+
 export class Toolbox extends RXComponent{
   constructor(){
     super()
     this.state = new ToolboxState
     this.cssClass('toolbox')
-    this.assembleToolboxItem = (toolboxInfo)=>{
+    this.assembleToolbox = (toolbox)=>{
       this.initGroups()
       //let rxModuleNameId = toolboxInfo.groupId
       //if(!this[rxModuleNameId]){
       //  this[rxModuleNameId] = new ToolboxGroup(toolboxInfo.moduleName).render(this.$dom)
       //}
+      toolbox.forEach((toolboxInfo)=>{
+        let toolItem = this[toolboxInfo.groupId].add(toolboxInfo)
 
-      let toolboxItem = this[toolboxInfo.groupId].add(toolboxInfo)
-
-      toolboxItem.domOn('mousedown',(event)=>{
-        this.draggingFromToolbox(toolboxItem.toolboxInfo.rxNameId)
-        toolboxItem.mouseFollower.offsetX = event.offsetX
-        toolboxItem.mouseFollower.offsetY = event.offsetY
-        this.beginFollowMouse(toolboxItem.mouseFollower, event)
+        toolItem.onDrag= (toolboxItem, event)=>{
+          this.draggingFromToolbox(toolboxItem.toolboxInfo.rxNameId)
+          toolboxItem.mouseFollower.offsetX = event.offsetX
+          toolboxItem.mouseFollower.offsetY = event.offsetY
+          this.beginFollowMouse(toolboxItem.mouseFollower, event)
+        }
       })
     }
 
@@ -135,6 +138,12 @@ class ToolboxItem extends RXComponent{
     this.mouseFollower.cssClass('element')
     this.mouseFollower.innerHTML = this.innerHTML
     this.pushChild(this.mouseFollower)
+
+    this.onDrag = (toolboxInfo, event)
+
+    this.domOn('mousedown',(event)=>{
+      this.onDrag(this, event)
+    })
   }
 
 }

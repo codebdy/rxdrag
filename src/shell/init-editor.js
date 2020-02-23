@@ -1,6 +1,6 @@
 import {RXEditor} from "../core/rxeditor"
 import {RXEditorCommandProxy} from "../core/rxeditor-command-proxy"
-import loadElements from "../elements/index"
+import loadElements from "../elements/load-elements"
 
 export default function initEditor(){
   window.rxEditor = new RXEditor

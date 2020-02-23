@@ -1,7 +1,7 @@
 export class IFrameCommandProxy{
   constructor(workspaceFrame){
     this.workspaceFrame = workspaceFrame
-    this.waitingAccembles = {}
+    //this.waitingAccembles = {}
     window.addEventListener("message", (event)=>{
         this.handleMessage(event.data);
     });
@@ -77,8 +77,8 @@ export class IFrameCommandProxy{
         this.serveForShell.onRxEditorReady()
         break;
       case 'replyAssemble':
-        let rxNameId = message.toolboxInfo.rxNameId
-        this.waitingAccembles[rxNameId](message.toolboxInfo)
+        //let rxNameId = message.toolboxInfo.rxNameId
+        this.waitingAccemble(message.toolbox)
         break;
       case 'takeOverDraggingByWorkspace':
         this.serveForShell.endFollowMouse()
@@ -98,11 +98,11 @@ export class IFrameCommandProxy{
     }
   }
 
-  requestAssemble(rxNameId, replyFunction){
-    this.waitingAccembles[rxNameId] = replyFunction
+  requestAssemble(theme, replyFunction){
+    this.waitingAccemble = replyFunction
     this.sendMessageToRXEditor({
       name: 'requestAssemble',
-      rxNameId:rxNameId
+      theme: theme,
     })
   }
 

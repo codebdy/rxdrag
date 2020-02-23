@@ -21,16 +21,21 @@ export class Workspace extends RXComponent{
     iframe.height = "100%"
     this.$dom.appendChild(iframe)
 
-    this.loadTheme()
+    //this.loadTheme()
     return this
   }
 
   loadTheme(theme){
     let iframedocument =  this.iframe.contentDocument;
+    let styleLinks = ''
+    theme.cssFiles.forEach((linkFile)=>{
+      styleLinks +=`<link href="${linkFile}" rel="stylesheet" type="text/css">`
+    })
     let iframeContent = `
         <html style="width:100%;height:100%;">
           <head>
             <title>RXEditor Workspace</title>
+            ${styleLinks}
             <link rel=stylesheet href="${this.config.mainCss}">
           </head>
           <body id="page-top" style="background-color:#FFF;padding:0;width:100%; height:100%;">

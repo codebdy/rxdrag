@@ -10,7 +10,7 @@ window.createRXEditorFM = ()=>{
   window.rxEditor = new RXEditor
 
   let rxEditorFM = new RXEditorFM
-  rxEditorFM.assemble('bootstrap.container')
+  /*rxEditorFM.assemble('bootstrap.container')
   rxEditorFM.assemble('bootstrap.row')
   rxEditorFM.assemble('bootstrap.column')
   rxEditorFM.assemble('bootstrap.w100')
@@ -77,7 +77,7 @@ window.createRXEditorFM = ()=>{
 
   rxEditorFM.assemble('html.fackleTag')
 
-  rxEditorFM.assemble('icon.fontAwesome')
+  rxEditorFM.assemble('icon.fontAwesome')*/
 
   return rxEditorFM
 }

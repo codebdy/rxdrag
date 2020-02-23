@@ -79,6 +79,9 @@ export class Drawer extends RXComponent{
   }
 
   render(parentElement){
+    if(this.$dom){
+      parentElement.removeChild(this.$dom)
+    }
     super.render(parentElement)
     this.layout.header.domOn('click', ()=>{
       this.state.activeDrawerTab = 'layout'

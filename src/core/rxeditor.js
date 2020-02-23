@@ -104,9 +104,19 @@ export class RXEditor{
     this.clearFocusStates()
   }
 
-  getElementDefine(rxNameId){
-    let element = this.getElementByRxNameId(rxNameId)
-    return element.toolboxInfo
+  assembleWithTheme(theme){
+    let toolbox = []
+    for(var moduleName in this.elements){
+      let theModule = this.elements[moduleName]
+      for(var elementName in theModule){
+        let toolboxInfo = theModule[elementName].toolboxInfo
+        toolboxInfo.rxNameId = moduleName + "." + elementName
+        toolbox.push(toolboxInfo)
+      }
+    }
+    //let element = this.getElementByRxNameId(rxNameId)
+    //return element.toolboxInfo
+    return toolbox
   }
 
   getElementByRxNameId(rxNameId){
@@ -272,7 +282,7 @@ export class RXEditor{
     this.styleText.innerHTML = cssText
   }*/
 
-  changeTheme(theme){
+  /*changeTheme(theme){
 
     this.clearCssFiles()
     //this.clearJsFiles()
@@ -285,7 +295,7 @@ export class RXEditor{
       link.setAttribute('type', 'text/css')
       this.styleTags.push(link) 
       head.appendChild(link); 
-    })
+    })*/
 
     /*let body = document.body || document.getElementsByTagName('body')[0]; 
     theme.jsFiles.forEach((jsFile)=>{
@@ -293,11 +303,11 @@ export class RXEditor{
       link.setAttribute('src', jsFile)
       this.styleTags.push(link)
       body.appendChild(link); 
-    })*/
+    })
 
-  }
+  }*/
 
-  clearCssFiles(){
+ /* clearCssFiles(){
     if(this.styleTags){
       this.styleTags.length = 0
       let head = document.head || document.getElementsByTagName('head')[0]; 
@@ -322,7 +332,7 @@ export class RXEditor{
     else{
       this.jsTags = []
     }
-  }
+  }*/
 
 
 
