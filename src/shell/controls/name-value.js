@@ -9,7 +9,6 @@ class OpNameValuePair extends RXComponent{
     super()
     this.name = name
     this.value = value
-    this.seedId()
     this.onValueChanged = (pair)=>{}
     this.onDeleted = (pair)=>{}
     let deleteButton = new OpIconButton('×')
@@ -56,12 +55,6 @@ class OpNameValuePair extends RXComponent{
         .pushChild(deleteButton)
   }
 
-  seedId(){
-    if(!OpNameValuePair.idSeed) OpNameValuePair.idSeed = 1
-    OpNameValuePair.idSeed ++
-    this.id = OpNameValuePair.idSeed
-  }
-
 }
 
 export class OpNameValueInput extends OpInput{
@@ -72,7 +65,7 @@ export class OpNameValueInput extends OpInput{
     this.addButton = new OpIconButton('+')
     this.pushChild(this.addButton)
 
-    //this.addLabels()
+    this.valueToPairs()
 
     this.addButton.domOn('click', ()=>{
       this.addOnePair('', '')
@@ -80,12 +73,37 @@ export class OpNameValueInput extends OpInput{
     })
   }
 
+  valueToPairs(){
+    for(var name in this.value){
+      this.addOnePair(name, this.value[name])
+    }
+  }
+
+  pairsToValue(){
+    this.value = {}
+    this.pairs.forEach((pair)=>{
+      if(pair.name){
+        this.value[pair.name] = pair.value
+      }
+    })
+  }
+
   addOnePair(name, value){
     let nvPair = new OpNameValuePair(name, value)
     nvPair.onDeleted = (pair)=>{
       this.children.remove(pair)
+      this.pairs.remove(pair)
+      this.pairsToValue()
+      this.onValueChanged(this.value)
     }
+
+    nvPair.onValueChanged = (pair)=>{
+      this.pairsToValue()
+      this.onValueChanged(this.value)
+    }
+
     this.insertBefore(nvPair, this.addButton)
+    this.pairs.push(nvPair)
   }
 
   isShowingDefault(){
