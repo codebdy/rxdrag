@@ -165,6 +165,7 @@ export class OpLabelsInput extends OpInput{
     this.value.remove(labelText)
     this.addLabels()
     this.labelGroup.refresh()
+    this.onValueChanged(this.value)
   }
 
   isShowingDefault(){

@@ -109,9 +109,6 @@ export class RXEditorFM{
   }
 
   onRxEditorReady(){
-    //设置默认主题
-    //this.commandProxy.changeTheme(themes['agency'])
-    console.log('ready')
     this.drawer.render(this.domElement)
     //请求所有可装配元素
     //for(var i in this.itemRxNameIds){

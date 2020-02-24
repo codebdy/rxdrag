@@ -21,7 +21,6 @@
   
 .mouse-overed{
   outline: #a4d762 solid 1px;
-  position:relative;
 }
 
 /*.mouse-overed::before{
@@ -38,7 +37,6 @@
 
 .focused{
   outline: #75b325 solid 2px;
-  position:relative;
 }
 
 .dragged{
