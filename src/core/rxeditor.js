@@ -98,7 +98,7 @@ export class RXEditor{
   dragFromToolbox(rxNameId){
     if(this.commandManager.movingCommand || this.state.preview) return
     let element = this.getElementByRxNameId(rxNameId)
-    let draggedNode = element.make().loadConfig()
+    let draggedNode = element.clone()
     this.commandManager.startNew(draggedNode)
     this.beginFollowMouse()
     this.clearFocusStates()
