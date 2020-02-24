@@ -47,6 +47,7 @@ let themes = {
           //groupId : 'groupThemUI',
           elementId : 'header',
           elementName : "Header",
+          mouseFollowerWidth: '600px'
         },
         
         json:`

@@ -15,11 +15,11 @@ function insterAfter(newElement,targetElement){
 export class Node{
   constructor() {
     this.seedId()
-    this.toolboxInfo = {}
+    this.toolboxInfo = {mouseFollowerWidth : '200px'}
   	this.children = new RXArray
   	this.view = new NodeView()
     this.dropMargin = 30;
-    this.mouseFollowerWidth = '200px'
+    //this.mouseFollowerWidth = '200px'
 
     //空表示所有都接受，空数组表示都不接受
     this.acceptedChildren = new RXArray
@@ -88,11 +88,6 @@ export class Node{
       this.inertAfterSelf(copy)
       rxEditor.commandManager.duplicate(this, copy)
       rxEditor.render()
-    }
-
-    this.edit = (event)=>{
-      console.log('Edit')
-      event.stopPropagation()
     }
 
     this.up = (event)=>{
@@ -180,7 +175,7 @@ export class Node{
     let followerElement = document.createElement('div')
     followerElement.classList.add('mouse-follow')
     if(!this.parent){
-      followerElement.style.width = this.mouseFollowerWidth
+      followerElement.style.width = this.toolboxInfo.mouseFollowerWidth
     }
     this.renderMouseFollower(followerElement)
 
@@ -326,6 +321,7 @@ export class Node{
 
   clone(){
     let copy = this.make()
+    copy.toolboxInfo = JSON.parse(JSON.stringify(this.toolboxInfo))
     this.children.forEach((child)=>{  
       copy.pushChild(child.clone())
     })

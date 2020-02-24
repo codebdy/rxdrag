@@ -323,9 +323,9 @@ export class RXEditor{
     uiBlocks.forEach((uiBlock) =>{
       let dataJson = JSON.parse(uiBlock.json)
       let node = this.loadOneNode(dataJson)
-      //console.log(dataJson)
       node.toolboxInfo = JSON.parse(JSON.stringify(uiBlock.toolboxInfo))
       node.toolboxInfo.groupId = groudId
+      //node.mouseFollowerWidth = uiBlock.mouseFollowerWidth
       this.elements.theme[node.toolboxInfo.elementId] = node
     })
   }
