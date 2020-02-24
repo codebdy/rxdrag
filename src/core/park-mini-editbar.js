@@ -22,7 +22,8 @@ export default (model, node, noEnter = true)=>{
   }
 
   model.on.onpaste = (event)=>{
-    let plainText  =  event.clipboardData.getData('text/plain'); 
-    document.execCommand('insertText', false, plainText);
+    let plainText  =  event.clipboardData.getData('text/plain')
+    document.execCommand('insertText', false, plainText)
+    return false
   }
 }
