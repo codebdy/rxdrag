@@ -108,28 +108,38 @@ export class RXEditor{
     this.loadTheme(theme)
     let toolbox = {
       groups : {
-        groupLayout:{
-          label:'Layout',
-        },
-
-        groupContent:{
-          label:'Content',
-        }
-        ,
-        groupComponents:{
-          label:'Components',
-        }
-        ,
-        groupIcons:{
-          label:'Icons',
-        }
-        ,
-        groupHtml:{
-          label:'HTML',
-        },
       },
       toolItems : [],
     }
+    let themeGroupId = 'groupThemUI'
+    if(theme.uiBlocks){
+      toolbox.groups[themeGroupId] = {
+        label:'Theme UI',
+      }
+      if(theme.uiBlocks){
+        this.loadThemeToolItems(theme.uiBlocks, themeGroupId)
+      }
+    }
+
+    toolbox.groups.groupLayout = {
+      label:'Layout',
+    }
+
+    toolbox.groups.groupContent = {
+      label:'Content',
+    }
+
+    toolbox.groups.groupComponents = {
+      label:'Components',
+    }
+    toolbox.groups.groupIcons = {
+      label:'Icons',
+    }
+
+    toolbox.groups.groupHtml = {
+      label:'HTML',
+    }
+
     for(var moduleName in this.elements){
       let theModule = this.elements[moduleName]
       for(var elementName in theModule){
@@ -278,16 +288,23 @@ export class RXEditor{
       return nodes
     }
     dataArray.forEach((child)=>{
-      let node = this.createElement(child.name)
+      let node = this.loadOneNode(child, parent)
       if(node){
-        node.$meta = child.meta
-        node.parent = parent
         nodes.push(node)
-        node.children = this.loadNodes(child.children, node)
       }
     })
 
     return nodes
+  }
+
+  loadOneNode(schema, parent){
+    let node = this.createElement(schema.name)
+    if(node){
+      node.$meta = schema.meta
+      node.parent = parent
+      node.children = this.loadNodes(schema.children, node)
+      return node
+    }
   }
 
   createElement(className){
@@ -301,69 +318,17 @@ export class RXEditor{
     }
   }
 
-  /*setCSS(cssText){
-    if(!this.styleText){
-      let style = document.createElement('style')
-      let head = document.head || document.getElementsByTagName('head')[0]; 
-      style.type = 'text/css'; 
-      head.appendChild(style);  
-      this.styleText = style
-    }
-    this.styleText.innerHTML = cssText
-  }*/
-
-  /*changeTheme(theme){
-
-    this.clearCssFiles()
-    //this.clearJsFiles()
-
-    let head = document.head || document.getElementsByTagName('head')[0]; 
-    theme.cssFiles.forEach((cssFile)=>{
-      let link = document.createElement('link')
-      link.setAttribute('href', cssFile)
-      link.setAttribute('rel', 'stylesheet')
-      link.setAttribute('type', 'text/css')
-      this.styleTags.push(link) 
-      head.appendChild(link); 
-    })*/
-
-    /*let body = document.body || document.getElementsByTagName('body')[0]; 
-    theme.jsFiles.forEach((jsFile)=>{
-      let link = document.createElement('script')
-      link.setAttribute('src', jsFile)
-      this.styleTags.push(link)
-      body.appendChild(link); 
+  loadThemeToolItems(uiBlocks, groudId){
+    this.elements.theme = {}
+    uiBlocks.forEach((uiBlock) =>{
+      let dataJson = JSON.parse(uiBlock.json)
+      let node = this.loadOneNode(dataJson)
+      //console.log(dataJson)
+      node.toolboxInfo = JSON.parse(JSON.stringify(uiBlock.toolboxInfo))
+      node.toolboxInfo.groupId = groudId
+      this.elements.theme[node.toolboxInfo.elementId] = node
     })
-
-  }*/
-
- /* clearCssFiles(){
-    if(this.styleTags){
-      this.styleTags.length = 0
-      let head = document.head || document.getElementsByTagName('head')[0]; 
-      this.styleTags.forEach((tag)=>{
-        head.removeChild(tag)
-      })
-    }
-    else{
-      this.styleTags = []
-    }
   }
-
-
-  clearJsFiles(){
-    if(this.jsTags){
-      this.jsTags.length = 0
-      let body = document.body || document.getElementsByTagName('body')[0]; 
-      this.jsTags.forEach((tag)=>{
-        //body.removeChild(tag)
-      })
-    }
-    else{
-      this.jsTags = []
-    }
-  }*/
-
 
 
 }
