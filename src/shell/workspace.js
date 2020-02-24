@@ -31,6 +31,11 @@ export class Workspace extends RXComponent{
     theme.cssFiles.forEach((linkFile)=>{
       styleLinks +=`<link href="${linkFile}" rel="stylesheet" type="text/css">`
     })
+    let jsLinks = ''
+    theme.jsFiles.forEach((linkFile)=>{
+      jsLinks +=`<script src="${linkFile}"></script>`
+    })
+
     let iframeContent = `
         <html style="width:100%;height:100%;">
           <head>
@@ -46,6 +51,7 @@ export class Workspace extends RXComponent{
               creatEditorCore()
               rxEditor.hangOn('canvas', new RXEditorCommandProxy);
             </script>
+            ${jsLinks}
           </body>
         </html>
       `

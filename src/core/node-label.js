@@ -28,6 +28,7 @@ export class NodeLabel extends RXComponent{
   }
 
   followElement(node, offset){
+    if(!node || !node.view) return
     let domElement = node.view.$dom
     let rect = domElement.getBoundingClientRect()
     if(this.$dom){

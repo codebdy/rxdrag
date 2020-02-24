@@ -64,6 +64,7 @@ export class NodeToolbar extends RXComponent{
   }
 
   followElement(node){
+    if(!node || !node.view) return
     let domElement = node.view.$dom
     let rect = domElement.getBoundingClientRect()
     if(this.$dom){

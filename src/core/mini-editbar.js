@@ -198,6 +198,7 @@ export class MiniEditbar extends RXComponent{
   }
 
   followElement(domElement){
+    if(!domElement) return
     this.domElement = domElement
     let rect = domElement.getBoundingClientRect()
     let height = 32
