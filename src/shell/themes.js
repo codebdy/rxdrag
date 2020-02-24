@@ -27,7 +27,7 @@ let themes = {
       'themes/agency/vendor/jquery-easing/jquery.easing.min.js',
       'themes/agency/js/jqBootstrapValidation.js',
       'themes/agency/js/contact_me.js',
-      'themes/agency/js/agency.min.js',
+      //'themes/agency/js/agency.min.js',
     ],
 
     uiBlocks:[

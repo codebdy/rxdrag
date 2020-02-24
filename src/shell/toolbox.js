@@ -9,6 +9,7 @@ export class Toolbox extends RXComponent{
     super()
     this.state = new ToolboxState
     this.cssClass('toolbox')
+    this.cssClass('toolbox-scroll')
     this.assembleToolbox = (toolbox)=>{
       this.clear()
       this.initGroups(toolbox.groups)

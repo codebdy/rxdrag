@@ -1,5 +1,5 @@
 ::-webkit-scrollbar {
-  width: 0.7rem;
+  width: 0.4rem;
   height: 0.5rem;
   background: #232323;
 }
@@ -146,14 +146,14 @@
 }
 
 .rx-drawer .tab-body{
-  //flex-grow: 1;
   display: none;
   overflow-y:auto;
   height: calc(100vh - 44px);
 }
 
 .rx-drawer .tab-body.active{
-  display: block;
+  display: flex;
+  flex-flow: column;
 }
 
 .rx-drawer .tool-group{
@@ -166,6 +166,11 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.rx-drawer .toolbox-scroll{
+  overflow-y:auto;
+  height: 55%;
 }
 
 .rx-drawer .toolbox .tool-group .group-title{
@@ -237,8 +242,6 @@
   -ms-user-select: none;
   user-select: none;
   cursor: move;
-  //border: #313131 solid 1px;
-  //background: #424242;
   color: #c2c2c2;
   font-size: 13px;
   padding:5px 5px;
@@ -248,6 +251,40 @@
 .rx-drawer .toolbox .group-body .element:hover{
   color: #75b325;
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.4); 
+}
+
+.rx-drawer .node-tree-box{
+  display: flex;
+  flex-flow: column;
+  background: #424242;
+  height: 45%;
+}
+
+.rx-drawer .node-tree-box .tree-button{
+  display: flex;
+  background: #313131;
+  width: 50px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.rx-drawer .node-tree-box .tree-header{
+  background: #424242;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  font-size: 13px;
+  border-bottom: #222 solid 1px;
+}
+
+.rx-drawer .node-tree-box .tree-body{
+  background: #313131;
+  width: 100%;
+  flex-grow: 1;
+  border-bottom: #424242 solid 1px;
 }
 
 .shell-mousefollower{

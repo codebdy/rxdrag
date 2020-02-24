@@ -40,7 +40,7 @@ export class Toolbar extends RXComponent{
     this.barCenter = new RXComponent()
     this.barCenter.cssClass('center')//#f92472
                    .innerHTML = `
-                      <span style="color:#75b325; font-size:22px;font-weight:900;font-family: 'Handlee', cursive;">
+                      <span style="color:#75b325; font-size:22px;font-weight:600;">
                         RXEditor</span>
 
                       <div>
