@@ -163,6 +163,12 @@ export class MiniEditbar extends RXComponent{
     this.watchOne('underline', underlineBtn)
     this.watchOne('strikeThrough', strikeBtn)
     this.watchOne('isLink', linkBtn)    
+    document.addEventListener('scroll', (event)=>{
+      this.followElement(this.domElement)
+    })
+    window.addEventListener('resize', (event)=>{
+      this.followElement(this.domElement)
+    })
   }
 
   watchOne(stateName, btn){
@@ -192,6 +198,7 @@ export class MiniEditbar extends RXComponent{
   }
 
   followElement(domElement){
+    this.domElement = domElement
     let rect = domElement.getBoundingClientRect()
     let height = 32
     if(this.$dom){

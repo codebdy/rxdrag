@@ -47,14 +47,14 @@ export class RXEditor{
     })
 
     this.state.watch('changed', (state)=>{
-      this.allToNormalState()
+      //this.allToNormalState()
     })
     this.state.watch('showOutline', (state)=>{
       this.optionClasses.tongleOnCondition(state.showOutline, 'show-outline')
       this.render()
     })
     this.state.watch('showEditMargin', (state)=>{
-      this.allToNormalState()
+      //this.allToNormalState()
       this.render()
     })
     this.state.watch('preview', (state)=>{
@@ -74,6 +74,8 @@ export class RXEditor{
       this.previewDom = ''
     }
     this.canvas.render()
+    this.toolbar.refreshPosition()
+    this.focusedLabel.refreshPosition()
   }
 
   preview(){

@@ -6,18 +6,29 @@ export class NodeLabel extends RXComponent{
     this.cssClass('node-label')
     this.domAttr('title', 'Can be draged')
     this.hide()
+    document.addEventListener('scroll', (event)=>{
+      this.refreshPosition()
+    })
+    window.addEventListener('resize', (event)=>{
+      this.refreshPosition()
+    })
   }
 
-  show(label, followElement, offset){
-    if(!followElement) return
-    this.owner = followElement
+  refreshPosition(){
+    this.followElement(this.node, this.offset)
+  }
+
+  show(label, node, offset){
+    this.node = node
     this.offset = offset
+    if(!node || !node.view.$dom) return
     super.setInnerHTML(label)
-    this.followElement(followElement, offset)
+    this.followElement(node, offset)
     return super.show()
   }
 
-  followElement(domElement, offset){
+  followElement(node, offset){
+    let domElement = node.view.$dom
     let rect = domElement.getBoundingClientRect()
     if(this.$dom){
       this.$dom.style.left = rect.x + 'px'
@@ -29,10 +40,4 @@ export class NodeLabel extends RXComponent{
       }
     }
   }
-
-  /*refresh(){
-    if(this.owner){
-      this.followElement(this.owner, this.offset)
-    }
-  }*/
 }

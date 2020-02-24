@@ -1,5 +1,6 @@
 import {RXElement} from "../rxelement"
 import {addonTypyListInlineItem} from "../schemas/content/list-inline-item"
+import {addonGeneralTextfield} from "../schemas/general/textfield"
 
 export class HTMLLi extends RXElement{
   constructor() {
@@ -19,8 +20,8 @@ export class HTMLLi extends RXElement{
     this.label = "li"
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol']
-    this.becomeToTextfield()
-
+    //this.becomeToTextfield()
+    addonGeneralTextfield(this)
     addonTypyListInlineItem(this)
   }
 

@@ -73,7 +73,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  z-index: 1000
+  z-index: 10000
 }
 
 .node-label.focused{
@@ -110,11 +110,11 @@
   position: fixed;
   height: 26px;
   width: 100px;
-  z-index: 1002
+  z-index: 10002
 }
 
 .node-toolbar:hover{
-  z-index: 1010;
+  z-index: 10010;
 }
 
 .node-toolbar .rx-button{
@@ -159,11 +159,11 @@
   background: #313131;
   color:#c2c2c2;
   border-radius: 2px;
-  z-index: 1001;
+  z-index: 10001;
 }
 
 .mini-editbar:hover{
-  z-index: 1010;
+  z-index: 10010;
 }
 
 

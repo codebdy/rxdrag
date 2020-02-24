@@ -43,15 +43,28 @@ export class NodeToolbar extends RXComponent{
         rxEditor.focusedNode.delete(event)
       }
     }))
+
+    document.addEventListener('scroll', (event)=>{
+      this.refreshPosition()
+    })
+    window.addEventListener('resize', (event)=>{
+      this.refreshPosition()
+    })
   }
 
-  show(followElement){
-    if(!followElement) return
-    this.followElement(followElement)
+  refreshPosition(){
+    this.followElement(this.node)
+  }
+
+  show(node){
+    this.node = node
+    if(!node || !node.view.$dom) return
+    this.followElement(node)
     return super.show()
   }
 
-  followElement(domElement){
+  followElement(node){
+    let domElement = node.view.$dom
     let rect = domElement.getBoundingClientRect()
     if(this.$dom){
       let x = (rect.x + rect.width - 99)
