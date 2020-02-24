@@ -12,8 +12,6 @@ class TypyListInlineItem extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'typyListInlineItem'
   }
 

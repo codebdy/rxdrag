@@ -1,5 +1,4 @@
 import {OptionFragment} from "../option-fragment"
-import responsiveMeta from "../responsive"
 
 var utilDisplaySchema = {
   group:'utilities',
@@ -97,8 +96,6 @@ class UtilDisplay extends OptionFragment{
     super()
     this.schema = Object.assign({}, utilDisplaySchema)
 
-    this.metaFragment = Object.assign({}, responsiveMeta) 
-
     this.fieldName = 'utilDisplay'
   }
 
@@ -107,7 +104,7 @@ class UtilDisplay extends OptionFragment{
   }
 
   metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
+    let metaFragment = meta[this.fieldName] ? meta[this.fieldName] : {}
     model.classList.add(replaceNone(metaFragment.xs))
     model.classList.add(replaceNone(metaFragment.sm))
     model.classList.add(replaceNone(metaFragment.md))

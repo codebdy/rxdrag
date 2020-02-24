@@ -18,8 +18,6 @@ class ATarget extends OptionFragment{
     super()
     this.schema = Object.assign({}, aTargetSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'aTarget'
   }
 

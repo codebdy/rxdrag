@@ -10,8 +10,6 @@ class ImageAlt extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'imageAlt'
   }
 

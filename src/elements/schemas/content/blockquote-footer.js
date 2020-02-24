@@ -13,8 +13,6 @@ class TypyBlockquoteFooter extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'typyBlockquoteFooter'
   }
 

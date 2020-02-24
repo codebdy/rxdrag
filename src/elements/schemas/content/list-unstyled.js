@@ -12,8 +12,6 @@ class TypyListUnstyled extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'typyListUnstyled'
   }
 

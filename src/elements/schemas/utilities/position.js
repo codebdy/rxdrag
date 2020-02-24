@@ -21,8 +21,6 @@ class UtilPosition extends OptionFragment{
     super()
     this.schema = Object.assign({}, utilPositionSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'utilPosition'
   }
 

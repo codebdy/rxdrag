@@ -31,8 +31,6 @@ class ButtonContextual extends OptionFragment{
     super()
     this.schema = Object.assign({}, buttonContextualSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'buttonContextual'
   }
 

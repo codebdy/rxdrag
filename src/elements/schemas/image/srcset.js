@@ -10,8 +10,6 @@ class ImageSrcset extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'imageSrcset'
   }
 

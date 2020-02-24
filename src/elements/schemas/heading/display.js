@@ -18,8 +18,6 @@ class HeadingDisplay extends OptionFragment{
     super()
     this.schema = Object.assign({}, headingDisplaySchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'headingDisplay'
   }
 

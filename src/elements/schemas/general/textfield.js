@@ -12,8 +12,6 @@ class GeneralTextfield extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'generalTextfield'
   }
 

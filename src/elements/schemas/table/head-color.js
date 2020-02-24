@@ -16,8 +16,6 @@ class TheadColor extends OptionFragment{
     super()
     this.schema = Object.assign({}, theadColorSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'theadColor'
   }
 

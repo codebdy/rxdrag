@@ -22,8 +22,6 @@ class AlertContextual extends OptionFragment{
     super()
     this.schema = Object.assign({}, alertContextualSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'alertContextual'
   }
 

@@ -18,6 +18,13 @@ export class OptionFragment{
     node.addToGroup(groupName)
   }
 
+  copyMeta(from, to){
+    if(from[this.fieldName]){
+      to[this.fieldName] = JSON.parse(JSON.stringify(from[this.fieldName]))
+    }
+  }
+
+
   copyResponsiveGroupMetasTo(from, to){
     for(var fieldName in from){
       this.copyResponsiveMetaTo(from[fieldName], to[fieldName])

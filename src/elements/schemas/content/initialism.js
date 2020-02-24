@@ -13,8 +13,6 @@ class TypyInitialism extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'typyInitialism'
   }
 

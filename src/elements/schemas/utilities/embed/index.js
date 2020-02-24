@@ -18,22 +18,11 @@ class UtilEmbed extends OptionFragment{
     super()
     this.schema = Object.assign({}, utilEmbedSchema)
 
-    this.metaFragment = {
-      responsive:'',
-      aspectRadion:'',
-    } 
-
     this.fieldName = 'utilEmbed'
   }
 
-  copyMeta(from, to){
-    to[this.fieldName] = {}
-    to[this.fieldName].responsive = from[this.fieldName].responsive
-    to[this.fieldName].aspectRadion = from[this.fieldName].aspectRadion
-  }
-
   metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
+    let metaFragment = meta[this.fieldName] ? meta[this.fieldName] : {}
     model.classList.add(metaFragment.responsive)
     model.classList.add(metaFragment.aspectRadion)
   }

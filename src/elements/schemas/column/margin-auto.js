@@ -1,5 +1,4 @@
 import {OptionFragment} from "../option-fragment"
-import responsiveMeta from "../responsive"
 import utilMarginAutoSchema  from "../utilities/flex/margin-auto" 
 
 class UtilMarginAuto extends OptionFragment{
@@ -7,8 +6,6 @@ class UtilMarginAuto extends OptionFragment{
     super()
     this.schema = Object.assign({}, utilMarginAutoSchema)
     this.schema.group = 'columnOptions'
-
-    this.metaFragment = Object.assign({}, responsiveMeta) 
 
     this.fieldName = 'utilMarginAuto'
   }

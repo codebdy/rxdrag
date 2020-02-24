@@ -18,8 +18,6 @@ class UtilShadow extends OptionFragment{
     super()
     this.schema = Object.assign({}, utilShadowSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'utilShadow'
   }
 

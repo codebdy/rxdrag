@@ -1,5 +1,4 @@
 import {OptionFragment} from "../option-fragment"
-import responsiveMeta from "../responsive"
 
 var tableResponsiveSchema = {
   group:'tableOptions',
@@ -50,8 +49,6 @@ class TableResponsive extends OptionFragment{
   constructor(){
     super()
     this.schema = Object.assign({}, tableResponsiveSchema)
-
-    this.metaFragment = Object.assign({}, responsiveMeta) 
 
     this.fieldName = 'tableResponsive'
   }

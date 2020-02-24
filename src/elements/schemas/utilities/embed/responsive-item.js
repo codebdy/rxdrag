@@ -13,8 +13,6 @@ class UtilResponsiveItem extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'utilResponsiveItem'
   }
 

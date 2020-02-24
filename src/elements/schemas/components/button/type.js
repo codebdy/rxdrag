@@ -17,8 +17,6 @@ class ButtonType extends OptionFragment{
     super()
     this.schema = Object.assign({}, buttonTypeSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'buttonType'
   }
 

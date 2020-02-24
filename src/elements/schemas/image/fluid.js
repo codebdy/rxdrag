@@ -12,8 +12,6 @@ class ImageFluid extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'imageFluid'
   }
 

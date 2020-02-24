@@ -1,5 +1,4 @@
 import {OptionFragment} from "../option-fragment"
-import responsiveMeta from "../responsive"
 
 var utilFloatSchema = {
   group:'utilities',
@@ -60,8 +59,6 @@ class UtilFloat extends OptionFragment{
   constructor(){
     super()
     this.schema = Object.assign({}, utilFloatSchema)
-
-    this.metaFragment = Object.assign({}, responsiveMeta) 
 
     this.fieldName = 'utilFloat'
   }

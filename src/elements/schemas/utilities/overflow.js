@@ -16,8 +16,6 @@ class UtilOverflow extends OptionFragment{
     super()
     this.schema = Object.assign({}, utilOverflowSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'utilOverflow'
   }
 

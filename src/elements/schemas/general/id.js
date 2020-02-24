@@ -10,8 +10,6 @@ class HTMLId extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'htmlId'
   }
 

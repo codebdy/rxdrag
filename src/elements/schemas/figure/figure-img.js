@@ -12,8 +12,6 @@ class FigureImg extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'figureImg'
   }
 

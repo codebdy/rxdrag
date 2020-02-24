@@ -10,8 +10,6 @@ class Classes extends OptionFragment{
       defaultValue:[],
     }
 
-    //this.metaFragment = '' 
-
     this.fieldName = 'classList'
   }
 

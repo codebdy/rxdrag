@@ -12,8 +12,6 @@ class UtilStretchedLink extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'utilStretchedLink'
   }
 

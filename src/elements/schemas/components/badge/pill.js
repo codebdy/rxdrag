@@ -12,8 +12,6 @@ class BadgePill extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'badgePill'
   }
 

@@ -10,8 +10,6 @@ class Attributes extends OptionFragment{
       defaultValue:{},
     }
 
-    //this.metaFragment = '' 
-
     this.fieldName = 'attributes'
   }
 

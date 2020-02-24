@@ -13,8 +13,6 @@ class TableStriped extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'tableStriped'
   }
 

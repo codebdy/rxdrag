@@ -12,8 +12,6 @@ class AlertLink extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'alertLink'
   }
 

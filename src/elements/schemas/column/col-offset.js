@@ -1,5 +1,4 @@
 import {OptionFragment} from "../option-fragment"
-import responsiveMeta from "../responsive"
 
 let colOffsetSchema = {
   group:'columnOptions',
@@ -105,8 +104,6 @@ class ColOffset extends OptionFragment{
   constructor(){
     super()
     this.schema = Object.assign({}, colOffsetSchema)
-
-    this.metaFragment = Object.assign({}, responsiveMeta) 
 
     this.fieldName = 'colOffset'
   }

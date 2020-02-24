@@ -12,8 +12,6 @@ class UtilClearfix extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'utilClearfix'
   }
 

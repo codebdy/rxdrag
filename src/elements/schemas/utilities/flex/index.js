@@ -1,5 +1,4 @@
 import {OptionFragment} from "../../option-fragment"
-import responsiveMeta from "../../responsive"
 import alignContent from "./align-content"
 import alignItems from "./align-items"
 import alignSelf from "./align-self"
@@ -34,27 +33,11 @@ var utilFlexSchema = {
   }
 }
 
-var utilFlexMeta = {
-    display : Object.assign({}, responsiveMeta),
-    direction : Object.assign({}, responsiveMeta),
-    justifyContent : Object.assign({}, responsiveMeta),
-    alignItems : Object.assign({}, responsiveMeta),
-    alignSelf : Object.assign({}, responsiveMeta),
-    fill : Object.assign({}, responsiveMeta),
-    grow : Object.assign({}, responsiveMeta),
-    shrink : Object.assign({}, responsiveMeta),
-    marginAuto : Object.assign({}, responsiveMeta),
-    wrap : Object.assign({}, responsiveMeta),
-    order : Object.assign({}, responsiveMeta),
-    alignContent : Object.assign({}, responsiveMeta),
-}
-
 class UtilFlex extends OptionFragment{
   constructor(){
     super()
     this.schema = Object.assign({}, utilFlexSchema)
 
-    this.metaFragment = Object.assign({}, utilFlexMeta)
     this.fieldName = 'utilFlex'
   }
 

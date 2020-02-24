@@ -10,8 +10,6 @@ class ImageSrcType extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'imageSrcType'
   }
 

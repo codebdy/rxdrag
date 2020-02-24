@@ -12,8 +12,6 @@ class BadgeLink extends OptionFragment{
       defaultValue:'span',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'tag'
   }
 

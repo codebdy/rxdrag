@@ -47,20 +47,20 @@ class UtilColor extends OptionFragment{
       }
     }
 
-    this.metaFragment = {
-      textColor : '',
-      backgroundColor : '',
-    }
     this.fieldName = 'utilColor'
   }
 
   copyMeta(from, to){
-    to.textColor = from.textColor
-    to.backgroundColor = from.backgroundColor
+    if(from && from.textColor){
+      to.textColor = from.textColor
+    }
+    if(from && from.backgroundColor){
+      to.backgroundColor = from.backgroundColor
+    }
   }
 
   metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
+    let metaFragment = meta[this.fieldName] ? meta[this.fieldName] : {}
     model.classList.add(metaFragment.textColor)
     model.classList.add(metaFragment.backgroundColor)
   }

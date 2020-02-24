@@ -13,8 +13,6 @@ class TypyLead extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'typyLead'
   }
 

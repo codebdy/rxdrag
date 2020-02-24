@@ -1,5 +1,4 @@
 import {OptionFragment} from "../option-fragment"
-import responsiveMeta from "../responsive"
 import rowAlignItemsSchema  from "../utilities/flex/align-items" 
 
 class RowAlignItems extends OptionFragment{
@@ -7,8 +6,6 @@ class RowAlignItems extends OptionFragment{
     super()
     this.schema = Object.assign({}, rowAlignItemsSchema)
     this.schema.group = 'rowOptions'
-
-    this.metaFragment = Object.assign({}, responsiveMeta) 
 
     this.fieldName = 'utilAlignItems'
   }

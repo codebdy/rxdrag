@@ -1,5 +1,4 @@
 import {OptionFragment} from "../option-fragment"
-import responsiveMeta from "../responsive"
 
 let colWidthSchema = {
   group:'columnOptions',
@@ -120,8 +119,6 @@ class ColWidth extends OptionFragment{
   constructor(){
     super()
     this.schema = Object.assign({}, colWidthSchema)
-
-    this.metaFragment = Object.assign({}, responsiveMeta) 
 
     this.fieldName = 'colWidth'
   }

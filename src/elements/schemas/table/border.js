@@ -16,8 +16,6 @@ class TableBorder extends OptionFragment{
     super()
     this.schema = Object.assign({}, tableBorderSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'tableBorder'
   }
 

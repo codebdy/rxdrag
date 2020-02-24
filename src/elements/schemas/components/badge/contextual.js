@@ -22,8 +22,6 @@ class BadgeContextual extends OptionFragment{
     super()
     this.schema = Object.assign({}, badgeContextualSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'badgeContextual'
   }
 

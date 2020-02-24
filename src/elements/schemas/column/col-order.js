@@ -1,13 +1,10 @@
 import {OptionFragment} from "../option-fragment"
-import responsiveMeta from "../responsive"
 import colOrderSchema  from "../utilities/flex/order" 
 
 class ColOrder extends OptionFragment{
   constructor(){
     super()
     this.schema = Object.assign({}, colOrderSchema)
-
-    this.metaFragment = Object.assign({}, responsiveMeta) 
 
     this.fieldName = 'colOrder'
   }

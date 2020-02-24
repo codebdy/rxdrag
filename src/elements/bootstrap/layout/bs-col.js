@@ -29,6 +29,9 @@ export class BSCol extends RXElement{
   }
 
   setDefaultWidth(){
+    if(!this.$meta.colWidth){
+      this.$meta.colWidth = {}
+    }
     if(window.rxEditor){
       let width = window.rxEditor.state.screenWidth
       if(width == 'xs'){

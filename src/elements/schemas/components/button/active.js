@@ -12,8 +12,6 @@ class ButtonActive extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'buttonActive'
   }
 

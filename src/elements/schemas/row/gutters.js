@@ -12,8 +12,6 @@ class RowGutters extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'rowGutters'
   }
 

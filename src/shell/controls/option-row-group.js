@@ -13,6 +13,7 @@ class GroupValueLabel extends OpLabel{
 
 export class OptionRowGroup extends RowBase{
   constructor(value, schema, fieldName, screenWidth){
+    value = value ? value :{}
     super()
     this.value = value
     this.schema = schema
@@ -91,15 +92,17 @@ export class OptionRowGroup extends RowBase{
     let values = []
     for(var fieldName in schema.fields){
       if(schema.fields[fieldName].isResponsive){
-        values.push(this.value[fieldName][this.screenWidth])
+        if(this.value[fieldName]){
+          values.push(this.value[fieldName][this.screenWidth])
+        }
       }
       else{
         let value = this.value[fieldName]
-        if(value.constructor==Array){
+        if(value && value.constructor==Array){
           values.push.apply(values, value)
         }
-        else{
-          values.push(this.value[fieldName])
+        else if(value){
+          values.push(value[fieldName])
         }
       }
     }

@@ -1,5 +1,4 @@
 import {OptionFragment} from "../../option-fragment"
-import responsiveMeta from "../../responsive"
 import justify from "./justify"
 import align from "./align"
 import wrapping from "./wrapping"
@@ -32,50 +31,17 @@ var utilTextSchema = {
   }
 }
 
-var utilTextMeta = {
-  justify : '',
-  align : Object.assign({}, responsiveMeta),
-  wrapping : '',
-  truncate : '',
-  wordBreak : '',
-  transform : '',
-  weight : '',
-  italics : '',
-  monospace : '',
-  resetColor : '',
-  decoration : '',
-
-}
 
 class UtilText extends OptionFragment{
   constructor(){
     super()
     this.schema = Object.assign({}, utilTextSchema)
 
-    this.metaFragment = Object.assign({}, utilTextMeta) 
-
     this.fieldName = 'utilText'
   }
 
-  copyMeta(from, to){
-    to[this.fieldName] = {}
-    to[this.fieldName].align = {}
-    to[this.fieldName].justify = from[this.fieldName].justify
-    super.copyResponsiveMetaTo(from[this.fieldName].align, to[this.fieldName].align)
-    to[this.fieldName].wrapping = from[this.fieldName].wrapping
-    to[this.fieldName].truncate = from[this.fieldName].truncate
-    to[this.fieldName].wordBreak = from[this.fieldName].wordBreak
-    to[this.fieldName].transform = from[this.fieldName].transform
-    to[this.fieldName].weight = from[this.fieldName].weight
-    to[this.fieldName].italics = from[this.fieldName].italics
-    to[this.fieldName].monospace = from[this.fieldName].monospace
-    to[this.fieldName].resetColor = from[this.fieldName].resetColor
-    to[this.fieldName].decoration = from[this.fieldName].decoration
-
-  }
-
   metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
+    let metaFragment = meta[this.fieldName] ? meta[this.fieldName] : {}
     model.classList.add(metaFragment.justify)
     super.responsiveMetaFieldToViewModel(model, metaFragment.align)
     model.classList.add(metaFragment.wrapping)

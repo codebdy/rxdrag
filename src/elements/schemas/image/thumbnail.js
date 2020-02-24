@@ -12,8 +12,6 @@ class ImageThumbnail extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'imageThumbnail'
   }
 

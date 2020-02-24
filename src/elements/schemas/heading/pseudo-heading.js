@@ -19,8 +19,6 @@ class HeadingPseudo extends OptionFragment{
     super()
     this.schema = Object.assign({}, headingPseudoSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'headingPseudo'
   }
 

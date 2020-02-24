@@ -12,8 +12,6 @@ class UtilTextHide extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'utilTextHide'
   }
 

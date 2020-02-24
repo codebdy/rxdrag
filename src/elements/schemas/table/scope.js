@@ -16,8 +16,6 @@ class TrScope extends OptionFragment{
     super()
     this.schema = Object.assign({}, trScopeSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'trScope'
   }
 

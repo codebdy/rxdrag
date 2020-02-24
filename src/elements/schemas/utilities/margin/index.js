@@ -6,7 +6,6 @@ import marginTop from "./margin-t"
 import marginBottom from "./margin-b"
 import marginLeft from "./margin-l"
 import marginRight from "./margin-r"
-import responsiveMeta from "../../responsive"
 
 var utilMarginSchema = {
   group:'utilities',
@@ -23,22 +22,11 @@ var utilMarginSchema = {
   }
 }
 
-var utilMarginMeta = {
-  all : Object.assign({}, responsiveMeta),
-  horizontal : Object.assign({}, responsiveMeta),
-  vertical : Object.assign({}, responsiveMeta),
-  top : Object.assign({}, responsiveMeta),
-  right : Object.assign({}, responsiveMeta),
-  bottom : Object.assign({}, responsiveMeta),
-  left : Object.assign({}, responsiveMeta),
-}
-
 class UtilMargin extends OptionFragment{
   constructor(){
     super()
     this.schema = Object.assign({}, utilMarginSchema)
 
-    this.metaFragment = Object.assign({}, utilMarginMeta)
     this.fieldName = 'utilMargin'
   }
 

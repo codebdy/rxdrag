@@ -16,8 +16,6 @@ class NavbarContextual extends OptionFragment{
     super()
     this.schema = Object.assign({}, navbarContextualSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'navbarContextual'
   }
 

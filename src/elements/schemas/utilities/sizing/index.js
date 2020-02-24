@@ -13,28 +13,23 @@ var utilSizingSchema = {
   }
 }
 
-var utilSizingMeta = {
-  width : '',
-  height : '',
-}
-
 class UtilSizing extends OptionFragment{
   constructor(){
     super()
     this.schema = Object.assign({}, utilSizingSchema)
 
-    this.metaFragment = Object.assign({}, utilSizingMeta)
     this.fieldName = 'utilSizing'
   }
 
   copyMeta(from, to){
-    to[this.fieldName] = {}
-    to[this.fieldName].width = from[this.fieldName].width
-    to[this.fieldName].height = from[this.fieldName].height
+    if(from[this.fieldName]){
+      to[this.fieldName] = JSON.parse(JSON.stringify(from[this.fieldName]))
+
+    }
   }
 
   metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
+    let metaFragment = meta[this.fieldName] ? meta[this.fieldName] : {}
     model.classList.add(metaFragment.width)
     model.classList.add(metaFragment.height)
   }

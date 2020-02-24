@@ -10,8 +10,6 @@ class GeneralTitle extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'generalTitle'
   }
 

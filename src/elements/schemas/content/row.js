@@ -13,8 +13,6 @@ class GridRow extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'typyRow'
   }
 

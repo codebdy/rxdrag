@@ -18,8 +18,6 @@ class ButtonTag extends OptionFragment{
     super()
     this.schema = Object.assign({}, buttonTagSchema)
 
-    //this.metaFragment = '' 
-
     this.fieldName = 'tag'
   }
 

@@ -104,6 +104,7 @@ export class OptionRow extends RowBase{
 
 export class OptionResponsiveRow extends OptionRow{
   constructor(value, schema, fieldName, screenWidth){
+    value = value ? value : {} 
     super(value[screenWidth], schema[screenWidth], fieldName)
     this.screenWidth = screenWidth
     this.allValue = value

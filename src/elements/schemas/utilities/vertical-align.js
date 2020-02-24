@@ -20,8 +20,6 @@ class UtilVerticalAlignment extends OptionFragment{
     super()
     this.schema = Object.assign({}, utilVerticalAlignmentSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'utilVerticalAlignment'
   }
 

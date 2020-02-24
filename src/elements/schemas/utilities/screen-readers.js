@@ -16,8 +16,6 @@ class UtilScreenReaders extends OptionFragment{
     super()
     this.schema = Object.assign({}, utilScreenReadersSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'utilScreenReaders'
   }
 

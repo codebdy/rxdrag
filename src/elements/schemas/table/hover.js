@@ -12,8 +12,6 @@ class TableHover extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'tableHover'
   }
 

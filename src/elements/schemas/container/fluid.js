@@ -13,8 +13,6 @@ class ContainerFluid extends OptionFragment{
       defaultValue:'container',
     }
 
-    this.metaFragment = 'container' 
-
     this.fieldName = 'containerFluid'
   }
 

@@ -23,8 +23,6 @@ class TableContextual extends OptionFragment{
     super()
     this.schema = Object.assign({}, tableContextualSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'tableContextual'
   }
 

@@ -1,5 +1,4 @@
 import {OptionFragment} from "../option-fragment"
-import responsiveMeta from "../responsive"
 import utilJustifyContentSchema from "../utilities/flex/justify-content" 
 
 class RowJustifyContent extends OptionFragment{
@@ -7,8 +6,6 @@ class RowJustifyContent extends OptionFragment{
     super()
     this.schema = Object.assign({}, utilJustifyContentSchema)
     this.schema.group = 'rowOptions'
-
-    this.metaFragment = Object.assign({}, responsiveMeta) 
 
     this.fieldName = 'rowJustifyContent'
   }

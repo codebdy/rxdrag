@@ -16,33 +16,27 @@ var utilBorderSchema = {
   }
 }
 
-var utilBorderMeta = {
-  borderColor : '',
-  addBorder : [],
-  removeBorder : [],
-  borderRadius : '',
-}
-
 class UtilBorder extends OptionFragment{
   constructor(){
     super()
     this.schema = Object.assign({}, utilBorderSchema)
 
-    this.metaFragment = Object.assign({}, utilBorderMeta) 
-
     this.fieldName = 'utilBorder'
   }
 
   copyMeta(from, to){
-    to[this.fieldName] = {}
-    to[this.fieldName].addBorder = from[this.fieldName].addBorder.concat()
-    to[this.fieldName].removeBorder = from[this.fieldName].removeBorder.concat()
-    to[this.fieldName].borderColor = from[this.fieldName].borderColor
-    to[this.fieldName].borderRadius = from[this.fieldName].borderRadius
+    //to[this.fieldName] = {}
+    let meta = from[this.fieldName]
+    if(meta){
+      to[this.fieldName] = JSON.parse(JSON.stringify(from[this.fieldName]))
+    }
+    //to[this.fieldName].removeBorder = from[this.fieldName].removeBorder.concat()
+    //to[this.fieldName].borderColor = from[this.fieldName].borderColor
+    //to[this.fieldName].borderRadius = from[this.fieldName].borderRadius
   }
 
   metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
+    let metaFragment = meta[this.fieldName] ? meta[this.fieldName] : {}
     model.classList.push.apply(model.classList, metaFragment.addBorder)
     model.classList.push.apply(model.classList, metaFragment.removeBorder)
 

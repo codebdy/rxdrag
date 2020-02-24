@@ -16,8 +16,6 @@ class UtilVisibility extends OptionFragment{
     super()
     this.schema = Object.assign({}, utilVisibilitySchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'utilVisibility'
   }
 

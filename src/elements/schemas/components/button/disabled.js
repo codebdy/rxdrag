@@ -12,8 +12,6 @@ class ButtonDisabled extends OptionFragment{
       defaultValue:'',
     }
 
-    this.metaFragment = '' 
-
     this.fieldName = 'buttonDisabled'
   }
 

@@ -16,8 +16,6 @@ class ButtonSize extends OptionFragment{
     super()
     this.schema = Object.assign({}, buttonSizeSchema)
 
-    this.metaFragment = '' 
-
     this.fieldName = 'buttonSize'
   }
 

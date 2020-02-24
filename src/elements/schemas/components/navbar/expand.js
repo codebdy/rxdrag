@@ -1,5 +1,4 @@
 import {OptionFragment} from "../../option-fragment"
-import responsiveMeta from "../../responsive"
 
 var navbarExpandSchema = {
   group:'navbarOptions',
@@ -50,8 +49,6 @@ class NavbarExpand extends OptionFragment{
   constructor(){
     super()
     this.schema = Object.assign({}, navbarExpandSchema)
-
-    this.metaFragment = Object.assign({}, responsiveMeta) 
 
     this.fieldName = 'navbarExpand'
   }
