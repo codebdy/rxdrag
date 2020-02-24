@@ -10,12 +10,13 @@ export class Toolbox extends RXComponent{
     this.state = new ToolboxState
     this.cssClass('toolbox')
     this.assembleToolbox = (toolbox)=>{
-      this.initGroups()
+      this.clear()
+      this.initGroups(toolbox.groups)
       //let rxModuleNameId = toolboxInfo.groupId
       //if(!this[rxModuleNameId]){
       //  this[rxModuleNameId] = new ToolboxGroup(toolboxInfo.moduleName).render(this.$dom)
       //}
-      toolbox.forEach((toolboxInfo)=>{
+      toolbox.toolItems.forEach((toolboxInfo)=>{
         let toolItem = this[toolboxInfo.groupId].add(toolboxInfo)
 
         toolItem.onDrag= (toolboxItem, event)=>{
@@ -38,7 +39,25 @@ export class Toolbox extends RXComponent{
 
   }
 
-  initGroups(){
+  initGroups(groups){
+    //console.log(groups)
+    for(var groupName in groups){
+      let group = groups[groupName]
+      let groupCtrl = new ToolboxGroup(group.label, groupName, this.state).render(this.$dom)
+      this[groupName] = groupCtrl
+      this.pushChild(groupCtrl)
+    }
+    
+    if(this.children.length > 0){
+      this.children.first()
+        .cssClass('no-title-top-border')
+        .active()
+    }
+
+  }
+
+
+/*  initGroups(){
     if(!this['groupTheme']){
       this.groupTheme =  new ToolboxGroup('Theme UI','groupTheme', this.state)
                             .cssClass('no-title-top-border')
@@ -67,7 +86,7 @@ export class Toolbox extends RXComponent{
       this.groupHtml =  new ToolboxGroup('HTML','groupHtml', this.state).render(this.$dom)
     }
   }
-
+*/
   followMouse(event){
     let mouseFollower = this.mouseFollower
     if(mouseFollower){
@@ -97,6 +116,12 @@ export class Toolbox extends RXComponent{
 
     this.mouseFollower = ''
   }
+
+  clear(){
+    this.children.clear()
+    this.setInnerHTML('')
+  }
+
 
 }
 

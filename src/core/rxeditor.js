@@ -105,18 +105,49 @@ export class RXEditor{
   }
 
   assembleWithTheme(theme){
-    let toolbox = []
+    this.loadTheme(theme)
+    let toolbox = {
+      groups : {
+        groupLayout:{
+          label:'Layout',
+        },
+
+        groupContent:{
+          label:'Content',
+        }
+        ,
+        groupComponents:{
+          label:'Components',
+        }
+        ,
+        groupIcons:{
+          label:'Icons',
+        }
+        ,
+        groupHtml:{
+          label:'HTML',
+        },
+      },
+      toolItems : [],
+    }
     for(var moduleName in this.elements){
       let theModule = this.elements[moduleName]
       for(var elementName in theModule){
         let toolboxInfo = theModule[elementName].toolboxInfo
         toolboxInfo.rxNameId = moduleName + "." + elementName
-        toolbox.push(toolboxInfo)
+        toolbox.toolItems.push(toolboxInfo)
       }
     }
     //let element = this.getElementByRxNameId(rxNameId)
     //return element.toolboxInfo
     return toolbox
+  }
+
+  loadTheme(theme){
+    if(theme.initialPage){
+      this.canvas.children = this.load(theme.initialPage)
+      this.render()
+    }
   }
 
   getElementByRxNameId(rxNameId){
@@ -235,8 +266,7 @@ export class RXEditor{
     this.render()
   }
 
-  load(){
-    let data = `[{"name":"HTMLDiv","meta":{"tag":"div","utilColor":{"textColor":"text-white","backgroundColor":"bg-success"},"utilBorder":{"borderColor":"","addBorder":[],"removeBorder":[],"borderRadius":""},"utilMargin":{"all":{"xs":"","sm":"","md":"","lg":"","xl":""},"horizontal":{"xs":"","sm":"","md":"","lg":"","xl":""},"vertical":{"xs":"","sm":"","md":"","lg":"","xl":""},"top":{"xs":"","sm":"","md":"","lg":"","xl":""},"right":{"xs":"","sm":"","md":"","lg":"","xl":""},"bottom":{"xs":"","sm":"","md":"","lg":"","xl":""},"left":{"xs":"","sm":"","md":"","lg":"","xl":""}},"utilPadding":{"all":{"xs":"","sm":"","md":"","lg":"","xl":""},"horizontal":{"xs":"","sm":"","md":"","lg":"","xl":""},"vertical":{"xs":"","sm":"","md":"","lg":"","xl":""},"top":{"xs":"","sm":"","md":"","lg":"","xl":""},"right":{"xs":"","sm":"","md":"","lg":"","xl":""},"bottom":{"xs":"","sm":"","md":"","lg":"","xl":""},"left":{"xs":"","sm":"","md":"","lg":"","xl":""}},"utilClearfix":"","utilDisplay":{"xs":"","sm":"","md":"","lg":"","xl":""},"utilEmbed":{"responsive":"","aspectRadion":""},"utilResponsiveItem":"","utilFlex":{"display":{"xs":"","sm":"","md":"","lg":"","xl":""},"direction":{"xs":"","sm":"","md":"","lg":"","xl":""},"justifyContent":{"xs":"","sm":"","md":"","lg":"","xl":""},"alignItems":{"xs":"","sm":"","md":"","lg":"","xl":""},"alignSelf":{"xs":"","sm":"","md":"","lg":"","xl":""},"fill":{"xs":"","sm":"","md":"","lg":"","xl":""},"grow":{"xs":"","sm":"","md":"","lg":"","xl":""},"shrink":{"xs":"","sm":"","md":"","lg":"","xl":""},"marginAuto":{"xs":"","sm":"","md":"","lg":"","xl":""},"wrap":{"xs":"","sm":"","md":"","lg":"","xl":""},"order":{"xs":"","sm":"","md":"","lg":"","xl":""},"alignContent":{"xs":"","sm":"","md":"","lg":"","xl":""}},"utilFloat":{"xs":"","sm":"","md":"","lg":"","xl":""},"utilTextHide":"","utilOverflow":"","utilPosition":"","utilScreenReaders":"","utilShadow":"","utilSizing":{"width":"","height":""},"utilStretchedLink":"","utilText":{"justify":"","align":{"xs":"","sm":"","md":"text-md-center","lg":"","xl":""},"wrapping":"","truncate":"","wordBreak":"","transform":"","weight":"","italics":"","monospace":"","resetColor":"","decoration":""},"utilVerticalAlignment":"","utilVisibility":""},"children":[{"name":"BSHeading","meta":{"tag":"h2","innerHTML":"欢迎使用RXEditor","headingDisplay":""},"children":[]}]},{"name":"BSContainer","meta":{"tag":"div","containerFluid":"container","utilColor":{"textColor":"","backgroundColor":""},"utilBorder":{"borderColor":"","addBorder":[],"removeBorder":[],"borderRadius":""}},"children":[{"name":"BSRow","meta":{"tag":"div","baseClass":"row","rowGutters":"","rowJustifyContent":{"xs":"","sm":"","md":"","lg":"","xl":""},"utilAlignItems":{"xs":"","sm":"","md":"","lg":"","xl":""}},"children":[{"name":"BSCol","meta":{"tag":"div","colWidth":{"xs":"","sm":"","md":"col-md","lg":"","xl":""},"colOffset":{"xs":"","sm":"","md":"","lg":"","xl":""},"colAlignSelf":{"xs":"","sm":"","md":"","lg":"","xl":""},"colOrder":{"xs":"","sm":"","md":"","lg":"","xl":""},"utilMarginAuto":{"xs":"","sm":"","md":"","lg":"","xl":""}},"children":[{"name":"BSParagraph","meta":{"tag":"p","innerHTML":"Column1","headingPseudo":"","headingDisplay":""},"children":[]}]},{"name":"BSCol","meta":{"tag":"div","colWidth":{"xs":"","sm":"","md":"col-md","lg":"","xl":""},"colOffset":{"xs":"","sm":"","md":"","lg":"","xl":""},"colAlignSelf":{"xs":"","sm":"","md":"","lg":"","xl":""},"colOrder":{"xs":"","sm":"","md":"","lg":"","xl":""},"utilMarginAuto":{"xs":"","sm":"","md":"","lg":"","xl":""}},"children":[{"name":"BSParagraph","meta":{"tag":"p","innerHTML":"Column2","headingPseudo":"","headingDisplay":""},"children":[]}]}]}]}]`
+  load(data){
     let dataJson = JSON.parse(data)
     let nodes = this.loadNodes(dataJson, this.canvas)
     return nodes

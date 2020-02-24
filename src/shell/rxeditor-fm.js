@@ -70,10 +70,12 @@ export class RXEditorFM{
     this.commandProxy = new IFrameCommandProxy(this.workspace.iframe)
     this.commandProxy.serveForShell = this
 
-    themeModel.onThemeSelected = (theme)=>{
-      this.currentTheme = theme
-      this.workspace.loadTheme(this.currentTheme)
-      //this.commandProxy.changeTheme(themes[theme])
+    themeModel.onThemeSelected = (themeName)=>{
+      let theme = themes[themeName]
+      if(theme !== this.currentTheme){
+        this.currentTheme = theme
+        this.workspace.loadTheme(this.currentTheme)
+      }
     }
 
     this.canvasState.watch('changed', (state)=>{
@@ -109,7 +111,7 @@ export class RXEditorFM{
   onRxEditorReady(){
     //设置默认主题
     //this.commandProxy.changeTheme(themes['agency'])
-
+    console.log('ready')
     this.drawer.render(this.domElement)
     //请求所有可装配元素
     //for(var i in this.itemRxNameIds){
