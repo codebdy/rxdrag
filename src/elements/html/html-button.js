@@ -1,5 +1,5 @@
 import {RXElement} from "../rxelement"
-//import {addonUtilBorder} from "../schemas/utilities/border"
+import {addonGeneralTextfield} from "../schemas/general/textfield"
 
 
 export class HTMLButton extends RXElement{
@@ -18,6 +18,7 @@ export class HTMLButton extends RXElement{
     this.label = "button"
 
     //addonFigureImg(this, 'imageOptions')
+    addonGeneralTextfield(this)
   }
 
   make(){

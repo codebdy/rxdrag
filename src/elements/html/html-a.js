@@ -4,6 +4,7 @@ import {addonAHref} from "../schemas/general/ahref"
 import {addonATarget} from "../schemas/general/atarget"
 import {addonGeneralTitle} from "../schemas/general/title"
 import {addonAlertLink} from "../schemas/components/alert/link"
+import {addonGeneralTextfield} from "../schemas/general/textfield"
 
 
 export class HTMLA extends RXElement{
@@ -25,6 +26,7 @@ export class HTMLA extends RXElement{
     this.$meta.innerHTML = "Sample Link "
     this.becomeToTextfield()
 
+    addonGeneralTextfield(this)
     addonAHref(this)
     addonATarget(this)
     addonGeneralTitle(this)

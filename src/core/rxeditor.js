@@ -13,6 +13,7 @@ export class RXEditor{
     this.commandManager = new CommadManager
     this.commandManager.onCommandsChanged = (canUndo, canRedo, command)=>{
       let commandSchema = command.commandSchema
+      if(!commandSchema) return
       if(commandSchema.parentId === this.canvas.$id){
         commandSchema.parentId = ''
       }

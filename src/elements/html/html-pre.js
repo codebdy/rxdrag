@@ -2,6 +2,7 @@ import {RXElement} from "../rxelement"
 import {addonHeadingPseudo} from "../schemas/heading/pseudo-heading"
 import {addonHeadingDisplay} from "../schemas/heading/display"
 import {addonTypyLead} from "../schemas/content/lead"
+import {addonGeneralTextfield} from "../schemas/general/textfield"
 
 export class HTMLPre extends RXElement{
   constructor() {
@@ -22,6 +23,7 @@ export class HTMLPre extends RXElement{
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLCode','HTMLSpan']
 
     this.becomeToTextfield()
+    addonGeneralTextfield(this)
     addonHeadingPseudo(this, 'typographyOptions')
     addonHeadingDisplay(this, 'typographyOptions')
     addonTypyLead(this, 'typographyOptions')

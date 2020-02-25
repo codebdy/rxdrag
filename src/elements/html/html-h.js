@@ -1,7 +1,7 @@
 import {RXElement} from "../rxelement"
 import {addonHeadingTag} from "../schemas/heading/tag"
 import {addonHeadingDisplay} from "../schemas/heading/display"
-//import {addonUtilBorder} from "../../schemas/utilities/border"
+import {addonGeneralTextfield} from "../schemas/general/textfield"
 
 export class HTMLH extends RXElement{
   constructor() {
@@ -23,6 +23,7 @@ export class HTMLH extends RXElement{
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLSpan']
 
     this.becomeToTextfield()
+    addonGeneralTextfield(this)
     addonHeadingTag(this, 'typographyOptions')
     addonHeadingDisplay(this, 'typographyOptions')
   }

@@ -4,7 +4,7 @@ import {addonUtilBorder} from "../schemas/utilities/border"
 import {addonUtilPadding} from "../schemas/utilities/padding"
 import {addonUtilMargin} from "../schemas/utilities/margin"
 import {addonUtilText} from "../schemas/utilities/text"
-//import {addonHeadingPseudo} from "../../schemas/heading/pseudo-heading"
+import {addonGeneralTextfield} from "../schemas/general/textfield"
 //import {addonHeadingDisplay} from "../../schemas/heading/display"
 //import {addonUtilBorder} from "../../schemas/utilities/border"
 
@@ -29,6 +29,7 @@ export class HTMLBlockquote extends RXElement{
     this.label = "blockquote"
 
     this.becomeToTextfield()
+    addonGeneralTextfield(this)
     addonUtilColor(this)
     addonUtilBorder(this)
     addonUtilMargin(this)
