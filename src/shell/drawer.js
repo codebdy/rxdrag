@@ -78,6 +78,16 @@ export class Drawer extends RXComponent{
           Element Tree
         </div>
         <div class="tree-body">
+          <div class="tree-content">
+            <div class="tree-node">
+              <div class="tree-node-title open disable">html</div>
+              <div class="tree-node-body">
+                <div class="tree-node-title">body</div>
+                <div class="tree-node-body">
+                </div>
+                </div>
+            </div>
+          </div>
         </div>
       `)
     )

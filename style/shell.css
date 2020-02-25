@@ -111,7 +111,7 @@
   flex-flow:row;
   align-items:flex-end;
   height: 44px;
-  background: #424242;
+  background: #313131;
   color:#f0f1ef;
 }
 
@@ -125,23 +125,23 @@
 }
 
 .rx-drawer .top-header .item.active{
-  background: #313131;
+  background: #383838;
 }
 
 .rx-drawer .top-header .item:hover{
-  background: #313131;
-  border:#424242 solid 2px;
+  background: #383838;
+  border:#313131 solid 2px;
   border-radius: 5px;
 }
 
 .rx-drawer .top-header .item.active:hover{
-  background: #313131;
-  border:#313131 solid 2px;
+  background: #383838;
+  border:#383838 solid 2px;
   border-radius: 0;
 }
 
 .rx-drawer .tab-contents{
-  background: #313131;
+  background: #383838;
   flex-grow: 1;
 }
 
@@ -171,21 +171,23 @@
 .rx-drawer .toolbox-scroll{
   overflow-y:auto;
   height: 55%;
+  background: #313131;
+  margin:5px;
 }
 
 .rx-drawer .toolbox .tool-group .group-title{
   display: flex;
   align-items: center;
   font-size: 13px;
-  background: #313131;
+  //background: #313131;
   height: 36px;
   color:#f0f1ef;
   cursor: pointer;
   padding-left: 15px;
   padding-bottom:3px;
   position: relative;
-  border-bottom:#222 solid 1px;
-  border-top:#424242 solid 1px;
+  border-bottom:#282828 solid 1px;
+  border-top:#383838 solid 1px;
 }
 
 .rx-drawer .toolbox .no-title-top-border .group-title{
@@ -256,35 +258,76 @@
 .rx-drawer .node-tree-box{
   display: flex;
   flex-flow: column;
-  background: #424242;
+  background: #383838;
   height: 45%;
+  font-size: 13px;
 }
 
-.rx-drawer .node-tree-box .tree-button{
-  display: flex;
-  background: #313131;
-  width: 50px;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
-}
 
 .rx-drawer .node-tree-box .tree-header{
-  background: #424242;
+  //background: #424242;
   width: 100%;
-  height: 30px;
+  height: 20px;
   display: flex;
   align-items: center;
   padding-left: 10px;
-  font-size: 13px;
-  border-bottom: #222 solid 1px;
+  //border-bottom: #222 solid 1px;
 }
 
 .rx-drawer .node-tree-box .tree-body{
-  background: #313131;
+  display: flex;
   width: 100%;
   flex-grow: 1;
-  border-bottom: #424242 solid 1px;
+  //border-bottom: #424242 solid 1px;
+  padding:5px;
+}
+
+.rx-drawer .node-tree-box .tree-content{
+  background: #313131;
+  width: 100%;
+  height: 100%;
+  padding:5px;
+  overflow: auto;
+}
+
+.node-tree-box .tree-node-title{
+  position: relative;
+  padding-left: 12px;
+  cursor: pointer;
+}
+
+.node-tree-box .tree-node-title.disable{
+  color:#888;
+}
+
+.node-tree-box .tree-node-title::after{
+  position: absolute;
+  content: '';
+  width: 0; 
+  height: 0;
+  top: 7px;
+  left: 0px;
+  border-width: 4px;
+  border-style: solid;
+  border-color:transparent transparent  transparent #f0f1ef;
+}
+
+.node-tree-box .tree-node-title.open::after{
+  position: absolute;
+  content: '';
+  width: 0; 
+  height: 0;
+  top: 10px;
+  left: 0px;
+  border-width: 4px;
+  border-style: solid;
+  border-color:#f0f1ef transparent transparent  transparent;
+}
+
+.tree-node-body{
+  display: flex;
+  flex-flow: column;
+  padding-left: 12px;
 }
 
 .shell-mousefollower{
