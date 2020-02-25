@@ -120,10 +120,10 @@ class TreeNode extends RXComponent{
   }
 
   insertBefore(node, sbilingId){
-   let sbilingNode = this.tree.getNodeById(sbilingId)
-   this.nodeBody.children.inertBefore(node, sbilingNode)
-   //console.log(this.nodeBody.children)
-   this.nodeBody.refresh()
+    let sbilingNode = this.tree.getNodeById(sbilingId)
+    this.nodeBody.children.inertBefore(node, sbilingNode)
+    //console.log(this.nodeBody.children)
+    this.nodeBody.refresh()
   }
 
   getNodeById(id){
