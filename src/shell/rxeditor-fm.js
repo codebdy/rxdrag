@@ -155,6 +155,7 @@ export class RXEditorFM{
 
   unFocusNode(id){
     this.drawer.cancelEditNode(id)
+    this.drawer.nodeTree.unFocusNode(id)
   }
 
   commandsHistoryChanged(canUndo, canRedo){

@@ -2,8 +2,9 @@ import {RXComponent} from "../basic/rxcomponent"
 
 
 class TreeNode extends RXComponent{
-  constructor(schema){
+  constructor(tree, schema){
     super()
+    this.tree = tree
     this.schema = schema
     this.cssClass('tree-node')
 
@@ -18,6 +19,9 @@ class TreeNode extends RXComponent{
                     //.setInnerHTML('△')
     this.titleText = new RXComponent()
                     .cssClass('title-text')
+                    .domOn('click',()=>{
+                      this.tree.onNodeClick(this)
+                    })
                     
     this.nodeTitle = new RXComponent()
                     .cssClass('tree-node-title')
@@ -60,7 +64,7 @@ class TreeNode extends RXComponent{
     if(!schemas) return
 
     schemas.forEach((schema)=>{
-      this.add(new TreeNode(schema))
+      this.add(new TreeNode(this.tree, schema))
     })
     if(this.nodeBody.$dom){
       this.nodeBody.refresh()
@@ -79,6 +83,15 @@ class TreeNode extends RXComponent{
       child.focuseNode(node)
     })
   }
+
+  unFocusNode(id){
+    if(this.schema && this.schema.id === id){
+      this.removeCssClass('focused')
+    }
+    this.nodeBody.children.forEach((child)=>{
+      child.unFocusNode(id)
+    })
+  }
 }
 
 export class NodeTree extends RXComponent{
@@ -91,11 +104,11 @@ export class NodeTree extends RXComponent{
       .setInnerHTML('<i class="fa fa-sitemap" style="transform:rotate(-90deg)" title="Elements View"></i>')
     )
 
-    this.bodyNode = new TreeNode()
+    this.bodyNode = new TreeNode(this)
                      .title('body')
                      .cssClass('disable')
 
-    let rootNode = new TreeNode()
+    let rootNode = new TreeNode(this)
                    .title('html')
                    .cssClass('disable')
                    .add(this.bodyNode )
@@ -112,9 +125,15 @@ export class NodeTree extends RXComponent{
     this.assembleTreeView = (nodes)=>{
       this.bodyNode.loadChildren(nodes)
     }
+
+    this.onNodeClick = (node)=>{}
   }
 
   focusNode(node){
     this.bodyNode.focuseNode(node)
+  }
+
+  unFocusNode(id){
+    this.bodyNode.unFocusNode(id)
   }
 }
