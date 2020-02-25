@@ -104,23 +104,32 @@ class TreeNode extends RXComponent{
   }
 
   excuteCommand(commandSchema){
-    //console.log(commandSchema, this.schema.id, commandSchema.nodeId)
     if(commandSchema.command === 'new'
       && this.schema.id == commandSchema.parentId){
       let newNode = new TreeNode(this.tree, commandSchema.node)
       this.insertBefore(newNode, commandSchema.nextSblilingId)
-      return
+      return true
     }
     if(this.schema.id && commandSchema.nodeId === this.schema.id){
       if(commandSchema.command === 'delete'){
         this.parent.removeChild(this)
       }
-      return
+      if(commandSchema.command === 'move'){
+        let oldParent = this.tree.getNodeById(commandSchema.oldParentId)
+        oldParent = oldParent ? oldParent : this.tree.bodyNode
+        oldParent.removeChild(this)
+        let parent = this.tree.getNodeById(commandSchema.parentId)
+        parent = parent ? parent : this.tree.bodyNode
+        parent.insertBefore(this, commandSchema.nextSblilingId)
+      }
+     
+      return true
     }
-
-    this.nodeBody.children.forEach((child)=>{
-      child.excuteCommand(commandSchema)
-    })
+    for(var i in this.nodeBody.children){
+      if(this.nodeBody.children[i].excuteCommand(commandSchema)){
+        return true
+      }
+    }
   }
 
   insertBefore(node, sbilingId){

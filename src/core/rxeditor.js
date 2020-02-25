@@ -16,6 +16,9 @@ export class RXEditor{
       if(commandSchema.parentId === this.canvas.$id){
         commandSchema.parentId = ''
       }
+      if(commandSchema.oldParentId === this.canvas.$id){
+        commandSchema.oldParentId = ''
+      }
       this.commandProxy.commandExcuted(canUndo, canRedo, commandSchema)
     }
     this.optionClasses = new RXArray

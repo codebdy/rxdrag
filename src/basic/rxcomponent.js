@@ -155,7 +155,7 @@ export class RXComponent{
 
   removeChild(node){
     this.children.remove(node)
-    if(this.$dom && node.$dom){
+    if(this.$dom && node.$dom && this.$dom.contains(node.$dom)){
       this.$dom.removeChild(node.$dom)
     }
   }
