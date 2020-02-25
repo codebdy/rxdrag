@@ -58,36 +58,6 @@ export class Toolbox extends RXComponent{
   }
 
 
-/*  initGroups(){
-    if(!this['groupTheme']){
-      this.groupTheme =  new ToolboxGroup('Theme UI','groupTheme', this.state)
-                            .cssClass('no-title-top-border')
-                            .render(this.$dom)
-      this.groupTheme.active()
-    }
-
-    if(!this['groupLayout']){
-      this.groupLayout =  new ToolboxGroup('Layout','groupLayout', this.state)
-                            .render(this.$dom)
-    }
-
-    if(!this['groupContent']){
-      this.groupContent =  new ToolboxGroup('Content', 'groupContent', this.state).render(this.$dom)
-    }
-
-    if(!this['groupComponents']){
-      this.groupComponents =  new ToolboxGroup('Components','groupComponents', this.state).render(this.$dom)
-    }
-
-    if(!this['groupIcons']){
-      this.groupIcons =  new ToolboxGroup('Icons','groupIcons', this.state).render(this.$dom)
-    }
-    
-    if(!this['groupHtml']){
-      this.groupHtml =  new ToolboxGroup('HTML','groupHtml', this.state).render(this.$dom)
-    }
-  }
-*/
   followMouse(event){
     let mouseFollower = this.mouseFollower
     if(mouseFollower){

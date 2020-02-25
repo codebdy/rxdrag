@@ -2,6 +2,7 @@ import {RXComponent} from "../basic/rxcomponent"
 import {ObjectState} from "../basic/object-state"
 import {Toolbox} from "./toolbox"
 import {OptionBox} from "./optionbox"
+import {NodeTree} from "./node-tree"
 
 class Tab{
   constructor(){
@@ -44,6 +45,7 @@ class DrawerState extends ObjectState{
 }
 
 
+
 export class Drawer extends RXComponent{
   constructor(){
     super()
@@ -71,7 +73,8 @@ export class Drawer extends RXComponent{
     this.optionBox = new OptionBox
     this.layout.pushChild(this.toolbox)
     this.layout.pushChild(
-      new RXComponent()
+      new NodeTree()
+      /*new RXComponent()
       .cssClass('node-tree-box')
       .setInnerHTML(`
         <div class="tree-header">
@@ -89,7 +92,7 @@ export class Drawer extends RXComponent{
             </div>
           </div>
         </div>
-      `)
+      `)*/
     )
     this.options.pushChild(this.optionBox)
 
