@@ -23,7 +23,7 @@ export class HTMLU extends RXElement{
     //}
     this.$meta.tag = 'u'
     this.$meta.innerHTML = "U text ..."
-    this.label = "U"
+    this.label = "u"
 
     this.becomeToTextfield()
     addonUtilColor(this)

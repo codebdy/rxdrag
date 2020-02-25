@@ -18,7 +18,7 @@ export class HTMLH extends RXElement{
     }
     this.$meta.tag = 'h2'
     //this.$meta.innerHTML = "Heading"
-    this.label = "Heading"
+    this.label = "heading"
 
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLSpan']
 

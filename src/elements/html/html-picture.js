@@ -16,7 +16,7 @@ export class HTMLPicture extends RXElement{
     //  label:'Picture Options'
     //}
     this.$meta.tag = 'picture'
-    this.label = "Picture"
+    this.label = "picture"
 
     addonUtilBorder(this)
     addonUtilMargin(this)

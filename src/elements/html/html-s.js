@@ -23,7 +23,7 @@ export class HTMLS extends RXElement{
     //}
     this.$meta.tag = 's'
     this.$meta.innerHTML = "S text ..."
-    this.label = "S"
+    this.label = "s"
 
     this.becomeToTextfield()
     addonUtilColor(this)

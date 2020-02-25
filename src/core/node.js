@@ -410,9 +410,9 @@ export class Node{
 
   toJson(){
     let json = {
-      name:this.className,
-      meta:this.$meta,
-      children:[]
+      name: this.className,
+      meta: JSON.parse(JSON.stringify(this.$meta)),
+      children: []
     }
 
     this.children.forEach((child)=>{

@@ -23,7 +23,7 @@ export class HTMLCite extends RXElement{
     //}
     this.$meta.tag = 'cite'
     this.$meta.innerHTML = "Cite text ..."
-    this.label = "Cite"
+    this.label = "cite"
 
     this.becomeToTextfield()
     addonUtilColor(this)

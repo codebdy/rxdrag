@@ -23,7 +23,7 @@ export class HTMLDel extends RXElement{
     //}
     this.$meta.tag = 'del'
     this.$meta.innerHTML = "Delete text ..."
-    this.label = "Del"
+    this.label = "del"
 
     this.becomeToTextfield()
     addonUtilColor(this)

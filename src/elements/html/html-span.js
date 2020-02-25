@@ -21,7 +21,7 @@ export class HTMLSpan extends RXElement{
     //}
     this.$meta.tag = 'span'
     this.$meta.innerHTML = "Span text ..."
-    this.label = "Span"
+    this.label = "span"
 
     this.becomeToTextfield()
     addonUtilColor(this)

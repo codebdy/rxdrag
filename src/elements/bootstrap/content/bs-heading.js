@@ -18,7 +18,7 @@ export class BSHeading extends RXElement{
     }
     this.$meta.tag = 'h2'
     this.$meta.innerHTML = "Heading"
-    this.label = "Heading"
+    this.label = "heading"
 
     addonHeadingTag(this)
     addonHeadingDisplay(this, 'typographyOptions')

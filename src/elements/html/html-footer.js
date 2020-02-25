@@ -25,7 +25,7 @@ export class HTMLFooter extends RXElement{
     //}
     this.$meta.tag = 'footer'
     //this.$meta.innerHTML = "Footer text ..."
-    this.label = "Footer"
+    this.label = "footer"
 
     this.becomeToTextfield()
     addonUtilColor(this)

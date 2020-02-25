@@ -13,7 +13,7 @@ export class BSContainer extends RXElement{
     this.heightDropMargin = 15;
     this.acceptedChildren= ''
     this.rejectChildren = ['BSCol']
-    this.label = "Container"
+    this.label = "container"
 
     this.groups.containerOptions = {
       label:'Container Options'

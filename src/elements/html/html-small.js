@@ -23,7 +23,7 @@ export class HTMLSmall extends RXElement{
     //}
     this.$meta.tag = 'small'
     this.$meta.innerHTML = "Small text ..."
-    this.label = "Small"
+    this.label = "small"
 
     this.becomeToTextfield()
     addonUtilColor(this)

@@ -26,7 +26,7 @@ export class HTMLBlockquote extends RXElement{
     //}
     this.$meta.tag = 'blockquote'
     //this.$meta.innerHTML = "Blockquote text ..."
-    this.label = "Blockquote"
+    this.label = "blockquote"
 
     this.becomeToTextfield()
     addonUtilColor(this)

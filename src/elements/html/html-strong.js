@@ -23,7 +23,7 @@ export class HTMLStrong extends RXElement{
     //}
     this.$meta.tag = 'strong'
     this.$meta.innerHTML = "Strong text ..."
-    this.label = "Strong"
+    this.label = "strong"
 
     this.becomeToTextfield()
     addonUtilColor(this)

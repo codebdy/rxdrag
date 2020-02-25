@@ -12,7 +12,7 @@ export class BSRow extends RXElement{
     this.className = 'BSRow'
     this.heightDropMargin = 15;
     this.acceptedChildren=['BSCol','BSW100']
-    this.label = "Row"
+    this.label = "row"
 
     this.$meta.baseClass = 'row' 
     this.editMarginStyle.margin = "0"

@@ -23,7 +23,7 @@ export class HTMLAbbr extends RXElement{
     //}
     this.$meta.tag = 'abbr'
     this.$meta.innerHTML = "Abbr text ..."
-    this.label = "Abbr"
+    this.label = "abbr"
 
     this.becomeToTextfield()
     addonUtilColor(this)
