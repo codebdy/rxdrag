@@ -71,6 +71,13 @@ export class IFrameCommandProxy{
     })
   }
 
+  focusNodeFromSchell(node){
+    this.sendMessageToRXEditor({
+      name:'focusNodeFromSchell',
+      node:node,
+    })
+  }
+
   handleMessage(message){
     switch (message.name) {
       case 'rxeditorReady':

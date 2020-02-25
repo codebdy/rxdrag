@@ -90,6 +90,9 @@ export class RXEditorCommandProxy{
       case 'changeTheme':
         this.serveForRXEditor.changeTheme(message.theme)
         break;
+      case 'focusNodeFromSchell':
+        this.serveForRXEditor.focusNodeFromShell(message.node)
+        break;
     }
   }
 

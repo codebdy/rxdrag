@@ -294,5 +294,8 @@ export class RXEditor{
     })
   }
 
+  focusNodeFromShell(node){
+    this.canvas.focusNode(node)
+  }
 
 }

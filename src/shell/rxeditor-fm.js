@@ -130,6 +130,10 @@ export class RXEditorFM{
       }
     })
 
+    this.drawer.nodeTree.onNodeClick = (node)=>{
+      this.commandProxy.focusNodeFromSchell(node)
+    }
+
     this.drawer.optionBox.valueChanged = (node)=>{
       this.commandProxy.nodeChanged(node)
     }

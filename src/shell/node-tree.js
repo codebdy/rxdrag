@@ -20,7 +20,9 @@ class TreeNode extends RXComponent{
     this.titleText = new RXComponent()
                     .cssClass('title-text')
                     .domOn('click',()=>{
-                      this.tree.onNodeClick(this)
+                      if(this.schema){
+                        this.tree.onNodeClick(this.schema)
+                      }
                     })
                     
     this.nodeTitle = new RXComponent()

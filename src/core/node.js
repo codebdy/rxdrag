@@ -471,6 +471,18 @@ export class Node{
     })
   }
 
+  focusNode(node){
+    if(node.id === this.$id){
+      this.changeToState('focusState')
+    }
+    else{
+      this.changeToState('normalState')
+    }
+    this.children.forEach((child)=>{
+      child.focusNode(node)
+    })
+  }
+
   loadConfig(){
     return this
   }
