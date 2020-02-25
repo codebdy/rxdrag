@@ -171,10 +171,10 @@ class TreeNode extends RXComponent{
 export class NodeTree extends RXComponent{
   constructor(){
     super()
-    this.cssClass('node-tree-box')
+    this.cssClass('bottom-view')
     this.pushChild(
       new RXComponent()
-      .cssClass('tree-header')
+      .cssClass('view-header')
       .setInnerHTML('Elements View')
     )
 
@@ -188,10 +188,10 @@ export class NodeTree extends RXComponent{
                    .add(this.bodyNode )
     this.pushChild(
       new RXComponent()
-      .cssClass('tree-body')
+      .cssClass('view-body')
       .pushChild(
         new RXComponent()
-        .cssClass('tree-content')
+        .cssClass('view-content')
         .pushChild(rootNode)
       )
     )
