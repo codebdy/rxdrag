@@ -104,10 +104,7 @@ class TreeNode extends RXComponent{
     if(commandSchema.command === 'new'
       && this.schema.id == commandSchema.parentId){
       let newNode = new TreeNode(this.tree, commandSchema.node)
-      let sbilingNode = this.tree.getNodeById(commandSchema.nextSblilingId)
-      this.nodeBody.children.inertBefore(newNode, sbilingNode)
-      console.log(this.nodeBody.children)
-      this.nodeBody.refresh()
+      this.insertBefore(newNode, commandSchema.nextSblilingId)
       return
     }
     if(this.schema.id && commandSchema.nodeId === this.schema.id){
@@ -120,6 +117,13 @@ class TreeNode extends RXComponent{
     this.nodeBody.children.forEach((child)=>{
       child.excuteCommand(commandSchema)
     })
+  }
+
+  insertBefore(node, sbilingId){
+   let sbilingNode = this.tree.getNodeById(sbilingId)
+   this.nodeBody.children.inertBefore(node, sbilingNode)
+   //console.log(this.nodeBody.children)
+   this.nodeBody.refresh()
   }
 
   getNodeById(id){
