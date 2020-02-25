@@ -1,5 +1,5 @@
 ::-webkit-scrollbar {
-  width: 0.4rem;
+  width: 0.3rem;
   height: 0.5rem;
   background: #232323;
 }
@@ -173,6 +173,10 @@
   height: 55%;
   background: #313131;
   margin:5px;
+  border-bottom: #424242 solid 1px;
+  border-right: #424242 solid 1px;
+  border-top: #282828 solid 1px;
+  border-left: #2f2f2f solid 1px;
 }
 
 .rx-drawer .toolbox .tool-group .group-title{
@@ -289,6 +293,10 @@
   height: 100%;
   padding:5px;
   overflow: auto;
+  border-bottom: #424242 solid 1px;
+  border-right: #424242 solid 1px;
+  border-top: #282828 solid 1px;
+  border-left: #2f2f2f solid 1px;
 }
 
 .node-tree-box .tree-node-title{
