@@ -2,8 +2,9 @@ import {RXComponent} from "../basic/rxcomponent"
 
 
 class TreeNode extends RXComponent{
-  constructor(){
+  constructor(schema){
     super()
+    this.schema = schema
     this.cssClass('tree-node')
 
     this.nodeBody = new RXComponent()
@@ -26,6 +27,19 @@ class TreeNode extends RXComponent{
 
     this.pushChild(this.nodeTitle)
     this.pushChild(this.nodeBody)
+
+    if(schema){
+      let title = schema.tag
+      if(schema.label !== schema.tag){
+        title = schema.tag + "(" + schema.label + ")"
+      }
+      this.title(title)
+      this.cssClass('leaf')
+      if(schema.children.length > 0){
+        this.removeCssClass('leaf')
+        this.loadChildren(schema.children)
+      }
+    }
   }
 
   title(title){
@@ -36,6 +50,17 @@ class TreeNode extends RXComponent{
   add(node){
     this.nodeBody.pushChild(node)
     return this
+  }
+
+  loadChildren(schemas){
+    if(!schemas) return
+
+    schemas.forEach((schema)=>{
+      this.add(new TreeNode(schema))
+    })
+    if(this.nodeBody.$dom){
+      this.nodeBody.refresh()
+    }
   }
 }
 
@@ -49,19 +74,14 @@ export class NodeTree extends RXComponent{
       .setInnerHTML('<i class="fa fa-sitemap" style="transform:rotate(-90deg)" title="Elements View"></i>')
     )
 
+    this.bodyNode = new TreeNode()
+                     .title('body')
+                     .cssClass('disable')
+
     let rootNode = new TreeNode()
                    .title('html')
                    .cssClass('disable')
-                   .add(
-                     new TreeNode()
-                     .title('body')
-                     .cssClass('disable')
-                     .add(
-                       new TreeNode()
-                       .cssClass('leaf')
-                       .title('div')
-                      )
-                   )
+                   .add(this.bodyNode )
     this.pushChild(
       new RXComponent()
       .cssClass('tree-body')
@@ -73,7 +93,7 @@ export class NodeTree extends RXComponent{
     )
 
     this.assembleTreeView = (nodes)=>{
-      console.log(nodes)
+      this.bodyNode.loadChildren(nodes)
     }
   }
 }

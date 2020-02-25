@@ -426,6 +426,7 @@ export class Node{
     let view = {
       name: this.className,
       label: this.label,
+      tag:this.$meta.tag,
       id: this.$id,
       state:this.getStateName(),
       children: [],
