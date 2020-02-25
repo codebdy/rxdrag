@@ -5,6 +5,7 @@ import {CommadManager} from "./commands"
 import {NodeLabel} from "./node-label"
 import {NodeToolbar} from "./node-toolbar"
 import {MiniEditbar} from "./mini-editbar"
+import {load, loadOneNode} from "./load"
 
 export class RXEditor{
   constructor() {
@@ -157,7 +158,7 @@ export class RXEditor{
 
   loadTheme(theme){
     if(theme.initialPage){
-      this.canvas.children = this.load(theme.initialPage)
+      this.canvas.children = load(theme.initialPage)
       this.render()
     }
   }
@@ -278,53 +279,12 @@ export class RXEditor{
     this.render()
   }
 
-  load(data){
-    let dataJson = JSON.parse(data)
-    let nodes = this.loadNodes(dataJson, this.canvas)
-    return nodes
-  }
-
-  loadNodes(dataArray, parent){
-    let nodes = new RXArray
-    if(!dataArray){
-      return nodes
-    }
-    dataArray.forEach((child)=>{
-      let node = this.loadOneNode(child, parent)
-      if(node){
-        nodes.push(node)
-      }
-    })
-
-    return nodes
-  }
-
-  loadOneNode(schema, parent){
-    let node = this.createElement(schema.name)
-    if(node){
-      node.$meta = schema.meta
-      node.parent = parent
-      node.children = this.loadNodes(schema.children, node)
-      return node
-    }
-  }
-
-  createElement(className){
-    for(var moduleName in this.elements){
-      for(var nodeName in this.elements[moduleName]){
-        let node = this.elements[moduleName][nodeName]
-        if(node.className === className){
-          return node.make()
-        }
-      }
-    }
-  }
 
   loadThemeToolItems(uiBlocks, groudId){
     this.elements.theme = {}
     uiBlocks.forEach((uiBlock) =>{
       let dataJson = JSON.parse(uiBlock.json)
-      let node = this.loadOneNode(dataJson)
+      let node = loadOneNode(dataJson)
       node.toolboxInfo = JSON.parse(JSON.stringify(uiBlock.toolboxInfo))
       node.toolboxInfo.groupId = groudId
       //node.mouseFollowerWidth = uiBlock.mouseFollowerWidth

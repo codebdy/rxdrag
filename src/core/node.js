@@ -422,6 +422,43 @@ export class Node{
     return json
   }
 
+  toTreeViewNode(){
+    let view = {
+      name: this.className,
+      label: this.label,
+      id: this.$id,
+      state:this.getStateName(),
+      children: [],
+    }
+
+    this.children.forEach((child)=>{
+      view.children.push(child.toTreeView())
+    })
+
+    return view
+  }
+
+  getStateName(){
+    if(this.state === this.normalState){
+      return 'normalState'
+    }
+    if(this.state === this.activeState){
+      return 'activeState'
+    }
+    if(this.state === this.focusState){
+      return 'focusState'
+    }
+    if(this.state === this.dragoverState){
+      return 'dragoverState'
+    }
+    if(this.state === this.draggedState){
+      return 'draggedState'
+    }
+    if(this.state === this.disableState){
+      return 'disableState'
+    }
+  }
+
   nodeChanged(node){
     if(this.$id === node.id){
       rxEditor.commandManager.changeNode(this, node)
