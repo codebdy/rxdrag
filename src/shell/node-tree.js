@@ -160,6 +160,11 @@ class TreeNode extends RXComponent{
     }
   }
 
+  clearChild(){
+    this.nodeBody.clearChild()
+    this.cssClass('leaf')
+  }
+
 }
 
 
@@ -207,6 +212,11 @@ export class NodeTree extends RXComponent{
   }
 
   excuteCommand(commandSchema){
+    if(commandSchema.command == 'clear'){
+      this.bodyNode.clearChild()
+      this.bodyNode.refresh()
+      return
+    }
     this.bodyNode.excuteCommand(commandSchema)
   }
 

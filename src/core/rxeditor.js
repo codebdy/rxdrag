@@ -11,8 +11,7 @@ export class RXEditor{
   constructor() {
     this.state = new CanvasState
     this.commandManager = new CommadManager
-    this.commandManager.onCommandsChanged = (canUndo, canRedo, command)=>{
-      let commandSchema = command.commandSchema
+    this.commandManager.onCommandsChanged = (canUndo, canRedo, commandSchema)=>{
       if(!commandSchema) return
       if(commandSchema.parentId === this.canvas.$id){
         commandSchema.parentId = ''
@@ -270,6 +269,8 @@ export class RXEditor{
 
   clearCanvas(){
     this.canvas.children.length = 0
+    this.commandManager.clear()
+    this.activedLabel.hide()
     this.focusedLabel.hide()
     this.toolbar.hide()
     this.render()

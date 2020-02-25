@@ -347,7 +347,13 @@ export class CommadManager{
   }
 
   submitChanged(command){
-    this.onCommandsChanged(this.undoCommands.length > 0, this.redoCommands.length > 0, command)
+    this.onCommandsChanged(this.undoCommands.length > 0, this.redoCommands.length > 0, command.commandSchema)
+  }
+
+  clear(){
+    this.undoCommands.length = 0
+    this.redoCommands.length = 0
+    this.onCommandsChanged(false, false, {command:'clear'})
   }
 
 }
