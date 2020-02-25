@@ -37,9 +37,9 @@ class TreeNode extends RXComponent{
     if(schema){
       let title = schema.tag
       if(schema.label !== schema.tag){
-        title = schema.tag + "(" + schema.label + ")" + ':' +schema.id
+        title = this.makeTitle(schema)
       }
-      this.title(title)
+      this.setTitle(title)
       this.cssClass('leaf')
       if(schema.state === 'focusedState'){
         this.cssClass('focused')
@@ -52,7 +52,11 @@ class TreeNode extends RXComponent{
 
   }
 
-  title(title){
+  makeTitle(schema){
+    return schema.tag + "(" + schema.label + ")" + ':' +schema.id
+  }
+
+  setTitle(title){
     this.titleText.setInnerHTML(title)
     return this
   }
@@ -122,7 +126,10 @@ class TreeNode extends RXComponent{
         parent = parent ? parent : this.tree.bodyNode
         parent.insertBefore(this, commandSchema.nextSblilingId)
       }
-     
+      if(commandSchema.command === 'change'){
+        this.schema.tag = commandSchema.meta.tag
+        this.setTitle(this.makeTitle(this.schema))
+      }     
       return true
     }
     for(var i in this.nodeBody.children){
@@ -167,11 +174,11 @@ export class NodeTree extends RXComponent{
     )
 
     this.bodyNode = new TreeNode(this)
-                     .title('body')
+                     .setTitle('body')
                      .cssClass('disable')
 
     let rootNode = new TreeNode(this)
-                   .title('html')
+                   .setTitle('html')
                    .cssClass('disable')
                    .add(this.bodyNode )
     this.pushChild(
