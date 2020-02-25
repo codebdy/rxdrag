@@ -65,6 +65,9 @@ class TreeNode extends RXComponent{
 
   removeChild(node){
     this.nodeBody.removeChild(node)
+    if(this.nodeBody.children.length === 0){
+      this.cssClass('leaf')
+    }
   }
 
   loadChildren(schemas){
@@ -101,6 +104,7 @@ class TreeNode extends RXComponent{
   }
 
   excuteCommand(commandSchema){
+    //console.log(commandSchema, this.schema.id, commandSchema.nodeId)
     if(commandSchema.command === 'new'
       && this.schema.id == commandSchema.parentId){
       let newNode = new TreeNode(this.tree, commandSchema.node)
@@ -120,9 +124,11 @@ class TreeNode extends RXComponent{
   }
 
   insertBefore(node, sbilingId){
+    node.parent = this
     let sbilingNode = this.tree.getNodeById(sbilingId)
     this.nodeBody.children.inertBefore(node, sbilingNode)
     //console.log(this.nodeBody.children)
+    this.removeCssClass('leaf')
     this.nodeBody.refresh()
   }
 

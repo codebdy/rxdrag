@@ -104,7 +104,7 @@ class CommandNew extends CommandMovable{
   makeUndoSchema(){
     this.commandSchema = {
       command : 'delete',
-      node : this.node.$id,
+      nodeId : this.node.$id,
     }
   }
 }
@@ -336,14 +336,14 @@ export class CommadManager{
     let command = this.undoCommands.pop()
     command.undo()
     this.redoCommands.push(command)
-    this.submitChanged()
+    this.submitChanged(command)
   }
 
   redo(){
     let command = this.redoCommands.pop()
     command.excute()
     this.undoCommands.push(command)
-    this.submitChanged()
+    this.submitChanged(command)
   }
 
   submitChanged(command){
