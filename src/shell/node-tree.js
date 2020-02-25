@@ -35,11 +35,15 @@ class TreeNode extends RXComponent{
       }
       this.title(title)
       this.cssClass('leaf')
+      if(schema.state === 'focusedState'){
+        this.cssClass('focused')
+      }
       if(schema.children.length > 0){
         this.removeCssClass('leaf')
         this.loadChildren(schema.children)
       }
     }
+
   }
 
   title(title){
@@ -61,6 +65,19 @@ class TreeNode extends RXComponent{
     if(this.nodeBody.$dom){
       this.nodeBody.refresh()
     }
+  }
+
+  focuseNode(node){
+    if(this.schema && node.id == this.schema.id){
+      this.cssClass('focused')
+    }
+    else{
+      this.removeCssClass('focused')
+    }
+
+    this.nodeBody.children.forEach((child)=>{
+      child.focuseNode(node)
+    })
   }
 }
 
@@ -95,5 +112,9 @@ export class NodeTree extends RXComponent{
     this.assembleTreeView = (nodes)=>{
       this.bodyNode.loadChildren(nodes)
     }
+  }
+
+  focusNode(node){
+    this.bodyNode.focuseNode(node)
   }
 }

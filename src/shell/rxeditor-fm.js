@@ -150,6 +150,7 @@ export class RXEditorFM{
 
   focusNode(node){
     this.drawer.editNode(node)
+    this.drawer.nodeTree.focusNode(node)
   }
 
   unFocusNode(id){

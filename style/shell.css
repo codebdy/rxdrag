@@ -292,7 +292,6 @@
   overflow: auto;
   flex-grow: 1;
   height: 0;
-  padding:5px;
   border-bottom: #424242 solid 1px;
   border-right: #424242 solid 1px;
   border-top: #282828 solid 1px;
@@ -310,8 +309,8 @@
 }
 .node-tree-box .tree-node-title .title-icon{
   position: relative;
-  width: 12px;
-  height: 100%;
+  width: 18px;
+  height: 18px;
   cursor: pointer;
 }
 
@@ -319,13 +318,21 @@
 .node-tree-box .tree-node-title .title-icon::before{
   content: '\f0da';
   font: normal normal normal 13px/1 FontAwesome;
-  padding-top: 2px;
+  position: absolute;
+  top:3px;
+  left:6px;
 }
 
 .node-tree-box .open > .tree-node-title .title-icon::before{
   content: "\f0d7";
   font: normal normal normal 13px/1 FontAwesome;
-  padding-top: 2px;
+  position: absolute;
+  top:3px;
+  left:6px;
+}
+
+.node-tree-box .tree-node.focused{
+  background: #073d69;
 }
 
 .node-tree-box .leaf > .tree-node-title .title-icon::before{
