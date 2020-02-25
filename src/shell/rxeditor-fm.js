@@ -112,7 +112,11 @@ export class RXEditorFM{
     this.drawer.render(this.domElement)
     //请求所有可装配元素
     //for(var i in this.itemRxNameIds){
-    this.commandProxy.requestAssemble(this.currentTheme, this.drawer.toolbox.assembleToolbox)
+    this.commandProxy.requestAssemble(
+      this.currentTheme, 
+      this.drawer.toolbox.assembleToolbox, //装配工具栏
+      this.drawer.nodeTree.assembleTreeView//装配TreeView
+    )
     //}
 
     //跟踪工具拖拽

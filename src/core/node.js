@@ -432,7 +432,7 @@ export class Node{
     }
 
     this.children.forEach((child)=>{
-      view.children.push(child.toTreeView())
+      view.children.push(child.toTreeViewNode())
     })
 
     return view

@@ -110,8 +110,7 @@ export class RXEditor{
   assembleWithTheme(theme){
     this.loadTheme(theme)
     let toolbox = {
-      groups : {
-      },
+      groups : {},
       toolItems : [],
     }
     let themeGroupId = 'groupThemUI'
@@ -153,7 +152,10 @@ export class RXEditor{
     }
     //let element = this.getElementByRxNameId(rxNameId)
     //return element.toolboxInfo
-    return toolbox
+    return {
+      toolbox: toolbox,
+      treeViewNodes: this.canvas.generateTreeViewNodes()
+    }
   }
 
   loadTheme(theme){

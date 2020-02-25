@@ -71,29 +71,9 @@ export class Drawer extends RXComponent{
                   )
     this.toolbox = new Toolbox()
     this.optionBox = new OptionBox
+    this.nodeTree = new NodeTree()
     this.layout.pushChild(this.toolbox)
-    this.layout.pushChild(
-      new NodeTree()
-      /*new RXComponent()
-      .cssClass('node-tree-box')
-      .setInnerHTML(`
-        <div class="tree-header">
-          Element Tree
-        </div>
-        <div class="tree-body">
-          <div class="tree-content">
-            <div class="tree-node">
-              <div class="tree-node-title open disable">html</div>
-              <div class="tree-node-body">
-                <div class="tree-node-title">body</div>
-                <div class="tree-node-body">
-                </div>
-                </div>
-            </div>
-          </div>
-        </div>
-      `)*/
-    )
+    this.layout.pushChild(this.nodeTree)
     this.options.pushChild(this.optionBox)
 
     this.state.watch('activeDrawerTab', (state)=>{

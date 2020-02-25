@@ -58,5 +58,13 @@ export class Canvas extends Node{
     })
     return jsonArray
   }
+
+  generateTreeViewNodes(){
+    let viewNodes = []
+    this.children.forEach((child)=>{
+      viewNodes.push(child.toTreeViewNode())
+    })
+    return viewNodes
+  }
 }
 

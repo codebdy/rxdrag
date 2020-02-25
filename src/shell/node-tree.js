@@ -48,6 +48,7 @@ export class NodeTree extends RXComponent{
       .cssClass('tree-header')
       .setInnerHTML('<i class="fa fa-sitemap" style="transform:rotate(-90deg)" title="Elements View"></i>')
     )
+
     let rootNode = new TreeNode()
                    .title('html')
                    .cssClass('disable')
@@ -70,5 +71,9 @@ export class NodeTree extends RXComponent{
         .pushChild(rootNode)
       )
     )
+
+    this.assembleTreeView = (nodes)=>{
+      console.log(nodes)
+    }
   }
 }

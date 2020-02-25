@@ -56,10 +56,11 @@ export class RXEditorCommandProxy{
     //console.log('received:' + message.name + ":" + message.rxNameId)
     switch (message.name) {
       case 'requestAssemble':
-        let toolbox = this.serveForRXEditor.assembleWithTheme(message.theme)
+        let loadedData = this.serveForRXEditor.assembleWithTheme(message.theme)
         this.sendMessage({
-          name:'replyAssemble',
-          toolbox:toolbox
+          name: 'replyAssemble',
+          toolbox: loadedData.toolbox,
+          treeViewNodes: loadedData.treeViewNodes,
         })
         break;
       case 'draggingFromToolbox':
