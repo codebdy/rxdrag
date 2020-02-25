@@ -51,7 +51,15 @@ class CommandMovable{
     }
   }
 
-  redo(){
+  finish(){
+    let draggedNode = this.node
+    draggedNode.changeToState('focusState')
+    if(draggedNode.parent){
+      draggedNode.parent.changeToState('normalState')
+    }
+  }
+
+  excute(){
     this.node.removeFromParent()
     if(this.newNextSbiling){
       this.node.moveBefore(this.newNextSbiling)
@@ -78,7 +86,6 @@ class CommandNew extends CommandMovable{
   constructor(node) {
    super(node)
   }
-
 }
 
 class CommandMove extends CommandMovable{
@@ -94,7 +101,7 @@ class CommandDelete{
     this.oldnNextSbiling = node.nextSbiling()
   }
 
-  redo(){
+  excute(){
     this.node.removeFromParent()
   }
 
@@ -110,12 +117,12 @@ class CommandDelete{
 }
 
 class CommandClone{
-  constructor(node, copy) {
+  constructor(node) {
     this.node = node
-    this.copy = copy
+    this.copy = node.clone()
   }
 
-  redo(){
+  excute(){
     this.copy.moveAfter(this.node)
   }
 
@@ -125,18 +132,18 @@ class CommandClone{
 }
 
 class CommandChangeNode{
-  constructor(node, oldMeta) {
+  constructor(node, newMeta) {
     this.node = node
-    this.oldMeta = oldMeta
-    this.newMeta = JSON.parse(JSON.stringify(node.$meta))
+    this.oldMeta = JSON.parse(JSON.stringify(node.$meta))
+    this.newMeta = JSON.parse(JSON.stringify(newMeta))
   }
 
-  redo(){
-    this.node.$meta = this.newMeta
+  excute(){
+    this.node.$meta = JSON.parse(JSON.stringify(this.newMeta))
   }
 
   undo(){
-    this.node.$meta = this.oldMeta
+    this.node.$meta = JSON.parse(JSON.stringify(this.oldMeta))
   }
 }
 
@@ -151,7 +158,7 @@ class CommandTextEdit{
     this.newInnerHtml = this.node.$meta.innerHTML
   } 
 
-  redo(){
+  excute(){
     this.node.$meta.innerHTML = this.newInnerHtml
   }
 
@@ -183,20 +190,22 @@ export class CommadManager{
     this.startCommand(cmd)
   }
 
-  duplicate(node, copy){
-    let cmd = new CommandClone(node, copy)
+  duplicate(node){
+    let cmd = new CommandClone(node)
+    cmd.excute()
     this.finished(cmd)
   }
 
   changeNode(node, newNodeData){
-    let oldMeta = JSON.parse(JSON.stringify(node.$meta))
-    node.$meta = newNodeData.meta
-    let cmd = new CommandChangeNode(node, oldMeta)
+    //node.$meta = newNodeData.meta
+    let cmd = new CommandChangeNode(node, newNodeData.meta)
+    cmd.excute()
     this.finished(cmd)
   }
 
   deleteNode(node){
     let cmd = new CommandDelete(node)
+    cmd.excute()
     this.finished(cmd)
   }
 
@@ -206,6 +215,7 @@ export class CommadManager{
 
   finishMoving(){
     if(this.movingCommand){
+      this.movingCommand.finish()
       this.finished(this.movingCommand)
       this.movingCommand = ''
     }
@@ -224,7 +234,7 @@ export class CommadManager{
   finished(command){
     this.undoCommands.push(command)
     this.redoCommands.length = 0
-    this.submitChanged()
+    this.submitChanged(command)
   }
 
   undo(){
@@ -236,13 +246,13 @@ export class CommadManager{
 
   redo(){
     let command = this.redoCommands.pop()
-    command.redo()
+    command.excute()
     this.undoCommands.push(command)
     this.submitChanged()
   }
 
-  submitChanged(){
-    this.onCommandsChanged(this.undoCommands.length > 0, this.redoCommands.length > 0)
+  submitChanged(command){
+    this.onCommandsChanged(this.undoCommands.length > 0, this.redoCommands.length > 0, command)
   }
 
 }

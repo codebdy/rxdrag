@@ -84,9 +84,7 @@ export class Node{
 
     this.duplicate = ()=>{
       this.changeToState('normalState')
-      let copy = this.clone()
-      this.inertAfterSelf(copy)
-      rxEditor.commandManager.duplicate(this, copy)
+      rxEditor.commandManager.duplicate(this)
       rxEditor.render()
     }
 
@@ -101,7 +99,6 @@ export class Node{
     this.delete =()=>{
       //if(confirm("Are you sure to delete?")){
         this.changeToState('normalState')
-        this.removeFromParent()
         rxEditor.commandManager.deleteNode(this)
         rxEditor.render()
       //}
@@ -112,11 +109,6 @@ export class Node{
       newState.enter()
       rxEditor.nodeStateChanged(this, oldState, newState)
     }
-
-    /*this.isTextfield = ()=>{
-      console.log('isTextfield node')
-      return false
-    }*/
 
   }
 

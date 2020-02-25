@@ -150,8 +150,6 @@ export class RXEditor{
         toolbox.toolItems.push(toolboxInfo)
       }
     }
-    //let element = this.getElementByRxNameId(rxNameId)
-    //return element.toolboxInfo
     return {
       toolbox: toolbox,
       treeViewNodes: this.canvas.generateTreeViewNodes()
@@ -177,23 +175,11 @@ export class RXEditor{
 
   dropElement(){
     this.endFollowMouse()
-    if(this.commandManager.movingCommand){
-      let draggedNode = this.commandManager.movingCommand.node
-      this.clearActiveStates()
-      draggedNode.changeToState('focusState')
-      if(draggedNode.parent){
-        draggedNode.parent.changeToState('normalState')
-      }
-      this.commandManager.finishMoving()
-    }
+    this.commandManager.finishMoving()
   }
 
   endDragFromToolbox(){
-    if(this.commandManager.movingCommand){
-      let draggedNode = this.commandManager.movingCommand.node
-      this.commandManager.finishMoving()
-      draggedNode.changeToState('normalState')
-    }
+    this.commandManager.finishMoving()
     this.endFollowMouse()
   }
 
