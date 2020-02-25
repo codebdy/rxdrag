@@ -19,6 +19,8 @@ export class BSContainer extends RXElement{
       label:'Container Options'
     }
 
+    this.addClass('container')
+
     addonFluid(this)
     addonUtilColor(this)
     addonUtilBorder(this)

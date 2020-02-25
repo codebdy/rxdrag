@@ -78,7 +78,9 @@ export class NodeView{
 
   showAttributes(model, domElement){
     for(var attributeName in model.attributes){
-      domElement.setAttribute(attributeName, model.attributes[attributeName])
+      if(model.attributes[attributeName]){
+        domElement.setAttribute(attributeName, model.attributes[attributeName])
+      }
     }
   }
 

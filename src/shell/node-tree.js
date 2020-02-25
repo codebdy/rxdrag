@@ -37,7 +37,7 @@ class TreeNode extends RXComponent{
     if(schema){
       let title = schema.tag
       if(schema.label !== schema.tag){
-        title = schema.tag + "(" + schema.label + ")"
+        title = schema.tag + "(" + schema.label + ")" + ':' +schema.id
       }
       this.title(title)
       this.cssClass('leaf')
@@ -133,13 +133,15 @@ class TreeNode extends RXComponent{
   }
 
   getNodeById(id){
-    if(this.schema.id === id){
+    if(this.schema.id && this.schema.id === id){
       return this
     }
-
-    this.nodeBody.children.forEach((child)=>{
-      return child.getNodeById(id)
-    })
+    for(var i in this.nodeBody.children){
+      let node = this.nodeBody.children[i].getNodeById(id)
+      if(node){
+        return node
+      }
+    }
   }
 
 }
