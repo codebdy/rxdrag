@@ -147,7 +147,6 @@
 
 .rx-drawer .tab-body{
   display: none;
-  overflow-y:auto;
   height: calc(100vh - 44px);
 }
 
@@ -166,17 +165,19 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-.rx-drawer .toolbox-scroll{
-  overflow-y:auto;
-  height: 55%;
   background: #313131;
   margin:5px;
   border-bottom: #424242 solid 1px;
   border-right: #424242 solid 1px;
   border-top: #282828 solid 1px;
   border-left: #2f2f2f solid 1px;
+  overflow-y:auto;
+  height:100%; 
+}
+
+.rx-drawer .toolbox-scroll{
+  overflow-y:auto;
+  height: 55%;
 }
 
 .rx-drawer .toolbox .tool-group .group-title{
