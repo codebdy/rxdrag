@@ -84,25 +84,6 @@ class CommandMovable{
     this.makeUndoSchema()
   }
 
-  makeExcuteSchema(){
-    this.commandSchema = {
-      command : 'move',
-      node : this.node.toTreeViewNode(),
-      oldParentId : this.oldParent ? this.oldParent.$id : '',
-      parentId : this.node.parent ? this.node.parent.$id : '',
-      nextSblilingId : node.nextSbiling() ? node.nextSbiling().$id : '',
-    }
-  }
-  
-  makeUndoSchema(){
-    this.commandSchema = {
-      command : 'move',
-      node : this.node.toTreeViewNode(),
-      oldParentId : this.newParent ? this.newParent.$id : '',
-      parentId : this.node.parent ? this.node.parent.$id : '',
-      nextSblilingId : node.nextSbiling() ? node.nextSbiling().$id : '',
-    }
-  }
 
 }
 
@@ -110,11 +91,47 @@ class CommandNew extends CommandMovable{
   constructor(node) {
    super(node)
   }
+
+  makeExcuteSchema(){
+    this.commandSchema = {
+      command : 'new',
+      node : this.node.toTreeViewNode(),
+      parentId : this.node.parent ? this.node.parent.$id : '',
+      nextSblilingId : this.node.nextSbiling() ? this.node.nextSbiling().$id : '',
+    }
+  }
+  
+  makeUndoSchema(){
+    this.commandSchema = {
+      command : 'delete',
+      node : this.node.$id,
+    }
+  }
 }
 
 class CommandMove extends CommandMovable{
   constructor(node) {
    super(node)
+  }
+
+  makeExcuteSchema(){
+    this.commandSchema = {
+      command : 'move',
+      nodeId : this.node.$id,
+      oldParentId : this.oldParent ? this.oldParent.$id : '',
+      parentId : this.node.parent ? this.node.parent.$id : '',
+      nextSblilingId : this.node.nextSbiling() ? this.node.nextSbiling().$id : '',
+    }
+  }
+  
+  makeUndoSchema(){
+    this.commandSchema = {
+      command : 'move',
+      nodeId : this.node.$id,
+      oldParentId : this.newParent ? this.newParent.$id : '',
+      parentId : this.node.parent ? this.node.parent.$id : '',
+      nextSblilingId : this.node.nextSbiling() ? this.node.nextSbiling().$id : '',
+    }
   }
 }
 
@@ -122,7 +139,7 @@ class CommandDelete{
   constructor(node) {
     this.node = node
     this.oldParent = node.parent
-    this.oldnNextSbiling = node.nextSbiling()
+    this.oldnNextSbiling = this.node.nextSbiling()
   }
 
   excute(){
@@ -152,7 +169,7 @@ class CommandDelete{
       command : 'new',
       node : this.node.toTreeViewNode(),
       parentId : this.node.parent ? this.node.parent.$id : '',
-      nextSblilingId : node.nextSbiling() ? node.nextSbiling().$id : '',
+      nextSblilingId : this.node.nextSbiling() ? this.node.nextSbiling().$id : '',
     }
   }
 

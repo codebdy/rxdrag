@@ -35,6 +35,8 @@ export class RXArray extends Array{
         return;
       }
     }
+
+    this.push(child)
   }
 
   inertAfter(child, refence){

@@ -153,6 +153,13 @@ export class RXComponent{
     this.$dom = ''
   }
 
+  removeChild(node){
+    this.children.remove(node)
+    if(this.$dom && node.$dom){
+      this.$dom.removeChild(node.$dom)
+    }
+  }
+
   clearChild(){
     this.children = new RXArray()
   }

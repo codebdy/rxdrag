@@ -5,7 +5,7 @@ class TreeNode extends RXComponent{
   constructor(tree, schema){
     super()
     this.tree = tree
-    this.schema = schema
+    this.schema = schema ? schema : {id:''}
     this.cssClass('tree-node')
 
     this.nodeBody = new RXComponent()
@@ -20,7 +20,7 @@ class TreeNode extends RXComponent{
     this.titleText = new RXComponent()
                     .cssClass('title-text')
                     .domOn('click',()=>{
-                      if(this.schema){
+                      if(this.schema.id){
                         this.tree.onNodeClick(this.schema)
                       }
                     })
@@ -58,8 +58,13 @@ class TreeNode extends RXComponent{
   }
 
   add(node){
+    node.parent = this
     this.nodeBody.pushChild(node)
     return this
+  }
+
+  removeChild(node){
+    this.nodeBody.removeChild(node)
   }
 
   loadChildren(schemas){
@@ -74,7 +79,7 @@ class TreeNode extends RXComponent{
   }
 
   focuseNode(node){
-    if(this.schema && node.id == this.schema.id){
+    if(this.schema.id && node.id == this.schema.id){
       this.cssClass('focused')
     }
     else{
@@ -94,7 +99,41 @@ class TreeNode extends RXComponent{
       child.unFocusNode(id)
     })
   }
+
+  excuteCommand(commandSchema){
+    if(commandSchema.command === 'new'
+      && this.schema.id == commandSchema.parentId){
+      let newNode = new TreeNode(this.tree, commandSchema.node)
+      let sbilingNode = this.tree.getNodeById(commandSchema.nextSblilingId)
+      this.nodeBody.children.inertBefore(newNode, sbilingNode)
+      console.log(this.nodeBody.children)
+      this.nodeBody.refresh()
+      return
+    }
+    if(this.schema.id && commandSchema.nodeId === this.schema.id){
+      if(commandSchema.command === 'delete'){
+        this.parent.removeChild(this)
+      }
+      return
+    }
+
+    this.nodeBody.children.forEach((child)=>{
+      child.excuteCommand(commandSchema)
+    })
+  }
+
+  getNodeById(id){
+    if(this.schema.id === id){
+      return this
+    }
+
+    this.nodeBody.children.forEach((child)=>{
+      return child.getNodeById(id)
+    })
+  }
+
 }
+
 
 export class NodeTree extends RXComponent{
   constructor(){
@@ -103,7 +142,7 @@ export class NodeTree extends RXComponent{
     this.pushChild(
       new RXComponent()
       .cssClass('tree-header')
-      .setInnerHTML('<i class="fa fa-sitemap" style="transform:rotate(-90deg)" title="Elements View"></i>')
+      .setInnerHTML('Elements View')
     )
 
     this.bodyNode = new TreeNode(this)
@@ -140,6 +179,10 @@ export class NodeTree extends RXComponent{
   }
 
   excuteCommand(commandSchema){
-    console.log(commandSchema)
+    this.bodyNode.excuteCommand(commandSchema)
+  }
+
+  getNodeById(id){
+    return this.bodyNode.getNodeById(id)
   }
 }
