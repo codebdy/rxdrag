@@ -29,11 +29,12 @@ export class RXEditorCommandProxy{
     })
   }
 
-  commandsHistoryChanged(canUndo, canRedo){
+  commandExcuted(canUndo, canRedo, commandSchema){
     this.sendMessage({
-      name: 'commandsHistoryChanged',
+      name: 'commandExcuted',
       canUndo: canUndo,
       canRedo:canRedo,
+      commandSchema: commandSchema,
     })
   }
 

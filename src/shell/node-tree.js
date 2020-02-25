@@ -138,4 +138,8 @@ export class NodeTree extends RXComponent{
   unFocusNode(id){
     this.bodyNode.unFocusNode(id)
   }
+
+  excuteCommand(commandSchema){
+    console.log(commandSchema)
+  }
 }

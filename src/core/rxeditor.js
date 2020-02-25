@@ -11,8 +11,8 @@ export class RXEditor{
   constructor() {
     this.state = new CanvasState
     this.commandManager = new CommadManager
-    this.commandManager.onCommandsChanged = (canUndo, canRedo)=>{
-      this.commandProxy.commandsHistoryChanged(canUndo, canRedo)
+    this.commandManager.onCommandsChanged = (canUndo, canRedo, command)=>{
+      this.commandProxy.commandExcuted(canUndo, canRedo, command.commandSchema)
     }
     this.optionClasses = new RXArray
     this.optionClasses.add('show-outline')

@@ -162,9 +162,10 @@ export class RXEditorFM{
     this.drawer.nodeTree.unFocusNode(id)
   }
 
-  commandsHistoryChanged(canUndo, canRedo){
+  commandExcuted(canUndo, canRedo, commandSchema){
     this.state.canUndo = canUndo
     this.state.canRedo = canRedo
+    this.drawer.nodeTree.excuteCommand(commandSchema)
   }
 
   saveCodeFiles(innerHTML, json){

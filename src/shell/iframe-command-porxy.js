@@ -97,8 +97,8 @@ export class IFrameCommandProxy{
       case 'unFocusNode':
         this.serveForShell.unFocusNode(message.id)
         break;
-      case 'commandsHistoryChanged':
-        this.serveForShell.commandsHistoryChanged(message.canUndo, message.canRedo)
+      case 'commandExcuted':
+        this.serveForShell.commandExcuted(message.canUndo, message.canRedo, message.commandSchema)
         break;
       case 'saveCodeFiles':
         this.serveForShell.saveCodeFiles(message.innerHTML, message.json)

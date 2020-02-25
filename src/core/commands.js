@@ -57,6 +57,7 @@ class CommandMovable{
     if(draggedNode.parent){
       draggedNode.parent.changeToState('normalState')
     }
+    this.makeExcuteSchema()
   }
 
   excute(){
@@ -67,6 +68,7 @@ class CommandMovable{
     else if(this.newParent){
       this.newParent.pushChild(this.node)
     }
+    this.makeExcuteSchema()
   }
 
   undo(){
@@ -78,8 +80,30 @@ class CommandMovable{
     {
       this.oldParent.pushChild(this.node)
     }
+
+    this.makeUndoSchema()
+  }
+
+  makeExcuteSchema(){
+    this.commandSchema = {
+      command : 'move',
+      node : this.node.toTreeViewNode(),
+      oldParentId : this.oldParent ? this.oldParent.$id : '',
+      parentId : this.node.parent ? this.node.parent.$id : '',
+      nextSblilingId : node.nextSbiling() ? node.nextSbiling().$id : '',
+    }
   }
   
+  makeUndoSchema(){
+    this.commandSchema = {
+      command : 'move',
+      node : this.node.toTreeViewNode(),
+      oldParentId : this.newParent ? this.newParent.$id : '',
+      parentId : this.node.parent ? this.node.parent.$id : '',
+      nextSblilingId : node.nextSbiling() ? node.nextSbiling().$id : '',
+    }
+  }
+
 }
 
 class CommandNew extends CommandMovable{
@@ -103,6 +127,7 @@ class CommandDelete{
 
   excute(){
     this.node.removeFromParent()
+    this.makeExcuteSchema()
   }
 
   undo(){
@@ -112,8 +137,25 @@ class CommandDelete{
     else{
       this.oldParent.pushChild(this.node)
     }
-
+    this.makeUndoSchema()
   }
+
+  makeExcuteSchema(){
+    this.commandSchema = {
+      command : 'delete',
+      nodeId : this.node.$id,
+    }
+  }
+  
+  makeUndoSchema(){
+    this.commandSchema = {
+      command : 'new',
+      node : this.node.toTreeViewNode(),
+      parentId : this.node.parent ? this.node.parent.$id : '',
+      nextSblilingId : node.nextSbiling() ? node.nextSbiling().$id : '',
+    }
+  }
+
 }
 
 class CommandClone{
@@ -124,10 +166,28 @@ class CommandClone{
 
   excute(){
     this.copy.moveAfter(this.node)
+    this.makeExcuteSchema()
   }
 
   undo(){
     this.copy.removeFromParent()
+    this.makeUndoSchema()
+  }
+
+  makeExcuteSchema(){
+    this.commandSchema = {
+      command : 'new',
+      node : this.copy.toTreeViewNode(),
+      parentId : this.copy.parent ? this.copy.parent.$id : '',
+      nextSblilingId : copy.nextSbiling() ? copy.nextSbiling().$id : '',
+    }
+  }
+  
+  makeUndoSchema(){
+    this.commandSchema = {
+      command : 'delete',
+      nodeId : this.copy.$id,
+    }
   }
 }
 
@@ -140,10 +200,28 @@ class CommandChangeNode{
 
   excute(){
     this.node.$meta = JSON.parse(JSON.stringify(this.newMeta))
+    this.makeExcuteSchema()
   }
 
   undo(){
     this.node.$meta = JSON.parse(JSON.stringify(this.oldMeta))
+    this.makeUndoSchema()
+  }
+
+  makeExcuteSchema(){
+    this.commandSchema = {
+      command : 'change',
+      nodeId : this.node.$id,
+      meta: this.node.$meta
+    }
+  }
+  
+  makeUndoSchema(){
+    this.commandSchema = {
+      command : 'change',
+      nodeId : this.node.$id,
+      meta: this.node.$meta,
+    }
   }
 }
 
