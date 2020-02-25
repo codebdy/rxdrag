@@ -15,17 +15,22 @@ class TreeNode extends RXComponent{
                       this.tongle('open')
                     })
                     //.setInnerHTML('△')
-    let titleText = new RXComponent()
+    this.titleText = new RXComponent()
                     .cssClass('title-text')
-                    .setInnerHTML('html')
+                    
     this.nodeTitle = new RXComponent()
                     .cssClass('tree-node-title')
                     .pushChild(titleIcon)
-                    .pushChild(titleText)
+                    .pushChild(this.titleText)
                     
 
     this.pushChild(this.nodeTitle)
     this.pushChild(this.nodeBody)
+  }
+
+  title(title){
+    this.titleText.setInnerHTML(title)
+    return this
   }
 
   add(node){
@@ -41,10 +46,21 @@ export class NodeTree extends RXComponent{
     this.pushChild(
       new RXComponent()
       .cssClass('tree-header')
+      .setInnerHTML('Elements View')
     )
-    let rootNode = new TreeNode().add(
-          new TreeNode().add(new TreeNode().cssClass('leaf'))
-        )
+    let rootNode = new TreeNode()
+                   .title('html')
+                   .cssClass('disable')
+                   .add(
+                     new TreeNode()
+                     .title('body')
+                     .cssClass('disable')
+                     .add(
+                       new TreeNode()
+                       .cssClass('leaf')
+                       .title('div')
+                      )
+                   )
     this.pushChild(
       new RXComponent()
       .cssClass('tree-body')

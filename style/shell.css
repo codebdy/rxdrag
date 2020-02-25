@@ -270,7 +270,7 @@
   height: 20px;
   display: flex;
   align-items: center;
-  padding-left: 10px;
+  padding-left: 20px;
   //border-bottom: #222 solid 1px;
 }
 
@@ -297,7 +297,7 @@
   align-items: center;
 }
 
-.node-tree-box .tree-node-title.disable{
+.node-tree-box .disable > .tree-node-title{
   color:#888;
 }
 .node-tree-box .tree-node-title .title-icon{
