@@ -1,7 +1,5 @@
 import {RXElement} from "../../rxelement"
-//import {addonFluid} from "../../schemas/container/fluid"
-//import {addonUtilColor} from "../../schemas/utilities/color"
-//import {addonUtilBorder} from "../../schemas/utilities/border"
+import fluidSchema from "../../schemas/container/fluid"
 
 export class BSContainer extends RXElement{
   constructor() {
@@ -21,17 +19,10 @@ export class BSContainer extends RXElement{
 
     this.addClass('container')
 
-    //addonFluid(this)
-    //addonUtilColor(this)
-    //addonUtilBorder(this)
+    this.addSchema(fluidSchema, 'containerOptions')
   }
 
   make(){
     return new BSContainer
   }
-  
-  /*toViewModel(){
-    let model = super.toViewModel()
-    return model
-  }*/
 }
