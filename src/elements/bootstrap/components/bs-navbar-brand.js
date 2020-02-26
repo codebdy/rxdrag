@@ -1,7 +1,7 @@
 import {RXElement} from "../../rxelement"
 import {HTMLA} from "../../html/html-a"
-import {addonClasses} from "../../schemas/general/classes"
-import {addonAttributes} from "../../schemas/general/attributes"
+//import {addonClasses} from "../../schemas/general/classes"
+//import {addonAttributes} from "../../schemas/general/attributes"
 
 
 export class BSNavbarBrand extends HTMLA{
@@ -23,8 +23,8 @@ export class BSNavbarBrand extends HTMLA{
     this.addClass('navbar-brand')
     this.$meta.innerHTML = "Brand"
 
-    addonClasses(this).setDefaultValue(['navbar-brand'])
-    addonAttributes(this)
+    //addonClasses(this).setDefaultValue(['navbar-brand'])
+    //addonAttributes(this)
   }
 
   make(){

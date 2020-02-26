@@ -1,12 +1,11 @@
-import {OptionFragment} from "../option-fragment"
+import {FragmentBase} from "./fragment-base"
 
-class HTMLId extends OptionFragment{
+class HTMLId extends FragmentBase{
   constructor(){
     super()
     this.schema = {
       label:'ID',
       widget:'OpTextField',
-      group:'generalOptions',
       defaultValue:'',
     }
 

@@ -1,10 +1,11 @@
 import {Node} from "../core/node"
 import {RXArray} from "../basic/rxarray"
 import parkMiniEditbar from "../core/park-mini-editbar"
-import {addonClasses} from "./schemas/general/classes"
-import {addonAttributes} from "./schemas/general/attributes"
+import {addonTag} from "./schemas/overview/tag"
+import {addonClasses} from "./schemas/overview/classes"
+import {addonAttributes} from "./schemas/overview/attributes"
+import {addonHTMLId} from "./schemas/overview/id"
 import {addonGeneralTextfield} from "./schemas/general/textfield"
-import {addonHTMLId} from "./schemas/general/id"
 import {addonUtilColor} from "./schemas/utilities/color"
 import {addonUtilBorder} from "./schemas/utilities/border"
 import {addonUtilPadding} from "./schemas/utilities/padding"
@@ -87,9 +88,10 @@ export class RXElement extends Node{
 
     //在每个子类中添加
     //addonGeneralTextfield(this)
+    addonTag(this)
+    addonHTMLId(this)
     addonClasses(this)
     addonAttributes(this)
-    addonHTMLId(this)
     addonHeadingPseudo(this, 'typographyOptions')
     addonHeadingDisplay(this, 'typographyOptions')
     addonGridRow(this, 'typographyOptions')

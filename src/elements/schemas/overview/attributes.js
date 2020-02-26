@@ -1,12 +1,11 @@
-import {OptionFragment} from "../option-fragment"
+import {FragmentBase} from "./fragment-base"
 
-class Attributes extends OptionFragment{
+class Attributes extends FragmentBase{
   constructor(){
     super()
     this.schema = {
       label:'Attributes',
       widget:'OpNameValueInput',
-      group:'generalOptions',
       defaultValue:{},
     }
 
@@ -14,7 +13,7 @@ class Attributes extends OptionFragment{
   }
 
   copyMeta(from, to){
-    to[this.fieldName] = from[this.fieldName]
+    to[this.fieldName] = JSON.parse(JSON.stringify(from[this.fieldName]))
   }
 
   metaToModel(model, meta){

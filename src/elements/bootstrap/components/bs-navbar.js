@@ -6,7 +6,7 @@ import {BSNavbarToggler} from "./bs-navbar-toggler"
 import {addonUtilPosition} from "../../schemas/utilities/position"
 import {addonNavbarContextual} from "../../schemas/components/navbar/contextual"
 import {addonNavbarExpand} from "../../schemas/components/navbar/expand"
-import {addonHTMLId} from "../../schemas/general/id"
+//import {addonHTMLId} from "../../schemas/general/id"
 
 export class BSNavbar extends HTMLNav{
   constructor() {
@@ -30,7 +30,7 @@ export class BSNavbar extends HTMLNav{
     addonNavbarContextual(this)
     addonNavbarExpand(this)
     addonUtilPosition(this, 'navbarOptions')
-    addonHTMLId(this, 'navbarOptions')
+    //addonHTMLId(this, 'navbarOptions')
   }
 
   make(){
