@@ -45,8 +45,8 @@ export class ClassBox extends RXComponent{
     var meta = node.meta
     var schema = node.schema
 
-    for(var fieldName in schema.overView){
-      let fieldSchema = schema.overView[fieldName]
+    schema.overView.forEach((fieldSchema)=>{
+      let fieldName = fieldSchema.fieldName
       let metaValue = meta[fieldName]
       let row = new OptionRow(metaValue, fieldSchema, fieldName)
 
@@ -56,7 +56,7 @@ export class ClassBox extends RXComponent{
       })
 
       this.viewContent.pushChild(row)
-    }
+    })
 
     this.viewContent.refresh()
   }

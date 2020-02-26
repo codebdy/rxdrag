@@ -4,20 +4,19 @@ class HTMLId extends FragmentBase{
   constructor(){
     super()
     this.schema = {
+      fieldName:'htmlId',
       label:'ID',
       widget:'OpTextField',
       defaultValue:'',
     }
-
-    this.fieldName = 'htmlId'
   }
 
   copyMeta(from, to){
-    to[this.fieldName] = from[this.fieldName]
+    to[this.schema.fieldName] = from[this.schema.fieldName]
   }
 
   metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
+    let metaFragment = meta[this.schema.fieldName]
     model.attributes['id'] = metaFragment
   }
 }

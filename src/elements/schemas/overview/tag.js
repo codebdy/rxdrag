@@ -5,12 +5,11 @@ class Tag extends FragmentBase{
   constructor(){
     super()
     this.schema = {
+      fieldName:'tag',
       label:'Tag',
       widget:'OpTextField',
       defaultValue:'',
     }
-
-    this.fieldName = 'tag'
   }
 }
 

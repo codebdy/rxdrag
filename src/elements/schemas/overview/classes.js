@@ -4,12 +4,12 @@ class Classes extends FragmentBase{
   constructor(){
     super()
     this.schema = {
+      fieldName: 'classList',
       label:'Classes',
       widget:'OpLabelsInput',
       defaultValue:[],
     }
 
-    this.fieldName = 'classList'
   }
   
 }

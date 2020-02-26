@@ -59,7 +59,7 @@ export class RXElement extends Node{
     //Schema 信息，用于构建Option编辑部件
     this.$schema = {
       fields:[],
-      overView:{},
+      overView:[],
     } 
 
     this.$schema.groups = {}

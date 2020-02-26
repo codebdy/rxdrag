@@ -4,7 +4,7 @@ export class FragmentBase{
   metaToModel(model, meta){}
 
   addon(node){
-    node.$schema.overView[this.fieldName] = this.schema
+    node.$schema.overView.push(this.schema)
   }
 
   setDefaultValue(defaultValue){
