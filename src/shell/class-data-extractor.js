@@ -8,6 +8,15 @@ function listValues(list){
 
 
 function extractValueFromClasses(classList, fieldSchema){
+  if(fieldSchema.isResponsive){
+    let value = {}
+    value.xs = extractValueFromClasses(classList, fieldSchema.xs)
+    value.sm = extractValueFromClasses(classList, fieldSchema.sm)
+    value.md = extractValueFromClasses(classList, fieldSchema.md)
+    value.lg = extractValueFromClasses(classList, fieldSchema.lg)
+    value.xl = extractValueFromClasses(classList, fieldSchema.xl)
+    return value
+  }
   if(fieldSchema.widget === 'OpSelect'){
     let sAllValue = new Set(listValues(fieldSchema.list))
     let intersect = classList.filter(x => sAllValue.has(x))
@@ -37,12 +46,19 @@ function removeArrayValue(array, value){
   }
 }
 
-
 function setValueToClasses(value, classList, fieldSchema){
+  if(fieldSchema.isResponsive){
+    setValueToClasses(value.xs, classList, fieldSchema.xs)
+    setValueToClasses(value.sm, classList, fieldSchema.sm)
+    setValueToClasses(value.md, classList, fieldSchema.md)
+    setValueToClasses(value.lg, classList, fieldSchema.lg)
+    setValueToClasses(value.xl, classList, fieldSchema.xl)
+  }
   if(fieldSchema.widget === 'OpSelect' || fieldSchema.widget === 'OpSwitch'){
     removeArrayValue(classList, extractValueFromClasses(classList, fieldSchema))
-    //console.log(value, classList)
-    classList.push(value)
+    if(value){
+      classList.push(value)
+    }
   }
 }
 

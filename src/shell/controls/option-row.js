@@ -113,7 +113,7 @@ export class OptionResponsiveRow extends OptionRow{
     this.onValueChanged = (value)=>{
       this.valueChangedHandlers.forEach((handler)=>{
         this.allValue[this.screenWidth] = value
-        handler(this.allValue, this.schema)
+        handler(this.allValue, this.allSchema)
         this.updateLabelColor(this.input)
       })
     }
