@@ -3,6 +3,7 @@ import {ObjectState} from "../basic/object-state"
 import {Toolbox} from "./toolbox"
 import {OptionBox} from "./optionbox"
 import {NodeTree} from "./node-tree"
+import {ClassBox} from "./class-box"
 
 class Tab{
   constructor(){
@@ -70,11 +71,14 @@ export class Drawer extends RXComponent{
                     )
                   )
     this.toolbox = new Toolbox()
-    this.optionBox = new OptionBox
     this.nodeTree = new NodeTree()
     this.layout.pushChild(this.toolbox)
     this.layout.pushChild(this.nodeTree)
+
+    this.optionBox = new OptionBox
+    this.classBox = new ClassBox
     this.options.pushChild(this.optionBox)
+    this.options.pushChild(this.classBox)
 
     this.state.watch('activeDrawerTab', (state)=>{
       this.activeTab(state.activeDrawerTab)
