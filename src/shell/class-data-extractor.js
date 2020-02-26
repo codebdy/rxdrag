@@ -16,6 +16,15 @@ function extractValueFromClasses(classList, fieldSchema){
     }
     return ''
   }
+
+  if(fieldSchema.widget === 'OpSwitch'){
+    let sAllValue = new Set([fieldSchema.onValue, fieldSchema.offValue])
+    let intersect = classList.filter(x => sAllValue.has(x))
+    if(intersect.length > 0){
+      return intersect[0]
+    }
+    return ''
+  }
   return ''
 }
 
@@ -30,10 +39,9 @@ function removeArrayValue(array, value){
 
 
 function setValueToClasses(value, classList, fieldSchema){
-  console.log(fieldSchema)
-  if(fieldSchema.widget === 'OpSelect'){
+  if(fieldSchema.widget === 'OpSelect' || fieldSchema.widget === 'OpSwitch'){
     removeArrayValue(classList, extractValueFromClasses(classList, fieldSchema))
-    console.log(value, classList)
+    //console.log(value, classList)
     classList.push(value)
   }
 }
