@@ -1,11 +1,12 @@
 import {Node} from "../core/node"
 import {RXArray} from "../basic/rxarray"
 import parkMiniEditbar from "../core/park-mini-editbar"
-import {addonTag} from "./schemas/overview/tag"
-import {addonClasses} from "./schemas/overview/classes"
-import {addonAttributes} from "./schemas/overview/attributes"
-import {addonHTMLId} from "./schemas/overview/id"
-import {addonGeneralTextfield} from "./schemas/general/textfield"
+import tagSchema from "./schemas/overview/tag"
+import classesSchema from "./schemas/overview/classes"
+import attributesSchema from "./schemas/overview/attributes"
+import headingPseudoSchema from "./schemas/heading/pseudo-heading"
+
+/*import {addonGeneralTextfield} from "./schemas/general/textfield"
 import {addonUtilColor} from "./schemas/utilities/color"
 import {addonUtilBorder} from "./schemas/utilities/border"
 import {addonUtilPadding} from "./schemas/utilities/padding"
@@ -27,7 +28,6 @@ import {addonUtilText} from "./schemas/utilities/text"
 import {addonUtilVerticalAlignment} from "./schemas/utilities/vertical-align"
 import {addonUtilVisibility} from "./schemas/utilities/visibility"
 
-import {addonHeadingPseudo} from "./schemas/heading/pseudo-heading"
 import {addonHeadingDisplay} from "./schemas/heading/display"
 import {addonGridRow} from "./schemas/content/row"
 import {addonWidth} from "./schemas/column/col-width"
@@ -38,7 +38,7 @@ import {addonUtilMarginAuto} from "./schemas/column/margin-auto"
 import {addonTypyLead} from "./schemas/content/lead"
 import {addonTypyInitialism} from "./schemas/content/Initialism"
 import {addonTypyBlockquote} from "./schemas/content/blockquote"
-import {addonTypyBlockquoteFooter} from "./schemas/content/blockquote-footer"
+import {addonTypyBlockquoteFooter} from "./schemas/content/blockquote-footer"*/
 
 export class RXElement extends Node{
   constructor() {
@@ -60,9 +60,8 @@ export class RXElement extends Node{
     this.$schema = {
       fields:[],
       overView:[],
+      groups:{},
     } 
-
-    this.$schema.groups = {}
 
     this.groups = {
       'utilities':{
@@ -86,13 +85,12 @@ export class RXElement extends Node{
       this.$schema.groups[groupName] = this.groups[groupName]
     }
 
-    //在每个子类中添加
     //addonGeneralTextfield(this)
-    addonTag(this)
-    addonHTMLId(this)
-    addonClasses(this)
-    addonAttributes(this)
-    addonHeadingPseudo(this, 'typographyOptions')
+    this.addOverViewSchema(tagSchema)
+    this.addOverViewSchema(classesSchema)
+    this.addOverViewSchema(attributesSchema)
+    this.addSchema(headingPseudoSchema, 'typographyOptions')
+
  /*   addonHeadingDisplay(this, 'typographyOptions')
     addonGridRow(this, 'typographyOptions')
     let col = addonWidth(this, 'typographyOptions')
@@ -131,6 +129,16 @@ export class RXElement extends Node{
     addonUtilVerticalAlignment(this)
     addonUtilVisibility(this)*/
 
+  }
+
+  addSchema(schemaFragment, groupName){
+    schemaFragment.group = groupName
+    this.$schema.groups[groupName] = this.groups[groupName]
+    this.$schema.fields.push(schemaFragment)
+  }
+
+  addOverViewSchema(schema){
+    this.$schema.overView.push(schema)
   }
 
   clone(){

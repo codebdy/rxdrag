@@ -1,6 +1,6 @@
 import {RXElement} from "../rxelement"
-import {addonHeadingPseudo} from "../schemas/heading/pseudo-heading"
-import {addonHeadingDisplay} from "../schemas/heading/display"
+//import {addonHeadingPseudo} from "../schemas/heading/pseudo-heading"
+//import {addonHeadingDisplay} from "../schemas/heading/display"
 import {addonTypyLead} from "../schemas/content/lead"
 
 export class HTMLSamp extends RXElement{
@@ -22,8 +22,8 @@ export class HTMLSamp extends RXElement{
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLCode','HTMLSpan']
 
     this.becomeToTextfield()
-    addonHeadingPseudo(this, 'typographyOptions')
-    addonHeadingDisplay(this, 'typographyOptions')
+    //addonHeadingPseudo(this, 'typographyOptions')
+    //addonHeadingDisplay(this, 'typographyOptions')
     addonTypyLead(this, 'typographyOptions')
   }
 

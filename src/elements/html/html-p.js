@@ -1,7 +1,7 @@
 import {RXElement} from "../rxelement"
-import {addonHeadingPseudo} from "../schemas/heading/pseudo-heading"
-import {addonHeadingDisplay} from "../schemas/heading/display"
-import {addonTypyLead} from "../schemas/content/lead"
+//import {addonHeadingPseudo} from "../schemas/heading/pseudo-heading"
+//import {addonHeadingDisplay} from "../schemas/heading/display"
+//import {addonTypyLead} from "../schemas/content/lead"
 
 export class HTMLP extends RXElement{
   constructor() {
@@ -22,9 +22,9 @@ export class HTMLP extends RXElement{
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLSpan']
     this.becomeToTextfield()
 
-    addonHeadingPseudo(this, 'typographyOptions')
-    addonHeadingDisplay(this, 'typographyOptions')
-    addonTypyLead(this, 'typographyOptions')
+    //addonHeadingPseudo(this, 'typographyOptions')
+    //addonHeadingDisplay(this, 'typographyOptions')
+    //addonTypyLead(this, 'typographyOptions')
   }
 
   make(){

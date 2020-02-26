@@ -1,6 +1,6 @@
 import {RXElement} from "../../rxelement"
 import parkMiniEditbar from "../../../core/park-mini-editbar"
-import {addonHeadingPseudo} from "../../schemas/heading/pseudo-heading"
+//import {addonHeadingPseudo} from "../../schemas/heading/pseudo-heading"
 import {addonHeadingDisplay} from "../../schemas/heading/display"
 import {addonTypyLead} from "../../schemas/content/lead"
 
@@ -21,7 +21,7 @@ export class BSParagraph extends RXElement{
     this.$meta.innerHTML = "Please input paragraph text ..."
     this.label = "Paragraph"
 
-    addonHeadingPseudo(this, 'typographyOptions')
+    //addonHeadingPseudo(this, 'typographyOptions')
     addonHeadingDisplay(this, 'typographyOptions')
     addonTypyLead(this, 'typographyOptions')
   }

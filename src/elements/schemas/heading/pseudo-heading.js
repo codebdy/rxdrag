@@ -1,6 +1,4 @@
-import {OptionFragment} from "../option-fragment"
-
-let headingPseudoSchema = {
+export default{
   fieldName: 'classList',
   label:'Pseudo Heading',
   widget:'OpSelect',
@@ -14,19 +12,3 @@ let headingPseudoSchema = {
     'h6':'H6',
   },
 }
-
-class HeadingPseudo extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = Object.assign({}, headingPseudoSchema)
-  }
-}
-
-var addonHeadingPseudo = (node, groupName)=>{
-  let headingPseudo = new HeadingPseudo
-  headingPseudo.addon(node, groupName)
-  return headingPseudo
-}
-
-export {addonHeadingPseudo}
-

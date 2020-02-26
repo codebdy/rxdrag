@@ -1,7 +1,7 @@
 import {RXElement} from "../rxelement"
-import {addonHeadingPseudo} from "../schemas/heading/pseudo-heading"
-import {addonHeadingDisplay} from "../schemas/heading/display"
-import {addonTypyLead} from "../schemas/content/lead"
+//import {addonHeadingPseudo} from "../schemas/heading/pseudo-heading"
+//import {addonHeadingDisplay} from "../schemas/heading/display"
+//import {addonTypyLead} from "../schemas/content/lead"
 
 export class HTMLCode extends RXElement{
   constructor() {
@@ -24,9 +24,9 @@ export class HTMLCode extends RXElement{
     this.becomeToTextfield()
     this.$meta.innerHTML = 'Code text'
 
-    addonHeadingPseudo(this, 'typographyOptions')
-    addonHeadingDisplay(this, 'typographyOptions')
-    addonTypyLead(this, 'typographyOptions')
+    //addonHeadingPseudo(this, 'typographyOptions')
+    //addonHeadingDisplay(this, 'typographyOptions')
+    //addonTypyLead(this, 'typographyOptions')
   }
 
   make(){

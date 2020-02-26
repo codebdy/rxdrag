@@ -1,7 +1,7 @@
 import {RXElement} from "../../rxelement"
-import {addonFluid} from "../../schemas/container/fluid"
-import {addonUtilColor} from "../../schemas/utilities/color"
-import {addonUtilBorder} from "../../schemas/utilities/border"
+//import {addonFluid} from "../../schemas/container/fluid"
+//import {addonUtilColor} from "../../schemas/utilities/color"
+//import {addonUtilBorder} from "../../schemas/utilities/border"
 
 export class BSContainer extends RXElement{
   constructor() {
@@ -21,7 +21,7 @@ export class BSContainer extends RXElement{
 
     this.addClass('container')
 
-    addonFluid(this)
+    //addonFluid(this)
     //addonUtilColor(this)
     //addonUtilBorder(this)
   }
