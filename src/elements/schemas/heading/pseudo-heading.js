@@ -19,15 +19,15 @@ class HeadingPseudo extends OptionFragment{
     super()
     this.schema = Object.assign({}, headingPseudoSchema)
 
-    this.fieldName = 'headingPseudo'
+    this.fieldName = 'classList'
   }
 
   copyMeta(from, to){
-    to.headingPseudo = from.headingPseudo
+    //to.headingPseudo = from.headingPseudo
   }
 
   metaToModel(model, meta){
-    model.classList.add(meta[this.fieldName])
+    //model.classList.add(meta[this.fieldName])
   }
 }
 

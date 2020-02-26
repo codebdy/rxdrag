@@ -45,8 +45,6 @@ export class ClassBox extends RXComponent{
     var meta = node.meta
     var schema = node.schema
 
-    console.log(schema.overView)
-
     for(var fieldName in schema.overView){
       let fieldSchema = schema.overView[fieldName]
       let metaValue = meta[fieldName]

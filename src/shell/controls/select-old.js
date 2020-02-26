@@ -33,26 +33,17 @@ class SelectedList  extends RXComponent{
   }
 }
 
-function removeFormArray(array, value){
-  for (var i = 0; i < array.length; i++) {
-    if(array[i] === value){
-      array.splice(i, 1)
-      break
-    }
-  }
-}
 
 export class OpSelect extends OpInput{
   constructor(value, schema){
     super(value, schema.defaultValue)
-    this.list = schema.list
     if(schema.columns === 2){
       this.cssClass('two-column')
     }
-    //console.log(value)
-    let selfValue = this.getSelfValue()
 
     this.cssClass('ctl-select')
+    let list = schema.list
+    this.list = list
 
     this.valueViewer = new OpLabel()
 
@@ -66,8 +57,8 @@ export class OpSelect extends OpInput{
     }
     this.pushChild(this.valueViewer)
 
-    this.listViewer = new SelectedList(this.list, schema.required)
-    this.valueViewer.setText(selfValue ? this.list[selfValue] : this.emptyValue)
+    this.listViewer = new SelectedList(list, schema.required)
+    this.valueViewer.setText(value?list[value]:this.emptyValue)
     this.valueViewer.setRightIcon('▾')
     this.pushChild(this.listViewer)
 
@@ -85,11 +76,11 @@ export class OpSelect extends OpInput{
     })
 
     this.listViewer.valueChage = (id, text)=>{
-      let oldValue = this.getSelfValue()
-      this.setSelfValue(id)
+      let oldValue = this.value
+      this.value = id
 
-      if(oldValue !== id){
-        this.onValueChanged(this.value)
+      if(oldValue !== this.value){
+        this.onValueChanged(id)
       }
       this.valueViewer.setText(text)
       this.listViewer.hide()
@@ -105,25 +96,29 @@ export class OpSelect extends OpInput{
     return values
   }
 
-  getSelfValue(){
+ /* get value(){
     let sAllValue = new Set(this.listValues())
-    let intersect = this.value.filter(x => sAllValue.has(x))
-    if(intersect.length > 0){
-      return intersect[0]
-    }
+      let intersect = this._value.filter(x => sAllValue.has(x))
+      if(intersect.length > 0){
+        return intersect[0]
+      }
   }
 
-  setSelfValue(value){
-    removeFormArray(this.value, this.getSelfValue())
-    this.value = Array.from(new Set([...this.value, value]))
-  }
+  set value(value){
+    if(this._value instanceof Array){
+      this._value = Array.from(new Set([...this._value, value]))
+    }
+    else{
+      this._value = value
+    }
+ }*/
 
   removeValue(){
     this.valueViewer.setText(this.emptyValue)
-    let oldValue = this.getSelfValue()
-    removeFormArray(this.value, oldValue)
+    let oldValue = this.value
+    this.value = ''
     if(oldValue){
-      this.onValueChanged(this.value)
+      this.onValueChanged(this._value)
     }
   }
 

@@ -93,7 +93,7 @@ export class RXElement extends Node{
     addonClasses(this)
     addonAttributes(this)
     addonHeadingPseudo(this, 'typographyOptions')
-    addonHeadingDisplay(this, 'typographyOptions')
+ /*   addonHeadingDisplay(this, 'typographyOptions')
     addonGridRow(this, 'typographyOptions')
     let col = addonWidth(this, 'typographyOptions')
     col.schema.xs.label = 'Column'
@@ -129,7 +129,7 @@ export class RXElement extends Node{
     addonUtilStretchedLink(this) //need to move to a tag
     addonUtilText(this)
     addonUtilVerticalAlignment(this)
-    addonUtilVisibility(this)
+    addonUtilVisibility(this)*/
 
   }
 
