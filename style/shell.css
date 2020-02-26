@@ -300,6 +300,10 @@
   border-left: #2f2f2f solid 1px;
 }
 
+.rx-drawer .bottom-view .over-view{
+  padding:5px;
+}
+
 .tree-node .tree-node-title{
   display: flex;
   flex-flow: row;

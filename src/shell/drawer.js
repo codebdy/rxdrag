@@ -108,10 +108,12 @@ export class Drawer extends RXComponent{
 
   editNode(node){
     this.optionBox.editNode(node)
+    this.classBox.editNode(node)
   }
 
   cancelEditNode(id){
     this.optionBox.cancelEdit()
+    this.classBox.cancelEdit()
   }
 
 }

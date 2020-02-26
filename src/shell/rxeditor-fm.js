@@ -137,6 +137,9 @@ export class RXEditorFM{
     this.drawer.optionBox.valueChanged = (node)=>{
       this.commandProxy.nodeChanged(node)
     }
+    this.drawer.classBox.valueChanged = (node)=>{
+      this.commandProxy.nodeChanged(node)
+    }
   }
 
   renderRight(){

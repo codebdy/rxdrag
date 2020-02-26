@@ -1,31 +1,34 @@
 import {OptionFragment} from "../option-fragment"
 
-class Classes extends OptionFragment{
+class Classes{
   constructor(){
-    super()
     this.schema = {
       label:'Classes',
       widget:'OpLabelsInput',
-      group:'generalOptions',
       defaultValue:[],
     }
 
     this.fieldName = 'classList'
   }
 
-  copyMeta(from, to){
-    //to[this.fieldName] = from[this.fieldName]
+  copyMeta(from, to){}
+
+  metaToModel(model, meta){}
+
+  addon(node){
+    node.$schema.overView[this.fieldName] = this.schema
   }
 
-  metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
-    //model.attributes['aria-label'] = metaFragment
+  setDefaultValue(defaultValue){
+    this.schema.defaultValue = defaultValue
+    return this
   }
+  
 }
 
-var addonClasses = (node, groupName)=>{
+var addonClasses = (node)=>{
   let classes = new Classes
-  classes.addon(node, groupName)
+  classes.addon(node)
   return classes
 }
 
