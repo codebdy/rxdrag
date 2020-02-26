@@ -183,7 +183,7 @@
 .option-row .op-label-group{
   flex-flow:row;
   flex-wrap: wrap;
-  flex: 1;
+  flex-grow: 0;
   align-items: center;
   display: none;
 }
@@ -193,7 +193,9 @@
 }
 
 .option-row .op-label-group .op-label{
+  display: flex;
   font-size: 12px;
+  white-space: nowrap
 }
 
 .option-row .op-label-group .not-set-value{
@@ -202,8 +204,11 @@
   padding-top:6px;
 }
 
+.option-row .op-labels-input{
+  flex: 1;
+}
+
 .option-row .op-labels-input .label-input{
-  width:100%;
   margin:1px;
 }
 
