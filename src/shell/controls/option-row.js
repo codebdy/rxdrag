@@ -18,7 +18,7 @@ export class RowBase extends RXComponent{
     this.valueChangedHandlers = new RXArray
     this.onValueChanged = (value)=>{
       this.valueChangedHandlers.forEach((handler)=>{
-        handler(value, this.fieldName)
+        handler(value, this.schema)
       })
       this.updateLabelColor(this.input)
     }
@@ -55,7 +55,6 @@ export class OptionRow extends RowBase{
     this.pushChild(input)
     this.updateLabelColor(input)
     input.listenValueChaged((value)=>{
-      this.value = value
       this.onValueChanged(value)
     })
   }
@@ -105,16 +104,16 @@ export class OptionRow extends RowBase{
 
 export class OptionResponsiveRow extends OptionRow{
   constructor(value, schema, screenWidth){
-    value = value 
-    super(value, schema[screenWidth])
+    value = value ? value : {} 
+    super(value[screenWidth], schema[screenWidth])
     this.screenWidth = screenWidth
-    //this.allValue = value
-    //this.allSchema = schema
+    this.allValue = value
+    this.allSchema = schema
 
     this.onValueChanged = (value)=>{
       this.valueChangedHandlers.forEach((handler)=>{
-        //this.allValue[this.screenWidth] = value
-        handler(value, schema.fieldName)
+        this.allValue[this.screenWidth] = value
+        handler(this.allValue, this.schema)
         this.updateLabelColor(this.input)
       })
     }

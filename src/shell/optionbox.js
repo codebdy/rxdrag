@@ -2,6 +2,7 @@ import {RXComponent} from "../basic/rxcomponent"
 import {ToolGroup, ToolboxState} from "./controls/tool-group"
 import {OptionRow, OptionResponsiveRow} from "./controls/option-row"
 import {OptionRowGroup} from "./controls/option-row-group"
+import {extractValueFromClasses, setValueToClasses} from "./class-data-extractor"
 
 
 export class OptionBoxGroup extends ToolGroup{
@@ -55,26 +56,13 @@ export class OptionBox extends RXComponent{
   }
 
   showContent(node){
-    var meta =node.meta
     var schema = node.schema
     this.initGroup(schema.groups)
     schema.fields.forEach((fieldSchema)=>{
-      let fieldName = fieldSchema.fieldName
-      let metaValue = meta[fieldName]
-      //console.log('metaValue:', metaValue)
-      var row
-      if(fieldSchema.isRowGroup){
-        row = new OptionRowGroup(metaValue, fieldSchema, this.screenWidth)
-      }
-      else if(fieldSchema.isResponsive){
-        row = new OptionResponsiveRow(metaValue, fieldSchema, this.screenWidth)
-      }
-      else{
-        row = new OptionRow(metaValue, fieldSchema)
-      }
-
-      row.listenValueChaged((value, fdName)=>{
-        node.meta[fdName] = value
+      let metaValue = this.getFieldMetaValue(node, fieldSchema)
+      let row = this.creatRow(metaValue, fieldSchema)
+      row.listenValueChaged((value, fdSchema)=>{
+        this.setFiedlMetaValue(value, node, fdSchema)
         this.valueChanged(node)
       })
       this.getGroup(fieldSchema.group).add(row)
@@ -85,6 +73,37 @@ export class OptionBox extends RXComponent{
                    .cssClass('no-title-top-border')
                    .active()
     }
+  }
+
+  getFieldMetaValue(node, fieldSchema){
+    var meta =node.meta
+    let fieldName = fieldSchema.fieldName
+    let metaValue = meta[fieldName]
+    if(fieldName == 'classList'){
+      metaValue = extractValueFromClasses(meta[fieldName], fieldSchema)
+    }
+    return metaValue
+  }
+
+  setFiedlMetaValue(value, node, fdSchema){
+    if(fdSchema.fieldName === 'classList'){
+      setValueToClasses(value, node.meta[fdSchema.fieldName], fdSchema)
+    }
+  }
+
+  creatRow(metaValue, fieldSchema){
+    var row
+    if(fieldSchema.isRowGroup){
+      row = new OptionRowGroup(metaValue, fieldSchema, this.screenWidth)
+    }
+    else if(fieldSchema.isResponsive){
+      row = new OptionResponsiveRow(metaValue, fieldSchema, this.screenWidth)
+    }
+    else{
+      row = new OptionRow(metaValue, fieldSchema)
+    }
+
+    return row
   }
 
   initGroup(groups){

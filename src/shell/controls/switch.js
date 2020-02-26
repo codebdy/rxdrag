@@ -1,7 +1,7 @@
 import {RXComponent} from "../../basic/rxcomponent"
-import {OpClassInput} from "./class-input"
+import {OpInput} from "./input"
 
-export class OpSwitch extends OpClassInput{
+export class OpSwitch extends OpInput{
   constructor(value, schema){
     super(value, schema.defaultValue)
     this.cssClass('op-switch')
@@ -20,17 +20,17 @@ export class OpSwitch extends OpClassInput{
   }
 
   changeValue(){
-    if(this.getSelfValue() === this.onValue){
-      this.setSelfValue(this.offValue)
+    if(this.value === this.onValue){
+      this.value = this.offValue
     }
     else{
-      this.setSelfValue(this.onValue)
+      this.value = this.onValue
     }
     this.onValueChanged(this.value)
   }
 
   updateState(){
-    if(this.getSelfValue() === this.offValue){
+    if(this.value === this.offValue){
       this.removeCssClass('on')
     }
     else{
@@ -38,18 +38,10 @@ export class OpSwitch extends OpClassInput{
     }
   }
 
-  getSelfValue(){
-    let sAllValue = new Set([this.onValue, this.offValue])
-    let intersect = this.value.filter(x => sAllValue.has(x))
-    if(intersect.length > 0){
-      return intersect[0]
-    }
-    return ''
-  }
-
-  setSelfValue(value){
-    this.removeSelfValue()
-    this.value = Array.from(new Set([...this.value, value]))
+  removeValue(value){
+    this.value = this.defaultValue
+    this.onValueChanged(this.value)
+    this.updateState()
   }
 
 }
