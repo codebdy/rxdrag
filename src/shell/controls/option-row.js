@@ -35,12 +35,12 @@ export class RowBase extends RXComponent{
 }
 
 export class OptionRow extends RowBase{
-  constructor(value, schema, fieldName){
+  constructor(value, schema){
     super()
     this.cssClass('option-row')
     this.schema = schema
     this.value = value
-    this.fieldName = fieldName
+    this.fieldName = schema.fieldName
     this.setLabel(schema.label)
     this.setInput(this.createInput())
   }
@@ -103,9 +103,9 @@ export class OptionRow extends RowBase{
 }
 
 export class OptionResponsiveRow extends OptionRow{
-  constructor(value, schema, fieldName, screenWidth){
+  constructor(value, schema, screenWidth){
     value = value ? value : {} 
-    super(value[screenWidth], schema[screenWidth], fieldName)
+    super(value[screenWidth], schema[screenWidth])
     this.screenWidth = screenWidth
     this.allValue = value
     this.allSchema = schema

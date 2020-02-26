@@ -5,24 +5,14 @@ class ContainerFluid extends OptionFragment{
     super()
     this.schema = {
       label:'Fluid',
+      fieldName: 'classList',
       widget:'OpSwitch',
-      required:true,
       group:'containerOptions',
       onValue:'container-fluid',
       offValue:'container',
       defaultValue:'container',
     }
 
-    this.fieldName = 'containerFluid'
-  }
-
-  copyMeta(from, to){
-    to.containerFluid = from.containerFluid
-  }
-
-  metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
-    model.classList.add(metaFragment)
   }
 }
 

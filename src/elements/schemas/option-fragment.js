@@ -11,7 +11,7 @@ export class OptionFragment{
     if(!node.$meta[this.fieldName]){
       node.$meta[this.fieldName] = this.metaFragment
     }
-    node.$schema.fields[this.fieldName] = this.schema
+    node.$schema.fields.push(this.schema)
   }
 
   addToGroup(node, groupName){
@@ -53,5 +53,9 @@ export class OptionFragment{
     this.schema.defaultValue = defaultValue
     return this
   }
+
+  copyMeta(from, to){}
+
+  metaToModel(model, meta){}
 
 }

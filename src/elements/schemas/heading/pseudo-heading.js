@@ -1,6 +1,7 @@
 import {OptionFragment} from "../option-fragment"
 
 let headingPseudoSchema = {
+  fieldName: 'classList',
   label:'Pseudo Heading',
   widget:'OpSelect',
   defaultValue:'',
@@ -18,16 +19,6 @@ class HeadingPseudo extends OptionFragment{
   constructor(){
     super()
     this.schema = Object.assign({}, headingPseudoSchema)
-
-    this.fieldName = 'classList'
-  }
-
-  copyMeta(from, to){
-    //to.headingPseudo = from.headingPseudo
-  }
-
-  metaToModel(model, meta){
-    //model.classList.add(meta[this.fieldName])
   }
 }
 

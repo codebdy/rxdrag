@@ -24,7 +24,7 @@ export class BSButton extends RXElement{
     this.$meta.tag = 'button'
     this.$meta.innerHTML = 'Button'
     this.label = "button"
-    this.$meta.classList.push('btn')
+    this.addClass('btn')
     this.acceptedChildren=['HTMLSpan','HTMLDiv','BSBadge']
 
     this.becomeToTextfield()

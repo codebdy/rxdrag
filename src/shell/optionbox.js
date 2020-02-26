@@ -58,20 +58,19 @@ export class OptionBox extends RXComponent{
     var meta =node.meta
     var schema = node.schema
     this.initGroup(schema.groups)
-    for(var fieldName in schema.fields){
-
-      let fieldSchema = schema.fields[fieldName]
+    schema.fields.forEach((fieldSchema)=>{
+      let fieldName = fieldSchema.fieldName
       let metaValue = meta[fieldName]
       //console.log('metaValue:', metaValue)
       var row
       if(fieldSchema.isRowGroup){
-        row = new OptionRowGroup(metaValue, fieldSchema, fieldName, this.screenWidth)
+        row = new OptionRowGroup(metaValue, fieldSchema, this.screenWidth)
       }
       else if(fieldSchema.isResponsive){
-        row = new OptionResponsiveRow(metaValue, fieldSchema, fieldName, this.screenWidth)
+        row = new OptionResponsiveRow(metaValue, fieldSchema, this.screenWidth)
       }
       else{
-        row = new OptionRow(metaValue, fieldSchema, fieldName)
+        row = new OptionRow(metaValue, fieldSchema)
       }
 
       row.listenValueChaged((value, fdName)=>{
@@ -80,7 +79,7 @@ export class OptionBox extends RXComponent{
       })
 
       this.getGroup(fieldSchema.group).add(row)
-    }
+    })
 
     if(this.children.length > 0){
       this.children.first()

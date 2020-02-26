@@ -1,7 +1,7 @@
 import {RXComponent} from "../../basic/rxcomponent"
 import {OpLabel} from "./label"
 import {OpIconButton} from "./buttons"
-import {OpInput} from "./input"
+import {OpClassInput} from "./class-input"
 
 class SelectItem extends RXComponent{
   constructor(id, value){
@@ -33,16 +33,8 @@ class SelectedList  extends RXComponent{
   }
 }
 
-function removeFormArray(array, value){
-  for (var i = 0; i < array.length; i++) {
-    if(array[i] === value){
-      array.splice(i, 1)
-      break
-    }
-  }
-}
 
-export class OpSelect extends OpInput{
+export class OpSelect extends OpClassInput{
   constructor(value, schema){
     super(value, schema.defaultValue)
     this.list = schema.list
@@ -111,26 +103,29 @@ export class OpSelect extends OpInput{
     if(intersect.length > 0){
       return intersect[0]
     }
+    return ''
   }
 
   setSelfValue(value){
-    removeFormArray(this.value, this.getSelfValue())
+    this.removeSelfValue()
     this.value = Array.from(new Set([...this.value, value]))
   }
 
   removeValue(){
     this.valueViewer.setText(this.emptyValue)
     let oldValue = this.getSelfValue()
-    removeFormArray(this.value, oldValue)
+    this.removeSelfValue()
     if(oldValue){
       this.onValueChanged(this.value)
     }
   }
 
-
   clear(){
     this.removeValue()
   }
 
+  isShowingDefault(){
+    return this.defaultValue == this.getSelfValue()
+  }
 
 }

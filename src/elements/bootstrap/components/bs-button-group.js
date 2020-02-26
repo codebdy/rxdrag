@@ -13,7 +13,7 @@ export class BSButtonGroup extends HTMLDiv{
     this.editMarginStyle.padding = ''
     //this.editMarginStyle = {}
     this.label = 'button group'
-    this.$meta.classList.push('btn-group')
+    this.addClass('btn-group')
 
     this.acceptedChildren=['BSButton']
     addonAriaLabel(this)

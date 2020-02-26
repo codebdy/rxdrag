@@ -12,12 +12,12 @@ class GroupValueLabel extends OpLabel{
 }
 
 export class OptionRowGroup extends RowBase{
-  constructor(value, schema, fieldName, screenWidth){
+  constructor(value, schema, screenWidth){
     value = value ? value :{}
     super()
     this.value = value
     this.schema = schema
-    this.fieldName = fieldName
+    this.fieldName = schema.fieldName
     this.screenWidth = screenWidth
     this.cssClass('option-row-group')
     this.cssClass('sub-row-collapse')
