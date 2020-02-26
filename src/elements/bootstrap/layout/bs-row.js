@@ -1,7 +1,7 @@
 import {RXElement} from "../../rxelement"
-import {addonRowGutters} from "../../schemas/row/gutters"
-import {addonRowJustifyContent} from "../../schemas/row/justify-content"
-import {addonRowAlignItems} from "../../schemas/row/align-items"
+import guttersSchema from "../../schemas/row/gutters"
+//import {addonRowJustifyContent} from "../../schemas/row/justify-content"
+//import {addonRowAlignItems} from "../../schemas/row/align-items"
 
 export class BSRow extends RXElement{
   constructor(parent) {
@@ -14,7 +14,6 @@ export class BSRow extends RXElement{
     this.acceptedChildren=['BSCol','BSW100']
     this.label = "row"
 
-    this.$meta.baseClass = 'row' 
     this.editMarginStyle.margin = "0"
 
     //this.groups.
@@ -22,10 +21,10 @@ export class BSRow extends RXElement{
     this.groups.rowOptions = {
       label:'Row Options'
     }
-    
-    addonRowGutters(this)
-    addonRowJustifyContent(this)
-    addonRowAlignItems(this)
+    this.addClass('row')
+    this.addSchema(guttersSchema, 'rowOptions')
+    //addonRowJustifyContent(this)
+    //addonRowAlignItems(this)
   }
  
   make(){

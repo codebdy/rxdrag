@@ -1467,7 +1467,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"BSRow\", function() { return BSRow; });\n/* harmony import */ var _rxelement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../rxelement */ \"./src/elements/rxelement.js\");\n/* harmony import */ var _schemas_row_gutters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../schemas/row/gutters */ \"./src/elements/schemas/row/gutters.js\");\n/* harmony import */ var _schemas_row_justify_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../schemas/row/justify-content */ \"./src/elements/schemas/row/justify-content.js\");\n/* harmony import */ var _schemas_row_align_items__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../schemas/row/align-items */ \"./src/elements/schemas/row/align-items.js\");\n\r\n\r\n\r\n\r\n\r\nclass BSRow extends _rxelement__WEBPACK_IMPORTED_MODULE_0__[\"RXElement\"]{\r\n  constructor(parent) {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupLayout'\r\n    this.toolboxInfo.elementId = 'row'\r\n    this.toolboxInfo.elementName = \"Row\"\r\n    this.className = 'BSRow'\r\n    this.heightDropMargin = 15;\r\n    this.acceptedChildren=['BSCol','BSW100']\r\n    this.label = \"row\"\r\n\r\n    this.$meta.baseClass = 'row' \r\n    this.editMarginStyle.margin = \"0\"\r\n\r\n    //this.groups.\r\n\r\n    this.groups.rowOptions = {\r\n      label:'Row Options'\r\n    }\r\n    \r\n    Object(_schemas_row_gutters__WEBPACK_IMPORTED_MODULE_1__[\"addonRowGutters\"])(this)\r\n    Object(_schemas_row_justify_content__WEBPACK_IMPORTED_MODULE_2__[\"addonRowJustifyContent\"])(this)\r\n    Object(_schemas_row_align_items__WEBPACK_IMPORTED_MODULE_3__[\"addonRowAlignItems\"])(this)\r\n  }\r\n \r\n  make(){\r\n    return new BSRow\r\n  }\r\n\r\n  clone(){\r\n    let copy = super.clone()\r\n    copy.$meta.baseClass = this.$meta.baseClass\r\n    return copy\r\n  }\r\n \r\n/*  toViewModel(){\r\n    let model = super.toViewModel()\r\n    return model\r\n  }*/\r\n\r\n  metaToModel(model){\r\n    model.classList.push(this.$meta.baseClass)\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/bootstrap/layout/bs-row.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"BSRow\", function() { return BSRow; });\n/* harmony import */ var _rxelement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../rxelement */ \"./src/elements/rxelement.js\");\n/* harmony import */ var _schemas_row_gutters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../schemas/row/gutters */ \"./src/elements/schemas/row/gutters.js\");\n\r\n\r\n//import {addonRowJustifyContent} from \"../../schemas/row/justify-content\"\r\n//import {addonRowAlignItems} from \"../../schemas/row/align-items\"\r\n\r\nclass BSRow extends _rxelement__WEBPACK_IMPORTED_MODULE_0__[\"RXElement\"]{\r\n  constructor(parent) {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupLayout'\r\n    this.toolboxInfo.elementId = 'row'\r\n    this.toolboxInfo.elementName = \"Row\"\r\n    this.className = 'BSRow'\r\n    this.heightDropMargin = 15;\r\n    this.acceptedChildren=['BSCol','BSW100']\r\n    this.label = \"row\"\r\n\r\n    this.editMarginStyle.margin = \"0\"\r\n\r\n    //this.groups.\r\n\r\n    this.groups.rowOptions = {\r\n      label:'Row Options'\r\n    }\r\n    this.addClass('row')\r\n    this.addSchema(_schemas_row_gutters__WEBPACK_IMPORTED_MODULE_1__[\"default\"], 'rowOptions')\r\n    //addonRowJustifyContent(this)\r\n    //addonRowAlignItems(this)\r\n  }\r\n \r\n  make(){\r\n    return new BSRow\r\n  }\r\n\r\n  clone(){\r\n    let copy = super.clone()\r\n    copy.$meta.baseClass = this.$meta.baseClass\r\n    return copy\r\n  }\r\n \r\n/*  toViewModel(){\r\n    let model = super.toViewModel()\r\n    return model\r\n  }*/\r\n\r\n  metaToModel(model){\r\n    model.classList.push(this.$meta.baseClass)\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/bootstrap/layout/bs-row.js?");
 
 /***/ }),
 
@@ -2599,39 +2599,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 
 /***/ }),
 
-/***/ "./src/elements/schemas/row/align-items.js":
-/*!*************************************************!*\
-  !*** ./src/elements/schemas/row/align-items.js ***!
-  \*************************************************/
-/*! exports provided: addonRowAlignItems */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addonRowAlignItems\", function() { return addonRowAlignItems; });\n/* harmony import */ var _option_fragment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../option-fragment */ \"./src/elements/schemas/option-fragment.js\");\n/* harmony import */ var _utilities_flex_align_items__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utilities/flex/align-items */ \"./src/elements/schemas/utilities/flex/align-items.js\");\n\r\n \r\n\r\nclass RowAlignItems extends _option_fragment__WEBPACK_IMPORTED_MODULE_0__[\"OptionFragment\"]{\r\n  constructor(){\r\n    super()\r\n    this.schema = Object.assign({}, _utilities_flex_align_items__WEBPACK_IMPORTED_MODULE_1__[\"default\"])\r\n    this.schema.group = 'rowOptions'\r\n\r\n    this.fieldName = 'utilAlignItems'\r\n  }\r\n\r\n  copyMeta(from, to){\r\n    super.copyResponsiveMetaTo(from, to)\r\n  }\r\n\r\n  metaToModel(model, meta){\r\n    let metaFragment = meta[this.fieldName]\r\n    super.responsiveMetaFieldToViewModel(model, metaFragment)\r\n  }\r\n}\r\n\r\nvar addonRowAlignItems = (node, groupName)=>{\r\n  let rowAlignItems = new RowAlignItems\r\n  rowAlignItems.addon(node, groupName)\r\n  return rowAlignItems\r\n}\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/row/align-items.js?");
-
-/***/ }),
-
 /***/ "./src/elements/schemas/row/gutters.js":
 /*!*********************************************!*\
   !*** ./src/elements/schemas/row/gutters.js ***!
   \*********************************************/
-/*! exports provided: addonRowGutters */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addonRowGutters\", function() { return addonRowGutters; });\n/* harmony import */ var _option_fragment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../option-fragment */ \"./src/elements/schemas/option-fragment.js\");\n\r\n\r\nclass RowGutters extends _option_fragment__WEBPACK_IMPORTED_MODULE_0__[\"OptionFragment\"]{\r\n  constructor(){\r\n    super()\r\n    this.schema = {\r\n      label:'Gutters',\r\n      widget:'OpSwitch',\r\n      group:'rowOptions',\r\n      onValue:'',\r\n      offValue:'no-gutters',\r\n      defaultValue:'',\r\n    }\r\n\r\n    this.fieldName = 'rowGutters'\r\n  }\r\n\r\n  copyMeta(from, to){\r\n    to[this.fieldName] = from[this.fieldName]\r\n  }\r\n\r\n  metaToModel(model, meta){\r\n    let metaFragment = meta[this.fieldName]\r\n    model.classList.add(metaFragment)\r\n  }\r\n}\r\n\r\nvar addonRowGutters = (node, groupName)=>{\r\n  let rowGutters = new RowGutters\r\n  rowGutters.addon(node, groupName)\r\n  return rowGutters\r\n}\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/row/gutters.js?");
-
-/***/ }),
-
-/***/ "./src/elements/schemas/row/justify-content.js":
-/*!*****************************************************!*\
-  !*** ./src/elements/schemas/row/justify-content.js ***!
-  \*****************************************************/
-/*! exports provided: addonRowJustifyContent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addonRowJustifyContent\", function() { return addonRowJustifyContent; });\n/* harmony import */ var _option_fragment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../option-fragment */ \"./src/elements/schemas/option-fragment.js\");\n/* harmony import */ var _utilities_flex_justify_content__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utilities/flex/justify-content */ \"./src/elements/schemas/utilities/flex/justify-content.js\");\n\r\n \r\n\r\nclass RowJustifyContent extends _option_fragment__WEBPACK_IMPORTED_MODULE_0__[\"OptionFragment\"]{\r\n  constructor(){\r\n    super()\r\n    this.schema = Object.assign({}, _utilities_flex_justify_content__WEBPACK_IMPORTED_MODULE_1__[\"default\"])\r\n    this.schema.group = 'rowOptions'\r\n\r\n    this.fieldName = 'rowJustifyContent'\r\n  }\r\n\r\n  copyMeta(from, to){\r\n    super.copyResponsiveMetaTo(from, to)\r\n  }\r\n\r\n  metaToModel(model, meta){\r\n    let metaFragment = meta[this.fieldName]\r\n    super.responsiveMetaFieldToViewModel(model, metaFragment)\r\n  }\r\n}\r\n\r\nvar addonRowJustifyContent = (node, groupName)=>{\r\n  let rowJustifyContent = new RowJustifyContent\r\n  rowJustifyContent.addon(node, groupName)\r\n  return rowJustifyContent\r\n}\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/row/justify-content.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  fieldName:'classList',\r\n  label:'Gutters',\r\n  widget:'OpSwitch',\r\n  group:'rowOptions',\r\n  onValue:'',\r\n  offValue:'no-gutters',\r\n  defaultValue:'',\r\n});\n\n//# sourceURL=webpack:///./src/elements/schemas/row/gutters.js?");
 
 /***/ }),
 
@@ -2791,18 +2767,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
-/***/ "./src/elements/schemas/utilities/flex/align-items.js":
-/*!************************************************************!*\
-  !*** ./src/elements/schemas/utilities/flex/align-items.js ***!
-  \************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  isResponsive:true,\r\n  xs:{\r\n    widget:'OpSelect',\r\n    label:'Align Items',\r\n    list:{\r\n      'align-items-start':'Start',\r\n      'align-items-end':'End',\r\n      'align-items-center':'Center',\r\n      'align-items-baseline':'Baseline',\r\n      'align-items-stretch':'Stretch',\r\n    },\r\n  },\r\n  //---------------------\r\n  sm:{\r\n    widget:'OpSelect',\r\n    label:'Align Items',\r\n    list:{\r\n      'align-items-sm-start':'Start',\r\n      'align-items-sm-end':'End',\r\n      'align-items-sm-center':'Center',\r\n      'align-items-sm-baseline':'Baseline',\r\n      'align-items-sm-stretch':'Stretch',\r\n    },\r\n  },\r\n  //---------------------\r\n  md:{\r\n    widget:'OpSelect',\r\n    label:'Align Items',\r\n    list:{\r\n      'align-items-md-start':'Start',\r\n      'align-items-md-end':'End',\r\n      'align-items-md-center':'Center',\r\n      'align-items-md-baseline':'Baseline',\r\n      'align-items-md-stretch':'Stretch',\r\n    },\r\n  },\r\n  //---------------------\r\n  lg:{\r\n    widget:'OpSelect',\r\n    label:'Align Items',\r\n    list:{\r\n      'align-items-lg-start':'Start',\r\n      'align-items-lg-end':'End',\r\n      'align-items-lg-center':'Center',\r\n      'align-items-lg-baseline':'Baseline',\r\n      'align-items-lg-stretch':'Stretch',\r\n    },\r\n  },\r\n  //---------------------\r\n  xl:{\r\n    widget:'OpSelect',\r\n    label:'Align Items',\r\n    list:{\r\n      'align-items-xl-start':'Start',\r\n      'align-items-xl-end':'End',\r\n      'align-items-xl-center':'Center',\r\n      'align-items-xl-baseline':'Baseline',\r\n      'align-items-xl-stretch':'Stretch',\r\n    },\r\n  },\r\n  //---------------------\r\n });\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/flex/align-items.js?");
-
-/***/ }),
-
 /***/ "./src/elements/schemas/utilities/flex/align-self.js":
 /*!***********************************************************!*\
   !*** ./src/elements/schemas/utilities/flex/align-self.js ***!
@@ -2812,18 +2776,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  group:'columnOptions',\r\n  isResponsive:true,\r\n  xs:{\r\n    label:'Align Self',\r\n    widget:'OpSelect',\r\n    list:{\r\n      'align-self-auto':'Auto',\r\n      'align-self-start':'Start',\r\n      'align-self-end':'End',\r\n      'align-self-center':'Center',\r\n      'align-self-baseline':'Baseline',\r\n      'align-self-stretch':'Stretch',\r\n    },\r\n  },\r\n  //---------------------\r\n  sm:{\r\n    label:'Align Self',\r\n    widget:'OpSelect',\r\n    list:{\r\n      'align-self-sm-auto':'Auto',\r\n      'align-self-sm-start':'Start',\r\n      'align-self-sm-end':'End',\r\n      'align-self-sm-center':'Center',\r\n      'align-self-sm-baseline':'Baseline',\r\n      'align-self-sm-stretch':'Stretch',\r\n    },\r\n  },\r\n  //---------------------\r\n  md:{\r\n    label:'Align Self',\r\n    widget:'OpSelect',\r\n    list:{\r\n      'align-self-md-auto':'Auto',\r\n      'align-self-md-start':'Start',\r\n      'align-self-md-end':'End',\r\n      'align-self-md-center':'Center',\r\n      'align-self-md-baseline':'Baseline',\r\n      'align-self-md-stretch':'Stretch',\r\n    },\r\n  },\r\n  //---------------------\r\n  lg:{\r\n    label:'Align Self',\r\n    widget:'OpSelect',\r\n    list:{\r\n      'align-self-lg-auto':'Auto',\r\n      'align-self-lg-start':'Start',\r\n      'align-self-lg-end':'End',\r\n      'align-self-lg-center':'Center',\r\n      'align-self-lg-baseline':'Baseline',\r\n      'align-self-lg-stretch':'Stretch',\r\n    },\r\n  },\r\n  //---------------------\r\n  xl:{\r\n    label:'Align Self',\r\n    widget:'OpSelect',\r\n    list:{\r\n      'align-self-xl-auto':'Auto',\r\n      'align-self-xl-start':'Start',\r\n      'align-self-xl-end':'End',\r\n      'align-self-xl-center':'Center',\r\n      'align-self-xl-baseline':'Baseline',\r\n      'align-self-xl-stretch':'Stretch',\r\n    },\r\n  },\r\n  //---------------------\r\n});\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/flex/align-self.js?");
-
-/***/ }),
-
-/***/ "./src/elements/schemas/utilities/flex/justify-content.js":
-/*!****************************************************************!*\
-  !*** ./src/elements/schemas/utilities/flex/justify-content.js ***!
-  \****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  isResponsive:true,\r\n  xs:{\r\n    label:'Justify Content',\r\n    widget:'OpSelect',\r\n    list:{\r\n      'justify-content-start':'Start',\r\n      'justify-content-end':'End',\r\n      'justify-content-center':'Center',\r\n      'justify-content-between':'Between',\r\n      'justify-content-around':'Around',\r\n    },\r\n  },\r\n  //---------------------\r\n  sm:{\r\n    label:'Justify Content',\r\n    widget:'OpSelect',\r\n    list:{\r\n      'justify-content-sm-start':'Start',\r\n      'justify-content-sm-end':'End',\r\n      'justify-content-sm-center':'Center',\r\n      'justify-content-sm-between':'Between',\r\n      'justify-content-sm-around':'Around',\r\n    },\r\n  },\r\n  //---------------------\r\n  md:{\r\n    label:'Justify Content',\r\n    widget:'OpSelect',\r\n    list:{\r\n      'justify-content-md-start':'Start',\r\n      'justify-content-md-end':'End',\r\n      'justify-content-md-center':'Center',\r\n      'justify-content-md-between':'Between',\r\n      'justify-content-md-around':'Around',\r\n    },\r\n  },\r\n  //---------------------\r\n  lg:{\r\n    label:'Justify Content',\r\n    widget:'OpSelect',\r\n    list:{\r\n      'justify-content-lg-start':'Start',\r\n      'justify-content-lg-end':'End',\r\n      'justify-content-lg-center':'Center',\r\n      'justify-content-lg-between':'Between',\r\n      'justify-content-lg-around':'Around',\r\n    },\r\n  },\r\n  //---------------------\r\n  xl:{\r\n    label:'Justify Content',\r\n    widget:'OpSelect',\r\n    list:{\r\n      'justify-content-xl-start':'Start',\r\n      'justify-content-xl-end':'End',\r\n      'justify-content-xl-center':'Center',\r\n      'justify-content-xl-between':'Between',\r\n      'justify-content-xl-around':'Around',\r\n    },\r\n  },\r\n  //---------------------\r\n});//<--JustifyContent\n\n//# sourceURL=webpack:///./src/elements/schemas/utilities/flex/justify-content.js?");
 
 /***/ }),
 
