@@ -135,9 +135,13 @@ export class RXEditorFM{
     }
 
     this.drawer.optionBox.valueChanged = (node)=>{
+      this.drawer.classBox.cancelEdit()
+      this.drawer.classBox.editNode(node)
       this.commandProxy.nodeChanged(node)
     }
     this.drawer.classBox.valueChanged = (node)=>{
+      this.drawer.optionBox.cancelEdit()
+      this.drawer.optionBox.editNode(node)
       this.commandProxy.nodeChanged(node)
     }
   }
