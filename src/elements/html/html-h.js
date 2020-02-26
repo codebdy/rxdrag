@@ -13,9 +13,11 @@ export class HTMLH extends RXElement{
 
     //this.editMarginStyle = {}
 
-    this.groups.headingOptions = {
-      label:'Heading Options'
-    }
+    this.unshiftGroup({
+      id:'headingOptions',
+      label:'Heading Options',
+    })
+
     this.$meta.tag = 'h2'
     //this.$meta.innerHTML = "Heading"
     this.label = "heading"
@@ -23,9 +25,9 @@ export class HTMLH extends RXElement{
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLSpan']
 
     this.becomeToTextfield()
-    addonGeneralTextfield(this)
-    addonHeadingTag(this, 'typographyOptions')
-    addonHeadingDisplay(this, 'typographyOptions')
+    //addonGeneralTextfield(this)
+    //addonHeadingTag(this, 'typographyOptions')
+    //addonHeadingDisplay(this, 'typographyOptions')
   }
 
   make(){

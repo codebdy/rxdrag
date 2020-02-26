@@ -26,11 +26,11 @@ export class HTMLDel extends RXElement{
     this.label = "del"
 
     this.becomeToTextfield()
-    addonUtilColor(this)
+    /*addonUtilColor(this)
     addonUtilBorder(this)
     addonUtilMargin(this)
     addonUtilPadding(this)
-    addonUtilText(this)
+    addonUtilText(this)*/
     //addonHeadingPseudo(this, 'typographyOptions')
     //addonHeadingDisplay(this, 'typographyOptions')
   }

@@ -15,9 +15,11 @@ export class BSAlert extends RXElement{
     this.editMarginStyle.padding = '10px'
     //this.editMarginStyle = {}
 
-    this.groups.alertOptions = {
-      label:'Alert Options'
-    }
+    this.unshiftGroup({
+      id:'alertOptions',
+      label:'Alert Options',
+    })
+
     this.$meta.tag = 'div'
     this.$meta.baseClass = 'alert' 
     this.$meta.role = 'alert' 
@@ -26,7 +28,7 @@ export class BSAlert extends RXElement{
     this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
-    addonAlertContextual(this)
+    //addonAlertContextual(this)
   }
 
   make(){

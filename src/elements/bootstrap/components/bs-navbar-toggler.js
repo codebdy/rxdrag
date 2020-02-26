@@ -15,9 +15,11 @@ export class BSNavbarToggler extends RXElement{
     this.editMarginStyle.padding = '20px'
     //this.editMarginStyle = {}
 
-    this.groups.navbarTogglerOptions = {
-      label:'Toggler Options'
-    }
+    this.unshiftGroup({
+      id:'navbarTogglerOptions',
+      label:'Toggler Options',
+    })
+
     this.$meta.tag = 'button'
     this.label = "toggler"
     this.acceptedChildren=""

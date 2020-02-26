@@ -16,7 +16,7 @@ export class BSButtonGroup extends HTMLDiv{
     this.addClass('btn-group')
 
     this.acceptedChildren=['BSButton']
-    addonAriaLabel(this)
+    //addonAriaLabel(this)
   }
 
   make(){

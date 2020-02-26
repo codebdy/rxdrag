@@ -21,8 +21,8 @@ export class HTMLLi extends RXElement{
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol']
     //this.becomeToTextfield()
-    addonGeneralTextfield(this)
-    addonTypyListInlineItem(this)
+    //addonGeneralTextfield(this)
+    //addonTypyListInlineItem(this)
   }
 
   make(){

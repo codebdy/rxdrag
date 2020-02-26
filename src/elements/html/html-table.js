@@ -19,20 +19,22 @@ export class HTMLTable extends RXElement{
     //this.editMarginStyle.padding = '20px;'
     //this.editMarginStyle = {}
 
-    this.groups.tableOptions = {
-      label:'Table Options'
-    }
+    this.unshiftGroup({
+      id:'tableOptions',
+      label:'Table Options',
+    })
+
     this.$meta.tag = 'table'
     this.label = "table"
     this.acceptedChildren=['HTMLThead', 'HTMLTbody', 'HTMLTr','HTMLCaption']
 
-    addonTableContextual(this)
+    /*addonTableContextual(this)
     addonTableStriped(this)
     addonTableBorder(this)
     addonTableHover(this)
     addonTableResponsive(this)
     addonUtilColor(this)
-    addonUtilText(this)
+    addonUtilText(this)*/
   }
 
   make(){

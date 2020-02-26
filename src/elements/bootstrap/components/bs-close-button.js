@@ -12,9 +12,7 @@ export class BSCloseButton extends RXElement{
     this.editMarginStyle.padding = ''
     //this.editMarginStyle = {}
 
-    this.groups.alertOptions = {
-      label:'CloseButton Options'
-    }
+
     this.$meta.tag = 'button'
     this.$meta.innerHTML = '<span aria-hidden="true">&times;</span>'
     this.label = "close"

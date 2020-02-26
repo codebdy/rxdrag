@@ -18,19 +18,21 @@ export class HTMLA extends RXElement{
     this.editMarginStyle.padding = ''
 
 
-    this.groups.aOptions = {
-      label:'Link Options'
-    }
+    this.unshiftGroup({
+      id:'aOptions',
+      label:'Link Options',
+    })
+
     this.$meta.tag = 'a'
     this.label = "a"
     this.$meta.innerHTML = "Sample Link "
     this.becomeToTextfield()
 
-    addonGeneralTextfield(this)
+    /*addonGeneralTextfield(this)
     addonAHref(this)
     addonATarget(this)
     addonGeneralTitle(this)
-    addonAlertLink(this)
+    addonAlertLink(this)*/
   }
 
   make(){

@@ -15,9 +15,11 @@ export class BSNavbarBrand extends HTMLA{
     this.editMarginStyle.padding = '20px'
     //this.editMarginStyle = {}
 
-    this.groups.navbarBrandOptions = {
-      label:'Brand Options'
-    }
+    this.unshiftGroup({
+      id:'navbarBrandOptions',
+      label:'Brand Options',
+    })
+
     this.label = "brand"
     this.acceptedChildren=''
     this.addClass('navbar-brand')

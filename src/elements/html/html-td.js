@@ -15,9 +15,11 @@ export class HTMLTd extends RXElement{
     this.editMarginStyle.padding = '10px'
     //this.editMarginStyle = {}
 
-    this.groups.tdOptions = {
-      label:'Td Options'
-    }
+    this.unshiftGroup({
+      id:'tdOptions',
+      label:'Td Options',
+    })
+
     this.$meta.tag = 'td'
     this.label = "td"
     this.acceptedChildren=''
@@ -25,10 +27,10 @@ export class HTMLTd extends RXElement{
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
     this.becomeToTextfield()
-    addonGeneralTextfield(this)
+    /*addonGeneralTextfield(this)
     addonTableContextual(this, 'tdOptions')
     addonUtilColor(this)
-    addonUtilText(this)
+    addonUtilText(this)*/
   }
 
   make(){

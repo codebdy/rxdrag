@@ -13,14 +13,15 @@ export class HTMLThead extends RXElement{
     this.editMarginStyle.padding = ''
     //this.editMarginStyle = {}
 
-    this.groups.theadOptions = {
-      label:'Thead Options'
-    }
+    this.unshiftGroup({
+      id:'theadOptions',
+      label:'Thead Options',
+    })
     this.$meta.tag = 'thead'
     this.label = "thead"
     this.acceptedChildren=['HTMLTr']
     
-    addonTheadColor(this)
+    //addonTheadColor(this)
   }
 
   make(){

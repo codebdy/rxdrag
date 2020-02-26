@@ -13,9 +13,10 @@ export class BSContainer extends RXElement{
     this.rejectChildren = ['BSCol']
     this.label = "container"
 
-    this.groups.containerOptions = {
-      label:'Container Options'
-    }
+    this.unshiftGroup({
+      id:'containerOptions',
+      label:'Container Options',
+    })
 
     this.addClass('container')
 

@@ -29,12 +29,12 @@ export class HTMLBlockquote extends RXElement{
     this.label = "blockquote"
 
     this.becomeToTextfield()
-    addonGeneralTextfield(this)
+    /*addonGeneralTextfield(this)
     addonUtilColor(this)
     addonUtilBorder(this)
     addonUtilMargin(this)
     addonUtilPadding(this)
-    addonUtilText(this)
+    addonUtilText(this)*/
     //addonHeadingPseudo(this, 'typographyOptions')
     //addonHeadingDisplay(this, 'typographyOptions')
   }

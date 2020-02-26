@@ -12,9 +12,11 @@ export class HTMLFigcaption extends RXElement{
     this.editMarginStyle.padding = '10px'
     //this.editMarginStyle = {}
 
-    this.groups.figureOptions = {
-      label:'Figure Options'
-    }
+    this.unshiftGroup({
+      id:'figureOptions',
+      label:'Figure Options',
+    })
+
     this.$meta.tag = 'figcaption'
     this.label = "figcaption"
     this.acceptedChildren=''
@@ -22,7 +24,7 @@ export class HTMLFigcaption extends RXElement{
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
     this.becomeToTextfield()
-    addonFigureCaption(this)
+    //addonFigureCaption(this)
   }
 
   make(){

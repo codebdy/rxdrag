@@ -18,7 +18,7 @@ export class HTMLButton extends RXElement{
     this.label = "button"
 
     //addonFigureImg(this, 'imageOptions')
-    addonGeneralTextfield(this)
+    //addonGeneralTextfield(this)
   }
 
   make(){

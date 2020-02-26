@@ -16,9 +16,11 @@ export class BSNavbar extends HTMLNav{
     this.toolboxInfo.elementName = "Navbar"
     this.className = 'BSNavbar'
 
-    this.groups.navbarOptions = {
-      label:'Navbar Options'
-    }
+    this.unshiftGroup({
+      id:'navbarOptions',
+      label:'Navbar Options',
+    })
+
     //this.editMarginStyle.padding = ''
     //this.editMarginStyle = {}
     this.label = 'navbar'
@@ -27,9 +29,9 @@ export class BSNavbar extends HTMLNav{
 
     this.addClass('navbar')
 
-    addonNavbarContextual(this)
+    /*addonNavbarContextual(this)
     addonNavbarExpand(this)
-    addonUtilPosition(this, 'navbarOptions')
+    addonUtilPosition(this, 'navbarOptions')*/
     //addonHTMLId(this, 'navbarOptions')
   }
 

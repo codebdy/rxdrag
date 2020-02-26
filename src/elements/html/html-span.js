@@ -24,12 +24,12 @@ export class HTMLSpan extends RXElement{
     this.label = "span"
 
     this.becomeToTextfield()
-    addonGeneralTextfield(this)
+    /*addonGeneralTextfield(this)
     addonUtilColor(this)
     addonUtilBorder(this)
     addonUtilMargin(this)
     addonUtilPadding(this)
-    addonUtilText(this)
+    addonUtilText(this)*/
     //addonHeadingPseudo(this, 'typographyOptions')
     //addonHeadingDisplay(this, 'typographyOptions')
   }

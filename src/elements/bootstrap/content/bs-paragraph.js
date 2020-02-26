@@ -22,8 +22,8 @@ export class BSParagraph extends RXElement{
     this.label = "Paragraph"
 
     //addonHeadingPseudo(this, 'typographyOptions')
-    addonHeadingDisplay(this, 'typographyOptions')
-    addonTypyLead(this, 'typographyOptions')
+    //addonHeadingDisplay(this, 'typographyOptions')
+    //addonTypyLead(this, 'typographyOptions')
   }
 
   make(){

@@ -14,9 +14,11 @@ export class HTMLTh extends RXElement{
     //this.editMarginStyle.padding = ''
     this.editMarginStyle = {}
 
-    this.groups.thOptions = {
-      label:'Paragraph Options'
-    }
+    this.unshiftGroup({
+      id:'thOptions',
+      label:'Th Options',
+    })
+
     this.$meta.tag = 'th'
     this.$meta.innerHTML = "TH text ..."
     this.label = "th"
@@ -25,9 +27,9 @@ export class HTMLTh extends RXElement{
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
     this.becomeToTextfield()
-    addonTableContextual(this, 'thOptions')
-    addonUtilColor(this)
-    addonUtilText(this)
+    //addonTableContextual(this, 'thOptions')
+    //addonUtilColor(this)
+    //addonUtilText(this)
   }
 
   make(){

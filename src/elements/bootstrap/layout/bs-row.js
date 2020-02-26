@@ -1,5 +1,6 @@
 import {RXElement} from "../../rxelement"
 import guttersSchema from "../../schemas/row/gutters"
+import justifyContentSchema from "../../schemas/utilities/flex/justify-content"
 //import {addonRowJustifyContent} from "../../schemas/row/justify-content"
 //import {addonRowAlignItems} from "../../schemas/row/align-items"
 
@@ -16,13 +17,14 @@ export class BSRow extends RXElement{
 
     this.editMarginStyle.margin = "0"
 
-    //this.groups.
+    this.unshiftGroup({
+      id:'rowOptions',
+      label:'Row Options',
+    })
 
-    this.groups.rowOptions = {
-      label:'Row Options'
-    }
     this.addClass('row')
     this.addSchema(guttersSchema, 'rowOptions')
+    this.addSchema(justifyContentSchema, 'rowOptions')
     //addonRowJustifyContent(this)
     //addonRowAlignItems(this)
   }

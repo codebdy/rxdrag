@@ -15,16 +15,19 @@ export class HTMLFigure extends RXElement{
 
 
     this.acceptedChildren=['HTMLFigcaption', 'HTMLImg']
-    this.groups.figureOptions = {
-      label:'Figure Options'
-    }
+
+    this.unshiftGroup({
+      id:'figureOptions',
+      label:'Figure Options',
+    })
+
     this.$meta.tag = 'figure'
     this.label = "figure"
 
-    addonFigure(this)
+    /*addonFigure(this)
     addonUtilBorder(this)
     addonUtilMargin(this)
-    addonUtilPadding(this)
+    addonUtilPadding(this)*/
   }
 
   make(){

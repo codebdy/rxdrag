@@ -88,12 +88,11 @@ export class OptionBox extends RXComponent{
   }
 
   initGroup(groups){
-    for(var groupName in groups){
-      let group = groups[groupName]
-      let groupCtrl = new OptionBoxGroup(group.label, groupName, this.state)
-      this[groupName] = groupCtrl
+    groups.forEach((group)=>{
+      let groupCtrl = new OptionBoxGroup(group.label, group.id, this.state)
+      this[group.id] = groupCtrl
       this.pushChild(groupCtrl)
-    }
+    })
   }
 
 

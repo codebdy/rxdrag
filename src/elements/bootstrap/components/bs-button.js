@@ -18,9 +18,11 @@ export class BSButton extends RXElement{
     this.editMarginStyle.padding = '20px'
     //this.editMarginStyle = {}
 
-    this.groups.buttonOptions = {
-      label:'Button Options'
-    }
+    this.unshiftGroup({
+      id:'buttonOptions',
+      label:'Button Options',
+    })
+
     this.$meta.tag = 'button'
     this.$meta.innerHTML = 'Button'
     this.label = "button"
@@ -28,12 +30,12 @@ export class BSButton extends RXElement{
     this.acceptedChildren=['HTMLSpan','HTMLDiv','BSBadge']
 
     this.becomeToTextfield()
-    addonButtonContextual(this)
+    /*addonButtonContextual(this)
     addonButtonSize(this)
     addonButtonActive(this)
     addonButtonDisabled(this)
     addonButtonTag(this)
-    addonButtonType(this)
+    addonButtonType(this)*/
   }
 
   make(){

@@ -60,26 +60,21 @@ export class RXElement extends Node{
     this.$schema = {
       fields:[],
       overView:[],
-      groups:{},
+      groups:[],
     } 
 
-    this.groups = {
-      'utilities':{
-        label:'Bootstrap Utilities',
-      },
-      'generalOptions':{
-        label:'General Options'
-      },
-      'typographyOptions':{
-        label:'Typography Options'
-      },
-      'componentsOptions':{
-        label:'Components',
-      },
-      'customizedOptions':{
-        label:'Customized',
-      },
-    }
+    this.pushGroup({
+      id:'utilities',
+      label:'Bootstrap Utilities',
+    })
+    this.pushGroup({
+      id:'typographyOptions',
+      label:'Typography Options',
+    })
+    this.pushGroup({
+      id:'componentsOptions',
+      label:'Components',
+    })
 
     this.addToGroup = (groupName)=>{
       this.$schema.groups[groupName] = this.groups[groupName]
@@ -131,9 +126,19 @@ export class RXElement extends Node{
 
   }
 
+  pushGroup(group){
+    this.$schema.groups.push(group)
+  }
+
+  unshiftGroup(group){
+    this.$schema.groups.unshift(group)
+  }
+
   addSchema(schemaFragment, groupName){
-    schemaFragment.group = groupName
-    this.$schema.groups[groupName] = this.groups[groupName]
+    if(groupName){
+      schemaFragment.group = groupName
+    }
+    //this.$schema.groups[groupName] = this.groups[groupName]
     this.$schema.fields.push(schemaFragment)
   }
 

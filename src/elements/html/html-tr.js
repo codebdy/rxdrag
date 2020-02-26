@@ -15,17 +15,19 @@ export class HTMLTr extends RXElement{
     this.editMarginStyle.padding = ''
     //this.editMarginStyle = {}
 
-    this.groups.trOptions = {
-      label:'Tr Options'
-    }
+    this.unshiftGroup({
+      id:'trOptions',
+      label:'Tr Options',
+    })
+
     this.$meta.tag = 'tr'
     this.label = "tr"
     this.acceptedChildren=['HTMLTr']
     
-    addonTrScope(this)
+    /*addonTrScope(this)
     addonTableContextual(this, 'trOptions')
     addonUtilColor(this)
-    addonUtilText(this)
+    addonUtilText(this)*/
   }
 
   make(){

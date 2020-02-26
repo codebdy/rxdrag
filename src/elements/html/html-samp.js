@@ -24,7 +24,7 @@ export class HTMLSamp extends RXElement{
     this.becomeToTextfield()
     //addonHeadingPseudo(this, 'typographyOptions')
     //addonHeadingDisplay(this, 'typographyOptions')
-    addonTypyLead(this, 'typographyOptions')
+    //addonTypyLead(this, 'typographyOptions')
   }
 
   make(){

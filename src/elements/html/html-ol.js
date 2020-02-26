@@ -20,8 +20,8 @@ export class HTMLOl extends RXElement{
     this.label = "ol"
     this.acceptedChildren=['HTMLLi']
     
-    addonTypyListUnstyled(this)
-    addonTypyListInline(this)
+    //addonTypyListUnstyled(this)
+    //addonTypyListInline(this)
   }
 
   make(){

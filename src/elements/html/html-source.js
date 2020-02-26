@@ -11,14 +11,14 @@ export class HTMLSource extends RXElement{
     this.className = 'HTMLSource'
 
 
-    this.groups.sourceOptions = {
-      label:'Source Options'
-    }
+    //this.groups.sourceOptions = {
+    //  label:'Source Options'
+    //}
     this.$meta.tag = 'source'
     this.label = "source"
 
-    addonImageSrcset(this)
-    addonImageSrcType(this)
+    //addonImageSrcset(this)
+    //addonImageSrcType(this)
   }
 
   make(){

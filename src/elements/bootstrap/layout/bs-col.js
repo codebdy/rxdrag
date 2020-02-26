@@ -16,16 +16,18 @@ export class BSCol extends RXElement{
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol']
     this.label = "column"
-    this.groups.columnOptions = {
-      label:'Column Options'
-    }
 
-    addonWidth(this)
+    this.unshiftGroup({
+      id:'columnOptions',
+      label:'Column Options',
+    })
+
+    /*addonWidth(this)
     addonOffset(this)
     addonAlignSelf(this)
     addonOrder(this)
     addonUtilMarginAuto(this)
-    this.setDefaultWidth()
+    this.setDefaultWidth()*/
   }
 
   setDefaultWidth(){

@@ -13,15 +13,17 @@ export class BSHeading extends RXElement{
 
     this.editMarginStyle = {}
 
-    this.groups.headingOptions = {
-      label:'Heading Options'
-    }
+    this.unshiftGroup({
+      id:'headingOptions',
+      label:'Heading Options',
+    })
+
     this.$meta.tag = 'h2'
     this.$meta.innerHTML = "Heading"
     this.label = "heading"
 
-    addonHeadingTag(this)
-    addonHeadingDisplay(this, 'typographyOptions')
+    //addonHeadingTag(this)
+    //addonHeadingDisplay(this, 'typographyOptions')
   }
 
   make(){

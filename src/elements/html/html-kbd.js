@@ -26,11 +26,11 @@ export class HTMLKbd extends RXElement{
     this.label = "kbd"
 
     this.becomeToTextfield()
-    addonUtilColor(this)
+    /*addonUtilColor(this)
     addonUtilBorder(this)
     addonUtilMargin(this)
     addonUtilPadding(this)
-    addonUtilText(this)
+    addonUtilText(this)*/
     //addonHeadingPseudo(this, 'typographyOptions')
     //addonHeadingDisplay(this, 'typographyOptions')
   }

@@ -18,20 +18,23 @@ export class HTMLImg extends RXElement{
     this.className = 'HTMLImg'
 
 
-    this.groups.imageOptions = {
-      label:'Image Options'
-    }
+    this.unshiftGroup({
+      id:'imageOptions',
+      label:'Image Options',
+    })
+
+
     this.$meta.tag = 'img'
     this.label = "img"
 
-    addonImageSrc(this)
+/*    addonImageSrc(this)
     addonImageFluid(this)
     addonImageThumbnail(this)
     addonImageAlt(this)
     addonUtilBorder(this)
     addonUtilMargin(this)
     addonUtilPadding(this)
-    addonFigureImg(this, 'imageOptions')
+    addonFigureImg(this, 'imageOptions')*/
   }
 
   make(){

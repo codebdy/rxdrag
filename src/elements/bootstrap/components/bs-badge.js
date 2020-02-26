@@ -22,20 +22,22 @@ export class BSBadge extends RXElement{
     this.editMarginStyle.padding = ''
     //this.editMarginStyle = {}
 
-    this.groups.badgeOptions = {
-      label:'Badge Options'
-    }
+    this.unshiftGroup({
+      id:'badgeOptions',
+      label:'Badge Options',
+    })
+
     this.$meta.tag = 'span'
     this.$meta.baseClass = 'badge' 
     this.label = "badge"
     this.acceptedChildren=[]
 
-    addonBadgeContextual(this)
+    /*addonBadgeContextual(this)
     addonBadgePill(this)
     addonBadgeLink(this)
     addonAHref(this, 'badgeOptions')
     addonATarget(this, 'badgeOptions')
-    addonGeneralTitle(this, 'badgeOptions')
+    addonGeneralTitle(this, 'badgeOptions')*/
   }
 
   make(){

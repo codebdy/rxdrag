@@ -12,7 +12,7 @@ export class HTMLDiv extends RXElement{
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol']
 
-    addonGeneralTextfield(this)
+    //addonGeneralTextfield(this)
   }
 
   make(){
