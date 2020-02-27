@@ -1,4 +1,5 @@
 export default{
+  fieldName:'classList',
   isResponsive:true,
   xs:{
     label:'All',
