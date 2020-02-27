@@ -2,7 +2,7 @@ import {RXElement} from "../../rxelement"
 import parkMiniEditbar from "../../../core/park-mini-editbar"
 //import {addonHeadingPseudo} from "../../schemas/heading/pseudo-heading"
 //import {addonHeadingDisplay} from "../../schemas/heading/display"
-import leadSchema from "../../schemas/content/lead"
+import leadSchema from "../../schemas/general/lead"
 
 export class BSParagraph extends RXElement{
   constructor() {

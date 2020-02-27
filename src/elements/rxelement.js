@@ -31,20 +31,6 @@ import utilStretchedLinkSchema from "./schemas/utilities/stretched-link"
 import utilVerticalAlignmentSchema from "./schemas/utilities/vertical-align"
 import utilVisibilitySchema from "./schemas/utilities/visibility"
 
-/*
-
-import {addonHeadingDisplay} from "./schemas/heading/display"
-import {addonGridRow} from "./schemas/content/row"
-import {addonWidth} from "./schemas/column/col-width"
-import {addonOffset} from "./schemas/column/col-offset"
-import {addonAlignSelf} from "./schemas/column/col-align-self"
-import {addonOrder} from "./schemas/column/col-order"
-import utilMarginAuto} from "./schemas/column/margin-auto"
-import {addonTypyLead} from "./schemas/content/lead"
-import {addonTypyInitialism} from "./schemas/content/Initialism"
-import {addonTypyBlockquote} from "./schemas/content/blockquote"
-import {addonTypyBlockquoteFooter} from "./schemas/content/blockquote-footer"*/
-
 export class RXElement extends Node{
   constructor() {
     super()
