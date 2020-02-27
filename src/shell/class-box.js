@@ -50,8 +50,8 @@ export class ClassBox extends RXComponent{
       let metaValue = meta[fieldName]
       let row = new OptionRow(metaValue, fieldSchema, fieldName)
 
-      row.listenValueChaged((value, fdName)=>{
-        node.meta[fdName] = value
+      row.listenValueChaged((value, fdSchema)=>{
+        node.meta[fdSchema.fieldName] = value
         this.valueChanged(node)
       })
 
