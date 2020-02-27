@@ -21,8 +21,8 @@ export class HTMLIns extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Ins Options'
     //}
-    this.$meta.tag = 'ins'
-    this.$meta.innerHTML = "Ins text ..."
+    this.meta.tag = 'ins'
+    this.meta.innerHTML = "Ins text ..."
     this.label = "ins"
 
     this.becomeToTextfield()

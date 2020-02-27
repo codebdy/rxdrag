@@ -14,7 +14,7 @@ export class HTMLButton extends RXElement{
     //this.groups.buttonOptions = {
     //  label:'Image Options'
     //}
-    this.$meta.tag = 'button'
+    this.meta.tag = 'button'
     this.label = "button"
 
     //addonFigureImg(this, 'imageOptions')

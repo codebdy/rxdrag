@@ -14,8 +14,12 @@ export default (model, node, noEnter = true)=>{
   }
 
   model.on.onblur = (event)=>{
-    if(node.$meta.innerHTML !== node.view.$dom.innerHTML){
-      node.$meta.innerHTML = node.view.$dom.innerHTML
+    if(node.meta.innerHTML !== node.view.$dom.innerHTML){
+      node.meta.innerHTML = node.view.$dom.innerHTML
+      if(!node.meta.innerHTML && node.empertyInnerHTML){
+        node.meta.innerHTML = node.empertyInnerHTML
+        node.view.$dom.innerHTML = node.empertyInnerHTML
+      }
       rxEditor.commandManager.finishEditText()
     }
     rxEditor.miniEditbar.hide()

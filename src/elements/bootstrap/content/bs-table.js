@@ -23,8 +23,8 @@ export class BSTable extends HTMLTable{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'table'
-    this.$meta.baseClass = 'table' 
+    this.meta.tag = 'table'
+    this.meta.baseClass = 'table' 
 
     this.label = "table"
   }
@@ -34,7 +34,7 @@ export class BSTable extends HTMLTable{
   }
 
   metaToModel(model){
-    model.classList.push(this.$meta.baseClass)
+    model.classList.push(this.meta.baseClass)
     //model.classList.push('table-success')
     //model.classList.push('table-striped')
   }

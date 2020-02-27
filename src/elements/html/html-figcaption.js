@@ -17,7 +17,7 @@ export class HTMLFigcaption extends RXElement{
       label:'Figure Options',
     })
 
-    this.$meta.tag = 'figcaption'
+    this.meta.tag = 'figcaption'
     this.label = "figcaption"
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 

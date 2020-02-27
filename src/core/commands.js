@@ -96,15 +96,15 @@ class CommandNew extends CommandMovable{
     this.commandSchema = {
       command : 'new',
       node : this.node.toTreeViewNode(),
-      parentId : this.node.parent ? this.node.parent.$id : '',
-      nextSblilingId : this.node.nextSbiling() ? this.node.nextSbiling().$id : '',
+      parentId : this.node.parent ? this.node.parent.id : '',
+      nextSblilingId : this.node.nextSbiling() ? this.node.nextSbiling().id : '',
     }
   }
   
   makeUndoSchema(){
     this.commandSchema = {
       command : 'delete',
-      nodeId : this.node.$id,
+      nodeId : this.node.id,
     }
   }
 }
@@ -117,20 +117,20 @@ class CommandMove extends CommandMovable{
   makeExcuteSchema(){
     this.commandSchema = {
       command : 'move',
-      nodeId : this.node.$id,
-      oldParentId : this.oldParent ? this.oldParent.$id : '',
-      parentId : this.node.parent ? this.node.parent.$id : '',
-      nextSblilingId : this.node.nextSbiling() ? this.node.nextSbiling().$id : '',
+      nodeId : this.node.id,
+      oldParentId : this.oldParent ? this.oldParent.id : '',
+      parentId : this.node.parent ? this.node.parent.id : '',
+      nextSblilingId : this.node.nextSbiling() ? this.node.nextSbiling().id : '',
     }
   }
   
   makeUndoSchema(){
     this.commandSchema = {
       command : 'move',
-      nodeId : this.node.$id,
-      oldParentId : this.newParent ? this.newParent.$id : '',
-      parentId : this.node.parent ? this.node.parent.$id : '',
-      nextSblilingId : this.node.nextSbiling() ? this.node.nextSbiling().$id : '',
+      nodeId : this.node.id,
+      oldParentId : this.newParent ? this.newParent.id : '',
+      parentId : this.node.parent ? this.node.parent.id : '',
+      nextSblilingId : this.node.nextSbiling() ? this.node.nextSbiling().id : '',
     }
   }
 }
@@ -160,7 +160,7 @@ class CommandDelete{
   makeExcuteSchema(){
     this.commandSchema = {
       command : 'delete',
-      nodeId : this.node.$id,
+      nodeId : this.node.id,
     }
   }
   
@@ -168,8 +168,8 @@ class CommandDelete{
     this.commandSchema = {
       command : 'new',
       node : this.node.toTreeViewNode(),
-      parentId : this.node.parent ? this.node.parent.$id : '',
-      nextSblilingId : this.node.nextSbiling() ? this.node.nextSbiling().$id : '',
+      parentId : this.node.parent ? this.node.parent.id : '',
+      nextSblilingId : this.node.nextSbiling() ? this.node.nextSbiling().id : '',
     }
   }
 
@@ -195,15 +195,15 @@ class CommandClone{
     this.commandSchema = {
       command : 'new',
       node : this.copy.toTreeViewNode(),
-      parentId : this.copy.parent ? this.copy.parent.$id : '',
-      nextSblilingId : copy.nextSbiling() ? copy.nextSbiling().$id : '',
+      parentId : this.copy.parent ? this.copy.parent.id : '',
+      nextSblilingId : copy.nextSbiling() ? copy.nextSbiling().id : '',
     }
   }
   
   makeUndoSchema(){
     this.commandSchema = {
       command : 'delete',
-      nodeId : this.copy.$id,
+      nodeId : this.copy.id,
     }
   }
 }
@@ -211,33 +211,33 @@ class CommandClone{
 class CommandChangeNode{
   constructor(node, newMeta) {
     this.node = node
-    this.oldMeta = JSON.parse(JSON.stringify(node.$meta))
+    this.oldMeta = JSON.parse(JSON.stringify(node.meta))
     this.newMeta = JSON.parse(JSON.stringify(newMeta))
   }
 
   excute(){
-    this.node.$meta = JSON.parse(JSON.stringify(this.newMeta))
+    this.node.meta = JSON.parse(JSON.stringify(this.newMeta))
     this.makeExcuteSchema()
   }
 
   undo(){
-    this.node.$meta = JSON.parse(JSON.stringify(this.oldMeta))
+    this.node.meta = JSON.parse(JSON.stringify(this.oldMeta))
     this.makeUndoSchema()
   }
 
   makeExcuteSchema(){
     this.commandSchema = {
       command : 'change',
-      nodeId : this.node.$id,
-      meta: this.node.$meta
+      nodeId : this.node.id,
+      meta: this.node.meta
     }
   }
   
   makeUndoSchema(){
     this.commandSchema = {
       command : 'change',
-      nodeId : this.node.$id,
-      meta: this.node.$meta,
+      nodeId : this.node.id,
+      meta: this.node.meta,
     }
   }
 }
@@ -246,19 +246,19 @@ class CommandChangeNode{
 class CommandTextEdit{
   constructor(node) {
     this.node = node
-    this.oldInnerHtml = node.$meta.innerHTML
+    this.oldInnerHtml = node.meta.innerHTML
   }
 
   finished(){
-    this.newInnerHtml = this.node.$meta.innerHTML
+    this.newInnerHtml = this.node.meta.innerHTML
   } 
 
   excute(){
-    this.node.$meta.innerHTML = this.newInnerHtml
+    this.node.meta.innerHTML = this.newInnerHtml
   }
 
   undo(){
-    this.node.$meta.innerHTML = this.oldInnerHtml
+    this.node.meta.innerHTML = this.oldInnerHtml
   }
 }
 
@@ -292,7 +292,7 @@ export class CommadManager{
   }
 
   changeNode(node, newNodeData){
-    //node.$meta = newNodeData.meta
+    //node.meta = newNodeData.meta
     let cmd = new CommandChangeNode(node, newNodeData.meta)
     cmd.excute()
     this.finished(cmd)

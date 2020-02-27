@@ -18,8 +18,8 @@ export class BSFigure extends HTMLFigure{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'figure'
-    //this.$meta.baseClass = 'figure' 
+    this.meta.tag = 'figure'
+    //this.meta.baseClass = 'figure' 
 
     this.label = "figure"
   }
@@ -29,14 +29,14 @@ export class BSFigure extends HTMLFigure{
   }
 
   metaToModel(model){
-    //model.classList.push(this.$meta.baseClass)
+    //model.classList.push(this.meta.baseClass)
     //model.classList.push('figure-success')
     //model.classList.push('figure-striped')
   }
 
   loadConfig(){
     let img = new HTMLImg
-    img.$meta.figureImg = 'figure-img'
+    img.meta.figureImg = 'figure-img'
     img.setField('imageSrc', /*'https://picsum.photos/200'*/'images/1003-367x267.jpg')
     this.pushChild(img)
 

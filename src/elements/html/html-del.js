@@ -21,8 +21,8 @@ export class HTMLDel extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Del Options'
     //}
-    this.$meta.tag = 'del'
-    this.$meta.innerHTML = "Delete text ..."
+    this.meta.tag = 'del'
+    this.meta.innerHTML = "Delete text ..."
     this.label = "del"
 
     this.becomeToTextfield()

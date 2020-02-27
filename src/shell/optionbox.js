@@ -89,6 +89,9 @@ export class OptionBox extends RXComponent{
     if(fdSchema.fieldName === 'classList'){
       setValueToClasses(value, node.meta[fdSchema.fieldName], fdSchema)
     }
+    else{
+      node.meta[fdSchema.fieldName] = value
+    }
   }
 
   creatRow(metaValue, fieldSchema){

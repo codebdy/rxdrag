@@ -20,7 +20,7 @@ export class BSNavbarToggler extends RXElement{
       label:'Toggler Options',
     })
 
-    this.$meta.tag = 'button'
+    this.meta.tag = 'button'
     this.label = "toggler"
     this.acceptedChildren=""
     this.addClass('navbar-toggler')

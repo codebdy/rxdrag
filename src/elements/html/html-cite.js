@@ -21,8 +21,8 @@ export class HTMLCite extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Cite Options'
     //}
-    this.$meta.tag = 'cite'
-    this.$meta.innerHTML = "Cite text ..."
+    this.meta.tag = 'cite'
+    this.meta.innerHTML = "Cite text ..."
     this.label = "cite"
 
     this.becomeToTextfield()

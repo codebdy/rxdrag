@@ -17,7 +17,7 @@ export class HTMLDl extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'dl'
+    this.meta.tag = 'dl'
     this.label = "dl"
     this.acceptedChildren=['HTMLDd','HTMLDt']
   }

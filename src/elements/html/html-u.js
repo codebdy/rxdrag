@@ -21,8 +21,8 @@ export class HTMLU extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'U Options'
     //}
-    this.$meta.tag = 'u'
-    this.$meta.innerHTML = "U text ..."
+    this.meta.tag = 'u'
+    this.meta.innerHTML = "U text ..."
     this.label = "u"
 
     this.becomeToTextfield()

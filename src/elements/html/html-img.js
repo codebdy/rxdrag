@@ -24,7 +24,7 @@ export class HTMLImg extends RXElement{
     })
 
 
-    this.$meta.tag = 'img'
+    this.meta.tag = 'img'
     this.label = "img"
 
 /*    addonImageSrc(this)
@@ -42,7 +42,7 @@ export class HTMLImg extends RXElement{
   }
  
   toViewModel(){
-    if(this.$meta.imageSrc){
+    if(this.meta.imageSrc){
       this.editMarginStyle.padding = ''
     }
     else{

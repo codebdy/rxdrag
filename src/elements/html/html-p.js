@@ -17,7 +17,7 @@ export class HTMLP extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'p'
+    this.meta.tag = 'p'
     this.label = "p"
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLSpan']
     this.becomeToTextfield()

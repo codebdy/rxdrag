@@ -21,8 +21,8 @@ export class HTMLSmall extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Small Options'
     //}
-    this.$meta.tag = 'small'
-    this.$meta.innerHTML = "Small text ..."
+    this.meta.tag = 'small'
+    this.meta.innerHTML = "Small text ..."
     this.label = "small"
 
     this.becomeToTextfield()

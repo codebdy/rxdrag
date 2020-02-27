@@ -23,8 +23,8 @@ export class HTMLFooter extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Footer Options'
     //}
-    this.$meta.tag = 'footer'
-    //this.$meta.innerHTML = "Footer text ..."
+    this.meta.tag = 'footer'
+    //this.meta.innerHTML = "Footer text ..."
     this.label = "footer"
 
     this.becomeToTextfield()

@@ -15,7 +15,7 @@ export class HTMLFickleTag extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'div'
+    this.meta.tag = 'div'
     this.label = "fackle tag"
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol']

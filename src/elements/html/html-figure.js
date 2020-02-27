@@ -21,7 +21,7 @@ export class HTMLFigure extends RXElement{
       label:'Figure Options',
     })
 
-    this.$meta.tag = 'figure'
+    this.meta.tag = 'figure'
     this.label = "figure"
 
     /*addonFigure(this)

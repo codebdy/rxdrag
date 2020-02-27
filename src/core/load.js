@@ -24,7 +24,7 @@ function loadNodes(dataArray, parent){
 function loadOneNode(schema, parent){
   let node = createElement(schema.name)
   if(node){
-    node.$meta = schema.meta
+    node.meta = schema.meta
     node.parent = parent
     node.children = loadNodes(schema.children, node)
     return node

@@ -23,7 +23,7 @@ export class BSNavbarBrand extends HTMLA{
     this.label = "brand"
     this.acceptedChildren=''
     this.addClass('navbar-brand')
-    this.$meta.innerHTML = "Brand"
+    this.meta.innerHTML = "Brand"
 
     //addonClasses(this).setDefaultValue(['navbar-brand'])
     //addonAttributes(this)

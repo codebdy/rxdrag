@@ -21,8 +21,8 @@ export class HTMLDt extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Dt Options'
     //}
-    this.$meta.tag = 'dt'
-    this.$meta.innerHTML = "Dt text ..."
+    this.meta.tag = 'dt'
+    this.meta.innerHTML = "Dt text ..."
     this.label = "dt"
 
     this.becomeToTextfield()

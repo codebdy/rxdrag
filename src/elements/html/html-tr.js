@@ -20,7 +20,7 @@ export class HTMLTr extends RXElement{
       label:'Tr Options',
     })
 
-    this.$meta.tag = 'tr'
+    this.meta.tag = 'tr'
     this.label = "tr"
     this.acceptedChildren=['HTMLTr']
     

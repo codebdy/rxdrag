@@ -18,8 +18,8 @@ export class HTMLH extends RXElement{
       label:'Heading Options',
     })
 
-    this.$meta.tag = 'h2'
-    //this.$meta.innerHTML = "Heading"
+    this.meta.tag = 'h2'
+    //this.meta.innerHTML = "Heading"
     this.label = "heading"
 
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLSpan']

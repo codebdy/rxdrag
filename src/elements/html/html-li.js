@@ -16,7 +16,7 @@ export class HTMLLi extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'li'
+    this.meta.tag = 'li'
     this.label = "li"
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol']

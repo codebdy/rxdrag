@@ -21,8 +21,8 @@ export class HTMLVar extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Var Options'
     //}
-    this.$meta.tag = 'var'
-    this.$meta.innerHTML = "Var text ..."
+    this.meta.tag = 'var'
+    this.meta.innerHTML = "Var text ..."
     this.label = "var"
 
     this.becomeToTextfield()

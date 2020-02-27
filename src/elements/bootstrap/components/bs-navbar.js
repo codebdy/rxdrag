@@ -40,7 +40,7 @@ export class BSNavbar extends HTMLNav{
   }
 
   metaToModel(model){
-    //model.classList.push(this.$meta.baseClass)
+    //model.classList.push(this.meta.baseClass)
     //model.attributes['aria-label'] = 'breadcrumb'
   }
 

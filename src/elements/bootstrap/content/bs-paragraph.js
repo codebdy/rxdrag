@@ -17,8 +17,8 @@ export class BSParagraph extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'p'
-    this.$meta.innerHTML = "Please input paragraph text ..."
+    this.meta.tag = 'p'
+    this.meta.innerHTML = "Please input paragraph text ..."
     this.label = "Paragraph"
 
     //addonHeadingPseudo(this, 'typographyOptions')

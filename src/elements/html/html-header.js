@@ -14,7 +14,7 @@ export class HTMLHeader extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'header'
+    this.meta.tag = 'header'
     this.label = "header"
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol']

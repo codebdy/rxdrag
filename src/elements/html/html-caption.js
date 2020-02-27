@@ -15,7 +15,7 @@ export class HTMLCaption extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'caption'
+    this.meta.tag = 'caption'
     this.label = "caption"
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 

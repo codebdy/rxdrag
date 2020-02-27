@@ -23,8 +23,8 @@ export class BSButton extends RXElement{
       label:'Button Options',
     })
 
-    this.$meta.tag = 'button'
-    this.$meta.innerHTML = 'Button'
+    this.meta.tag = 'button'
+    this.meta.innerHTML = 'Button'
     this.label = "button"
     this.addClass('btn')
     this.acceptedChildren=['HTMLSpan','HTMLDiv','BSBadge']
@@ -49,11 +49,11 @@ export class BSButton extends RXElement{
   }*/
 
   metaToModel(model){
-    if(this.$meta.tag == 'a'){
+    if(this.meta.tag == 'a'){
       model.attributes['role'] = 'button'
     }
-    if(this.$meta.tag == 'input'){
-      model.attributes['value'] = this.$meta.innerHTML
+    if(this.meta.tag == 'input'){
+      model.attributes['value'] = this.meta.innerHTML
     }
     //model.attributes['data-dismiss'] = 'alert'
     //model.attributes['aria-label'] = 'close'

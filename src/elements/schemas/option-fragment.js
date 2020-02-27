@@ -8,10 +8,10 @@ export class OptionFragment{
     }
     this.addToGroup(node, this.schema.group)
     node.addons.push(this)
-    //if(!node.$meta[this.fieldName]){
-    //  node.$meta[this.fieldName] = this.metaFragment
+    //if(!node.meta[this.fieldName]){
+    //  node.meta[this.fieldName] = this.metaFragment
     //}
-    node.$schema.fields.push(this.schema)
+    node.schema.fields.push(this.schema)
   }
 
   addToGroup(node, groupName){

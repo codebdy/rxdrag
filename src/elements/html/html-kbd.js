@@ -21,8 +21,8 @@ export class HTMLKbd extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Kbd Options'
     //}
-    this.$meta.tag = 'kbd'
-    this.$meta.innerHTML = "Kbd text ..."
+    this.meta.tag = 'kbd'
+    this.meta.innerHTML = "Kbd text ..."
     this.label = "kbd"
 
     this.becomeToTextfield()

@@ -49,7 +49,7 @@ export class RXElement extends Node{
     this.addedFeilds = []
     this.addedFieldGroups = []
     //基础数据，持久化也是这部分数据
-    this.$meta = {
+    this.meta = {
       tag : 'div',
       classList : [],
       styles : {},
@@ -57,7 +57,7 @@ export class RXElement extends Node{
     }
     
     //Schema 信息，用于构建Option编辑部件
-    this.$schema = {
+    this.schema = {
       fields:[],
       overView:[],
       groups:[],
@@ -77,7 +77,7 @@ export class RXElement extends Node{
     })
 
     this.addToGroup = (groupName)=>{
-      this.$schema.groups[groupName] = this.groups[groupName]
+      this.schema.groups[groupName] = this.groups[groupName]
     }
 
     //addonGeneralTextfield(this)
@@ -127,33 +127,33 @@ export class RXElement extends Node{
   }
 
   pushGroup(group){
-    this.$schema.groups.push(group)
+    this.schema.groups.push(group)
   }
 
   unshiftGroup(group){
-    this.$schema.groups.unshift(group)
+    this.schema.groups.unshift(group)
   }
 
   addSchema(schemaFragment, groupName){
     if(groupName){
       schemaFragment.group = groupName
     }
-    //this.$schema.groups[groupName] = this.groups[groupName]
-    this.$schema.fields.push(schemaFragment)
+    //this.schema.groups[groupName] = this.groups[groupName]
+    this.schema.fields.push(schemaFragment)
   }
 
   addOverViewSchema(schema){
-    this.$schema.overView.push(schema)
+    this.schema.overView.push(schema)
   }
 
   clone(){
     let copy = super.clone()
-    copy.$meta = JSON.parse(JSON.stringify(this.$meta))
-    //copy.$meta.tag = this.$meta.tag
-    //copy.$meta.innerHTML = this.$meta.innerHTML
+    copy.meta = JSON.parse(JSON.stringify(this.meta))
+    //copy.meta.tag = this.meta.tag
+    //copy.meta.innerHTML = this.meta.innerHTML
 
     this.addons.forEach((addon)=>{
-      addon.copyMeta(this.$meta, copy.$meta)
+      addon.copyMeta(this.meta, copy.meta)
     })
 
     return copy
@@ -170,7 +170,7 @@ export class RXElement extends Node{
     this.baseMetaToModel(model)
     this.metaToModel(model)
 
-    if(this.$meta.generalTextfield === 'contentEditable'){
+    if(this.meta.generalTextfield === 'contentEditable'){
       parkMiniEditbar(model, this)
       model.styles.padding = ''
     }
@@ -186,7 +186,7 @@ export class RXElement extends Node{
   }
 
   isTextfield(){
-    if(this.$meta.generalTextfield === 'contentEditable'){
+    if(this.meta.generalTextfield === 'contentEditable'){
       return true
     }
   }
@@ -199,7 +199,7 @@ export class RXElement extends Node{
   }
 
   baseMetaToModel(model){
-    let meta = this.$meta
+    let meta = this.meta
     model.name = meta.tag
     model.innerHTML = meta.innerHTML
     model.classList.push.apply(model.classList, meta.classList)
@@ -215,22 +215,22 @@ export class RXElement extends Node{
   }
 
   setInnerHTML(innerHTML){
-    this.$meta.innerHTML = innerHTML
+    this.meta.innerHTML = innerHTML
     return this
   }
 
   setField(fieldName, value){
-    this.$meta[fieldName] = value
+    this.meta[fieldName] = value
     return this
   }
 
   addClass(className){
-    this.$meta.classList.push(className)
+    this.meta.classList.push(className)
     return this
   }
 
   setAttribute(attrName, value){
-    this.$meta.attributes[attrName] = value
+    this.meta.attributes[attrName] = value
     return this
   }
 

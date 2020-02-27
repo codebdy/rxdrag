@@ -1,7 +1,7 @@
 import {RXElement} from "../../rxelement"
-import parkMiniEditbar from "../../../core/park-mini-editbar"
-import {addonHeadingTag} from "../../schemas/heading/tag"
+import tagSchema from "../../schemas/heading/tag"
 import {addonHeadingDisplay} from "../../schemas/heading/display"
+//import {addonGeneralTextfield} from "../schemas/general/textfield"
 
 export class BSHeading extends RXElement{
   constructor() {
@@ -18,22 +18,19 @@ export class BSHeading extends RXElement{
       label:'Heading Options',
     })
 
-    this.$meta.tag = 'h2'
-    this.$meta.innerHTML = "Heading"
+    this.empertyInnerHTML = 'Emperty Heading'
+    this.meta.tag = 'h2'
+    this.meta.innerHTML = this.empertyInnerHTML
     this.label = "heading"
 
+    this.becomeToTextfield()
+
+    this.addSchema(tagSchema)
     //addonHeadingTag(this)
     //addonHeadingDisplay(this, 'typographyOptions')
   }
 
   make(){
     return new BSHeading
-  }
-  
-  toViewModel(){
-    let model = super.toViewModel()
-
-    parkMiniEditbar(model, this)
-    return model
   }
 }

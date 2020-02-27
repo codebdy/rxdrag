@@ -24,8 +24,8 @@ export class HTMLBlockquote extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Blockquote Options'
     //}
-    this.$meta.tag = 'blockquote'
-    //this.$meta.innerHTML = "Blockquote text ..."
+    this.meta.tag = 'blockquote'
+    //this.meta.innerHTML = "Blockquote text ..."
     this.label = "blockquote"
 
     this.becomeToTextfield()

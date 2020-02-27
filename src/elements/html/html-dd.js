@@ -18,7 +18,7 @@ export class HTMLDd extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'dd'
+    this.meta.tag = 'dd'
     this.label = "dd"
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol']

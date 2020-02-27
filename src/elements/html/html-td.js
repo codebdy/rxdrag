@@ -20,7 +20,7 @@ export class HTMLTd extends RXElement{
       label:'Td Options',
     })
 
-    this.$meta.tag = 'td'
+    this.meta.tag = 'td'
     this.label = "td"
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 

@@ -14,7 +14,7 @@ export class HTMLNav extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'nav'
+    this.meta.tag = 'nav'
     this.label = "nav"
     this.acceptedChildren=['HTMLLi','HTMLdiv', 'HTMLSpan']
 }

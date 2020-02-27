@@ -20,14 +20,13 @@ export class BSAlert extends RXElement{
       label:'Alert Options',
     })
 
-    this.$meta.tag = 'div'
-    this.$meta.baseClass = 'alert' 
-    this.$meta.role = 'alert' 
+    this.meta.tag = 'div'
+    this.meta.role = 'alert' 
     this.label = "alert"
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
-
+    this.addClass('alert')
     //addonAlertContextual(this)
   }
 
@@ -36,8 +35,7 @@ export class BSAlert extends RXElement{
   }
 
   metaToModel(model){
-    model.classList.push(this.$meta.baseClass)
-    model.attributes.role = this.$meta.role
+    model.attributes.role = this.meta.role
   }
 
   loadConfig(){

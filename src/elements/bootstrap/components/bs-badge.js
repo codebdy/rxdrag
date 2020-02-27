@@ -27,8 +27,8 @@ export class BSBadge extends RXElement{
       label:'Badge Options',
     })
 
-    this.$meta.tag = 'span'
-    this.$meta.baseClass = 'badge' 
+    this.meta.tag = 'span'
+    this.meta.baseClass = 'badge' 
     this.label = "badge"
     this.acceptedChildren=[]
 
@@ -50,7 +50,7 @@ export class BSBadge extends RXElement{
     return model
   }
   metaToModel(model){
-    model.classList.push(this.$meta.baseClass)
+    model.classList.push(this.meta.baseClass)
   }
 
   loadConfig(){

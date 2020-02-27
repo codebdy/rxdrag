@@ -14,7 +14,7 @@ export class IconFontAwesome extends RXElement{
     //this.groups.tdOptions = {
     //  label:'Td Options'
     //}
-    this.$meta.tag = 'i'
+    this.meta.tag = 'i'
     this.label = "icon"
     this.acceptedChildren=[]
     this.addClass('fa')

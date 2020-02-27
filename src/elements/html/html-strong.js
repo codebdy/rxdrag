@@ -21,8 +21,8 @@ export class HTMLStrong extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Strong Options'
     //}
-    this.$meta.tag = 'strong'
-    this.$meta.innerHTML = "Strong text ..."
+    this.meta.tag = 'strong'
+    this.meta.innerHTML = "Strong text ..."
     this.label = "strong"
 
     this.becomeToTextfield()

@@ -21,8 +21,8 @@ export class HTMLS extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'S Options'
     //}
-    this.$meta.tag = 's'
-    this.$meta.innerHTML = "S text ..."
+    this.meta.tag = 's'
+    this.meta.innerHTML = "S text ..."
     this.label = "s"
 
     this.becomeToTextfield()

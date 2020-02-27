@@ -17,7 +17,7 @@ export class HTMLThead extends RXElement{
       id:'theadOptions',
       label:'Thead Options',
     })
-    this.$meta.tag = 'thead'
+    this.meta.tag = 'thead'
     this.label = "thead"
     this.acceptedChildren=['HTMLTr']
     

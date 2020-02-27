@@ -19,8 +19,8 @@ export class HTMLSpan extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Span Options'
     //}
-    this.$meta.tag = 'span'
-    this.$meta.innerHTML = "Span text ..."
+    this.meta.tag = 'span'
+    this.meta.innerHTML = "Span text ..."
     this.label = "span"
 
     this.becomeToTextfield()

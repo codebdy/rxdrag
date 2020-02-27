@@ -23,9 +23,9 @@ export class HTMLA extends RXElement{
       label:'Link Options',
     })
 
-    this.$meta.tag = 'a'
+    this.meta.tag = 'a'
     this.label = "a"
-    this.$meta.innerHTML = "Sample Link "
+    this.meta.innerHTML = "Sample Link "
     this.becomeToTextfield()
 
     /*addonGeneralTextfield(this)

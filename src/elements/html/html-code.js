@@ -17,12 +17,12 @@ export class HTMLCode extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'code'
+    this.meta.tag = 'code'
     this.label = "code"
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLSpan']
     
     this.becomeToTextfield()
-    this.$meta.innerHTML = 'Code text'
+    this.meta.innerHTML = 'Code text'
 
     //addonHeadingPseudo(this, 'typographyOptions')
     //addonHeadingDisplay(this, 'typographyOptions')

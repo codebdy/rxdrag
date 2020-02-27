@@ -119,7 +119,7 @@ export class Node{
   seedId(){
     if(!Node.idSeed) Node.idSeed = 1
     Node.idSeed ++
-    this.$id = Node.idSeed
+    this.id = Node.idSeed
   }
 
   initStates(){
@@ -368,7 +368,7 @@ export class Node{
     let classList = new RXArray
     classList.add('element');
     classList.push.apply(classList, rxEditor.optionClasses)
-    //classList.push.apply(classList, this.$meta.baseClass)
+    //classList.push.apply(classList, this.meta.baseClass)
     classList.push.apply(classList, this.state.classList)
 
     let styles = {}
@@ -403,7 +403,7 @@ export class Node{
   toJson(){
     let json = {
       name: this.className,
-      meta: JSON.parse(JSON.stringify(this.$meta)),
+      meta: JSON.parse(JSON.stringify(this.meta)),
       children: []
     }
 
@@ -418,8 +418,8 @@ export class Node{
     let view = {
       name: this.className,
       label: this.label,
-      tag:this.$meta.tag,
-      id: this.$id,
+      tag:this.meta.tag,
+      id: this.id,
       state:this.getStateName(),
       children: [],
     }
@@ -453,7 +453,7 @@ export class Node{
   }
 
   nodeChanged(node){
-    if(this.$id === node.id){
+    if(this.id === node.id){
       rxEditor.commandManager.changeNode(this, node)
       return;
     }
@@ -464,7 +464,7 @@ export class Node{
   }
 
   focusNode(node){
-    if(node.id === this.$id){
+    if(node.id === this.id){
       this.changeToState('focusState')
     }
     else{

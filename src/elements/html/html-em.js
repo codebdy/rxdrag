@@ -21,8 +21,8 @@ export class HTMLEm extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Em Options'
     //}
-    this.$meta.tag = 'em'
-    this.$meta.innerHTML = "Em text ..."
+    this.meta.tag = 'em'
+    this.meta.innerHTML = "Em text ..."
     this.label = "em"
 
     this.becomeToTextfield()

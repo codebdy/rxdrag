@@ -21,8 +21,8 @@ export class HTMLMark extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Mark Options'
     //}
-    this.$meta.tag = 'mark'
-    this.$meta.innerHTML = "Hightlight text ..."
+    this.meta.tag = 'mark'
+    this.meta.innerHTML = "Hightlight text ..."
     this.label = "mark"
 
     this.becomeToTextfield()

@@ -18,7 +18,7 @@ export class HTMLPre extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'pre'
+    this.meta.tag = 'pre'
     this.label = "pre"
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLCode','HTMLSpan']
 

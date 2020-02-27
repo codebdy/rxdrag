@@ -17,7 +17,7 @@ export class HTMLSamp extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'samp'
+    this.meta.tag = 'samp'
     this.label = "samp"
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLCode','HTMLSpan']
 

@@ -19,8 +19,8 @@ export class HTMLTh extends RXElement{
       label:'Th Options',
     })
 
-    this.$meta.tag = 'th'
-    this.$meta.innerHTML = "TH text ..."
+    this.meta.tag = 'th'
+    this.meta.innerHTML = "TH text ..."
     this.label = "th"
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol', 'HTMLThead', 'HTMLTBody', 

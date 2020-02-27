@@ -8,9 +8,9 @@ export class RXEditorCommandProxy{
       this.sendMessage({
         name: 'focusNode',
         node:{
-          id:node.$id,
-          meta:node.$meta,
-          schema:node.$schema,
+          id:node.id,
+          meta:node.meta,
+          schema:node.schema,
         }
       })
     }
@@ -18,7 +18,7 @@ export class RXEditorCommandProxy{
     this.unFocusNode = (node)=>{
       this.sendMessage({
         name: 'unFocusNode',
-        id: node.$id,
+        id: node.id,
       })
     }
   }

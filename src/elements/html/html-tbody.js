@@ -16,7 +16,7 @@ export class HTMLTbody extends RXElement{
     //this.groups.paragraphOptions = {
     //  label:'Paragraph Options'
     //}
-    this.$meta.tag = 'tbody'
+    this.meta.tag = 'tbody'
     this.label = "tbody"
     this.acceptedChildren=['HTMLTr']
     
