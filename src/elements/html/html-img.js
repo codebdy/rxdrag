@@ -1,12 +1,7 @@
 import {RXElement} from "../rxelement"
-import {addonUtilBorder} from "../schemas/utilities/border"
-import {addonUtilPadding} from "../schemas/utilities/padding"
-import {addonUtilMargin} from "../schemas/utilities/margin"
-import {addonImageAlt} from "../schemas/image/alt"
-import {addonImageFluid} from "../schemas/image/fluid"
-import {addonImageSrc} from "../schemas/image/src"
-import {addonImageThumbnail} from "../schemas/image/thumbnail"
-import {addonFigureImg} from "../schemas/figure/figure-img"
+import fluidSchema from "../schemas/image/fluid"
+import thumbnailSchema from "../schemas/image/thumbnail"
+import figureImgSchema from "../schemas/figure/figure-img"
 
 
 export class HTMLImg extends RXElement{

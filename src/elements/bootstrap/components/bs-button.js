@@ -1,11 +1,9 @@
 import {RXElement} from "../../rxelement"
 import {HTMLSpan} from "../../html/html-span"
-import {addonButtonContextual} from "../../schemas/components/button/contextual"
-import {addonButtonActive} from "../../schemas/components/button/active"
-import {addonButtonDisabled} from "../../schemas/components/button/disabled"
-import {addonButtonSize} from "../../schemas/components/button/size"
-import {addonButtonTag} from "../../schemas/components/button/tag"
-import {addonButtonType} from "../../schemas/components/button/type"
+import contextualSchema from "../../schemas/components/button/contextual"
+import activeSchema from "../../schemas/components/button/active"
+import disabledSchema from "../../schemas/components/button/disabled"
+import sizeSchema from "../../schemas/components/button/size"
 
 export class BSButton extends RXElement{
   constructor() {
@@ -29,34 +27,17 @@ export class BSButton extends RXElement{
     this.addClass('btn')
     this.acceptedChildren=['HTMLSpan','HTMLDiv','BSBadge']
 
-    this.becomeToTextfield()
-    /*addonButtonContextual(this)
-    addonButtonSize(this)
-    addonButtonActive(this)
-    addonButtonDisabled(this)
-    addonButtonTag(this)
-    addonButtonType(this)*/
+    //this.becomeToTextfield()
+
+    this.addSchema(contextualSchema, 'buttonOptions')
+    this.addSchema(sizeSchema, 'buttonOptions')
+    this.addSchema(activeSchema, 'buttonOptions')
+    this.addSchema(disabledSchema, 'buttonOptions')
+
   }
 
   make(){
     return new BSButton
-  }
-
-  /*toViewModel(){
-    let model = super.toViewModel()
-    //parkMiniEditbar(model, this)
-    return model
-  }*/
-
-  metaToModel(model){
-    if(this.meta.tag == 'a'){
-      model.attributes['role'] = 'button'
-    }
-    if(this.meta.tag == 'input'){
-      model.attributes['value'] = this.meta.innerHTML
-    }
-    //model.attributes['data-dismiss'] = 'alert'
-    //model.attributes['aria-label'] = 'close'
   }
 
   loadConfig(){

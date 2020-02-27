@@ -1,8 +1,6 @@
-import {OptionFragment} from "../../option-fragment"
-
-let buttonContextualSchema = {
+export default{
+  fieldName:'classList',
   label:'Contextual',
-  group:'buttonOptions',
   widget:'OpSelect',
   defaultValue:'',
   list:{
@@ -25,29 +23,3 @@ let buttonContextualSchema = {
     'btn-outline-dark':'Outline Dark',
   },
 }
-
-class ButtonContextual extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = Object.assign({}, buttonContextualSchema)
-
-    this.fieldName = 'buttonContextual'
-  }
-
-  copyMeta(from, to){
-    to[this.fieldName] = from[this.fieldName]
-  }
-
-  metaToModel(model, meta){
-    model.classList.add(meta[this.fieldName])
-  }
-}
-
-var addonButtonContextual = (node, groupName)=>{
-  let buttonContextual = new ButtonContextual
-  buttonContextual.addon(node, groupName)
-  return buttonContextual
-}
-
-export {addonButtonContextual}
-

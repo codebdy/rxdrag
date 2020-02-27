@@ -1,7 +1,5 @@
-import {OptionFragment} from "../../option-fragment"
-
-var navbarExpandSchema = {
-  group:'navbarOptions',
+export default{
+  fieldName:'classList',
   isResponsive:true,
   xs:{
     label:'Expand',
@@ -43,32 +41,4 @@ var navbarExpandSchema = {
     defaultValue:'',
   },
   //---------------------
-}//<--
-
-class NavbarExpand extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = Object.assign({}, navbarExpandSchema)
-
-    this.fieldName = 'navbarExpand'
-  }
-
-  copyMeta(from, to){
-    super.copyResponsiveMetaTo(from, to)
-  }
-
-  metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
-    super.responsiveMetaFieldToViewModel(model, metaFragment)
-  }
 }
-
-var addonNavbarExpand = (node, groupName)=>{
-  let navbarExpand = new NavbarExpand
-  navbarExpand.addon(node, groupName)
-  return navbarExpand
-}
-
-export {addonNavbarExpand}
-
-

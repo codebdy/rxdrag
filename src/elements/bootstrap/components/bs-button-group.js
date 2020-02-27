@@ -1,7 +1,5 @@
 import {HTMLDiv} from "../../html/html-div"
 import {BSButton} from "./bs-button"
-import {addonAriaLabel} from "../../schemas/general/aria-label"
-
 export class BSButtonGroup extends HTMLDiv{
   constructor() {
     super()
@@ -16,6 +14,7 @@ export class BSButtonGroup extends HTMLDiv{
     this.addClass('btn-group')
 
     this.acceptedChildren=['BSButton']
+    this.setAttribute('role', 'group')
     //addonAriaLabel(this)
   }
 
@@ -23,27 +22,23 @@ export class BSButtonGroup extends HTMLDiv{
     return new BSButtonGroup
   }
 
-  metaToModel(model){
-    model.attributes['role'] = 'group'
-  }
-
   loadConfig(){
     this.pushChild(
       new BSButton()
       .setInnerHTML('Left')
-      .setField('buttonContextual', 'btn-primary')
+      .addClass('btn-primary')
       .becomeToTextfield()
     )
     this.pushChild(
       new BSButton()
       .setInnerHTML('Middle')
-      .setField('buttonContextual', 'btn-primary')
+      .addClass('btn-primary')
       .becomeToTextfield()
     )
     this.pushChild(
       new BSButton()
       .setInnerHTML('Right')
-      .setField('buttonContextual', 'btn-primary')
+      .addClass('btn-primary')
       .becomeToTextfield()
     )
     //this.setField('badgeContextual', 'badge-primary')

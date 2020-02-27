@@ -1,7 +1,4 @@
 import {RXElement} from "../../rxelement"
-import parkMiniEditbar from "../../../core/park-mini-editbar"
-//import {addonHeadingPseudo} from "../../schemas/heading/pseudo-heading"
-//import {addonHeadingDisplay} from "../../schemas/heading/display"
 import leadSchema from "../../schemas/general/lead"
 
 export class BSParagraph extends RXElement{
@@ -19,17 +16,11 @@ export class BSParagraph extends RXElement{
     this.label = "Paragraph"
 
     this.addSchema(leadSchema, 'textOptions')
+    this.becomeToTextfield()
   }
 
   make(){
     return new BSParagraph
   }
   
-  toViewModel(){
-    let model = super.toViewModel()
-
-    parkMiniEditbar(model, this)
-
-    return model
-  }
 }

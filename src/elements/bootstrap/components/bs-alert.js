@@ -2,7 +2,7 @@ import {RXElement} from "../../rxelement"
 import {HTMLSpan} from "../../html/html-span"
 import {HTMLA} from "../../html/html-a"
 import {BSCloseButton} from "./bs-close-button"
-import {addonAlertContextual} from "../../schemas/components/alert/contextual"
+import alertContextualSchema from "../../schemas/components/alert"
 
 export class BSAlert extends RXElement{
   constructor() {
@@ -27,7 +27,7 @@ export class BSAlert extends RXElement{
     this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
     this.addClass('alert')
-    //addonAlertContextual(this)
+    this.addSchema(alertContextualSchema, 'alertOptions')
   }
 
   make(){
@@ -38,13 +38,13 @@ export class BSAlert extends RXElement{
     model.attributes.role = this.meta.role
   }
 
-  loadConfig(){
+  configSelf(){
     let span1 = new HTMLSpan().setInnerHTML('A simple primary alert with ')
     this.pushChild(span1)
 
     let link = new HTMLA()
                .setInnerHTML('an example link')
-               .setField('alertLink', 'alert-link')
+               .addClass('alert-link')
     this.pushChild(link)
 
     let span2 = new HTMLSpan().setInnerHTML('. Give it a click if you like.')
@@ -52,8 +52,7 @@ export class BSAlert extends RXElement{
 
     this.pushChild(new BSCloseButton)
 
-    this.setField('alertContextual', 'alert-primary')
-    return this
+    this.addClass('alert-primary')
   }
 
 }

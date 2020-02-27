@@ -1,5 +1,4 @@
 import {RXElement} from "../../rxelement"
-import {HTMLSpan} from "../../html/html-span"
 
 export class BSCloseButton extends RXElement{
   constructor() {
@@ -18,23 +17,15 @@ export class BSCloseButton extends RXElement{
     this.label = "close"
     this.acceptedChildren=[]
 
+    this.addClass('close')
+    this.setAttribute('type', 'button')
+    this.setAttribute('data-dismiss', 'alert')
+    this.setAttribute('aria-label', 'close')
+
   }
 
   make(){
     return new BSCloseButton
-  }
-
-  /*toViewModel(){
-    let model = super.toViewModel()
-    //parkMiniEditbar(model, this)
-    return model
-  }*/
-
-  metaToModel(model){
-    model.classList.push('close')
-    model.attributes['type'] = 'button'
-    model.attributes['data-dismiss'] = 'alert'
-    model.attributes['aria-label'] = 'close'
   }
 
 }
