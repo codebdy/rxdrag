@@ -186,6 +186,7 @@ export class RXEditor{
   }
 
   endDragFromToolbox(){
+    console.log('endDragFromToolbox')
     this.commandManager.finishMoving()
     this.endFollowMouse()
   }

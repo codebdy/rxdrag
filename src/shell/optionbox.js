@@ -57,7 +57,6 @@ export class OptionBox extends RXComponent{
 
   showContent(node){
     var schema = node.schema
-    console.log(node.schema)
     this.initGroup(schema.groups)
     schema.fields.forEach((fieldSchema)=>{
       let row = this.creatRow(node, fieldSchema)

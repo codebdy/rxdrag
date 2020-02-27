@@ -53,6 +53,7 @@ class CommandMovable{
 
   finish(){
     let draggedNode = this.node
+    console.log(draggedNode.parent)
     draggedNode.changeToState('focusState')
     if(draggedNode.parent){
       draggedNode.parent.changeToState('normalState')
@@ -196,7 +197,7 @@ class CommandClone{
       command : 'new',
       node : this.copy.toTreeViewNode(),
       parentId : this.copy.parent ? this.copy.parent.id : '',
-      nextSblilingId : copy.nextSbiling() ? copy.nextSbiling().id : '',
+      nextSblilingId : this.copy.nextSbiling() ? this.copy.nextSbiling().id : '',
     }
   }
   
@@ -249,7 +250,7 @@ class CommandTextEdit{
     this.oldInnerHtml = node.meta.innerHTML
   }
 
-  finished(){
+  finish(){
     this.newInnerHtml = this.node.meta.innerHTML
   } 
 
@@ -321,7 +322,7 @@ export class CommadManager{
   }
 
   finishEditText(){
-    this.textCommand.finished()
+    this.textCommand.finish()
     this.finished(this.textCommand)
     this.textCommand = ''
   }
