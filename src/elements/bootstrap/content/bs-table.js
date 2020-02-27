@@ -4,6 +4,7 @@ import stripedSchema from "../../schemas/table/striped"
 import borderSchema from "../../schemas/table/border"
 import hoverSchema from "../../schemas/table/hover"
 import responsiveSchema from "../../schemas/table/responsive"
+import smallSchema from "../../schemas/table/small"
 
 
 import {HTMLTable} from "../../html/html-table"
@@ -40,6 +41,7 @@ export class BSTable extends HTMLTable{
     this.addSchema(borderSchema, 'tableOptions')
     this.addSchema(hoverSchema, 'tableOptions')
     this.addSchema(responsiveSchema, 'tableOptions')
+    this.addSchema(smallSchema, 'tableOptions')
     /*
     addonUtilColor(this)
     addonUtilText(this)*/
