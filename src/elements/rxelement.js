@@ -1,6 +1,7 @@
 import {Node} from "../core/node"
 import {RXArray} from "../basic/rxarray"
 import parkMiniEditbar from "../core/park-mini-editbar"
+import textfieldSchema from "./schemas/general/textfield"
 import tagSchema from "./schemas/overview/tag"
 import classesSchema from "./schemas/overview/classes"
 import attributesSchema from "./schemas/overview/attributes"
@@ -88,6 +89,7 @@ export class RXElement extends Node{
     this.addOverViewSchema(classesSchema)
     this.addOverViewSchema(attributesSchema)
 
+    this.addSchema(textfieldSchema, 'textOptions')
     this.addSchema(headingPseudoSchema, 'textOptions')
     this.addSchema(utilColorSchema, 'textOptions')
     this.addSchema(utilTextSchema, 'textOptions')
@@ -146,6 +148,14 @@ export class RXElement extends Node{
     }
     //this.schema.groups[groupName] = this.groups[groupName]
     this.schema.fields.push(Object.assign({}, schemaFragment))
+  }
+
+  unshiftSchema(schemaFragment, groupName){
+    if(groupName){
+      schemaFragment.group = groupName
+    }
+    //this.schema.groups[groupName] = this.groups[groupName]
+    this.schema.fields.unshift(Object.assign({}, schemaFragment))
   }
 
   addOverViewSchema(schema){

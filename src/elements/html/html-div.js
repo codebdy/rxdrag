@@ -1,5 +1,5 @@
 import {RXElement} from "../rxelement"
-import {addonGeneralTextfield} from "../schemas/general/textfield"
+import textfieldSchema from "../schemas/general/textfield"
 
 export class HTMLDiv extends RXElement{
   constructor() {
@@ -11,8 +11,6 @@ export class HTMLDiv extends RXElement{
     this.label = "div"
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol']
-
-    //addonGeneralTextfield(this)
   }
 
   make(){
