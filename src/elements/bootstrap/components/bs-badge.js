@@ -24,6 +24,7 @@ export class BSBadge extends RXElement{
     this.label = "badge"
     this.acceptedChildren=[]
 
+    this.addClass('badge')
     this.addSchema(contextualSchema, 'badgeOptions')
     this.addSchema(pillSchema, 'badgeOptions')
   }
@@ -34,7 +35,7 @@ export class BSBadge extends RXElement{
 
 
   loadConfig(){
-    //this.setField('badgeContextual', 'badge-primary')
+    this.addClass('badge-primary')
     this.setField('innerHTML', 'badge')
     return this
   }
