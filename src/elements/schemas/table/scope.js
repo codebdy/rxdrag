@@ -1,4 +1,5 @@
 export default{
+  fieldName:'classList',
   label:'Scope',
   widget:'OpSelect',
   defaultValue:'',

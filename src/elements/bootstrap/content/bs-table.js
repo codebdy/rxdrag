@@ -1,12 +1,4 @@
 import {RXElement} from "../../rxelement"
-import contextualSchema from "../../schemas/table/contextual"
-import stripedSchema from "../../schemas/table/striped"
-import borderSchema from "../../schemas/table/border"
-import hoverSchema from "../../schemas/table/hover"
-import responsiveSchema from "../../schemas/table/responsive"
-import smallSchema from "../../schemas/table/small"
-
-
 import {HTMLTable} from "../../html/html-table"
 import {HTMLThead} from "../../html/html-thead"
 import {HTMLTbody} from "../../html/html-tbody"
@@ -14,8 +6,6 @@ import {HTMLTh} from "../../html/html-th"
 import {HTMLTr} from "../../html/html-tr"
 import {HTMLTd} from "../../html/html-td"
 import {HTMLCaption} from "../../html/html-caption"
-
-//import {addonTypyListInline} from "../schemas/content/list-inline"
 
 export class BSTable extends HTMLTable{
   constructor() {
@@ -28,23 +18,8 @@ export class BSTable extends HTMLTable{
     //this.editMarginStyle.padding = '20px;'
     this.editMarginStyle.padding = ''
 
-    this.unshiftGroup({
-      id:'tableOptions',
-      label:'Table Options',
-    })
-
     this.addClass('table')
     this.label = "table"
-
-    this.addSchema(contextualSchema, 'tableOptions')
-    this.addSchema(stripedSchema, 'tableOptions')
-    this.addSchema(borderSchema, 'tableOptions')
-    this.addSchema(hoverSchema, 'tableOptions')
-    this.addSchema(responsiveSchema, 'tableOptions')
-    this.addSchema(smallSchema, 'tableOptions')
-    /*
-    addonUtilColor(this)
-    addonUtilText(this)*/
   }
 
   make(){

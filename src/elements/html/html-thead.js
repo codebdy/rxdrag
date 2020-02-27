@@ -1,5 +1,5 @@
 import {RXElement} from "../rxelement"
-import {addonTheadColor} from "../schemas/table/head-color"
+import headColorSchema from "../schemas/table/head-color"
 //import {addonTypyListInline} from "../schemas/content/list-inline"
 
 export class HTMLThead extends RXElement{
@@ -21,7 +21,7 @@ export class HTMLThead extends RXElement{
     this.label = "thead"
     this.acceptedChildren=['HTMLTr']
     
-    //addonTheadColor(this)
+    this.addSchema(headColorSchema, 'theadOptions')
   }
 
   make(){
