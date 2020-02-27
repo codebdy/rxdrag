@@ -2,7 +2,7 @@ import {RXComponent} from "../basic/rxcomponent"
 import {ToolGroup, ToolboxState} from "./controls/tool-group"
 import {OptionRow, OptionResponsiveRow} from "./controls/option-row"
 import {OptionRowGroup} from "./controls/option-row-group"
-import {extractValueFromClasses, setValueToClasses} from "./class-data-extractor"
+import {getFieldMetaValue, setFiedlMetaValue} from "./class-data-extractor"
 
 
 export class OptionBoxGroup extends ToolGroup{
@@ -59,10 +59,9 @@ export class OptionBox extends RXComponent{
     var schema = node.schema
     this.initGroup(schema.groups)
     schema.fields.forEach((fieldSchema)=>{
-      let metaValue = this.getFieldMetaValue(node, fieldSchema)
-      let row = this.creatRow(metaValue, fieldSchema)
+      let row = this.creatRow(node, fieldSchema)
       row.listenValueChaged((value, fdSchema)=>{
-        this.setFiedlMetaValue(value, node, fdSchema)
+        setFiedlMetaValue(value, node, fdSchema)
         this.valueChanged(node)
       })
       this.getGroup(fieldSchema.group).add(row)
@@ -75,31 +74,13 @@ export class OptionBox extends RXComponent{
     }
   }
 
-  getFieldMetaValue(node, fieldSchema){
-    var meta =node.meta
-    let fieldName = fieldSchema.fieldName
-    let metaValue = meta[fieldName]
-    if(fieldName == 'classList'){
-      metaValue = extractValueFromClasses(meta[fieldName], fieldSchema)
-    }
-    return metaValue
-  }
-
-  setFiedlMetaValue(value, node, fdSchema){
-    if(fdSchema.fieldName === 'classList'){
-      setValueToClasses(value, node.meta[fdSchema.fieldName], fdSchema)
-    }
-    else{
-      node.meta[fdSchema.fieldName] = value
-    }
-  }
-
-  creatRow(metaValue, fieldSchema){
+  creatRow(node, fieldSchema){
+    let metaValue = getFieldMetaValue(node, fieldSchema)
     var row
-    if(fieldSchema.isRowGroup){
-      row = new OptionRowGroup(metaValue, fieldSchema, this.screenWidth)
+    /*if(fieldSchema.isRowGroup){
+      row = new OptionRowGroup(node, fieldSchema, this.screenWidth)
     }
-    else if(fieldSchema.isResponsive){
+    else */if(fieldSchema.isResponsive){
       row = new OptionResponsiveRow(metaValue, fieldSchema, this.screenWidth)
     }
     else{

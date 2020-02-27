@@ -6,6 +6,10 @@ import classesSchema from "./schemas/overview/classes"
 import attributesSchema from "./schemas/overview/attributes"
 import headingPseudoSchema from "./schemas/heading/pseudo-heading"
 
+import textColorSchema from "./schemas/utilities/text-color"
+import backgroundColorSchema from "./schemas/utilities/background-color"
+//import utilTextSchema from "./schemas/utilities/text"
+
 /*import {addonGeneralTextfield} from "./schemas/general/textfield"
 import {addonUtilColor} from "./schemas/utilities/color"
 import {addonUtilBorder} from "./schemas/utilities/border"
@@ -64,12 +68,12 @@ export class RXElement extends Node{
     } 
 
     this.pushGroup({
-      id:'utilities',
-      label:'Bootstrap Utilities',
-    })
-    this.pushGroup({
       id:'textOptions',
       label:'Text Options',
+    })
+    this.pushGroup({
+      id:'utilities',
+      label:'Bootstrap Utilities',
     })
     this.pushGroup({
       id:'componentsOptions',
@@ -84,7 +88,10 @@ export class RXElement extends Node{
     this.addOverViewSchema(tagSchema)
     this.addOverViewSchema(classesSchema)
     this.addOverViewSchema(attributesSchema)
+
     this.addSchema(headingPseudoSchema, 'textOptions')
+    this.addSchema(textColorSchema, 'textOptions')
+    this.addSchema(backgroundColorSchema, 'textOptions')
 
  /*   addonHeadingDisplay(this, 'textOptions')
     addonGridRow(this, 'textOptions')

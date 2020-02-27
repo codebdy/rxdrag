@@ -1,4 +1,11 @@
 import {RXElement} from "../../rxelement"
+import contextualSchema from "../../schemas/table/contextual"
+import stripedSchema from "../../schemas/table/striped"
+import borderSchema from "../../schemas/table/border"
+import hoverSchema from "../../schemas/table/hover"
+import responsiveSchema from "../../schemas/table/responsive"
+
+
 import {HTMLTable} from "../../html/html-table"
 import {HTMLThead} from "../../html/html-thead"
 import {HTMLTbody} from "../../html/html-tbody"
@@ -20,23 +27,26 @@ export class BSTable extends HTMLTable{
     //this.editMarginStyle.padding = '20px;'
     this.editMarginStyle.padding = ''
 
-    //this.groups.paragraphOptions = {
-    //  label:'Paragraph Options'
-    //}
-    this.meta.tag = 'table'
-    this.meta.baseClass = 'table' 
+    this.unshiftGroup({
+      id:'tableOptions',
+      label:'Table Options',
+    })
 
+    this.addClass('table')
     this.label = "table"
+
+    this.addSchema(contextualSchema, 'tableOptions')
+    this.addSchema(stripedSchema, 'tableOptions')
+    this.addSchema(borderSchema, 'tableOptions')
+    this.addSchema(hoverSchema, 'tableOptions')
+    this.addSchema(responsiveSchema, 'tableOptions')
+    /*
+    addonUtilColor(this)
+    addonUtilText(this)*/
   }
 
   make(){
     return new BSTable
-  }
-
-  metaToModel(model){
-    model.classList.push(this.meta.baseClass)
-    //model.classList.push('table-success')
-    //model.classList.push('table-striped')
   }
 
   loadConfig(){

@@ -1,35 +1,9 @@
-import {OptionFragment} from "../option-fragment"
-
-class TableHover extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = {
-      label:'Hoverable',
-      widget:'OpSwitch',
-      group:'tableOptions',
-      onValue:'table-hover',
-      offValue:'',
-      defaultValue:'',
-    }
-
-    this.fieldName = 'tableHover'
-  }
-
-  copyMeta(from, to){
-    to[this.fieldName] = from[this.fieldName]
-  }
-
-  metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
-    model.classList.add(metaFragment)
-  }
+export default{
+  fieldName:'classList',
+  label:'Hoverable',
+  widget:'OpSwitch',
+  group:'tableOptions',
+  onValue:'table-hover',
+  offValue:'',
+  defaultValue:'',
 }
-
-var addonTableHover = (node, groupName)=>{
-  let tableHover = new TableHover
-  tableHover.addon(node, groupName)
-  return tableHover
-}
-
-export {addonTableHover}
-

@@ -12,8 +12,8 @@ import resetColor from "./reset-color"
 import decoration from "./decoration"
 
 
-var utilTextSchema = {
-  group:'utilities',
+export default{
+  fieldName:'classList',
   label:'Text',
   isRowGroup:true,
   fields:{
@@ -30,37 +30,3 @@ var utilTextSchema = {
     decoration : decoration,
   }
 }
-
-
-class UtilText extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = Object.assign({}, utilTextSchema)
-
-    this.fieldName = 'utilText'
-  }
-
-  metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName] ? meta[this.fieldName] : {}
-    model.classList.add(metaFragment.justify)
-    super.responsiveMetaFieldToViewModel(model, metaFragment.align)
-    model.classList.add(metaFragment.wrapping)
-    model.classList.add(metaFragment.truncate)
-    model.classList.add(metaFragment.wordBreak)
-    model.classList.add(metaFragment.transform)
-    model.classList.add(metaFragment.weight)
-    model.classList.add(metaFragment.italics)
-    model.classList.add(metaFragment.monospace)
-    model.classList.add(metaFragment.resetColor)
-    model.classList.add(metaFragment.decoration)
-  }
-}
-
-var addonUtilText = (node, groupName)=>{
-  let utilText = new UtilText
-  utilText.addon(node, groupName)
-  return utilText
-}
-
-export {addonUtilText}
-

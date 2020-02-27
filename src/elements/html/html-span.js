@@ -1,10 +1,4 @@
 import {RXElement} from "../rxelement"
-import {addonUtilColor} from "../schemas/utilities/color"
-import {addonUtilBorder} from "../schemas/utilities/border"
-import {addonUtilPadding} from "../schemas/utilities/padding"
-import {addonUtilMargin} from "../schemas/utilities/margin"
-import {addonUtilText} from "../schemas/utilities/text"
-import {addonGeneralTextfield} from "../schemas/general/textfield"
 //import {addonHeadingDisplay} from "../../schemas/heading/display"
 //import {addonUtilBorder} from "../../schemas/utilities/border"
 

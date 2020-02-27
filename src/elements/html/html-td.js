@@ -1,8 +1,4 @@
 import {RXElement} from "../rxelement"
-import {addonTableContextual} from "../schemas/table/contextual"
-import {addonUtilColor} from "../schemas/utilities/color"
-import {addonUtilText} from "../schemas/utilities/text"
-import {addonGeneralTextfield} from "../schemas/general/textfield"
 
 export class HTMLTd extends RXElement{
   constructor() {

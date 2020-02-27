@@ -1,7 +1,5 @@
-import {OptionFragment} from "../option-fragment"
-
-var tableResponsiveSchema = {
-  group:'tableOptions',
+export default{
+  fieldName:'classList',
   isResponsive:true,
   xs:{
     label:'Responsive',
@@ -43,32 +41,4 @@ var tableResponsiveSchema = {
     defaultValue:'',
   },
   //---------------------
-}//<--
-
-class TableResponsive extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = Object.assign({}, tableResponsiveSchema)
-
-    this.fieldName = 'tableResponsive'
-  }
-
-  copyMeta(from, to){
-    super.copyResponsiveMetaTo(from, to)
-  }
-
-  metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
-    super.responsiveMetaFieldToViewModel(model, metaFragment)
-  }
 }
-
-var addonTableResponsive = (node, groupName)=>{
-  let tableResponsive = new TableResponsive
-  tableResponsive.addon(node, groupName)
-  return tableResponsive
-}
-
-export {addonTableResponsive}
-
-

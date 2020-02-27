@@ -1,8 +1,6 @@
-import {OptionFragment} from "../option-fragment"
-
-let tableContextualSchema = {
+export default{
+  fieldName:'classList',
   label:'Contextual',
-  group:'tableOptions',
   widget:'OpSelect',
   defaultValue:'',
   list:{
@@ -17,29 +15,3 @@ let tableContextualSchema = {
     'table-dark':'Dark',
   },
 }
-
-class TableContextual extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = Object.assign({}, tableContextualSchema)
-
-    this.fieldName = 'tableContextual'
-  }
-
-  copyMeta(from, to){
-    to[this.fieldName] = from[this.fieldName]
-  }
-
-  metaToModel(model, meta){
-    model.classList.add(meta[this.fieldName])
-  }
-}
-
-var addonTableContextual = (node, groupName)=>{
-  let tableContextual = new TableContextual
-  tableContextual.addon(node, groupName)
-  return tableContextual
-}
-
-export {addonTableContextual}
-

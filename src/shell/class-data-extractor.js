@@ -6,12 +6,34 @@ function listValues(list){
   return values
 }
 
+function getFieldMetaValue(node, fieldSchema){
+    var meta =node.meta
+    let fieldName = fieldSchema.fieldName
+    let metaValue = meta[fieldName]
+    if(fieldName == 'classList'){
+      metaValue = extractValueFromClasses(meta[fieldName], fieldSchema)
+    }
+    return metaValue
+  }
+
+function setFiedlMetaValue(value, node, fdSchema){
+    if(fdSchema.fieldName === 'classList'){
+      setValueToClasses(value, node.meta[fdSchema.fieldName], fdSchema)
+    }
+    else{
+      node.meta[fdSchema.fieldName] = value
+    }
+  }
+
 
 function extractValueFromClasses(classList, fieldSchema){
-  if(fieldSchema.isRowGroup){
+  /*if(fieldSchema.isRowGroup){
     let value = {}
+    for(var fieldName in fieldSchema.fields){
+      value[fieldName] = extractValueFromClasses(classList, fieldSchema.fields[fieldName])
+    }
     return value
-  }
+  }*/
   if(fieldSchema.isResponsive){
     let value = {}
     value.xs = extractValueFromClasses(classList, fieldSchema.xs)
@@ -66,4 +88,4 @@ function setValueToClasses(value, classList, fieldSchema){
   }
 }
 
-export{extractValueFromClasses, setValueToClasses}
+export{getFieldMetaValue, setFiedlMetaValue, extractValueFromClasses, setValueToClasses}

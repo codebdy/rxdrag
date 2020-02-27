@@ -3,6 +3,7 @@ import {RXArray} from "../../basic/rxarray"
 import {ObjectState} from "../../basic/object-state"
 import {OptionRow, RowBase, OptionResponsiveRow} from "./option-row"
 import {OpLabel} from "./label"
+import {getFieldMetaValue, setFiedlMetaValue} from "../class-data-extractor"
 
 
 class GroupValueLabel extends OpLabel{
@@ -36,26 +37,28 @@ export class OptionRowGroup extends RowBase{
     this.pushChild(this.body)
 
     //构造子行
-    for(var fieldName in schema.fields){
-      let fieldSchema = schema.fields[fieldName]
-      let metaValue = value[fieldName]
+    schema.fields.forEach((fieldSchema)=>{
+      //let fieldSchema = schema.fields[fieldName]
+      let node = value
+      let metaValue = getFieldMetaValue(node, fieldSchema)
       var row
       if(fieldSchema.isResponsive){
-        row = new OptionResponsiveRow(metaValue, fieldSchema, fieldName, this.screenWidth)
+        row = new OptionResponsiveRow(metaValue, fieldSchema, fieldSchema, this.screenWidth)
       }
       else{
-        row = new OptionRow(metaValue, fieldSchema, fieldName)
+        row = new OptionRow(metaValue, fieldSchema, fieldSchema)
       }
 
-      row.listenValueChaged((value, fdName)=>{
-        this.value[fdName] = value
+      row.listenValueChaged((value, fdSchema)=>{
+        setFiedlMetaValue(value, node, fdSchema)
+        //this.value[fdName] = value
         this.onValueChanged(this.value)
         this.titleRow.input.setValues(this.getValuesOnLabel())
         this.updateLabelColor()
       })
       row.rowLabel.cssClass('sub-label')
       this.body.pushChild(row)
-    }
+    })
 
     this.titleRow.input.onRemoveValue = (value)=>{
       this.body.children.forEach((row)=>{
@@ -89,20 +92,20 @@ export class OptionRowGroup extends RowBase{
   getValuesOnLabel(){
     let schema = this.schema
     let values = []
-    for(var fieldName in schema.fields){
-      if(schema.fields[fieldName].isResponsive){
-        values.push(this.value[fieldName][this.screenWidth])
+    schema.fields.forEach((fieldSchema)=>{
+      if(fieldSchema.isResponsive){
+        values.push(getFieldMetaValue(this.value, fieldSchema)[this.screenWidth])
       }
       else{
-        let value = this.value[fieldName]
+        let value = getFieldMetaValue(this.value, fieldSchema)
         if(value.constructor==Array){
           values.push.apply(values, value)
         }
         else{
-          values.push(this.value[fieldName])
+          values.push(value)
         }
       }
-    }
+    })
     return values
   }
 
