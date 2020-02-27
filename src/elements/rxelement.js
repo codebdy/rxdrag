@@ -6,6 +6,7 @@ import tagSchema from "./schemas/overview/tag"
 import classesSchema from "./schemas/overview/classes"
 import attributesSchema from "./schemas/overview/attributes"
 import headingPseudoSchema from "./schemas/heading/pseudo-heading"
+import headingDisplaySchema from "./schemas/heading/display"
 
 import utilColorSchema from "./schemas/utilities/color"
 import utilTextSchema from "./schemas/utilities/text"
@@ -91,6 +92,7 @@ export class RXElement extends Node{
 
     this.addSchema(textfieldSchema, 'textOptions')
     this.addSchema(headingPseudoSchema, 'textOptions')
+    this.addSchema(headingDisplaySchema, 'textOptions')
     this.addSchema(utilColorSchema, 'textOptions')
     this.addSchema(utilTextSchema, 'textOptions')
 
@@ -113,44 +115,6 @@ export class RXElement extends Node{
     this.addSchema(utilStretchedLinkSchema, 'utilities')
     this.addSchema(utilVerticalAlignmentSchema, 'utilities')
     this.addSchema(utilVisibilitySchema, 'utilities')
-
- /*   addonHeadingDisplay(this, 'textOptions')
-    addonGridRow(this, 'textOptions')
-    let col = addonWidth(this, 'textOptions')
-    col.schema.xs.label = 'Column'
-    col.schema.sm.label = 'Column'
-    col.schema.md.label = 'Column'
-    col.schema.lg.label = 'Column'
-    col.schema.xl.label = 'Column'
-    addonOffset(this, 'textOptions')
-    addonAlignSelf(this, 'textOptions')
-    addonOrder(this, 'textOptions')
-    addonUtilMarginAuto(this, 'textOptions')
-    addonTypyLead(this)
-    addonTypyInitialism(this)
-    addonTypyBlockquote(this)
-    addonTypyBlockquoteFooter(this)
-
-    addonUtilColor(this)
-    addonUtilBorder(this)
-    addonUtilMargin(this)
-    addonUtilPadding(this)
-    addonUtilClearfix(this)
-    addonUtilDisplay(this)
-    addonUtilEmbed(this)
-    addonUtilResponsiveItem(this) //need to move to other tags
-    addonUtilFlex(this)
-    addonUtilFloat(this)
-    addonUtilTextHide(this)
-    addonUtilOverflow(this)
-    addonUtilPosition(this)
-    addonUtilScreenReaders(this)
-    addonUtilShadow(this)
-    addonUtilSizing(this)
-    addonUtilStretchedLink(this) //need to move to a tag
-    addonUtilText(this)
-    addonUtilVerticalAlignment(this)
-    addonUtilVisibility(this)*/
 
   }
 
