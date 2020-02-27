@@ -24,9 +24,9 @@ export class HTMLCode extends RXElement{
     this.becomeToTextfield()
     this.meta.innerHTML = 'Code text'
 
-    //addonHeadingPseudo(this, 'typographyOptions')
-    //addonHeadingDisplay(this, 'typographyOptions')
-    //addonTypyLead(this, 'typographyOptions')
+    //addonHeadingPseudo(this, 'textOptions')
+    //addonHeadingDisplay(this, 'textOptions')
+    //addonTypyLead(this, 'textOptions')
   }
 
   make(){

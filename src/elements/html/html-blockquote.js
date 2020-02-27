@@ -35,8 +35,8 @@ export class HTMLBlockquote extends RXElement{
     addonUtilMargin(this)
     addonUtilPadding(this)
     addonUtilText(this)*/
-    //addonHeadingPseudo(this, 'typographyOptions')
-    //addonHeadingDisplay(this, 'typographyOptions')
+    //addonHeadingPseudo(this, 'textOptions')
+    //addonHeadingDisplay(this, 'textOptions')
   }
 
   make(){

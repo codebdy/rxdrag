@@ -1,6 +1,7 @@
 import {RXElement} from "../../rxelement"
 import tagSchema from "../../schemas/heading/tag"
 import displaySchema from "../../schemas/heading/display"
+import textfieldSchema from "../../schemas/general/textfield"
 //import {addonGeneralTextfield} from "../schemas/general/textfield"
 
 export class BSHeading extends RXElement{
@@ -25,10 +26,11 @@ export class BSHeading extends RXElement{
 
     this.becomeToTextfield()
 
-    this.addSchema(tagSchema)
-    this.addSchema(displaySchema)
+    this.addSchema(textfieldSchema, 'textOptions')
+    this.addSchema(tagSchema, 'headingOptions')
+    this.addSchema(displaySchema, 'headingOptions')
     //addonHeadingTag(this)
-    //addonHeadingDisplay(this, 'typographyOptions')
+    //addonHeadingDisplay(this, 'textOptions')
   }
 
   make(){

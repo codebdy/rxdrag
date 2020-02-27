@@ -7,7 +7,7 @@ class TypyInitialism extends OptionFragment{
       label:'Initialism',
       widget:'OpSwitch',
       required:true,
-      group:'typographyOptions',
+      group:'textOptions',
       onValue:'initialism',
       offValue:'',
       defaultValue:'',

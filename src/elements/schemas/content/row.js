@@ -7,7 +7,7 @@ class GridRow extends OptionFragment{
       label:'Row',
       widget:'OpSwitch',
       required:true,
-      group:'typographyOptions',
+      group:'textOptions',
       onValue:'row',
       offValue:'',
       defaultValue:'',

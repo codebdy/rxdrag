@@ -7,7 +7,7 @@ class TypyBlockquote extends OptionFragment{
       label:'Blockquote',
       widget:'OpSwitch',
       required:true,
-      group:'typographyOptions',
+      group:'textOptions',
       onValue:'blockquote',
       offValue:'',
       defaultValue:'',

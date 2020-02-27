@@ -26,8 +26,8 @@ export class HTMLH extends RXElement{
 
     this.becomeToTextfield()
     //addonGeneralTextfield(this)
-    //addonHeadingTag(this, 'typographyOptions')
-    //addonHeadingDisplay(this, 'typographyOptions')
+    //addonHeadingTag(this, 'textOptions')
+    //addonHeadingDisplay(this, 'textOptions')
   }
 
   make(){

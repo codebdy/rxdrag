@@ -7,7 +7,7 @@ class TypyBlockquoteFooter extends OptionFragment{
       label:'BlockquoteFooter',
       widget:'OpSwitch',
       required:true,
-      group:'typographyOptions',
+      group:'textOptions',
       onValue:'blockquote-footer',
       offValue:'',
       defaultValue:'',

@@ -68,7 +68,7 @@ export class RXElement extends Node{
       label:'Bootstrap Utilities',
     })
     this.pushGroup({
-      id:'typographyOptions',
+      id:'textOptions',
       label:'Text Options',
     })
     this.pushGroup({
@@ -84,20 +84,20 @@ export class RXElement extends Node{
     this.addOverViewSchema(tagSchema)
     this.addOverViewSchema(classesSchema)
     this.addOverViewSchema(attributesSchema)
-    this.addSchema(headingPseudoSchema, 'typographyOptions')
+    this.addSchema(headingPseudoSchema, 'textOptions')
 
- /*   addonHeadingDisplay(this, 'typographyOptions')
-    addonGridRow(this, 'typographyOptions')
-    let col = addonWidth(this, 'typographyOptions')
+ /*   addonHeadingDisplay(this, 'textOptions')
+    addonGridRow(this, 'textOptions')
+    let col = addonWidth(this, 'textOptions')
     col.schema.xs.label = 'Column'
     col.schema.sm.label = 'Column'
     col.schema.md.label = 'Column'
     col.schema.lg.label = 'Column'
     col.schema.xl.label = 'Column'
-    addonOffset(this, 'typographyOptions')
-    addonAlignSelf(this, 'typographyOptions')
-    addonOrder(this, 'typographyOptions')
-    addonUtilMarginAuto(this, 'typographyOptions')
+    addonOffset(this, 'textOptions')
+    addonAlignSelf(this, 'textOptions')
+    addonOrder(this, 'textOptions')
+    addonUtilMarginAuto(this, 'textOptions')
     addonTypyLead(this)
     addonTypyInitialism(this)
     addonTypyBlockquote(this)

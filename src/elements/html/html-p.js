@@ -22,9 +22,9 @@ export class HTMLP extends RXElement{
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLSpan']
     this.becomeToTextfield()
 
-    //addonHeadingPseudo(this, 'typographyOptions')
-    //addonHeadingDisplay(this, 'typographyOptions')
-    //addonTypyLead(this, 'typographyOptions')
+    //addonHeadingPseudo(this, 'textOptions')
+    //addonHeadingDisplay(this, 'textOptions')
+    //addonTypyLead(this, 'textOptions')
   }
 
   make(){

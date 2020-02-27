@@ -1,8 +1,8 @@
 import {RXElement} from "../../rxelement"
 import parkMiniEditbar from "../../../core/park-mini-editbar"
 //import {addonHeadingPseudo} from "../../schemas/heading/pseudo-heading"
-import {addonHeadingDisplay} from "../../schemas/heading/display"
-import {addonTypyLead} from "../../schemas/content/lead"
+//import {addonHeadingDisplay} from "../../schemas/heading/display"
+import leadSchema from "../../schemas/content/lead"
 
 export class BSParagraph extends RXElement{
   constructor() {
@@ -14,16 +14,11 @@ export class BSParagraph extends RXElement{
 
     this.editMarginStyle = {}
 
-    //this.groups.paragraphOptions = {
-    //  label:'Paragraph Options'
-    //}
     this.meta.tag = 'p'
     this.meta.innerHTML = "Please input paragraph text ..."
     this.label = "Paragraph"
 
-    //addonHeadingPseudo(this, 'typographyOptions')
-    //addonHeadingDisplay(this, 'typographyOptions')
-    //addonTypyLead(this, 'typographyOptions')
+    this.addSchema(leadSchema, 'textOptions')
   }
 
   make(){

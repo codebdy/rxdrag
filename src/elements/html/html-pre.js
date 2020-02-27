@@ -24,9 +24,9 @@ export class HTMLPre extends RXElement{
 
     this.becomeToTextfield()
     //addonGeneralTextfield(this)
-    //addonHeadingPseudo(this, 'typographyOptions')
-    //addonHeadingDisplay(this, 'typographyOptions')
-    //addonTypyLead(this, 'typographyOptions')
+    //addonHeadingPseudo(this, 'textOptions')
+    //addonHeadingDisplay(this, 'textOptions')
+    //addonTypyLead(this, 'textOptions')
   }
 
   make(){

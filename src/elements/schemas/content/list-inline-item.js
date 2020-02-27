@@ -6,7 +6,7 @@ class TypyListInlineItem extends OptionFragment{
     this.schema = {
       label:'Inline item',
       widget:'OpSwitch',
-      group:'typographyOptions',
+      group:'textOptions',
       onValue:'list-inline-item',
       offValue:'',
       defaultValue:'',

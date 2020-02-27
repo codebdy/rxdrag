@@ -6,7 +6,7 @@ class TypyListUnstyled extends OptionFragment{
     this.schema = {
       label:'List unstyled',
       widget:'OpSwitch',
-      group:'typographyOptions',
+      group:'textOptions',
       onValue:'list-unstyled',
       offValue:'',
       defaultValue:'',
