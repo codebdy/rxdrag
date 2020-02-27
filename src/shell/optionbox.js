@@ -77,10 +77,10 @@ export class OptionBox extends RXComponent{
   creatRow(node, fieldSchema){
     let metaValue = getFieldMetaValue(node, fieldSchema)
     var row
-    /*if(fieldSchema.isRowGroup){
+    if(fieldSchema.isRowGroup){
       row = new OptionRowGroup(node, fieldSchema, this.screenWidth)
     }
-    else */if(fieldSchema.isResponsive){
+    else if(fieldSchema.isResponsive){
       row = new OptionResponsiveRow(metaValue, fieldSchema, this.screenWidth)
     }
     else{

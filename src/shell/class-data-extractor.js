@@ -27,13 +27,13 @@ function setFiedlMetaValue(value, node, fdSchema){
 
 
 function extractValueFromClasses(classList, fieldSchema){
-  /*if(fieldSchema.isRowGroup){
+  if(fieldSchema.isRowGroup){
     let value = {}
     for(var fieldName in fieldSchema.fields){
       value[fieldName] = extractValueFromClasses(classList, fieldSchema.fields[fieldName])
     }
     return value
-  }*/
+  }
   if(fieldSchema.isResponsive){
     let value = {}
     value.xs = extractValueFromClasses(classList, fieldSchema.xs)

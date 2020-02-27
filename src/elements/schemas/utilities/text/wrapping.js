@@ -1,4 +1,5 @@
 export default{
+  fieldName:'classList',
   label:'Wrapping',
   widget:'OpSelect',
   defaultValue:'',

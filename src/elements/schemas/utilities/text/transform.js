@@ -1,4 +1,5 @@
 export default{
+  fieldName:'classList',
   label:'Transform',
   widget:'OpSelect',
   defaultValue:'',

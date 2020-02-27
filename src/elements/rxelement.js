@@ -6,8 +6,7 @@ import classesSchema from "./schemas/overview/classes"
 import attributesSchema from "./schemas/overview/attributes"
 import headingPseudoSchema from "./schemas/heading/pseudo-heading"
 
-import textColorSchema from "./schemas/utilities/text-color"
-import backgroundColorSchema from "./schemas/utilities/background-color"
+import utilColorSchema from "./schemas/utilities/color"
 //import utilTextSchema from "./schemas/utilities/text"
 
 /*import {addonGeneralTextfield} from "./schemas/general/textfield"
@@ -90,8 +89,8 @@ export class RXElement extends Node{
     this.addOverViewSchema(attributesSchema)
 
     this.addSchema(headingPseudoSchema, 'textOptions')
-    this.addSchema(textColorSchema, 'textOptions')
-    this.addSchema(backgroundColorSchema, 'textOptions')
+    this.addSchema(utilColorSchema, 'textOptions')
+    //this.addSchema(utilTextSchema, 'textOptions')
 
  /*   addonHeadingDisplay(this, 'textOptions')
     addonGridRow(this, 'textOptions')

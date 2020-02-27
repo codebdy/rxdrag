@@ -1,4 +1,5 @@
 export default{
+  fieldName:'classList',
   label:'Font weight',
   widget:'OpSelect',
   defaultValue:'',
