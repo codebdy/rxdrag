@@ -1,9 +1,9 @@
 import {RXElement} from "../../rxelement"
-import {addonWidth} from "../../schemas/column/col-width"
-import {addonOffset} from "../../schemas/column/col-offset"
-import {addonAlignSelf} from "../../schemas/column/col-align-self"
-import {addonOrder} from "../../schemas/column/col-order"
-import {addonUtilMarginAuto} from "../../schemas/column/margin-auto"
+import widthSchema from "../../schemas/column/col-width"
+import offsetSchema from "../../schemas/column/col-offset"
+import alignSelfSchema from "../../schemas/utilities/flex/align-self"
+import orderSchema from "../../schemas/utilities/flex/order"
+import marginAutoSchema from "../../schemas/utilities/flex/margin-auto"
 
 export class BSCol extends RXElement{
   constructor() {
@@ -22,38 +22,32 @@ export class BSCol extends RXElement{
       label:'Column Options',
     })
 
-    /*addonWidth(this)
-    addonOffset(this)
-    addonAlignSelf(this)
-    addonOrder(this)
-    addonUtilMarginAuto(this)
-    this.setDefaultWidth()*/
-  }
-
-  setDefaultWidth(){
-    if(!this.$meta.colWidth){
-      this.$meta.colWidth = {}
-    }
-    if(window.rxEditor){
-      let width = window.rxEditor.state.screenWidth
-      if(width == 'xs'){
-        this.$meta.colWidth.xs = 'col'
-        return
-      }
-      
-      this.$meta.colWidth[width] = 'col-' + width
-      return
-    }
-    this.$meta.colWidth.md = 'col-md'
+    this.addSchema(widthSchema, 'columnOptions')
+    this.addSchema(offsetSchema, 'columnOptions')
+    this.addSchema(alignSelfSchema, 'columnOptions')
+    this.addSchema(orderSchema, 'columnOptions')
+    this.addSchema(marginAutoSchema, 'columnOptions')
   }
 
   make(){
     return new BSCol
   }
 
-  /*toViewModel(){
-    let model = super.toViewModel()
-    //model.label.text = "Column"
-    return model
-  }*/
+  configSelf(){
+    this.setDefaultWidth()
+  }
+
+  setDefaultWidth(){
+    if(window.rxEditor){
+      let width = window.rxEditor.state.screenWidth
+      if(width == 'xs'){
+        this.addClass('col')
+      }
+      else{
+        this.addClass('col-' + width)
+      }
+    }
+  }
+
+
 }

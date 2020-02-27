@@ -475,7 +475,11 @@ export class Node{
     })
   }
 
+  configSelf(){
+  }
+
   loadConfig(){
+    this.configSelf()
     return this
   }
 

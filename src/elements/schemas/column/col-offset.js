@@ -1,6 +1,5 @@
-import {OptionFragment} from "../option-fragment"
-
-let colOffsetSchema = {
+export default {
+  fieldName:'classList',
   group:'columnOptions',
   isResponsive:true,
   xs:{
@@ -99,29 +98,3 @@ let colOffsetSchema = {
   },
   //---------------------
 }//<--offset
-
-class ColOffset extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = Object.assign({}, colOffsetSchema)
-
-    this.fieldName = 'colOffset'
-  }
-
-  copyMeta(from, to){
-    super.copyResponsiveMetaTo(from, to)
-  }
-
-  metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
-    super.responsiveMetaFieldToViewModel(model, metaFragment)
-  }
-}
-
-var addonOffset = (node, groupName)=>{
-  let colOffset = new ColOffset
-  colOffset.addon(node, groupName)
-  return colOffset
-}
-
-export {addonOffset}

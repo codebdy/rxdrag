@@ -1,6 +1,5 @@
-import {OptionFragment} from "../option-fragment"
-
-let colWidthSchema = {
+export default {
+  fieldName:'classList',
   group:'columnOptions',
   isResponsive:true,
   xs:{
@@ -113,30 +112,4 @@ let colWidthSchema = {
     },
   },
   //---------------------
-}//<--width
-
-class ColWidth extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = Object.assign({}, colWidthSchema)
-
-    this.fieldName = 'colWidth'
-  }
-
-  copyMeta(from, to){
-    super.copyResponsiveMetaTo(from, to)
-  }
-
-  metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
-    super.responsiveMetaFieldToViewModel(model, metaFragment)
-  }
 }
-
-var addonWidth = (node, groupName)=>{
-  let colWidth = new ColWidth
-  colWidth.addon(node, groupName)
-  return colWidth
-}
-
-export {addonWidth}

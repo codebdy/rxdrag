@@ -8,6 +8,10 @@ function listValues(list){
 
 
 function extractValueFromClasses(classList, fieldSchema){
+  if(fieldSchema.isRowGroup){
+    let value = {}
+    return value
+  }
   if(fieldSchema.isResponsive){
     let value = {}
     value.xs = extractValueFromClasses(classList, fieldSchema.xs)

@@ -12,22 +12,12 @@ export class BSW100 extends RXElement{
     this.editMarginStyle.padding = '10px'
     this.widthDropMargin = 15;
     this.acceptedChildren=[]
+
+    this.addClass('w-100')
   }
 
   make(){
     return new BSW100
-  }
-
-  /*toViewModel(){
-    let model = super.toViewModel()
-    model.classList.add('w-100')
-    //model.classList.push.apply(model.classList, this.$meta.baseClass)
-    //model.attributes.contentEditable = false
-    return model
-  }*/
-
-  metaToModel(model){
-    model.classList.add('w-100')
   }
 
 }
