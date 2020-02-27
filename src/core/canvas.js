@@ -8,7 +8,7 @@ export class Canvas extends Node{
     this.parentViewDomElement = workspace;
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
-                           'HTMLTh', 'HTMLTr', 'HTMLTd']
+                           'HTMLTh'/*, 'HTMLTr', 'HTMLTd'*/]
     this.heightDropMargin = 0;
     this.widthDropMargin = 0;
     this.padding = '30px';

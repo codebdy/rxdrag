@@ -1,4 +1,6 @@
 import {RXElement} from "../rxelement"
+import scopeSchema from "../schemas/table/scope"
+import contextualSchema from "../schemas/table/contextual"
 
 export class HTMLTr extends RXElement{
   constructor() {
@@ -18,8 +20,10 @@ export class HTMLTr extends RXElement{
 
     this.meta.tag = 'tr'
     this.label = "tr"
-    this.acceptedChildren=['HTMLTr']
+    this.acceptedChildren=['HTMLTd', 'HTMLTh']
     
+    this.addSchema(scopeSchema, 'trOptions')
+    this.addSchema(contextualSchema, 'trOptions')
     /*addonTrScope(this)
     addonTableContextual(this, 'trOptions')
     addonUtilColor(this)

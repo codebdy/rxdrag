@@ -145,7 +145,7 @@ export class RXElement extends Node{
       schemaFragment.group = groupName
     }
     //this.schema.groups[groupName] = this.groups[groupName]
-    this.schema.fields.push(schemaFragment)
+    this.schema.fields.push(Object.assign({}, schemaFragment))
   }
 
   addOverViewSchema(schema){
@@ -155,6 +155,7 @@ export class RXElement extends Node{
   clone(){
     let copy = super.clone()
     copy.meta = JSON.parse(JSON.stringify(this.meta))
+    //copy.schema = JSON.parse(JSON.stringify(this.schema))
     //copy.meta.tag = this.meta.tag
     //copy.meta.innerHTML = this.meta.innerHTML
 
