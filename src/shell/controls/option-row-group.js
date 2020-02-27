@@ -13,11 +13,10 @@ class GroupValueLabel extends OpLabel{
 }
 
 export class OptionRowGroup extends RowBase{
-  constructor(value, schema, fieldName, screenWidth){
+  constructor(value, schema, screenWidth){
     super()
     this.value = value
     this.schema = schema
-    this.fieldName = fieldName
     this.screenWidth = screenWidth
     this.cssClass('option-row-group')
     this.cssClass('sub-row-collapse')
@@ -43,10 +42,10 @@ export class OptionRowGroup extends RowBase{
       let metaValue = getFieldMetaValue(node, fieldSchema)
       var row
       if(fieldSchema.isResponsive){
-        row = new OptionResponsiveRow(metaValue, fieldSchema, fieldSchema, this.screenWidth)
+        row = new OptionResponsiveRow(metaValue, fieldSchema, this.screenWidth)
       }
       else{
-        row = new OptionRow(metaValue, fieldSchema, fieldSchema)
+        row = new OptionRow(metaValue, fieldSchema)
       }
 
       row.listenValueChaged((value, fdSchema)=>{

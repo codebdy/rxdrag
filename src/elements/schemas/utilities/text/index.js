@@ -1,4 +1,3 @@
-import {OptionFragment} from "../../option-fragment"
 import justify from "./justify"
 import align from "./align"
 import wrapping from "./wrapping"
@@ -16,17 +15,17 @@ export default{
   fieldName:'classList',
   label:'Text',
   isRowGroup:true,
-  fields:{
-    justify : justify,
-    align : align,
-    wrapping : wrapping,
-    truncate : truncate,
-    wordBreak : wordBreak,
-    transform : transform,
-    weight : weight,
-    italics : italics,
-    monospace : monospace,
-    resetColor : resetColor,
-    decoration : decoration,
-  }
+  fields:[
+    justify, 
+    align, 
+    wrapping, 
+    truncate, 
+    wordBreak, 
+    transform, 
+    weight, 
+    italics, 
+    monospace, 
+    resetColor, 
+    decoration
+  ]
 }
