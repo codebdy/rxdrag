@@ -1,8 +1,6 @@
-import {OptionFragment} from "../option-fragment"
-
-let utilPositionSchema = {
+export default{
+  fieldName:'classList',
   label:'Position',
-  group:'utilities',
   widget:'OpSelect',
   defaultValue:'',
   list:{
@@ -15,29 +13,3 @@ let utilPositionSchema = {
     'fixed-bottom':'Fixed Bottom',
   },
 }
-
-class UtilPosition extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = Object.assign({}, utilPositionSchema)
-
-    this.fieldName = 'utilPosition'
-  }
-
-  copyMeta(from, to){
-    to.utilPosition = from.utilPosition
-  }
-
-  metaToModel(model, meta){
-    model.classList.add(meta[this.fieldName])
-  }
-}
-
-var addonUtilPosition = (node, groupName)=>{
-  let utilPosition = new UtilPosition
-  utilPosition.addon(node, groupName)
-  return utilPosition
-}
-
-export {addonUtilPosition}
-

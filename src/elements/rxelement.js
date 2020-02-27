@@ -17,21 +17,20 @@ import utilClearfixSchema from "./schemas/utilities/clearfix"
 import utilDisplaySchema from "./schemas/utilities/display"
 import utilEmbedSchema from "./schemas/utilities/embed"
 import utilResponsiveItemSchema from "./schemas/utilities/embed/responsive-item"
+import utilFlexSchema from "./schemas/utilities/flex"
+import utilFloatSchema from "./schemas/utilities/float"
 
+import utilTextHideSchema from "./schemas/utilities/text-hide"
+import utilOverflowSchema from "./schemas/utilities/overflow"
+import utilPositionSchema from "./schemas/utilities/position"
+import utilScreenReadersSchema from "./schemas/utilities/screen-readers"
+import utilShadowSchema from "./schemas/utilities/shadow"
+import utilSizingSchema from "./schemas/utilities/sizing"
+import utilStretchedLinkSchema from "./schemas/utilities/stretched-link"
+import utilVerticalAlignmentSchema from "./schemas/utilities/vertical-align"
+import utilVisibilitySchema from "./schemas/utilities/visibility"
 
 /*
-import {addonUtilFlex} from "./schemas/utilities/flex"
-import {addonUtilFloat} from "./schemas/utilities/float"
-import {addonUtilTextHide} from "./schemas/utilities/text-hide"
-import {addonUtilOverflow} from "./schemas/utilities/overflow"
-import {addonUtilPosition} from "./schemas/utilities/position"
-import {addonUtilScreenReaders} from "./schemas/utilities/screen-readers"
-import {addonUtilShadow} from "./schemas/utilities/shadow"
-import {addonUtilSizing} from "./schemas/utilities/sizing"
-import {addonUtilStretchedLink} from "./schemas/utilities/stretched-link"
-import {addonUtilText} from "./schemas/utilities/text"
-import {addonUtilVerticalAlignment} from "./schemas/utilities/vertical-align"
-import {addonUtilVisibility} from "./schemas/utilities/visibility"
 
 import {addonHeadingDisplay} from "./schemas/heading/display"
 import {addonGridRow} from "./schemas/content/row"
@@ -39,7 +38,7 @@ import {addonWidth} from "./schemas/column/col-width"
 import {addonOffset} from "./schemas/column/col-offset"
 import {addonAlignSelf} from "./schemas/column/col-align-self"
 import {addonOrder} from "./schemas/column/col-order"
-import {addonUtilMarginAuto} from "./schemas/column/margin-auto"
+import utilMarginAuto} from "./schemas/column/margin-auto"
 import {addonTypyLead} from "./schemas/content/lead"
 import {addonTypyInitialism} from "./schemas/content/Initialism"
 import {addonTypyBlockquote} from "./schemas/content/blockquote"
@@ -102,6 +101,18 @@ export class RXElement extends Node{
     this.addSchema(utilDisplaySchema, 'utilities')
     this.addSchema(utilEmbedSchema, 'utilities')
     this.addSchema(utilResponsiveItemSchema, 'utilities')
+    this.addSchema(utilFlexSchema, 'utilities')
+    this.addSchema(utilFloatSchema, 'utilities')
+
+    this.addSchema(utilTextHideSchema, 'utilities')
+    this.addSchema(utilOverflowSchema, 'utilities')
+    this.addSchema(utilPositionSchema, 'utilities')
+    this.addSchema(utilScreenReadersSchema, 'utilities')
+    this.addSchema(utilShadowSchema, 'utilities')
+    this.addSchema(utilSizingSchema, 'utilities')
+    this.addSchema(utilStretchedLinkSchema, 'utilities')
+    this.addSchema(utilVerticalAlignmentSchema, 'utilities')
+    this.addSchema(utilVisibilitySchema, 'utilities')
 
  /*   addonHeadingDisplay(this, 'textOptions')
     addonGridRow(this, 'textOptions')

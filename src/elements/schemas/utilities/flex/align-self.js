@@ -1,6 +1,5 @@
 export default{
   fieldName:'classList',
-  group:'columnOptions',
   isResponsive:true,
   xs:{
     label:'Align Self',

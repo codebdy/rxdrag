@@ -1,6 +1,6 @@
 export default{
+  fieldName:'classList',
   label:'Width',
-  group:'utilities',
   widget:'OpSelect',
   defaultValue:'',
   list:{

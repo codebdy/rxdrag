@@ -1,6 +1,5 @@
-import {OptionFragment} from "../option-fragment"
-
-var utilFloatSchema = {
+export default{
+  fieldName:'classList',
   group:'utilities',
   isResponsive:true,
   xs:{
@@ -53,32 +52,4 @@ var utilFloatSchema = {
     },
   },
   //---------------------
-}//<--
-
-class UtilFloat extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = Object.assign({}, utilFloatSchema)
-
-    this.fieldName = 'utilFloat'
-  }
-
-  copyMeta(from, to){
-    super.copyResponsiveMetaTo(from, to)
-  }
-
-  metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
-    super.responsiveMetaFieldToViewModel(model, metaFragment)
-  }
 }
-
-var addonUtilFloat = (node, groupName)=>{
-  let utilFloat = new UtilFloat
-  utilFloat.addon(node, groupName)
-  return utilFloat
-}
-
-export {addonUtilFloat}
-
-
