@@ -24,10 +24,6 @@ export class HTMLTr extends RXElement{
     
     this.addSchema(scopeSchema, 'trOptions')
     this.addSchema(contextualSchema, 'trOptions')
-    /*addonTrScope(this)
-    addonTableContextual(this, 'trOptions')
-    addonUtilColor(this)
-    addonUtilText(this)*/
   }
 
   make(){

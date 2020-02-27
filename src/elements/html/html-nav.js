@@ -8,12 +8,6 @@ export class HTMLNav extends RXElement{
     this.toolboxInfo.elementName = "Nav"
     this.className = 'HTMLNav'
 
-    //this.editMarginStyle.padding = '20px;'
-    //this.editMarginStyle = {}
-
-    //this.groups.paragraphOptions = {
-    //  label:'Paragraph Options'
-    //}
     this.meta.tag = 'nav'
     this.label = "nav"
     this.acceptedChildren=['HTMLLi','HTMLdiv', 'HTMLSpan']

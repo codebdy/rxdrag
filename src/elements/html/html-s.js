@@ -1,7 +1,4 @@
 import {RXElement} from "../rxelement"
-//import {addonHeadingPseudo} from "../../schemas/heading/pseudo-heading"
-//import {addonHeadingDisplay} from "../../schemas/heading/display"
-//import {addonUtilBorder} from "../../schemas/utilities/border"
 
 export class HTMLS extends RXElement{
   constructor() {
@@ -13,21 +10,11 @@ export class HTMLS extends RXElement{
 
     this.editMarginStyle = {}
 
-    //this.groups.paragraphOptions = {
-    //  label:'S Options'
-    //}
     this.meta.tag = 's'
     this.meta.innerHTML = "S text ..."
     this.label = "s"
 
     this.becomeToTextfield()
-    /*addonUtilColor(this)
-    addonUtilBorder(this)
-    addonUtilMargin(this)
-    addonUtilPadding(this)
-    addonUtilText(this)*/
-    //addonHeadingPseudo(this, 'textOptions')
-    //addonHeadingDisplay(this, 'textOptions')
   }
 
   make(){

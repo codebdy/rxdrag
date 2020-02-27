@@ -1,8 +1,4 @@
 import {RXElement} from "../rxelement"
-import {addonUtilBorder} from "../schemas/utilities/border"
-import {addonUtilPadding} from "../schemas/utilities/padding"
-import {addonUtilMargin} from "../schemas/utilities/margin"
-import {addonFigure} from "../schemas/figure/figure"
 
 
 export class HTMLFigure extends RXElement{
@@ -24,10 +20,6 @@ export class HTMLFigure extends RXElement{
     this.meta.tag = 'figure'
     this.label = "figure"
 
-    /*addonFigure(this)
-    addonUtilBorder(this)
-    addonUtilMargin(this)
-    addonUtilPadding(this)*/
   }
 
   make(){

@@ -1,5 +1,4 @@
 import {RXElement} from "../rxelement"
-//import {addonTypyCaptionstInthneItem} from "../schemas/content/thst-inthne-item"
 
 export class HTMLCaption extends RXElement{
   constructor() {
@@ -10,11 +9,7 @@ export class HTMLCaption extends RXElement{
     this.className = 'HTMLCaption'
 
     this.editMarginStyle.padding = '10px'
-    //this.editMarginStyle = {}
 
-    //this.groups.paragraphOptions = {
-    //  label:'Paragraph Options'
-    //}
     this.meta.tag = 'caption'
     this.label = "caption"
     this.acceptedChildren=''

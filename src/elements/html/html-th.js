@@ -1,4 +1,5 @@
 import {RXElement} from "../rxelement"
+import contextualSchema from "../schemas/table/contextual"
 
 export class HTMLTh extends RXElement{
   constructor() {
@@ -24,9 +25,7 @@ export class HTMLTh extends RXElement{
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
     this.becomeToTextfield()
-    //addonTableContextual(this, 'thOptions')
-    //addonUtilColor(this)
-    //addonUtilText(this)
+    this.addSchema(contextualSchema, 'tdOptions')
   }
 
   make(){

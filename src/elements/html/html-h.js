@@ -11,7 +11,6 @@ export class HTMLH extends RXElement{
     this.toolboxInfo.elementName = "H(1~6)"
     this.className = 'HTMLH'
 
-    //this.editMarginStyle = {}
 
     this.unshiftGroup({
       id:'headingOptions',
@@ -25,9 +24,6 @@ export class HTMLH extends RXElement{
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLSpan']
 
     this.becomeToTextfield()
-    //addonGeneralTextfield(this)
-    //addonHeadingTag(this, 'textOptions')
-    //addonHeadingDisplay(this, 'textOptions')
   }
 
   make(){

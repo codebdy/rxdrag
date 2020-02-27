@@ -8,12 +8,6 @@ export class HTMLHeader extends RXElement{
     this.toolboxInfo.elementName = "Header"
     this.className = 'HTMLHeader'
 
-    //this.editMarginStyle.padding = '20px;'
-    //this.editMarginStyle = {}
-
-    //this.groups.paragraphOptions = {
-    //  label:'Paragraph Options'
-    //}
     this.meta.tag = 'header'
     this.label = "header"
     this.acceptedChildren=''

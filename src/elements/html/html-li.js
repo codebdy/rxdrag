@@ -18,8 +18,7 @@ export class HTMLLi extends RXElement{
     this.label = "li"
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol']
-    //this.becomeToTextfield()
-    //addonGeneralTextfield(this)
+
     this.addSchema(inlineItemSchema, 'listOption')
   }
 

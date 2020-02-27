@@ -8,12 +8,6 @@ export class HTMLP extends RXElement{
     this.toolboxInfo.elementName = "P"
     this.className = 'HTMLP'
 
-    //this.editMarginStyle.padding = '20px;'
-    //this.editMarginStyle = {}
-
-    //this.groups.paragraphOptions = {
-    //  label:'Paragraph Options'
-    //}
     this.meta.tag = 'p'
     this.label = "p"
     this.acceptedChildren=['HTMLDiv', 'HTMLSmall', 'HTMLSpan']

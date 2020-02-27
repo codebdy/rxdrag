@@ -1,6 +1,4 @@
 import {RXElement} from "../rxelement"
-//import {addonTypyListUnstyled} from "../schemas/content/list-unstyled"
-//import {addonTypyListInline} from "../schemas/content/list-inline"
 
 export class HTMLTbody extends RXElement{
   constructor() {
@@ -11,11 +9,6 @@ export class HTMLTbody extends RXElement{
     this.className = 'HTMLTbody'
 
     this.editMarginStyle.padding = ''
-    //this.editMarginStyle = {}
-
-    //this.groups.paragraphOptions = {
-    //  label:'Paragraph Options'
-    //}
     this.meta.tag = 'tbody'
     this.label = "tbody"
     this.acceptedChildren=['HTMLTr']

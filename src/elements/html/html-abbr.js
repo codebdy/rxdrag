@@ -1,7 +1,4 @@
 import {RXElement} from "../rxelement"
-//import {addonHeadingPseudo} from "../../schemas/heading/pseudo-heading"
-//import {addonHeadingDisplay} from "../../schemas/heading/display"
-//import {addonUtilBorder} from "../../schemas/utilities/border"
 
 export class HTMLAbbr extends RXElement{
   constructor() {
@@ -21,13 +18,6 @@ export class HTMLAbbr extends RXElement{
     this.label = "abbr"
 
     this.becomeToTextfield()
-    /*addonUtilColor(this)
-    addonUtilBorder(this)
-    addonUtilMargin(this)
-    addonUtilPadding(this)
-    addonUtilText(this)*/
-    //addonHeadingPseudo(this, 'textOptions')
-    //addonHeadingDisplay(this, 'textOptions')
   }
 
   make(){

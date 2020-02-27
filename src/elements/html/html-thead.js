@@ -1,6 +1,5 @@
 import {RXElement} from "../rxelement"
 import headColorSchema from "../schemas/table/head-color"
-//import {addonTypyListInline} from "../schemas/content/list-inline"
 
 export class HTMLThead extends RXElement{
   constructor() {
@@ -11,7 +10,6 @@ export class HTMLThead extends RXElement{
     this.className = 'HTMLThead'
 
     this.editMarginStyle.padding = ''
-    //this.editMarginStyle = {}
 
     this.unshiftGroup({
       id:'theadOptions',

@@ -1,6 +1,5 @@
 import {RXElement} from "../rxelement"
 
-
 export class HTMLA extends RXElement{
   constructor() {
     super()

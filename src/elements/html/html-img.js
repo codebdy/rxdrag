@@ -22,14 +22,6 @@ export class HTMLImg extends RXElement{
     this.meta.tag = 'img'
     this.label = "img"
 
-/*    addonImageSrc(this)
-    addonImageFluid(this)
-    addonImageThumbnail(this)
-    addonImageAlt(this)
-    addonUtilBorder(this)
-    addonUtilMargin(this)
-    addonUtilPadding(this)
-    addonFigureImg(this, 'imageOptions')*/
   }
 
   make(){

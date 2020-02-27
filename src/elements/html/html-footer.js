@@ -1,7 +1,4 @@
 import {RXElement} from "../rxelement"
-//import {addonHeadingPseudo} from "../../schemas/heading/pseudo-heading"
-//import {addonHeadingDisplay} from "../../schemas/heading/display"
-//import {addonUtilBorder} from "../../schemas/utilities/border"
 
 export class HTMLFooter extends RXElement{
   constructor() {
@@ -23,13 +20,6 @@ export class HTMLFooter extends RXElement{
     this.label = "footer"
 
     this.becomeToTextfield()
-    /*addonUtilColor(this)
-    addonUtilBorder(this)
-    addonUtilMargin(this)
-    addonUtilPadding(this)
-    addonUtilText(this)*/
-    //addonHeadingPseudo(this, 'textOptions')
-    //addonHeadingDisplay(this, 'textOptions')
   }
 
   make(){

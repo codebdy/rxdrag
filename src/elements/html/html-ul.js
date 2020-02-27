@@ -20,8 +20,6 @@ export class HTMLUl extends RXElement{
     
     this.addSchema(unstyledSchema, 'listOptions')
     this.addSchema(inlineSchema, 'listOptions')
-    //addonTypyListUnstyled(this)
-    //addonTypyListInline(this)
   }
 
   make(){

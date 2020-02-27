@@ -1,6 +1,4 @@
 import {RXElement} from "../rxelement"
-//import {addonHeadingDisplay} from "../../schemas/heading/display"
-//import {addonUtilBorder} from "../../schemas/utilities/border"
 
 export class HTMLBlockquote extends RXElement{
   constructor() {
@@ -23,14 +21,6 @@ export class HTMLBlockquote extends RXElement{
     this.label = "blockquote"
 
     this.becomeToTextfield()
-    /*addonGeneralTextfield(this)
-    addonUtilColor(this)
-    addonUtilBorder(this)
-    addonUtilMargin(this)
-    addonUtilPadding(this)
-    addonUtilText(this)*/
-    //addonHeadingPseudo(this, 'textOptions')
-    //addonHeadingDisplay(this, 'textOptions')
   }
 
   make(){
