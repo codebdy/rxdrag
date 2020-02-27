@@ -19,7 +19,7 @@ export class HTMLLi extends RXElement{
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol']
 
-    this.addSchema(inlineItemSchema, 'listOption')
+    this.addSchema(inlineItemSchema, 'listOptions')
   }
 
   make(){
