@@ -16,15 +16,11 @@ export class BSBreadcrumb extends HTMLNav{
     this.label = 'breadcrumb'
 
     this.acceptedChildren=['HTMLLi']
+    this.setAttribute('aria-label', 'breadcrumb')
   }
 
   make(){
     return new BSBreadcrumb
-  }
-
-  metaToModel(model){
-    //model.classList.push(this.meta.baseClass)
-    model.attributes['aria-label'] = 'breadcrumb'
   }
 
   loadConfig(){
@@ -38,7 +34,7 @@ export class BSBreadcrumb extends HTMLNav{
         .setEditPadding('')
         .pushChild(
           new HTMLA()
-          .setField('aHref',"#")
+          .setAttribute('href',"#")
           .setInnerHTML('Home')
           .becomeToTextfield()
         )
@@ -49,7 +45,7 @@ export class BSBreadcrumb extends HTMLNav{
         .setEditPadding('')
         .pushChild(
           new HTMLA()
-          .setField('aHref',"#")
+          .setAttribute('href',"#")
           .setInnerHTML('Library')
           .becomeToTextfield()
         )
