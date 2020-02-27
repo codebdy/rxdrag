@@ -1,6 +1,5 @@
 import {RXElement} from "../rxelement"
-import {addonTypyListInlineItem} from "../schemas/content/list-inline-item"
-import {addonGeneralTextfield} from "../schemas/general/textfield"
+import inlineItemSchema from "../schemas/list/inline-item"
 
 export class HTMLLi extends RXElement{
   constructor() {
@@ -10,19 +9,18 @@ export class HTMLLi extends RXElement{
     this.toolboxInfo.elementName = "li"
     this.className = 'HTMLLi'
 
-    //this.editMarginStyle.padding = '20px;'
-    //this.editMarginStyle = {}
+    this.unshiftGroup({
+      id:'listOptions',
+      label:'List Options',
+    })
 
-    //this.groups.paragraphOptions = {
-    //  label:'Paragraph Options'
-    //}
     this.meta.tag = 'li'
     this.label = "li"
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol']
     //this.becomeToTextfield()
     //addonGeneralTextfield(this)
-    //addonTypyListInlineItem(this)
+    this.addSchema(inlineItemSchema, 'listOption')
   }
 
   make(){

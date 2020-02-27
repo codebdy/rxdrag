@@ -1,6 +1,6 @@
 import {RXElement} from "../rxelement"
-import {addonTypyListUnstyled} from "../schemas/content/list-unstyled"
-import {addonTypyListInline} from "../schemas/content/list-inline"
+import unstyledSchema from "../schemas/list/unstyled"
+import inlineSchema from "../schemas/list/inline"
 
 export class HTMLOl extends RXElement{
   constructor() {
@@ -10,18 +10,16 @@ export class HTMLOl extends RXElement{
     this.toolboxInfo.elementName = "Ol"
     this.className = 'HTMLOl'
 
-    //this.editMarginStyle.padding = '20px;'
-    //this.editMarginStyle = {}
-
-    //this.groups.paragraphOptions = {
-    //  label:'Paragraph Options'
-    //}
+    this.unshiftGroup({
+      id:'listOptions',
+      label:'List Options',
+    })
     this.meta.tag = 'ol'
     this.label = "ol"
     this.acceptedChildren=['HTMLLi']
     
-    //addonTypyListUnstyled(this)
-    //addonTypyListInline(this)
+    this.addSchema(unstyledSchema, 'listOptions')
+    this.addSchema(inlineSchema, 'listOptions')
   }
 
   make(){

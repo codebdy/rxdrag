@@ -1755,7 +1755,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HTMLLi\", function() { return HTMLLi; });\n/* harmony import */ var _rxelement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../rxelement */ \"./src/elements/rxelement.js\");\n/* harmony import */ var _schemas_content_list_inline_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../schemas/content/list-inline-item */ \"./src/elements/schemas/content/list-inline-item.js\");\n/* harmony import */ var _schemas_general_textfield__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../schemas/general/textfield */ \"./src/elements/schemas/general/textfield.js\");\n\r\n\r\n\r\n\r\nclass HTMLLi extends _rxelement__WEBPACK_IMPORTED_MODULE_0__[\"RXElement\"]{\r\n  constructor() {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupHtml'\r\n    this.toolboxInfo.elementId = 'htmlLi'\r\n    this.toolboxInfo.elementName = \"li\"\r\n    this.className = 'HTMLLi'\r\n\r\n    //this.editMarginStyle.padding = '20px;'\r\n    //this.editMarginStyle = {}\r\n\r\n    //this.groups.paragraphOptions = {\r\n    //  label:'Paragraph Options'\r\n    //}\r\n    this.meta.tag = 'li'\r\n    this.label = \"li\"\r\n    this.acceptedChildren=''\r\n    this.rejectChildren = ['BSCol']\r\n    //this.becomeToTextfield()\r\n    //addonGeneralTextfield(this)\r\n    //addonTypyListInlineItem(this)\r\n  }\r\n\r\n  make(){\r\n    return new HTMLLi\r\n  }\r\n\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/html/html-li.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HTMLLi\", function() { return HTMLLi; });\n/* harmony import */ var _rxelement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../rxelement */ \"./src/elements/rxelement.js\");\n/* harmony import */ var _schemas_list_inline_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../schemas/list/inline-item */ \"./src/elements/schemas/list/inline-item.js\");\n\r\n\r\n\r\nclass HTMLLi extends _rxelement__WEBPACK_IMPORTED_MODULE_0__[\"RXElement\"]{\r\n  constructor() {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupHtml'\r\n    this.toolboxInfo.elementId = 'htmlLi'\r\n    this.toolboxInfo.elementName = \"li\"\r\n    this.className = 'HTMLLi'\r\n\r\n    this.unshiftGroup({\r\n      id:'listOptions',\r\n      label:'List Options',\r\n    })\r\n\r\n    this.meta.tag = 'li'\r\n    this.label = \"li\"\r\n    this.acceptedChildren=''\r\n    this.rejectChildren = ['BSCol']\r\n    //this.becomeToTextfield()\r\n    //addonGeneralTextfield(this)\r\n    this.addSchema(_schemas_list_inline_item__WEBPACK_IMPORTED_MODULE_2__[\"default\"], 'listOption')\r\n  }\r\n\r\n  make(){\r\n    return new HTMLLi\r\n  }\r\n\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/html/html-li.js?");
 
 /***/ }),
 
@@ -1791,7 +1791,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HTMLOl\", function() { return HTMLOl; });\n/* harmony import */ var _rxelement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../rxelement */ \"./src/elements/rxelement.js\");\n/* harmony import */ var _schemas_content_list_unstyled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../schemas/content/list-unstyled */ \"./src/elements/schemas/content/list-unstyled.js\");\n/* harmony import */ var _schemas_content_list_inline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../schemas/content/list-inline */ \"./src/elements/schemas/content/list-inline.js\");\n\r\n\r\n\r\n\r\nclass HTMLOl extends _rxelement__WEBPACK_IMPORTED_MODULE_0__[\"RXElement\"]{\r\n  constructor() {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupHtml'\r\n    this.toolboxInfo.elementId = 'htmlOl'\r\n    this.toolboxInfo.elementName = \"Ol\"\r\n    this.className = 'HTMLOl'\r\n\r\n    //this.editMarginStyle.padding = '20px;'\r\n    //this.editMarginStyle = {}\r\n\r\n    //this.groups.paragraphOptions = {\r\n    //  label:'Paragraph Options'\r\n    //}\r\n    this.meta.tag = 'ol'\r\n    this.label = \"ol\"\r\n    this.acceptedChildren=['HTMLLi']\r\n    \r\n    //addonTypyListUnstyled(this)\r\n    //addonTypyListInline(this)\r\n  }\r\n\r\n  make(){\r\n    return new HTMLOl\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/html/html-ol.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HTMLOl\", function() { return HTMLOl; });\n/* harmony import */ var _rxelement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../rxelement */ \"./src/elements/rxelement.js\");\n/* harmony import */ var _schemas_list_unstyled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../schemas/list/unstyled */ \"./src/elements/schemas/list/unstyled.js\");\n/* harmony import */ var _schemas_list_inline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../schemas/list/inline */ \"./src/elements/schemas/list/inline.js\");\n\r\n\r\n\r\n\r\nclass HTMLOl extends _rxelement__WEBPACK_IMPORTED_MODULE_0__[\"RXElement\"]{\r\n  constructor() {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupHtml'\r\n    this.toolboxInfo.elementId = 'htmlOl'\r\n    this.toolboxInfo.elementName = \"Ol\"\r\n    this.className = 'HTMLOl'\r\n\r\n    this.unshiftGroup({\r\n      id:'listOptions',\r\n      label:'List Options',\r\n    })\r\n    this.meta.tag = 'ol'\r\n    this.label = \"ol\"\r\n    this.acceptedChildren=['HTMLLi']\r\n    \r\n    this.addSchema(_schemas_list_unstyled__WEBPACK_IMPORTED_MODULE_1__[\"default\"], 'listOptions')\r\n    this.addSchema(_schemas_list_inline__WEBPACK_IMPORTED_MODULE_2__[\"default\"], 'listOptions')\r\n  }\r\n\r\n  make(){\r\n    return new HTMLOl\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/html/html-ol.js?");
 
 /***/ }),
 
@@ -1995,7 +1995,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HTMLUl\", function() { return HTMLUl; });\n/* harmony import */ var _rxelement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../rxelement */ \"./src/elements/rxelement.js\");\n/* harmony import */ var _schemas_content_list_unstyled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../schemas/content/list-unstyled */ \"./src/elements/schemas/content/list-unstyled.js\");\n/* harmony import */ var _schemas_content_list_inline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../schemas/content/list-inline */ \"./src/elements/schemas/content/list-inline.js\");\n\r\n\r\n\r\n\r\nclass HTMLUl extends _rxelement__WEBPACK_IMPORTED_MODULE_0__[\"RXElement\"]{\r\n  constructor() {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupHtml'\r\n    this.toolboxInfo.elementId = 'htmlUL'\r\n    this.toolboxInfo.elementName = \"ul\"\r\n    this.className = 'HTMLUl'\r\n\r\n    //this.editMarginStyle.padding = '20px;'\r\n    //this.editMarginStyle = {}\r\n\r\n    //this.groups.paragraphOptions = {\r\n    //  label:'Paragraph Options'\r\n    //}\r\n    this.meta.tag = 'ul'\r\n    this.label = \"ul\"\r\n    this.acceptedChildren=['HTMLLi']\r\n    \r\n    //addonTypyListUnstyled(this)\r\n    //addonTypyListInline(this)\r\n  }\r\n\r\n  make(){\r\n    return new HTMLUl\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/html/html-ul.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HTMLUl\", function() { return HTMLUl; });\n/* harmony import */ var _rxelement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../rxelement */ \"./src/elements/rxelement.js\");\n/* harmony import */ var _schemas_list_unstyled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../schemas/list/unstyled */ \"./src/elements/schemas/list/unstyled.js\");\n/* harmony import */ var _schemas_list_inline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../schemas/list/inline */ \"./src/elements/schemas/list/inline.js\");\n\r\n\r\n\r\n\r\nclass HTMLUl extends _rxelement__WEBPACK_IMPORTED_MODULE_0__[\"RXElement\"]{\r\n  constructor() {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupHtml'\r\n    this.toolboxInfo.elementId = 'htmlUL'\r\n    this.toolboxInfo.elementName = \"ul\"\r\n    this.className = 'HTMLUl'\r\n\r\n    this.unshiftGroup({\r\n      id:'listOptions',\r\n      label:'List Options',\r\n    })\r\n    this.meta.tag = 'ul'\r\n    this.label = \"ul\"\r\n    this.acceptedChildren=['HTMLLi']\r\n    \r\n    this.addSchema(_schemas_list_unstyled__WEBPACK_IMPORTED_MODULE_1__[\"default\"], 'listOptions')\r\n    this.addSchema(_schemas_list_inline__WEBPACK_IMPORTED_MODULE_2__[\"default\"], 'listOptions')\r\n    //addonTypyListUnstyled(this)\r\n    //addonTypyListInline(this)\r\n  }\r\n\r\n  make(){\r\n    return new HTMLUl\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/html/html-ul.js?");
 
 /***/ }),
 
@@ -2263,42 +2263,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 
 /***/ }),
 
-/***/ "./src/elements/schemas/content/list-inline-item.js":
-/*!**********************************************************!*\
-  !*** ./src/elements/schemas/content/list-inline-item.js ***!
-  \**********************************************************/
-/*! exports provided: addonTypyListInlineItem */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addonTypyListInlineItem\", function() { return addonTypyListInlineItem; });\n/* harmony import */ var _option_fragment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../option-fragment */ \"./src/elements/schemas/option-fragment.js\");\n\r\n\r\nclass TypyListInlineItem extends _option_fragment__WEBPACK_IMPORTED_MODULE_0__[\"OptionFragment\"]{\r\n  constructor(){\r\n    super()\r\n    this.schema = {\r\n      label:'Inline item',\r\n      widget:'OpSwitch',\r\n      group:'textOptions',\r\n      onValue:'list-inline-item',\r\n      offValue:'',\r\n      defaultValue:'',\r\n    }\r\n\r\n    this.fieldName = 'typyListInlineItem'\r\n  }\r\n\r\n  copyMeta(from, to){\r\n    to[this.fieldName] = from[this.fieldName]\r\n  }\r\n\r\n  metaToModel(model, meta){\r\n    let metaFragment = meta[this.fieldName]\r\n    model.classList.add(metaFragment)\r\n  }\r\n}\r\n\r\nvar addonTypyListInlineItem = (node, groupName)=>{\r\n  let typyListInlineItem = new TypyListInlineItem\r\n  typyListInlineItem.addon(node, groupName)\r\n  return typyListInlineItem\r\n}\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/content/list-inline-item.js?");
-
-/***/ }),
-
-/***/ "./src/elements/schemas/content/list-inline.js":
-/*!*****************************************************!*\
-  !*** ./src/elements/schemas/content/list-inline.js ***!
-  \*****************************************************/
-/*! exports provided: addonTypyListInline */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addonTypyListInline\", function() { return addonTypyListInline; });\n/* harmony import */ var _option_fragment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../option-fragment */ \"./src/elements/schemas/option-fragment.js\");\n\r\n\r\nclass TypyListInline extends _option_fragment__WEBPACK_IMPORTED_MODULE_0__[\"OptionFragment\"]{\r\n  constructor(){\r\n    super()\r\n    this.schema = {\r\n      label:'List inline',\r\n      widget:'OpSwitch',\r\n      group:'textOptions',\r\n      onValue:'list-inline',\r\n      offValue:'',\r\n      defaultValue:'',\r\n    }\r\n\r\n    this.fieldName = 'typyListInline'\r\n  }\r\n\r\n  copyMeta(from, to){\r\n    to[this.fieldName] = from[this.fieldName]\r\n  }\r\n\r\n  metaToModel(model, meta){\r\n    let metaFragment = meta[this.fieldName]\r\n    model.classList.add(metaFragment)\r\n  }\r\n}\r\n\r\nvar addonTypyListInline = (node, groupName)=>{\r\n  let typyListInline = new TypyListInline\r\n  typyListInline.addon(node, groupName)\r\n  return typyListInline\r\n}\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/content/list-inline.js?");
-
-/***/ }),
-
-/***/ "./src/elements/schemas/content/list-unstyled.js":
-/*!*******************************************************!*\
-  !*** ./src/elements/schemas/content/list-unstyled.js ***!
-  \*******************************************************/
-/*! exports provided: addonTypyListUnstyled */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addonTypyListUnstyled\", function() { return addonTypyListUnstyled; });\n/* harmony import */ var _option_fragment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../option-fragment */ \"./src/elements/schemas/option-fragment.js\");\n\r\n\r\nclass TypyListUnstyled extends _option_fragment__WEBPACK_IMPORTED_MODULE_0__[\"OptionFragment\"]{\r\n  constructor(){\r\n    super()\r\n    this.schema = {\r\n      label:'List unstyled',\r\n      widget:'OpSwitch',\r\n      group:'textOptions',\r\n      onValue:'list-unstyled',\r\n      offValue:'',\r\n      defaultValue:'',\r\n    }\r\n\r\n    this.fieldName = 'typyListUnstyled'\r\n  }\r\n\r\n  copyMeta(from, to){\r\n    to[this.fieldName] = from[this.fieldName]\r\n  }\r\n\r\n  metaToModel(model, meta){\r\n    let metaFragment = meta[this.fieldName]\r\n    model.classList.add(metaFragment)\r\n  }\r\n}\r\n\r\nvar addonTypyListUnstyled = (node, groupName)=>{\r\n  let typyListUnstyled = new TypyListUnstyled\r\n  typyListUnstyled.addon(node, groupName)\r\n  return typyListUnstyled\r\n}\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/content/list-unstyled.js?");
-
-/***/ }),
-
 /***/ "./src/elements/schemas/figure/figure-caption.js":
 /*!*******************************************************!*\
   !*** ./src/elements/schemas/figure/figure-caption.js ***!
@@ -2512,6 +2476,42 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addonImageThumbnail\", function() { return addonImageThumbnail; });\n/* harmony import */ var _option_fragment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../option-fragment */ \"./src/elements/schemas/option-fragment.js\");\n\r\n\r\nclass ImageThumbnail extends _option_fragment__WEBPACK_IMPORTED_MODULE_0__[\"OptionFragment\"]{\r\n  constructor(){\r\n    super()\r\n    this.schema = {\r\n      label:'Thumbnail',\r\n      widget:'OpSwitch',\r\n      group:'imageOptions',\r\n      onValue:'img-thumbnail',\r\n      offValue:'',\r\n      defaultValue:'',\r\n    }\r\n\r\n    this.fieldName = 'imageThumbnail'\r\n  }\r\n\r\n  copyMeta(from, to){\r\n    to[this.fieldName] = from[this.fieldName]\r\n  }\r\n\r\n  metaToModel(model, meta){\r\n    let metaFragment = meta[this.fieldName]\r\n    model.classList.add(metaFragment)\r\n  }\r\n}\r\n\r\nvar addonImageThumbnail = (node, groupName)=>{\r\n  let imageThumbnail = new ImageThumbnail\r\n  imageThumbnail.addon(node, groupName)\r\n  return imageThumbnail\r\n}\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/image/thumbnail.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/list/inline-item.js":
+/*!**************************************************!*\
+  !*** ./src/elements/schemas/list/inline-item.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  fieldName:'classList',\r\n  label:'Inline item',\r\n  widget:'OpSwitch',\r\n  onValue:'list-inline-item',\r\n  offValue:'',\r\n  defaultValue:'',\r\n});\n\n//# sourceURL=webpack:///./src/elements/schemas/list/inline-item.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/list/inline.js":
+/*!*********************************************!*\
+  !*** ./src/elements/schemas/list/inline.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  fieldName:'classList',\r\n  label:'Inline',\r\n  widget:'OpSwitch',\r\n  onValue:'list-inline',\r\n  offValue:'',\r\n  defaultValue:'',\r\n});\n\n//# sourceURL=webpack:///./src/elements/schemas/list/inline.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/list/unstyled.js":
+/*!***********************************************!*\
+  !*** ./src/elements/schemas/list/unstyled.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  fieldName:'classList',\r\n  label:'Unstyled',\r\n  widget:'OpSwitch',\r\n  onValue:'list-unstyled',\r\n  offValue:'',\r\n  defaultValue:'',\r\n});\n\n//# sourceURL=webpack:///./src/elements/schemas/list/unstyled.js?");
 
 /***/ }),
 
