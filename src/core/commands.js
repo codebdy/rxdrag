@@ -53,7 +53,6 @@ class CommandMovable{
 
   finish(){
     let draggedNode = this.node
-    console.log(draggedNode.parent)
     draggedNode.changeToState('focusState')
     if(draggedNode.parent){
       draggedNode.parent.changeToState('normalState')
@@ -310,11 +309,11 @@ export class CommadManager{
   }
 
   finishMoving(){
-    if(this.movingCommand){
+    if(this.movingCommand && this.movingCommand.node.parent){
       this.movingCommand.finish()
       this.finished(this.movingCommand)
-      this.movingCommand = ''
     }
+    this.movingCommand = ''
   }
 
   startEditText(node){
