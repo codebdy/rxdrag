@@ -10,7 +10,8 @@ export class HTMLDiv extends RXElement{
     this.className = 'HTMLDiv'
     this.label = "div"
     this.acceptedChildren=''
-    this.rejectChildren = ['BSCol']
+    this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
+                           'HTMLTh', 'HTMLTr', 'HTMLTd']
   }
 
   make(){

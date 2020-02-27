@@ -48,6 +48,8 @@ import {HTMLOl} from "./html-ol"
 import {HTMLNav} from "./html-nav"
 import {HTMLHeader} from "./html-header"
 
+import {HTMLSection} from "./html-section"
+
 import {HTMLFickleTag} from "./fickle-tag"
 
 
@@ -82,6 +84,7 @@ export default {
   pre: new HTMLPre,
   s: new HTMLS,
   samp: new HTMLSamp,
+  section:new HTMLSection,
   small: new HTMLSmall,
   source: new HTMLSource,
   span: new HTMLSpan,

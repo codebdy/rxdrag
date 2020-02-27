@@ -9,8 +9,12 @@ export class HTMLSpan extends RXElement{
     this.className = 'HTMLSpan'
 
     this.meta.tag = 'span'
-    this.meta.innerHTML = "Span text ..."
+    this.meta.innerHTML = "Span"
     this.label = "span"
+
+    this.acceptedChildren=''
+    this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
+                           'HTMLTh', 'HTMLTr', 'HTMLTd']
 
     this.becomeToTextfield()
   }
