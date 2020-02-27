@@ -33,7 +33,7 @@ class CommandMovable{
 
 
   moveIn(targetParent){
-    this.node. moveIn(targetParent)
+    this.node.moveIn(targetParent)
     this.storeNewInfo()
   }
 
@@ -309,6 +309,7 @@ export class CommadManager{
   }
 
   finishMoving(){
+
     if(this.movingCommand && this.movingCommand.node.parent){
       this.movingCommand.finish()
       this.finished(this.movingCommand)

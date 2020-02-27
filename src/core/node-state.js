@@ -13,34 +13,43 @@ export class NodeState {
     }
   }
 
+  //插入内部顶部
   mouseAtBefore(event){
-    let margin = this.node.dropMargin 
+    let margin = this.node.dropMargin
     return event.offsetX <= margin
         ||event.offsetY <= margin
   }
 
+  //插入内部的底部
   mouseAtAfter(event){
     let margin = this.node.dropMargin 
     return event.srcElement.clientWidth - event.offsetX <= margin
         ||event.srcElement.clientHeight - event.offsetY <= margin
   }
 
+  //插入外部，左侧相邻元素
   mouseAtLeft(event){
     return event.offsetX <= this.node.widthDropMargin
   }
 
-  mouseAtRight(event){
-    return event.srcElement.clientWidth - event.offsetX <= this.node.widthDropMargin
-  }
-
+  //插入外部，顶部相邻元素
   mouseAtTop(event){
     return event.offsetY <= this.node.heightDropMargin
   }
 
-  mouseAtBottom(event){
-    return event.srcElement.clientHeight - event.offsetY <= this.node.heightDropMargin
+  //插入外部，右侧相邻元素
+  mouseAtRight(event){
+    return event.srcElement.clientWidth - event.offsetX <= this.node.widthDropMargin
+      && this.node.widthDropMargin
   }
 
+  //插入外部，底部相邻元素
+  mouseAtBottom(event){
+    return event.srcElement.clientHeight - event.offsetY <= this.node.heightDropMargin
+      && this.node.heightDropMargin
+  }
+
+  //插入内部
   mouseAtDropArea(evetn){
     let margin = this.node.dropMargin 
     //console.log(event.offsetX, event.offsetY)
@@ -71,7 +80,6 @@ export class CanDropState extends NodeState{
       command.adoptFromToolbox(this.node)
       rxEditor.clearDraggedoverStates()
       if(this.mouseAtLeft(event) || this.mouseAtTop(event)){
-
         if(this.node.parent && this.node.parent.canAccept(command.node)){
           command.moveBefore(this.node)
           this.node.parent.changeToState('dragoverState')
@@ -93,13 +101,12 @@ export class CanDropState extends NodeState{
         }
         return
       }
+
       if(this.mouseAtAfter(event) || this.mouseAtDropArea(event)){
-          //console.log('Before accepted')
           if(this.node.canAccept(command.node)){
             command.moveIn(this.node)
             this.node.changeToState('dragoverState')
           }
-       
       }
     }
 

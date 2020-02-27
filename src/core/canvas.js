@@ -11,6 +11,7 @@ export class Canvas extends Node{
                            'HTMLTh'/*, 'HTMLTr', 'HTMLTd'*/]
     this.heightDropMargin = 0;
     this.widthDropMargin = 0;
+    this.dropMargin = 0;
     this.padding = '30px';
 
     this.stateChanged = (oldState, newState)=>{}
