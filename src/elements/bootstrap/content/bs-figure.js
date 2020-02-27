@@ -2,7 +2,6 @@ import {RXElement} from "../../rxelement"
 import {HTMLFigure} from "../../html/html-figure"
 import {HTMLFigcaption} from "../../html/html-figcaption"
 import {HTMLImg} from "../../html/html-img"
-//import {addonTypyListInline} from "../schemas/content/list-inline"
 
 export class BSFigure extends HTMLFigure{
   constructor() {
@@ -15,33 +14,22 @@ export class BSFigure extends HTMLFigure{
     //this.editMarginStyle.padding = '20px;'
     this.editMarginStyle.padding = '10px'
 
-    //this.groups.paragraphOptions = {
-    //  label:'Paragraph Options'
-    //}
     this.meta.tag = 'figure'
-    //this.meta.baseClass = 'figure' 
-
     this.label = "figure"
+    this.addClass('figure')
   }
 
   make(){
     return new BSFigure
   }
 
-  metaToModel(model){
-    //model.classList.push(this.meta.baseClass)
-    //model.classList.push('figure-success')
-    //model.classList.push('figure-striped')
-  }
-
   loadConfig(){
-    let img = new HTMLImg
-    img.meta.figureImg = 'figure-img'
-    img.setField('imageSrc', /*'https://picsum.photos/200'*/'images/1003-367x267.jpg')
+    let img = new HTMLImg().addClass('figure-img')
+    img.setAttribute('src', /*'https://picsum.photos/200'*/'images/1003-367x267.jpg')
     this.pushChild(img)
 
     let caption = new HTMLFigcaption().setInnerHTML("A caption for the above image.")
-        .setField('generalTextfield', 'contentEditable')
+                  .addClass('figure-caption')
     this.pushChild(caption)
     return this
   }
