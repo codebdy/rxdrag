@@ -10,9 +10,9 @@ import headingPseudoSchema from "./schemas/heading/pseudo-heading"
 import utilColorSchema from "./schemas/utilities/color"
 import utilTextSchema from "./schemas/utilities/text"
 
-/*import {addonGeneralTextfield} from "./schemas/general/textfield"
-import {addonUtilColor} from "./schemas/utilities/color"
-import {addonUtilBorder} from "./schemas/utilities/border"
+import utilBorderSchema from "./schemas/utilities/border"
+/*
+
 import {addonUtilPadding} from "./schemas/utilities/padding"
 import {addonUtilMargin} from "./schemas/utilities/margin"
 import {addonUtilClearfix} from "./schemas/utilities/clearfix"
@@ -93,6 +93,8 @@ export class RXElement extends Node{
     this.addSchema(headingPseudoSchema, 'textOptions')
     this.addSchema(utilColorSchema, 'textOptions')
     this.addSchema(utilTextSchema, 'textOptions')
+
+    this.addSchema(utilBorderSchema, 'utilities')
 
  /*   addonHeadingDisplay(this, 'textOptions')
     addonGridRow(this, 'textOptions')

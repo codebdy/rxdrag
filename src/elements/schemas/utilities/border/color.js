@@ -1,4 +1,5 @@
 export default{
+  fieldName:'classList',
   label:'Border Color',
   widget:'OpSelect',
   list:{

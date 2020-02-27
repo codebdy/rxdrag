@@ -6,6 +6,14 @@ function listValues(list){
   return values
 }
 
+function listNames(list){
+  let names = []
+  for(var value in list){
+    names.push(list[value])
+  }
+  return names
+}
+
 function getFieldMetaValue(node, fieldSchema){
     var meta =node.meta
     let fieldName = fieldSchema.fieldName
@@ -17,13 +25,13 @@ function getFieldMetaValue(node, fieldSchema){
   }
 
 function setFiedlMetaValue(value, node, fdSchema){
-    if(fdSchema.fieldName === 'classList'){
-      setValueToClasses(value, node.meta[fdSchema.fieldName], fdSchema)
-    }
-    else{
-      node.meta[fdSchema.fieldName] = value
-    }
+  if(fdSchema.fieldName === 'classList'){
+    node.meta[fdSchema.fieldName] = setValueToClasses(value, node.meta[fdSchema.fieldName], fdSchema)
   }
+  else{
+    node.meta[fdSchema.fieldName] = value
+  }
+}
 
 
 function extractValueFromClasses(classList, fieldSchema){
@@ -60,6 +68,13 @@ function extractValueFromClasses(classList, fieldSchema){
     }
     return ''
   }
+
+  if(fieldSchema.widget === 'OpBorderInput'){
+    let sAllValue = new Set(listNames(fieldSchema.list))
+    let intersect = classList.filter(x => sAllValue.has(x))
+    return intersect
+  }
+
   return ''
 }
 
@@ -86,6 +101,15 @@ function setValueToClasses(value, classList, fieldSchema){
       classList.push(value)
     }
   }
+  if(fieldSchema.widget === 'OpBorderInput'){
+    let oldValues = new Set(extractValueFromClasses(classList, fieldSchema))
+    classList = classList.filter(x => !oldValues.has(x))
+    if(value){
+      classList.push.apply(classList, value)
+    }
+  }
+
+  return classList
 }
 
 export{getFieldMetaValue, setFiedlMetaValue, extractValueFromClasses, setValueToClasses}

@@ -5,6 +5,7 @@ import {RXComponent} from "../../basic/rxcomponent"
 export class OpBorderInput extends OpInput{
   constructor(value, schema){
     super()
+    console.log(value)
     value = value ? value : []
     this.cssClass('border-input')
     this.cssClass(schema.specialClass)

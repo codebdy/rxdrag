@@ -1,4 +1,5 @@
 export default{
+  fieldName:'classList',
   label:'Remove Border',
   widget:'OpBorderInput',
   defaultValue:[],
