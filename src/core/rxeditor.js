@@ -108,7 +108,7 @@ export class RXEditor{
   dragFromToolbox(rxNameId){
     if(this.commandManager.movingCommand || this.state.preview) return
     let element = this.getElementByRxNameId(rxNameId)
-    let draggedNode = element.clone().loadConfig()
+    let draggedNode = element.isThemeBlock ? element.clone() : element.clone().loadConfig()
     this.commandManager.startNew(draggedNode)
     this.beginFollowMouse()
     this.clearFocusStates()
@@ -284,6 +284,7 @@ export class RXEditor{
       let node = loadOneNode(dataJson)
       node.toolboxInfo = JSON.parse(JSON.stringify(uiBlock.toolboxInfo))
       node.toolboxInfo.groupId = groudId
+      node.isThemeBlock = true
       //node.mouseFollowerWidth = uiBlock.mouseFollowerWidth
       this.elements.theme[node.toolboxInfo.elementId] = node
     })
