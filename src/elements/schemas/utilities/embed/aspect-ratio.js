@@ -1,4 +1,5 @@
 export default{
+  fieldName:'classList',
   label:'Aspect Ratio',
   widget:'OpSelect',
   list:{

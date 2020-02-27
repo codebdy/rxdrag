@@ -1,9 +1,8 @@
-import {OptionFragment} from "../option-fragment"
-
-var utilDisplaySchema = {
-  group:'utilities',
+export default{
+  fieldName:'classList',
   isResponsive:true,
   xs:{
+    fieldName:'classList',
     label:'Display',
     widget:'OpSelect',
     list:{
@@ -20,6 +19,7 @@ var utilDisplaySchema = {
   },
   //---------------------
   sm:{
+    fieldName:'classList',
     label:'Display',
     widget:'OpSelect',
     list:{
@@ -36,6 +36,7 @@ var utilDisplaySchema = {
   },
   //---------------------
   md:{
+    fieldName:'classList',
     label:'Display',
     widget:'OpSelect',
     list:{
@@ -52,6 +53,7 @@ var utilDisplaySchema = {
   },
   //---------------------
   lg:{
+    fieldName:'classList',
     label:'Display',
     widget:'OpSelect',
     list:{
@@ -68,6 +70,7 @@ var utilDisplaySchema = {
   },
   //---------------------
   xl:{
+    fieldName:'classList',
     label:'Display',
     widget:'OpSelect',
     list:{
@@ -83,42 +86,4 @@ var utilDisplaySchema = {
     },
   },
   //---------------------
-}//<--
-
-function replaceNone(str){
-  if(str){
-    return str.replace('-none','-rx-none')
-  }
 }
-
-class UtilDisplay extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = Object.assign({}, utilDisplaySchema)
-
-    this.fieldName = 'utilDisplay'
-  }
-
-  copyMeta(from, to){
-    super.copyResponsiveMetaTo(from, to)
-  }
-
-  metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName] ? meta[this.fieldName] : {}
-    model.classList.add(replaceNone(metaFragment.xs))
-    model.classList.add(replaceNone(metaFragment.sm))
-    model.classList.add(replaceNone(metaFragment.md))
-    model.classList.add(replaceNone(metaFragment.lg))
-    model.classList.add(replaceNone(metaFragment.xl))
-  }
-}
-
-var addonUtilDisplay = (node, groupName)=>{
-  let utilDisplay = new UtilDisplay
-  utilDisplay.addon(node, groupName)
-  return utilDisplay
-}
-
-export {addonUtilDisplay}
-
-

@@ -13,12 +13,13 @@ import utilTextSchema from "./schemas/utilities/text"
 import utilBorderSchema from "./schemas/utilities/border"
 import utilPaddingSchema from "./schemas/utilities/padding"
 import utilMarginSchema from "./schemas/utilities/margin"
-/*
+import utilClearfixSchema from "./schemas/utilities/clearfix"
+import utilDisplaySchema from "./schemas/utilities/display"
+import utilEmbedSchema from "./schemas/utilities/embed"
+import utilResponsiveItemSchema from "./schemas/utilities/embed/responsive-item"
 
-import {addonUtilClearfix} from "./schemas/utilities/clearfix"
-import {addonUtilDisplay} from "./schemas/utilities/display"
-import {addonUtilEmbed} from "./schemas/utilities/embed"
-import {addonUtilResponsiveItem} from "./schemas/utilities/embed/responsive-item"
+
+/*
 import {addonUtilFlex} from "./schemas/utilities/flex"
 import {addonUtilFloat} from "./schemas/utilities/float"
 import {addonUtilTextHide} from "./schemas/utilities/text-hide"
@@ -97,6 +98,10 @@ export class RXElement extends Node{
     this.addSchema(utilBorderSchema, 'utilities')
     this.addSchema(utilPaddingSchema, 'utilities')
     this.addSchema(utilMarginSchema, 'utilities')
+    this.addSchema(utilClearfixSchema, 'utilities')
+    this.addSchema(utilDisplaySchema, 'utilities')
+    this.addSchema(utilEmbedSchema, 'utilities')
+    this.addSchema(utilResponsiveItemSchema, 'utilities')
 
  /*   addonHeadingDisplay(this, 'textOptions')
     addonGridRow(this, 'textOptions')

@@ -1,35 +1,9 @@
-import {OptionFragment} from "../option-fragment"
-
-class UtilClearfix extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = {
-      label:'Clearfix',
-      widget:'OpSwitch',
-      group:'utilities',
-      onValue:'clearfix',
-      offValue:'',
-      defaultValue:'',
-    }
-
-    this.fieldName = 'utilClearfix'
-  }
-
-  copyMeta(from, to){
-    to.utilClearfix = from.utilClearfix
-  }
-
-  metaToModel(model, meta){
-    let metaFragment = meta[this.fieldName]
-    model.classList.add(metaFragment)
-  }
+export default{
+  fieldName:'classList',
+  label:'Clearfix',
+  widget:'OpSwitch',
+  onValue:'clearfix',
+  offValue:'',
+  defaultValue:'',
 }
-
-var addonUtilClearfix = (node, groupName)=>{
-  let utilClearfix = new UtilClearfix
-  utilClearfix.addon(node, groupName)
-  return utilClearfix
-}
-
-export {addonUtilClearfix}
 
