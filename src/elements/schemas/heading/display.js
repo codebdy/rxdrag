@@ -1,6 +1,5 @@
-import {OptionFragment} from "../option-fragment"
-
-let headingDisplaySchema = {
+export default{
+  fieldName:'classList',
   label:'Display Size',
   group:'headingOptions',
   widget:'OpSelect',
@@ -12,29 +11,3 @@ let headingDisplaySchema = {
     'display-4':'Display 4',
   },
 }
-
-class HeadingDisplay extends OptionFragment{
-  constructor(){
-    super()
-    this.schema = Object.assign({}, headingDisplaySchema)
-
-    this.fieldName = 'headingDisplay'
-  }
-
-  copyMeta(from, to){
-    to.headingDisplay = from.headingDisplay
-  }
-
-  metaToModel(model, meta){
-    model.classList.add(meta[this.fieldName])
-  }
-}
-
-var addonHeadingDisplay = (node, groupName)=>{
-  let headingDisplay = new HeadingDisplay
-  headingDisplay.addon(node, groupName)
-  return headingDisplay
-}
-
-export {addonHeadingDisplay}
-

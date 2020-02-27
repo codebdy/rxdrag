@@ -69,7 +69,7 @@ export class RXElement extends Node{
     })
     this.pushGroup({
       id:'typographyOptions',
-      label:'Typography Options',
+      label:'Text Options',
     })
     this.pushGroup({
       id:'componentsOptions',
