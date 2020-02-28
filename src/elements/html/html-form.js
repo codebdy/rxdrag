@@ -1,12 +1,12 @@
 import {RXElement} from "../rxelement"
 
-export class HTMLFooter extends RXElement{
+export class HTMLForm extends RXElement{
   constructor() {
     super()
     this.toolboxInfo.groupId = 'groupHtml'
-    this.toolboxInfo.elementId = 'htmlFooter'
-    this.toolboxInfo.elementName = "Footer"
-    this.className = 'HTMLFooter'
+    this.toolboxInfo.elementId = 'htmlForm'
+    this.toolboxInfo.elementName = "Form"
+    this.className = 'HTMLForm'
 
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
@@ -14,14 +14,14 @@ export class HTMLFooter extends RXElement{
     //this.editMarginStyle = {}
 
     //this.groups.paragraphOptions = {
-    //  label:'Footer Options'
+    //  label:'Form Options'
     //}
-    this.meta.tag = 'footer'
-    //this.meta.innerHTML = "Footer text ..."
-    this.label = "footer"
+    this.meta.tag = 'form'
+    //this.meta.innerHTML = "Form text ..."
+    this.label = "form"
   }
 
   make(){
-    return new HTMLFooter
+    return new HTMLForm
   }
 }

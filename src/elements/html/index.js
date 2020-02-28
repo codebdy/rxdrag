@@ -49,6 +49,8 @@ import {HTMLNav} from "./html-nav"
 import {HTMLHeader} from "./html-header"
 
 import {HTMLSection} from "./html-section"
+import {HTMLForm} from "./html-form"
+import {HTMLLabel} from "./html-label"
 
 import {HTMLFickleTag} from "./fickle-tag"
 
@@ -70,11 +72,13 @@ export default {
   figcaption: new HTMLFigcaption,
   figure: new HTMLFigure,
   footer: new HTMLFooter,
+  form: new HTMLForm,
   h: new HTMLH,
   header: new HTMLHeader,
   ins: new HTMLIns,
   img: new HTMLImg,
   kbd: new HTMLKbd,
+  label: new HTMLLabel,
   li: new HTMLLi,
   mark:new HTMLMark,
   nav: new HTMLNav,
