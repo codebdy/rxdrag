@@ -20,7 +20,7 @@ export class HTMLA extends RXElement{
 
     this.meta.tag = 'a'
     this.label = "a"
-    this.meta.innerHTML = "Sample Link "
+    //this.meta.innerHTML = "Sample Link "
     //this.becomeToTextfield()
   }
 

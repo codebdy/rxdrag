@@ -159,9 +159,6 @@ export class RXElement extends Node{
 
     if(this.meta.generalTextfield === 'contentEditable'){
       parkMiniEditbar(model, this)
-      if(this.meta.innerHTML){
-        model.styles.padding = ''
-      }
     }
     else if(rxEditor.state.showEditMargin){
       model.styles.padding = this.editMarginStyle.padding
@@ -169,6 +166,10 @@ export class RXElement extends Node{
 
     if(rxEditor.state.showEditMargin){
       model.styles.margin = this.editMarginStyle.margin
+    }
+
+    if(!this.meta.innerHTML && this.children.length === 0){
+      model.styles.padding = this.editMarginStyle.padding
     }
 
     return model

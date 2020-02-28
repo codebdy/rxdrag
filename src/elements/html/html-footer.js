@@ -18,8 +18,6 @@ export class HTMLFooter extends RXElement{
     this.meta.tag = 'footer'
     //this.meta.innerHTML = "Footer text ..."
     this.label = "footer"
-
-    this.becomeToTextfield()
   }
 
   make(){
