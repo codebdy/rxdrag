@@ -8,7 +8,9 @@ export class HTMLA extends RXElement{
     this.toolboxInfo.elementName = "A"
     this.className = 'HTMLA'
 
-    this.editMarginStyle.padding = ''
+    this.acceptedChildren=''
+    this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
+                           'HTMLTh', 'HTMLTr', 'HTMLTd']
 
 
     this.unshiftGroup({
@@ -19,7 +21,7 @@ export class HTMLA extends RXElement{
     this.meta.tag = 'a'
     this.label = "a"
     this.meta.innerHTML = "Sample Link "
-    this.becomeToTextfield()
+    //this.becomeToTextfield()
   }
 
   make(){
