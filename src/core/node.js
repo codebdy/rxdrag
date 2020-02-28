@@ -476,6 +476,7 @@ export class Node{
   }
 
   configSelf(){
+    console.log('node configSelf')
   }
 
   loadConfig(){

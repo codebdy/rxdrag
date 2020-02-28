@@ -141,8 +141,8 @@ export class RXEditor{
     toolbox.groups.groupComponents = {
       label:'Components',
     }
-    toolbox.groups.groupIcons = {
-      label:'Icons',
+    toolbox.groups.groupForm = {
+      label:'Form',
     }
 
     toolbox.groups.groupHtml = {

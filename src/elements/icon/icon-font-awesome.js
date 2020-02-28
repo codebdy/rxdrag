@@ -3,9 +3,9 @@ import {RXElement} from "../rxelement"
 export class IconFontAwesome extends RXElement{
   constructor() {
     super()
-    this.toolboxInfo.groupId = 'groupIcons'
+    this.toolboxInfo.groupId = 'groupComponents'
     this.toolboxInfo.elementId = 'iconFontAwesome'
-    this.toolboxInfo.elementName = "Font awesome"
+    this.toolboxInfo.elementName = "Icon(Font awesome)"
     this.className = 'IconFontAwesome'
 
     this.editMarginStyle.padding = '10px'

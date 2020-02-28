@@ -18,6 +18,9 @@ import {BSNavbar} from "./components/bs-navbar"
 import {BSNavbarBrand} from "./components/bs-navbar-brand"
 import {BSNavbarToggler} from "./components/bs-navbar-toggler"
 
+import {BSFormGroup} from "./form/bs-form-group"
+import {BSInputGroup} from "./form/bs-input-group"
+import {BSTextareaGroup} from "./form/bs-textarea-group"
 
 export default {
   container : new BSContainer(),
@@ -37,4 +40,7 @@ export default {
   navbar : new BSNavbar(),
   navbarBrand : new BSNavbarBrand(),
   navbarToggler : new BSNavbarToggler(),
+  formGroup : new BSFormGroup(),
+  inputGroup : new BSInputGroup(),
+  textareaGroup : new BSTextareaGroup(),
 }

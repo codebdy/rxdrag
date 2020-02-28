@@ -51,6 +51,8 @@ import {HTMLHeader} from "./html-header"
 import {HTMLSection} from "./html-section"
 import {HTMLForm} from "./html-form"
 import {HTMLLabel} from "./html-label"
+import {HTMLInput} from "./html-input"
+import {HTMLTextarea} from "./html-textarea"
 
 import {HTMLFickleTag} from "./fickle-tag"
 
@@ -75,6 +77,7 @@ export default {
   form: new HTMLForm,
   h: new HTMLH,
   header: new HTMLHeader,
+  input: new HTMLInput,
   ins: new HTMLIns,
   img: new HTMLImg,
   kbd: new HTMLKbd,
@@ -96,6 +99,7 @@ export default {
   table: new HTMLTable,
   tbody: new HTMLTbody,
   td: new HTMLTd,
+  textarea: new HTMLTextarea,
   th: new HTMLTh,
   thead: new HTMLThead,
   tr: new HTMLTr,

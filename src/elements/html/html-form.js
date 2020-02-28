@@ -24,4 +24,13 @@ export class HTMLForm extends RXElement{
   make(){
     return new HTMLForm
   }
+
+  toViewModel(){
+    let model = super.toViewModel()
+    model.on.onsubmit=(event)=>{
+      event.preventDefault()
+    }
+    return model
+  }
+
 }
