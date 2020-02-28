@@ -77,7 +77,7 @@ export class Toolbar extends RXComponent{
               })
 
     var marginBtn = this.creatRightButton('fa-arrows-h')
-              .active()
+              .active(canvasState.showEditMargin)
               .title('Show/hide margin')
               .domOn('click',()=>{
                 canvasState.showEditMargin = !canvasState.showEditMargin

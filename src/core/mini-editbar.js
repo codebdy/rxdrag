@@ -142,6 +142,20 @@ export class MiniEditbar extends RXComponent{
       .setInnerHTML('<div style="transform:rotate(45deg)">⫘</div>')
     this.pushChild( linkBtn )
 
+    document.onpaste = (event)=>{
+      let plainText  =  event.clipboardData.getData('text/plain').replace(/[\r\n]/g,"<br>")
+      document.execCommand('insertHTML', false, plainText)
+      return false
+    }
+
+    document.addEventListener('keydown',(event)=>{
+      if (event.keyCode === 13) {
+        document.execCommand('insertHTML', false, '<br>')
+        event.preventDefault()
+        return false
+      }
+    })
+
     /*let codeBtn = new BarButton('Switch Code Editor', ()=>{
         this.updateButtonsState()
       })
