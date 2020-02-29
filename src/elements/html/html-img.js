@@ -29,7 +29,7 @@ export class HTMLImg extends RXElement{
   }
  
   toViewModel(){
-    if(this.meta.imageSrc){
+    if(this.meta.attributes.src){
       this.editMarginStyle.padding = ''
     }
     else{

@@ -1,6 +1,5 @@
 import {HTMLOl} from "../../html/html-ol"
-
-//import {BSTextarea} from "./bs-textarea"
+import {HTMLLi} from "../../html/html-li"
 
 export class BSCarouselIndicators extends HTMLOl{
   constructor() {
@@ -28,6 +27,21 @@ export class BSCarouselIndicators extends HTMLOl{
 
   make(){
     return new BSCarouselIndicators
+  }
+
+  setCarouselId(carouselId){
+    this.carouselId = carouselId
+    return this
+  }
+
+  addIndicator(index, active){
+    this.pushChild(
+      new HTMLLi()
+      .setAttribute('data-target', "#" + this.carouselId)
+      .setAttribute('data-slide-to', index)
+      .setEditPadding('')
+      .addClass(active)
+    )
   }
 
   configSelf(){

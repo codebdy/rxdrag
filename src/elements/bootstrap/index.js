@@ -31,6 +31,9 @@ import {BSCardTitle} from "./components/bs-card-title"
 import {BSCardText} from "./components/bs-card-text"
 import {BSCardLink} from "./components/bs-card-link"
 
+import {BSCarousel} from "./components/bs-carousel"
+import {BSCarouselItem} from "./components/bs-carousel-item"
+
 export default {
   container : new BSContainer(),
   row : new BSRow(),
@@ -62,4 +65,6 @@ export default {
   cartText: new BSCardText,
   cardLink : new BSCardLink,
 
+  carousel : new BSCarousel,
+  carouselItem :  new BSCarouselItem,
 }

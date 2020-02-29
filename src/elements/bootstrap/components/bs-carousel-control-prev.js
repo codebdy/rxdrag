@@ -1,5 +1,7 @@
 import {HTMLA} from "../../html/html-a"
 
+import {HTMLSpan} from "../../html/html-span"
+
 //import {BSTextarea} from "./bs-textarea"
 
 export class BSCarouselControlPrev extends HTMLA{
@@ -10,20 +12,41 @@ export class BSCarouselControlPrev extends HTMLA{
     this.toolboxInfo.elementName = "Carousel Control Prev"
     this.className = 'BSCarouselControlPrev'
 
-    this.editMarginStyle.padding = ''
+    //this.editMarginStyle.padding = ''
 
     this.acceptedChildren= []
 
     this.label = "prev"
     this.addClass('carousel-control-prev')
+    this.setEditPadding('')
   }
 
   make(){
     return new BSCarouselControlPrev
   }
 
-  configSelf(){
+  setCarouselId(carouselId){
+    this.carouselId = carouselId
+    return this
+  }
 
+  configSelf(){
+    this.setAttribute('href', "#" + this.carouselId)
+    this.setAttribute('role', "button")
+    this.setAttribute('data-slide', "next")
+    this.pushChild(
+      new HTMLSpan()
+      .addClass('carousel-control-prev-icon')
+      .setAttribute('aria-hidden', true)
+      .setInnerHTML('')
+      .setEditPadding('')
+    )
+    this.pushChild(
+      new HTMLSpan()
+      .addClass('sr-only')
+      .setInnerHTML('Previous')
+      .setEditPadding('')
+    )
   }
 
 }

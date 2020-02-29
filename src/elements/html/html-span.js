@@ -15,8 +15,6 @@ export class HTMLSpan extends RXElement{
     this.acceptedChildren=''
     this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
-
-    this.becomeToTextfield()
   }
 
   make(){
