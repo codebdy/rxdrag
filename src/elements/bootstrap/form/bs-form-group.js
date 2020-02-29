@@ -1,8 +1,5 @@
 import {HTMLDiv} from "../../html/html-div"
 
-import {BSInput} from "./bs-input"
-import {BSTextarea} from "./bs-textarea"
-
 export class BSFormGroup extends HTMLDiv{
   constructor() {
     super()

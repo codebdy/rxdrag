@@ -22,6 +22,15 @@ import {BSFormGroup} from "./form/bs-form-group"
 import {BSInputGroup} from "./form/bs-input-group"
 import {BSTextareaGroup} from "./form/bs-textarea-group"
 
+import {BSCard} from "./components/bs-card"
+import {BSCardHeader} from "./components/bs-card-header"
+import {BSCardBody} from "./components/bs-card-body"
+import {BSCardFooter} from "./components/bs-card-footer"
+import {BSCardImage} from "./components/bs-card-image"
+import {BSCardTitle} from "./components/bs-card-title"
+import {BSCardText} from "./components/bs-card-text"
+import {BSCardLink} from "./components/bs-card-link"
+
 export default {
   container : new BSContainer(),
   row : new BSRow(),
@@ -43,4 +52,14 @@ export default {
   formGroup : new BSFormGroup(),
   inputGroup : new BSInputGroup(),
   textareaGroup : new BSTextareaGroup(),
+
+  card : new BSCard,
+  cardHeader : new BSCardHeader,
+  cardBody : new BSCardBody,
+  cardFooter : new BSCardFooter,
+  cardImage : new BSCardImage,
+  cardTitle : new BSCardTitle,
+  cartText: new BSCardText,
+  cardLink : new BSCardLink,
+
 }
