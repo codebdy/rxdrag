@@ -21,7 +21,7 @@ export class BSCarouselControlPrev extends HTMLA{
     this.setEditPadding('')
     this.onclick = (event)=>{
       //event.stopPropagation()
-      carousel.activePrev()
+      this.carousel.activePrev()
     }
   }
 
@@ -30,13 +30,12 @@ export class BSCarouselControlPrev extends HTMLA{
   }
 
   setCarousel(carousel){
-    console.log(carousel)
-    this.carouselId = carousel.getCarouselId()
+    this.carousel = carousel
     return this
   }
 
   configSelf(){
-    this.setAttribute('href', "#" + this.carouselId)
+    this.setAttribute('href', "#" + this.carousel.getCarouselId())
     this.setAttribute('role', "button")
     this.setAttribute('data-slide', "prev")
     this.setInnerHTML(`<span class="carousel-control-prev-icon" aria-hidden="true"></span>

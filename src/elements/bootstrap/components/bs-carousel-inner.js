@@ -30,6 +30,7 @@ export class BSCarouselInner extends HTMLDiv{
       if(this.children[index].view){
         if(i === index){
           this.children[index].view.$dom.classList.add('active')
+          this.children[index].changeToState('focusState')
         }
         else{
           this.children[index].view.$dom.classList.remove('active')

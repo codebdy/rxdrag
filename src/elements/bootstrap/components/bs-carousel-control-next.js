@@ -18,7 +18,7 @@ export class BSCarouselControlNext extends HTMLA{
     this.setEditPadding('')
     this.onclick = (event)=>{
       //event.stopPropagation()
-      carousel.activeNext()
+      this.carousel.activeNext()
     }
   }
 
@@ -27,12 +27,12 @@ export class BSCarouselControlNext extends HTMLA{
   }
 
   setCarousel(carousel){
-    this.carouselId = carousel.getCarouselId()
+    this.carousel = carousel
     return this
   }
 
   configSelf(){
-    this.setAttribute('href', "#" + this.carouselId)
+    this.setAttribute('href', "#" + this.carousel.getCarouselId())
     this.setAttribute('role', "button")
     this.setAttribute('data-slide', "next")
     this.setInnerHTML(`<span class="carousel-control-next-icon" aria-hidden="true"></span>

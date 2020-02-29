@@ -18,6 +18,12 @@ export class BSCarouselItem extends HTMLDiv{
 
     this.label = "carousel item"
     this.addClass('carousel-item')
+    this.duplicate = ()=>{
+      this.changeToState('normalState')
+      rxEditor.commandManager.duplicate(this)
+      this.setImage('images/carousel-new.jpg')
+      rxEditor.render()
+    }
   }
 
   make(){

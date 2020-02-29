@@ -73,6 +73,13 @@ export class BSCarousel extends HTMLDiv{
     return 'carousel-' + this.id
   }
 
+  render(){
+    this.indicators.setIndicators()
+    super.render()
+    this.doActive()
+    console.log('render')
+  }
+
   activeItem(i){
     this.activeIndex = i
     this.doActive()
