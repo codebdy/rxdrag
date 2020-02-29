@@ -1,5 +1,8 @@
 import {HTMLDiv} from "../../html/html-div"
 
+import {BSCardTitle} from "./bs-card-title"
+import {BSCardText} from "./bs-card-text"
+
 export class BSCardBody extends HTMLDiv{
   constructor() {
     super()
@@ -23,4 +26,8 @@ export class BSCardBody extends HTMLDiv{
     return new BSCardBody
   }
 
+  configSelf(){
+    this.pushChild(new BSCardTitle().loadConfig())
+    this.pushChild(new BSCardText().loadConfig())
+  }
 }
