@@ -10,9 +10,9 @@ export class BSCarouselIndicators extends HTMLOl{
     this.className = 'BSCarouselIndicators'
 
     //this.editMarginStyle.padding = '20px;'
-    this.editMarginStyle.padding = '10px'
+    //this.editMarginStyle.padding = ''
 
-    this.acceptedChildren= ''/*[
+    this.acceptedChildren= []/*[
       'BSCarouselIndicatorsIndicators', 
       'BSCarouselIndicatorsInner', 
       'BSCarouselIndicatorsControlPrev',
@@ -29,23 +29,22 @@ export class BSCarouselIndicators extends HTMLOl{
     return new BSCarouselIndicators
   }
 
-  setCarouselId(carouselId){
-    this.carouselId = carouselId
+  setCarousel(carousel){
+    this.carousel = carousel
     return this
   }
 
-  addIndicator(index, active){
-    this.pushChild(
-      new HTMLLi()
-      .setAttribute('data-target', "#" + this.carouselId)
-      .setAttribute('data-slide-to', index)
-      .setEditPadding('')
-      .addClass(active)
-    )
-  }
-
-  configSelf(){
-
+  metaToModel(model){
+    let innerHTML = ''
+    for(var i = 0; i < this.carousel.getItemsCount(); i++){
+      innerHTML = innerHTML 
+                + `<li data-target="#${this.carousel.getCarouselId()}" 
+                    data-slide-to="${i}" 
+                    ${this.carousel.activeIndex === i ? 'class="active"' : ''}>
+                   </li>`
+    }
+    this.setInnerHTML(innerHTML)
   }
 
 }
+

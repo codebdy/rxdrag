@@ -1,5 +1,7 @@
 import {HTMLDiv} from "../../html/html-div"
 
+import {HTMLH} from "../../html/html-h"
+import {HTMLP} from "../../html/html-p"
 //import {BSTextarea} from "./bs-textarea"
 
 export class BSCarouselCaption extends HTMLDiv{
@@ -25,7 +27,12 @@ export class BSCarouselCaption extends HTMLDiv{
   }
 
   configSelf(){
-
+    this.pushChild(
+      new HTMLH().setTag('h5').setInnerHTML('Captions Text')
+    )
+    this.pushChild(
+      new HTMLP().setInnerHTML('Nulla vitae elit libero, a pharetra augue mollis interdum.')
+    )
   }
 
 }

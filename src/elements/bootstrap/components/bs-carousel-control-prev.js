@@ -33,8 +33,10 @@ export class BSCarouselControlPrev extends HTMLA{
   configSelf(){
     this.setAttribute('href', "#" + this.carouselId)
     this.setAttribute('role', "button")
-    this.setAttribute('data-slide', "next")
-    this.pushChild(
+    this.setAttribute('data-slide', "prev")
+    this.setInnerHTML(`<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Prev</span>`)
+    /*this.pushChild(
       new HTMLSpan()
       .addClass('carousel-control-prev-icon')
       .setAttribute('aria-hidden', true)
@@ -46,7 +48,7 @@ export class BSCarouselControlPrev extends HTMLA{
       .addClass('sr-only')
       .setInnerHTML('Previous')
       .setEditPadding('')
-    )
+    )*/
   }
 
 }

@@ -28,34 +28,19 @@ export class BSCarouselInner extends HTMLDiv{
   configSelf(){
     this.pushChild(
       new BSCarouselItem()
-      .loadConfig()
-      .pushChild(
-        new HTMLImg()
-        .setAttribute('src', 'images/carousel1.jpg')
-        .addClass('d-block')
-        .addClass('w-100')
-      )
+      .setImage('images/carousel1.jpg')
       .addClass('active')
+      .loadConfig()
     )
     this.pushChild(
       new BSCarouselItem()
+      .setImage('images/carousel2.jpg')
       .loadConfig()
-      .pushChild(
-        new HTMLImg()
-        .setAttribute('src', 'images/carousel2.jpg')
-        .addClass('d-block')
-        .addClass('w-100')
-      )
     )
     this.pushChild(
       new BSCarouselItem()
+      .setImage('images/carousel3.jpg')
       .loadConfig()
-      .pushChild(
-        new HTMLImg()
-        .setAttribute('src', 'images/carousel3.jpg')
-        .addClass('d-block')
-        .addClass('w-100')
-      )
     )
   }
 

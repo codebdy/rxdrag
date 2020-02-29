@@ -30,8 +30,10 @@ export class BSCarouselControlNext extends HTMLA{
   configSelf(){
     this.setAttribute('href', "#" + this.carouselId)
     this.setAttribute('role', "button")
-    this.setAttribute('data-slide', "prev")
-    this.pushChild(
+    this.setAttribute('data-slide', "next")
+    this.setInnerHTML(`<span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>`)
+    /*this.pushChild(
       new HTMLSpan()
       .addClass('carousel-control-next-icon')
       .setAttribute('aria-hidden', true)
@@ -43,7 +45,7 @@ export class BSCarouselControlNext extends HTMLA{
       .addClass('sr-only')
       .setInnerHTML('Next')
       .setEditPadding('')
-    )
+    )*/
   }
 
 }

@@ -32,7 +32,7 @@ import {BSCardText} from "./components/bs-card-text"
 import {BSCardLink} from "./components/bs-card-link"
 
 import {BSCarousel} from "./components/bs-carousel"
-import {BSCarouselItem} from "./components/bs-carousel-item"
+import {BSCarouselCaption} from "./components/bs-carousel-caption"
 
 export default {
   container : new BSContainer(),
@@ -66,5 +66,5 @@ export default {
   cardLink : new BSCardLink,
 
   carousel : new BSCarousel,
-  carouselItem :  new BSCarouselItem,
+  carouselCaption :  new BSCarouselCaption,
 }

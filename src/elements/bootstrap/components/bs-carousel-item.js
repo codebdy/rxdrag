@@ -1,6 +1,6 @@
 import {HTMLDiv} from "../../html/html-div"
 
-//import {BSTextarea} from "./bs-textarea"
+import {BSCarouselCaption} from "./bs-carousel-caption"
 
 export class BSCarouselItem extends HTMLDiv{
   constructor() {
@@ -10,7 +10,7 @@ export class BSCarouselItem extends HTMLDiv{
     this.toolboxInfo.elementName = "Carousel Item"
     this.className = 'BSCarouselItem'
 
-    this.editMarginStyle.padding = '10px'
+    this.editMarginStyle.padding = ''
 
     this.acceptedChildren= ''
     this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
@@ -24,8 +24,22 @@ export class BSCarouselItem extends HTMLDiv{
     return new BSCarouselItem
   }
 
-  configSelf(){
+  metaToModel(model){
+    model.innerHTML = `
+      <img src="${this.getField('imgSrc')}" 
+      class="d-block w-100" alt="${this.getField('imgAlt')}">
+    `
+  }
 
+  setImage(imgSrc){
+    this.setField('imgSrc', imgSrc)
+    return this
+  }
+
+  configSelf(){
+    this.pushChild(
+      new BSCarouselCaption().loadConfig()
+    )
   }
 
 }

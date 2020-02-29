@@ -221,6 +221,14 @@ export class RXElement extends Node{
     return this
   }
 
+  getField(fieldName){
+    return this.meta[fieldName]
+  }
+
+  setTag(tag){
+    return this.setField('tag', tag)
+  }
+
   addClass(className){
     this.meta.classList.push(className)
     return this
