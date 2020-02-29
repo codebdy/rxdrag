@@ -22,7 +22,6 @@ export class BSFormGroup extends HTMLDiv{
     this.addClass('form-group')
   }
 
- 
   make(){
     return new BSFormGroup
   }

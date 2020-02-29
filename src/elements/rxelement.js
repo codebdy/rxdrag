@@ -172,6 +172,13 @@ export class RXElement extends Node{
       model.styles.padding = this.editMarginStyle.padding
     }
 
+    //添加for后，编辑时无法选中
+    if(model.attributes.for){
+      model.attributes.for = ''
+    }
+
+    return model
+
     return model
   }
 
