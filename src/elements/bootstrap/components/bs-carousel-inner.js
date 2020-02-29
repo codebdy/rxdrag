@@ -25,6 +25,18 @@ export class BSCarouselInner extends HTMLDiv{
     return new BSCarouselInner
   }
 
+  activeItem(i){
+    for(var index = 0; index < this.children.length; index ++){
+      if(this.children[index].view){
+        if(i === index){
+          this.children[index].view.$dom.classList.add('active')
+        }
+        else{
+          this.children[index].view.$dom.classList.remove('active')
+        }
+      }
+    }
+  }
   configSelf(){
     this.pushChild(
       new BSCarouselItem()

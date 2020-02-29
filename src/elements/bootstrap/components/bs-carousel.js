@@ -6,6 +6,8 @@ import {BSCarouselControlPrev} from "./bs-carousel-control-prev"
 import {BSCarouselControlNext} from "./bs-carousel-control-next"
 
 import fadeSchema from "../../schemas/components/carousel/fade"
+import controlsSchema from "../../schemas/components/carousel/controls"
+import indicatorsSchema from "../../schemas/components/carousel/indicators"
 
 export class BSCarousel extends HTMLDiv{
   constructor() {
@@ -18,12 +20,7 @@ export class BSCarousel extends HTMLDiv{
     //this.editMarginStyle.padding = '20px;'
     this.setEditPadding('10px')
 
-    this.acceptedChildren= ''/*[
-      'BSCarouselIndicators', 
-      'BSCarouselInner', 
-      'BSCarouselControlPrev',
-      'BSCarouselControlNext',
-    ]*/
+    this.acceptedChildren= []
     this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
@@ -38,6 +35,13 @@ export class BSCarousel extends HTMLDiv{
     this.setAttribute('data-ride', 'carousel')
     this.addSchema(fadeSchema, 'carouselOptions')
 
+    this.setField('showControls', true)
+    this.addSchema(controlsSchema, 'carouselOptions')
+
+    this.setField('showIndicators', true)
+    this.addSchema(indicatorsSchema, 'carouselOptions')
+    this.setAttribute('id', this.getCarouselId())
+
     this.indicators = new BSCarouselIndicators()
     this.inner = new BSCarouselInner()
     this.prev = new BSCarouselControlPrev()
@@ -49,8 +53,50 @@ export class BSCarousel extends HTMLDiv{
     return new BSCarousel
   }
 
+  nodeChanged(node){
+    super.nodeChanged(node)
+    if(node.id === this.id){
+      this.children.length = 0;
+      if(this.getField('showIndicators')){
+        this.indicators.setIndicators()
+        this.pushChild(this.indicators)
+      }
+      this.pushChild(this.inner)
+      if(this.getField('showControls')){
+        this.pushChild(this.prev)
+        this.pushChild(this.next)
+      }
+    }
+  }
+
   getCarouselId(){
     return 'carousel-' + this.id
+  }
+
+  activeItem(i){
+    this.activeIndex = i
+    this.doActive()
+  }
+
+  activePrev(){
+    this.activeIndex --
+    if(this.activeIndex < 0){
+      this.activeIndex = this.getItemsCount() - 1
+    }
+    this.doActive()
+  }
+
+  activeNext(){
+    this.activeIndex ++
+    if(this.activeIndex >= this.getItemsCount()){
+      this.activeIndex = 0
+    }
+    this.doActive()
+  }
+
+  doActive(){
+    this.indicators.activeItem(this.activeIndex)
+    this.inner.activeItem(this.activeIndex)
   }
 
   getItemsCount(){
@@ -58,8 +104,6 @@ export class BSCarousel extends HTMLDiv{
   }
 
   configSelf(){
-    let carouselId = this.getCarouselId()
-    this.setAttribute('id', carouselId)
     let indicators = this.indicators
     indicators.setCarousel(this)
     //indicators.addIndicator('0', 'active')
@@ -67,8 +111,18 @@ export class BSCarousel extends HTMLDiv{
     //indicators.addIndicator('2')
     this.pushChild(indicators)
     this.pushChild(this.inner.loadConfig())
-    this.pushChild(this.prev.setCarouselId(carouselId).loadConfig())
-    this.pushChild(this.next.setCarouselId(carouselId).loadConfig())
+    indicators.setIndicators()
+    this.pushChild(this.prev.setCarousel(this).loadConfig())
+    this.pushChild(this.next.setCarousel(this).loadConfig())
   }
 
+  clone(){
+    let copy = this.make()
+    copy.indicators = this.indicators.clone().setCarousel(copy)
+    copy.inner = this.inner.clone()
+    copy.prev.setCarousel(copy).loadConfig()
+    copy.next.setCarousel(copy).loadConfig()
+    copy.nodeChanged(copy)
+    return copy
+  }
 }

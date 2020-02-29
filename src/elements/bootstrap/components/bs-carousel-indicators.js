@@ -1,5 +1,6 @@
 import {HTMLOl} from "../../html/html-ol"
 import {HTMLLi} from "../../html/html-li"
+import {BSCarouselIndicator} from "./bs-carousel-indicator"
 
 export class BSCarouselIndicators extends HTMLOl{
   constructor() {
@@ -8,16 +9,9 @@ export class BSCarouselIndicators extends HTMLOl{
     this.toolboxInfo.elementId = 'bsCarouselIndicators'
     this.toolboxInfo.elementName = "Carousel Indicators"
     this.className = 'BSCarouselIndicators'
+    this.editMarginStyle.padding = ''
 
-    //this.editMarginStyle.padding = '20px;'
-    //this.editMarginStyle.padding = ''
-
-    this.acceptedChildren= []/*[
-      'BSCarouselIndicatorsIndicators', 
-      'BSCarouselIndicatorsInner', 
-      'BSCarouselIndicatorsControlPrev',
-      'BSCarouselIndicatorsControlNext',
-    ]*/
+    this.acceptedChildren= []
     this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
@@ -29,21 +23,39 @@ export class BSCarouselIndicators extends HTMLOl{
     return new BSCarouselIndicators
   }
 
+  activeItem(i){
+    for(var index = 0; index < this.children.length; index ++){
+      if(this.children[index].view){
+        if(i === index){
+          this.children[index].view.$dom.classList.add('active')
+        }
+        else{
+          this.children[index].view.$dom.classList.remove('active')
+        }
+      }
+    }
+  }
+
   setCarousel(carousel){
     this.carousel = carousel
     return this
   }
 
-  metaToModel(model){
-    let innerHTML = ''
+  setIndicators(){
+    this.children.length = 0
     for(var i = 0; i < this.carousel.getItemsCount(); i++){
-      innerHTML = innerHTML 
-                + `<li data-target="#${this.carousel.getCarouselId()}" 
-                    data-slide-to="${i}" 
-                    ${this.carousel.activeIndex === i ? 'class="active"' : ''}>
-                   </li>`
+      this.pushChild(
+        new BSCarouselIndicator(this.carousel, i, i === this.carousel.activeIndex)
+      )
     }
-    this.setInnerHTML(innerHTML)
+  }
+
+  clone(){
+    let copy = this.make()
+    copy.toolboxInfo = JSON.parse(JSON.stringify(this.toolboxInfo))
+    copy.meta = JSON.parse(JSON.stringify(this.meta))
+    copy.setCarousel(this.carousel)
+    return copy
   }
 
 }

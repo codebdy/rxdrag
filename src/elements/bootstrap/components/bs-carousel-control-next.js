@@ -4,7 +4,7 @@ import {HTMLSpan} from "../../html/html-span"
 //import {BSTextarea} from "./bs-textarea"
 
 export class BSCarouselControlNext extends HTMLA{
-  constructor() {
+  constructor(carousel) {
     super()
     this.toolboxInfo.groupId = 'groupComponents'
     this.toolboxInfo.elementId = 'bsCarouselControlNext'
@@ -16,14 +16,18 @@ export class BSCarouselControlNext extends HTMLA{
     this.label = "next"
     this.addClass('carousel-control-next')
     this.setEditPadding('')
+    this.onclick = (event)=>{
+      //event.stopPropagation()
+      carousel.activeNext()
+    }
   }
 
   make(){
     return new BSCarouselControlNext
   }
 
-  setCarouselId(carouselId){
-    this.carouselId = carouselId
+  setCarousel(carousel){
+    this.carouselId = carousel.getCarouselId()
     return this
   }
 
@@ -33,19 +37,6 @@ export class BSCarouselControlNext extends HTMLA{
     this.setAttribute('data-slide', "next")
     this.setInnerHTML(`<span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>`)
-    /*this.pushChild(
-      new HTMLSpan()
-      .addClass('carousel-control-next-icon')
-      .setAttribute('aria-hidden', true)
-      .setInnerHTML('')
-      .setEditPadding('')
-    )
-    this.pushChild(
-      new HTMLSpan()
-      .addClass('sr-only')
-      .setInnerHTML('Next')
-      .setEditPadding('')
-    )*/
   }
 
 }

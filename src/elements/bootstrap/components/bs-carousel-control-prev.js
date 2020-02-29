@@ -19,14 +19,19 @@ export class BSCarouselControlPrev extends HTMLA{
     this.label = "prev"
     this.addClass('carousel-control-prev')
     this.setEditPadding('')
+    this.onclick = (event)=>{
+      //event.stopPropagation()
+      carousel.activePrev()
+    }
   }
 
   make(){
     return new BSCarouselControlPrev
   }
 
-  setCarouselId(carouselId){
-    this.carouselId = carouselId
+  setCarousel(carousel){
+    console.log(carousel)
+    this.carouselId = carousel.getCarouselId()
     return this
   }
 
@@ -36,19 +41,6 @@ export class BSCarouselControlPrev extends HTMLA{
     this.setAttribute('data-slide', "prev")
     this.setInnerHTML(`<span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Prev</span>`)
-    /*this.pushChild(
-      new HTMLSpan()
-      .addClass('carousel-control-prev-icon')
-      .setAttribute('aria-hidden', true)
-      .setInnerHTML('')
-      .setEditPadding('')
-    )
-    this.pushChild(
-      new HTMLSpan()
-      .addClass('sr-only')
-      .setInnerHTML('Previous')
-      .setEditPadding('')
-    )*/
   }
 
 }
