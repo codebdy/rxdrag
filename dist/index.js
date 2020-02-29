@@ -1503,7 +1503,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"BSCarouselItem\", function() { return BSCarouselItem; });\n/* harmony import */ var _html_html_div__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../html/html-div */ \"./src/elements/html/html-div.js\");\n/* harmony import */ var _bs_carousel_caption__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bs-carousel-caption */ \"./src/elements/bootstrap/components/bs-carousel-caption.js\");\n\r\n\r\n\r\n\r\nclass BSCarouselItem extends _html_html_div__WEBPACK_IMPORTED_MODULE_0__[\"HTMLDiv\"]{\r\n  constructor() {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupComponents'\r\n    this.toolboxInfo.elementId = 'bsCarouselItem'\r\n    this.toolboxInfo.elementName = \"Carousel Item\"\r\n    this.className = 'BSCarouselItem'\r\n\r\n    this.editMarginStyle.padding = ''\r\n\r\n    this.acceptedChildren= ''\r\n    this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', \r\n                           'HTMLTh', 'HTMLTr', 'HTMLTd']\r\n\r\n    this.label = \"carousel item\"\r\n    this.addClass('carousel-item')\r\n    this.duplicate = ()=>{\r\n      this.changeToState('normalState')\r\n      rxEditor.commandManager.duplicate(this)\r\n      this.setImage('images/carousel-new.jpg')\r\n      rxEditor.render()\r\n    }\r\n  }\r\n\r\n  make(){\r\n    return new BSCarouselItem\r\n  }\r\n\r\n  metaToModel(model){\r\n    model.innerHTML = `\r\n      <img src=\"${this.getField('imgSrc')}\" \r\n      class=\"d-block w-100\" alt=\"${this.getField('imgAlt')}\">\r\n    `\r\n  }\r\n\r\n  setImage(imgSrc){\r\n    this.setField('imgSrc', imgSrc)\r\n    return this\r\n  }\r\n\r\n  configSelf(){\r\n    this.pushChild(\r\n      new _bs_carousel_caption__WEBPACK_IMPORTED_MODULE_1__[\"BSCarouselCaption\"]().loadConfig()\r\n    )\r\n  }\r\n\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/bootstrap/components/bs-carousel-item.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"BSCarouselItem\", function() { return BSCarouselItem; });\n/* harmony import */ var _html_html_div__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../html/html-div */ \"./src/elements/html/html-div.js\");\n/* harmony import */ var _bs_carousel_caption__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bs-carousel-caption */ \"./src/elements/bootstrap/components/bs-carousel-caption.js\");\n/* harmony import */ var _schemas_components_carousel_src__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../schemas/components/carousel/src */ \"./src/elements/schemas/components/carousel/src.js\");\n/* harmony import */ var _schemas_components_carousel_alt__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../schemas/components/carousel/alt */ \"./src/elements/schemas/components/carousel/alt.js\");\n\r\n\r\n\r\n\r\n\r\n\r\nclass BSCarouselItem extends _html_html_div__WEBPACK_IMPORTED_MODULE_0__[\"HTMLDiv\"]{\r\n  constructor() {\r\n    super()\r\n    this.toolboxInfo.groupId = 'groupComponents'\r\n    this.toolboxInfo.elementId = 'bsCarouselItem'\r\n    this.toolboxInfo.elementName = \"Carousel Item\"\r\n    this.className = 'BSCarouselItem'\r\n\r\n    this.editMarginStyle.padding = ''\r\n\r\n    this.acceptedChildren= ''\r\n    this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', \r\n                           'HTMLTh', 'HTMLTr', 'HTMLTd']\r\n\r\n    this.label = \"carousel item\"\r\n    this.addClass('carousel-item')\r\n\r\n    this.unshiftGroup({\r\n      id:'slideOptions',\r\n      label:'Slide Options',\r\n    })\r\n\r\n    this.addSchema(_schemas_components_carousel_src__WEBPACK_IMPORTED_MODULE_2__[\"default\"], 'slideOptions')\r\n    this.addSchema(_schemas_components_carousel_alt__WEBPACK_IMPORTED_MODULE_3__[\"default\"], 'slideOptions')\r\n\r\n    this.duplicate = ()=>{\r\n      this.changeToState('normalState')\r\n      rxEditor.commandManager.duplicate(this)\r\n      this.setImage('images/carousel-new.jpg')\r\n      rxEditor.render()\r\n    }\r\n  }\r\n\r\n  make(){\r\n    return new BSCarouselItem\r\n  }\r\n\r\n  metaToModel(model){\r\n    model.innerHTML = `\r\n      <img src=\"${this.getField('imgSrc')}\" \r\n      class=\"d-block w-100\" alt=\"${this.getField('imgAlt')}\">\r\n    `\r\n  }\r\n\r\n  setImage(imgSrc){\r\n    this.setField('imgSrc', imgSrc)\r\n    return this\r\n  }\r\n\r\n  configSelf(){\r\n    this.pushChild(\r\n      new _bs_carousel_caption__WEBPACK_IMPORTED_MODULE_1__[\"BSCarouselCaption\"]().loadConfig()\r\n    )\r\n  }\r\n\r\n}\r\n\n\n//# sourceURL=webpack:///./src/elements/bootstrap/components/bs-carousel-item.js?");
 
 /***/ }),
 
@@ -2491,6 +2491,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 
 /***/ }),
 
+/***/ "./src/elements/schemas/components/carousel/alt.js":
+/*!*********************************************************!*\
+  !*** ./src/elements/schemas/components/carousel/alt.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  fieldName:'imgAlt',\r\n  label:'Image Alt',\r\n  widget:'OpTextField',\r\n  defaultValue:'',\r\n});\r\n\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/components/carousel/alt.js?");
+
+/***/ }),
+
 /***/ "./src/elements/schemas/components/carousel/controls.js":
 /*!**************************************************************!*\
   !*** ./src/elements/schemas/components/carousel/controls.js ***!
@@ -2524,6 +2536,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  fieldName:'showIndicators',\r\n  label:'Indicators',\r\n  widget:'OpSwitch',\r\n  onValue:true,\r\n  offValue:false,\r\n  defaultValue:true,\r\n});\n\n//# sourceURL=webpack:///./src/elements/schemas/components/carousel/indicators.js?");
+
+/***/ }),
+
+/***/ "./src/elements/schemas/components/carousel/src.js":
+/*!*********************************************************!*\
+  !*** ./src/elements/schemas/components/carousel/src.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n  fieldName:'imgSrc',\r\n  label:'Image Src',\r\n  widget:'OpTextField',\r\n  defaultValue:'',\r\n});\r\n\r\n\n\n//# sourceURL=webpack:///./src/elements/schemas/components/carousel/src.js?");
 
 /***/ }),
 

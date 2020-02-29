@@ -1,6 +1,8 @@
 import {HTMLDiv} from "../../html/html-div"
 
 import {BSCarouselCaption} from "./bs-carousel-caption"
+import srcSchema from "../../schemas/components/carousel/src"
+import altSchema from "../../schemas/components/carousel/alt"
 
 export class BSCarouselItem extends HTMLDiv{
   constructor() {
@@ -18,6 +20,15 @@ export class BSCarouselItem extends HTMLDiv{
 
     this.label = "carousel item"
     this.addClass('carousel-item')
+
+    this.unshiftGroup({
+      id:'slideOptions',
+      label:'Slide Options',
+    })
+
+    this.addSchema(srcSchema, 'slideOptions')
+    this.addSchema(altSchema, 'slideOptions')
+
     this.duplicate = ()=>{
       this.changeToState('normalState')
       rxEditor.commandManager.duplicate(this)
