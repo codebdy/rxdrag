@@ -34,9 +34,6 @@ export class BSNavbar extends HTMLNav{
     this.addSchema(expandSchema, 'navbarOptions')
     this.addClass('navbar-expand-lg')
     this.addClass('navbar-light')
-    this.brand = new BSNavbarBrand
-    this.collapse = new BSNavbarCollapse()
-    this.toggler = new BSNavbarToggler()
     this.forbidDuplicate = true
   }
 
@@ -45,21 +42,21 @@ export class BSNavbar extends HTMLNav{
   }
 
   configSelf(){
-    this.pushChild(this.brand)
+    this.pushChild(new BSNavbarBrand)
     this.pushChild( 
-      this.toggler
+      new BSNavbarToggler()
       .setCollapseId('collapse-' + this.id)
       .loadConfig()
     )
     this.pushChild(
-      this.collapse
+      new BSNavbarCollapse()
           .setCollapseId('collapse-' + this.id)
           .loadConfig()
     )
     return this
   }
 
-  clone(){
+  /*clone(){
     let copy = this.make()
     copy.brand = this.brand.clone()
     copy.collapse = this.collapse.clone()
@@ -68,6 +65,6 @@ export class BSNavbar extends HTMLNav{
     this.pushChild(copy.toggler)
     this.pushChild(copy.collapse)
     return copy
-  }
+  }*/
 
 }
