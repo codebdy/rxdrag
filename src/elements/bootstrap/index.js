@@ -41,6 +41,9 @@ import {BSDropdown} from  "./components/bs-dropdown"
 
 import {BSJumbotron} from  "./components/bs-jumbotron"
 
+import {BSListGroup} from "./components/bs-list-group"
+import {BSListGroupItem} from "./components/bs-list-group-item"
+
 export default {
   container : new BSContainer(),
   row : new BSRow(),
@@ -79,5 +82,6 @@ export default {
 
   jumbotron : new BSJumbotron,
 
-  //accordion : new BSAccordion,
+  listGroup : new BSListGroup,
+  listGroupItem : new BSListGroupItem,
 }
