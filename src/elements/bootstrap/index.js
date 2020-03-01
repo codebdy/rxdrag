@@ -44,6 +44,10 @@ import {BSJumbotron} from  "./components/bs-jumbotron"
 import {BSListGroup} from "./components/bs-list-group"
 import {BSListGroupItem} from "./components/bs-list-group-item"
 
+import {BSNav} from "./components/bs-nav"
+import {BSNavItem} from "./components/bs-nav-item"
+import {BSNavLink} from "./components/bs-nav-link"
+
 export default {
   container : new BSContainer(),
   row : new BSRow(),
@@ -84,4 +88,7 @@ export default {
 
   listGroup : new BSListGroup,
   listGroupItem : new BSListGroupItem,
+  nav : new BSNav,
+  navItem : new BSNavItem,
+  navLink : new BSNavLink,
 }
