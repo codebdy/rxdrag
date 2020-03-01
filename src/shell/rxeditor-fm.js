@@ -23,7 +23,7 @@ export class RXEditorFM{
     this.state = new EditorState
     this.canvasState = new CanvasState
     this.itemRxNameIds = []
-    this.currentTheme = themes.agency
+    this.currentTheme = themes.base
   }
 
   assemble(rxNameId){

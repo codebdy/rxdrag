@@ -51,11 +51,6 @@ export class Workspace extends RXComponent{
               creatEditorCore()
               rxEditor.hangOn('canvas', new RXEditorCommandProxy);
             </script>
-            <script>
-            $(function () { 
-              $("[data-toggle='popover']").popover();
-            });
-            </script>
           </body>
         </html>
       `
