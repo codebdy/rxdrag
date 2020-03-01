@@ -48,6 +48,8 @@ import {BSNavbar} from "./components/bs-navbar"
 import {BSNavbarBrand} from "./components/bs-navbar-brand"
 import {BSNavbarToggler} from "./components/bs-navbar-toggler"
 
+import {BSPaginationNav} from "./components/bs-pagination-nav"
+
 export default {
   container : new BSContainer(),
   row : new BSRow(),
@@ -92,4 +94,6 @@ export default {
   navbar : new BSNavbar(),
   navbarBrand : new BSNavbarBrand(),
   navbarToggler : new BSNavbarToggler(),
+
+  paginationNav : new BSPaginationNav(),
 }

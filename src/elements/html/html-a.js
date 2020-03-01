@@ -12,12 +12,6 @@ export class HTMLA extends RXElement{
     this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
                            'HTMLTh', 'HTMLTr', 'HTMLTd']
 
-
-    this.unshiftGroup({
-      id:'aOptions',
-      label:'Link Options',
-    })
-
     this.meta.tag = 'a'
     this.label = "a"
     //this.meta.innerHTML = "Sample Link "
