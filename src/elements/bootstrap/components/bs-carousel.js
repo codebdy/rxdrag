@@ -47,6 +47,7 @@ export class BSCarousel extends HTMLDiv{
     this.prev = new BSCarouselControlPrev()
     this.next = new BSCarouselControlNext()
     this.activeIndex = 0
+    this.forbidDuplicate = true
   }
 
   make(){

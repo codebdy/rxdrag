@@ -37,6 +37,7 @@ export class BSNavbar extends HTMLNav{
     this.brand = new BSNavbarBrand
     this.collapse = new BSNavbarCollapse()
     this.toggler = new BSNavbarToggler()
+    this.forbidDuplicate = true
   }
 
   make(){

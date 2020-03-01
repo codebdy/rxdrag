@@ -16,6 +16,12 @@ export class NodeToolbar extends RXComponent{
     this.cssClass('node-toolbar')
     this.hide()
 
+    this.duplicateBtn = new ToolbarButton('Duplicate', 'fa-copy', 'click', ()=>{
+      if(rxEditor.focusedNode){
+        rxEditor.focusedNode.duplicate(event)
+      }
+    })
+
     this.pushChild(new ToolbarButton('Focus Parent', 'fa-arrow-up', 'click' , ()=>{
       if(rxEditor.focusedNode){
         rxEditor.focusedNode.up(event)
@@ -28,11 +34,7 @@ export class NodeToolbar extends RXComponent{
       })
       .cssStyle('cursor', 'move')
     )
-    this.pushChild(new ToolbarButton('Duplicate', 'fa-copy', 'click', ()=>{
-      if(rxEditor.focusedNode){
-        rxEditor.focusedNode.duplicate(event)
-      }
-    }))
+    this.pushChild(this.duplicateBtn)
     /*this.pushChild(new ToolbarButton('Edit', 'fa-edit', 'click', ()=>{
       if(rxEditor.focusedNode){
         rxEditor.focusedNode.edit(event)
@@ -60,6 +62,12 @@ export class NodeToolbar extends RXComponent{
     this.node = node
     if(!node || !node.view.$dom) return
     this.followElement(node)
+    if(this.node.forbidDuplicate){
+      this.duplicateBtn.hide()
+    }
+    else{
+      this.duplicateBtn.show()
+    }
     return super.show()
   }
 
@@ -67,10 +75,11 @@ export class NodeToolbar extends RXComponent{
     if(!node || !node.view || !node.view.$dom) return
     let domElement = node.view.$dom
     let rect = domElement.getBoundingClientRect()
+    let offsetX = this.node.forbidDuplicate ? 28 : 0
     if(this.$dom){
       let x = (rect.x + rect.width - 99)
       x = x < 0 ? 0 : x
-      this.$dom.style.left = x + 'px'
+      this.$dom.style.left = x + offsetX + 'px'
       if(rect.y < 26){
         this.$dom.style.top = (rect.y + rect.height) + 'px'
       }
