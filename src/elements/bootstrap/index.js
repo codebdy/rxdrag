@@ -39,6 +39,8 @@ import {BSCarouselCaption} from "./components/bs-carousel-caption"
 
 import {BSDropdown} from  "./components/bs-dropdown"
 
+import {BSJumbotron} from  "./components/bs-jumbotron"
+
 export default {
   container : new BSContainer(),
   row : new BSRow(),
@@ -74,6 +76,8 @@ export default {
   carouselCaption :  new BSCarouselCaption,
 
   dropdown : new BSDropdown,
+
+  jumbotron : new BSJumbotron,
 
   //accordion : new BSAccordion,
 }

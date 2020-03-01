@@ -3,6 +3,7 @@ import {HTMLP} from "./html-p"
 import {HTMLSmall} from "./html-small"
 import {HTMLSpan} from "./html-span"
 import {HTMLH} from "./html-h"
+import {HTMLHr} from "./html-hr"
 
 import {HTMLMark} from "./html-mark"
 import {HTMLDel} from "./html-del"
@@ -77,6 +78,7 @@ export default {
   form: new HTMLForm,
   h: new HTMLH,
   header: new HTMLHeader,
+  hr: new HTMLHr,
   input: new HTMLInput,
   ins: new HTMLIns,
   img: new HTMLImg,
