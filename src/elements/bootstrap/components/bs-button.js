@@ -33,15 +33,11 @@ export class BSButton extends RXElement{
     this.addSchema(sizeSchema, 'buttonOptions')
     this.addSchema(activeSchema, 'buttonOptions')
     this.addSchema(disabledSchema, 'buttonOptions')
+    this.setAttribute('type', 'button')
 
   }
 
   make(){
     return new BSButton
-  }
-
-  loadConfig(){
-    //this.pushChild(new HTMLSpan().setInnerHTML('Button'))
-    return this
   }
 }

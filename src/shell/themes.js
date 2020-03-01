@@ -7,6 +7,7 @@ let themes = {
       'style/font-awesome-4.7.0/css/font-awesome.min.css',
     ],
     jsFiles:[
+      'style/bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js',
     ],
   },
   agency : {

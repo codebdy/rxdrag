@@ -45,13 +45,17 @@ export class Workspace extends RXComponent{
           </head>
           <body id="page-top" style="background-color:#FFF;padding:0;width:100%; height:100%;">
             <div id="canvas"></div>
-
+            ${jsLinks}
             <script type="text/javascript" src="${this.config.mainJs}"></script>
             <script>
               creatEditorCore()
               rxEditor.hangOn('canvas', new RXEditorCommandProxy);
             </script>
-            ${jsLinks}
+            <script>
+            $(function () { 
+              $("[data-toggle='popover']").popover();
+            });
+            </script>
           </body>
         </html>
       `

@@ -50,6 +50,9 @@ import {BSNavbarToggler} from "./components/bs-navbar-toggler"
 
 import {BSPaginationNav} from "./components/bs-pagination-nav"
 
+import {BSPopover} from "./components/bs-popover"
+import {BSProgress} from "./components/bs-progress"
+
 export default {
   container : new BSContainer(),
   row : new BSRow(),
@@ -96,4 +99,7 @@ export default {
   navbarToggler : new BSNavbarToggler(),
 
   paginationNav : new BSPaginationNav(),
+  popover : new BSPopover(),
+
+  progress : new BSProgress(),
 }
