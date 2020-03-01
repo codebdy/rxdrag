@@ -12,7 +12,7 @@ export class BSDropdownButton extends BSButton{
 
     this.label = "dropdown button"
 
-    this.addClass('btn-secondary')
+    //this.addClass('btn-secondary')
     this.addClass('dropdown-toggle')
     this.setAttribute('type', 'button')
     this.setAttribute('id', 'dropdown-button-' + this.id)

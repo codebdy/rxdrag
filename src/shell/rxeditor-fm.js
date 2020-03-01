@@ -73,6 +73,7 @@ export class RXEditorFM{
     themeModel.onThemeSelected = (themeName)=>{
       let theme = themes[themeName]
       if(theme !== this.currentTheme){
+        this.drawer.resetState()
         this.currentTheme = theme
         this.workspace.loadTheme(this.currentTheme)
       }

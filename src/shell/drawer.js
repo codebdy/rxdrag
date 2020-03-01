@@ -116,6 +116,11 @@ export class Drawer extends RXComponent{
     this.classBox.cancelEdit()
   }
 
+  resetState(){
+    this.state.activeDrawerTab = 'layout'
+    this.toolbox.state.activedGroup = ''
+  }
+
 }
 
 

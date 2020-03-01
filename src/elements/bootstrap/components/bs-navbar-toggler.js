@@ -33,6 +33,11 @@ export class BSNavbarToggler extends RXElement{
     return new BSNavbarToggler
   }
 
+  setCollapseId(collapseId){
+    this.collapseId = collapseId
+    return this
+  }
+
   loadConfig(){
     this.pushChild( new HTMLSpan()
                     .addClass('navbar-toggler-icon')
@@ -40,6 +45,9 @@ export class BSNavbarToggler extends RXElement{
                     .setInnerHTML('')
                     .setEditPadding('')
                   )
+    this.setAttribute('type','button')
+    this.setAttribute('data-toggle','collapse')
+    this.setAttribute('data-target',"#" + this.collapseId)
     return this
   }
 }

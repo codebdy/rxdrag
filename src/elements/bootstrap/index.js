@@ -14,10 +14,6 @@ import {BSCloseButton} from "./components/bs-close-button"
 import {BSButton} from "./components/bs-button"
 import {BSButtonGroup} from "./components/bs-button-group"
 
-import {BSNavbar} from "./components/bs-navbar"
-import {BSNavbarBrand} from "./components/bs-navbar-brand"
-import {BSNavbarToggler} from "./components/bs-navbar-toggler"
-
 import {BSFormGroup} from "./form/bs-form-group"
 import {BSInputGroup} from "./form/bs-input-group"
 import {BSTextareaGroup} from "./form/bs-textarea-group"
@@ -48,6 +44,10 @@ import {BSNav} from "./components/bs-nav"
 import {BSNavItem} from "./components/bs-nav-item"
 import {BSNavLink} from "./components/bs-nav-link"
 
+import {BSNavbar} from "./components/bs-navbar"
+import {BSNavbarBrand} from "./components/bs-navbar-brand"
+import {BSNavbarToggler} from "./components/bs-navbar-toggler"
+
 export default {
   container : new BSContainer(),
   row : new BSRow(),
@@ -63,9 +63,6 @@ export default {
   breadcrumb : new BSBreadcrumb(),
   button : new BSButton(),
   buttonGroup : new BSButtonGroup(),
-  navbar : new BSNavbar(),
-  navbarBrand : new BSNavbarBrand(),
-  navbarToggler : new BSNavbarToggler(),
   formGroup : new BSFormGroup(),
   inputGroup : new BSInputGroup(),
   textareaGroup : new BSTextareaGroup(),
@@ -91,4 +88,8 @@ export default {
   nav : new BSNav,
   navItem : new BSNavItem,
   navLink : new BSNavLink,
+  
+  navbar : new BSNavbar(),
+  navbarBrand : new BSNavbarBrand(),
+  navbarToggler : new BSNavbarToggler(),
 }

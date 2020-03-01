@@ -1,11 +1,12 @@
 import {HTMLNav} from "../../html/html-nav"
 import {BSNavbarBrand} from "./bs-navbar-brand"
 import {BSNavbarToggler} from "./bs-navbar-toggler"
+import {BSNavbarCollapse} from "./bs-navbar-collapse"
 
  
-import {addonUtilPosition} from "../../schemas/utilities/position"
-import {addonNavbarContextual} from "../../schemas/components/navbar/contextual"
-import {addonNavbarExpand} from "../../schemas/components/navbar/expand"
+//import {addonUtilPosition} from "../../schemas/utilities/position"
+import contextualSchema from "../../schemas/components/navbar/contextual"
+import expandSchema from "../../schemas/components/navbar/expand"
 //import {addonHTMLId} from "../../schemas/general/id"
 
 export class BSNavbar extends HTMLNav{
@@ -29,30 +30,43 @@ export class BSNavbar extends HTMLNav{
 
     this.addClass('navbar')
 
-    /*addonNavbarContextual(this)
-    addonNavbarExpand(this)
-    addonUtilPosition(this, 'navbarOptions')*/
-    //addonHTMLId(this, 'navbarOptions')
+    this.addSchema(contextualSchema, 'navbarOptions')
+    this.addSchema(expandSchema, 'navbarOptions')
+    this.addClass('navbar-expand-lg')
+    this.addClass('navbar-light')
+    this.brand = new BSNavbarBrand
+    this.collapse = new BSNavbarCollapse()
+    this.toggler = new BSNavbarToggler()
   }
 
   make(){
     return new BSNavbar
   }
 
-  metaToModel(model){
-    //model.classList.push(this.meta.baseClass)
-    //model.attributes['aria-label'] = 'breadcrumb'
-  }
-
-  loadConfig(){
-    this.pushChild(new BSNavbarBrand)
+  configSelf(){
+    this.pushChild(this.brand)
     this.pushChild( 
-      new BSNavbarToggler()
+      this.toggler
+      .setCollapseId('collapse-' + this.id)
       .loadConfig()
     )
-    //this.setField('badgeContextual', 'badge-primary')
-    //this.setField('innerHTML', 'badge')
+    this.pushChild(
+      this.collapse
+          .setCollapseId('collapse-' + this.id)
+          .loadConfig()
+    )
     return this
+  }
+
+  clone(){
+    let copy = this.make()
+    copy.brand = this.brand.clone()
+    copy.collapse = this.collapse.clone()
+    copy.toggler = this.toggler.clone()
+    this.pushChild(copy.brand)
+    this.pushChild(copy.toggler)
+    this.pushChild(copy.collapse)
+    return copy
   }
 
 }
