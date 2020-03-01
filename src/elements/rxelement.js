@@ -230,6 +230,9 @@ export class RXElement extends Node{
   }
 
   addClass(className){
+    if(!className){
+      return this
+    }
     this.meta.classList.push(className)
     return this
   }

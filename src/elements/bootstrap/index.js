@@ -34,6 +34,11 @@ import {BSCardLink} from "./components/bs-card-link"
 import {BSCarousel} from "./components/bs-carousel"
 import {BSCarouselCaption} from "./components/bs-carousel-caption"
 
+//暂缓实现
+//import {BSAccordion} from "./components/bs-accordion"
+
+import {BSDropdown} from  "./components/bs-dropdown"
+
 export default {
   container : new BSContainer(),
   row : new BSRow(),
@@ -67,4 +72,8 @@ export default {
 
   carousel : new BSCarousel,
   carouselCaption :  new BSCarouselCaption,
+
+  dropdown : new BSDropdown,
+
+  //accordion : new BSAccordion,
 }
