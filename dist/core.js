@@ -90,10 +90,23 @@
 /*!*********************!*\
   !*** ./src/core.js ***!
   \*********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("\n\n//# sourceURL=webpack:///./src/core.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ruxin_rxeditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ruxin/rxeditor */ \"./src/ruxin/rxeditor.js\");\n\r\n\r\nwindow.rxEditor = new _ruxin_rxeditor__WEBPACK_IMPORTED_MODULE_0__[\"RXEditor\"]\r\n\n\n//# sourceURL=webpack:///./src/core.js?");
+
+/***/ }),
+
+/***/ "./src/ruxin/rxeditor.js":
+/*!*******************************!*\
+  !*** ./src/ruxin/rxeditor.js ***!
+  \*******************************/
+/*! exports provided: RXEditor */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"RXEditor\", function() { return RXEditor; });\nclass RXEditor{\r\n  constructor() {\r\n    this.innerHTML = `\r\n      <div class=\"container\">\r\n        <div class=\"row\">\r\n          <div class=\"column\"> test </div>\r\n          <h2>Heading</h2>\r\n        </div>\r\n      </div>\r\n    `\r\n  }\r\n\r\n  hangOn(id){\r\n    this.workspace = document.getElementById(id)\r\n    this.workspace.innerHTML = this.innerHTML\r\n    //console.log(this.workspace.children)\r\n    this.paraseNode(this.workspace)\r\n    //this.workspace.childNodes.forEach(child=>{\r\n    //  console.log(child)\r\n    //})\r\n  }\r\n\r\n  paraseNode(node){\r\n    for(var i = 0; i < node.children.length; i++){\r\n      let child = node.children[i]\r\n      console.log(child, child.nodeName, child.nodeType)\r\n      this.paraseNode(child)\r\n    }\r\n  }\r\n}\r\n\r\n\n\n//# sourceURL=webpack:///./src/ruxin/rxeditor.js?");
 
 /***/ })
 

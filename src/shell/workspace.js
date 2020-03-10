@@ -49,7 +49,7 @@ export class Workspace extends RXComponent{
             <script type="text/javascript" src="${this.config.mainJs}"></script>
             <script>
               creatEditorCore()
-              rxEditor.hangOn('canvas', new RXEditorCommandProxy);
+              rxEditor.hangOn('canvas');
             </script>
           </body>
         </html>

@@ -6,6 +6,7 @@ import {NodeLabel} from "./node-label"
 import {NodeToolbar} from "./node-toolbar"
 import {MiniEditbar} from "./mini-editbar"
 import {load, loadOneNode} from "./load"
+import {RXEditorCommandProxy} from "./rxeditor-command-proxy"
 
 export class RXEditor{
   constructor() {
@@ -37,7 +38,8 @@ export class RXEditor{
     this.miniEditbar = new MiniEditbar
   }
 
-  hangOn(id, commandProxy){
+  hangOn(id){
+    let commandProxy = new RXEditorCommandProxy
     this.workspace = document.getElementById(id)
     this.activedLabel.render(this.workspace)
     this.focusedLabel.render(this.workspace)
