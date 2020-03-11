@@ -3,6 +3,8 @@
     <div class="theme-item"
       v-for="(theme, i) in themes"
       :key = "i"
+      @click = "click(theme)"
+      :class = "selectedTheme === theme ? 'selected' : ''"
     >
       <img :src="theme.thumbnail" />
       <div class="theme-title">{{theme.title}}</div>
@@ -28,6 +30,7 @@ export default {
   data () {
     return {
       themes:[],
+      selectedTheme:null,
     }
   },
 
@@ -44,6 +47,9 @@ export default {
   },
 
   methods: {
+    click(theme){
+      this.selectedTheme = theme
+    }
   },
 }
 </script>
@@ -59,6 +65,9 @@ export default {
   outline: #75b325 solid 2px;
 }
 
+.theme-item.selected{
+  outline: #75b325 solid 3px;
+}
 
 .theme-item img{
   width: 100%;
@@ -81,6 +90,7 @@ export default {
   flex-wrap: wrap;
   overflow: auto;
   height: 0;
+  align-items: flex-start;
 }
 
 .themes-tab::-webkit-scrollbar {

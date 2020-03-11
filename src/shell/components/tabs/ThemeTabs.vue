@@ -39,6 +39,12 @@ export default {
   flex-flow: column;
 }
 
+.theme-tabs .tab-body{
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  height: 0;
+}
 .theme-tabs .tab-heads{
   height: 30px;
   display: flex;
