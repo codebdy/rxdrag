@@ -33,10 +33,12 @@
 </template>
 
 <script>
+import SimpleAccordion from '../accordion/SimpleAccordion.vue'
 import CollapsibleItem from '../accordion/CollapsibleItem.vue'
 import MouseOverPop from './MouseOverPop.vue'
 export default {
   name: 'ToolboxAccordion',
+  extends: SimpleAccordion,
   components:{
     CollapsibleItem,
     MouseOverPop,
@@ -44,24 +46,6 @@ export default {
   props:{
     groups:{ default:[] }, 
   },
-  data() {
-    return {items: [] }
-  },
   
-  created() {
-    this.items = this.$children
-  },
-
-  methods: {
-    itemClick(clickedItem) {
-      clickedItem.isActive = !clickedItem.isActive
-      this.items.forEach(item => {
-        if(item !== clickedItem){
-          item.isActive = false
-        }
-      })
-    }
-  },
-
 }
 </script>
