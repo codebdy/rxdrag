@@ -1,3 +1,5 @@
-import {RXEditor} from "./ruxin/rxeditor"
+import initEditor from "./shell/init-editor"
 
-window.rxEditor = new RXEditor
+window.creatEditorCore = ()=>{
+  initEditor()
+}

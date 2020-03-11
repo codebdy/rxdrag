@@ -1,0 +1,46 @@
+{
+  "toolbar": {
+    "theme" : "Theme",
+    "new" : "New",
+    "open" : "Open",
+    "save" : "Save",
+    "download" : "Download",
+    "about" : "About",
+    "github" : "Github"
+  },
+
+  "widgets":{
+    "studio" : "Studio",
+    "files" : "Files",
+    "treeview" : "Tree View",
+    "options" : "Options",
+    "code" : "Code",
+    "anmation" : "Anmation",
+    "style" : "Style",
+    "overview" : "Overview",
+    "pages" : "Pages",
+    "styles" : "Styles",
+    "javascript" : "JavaScript",
+    "images" : "Images",
+    "new" : "New",
+    "rename" : "Rename",
+    "delete" : "Delete",
+    "reset":"Reset",
+    "select":"-- Select --",
+    "enter-message":"Press enter finished"
+  },
+  "theme":{
+    "theme-select":"Select A Theme",
+    "cancel" : "Cancel",
+    "select" : "Select",
+    "websites" : "Web sites",
+    "h5pages" : "H5 Single Pages",
+    "forms" : "Forms"
+  },
+  "about":{
+    "about-title":"Abut",
+    "close" : "Close",
+    "content" : "RxEditor UI Demo,Github:"
+  }
+
+}

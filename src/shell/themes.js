@@ -2,13 +2,13 @@
 let themes = {
   base:{
     cssFiles:[
-      'style/bootstrap-4.4.1-dist/css/bootstrap.min.css',
+      'vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css',
       'style/rxeditor.css',
-      'style/font-awesome-4.7.0/css/font-awesome.min.css',
+      'vendor/font-awesome-4.7.0/css/font-awesome.min.css',
     ],
     jsFiles:[
       'dist/jquery.min.js',
-      'style/bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js',
+      'vendor/bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js',
     ],
 
     initialPage:`[{"name":"BSJumbotron","meta":{"tag":"div","classList":["jumbotron","text-center"],"styles":{},"attributes":{}},"children":[{"name":"BSHeading","meta":{"tag":"h2","classList":["display-4"],"styles":{},"attributes":{},"innerHTML":"Hello, world!","generalTextfield":"contentEditable"},"children":[]},{"name":"BSParagraph","meta":{"tag":"p","classList":["lead"],"styles":{},"attributes":{},"innerHTML":"This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.","generalTextfield":"contentEditable"},"children":[]},{"name":"HTMLHr","meta":{"tag":"hr","classList":["my-4"],"styles":{},"attributes":{}},"children":[]},{"name":"BSParagraph","meta":{"tag":"p","classList":[],"styles":{},"attributes":{},"innerHTML":"It uses utility classes for typography and spacing to space content out within the larger container.","generalTextfield":"contentEditable"},"children":[]},{"name":"HTMLA","meta":{"tag":"a","classList":["btn","btn-primary","btn-lg"],"styles":{},"attributes":{"href":"#","role":"button"},"innerHTML":"Learn more"},"children":[]}]}]
@@ -19,7 +19,7 @@ let themes = {
     cssFiles:[
       'themes/agency/vendor/bootstrap/css/bootstrap.min.css',
       'themes/agency/vendor/fontawesome-free/css/all.min.css',
-      'style/font-awesome-4.7.0/css/font-awesome.min.css',
+      'vendor/font-awesome-4.7.0/css/font-awesome.min.css',
       'themes/agency/vendor/google-fonts/fonts.css',
       'themes/agency/css/agency.min.css',
     ],

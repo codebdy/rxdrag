@@ -1,0 +1,26 @@
+{
+  "name": "rxeditor",
+  "version": "0.0.5",
+  "description": "",
+  "license": "ISC",
+  "main": "webpack.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node_modules/.bin/webpack",
+    "watch": "node_modules/.bin/webpack --watch"
+  },
+  "author": "",
+  "keywords": [],
+  "devDependencies": {
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "file-saver": "^2.0.2",
+    "jszip": "^3.2.2"
+  }
+}

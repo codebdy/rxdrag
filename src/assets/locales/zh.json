@@ -1,0 +1,45 @@
+{
+  "toolbar": {
+    "theme" : "主题",
+    "new" : "新建",
+    "open" : "打开",
+    "save" : "保存",
+    "download" : "下载",
+    "about" : "关于",
+    "github" : "Github"
+  },
+
+  "widgets":{
+    "studio" : "组件",
+    "files" : "文件",
+    "treeview" : "节点树",
+    "options" : "属性",
+    "code" : "代码",
+    "anmation" : "动画",
+    "style" : "样式",
+    "overview" : "概览",
+    "pages" : "页面",
+    "styles" : "样式",
+    "javascript" : "脚本",
+    "images" : "图片",
+    "new" : "新建",
+    "rename" : "重命名",
+    "delete" : "删除",
+    "reset":"重置",
+    "select":"-- 选择 --",
+    "enter-message":"按回车结束输入"
+  },
+  "theme":{
+    "theme-select":"选择主题",
+    "cancel" : "取消",
+    "select" : "选择",
+    "websites" : "网站",
+    "h5pages" : "H5单页",
+    "forms" : "表单"
+  },
+  "about":{
+    "about-title":"关于",
+    "close" : "关闭",
+    "content" : "RxEditor 的界面原型，Github:"
+  }
+}

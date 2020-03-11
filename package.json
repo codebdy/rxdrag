@@ -1,26 +1,34 @@
 {
-  "name": "rxeditor",
-  "version": "0.0.5",
-  "description": "",
-  "license": "ISC",
-  "main": "webpack.config.js",
-  "directories": {
-    "test": "test"
-  },
+  "name": "RXEditor",
+  "description": "A visual HTML studio, VUE based.",
+  "version": "0.0.6",
+  "author": "Water.Li",
+  "license": "MIT",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node_modules/.bin/webpack",
-    "watch": "node_modules/.bin/webpack --watch"
-  },
-  "author": "",
-  "keywords": [],
-  "devDependencies": {
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "file-saver": "^2.0.2",
-    "jszip": "^3.2.2"
+    "vue": "^2.5.11",
+    "vue-i18n": "^8.15.4"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.4",
+    "vue-loader": "^13.0.5",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
   }
 }
