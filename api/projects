@@ -1,7 +1,7 @@
 [
   {
     "title":"小灰网",
-    "theme":"api/websites.json",
+    "theme":"api/theme/agency",
     "pages":[
       "about.html",
       "index.html",

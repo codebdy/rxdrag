@@ -1,0 +1,19 @@
+{
+  "htmls":[
+    "about.html",
+    "index.html",
+    "product.html",
+    "post.html"
+  ],
+  "styles":[
+    "bootstrap.css"
+  ],
+  "javascript":[
+    "jquery.js"
+  ],
+  "images":[
+    "test1.jpg",
+    "test2.jpg",
+    "test3.jpg"
+  ]
+}

@@ -2,6 +2,7 @@
   <div class="vular-studio">
     <toolbar
       @changeTheme = "changeTheme"
+      @openProject = "openProject"
     ></toolbar>
     <div class="workspace">
       <LeftArea>
@@ -133,22 +134,28 @@ export default {
     }
   },
 
-  methods:{
-    changeTheme(theme){
-      this.currentTheme = theme
+  watch:{
+    currentTheme(theme){
+      this.showFiles(theme)
     }
   },
 
-  mounted () {
-    this.currentTheme = null
-    this.$axios.get('api/theme/default')
-    .then((res)=>{
-      this.currentTheme = res.data
-    })
-  },
+  methods:{
+    changeTheme(theme){
+      if(!theme.theme){
+        return
+      }
+      this.$axios.get(theme.theme)
+      .then((res)=>{
+        this.currentTheme = res.data
+      })
+    },
 
-  watch:{
-    currentTheme(theme){
+    openProject(porject){
+      this.showFiles(porject)
+    },
+
+    showFiles(proOrTheme){
       this.files.length = 0
       let htmlFiles = {
         title: this.$t('widgets.pages'),
@@ -158,8 +165,8 @@ export default {
         leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
         children: []
       }
-      if(theme.pages){
-        theme.pages.forEach(fileName =>{
+      if(proOrTheme.pages){
+        proOrTheme.pages.forEach(fileName =>{
           htmlFiles.children.push(
             {
               title:fileName,
@@ -182,8 +189,8 @@ export default {
         leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
         children: []
       }
-      if(theme.styles){
-        theme.styles.forEach(fileName =>{
+      if(proOrTheme.styles){
+        proOrTheme.styles.forEach(fileName =>{
           styleFiles.children.push(
             {
               title:fileName,
@@ -205,8 +212,8 @@ export default {
         leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
         children: []
       }
-      if(theme.javascript){
-        theme.javascript.forEach(fileName =>{
+      if(proOrTheme.javascript){
+        proOrTheme.javascript.forEach(fileName =>{
           jsFiles.children.push(
             {
               title:fileName,
@@ -228,8 +235,8 @@ export default {
         leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
         children: []
       }
-      if(theme.images){
-        theme.images.forEach(fileName =>{
+      if(proOrTheme.images){
+        proOrTheme.images.forEach(fileName =>{
           imageFiles.children.push(
             {
               title:fileName,
@@ -243,7 +250,16 @@ export default {
       }
       this.files.push(imageFiles)
     }
-  }
+  },
+
+  mounted () {
+    this.currentTheme = null
+    this.$axios.get('api/theme/default')
+    .then((res)=>{
+      this.currentTheme = res.data
+    })
+  },
+
 }
 </script>
 

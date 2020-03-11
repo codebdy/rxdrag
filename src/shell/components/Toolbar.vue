@@ -44,6 +44,7 @@
     </ThemeSelectDialog>
     <OpenDialog 
       v-model="openDialog"
+      @selectProject = "openProject"
     >
     </OpenDialog>
     <AboutDialog v-model="aboutDialog">
@@ -77,6 +78,9 @@ export default {
 
     changeTheme(theme){
       this.$emit('changeTheme', theme)
+    },
+    openProject(project){
+      this.$emit('openProject', project)
     }
   }
 }
