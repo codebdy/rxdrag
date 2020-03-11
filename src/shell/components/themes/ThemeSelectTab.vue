@@ -18,9 +18,6 @@ import Tab from '../tabs/Tab.vue'
 export default {
   name: 'ThemeSelectTab',
   extends: Tab,
-  components:{
-    //Tab,
-  },
   props: {
     name: { required: true },
     icon:'',
