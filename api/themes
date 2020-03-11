@@ -1,0 +1,16 @@
+[
+  {
+    "label":"网站",
+    "thems":"api/websites.json"
+  },
+
+  {
+    "label":"H5单页",
+    "thems":"api/h5.json"
+  },
+
+  {
+    "label":"表单",
+    "thems":"api/forms.json"
+  }
+]
