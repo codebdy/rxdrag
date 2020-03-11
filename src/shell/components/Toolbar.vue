@@ -34,7 +34,7 @@
         <i class="fas fa-question-circle"></i> 
         {{$t('toolbar.about')}}
       </div>
-      <a class="button github-link" target="_blank" href="https://github.com/vularsoft/studio-ui"><i class="fab fa-github"></i> Github</a>
+      <a class="button github-link" target="_blank" href="https://github.com/vularsoft/rxeditor"><i class="fab fa-github"></i> Github</a>
     </div>
 
     <ThemeSelectDialog 

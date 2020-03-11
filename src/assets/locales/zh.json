@@ -47,6 +47,10 @@
     "open-title":"打开项目",
     "cancel" : "取消",
     "open" : "打开"
+  },
+
+  "toolbox":{
+    "theme" : "主题"
   }
 
 }

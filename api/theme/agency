@@ -15,5 +15,29 @@
     "test1.jpg",
     "test2.jpg",
     "test3.jpg"
+  ],
+
+  "toolboxItems":[
+    {
+      "title":"导航",
+      "thumbnail":"images/navbar.jpg",
+      "code":""
+    },
+    {
+      "title":"页头",
+      "thumbnail":"images/header.jpg",
+      "code":""
+    },
+    {
+      "title":"服务",
+      "thumbnail":"images/services.jpg",
+      "code":""
+    },
+    {
+      "title":"优秀案例",
+      "thumbnail":"images/portfolio.jpg",
+      "code":""
+    }
   ]
+
 }

@@ -88,7 +88,7 @@ import CenterArea from './components/CenterArea.vue'
 import RightArea from './components/RightArea.vue'
 import WidgetTabs from './components/tabs/WidgetTabs.vue'
 import Tab from './components/tabs/Tab.vue'
-import Toolbox from './components/Toolbox.vue'
+import Toolbox from './components/Toolbox/Toolbox.vue'
 import PagesArea from './components/page/PagesArea.vue'
 import NodeTree from './components/tree/NodeTree.vue'
 import RxInputRow from './components/inputs/RxInputRow.vue'
@@ -123,7 +123,7 @@ export default {
   },
   data () {
     return {
-      toolbox:toolbox,
+      toolbox:[],
       files:[],
       nodes:nodes,
       options:options,
@@ -137,6 +137,7 @@ export default {
   watch:{
     currentTheme(theme){
       this.showFiles(theme)
+      this.addThemeToolboxItems(this.currentTheme)
     }
   },
 
@@ -148,6 +149,25 @@ export default {
       this.$axios.get(theme.theme)
       .then((res)=>{
         this.currentTheme = res.data
+      })
+    },
+
+    addThemeToolboxItems(theme){
+
+      //toolbox.forEach(toolGroup=>{
+      //  this.toolbox.push(toolGroup)
+      //})
+      if(theme.toolboxItems){
+        let themeToolboxGroup = {
+          title : this.$t('toolbox.theme'),
+          items:theme.toolboxItems
+        }
+
+        this.toolbox = [themeToolboxGroup]
+      }
+
+      this.$axios.get("api/toolbox").then((res)=>{
+        this.toolbox.push.apply(this.toolbox, res.data)
       })
     },
 

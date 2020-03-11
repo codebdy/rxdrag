@@ -47,6 +47,10 @@
     "open-title":"Open Project",
     "cancel" : "Cancel",
     "open" : "Open"
+  },
+
+  "toobox":{
+    "theme" : "Theme"
   }
 
 }
