@@ -2,19 +2,34 @@
   <div class="html-page">
     <div class="page-toolbar">
       <div class="left">
-        <div class="icon-button big">
+        <div class="icon-button big" 
+          :class="size === 'xl' ? 'active' :''"
+          @click="size = 'xl'"
+        >
           <i class="fas fa-tv"></i>
         </div>
-        <div class="icon-button">
+        <div class="icon-button"
+          :class="size === 'lg' ? 'active' :''"
+          @click="size = 'lg'"
+        >
           <i class="fas fa-desktop"></i>
         </div>
-        <div class="icon-button active">
+        <div class="icon-button"
+          :class="size === 'md' ? 'active' :''"
+          @click="size = 'md'"
+        >
           <i class="fas fa-laptop"></i>
         </div>
-        <div class="icon-button">
+        <div class="icon-button"
+          :class="size === 'sm' ? 'active' :''"
+          @click="size = 'sm'"
+        >
           <i class="fas fa-tablet-alt"></i>
         </div>
-        <div class="icon-button">
+        <div class="icon-button"
+          :class="size === 'xs' ? 'active' :''"
+          @click="size = 'xs'"
+        >
           <i class="fas fa-mobile-alt"></i>
         </div>
       </div>
@@ -44,7 +59,16 @@
       </div>
     </div>
     <div class="page-content">
-      <div class="canvars">
+      <!-- 需要动态设定高度，当内容有变化时设定 -->
+      <div class="canvars"
+        :style = "{width:width}"
+      >
+        <iframe src="agency.html" 
+          scrolling="no" 
+          frame-border ="0"
+          border = "0"
+          allow-transparency = "no"
+        ></iframe>
       </div>
     </div>
   </div>
@@ -61,10 +85,33 @@ export default {
     Tab,
   },
   props:{
-    //value:{ default:[] }, 
+    breakpoints : {
+      default : ()=>{ 
+        this.xs = '490'
+        this.sm = '576'
+        this.md = '768'
+        this.lg = '992'
+        this.xl = '1200'
+        return this
+      }
+    }, 
+  },
+  computed:{
+    inputValue: {
+        get:function() {
+          return this.value;
+        },
+        set:function(val) {
+          this.$emit('input', val);
+        },
+    },
+    width(){
+      return this.breakpoints[this.size] + 'px'
+    }
   },
   data () {
     return {
+      size : 'md',
     }
   },
 
@@ -88,18 +135,14 @@ export default {
     display: block;
   }
 
-  .vular-studio .content-scroll{
-      overflow: auto;
-      flex-grow: 1;
-      width: 0;
-    }
-
   .canvars{
     margin:0 auto ; 
-    background: #fff;
-    width: 1200px;
-    height: 1000px;
-    display: flex;
-    flex-flow: column;
+    transition: all 0.5s
+  }
+
+  .canvars iframe{
+    width: 100%;
+    min-height: 1200px;
+    border:0;
   }
 </style>
