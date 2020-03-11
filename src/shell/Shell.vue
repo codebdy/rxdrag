@@ -10,110 +10,7 @@
               :icon="'fas fa-puzzle-piece'" 
               :selected="true"
             >
-              <SimpleAccordion>
-                <CollapsibleItem :selected = 'true'>
-                  <template #heading><span>主题</span></template>
-                  <template #body>
-                    <MouseOverPop class="toolbox-element">
-                      <template #heading>
-                        <div class="element-title">
-                          <i class="fas fa-file"></i> 导航
-                        </div>
-                      </template>
-                      <template #body>
-                        <div class="pop-content">
-                          <img style="width: 100%;" src="images/navbar.jpg" />
-                        </div>
-                      </template>
-                    </MouseOverPop>
-                    <MouseOverPop class="toolbox-element">
-                      <template #heading>
-                        <div class="element-title">
-                          <i class="fas fa-file"></i> Header
-                        </div>
-                      </template>
-                      <template #body>
-                        <div class="pop-content">
-                          <img style="width: 100%;" src="images/header.jpg" />
-                        </div>
-                      </template>
-                    </MouseOverPop>
-                    <MouseOverPop class="toolbox-element">
-                      <template #heading>
-                        <div class="element-title">
-                          <i class="fas fa-file"></i> 服务
-                        </div>
-                      </template>
-                      <template #body>
-                        <div class="pop-content">
-                          <img style="width: 100%;" src="images/services.jpg" />
-                        </div>
-                      </template>
-                    </MouseOverPop>
-                    <MouseOverPop class="toolbox-element">
-                      <template #heading>
-                        <div class="element-title">
-                          <i class="fas fa-file"></i> 优秀案例
-                        </div>
-                      </template>
-                      <template #body>
-                        <div class="pop-content">
-                          <img style="width: 100%;" src="images/portfolio.jpg" />
-                        </div>
-                      </template>
-                    </MouseOverPop>
-                  </template>
-                </CollapsibleItem>
-                <CollapsibleItem>
-                  <template #heading><span>栅格</span> <small>Bootstrap 4</small></template>
-                  <template #body>
-                    <div class="toolbox-element">
-                      <i class="fas fa-file"></i> 容器
-                      
-                    </div>
-                    <div class="toolbox-element">
-                      <i class="fas fa-file"></i> Row
-                      
-                    </div>
-                    <div class="toolbox-element">
-                      <i class="fas fa-file"></i> Column
-                      
-                    </div>
-                    <div class="toolbox-element">
-                      <i class="fas fa-file"></i> Row Break
-                      
-                    </div>
-                  </template>
-                </CollapsibleItem>
-                <CollapsibleItem>
-                  <template #heading><span>按钮</span> <small>Bootstrap 4</small></template>
-                  <template #body>buttons body</template>
-                </CollapsibleItem>
-                <CollapsibleItem>
-                  <template #heading><span>TEXT&IMAGES</span> <small>Bootstrap 4</small></template>
-                  <template #body>txt body</template>
-                </CollapsibleItem>
-                <CollapsibleItem>
-                  <template #heading><span>UI Elements</span> <small>Bootstrap 4</small></template>
-                  <template #body>ddd</template>
-                </CollapsibleItem>
-                <CollapsibleItem>
-                  <template #heading><span>LIST</span> <small>Bootstrap 4</small></template>
-                  <template #body>ddd</template>
-                </CollapsibleItem>
-                <CollapsibleItem>
-                  <template #heading><span>TABLES</span> <small>Bootstrap 4</small></template>
-                  <template #body>ddd</template>
-                </CollapsibleItem>
-                <CollapsibleItem>
-                  <template #heading><span>CODE</span> <small>Bootstrap 4</small></template>
-                  <template #body>ddd</template>
-                </CollapsibleItem>
-                <CollapsibleItem>
-                  <template #heading><span>FORMS</span> <small>Bootstrap 4</small></template>
-                  <template #body>ddd</template>
-                </CollapsibleItem>
-              </SimpleAccordion>
+            <Toolbox :groups="toolbox"></Toolbox>
             </tab>
             <tab :name="$t('widgets.files')"
                  :icon="'fas fa-copy'">
@@ -286,9 +183,7 @@ import RightArea from './components/RightArea.vue'
 import WidgetTabs from './components/tabs/WidgetTabs.vue'
 import Tab from './components/tabs/Tab.vue'
 import PageTabs from './components/tabs/PageTabs.vue'
-import SimpleAccordion from './components/accordion/SimpleAccordion.vue'
-import CollapsibleItem from './components/accordion/CollapsibleItem.vue'
-import MouseOverPop from './components/MouseOverPop.vue'
+import Toolbox from './components/Toolbox.vue'
 import NodeTree from './components/tree/NodeTree.vue'
 import RxInputRow from './components/inputs/RxInputRow.vue'
 import OptionBox from './components/options/OptionBox.vue'
@@ -300,6 +195,7 @@ import StyleBox from './components/options/StyleBox.vue'
 import files from '../mock/files.js'
 import nodes from '../mock/nodes.js'
 import options from '../mock/options.js'
+import toolbox from '../mock/toolbox.js'
 
 export default {
   name: 'rxeditor',
@@ -311,9 +207,7 @@ export default {
     WidgetTabs,
     Tab,
     PageTabs,
-    SimpleAccordion,
-    CollapsibleItem,
-    MouseOverPop,
+    Toolbox,
     NodeTree,
     RxInputRow,
     OptionBox,
@@ -323,6 +217,7 @@ export default {
   },
   data () {
     return {
+      toolbox:toolbox,
       files:files,
       nodes:nodes,
       options:options,
