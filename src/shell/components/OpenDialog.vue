@@ -1,7 +1,9 @@
 <template>
   <Modal v-model="inputValue" 
     width='500px'
+    height = "460px"
     left ="calc(50% - 300px)"
+    top ="calc(50% - 230px)"
   >
     <div class="dialog-head">
       <div><i class="fas fa-folder-open"></i> {{$t('open.open-title')}} </div>
@@ -26,8 +28,14 @@
         @click="inputValue = false"
       >{{$t('open.cancel')}}</div>
       <div class="dialog-button confirm-btn"
-        @click="inputValue = false"
+        v-if="this.selectedPorject"
+        @click="confirmSelect"
       >{{$t('open.open')}}</div>
+      <div class="dialog-button disabled-label"
+        v-else
+      >
+        {{$t('open.open')}}
+      </div>
     </div>
   </Modal>
 </template>
@@ -63,6 +71,12 @@ export default {
     select(project){
       this.selectedPorject = project
     },
+
+    confirmSelect(){
+      this.$emit('selectProject', this.selectedPorject)
+      this.selectedPorject = null
+      this.inputValue = false
+    }
   },
 
   mounted () {
@@ -72,6 +86,14 @@ export default {
       this.projects = res.data
     })
   },
+
+  watch:{
+    inputValue(val){
+      if(!val){
+        this.selectedPorject = null
+      }
+    }
+  }
 }
 </script>
 
@@ -101,7 +123,7 @@ export default {
   background: #fbfbfb;
 }
 
-.project-item:selected{
+.project-item.selected{
   outline: #75b325 solid 3px;
   background: #fbfbfb;
 }

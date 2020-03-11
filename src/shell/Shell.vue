@@ -141,7 +141,7 @@ export default {
 
   mounted () {
     this.currentTheme = null
-    this.$axios.get('api/default-theme')
+    this.$axios.get('api/theme/default')
     .then((res)=>{
       this.currentTheme = res.data
     })
