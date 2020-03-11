@@ -101,7 +101,7 @@ import StyleBox from './components/options/StyleBox.vue'
 //import files from '../mock/files.js'
 import nodes from '../mock/nodes.js'
 import options from '../mock/options.js'
-import toolbox from '../mock/toolbox.js'
+//import toolbox from '../mock/toolbox.js'
 
 export default {
   name: 'rxeditor',
@@ -123,7 +123,7 @@ export default {
   },
   data () {
     return {
-      toolbox:[],
+      baseToolbox:[],
       files:[],
       nodes:nodes,
       options:options,
@@ -133,11 +133,26 @@ export default {
       currentTheme:null,
     }
   },
-
+  computed:{
+    toolbox(){
+      let themeToolbox = this.currentTheme ? this.currentTheme.toolboxItems : null
+      if(themeToolbox){
+        let themeToolboxGroup = {
+          title : this.$t('toolbox.theme'),
+          items:themeToolbox
+        }
+        let toolbox = [themeToolboxGroup]
+        toolbox.push.apply(toolbox, this.baseToolbox)
+        return toolbox
+      }
+      else{
+        return this.baseToolbox
+      }
+    }
+  },
   watch:{
     currentTheme(theme){
       this.showFiles(theme)
-      this.addThemeToolboxItems(this.currentTheme)
     }
   },
 
@@ -149,22 +164,6 @@ export default {
       this.$axios.get(theme.theme)
       .then((res)=>{
         this.currentTheme = res.data
-      })
-    },
-
-    addThemeToolboxItems(theme){
-      this.toolbox = []
-      if(theme.toolboxItems){
-        let themeToolboxGroup = {
-          title : this.$t('toolbox.theme'),
-          items:theme.toolboxItems
-        }
-
-        this.toolbox = [themeToolboxGroup]
-      }
-
-      this.$axios.get("api/toolbox").then((res)=>{
-        this.toolbox.push.apply(this.toolbox, res.data)
       })
     },
 
@@ -275,6 +274,11 @@ export default {
     .then((res)=>{
       this.currentTheme = res.data
     })
+
+    this.$axios.get("api/toolbox").then((res)=>{
+      this.baseToolbox = res.data
+    })
+
   },
 
 }
