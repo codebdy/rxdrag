@@ -1,18 +1,42 @@
 [
   {
-    "name":"Agency",
+    "title":"Agency",
     "thumbnail":"images/theme-agency.jpg"
   },
   {
-    "name":"TestPools",
+    "title":"TestPools",
     "thumbnail":"images/theme-testpools.jpg"
   },
   {
-    "name":"Sucralose",
+    "title":"TestPools",
+    "thumbnail":"images/theme-testpools.jpg"
+  },
+  {
+    "title":"TestPools",
+    "thumbnail":"images/theme-testpools.jpg"
+  },
+  {
+    "title":"TestPools",
+    "thumbnail":"images/theme-testpools.jpg"
+  },
+  {
+    "title":"TestPools",
+    "thumbnail":"images/theme-testpools.jpg"
+  },
+  {
+    "title":"TestPools",
+    "thumbnail":"images/theme-testpools.jpg"
+  },
+  {
+    "title":"TestPools",
+    "thumbnail":"images/theme-testpools.jpg"
+  },
+  {
+    "title":"Sucralose",
     "thumbnail":"images/theme-sunvision.jpg"
   },
   {
-    "name":"Warmy Candle",
+    "title":"Warmy Candle",
     "thumbnail":"images/theme-warmy.jpg"
   }
 ]

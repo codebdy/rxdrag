@@ -2,7 +2,7 @@
   <div class="toolbar">
     <div class="left">
       <div class="button theme"
-        @click="themeDialog = true"
+        @click="themesClick"
       > 
         <i class="fas fa-layer-group"></i> 
         {{$t('toolbar.theme')}}
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import ThemeSelectDialog from './ThemeSelectDialog.vue'
+import ThemeSelectDialog from './themes/ThemeSelectDialog.vue'
 import AboutDialog from './AboutDialog.vue'
 export default {
   name: 'Toolbar',
@@ -56,6 +56,11 @@ export default {
     return {
       themeDialog:false,
       aboutDialog:false,
+    }
+  },
+  methods:{
+    themesClick(){
+      this.themeDialog = true
     }
   }
 }

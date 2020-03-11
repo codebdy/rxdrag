@@ -1,0 +1,108 @@
+<template>
+  <div v-show="isShow" class="tab themes-tab">
+    <div class="theme-item"
+      v-for="(theme, i) in themes"
+      :key = "i"
+    >
+      <img :src="theme.thumbnail" />
+      <div class="theme-title">{{theme.title}}</div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Tab from '../tabs/Tab.vue'
+
+export default {
+  name: 'ThemeSelectTab',
+  extends: Tab,
+  components:{
+    //Tab,
+  },
+  props: {
+    name: { required: true },
+    icon:'',
+    selected: { default: false},
+    api:{ default : ''}
+  },
+  data () {
+    return {
+      themes:[],
+    }
+  },
+
+  mounted () {
+    if(!this.api) return
+
+    this.$axios.get(this.api)
+    .then((res)=>{
+      //console.log(res.data)
+      this.themes = res.data
+    })//.catch(function (error) {
+     // console.log(error)
+    //})
+  },
+
+  methods: {
+  },
+}
+</script>
+
+<style>
+.theme-item{
+  width: 186px;
+  outline:#eee solid 1px;
+  margin:5px;
+}
+
+.theme-item:hover{
+  outline: #75b325 solid 2px;
+}
+
+
+.theme-item img{
+  width: 100%;
+}
+
+.theme-item .theme-title{
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top:#eee solid 1px;
+  font-size: 16px;
+}
+
+.themes-tab{
+  flex: 1;
+  margin-top:10px;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  overflow: auto;
+  height: 0;
+}
+
+.themes-tab::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #ddd;
+}
+.themes-tab::-webkit-scrollbar-track {
+  border-radius: 0;
+}
+.themes-tab::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background: #aaa;
+  transition: all .2s;
+}
+.themes-tab::-webkit-scrollbar-thumb:hover {
+  background-color: #bbb;
+}
+
+.themes-tab::-webkit-scrollbar-corner{
+  background: transparent;
+}
+
+
+</style>

@@ -1,18 +1,14 @@
 [
   {
-    "name":"Agency",
+    "title":"Agency",
     "thumbnail":"images/theme-agency.jpg"
   },
   {
-    "name":"TestPools",
+    "title":"TestPools",
     "thumbnail":"images/theme-testpools.jpg"
   },
   {
-    "name":"Sucralose",
-    "thumbnail":"images/theme-sunvision.jpg"
-  },
-  {
-    "name":"Warmy Candle",
+    "title":"Warmy Candle",
     "thumbnail":"images/theme-warmy.jpg"
   }
 ]
