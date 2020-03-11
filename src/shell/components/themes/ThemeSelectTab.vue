@@ -1,5 +1,5 @@
 <template>
-  <div v-show="isShow" class="tab themes-tab">
+  <div v-show="isShow" class="tab themes-tab light-scrollbar">
     <div class="theme-item"
       v-for="(theme, i) in themes"
       :key = "i"
@@ -97,27 +97,5 @@ export default {
   height: 0;
   align-items: flex-start;
 }
-
-.themes-tab::-webkit-scrollbar {
-  width: 0.5rem;
-  height: 0.5rem;
-  background: #ddd;
-}
-.themes-tab::-webkit-scrollbar-track {
-  border-radius: 0;
-}
-.themes-tab::-webkit-scrollbar-thumb {
-  border-radius: 0;
-  background: #aaa;
-  transition: all .2s;
-}
-.themes-tab::-webkit-scrollbar-thumb:hover {
-  background-color: #bbb;
-}
-
-.themes-tab::-webkit-scrollbar-corner{
-  background: transparent;
-}
-
 
 </style>

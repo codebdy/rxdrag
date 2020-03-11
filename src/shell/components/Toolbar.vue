@@ -5,13 +5,15 @@
         @click="themesClick"
       > 
         <i class="fas fa-layer-group"></i> 
-        {{$t('toolbar.theme')}}
-      </div>
-      <div class="button new"> 
-        <i class="fas fa-file-code"></i> 
         {{$t('toolbar.new')}}
       </div>
-      <div class="button open"> 
+      <!--div class="button new"> 
+        <i class="fas fa-file-code"></i> 
+        {{$t('toolbar.new')}}
+      </div-->
+      <div class="button open"
+        @click="openDialog = true"
+      > 
         <i class="fas fa-folder-open"></i> 
         {{$t('toolbar.open')}}
       </div>
@@ -40,6 +42,10 @@
       @changeTheme = "changeTheme"
     >
     </ThemeSelectDialog>
+    <OpenDialog 
+      v-model="openDialog"
+    >
+    </OpenDialog>
     <AboutDialog v-model="aboutDialog">
     </AboutDialog>
     
@@ -48,16 +54,19 @@
 
 <script>
 import ThemeSelectDialog from './themes/ThemeSelectDialog.vue'
+import OpenDialog from './OpenDialog.vue'
 import AboutDialog from './AboutDialog.vue'
 export default {
   name: 'Toolbar',
   components:{
     ThemeSelectDialog,
+    OpenDialog,
     AboutDialog,
   },
   data () {
     return {
       themeDialog:false,
+      openDialog:false,
       aboutDialog:false,
     }
   },

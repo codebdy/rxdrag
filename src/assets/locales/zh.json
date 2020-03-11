@@ -41,5 +41,12 @@
     "about-title":"关于",
     "close" : "关闭",
     "content" : "RxEditor 的界面原型，Github:"
+  },
+
+  "open":{
+    "open-title":"打开项目",
+    "cancel" : "取消",
+    "open" : "打开"
   }
+
 }

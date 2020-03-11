@@ -236,7 +236,7 @@ export default {
               selected:false,
               opened:false,
               isEditing:false,
-              icon:"far fas fa-image",
+              icon:"far fas fa-file-image",
             }
           )
         })

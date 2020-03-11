@@ -38,9 +38,15 @@
     "forms" : "Forms"
   },
   "about":{
-    "about-title":"Abut",
+    "about-title":"About",
     "close" : "Close",
     "content" : "RxEditor UI Demo,Github:"
+  },
+
+  "open":{
+    "open-title":"Open Project",
+    "cancel" : "Cancel",
+    "open" : "Open"
   }
 
 }
