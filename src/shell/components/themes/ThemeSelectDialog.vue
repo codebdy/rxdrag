@@ -14,6 +14,7 @@
           :key = "i"
           :selected = "i === 0"
           :api = "themeCategory.themes"
+          @selectTheme = "selectTheme"
         >
         </ThemeSelectTab>
       </ThemeTabs>
@@ -23,8 +24,14 @@
         @click="inputValue = false"
       >{{$t('theme.cancel')}}</div>
       <div class="dialog-button confirm-btn"
-        @click="inputValue = false"
+        v-if="this.selectedTheme"
+        @click="confirmSelect"
       >{{$t('theme.select')}}</div>
+      <div class="dialog-button disabled-label"
+        v-else
+      >
+        {{$t('theme.select')}}
+      </div>
     </div>
   </Modal>
 </template>
@@ -56,11 +63,13 @@ export default {
   },
   data () {
     return {
-      themes:[],
+      themes: [],
+      selectedTheme: null,
     }
   },
 
   mounted () {
+    this.selectedTheme = null
     this.$axios.get('api/themes')
     .then((res)=>{
       this.themes = res.data
@@ -70,7 +79,23 @@ export default {
   },
 
   methods: {
+    selectTheme(theme){
+      this.selectedTheme = theme
+    },
+
+    confirmSelect(){
+      this.$emit('changeTheme', this.selectedTheme)
+      this.inputValue = false
+    }
   },
+
+  watch:{
+    inputValue(val){
+      if(!val){
+        this.selectedTheme = null
+      }
+    }
+  }
 }
 </script>
 
@@ -175,4 +200,11 @@ export default {
 .dialog-footer .dialog-button.cancel-btn:hover{
   background: #f9f9f9;
 }
+
+.dialog-button.disabled-label{
+  background: #bbb;
+  color: #eee;
+  cursor: default;
+}
+
 </style>

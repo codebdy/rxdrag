@@ -1,6 +1,8 @@
 <template>
   <div class="vular-studio">
-    <toolbar />
+    <toolbar
+      @changeTheme = "changeTheme"
+    ></toolbar>
     <div class="workspace">
       <LeftArea>
         <template #top>
@@ -95,7 +97,7 @@ import CodeBox from './components/options/CodeBox.vue'
 import StyleBox from './components/options/StyleBox.vue'
 
 
-import files from '../mock/files.js'
+//import files from '../mock/files.js'
 import nodes from '../mock/nodes.js'
 import options from '../mock/options.js'
 import toolbox from '../mock/toolbox.js'
@@ -121,20 +123,129 @@ export default {
   data () {
     return {
       toolbox:toolbox,
-      files:files,
+      files:[],
       nodes:nodes,
       options:options,
       optionOverview : {},
       code:'<div></div>',
       styles:{},
+      currentTheme:null,
+    }
+  },
+
+  methods:{
+    changeTheme(theme){
+      this.currentTheme = theme
+    }
+  },
+
+  mounted () {
+    this.currentTheme = null
+    this.$axios.get('api/default-theme')
+    .then((res)=>{
+      this.currentTheme = res.data
+    })
+  },
+
+  watch:{
+    currentTheme(theme){
+      this.files.length = 0
+      let htmlFiles = {
+        title: this.$t('widgets.pages'),
+        selected: false,
+        opened: false,
+        isFolder: true,//不能被编辑，可以新建子节点
+        leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
+        children: []
+      }
+      if(theme.pages){
+        theme.pages.forEach(fileName =>{
+          htmlFiles.children.push(
+            {
+              title:fileName,
+              selected:false,
+              opened:false,
+              isEditing:false,
+              icon:"far fa-file-code",
+            }
+          )
+        })
+      }
+
+      this.files.push(htmlFiles)
+
+      let styleFiles = {
+        title: this.$t('widgets.styles'),
+        selected: false,
+        opened: false,
+        isFolder: true,//不能被编辑，可以新建子节点
+        leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
+        children: []
+      }
+      if(theme.styles){
+        theme.styles.forEach(fileName =>{
+          styleFiles.children.push(
+            {
+              title:fileName,
+              selected:false,
+              opened:false,
+              isEditing:false,
+              icon:"far fa-file-code",
+            }
+          )
+        })
+      }
+      this.files.push(styleFiles)
+
+      let jsFiles = {
+        title: this.$t('widgets.javascript'),
+        selected: false,
+        opened: false,
+        isFolder: true,//不能被编辑，可以新建子节点
+        leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
+        children: []
+      }
+      if(theme.javascript){
+        theme.javascript.forEach(fileName =>{
+          jsFiles.children.push(
+            {
+              title:fileName,
+              selected:false,
+              opened:false,
+              isEditing:false,
+              icon:"far fa-file-code",
+            }
+          )
+        })
+      }
+      this.files.push(jsFiles)
+
+      let imageFiles = {
+        title: this.$t('widgets.images'),
+        selected: false,
+        opened: false,
+        isFolder: true,//不能被编辑，可以新建子节点
+        leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
+        children: []
+      }
+      if(theme.images){
+        theme.images.forEach(fileName =>{
+          imageFiles.children.push(
+            {
+              title:fileName,
+              selected:false,
+              opened:false,
+              isEditing:false,
+              icon:"far fas fa-image",
+            }
+          )
+        })
+      }
+      this.files.push(imageFiles)
     }
   }
 }
 </script>
 
 <style>
-.toolbox-element{
-  margin-left: 20px;
-  line-height: 30px;
-}
 </style>

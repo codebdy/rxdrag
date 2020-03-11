@@ -35,7 +35,10 @@
       <a class="button github-link" target="_blank" href="https://github.com/vularsoft/studio-ui"><i class="fab fa-github"></i> Github</a>
     </div>
 
-    <ThemeSelectDialog v-model="themeDialog">
+    <ThemeSelectDialog 
+      v-model="themeDialog"
+      @changeTheme = "changeTheme"
+    >
     </ThemeSelectDialog>
     <AboutDialog v-model="aboutDialog">
     </AboutDialog>
@@ -61,6 +64,10 @@ export default {
   methods:{
     themesClick(){
       this.themeDialog = true
+    },
+
+    changeTheme(theme){
+      this.$emit('changeTheme', theme)
     }
   }
 }

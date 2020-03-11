@@ -66,6 +66,7 @@ export default {
     color: #c2c2c2;
     font-size: 13px;
     padding:5px 10px;
+    padding-left:20px;
     margin:3px;
     display: flex;
     flex-flow: row;
@@ -83,7 +84,9 @@ export default {
   }
 
   .toolbox-element{
-  }
+    padding-left: 0;
+    line-height: 20px;
+}
 
   .toolbox-element .pop-content{
     position: absolute;

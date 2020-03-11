@@ -2,7 +2,7 @@
   {
     "title":"Agency",
     "thumbnail":"images/theme-agency.jpg",
-    "htmls":[
+    "pages":[
       "about.html",
       "index.html",
       "product.html",

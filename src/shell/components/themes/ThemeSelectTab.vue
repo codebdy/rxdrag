@@ -46,8 +46,16 @@ export default {
   methods: {
     click(theme){
       this.selectedTheme = theme
+      this.$emit('selectTheme', theme)
     }
   },
+
+  watch:{
+    isShow(){
+      this.selectedTheme = null
+      this.$emit('selectTheme', null)
+    }
+  }
 }
 </script>
 
