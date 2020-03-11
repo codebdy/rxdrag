@@ -42,6 +42,7 @@ export default {
 </script>
 
 <style>
+
   .vular-studio .page-tabs .page-toolbar{
     height: 35px;
     background: #494c45;
@@ -85,10 +86,4 @@ export default {
     font-size: 14px;
   }
 
-  .vular-studio .center-area .page-content{
-    display: flex;
-    flex: 1;
-    flex-flow: row;
-    padding: 10px;
-  }
 </style>

@@ -44,9 +44,7 @@
       </div>
     </div>
     <div class="page-content">
-      <div class="content-scroll">
-        <div class="canvars">
-        </div>
+      <div class="canvars">
       </div>
     </div>
   </div>
@@ -76,4 +74,31 @@ export default {
 </script>
 
 <style>
+ .html-page{
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    height: 0;
+  }
+
+  .page-content{
+    padding: 10px;
+    flex: 1;
+    height: 0;
+    overflow: auto;
+  }
+
+  .vular-studio .content-scroll{
+      overflow: auto;
+      flex-grow: 1;
+      width: 0;
+    }
+
+  .canvars{
+    background: #fff;
+    width: 1200px;
+    height: 1000px;
+    display: flex;
+    flex-flow: column;
+  }
 </style>

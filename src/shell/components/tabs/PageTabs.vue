@@ -32,3 +32,20 @@ export default {
 }
 </script>
 
+<style>
+  .page-tabs{
+  }
+  .page-tabs .tab{
+    flex: 1;
+    height: 0;
+    display: flex;
+    flex-flow: column;
+  }
+
+  .page-tabs .tab-body{
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+  }
+
+</style>

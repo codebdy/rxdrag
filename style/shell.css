@@ -134,6 +134,7 @@ a:hover{
   flex-flow: row;
   border:solid #1a1a1a 1px;
   padding-top:3px;
+  flex-shrink: 0;
 
   position: relative;
 
@@ -147,6 +148,7 @@ a:hover{
   flex : 1;
   display: flex;
   flex-flow: column;
+  width: 0;
 }
 
 
@@ -156,6 +158,7 @@ a:hover{
   flex-flow: row;
   border:solid #1a1a1a 1px;
   padding-top:3px;
+  flex-shrink: 0;
 
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -236,21 +239,6 @@ a:hover{
 
 .vular-studio .page-tabs .tab-body{
   flex: 1;
-  display: flex;
-  flex-flow: column;
-}
-
-.vular-studio .content-scroll{
-  overflow: auto;
-  flex-grow: 1;
-  height: calc(100vh - 130px);
-  width: 0;
-}
-
-.vular-studio .page-tabs  .canvars{
-  background: #fff;
-  width: 1200px;
-  height: 1000px;
   display: flex;
   flex-flow: column;
 }
