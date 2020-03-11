@@ -153,10 +153,7 @@ export default {
     },
 
     addThemeToolboxItems(theme){
-
-      //toolbox.forEach(toolGroup=>{
-      //  this.toolbox.push(toolGroup)
-      //})
+      this.toolbox = []
       if(theme.toolboxItems){
         let themeToolboxGroup = {
           title : this.$t('toolbox.theme'),
