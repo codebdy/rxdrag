@@ -82,10 +82,10 @@ export default {
   }
 
   .page-content{
-    padding: 10px;
     flex: 1;
     height: 0;
     overflow: auto;
+    display: block;
   }
 
   .vular-studio .content-scroll{
@@ -95,6 +95,7 @@ export default {
     }
 
   .canvars{
+    margin:0 auto ; 
     background: #fff;
     width: 1200px;
     height: 1000px;
