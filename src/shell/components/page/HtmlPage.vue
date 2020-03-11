@@ -5,30 +5,35 @@
         <div class="icon-button big" 
           :class="size === 'xl' ? 'active' :''"
           @click="size = 'xl'"
+          title = "XL"
         >
           <i class="fas fa-tv"></i>
         </div>
         <div class="icon-button"
           :class="size === 'lg' ? 'active' :''"
           @click="size = 'lg'"
+          title = "LG"
         >
           <i class="fas fa-desktop"></i>
         </div>
         <div class="icon-button"
           :class="size === 'md' ? 'active' :''"
           @click="size = 'md'"
+          title = "MD"
         >
           <i class="fas fa-laptop"></i>
         </div>
         <div class="icon-button"
           :class="size === 'sm' ? 'active' :''"
           @click="size = 'sm'"
+          title = "SM"
         >
           <i class="fas fa-tablet-alt"></i>
         </div>
         <div class="icon-button"
           :class="size === 'xs' ? 'active' :''"
           @click="size = 'xs'"
+          title = "XS"
         >
           <i class="fas fa-mobile-alt"></i>
         </div>
@@ -137,12 +142,12 @@ export default {
 
   .canvars{
     margin:0 auto ; 
-    transition: all 0.5s
+    transition: all 0.5s;
   }
 
   .canvars iframe{
     width: 100%;
-    min-height: 1200px;
+    min-height:calc(100vh - 112px);
     border:0;
   }
 </style>
