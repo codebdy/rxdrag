@@ -1,5 +1,4 @@
-import {RXArray} from "../basic/rxarray"
-  
+
 function load(data){
   let dataJson = JSON.parse(data)
   let nodes = loadNodes(dataJson, rxEditor.canvas)
@@ -7,7 +6,7 @@ function load(data){
 }
 
 function loadNodes(dataArray, parent){
-  let nodes = new RXArray
+  let nodes = []
   if(!dataArray){
     return nodes
   }

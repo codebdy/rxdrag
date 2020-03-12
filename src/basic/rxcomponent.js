@@ -1,9 +1,9 @@
-import {RXArray} from "./rxarray"
+import {add, contains, remove, inertBefore} from "./rxarray"
 
 export class RXComponent{
   constructor(elementName = 'div'){
-    this.children = new RXArray
-    this.classList = new RXArray
+    this.children = []
+    this.classList = []
     this.style = {}
     this.attrs = {}
     this.domOns = {}
@@ -47,18 +47,18 @@ export class RXComponent{
   }
 
   cssClass(className){
-    this.classList.add(className)
+    add(className, this.classList)
     if(this.$dom){
-      this.$dom.classList.add(className)
+      add(className, this.$dom.classList)
     }
     return this
   }
 
   removeCssClass(className){
-    if(this.classList.contains(className)){
-     this.classList.remove(className)
+    if(contains(className, this.classList)){
+     remove(className, this.classList)
       if(this.$dom){
-        this.$dom.classList.remove(className)
+        remove(className, this.$dom.classList)
       }
     }
     return this
@@ -84,16 +84,16 @@ export class RXComponent{
   }
 
   tongle(cssClass){
-    if(this.classList.contains(cssClass)){
-     this.classList.remove(cssClass)
+    if(contains(cssClass, this.classList)){
+     remove(cssClass, this.classList)
       if(this.$dom){
-        this.$dom.classList.remove(cssClass)
+        remove(cssClass, this.$dom.classList)
       }
     }
     else{
-     this.classList.add(cssClass)
+     add(cssClass, this.classList)
       if(this.$dom){
-        this.$dom.classList.add(cssClass)
+        add(cssClass, this.$dom.classList)
       }
     }
   }
@@ -154,7 +154,7 @@ export class RXComponent{
   }
 
   removeChild(node){
-    this.children.remove(node)
+    remove(node, this.children)
     if(this.$dom && node.$dom && this.$dom.contains(node.$dom)){
       this.$dom.removeChild(node.$dom)
     }
@@ -195,7 +195,7 @@ export class RXComponent{
   }
 
   insertBefore(child, refence){
-    this.children.inertBefore(child, refence)
+    inertBefore(child, refence, this.children)
   }
 
 }

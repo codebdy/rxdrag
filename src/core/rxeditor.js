@@ -1,6 +1,6 @@
 import {Canvas} from "./canvas"
 import {CanvasState} from "./canvas-state"
-import {RXArray} from "../basic/rxarray"
+import {add, tongleOnCondition} from "../basic/rxarray"
 import {CommadManager} from "./commands"
 import {NodeLabel} from "./node-label"
 import {NodeToolbar} from "./node-toolbar"
@@ -22,8 +22,8 @@ export class RXEditor{
       }
       this.commandProxy.commandExcuted(canUndo, canRedo, commandSchema)
     }
-    this.optionClasses = new RXArray
-    this.optionClasses.add('show-outline')
+    this.optionClasses = []
+    add('show-outline', this.optionClasses)
     //this.optionClasses.add('show-label')
     this.activedLabel = new NodeLabel
     this.focusedLabel = new NodeLabel
@@ -60,7 +60,7 @@ export class RXEditor{
       //this.allToNormalState()
     })
     this.state.watch('showOutline', (state)=>{
-      this.optionClasses.tongleOnCondition(state.showOutline, 'show-outline')
+      tongleOnCondition(state.showOutline, 'show-outline', this.optionClasses)
       this.render()
     })
     this.state.watch('showEditMargin', (state)=>{

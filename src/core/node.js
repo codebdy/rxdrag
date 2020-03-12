@@ -1,8 +1,8 @@
 import {NodeView} from "./node-view"
-import {RXArray} from "../basic/rxarray"
+import {add, remove, first, last, insertBefore, insterAfter, contains} from "../basic/rxarray"
 import {NormalState, ActiveState, FocusState, DragoverState, DisableState, DraggedState} from "./node-state"
 
-function insterAfter(newElement,targetElement){
+function insterAfterDom(newElement,targetElement){
   var parent = targetElement.parentNode;
   if(parent.lastChild == targetElement){
     parent.appendChild(newElement);
@@ -16,13 +16,13 @@ export class Node{
   constructor() {
     this.seedId()
     this.toolboxInfo = {mouseFollowerWidth : '200px'}
-  	this.children = new RXArray
+  	this.children = []
   	this.view = new NodeView()
     this.dropMargin = 30;
     //this.mouseFollowerWidth = '200px'
 
     //空表示所有都接受，空数组表示都不接受
-    this.acceptedChildren = new RXArray
+    this.acceptedChildren = []
 
     //空和空数组都表示所有都不排除
     this.rejectChildren = ''
@@ -165,7 +165,7 @@ export class Node{
 
   createMouseFollower(){
     let followerElement = document.createElement('div')
-    followerElement.classList.add('mouse-follow')
+    add('mouse-follow', followerElement.classList)
     if(!this.parent){
       followerElement.style.width = this.toolboxInfo.mouseFollowerWidth
     }
@@ -224,22 +224,22 @@ export class Node{
 
   createChild(nodeName){
     let child = Node.createNode(this, nodeName)
-    this.children.add(child) 
+    add(child, this.children) 
     return child
   }
 
   firstChild(){
-    return this.children.first()
+    return first(this.children)
   }
 
   nextSbiling(){
     if(this.parent){
-      return this.parent.children.after(this) 
+      return after(this, this.parent.children) 
     }
   }
 
   moveInTop(targetParent){
-    if(targetParent.children.first() !== this){
+    if(first(targetParent.children) !== this){
       this.removeFromParent()
       targetParent.unshiftChild(this)
       if(targetParent.view && targetParent.view.$dom){
@@ -249,7 +249,7 @@ export class Node{
   }
 
   moveIn(targetParent){
-    if(targetParent.children.last() !== this){
+    if(last(targetParent.children) !== this){
       this.removeFromParent()
       targetParent.pushChild(this)
       if(this.view.$dom){
@@ -259,10 +259,10 @@ export class Node{
   }
 
   moveBefore(brother){
-    if(brother.children.before() !== this){
+    if(before(brother.children) !== this){
       this.removeFromParent()
       this.parent = brother.parent
-      brother.parent.children.inertBefore(this, brother);
+      inertBefore(this, brother, brother.parent.children);
       if(brother.parent.view && brother.parent.view.$dom
         && brother.view && brother.view.$dom
         && this.view && this.view.$dom)
@@ -271,13 +271,13 @@ export class Node{
   }
 
   moveAfter(brother){
-    if(brother.children.after() !== this){
+    if(after(brother.children) !== this){
       this.removeFromParent()
       this.parent = brother.parent
-      brother.parent.children.inertAfter(this, brother);
+      inertAfter(this, brother, brother.parent.children);
       if(brother.view && brother.view.$dom 
         && this.view && this.view.$dom) {
-        insterAfter(this.view.$dom, brother.view.$dom)
+        insterAfterDom(this.view.$dom, brother.view.$dom)
       }
     }
   }
@@ -285,7 +285,7 @@ export class Node{
   removeFromParent(){
     if(this.parent){
       //this.view.putDown()
-      this.parent.children.remove(this)
+      remove(this, this.parent.children)
       if(this.parent.view && this.parent.view.$dom
         && this.view && this.view.dom){
         parent.view.$dom.removeChild(this.view.dom)
@@ -301,13 +301,13 @@ export class Node{
 
   pushChild(child){
     child.parent = this
-    this.children.add(child) 
+    add(child, this.children) 
     return this
   }
 
   inertAfterSelf(brother){
     brother.parent = this.parent
-    this.parent.children.inertAfter(brother, this);
+    inertAfter(brother, this, this.parent.children);
     return this
   }
 
@@ -365,8 +365,8 @@ export class Node{
   }
 
   toViewModel(){
-    let classList = new RXArray
-    classList.add('element');
+    let classList = []
+    add('element', classList);
     classList.push.apply(classList, rxEditor.optionClasses)
     //classList.push.apply(classList, this.meta.baseClass)
     classList.push.apply(classList, this.state.classList)

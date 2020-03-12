@@ -1,5 +1,4 @@
 import {Node} from "../core/node"
-import {RXArray} from "../basic/rxarray"
 import parkMiniEditbar from "../core/park-mini-editbar"
 import textfieldSchema from "./schemas/general/textfield"
 import tagSchema from "./schemas/overview/tag"
