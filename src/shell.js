@@ -3,7 +3,9 @@ import Shell from './shell/Shell.vue'
 import '../style/shell.css'
 import i18n from './assets/locales'
 import axios from 'axios'
-Vue.prototype.$axios = axios
+
+window.$axios = axios
+window.$bus= new Vue();
 
 new Vue({
   el: '#rxeditor',

@@ -81,7 +81,7 @@ export default {
 
   mounted () {
     this.selectedPorject = null
-    this.$axios.get('api/projects')
+    $axios.get('api/projects')
     .then((res)=>{
       this.projects = res.data
     })

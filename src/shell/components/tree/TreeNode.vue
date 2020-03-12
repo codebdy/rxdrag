@@ -161,6 +161,7 @@ export default {
           selected:false,
           opened:false,
           isEditing:true,
+          fileType:this.inputValue.fileType,
           icon: this.inputValue.leafIcon,
         }
       )

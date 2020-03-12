@@ -2,7 +2,10 @@
   "title":"Blank",
   "thumbnail":"images/blank.jpg",
   "pages":[
-    "index.html"
+    "about.html",
+    "index.html",
+    "product.html",
+    "post.html"
   ],
   "styles":[
     "bootstrap.css"

@@ -12,7 +12,7 @@
         {{$t('toolbar.new')}}
       </div-->
       <div class="button open"
-        @click="openDialog = true"
+        @click="showOpenDialog"
       > 
         <i class="fas fa-folder-open"></i> 
         {{$t('toolbar.open')}}
@@ -74,6 +74,10 @@ export default {
   methods:{
     themesClick(){
       this.themeDialog = true
+    },
+
+    showOpenDialog(){
+      this.openDialog = true
     },
 
     changeTheme(theme){

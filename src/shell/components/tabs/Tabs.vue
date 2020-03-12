@@ -1,9 +1,9 @@
 <template>
-  <div class="page-tabs">
+  <div class="tabs">
     <ul  class="tab-heads">
       <li v-for="tab in tabs" class="head-item" :class="{ 'active': tab.isShow }" 
         @click="selectTab(tab)">
-          {{ tab.name }} <span class="close">×</span>
+          {{ tab.name }}
       </li>
     </ul>
     <div class="tab-body">
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'PageTabs',
+  name: 'Tabs',
   data() {
     return {tabs: [] };
   },
@@ -32,20 +32,3 @@ export default {
 }
 </script>
 
-<style>
-  .page-tabs{
-  }
-  .page-tabs .tab{
-    flex: 1;
-    height: 0;
-    display: flex;
-    flex-flow: column;
-  }
-
-  .page-tabs .tab-body{
-    flex: 1;
-    display: flex;
-    flex-flow: column;
-  }
-
-</style>

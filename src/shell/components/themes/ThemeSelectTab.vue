@@ -34,7 +34,7 @@ export default {
   mounted () {
     if(!this.api) return
 
-    this.$axios.get(this.api)
+    $axios.get(this.api)
     .then((res)=>{
       //console.log(res.data)
       this.themes = res.data

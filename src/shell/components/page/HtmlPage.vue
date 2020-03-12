@@ -80,16 +80,13 @@
 </template>
 
 <script>
-import Tab from '../tabs/Tab.vue'
-import PageTabs from '../tabs/PageTabs.vue'
 
 export default {
   name: 'HtmlPage',
   components:{
-    PageTabs,
-    Tab,
   },
   props:{
+    value:{ default:()=>{return{}} },
     breakpoints : {
       default : ()=>{ 
         this.xs = '490'

@@ -70,7 +70,7 @@ export default {
 
   mounted () {
     this.selectedTheme = null
-    this.$axios.get('api/themes')
+    $axios.get('api/themes')
     .then((res)=>{
       this.themes = res.data
     })//.catch(function (error) {

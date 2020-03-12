@@ -209,60 +209,6 @@ a:hover{
   cursor: s-resize;
 }
 
-.vular-studio .page-tabs .tab-heads{
-  height: 33px;
-  display: flex;
-  align-items: flex-end;
-
-  list-style: none;
-  margin:0;
-  padding:0;
-
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.vular-studio .page-tabs .tab-heads .head-item{
-  height: 30px;
-  font-size: 12px;
-  color:#FFF;
-  padding-left:10px;
-  padding-right: 10px;
-  display: flex;
-  align-items: center;
-  cursor: default;
-}
-
-.vular-studio .page-tabs .tab-heads .head-item.active{
-  background: #494c45;
-  border-radius: 3px 3px 0 0;
-}
-
-.vular-studio .page-tabs .tab-heads .head-item .close{
-  margin-left: 10px;
-  background: #272727;
-  width: 16px;
-  height: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  padding-bottom: 2px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.vular-studio .page-tabs .tab-heads .head-item .close:hover{
-  background: #e62121;
-}
-
-.vular-studio .page-tabs .tab-body{
-  flex: 1;
-  display: flex;
-  flex-flow: column;
-}
 
 .vular-studio .scroll-y{
   overflow-y: auto;

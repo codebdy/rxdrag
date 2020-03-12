@@ -20,7 +20,9 @@
               <NodeTree v-model="files" 
                :openIcon="'fas fa-folder-open'" 
                :closeIcon="'fas fa-folder'"
-               :editable = 'true' >
+               :editable = 'true'
+               @nodeSelected="fileSelect"
+              >
                </NodeTree>
             </tab>
           </WidgetTabs>
@@ -139,7 +141,7 @@ export default {
       if(themeToolbox){
         let themeToolboxGroup = {
           title : this.$t('toolbox.theme'),
-          items:themeToolbox
+          items : themeToolbox
         }
         let toolbox = [themeToolboxGroup]
         toolbox.push.apply(toolbox, this.baseToolbox)
@@ -153,15 +155,19 @@ export default {
   watch:{
     currentTheme(theme){
       this.showFiles(theme)
+      $bus.$emit('themeChanged', theme)
     }
   },
 
   methods:{
+    fileSelect(file){
+      $bus.$emit('fileSelected', file)
+    },
     changeTheme(theme){
       if(!theme.theme){
         return
       }
-      this.$axios.get(theme.theme)
+      $axios.get(theme.theme)
       .then((res)=>{
         this.currentTheme = res.data
       })
@@ -179,6 +185,7 @@ export default {
         opened: false,
         isFolder: true,//不能被编辑，可以新建子节点
         leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
+        fileType:'page',
         children: []
       }
       if(proOrTheme.pages){
@@ -189,6 +196,7 @@ export default {
               selected:false,
               opened:false,
               isEditing:false,
+              fileType:'page',
               icon:"far fa-file-code",
             }
           )
@@ -203,6 +211,7 @@ export default {
         opened: false,
         isFolder: true,//不能被编辑，可以新建子节点
         leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
+        fileType:'style',
         children: []
       }
       if(proOrTheme.styles){
@@ -214,6 +223,7 @@ export default {
               opened:false,
               isEditing:false,
               icon:"far fa-file-code",
+              fileType:'style',
             }
           )
         })
@@ -226,6 +236,7 @@ export default {
         opened: false,
         isFolder: true,//不能被编辑，可以新建子节点
         leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
+        fileType:'javascript',
         children: []
       }
       if(proOrTheme.javascript){
@@ -237,6 +248,7 @@ export default {
               opened:false,
               isEditing:false,
               icon:"far fa-file-code",
+              fileType:'javascript',
             }
           )
         })
@@ -249,6 +261,7 @@ export default {
         opened: false,
         isFolder: true,//不能被编辑，可以新建子节点
         leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
+        fileType:'image',
         children: []
       }
       if(proOrTheme.images){
@@ -260,6 +273,7 @@ export default {
               opened:false,
               isEditing:false,
               icon:"far fas fa-file-image",
+              fileType:'image',
             }
           )
         })
@@ -270,12 +284,12 @@ export default {
 
   mounted () {
     this.currentTheme = null
-    this.$axios.get('api/theme/default')
+    $axios.get('api/theme/default')
     .then((res)=>{
       this.currentTheme = res.data
     })
 
-    this.$axios.get("api/toolbox").then((res)=>{
+    $axios.get("api/toolbox").then((res)=>{
       this.baseToolbox = res.data
     })
 
