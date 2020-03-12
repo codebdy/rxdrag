@@ -126,8 +126,14 @@
   cursor: pointer;
   border-radius: 2px;
   width: 24px;
-  height: 20px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.node-toolbar .rx-button svg{
+  width: 14px;
+  height: 14px;
 }
 
 .node-toolbar .rx-button:hover{

@@ -141,7 +141,6 @@ export default {
             <title>RXEditor Workspace</title>
             <link href="style/rxeditor.css" rel="stylesheet">
             <link href="vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css" rel="stylesheet">
-            <link href="vendor/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
           </head>
           <body id="page-top" style="background-color:#FFF;padding:0;width:100%; height:100%;">
             <div id="canvas"></div>
