@@ -74,6 +74,7 @@ export default {
   methods: {
     onDrag(event, item){
       this.beginFollowMouse(event, item)
+      $bus.$emit('draggingFromToolbox', item)
     },
 
     followMouse(event){

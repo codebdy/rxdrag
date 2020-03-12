@@ -17,10 +17,10 @@ export class IFrameCommandProxy{
     })
   }
 
-  draggingFromToolbox(rxNameId){
+  draggingFromToolbox(item){
     this.sendMessageToRXEditor({
       name:'draggingFromToolbox',
-      rxNameId:rxNameId
+      item:item
     })
   }
 
@@ -122,6 +122,7 @@ export class IFrameCommandProxy{
 
   sendMessageToRXEditor(message){
     let iframe = this.workspaceFrame;
+    message.pageId = this.pageId
     if(iframe){
       iframe.contentWindow.postMessage(message, '/')
       window.postMessage(message, '/');    

@@ -16,12 +16,12 @@
     <div class="tab-body">
       <div class="tab"
         v-for = "(file, i) in files" 
-        v-if = "file === activedFile"
+        v-show = "file === activedFile"
         :key = "i"
 
       >
         <HtmlPage 
-          v-if="file.fileType === 'page'"
+          v-show="file.fileType === 'page'"
           v-model = "files[i]" 
         ></HtmlPage>
       </div>
@@ -43,27 +43,33 @@ export default {
   data () {
     return {
       files: [],
-      activedFile:null,
+    }
+  },
+  computed: {
+    activedFile () {
+      return this.$store.state.activedFile
     }
   },
 
   mounted () {
-    $bus.$on('fileSelected', this.fileSelected)
+    $bus.$on('fileSelected', this.onFileSelected)
     $bus.$on('themeChanged', ()=>{
       this.files = []
     })
+    //$bus.$on('draggingFromToolbox', this.fileSelected)
   },
 
   methods: {
-    selectFile(file){
-      this.activedFile = file
-    },
-
-
-    fileSelected(file){
-      this.activedFile = file
+    onFileSelected(file){
+      this.selectFile(file)
       this.addFile(file)
     },
+
+    selectFile(file){
+      this.$store.commit('activeFile', file)
+    },
+
+
 
     addFile(file){
       if(!this.containsFile(file)){
@@ -82,21 +88,24 @@ export default {
 
     closeFile(event, file){
       event.stopPropagation()
+      var activedFile = null
       for (var i = 0; i < this.files.length; i++) {
         //如果被关闭的文件被选中，则切换选中
         if(this.files[i] === file){
           if(file === this.activedFile){
             if(i > 0){
-              this.activedFile = this.files[i - 1]
+              activedFile = this.files[i - 1]
             }
             else if(i < this.files.length - 1){
-              this.activedFile = this.files[i + 1]
+              activedFile = this.files[i + 1]
             }
+            this.$store.commit('activeFile', activedFile)
           }
           this.files.splice(i, 1)
           break
         }
       }
+
     },
   },
 }
