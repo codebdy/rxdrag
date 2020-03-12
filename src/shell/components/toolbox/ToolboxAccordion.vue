@@ -73,16 +73,7 @@ export default {
 
   methods: {
     onDrag(event, item){
-      this.draggedItem = item
-      let mouseFollower = this.$refs.mouseFollower
-      let target = event.target||event.srcElement
-      let rect = target.getBoundingClientRect()
-
-      mouseFollower.style.width = rect.width -30 + 'px'
-      mouseFollower.style.height = rect.height -10 + 'px'
-      this.offsetX = event.offsetX
-      this.offsetY = event.offsetY
-      console.log(rect.width + 'px', rect.height + 'px')
+      this.beginFollowMouse(event, item)
     },
 
     followMouse(event){
@@ -102,10 +93,16 @@ export default {
       return (event.clientY - this.offsetY - 2) + 'px'
     },
 
-    beginFollowMouse(mouseFollower,event){
-      //mouseFollower.show()
-      //this.mouseFollower = mouseFollower
-      //this.followMouse(event)
+    beginFollowMouse(event, item){
+      this.draggedItem = item
+      let mouseFollower = this.$refs.mouseFollower
+      let target = event.target||event.srcElement
+      let rect = target.getBoundingClientRect()
+
+      mouseFollower.style.width = rect.width -30 + 'px'
+      mouseFollower.style.height = rect.height -10 + 'px'
+      this.offsetX = event.offsetX
+      this.offsetY = event.offsetY
     },
 
     endFollowMouse(){
@@ -122,6 +119,7 @@ export default {
     position: fixed;
     background: #555555;
     opacity: 0.7;
+    pointer-events: none;
   }
 
   .mouse-follower i{

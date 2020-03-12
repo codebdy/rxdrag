@@ -84,6 +84,7 @@
 </template>
 
 <script>
+import {IFrameCommandProxy} from "./iframe-command-porxy.js"
 
 export default {
   name: 'HtmlPage',
@@ -102,6 +103,13 @@ export default {
       }
     }, 
   },
+  data () {
+    return {
+      size : 'md',
+      content:`<div class="container"></div>`,
+      commandProxy: new IFrameCommandProxy(this.$refs.canvasFrame, this._uid)
+    }
+  },
   computed:{
     inputValue: {
         get:function() {
@@ -115,14 +123,9 @@ export default {
       return this.breakpoints[this.size] + 'px'
     }
   },
-  data () {
-    return {
-      size : 'md',
-      content:`<div class="container"></div>`
-    }
-  },
 
   mounted () {
+    this.commandProxy.serveForShell = this
     let iframedocument =  this.$refs.canvasFrame.contentDocument;//contentWindow.document;
 
     let iframeContent = `<html style="width:100%;height:100%;">
@@ -136,7 +139,7 @@ export default {
             <div id="canvas"></div>
             <script type="text/javascript" src="dist/core.js"/><\/script>
             <script>
-              creatEditorCore()
+              creatEditorCore(${this._uid})
               rxEditor.hangOn('canvas');
             <\/script>
           </body>
@@ -155,6 +158,10 @@ export default {
   },
 
   methods: {
+    onRxEditorReady(){
+      console.log(this._uid)
+      console.log('onRxEditorReady:', this.inputValue.title)
+    }
   },
 }
 </script>

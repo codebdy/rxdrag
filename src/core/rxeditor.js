@@ -9,7 +9,8 @@ import {load, loadOneNode} from "./load"
 import {RXEditorCommandProxy} from "./rxeditor-command-proxy"
 
 export class RXEditor{
-  constructor() {
+  constructor(pageId) {
+    this.pageId = pageId
     this.state = new CanvasState
     this.commandManager = new CommadManager
     this.commandManager.onCommandsChanged = (canUndo, canRedo, commandSchema)=>{
@@ -39,7 +40,7 @@ export class RXEditor{
   }
 
   hangOn(id){
-    let commandProxy = new RXEditorCommandProxy
+    let commandProxy = new RXEditorCommandProxy(this.pageId)
     this.workspace = document.getElementById(id)
     this.activedLabel.render(this.workspace)
     this.focusedLabel.render(this.workspace)

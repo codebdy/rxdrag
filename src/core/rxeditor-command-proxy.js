@@ -1,5 +1,6 @@
 export class RXEditorCommandProxy{
-  constructor(){
+  constructor(pageId){
+    this.pageId = pageId
     window.addEventListener("message", (event)=>{
         this.handleMessage(event.data)
     });
@@ -99,6 +100,7 @@ export class RXEditorCommandProxy{
 
 
   sendMessage(message){
+    message.pageId = this.pageId
     window.parent.postMessage(message, '/');    
   }
 }

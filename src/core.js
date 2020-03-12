@@ -1,5 +1,5 @@
 import initEditor from "./shell/init-editor"
 
-window.creatEditorCore = ()=>{
-  initEditor()
+window.creatEditorCore = (pageId)=>{
+  initEditor(pageId)
 }

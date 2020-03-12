@@ -1,9 +1,13 @@
 export class IFrameCommandProxy{
-  constructor(workspaceFrame){
+  constructor(workspaceFrame, pageId){
+    this.pageId = pageId
     this.workspaceFrame = workspaceFrame
     //this.waitingAccembles = {}
     window.addEventListener("message", (event)=>{
+      let message = event.data
+      if(message.pageId === this.pageId){
         this.handleMessage(event.data);
+      }
     });
   }
 
