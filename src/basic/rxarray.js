@@ -27,7 +27,7 @@ export function after(refence, array){
 }
 
 
-export function inertBefore(child, refence, array){
+export function insertBefore(child, refence, array){
   for(var i = 0; i < array.length; i++){
     if(array[i] === refence){
       array.splice(i, 0, child)
@@ -38,7 +38,7 @@ export function inertBefore(child, refence, array){
   array.push(child)
 }
 
-export function inertAfter(child, refence, array){
+export function insertAfter(child, refence, array){
   for(var i = 0; i < array.length; i++){
     if(array[i] === refence){
       array.splice(i + 1, 0, child)

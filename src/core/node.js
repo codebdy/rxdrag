@@ -1,5 +1,5 @@
 import {NodeView} from "./node-view"
-import {add, remove, first, last, insertBefore, insterAfter, contains, after} from "../basic/rxarray"
+import {add, remove, first, last, insertBefore,insertAfter, contains, after, before} from "../basic/rxarray"
 import {NormalState, ActiveState, FocusState, DragoverState, DisableState, DraggedState} from "./node-state"
 
 function insterAfterDom(newElement,targetElement){
@@ -259,10 +259,10 @@ export class Node{
   }
 
   moveBefore(brother){
-    if(before(brother.children) !== this){
+    if(before(brother, this.children) !== this){
       this.removeFromParent()
       this.parent = brother.parent
-      inertBefore(this, brother, brother.parent.children);
+      insertBefore(this, brother, brother.parent.children);
       if(brother.parent.view && brother.parent.view.$dom
         && brother.view && brother.view.$dom
         && this.view && this.view.$dom)
@@ -271,10 +271,10 @@ export class Node{
   }
 
   moveAfter(brother){
-    if(after(brother.children) !== this){
+    if(after(brother, this.children) !== this){
       this.removeFromParent()
       this.parent = brother.parent
-      inertAfter(this, brother, brother.parent.children);
+      insertAfter(this, brother, brother.parent.children);
       if(brother.view && brother.view.$dom 
         && this.view && this.view.$dom) {
         insterAfterDom(this.view.$dom, brother.view.$dom)
@@ -305,9 +305,9 @@ export class Node{
     return this
   }
 
-  inertAfterSelf(brother){
+  insertAfterSelf(brother){
     brother.parent = this.parent
-    inertAfter(brother, this, this.parent.children);
+    insertAfter(brother, this, this.parent.children);
     return this
   }
 

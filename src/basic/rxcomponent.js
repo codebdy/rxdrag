@@ -1,4 +1,4 @@
-import {add, contains, remove, inertBefore} from "./rxarray"
+import {add, contains, remove, insertBefore} from "./rxarray"
 
 export class RXComponent{
   constructor(elementName = 'div'){
@@ -195,7 +195,7 @@ export class RXComponent{
   }
 
   insertBefore(child, refence){
-    inertBefore(child, refence, this.children)
+    insertBefore(child, refence, this.children)
   }
 
 }
