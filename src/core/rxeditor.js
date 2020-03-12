@@ -7,6 +7,7 @@ import {NodeToolbar} from "./node-toolbar"
 import {MiniEditbar} from "./mini-editbar"
 import {load, loadOneNode} from "./load"
 import {RXEditorCommandProxy} from "./rxeditor-command-proxy"
+import {BSContainer} from "../elements/bootstrap/layout/bs-container"
 
 export class RXEditor{
   constructor(pageId) {
@@ -108,13 +109,18 @@ export class RXEditor{
     this.canvas.allToNormalState()
   }
 
-  dragFromToolbox(rxNameId){
+  dragFromToolbox(item){
     if(this.commandManager.movingCommand || this.state.preview) return
-    let element = this.getElementByRxNameId(rxNameId)
-    let draggedNode = element.isThemeBlock ? element.clone() : element.clone().loadConfig()
+    let draggedNode = this.parseNode(item)
+    //let element = this.getElementByRxNameId(rxNameId)
+    //let draggedNode = element.isThemeBlock ? element.clone() : element.clone().loadConfig()
     this.commandManager.startNew(draggedNode)
     this.beginFollowMouse()
     this.clearFocusStates()
+  }
+
+  parseNode(item){
+    return new BSContainer
   }
 
   assembleWithTheme(theme){

@@ -107,7 +107,7 @@ export default {
     return {
       size : 'md',
       content:`<div class="container"></div>`,
-      commandProxy: new IFrameCommandProxy(this.$refs.canvasFrame, this._uid),
+      commandProxy: new IFrameCommandProxy(this._uid),
       //actived: false,
     }
   },
@@ -124,7 +124,7 @@ export default {
     actived(){
       return this.inputValue === this.$store.state.activedFile
     },
-    
+
     width(){
       return this.breakpoints[this.size] + 'px'
     }
@@ -132,10 +132,10 @@ export default {
 
   mounted () {
     this.commandProxy.serveForShell = this
+    this.commandProxy.iframe = this.$refs.canvasFrame
     //$bus.$on('activedFile', this.onFileActived)
     $bus.$on('draggingFromToolbox', this.draggingFromToolbox)
     let iframedocument =  this.$refs.canvasFrame.contentDocument;//contentWindow.document;
-
     let iframeContent = `<html style="width:100%;height:100%;">
           <head>
             <title>RXEditor Workspace</title>
@@ -175,14 +175,14 @@ export default {
 
     draggingFromToolbox(item){
       if(this.actived){
-        console.log('send in HTMLPage', this.inputValue.title)
+        //console.log('send in HTMLPage', this.inputValue.title)
         this.commandProxy.draggingFromToolbox(item)
       }
     },
     onRxEditorReady(){
       console.log(this._uid)
       console.log('onRxEditorReady:', this.inputValue.title)
-    }
+    },
   },
 }
 </script>

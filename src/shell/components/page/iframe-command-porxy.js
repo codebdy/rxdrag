@@ -1,7 +1,6 @@
 export class IFrameCommandProxy{
-  constructor(workspaceFrame, pageId){
+  constructor(pageId){
     this.pageId = pageId
-    this.workspaceFrame = workspaceFrame
     //this.waitingAccembles = {}
     window.addEventListener("message", (event)=>{
       let message = event.data
@@ -93,19 +92,19 @@ export class IFrameCommandProxy{
         this.waitingAccembleTreeView(message.treeViewNodes)
         break;
       case 'takeOverDraggingByWorkspace':
-        this.serveForShell.endFollowMouse()
+        $bus.$emit('endFollowMouse')
         break;
       case 'focusNode':
-        this.serveForShell.focusNode(message.node)
+        $bus.$emit('focusNode', message.node)
         break;
       case 'unFocusNode':
-        this.serveForShell.unFocusNode(message.id)
+        $bus.$emit('unFocusNode', message.id)
         break;
       case 'commandExcuted':
-        this.serveForShell.commandExcuted(message.canUndo, message.canRedo, message.commandSchema)
+        $bus.$emit('unFocusNode', message.canUndo, message.canRedo, message.commandSchema)
         break;
       case 'saveCodeFiles':
-        this.serveForShell.saveCodeFiles(message.innerHTML, message.json)
+        $bus.$emit('unFocusNode', message.innerHTML)
         break;
     }
   }
@@ -121,7 +120,7 @@ export class IFrameCommandProxy{
 
 
   sendMessageToRXEditor(message){
-    let iframe = this.workspaceFrame;
+    let iframe = this.iframe;
     message.pageId = this.pageId
     if(iframe){
       iframe.contentWindow.postMessage(message, '/')

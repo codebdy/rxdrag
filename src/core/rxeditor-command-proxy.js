@@ -2,7 +2,9 @@ export class RXEditorCommandProxy{
   constructor(pageId){
     this.pageId = pageId
     window.addEventListener("message", (event)=>{
+      if(this.pageId === event.data.pageId){
         this.handleMessage(event.data)
+      }
     });
 
     this.focusNode = (node)=>{
@@ -66,7 +68,7 @@ export class RXEditorCommandProxy{
         })
         break;
       case 'draggingFromToolbox':
-        this.serveForRXEditor.dragFromToolbox(message.rxNameId)
+        this.serveForRXEditor.dragFromToolbox(message.item)
         break;
       case 'endDragFromToolbox':
         this.serveForRXEditor.endDragFromToolbox(message.rxNameId)

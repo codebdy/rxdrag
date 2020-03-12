@@ -65,6 +65,7 @@ export default {
   mounted () {
     document.addEventListener('mousemove', this.followMouse)
     document.addEventListener('mouseup', this.endFollowMouse)
+    $bus.$on('endFollowMouse', this.endFollowMouse)
   },
   beforeDestroyed() {
     document.removeEventListener('mousemove', this.followMouse)

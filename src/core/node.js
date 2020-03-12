@@ -1,5 +1,5 @@
 import {NodeView} from "./node-view"
-import {add, remove, first, last, insertBefore, insterAfter, contains} from "../basic/rxarray"
+import {add, remove, first, last, insertBefore, insterAfter, contains, after} from "../basic/rxarray"
 import {NormalState, ActiveState, FocusState, DragoverState, DisableState, DraggedState} from "./node-state"
 
 function insterAfterDom(newElement,targetElement){
@@ -165,7 +165,7 @@ export class Node{
 
   createMouseFollower(){
     let followerElement = document.createElement('div')
-    add('mouse-follow', followerElement.classList)
+    followerElement.classList.add('mouse-follow')
     if(!this.parent){
       followerElement.style.width = this.toolboxInfo.mouseFollowerWidth
     }
