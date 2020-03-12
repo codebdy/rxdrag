@@ -57,7 +57,7 @@ export default {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(20, 20, 20, 0.9);
+  background: rgba(0, 0, 0, 0.5);
 }
 .modal-mask .modal{
   position: fixed;

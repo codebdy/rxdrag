@@ -19,13 +19,11 @@ export default {
     }
   },
 
-  methods: {
-  },
 }
 </script>
 
 <style>
-  .toolbox-element .element-title{
+  .element-title{
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -41,7 +39,7 @@ export default {
     align-items: center;
   }
 
-  .toolbox-element .element-title i{
+  .element-title i{
     margin-right: 5px;
     margin-top:1px;
   }

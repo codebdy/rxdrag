@@ -17,7 +17,9 @@
           :key = "j"
         >
           <template #heading>
-            <div class="element-title">
+            <div class="element-title"
+              @mousedown = "onDrag($event, item)"
+            >
               <i class="fas fa-file"></i> {{item.title}}
             </div>
           </template>
@@ -29,6 +31,10 @@
         </MouseOverPop>
       </template>
     </CollapsibleItem>
+    <div v-show="draggedItem && showMouseFollower" 
+      class="mouse-follower element-title" ref="mouseFollower"> 
+      <i class="fas fa-file"></i> {{draggedItem ? draggedItem.title : ''}} 
+    </div>
   </div>
 </template>
 
@@ -46,6 +52,79 @@ export default {
   props:{
     groups:{ default:[] }, 
   },
+
+  data () {
+    return {
+      draggedItem : null,
+      offsetX : 0,
+      offsetY : 0,
+      showMouseFollower : false,
+    }
+  },
+
+  mounted () {
+    document.addEventListener('mousemove', this.followMouse)
+    document.addEventListener('mouseup', this.endFollowMouse)
+  },
+  beforeDestroyed() {
+    document.removeEventListener('mousemove', this.followMouse)
+    document.removeEventListener('mouseup', this.endFollowMouse)
+  },
+
+  methods: {
+    onDrag(event, item){
+      this.draggedItem = item
+      let mouseFollower = this.$refs.mouseFollower
+      let target = event.target||event.srcElement
+      let rect = target.getBoundingClientRect()
+
+      mouseFollower.style.width = rect.width -30 + 'px'
+      mouseFollower.style.height = rect.height -10 + 'px'
+      this.offsetX = event.offsetX
+      this.offsetY = event.offsetY
+      console.log(rect.width + 'px', rect.height + 'px')
+    },
+
+    followMouse(event){
+      if(this.draggedItem){
+        let mouseFollower = this.$refs.mouseFollower
+        this.showMouseFollower = true
+        mouseFollower.style.left =  this.followX(event)
+        mouseFollower.style.top = this.followY(event)
+      }
+    },
+
+    followX(event){
+      return (event.clientX - this.offsetX - 2) + 'px'
+    },
+
+    followY(event){
+      return (event.clientY - this.offsetY - 2) + 'px'
+    },
+
+    beginFollowMouse(mouseFollower,event){
+      //mouseFollower.show()
+      //this.mouseFollower = mouseFollower
+      //this.followMouse(event)
+    },
+
+    endFollowMouse(){
+      this.showMouseFollower = false
+      this.draggedItem = null
+    },
+  },
   
 }
 </script>
+
+<style>
+  .mouse-follower{
+    position: fixed;
+    background: #555555;
+    opacity: 0.7;
+  }
+
+  .mouse-follower i{
+
+  }
+</style>
