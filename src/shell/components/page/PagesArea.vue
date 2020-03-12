@@ -143,7 +143,7 @@ export default {
   justify-content: center;
   border-radius: 50%;
   padding-bottom: 2px;
-  cursor: pointer;
+  cursor: default;
   font-weight: bold;
 }
 
