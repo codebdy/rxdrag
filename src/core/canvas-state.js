@@ -5,7 +5,7 @@ export class CanvasState extends ObjectState{
     super()
     this.__screenWidth = 'md'
     this.__preview = false
-    this.__showEditMargin = false
+    this.__showEditMargin = true
     this.__showOutline = true
     this.__showLabel = true
 

@@ -20,21 +20,31 @@ export class NodeParser{
     return nodes
   }
 
-  paraseNode(element){
+  paraseNode(element, parent){
     var node 
     if(element.classList.contains('container')){
       node = new ClassNode('container')
     }
     else{
-      node = new HtmlNode
+      node = new HtmlNode(element.tagName)
     }
+
+    this.copyClassList(element.classList, node.meta.classList)
     for(var i = 0; i < element.childNodes.length; i++){
       let child = element.childNodes[i]
       console.log(child, child.nodeName, child.nodeType)
-      node.children.push(this.paraseNode(child))
+      node.children.push(this.paraseNode(child, node))
     }
 
+    node.parent = parent
+
     return node
+  }
+
+  copyClassList(from, to){
+    from.forEach(cssClass=>{
+      to.push(cssClass)
+    })
   }
 
 }
