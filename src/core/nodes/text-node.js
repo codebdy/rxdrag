@@ -1,8 +1,10 @@
+import {CharNode} from "./char-node"
 
 export class TextNode{
   constructor(text) {
   	this.text = text
     this.seedId()
+    this.isTextNode = true
 	}
   seedId(){
     if(!TextNode.idSeed) TextNode.idSeed = 1
@@ -54,6 +56,14 @@ export class TextNode{
     }
 
     return view
+  }
+
+  charNodes(){
+    let nodes = []
+    for(var i = 0; i < this.text.length; i++){
+      nodes.push(new CharNode(this.text[i], this.parent))
+    }
+    return nodes
   }
 
 }

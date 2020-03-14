@@ -36,12 +36,12 @@ export class NodeView{
     }
   }
 
-  /*refresh(model, parentDoment){
+  refresh(model, parentDoment){
     if(!this.$dom) return;
     this.putDown()
     this.parentDoment = parentDoment
     this.doRefresh(model, parentDoment, this.$dom)
-  }*/
+  }
 
   doRender(model, parentDoment, domElement){
     domElement.innerHTML = model.innerHTML ? model.innerHTML : ''
@@ -51,12 +51,12 @@ export class NodeView{
     parentDoment.appendChild(domElement);
   }
 
-  /*doRefresh(model, parentDoment, domElement){
+  doRefresh(model, parentDoment, domElement){
     this.renderStylesAndClasses(model, domElement)
     this.bindEvents(domElement, model.on)
     this.showAttributes(model,domElement)
     parentDoment.appendChild(domElement);
-  }*/
+  }
 
 
   renderStylesAndClasses(model, domElement){

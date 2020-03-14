@@ -15,7 +15,7 @@ function insterAfterDom(newElement,targetElement){
 export class Node{
   constructor() {
     this.seedId()
-    this.toolboxInfo = {mouseFollowerWidth : '200px'}
+    this.mouseFollowerWidth =  '200px'
   	this.children = []
   	this.view = new NodeView()
     this.dropMargin = 30;
@@ -158,6 +158,13 @@ export class Node{
     })
   }
 
+  refresh(){
+    this.view.refresh(this.toViewModel(), this.getParentViewDomElement())
+    this.children.forEach(function(child){  
+      child.render()
+    })
+  }
+
   preview(parentDomElement){
     let dom = this.view.preview(this.toPreviewModel(), parentDomElement)
     this.children.forEach((child)=>{  
@@ -178,7 +185,7 @@ export class Node{
     let followerElement = document.createElement('div')
     followerElement.classList.add('mouse-follow')
     if(!this.parent){
-      followerElement.style.width = this.toolboxInfo.mouseFollowerWidth
+      followerElement.style.width = this.mouseFollowerWidth
     }
     this.renderMouseFollower(followerElement)
 
@@ -318,7 +325,7 @@ export class Node{
 
   clone(){
     let copy = this.make()
-    copy.toolboxInfo = JSON.parse(JSON.stringify(this.toolboxInfo))
+    //copy.toolboxInfo = JSON.parse(JSON.stringify(this.toolboxInfo))
     this.children.forEach((child)=>{  
       copy.pushChild(child.clone())
     })
@@ -477,7 +484,18 @@ export class Node{
   }
 
   changeTextnodeToCharNode(){
+    let children = []
+    this.children.forEach(child=>{
+      if(child.isTextNode){
+        children.push.apply(children, child.charNodes())
+      }
+      else{
+        children.push(child)
+      }
+    })
 
+    this.children = children
+    this.render()
   }
 
   changeCharNodeToTextNode(){

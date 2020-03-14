@@ -1,11 +1,31 @@
 import {RXNode} from './rxnode.js'
 import {add, remove} from "../../basic/rxarray"
 
-export class ClassNode extends RXNode{
-  constructor(char) {
+export class CharNode extends RXNode{
+  constructor(char, parent) {
     super()
+    this.parent = parent
     this.acceptedChildren = []
-    this.meta.innerHTML = char
+    this.char = char
     this.editMarginStyle = {}
+    this.widthDropMargin = 5;
+    this.heightDropMargin = 5;
   }
+
+  toViewModel(){
+    return {
+      styles:{},
+      classList:['char-node'],
+      attributes:{},
+      innerHTML : this.char,
+      name:'span',
+      on:{
+        onmousemove:this.mousemove,
+        onmouseover:this.mouseover,
+        onmouseout:this.mouseout,
+        //onclick:this.onclick,
+      }
+    }
+  }
+
 }

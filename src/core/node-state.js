@@ -131,7 +131,7 @@ export class DragoverState extends CanDropState{
     super(node)
     this.classList.push('dragover')
     this.enter = ()=>{
-      //textnode 转成span
+      node.changeTextnodeToCharNode()
     }
     this.leave = ()=>{
       //span转成textnode

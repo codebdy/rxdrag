@@ -47,7 +47,10 @@ export class RXNode extends Node{
       model.attributes.for = ''
     }
 
-    return model
+    if(this.meta.innerHTML){
+      console.log('innerHTML', this.meta.innerHTML)
+      model.innerHTML = this.meta.innerHTML
+    }
 
     return model
   }

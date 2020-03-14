@@ -5,7 +5,6 @@ import {CommadManager} from "./commands"
 import {NodeLabel} from "./node-label"
 import {NodeToolbar} from "./node-toolbar"
 import {MiniEditbar} from "./mini-editbar"
-import {load, loadOneNode} from "./load"
 import {RXEditorCommandProxy} from "./rxeditor-command-proxy"
 import {BSContainer} from "../elements/bootstrap/layout/bs-container"
 
@@ -127,62 +126,6 @@ export class RXEditor{
     //return new BSContainer
   }
 
-  assembleWithTheme(theme){
-    this.loadTheme(theme)
-    let toolbox = {
-      groups : {},
-      toolItems : [],
-    }
-    let themeGroupId = 'groupThemUI'
-    if(theme.uiBlocks){
-      toolbox.groups[themeGroupId] = {
-        label:'Theme UI',
-      }
-      if(theme.uiBlocks){
-        this.loadThemeToolItems(theme.uiBlocks, themeGroupId)
-      }
-    }
-
-    toolbox.groups.groupLayout = {
-      label:'Layout',
-    }
-
-    toolbox.groups.groupContent = {
-      label:'Content',
-    }
-
-    toolbox.groups.groupComponents = {
-      label:'Components',
-    }
-    toolbox.groups.groupForm = {
-      label:'Form',
-    }
-
-    toolbox.groups.groupHtml = {
-      label:'HTML',
-    }
-
-    for(var moduleName in this.elements){
-      let theModule = this.elements[moduleName]
-      for(var elementName in theModule){
-        let toolboxInfo = theModule[elementName].toolboxInfo
-        toolboxInfo.rxNameId = moduleName + "." + elementName
-        toolbox.toolItems.push(toolboxInfo)
-      }
-    }
-    return {
-      toolbox: toolbox,
-      treeViewNodes: this.canvas.generateTreeViewNodes()
-    }
-  }
-
-  loadTheme(theme){
-    if(theme.initialPage){
-      this.canvas.children = load(theme.initialPage)
-      this.render()
-    }
-  }
-
   getElementByRxNameId(rxNameId){
     let nameArray = rxNameId.split('.')
     let moduleId = nameArray[0]
@@ -289,19 +232,6 @@ export class RXEditor{
     this.render()
   }
 
-
-  loadThemeToolItems(uiBlocks, groudId){
-    this.elements.theme = {}
-    uiBlocks.forEach((uiBlock) =>{
-      let dataJson = JSON.parse(uiBlock.json)
-      let node = loadOneNode(dataJson)
-      node.toolboxInfo = JSON.parse(JSON.stringify(uiBlock.toolboxInfo))
-      node.toolboxInfo.groupId = groudId
-      node.isThemeBlock = true
-      //node.mouseFollowerWidth = uiBlock.mouseFollowerWidth
-      this.elements.theme[node.toolboxInfo.elementId] = node
-    })
-  }
 
   focusNodeFromShell(node){
     this.canvas.focusNode(node)

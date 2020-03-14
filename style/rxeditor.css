@@ -15,6 +15,13 @@
   background-color: #606060;
 }
 
+.char-node{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .show-outline{
   outline:dashed #70baf7 1px;
 }
