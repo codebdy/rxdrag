@@ -14,9 +14,9 @@ export class RXNode extends Node{
     //copy.meta.tag = this.meta.tag
     //copy.meta.innerHTML = this.meta.innerHTML
 
-    this.addons.forEach((addon)=>{
-      addon.copyMeta(this.meta, copy.meta)
-    })
+    //this.addons.forEach((addon)=>{
+    //  addon.copyMeta(this.meta, copy.meta)
+    //})
 
     return copy
   }

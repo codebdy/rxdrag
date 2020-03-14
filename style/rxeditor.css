@@ -86,6 +86,10 @@
 .dragover{
   position:relative;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .dragover::before{

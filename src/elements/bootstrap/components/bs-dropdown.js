@@ -36,11 +36,6 @@ export class BSDropdown extends HTMLDiv{
     this.menu.view.$dom.classList.toggle('show')
   }
 
-  configSelf(){
-    this.pushChild(this.button)
-    this.pushChild(this.menu)
-  }
-
   clone(){
     let copy = this.make()
     copy.button = this.button.clone().setDropdown(copy)

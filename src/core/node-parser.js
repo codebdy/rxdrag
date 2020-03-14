@@ -14,16 +14,31 @@ export class NodeParser{
     let nodes = []
     for(var i = 0; i < this.$dom.childNodes.length; i++){
         let node = this.paraseNode(this.$dom.childNodes[i])
-        nodes.push(node)
+        if(node){
+          nodes.push(node)
+        }
     }
-
+    console.log(nodes)
     return nodes
   }
 
   paraseNode(element, parent){
     var node 
+    if(element.nodeType === 3){
+      let text = element.textContent.trim()
+      if(!text){
+        return ''
+      }
+      console.dir(element)
+      let node =  new TextNode(text)
+      node.parent = parent
+      return node 
+    }
     if(element.classList.contains('container')){
       node = new ClassNode('container')
+    }
+    else if(element.classList.contains('row')){
+      node = new ClassNode('row')
     }
     else{
       node = new HtmlNode(element.tagName)
@@ -32,8 +47,11 @@ export class NodeParser{
     this.copyClassList(element.classList, node.meta.classList)
     for(var i = 0; i < element.childNodes.length; i++){
       let child = element.childNodes[i]
-      console.log(child, child.nodeName, child.nodeType)
-      node.children.push(this.paraseNode(child, node))
+
+      let childNode = this.paraseNode(child, node)
+      if(childNode){
+        node.children.push(childNode)
+      }
     }
 
     node.parent = parent

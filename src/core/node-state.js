@@ -130,10 +130,15 @@ export class DragoverState extends CanDropState{
   constructor(node) {
     super(node)
     this.classList.push('dragover')
+    this.enter = ()=>{
+      //textnode 转成span
+    }
+    this.leave = ()=>{
+      //span转成textnode
+    }
     this.onMouseout = ()=>{
-      //console.log('mouse out',this.node.constructor.name)
       this.node.changeToState('normalState')
-    };
+    }
   }
 }
 

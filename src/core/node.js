@@ -37,7 +37,7 @@ export class Node{
     } 
 
     //空表示所有都接受，空数组表示都不接受
-    this.acceptedChildren = []
+    this.acceptedChildren = ''//[]
 
     //空和空数组都表示所有都不排除
     this.rejectChildren = ''
@@ -125,10 +125,6 @@ export class Node{
       rxEditor.nodeStateChanged(this, oldState, newState)
     }
 
-  }
-
-  isTextfield() {
-    return false
   }
 
   seedId(){
@@ -237,12 +233,6 @@ export class Node{
     return this.parent.view.$dom
   }
 
-  createChild(nodeName){
-    let child = Node.createNode(this, nodeName)
-    add(child, this.children) 
-    return child
-  }
-
   firstChild(){
     return first(this.children)
   }
@@ -336,10 +326,6 @@ export class Node{
   }
 
   canAccept(child){
-    if(this.isTextfield()){
-      return false
-    }
-
     if(this.acceptedChildren  && this.acceptedChildren.length == 0){
       return false
     }
@@ -490,13 +476,12 @@ export class Node{
     })
   }
 
-  configSelf(){
-    console.log('node configSelf')
+  changeTextnodeToCharNode(){
+
   }
 
-  loadConfig(){
-    this.configSelf()
-    return this
+  changeCharNodeToTextNode(){
+
   }
 
 }
