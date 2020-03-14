@@ -1,4 +1,5 @@
 import {Node} from "../node"
+import {TextNode} from "./text-node"
 
 export class RXNode extends Node{
   constructor() {
@@ -112,6 +113,52 @@ export class RXNode extends Node{
   setEditPadding(padding){
     this.editMarginStyle.padding = padding
     return this
+  }
+
+  changeTextnodeToCharNode(){
+    let children = []
+    this.children.forEach(child=>{
+      if(child.isTextNode){
+        children.push.apply(children, child.charNodes())
+        this.isCharState = true
+      }
+      else{
+        children.push(child)
+      }
+    })
+
+    this.children = children
+    this.render()
+  }
+
+  changeCharNodeToTextNode(){
+    let children = []
+    var textNode = null
+    this.children.forEach(child=>{
+      if(child.isCharNode){
+        let prev = child.previousSbiling()
+        if(!prev || !prev.isCharNode){
+          textNode = new TextNode('')
+          textNode.parent = this
+          children.push(textNode)
+        }
+
+        textNode.text += child.char
+      }
+      else{
+        children.push(child)
+      }
+    })    
+    this.children = children
+    this.render()
+    this.isCharState = false
+  }
+
+  clearCharNodes(){
+    if(this.isCharState){
+      this.changeCharNodeToTextNode()
+    }
+    super.clearCharNodes()
   }
 
 }

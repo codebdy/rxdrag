@@ -134,7 +134,6 @@ export class DragoverState extends CanDropState{
       node.changeTextnodeToCharNode()
     }
     this.leave = ()=>{
-      //span转成textnode
     }
     this.onMouseout = ()=>{
       this.node.changeToState('normalState')

@@ -1,7 +1,7 @@
-import {RXNode} from './rxnode.js'
+import {Node} from '../node.js'
 import {add, remove} from "../../basic/rxarray"
 
-export class CharNode extends RXNode{
+export class CharNode extends Node{
   constructor(char, parent) {
     super()
     this.parent = parent
@@ -10,6 +10,7 @@ export class CharNode extends RXNode{
     this.editMarginStyle = {}
     this.widthDropMargin = 5;
     this.heightDropMargin = 5;
+    this.isCharNode = true;
   }
 
   toViewModel(){

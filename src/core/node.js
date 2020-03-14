@@ -250,6 +250,12 @@ export class Node{
     }
   }
 
+  previousSbiling(){
+    if(this.parent){
+      return before(this, this.parent.children) 
+    }
+  }
+
   moveInTop(targetParent){
     if(first(targetParent.children) !== this){
       this.removeFromParent()
@@ -483,23 +489,9 @@ export class Node{
     })
   }
 
-  changeTextnodeToCharNode(){
-    let children = []
+  clearCharNodes(){
     this.children.forEach(child=>{
-      if(child.isTextNode){
-        children.push.apply(children, child.charNodes())
-      }
-      else{
-        children.push(child)
-      }
+      child.clearCharNodes()
     })
-
-    this.children = children
-    this.render()
   }
-
-  changeCharNodeToTextNode(){
-
-  }
-
 }

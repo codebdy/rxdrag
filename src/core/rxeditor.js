@@ -139,6 +139,7 @@ export class RXEditor{
   dropElement(){
     this.endFollowMouse()
     this.commandManager.finishMoving()
+    this.canvas.clearCharNodes()
   }
 
   endDragFromToolbox(){

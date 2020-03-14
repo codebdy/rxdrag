@@ -66,4 +66,8 @@ export class TextNode{
     return nodes
   }
 
+  clearCharNodes(){
+    
+  }
+
 }
