@@ -38,20 +38,6 @@ export class RXElement extends Node{
 
     this.addedFeilds = []
     this.addedFieldGroups = []
-    //基础数据，持久化也是这部分数据
-    this.meta = {
-      tag : 'div',
-      classList : [],
-      styles : {},
-      attributes : {},
-    }
-    
-    //Schema 信息，用于构建Option编辑部件
-    this.schema = {
-      fields:[],
-      overView:[],
-      groups:[],
-    } 
 
     this.pushGroup({
       id:'textOptions',

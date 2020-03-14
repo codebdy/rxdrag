@@ -12,5 +12,9 @@
   {
     "title":"表单",
     "themes":"api/forms.json"
+  },
+  {
+    "title":"样册",
+    "themes":"api/yangce.json"
   }
 ]

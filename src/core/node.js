@@ -21,6 +21,21 @@ export class Node{
     this.dropMargin = 30;
     //this.mouseFollowerWidth = '200px'
 
+    //基础数据，持久化也是这部分数据
+    this.meta = {
+      tag : 'div',
+      classList : [],
+      styles : {},
+      attributes : {},
+    }
+    
+    //Schema 信息，用于构建Option编辑部件
+    this.schema = {
+      fields:[],
+      overView:[],
+      groups:[],
+    } 
+
     //空表示所有都接受，空数组表示都不接受
     this.acceptedChildren = []
 

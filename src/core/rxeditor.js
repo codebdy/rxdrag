@@ -9,6 +9,8 @@ import {load, loadOneNode} from "./load"
 import {RXEditorCommandProxy} from "./rxeditor-command-proxy"
 import {BSContainer} from "../elements/bootstrap/layout/bs-container"
 
+import {NodeParser} from "./node-parser"
+
 export class RXEditor{
   constructor(pageId) {
     this.pageId = pageId
@@ -38,6 +40,7 @@ export class RXEditor{
 
     this.toolbar = new NodeToolbar
     this.miniEditbar = new MiniEditbar
+    this.nodeParser = new NodeParser
   }
 
   hangOn(id){
@@ -120,7 +123,8 @@ export class RXEditor{
   }
 
   parseNode(item){
-    return new BSContainer
+    return this.nodeParser.parse(item.code)[0]
+    //return new BSContainer
   }
 
   assembleWithTheme(theme){
