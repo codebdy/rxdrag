@@ -1,5 +1,5 @@
 <template>
-  <CollapsibleItem class="option-item" @itemClick = "itemClick">
+  <CollapsibleItem class="option-item" @itemClick = "itemClick" :selected = 'inputValue.selected'>
     <template #heading>
       {{inputValue.label}} 
       <div v-if="changed" class="reset-button" @click="resetAll">{{$t('widgets.reset')}}</div>

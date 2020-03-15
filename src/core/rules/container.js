@@ -7,8 +7,8 @@ export default {
     padding:'30px',
   },
   optionsSchema:{
-  	"container-options":{
-  		fluid:fluid,
-  	}
+  	"container-options":[
+  		fluid,
+  	]
   }
 }

@@ -6,6 +6,7 @@
 </template>
 
 <script>
+//传入所有类列表，从列表中挑选
 export default {
   name: 'RxSwitch',
   props:{

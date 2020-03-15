@@ -26,7 +26,7 @@ export default {
     defaultValue:{ default:'' }, 
     value:{ default:'' }, 
     inputProps:{ default:'' },
-    inputName:{defalut:'input'},
+    inputName:{ defalut:'input' },
   },
   components:{
     RxSwitch,
