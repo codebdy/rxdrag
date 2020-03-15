@@ -38,13 +38,13 @@ export default {
   mounted () {
     $bus.$on('focusNode', this.focusNode)
     $bus.$on('unFocusNode', this.unFocusNode)
-    $bus.$on('optionValueChage', this.optionValueChage)
+    $bus.$on('optionValueChange', this.optionValueChange)
   },
 
   beforeDestroyed() {
     $bus.$off('focusNode', this.focusNode)
     $bus.$off('unFocusNode', this.unFocusNode)
-    $bus.$off('optionValueChage', this.optionValueChage)
+    $bus.$off('optionValueChange', this.optionValueChange)
   },
   methods: {
     focusNode(node, pageId){
@@ -98,13 +98,14 @@ export default {
       return values
     },
 
-    optionValueChage(){
+    optionValueChange(){
       this.options.forEach(optionGroup=>{
         optionGroup.rows.forEach(row=>{
           row.isMultiple ? this.setMultipleValueToClassList(row) : this.setValueToClassList(row)
         })
       })
-      $bus.$emit('nodeChanged', this.node, this.pageId)
+      $bus.$emit('optionBoxChangedNode', this.node, this.pageId)
+      console.log('optionBoxChangedNode')
     },
 
     setMultipleValueToClassList(row){

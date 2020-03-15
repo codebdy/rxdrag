@@ -135,7 +135,7 @@ export default {
     this.commandProxy.iframe = this.$refs.canvasFrame
     //$bus.$on('activedFile', this.onFileActived)
     $bus.$on('draggingFromToolbox', this.draggingFromToolbox)
-    $bus.$on('nodeChanged', this.nodeChanged)
+    $bus.$on('optionBoxChangedNode', this.nodeChanged)
 
     let iframedocument =  this.$refs.canvasFrame.contentDocument;//contentWindow.document;
     let iframeContent = `<html style="width:100%;height:100%;">
@@ -164,7 +164,7 @@ export default {
   destoryed () {
     //delete window.$editorBus
     $bus.$off('draggingFromToolbox', this.draggingFromToolbox)
-    $bus.$off('nodeChanged', this.nodeChanged)
+    $bus.$off('optionBoxChangedNode', this.nodeChanged)
     window.removeEventListener("message", this.receiveCanvasMessage);
   },
 
@@ -186,6 +186,7 @@ export default {
     },
 
     nodeChanged(node, pageId){
+      console.log(node, pageId, this.pageId)
       if(pageId === this.pageId){
         this.commandProxy.nodeChanged(node)
       }

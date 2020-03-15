@@ -57,6 +57,12 @@
     "no-selected" : "没有选中任何元素",
     "container-options" : "Container 选项",
     "fluid" : "Fluid"
+  },
+
+  "overview-box":{
+    "tag" : "标签",
+    "classes" : "类",
+    "attributes" : "属性"
   }
 
 }

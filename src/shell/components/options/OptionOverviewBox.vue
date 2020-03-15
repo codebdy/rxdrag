@@ -1,17 +1,23 @@
 <template>
   <div class="option-overview-box">
-    <div class="overview-box-content">
+    <div 
+      class="overview-box-content"
+      v-if="node"
+    >
       <div class="tag-row">
-        <div class="label">Tag</div> <input value="div" />
+        <div class="label">{{$t('overview-box.tag')}}</div> <input :value="node.meta.tag" />
       </div>
       <div class="class-area">
-        <div class="label"> Classes</div>
-        <RxLabelInput v-model="model"></RxLabelInput> 
+        <div class="label"> {{$t('overview-box.classes')}}</div>
+        <RxLabelInput v-model="node.meta.classList"></RxLabelInput> 
       </div>
       <div>
-        <div class="label">Attributes</div>
-        <RxNameValueInput v-model="attributes"></RxNameValueInput>
+        <div class="label">{{$t('overview-box.attributes')}}</div>
+        <RxNameValueInput v-model="node.meta.attributes"></RxNameValueInput>
       </div>
+    </div>
+    <div v-else style="padding:20px;">
+      {{$t('optionbox.no-selected')}}
     </div>
   </div>
 </template>
@@ -27,7 +33,7 @@ export default {
     RxNameValueInput
   },
   props:{
-    value:{ default:{} }, 
+    value:{ default:()=> {return {}} }, 
   },
   computed:{
     inputValue: {
@@ -41,11 +47,40 @@ export default {
   },
   data () {
     return {
-      model:[],
-      attributes:{},
+      node:null,
+      pageId:'',
+      //classList:[],
+      //attributes:{},
     }
   },
+  mounted () {
+    $bus.$on('focusNode', this.focusNode)
+    $bus.$on('unFocusNode', this.unFocusNode)
+    $bus.$on('optionBoxChangedNode', this.nodeChanged)
+  },
+
+  beforeDestroyed() {
+    $bus.$off('focusNode', this.focusNode)
+    $bus.$off('unFocusNode', this.unFocusNode)
+    $bus.$off('optionBoxChangedNode', this.nodeChanged)
+  },
   methods: {
+
+    focusNode(node, pageId){
+      //console.log(node)
+      this.node = node
+      this.pageId = pageId
+    },
+
+    unFocusNode(){
+      this.node = null
+      this.pageId = ''
+    },
+
+    nodeChanged(node, pageId){
+      this.node = node
+      this.pageId = pageId
+    },
   },
 }
 </script>

@@ -57,7 +57,7 @@ export default {
   },
   watch:{
     inputValue(val){
-      $bus.$emit('optionValueChage')
+      $bus.$emit('optionValueChange')
     },
     deep: true,
   },

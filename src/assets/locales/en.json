@@ -57,6 +57,13 @@
     "no-selected" : "No Elements Selected",
     "container-options" : "Container Options",
     "fluid" : "Fluid"
+  },
+
+  "overview-box":{
+    "tag" : "Tag",
+    "classes" : "Classes",
+    "attributes" : "Attributes"
   }
+
 
 }
