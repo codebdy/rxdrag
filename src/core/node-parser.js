@@ -1,6 +1,7 @@
 import {ClassNode} from './nodes/class-node.js'
-import {HtmlNode} from './nodes/html-node.js'
+import {TagNode} from './nodes/tag-node.js'
 import {TextNode} from './nodes/text-node.js'
+import rules from './rules'
 
 export class NodeParser{
   constructor() {
@@ -37,12 +38,9 @@ export class NodeParser{
     if(element.classList.contains('container')){
       node = new ClassNode('container')
     }
-    else if(element.classList.contains('row')){
-      node = new ClassNode('row')
-    }
-    else{
-      node = new HtmlNode(element.tagName)
-    }
+
+    let clssNode = this.parseClassNode(element)
+    node = clssNode ? clssNode : this.parseTagNode(element)
 
     this.copyClassList(element.classList, node.meta.classList)
     for(var i = 0; i < element.childNodes.length; i++){
@@ -57,6 +55,41 @@ export class NodeParser{
     node.parent = parent
 
     return node
+  }
+
+  parseClassNode(element){
+    for(var ruleName in rules.classRules){
+      let rule = rules.classRules[ruleName]
+      rule.classes = rule.classes ? rule.classes : [ruleName]
+
+      for(var i = 0; i < rule.classes.length; i++){
+        let cssClass = rule.classes[i].toLowerCase()
+        if(element.classList.contains(cssClass)){
+          let node = new ClassNode(cssClass)
+          node.label = rule.label ? rule.label : ruleName
+
+          return node
+        }
+      }
+    }
+  }
+
+  parseTagNode(element){
+    for(var ruleName in rules.tagRules){
+      let rule = rules.tagRules[ruleName]
+      rule.tags = rule.tags ? rule.tags : [ruleName]
+      for(var i = 0; i < rule.tags.length; i++){
+        let tag = rule.tags[i]
+        if(element.tagName.toUpperCase() === tag.toUpperCase()){
+          let node = new TagNode(element.tagName)
+          node.label = rule.label ? rule.label : ruleName
+
+          return node
+        }
+      }
+    }
+
+    return new TagNode(element.tagName)
   }
 
   copyClassList(from, to){

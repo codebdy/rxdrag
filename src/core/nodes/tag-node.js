@@ -1,6 +1,6 @@
 import {RXNode} from './rxnode.js'
 
-export class HtmlNode extends RXNode{
+export class TagNode extends RXNode{
   constructor(tag) {
     super()
     this.meta.tag = tag

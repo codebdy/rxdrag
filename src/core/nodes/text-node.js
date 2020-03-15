@@ -31,21 +31,15 @@ export class TextNode{
   }
 
 
-  refreshState(){
+  refreshState(){}
 
-  }
+  clearDraggedoverStates(){}
 
-  clearDraggedoverStates(){
+  clearActiveStates(){}
 
-  }
+  clearFocusStates(){}
 
-  clearActiveStates(){
-
-  }
-
-  clearFocusStates(){
-  	
-  }
+  clearCharNodes(){}
 
   toTreeViewNode(){
     let view = {
@@ -65,9 +59,4 @@ export class TextNode{
     }
     return nodes
   }
-
-  clearCharNodes(){
-    
-  }
-
 }
