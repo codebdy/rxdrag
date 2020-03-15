@@ -95,10 +95,10 @@ export class IFrameCommandProxy{
         $bus.$emit('endFollowMouse')
         break;
       case 'focusNode':
-        $bus.$emit('focusNode', message.node)
+        $bus.$emit('focusNode', message.node, message.pageId)
         break;
       case 'unFocusNode':
-        $bus.$emit('unFocusNode', message.id)
+        $bus.$emit('unFocusNode', message.id, message.pageId)
         break;
       case 'commandExcuted':
         $bus.$emit('commandExcuted', message.canUndo, message.canRedo, message.commandSchema)

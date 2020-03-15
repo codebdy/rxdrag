@@ -5,12 +5,12 @@
     >
       <div class="name-input">
         <input v-model="item[0]"
-          @blur = "nameBlur(i)"
+          @blur = "nameBlur(i)"  @change="onchange"
         >
       </div>
       <div class="separator">:</div>
       <div class="value-input">
-        <input v-model="item[1]">
+        <input v-model="item[1]" @change="onchange">
       </div>
       <div class="clear-button"
         @click="remove(i)"
@@ -67,9 +67,6 @@ export default {
     }
   },
   methods: {
-    addClick(){
-    },
-
     nameBlur(i){
       this.valueArray[i][0] = this.valueArray[i][0].trim()
       if(!this.valueArray[i][0]){
@@ -77,8 +74,14 @@ export default {
       }
     },
 
+    onchange(){
+      this.toInputValue()
+      this.$emit('changed', this.inputValue)
+    },
+
     remove(i){
       this.valueArray.splice(i, 1)
+      this.onchange()
     },
 
     addNew(){
@@ -88,6 +91,7 @@ export default {
         this.newName = ''
         this.newValue = ''
         this.$refs.newName.focus()
+        this.onchange()
       } 
     },
 
@@ -106,10 +110,9 @@ export default {
         }
       }
       return false
-    }
-  },
-  watch: {
-    valueArray() {
+    },
+
+    toInputValue(){
       this.inputValue = {}
       for(var i = 0; i < this.valueArray.length; i++){
         let name = this.valueArray[i][0]
@@ -117,7 +120,7 @@ export default {
         this.inputValue[name] = value
       }
     }
-  }
+  },
 
 }
 </script>

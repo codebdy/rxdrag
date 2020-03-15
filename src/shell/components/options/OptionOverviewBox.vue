@@ -5,7 +5,10 @@
       v-if="node"
     >
       <div class="tag-row">
-        <div class="label">{{$t('overview-box.tag')}}</div> <input :value="node.meta.tag" />
+        <div class="label">{{$t('overview-box.tag')}}</div> 
+        <input v-model="node.meta.tag" 
+          @change="tagChanged"
+        />
       </div>
       <div class="class-area">
         <div class="label"> {{$t('overview-box.classes')}}</div>
@@ -13,7 +16,10 @@
       </div>
       <div>
         <div class="label">{{$t('overview-box.attributes')}}</div>
-        <RxNameValueInput v-model="node.meta.attributes"></RxNameValueInput>
+        <RxNameValueInput 
+          v-model="attributes"
+          @changed = "attributesChanged"
+        ></RxNameValueInput>
       </div>
     </div>
     <div v-else style="padding:20px;">
@@ -33,18 +39,7 @@ export default {
     RxNameValueInput
   },
   props:{
-    //value:{ default:()=> {return {}} }, 
   },
-  /*computed:{
-    inputValue: {
-      get:function() {
-        return this.value;
-      },
-      set:function(val) {
-        this.$emit('input', val);
-      },
-    },
-  },*/
   data () {
     return {
       node:null,
@@ -71,7 +66,7 @@ export default {
       //console.log(node)
       this.node = node
       this.pageId = pageId
-
+      this.tag = node.meta.tag
       //this.classList = node.meta.classList
       //this.attributes = node.meta.attributes
     },
@@ -88,6 +83,16 @@ export default {
 
     classListChange(val){
       $bus.$emit('overViewBoxChangedClassList', val)
+      $bus.$emit('overViewBoxChangedNode', this.node, this.pageId)
+    },
+
+    tagChanged(){
+      $bus.$emit('overViewBoxChangedNode', this.node, this.pageId)
+    },
+
+    attributesChanged(value){
+      this.node.meta.attributes = value
+      $bus.$emit('overViewBoxChangedNode', this.node, this.pageId)
     }
   },
 
