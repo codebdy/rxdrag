@@ -2,6 +2,7 @@ import {ClassNode} from './nodes/class-node.js'
 import {TagNode} from './nodes/tag-node.js'
 import {TextNode} from './nodes/text-node.js'
 import rules from './rules'
+import commonRule from'./rules/common-rule'
 
 export class NodeParser{
   constructor() {
@@ -19,7 +20,6 @@ export class NodeParser{
           nodes.push(node)
         }
     }
-    console.log(nodes)
     return nodes
   }
 
@@ -30,7 +30,6 @@ export class NodeParser{
       if(!text){
         return ''
       }
-      console.dir(element)
       let node =  new TextNode(text)
       node.parent = parent
       return node 
@@ -67,7 +66,8 @@ export class NodeParser{
         if(element.classList.contains(cssClass)){
           let node = new ClassNode(cssClass)
           node.label = rule.label ? rule.label : ruleName
-
+          node.ruleName = ruleName
+          node.rule = rule
           return node
         }
       }
@@ -75,21 +75,26 @@ export class NodeParser{
   }
 
   parseTagNode(element){
+    var node
     for(var ruleName in rules.tagRules){
       let rule = rules.tagRules[ruleName]
       rule.tags = rule.tags ? rule.tags : [ruleName]
       for(var i = 0; i < rule.tags.length; i++){
         let tag = rule.tags[i]
         if(element.tagName.toUpperCase() === tag.toUpperCase()){
-          let node = new TagNode(element.tagName)
+          node = new TagNode(element.tagName)
           node.label = rule.label ? rule.label : ruleName
-
+          node.ruleName = ruleName
+          node.rule = rule
           return node
         }
       }
     }
 
-    return new TagNode(element.tagName)
+    node = new TagNode(element.tagName)
+    node.ruleName = element.tagName.toLowerCase()
+    node.rule = Object.assign({}, commonRule)
+    return node
   }
 
   copyClassList(from, to){

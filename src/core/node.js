@@ -18,7 +18,7 @@ export class Node{
     this.mouseFollowerWidth =  '200px'
   	this.children = []
   	this.view = new NodeView()
-    this.dropMargin = 30;
+    //this.dropMargin = 30;
     //this.mouseFollowerWidth = '200px'
 
     //基础数据，持久化也是这部分数据
@@ -36,17 +36,11 @@ export class Node{
       groups:[],
     } 
 
-    //空表示所有都接受，空数组表示都不接受
-    this.acceptedChildren = ''//[]
-
-    //空和空数组都表示所有都不排除
-    this.rejectChildren = ''
-
     this.editMarginStyle = {
       padding:'30px',
     }
 
-    this.config = []
+    //this.config = []
 
     this.initStates()
 
@@ -153,13 +147,6 @@ export class Node{
 
   render(){
     this.view.render(this.toViewModel(), this.getParentViewDomElement())
-    this.children.forEach(function(child){  
-      child.render()
-    })
-  }
-
-  refresh(){
-    this.view.refresh(this.toViewModel(), this.getParentViewDomElement())
     this.children.forEach(function(child){  
       child.render()
     })
@@ -339,15 +326,16 @@ export class Node{
   }
 
   canAccept(child){
-    if(this.acceptedChildren  && this.acceptedChildren.length == 0){
+    let acceptedChildren = this.rule ? this.rule.acceptedChildren : ''
+    if(acceptedChildren  && acceptedChildren.length == 0){
       return false
     }
 
-    if(this.acceptedChildren && !this.containsInAccepted(child)){
+    if(acceptedChildren && !this.containsInAccepted(child)){
       return false
     }
 
-    if(!this.acceptedChildren && this.containsInExcept(child)){
+    if(!acceptedChildren && this.containsInExcept(child)){
       return false
     }
     return true
@@ -355,9 +343,10 @@ export class Node{
 
 
   containsInAccepted(child){
-    let childName = child.className
-    for(var i = 0; i < this.acceptedChildren.length; i++){
-      if(this.acceptedChildren[i] === childName){
+    let childRuleName = child.ruleName
+    let acceptedChildren = this.rule ? this.rule.acceptedChildren : ''
+    for(var i = 0; i < acceptedChildren.length; i++){
+      if(acceptedChildren[i] === childRuleName){
         return true
       }
     }
@@ -366,10 +355,11 @@ export class Node{
   }
 
   containsInExcept(child){
-    let childName = child.className
+    let childRuleName = child.ruleName
+    let rejectChildren = this.rule ? this.rule.rejectChildren : ''
     if(this.rejectChildren){
-      for(var i = 0; i < this.rejectChildren.length; i++){
-        if(this.rejectChildren[i] === childName){
+      for(var i = 0; i < rejectChildren.length; i++){
+        if(rejectChildren[i] === childRuleName){
           return true
         }
       }

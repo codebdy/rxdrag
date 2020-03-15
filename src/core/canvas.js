@@ -6,15 +6,17 @@ export class Canvas extends Node{
     this.activeState = this.normalState
     this.focusState = this.normalState
     this.parentViewDomElement = workspace;
-    this.acceptedChildren=''
-    this.rejectChildren = ['BSCol','BSW100','HTMLThead', 'HTMLTBody', 
-                           'HTMLTh', 'HTMLTr', 'HTMLTd']
-    this.heightDropMargin = 0;
-    this.widthDropMargin = 0;
-    this.dropMargin = 0;
     this.padding = '30px';
 
     this.stateChanged = (oldState, newState)=>{}
+
+    this.rule = {}
+    this.rule.heightDropMargin = 0
+    this.rule.widthDropMargin = 0
+    this.rule.dropMargin = 0;
+    this.rule.acceptedChildren=''
+    this.rule.rejectChildren = ['col','w100','thead', 'tbody', 
+                           'th', 'tr', 'td']
   }
 
   getParentViewDomElement(){
@@ -23,7 +25,7 @@ export class Canvas extends Node{
 
   toViewModel(){
     let model = super.toViewModel()
-    model.name = 'div'
+    model.tag = 'div'
     model.styles.width = "100%"
     model.styles['min-height'] = "calc(100vh)"
     model.styles.cursor = 'default'

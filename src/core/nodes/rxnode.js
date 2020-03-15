@@ -65,7 +65,7 @@ export class RXNode extends Node{
 
   baseMetaToModel(model){
     let meta = this.meta
-    model.name = meta.tag
+    model.tag = meta.tag
     model.innerHTML = meta.innerHTML
     model.classList.push.apply(model.classList, meta.classList)
     Object.assign(model.styles, meta.styles)

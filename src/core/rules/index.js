@@ -3,6 +3,7 @@ import row from "./row"
 import col from "./col"
 import heading from "./heading"
 
+//用于判断的规则token， 全部小写，不接受大写
 //Label为空，表示label使用类名字
 //- label:''
 //空表示所有都接受，空数组表示都不接受

@@ -5,12 +5,13 @@ export class CharNode extends Node{
   constructor(char, parent) {
     super()
     this.parent = parent
-    this.acceptedChildren = []
     this.char = char
-    this.editMarginStyle = {}
-    this.widthDropMargin = 5;
-    this.heightDropMargin = 5;
     this.isCharNode = true;
+    this.rule = {}
+    this.rule.acceptedChildren = []
+    this.rule.editMarginStyle = {}
+    this.rule.widthDropMargin = 5;
+    this.rule.heightDropMargin = 5;
   }
 
   toViewModel(){
@@ -19,7 +20,7 @@ export class CharNode extends Node{
       classList:['char-node'],
       attributes:{},
       innerHTML : this.char,
-      name:'span',
+      tag:'span',
       on:{
         onmousemove:this.mousemove,
         onmouseover:this.mouseover,

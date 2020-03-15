@@ -15,43 +15,43 @@ export class NodeState {
 
   //插入内部顶部
   mouseAtBefore(event){
-    let margin = this.node.dropMargin
+    let margin = this.node.rule.dropMargin
     return event.offsetX <= margin
         ||event.offsetY <= margin
   }
 
   //插入内部的底部
   mouseAtAfter(event){
-    let margin = this.node.dropMargin 
+    let margin = this.node.rule.dropMargin 
     return event.srcElement.clientWidth - event.offsetX <= margin
         ||event.srcElement.clientHeight - event.offsetY <= margin
   }
 
   //插入外部，左侧相邻元素
   mouseAtLeft(event){
-    return event.offsetX <= this.node.widthDropMargin
+    return event.offsetX <= this.node.rule.widthDropMargin
   }
 
   //插入外部，顶部相邻元素
   mouseAtTop(event){
-    return event.offsetY <= this.node.heightDropMargin
+    return event.offsetY <= this.node.rule.heightDropMargin
   }
 
   //插入外部，右侧相邻元素
   mouseAtRight(event){
-    return event.srcElement.clientWidth - event.offsetX <= this.node.widthDropMargin
-      && this.node.widthDropMargin
+    return event.srcElement.clientWidth - event.offsetX <= this.node.rule.widthDropMargin
+      && this.node.rule.widthDropMargin
   }
 
   //插入外部，底部相邻元素
   mouseAtBottom(event){
-    return event.srcElement.clientHeight - event.offsetY <= this.node.heightDropMargin
-      && this.node.heightDropMargin
+    return event.srcElement.clientHeight - event.offsetY <= this.node.rule.heightDropMargin
+      && this.node.rule.heightDropMargin
   }
 
   //插入内部
   mouseAtDropArea(evetn){
-    let margin = this.node.dropMargin 
+    let margin = this.node.rule.dropMargin 
     //console.log(event.offsetX, event.offsetY)
     return event.offsetX > margin
         && event.offsetY > margin
