@@ -113,8 +113,6 @@ export class RXEditor{
   dragFromToolbox(item){
     if(this.commandManager.movingCommand || this.state.preview) return
     let draggedNode = this.parseNode(item)
-    //let element = this.getElementByRxNameId(rxNameId)
-    //let draggedNode = element.isThemeBlock ? element.clone() : element.clone().loadConfig()
     this.commandManager.startNew(draggedNode)
     this.beginFollowMouse()
     this.clearFocusStates()
@@ -126,16 +124,6 @@ export class RXEditor{
       item.code.replace('--responsive--', responsive == 'xs' ? '' : '-'+ responsive)
       )[0]
     //return new BSContainer
-  }
-
-  getElementByRxNameId(rxNameId){
-    let nameArray = rxNameId.split('.')
-    let moduleId = nameArray[0]
-    let elementId = nameArray[1]
-    let element = this.elements[moduleId][elementId]
-    console.assert(element, 'Can not find element:' + rxNameId)
-    element.toolboxInfo.rxNameId =rxNameId
-    return element
   }
 
   dropElement(){
@@ -185,9 +173,11 @@ export class RXEditor{
 
   nodeStateChanged(node, oldState, newState){
     if(newState === node.focusState && node.focusState !== node.normalState){
+      //console.log(node, oldState, newState)
       this.commandProxy.focusNode(node)
     }
     if(oldState === node.focusState && newState !== node.focusState){
+      console.log(node)
       this.commandProxy.unFocusNode(node)
     }
   }

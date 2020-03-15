@@ -51,6 +51,12 @@
 
   "toobox":{
     "theme" : "Theme"
+  },
+
+  "optionbox":{
+    "no-selected" : "No Elements Selected",
+    "container-options" : "Container Options",
+    "fluid" : "Fluid"
   }
 
 }

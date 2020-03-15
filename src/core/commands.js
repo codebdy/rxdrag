@@ -53,10 +53,10 @@ class CommandMovable{
 
   finish(){
     let draggedNode = this.node
-    draggedNode.changeToState('focusState')
     if(draggedNode.parent){
       draggedNode.parent.changeToState('normalState')
     }
+    draggedNode.changeToState('focusState')
     this.makeExcuteSchema()
   }
 

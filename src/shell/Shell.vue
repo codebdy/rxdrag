@@ -53,7 +53,7 @@
             <tab :name="$t('widgets.options')"
                  :icon="'fas fa-paint-brush'" 
                  :selected="true">
-                <OptionBox v-model="options"></OptionBox>
+                <OptionBox></OptionBox>
             </tab>
             <tab :name="$t('widgets.code')"
                  :icon="'fas fa-code'">
@@ -102,7 +102,7 @@ import StyleBox from './components/options/StyleBox.vue'
 
 //import files from '../mock/files.js'
 import nodes from '../mock/nodes.js'
-import options from '../mock/options.js'
+//import options from '../mock/options.js'
 //import toolbox from '../mock/toolbox.js'
 
 export default {
@@ -128,7 +128,7 @@ export default {
       baseToolbox:[],
       files:[],
       nodes:nodes,
-      options:options,
+      //options:options,
       optionOverview : {},
       code:'<div></div>',
       styles:{},

@@ -51,6 +51,12 @@
 
   "toolbox":{
     "theme" : "主题"
+  },
+
+  "optionbox":{
+    "no-selected" : "没有选中任何元素",
+    "container-options" : "Container 选项",
+    "fluid" : "Fluid"
   }
 
 }

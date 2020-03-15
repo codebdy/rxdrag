@@ -101,10 +101,10 @@ export class IFrameCommandProxy{
         $bus.$emit('unFocusNode', message.id)
         break;
       case 'commandExcuted':
-        $bus.$emit('unFocusNode', message.canUndo, message.canRedo, message.commandSchema)
+        $bus.$emit('commandExcuted', message.canUndo, message.canRedo, message.commandSchema)
         break;
       case 'saveCodeFiles':
-        $bus.$emit('unFocusNode', message.innerHTML)
+        $bus.$emit('saveCodeFiles', message.innerHTML)
         break;
     }
   }
