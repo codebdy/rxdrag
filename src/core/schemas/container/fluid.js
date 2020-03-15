@@ -1,9 +1,9 @@
 export default{
-  label:'Fluid',
-  fieldName: 'classList',
-  widget:'OpSwitch',
-  group:'containerOptions',
-  onValue:'container-fluid',
-  offValue:'container',
+  label:'fluid',
+  inputName:'RxSwitch',
   defaultValue:'container',
+	props:{
+	  onValue:'container-fluid',
+	  offValue:'container',
+	},
 }

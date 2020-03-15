@@ -18,8 +18,6 @@ export class Node{
     this.mouseFollowerWidth =  '200px'
   	this.children = []
   	this.view = new NodeView()
-    //this.dropMargin = 30;
-    //this.mouseFollowerWidth = '200px'
 
     //基础数据，持久化也是这部分数据
     this.meta = {
@@ -29,19 +27,6 @@ export class Node{
       attributes : {},
     }
     
-    //Schema 信息，用于构建Option编辑部件
-    this.schema = {
-      fields:[],
-      overView:[],
-      groups:[],
-    } 
-
-    //this.editMarginStyle = {
-    //  padding:'30px',
-    //}
-
-    //this.config = []
-
     this.initStates()
 
     this.mouseFollower = {
