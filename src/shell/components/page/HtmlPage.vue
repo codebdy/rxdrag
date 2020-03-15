@@ -186,7 +186,7 @@ export default {
     },
 
     nodeChanged(node, pageId){
-      console.log(node, pageId, this.pageId)
+      console.log('HTMLPAge nodeChanged',node, pageId, this.pageId)
       if(pageId === this.pageId){
         this.commandProxy.nodeChanged(node)
       }

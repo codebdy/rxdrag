@@ -39,12 +39,14 @@ export default {
     $bus.$on('focusNode', this.focusNode)
     $bus.$on('unFocusNode', this.unFocusNode)
     $bus.$on('optionValueChange', this.optionValueChange)
+    $bus.$on('overViewBoxChangedClassList', this.classListChanged)
   },
 
   beforeDestroyed() {
     $bus.$off('focusNode', this.focusNode)
     $bus.$off('unFocusNode', this.unFocusNode)
     $bus.$off('optionValueChange', this.optionValueChange)
+    $bus.$off('overViewBoxChangedClassList', this.classListChanged)
   },
   methods: {
     focusNode(node, pageId){
@@ -76,6 +78,16 @@ export default {
       this.options = []
     },
 
+    classListChanged(classList){
+      this.node.meta.classList = classList
+      this.options.forEach(optionGroup=>{
+        optionGroup.rows.forEach(row=>{
+          let value = row.isMultiple ? this.extractMultipleValue(row.valueScope) : this.extractValue(row.valueScope)
+          this.$set(row, 'value',value)
+        })
+      })
+    },
+
     extractValue(valueScope){
       for(var i = 0; i < valueScope.length; i ++){
         let value = valueScope[i]
@@ -105,7 +117,6 @@ export default {
         })
       })
       $bus.$emit('optionBoxChangedNode', this.node, this.pageId)
-      console.log('optionBoxChangedNode')
     },
 
     setMultipleValueToClassList(row){

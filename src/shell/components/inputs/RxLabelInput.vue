@@ -39,7 +39,8 @@ export default {
         return this.value;
       },
       set:function(val) {
-        this.$emit('input', val);
+        this.$emit('input', val)
+        this.$emit('changed', val)
       },
     },
   },
@@ -62,6 +63,7 @@ export default {
             addToArray(val, this.inputValue)
           }
         })
+        this.$emit('changed', this.inputValue)
         this.newValue = ''
       }
 
@@ -69,6 +71,7 @@ export default {
     },
     remove(val){
       removeFromArray(val, this.inputValue)
+      this.$emit('changed', this.inputValue)
     }
 
   },

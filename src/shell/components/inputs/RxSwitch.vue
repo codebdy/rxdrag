@@ -29,6 +29,7 @@ export default {
       this.inputValue = this.inputValue === this.onValue 
                         ? this.offValue 
                         : this.onValue
+      this.$emit('changed', this.inputValue)
     },
   },
 }

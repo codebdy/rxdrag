@@ -6,6 +6,7 @@
       :defaultValue = "defaultValue"
       v-bind = "inputProps"
       v-model = "inputValue"
+      @changed = "valueChanged"
     ></component>
   </div>
 </template>
@@ -54,12 +55,9 @@ export default {
     },
   },
   methods: {
-  },
-  watch:{
-    inputValue(val){
+    valueChanged(val){
       $bus.$emit('optionValueChange')
-    },
-    deep: true,
+    }
   },
 }
 </script>

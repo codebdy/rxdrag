@@ -9,7 +9,7 @@
       </div>
       <div class="class-area">
         <div class="label"> {{$t('overview-box.classes')}}</div>
-        <RxLabelInput v-model="node.meta.classList"></RxLabelInput> 
+        <RxLabelInput v-model="node.meta.classList" @changed="classListChange"></RxLabelInput> 
       </div>
       <div>
         <div class="label">{{$t('overview-box.attributes')}}</div>
@@ -33,9 +33,9 @@ export default {
     RxNameValueInput
   },
   props:{
-    value:{ default:()=> {return {}} }, 
+    //value:{ default:()=> {return {}} }, 
   },
-  computed:{
+  /*computed:{
     inputValue: {
       get:function() {
         return this.value;
@@ -44,13 +44,14 @@ export default {
         this.$emit('input', val);
       },
     },
-  },
+  },*/
   data () {
     return {
       node:null,
       pageId:'',
-      //classList:[],
-      //attributes:{},
+      classList:[],
+      attributes:{},
+      inited:true,
     }
   },
   mounted () {
@@ -70,6 +71,9 @@ export default {
       //console.log(node)
       this.node = node
       this.pageId = pageId
+
+      //this.classList = node.meta.classList
+      //this.attributes = node.meta.attributes
     },
 
     unFocusNode(){
@@ -81,7 +85,12 @@ export default {
       this.node = node
       this.pageId = pageId
     },
+
+    classListChange(val){
+      $bus.$emit('overViewBoxChangedClassList', val)
+    }
   },
+
 }
 </script>
 <style type="text/css">
