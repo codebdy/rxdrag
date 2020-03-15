@@ -28,19 +28,9 @@ export class RXNode extends Node{
     this.baseMetaToModel(model)
     this.metaToModel(model)
 
-    if(this.meta.generalTextfield === 'contentEditable'){
-      parkMiniEditbar(model, this)
-    }
-    else if(rxEditor.state.showEditMargin){
-      model.styles.padding = this.editMarginStyle.padding
-    }
-
-    if(rxEditor.state.showEditMargin){
-      model.styles.margin = this.editMarginStyle.margin
-    }
-
-    if(!this.meta.innerHTML && this.children.length === 0){
-      model.styles.padding = this.editMarginStyle.padding
+    if(rxEditor.state.showEditMargin && this.rule.editMarginStyle){
+      model.styles.margin = this.rule.editMarginStyle.margin
+      model.styles.padding = this.rule.editMarginStyle.padding
     }
 
     //添加for后，编辑时无法选中
@@ -49,7 +39,7 @@ export class RXNode extends Node{
     }
 
     if(this.meta.innerHTML){
-      console.log('innerHTML', this.meta.innerHTML)
+      //console.log('innerHTML', this.meta.innerHTML)
       model.innerHTML = this.meta.innerHTML
     }
 
@@ -79,20 +69,6 @@ export class RXNode extends Node{
   metaToModel(model){
   }
 
-  setInnerHTML(innerHTML){
-    this.meta.innerHTML = innerHTML
-    return this
-  }
-
-  setField(fieldName, value){
-    this.meta[fieldName] = value
-    return this
-  }
-
-  getField(fieldName){
-    return this.meta[fieldName]
-  }
-
   setTag(tag){
     return this.setField('tag', tag)
   }
@@ -107,11 +83,6 @@ export class RXNode extends Node{
 
   setAttribute(attrName, value){
     this.meta.attributes[attrName] = value
-    return this
-  }
-
-  setEditPadding(padding){
-    this.editMarginStyle.padding = padding
     return this
   }
 

@@ -6,7 +6,6 @@ import {NodeLabel} from "./node-label"
 import {NodeToolbar} from "./node-toolbar"
 import {MiniEditbar} from "./mini-editbar"
 import {RXEditorCommandProxy} from "./rxeditor-command-proxy"
-import {BSContainer} from "../elements/bootstrap/layout/bs-container"
 
 import {NodeParser} from "./node-parser"
 
@@ -122,7 +121,10 @@ export class RXEditor{
   }
 
   parseNode(item){
-    return this.nodeParser.parse(item.code)[0]
+    let responsive = this.state.screenWidth
+    return this.nodeParser.parse(
+      item.code.replace('--responsive--', responsive == 'xs' ? '' : '-'+ responsive)
+      )[0]
     //return new BSContainer
   }
 

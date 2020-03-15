@@ -36,9 +36,9 @@ export class Node{
       groups:[],
     } 
 
-    this.editMarginStyle = {
-      padding:'30px',
-    }
+    //this.editMarginStyle = {
+    //  padding:'30px',
+    //}
 
     //this.config = []
 
@@ -377,9 +377,9 @@ export class Node{
 
     let styles = {}
 
-    if(rxEditor.state.showEditMargin){
-      Object.assign(styles, this.editMarginStyle)
-    }
+    //if(rxEditor.state.showEditMargin){
+    //  Object.assign(styles, this.editMarginStyle)
+    //}
     Object.assign(styles, this.state.styles)
 
     return {

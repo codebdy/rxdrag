@@ -1,4 +1,5 @@
 export default{
+  label:'column',
   dropMargin : 30,
   //显示空白
   editMarginStyle : {

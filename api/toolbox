@@ -5,7 +5,19 @@
     "items":[
       {
         "title":"Container",
-        "code":"<div class='container'> test  <div class='row'> <div>wwew323</div> <span></span> </div>  tess </div>"
+        "code":"<div class='container'></div>"
+      },
+      {
+        "title":"Row",
+        "code":"<div class='row'></div>"
+      },
+      {
+        "title":"Column",
+        "code":"<div class='col--responsive--'></div>"
+      },
+      {
+        "title":"Test",
+        "code":"<div class='container'> <div class='row'> <div>wwew323</div> <span></span> </div>  tess </div>"
       }
     ]
   },
