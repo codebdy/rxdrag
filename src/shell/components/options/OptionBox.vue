@@ -128,7 +128,9 @@ export default {
 
     setValueToClassList(row){
       this.clearRowScopValue(row)
-      this.node.meta.classList.push(row.value)
+      if(row.value){
+        this.node.meta.classList.push(row.value)
+      }
     },
 
     clearRowScopValue(row){

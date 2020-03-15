@@ -1,9 +1,10 @@
 export default{
-  fieldName:'classList',
-  label:'Gutters',
-  widget:'OpSwitch',
-  group:'rowOptions',
-  onValue:'',
-  offValue:'no-gutters',
+  label:'gutters',
+  inputName:'RxSwitch',
   defaultValue:'',
+  props:{
+    onValue:'',
+    offValue:'no-gutters',
+  },
+  valueScope:['no-gutters'],
 }

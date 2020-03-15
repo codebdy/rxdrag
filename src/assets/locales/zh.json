@@ -56,7 +56,9 @@
   "optionbox":{
     "no-selected" : "没有选中任何元素",
     "container-options" : "Container 选项",
-    "fluid" : "Fluid"
+    "fluid" : "Fluid",
+    "row-options" : "Row 选项",
+    "gutters" : "Gutters"
   },
 
   "overview-box":{

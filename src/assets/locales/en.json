@@ -56,7 +56,9 @@
   "optionbox":{
     "no-selected" : "No Elements Selected",
     "container-options" : "Container Options",
-    "fluid" : "Fluid"
+    "fluid" : "Fluid",
+    "row-options" : "Row Options",
+    "gutters" : "Gutters"
   },
 
   "overview-box":{
