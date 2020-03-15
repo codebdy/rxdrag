@@ -101,6 +101,7 @@ export default {
       event.stopPropagation()
     }
   },
+
 }
 </script>
 

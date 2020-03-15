@@ -17,7 +17,7 @@
 <script>
 import SimpleAccordion from '../accordion/SimpleAccordion.vue'
 import OptionGroup from './OptionGroup.vue'
-import {contains} from '../../../basic/rxarray'
+import {contains, remove} from '../../../basic/rxarray'
 
 export default {
   name: 'OptionBox',
@@ -32,20 +32,24 @@ export default {
     return {
       options:[],
       node:null,
+      pageId:'',
     }
   },
   mounted () {
     $bus.$on('focusNode', this.focusNode)
     $bus.$on('unFocusNode', this.unFocusNode)
+    $bus.$on('optionValueChage', this.optionValueChage)
   },
 
   beforeDestroyed() {
     $bus.$off('focusNode', this.focusNode)
     $bus.$off('unFocusNode', this.unFocusNode)
+    $bus.$off('optionValueChage', this.optionValueChage)
   },
   methods: {
-    focusNode(node){
+    focusNode(node, pageId){
       this.node = node
+      this.pageId = pageId
       for(var optionGroupName in node.optionsSchema){
         let optionGroup = {
           label:this.$t('optionbox.' + optionGroupName),
@@ -92,7 +96,35 @@ export default {
         }
       }
       return values
-    }
+    },
+
+    optionValueChage(){
+      this.options.forEach(optionGroup=>{
+        optionGroup.rows.forEach(row=>{
+          row.isMultiple ? this.setMultipleValueToClassList(row) : this.setValueToClassList(row)
+        })
+      })
+      $bus.$emit('nodeChanged', this.node, this.pageId)
+    },
+
+    setMultipleValueToClassList(row){
+      this.clearRowScopValue(row)
+      row.value.forEach(val =>{
+        this.node.meta.classList.push(val)
+      })
+    },
+
+    setValueToClassList(row){
+      this.clearRowScopValue(row)
+      this.node.meta.classList.push(row.value)
+    },
+
+    clearRowScopValue(row){
+      row.valueScope.forEach(scopValue=>{
+        remove(scopValue, this.node.meta.classList)
+      })
+    },
+
   },
 
   //focusNode

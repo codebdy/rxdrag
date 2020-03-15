@@ -7,9 +7,10 @@ export class RXEditorCommandProxy{
       }
     });
 
-    this.focusNode = (node)=>{
+    this.focusNode = (node, pageId)=>{
       this.sendMessage({
         name: 'focusNode',
+        pageId: pageId,
         node:{
           id:node.id,
           meta:node.meta,

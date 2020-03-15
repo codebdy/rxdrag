@@ -55,6 +55,12 @@ export default {
   },
   methods: {
   },
+  watch:{
+    inputValue(val){
+      $bus.$emit('optionValueChage')
+    },
+    deep: true,
+  },
 }
 </script>
 
