@@ -48,4 +48,5 @@ export const setup = () => {
 }
 
 setup()
+window.i18n = i18n
 export default i18n

@@ -1,7 +1,7 @@
+import i18n from './assets/locales'
 import Vue from 'vue'
 import Shell from './shell/Shell.vue'
 import '../style/shell.css'
-import i18n from './assets/locales'
 import axios from 'axios'
 //import Vuex from 'vuex'
 import store from './shell/store';    

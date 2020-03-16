@@ -53,7 +53,7 @@
             <tab :name="$t('widgets.options')"
                  :icon="'fas fa-paint-brush'" 
                  :selected="true">
-                <OptionBox></OptionBox>
+                <OptionBox v-model="options"></OptionBox>
             </tab>
             <tab :name="$t('widgets.code')"
                  :icon="'fas fa-code'">
@@ -105,6 +105,10 @@ import nodes from '../mock/nodes.js'
 //import options from '../mock/options.js'
 //import toolbox from '../mock/toolbox.js'
 
+import {OptionsFactory} from './schemas/OptionsFactory'
+
+var optionsFactory = new OptionsFactory
+
 export default {
   name: 'rxeditor',
   components:{
@@ -128,11 +132,12 @@ export default {
       baseToolbox:[],
       files:[],
       nodes:nodes,
-      //options:options,
+      options:[],
       optionOverview : {},
       code:'<div></div>',
       styles:{},
       currentTheme:null,
+      node:null,
     }
   },
   computed:{
@@ -279,10 +284,109 @@ export default {
         })
       }
       this.files.push(imageFiles)
-    }
+    },
+
+    focusNode(node, pageId){
+      this.node = node
+      this.pageId = pageId
+      console.log('Shell focusNode')
+      this.options = optionsFactory.resolveOptions(node)
+      /*for(var optionGroupName in node.optionsSchema){
+        let optionGroup = {
+          label:this.$t('optionbox.' + optionGroupName),
+          rows:[]
+        }
+        let groupRows= node.optionsSchema[optionGroupName]
+
+        groupRows.forEach(row=>{
+          row.label = this.$t('optionbox.' + row.label)
+          //v-model全部传入classList
+          let value = row.isMultiple ? this.extractMultipleValue(row.valueScope) : this.extractValue(row.valueScope)
+          this.$set(row, 'value',value)
+          optionGroup.rows.push(row)
+        })
+
+        if(this.options.length ===0){
+          optionGroup.selected = true
+        }
+        this.options.push(optionGroup)
+      }*/
+    },
+
+    unFocusNode(id){
+      this.options = []
+    },
+
+    classListChanged(classList){
+      this.node.meta.classList = classList
+      this.options.forEach(optionGroup=>{
+        optionGroup.rows.forEach(row=>{
+          let value = row.isMultiple ? this.extractMultipleValue(row.valueScope) : this.extractValue(row.valueScope)
+          this.$set(row, 'value',value)
+        })
+      })
+    },
+
+    extractValue(valueScope){
+      for(var i = 0; i < valueScope.length; i ++){
+        let value = valueScope[i]
+        if(contains(value, this.node.meta.classList)){
+          return value
+        }
+      }
+
+      return ''
+    },
+
+    extractMultipleValue(valueScope){
+      let values = []
+      for(var i = 0; i < valueScope.length; i ++){
+        let value = valueScope[i]
+        if(contains(value, this.node.meta.classList)){
+          values.push(value)
+        }
+      }
+      return values
+    },
+
+    optionValueChange(){
+      this.options.forEach(optionGroup=>{
+        optionGroup.rows.forEach(row=>{
+          row.isMultiple ? this.setMultipleValueToClassList(row) : this.setValueToClassList(row)
+        })
+      })
+      $bus.$emit('optionBoxChangedNode', this.node, this.pageId)
+    },
+
+    setMultipleValueToClassList(row){
+      this.clearRowScopValue(row)
+      row.value.forEach(val =>{
+        this.node.meta.classList.push(val)
+      })
+    },
+
+    setValueToClassList(row){
+      this.clearRowScopValue(row)
+      if(row.value){
+        this.node.meta.classList.push(row.value)
+      }
+    },
+
+    clearRowScopValue(row){
+      row.valueScope.forEach(scopValue=>{
+        remove(scopValue, this.node.meta.classList)
+      })
+    },
+
+
   },
 
   mounted () {
+    $bus.$on('focusNode', this.focusNode)
+    $bus.$on('unFocusNode', this.unFocusNode)
+    //$bus.$on('optionValueChange', this.optionValueChange)
+    //$bus.$on('overViewBoxChangedClassList', this.classListChanged)
+
     this.currentTheme = null
     $axios.get('api/theme/default')
     .then((res)=>{
@@ -293,6 +397,13 @@ export default {
       this.baseToolbox = res.data
     })
 
+  },
+
+  beforeDestroyed() {
+    $bus.$off('focusNode', this.focusNode)
+    $bus.$off('unFocusNode', this.unFocusNode)
+    //$bus.$off('optionValueChange', this.optionValueChange)
+    //$bus.$off('overViewBoxChangedClassList', this.classListChanged)
   },
 
 }

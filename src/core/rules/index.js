@@ -3,6 +3,12 @@ import row from "./row"
 import col from "./col"
 import heading from "./heading"
 
+//ruleName:
+// -container
+// -row
+// -col
+// -heading
+
 //用于判断的规则token， 全部小写，不接受大写
 //Label为空，表示label使用类名字
 //- label:''

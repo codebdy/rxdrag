@@ -124,7 +124,6 @@ export class IFrameCommandProxy{
     message.pageId = this.pageId
     if(iframe){
       iframe.contentWindow.postMessage(message, '/')
-      window.postMessage(message, '/');    
     }
   }
 

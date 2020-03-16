@@ -13,6 +13,7 @@ export class RXEditorCommandProxy{
         pageId: pageId,
         node:{
           id:node.id,
+          ruleName:node.ruleName,
           meta:node.meta,
           optionsSchema:node.rule.optionsSchema,
         }

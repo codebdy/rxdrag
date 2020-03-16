@@ -1,6 +1,7 @@
 export default[
   {
     label:'Row选项',
+    selected: true,
     rows:[
       {
         label:'标题',

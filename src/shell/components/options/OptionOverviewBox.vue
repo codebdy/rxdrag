@@ -22,9 +22,6 @@
         ></RxNameValueInput>
       </div>
     </div>
-    <div v-else style="padding:20px;">
-      {{$t('optionbox.no-selected')}}
-    </div>
   </div>
 </template>
 
