@@ -67,7 +67,10 @@
     "gutters" : "Gutters",
     "text-options" : "Text Options",
     "pseudo-heading" : "Pseudo Heading",
-    "display-size" : "Display Size"
+    "display-size" : "Display Size",
+    "color" : "Color",
+    "text-color" : "Text Color",
+    "background-color" : "Background Color"
   },
 
 
@@ -82,7 +85,30 @@
     "display-1" : "Display 1",
     "display-2" : "Display 2",
     "display-3" : "Display 3",
-    "display-4" : "Display 4"
+    "display-4" : "Display 4",
+
+    "text-primary":"Primary",
+    "text-secondary":"Secondary",
+    "text-success":"Success",
+    "text-danger":"Danger",
+    "text-warning":"Warning",
+    "text-info":"Info",
+    "text-light":"Light",
+    "text-dark":"Dark",
+    "text-muted":"Muted",
+    "text-white":"White",
+
+    "bg-primary":"Primary",
+    "bg-secondary":"Secondary",
+    "bg-success":"Success",
+    "bg-danger":"Danger",
+    "bg-warning":"Warning",
+    "bg-info":"Info",
+    "bg-light":"Light",
+    "bg-dark":"Dark",
+    "bg-muted":"Muted",
+    "bg-white":"White"
+
   }
 
 

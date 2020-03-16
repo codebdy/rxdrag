@@ -21,7 +21,7 @@ export class Container extends RXSchema{
 
   resolveOptions(node){
     this.optionGroups.forEach(optionGroup=>{
-      optionGroup.resolveValues(node)
+      optionGroup.resolveValue(node)
     })
     return this.optionGroups
   }

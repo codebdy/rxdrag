@@ -311,14 +311,14 @@ export default {
 
     onOptionValueChange(){
       this.options.forEach(optionGroup=>{
-        optionGroup.fillBackValues(this.node)
+        optionGroup.fillBackValue(this.node)
       })
       $bus.$emit('shellChangedNode', this.node, this.pageId)
     },
 
     onOverViewValueChange(){
       this.options.forEach(optionGroup=>{
-        optionGroup.resolveValues(this.node)
+        optionGroup.resolveValue(this.node)
       })
       $bus.$emit('shellChangedNode', this.node, this.pageId)
     },

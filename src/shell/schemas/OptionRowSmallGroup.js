@@ -1,6 +1,10 @@
+import {OptionGroup} from "./OptionGroup"
 
-export class OptionRowSmallGroup{
-  constructor() {
+export class OptionRowSmallGroup extends OptionGroup{
+  constructor(label) {
+  	super(label)
     this.isRowGroup = true
+    this.rows = []
   }
+
 } 

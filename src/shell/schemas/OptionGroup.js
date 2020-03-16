@@ -6,13 +6,19 @@ export class OptionGroup{
     this.selected = selected
   }
 
-  resolveValues(node){
+  setLabel(label){
+    this.label = label
+    return this
+  }
+
+
+  resolveValue(node){
     this.rows.forEach(row=>{
       row.resolveValue(node)
     })
   }
 
-  fillBackValues(node){
+  fillBackValue(node){
     this.rows.forEach(row=>{
       row.fillBackValue(node)
     })

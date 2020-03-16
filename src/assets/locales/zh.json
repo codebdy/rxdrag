@@ -67,7 +67,10 @@
     "gutters" : "Gutters",
     "text-options" : "文本选项",
     "pseudo-heading" : "伪标题",
-    "display-size" : "超大字体"
+    "display-size" : "超大字体",
+    "color" : "颜色",
+    "text-color" : "文本颜色",
+    "background-color" : "背景颜色"
   },
 
 
@@ -82,7 +85,31 @@
     "display-1" : "字号 1",
     "display-2" : "字号 2",
     "display-3" : "字号 3",
-    "display-4" : "字号 4"
+    "display-4" : "字号 4",
+
+    "text-primary":"标准色",
+    "text-secondary":"间色",
+    "text-success":"成功色",
+    "text-danger":"危险色",
+    "text-warning":"警告色",
+    "text-info":"信息色",
+    "text-light":"浅色",
+    "text-dark":"深色",
+    "text-muted":"哑色",
+    "text-white":"白色",
+
+    "bg-primary":"标准色",
+    "bg-secondary":"间色",
+    "bg-success":"成功色",
+    "bg-danger":"危险色",
+    "bg-warning":"警告色",
+    "bg-info":"信息色",
+    "bg-light":"浅色",
+    "bg-dark":"深色",
+    "bg-muted":"哑色",
+    "bg-white":"白色"
+
+   
   }
 
 }
