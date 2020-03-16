@@ -1,15 +1,24 @@
 import {OptionRow} from './OptionRow'
 
 export class SwitchRow extends OptionRow{
-  constructor(label, defaultValue, props) {
-    super(label)
+  constructor() {
+    super()
     this.inputName = 'RxSwitch'
-    this.defaultValue = defaultValue
-    this.props = props
+  }
+
+  setOnValue(onValue){
+    this.props.onValue = onValue
+    return this
+  }
+
+  setOffValue(offValue){
+    this.props.offValue = offValue
+    return this
   }
 
   resolveValue(node){
     this.node = node
     this.value = this.extractValue([this.props.onValue, this.props.offValue])
   }
+
 }

@@ -1,8 +1,23 @@
 import {contains, remove} from '../../basic/rxarray'
 
 export class OptionRow{
-  constructor(label) {
+  constructor() {
+    this.props = {}
+  }
+
+  setLabel(label){
     this.label = label
+    return this
+  }
+
+  setDefaultValue(defaultValue){
+    this.defaultValue = defaultValue
+    return this
+  }
+
+  setProps(props){
+    this.props = props
+    return this
   }
 
   extractValue(valueScope){

@@ -6,14 +6,11 @@ export class Container{
     this.optionGroups = []
     let containerOptions = new OptionGroup(i18n.t('optionbox.container-options'), true)
 
-    let fluidRow = new SwitchRow(
-      i18n.t('optionbox.fluid'),//label
-      'container',//defaultValue
-      {//props
-        onValue: 'container-fluid',
-        offValue: 'container',
-      }
-    )
+    let fluidRow = new SwitchRow()
+                   fluidRow.setLabel(i18n.t('optionbox.fluid'))
+                   .setDefaultValue('container')
+                   .setOnValue('container-fluid')
+                   .setOffValue('container')
 
     containerOptions.rows.push(fluidRow)
 
