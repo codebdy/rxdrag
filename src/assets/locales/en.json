@@ -58,7 +58,8 @@
     "container-options" : "Container Options",
     "fluid" : "Fluid",
     "row-options" : "Row Options",
-    "gutters" : "Gutters"
+    "gutters" : "Gutters",
+    "text-options" : "Text Options"
   },
 
   "overview-box":{

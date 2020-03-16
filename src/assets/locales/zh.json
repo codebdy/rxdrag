@@ -55,10 +55,11 @@
 
   "optionbox":{
     "no-selected" : "没有选中任何元素",
-    "container-options" : "Container 选项",
+    "container-options" : "容器选项",
     "fluid" : "Fluid",
-    "row-options" : "Row 选项",
-    "gutters" : "Gutters"
+    "row-options" : "行选项",
+    "gutters" : "Gutters",
+    "text-options" : "文本选项"
   },
 
   "overview-box":{

@@ -1,20 +1,22 @@
+import {RXSchema} from '../RXSchema'
 import {OptionGroup} from '../OptionGroup'
 import {SwitchRow} from '../SwitchRow'
 
-export class Container{
+export class Container extends RXSchema{
   constructor() {
-    this.optionGroups = []
+    super()
+
     let containerOptions = new OptionGroup(i18n.t('optionbox.container-options'), true)
+    containerOptions.rows.push(
+      new SwitchRow()
+      .setLabel(i18n.t('optionbox.fluid'))
+      .setDefaultValue('container')
+      .setOnValue('container-fluid')
+      .setOffValue('container')
+    )
 
-    let fluidRow = new SwitchRow()
-                   fluidRow.setLabel(i18n.t('optionbox.fluid'))
-                   .setDefaultValue('container')
-                   .setOnValue('container-fluid')
-                   .setOffValue('container')
+    this.optionGroups.unshift(containerOptions)
 
-    containerOptions.rows.push(fluidRow)
-
-    this.optionGroups.push(containerOptions)
   }
 
   resolveOptions(node){
