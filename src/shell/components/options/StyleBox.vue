@@ -1,6 +1,9 @@
 <template>
-  <div class="style-box">
-    <RxNameValueInput v-model="inputValue"></RxNameValueInput>
+  <div class="style-box" v-if="inputValue">
+    <RxNameValueInput 
+      v-model="inputValue.meta.styles"
+      @changed = "stylesChanged"
+    ></RxNameValueInput>
   </div>
 </template>
 
@@ -29,6 +32,10 @@ export default {
     }
   },
   methods: {
+    stylesChanged(value){
+      this.inputValue.meta.styles = value
+      $bus.$emit('styleValueChange', this.inputValue)
+    }
   },
 }
 </script>

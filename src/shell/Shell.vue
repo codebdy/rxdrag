@@ -65,7 +65,7 @@
             </tab>
             <tab :name="$t('widgets.style')"
                  :icon="'fab fa-css3'">
-              <StyleBox v-model="styles"></StyleBox>
+              <StyleBox v-model="node"></StyleBox>
             </tab>
           </WidgetTabs>
         </template>
@@ -135,7 +135,7 @@ export default {
       options:[],
       //optionOverview : {},
       code:'<div></div>',
-      styles:{},
+      //styles:{},
       currentTheme:null,
       node:null,
     }
@@ -313,15 +313,19 @@ export default {
       this.options.forEach(optionGroup=>{
         optionGroup.fillBackValues(this.node)
       })
-      $bus.$emit('optionBoxChangedNode', this.node, this.pageId)
+      $bus.$emit('shellChangedNode', this.node, this.pageId)
     },
 
     onOverViewValueChange(){
       this.options.forEach(optionGroup=>{
         optionGroup.resolveValues(this.node)
       })
-      $bus.$emit('overViewBoxChangedNode', this.node, this.pageId)
+      $bus.$emit('shellChangedNode', this.node, this.pageId)
     },
+
+    onStyleValueChange(){
+      $bus.$emit('shellChangedNode', this.node, this.pageId)
+    }
 
   },
 
@@ -330,6 +334,8 @@ export default {
     $bus.$on('unFocusNode', this.unFocusNode)
     $bus.$on('optionValueChange', this.onOptionValueChange)
     $bus.$on('overViewValueChange', this.onOverViewValueChange)
+    $bus.$on('styleValueChange', this.onStyleValueChange)
+
 
     this.currentTheme = null
     $axios.get('api/theme/default')
@@ -348,6 +354,7 @@ export default {
     $bus.$off('unFocusNode', this.unFocusNode)
     $bus.$off('optionValueChange', this.onOptionValueChange)
     $bus.$off('overViewValueChange', this.onOverViewValueChange)
+    $bus.$off('styleValueChange', this.onStyleValueChange)
   },
 
 }
