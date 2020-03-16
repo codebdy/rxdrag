@@ -122,7 +122,7 @@ export class IFrameCommandProxy{
   sendMessageToRXEditor(message){
     let iframe = this.iframe;
     message.pageId = this.pageId
-    if(iframe){
+    if(iframe && iframe.contentWindow){
       iframe.contentWindow.postMessage(message, '/')
     }
   }

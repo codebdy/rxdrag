@@ -2,22 +2,22 @@
   <div class="option-overview-box">
     <div 
       class="overview-box-content"
-      v-if="node"
+      v-if="inputValue"
     >
       <div class="tag-row">
         <div class="label">{{$t('overview-box.tag')}}</div> 
-        <input v-model="node.meta.tag" 
+        <input v-model="inputValue.meta.tag" 
           @change="tagChanged"
         />
       </div>
       <div class="class-area">
         <div class="label"> {{$t('overview-box.classes')}}</div>
-        <RxLabelInput v-model="node.meta.classList" @changed="classListChange"></RxLabelInput> 
+        <RxLabelInput v-model="inputValue.meta.classList" @changed="classListChange"></RxLabelInput> 
       </div>
       <div>
         <div class="label">{{$t('overview-box.attributes')}}</div>
         <RxNameValueInput 
-          v-model="attributes"
+          v-model="inputValue.meta.attributes"
           @changed = "attributesChanged"
         ></RxNameValueInput>
       </div>
@@ -36,60 +36,71 @@ export default {
     RxNameValueInput
   },
   props:{
+    value:{default : null}
   },
   data () {
     return {
-      node:null,
-      pageId:'',
-      classList:[],
-      attributes:{},
-      inited:true,
+      //node:null,
+      //pageId:'',
+      //classList:[],
+      //attributes:{},
+      //inited:true,
     }
   },
+  computed:{
+    inputValue: {
+      get:function() {
+        return this.value;
+      },
+      set:function(val) {
+        this.$emit('input', val);
+      },
+    },
+  },
   mounted () {
-    $bus.$on('focusNode', this.focusNode)
-    $bus.$on('unFocusNode', this.unFocusNode)
-    $bus.$on('optionBoxChangedNode', this.nodeChanged)
+    //$bus.$on('focusNode', this.focusNode)
+    //$bus.$on('unFocusNode', this.unFocusNode)
+    //$bus.$on('optionBoxChangedNode', this.nodeChanged)
   },
 
   beforeDestroyed() {
-    $bus.$off('focusNode', this.focusNode)
-    $bus.$off('unFocusNode', this.unFocusNode)
-    $bus.$off('optionBoxChangedNode', this.nodeChanged)
+   // $bus.$off('focusNode', this.focusNode)
+    //$bus.$off('unFocusNode', this.unFocusNode)
+    //$bus.$off('optionBoxChangedNode', this.nodeChanged)
   },
   methods: {
 
-    focusNode(node, pageId){
+    //focusNode(node, pageId){
       //console.log(node)
-      this.node = node
-      this.pageId = pageId
-      this.tag = node.meta.tag
+    //  this.node = node
+    //  this.pageId = pageId
+    //  this.tag = node.meta.tag
       //this.classList = node.meta.classList
       //this.attributes = node.meta.attributes
-    },
+    //},
 
-    unFocusNode(){
-      this.node = null
-      this.pageId = ''
-    },
+    //unFocusNode(){
+    //  this.node = null
+    //  this.pageId = ''
+    //},
 
-    nodeChanged(node, pageId){
-      this.node = node
-      this.pageId = pageId
-    },
+    //nodeChanged(node, pageId){
+    //  this.node = node
+    //  this.pageId = pageId
+    //},
 
     classListChange(val){
       $bus.$emit('overViewBoxChangedClassList', val)
-      $bus.$emit('overViewBoxChangedNode', this.node, this.pageId)
+      $bus.$emit('overViewBoxChangedNode', this.inputValue)
     },
 
     tagChanged(){
-      $bus.$emit('overViewBoxChangedNode', this.node, this.pageId)
+      $bus.$emit('overViewBoxChangedNode', this.inputValue)
     },
 
     attributesChanged(value){
-      this.node.meta.attributes = value
-      $bus.$emit('overViewBoxChangedNode', this.node, this.pageId)
+      this.inputValue.meta.attributes = value
+      $bus.$emit('overViewBoxChangedNode', this.inputValue)
     }
   },
 

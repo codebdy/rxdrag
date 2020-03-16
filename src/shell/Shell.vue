@@ -74,7 +74,7 @@
             <tab :name="$t('widgets.overview')"
                  :icon="'fas fa-th-list'" 
                  :selected="true">
-              <OptionOverviewBox v-model="optionOverview"></OptionOverviewBox>
+              <OptionOverviewBox v-model="node"></OptionOverviewBox>
             </tab>
           </WidgetTabs>
         </template>
@@ -133,7 +133,7 @@ export default {
       files:[],
       nodes:nodes,
       options:[],
-      optionOverview : {},
+      //optionOverview : {},
       code:'<div></div>',
       styles:{},
       currentTheme:null,
@@ -291,30 +291,12 @@ export default {
       this.pageId = pageId
       console.log('Shell focusNode')
       this.options = optionsFactory.resolveOptions(node)
-      /*for(var optionGroupName in node.optionsSchema){
-        let optionGroup = {
-          label:this.$t('optionbox.' + optionGroupName),
-          rows:[]
-        }
-        let groupRows= node.optionsSchema[optionGroupName]
-
-        groupRows.forEach(row=>{
-          row.label = this.$t('optionbox.' + row.label)
-          //v-model全部传入classList
-          let value = row.isMultiple ? this.extractMultipleValue(row.valueScope) : this.extractValue(row.valueScope)
-          this.$set(row, 'value',value)
-          optionGroup.rows.push(row)
-        })
-
-        if(this.options.length ===0){
-          optionGroup.selected = true
-        }
-        this.options.push(optionGroup)
-      }*/
     },
 
     unFocusNode(id){
       this.options = []
+      this.node = null
+      this.pageId = ''
     },
 
     classListChanged(classList){
