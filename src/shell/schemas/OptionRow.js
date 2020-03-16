@@ -3,6 +3,7 @@ import {contains, remove} from '../../basic/rxarray'
 export class OptionRow{
   constructor() {
     this.props = {}
+    this.valueScope = []
   }
 
   setLabel(label){
@@ -18,6 +19,16 @@ export class OptionRow{
   setProps(props){
     this.props = props
     return this
+  }
+
+  resolveValue(node){
+    this.node = node
+    this.value = this.extractValue(this.valueScope)
+  }
+
+  fillBackValue(node){
+    this.node = node
+    this.setValueToClassList(this.valueScope)
   }
 
   extractValue(valueScope){

@@ -56,6 +56,7 @@ export default {
   methods: {
     clear(){
       this.inputValue = ''
+      this.$emit('changed', this.inputValue)
     },
     click(event){
       event.stopPropagation()
@@ -68,6 +69,7 @@ export default {
 
     itemClick(value){
       this.inputValue = value
+      this.$emit('changed', this.inputValue)
     },
   },
 }

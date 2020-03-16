@@ -59,13 +59,23 @@
     "fluid" : "Fluid",
     "row-options" : "Row Options",
     "gutters" : "Gutters",
-    "text-options" : "Text Options"
+    "text-options" : "Text Options",
+    "pseudo-heading" : "Pseudo Heading"
   },
 
   "overview-box":{
     "tag" : "Tag",
     "classes" : "Classes",
     "attributes" : "Attributes"
+  },
+
+  "classes":{
+    "h1" : "H1",
+    "h2" : "H2",
+    "h3" : "H3",
+    "h4" : "H4",
+    "h5" : "H5",
+    "h6" : "H6"
   }
 
 

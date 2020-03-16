@@ -8,22 +8,15 @@ export class SwitchRow extends OptionRow{
 
   setOnValue(onValue){
     this.props.onValue = onValue
+    this.valueScope.push(onValue)
     return this
   }
 
   setOffValue(offValue){
     this.props.offValue = offValue
+    this.valueScope.push(offValue)
     return this
   }
 
-  resolveValue(node){
-    this.node = node
-    this.value = this.extractValue([this.props.onValue, this.props.offValue])
-  }
-
-  fillBackValue(node){
-    this.node = node
-    this.setValueToClassList([this.props.onValue, this.props.offValue])
-  }
 
 }
