@@ -75,6 +75,7 @@ export default {
         this.inputValue[i].value = cloneValue(this.inputValue[i].defaultValue)
       }
       event.stopPropagation()
+      $bus.$emit('optionValueChange')
     },
 
     remove(value){
@@ -83,7 +84,8 @@ export default {
           this.inputValue[i].value = ''
         }
       }
-    }
+    $bus.$emit('optionValueChange')
+   }
   },
 }
 </script>
