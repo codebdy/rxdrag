@@ -1,7 +1,7 @@
 <template>
   <div class="style-box" v-if="inputValue">
     <RxNameValueInput 
-      v-model="inputValue.meta.styles"
+      :value="inputValue.meta.styles"
       @changed = "stylesChanged"
     ></RxNameValueInput>
   </div>

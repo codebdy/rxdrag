@@ -44,7 +44,7 @@ export default {
   props:{
     value:{ default:{} }, 
   },
-  computed:{
+  /*computed:{
     inputValue: {
       get:function() {
         return this.value;
@@ -53,15 +53,17 @@ export default {
         this.$emit('input', val);
       },
     },
-  },
+  },*/
   data () {
     return {
       valueArray : [],
       newName : '',
       newValue : '',
+      inputValue : {}
     }
   },
   mounted () {
+    this.inputValue = this.value
     for(var name in this.inputValue){
       this.valueArray.push([name, this.inputValue[name]])
     }
@@ -77,6 +79,7 @@ export default {
     onchange(){
       this.toInputValue()
       this.$emit('changed', this.inputValue)
+      //console.log(this.inputValue, this.valueArray)
     },
 
     remove(i){

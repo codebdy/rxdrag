@@ -17,7 +17,7 @@
       <div>
         <div class="label">{{$t('overview-box.attributes')}}</div>
         <RxNameValueInput 
-          v-model="inputValue.meta.attributes"
+          :value="inputValue.meta.attributes"
           @changed = "attributesChanged"
         ></RxNameValueInput>
       </div>
