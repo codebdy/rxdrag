@@ -18,7 +18,6 @@
     <input 
       v-show="isAdding" 
       v-model="newValue" 
-      autofocus="autofocus" 
       :placeholder="$t('widgets.enter-message')"
       @keyup.13 = "finishAdd"
       ref="inputControl"

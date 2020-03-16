@@ -53,6 +53,12 @@
     "theme" : "主题"
   },
 
+  "overview-box":{
+    "tag" : "标签",
+    "classes" : "类",
+    "attributes" : "属性"
+  },
+
   "optionbox":{
     "no-selected" : "没有选中任何元素",
     "container-options" : "容器选项",
@@ -60,14 +66,10 @@
     "row-options" : "行选项",
     "gutters" : "Gutters",
     "text-options" : "文本选项",
-    "pseudo-heading" : "伪标题"
+    "pseudo-heading" : "伪标题",
+    "display-size" : "超大字体"
   },
 
-  "overview-box":{
-    "tag" : "标签",
-    "classes" : "类",
-    "attributes" : "属性"
-  },
 
   "classes":{
     "h1" : "标题1",
@@ -75,7 +77,12 @@
     "h3" : "标题3",
     "h4" : "标题4",
     "h5" : "标题5",
-    "h6" : "标题6"
+    "h6" : "标题6",
+
+    "display-1" : "字号 1",
+    "display-2" : "字号 2",
+    "display-3" : "字号 3",
+    "display-4" : "字号 4"
   }
 
 }

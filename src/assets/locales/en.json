@@ -53,6 +53,12 @@
     "theme" : "Theme"
   },
 
+  "overview-box":{
+    "tag" : "Tag",
+    "classes" : "Classes",
+    "attributes" : "Attributes"
+  },
+
   "optionbox":{
     "no-selected" : "No Elements Selected",
     "container-options" : "Container Options",
@@ -60,14 +66,10 @@
     "row-options" : "Row Options",
     "gutters" : "Gutters",
     "text-options" : "Text Options",
-    "pseudo-heading" : "Pseudo Heading"
+    "pseudo-heading" : "Pseudo Heading",
+    "display-size" : "Display Size"
   },
 
-  "overview-box":{
-    "tag" : "Tag",
-    "classes" : "Classes",
-    "attributes" : "Attributes"
-  },
 
   "classes":{
     "h1" : "H1",
@@ -75,7 +77,12 @@
     "h3" : "H3",
     "h4" : "H4",
     "h5" : "H5",
-    "h6" : "H6"
+    "h6" : "H6",
+
+    "display-1" : "Display 1",
+    "display-2" : "Display 2",
+    "display-3" : "Display 3",
+    "display-4" : "Display 4"
   }
 
 

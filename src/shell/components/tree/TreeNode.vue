@@ -16,7 +16,7 @@
         @blur="inputBlur" 
         @keyup.13 = "inputBlur"
         @click="inputClick"
-        autofocus="autofocus"/>
+      />
       <template v-else>{{inputValue.title}}</template>
     </div>
     <div v-if="showChild" class="children-nodes">
