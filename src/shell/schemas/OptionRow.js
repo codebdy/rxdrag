@@ -30,5 +30,36 @@ export class OptionRow{
 
     return ''
   }
+  /*  setMultipleValueToClassList(row){
+      this.clearRowScopValue(row)
+      row.value.forEach(val =>{
+        this.node.meta.classList.push(val)
+      })
+    },*/
+
+    /*extractMultipleValue(valueScope){
+      let values = []
+      for(var i = 0; i < valueScope.length; i ++){
+        let value = valueScope[i]
+        if(contains(value, this.node.meta.classList)){
+          values.push(value)
+        }
+      }
+      return values
+    },*/
+
+  setValueToClassList(valueScope){
+    this.clearRowScopValue(valueScope)
+    if(this.value){
+      this.node.meta.classList.push(this.value)
+    }
+  }
+
+  clearRowScopValue(valueScope){
+    valueScope.forEach(scopValue=>{
+      remove(scopValue, this.node.meta.classList)
+    })
+  }
+
 
 } 

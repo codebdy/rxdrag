@@ -21,4 +21,9 @@ export class SwitchRow extends OptionRow{
     this.value = this.extractValue([this.props.onValue, this.props.offValue])
   }
 
+  fillBackValue(node){
+    this.node = node
+    this.setValueToClassList([this.props.onValue, this.props.offValue])
+  }
+
 }

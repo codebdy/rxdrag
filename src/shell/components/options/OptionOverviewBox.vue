@@ -90,17 +90,17 @@ export default {
     //},
 
     classListChange(val){
-      $bus.$emit('overViewBoxChangedClassList', val)
-      $bus.$emit('overViewBoxChangedNode', this.inputValue)
+      //$bus.$emit('overViewBoxChangedClassList', val)
+      $bus.$emit('overViewValueChange', this.inputValue)
     },
 
     tagChanged(){
-      $bus.$emit('overViewBoxChangedNode', this.inputValue)
+      $bus.$emit('overViewValueChange', this.inputValue)
     },
 
     attributesChanged(value){
       this.inputValue.meta.attributes = value
-      $bus.$emit('overViewBoxChangedNode', this.inputValue)
+      $bus.$emit('overViewValueChange', this.inputValue)
     }
   },
 

@@ -299,7 +299,7 @@ export default {
       this.pageId = ''
     },
 
-    classListChanged(classList){
+    /*classListChanged(classList){
       this.node.meta.classList = classList
       this.options.forEach(optionGroup=>{
         optionGroup.rows.forEach(row=>{
@@ -307,67 +307,29 @@ export default {
           this.$set(row, 'value',value)
         })
       })
-    },
+    },*/
 
-    extractValue(valueScope){
-      for(var i = 0; i < valueScope.length; i ++){
-        let value = valueScope[i]
-        if(contains(value, this.node.meta.classList)){
-          return value
-        }
-      }
-
-      return ''
-    },
-
-    extractMultipleValue(valueScope){
-      let values = []
-      for(var i = 0; i < valueScope.length; i ++){
-        let value = valueScope[i]
-        if(contains(value, this.node.meta.classList)){
-          values.push(value)
-        }
-      }
-      return values
-    },
-
-    optionValueChange(){
+    onOptionValueChange(){
       this.options.forEach(optionGroup=>{
-        optionGroup.rows.forEach(row=>{
-          row.isMultiple ? this.setMultipleValueToClassList(row) : this.setValueToClassList(row)
-        })
+        optionGroup.fillBackValues(this.node)
       })
       $bus.$emit('optionBoxChangedNode', this.node, this.pageId)
     },
 
-    setMultipleValueToClassList(row){
-      this.clearRowScopValue(row)
-      row.value.forEach(val =>{
-        this.node.meta.classList.push(val)
+    onOverViewValueChange(){
+      this.options.forEach(optionGroup=>{
+        optionGroup.resolveValues(this.node)
       })
+      $bus.$emit('overViewBoxChangedNode', this.node, this.pageId)
     },
-
-    setValueToClassList(row){
-      this.clearRowScopValue(row)
-      if(row.value){
-        this.node.meta.classList.push(row.value)
-      }
-    },
-
-    clearRowScopValue(row){
-      row.valueScope.forEach(scopValue=>{
-        remove(scopValue, this.node.meta.classList)
-      })
-    },
-
 
   },
 
   mounted () {
     $bus.$on('focusNode', this.focusNode)
     $bus.$on('unFocusNode', this.unFocusNode)
-    //$bus.$on('optionValueChange', this.optionValueChange)
-    //$bus.$on('overViewBoxChangedClassList', this.classListChanged)
+    $bus.$on('optionValueChange', this.onOptionValueChange)
+    $bus.$on('overViewValueChange', this.onOverViewValueChange)
 
     this.currentTheme = null
     $axios.get('api/theme/default')
@@ -384,8 +346,8 @@ export default {
   beforeDestroyed() {
     $bus.$off('focusNode', this.focusNode)
     $bus.$off('unFocusNode', this.unFocusNode)
-    //$bus.$off('optionValueChange', this.optionValueChange)
-    //$bus.$off('overViewBoxChangedClassList', this.classListChanged)
+    $bus.$off('optionValueChange', this.onOptionValueChange)
+    $bus.$off('overViewValueChange', this.onOverViewValueChange)
   },
 
 }

@@ -11,4 +11,10 @@ export class OptionGroup{
       row.resolveValue(node)
     })
   }
+
+  fillBackValues(node){
+    this.rows.forEach(row=>{
+      row.fillBackValue(node)
+    })
+  }
 } 
