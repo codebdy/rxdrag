@@ -122,7 +122,8 @@
     "flex" : "Flex",
     "direction" : "Direction",
     "justify-content" : "Justify Content",
-    "align-items" : "Align Items"
+    "align-items" : "Align Items",
+    "align-self" : "Align Self"
   },
 
 
@@ -339,7 +340,15 @@
     "align-items-end":"End",
     "align-items-center":"Center",
     "align-items-baseline":"Baseline",
-    "align-items-stretch":"Stretch"
+    "align-items-stretch":"Stretch",
+
+    "align-self-auto":"Auto",
+    "align-self-start":"Start",
+    "align-self-end":"End",
+    "align-self-center":"Center",
+    "align-self-baseline":"Baseline",
+    "align-self-stretch":"Stretch"
+
   }
 
 

@@ -121,7 +121,8 @@
     "flex" : "弹性布局",
     "direction" : "方向",
     "justify-content" : "内容对齐",
-    "align-items" : "项目对齐"
+    "align-items" : "项目对齐",
+    "align-self" : "自身对齐"
   },
 
 
@@ -338,7 +339,15 @@
     "align-items-end":"终点对齐",
     "align-items-center":"中点对齐",
     "align-items-baseline":"基线对齐",
-    "align-items-stretch":"充满容器"
+    "align-items-stretch":"充满容器",
+
+    "align-self-auto":"自动",
+    "align-self-start":"起点对齐",
+    "align-self-end":"终点对齐",
+    "align-self-center":"中点对齐",
+    "align-self-baseline":"基线对齐",
+    "align-self-stretch":"充满容器"
+
   }
 
 }

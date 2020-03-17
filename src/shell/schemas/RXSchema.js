@@ -51,6 +51,7 @@ import flexDisplay from "./utilities/flex/display"
 import flexDirection from "./utilities/flex/direction"
 import flexJustifyContent from "./utilities/flex/justify-content"
 import flexAlignItems from "./utilities/flex/align-items"
+import flexAlignSelf from "./utilities/flex/align-self"
 
 export class RXSchema{
   constructor(){
@@ -131,6 +132,7 @@ export class RXSchema{
    flexSmallGroup.addGenerateSchemaRow(flexDirection)
    flexSmallGroup.addGenerateSchemaRow(flexJustifyContent)
    flexSmallGroup.addGenerateSchemaRow(flexAlignItems)
+   flexSmallGroup.addGenerateSchemaRow(flexAlignSelf)
    utilitiesOptions.rows.push(flexSmallGroup)
 
    this.optionGroups.push(utilitiesOptions)
