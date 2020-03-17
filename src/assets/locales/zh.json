@@ -74,6 +74,10 @@
     "text" : "文本",
     "text-justify" : "行对齐",
     "align" : "水平对齐",
+    "wrapping" : "换行",
+    "truncate" : "截断",
+    "word-break" : "单词断行",
+    "transform" : "文字变换",
     "lead" : "Lead"
   },
 
@@ -127,7 +131,14 @@
     "text-lg-right":"右对齐",
     "text-xl-left":"左对齐",
     "text-xl-center":"中间对齐",
-    "text-xl-right":"右对齐"
+    "text-xl-right":"右对齐",
+
+    "text-wrap" : "换行",
+    "text-nowrap" : "不换行",
+
+    "text-lowercase":"全部小写",
+    "text-uppercase":"全部大写",
+    "text-capitalize":"首字母大写"
    
   }
 

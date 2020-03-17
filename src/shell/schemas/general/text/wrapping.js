@@ -1,10 +1,7 @@
 export default{
-  fieldName:'classList',
-  label:'Wrapping',
-  widget:'OpSelect',
-  defaultValue:'',
-  list:{
-    'text-wrap':'Wrap',
-    'text-nowrap':'Nowrap',
-  },
+  label: "wrapping",
+  valueScope:[
+    'text-wrap',
+    'text-nowrap',
+  ]
 }

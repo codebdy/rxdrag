@@ -7,6 +7,11 @@ import displaySize from "./general/display-size"
 import textColor from "./general/text/color"
 import textJustify from "./general/text/justify"
 import textAlign from "./general/text/align"
+import textWrapping from "./general/text/wrapping"
+import textWordBreak from "./general/text/word-break"
+import textTruncate from "./general/text/truncate"
+import textTransform from "./general/text/transform"
+
 import textLead from "./general/text/lead"
 
 export class RXSchema{
@@ -15,8 +20,6 @@ export class RXSchema{
 
     let generalOptions = new OptionGroup(i18n.t('optionbox.general-options'))
     generalOptions.addSelectRow(backgroundColor)
-    generalOptions.addSelectRow(pseudoHeading)
-    generalOptions.addSelectRow(displaySize)
 
     let textSmallGroup = new OptionRowSmallGroup()
                      .setLabel(i18n.t('optionbox.text'))
@@ -24,6 +27,12 @@ export class RXSchema{
     textSmallGroup.addSelectRow(textColor)
     textSmallGroup.addSwitchRow(textJustify)
     textSmallGroup.addSelectRow(textAlign)
+    textSmallGroup.addSelectRow(pseudoHeading)
+    textSmallGroup.addSelectRow(displaySize)
+    textSmallGroup.addSelectRow(textWrapping)
+    textSmallGroup.addSwitchRow(textTruncate)
+    textSmallGroup.addSwitchRow(textWordBreak)
+    textSmallGroup.addSelectRow(textTransform)
     textSmallGroup.addSwitchRow(textLead)
 
     generalOptions.rows.push(textSmallGroup)  

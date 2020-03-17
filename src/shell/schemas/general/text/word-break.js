@@ -1,8 +1,5 @@
 export default{
-  fieldName:'classList',
-  label:'Word break',
-  widget:'OpSwitch',
+  label:'word-break',
   onValue:'text-break',
   offValue:'',
-  defaultValue:'',
 }

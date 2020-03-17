@@ -1,8 +1,5 @@
 export default{
-  fieldName:'classList',
-  label:'Truncate',
-  widget:'OpSwitch',
+  label:'truncate',
   onValue:'text-truncate',
   offValue:'',
-  defaultValue:'',
 }

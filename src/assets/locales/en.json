@@ -74,6 +74,10 @@
     "text" : "Text",
     "text-justify" : "Justify",
     "align" : "Align",
+    "wrapping" : "Wrapping",
+    "truncate" : "Truncate",
+    "word-break" : "Word break",
+    "transform" : "Transform",
     "lead" : "Lead"
   },
 
@@ -127,8 +131,14 @@
     "text-lg-right":"Right",
     "text-xl-left":"Left",
     "text-xl-center":"Center",
-    "text-xl-right":"Right"
+    "text-xl-right":"Right",
 
+    "text-wrap" : "Wrap",
+    "text-nowrap" : "Nowrap",
+
+    "text-lowercase":"Lowercase",
+    "text-uppercase":"Uppercase",
+    "text-capitalize":"Capitalize"
   }
 
 
