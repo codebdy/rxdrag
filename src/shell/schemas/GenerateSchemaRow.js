@@ -14,10 +14,9 @@ export class GenerateSchemaRow extends SelectRow{
     let schema = this.schema
     let returnArray = []
     let pointStr = this.breakPoint === 'xs' ? '' : '-' + this.breakPoint
-    for(var i = 0; i <= schema.steps; i++){
-      returnArray.push(schema.prefix + pointStr + '-' + i)
-    }
-
+    schema.steps.forEach(step=>{
+      returnArray.push(schema.prefix + pointStr + '-' + step)
+    })
     return returnArray
   }
 
@@ -25,11 +24,10 @@ export class GenerateSchemaRow extends SelectRow{
     let schema = this.schema
     let returnList = {}
     let pointStr = this.breakPoint === 'xs' ? '' : '-' + this.breakPoint
-    for(var i = 0; i <= schema.steps; i++){
-      let value = schema.prefix + pointStr + '-' + i
-      returnList[value] = i
-    }
-
+    schema.steps.forEach(step=>{
+      let value = schema.prefix + pointStr + '-' + step
+      returnList[value] = i18n.t('classes.' + schema.prefix + '-' +step)
+    })
     return returnList
   }
 }

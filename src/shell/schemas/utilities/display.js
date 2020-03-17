@@ -1,11 +1,17 @@
 export default{
-  fieldName:'classList',
   isResponsive:true,
+  label:'display',
+  prefix:'d'
+  steps[
+    'none', 
+    'inline',
+    'inline-block',
+    'block',
+    
+
+  ]
   xs:{
-    fieldName:'classList',
-    label:'Display',
-    widget:'OpSelect',
-    list:{
+    valueScope:[
       'd-none':'None',
       'd-inline':'Inline',
       'd-inline-block':'Inline Block',
@@ -15,14 +21,10 @@ export default{
       'd-table-row':'Table Row',
       'd-flex':'Flex',
       'd-inline-flex':'Inline Flex',
-    },
+    ],
   },
-  //---------------------
   sm:{
-    fieldName:'classList',
-    label:'Display',
-    widget:'OpSelect',
-    list:{
+    valueScope:[
       'd-sm-none':'None',
       'd-sm-inline':'Inline',
       'd-sm-inline-block':'Inline Block',
@@ -32,14 +34,10 @@ export default{
       'd-sm-table-row':'Table Row',
       'd-sm-flex':'Flex',
       'd-sm-inline-flex':'Inline Flex',
-    },
+    ],
   },
-  //---------------------
   md:{
-    fieldName:'classList',
-    label:'Display',
-    widget:'OpSelect',
-    list:{
+    valueScope:[
       'd-md-none':'None',
       'd-md-inline':'Inline',
       'd-md-inline-block':'Inline Block',
@@ -49,14 +47,10 @@ export default{
       'd-md-table-row':'Table Row',
       'd-md-flex':'Flex',
       'd-md-inline-flex':'Inline Flex',
-    },
+    ],
   },
-  //---------------------
   lg:{
-    fieldName:'classList',
-    label:'Display',
-    widget:'OpSelect',
-    list:{
+    valueScope:[
       'd-lg-none':'None',
       'd-lg-inline':'Inline',
       'd-lg-inline-block':'Inline Block',
@@ -66,14 +60,10 @@ export default{
       'd-lg-table-row':'Table Row',
       'd-lg-flex':'Flex',
       'd-lg-inline-flex':'Inline Flex',
-    },
+    ],
   },
-  //---------------------
   xl:{
-    fieldName:'classList',
-    label:'Display',
-    widget:'OpSelect',
-    list:{
+    valueScope:[
       'd-xl-none':'None',
       'd-xl-inline':'Inline',
       'd-xl-inline-block':'Inline Block',
@@ -83,7 +73,6 @@ export default{
       'd-xl-table-row':'Table Row',
       'd-xl-flex':'Flex',
       'd-xl-inline-flex':'Inline Flex',
-    },
+    ],
   },
-  //---------------------
 }

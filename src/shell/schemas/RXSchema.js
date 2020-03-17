@@ -40,6 +40,8 @@ import paddingR from "./general/padding/padding-r"
 import paddingB from "./general/padding/padding-b"
 import paddingL from "./general/padding/padding-l"
 
+import utilClearfix from "./utilities/clearfix"
+
 export class RXSchema{
   constructor(){
     this.optionGroups = []
@@ -81,14 +83,11 @@ export class RXSchema{
     generalOptions.rows.push(paddingSmallGroup)  
 
 
-
-
-
     let textSmallGroup = new OptionRowSmallGroup()
                      .setLabel(i18n.t('optionbox.text'))
     textSmallGroup.addSelectRow(textColor)
     textSmallGroup.addSwitchRow(textJustify)
-    textSmallGroup.addSelectRow(textAlign)
+    textSmallGroup.addGenerateSchemaRow(textAlign)
     textSmallGroup.addSelectRow(textVAlign)
     textSmallGroup.addSelectRow(pseudoHeading)
     textSmallGroup.addSelectRow(displaySize)
@@ -104,6 +103,10 @@ export class RXSchema{
 
 
    this.optionGroups.push(generalOptions)
+
+   let utilitiesOptions = new OptionGroup(i18n.t('optionbox.bootstrap-utilities'))
+   utilitiesOptions.addSwitchRow(utilClearfix)
+   this.optionGroups.push(utilitiesOptions)
   }
 
   resolveOptions(node, breakPoint){

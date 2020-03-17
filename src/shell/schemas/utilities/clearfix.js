@@ -1,9 +1,6 @@
 export default{
-  fieldName:'classList',
-  label:'Clearfix',
-  widget:'OpSwitch',
+  label: "clearfix",
   onValue:'clearfix',
   offValue:'',
-  defaultValue:'',
 }
 

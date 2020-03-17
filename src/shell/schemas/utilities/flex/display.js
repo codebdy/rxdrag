@@ -1,9 +1,8 @@
 export default{
-  fieldName:'classList',
+  label:'Display',
   isResponsive:true,
   xs:{
     widget:'OpSelect',
-    label:'Display',
     list:{
       'd-flex':'Flex',
       'd-inline-flex':'Inline Flex',

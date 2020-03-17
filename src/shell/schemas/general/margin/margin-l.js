@@ -2,5 +2,5 @@ export default{
   isResponsive:true,
   label:'margin-left',
   prefix:'ml',
-  steps:5,
+  steps:['0','1','2','3','4','5']
 }
