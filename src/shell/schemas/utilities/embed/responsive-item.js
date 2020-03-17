@@ -1,8 +1,5 @@
 export default{
-  fieldName:'classList',
-  label:'Embed Item',
-  widget:'OpSwitch',
+  label:'embed-item',
   onValue:'embed-responsive-item',
   offValue:'',
-  defaultValue:'',
 }

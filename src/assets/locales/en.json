@@ -112,9 +112,14 @@
     "padding-top" : "Top",
     "padding-vertical" : "Vertical",
 
-    "bootstrap-utilities" : "Other Utilities",
+    "bootstrap-utilities" : "Bootstrap Utilities",
     "clearfix" : "Clearfix",
-    "display" : "Display"
+    "display" : "Display",
+    "embed" : "Embed",
+    "responsive" : "responsive",
+    "aspect-ratio" : "Aspect Ratio",
+    "embed-item" : "Embed Item",
+    "flex" : "Flex"
   },
 
 
@@ -309,8 +314,12 @@
     "d-table-cell":"Table Cell",
     "d-table-row":"Table Row",
     "d-flex":"Flex",
-    "d-inline-flex":"Inline Flex"
+    "d-inline-flex":"Inline Flex",
 
+    "embed-responsive-21by9":"21:9",
+    "embed-responsive-16by9":"16:9",
+    "embed-responsive-4by3":"4:3",
+    "embed-responsive-1by1":"1:1"
   }
 
 

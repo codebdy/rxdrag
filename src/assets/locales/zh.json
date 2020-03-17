@@ -111,9 +111,14 @@
     "padding-top" : "顶",
     "padding-vertical" : "垂直",
 
-    "bootstrap-utilities" : "其它选项",
+    "bootstrap-utilities" : "Bootstrap 工具",
     "clearfix" : "清除浮动",
-    "display" : "显示"
+    "display" : "显示",
+    "embed" : "嵌入",
+    "responsive" : "响应式",
+    "aspect-ratio" : "宽高比例",
+    "embed-item" : "嵌入项目",
+    "flex" : "弹性布局"
   },
 
 
@@ -308,7 +313,13 @@
     "d-table-cell":"表格单元",
     "d-table-row":"表格行",
     "d-flex":"弹性",
-    "d-inline-flex":"行内弹性"
+    "d-inline-flex":"行内弹性",
+
+    "embed-responsive-21by9":"21:9",
+    "embed-responsive-16by9":"16:9",
+    "embed-responsive-4by3":"4:3",
+    "embed-responsive-1by1":"1:1"
+
   }
 
 }

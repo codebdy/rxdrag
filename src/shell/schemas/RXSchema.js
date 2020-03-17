@@ -43,6 +43,10 @@ import paddingL from "./general/padding/padding-l"
 import utilClearfix from "./utilities/clearfix"
 import utilDisplay from "./utilities/display"
 
+import embedResponsive from "./utilities/embed/responsive"
+import embedAspectRatio from "./utilities/embed/aspect-ratio"
+import embedResponsiveItem from "./utilities/embed/responsive-item"
+
 export class RXSchema{
   constructor(){
     this.optionGroups = []
@@ -108,6 +112,17 @@ export class RXSchema{
    let utilitiesOptions = new OptionGroup(i18n.t('optionbox.bootstrap-utilities'))
    utilitiesOptions.addSwitchRow(utilClearfix)
    utilitiesOptions.addGenerateSchemaRow(utilDisplay)
+   let embedSmallGroup = new OptionRowSmallGroup()
+                     .setLabel(i18n.t('optionbox.embed'))
+   embedSmallGroup.addSwitchRow(embedResponsive)
+   embedSmallGroup.addSelectRow(embedAspectRatio)
+   utilitiesOptions.rows.push(embedSmallGroup)
+   utilitiesOptions.addSwitchRow(embedResponsiveItem)
+
+   let flexSmallGroup = new OptionRowSmallGroup()
+                     .setLabel(i18n.t('optionbox.flex'))
+   utilitiesOptions.rows.push(flexSmallGroup)
+
    this.optionGroups.push(utilitiesOptions)
   }
 
