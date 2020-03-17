@@ -4,35 +4,35 @@
       <div class="left">
         <div class="icon-button big" 
           :class="size === 'xl' ? 'active' :''"
-          @click="size = 'xl'"
+          @click="resizeScreen('xl')"
           title = "XL"
         >
           <i class="fas fa-tv"></i>
         </div>
         <div class="icon-button"
           :class="size === 'lg' ? 'active' :''"
-          @click="size = 'lg'"
+          @click="resizeScreen('lg')"
           title = "LG"
         >
           <i class="fas fa-desktop"></i>
         </div>
         <div class="icon-button"
           :class="size === 'md' ? 'active' :''"
-          @click="size = 'md'"
+          @click="resizeScreen('md')"
           title = "MD"
         >
           <i class="fas fa-laptop"></i>
         </div>
         <div class="icon-button"
           :class="size === 'sm' ? 'active' :''"
-          @click="size = 'sm'"
+          @click="resizeScreen('sm')"
           title = "SM"
         >
           <i class="fas fa-tablet-alt"></i>
         </div>
         <div class="icon-button"
           :class="size === 'xs' ? 'active' :''"
-          @click="size = 'xs'"
+          @click="resizeScreen('xs')"
           title = "XS"
         >
           <i class="fas fa-mobile-alt"></i>
@@ -175,10 +175,9 @@ export default {
   },
 
   methods: {
-    //onFileActived(activedFile){
-    //  this.actived = (activedFile === this.inputValue)
-    //  console.log('actived in HTMLPage:', this.actived)
-    //},
+    resizeScreen(size){
+      this.size = size
+    },
 
     draggingFromToolbox(item){
       if(this.actived){
@@ -197,6 +196,12 @@ export default {
       }
     }
   },
+
+  watch:{
+    size(val){
+      $bus.$emit('resizeScreen', this.size, this.pageId)
+    }
+  }
 }
 </script>
 

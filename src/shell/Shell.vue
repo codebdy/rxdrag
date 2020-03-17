@@ -53,7 +53,7 @@
             <tab :name="$t('widgets.options')"
                  :icon="'fas fa-paint-brush'" 
                  :selected="true">
-                <OptionBox v-model="options"></OptionBox>
+                <OptionBox v-model="options" :breakPoint = "breakPoint"></OptionBox>
             </tab>
             <tab :name="$t('widgets.code')"
                  :icon="'fas fa-code'">
@@ -129,6 +129,7 @@ export default {
   },
   data () {
     return {
+      breakPoint:'md',
       baseToolbox:[],
       files:[],
       nodes:nodes,
@@ -290,7 +291,7 @@ export default {
       this.node = node
       this.pageId = pageId
       console.log('Shell focusNode')
-      this.options = optionsFactory.resolveOptions(node)
+      this.options = optionsFactory.resolveOptions(node, this.breakPoint)
     },
 
     unFocusNode(id){
@@ -299,15 +300,14 @@ export default {
       this.pageId = ''
     },
 
-    /*classListChanged(classList){
-      this.node.meta.classList = classList
+    resizeScreen(breakPoint){
+      console.log('shell resizeScreen')
+      this.breakPoint = breakPoint
       this.options.forEach(optionGroup=>{
-        optionGroup.rows.forEach(row=>{
-          let value = row.isMultiple ? this.extractMultipleValue(row.valueScope) : this.extractValue(row.valueScope)
-          this.$set(row, 'value',value)
-        })
+        optionGroup.changeBreakPoint(breakPoint)
+        optionGroup.resolveValue(this.node)
       })
-    },*/
+    },
 
     onOptionValueChange(){
       this.options.forEach(optionGroup=>{
@@ -335,6 +335,7 @@ export default {
     $bus.$on('optionValueChange', this.onOptionValueChange)
     $bus.$on('overViewValueChange', this.onOverViewValueChange)
     $bus.$on('styleValueChange', this.onStyleValueChange)
+    $bus.$on('resizeScreen', this.resizeScreen)
 
 
     this.currentTheme = null
@@ -355,6 +356,7 @@ export default {
     $bus.$off('optionValueChange', this.onOptionValueChange)
     $bus.$off('overViewValueChange', this.onOverViewValueChange)
     $bus.$off('styleValueChange', this.onStyleValueChange)
+    $bus.$off('resizeScreen', this.resizeScreen)
   },
 
 }

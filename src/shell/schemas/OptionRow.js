@@ -1,12 +1,17 @@
 import {contains, remove} from '../../basic/rxarray'
 
 export class OptionRow{
-  constructor(schema, breakPoint = 'md') {
+  constructor(schema) {
+    this.breakPoint = 'md'
     this.schema = schema
-    this.breakPoint = breakPoint
     this.props = {}
     this.valueScope = []
     this.defaultValue = ""
+  }
+
+  setBreakPoint(breakPoint){
+    this.breakPoint = breakPoint
+    return this
   }
 
   changeBreakPoint(breakPoint){

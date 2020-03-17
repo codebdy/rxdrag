@@ -2,35 +2,35 @@ export default{
   isResponsive:true,
   label:'align',
   xs:{
-    valueScope：[
+    valueScope:[
       'text-left', 
       'text-center', 
       'text-right'
     ],
   },
   sm:{
-    valueScope：[
+    valueScope:[
       'text-sm-left', 
       'text-sm-center', 
       'text-sm-right'
     ],
   },
   md:{
-    valueScope：[
+    valueScope:[
       'text-md-left', 
       'text-md-center', 
       'text-md-right'
     ],
   },
   lg:{
-    valueScope：[
+    valueScope:[
       'text-lg-left', 
       'text-lg-center', 
       'text-lg-right'
     ],
   },
   xl:{
-    valueScope：[
+    valueScope:[
       'text-xl-left', 
       'text-xl-center', 
       'text-xl-right'

@@ -2,12 +2,12 @@ import {rules} from './Rules.js'
 
 export class OptionsFactory{
 
-  resolveOptions(node){
+  resolveOptions(node, breakPoint){
 
     let rule = rules[node.ruleName]
 
     if(rule){
-      return rule.resolveOptions(node)
+      return rule.resolveOptions(node, breakPoint)
     }
     return []
   }

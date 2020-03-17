@@ -6,6 +6,7 @@ import pseudoHeading from "./general/pseudo-heading"
 import displaySize from "./general/display-size"
 import textColor from "./general/text/color"
 import textJustify from "./general/text/justify"
+import textAlign from "./general/text/align"
 import textLead from "./general/text/lead"
 
 export class RXSchema{
@@ -22,6 +23,7 @@ export class RXSchema{
 
     textSmallGroup.addSelectRow(textColor)
     textSmallGroup.addSwitchRow(textJustify)
+    textSmallGroup.addSelectRow(textAlign)
     textSmallGroup.addSwitchRow(textLead)
 
     generalOptions.rows.push(textSmallGroup)  
@@ -29,9 +31,9 @@ export class RXSchema{
     this.optionGroups.push(generalOptions)
   }
 
-  resolveOptions(node){
+  resolveOptions(node, breakPoint){
     this.optionGroups.forEach(optionGroup=>{
-      optionGroup.resolveValue(node)
+      optionGroup.setBreakPoint(breakPoint).resolveValue(node, breakPoint)
     })
     return this.optionGroups
   }
