@@ -1,9 +1,6 @@
 export default{
-  fieldName:'classList',
-  label:'Add Border',
-  widget:'OpBorderInput',
-  defaultValue:[],
-  specialClass:'add-border',
+  label:'add-border',
+  addBorder:true,
   list:{
     all : 'border',
     top : 'border-top',

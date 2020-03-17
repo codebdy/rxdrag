@@ -1,9 +1,5 @@
 export default{
-  fieldName:'classList',
-  label:'Remove Border',
-  widget:'OpBorderInput',
-  defaultValue:[],
-  specialClass:'remove-border',
+  label:'remove-border',
   list:{
     all : 'border-0',
     top : 'border-top-0',

@@ -74,16 +74,23 @@
     "text" : "Text",
     "text-justify" : "Justify",
     "align" : "Align",
+    "vertical-align" : "Vertical Align",
     "wrapping" : "Wrapping",
     "truncate" : "Truncate",
-    "word-break" : "Word break",
+    "word-break" : "Word Break",
     "transform" : "Transform",
-    "font-weight" : "Font weight",
+    "font-weight" : "Font Weight",
     "italic" : "Italic",
     "monospace" : "Monospace",
-    "reset-color" : "Reset color",
+    "reset-color" : "Reset Color",
     "clear-decoration" : "Clear Decoration",
-    "lead" : "Lead"
+    "lead" : "Lead",
+
+    "border": "Border",
+    "border-color": "Border Color",
+    "add-border": " Add Border",
+    "remove-border": "Remove Border",
+    "border-radius": "Border Radius"
   },
 
 
@@ -138,6 +145,13 @@
     "text-xl-center":"Center",
     "text-xl-right":"Right",
 
+    "align-baseline":"Baseline",
+    "align-top":"Top",
+    "align-middle":"Middle",
+    "align-bottom":"Bottom",
+    "align-text-top":"Text Top",
+    "align-text-bottom":"Text Bottom",
+
     "text-wrap" : "Wrap",
     "text-nowrap" : "Nowrap",
 
@@ -149,7 +163,28 @@
     "font-weight-bolder":"Bolder",
     "font-weight-normal":"Normal",
     "font-weight-light":"Light",
-    "font-weight-lighter":"Lighter"
+    "font-weight-lighter":"Lighter",
+
+    "border-primary":"Primary",
+    "border-secondary":"Secondary",
+    "border-success":"Success",
+    "border-danger":"Danger",
+    "border-warning":"Warning",
+    "border-info":"Info",
+    "border-light":"Light",
+    "border-dark":"Dark",
+    "border-white":"White",
+
+    "rounded":"Rounded",
+    "rounded-top":"Rounded top",
+    "rounded-right":"Rounded right",
+    "rounded-bottom":"Rounded bottom",
+    "rounded-left":"Rounded left",
+    "rounded-circle":"Rounded circle",
+    "rounded-pill":"Rounded pill",
+    "rounded-0":"Rounded 0",
+    "rounded-sm":"Rounded Small",
+    "rounded-lg":"Rounded Large"
   }
 
 

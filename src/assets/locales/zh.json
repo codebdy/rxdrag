@@ -74,6 +74,7 @@
     "text" : "文本",
     "text-justify" : "行对齐",
     "align" : "水平对齐",
+    "vertical-align" : "垂直对齐",
     "wrapping" : "换行",
     "truncate" : "截断",
     "word-break" : "单词断行",
@@ -83,7 +84,13 @@
     "monospace" : "等宽字体",
     "reset-color" : "清除颜色",
     "clear-decoration" : "清除修饰",
-    "lead" : "Lead"
+    "lead" : "Lead",
+
+    "border": "边框",
+    "border-color": "颜色",
+    "add-border": "添加",
+    "remove-border": "删除",
+    "border-radius": "圆角"
   },
 
 
@@ -138,6 +145,13 @@
     "text-xl-center":"中间对齐",
     "text-xl-right":"右对齐",
 
+    "align-baseline":"基线对齐",
+    "align-top":"顶部对齐",
+    "align-middle":"中间对齐",
+    "align-bottom":"底部对齐",
+    "align-text-top":"文字在顶部",
+    "align-text-bottom":"文字在底部",
+
     "text-wrap" : "换行",
     "text-nowrap" : "不换行",
 
@@ -149,7 +163,29 @@
     "font-weight-bolder":"较粗(相对父元素)",
     "font-weight-normal":"正常",
     "font-weight-light":"细体",
-    "font-weight-lighter":"较细(相对父元素)"
+    "font-weight-lighter":"较细(相对父元素)",
+
+    "border-primary":"标准色",
+    "border-secondary":"间色",
+    "border-success":"成功色",
+    "border-danger":"危险色",
+    "border-warning":"警告色",
+    "border-info":"信息色",
+    "border-light":"浅色",
+    "border-dark":"深色",
+    "border-white":"白色",
+
+    "rounded":"全部圆角",
+    "rounded-top":"顶部圆角",
+    "rounded-right":"右侧圆角",
+    "rounded-bottom":"底部圆角",
+    "rounded-left":"左侧圆角",
+    "rounded-circle":"标准圆",
+    "rounded-pill":"椭圆",
+    "rounded-0":"无圆角",
+    "rounded-sm":"小圆角",
+    "rounded-lg":"大圆角"
+
   }
 
 }

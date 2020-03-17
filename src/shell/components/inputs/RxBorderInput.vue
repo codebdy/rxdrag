@@ -91,6 +91,7 @@ export default {
          && this.bottomSelected
          && this.leftSelected ){
         this.inputValue.push(this.list.all)
+        this.$emit('changed', this.inputValue)
         return
       }
       if(this.topSelected){
@@ -105,6 +106,7 @@ export default {
       if(this.leftSelected){
         this.inputValue.push(this.list.left)
       }
+      this.$emit('changed', this.inputValue)
     },
 
     showValue(){

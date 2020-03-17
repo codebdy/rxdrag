@@ -2,11 +2,12 @@ import {OptionGroup} from './OptionGroup'
 import {OptionRowSmallGroup} from './OptionRowSmallGroup'
 
 import backgroundColor from "./general/background-color"
-import pseudoHeading from "./general/pseudo-heading"
-import displaySize from "./general/display-size"
+import pseudoHeading from "./general/text/pseudo-heading"
+import displaySize from "./general/text/display-size"
 import textColor from "./general/text/color"
 import textJustify from "./general/text/justify"
 import textAlign from "./general/text/align"
+import textVAlign from "./general/text/vertical-align"
 import textWrapping from "./general/text/wrapping"
 import textWordBreak from "./general/text/word-break"
 import textTruncate from "./general/text/truncate"
@@ -14,8 +15,13 @@ import textTransform from "./general/text/transform"
 import textWeight from "./general/text/weight"
 import textResetColor from "./general/text/reset-color"
 import textDecoration from "./general/text/decoration"
-
 import textLead from "./general/text/lead"
+
+import borderColor from "./general/border/Color"
+import borderAdd from "./general/border/add"
+//import borderColor from "./general/border/Color"
+//import borderColor from "./general/border/Color"
+
 
 export class RXSchema{
   constructor(){
@@ -24,12 +30,21 @@ export class RXSchema{
     let generalOptions = new OptionGroup(i18n.t('optionbox.general-options'))
     generalOptions.addSelectRow(backgroundColor)
 
+    let borderSmallGroup = new OptionRowSmallGroup()
+                     .setLabel(i18n.t('optionbox.border'))
+
+    borderSmallGroup.addSelectRow(borderColor)
+    borderSmallGroup.addBorderRow(borderAdd)
+
+    generalOptions.rows.push(borderSmallGroup)  
+
     let textSmallGroup = new OptionRowSmallGroup()
                      .setLabel(i18n.t('optionbox.text'))
 
     textSmallGroup.addSelectRow(textColor)
     textSmallGroup.addSwitchRow(textJustify)
     textSmallGroup.addSelectRow(textAlign)
+    textSmallGroup.addSelectRow(textVAlign)
     textSmallGroup.addSelectRow(pseudoHeading)
     textSmallGroup.addSelectRow(displaySize)
     textSmallGroup.addSelectRow(textWrapping)
@@ -42,7 +57,8 @@ export class RXSchema{
     textSmallGroup.addSwitchRow(textLead)
     generalOptions.rows.push(textSmallGroup)  
 
-    this.optionGroups.push(generalOptions)
+
+   this.optionGroups.push(generalOptions)
   }
 
   resolveOptions(node, breakPoint){
