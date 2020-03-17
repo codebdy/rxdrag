@@ -119,7 +119,8 @@
     "responsive" : "responsive",
     "aspect-ratio" : "Aspect Ratio",
     "embed-item" : "Embed Item",
-    "flex" : "Flex"
+    "flex" : "Flex",
+    "direction" : "Direction"
   },
 
 
@@ -319,7 +320,13 @@
     "embed-responsive-21by9":"21:9",
     "embed-responsive-16by9":"16:9",
     "embed-responsive-4by3":"4:3",
-    "embed-responsive-1by1":"1:1"
+    "embed-responsive-1by1":"1:1",
+
+    "flex-row":"Row",
+    "flex-row-reverse":"Row Reverse",
+    "flex-column":"Column",
+    "flex-column-reverse":"Column Reverse"
+
   }
 
 

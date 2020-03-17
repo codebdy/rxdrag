@@ -10,7 +10,5 @@ export default{
     'table',
     'table-cell',
     'table-row',
-    'flex',
-    'inline-flex'
   ]
 }

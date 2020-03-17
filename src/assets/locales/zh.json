@@ -118,7 +118,8 @@
     "responsive" : "响应式",
     "aspect-ratio" : "宽高比例",
     "embed-item" : "嵌入项目",
-    "flex" : "弹性布局"
+    "flex" : "弹性布局",
+    "direction" : "方向"
   },
 
 
@@ -312,14 +313,18 @@
     "d-table":"表格",
     "d-table-cell":"表格单元",
     "d-table-row":"表格行",
-    "d-flex":"弹性",
-    "d-inline-flex":"行内弹性",
+    "d-flex":"弹性布局",
+    "d-inline-flex":"行内弹性布局",
 
     "embed-responsive-21by9":"21:9",
     "embed-responsive-16by9":"16:9",
     "embed-responsive-4by3":"4:3",
-    "embed-responsive-1by1":"1:1"
+    "embed-responsive-1by1":"1:1",
 
+    "flex-row":"水平",
+    "flex-row-reverse":"反向水平",
+    "flex-column":"垂直",
+    "flex-column-reverse":"反向垂直"
   }
 
 }

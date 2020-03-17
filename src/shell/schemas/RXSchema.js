@@ -47,6 +47,9 @@ import embedResponsive from "./utilities/embed/responsive"
 import embedAspectRatio from "./utilities/embed/aspect-ratio"
 import embedResponsiveItem from "./utilities/embed/responsive-item"
 
+import flexDisplay from "./utilities/flex/display"
+import flexDirection from "./utilities/flex/direction"
+
 export class RXSchema{
   constructor(){
     this.optionGroups = []
@@ -121,6 +124,9 @@ export class RXSchema{
 
    let flexSmallGroup = new OptionRowSmallGroup()
                      .setLabel(i18n.t('optionbox.flex'))
+
+   flexSmallGroup.addGenerateSchemaRow(flexDisplay)
+   flexSmallGroup.addGenerateSchemaRow(flexDirection)
    utilitiesOptions.rows.push(flexSmallGroup)
 
    this.optionGroups.push(utilitiesOptions)
