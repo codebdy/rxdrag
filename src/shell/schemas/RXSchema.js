@@ -19,8 +19,8 @@ import textLead from "./general/text/lead"
 
 import borderColor from "./general/border/Color"
 import borderAdd from "./general/border/add"
-//import borderColor from "./general/border/Color"
-//import borderColor from "./general/border/Color"
+import borderRemove from "./general/border/remove"
+import borderRadius from "./general/border/radius"
 
 
 export class RXSchema{
@@ -35,6 +35,8 @@ export class RXSchema{
 
     borderSmallGroup.addSelectRow(borderColor)
     borderSmallGroup.addBorderRow(borderAdd)
+    borderSmallGroup.addBorderRow(borderRemove)
+    borderSmallGroup.addSelectRow(borderRadius)
 
     generalOptions.rows.push(borderSmallGroup)  
 
