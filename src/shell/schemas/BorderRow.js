@@ -5,6 +5,7 @@ export class BorderRow extends OptionRow{
     super(schema)
     this.inputName = 'RxBorderInput'
     this.setLabel(i18n.t('optionbox.'+ schema.label))
+    this.isMultiple = true
     //this.setDefaultValue(defaultValue)//需要修改，等待内核提供改功能
     this.init()
   }

@@ -15,14 +15,24 @@
       </div>
       </div>
       <div v-if="collapsed" class="group-value">
-        <div 
+        <template 
           v-for="row in inputValue"
-          v-if="row.value"
-          class="value-label" 
         >
-          {{row.value}}
-          <span class="remove-button" @click="remove(row.value)">×</span>
-        </div>
+          <div class="value-label"
+          v-if="row.value && !row.isMultiple"
+          >
+            {{row.value}}
+            <span class="remove-button" @click="remove(row.value)">×</span>
+          </div>
+          <div
+            v-if="row.isMultiple"
+            v-for="subValue in row.value"
+            class="value-label"
+          >
+            {{subValue}}
+            <span class="remove-button" @click="removeSubValue(row, subValue)">×</span>
+          </div>
+        </template>
       </div>
     </div>
     <div v-if="!collapsed" class="row-group-body">
@@ -33,6 +43,7 @@
 
 <script>
 import {valueEqual, cloneValue} from './valueOperate'
+import {remove} from '../../../basic/rxarray'
 
 export default {
   name: 'RxInputRowGroup',
@@ -84,8 +95,13 @@ export default {
           this.inputValue[i].value = ''
         }
       }
-    $bus.$emit('optionValueChange')
-   }
+      $bus.$emit('optionValueChange')
+    },
+
+    removeSubValue(row, subValue){
+      remove(subValue, row.value)
+      $bus.$emit('optionValueChange')
+    }
   },
 }
 </script>
