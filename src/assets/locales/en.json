@@ -90,7 +90,11 @@
     "border-color": "Border Color",
     "add-border": " Add Border",
     "remove-border": "Remove Border",
-    "border-radius": "Border Radius"
+    "border-radius": "Border Radius",
+
+    "margin" : "Margin",
+    "padding" : "Padding",
+    "shadow" : "Shadow"
   },
 
 
@@ -184,7 +188,13 @@
     "rounded-pill":"Rounded pill",
     "rounded-0":"Rounded 0",
     "rounded-sm":"Rounded Small",
-    "rounded-lg":"Rounded Large"
+    "rounded-lg":"Rounded Large",
+
+    "shadow-none":"No shadow",
+    "shadow-sm":"Small",
+    "shadow":"Regular",
+    "shadow-lg":"Larger"
+
   }
 
 

@@ -90,7 +90,10 @@
     "border-color": "颜色",
     "add-border": "添加",
     "remove-border": "删除",
-    "border-radius": "圆角"
+    "border-radius": "圆角",
+    "margin" : "外边距",
+    "padding" : "内边距",
+    "shadow" : "阴影"
   },
 
 
@@ -184,8 +187,12 @@
     "rounded-pill":"椭圆",
     "rounded-0":"无圆角",
     "rounded-sm":"小圆角",
-    "rounded-lg":"大圆角"
+    "rounded-lg":"大圆角",
 
+    "shadow-none":"无阴影",
+    "shadow-sm":"小阴影",
+    "shadow":"正常阴影",
+    "shadow-lg":"大阴影"
   }
 
 }

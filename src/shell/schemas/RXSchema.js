@@ -22,6 +22,7 @@ import borderAdd from "./general/border/add"
 import borderRemove from "./general/border/remove"
 import borderRadius from "./general/border/radius"
 
+import generalShadow from "./general/shadow"
 
 export class RXSchema{
   constructor(){
@@ -39,6 +40,8 @@ export class RXSchema{
     borderSmallGroup.addSelectRow(borderRadius)
 
     generalOptions.rows.push(borderSmallGroup)  
+
+    generalOptions.addSelectRow(generalShadow)
 
     let textSmallGroup = new OptionRowSmallGroup()
                      .setLabel(i18n.t('optionbox.text'))
