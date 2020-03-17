@@ -123,7 +123,11 @@
     "justify-content" : "内容对齐",
     "align-items" : "项目对齐",
     "align-self" : "自身对齐",
-    "fill" : "填满"
+    "fill" : "填满",
+    "grow" : "增长",
+    "shrink": "压缩",
+    "margin-auto" : "自动外边距",
+    "wrap" : "换行"
   },
 
 
@@ -347,7 +351,53 @@
     "align-self-end":"终点对齐",
     "align-self-center":"中点对齐",
     "align-self-baseline":"基线对齐",
-    "align-self-stretch":"充满容器"
+    "align-self-stretch":"充满容器",
+
+    "flex-grow-0":"0",
+    "flex-grow-1":"1",
+
+    "flex-shrink-0":"0",
+    "flex-shrink-1":"1",
+
+    "m-auto":"全部",
+    "mx-auto":"水平",
+    "my-auto":"垂直",
+    "ml-auto":"左",
+    "mr-auto":"右",
+    "mt-auto":"顶",
+    "mb-auto":"底",
+    "m-sm-auto":"全部",
+    "mx-sm-auto":"水平",
+    "my-sm-auto":"垂直",
+    "ml-sm-auto":"左",
+    "mr-sm-auto":"右",
+    "mt-sm-auto":"顶",
+    "mb-sm-auto":"底",
+    "m-md-auto":"全部",
+    "mx-md-auto":"水平",
+    "my-md-auto":"垂直",
+    "ml-md-auto":"左",
+    "mr-md-auto":"右",
+    "mt-md-auto":"顶",
+    "mb-md-auto":"底",
+    "m-lg-auto":"全部",
+    "mx-lg-auto":"水平",
+    "my-lg-auto":"垂直",
+    "ml-lg-auto":"左",
+    "mr-lg-auto":"右",
+    "mt-lg-auto":"顶",
+    "mb-lg-auto":"底",
+    "m-xl-auto":"全部",
+    "mx-xl-auto":"水平",
+    "my-xl-auto":"垂直",
+    "ml-xl-auto":"左",
+    "mr-xl-auto":"右",
+    "mt-xl-auto":"顶",
+    "mb-xl-auto":"底",
+
+    "flex-nowrap":"不换行",
+    "flex-wrap":"换行",
+    "flex-wrap-reverse":"反向换行"
 
   }
 
