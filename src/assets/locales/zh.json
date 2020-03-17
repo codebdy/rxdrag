@@ -65,12 +65,13 @@
     "fluid" : "Fluid",
     "row-options" : "行选项",
     "gutters" : "Gutters",
-    "text-options" : "文本选项",
+    "general-options" : "常规选项",
     "pseudo-heading" : "伪标题",
     "display-size" : "超大字体",
     "color" : "颜色",
     "text-color" : "文本颜色",
-    "background-color" : "背景颜色"
+    "background-color" : "背景颜色",
+    "text" : "文本"
   },
 
 

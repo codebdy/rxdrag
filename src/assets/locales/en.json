@@ -65,12 +65,13 @@
     "fluid" : "Fluid",
     "row-options" : "Row Options",
     "gutters" : "Gutters",
-    "text-options" : "Text Options",
+    "general-options" : "General Options",
     "pseudo-heading" : "Pseudo Heading",
     "display-size" : "Display Size",
     "color" : "Color",
     "text-color" : "Text Color",
-    "background-color" : "Background Color"
+    "background-color" : "Background Color",
+    "text" : "Text"
   },
 
 

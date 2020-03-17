@@ -53,6 +53,9 @@
           <i class="fas fa-eye"></i>
         </div>
         <div class="icon-button">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="icon-button">
           <i class="fas fa-undo"></i>
         </div>
         <div class="icon-button">
