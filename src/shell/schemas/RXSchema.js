@@ -41,6 +41,7 @@ import paddingB from "./general/padding/padding-b"
 import paddingL from "./general/padding/padding-l"
 
 import utilClearfix from "./utilities/clearfix"
+import utilDisplay from "./utilities/display"
 
 export class RXSchema{
   constructor(){
@@ -106,6 +107,7 @@ export class RXSchema{
 
    let utilitiesOptions = new OptionGroup(i18n.t('optionbox.bootstrap-utilities'))
    utilitiesOptions.addSwitchRow(utilClearfix)
+   utilitiesOptions.addGenerateSchemaRow(utilDisplay)
    this.optionGroups.push(utilitiesOptions)
   }
 

@@ -298,7 +298,17 @@
     "shadow-none":"无阴影",
     "shadow-sm":"小阴影",
     "shadow":"正常阴影",
-    "shadow-lg":"大阴影"
+    "shadow-lg":"大阴影",
+
+    "d-none":"不显示",
+    "d-inline":"行内",
+    "d-inline-block":"行内块",
+    "d-block":"块",
+    "d-table":"表格",
+    "d-table-cell":"表格单元",
+    "d-table-row":"表格行",
+    "d-flex":"弹性",
+    "d-inline-flex":"行内弹性"
   }
 
 }

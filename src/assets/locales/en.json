@@ -299,7 +299,17 @@
     "shadow-none":"No shadow",
     "shadow-sm":"Small",
     "shadow":"Regular",
-    "shadow-lg":"Larger"
+    "shadow-lg":"Larger",
+
+    "d-none":"None",
+    "d-inline":"Inline",
+    "d-inline-block":"Inline Block",
+    "d-block":"Block",
+    "d-table":"Table",
+    "d-table-cell":"Table Cell",
+    "d-table-row":"Table Row",
+    "d-flex":"Flex",
+    "d-inline-flex":"Inline Flex"
 
   }
 
