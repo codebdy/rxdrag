@@ -122,7 +122,8 @@
     "direction" : "方向",
     "justify-content" : "内容对齐",
     "align-items" : "项目对齐",
-    "align-self" : "自身对齐"
+    "align-self" : "自身对齐",
+    "fill" : "填满"
   },
 
 

@@ -1,43 +1,27 @@
 export default{
-  fieldName:'classList',
+  label:'fill',
   isResponsive:true,
   xs:{
-    widget:'OpSwitch',
-    label:'Fill',
     onValue:'flex-fill',
     offValue:'',
-    defaultValue:'',
   },
-  //---------------------
   sm:{
-    widget:'OpSwitch',
-    label:'Fill',
-    onValue:'flex-fill',
+    onValue:'flex-sm-fill',
     offValue:'',
-    defaultValue:'',
   },
   //---------------------
   md:{
-    widget:'OpSwitch',
-    label:'Fill',
-    onValue:'flex-fill',
+    onValue:'flex-md-fill',
     offValue:'',
-    defaultValue:'',
   },
   //---------------------
   lg:{
-    widget:'OpSwitch',
-    label:'Fill',
-    onValue:'flex-fill',
+    onValue:'flex-lg-fill',
     offValue:'',
-    defaultValue:'',
   },
   //---------------------
   xl:{
-    widget:'OpSwitch',
-    label:'Fill',
-    onValue:'flex-fill',
+    onValue:'flex-xl-fill',
     offValue:'',
-    defaultValue:'',
   },
 }

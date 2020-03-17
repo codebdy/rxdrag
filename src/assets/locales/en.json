@@ -123,7 +123,8 @@
     "direction" : "Direction",
     "justify-content" : "Justify Content",
     "align-items" : "Align Items",
-    "align-self" : "Align Self"
+    "align-self" : "Align Self",
+    "fill" : "Fill"
   },
 
 
