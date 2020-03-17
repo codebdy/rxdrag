@@ -5,6 +5,8 @@ import backgroundColor from "./general/background-color"
 import pseudoHeading from "./general/pseudo-heading"
 import displaySize from "./general/display-size"
 import textColor from "./general/text/color"
+import textJustify from "./general/text/justify"
+import textLead from "./general/text/lead"
 
 export class RXSchema{
   constructor(){
@@ -19,9 +21,19 @@ export class RXSchema{
                      .setLabel(i18n.t('optionbox.text'))
 
     textSmallGroup.addSelectRow(textColor)
+    textSmallGroup.addSwitchRow(textJustify)
+    textSmallGroup.addSwitchRow(textLead)
 
     generalOptions.rows.push(textSmallGroup)  
 
     this.optionGroups.push(generalOptions)
   }
+
+  resolveOptions(node){
+    this.optionGroups.forEach(optionGroup=>{
+      optionGroup.resolveValue(node)
+    })
+    return this.optionGroups
+  }
+
 }

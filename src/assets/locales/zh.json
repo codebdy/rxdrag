@@ -69,9 +69,12 @@
     "pseudo-heading" : "伪标题",
     "display-size" : "超大字体",
     "color" : "颜色",
-    "text-color" : "文本颜色",
+    "text-color" : "颜色",
     "background-color" : "背景颜色",
-    "text" : "文本"
+    "text" : "文本",
+    "text-justify" : "行对齐",
+    "align" : "水平对齐",
+    "lead" : "Lead"
   },
 
 
@@ -108,8 +111,23 @@
     "bg-light":"浅色",
     "bg-dark":"深色",
     "bg-muted":"哑色",
-    "bg-white":"白色"
+    "bg-white":"白色",
 
+    "text-left":"左对齐",
+    "text-center":"中间对齐",
+    "text-right":"右对齐",
+    "text-sm-left":"左对齐",
+    "text-sm-center":"中间对齐",
+    "text-sm-right":"右对齐",
+    "text-md-left":"左对齐",
+    "text-md-center":"中间对齐",
+    "text-md-right":"右对齐",
+    "text-lg-left":"左对齐",
+    "text-lg-center":"中间对齐",
+    "text-lg-right":"右对齐",
+    "text-xl-left":"左对齐",
+    "text-xl-center":"中间对齐",
+    "text-xl-right":"右对齐"
    
   }
 

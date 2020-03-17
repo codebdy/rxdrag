@@ -11,13 +11,6 @@ export class Container extends RXSchema{
     containerOptions.addSwitchRow(fluid, 'container')
 
     this.optionGroups.unshift(containerOptions)
-
   }
 
-  resolveOptions(node){
-    this.optionGroups.forEach(optionGroup=>{
-      optionGroup.resolveValue(node)
-    })
-    return this.optionGroups
-  }
 } 

@@ -15,20 +15,15 @@ export class OptionGroup{
 
   addSelectRow(schema, defaultValue = ''){
     this.rows.push(
-      new SelectRow()
-      .setLabel(i18n.t('optionbox.'+ schema.label))
-      .setDefaultValue(defaultValue)//需要修改，等待内核提供改功能
-      .setValueScope(schema.valueScope)
+      new SelectRow(schema)
+      .setDefaultValue(defaultValue)
     )
   }
 
   addSwitchRow(schema, defaultValue = ''){
     this.rows.push(
-      new SwitchRow()
-      .setLabel(i18n.t('optionbox.'+ schema.label))
-      .setDefaultValue(defaultValue)//需要修改，等待内核提供改功能
-      .setOnValue(schema.onValue)
-      .setOffValue(schema.offValue)
+      new SwitchRow(schema)
+      .setDefaultValue(defaultValue)
     )
   }
 

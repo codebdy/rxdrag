@@ -69,9 +69,12 @@
     "pseudo-heading" : "Pseudo Heading",
     "display-size" : "Display Size",
     "color" : "Color",
-    "text-color" : "Text Color",
+    "text-color" : "Color",
     "background-color" : "Background Color",
-    "text" : "Text"
+    "text" : "Text",
+    "text-justify" : "Justify",
+    "align" : "Align",
+    "lead" : "Lead"
   },
 
 
@@ -108,7 +111,23 @@
     "bg-light":"Light",
     "bg-dark":"Dark",
     "bg-muted":"Muted",
-    "bg-white":"White"
+    "bg-white":"White",
+
+    "text-left":"Left",
+    "text-center":"Center",
+    "text-right":"Right",
+    "text-sm-left":"Left",
+    "text-sm-center":"Center",
+    "text-sm-right":"Right",
+    "text-md-left":"Left",
+    "text-md-center":"Center",
+    "text-md-right":"Right",
+    "text-lg-left":"Left",
+    "text-lg-center":"Center",
+    "text-lg-right":"Right",
+    "text-xl-left":"Left",
+    "text-xl-center":"Center",
+    "text-xl-right":"Right"
 
   }
 
