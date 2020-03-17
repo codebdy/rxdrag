@@ -1,6 +1,7 @@
 import {SelectRow} from './SelectRow'
 import {SwitchRow} from './SwitchRow'
 import {BorderRow} from './BorderRow'
+import {GenerateSchemaRow} from './GenerateSchemaRow'
 
 export class OptionGroup{
   constructor(label, selected) {
@@ -48,6 +49,14 @@ export class OptionGroup{
   addBorderRow(schema, defaultValue = []){
     this.rows.push(
       new BorderRow(schema)
+      .setBreakPoint(this.breakPoint)
+      .setDefaultValue(defaultValue)
+    )
+  }
+
+  addGenerateSchemaRow(schema, defaultValue = ''){
+    this.rows.push(
+      new GenerateSchemaRow(schema)
       .setBreakPoint(this.breakPoint)
       .setDefaultValue(defaultValue)
     )

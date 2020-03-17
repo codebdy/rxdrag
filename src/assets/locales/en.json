@@ -94,7 +94,23 @@
 
     "margin" : "Margin",
     "padding" : "Padding",
-    "shadow" : "Shadow"
+    "shadow" : "Shadow",
+
+    "margin-all" : "All",
+    "margin-bottom" : "Bottom",
+    "margin-horizontal" : "Horizontal",
+    "margin-left" : "Left",
+    "margin-right" : "Right",
+    "margin-top" : "Top",
+    "margin-vertical" : "Vertical",
+
+    "padding-all" : "All",
+    "padding-bottom" : "Bottom",
+    "padding-horizontal" : "Horizontal",
+    "padding-left" : "Left",
+    "padding-right" : "Right",
+    "padding-top" : "Top",
+    "padding-vertical" : "Vertical"
   },
 
 

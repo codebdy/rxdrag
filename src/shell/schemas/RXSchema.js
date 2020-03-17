@@ -24,6 +24,22 @@ import borderRadius from "./general/border/radius"
 
 import generalShadow from "./general/shadow"
 
+import marginAll from "./general/margin/margin-all"
+import marginH from "./general/margin/margin-h"
+import marginV from "./general/margin/margin-v"
+import marginT from "./general/margin/margin-t"
+import marginR from "./general/margin/margin-r"
+import marginB from "./general/margin/margin-b"
+import marginL from "./general/margin/margin-l"
+
+import paddingAll from "./general/padding/padding-all"
+import paddingH from "./general/padding/padding-h"
+import paddingV from "./general/padding/padding-v"
+import paddingT from "./general/padding/padding-t"
+import paddingR from "./general/padding/padding-r"
+import paddingB from "./general/padding/padding-b"
+import paddingL from "./general/padding/padding-l"
+
 export class RXSchema{
   constructor(){
     this.optionGroups = []
@@ -38,14 +54,38 @@ export class RXSchema{
     borderSmallGroup.addBorderRow(borderAdd)
     borderSmallGroup.addBorderRow(borderRemove)
     borderSmallGroup.addSelectRow(borderRadius)
-
     generalOptions.rows.push(borderSmallGroup)  
 
     generalOptions.addSelectRow(generalShadow)
 
+    let marginSmallGroup = new OptionRowSmallGroup()
+                     .setLabel(i18n.t('optionbox.margin'))
+    marginSmallGroup.addGenerateSchemaRow(marginAll)
+    marginSmallGroup.addGenerateSchemaRow(marginH)
+    marginSmallGroup.addGenerateSchemaRow(marginV)
+    marginSmallGroup.addGenerateSchemaRow(marginT)
+    marginSmallGroup.addGenerateSchemaRow(marginR)
+    marginSmallGroup.addGenerateSchemaRow(marginB)
+    marginSmallGroup.addGenerateSchemaRow(marginL)
+    generalOptions.rows.push(marginSmallGroup)  
+
+    let paddingSmallGroup = new OptionRowSmallGroup()
+                     .setLabel(i18n.t('optionbox.padding'))
+    paddingSmallGroup.addGenerateSchemaRow(paddingAll)
+    paddingSmallGroup.addGenerateSchemaRow(paddingH)
+    paddingSmallGroup.addGenerateSchemaRow(paddingV)
+    paddingSmallGroup.addGenerateSchemaRow(paddingT)
+    paddingSmallGroup.addGenerateSchemaRow(paddingR)
+    paddingSmallGroup.addGenerateSchemaRow(paddingB)
+    paddingSmallGroup.addGenerateSchemaRow(paddingL)
+    generalOptions.rows.push(paddingSmallGroup)  
+
+
+
+
+
     let textSmallGroup = new OptionRowSmallGroup()
                      .setLabel(i18n.t('optionbox.text'))
-
     textSmallGroup.addSelectRow(textColor)
     textSmallGroup.addSwitchRow(textJustify)
     textSmallGroup.addSelectRow(textAlign)

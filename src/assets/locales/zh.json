@@ -93,7 +93,23 @@
     "border-radius": "圆角",
     "margin" : "外边距",
     "padding" : "内边距",
-    "shadow" : "阴影"
+    "shadow" : "阴影",
+
+    "margin-all" : "全部",
+    "margin-bottom" : "底",
+    "margin-horizontal" : "水平",
+    "margin-left" : "左",
+    "margin-right" : "右",
+    "margin-top" : "顶",
+    "margin-vertical" : "垂直",
+
+    "padding-all" : "全部",
+    "padding-bottom" : "底",
+    "padding-horizontal" : "水平",
+    "padding-left" : "左",
+    "padding-right" : "右",
+    "padding-top" : "顶",
+    "padding-vertical" : "垂直"
   },
 
 
