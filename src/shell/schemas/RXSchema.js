@@ -49,6 +49,8 @@ import embedResponsiveItem from "./utilities/embed/responsive-item"
 
 import flexDisplay from "./utilities/flex/display"
 import flexDirection from "./utilities/flex/direction"
+import flexJustifyContent from "./utilities/flex/justify-content"
+import flexAlignItems from "./utilities/flex/align-items"
 
 export class RXSchema{
   constructor(){
@@ -127,6 +129,8 @@ export class RXSchema{
 
    flexSmallGroup.addGenerateSchemaRow(flexDisplay)
    flexSmallGroup.addGenerateSchemaRow(flexDirection)
+   flexSmallGroup.addGenerateSchemaRow(flexJustifyContent)
+   flexSmallGroup.addGenerateSchemaRow(flexAlignItems)
    utilitiesOptions.rows.push(flexSmallGroup)
 
    this.optionGroups.push(utilitiesOptions)

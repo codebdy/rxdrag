@@ -119,7 +119,9 @@
     "aspect-ratio" : "宽高比例",
     "embed-item" : "嵌入项目",
     "flex" : "弹性布局",
-    "direction" : "方向"
+    "direction" : "方向",
+    "justify-content" : "内容对齐",
+    "align-items" : "项目对齐"
   },
 
 
@@ -324,7 +326,19 @@
     "flex-row":"水平",
     "flex-row-reverse":"反向水平",
     "flex-column":"垂直",
-    "flex-column-reverse":"反向垂直"
+    "flex-column-reverse":"反向垂直",
+
+    "justify-content-start" : "左对齐",
+    "justify-content-end" : "右对齐",
+    "justify-content-center" : "居中",
+    "justify-content-between" : "两端对齐",
+    "justify-content-around" : "等距对齐",
+
+    "align-items-start":"起点对齐",
+    "align-items-end":"终点对齐",
+    "align-items-center":"中点对齐",
+    "align-items-baseline":"基线对齐",
+    "align-items-stretch":"充满容器"
   }
 
 }

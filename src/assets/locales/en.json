@@ -120,7 +120,9 @@
     "aspect-ratio" : "Aspect Ratio",
     "embed-item" : "Embed Item",
     "flex" : "Flex",
-    "direction" : "Direction"
+    "direction" : "Direction",
+    "justify-content" : "Justify Content",
+    "align-items" : "Align Items"
   },
 
 
@@ -325,8 +327,19 @@
     "flex-row":"Row",
     "flex-row-reverse":"Row Reverse",
     "flex-column":"Column",
-    "flex-column-reverse":"Column Reverse"
+    "flex-column-reverse":"Column Reverse",
 
+    "justify-content-start" : "Start",
+    "justify-content-end" : "End",
+    "justify-content-center" : "Center",
+    "justify-content-between" : "Between",
+    "justify-content-around" : "Around",
+
+    "align-items-start":"Start",
+    "align-items-end":"End",
+    "align-items-center":"Center",
+    "align-items-baseline":"Baseline",
+    "align-items-stretch":"Stretch"
   }
 
 
