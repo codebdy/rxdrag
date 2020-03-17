@@ -11,6 +11,9 @@ import textWrapping from "./general/text/wrapping"
 import textWordBreak from "./general/text/word-break"
 import textTruncate from "./general/text/truncate"
 import textTransform from "./general/text/transform"
+import textWeight from "./general/text/weight"
+import textResetColor from "./general/text/reset-color"
+import textDecoration from "./general/text/decoration"
 
 import textLead from "./general/text/lead"
 
@@ -33,8 +36,10 @@ export class RXSchema{
     textSmallGroup.addSwitchRow(textTruncate)
     textSmallGroup.addSwitchRow(textWordBreak)
     textSmallGroup.addSelectRow(textTransform)
+    textSmallGroup.addSelectRow(textWeight)
+    textSmallGroup.addSwitchRow(textResetColor)
+    textSmallGroup.addSwitchRow(textDecoration)
     textSmallGroup.addSwitchRow(textLead)
-
     generalOptions.rows.push(textSmallGroup)  
 
     this.optionGroups.push(generalOptions)

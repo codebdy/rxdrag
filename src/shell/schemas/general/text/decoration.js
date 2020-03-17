@@ -1,8 +1,5 @@
 export default{
-  fieldName:'classList',
-  label:'Clear Decoration',
-  widget:'OpSwitch',
+  label:'clear-decoration',
   onValue:'text-decoration-none',
   offValue:'',
-  defaultValue:'',
 }

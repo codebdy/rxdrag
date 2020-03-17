@@ -1,8 +1,5 @@
 export default{
-  fieldName:'classList',
-  label:'Italic',
-  widget:'OpSwitch',
+  label:'italic',
   onValue:'font-italic',
   offValue:'',
-  defaultValue:'',
 }

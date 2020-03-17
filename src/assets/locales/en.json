@@ -78,6 +78,11 @@
     "truncate" : "Truncate",
     "word-break" : "Word break",
     "transform" : "Transform",
+    "font-weight" : "Font weight",
+    "italic" : "Italic",
+    "monospace" : "Monospace",
+    "reset-color" : "Reset color",
+    "clear-decoration" : "Clear Decoration",
     "lead" : "Lead"
   },
 
@@ -138,7 +143,13 @@
 
     "text-lowercase":"Lowercase",
     "text-uppercase":"Uppercase",
-    "text-capitalize":"Capitalize"
+    "text-capitalize":"Capitalize",
+
+    "font-weight-bold":"Bold",
+    "font-weight-bolder":"Bolder",
+    "font-weight-normal":"Normal",
+    "font-weight-light":"Light",
+    "font-weight-lighter":"Lighter"
   }
 
 

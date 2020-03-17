@@ -78,6 +78,11 @@
     "truncate" : "截断",
     "word-break" : "单词断行",
     "transform" : "文字变换",
+    "font-weight" : "字体粗细",
+    "italic" : "斜体",
+    "monospace" : "等宽字体",
+    "reset-color" : "清除颜色",
+    "clear-decoration" : "清除修饰",
     "lead" : "Lead"
   },
 
@@ -138,8 +143,13 @@
 
     "text-lowercase":"全部小写",
     "text-uppercase":"全部大写",
-    "text-capitalize":"首字母大写"
+    "text-capitalize":"首字母大写",
    
+    "font-weight-bold":"粗体",
+    "font-weight-bolder":"较粗(相对父元素)",
+    "font-weight-normal":"正常",
+    "font-weight-light":"细体",
+    "font-weight-lighter":"较细(相对父元素)"
   }
 
 }

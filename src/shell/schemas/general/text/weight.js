@@ -1,13 +1,10 @@
 export default{
-  fieldName:'classList',
-  label:'Font weight',
-  widget:'OpSelect',
-  defaultValue:'',
-  list:{
-    'font-weight-bold':'Bold',
-    'font-weight-bolder':'Bolder',
-    'font-weight-normal':'Normal',
-    'font-weight-light':'Light',
-    'font-weight-lighter':'Lighter',
-  },
+  label:'font-weight',
+  valueScope:[
+    'font-weight-bold',
+    'font-weight-bolder',
+    'font-weight-normal',
+    'font-weight-light',
+    'font-weight-lighter',
+  ],
 }

@@ -1,8 +1,5 @@
 export default{
-  fieldName:'classList',
-  label:'Monospace',
-  widget:'OpSwitch',
+  label:'monospace',
   onValue:'text-monospace',
   offValue:'',
-  defaultValue:'',
 }

@@ -1,8 +1,5 @@
 export default{
-  fieldName:'classList',
-  label:'Reset Color',
-  widget:'OpSwitch',
+  label:'reset-color',
   onValue:'text-reset',
   offValue:'',
-  defaultValue:'',
 }
