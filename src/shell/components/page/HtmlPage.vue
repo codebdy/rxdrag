@@ -79,7 +79,7 @@
           frame-border ="0"
           border = "0"
           allow-transparency = "no"
-          :height="canvasHeight + 'px'" 
+          :height="canvasHeight" 
           ref ="canvasFrame"
         ></iframe>
       </div>
@@ -143,6 +143,7 @@ export default {
     $bus.$on('draggingFromToolbox', this.draggingFromToolbox)
     $bus.$on('shellChangedNode', this.nodeChanged)
     $bus.$on('canvasHeight', this.onCanvasHeight)
+    document.addEventListener('mouseup', this.onMouseUp)
     //$bus.$on('overViewBoxChangedNode', this.nodeChanged)
 
     let iframedocument =  this.$refs.canvasFrame.contentDocument;//contentWindow.document;
@@ -176,6 +177,7 @@ export default {
     $bus.$off('canvasHeight', this.onCanvasHeight)
     //$bus.$off('overViewBoxChangedNode', this.nodeChanged)
     window.removeEventListener("message", this.receiveCanvasMessage);
+    document.removeEventListener('mouseup', this.onMouseUp)
   },
 
   methods: {
@@ -202,8 +204,12 @@ export default {
 
     onCanvasHeight(height, pageId){
       if(pageId === this.pageId){
-        this.canvasHeight = height
+        this.canvasHeight = height + 'px'
       }
+    },
+
+    onMouseUp(){
+      this.commandProxy.endDragFromToolbox()
     }
   },
 
