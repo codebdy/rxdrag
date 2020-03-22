@@ -14,6 +14,10 @@ export class CharNode extends Node{
     this.rule.heightDropMargin = 5;
   }
 
+  make(){
+    return new CharNode
+  }
+
   toViewModel(){
     return {
       styles:{},

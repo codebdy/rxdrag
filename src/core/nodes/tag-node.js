@@ -6,4 +6,9 @@ export class TagNode extends RXNode{
     this.meta.tag = tag
     this.label = tag
 	}
+
+  make(){
+    return new TagNode(this.tag)
+  }
+
 }

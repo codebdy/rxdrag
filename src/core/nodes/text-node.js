@@ -12,6 +12,15 @@ export class TextNode{
     this.id = "text" + TextNode.idSeed
   }
 
+  make(){
+    return new TextNode(this.text)
+  }
+
+  clone(){
+    let copy = this.make()
+    return copy
+  }
+
   getParentViewDomElement(){
     return this.parent.view.$dom
   }
