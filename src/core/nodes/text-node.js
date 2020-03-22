@@ -39,6 +39,9 @@ export class TextNode{
     return mouseFollower
   }
 
+  nodeChanged(){
+
+  }
 
   refreshState(){}
 
