@@ -105,6 +105,7 @@ export class RXEditorCommandProxy{
 
   sendMessage(message){
     message.pageId = this.pageId
+    message.canvasHeight = document.body.scrollHeight
     window.parent.postMessage(message, '/');    
   }
 }

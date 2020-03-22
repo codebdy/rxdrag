@@ -79,6 +79,7 @@
           frame-border ="0"
           border = "0"
           allow-transparency = "no"
+          :height="canvasHeight + 'px'" 
           ref ="canvasFrame"
         ></iframe>
       </div>
@@ -112,6 +113,7 @@ export default {
       content:`<div class="container"></div>`,
       commandProxy: new IFrameCommandProxy(this._uid),
       //actived: false,
+      canvasHeight: '100%',
     }
   },
   computed:{
@@ -140,6 +142,7 @@ export default {
     //$bus.$on('activedFile', this.onFileActived)
     $bus.$on('draggingFromToolbox', this.draggingFromToolbox)
     $bus.$on('shellChangedNode', this.nodeChanged)
+    $bus.$on('canvasHeight', this.onCanvasHeight)
     //$bus.$on('overViewBoxChangedNode', this.nodeChanged)
 
     let iframedocument =  this.$refs.canvasFrame.contentDocument;//contentWindow.document;
@@ -170,6 +173,7 @@ export default {
     //delete window.$editorBus
     $bus.$off('draggingFromToolbox', this.draggingFromToolbox)
     $bus.$off('shellChangedNode', this.nodeChanged)
+    $bus.$off('canvasHeight', this.onCanvasHeight)
     //$bus.$off('overViewBoxChangedNode', this.nodeChanged)
     window.removeEventListener("message", this.receiveCanvasMessage);
   },
@@ -193,6 +197,12 @@ export default {
     nodeChanged(node, pageId){
       if(pageId === this.pageId){
         this.commandProxy.nodeChanged(node)
+      }
+    },
+
+    onCanvasHeight(height, pageId){
+      if(pageId === this.pageId){
+        this.canvasHeight = height
       }
     }
   },

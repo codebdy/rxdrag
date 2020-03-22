@@ -107,6 +107,8 @@ export class IFrameCommandProxy{
         $bus.$emit('saveCodeFiles', message.innerHTML)
         break;
     }
+
+    $bus.$emit('canvasHeight', message.canvasHeight, message.pageId)
   }
 
   requestAssemble(theme, toolBoxReplyFunction, treeViewReplyFunction){
