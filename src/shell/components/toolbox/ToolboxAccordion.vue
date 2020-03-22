@@ -60,6 +60,7 @@ export default {
       offsetY : 0,
       showMouseFollower : false,
     }
+    
   },
 
   mounted () {
