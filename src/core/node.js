@@ -303,6 +303,7 @@ export class Node{
 
   clone(){
     let copy = this.make()
+    // /console.log(copy)
     copy.rule = JSON.parse(JSON.stringify(this.rule))
     copy.ruleName = this.ruleName
     this.children.forEach((child)=>{  
