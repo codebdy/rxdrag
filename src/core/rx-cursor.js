@@ -18,55 +18,79 @@ export class RxCursor extends RXComponent{
     this.followElement(this.node, this.offset)
   }
 
-  showInTop(node){
-    this.node = node
+  show(position, node){
     if(!node || !node.view.$dom) return
-    console.log('show in top')
-    return super.show()
-  }
-
-  showInRight(node){
-
-  }
-
-  showInBottom(node){
-
-  }
-
-  showInLeft(node){
-
-  }
-
-  showOutTop(node){
-
-  }
-
-  showOutRight(node){
-
-  }
-
-  showOutBottom(node){
-
-  }
-
-  showOutLeft(node){
-
-  }
-
-  showAsTextCursor(node){
-
-  }
-
-  show(node){
+    this.classClasses()
+    this.cssClass('rx-cursor')
+    this.cssClass(position)
     this.node = node
-    if(!node || !node.view.$dom) return
-    this.followElement(node)
+    if(position === 'in-top'){
+      this.inTop(node)
+    }
+
+    if(position === 'in-right'){
+      this.inRight(node)
+    }
+
+    if(position === 'in-bottom'){
+      this.inBottom(node)
+    }
+
+    if(position === 'in-left'){
+      this.inLeft(node)
+    }
     //console.log('show Cursor')
     return super.show()
   }
 
+  inTop(node){
+    let domElement = node.view.$dom
+    let rect = domElement.getBoundingClientRect()
+    if(this.$dom){
+      this.$dom.style.left = rect.left + 'px'
+      this.$dom.style.top = rect.top + 'px'
+      this.$dom.style.width = rect.width + 'px'
+      this.$dom.style.height = '4px'
+    }
+  }
+
+  inRight(node){
+    let domElement = node.view.$dom
+    let rect = domElement.getBoundingClientRect()
+    if(this.$dom){
+      this.$dom.style.left = "auto"
+      this.$dom.style.right = 0 + 'px'
+      this.$dom.style.top = rect.top + 'px'
+      this.$dom.style.width = '4px'
+      this.$dom.style.height = rect.height + 'px'
+    }
+  }
+
+  inBottom(node){
+    let domElement = node.view.$dom
+    let rect = domElement.getBoundingClientRect()
+    if(this.$dom){
+      this.$dom.style.left = rect.x + 'px'
+      this.$dom.style.top = 'auto'
+      this.$dom.style.bottom = 0 + 'px'
+      this.$dom.style.width = rect.width + 'px'
+      this.$dom.style.height = '4px'
+    }
+  }
+
+  inLeft(node){
+    let domElement = node.view.$dom
+    let rect = domElement.getBoundingClientRect()
+    if(this.$dom){
+      this.$dom.style.left = "0" + 'px'
+      this.$dom.style.right = 'auto'
+      this.$dom.style.top = rect.top + 'px'
+      this.$dom.style.width = '4px'
+      this.$dom.style.height = rect.height + 'px'
+    }
+  }
+
   followElement(node){
-    if(!node || !node.view || !node.view.$dom) return
     let domElement = node.view.$dom
     let rect = domElement.getBoundingClientRect()
     if(this.$dom){

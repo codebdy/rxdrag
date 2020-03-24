@@ -49,7 +49,7 @@ export class RXComponent{
   cssClass(className){
     add(className, this.classList)
     if(this.$dom){
-      add(className, this.$dom.classList)
+      this.$dom.classList.add(className)
     }
     return this
   }
@@ -164,6 +164,17 @@ export class RXComponent{
     this.children = new RXArray()
   }
 
+  classClasses(){
+    let dom = this.$dom
+    if(dom){
+      this.classList.forEach(cssClass=>{
+        console.log(cssClass)
+        dom.classList.remove(cssClass)
+      })
+    }
+    this.classList.length = 0
+  }
+
   show(){
     this.style.display = 'flex'
     if(this.$dom){
@@ -180,19 +191,6 @@ export class RXComponent{
     return this
   }
 
-  focus(){
-    if(this.$dom){
-      this.$dom.focus()
-    }
-    return this
-  }
-
-  clear(){
-    if(this.$dom){
-      this.$dom.value = ""
-    }
-    return this
-  }
 
   insertBefore(child, refence){
     insertBefore(child, refence, this.children)

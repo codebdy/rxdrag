@@ -38,7 +38,7 @@ export class RXEditor{
     })
 
     this.toolbar = new NodeToolbar
-    this.rxCursor = new RxCursor
+    this.cursor = new RxCursor
     this.miniEditbar = new MiniEditbar
     this.nodeParser = new NodeParser
   }
@@ -49,7 +49,7 @@ export class RXEditor{
     this.activedLabel.render(this.workspace)
     this.focusedLabel.render(this.workspace)
     this.toolbar.render(this.workspace)
-    this.rxCursor.render(this.workspace)
+    this.cursor.render(this.workspace)
     this.miniEditbar.render(this.workspace)
     this.canvas = new Canvas(this.workspace)
     //this.canvas.children = this.load()

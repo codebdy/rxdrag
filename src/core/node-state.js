@@ -159,7 +159,7 @@ export class CanDropState extends NodeState{
   }
 
   doDragover(event){
-    console.log(this.judgePosition(event))
+    rxEditor.cursor.show(this.judgePosition(event), this.node)
     //let command = rxEditor.commandManager.movingCommand
     //if(command){
       //command.adoptFromToolbox(this.node)
