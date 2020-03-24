@@ -58,8 +58,8 @@
   height:100%;
   top:0;
   left:0;
-  background:repeating-linear-gradient(135deg,#DADADA,#F5F5F5 5px);
-  border:#75d678 dashed 2px;
+  background:rgba(255, 255, 255, 0.7);
+  outline:dashed #70baf7 1px;
 }
 
 .node-label{
@@ -95,6 +95,55 @@
   border: #fff solid 1px;
   z-index: 10020;
 }
+
+.rx-cursor.out-top::after, .rx-cursor.out-bottom::after{
+  position: absolute;
+  content: '';
+  width: 0; 
+  height: 0;
+  top: 0.20rem;
+  left: calc(50% - 2px);
+  border-width: 4px;
+  border-style: solid;
+  border-color:#8cdb27 transparent  transparent  transparent;
+}
+
+.rx-cursor.out-top::before, .rx-cursor.out-bottom::before{
+  position: absolute;
+  content: '';
+  width: 0; 
+  height: 0;
+  top: -0.60rem;
+  left: calc(50% - 2px);
+  border-width: 4px;
+  border-style: solid;
+  border-color:transparent transparent #8cdb27  transparent;
+}
+
+.rx-cursor.out-right::before, .rx-cursor.out-left::before{
+  position: absolute;
+  content: '';
+  width: 0; 
+  height: 0;
+  left: -0.55rem;
+  top: calc(50% - 2px);
+  border-width: 4px;
+  border-style: solid;
+  border-color:transparent #8cdb27 transparent  transparent;
+}
+
+.rx-cursor.out-left::after, .rx-cursor.out-right::after{
+  position: absolute;
+  content: '';
+  width: 0; 
+  height: 0;
+  left: 0.2rem;
+  top: calc(50% - 2px);
+  border-width: 4px;
+  border-style: solid;
+  border-color:transparent  transparent  transparent #8cdb27;
+}
+
 
 .rx-cursor.in-top::after{
   position: absolute;
@@ -132,7 +181,7 @@
   border-color:transparent transparent #8cdb27  transparent;
 }
 
-.rx-cursor.in-left::before{
+.rx-cursor.in-left::after{
   position: absolute;
   content: '';
   width: 0; 
@@ -142,31 +191,6 @@
   border-width: 4px;
   border-style: solid;
   border-color:transparent  transparent  transparent #8cdb27;
-}
-
-
-.rx-cursor.out::before{
-  position: absolute;
-  content: '';
-  width: 0; 
-  height: 0;
-  top: -0.55rem;
-  left: calc(50% - 2px);
-  border-width: 4px;
-  border-style: solid;
-  border-color:transparent transparent #8cdb27  transparent;
-}
-
-.rx-cursor.out::after{
-  position: absolute;
-  content: '';
-  width: 0; 
-  height: 0;
-  top: 0.25rem;
-  left: calc(50% - 2px);
-  border-width: 4px;
-  border-style: solid;
-  border-color:#8cdb27 transparent  transparent  transparent;
 }
 
 

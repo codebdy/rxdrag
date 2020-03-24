@@ -29,10 +29,74 @@ export class RxCursor extends RXComponent{
     if(position === 'in-left'){
       this.inLeft(node)
     }
-    //console.log('show Cursor')
+
+    if(position === 'out-top'){
+      this.outTop(node)
+    }
+
+    if(position === 'out-right'){
+      this.outRight(node)
+    }
+
+    if(position === 'out-bottom'){
+      this.outBottom(node)
+    }
+
+    if(position === 'out-left'){
+      this.outLeft(node)
+    }
+
     return super.show()
   }
 
+  outTop(node){
+    let domElement = node.view.$dom
+    let rect = domElement.getBoundingClientRect()
+    if(this.$dom){
+      this.$dom.style.left = rect.left + 'px'
+      this.$dom.style.top = (rect.top - 2) + 'px'
+      this.$dom.style.width = rect.width + 'px'
+      this.$dom.style.height = '4px'
+    }
+  }
+
+  outRight(node){
+    let domElement = node.view.$dom
+    let rect = domElement.getBoundingClientRect()
+    if(this.$dom){
+      this.$dom.style.left = (rect.right -2) + 'px'
+      this.$dom.style.right = "auto"
+      this.$dom.style.top = rect.top + 'px'
+      this.$dom.style.width = '4px'
+      this.$dom.style.height = rect.height + 'px'
+    }
+  }
+
+  outBottom(node){
+    let domElement = node.view.$dom
+    let rect = domElement.getBoundingClientRect()
+    if(this.$dom){
+      this.$dom.style.left = rect.x + 'px'
+      this.$dom.style.top = (rect.bottom - 2) + 'px'
+      this.$dom.style.bottom = 'auto'
+      this.$dom.style.width = rect.width + 'px'
+      this.$dom.style.height = '4px'
+    }
+  }
+
+  outLeft(node){
+    let domElement = node.view.$dom
+    let rect = domElement.getBoundingClientRect()
+    if(this.$dom){
+      this.$dom.style.left = (rect.left - 2) + 'px'
+      this.$dom.style.right = 'auto'
+      this.$dom.style.top = rect.top + 'px'
+      this.$dom.style.width = '4px'
+      this.$dom.style.height = rect.height + 'px'
+    }
+  }
+
+/**/
   inTop(node){
     let domElement = node.view.$dom
     let rect = domElement.getBoundingClientRect()
@@ -61,7 +125,7 @@ export class RxCursor extends RXComponent{
     let rect = domElement.getBoundingClientRect()
     if(this.$dom){
       this.$dom.style.left = rect.x + 'px'
-      this.$dom.style.top = (rect.height - 4) + 'px'
+      this.$dom.style.top = (rect.bottom - 4) + 'px'
       this.$dom.style.bottom = 'auto'
       this.$dom.style.width = rect.width + 'px'
       this.$dom.style.height = '4px'

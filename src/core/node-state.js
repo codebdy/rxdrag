@@ -139,7 +139,7 @@ export class CanDropState extends NodeState{
     if(command){
       let position =this.judgePosition(event)
       if(position){
-        this.node.changeToState('dragoverState')
+        this.node.changeToState('normalState')
         rxEditor.cursor.show(this.judgePosition(event), this.node)
       }
       //command.adoptFromToolbox(this.node)
