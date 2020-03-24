@@ -10,7 +10,7 @@ export class Canvas extends Node{
 
     this.stateChanged = (oldState, newState)=>{}
 
-    this.rule = {dropInMargin : 10}
+    this.rule = {dropInMargin : 0}
     this.rule.heightDropMargin = 0
     this.rule.widthDropMargin = 0
     this.rule.dropMargin = 0;

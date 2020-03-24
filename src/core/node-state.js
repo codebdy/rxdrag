@@ -25,6 +25,11 @@ export class NodeState {
         command.moveInTop(this.node)
         command.finish()
       }
+      else{
+        command.adoptFromToolbox(this.node)
+        command.moveIn(this.node)
+        command.finish()
+      }
     }
     rxEditor.commandManager.finishMoving()
     rxEditor.dropElement()
