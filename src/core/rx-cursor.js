@@ -38,7 +38,7 @@ export class RxCursor extends RXComponent{
     let rect = domElement.getBoundingClientRect()
     if(this.$dom){
       this.$dom.style.left = rect.left + 'px'
-      this.$dom.style.top = rect.top + 'px'
+      this.$dom.style.top = (rect.top + 1) + 'px'
       this.$dom.style.width = rect.width + 'px'
       this.$dom.style.height = '4px'
     }
@@ -48,7 +48,7 @@ export class RxCursor extends RXComponent{
     let domElement = node.view.$dom
     let rect = domElement.getBoundingClientRect()
     if(this.$dom){
-      this.$dom.style.left = rect.right + 'px'
+      this.$dom.style.left = (rect.right -4) + 'px'
       this.$dom.style.right = "auto"
       this.$dom.style.top = rect.top + 'px'
       this.$dom.style.width = '4px'
@@ -61,7 +61,7 @@ export class RxCursor extends RXComponent{
     let rect = domElement.getBoundingClientRect()
     if(this.$dom){
       this.$dom.style.left = rect.x + 'px'
-      this.$dom.style.top = rect.height + 'px'
+      this.$dom.style.top = (rect.height - 4) + 'px'
       this.$dom.style.bottom = 'auto'
       this.$dom.style.width = rect.width + 'px'
       this.$dom.style.height = '4px'
