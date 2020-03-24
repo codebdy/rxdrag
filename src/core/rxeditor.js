@@ -58,9 +58,9 @@ export class RXEditor{
     this.commandProxy = commandProxy
 
     this.commandProxy.rxeditorReady()
-    document.addEventListener('mouseup', (event)=>{
-      this.dropElement()
-    })
+    //document.addEventListener('mouseup', (event)=>{
+    //  this.dropElement()
+    //})
 
     this.state.watch('changed', (state)=>{
       //this.allToNormalState()
@@ -116,8 +116,8 @@ export class RXEditor{
   dragFromToolbox(item){
     if(this.commandManager.movingCommand || this.state.preview) return
     let draggedNode = this.parseNode(item)
-    //this.commandManager.startNew(draggedNode)
-    //this.beginFollowMouse()
+    this.commandManager.startNew(draggedNode)
+    this.beginFollowMouse()
     //this.clearFocusStates()
   }
 
@@ -131,7 +131,6 @@ export class RXEditor{
 
   dropElement(){
     this.endFollowMouse()
-    this.commandManager.finishMoving()
     this.canvas.clearCharNodes()
   }
 
@@ -170,7 +169,7 @@ export class RXEditor{
     if(this.mouseFollower && this.workspace.contains(this.mouseFollower.$dom)){
       this.workspace.removeChild(this.mouseFollower.$dom)
     }
-
+    this.cursor.hide()
     this.mouseFollower = ''
   }
 

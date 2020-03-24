@@ -89,7 +89,7 @@ class CommandMovable{
 
 class CommandNew extends CommandMovable{
   constructor(node) {
-   super(node)
+    super(node)
   }
 
   makeExcuteSchema(){
@@ -311,7 +311,7 @@ export class CommadManager{
   finishMoving(){
 
     if(this.movingCommand && this.movingCommand.node.parent){
-      this.movingCommand.finish()
+      //this.movingCommand.finish()
       this.finished(this.movingCommand)
     }
     this.movingCommand = ''

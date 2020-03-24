@@ -7,56 +7,27 @@ export class NodeState {
     this.onBegindrag = ()=>{};
     this.onMouseover = (event)=>{};
     this.onMouseout = ()=>{};
+    this.onMouseup = (event)=>{
+      this.doDrop(event)
+    }
     this.onClick = ()=>{rxEditor.clearFocusStates()};
     this.enter = ()=>{}
     this.leave = ()=>{
     }
   }
 
-  //插入内部顶部
-  mouseAtBefore(event){
-    let margin = this.node.rule.dropMargin
-    return offsetX <= margin
-        ||offsetY <= margin
-  }
-
-  //插入内部的底部
-  mouseAtAfter(event){
-    let margin = this.node.rule.dropMargin 
-    return clientWidth - offsetX <= margin
-        ||clientHeight - offsetY <= margin
-  }
-
-  //插入外部，左侧相邻元素
-  mouseAtLeft(event){
-    return offsetX <= this.node.rule.widthDropMargin
-  }
-
-  //插入外部，顶部相邻元素
-  mouseAtTop(event){
-    return offsetY <= this.node.rule.heightDropMargin
-  }
-
-  //插入外部，右侧相邻元素
-  mouseAtRight(event){
-    return clientWidth - offsetX <= this.node.rule.widthDropMargin
-      && this.node.rule.widthDropMargin
-  }
-
-  //插入外部，底部相邻元素
-  mouseAtBottom(event){
-    return clientHeight - offsetY <= this.node.rule.heightDropMargin
-      && this.node.rule.heightDropMargin
-  }
-
-  //插入内部
-  mouseAtDropArea(evetn){
-    let margin = this.node.rule.dropMargin 
-    //console.log(offsetX, offsetY)
-    return offsetX > margin
-        && offsetY > margin
-        && clientWidth - offsetX > margin
-        && clientHeight - offsetY > margin
+  doDrop(event){
+    let position = this.judgePosition(event)
+    let command = rxEditor.commandManager.movingCommand
+    if(command){
+      if(position === 'in-left' || position === 'in-top'){
+        command.adoptFromToolbox(this.node)
+        command.moveInTop(this.node)
+        command.finish()
+      }
+    }
+    rxEditor.commandManager.finishMoving()
+    rxEditor.dropElement()
   }
 
 
@@ -159,9 +130,9 @@ export class CanDropState extends NodeState{
   }
 
   doDragover(event){
-    rxEditor.cursor.show(this.judgePosition(event), this.node)
-    //let command = rxEditor.commandManager.movingCommand
-    //if(command){
+    let command = rxEditor.commandManager.movingCommand
+    if(command){
+      rxEditor.cursor.show(this.judgePosition(event), this.node)
       //command.adoptFromToolbox(this.node)
       //rxEditor.clearDraggedoverStates()
 
@@ -195,7 +166,7 @@ export class CanDropState extends NodeState{
             this.node.changeToState('dragoverState')
           }
       }*/
-    //}
+    }
 
   }
 

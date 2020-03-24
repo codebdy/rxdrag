@@ -71,6 +71,11 @@ export class Node{
       this.state.onMouseout(event)
     }
 
+    this.mouseup = event=>{
+      event.stopPropagation()
+      this.state.onMouseup(event)
+    }
+
     this.onclick = (event)=>{
       event.stopPropagation()
       this.state.onClick(event)
@@ -378,6 +383,7 @@ export class Node{
         onmousemove:this.mousemove,
         onmouseover:this.mouseover,
         onmouseout:this.mouseout,
+        onmouseup:this.mouseup,
         onclick:this.onclick,
       }
     }
