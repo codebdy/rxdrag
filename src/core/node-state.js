@@ -137,7 +137,11 @@ export class CanDropState extends NodeState{
   doDragover(event){
     let command = rxEditor.commandManager.movingCommand
     if(command){
-      rxEditor.cursor.show(this.judgePosition(event), this.node)
+      let position =this.judgePosition(event)
+      if(position){
+        this.node.changeToState('dragoverState')
+        rxEditor.cursor.show(this.judgePosition(event), this.node)
+      }
       //command.adoptFromToolbox(this.node)
       //rxEditor.clearDraggedoverStates()
 
@@ -195,8 +199,10 @@ export class DragoverState extends CanDropState{
     this.classList.push('dragover')
     this.enter = ()=>{
       node.changeTextnodeToCharNode()
+      rxEditor.activedLabel.show(node.label, node, 1)
     }
     this.leave = ()=>{
+      rxEditor.activedLabel.hide()
     }
     this.onMouseout = ()=>{
       this.node.changeToState('normalState')
@@ -227,7 +233,7 @@ export class ActiveState extends CanDropState{
   }
 }
 
-export class FocusState extends NodeState{
+export class FocusState extends CanDropState{
   constructor(node) {
     super(node)
     this.classList.push('focused')
