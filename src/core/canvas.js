@@ -11,8 +11,8 @@ export class Canvas extends Node{
     this.stateChanged = (oldState, newState)=>{}
 
     this.rule = {dropInMargin : 0}
-    this.rule.heightDropMargin = 0
-    this.rule.widthDropMargin = 0
+    //this.rule.heightDropMargin = 0
+    //this.rule.widthDropMargin = 0
     this.rule.dropMargin = 0;
     this.rule.acceptedChildren=''
     this.rule.rejectChildren = ['col','w100','thead', 'tbody', 
