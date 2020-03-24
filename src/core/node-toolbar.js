@@ -85,7 +85,7 @@ export class NodeToolbar extends RXComponent{
     let rect = domElement.getBoundingClientRect()
     let offsetX = this.node.forbidDuplicate ? 28 : 0
     if(this.$dom){
-      let x = (rect.x + rect.width - 99)
+      let x = (rect.x + rect.width - 95)
       x = x < 0 ? 0 : x
       this.$dom.style.left = x + offsetX + 'px'
       if(rect.y < 26){

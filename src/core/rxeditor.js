@@ -4,6 +4,7 @@ import {add, tongleOnCondition} from "../basic/rxarray"
 import {CommadManager} from "./commands"
 import {NodeLabel} from "./node-label"
 import {NodeToolbar} from "./node-toolbar"
+import {RxCursor} from "./rx-cursor"
 import {MiniEditbar} from "./mini-editbar"
 import {RXEditorCommandProxy} from "./rxeditor-command-proxy"
 
@@ -37,6 +38,7 @@ export class RXEditor{
     })
 
     this.toolbar = new NodeToolbar
+    this.rxCursor = new RxCursor
     this.miniEditbar = new MiniEditbar
     this.nodeParser = new NodeParser
   }
@@ -47,6 +49,7 @@ export class RXEditor{
     this.activedLabel.render(this.workspace)
     this.focusedLabel.render(this.workspace)
     this.toolbar.render(this.workspace)
+    this.rxCursor.render(this.workspace)
     this.miniEditbar.render(this.workspace)
     this.canvas = new Canvas(this.workspace)
     //this.canvas.children = this.load()
@@ -113,9 +116,9 @@ export class RXEditor{
   dragFromToolbox(item){
     if(this.commandManager.movingCommand || this.state.preview) return
     let draggedNode = this.parseNode(item)
-    this.commandManager.startNew(draggedNode)
-    this.beginFollowMouse()
-    this.clearFocusStates()
+    //this.commandManager.startNew(draggedNode)
+    //this.beginFollowMouse()
+    //this.clearFocusStates()
   }
 
   parseNode(item){

@@ -89,6 +89,66 @@
   color:#fff;
 }
 
+.rx-cursor{
+  position: fixed;
+  height: 4px;
+  background: #8cdb27;
+  border: #fff solid 1px;
+  z-index: 10020;
+}
+
+
+.rx-cursor.out::before{
+  position: absolute;
+  content: '';
+  width: 0; 
+  height: 0;
+  top: -0.6rem;
+  left: calc(50% - 2px);
+  border-width: 4px;
+  border-style: solid;
+  border-color:transparent transparent #8cdb27  transparent;
+}
+
+.rx-cursor.out::after{
+  position: absolute;
+  content: '';
+  width: 0; 
+  height: 0;
+  top: 0.25rem;
+  left: calc(50% - 2px);
+  border-width: 4px;
+  border-style: solid;
+  border-color:#8cdb27 transparent  transparent  transparent;
+}
+
+.rx-cursor.out.top{
+}
+
+.rx-cursor.out.right{
+}
+
+.rx-cursor.out.bottom{
+}
+
+.rx-cursor.out.left{
+}
+
+.rx-cursor.in.top{
+}
+
+.rx-cursor.in.right{
+}
+
+.rx-cursor.in.bottom{
+}
+
+.rx-cursor.in.left{
+}
+
+.rx-cursor.text{
+}
+
 
 .dragover{
   position:relative;

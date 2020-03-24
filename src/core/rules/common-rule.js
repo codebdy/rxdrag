@@ -1,5 +1,5 @@
 export default {
-  dropMargin : 10,
+  dropInMargin : 10,
   editMarginStyle : {
     padding:'10px',
   }

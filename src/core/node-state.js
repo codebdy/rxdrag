@@ -59,6 +59,50 @@ export class NodeState {
         && event.srcElement.clientHeight - event.offsetY > margin
   }
 
+
+  judgePosition(event){
+    let margin = this.node.rule.dropInMargin
+    margin = margin ? margin : 0
+
+    //console.log(event)
+    let ratioY = event.offsetY/event.srcElement.clientHeight
+    let ratioX = event.offsetX/event.srcElement.clientWidth
+
+    if(this.inTop(event) && this.inLeft(event)){
+      return ratioY < ratioX ? 'in-top' :'in-left'
+    }
+    if(this.inTop(event) && !this.inLeft(event)){
+      return ratioY < (1-ratioX) ? 'in-top' :'in-right'
+    }
+    if(!this.inTop(event) && this.inLeft(event)){
+      return (1 - ratioY) < ratioX ? 'in-bottom' :'in-left'
+    }
+    if(!this.inTop(event) && !this.inLeft(event)){
+      return (1 - ratioY) < (1 - ratioX) ? 'in-bottom' :'in-right'
+    }
+  }
+
+  //-dropInMargin 边界里面，算是拖入内部，外面算是拖入外部
+  inTop(event){
+    //位于上半部
+    if(event.srcElement.clientHeight > event.offsetY*2){
+      return true
+    }
+    return false
+  }
+
+  inLeft(event){
+    //位于左半部部
+    if(event.srcElement.clientWidth > event.offsetX*2){
+      return true
+    }
+    return false
+  }
+
+  outTop(event){
+
+  }
+
 }
 
 export class CanDropState extends NodeState{
@@ -75,20 +119,22 @@ export class CanDropState extends NodeState{
   }
 
   doDragover(event){
-    let command = rxEditor.commandManager.movingCommand
-    if(command){
-      command.adoptFromToolbox(this.node)
-      rxEditor.clearDraggedoverStates()
-      if(this.mouseAtLeft(event) || this.mouseAtTop(event)){
+    console.log(this.judgePosition(event))
+    //let command = rxEditor.commandManager.movingCommand
+    //if(command){
+      //command.adoptFromToolbox(this.node)
+      //rxEditor.clearDraggedoverStates()
+
+      /*if(this.mouseAtLeft(event) || this.mouseAtTop(event)){
         if(this.node.parent && this.node.parent.canAccept(command.node)){
-          command.moveBefore(this.node)
+          //command.moveBefore(this.node)
           this.node.parent.changeToState('dragoverState')
         }
         return
       }
       if(this.mouseAtRight(event) || this.mouseAtBottom(event)){
         if(this.node.parent && this.node.parent.canAccept(command.node)){
-          command.moveAfter(this.node)
+          //command.moveAfter(this.node)
           this.node.parent.changeToState('dragoverState')
         }
         return
@@ -96,7 +142,8 @@ export class CanDropState extends NodeState{
 
       if(this.mouseAtBefore(event)){
         if(this.node.canAccept(command.node)){
-          command.moveInTop(this.node)
+          rxEditor.rxCursor.showInTop(this.node)
+          //command.moveInTop(this.node)
           this.node.changeToState('dragoverState')
         }
         return
@@ -104,11 +151,11 @@ export class CanDropState extends NodeState{
 
       if(this.mouseAtAfter(event) || this.mouseAtDropArea(event)){
           if(this.node.canAccept(command.node)){
-            command.moveIn(this.node)
+            //command.moveIn(this.node)
             this.node.changeToState('dragoverState')
           }
-      }
-    }
+      }*/
+    //}
 
   }
 
