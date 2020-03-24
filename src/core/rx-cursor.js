@@ -6,16 +6,6 @@ export class RxCursor extends RXComponent{
     this.cssClass('rx-cursor')
     this.cssClass('out')
     this.hide()
-    document.addEventListener('scroll', (event)=>{
-      this.refreshPosition()
-    })
-    window.addEventListener('resize', (event)=>{
-      this.refreshPosition()
-    })
-  }
-
-  refreshPosition(){
-    this.followElement(this.node, this.offset)
   }
 
   show(position, node){

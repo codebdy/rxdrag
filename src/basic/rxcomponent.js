@@ -168,7 +168,7 @@ export class RXComponent{
     let dom = this.$dom
     if(dom){
       this.classList.forEach(cssClass=>{
-        console.log(cssClass)
+        //console.log(cssClass)
         dom.classList.remove(cssClass)
       })
     }
