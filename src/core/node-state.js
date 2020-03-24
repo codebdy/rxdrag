@@ -16,63 +16,107 @@ export class NodeState {
   //插入内部顶部
   mouseAtBefore(event){
     let margin = this.node.rule.dropMargin
-    return event.offsetX <= margin
-        ||event.offsetY <= margin
+    return offsetX <= margin
+        ||offsetY <= margin
   }
 
   //插入内部的底部
   mouseAtAfter(event){
     let margin = this.node.rule.dropMargin 
-    return event.srcElement.clientWidth - event.offsetX <= margin
-        ||event.srcElement.clientHeight - event.offsetY <= margin
+    return clientWidth - offsetX <= margin
+        ||clientHeight - offsetY <= margin
   }
 
   //插入外部，左侧相邻元素
   mouseAtLeft(event){
-    return event.offsetX <= this.node.rule.widthDropMargin
+    return offsetX <= this.node.rule.widthDropMargin
   }
 
   //插入外部，顶部相邻元素
   mouseAtTop(event){
-    return event.offsetY <= this.node.rule.heightDropMargin
+    return offsetY <= this.node.rule.heightDropMargin
   }
 
   //插入外部，右侧相邻元素
   mouseAtRight(event){
-    return event.srcElement.clientWidth - event.offsetX <= this.node.rule.widthDropMargin
+    return clientWidth - offsetX <= this.node.rule.widthDropMargin
       && this.node.rule.widthDropMargin
   }
 
   //插入外部，底部相邻元素
   mouseAtBottom(event){
-    return event.srcElement.clientHeight - event.offsetY <= this.node.rule.heightDropMargin
+    return clientHeight - offsetY <= this.node.rule.heightDropMargin
       && this.node.rule.heightDropMargin
   }
 
   //插入内部
   mouseAtDropArea(evetn){
     let margin = this.node.rule.dropMargin 
-    //console.log(event.offsetX, event.offsetY)
-    return event.offsetX > margin
-        && event.offsetY > margin
-        && event.srcElement.clientWidth - event.offsetX > margin
-        && event.srcElement.clientHeight - event.offsetY > margin
+    //console.log(offsetX, offsetY)
+    return offsetX > margin
+        && offsetY > margin
+        && clientWidth - offsetX > margin
+        && clientHeight - offsetY > margin
   }
 
 
   judgePosition(event){
     let margin = this.node.rule.dropInMargin
     margin = margin ? margin : 0
+    let clientWidth = event.srcElement.clientWidth
+    let clientHeight = event.srcElement.clientHeight
+    let offsetX = event.offsetX
+    let offsetY = event.offsetY
+    let ratioY = offsetY/clientHeight
+    let ratioX = offsetX/clientWidth
 
-    //console.log(event)
-    let ratioY = event.offsetY/event.srcElement.clientHeight
-    let ratioX = event.offsetX/event.srcElement.clientWidth
+    if(margin > 0){
+      //左上角小方块区域
+      if(offsetY < margin && offsetX < margin){
+        return ratioY < ratioX ? 'out-top' :'out-left'
+      }
+
+      //右上角小方块区域
+      if(offsetY < margin 
+        && clientWidth - offsetX < margin){
+        return ratioY < (1 - ratioX) ? 'out-top' :'out-right'
+      }
+
+      //右下角小方块
+      if(clientHeight - offsetY < margin 
+        && clientWidth - offsetX < margin){
+        return (1 - ratioY) < (1 - ratioX) ? 'out-bottom' :'out-right'
+      }
+
+      //左下角小方块
+      if(clientHeight - offsetY < margin 
+        && offsetX < margin){
+        return (1 - ratioY) <  ratioX ? 'out-bottom' :'out-left'
+      }
+
+      if(offsetY < margin){
+        return 'out-top'
+      }
+
+      if(offsetX < margin){
+        return 'out-left'
+      }
+
+      if(clientHeight - offsetY < margin){
+        return 'out-bottom'
+      }
+
+      if(clientWidth - offsetX < margin){
+        return 'out-right'
+      }
+    }
+
 
     if(this.inTop(event) && this.inLeft(event)){
       return ratioY < ratioX ? 'in-top' :'in-left'
     }
     if(this.inTop(event) && !this.inLeft(event)){
-      return ratioY < (1-ratioX) ? 'in-top' :'in-right'
+      return ratioY < (1 - ratioX) ? 'in-top' :'in-right'
     }
     if(!this.inTop(event) && this.inLeft(event)){
       return (1 - ratioY) < ratioX ? 'in-bottom' :'in-left'
@@ -97,10 +141,6 @@ export class NodeState {
       return true
     }
     return false
-  }
-
-  outTop(event){
-
   }
 
 }
