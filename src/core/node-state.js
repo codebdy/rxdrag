@@ -8,6 +8,7 @@ export class NodeState {
     this.onMouseover = (event)=>{};
     this.onMouseout = ()=>{};
     this.onMouseup = (event)=>{
+      console.log('state mouse up')
       this.doDrop(event)
     }
     this.onClick = ()=>{rxEditor.clearFocusStates()};
@@ -18,6 +19,7 @@ export class NodeState {
 
   doDrop(event){
     let position = this.judgePosition(event)
+    console.log(position)
     let command = rxEditor.commandManager.movingCommand
     if(command){
       if(position === 'in-left' || position === 'in-top'){
@@ -25,9 +27,20 @@ export class NodeState {
         command.moveInTop(this.node)
         command.finish()
       }
-      else{
+      else if(position === 'in-right' || position === 'in-bottom'){
         command.adoptFromToolbox(this.node)
         command.moveIn(this.node)
+        command.finish()
+      }
+      else if(position === 'out-left' || position === 'out-top'){
+        command.adoptFromToolbox(this.node)
+        command.moveBefore(this.node)
+        command.finish()
+      }
+      else if(position === 'out-right' || position === 'out-bottom'){
+        command.adoptFromToolbox(this.node)
+        console.log('moveAfter')
+        command.moveAfter(this.node)
         command.finish()
       }
     }

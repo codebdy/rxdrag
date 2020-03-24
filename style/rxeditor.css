@@ -94,6 +94,7 @@
   background: #8cdb27;
   border: #fff solid 1px;
   z-index: 10020;
+  pointer-events: none;
 }
 
 .rx-cursor.out-top::after, .rx-cursor.out-bottom::after{
