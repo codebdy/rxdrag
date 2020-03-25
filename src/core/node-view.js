@@ -27,6 +27,7 @@ export class NodeView{
   renderMouseFollower(model, parentDoment){
     let domElement = document.createElement(model.tag)
     this.doRender(model, parentDoment, domElement)
+    parentDoment.appendChild(domElement)
 
     if(this.$dom){
       domElement.style.width = this.$dom.clientWidth + 'px'
