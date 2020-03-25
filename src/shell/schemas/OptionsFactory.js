@@ -1,4 +1,5 @@
 import {rules} from './Rules.js'
+import {RXSchema} from './RXSchema.js'
 
 export class OptionsFactory{
 
@@ -6,9 +7,7 @@ export class OptionsFactory{
 
     let rule = rules[node.ruleName]
 
-    if(rule){
-      return rule.resolveOptions(node, breakPoint)
-    }
-    return []
+    rule = rule ? rule : new RXSchema
+    return rule.resolveOptions(node, breakPoint)
   }
 }
