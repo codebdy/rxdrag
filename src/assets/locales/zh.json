@@ -136,7 +136,8 @@
     "float" : "浮动",
     "text-hide" : "隐藏文本",
     "overflow" : "溢出",
-    "position" : "位置"
+    "position" : "位置",
+    "screen-readers" : "屏幕阅读器"
   },
 
 
@@ -344,7 +345,10 @@
     "position-fixed":"固定",
     "position-sticky":"粘性",
     "fixed-top":"固定在顶部",
-    "fixed-bottom":"固定在底部"
+    "fixed-bottom":"固定在底部",
+
+    "sr-only":"唯一",
+    "sr-only-focusable":"唯一聚焦"
 
   }
 

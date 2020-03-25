@@ -137,7 +137,8 @@
     "float" : "Float",
     "text-hide" : "Text Hide",
     "overflow" : "Overflow",
-    "position" : "Position"
+    "position" : "Position",
+    "screen-readers" : "Screen Readers"
   },
 
 
@@ -345,8 +346,10 @@
     "position-fixed":"Fixed",
     "position-sticky":"Sticky",
     "fixed-top":"Fixed Top",
-    "fixed-bottom":"Fixed Bottom"
+    "fixed-bottom":"Fixed Bottom",
 
+    "sr-only":"Only",
+    "sr-only-focusable":"Only Focusable"
   }
 
 

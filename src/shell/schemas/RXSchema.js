@@ -64,6 +64,7 @@ import utilFloat from "./utilities/float"
 import utilTextHide from "./utilities/text-hide"
 import utilOverflow from "./utilities/overflow"
 import utilPosition from "./utilities/position"
+import utilSr from "./utilities/screen-readers"
 
 
 export class RXSchema{
@@ -159,6 +160,7 @@ export class RXSchema{
    utilitiesOptions.addSwitchRow(utilTextHide)
    utilitiesOptions.addSelectRow(utilOverflow)
    utilitiesOptions.addSelectRow(utilPosition)
+   utilitiesOptions.addSelectRow(utilSr)
 
    this.optionGroups.push(utilitiesOptions)
   }
