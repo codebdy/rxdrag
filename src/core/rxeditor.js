@@ -130,7 +130,6 @@ export class RXEditor{
   }
 
   dropElement(event){
-    console.log('dropElement')
     this.doDrop(event)
     this.endFollowMouse()
     this.canvas.clearCharNodes()

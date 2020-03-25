@@ -263,12 +263,12 @@ export class DraggedState extends DisableState{
   constructor(node) {
     super(node)
     this.classList.push('dragged')
-    this.onMousemove = (event)=>{
-      if(this.node.parent){
-        this.node.parent.changeToState('dragoverState')
-      }
-      rxEditor.followMouse(event)
+    //this.onMousemove = (event)=>{
+      //if(this.node.parent){
+      //  this.node.parent.changeToState('dragoverState')
+      //}
+      //rxEditor.followMouse(event)
       //console.log('mouse move DraggedState')
-    };
+    //};
   }
 }
