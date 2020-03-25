@@ -154,12 +154,16 @@ export class RXEditor{
         command.moveIn(node)
         command.finish()
       }
-      else if(position === 'out-left' || position === 'out-top'){
+      else if(position === 'out-left' 
+        || position === 'out-top'
+        || position === 'char-left'){
         command.adoptFromToolbox(node)
         command.moveBefore(node)
         command.finish()
       }
-      else if(position === 'out-right' || position === 'out-bottom'){
+      else if(position === 'out-right' 
+        || position === 'out-bottom' 
+        || position === 'char-right' ){
         command.adoptFromToolbox(node)
         console.log('moveAfter')
         command.moveAfter(node)

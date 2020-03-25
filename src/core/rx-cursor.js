@@ -54,6 +54,14 @@ export class RxCursor extends RXComponent{
       this.outLeft(node)
     }
 
+    if(position === 'char-left'){
+      this.charLeft(node)
+    }
+
+    if(position === 'char-right'){
+      this.charRight(node)
+    }
+
     return super.show()
   }
 
@@ -93,6 +101,30 @@ export class RxCursor extends RXComponent{
   }
 
   outLeft(node){
+    let domElement = node.view.$dom
+    let rect = domElement.getBoundingClientRect()
+    if(this.$dom){
+      this.$dom.style.left = (rect.left - 2) + 'px'
+      this.$dom.style.right = 'auto'
+      this.$dom.style.top = rect.top + 'px'
+      this.$dom.style.width = '4px'
+      this.$dom.style.height = rect.height + 'px'
+    }
+  }
+
+  charRight(node){
+    let domElement = node.view.$dom
+    let rect = domElement.getBoundingClientRect()
+    if(this.$dom){
+      this.$dom.style.left = (rect.right -2) + 'px'
+      this.$dom.style.right = "auto"
+      this.$dom.style.top = rect.top + 'px'
+      this.$dom.style.width = '4px'
+      this.$dom.style.height = rect.height + 'px'
+    }
+  }
+
+  charLeft(node){
     let domElement = node.view.$dom
     let rect = domElement.getBoundingClientRect()
     if(this.$dom){

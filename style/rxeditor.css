@@ -48,6 +48,10 @@
 
 .dragged{
   position:relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /*遮住内部子元素，不让其响应dragover事件*/
@@ -193,8 +197,6 @@
   border-style: solid;
   border-color:transparent  transparent  transparent #8cdb27;
 }
-
-
 
 .dragover{
   position:relative;

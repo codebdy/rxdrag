@@ -18,6 +18,9 @@ export class CharNode extends Node{
     return new CharNode
   }
 
+  changeTextnodeToCharNode(){
+  }
+
   toViewModel(){
     return {
       styles:{},

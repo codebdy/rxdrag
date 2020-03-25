@@ -18,6 +18,9 @@ export class NodeState {
 
 
   judgePosition(event){
+    if(this.node.isCharNode){
+      return this.judgeCharNodePostion(event)
+    }
     let margin = this.node.rule.dropInMargin
     margin = margin ? margin : 0
     let clientWidth = event.srcElement.clientWidth
@@ -83,6 +86,10 @@ export class NodeState {
     }
   }
 
+  judgeCharNodePostion(event){
+    return this.inLeft(event) ? 'char-left' : 'char-right'
+  }
+
   //-dropInMargin 边界里面，算是拖入内部，外面算是拖入外部
   inTop(event){
     //位于上半部
@@ -123,7 +130,7 @@ export class CanDropState extends NodeState{
     if(command){
       let position =this.judgePosition(event)
       if(position){
-        this.node.changeToState('normalState')
+        this.node.changeToState('dragoverState')
         rxEditor.cursor.show(this.judgePosition(event), this.node)
       }
       //command.adoptFromToolbox(this.node)
@@ -183,7 +190,9 @@ export class DragoverState extends CanDropState{
     this.classList.push('dragover')
     this.enter = ()=>{
       node.changeTextnodeToCharNode()
-      rxEditor.activedLabel.show(node.label, node, 1)
+      if(!this.node.isCharNode){
+        rxEditor.activedLabel.show(node.label, node, 1)
+      }
     }
     this.leave = ()=>{
       rxEditor.activedLabel.hide()
