@@ -8,6 +8,42 @@
       <LeftArea>
         <template #top>
           <WidgetTabs>
+            <tab :name="$t('widgets.options')"
+                 :icon="'fas fa-paint-brush'" 
+                 :selected="true">
+                <OptionBox v-model="options" :breakPoint = "breakPoint"></OptionBox>
+            </tab>
+            <tab :name="$t('widgets.code')"
+                 :icon="'fas fa-code'">
+              <CodeBox v-model="code"></CodeBox>
+            </tab>
+            <tab :name="$t('widgets.anmation')"
+                 :icon="'fab fa-windows'">
+              <h1>动画，暂不实现</h1>
+            </tab>
+            <tab :name="$t('widgets.style')"
+                 :icon="'fab fa-css3'">
+              <StyleBox v-model="node"></StyleBox>
+            </tab>
+          </WidgetTabs>
+        </template>
+        <template #bottom>
+          <WidgetTabs>
+            <tab :name="$t('widgets.overview')"
+                 :icon="'fas fa-th-list'" 
+                 :selected="true">
+              <OptionOverviewBox v-model="node"></OptionOverviewBox>
+            </tab>
+          </WidgetTabs>
+        </template>
+      </LeftArea>
+      <CenterArea>
+        <PagesArea>
+        </PagesArea>
+      </CenterArea>
+      <RightArea>
+        <template #top>
+          <WidgetTabs>
             <tab 
               :name="$t('widgets.studio')"
               :icon="'fas fa-puzzle-piece'" 
@@ -39,42 +75,6 @@
                 :leafIcon="''"
                 :folderCanbeSelected = 'true'>
               </NodeTree>
-            </tab>
-          </WidgetTabs>
-        </template>
-      </LeftArea>
-      <CenterArea>
-        <PagesArea>
-        </PagesArea>
-      </CenterArea>
-      <RightArea>
-        <template #top>
-          <WidgetTabs>
-            <tab :name="$t('widgets.options')"
-                 :icon="'fas fa-paint-brush'" 
-                 :selected="true">
-                <OptionBox v-model="options" :breakPoint = "breakPoint"></OptionBox>
-            </tab>
-            <tab :name="$t('widgets.code')"
-                 :icon="'fas fa-code'">
-              <CodeBox v-model="code"></CodeBox>
-            </tab>
-            <tab :name="$t('widgets.anmation')"
-                 :icon="'fab fa-windows'">
-              <h1>动画，暂不实现</h1>
-            </tab>
-            <tab :name="$t('widgets.style')"
-                 :icon="'fab fa-css3'">
-              <StyleBox v-model="node"></StyleBox>
-            </tab>
-          </WidgetTabs>
-        </template>
-        <template #bottom>
-          <WidgetTabs>
-            <tab :name="$t('widgets.overview')"
-                 :icon="'fas fa-th-list'" 
-                 :selected="true">
-              <OptionOverviewBox v-model="node"></OptionOverviewBox>
             </tab>
           </WidgetTabs>
         </template>

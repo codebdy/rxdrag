@@ -141,6 +141,7 @@ export class RXEditor{
     if(!node){
       return
     }
+    this.canvas.clearFocusStates()
     let command = this.commandManager.movingCommand
     if(command){
       if(position === 'in-left' || position === 'in-top'){

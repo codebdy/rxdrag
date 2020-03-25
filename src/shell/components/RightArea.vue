@@ -23,7 +23,7 @@ export default {
   },
   data () {
     return {
-      width:280,
+      width:220,
     }
   },
   methods: {
