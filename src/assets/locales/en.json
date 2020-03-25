@@ -138,7 +138,9 @@
     "text-hide" : "Text Hide",
     "overflow" : "Overflow",
     "position" : "Position",
-    "screen-readers" : "Screen Readers"
+    "screen-readers" : "Screen Readers",
+    "sizing" : "Sizing",
+    "height" : "Height"
   },
 
 
@@ -349,7 +351,23 @@
     "fixed-bottom":"Fixed Bottom",
 
     "sr-only":"Only",
-    "sr-only-focusable":"Only Focusable"
+    "sr-only-focusable":"Only Focusable",
+
+    "h-25":"25%",
+    "h-50":"50%",
+    "h-75":"75%",
+    "h-100":"100%",
+    "vh-100":"100vh",
+    "mh-100":"Max 100%",
+    "min-vh-100":"Min 100vh",
+
+    "w-25":"25%",
+    "w-50":"50%",
+    "w-75":"75%",
+    "w-100":"100%",
+    "vw-100":"100vw",
+    "mw-100":"Max 100%",
+    "min-vw-100":"Min 100vw"
   }
 
 

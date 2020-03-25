@@ -66,7 +66,7 @@
     "row-options" : "行选项",
     "gutters" : "Gutters",
     "column-options" : "列选项", 
-    "width" : "宽", 
+    "width" : "宽度", 
     "offset" : "偏移", 
     "general-options" : "常规选项",
     "pseudo-heading" : "伪标题",
@@ -137,7 +137,9 @@
     "text-hide" : "隐藏文本",
     "overflow" : "溢出",
     "position" : "位置",
-    "screen-readers" : "屏幕阅读器"
+    "screen-readers" : "屏幕阅读器",
+    "sizing" : "尺寸",
+    "height" : "高度"
   },
 
 
@@ -348,8 +350,23 @@
     "fixed-bottom":"固定在底部",
 
     "sr-only":"唯一",
-    "sr-only-focusable":"唯一聚焦"
+    "sr-only-focusable":"唯一聚焦",
 
+    "h-25":"25%",
+    "h-50":"50%",
+    "h-75":"75%",
+    "h-100":"100%",
+    "vh-100":"100vh",
+    "mh-100":"Max 100%",
+    "min-vh-100":"Min 100vh",
+
+    "w-25":"25%",
+    "w-50":"50%",
+    "w-75":"75%",
+    "w-100":"100%",
+    "vw-100":"100vw",
+    "mw-100":"Max 100%",
+    "min-vw-100":"Min 100vw"
   }
 
 }

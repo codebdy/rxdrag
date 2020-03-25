@@ -66,6 +66,9 @@ import utilOverflow from "./utilities/overflow"
 import utilPosition from "./utilities/position"
 import utilSr from "./utilities/screen-readers"
 
+import sizingWidth from "./utilities/sizing/width"
+import sizingHeight from "./utilities/sizing/height"
+
 
 export class RXSchema{
   constructor(){
@@ -161,6 +164,13 @@ export class RXSchema{
    utilitiesOptions.addSelectRow(utilOverflow)
    utilitiesOptions.addSelectRow(utilPosition)
    utilitiesOptions.addSelectRow(utilSr)
+
+   let sizingGroup = new OptionRowSmallGroup()
+                     .setLabel(i18n.t('optionbox.sizing'))
+
+   sizingGroup.addSelectRow(sizingWidth)
+   sizingGroup.addSelectRow(sizingHeight)
+   utilitiesOptions.rows.push(sizingGroup)
 
    this.optionGroups.push(utilitiesOptions)
   }
