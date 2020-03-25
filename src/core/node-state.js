@@ -18,11 +18,14 @@ export class NodeState {
 
 
   judgePosition(event){
+    let draggedNode = rxEditor.commandManager.movingCommand.node
+
     if(this.node.isCharNode){
       return this.judgeCharNodePostion(event)
     }
     let margin = this.node.rule.dropInMargin
     margin = margin ? margin : 0
+
     let clientWidth = event.srcElement.clientWidth
     let clientHeight = event.srcElement.clientHeight
     let offsetX = event.offsetX
@@ -30,7 +33,9 @@ export class NodeState {
     let ratioY = offsetY/clientHeight
     let ratioX = offsetX/clientWidth
 
-    if(margin > 0){
+    if(margin > 0 && 
+      ((this.node.parent && this.node.parent.canAccept(draggedNode)) || !this.node.parent)
+      ){
       //左上角小方块区域
       if(offsetY < margin && offsetX < margin){
         return ratioY < ratioX ? 'out-top' :'out-left'
@@ -71,19 +76,21 @@ export class NodeState {
       }
     }
 
+    if(this.node.canAccept(draggedNode)){
+      if(this.inTop(event) && this.inLeft(event)){
+        return ratioY < ratioX ? 'in-top' :'in-left'
+      }
+      if(this.inTop(event) && !this.inLeft(event)){
+        return ratioY < (1 - ratioX) ? 'in-top' :'in-right'
+      }
+      if(!this.inTop(event) && this.inLeft(event)){
+        return (1 - ratioY) < ratioX ? 'in-bottom' :'in-left'
+      }
+      if(!this.inTop(event) && !this.inLeft(event)){
+        return (1 - ratioY) < (1 - ratioX) ? 'in-bottom' :'in-right'
+      }
+    }
 
-    if(this.inTop(event) && this.inLeft(event)){
-      return ratioY < ratioX ? 'in-top' :'in-left'
-    }
-    if(this.inTop(event) && !this.inLeft(event)){
-      return ratioY < (1 - ratioX) ? 'in-top' :'in-right'
-    }
-    if(!this.inTop(event) && this.inLeft(event)){
-      return (1 - ratioY) < ratioX ? 'in-bottom' :'in-left'
-    }
-    if(!this.inTop(event) && !this.inLeft(event)){
-      return (1 - ratioY) < (1 - ratioX) ? 'in-bottom' :'in-right'
-    }
   }
 
   judgeCharNodePostion(event){
@@ -133,39 +140,6 @@ export class CanDropState extends NodeState{
         this.node.changeToState('dragoverState')
         rxEditor.cursor.show(this.judgePosition(event), this.node)
       }
-      //command.adoptFromToolbox(this.node)
-      //rxEditor.clearDraggedoverStates()
-
-      /*if(this.mouseAtLeft(event) || this.mouseAtTop(event)){
-        if(this.node.parent && this.node.parent.canAccept(command.node)){
-          //command.moveBefore(this.node)
-          this.node.parent.changeToState('dragoverState')
-        }
-        return
-      }
-      if(this.mouseAtRight(event) || this.mouseAtBottom(event)){
-        if(this.node.parent && this.node.parent.canAccept(command.node)){
-          //command.moveAfter(this.node)
-          this.node.parent.changeToState('dragoverState')
-        }
-        return
-      }
-
-      if(this.mouseAtBefore(event)){
-        if(this.node.canAccept(command.node)){
-          rxEditor.rxCursor.showInTop(this.node)
-          //command.moveInTop(this.node)
-          this.node.changeToState('dragoverState')
-        }
-        return
-      }
-
-      if(this.mouseAtAfter(event) || this.mouseAtDropArea(event)){
-          if(this.node.canAccept(command.node)){
-            //command.moveIn(this.node)
-            this.node.changeToState('dragoverState')
-          }
-      }*/
     }
 
   }

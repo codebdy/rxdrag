@@ -15,7 +15,7 @@ export class Canvas extends Node{
     //this.rule.widthDropMargin = 0
     this.rule.dropMargin = 0;
     this.rule.acceptedChildren=''
-    this.rule.rejectChildren = ['col','w100','thead', 'tbody', 
+    this.rule.rejectChildren = ['col','thead', 'tbody', 
                            'th', 'tr', 'td']
   }
 

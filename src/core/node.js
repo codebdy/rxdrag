@@ -258,10 +258,11 @@ export class Node{
       this.removeFromParent()
       this.parent = brother.parent
       insertBefore(this, brother, brother.parent.children);
-      if(brother.parent.view && brother.parent.view.$dom
-        && brother.view && brother.view.$dom
-        && this.view && this.view.$dom)
-        brother.parent.view.$dom.insertBefore(this.view.$dom, brother.view.$dom)
+      //if(brother.parent.view && brother.parent.view.$dom
+      //  && brother.view && brother.view.$dom
+      //  && this.view && this.view.$dom)
+      //  brother.parent.view.$dom.insertBefore(this.view.$dom, brother.view.$dom)
+      this.parent.render()
     }
   }
 
@@ -270,10 +271,11 @@ export class Node{
       this.removeFromParent()
       this.parent = brother.parent
       insertAfter(this, brother, brother.parent.children);
-      if(brother.view && brother.view.$dom 
-        && this.view && this.view.$dom) {
-        insterAfterDom(this.view.$dom, brother.view.$dom)
-      }
+      //if(brother.view && brother.view.$dom 
+        //&& this.view && this.view.$dom) {
+        //insterAfterDom(this.view.$dom, brother.view.$dom)
+      //}
+      this.parent.render()
     }
   }
 
@@ -349,7 +351,7 @@ export class Node{
   containsInExcept(child){
     let childRuleName = child.ruleName
     let rejectChildren = this.rule ? this.rule.rejectChildren : ''
-    if(this.rejectChildren){
+    if(rejectChildren){
       for(var i = 0; i < rejectChildren.length; i++){
         if(rejectChildren[i] === childRuleName){
           return true

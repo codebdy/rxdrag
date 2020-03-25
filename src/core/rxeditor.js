@@ -133,7 +133,9 @@ export class RXEditor{
   }
 
   dropElement(event){
+    //this.clearDraggedoverStates()
     this.doDrop(event)
+    this.commandManager.finishMoving()
     this.endFollowMouse()
     this.canvas.clearCharNodes()
     window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty()
@@ -173,7 +175,6 @@ export class RXEditor{
         command.finish()
       }
     }
-    this.commandManager.finishMoving()
     //rxEditor.dropElement()
   }
 

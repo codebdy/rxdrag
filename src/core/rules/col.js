@@ -21,5 +21,7 @@ export default{
     'col-xl', 
     'col-xl-1','col-xl-2','col-xl-3', 'col-xl-4', 'col-xl-5', 'col-xl-6', 
     'col-xl-7', 'col-xl-8','col-xl-9','col-xl-10','col-xl-11','col-xl-12',
-  ]
+  ],
+  rejectChildren : ['col','thead', 'tbody', 
+                           'th', 'tr', 'td']
 }
