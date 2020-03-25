@@ -132,7 +132,11 @@
     "margin-auto" : "自动外边距",
     "wrap" : "换行",
     "order" : "顺序",
-    "align-content" : "内容对齐"
+    "align-content" : "内容对齐",
+    "float" : "浮动",
+    "text-hide" : "隐藏文本",
+    "overflow" : "溢出",
+    "position" : "位置"
   },
 
 
@@ -325,7 +329,22 @@
     "align-content-end":"终点对齐",
     "align-content-center":"中间对齐",
     "align-content-around":"环绕对齐",
-    "align-content-stretch":"拉伸对齐"
+    "align-content-stretch":"拉伸对齐",
+
+    "float-left":"左",
+    "float-right":"右",
+    "float-none":"无",
+
+    "overflow-auto":"自动",
+    "overflow-hidden":"隐藏",
+
+    "position-static":"静态",
+    "position-relative":"相对",
+    "position-absolute":"绝对",
+    "position-fixed":"固定",
+    "position-sticky":"粘性",
+    "fixed-top":"固定在顶部",
+    "fixed-bottom":"固定在底部"
 
   }
 

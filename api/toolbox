@@ -16,6 +16,10 @@
         "code":"<div class='col--responsive--'></div>"
       },
       {
+        "title":"Column Helper",
+        "code":"<div class='w-100'></div>"
+      },
+      {
         "title":"Test",
         "code":"<div class='container'> <div class='row'> <div>wwew323</div> <span>x</span> </div>  tess </div>"
       }

@@ -60,6 +60,12 @@ import flexWrap from "./utilities/flex/wrap"
 import flexOrder from "./utilities/flex/order"
 import flexAlignContent from "./utilities/flex/align-content"
 
+import utilFloat from "./utilities/float"
+import utilTextHide from "./utilities/text-hide"
+import utilOverflow from "./utilities/overflow"
+import utilPosition from "./utilities/position"
+
+
 export class RXSchema{
   constructor(){
     this.optionGroups = []
@@ -148,6 +154,11 @@ export class RXSchema{
    flexSmallGroup.addGenerateSchemaRow(flexOrder)
    flexSmallGroup.addGenerateSchemaRow(flexAlignContent)
    utilitiesOptions.rows.push(flexSmallGroup)
+
+   utilitiesOptions.addGenerateSchemaRow(utilFloat)
+   utilitiesOptions.addSwitchRow(utilTextHide)
+   utilitiesOptions.addSelectRow(utilOverflow)
+   utilitiesOptions.addSelectRow(utilPosition)
 
    this.optionGroups.push(utilitiesOptions)
   }

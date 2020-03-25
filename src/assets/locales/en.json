@@ -133,7 +133,11 @@
     "margin-auto" : "Margin Auto",
     "wrap" : "Wrap",
     "order" : "Order",
-    "align-content" : "Align Content"
+    "align-content" : "Align Content",
+    "float" : "Float",
+    "text-hide" : "Text Hide",
+    "overflow" : "Overflow",
+    "position" : "Position"
   },
 
 
@@ -326,7 +330,22 @@
     "align-content-end":"End",
     "align-content-center":"Center",
     "align-content-around":"Rround",
-    "align-content-stretch":"Stretch"
+    "align-content-stretch":"Stretch",
+
+    "float-left":"Left",
+    "float-right":"Right",
+    "float-none":"None",
+
+    "overflow-auto":"Auto",
+    "overflow-hidden":"Hidden",
+
+    "position-static":"Static",
+    "position-relative":"Relative",
+    "position-absolute":"Absolute",
+    "position-fixed":"Fixed",
+    "position-sticky":"Sticky",
+    "fixed-top":"Fixed Top",
+    "fixed-bottom":"Fixed Bottom"
 
   }
 

@@ -1,10 +1,7 @@
-export default{
-  fieldName:"classList",
-  label:'Overflow',
-  widget:'OpSelect',
-  defaultValue:'',
-  list:{
-    'overflow-auto':'Auto',
-    'overflow-hidden':'Hidden',
-  },
+export default {
+  label: "overflow",
+  valueScope:[
+    'overflow-auto',
+    'overflow-hidden',
+  ]
 }

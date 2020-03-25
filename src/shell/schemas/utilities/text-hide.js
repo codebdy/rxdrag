@@ -1,8 +1,5 @@
 export default{
-  fieldName:'classList',
-  label:'Text Hide',
-  widget:'OpSwitch',
+  label:'text-hide',
   onValue:'text-hide',
   offValue:'',
-  defaultValue:'',
 }
