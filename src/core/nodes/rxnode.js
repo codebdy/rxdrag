@@ -60,10 +60,6 @@ export class RXNode extends Node{
     model.classList.push.apply(model.classList, meta.classList)
     Object.assign(model.styles, meta.styles)
     Object.assign(model.attributes, meta.attributes)
-
-    //this.addons.forEach((addon)=>{
-    //  addon.metaToModel(model, meta)
-    //})
   }
 
   metaToModel(model){

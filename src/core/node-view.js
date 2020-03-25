@@ -4,10 +4,17 @@ export class NodeView{
 
   render(model, parentDoment){
     this.parentDoment = parentDoment
-    this.putDown(parentDoment)//防止canvas内节点重复添加
+    //this.putDown(parentDoment)//防止canvas内节点重复添加
+    let oldDom = this.$dom
     
     this.$dom = document.createElement(model.tag)
     this.doRender(model, parentDoment, this.$dom)
+    if(parentDoment.contains(oldDom)){
+      parentDoment.replaceChild(this.$dom, oldDom)
+    }
+    else{
+      parentDoment.appendChild(this.$dom)
+    }
   }
 
   preview(model, parentDoment){
@@ -48,7 +55,7 @@ export class NodeView{
     this.renderStylesAndClasses(model, domElement)
     this.bindEvents(domElement, model.on)
     this.showAttributes(model,domElement)
-    parentDoment.appendChild(domElement);
+    //parentDoment.appendChild(domElement);
   }
 
   /*doRefresh(model, parentDoment, domElement){
