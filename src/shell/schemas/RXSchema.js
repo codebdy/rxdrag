@@ -57,6 +57,8 @@ import flexGrow from "./utilities/flex/grow"
 import flexShrink from "./utilities/flex/shrink"
 import flexMarginAuto from "./utilities/flex/margin-auto"
 import flexWrap from "./utilities/flex/wrap"
+import flexOrder from "./utilities/flex/order"
+import flexAlignContent from "./utilities/flex/align-content"
 
 export class RXSchema{
   constructor(){
@@ -143,6 +145,8 @@ export class RXSchema{
    flexSmallGroup.addGenerateSchemaRow(flexShrink)
    flexSmallGroup.addSelectRow(flexMarginAuto)
    flexSmallGroup.addGenerateSchemaRow(flexWrap)
+   flexSmallGroup.addGenerateSchemaRow(flexOrder)
+   flexSmallGroup.addGenerateSchemaRow(flexAlignContent)
    utilitiesOptions.rows.push(flexSmallGroup)
 
    this.optionGroups.push(utilitiesOptions)

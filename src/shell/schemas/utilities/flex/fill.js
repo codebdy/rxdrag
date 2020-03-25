@@ -9,17 +9,14 @@ export default{
     onValue:'flex-sm-fill',
     offValue:'',
   },
-  //---------------------
   md:{
     onValue:'flex-md-fill',
     offValue:'',
   },
-  //---------------------
   lg:{
     onValue:'flex-lg-fill',
     offValue:'',
   },
-  //---------------------
   xl:{
     onValue:'flex-xl-fill',
     offValue:'',
