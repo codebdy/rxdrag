@@ -133,6 +133,7 @@ export class RXEditor{
     this.doDrop(event)
     this.endFollowMouse()
     this.canvas.clearCharNodes()
+    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty()
   }
 
   doDrop(event){
