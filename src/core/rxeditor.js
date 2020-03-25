@@ -5,6 +5,7 @@ import {CommadManager} from "./commands"
 import {NodeLabel} from "./node-label"
 import {NodeToolbar} from "./node-toolbar"
 import {RxCursor} from "./rx-cursor"
+import {MouseFollower} from "./mouse-follower"
 import {MiniEditbar} from "./mini-editbar"
 import {RXEditorCommandProxy} from "./rxeditor-command-proxy"
 
@@ -39,6 +40,7 @@ export class RXEditor{
 
     this.toolbar = new NodeToolbar
     this.cursor = new RxCursor
+    this.mouseFollower = new MouseFollower
     this.miniEditbar = new MiniEditbar
     this.nodeParser = new NodeParser
   }
@@ -50,6 +52,7 @@ export class RXEditor{
     this.focusedLabel.render(this.workspace)
     this.toolbar.render(this.workspace)
     this.cursor.render(this.workspace)
+    this.mouseFollower.render(this.workspace)
     this.miniEditbar.render(this.workspace)
     this.canvas = new Canvas(this.workspace)
     //this.canvas.children = this.load()
@@ -166,7 +169,6 @@ export class RXEditor{
         || position === 'out-bottom' 
         || position === 'char-right' ){
         command.adoptFromToolbox(node)
-        console.log('moveAfter')
         command.moveAfter(node)
         command.finish()
       }
@@ -182,36 +184,27 @@ export class RXEditor{
 
   followMouse(event){
     let mouseFollower = this.mouseFollower
-    if(mouseFollower){
-      mouseFollower.$dom.style.left =  this.followX(event)
-      mouseFollower.$dom.style.top = this.followY(event)
+    if(mouseFollower.isActived){
+      //mouseFollower.$dom.style.left =  this.followX(event)
+      //mouseFollower.$dom.style.top = this.followY(event)
+      this.mouseFollower.followMouse(event)
       this.commandProxy.takeOverDraggingByWorkspace()
     }
-  }
-
-  followX(event){
-    return (event.clientX - this.mouseFollower.offsetX) + 'px'
-  }
-
-  followY(event){
-    return (event.clientY - this.mouseFollower.offsetY) + 'px'
   }
 
   beginFollowMouse(){
     if(this.commandManager.movingCommand){
       let draggedNode = this.commandManager.movingCommand.node
-      let mouseFollower = draggedNode.createMouseFollower(event)
-      this.workspace.appendChild(mouseFollower.$dom)
-      this.mouseFollower = mouseFollower
+      this.mouseFollower.active(draggedNode.label)
     }
   }
 
   endFollowMouse(){
-    if(this.mouseFollower && this.workspace.contains(this.mouseFollower.$dom)){
-      this.workspace.removeChild(this.mouseFollower.$dom)
-    }
+    //if(this.mouseFollower && this.workspace.contains(this.mouseFollower.$dom)){
+    //  this.workspace.removeChild(this.mouseFollower.$dom)
+    //}
     this.cursor.hide()
-    this.mouseFollower = ''
+    this.mouseFollower.hide()
   }
 
   nodeStateChanged(node, oldState, newState){

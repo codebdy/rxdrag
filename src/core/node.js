@@ -15,7 +15,7 @@ function insterAfterDom(newElement,targetElement){
 export class Node{
   constructor() {
     this.seedId()
-    this.mouseFollowerWidth =  '200px'
+    //this.mouseFollowerWidth =  '200px'
   	this.children = []
   	this.view = new NodeView()
 
@@ -158,7 +158,7 @@ export class Node{
     })
   }
 
-  createMouseFollower(){
+  /*createMouseFollower(){
     let followerElement = document.createElement('div')
     followerElement.classList.add('mouse-follow')
     if(!this.parent){
@@ -177,7 +177,7 @@ export class Node{
     })
 
     return mouseFollower
-  }
+  }*/
 
   clearDraggedoverStates(){
     if(this.state === this.dragoverState){
