@@ -8,7 +8,15 @@ export class RxCursor extends RXComponent{
     this.hide()
   }
 
+  hide(){
+    this.position = ''
+    this.node = null
+    super.hide()
+  }
+  
   show(position, node){
+    this.position = position
+    this.node = node
     if(!node || !node.view.$dom) return
     this.classClasses()
     this.cssClass('rx-cursor')

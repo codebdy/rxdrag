@@ -205,7 +205,7 @@
   user-select: none;
 }
 
-.dragover::before{
+/*.dragover::before{
   content:"";
   position: absolute;
   top:0;
@@ -215,7 +215,7 @@
   outline: #aceeaf solid 1px;
   background-color: #e0ecf6;
   z-index: -1
-}
+}*/
 
 .node-toolbar{
   display: flex;

@@ -58,9 +58,9 @@ export class RXEditor{
     this.commandProxy = commandProxy
 
     this.commandProxy.rxeditorReady()
-    //document.addEventListener('mouseup', (event)=>{
-    //  this.dropElement()
-    //})
+    document.addEventListener('mouseup', (event)=>{
+      this.dropElement(event)
+    })
 
     this.state.watch('changed', (state)=>{
       //this.allToNormalState()
@@ -129,9 +129,45 @@ export class RXEditor{
     //return new BSContainer
   }
 
-  dropElement(){
+  dropElement(event){
+    console.log('dropElement')
+    this.doDrop(event)
     this.endFollowMouse()
     this.canvas.clearCharNodes()
+  }
+
+  doDrop(event){
+    let position = this.cursor.position
+    let node = this.cursor.node
+    if(!node){
+      return
+    }
+    let command = this.commandManager.movingCommand
+    if(command){
+      if(position === 'in-left' || position === 'in-top'){
+        command.adoptFromToolbox(node)
+        command.moveInTop(node)
+        command.finish()
+      }
+      else if(position === 'in-right' || position === 'in-bottom'){
+        command.adoptFromToolbox(node)
+        command.moveIn(node)
+        command.finish()
+      }
+      else if(position === 'out-left' || position === 'out-top'){
+        command.adoptFromToolbox(node)
+        command.moveBefore(node)
+        command.finish()
+      }
+      else if(position === 'out-right' || position === 'out-bottom'){
+        command.adoptFromToolbox(node)
+        console.log('moveAfter')
+        command.moveAfter(node)
+        command.finish()
+      }
+    }
+    this.commandManager.finishMoving()
+    //rxEditor.dropElement()
   }
 
   endDragFromToolbox(){

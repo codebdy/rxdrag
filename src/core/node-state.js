@@ -7,45 +7,13 @@ export class NodeState {
     this.onBegindrag = ()=>{};
     this.onMouseover = (event)=>{};
     this.onMouseout = ()=>{};
-    this.onMouseup = (event)=>{
-      console.log('state mouse up')
-      this.doDrop(event)
-    }
+    //this.onMouseup = (event)=>{
+      //添加结束拖动代码
+    //}
     this.onClick = ()=>{rxEditor.clearFocusStates()};
     this.enter = ()=>{}
     this.leave = ()=>{
     }
-  }
-
-  doDrop(event){
-    let position = this.judgePosition(event)
-    console.log(position)
-    let command = rxEditor.commandManager.movingCommand
-    if(command){
-      if(position === 'in-left' || position === 'in-top'){
-        command.adoptFromToolbox(this.node)
-        command.moveInTop(this.node)
-        command.finish()
-      }
-      else if(position === 'in-right' || position === 'in-bottom'){
-        command.adoptFromToolbox(this.node)
-        command.moveIn(this.node)
-        command.finish()
-      }
-      else if(position === 'out-left' || position === 'out-top'){
-        command.adoptFromToolbox(this.node)
-        command.moveBefore(this.node)
-        command.finish()
-      }
-      else if(position === 'out-right' || position === 'out-bottom'){
-        command.adoptFromToolbox(this.node)
-        console.log('moveAfter')
-        command.moveAfter(this.node)
-        command.finish()
-      }
-    }
-    rxEditor.commandManager.finishMoving()
-    rxEditor.dropElement()
   }
 
 
@@ -141,6 +109,9 @@ export class CanDropState extends NodeState{
       this.doDragover(event)
       rxEditor.followMouse(event)
     }
+    //this.onMouseup = (event)=>{
+    //  this.doDrop(event)
+    //}
     this.onClick = (event)=>{
       rxEditor.clearFocusStates()
       this.node.changeToState('focusState')
