@@ -76,7 +76,6 @@
   padding: 0px 2px;
   position: fixed;
   height:16px;
-  cursor: move;
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
@@ -241,7 +240,6 @@
   padding:4px;
   font-size: 14px;
   line-height: 20px;
-  cursor: pointer;
   border-radius: 2px;
   width: 24px;
   display: flex;

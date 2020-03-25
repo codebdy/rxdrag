@@ -118,6 +118,7 @@ export class RXEditor{
 
   dragFromToolbox(item){
     if(this.commandManager.movingCommand || this.state.preview) return
+    this.clearFocusStates()
     let draggedNode = this.parseNode(item)
     this.commandManager.startNew(draggedNode)
     this.beginFollowMouse()

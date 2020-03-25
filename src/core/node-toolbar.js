@@ -40,7 +40,7 @@ export class NodeToolbar extends RXComponent{
           rxEditor.focusedNode.begindragIcon(event)
         }
       })
-      .cssStyle('cursor', 'move')
+      //.cssStyle('cursor', 'move')
     )
     this.pushChild(this.duplicateBtn)
     /*this.pushChild(new ToolbarButton('Edit', 'fa-edit', 'click', ()=>{

@@ -283,10 +283,11 @@ export class Node{
     if(this.parent){
       //this.view.putDown()
       remove(this, this.parent.children)
-      if(this.parent.view && this.parent.view.$dom
-        && this.view && this.view.dom){
-        parent.view.$dom.removeChild(this.view.dom)
-      }
+      //if(this.parent.view && this.parent.view.$dom
+      //  && this.view && this.view.dom){
+      //  parent.view.$dom.removeChild(this.view.dom)
+      //}
+      this.parent.render()
     }
   }
 
