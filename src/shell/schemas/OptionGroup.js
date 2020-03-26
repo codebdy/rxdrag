@@ -2,6 +2,7 @@ import {SelectRow} from './SelectRow'
 import {SwitchRow} from './SwitchRow'
 import {BorderRow} from './BorderRow'
 import {GenerateSchemaRow} from './GenerateSchemaRow'
+import {ButtonsTagRow} from './ButtonsTagRow'
 
 export class OptionGroup{
   constructor(label, selected) {
@@ -58,6 +59,13 @@ export class OptionGroup{
     this.rows.push(
       new GenerateSchemaRow(schema)
       .setBreakPoint(this.breakPoint)
+      .setDefaultValue(defaultValue)
+    )
+  }
+
+  addButtonsTagRow(schema, defaultValue = ''){
+    this.rows.push(
+      new ButtonsTagRow(schema)
       .setDefaultValue(defaultValue)
     )
   }

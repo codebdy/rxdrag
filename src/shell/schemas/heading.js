@@ -1,18 +1,25 @@
-import {RXSchema} from '../RXSchema'
-import {OptionGroup} from '../OptionGroup'
+import {RXSchema} from './RXSchema'
+import {OptionGroup} from './OptionGroup'
 
-let gutters = {
-  label: "gutters",
-  onValue : "",
-  offValue : "no-gutters"
+let tags = {
+  label:'heading',
+  valueScope:[
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+  ],
 }
+
 
 export class Heading extends RXSchema{
   constructor() {
     super()
 
     let rowOptions = new OptionGroup(i18n.t('optionbox.heading'), true)
-   // rowOptions.addSwitchRow(gutters, '')
+   rowOptions.addButtonsTagRow(tags, '')
 
     this.optionGroups.unshift(rowOptions)
   }

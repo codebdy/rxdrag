@@ -81,8 +81,8 @@ export class NodeParser{
       rule.tags = rule.tags ? rule.tags : [ruleName]
       for(var i = 0; i < rule.tags.length; i++){
         let tag = rule.tags[i]
-        if(element.tagName.toUpperCase() === tag.toUpperCase()){
-          node = new TagNode(element.tagName)
+        if(element.tagName.toLowerCase() === tag.toLowerCase()){
+          node = new TagNode(tag)
           node.label = rule.label ? rule.label : ruleName
           node.ruleName = ruleName
           node.rule = rule

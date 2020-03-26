@@ -42,10 +42,12 @@ export default {
   methods: {
     clear(event){
       this.inputValue = ''
+      this.$emit('changed', this.inputValue)
     },
 
     itemClick(value){
       this.inputValue = value
+      this.$emit('changed', this.inputValue)
     },
   },
 }
