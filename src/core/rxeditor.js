@@ -142,8 +142,8 @@ export class RXEditor{
   clearActiveStates(){
     this.canvas.clearActiveStates()
   }
-  clearFocusStates(){
-    this.canvas.clearFocusStates()
+  clearFocusAndEditStates(){
+    this.canvas.clearFocusAndEditStates()
   }
 
   allToNormalState(){
@@ -152,11 +152,11 @@ export class RXEditor{
 
   dragFromToolbox(item){
     if(this.commandManager.movingCommand || this.state.preview) return
-    this.clearFocusStates()
+    this.clearFocusAndEditStates()
     let draggedNode = this.parseNode(item)
     this.commandManager.startNew(draggedNode)
     this.beginFollowMouse()
-    //this.clearFocusStates()
+    //this.clearFocusAndEditStates()
   }
 
   parseNode(item){
@@ -173,7 +173,6 @@ export class RXEditor{
     this.commandManager.finishMoving()
     this.endFollowMouse()
     this.canvas.clearCharNodes()
-    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty()
   }
 
   doDrop(event){
@@ -182,7 +181,7 @@ export class RXEditor{
     if(!node){
       return
     }
-    this.canvas.clearFocusStates()
+    this.canvas.clearFocusAndEditStates()
     let command = this.commandManager.movingCommand
     if(command){
       if(position === 'in-left' || position === 'in-top'){
@@ -210,7 +209,8 @@ export class RXEditor{
         command.finish()
       }
     }
-    //rxEditor.dropElement()
+    
+    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty()
   }
 
   endDragFromToolbox(){

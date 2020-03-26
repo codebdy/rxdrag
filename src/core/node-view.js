@@ -24,7 +24,7 @@ export class NodeView{
     return previewDom
   }
 
-  renderMouseFollower(model, parentDoment){
+  /*renderMouseFollower(model, parentDoment){
     let domElement = document.createElement(model.tag)
     this.doRender(model, parentDoment, domElement)
     parentDoment.appendChild(domElement)
@@ -34,13 +34,14 @@ export class NodeView{
     }
 
     return domElement
-  }
+  }*/
 
   refreshState(model){
     if(this.$dom){
       //let y = this.$dom.getBoundingClientRect().y
-      this.$dom.classList.remove('mouse-overed','focused','dragged', 'dragover')
+      this.$dom.classList.remove('mouse-overed','focused','dragged', 'dragover', 'editing')
       this.renderStylesAndClasses(model, this.$dom)
+      this.showAttributes(model,this.$dom)
     }
   }
 

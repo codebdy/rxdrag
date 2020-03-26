@@ -49,7 +49,7 @@ export class TextNode{
 
   clearActiveStates(){}
 
-  clearFocusStates(){}
+  clearFocusAndEditStates(){}
 
   clearCharNodes(){}
 

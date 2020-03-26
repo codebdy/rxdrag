@@ -3,6 +3,7 @@ export class NodeState {
     this.node = node
     this.classList = []
     this.styles = {}
+    this.attributes = {contenteditable:'false'}
     this.onMousemove = ()=>{/*console.log('mouse move NodeState')*/};
     this.onBegindrag = ()=>{};
     this.onMouseover = (event)=>{};
@@ -10,7 +11,7 @@ export class NodeState {
     //this.onMouseup = (event)=>{
       //添加结束拖动代码
     //}
-    this.onClick = ()=>{rxEditor.clearFocusStates()};
+    this.onClick = ()=>{rxEditor.clearFocusAndEditStates()};
     this.enter = ()=>{}
     this.leave = ()=>{
     }
@@ -127,7 +128,7 @@ export class CanDropState extends NodeState{
     //  this.doDrop(event)
     //}
     this.onClick = (event)=>{
-      rxEditor.clearFocusStates()
+      rxEditor.clearFocusAndEditStates()
       this.node.changeToState('focusState')
     }
   }
@@ -253,5 +254,13 @@ export class DraggedState extends DisableState{
       //rxEditor.followMouse(event)
       //console.log('mouse move DraggedState')
     //};
+  }
+}
+
+export class EditState extends FocusState{
+  constructor(node) {
+    super(node)
+    this.classList.push('editing')
+    this.attributes.contenteditable = true
   }
 }

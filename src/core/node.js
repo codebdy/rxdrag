@@ -1,6 +1,6 @@
 import {NodeView} from "./node-view"
 import {add, remove, first, last, insertBefore,insertAfter, contains, after, before} from "../basic/rxarray"
-import {NormalState, ActiveState, FocusState, DragoverState, DisableState, DraggedState} from "./node-state"
+import {NormalState, ActiveState, FocusState, DragoverState, DisableState, DraggedState, EditState} from "./node-state"
 
 function insterAfterDom(newElement,targetElement){
   var parent = targetElement.parentNode;
@@ -124,6 +124,7 @@ export class Node{
     this.dragoverState = new DragoverState(this)
     this.draggedState = new DraggedState(this)
     this.disableState = new DisableState(this)
+    this.editState = new EditState(this)
     this.state = this.normalState
   }
 
@@ -197,12 +198,12 @@ export class Node{
     })
   }
 
-  clearFocusStates(){
-    if(this.state === this.focusState){
+  clearFocusAndEditStates(){
+    if(this.state === this.focusState || this.state === this.editState){
       this.changeToState('normalState')
     }
     this.children.forEach(function(child){  
-      child.clearFocusStates()
+      child.clearFocusAndEditStates()
     })
   }
 
@@ -381,7 +382,7 @@ export class Node{
       //text:'test',
       styles:styles,
       classList:classList,
-      attributes:{},
+      attributes: Object.assign({}, this.state.attributes),
       on:{
         onmousemove:this.mousemove,
         onmouseover:this.mouseover,

@@ -22,7 +22,12 @@ export class RXNode extends Node{
     return copy
   }
 
- 
+  //edit(){
+  //  this.meta.attributes['contenteditable'] = true
+  //  this.render()
+  //  this.view.$dom.focus()
+  //}
+
   toViewModel(){
     let model = super.toViewModel()
     this.baseMetaToModel(model)

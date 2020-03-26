@@ -46,6 +46,10 @@
   outline: #75b325 solid 2px;
 }
 
+.editing{
+  box-shadow: 2px 2px 5px #75b325;
+}
+
 .dragged{
   position:relative;
   -webkit-user-select: none;

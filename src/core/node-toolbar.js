@@ -45,6 +45,14 @@ export class NodeToolbar extends RXComponent{
       //.cssStyle('cursor', 'move')
     )
     this.editButton = new SvgButton($t('edit'), svgEdit,'mousedown', (event)=>{
+      rxEditor.focusedNode.changeToState('editState')
+    })
+
+    this.editButton.domOn('mouseup',(event)=>{
+      let el = rxEditor.focusedNode.view.$dom
+      let sel = window.getSelection();
+      sel.collapse(el, 1);
+      el.focus();      
     })
     this.pushChild(this.editButton)
     this.pushChild(this.duplicateBtn)
