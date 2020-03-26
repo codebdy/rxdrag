@@ -1,14 +1,16 @@
 export default (model, node, noEnter = true)=>{
-  model.attributes.contentEditable = true
-  /*if(noEnter){
+  //model.attributes.contentEditable = true
+  console.log('park mini editbar')
+  if(noEnter){
     model.on.onkeydown = (event)=>{
       if (event.keyCode === 13) {
         event.preventDefault()
         return false
       }
     }
-  }*/
+  }
   model.on.onfocus = (event)=>{
+    console.log('onfocus')
     rxEditor.miniEditbar.show(node.view.$dom)
     rxEditor.commandManager.startEditText(node)
   }

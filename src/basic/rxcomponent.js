@@ -57,8 +57,8 @@ export class RXComponent{
   removeCssClass(className){
     if(contains(className, this.classList)){
      remove(className, this.classList)
-      if(this.$dom){
-        remove(className, this.$dom.classList)
+      if(this.$dom && this.$dom.classList.contains(className)){
+        this.$dom.classList.remove(className)
       }
     }
     return this

@@ -261,6 +261,21 @@ export class EditState extends FocusState{
   constructor(node) {
     super(node)
     this.classList.push('editing')
-    this.attributes.contenteditable = true
+    this.enter = ()=>{
+      this.attributes.contenteditable = 'true'
+      let dom = node.view.$dom
+      rxEditor.focusedLabel.show(node.label, node, 2)
+      rxEditor.toolbar.show(node)
+      rxEditor.focusedNode = node
+      rxEditor.miniEditbar.show(this.node.view.$dom)
+      node.render()
+    }
+
+    this.leave = ()=>{
+      rxEditor.focusedLabel.hide()
+      rxEditor.toolbar.hide()
+      rxEditor.focusedNode = ''
+      rxEditor.miniEditbar.hide()
+    }
   }
 }
