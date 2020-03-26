@@ -139,7 +139,9 @@
     "position" : "位置",
     "screen-readers" : "屏幕阅读器",
     "sizing" : "尺寸",
-    "height" : "高度"
+    "height" : "高度",
+    "stretched-link" : "拉伸链接",
+    "visibility" : "可见性"
   },
 
 
@@ -366,7 +368,10 @@
     "w-100":"100%",
     "vw-100":"100vw",
     "mw-100":"Max 100%",
-    "min-vw-100":"Min 100vw"
+    "min-vw-100":"Min 100vw",
+
+    "visible":"可见",
+    "invisible":"不可见"
   }
 
 }

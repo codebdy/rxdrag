@@ -1,8 +1,5 @@
 export default{
-  fieldName:'classList',
-  label:'Stretched Link',
-  widget:'OpSwitch',
+  label:'stretched-link',
   onValue:'stretched-link',
   offValue:'',
-  defaultValue:'',
 }

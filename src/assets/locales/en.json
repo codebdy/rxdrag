@@ -140,7 +140,9 @@
     "position" : "Position",
     "screen-readers" : "Screen Readers",
     "sizing" : "Sizing",
-    "height" : "Height"
+    "height" : "Height",
+    "stretched-link" : "Stretched Link",
+    "visibility" : "Visibility"
   },
 
 
@@ -367,7 +369,10 @@
     "w-100":"100%",
     "vw-100":"100vw",
     "mw-100":"Max 100%",
-    "min-vw-100":"Min 100vw"
+    "min-vw-100":"Min 100vw",
+
+    "visible":"Visible",
+    "invisible":"Invisible"
   }
 
 

@@ -69,6 +69,9 @@ import utilSr from "./utilities/screen-readers"
 import sizingWidth from "./utilities/sizing/width"
 import sizingHeight from "./utilities/sizing/height"
 
+import utilStretchedLink from "./utilities/stretched-link"
+import utilVisibility from "./utilities/visibility"
+
 
 export class RXSchema{
   constructor(){
@@ -171,6 +174,9 @@ export class RXSchema{
    sizingGroup.addSelectRow(sizingWidth)
    sizingGroup.addSelectRow(sizingHeight)
    utilitiesOptions.rows.push(sizingGroup)
+
+   utilitiesOptions.addSwitchRow(utilStretchedLink)
+   utilitiesOptions.addSelectRow(utilVisibility)
 
    this.optionGroups.push(utilitiesOptions)
   }
