@@ -61,7 +61,7 @@ export class RXEditor{
       this.commandProxy.commandExcuted(canUndo, canRedo, commandSchema)
     }
     this.optionClasses = []
-    add('show-outline', this.optionClasses)
+    add('rx-_-show-outline', this.optionClasses)
     //this.optionClasses.add('show-label')
     this.activedLabel = new NodeLabel
     this.focusedLabel = new NodeLabel
@@ -103,7 +103,7 @@ export class RXEditor{
       //this.allToNormalState()
     })
     this.state.watch('showOutline', (state)=>{
-      tongleOnCondition(state.showOutline, 'show-outline', this.optionClasses)
+      tongleOnCondition(state.showOutline, 'rx-_-show-outline', this.optionClasses)
       this.render()
     })
     this.state.watch('showEditMargin', (state)=>{

@@ -162,7 +162,7 @@ export class NormalState extends CanDropState{
 export class DragoverState extends CanDropState{
   constructor(node) {
     super(node)
-    this.classList.push('dragover')
+    this.classList.push('rx-_-dragover')
     this.enter = ()=>{
       node.changeTextnodeToCharNode()
       if(!this.node.isCharNode){
@@ -181,7 +181,7 @@ export class DragoverState extends CanDropState{
 export class ActiveState extends CanDropState{
   constructor(node) {
     super(node)
-    this.classList.push('mouse-overed')
+    this.classList.push('rx-_-mouse-overed')
     this.enter = ()=>{
       rxEditor.activedLabel.show(node.label, node, 1)
     }
@@ -204,7 +204,7 @@ export class ActiveState extends CanDropState{
 export class FocusState extends CanDropState{
   constructor(node) {
     super(node)
-    this.classList.push('focused')
+    this.classList.push('rx-_-focused')
     this.enter = ()=>{
       let dom = node.view.$dom
       rxEditor.focusedLabel.show(node.label, node, 2)
@@ -246,7 +246,7 @@ export class DisableState extends NodeState{
 export class DraggedState extends DisableState{
   constructor(node) {
     super(node)
-    this.classList.push('dragged')
+    this.classList.push('rx-_-dragged')
     //this.onMousemove = (event)=>{
       //if(this.node.parent){
       //  this.node.parent.changeToState('dragoverState')
@@ -260,7 +260,7 @@ export class DraggedState extends DisableState{
 export class EditState extends FocusState{
   constructor(node) {
     super(node)
-    this.classList.push('editing')
+    this.classList.push('rx-_-editing')
     this.enter = ()=>{
       this.attributes.contenteditable = 'true'
       let dom = node.view.$dom
@@ -268,6 +268,7 @@ export class EditState extends FocusState{
       rxEditor.toolbar.show(node)
       rxEditor.focusedNode = node
       rxEditor.miniEditbar.show(this.node.view.$dom)
+      rxEditor.commandManager.startEditText(node)
       node.render()
     }
 
@@ -276,6 +277,9 @@ export class EditState extends FocusState{
       rxEditor.toolbar.hide()
       rxEditor.focusedNode = ''
       rxEditor.miniEditbar.hide()
+
+      rxEditor.commandManager.finishEditText()
+      this.node.render()
     }
   }
 }

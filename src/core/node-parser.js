@@ -99,7 +99,9 @@ export class NodeParser{
 
   copyClassList(from, to){
     from.forEach(cssClass=>{
-      to.push(cssClass)
+      if(cssClass.indexOf('rx-_-') !== 0){
+        to.push(cssClass)
+      }
     })
   }
 

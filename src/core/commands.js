@@ -246,19 +246,29 @@ class CommandChangeNode{
 class CommandTextEdit{
   constructor(node) {
     this.node = node
-    this.oldInnerHtml = node.meta.innerHTML
+    //this.oldInnerHtml = this.node.view.$dom.innerHTML
+    this.oldChildren = this.node.children
   }
 
   finish(){
-    this.newInnerHtml = this.node.meta.innerHTML
+    //console.log(this.node.view.$dom.innerHTML)
+    //this.newInnerHtml = this.node.view.$dom.innerHTML
+    this.node.children = rxEditor.nodeParser.parse(this.node.view.$dom.innerHTML)
+
+    this.node.children.forEach(child=>{
+      child.parent = this.node
+    })
+    this.newChildren = this.node.children
   } 
 
   excute(){
-    this.node.meta.innerHTML = this.newInnerHtml
+    //this.node.meta.innerHTML = this.newInnerHtml
+    this.node.children = this.newChildren
   }
 
   undo(){
-    this.node.meta.innerHTML = this.oldInnerHtml
+    //this.node.meta.innerHTML = this.oldInnerHtml
+    this.node.children = this.oldChildren
   }
 }
 

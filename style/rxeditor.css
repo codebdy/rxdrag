@@ -15,42 +15,30 @@
   background-color: #606060;
 }
 
-.char-node{
+.rx-_-char-node{
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 
-.show-outline{
+.rx-_-show-outline{
   outline:dashed #70baf7 1px;
 }
   
-.mouse-overed{
+.rx-_-mouse-overed{
   outline: #a4d762 solid 1px;
 }
 
-/*.mouse-overed::before{
-  content:"";
-  position: absolute;
-  top:0;
-  left:0;
-  width: 100%;
-  height: 100%;
-  outline: #aceeaf solid 1px;
-  background-color: #effcf0;
-  z-index: -1
-}*/
-
-.focused{
+.rx-_-focused{
   outline: #75b325 solid 2px;
 }
 
-.editing{
+.rx-_-editing{
   box-shadow: 2px 2px 5px #75b325;
 }
 
-.dragged{
+.rx-_-dragged{
   position:relative;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -59,7 +47,7 @@
 }
 
 /*遮住内部子元素，不让其响应dragover事件*/
-.dragged::after{
+.rx-_-dragged::after{
   content:'';
   position:absolute;
   width:100%;
@@ -201,25 +189,13 @@
   border-color:transparent  transparent  transparent #8cdb27;
 }
 
-.dragover{
+.rx-_-dragover{
   position:relative;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
-
-/*.dragover::before{
-  content:"";
-  position: absolute;
-  top:0;
-  left:0;
-  width: 100%;
-  height: 100%;
-  outline: #aceeaf solid 1px;
-  background-color: #e0ecf6;
-  z-index: -1
-}*/
 
 .node-toolbar{
   display: flex;

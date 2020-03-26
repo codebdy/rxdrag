@@ -39,7 +39,7 @@ export class NodeView{
   refreshState(model){
     if(this.$dom){
       //let y = this.$dom.getBoundingClientRect().y
-      this.$dom.classList.remove('mouse-overed','focused','dragged', 'dragover', 'editing')
+      this.$dom.classList.remove('rx-_-mouse-overed','rx-_-focused','rx-_-dragged', 'rx-_-dragover', 'rx-_-editing')
       this.renderStylesAndClasses(model, this.$dom)
       this.showAttributes(model,this.$dom)
     }
