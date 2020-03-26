@@ -168,10 +168,6 @@ export class MiniEditbar extends RXComponent{
       .setInnerHTML('Insert <span>▾</span>')
     this.pushChild( btnInsert )*/
 
-    document.addEventListener("selectionchange", (event)=>{
-      this.updateButtonsState()
-    })
-
     this.watchOne('bold', boldBtn)
     this.watchOne('italic', italicBtn)
     this.watchOne('underline', underlineBtn)
@@ -200,10 +196,24 @@ export class MiniEditbar extends RXComponent{
     if(!followElement) return
     this.followElement(followElement)
     this.updateButtonsState()
+    document.addEventListener("selectionchange", (event)=>{
+      this.updateButtonsState()
+    })
     return super.show()
   }
 
+  hide(){
+    document.removeEventListener("selectionchange", (event)=>{
+      this.updateButtonsState()
+    })
+    return super.hide()
+  }
+
+
   updateButtonsState(){
+    if(!this.isShow()){
+      return
+    }
     this.state.bold = document.queryCommandState('bold')
     this.state.italic = document.queryCommandState('italic')
     this.state.underline = document.queryCommandState('underline')

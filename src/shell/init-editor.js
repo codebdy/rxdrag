@@ -5,5 +5,5 @@ import {RXEditorCommandProxy} from "../core/rxeditor-command-proxy"
 export default function initEditor(pageId){
   window.rxEditor = new RXEditor(pageId)
   window.RXEditorCommandProxy = RXEditorCommandProxy
-  //loadElements(window.rxEditor)
+
 }

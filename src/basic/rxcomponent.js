@@ -183,6 +183,10 @@ export class RXComponent{
     return this
   }
 
+  isShow(){
+    return this.style.display !== 'none'
+  }
+
   hide(){
     this.style.display = 'none'
     if(this.$dom){

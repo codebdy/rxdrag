@@ -11,9 +11,43 @@ import {RXEditorCommandProxy} from "./rxeditor-command-proxy"
 
 import {NodeParser} from "./node-parser"
 
+function getDefaultLang(){
+  let lang = navigator.language || navigator.userLanguage
+  lang = lang.substr(0, 2)
+  //目前只实现两个语言版本
+  if(lang !== 'zh'){
+    lang = 'en'
+  }
+  return lang
+}
+
+var enLocal = {
+  "focus-parent" : "Focus Parent",
+  "move" : "Move",
+  "edit" : "Edit",
+  "duplicate" : "Duplicate",
+  "delete" : "Delete",
+  "can-be-draged" : "Can be draged",
+}
+
+var zhLocal = {
+  "focus-parent" : "选中父节点",
+  "move" : "拖动",
+  "edit" : "编辑",
+  "duplicate" : "克隆",
+  "delete" : "删除",
+  "can-be-draged" : "可以拖动",
+}
+
+function getLocal(id){
+  let local = getDefaultLang() === 'zh' ? zhLocal : enLocal
+  return local[id] ? local[id] : id
+}
+
 export class RXEditor{
   constructor(pageId) {
     this.pageId = pageId
+    window.$t = getLocal
     this.state = new CanvasState
     this.commandManager = new CommadManager
     this.commandManager.onCommandsChanged = (canUndo, canRedo, commandSchema)=>{

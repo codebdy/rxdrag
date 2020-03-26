@@ -4,7 +4,7 @@ export class NodeLabel extends RXComponent{
   constructor(){
     super()
     this.cssClass('node-label')
-    this.domAttr('title', 'Can be draged')
+    this.domAttr('title', $t('can-be-draged'))
     this.hide()
     document.addEventListener('scroll', (event)=>{
       this.refreshPosition()
