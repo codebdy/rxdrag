@@ -26,12 +26,28 @@
     ]
   },
   {
-    "title" : "工具",
+    "title" : "文本",
     "smallTitle" : "Bootstrap 4",
     "items":[
       {
-        "title":"测试",
-        "code":""
+        "title":"标题",
+        "code":"<h2>标题</h2>"
+      },
+      {
+        "title":"段落",
+        "code":"<p>段落</p>"
+      },
+      {
+        "title":"警告框",
+        "code":"<div class=\"alert alert-secondary\" role=\"alert\"> A simple secondary alert with <a href=\"#\" class=\"alert-link\">an example link</a>. Give it a click if you like.</div>"
+      },
+      {
+        "title":"引用文字",
+        "code":"<blockquote class=\"blockquote\"> <p class=\"mb-0\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p> <footer class=\"blockquote-footer\">Someone famous in <cite title=\"Source Title\">Source Title</cite></footer> </blockquote>"
+      },
+      {
+        "title":"小字",
+        "code":"<small>文本</small>"
       }
     ]
   }

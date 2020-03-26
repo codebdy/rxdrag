@@ -7,12 +7,12 @@ let gutters = {
   offValue : "no-gutters"
 }
 
-export class Row extends RXSchema{
+export class Heading extends RXSchema{
   constructor() {
     super()
 
-    let rowOptions = new OptionGroup(i18n.t('optionbox.row-options'), true)
-    rowOptions.addSwitchRow(gutters, '')
+    let rowOptions = new OptionGroup(i18n.t('optionbox.heading'), true)
+   // rowOptions.addSwitchRow(gutters, '')
 
     this.optionGroups.unshift(rowOptions)
   }

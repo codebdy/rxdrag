@@ -1,6 +1,5 @@
 import {RXSchema} from '../RXSchema'
 import {OptionGroup} from '../OptionGroup'
-import {SwitchRow} from '../SwitchRow'
 import colOffset from './col-offset'
 import colWidth from './col-width'
 

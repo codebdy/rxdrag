@@ -1,6 +1,5 @@
 import {RXSchema} from '../RXSchema'
 import {OptionGroup} from '../OptionGroup'
-import {SwitchRow} from '../SwitchRow'
 import fluid from './fluid'
 
 export class Container extends RXSchema{
