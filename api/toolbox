@@ -21,7 +21,7 @@
       },
       {
         "title":"Test",
-        "code":"<div class='container'> <div class='row'> <div>wwew323</div> <span>x</span> </div>  tess </div>"
+        "code":"<div class='container'> <div class='row'> <div role='test'>wwew323</div> <span>x</span> </div>  tess </div>"
       }
     ]
   },

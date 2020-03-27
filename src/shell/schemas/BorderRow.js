@@ -38,7 +38,8 @@ export class BorderRow extends OptionRow{
 
   resolveValue(node){
     this.node = node
-    this.value = this.extractMultipleValue(this.valueScope)
+    this.value = this.extractMultipleValue(this.valueScope, this.node.meta.classList)
+    this.defaultValue = this.extractMultipleValue(this.valueScope, this.node.defaultMeta.classList)
   }
 
   fillBackValue(node){

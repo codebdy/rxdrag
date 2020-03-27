@@ -51,9 +51,23 @@ export class NodeParser{
       }
     }
 
+    this.parseAttributes(node, element)
+    node.markDefaultMeta()
+
     node.parent = parent
 
     return node
+  }
+
+  parseAttributes(node, element){
+    let attrs = element.attributes;
+     for(var i = 0; i < attrs.length; i++){
+      let attrName = attrs[i]['nodeName'];
+      let attrValue = attrs[i]['nodeValue'];
+      if(attrName.toLowerCase() !== "class"){
+        node.meta.attributes[attrName] = attrValue
+      }
+    }
   }
 
   parseClassNode(element){
@@ -65,6 +79,7 @@ export class NodeParser{
         let cssClass = rule.classes[i].toLowerCase()
         if(element.classList.contains(cssClass)){
           let node = new ClassNode(cssClass)
+          node.meta.tag = element.tagName.toLowerCase()
           node.label = rule.label ? rule.label : ruleName
           node.ruleName = ruleName
           node.rule = rule

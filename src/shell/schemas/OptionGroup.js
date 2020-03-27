@@ -29,44 +29,40 @@ export class OptionGroup{
     })
   }
 
-  addSelectRow(schema, defaultValue = ''){
+  addSelectRow(schema){
     //schema = Object.assign({}, schema)
     this.rows.push(
       new SelectRow(schema)
       .setBreakPoint(this.breakPoint)
-      .setDefaultValue(defaultValue)
+      
     )
   }
 
-  addSwitchRow(schema, defaultValue = ''){
+  addSwitchRow(schema){
     //schema = Object.assign({}, schema)
     this.rows.push(
       new SwitchRow(schema)
       .setBreakPoint(this.breakPoint)
-      .setDefaultValue(defaultValue)
     )
   }
 
-  addBorderRow(schema, defaultValue = []){
+  addBorderRow(schema){
     this.rows.push(
       new BorderRow(schema)
       .setBreakPoint(this.breakPoint)
-      .setDefaultValue(defaultValue)
     )
   }
 
-  addGenerateSchemaRow(schema, defaultValue = ''){
+  addGenerateSchemaRow(schema){
     this.rows.push(
       new GenerateSchemaRow(schema)
       .setBreakPoint(this.breakPoint)
-      .setDefaultValue(defaultValue)
     )
   }
 
-  addButtonsTagRow(schema, defaultValue = ''){
+  addButtonsTagRow(schema){
     this.rows.push(
       new ButtonsTagRow(schema)
-      .setDefaultValue(defaultValue)
     )
   }
 

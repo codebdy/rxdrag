@@ -19,7 +19,7 @@ export class Heading extends RXSchema{
     super()
 
     let rowOptions = new OptionGroup(i18n.t('optionbox.heading-options'), true)
-   rowOptions.addButtonsTagRow(tags, 'h2')
+    rowOptions.addButtonsTagRow(tags, 'h2')
 
     this.optionGroups.unshift(rowOptions)
   }

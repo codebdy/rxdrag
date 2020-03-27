@@ -30,6 +30,7 @@ export class ButtonsTagRow extends OptionRow{
   resolveValue(node){
     this.node = node
     this.value = node.meta.tag
+    this.defaultValue = node.defaultMeta.tag
   }
 
   fillBackValue(node){
