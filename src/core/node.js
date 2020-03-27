@@ -429,12 +429,17 @@ export class Node{
       label: this.label,
       tag:this.meta.tag,
       id: this.id,
+      selected: false,
+      opened: false,
       state:this.getStateName(),
       children: [],
     }
 
     this.children.forEach((child)=>{
-      view.children.push(child.toTreeViewNode())
+      let childView = child.toTreeViewNode()
+      if(childView){
+        view.children.push(childView)
+      }
     })
 
     return view

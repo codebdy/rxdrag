@@ -114,6 +114,8 @@ export default {
       commandProxy: new IFrameCommandProxy(this._uid),
       //actived: false,
       canvasHeight: '100%',
+      html:'',
+      nodes:[],
     }
   },
   computed:{
@@ -143,30 +145,9 @@ export default {
     $bus.$on('draggingFromToolbox', this.draggingFromToolbox)
     $bus.$on('shellChangedNode', this.nodeChanged)
     $bus.$on('canvasHeight', this.onCanvasHeight)
+    $bus.$on('commandExcuted', this.onCommandExcuted)
+    this.initFrame()
     document.addEventListener('mouseup', this.onMouseUp)
-    //$bus.$on('overViewBoxChangedNode', this.nodeChanged)
-
-    let iframedocument =  this.$refs.canvasFrame.contentDocument;//contentWindow.document;
-    let iframeContent = `<html style="width:100%;height:100%;">
-          <head>
-            <title>RXEditor Workspace</title>
-            <link href="style/rxeditor.css" rel="stylesheet">
-            <link href="vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css" rel="stylesheet">
-          </head>
-          <body id="page-top" style="background-color:#FFF;padding:0;width:100%; height:100%;">
-            <div id="canvas"></div>
-            <script type="text/javascript" src="dist/core.js"/><\/script>
-            <script>
-              creatEditorCore(${this.pageId})
-              rxEditor.hangOn('canvas');
-            <\/script>
-          </body>
-        </html>
-      `
-    iframedocument.open();
-    iframedocument.write(iframeContent);
-    iframedocument.close();
-    //if(!window.$editorBus) window.$editorBus= new Vue()
     window.addEventListener("message", this.receiveCanvasMessage);
   },
 
@@ -175,7 +156,8 @@ export default {
     $bus.$off('draggingFromToolbox', this.draggingFromToolbox)
     $bus.$off('shellChangedNode', this.nodeChanged)
     $bus.$off('canvasHeight', this.onCanvasHeight)
-    //$bus.$off('overViewBoxChangedNode', this.nodeChanged)
+    $bus.$off('commandExcuted', this.onCommandExcuted)
+
     window.removeEventListener("message", this.receiveCanvasMessage);
     document.removeEventListener('mouseup', this.onMouseUp)
   },
@@ -210,6 +192,45 @@ export default {
 
     onMouseUp(){
       this.commandProxy.endDragFromToolbox()
+    },
+
+    onCommandExcuted(canUndo, canRedo, commandSchema, pageId){
+      if(pageId !== this.pageId){
+        return
+      }
+
+      if(commandSchema.command === 'new'){
+        let node = commandSchema.node
+        if(!commandSchema.parentId){
+          this.nodes.push(node)
+        }
+      }
+
+      $bus.$emit('showNodeTree', this.nodes)
+      console.log(this.nodes)
+    },
+
+    initFrame(){
+      let iframedocument =  this.$refs.canvasFrame.contentDocument;//contentWindow.document;
+      let iframeContent = `<html style="width:100%;height:100%;">
+            <head>
+              <title>RXEditor Workspace</title>
+              <link href="style/rxeditor.css" rel="stylesheet">
+              <link href="vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css" rel="stylesheet">
+            </head>
+            <body id="page-top" style="background-color:#FFF;padding:0;width:100%; height:100%;">
+              <div id="canvas"></div>
+              <script type="text/javascript" src="dist/core.js"/><\/script>
+              <script>
+                creatEditorCore(${this.pageId})
+                rxEditor.hangOn('canvas');
+              <\/script>
+            </body>
+          </html>
+        `
+      iframedocument.open();
+      iframedocument.write(iframeContent);
+      iframedocument.close();
     }
   },
 

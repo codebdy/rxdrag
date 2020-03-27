@@ -99,7 +99,7 @@ import StyleBox from './components/options/StyleBox.vue'
 
 
 //import files from '../mock/files.js'
-import nodes from '../mock/nodes.js'
+import nodesData from '../mock/nodes.js'
 //import options from '../mock/options.js'
 //import toolbox from '../mock/toolbox.js'
 
@@ -131,7 +131,7 @@ export default {
       breakPoint:'md',
       baseToolbox:[],
       files:[],
-      nodes:nodes,
+      nodes:[],
       options:[],
       //optionOverview : {},
       code:'<div></div>',
@@ -286,6 +286,10 @@ export default {
       this.files.push(imageFiles)
     },
 
+    onShowNodeTree(nodes){
+      this.nodes = nodes
+    },
+
     focusNode(node, pageId){
       this.node = node
       this.pageId = pageId
@@ -335,6 +339,7 @@ export default {
     $bus.$on('overViewValueChange', this.onOverViewValueChange)
     $bus.$on('styleValueChange', this.onStyleValueChange)
     $bus.$on('resizeScreen', this.resizeScreen)
+    $bus.$on('showNodeTree', this.onShowNodeTree)
 
 
     this.currentTheme = null
@@ -356,6 +361,7 @@ export default {
     $bus.$off('overViewValueChange', this.onOverViewValueChange)
     $bus.$off('styleValueChange', this.onStyleValueChange)
     $bus.$off('resizeScreen', this.resizeScreen)
+    $bus.$off('showNodeTree', this.onShowNodeTree)
   },
 
 }

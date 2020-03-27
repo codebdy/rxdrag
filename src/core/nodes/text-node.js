@@ -56,14 +56,7 @@ export class TextNode{
   draggedToFoused(){}
 
   toTreeViewNode(){
-    let view = {
-      name: "TextNode",
-      label: "#text",
-      id: this.id,
-      children: [],
-    }
-
-    return view
+    return null
   }
 
   charNodes(){

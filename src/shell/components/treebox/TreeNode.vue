@@ -6,18 +6,11 @@
       @click="click"  
       @contextmenu.prevent = 'onContextMenu'
       ref="nodTitle"
-      :class="inputValue.locked ? 'locked' : ''"
     >
       <div  class="node-icon" @click="iconClick">
         <i v-show="icon" :class="icon"></i>
       </div>
-      <input v-if="inputValue.isEditing" 
-        v-model="inputValue.title" 
-        @blur="inputBlur" 
-        @keyup.13 = "inputBlur"
-        @click="inputClick"
-      />
-      <template v-else>{{inputValue.title}}</template>
+      {{inputValue.label}}
     </div>
     <div v-if="showChild" class="children-nodes">
       <TreeNode v-for="(child, i) in inputValue.children" 
@@ -141,54 +134,6 @@ export default {
     hideContextMenu(event){
       if(event.target !== this.$refs.nodTitle){
         this.contextMenuPoped = false
-      }
-    },
-
-    clearEditingThings(){
-      this.contextMenuPoped = false
-      this.inputValue.isEditing = false
-    },
-
-    newChild(event){
-      this.inputValue.opened = true
-      this.inputValue.children.push(
-        {
-          title:'new...',
-          selected:false,
-          opened:false,
-          isEditing:true,
-          fileType:this.inputValue.fileType,
-          icon: this.inputValue.leafIcon,
-        }
-      )
-      this.contextMenuPoped = false
-      event.stopPropagation()
-    },
-
-    rename(event){
-      this.inputValue.isEditing = true
-      this.contextMenuPoped = false
-      event.stopPropagation()
-    },
-
-    remove(){
-      this.$emit('removeSelf',this.inputValue)
-    },
-
-    inputClick(event){
-      event.stopPropagation()
-    },
-
-    inputBlur(event){
-      this.inputValue.isEditing = false
-    },
-
-    removeChild(child){
-      for(var i in this.inputValue.children){
-        if(this.inputValue.children[i] === child){
-          this.inputValue.children.splice(i,1)
-          return
-        }
       }
     },
 
