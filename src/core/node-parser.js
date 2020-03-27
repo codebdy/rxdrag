@@ -91,12 +91,13 @@ export class NodeParser{
 
   parseTagNode(element){
     var node
+    let elTag = element.tagName.toLowerCase()
     for(var ruleName in rules.tagRules){
       let rule = rules.tagRules[ruleName]
       rule.tags = rule.tags ? rule.tags : [ruleName]
       for(var i = 0; i < rule.tags.length; i++){
         let tag = rule.tags[i]
-        if(element.tagName.toLowerCase() === tag.toLowerCase()){
+        if(elTag === tag.toLowerCase()){
           node = new TagNode(tag)
           node.label = rule.label ? rule.label : ruleName
           node.ruleName = ruleName
@@ -105,9 +106,8 @@ export class NodeParser{
         }
       }
     }
-
-    node = new TagNode(element.tagName)
-    node.ruleName = element.tagName.toLowerCase()
+    node = new TagNode(elTag)
+    node.ruleName = elTag
     node.rule = Object.assign({}, commonRule)
     return node
   }
