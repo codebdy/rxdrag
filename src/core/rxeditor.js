@@ -179,6 +179,7 @@ export class RXEditor{
     let position = this.cursor.position
     let node = this.cursor.node
     if(!node){
+      this.canvas.draggedToFoused()
       return
     }
     this.canvas.clearFocusAndEditStates()

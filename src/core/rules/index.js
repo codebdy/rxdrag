@@ -2,6 +2,7 @@ import container from "./container"
 import row from "./row"
 import col from "./col"
 import heading from "./heading"
+import commonRule from "./common-rule"
 
 //ruleName:
 // -container
@@ -26,6 +27,7 @@ export default{
     "container": container,
     "row": row,
     "col": col,
+    "alert" : commonRule,
   },
 
   tagRules : {

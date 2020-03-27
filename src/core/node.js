@@ -214,6 +214,15 @@ export class Node{
     })
   }
 
+  draggedToFoused(){
+    if(this.state === this.draggedState){
+      this.changeToState('focusState')
+    }
+    this.children.forEach(function(child){  
+      child.draggedToFoused()
+    })
+  }
+
   getParentViewDomElement(){
     return this.parent.view.$dom
   }

@@ -52,6 +52,8 @@ export class TextNode{
   clearFocusAndEditStates(){}
 
   clearCharNodes(){}
+  
+  draggedToFoused(){}
 
   toTreeViewNode(){
     let view = {
