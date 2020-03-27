@@ -69,12 +69,8 @@
               :name="$t('widgets.treeview')"
               :icon="'fas fa-project-diagram'" 
               :selected="true">
-              <NodeTree v-model="nodes" 
-                :openIcon="'fas fa-caret-down'" 
-                :closeIcon="'fas fa-caret-right'" 
-                :leafIcon="''"
-                :folderCanbeSelected = 'true'>
-              </NodeTree>
+              <TreeBox v-model="nodes">
+              </TreeBox>
             </tab>
           </WidgetTabs>
         </template>
@@ -93,6 +89,8 @@ import Tab from './components/tabs/Tab.vue'
 import Toolbox from './components/Toolbox/Toolbox.vue'
 import PagesArea from './components/page/PagesArea.vue'
 import NodeTree from './components/tree/NodeTree.vue'
+import TreeBox from './components/treebox/TreeBox.vue'
+
 import RxInputRow from './components/inputs/RxInputRow.vue'
 import OptionBox from './components/options/OptionBox.vue'
 import OptionOverviewBox from './components/options/OptionOverviewBox.vue'
@@ -121,6 +119,7 @@ export default {
     PagesArea,
     Toolbox,
     NodeTree,
+    TreeBox,
     RxInputRow,
     OptionBox,
     OptionOverviewBox,

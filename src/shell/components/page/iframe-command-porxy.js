@@ -88,7 +88,7 @@ export class IFrameCommandProxy{
         break;
       case 'replyAssemble':
         //let rxNameId = message.toolboxInfo.rxNameId
-        this.waitingAccembleToolbox(message.toolbox)
+        //this.waitingAccembleToolbox(message.toolbox)
         this.waitingAccembleTreeView(message.treeViewNodes)
         break;
       case 'takeOverDraggingByWorkspace':
@@ -112,7 +112,7 @@ export class IFrameCommandProxy{
   }
 
   requestAssemble(theme, toolBoxReplyFunction, treeViewReplyFunction){
-    this.waitingAccembleToolbox = toolBoxReplyFunction
+    //this.waitingAccembleToolbox = toolBoxReplyFunction
     this.waitingAccembleTreeView = treeViewReplyFunction
     this.sendMessageToRXEditor({
       name: 'requestAssemble',

@@ -424,23 +424,8 @@ export class Node{
     }
   }
 
-  toJson(){
-    let json = {
-      name: this.className,
-      meta: JSON.parse(JSON.stringify(this.meta)),
-      children: []
-    }
-
-    this.children.forEach((child)=>{
-      json.children.push(child.toJson())
-    })
-
-    return json
-  }
-
   toTreeViewNode(){
     let view = {
-      name: this.className,
       label: this.label,
       tag:this.meta.tag,
       id: this.id,

@@ -38,7 +38,7 @@
           <i class="fas fa-mobile-alt"></i>
         </div>
       </div>
-      <div class="center">Mini Toolbar</div>
+      <div class="center"></div>
       <div class="right">
         <div class="icon-button">
           <i class="far fa-square"></i>
