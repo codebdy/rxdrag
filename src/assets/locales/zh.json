@@ -143,7 +143,9 @@
     "stretched-link" : "拉伸链接",
     "visibility" : "可见性",
     "heading-options" : "标题选项",
-    "heading" : "标题"
+    "heading" : "标题",
+    "alert-options" : "警告框选项",
+    "contextual" : "语境"
   },
 
 
@@ -373,7 +375,16 @@
     "min-vw-100":"Min 100vw",
 
     "visible":"可见",
-    "invisible":"不可见"
+    "invisible":"不可见",
+
+    "alert-primary":"标准色",
+    "alert-secondary":"间色",
+    "alert-success":"成功色",
+    "alert-danger":"危险色",
+    "alert-warning":"警告色",
+    "alert-info":"信息色",
+    "alert-light":"浅色",
+    "alert-dark":"深色"   
   }
 
 }

@@ -144,7 +144,9 @@
     "stretched-link" : "Stretched Link",
     "visibility" : "Visibility",
     "heading-options" : "Heading Options",
-    "heading" : "Heading"
+    "heading" : "Heading",
+    "alert-options" : "Alert Options",
+    "contextual" : "Contextual"
   },
 
 
@@ -374,7 +376,17 @@
     "min-vw-100":"Min 100vw",
 
     "visible":"Visible",
-    "invisible":"Invisible"
+    "invisible":"Invisible",
+
+    "alert-primary":"Primary",
+    "alert-secondary":"Secondary",
+    "alert-success":"Success",
+    "alert-danger":"Danger",
+    "alert-warning":"Warning",
+    "alert-info":"Info",
+    "alert-light":"Light",
+    "alert-dark":"Dark"
+
   }
 
 
