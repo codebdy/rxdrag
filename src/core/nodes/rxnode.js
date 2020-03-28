@@ -19,15 +19,22 @@ export class RXNode extends Node{
     //this.addons.forEach((addon)=>{
     //  addon.copyMeta(this.meta, copy.meta)
     //})
+    copy.label = this.label
 
     return copy
   }
 
-  //edit(){
-  //  this.meta.attributes['contenteditable'] = true
-  //  this.render()
-  //  this.view.$dom.focus()
-  //}
+  setLabel(label){
+    this.label = label
+    this.labelToCapitalize()
+    return this
+  }
+
+  labelToCapitalize(){
+    let label = this.label
+    this.label = label.replace(label[0], label[0].toUpperCase())
+  }
+
 
   toViewModel(){
     let model = super.toViewModel()

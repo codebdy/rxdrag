@@ -6,8 +6,8 @@ export class ClassNode extends RXNode{
     super()
       //add(cssClass, this.meta.classList)
       this.cssClass = cssClass
-      this.label = cssClass.replace(cssClass[0],cssClass[0].toUpperCase())
   }
+
 
   make(){
     return new ClassNode(this.cssClass)

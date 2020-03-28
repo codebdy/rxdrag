@@ -429,8 +429,8 @@ export class Node{
       label: this.label,
       tag:this.meta.tag,
       id: this.id,
-      selected: false,
-      opened: false,
+      //selected: false,
+      //opened: false,
       state:this.getStateName(),
       children: [],
     }

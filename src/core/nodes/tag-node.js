@@ -5,6 +5,7 @@ export class TagNode extends RXNode{
     super()
     this.meta.tag = tag
     this.label = tag
+    this.labelToCapitalize()
 	}
 
   make(){

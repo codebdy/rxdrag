@@ -20,7 +20,6 @@
         :key="i" 
         v-model="inputValue.children[i]"
         @nodeSelected = "nodeSelected"
-        @removeSelf = "removeChild"
       ></TreeNode>
     </div>
     <div v-if='showContextMenu' 
@@ -144,7 +143,8 @@ export default {
 
 <style>
   .tree-node.selected{
-    background: rgba(0,123,255, 0.1)
+    background: rgba(117,179,37, 0.5);
+    color:#fff;
   }
 
   .children-nodes{
@@ -204,12 +204,4 @@ export default {
     background: #ebebeb;
   }
 
-  .node-title input{
-    border: 0;
-    outline: 0;
-    background: rgba(0,0,0,0.2);
-    padding:4px;
-    border:#555 solid 1px;
-    color: #fff;
-  }
 </style>

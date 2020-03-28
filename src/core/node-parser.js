@@ -80,7 +80,7 @@ export class NodeParser{
         if(element.classList.contains(cssClass)){
           let node = new ClassNode(cssClass)
           node.meta.tag = element.tagName.toLowerCase()
-          node.label = rule.label ? rule.label : ruleName
+          node.setLabel(rule.label ? rule.label : ruleName)
           node.ruleName = ruleName
           node.rule = rule
           return node
@@ -99,7 +99,7 @@ export class NodeParser{
         let tag = rule.tags[i]
         if(elTag === tag.toLowerCase()){
           node = new TagNode(tag)
-          node.label = rule.label ? rule.label : ruleName
+          node.setLabel(rule.label ? rule.label : ruleName)
           node.ruleName = ruleName
           node.rule = rule
           return node

@@ -89,6 +89,7 @@
 
 <script>
 import {IFrameCommandProxy} from "./iframe-command-porxy.js"
+import {NodeTree} from "./NodeTree"
 
 export default {
   name: 'HtmlPage',
@@ -110,12 +111,12 @@ export default {
   data () {
     return {
       size : 'md',
-      content:`<div class="container"></div>`,
+      //content:`<div class="container"></div>`,
       commandProxy: new IFrameCommandProxy(this._uid),
       //actived: false,
       canvasHeight: '100%',
       html:'',
-      nodes:[],
+      nodeTree: new NodeTree,
     }
   },
   computed:{
@@ -199,15 +200,15 @@ export default {
         return
       }
 
-      if(commandSchema.command === 'new'){
-        let node = commandSchema.node
-        if(!commandSchema.parentId){
-          this.nodes.push(node)
-        }
-      }
+      this.nodeTree.excuteCommand(commandSchema)
+      //if(commandSchema.command === 'new'){
+      //  let node = commandSchema.node
+      //  if(!commandSchema.parentId){
+      //    this.nodes.push(node)
+      //  }
+      //}
 
-      $bus.$emit('showNodeTree', this.nodes)
-      console.log(this.nodes)
+      $bus.$emit('showNodeTree', this.nodeTree.children)
     },
 
     initFrame(){
