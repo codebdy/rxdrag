@@ -298,7 +298,7 @@ export class RXEditor{
 
 
   focusNodeFromShell(node){
-    console.log('focusNodeFromShell', node)
+    this.canvas.clearFocusAndEditStates()
     this.canvas.focusNode(node)
   }
 

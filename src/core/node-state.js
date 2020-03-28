@@ -206,12 +206,14 @@ export class FocusState extends CanDropState{
     super(node)
     this.classList.push('rx-_-focused')
     this.enter = ()=>{
+      console.log('FocusState enter')
       let dom = node.view.$dom
       rxEditor.focusedLabel.show(node.label, node, 2)
       rxEditor.toolbar.show(node)
       rxEditor.focusedNode = node
     }
     this.leave = ()=>{
+      console.log('FocusState leave')
       rxEditor.focusedLabel.hide()
       rxEditor.toolbar.hide()
       rxEditor.focusedNode = ''
