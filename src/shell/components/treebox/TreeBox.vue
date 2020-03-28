@@ -40,7 +40,7 @@ export default {
       this.inputValue.forEach(child=>{
         this.resetSelected(selectedNode, child)
       })
-      $bus.$emit('nodeSelected', selectedNode.schema)
+      this.$emit('nodeSelected', selectedNode.schema)
     },
 
     //递归充置选择状态

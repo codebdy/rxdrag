@@ -117,6 +117,7 @@ export default {
       canvasHeight: '100%',
       html:'',
       nodeTree: new NodeTree,
+      focusNode : null,
     }
   },
   computed:{
@@ -152,7 +153,10 @@ export default {
     $bus.$on('nodeSelected', this.onNodeSelected)
     this.initFrame()
     document.addEventListener('mouseup', this.onMouseUp)
-    window.addEventListener("message", this.receiveCanvasMessage);
+    window.addEventListener("message", this.receiveCanvasMessage)
+
+    $bus.$emit('showNodeTree', this.nodeTree.children)
+    $bus.$emit('editNode', this.focusNode, this.pageId)
   },
 
   destoryed () {
@@ -198,7 +202,9 @@ export default {
     },
 
     onMouseUp(){
-      this.commandProxy.endDragFromToolbox()
+      if(this.actived){
+        this.commandProxy.endDragFromToolbox()
+      }
     },
 
     onCommandExcuted(canUndo, canRedo, commandSchema, pageId){
@@ -211,19 +217,32 @@ export default {
       $bus.$emit('showNodeTree', this.nodeTree.children)
     },
 
-    onFocusNode(node){
+    onFocusNode(node, pageId){
+      if(pageId !== this.pageId){
+        return
+      }
+      this.focusNode = node
       this.nodeTree.selectNode(node.id)
       $bus.$emit('showNodeTree', this.nodeTree.children)
+      $bus.$emit('editNode', this.focusNode, this.pageId)
+    },
+
+    onUnFocusNode(id, pageId){
+      if(pageId !== this.pageId){
+        return
+      }
+      if(this.focuseNode && this.focuseNode.id === id){
+        this.focuseNode = null
+      }
+      this.nodeTree.unSelectNode(id)
+      $bus.$emit('editNode', null)
     },
 
     onNodeSelected(node){
-      this.commandProxy.focusNodeFromSchell(node)
+      if(this.actived){
+        this.commandProxy.focusNodeFromSchell(node)
+      }
     },
-
-    onUnFocusNode(id){
-      this.nodeTree.unSelectNode(id)
-    },
-
 
     initFrame(){
       let iframedocument =  this.$refs.canvasFrame.contentDocument;//contentWindow.document;
@@ -252,6 +271,13 @@ export default {
   watch:{
     size(val){
       $bus.$emit('resizeScreen', this.size, this.pageId)
+    },
+
+    actived(val){
+      if(val){
+        $bus.$emit('showNodeTree', this.nodeTree.children)
+        $bus.$emit('editNode', this.focusNode, this.pageId)
+      }
     }
   }
 }

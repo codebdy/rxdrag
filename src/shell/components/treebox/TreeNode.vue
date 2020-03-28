@@ -26,15 +26,11 @@
       class="node-context-menu"
       :style="{'top':contextMenuTop, 'left':contextMenuLeft}"
       >
-      <div v-if="inputValue.isFolder" class="menu-item" 
-        @click = "newChild">
-        <i class="fas fa-file"></i> {{$t('widgets.new')}}
+      <div class="menu-item"
+        @click = "duplicate">
+        <i class="far fa-clone"></i> {{$t('widgets.duplicate')}}
       </div>
-      <div v-if="!inputValue.isFolder" class="menu-item"
-        @click = "rename">
-        <i class="fas fa-pen"></i> {{$t('widgets.rename')}}
-      </div>
-      <div v-if="!inputValue.isFolder" class="menu-item"
+      <div class="menu-item"
         @click = "remove">
         <i class="fas fa-trash-alt"></i> {{$t('widgets.delete')}}
       </div>
@@ -91,12 +87,12 @@ export default {
 
   },
   mounted () {
-    document.addEventListener('click', this.clearEditingThings)
+    document.addEventListener('click', this.hideContextMenu)
     document.addEventListener('contextmenu', this.hideContextMenu)
   },
 
   beforeDestroyed() {
-    document.removeEventListener('click', this.clearEditingThings)
+    document.removeEventListener('click', this.hideContextMenu)
     document.removeEventListener('contextmenu', this.hideContextMenu)
   },
 
@@ -132,6 +128,14 @@ export default {
       if(event.target !== this.$refs.nodTitle){
         this.contextMenuPoped = false
       }
+    },
+
+    duplicate(){
+
+    },
+
+    remove(){
+
     },
 
   },

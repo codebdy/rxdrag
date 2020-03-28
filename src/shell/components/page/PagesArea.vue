@@ -69,8 +69,6 @@ export default {
       this.$store.commit('activeFile', file)
     },
 
-
-
     addFile(file){
       if(!this.containsFile(file)){
         this.files.push(file)

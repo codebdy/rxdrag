@@ -27,7 +27,8 @@
     "delete" : "Delete",
     "reset":"Reset",
     "select":"-- Select --",
-    "enter-message":"Press enter finished"
+    "enter-message":"Press enter finished",
+    "duplicate" :"Duplicate"
   },
   "theme":{
     "theme-select":"Select A Theme",

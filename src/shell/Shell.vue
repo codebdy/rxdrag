@@ -69,7 +69,9 @@
               :name="$t('widgets.treeview')"
               :icon="'fas fa-project-diagram'" 
               :selected="true">
-              <TreeBox v-model="nodes">
+              <TreeBox v-model="nodes"
+                @nodeSelected = "nodeSelected"
+              >
               </TreeBox>
             </tab>
           </WidgetTabs>
@@ -165,6 +167,10 @@ export default {
   },
 
   methods:{
+    nodeSelected(node){
+      $bus.$emit('nodeSelected', node)
+    },
+
     fileSelect(file){
       $bus.$emit('fileSelected', file)
     },
@@ -290,20 +296,10 @@ export default {
       this.nodes = nodes
     },
 
-    focusNode(node, pageId){
+    onEditNode(node, pageId){
       this.node = node
       this.pageId = pageId
-      //console.log('Shell focusNode')
-      this.options = optionsFactory.resolveOptions(node, this.breakPoint)
-    },
-
-    unFocusNode(id){
-      //console.log('Shell unFocusNode')
-      if(this.node && this.node.id === id){
-        this.options = []
-        this.node = null
-        this.pageId = ''
-      }
+      this.options = node ? optionsFactory.resolveOptions(node, this.breakPoint) : []
     },
 
     resizeScreen(breakPoint){
@@ -319,6 +315,7 @@ export default {
       this.options.forEach(optionGroup=>{
         optionGroup.fillBackValue(this.node)
       })
+      console.log('onOptionValueChange',this.pageId)
       $bus.$emit('shellChangedNode', this.node, this.pageId)
     },
 
@@ -336,8 +333,8 @@ export default {
   },
 
   mounted () {
-    $bus.$on('focusNode', this.focusNode)
-    $bus.$on('unFocusNode', this.unFocusNode)
+    $bus.$on('editNode', this.onEditNode)
+    //$bus.$on('unFocusNode', this.unFocusNode)
     $bus.$on('optionValueChange', this.onOptionValueChange)
     $bus.$on('overViewValueChange', this.onOverViewValueChange)
     $bus.$on('styleValueChange', this.onStyleValueChange)
@@ -358,8 +355,8 @@ export default {
   },
 
   beforeDestroyed() {
-    $bus.$off('focusNode', this.focusNode)
-    $bus.$off('unFocusNode', this.unFocusNode)
+    $bus.$off('editNode', this.onEditNode)
+    //$bus.$off('unFocusNode', this.unFocusNode)
     $bus.$off('optionValueChange', this.onOptionValueChange)
     $bus.$off('overViewValueChange', this.onOverViewValueChange)
     $bus.$off('styleValueChange', this.onStyleValueChange)
