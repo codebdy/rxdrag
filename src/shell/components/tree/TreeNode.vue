@@ -2,7 +2,7 @@
   <div class="tree-node" :class="inputValue.selected ? 'selected' :''"
 
   >
-    <div class="node-title" 
+    <div class="tree-node-title" 
       @click="click"  
       @contextmenu.prevent = 'onContextMenu'
       ref="nodTitle"
@@ -210,7 +210,7 @@ export default {
     padding-left:15px;
   }
 
-  .tree-node .node-title{
+  .tree-node .tree-node-title{
     height: 30px;
     display: flex;
     flex-flow: row;
