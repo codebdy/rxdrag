@@ -80,6 +80,27 @@ class TreeNode{
       }
     }
   }
+
+  selectNode(id){
+    this.selected = (this.schema.id === id)
+    if(this.children){
+      this.children.forEach(child=>{
+        child.selectNode(id)
+      })
+    }
+  }
+
+  unSelectNode(id){
+    if(id == this.schema.id){
+      this.selected = false
+    }
+    if(this.children){
+      this.children.forEach(child=>{
+        child.unSelectNode(id)
+      })
+    }
+  }
+
 }
 
 export class NodeTree extends TreeNode{

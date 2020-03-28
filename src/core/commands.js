@@ -56,7 +56,6 @@ class CommandMovable{
     if(draggedNode.parent){
       draggedNode.parent.changeToState('normalState')
     }
-    draggedNode.changeToState('focusState')
     this.makeExcuteSchema()
   }
 
@@ -341,6 +340,7 @@ export class CommadManager{
     this.undoCommands.push(command)
     this.redoCommands.length = 0
     this.submitChanged(command)
+    command.node.changeToState('focusState')
   }
 
   undo(){

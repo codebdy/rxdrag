@@ -55,6 +55,8 @@ export class TextNode{
   
   draggedToFoused(){}
 
+  focusNode(){}
+
   toTreeViewNode(){
     return null
   }

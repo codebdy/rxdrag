@@ -147,6 +147,9 @@ export default {
     $bus.$on('shellChangedNode', this.nodeChanged)
     $bus.$on('canvasHeight', this.onCanvasHeight)
     $bus.$on('commandExcuted', this.onCommandExcuted)
+    $bus.$on('focusNode', this.onFocusNode)
+    $bus.$on('unFocusNode', this.onUnFocusNode)
+    $bus.$on('nodeSelected', this.onNodeSelected)
     this.initFrame()
     document.addEventListener('mouseup', this.onMouseUp)
     window.addEventListener("message", this.receiveCanvasMessage);
@@ -158,6 +161,9 @@ export default {
     $bus.$off('shellChangedNode', this.nodeChanged)
     $bus.$off('canvasHeight', this.onCanvasHeight)
     $bus.$off('commandExcuted', this.onCommandExcuted)
+    $bus.$off('focusNode', this.onFocusNode)
+    $bus.$off('unFocusNode', this.onUnFocusNode)
+    $bus.$off('nodeSelected', this.onNodeSelected)
 
     window.removeEventListener("message", this.receiveCanvasMessage);
     document.removeEventListener('mouseup', this.onMouseUp)
@@ -201,15 +207,23 @@ export default {
       }
 
       this.nodeTree.excuteCommand(commandSchema)
-      //if(commandSchema.command === 'new'){
-      //  let node = commandSchema.node
-      //  if(!commandSchema.parentId){
-      //    this.nodes.push(node)
-      //  }
-      //}
 
       $bus.$emit('showNodeTree', this.nodeTree.children)
     },
+
+    onFocusNode(node){
+      this.nodeTree.selectNode(node.id)
+      $bus.$emit('showNodeTree', this.nodeTree.children)
+    },
+
+    onNodeSelected(node){
+      this.commandProxy.focusNodeFromSchell(node)
+    },
+
+    onUnFocusNode(id){
+      this.nodeTree.unSelectNode(id)
+    },
+
 
     initFrame(){
       let iframedocument =  this.$refs.canvasFrame.contentDocument;//contentWindow.document;

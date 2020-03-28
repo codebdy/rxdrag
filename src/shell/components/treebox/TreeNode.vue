@@ -103,10 +103,8 @@ export default {
   methods: {
     click(){
       if(this.hasChildren || !this.hasChildren && !this.inputValue.isFolder){
-        if(!this.inputValue.locked){
-          this.inputValue.selected = true
-          this.$emit('nodeSelected', this.inputValue)
-        }
+        this.inputValue.selected = true
+        this.$emit('nodeSelected', this.inputValue)
       }
       else {
         this.inputValue.opened = !this.inputValue.opened
@@ -152,13 +150,14 @@ export default {
   }
 
   .tree-node .node-title{
-    height: 30px;
+    height: 20px;
     display: flex;
     flex-flow: row;
     flex-wrap: nowrap;
     align-items: center;
     padding-left: 0px;
     flex-shrink: 0;
+    font-size: 12px;
   }
 
   .tree-node .node-title.locked{

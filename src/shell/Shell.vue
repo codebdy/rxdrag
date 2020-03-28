@@ -293,14 +293,17 @@ export default {
     focusNode(node, pageId){
       this.node = node
       this.pageId = pageId
-      console.log('Shell focusNode')
+      //console.log('Shell focusNode')
       this.options = optionsFactory.resolveOptions(node, this.breakPoint)
     },
 
     unFocusNode(id){
-      this.options = []
-      this.node = null
-      this.pageId = ''
+      //console.log('Shell unFocusNode')
+      if(this.node && this.node.id === id){
+        this.options = []
+        this.node = null
+        this.pageId = ''
+      }
     },
 
     resizeScreen(breakPoint){
