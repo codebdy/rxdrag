@@ -196,6 +196,7 @@ export default {
     $bus.$on('nodeSelected', this.onNodeSelected)
     this.initFrame()
     document.addEventListener('mouseup', this.onMouseUp)
+    document.addEventListener('keyup', this.onKeyup)
     window.addEventListener("message", this.receiveCanvasMessage)
     $bus.$on('duplicateNode', this.onDuplicateNode)
     $bus.$on('removeNode', this.onRemoveNode)
@@ -217,6 +218,7 @@ export default {
 
     window.removeEventListener("message", this.receiveCanvasMessage);
     document.removeEventListener('mouseup', this.onMouseUp)
+    document.removeEventListener('keyup', this.onKeyup)
   },
 
   methods: {
@@ -273,6 +275,13 @@ export default {
     onMouseUp(){
       if(this.actived){
         this.commandProxy.endDragFromToolbox()
+      }
+    },
+
+    onKeyup(event){
+      if(event && event.keyCode === 27){ 
+        this.state.preview = false
+        this.commandProxy.changeCanvasState(this.state)
       }
     },
 
