@@ -109,9 +109,9 @@ export class RXEditorCommandProxy{
       case 'redo':
         this.serveForRXEditor.redo()
         break;
-      case 'download':
-        this.serveForRXEditor.download()
-        break;
+      //case 'download':
+      //  this.serveForRXEditor.download()
+      //  break;
       case 'clearCanvas':
         this.serveForRXEditor.clearCanvas()
         break;
@@ -133,6 +133,9 @@ export class RXEditorCommandProxy{
           name: 'replyHtmlCode',
           htmlCode: htmlCode,
         })
+        break;
+      case 'loadHtml':
+        this.serveForRXEditor.loadHtml(message.html)
         break;
     }
   }

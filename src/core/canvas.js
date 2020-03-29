@@ -47,12 +47,12 @@ export class Canvas extends Node{
   }
 
   generateHTML(){
-    let roorDiv = document.createElement('div')
+    let rootDiv = document.createElement('div')
     this.children.forEach(child=>{
-      child.preview(roorDiv)
+      child.preview(rootDiv)
     })
-    this.render()
-    return roorDiv.innerHTML
+    //this.render()
+    return rootDiv.innerHTML
 
   }
 

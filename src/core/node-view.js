@@ -24,18 +24,6 @@ export class NodeView{
     return previewDom
   }
 
-  /*renderMouseFollower(model, parentDoment){
-    let domElement = document.createElement(model.tag)
-    this.doRender(model, parentDoment, domElement)
-    parentDoment.appendChild(domElement)
-
-    if(this.$dom){
-      domElement.style.width = this.$dom.clientWidth + 'px'
-    }
-
-    return domElement
-  }*/
-
   refreshState(model){
     if(this.$dom){
       //let y = this.$dom.getBoundingClientRect().y
@@ -45,13 +33,6 @@ export class NodeView{
     }
   }
 
-  /*refresh(model, parentDoment){
-    if(!this.$dom) return;
-    this.putDown()
-    this.parentDoment = parentDoment
-    this.doRefresh(model, parentDoment, this.$dom)
-  }*/
-
   doRender(model, parentDoment, domElement){
     domElement.innerHTML = model.innerHTML ? model.innerHTML : ''
     this.renderStylesAndClasses(model, domElement)
@@ -59,13 +40,6 @@ export class NodeView{
     this.showAttributes(model,domElement)
     //parentDoment.appendChild(domElement);
   }
-
-  /*doRefresh(model, parentDoment, domElement){
-    this.renderStylesAndClasses(model, domElement)
-    this.bindEvents(domElement, model.on)
-    this.showAttributes(model,domElement)
-    parentDoment.appendChild(domElement);
-  }*/
 
 
   renderStylesAndClasses(model, domElement){

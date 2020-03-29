@@ -102,6 +102,13 @@ export class IFrameCommandProxy{
     })
   }
 
+  loadHtml(html){
+    this.sendMessageToRXEditor({
+      name:'loadHtml',
+      html : html,
+    })
+  }
+
   handleMessage(message){
     switch (message.name) {
       case 'rxeditorReady':

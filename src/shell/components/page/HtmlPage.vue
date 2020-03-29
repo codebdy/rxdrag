@@ -265,6 +265,7 @@ export default {
         this.commandProxy.requestHtmlCode()
       }
       else{
+        this.commandProxy.loadHtml(this.htmlCode)
         //console.log(this.$refs.htmlCode.innerHTML)
       }
     },
@@ -444,7 +445,7 @@ export default {
   .code-eidtor{
     width: calc(100% - 20px);
     background: #272727;
-    height: calc(100% - 46px);
+    height: calc(100% - 26px);
     color:#75b325;
     outline: 0;
     border:0;

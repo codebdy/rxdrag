@@ -282,12 +282,12 @@ export class RXEditor{
     this.render()
   }
 
-  download(){
-    let innerHTML = this.canvas.generateHTML()
-    let json = this.canvas.generateJson()
-    this.commandProxy.saveCodeFiles(innerHTML, json)
-    this.render()
-  }
+  //download(){
+  //  let innerHTML = this.canvas.generateHTML()
+  //  let json = this.canvas.generateJson()
+  //  this.commandProxy.saveCodeFiles(innerHTML, json)
+  //  this.render()
+  //}
 
   clearCanvas(){
     this.canvas.children.length = 0
@@ -323,5 +323,13 @@ export class RXEditor{
   requestHtmlCode(){
     this.allToNormalState()
     return this.canvas.generateHTML()
+  }
+
+  loadHtml(html){
+    this.canvas.children = this.nodeParser.parse(html)
+    this.canvas.children.forEach(child=>{
+      child.parent = this.canvas
+    })
+    this.render()
   }
 }
