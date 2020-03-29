@@ -5,35 +5,50 @@
     <div class="page-toolbar">
       <div class="left">
         <div class="icon-button big" 
-          :class="state.screenWidth === 'xl' ? 'active' :''"
+          :class="{
+            'active' : state.screenWidth === 'xl',
+            'disabled' : viewCode
+          }"
           @click="resizeScreen('xl')"
           title = "XL"
         >
           <i class="fas fa-tv"></i>
         </div>
         <div class="icon-button"
-          :class="state.screenWidth === 'lg' ? 'active' :''"
+          :class="{
+            'active' : state.screenWidth === 'lg',
+            'disabled' : viewCode
+          }"
           @click="resizeScreen('lg')"
           title = "LG"
         >
           <i class="fas fa-desktop"></i>
         </div>
         <div class="icon-button"
-          :class="state.screenWidth === 'md' ? 'active' :''"
+          :class="{
+            'active' : state.screenWidth === 'md',
+            'disabled' : viewCode
+          }"
           @click="resizeScreen('md')"
           title = "MD"
         >
           <i class="fas fa-laptop"></i>
         </div>
         <div class="icon-button"
-          :class="state.screenWidth === 'sm' ? 'active' :''"
+          :class="{
+            'active' : state.screenWidth === 'sm',
+            'disabled' : viewCode
+          }"
           @click="resizeScreen('sm')"
           title = "SM"
         >
           <i class="fas fa-tablet-alt"></i>
         </div>
         <div class="icon-button"
-          :class="state.screenWidth === 'xs' ? 'active' :''"
+          :class="{
+            'active' : state.screenWidth === 'xs',
+            'disabled' : viewCode
+          }"
           @click="resizeScreen('xs')"
           title = "XS"
         >
@@ -44,14 +59,20 @@
       <div class="right">
         <div class="icon-button" 
           v-if="!state.preview"
-          :class = "state.showOutline ?'active' :'' "
+          :class = "{
+            'active' : state.showOutline,
+            'disabled' : viewCode
+          } "
           :title="$t('page-toolbar.outline')"
           @click="outlineClick">
           <i class="far fa-square"></i>
         </div>
         <div class="icon-button"
           v-if="!state.preview"
-          :class = "state.showMarginX ?'active' :'' "
+          :class = "{
+            'active' : state.showMarginX,
+            'disabled' : viewCode 
+          }"
           :title="$t('page-toolbar.margin-x')"
           @click = "marginXClick"
         >
@@ -59,7 +80,10 @@
         </div>
         <div class="icon-button"
           v-if="!state.preview"
-          :class = "state.showMarginY ?'active' :'' "
+          :class = "{
+            'active' : state.showMarginY,
+            'disabled' : viewCode 
+          }"
           :title="$t('page-toolbar.margin-y')"
           @click = "marginYClick"
         >
@@ -67,7 +91,10 @@
         </div>
         <div class="icon-button"
           :title="state.preview ? $t('page-toolbar.cancel-preview') : $t('page-toolbar.preview')"
-          :class = "state.preview ?'active' :'' "
+          :class = "{
+            'active' : state.preview,
+            'disabled' : viewCode
+          }"
           @click = "previewClick"
         >
           <i class="fas fa-eye"></i>
@@ -83,18 +110,27 @@
         <div class="icon-button"
           v-if="!state.preview"
           :title="$t('page-toolbar.undo')"
+          :class = "{
+            'disabled' : viewCode
+          }"
         >
           <i class="fas fa-undo"></i>
         </div>
         <div class="icon-button"
           v-if="!state.preview"
           :title="$t('page-toolbar.redo')"
+          :class = "{
+            'disabled' : viewCode
+          }"
         >
           <i class="fas fa-redo"></i>
         </div>
         <div class="icon-button"
           v-if="!state.preview"
           :title="$t('page-toolbar.clear-canvas')"
+          :class = "{
+            'disabled' : viewCode
+          }"
         >
           <i class="fas fa-trash-alt"></i>
         </div>
@@ -452,5 +488,6 @@ export default {
     padding:10px;
     resize: none;
   }
+
 
 </style>

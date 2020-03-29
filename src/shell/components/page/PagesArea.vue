@@ -207,6 +207,22 @@ export default {
     font-size: 14px;
   }
 
+  .vular-studio .page-toolbar .icon-button.disabled{
+    pointer-events: none;
+    position: relative;
+  }
+
+  .vular-studio .page-toolbar .icon-button.disabled::after{
+    content: "";
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(73,76,69,0.7);
+    z-index: 1;
+  }
+
   .page-tabs{
   }
   .page-tabs .tab{
