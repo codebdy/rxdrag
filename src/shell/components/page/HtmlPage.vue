@@ -1,5 +1,7 @@
 <template>
-  <div class="html-page">
+  <div class="html-page"
+    :class="state.preview ? 'page-preview' : 'html-page'"
+  >
     <div class="page-toolbar">
       <div class="left">
         <div class="icon-button big" 
@@ -41,12 +43,14 @@
       <div class="center"></div>
       <div class="right">
         <div class="icon-button" 
+          v-if="!state.preview"
           :class = "state.showOutline ?'active' :'' "
           :title="$t('page-toolbar.outline')"
           @click="outlineClick">
           <i class="far fa-square"></i>
         </div>
         <div class="icon-button"
+          v-if="!state.preview"
           :class = "state.showMarginX ?'active' :'' "
           :title="$t('page-toolbar.margin-x')"
           @click = "marginXClick"
@@ -54,6 +58,7 @@
           <i class="fas fa-arrows-alt-h"></i>
         </div>
         <div class="icon-button"
+          v-if="!state.preview"
           :class = "state.showMarginY ?'active' :'' "
           :title="$t('page-toolbar.margin-y')"
           @click = "marginYClick"
@@ -61,38 +66,46 @@
           <i class="fas fa-arrows-alt-v"></i>
         </div>
         <div class="icon-button"
-          :title="$t('page-toolbar.preview')"
+          :title="state.preview ? $t('page-toolbar.cancel-preview') : $t('page-toolbar.preview')"
+          :class = "state.preview ?'active' :'' "
+          @click = "previewClick"
         >
           <i class="fas fa-eye"></i>
         </div>
         <div class="icon-button"
+          v-if="!state.preview"
           :title="$t('page-toolbar.code')"
         >
           <i class="fas fa-code"></i>
         </div>
         <div class="icon-button"
+          v-if="!state.preview"
           :title="$t('page-toolbar.undo')"
         >
           <i class="fas fa-undo"></i>
         </div>
         <div class="icon-button"
+          v-if="!state.preview"
           :title="$t('page-toolbar.redo')"
         >
           <i class="fas fa-redo"></i>
         </div>
         <div class="icon-button"
+          v-if="!state.preview"
           :title="$t('page-toolbar.clear-canvas')"
         >
           <i class="fas fa-trash-alt"></i>
         </div>
         <div class="icon-button"
+          v-if="!state.preview"
           :title="$t('page-toolbar.settings')"
         >
           <i class="fas fa-cog"></i>
         </div>
       </div>
     </div>
-    <div class="page-content">
+    <div class="page-content"
+    >
       <!-- 需要动态设定高度，当内容有变化时设定 -->
       <div class="canvas"
         :style = "{width:width}"
@@ -146,6 +159,7 @@ export default {
         showMarginX:true,
         showMarginY:true,
         screenWidth:'md',
+        preview: false,
       }
     }
   },
@@ -224,6 +238,11 @@ export default {
 
     marginYClick(){
       this.state.showMarginY = !this.state.showMarginY
+      this.commandProxy.changeCanvasState(this.state)
+    },
+
+    previewClick(){
+      this.state.preview = !this.state.preview
       this.commandProxy.changeCanvasState(this.state)
     },
 
@@ -353,6 +372,18 @@ export default {
     flex-flow: column;
     height: 0;
   }
+
+  .page-preview{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: #272727;
+    z-index: 1;
+  }
+
 
   .page-content{
     flex: 1;

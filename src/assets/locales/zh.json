@@ -14,6 +14,7 @@
     "margin-x" : "水平边距",
     "margin-y" : "垂直边距",
     "preview" : "预览",
+    "cancel-preview" : "取消预览",
     "code" : "源代码",
     "undo" : "撤销",
     "redo" : "重做",

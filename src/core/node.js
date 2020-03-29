@@ -369,7 +369,7 @@ export class Node{
   toPreviewModel(){
     return {      
       styles:{},
-      classList:new RXArray,
+      classList:[],//new RXArray,
       attributes:{},
     }
   }
