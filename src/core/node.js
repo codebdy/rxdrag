@@ -359,11 +359,11 @@ export class Node{
       classList:classList,
       attributes: Object.assign({}, this.state.attributes),
       on:{
-        mousemove:this.mousemove,
-        mouseover:this.mouseover,
-        mouseout:this.mouseout,
+        onmousemove:this.mousemove,
+        onmouseover:this.mouseover,
+        onmouseout:this.mouseout,
         //onmouseup:this.mouseup,
-        click:this.onclick,
+        onclick:this.onclick,
       }
     }
   }

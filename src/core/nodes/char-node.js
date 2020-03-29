@@ -10,8 +10,7 @@ export class CharNode extends Node{
     this.rule = {}
     this.rule.acceptedChildren = []
     this.rule.editMarginStyle = {}
-    this.rule.widthDropMargin = 5;
-    this.rule.heightDropMargin = 5;
+    this.rule.dropInMargin = 5;
   }
 
   make(){

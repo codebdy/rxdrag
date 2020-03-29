@@ -22,11 +22,7 @@ body.one-element-dragged{
   user-select: none;
 }
 
-.rx-_-char-node{
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.char-node{
 }
 
 .rx-_-show-outline{

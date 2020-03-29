@@ -20,7 +20,6 @@ export class NodeState {
 
   judgePosition(event){
     let draggedNode = rxEditor.commandManager.movingCommand.node
-
     if(this.node.isCharNode){
       return this.judgeCharNodePostion(event)
     }
