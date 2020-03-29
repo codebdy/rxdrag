@@ -32,7 +32,7 @@ export class RXNode extends Node{
   toViewModel(){
     let model = super.toViewModel()
     this.baseMetaToModel(model)
-    this.metaToModel(model)
+    //this.metaToModel(model)
 
     if((rxEditor.state.showMarginX && this.rule.editMarginStyle)
       || this.children.length === 0
@@ -62,7 +62,10 @@ export class RXNode extends Node{
   toPreviewModel(){
     let model = super.toPreviewModel()
     this.baseMetaToModel(model)
-    this.metaToModel(model)
+    //this.metaToModel(model)
+    if(this.meta.innerHTML){
+      model.innerHTML = this.meta.innerHTML
+    }
     return model
   }
 
@@ -75,8 +78,8 @@ export class RXNode extends Node{
     Object.assign(model.attributes, meta.attributes)
   }
 
-  metaToModel(model){
-  }
+  //metaToModel(model){
+  //}
 
   setTag(tag){
     return this.setField('tag', tag)

@@ -156,6 +156,7 @@ export class Node{
       child.preview(dom)
     })
 
+    parentDomElement.appendChild(dom)
     return dom
   }
 

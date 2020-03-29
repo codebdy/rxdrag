@@ -42,7 +42,7 @@ export class Canvas extends Node{
 
   toPreviewModel(){
     let model = super.toPreviewModel()
-    model.name = 'div'
+    model.tag = 'div'
     return model
   }
 

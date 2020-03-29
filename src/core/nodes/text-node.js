@@ -33,8 +33,10 @@ export class TextNode{
     }
   }
 
-  preview(){
-    
+  preview(parentDomElement){
+    if(parentDomElement){
+      parentDomElement.appendChild(document.createTextNode(this.text))
+    }
   }
 
   renderMouseFollower(parentDomElement){
