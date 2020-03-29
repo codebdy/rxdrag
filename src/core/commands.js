@@ -298,6 +298,8 @@ export class CommadManager{
     let cmd = new CommandClone(node)
     cmd.excute()
     this.finished(cmd)
+    cmd.node.changeToState('normalState')
+    cmd.copy.changeToState('focusState')
   }
 
   changeNode(node, newNodeData){
@@ -311,6 +313,8 @@ export class CommadManager{
     let cmd = new CommandDelete(node)
     cmd.excute()
     this.finished(cmd)
+    rxEditor.toolbar.hide()
+    rxEditor.focusedLabel.hide()
   }
 
   startCommand(command){

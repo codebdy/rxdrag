@@ -302,4 +302,15 @@ export class RXEditor{
     this.canvas.focusNode(node)
   }
 
+  duplicateNodeFromShell(id){
+    this.canvas.clearFocusAndEditStates()
+    let node = this.canvas.getNodeById(id)
+    this.commandManager.duplicate(node)
+  }
+
+  removeNodeFromShell(id){
+    this.canvas.clearFocusAndEditStates()
+    let node = this.canvas.getNodeById(id)
+    this.commandManager.deleteNode(node)
+  }
 }

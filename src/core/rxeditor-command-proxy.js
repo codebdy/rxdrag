@@ -100,6 +100,12 @@ export class RXEditorCommandProxy{
       case 'focusNodeFromSchell':
         this.serveForRXEditor.focusNodeFromShell(message.node)
         break;
+      case 'duplicateNodeFromShell':
+        this.serveForRXEditor.duplicateNodeFromShell(message.id)
+        break;
+      case 'removeNodeFromShell':
+        this.serveForRXEditor.removeNodeFromShell(message.id)
+        break;
     }
   }
 

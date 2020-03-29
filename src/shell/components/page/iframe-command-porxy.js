@@ -74,10 +74,24 @@ export class IFrameCommandProxy{
     })
   }
 
-  focusNodeFromSchell(node){
+  focusNodeFromShell(node){
     this.sendMessageToRXEditor({
-      name:'focusNodeFromSchell',
+      name:'focusNodeFromShell',
       node:node,
+    })
+  }
+
+  duplicateNodeFromShell(id){
+    this.sendMessageToRXEditor({
+      name:'duplicateNodeFromShell',
+      id:id,
+    })
+  }
+
+  removeNodeFromShell(id){
+    this.sendMessageToRXEditor({
+      name:'removeNodeFromShell',
+      id:id,
     })
   }
 

@@ -154,6 +154,8 @@ export default {
     this.initFrame()
     document.addEventListener('mouseup', this.onMouseUp)
     window.addEventListener("message", this.receiveCanvasMessage)
+    $bus.$on('duplicateNode', this.onDuplicateNode)
+    $bus.$on('removeNode', this.onRemoveNode)
 
     $bus.$emit('showNodeTree', this.nodeTree.children)
     $bus.$emit('editNode', this.focusNode, this.pageId)
@@ -168,6 +170,8 @@ export default {
     $bus.$off('focusNode', this.onFocusNode)
     $bus.$off('unFocusNode', this.onUnFocusNode)
     $bus.$off('nodeSelected', this.onNodeSelected)
+    $bus.$off('duplicateNode', this.onDuplicateNode)
+    $bus.$off('removeNode', this.onRemoveNode)
 
     window.removeEventListener("message", this.receiveCanvasMessage);
     document.removeEventListener('mouseup', this.onMouseUp)
@@ -240,7 +244,19 @@ export default {
 
     onNodeSelected(node){
       if(this.actived){
-        this.commandProxy.focusNodeFromSchell(node)
+        this.commandProxy.focusNodeFromShell(node)
+      }
+    },
+
+    onDuplicateNode(id){
+      if(this.actived){
+        this.commandProxy.duplicateNodeFromShell(id)
+      }
+    },
+
+    onRemoveNode(id){
+      if(this.actived){
+        this.commandProxy.removeNodeFromShell(id)
       }
     },
 

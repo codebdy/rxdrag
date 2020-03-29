@@ -494,4 +494,17 @@ export class Node{
       child.clearCharNodes()
     })
   }
+
+  getNodeById(id){
+    if(id === this.id){
+      return this
+    }
+
+    for(var i in this.children){
+      let node = this.children[i].getNodeById(id)
+      if(node){
+        return node
+      }
+    }
+  }
 }

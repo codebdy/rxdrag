@@ -131,11 +131,11 @@ export default {
     },
 
     duplicate(){
-
+      $bus.$emit('duplicateNode', this.inputValue.id)
     },
 
     remove(){
-
+      $bus.$emit('removeNode', this.inputValue.id)
     },
 
   },
@@ -145,7 +145,7 @@ export default {
 
 <style>
   .tree-node.selected{
-    background: rgba(117,179,37, 0.5);
+    background: rgba(117,179,37, 0.2);
     color:#fff;
   }
 
