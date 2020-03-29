@@ -26,7 +26,7 @@ export class NodeParser{
   paraseNode(element, parent){
     var node 
     if(element.nodeType === 3){
-      let text = element.textContent.trim()
+      let text = element.textContent//.trim()
       if(!text){
         return ''
       }

@@ -63,25 +63,17 @@ export class Node{
     }
 
     this.mousemove = (event)=>{
-      //console.log(event)
       event.stopPropagation()
       this.state.onMousemove(event)
     }
     this.mouseover = (event)=>{
-      //console.log(event)
       event.stopPropagation()
       this.state.onMouseover(event)
     }
     this.mouseout = (event)=>{
-      //console.log(event)
       event.stopPropagation()
       this.state.onMouseout(event)
     }
-
-    /*this.mouseup = event=>{
-      event.stopPropagation()
-      this.state.onMouseup(event)
-    }*/
 
     this.onclick = (event)=>{
       event.stopPropagation()
@@ -240,9 +232,6 @@ export class Node{
     if(first(targetParent.children) !== this){
       this.removeFromParent()
       targetParent.unshiftChild(this)
-      //if(targetParent.view && targetParent.view.$dom){
-      //  targetParent.view.$dom.prepend(this.view.$dom)
-      //}
       targetParent.render()
     }
   }
@@ -251,9 +240,6 @@ export class Node{
     if(last(targetParent.children) !== this){
       this.removeFromParent()
       targetParent.pushChild(this)
-      //if(this.view.$dom){
-      //  targetParent.view.$dom.appendChild(this.view.$dom)
-      //}
       targetParent.render()
     }
   }
@@ -364,13 +350,9 @@ export class Node{
 
     let styles = {}
 
-    //if(rxEditor.state.showEditMargin){
-    //  Object.assign(styles, this.editMarginStyle)
-    //}
     Object.assign(styles, this.state.styles)
 
     return {
-      //text:'test',
       styles:styles,
       classList:classList,
       attributes: Object.assign({}, this.state.attributes),
