@@ -122,13 +122,10 @@
           ref ="canvasFrame"
         ></iframe>
       </div>
-      <div class="code-eidtor" 
+      <textarea class="code-eidtor"
         v-show = "viewCode"
-      >
-        <div class="code-view" contenteditable="true">
-          <pre ref="htmlCode">{{htmlCode}}</pre>
-        </div>
-      </div>
+        v-model = "htmlCode"
+      ></textarea>
     </div>
   </div>
 </template>
@@ -266,6 +263,9 @@ export default {
       this.viewCode = !this.viewCode
       if(this.viewCode){
         this.commandProxy.requestHtmlCode()
+      }
+      else{
+        //console.log(this.$refs.htmlCode.innerHTML)
       }
     },
 
@@ -442,15 +442,14 @@ export default {
   }
 
   .code-eidtor{
-    width: 100%;
+    width: calc(100% - 20px);
     background: #272727;
-    height: calc(100% - 26px);
+    height: calc(100% - 46px);
+    color:#75b325;
+    outline: 0;
+    border:0;
+    padding:10px;
+    resize: none;
   }
 
-  .code-view{
-    margin:10px;
-    color:#75b325;
-    height: 100%;
-    outline: 0;
-  }
 </style>
