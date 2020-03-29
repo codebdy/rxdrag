@@ -4,4 +4,5 @@ export default{
   editMarginStyle : {
     padding:'20px',
   },
+  acceptChildren : ['col','w-100']
 }

@@ -27,6 +27,7 @@ export default{
     "container": container,
     "row": row,
     "col": col,
+    "w-100": commonRule,
     "alert" : commonRule,
   },
 
