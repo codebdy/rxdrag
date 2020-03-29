@@ -75,6 +75,8 @@
         <div class="icon-button"
           v-if="!state.preview"
           :title="$t('page-toolbar.code')"
+          :class = "viewCode ?'active' :'' "
+          @click = "codeClick"
         >
           <i class="fas fa-code"></i>
         </div>
@@ -109,6 +111,7 @@
       <!-- 需要动态设定高度，当内容有变化时设定 -->
       <div class="canvas"
         :style = "{width:width}"
+        v-show = "!viewCode"
       >
         <iframe src="javascrip:0" 
           scrolling="no" 
@@ -119,13 +122,21 @@
           ref ="canvasFrame"
         ></iframe>
       </div>
+      <div class="code-eidtor" 
+        v-show = "viewCode"
+      >
+        <div class="code-view" contenteditable="true">
+          <pre ref="htmlCode">{{htmlCode}}</pre>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import {IFrameCommandProxy} from "./iframe-command-porxy.js"
+import {IFrameCommandProxy} from "./IFrameCommandProxy"
 import {NodeTree} from "./NodeTree"
+import {HtmlBeautify} from "./HtmlBeautify"
 
 export default {
   name: 'HtmlPage',
@@ -150,7 +161,7 @@ export default {
       commandProxy: new IFrameCommandProxy(this._uid),
       //actived: false,
       canvasHeight: '100%',
-      html:'',
+      htmlCode:'',
       nodeTree: new NodeTree,
       focusNode : null,
       state:{
@@ -160,7 +171,8 @@ export default {
         showMarginY:true,
         screenWidth:'md',
         preview: false,
-      }
+      },
+      viewCode : false,
     }
   },
   computed:{
@@ -200,6 +212,7 @@ export default {
     window.addEventListener("message", this.receiveCanvasMessage)
     $bus.$on('duplicateNode', this.onDuplicateNode)
     $bus.$on('removeNode', this.onRemoveNode)
+    $bus.$on('replyHtmlCode', this.onReplyHtmlCode)
 
     this.emitShellState()
   },
@@ -215,6 +228,7 @@ export default {
     $bus.$off('nodeSelected', this.onNodeSelected)
     $bus.$off('duplicateNode', this.onDuplicateNode)
     $bus.$off('removeNode', this.onRemoveNode)
+    $bus.$off('replyHtmlCode', this.onReplyHtmlCode)
 
     window.removeEventListener("message", this.receiveCanvasMessage);
     document.removeEventListener('mouseup', this.onMouseUp)
@@ -246,6 +260,13 @@ export default {
     previewClick(){
       this.state.preview = !this.state.preview
       this.commandProxy.changeCanvasState(this.state)
+    },
+
+    codeClick(){
+      this.viewCode = !this.viewCode
+      if(this.viewCode){
+        this.commandProxy.requestHtmlCode()
+      }
     },
 
     draggingFromToolbox(item){
@@ -334,6 +355,13 @@ export default {
       }
     },
 
+    onReplyHtmlCode(htmlCode){
+      if(this.actived){
+        let beautify = new HtmlBeautify(htmlCode, '    ')
+        this.htmlCode = beautify.result
+      }
+    },
+
     initFrame(){
       let iframedocument =  this.$refs.canvasFrame.contentDocument;//contentWindow.document;
       let iframeContent = `<html style="width:100%;height:100%;">
@@ -411,5 +439,18 @@ export default {
     width: 100%;
     min-height:calc(100vh - 112px);
     border:0;
+  }
+
+  .code-eidtor{
+    width: 100%;
+    background: #272727;
+    height: calc(100% - 26px);
+  }
+
+  .code-view{
+    margin:10px;
+    color:#75b325;
+    height: 100%;
+    outline: 0;
   }
 </style>

@@ -127,6 +127,13 @@ export class RXEditorCommandProxy{
       case 'removeNodeFromShell':
         this.serveForRXEditor.removeNodeFromShell(message.id)
         break;
+      case 'requestHtmlCode':
+        let htmlCode = this.serveForRXEditor.requestHtmlCode()
+        this.sendMessage({
+          name: 'replyHtmlCode',
+          htmlCode: htmlCode,
+        })
+        break;
     }
   }
 

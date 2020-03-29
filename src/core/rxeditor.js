@@ -319,4 +319,9 @@ export class RXEditor{
   canvasMouseMove(event){
     this.commandProxy.canvasMouseMove(event)
   }
+
+  requestHtmlCode(){
+    this.allToNormalState()
+    return this.canvas.generateHTML()
+  }
 }

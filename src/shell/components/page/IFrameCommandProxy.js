@@ -96,6 +96,12 @@ export class IFrameCommandProxy{
     })
   }
 
+  requestHtmlCode(){
+    this.sendMessageToRXEditor({
+      name:'requestHtmlCode',
+    })
+  }
+
   handleMessage(message){
     switch (message.name) {
       case 'rxeditorReady':
@@ -126,6 +132,9 @@ export class IFrameCommandProxy{
         break;
       case 'canvasMouseMove':
         $bus.$emit('canvasMouseMove', message.event)
+        break;
+      case 'replyHtmlCode':
+        $bus.$emit('replyHtmlCode', message.htmlCode)
         break;
     }
 
