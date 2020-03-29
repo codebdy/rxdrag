@@ -173,27 +173,6 @@ export class Node{
     })
   }
 
-  /*createMouseFollower(){
-    let followerElement = document.createElement('div')
-    followerElement.classList.add('mouse-follow')
-    if(!this.parent){
-      followerElement.style.width = this.mouseFollowerWidth
-    }
-    this.renderMouseFollower(followerElement)
-
-    this.mouseFollower.$dom = followerElement
-    return this.mouseFollower
-  }
-
-  renderMouseFollower(parentDomElement){
-    let mouseFollower = this.view.renderMouseFollower(this.toViewModel(), parentDomElement)
-    this.children.forEach(function(child){  
-      child.renderMouseFollower(mouseFollower)
-    })
-
-    return mouseFollower
-  }*/
-
   clearDraggedoverStates(){
     if(this.state === this.dragoverState){
       this.changeToState('normalState')
@@ -261,9 +240,10 @@ export class Node{
     if(first(targetParent.children) !== this){
       this.removeFromParent()
       targetParent.unshiftChild(this)
-      if(targetParent.view && targetParent.view.$dom){
-        targetParent.view.$dom.prepend(this.view.$dom)
-      }
+      //if(targetParent.view && targetParent.view.$dom){
+      //  targetParent.view.$dom.prepend(this.view.$dom)
+      //}
+      targetParent.render()
     }
   }
 
@@ -271,9 +251,10 @@ export class Node{
     if(last(targetParent.children) !== this){
       this.removeFromParent()
       targetParent.pushChild(this)
-      if(this.view.$dom){
-        targetParent.view.$dom.appendChild(this.view.$dom)
-      }
+      //if(this.view.$dom){
+      //  targetParent.view.$dom.appendChild(this.view.$dom)
+      //}
+      targetParent.render()
     }
   }
 
@@ -282,10 +263,6 @@ export class Node{
       this.removeFromParent()
       this.parent = brother.parent
       insertBefore(this, brother, brother.parent.children);
-      //if(brother.parent.view && brother.parent.view.$dom
-      //  && brother.view && brother.view.$dom
-      //  && this.view && this.view.$dom)
-      //  brother.parent.view.$dom.insertBefore(this.view.$dom, brother.view.$dom)
       this.parent.render()
     }
   }
@@ -295,22 +272,13 @@ export class Node{
       this.removeFromParent()
       this.parent = brother.parent
       insertAfter(this, brother, brother.parent.children);
-      //if(brother.view && brother.view.$dom 
-        //&& this.view && this.view.$dom) {
-        //insterAfterDom(this.view.$dom, brother.view.$dom)
-      //}
       this.parent.render()
     }
   }
 
   removeFromParent(){
     if(this.parent){
-      //this.view.putDown()
       remove(this, this.parent.children)
-      //if(this.parent.view && this.parent.view.$dom
-      //  && this.view && this.view.dom){
-      //  parent.view.$dom.removeChild(this.view.dom)
-      //}
       this.parent.render()
     }
   }

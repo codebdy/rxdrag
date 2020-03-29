@@ -34,11 +34,15 @@ export class RXNode extends Node{
     this.baseMetaToModel(model)
     this.metaToModel(model)
 
-    if(rxEditor.state.showMarginX && this.rule.editMarginStyle){
+    if((rxEditor.state.showMarginX && this.rule.editMarginStyle)
+      || this.children.length === 0
+      ){
       model.styles['padding-left'] = this.rule.editMarginStyle.paddingX
       model.styles['padding-right'] = this.rule.editMarginStyle.paddingX
     }
-    if(rxEditor.state.showMarginY && this.rule.editMarginStyle){
+    if((rxEditor.state.showMarginY && this.rule.editMarginStyle)
+      || this.children.length === 0
+      ){
       model.styles['padding-top'] = this.rule.editMarginStyle.paddingY
       model.styles['padding-bottom'] = this.rule.editMarginStyle.paddingY
     }
