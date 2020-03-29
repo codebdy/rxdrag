@@ -5,7 +5,8 @@ export class CanvasState extends ObjectState{
     super()
     this.__screenWidth = 'md'
     this.__preview = false
-    this.__showEditMargin = true
+    this.__showMarginX = true
+    this.__showMarginY = true
     this.__showOutline = true
     this.__showLabel = true
 
@@ -32,14 +33,24 @@ export class CanvasState extends ObjectState{
     this.distributeEvent('preview')
   }
 
-  get showEditMargin(){
-    return this.__showEditMargin
+  get showMarginX(){
+    return this.__showMarginX
   }
 
-  set showEditMargin(showEditMargin){
-    if(this.__showEditMargin == showEditMargin){return} 
-    this.__showEditMargin = showEditMargin
-    this.distributeEvent('showEditMargin')
+  set showMarginX(showMarginX){
+    if(this.__showMarginX == showMarginX){return} 
+    this.__showMarginX = showMarginX
+    this.distributeEvent('showMarginX')
+  }
+
+  get showMarginY(){
+    return this.__showMarginY
+  }
+
+  set showMarginY(showMarginY){
+    if(this.__showMarginY == showMarginY){return} 
+    this.__showMarginY = showMarginY
+    this.distributeEvent('showMarginY')
   }
 
   get showOutline(){

@@ -27,8 +27,8 @@ export default{
     "container": container,
     "row": row,
     "col": col,
-    "w-100": commonRule,
-    "alert" : commonRule,
+    "w-100": Object.assign({}, commonRule),
+    "alert" : Object.assign({}, commonRule),
   },
 
   tagRules : {

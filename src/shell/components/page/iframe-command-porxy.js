@@ -29,7 +29,8 @@ export class IFrameCommandProxy{
       state : {
         screenWidth : state.screenWidth,
         preview : state.preview,
-        showEditMargin : state.showEditMargin,
+        showMarginX : state.showMarginX,
+        showMarginY : state.showMarginY,
         showOutline : state.showOutline,
         showLabel : state.showLabel,
       }

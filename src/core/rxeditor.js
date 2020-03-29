@@ -106,8 +106,10 @@ export class RXEditor{
       tongleOnCondition(state.showOutline, 'rx-_-show-outline', this.optionClasses)
       this.render()
     })
-    this.state.watch('showEditMargin', (state)=>{
-      //this.allToNormalState()
+    this.state.watch('showMarginX', (state)=>{
+      this.render()
+    })
+    this.state.watch('showMarginY', (state)=>{
       this.render()
     })
     this.state.watch('preview', (state)=>{
@@ -256,7 +258,9 @@ export class RXEditor{
   changeCanvasState(state){
     this.state.screenWidth = state.screenWidth
     this.state.preview = state.preview
-    this.state.showEditMargin = state.showEditMargin
+    //this.state.showEditMargin = state.showEditMargin
+    this.state.showMarginX = state.showMarginX
+    this.state.showMarginY = state.showMarginY
     this.state.showOutline = state.showOutline
     this.state.showLabel = state.showLabel
   }

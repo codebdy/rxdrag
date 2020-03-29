@@ -1,6 +1,5 @@
 import {Node} from "../node"
 import {TextNode} from "./text-node"
-//import parkMiniEditbar from "../park-mini-editbar"
 
 export class RXNode extends Node{
   constructor() {
@@ -35,22 +34,21 @@ export class RXNode extends Node{
     this.baseMetaToModel(model)
     this.metaToModel(model)
 
-    if(rxEditor.state.showEditMargin && this.rule.editMarginStyle){
-      model.styles.margin = this.rule.editMarginStyle.margin
-      model.styles.padding = this.rule.editMarginStyle.padding
+    if(rxEditor.state.showMarginX && this.rule.editMarginStyle){
+      model.styles['padding-left'] = this.rule.editMarginStyle.paddingX
+      model.styles['padding-right'] = this.rule.editMarginStyle.paddingX
+    }
+    if(rxEditor.state.showMarginY && this.rule.editMarginStyle){
+      model.styles['padding-top'] = this.rule.editMarginStyle.paddingY
+      model.styles['padding-bottom'] = this.rule.editMarginStyle.paddingY
     }
 
-    //if(model.attributes.contenteditable === 'true'){
-    //  parkMiniEditbar(model, this)
-    //  console.log(model)
-    //}
     //添加for后，编辑时无法选中
     if(model.attributes.for){
       model.attributes.for = ''
     }
 
     if(this.meta.innerHTML){
-      //console.log('innerHTML', this.meta.innerHTML)
       model.innerHTML = this.meta.innerHTML
     }
 

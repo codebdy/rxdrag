@@ -3,35 +3,35 @@
     <div class="page-toolbar">
       <div class="left">
         <div class="icon-button big" 
-          :class="size === 'xl' ? 'active' :''"
+          :class="state.screenWidth === 'xl' ? 'active' :''"
           @click="resizeScreen('xl')"
           title = "XL"
         >
           <i class="fas fa-tv"></i>
         </div>
         <div class="icon-button"
-          :class="size === 'lg' ? 'active' :''"
+          :class="state.screenWidth === 'lg' ? 'active' :''"
           @click="resizeScreen('lg')"
           title = "LG"
         >
           <i class="fas fa-desktop"></i>
         </div>
         <div class="icon-button"
-          :class="size === 'md' ? 'active' :''"
+          :class="state.screenWidth === 'md' ? 'active' :''"
           @click="resizeScreen('md')"
           title = "MD"
         >
           <i class="fas fa-laptop"></i>
         </div>
         <div class="icon-button"
-          :class="size === 'sm' ? 'active' :''"
+          :class="state.screenWidth === 'sm' ? 'active' :''"
           @click="resizeScreen('sm')"
           title = "SM"
         >
           <i class="fas fa-tablet-alt"></i>
         </div>
         <div class="icon-button"
-          :class="size === 'xs' ? 'active' :''"
+          :class="state.screenWidth === 'xs' ? 'active' :''"
           @click="resizeScreen('xs')"
           title = "XS"
         >
@@ -46,10 +46,14 @@
           @click="outlineClick">
           <i class="far fa-square"></i>
         </div>
-        <div class="icon-button">
+        <div class="icon-button"
+          :class = "state.showMarginX ?'active' :'' "
+        >
           <i class="fas fa-arrows-alt-h"></i>
         </div>
-        <div class="icon-button">
+        <div class="icon-button"
+          :class = "state.showMarginY ?'active' :'' "
+        >
           <i class="fas fa-arrows-alt-v"></i>
         </div>
         <div class="icon-button">
@@ -113,7 +117,6 @@ export default {
   },
   data () {
     return {
-      size : 'md',
       //content:`<div class="container"></div>`,
       commandProxy: new IFrameCommandProxy(this._uid),
       //actived: false,
@@ -124,6 +127,9 @@ export default {
       state:{
         showOutline: true,
         showEditMargin: true,
+        showMarginX:true,
+        showMarginY:true,
+        screenWidth:'md',
       }
     }
   },
@@ -142,7 +148,7 @@ export default {
     },
 
     width(){
-      return this.breakpoints[this.size] + 'px'
+      return this.breakpoints[this.state.screenWidth] + 'px'
     }
   },
 
@@ -164,8 +170,7 @@ export default {
     $bus.$on('duplicateNode', this.onDuplicateNode)
     $bus.$on('removeNode', this.onRemoveNode)
 
-    $bus.$emit('showNodeTree', this.nodeTree.children)
-    $bus.$emit('editNode', this.focusNode, this.pageId)
+    this.emitShellState()
   },
 
   destoryed () {
@@ -186,7 +191,9 @@ export default {
 
   methods: {
     resizeScreen(size){
-      this.size = size
+      this.state.screenWidth = size
+      this.commandProxy.changeCanvasState(this.state)
+      $bus.$emit('resizeScreen', this.state.screenWidth, this.pageId)
     },
 
     outlineClick(){
@@ -294,18 +301,19 @@ export default {
       iframedocument.open();
       iframedocument.write(iframeContent);
       iframedocument.close();
+    },
+
+    emitShellState(){
+      $bus.$emit('showNodeTree', this.nodeTree.children)
+      $bus.$emit('editNode', this.focusNode, this.pageId)
+      $bus.$emit('resizeScreen', this.state.screenWidth, this.pageId)
     }
   },
 
   watch:{
-    size(val){
-      $bus.$emit('resizeScreen', this.size, this.pageId)
-    },
-
     actived(val){
       if(val){
-        $bus.$emit('showNodeTree', this.nodeTree.children)
-        $bus.$emit('editNode', this.focusNode, this.pageId)
+        this.emitShellState()
       }
     }
   }
