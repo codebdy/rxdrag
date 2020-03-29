@@ -17,6 +17,7 @@ export class RXEditorCommandProxy{
           meta:node.meta,
           defaultMeta:node.defaultMeta,
           optionsSchema:node.rule.optionsSchema,
+          htmlCode:node.htmlCode,
         }
       })
     }

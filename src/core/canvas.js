@@ -51,7 +51,6 @@ export class Canvas extends Node{
     this.children.forEach(child=>{
       child.preview(rootDiv)
     })
-    //this.render()
     return rootDiv.innerHTML
 
   }

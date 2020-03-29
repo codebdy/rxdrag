@@ -13,18 +13,18 @@
                  :selected="true">
                 <OptionBox v-model="options" :breakPoint = "breakPoint"></OptionBox>
             </tab>
-            <tab :name="$t('widgets.code')"
-                 :icon="'fas fa-code'">
-              <CodeBox v-model="code"></CodeBox>
-            </tab>
-            <tab :name="$t('widgets.anmation')"
-                 :icon="'fab fa-windows'">
-              <h1>动画，暂不实现</h1>
-            </tab>
             <tab :name="$t('widgets.style')"
                  :icon="'fab fa-css3'">
               <StyleBox v-model="node"></StyleBox>
             </tab>
+            <tab :name="$t('widgets.code')"
+                 :icon="'fas fa-code'">
+              <CodeBox v-model="htmlCode"></CodeBox>
+            </tab>
+            <!--tab :name="$t('widgets.anmation')"
+                 :icon="'fab fa-windows'">
+              <h1>动画，暂不实现</h1>
+            </tab-->
           </WidgetTabs>
         </template>
         <template #bottom>
@@ -106,6 +106,7 @@ import nodesData from '../mock/nodes.js'
 //import toolbox from '../mock/toolbox.js'
 
 import {OptionsFactory} from './schemas/OptionsFactory'
+import {HtmlBeautify} from "./basic/HtmlBeautify"
 
 var optionsFactory = new OptionsFactory
 
@@ -136,7 +137,7 @@ export default {
       nodes:[],
       options:[],
       //optionOverview : {},
-      code:'<div></div>',
+      htmlCode:'',
       //styles:{},
       currentTheme:null,
       node:null,
@@ -300,6 +301,9 @@ export default {
       this.node = node
       this.pageId = pageId
       this.options = node ? optionsFactory.resolveOptions(node, this.breakPoint) : []
+      let beautify = new HtmlBeautify(node ? node.htmlCode : '', '  ')
+      this.htmlCode = beautify.result
+
     },
 
     resizeScreen(breakPoint){

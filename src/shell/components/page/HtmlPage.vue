@@ -169,7 +169,7 @@
 <script>
 import {IFrameCommandProxy} from "./IFrameCommandProxy"
 import {NodeTree} from "./NodeTree"
-import {HtmlBeautify} from "./HtmlBeautify"
+import {HtmlBeautify} from "../../basic/HtmlBeautify"
 
 export default {
   name: 'HtmlPage',

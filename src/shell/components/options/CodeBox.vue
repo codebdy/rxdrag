@@ -1,8 +1,6 @@
 <template>
   <div class="code-box">
-    <div class="code-editor" contenteditable="true">
-      {{inputValue}}
-    </div>
+    <textarea class="code-editor" v-model="inputValue"></textarea> 
   </div>
 </template>
 
@@ -49,6 +47,10 @@ export default {
     background: rgba(0,0,0, 0.15);
     padding: 5px;
     font-size: 12px;
+    resize: none;
+    color:#75b325;
+    outline: 0;
+    border:0;
   }
 
 </style>

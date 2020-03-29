@@ -246,11 +246,18 @@ export class RXEditor{
 
   nodeStateChanged(node, oldState, newState){
     if(newState === node.focusState && node.focusState !== node.normalState){
+      node.htmlCode = this.getNodeHtml(node)
       this.commandProxy.focusNode(node, this.pageId)
     }
     if(oldState === node.focusState && newState !== node.focusState){
       this.commandProxy.unFocusNode(node)
     }
+  }
+
+  getNodeHtml(node){
+    let div = document.createElement('div')
+    node.preview(div)
+    return div.innerHTML;
   }
 
   changeCanvasState(state){
