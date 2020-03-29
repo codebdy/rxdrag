@@ -48,30 +48,46 @@
         </div>
         <div class="icon-button"
           :class = "state.showMarginX ?'active' :'' "
+          :title="$t('page-toolbar.margin-x')"
+          @click = "marginXClick"
         >
           <i class="fas fa-arrows-alt-h"></i>
         </div>
         <div class="icon-button"
           :class = "state.showMarginY ?'active' :'' "
+          :title="$t('page-toolbar.margin-y')"
+          @click = "marginYClick"
         >
           <i class="fas fa-arrows-alt-v"></i>
         </div>
-        <div class="icon-button">
+        <div class="icon-button"
+          :title="$t('page-toolbar.preview')"
+        >
           <i class="fas fa-eye"></i>
         </div>
-        <div class="icon-button">
+        <div class="icon-button"
+          :title="$t('page-toolbar.code')"
+        >
           <i class="fas fa-code"></i>
         </div>
-        <div class="icon-button">
+        <div class="icon-button"
+          :title="$t('page-toolbar.undo')"
+        >
           <i class="fas fa-undo"></i>
         </div>
-        <div class="icon-button">
+        <div class="icon-button"
+          :title="$t('page-toolbar.redo')"
+        >
           <i class="fas fa-redo"></i>
         </div>
-        <div class="icon-button">
+        <div class="icon-button"
+          :title="$t('page-toolbar.clear-canvas')"
+        >
           <i class="fas fa-trash-alt"></i>
         </div>
-        <div class="icon-button">
+        <div class="icon-button"
+          :title="$t('page-toolbar.settings')"
+        >
           <i class="fas fa-cog"></i>
         </div>
       </div>
@@ -198,6 +214,16 @@ export default {
 
     outlineClick(){
       this.state.showOutline = !this.state.showOutline
+      this.commandProxy.changeCanvasState(this.state)
+    },
+
+    marginXClick(){
+      this.state.showMarginX = !this.state.showMarginX
+      this.commandProxy.changeCanvasState(this.state)
+    },
+
+    marginYClick(){
+      this.state.showMarginY = !this.state.showMarginY
       this.commandProxy.changeCanvasState(this.state)
     },
 

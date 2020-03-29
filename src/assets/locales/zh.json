@@ -10,7 +10,15 @@
   },
 
   "page-toolbar" :{
-    "outline":"边框"
+    "outline":"边框",
+    "margin-x" : "水平边距",
+    "margin-y" : "垂直边距",
+    "preview" : "预览",
+    "code" : "源代码",
+    "undo" : "撤销",
+    "redo" : "重做",
+    "clear-canvas" : "清空画布",
+    "settings" : "设置"
   },
 
   "widgets":{

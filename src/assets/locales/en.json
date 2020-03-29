@@ -10,7 +10,15 @@
   },
 
   "page-toolbar" :{
-    "outline":"Outline"
+    "outline":"Outline",
+    "margin-x" : "Horizontal Margin",
+    "margin-y" : "Vertical Margin",
+    "preview" : "Preview",
+    "code" : "Source Code",
+    "undo" : "Undo",
+    "redo" : "Redo",
+    "clear-canvas" : "Clear Canvas",
+    "settings" : "Settings"
   },
 
   "widgets":{
