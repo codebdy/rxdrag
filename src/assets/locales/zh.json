@@ -9,6 +9,10 @@
     "github" : "Github"
   },
 
+  "page-toolbar" :{
+    "outline":"边框"
+  },
+
   "widgets":{
     "studio" : "组件",
     "files" : "文件",

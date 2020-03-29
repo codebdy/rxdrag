@@ -196,7 +196,7 @@ export default {
   }
 
   .vular-studio .page-toolbar .icon-button:hover{
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.3);
   }
 
   .vular-studio .page-toolbar .icon-button.active{

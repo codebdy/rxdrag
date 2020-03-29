@@ -40,7 +40,10 @@
       </div>
       <div class="center"></div>
       <div class="right">
-        <div class="icon-button">
+        <div class="icon-button" 
+          :class = "state.showOutline ?'active' :'' "
+          :title="$t('page-toolbar.outline')"
+          @click="outlineClick">
           <i class="far fa-square"></i>
         </div>
         <div class="icon-button">
@@ -118,6 +121,10 @@ export default {
       html:'',
       nodeTree: new NodeTree,
       focusNode : null,
+      state:{
+        showOutline: true,
+        showEditMargin: true,
+      }
     }
   },
   computed:{
@@ -182,15 +189,21 @@ export default {
       this.size = size
     },
 
+    outlineClick(){
+      this.state.showOutline = !this.state.showOutline
+      this.commandProxy.changeCanvasState(this.state)
+    },
+
     draggingFromToolbox(item){
       if(this.actived){
         //console.log('send in HTMLPage', this.inputValue.title)
         this.commandProxy.draggingFromToolbox(item)
       }
     },
+
     onRxEditorReady(){
       //console.log(this._uid)
-      //console.log('onRxEditorReady:', this.inputValue.title)
+      this.commandProxy.changeCanvasState(this.state)
     },
 
     nodeChanged(node, pageId){

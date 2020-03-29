@@ -74,10 +74,10 @@ export function contains(node, array){
 
 export function tongleOnCondition(condition, node, array){
   if(condition){
-    array.add(node)
+    add(node, array)
   }
   else{
-    array.remove(node)
+    remove(node, array)
   }
 }
 
