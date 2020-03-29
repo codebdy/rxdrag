@@ -97,7 +97,8 @@ export class RXEditorCommandProxy{
       case 'changeTheme':
         this.serveForRXEditor.changeTheme(message.theme)
         break;
-      case 'focusNodeFromSchell':
+      case 'focusNodeFromShell':
+    console.log('proxy focusNodeFromShell')
         this.serveForRXEditor.focusNodeFromShell(message.node)
         break;
       case 'duplicateNodeFromShell':
