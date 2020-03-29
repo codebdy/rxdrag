@@ -15,7 +15,7 @@ export class RXEditorCommandProxy{
           id:node.id,
           ruleName:node.ruleName,
           meta:node.meta,
-          defaultMeta:node.defualtMeta,
+          defaultMeta:node.defaultMeta,
           optionsSchema:node.rule.optionsSchema,
         }
       })

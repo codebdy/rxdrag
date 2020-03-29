@@ -315,7 +315,6 @@ export default {
       this.options.forEach(optionGroup=>{
         optionGroup.fillBackValue(this.node)
       })
-      console.log('onOptionValueChange',this.pageId)
       $bus.$emit('shellChangedNode', this.node, this.pageId)
     },
 

@@ -12,13 +12,7 @@ export class RXNode extends Node{
   clone(){
     let copy = super.clone()
     copy.meta = JSON.parse(JSON.stringify(this.meta))
-    //copy.schema = JSON.parse(JSON.stringify(this.schema))
-    //copy.meta.tag = this.meta.tag
-    //copy.meta.innerHTML = this.meta.innerHTML
-
-    //this.addons.forEach((addon)=>{
-    //  addon.copyMeta(this.meta, copy.meta)
-    //})
+    copy.defaultMeta = JSON.parse(JSON.stringify(this.defaultMeta))
     copy.label = this.label
 
     return copy

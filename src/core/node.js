@@ -27,7 +27,7 @@ export class Node{
       attributes : {},
     }
 
-    this.defualtMeta = {
+    this.defaultMeta = {
       tag : 'div',
       classList : [],
       styles : {},
@@ -136,10 +136,10 @@ export class Node{
   }
 
   markDefaultMeta(){
-    this.defualtMeta.tag = this.meta.tag
-    this.defualtMeta.classList = this.meta.classList.concat()
-    this.defualtMeta.attributes = Object.assign({}, this.meta.attributes) 
-    this.defualtMeta.styles = Object.assign({}, this.meta.styles) 
+    this.defaultMeta.tag = this.meta.tag
+    this.defaultMeta.classList = this.meta.classList.concat()
+    this.defaultMeta.attributes = Object.assign({}, this.meta.attributes) 
+    this.defaultMeta.styles = Object.assign({}, this.meta.styles) 
   }
 
   changeToState(stateName){
