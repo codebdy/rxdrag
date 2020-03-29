@@ -27,6 +27,27 @@ export class RXEditorCommandProxy{
         id: node.id,
       })
     }
+
+    document.addEventListener('mouseup', (event)=>{
+      this.sendMessage({
+        name: 'canvasMouseup',
+      })
+    })
+
+    document.addEventListener('mousemove', (event)=>{
+      this.canvasMouseMove(event)
+    })
+
+  }
+
+  canvasMouseMove(event){
+    this.sendMessage({
+      name: 'canvasMouseMove',
+      event: {
+        screenX: event.screenX,
+        screenY: event.screenY,
+      },
+    })
   }
 
   rxeditorReady(){

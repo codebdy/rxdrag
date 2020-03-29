@@ -65,6 +65,7 @@ export class Node{
     this.mousemove = (event)=>{
       event.stopPropagation()
       this.state.onMousemove(event)
+      rxEditor.canvasMouseMove(event)
     }
     this.mouseover = (event)=>{
       event.stopPropagation()
@@ -357,11 +358,11 @@ export class Node{
       classList:classList,
       attributes: Object.assign({}, this.state.attributes),
       on:{
-        onmousemove:this.mousemove,
-        onmouseover:this.mouseover,
-        onmouseout:this.mouseout,
+        mousemove:this.mousemove,
+        mouseover:this.mouseover,
+        mouseout:this.mouseout,
         //onmouseup:this.mouseup,
-        onclick:this.onclick,
+        click:this.onclick,
       }
     }
   }

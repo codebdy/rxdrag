@@ -315,4 +315,8 @@ export class RXEditor{
     let node = this.canvas.getNodeById(id)
     this.commandManager.deleteNode(node)
   }
+
+  canvasMouseMove(event){
+    this.commandProxy.canvasMouseMove(event)
+  }
 }

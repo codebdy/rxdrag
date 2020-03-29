@@ -33,6 +33,10 @@ export class TextNode{
     }
   }
 
+  preview(){
+    
+  }
+
   renderMouseFollower(parentDomElement){
     let mouseFollower = document.createTextNode(this.text)
     parentDomElement.appendChild(mouseFollower)
@@ -56,6 +60,8 @@ export class TextNode{
   draggedToFoused(){}
 
   focusNode(){}
+
+  allToNormalState(){}
 
   toTreeViewNode(){
     return null

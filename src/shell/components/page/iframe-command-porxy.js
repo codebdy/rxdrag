@@ -121,6 +121,12 @@ export class IFrameCommandProxy{
       case 'saveCodeFiles':
         $bus.$emit('saveCodeFiles', message.innerHTML)
         break;
+      case 'canvasMouseup':
+        $bus.$emit('canvasMouseup', message.event)
+        break;
+      case 'canvasMouseMove':
+        $bus.$emit('canvasMouseMove', message.event)
+        break;
     }
 
     $bus.$emit('canvasHeight', message.canvasHeight, message.pageId)
