@@ -212,9 +212,7 @@ export class RXEditor{
         command.finish()
       }
     }
-    
-    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty()
-  }
+}
 
   endDragFromToolbox(){
     this.commandManager.finishMoving()

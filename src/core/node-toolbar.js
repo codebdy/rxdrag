@@ -49,6 +49,7 @@ export class NodeToolbar extends RXComponent{
     })
 
     this.editButton.domOn('mouseup',(event)=>{
+      //move cusor to end
       let el = rxEditor.focusedNode.view.$dom
       let sel = window.getSelection();
       sel.collapse(el, 1);

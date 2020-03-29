@@ -15,6 +15,13 @@
   background-color: #606060;
 }
 
+body.one-element-dragged{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .rx-_-char-node{
   -webkit-user-select: none;
   -moz-user-select: none;
