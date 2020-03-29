@@ -326,10 +326,6 @@ export class RXEditor{
   }
 
   loadHtml(html){
-    this.canvas.children = this.nodeParser.parse(html)
-    this.canvas.children.forEach(child=>{
-      child.parent = this.canvas
-    })
-    this.render()
+    this.commandManager.loadNodeHtml(this.canvas, html)
   }
 }

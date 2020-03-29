@@ -271,6 +271,27 @@ class CommandTextEdit{
   }
 }
 
+class CommandLoadHtml{
+  constructor(node, newHtml) {
+    this.node = node
+    this.oldChildren = this.node.children
+    this.node.children = rxEditor.nodeParser.parse(newHtml)
+    this.node.children.forEach(child=>{
+      child.parent = this.node
+    })
+    this.newChildren = this.node.children
+  }
+
+  excute(){
+    this.node.children = this.newChildren
+  }
+
+  undo(){
+    this.node.children = this.oldChildren
+  }
+}
+
+
 export class CommadManager{
   constructor() {
     this.undoCommands = []
@@ -315,6 +336,12 @@ export class CommadManager{
     this.finished(cmd)
     rxEditor.toolbar.hide()
     rxEditor.focusedLabel.hide()
+  }
+
+  loadNodeHtml(node, html){
+    let cmd = new CommandLoadHtml(node, html)
+    this.finished(cmd)
+    node.render()
   }
 
   startCommand(command){

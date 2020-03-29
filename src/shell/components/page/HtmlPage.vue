@@ -98,12 +98,12 @@
         >
           <i class="fas fa-trash-alt"></i>
         </div>
-        <div class="icon-button"
+        <!--div class="icon-button"
           v-if="!state.preview"
           :title="$t('page-toolbar.settings')"
         >
           <i class="fas fa-cog"></i>
-        </div>
+        </div-->
       </div>
     </div>
     <div class="page-content"
@@ -358,7 +358,7 @@ export default {
 
     onReplyHtmlCode(htmlCode){
       if(this.actived){
-        let beautify = new HtmlBeautify(htmlCode, '    ')
+        let beautify = new HtmlBeautify(htmlCode, '  ')
         this.htmlCode = beautify.result
       }
     },
