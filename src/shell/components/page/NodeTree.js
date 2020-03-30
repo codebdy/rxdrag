@@ -3,11 +3,15 @@ import {add, remove, first, last, insertBefore, insertAfter, contains, after, be
 class TreeNode{
   constructor(tree, schema){
     this.tree = tree
+    this.selected = false
+    this.opened = false
+    this.init(schema)
+  }
+
+  init(schema){
     this.schema = schema ? schema : {id:'', label:''}
     this.label = this.schema.label
     this.id = this.schema.id
-    this.selected = false
-    this.opened = false
     this.children = []
     if(schema){
       this.loadChildren(schema.children)
@@ -25,6 +29,7 @@ class TreeNode{
   }
 
   loadChildren(schemas){
+    this.children = []
     if(!schemas) return
 
     schemas.forEach((schema)=>{
@@ -33,6 +38,10 @@ class TreeNode{
   }
 
   excuteCommand(commandSchema){
+    if(commandSchema.command === 'loadCanvasNodes'){
+      this.tree.loadChildren(commandSchema.nodes)
+      return true
+    }
     if(commandSchema.command === 'new'
       && this.schema.id == commandSchema.parentId){
       let newNode = new TreeNode(this.tree, commandSchema.node)
@@ -53,6 +62,9 @@ class TreeNode{
       }
       if(commandSchema.command === 'change'){
         this.schema.tag = commandSchema.meta.tag
+      }
+      if(commandSchema.command === 'textEdit' || commandSchema.command === 'loadNode'){
+        this.init(commandSchema.node)
       }     
       return true
     }

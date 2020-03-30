@@ -261,13 +261,29 @@ class CommandTextEdit{
   } 
 
   excute(){
-    //this.node.meta.innerHTML = this.newInnerHtml
     this.node.children = this.newChildren
+    this.makeExcuteSchema()
   }
 
   undo(){
-    //this.node.meta.innerHTML = this.oldInnerHtml
     this.node.children = this.oldChildren
+    this.makeUndoSchema()
+  }
+
+  makeExcuteSchema(){
+    this.commandSchema = {
+      command : 'textEdit',
+      nodeId : this.node.id,
+      node : this.node.toTreeViewNode(),
+    }
+  }
+  
+  makeUndoSchema(){
+    this.commandSchema = {
+      command : 'textEdit',
+      nodeId : this.node.id,
+      node : this.node.toTreeViewNode(),
+    }
   }
 }
 
@@ -284,10 +300,26 @@ class CommandLoadCanvasHtml{
 
   excute(){
     this.node.children = this.newChildren
+    this.makeExcuteSchema()
   }
 
   undo(){
     this.node.children = this.oldChildren
+    this.makeUndoSchema()
+  }
+
+  makeExcuteSchema(){
+    this.commandSchema = {
+      command : 'loadCanvasNodes',
+      nodes : this.node.toTreeViewNode().children,
+    }
+  }
+  
+  makeUndoSchema(){
+    this.commandSchema = {
+      command : 'loadCanvasNodes',
+      nodes : this.node.toTreeViewNode().children,
+    }
   }
 }
 
@@ -306,22 +338,36 @@ class CommandLoadNodeHtml{
       })
       this.node.meta = newNode.meta
     }
-    //this.node.children = rxEditor.nodeParser.parse(newHtml)
-    //this.node.children.forEach(child=>{
-    //  child.parent = this.node
-    //})
-
+    this.newMeta = this.node.meta
     this.newChildren = this.node.children
   }
 
   excute(){
     this.node.children = this.newChildren
-    this.meta = this.newMeta
+    this.node.meta = this.newMeta
+    this.makeExcuteSchema()
   }
 
   undo(){
     this.node.children = this.oldChildren
-    this.meta = this.oldMeta
+    this.node.meta = this.oldMeta
+    this.makeUndoSchema()
+  }
+
+  makeExcuteSchema(){
+    this.commandSchema = {
+      command : 'loadNode',
+      nodeId : this.node.id,
+      node : this.node.toTreeViewNode(),
+    }
+  }
+  
+  makeUndoSchema(){
+    this.commandSchema = {
+      command : 'loadNode',
+      nodeId : this.node.id,
+      node : this.node.toTreeViewNode(),
+    }
   }
 }
 
@@ -373,11 +419,13 @@ export class CommadManager{
 
   loadNodeHtml(node, html){
     let cmd = new CommandLoadNodeHtml(node, html)
+    cmd.excute()
     this.finished(cmd)
   }
 
   loadCanvasHtml(html){
     let cmd = new CommandLoadCanvasHtml(html)
+    cmd.excute()
     this.finished(cmd)
   }
 
