@@ -323,6 +323,39 @@ class CommandLoadCanvasHtml{
   }
 }
 
+class CommandClearCanvas{
+  constructor() {
+    this.node = rxEditor.canvas
+    this.oldChildren = this.node.children
+    this.node.children = []
+    this.newChildren = this.node.children
+  }
+
+  excute(){
+    this.node.children = this.newChildren
+    this.makeExcuteSchema()
+  }
+
+  undo(){
+    this.node.children = this.oldChildren
+    this.makeUndoSchema()
+  }
+
+  makeExcuteSchema(){
+    this.commandSchema = {
+      command : 'loadCanvasNodes',
+      nodes : this.node.toTreeViewNode().children,
+    }
+  }
+  
+  makeUndoSchema(){
+    this.commandSchema = {
+      command : 'loadCanvasNodes',
+      nodes : this.node.toTreeViewNode().children,
+    }
+  }
+}
+
 class CommandLoadNodeHtml{
   constructor(node, newHtml) {
     this.node = node
@@ -429,6 +462,13 @@ export class CommadManager{
     this.finished(cmd)
   }
 
+  clearCanvas(){
+    let cmd = new CommandClearCanvas()
+    cmd.excute()
+    this.finished(cmd)
+  }
+
+
   startCommand(command){
     this.movingCommand = command
   }
@@ -476,11 +516,4 @@ export class CommadManager{
   submitChanged(command){
     this.onCommandsChanged(this.undoCommands.length > 0, this.redoCommands.length > 0, command.commandSchema)
   }
-
-  clear(){
-    this.undoCommands.length = 0
-    this.redoCommands.length = 0
-    this.onCommandsChanged(false, false, {command:'clear'})
-  }
-
 }

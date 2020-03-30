@@ -133,6 +133,7 @@
           :class = "{
             'disabled' : viewCode
           }"
+          @click = "clearCanvasClick"
         >
           <i class="fas fa-trash-alt"></i>
         </div>
@@ -314,6 +315,19 @@ export default {
       }
     },
 
+    undoClick(){
+      this.commandProxy.undo()
+    },
+
+    redoClick(){
+      this.commandProxy.redo()
+    },
+
+    clearCanvasClick(){
+      this.commandProxy.clearCanvas()
+    },
+
+
     draggingFromToolbox(item){
       if(this.actived){
         //console.log('send in HTMLPage', this.inputValue.title)
@@ -414,14 +428,6 @@ export default {
       if(this.focusNode && this.actived){
         this.commandProxy.loadHtml(html, this.focusNode.id)
       }
-    },
-
-    undoClick(){
-      this.commandProxy.undo()
-    },
-
-    redoClick(){
-      this.commandProxy.redo()
     },
 
     initFrame(){

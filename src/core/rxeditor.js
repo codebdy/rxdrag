@@ -297,8 +297,7 @@ export class RXEditor{
   //}
 
   clearCanvas(){
-    this.canvas.children.length = 0
-    this.commandManager.clear()
+    this.commandManager.clearCanvas()
     this.activedLabel.hide()
     this.focusedLabel.hide()
     this.toolbar.hide()
