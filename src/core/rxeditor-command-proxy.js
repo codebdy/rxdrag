@@ -136,7 +136,7 @@ export class RXEditorCommandProxy{
         })
         break;
       case 'loadHtml':
-        this.serveForRXEditor.loadHtml(message.html)
+        this.serveForRXEditor.loadHtml(message.html, message.id)
         break;
     }
   }

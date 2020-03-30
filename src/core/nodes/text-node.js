@@ -69,6 +69,8 @@ export class TextNode{
     return null
   }
 
+  getNodeById(){}
+
   charNodes(){
     let nodes = []
     for(var i = 0; i < this.text.length; i++){

@@ -102,9 +102,10 @@ export class IFrameCommandProxy{
     })
   }
 
-  loadHtml(html){
+  loadHtml(html, id = ''){
     this.sendMessageToRXEditor({
       name:'loadHtml',
+      id: id,
       html : html,
     })
   }

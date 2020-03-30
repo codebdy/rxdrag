@@ -271,9 +271,9 @@ class CommandTextEdit{
   }
 }
 
-class CommandLoadHtml{
-  constructor(node, newHtml) {
-    this.node = node
+class CommandLoadCanvasHtml{
+  constructor(newHtml) {
+    this.node = rxEditor.canvas
     this.oldChildren = this.node.children
     this.node.children = rxEditor.nodeParser.parse(newHtml)
     this.node.children.forEach(child=>{
@@ -291,6 +291,39 @@ class CommandLoadHtml{
   }
 }
 
+class CommandLoadNodeHtml{
+  constructor(node, newHtml) {
+    this.node = node
+    this.oldChildren = this.node.children
+    this.oldMeta = this.node.meta
+    this.node.children = []
+    let nodes = rxEditor.nodeParser.parse(newHtml)
+    if(nodes.length > 0){
+      let newNode = nodes[0]
+      newNode.children.forEach(child=>{
+        child.parent = this.node
+        this.node.children.push(child)
+      })
+      this.node.meta = newNode.meta
+    }
+    //this.node.children = rxEditor.nodeParser.parse(newHtml)
+    //this.node.children.forEach(child=>{
+    //  child.parent = this.node
+    //})
+
+    this.newChildren = this.node.children
+  }
+
+  excute(){
+    this.node.children = this.newChildren
+    this.meta = this.newMeta
+  }
+
+  undo(){
+    this.node.children = this.oldChildren
+    this.meta = this.oldMeta
+  }
+}
 
 export class CommadManager{
   constructor() {
@@ -339,9 +372,13 @@ export class CommadManager{
   }
 
   loadNodeHtml(node, html){
-    let cmd = new CommandLoadHtml(node, html)
+    let cmd = new CommandLoadNodeHtml(node, html)
     this.finished(cmd)
-    node.render()
+  }
+
+  loadCanvasHtml(html){
+    let cmd = new CommandLoadCanvasHtml(html)
+    this.finished(cmd)
   }
 
   startCommand(command){

@@ -1,6 +1,10 @@
 <template>
   <div class="code-box">
-    <textarea class="code-editor" v-model="inputValue"></textarea> 
+    <textarea class="code-editor" 
+      v-model="inputValue"
+      @focus = "onFocus"
+      @blur = "onBlur"
+    ></textarea> 
   </div>
 </template>
 
@@ -24,9 +28,20 @@ export default {
   },
   data () {
     return {
+      isChanged:false,
+      oldHtml : '',
     }
   },
   methods: {
+    onFocus(){
+      this.oldHtml = this.inputValue
+    },
+
+    onBlur(){
+      if(this.inputValue != this.oldHtml){
+        $bus.$emit('nodeHtmlChanged', this.inputValue)
+      }
+    }
   },
 }
 </script>

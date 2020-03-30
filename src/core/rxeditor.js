@@ -332,7 +332,15 @@ export class RXEditor{
     return this.canvas.generateHTML()
   }
 
-  loadHtml(html){
-    this.commandManager.loadNodeHtml(this.canvas, html)
+  loadHtml(html, id){
+    let node = this.canvas.getNodeById(id)
+    if(node){
+      this.commandManager.loadNodeHtml(node, html)
+    }
+    else{
+      this.commandManager.loadCanvasHtml(html)
+    }
+
+    this.render()
   }
 }

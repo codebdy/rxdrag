@@ -158,7 +158,7 @@
           ref ="canvasFrame"
         ></iframe>
       </div>
-      <textarea class="code-eidtor"
+      <textarea class="code-editor"
         v-show = "viewCode"
         v-model = "htmlCode"
       ></textarea>
@@ -195,6 +195,7 @@ export default {
       //actived: false,
       canvasHeight: '100%',
       htmlCode:'',
+      oldHtmlCode:'',
       nodeTree: new NodeTree,
       focusNode : null,
       state:{
@@ -246,6 +247,7 @@ export default {
     $bus.$on('duplicateNode', this.onDuplicateNode)
     $bus.$on('removeNode', this.onRemoveNode)
     $bus.$on('replyHtmlCode', this.onReplyHtmlCode)
+    $bus.$on('nodeHtmlChanged', this.onNodeHtmlChanged)
 
     this.emitShellState()
   },
@@ -262,6 +264,7 @@ export default {
     $bus.$off('duplicateNode', this.onDuplicateNode)
     $bus.$off('removeNode', this.onRemoveNode)
     $bus.$off('replyHtmlCode', this.onReplyHtmlCode)
+    $bus.$off('nodeHtmlChanged', this.onNodeHtmlChanged)
 
     window.removeEventListener("message", this.receiveCanvasMessage);
     document.removeEventListener('mouseup', this.onMouseUp)
@@ -301,8 +304,9 @@ export default {
         this.commandProxy.requestHtmlCode()
       }
       else{
-        this.commandProxy.loadHtml(this.htmlCode)
-        //console.log(this.$refs.htmlCode.innerHTML)
+        if(this.oldHtmlCode != this.htmlCode){
+          this.commandProxy.loadHtml(this.htmlCode)
+        }
       }
     },
 
@@ -367,8 +371,8 @@ export default {
       if(pageId !== this.pageId){
         return
       }
-      if(this.focuseNode && this.focuseNode.id === id){
-        this.focuseNode = null
+      if(this.focusNode && this.focusNode.id === id){
+        this.focusNode = null
       }
       this.nodeTree.unSelectNode(id)
       $bus.$emit('editNode', null)
@@ -396,6 +400,13 @@ export default {
       if(this.actived){
         let beautify = new HtmlBeautify(htmlCode, '  ')
         this.htmlCode = beautify.result
+        this.oldHtmlCode = this.htmlCode
+      }
+    },
+
+    onNodeHtmlChanged(html){
+      if(this.focusNode && this.actived){
+        this.commandProxy.loadHtml(html, this.focusNode.id)
       }
     },
 
@@ -478,7 +489,7 @@ export default {
     border:0;
   }
 
-  .code-eidtor{
+  .code-editor{
     width: calc(100% - 20px);
     background: #272727;
     height: calc(100% - 26px);
