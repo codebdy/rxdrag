@@ -111,8 +111,9 @@
           v-if="!state.preview"
           :title="$t('page-toolbar.undo')"
           :class = "{
-            'disabled' : viewCode
+            'disabled' : viewCode || !canUndo
           }"
+          @click = "undoClick"
         >
           <i class="fas fa-undo"></i>
         </div>
@@ -120,8 +121,9 @@
           v-if="!state.preview"
           :title="$t('page-toolbar.redo')"
           :class = "{
-            'disabled' : viewCode
+            'disabled' : viewCode || !canRedo
           }"
+          @click = "redoClick"
         >
           <i class="fas fa-redo"></i>
         </div>
@@ -191,22 +193,24 @@ export default {
   data () {
     return {
       //content:`<div class="container"></div>`,
-      commandProxy: new IFrameCommandProxy(this._uid),
+      commandProxy : new IFrameCommandProxy(this._uid),
       //actived: false,
-      canvasHeight: '100%',
-      htmlCode:'',
-      oldHtmlCode:'',
-      nodeTree: new NodeTree,
+      canvasHeight : '100%',
+      htmlCode :'',
+      oldHtmlCode :'',
+      nodeTree : new NodeTree,
       focusNode : null,
       state:{
-        showOutline: true,
-        showEditMargin: true,
-        showMarginX:true,
-        showMarginY:true,
-        screenWidth:'md',
-        preview: false,
+        showOutline : true,
+        showEditMargin : true,
+        showMarginX : true,
+        showMarginY : true,
+        screenWidth : 'md',
+        preview : false,
       },
       viewCode : false,
+      canUndo : false,
+      canRedo : false,
     }
   },
   computed:{
@@ -352,6 +356,8 @@ export default {
         return
       }
 
+      this.canUndo = canUndo
+      this.canRedo = canRedo
       this.nodeTree.excuteCommand(commandSchema)
 
       $bus.$emit('showNodeTree', this.nodeTree.children)
@@ -408,6 +414,14 @@ export default {
       if(this.focusNode && this.actived){
         this.commandProxy.loadHtml(html, this.focusNode.id)
       }
+    },
+
+    undoClick(){
+      this.commandProxy.undo()
+    },
+
+    redoClick(){
+      this.commandProxy.redo()
     },
 
     initFrame(){
