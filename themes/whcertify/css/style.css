@@ -1,6 +1,5 @@
 body{
   font-size: 14px;
-  font-family: SourceHanSansCN-Medium, "Microsoft YaHei";
 }
 
 .main-logo{
@@ -71,20 +70,10 @@ body{
   background: #22252a;
 }
 
-.nav-link svg{
-  height: 16px;
-  width: 16px;
-  margin-bottom: 3px;
-}
-
 @media (min-width: 992px) {
   .page-on-scroll .navbar{
     background: #22252a;
     height: 60px;
-  }
-
-  .nav-item{
-    margin-left: 30px;
   }
 }
 

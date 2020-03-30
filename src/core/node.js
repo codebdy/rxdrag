@@ -345,7 +345,7 @@ export class Node{
 
   toViewModel(){
     let classList = []
-    add('element', classList);
+    //add('element', classList);
     classList.push.apply(classList, rxEditor.optionClasses)
     //classList.push.apply(classList, this.meta.baseClass)
     classList.push.apply(classList, this.state.classList)
