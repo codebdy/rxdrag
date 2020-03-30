@@ -151,6 +151,7 @@ export class Node{
   }
 
   preview(parentDomElement){
+    console.log('node preview')
     let dom = this.view.preview(this.toPreviewModel(), parentDomElement)
     this.children.forEach((child)=>{  
       child.preview(dom)

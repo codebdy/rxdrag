@@ -23,6 +23,13 @@ export class Canvas extends Node{
     return this.parentViewDomElement
   }
 
+  preview(parentDomElement){
+    if(parentDomElement.contains(this.view.$dom)){
+      parentDomElement.removeChild(this.view.$dom)
+    }
+    return super.preview(parentDomElement)
+  }
+
   toViewModel(){
     let model = super.toViewModel()
     model.tag = 'div'

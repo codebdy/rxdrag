@@ -135,7 +135,7 @@ export class RXEditor{
 
   preview(){
     this.allToNormalState()
-    this.previewDom = this.canvas.preview(this.workspace)
+    this.canvas.preview(this.workspace)
   }
 
   clearDraggedoverStates(){
