@@ -19,36 +19,38 @@
 </head>
 
 <body id="page-top">
-
-  <nav class="navbar navbar-expand-lg fixed-top navbar-dark" id="mainNav">
-    <div class="container">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+    <div class="container navbar-content">
       <a class="navbar-brand main-logo" href="#page-top">
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="layer-group" class="svg-inline--fa fa-layer-group fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M12.41 148.02l232.94 105.67c6.8 3.09 14.49 3.09 21.29 0l232.94-105.67c16.55-7.51 16.55-32.52 0-40.03L266.65 2.31a25.607 25.607 0 0 0-21.29 0L12.41 107.98c-16.55 7.51-16.55 32.53 0 40.04zm487.18 88.28l-58.09-26.33-161.64 73.27c-7.56 3.43-15.59 5.17-23.86 5.17s-16.29-1.74-23.86-5.17L70.51 209.97l-58.1 26.33c-16.55 7.5-16.55 32.5 0 40l232.94 105.59c6.8 3.08 14.49 3.08 21.29 0L499.59 276.3c16.55-7.5 16.55-32.5 0-40zm0 127.8l-57.87-26.23-161.86 73.37c-7.56 3.43-15.59 5.17-23.86 5.17s-16.29-1.74-23.86-5.17L70.29 337.87 12.41 364.1c-16.55 7.5-16.55 32.5 0 40l232.94 105.59c6.8 3.08 14.49 3.08 21.29 0L499.59 404.1c16.55-7.5 16.55-32.5 0-40z"></path></svg> Vular <span>·</span> 秀
       </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        菜单
-        <i class="fas fa-bars"></i>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">博客</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">Studio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">联系我们</a>
-          </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#about">博客</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#about">Studio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#contact">联系我们</a>
+              </li>
         </ul>
       </div>
     </div>
-  </nav>
+  </nav>    
+
   <section class="header">
     <div class="container">
       <div class="row">
         <div class="col-md-6 banner-text-box pr-5">
-          <h1>BootStrap的 可视化编辑工具</h1>
+          <h1 class="display-3">RXEditor Studio</h1>
+          <h3 class="mt-3">一个在线的，可视化的，HTML编辑工具，基于Bootstrap实现，永久开源。</h3>
+          <div class="mt-4 pb-5"><a class="btn btn-primary btn-lg" href="#"><svg width="26px" height="26px" style="padding-bottom:3px;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-right" class="svg-inline--fa fa-caret-right fa-w-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"><path fill="currentColor" d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"></path></svg> 马上使用</a></div>
         </div>
         <div class="col-md-6 movie-image-box">
           <img src="images/home.gif" />
@@ -56,7 +58,24 @@
       </div>
     </div>
   </section>
-
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col text-center">
+        <h2>RXEditor家族</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h3>RXEditor Studio</h3>
+      </div>
+      <div class="col-md-4">
+        <h3>RXEditor</h3>
+      </div>
+      <div class="col-md-4">
+        
+      </div>
+    </div>
+  </div>
   <!-- Services -->
   <section class="page-section" id="services">
   </section>
@@ -65,9 +84,9 @@
   <footer class="footer">
   </footer>
 
-  <!-- Portfolio Modals -->
-
-
+  <script src="../../vendor/jquery/jquery-3.4.1.min.js"></script>
+  <script src="../../vendor/bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/custom.js"></script>
 </body>
 
 </html>
