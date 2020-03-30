@@ -68,11 +68,20 @@ body{
 
 .page-on-scroll .navbar{
   background: #22252a;
-  height: 60px;
+}
+
+@media (min-width: 992px) {
+  .page-on-scroll .navbar{
+    background: #22252a;
+    height: 60px;
+  }
 }
 
 @media (max-width: 991px) {
-  .page-on-scroll .navbar-content{
-    margin-top: -15px;
+
+  .navbar-collapse{
+    background: #22252a;
+    padding-bottom: 10px;
   }
+
 }
