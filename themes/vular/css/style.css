@@ -1,0 +1,58 @@
+body{
+  font-size: 14px;
+}
+
+.main-logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-logo span{
+  font-size:36px;
+  padding: 5px;
+}
+
+.main-logo svg{
+  width: 22px;
+  height: 22px;
+  color: #fff;
+  margin-right:5px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color:#fff;
+  font-size: 14px;
+}
+
+.header{
+  background-image: url(../images/header_bg.jpg);
+  background-size: cover;
+  background-position: center;
+  animation-duration: 750ms;
+  animation-delay: 300ms;
+  animation-fill-mode: forwards;
+  opacity: 1;
+  width: 100%;
+  height:800px;
+  clip-path: polygon(0 0,100% 0,100% 85%,0 100%);
+  -webkit-clip-path: polygon(0 0,100% 0,100% 85%,0 100%);
+  /*box-shadow: inset 0 0 40px 20px rgba(0,0,0,.4);*/
+  padding-top:160px;
+  color:#fff;
+}
+
+.banner-text-box{
+  display: flex;
+  align-items: center;
+}
+
+.movie-image-box{
+  background: #fff;
+  padding:10px;
+  border-radius: 5px;
+}
+
+.movie-image-box img{
+  width: 100%;
+}
