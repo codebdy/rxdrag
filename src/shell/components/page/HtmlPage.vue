@@ -329,7 +329,7 @@ export default {
     },
 
     onCanvasHeight(height, pageId){
-      if(pageId === this.pageId){
+      if(pageId === this.pageId && !this.state.preview){
         this.canvasHeight = height + 'px'
       }
     },
