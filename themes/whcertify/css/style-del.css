@@ -1,0 +1,117 @@
+body{
+  font-size: 14px;
+  font-family: SourceHanSansCN-Medium, "Microsoft YaHei";
+}
+
+.main-logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-logo span{
+  font-size:36px;
+  padding: 5px;
+}
+
+.main-logo svg{
+  width: 22px;
+  height: 22px;
+  color: #fff;
+  margin-right:5px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color:#fff;
+  font-size: 14px;
+}
+
+.header{
+  background-image: url(../images/banner4.jpg);
+  background-size: cover;
+  background-position: center;
+  animation-duration: 750ms;
+  animation-delay: 300ms;
+  animation-fill-mode: forwards;
+  opacity: 1;
+  width: 100%;
+  clip-path: polygon(0 0,100% 0,100% 85%,0 100%);
+  -webkit-clip-path: polygon(0 0,100% 0,100% 85%,0 100%);
+  /*box-shadow: inset 0 0 40px 20px rgba(0,0,0,.4);*/
+  padding-top:160px;
+  padding-bottom: 160px;
+  color:#fff;
+  position: relative;
+}
+
+
+.header .mask{
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0, 0.5)
+}
+.banner-text-box{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.banner-text-box h1{
+  margin:0;
+}
+
+.banner-text-box h3{
+  line-height: 50px;
+}
+
+.movie-image-box{
+  background: #fff;
+  padding:10px;
+  border-radius: 5px;
+}
+
+.movie-image-box img{
+  width: 100%;
+}
+
+.page-on-scroll .navbar{
+  background: #22252a;
+}
+
+.nav-link svg{
+  height: 16px;
+  width: 16px;
+  margin-bottom: 3px;
+}
+
+@media (min-width: 992px) {
+  .page-on-scroll .navbar{
+    background: #22252a;
+    height: 60px;
+  }
+
+  .nav-item{
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+
+  .navbar-collapse{
+    background: #22252a;
+    padding-bottom: 10px;
+  }
+
+}
+
+.footer{
+  background: #272a2e;
+  color: #777;
+}
+
+.footer a{
+  color: #777;
+}

@@ -253,8 +253,6 @@ class CommandTextEdit{
   }
 
   finish(){
-    //console.log(this.node.view.$dom.innerHTML)
-    //this.newInnerHtml = this.node.view.$dom.innerHTML
     this.node.children = rxEditor.nodeParser.parse(this.node.view.$dom.innerHTML)
 
     this.node.children.forEach(child=>{

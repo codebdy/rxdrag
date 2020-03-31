@@ -1,7 +1,7 @@
 export default{
   label:'column',
   dropInMargin : 10,
-  //显示空白
+  editable: true,
   editMarginStyle : {
     paddingX:'20px',
     paddingY:'20px',

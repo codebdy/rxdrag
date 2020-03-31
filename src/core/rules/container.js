@@ -1,6 +1,6 @@
 export default {
   dropInMargin : 10,
-  //显示空白
+  editable: false,
   editMarginStyle : {
     paddingX:'30px',
     paddingY:'30px',
