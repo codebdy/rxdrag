@@ -1,5 +1,64 @@
 [
   {
+    "title" : "模块",
+    "smallTitle" : "主题",
+    "items":[
+      {
+        "title":"特色服务",
+        "code":"<div class='container'></div>"
+      },
+      {
+        "title":"团队",
+        "code":"<div class='row'></div>"
+      }
+    ]
+  },
+  {
+    "title" : "导航栏",
+    "smallTitle" : "通用",
+    "items":[
+      {
+        "title":"两行导航栏",
+        "code":"<div class='container'></div>"
+      },
+      {
+        "title":"单行导航栏",
+        "code":"<div class='row'></div>"
+      }
+    ]
+  },
+
+  {
+    "title" : "布局",
+    "smallTitle" : "通用",
+    "items":[
+      {
+        "title":"4:4:3",
+        "code":"<div class='container'></div>"
+      },
+      {
+        "title":"3:3:3",
+        "code":"<div class='row'></div>"
+      }
+    ]
+  },
+
+  {
+    "title" : "组件",
+    "smallTitle" : "通用",
+    "items":[
+      {
+        "title":"回到顶部",
+        "code":"<div class='container'></div>"
+      },
+      {
+        "title":"在线联络",
+        "code":"<div class='row'></div>"
+      }
+    ]
+  },
+
+  {
     "title" : "栅格",
     "smallTitle" : "Bootstrap 4",
     "items":[
