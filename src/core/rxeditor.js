@@ -115,8 +115,10 @@ export class RXEditor{
     this.state.watch('preview', (state)=>{
       if(state.preview){
         this.preview()
+        this.render()
       }
       else {
+        this.allToNormalState()
         this.render()
       }
     })
@@ -134,8 +136,8 @@ export class RXEditor{
   }
 
   preview(){
-    this.allToNormalState()
-    this.previewDom = this.canvas.preview(this.workspace)
+    //this.allToNormalState()
+    this.previewDom = this.canvas.preview(/*this.workspace*/)
   }
 
   clearDraggedoverStates(){
@@ -256,7 +258,7 @@ export class RXEditor{
 
   getNodeHtml(node){
     let div = document.createElement('div')
-    node.preview(div)
+    node.renderHtml(div)
     return div.innerHTML;
   }
 

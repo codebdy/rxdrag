@@ -17,7 +17,7 @@ export class NodeView{
     }
   }
 
-  preview(model, parentDoment){
+  renderHtml(model, parentDoment){
     //this.putDown(parentDoment)//防止canvas内节点重复添加
     let previewDom = document.createElement(model.tag)
     this.doRender(model, parentDoment, previewDom)

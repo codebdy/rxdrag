@@ -247,6 +247,14 @@ class CommandTextEdit{
     this.node = node
     //this.oldInnerHtml = this.node.view.$dom.innerHTML
     this.oldChildren = this.node.children
+
+    let div = document.createElement('div')
+
+    this.node.children.forEach(chilid=>{
+      chilid.preview(div)
+    })
+    //this.node.children = []
+    this.node.view.$dom.innerHTML = div.innerHTML
   }
 
   finish(){

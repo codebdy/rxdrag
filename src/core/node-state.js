@@ -3,7 +3,7 @@ export class NodeState {
     this.node = node
     this.classList = []
     this.styles = {}
-    this.attributes = {contenteditable:'false'}
+    this.attributes = {/*contenteditable:'false'*/}
     this.onMousemove = ()=>{/*console.log('mouse move NodeState')*/};
     this.onBegindrag = ()=>{};
     this.onMouseover = (event)=>{};
@@ -17,6 +17,43 @@ export class NodeState {
     }
   }
 
+  stateModel(){
+    let classList = []
+    classList.push.apply(classList, this.classList)
+   
+    let model = {
+      styles:Object.assign({}, this.styles),
+      classList:classList,
+      attributes: Object.assign({}, this.attributes),
+    }
+
+    this.addtionToModel(model)
+    return model
+  }
+
+  addtionToModel(model){
+    model.classList.push.apply(model.classList, rxEditor.optionClasses)
+    let node = this.node
+    if((rxEditor.state.showMarginX && node.rule.editMarginStyle)
+      || node.children.length === 0
+      ){
+      model.styles['padding-left'] = node.rule.editMarginStyle ? node.rule.editMarginStyle.paddingX : 0
+      model.styles['padding-right'] = node.rule.editMarginStyle ? node.rule.editMarginStyle.paddingX : 0
+    }
+    if((rxEditor.state.showMarginY && node.rule.editMarginStyle)
+      || node.children.length === 0
+      ){
+      model.styles['padding-top'] = node.rule.editMarginStyle ? node.rule.editMarginStyle.paddingY : 0
+      model.styles['padding-bottom'] = node.rule.editMarginStyle ? node.rule.editMarginStyle.paddingY : 0
+    }
+
+    //添加for后，编辑时无法选中
+    if(model.attributes.for){
+      model.attributes.for = ''
+    }
+
+    return model
+  }
 
   judgePosition(event){
     let draggedNode = rxEditor.commandManager.movingCommand.node
@@ -279,5 +316,16 @@ export class EditState extends FocusState{
       rxEditor.commandManager.finishEditText()
       this.node.render()
     }
+  }
+}
+
+export class PreviewState extends NodeState{
+  constructor(node) {
+    super(node)
+    this.onClick = ()=>{};
+  }
+
+  addtionToModel(model){
+    return model
   }
 }

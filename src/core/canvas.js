@@ -13,7 +13,7 @@ export class Canvas extends Node{
     this.rule = {dropInMargin : 0}
     //this.rule.heightDropMargin = 0
     //this.rule.widthDropMargin = 0
-    this.rule.dropMargin = 0;
+    //this.rule.dropMargin = 0;
     this.rule.acceptedChildren=''
     this.rule.rejectChildren = ['col','thead', 'tbody', 
                            'th', 'tr', 'td']
@@ -23,12 +23,12 @@ export class Canvas extends Node{
     return this.parentViewDomElement
   }
 
-  preview(parentDomElement){
+  /*preview(parentDomElement){
     if(parentDomElement.contains(this.view.$dom)){
       parentDomElement.removeChild(this.view.$dom)
     }
     return super.preview(parentDomElement)
-  }
+  }*/
 
   toViewModel(){
     let model = super.toViewModel()
@@ -56,7 +56,7 @@ export class Canvas extends Node{
   generateHTML(){
     let rootDiv = document.createElement('div')
     this.children.forEach(child=>{
-      child.preview(rootDiv)
+      child.renderHtml(rootDiv)
     })
     return rootDiv.innerHTML
 

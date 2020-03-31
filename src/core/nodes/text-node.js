@@ -33,11 +33,12 @@ export class TextNode{
     }
   }
 
-  preview(parentDomElement){
+  renderHtml(parentDomElement){
     if(parentDomElement){
       parentDomElement.appendChild(document.createTextNode(this.text))
     }
   }
+
 
   renderMouseFollower(parentDomElement){
     let mouseFollower = document.createTextNode(this.text)
@@ -45,9 +46,9 @@ export class TextNode{
     return mouseFollower
   }
 
-  nodeChanged(){
+  preview(){}
 
-  }
+  nodeChanged(){}
 
   refreshState(){}
 

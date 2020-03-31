@@ -33,23 +33,6 @@ export class RXNode extends Node{
     let model = super.toViewModel()
     this.baseMetaToModel(model)
 
-    if((rxEditor.state.showMarginX && this.rule.editMarginStyle)
-      || this.children.length === 0
-      ){
-      model.styles['padding-left'] = this.rule.editMarginStyle.paddingX
-      model.styles['padding-right'] = this.rule.editMarginStyle.paddingX
-    }
-    if((rxEditor.state.showMarginY && this.rule.editMarginStyle)
-      || this.children.length === 0
-      ){
-      model.styles['padding-top'] = this.rule.editMarginStyle.paddingY
-      model.styles['padding-bottom'] = this.rule.editMarginStyle.paddingY
-    }
-
-    //添加for后，编辑时无法选中
-    if(model.attributes.for){
-      model.attributes.for = ''
-    }
 
     if(this.meta.innerHTML){
       model.innerHTML = this.meta.innerHTML
@@ -58,8 +41,8 @@ export class RXNode extends Node{
     return model
   }
 
-  toPreviewModel(){
-    let model = super.toPreviewModel()
+  toHtmlModel(){
+    let model = super.toHtmlModel()
     this.baseMetaToModel(model)
     return model
   }

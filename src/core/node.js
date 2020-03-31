@@ -1,6 +1,6 @@
 import {NodeView} from "./node-view"
 import {add, remove, first, last, insertBefore,insertAfter, contains, after, before} from "../basic/rxarray"
-import {NormalState, ActiveState, FocusState, DragoverState, DisableState, DraggedState, EditState} from "./node-state"
+import {NormalState, ActiveState, FocusState, DragoverState, DisableState, DraggedState, EditState, PreviewState} from "./node-state"
 
 function insterAfterDom(newElement,targetElement){
   var parent = targetElement.parentNode;
@@ -125,6 +125,7 @@ export class Node{
     this.draggedState = new DraggedState(this)
     this.disableState = new DisableState(this)
     this.editState = new EditState(this)
+    this.previewState = new PreviewState(this)
     this.state = this.normalState
   }
 
@@ -150,10 +151,10 @@ export class Node{
     })
   }
 
-  preview(parentDomElement){
-    let dom = this.view.preview(this.toPreviewModel(), parentDomElement)
+  renderHtml(parentDomElement){
+    let dom = this.view.renderHtml(this.toHtmlModel(), parentDomElement)
     this.children.forEach((child)=>{  
-      child.preview(dom)
+      child.renderHtml(dom)
     })
 
     parentDomElement.appendChild(dom)
@@ -344,31 +345,20 @@ export class Node{
   }
 
   toViewModel(){
-    let classList = []
-    //add('element', classList);
-    classList.push.apply(classList, rxEditor.optionClasses)
-    //classList.push.apply(classList, this.meta.baseClass)
-    classList.push.apply(classList, this.state.classList)
+    let model = this.state.stateModel()
 
-    let styles = {}
-
-    Object.assign(styles, this.state.styles)
-
-    return {
-      styles:styles,
-      classList:classList,
-      attributes: Object.assign({}, this.state.attributes),
-      on:{
-        onmousemove:this.mousemove,
-        onmouseover:this.mouseover,
-        onmouseout:this.mouseout,
-        //onmouseup:this.mouseup,
-        onclick:this.onclick,
-      }
+    model.on = {
+      onmousemove:this.mousemove,
+      onmouseover:this.mouseover,
+      onmouseout:this.mouseout,
+      //onmouseup:this.mouseup,
+      onclick:this.onclick,
     }
+
+    return model
   }
 
-  toPreviewModel(){
+  toHtmlModel(){
     return {      
       styles:{},
       classList:[],//new RXArray,
@@ -456,5 +446,12 @@ export class Node{
         return node
       }
     }
+  }
+
+  preview(){
+    this.changeToState('previewState')
+    this.children.forEach(child=>{
+      child.preview()
+    })
   }
 }
