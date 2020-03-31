@@ -132,7 +132,20 @@
       {
         "title":"列表组",
         "code":"<ul class=\"list-group\"><li class=\"list-group-item active\">Cras justo odio</li><li class=\"list-group-item disabled\">Dapibus ac facilisis in</li><li class=\"list-group-item action\">Morbi leo risus</li><li class=\"list-group-item action d-flex justify-content-between align-items-center\">Porta ac consectetur ac <span class=\"badge badge-primary badge-pill\">8</span></li><li class=\"list-group-item action\">Porta ac consectetur ac </li><li class=\"list-group-item action\">Vestibulum at eros</li></ul>"
+      },
+      {
+        "title":"导航栏",
+        "code":"<nav class=\"navbar navbar-expand-lg navbar-light\"><a class=\"navbar-brand\">Brand</a><button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse-175\"><span class=\"navbar-toggler-icon\"></span></button><div class=\"navbar-collapse collapse\" id=\"collapse-175\"><ul class=\"navbar-nav mr-auto\"><li class=\"nav-item\"><a class=\"nav-link active\" href=\"#\"><span>Home</span><span class=\"sr-only\">(current)</span></a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">Link</a></li><li class=\"dropdown nav-item\"><button class=\"btn dropdown-toggle\" type=\"button\" id=\"dropdown-button-187\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown button</button><div class=\"dropdown-menu\" aria-labelledby=\"dropdown-button-187\"><a class=\"dropdown-item\" href=\"#\">Action</a><a class=\"dropdown-item\" href=\"#\">Another action</a><a class=\"dropdown-item\" href=\"#\">Something else here</a></div></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">Disabled</a></li></ul><form class=\"form-inline my-2 my-lg-0\"><input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"search\"><button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button></form></div></nav>"
+      },
+      {
+        "title":"分页",
+        "code":"<nav><ul class=\"pagination\"><li class=\"page-item disabled\"><span class=\"page-link\">Previous</span></li><li class=\"page-item\"><a class=\"page-link\" href=\"#\">1</a></li><li class=\"page-item active\"><span class=\"page-link\">2<span class=\"sr-only\">(current)</span></span></li><li class=\"page-item\"><a class=\"page-link\" href=\"#\">3</a></li><li class=\"page-item\"><a class=\"page-link\" href=\"#\">Next</a></li></ul></nav>"
+      },
+      {
+        "title":"进度条",
+        "code":"<div class=\"progress\"><div class=\"progress-bar w-75\" role=\"progressbar\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>"
       }
+
     ]
   },
   {
@@ -140,23 +153,52 @@
     "smallTitle" : "Bootstrap 4",
     "items":[
       {
-        "title":"图像",
-        "code":"<img/>"
+        "title":"表单",
+        "code":"<form></form>"
       },
       {
-        "title":"图标",
-        "code":"<i class=\"fa fa-star\"></i>"
+        "title":"控件组",
+        "code":"<div class=\"form-group\"></div>"
       },
       {
-        "title":"轮播",
+        "title":"输入框组",
+        "code":"<div class=\"form-group\"><label for=\"groupInput216\">Label</label><input class=\"form-control\" id=\"groupInput216\"><small class=\"form-text text-muted\" id=\"groupHelp216\">Input help info</small></div>"
+      },
+      {
+        "title":"带按钮输入框",
+        "code":"<div class=\"input-group mb-3\"><div class=\"input-group-prepend\"><span class=\"input-group-text\" id=\"basic-addon1\">@</span></div><input type=\"text\" class=\"form-control\" placeholder=\"Username\" aria-label=\"Username\" aria-describedby=\"basic-addon1\"> <div class=\"input-group-append\"><span class=\"input-group-text\">.00</span></div></div>"
+      },
+      {
+        "title":"文本框组",
+        "code":"<div class=\"form-group\"><label for=\"groupTextarea221\">Label</label><textarea class=\"form-control\" id=\"groupTextarea221\"></textarea><small class=\"form-text text-muted\" id=\"groupHelp221\">Input help info</small></div>"
+      },
+      {
+        "title":"带按钮文本框",
+        "code":"<div class=\"input-group\"> <div class=\"input-group-prepend\"><span class=\"input-group-text\">With textarea</span></div><textarea class=\"form-control\" aria-label=\"With textarea\"></textarea></div>"
+      }
+    ]
+  },
+  {
+    "title" : "HTML",
+    "smallTitle" : "",
+    "items":[
+      {
+        "title":"输入框",
+        "code":"<form></form>"
+      },
+      {
+        "title":"文本框",
+        "code":"<div class=\"form-group\"></div>"
+      },
+      {
+        "title":"单选按钮",
         "code":""
       },
       {
-        "title":"图文",
-        "code":"<figure class=\"figure\"><img src=\"images/1003-367x267.jpg\" class=\"figure-img img-fluid rounded\" alt=\"A generic square placeholder image with rounded corners in a figure.\"><figcaption class=\"figure-caption\">A caption for the above image.</figcaption></figure>"
+        "title":"复选框",
+        "code":""
       }
     ]
   }
-
 
 ]
