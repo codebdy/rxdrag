@@ -189,6 +189,7 @@ a:hover{
 
 .vular-studio .right-area .right-inner{
   flex:1;
+  position: relative;
 }
 
 .vular-studio .page-tabs{

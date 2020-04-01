@@ -57,10 +57,11 @@ export default {
   .toolbox-element .pop-content{
     position: absolute;
     top:70px;
-    left:100%;
+    left: -340px;
     width: 320px;
     padding:10px;
     background: #eee;
+    z-index: 1;
   }
   .toolbox-element .pop-content img{
     width: 100%;

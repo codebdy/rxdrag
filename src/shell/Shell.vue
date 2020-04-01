@@ -346,7 +346,7 @@ export default {
 
 
     this.currentTheme = null
-    $axios.get('api/theme/default')
+    $axios.get('api/theme/vular')
     .then((res)=>{
       this.currentTheme = res.data
     })
