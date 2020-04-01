@@ -236,6 +236,7 @@ export default {
     flex:1;
     display: flex;
     flex-flow: column;
+    position: relative;
   }
 
   .widget-tabs .heads{

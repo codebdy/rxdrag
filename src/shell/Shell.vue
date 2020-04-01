@@ -163,6 +163,9 @@ export default {
   watch:{
     currentTheme(theme){
       this.showFiles(theme)
+      //if(htmlFiles.length > 0){
+      //  $bus.$emit('fileSelected', htmlFiles[0])
+      //}
       $bus.$emit('themeChanged', theme)
     }
   },
@@ -217,6 +220,7 @@ export default {
 
       this.files.push(htmlFiles)
 
+
       let styleFiles = {
         title: this.$t('widgets.styles'),
         selected: false,
@@ -266,31 +270,6 @@ export default {
         })
       }
       this.files.push(jsFiles)
-
-      let imageFiles = {
-        title: this.$t('widgets.images'),
-        selected: false,
-        opened: false,
-        isFolder: true,//不能被编辑，可以新建子节点
-        leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
-        fileType:'image',
-        children: []
-      }
-      if(proOrTheme.images){
-        proOrTheme.images.forEach(fileName =>{
-          imageFiles.children.push(
-            {
-              title:fileName,
-              selected:false,
-              opened:false,
-              isEditing:false,
-              icon:"far fas fa-file-image",
-              fileType:'image',
-            }
-          )
-        })
-      }
-      this.files.push(imageFiles)
     },
 
     onShowNodeTree(nodes){

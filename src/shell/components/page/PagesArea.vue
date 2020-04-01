@@ -61,6 +61,7 @@ export default {
 
   methods: {
     onFileSelected(file){
+      console.log(file)
       this.selectFile(file)
       this.addFile(file)
     },

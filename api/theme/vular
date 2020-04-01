@@ -1,7 +1,7 @@
 {
   "pages":[
-    "about.html",
     "index.html",
+    "about.html",
     "product.html",
     "post.html"
   ],
@@ -10,11 +10,6 @@
   ],
   "javascript":[
     "jquery.js"
-  ],
-  "images":[
-    "test1.jpg",
-    "test2.jpg",
-    "test3.jpg"
   ],
 
   "toolboxItems":[
