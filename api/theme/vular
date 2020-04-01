@@ -1,37 +1,91 @@
 {
   "pages":[
-    "index.html",
-    "about.html",
-    "product.html",
-    "post.html"
+    {
+      "name" : "index.html",
+      "path" : "themes/vular/index.html",
+      "fileType" : "page",
+      "locked" : false
+    },
+    {
+      "name" : "blog.html",
+      "path" : "themes/vular/blog.html",
+      "fileType" : "page",
+      "locked" : false
+    },
+    {
+      "name" : "contact.html",
+      "path" : "themes/vular/contact.html",
+      "fileType" : "page",
+      "locked" : false
+    }
   ],
   "styles":[
-    "bootstrap.css"
+    {
+      "name" : "bootstrap.css",
+      "path" : "vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css",
+      "fileType" : "style",
+      "locked" : true
+    },
+    {
+      "name" : "base.css",
+      "path" : "themes/base/css/base.css",
+      "fileType" : "style",
+      "locked" : true
+    },
+    {
+      "name" : "theme.css",
+      "path" : "themes/vular/css/theme.css",
+      "fileType" : "style",
+      "locked" : false
+    }
   ],
   "javascript":[
-    "jquery.js"
+    {
+      "name" : "jquery-3.4.1.min.js",
+      "path" : "vendor/jquery/jquery-3.4.1.min.js",
+      "fileType" : "javascript",
+      "locked" : true
+    },
+    {
+      "name" : "bootstrap.bundle.js",
+      "path" : "vendor/bootstrap-4.4.1-dist/js/bootstrap.bundle.js",
+      "fileType" : "javascript",
+      "locked" : true
+    },
+    {
+      "name" : "base.js",
+      "path" : "themes/base/js/base.js",
+      "fileType": "javascript",
+      "locked" : true
+    },
+    {
+      "name" : "theme.js",
+      "path" : "themes/valar/js/theme.js",
+      "fileType": "javascript",
+      "locked" : false
+    }
   ],
 
   "toolboxItems":[
     {
       "title":"导航",
       "thumbnail":"images/navbar.jpg",
-      "code":""
+      "code":"<div>导航</div>"
     },
     {
       "title":"页头",
       "thumbnail":"images/header.jpg",
-      "code":""
+      "code":"<div>页头</div>"
     },
     {
       "title":"服务",
       "thumbnail":"images/services.jpg",
-      "code":""
+      "code":"<div>服务</div>"
     },
     {
       "title":"优秀案例",
       "thumbnail":"images/portfolio.jpg",
-      "code":""
+      "code":"<div>优秀案例</div>"
     }
   ]
 

@@ -53,13 +53,10 @@
             </tab>
             <tab :name="$t('widgets.files')"
                  :icon="'fas fa-copy'">
-              <NodeTree v-model="files" 
-               :openIcon="'fas fa-folder-open'" 
-               :closeIcon="'fas fa-folder'"
-               :editable = 'true'
+              <FileBox v-model="files" 
                @nodeSelected="fileSelect"
               >
-               </NodeTree>
+               </FileBox>
             </tab>
           </WidgetTabs>
         </template>
@@ -90,7 +87,7 @@ import WidgetTabs from './components/tabs/WidgetTabs.vue'
 import Tab from './components/tabs/Tab.vue'
 import Toolbox from './components/Toolbox/Toolbox.vue'
 import PagesArea from './components/page/PagesArea.vue'
-import NodeTree from './components/tree/NodeTree.vue'
+import FileBox from './components/filetree/FileBox.vue'
 import TreeBox from './components/treebox/TreeBox.vue'
 
 import RxInputRow from './components/inputs/RxInputRow.vue'
@@ -121,7 +118,7 @@ export default {
     Tab,
     PagesArea,
     Toolbox,
-    NodeTree,
+    FileBox,
     TreeBox,
     RxInputRow,
     OptionBox,
@@ -193,83 +190,7 @@ export default {
     },
 
     showFiles(proOrTheme){
-      this.files.length = 0
-      let htmlFiles = {
-        title: this.$t('widgets.pages'),
-        selected: false,
-        opened: false,
-        isFolder: true,//不能被编辑，可以新建子节点
-        leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
-        fileType:'page',
-        children: []
-      }
-      if(proOrTheme.pages){
-        proOrTheme.pages.forEach(fileName =>{
-          htmlFiles.children.push(
-            {
-              title:fileName,
-              selected:false,
-              opened:false,
-              isEditing:false,
-              fileType:'page',
-              icon:"far fa-file-code",
-            }
-          )
-        })
-      }
-
-      this.files.push(htmlFiles)
-
-
-      let styleFiles = {
-        title: this.$t('widgets.styles'),
-        selected: false,
-        opened: false,
-        isFolder: true,//不能被编辑，可以新建子节点
-        leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
-        fileType:'style',
-        children: []
-      }
-      if(proOrTheme.styles){
-        proOrTheme.styles.forEach(fileName =>{
-          styleFiles.children.push(
-            {
-              title:fileName,
-              selected:false,
-              opened:false,
-              isEditing:false,
-              icon:"far fa-file-code",
-              fileType:'style',
-            }
-          )
-        })
-      }
-      this.files.push(styleFiles)
-
-      let jsFiles = {
-        title: this.$t('widgets.javascript'),
-        selected: false,
-        opened: false,
-        isFolder: true,//不能被编辑，可以新建子节点
-        leafIcon: 'far fa-file-code',//子节点图标，构建新节点时使用
-        fileType:'javascript',
-        children: []
-      }
-      if(proOrTheme.javascript){
-        proOrTheme.javascript.forEach(fileName =>{
-          jsFiles.children.push(
-            {
-              title:fileName,
-              selected:false,
-              opened:false,
-              isEditing:false,
-              icon:"far fa-file-code",
-              fileType:'javascript',
-            }
-          )
-        })
-      }
-      this.files.push(jsFiles)
+      this.files = proOrTheme
     },
 
     onShowNodeTree(nodes){
@@ -286,7 +207,6 @@ export default {
     },
 
     resizeScreen(breakPoint){
-      console.log('shell resizeScreen')
       this.breakPoint = breakPoint
       this.options.forEach(optionGroup=>{
         optionGroup.changeBreakPoint(breakPoint)

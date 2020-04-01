@@ -42,6 +42,7 @@ body{
   padding-bottom: 160px;
   color:#fff;
   position: relative;
+  background-attachment:fixed;
 }
 
 .header .mask{

@@ -7,7 +7,7 @@
         :class="{ 'active': file === activedFile }" 
         @click="selectFile(file)"
       >
-          {{ file.title }} 
+          {{ file.name }} 
           <span class="close"
             @click="closeFile($event, file)"
           >×</span>
@@ -61,7 +61,6 @@ export default {
 
   methods: {
     onFileSelected(file){
-      console.log(file)
       this.selectFile(file)
       this.addFile(file)
     },
