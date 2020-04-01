@@ -1,5 +1,5 @@
 <template>
-  <div class="tree-node" :class="inputValue.selected ? 'selected' :''"
+  <div class="tree-node" :class="inputValue === activedFile ? 'selected' :''"
   >
     <div class="tree-node-title" 
       @click="click"  
@@ -65,6 +65,9 @@ export default {
       return this.contextMenuPoped
     },
 
+    activedFile () {
+      return this.$store.state.activedFile
+    },
 
   },
   mounted () {
@@ -80,7 +83,6 @@ export default {
   methods: {
     click(){
       if(!this.inputValue.locked){
-        this.inputValue.selected = true
         this.$emit('nodeSelected', this.inputValue)
       }
     },
@@ -127,69 +129,6 @@ export default {
 </script>
 
 <style>
-  .tree-node.selected{
-    background: rgba(0,123,255, 0.1)
-  }
-
-  .children-nodes{
-    padding-left:15px;
-  }
-
-  .tree-node .tree-node-title{
-    height: 30px;
-    display: flex;
-    flex-flow: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    padding-left: 0px;
-    flex-shrink: 0;
-    position: relative;
-  }
-
-  .tree-node-title.locked{
-    color: #999;
-  }
-
-
-  .tree-node .tree-node-title:hover{
-    background: rgba(255,255,255, 0.05);
-  }
-
-  .node-context-menu{
-    position: fixed;
-    display: flex;
-    flex-flow: column;
-    min-width: 80px;
-    background: #fff;
-    color: #000;
-    box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.5); 
-    z-index: 1;
-  }
-
-  .node-context-menu .menu-item{
-    flex: 1;
-    padding: 10px;
-    border-bottom: 1px solid #ebebeb;
-  }
-
-  .node-context-menu .menu-item i{
-    color:#75b325;
-    width: 20px;
-  }
-
-
-  .node-context-menu .menu-item:hover{
-    background: #ebebeb;
-  }
-
-  .node-title input{
-    border: 0;
-    outline: 0;
-    background: rgba(0,0,0,0.2);
-    padding:4px;
-    border:#555 solid 1px;
-    color: #fff;
-  }
 
   .lock-icon{
     position: absolute;
