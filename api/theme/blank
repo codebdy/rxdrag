@@ -1,0 +1,16 @@
+{
+  "title":"Blank",
+  "thumbnail":"images/blank.jpg",
+  "pages":[
+    "index.html"
+  ],
+  "styles":[
+    "bootstrap.css"
+  ],
+  "javascript":[
+    "jquery.js"
+  ],
+  "images":[
+    "logo.png"
+  ]
+}

@@ -1,24 +1,10 @@
 [
   {
-    "title" : "模块",
-    "smallTitle" : "主题",
-    "items":[
-      {
-        "title":"特色服务",
-        "code":"<div class='container'></div>"
-      },
-      {
-        "title":"团队",
-        "code":"<div class='row'></div>"
-      }
-    ]
-  },
-  {
     "title" : "导航栏",
     "smallTitle" : "通用",
     "items":[
       {
-        "title":"两行导航栏",
+        "title":"双行导航栏",
         "code":"<div class='container'></div>"
       },
       {

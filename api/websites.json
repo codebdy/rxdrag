@@ -1,44 +1,16 @@
 [
   {
-    "title":"Agency",
-    "thumbnail":"images/theme-agency.jpg",
-    "theme":"api/theme/agency"
+    "title":"基础Bootstrap",
+    "thumbnail":"images/blank.jpg",
+    "theme":"api/theme/blank"
   },
   {
-    "title":"TestPools",
-    "thumbnail":"images/theme-testpools.jpg",
-    "theme":"api/theme/testpools"
+    "title":"Vular·秀",
+    "thumbnail":"images/vular.jpg",
+    "theme":"api/theme/vular"
   },
   {
-    "title":"TestPools",
-    "thumbnail":"images/theme-testpools.jpg"
-  },
-  {
-    "title":"TestPools",
-    "thumbnail":"images/theme-testpools.jpg"
-  },
-  {
-    "title":"TestPools",
-    "thumbnail":"images/theme-testpools.jpg"
-  },
-  {
-    "title":"TestPools",
-    "thumbnail":"images/theme-testpools.jpg"
-  },
-  {
-    "title":"TestPools",
-    "thumbnail":"images/theme-testpools.jpg"
-  },
-  {
-    "title":"TestPools",
-    "thumbnail":"images/theme-testpools.jpg"
-  },
-  {
-    "title":"Sucralose",
-    "thumbnail":"images/theme-sunvision.jpg"
-  },
-  {
-    "title":"Warmy Candle",
-    "thumbnail":"images/theme-warmy.jpg"
+    "title":"认证公司",
+    "thumbnail":"images/renzheng.jpg"
   }
 ]
