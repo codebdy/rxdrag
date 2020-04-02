@@ -357,11 +357,21 @@ export class RXEditor{
       let style = document.createElement('style');
       style.type = 'text/css';
       style.rel = 'stylesheet';
+      style.id = codeId
 
       style.appendChild(document.createTextNode(file.code));
 
       let head = document.getElementsByTagName('head')[0];
       head.appendChild(style);
     }
+
+    if(file.fileType === 'javascript'){
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.id = codeId
+      script.appendChild(document.createTextNode(file.code));
+      document.body.appendChild(script);
+    }
+    
   }
 }
