@@ -11,6 +11,7 @@ export class Canvas extends Node{
     this.stateChanged = (oldState, newState)=>{}
 
     this.rule = {dropInMargin : 0}
+    this.rule.editMarginStyle = {paddingX:10, paddingY:10}
     //this.rule.heightDropMargin = 0
     //this.rule.widthDropMargin = 0
     //this.rule.dropMargin = 0;
@@ -37,7 +38,7 @@ export class Canvas extends Node{
     model.styles['min-height'] = "calc(100vh)"
     model.styles.cursor = 'default'
     model.styles['border'] = '0'
-    model.styles['padding-bottom'] = '40px'
+    //model.styles['padding-bottom'] = '40px'
     //model.styles['background'] = '#8cdb27'
     //model.styles['padding-top'] = '25px'
     //model.styles['padding-right'] = '5px'
