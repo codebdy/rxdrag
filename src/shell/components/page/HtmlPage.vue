@@ -243,6 +243,9 @@ export default {
     },
 
     width(){
+      if(this.state.preview && this.state.screenWidth === 'xl'){
+        return "100%"
+      }
       return this.breakpoints[this.state.screenWidth] + 'px'
     }
   },
