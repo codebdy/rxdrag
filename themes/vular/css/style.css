@@ -27,7 +27,7 @@ body{
 }
 
 .header{
-  background-image: url(themes/vular/images/banner.jpg);
+  background-image: url(../images/banner.jpg);
   background-size: cover;
   background-position: center;
   animation-duration: 750ms;

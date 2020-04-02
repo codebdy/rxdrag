@@ -110,6 +110,13 @@ export class IFrameCommandProxy{
     })
   }
 
+  setInlineFile(file){
+    this.sendMessageToRXEditor({
+      name:'setInlineFile',
+      file : file,
+    })
+  }
+
   handleMessage(message){
     switch (message.name) {
       case 'rxeditorReady':

@@ -341,6 +341,7 @@ export default {
       //console.log(this._uid)
       this.commandProxy.changeCanvasState(this.state)
       this.commandProxy.loadHtml(this.inputValue.code)
+      this.setInlineCssAndJs()
     },
 
     nodeChanged(node, pageId){
@@ -443,6 +444,20 @@ export default {
       else{
         this.$set(this.inputValue, 'code', '')
       }
+    },
+
+    setInlineCssAndJs(){
+      this.$store.state.theme.styles.forEach(file=>{
+        if(!file.locked){
+          this.commandProxy.setInlineFile(file)
+        }
+      })
+
+      this.$store.state.theme.javascript.forEach(file=>{
+        if(!file.locked){
+          this.commandProxy.setInlineFile(file)
+        }
+      })
     },
 
     initFrame(){

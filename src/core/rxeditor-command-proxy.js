@@ -138,6 +138,9 @@ export class RXEditorCommandProxy{
       case 'loadHtml':
         this.serveForRXEditor.loadHtml(message.html, message.id)
         break;
+      case 'setInlineFile':
+        this.serveForRXEditor.setInlineFile(message.file)
+        break;
     }
   }
 

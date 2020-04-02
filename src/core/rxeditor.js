@@ -344,4 +344,24 @@ export class RXEditor{
 
     this.render()
   }
+
+  setInlineFile(file){
+    let codeId = file.name.replace('.', '-')
+    let element = document.getElementById(codeId)
+    if(element){
+      element.innerHTML = file.code
+      return
+    }
+
+    if(file.fileType === 'style'){
+      let style = document.createElement('style');
+      style.type = 'text/css';
+      style.rel = 'stylesheet';
+
+      style.appendChild(document.createTextNode(file.code));
+
+      let head = document.getElementsByTagName('head')[0];
+      head.appendChild(style);
+    }
+  }
 }
