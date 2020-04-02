@@ -34,6 +34,12 @@ export class NodeParser{
       node.parent = parent
       return node 
     }
+
+    //暂不处理注释
+    if(element.nodeType === 8){
+      return ''
+    }
+
     if(element.classList.contains('container')){
       node = new ClassNode('container')
     }

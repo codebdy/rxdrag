@@ -82,9 +82,9 @@ export default {
 
   methods: {
     click(){
-      if(!this.inputValue.locked){
+      //if(!this.inputValue.locked){
         this.$emit('nodeSelected', this.inputValue)
-      }
+      //}
     },
 
     onContextMenu(event){

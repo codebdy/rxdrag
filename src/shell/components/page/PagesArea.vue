@@ -21,9 +21,13 @@
 
       >
         <HtmlPage 
-          v-show="file.fileType === 'page'"
+          v-if="file.fileType === 'page'"
           v-model = "files[i]" 
         ></HtmlPage>
+        <CodePage 
+          v-else
+          v-model = "files[i]" 
+        ></CodePage>
       </div>
     </div>
   </div>
@@ -31,11 +35,13 @@
 
 <script>
 import HtmlPage from './HtmlPage.vue'
+import CodePage from './CodePage.vue'
 
 export default {
   name: 'PagesArea',
   components:{
     HtmlPage,
+    CodePage,
   },
   props:{
     //value:{ default:[] }, 
@@ -164,64 +170,6 @@ export default {
   flex-flow: column;
 }
 
-  .vular-studio .page-tabs .page-toolbar{
-    height: 35px;
-    background: #494c45;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .vular-studio .page-toolbar .left{
-    margin-left:10px;
-    display: flex;
-    flex-flow: row;
-  }
-
-  .vular-studio .page-toolbar .right{
-    margin-right:10px;
-    display: flex;
-    flex-flow: row;
-  }
-
-  .vular-studio .page-toolbar .icon-button{
-    width: 26px;
-    height: 26px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin:1px;
-    border-radius: 2px;
-  }
-
-  .vular-studio .page-toolbar .icon-button:hover{
-    background: rgba(0,0,0,0.3);
-  }
-
-  .vular-studio .page-toolbar .icon-button.active{
-    background: rgba(0,0,0,0.5);
-  }
-
-  .vular-studio .page-toolbar .icon-button.big i{
-    font-size: 14px;
-  }
-
-  .vular-studio .page-toolbar .icon-button.disabled{
-    pointer-events: none;
-    position: relative;
-  }
-
-  .vular-studio .page-toolbar .icon-button.disabled::after{
-    content: "";
-    position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(73,76,69,0.7);
-    z-index: 1;
-  }
 
   .page-tabs{
   }
@@ -236,6 +184,17 @@ export default {
     flex: 1;
     display: flex;
     flex-flow: column;
+  }
+
+  .code-editor{
+    width: calc(100% - 20px);
+    background: #272727;
+    height: calc(100% - 26px);
+    color:#75b325;
+    outline: 0;
+    border:0;
+    padding:10px;
+    resize: none;
   }
 
 </style>

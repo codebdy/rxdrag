@@ -163,7 +163,7 @@
       </div>
       <textarea class="code-editor"
         v-show = "viewCode"
-        v-model = "htmlCode"
+        v-model = "inputValue.htmlCode"
       ></textarea>
     </div>
   </div>
@@ -197,7 +197,7 @@ export default {
       commandProxy : new IFrameCommandProxy(this._uid),
       //actived: false,
       canvasHeight : '100%',
-      htmlCode :'',
+      //htmlCode :'',
       oldHtmlCode :'',
       nodeTree : new NodeTree,
       focusNode : null,
@@ -255,6 +255,8 @@ export default {
     $bus.$on('nodeHtmlChanged', this.onNodeHtmlChanged)
 
     this.emitShellState()
+
+    this.loadHtmlFile()
   },
 
   destoryed () {
@@ -309,8 +311,8 @@ export default {
         this.commandProxy.requestHtmlCode()
       }
       else{
-        if(this.oldHtmlCode != this.htmlCode){
-          this.commandProxy.loadHtml(this.htmlCode)
+        if(this.oldHtmlCode != this.inputValue.htmlCode){
+          this.commandProxy.loadHtml(this.inputValue.htmlCode)
         }
       }
     },
@@ -338,6 +340,7 @@ export default {
     onRxEditorReady(){
       //console.log(this._uid)
       this.commandProxy.changeCanvasState(this.state)
+      this.commandProxy.loadHtml(this.inputValue.htmlCode)
     },
 
     nodeChanged(node, pageId){
@@ -419,7 +422,7 @@ export default {
     onReplyHtmlCode(htmlCode){
       if(this.actived){
         let beautify = new HtmlBeautify(htmlCode, '  ')
-        this.htmlCode = beautify.result
+        this.inputValue.htmlCode = beautify.result
         this.oldHtmlCode = this.htmlCode
       }
     },
@@ -427,6 +430,18 @@ export default {
     onNodeHtmlChanged(html){
       if(this.focusNode && this.actived){
         this.commandProxy.loadHtml(html, this.focusNode.id)
+      }
+    },
+
+    loadHtmlFile(){
+      if(this.inputValue.path){
+        $axios.get(this.inputValue.path)
+        .then((res)=>{
+          this.$set(this.inputValue, 'htmlCode', res.data)
+        })
+      }
+      else{
+        this.$set(this.inputValue, 'htmlCode', '')
       }
     },
 
@@ -509,16 +524,63 @@ export default {
     border:0;
   }
 
-  .code-editor{
-    width: calc(100% - 20px);
-    background: #272727;
-    height: calc(100% - 26px);
-    color:#75b325;
-    outline: 0;
-    border:0;
-    padding:10px;
-    resize: none;
+  .html-page .page-toolbar{
+    height: 35px;
+    background: #494c45;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
+  .html-page .page-toolbar .left{
+    margin-left:10px;
+    display: flex;
+    flex-flow: row;
+  }
+
+  .html-page .page-toolbar .right{
+    margin-right:10px;
+    display: flex;
+    flex-flow: row;
+  }
+
+  .html-page .page-toolbar .icon-button{
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:1px;
+    border-radius: 2px;
+  }
+
+  .html-page .page-toolbar .icon-button:hover{
+    background: rgba(0,0,0,0.3);
+  }
+
+  .html-page .page-toolbar .icon-button.active{
+    background: rgba(0,0,0,0.5);
+  }
+
+  .html-page .page-toolbar .icon-button.big i{
+    font-size: 14px;
+  }
+
+  .html-page .page-toolbar .icon-button.disabled{
+    pointer-events: none;
+    position: relative;
+  }
+
+  .html-page .page-toolbar .icon-button.disabled::after{
+    content: "";
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(73,76,69,0.7);
+    z-index: 1;
+  }
 
 </style>
