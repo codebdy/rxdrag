@@ -112,33 +112,15 @@ export class RXEditor{
     this.state.watch('showMarginY', (state)=>{
       this.render()
     })
-    this.state.watch('preview', (state)=>{
-      if(state.preview){
-        this.preview()
-        this.render()
-      }
-      else {
-        this.allToNormalState()
-        this.render()
-      }
-    })
 
   }
 
   render(){
-    if(this.previewDom && this.workspace.contains(this.previewDom)){
-      this.workspace.removeChild(this.previewDom);
-      this.previewDom = ''
-    }
     this.canvas.render()
     this.toolbar.refreshPosition()
     this.focusedLabel.refreshPosition()
   }
 
-  preview(){
-    //this.allToNormalState()
-    this.previewDom = this.canvas.preview(/*this.workspace*/)
-  }
 
   clearDraggedoverStates(){
     this.canvas.clearDraggedoverStates()
@@ -155,7 +137,7 @@ export class RXEditor{
   }
 
   dragFromToolbox(item){
-    if(this.commandManager.movingCommand || this.state.preview) return
+    if(this.commandManager.movingCommand) return
     this.clearFocusAndEditStates()
     let draggedNode = this.parseNode(item)
     this.commandManager.startNew(draggedNode)
@@ -264,7 +246,7 @@ export class RXEditor{
 
   changeCanvasState(state){
     this.state.screenWidth = state.screenWidth
-    this.state.preview = state.preview
+    //this.state.preview = state.preview
     //this.state.showEditMargin = state.showEditMargin
     this.state.showMarginX = state.showMarginX
     this.state.showMarginY = state.showMarginY

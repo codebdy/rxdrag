@@ -153,12 +153,26 @@
         v-show = "!viewCode"
       >
         <iframe src="javascrip:0" 
-          :scrolling="state.preview ? 'yes' : 'no'" 
+          :style="{
+            display:state.preview ? 'none' :'block'
+          }"
+          scrolling="no" 
           frame-border ="0"
           border = "0"
           allow-transparency = "no"
           :height="canvasHeight" 
           ref ="canvasFrame"
+        ></iframe>
+
+        <iframe src="javascrip:0" 
+          :style="{
+            display:state.preview ? 'block' :'none'
+          }"
+          scrolling="yes" 
+          frame-border ="0"
+          border = "0"
+          allow-transparency = "no"
+          ref ="previewFrame"
         ></iframe>
       </div>
       <textarea class="code-editor"
@@ -302,7 +316,8 @@ export default {
 
     previewClick(){
       this.state.preview = !this.state.preview
-      this.commandProxy.changeCanvasState(this.state)
+      this.commandProxy.requestHtmlCode()
+
     },
 
     codeClick(){
@@ -424,7 +439,10 @@ export default {
       if(this.actived){
         let beautify = new HtmlBeautify(code, '  ')
         this.inputValue.code = beautify.result
-        this.oldHtmlCode = this.code
+        this.oldHtmlCode = code
+        if(this.state.preview){
+          this.writeToPreviewFrame(code)
+        }
       }
     },
 
@@ -480,6 +498,44 @@ export default {
                 creatEditorCore(${this.pageId})
                 rxEditor.hangOn('canvas');
               <\/script>
+            </body>
+          </html>
+        `
+      iframedocument.open();
+      iframedocument.write(iframeContent);
+      iframedocument.close();
+    },
+
+    writeToPreviewFrame(code){
+      let cssBlocks = ""
+      this.$store.state.theme.styles.forEach(file=>{
+        if(!file.locked){
+          cssBlocks = cssBlocks + `<style type="text/css">${file.code}<\/style>`
+        }
+      })
+
+      let jsBlocks = ""
+      this.$store.state.theme.javascript.forEach(file=>{
+        if(!file.locked){
+          jsBlocks = jsBlocks + `<script type="text/javascript">${file.code}<\/script>`
+        }
+      })
+      let iframedocument =  this.$refs.previewFrame.contentDocument;
+
+      let iframeContent = `<html style="width:100%;height:100%;">
+            <head>
+              <title>RXEditor Workspace</title>
+              <link href="${this.$store.state.bootstrapCss}" rel="stylesheet">
+              <link href="style/preview.css" rel="stylesheet">
+              ${this.getCssFiles()}
+              ${cssBlocks}
+            </head>
+            <body id="page-top" style="background-color:#FFF;padding:0;width:100%; height:100%;">
+              ${code}
+              <script type="text/javascript" src="${this.$store.state.jquery}"/><\/script>
+              <script type="text/javascript" src="${this.$store.state.bootstrapJs}"/><\/script>
+              ${this.getJsFiles()}
+              ${jsBlocks}
             </body>
           </html>
         `
