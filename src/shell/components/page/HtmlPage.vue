@@ -270,6 +270,7 @@ export default {
     $bus.$on('removeNode', this.onRemoveNode)
     $bus.$on('replyHtmlCode', this.onReplyHtmlCode)
     $bus.$on('nodeHtmlChanged', this.onNodeHtmlChanged)
+    $bus.$on('codeFileChange', this.onCodeFileChange)
 
     this.emitShellState()
 
@@ -289,6 +290,7 @@ export default {
     $bus.$off('removeNode', this.onRemoveNode)
     $bus.$off('replyHtmlCode', this.onReplyHtmlCode)
     $bus.$off('nodeHtmlChanged', this.onNodeHtmlChanged)
+    $bus.$off('codeFileChange', this.onCodeFileChange)
 
     window.removeEventListener("message", this.receiveCanvasMessage);
     document.removeEventListener('mouseup', this.onMouseUp)
@@ -453,6 +455,10 @@ export default {
       if(this.focusNode && this.actived){
         this.commandProxy.loadHtml(html, this.focusNode.id)
       }
+    },
+
+    onCodeFileChange(file){
+      this.commandProxy.setInlineFile(file)
     },
 
     loadHtmlFile(){

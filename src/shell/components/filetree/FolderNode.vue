@@ -103,6 +103,7 @@ export default {
           name:'new file' + ext,
           selected:false,
           isEditing:true,
+          code: "",
           fileType:this.fileType,
         }
       )

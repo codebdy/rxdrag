@@ -2,8 +2,10 @@
   <div class="code-page">
     <div class="page-content">
       <textarea class="code-editor"
-        v-model = "inputValue.htmlCode"
+        v-model = "inputValue.code"
         :readonly="inputValue.locked ? 'readonly' : false"
+        @focus = "onFocus"
+        @blur = "onBlur"
       ></textarea>
     </div>
   </div>
@@ -25,19 +27,30 @@ export default {
         },
     },
   },
-  data () {
+  data() {
     return {
     }
   },
 
-  mounted () {
+  mounted() {
+    if(!this.inputValue.code && this.inputValue.path){
+      $axios.get(this.inputValue.path)
+      .then((res)=>{
+        this.$set(this.inputValue, 'code', res.data)
+      })
+    }
   },
-
-  beforeDestroyed() {
-  },
-
 
   methods: {
+    onFocus(){
+      this.oldCode = this.inputValue.code
+    },
+
+    onBlur(){
+      if(this.oldCode !== this.inputValue.code){
+        $bus.$emit('codeFileChange', this.inputValue)
+      }
+    }
   },
 }
 </script>
