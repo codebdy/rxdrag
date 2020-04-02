@@ -153,7 +153,7 @@
         v-show = "!viewCode"
       >
         <iframe src="javascrip:0" 
-          scrolling="no" 
+          :scrolling="state.preview ? 'yes' : 'no'" 
           frame-border ="0"
           border = "0"
           allow-transparency = "no"
@@ -466,9 +466,9 @@ export default {
       let iframeContent = `<html style="width:100%;height:100%;">
             <head>
               <title>RXEditor Workspace</title>
-              <link href="style/rxeditor.css" rel="stylesheet">
               <link href="${this.$store.state.bootstrapCss}" rel="stylesheet">
               ${this.getCssFiles()}
+              <link href="style/rxeditor.css" rel="stylesheet">
             </head>
             <body id="page-top" style="background-color:#FFF;padding:0;width:100%; height:100%;">
               <div id="canvas"></div>
@@ -501,7 +501,7 @@ export default {
 
     getJsFiles(){
       let filesStr = ""
-      this.$store.state.theme.styles.forEach(file=>{
+      this.$store.state.theme.javascript.forEach(file=>{
         if(file.locked){
           filesStr = filesStr + `<script type="text/javascript" src="${file.path}"/><\/script> `
         }
@@ -541,7 +541,6 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background: #272727;
     z-index: 1;
   }
@@ -556,13 +555,16 @@ export default {
   .canvas{
     margin:0 auto ; 
     transition: all 0.5s;
-    background: #fff;
   }
 
   .canvas iframe{
     width: 100%;
     min-height:calc(100vh - 112px);
     border:0;
+  }
+
+  .page-preview .canvas iframe{
+    height: calc(100vh - 40px)
   }
 
   .html-page .page-toolbar{
