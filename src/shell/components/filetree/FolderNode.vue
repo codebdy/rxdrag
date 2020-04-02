@@ -5,7 +5,7 @@
       @contextmenu.prevent = 'onContextMenu'
       ref="nodTitle"
     >
-      <div  class="node-icon" @click="onIconClick">
+      <div  class="node-icon">
         <i v-show="icon" :class="icon"></i>
       </div>
 
@@ -67,12 +67,14 @@ export default {
   },
 
   methods: {
-    onClick(){
-      this.opened = !this.opened
+    onContextMenu(event){
+      this.contextMenuTop = event.clientY + 'px'
+      this.contextMenuLeft = event.clientX + 'px'
+      this.contextMenuPoped = true
     },
 
-    onIconClick(){
-
+    onClick(){
+      this.opened = !this.opened
     },
 
     onNameChanged(file){
@@ -87,15 +89,21 @@ export default {
     },
 
     newChild(event){
-      this.inputValue.opened = true
-      this.inputValue.children.push(
+      this.opened = true
+      let ext = ".html"
+      if(this.fileType === "style"){
+        ext = ".css"
+      }
+      if(this.fileType === "javascript"){
+        ext = ".js"
+      }
+
+      this.inputValue.push(
         {
-          title:'new...',
+          name:'new file' + ext,
           selected:false,
-          opened:false,
           isEditing:true,
-          fileType:this.inputValue.fileType,
-          icon: this.inputValue.leafIcon,
+          fileType:this.fileType,
         }
       )
       this.contextMenuPoped = false
@@ -112,21 +120,9 @@ export default {
     },
 
     nodeSelected(selectedNode){
-      /*this.inputValue.forEach(child=>{
-        this.resetSelected(selectedNode, child)
-      })*/
       this.$emit('nodeSelected', selectedNode)
     },
 
-    //递归充置选择状态
-    /*resetSelected(selectedNode, node){
-      node.selected = (node === selectedNode)
-      if(node.children){
-        node.children.forEach(child=>{
-          this.resetSelected(selectedNode, child)
-        })
-      }
-    }*/
   },
 }
 </script>
