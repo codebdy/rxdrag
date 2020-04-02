@@ -7,7 +7,7 @@
         :class="{ 'active': file === activedFile }" 
         @click="selectFile(file)"
       >
-          {{ file.name }} 
+          {{ files[i].name }} 
           <span class="close"
             @click="closeFile($event, file)"
           >×</span>
@@ -17,8 +17,7 @@
       <div class="tab"
         v-for = "(file, i) in files" 
         v-show = "file === activedFile"
-        :key = "i"
-
+        :key = "file.name"
       >
         <HtmlPage 
           v-if="file.fileType === 'page'"
