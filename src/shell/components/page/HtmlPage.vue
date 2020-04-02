@@ -509,7 +509,7 @@ export default {
       iframedocument.close();
     },
 
-    writeToPreviewFrame(code){
+    writeToPreviewFrame(code, previewCss=`<link href="style/preview.css" rel="stylesheet">`){
       let cssBlocks = ""
       this.$store.state.theme.styles.forEach(file=>{
         if(!file.locked){
@@ -525,15 +525,15 @@ export default {
       })
       let iframedocument =  this.$refs.previewFrame.contentDocument;
 
-      let iframeContent = `<html style="width:100%;height:100%;">
+      let iframeContent = `<html>
             <head>
               <title>RXEditor Workspace</title>
               <link href="${this.$store.state.bootstrapCss}" rel="stylesheet">
-              <link href="style/preview.css" rel="stylesheet">
+              ${previewCss}
               ${this.getCssFiles()}
               ${cssBlocks}
             </head>
-            <body id="page-top" style="background-color:#FFF;padding:0;width:100%; height:100%;">
+            <body>
               ${code}
               <script type="text/javascript" src="${this.$store.state.jquery}"/><\/script>
               <script type="text/javascript" src="${this.$store.state.bootstrapJs}"/><\/script>
