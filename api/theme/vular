@@ -19,14 +19,7 @@
       "locked" : false
     }
   ],
-  "styles":[
-    {
-      "name" : "bootstrap.css",
-      "path" : "vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css",
-      "fileType" : "style",
-      "locked" : true
-    },
-    {
+  "styles":[    {
       "name" : "base.css",
       "path" : "themes/base/css/base.css",
       "fileType" : "style",
@@ -41,18 +34,6 @@
   ],
   "javascript":[
     {
-      "name" : "jquery-3.4.1.min.js",
-      "path" : "vendor/jquery/jquery-3.4.1.min.js",
-      "fileType" : "javascript",
-      "locked" : true
-    },
-    {
-      "name" : "bootstrap.bundle.js",
-      "path" : "vendor/bootstrap-4.4.1-dist/js/bootstrap.bundle.js",
-      "fileType" : "javascript",
-      "locked" : true
-    },
-    {
       "name" : "base.js",
       "path" : "themes/base/js/base.js",
       "fileType": "javascript",
@@ -60,7 +41,7 @@
     },
     {
       "name" : "theme.js",
-      "path" : "themes/valar/js/theme.js",
+      "path" : "themes/vular/js/theme.js",
       "fileType": "javascript",
       "locked" : false
     }

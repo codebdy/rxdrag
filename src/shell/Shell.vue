@@ -1,5 +1,8 @@
 <template>
   <div class="vular-studio">
+    <div v-if="$store.state.isLoading" class="loading-box">
+      <img src="images/loading.gif"/>
+    </div>
     <toolbar
       @changeTheme = "changeTheme"
       @openProject = "openProject"
@@ -136,13 +139,12 @@ export default {
       //optionOverview : {},
       htmlCode:'',
       //styles:{},
-      currentTheme:null,
       node:null,
     }
   },
   computed:{
     toolbox(){
-      let themeToolbox = this.currentTheme ? this.currentTheme.toolboxItems : null
+      let themeToolbox = this.$store.state.theme ? this.$store.state.theme.toolboxItems : null
       if(themeToolbox){
         let themeToolboxGroup = {
           title : this.$t('toolbox.theme'),
@@ -158,11 +160,9 @@ export default {
     }
   },
   watch:{
-    currentTheme(theme){
+    '$store.state.theme': function (theme) {
       this.showFiles(theme)
-      //if(htmlFiles.length > 0){
-      //  $bus.$emit('fileSelected', htmlFiles[0])
-      //}
+      //你需要执行的代码
       $bus.$emit('themeChanged', theme)
     }
   },
@@ -181,7 +181,7 @@ export default {
       }
       $axios.get(theme.theme)
       .then((res)=>{
-        this.currentTheme = res.data
+        this.$store.commit('themeChange', res.data)
       })
     },
 
@@ -191,6 +191,7 @@ export default {
 
     showFiles(proOrTheme){
       this.files = proOrTheme
+      this.loadCssAndJs(proOrTheme)
     },
 
     onShowNodeTree(nodes){
@@ -230,7 +231,33 @@ export default {
 
     onStyleValueChange(){
       $bus.$emit('shellChangedNode', this.node, this.pageId)
-    }
+    },
+
+    loadCssAndJs(proOrTheme){
+      this.$store.commit('isLoading', true)
+      let files = []
+      proOrTheme.styles.forEach(file=>{
+        if(!file.locked){
+          files.push(file)
+        }
+      })
+
+      proOrTheme.javascript.forEach(file=>{
+        if(!file.locked){
+          files.push(file)
+        }
+      })
+
+      $axios.all(files.map(data=>{
+        return $axios.get(data.path)
+      }))
+      .then((responses)=>{
+        for(var i = 0; i < responses.length; i++){
+          this.$set(files[i], "code", responses[i].data)
+        }
+        this.$store.commit('isLoading', false)
+      })
+    },
 
   },
 
@@ -244,10 +271,10 @@ export default {
     $bus.$on('showNodeTree', this.onShowNodeTree)
 
 
-    this.currentTheme = null
+    this.$store.commit('themeChange', null)
     $axios.get('api/theme/vular')
     .then((res)=>{
-      this.currentTheme = res.data
+      this.$store.commit('themeChange', res.data)
     })
 
     $axios.get("api/toolbox").then((res)=>{
@@ -270,4 +297,16 @@ export default {
 </script>
 
 <style>
+.loading-box{
+  position: fixed;
+  z-index: 99999;
+  top:0;
+  height: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>

@@ -163,7 +163,7 @@
       </div>
       <textarea class="code-editor"
         v-show = "viewCode"
-        v-model = "inputValue.htmlCode"
+        v-model = "inputValue.code"
       ></textarea>
     </div>
   </div>
@@ -197,7 +197,7 @@ export default {
       commandProxy : new IFrameCommandProxy(this._uid),
       //actived: false,
       canvasHeight : '100%',
-      //htmlCode :'',
+      //code :'',
       oldHtmlCode :'',
       nodeTree : new NodeTree,
       focusNode : null,
@@ -311,8 +311,8 @@ export default {
         this.commandProxy.requestHtmlCode()
       }
       else{
-        if(this.oldHtmlCode != this.inputValue.htmlCode){
-          this.commandProxy.loadHtml(this.inputValue.htmlCode)
+        if(this.oldHtmlCode != this.inputValue.code){
+          this.commandProxy.loadHtml(this.inputValue.code)
         }
       }
     },
@@ -340,7 +340,7 @@ export default {
     onRxEditorReady(){
       //console.log(this._uid)
       this.commandProxy.changeCanvasState(this.state)
-      this.commandProxy.loadHtml(this.inputValue.htmlCode)
+      this.commandProxy.loadHtml(this.inputValue.code)
     },
 
     nodeChanged(node, pageId){
@@ -419,11 +419,11 @@ export default {
       }
     },
 
-    onReplyHtmlCode(htmlCode){
+    onReplyHtmlCode(code){
       if(this.actived){
-        let beautify = new HtmlBeautify(htmlCode, '  ')
-        this.inputValue.htmlCode = beautify.result
-        this.oldHtmlCode = this.htmlCode
+        let beautify = new HtmlBeautify(code, '  ')
+        this.inputValue.code = beautify.result
+        this.oldHtmlCode = this.code
       }
     },
 
@@ -437,24 +437,29 @@ export default {
       if(this.inputValue.path){
         $axios.get(this.inputValue.path)
         .then((res)=>{
-          this.$set(this.inputValue, 'htmlCode', res.data)
+          this.$set(this.inputValue, 'code', res.data)
         })
       }
       else{
-        this.$set(this.inputValue, 'htmlCode', '')
+        this.$set(this.inputValue, 'code', '')
       }
     },
 
     initFrame(){
-      let iframedocument =  this.$refs.canvasFrame.contentDocument;//contentWindow.document;
+      let iframedocument =  this.$refs.canvasFrame.contentDocument;
+
       let iframeContent = `<html style="width:100%;height:100%;">
             <head>
               <title>RXEditor Workspace</title>
               <link href="style/rxeditor.css" rel="stylesheet">
-              <link href="vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css" rel="stylesheet">
+              <link href="${this.$store.state.bootstrapCss}" rel="stylesheet">
+              ${this.getCssFiles()}
             </head>
             <body id="page-top" style="background-color:#FFF;padding:0;width:100%; height:100%;">
               <div id="canvas"></div>
+              <script type="text/javascript" src="${this.$store.state.jquery}"/><\/script>
+              <script type="text/javascript" src="${this.$store.state.bootstrapJs}"/><\/script>
+              ${this.getJsFiles()}
               <script type="text/javascript" src="dist/core.js"/><\/script>
               <script>
                 creatEditorCore(${this.pageId})
@@ -466,6 +471,28 @@ export default {
       iframedocument.open();
       iframedocument.write(iframeContent);
       iframedocument.close();
+    },
+
+    getCssFiles(){
+      let filesStr = ""
+      this.$store.state.theme.styles.forEach(file=>{
+        if(file.locked){
+          filesStr = filesStr + `<link href="${file.path}" rel="stylesheet"> `
+        }
+      })
+
+      return filesStr
+    },
+
+    getJsFiles(){
+      let filesStr = ""
+      this.$store.state.theme.styles.forEach(file=>{
+        if(file.locked){
+          filesStr = filesStr + `<script type="text/javascript" src="${file.path}"/><\/script> `
+        }
+      })
+
+      return filesStr
     },
 
     emitShellState(){
@@ -503,7 +530,6 @@ export default {
     background: #272727;
     z-index: 1;
   }
-
 
   .page-content{
     flex: 1;
