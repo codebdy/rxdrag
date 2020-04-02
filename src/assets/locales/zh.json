@@ -41,7 +41,8 @@
     "reset":"重置",
     "select":"-- 选择 --",
     "enter-message":"按回车结束输入",
-    "duplicate" :"克隆"
+    "duplicate" :"克隆",
+    "same-warning":"文件名重复，请重新命名。"
   },
   "theme":{
     "theme-select":"选择主题",

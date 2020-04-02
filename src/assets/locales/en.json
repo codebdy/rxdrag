@@ -41,7 +41,8 @@
     "reset":"Reset",
     "select":"-- Select --",
     "enter-message":"Press enter finished",
-    "duplicate" :"Duplicate"
+    "duplicate" :"Duplicate",
+    "same-warning":"Name already exist."
   },
   "theme":{
     "theme-select":"Select A Theme",

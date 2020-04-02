@@ -12,7 +12,6 @@
       </div>
       <input v-if="inputValue.isEditing" 
         v-model="inputValue.name" 
-        @blur="inputBlur" 
         @keyup.13 = "inputBlur"
         @click="inputClick"
       />
@@ -41,7 +40,6 @@ export default {
   name: 'FileNode',
   props: {
     value: { default: ()=>{return{}}},
-    fileType:{ default: '' },
   },
   data() {
     return {
@@ -82,9 +80,7 @@ export default {
 
   methods: {
     click(){
-      //if(!this.inputValue.locked){
-        this.$emit('nodeSelected', this.inputValue)
-      //}
+      this.$emit('nodeSelected', this.inputValue)
     },
 
     onContextMenu(event){
@@ -124,6 +120,14 @@ export default {
       this.$set(this.inputValue, 'isEditing', false)
     },
   },
+
+  watch:{
+    'inputValue.isEditing':function(isEditing){
+      if(!isEditing){
+        this.$emit('nameChanged', this.inputValue)
+      }
+    }
+  }
 
 }
 </script>

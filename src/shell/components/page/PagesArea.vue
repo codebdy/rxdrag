@@ -17,7 +17,7 @@
       <div class="tab"
         v-for = "(file, i) in files" 
         v-show = "file === activedFile"
-        :key = "file.name"
+        :key = "file.name + file.fileType"
       >
         <HtmlPage 
           v-if="file.fileType === 'page'"

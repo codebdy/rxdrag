@@ -16,6 +16,7 @@
         :key="i" 
         v-model="inputValue[i]"
         @nodeSelected = "nodeSelected"
+        @nameChanged = "onNameChanged"
       ></FileNode>
     </div>
     <div v-if='contextMenuPoped' 
@@ -72,6 +73,17 @@ export default {
 
     onIconClick(){
 
+    },
+
+    onNameChanged(file){
+      for(var i in this.inputValue){
+        let child = this.inputValue[i]
+        if(child !== file && child.name === file.name && !file.isEditing){
+          alert(this.$t('widgets.same-warning'))
+          file.isEditing = true
+          return
+        }
+      }
     },
 
     newChild(event){
