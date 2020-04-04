@@ -14,7 +14,7 @@ body{
   padding: 5px;
 }
 
-.main-logo svg{
+.main-logo i{
   width: 22px;
   height: 22px;
   color: #fff;
@@ -82,7 +82,7 @@ body{
   background: #22252a;
 }
 
-.nav-link svg{
+.nav-link i{
   height: 16px;
   width: 16px;
   margin-bottom: 3px;
