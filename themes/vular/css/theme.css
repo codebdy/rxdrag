@@ -15,8 +15,7 @@ body{
 }
 
 .main-logo i{
-  width: 22px;
-  height: 22px;
+  font-size: 22px;
   color: #fff;
   margin-right:5px;
 }
@@ -83,8 +82,7 @@ body{
 }
 
 .nav-link i{
-  height: 16px;
-  width: 16px;
+  font-size: 16px;
   margin-bottom: 3px;
 }
 
