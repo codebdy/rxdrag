@@ -535,6 +535,7 @@ export default {
             <head>
               <title>RXEditor Workspace</title>
               <link href="${this.$store.state.bootstrapCss}" rel="stylesheet">
+              <link href="${this.$store.state.fontAwesome}" rel="stylesheet">
               ${previewCss}
               ${this.getCssFiles()}
               ${cssBlocks}
