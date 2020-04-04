@@ -108,9 +108,9 @@ import nodesData from '../mock/nodes.js'
 import {OptionsFactory} from './schemas/OptionsFactory'
 import {HtmlBeautify} from "./basic/HtmlBeautify"
 
-//var JSZip = require("jszip")
-//var FileSaver = require('file-saver');
-//var zip = new JSZip()
+var JSZip = require("jszip")
+var FileSaver = require('file-saver');
+var zip = new JSZip()
 
 var optionsFactory = new OptionsFactory
 
