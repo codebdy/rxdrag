@@ -52,6 +52,8 @@ export class NodeState {
       model.attributes.for = ''
     }
 
+    model.attributes.draggable = "false"
+
     return model
   }
 
