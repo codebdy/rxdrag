@@ -111,7 +111,6 @@ import {HtmlBeautify} from "./basic/HtmlBeautify"
 
 var JSZip = require("jszip")
 var FileSaver = require('file-saver');
-var zip = new JSZip()
 
 var optionsFactory = new OptionsFactory
 
@@ -265,8 +264,30 @@ export default {
     },
 
     onDownload(){
-      console.log('download')
+      let themZipPath = this.$store.state.theme.zip
+      if(themZipPath){
+        $axios.get(themZipPath,{responseType:'blob'})
+        .then((res)=>{
+          this.loadZipFile(res.data)
+        })
+      }
     },
+
+    loadZipFile(file){
+      let zip = new JSZip();
+      zip.loadAsync(file)
+      .then(zip=>{
+        zip.file("index.html", 'innerHTML');
+        this.saveFile(zip)
+      })
+    },
+
+    saveFile(zip){
+      zip.generateAsync({type:"blob"})
+      .then(function(content) {
+          saveAs(content, "RX-HTML.zip");
+      });      
+    }
 
   },
 
