@@ -6,6 +6,7 @@
     <toolbar
       @changeTheme = "changeTheme"
       @openProject = "openProject"
+      @download = "onDownload"
     ></toolbar>
     <div class="workspace">
       <LeftArea>
@@ -261,6 +262,10 @@ export default {
         }
         this.$store.commit('isLoading', false)
       })
+    },
+
+    onDownload(){
+      console.log('download')
     },
 
   },
