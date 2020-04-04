@@ -24,7 +24,9 @@
     </div>
     <div class="center"><span class="logo">RXEditor</span></div>
     <div class="right">
-      <div class="button download"> 
+      <div class="button download"
+        @click="onDownLoad"
+      > 
         <i class="fas fa-download"></i> 
         {{$t('toolbar.download')}}
       </div>
@@ -85,6 +87,10 @@ export default {
     },
     openProject(project){
       this.$emit('openProject', project)
+    },
+
+    onDownLoad(){
+      this.$emit('download')
     }
   }
 }
