@@ -165,9 +165,8 @@ export default {
   },
   watch:{
     '$store.state.theme': function (theme) {
-      this.showFiles(theme)
-      //你需要执行的代码
       $bus.$emit('themeChanged', theme)
+      this.showFiles(theme)
     }
   },
 
@@ -196,6 +195,9 @@ export default {
     showFiles(proOrTheme){
       this.files = proOrTheme
       this.loadCssAndJs(proOrTheme)
+      if(this.files.pages.length > 0){
+        $bus.$emit('fileSelected', this.files.pages[0])
+      }
     },
 
     onShowNodeTree(nodes){
@@ -238,6 +240,7 @@ export default {
     },
 
     loadCssAndJs(proOrTheme){
+      if(!proOrTheme) return
       this.$store.commit('isLoading', true)
       let files = []
       proOrTheme.styles.forEach(file=>{
