@@ -479,6 +479,7 @@ export class CommadManager{
     if(this.movingCommand && this.movingCommand.node.parent){
       //this.movingCommand.finish()
       this.finished(this.movingCommand)
+      this.movingCommand.node.changeToState('focusState')
     }
     this.movingCommand = ''
   }
@@ -497,7 +498,6 @@ export class CommadManager{
     this.undoCommands.push(command)
     this.redoCommands.length = 0
     this.submitChanged(command)
-    command.node.changeToState('focusState')
   }
 
   undo(){

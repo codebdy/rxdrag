@@ -11,7 +11,9 @@ export class NodeState {
     //this.onMouseup = (event)=>{
       //添加结束拖动代码
     //}
-    this.onClick = ()=>{rxEditor.clearFocusAndEditStates()};
+    this.onClick = ()=>{
+      rxEditor.clearFocusAndEditStates()
+    }
     this.enter = ()=>{}
     this.leave = ()=>{
     }
