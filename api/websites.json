@@ -10,10 +10,6 @@
     "api":"api/theme/vular"
   },
   {
-    "title":"认证公司",
-    "thumbnail":"images/renzheng.jpg"
-  },
-  {
     "title":"Agency",
     "thumbnail":"images/theme-agency.jpg"
   }

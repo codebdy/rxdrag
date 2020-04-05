@@ -2,15 +2,15 @@
   "title":"Blank",
   "thumbnail":"images/blank.jpg",
   "pages":[
-    "index.html"
+    {
+      "name" : "index.html",
+      "path" : "themes/blank/index.html",
+      "fileType" : "page",
+      "locked" : false
+    },
   ],
   "styles":[
-    "bootstrap.css"
   ],
   "javascript":[
-    "jquery.js"
-  ],
-  "images":[
-    "logo.png"
   ]
 }

@@ -49,10 +49,5 @@
       }
     ],
     "theme":"api/theme/vular"
-  },
-
-  {
-    "title":"万汇",
-    "theme":"api/h5.json"
   }
 ]
