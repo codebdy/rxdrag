@@ -164,8 +164,8 @@ export default {
     }
   },
   watch:{
-    '$store.state.theme': function (theme) {
-      $bus.$emit('themeChanged', theme)
+    '$store.state.project': function (theme) {
+      $bus.$emit('projectChanged', theme)
       this.showFiles(theme)
     }
   },
@@ -179,22 +179,23 @@ export default {
       $bus.$emit('fileSelected', file)
     },
     changeTheme(theme){
-      if(!theme.theme){
+      if(!theme.api){
         return
       }
-      $axios.get(theme.theme)
+      $axios.get(theme.api)
       .then((res)=>{
-        this.$store.commit('themeChange', res.data)
+        this.$store.commit('projectChange', res.data)
       })
     },
 
     openProject(porject){
+      this.$store.commit('projectChange', porject)
       this.showFiles(porject)
     },
 
-    showFiles(proOrTheme){
-      this.files = proOrTheme
-      this.loadCssAndJs(proOrTheme)
+    showFiles(project){
+      this.files = project
+      this.loadCssAndJs(project)
       if(this.files.pages.length > 0){
         $bus.$emit('fileSelected', this.files.pages[0])
       }
@@ -239,17 +240,20 @@ export default {
       $bus.$emit('shellChangedNode', this.node, this.pageId)
     },
 
-    loadCssAndJs(proOrTheme){
-      if(!proOrTheme) return
+    loadCssAndJs(project){
+      if(!project) {
+        this.$store.commit('isLoading', false)
+        return
+      }
       this.$store.commit('isLoading', true)
       let files = []
-      proOrTheme.styles.forEach(file=>{
+      project.styles.forEach(file=>{
         if(!file.locked){
           files.push(file)
         }
       })
 
-      proOrTheme.javascript.forEach(file=>{
+      project.javascript.forEach(file=>{
         if(!file.locked){
           files.push(file)
         }
@@ -304,10 +308,10 @@ export default {
     $bus.$on('showNodeTree', this.onShowNodeTree)
 
 
-    this.$store.commit('themeChange', null)
+    this.$store.commit('projectChange', null)
     $axios.get('api/theme/vular')
     .then((res)=>{
-      this.$store.commit('themeChange', res.data)
+      this.$store.commit('projectChange', res.data)
     })
 
     $axios.get("api/toolbox").then((res)=>{

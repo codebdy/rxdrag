@@ -58,7 +58,7 @@ export default {
 
   mounted () {
     $bus.$on('fileSelected', this.onFileSelected)
-    $bus.$on('themeChanged', ()=>{
+    $bus.$on('projectChanged', ()=>{
       this.files = []
     })
     //$bus.$on('draggingFromToolbox', this.fileSelected)

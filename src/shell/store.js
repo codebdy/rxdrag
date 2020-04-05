@@ -8,7 +8,7 @@ new Vuex.Store({
   state:{
     isLoading:true,
     activedFile:null,
-    theme:null,
+    project:null,
     bootstrapCss : "vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css",
     jquery : "vendor/jquery/jquery-3.4.1.min.js",
     bootstrapJs : "vendor/bootstrap-4.4.1-dist/js/bootstrap.bundle.js",
@@ -21,8 +21,8 @@ new Vuex.Store({
       state.activedFile = file
     },
 
-    themeChange(state, theme){
-      state.theme = theme
+    projectChange(state, project){
+      state.project = project
     },
 
     isLoading(state, isLoading){

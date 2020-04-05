@@ -474,13 +474,13 @@ export default {
     },
 
     setInlineCssAndJs(){
-      this.$store.state.theme.styles.forEach(file=>{
+      this.$store.state.project.styles.forEach(file=>{
         if(!file.locked){
           this.commandProxy.setInlineFile(file)
         }
       })
 
-      this.$store.state.theme.javascript.forEach(file=>{
+      this.$store.state.project.javascript.forEach(file=>{
         if(!file.locked){
           this.commandProxy.setInlineFile(file)
         }
@@ -518,14 +518,14 @@ export default {
 
     writeToPreviewFrame(code, previewCss=`<link href="style/preview.css" rel="stylesheet">`){
       let cssBlocks = ""
-      this.$store.state.theme.styles.forEach(file=>{
+      this.$store.state.project.styles.forEach(file=>{
         if(!file.locked){
           cssBlocks = cssBlocks + `<style type="text/css">${file.code}<\/style>`
         }
       })
 
       let jsBlocks = ""
-      this.$store.state.theme.javascript.forEach(file=>{
+      this.$store.state.project.javascript.forEach(file=>{
         if(!file.locked){
           jsBlocks = jsBlocks + `<script type="text/javascript">${file.code}<\/script>`
         }
@@ -557,7 +557,7 @@ export default {
 
     getCssFiles(){
       let filesStr = ""
-      this.$store.state.theme.styles.forEach(file=>{
+      this.$store.state.project.styles.forEach(file=>{
         if(file.locked){
           filesStr = filesStr + `<link href="${file.path}" rel="stylesheet"> `
         }
@@ -568,7 +568,7 @@ export default {
 
     getJsFiles(){
       let filesStr = ""
-      this.$store.state.theme.javascript.forEach(file=>{
+      this.$store.state.project.javascript.forEach(file=>{
         if(file.locked){
           filesStr = filesStr + `<script type="text/javascript" src="${file.path}"/><\/script> `
         }

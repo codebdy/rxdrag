@@ -2,12 +2,12 @@
   {
     "title":"基础Bootstrap",
     "thumbnail":"images/blank.jpg",
-    "theme":"api/theme/blank"
+    "api":"api/theme/blank"
   },
   {
     "title":"Vular·秀",
     "thumbnail":"images/vular.jpg",
-    "theme":"api/theme/vular"
+    "api":"api/theme/vular"
   },
   {
     "title":"认证公司",
