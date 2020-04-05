@@ -19,12 +19,12 @@
     "smallTitle" : "通用",
     "items":[
       {
-        "title":"4:4:3",
-        "code":"<div class='container'></div>"
+        "title":"4:4:4",
+        "code":"<div class='container'><div class='row'><div class='col-md-4'></div><div class='col-md-4'></div><div class='col-md-4'></div></div></div>"
       },
       {
-        "title":"3:3:3",
-        "code":"<div class='row'></div>"
+        "title":"3:3:3:3",
+        "code":"<div class='container'><div class='row'><div class='col-md-3'></div><div class='col-md-3'></div><div class='col-md-3'></div><div class='col-md-3'></div></div></div>"
       }
     ]
   },
