@@ -102,12 +102,13 @@ import StyleBox from './components/options/StyleBox.vue'
 
 
 //import files from '../mock/files.js'
-import nodesData from '../mock/nodes.js'
+//import nodesData from '../mock/nodes.js'
 //import options from '../mock/options.js'
 //import toolbox from '../mock/toolbox.js'
 
 import {OptionsFactory} from './schemas/OptionsFactory'
 import {HtmlBeautify} from "./basic/HtmlBeautify"
+import {Project} from "./Project"
 
 var JSZip = require("jszip")
 var FileSaver = require('file-saver');
@@ -191,17 +192,14 @@ export default {
       }
       $axios.get(theme.api)
       .then((res)=>{
-        let project = {
-          pages : res.data.pages,
-          styles : res.data.styles,
-          javascript : res.data.javascript
-        }
+        let project = new Project(res.data)
         this.$store.commit('projectChange', project)
         this.$store.commit('themeChange', res.data)
       })
     },
 
     openProject(project){
+      project = new Project(project)
       this.$store.commit('projectChange', project)
       this.showFiles(project)
     },
@@ -295,17 +293,57 @@ export default {
 
     loadZipFile(file){
       let zip = new JSZip();
+      let filesNeedDownload = []
       zip.loadAsync(file)
       .then(zip=>{
-        zip.file("index.html", 'innerHTML');
+        //输出已经加载的HTML，并记录未加载的文件
+        this.$store.state.project.styles.forEach(file=>{
+          if(file.code){
+            zip.file(file.name, this.makeHtml(file.code))
+          }
+          else{
+            filesNeedDownload.push(file)
+          }
+        })
         this.saveFile(zip)
       })
+    },
+
+    makeHtml(htmlCode){
+      let cssBlocks = ""
+      this.$store.state.project.styles.forEach(file=>{
+        if(!file.locked){
+          cssBlocks = cssBlocks + `<style type="text/css">${file.code}<\/style>`
+        }
+      })
+
+      let jsBlocks = ""
+      this.$store.state.project.javascript.forEach(file=>{
+        if(!file.locked){
+          jsBlocks = jsBlocks + `<script type="text/javascript">${file.code}<\/script>`
+        }
+      })
+      return `<html>
+            <head>
+              <title>RXEditor Workspace</title>
+              <link href="${this.$store.state.bootstrapCss}" rel="stylesheet">
+              <link href="${this.$store.state.fontAwesome}" rel="stylesheet">
+              ${cssBlocks}
+            </head>
+            <body>
+              ${htmlCode}
+              <script type="text/javascript" src="${this.$store.state.jquery}"/><\/script>
+              <script type="text/javascript" src="${this.$store.state.bootstrapJs}"/><\/script>
+              ${jsBlocks}
+            </body>
+          </html>
+        `
     },
 
     saveFile(zip){
       zip.generateAsync({type:"blob"})
       .then(function(content) {
-          saveAs(content, "RX-HTML.zip");
+        saveAs(content, "RX-HTML.zip");
       });      
     }
 
@@ -324,7 +362,7 @@ export default {
     this.$store.commit('projectChange', null)
     $axios.get('api/project/vular')
     .then((res)=>{
-      this.$store.commit('projectChange', res.data)
+      this.$store.commit('projectChange', new Project(res.data))
     })
 
     $axios.get("api/toolbox").then((res)=>{

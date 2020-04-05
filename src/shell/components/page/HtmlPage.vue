@@ -489,92 +489,19 @@ export default {
 
     initFrame(){
       let iframedocument =  this.$refs.canvasFrame.contentDocument;
-
-      let iframeContent = `<html style="width:100%;height:100%;">
-            <head>
-              <title>RXEditor Workspace</title>
-              <link href="${this.$store.state.bootstrapCss}" rel="stylesheet">
-              <link href="${this.$store.state.fontAwesome}" rel="stylesheet">
-              ${this.getCssFiles()}
-              <link href="style/rxeditor.css" rel="stylesheet">
-            </head>
-            <body id="page-top" style="background-color:#FFF;padding:0;width:100%; height:100%;">
-              <div id="canvas"></div>
-              <script type="text/javascript" src="${this.$store.state.jquery}"/><\/script>
-              <script type="text/javascript" src="${this.$store.state.bootstrapJs}"/><\/script>
-              ${this.getJsFiles()}
-              <script type="text/javascript" src="dist/core.js"/><\/script>
-              <script>
-                creatEditorCore(${this.pageId})
-                rxEditor.hangOn('canvas');
-              <\/script>
-            </body>
-          </html>
-        `
+      let iframeContent = this.$store.state.project.getCanvasHtml(this.$store, this.pageId)
       iframedocument.open();
       iframedocument.write(iframeContent);
       iframedocument.close();
     },
 
-    writeToPreviewFrame(code, previewCss=`<link href="style/preview.css" rel="stylesheet">`){
-      let cssBlocks = ""
-      this.$store.state.project.styles.forEach(file=>{
-        if(!file.locked){
-          cssBlocks = cssBlocks + `<style type="text/css">${file.code}<\/style>`
-        }
-      })
-
-      let jsBlocks = ""
-      this.$store.state.project.javascript.forEach(file=>{
-        if(!file.locked){
-          jsBlocks = jsBlocks + `<script type="text/javascript">${file.code}<\/script>`
-        }
-      })
+    writeToPreviewFrame(code){
       let iframedocument =  this.$refs.previewFrame.contentDocument;
 
-      let iframeContent = `<html>
-            <head>
-              <title>RXEditor Workspace</title>
-              <link href="${this.$store.state.bootstrapCss}" rel="stylesheet">
-              <link href="${this.$store.state.fontAwesome}" rel="stylesheet">
-              ${previewCss}
-              ${this.getCssFiles()}
-              ${cssBlocks}
-            </head>
-            <body>
-              ${code}
-              <script type="text/javascript" src="${this.$store.state.jquery}"/><\/script>
-              <script type="text/javascript" src="${this.$store.state.bootstrapJs}"/><\/script>
-              ${this.getJsFiles()}
-              ${jsBlocks}
-            </body>
-          </html>
-        `
+      let iframeContent = this.$store.state.project.getPreviewHtml(this.$store, code)
       iframedocument.open();
       iframedocument.write(iframeContent);
       iframedocument.close();
-    },
-
-    getCssFiles(){
-      let filesStr = ""
-      this.$store.state.project.styles.forEach(file=>{
-        if(file.locked){
-          filesStr = filesStr + `<link href="${file.path}" rel="stylesheet"> `
-        }
-      })
-
-      return filesStr
-    },
-
-    getJsFiles(){
-      let filesStr = ""
-      this.$store.state.project.javascript.forEach(file=>{
-        if(file.locked){
-          filesStr = filesStr + `<script type="text/javascript" src="${file.path}"/><\/script> `
-        }
-      })
-
-      return filesStr
     },
 
     emitShellState(){
