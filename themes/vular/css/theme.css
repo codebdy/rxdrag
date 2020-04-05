@@ -78,7 +78,7 @@ body{
 }
 
 .page-on-scroll .navbar{
-  background: #22252a;
+  background: #140e15;
 }
 
 .nav-link i{
@@ -87,8 +87,9 @@ body{
 }
 
 @media (min-width: 992px) {
+
   .page-on-scroll .navbar{
-    background: #22252a;
+    background: #140e15;
     height: 60px;
   }
 
@@ -98,9 +99,16 @@ body{
 }
 
 @media (max-width: 991px) {
+  .navbar{
+    background: #140e15;
+  }
+
+  .navbar-brand{
+    height: 40px;
+  }
 
   .navbar-collapse{
-    background: #22252a;
+    background: #140e15;
     padding-bottom: 10px;
   }
 
