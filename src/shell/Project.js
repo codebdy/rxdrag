@@ -68,12 +68,34 @@ export class Project{
         jsBlocks = jsBlocks + `<script type="text/javascript">${file.code}<\/script>`
       }
     })
+
+    return this.getCommonHtml(store, code, cssBlocks, jsBlocks)
+  }
+
+  getRealHtml(store, code){
+    let cssBlocks = ""
+    this.styles.forEach(file=>{
+      if(!file.locked){
+        cssBlocks = cssBlocks + ` <link href="css/${file.name}" rel="stylesheet">`
+      }
+    })
+
+    let jsBlocks = ""
+    this.javascript.forEach(file=>{
+      if(!file.locked){
+        jsBlocks = jsBlocks + `<script src="js/${file.name}"><\/script>`
+      }
+    })
+    return this.getCommonHtml(store, code, cssBlocks, jsBlocks, '')
+  }
+
+  getCommonHtml(store, code, cssBlocks, jsBlocks, previewCode ='<link href="style/preview.css" rel="stylesheet">'){
     return `<html>
             <head>
               <title>RXEditor Workspace</title>
               <link href="${store.state.bootstrapCss}" rel="stylesheet">
               <link href="${store.state.fontAwesome}" rel="stylesheet">
-              <link href="style/preview.css" rel="stylesheet">
+              ${previewCode}
               ${this.getCssFilesString()}
               ${cssBlocks}
             </head>

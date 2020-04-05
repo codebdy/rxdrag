@@ -297,7 +297,7 @@ export default {
       zip.loadAsync(file)
       .then(zip=>{
         //输出已经加载的HTML，并记录未加载的文件
-        this.$store.state.project.styles.forEach(file=>{
+        this.$store.state.project.pages.forEach(file=>{
           if(file.code){
             zip.file(file.name, this.makeHtml(file.code))
           }
@@ -305,39 +305,33 @@ export default {
             filesNeedDownload.push(file)
           }
         })
+        this.saveCssFiles(zip)
+        this.saveJsFiles(zip)
         this.saveFile(zip)
       })
     },
 
-    makeHtml(htmlCode){
-      let cssBlocks = ""
+    saveCssFiles(zip){
       this.$store.state.project.styles.forEach(file=>{
         if(!file.locked){
-          cssBlocks = cssBlocks + `<style type="text/css">${file.code}<\/style>`
+          zip.folder('css').file(file.name, file.code)
         }
       })
+    },
 
-      let jsBlocks = ""
+    saveJsFiles(zip){
+      zip.folder('js')
       this.$store.state.project.javascript.forEach(file=>{
         if(!file.locked){
-          jsBlocks = jsBlocks + `<script type="text/javascript">${file.code}<\/script>`
+          zip.folder('js').file(file.name, file.code)
         }
       })
-      return `<html>
-            <head>
-              <title>RXEditor Workspace</title>
-              <link href="${this.$store.state.bootstrapCss}" rel="stylesheet">
-              <link href="${this.$store.state.fontAwesome}" rel="stylesheet">
-              ${cssBlocks}
-            </head>
-            <body>
-              ${htmlCode}
-              <script type="text/javascript" src="${this.$store.state.jquery}"/><\/script>
-              <script type="text/javascript" src="${this.$store.state.bootstrapJs}"/><\/script>
-              ${jsBlocks}
-            </body>
-          </html>
-        `
+    },
+
+    makeHtml(htmlCode){
+      let html = this.$store.state.project.getRealHtml(this.$store, htmlCode)
+      let beautify = new HtmlBeautify(html, '  ')
+      return beautify.result
     },
 
     saveFile(zip){
