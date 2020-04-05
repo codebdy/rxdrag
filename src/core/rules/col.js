@@ -6,6 +6,8 @@ export default{
     paddingX:'20px',
     paddingY:'20px',
   },
+  //没有子元素，显示空白
+  empertyMargin:true,
   classes:[
     'col', 
     'col-1','col-2','col-3', 'col-4', 'col-5', 'col-6', 

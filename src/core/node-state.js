@@ -35,13 +35,13 @@ export class NodeState {
     model.classList.push.apply(model.classList, rxEditor.optionClasses)
     let node = this.node
     if((rxEditor.state.showMarginX && node.rule.editMarginStyle)
-      || node.children.length === 0
+      || (node.children.length === 0 && node.rule.empertyMargin)
       ){
       model.styles['padding-left'] = node.rule.editMarginStyle ? node.rule.editMarginStyle.paddingX : 0
       model.styles['padding-right'] = node.rule.editMarginStyle ? node.rule.editMarginStyle.paddingX : 0
     }
     if((rxEditor.state.showMarginY && node.rule.editMarginStyle)
-      || node.children.length === 0
+      || (node.children.length === 0 && node.rule.empertyMargin)
       ){
       model.styles['padding-top'] = node.rule.editMarginStyle ? node.rule.editMarginStyle.paddingY : 0
       model.styles['padding-bottom'] = node.rule.editMarginStyle ? node.rule.editMarginStyle.paddingY : 0
