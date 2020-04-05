@@ -220,7 +220,7 @@ export default {
         showEditMargin : true,
         showMarginX : true,
         showMarginY : true,
-        screenWidth : 'lg',
+        screenWidth : 'md',
         preview : false,
       },
       viewCode : false,
