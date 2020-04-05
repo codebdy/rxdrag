@@ -164,9 +164,16 @@ export default {
     }
   },
   watch:{
-    '$store.state.project': function (theme) {
-      $bus.$emit('projectChanged', theme)
-      this.showFiles(theme)
+    '$store.state.project': function (project) {
+      $bus.$emit('projectChanged', project)
+      this.showFiles(project)
+      //Load theme
+      if(project.theme){
+        $axios.get(project.theme)
+        .then((res)=>{
+          this.$store.commit('themeChange', res.data)
+        })
+      }
     }
   },
 
@@ -184,13 +191,19 @@ export default {
       }
       $axios.get(theme.api)
       .then((res)=>{
-        this.$store.commit('projectChange', res.data)
+        let project = {
+          pages : res.data.pages,
+          styles : res.data.styles,
+          javascript : res.data.javascript
+        }
+        this.$store.commit('projectChange', project)
+        this.$store.commit('themeChange', res.data)
       })
     },
 
-    openProject(porject){
-      this.$store.commit('projectChange', porject)
-      this.showFiles(porject)
+    openProject(project){
+      this.$store.commit('projectChange', project)
+      this.showFiles(project)
     },
 
     showFiles(project){
@@ -309,7 +322,7 @@ export default {
 
 
     this.$store.commit('projectChange', null)
-    $axios.get('api/theme/vular')
+    $axios.get('api/project/vular')
     .then((res)=>{
       this.$store.commit('projectChange', res.data)
     })

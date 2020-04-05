@@ -1,6 +1,6 @@
-[
   {
     "title":"Vular·秀",
+    "theme":"api/theme/vular",
     "pages":[
       {
         "name" : "index.html",
@@ -47,12 +47,5 @@
         "fileType": "javascript",
         "locked" : false
       }
-    ],
-    "theme":"api/theme/vular"
-  },
-
-  {
-    "title":"万汇",
-    "theme":"api/h5.json"
+    ]
   }
-]
