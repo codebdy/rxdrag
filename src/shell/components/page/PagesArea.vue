@@ -17,7 +17,7 @@
       <div class="tab"
         v-for = "(file, i) in files" 
         v-show = "file === activedFile"
-        :key = "file.name + file.fileType"
+        :key = "file.name + file.fileType + $store.state.project.id"
       >
         <HtmlPage 
           v-if="file.fileType === 'page'"
@@ -43,7 +43,6 @@ export default {
     CodePage,
   },
   props:{
-    //value:{ default:[] }, 
   },
   data () {
     return {

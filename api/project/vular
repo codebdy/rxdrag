@@ -1,6 +1,7 @@
   {
     "title":"Vular·秀",
     "theme":"api/theme/vular",
+    "id":"project1",
     "pages":[
       {
         "name" : "index.html",

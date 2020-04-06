@@ -6,6 +6,14 @@ export class Project{
     this.styles = data.styles
     this.javascript = data.javascript
     this.theme = data.theme
+
+    this.id = data.id ? data.id : this.seedId()
+  }
+
+  seedId(){
+    if(!Project.idSeed) Project.idSeed = 1
+    Project.idSeed ++
+    return Project.idSeed
   }
 
   getCssFilesString(){
