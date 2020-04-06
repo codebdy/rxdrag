@@ -4,7 +4,8 @@ var webpack = require('webpack')
 module.exports = {
   entry: {
     shell : './src/shell.js',
-    core : './src/core.js'
+    core : './src/core.js',
+    rxpage : './src/rxpage.js'
   },
   output: {
     path: path.resolve(__dirname, './dist'),
