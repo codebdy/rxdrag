@@ -11,6 +11,7 @@
   },
   {
     "title":"Agency",
-    "thumbnail":"images/theme-agency.jpg"
+    "thumbnail":"images/theme-agency.jpg",
+    "api":"api/theme/agency"
   }
 ]
