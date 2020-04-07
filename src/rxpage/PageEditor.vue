@@ -72,12 +72,8 @@
           :class="{active : fullScreen}"
           @click = "fullScreen = !fullScreen"
         >
-          <i class="fas fa-compress" 
-            v-if="fullScreen"
-          ></i>
           <i class="fas fa-arrows-alt" 
             style="transform:rotate(45deg);font-size:18px;"
-            v-else
           ></i>
         </div>
         <div class="rx-icon-button ex-big" title = "">
