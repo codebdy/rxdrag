@@ -1,5 +1,6 @@
 <template>
-  <div class="rx-toolbox"
+  <div class="rx-mini-widget"
+    v-if="inputValue"
     :style="{
       top : top + 'px',
       right : right + 'px',
@@ -7,13 +8,17 @@
       width : width + 'px'
     }"
   >
-    <div class="toolbox-handle"
+    <div class="mini-widget-handle"
       @mousedown = "startMove"
     >
       <div></div>
-      <span class="toolbox-close">×</span>
+      <span class="mini-widget-close"
+        @click="close"
+      >×</span>
     </div>
-    <div>Toolbox Body</div>
+    <div>
+      <slot></slot>
+    </div>
 
     <div class="top-handle"
       @mousedown = "startChangeHeightAndTop"
@@ -52,7 +57,21 @@
 
 <script>
 export default {
-  name: 'XHandle',
+  name: 'MiniWidget',
+  props:{
+    value:{ default:true }, 
+  },
+  computed:{
+    inputValue: {
+      get:function() {
+        return this.value;
+      },
+      set:function(val) {
+        this.$emit('input', val);
+      },
+    },
+
+  },
   data () {
     return {
       //dragging : false,
@@ -77,6 +96,9 @@ export default {
 
 
   methods: {
+    close(){
+      this.inputValue = false
+    },
     startMove(event){
       document.addEventListener('mousemove', this.onMove)
       //$bus.$on('canvasMouseMove', this.mouseMove)
@@ -225,7 +247,7 @@ export default {
 
 <style>
 
-  .rx-toolbox{
+  .rx-mini-widget{
     position: fixed;
     box-shadow: 1px 1px 5px rgba(0,0,0, 0.5);
     font-size: 13px;
@@ -235,13 +257,13 @@ export default {
     padding:5px;
   }
 
-  .rx-toolbox{
+  .rx-mini-widget{
     background: #424242;
     color:#c2c2c2; 
     border-radius: 3px;
   }
 
-  .toolbox-handle{
+  .mini-widget-handle{
     width: 100%;
     height: 16px;
     display: flex;
@@ -257,7 +279,7 @@ export default {
     border-bottom: #363636 solid 1px;
   }
 
-  .toolbox-close{
+  .mini-widget-close{
     margin-right: -2px;
     margin-top:-5px;
     cursor: pointer;

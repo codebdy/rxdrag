@@ -30,15 +30,19 @@
 
       </div>
       <div class="right ">
-        <div class="rx-icon-button" title = "">
+        <div class="rx-icon-button" 
+          title = ""
+          :class="{active:toolbox}"
+          @click ="toolbox = !toolbox"
+        >
           <i class="fas fa-tools"></i>
         </div>
         <div class="rx-icon-button" title = "">
           <i class="fas fa-paint-brush"></i>
         </div>
-        <div class="rx-icon-button small" title = "">
+        <!--div class="rx-icon-button small" title = "">
           <i class="fas fa-project-diagram"></i>
-        </div>
+        </div-->
         <div class="rx-icon-button" title = "">
           <i class="far fa-square"></i>
         </div>
@@ -72,19 +76,20 @@
       </div>
     </div>
     <div class="canvas"></div>
-    <Toolbox></Toolbox>
+    <MiniWidget v-model="toolbox">ToolBox</MiniWidget>
   </div>
 </template>
 
 <script>
-import Toolbox from './components/Toolbox.vue'
+import MiniWidget from './components/MiniWidget.vue'
 export default {
   name: 'rxpage',
   components:{
-    Toolbox
+    MiniWidget
   },
   data () {
     return {
+      toolbox:true,
     }
   },
   computed:{
