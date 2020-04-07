@@ -1,5 +1,7 @@
 <template>
-  <div class="rxpage-editor">
+  <div class="rxpage-editor"
+    :class="fullScreen ? 'full-screen' :''"
+  >
     <div class="rx-toolbar">
       <div class="left">
         <div class="rx-icon-button big" 
@@ -66,8 +68,17 @@
         <div class="rx-icon-button small" title = "">
           <i class="fas fa-redo"></i>
         </div>
-        <div class="rx-icon-button ex-big" title = "">
-          <i class="fas fa-arrows-alt" style="transform:rotate(45deg);font-size:18px;"></i>
+        <div class="rx-icon-button ex-big" title = ""
+          :class="{active : fullScreen}"
+          @click = "fullScreen = !fullScreen"
+        >
+          <i class="fas fa-compress" 
+            v-if="fullScreen"
+          ></i>
+          <i class="fas fa-arrows-alt" 
+            style="transform:rotate(45deg);font-size:18px;"
+            v-else
+          ></i>
         </div>
         <div class="rx-icon-button ex-big" title = "">
           <i class="fas fa-question-circle" ></i>
@@ -90,13 +101,25 @@ export default {
   components:{
     MiniWidget
   },
+  props:{
+    value : { default:'test' }, 
+  },
+  computed:{
+    inputValue: {
+      get:function() {
+        return this.value;
+      },
+      set:function(val) {
+        this.$emit('input', val);
+      },
+    },
+  },
   data () {
     return {
       toolbox : true,
       optionbox : true,
+      fullScreen : false,
     }
-  },
-  computed:{
   },
 
   methods:{
@@ -118,11 +141,21 @@ export default {
     -ms-user-select: none;
     user-select: none;
   }
+
   .rxpage-editor{
     height: 100%;
     width: 100%;
     display: flex;
     flex-flow: column;
+    border:0;
+    z-index: 99;
+    background: #222;
+  }
+
+  .rxpage-editor.full-screen{
+    position: fixed;
+    top : 0;
+    left : 0;
   }
 
   .rxpage-editor .rx-toolbar{
@@ -132,7 +165,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding: 0 5px;
-    box-shadow: 1px 1px 5px #ccc;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
     background: #45484c;
     color: #c6d0db;
     font-size: 13px;
