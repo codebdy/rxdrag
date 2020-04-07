@@ -37,7 +37,9 @@
         >
           <i class="fas fa-tools"></i>
         </div>
-        <div class="rx-icon-button" title = "">
+        <div class="rx-icon-button" title = ""
+          :class="{active:optionbox}"
+          @click = "optionbox = !optionbox">
           <i class="fas fa-paint-brush"></i>
         </div>
         <!--div class="rx-icon-button small" title = "">
@@ -77,6 +79,7 @@
     </div>
     <div class="canvas"></div>
     <MiniWidget v-model="toolbox">ToolBox</MiniWidget>
+    <MiniWidget :top="100" :left="20" v-model="optionbox">Option Box</MiniWidget>
   </div>
 </template>
 
@@ -89,7 +92,8 @@ export default {
   },
   data () {
     return {
-      toolbox:true,
+      toolbox : true,
+      optionbox : true,
     }
   },
   computed:{

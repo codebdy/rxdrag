@@ -2,10 +2,11 @@
   <div class="rx-mini-widget"
     v-if="inputValue"
     :style="{
-      top : top + 'px',
-      right : right + 'px',
-      height : height + 'px',
-      width : width + 'px'
+      top : realTop + 'px',
+      right : realRight + 'px',
+      height : realHeight + 'px',
+      width : realWidth + 'px',
+      left : realLeft + 'px'
     }"
   >
     <div class="mini-widget-handle"
@@ -20,7 +21,7 @@
       <slot></slot>
     </div>
 
-    <div class="top-handle"
+    <div class="realTop-handle"
       @mousedown = "startChangeHeightAndTop"
     >
     </div>
@@ -32,15 +33,15 @@
       @mousedown = "startChangeWidthAndLeft"
     >
     </div>
-    <div class="right-handle"
+    <div class="realRight-handle"
     @mousedown = "startChangeWidthAndRight"
     >
     </div>
-    <div class="left-top-handle"
+    <div class="left-realTop-handle"
       @mousedown = "startChangeLeftTop"
     >
     </div>
-    <div class="right-top-handle"
+    <div class="realRight-realTop-handle"
       @mousedown = "startChangeRightTop"
     >
     </div>
@@ -48,7 +49,7 @@
       @mousedown = "startChangeLeftBottom"
     >
     </div>
-    <div class="right-bottom-handle"
+    <div class="realRight-bottom-handle"
       @mousedown = "startChangeRightBottom"
     >
     </div>
@@ -59,7 +60,12 @@
 export default {
   name: 'MiniWidget',
   props:{
-    value:{ default:true }, 
+    value : { default:true }, 
+    top : { default:50 },
+    right : { default:10 },
+    height : { default:400 },
+    width : { default:280 },
+    left : { default:'' },
   },
   computed:{
     inputValue: {
@@ -77,16 +83,21 @@ export default {
       //dragging : false,
       lastX:'',
       lastY:'',
-      top:50,
-      right:10,
-      height:400,
-      width:280,
+      realTop:50,
+      realRight:10,
+      realHeight:400,
+      realWidth:280,
+      realLeft: '',
     }
   },
 
   mounted () {
     document.addEventListener('mouseup', this.onMouseUp)
-   // $bus.$on('canvasMouseup', this.mouseUp)
+    this.realTop = this.top
+    this.realRight = this.right
+    this.realHeight = this.height
+    this.realWidth = this.width
+    this.realLeft = this.left
   },
 
   beforeDestroyed() {
@@ -162,64 +173,87 @@ export default {
     },
 
     onMove(event){
-      this.right = this.right - (event.screenX - this.lastX)
-      this.top = this.top + (event.screenY - this.lastY)
+      if(this.realLeft !== ''){
+        this.realLeft = this.realLeft + (event.screenX - this.lastX)
+      }
+      else{
+        this.realRight = this.realRight - (event.screenX - this.lastX)
+      }
+      this.realTop = this.realTop + (event.screenY - this.lastY)
 
       this.lastX = event.screenX
       this.lastY = event.screenY
     },
 
     onExpandTop(event){
-      this.top = this.top + (event.screenY - this.lastY)
-      this.height = this.height - (event.screenY - this.lastY)
+      this.realTop = this.realTop + (event.screenY - this.lastY)
+      this.realHeight = this.realHeight - (event.screenY - this.lastY)
       this.lastY = event.screenY
     },
 
     onExpandBottom(event){
       //this.bottom = this.bottom + (event.screenY - this.lastY)
-      this.height = this.height + (event.screenY - this.lastY)
+      this.realHeight = this.realHeight + (event.screenY - this.lastY)
       this.lastY = event.screenY
     },
 
     onExpandLeft(event){
-      this.width = this.width - (event.screenX - this.lastX)
+      if(this.realLeft){
+        this.realLeft = this.realLeft + (event.screenX - this.lastX)
+        this.realWidth = this.realWidth - (event.screenX - this.lastX)
+      }
+      else{
+        this.realWidth = this.realWidth - (event.screenX - this.lastX)
+      }
       this.lastX = event.screenX
     },
 
     onExpandRight(event){
-      this.right = this.right - (event.screenX - this.lastX)
-      this.width = this.width - (this.lastX - event.screenX)
+      this.realRight = this.realRight - (event.screenX - this.lastX)
+      this.realWidth = this.realWidth - (this.lastX - event.screenX)
       this.lastX = event.screenX
     },
 
     onExpandLeftTop(event){
-      this.width = this.width - (event.screenX - this.lastX)
-      this.top = this.top + (event.screenY - this.lastY)
-      this.height = this.height - (event.screenY - this.lastY)
+      if(this.realLeft){
+        this.realLeft = this.realLeft + (event.screenX - this.lastX)
+        this.realWidth = this.realWidth - (event.screenX - this.lastX)
+      }
+      else{
+        this.realWidth = this.realWidth - (event.screenX - this.lastX)
+      }
+      this.realTop = this.realTop + (event.screenY - this.lastY)
+      this.realHeight = this.realHeight - (event.screenY - this.lastY)
       this.lastX = event.screenX
       this.lastY = event.screenY
     },
 
     onExpandRightTop(event){
-      this.right = this.right - (event.screenX - this.lastX)
-      this.width = this.width - (this.lastX - event.screenX)
-      this.top = this.top + (event.screenY - this.lastY)
-      this.height = this.height - (event.screenY - this.lastY)
+      this.realRight = this.realRight - (event.screenX - this.lastX)
+      this.realWidth = this.realWidth - (this.lastX - event.screenX)
+      this.realTop = this.realTop + (event.screenY - this.lastY)
+      this.realHeight = this.realHeight - (event.screenY - this.lastY)
       this.lastX = event.screenX
       this.lastY = event.screenY
     },
 
     onExpandLeftBottom(event){
-      this.width = this.width - (event.screenX - this.lastX)
-      this.height = this.height + (event.screenY - this.lastY)
+      if(this.realLeft){
+        this.realLeft = this.realLeft + (event.screenX - this.lastX)
+        this.realWidth = this.realWidth - (event.screenX - this.lastX)
+      }
+      else{
+        this.realWidth = this.realWidth - (event.screenX - this.lastX)
+      }
+      this.realHeight = this.realHeight + (event.screenY - this.lastY)
       this.lastX = event.screenX
       this.lastY = event.screenY
     },
 
     onExpandRightBottom(event){
-      this.right = this.right - (event.screenX - this.lastX)
-      this.width = this.width - (this.lastX - event.screenX)
-      this.height = this.height + (event.screenY - this.lastY)
+      this.realRight = this.realRight - (event.screenX - this.lastX)
+      this.realWidth = this.realWidth - (this.lastX - event.screenX)
+      this.realHeight = this.realHeight + (event.screenY - this.lastY)
       this.lastX = event.screenX
       this.lastY = event.screenY
     },
@@ -285,7 +319,7 @@ export default {
     cursor: pointer;
   }
 
-  .top-handle{
+  .realTop-handle{
     position: absolute;
     left:5px;
     top:0;
@@ -312,7 +346,7 @@ export default {
     cursor: w-resize;
   }
 
-  .right-handle{
+  .realRight-handle{
     position: absolute;
     right:0;
     top:5px;
@@ -321,7 +355,7 @@ export default {
     cursor: e-resize;
   }
 
-  .left-top-handle{
+  .left-realTop-handle{
     position: absolute;
     left:0;
     top:0;
@@ -330,7 +364,7 @@ export default {
     cursor: nw-resize;
   }
 
-  .right-top-handle{
+  .realRight-realTop-handle{
     position: absolute;
     right:0;
     top:0;
@@ -348,7 +382,7 @@ export default {
     cursor: sw-resize;
   }
 
-  .right-bottom-handle{
+  .realRight-bottom-handle{
     position: absolute;
     right:0;
     bottom:0;
