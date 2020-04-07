@@ -72,16 +72,16 @@
       </div>
     </div>
     <div class="canvas"></div>
-    <div class="rx-toolbox">
-      <div>工具箱</div>
-    </div>
+    <Toolbox></Toolbox>
   </div>
 </template>
 
 <script>
+import Toolbox from './components/Toolbox.vue'
 export default {
   name: 'rxpage',
   components:{
+    Toolbox
   },
   data () {
     return {
@@ -103,6 +103,12 @@ export default {
 </script>
 
 <style>
+  .can-not-be-selected{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
   .rxpage-editor{
     height: 100%;
     width: 100%;
@@ -182,16 +188,6 @@ export default {
     height: 100%;
     background: rgba(73,76,69,0.7);
     z-index: 1;
-  }
-
-  .rx-toolbox{
-    position: fixed;
-    top:60px;
-    right: 10px;
-    width: 220px;
-    height: calc(100% - 120px);
-    background: #fff;
-    box-shadow: 1px 1px 5px #888;
   }
 
 </style>
