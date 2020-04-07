@@ -118,8 +118,8 @@ export default {
     align-items: center;
     padding: 0 5px;
     box-shadow: 1px 1px 5px #ccc;
-    background: #75b325;
-    color: #d1e3b9;
+    background: #45484c;
+    color: #c6d0db;
     font-size: 13px;
   }
 

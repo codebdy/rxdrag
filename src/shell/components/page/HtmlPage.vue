@@ -360,6 +360,19 @@ export default {
     onRxEditorReady(){
       //console.log(this._uid)
       this.commandProxy.changeCanvasState(this.state)
+      if(!this.inputValue.code){
+        $axios.get(this.inputValue.path)
+        .then((res)=>{
+          this.$set(this.inputValue, 'code', res.data)
+          this.sentHtmlToCanvas()
+        })
+      }
+      else{
+        this.sentHtmlToCanvas()
+      }
+    },
+
+    sentHtmlToCanvas(){
       this.commandProxy.loadHtml(this.inputValue.code)
       this.setInlineCssAndJs()
     },
