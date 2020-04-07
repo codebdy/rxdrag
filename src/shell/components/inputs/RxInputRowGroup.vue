@@ -86,7 +86,7 @@ export default {
         this.inputValue[i].value = cloneValue(this.inputValue[i].defaultValue)
       }
       event.stopPropagation()
-      $bus.$emit('optionValueChange')
+      $rxbus.$emit('optionValueChange')
     },
 
     remove(value){
@@ -95,12 +95,12 @@ export default {
           this.inputValue[i].value = ''
         }
       }
-      $bus.$emit('optionValueChange')
+      $rxbus.$emit('optionValueChange')
     },
 
     removeSubValue(row, subValue){
       remove(subValue, row.value)
-      $bus.$emit('optionValueChange')
+      $rxbus.$emit('optionValueChange')
     }
   },
 }

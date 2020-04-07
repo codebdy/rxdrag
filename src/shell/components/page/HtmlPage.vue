@@ -254,23 +254,23 @@ export default {
     this.pageId = this._uid
     this.commandProxy.serveForShell = this
     this.commandProxy.iframe = this.$refs.canvasFrame
-    //$bus.$on('activedFile', this.onFileActived)
-    $bus.$on('draggingFromToolbox', this.draggingFromToolbox)
-    $bus.$on('shellChangedNode', this.nodeChanged)
-    $bus.$on('canvasHeight', this.onCanvasHeight)
-    $bus.$on('commandExcuted', this.onCommandExcuted)
-    $bus.$on('focusNode', this.onFocusNode)
-    $bus.$on('unFocusNode', this.onUnFocusNode)
-    $bus.$on('nodeSelected', this.onNodeSelected)
+    //$rxbus.$on('activedFile', this.onFileActived)
+    $rxbus.$on('draggingFromToolbox', this.draggingFromToolbox)
+    $rxbus.$on('shellChangedNode', this.nodeChanged)
+    $rxbus.$on('canvasHeight', this.onCanvasHeight)
+    $rxbus.$on('commandExcuted', this.onCommandExcuted)
+    $rxbus.$on('focusNode', this.onFocusNode)
+    $rxbus.$on('unFocusNode', this.onUnFocusNode)
+    $rxbus.$on('nodeSelected', this.onNodeSelected)
     this.initFrame()
     document.addEventListener('mouseup', this.onMouseUp)
     document.addEventListener('keyup', this.onKeyup)
     window.addEventListener("message", this.receiveCanvasMessage)
-    $bus.$on('duplicateNode', this.onDuplicateNode)
-    $bus.$on('removeNode', this.onRemoveNode)
-    $bus.$on('replyHtmlCode', this.onReplyHtmlCode)
-    $bus.$on('nodeHtmlChanged', this.onNodeHtmlChanged)
-    $bus.$on('codeFileChange', this.onCodeFileChange)
+    $rxbus.$on('duplicateNode', this.onDuplicateNode)
+    $rxbus.$on('removeNode', this.onRemoveNode)
+    $rxbus.$on('replyHtmlCode', this.onReplyHtmlCode)
+    $rxbus.$on('nodeHtmlChanged', this.onNodeHtmlChanged)
+    $rxbus.$on('codeFileChange', this.onCodeFileChange)
 
     this.emitShellState()
 
@@ -279,18 +279,18 @@ export default {
 
   destoryed () {
     //delete window.$editorBus
-    $bus.$off('draggingFromToolbox', this.draggingFromToolbox)
-    $bus.$off('shellChangedNode', this.nodeChanged)
-    $bus.$off('canvasHeight', this.onCanvasHeight)
-    $bus.$off('commandExcuted', this.onCommandExcuted)
-    $bus.$off('focusNode', this.onFocusNode)
-    $bus.$off('unFocusNode', this.onUnFocusNode)
-    $bus.$off('nodeSelected', this.onNodeSelected)
-    $bus.$off('duplicateNode', this.onDuplicateNode)
-    $bus.$off('removeNode', this.onRemoveNode)
-    $bus.$off('replyHtmlCode', this.onReplyHtmlCode)
-    $bus.$off('nodeHtmlChanged', this.onNodeHtmlChanged)
-    $bus.$off('codeFileChange', this.onCodeFileChange)
+    $rxbus.$off('draggingFromToolbox', this.draggingFromToolbox)
+    $rxbus.$off('shellChangedNode', this.nodeChanged)
+    $rxbus.$off('canvasHeight', this.onCanvasHeight)
+    $rxbus.$off('commandExcuted', this.onCommandExcuted)
+    $rxbus.$off('focusNode', this.onFocusNode)
+    $rxbus.$off('unFocusNode', this.onUnFocusNode)
+    $rxbus.$off('nodeSelected', this.onNodeSelected)
+    $rxbus.$off('duplicateNode', this.onDuplicateNode)
+    $rxbus.$off('removeNode', this.onRemoveNode)
+    $rxbus.$off('replyHtmlCode', this.onReplyHtmlCode)
+    $rxbus.$off('nodeHtmlChanged', this.onNodeHtmlChanged)
+    $rxbus.$off('codeFileChange', this.onCodeFileChange)
 
     window.removeEventListener("message", this.receiveCanvasMessage);
     document.removeEventListener('mouseup', this.onMouseUp)
@@ -301,7 +301,7 @@ export default {
     resizeScreen(size){
       this.state.screenWidth = size
       this.commandProxy.changeCanvasState(this.state)
-      $bus.$emit('resizeScreen', this.state.screenWidth, this.pageId)
+      $rxbus.$emit('resizeScreen', this.state.screenWidth, this.pageId)
     },
 
     outlineClick(){
@@ -411,7 +411,7 @@ export default {
       this.canRedo = canRedo
       this.nodeTree.excuteCommand(commandSchema)
 
-      $bus.$emit('showNodeTree', this.nodeTree.children)
+      $rxbus.$emit('showNodeTree', this.nodeTree.children)
     },
 
     onFocusNode(node, pageId){
@@ -420,8 +420,8 @@ export default {
       }
       this.focusNode = node
       this.nodeTree.selectNode(node.id)
-      $bus.$emit('showNodeTree', this.nodeTree.children)
-      $bus.$emit('editNode', this.focusNode, this.pageId)
+      $rxbus.$emit('showNodeTree', this.nodeTree.children)
+      $rxbus.$emit('editNode', this.focusNode, this.pageId)
     },
 
     onUnFocusNode(id, pageId){
@@ -432,7 +432,7 @@ export default {
         this.focusNode = null
       }
       this.nodeTree.unSelectNode(id)
-      $bus.$emit('editNode', null)
+      $rxbus.$emit('editNode', null)
     },
 
     onNodeSelected(node){
@@ -518,9 +518,9 @@ export default {
     },
 
     emitShellState(){
-      $bus.$emit('showNodeTree', this.nodeTree.children)
-      $bus.$emit('editNode', this.focusNode, this.pageId)
-      $bus.$emit('resizeScreen', this.state.screenWidth, this.pageId)
+      $rxbus.$emit('showNodeTree', this.nodeTree.children)
+      $rxbus.$emit('editNode', this.focusNode, this.pageId)
+      $rxbus.$emit('resizeScreen', this.state.screenWidth, this.pageId)
     }
   },
 

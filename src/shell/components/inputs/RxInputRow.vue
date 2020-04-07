@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     valueChanged(val){
-      $bus.$emit('optionValueChange')
+      $rxbus.$emit('optionValueChange')
     }
   },
 }

@@ -131,11 +131,11 @@ export default {
     },
 
     duplicate(){
-      $bus.$emit('duplicateNode', this.inputValue.id)
+      $rxbus.$emit('duplicateNode', this.inputValue.id)
     },
 
     remove(){
-      $bus.$emit('removeNode', this.inputValue.id)
+      $rxbus.$emit('removeNode', this.inputValue.id)
     },
 
   },

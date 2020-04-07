@@ -34,7 +34,7 @@ export default {
   methods: {
     stylesChanged(value){
       this.inputValue.meta.styles = value
-      $bus.$emit('styleValueChange', this.inputValue)
+      $rxbus.$emit('styleValueChange', this.inputValue)
     }
   },
 }

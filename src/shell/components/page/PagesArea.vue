@@ -56,11 +56,11 @@ export default {
   },
 
   mounted () {
-    $bus.$on('fileSelected', this.onFileSelected)
-    $bus.$on('projectChanged', ()=>{
+    $rxbus.$on('fileSelected', this.onFileSelected)
+    $rxbus.$on('projectChanged', ()=>{
       this.files = []
     })
-    //$bus.$on('draggingFromToolbox', this.fileSelected)
+    //$rxbus.$on('draggingFromToolbox', this.fileSelected)
   },
 
   methods: {

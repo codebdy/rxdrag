@@ -17,7 +17,7 @@
         @click="close"
       >×</span>
     </div>
-    <div>
+    <div class="widget-body">
       <slot></slot>
     </div>
 
@@ -101,7 +101,7 @@ export default {
 
   beforeDestroyed() {
     document.removeEventListener('mouseup', this.onMouseUp)
-    //$bus.$off('canvasMouseup', this.mouseUp)
+    //$rxbus.$off('canvasMouseup', this.mouseUp)
   },
 
 
@@ -111,7 +111,7 @@ export default {
     },
     startMove(event){
       document.addEventListener('mousemove', this.onMove)
-      //$bus.$on('canvasMouseMove', this.mouseMove)
+      //$rxbus.$on('canvasMouseMove', this.mouseMove)
       this.lastX = event.screenX
       this.lastY = event.screenY
       this.forbidSelect()
@@ -291,7 +291,7 @@ export default {
   }
 
   .rx-mini-widget{
-    background: #424242;
+    background: #26282a;
     color:#c2c2c2; 
     border-radius: 3px;
   }
@@ -388,6 +388,11 @@ export default {
     height: 6px;
     width: 6px;
     cursor: se-resize;
+  }
+
+  .widget-body{
+    flex: 1;
+    display: flex;
   }
 
 </style>

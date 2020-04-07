@@ -128,32 +128,32 @@ export class IFrameCommandProxy{
         this.waitingAccembleTreeView(message.treeViewNodes)
         break;
       case 'takeOverDraggingByWorkspace':
-        $bus.$emit('endFollowMouse')
+        $rxbus.$emit('endFollowMouse')
         break;
       case 'focusNode':
-        $bus.$emit('focusNode', message.node, message.pageId)
+        $rxbus.$emit('focusNode', message.node, message.pageId)
         break;
       case 'unFocusNode':
-        $bus.$emit('unFocusNode', message.id, message.pageId)
+        $rxbus.$emit('unFocusNode', message.id, message.pageId)
         break;
       case 'commandExcuted':
-        $bus.$emit('commandExcuted', message.canUndo, message.canRedo, message.commandSchema, message.pageId)
+        $rxbus.$emit('commandExcuted', message.canUndo, message.canRedo, message.commandSchema, message.pageId)
         break;
       case 'saveCodeFiles':
-        $bus.$emit('saveCodeFiles', message.innerHTML)
+        $rxbus.$emit('saveCodeFiles', message.innerHTML)
         break;
       case 'canvasMouseup':
-        $bus.$emit('canvasMouseup', message.event)
+        $rxbus.$emit('canvasMouseup', message.event)
         break;
       case 'canvasMouseMove':
-        $bus.$emit('canvasMouseMove', message.event)
+        $rxbus.$emit('canvasMouseMove', message.event)
         break;
       case 'replyHtmlCode':
-        $bus.$emit('replyHtmlCode', message.htmlCode)
+        $rxbus.$emit('replyHtmlCode', message.htmlCode)
         break;
     }
 
-    $bus.$emit('canvasHeight', message.canvasHeight, message.pageId)
+    $rxbus.$emit('canvasHeight', message.canvasHeight, message.pageId)
   }
 
   requestAssemble(theme, toolBoxReplyFunction, treeViewReplyFunction){

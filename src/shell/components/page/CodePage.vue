@@ -48,7 +48,7 @@ export default {
 
     onBlur(){
       if(this.oldCode !== this.inputValue.code){
-        $bus.$emit('codeFileChange', this.inputValue)
+        $rxbus.$emit('codeFileChange', this.inputValue)
       }
     }
   },

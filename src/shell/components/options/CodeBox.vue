@@ -39,7 +39,7 @@ export default {
 
     onBlur(){
       if(this.inputValue != this.oldHtml){
-        $bus.$emit('nodeHtmlChanged', this.inputValue)
+        $rxbus.$emit('nodeHtmlChanged', this.inputValue)
       }
     }
   },

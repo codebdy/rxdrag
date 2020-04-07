@@ -58,15 +58,15 @@ export default {
     },
   },
   mounted () {
-    //$bus.$on('focusNode', this.focusNode)
-    //$bus.$on('unFocusNode', this.unFocusNode)
-    //$bus.$on('optionBoxChangedNode', this.nodeChanged)
+    //$rxbus.$on('focusNode', this.focusNode)
+    //$rxbus.$on('unFocusNode', this.unFocusNode)
+    //$rxbus.$on('optionBoxChangedNode', this.nodeChanged)
   },
 
   beforeDestroyed() {
-   // $bus.$off('focusNode', this.focusNode)
-    //$bus.$off('unFocusNode', this.unFocusNode)
-    //$bus.$off('optionBoxChangedNode', this.nodeChanged)
+   // $rxbus.$off('focusNode', this.focusNode)
+    //$rxbus.$off('unFocusNode', this.unFocusNode)
+    //$rxbus.$off('optionBoxChangedNode', this.nodeChanged)
   },
   methods: {
 
@@ -90,17 +90,17 @@ export default {
     //},
 
     classListChange(val){
-      //$bus.$emit('overViewBoxChangedClassList', val)
-      $bus.$emit('overViewValueChange', this.inputValue)
+      //$rxbus.$emit('overViewBoxChangedClassList', val)
+      $rxbus.$emit('overViewValueChange', this.inputValue)
     },
 
     tagChanged(){
-      $bus.$emit('overViewValueChange', this.inputValue)
+      $rxbus.$emit('overViewValueChange', this.inputValue)
     },
 
     attributesChanged(value){
       this.inputValue.meta.attributes = value
-      $bus.$emit('overViewValueChange', this.inputValue)
+      $rxbus.$emit('overViewValueChange', this.inputValue)
     }
   },
 

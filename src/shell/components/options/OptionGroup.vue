@@ -98,7 +98,7 @@ export default {
           row.value = cloneValue(row.defaultValue)
         }
       })
-      $bus.$emit('optionValueChange')
+      $rxbus.$emit('optionValueChange')
       event.stopPropagation()
     }
   },

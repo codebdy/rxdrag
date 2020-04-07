@@ -66,7 +66,7 @@ export default {
   mounted () {
     document.addEventListener('mousemove', this.followMouse)
     document.addEventListener('mouseup', this.endFollowMouse)
-    $bus.$on('endFollowMouse', this.endFollowMouse)
+    $rxbus.$on('endFollowMouse', this.endFollowMouse)
   },
   beforeDestroyed() {
     document.removeEventListener('mousemove', this.followMouse)
@@ -76,7 +76,7 @@ export default {
   methods: {
     onDrag(event, item){
       this.beginFollowMouse(event, item)
-      $bus.$emit('draggingFromToolbox', item)
+      $rxbus.$emit('draggingFromToolbox', item)
     },
 
     followMouse(event){

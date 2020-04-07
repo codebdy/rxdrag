@@ -85,17 +85,34 @@
       </div>
     </div>
     <div class="canvas"></div>
-    <MiniWidget v-model="toolbox">ToolBox</MiniWidget>
+    <MiniWidget v-model="toolbox">
+      <WidgetTabs>
+        <Tab 
+          :name="$t('widgets.studio')"
+          :icon="'fas fa-puzzle-piece'" 
+          :selected="true"
+        >
+          <Toolbox :groups="toolboxItems">2323</Toolbox>
+        </Tab>
+      </WidgetTabs>
+    </MiniWidget>
     <MiniWidget :top="100" :left="20" v-model="optionbox">Option Box</MiniWidget>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
 import MiniWidget from './components/MiniWidget.vue'
+import WidgetTabs from '../shell/components/tabs/WidgetTabs.vue'
+import Tab from '../shell/components/tabs/Tab.vue'
+import Toolbox from '../shell/components/Toolbox/Toolbox.vue'
 export default {
   name: 'rxpage',
   components:{
-    MiniWidget
+    MiniWidget,
+    WidgetTabs,
+    Tab,
+    Toolbox
   },
   props:{
     value : { default:'test' }, 
@@ -115,10 +132,17 @@ export default {
       toolbox : true,
       optionbox : true,
       fullScreen : false,
+      toolboxItems:[],
     }
   },
 
   methods:{
+  },
+
+  created () {
+    if(!window.$rxbus){
+      window.$rxbus= new Vue()
+    }
   },
 
   mounted () {
@@ -161,7 +185,6 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding: 0 5px;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
     background: #45484c;
     color: #c6d0db;
     font-size: 13px;

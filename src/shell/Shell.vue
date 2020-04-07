@@ -166,7 +166,7 @@ export default {
   },
   watch:{
     '$store.state.project': function (project) {
-      $bus.$emit('projectChanged', project)
+      $rxbus.$emit('projectChanged', project)
       this.showFiles(project)
       //Load theme
       if(project.theme){
@@ -180,11 +180,11 @@ export default {
 
   methods:{
     nodeSelected(node){
-      $bus.$emit('nodeSelected', node)
+      $rxbus.$emit('nodeSelected', node)
     },
 
     fileSelect(file){
-      $bus.$emit('fileSelected', file)
+      $rxbus.$emit('fileSelected', file)
     },
     changeTheme(theme){
       if(!theme.api){
@@ -208,7 +208,7 @@ export default {
       this.files = project
       this.loadCssAndJs(project)
       if(this.files.pages.length > 0){
-        $bus.$emit('fileSelected', this.files.pages[0])
+        $rxbus.$emit('fileSelected', this.files.pages[0])
       }
     },
 
@@ -237,18 +237,18 @@ export default {
       this.options.forEach(optionGroup=>{
         optionGroup.fillBackValue(this.node)
       })
-      $bus.$emit('shellChangedNode', this.node, this.pageId)
+      $rxbus.$emit('shellChangedNode', this.node, this.pageId)
     },
 
     onOverViewValueChange(){
       this.options.forEach(optionGroup=>{
         optionGroup.resolveValue(this.node)
       })
-      $bus.$emit('shellChangedNode', this.node, this.pageId)
+      $rxbus.$emit('shellChangedNode', this.node, this.pageId)
     },
 
     onStyleValueChange(){
-      $bus.$emit('shellChangedNode', this.node, this.pageId)
+      $rxbus.$emit('shellChangedNode', this.node, this.pageId)
     },
 
     loadCssAndJs(project){
@@ -344,13 +344,13 @@ export default {
   },
 
   mounted () {
-    $bus.$on('editNode', this.onEditNode)
-    //$bus.$on('unFocusNode', this.unFocusNode)
-    $bus.$on('optionValueChange', this.onOptionValueChange)
-    $bus.$on('overViewValueChange', this.onOverViewValueChange)
-    $bus.$on('styleValueChange', this.onStyleValueChange)
-    $bus.$on('resizeScreen', this.resizeScreen)
-    $bus.$on('showNodeTree', this.onShowNodeTree)
+    $rxbus.$on('editNode', this.onEditNode)
+    //$rxbus.$on('unFocusNode', this.unFocusNode)
+    $rxbus.$on('optionValueChange', this.onOptionValueChange)
+    $rxbus.$on('overViewValueChange', this.onOverViewValueChange)
+    $rxbus.$on('styleValueChange', this.onStyleValueChange)
+    $rxbus.$on('resizeScreen', this.resizeScreen)
+    $rxbus.$on('showNodeTree', this.onShowNodeTree)
 
 
     this.$store.commit('projectChange', null)
@@ -366,13 +366,13 @@ export default {
   },
 
   beforeDestroyed() {
-    $bus.$off('editNode', this.onEditNode)
-    //$bus.$off('unFocusNode', this.unFocusNode)
-    $bus.$off('optionValueChange', this.onOptionValueChange)
-    $bus.$off('overViewValueChange', this.onOverViewValueChange)
-    $bus.$off('styleValueChange', this.onStyleValueChange)
-    $bus.$off('resizeScreen', this.resizeScreen)
-    $bus.$off('showNodeTree', this.onShowNodeTree)
+    $rxbus.$off('editNode', this.onEditNode)
+    //$rxbus.$off('unFocusNode', this.unFocusNode)
+    $rxbus.$off('optionValueChange', this.onOptionValueChange)
+    $rxbus.$off('overViewValueChange', this.onOverViewValueChange)
+    $rxbus.$off('styleValueChange', this.onStyleValueChange)
+    $rxbus.$off('resizeScreen', this.resizeScreen)
+    $rxbus.$off('showNodeTree', this.onShowNodeTree)
   },
 
 }

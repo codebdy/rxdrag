@@ -7,7 +7,7 @@ import axios from 'axios'
 import store from './shell/store';    
 
 window.$axios = axios
-window.$bus= new Vue();
+window.$rxbus= new Vue();
 
 //Vue.use(Vuex)
 
