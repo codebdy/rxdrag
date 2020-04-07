@@ -279,6 +279,26 @@ export default {
 </script>
 
 <style>
+  .rx-mini-widget ::-webkit-scrollbar {
+    width: 0.3rem;
+    height: 0.3rem;
+    background: #232323;
+  }
+  .rx-mini-widget ::-webkit-scrollbar-track {
+    border-radius: 0;
+  }
+  .rx-mini-widget ::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background: #535353;
+    transition: all .2s;
+  }
+  .rx-mini-widget ::-webkit-scrollbar-thumb:hover {
+    background-color: #606060;
+  }
+
+  .rx-mini-widget ::-webkit-scrollbar-corner{
+    background: #232323;
+  }
 
   .rx-mini-widget{
     position: fixed;

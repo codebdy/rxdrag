@@ -106,6 +106,7 @@ import MiniWidget from './components/MiniWidget.vue'
 import WidgetTabs from '../shell/components/tabs/WidgetTabs.vue'
 import Tab from '../shell/components/tabs/Tab.vue'
 import Toolbox from '../shell/components/Toolbox/Toolbox.vue'
+import toolboxItems from './ToolboxItems'
 export default {
   name: 'rxpage',
   components:{
@@ -132,7 +133,7 @@ export default {
       toolbox : true,
       optionbox : true,
       fullScreen : false,
-      toolboxItems:[],
+      toolboxItems: toolboxItems,
     }
   },
 
