@@ -155,7 +155,23 @@
         </Tab>
       </WidgetTabs>
     </MiniWidget>
-    <MiniWidget :top="100" :left="20" v-model="optionbox">Option Box</MiniWidget>
+    <MiniWidget :top="100" :left="20" v-model="optionbox">
+      <WidgetTabs>
+        <tab :name="$t('widgets.options')"
+             :icon="'fas fa-paint-brush'" 
+             :selected="true">
+            <OptionBox v-model="options" :breakPoint = "breakPoint"></OptionBox>
+        </tab>
+        <tab :name="$t('widgets.style')"
+             :icon="'fab fa-css3'">
+          <StyleBox v-model="focusNode"></StyleBox>
+        </tab>
+        <tab :name="$t('widgets.code')"
+             :icon="'fas fa-code'">
+          <CodeBox v-model="nodeCode"></CodeBox>
+        </tab>
+      </WidgetTabs>
+    </MiniWidget>
   </div>
 </template>
 
@@ -169,6 +185,12 @@ import Toolbox from '../shell/components/Toolbox/Toolbox.vue'
 import toolboxItems from './ToolboxItems'
 import {IFrameCommandProxy} from "../shell/components/page/IFrameCommandProxy"
 import {HtmlBeautify} from "../shell/basic/HtmlBeautify"
+import OptionBox from '../shell/components/options/OptionBox.vue'
+import CodeBox from '../shell/components/options/CodeBox.vue'
+import StyleBox from '../shell/components/options/StyleBox.vue'
+import {OptionsFactory} from '../shell/schemas/OptionsFactory'
+
+var optionsFactory = new OptionsFactory
 
 export default {
   name: 'rxpage',
@@ -176,7 +198,10 @@ export default {
     MiniWidget,
     WidgetTabs,
     Tab,
-    Toolbox
+    Toolbox,
+    OptionBox,
+    CodeBox,
+    StyleBox,
   },
   props:{
     value : { default:'<div class="container">test</div>' }, 
@@ -193,9 +218,12 @@ export default {
   },
   data () {
     return {
+      breakPoint:'md',
       config : new Config(this._uid),
       toolbox : false,
       optionbox : false,
+      options:[],
+      nodeCode:'',
       fullScreen : false,
       toolboxItems: toolboxItems,
       commandProxy : new IFrameCommandProxy(this._uid),
@@ -238,7 +266,8 @@ export default {
     this.commandProxy.serveForShell = this
     this.commandProxy.iframe = this.$refs.canvasFrame
     $rxbus.$on('draggingFromToolbox', this.draggingFromToolbox)
-    $rxbus.$on('shellChangedNode', this.nodeChanged)
+    $rxbus.$on('optionValueChange', this.nodeChanged)
+    $rxbus.$on('styleValueChange', this.nodeStyleChanged)
     $rxbus.$on('canvasHeight', this.onCanvasHeight)
     $rxbus.$on('commandExcuted', this.onCommandExcuted)
     $rxbus.$on('focusNode', this.onFocusNode)
@@ -257,7 +286,8 @@ export default {
 
   beforeDestroyed() {
     $rxbus.$off('draggingFromToolbox', this.draggingFromToolbox)
-    $rxbus.$off('shellChangedNode', this.nodeChanged)
+    $rxbus.$off('optionValueChange', this.nodeChanged)
+    $rxbus.$off('styleValueChange', this.nodeStyleChanged)
     $rxbus.$off('canvasHeight', this.onCanvasHeight)
     $rxbus.$off('commandExcuted', this.onCommandExcuted)
     $rxbus.$off('focusNode', this.onFocusNode)
@@ -348,14 +378,19 @@ export default {
       this.setInlineCssAndJs()
     },
 
-    nodeChanged(node, pageId){
-      if(pageId === this.pageId){
-        this.commandProxy.nodeChanged(node)
-      }
+    nodeChanged(){
+      this.options.forEach(optionGroup=>{
+        optionGroup.fillBackValue(this.focusNode)
+      })
+      this.commandProxy.nodeChanged(this.focusNode)
     },
 
-    onCanvasHeight(height, pageId){
-      if(pageId === this.pageId && !this.state.preview){
+    nodeStyleChanged(){
+      this.commandProxy.nodeChanged(this.focusNode)
+    },
+
+    onCanvasHeight(height){
+      if(!this.state.preview){
         this.canvasHeight = height + 'px'
       }
     },
@@ -380,22 +415,17 @@ export default {
       this.canRedo = canRedo
     },
 
-    onFocusNode(node, pageId){
-      if(pageId !== this.pageId){
-        return
-      }
+    onFocusNode(node){
       this.focusNode = node
-      $rxbus.$emit('editNode', this.focusNode, this.pageId)
+      this.options = node ? optionsFactory.resolveOptions(node, this.breakPoint) : []
+      let beautify = new HtmlBeautify(node ? node.htmlCode : '', '  ')
+      this.nodeCode = beautify.result
     },
 
     onUnFocusNode(id, pageId){
-      if(pageId !== this.pageId){
-        return
-      }
       if(this.focusNode && this.focusNode.id === id){
         this.focusNode = null
       }
-      $rxbus.$emit('editNode', null)
     },
 
     onNodeSelected(node){
