@@ -52,7 +52,9 @@ export class NodeToolbar extends RXComponent{
       //move cusor to end
       let el = rxEditor.focusedNode.view.$dom
       let sel = window.getSelection();
-      sel.collapse(el, 1);
+      if(el.childNodes.length > 0){
+        sel.collapse(el, 1);
+      }
       el.focus();      
     })
     this.pushChild(this.editButton)

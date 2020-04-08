@@ -151,7 +151,7 @@
           :icon="'fas fa-puzzle-piece'" 
           :selected="true"
         >
-          <Toolbox :groups="toolboxItems">2323</Toolbox>
+          <Toolbox :groups="toolboxItems"></Toolbox>
         </Tab>
       </WidgetTabs>
     </MiniWidget>
@@ -334,10 +334,7 @@ export default {
 
 
     draggingFromToolbox(item){
-      if(this.actived){
-        //console.log('send in HTMLPage', this.inputValue.title)
-        this.commandProxy.draggingFromToolbox(item)
-      }
+      this.commandProxy.draggingFromToolbox(item)
     },
 
     onRxEditorReady(){
@@ -364,9 +361,7 @@ export default {
     },
 
     onMouseUp(){
-      if(this.actived){
-        this.commandProxy.endDragFromToolbox()
-      }
+      this.commandProxy.endDragFromToolbox()
     },
 
     onKeyup(event){
@@ -404,24 +399,20 @@ export default {
     },
 
     onNodeSelected(node){
-      if(this.actived){
-        this.commandProxy.focusNodeFromShell(node)
-      }
+      this.commandProxy.focusNodeFromShell(node)
     },
 
     onReplyHtmlCode(code){
-      if(this.actived){
-        let beautify = new HtmlBeautify(code, '  ')
-        this.inputValue.code = beautify.result
-        this.oldHtmlCode = code
-        if(this.state.preview){
-          this.writeToPreviewFrame(code)
-        }
+      let beautify = new HtmlBeautify(code, '  ')
+      this.inputValue.code = beautify.result
+      this.oldHtmlCode = code
+      if(this.state.preview){
+        this.writeToPreviewFrame(code)
       }
     },
 
     onNodeHtmlChanged(html){
-      if(this.focusNode && this.actived){
+      if(this.focusNode){
         this.commandProxy.loadHtml(html, this.focusNode.id)
       }
     },
@@ -482,14 +473,14 @@ export default {
   .rxpage-editor ::-webkit-scrollbar {
     width: 0.4rem;
     height: 0.4rem;
-    background: #999;
+    background: #aaa;
   }
   .rxpage-editor ::-webkit-scrollbar-track {
     border-radius: 0;
   }
   .rxpage-editor ::-webkit-scrollbar-thumb {
     border-radius: 0;
-    background: #bbb;
+    background: #ccc;
     transition: all .2s;
   }
   .rxpage-editor ::-webkit-scrollbar-thumb:hover {
@@ -507,7 +498,7 @@ export default {
     flex-flow: column;
     border:0;
     z-index: 99;
-    background: #ddd;
+    background: #eee;
   }
 
   .rxpage-editor.full-screen{
