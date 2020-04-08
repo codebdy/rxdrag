@@ -195,7 +195,7 @@
       </div>
       <textarea class="code-editor"
         v-show = "viewCode"
-        v-model = "inputValue.code"
+        v-model = "inputValue"
       ></textarea>
     </div>
     <MiniWidget v-model="toolbox">
@@ -681,15 +681,6 @@ export default {
     z-index: 1;
   }
 
-  /*.page-preview{
-    position: fixed;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #272727;
-    z-index: 1;
-  }*/
 
   .page-content{
     flex: 1;
@@ -701,6 +692,7 @@ export default {
   .canvas{
     margin:0 auto ; 
     transition: all 0.5s;
+    height: 100%;
   }
 
   .canvas iframe{
@@ -719,6 +711,18 @@ export default {
 
   .full-screen.page-preview .canvas iframe{
     height: calc(100vh - 40px)
+  }
+
+  .code-editor{
+    width: calc(100% - 20px);
+    background: #272727;
+    height: calc(100% - 20px);
+    color:#75b325;
+    outline: 0;
+    border:0;
+    padding:10px;
+    resize: none;
+    font-size: 13px;
   }
 
 </style>
