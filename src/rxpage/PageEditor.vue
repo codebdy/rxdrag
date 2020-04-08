@@ -1,6 +1,9 @@
 <template>
   <div class="rxpage-editor"
-    :class="fullScreen ? 'full-screen' :''"
+    :class="{
+      'full-screen' : fullScreen,
+      'page-preview' : state.preview
+    }"
   >
     <div class="rx-toolbar">
       <div class="left">
@@ -502,7 +505,7 @@ export default {
 
     onReplyHtmlCode(code){
       let beautify = new HtmlBeautify(code, '  ')
-      this.inputValue.code = beautify.result
+      this.inputValue = beautify.result
       this.oldHtmlCode = code
       if(this.state.preview){
         this.writeToPreviewFrame(code)
@@ -536,7 +539,7 @@ export default {
     writeToPreviewFrame(code){
       let iframedocument =  this.$refs.previewFrame.contentDocument;
 
-      let iframeContent = this.$store.state.project.getPreviewHtml(this.$store, code)
+      let iframeContent = this.config.getPreviewHtml(code)
       iframedocument.open();
       iframedocument.write(iframeContent);
       iframedocument.close();
@@ -571,18 +574,18 @@ export default {
   .rxpage-editor ::-webkit-scrollbar {
     width: 0.4rem;
     height: 0.4rem;
-    background: #aaa;
+    background: #232323;
   }
   .rxpage-editor ::-webkit-scrollbar-track {
     border-radius: 0;
   }
   .rxpage-editor ::-webkit-scrollbar-thumb {
     border-radius: 0;
-    background: #ccc;
+    background: #535353;
     transition: all .2s;
   }
   .rxpage-editor ::-webkit-scrollbar-thumb:hover {
-    background-color: #ddd;
+    background-color: #606060;
   }
 
   .rxpage-editor ::-webkit-scrollbar-corner{
@@ -596,7 +599,7 @@ export default {
     flex-flow: column;
     border:0;
     z-index: 99;
-    background: #eee;
+    background: #272727;
   }
 
   .rxpage-editor.full-screen{
@@ -678,7 +681,7 @@ export default {
     z-index: 1;
   }
 
-  .page-preview{
+  /*.page-preview{
     position: fixed;
     top:0;
     left: 0;
@@ -686,7 +689,7 @@ export default {
     height: 100%;
     background: #272727;
     z-index: 1;
-  }
+  }*/
 
   .page-content{
     flex: 1;
@@ -706,9 +709,16 @@ export default {
     border:0;
   }
 
-  .page-preview .canvas iframe{
-    height: calc(100vh - 40px)
+  .page-preview .canvas{
+    height: 100%;
   }
 
+  .page-preview .canvas iframe{
+    height: 100%;
+  }
+
+  .full-screen.page-preview .canvas iframe{
+    height: calc(100vh - 40px)
+  }
 
 </style>

@@ -71,7 +71,7 @@ export class Config{
       }
     })
 
-    return this.getCommonHtml(store, code, cssBlocks, jsBlocks)
+    return this.getCommonHtml(code, cssBlocks, jsBlocks)
   }
 
   getRealHtml(code){
@@ -91,7 +91,7 @@ export class Config{
     return this.getCommonHtml(store, code, cssBlocks, jsBlocks, '')
   }
 
-  getCommonHtml(code, cssBlocks, jsBlocks, previewCode ='<link href="style/preview.css" rel="stylesheet">'){
+  getCommonHtml(code, cssBlocks, jsBlocks, previewCode ='<link href="style/rxpage-preview.css" rel="stylesheet">'){
     return `<html>
             <head>
               <title>RXEditor Workspace</title>
