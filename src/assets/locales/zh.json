@@ -19,7 +19,9 @@
     "undo" : "撤销",
     "redo" : "重做",
     "clear-canvas" : "清空画布",
-    "settings" : "设置"
+    "settings" : "设置",
+    "toolbox" : "工具箱",
+    "options" : "属性"
   },
 
   "widgets":{

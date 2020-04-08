@@ -58,13 +58,14 @@
       </div>
       <div class="right ">
         <div class="rx-icon-button" 
-          title = ""
+          :title="$t('page-toolbar.toolbox')"
           :class="{active:toolbox}"
           @click ="toolbox = !toolbox"
         >
           <i class="fas fa-tools"></i>
         </div>
-        <div class="rx-icon-button" title = ""
+        <div class="rx-icon-button" 
+          :title="$t('page-toolbar.options')"
           :class="{active:optionbox}"
           @click = "optionbox = !optionbox">
           <i class="fas fa-paint-brush"></i>
@@ -72,25 +73,75 @@
         <!--div class="rx-icon-button small" title = "">
           <i class="fas fa-project-diagram"></i>
         </div-->
-        <div class="rx-icon-button" title = "">
+        <div class="rx-icon-button" 
+          v-if="!state.preview"
+          :class = "{
+            'active' : state.showOutline,
+            'disabled' : viewCode
+          } "
+          :title="$t('page-toolbar.outline')"
+          @click="outlineClick"
+        >
           <i class="far fa-square"></i>
         </div>
-        <div class="rx-icon-button" title = "">
+        <div class="rx-icon-button" 
+          v-if="!state.preview"
+          :class = "{
+            'active' : state.showMarginX,
+            'disabled' : viewCode 
+          }"
+          :title="$t('page-toolbar.margin-x')"
+          @click = "marginXClick"
+        >
           <i class="fas fa-arrows-alt-h"></i>
         </div>
-        <div class="rx-icon-button" title = "">
+        <div class="rx-icon-button" 
+          v-if="!state.preview"
+          :class = "{
+            'active' : state.showMarginY,
+            'disabled' : viewCode 
+          }"
+          :title="$t('page-toolbar.margin-y')"
+          @click = "marginYClick"
+        >
           <i class="fas fa-arrows-alt-v"></i>
         </div>
-        <div class="rx-icon-button" title = "">
+        <div class="rx-icon-button" 
+          :title="state.preview ? $t('page-toolbar.cancel-preview') : $t('page-toolbar.preview')"
+          :class = "{
+            'active' : state.preview,
+            'disabled' : viewCode
+          }"
+          @click = "previewClick"
+        >
           <i class="fas fa-eye"></i>
         </div>
-        <div class="rx-icon-button" title = "">
+        <div class="rx-icon-button" 
+          v-if="!state.preview"
+          :title="$t('page-toolbar.code')"
+          :class = "viewCode ?'active' :'' "
+          @click = "codeClick"
+        >
           <i class="fas fa-code"></i>
         </div>
-        <div class="rx-icon-button small" title = "">
+        <div class="rx-icon-button small"
+          v-if="!state.preview"
+          :title="$t('page-toolbar.undo')"
+          :class = "{
+            'disabled' : viewCode || !canUndo
+          }"
+          @click = "undoClick"
+        >
           <i class="fas fa-undo"></i>
         </div>
-        <div class="rx-icon-button small" title = "">
+        <div class="rx-icon-button small"
+          v-if="!state.preview"
+          :title="$t('page-toolbar.redo')"
+          :class = "{
+            'disabled' : viewCode || !canRedo
+          }"
+          @click = "redoClick"
+        >
           <i class="fas fa-redo"></i>
         </div>
         <div class="rx-icon-button ex-big" title = ""
@@ -204,7 +255,24 @@ export default {
     StyleBox,
   },
   props:{
-    value : { default:'<div class="container">test</div>' }, 
+    value : { default:`
+      <div class="jumbotron text-center">
+        <h2 class="display-4">
+          Hello, world!
+        </h2>
+        <p class="lead">
+          This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+        </p>
+        <hr class="my-4">
+        <p>
+          It uses utility classes for typography and spacing to space content out within the larger container.
+        </p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">
+          Learn more
+        </a>
+      </div>
+      ` 
+    }, 
     breakpoints : {
       default : ()=>{ 
         this.xs = '490'

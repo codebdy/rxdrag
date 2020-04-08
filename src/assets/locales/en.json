@@ -19,7 +19,9 @@
     "undo" : "Undo",
     "redo" : "Redo",
     "clear-canvas" : "Clear Canvas",
-    "settings" : "Settings"
+    "settings" : "Settings",
+    "toolbox" : "Toolbox",
+    "options" : "Options"
   },
 
   "widgets":{
