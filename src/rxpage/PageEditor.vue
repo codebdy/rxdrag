@@ -77,10 +77,9 @@
           <i class="fas fa-project-diagram"></i>
         </div-->
         <div class="rx-icon-button" 
-          v-if="!state.preview"
           :class = "{
             'active' : state.showOutline,
-            'disabled' : viewCode
+            'disabled' : viewCode || state.preview
           } "
           :title="$t('page-toolbar.outline')"
           @click="outlineClick"
@@ -88,10 +87,9 @@
           <i class="far fa-square"></i>
         </div>
         <div class="rx-icon-button" 
-          v-if="!state.preview"
           :class = "{
             'active' : state.showMarginX,
-            'disabled' : viewCode 
+            'disabled' : viewCode || state.preview
           }"
           :title="$t('page-toolbar.margin-x')"
           @click = "marginXClick"
@@ -99,10 +97,9 @@
           <i class="fas fa-arrows-alt-h"></i>
         </div>
         <div class="rx-icon-button" 
-          v-if="!state.preview"
           :class = "{
             'active' : state.showMarginY,
-            'disabled' : viewCode 
+            'disabled' : viewCode || state.preview
           }"
           :title="$t('page-toolbar.margin-y')"
           @click = "marginYClick"
@@ -120,28 +117,28 @@
           <i class="fas fa-eye"></i>
         </div>
         <div class="rx-icon-button" 
-          v-if="!state.preview"
           :title="$t('page-toolbar.code')"
-          :class = "viewCode ?'active' :'' "
+          :class = "{
+            'active' : viewCode,
+            'disabled' : state.preview
+          }"
           @click = "codeClick"
         >
           <i class="fas fa-code"></i>
         </div>
         <div class="rx-icon-button small"
-          v-if="!state.preview"
           :title="$t('page-toolbar.undo')"
           :class = "{
-            'disabled' : viewCode || !canUndo
+            'disabled' : viewCode || !canUndo || state.preview
           }"
           @click = "undoClick"
         >
           <i class="fas fa-undo"></i>
         </div>
         <div class="rx-icon-button small"
-          v-if="!state.preview"
           :title="$t('page-toolbar.redo')"
           :class = "{
-            'disabled' : viewCode || !canRedo
+            'disabled' : viewCode || !canRedo || state.preview
           }"
           @click = "redoClick"
         >
@@ -158,7 +155,11 @@
         <div class="rx-icon-button ex-big" title = "">
           <i class="fas fa-question-circle" ></i>
         </div>
-        <div class="rx-icon-button big" title = "">
+        <div class="rx-icon-button big" title = ""
+          :class = "{
+            'disabled' : state.preview
+          }"
+        >
           <i class="fas fa-layer-group" ></i>
         </div>
       </div>
