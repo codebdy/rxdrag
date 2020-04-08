@@ -84,6 +84,7 @@ export default {
   },
   methods: {
     itemClick(item){
+      //console.log('itemClick')
       this.$emit('itemClick', item)
     },
 

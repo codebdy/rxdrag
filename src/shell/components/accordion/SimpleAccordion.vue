@@ -19,9 +19,9 @@ export default {
   },
 
   mounted () {
-    this.items.forEach(item=>{
-      item.$on('itemClick', this.itemClick)
-    })
+    //this.items.forEach(item=>{
+    //  item.$on('itemClick', this.itemClick)
+    //})
   },
 
   methods: {

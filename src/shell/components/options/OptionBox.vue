@@ -1,14 +1,15 @@
 <template>
-  <SimpleAccordion
+  <div class="simple-accordion"
     v-if="inputValue.length > 0"
   >
     <OptionGroup 
       v-for="(optionGroup, i) in inputValue" 
       :key="i" 
       v-model="inputValue[i]"
+      @itemClick = "itemClick"
     >
     </OptionGroup>
-  </SimpleAccordion>
+  </div>
   <div v-else style="padding:20px;">
     {{$t('optionbox.no-selected')}}
   </div>
@@ -20,8 +21,8 @@ import OptionGroup from './OptionGroup.vue'
 
 export default {
   name: 'OptionBox',
+  extends: SimpleAccordion,
   components:{
-    SimpleAccordion,
     OptionGroup
   },
   props:{
@@ -47,6 +48,14 @@ export default {
   beforeDestroyed() {
   },
   methods: {
+    itemClick(clickedItem) {
+      clickedItem.isActive = !clickedItem.isActive
+      this.items.forEach(item => {
+        if(item !== clickedItem){
+          item.isActive = false
+        }
+      })
+    }
   },
 
   //focusNode
