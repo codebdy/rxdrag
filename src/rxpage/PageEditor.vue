@@ -5,27 +5,52 @@
     <div class="rx-toolbar">
       <div class="left">
         <div class="rx-icon-button big" 
+          :class="{
+            'active' : state.screenWidth === 'xl',
+            'disabled' : viewCode
+          }"
+          @click="resizeScreen('xl')"
           title = "XL"
         >
           <i class="fas fa-tv"></i>
         </div>
         <div class="rx-icon-button"
+          :class="{
+            'active' : state.screenWidth === 'lg',
+            'disabled' : viewCode
+          }"
+          @click="resizeScreen('lg')"
           title = "LG"
         >
           <i class="fas fa-desktop"></i>
         </div>
         <div class="rx-icon-button"
+          :class="{
+            'active' : state.screenWidth === 'md',
+            'disabled' : viewCode
+          }"
+          @click="resizeScreen('md')"
           title = "MD"
         >
           <i class="fas fa-laptop"></i>
         </div>
         <div class="rx-icon-button"
+          :class="{
+            'active' : state.screenWidth === 'sm',
+            'disabled' : viewCode
+          }"
+          @click="resizeScreen('sm')"
           title = "SM"
         >
           <i class="fas fa-tablet-alt"></i>
         </div>
         <div class="rx-icon-button"
-           title = "XS"
+          :class="{
+            'active' : state.screenWidth === 'xs',
+            'disabled' : viewCode
+          }"
+          @click="resizeScreen('xs')"
+          title = "XS"
         >
           <i class="fas fa-mobile-alt"></i>
         </div>
@@ -84,7 +109,41 @@
         </div>
       </div>
     </div>
-    <div class="canvas"></div>
+    <div class="page-content"
+    >
+      <!-- 需要动态设定高度，当内容有变化时设定 -->
+      <div class="canvas"
+        :style = "{width:width}"
+        v-show = "!viewCode"
+      >
+        <iframe src="javascrip:0" 
+          :style="{
+            display:state.preview ? 'none' :'block'
+          }"
+          scrolling="no" 
+          frame-border ="0"
+          border = "0"
+          allow-transparency = "no"
+          :height="canvasHeight" 
+          ref ="canvasFrame"
+        ></iframe>
+
+        <iframe src="javascrip:0" 
+          :style="{
+            display:state.preview ? 'block' :'none'
+          }"
+          scrolling="yes" 
+          frame-border ="0"
+          border = "0"
+          allow-transparency = "no"
+          ref ="previewFrame"
+        ></iframe>
+      </div>
+      <textarea class="code-editor"
+        v-show = "viewCode"
+        v-model = "inputValue.code"
+      ></textarea>
+    </div>
     <MiniWidget v-model="toolbox">
       <WidgetTabs>
         <Tab 
@@ -102,11 +161,15 @@
 
 <script>
 import Vue from 'vue'
+import {Config} from "./Config"
 import MiniWidget from './components/MiniWidget.vue'
 import WidgetTabs from '../shell/components/tabs/WidgetTabs.vue'
 import Tab from '../shell/components/tabs/Tab.vue'
 import Toolbox from '../shell/components/Toolbox/Toolbox.vue'
 import toolboxItems from './ToolboxItems'
+import {IFrameCommandProxy} from "../shell/components/page/IFrameCommandProxy"
+import {HtmlBeautify} from "../shell/basic/HtmlBeautify"
+
 export default {
   name: 'rxpage',
   components:{
@@ -116,8 +179,43 @@ export default {
     Toolbox
   },
   props:{
-    value : { default:'test' }, 
+    value : { default:'<div class="container">test</div>' }, 
+    breakpoints : {
+      default : ()=>{ 
+        this.xs = '490'
+        this.sm = '576'
+        this.md = '768'
+        this.lg = '992'
+        this.xl = '1200'
+        return this
+      }
+    }
   },
+  data () {
+    return {
+      config : new Config(this._uid),
+      toolbox : false,
+      optionbox : false,
+      fullScreen : false,
+      toolboxItems: toolboxItems,
+      commandProxy : new IFrameCommandProxy(this._uid),
+      canvasHeight : '400px',
+      oldHtmlCode :'',
+      focusNode : null,
+      state:{
+        showOutline : true,
+        showEditMargin : true,
+        showMarginX : true,
+        showMarginY : true,
+        screenWidth : 'md',
+        preview : false,
+      },
+      viewCode : false,
+      canUndo : false,
+      canRedo : false,
+    }
+  },
+
   computed:{
     inputValue: {
       get:function() {
@@ -127,17 +225,240 @@ export default {
         this.$emit('input', val);
       },
     },
-  },
-  data () {
-    return {
-      toolbox : true,
-      optionbox : true,
-      fullScreen : false,
-      toolboxItems: toolboxItems,
+    width(){
+      if(this.state.preview && this.state.screenWidth === 'xl'){
+        return "100%"
+      }
+      return this.breakpoints[this.state.screenWidth] + 'px'
     }
   },
 
+  mounted () {
+    this.pageId = this._uid
+    this.commandProxy.serveForShell = this
+    this.commandProxy.iframe = this.$refs.canvasFrame
+    $rxbus.$on('draggingFromToolbox', this.draggingFromToolbox)
+    $rxbus.$on('shellChangedNode', this.nodeChanged)
+    $rxbus.$on('canvasHeight', this.onCanvasHeight)
+    $rxbus.$on('commandExcuted', this.onCommandExcuted)
+    $rxbus.$on('focusNode', this.onFocusNode)
+    $rxbus.$on('unFocusNode', this.onUnFocusNode)
+    $rxbus.$on('nodeSelected', this.onNodeSelected)
+    this.initFrame()
+    document.addEventListener('mouseup', this.onMouseUp)
+    document.addEventListener('keyup', this.onKeyup)
+    window.addEventListener("message", this.receiveCanvasMessage)
+    $rxbus.$on('replyHtmlCode', this.onReplyHtmlCode)
+    $rxbus.$on('nodeHtmlChanged', this.onNodeHtmlChanged)
+    $rxbus.$on('codeFileChange', this.onCodeFileChange)
+
+    this.emitShellState()
+  },
+
+  beforeDestroyed() {
+    $rxbus.$off('draggingFromToolbox', this.draggingFromToolbox)
+    $rxbus.$off('shellChangedNode', this.nodeChanged)
+    $rxbus.$off('canvasHeight', this.onCanvasHeight)
+    $rxbus.$off('commandExcuted', this.onCommandExcuted)
+    $rxbus.$off('focusNode', this.onFocusNode)
+    $rxbus.$off('unFocusNode', this.onUnFocusNode)
+    $rxbus.$off('nodeSelected', this.onNodeSelected)
+    $rxbus.$off('replyHtmlCode', this.onReplyHtmlCode)
+    $rxbus.$off('nodeHtmlChanged', this.onNodeHtmlChanged)
+    $rxbus.$off('codeFileChange', this.onCodeFileChange)
+
+    window.removeEventListener("message", this.receiveCanvasMessage);
+    document.removeEventListener('mouseup', this.onMouseUp)
+    document.removeEventListener('keyup', this.onKeyup)
+  },
+
   methods:{
+    initFrame(){
+      let iframedocument =  this.$refs.canvasFrame.contentDocument;
+      let iframeContent = this.config.getCanvasHtml()
+      iframedocument.open();
+      iframedocument.write(iframeContent);
+      iframedocument.close();
+    },
+
+    resizeScreen(size){
+      this.state.screenWidth = size
+      this.commandProxy.changeCanvasState(this.state)
+      $rxbus.$emit('resizeScreen', this.state.screenWidth, this.pageId)
+    },
+
+    outlineClick(){
+      this.state.showOutline = !this.state.showOutline
+      this.commandProxy.changeCanvasState(this.state)
+    },
+
+    marginXClick(){
+      this.state.showMarginX = !this.state.showMarginX
+      this.commandProxy.changeCanvasState(this.state)
+    },
+
+    marginYClick(){
+      this.state.showMarginY = !this.state.showMarginY
+      this.commandProxy.changeCanvasState(this.state)
+    },
+
+    previewClick(){
+      this.state.preview = !this.state.preview
+      this.commandProxy.requestHtmlCode()
+
+    },
+
+    codeClick(){
+      this.viewCode = !this.viewCode
+      if(this.viewCode){
+        this.commandProxy.requestHtmlCode()
+      }
+      else{
+        if(this.oldHtmlCode != this.inputValue){
+          this.commandProxy.loadHtml(this.inputValue)
+        }
+      }
+    },
+
+    undoClick(){
+      this.commandProxy.undo()
+    },
+
+    redoClick(){
+      this.commandProxy.redo()
+    },
+
+    clearCanvasClick(){
+      this.commandProxy.clearCanvas()
+    },
+
+
+    draggingFromToolbox(item){
+      if(this.actived){
+        //console.log('send in HTMLPage', this.inputValue.title)
+        this.commandProxy.draggingFromToolbox(item)
+      }
+    },
+
+    onRxEditorReady(){
+      //console.log(this._uid)
+      this.commandProxy.changeCanvasState(this.state)
+      this.sentHtmlToCanvas()
+    },
+
+    sentHtmlToCanvas(){
+      this.commandProxy.loadHtml(this.inputValue)
+      this.setInlineCssAndJs()
+    },
+
+    nodeChanged(node, pageId){
+      if(pageId === this.pageId){
+        this.commandProxy.nodeChanged(node)
+      }
+    },
+
+    onCanvasHeight(height, pageId){
+      if(pageId === this.pageId && !this.state.preview){
+        this.canvasHeight = height + 'px'
+      }
+    },
+
+    onMouseUp(){
+      if(this.actived){
+        this.commandProxy.endDragFromToolbox()
+      }
+    },
+
+    onKeyup(event){
+      if(event && event.keyCode === 27){ 
+        this.state.preview = false
+        this.commandProxy.changeCanvasState(this.state)
+      }
+    },
+
+    onCommandExcuted(canUndo, canRedo, commandSchema, pageId){
+      if(pageId !== this.pageId){
+        return
+      }
+
+      this.canUndo = canUndo
+      this.canRedo = canRedo
+    },
+
+    onFocusNode(node, pageId){
+      if(pageId !== this.pageId){
+        return
+      }
+      this.focusNode = node
+      $rxbus.$emit('editNode', this.focusNode, this.pageId)
+    },
+
+    onUnFocusNode(id, pageId){
+      if(pageId !== this.pageId){
+        return
+      }
+      if(this.focusNode && this.focusNode.id === id){
+        this.focusNode = null
+      }
+      $rxbus.$emit('editNode', null)
+    },
+
+    onNodeSelected(node){
+      if(this.actived){
+        this.commandProxy.focusNodeFromShell(node)
+      }
+    },
+
+    onReplyHtmlCode(code){
+      if(this.actived){
+        let beautify = new HtmlBeautify(code, '  ')
+        this.inputValue.code = beautify.result
+        this.oldHtmlCode = code
+        if(this.state.preview){
+          this.writeToPreviewFrame(code)
+        }
+      }
+    },
+
+    onNodeHtmlChanged(html){
+      if(this.focusNode && this.actived){
+        this.commandProxy.loadHtml(html, this.focusNode.id)
+      }
+    },
+
+    onCodeFileChange(file){
+      this.commandProxy.setInlineFile(file)
+    },
+
+    setInlineCssAndJs(){
+      this.config.styles.forEach(file=>{
+        if(!file.locked){
+          this.commandProxy.setInlineFile(file)
+        }
+      })
+
+      this.config.javascript.forEach(file=>{
+        if(!file.locked){
+          this.commandProxy.setInlineFile(file)
+        }
+      })
+    },
+
+    writeToPreviewFrame(code){
+      let iframedocument =  this.$refs.previewFrame.contentDocument;
+
+      let iframeContent = this.$store.state.project.getPreviewHtml(this.$store, code)
+      iframedocument.open();
+      iframedocument.write(iframeContent);
+      iframedocument.close();
+    },
+
+    emitShellState(){
+      //$rxbus.$emit('showNodeTree', this.nodeTree.children)
+      $rxbus.$emit('editNode', this.focusNode, this.pageId)
+      $rxbus.$emit('resizeScreen', this.state.screenWidth, this.pageId)
+    }
+
   },
 
   created () {
@@ -146,11 +467,6 @@ export default {
     }
   },
 
-  mounted () {
-  },
-
-  beforeDestroyed() {
-  },
 
 }
 </script>
@@ -163,6 +479,27 @@ export default {
     user-select: none;
   }
 
+  .rxpage-editor ::-webkit-scrollbar {
+    width: 0.4rem;
+    height: 0.4rem;
+    background: #999;
+  }
+  .rxpage-editor ::-webkit-scrollbar-track {
+    border-radius: 0;
+  }
+  .rxpage-editor ::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background: #bbb;
+    transition: all .2s;
+  }
+  .rxpage-editor ::-webkit-scrollbar-thumb:hover {
+    background-color: #ddd;
+  }
+
+  .rxpage-editor ::-webkit-scrollbar-corner{
+    background: transparent;
+  }
+
   .rxpage-editor{
     height: 100%;
     width: 100%;
@@ -170,7 +507,7 @@ export default {
     flex-flow: column;
     border:0;
     z-index: 99;
-    background: #222;
+    background: #ddd;
   }
 
   .rxpage-editor.full-screen{
@@ -251,5 +588,38 @@ export default {
     background: rgba(73,76,69,0.7);
     z-index: 1;
   }
+
+  .page-preview{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #272727;
+    z-index: 1;
+  }
+
+  .page-content{
+    flex: 1;
+    height: 0;
+    overflow: auto;
+    display: block;
+  }
+
+  .canvas{
+    margin:0 auto ; 
+    transition: all 0.5s;
+  }
+
+  .canvas iframe{
+    width: 100%;
+    min-height: 500px;
+    border:0;
+  }
+
+  .page-preview .canvas iframe{
+    height: calc(100vh - 40px)
+  }
+
 
 </style>

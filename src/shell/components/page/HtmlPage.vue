@@ -207,11 +207,8 @@ export default {
   },
   data () {
     return {
-      //content:`<div class="container"></div>`,
       commandProxy : new IFrameCommandProxy(this._uid),
-      //actived: false,
       canvasHeight : '100%',
-      //code :'',
       oldHtmlCode :'',
       nodeTree : new NodeTree,
       focusNode : null,
