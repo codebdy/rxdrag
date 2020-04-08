@@ -3,11 +3,11 @@
     <div v-if="$store.state.isLoading" class="loading-box">
       <img src="images/loading.gif"/>
     </div>
-    <toolbar
+    <Toolbar
       @changeTheme = "changeTheme"
       @openProject = "openProject"
       @download = "onDownload"
-    ></toolbar>
+    ></Toolbar>
     <div class="workspace">
       <LeftArea>
         <template #top>

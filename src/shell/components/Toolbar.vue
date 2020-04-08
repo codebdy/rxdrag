@@ -22,7 +22,7 @@
         {{$t('toolbar.save')}}
       </div>
     </div>
-    <div class="center"><span class="logo">RXEditor</span></div>
+    <div class="center"><span class="logo">RXStudio</span></div>
     <div class="right">
       <div class="button download"
         @click="onDownLoad"
