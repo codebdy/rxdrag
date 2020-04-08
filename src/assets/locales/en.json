@@ -21,7 +21,10 @@
     "clear-canvas" : "Clear Canvas",
     "settings" : "Settings",
     "toolbox" : "Toolbox",
-    "options" : "Options"
+    "options" : "Options",
+    "fullscreen" : "Fullscreen",
+    "help" : "Abut RXPage",
+    "templates" : "Templates"
   },
 
   "widgets":{

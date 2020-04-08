@@ -144,7 +144,8 @@
         >
           <i class="fas fa-redo"></i>
         </div>
-        <div class="rx-icon-button ex-big" title = ""
+        <div class="rx-icon-button ex-big"
+          :title="$t('page-toolbar.fullscreen')"
           :class="{active : fullScreen}"
           @click = "fullScreen = !fullScreen"
         >
@@ -152,15 +153,18 @@
             style="transform:rotate(45deg);font-size:18px;"
           ></i>
         </div>
-        <div class="rx-icon-button ex-big" title = "">
-          <i class="fas fa-question-circle" ></i>
-        </div>
-        <div class="rx-icon-button big" title = ""
+        <div class="rx-icon-button big" 
+          :title="$t('page-toolbar.templates')"
           :class = "{
             'disabled' : state.preview
           }"
         >
           <i class="fas fa-layer-group" ></i>
+        </div>
+        <div class="rx-icon-button ex-big" 
+          :title="$t('page-toolbar.help')"
+        >
+          <i class="fas fa-question-circle" ></i>
         </div>
       </div>
     </div>

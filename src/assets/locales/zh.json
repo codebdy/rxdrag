@@ -21,7 +21,10 @@
     "clear-canvas" : "清空画布",
     "settings" : "设置",
     "toolbox" : "工具箱",
-    "options" : "属性"
+    "options" : "属性",
+    "fullscreen" : "全屏",
+    "help" : "关于RXPage",
+    "templates" : "模板"
   },
 
   "widgets":{
