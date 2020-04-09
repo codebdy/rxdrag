@@ -214,9 +214,8 @@ export default {
       focusNode : null,
       state:{
         showOutline : true,
-        showEditMargin : true,
-        showMarginX : true,
-        showMarginY : true,
+        showMarginX : false,
+        showMarginY : false,
         screenWidth : 'md',
         preview : false,
       },

@@ -1,6 +1,5 @@
 基于Bootstrap HTML可视化编辑工具，  
 内核为原生JS，界面为VUE实现   
-正在开发中，欢迎感兴趣的小伙伴加入  
 演示地址(Demo)：https://vular.cn/rxeditor/  
   
 studio.html 类似IDE编辑工具  
