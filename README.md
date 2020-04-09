@@ -3,8 +3,8 @@
 studio.html 类似IDE编辑工具  
 演示地址(Demo)：https://vular.cn/rxeditor/  
   
-index.html 嵌入式编辑控件（正在进行）
-演示内地址：https://vular.cn/rxpage/  
+index.html 嵌入式编辑控件  
+演示地址：https://vular.cn/rxpage/  
 
 ## Build Setup
 
