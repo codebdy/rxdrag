@@ -159,6 +159,16 @@ body{
     font-size: 50px; line-height: 80px;
   }
 
+  .nav-item .dropdown-menu{
+    background: #22252a !important;
+    color: #fff !important;
+    border:0;
+  }
+
+  .nav-item .dropdown-menu .dropdown-item{
+    color: #fff !important;
+  }
+
 }
 @media (max-width: 767px) {
   .banner-text h2{
