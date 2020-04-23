@@ -4,6 +4,14 @@ body{
   color:#7e8588;
 }
 
+.top-header{
+  background: #fff;
+}
+
+.wrap-all{
+  margin-top: 165px;
+}
+
 .main-logo{
 }
 
@@ -80,6 +88,14 @@ body{
 
 .page-on-scroll .navbar{
   background: #22252a;
+}
+
+.page-on-scroll .topbar{
+  display: none;
+}
+
+.page-on-scroll .wrap-all{
+  margin-top: 150px;
 }
 
 @media (min-width: 992px) {
