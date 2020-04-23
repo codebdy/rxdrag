@@ -18,9 +18,10 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" class="wanhui">
   <div class="fixed-top top-header">
-    <div class="container topbar">
+
+    <div class="container d-none d-xl-block d-lg-block topbar">
       <div class="row ">
         <div class="col-6 pt-4 pb-4">
           <a href="#" class="main-logo">
@@ -39,14 +40,17 @@
         </div>
       </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark d-flex flex-row flex-row p-0 align-items-stretch">
-      <div class="container d-flex flex-row align-items-stretch">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark"  >
+      <div class="container navbar-container">
+        <a class="navbar-brand d-lg-none" href="#page-top">
+          <img style="width:50px;" src="images/logo-s-2.png" />
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="d-flex flex-row align-items-stretch collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="d-flex flex-row align-items-stretch navbar-nav">
+        <div class="collapse navbar-collapse real-nav" id="navbarSupportedContent">
+          <ul class="navbar-nav">
                 <li class="nav-item active">
                   <a class="nav-link" href="#about">首页</a>
                 </li>
@@ -98,7 +102,7 @@
           </ul>
         </div>
       </div>
-    </nav>   
+    </nav>
   </div>
   <div class="wrap-all"> 
     <section>
