@@ -1,7 +1,20 @@
 body{
-  font-size: 14px;
+  font-size: 15px;
   font-family: SourceHanSansCN-Medium, "Microsoft YaHei";
-  color:#7e8588;
+  color:#6f7476;
+  line-height: 30px;
+}
+
+h2{
+  font-size: 28px;
+}
+
+p{
+  line-height: 35px;
+}
+
+a{
+  color:#a69056;
 }
 
 .top-header{
@@ -192,6 +205,21 @@ body{
 
 .carousel-item{
   position: relative;
+}
+
+.h2-title{
+  padding-bottom: 30px;
+  position: relative; 
+}
+
+.h2-title::after{
+  content: "";
+  position: absolute;
+  bottom:10px;
+  left: 0;
+  height: 3px;
+  background: #a69056;
+  width: 60px;
 }
 
 .footer{
