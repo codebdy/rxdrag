@@ -87,6 +87,7 @@ body{
   .wrap-all{
     margin-top: 165px;
   }
+
   .navbar{
     height: 80px;
     display: flex !important;
@@ -94,6 +95,10 @@ body{
     align-items: stretch !important;
     background:#a69056 !important;
     padding:0 !important;
+  }
+
+  .page-on-scroll .navbar{
+    height: 60px;
   }
 
   .navbar-container{
@@ -112,7 +117,6 @@ body{
 
   .page-on-scroll .navbar{
     background: #22252a;
-    height: 60px;
   }
 
   .nav-item.active{
@@ -189,4 +193,25 @@ body{
 
 .footer a{
   color: #777;
+}
+
+.go2top{
+  width: 56px;
+  height: 56px;
+  line-height: 50px;
+  text-align: center;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 200;
+  color: #aaa;
+  border:#aaa solid 0.25rem;
+  font-size: 40px;
+  font-weight: 900;
+  border-radius: 50%;
+  transition:all 0.2s linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
