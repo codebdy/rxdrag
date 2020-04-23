@@ -100,6 +100,10 @@ a{
   text-align: center;
 }
 
+.grey-bg{
+  background: #f4f4f4;
+}
+
 @media (min-width: 992px) {
   .wrap-all{
     margin-top: 165px;
@@ -207,7 +211,7 @@ a{
   position: relative;
 }
 
-.h2-title{
+.h2-title, .h2-center-title{
   padding-bottom: 30px;
   position: relative; 
 }
@@ -217,6 +221,16 @@ a{
   position: absolute;
   bottom:10px;
   left: 0;
+  height: 3px;
+  background: #a69056;
+  width: 60px;
+}
+
+.h2-center-title::after{
+  content: "";
+  position: absolute;
+  bottom:10px;
+  left: calc(50% - 30px);
   height: 3px;
   background: #a69056;
   width: 60px;
