@@ -83,6 +83,10 @@ body{
   background: rgba(0,0,0,0.1);
 }
 
+.banner-text{
+  text-align: center;
+}
+
 @media (min-width: 992px) {
   .wrap-all{
     margin-top: 165px;
@@ -143,7 +147,7 @@ body{
   } 
 
   .banner-text h2{
-    font-size: 70px; line-height: 80px;
+    font-size: 70px; line-height: 100px;
   }
 }
 
@@ -184,6 +188,10 @@ body{
   .banner-text h2{
     font-size: 20px; line-height: 60px;
   }
+}
+
+.carousel-item{
+  position: relative;
 }
 
 .footer{
