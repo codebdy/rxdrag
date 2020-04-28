@@ -109,6 +109,14 @@ a{
   color: #fff;
 }
 
+.footer-text{
+  font-size: 13px; line-height: 20px;
+}
+
+.footer-title{
+  color:#cccccc; font-size:16px;
+}
+
 @media (min-width: 992px) {
   .wrap-all{
     margin-top: 165px;
@@ -242,7 +250,7 @@ a{
 }
 
 .footer{
-  background: #272a2e;
+  background: #0e0e0e;
   color: #777;
 }
 
