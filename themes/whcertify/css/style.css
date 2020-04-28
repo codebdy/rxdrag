@@ -104,6 +104,11 @@ a{
   background: #f4f4f4;
 }
 
+.btn-bright{
+  background: #a69056;
+  color: #fff;
+}
+
 @media (min-width: 992px) {
   .wrap-all{
     margin-top: 165px;
