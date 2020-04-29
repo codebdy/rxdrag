@@ -145,6 +145,9 @@ a{
   padding-left: 20px;
 }
 
+.dropdown:hover .dropdown-menu{
+  display: block !important;
+}
 
 @media (min-width: 992px) {
   .wrap-all{
@@ -324,4 +327,8 @@ a{
   color: #a69056;
   font-weight: bold;
   font-size: 16px;
+}
+
+.right-form input, .right-form textarea{
+  border:#eee solid 1px;
 }
