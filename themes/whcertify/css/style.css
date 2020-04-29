@@ -145,9 +145,10 @@ a{
   padding-left: 20px;
 }
 
+
 @media (min-width: 992px) {
   .wrap-all{
-    margin-top: 165px;
+    margin-top: 188px;
   }
 
   .navbar{
@@ -305,4 +306,22 @@ a{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/*about*/
+.histrory{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.histrory li{
+  padding:10px 0px;
+  border-bottom: #dbdbdb solid 1px;
+}
+
+.big-bright{
+  color: #a69056;
+  font-weight: bold;
+  font-size: 16px;
 }
