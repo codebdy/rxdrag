@@ -7,6 +7,9 @@ studio.html 类似IDE编辑工具
 index.html 嵌入式编辑控件  
 演示地址：https://vular.cn/rxpage/  
 
+本项目不再进一步维护，相关拖放功能用React重新实现于这个项目：  
+https://github.com/rxwater/DragIt
+
 ## Build Setup
 
 ``` bash
