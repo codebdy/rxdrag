@@ -12,7 +12,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "file-saver": "^2.0.2",
-    "jszip": "^3.2.2",
+    "jszip": "^3.7.0",
     "vue": "^2.5.11",
     "vue-i18n": "^8.15.4",
     "vuex": "^3.1.3"
