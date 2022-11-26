@@ -1,14 +1,14 @@
-QQ交流群：957619750  
-基于Bootstrap HTML可视化编辑工具，  
-内核为原生JS，界面为VUE实现   
-studio.html 类似IDE编辑工具  
-演示地址(Demo)：https://vular.cn/rxeditor/  
-  
-index.html 嵌入式编辑控件  
-演示地址：https://vular.cn/rxpage/  
+## Rxeditor项目重启
 
-本项目不再进一步维护，相关拖放功能用React重新实现于这个项目：  
-https://github.com/rxwater/DragIt
+RxEditor已重启，基于模型驱动架构，插件式扩展。 
+目标支持react，vue等主流前端库。内核是Immutable数据模型。
+
+QQ交流群：957619750  
+
+历史版本演示地址
+演示地址(Demo)：https://vular.cn/rxeditor/  
+  index.html 嵌入式编辑控件  
+演示地址：https://vular.cn/rxpage/  
 
 ## Build Setup
 
