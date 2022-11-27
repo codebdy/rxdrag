@@ -5,7 +5,7 @@ RxEditor已重启，基于模型驱动架构，插件式扩展。
 
 QQ交流群：957619750  
 
-历史版本演示地址
+# 正式版本并未上传，历史版本演示地址
 演示地址(Demo)：https://vular.cn/rxeditor/  
   index.html 嵌入式编辑控件  
 演示地址：https://vular.cn/rxpage/  
