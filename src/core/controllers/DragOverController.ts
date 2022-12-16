@@ -86,17 +86,17 @@ export class DragOverControllerImpl implements IPlugin {
   private canAcceptResouce(position: IDropPosition): AcceptType {
     const resourceId = this.engine.getMonitor().getState().draggingResource?.resource
     const resource = this.engine.getResourceManager().getResource(resourceId || "")
-    const targetRule = this.engine.getComponentManager().getNodeBehaviorRules(position.targetId)
     if (position.position === RelativePosition.In && resource) {
+      const beheavior = this.engine.getNodeBehavior(position.targetId)
+      if(beheavior?.isDroppable()){
+        return AcceptType.Accept
+      }
       for (const element of resource.elements) {
-        const beheavior = this.engine.getNodeBehavior(position.targetId)
-        if(beheavior?.isDroppable()){
-          return AcceptType.Accept
-        }
+
       }
     }
 
-    return AcceptType.Accept
+    return AcceptType.Reject
   }
 
 

@@ -2,7 +2,7 @@ import { IDesignerEngine, NodeRelativePosition } from "core";
 import { DragStopEvent } from "core/shell/events";
 import { paseNodes } from "core/funcs/parseNodeSchema";
 import { HistoryableActionType, IDocument, Unsubscribe } from "core/interfaces";
-import { DrageOverOptions } from "core/interfaces/action";
+import { AcceptType, DrageOverOptions } from "core/interfaces/action";
 import { IPlugin } from "core/interfaces/plugin";
 import { DraggingNodesState } from "core/reducers/draggingNodes";
 import { DraggingResourceState } from "core/reducers/draggingResource";
@@ -51,7 +51,7 @@ export class DragStopControllerImpl implements IPlugin {
   private dropResource = (draggingResource: DraggingResourceState, dragOver: DrageOverOptions, document: IDocument) => {
     const resource = this.engine.getResourceManager().getResource(draggingResource?.resource || "");
     const pos = this.tranPosition(dragOver.position)
-    if (resource && pos) {
+    if (resource && pos && dragOver.type === AcceptType.Accept) {
       const nodes = paseNodes(this.engine, document.id, resource.elements);
       document.addNewNodes(nodes, dragOver.targetId, pos);
       document.backup(HistoryableActionType.Add)
@@ -66,7 +66,7 @@ export class DragStopControllerImpl implements IPlugin {
     for (const nodeId of draggingNodes.nodeIds || []) {
       const nodDocument = this.engine.getNodeDocument(dragOver.targetId)
       const pos = this.tranPosition(dragOver.position)
-      if (nodDocument?.id === document.id && pos) {
+      if (nodDocument?.id === document.id && pos && dragOver.type === AcceptType.Accept) {
         document.moveTo(nodeId, dragOver.targetId, pos)
         document.backup(HistoryableActionType.Move)
       } else {
