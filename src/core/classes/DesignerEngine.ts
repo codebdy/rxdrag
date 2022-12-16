@@ -134,26 +134,29 @@ export class DesignerEngine implements IDesignerEngine {
 	}
 }
 
-const ableCheck = (nodeId: ID, able: boolean | AbleCheckFunction | undefined, engine: IDesignerEngine): boolean => {
-  if (isFn(able)) {
-    return able(nodeId, engine)
-  }
-  return able || false
+const ableCheck = (defaultValue: boolean, nodeId: ID, able: boolean | AbleCheckFunction | undefined, engine: IDesignerEngine): boolean => {
+	if (able === undefined) {
+		return defaultValue
+	}
+	if (isFn(able)) {
+		return able(nodeId, engine)
+	}
+	return able || false
 }
 
 export const checkAbility = (
-  name: "disabled" | "selectable" | "droppable" | "draggable" | "deletable" | "cloneable",
-  defaultValue: boolean,
-  nodeId: ID,
-  engine: IDesignerEngine
+	name: "disabled" | "selectable" | "droppable" | "draggable" | "deletable" | "cloneable",
+	defaultValue: boolean,
+	nodeId: ID,
+	engine: IDesignerEngine
 ) => {
-  const nodeRules = engine.getComponentManager().getNodeBehaviorRules(nodeId)
-  for (const rule of nodeRules) {
-    const able = ableCheck(nodeId, rule[name], engine)
-    if (able) {
-      return able
-    }
-  }
+	const nodeRules = engine.getComponentManager().getNodeBehaviorRules(nodeId)
+	for (const rule of nodeRules) {
+		const able = ableCheck(defaultValue, nodeId, rule[name], engine)
+		if (able) {
+			return able
+		}
+	}
 
-  return false
+	return defaultValue
 }
