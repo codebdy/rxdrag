@@ -19,7 +19,7 @@ export class SelectionControllerImpl implements IPlugin {
       if(!documentId){
         return
       }
-      const selectedNodes = monitor.getSelectedIds(documentId)
+      const selectedNodes = monitor.getDocumentSelectedIds(documentId)
       if (selectedNodes && selectedNodes.length === 1 && selectedNodes[0] === rxId) {
         return
       }

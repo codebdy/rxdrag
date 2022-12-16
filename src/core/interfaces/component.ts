@@ -15,10 +15,12 @@ export type IMoveable = {
   y?: boolean
 }
 
+export type AbleSelector = boolean | ((source: string | ITreeNode, engine?: IDesignerEngine) => boolean)
+
 export interface IBehaviorRule {
   disabled?: boolean | ((engine?: IDesignerEngine) => boolean) //默认false
   selectable?: boolean | ((engine?: IDesignerEngine) => boolean) //是否可选中，默认为true
-  droppable?: boolean | ((engine?: IDesignerEngine) => boolean) //是否可作为拖拽容器，默认为false
+  droppable?: AbleSelector//是否可作为拖拽容器，默认为false
   draggable?: boolean | ((engine?: IDesignerEngine) => boolean) //是否可拖拽，默认为true
   deletable?: boolean | ((engine?: IDesignerEngine) => boolean) //是否可删除，默认为true
   cloneable?: boolean | ((engine?: IDesignerEngine) => boolean) //是否可拷贝，默认为true

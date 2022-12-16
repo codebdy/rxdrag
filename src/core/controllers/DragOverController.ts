@@ -1,8 +1,9 @@
-import { ID, IDesignerEngine, Unsubscribe } from "core";
+import { AbleSelector, ID, IDesignerEngine, ITreeNode, Unsubscribe } from "core";
 import { DragMoveEvent } from "core/shell/events";
 import { AcceptType, DrageOverOptions } from "core/interfaces/action";
 import { IPlugin } from "core/interfaces/plugin";
-import { PositionJudger } from "../utils/coordinate";
+import { IDropPosition, PositionJudger, RelativePosition } from "../utils/coordinate";
+import { isFunction } from "lodash";
 
 export class DragOverControllerImpl implements IPlugin {
   name: string = "default.drag-over-controller";
@@ -25,22 +26,18 @@ export class DragOverControllerImpl implements IPlugin {
     }
   }
 
-  private handleDragOver(rxId: ID, e: DragMoveEvent) {
-    const node = this.engine.getMonitor().getNode(rxId)
+  private handleDragOver(targetId: ID, e: DragMoveEvent) {
+    const node = this.engine.getMonitor().getNode(targetId)
 
-    const targetRect = this.engine.getShell().getTopRect(rxId)
+    //const targetRect = this.engine.getShell().getTopRect(rxId)
     // const sourceRule = this.engine.getComponentManager().getBehaviorRule(this.engine.getMonitor().getState().draggingNodes?.nodeIds?.[0] || "")
     // const targetRule = this.engine.getComponentManager().getBehaviorRule(rxId)
-    //如果是根节点
-    if (!node?.parentId) {
-
-    }
-    const draggingResource = this.engine.getMonitor().getState().draggingResource
+    //const draggingResource = this.engine.getMonitor().getState().draggingResource
     if (node) {
       const judger = new PositionJudger(node, this.engine)
       const relativePosition = judger.judgePosition(e.data)
       const dragover = relativePosition ? {
-        type: AcceptType.Accept,
+        type: this.canAccept(relativePosition),
         ...relativePosition,
       } : null
       if (this.dragover?.position !== dragover?.position ||
@@ -60,6 +57,53 @@ export class DragOverControllerImpl implements IPlugin {
 
     }
 
+  }
+
+  private canAccept(position: IDropPosition): AcceptType {
+    if (this.engine.getMonitor().getState().draggingNodes) {
+      return this.canAcceptNodes(position)
+    }
+    if (this.engine.getMonitor().getState().draggingResource) {
+      return this.canAcceptResouce(position)
+    }
+
+    return AcceptType.Reject
+  }
+  private canAcceptNodes(position: IDropPosition) {
+    const sourceIds = this.engine.getMonitor().getState().draggingNodes?.nodeIds || []
+    for (const sourceId of sourceIds) {
+      const node = this.engine.getMonitor().getNode(sourceId)
+      if (position.position === RelativePosition.In && node) {
+        const targetRule = this.engine.getComponentManager().getBehaviorRule(position.targetId)
+        if (!this.ableCheck(node, targetRule?.droppable)) {
+          return AcceptType.Reject
+        }
+      }
+    }
+
+    return AcceptType.Accept
+  }
+
+  private canAcceptResouce(position: IDropPosition): AcceptType {
+    const resourceId = this.engine.getMonitor().getState().draggingResource?.resource
+    const resource = this.engine.getResourceManager().getResource(resourceId || "")
+    const targetRule = this.engine.getComponentManager().getBehaviorRule(position.targetId)
+    if (position.position === RelativePosition.In && resource) {
+      for (const element of resource.elements) {
+        if (!this.ableCheck(element.componentName, targetRule?.droppable)) {
+          return AcceptType.Reject
+        }
+      }
+    }
+
+    return AcceptType.Accept
+  }
+
+  private ableCheck(source: string | ITreeNode, ableSelector?: AbleSelector): boolean {
+    if (isFunction(ableSelector)) {
+      return ableSelector(source, this.engine)
+    }
+    return ableSelector || false
   }
 
   destory(): void {

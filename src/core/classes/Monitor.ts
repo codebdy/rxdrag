@@ -129,7 +129,11 @@ export class Monitor implements IMonitor {
 		return this.store.subscribe(handleChange)
 	}
 
-	getSelectedIds(documentId: ID): ID[] | null {
+	getCurrentSelectedIds(): string[] | null {
+		return this.getDocumentSelectedIds(this.getState().activedDocumentId || "")
+	}
+
+	getDocumentSelectedIds(documentId: ID): ID[] | null {
 		return this.store.getState().documentsById[documentId]?.selectedIds || null
 	}
 	getDrageOver(): DragOverState {

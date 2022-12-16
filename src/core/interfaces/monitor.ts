@@ -44,7 +44,8 @@ export interface IMonitor {
 
 	//onViewPortResizeOrScroll(listener: Listener): Unsubscribe
 	isDragging(): boolean
-	getSelectedIds(doumentId: ID): ID[] | null
+	getCurrentSelectedIds(): ID[] | null
+	getDocumentSelectedIds(doumentId: ID): ID[] | null
 	getNode(nodeId: ID): ITreeNode | null
 	getNodeDocumentId(nodeId: ID): ID | undefined
 	getDocumentRootNode(doumentId: ID): ITreeNode | null

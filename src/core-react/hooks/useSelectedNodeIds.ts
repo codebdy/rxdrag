@@ -7,11 +7,11 @@ export function useSelectedNodeIds(documentId?: ID) {
   const designer = useDesignerEngine()
 
   useEffect(() => {
-    setIds(designer?.getMonitor().getSelectedIds(documentId || ""))
+    setIds(designer?.getMonitor().getDocumentSelectedIds(documentId || ""))
   }, [designer, documentId])
 
   const handleCurrentChange = useCallback(() => {
-    setIds(designer?.getMonitor().getSelectedIds(documentId || ""))
+    setIds(designer?.getMonitor().getDocumentSelectedIds(documentId || ""))
   }, [designer, documentId])
   
   useEffect(() => {
