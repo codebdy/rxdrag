@@ -134,16 +134,6 @@ export class DesignerEngine implements IDesignerEngine {
 	}
 }
 
-const ableCheck = (defaultValue: boolean, nodeId: ID, able: boolean | AbleCheckFunction | undefined, engine: IDesignerEngine): boolean => {
-	if (able === undefined) {
-		return defaultValue
-	}
-	if (isFn(able)) {
-		return able(nodeId, engine)
-	}
-	return able || false
-}
-
 export const checkAbility = (
 	name: "disabled" | "selectable" | "droppable" | "draggable" | "deletable" | "cloneable",
 	defaultValue: boolean,
@@ -159,4 +149,15 @@ export const checkAbility = (
 	}
 
 	return defaultValue
+}
+
+
+const ableCheck = (defaultValue: boolean, nodeId: ID, able: boolean | AbleCheckFunction | undefined, engine: IDesignerEngine): boolean => {
+	if (able === undefined) {
+		return defaultValue
+	}
+	if (isFn(able)) {
+		return able(nodeId, engine)
+	}
+	return able || false
 }
