@@ -8,7 +8,7 @@ export const selectLocales = {
 
   },
   'en-US': {
-    title: "Button",
+    title: "Select",
     settings: {
       type: "Type",
       title: "Title",
