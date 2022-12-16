@@ -153,7 +153,7 @@ export const checkAbility = (
 	const nodeRules = engine.getComponentManager().getNodeBehaviorRules(nodeId)
 	for (const rule of nodeRules) {
 		const able = ableCheck(defaultValue, nodeId, rule[name], engine)
-		if (able) {
+		if (able !== defaultValue) {
 			return able
 		}
 	}
