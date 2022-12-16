@@ -3,7 +3,7 @@ import { HistoryableActionType, IBlocksSchema, IBlocksTreeNode, IDocument, IDocu
 import { AddNodesPayload, BackupPayload, ChangeMetaPayloads, DeleteNodesPayload, DocumentActionPayload, GotoPayload, MoveNodesPayload, RecoverSnapshotPayload } from "../interfaces/payloads";
 import { ID, IDesignerEngine, Unsubscribe } from "core/interfaces";
 import { State } from "core/reducers";
-import { parseNodeSchema } from "core/funcs/parseNodeSchema";
+import { parseNodeSchema, paseNodes } from "core/funcs/parseNodeSchema";
 import { Store } from "redux";
 import { ADD_NODES, BACKUP, CHANGE_NODE_META, DELETE_NODES, GOTO, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT } from "core/actions/registry";
 import { invariant } from "core/utils/util-invariant";
@@ -69,7 +69,15 @@ export class DocumentImpl implements IDocument {
     this.dispatch(this.createAction(DELETE_NODES, playload))
   }
   clone(sourceId: string): void {
-    throw new Error("Method not implemented.");
+    const sourceSchema = this.getNodeSchema(sourceId)
+    if (sourceSchema) {
+      const nodes = paseNodes(this.engine, this.id, [JSON.parse(JSON.stringify(sourceSchema))]);
+      this.addNewNodes(nodes, sourceId, NodeRelativePosition.After);
+      for (const node of nodes.rootNodes) {
+        this.engine.getActions().selectNodes([node.id], this.id)
+      }
+      this.backup(HistoryableActionType.Clone)
+    }
   }
   copyTo(sourceId: string, targetId: string, pos: NodeRelativePosition): void {
     throw new Error("Method not implemented.");
