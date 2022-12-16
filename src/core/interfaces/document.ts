@@ -84,12 +84,21 @@ export interface ITreeNode {
   designerParams?: IDesignerParams
 }
 
+export interface NodeBehavior{
+  isDisabled: () => boolean
+  isSelectable: () => boolean
+  isDroppable: () => boolean
+  isDraggable: () => boolean
+  isDeletable: () => boolean
+  isCloneable: () => boolean
+}
+
 export interface INodeSchema extends INodeMeta {
   //引用一段schema，ref赋值name，用于框架等分块编辑
   ref?: string,
   children?: INodeSchema[]
   slots?: {
-    [name: string]: INodeSchema|undefined
+    [name: string]: INodeSchema | undefined
   }
 }
 

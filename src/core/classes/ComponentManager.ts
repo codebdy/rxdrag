@@ -42,23 +42,17 @@ export class ComponentManager implements IComponentManager {
    * 把多个符合条件的behavior合并成一个Rule
    * @param nodeId 
    */
-  getBehaviorRule(nodeId: string): IBehaviorRule | undefined {
-    const rule: IBehaviorRule = {
-      disabled: false,
-      selectable: true,
-      droppable: false,
-      draggable: true,
-      deletable: true,
-      cloneable: true,
-    }
+  getNodeBehaviorRules(nodeId: string): IBehaviorRule[] {
+    const rules: IBehaviorRule[] = []
+
     const node = this.engine.getMonitor().getNode(nodeId)
     for (const key of Object.keys(this.behaviors)) {
       const behavior = this.behaviors[key]
-      if (node && this.meetSelector(node, behavior.selector)) {
-        rule.draggable = rule.draggable && this.ableCheck(behavior.rule.draggable)
+      if (node && behavior.rule && this.meetSelector(node, behavior.selector)) {
+        rules.push(behavior.rule)
       }
     }
-    return rule
+    return rules
   }
 
   registerBehaviors(...behaviors: IBehavior[]): void {
@@ -79,12 +73,6 @@ export class ComponentManager implements IComponentManager {
     this.registerBehaviors(...behaviors)
   }
 
-  private ableCheck(able: boolean | ((engine?: IDesignerEngine) => boolean) = true): boolean {
-    if (isFn(able)) {
-      return able(this.engine)
-    }
-    return able
-  }
 
   private meetSelector(node: ITreeNode, selector: string | Selector) {
     if (node.meta.componentName === selector) {

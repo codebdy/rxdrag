@@ -1,5 +1,5 @@
 import { State } from "core/reducers";
-import { IDesignerEngine, IDesignerShell, IMonitor, INodeSchema, IBlocksSchema, IDocument, IResourceManager, ID, IComponentManager } from "core/interfaces";
+import { IDesignerEngine, IDesignerShell, IMonitor, INodeSchema, IBlocksSchema, IDocument, IResourceManager, ID, IComponentManager, NodeBehavior, AbleCheckFunction } from "core/interfaces";
 import { Store } from "redux";
 import { ResourceManager } from "./ResourceManager";
 import { DocumentImpl } from "core/classes/DocumentImpl";
@@ -12,6 +12,7 @@ import { CHANGE_ACTIVED_DOCUMENT, SET_LANGUAGE } from "core/actions/registry";
 import { DefualtLang } from "core/reducers/lang";
 import { ComponentManager } from "./ComponentManager";
 import { IPlugin, IPluginFactory } from "core/interfaces/plugin";
+import { isFn } from "core/utils/types";
 
 export class DesignerEngine implements IDesignerEngine {
 	private documentsById: {
@@ -112,6 +113,18 @@ export class DesignerEngine implements IDesignerEngine {
 		}
 		this.driverHub.destory()
 	}
+
+	getNodeBehavior(nodeId: ID): NodeBehavior {
+		return {
+			isDisabled: () => checkAbility("disabled", false, nodeId, this),
+			isSelectable: () => checkAbility("selectable", true, nodeId, this),
+			isDroppable: () => checkAbility("droppable", false, nodeId, this),
+			isDraggable: () => checkAbility("draggable", true, nodeId, this),
+			isDeletable: () => checkAbility("deletable", true, nodeId, this),
+			isCloneable: () => checkAbility("cloneable", true, nodeId, this),
+		}
+	}
+
 	registerPlugin(pluginFactory: IPluginFactory): void {
 		const plugin = pluginFactory(this)
 		this.plugins[plugin.name] = plugin
@@ -119,4 +132,28 @@ export class DesignerEngine implements IDesignerEngine {
 	getPlugin(name: string): IPlugin | null {
 		return this.plugins[name] || null
 	}
+}
+
+const ableCheck = (nodeId: ID, able: boolean | AbleCheckFunction | undefined, engine: IDesignerEngine): boolean => {
+  if (isFn(able)) {
+    return able(nodeId, engine)
+  }
+  return able || false
+}
+
+export const checkAbility = (
+  name: "disabled" | "selectable" | "droppable" | "draggable" | "deletable" | "cloneable",
+  defaultValue: boolean,
+  nodeId: ID,
+  engine: IDesignerEngine
+) => {
+  const nodeRules = engine.getComponentManager().getNodeBehaviorRules(nodeId)
+  for (const rule of nodeRules) {
+    const able = ableCheck(nodeId, rule[name], engine)
+    if (able) {
+      return able
+    }
+  }
+
+  return false
 }

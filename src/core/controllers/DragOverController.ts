@@ -1,9 +1,8 @@
-import { AbleSelector, ID, IDesignerEngine, ITreeNode, Unsubscribe } from "core";
+import { ID, IDesignerEngine, Unsubscribe } from "core";
 import { DragMoveEvent } from "core/shell/events";
 import { AcceptType, DrageOverOptions } from "core/interfaces/action";
 import { IPlugin } from "core/interfaces/plugin";
 import { IDropPosition, PositionJudger, RelativePosition } from "../utils/coordinate";
-import { isFunction } from "lodash";
 
 export class DragOverControllerImpl implements IPlugin {
   name: string = "default.drag-over-controller";
@@ -74,24 +73,25 @@ export class DragOverControllerImpl implements IPlugin {
     for (const sourceId of sourceIds) {
       const node = this.engine.getMonitor().getNode(sourceId)
       if (position.position === RelativePosition.In && node) {
-        const targetRule = this.engine.getComponentManager().getBehaviorRule(position.targetId)
-        if (!this.ableCheck(node, targetRule?.droppable)) {
-          return AcceptType.Reject
+        const beheavior = this.engine.getNodeBehavior(position.targetId)
+        if(beheavior?.isDroppable()){
+          return AcceptType.Accept
         }
       }
     }
 
-    return AcceptType.Accept
+    return AcceptType.Reject
   }
 
   private canAcceptResouce(position: IDropPosition): AcceptType {
     const resourceId = this.engine.getMonitor().getState().draggingResource?.resource
     const resource = this.engine.getResourceManager().getResource(resourceId || "")
-    const targetRule = this.engine.getComponentManager().getBehaviorRule(position.targetId)
+    const targetRule = this.engine.getComponentManager().getNodeBehaviorRules(position.targetId)
     if (position.position === RelativePosition.In && resource) {
       for (const element of resource.elements) {
-        if (!this.ableCheck(element.componentName, targetRule?.droppable)) {
-          return AcceptType.Reject
+        const beheavior = this.engine.getNodeBehavior(position.targetId)
+        if(beheavior?.isDroppable()){
+          return AcceptType.Accept
         }
       }
     }
@@ -99,12 +99,6 @@ export class DragOverControllerImpl implements IPlugin {
     return AcceptType.Accept
   }
 
-  private ableCheck(source: string | ITreeNode, ableSelector?: AbleSelector): boolean {
-    if (isFunction(ableSelector)) {
-      return ableSelector(source, this.engine)
-    }
-    return ableSelector || false
-  }
 
   destory(): void {
     this.unsucribe()

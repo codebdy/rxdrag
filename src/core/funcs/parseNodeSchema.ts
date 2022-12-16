@@ -2,6 +2,7 @@ import { ID, IDesignerEngine, INodeSchema, ITreeNode, NodeChunk, RXID_ATTR_NAME 
 import { NodesById } from "core/reducers/nodesById";
 import { makeRxId } from "core/utils/make-rxId";
 
+
 export function parseNodeSchema(engine: IDesignerEngine, documentId: ID, schema: INodeSchema, nodesById: NodesById, parentId?: string): ITreeNode {
   const { children, ...metaData } = schema;
   const rxId = makeRxId()

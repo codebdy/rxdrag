@@ -1,4 +1,4 @@
-import { IBlocksSchema, IDocument, INodeSchema } from "./document"
+import { IBlocksSchema, IDocument, INodeSchema, NodeBehavior } from "./document"
 import { IDesignerShell } from "./shell"
 import { IMonitor } from "./monitor"
 import { IResourceManager } from "./resource"
@@ -25,8 +25,10 @@ export interface IDesignerEngine {
 	getActions(): IActions
 
 	registerPlugin(pluginFactory: IPluginFactory): void
-	getPlugin(name: string): IPlugin|null
+	getPlugin(name: string): IPlugin | null
 
 	dispatch(action: IAction<any>): void
 	destory(): void
+
+	getNodeBehavior(nodeId: ID): NodeBehavior
 }

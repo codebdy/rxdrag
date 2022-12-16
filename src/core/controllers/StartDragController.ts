@@ -20,14 +20,14 @@ export class StartDragControllerImpl implements IPlugin {
         mousePosition: getPosition(e.data),
       })
     } else if (e.data.targetRx?.nodeType === NodeType.Node) {
-      const node = this.engine.getMonitor().getNode(e.data.targetRx?.rxId || "")
-      if (node) {
-        const rule = this.engine.getComponentManager().getBehaviorRule(node.id)
-        if (rule?.draggable === undefined || rule?.draggable) {
+      const nodeId = e.data.targetRx?.rxId
+      if (nodeId) {
+        const beheavior = this.engine.getNodeBehavior(nodeId)
+        if (beheavior.isDraggable()) {
           this.engine.getActions().startDragNodes({
             initialMousePosition: getPosition(e.data),
             offset: getOffset(e.data),
-            nodeIds: [node.id],
+            nodeIds: [nodeId],
             mousePosition: getPosition(e.data)
           })
         }

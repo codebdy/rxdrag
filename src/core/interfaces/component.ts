@@ -15,15 +15,15 @@ export type IMoveable = {
   y?: boolean
 }
 
-export type AbleSelector = boolean | ((source: string | ITreeNode, engine?: IDesignerEngine) => boolean)
+export type AbleCheckFunction = ((nodeId: ID, engine?: IDesignerEngine) => boolean)
 
 export interface IBehaviorRule {
-  disabled?: boolean | ((engine?: IDesignerEngine) => boolean) //默认false
-  selectable?: boolean | ((engine?: IDesignerEngine) => boolean) //是否可选中，默认为true
-  droppable?: AbleSelector//是否可作为拖拽容器，默认为false
-  draggable?: boolean | ((engine?: IDesignerEngine) => boolean) //是否可拖拽，默认为true
-  deletable?: boolean | ((engine?: IDesignerEngine) => boolean) //是否可删除，默认为true
-  cloneable?: boolean | ((engine?: IDesignerEngine) => boolean) //是否可拷贝，默认为true
+  disabled?: boolean | AbleCheckFunction //默认false
+  selectable?: boolean | AbleCheckFunction //是否可选中，默认为true
+  droppable?: boolean | AbleCheckFunction//是否可作为拖拽容器，默认为false
+  draggable?: boolean | AbleCheckFunction //是否可拖拽，默认为true
+  deletable?: boolean | AbleCheckFunction //是否可删除，默认为true
+  cloneable?: boolean | AbleCheckFunction //是否可拷贝，默认为true
   resizable?: IResizable | ((engine?: IDesignerEngine) => IResizable)
   moveable?: IMoveable | ((engine?: IDesignerEngine) => IMoveable)  // 可用于自由布局
   allowChild?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
@@ -53,7 +53,7 @@ export interface IBehavior {
 }
 
 export interface IComponentManager {
-  getBehaviorRule(nodeId: ID): IBehaviorRule | undefined
+  getNodeBehaviorRules(nodeId: ID): IBehaviorRule []
   getComponentDesigner(componentName: string): IComponentConfig | undefined
   registerComponents(...componentDesigners: IComponentConfig[]): void
   registerBehaviors(...behaviors: IBehavior[]): void

@@ -15,6 +15,7 @@ export interface ITemplateMaterial {
 }
 
 export interface IComponentMaterial extends IComponentConfig, ITemplateMaterial {
+  packageName?: string //npm包名 生成代码用
   component: React.FC<any>,
   designer: React.FC<any>,
 }
