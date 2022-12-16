@@ -45,7 +45,8 @@ export class ComponentManager implements IComponentManager {
   getBehaviorRule(nodeId: string): IBehaviorRule | undefined {
     const rule: IBehaviorRule = {
       disabled: false,
-      droppable: true,
+      selectable: true,
+      droppable: false,
       draggable: true,
       deletable: true,
       cloneable: true,
