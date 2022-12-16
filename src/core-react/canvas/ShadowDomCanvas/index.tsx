@@ -41,6 +41,17 @@ export const ShadowDomCanvas = memo((
         shadow.appendChild(styleNode)
       }
 
+      const links = document.querySelectorAll("link")
+      for (let i = 0; i < links.length; i++) {
+        if (links[i].rel.toLowerCase() === "stylesheet") {
+          const linkNode = document.createElement("link")
+          for(let j = 0; j <links[i].attributes.length; j++){
+            linkNode.setAttribute(links[i].attributes[j].name, links[i].attributes[j].value) 
+          }
+          linkNode.innerHTML = links[i].innerHTML
+          shadow.appendChild(linkNode)
+        }
+      }
       shadow.appendChild(renderIn);
       const root = ReactDOM.createRoot(
         renderIn
