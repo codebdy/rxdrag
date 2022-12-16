@@ -8,6 +8,7 @@ export class CloneButton extends AbstractButton {
   onRender(node: ITreeNode): HTMLElement | null {
     const behavior = this.engine.getNodeBehavior(node.id)
     if(!behavior.isCloneable()){
+      this.teardown()
       return null
     }
     const htmlEl = this.createHtmlElement()
