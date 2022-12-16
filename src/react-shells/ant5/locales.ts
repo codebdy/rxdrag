@@ -2,6 +2,11 @@ import { ILocales } from "core/interfaces/loacales";
 
 export const commmonLocales: ILocales = {
   "zh-CN": {
+    components:{
+      Root:{
+        title:"根组件"
+      }
+    },
     tools: {
       properties: "属性",
       save: "保存",
@@ -22,6 +27,11 @@ export const commmonLocales: ILocales = {
 
   },
   'en-US': {
+    components:{
+      Root:{
+        title:"Root"
+      }
+    },
     tools: {
       properties: "Properties",
       save: "Save",
