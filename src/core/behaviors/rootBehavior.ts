@@ -8,5 +8,7 @@ export const rootBehavior: IBehavior = {
   rule: {
     draggable: false,
     droppable: true,
+    cloneable: false,
+    deletable: false,
   }
 }

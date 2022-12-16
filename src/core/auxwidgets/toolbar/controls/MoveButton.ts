@@ -6,6 +6,10 @@ export class MoveButton extends AbstractButton {
     super("default.move-button", engine)
   }
   onRender(node: ITreeNode): HTMLElement | null {
+    const behavior = this.engine.getNodeBehavior(node.id)
+    if(!behavior.isDraggable()){
+      return null
+    }
     const htmlEl = this.createHtmlElement()
     htmlEl.innerHTML = `
     <svg style="width:16px;height:16px" viewBox="0 0 24 24">

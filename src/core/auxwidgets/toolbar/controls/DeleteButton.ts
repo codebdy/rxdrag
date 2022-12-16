@@ -6,6 +6,10 @@ export class DeleteButton extends AbstractButton {
     super("default.delete-button", engine)
   }
   onRender(node: ITreeNode): HTMLElement | null {
+    const behavior = this.engine.getNodeBehavior(node.id)
+    if(!behavior.isDeletable()){
+      return null
+    }
     const htmlEl = this.createHtmlElement()
     htmlEl.innerHTML = `
     <svg style="width:16px;height:16px" viewBox="0 0 24 24">

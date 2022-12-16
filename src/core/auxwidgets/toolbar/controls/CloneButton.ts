@@ -6,6 +6,10 @@ export class CloneButton extends AbstractButton {
     super("default.clone-button", engine)
   }
   onRender(node: ITreeNode): HTMLElement | null {
+    const behavior = this.engine.getNodeBehavior(node.id)
+    if(!behavior.isCloneable()){
+      return null
+    }
     const htmlEl = this.createHtmlElement()
     htmlEl.innerHTML = `
     <svg style="width:13px;height:13px" viewBox="0 0 24 24">
