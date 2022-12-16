@@ -1,1 +1,0 @@
-editable跟inline可以是同一个节点
