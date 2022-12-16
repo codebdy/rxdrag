@@ -5,11 +5,10 @@ import { AbstractButton } from "./AbstractButton";
 
 export class MoveButton extends AbstractButton {
   private rxProps: RxProps
-  unsucribe: Unsubscribe
+  unsucribe?: Unsubscribe
   constructor(protected engine: IDesignerEngine) {
     super("default.move-button", engine)
     this.rxProps = createAuxProps()
-    this.unsucribe = engine.getShell().subscribeTo(DragStartEvent, this.handleDragStart)
   }
 
   handleDragStart = (e: DragStartEvent) => {
@@ -35,6 +34,7 @@ export class MoveButton extends AbstractButton {
       this.teardown()
       return null
     }
+    this.unsucribe = this.engine.getShell().subscribeTo(DragStartEvent, this.handleDragStart)
     const htmlEl = this.createHtmlElement()
     htmlEl.innerHTML = `
     <svg style="width:16px;height:16px" viewBox="0 0 24 24">
