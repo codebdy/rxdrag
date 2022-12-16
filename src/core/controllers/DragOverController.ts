@@ -28,10 +28,6 @@ export class DragOverControllerImpl implements IPlugin {
   private handleDragOver(targetId: ID, e: DragMoveEvent) {
     const node = this.engine.getMonitor().getNode(targetId)
 
-    //const targetRect = this.engine.getShell().getTopRect(rxId)
-    // const sourceRule = this.engine.getComponentManager().getBehaviorRule(this.engine.getMonitor().getState().draggingNodes?.nodeIds?.[0] || "")
-    // const targetRule = this.engine.getComponentManager().getBehaviorRule(rxId)
-    //const draggingResource = this.engine.getMonitor().getState().draggingResource
     if (node) {
       const judger = new PositionJudger(node, this.engine)
       const relativePosition = judger.judgePosition(e.data)
@@ -39,21 +35,8 @@ export class DragOverControllerImpl implements IPlugin {
         type: this.canAccept(relativePosition),
         ...relativePosition,
       } : null
-      if (this.dragover?.position !== dragover?.position ||
-        this.dragover?.targetId !== dragover?.targetId ||
-        this.dragover?.type !== dragover?.type
-      ) {
-        this.engine.getActions().dragover(dragover)
-        this.dragover = dragover
-      }
-
-      // for (const resourceId of draggingResource.resource) {
-      //   const resource = this.engine.getResourceManager().getResource(resourceId)
-      //   for (const meta of resource?.elements || []) {
-
-      //   }
-      // }
-
+      this.engine.getActions().dragover(dragover)
+      this.dragover = dragover
     }
 
   }

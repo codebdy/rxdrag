@@ -118,8 +118,19 @@ function addSiblings(state: NodesById, sourceIds: ID[], targetId: ID, pos: NodeR
 }
 
 function remove(state: NodesById, targetIds: ID[]): NodesById {
-	throw new Error("remove method not implemented")
-	//return state
+	const newState: NodesById = {}
+	for (const key of Object.keys(state)) {
+		if (!targetIds.find(id => id === key)) {
+			newState[key] = state[key]
+			if(newState[key].children?.find(childId=>targetIds.find(id=>id===childId))){
+				newState[key] = {
+					...newState[key],
+					children: newState[key].children.filter(childId=>!targetIds.find(id=>id===childId))
+				}
+			}
+		}
+	}
+	return newState
 }
 
 function changeNodeMeta(state: NodesById, payload: ChangeMetaPayloads): NodesById {
@@ -131,7 +142,7 @@ function changeNodeMeta(state: NodesById, payload: ChangeMetaPayloads): NodesByI
 }
 
 function revoverSnapshot(state: NodesById, action: IDocumentAction<RecoverSnapshotPayload>): NodesById {
-	const newState:NodesById = Object.assign({}, action.payload?.snapshot.nodes||{})
+	const newState: NodesById = Object.assign({}, action.payload?.snapshot.nodes || {})
 	for (const key of Object.keys(state)) {
 		const node = state[key]
 		if (node.documentId !== action.payload?.documentId) {
