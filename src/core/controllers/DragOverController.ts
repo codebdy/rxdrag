@@ -63,7 +63,7 @@ export class DragOverControllerImpl implements IPlugin {
       return this.canAcceptNodes(position)
     }
     if (this.engine.getMonitor().getState().draggingResource) {
-      return this.canAcceptResouce(position)
+      return this.canAcceptResource(position)
     }
 
     return AcceptType.Reject
@@ -74,8 +74,16 @@ export class DragOverControllerImpl implements IPlugin {
       const node = this.engine.getMonitor().getNode(sourceId)
       if (position.position === RelativePosition.In && node) {
         const beheavior = this.engine.getNodeBehavior(position.targetId)
-        if(beheavior?.isDroppable()){
+        if (beheavior?.isDroppable()) {
           return AcceptType.Accept
+        }
+      } else {
+        const parentId = this.engine.getMonitor().getNode(position.targetId)?.parentId
+        if (parentId) {
+          const beheavior = this.engine.getNodeBehavior(parentId)
+          if (beheavior?.isDroppable()) {
+            return AcceptType.Accept
+          }
         }
       }
     }
@@ -83,16 +91,28 @@ export class DragOverControllerImpl implements IPlugin {
     return AcceptType.Reject
   }
 
-  private canAcceptResouce(position: IDropPosition): AcceptType {
+  private canAcceptResource(position: IDropPosition): AcceptType {
     const resourceId = this.engine.getMonitor().getState().draggingResource?.resource
     const resource = this.engine.getResourceManager().getResource(resourceId || "")
-    if (position.position === RelativePosition.In && resource) {
+    if (!resource) {
+      console.error("no resource to drop")
+      return AcceptType.Reject
+    }
+    if (position.position === RelativePosition.In) {
       const beheavior = this.engine.getNodeBehavior(position.targetId)
-      if(beheavior?.isDroppable()){
+      if (beheavior?.isDroppable()) {
         return AcceptType.Accept
       }
       for (const element of resource.elements) {
 
+      }
+    } else {
+      const parentId = this.engine.getMonitor().getNode(position.targetId)?.parentId
+      if (parentId) {
+        const beheavior = this.engine.getNodeBehavior(parentId)
+        if (beheavior?.isDroppable()) {
+          return AcceptType.Accept
+        }
       }
     }
 
