@@ -1,13 +1,37 @@
-import { IDesignerEngine, ITreeNode } from "core/interfaces";
+import { createAuxProps, IDesignerEngine, ITreeNode, NodeType, RXID_ATTR_NAME, RxProps, Unsubscribe } from "core/interfaces";
+import { DragStartEvent } from "core/shell/events";
+import { getOffset, getPosition } from "core/shell/utils/xycoord";
 import { AbstractButton } from "./AbstractButton";
 
 export class MoveButton extends AbstractButton {
+  private rxProps: RxProps
+  unsucribe: Unsubscribe
   constructor(protected engine: IDesignerEngine) {
     super("default.move-button", engine)
+    this.rxProps = createAuxProps()
+    this.unsucribe = engine.getShell().subscribeTo(DragStartEvent, this.handleDragStart)
   }
+
+  handleDragStart = (e: DragStartEvent) => {
+    if (e.data.targetRx?.nodeType === NodeType.AuxWidget && e.data.targetRx?.rxId === this.rxProps[RXID_ATTR_NAME]) {
+      const nodeId = this.engine.getMonitor().getCurrentNode()?.id
+      if (nodeId) {
+        const beheavior = this.engine.getNodeBehavior(nodeId)
+        if (beheavior.isDraggable()) {
+          this.engine.getActions().startDragNodes({
+            initialMousePosition: getPosition(e.data),
+            offset: getOffset(e.data),
+            nodeIds: [nodeId],
+            mousePosition: getPosition(e.data)
+          })
+        }
+      }
+    }
+  }
+  
   onRender(node: ITreeNode): HTMLElement | null {
     const behavior = this.engine.getNodeBehavior(node.id)
-    if(!behavior.isDraggable()){
+    if (!behavior.isDraggable()) {
       this.teardown()
       return null
     }
@@ -18,6 +42,15 @@ export class MoveButton extends AbstractButton {
     </svg>
     `
     htmlEl.style.cursor = "move"
+    for (const key of Object.keys(this.rxProps)) {
+      htmlEl.setAttribute(key, (this.rxProps as any)[key])
+    }
+
     return htmlEl
+  }
+
+  teardown(): void {
+    this.unsucribe?.()
+    super.teardown()
   }
 }

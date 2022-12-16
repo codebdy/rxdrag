@@ -87,6 +87,7 @@ export class DragDropDriverImpl implements IDriver {
     if (!this.startEvent) {
       return
     }
+
     const distance = Math.sqrt(
       Math.pow(e.pageX - this.startEvent.pageX, 2) +
       Math.pow(e.pageY - this.startEvent.pageY, 2)

@@ -97,7 +97,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
       htmlDiv.style.zIndex = addZIndex(window.getComputedStyle(htmlDiv).zIndex, 10)
       htmlDiv.style.userSelect = "none"
       
-      element.ownerDocument.body?.appendChild(htmlDiv)
+      rootEl?.appendChild(htmlDiv)
 
       const divRect = htmlDiv.getBoundingClientRect()
       if ((rect.x + rect.width - divRect.width) < positionLimit.left) {
