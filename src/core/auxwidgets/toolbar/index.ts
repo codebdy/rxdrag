@@ -32,7 +32,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToNodeChanged(this.refresh)
     this.unViewporScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
     this.unViewporChange = this.engine.getShell().subscribeTo(CanvasResizeEvent, this.refresh)
-    this.unThemeModeChange= engine.getMonitor().subscribeToThemeModeChange(this.handleThemeChange)
+    this.unThemeModeChange = engine.getMonitor().subscribeToThemeModeChange(this.handleThemeChange)
   }
   replaceControl(control: IAuxControl): void {
     if (this.controls.find(ctrl => ctrl.name === control.name)) {
@@ -60,7 +60,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     divEl && rootEl?.contains(divEl) && rootEl?.removeChild(divEl)
     this.htmlElement = null
     if (!node) {
-      if(divEl){
+      if (divEl) {
         divEl.remove()
       }
       return
@@ -108,7 +108,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     }
   }
 
-  handleThemeChange = ()=>{
+  handleThemeChange = () => {
     setTimeout(() => {
       this.render()
     }, 200)
@@ -121,6 +121,9 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     setTimeout(() => {
       this.render()
     }, 10)
+    setTimeout(() => {
+      this.render()
+    }, 50)
   }
 
   destory(): void {

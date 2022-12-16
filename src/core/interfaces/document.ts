@@ -134,7 +134,7 @@ export interface IDocument {
   multiMoveTo(sourceIds: ID[], targetId: ID, pos: NodeRelativePosition): void
   addNewNodes(nodes: NodeChunk, targetId: ID, pos: NodeRelativePosition): void
   addNodeFormOutside(outsideNode: ITreeNode, targetId: ID, pos: NodeRelativePosition): void
-  remove(sourceId: ID,): void
+  remove(sourceId: ID): void
   clone(sourceId: ID): void
   copyTo(sourceId: ID, targetId: ID, pos: NodeRelativePosition): void
   changeNodeMeta(id: ID, newMeta: INodeMeta): void
