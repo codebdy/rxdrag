@@ -1,7 +1,7 @@
 import { Select } from "antd";
 import { IComponentMaterial } from "core-react";
 import { selectIcon } from "./icon";
-import { selectLocales } from "./locales";
+import { selectLocales, selectResourceLocales } from "./locales";
 import { selectSchema } from "./schema";
 
 export const SelectMaterial: IComponentMaterial = {
@@ -10,6 +10,9 @@ export const SelectMaterial: IComponentMaterial = {
   designer: Select,
   designerLocales: selectLocales,
   designerSchema: selectSchema,
+  designerProps: {
+    open: false
+  },
   resource: {
     name: "Select",
     elements: [
@@ -18,6 +21,7 @@ export const SelectMaterial: IComponentMaterial = {
       }
     ]
   },
+  resourceLocales: selectResourceLocales,
   icon: selectIcon,
   color: "green",
 }

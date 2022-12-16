@@ -15,3 +15,12 @@ export const selectLocales = {
     }
   }
 }
+
+export const selectResourceLocales = {
+  "zh-CN": {
+    "Select": "下拉框",
+  },
+  'en-US': {
+    "Select": "Select",
+  }
+}
