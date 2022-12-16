@@ -22,8 +22,7 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
     case SET_FORM_INITIAL_VALUES: {
       const flatInitialValues = patFlatValues((action.payload as SetFormValuesPayload).values, state.fieldSchemas)
       const stateWithInitialValues = setInitialFlatValues(state, flatInitialValues)
-
-      return {
+       return {
         ...state,
         ...stateWithInitialValues,
         originalValue: (action.payload as SetFormValuesPayload).values,
@@ -87,7 +86,7 @@ function setFlatValues(state: FormState, flatValues: any = {}) {
     modified: true,
   }
 }
-function patFlatValues(values: FormValue, fieldSchemas: IFieldSchema[], parentFieldPath?: string) {
+function patFlatValues(values: FormValue|undefined, fieldSchemas: IFieldSchema[], parentFieldPath?: string) {
   const prefix = parentFieldPath ? parentFieldPath + "." : ""
   let flatValues: FormValue = {}
   for (const fieldSchema of fieldSchemas) {
@@ -96,9 +95,10 @@ function patFlatValues(values: FormValue, fieldSchemas: IFieldSchema[], parentFi
       console.error("Not object type field has sub field")
     }
     const path = prefix + fieldSchema.name
-    flatValues[path] = values[fieldSchema.name]
+
+    flatValues[path] = values?.[fieldSchema.name]
     if (fieldSchema.fields.length) {
-      const subValues = patFlatValues(values[fieldSchema.name], fieldSchema.fields, path)
+      const subValues = patFlatValues(values?.[fieldSchema.name], fieldSchema.fields, path)
       flatValues = { ...flatValues, ...subValues }
     }
   }
