@@ -95,7 +95,8 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
       htmlDiv.style.fontSize = "12px"
       htmlDiv.style.padding = "0px"
       htmlDiv.style.zIndex = addZIndex(window.getComputedStyle(htmlDiv).zIndex, 10)
-
+      htmlDiv.style.userSelect = "none"
+      
       element.ownerDocument.body?.appendChild(htmlDiv)
 
       const divRect = htmlDiv.getBoundingClientRect()
