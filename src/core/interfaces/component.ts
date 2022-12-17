@@ -29,6 +29,7 @@ export interface IBehaviorRule {
   allowChild?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
   allowAppendTo?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
   allowSiblingsTo?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
+  noPlaceholder?: boolean,
 }
 
 export interface IDesignerParams {

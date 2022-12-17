@@ -13,7 +13,8 @@ export const HeaderMaterial: IComponentMaterial = {
     draggable:false,
     droppable: true,
     deletable: false,
-    cloneable: false
+    cloneable: false,
+    noPlaceholder: true,
   },
   resource: {
     name: "Layout.Header",
