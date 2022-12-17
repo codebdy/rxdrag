@@ -4,7 +4,7 @@ import { ResourceCollapsePannel } from "expamples/ant5/ResourceWidget/ResourceCo
 import { PaneContainer } from "react-shells/ant5/layouts/ToggleAblePane/PaneContainer"
 import { ResourcesTitle } from "expamples/ant5/ResourceWidget/ResourcesTitle"
 import { ComponentResourceWidget } from "react-shells/ant5/widgets/ComponentResourceWidget"
-import { inputMaterials } from "../materials"
+import { inputMaterials, layoutMaterials } from "../materials"
 
 export const ResourceWidget = memo((
   props: {
@@ -20,6 +20,15 @@ export const ResourceWidget = memo((
         <ResourceCollapsePannel title={t("inputs")} defaultExpand>
           {
             inputMaterials.map((material => {
+              return (
+                <ComponentResourceWidget key={material.componentName} meterial={material} />
+              )
+            }))
+          }
+        </ResourceCollapsePannel>
+        <ResourceCollapsePannel title={t("layouts")} defaultExpand>
+          {
+            layoutMaterials.map((material => {
               return (
                 <ComponentResourceWidget key={material.componentName} meterial={material} />
               )
