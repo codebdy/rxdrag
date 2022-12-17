@@ -2,7 +2,7 @@ import { ITreeNode } from "core";
 import { useCallback, useEffect, useState } from "react";
 import { useDesignerEngine } from "./useDesignerEngine";
 
-//tree的节点变化，会触发刷新
+//tree的节点变化，无法触发全部刷新，情节和useNodeChanged一起使用
 export function useCurrentTree() {
   const [rootNode, setRootNode] = useState<ITreeNode | null>(null)
   const designer = useDesignerEngine()
