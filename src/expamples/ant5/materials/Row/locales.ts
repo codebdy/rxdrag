@@ -19,7 +19,7 @@ export const rowLocales = {
 
 export const rowResourceLocales = {
   "zh-CN": {
-    "Row": "布局行",
+    "Row": "行",
   },
   'en-US': {
     "Row": "Layout row",

@@ -19,7 +19,7 @@ export const colLocales = {
 
 export const colResourceLocales = {
   "zh-CN": {
-    "Col": "布局列",
+    "Col": "列",
   },
   'en-US': {
     "Col": "Layout col",
