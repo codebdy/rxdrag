@@ -6,6 +6,7 @@ import { useActions } from "core-react/hooks/useActions";
 import { useActiveIdState } from "core-react/hooks/useActiveIdState";
 import { useCurrentTree } from "core-react/hooks/useCurrentTree";
 import { useGetNode } from "core-react/hooks/useGetNode";
+import { useNodeChanged } from "core-react/hooks/useNodeChanged";
 import { useSelectedNodeIds } from "core-react/hooks/useSelectedNodeIds";
 import { Key, memo, useCallback, useMemo } from "react"
 import { PaneContainer } from "react-shells/ant5/layouts/ToggleAblePane/PaneContainer"
@@ -22,6 +23,7 @@ export const OutlineWidget = memo((
   const getNode = useGetNode()
   const actions = useActions()
   const currentTree = useCurrentTree()
+  const nodeChangeFlag = useNodeChanged()
   const selectedNodeIds = useSelectedNodeIds(currentTree?.documentId)
   const transNode = useCallback((id: ID): DataNode | undefined => {
     const node = getNode(id)
@@ -47,7 +49,8 @@ export const OutlineWidget = memo((
     return [
       root
     ]
-  }, [currentTree, transNode])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentTree, nodeChangeFlag, transNode])
 
   const onSelect: TreeProps['onSelect'] = useCallback((selectedKeys: Key[]) => {
     if (currentTree) {
