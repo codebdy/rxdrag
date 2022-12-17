@@ -10,6 +10,7 @@ export const FooterMaterial: IComponentMaterial = {
   designerLocales: footerLocales,
   designerSchema: footerSchema,
   behaviorRule: {
+    draggable:false,
     droppable: true,
   },
   resource: {

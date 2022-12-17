@@ -10,6 +10,7 @@ export const HeaderMaterial: IComponentMaterial = {
   designerLocales: headerLocales,
   designerSchema: headerSchema,
   behaviorRule: {
+    draggable:false,
     droppable: true,
   },
   resource: {
