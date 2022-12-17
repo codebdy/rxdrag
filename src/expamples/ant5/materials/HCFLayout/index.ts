@@ -3,6 +3,8 @@ import { colIcon } from "./icon";
 import { hCFLayoutLocales, hCFLayoutResourceLocales } from "./locales";
 import { hCFLayoutSchema } from "./schema";
 import { HCFLayout } from "expamples/ant5/components/HCFLayout";
+import { HeaderMaterial } from "../Header";
+import { FooterMaterial } from "../Footer";
 
 const name = "HCFLayout"
 export const HCFLayoutMaterial: IComponentMaterial = {
@@ -17,7 +19,7 @@ export const HCFLayoutMaterial: IComponentMaterial = {
       {
         componentName: name,
         props: {
-          span: 6
+          
         }
       }
     ]
@@ -27,5 +29,9 @@ export const HCFLayoutMaterial: IComponentMaterial = {
   resourceLocales: hCFLayoutResourceLocales,
   behaviorRule: {
     droppable: true,
-  }
+  },
+  subMaterials:[
+    HeaderMaterial,
+    FooterMaterial
+  ]
 }

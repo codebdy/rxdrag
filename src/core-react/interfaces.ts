@@ -18,4 +18,6 @@ export interface IComponentMaterial extends IComponentConfig, ITemplateMaterial 
   packageName?: string //npm包名 生成代码用
   component: React.FC<any>,
   designer: React.FC<any>,
+  //不需要resource，但是需要注册的，并且依附于该物料的子物料
+  subMaterials?: IComponentMaterial[]
 }

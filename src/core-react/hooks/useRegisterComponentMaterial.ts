@@ -21,6 +21,16 @@ export function useRegisterComponentMaterial(meterial: IComponentMaterial) {
       localesManager?.registerResourceLocales(meterial.resourceLocales)
     }
 
+    for(const subMaterial of meterial.subMaterials||[]){
+      componentManager?.registerComponents(subMaterial)
+      if (subMaterial.designerLocales) {
+        localesManager?.registerComponentLocales(subMaterial.componentName, subMaterial.designerLocales)
+      }
+      if (subMaterial.resourceLocales) {
+        localesManager?.registerResourceLocales(subMaterial.resourceLocales)
+      }
+    }
+
     //这行在最后
     if (meterial.resource) {
       const resources = resourceManager?.registerResources(meterial.resource)
