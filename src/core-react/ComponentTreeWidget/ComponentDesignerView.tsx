@@ -1,5 +1,5 @@
 import { isHTMLElement } from "core/utils/html-node";
-import { memo, useCallback, useMemo } from "react";
+import React, { memo, useCallback, useMemo } from "react";
 import { useDesignComponent } from "core-react/hooks/useDesignComponent";
 import { useTreeNode } from "../hooks/useTreeNode";
 import { useDesignerEngine } from "core-react/hooks";
@@ -24,6 +24,17 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
 
   const { style, ...other } = node?.meta.props || {}
   const { dStyle, ...dOther } = node?.designerProps || {}
+  const slots = useMemo(() => {
+    const slts: { [key: string]: React.ReactElement } = {}
+    for (const name of Object.keys(node?.slots || {})) {
+      const slotId = node?.slots?.[name]
+      if (slotId) {
+        slts[name] = <ComponentDesignerView nodeId={slotId} />
+      }
+    }
+
+    return slts
+  }, [node?.slots])
 
   const realProps = useMemo(() => {
     return {
@@ -31,13 +42,17 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
       ...other,
       ...node?.rxProps,
       ...dOther,
+      ...slots
     }
-  }, [dOther, dStyle, node?.rxProps, other, style])
+  }, [dOther, dStyle, node?.rxProps, other, slots, style])
+
+  const hasChildren = useMemo(() => !!node?.children?.length, [node?.children?.length])
+
 
   const render = useCallback(() => {
     if (Component && node) {
-      if (node.children?.length) {
-        return <Component ref={handleRef} {...realProps}>
+      if (hasChildren) {
+        return <Component ref={handleRef} {...realProps} >
           {
             node.children?.map((childId: string) => {
               return <ComponentDesignerView key={childId} nodeId={childId} />;
@@ -54,7 +69,7 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
     }
 
     return <></>
-  }, [Component, behavior, handleRef, node, realProps])
+  }, [Component, behavior, handleRef, hasChildren, node, realProps])
 
   return (
     <NodeContext.Provider value={node || undefined}>

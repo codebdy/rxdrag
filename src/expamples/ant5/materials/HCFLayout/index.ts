@@ -23,12 +23,12 @@ export const HCFLayoutMaterial: IComponentMaterial = {
         },
         slots: {
           header: {
-            componentName: "Header",
+            componentName: "Layout.Header",
             props: {
             }
           },
           footer: {
-            componentName: "Footer",
+            componentName: "Layout.Footer",
             props: {
             }
           }
