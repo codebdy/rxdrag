@@ -24,4 +24,7 @@ export const RowMaterial: IComponentMaterial = {
   icon: rowIcon,
   color: "#dfa324",
   resourceLocales: rowResourceLocales,
+  behaviorRule: {
+    droppable: true,
+  }
 }
