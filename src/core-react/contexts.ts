@@ -1,4 +1,4 @@
-import { IDesignerEngine, IDocument } from "core";
+import { IDesignerEngine, IDocument, ITreeNode } from "core";
 import { createContext } from "react";
 import { IComponents } from "./interfaces";
 
@@ -18,3 +18,4 @@ export const DesignerEngineContext = createContext<IDesignerEngine | undefined>(
 export const DesignComponentsContext = createContext<IComponentsParams>(initialParams)
 export const PreviewComponentsContext = createContext<IComponentsParams>(initialParams)
 export const DocumentContext = createContext<IDocument | undefined>(undefined)
+export const NodeContext = createContext<ITreeNode | undefined>(undefined)

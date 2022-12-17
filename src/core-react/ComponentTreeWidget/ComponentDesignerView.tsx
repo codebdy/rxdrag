@@ -4,6 +4,7 @@ import { useDesignComponent } from "core-react/hooks/useDesignComponent";
 import { useTreeNode } from "../hooks/useTreeNode";
 import { useDesignerEngine } from "core-react/hooks";
 import { PlaceHolder } from "core-react/PlaceHolder";
+import { NodeContext } from "core-react/contexts";
 
 export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const { nodeId } = props;
@@ -56,6 +57,11 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   }, [Component, behavior, handleRef, node, realProps])
 
   return (
-    render()
+    <NodeContext.Provider value={node || undefined}>
+      {
+        render()
+      }
+
+    </NodeContext.Provider>
   );
 });
