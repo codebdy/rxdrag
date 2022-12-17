@@ -3,7 +3,7 @@ import { memo, useCallback, useMemo, useState } from "react"
 import { Designer } from "core-react/Designer"
 import { SettingsForm } from "./SettingsForm"
 import { Workbench } from "./pannels/Workbench/Workbench"
-import { Button as AntdButton, Space } from "antd"
+import { Button as AntdButton, Layout, Space } from "antd"
 import { LeftSidebar } from "./layouts/LeftSidebar"
 import { Logo } from "./widgets/Logo"
 import { GithubFilled } from "@ant-design/icons"
@@ -23,6 +23,8 @@ import { ConfigRoot } from "./pannels/ShellContainer/ConfigRoot"
 import { ILocales } from "core/interfaces/loacales"
 
 import { DocumentView } from "./pannels/DocumentView"
+import { HCFLayout } from "../../expamples/ant5/components/HCFLayout"
+import { Green } from "expamples/ant5/components/Green"
 
 export type Antd5EditorProps = {
   leftNav?: React.ReactNode,

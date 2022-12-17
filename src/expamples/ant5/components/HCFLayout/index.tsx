@@ -1,18 +1,20 @@
 import { Layout } from "antd";
-import { memo } from "react"
+import { forwardRef, memo } from "react"
 const { Header, Footer, Content } = Layout;
 
-/**
- * HeaderContentFooter layout
- */
-export const HCFLayout = memo((props: {
+export interface HCFLayoutProps{
   header?: React.ReactElement<typeof Header>
   footer?: React.ReactElement<typeof Footer>
   children?: React.ReactNode
-}) => {
+}
+/**
+ * HeaderContentFooter layout
+ */
+export const HCFLayout = memo(forwardRef<HTMLDivElement, HCFLayoutProps>((
+  props, ref) => {
   const { header, footer, children } = props
   return (
-    <Layout>
+    <Layout ref={ref}>
       {header}
       <Content>
         {children}
@@ -20,4 +22,4 @@ export const HCFLayout = memo((props: {
       {footer}
     </Layout>
   )
-})
+}))
