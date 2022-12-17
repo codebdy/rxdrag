@@ -12,6 +12,8 @@ export const HeaderMaterial: IComponentMaterial = {
   behaviorRule: {
     draggable:false,
     droppable: true,
+    deletable: false,
+    cloneable: false
   },
   resource: {
     name: "Layout.Header",

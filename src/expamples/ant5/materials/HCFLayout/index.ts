@@ -5,6 +5,7 @@ import { hCFLayoutSchema } from "./schema";
 import { HCFLayout } from "expamples/ant5/components/HCFLayout";
 import { HeaderMaterial } from "../Header";
 import { FooterMaterial } from "../Footer";
+import { ContentMaterial } from "../Content";
 
 const name = "HCFLayout"
 export const HCFLayoutMaterial: IComponentMaterial = {
@@ -27,6 +28,11 @@ export const HCFLayoutMaterial: IComponentMaterial = {
             props: {
             }
           },
+          content: {
+            componentName: "Layout.Content",
+            props: {
+            }
+          },
           footer: {
             componentName: "Layout.Footer",
             props: {
@@ -40,10 +46,11 @@ export const HCFLayoutMaterial: IComponentMaterial = {
   color: "#dfa324",
   resourceLocales: hCFLayoutResourceLocales,
   behaviorRule: {
-    droppable: true,
+    droppable: false,
   },
   slots: {
     header: HeaderMaterial,
-    footer: FooterMaterial
+    content: ContentMaterial,
+    footer: FooterMaterial,
   },
 }

@@ -12,6 +12,8 @@ export const FooterMaterial: IComponentMaterial = {
   behaviorRule: {
     draggable:false,
     droppable: true,
+    deletable: false,
+    cloneable: false
   },
   resource: {
     name: "Layout.Footer",
