@@ -1,4 +1,5 @@
 import { IComponentMaterial } from "core-react/interfaces";
+import { isStr } from "core/utils/types";
 import { useEffect, useMemo } from "react";
 import { useComponentManager } from "./useComponentManager";
 import { useDesignComponents } from "./useDesignComponents";
@@ -21,9 +22,9 @@ export function useRegisterComponentMaterial(meterial: IComponentMaterial) {
       localesManager?.registerResourceLocales(meterial.resourceLocales)
     }
 
-    for (const key of Object.keys(meterial.slots||{})) {
+    for (const key of Object.keys(meterial.slots || {})) {
       const subMaterial = meterial.slots?.[key]
-      if(subMaterial === true || subMaterial === undefined){
+      if (subMaterial === true || subMaterial === undefined || isStr(subMaterial)) {
         continue
       }
       componentManager?.registerComponents(subMaterial)
