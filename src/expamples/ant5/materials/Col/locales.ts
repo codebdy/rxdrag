@@ -1,6 +1,6 @@
 export const colLocales = {
   "zh-CN": {
-    title: "布局列",
+    title: "列",
     description: "布局列",
     settings: {
       type: "类型",

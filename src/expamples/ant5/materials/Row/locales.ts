@@ -1,6 +1,6 @@
 export const rowLocales = {
   "zh-CN": {
-    title: "布局行",
+    title: "行",
     description: "布局行",
     settings: {
       type: "类型",
