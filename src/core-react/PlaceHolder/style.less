@@ -1,0 +1,31 @@
+.rx-placeholder {
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  padding: 4px;
+  opacity: 0.4;
+  flex-shrink: 1;
+  box-sizing: border-box;
+
+  .rx-placeholder-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex: 1;
+    background-color: #eee;
+    border: dashed 1px;
+  }
+}
+
+.rx-placeholder.dark {
+  color: #fff;
+
+  .rx-placeholder-inner {
+    background-color: #666;
+    border: #fff dashed 1px;
+  }
+}
