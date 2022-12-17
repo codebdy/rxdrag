@@ -23,7 +23,7 @@ export class LocalesManager implements ILocalesManager {
 
   getComponentMessage(componentName: string, key: string): string | null {
     const currenLocales = this.locales[this.lang]?.components
-    return this.getValueByKey(currenLocales || {}, componentName + "." + key)
+    return this.getValueByKey(currenLocales?.[componentName] || {},key)
   }
 
   getToolsMessage(key: string): string | null {

@@ -39,7 +39,7 @@ export function useRegisterComponentMaterial(meterial: IComponentMaterial) {
 
       componentManager?.registerComponents(slotMaterial)
       if (slotMaterial.designerLocales) {
-        localesManager?.registerComponentLocales(slotMaterial.componentName, slotMaterial.designerLocales)
+         localesManager?.registerComponentLocales(slotMaterial.componentName, slotMaterial.designerLocales)
       }
       if (slotMaterial.resourceLocales) {
         localesManager?.registerResourceLocales(slotMaterial.resourceLocales)
