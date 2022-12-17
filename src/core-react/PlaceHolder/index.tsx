@@ -9,7 +9,9 @@ export const PlaceHolder = memo(() => {
   const node = useNode()
   return (
     <div className={cls("rx-placeholder", themeMode)}>
+      <div className="rx-placeholder-inner">
       {node?.title}
+      </div>
     </div>
   )
 })

@@ -1,5 +1,6 @@
 import { IComponentMaterial } from "core-react";
 import { ButtonMaterial } from "./Button";
+import { ColMaterial } from "./Col";
 import { InputMaterial } from "./Input";
 import { RowMaterial } from "./Row";
 import { SelectMaterial } from "./Select";
@@ -11,5 +12,6 @@ export const inputMaterials: IComponentMaterial[] = [
 ]
 
 export const layoutMaterials:IComponentMaterial[] = [
-  RowMaterial
+  RowMaterial,
+  ColMaterial
 ]

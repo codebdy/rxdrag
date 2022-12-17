@@ -16,7 +16,6 @@ export const RowMaterial: IComponentMaterial = {
       {
         componentName: "Row",
         props: {
-
         }
       }
     ]
