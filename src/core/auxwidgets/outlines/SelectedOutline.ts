@@ -70,7 +70,7 @@ export class SelectedOutlineImpl implements IPlugin {
     //防止更新不彻底，两遍刷新补齐
     setTimeout(() => {
       this.listenSelectChange(this.selecteNodes)
-    }, 50)
+    }, 100)
   }
 
   destory(): void {

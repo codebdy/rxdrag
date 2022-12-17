@@ -16,7 +16,33 @@ export const RowMaterial: IComponentMaterial = {
       {
         componentName: "Row",
         props: {
-        }
+        },
+        children:[
+          {
+            componentName: "Col",
+            props: {
+              span: 6
+            }
+          },
+          {
+            componentName: "Col",
+            props: {
+              span: 6
+            }
+          },
+          {
+            componentName: "Col",
+            props: {
+              span: 6
+            }
+          },
+          {
+            componentName: "Col",
+            props: {
+              span: 6
+            }
+          }
+        ]
       }
     ]
   },

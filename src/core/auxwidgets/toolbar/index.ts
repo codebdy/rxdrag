@@ -124,7 +124,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     }, 10)
     setTimeout(() => {
       this.render()
-    }, 50)
+    }, 100)
   }
 
   destory(): void {
