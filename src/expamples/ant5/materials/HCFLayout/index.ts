@@ -19,7 +19,19 @@ export const HCFLayoutMaterial: IComponentMaterial = {
       {
         componentName: name,
         props: {
-          
+
+        },
+        slots: {
+          header: {
+            componentName: "Header",
+            props: {
+            }
+          },
+          footer: {
+            componentName: "Footer",
+            props: {
+            }
+          }
         }
       }
     ]
@@ -30,8 +42,8 @@ export const HCFLayoutMaterial: IComponentMaterial = {
   behaviorRule: {
     droppable: true,
   },
-  subMaterials:[
-    HeaderMaterial,
-    FooterMaterial
-  ]
+  slots: {
+    header: HeaderMaterial,
+    footer: FooterMaterial
+  },
 }

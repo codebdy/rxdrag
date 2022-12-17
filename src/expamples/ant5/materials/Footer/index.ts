@@ -11,5 +11,15 @@ export const FooterMaterial: IComponentMaterial = {
   designerSchema: footerSchema,
   behaviorRule: {
     droppable: true,
-  }
+  },
+  resource: {
+    name: "Layout.Footer",
+    elements: [
+      {
+        componentName: "Layout.Footer",
+        props: {
+        }
+      }
+    ]
+  },
 }

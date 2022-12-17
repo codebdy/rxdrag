@@ -11,5 +11,15 @@ export const HeaderMaterial: IComponentMaterial = {
   designerSchema: headerSchema,
   behaviorRule: {
     droppable: true,
-  }
+  },
+  resource: {
+    name: "Layout.Header",
+    elements: [
+      {
+        componentName: "Layout.Header",
+        props: {
+        }
+      }
+    ]
+  },
 }

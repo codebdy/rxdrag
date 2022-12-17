@@ -21,13 +21,20 @@ export function useRegisterComponentMaterial(meterial: IComponentMaterial) {
       localesManager?.registerResourceLocales(meterial.resourceLocales)
     }
 
-    for(const subMaterial of meterial.subMaterials||[]){
+    for (const key of Object.keys(meterial.slots||{})) {
+      const subMaterial = meterial.slots?.[key]
+      if(subMaterial === true || subMaterial === undefined){
+        continue
+      }
       componentManager?.registerComponents(subMaterial)
       if (subMaterial.designerLocales) {
         localesManager?.registerComponentLocales(subMaterial.componentName, subMaterial.designerLocales)
       }
       if (subMaterial.resourceLocales) {
         localesManager?.registerResourceLocales(subMaterial.resourceLocales)
+      }
+      if (subMaterial.resource) {
+        resourceManager?.registerResources(subMaterial.resource)
       }
     }
 
@@ -39,7 +46,7 @@ export function useRegisterComponentMaterial(meterial: IComponentMaterial) {
     return undefined
   }, [componentManager, localesManager, meterial, resourceManager])
 
-  useEffect(()=>{
+  useEffect(() => {
     registerDesignComponents({ [meterial.componentName]: meterial.designer })
     registerPreviewComponents({ [meterial.componentName]: meterial.component })
   }, [meterial.component, meterial.componentName, meterial.designer, registerDesignComponents, registerPreviewComponents])
