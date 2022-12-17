@@ -122,6 +122,7 @@ export class DesignerEngine implements IDesignerEngine {
 			isDraggable: () => checkAbility("draggable", true, nodeId, this),
 			isDeletable: () => checkAbility("deletable", true, nodeId, this),
 			isCloneable: () => checkAbility("cloneable", true, nodeId, this),
+			isNoPlaceholder: () => checkAbility("noPlaceholder", false, nodeId, this),
 		}
 	}
 
@@ -135,7 +136,7 @@ export class DesignerEngine implements IDesignerEngine {
 }
 
 export const checkAbility = (
-	name: "disabled" | "selectable" | "droppable" | "draggable" | "deletable" | "cloneable",
+	name: "disabled" | "selectable" | "droppable" | "draggable" | "deletable" | "cloneable" |"noPlaceholder",
 	defaultValue: boolean,
 	nodeId: ID,
 	engine: IDesignerEngine

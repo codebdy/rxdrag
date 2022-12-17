@@ -84,13 +84,14 @@ export interface ITreeNode {
   designerParams?: IDesignerParams
 }
 
-export interface NodeBehavior{
+export interface NodeBehavior {
   isDisabled: () => boolean
   isSelectable: () => boolean
   isDroppable: () => boolean
   isDraggable: () => boolean
   isDeletable: () => boolean
   isCloneable: () => boolean
+  isNoPlaceholder: () => boolean
 }
 
 export interface INodeSchema extends INodeMeta {
