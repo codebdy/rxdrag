@@ -29,7 +29,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     this.addControl(new MoveButton(engine))
     this.addControl(new DeleteButton(engine))
     this.unsubscribe = engine.getMonitor().subscribeToCurrentNodeChanged(this.refresh)
-    this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToNodeChanged(this.refresh)
+    this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
     this.unViewporScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
     this.unViewporChange = this.engine.getShell().subscribeTo(CanvasResizeEvent, this.refresh)
     this.unThemeModeChange = engine.getMonitor().subscribeToThemeModeChange(this.handleThemeChange)

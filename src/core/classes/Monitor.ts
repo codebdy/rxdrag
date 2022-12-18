@@ -26,11 +26,48 @@ import {
 import type { State } from '../reducers/index'
 import { DragOverState } from 'core/reducers/dragOver'
 
+/**
+ * 为优化性能而生
+ */
+export class NodeChangeHandler {
+	listeners: {
+		[id: ID]: NodeListener[] | undefined
+	} = {}
+
+	handleNodeChange = (node: ITreeNode) => {
+		for(const id of Object.keys(this.listeners)){
+			if(id === node.id){
+				const  listeners = this.listeners[id]
+				for(const listener of listeners||[]){
+					listener(node)
+				}
+			}
+		}
+	}
+
+	subscribeToNodeChanged = (id: ID, listener: NodeListener): Unsubscribe => {
+		const unsubscribe = () => {
+			this.removeListener(id, listener)
+		}
+		if(!this.listeners[id]){
+			this.listeners[id] = []
+		}
+		this.listeners[id]?.push(listener)
+		return unsubscribe;
+	}
+
+	removeListener(id: ID, listener: NodeListener) {
+		this.listeners[id] = this.listeners[id]?.filter(lis => lis !== listener)
+	}
+}
+
 export class Monitor implements IMonitor {
 	private store: Store<State>
+	private nodechnageHandler = new NodeChangeHandler()
 
 	public constructor(store: Store<State>) {
 		this.store = store
+		this.doSubscribeToNodeChanged(this.nodechnageHandler.handleNodeChange)
 	}
 
 	getCurrentNode(): ITreeNode | null {
@@ -202,23 +239,25 @@ export class Monitor implements IMonitor {
 		}
 		return this.store.subscribe(handleChange)
 	}
-
-	subscribeToNodeChanged(listener: NodeListener): Unsubscribe {
+	subscribeToHasNodeChanged(listener: Listener): Unsubscribe {
 		invariant(typeof listener === 'function', 'listener must be a function.')
 		let previousState = this.store.getState().nodesById
 		const handleChange = () => {
 			const nextState = this.store.getState().nodesById
 			if (nextState !== previousState) {
-				for (const nodeId of Object.keys(nextState)) {
-					if (nextState[nodeId] !== previousState?.[nodeId]) {
-						listener(nextState[nodeId])
-					}
-				}
+				listener()
 			}
 			previousState = nextState
 		}
 		return this.store.subscribe(handleChange)
 	}
+
+	//隔离NodesById的变化
+	subscribeToNodeChanged(id: ID, listener: NodeListener): Unsubscribe {
+		invariant(typeof listener === 'function', 'listener must be a function.')
+		return this.nodechnageHandler.subscribeToNodeChanged(id, listener)
+	}
+
 	subscribeToLangeChange(listener: LangListener): Unsubscribe {
 		invariant(typeof listener === 'function', 'listener must be a function.')
 
@@ -376,5 +415,22 @@ export class Monitor implements IMonitor {
 
 	private getSeletedNodeId(selectedIds?: ID[]) {
 		return selectedIds?.length === 1 ? (selectedIds?.[0] || "") : ""
+	}
+
+	private doSubscribeToNodeChanged(listener: NodeListener): Unsubscribe {
+		invariant(typeof listener === 'function', 'listener must be a function.')
+		let previousState = this.store.getState().nodesById
+		const handleChange = () => {
+			const nextState = this.store.getState().nodesById
+			if (nextState !== previousState) {
+				for (const nodeId of Object.keys(nextState)) {
+					if (nextState[nodeId] !== previousState?.[nodeId]) {
+						listener(nextState[nodeId])
+					}
+				}
+			}
+			previousState = nextState
+		}
+		return this.store.subscribe(handleChange)
 	}
 }

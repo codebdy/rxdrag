@@ -22,7 +22,7 @@ export function useCurrentTree() {
 
   useEffect(() => {
     const unscribe = designer?.getMonitor().subscribeToActiveDocumentChanged(handleTreeChange)
-    const unscibeNode = designer?.getMonitor().subscribeToNodeChanged(handleTreeChange)
+    const unscibeNode = designer?.getMonitor().subscribeToHasNodeChanged(handleTreeChange)
     return () => {
       unscribe?.()
       unscibeNode?.()

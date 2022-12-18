@@ -18,7 +18,7 @@ export const PreviewRender = memo((
   }, [doc])
 
   useEffect(() => {
-    const unsub = engine?.getMonitor().subscribeToNodeChanged(() => {
+    const unsub = engine?.getMonitor().subscribeToHasNodeChanged(() => {
       setTree(doc?.getSchemaTree() || undefined)
     })
 

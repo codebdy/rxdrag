@@ -1,12 +1,11 @@
 import { makeRxId } from "core/utils/make-rxId";
-import { HistoryableActionType, IBlocksSchema, IBlocksTreeNode, IDocument, IDocumentAction, INodeMeta, INodeSchema, ISnapshot, ITreeNode, NodeChunk, NodeListener, NodeRelativePosition } from "../interfaces/document";
+import { HistoryableActionType, IBlocksSchema, IBlocksTreeNode, IDocument, IDocumentAction, INodeMeta, INodeSchema, ISnapshot, ITreeNode, NodeChunk, NodeRelativePosition } from "../interfaces/document";
 import { AddNodesPayload, BackupPayload, ChangeMetaPayloads, DeleteNodesPayload, DocumentActionPayload, GotoPayload, MoveNodesPayload, RecoverSnapshotPayload } from "../interfaces/payloads";
-import { ID, IDesignerEngine, Unsubscribe } from "core/interfaces";
+import { ID, IDesignerEngine } from "core/interfaces";
 import { State } from "core/reducers";
 import { parseNodeSchema, paseNodes } from "core/funcs/parseNodeSchema";
 import { Store } from "redux";
 import { ADD_NODES, BACKUP, CHANGE_NODE_META, DELETE_NODES, GOTO, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT } from "core/actions/registry";
-import { invariant } from "core/utils/util-invariant";
 import { DocumentState } from "core/reducers/documentsById/document";
 import { NodesById } from "core/reducers/nodesById";
 
@@ -151,27 +150,6 @@ export class DocumentImpl implements IDocument {
     this.dispatchGoto(index)
   }
 
-  subscribeToNodeChanged = (listener: NodeListener): Unsubscribe => {
-    invariant(typeof listener === 'function', 'listener must be a function.')
-
-    let previousState = this.store.getState().nodesById
-    const handleChange = () => {
-      const nextState = this.store.getState().nodesById
-      if (nextState === previousState) {
-        return
-      }
-
-      for (const key of Object.keys(nextState)) {
-        if (nextState[key] === previousState[key]) {
-          continue
-        }
-        listener(nextState[key])
-      }
-      previousState = nextState
-
-    }
-    return this.store.subscribe(handleChange)
-  }
   getRootNode(): ITreeNode | null {
     const documentState = this.getState()
     const state = this.store.getState()

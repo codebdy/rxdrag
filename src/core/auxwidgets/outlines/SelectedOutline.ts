@@ -23,7 +23,7 @@ export class SelectedOutlineImpl implements IPlugin {
     }
 
     this.unsubscribe = engine.getMonitor().subscribeToSelectChange(this.listenSelectChange)
-    this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToNodeChanged(this.refresh)
+    this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
     this.unCanvasScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
     this.unCanvasResize = this.engine.getShell().subscribeTo(CanvasResizeEvent, this.refresh)
     this.unThemeModeChange= engine.getMonitor().subscribeToThemeModeChange(this.handleThemeChange)

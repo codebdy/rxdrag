@@ -1,8 +1,8 @@
-import { IAction } from "core/interfaces/action";
 import { NodesById } from "core/reducers/nodesById";
+import { IAction } from "./action";
 import { IDesignerParams } from "./component";
 import { DocumentActionPayload } from "./payloads";
-import { ID, RxProps, Unsubscribe } from "./types";
+import { ID, RxProps } from "./types";
 
 export type CanvasWidthLimits = {
   minWidth?: number,
@@ -28,7 +28,6 @@ export enum NodeRelativePosition {
   After
 }
 export type NodeListener = (node: ITreeNode) => void
-export type NodesListener = (nodes: ITreeNode[]) => void
 
 export interface IDocumentAction<Payload extends DocumentActionPayload> extends IAction<Payload> {
   payload?: Payload
@@ -145,7 +144,6 @@ export interface IDocument {
   redo(): void
   goto(index: number): void
 
-  subscribeToNodeChanged(listener: NodeListener): Unsubscribe
   getRootNode(): ITreeNode | null
   getNode(id: ID): ITreeNode | null
   getSchemaBlockNode(id: ID): ITreeNode | null
