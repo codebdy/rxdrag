@@ -27,11 +27,21 @@ export const OutlineWidget = memo((
   const selectedNodeIds = useSelectedNodeIds(currentTree?.documentId)
   const transNode = useCallback((id: ID): DataNode | undefined => {
     const node = getNode(id)
+    const children: DataNode[] = node?.children?.map(childId => transNode(childId)).filter(nd => nd !== undefined) as any || []
+    for (const key of Object.keys(node?.slots || {})) {
+      const slotId = node?.slots?.[key]
+      if (slotId) {
+        const slot = transNode(slotId)
+        if (slot) {
+          children.push(slot)
+        }
+      }
+    }
     if (node) {
       return {
         title: node.title,
         key: node.id,
-        children: node.children?.map(childId => transNode(childId)).filter(nd => nd !== undefined) as any
+        children: children
       }
     }
 
@@ -49,7 +59,7 @@ export const OutlineWidget = memo((
     return [
       root
     ]
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTree, nodeChangeFlag, transNode])
 
   const onSelect: TreeProps['onSelect'] = useCallback((selectedKeys: Key[]) => {
