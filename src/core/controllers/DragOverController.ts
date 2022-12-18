@@ -3,14 +3,23 @@ import { DragMoveEvent } from "core/shell/events";
 import { AcceptType, DrageOverOptions } from "core/interfaces/action";
 import { IPlugin } from "core/interfaces/plugin";
 import { IDropPosition, PositionJudger, RelativePosition } from "../utils/coordinate";
+import { DragOverState } from "core/reducers/dragOver";
 
 export class DragOverControllerImpl implements IPlugin {
   name: string = "default.drag-over-controller";
 
   dragover: DrageOverOptions | null = null
   unsucribe: Unsubscribe
+  unscribeNodeChange: Unsubscribe
   constructor(protected engine: IDesignerEngine) {
     this.unsucribe = engine.getShell().subscribeTo(DragMoveEvent, this.handleDragMove)
+    this.unscribeNodeChange = engine.getMonitor().subscribeToDragOver(this.handleDragoverChange)
+  }
+
+  handleDragoverChange = (dragover: DragOverState|null)=>{
+    if(!dragover){
+      this.dragover = null
+    }
   }
 
   handleDragMove = (e: DragMoveEvent) => {
@@ -27,7 +36,6 @@ export class DragOverControllerImpl implements IPlugin {
 
   private handleDragOver(targetId: ID, e: DragMoveEvent) {
     const node = this.engine.getMonitor().getNode(targetId)
-
     if (node) {
       const judger = new PositionJudger(node, this.engine)
       const relativePosition = judger.judgePosition(e.data)
@@ -35,13 +43,15 @@ export class DragOverControllerImpl implements IPlugin {
         type: this.canAccept(relativePosition),
         ...relativePosition,
       } : null
-      if(this.dragover?.targetId !== dragover?.targetId || this.dragover?.type || dragover?.type ||
-          this.dragover?.position !== dragover?.position
-        )
-      this.engine.getActions().dragover(dragover)
-      this.dragover = dragover
+      if (this.dragover?.targetId !== dragover?.targetId || this.dragover?.type !== dragover?.type ||
+        this.dragover?.position !== dragover?.position
+      ) {
+        this.engine.getActions().dragover(dragover)
+        this.dragover = dragover
+      }
+    }else{
+      this.dragover = null
     }
-
   }
 
   private canAccept(position: IDropPosition): AcceptType {
