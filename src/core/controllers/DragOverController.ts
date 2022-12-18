@@ -35,6 +35,9 @@ export class DragOverControllerImpl implements IPlugin {
         type: this.canAccept(relativePosition),
         ...relativePosition,
       } : null
+      if(this.dragover?.targetId !== dragover?.targetId || this.dragover?.type || dragover?.type ||
+          this.dragover?.position !== dragover?.position
+        )
       this.engine.getActions().dragover(dragover)
       this.dragover = dragover
     }
