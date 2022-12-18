@@ -1,6 +1,7 @@
 import { IDesignerEngine, ID, Unsubscribe } from "core";
 import { IPlugin } from "core/interfaces/plugin";
 import { CanvasResizeEvent, CanvasScrollEvent } from "core/shell/events";
+import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
 import { addZIndex } from "core/utils/add-zindex";
 import { AUX_BACKGROUND_COLOR } from "../consts";
 import { numbToPx } from "../utils/numbToPx";
@@ -16,6 +17,7 @@ export class SelectedOutlineImpl implements IPlugin {
   private unCanvasScroll: Unsubscribe
   private unCanvasResize: Unsubscribe
   private unThemeModeChange: Unsubscribe
+  private unNodeMounted: Unsubscribe
 
   constructor(protected engine: IDesignerEngine) {
     if (!engine.getShell().getContainer) {
@@ -26,7 +28,14 @@ export class SelectedOutlineImpl implements IPlugin {
     this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
     this.unCanvasScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
     this.unCanvasResize = this.engine.getShell().subscribeTo(CanvasResizeEvent, this.refresh)
-    this.unThemeModeChange= engine.getMonitor().subscribeToThemeModeChange(this.handleThemeChange)
+    this.unThemeModeChange = engine.getMonitor().subscribeToThemeModeChange(this.handleThemeChange)
+    this.unNodeMounted = this.engine.getShell().subscribeTo(NodeMountedEvent, this.handleNodeMounted)
+  }
+
+  handleNodeMounted = (e: NodeMountedEvent) => {
+    if(this.selecteNodes?.length){
+      this.refresh()
+    }
   }
 
   listenSelectChange = (selectedIds: ID[] | null) => {
@@ -56,7 +65,7 @@ export class SelectedOutlineImpl implements IPlugin {
     this.refresh()
   }
 
-  handleThemeChange = ()=>{
+  handleThemeChange = () => {
     setTimeout(() => {
       this.listenSelectChange(this.selecteNodes)
     }, 200)
@@ -64,13 +73,13 @@ export class SelectedOutlineImpl implements IPlugin {
 
   refresh = () => {
     this.listenSelectChange(this.selecteNodes)
-    setTimeout(() => {
-      this.listenSelectChange(this.selecteNodes)
-    }, 10)
-    //防止更新不彻底，两遍刷新补齐
-    setTimeout(() => {
-      this.listenSelectChange(this.selecteNodes)
-    }, 100)
+    // setTimeout(() => {
+    //   this.listenSelectChange(this.selecteNodes)
+    // }, 10)
+    // //防止更新不彻底，两遍刷新补齐
+    // setTimeout(() => {
+    //   this.listenSelectChange(this.selecteNodes)
+    // }, 100)
   }
 
   destory(): void {
@@ -80,6 +89,7 @@ export class SelectedOutlineImpl implements IPlugin {
     this.unCanvasScroll()
     this.unCanvasResize()
     this.unThemeModeChange()
+    this.unNodeMounted()
   }
 
   private clear() {
