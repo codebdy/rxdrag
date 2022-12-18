@@ -2,7 +2,7 @@ import { IAction } from "core/interfaces/action";
 import { NodesById } from "core/reducers/nodesById";
 import { IDesignerParams } from "./component";
 import { DocumentActionPayload } from "./payloads";
-import { ID, RxProps, Unsubscribe } from "./types";
+import { ID, RxProps } from "./types";
 
 export type CanvasWidthLimits = {
   minWidth?: number,
@@ -145,7 +145,6 @@ export interface IDocument {
   redo(): void
   goto(index: number): void
 
-  subscribeToNodeChanged(listener: NodeListener): Unsubscribe
   getRootNode(): ITreeNode | null
   getNode(id: ID): ITreeNode | null
   getSchemaBlockNode(id: ID): ITreeNode | null
