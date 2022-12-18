@@ -1,5 +1,5 @@
-import { IAction } from "core/interfaces/action";
 import { NodesById } from "core/reducers/nodesById";
+import { IAction } from "./action";
 import { IDesignerParams } from "./component";
 import { DocumentActionPayload } from "./payloads";
 import { ID, RxProps } from "./types";
