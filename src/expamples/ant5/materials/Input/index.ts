@@ -11,7 +11,10 @@ export const InputMaterial: IComponentMaterial = {
   designerLocales: inputLocales,
   designerSchema: inputSchema,
   designerProps: {
-    readOnly: true
+    readOnly: true,
+    style:{
+      cursor:"default",
+    }
   },
   resource:  {
     name: "Input",
