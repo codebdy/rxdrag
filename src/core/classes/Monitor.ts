@@ -202,15 +202,27 @@ export class Monitor implements IMonitor {
 		}
 		return this.store.subscribe(handleChange)
 	}
+	subscribeToHasNodeChanged(listener: Listener): Unsubscribe {
+		invariant(typeof listener === 'function', 'listener must be a function.')
+		let previousState = this.store.getState().nodesById
+		const handleChange = () => {
+			const nextState = this.store.getState().nodesById
+			if (nextState !== previousState) {
+				listener()
+			}
+			previousState = nextState
+		}
+		return this.store.subscribe(handleChange)
+	}
 
-	subscribeToNodeChanged(listener: NodeListener): Unsubscribe {
+	subscribeToNodeChanged(id: ID, listener: NodeListener): Unsubscribe {
 		invariant(typeof listener === 'function', 'listener must be a function.')
 		let previousState = this.store.getState().nodesById
 		const handleChange = () => {
 			const nextState = this.store.getState().nodesById
 			if (nextState !== previousState) {
 				for (const nodeId of Object.keys(nextState)) {
-					if (nextState[nodeId] !== previousState?.[nodeId]) {
+					if (nextState[nodeId] !== previousState?.[nodeId] && nodeId === id) {
 						listener(nextState[nodeId])
 					}
 				}

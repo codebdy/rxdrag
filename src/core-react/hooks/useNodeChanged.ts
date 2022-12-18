@@ -11,7 +11,7 @@ export function useNodeChanged() {
   }, [])
 
   useEffect(() => {
-    const unscibeNode = designer?.getMonitor().subscribeToNodeChanged(handleNodeChange)
+    const unscibeNode = designer?.getMonitor().subscribeToHasNodeChanged(handleNodeChange)
     return () => {
       unscibeNode?.()
     }

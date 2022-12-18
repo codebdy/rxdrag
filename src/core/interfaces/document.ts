@@ -28,7 +28,6 @@ export enum NodeRelativePosition {
   After
 }
 export type NodeListener = (node: ITreeNode) => void
-export type NodesListener = (nodes: ITreeNode[]) => void
 
 export interface IDocumentAction<Payload extends DocumentActionPayload> extends IAction<Payload> {
   payload?: Payload

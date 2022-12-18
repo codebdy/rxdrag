@@ -19,7 +19,7 @@ export class ActivedOutlineImpl implements IPlugin {
     if (!engine.getShell().getContainer) {
       console.error("Html 5 driver rootElement is undefined")
     }
-    this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToNodeChanged(this.refresh)
+    this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
     this.unActive = engine.getMonitor().subscribeToActiveChanged(this.handleActivedChange)
     this.unViewporScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
     this.unViewporChange = this.engine.getShell().subscribeTo(CanvasResizeEvent, this.refresh)

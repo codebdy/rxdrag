@@ -150,27 +150,6 @@ export class DocumentImpl implements IDocument {
     this.dispatchGoto(index)
   }
 
-  // subscribeToNodeChanged = (listener: NodeListener): Unsubscribe => {
-  //   invariant(typeof listener === 'function', 'listener must be a function.')
-
-  //   let previousState = this.store.getState().nodesById
-  //   const handleChange = () => {
-  //     const nextState = this.store.getState().nodesById
-  //     if (nextState === previousState) {
-  //       return
-  //     }
-
-  //     for (const key of Object.keys(nextState)) {
-  //       if (nextState[key] === previousState[key]) {
-  //         continue
-  //       }
-  //       listener(nextState[key])
-  //     }
-  //     previousState = nextState
-
-  //   }
-  //   return this.store.subscribe(handleChange)
-  // }
   getRootNode(): ITreeNode | null {
     const documentState = this.getState()
     const state = this.store.getState()
