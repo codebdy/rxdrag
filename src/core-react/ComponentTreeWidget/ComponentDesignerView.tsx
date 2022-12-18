@@ -5,6 +5,7 @@ import { useTreeNode } from "../hooks/useTreeNode";
 import { useDesignerEngine } from "core-react/hooks";
 import { PlaceHolder } from "core-react/PlaceHolder";
 import { NodeContext } from "core-react/contexts";
+import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
 
 export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const { nodeId } = props;
@@ -19,8 +20,9 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
         element?.setAttribute(key, (node?.rxProps as any)[key])
       }
     }
+    engine?.getShell().dispatch(new NodeMountedEvent(nodeId))
 
-  }, [node?.rxProps])
+  }, [engine, node?.rxProps, nodeId])
 
   const { style, ...other } = node?.meta.props || {}
   const { dStyle, ...dOther } = node?.designerProps || {}

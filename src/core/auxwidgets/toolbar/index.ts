@@ -5,9 +5,10 @@ import { addZIndex } from "core/utils/add-zindex";
 import { numbToPx } from "../utils/numbToPx";
 import { CloneButton } from "./controls/CloneButton";
 import { DeleteButton } from "./controls/DeleteButton";
-import { MoveButton } from "./controls/MoveButton";
 import { ComponentSelector } from "./controls/Selector";
 import { IAuxControl, IAuxToolbar } from "./interfaces";
+import { MoveButton } from "./controls/MoveButton";
+import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
 
 export class ToolbarImpl implements IPlugin, IAuxToolbar {
   name: string = "default.toolbar";
@@ -18,6 +19,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   private unViewporScroll: Unsubscribe
   private unViewporChange: Unsubscribe
   private unThemeModeChange: Unsubscribe
+  private unNodeMounted: Unsubscribe
 
   constructor(protected engine: IDesignerEngine,) {
     if (!engine.getShell().getContainer) {
@@ -33,7 +35,13 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     this.unViewporScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
     this.unViewporChange = this.engine.getShell().subscribeTo(CanvasResizeEvent, this.refresh)
     this.unThemeModeChange = engine.getMonitor().subscribeToThemeModeChange(this.handleThemeChange)
+    this.unNodeMounted = this.engine.getShell().subscribeTo(NodeMountedEvent, this.handleNodeMounted)
   }
+
+  handleNodeMounted = (e: NodeMountedEvent) => {
+    this.refresh()
+  }
+
   replaceControl(control: IAuxControl): void {
     if (this.controls.find(ctrl => ctrl.name === control.name)) {
       this.controls = this.controls.map(ctrl => ctrl.name === control.name ? control : ctrl)
@@ -96,7 +104,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
       htmlDiv.style.padding = "0px"
       htmlDiv.style.zIndex = addZIndex(window.getComputedStyle(htmlDiv).zIndex, 10)
       htmlDiv.style.userSelect = "none"
-      
+
       rootEl?.appendChild(htmlDiv)
 
       const divRect = htmlDiv.getBoundingClientRect()
@@ -118,13 +126,13 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   private refresh = () => {
     this.render()
 
-    //防止更新不彻底，两遍刷新补齐
-    setTimeout(() => {
-      this.render()
-    }, 10)
-    setTimeout(() => {
-      this.render()
-    }, 100)
+    // //防止更新不彻底，两遍刷新补齐
+    // setTimeout(() => {
+    //   this.render()
+    // }, 10)
+    // setTimeout(() => {
+    //   this.render()
+    // }, 100)
   }
 
   destory(): void {
@@ -134,6 +142,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     this.unViewporScroll()
     this.unViewporChange()
     this.unThemeModeChange()
+    this.unNodeMounted()
   }
 
   private positionLimit(documentId: ID) {
