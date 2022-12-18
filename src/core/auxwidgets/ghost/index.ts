@@ -12,7 +12,7 @@ export class GhostWidgetImpl implements IPlugin {
   draggingResourceOff: Unsubscribe
   dragOff: Unsubscribe | null = null
   dragStopOff: Unsubscribe | null = null
-  driverHub: IDesignerShell
+  shell: IDesignerShell
   startEvent: DragStartEvent | null = null
   title: string = "undefined"
   mounted: boolean = false
@@ -29,12 +29,13 @@ export class GhostWidgetImpl implements IPlugin {
     htmlNode.style.whiteSpace = "nowrap"
     htmlNode.style.zIndex = "10000"
     this.htmlNode = htmlNode
-    this.driverHub = engine.getShell()
+    this.shell = engine.getShell()
     if (!engine.getShell().getContainer) {
       console.error("Html 5 driver rootElement is undefined")
     }
     this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
     this.draggingResourceOff = this.engine.getMonitor().subscribeToDraggingResource(this.handleDraggingResource)
+    this.dragOff = this.shell.subscribeTo(MouseMoveEvent, this.handleDrag)
   }
 
   handleDraggingNodes = (dragging: DraggingNodesState | null) => {
@@ -43,11 +44,9 @@ export class GhostWidgetImpl implements IPlugin {
       if (node) {
         this.title = node.title || node.meta.componentName
         this.mounted = true
-        this.dragOff = this.driverHub.subscribeTo(MouseMoveEvent, this.handleDrag)
       }
     } else {
       this.unmount()
-      this.dragOff?.()
     }
   }
 
@@ -57,11 +56,9 @@ export class GhostWidgetImpl implements IPlugin {
       if (resource) {
         this.title = resource.title || resource.id || "undefined"
         this.mount()
-        this.dragOff = this.driverHub.subscribeTo(MouseMoveEvent, this.handleDrag)
       }
     } else {
       this.unmount()
-      this.dragOff?.()
     }
   }
 
@@ -83,6 +80,7 @@ export class GhostWidgetImpl implements IPlugin {
 
   destory(): void {
     this.unmount()
+    this.dragOff?.()
   }
 
   private mount() {
