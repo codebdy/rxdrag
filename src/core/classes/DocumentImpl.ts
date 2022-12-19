@@ -253,7 +253,6 @@ export class DocumentImpl implements IDocument {
       if (slot) {
         slots[key] = slot
       } else {
-        console.log("哈哈getNodeSchema", node)
         console.error("can not find slot")
       }
     }
