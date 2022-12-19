@@ -117,7 +117,9 @@ export enum HistoryableActionType {
   Remove = "Remove",
   Copy = "Copy",
   Clone = "Clone",
-  Change = "Change"
+  Change = "Change",
+  RemoveSlot = "RemoveSlot",
+  AddSlot = "AddSlot"
 }
 
 /**
@@ -132,7 +134,7 @@ export interface IDocument {
   initialize(rootSchema: INodeSchema, documentId: ID): void
   moveTo(sourceId: ID, targetId: ID, pos: NodeRelativePosition): void
   multiMoveTo(sourceIds: ID[], targetId: ID, pos: NodeRelativePosition): void
-  addNewNodes(nodes: NodeChunk, targetId: ID, pos: NodeRelativePosition): void
+  addNewNodes(elements: INodeSchema | INodeSchema[], targetId: ID, pos: NodeRelativePosition): NodeChunk
   addNodeFormOutside(outsideNode: ITreeNode, targetId: ID, pos: NodeRelativePosition): void
   remove(sourceId: ID): void
   clone(sourceId: ID): void

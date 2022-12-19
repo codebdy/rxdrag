@@ -39,15 +39,16 @@ function addNods(state: State = {},
 	action: IDocumentAction<DocumentActionPayload>) {
 	const { payload } = action
 	const addPlayload = payload as AddNodesPayload
-	const pos = addPlayload.pos
+	const { pos, slot } = addPlayload
 	const newState = Object.assign({}, state, addPlayload.nodes.nodesById)
 	const sourceIds = addPlayload.nodes.rootNodes.map(node => node.id)
 	if (pos === NodeRelativePosition.InTop || pos === NodeRelativePosition.InBottom) {
 		return addIn(newState, sourceIds, addPlayload.targetId, pos)
 	} else if (pos === NodeRelativePosition.Before || pos === NodeRelativePosition.After) {
 		return addSiblings(newState, sourceIds, addPlayload.targetId, pos)
+	} else if (slot) {
+		return addSlot(newState, addPlayload.targetId, slot, sourceIds[0])
 	}
-
 	return newState
 }
 
@@ -190,3 +191,13 @@ function removeSlot(state: NodesById, action: IDocumentAction<RemoveSlotPayload>
 	return state
 }
 
+function addSlot(state: NodesById, nodeId: ID, slotName: string, slotId: ID): NodesById {
+	if (nodeId) {
+		let newState: NodesById = { ...state }
+		const node = state[nodeId]
+		const newSlots: any = { ...node.slots, [slotName]: slotId }
+		newState[nodeId] = { ...node, slots: newSlots }
+		return newState
+	}
+	return state
+}

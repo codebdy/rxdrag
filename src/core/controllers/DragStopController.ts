@@ -1,6 +1,5 @@
 import { IDesignerEngine, NodeRelativePosition } from "core";
 import { DragStopEvent } from "core/shell/events";
-import { paseNodes } from "core/funcs/parseNodeSchema";
 import { HistoryableActionType, IDocument, Unsubscribe } from "core/interfaces";
 import { AcceptType, DrageOverOptions } from "core/interfaces/action";
 import { IPlugin } from "core/interfaces/plugin";
@@ -52,8 +51,7 @@ export class DragStopControllerImpl implements IPlugin {
     const resource = this.engine.getResourceManager().getResource(draggingResource?.resource || "");
     const pos = this.tranPosition(dragOver.position)
     if (resource && pos && dragOver.type === AcceptType.Accept) {
-      const nodes = paseNodes(this.engine, document.id, resource.elements);
-      document.addNewNodes(nodes, dragOver.targetId, pos);
+      const nodes = document.addNewNodes(resource.elements, dragOver.targetId, pos);
       document.backup(HistoryableActionType.Add)
       this.engine.getActions().selectNodes(nodes.rootNodes.map(node => node.id), document.id);
     }

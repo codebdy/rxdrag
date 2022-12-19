@@ -8,6 +8,7 @@ import { Store } from "redux";
 import { ADD_NODES, BACKUP, CHANGE_NODE_META, DELETE_NODES, GOTO, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_SLOT } from "core/actions/registry";
 import { DocumentState } from "core/reducers/documentsById/document";
 import { NodesById } from "core/reducers/nodesById";
+import { isArr, isStr } from "core/utils/types";
 
 export class DocumentImpl implements IDocument {
   id: string;
@@ -46,7 +47,8 @@ export class DocumentImpl implements IDocument {
   multiMoveTo(sourceIds: string[], targetId: string, pos: NodeRelativePosition): void {
     throw new Error("Method not implemented.");
   }
-  addNewNodes(nodes: NodeChunk, targetId: string, pos: NodeRelativePosition): void {
+  addNewNodes(elements: INodeSchema | INodeSchema[], targetId: string, pos: NodeRelativePosition): NodeChunk {
+    const nodes = paseNodes(this.engine, this.id, elements);
     this.receiveNodes(nodes)
     const playload: AddNodesPayload = {
       documentId: this.id,
@@ -55,6 +57,8 @@ export class DocumentImpl implements IDocument {
       pos
     }
     this.dispatch(this.createAction(ADD_NODES, playload))
+
+    return nodes
   }
   addNodeFormOutside(outsideNode: ITreeNode, targetId: string, pos: NodeRelativePosition): void {
     throw new Error("Method not implemented.");
@@ -75,22 +79,52 @@ export class DocumentImpl implements IDocument {
       slotName: name,
     }
     this.dispatch(this.createAction(REMOVE_SLOT, playload))
+    this.backup(HistoryableActionType.RemoveSlot)
   }
+
   addSlot(id: string, name: string): void {
     const node = this.getNode(id)
-    if(node){
+    if (node) {
       const comdesigner = this.engine.getComponentManager().getComponentDesigner(node.meta.componentName)
-      //comdesigner.
-    }else{
-      console.log("Can not find node by id", id)
+      const slotConfig = comdesigner?.slots?.[name]
+      let element: INodeSchema = { componentName: "DefaultSlot" }
+      if (isStr(slotConfig)) {
+        const slotElements = this.engine.getComponentManager().getComponentDesigner(slotConfig)?.resource?.elements
+        if (isArr(slotElements)) {
+          element = slotElements[0]
+        } else if (slotElements) {
+          element = slotElements
+        } else {
+          console.warn("No set slot on name:", name)
+          return
+        }
+      } else if (slotConfig === true || slotConfig === undefined) {
+        element = { componentName: "DefaultSlot" }
+      } else {
+        const slotElement = isArr(slotConfig.resource?.elements) ? slotConfig.resource?.elements?.[0] : slotConfig.resource?.elements
+        if (slotElement) {
+          element = slotElement
+        }
+      }
+
+      const nodes = paseNodes(this.engine, this.id, element);
+      this.receiveNodes(nodes)
+      const playload: AddNodesPayload = {
+        documentId: this.id,
+        nodes,
+        targetId:node.id,
+        slot:name,
+      }
+      this.dispatch(this.createAction(ADD_NODES, playload))
+    } else {
+      console.error("Can not find node by id", id)
     }
   }
 
   clone(sourceId: string): void {
     const sourceSchema = this.getNodeSchema(sourceId)
     if (sourceSchema) {
-      const nodes = paseNodes(this.engine, this.id, [JSON.parse(JSON.stringify(sourceSchema))]);
-      this.addNewNodes(nodes, sourceId, NodeRelativePosition.After);
+      const nodes = this.addNewNodes(sourceSchema, sourceId, NodeRelativePosition.After);
       for (const node of nodes.rootNodes) {
         this.engine.getActions().selectNodes([node.id], this.id)
       }
@@ -106,6 +140,7 @@ export class DocumentImpl implements IDocument {
       meta: newMeta
     }
     this.engine.dispatch({ type: CHANGE_NODE_META, payload })
+    this.backup(HistoryableActionType.Change)
   }
 
   backup(actionType: HistoryableActionType): void {
@@ -218,6 +253,7 @@ export class DocumentImpl implements IDocument {
       if (slot) {
         slots[key] = slot
       } else {
+        console.log("哈哈getNodeSchema", node)
         console.error("can not find slot")
       }
     }
