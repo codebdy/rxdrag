@@ -2,6 +2,7 @@ import { IDesignerEngine, ID, Unsubscribe } from "core";
 import { IPlugin } from "core/interfaces/plugin";
 import { CanvasResizeEvent, CanvasScrollEvent } from "core/shell/events";
 import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
+import { NodeUnmountedEvent } from "core/shell/events/canvas/NodeUnmountedEvent";
 import { addZIndex } from "core/utils/add-zindex";
 import { AUX_BACKGROUND_COLOR } from "../consts";
 import { numbToPx } from "../utils/numbToPx";
@@ -18,12 +19,13 @@ export class SelectedOutlineImpl implements IPlugin {
   private unCanvasResize: Unsubscribe
   private unThemeModeChange: Unsubscribe
   private unNodeMounted: Unsubscribe
+  private unmountUnsubscribe: Unsubscribe
 
   constructor(protected engine: IDesignerEngine) {
     if (!engine.getShell().getContainer) {
       console.error("Html 5 driver rootElement is undefined")
     }
-
+    this.unmountUnsubscribe = this.engine.getShell().subscribeTo(NodeUnmountedEvent, this.handleNodeMounted)
     this.unsubscribe = engine.getMonitor().subscribeToSelectChange(this.listenSelectChange)
     this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
     this.unCanvasScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
@@ -33,7 +35,7 @@ export class SelectedOutlineImpl implements IPlugin {
   }
 
   handleNodeMounted = (e: NodeMountedEvent) => {
-    if(this.selecteNodes?.length){
+    if (Object.keys(this.htmls).length || this.selecteNodes?.length) {
       this.refresh()
     }
   }
@@ -84,6 +86,7 @@ export class SelectedOutlineImpl implements IPlugin {
 
   destory(): void {
     this.clear()
+    this.unmountUnsubscribe()
     this.unsubscribe()
     this.nodeChangeUnsubscribe()
     this.unCanvasScroll()
