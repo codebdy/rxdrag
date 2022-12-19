@@ -2,13 +2,15 @@ import { ILocales } from "core/interfaces/loacales";
 
 export const commmonLocales: ILocales = {
   "zh-CN": {
-    components:{
-      Root:{
-        title:"根组件"
+    components: {
+      Root: {
+        title: "根组件"
       }
     },
     tools: {
       properties: "属性",
+      style: "样式",
+      slots: "卡槽",
       save: "保存",
       publish: "发布",
       components: "组件",
@@ -24,16 +26,17 @@ export const commmonLocales: ILocales = {
       min: "最小",
       responsive: "响应式屏幕"
     }
-
   },
   'en-US': {
-    components:{
-      Root:{
-        title:"Root"
+    components: {
+      Root: {
+        title: "Root"
       }
     },
     tools: {
       properties: "Properties",
+      style: "Style",
+      slots: "Slots",
       save: "Save",
       publish: "Publish",
       components: "Components",
