@@ -12,7 +12,7 @@ export const hCFLayoutSchema: INodeSchema = {
       componentName: "TabPanel",
       props: {
         title: "$properties",
-        id:"propperties"
+        id: "propperties"
       },
       children: [
         {
@@ -92,27 +92,27 @@ export const hCFLayoutSchema: INodeSchema = {
       componentName: "TabPanel",
       props: {
         title: "$style",
-        id:"style"
+        id: "style"
       },
     },
     {
       componentName: "TabPanel",
       props: {
         title: "$slots",
-        id:"slots",
+        id: "slots",
       },
       children: [
         {
           componentName: "FormItem",
           props: {
-            label: "$title",
-          },
-          "x-field": {
-            name: "title",
+            label: "$header",
           },
           children: [
             {
-              componentName: "Input"
+              componentName: "SlotSwitch",
+              props: {
+                name: "header"
+              }
             }
           ]
         },
