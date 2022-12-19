@@ -13,6 +13,7 @@ import { DesignRoot } from "./DesignRoot";
 import { PreviewRoot } from "./PreviewRoot";
 import { IComponentMaterial } from "./interfaces";
 import { useComponentsFromMaterials } from "./hooks/useComponentsFromMaterials";
+import { DraggedAttenuator } from "core/auxwidgets/dragged-attenuator";
 
 export interface DesignerProps {
   components?: IComponentMaterial[]
@@ -36,6 +37,7 @@ export const Designer = memo((props: DesignerProps) => {
         ActivedOutline,
         SelectedOutline,
         GhostWidget,
+        DraggedAttenuator,
         InsertionCursor,
         Toolbar,
       ],
