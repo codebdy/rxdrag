@@ -3,15 +3,14 @@ export const hCFLayoutLocales = {
     title: "上中下布局",
     description: "一种布局",
     settings: {
-      type: "类型",
+      header: "页眉",
     }
 
   },
   'en-US': {
     title: "Header Content Footer",
     settings: {
-      type: "Type",
-      title: "Title",
+      header: "Header",
     }
   }
 }

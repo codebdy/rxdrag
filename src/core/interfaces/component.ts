@@ -1,6 +1,7 @@
 import { IDesignerProps, INodeSchema, ITreeNode } from "./document"
 import { IDesignerEngine } from "./engine"
 import { ILocales } from "./loacales"
+import { IResource } from "./resource"
 import { ID } from "./types"
 
 export type Selector = (node: ITreeNode, engine?: IDesignerEngine) => boolean
@@ -43,6 +44,11 @@ export interface IComponentConfig {
   designerLocales?: ILocales
   designerProps?: IDesignerProps
   designerParams?: IDesignerParams
+  resource?: IResource
+  //slots用到的组件，值为true时，用缺省组件DefaultSlot, string时，存的是已经注册过的component resource名字
+  slots?: {
+    [name: string]: IComponentConfig | true | string | undefined
+  }
 }
 
 //可独立注册的行为规则
@@ -54,7 +60,7 @@ export interface IBehavior {
 }
 
 export interface IComponentManager {
-  getNodeBehaviorRules(nodeId: ID): IBehaviorRule []
+  getNodeBehaviorRules(nodeId: ID): IBehaviorRule[]
   getComponentDesigner(componentName: string): IComponentConfig | undefined
   registerComponents(...componentDesigners: IComponentConfig[]): void
   registerBehaviors(...behaviors: IBehavior[]): void

@@ -2,9 +2,8 @@ import { CSSProperties, memo, useCallback, useMemo } from "react"
 import { useCurrentNode } from "core-react/hooks/useCurrentNode"
 import { Input, Select, Switch } from 'antd';
 import { ComponentRender } from "core-react/ComponentRender";
-import { Tabs } from "../components/Tabs";
-import { TabPanel } from "../components/Tabs/TabPanel";
-import { FormItem } from "../components/FormItem";
+import { Tabs } from "./components/Tabs";
+import { TabPanel } from "./components/Tabs/TabPanel";
 import { INodeMeta } from "core";
 import { MetaForm } from "./MetaForm";
 import { Fieldy, VirtualForm } from "fieldy";
@@ -13,6 +12,8 @@ import { useDesignerEngine } from "core-react/hooks";
 import { Box } from "../components/Box";
 import { PreviewRoot } from "core-react/PreviewRoot";
 import { useChangeNodeMeta } from "core-react/hooks/useChangeNodeMeta";
+import { SlotSwitch } from "./components/SlotSwitch";
+import { FormItem } from "./components/FormItem";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -63,6 +64,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         Input,
         Select,
         Switch,
+        SlotSwitch,
       }}
     >
 

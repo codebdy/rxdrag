@@ -15,6 +15,7 @@ export const INITIALIZE = 'rx-core/INITIALIZE'
 export const ADD_NODES = 'rx-core/ADD_NODES'
 export const MOVE_NODES = 'rx-core/MOVE_NODES'
 export const DELETE_NODES = 'rx-core/DELETE_NODES'
+export const REMOVE_SLOT = 'rx-core/REMOVE_SLOT'
 export const CHANGE_NODE_META = 'rx-core/CHANGE_NODE_META'
 
 export const BACKUP = 'rx-core/BACKUP'

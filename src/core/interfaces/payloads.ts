@@ -42,7 +42,8 @@ export type ViewTypePayload = DocumentActionPayload & {
 export type AddNodesPayload = DocumentActionPayload & {
   targetId: ID;
   nodes: NodeChunk;
-  pos: NodeRelativePosition;
+  pos?: NodeRelativePosition;
+  slot?: string;
 };
 
 export type MoveNodesPayload = DocumentActionPayload & {
@@ -53,6 +54,11 @@ export type MoveNodesPayload = DocumentActionPayload & {
 
 export type DeleteNodesPayload = DocumentActionPayload & {
   sourceIds: ID[];
+};
+
+export type RemoveSlotPayload = DocumentActionPayload & {
+  nodeId: ID;
+  slotName: string;
 };
 
 export type RecoverSnapshotPayload = DocumentActionPayload & {

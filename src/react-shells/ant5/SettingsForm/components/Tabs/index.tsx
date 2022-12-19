@@ -21,7 +21,7 @@ export const Tabs = memo(forwardRef<HTMLDivElement>((
         const key = childSchema?.props?.title + index
         return {
           label: childSchema?.props?.title,
-          key: childSchema?.props?.key || key,
+          key: childSchema?.props?.id || key,
           children: child,
         }
       }))

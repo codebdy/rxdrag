@@ -4,7 +4,7 @@ import { ID, RxProps } from "core/interfaces";
 export interface IResource {
   //唯一名称，防止重复注册
   name: string
-  elements: INodeSchema[]
+  elements: INodeSchema[] | INodeSchema
 }
 
 export interface IResourceNode extends IResource {
