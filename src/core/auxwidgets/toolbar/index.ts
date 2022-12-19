@@ -9,6 +9,8 @@ import { ComponentSelector } from "./controls/Selector";
 import { IAuxControl, IAuxToolbar } from "./interfaces";
 import { MoveButton } from "./controls/MoveButton";
 import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
+import { DraggingNodesState } from "core/reducers/draggingNodes";
+import { DraggingResourceState } from "core/reducers/draggingResource";
 
 export class ToolbarImpl implements IPlugin, IAuxToolbar {
   name: string = "default.toolbar";
@@ -20,7 +22,8 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   private unViewporChange: Unsubscribe
   private unThemeModeChange: Unsubscribe
   private unNodeMounted: Unsubscribe
-
+  private draggingNodesOff: Unsubscribe
+  private draggingResourceOff: Unsubscribe
   constructor(protected engine: IDesignerEngine,) {
     if (!engine.getShell().getContainer) {
       console.error("Html 5 driver rootElement is undefined")
@@ -36,6 +39,28 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     this.unViewporChange = this.engine.getShell().subscribeTo(CanvasResizeEvent, this.refresh)
     this.unThemeModeChange = engine.getMonitor().subscribeToThemeModeChange(this.handleThemeChange)
     this.unNodeMounted = this.engine.getShell().subscribeTo(NodeMountedEvent, this.handleNodeMounted)
+    this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
+    this.draggingResourceOff = this.engine.getMonitor().subscribeToDraggingResource(this.handleDraggingResource)
+  }
+
+  handleDraggingNodes = (dragging: DraggingNodesState | null) => {
+    this.hideWhenDragging(!!dragging)
+  }
+
+  handleDraggingResource = (dragging: DraggingResourceState | null) => {
+    this.hideWhenDragging(!!dragging)
+  }
+
+  private hideWhenDragging = (dragging: boolean) => {
+    if (dragging) {
+      if(this.htmlElement){
+        this.htmlElement.style.display = "none"
+      }
+    } else {
+      if(this.htmlElement){
+        this.htmlElement.style.display = ""
+      }
+    }
   }
 
   handleNodeMounted = (e: NodeMountedEvent) => {
@@ -125,14 +150,6 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
 
   private refresh = () => {
     this.render()
-
-    // //防止更新不彻底，两遍刷新补齐
-    // setTimeout(() => {
-    //   this.render()
-    // }, 10)
-    // setTimeout(() => {
-    //   this.render()
-    // }, 100)
   }
 
   destory(): void {
@@ -143,6 +160,8 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     this.unViewporChange()
     this.unThemeModeChange()
     this.unNodeMounted()
+    this.draggingNodesOff?.()
+    this.draggingResourceOff?.()
   }
 
   private positionLimit(documentId: ID) {

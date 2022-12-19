@@ -81,6 +81,9 @@ export class GhostWidgetImpl implements IPlugin {
   destory(): void {
     this.unmount()
     this.dragOff?.()
+    this.draggingNodesOff?.()
+    this.draggingResourceOff?.()
+    this.dragStopOff?.()
   }
 
   private mount() {
