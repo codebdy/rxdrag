@@ -191,12 +191,15 @@ function removeSlot(state: NodesById, action: IDocumentAction<RemoveSlotPayload>
 	return state
 }
 
-function addSlot(state: NodesById, nodeId: ID, slotName: string, slotId: ID): NodesById {
-	if (nodeId) {
+function addSlot(state: NodesById, targetId: ID, slotName: string, slotId: ID): NodesById {
+	if (targetId) {
 		let newState: NodesById = { ...state }
-		const node = state[nodeId]
+		const node = state[targetId]
 		const newSlots: any = { ...node.slots, [slotName]: slotId }
-		newState[nodeId] = { ...node, slots: newSlots }
+		newState[targetId] = { ...node, slots: newSlots }
+		if(slotId){
+			newState[slotId] = {...newState[slotId], parentId: targetId}
+		}
 		return newState
 	}
 	return state

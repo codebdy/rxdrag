@@ -116,6 +116,34 @@ export const hCFLayoutSchema: INodeSchema = {
             }
           ]
         },
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$content",
+          },
+          children: [
+            {
+              componentName: "SlotSwitch",
+              props: {
+                name: "content"
+              }
+            }
+          ]
+        },
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$footer",
+          },
+          children: [
+            {
+              componentName: "SlotSwitch",
+              props: {
+                name: "footer"
+              }
+            }
+          ]
+        },
       ]
     }
   ]

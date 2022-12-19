@@ -4,6 +4,8 @@ export const hCFLayoutLocales = {
     description: "一种布局",
     settings: {
       header: "页眉",
+      content: "内容区",
+      footer: "页脚",
     }
 
   },
@@ -11,6 +13,8 @@ export const hCFLayoutLocales = {
     title: "Header Content Footer",
     settings: {
       header: "Header",
+      content: "Content",
+      footer: "Footer",
     }
   }
 }
