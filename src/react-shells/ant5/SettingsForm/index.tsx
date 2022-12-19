@@ -14,6 +14,7 @@ import { PreviewRoot } from "core-react/PreviewRoot";
 import { useChangeNodeMeta } from "core-react/hooks/useChangeNodeMeta";
 import { SlotSwitch } from "./components/SlotSwitch";
 import { FormItem } from "./components/FormItem";
+import { useLanguage } from "core-react/hooks/useLanguage";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -29,6 +30,8 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
   const engine = useDesignerEngine()
   const currentNode = useCurrentNode()
   const changeMeta = useChangeNodeMeta()
+  const lang = useLanguage()
+  
   const designerSchema = useMemo(() => {
     if (currentNode && currentNode.designerSchema) {
       //翻译
@@ -40,7 +43,8 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
       return undefined
     }
 
-  }, [currentNode, engine])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentNode, engine, lang])
 
   const fieldSchemas = useMemo(() => {
     if (designerSchema) {
