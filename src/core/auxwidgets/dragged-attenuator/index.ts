@@ -28,7 +28,7 @@ export class DraggedAttenuatorImpl implements IPlugin {
             const doc = element?.ownerDocument || document
 
             const style = doc.createElement('style');
-            style.innerHTML = '.rx-dragging {  opacity: 0.5; pointer-events: none; }';
+            style.innerHTML = '.rx-dragging {  opacity: 0.4; pointer-events: none; }';
             this.htmlStyle = style
             const node = this.engine.getMonitor().getNode(draggingId)
             if (node) {

@@ -1,5 +1,7 @@
 import { IDesignerEngine, ID, Unsubscribe } from "core";
 import { IPlugin } from "core/interfaces/plugin";
+import { DraggingNodesState } from "core/reducers/draggingNodes";
+import { DraggingResourceState } from "core/reducers/draggingResource";
 import { CanvasResizeEvent, CanvasScrollEvent } from "core/shell/events";
 import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
 import { NodeUnmountedEvent } from "core/shell/events/canvas/NodeUnmountedEvent";
@@ -20,7 +22,8 @@ export class SelectedOutlineImpl implements IPlugin {
   private unThemeModeChange: Unsubscribe
   private unNodeMounted: Unsubscribe
   private unmountUnsubscribe: Unsubscribe
-
+  private draggingNodesOff: Unsubscribe
+  private draggingResourceOff: Unsubscribe
   constructor(protected engine: IDesignerEngine) {
     if (!engine.getShell().getContainer) {
       console.error("Html 5 driver rootElement is undefined")
@@ -32,6 +35,8 @@ export class SelectedOutlineImpl implements IPlugin {
     this.unCanvasResize = this.engine.getShell().subscribeTo(CanvasResizeEvent, this.refresh)
     this.unThemeModeChange = engine.getMonitor().subscribeToThemeModeChange(this.handleThemeChange)
     this.unNodeMounted = this.engine.getShell().subscribeTo(NodeMountedEvent, this.handleNodeMounted)
+    this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
+    this.draggingResourceOff = this.engine.getMonitor().subscribeToDraggingResource(this.handleDraggingResource)
   }
 
   handleNodeMounted = (e: NodeMountedEvent) => {
@@ -63,6 +68,26 @@ export class SelectedOutlineImpl implements IPlugin {
     this.selecteNodes = selectedIds
   }
 
+  handleDraggingNodes = (dragging: DraggingNodesState | null) => {
+    this.hideWhenDragging(!!dragging)
+  }
+
+  handleDraggingResource = (dragging: DraggingResourceState | null) => {
+    this.hideWhenDragging(!!dragging)
+  }
+
+  private hideWhenDragging = (dragging: boolean) => {
+    if (dragging) {
+      for (const key of Object.keys(this.htmls)) {
+        this.htmls[key].style.display = "none"
+      }
+    } else {
+      for (const key of Object.keys(this.htmls)) {
+        this.htmls[key].style.display = ""
+      }
+    }
+  }
+
   onViewportChange = () => {
     this.refresh()
   }
@@ -75,13 +100,6 @@ export class SelectedOutlineImpl implements IPlugin {
 
   refresh = () => {
     this.listenSelectChange(this.selecteNodes)
-    // setTimeout(() => {
-    //   this.listenSelectChange(this.selecteNodes)
-    // }, 10)
-    // //防止更新不彻底，两遍刷新补齐
-    // setTimeout(() => {
-    //   this.listenSelectChange(this.selecteNodes)
-    // }, 100)
   }
 
   destory(): void {
@@ -93,6 +111,8 @@ export class SelectedOutlineImpl implements IPlugin {
     this.unCanvasResize()
     this.unThemeModeChange()
     this.unNodeMounted()
+    this.draggingNodesOff?.()
+    this.draggingResourceOff?.()
   }
 
   private clear() {
