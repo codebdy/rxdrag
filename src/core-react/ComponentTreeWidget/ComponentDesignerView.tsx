@@ -1,11 +1,12 @@
 import { isHTMLElement } from "core/utils/html-node";
-import React, { memo, useCallback, useMemo } from "react";
+import React, { memo, useCallback, useEffect, useMemo } from "react";
 import { useDesignComponent } from "core-react/hooks/useDesignComponent";
 import { useTreeNode } from "../hooks/useTreeNode";
 import { useDesignerEngine } from "core-react/hooks";
 import { PlaceHolder } from "core-react/PlaceHolder";
 import { NodeContext } from "core-react/contexts";
 import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
+import { NodeUnmountedEvent } from "core/shell/events/canvas/NodeUnmountedEvent";
 
 export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const { nodeId } = props;
@@ -72,6 +73,12 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
 
     return <></>
   }, [Component, behavior, handleRef, hasChildren, node, realProps])
+
+  useEffect(()=>{
+    return ()=>{
+      engine?.getShell().dispatch(new NodeUnmountedEvent(nodeId))
+    }
+  }, [engine, nodeId])
 
   return (
     <NodeContext.Provider value={node || undefined}>
