@@ -4,6 +4,7 @@ import { AcceptType, DrageOverOptions } from "core/interfaces/action";
 import { IPlugin } from "core/interfaces/plugin";
 import { IDropPosition, PositionJudger, RelativePosition } from "../utils/coordinate";
 import { DragOverState } from "core/reducers/dragOver";
+import { isArr } from "core/utils/types";
 
 export class DragOverControllerImpl implements IPlugin {
   name: string = "default.drag-over-controller";
@@ -16,8 +17,8 @@ export class DragOverControllerImpl implements IPlugin {
     this.unscribeNodeChange = engine.getMonitor().subscribeToDragOver(this.handleDragoverChange)
   }
 
-  handleDragoverChange = (dragover: DragOverState|null)=>{
-    if(!dragover){
+  handleDragoverChange = (dragover: DragOverState | null) => {
+    if (!dragover) {
       this.dragover = null
     }
   }
@@ -49,7 +50,7 @@ export class DragOverControllerImpl implements IPlugin {
         this.engine.getActions().dragover(dragover)
         this.dragover = dragover
       }
-    }else{
+    } else {
       this.dragover = null
     }
   }
@@ -99,9 +100,12 @@ export class DragOverControllerImpl implements IPlugin {
       if (beheavior?.isDroppable()) {
         return AcceptType.Accept
       }
-      for (const element of resource.elements) {
+      if (isArr(resource.elements)) {
+        for (const element of resource.elements) {
 
+        }
       }
+
     } else {
       const parentId = this.engine.getMonitor().getNode(position.targetId)?.parentId
       if (parentId) {

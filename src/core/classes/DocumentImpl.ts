@@ -77,7 +77,13 @@ export class DocumentImpl implements IDocument {
     this.dispatch(this.createAction(REMOVE_SLOT, playload))
   }
   addSlot(id: string, name: string): void {
-    throw new Error("Method not implemented.");
+    const node = this.getNode(id)
+    if(node){
+      const comdesigner = this.engine.getComponentManager().getComponentDesigner(node.meta.componentName)
+      //comdesigner.
+    }else{
+      console.log("Can not find node by id", id)
+    }
   }
 
   clone(sourceId: string): void {

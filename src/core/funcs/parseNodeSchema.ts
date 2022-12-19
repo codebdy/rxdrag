@@ -1,9 +1,10 @@
 import { ID, IDesignerEngine, INodeSchema, ITreeNode, NodeChunk, RXID_ATTR_NAME } from "core/interfaces";
 import { NodesById } from "core/reducers/nodesById";
 import { makeRxId } from "core/utils/make-rxId";
+import { isArr } from "core/utils/types";
 
 export function parseNodeSchema(engine: IDesignerEngine, documentId: ID, schema: INodeSchema, nodesById: NodesById, parentId?: string): ITreeNode {
-  const { children, slots ={} ,...metaData } = schema;
+  const { children, slots = {}, ...metaData } = schema;
   const rxId = makeRxId()
   const locales = engine.getLoacalesManager()
   const components = engine.getComponentManager()
@@ -28,9 +29,9 @@ export function parseNodeSchema(engine: IDesignerEngine, documentId: ID, schema:
     const childNode = parseNodeSchema(engine, documentId, child, nodesById, node.id);
     node.children.push(childNode.id);
   }
-  for (const key of Object.keys(slots)){
+  for (const key of Object.keys(slots)) {
     const slot = slots[key]
-    if(slot && node.slots){
+    if (slot && node.slots) {
       const slotNode = parseNodeSchema(engine, documentId, slot, nodesById, node.id);
       node.slots[key] = slotNode.id
     }
@@ -39,9 +40,10 @@ export function parseNodeSchema(engine: IDesignerEngine, documentId: ID, schema:
   return node;
 }
 
-export function paseNodes(engine: IDesignerEngine, documentId: ID, elements: INodeSchema[]): NodeChunk {
+export function paseNodes(engine: IDesignerEngine, documentId: ID, elements: INodeSchema[] | INodeSchema): NodeChunk {
   const nodesById = {}
-  const nodes = elements.map(element => parseNodeSchema(engine, documentId, element, nodesById))
+  const els = isArr(elements) ? elements : [elements]
+  const nodes = els.map(element => parseNodeSchema(engine, documentId, element, nodesById))
 
   return {
     rootNodes: nodes,
