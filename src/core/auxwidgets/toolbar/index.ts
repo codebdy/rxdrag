@@ -58,7 +58,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
       }
     } else {
       if(this.htmlElement){
-        this.htmlElement.style.display = ""
+        this.htmlElement.style.display = "flex"
       }
     }
   }
