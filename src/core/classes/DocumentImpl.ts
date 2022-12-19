@@ -1,11 +1,11 @@
 import { makeRxId } from "core/utils/make-rxId";
 import { HistoryableActionType, IBlocksSchema, IBlocksTreeNode, IDocument, IDocumentAction, INodeMeta, INodeSchema, ISnapshot, ITreeNode, NodeChunk, NodeRelativePosition } from "../interfaces/document";
-import { AddNodesPayload, BackupPayload, ChangeMetaPayloads, DeleteNodesPayload, DocumentActionPayload, GotoPayload, MoveNodesPayload, RecoverSnapshotPayload } from "../interfaces/payloads";
+import { AddNodesPayload, BackupPayload, ChangeMetaPayloads, DeleteNodesPayload, DocumentActionPayload, GotoPayload, MoveNodesPayload, RecoverSnapshotPayload, RemoveSlotPayload } from "../interfaces/payloads";
 import { ID, IDesignerEngine } from "core/interfaces";
 import { State } from "core/reducers";
 import { parseNodeSchema, paseNodes } from "core/funcs/parseNodeSchema";
 import { Store } from "redux";
-import { ADD_NODES, BACKUP, CHANGE_NODE_META, DELETE_NODES, GOTO, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT } from "core/actions/registry";
+import { ADD_NODES, BACKUP, CHANGE_NODE_META, DELETE_NODES, GOTO, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_SLOT } from "core/actions/registry";
 import { DocumentState } from "core/reducers/documentsById/document";
 import { NodesById } from "core/reducers/nodesById";
 
@@ -69,7 +69,12 @@ export class DocumentImpl implements IDocument {
   }
 
   removeSlot(id: string, name: string): void {
-    throw new Error("Method not implemented.");
+    const playload: RemoveSlotPayload = {
+      documentId: this.id,
+      nodeId: id,
+      slotName: name,
+    }
+    this.dispatch(this.createAction(REMOVE_SLOT, playload))
   }
   addSlot(id: string, name: string): void {
     throw new Error("Method not implemented.");

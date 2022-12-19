@@ -55,6 +55,17 @@ export type DeleteNodesPayload = DocumentActionPayload & {
   sourceIds: ID[];
 };
 
+export type RemoveSlotPayload = DocumentActionPayload & {
+  nodeId: ID;
+  slotName: string;
+};
+
+export type AddSlotPayload = DocumentActionPayload & {
+  nodeId: ID;
+  slotName: string;
+  slotId: ID;
+};
+
 export type RecoverSnapshotPayload = DocumentActionPayload & {
   snapshot: ISnapshot;
 };

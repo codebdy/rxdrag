@@ -1,9 +1,9 @@
-import { ADD_NODES, CHANGE_NODE_META, DELETE_NODES, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT } from "core/actions/registry"
+import { ADD_NODES, CHANGE_NODE_META, DELETE_NODES, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_SLOT } from "core/actions/registry"
 import { ID } from "core/interfaces"
 import { invariant } from "core/utils/util-invariant"
 import { IAction } from "fieldy/interfaces"
 import { IDocumentAction, NodeRelativePosition, ITreeNode } from "../interfaces/document"
-import { DocumentInitPayload, AddNodesPayload, DocumentActionPayload, MoveNodesPayload, DeleteNodesPayload, ChangeMetaPayloads, RecoverSnapshotPayload } from "../interfaces/payloads"
+import { DocumentInitPayload, AddNodesPayload, DocumentActionPayload, MoveNodesPayload, DeleteNodesPayload, ChangeMetaPayloads, RecoverSnapshotPayload, RemoveSlotPayload } from "../interfaces/payloads"
 
 export type NodesById = {
 	[id: ID]: ITreeNode
@@ -28,6 +28,8 @@ export function nodesById(
 			return changeNodeMeta(state, payload as ChangeMetaPayloads)
 		case RECOVER_SNAPSHOT:
 			return revoverSnapshot(state, action as IDocumentAction<RecoverSnapshotPayload>)
+		case REMOVE_SLOT:
+			return removeSlot(state, action as IDocumentAction<RemoveSlotPayload>)
 		default:
 			return state
 	}
@@ -122,10 +124,16 @@ function remove(state: NodesById, targetIds: ID[]): NodesById {
 	for (const key of Object.keys(state)) {
 		if (!targetIds.find(id => id === key)) {
 			newState[key] = state[key]
-			if(newState[key].children?.find(childId=>targetIds.find(id=>id===childId))){
+			if (newState[key].children?.find(childId => targetIds.find(id => id === childId))) {
 				newState[key] = {
 					...newState[key],
-					children: newState[key].children.filter(childId=>!targetIds.find(id=>id===childId))
+					children: newState[key].children.filter(childId => !targetIds.find(id => id === childId))
+				}
+			}
+			for (const slotName of Object.keys(newState[key].slots || {})) {
+				const slotId = newState[key].slots?.[slotName] || ""
+				if (targetIds.find(id => id === slotId)) {
+					delete newState[key].slots?.[slotName]
 				}
 			}
 		}
@@ -152,4 +160,33 @@ function revoverSnapshot(state: NodesById, action: IDocumentAction<RecoverSnapsh
 	return newState
 }
 
+function removeSlot(state: NodesById, action: IDocumentAction<RemoveSlotPayload>): NodesById {
+	const nodeId = action.payload?.nodeId
+	if (action.payload && nodeId) {
+		let newState: NodesById = { ...state }
+		const node = state[nodeId]
+		const newSlots: any = {}
+		for (const slotName of Object.keys(node.slots || {})) {
+			if (slotName !== action.payload.slotName) {
+				newSlots[slotName] = node.slots?.[slotName]
+			}
+		}
+		if (node) {
+			newState[nodeId] = {
+				...node,
+				slots: newSlots
+			}
+		}
+
+		for (const id of Object.keys(newState)) {
+			if (id === node.slots?.[action.payload?.slotName]) {
+				delete newState[id]
+			}
+		}
+
+		return newState
+	}
+
+	return state
+}
 
