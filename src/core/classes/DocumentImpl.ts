@@ -67,6 +67,14 @@ export class DocumentImpl implements IDocument {
     }
     this.dispatch(this.createAction(DELETE_NODES, playload))
   }
+
+  removeSlot(id: string, name: string): void {
+    throw new Error("Method not implemented.");
+  }
+  addSlot(id: string, name: string): void {
+    throw new Error("Method not implemented.");
+  }
+
   clone(sourceId: string): void {
     const sourceSchema = this.getNodeSchema(sourceId)
     if (sourceSchema) {

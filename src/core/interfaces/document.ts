@@ -138,6 +138,8 @@ export interface IDocument {
   clone(sourceId: ID): void
   copyTo(sourceId: ID, targetId: ID, pos: NodeRelativePosition): void
   changeNodeMeta(id: ID, newMeta: INodeMeta): void
+  removeSlot(id: ID, name: string): void
+  addSlot(id: ID, name: string): void
   dispatch(action: IDocumentAction<any>): void
   backup(actionType: HistoryableActionType): void
   undo(): void
