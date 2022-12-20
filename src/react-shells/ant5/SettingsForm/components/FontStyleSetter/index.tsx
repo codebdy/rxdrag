@@ -3,7 +3,7 @@ import { Col, Input, InputNumber, Select } from 'antd'
 import { FoldItemBase, FoldItem, FoldItemExtra } from '../FoldItem'
 import { ValueRow } from '../FoldItem/ValueRow'
 import { ValueColumn, ValueIcon } from '../FoldItem/ValueColumn'
-import { fontWeightIcon } from './icons'
+import { fontStyleIcon, fontWeightIcon } from './icons'
 
 export interface IFontStyleSetterProps {
   className?: string
@@ -60,6 +60,12 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
             <ValueColumn span={12}
               title="字重"
               icon={fontWeightIcon}
+            >
+              <InputNumber />
+            </ValueColumn>
+            <ValueColumn span={12}
+              title="风格"
+              icon={fontStyleIcon}
             >
               <InputNumber />
             </ValueColumn>
