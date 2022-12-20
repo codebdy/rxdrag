@@ -5,6 +5,7 @@ import { ValueRow } from '../FoldItem/ValueRow'
 import { ValueColumn, ValueIcon } from '../FoldItem/ValueColumn'
 import { fontColorIcon, fontSizeIcon, fontStyleIcon, fontWeightIcon, italicFontSyleIcon, lineHeightIcon, normalFontStyleIcon } from './icons'
 import { ColorInput } from '../ColorInput'
+import { SizeInput } from '../SizeInput'
 
 export interface IFontStyleSetterProps {
   className?: string
@@ -86,14 +87,14 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
               icon={fontSizeIcon}
               onFirstLine={false}
             >
-              <InputNumber />
+              <SizeInput />
             </ValueColumn>
             <ValueColumn span={12}
               title="行高"
               icon={lineHeightIcon}
               onFirstLine={false}
             >
-              <InputNumber />
+              <SizeInput />
             </ValueColumn>
             <Col span={12} style={{ marginTop: 8 }}><Input /></Col>
             <Col span={12} style={{ marginTop: 8 }}><Input /></Col>
