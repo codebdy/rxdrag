@@ -3,7 +3,7 @@ import { Col, Input, InputNumber, Radio, Select } from 'antd'
 import { FoldItemBase, FoldItem, FoldItemExtra } from '../FoldItem'
 import { ValueRow } from '../FoldItem/ValueRow'
 import { ValueColumn, ValueIcon } from '../FoldItem/ValueColumn'
-import { fontColorIcon, fontStyleIcon, fontWeightIcon, italicFontSyleIcon, normalFontStyleIcon } from './icons'
+import { fontColorIcon, fontSizeIcon, fontStyleIcon, fontWeightIcon, italicFontSyleIcon, lineHeightIcon, normalFontStyleIcon } from './icons'
 import { ColorInput } from '../ColorInput'
 
 export interface IFontStyleSetterProps {
@@ -80,6 +80,20 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
               onFirstLine={false}
             >
               <ColorInput />
+            </ValueColumn>
+            <ValueColumn span={12}
+              title="大小"
+              icon={fontSizeIcon}
+              onFirstLine={false}
+            >
+              <InputNumber />
+            </ValueColumn>
+            <ValueColumn span={12}
+              title="行高"
+              icon={lineHeightIcon}
+              onFirstLine={false}
+            >
+              <InputNumber />
             </ValueColumn>
             <Col span={12} style={{ marginTop: 8 }}><Input /></Col>
             <Col span={12} style={{ marginTop: 8 }}><Input /></Col>
