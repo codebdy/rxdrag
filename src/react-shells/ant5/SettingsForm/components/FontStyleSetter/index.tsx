@@ -3,7 +3,7 @@ import { Col, Input, InputNumber, Radio, Select } from 'antd'
 import { FoldItemBase, FoldItem, FoldItemExtra } from '../FoldItem'
 import { ValueRow } from '../FoldItem/ValueRow'
 import { ValueColumn, ValueIcon } from '../FoldItem/ValueColumn'
-import { fontColorIcon, fontSizeIcon, fontStyleIcon, fontWeightIcon, italicFontSyleIcon, lineHeightIcon, normalFontStyleIcon } from './icons'
+import { fontColorIcon, fontSizeIcon, fontStyleIcon, fontWeightIcon, italicFontSyleIcon, lineHeightIcon, normalFontStyleIcon, textAlignCenterIcon, textAlignIcon, textAlignJustifyIcon, textAlignLeftIcon, textAlignRightIcon, textDecorationIcon, textLineThrough, textUnlineIcon } from './icons'
 import { ColorInput } from '../ColorInput'
 import { SizeInput } from '../SizeInput'
 
@@ -87,17 +87,40 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
               icon={fontSizeIcon}
               onFirstLine={false}
             >
-              <SizeInput exclude={"auto"}/>
+              <SizeInput exclude={"auto"} />
             </ValueColumn>
             <ValueColumn span={12}
               title="行高"
               icon={lineHeightIcon}
               onFirstLine={false}
             >
-              <SizeInput exclude={"auto"}/>
+              <SizeInput exclude={"auto"} />
             </ValueColumn>
-            <Col span={12} style={{ marginTop: 8 }}><Input /></Col>
-            <Col span={12} style={{ marginTop: 8 }}><Input /></Col>
+            <ValueColumn span={24}
+              title="对齐"
+              icon={textAlignIcon}
+              onFirstLine={false}
+            >
+              <Radio.Group options={[
+                { label: textAlignLeftIcon, value: 'left' },
+                { label: textAlignCenterIcon, value: 'center' },
+                { label: textAlignRightIcon, value: 'right' },
+                { label: textAlignJustifyIcon, value: 'justify' },
+              ]}
+                optionType="button" />
+            </ValueColumn>
+            <ValueColumn span={24}
+              title="修饰"
+              icon={textDecorationIcon}
+              onFirstLine={false}
+            >
+              <Radio.Group options={[
+                { label: '--', value: 'none' },
+                { label: textUnlineIcon, value: 'underline' },
+                { label: textLineThrough, value: 'line-through' },
+              ]}
+                optionType="button" />
+            </ValueColumn>
           </ValueRow>
 
         </FoldItemExtra>
