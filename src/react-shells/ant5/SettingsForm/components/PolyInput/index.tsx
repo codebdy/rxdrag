@@ -1,4 +1,4 @@
-import React, { useEffect, useState, memo } from 'react'
+import React, { useEffect, useState, memo, useCallback, useRef } from 'react'
 import { Button, InputNumber } from 'antd'
 import cls from 'classnames'
 import './styles.less'
@@ -71,21 +71,38 @@ export const PolyInput = memo((
 ) => {
   const { polyTypes, value, onChange } = props;
   const [polyType, setPolyType] = useState<IPolyType>();
+  const [index, setIndex] = useState(0)
+  const indexRef = useRef(index)
+  indexRef.current = index
 
   useEffect(() => {
-    setPolyType(polyTypes?.[0])
-  }, [polyTypes])
+    setPolyType(polyTypes?.[index])
+  }, [index, polyTypes])
+
+  const handleClick = useCallback(() => {
+    if (indexRef.current === polyTypes.length - 1) {
+      setIndex(0)
+    } else {
+      setIndex((index) => index + 1)
+    }
+  }, [polyTypes.length])
 
   const InputComponent = polyType?.component
 
   return (
-    <div style={{ display: "flex", alignItems: "center", flex: 1 }}>
+    <div className='rx-poly-input'>
       {
         InputComponent &&
-        <InputComponent style={{ flex: 1 }} />
+        <InputComponent />
       }
-      <Button block={!InputComponent}>
-        {polyType?.title || polyType?.icon || polyType?.type}
+      <Button
+        className='poly-button'
+        style={{
+          marginLeft: InputComponent ? 1 : undefined
+        }}
+        block={!InputComponent}
+        icon={<>{polyType?.title || polyType?.icon || polyType?.type}</>}
+        onClick={handleClick}>
       </Button>
     </div>
   )
