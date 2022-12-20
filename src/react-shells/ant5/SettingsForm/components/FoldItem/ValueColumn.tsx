@@ -1,14 +1,17 @@
 import { Col, Tooltip } from "antd"
-import React, { CSSProperties, memo } from "react"
+import React, { CSSProperties, forwardRef, memo } from "react"
 import cls from "classnames"
 
-export const ValueIcon = memo((props: { children?: React.ReactNode }) => {
+export type ValueIconProps = {
+  children?: React.ReactNode
+}
+export const ValueIcon = memo(forwardRef<HTMLDivElement, ValueIconProps>((props, ref) => {
   return (
-    <div style={{ marginRight: 8, display: "flex", alignItems: "center", height: "100%" }}>
+    <div ref={ref} className="rx-value-icon">
       {props.children}
     </div>
   )
-})
+}))
 
 export const ValueColumn = memo((props: {
   title?: string,
@@ -29,10 +32,13 @@ export const ValueColumn = memo((props: {
       {...other}
     >
       {
+        icon &&
         <Tooltip title={title}>
-          <ValueIcon>
-            {icon}
-          </ValueIcon>
+          <span>
+            <ValueIcon>
+              {icon}
+            </ValueIcon>
+          </span>
         </Tooltip>
       }
 
