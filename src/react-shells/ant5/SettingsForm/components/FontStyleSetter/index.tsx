@@ -3,7 +3,8 @@ import { Col, Input, InputNumber, Radio, Select } from 'antd'
 import { FoldItemBase, FoldItem, FoldItemExtra } from '../FoldItem'
 import { ValueRow } from '../FoldItem/ValueRow'
 import { ValueColumn, ValueIcon } from '../FoldItem/ValueColumn'
-import { fontStyleIcon, fontWeightIcon, italicFontSyle, normalFontStyle } from './icons'
+import { fontColorIcon, fontStyleIcon, fontWeightIcon, italicFontSyleIcon, normalFontStyleIcon } from './icons'
+import { ColorInput } from '../ColorInput'
 
 export interface IFontStyleSetterProps {
   className?: string
@@ -68,10 +69,17 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
               icon={fontStyleIcon}
             >
               <Radio.Group options={[
-                { label: normalFontStyle, value: 'normal' },
-                { label: italicFontSyle, value: 'italic' },
+                { label: normalFontStyleIcon, value: 'normal' },
+                { label: italicFontSyleIcon, value: 'italic' },
               ]}
                 optionType="button" />
+            </ValueColumn>
+            <ValueColumn span={24}
+              title="颜色"
+              icon={fontColorIcon}
+              onFirstLine={false}
+            >
+              <ColorInput />
             </ValueColumn>
             <Col span={12} style={{ marginTop: 8 }}><Input /></Col>
             <Col span={12} style={{ marginTop: 8 }}><Input /></Col>
