@@ -6,6 +6,7 @@
   .rx-fold-base-item-label {
     position: "relative";
     cursor: pointer;
+    user-select: none;
 
     .base-icon {
       position: absolute;
@@ -13,6 +14,9 @@
       left: -12px;
       font-size: 10px;
       transition: all 0.3s;
+    }
+    .base-icon.expand{
+      transform: rotate(90deg);
     }
   }
 }
