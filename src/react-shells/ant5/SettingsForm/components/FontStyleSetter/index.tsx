@@ -87,14 +87,14 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
               icon={fontSizeIcon}
               onFirstLine={false}
             >
-              <SizeInput />
+              <SizeInput exclude={"auto"}/>
             </ValueColumn>
             <ValueColumn span={12}
               title="行高"
               icon={lineHeightIcon}
               onFirstLine={false}
             >
-              <SizeInput />
+              <SizeInput exclude={"auto"}/>
             </ValueColumn>
             <Col span={12} style={{ marginTop: 8 }}><Input /></Col>
             <Col span={12} style={{ marginTop: 8 }}><Input /></Col>

@@ -1,4 +1,5 @@
-import { memo } from 'react'
+import { isArr, isStr } from 'core/utils/types'
+import { memo, useMemo } from 'react'
 import { createSpecialSizeOption, createUnitType, PolyInput } from '../PolyInput'
 
 
@@ -11,9 +12,25 @@ const NormalSizeOptions = [
   createUnitType('em'),
 ]
 
-export const SizeInput = memo(() => {
+export const SizeInput = memo((props: {
+  exclude?: string[] | string
+}) => {
+  const { exclude } = props
+
+  const options = useMemo(()=>{
+    if(isStr(exclude)){
+      return NormalSizeOptions.filter(op=>op.type !== exclude)
+    }
+
+    if(isArr(exclude)){
+      return NormalSizeOptions.filter(op=>!exclude.find(ex=>ex === op.type))
+    }
+
+    return NormalSizeOptions
+  }, [exclude])
+  
   return (
-    <PolyInput polyTypes = {NormalSizeOptions} />
+    <PolyInput polyTypes={options} />
   )
 })
 
