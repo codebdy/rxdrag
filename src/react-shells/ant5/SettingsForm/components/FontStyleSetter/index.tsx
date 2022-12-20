@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
-import { Select } from 'antd'
-import { FoldBaseItem, FoldItem } from '../FoldItem'
+import { Input, Select } from 'antd'
+import { FoldItemBase, FoldItem, FoldItemExtra } from '../FoldItem'
 
 export interface IFontStyleSetterProps {
   className?: string
@@ -47,11 +47,14 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
 
     return (
       <FoldItem>
-        <FoldBaseItem label='字体'>
+        <FoldItemBase label='字体'>
           <Select
             options={FontFamilyOptions}
           />
-        </FoldBaseItem>
+        </FoldItemBase>
+        <FoldItemExtra>
+          <Input />
+        </FoldItemExtra>
       </FoldItem>
     )
   }

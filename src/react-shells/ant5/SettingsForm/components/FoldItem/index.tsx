@@ -6,6 +6,7 @@ import { FoldItemContext } from "./context"
 import "./style.less"
 import cls from "classnames"
 import { isBool } from "core/utils/types"
+import { useToken } from "antd/es/theme/internal"
 
 export type FoldItemProps = {
   children?: React.ReactNode
@@ -15,7 +16,6 @@ export const FoldItem = memo((props: FoldItemProps) => {
   const [expand, setExpand] = useState<boolean>()
 
   const handleExpandChange = useCallback((exp?: boolean | ((previousState?: boolean) => boolean)) => {
-    
     if (isBool(exp)) {
       setExpand(exp)
     } else {
@@ -39,11 +39,11 @@ export const FoldItem = memo((props: FoldItemProps) => {
   )
 })
 
-export type FoldBaseItemProps = {
+export type FoldItemBaseProps = {
   label?: string,
   children?: React.ReactNode
 }
-export const FoldBaseItem = memo((props: FoldBaseItemProps) => {
+export const FoldItemBase = memo((props: FoldItemBaseProps) => {
   const { label, children, } = props
   const { expand, setExpand } = useContext(FoldItemContext)
 
@@ -64,18 +64,23 @@ export const FoldBaseItem = memo((props: FoldBaseItemProps) => {
   )
 })
 
-export type FoldExtraItemProps = {
+export type FoldItemExtraProps = {
   className?: string,
   style?: CSSProperties,
   children?: React.ReactNode
 }
 
-
-export const FoldExtraItem = memo((props: FoldExtraItemProps) => {
-  const { children, ...other } = props;
+export const FoldItemExtra = memo((props: FoldItemExtraProps) => {
+  const { className, children, ...other } = props;
+  const [, token] = useToken()
+  const { expand } = useContext(FoldItemContext)
   return (
-    <div {...other}>
-      {children}
+    <div className="rx-fold-item-extra-container"
+      style={{ backgroundColor: token.colorBorderSecondary, height: expand ? "auto" : 0 }}
+    >
+      <div className={cls("rx-fold-item-extra", className)} {...other}>
+        {children}
+      </div>
     </div>
   )
 })

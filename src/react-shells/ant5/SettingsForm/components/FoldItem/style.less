@@ -1,8 +1,11 @@
 .rx-fold-item {
+
   .ant-form-item .ant-form-item-label {
     overflow: visible;
   }
-
+  .ant-form-item{
+    margin-bottom: 8px;
+  }
   .rx-fold-base-item-label {
     position: "relative";
     cursor: pointer;
@@ -13,10 +16,20 @@
       top: calc(50% - 5px);
       left: -12px;
       font-size: 10px;
-      transition: all 0.3s;
     }
-    .base-icon.expand{
+
+    .base-icon.expand {
       transform: rotate(90deg);
     }
+  }
+
+  .rx-fold-item-extra-container {
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+  }
+
+  .rx-fold-item-extra {
+    padding: 8px;
   }
 }
