@@ -84,6 +84,15 @@ export const buttonSchema: INodeSchema = {
               componentName: "Switch"
             }
           ]
+        },        
+        {
+          componentName: "FontStyleSetter",
+          props: {
+            label: "$font",
+          },
+          "x-field": {
+            name: "font",
+          },
         },
       ]
     },

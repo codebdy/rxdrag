@@ -15,6 +15,7 @@ import { useChangeNodeMeta } from "core-react/hooks/useChangeNodeMeta";
 import { SlotSwitch } from "./components/SlotSwitch";
 import { FormItem } from "./components/FormItem";
 import { useLanguage } from "core-react/hooks/useLanguage";
+import { FontStyleSetter } from "./components/FontStyleSetter";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -69,6 +70,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         Select,
         Switch,
         SlotSwitch,
+        FontStyleSetter,
       }}
     >
 
