@@ -31,7 +31,7 @@ export const IconView = memo(forwardRef<HTMLDivElement, IconViewProps>((props, r
   )
 }))
 
-export const ValueColumn = memo((props: {
+export const FoldExtraItem = memo((props: {
   title?: string,
   icon?: React.ReactNode | string,
   span?: number,

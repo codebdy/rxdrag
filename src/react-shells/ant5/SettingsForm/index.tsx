@@ -16,6 +16,8 @@ import { SlotSwitch } from "./components/SlotSwitch";
 import { FormItem } from "./components/FormItem";
 import { useLanguage } from "core-react/hooks/useLanguage";
 import { FontStyleSetter } from "./components/FontStyleSetter";
+import { Fold, FoldBase, FoldExtra } from "./components/Fold";
+import { FoldExtraItem } from "./components/Fold/FoldExtraItem";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -71,6 +73,10 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         Switch,
         SlotSwitch,
         FontStyleSetter,
+        Fold,
+        FoldBase,
+        FoldExtra,
+        FoldExtraItem
       }}
     >
 

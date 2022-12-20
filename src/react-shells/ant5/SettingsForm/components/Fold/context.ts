@@ -11,4 +11,4 @@ const initialParams: IFoldParams = {
   }
 }
 
-export const FoldItemContext = createContext<IFoldParams>(initialParams)
+export const FoldContext = createContext<IFoldParams>(initialParams)

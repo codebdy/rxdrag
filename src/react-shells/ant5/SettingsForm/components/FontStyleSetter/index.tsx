@@ -1,8 +1,8 @@
 import React, { memo } from 'react'
 import { InputNumber, Radio, Select } from 'antd'
-import { FoldItemBase, FoldItem, FoldItemExtra } from '../FoldItem'
-import { ValueRow } from '../FoldItem/ValueRow'
-import { IconView, ValueColumn } from '../FoldItem/ValueColumn'
+import { FoldBase, Fold, FoldExtra } from '../Fold'
+import { ValueRow } from '../Fold/ValueRow'
+import { IconView, FoldExtraItem } from '../Fold/FoldExtraItem'
 import { fontColorIcon, fontSizeIcon, fontStyleIcon, fontWeightIcon, italicFontSyleIcon, lineHeightIcon, normalFontStyleIcon, textAlignCenterIcon, textAlignIcon, textAlignJustifyIcon, textAlignLeftIcon, textAlignRightIcon, textDecorationIcon, textLineThrough, textUnlineIcon } from './icons'
 import { ColorInput } from '../ColorInput'
 import { SizeInput } from '../SizeInput'
@@ -51,21 +51,21 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
   (props) => {
 
     return (
-      <FoldItem>
-        <FoldItemBase label='字体'>
+      <Fold>
+        <FoldBase label='字体'>
           <Select
             options={FontFamilyOptions}
           />
-        </FoldItemBase>
-        <FoldItemExtra>
+        </FoldBase>
+        <FoldExtra>
           <ValueRow>
-            <ValueColumn span={12}
+            <FoldExtraItem span={12}
               title="字重"
               icon={fontWeightIcon}
             >
               <InputNumber />
-            </ValueColumn>
-            <ValueColumn span={12}
+            </FoldExtraItem>
+            <FoldExtraItem span={12}
               title="风格"
               icon={fontStyleIcon}
             >
@@ -74,29 +74,29 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
                 { label: <IconView icon={italicFontSyleIcon} />, value: 'italic' },
               ]}
                 optionType="button" />
-            </ValueColumn>
-            <ValueColumn span={24}
+            </FoldExtraItem>
+            <FoldExtraItem span={24}
               title="颜色"
               icon={fontColorIcon}
               onFirstLine={false}
             >
               <ColorInput />
-            </ValueColumn>
-            <ValueColumn span={12}
+            </FoldExtraItem>
+            <FoldExtraItem span={12}
               title="大小"
               icon={fontSizeIcon}
               onFirstLine={false}
             >
               <SizeInput exclude={"auto"} />
-            </ValueColumn>
-            <ValueColumn span={12}
+            </FoldExtraItem>
+            <FoldExtraItem span={12}
               title="行高"
               icon={lineHeightIcon}
               onFirstLine={false}
             >
               <SizeInput exclude={"auto"} />
-            </ValueColumn>
-            <ValueColumn span={24}
+            </FoldExtraItem>
+            <FoldExtraItem span={24}
               title="对齐"
               icon={textAlignIcon}
               onFirstLine={false}
@@ -108,8 +108,8 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
                 { label: <IconView icon={textAlignJustifyIcon} />, value: 'justify' },
               ]}
                 optionType="button" />
-            </ValueColumn>
-            <ValueColumn span={24}
+            </FoldExtraItem>
+            <FoldExtraItem span={24}
               title="修饰"
               icon={textDecorationIcon}
               onFirstLine={false}
@@ -120,11 +120,11 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
                 { label: <IconView icon={textLineThrough} />, value: 'line-through' },
               ]}
                 optionType="button" />
-            </ValueColumn>
+            </FoldExtraItem>
           </ValueRow>
 
-        </FoldItemExtra>
-      </FoldItem >
+        </FoldExtra>
+      </Fold >
     )
   }
 )
