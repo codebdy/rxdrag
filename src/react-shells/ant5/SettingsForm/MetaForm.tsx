@@ -52,6 +52,10 @@ export const MetaForm = memo((
       wrapperCol={{ span: 16 }}
       autoComplete="off"
       onValuesChange={handleValuesChange}
+      style={{
+        flex:1,
+        height:'100%',
+      }}
     >
       {
         children
