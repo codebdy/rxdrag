@@ -85,6 +85,14 @@ export const buttonSchema: INodeSchema = {
             }
           ]
         },        
+      ]
+    },
+    {
+      componentName: "TabPanel",
+      props: {
+        title: "样式"
+      },
+      children:[
         {
           componentName: "FontStyleSetter",
           props: {
@@ -95,12 +103,6 @@ export const buttonSchema: INodeSchema = {
           },
         },
       ]
-    },
-    {
-      componentName: "TabPanel",
-      props: {
-        title: "样式"
-      },
     }
   ]
 }
