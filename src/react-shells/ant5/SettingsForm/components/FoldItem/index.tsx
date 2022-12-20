@@ -25,7 +25,7 @@ export const FoldBaseItem = memo((props: FoldBaseItemProps) => {
   return (
     <Form.Item
       label={
-        <div className="rx-fold-base-item">
+        <div className="rx-fold-base-item-label">
           <RightOutlined className="base-icon" />{label}
         </div>
       }

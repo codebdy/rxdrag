@@ -47,6 +47,7 @@ export const MetaForm = memo((
     <Form
       form={form}
       labelAlign="left"
+      colon = {false}
       labelCol={{ span: 8 }}
       wrapperCol={{ span: 16 }}
       autoComplete="off"

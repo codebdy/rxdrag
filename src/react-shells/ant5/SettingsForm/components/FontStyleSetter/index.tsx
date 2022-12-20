@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { Input } from 'antd'
+import { Select } from 'antd'
 import { FoldBaseItem, FoldItem } from '../FoldItem'
 
 export interface IFontStyleSetterProps {
@@ -20,6 +20,7 @@ const createFontFamilyOptions = (fonts: string[]) => {
 }
 
 const FontFamilyOptions = createFontFamilyOptions([
+  "",
   '宋体=SimSun',
   '微软雅黑=Microsoft Yahei',
   '苹方=PingFang SC',
@@ -47,7 +48,9 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
     return (
       <FoldItem>
         <FoldBaseItem label='字体'>
-          <Input />
+          <Select
+            options={FontFamilyOptions}
+          />
         </FoldBaseItem>
       </FoldItem>
     )
