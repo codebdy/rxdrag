@@ -1,21 +1,39 @@
 import { Col, Tooltip } from "antd"
 import React, { CSSProperties, forwardRef, memo } from "react"
 import cls from "classnames"
+import { isStr } from "core/utils/types"
 
 export type ValueIconProps = {
-  children?: React.ReactNode
+  icon?: React.ReactNode | string
 }
+
 export const ValueIcon = memo(forwardRef<HTMLDivElement, ValueIconProps>((props, ref) => {
   return (
-    <div ref={ref} className="rx-value-icon">
-      {props.children}
-    </div>
+    <IconView ref={ref} className="rx-value-icon" icon={props.icon} />
+  )
+}))
+
+export type IconViewProps = {
+  style?: CSSProperties,
+  className?: string,
+  icon?: React.ReactNode | string
+}
+
+export const IconView = memo(forwardRef<HTMLDivElement, IconViewProps>((props, ref) => {
+  const { icon, ...other } = props
+  return (
+    isStr(props.icon)
+      ? <div ref={ref} {...other} dangerouslySetInnerHTML={{ __html: props.icon || "" }}>
+      </div>
+      : <div ref={ref} >
+        {props.icon}
+      </div>
   )
 }))
 
 export const ValueColumn = memo((props: {
   title?: string,
-  icon?: React.ReactNode,
+  icon?: React.ReactNode | string,
   span?: number,
   onFirstLine?: boolean,
   className?: string,
@@ -35,9 +53,7 @@ export const ValueColumn = memo((props: {
         icon &&
         <Tooltip title={title}>
           <span>
-            <ValueIcon>
-              {icon}
-            </ValueIcon>
+            <ValueIcon icon={icon} />
           </span>
         </Tooltip>
       }

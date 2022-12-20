@@ -1,8 +1,8 @@
 import React, { memo } from 'react'
-import { Col, Input, InputNumber, Radio, Select } from 'antd'
+import { InputNumber, Radio, Select } from 'antd'
 import { FoldItemBase, FoldItem, FoldItemExtra } from '../FoldItem'
 import { ValueRow } from '../FoldItem/ValueRow'
-import { ValueColumn, ValueIcon } from '../FoldItem/ValueColumn'
+import { IconView, ValueColumn } from '../FoldItem/ValueColumn'
 import { fontColorIcon, fontSizeIcon, fontStyleIcon, fontWeightIcon, italicFontSyleIcon, lineHeightIcon, normalFontStyleIcon, textAlignCenterIcon, textAlignIcon, textAlignJustifyIcon, textAlignLeftIcon, textAlignRightIcon, textDecorationIcon, textLineThrough, textUnlineIcon } from './icons'
 import { ColorInput } from '../ColorInput'
 import { SizeInput } from '../SizeInput'
@@ -70,8 +70,8 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
               icon={fontStyleIcon}
             >
               <Radio.Group options={[
-                { label: normalFontStyleIcon, value: 'normal' },
-                { label: italicFontSyleIcon, value: 'italic' },
+                { label: <IconView icon={normalFontStyleIcon} />, value: 'normal' },
+                { label: <IconView icon={italicFontSyleIcon} />, value: 'italic' },
               ]}
                 optionType="button" />
             </ValueColumn>
@@ -102,10 +102,10 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
               onFirstLine={false}
             >
               <Radio.Group options={[
-                { label: textAlignLeftIcon, value: 'left' },
-                { label: textAlignCenterIcon, value: 'center' },
-                { label: textAlignRightIcon, value: 'right' },
-                { label: textAlignJustifyIcon, value: 'justify' },
+                { label: <IconView icon={textAlignLeftIcon} />, value: 'left' },
+                { label: <IconView icon={textAlignCenterIcon} />, value: 'center' },
+                { label: <IconView icon={textAlignRightIcon} />, value: 'right' },
+                { label: <IconView icon={textAlignJustifyIcon} />, value: 'justify' },
               ]}
                 optionType="button" />
             </ValueColumn>
@@ -116,8 +116,8 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
             >
               <Radio.Group options={[
                 { label: '--', value: 'none' },
-                { label: textUnlineIcon, value: 'underline' },
-                { label: textLineThrough, value: 'line-through' },
+                { label: <IconView icon={textUnlineIcon} />, value: 'underline' },
+                { label: <IconView icon={textLineThrough} />, value: 'line-through' },
               ]}
                 optionType="button" />
             </ValueColumn>
