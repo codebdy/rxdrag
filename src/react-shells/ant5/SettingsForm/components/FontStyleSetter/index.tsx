@@ -1,9 +1,9 @@
 import React, { memo } from 'react'
-import { Col, Input, InputNumber, Select } from 'antd'
+import { Col, Input, InputNumber, Radio, Select } from 'antd'
 import { FoldItemBase, FoldItem, FoldItemExtra } from '../FoldItem'
 import { ValueRow } from '../FoldItem/ValueRow'
 import { ValueColumn, ValueIcon } from '../FoldItem/ValueColumn'
-import { fontStyleIcon, fontWeightIcon } from './icons'
+import { fontStyleIcon, fontWeightIcon, italicFontSyle, normalFontStyle } from './icons'
 
 export interface IFontStyleSetterProps {
   className?: string
@@ -67,9 +67,12 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
               title="风格"
               icon={fontStyleIcon}
             >
-              <InputNumber />
+              <Radio.Group options={[
+                { label: normalFontStyle, value: 'normal' },
+                { label: italicFontSyle, value: 'italic' },
+              ]}
+                optionType="button" />
             </ValueColumn>
-            <Col span={12}><Input /></Col>
             <Col span={12} style={{ marginTop: 8 }}><Input /></Col>
             <Col span={12} style={{ marginTop: 8 }}><Input /></Col>
           </ValueRow>

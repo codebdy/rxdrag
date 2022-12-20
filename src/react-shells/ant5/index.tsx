@@ -123,7 +123,7 @@ export const Antd5Editor = memo((props: Antd5EditorProps) => {
             <CenterContent>
               <DocumentView doc={doc} />
             </CenterContent>
-            <ToggleAblePane toggleType={ToggleType.right}>
+            <ToggleAblePane toggleType={ToggleType.right} width={300}>
               <SettingsForm />
             </ToggleAblePane>
           </Workbench>
