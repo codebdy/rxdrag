@@ -1,13 +1,11 @@
 import { FieldState } from "fieldy/interfaces";
 import { useCallback, useEffect, useState } from "react";
-import { useFieldPath } from "./useFieldPath";
 import { useFieldy } from "./useFieldy";
 import { useFormName } from "./useFormName";
 
-export function useFieldState() {
+export function useFieldState(fieldPath: string) {
   const [fieldState, setFieldState] = useState<FieldState>()
   const fieldy = useFieldy()
-  const fieldPath = useFieldPath()
   const formName = useFormName()
 
   useEffect(() => {
@@ -16,7 +14,7 @@ export function useFieldState() {
     }
   }, [fieldPath, fieldy, formName])
 
-  const handleFieldChange = useCallback((fieldState: FieldState) => {
+  const handleFieldChange = useCallback((fieldState: FieldState | undefined) => {
     setFieldState(fieldState)
   }, [])
 

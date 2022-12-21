@@ -180,7 +180,19 @@ export class FieldyEngine implements IFieldyEngine {
   }
 
   subscribeToFieldChange(formName: string, path: string, listener: FieldChangeListener): Unsubscribe {
-    throw new Error("Method not implemented.");
+    invariant(typeof listener === 'function', 'listener must be a function.')
+
+    let previousState = this.store.getState().forms[formName]?.fields[path]
+    const handleChange = () => {
+      const nextState = this.store.getState().forms[formName]?.fields[path]
+      if (nextState === previousState) {
+        return
+      }
+      previousState = nextState
+      listener(nextState)
+    }
+
+    return this.store.subscribe(handleChange)
   }
 
   dispatch(action: IAction<FormActionPlayload>): void {

@@ -1,5 +1,5 @@
 import { FieldContext, ValueSetter } from "fieldy/contexts"
-import { useFieldy, useFormName } from "fieldy/hooks"
+import { useFieldState, useFieldy, useFormName } from "fieldy/hooks"
 import { useFieldPath } from "fieldy/hooks/useFieldPath"
 import { IFieldMeta } from "fieldy/interfaces"
 import React, { memo, useCallback, useMemo } from "react"
@@ -20,7 +20,7 @@ export const Field = memo((props: {
       return fieldMeta.name
     }
   }, [basePath, fieldMeta.name])
-
+  const value = useFieldState(path)?.value
   const setValue = useCallback((value?: ValueSetter<any>) => {
     if (formName) {
       fieldy?.setFieldValue(formName, path, value)
@@ -31,10 +31,12 @@ export const Field = memo((props: {
 
   const params = useMemo(() => {
     return {
+      value,
+      fieldMeta,
       path,
       setValue
     }
-  }, [path, setValue])
+  }, [fieldMeta, path, setValue, value])
 
   return (
     <FieldContext.Provider value={params}>

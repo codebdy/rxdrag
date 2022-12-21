@@ -59,7 +59,7 @@ export interface IFieldFeedback {
   messages?: string[] //Feedback message
 }
 
-export type FieldChangeListener = (field: FieldState) => void
+export type FieldChangeListener = (field: FieldState | undefined) => void
 export type FormChangeListener = (form: FormState) => void
 export type FormValuesChangeListener = (values: FormValue, flatValues: FormValue) => void
 

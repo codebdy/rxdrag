@@ -1,6 +1,6 @@
 import { CSSProperties, memo, useCallback, useMemo } from "react"
 import { useCurrentNode } from "core-react/hooks/useCurrentNode"
-import { Input, InputNumber, Radio, Select, Switch } from 'antd';
+import { Form, Input, InputNumber, Radio, Select, Switch } from 'antd';
 import { ComponentRender } from "core-react/ComponentRender";
 import { Tabs } from "./components/Tabs";
 import { TabPanel } from "./components/Tabs/TabPanel";
@@ -13,7 +13,6 @@ import { Box } from "../components/Box";
 import { PreviewRoot } from "core-react/PreviewRoot";
 import { useChangeNodeMeta } from "core-react/hooks/useChangeNodeMeta";
 import { SlotSwitch } from "./components/SlotSwitch";
-import { FormItem } from "./components/FormItem";
 import { useLanguage } from "core-react/hooks/useLanguage";
 import { Fold, FoldBase, FoldExtra } from "./components/Fold";
 import { FoldExtraItem } from "./components/Fold/FoldExtraItem";
@@ -43,7 +42,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
   const currentNode = useCurrentNode()
   const changeMeta = useChangeNodeMeta()
   const lang = useLanguage()
-  
+
   const designerSchema = useMemo(() => {
     if (currentNode && currentNode.designerSchema) {
       //翻译
@@ -55,7 +54,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
       return undefined
     }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentNode, engine, lang])
 
   const fieldSchemas = useMemo(() => {
@@ -76,7 +75,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
       components={{
         Tabs,
         TabPanel,
-        FormItem,
+        FormItem: Form.Item,
         Input,
         Select,
         Switch,

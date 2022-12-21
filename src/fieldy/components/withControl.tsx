@@ -3,21 +3,29 @@ import { IFieldMeta } from "fieldy/interfaces"
 import { memo, useCallback } from "react"
 
 export function withControl(WrappedComponent: React.FC<any>, fieldMeta?: IFieldMeta): React.FC<any> {
-  if (!fieldMeta || (fieldMeta.type === "normal" && fieldMeta.withControl === undefined) || fieldMeta.withControl) {
+  const fieldType = fieldMeta?.type || "normal"
+
+  if (!fieldMeta) {
     return WrappedComponent
   }
 
-  return memo((props: any) => {
-    const { value, setValue } = useField()
+  if (fieldType === "normal" && fieldMeta.withControl === false) {
+    return WrappedComponent
+  } else if (fieldType !== "normal" && !fieldMeta.withControl) {
+    return WrappedComponent
+  }
+  const propName = fieldMeta.valuePropName || "value"
 
+  return memo((props: any) => {
+    const { fieldMeta: fdM, value, setValue, ...other } = useField()
+    console.log('哈哈', value, fdM, other)
     const handleChange = useCallback((e?: { target?: { value?: any, [key: string]: any } }) => {
-      const propName = fieldMeta.valuePropName || "value"
       let newValue = e?.target?.[propName]
       if (newValue === undefined && !e?.target) {
         newValue = e
       }
       setValue?.(newValue)
     }, [setValue])
-    return <WrappedComponent value={value} onChange={handleChange} {...props} />
+    return <WrappedComponent {...{ [propName]: value }} onChange={handleChange} {...props} />
   })
 }

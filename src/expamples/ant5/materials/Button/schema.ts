@@ -20,12 +20,12 @@ export const buttonSchema: INodeSchema = {
           props: {
             label: "$title",
           },
-          "x-field": {
-            name: "title",
-          },
           children: [
             {
-              componentName: "Input"
+              componentName: "Input",
+              "x-field": {
+                name: "title",
+              },
             }
           ]
         },
@@ -34,12 +34,13 @@ export const buttonSchema: INodeSchema = {
           props: {
             label: "$type",
           },
-          "x-field": {
-            name: "type",
-          },
+
           children: [
             {
               componentName: "Select",
+              "x-field": {
+                name: "type",
+              },
               props: {
                 options: [
                   {
@@ -75,14 +76,14 @@ export const buttonSchema: INodeSchema = {
           componentName: "FormItem",
           props: {
             label: "$disabled",
-            valuePropName: "checked",
-          },
-          "x-field": {
-            name: "disabled",
           },
           children: [
             {
-              componentName: "Switch"
+              componentName: "Switch",
+              "x-field": {
+                name: "disabled",
+                valuePropName: "checked",
+              },
             }
           ]
         },        
