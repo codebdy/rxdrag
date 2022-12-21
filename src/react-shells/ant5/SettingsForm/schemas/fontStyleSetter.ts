@@ -2,6 +2,10 @@ import { INodeSchema } from "core";
 
 export const fontStyleSetter: INodeSchema = {
   componentName: "Fold",
+  "x-field": {
+    type: "object",
+    name: "style"
+  },
   children: [
     {
       componentName: "FoldBase",
@@ -11,6 +15,9 @@ export const fontStyleSetter: INodeSchema = {
       children: [
         {
           componentName: "FontSelect",
+          "x-field": {
+            name: "fontFamily"
+          }
         }
       ]
     },
