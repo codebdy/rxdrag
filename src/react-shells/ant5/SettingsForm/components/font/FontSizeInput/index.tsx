@@ -8,15 +8,17 @@ export const fontSizeIcon = `<svg viewBox="0 0 1024 1024" height="1em" width="1e
 export const FontSizeInput = memo((props: {
   title?: string,
   span?: number,
+  value?: string,
+  onChange?: (value?: string | null) => void
 }) => {
-  const { title, span = 12 } = props
+  const { title, span = 12, value, onChange } = props
   return (
     <FoldExtraItem span={span}
       title={title}
       icon={fontSizeIcon}
       onFirstLine={false}
     >
-      <SizeInput exclude={"auto"} />
+      <SizeInput exclude={"auto"} value = {value} onChange = {onChange}/>
     </FoldExtraItem>
   )
 })

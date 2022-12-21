@@ -13,9 +13,11 @@ const NormalSizeOptions = [
 ]
 
 export const SizeInput = memo((props: {
-  exclude?: string[] | string
+  exclude?: string[] | string,
+  value?: string,
+  onChange?: (value?: string | null) => void
 }) => {
-  const { exclude } = props
+  const { exclude, value, onChange } = props
 
   const options = useMemo(()=>{
     if(isStr(exclude)){
@@ -30,7 +32,7 @@ export const SizeInput = memo((props: {
   }, [exclude])
   
   return (
-    <PolyInput polyTypes={options} />
+    <PolyInput polyTypes={options} value= {value} onChange ={onChange}/>
   )
 })
 
