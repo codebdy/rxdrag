@@ -53,7 +53,9 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
   if (payload.path) {
     const filedState = state.fields[payload.path]
     if (filedState) {
-      return { ...state, [payload.path]: fieldReduce(filedState, action) }
+      const fieldState = fieldReduce(filedState, action)
+      const newState = { ...state, fields: { ...state.fields, [payload.path]: fieldState } }
+      return newState
     }
   }
   return state

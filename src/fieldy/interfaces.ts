@@ -27,8 +27,8 @@ export interface IFieldMeta {
   defaultValue?: any,
   //target里面的属性值
   valuePropName?: string,
-  //触发验证
-  trigger?: string | string[],
+  //触发值变化
+  trigger?: string,
   //校验规则
   rules?: { [key: string]: boolean | string }[]
   //是否接管输入输出控制，normal 类型默认true，其它默认 false

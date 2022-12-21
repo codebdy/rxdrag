@@ -23,10 +23,11 @@ export function formsReduce(state: FormsState, action: IAction<FormActionPlayloa
     }
     const formSate = state[action.payload.formName]
     if (action.payload.formName && formSate) {
-      return {
+      const newState = {
         ...state,
         [action.payload.formName]: formReduce(formSate, action)
       }
+      return newState
     }
   }
 

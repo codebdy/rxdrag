@@ -17,8 +17,9 @@ export function withControl(WrappedComponent: React.FC<any>, fieldMeta?: IFieldM
   const propName = fieldMeta.valuePropName || "value"
 
   return memo((props: any) => {
-    const { fieldMeta: fdM, value, setValue, ...other } = useField()
-    console.log('哈哈', value, fdM, other)
+    const { value, setValue } = useField()
+    const trigger = fieldMeta.trigger || "onChange"
+
     const handleChange = useCallback((e?: { target?: { value?: any, [key: string]: any } }) => {
       let newValue = e?.target?.[propName]
       if (newValue === undefined && !e?.target) {
@@ -26,6 +27,6 @@ export function withControl(WrappedComponent: React.FC<any>, fieldMeta?: IFieldM
       }
       setValue?.(newValue)
     }, [setValue])
-    return <WrappedComponent {...{ [propName]: value }} onChange={handleChange} {...props} />
+    return <WrappedComponent {...{ [propName]: value, [trigger]: handleChange }} {...props} />
   })
 }

@@ -2,6 +2,7 @@ import { FieldContext, ValueSetter } from "fieldy/contexts"
 import { useFieldState, useFieldy, useFormName } from "fieldy/hooks"
 import { useFieldPath } from "fieldy/hooks/useFieldPath"
 import { IFieldMeta } from "fieldy/interfaces"
+import { isFunction } from "lodash"
 import React, { memo, useCallback, useMemo } from "react"
 
 export const Field = memo((props: {
@@ -21,13 +22,17 @@ export const Field = memo((props: {
     }
   }, [basePath, fieldMeta.name])
   const value = useFieldState(path)?.value
-  const setValue = useCallback((value?: ValueSetter<any>) => {
+  const setValue = useCallback((val?: ValueSetter<any>) => {
+    let newValue = val
+    if(isFunction(val)){
+      newValue = val(value)
+    }
     if (formName) {
-      fieldy?.setFieldValue(formName, path, value)
+      fieldy?.setFieldValue(formName, path, newValue)
     } else {
       console.error("Can not get form name")
     }
-  }, [fieldy, formName, path])
+  }, [fieldy, formName, path, value])
 
   const params = useMemo(() => {
     return {
