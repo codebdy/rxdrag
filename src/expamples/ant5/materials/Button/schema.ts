@@ -1,5 +1,5 @@
 import { INodeSchema } from "core";
-import { fontStyleSetter } from "react-shells/ant5/SettingsForm/schemas/fontStyleSetter2";
+import { fontStyleSetter } from "react-shells/ant5/SettingsForm/schemas/fontStyleSetter";
 
 export const buttonSchema: INodeSchema = {
   componentName: "Tabs",
