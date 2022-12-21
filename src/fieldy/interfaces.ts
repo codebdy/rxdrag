@@ -20,10 +20,12 @@ export interface IFormProps {
 
 //跟core模块重复的定义，可能会在不同的项目中，暂时允许重复
 export interface IFieldMeta {
-  type?: "object" | "array" | "boolean" | "string" | "number"
+  type?: "object" | "array" | "normal"
   name: string
   validateRule?: any
   defaultValue?: any,
+  //是否接管输入输出控制，normal 类型默认true，其它默认 false
+  controllValue?: boolean
 }
 
 export interface IFieldSchema extends IFieldMeta {

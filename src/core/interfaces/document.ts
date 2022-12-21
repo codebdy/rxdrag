@@ -41,10 +41,12 @@ export interface IReactionMeta {
 }
 
 export interface IFieldMeta {
-  type?: "object" | "array" | "boolean" | "string" | "number"
+  type?: "object" | "array" | "normal"
   name: string
   validateRule?: any
-  defaultValue?: any,
+  defaultValue?: any
+  //是否接管输入输出控制，normal 类型默认true，其它默认 false
+  controllValue?: boolean
 }
 
 export interface INodeMeta {

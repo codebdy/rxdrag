@@ -1,4 +1,4 @@
-import { FieldPathContext } from "fieldy/contexts"
+import { FieldContext } from "fieldy/contexts"
 import { useFieldPath } from "fieldy/hooks/useFieldPath"
 import { IFieldMeta } from "fieldy/interfaces"
 import React, { memo, useMemo } from "react"
@@ -10,19 +10,25 @@ export const Field = memo((props: {
   const { fieldMeta, children } = props
   const basePath = useFieldPath() || ""
 
-  const path = useMemo(()=>{
-    if(basePath){
+  const path = useMemo(() => {
+    if (basePath) {
       return basePath + "." + fieldMeta.name
-    }else{
+    } else {
       return fieldMeta.name
     }
   }, [basePath, fieldMeta.name])
-  
+
+  const params = useMemo(() => {
+    return {
+      path
+    }
+  }, [path])
+
   return (
-    <FieldPathContext.Provider value={path}>
+    <FieldContext.Provider value={params}>
       {
         children
       }
-    </FieldPathContext.Provider>
+    </FieldContext.Provider>
   )
 })
