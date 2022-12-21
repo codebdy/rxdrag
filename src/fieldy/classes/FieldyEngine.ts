@@ -1,15 +1,15 @@
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "core/utils/util-invariant";
-import { CREATE_FORM, REMOVE_FORM, SetFormFieldsPayload, SetFormValuesPayload, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES } from "fieldy/actions";
+import { CREATE_FORM, REMOVE_FORM, SetFieldValuePayload, SetFormFieldsPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES } from "fieldy/actions";
 import { FieldChangeListener, FieldState, FormActionPlayload, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldSchema, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "fieldy/interfaces";
 import { reduce, State } from "fieldy/reducers";
 
 var idSeed = 0
 
-function makeId(){
+function makeId() {
   idSeed = idSeed + 1;
 
-  return "form-"+idSeed
+  return "form-" + idSeed
 }
 
 /**
@@ -135,7 +135,17 @@ export class FieldyEngine implements IFieldyEngine {
   }
 
   setFieldValue(formName: string, fieldPath: string, value: any): void {
-    throw new Error("Method not implemented.");
+    const payload: SetFieldValuePayload = {
+      formName,
+      fieldPath,
+      value
+    }
+    this.dispatch(
+      {
+        type: SET_FIELD_VALUE,
+        payload: payload,
+      }
+    )
   }
 
   setSubFields(formName: string, fieldPath: string, subFieldSchemas: IFieldSchema[]): void {

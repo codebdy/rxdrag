@@ -8,7 +8,6 @@ export const FormNameContext = createContext<string | undefined>(undefined)
 //export const FieldPathContext = createContext<string | undefined>(undefined)
 
 export type ValueSetter<T> = (value?: T | ((previousValue?: T) => T)) => void
-export type Errors = {}
 
 export interface IFieldParams {
   path?: string,
@@ -16,7 +15,7 @@ export interface IFieldParams {
   value?: any,
   setValue?: ValueSetter<any>,
   setInitalValue?: ValueSetter<any>,
-  validate?: () => Errors,
+  validate?: () => void,
 }
 
 const initailParams: IFieldParams = {

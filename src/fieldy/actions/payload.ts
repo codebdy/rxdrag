@@ -13,3 +13,8 @@ export interface SetFormInitializedFlagPayload extends FormActionPlayload {
   initialized: boolean
 }
 
+
+export interface SetFieldValuePayload extends FormActionPlayload {
+  fieldPath: string,
+  value?: any
+}

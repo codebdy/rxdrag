@@ -1,7 +1,7 @@
-import { FieldContext } from "fieldy/contexts"
+import { FieldContext, ValueSetter } from "fieldy/contexts"
 import { useFieldPath } from "fieldy/hooks/useFieldPath"
 import { IFieldMeta } from "fieldy/interfaces"
-import React, { memo, useMemo } from "react"
+import React, { memo, useCallback, useMemo } from "react"
 
 export const Field = memo((props: {
   fieldMeta: IFieldMeta,
@@ -18,11 +18,16 @@ export const Field = memo((props: {
     }
   }, [basePath, fieldMeta.name])
 
+  const setValue = useCallback((value?: ValueSetter<any>) => {
+
+  }, [])
+
   const params = useMemo(() => {
     return {
-      path
+      path,
+      setValue
     }
-  }, [path])
+  }, [path, setValue])
 
   return (
     <FieldContext.Provider value={params}>

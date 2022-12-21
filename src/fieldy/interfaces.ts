@@ -145,10 +145,12 @@ export interface IFieldyEngine {
   setFormInitialValue(name: string, value: FormValue): void
   setFormValues(name: string, value: FormValue): void
   setFormFlatValues(name: string, flatValues: FormValue): void
-  setFieldValue(formName: string, fieldPath: string, value: any): void
   setSubFields(formName: string, fieldPath: string, subFieldSchemas: IFieldSchema[]): void
   addSubFields(formName: string, fieldPath: string, subFieldSchemas: IFieldSchema[]): void
   removeSubFields(formName: string, fieldPath: string, ...subFieldNames: string[]): void
+
+  //field动作
+  setFieldValue(formName: string, fieldPath: string, value: any): void
 
   //监测
   getForm(name: string): FormState | undefined
