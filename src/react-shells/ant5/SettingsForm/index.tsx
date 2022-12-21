@@ -1,6 +1,6 @@
 import { CSSProperties, memo, useCallback, useMemo } from "react"
 import { useCurrentNode } from "core-react/hooks/useCurrentNode"
-import { Input, Select, Switch } from 'antd';
+import { Input, InputNumber, Radio, Select, Switch } from 'antd';
 import { ComponentRender } from "core-react/ComponentRender";
 import { Tabs } from "./components/Tabs";
 import { TabPanel } from "./components/Tabs/TabPanel";
@@ -18,6 +18,9 @@ import { useLanguage } from "core-react/hooks/useLanguage";
 import { FontStyleSetter } from "./components/FontStyleSetter";
 import { Fold, FoldBase, FoldExtra } from "./components/Fold";
 import { FoldExtraItem } from "./components/Fold/FoldExtraItem";
+import { FontSelect } from "./components/FontSelect";
+import { ColorInput } from "./components/ColorInput";
+import { SizeInput } from "./components/SizeInput";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -76,7 +79,12 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         Fold,
         FoldBase,
         FoldExtra,
-        FoldExtraItem
+        FoldExtraItem,
+        Radio,
+        FontSelect,
+        InputNumber,
+        ColorInput,
+        SizeInput
       }}
     >
 

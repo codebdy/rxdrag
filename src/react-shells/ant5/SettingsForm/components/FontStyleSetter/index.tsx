@@ -3,7 +3,7 @@ import { InputNumber, Radio, Select } from 'antd'
 import { FoldBase, Fold, FoldExtra } from '../Fold'
 import { ValueRow } from '../Fold/ValueRow'
 import { IconView, FoldExtraItem } from '../Fold/FoldExtraItem'
-import { fontColorIcon, fontSizeIcon, fontStyleIcon, fontWeightIcon, italicFontSyleIcon, lineHeightIcon, normalFontStyleIcon, textAlignCenterIcon, textAlignIcon, textAlignJustifyIcon, textAlignLeftIcon, textAlignRightIcon, textDecorationIcon, textLineThrough, textUnlineIcon } from './icons'
+import { fontColorIcon, fontSizeIcon, fontStyleIcon, fontWeightIcon, lineHeightIcon, textAlignCenterIcon, textAlignIcon, textAlignJustifyIcon, textAlignLeftIcon, textAlignRightIcon, textDecorationIcon, textLineThrough, textUnlineIcon } from './icons'
 import { ColorInput } from '../ColorInput'
 import { SizeInput } from '../SizeInput'
 
@@ -69,11 +69,11 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = memo(
               title="风格"
               icon={fontStyleIcon}
             >
-              <Radio.Group options={[
+              {/* <Radio.Group options={[
                 { label: <IconView icon={normalFontStyleIcon} />, value: 'normal' },
                 { label: <IconView icon={italicFontSyleIcon} />, value: 'italic' },
               ]}
-                optionType="button" />
+                optionType="button" /> */}
             </FoldExtraItem>
             <FoldExtraItem span={24}
               title="颜色"
