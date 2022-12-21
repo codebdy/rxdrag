@@ -1,5 +1,6 @@
+import { FormActionPlayload } from "fieldy/actions";
 import { CREATE_FORM, REMOVE_FORM } from "fieldy/actions/registry";
-import { FormActionPlayload, IAction } from "fieldy/interfaces";
+import { IAction } from "fieldy/interfaces";
 import { FormsState } from "..";
 import { formReduce } from "./form";
 
@@ -22,10 +23,11 @@ export function formsReduce(state: FormsState, action: IAction<FormActionPlayloa
     }
     const formSate = state[action.payload.formName]
     if (action.payload.formName && formSate) {
-      return {
+      const newState = {
         ...state,
         [action.payload.formName]: formReduce(formSate, action)
       }
+      return newState
     }
   }
 

@@ -1,4 +1,5 @@
-import { FormActionPlayload, FormState, IAction } from "fieldy/interfaces"
+import { FormActionPlayload } from "fieldy/actions"
+import { FormState, IAction } from "fieldy/interfaces"
 import { formsReduce } from "./forms"
 
 export type FormsState = {

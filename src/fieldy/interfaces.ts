@@ -1,4 +1,5 @@
 import { Action } from "redux"
+import { FormActionPlayload } from "./actions"
 
 export type Listener = () => void
 export type Unsubscribe = () => void
@@ -20,23 +21,22 @@ export interface IFormProps {
 
 //跟core模块重复的定义，可能会在不同的项目中，暂时允许重复
 export interface IFieldMeta {
-  type?: "object" | "array" | "boolean" | "string" | "number"
+  type?: "object" | "array" | "normal"
   name: string
   validateRule?: any
   defaultValue?: any,
+  //target里面的属性值
+  valuePropName?: string,
+  //触发值变化
+  trigger?: string,
+  //校验规则
+  rules?: { [key: string]: boolean | string }[]
+  //是否接管输入输出控制，normal 类型默认true，其它默认 false
+  withControl?: boolean
 }
 
 export interface IFieldSchema extends IFieldMeta {
   fields: IFieldSchema[]
-}
-
-export interface FormActionPlayload {
-  formName: string,
-  [key: string]: any,
-}
-
-export interface FieldActionPlayload extends FormActionPlayload {
-  path: string
 }
 
 export interface IAction<Payload> extends Action<string> {
@@ -59,7 +59,7 @@ export interface IFieldFeedback {
   messages?: string[] //Feedback message
 }
 
-export type FieldChangeListener = (field: FieldState) => void
+export type FieldChangeListener = (field: FieldState | undefined) => void
 export type FormChangeListener = (form: FormState) => void
 export type FormValuesChangeListener = (values: FormValue, flatValues: FormValue) => void
 
@@ -143,10 +143,12 @@ export interface IFieldyEngine {
   setFormInitialValue(name: string, value: FormValue): void
   setFormValues(name: string, value: FormValue): void
   setFormFlatValues(name: string, flatValues: FormValue): void
-  setFieldValue(formName: string, fieldPath: string, value: any): void
   setSubFields(formName: string, fieldPath: string, subFieldSchemas: IFieldSchema[]): void
   addSubFields(formName: string, fieldPath: string, subFieldSchemas: IFieldSchema[]): void
   removeSubFields(formName: string, fieldPath: string, ...subFieldNames: string[]): void
+
+  //field动作
+  setFieldValue(formName: string, fieldPath: string, value: any): void
 
   //监测
   getForm(name: string): FormState | undefined

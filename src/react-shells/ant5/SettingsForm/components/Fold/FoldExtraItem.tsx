@@ -1,0 +1,64 @@
+import { Col, Tooltip } from "antd"
+import React, { CSSProperties, forwardRef, memo } from "react"
+import cls from "classnames"
+import { isStr } from "core/utils/types"
+
+export type ValueIconProps = {
+  icon?: React.ReactNode | string
+}
+
+export const ValueIcon = memo(forwardRef<HTMLDivElement, ValueIconProps>((props, ref) => {
+  return (
+    <IconView ref={ref} className="rx-value-icon" icon={props.icon} />
+  )
+}))
+
+export type IconViewProps = {
+  style?: CSSProperties,
+  className?: string,
+  icon?: React.ReactNode | string
+}
+
+export const IconView = memo(forwardRef<HTMLDivElement, IconViewProps>((props, ref) => {
+  const { icon, ...other } = props
+  return (
+    isStr(props.icon)
+      ? <div ref={ref} {...other} dangerouslySetInnerHTML={{ __html: props.icon || "" }}>
+      </div>
+      : <div ref={ref} >
+        {props.icon}
+      </div>
+  )
+}))
+
+export const FoldExtraItem = memo((props: {
+  title?: string,
+  icon?: React.ReactNode | string,
+  span?: number,
+  onFirstLine?: boolean,
+  className?: string,
+  style?: CSSProperties,
+  children?: React.ReactNode
+}) => {
+  const { title, icon, span = 12, onFirstLine = true, className, children, style, ...other } = props
+
+  return (
+    <Col
+      span={span}
+      className={cls("value-column", className)}
+      style={{ marginTop: !onFirstLine ? 8 : undefined, ...style }}
+      {...other}
+    >
+      {
+        icon &&
+        <Tooltip title={title}>
+          <span>
+            <ValueIcon icon={icon} />
+          </span>
+        </Tooltip>
+      }
+
+      {children}
+    </Col>
+  )
+})

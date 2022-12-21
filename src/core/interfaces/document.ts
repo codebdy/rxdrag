@@ -40,19 +40,24 @@ export interface IReactionMeta {
 
 }
 
-export interface IFieldMeta {
-  type?: "object" | "array" | "boolean" | "string" | "number"
-  name: string
-  validateRule?: any
-  defaultValue?: any,
-}
+// export interface IFieldMeta {
+//   type?: "object" | "array" | "normal"
+//   name: string
+//   validateRule?: any
+//   defaultValue?: any
+//   valueProps?: string,
+//   //设置收集字段值变更的时机
+//   trigger?: string | string[],
+//   //是否接管输入输出控制，normal 类型默认true，其它默认 false
+//   withControl?: boolean
+// }
 
 export interface INodeMeta {
   componentName: string,
   props?: {
     [key: string]: any,
   },
-  "x-field"?: IFieldMeta,
+  "x-field"?: any,
   "x-reaction"?: IReactionMeta,
   [key: string]: any,
 }

@@ -3,6 +3,7 @@ import { memo, useMemo } from "react"
 import { ComponentField } from "./ComponentField"
 import { ComponentSchemaContext } from "./contexts"
 import { usePreviewComponent } from "core-react/hooks/usePreviewComponent"
+import { withControl } from "fieldy/components/withControl"
 
 export interface IComponentRenderSchema extends INodeSchema {
   id: ID,
@@ -19,7 +20,8 @@ export const ComponentView = memo((
   props: ComponentViewProps
 ) => {
   const { node } = props
-  const Component = usePreviewComponent(node.componentName);
+  const com = usePreviewComponent(node.componentName)
+  const Component = com && withControl(com, node?.["x-field"]);
   const slots = useMemo(() => {
     const slts: { [key: string]: React.ReactElement } = {}
     for (const name of Object.keys(node?.slots || {})) {
