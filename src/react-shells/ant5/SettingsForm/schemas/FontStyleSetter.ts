@@ -24,10 +24,16 @@ export const FontStyleSetter: INodeSchema = {
           }
         },
         {
+          componentName: "FontStyleSelect",
+          props: {
+            title: "fontStyle",
+          }
+        },
+        {
           componentName: "FontColorInput",
           props: {
             title: "fontColor",
-            span: 12
+            span: 24
           },
         },
         {
@@ -40,20 +46,20 @@ export const FontStyleSetter: INodeSchema = {
         {
           componentName: "FontLineHeightInput",
           props: {
-            title: "fontSize",
+            title: "fontLineHeight",
             span: 12
           },
         },
         {
-          componentName: "FontLineHeightInput",
+          componentName: "TextAlignSelect",
           props: {
-            title: "TextAlignSelect",
+            title: "textAlign",
           },
         },
         {
-          componentName: "FontLineHeightInput",
+          componentName: "FontDecorationSelect",
           props: {
-            title: "FontDecorationSelect",
+            title: "fontDecoration",
           },
         },
       ]
