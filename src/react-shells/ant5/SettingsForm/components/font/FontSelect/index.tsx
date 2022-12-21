@@ -1,5 +1,6 @@
 import { Select } from "antd"
 import { memo } from "react"
+import { FoldBase } from "../../Fold"
 
 const createFontFamilyOptions = (fonts: string[]) => {
   return fonts.map((font) => {
@@ -35,10 +36,15 @@ const FontFamilyOptions = createFontFamilyOptions([
   'Trebuchet MS=trebuchet ms,geneva,sans-serif',
   'Verdana=verdana,geneva,sans-serif',
 ])
-export const FontSelect = memo(() => {
+export const FontSelect = memo((props: {
+  title?: string,
+}) => {
+  const { title } = props
   return (
-    <Select
-      options={FontFamilyOptions}
-    />
+    <FoldBase label={title}>
+      <Select
+        options={FontFamilyOptions}
+      />
+    </FoldBase>
   )
 })

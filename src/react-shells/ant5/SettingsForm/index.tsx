@@ -18,7 +18,7 @@ import { useLanguage } from "core-react/hooks/useLanguage";
 import { FontStyleSetter } from "./components/FontStyleSetter";
 import { Fold, FoldBase, FoldExtra } from "./components/Fold";
 import { FoldExtraItem } from "./components/Fold/FoldExtraItem";
-import { FontSelect } from "./components/FontSelect";
+import { FontSelect } from "./components/font/FontSelect";
 import { ColorInput } from "./components/ColorInput";
 import { SizeInput } from "./components/SizeInput";
 
