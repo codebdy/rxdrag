@@ -1,5 +1,5 @@
-import { Radio } from "antd"
-import { memo } from "react"
+import { Radio, RadioChangeEvent } from "antd"
+import { memo, useCallback } from "react"
 import { FoldExtraItem, IconView } from "../../Fold/FoldExtraItem"
 
 export const textAlignIcon = `<svg viewBox="0 0 1024 1024" height="1em" width="1em" fill="currentColor" focusable="false" aria-hidden="true"><path d="M461.421356,629.715729 C477.042328,645.3367 477.042328,670.6633 461.421356,686.284271 L416.567,731.137 L884,731.137085 C906.09139,731.137085 924,749.045695 924,771.137085 C924,793.228475 906.09139,811.137085 884,811.137085 L416.568,811.137 L461.421356,855.989899 C477.042328,871.61087 477.042328,896.93747 461.421356,912.558441 C445.800385,928.179413 420.473785,928.179413 404.852814,912.558441 L291.715729,799.421356 C276.094757,783.800385 276.094757,758.473785 291.715729,742.852814 L404.852814,629.715729 C420.473785,614.094757 445.800385,614.094757 461.421356,629.715729 Z M140,100 C162.09139,100 180,117.90861 180,140 L180,884 C180,906.09139 162.09139,924 140,924 C117.90861,924 100,906.09139 100,884 L100,140 C100,117.90861 117.90861,100 140,100 Z M884,478 C906.09139,478 924,495.90861 924,518 C924,540.09139 906.09139,558 884,558 L320,558 C297.90861,558 280,540.09139 280,518 C280,495.90861 297.90861,478 320,478 L884,478 Z M884,289 C906.09139,289 924,306.90861 924,329 C924,351.09139 906.09139,369 884,369 L320,369 C297.90861,369 280,351.09139 280,329 C280,306.90861 297.90861,289 320,289 L884,289 Z M884,100 C906.09139,100 924,117.90861 924,140 C924,162.09139 906.09139,180 884,180 L320,180 C297.90861,180 280,162.09139 280,140 C280,117.90861 297.90861,100 320,100 L884,100 Z"></path></svg>`
@@ -15,15 +15,21 @@ export const textAlignJustifyIcon = `<svg viewBox="0 0 1024 1024" height="1em" w
 export const TextAlignSelect = memo((props: {
   title?: string,
   span?: number,
+  value?: string,
+  onChange?: (value?: string | null) => void
 }) => {
-  const { title, span = 24 } = props
+  const { title, span = 24, value, onChange } = props
+  const handleChange = useCallback((e: RadioChangeEvent) => {
+    onChange?.(e.target.value)
+  }, [onChange])
+
   return (
     <FoldExtraItem span={span}
       title={title}
       icon={textAlignIcon}
       onFirstLine={false}
     >
-      <Radio.Group options={[
+      <Radio.Group value={value} onChange={handleChange} options={[
         { label: <IconView icon={textAlignLeftIcon} />, value: 'left' },
         { label: <IconView icon={textAlignCenterIcon} />, value: 'center' },
         { label: <IconView icon={textAlignRightIcon} />, value: 'right' },
