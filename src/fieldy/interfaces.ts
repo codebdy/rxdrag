@@ -1,4 +1,5 @@
 import { Action } from "redux"
+import { FormActionPlayload } from "./actions"
 
 export type Listener = () => void
 export type Unsubscribe = () => void
@@ -30,15 +31,6 @@ export interface IFieldMeta {
 
 export interface IFieldSchema extends IFieldMeta {
   fields: IFieldSchema[]
-}
-
-export interface FormActionPlayload {
-  formName: string,
-  [key: string]: any,
-}
-
-export interface FieldActionPlayload extends FormActionPlayload {
-  path: string
 }
 
 export interface IAction<Payload> extends Action<string> {

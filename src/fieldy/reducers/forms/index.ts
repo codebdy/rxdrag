@@ -1,5 +1,6 @@
+import { FormActionPlayload } from "fieldy/actions";
 import { CREATE_FORM, REMOVE_FORM } from "fieldy/actions/registry";
-import { FormActionPlayload, IAction } from "fieldy/interfaces";
+import { IAction } from "fieldy/interfaces";
 import { FormsState } from "..";
 import { formReduce } from "./form";
 

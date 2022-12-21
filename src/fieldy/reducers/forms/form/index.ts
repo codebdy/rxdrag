@@ -1,5 +1,6 @@
-import { SetFormFieldsPayload, SetFormInitializedFlagPayload, SetFormValuesPayload, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIALZED_FLAG, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES } from "fieldy/actions";
+import { FieldActionPayload, SetFormFieldsPayload, SetFormInitializedFlagPayload, SetFormValuesPayload, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIALZED_FLAG, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES } from "fieldy/actions";
 import { FieldsState, FormState, FormValue, IAction, IFieldSchema } from "fieldy/interfaces";
+import { fieldReduce } from "./field";
 var idSeed = 1
 function makeId() {
   idSeed = idSeed + 1
@@ -22,7 +23,7 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
     case SET_FORM_INITIAL_VALUES: {
       const flatInitialValues = patFlatValues((action.payload as SetFormValuesPayload).values, state.fieldSchemas)
       const stateWithInitialValues = setInitialFlatValues(state, flatInitialValues)
-       return {
+      return {
         ...state,
         ...stateWithInitialValues,
         originalValue: (action.payload as SetFormValuesPayload).values,
@@ -45,6 +46,14 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
         ...state,
         initialized: (action.payload as SetFormInitializedFlagPayload).initialized
       }
+    }
+  }
+
+  const payload = action.payload as FieldActionPayload
+  if (payload.path) {
+    const filedState = state.fields[payload.path]
+    if (filedState) {
+      return { ...state, [payload.path]: fieldReduce(filedState, action) }
     }
   }
   return state
@@ -86,7 +95,7 @@ function setFlatValues(state: FormState, flatValues: any = {}) {
     modified: true,
   }
 }
-function patFlatValues(values: FormValue|undefined, fieldSchemas: IFieldSchema[], parentFieldPath?: string) {
+function patFlatValues(values: FormValue | undefined, fieldSchemas: IFieldSchema[], parentFieldPath?: string) {
   const prefix = parentFieldPath ? parentFieldPath + "." : ""
   let flatValues: FormValue = {}
   for (const fieldSchema of fieldSchemas) {
