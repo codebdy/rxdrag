@@ -10,7 +10,7 @@ export const ComponentField = memo((
 ) => {
   const { fieldMeta, children } = props
   return (
-    fieldMeta ?
+    fieldMeta?.name ?
       <Field fieldMeta={fieldMeta}>
         {children}
       </Field>
