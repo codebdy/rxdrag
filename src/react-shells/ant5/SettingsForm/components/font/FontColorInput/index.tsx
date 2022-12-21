@@ -7,15 +7,17 @@ export const fontColorIcon = `<svg viewBox="0 0 1024 1024" height="1em" width="1
 export const FontColorInput = memo((props: {
   title?: string,
   span?: number,
+  value?: string,
+  onChange?: (value?: string | null) => void
 }) => {
-  const { title, span = 24 } = props
+  const { title, span = 24, value, onChange } = props
   return (
     <FoldExtraItem span={span}
-    title={title}
+      title={title}
       icon={fontColorIcon}
       onFirstLine={false}
     >
-      <ColorInput />
+      <ColorInput value={value} onChange={onChange} />
     </FoldExtraItem>
   )
 })

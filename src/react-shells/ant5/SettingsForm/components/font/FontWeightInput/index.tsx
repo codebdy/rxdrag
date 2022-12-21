@@ -7,14 +7,16 @@ export const fontWeightIcon = `<svg viewBox="0 0 1024 1024" height="1em" width="
 export const FontWeightInput = memo((props: {
   title?: string,
   span?: number,
+  value?: string,
+  onChange?: (value?: string | null) => void
 }) => {
-  const { title, span = 12 } = props
+  const { title, value, onChange, span = 12 } = props
   return (
     <FoldExtraItem span={span}
       title={title}
       icon={fontWeightIcon}
     >
-      <InputNumber />
+      <InputNumber value={value} onChange={onChange} />
     </FoldExtraItem>
   )
 })

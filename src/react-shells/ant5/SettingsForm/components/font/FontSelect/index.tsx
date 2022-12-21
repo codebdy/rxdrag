@@ -1,6 +1,5 @@
 import { Select } from "antd"
 import { memo } from "react"
-import { FoldBase } from "../../Fold"
 
 const createFontFamilyOptions = (fonts: string[]) => {
   return fonts.map((font) => {
@@ -37,11 +36,15 @@ const FontFamilyOptions = createFontFamilyOptions([
   'Verdana=verdana,geneva,sans-serif',
 ])
 export const FontSelect = memo((props: {
-
+  value?: string,
+  onChange?: (value?: string) => void
 }) => {
+  const { value, onChange } = props
 
   return (
     <Select
+      value={value}
+      onChange={onChange}
       options={FontFamilyOptions}
     />
   )
