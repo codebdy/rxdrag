@@ -1,4 +1,4 @@
-import { FieldActionPayload, SetFormFieldsPayload, SetFormInitializedFlagPayload, SetFormValuesPayload, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIALZED_FLAG, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES } from "fieldy/actions";
+import { FieldActionPayload, SetFormFieldsPayload, SetFormInitializedFlagPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIALZED_FLAG, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES } from "fieldy/actions";
 import { FieldsState, FormState, FormValue, IAction, IFieldSchema } from "fieldy/interfaces";
 import { fieldReduce } from "./field";
 var idSeed = 1
@@ -50,15 +50,18 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
   }
 
   const payload = action.payload as FieldActionPayload
+  let newState = state
+  if (action.type === SET_FIELD_VALUE) {
+    newState = { ...state, modified: true }
+  }
   if (payload.path) {
-    const filedState = state.fields[payload.path]
+    const filedState = newState.fields[payload.path]
     if (filedState) {
       const fieldState = fieldReduce(filedState, action)
-      const newState = { ...state, fields: { ...state.fields, [payload.path]: fieldState } }
-      return newState
+      return { ...newState, fields: { ...newState.fields, [payload.path]: fieldState } }
     }
   }
-  return state
+  return newState
 }
 
 function setInitialFlatValues(state: FormState, flatValues: any = {}) {
