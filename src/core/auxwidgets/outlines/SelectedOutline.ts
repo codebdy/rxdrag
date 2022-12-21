@@ -17,6 +17,7 @@ export class SelectedOutlineImpl implements IPlugin {
   } = {}
   private nodeChangeUnsubscribe: Unsubscribe;
   private selecteNodes: ID[] | null = null
+  private refreshedFlag = false
   private unCanvasScroll: Unsubscribe
   private unCanvasResize: Unsubscribe
   private unThemeModeChange: Unsubscribe
@@ -99,7 +100,13 @@ export class SelectedOutlineImpl implements IPlugin {
   }
 
   refresh = () => {
-    this.listenSelectChange(this.selecteNodes)
+    this.refreshedFlag = true
+    setTimeout(() => {
+      if (this.refreshedFlag) {
+        this.listenSelectChange(this.selecteNodes)
+        this.refreshedFlag = false
+      }
+    }, 20)
   }
 
   destory(): void {

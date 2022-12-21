@@ -1,5 +1,5 @@
 import { isHTMLElement } from "core/utils/html-node";
-import React, { memo, useCallback, useEffect, useMemo } from "react";
+import React, { memo, useCallback, useEffect, useLayoutEffect, useMemo } from "react";
 import { useDesignComponent } from "core-react/hooks/useDesignComponent";
 import { useTreeNode } from "../hooks/useTreeNode";
 import { useDesignerEngine } from "core-react/hooks";
@@ -15,15 +15,20 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const engine = useDesignerEngine()
   const behavior = useMemo(() => engine?.getNodeBehavior(node?.id || ""), [engine, node?.id])
 
+  useLayoutEffect(()=>{
+    setTimeout(()=>{
+      engine?.getShell().dispatch(new NodeMountedEvent(nodeId))
+    }, 20)
+    
+  }, [engine, nodeId])
+
   const handleRef = useCallback((element: HTMLElement | undefined) => {
     for (const key of Object.keys(node?.rxProps || {})) {
       if (isHTMLElement(element)) {
         element?.setAttribute(key, (node?.rxProps as any)[key])
       }
     }
-    engine?.getShell().dispatch(new NodeMountedEvent(nodeId))
-
-  }, [engine, node?.rxProps, nodeId])
+  }, [node?.rxProps])
 
   const { style, ...other } = node?.meta.props || {}
   const { dStyle, ...dOther } = node?.designerProps || {}
@@ -50,7 +55,6 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   }, [dOther, dStyle, node?.rxProps, other, slots, style])
 
   const hasChildren = useMemo(() => !!node?.children?.length, [node?.children?.length])
-
 
   const render = useCallback(() => {
     if (Component && node) {
