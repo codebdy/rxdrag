@@ -21,9 +21,8 @@ import { SaveActions } from "./widgets/SaveActions"
 import { ThemeButton } from "./widgets/ThemeButton"
 import { ConfigRoot } from "./pannels/ShellContainer/ConfigRoot"
 import { ILocales } from "core/interfaces/loacales"
-
 import { DocumentView } from "./pannels/DocumentView"
-import { settingLocales } from "./SettingsForm/locales"
+import { fontLocales } from "./SettingsForm/locales/fontLocales"
 
 export type Antd5EditorProps = {
   leftNav?: React.ReactNode,
@@ -42,7 +41,7 @@ export const Antd5Editor = memo((props: Antd5EditorProps) => {
   const handleReady = useCallback((engine: IDesignerEngine) => {
     const langMgr = engine.getLoacalesManager()
     langMgr.registerLocales(commmonLocales)
-    langMgr.registerLocales(settingLocales)
+    langMgr.registerLocales(fontLocales)
     locales && langMgr.registerLocales(locales)
     //langMgr.registerResourceLocales(resourceLocales)
     //langMgr.registerComponentsLocales(componentLocales)

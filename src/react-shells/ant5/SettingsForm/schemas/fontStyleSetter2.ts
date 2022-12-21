@@ -1,6 +1,6 @@
 import { INodeSchema } from "core";
 
-export const FontStyleSetter: INodeSchema = {
+export const fontStyleSetter: INodeSchema = {
   componentName: "Fold",
   children: [
     {
