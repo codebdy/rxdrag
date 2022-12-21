@@ -46,7 +46,7 @@ export interface IFieldMeta {
   validateRule?: any
   defaultValue?: any
   //是否接管输入输出控制，normal 类型默认true，其它默认 false
-  controllValue?: boolean
+  withControl?: boolean
 }
 
 export interface INodeMeta {
