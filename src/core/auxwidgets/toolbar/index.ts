@@ -24,6 +24,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   private unNodeMounted: Unsubscribe
   private draggingNodesOff: Unsubscribe
   private draggingResourceOff: Unsubscribe
+  private refreshedFlag = false
   constructor(protected engine: IDesignerEngine,) {
     if (!engine.getShell().getContainer) {
       console.error("Html 5 driver rootElement is undefined")
@@ -53,11 +54,11 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
 
   private hideWhenDragging = (dragging: boolean) => {
     if (dragging) {
-      if(this.htmlElement){
+      if (this.htmlElement) {
         this.htmlElement.style.display = "none"
       }
     } else {
-      if(this.htmlElement){
+      if (this.htmlElement) {
         this.htmlElement.style.display = "flex"
       }
     }
@@ -148,8 +149,15 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     }, 200)
   }
 
+  //20毫秒之内的事件，只刷新一次
   private refresh = () => {
-    this.render()
+    this.refreshedFlag = true
+    setTimeout(() => {
+      if (this.refreshedFlag) {
+        this.render()
+        this.refreshedFlag = false
+      }
+    }, 20)
   }
 
   destory(): void {
