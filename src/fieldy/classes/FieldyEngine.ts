@@ -209,6 +209,10 @@ function makeStoreInstance(debugMode: boolean): Store<State> {
   return configureStore(
     {
       reducer: reduce,
+      middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+				immutableCheck: false,
+				serializableCheck: false,
+			}),
       devTools: debugMode &&
         reduxDevTools &&
         reduxDevTools({

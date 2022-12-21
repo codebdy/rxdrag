@@ -5,7 +5,6 @@ import { ComponentRender } from "core-react/ComponentRender";
 import { Tabs } from "./components/Tabs";
 import { TabPanel } from "./components/Tabs/TabPanel";
 import { INodeMeta } from "core";
-import { MetaForm } from "./MetaForm";
 import { Fieldy, VirtualForm } from "fieldy";
 import { extractFieldSchemas } from "./extractFieldSchemas";
 import { useDesignerEngine } from "core-react/hooks";
@@ -108,14 +107,24 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
               initialValue={currentNode?.meta}
               onValueChange={handleMetaChange}
             >
-              <MetaForm>
+              <Form
+                labelAlign="left"
+                colon={false}
+                labelCol={{ span: 8 }}
+                wrapperCol={{ span: 16 }}
+                autoComplete="off"
+                style={{
+                  flex: 1,
+                  height: '100%',
+                }}
+              >
                 {
                   designerSchema &&
                   <ComponentRender
                     root={designerSchema}
                   />
                 }
-              </MetaForm>
+              </Form>
             </VirtualForm>
           }
         </Box>
