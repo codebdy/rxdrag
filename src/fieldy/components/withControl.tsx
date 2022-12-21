@@ -1,19 +1,23 @@
-import { IFieldMeta } from "core"
-import { useComponentSchema } from "core-react/ComponentRender/hooks/useComponentSchema"
-import { usePreviewComponents } from "core-react/hooks/usePreviewComponents"
 import { useField } from "fieldy/hooks/useField"
+import { IFieldMeta } from "fieldy/interfaces"
+import { memo, useCallback } from "react"
 
 export function withControl(WrappedComponent: React.FC<any>, fieldMeta?: IFieldMeta): React.FC<any> {
-  if (!fieldMeta || (fieldMeta.type === "normal" && fieldMeta.withControl === undefined) || fieldMeta.withControl ) {
+  if (!fieldMeta || (fieldMeta.type === "normal" && fieldMeta.withControl === undefined) || fieldMeta.withControl) {
     return WrappedComponent
   }
 
-  return (props: any) => {
-    const { children } = props
-    const { fieldMeta } = useField()
-    const { components } = usePreviewComponents()
-    const componentSchema = useComponentSchema()
+  return memo((props: any) => {
+    const { value, setValue } = useField()
 
-    return <WrappedComponent {...props} />
-  }
+    const handleChange = useCallback((e?: { target?: { value?: any, [key: string]: any } }) => {
+      const propName = fieldMeta.valuePropName || "value"
+      let newValue = e?.target?.[propName]
+      if (newValue === undefined && !e?.target) {
+        newValue = e
+      }
+      setValue?.(newValue)
+    }, [setValue])
+    return <WrappedComponent value={value} onChange={handleChange} {...props} />
+  })
 }

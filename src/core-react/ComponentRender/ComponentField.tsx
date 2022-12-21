@@ -1,4 +1,4 @@
-import { IFieldMeta } from "core"
+import { IFieldMeta } from "fieldy"
 import { Field } from "fieldy/components/Field"
 import React, { memo } from "react"
 
