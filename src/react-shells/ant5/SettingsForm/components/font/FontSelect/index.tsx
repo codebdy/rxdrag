@@ -37,14 +37,12 @@ const FontFamilyOptions = createFontFamilyOptions([
   'Verdana=verdana,geneva,sans-serif',
 ])
 export const FontSelect = memo((props: {
-  title?: string,
+
 }) => {
-  const { title } = props
+
   return (
-    <FoldBase label={title}>
-      <Select
-        options={FontFamilyOptions}
-      />
-    </FoldBase>
+    <Select
+      options={FontFamilyOptions}
+    />
   )
 })

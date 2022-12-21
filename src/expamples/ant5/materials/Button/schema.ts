@@ -1,4 +1,5 @@
 import { INodeSchema } from "core";
+import { FontStyleSetter } from "react-shells/ant5/SettingsForm/schemas/FontStyleSetter";
 
 export const buttonSchema: INodeSchema = {
   componentName: "Tabs",
@@ -93,15 +94,7 @@ export const buttonSchema: INodeSchema = {
         title: "样式"
       },
       children:[
-        {
-          componentName: "FontStyleSetter",
-          props: {
-            label: "$font",
-          },
-          "x-field": {
-            name: "font",
-          },
-        },
+        FontStyleSetter
       ]
     }
   ]

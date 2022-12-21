@@ -15,12 +15,18 @@ import { useChangeNodeMeta } from "core-react/hooks/useChangeNodeMeta";
 import { SlotSwitch } from "./components/SlotSwitch";
 import { FormItem } from "./components/FormItem";
 import { useLanguage } from "core-react/hooks/useLanguage";
-import { FontStyleSetter } from "./components/FontStyleSetter";
 import { Fold, FoldBase, FoldExtra } from "./components/Fold";
 import { FoldExtraItem } from "./components/Fold/FoldExtraItem";
 import { FontSelect } from "./components/font/FontSelect";
 import { ColorInput } from "./components/ColorInput";
 import { SizeInput } from "./components/SizeInput";
+import { FontColorInput } from "./components/font/FontColorInput";
+import { FontDecorationSelect } from "./components/font/FontDecorationSelect";
+import { FontLineHeightInput } from "./components/font/FontLineHeightInput";
+import { FontStyleSelect } from "./components/font/FontStyleSelect";
+import { FontWeightInput } from "./components/font/FontWeightInput";
+import { TextAlignSelect } from "./components/font/TextAlignSelect";
+import { FontSizeInput } from "./components/font/FontSizeInput";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -75,16 +81,22 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         Select,
         Switch,
         SlotSwitch,
-        FontStyleSetter,
         Fold,
         FoldBase,
         FoldExtra,
         FoldExtraItem,
         Radio,
-        FontSelect,
         InputNumber,
         ColorInput,
-        SizeInput
+        SizeInput,
+        FontSelect,
+        FontColorInput,
+        FontDecorationSelect,
+        FontSizeInput,
+        FontLineHeightInput,
+        FontStyleSelect,
+        FontWeightInput,
+        TextAlignSelect
       }}
     >
 
@@ -97,7 +109,6 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
               initialValue={currentNode?.meta}
               onValueChange={handleMetaChange}
             >
-
               <MetaForm>
                 {
                   designerSchema &&
@@ -106,7 +117,6 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
                   />
                 }
               </MetaForm>
-
             </VirtualForm>
           }
         </Box>

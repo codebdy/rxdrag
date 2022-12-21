@@ -1,7 +1,4 @@
 import { INodeSchema } from "core";
-import { fontWeightIcon } from "../components/FontStyleSetter/icons";
-
-
 
 export const FontStyleSetter: INodeSchema = {
   componentName: "Fold",
@@ -14,8 +11,6 @@ export const FontStyleSetter: INodeSchema = {
       children: [
         {
           componentName: "FontSelect",
-          props: {
-          }
         }
       ]
     },
@@ -23,35 +18,43 @@ export const FontStyleSetter: INodeSchema = {
       componentName: "FoldExtra",
       children: [
         {
-          componentName: "FoldExtraItem",
+          componentName: "FontWeightInput",
           props: {
             title: "fontWeight",
-            icon: fontWeightIcon
           }
         },
         {
-          componentName: "FoldExtraItem",
+          componentName: "FontColorInput",
           props: {
             title: "fontColor",
             span: 12
           },
-          children: [
-            {
-              componentName: "ColorInput"
-            }
-          ]
         },
         {
-          componentName: "FoldExtraItem",
+          componentName: "FontSizeInput",
           props: {
             title: "fontSize",
             span: 12
           },
-          children: [
-            {
-              componentName: "SizeInput"
-            }
-          ]
+        },
+        {
+          componentName: "FontLineHeightInput",
+          props: {
+            title: "fontSize",
+            span: 12
+          },
+        },
+        {
+          componentName: "FontLineHeightInput",
+          props: {
+            title: "TextAlignSelect",
+          },
+        },
+        {
+          componentName: "FontLineHeightInput",
+          props: {
+            title: "FontDecorationSelect",
+          },
         },
       ]
     }
