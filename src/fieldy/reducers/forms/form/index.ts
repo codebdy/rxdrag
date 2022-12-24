@@ -105,6 +105,9 @@ function patFlatValues(values: FormValue | undefined, fieldSchemas: IFieldSchema
   let flatValues: FormValue = {}
   for (const fieldSchema of fieldSchemas) {
     const { fields, ...meta } = fieldSchema
+    if (!fieldSchema.name) {
+      continue
+    }
     if (Object.keys(fields).length > 0 && meta.type !== "object") {
       console.error("Not object type field has sub field")
     }

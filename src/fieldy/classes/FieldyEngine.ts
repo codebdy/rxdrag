@@ -246,6 +246,9 @@ function getFormFlatValues(formState: FormState | undefined) {
 function trasformFlatValuesToNormal(originalValue: any = {}, flatValues: FormValue, fieldSchemas: IFieldSchema[], basePath?: string) {
   const value: FormValue = originalValue
   for (const fieldSchema of fieldSchemas) {
+    if(!fieldSchema.name || fieldSchema.virtual){
+      continue
+    }
     const prefix = basePath ? basePath + "." : ""
     const fieldPath = prefix + fieldSchema.name
     if (fieldSchema.type === "object") {

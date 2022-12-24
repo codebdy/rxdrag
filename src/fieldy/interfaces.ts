@@ -21,18 +21,21 @@ export interface IFormProps {
 
 //跟core模块重复的定义，可能会在不同的项目中，暂时允许重复
 export interface IFieldMeta {
-  type?: "object" | "array" | "normal"
-  name: string
+  //类型：对象、数组、常规、片段（name 为空）
+  type?: "object" | "array" | "normal" | "fragment"
+  name?: string
   validateRule?: any
-  defaultValue?: any,
+  defaultValue?: any
   //target里面的属性值
-  valuePropName?: string,
+  valuePropName?: string
   //触发值变化
-  trigger?: string,
+  trigger?: string
   //校验规则
   rules?: { [key: string]: boolean | string }[]
   //是否接管输入输出控制，normal 类型默认true，其它默认 false
   withControl?: boolean
+  //是否虚拟字段，如果是，不输出最终值，不触发change
+  virtual?: boolean
 }
 
 export interface IFieldSchema extends IFieldMeta {
@@ -66,7 +69,7 @@ export type FormValuesChangeListener = (values: FormValue, flatValues: FormValue
 export type FieldState = {
   //自动生成id，用于组件key值
   id: string;
-  name: string;
+  name?: string;
   basePath?: string;
   path: string;
   initialized?: boolean;//字段是否已被初始化

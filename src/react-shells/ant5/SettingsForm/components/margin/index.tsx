@@ -15,7 +15,6 @@ export const MarginInput = memo((props: {
   value?: string,
   onChange?: (value?: string | null) => void
 }) => {
-
   return (
     <SizeInput exclude={["inherit", "auto"]} {...props} />
   )

@@ -16,7 +16,8 @@ export const martinStyleSetter: INodeSchema = {
         {
           componentName: "MarginInput",
           "x-field": {
-            name: "margin"
+            name: "margin",
+            virtual: true,
           }
         }
       ]
