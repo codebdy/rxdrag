@@ -27,7 +27,7 @@ export const TextAlignSelect = memo((props: {
     <FoldExtraItem span={span}
       title={title}
       icon={textAlignIcon}
-      onFirstLine={false}
+      marginTop = {8}
     >
       <Radio.Group value={value} onChange={handleChange} options={[
         { label: <IconView icon={textAlignLeftIcon} />, value: 'left' },

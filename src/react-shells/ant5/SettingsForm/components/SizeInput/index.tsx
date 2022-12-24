@@ -42,15 +42,15 @@ export const SizeInputItem = memo((props: {
   span?: number,
   value?: string,
   icon?: string,
-  onFirstLine?: boolean,
+  marginTop?: number,
   onChange?: (value?: string | null) => void
 }) => {
-  const { title, span = 12, value, icon, onFirstLine, onChange } = props
+  const { title, span = 12, value, icon, marginTop, onChange } = props
   return (
     <FoldExtraItem span={span}
       title={title}
       icon={icon}
-      onFirstLine={onFirstLine}
+      marginTop={marginTop}
     >
       <SizeInput exclude={["inherit", "auto"]} value={value} onChange={onChange} />
     </FoldExtraItem>

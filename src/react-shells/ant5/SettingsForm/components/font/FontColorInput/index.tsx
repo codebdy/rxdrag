@@ -15,7 +15,7 @@ export const FontColorInput = memo((props: {
     <FoldExtraItem span={span}
       title={title}
       icon={fontColorIcon}
-      onFirstLine={false}
+      marginTop = {8}
     >
       <ColorInput value={value} onChange={onChange} />
     </FoldExtraItem>
