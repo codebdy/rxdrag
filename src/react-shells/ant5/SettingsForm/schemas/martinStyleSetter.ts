@@ -27,10 +27,13 @@ export const martinStyleSetter: INodeSchema = {
               }else{
                 $self.setValue('')
               }
-            `
+            `,
+            // onChange:`
+            //   $self.setSiblingValue('marginTop', $self.value)
+            // `
           },
           "x-reaction": {
-            onFieldChange: {
+            onFieldValueChange: {
               field: ['$siblings.marginTop', '$siblings.marginRight', '$siblings.marginBottom', '$siblings.marginLeft'],
               jsCode: `
                 $self.setValue('')
@@ -49,7 +52,13 @@ export const martinStyleSetter: INodeSchema = {
             title: "$marginTop",
           },
           "x-field": {
-            name: "marginTop"
+            name: "marginTop",
+            onFieldValueChange: {
+              field: ['$siblings.margin'],
+              jsCode: `
+                $self.setValue($siblings.margin)
+              `
+            }
           }
         },
         {
@@ -58,7 +67,13 @@ export const martinStyleSetter: INodeSchema = {
             title: "$marginRight",
           },
           "x-field": {
-            name: "marginRight"
+            name: "marginRight",
+            onFieldValueChange: {
+              field: ['$siblings.margin'],
+              jsCode: `
+                $self.setValue($siblings.margin)
+              `
+            }
           }
         },
         {
@@ -67,7 +82,13 @@ export const martinStyleSetter: INodeSchema = {
             title: "$marginLeft",
           },
           "x-field": {
-            name: "marginLeft"
+            name: "marginLeft",
+            onFieldValueChange: {
+              field: ['$siblings.margin'],
+              jsCode: `
+                $self.setValue($siblings.margin)
+              `
+            }
           }
         },
         {
@@ -76,7 +97,13 @@ export const martinStyleSetter: INodeSchema = {
             title: "$marginBottom",
           },
           "x-field": {
-            name: "marginBottom"
+            name: "marginBottom",
+            onFieldValueChange: {
+              field: ['$siblings.margin'],
+              jsCode: `
+                $self.setValue($siblings.margin)
+              `
+            }
           }
         },
       ]
