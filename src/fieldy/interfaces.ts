@@ -19,6 +19,15 @@ export interface IFormProps {
   validateFirst?: boolean, //	是否只校验第一个非法规则	Boolean
 }
 
+export interface IReactionMeta {
+  onFormValueChange?: string,
+  //JS代码
+  onFieldValueChange?: {
+    field: string | string[],
+    jsCode: string
+  }//...
+}
+
 //跟core模块重复的定义，可能会在不同的项目中，暂时允许重复
 export interface IFieldMeta {
   //类型：对象、数组、常规、片段（name 为空）
@@ -36,6 +45,10 @@ export interface IFieldMeta {
   withControl?: boolean
   //是否虚拟字段，如果是，不输出最终值，不触发change
   virtual?: boolean
+  effects?: {
+    onInit?: string,
+    onChange?: string,
+  }
 }
 
 export interface IFieldSchema extends IFieldMeta {

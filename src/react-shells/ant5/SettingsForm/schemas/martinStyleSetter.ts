@@ -18,7 +18,25 @@ export const martinStyleSetter: INodeSchema = {
           "x-field": {
             name: "margin",
             virtual: true,
-          }
+            onInit: `
+              if($siblings.marginTop === siblings.marginRight && 
+                siblings.marginRight === $siblings.marginBottom &&
+                $siblings.marginBottom === $siblings.marginLeft
+                ){
+                  $self.setValue($siblings.marginTop)
+              }else{
+                $self.setValue('')
+              }
+            `
+          },
+          "x-reaction": {
+            onFieldChange: {
+              field: ['$siblings.marginTop', '$siblings.marginRight', '$siblings.marginBottom', '$siblings.marginLeft'],
+              jsCode: `
+                $self.setValue('')
+              `
+            }
+          },
         }
       ]
     },

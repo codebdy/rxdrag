@@ -36,9 +36,9 @@ export interface IDocumentAction<Payload extends DocumentActionPayload> extends 
 export type ViewType = "design" | "json" | "preview" | string
 export const DefulstViewType = "design"
 
-export interface IReactionMeta {
+// export interface IReactionMeta {
 
-}
+// }
 
 // export interface IFieldMeta {
 //   type?: "object" | "array" | "normal"
@@ -58,7 +58,7 @@ export interface INodeMeta {
     [key: string]: any,
   },
   "x-field"?: any,
-  "x-reaction"?: IReactionMeta,
+  "x-reaction"?: any,
   [key: string]: any,
 }
 
