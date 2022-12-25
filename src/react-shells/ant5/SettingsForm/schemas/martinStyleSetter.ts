@@ -33,8 +33,7 @@ export const martinStyleSetter: INodeSchema<IFieldMeta> = {
               onMultiFieldValueChange: {
                 fields: ['$siblings.marginTop', '$siblings.marginRight', '$siblings.marginBottom', '$siblings.marginLeft'],
                 jsCode: `
-                  console.log("哈哈33333")
-                  //$self.setValue('')
+                  $self.setValue('')
                 `
               }
             },

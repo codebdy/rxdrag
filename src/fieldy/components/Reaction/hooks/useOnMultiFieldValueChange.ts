@@ -15,7 +15,6 @@ export function useOnMultiFieldValueChange() {
   const newFunc = useNewFunction()
 
   const handleFieldsValueChange = useCallback((newValues: any[], prevousValues: any[]) => {
-    console.log("哈哈哈 handleFieldsValueChange", newValues)
     if (reactionParams?.jsCode && fieldy && formName) {
       newFunc(reactionParams.jsCode)
     }

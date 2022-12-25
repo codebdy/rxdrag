@@ -219,8 +219,9 @@ export class FieldyEngine implements IFieldyEngine {
       if (nextValue === previousValue) {
         return
       }
-      listener(nextValue, previousValue)
+      const prevValue = previousValue
       previousValue = nextValue
+      listener(nextValue, prevValue)
     }
 
     return this.store.subscribe(handleChange)
@@ -255,9 +256,10 @@ export class FieldyEngine implements IFieldyEngine {
       if (!changed) {
         return
       }
-      listener(nextValues, previousValues)
+      const prevValues = previousValues
       previousFormState = nextFormState
       previousValues = nextValues
+      listener(nextValues, prevValues)
     }
 
     return this.store.subscribe(handleChange)

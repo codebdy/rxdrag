@@ -9,7 +9,7 @@ export const Reaction = memo((
   }
 ) => {
   useOnMultiFieldValueChange();
-  //useOnFieldValueChange();
+  useOnFieldValueChange();
   useOnInit();
   
   return (

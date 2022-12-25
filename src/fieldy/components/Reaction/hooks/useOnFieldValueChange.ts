@@ -15,7 +15,6 @@ export function useOnFieldValueChange() {
   const newFunc = useNewFunction()
 
   const handleFieldValueChange = useCallback((newValue: any, prevousValue: any) => {
-    console.log("哈哈哈** handleFieldValueChange", newValue)
     if (reactionParams?.jsCode && fieldy && formName) {
       newFunc(reactionParams.jsCode)
     }
