@@ -1,6 +1,7 @@
 import { INodeSchema } from "core";
+import { IFieldMeta } from "fieldy";
 
-export const fontStyleSetter: INodeSchema = {
+export const fontStyleSetter: INodeSchema<IFieldMeta> = {
   componentName: "Fold",
   "x-field": {
     type: "object",

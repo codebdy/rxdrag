@@ -14,7 +14,6 @@ export const Field = memo((props: {
   const basePath = useFieldPath() || ""
   const fieldy = useFieldy()
   const formName = useFormName()
-
   const path = useMemo(() => {
     if (!fieldMeta.name) {
       return basePath

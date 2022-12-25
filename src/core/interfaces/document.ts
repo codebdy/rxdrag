@@ -52,12 +52,12 @@ export const DefulstViewType = "design"
 //   withControl?: boolean
 // }
 
-export interface INodeMeta {
+export interface INodeMeta<IField = any> {
   componentName: string,
   props?: {
     [key: string]: any,
   },
-  "x-field"?: any,
+  "x-field"?: IField,
   [key: string]: any,
 }
 
@@ -97,7 +97,7 @@ export interface NodeBehavior {
   isNoPlaceholder: () => boolean
 }
 
-export interface INodeSchema extends INodeMeta {
+export interface INodeSchema<IField = any> extends INodeMeta<IField> {
   //引用一段schema，ref赋值name，用于框架等分块编辑
   ref?: string,
   children?: INodeSchema[]

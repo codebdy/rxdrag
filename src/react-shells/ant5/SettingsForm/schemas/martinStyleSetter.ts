@@ -1,6 +1,7 @@
 import { INodeSchema } from "core";
+import { IFieldMeta } from "fieldy";
 
-export const martinStyleSetter: INodeSchema = {
+export const martinStyleSetter: INodeSchema<IFieldMeta> = {
   componentName: "Fold",
   "x-field": {
     type: "object",
@@ -18,22 +19,24 @@ export const martinStyleSetter: INodeSchema = {
           "x-field": {
             name: "margin",
             virtual: true,
-            onInit: `
-              if($siblings.marginTop === siblings.marginRight && 
-                siblings.marginRight === $siblings.marginBottom &&
-                $siblings.marginBottom === $siblings.marginLeft
-                ){
-                  $self.setValue($siblings.marginTop)
-              }else{
-                $self.setValue('')
-              }
-            `,
-            onFieldsValueChange: {
-              fields: ['$siblings.marginTop', '$siblings.marginRight', '$siblings.marginBottom', '$siblings.marginLeft'],
-              jsCode: `
+            effects: {
+              onInit: `
+                if($siblings.marginTop === siblings.marginRight && 
+                  siblings.marginRight === $siblings.marginBottom &&
+                  $siblings.marginBottom === $siblings.marginLeft
+                  ){
+                    $self.setValue($siblings.marginTop)
+                }else{
+                  $self.setValue('')
+                }
+              `,
+              onFieldsValueChange: {
+                fields: ['$siblings.marginTop', '$siblings.marginRight', '$siblings.marginBottom', '$siblings.marginLeft'],
+                jsCode: `
                 $self.setValue('')
               `
-            }
+              }
+            },
           },
         }
       ]
@@ -48,11 +51,13 @@ export const martinStyleSetter: INodeSchema = {
           },
           "x-field": {
             name: "marginTop",
-            onFieldsValueChange: {
-              fields: ['$siblings.margin'],
-              jsCode: `
-                $siblings.margin && $self.setValue($siblings.margin)
-              `
+            effects: {
+              onFieldsValueChange: {
+                fields: ['$siblings.margin'],
+                jsCode: `
+                  $siblings.margin && $self.setValue($siblings.margin)
+                `
+              }
             }
           }
         },
@@ -63,11 +68,13 @@ export const martinStyleSetter: INodeSchema = {
           },
           "x-field": {
             name: "marginRight",
-            onFieldsValueChange: {
-              fields: ['$siblings.margin'],
-              jsCode: `
+            effects: {
+              onFieldsValueChange: {
+                fields: ['$siblings.margin'],
+                jsCode: `
                 $siblings.margin && $self.setValue($siblings.margin)
               `
+              },
             }
           }
         },
@@ -78,11 +85,13 @@ export const martinStyleSetter: INodeSchema = {
           },
           "x-field": {
             name: "marginLeft",
-            onFieldsValueChange: {
-              fields: ['$siblings.margin'],
-              jsCode: `
-                $siblings.margin && $self.setValue($siblings.margin)
-              `
+            effects: {
+              onFieldsValueChange: {
+                fields: ['$siblings.margin'],
+                jsCode: `
+                  $siblings.margin && $self.setValue($siblings.margin)
+                `
+              }
             }
           }
         },
@@ -93,11 +102,13 @@ export const martinStyleSetter: INodeSchema = {
           },
           "x-field": {
             name: "marginBottom",
-            onFieldsValueChange: {
-              fields: ['$siblings.margin'],
-              jsCode: `
-                $siblings.margin && $self.setValue($siblings.margin)
-              `
+            effects: {
+              onFieldsValueChange: {
+                fields: ['$siblings.margin'],
+                jsCode: `
+                  $siblings.margin && $self.setValue($siblings.margin)
+                `
+              }
             }
           }
         },
