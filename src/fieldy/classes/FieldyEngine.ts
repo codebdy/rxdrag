@@ -1,7 +1,7 @@
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "core/utils/util-invariant";
 import { CREATE_FORM, FormActionPlayload, REMOVE_FORM, SetFieldValuePayload, SetFormFieldsPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES } from "fieldy/actions";
-import { FieldChangeListener, FieldState, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldSchema, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "fieldy/interfaces";
+import { FieldChangeListener, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldSchema, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "fieldy/interfaces";
 import { reduce, State } from "fieldy/reducers";
 
 var idSeed = 0
@@ -20,7 +20,6 @@ export class FieldyEngine implements IFieldyEngine {
   constructor(debugMode?: boolean,) {
     this.store = makeStoreInstance(debugMode || false)
   }
-
 
   createForm(options?: IFormProps): string {
     const name = makeId()
@@ -211,14 +210,30 @@ export class FieldyEngine implements IFieldyEngine {
     return this.store.subscribe(handleChange)
   }
 
-  subscribeToFieldsValueChange(formName: string, fields: string[], listener: FieldValuesChangeListener): Unsubscribe {
+  subscribeToFieldValueChange(formName: string, fieldPath: string, listener: FieldValueChangeListener): Unsubscribe {
+    invariant(typeof listener === 'function', 'listener must be a function.')
+    let previousValue: any = this.store.getState().forms[formName]?.fields?.[fieldPath]?.value
+
+    const handleChange = () => {
+      const nextValue = this.store.getState().forms[formName]?.fields?.[fieldPath]?.value
+      if (nextValue === previousValue) {
+        return
+      }
+      listener(nextValue, previousValue)
+      previousValue = nextValue
+    }
+
+    return this.store.subscribe(handleChange)
+  }
+
+  subscribeToMultiFieldValueChange(formName: string, fields: string[], listener: FieldValuesChangeListener): Unsubscribe {
     invariant(typeof listener === 'function', 'listener must be a function.')
     let previousValues: any[] = []
     let previousFormState = this.store.getState().forms[formName]
 
 
     for (const fieldName of fields) {
-      previousValues.push(previousFormState?.fields[fieldName])
+      previousValues.push(previousFormState?.fields[fieldName]?.value)
     }
 
     const handleChange = () => {
@@ -229,7 +244,7 @@ export class FieldyEngine implements IFieldyEngine {
       const nextValues = []
       let changed = false
       for (const fieldName of fields) {
-        nextValues.push(nextFormState?.fields[fieldName])
+        nextValues.push(nextFormState?.fields[fieldName]?.value)
       }
       for (let i = 0; i < nextValues.length; i++) {
         if (nextValues[i] !== previousValues[i]) {
@@ -240,9 +255,9 @@ export class FieldyEngine implements IFieldyEngine {
       if (!changed) {
         return
       }
+      listener(nextValues, previousValues)
       previousFormState = nextFormState
       previousValues = nextValues
-      listener(nextValues, previousValues)
     }
 
     return this.store.subscribe(handleChange)

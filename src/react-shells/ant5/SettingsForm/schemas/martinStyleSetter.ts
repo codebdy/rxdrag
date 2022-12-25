@@ -30,11 +30,12 @@ export const martinStyleSetter: INodeSchema<IFieldMeta> = {
                   $self.setValue('')
                 }
               `,
-              onFieldsValueChange: {
+              onMultiFieldValueChange: {
                 fields: ['$siblings.marginTop', '$siblings.marginRight', '$siblings.marginBottom', '$siblings.marginLeft'],
                 jsCode: `
-                $self.setValue('')
-              `
+                  console.log("哈哈33333")
+                  //$self.setValue('')
+                `
               }
             },
           },
@@ -52,8 +53,8 @@ export const martinStyleSetter: INodeSchema<IFieldMeta> = {
           "x-field": {
             name: "marginTop",
             effects: {
-              onFieldsValueChange: {
-                fields: ['$siblings.margin'],
+              onFieldValueChange: {
+                field: '$siblings.margin',
                 jsCode: `
                   $siblings.margin && $self.setValue($siblings.margin)
                 `
@@ -69,8 +70,8 @@ export const martinStyleSetter: INodeSchema<IFieldMeta> = {
           "x-field": {
             name: "marginRight",
             effects: {
-              onFieldsValueChange: {
-                fields: ['$siblings.margin'],
+              onFieldValueChange: {
+                field: '$siblings.margin',
                 jsCode: `
                 $siblings.margin && $self.setValue($siblings.margin)
               `
@@ -86,8 +87,8 @@ export const martinStyleSetter: INodeSchema<IFieldMeta> = {
           "x-field": {
             name: "marginLeft",
             effects: {
-              onFieldsValueChange: {
-                fields: ['$siblings.margin'],
+              onFieldValueChange: {
+                field: '$siblings.margin',
                 jsCode: `
                   $siblings.margin && $self.setValue($siblings.margin)
                 `
@@ -103,8 +104,8 @@ export const martinStyleSetter: INodeSchema<IFieldMeta> = {
           "x-field": {
             name: "marginBottom",
             effects: {
-              onFieldsValueChange: {
-                fields: ['$siblings.margin'],
+              onFieldValueChange: {
+                field: '$siblings.margin',
                 jsCode: `
                   $siblings.margin && $self.setValue($siblings.margin)
                 `

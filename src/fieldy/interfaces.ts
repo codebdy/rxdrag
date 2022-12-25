@@ -24,7 +24,11 @@ export interface IEffects {
   onChange?: string,
   onFormValueChange?: string,
   //JS代码
-  onFieldsValueChange?: {
+  onFieldValueChange?: {
+    field: string,
+    jsCode: string
+  },
+  onMultiFieldValueChange?: {
     fields: string[],
     jsCode: string
   }//...
@@ -75,6 +79,7 @@ export interface IFieldFeedback {
 }
 
 export type FieldChangeListener = (field: FieldState | undefined) => void
+export type FieldValueChangeListener = (value: any, previousValue: any) => void
 export type FieldValuesChangeListener = (values: any[], previousValues: any[]) => void
 export type FormChangeListener = (form: FormState) => void
 export type FormValuesChangeListener = (values: FormValue, flatValues: FormValue) => void
@@ -175,7 +180,8 @@ export interface IFieldyEngine {
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe
   subscribeToFormValuesChange(name: string, listener: FormValuesChangeListener): Unsubscribe
   subscribeToFieldChange(formName: string, path: string, listener: FieldChangeListener): Unsubscribe
-  subscribeToFieldsValueChange(formName: string, fieldPaths: string[], listener: FieldValuesChangeListener): Unsubscribe
+  subscribeToFieldValueChange(formName: string, fieldPath: string, listener: FieldValueChangeListener): Unsubscribe
+  subscribeToMultiFieldValueChange(formName: string, fieldPaths: string[], listener: FieldValuesChangeListener): Unsubscribe
   subscribeToFormInitialized(formName: string, listener: Listener): Unsubscribe
 
   dispatch(action: IAction<FormActionPlayload>): void
