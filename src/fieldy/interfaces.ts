@@ -169,6 +169,7 @@ export interface IFieldyEngine {
   //监测
   getForm(name: string): FormState | undefined
   getField(formName: string, fieldPath: string): FieldState | undefined
+  getFieldValue(formName: string, fieldPath: string): any
   getFormValues(formName: string): FormValue
   getFormFlatValues(formName: string): FormValue
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe

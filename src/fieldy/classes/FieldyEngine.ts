@@ -21,6 +21,7 @@ export class FieldyEngine implements IFieldyEngine {
     this.store = makeStoreInstance(debugMode || false)
   }
 
+
   createForm(options?: IFormProps): string {
     const name = makeId()
     this.dispatch({
@@ -175,6 +176,21 @@ export class FieldyEngine implements IFieldyEngine {
     return state.forms[formName]?.fields?.[fieldPath]
   }
 
+  getFieldValue(formName: string, fieldPath: string) {
+    const state = this.store.getState()
+    const fieldState = state.forms[formName]?.fields?.[fieldPath]
+    if (fieldState) {
+      if (fieldState.fieldSchema?.type === "normal") {
+        return fieldState.value
+      } else if (fieldState.fieldSchema?.type === "object") {
+        throw new Error("Not implement object type")
+      } else if (fieldState.fieldSchema?.type === "array") {
+        throw new Error("Not implement arrray type")
+      }
+    }
+    return undefined
+  }
+
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
@@ -216,7 +232,7 @@ export class FieldyEngine implements IFieldyEngine {
         nextValues.push(nextFormState?.fields[fieldName])
       }
       for (let i = 0; i < nextValues.length; i++) {
-        if(nextValues[i] !== previousValues[i]){
+        if (nextValues[i] !== previousValues[i]) {
           changed = true
           break
         }
