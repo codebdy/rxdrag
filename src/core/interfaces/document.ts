@@ -58,7 +58,6 @@ export interface INodeMeta {
     [key: string]: any,
   },
   "x-field"?: any,
-  "x-reaction"?: any,
   [key: string]: any,
 }
 

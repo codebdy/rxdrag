@@ -28,11 +28,6 @@ export const martinStyleSetter: INodeSchema = {
                 $self.setValue('')
               }
             `,
-            // onChange:`
-            //   $self.setSiblingValue('marginTop', $self.value)
-            // `
-          },
-          "x-reaction": {
             onFieldValueChange: {
               field: ['$siblings.marginTop', '$siblings.marginRight', '$siblings.marginBottom', '$siblings.marginLeft'],
               jsCode: `
@@ -56,7 +51,7 @@ export const martinStyleSetter: INodeSchema = {
             onFieldValueChange: {
               field: ['$siblings.margin'],
               jsCode: `
-                $self.setValue($siblings.margin)
+                $siblings.margin && $self.setValue($siblings.margin)
               `
             }
           }
@@ -71,7 +66,7 @@ export const martinStyleSetter: INodeSchema = {
             onFieldValueChange: {
               field: ['$siblings.margin'],
               jsCode: `
-                $self.setValue($siblings.margin)
+                $siblings.margin && $self.setValue($siblings.margin)
               `
             }
           }
@@ -86,7 +81,7 @@ export const martinStyleSetter: INodeSchema = {
             onFieldValueChange: {
               field: ['$siblings.margin'],
               jsCode: `
-                $self.setValue($siblings.margin)
+                $siblings.margin && $self.setValue($siblings.margin)
               `
             }
           }
@@ -101,7 +96,7 @@ export const martinStyleSetter: INodeSchema = {
             onFieldValueChange: {
               field: ['$siblings.margin'],
               jsCode: `
-                $self.setValue($siblings.margin)
+                $siblings.margin && $self.setValue($siblings.margin)
               `
             }
           }
