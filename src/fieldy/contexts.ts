@@ -10,7 +10,8 @@ export const FormNameContext = createContext<string | undefined>(undefined)
 export type ValueSetter<T> = (value?: T | ((previousValue?: T) => T)) => void
 
 export interface IFieldParams {
-  path?: string,
+  basePath?: string,//不包含名称
+  path?: string,//包含名称
   fieldMeta?: IFieldMeta,
   value?: any,
   setValue?: ValueSetter<any>,

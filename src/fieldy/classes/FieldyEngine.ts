@@ -1,7 +1,7 @@
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "core/utils/util-invariant";
 import { CREATE_FORM, FormActionPlayload, REMOVE_FORM, SetFieldValuePayload, SetFormFieldsPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES } from "fieldy/actions";
-import { FieldChangeListener, FieldState, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldSchema, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "fieldy/interfaces";
+import { FieldChangeListener, FieldState, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldSchema, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "fieldy/interfaces";
 import { reduce, State } from "fieldy/reducers";
 
 var idSeed = 0
@@ -195,6 +195,43 @@ export class FieldyEngine implements IFieldyEngine {
     return this.store.subscribe(handleChange)
   }
 
+  subscribeToFieldsValueChange(formName: string, fields: string[], listener: FieldValuesChangeListener): Unsubscribe {
+    invariant(typeof listener === 'function', 'listener must be a function.')
+    let previousValues: any[] = []
+    let previousFormState = this.store.getState().forms[formName]
+
+
+    for (const fieldName of fields) {
+      previousValues.push(previousFormState?.fields[fieldName])
+    }
+
+    const handleChange = () => {
+      const nextFormState = this.store.getState().forms[formName]
+      if (nextFormState === previousFormState) {
+        return
+      }
+      const nextValues = []
+      let changed = false
+      for (const fieldName of fields) {
+        nextValues.push(nextFormState?.fields[fieldName])
+      }
+      for (let i = 0; i < nextValues.length; i++) {
+        if(nextValues[i] !== previousValues[i]){
+          changed = true
+          break
+        }
+      }
+      if (!changed) {
+        return
+      }
+      previousFormState = nextFormState
+      previousValues = nextValues
+      listener(nextValues, previousValues)
+    }
+
+    return this.store.subscribe(handleChange)
+  }
+
   dispatch(action: IAction<FormActionPlayload>): void {
     this.store.dispatch(action)
   }
@@ -210,9 +247,9 @@ function makeStoreInstance(debugMode: boolean): Store<State> {
     {
       reducer: reduce,
       middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-				immutableCheck: false,
-				serializableCheck: false,
-			}),
+        immutableCheck: false,
+        serializableCheck: false,
+      }),
       devTools: debugMode &&
         reduxDevTools &&
         reduxDevTools({
@@ -246,7 +283,7 @@ function getFormFlatValues(formState: FormState | undefined) {
 function trasformFlatValuesToNormal(originalValue: any = {}, flatValues: FormValue, fieldSchemas: IFieldSchema[], basePath?: string) {
   const value: FormValue = originalValue
   for (const fieldSchema of fieldSchemas) {
-    if(!fieldSchema.name || fieldSchema.virtual){
+    if (!fieldSchema.name || fieldSchema.virtual) {
       continue
     }
     const prefix = basePath ? basePath + "." : ""

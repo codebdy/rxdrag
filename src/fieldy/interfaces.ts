@@ -19,6 +19,17 @@ export interface IFormProps {
   validateFirst?: boolean, //	是否只校验第一个非法规则	Boolean
 }
 
+export interface IEffects {
+  onInit?: string,
+  onChange?: string,
+  onFormValueChange?: string,
+  //JS代码
+  onFieldsValueChange?: {
+    fields: string[],
+    jsCode: string
+  }//...
+}
+
 //跟core模块重复的定义，可能会在不同的项目中，暂时允许重复
 export interface IFieldMeta {
   //类型：对象、数组、常规、片段（name 为空）
@@ -36,16 +47,7 @@ export interface IFieldMeta {
   withControl?: boolean
   //是否虚拟字段，如果是，不输出最终值，不触发change
   virtual?: boolean
-  effects?: {
-    onInit?: string,
-    onChange?: string,
-    onFormValueChange?: string,
-    //JS代码
-    onFieldValueChange?: {
-      field: string | string[],
-      jsCode: string
-    }//...
-  }
+  effects?: IEffects
 }
 
 export interface IFieldSchema extends IFieldMeta {
@@ -73,6 +75,7 @@ export interface IFieldFeedback {
 }
 
 export type FieldChangeListener = (field: FieldState | undefined) => void
+export type FieldValuesChangeListener = (values: any[], previousValues: any[]) => void
 export type FormChangeListener = (form: FormState) => void
 export type FormValuesChangeListener = (values: FormValue, flatValues: FormValue) => void
 
@@ -171,6 +174,7 @@ export interface IFieldyEngine {
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe
   subscribeToFormValuesChange(name: string, listener: FormValuesChangeListener): Unsubscribe
   subscribeToFieldChange(formName: string, path: string, listener: FieldChangeListener): Unsubscribe
+  subscribeToFieldsValueChange(formName: string, fieldPaths: string[], listener: FieldValuesChangeListener): Unsubscribe
   subscribeToFormInitialized(formName: string, listener: Listener): Unsubscribe
 
   dispatch(action: IAction<FormActionPlayload>): void

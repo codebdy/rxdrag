@@ -28,8 +28,8 @@ export const martinStyleSetter: INodeSchema = {
                 $self.setValue('')
               }
             `,
-            onFieldValueChange: {
-              field: ['$siblings.marginTop', '$siblings.marginRight', '$siblings.marginBottom', '$siblings.marginLeft'],
+            onFieldsValueChange: {
+              fields: ['$siblings.marginTop', '$siblings.marginRight', '$siblings.marginBottom', '$siblings.marginLeft'],
               jsCode: `
                 $self.setValue('')
               `
@@ -48,8 +48,8 @@ export const martinStyleSetter: INodeSchema = {
           },
           "x-field": {
             name: "marginTop",
-            onFieldValueChange: {
-              field: ['$siblings.margin'],
+            onFieldsValueChange: {
+              fields: ['$siblings.margin'],
               jsCode: `
                 $siblings.margin && $self.setValue($siblings.margin)
               `
@@ -63,8 +63,8 @@ export const martinStyleSetter: INodeSchema = {
           },
           "x-field": {
             name: "marginRight",
-            onFieldValueChange: {
-              field: ['$siblings.margin'],
+            onFieldsValueChange: {
+              fields: ['$siblings.margin'],
               jsCode: `
                 $siblings.margin && $self.setValue($siblings.margin)
               `
@@ -78,8 +78,8 @@ export const martinStyleSetter: INodeSchema = {
           },
           "x-field": {
             name: "marginLeft",
-            onFieldValueChange: {
-              field: ['$siblings.margin'],
+            onFieldsValueChange: {
+              fields: ['$siblings.margin'],
               jsCode: `
                 $siblings.margin && $self.setValue($siblings.margin)
               `
@@ -93,8 +93,8 @@ export const martinStyleSetter: INodeSchema = {
           },
           "x-field": {
             name: "marginBottom",
-            onFieldValueChange: {
-              field: ['$siblings.margin'],
+            onFieldsValueChange: {
+              fields: ['$siblings.margin'],
               jsCode: `
                 $siblings.margin && $self.setValue($siblings.margin)
               `

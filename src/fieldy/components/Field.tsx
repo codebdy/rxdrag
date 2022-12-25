@@ -4,6 +4,7 @@ import { useFieldPath } from "fieldy/hooks/useFieldPath"
 import { IFieldMeta } from "fieldy/interfaces"
 import { isFunction } from "lodash"
 import React, { memo, useCallback, useMemo } from "react"
+import { Reaction } from "./Reaction"
 
 export const Field = memo((props: {
   fieldMeta: IFieldMeta,
@@ -15,7 +16,7 @@ export const Field = memo((props: {
   const formName = useFormName()
 
   const path = useMemo(() => {
-    if(!fieldMeta.name){
+    if (!fieldMeta.name) {
       return basePath
     }
     if (basePath) {
@@ -27,7 +28,7 @@ export const Field = memo((props: {
   const value = useFieldState(path)?.value
   const setValue = useCallback((val?: ValueSetter<any>) => {
     let newValue = val
-    if(isFunction(val)){
+    if (isFunction(val)) {
       newValue = val(value)
     }
     if (formName) {
@@ -39,17 +40,24 @@ export const Field = memo((props: {
 
   const params = useMemo(() => {
     return {
+      basePath,
       value,
       fieldMeta,
       path,
       setValue
     }
-  }, [fieldMeta, path, setValue, value])
+  }, [basePath, fieldMeta, path, setValue, value])
 
   return (
     <FieldContext.Provider value={params}>
       {
-        children
+        fieldMeta.effects
+          ? <Reaction>
+            {
+              children
+            }
+          </Reaction>
+          : children
       }
     </FieldContext.Provider>
   )
