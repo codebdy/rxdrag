@@ -21,8 +21,8 @@ export const martinStyleSetter: INodeSchema<IFieldMeta> = {
             virtual: true,
             effects: {
               onInit: `
-                if($siblings.marginTop === siblings.marginRight && 
-                  siblings.marginRight === $siblings.marginBottom &&
+                if($siblings.marginTop === $siblings.marginRight && 
+                  $siblings.marginRight === $siblings.marginBottom &&
                   $siblings.marginBottom === $siblings.marginLeft
                   ){
                     $self.setValue($siblings.marginTop)
@@ -33,7 +33,14 @@ export const martinStyleSetter: INodeSchema<IFieldMeta> = {
               onMultiFieldValueChange: {
                 fields: ['$siblings.marginTop', '$siblings.marginRight', '$siblings.marginBottom', '$siblings.marginLeft'],
                 jsCode: `
-                  $self.setValue('')
+                  if($siblings.marginTop === $siblings.marginRight && 
+                    $siblings.marginRight === $siblings.marginBottom &&
+                    $siblings.marginBottom === $siblings.marginLeft
+                    ){
+                      $self.setValue($siblings.marginTop)
+                  }else{
+                    $self.setValue('')
+                  }
                 `
               }
             },
