@@ -8,26 +8,21 @@ export class Siblings {
   constructor(private fieldParams: IFieldParams, private fieldy: IFieldyEngine, private formName: string) {
     const { basePath, path } = fieldParams
     const form = fieldy.getForm(formName)
-    if(!path){
-      return 
+    if (!path) {
+      return
     }
     for (const key of Object.keys(form?.fields || {})) {
       //同在根节点
-      if(!basePath){
-        if(key.indexOf(".") === -1){
+      if (!basePath) {
+        if (key.indexOf(".") === -1) {
           this[key] = fieldy.getField(formName, key)
         }
-      }else{
-        if(key.length < basePath.length){
-          throw new Error("field path length less than base path length")
-        }
+      } else if(key.startsWith(basePath)){
         const siblingKey = key.substring(basePath.length)
-        if(siblingKey.indexOf(".") === -1){
+        if (siblingKey && siblingKey.indexOf(".") === -1) {
           this[siblingKey] = fieldy.getField(formName, key)
         }
       }
-
-      //|| key.startsWith(basePath)
     }
   }
 }
