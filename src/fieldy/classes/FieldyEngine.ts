@@ -148,6 +148,10 @@ export class FieldyEngine implements IFieldyEngine {
     )
   }
 
+  setFieldFragmentValue(formName: string, fieldPath: string, value: any): void {
+    throw new Error("Method not implemented.");
+  }
+
   setSubFields(formName: string, fieldPath: string, subFieldSchemas: IFieldSchema[]): void {
     throw new Error("Method not implemented.");
   }

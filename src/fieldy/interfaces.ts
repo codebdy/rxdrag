@@ -170,6 +170,7 @@ export interface IFieldyEngine {
 
   //field动作
   setFieldValue(formName: string, fieldPath: string, value: any): void
+  setFieldFragmentValue(formName: string, fieldPath: string, value: any): void
 
   //监测
   getForm(name: string): FormState | undefined

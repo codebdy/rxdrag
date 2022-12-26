@@ -1,9 +1,10 @@
 import { ValueSetter } from "fieldy/contexts"
 import { useFieldy, useFormName } from "fieldy/hooks"
+import { IFieldMeta } from "fieldy/interfaces"
 import { isFunction } from "lodash"
 import { useCallback } from "react"
 
-export function useSetValue(value: any, path: string) {
+export function useSetValue(value: any, path: string, fieldMeta: IFieldMeta) {
   const fieldy = useFieldy()
   const formName = useFormName()
   const setValue = useCallback((val?: ValueSetter<any>) => {
@@ -12,11 +13,15 @@ export function useSetValue(value: any, path: string) {
       newValue = val(value)
     }
     if (formName) {
-      fieldy?.setFieldValue(formName, path, newValue)
+      if(fieldMeta.type === "fragment"){
+        fieldy?.setFieldFragmentValue(formName, path, newValue)
+      }else{
+        fieldy?.setFieldValue(formName, path, newValue)
+      }
     } else {
       console.error("Can not get form name")
     }
-  }, [fieldy, formName, path, value])
+  }, [fieldMeta.type, fieldy, formName, path, value])
 
   return setValue
 }
