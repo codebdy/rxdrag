@@ -179,12 +179,24 @@ export class FieldyEngine implements IFieldyEngine {
     const state = this.store.getState()
     const fieldState = state.forms[formName]?.fields?.[fieldPath]
     if (fieldState) {
-      if (fieldState.fieldSchema?.type === "normal") {
-        return fieldState.value
-      } else if (fieldState.fieldSchema?.type === "object") {
-        throw new Error("Not implement object type")
+      if (fieldState.fieldSchema?.type === "object") {
+        const value = { ...fieldState.value }
+        const fields = this.getSubFields(formName, fieldPath)
+        for(const key of fields){
+          const subValue = this.getFieldValue(formName, key)
+          if(subValue){
+            const subName = key.substring(fieldPath.length + 1)
+            value[subName] = subValue
+          }
+        }
+        if(Object.keys(value).length){
+          return value
+        }
+        return undefined
       } else if (fieldState.fieldSchema?.type === "array") {
         throw new Error("Not implement arrray type")
+      } else {//undefined or "normal"
+        return fieldState.value
       }
     }
     return undefined
@@ -267,6 +279,20 @@ export class FieldyEngine implements IFieldyEngine {
 
   dispatch(action: IAction<FormActionPlayload>): void {
     this.store.dispatch(action)
+  }
+
+  private getSubFields(formName: string, path: string) {
+    const fieldPaths: string[] = []
+    const fields = this.store.getState().forms[formName]?.fields
+    for (const key of Object.keys(fields || {})) {
+      if(key.startsWith(path)){
+        const name = key.substring(path.length + 1)
+        if(name && name.indexOf(".") === -1){
+          fieldPaths.push(key)
+        }
+      }
+    }
+    return fieldPaths
   }
 }
 

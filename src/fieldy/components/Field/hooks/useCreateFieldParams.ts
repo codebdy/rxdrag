@@ -1,13 +1,11 @@
-import { ValueSetter } from "fieldy/contexts"
-import { useFieldPath, useFieldState, useFieldy, useFormName } from "fieldy/hooks"
+import { useFieldPath } from "fieldy/hooks"
 import { IFieldMeta } from "fieldy/interfaces"
-import { isFunction } from "lodash"
-import { useCallback, useMemo } from "react"
+import { useMemo } from "react"
+import { useSetValue } from "./useSetValue"
+import { useValue } from "./useValue"
 
-export function useCreateFieldParams(fieldMeta: IFieldMeta){
+export function useCreateFieldParams(fieldMeta: IFieldMeta) {
   const basePath = useFieldPath() || ""
-  const fieldy = useFieldy()
-  const formName = useFormName()
   const path = useMemo(() => {
     if (!fieldMeta.name) {
       return basePath
@@ -18,19 +16,8 @@ export function useCreateFieldParams(fieldMeta: IFieldMeta){
       return fieldMeta.name
     }
   }, [basePath, fieldMeta.name])
-  const value = useFieldState(path)?.value
-  const setValue = useCallback((val?: ValueSetter<any>) => {
-    let newValue = val
-    if (isFunction(val)) {
-      newValue = val(value)
-    }
-    if (formName) {
-      fieldy?.setFieldValue(formName, path, newValue)
-    } else {
-      console.error("Can not get form name")
-    }
-  }, [fieldy, formName, path, value])
-
+  const value = useValue(path)
+  const setValue = useSetValue(value, path)
   const params = useMemo(() => {
     return {
       basePath,
