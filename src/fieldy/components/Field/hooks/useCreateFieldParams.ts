@@ -1,16 +1,10 @@
-import { FieldContext, ValueSetter } from "fieldy/contexts"
-import { useFieldState, useFieldy, useFormName } from "fieldy/hooks"
-import { useFieldPath } from "fieldy/hooks/useFieldPath"
+import { ValueSetter } from "fieldy/contexts"
+import { useFieldPath, useFieldState, useFieldy, useFormName } from "fieldy/hooks"
 import { IFieldMeta } from "fieldy/interfaces"
 import { isFunction } from "lodash"
-import React, { memo, useCallback, useMemo } from "react"
-import { Reaction } from "./Reaction"
+import { useCallback, useMemo } from "react"
 
-export const Field = memo((props: {
-  fieldMeta: IFieldMeta,
-  children?: React.ReactNode
-}) => {
-  const { fieldMeta, children } = props
+export function useCreateFieldParams(fieldMeta: IFieldMeta){
   const basePath = useFieldPath() || ""
   const fieldy = useFieldy()
   const formName = useFormName()
@@ -47,17 +41,5 @@ export const Field = memo((props: {
     }
   }, [basePath, fieldMeta, path, setValue, value])
 
-  return (
-    <FieldContext.Provider value={params}>
-      {
-        fieldMeta.effects
-          ? <Reaction>
-            {
-              children
-            }
-          </Reaction>
-          : children
-      }
-    </FieldContext.Provider>
-  )
-})
+  return params
+}
