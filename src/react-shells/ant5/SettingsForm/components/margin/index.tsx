@@ -29,6 +29,7 @@ export const MarginStyleSetter = memo((props: {
   onChange?: (value?: IMargin) => void
 }) => {
   const { title, topTitle, rightTitle, leftTitle, bottomTitle, value, onChange } = props;
+  console.log("哈哈", value)
   return (
     <Fold>
       <FoldBase title={title}>
