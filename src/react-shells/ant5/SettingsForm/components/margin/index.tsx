@@ -34,6 +34,18 @@ export const MarginStyleSetter = memo((props: {
     onChange?.({ marginTop: value || undefined })
   }, [onChange])
 
+  const handleRightChange = useCallback((value?: string | null) => {
+    onChange?.({ marginRight: value || undefined })
+  }, [onChange])
+
+  const handleBottomChange = useCallback((value?: string | null) => {
+    onChange?.({ marginBottom: value || undefined })
+  }, [onChange])
+
+  const handleLeftChange = useCallback((value?: string | null) => {
+    onChange?.({ marginLeft: value || undefined })
+  }, [onChange])
+
   const baseValue = useMemo(() => {
     if (value?.marginBottom === value?.marginLeft
       && value?.marginLeft === value?.marginRight &&
@@ -42,7 +54,6 @@ export const MarginStyleSetter = memo((props: {
     }
     return ""
   }, [value?.marginBottom, value?.marginLeft, value?.marginRight, value?.marginTop])
-
   const handleBaseChange = useCallback((value?: string | null) => {
     onChange?.({
       marginTop: value || undefined,
@@ -66,9 +77,18 @@ export const MarginStyleSetter = memo((props: {
         <MarginRightInput
           title={rightTitle}
           value={value?.marginRight}
+          onChange={handleRightChange}
         />
-        <MarginLeftInput title={leftTitle} value={value?.marginLeft} />
-        <MarginBottomInput title={bottomTitle} value={value?.marginBottom} />
+        <MarginLeftInput
+          title={leftTitle}
+          value={value?.marginLeft}
+          onChange={handleLeftChange}
+        />
+        <MarginBottomInput
+          title={bottomTitle}
+          value={value?.marginBottom}
+          onChange={handleBottomChange}
+        />
       </FoldExtra>
     </Fold>
   )

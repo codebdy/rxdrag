@@ -1,4 +1,4 @@
-import { FieldActionPayload, SetFormFieldsPayload, SetFormInitializedFlagPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIALZED_FLAG, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES } from "fieldy/actions";
+import { FieldActionPayload, SetFormFieldsPayload, SetFormInitializedFlagPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIALZED_FLAG, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES } from "fieldy/actions";
 import { FieldsState, FormState, FormValue, IAction, IFieldSchema } from "fieldy/interfaces";
 import { fieldReduce } from "./field";
 var idSeed = 1
@@ -39,6 +39,10 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
         ...stateWithFlateValues,
         originalValue: (action.payload as SetFormValuesPayload).values,
       }
+    }
+
+    case SET_MULTI_FIELD_VALUES: {
+      return setFlatValues(state, (action.payload as SetFormValuesPayload).values)
     }
 
     case SET_FORM_INITIALZED_FLAG: {
@@ -85,7 +89,7 @@ function setInitialFlatValues(state: FormState, flatValues: any = {}) {
 function setFlatValues(state: FormState, flatValues: any = {}) {
   const newFields = {} as FieldsState
 
-  for (const key of Object.keys(state?.fields || {})) {
+  for (const key of Object.keys(flatValues || {})) {
     const fieldState = state?.fields?.[key]
     if (fieldState) {
       newFields[key] = {
@@ -100,6 +104,7 @@ function setFlatValues(state: FormState, flatValues: any = {}) {
     modified: true,
   }
 }
+
 function patFlatValues(values: FormValue | undefined, fieldSchemas: IFieldSchema[], parentFieldPath?: string) {
   const prefix = parentFieldPath ? parentFieldPath + "." : ""
   let flatValues: FormValue = {}
@@ -126,10 +131,10 @@ function patFlatValues(values: FormValue | undefined, fieldSchemas: IFieldSchema
 function patFlatFieldSchema(fieldSchemas: IFieldSchema[], parentFieldPath?: string) {
   const prefix = parentFieldPath ? parentFieldPath + "." : ""
   let flatFields: FieldsState = {}
-  for (const fieldSchema of fieldSchemas||[]) {
+  for (const fieldSchema of fieldSchemas || []) {
     const { fields, ...meta } = fieldSchema
     if (fieldSchema.type === "fragment") {
-      const subFields = patFlatFieldSchema(fieldSchema.fragmentFields||[], parentFieldPath)
+      const subFields = patFlatFieldSchema(fieldSchema.fragmentFields || [], parentFieldPath)
       flatFields = { ...flatFields, ...subFields }
       continue
     }

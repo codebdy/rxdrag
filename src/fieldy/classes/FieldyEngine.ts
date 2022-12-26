@@ -1,6 +1,6 @@
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "core/utils/util-invariant";
-import { CREATE_FORM, FormActionPlayload, REMOVE_FORM, SetFieldValuePayload, SetFormFieldsPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES } from "fieldy/actions";
+import { CREATE_FORM, FormActionPlayload, REMOVE_FORM, SetFieldValuePayload, SetFormFieldsPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES } from "fieldy/actions";
 import { FieldChangeListener, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldSchema, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "fieldy/interfaces";
 import { reduce, State } from "fieldy/reducers";
 
@@ -135,25 +135,43 @@ export class FieldyEngine implements IFieldyEngine {
   }
 
   setFieldValue(formName: string, fieldPath: string, value: any): void {
-    const payload: SetFieldValuePayload = {
-      formName,
-      path: fieldPath,
-      value
-    }
-    this.dispatch(
-      {
-        type: SET_FIELD_VALUE,
-        payload: payload,
-      }
-    )
-
     if (this.getField(formName, fieldPath)?.fieldSchema.type === "object") {
-      const fieldPaths = this.getSubFields(formName, fieldPath)
-      for (const key of fieldPaths) {
-        const subName = key.substring(fieldPath.length + 1)
-        if (subName) {
-          this.setFieldValue(formName, key, value?.[subName])
+      const values: any = {}
+      this.getValue(formName, fieldPath, value, values)
+      const payload:SetFormValuesPayload = {
+        formName,
+        values
+      }
+
+      this.dispatch(
+        {
+          type: SET_MULTI_FIELD_VALUES,
+          payload: payload,
         }
+      )
+    } else {
+      const payload: SetFieldValuePayload = {
+        formName,
+        path: fieldPath,
+        value
+      }
+      this.dispatch(
+        {
+          type: SET_FIELD_VALUE,
+          payload: payload,
+        }
+      )
+    }
+  }
+
+  //递归找出改变的字段
+  private getValue(formName: string, fieldPath: string, value: any, allValues: any) {
+    allValues[fieldPath] = value
+    const fieldPaths = this.getSubFields(formName, fieldPath)
+    for (const key of fieldPaths) {
+      const subName = key.substring(fieldPath.length + 1)
+      if (subName) {
+        this.getValue(formName, key, value?.[subName], allValues)
       }
     }
   }
@@ -361,13 +379,13 @@ function trasformFlatValuesToNormal(originalValue: any = {}, flatValues: FormVal
 
   for (const fieldSchema of fieldSchemas) {
     if (fieldSchema.type === "fragment") {
-      for(const fragField of fieldSchema.fragmentFields||[]){
-        if(fragField.name){
+      for (const fragField of fieldSchema.fragmentFields || []) {
+        if (fragField.name) {
           const fieldPath = prefix + fragField.name
           value[fragField.name] = flatValues[fieldPath]
-        }else{
+        } else {
           console.error("No subfield name on fragment")
-        }        
+        }
       }
       continue
     }
