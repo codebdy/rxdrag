@@ -9,6 +9,20 @@ export const martinStyleSetter: INodeSchema<IFieldMeta> = {
       "x-field": {
         type: "fragment",
         withControl: true,
+        fragmentFields: [
+          {
+            name: "marginTop",
+          },
+          {
+            name: "marginRight",
+          },
+          {
+            name: "marginBottom",
+          },
+          {
+            name: "marginLeft",
+          },
+        ]
       },
       props: {
         title: "$margin",

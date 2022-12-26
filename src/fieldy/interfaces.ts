@@ -52,10 +52,12 @@ export interface IFieldMeta {
   //是否虚拟字段，如果是，不输出最终值，不触发change
   virtual?: boolean
   effects?: IEffects
+  fragmentFields?: IFieldMeta[]
 }
 
 export interface IFieldSchema extends IFieldMeta {
   fields: IFieldSchema[]
+  fragmentFields?: IFieldSchema[]
 }
 
 export interface IAction<Payload> extends Action<string> {

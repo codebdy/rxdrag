@@ -126,9 +126,14 @@ function patFlatValues(values: FormValue | undefined, fieldSchemas: IFieldSchema
 function patFlatFieldSchema(fieldSchemas: IFieldSchema[], parentFieldPath?: string) {
   const prefix = parentFieldPath ? parentFieldPath + "." : ""
   let flatFields: FieldsState = {}
-  for (const fieldSchema of fieldSchemas) {
+  for (const fieldSchema of fieldSchemas||[]) {
     const { fields, ...meta } = fieldSchema
-    if (Object.keys(fields).length > 0 && meta.type !== "object") {
+    if (fieldSchema.type === "fragment") {
+      const subFields = patFlatFieldSchema(fieldSchema.fragmentFields||[], parentFieldPath)
+      flatFields = { ...flatFields, ...subFields }
+      continue
+    }
+    if (fields && Object.keys(fields).length > 0 && meta.type !== "object") {
       console.error("Not object type field has sub field")
     }
     const path = prefix + fieldSchema.name

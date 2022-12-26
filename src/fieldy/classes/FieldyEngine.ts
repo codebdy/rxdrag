@@ -146,10 +146,21 @@ export class FieldyEngine implements IFieldyEngine {
         payload: payload,
       }
     )
+    //console.log("哈哈哈 setFieldValue", fieldPath, value, this.getSubFields(formName, fieldPath))
+    if (this.getField(formName, fieldPath)?.fieldSchema.type === "object") {
+      const fieldPaths = this.getSubFields(formName, fieldPath)
+      for (const key of fieldPaths) {
+        const subName = key.substring(fieldPath.length + 1)
+        if (subName) {
+          this.setFieldValue(formName, key, value?.[subName])
+        }
+      }
+    }
   }
 
   setFieldFragmentValue(formName: string, fieldPath: string, value: any): void {
-    throw new Error("Method not implemented.");
+    const oldValue = this.getFieldValue(formName, fieldPath)
+    this.setFieldValue(formName, fieldPath, oldValue ? { ...oldValue, ...value } : value)
   }
 
   setSubFields(formName: string, fieldPath: string, subFieldSchemas: IFieldSchema[]): void {
@@ -186,14 +197,14 @@ export class FieldyEngine implements IFieldyEngine {
       if (fieldState.fieldSchema?.type === "object") {
         const value = { ...fieldState.value }
         const fields = this.getSubFields(formName, fieldPath)
-        for(const key of fields){
+        for (const key of fields) {
           const subValue = this.getFieldValue(formName, key)
-          if(subValue){
+          if (subValue) {
             const subName = key.substring(fieldPath.length + 1)
             value[subName] = subValue
           }
         }
-        if(Object.keys(value).length){
+        if (Object.keys(value).length) {
           return value
         }
         return undefined
@@ -289,9 +300,9 @@ export class FieldyEngine implements IFieldyEngine {
     const fieldPaths: string[] = []
     const fields = this.store.getState().forms[formName]?.fields
     for (const key of Object.keys(fields || {})) {
-      if(key.startsWith(path)){
+      if (key.startsWith(path)) {
         const name = key.substring(path.length + 1)
-        if(name && name.indexOf(".") === -1){
+        if (name && name.indexOf(".") === -1) {
           fieldPaths.push(key)
         }
       }
@@ -328,7 +339,8 @@ function getFormNormalValues(formState: FormState | undefined) {
     return {}
   }
   const flatValues = getFormFlatValues(formState)
-  return trasformFlatValuesToNormal(JSON.parse(JSON.stringify(formState.originalValue || {})), flatValues, formState.fieldSchemas)
+  const normalValue = trasformFlatValuesToNormal(JSON.parse(JSON.stringify(formState.originalValue || {})), flatValues, formState.fieldSchemas)
+  return normalValue
 }
 
 function getFormFlatValues(formState: FormState | undefined) {
@@ -345,11 +357,25 @@ function getFormFlatValues(formState: FormState | undefined) {
 
 function trasformFlatValuesToNormal(originalValue: any = {}, flatValues: FormValue, fieldSchemas: IFieldSchema[], basePath?: string) {
   const value: FormValue = originalValue
+  const prefix = basePath ? basePath + "." : ""
+
   for (const fieldSchema of fieldSchemas) {
+    if (fieldSchema.type === "fragment") {
+      for(const fragField of fieldSchema.fragmentFields||[]){
+        if(fragField.name){
+          const fieldPath = prefix + fragField.name
+          value[fragField.name] = flatValues[fieldPath]
+        }else{
+          console.error("No subfield name on fragment")
+        }        
+      }
+      continue
+    }
+
     if (!fieldSchema.name || fieldSchema.virtual) {
       continue
     }
-    const prefix = basePath ? basePath + "." : ""
+
     const fieldPath = prefix + fieldSchema.name
     if (fieldSchema.type === "object") {
       value[fieldSchema.name] = trasformFlatValuesToNormal(value[fieldSchema.name], flatValues, fieldSchema.fields, fieldPath)

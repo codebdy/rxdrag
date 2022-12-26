@@ -16,7 +16,7 @@ export function useCreateFieldParams(fieldMeta: IFieldMeta) {
       return fieldMeta.name
     }
   }, [basePath, fieldMeta.name])
-  const value = useValue(path)
+  const value = useValue(path, fieldMeta)
   const setValue = useSetValue(value, path, fieldMeta)
   const params = useMemo(() => {
     return {
