@@ -15,6 +15,12 @@ export const settingLocales = {
       marginRight: "右边距",
       marginBottom: "下边距",
       marginLeft: "左边距",
+
+      padding: "内边距",
+      paddingTop: "上边距",
+      paddingRight: "右边距",
+      paddingBottom: "下边距",
+      paddingLeft: "左边距",
     }
   },
   'en-US': {
@@ -32,7 +38,13 @@ export const settingLocales = {
       marginTop: "Margin top",
       marginRight: "Margin right",
       marginBottom: "Margin bottom",
-      marginLeft: "Margin Left"
+      marginLeft: "Margin Left",
+
+      padding: "Padding",
+      paddingTop: "Padding Top",
+      paddingRight: "Padding Right",
+      paddingBottom: "Padding Bottom",
+      paddingLeft: "Padding Left",
     }
   }
 }

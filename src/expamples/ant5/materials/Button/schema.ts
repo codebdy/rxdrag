@@ -1,6 +1,7 @@
 import { INodeSchema } from "core";
 import { fontStyleSetter } from "react-shells/ant5/SettingsForm/schemas/fontStyleSetter";
 import { martinStyleSetter } from "react-shells/ant5/SettingsForm/schemas/martinStyleSetter";
+import { paddingStyleSetter } from "react-shells/ant5/SettingsForm/schemas/paddingStyleSetter";
 
 export const buttonSchema: INodeSchema = {
   componentName: "Tabs",
@@ -101,7 +102,8 @@ export const buttonSchema: INodeSchema = {
       },
       children: [
         fontStyleSetter,
-        martinStyleSetter
+        martinStyleSetter,
+        paddingStyleSetter
       ]
     }
   ]

@@ -26,6 +26,7 @@ import { FontWeightInput } from "./components/font/FontWeightInput";
 import { TextAlignSelect } from "./components/font/TextAlignSelect";
 import { FontSizeInput } from "./components/font/FontSizeInput";
 import { MarginStyleSetter } from "./components/margin";
+import { PaddingStyleSetter } from "./components/padding";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -97,6 +98,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         FontWeightInput,
         TextAlignSelect,
         MarginStyleSetter,
+        PaddingStyleSetter,
       }}
     >
 
