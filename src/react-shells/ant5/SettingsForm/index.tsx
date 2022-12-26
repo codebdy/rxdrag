@@ -25,7 +25,7 @@ import { FontStyleSelect } from "./components/font/FontStyleSelect";
 import { FontWeightInput } from "./components/font/FontWeightInput";
 import { TextAlignSelect } from "./components/font/TextAlignSelect";
 import { FontSizeInput } from "./components/font/FontSizeInput";
-import { MarginBottomInput, MarginInput, MarginLeftInput, MarginRightInput, MarginTopInput } from "./components/margin";
+import { MarginStyleSetter } from "./components/margin";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -96,11 +96,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         FontStyleSelect,
         FontWeightInput,
         TextAlignSelect,
-        MarginInput,
-        MarginTopInput,
-        MarginRightInput,
-        MarginBottomInput,
-        MarginLeftInput,
+        MarginStyleSetter,
       }}
     >
 

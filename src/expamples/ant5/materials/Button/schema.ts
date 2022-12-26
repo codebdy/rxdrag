@@ -95,6 +95,10 @@ export const buttonSchema: INodeSchema = {
       props: {
         title: "样式"
       },
+      "x-field": {
+        type: "object",
+        name: "style"
+      },
       children: [
         fontStyleSetter,
         martinStyleSetter

@@ -3,15 +3,11 @@ import { IFieldMeta } from "fieldy";
 
 export const fontStyleSetter: INodeSchema<IFieldMeta> = {
   componentName: "Fold",
-  "x-field": {
-    type: "object",
-    name: "style"
-  },
   children: [
     {
       componentName: "FoldBase",
       props: {
-        label: "$font",
+        title: "$font",
       },
       children: [
         {
