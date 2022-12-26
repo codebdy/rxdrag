@@ -146,7 +146,7 @@ export class FieldyEngine implements IFieldyEngine {
         payload: payload,
       }
     )
-    //console.log("哈哈哈 setFieldValue", fieldPath, value, this.getSubFields(formName, fieldPath))
+
     if (this.getField(formName, fieldPath)?.fieldSchema.type === "object") {
       const fieldPaths = this.getSubFields(formName, fieldPath)
       for (const key of fieldPaths) {

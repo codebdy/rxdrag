@@ -1,4 +1,4 @@
-import { memo, useCallback } from "react"
+import { memo, useCallback, useMemo } from "react"
 import { Fold, FoldBase, FoldExtra } from "../Fold"
 import { SizeInput, SizeInputItem } from "../SizeInput"
 
@@ -30,16 +30,32 @@ export const MarginStyleSetter = memo((props: {
 }) => {
   const { title, topTitle, rightTitle, leftTitle, bottomTitle, value, onChange } = props;
 
-  //console.log("哈哈 MarginStyleSetter", value)
-
   const handleTopChange = useCallback((value?: string | null) => {
     onChange?.({ marginTop: value || undefined })
+  }, [onChange])
+
+  const baseValue = useMemo(() => {
+    if (value?.marginBottom === value?.marginLeft
+      && value?.marginLeft === value?.marginRight &&
+      value?.marginRight === value?.marginTop) {
+      return value?.marginBottom
+    }
+    return ""
+  }, [value?.marginBottom, value?.marginLeft, value?.marginRight, value?.marginTop])
+
+  const handleBaseChange = useCallback((value?: string | null) => {
+    onChange?.({
+      marginTop: value || undefined,
+      marginBottom: value || undefined,
+      marginRight: value || undefined,
+      marginLeft: value || undefined,
+    })
   }, [onChange])
 
   return (
     <Fold>
       <FoldBase title={title}>
-        <MarginInput value={""} />
+        <MarginInput value={baseValue} onChange={handleBaseChange} />
       </FoldBase>
       <FoldExtra>
         <MarginTopInput

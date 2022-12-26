@@ -1,14 +1,20 @@
-import { useFieldState, useFieldy, useFormName } from "fieldy/hooks";
-import { IFieldMeta } from "fieldy/interfaces";
-import { useMemo } from "react";
+import { useFieldy, useFormName } from "fieldy/hooks";
+import { FieldState, IFieldMeta } from "fieldy/interfaces";
+import { useCallback, useEffect, useState } from "react";
 
-export function useValue(path: string, fieldMeta: IFieldMeta) {
+export function useValue(fieldPath: string, fieldMeta: IFieldMeta) {
+  const [value, setValue] = useState<any>()
   const fieldy = useFieldy()
   const formName = useFormName()
-  const fieldState = useFieldState(path)
 
-  const fieldValue = useMemo(() => {
-    const value = fieldy?.getFieldValue(formName || "", fieldState?.path || path)
+  useEffect(() => {
+    if (formName && fieldPath) {
+      setValue(fieldy?.getFieldValue(formName, fieldPath))
+    }
+  }, [fieldPath, fieldy, formName])
+
+  const handleFieldChange = useCallback((fieldState: FieldState | undefined) => {
+    const value = fieldy?.getFieldValue(formName || "", fieldState?.path || fieldPath)
     if (fieldMeta.type === 'fragment') {
       const fragValue: any = {}
       for (const subField of fieldMeta.fragmentFields || []) {
@@ -17,11 +23,18 @@ export function useValue(path: string, fieldMeta: IFieldMeta) {
         }
         fragValue[subField.name] = value?.[subField.name]
       }
-
-      return fragValue
+      setValue(fragValue)
+      return 
     }
-    return value
-  }, [fieldMeta.fragmentFields, fieldMeta.type, fieldState?.path, fieldy, formName, path])
+    setValue( value)
+  }, [fieldMeta.fragmentFields, fieldMeta.type, fieldPath, fieldy, formName])
 
-  return fieldValue
+  useEffect(() => {
+    if (formName && fieldPath) {
+      const unsub = fieldy?.subscribeToFieldChange(formName, fieldPath, handleFieldChange)
+      return unsub
+    }
+  }, [fieldPath, fieldy, formName, handleFieldChange])
+
+  return value
 }
