@@ -30,6 +30,8 @@ export const settingLocales = {
 
       border: "边框",
       opacity: "不透明度",
+      height: "高度",
+      width: "宽度",
     }
   },
   'en-US': {
@@ -63,6 +65,8 @@ export const settingLocales = {
 
       border: "Border",
       opacity: "Opacity",
+      height: "Height",
+      width: "Width",
     }
   }
 }

@@ -103,6 +103,34 @@ export const buttonSchema: INodeSchema = {
         name: "style"
       },
       children: [
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$width",
+          },
+          children: [
+            {
+              componentName: "SizeInput",
+              "x-field": {
+                name: "width",
+              },
+            }
+          ]
+        },
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$height",
+          },
+          children: [
+            {
+              componentName: "SizeInput",
+              "x-field": {
+                name: "height",
+              },
+            }
+          ]
+        },
         fontStyleSetter,
         martinStyleSetter,
         paddingStyleSetter,
