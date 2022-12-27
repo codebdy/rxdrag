@@ -7,7 +7,7 @@ import "./style.less"
 
 export interface IDisplay {
   display?: 'block' | 'inline-block' | 'inline' | 'flex',
-  flexFlow?: string,
+  flexDirection?: string,
   flexWrap?: string,
   alignContent?: string,
   justifyContent?: string,
@@ -25,8 +25,28 @@ export const DisplaySetter = memo((
 
   const [, token] = useToken()
   const handleDispalyChange = useCallback((e: RadioChangeEvent) => {
-    onChange?.({ display: e.target.value || undefined as any })
-  }, [onChange])
+    onChange?.({ ...value, display: e.target.value || undefined as any })
+  }, [onChange, value])
+
+  const handleDirectionChange = useCallback((e: RadioChangeEvent) => {
+    onChange?.({ ...value, flexDirection: e.target.value || undefined as any })
+  }, [onChange, value])
+
+  const handleWrapChange = useCallback((e: RadioChangeEvent) => {
+    onChange?.({ ...value, flexWrap: e.target.value || undefined as any })
+  }, [onChange, value])
+
+  const handleAlignContentChange = useCallback((e: RadioChangeEvent) => {
+    onChange?.({ ...value, alignContent: e.target.value || undefined as any })
+  }, [onChange, value])
+
+  const handleJustifyContentChange = useCallback((e: RadioChangeEvent) => {
+    onChange?.({ ...value, justifyContent: e.target.value || undefined as any })
+  }, [onChange, value])
+
+  const handlealignItemsChange = useCallback((e: RadioChangeEvent) => {
+    onChange?.({ ...value, alignItems: e.target.value || undefined as any })
+  }, [onChange, value])
 
   return (
     <div className="rx-display-setter">
@@ -50,10 +70,10 @@ export const DisplaySetter = memo((
               title={"Flex Direction"}
               icon={directionIcon}
             >
-              <Radio.Group value={value?.flexFlow} options={[
+              <Radio.Group value={value?.flexDirection} options={[
                 { label: <IconView icon={rowDirectionIcon} />, value: 'row' },
                 { label: <IconView icon={columnDirectionIcon} />, value: 'column' },
-              ]} optionType="button" />
+              ]} optionType="button" onChange={handleDirectionChange} />
             </FoldExtraItem>
             <FoldExtraItem span={12}
               title={"Flex Wrap"}
@@ -62,7 +82,7 @@ export const DisplaySetter = memo((
               <Radio.Group value={value?.flexWrap} options={[
                 { label: <IconView icon={noWrapIcon} />, value: 'nowrap' },
                 { label: <IconView icon={wrapIcon} />, value: 'wrap' },
-              ]} optionType="button" />
+              ]} optionType="button" onChange={handleWrapChange} />
             </FoldExtraItem>
             <FoldExtraItem span={24}
               title={"Align content"}
@@ -76,7 +96,7 @@ export const DisplaySetter = memo((
                 { label: <IconView icon={alignContentSpaceAroundIcon} />, value: 'space-around' },
                 { label: <IconView icon={alignContentSpaceBetweenIcon} />, value: 'space-between' },
                 { label: <IconView icon={alignContentStretchIcon} />, value: 'stretch' },
-              ]} optionType="button" />
+              ]} optionType="button" onChange={handleAlignContentChange} />
             </FoldExtraItem>
             <FoldExtraItem span={24}
               title={"Justify content"}
@@ -90,7 +110,7 @@ export const DisplaySetter = memo((
                 { label: <IconView icon={spaceGroundIcon} />, value: 'space-around' },
                 { label: <IconView icon={spaceBetweenIcon} />, value: 'space-between' },
                 { label: <IconView icon={spaceEvenlyIcon} />, value: 'space-evenly' },
-              ]} optionType="button" />
+              ]} optionType="button" onChange={handleJustifyContentChange} />
             </FoldExtraItem>
             <FoldExtraItem span={24}
               title={"Align Items"}
@@ -103,7 +123,7 @@ export const DisplaySetter = memo((
                 { label: <IconView icon={alignItemsEnd} />, value: 'flex-end' },
                 { label: <IconView icon={alignItemsStretch} />, value: 'stretch' },
                 { label: <IconView icon={alignItemsBaseline} />, value: 'baseline' },
-              ]} optionType="button" />
+              ]} optionType="button" onChange={handlealignItemsChange} />
             </FoldExtraItem>
           </Row>
         </div>

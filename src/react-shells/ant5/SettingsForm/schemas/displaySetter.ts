@@ -14,7 +14,7 @@ export const displaySetter: INodeSchema<IFieldMeta> = {
             name: "display",
           },
           {
-            name: "flexFlow",
+            name: "flexDirection",
           },
           {
             name: "flexWrap",
