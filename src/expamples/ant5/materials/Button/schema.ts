@@ -133,6 +133,20 @@ export const buttonSchema: INodeSchema = {
           ]
         },
         displaySetter,
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$background",
+          },
+          children: [
+            {
+              componentName: "ColorInput",
+              "x-field": {
+                name: "backgroundColor",
+              },
+            }
+          ]
+        },
         fontStyleSetter,
         martinStyleSetter,
         paddingStyleSetter,
