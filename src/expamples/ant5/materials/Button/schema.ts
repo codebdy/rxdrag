@@ -1,6 +1,7 @@
 import { INodeSchema } from "core";
 import { borderRediusSetter } from "react-shells/ant5/SettingsForm/schemas/borderRediusSetter";
 import { borderSetter } from "react-shells/ant5/SettingsForm/schemas/borderSetter";
+import { displaySetter } from "react-shells/ant5/SettingsForm/schemas/displaySetter";
 import { fontStyleSetter } from "react-shells/ant5/SettingsForm/schemas/fontStyleSetter";
 import { martinStyleSetter } from "react-shells/ant5/SettingsForm/schemas/martinStyleSetter";
 import { paddingStyleSetter } from "react-shells/ant5/SettingsForm/schemas/paddingStyleSetter";
@@ -96,7 +97,7 @@ export const buttonSchema: INodeSchema = {
     {
       componentName: "TabPanel",
       props: {
-        title: "样式"
+        title: "$style"
       },
       "x-field": {
         type: "object",
@@ -131,6 +132,7 @@ export const buttonSchema: INodeSchema = {
             }
           ]
         },
+        displaySetter,
         fontStyleSetter,
         martinStyleSetter,
         paddingStyleSetter,

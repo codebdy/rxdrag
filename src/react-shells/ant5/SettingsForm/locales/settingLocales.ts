@@ -32,6 +32,9 @@ export const settingLocales = {
       opacity: "不透明度",
       height: "高度",
       width: "宽度",
+
+      style: "样式",
+      display: "显示",
     }
   },
   'en-US': {
@@ -67,6 +70,9 @@ export const settingLocales = {
       opacity: "Opacity",
       height: "Height",
       width: "Width",
+
+      style: "Style",
+      display: "display",
     }
   }
 }

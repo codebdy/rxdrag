@@ -29,6 +29,7 @@ import { MarginStyleSetter } from "./components/margin";
 import { PaddingStyleSetter } from "./components/padding";
 import { BorderRadiusSetter } from "./components/border/radius";
 import { BorderSetter } from "./components/border";
+import { DisplaySetter } from "./components/DisplaySetter";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -104,6 +105,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         PaddingStyleSetter,
         BorderRadiusSetter,
         BorderSetter,
+        DisplaySetter
       }}
     >
 
