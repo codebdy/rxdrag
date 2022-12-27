@@ -1,4 +1,4 @@
-import { Form, Radio } from "antd"
+import { Form, Radio, RadioChangeEvent } from "antd"
 import { memo, useCallback } from "react"
 import { IconView } from "../Fold/FoldExtraItem"
 import "./style.less"
@@ -19,7 +19,7 @@ export const flexIcon = `
 `
 
 export interface IDisplay {
-  display?: string,
+  display?: 'block' | 'inline-block' | 'inline' | 'flex',
   flexFlow?: string,
   flexWrap?: string,
   alignContent?: string,
@@ -36,20 +36,20 @@ export const DisplaySetter = memo((
 ) => {
   const { title, value, onChange } = props
 
-  const handleDispalyChange = useCallback(() => {
-
-  }, [])
+  const handleDispalyChange = useCallback((e: RadioChangeEvent) => {
+    onChange?.({ display: e.target.value || undefined as any })
+  }, [onChange])
 
   return (
     <div className="rx-display-setter">
       <Form.Item
         label={title}
       >
-        <Radio.Group value={value} size="middle" onChange={handleDispalyChange} options={[
-          { label: <IconView icon={blockIcon} />, value: 'normal' },
-          { label: <IconView icon={inlineBlock} />, value: 'italic' },
-          { label: <IconView icon={inlineIcon} />, value: 'italic2' },
-          { label: <IconView icon={flexIcon} />, value: 'italic3' },
+        <Radio.Group value={value?.display} size="middle" onChange={handleDispalyChange} options={[
+          { label: <IconView icon={blockIcon} />, value: 'block' },
+          { label: <IconView icon={inlineBlock} />, value: 'inline-block' },
+          { label: <IconView icon={inlineIcon} />, value: 'inline' },
+          { label: <IconView icon={flexIcon} />, value: 'flex' },
         ]} optionType="button" />
       </Form.Item>
     </div>
