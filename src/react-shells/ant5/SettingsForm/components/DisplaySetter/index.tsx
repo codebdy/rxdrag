@@ -2,7 +2,7 @@ import { Form, Radio, RadioChangeEvent, Row } from "antd"
 import { useToken } from "antd/es/theme/internal"
 import { memo, useCallback } from "react"
 import { FoldExtraItem, IconView } from "../Fold/FoldExtraItem"
-import { blockIcon, inlineBlock, inlineIcon, flexIcon, directionIcon, rowDirectionIcon, columnDirectionIcon, flexWrapIcon, noWrapIcon, wrapIcon } from "./icons"
+import { blockIcon, inlineBlock, inlineIcon, flexIcon, directionIcon, rowDirectionIcon, columnDirectionIcon, flexWrapIcon, noWrapIcon, wrapIcon, justifyContentIcon } from "./icons"
 import "./style.less"
 
 export interface IDisplay {
@@ -50,7 +50,7 @@ export const DisplaySetter = memo((
               title={"Flex Direction"}
               icon={directionIcon}
             >
-              <Radio.Group value={value?.display} size="middle" options={[
+              <Radio.Group value={value?.display} options={[
                 { label: <IconView icon={rowDirectionIcon} />, value: 'row' },
                 { label: <IconView icon={columnDirectionIcon} />, value: 'column' },
               ]} optionType="button" />
@@ -59,9 +59,23 @@ export const DisplaySetter = memo((
               title={"Flex Wrap"}
               icon={flexWrapIcon}
             >
-              <Radio.Group value={value?.display} size="middle" options={[
+              <Radio.Group value={value?.display}  options={[
                 { label: <IconView icon={noWrapIcon} />, value: 'nowrap' },
                 { label: <IconView icon={wrapIcon} />, value: 'wrap' },
+              ]} optionType="button" />
+            </FoldExtraItem>
+            <FoldExtraItem span={24}
+              title={"Justify content"}
+              icon={justifyContentIcon}
+              marginTop = {8}
+            >
+              <Radio.Group value={value?.display}  options={[
+                { label: <IconView icon={noWrapIcon} />, value: 'nowrap' },
+                { label: <IconView icon={wrapIcon} />, value: 'wrap' },
+                { label: <IconView icon={wrapIcon} />, value: 'wrap2' },
+                { label: <IconView icon={wrapIcon} />, value: 'wrap3' },
+                { label: <IconView icon={wrapIcon} />, value: 'wrap4' },
+                { label: <IconView icon={wrapIcon} />, value: 'wrap5' },
               ]} optionType="button" />
             </FoldExtraItem>
           </Row>
