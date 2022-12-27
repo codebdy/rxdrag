@@ -35,8 +35,8 @@ export const BorderRadiusSetter = memo((props: {
       keys={[
         'borderTopLeftRadius',
         'borderTopRightRadius',
-        'borderBottomRightRadius',
         'borderBottomLeftRadius',
+        'borderBottomRightRadius',
       ]}
       title={title}
       title1={leftTopTitle}

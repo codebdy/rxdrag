@@ -40,11 +40,11 @@ export const TetradInput = memo((props: {
   }, [keys, onChange])
 
   const handleChange4 = useCallback((value?: string | null) => {
-    onChange?.({ [keys[2]]: value || undefined })
+    onChange?.({ [keys[3]]: value || undefined })
   }, [keys, onChange])
 
   const handleChange3 = useCallback((value?: string | null) => {
-    onChange?.({ [keys[3]]: value || undefined })
+    onChange?.({ [keys[2]]: value || undefined })
   }, [keys, onChange])
 
   const baseValue = useMemo(() => {
