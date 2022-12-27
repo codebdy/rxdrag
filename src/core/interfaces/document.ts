@@ -36,9 +36,9 @@ export interface IDocumentAction<Payload extends DocumentActionPayload> extends 
 export type ViewType = "design" | "json" | "preview" | string
 export const DefulstViewType = "design"
 
-export interface IReactionMeta {
+// export interface IReactionMeta {
 
-}
+// }
 
 // export interface IFieldMeta {
 //   type?: "object" | "array" | "normal"
@@ -52,13 +52,12 @@ export interface IReactionMeta {
 //   withControl?: boolean
 // }
 
-export interface INodeMeta {
+export interface INodeMeta<IField = any> {
   componentName: string,
   props?: {
     [key: string]: any,
   },
-  "x-field"?: any,
-  "x-reaction"?: IReactionMeta,
+  "x-field"?: IField,
   [key: string]: any,
 }
 
@@ -98,7 +97,7 @@ export interface NodeBehavior {
   isNoPlaceholder: () => boolean
 }
 
-export interface INodeSchema extends INodeMeta {
+export interface INodeSchema<IField = any> extends INodeMeta<IField> {
   //引用一段schema，ref赋值name，用于框架等分块编辑
   ref?: string,
   children?: INodeSchema[]

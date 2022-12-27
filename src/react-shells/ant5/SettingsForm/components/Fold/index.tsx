@@ -41,11 +41,11 @@ export const Fold = memo((props: FoldProps) => {
 })
 
 export type FoldBaseProps = {
-  label?: string,
+  title?: string,
   children?: React.ReactNode
 }
 export const FoldBase = memo((props: FoldBaseProps) => {
-  const { label, children, } = props
+  const { title, children, } = props
   const { expand, setExpand } = useContext(FoldContext)
 
   const handleClick = useCallback(() => {
@@ -56,7 +56,7 @@ export const FoldBase = memo((props: FoldBaseProps) => {
     <Form.Item
       label={
         <div className="rx-fold-base-item-label" onClick={handleClick}>
-          <RightOutlined className={cls("base-icon", { expand: expand })} />{label}
+          <RightOutlined className={cls("base-icon", { expand: expand })} />{title}
         </div>
       }
     >

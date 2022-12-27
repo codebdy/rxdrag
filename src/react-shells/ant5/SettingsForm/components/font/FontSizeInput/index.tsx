@@ -16,7 +16,7 @@ export const FontSizeInput = memo((props: {
     <FoldExtraItem span={span}
       title={title}
       icon={fontSizeIcon}
-      onFirstLine={false}
+      marginTop = {8}
     >
       <SizeInput exclude={"auto"} value = {value} onChange = {onChange}/>
     </FoldExtraItem>

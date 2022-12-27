@@ -14,7 +14,7 @@ export const FontLineHeightInput = memo((props: {
     <FoldExtraItem span={span}
       title={title}
       icon={lineHeightIcon}
-      onFirstLine={false}
+      marginTop = {8}
     >
       <SizeInput exclude={"auto"} />
     </FoldExtraItem>

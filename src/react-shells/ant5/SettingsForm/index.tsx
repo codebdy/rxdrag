@@ -1,6 +1,6 @@
 import { CSSProperties, memo, useCallback, useMemo } from "react"
 import { useCurrentNode } from "core-react/hooks/useCurrentNode"
-import { Form, Input, InputNumber, Radio, Select, Switch } from 'antd';
+import { Form, Input, InputNumber, Radio, Select, Slider, Switch } from 'antd';
 import { ComponentRender } from "core-react/ComponentRender";
 import { Tabs } from "./components/Tabs";
 import { TabPanel } from "./components/Tabs/TabPanel";
@@ -25,6 +25,10 @@ import { FontStyleSelect } from "./components/font/FontStyleSelect";
 import { FontWeightInput } from "./components/font/FontWeightInput";
 import { TextAlignSelect } from "./components/font/TextAlignSelect";
 import { FontSizeInput } from "./components/font/FontSizeInput";
+import { MarginStyleSetter } from "./components/margin";
+import { PaddingStyleSetter } from "./components/padding";
+import { BorderRadiusSetter } from "./components/border/radius";
+import { BorderSetter } from "./components/border";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -84,6 +88,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         FoldExtra,
         FoldExtraItem,
         Radio,
+        Slider,
         InputNumber,
         ColorInput,
         SizeInput,
@@ -94,7 +99,11 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         FontLineHeightInput,
         FontStyleSelect,
         FontWeightInput,
-        TextAlignSelect
+        TextAlignSelect,
+        MarginStyleSetter,
+        PaddingStyleSetter,
+        BorderRadiusSetter,
+        BorderSetter,
       }}
     >
 

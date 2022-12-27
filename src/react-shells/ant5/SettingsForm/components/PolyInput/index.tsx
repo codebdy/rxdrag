@@ -2,12 +2,17 @@ import React, { useEffect, useState, memo, useCallback, useRef } from 'react'
 import { Button, InputNumber } from 'antd'
 import './styles.less'
 
-export const takeNumber = (value: any) => {
-  const num = String(value)
-    .trim()
-    .replace(/[^\d\\.]+/, '')
-  if (num === '') return
-  return Number(num)
+export const takeNumber = (value: any, type: string) => {
+  if (value === undefined) {
+    return value
+  }
+  const strValue = String(value)
+  if (strValue.length >= type.length) {
+    const numStr = strValue.substring(0, strValue.length - type.length)
+    return Number(numStr)
+  }
+
+  return value
 }
 
 export const createUnitType = (type: string): IPolyType => {
@@ -18,7 +23,7 @@ export const createUnitType = (type: string): IPolyType => {
       return String(value).endsWith(type)
     },
     toInputValue: (value: any) => {
-      return takeNumber(value)
+      return takeNumber(value, type)
     },
     toChangeValue: (value?: any) => {
       return `${value || 0}${type}`
@@ -78,29 +83,27 @@ export const PolyInput = memo((
   useEffect(() => {
     const polyTp = polyTypes?.[index]
     setPolyType(polyTp)
-  }, [index, onChange, polyType, polyTypes])
-
-  useEffect(()=>{
-    changeRef.current?.(polyType?.toChangeValue?.())
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [polyType?.type])
+  }, [index, polyType, polyTypes])
 
   const handleClick = useCallback(() => {
+    let newIndex = 0
     if (indexRef.current === polyTypes.length - 1) {
-      setIndex(0)
+      setIndex(newIndex)
     } else {
-      setIndex((index) => index + 1)
+      newIndex = indexRef.current + 1
+      setIndex((index) => newIndex)
     }
-  }, [polyTypes.length])
+    changeRef.current?.(polyTypes?.[newIndex].toChangeValue?.())
+  }, [polyTypes])
 
   const InputComponent = polyType?.component
 
   const handleInputChange = useCallback((e: any) => {
-    const newValue = getEventValue(e)
+    let newValue = getEventValue(e)
     if (newValue) {
       onChange?.(polyType?.toChangeValue?.(newValue))
     } else {
-      onChange?.(null)
+      onChange?.(undefined)
     }
 
   }, [onChange, polyType])

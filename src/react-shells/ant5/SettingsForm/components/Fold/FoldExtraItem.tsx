@@ -35,18 +35,18 @@ export const FoldExtraItem = memo((props: {
   title?: string,
   icon?: React.ReactNode | string,
   span?: number,
-  onFirstLine?: boolean,
+  marginTop?: number,
   className?: string,
   style?: CSSProperties,
   children?: React.ReactNode
 }) => {
-  const { title, icon, span = 12, onFirstLine = true, className, children, style, ...other } = props
+  const { title, icon, span = 12, marginTop, className, children, style, ...other } = props
 
   return (
     <Col
       span={span}
       className={cls("value-column", className)}
-      style={{ marginTop: !onFirstLine ? 8 : undefined, ...style }}
+      style={{ marginTop: marginTop, ...style }}
       {...other}
     >
       {

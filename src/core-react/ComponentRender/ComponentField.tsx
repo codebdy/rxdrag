@@ -1,6 +1,6 @@
 import { IFieldMeta } from "fieldy"
 import { Field } from "fieldy/components/Field"
-import React, { memo } from "react"
+import React, { memo, useMemo } from "react"
 
 export const ComponentField = memo((
   props: {
@@ -9,11 +9,14 @@ export const ComponentField = memo((
   }
 ) => {
   const { fieldMeta, children } = props
-  return (
-    fieldMeta?.name ?
-      <Field fieldMeta={fieldMeta}>
+  const view = useMemo(() => {
+    if (fieldMeta?.name || fieldMeta?.type === "fragment") {
+      return <Field fieldMeta={fieldMeta}>
         {children}
       </Field>
-      : <>{children}</>
-  )
+    }
+    return <>{children}</>
+  }, [children, fieldMeta])
+
+  return view
 })

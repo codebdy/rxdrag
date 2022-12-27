@@ -1,7 +1,7 @@
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "core/utils/util-invariant";
-import { CREATE_FORM, FormActionPlayload, REMOVE_FORM, SetFieldValuePayload, SetFormFieldsPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES } from "fieldy/actions";
-import { FieldChangeListener, FieldState, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldSchema, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "fieldy/interfaces";
+import { CREATE_FORM, FormActionPlayload, REMOVE_FORM, SetFieldValuePayload, SetFormFieldsPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES } from "fieldy/actions";
+import { FieldChangeListener, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldSchema, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "fieldy/interfaces";
 import { reduce, State } from "fieldy/reducers";
 
 var idSeed = 0
@@ -135,17 +135,50 @@ export class FieldyEngine implements IFieldyEngine {
   }
 
   setFieldValue(formName: string, fieldPath: string, value: any): void {
-    const payload: SetFieldValuePayload = {
-      formName,
-      path: fieldPath,
-      value
-    }
-    this.dispatch(
-      {
-        type: SET_FIELD_VALUE,
-        payload: payload,
+    if (this.getField(formName, fieldPath)?.fieldSchema.type === "object") {
+      const values: any = {}
+      this.getValue(formName, fieldPath, value, values)
+      const payload:SetFormValuesPayload = {
+        formName,
+        values
       }
-    )
+
+      this.dispatch(
+        {
+          type: SET_MULTI_FIELD_VALUES,
+          payload: payload,
+        }
+      )
+    } else {
+      const payload: SetFieldValuePayload = {
+        formName,
+        path: fieldPath,
+        value
+      }
+      this.dispatch(
+        {
+          type: SET_FIELD_VALUE,
+          payload: payload,
+        }
+      )
+    }
+  }
+
+  //递归找出改变的字段
+  private getValue(formName: string, fieldPath: string, value: any, allValues: any) {
+    allValues[fieldPath] = value
+    const fieldPaths = this.getSubFields(formName, fieldPath)
+    for (const key of fieldPaths) {
+      const subName = key.substring(fieldPath.length + 1)
+      if (subName) {
+        this.getValue(formName, key, value?.[subName], allValues)
+      }
+    }
+  }
+
+  setFieldFragmentValue(formName: string, fieldPath: string, value: any): void {
+    const oldValue = this.getFieldValue(formName, fieldPath)
+    this.setFieldValue(formName, fieldPath, oldValue ? { ...oldValue, ...value } : value)
   }
 
   setSubFields(formName: string, fieldPath: string, subFieldSchemas: IFieldSchema[]): void {
@@ -175,6 +208,33 @@ export class FieldyEngine implements IFieldyEngine {
     return state.forms[formName]?.fields?.[fieldPath]
   }
 
+  getFieldValue(formName: string, fieldPath: string) {
+    const state = this.store.getState()
+    const fieldState = state.forms[formName]?.fields?.[fieldPath]
+    if (fieldState) {
+      if (fieldState.fieldSchema?.type === "object") {
+        const value = { ...fieldState.value }
+        const fields = this.getSubFields(formName, fieldPath)
+        for (const key of fields) {
+          const subValue = this.getFieldValue(formName, key)
+          if (subValue) {
+            const subName = key.substring(fieldPath.length + 1)
+            value[subName] = subValue
+          }
+        }
+        if (Object.keys(value).length) {
+          return value
+        }
+        return undefined
+      } else if (fieldState.fieldSchema?.type === "array") {
+        throw new Error("Not implement arrray type")
+      } else {//undefined or "normal"
+        return fieldState.value
+      }
+    }
+    return undefined
+  }
+
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
@@ -195,8 +255,77 @@ export class FieldyEngine implements IFieldyEngine {
     return this.store.subscribe(handleChange)
   }
 
+  subscribeToFieldValueChange(formName: string, fieldPath: string, listener: FieldValueChangeListener): Unsubscribe {
+    invariant(typeof listener === 'function', 'listener must be a function.')
+    let previousValue: any = this.store.getState().forms[formName]?.fields?.[fieldPath]?.value
+
+    const handleChange = () => {
+      const nextValue = this.store.getState().forms[formName]?.fields?.[fieldPath]?.value
+      if (nextValue === previousValue) {
+        return
+      }
+      const prevValue = previousValue
+      previousValue = nextValue
+      listener(nextValue, prevValue)
+    }
+
+    return this.store.subscribe(handleChange)
+  }
+
+  subscribeToMultiFieldValueChange(formName: string, fields: string[], listener: FieldValuesChangeListener): Unsubscribe {
+    invariant(typeof listener === 'function', 'listener must be a function.')
+    let previousValues: any[] = []
+    let previousFormState = this.store.getState().forms[formName]
+
+
+    for (const fieldName of fields) {
+      previousValues.push(previousFormState?.fields[fieldName]?.value)
+    }
+
+    const handleChange = () => {
+      const nextFormState = this.store.getState().forms[formName]
+      if (nextFormState === previousFormState) {
+        return
+      }
+      const nextValues = []
+      let changed = false
+      for (const fieldName of fields) {
+        nextValues.push(nextFormState?.fields[fieldName]?.value)
+      }
+      for (let i = 0; i < nextValues.length; i++) {
+        if (nextValues[i] !== previousValues[i]) {
+          changed = true
+          break
+        }
+      }
+      if (!changed) {
+        return
+      }
+      const prevValues = previousValues
+      previousFormState = nextFormState
+      previousValues = nextValues
+      listener(nextValues, prevValues)
+    }
+
+    return this.store.subscribe(handleChange)
+  }
+
   dispatch(action: IAction<FormActionPlayload>): void {
     this.store.dispatch(action)
+  }
+
+  private getSubFields(formName: string, path: string) {
+    const fieldPaths: string[] = []
+    const fields = this.store.getState().forms[formName]?.fields
+    for (const key of Object.keys(fields || {})) {
+      if (key.startsWith(path)) {
+        const name = key.substring(path.length + 1)
+        if (name && name.indexOf(".") === -1) {
+          fieldPaths.push(key)
+        }
+      }
+    }
+    return fieldPaths
   }
 }
 
@@ -210,9 +339,9 @@ function makeStoreInstance(debugMode: boolean): Store<State> {
     {
       reducer: reduce,
       middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-				immutableCheck: false,
-				serializableCheck: false,
-			}),
+        immutableCheck: false,
+        serializableCheck: false,
+      }),
       devTools: debugMode &&
         reduxDevTools &&
         reduxDevTools({
@@ -228,7 +357,8 @@ function getFormNormalValues(formState: FormState | undefined) {
     return {}
   }
   const flatValues = getFormFlatValues(formState)
-  return trasformFlatValuesToNormal(JSON.parse(JSON.stringify(formState.originalValue || {})), flatValues, formState.fieldSchemas)
+  const normalValue = trasformFlatValuesToNormal(JSON.parse(JSON.stringify(formState.originalValue || {})), flatValues, formState.fieldSchemas)
+  return normalValue
 }
 
 function getFormFlatValues(formState: FormState | undefined) {
@@ -245,8 +375,25 @@ function getFormFlatValues(formState: FormState | undefined) {
 
 function trasformFlatValuesToNormal(originalValue: any = {}, flatValues: FormValue, fieldSchemas: IFieldSchema[], basePath?: string) {
   const value: FormValue = originalValue
+  const prefix = basePath ? basePath + "." : ""
+
   for (const fieldSchema of fieldSchemas) {
-    const prefix = basePath ? basePath + "." : ""
+    if (fieldSchema.type === "fragment") {
+      for (const fragField of fieldSchema.fragmentFields || []) {
+        if (fragField.name) {
+          const fieldPath = prefix + fragField.name
+          value[fragField.name] = flatValues[fieldPath]
+        } else {
+          console.error("No subfield name on fragment")
+        }
+      }
+      continue
+    }
+
+    if (!fieldSchema.name || fieldSchema.virtual) {
+      continue
+    }
+
     const fieldPath = prefix + fieldSchema.name
     if (fieldSchema.type === "object") {
       value[fieldSchema.name] = trasformFlatValuesToNormal(value[fieldSchema.name], flatValues, fieldSchema.fields, fieldPath)

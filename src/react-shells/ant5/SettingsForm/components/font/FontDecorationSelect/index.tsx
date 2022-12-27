@@ -23,7 +23,7 @@ export const FontDecorationSelect = memo((props: {
     <FoldExtraItem span={span}
       title={title}
       icon={textDecorationIcon}
-      onFirstLine={false}
+      marginTop = {8}
     >
       <Radio.Group  value={value} onChange={handleChange} options={[
         { label: '--', value: 'none' },
