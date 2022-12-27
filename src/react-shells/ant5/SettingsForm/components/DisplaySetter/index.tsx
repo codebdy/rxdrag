@@ -50,7 +50,7 @@ export const DisplaySetter = memo((
               title={"Flex Direction"}
               icon={directionIcon}
             >
-              <Radio.Group value={value?.display} options={[
+              <Radio.Group value={value?.flexFlow} options={[
                 { label: <IconView icon={rowDirectionIcon} />, value: 'row' },
                 { label: <IconView icon={columnDirectionIcon} />, value: 'column' },
               ]} optionType="button" />
@@ -59,7 +59,7 @@ export const DisplaySetter = memo((
               title={"Flex Wrap"}
               icon={flexWrapIcon}
             >
-              <Radio.Group value={value?.display} options={[
+              <Radio.Group value={value?.flexWrap} options={[
                 { label: <IconView icon={noWrapIcon} />, value: 'nowrap' },
                 { label: <IconView icon={wrapIcon} />, value: 'wrap' },
               ]} optionType="button" />
@@ -69,10 +69,10 @@ export const DisplaySetter = memo((
               icon={alignContentIcon}
               marginTop={8}
             >
-              <Radio.Group value={value?.display} options={[
+              <Radio.Group value={value?.alignContent} options={[
                 { label: <IconView icon={alignContentCenterIcon} />, value: 'center' },
-                { label: <IconView icon={alignContentStartIcon} />, value: 'start' },
-                { label: <IconView icon={alignContentEndIcon} />, value: 'end' },
+                { label: <IconView icon={alignContentStartIcon} />, value: 'flex-start' },
+                { label: <IconView icon={alignContentEndIcon} />, value: 'flex-end' },
                 { label: <IconView icon={alignContentSpaceAroundIcon} />, value: 'space-around' },
                 { label: <IconView icon={alignContentSpaceBetweenIcon} />, value: 'space-between' },
                 { label: <IconView icon={alignContentStretchIcon} />, value: 'stretch' },
@@ -83,7 +83,7 @@ export const DisplaySetter = memo((
               icon={justifyContentIcon}
               marginTop={8}
             >
-              <Radio.Group value={value?.display} options={[
+              <Radio.Group value={value?.justifyContent} options={[
                 { label: <IconView icon={justifyCenterIcon} />, value: 'center' },
                 { label: <IconView icon={flexStartIcon} />, value: 'flex-start' },
                 { label: <IconView icon={flexEndIcon} />, value: 'flex-end' },
@@ -97,10 +97,10 @@ export const DisplaySetter = memo((
               icon={alignItemsIcon}
               marginTop={8}
             >
-              <Radio.Group value={value?.display} options={[
+              <Radio.Group value={value?.alignItems} options={[
                 { label: <IconView icon={alignItemsCenterIcon} />, value: 'center' },
-                { label: <IconView icon={alignItemsStartIcon} />, value: 'start' },
-                { label: <IconView icon={alignItemsEnd} />, value: 'end' },
+                { label: <IconView icon={alignItemsStartIcon} />, value: 'flex-start' },
+                { label: <IconView icon={alignItemsEnd} />, value: 'flex-end' },
                 { label: <IconView icon={alignItemsStretch} />, value: 'stretch' },
                 { label: <IconView icon={alignItemsBaseline} />, value: 'baseline' },
               ]} optionType="button" />
