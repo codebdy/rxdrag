@@ -1,10 +1,11 @@
 import { Col, Row, Select } from "antd"
-import { memo, useCallback, useState } from "react"
+import { memo, useCallback, useMemo, useState } from "react"
 import { Fold, FoldBase, FoldExtra } from "../Fold"
 import "./style.less"
 import cls from "classnames"
 import { SizeInput } from "../SizeInput"
 import { ColorInput } from "../ColorInput"
+var border = require('css-border-property')
 
 export interface IBorder {
   borderTop?: string,
@@ -31,8 +32,8 @@ export const BorderSetter = memo((props: {
   value?: IBorder,
   onChange?: (value?: IBorder) => void
 }) => {
-  const { title, ...other } = props;
-  const [selected, setSelected] = useState<"left" | "right" | "bottom" | "top">()
+  const { title, value, onChange } = props;
+  const [selected, setSelected] = useState<"left" | "right" | "bottom" | "top" | "center">("center")
 
   const handleClickTop = useCallback(() => {
     setSelected("top")
@@ -48,8 +49,65 @@ export const BorderSetter = memo((props: {
   }, [])
 
   const handleClickCenter = useCallback(() => {
-    setSelected(undefined)
+    setSelected("center")
   }, [])
+
+  const { color, style, width } = useMemo(() => {
+    let str = (value as any)?.[selected] || ""
+    if (selected === "center") {
+      if (value?.borderLeft === value?.borderBottom && value?.borderBottom === value?.borderRight && value?.borderRight === value?.borderTop) {
+        str = value?.borderLeft || ""
+      }
+    }
+    let style = "none"
+    let width = ""
+    let color = ""
+    const parsed = border.parse(str)
+    for (const item of parsed || []) {
+      if (item?.property === "border-style") {
+        style = item?.value
+      } else if(item?.property === "border-width"){
+        width = item?.value
+      } else if (item?.property === "border-color"){
+        color = item?.value
+      }
+    }
+    return { color: color, width: width, style: style }
+  }, [selected, value])
+
+  const handleStyleChange = useCallback((value: string) => {
+    if (selected === "center") {
+      onChange?.({
+        borderTop: `${color} ${value} ${width}`,
+        borderRight: `${color} ${value} ${width}`,
+        borderBottom: `${color} ${value} ${width}`,
+        borderLeft: `${color} ${value} ${width}`,
+      })
+    }
+  }, [color, onChange, selected, width])
+
+  const handleWidthChange = useCallback((value?: string | null) => {
+    if (selected === "center") {
+      onChange?.({
+        borderTop: `${color} ${value || ""} ${style}`,
+        borderRight: `${color} ${value || ""} ${style}`,
+        borderBottom: `${color} ${value || ""} ${style}`,
+        borderLeft: `${color} ${value || ""} ${style}`,
+      })
+    }
+  }, [color, onChange, selected, style])
+
+  const handleColorChange= useCallback((value?: string | null) => {
+    if (selected === "center") {
+      onChange?.({
+        borderTop: `${width} ${value || ""} ${style}`,
+        borderRight: `${width} ${value || ""} ${style}`,
+        borderBottom: `${width} ${value || ""} ${style}`,
+        borderLeft: `${width} ${value || ""} ${style}`,
+      })
+    }
+  }, [onChange, selected, style, width])
+
   return (
     <Fold>
       <FoldBase title={title}>
@@ -69,7 +127,7 @@ export const BorderSetter = memo((props: {
               <BorderIcon active={selected === "left"} onClick={handleClickLeft}>┣</BorderIcon>
             </Col>
             <Col span={8} style={{ marginTop: 4, marginBottom: 4 }}>
-              <BorderIcon active={!selected} onClick={handleClickCenter}>╋</BorderIcon>
+              <BorderIcon active={selected === "center"} onClick={handleClickCenter}>╋</BorderIcon>
             </Col>
             <Col span={8} style={{ marginTop: 4, }}>
               <BorderIcon active={selected === "right"} onClick={handleClickRight}>┫</BorderIcon>
@@ -87,30 +145,35 @@ export const BorderSetter = memo((props: {
           <Row>
             <Col span={24}>
               <Select
-                defaultValue=""
+                defaultValue="none"
                 style={{ width: "100%" }}
-                //onChange={handleChange}
+                onChange={handleStyleChange}
+                value={style}
                 options={[
                   {
-                    value: 'jack',
-                    label: 'Jack',
+                    value: "none",
+                    label: "None"
                   },
                   {
-                    value: 'lucy',
-                    label: 'Lucy',
+                    value: 'solid',
+                    label: <div style={{ width: "100%", borderBottom: "solid 1px", height: 12 }}></div>,
                   },
                   {
-                    value: 'Yiminghe',
-                    label: 'yiminghe',
+                    value: 'dashed',
+                    label: <div style={{ width: "100%", borderBottom: "dashed 1px", height: 12 }}></div>,
+                  },
+                  {
+                    value: 'dotted',
+                    label: <div style={{ width: "100%", borderBottom: "dotted 1px", height: 12 }}></div>,
                   },
                 ]}
               />
             </Col>
             <Col span={24} style={{ marginTop: 8 }}>
-              <SizeInput exclude={["auto"]} />
+              <SizeInput exclude={["auto"]} value={width} onChange={handleWidthChange} />
             </Col>
             <Col span={24} style={{ marginTop: 8 }}>
-              <ColorInput />
+              <ColorInput value ={color} onChange={handleColorChange} />
             </Col>
           </Row>
         </Col>
