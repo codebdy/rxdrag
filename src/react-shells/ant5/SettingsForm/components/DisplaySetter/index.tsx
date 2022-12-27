@@ -1,4 +1,5 @@
 import { Form, Radio, RadioChangeEvent } from "antd"
+import { useToken } from "antd/es/theme/internal"
 import { memo, useCallback } from "react"
 import { IconView } from "../Fold/FoldExtraItem"
 import "./style.less"
@@ -36,6 +37,7 @@ export const DisplaySetter = memo((
 ) => {
   const { title, value, onChange } = props
 
+  const [, token] = useToken()
   const handleDispalyChange = useCallback((e: RadioChangeEvent) => {
     onChange?.({ display: e.target.value || undefined as any })
   }, [onChange])
@@ -52,6 +54,14 @@ export const DisplaySetter = memo((
           { label: <IconView icon={flexIcon} />, value: 'flex' },
         ]} optionType="button" />
       </Form.Item>
+      {
+        value?.display === "flex" && <div
+          style={{ backgroundColor: token.colorBorderSecondary, padding: 8, marginBottom: 16 }}
+        >
+          dddd
+        </div>
+      }
+
     </div>
   )
 })
