@@ -1,4 +1,4 @@
-import { Divider } from "antd"
+import { Divider, Select, Space } from "antd"
 import { useToken } from "antd/es/theme/internal"
 import { IDocument } from "core"
 import { ShadowDomCanvas } from "core-react/canvas/ShadowDomCanvas"
@@ -31,7 +31,24 @@ export const DocumentView = memo((
           <Divider type="vertical" style={{ height: 16 }} />
           <CanvasSize />
           <div style={{ flex: 1 }}></div>
-          <ViewButtons />
+          <Space>
+            <Select
+              size="small"
+              defaultValue="page"
+              options={[
+                {
+                  value: 'frame',
+                  label: '框架',
+                },
+                {
+                  value: 'page',
+                  label: '页面',
+                },
+              ]}
+            />
+            <Divider type="vertical" />
+            <ViewButtons />
+          </Space>
         </CanvasToolbar>
         <Viewport>
           <JsonView />
