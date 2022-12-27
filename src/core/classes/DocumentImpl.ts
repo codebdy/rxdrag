@@ -1,5 +1,5 @@
 import { makeRxId } from "core/utils/make-rxId";
-import { HistoryableActionType, IBlocksSchema, IBlocksTreeNode, IDocument, IDocumentAction, INodeMeta, INodeSchema, ISnapshot, ITreeNode, NodeChunk, NodeRelativePosition } from "../interfaces/document";
+import { HistoryableActionType, IDocument, IDocumentAction, INodeMeta, INodeSchema, ISnapshot, ITreeNode, NodeChunk, NodeRelativePosition } from "../interfaces/document";
 import { AddNodesPayload, BackupPayload, ChangeMetaPayloads, DeleteNodesPayload, DocumentActionPayload, GotoPayload, MoveNodesPayload, RecoverSnapshotPayload, RemoveSlotPayload } from "../interfaces/payloads";
 import { ID, IDesignerEngine } from "core/interfaces";
 import { State } from "core/reducers";
@@ -12,7 +12,7 @@ import { isArr, isStr } from "core/utils/types";
 
 export class DocumentImpl implements IDocument {
   id: string;
-  constructor(schema: INodeSchema | IBlocksSchema,
+  constructor(schema: INodeSchema,
     private engine: IDesignerEngine,
     private store: Store<State>
   ) {
@@ -20,7 +20,7 @@ export class DocumentImpl implements IDocument {
     this.initialize(schema, this.id)
   }
 
-  initialize(rootSchema: INodeSchema | IBlocksSchema, documentId: string): void {
+  initialize(rootSchema: INodeSchema, documentId: string): void {
     const nodesById: NodesById = {}
     if (!this.isBlocksSchema(rootSchema)) {
       const root = parseNodeSchema(this.engine, documentId, rootSchema as INodeSchema, nodesById)
@@ -216,7 +216,7 @@ export class DocumentImpl implements IDocument {
   getSchemaBlockNode(id: string): ITreeNode | null {
     throw new Error("Method not implemented.");
   }
-  receiveSchema(schema: INodeSchema | IBlocksSchema): ITreeNode | IBlocksTreeNode {
+  receiveSchema(schema: INodeSchema): ITreeNode {
     throw new Error("Method not implemented.");
   }
   destory(): void {
@@ -294,7 +294,7 @@ export class DocumentImpl implements IDocument {
     return this.store.getState().documentsById[this.id]
   }
 
-  private isBlocksSchema(schema: INodeSchema | IBlocksSchema): boolean {
+  private isBlocksSchema(schema: INodeSchema): boolean {
     return !(schema as INodeSchema).componentName
   }
 

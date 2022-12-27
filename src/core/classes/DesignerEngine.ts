@@ -1,5 +1,5 @@
 import { State } from "core/reducers";
-import { IDesignerEngine, IDesignerShell, IMonitor, INodeSchema, IBlocksSchema, IDocument, IResourceManager, ID, IComponentManager, NodeBehavior, AbleCheckFunction } from "core/interfaces";
+import { IDesignerEngine, IDesignerShell, IMonitor, INodeSchema, IDocument, IResourceManager, ID, IComponentManager, NodeBehavior, AbleCheckFunction } from "core/interfaces";
 import { Store } from "redux";
 import { ResourceManager } from "./ResourceManager";
 import { DocumentImpl } from "core/classes/DocumentImpl";
@@ -74,7 +74,7 @@ export class DesignerEngine implements IDesignerEngine {
 	setSelectionMode(mode: SelectionMode): void {
 		throw new Error("Method not implemented.");
 	}
-	createDocument(schema: INodeSchema | IBlocksSchema): IDocument {
+	createDocument(schema: INodeSchema): IDocument {
 		const doc = new DocumentImpl(schema, this, this.store)
 		this.documentsById[doc.id] = doc
 		this.dispatch({
@@ -136,7 +136,7 @@ export class DesignerEngine implements IDesignerEngine {
 }
 
 export const checkAbility = (
-	name: "disabled" | "selectable" | "droppable" | "draggable" | "deletable" | "cloneable" |"noPlaceholder",
+	name: "disabled" | "selectable" | "droppable" | "draggable" | "deletable" | "cloneable" | "noPlaceholder",
 	defaultValue: boolean,
 	nodeId: ID,
 	engine: IDesignerEngine

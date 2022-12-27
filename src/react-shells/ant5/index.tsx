@@ -1,5 +1,5 @@
-import { IDesignerEngine, IDocument } from "core"
-import { memo, useCallback, useMemo, useState } from "react"
+import {  IDesignerEngine, IDocument, INodeSchema } from "core"
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Designer } from "core-react/Designer"
 import { SettingsForm } from "./SettingsForm"
 import { Workbench } from "./pannels/Workbench/Workbench"
@@ -31,24 +31,36 @@ export type Antd5EditorProps = {
   themeMode?: "dark" | "light",
   children?: React.ReactNode,
   locales?: ILocales,
+  schemas: INodeSchema
 }
 
 export const Antd5Editor = memo((props: Antd5EditorProps) => {
-  const { leftNav, topBar, navPanel, locales, themeMode } = props;
+  const { leftNav, topBar, navPanel, locales, themeMode, schemas } = props;
   const [doc, setDoc] = useState<IDocument>()
+  const [engine, setEngine] = useState<IDesignerEngine>()
+  const docRef = useRef<IDocument>()
+  docRef.current = doc
 
+  useEffect(() => {
+    if (engine) {
+      console.log("创建 document")
+      if (docRef.current) {
+        docRef.current.destory()
+        docRef.current = undefined
+      }
+      const document = engine.createDocument(schemas)
+      setDoc(document)
+    }
+  }, [engine, schemas])
 
-  const handleReady = useCallback((engine: IDesignerEngine) => {
-    const langMgr = engine.getLoacalesManager()
+  const handleReady = useCallback((eng: IDesignerEngine) => {
+    const langMgr = eng.getLoacalesManager()
     langMgr.registerLocales(commmonLocales)
     langMgr.registerLocales(settingLocales)
     locales && langMgr.registerLocales(locales)
     //langMgr.registerResourceLocales(resourceLocales)
     //langMgr.registerComponentsLocales(componentLocales)
-    const document = engine.createDocument({
-      componentName: "Root"
-    })
-    setDoc(document)
+    setEngine(eng)
   }, [locales])
 
   const initialComponents = useMemo(() => {
@@ -71,9 +83,6 @@ export const Antd5Editor = memo((props: Antd5EditorProps) => {
           <Topbar >
             {
               topBar || <>
-                {/* <Space>
-                  <Button type="text" icon={<MenuOutlined />}></Button>
-                </Space> */}
                 <Logo />
                 <Space>
                   <ThemeButton />

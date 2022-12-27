@@ -98,6 +98,7 @@ export interface NodeBehavior {
 }
 
 export interface INodeSchema<IField = any> extends INodeMeta<IField> {
+  name?: string,
   //引用一段schema，ref赋值name，用于框架等分块编辑
   ref?: string,
   children?: INodeSchema[]
@@ -106,13 +107,13 @@ export interface INodeSchema<IField = any> extends INodeMeta<IField> {
   }
 }
 
-export interface IBlocksSchema {
-  [bolckName: string]: INodeSchema
-}
+// export interface IBlocksSchema {
+//   [bolckName: string]: INodeSchema
+// }
 
-export interface IBlocksTreeNode {
-  [bolckName: string]: ITreeNode
-}
+// export interface IBlocksTreeNode {
+//   [bolckName: string]: ITreeNode
+// }
 
 export enum HistoryableActionType {
   Default = "Default",
@@ -131,7 +132,7 @@ export enum HistoryableActionType {
  */
 export interface IDocument {
   id: ID
-  receiveSchema(schema: INodeSchema | IBlocksSchema): ITreeNode | IBlocksTreeNode
+  receiveSchema(schema: INodeSchema): ITreeNode
   destory(): void
   transformNodeToSchema(node: ITreeNode): INodeSchema
 
