@@ -33,19 +33,19 @@ export const BorderSetter = memo((props: {
   onChange?: (value?: IBorder) => void
 }) => {
   const { title, value, onChange } = props;
-  const [selected, setSelected] = useState<"left" | "right" | "bottom" | "top" | "center">("center")
+  const [selected, setSelected] = useState<"borderLeft" | "borderRight" | "borderBottom" | "borderTop" | "center">("center")
 
   const handleClickTop = useCallback(() => {
-    setSelected("top")
+    setSelected("borderTop")
   }, [])
   const handleClickRight = useCallback(() => {
-    setSelected("right")
+    setSelected("borderRight")
   }, [])
   const handleClickBottom = useCallback(() => {
-    setSelected("bottom")
+    setSelected("borderBottom")
   }, [])
   const handleClickLeft = useCallback(() => {
-    setSelected("left")
+    setSelected("borderLeft")
   }, [])
 
   const handleClickCenter = useCallback(() => {
@@ -66,47 +66,66 @@ export const BorderSetter = memo((props: {
     for (const item of parsed || []) {
       if (item?.property === "border-style") {
         style = item?.value
-      } else if(item?.property === "border-width"){
+      } else if (item?.property === "border-width") {
         width = item?.value
-      } else if (item?.property === "border-color"){
+      } else if (item?.property === "border-color") {
         color = item?.value
       }
     }
     return { color: color, width: width, style: style }
   }, [selected, value])
 
-  const handleStyleChange = useCallback((value: string) => {
+  const handleStyleChange = useCallback((val: string) => {
+    const newValue = `${color} ${val} ${width}`
     if (selected === "center") {
       onChange?.({
-        borderTop: `${color} ${value} ${width}`,
-        borderRight: `${color} ${value} ${width}`,
-        borderBottom: `${color} ${value} ${width}`,
-        borderLeft: `${color} ${value} ${width}`,
+        borderTop: newValue,
+        borderRight: newValue,
+        borderBottom: newValue,
+        borderLeft: newValue,
       })
-    }
-  }, [color, onChange, selected, width])
+    } else {
+      const allValue = {
+        ...value,
+        [selected]: newValue,
+      }
 
-  const handleWidthChange = useCallback((value?: string | null) => {
-    if (selected === "center") {
-      onChange?.({
-        borderTop: `${color} ${value || ""} ${style}`,
-        borderRight: `${color} ${value || ""} ${style}`,
-        borderBottom: `${color} ${value || ""} ${style}`,
-        borderLeft: `${color} ${value || ""} ${style}`,
-      })
+      onChange?.(allValue)
     }
-  }, [color, onChange, selected, style])
+  }, [color, onChange, selected, value, width])
 
-  const handleColorChange= useCallback((value?: string | null) => {
+  const handleWidthChange = useCallback((val?: string | null) => {
+    const newValue = `${color} ${val || ""} ${style}`
     if (selected === "center") {
       onChange?.({
-        borderTop: `${width} ${value || ""} ${style}`,
-        borderRight: `${width} ${value || ""} ${style}`,
-        borderBottom: `${width} ${value || ""} ${style}`,
-        borderLeft: `${width} ${value || ""} ${style}`,
+        borderTop: newValue,
+        borderRight: newValue,
+        borderBottom: newValue,
+        borderLeft: newValue,
+      })
+    } else {
+      onChange?.({
+        ...value,
+        [selected]: newValue,
       })
     }
-  }, [onChange, selected, style, width])
+  }, [color, onChange, selected, style, value])
+
+  const handleColorChange = useCallback((val?: string | null) => {
+    if (selected === "center") {
+      onChange?.({
+        borderTop: `${width} ${val || ""} ${style}`,
+        borderRight: `${width} ${val || ""} ${style}`,
+        borderBottom: `${width} ${val || ""} ${style}`,
+        borderLeft: `${width} ${val || ""} ${style}`,
+      })
+    } else {
+      onChange?.({
+        ...value,
+        [selected]: `${width} ${val || ""} ${style}`,
+      })
+    }
+  }, [onChange, selected, style, value, width])
 
   return (
     <Fold>
@@ -118,23 +137,23 @@ export const BorderSetter = memo((props: {
           <Row>
             <Col span={8}></Col>
             <Col span={8}>
-              <BorderIcon active={selected === "top"} onClick={handleClickTop}>
+              <BorderIcon active={selected === "borderTop"} onClick={handleClickTop}>
                 <div style={{ marginBottom: 8 }}>┳</div>
               </BorderIcon>
             </Col>
             <Col span={8}></Col>
             <Col span={8} style={{ marginTop: 4, }}>
-              <BorderIcon active={selected === "left"} onClick={handleClickLeft}>┣</BorderIcon>
+              <BorderIcon active={selected === "borderLeft"} onClick={handleClickLeft}>┣</BorderIcon>
             </Col>
             <Col span={8} style={{ marginTop: 4, marginBottom: 4 }}>
               <BorderIcon active={selected === "center"} onClick={handleClickCenter}>╋</BorderIcon>
             </Col>
             <Col span={8} style={{ marginTop: 4, }}>
-              <BorderIcon active={selected === "right"} onClick={handleClickRight}>┫</BorderIcon>
+              <BorderIcon active={selected === "borderRight"} onClick={handleClickRight}>┫</BorderIcon>
             </Col>
             <Col span={8}></Col>
             <Col span={8}>
-              <BorderIcon active={selected === "bottom"} onClick={handleClickBottom}>
+              <BorderIcon active={selected === "borderBottom"} onClick={handleClickBottom}>
                 <div style={{ marginTop: 8 }}>┻</div>
               </BorderIcon>
             </Col>
@@ -173,7 +192,7 @@ export const BorderSetter = memo((props: {
               <SizeInput exclude={["auto"]} value={width} onChange={handleWidthChange} />
             </Col>
             <Col span={24} style={{ marginTop: 8 }}>
-              <ColorInput value ={color} onChange={handleColorChange} />
+              <ColorInput value={color} onChange={handleColorChange} />
             </Col>
           </Row>
         </Col>
