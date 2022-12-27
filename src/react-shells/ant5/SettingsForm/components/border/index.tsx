@@ -1,8 +1,10 @@
-import { Col, Row } from "antd"
+import { Col, Row, Select } from "antd"
 import { memo, useCallback, useState } from "react"
 import { Fold, FoldBase, FoldExtra } from "../Fold"
 import "./style.less"
 import cls from "classnames"
+import { SizeInput } from "../SizeInput"
+import { ColorInput } from "../ColorInput"
 
 export interface IBorder {
   borderTop?: string,
@@ -54,7 +56,7 @@ export const BorderSetter = memo((props: {
 
       </FoldBase>
       <FoldExtra>
-        <Col span={8}>
+        <Col span={8} style={{ display: "flex", alignItems: "center" }}>
           <Row>
             <Col span={8}></Col>
             <Col span={8}>
@@ -83,7 +85,33 @@ export const BorderSetter = memo((props: {
         </Col>
         <Col span={16}>
           <Row>
-            b
+            <Col span={24}>
+              <Select
+                defaultValue=""
+                style={{ width: "100%" }}
+                //onChange={handleChange}
+                options={[
+                  {
+                    value: 'jack',
+                    label: 'Jack',
+                  },
+                  {
+                    value: 'lucy',
+                    label: 'Lucy',
+                  },
+                  {
+                    value: 'Yiminghe',
+                    label: 'yiminghe',
+                  },
+                ]}
+              />
+            </Col>
+            <Col span={24} style={{ marginTop: 8 }}>
+              <SizeInput exclude={["auto"]} />
+            </Col>
+            <Col span={24} style={{ marginTop: 8 }}>
+              <ColorInput />
+            </Col>
           </Row>
         </Col>
       </FoldExtra>
