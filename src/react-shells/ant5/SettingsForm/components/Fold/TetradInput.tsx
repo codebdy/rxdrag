@@ -57,12 +57,13 @@ export const TetradInput = memo((props: {
   }, [keys, value])
 
   const handleBaseChange = useCallback((value?: string | null) => {
-    onChange?.({
+    const newValue = {
       [keys[0]]: value || undefined,
       [keys[1]]: value || undefined,
       [keys[2]]: value || undefined,
       [keys[3]]: value || undefined,
-    })
+    }
+    onChange?.(newValue)
   }, [keys, onChange])
 
   return (
@@ -74,27 +75,27 @@ export const TetradInput = memo((props: {
         <SizeInputItem
           title={title1}
           icon={icon1}
-          value={value?.marginTop}
+          value={value?.[keys[0]]}
           onChange={handleChange1}
         />
         <SizeInputItem
           title={title2}
           icon={icon2}
-          value={value?.marginRight}
+          value={value?.[keys[1]]}
           onChange={handleChange2}
         />
         <SizeInputItem
           marginTop={8}
           title={title3}
           icon={icon3}
-          value={value?.marginLeft}
+          value={value?.[keys[2]]}
           onChange={handleChange3}
         />
         <SizeInputItem
           marginTop={8}
           title={title4}
           icon={icon4}
-          value={value?.marginBottom}
+          value={value?.[keys[3]]}
           onChange={handleChange4}
         />
       </FoldExtra>
