@@ -27,6 +27,9 @@ export const settingLocales = {
       borderTopRightRadius: "右上",
       borderBottomRightRadius: "右下",
       borderBottomLeftRadius: "左下",
+
+      border: "边框",
+      opacity: "不透明度",
     }
   },
   'en-US': {
@@ -57,6 +60,9 @@ export const settingLocales = {
       borderTopRightRadius: "Top Right",
       borderBottomRightRadius: "Bottom Right",
       borderBottomLeftRadius: "Bottom Left",
+
+      border: "Border",
+      opacity: "Opacity",
     }
   }
 }
