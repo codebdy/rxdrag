@@ -1,4 +1,5 @@
 import { INodeSchema } from "core";
+import { borderRediusSetter } from "react-shells/ant5/SettingsForm/schemas/borderRediusSetter";
 import { fontStyleSetter } from "react-shells/ant5/SettingsForm/schemas/fontStyleSetter";
 import { martinStyleSetter } from "react-shells/ant5/SettingsForm/schemas/martinStyleSetter";
 import { paddingStyleSetter } from "react-shells/ant5/SettingsForm/schemas/paddingStyleSetter";
@@ -103,7 +104,8 @@ export const buttonSchema: INodeSchema = {
       children: [
         fontStyleSetter,
         martinStyleSetter,
-        paddingStyleSetter
+        paddingStyleSetter,
+        borderRediusSetter,
       ]
     }
   ]

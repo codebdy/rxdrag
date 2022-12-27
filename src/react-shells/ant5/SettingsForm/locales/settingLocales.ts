@@ -21,6 +21,12 @@ export const settingLocales = {
       paddingRight: "右边距",
       paddingBottom: "下边距",
       paddingLeft: "左边距",
+
+      borderRadius: "圆角",
+      borderTopLeftRadius: "左上",
+      borderTopRightRadius: "右上",
+      borderBottomRightRadius: "右下",
+      borderBottomLeftRadius: "左下",
     }
   },
   'en-US': {
@@ -45,6 +51,12 @@ export const settingLocales = {
       paddingRight: "Padding Right",
       paddingBottom: "Padding Bottom",
       paddingLeft: "Padding Left",
+
+      borderRadius: "Radius",
+      borderTopLeftRadius: "Top Left",
+      borderTopRightRadius: "Top Right",
+      borderBottomRightRadius: "Bottom Right",
+      borderBottomLeftRadius: "Bottom Left",
     }
   }
 }
