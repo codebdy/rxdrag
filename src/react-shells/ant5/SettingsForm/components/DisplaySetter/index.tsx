@@ -2,7 +2,7 @@ import { Form, Radio, RadioChangeEvent, Row } from "antd"
 import { useToken } from "antd/es/theme/internal"
 import { memo, useCallback } from "react"
 import { FoldExtraItem, IconView } from "../Fold/FoldExtraItem"
-import { blockIcon, inlineBlock, inlineIcon, flexIcon, directionIcon, rowDirectionIcon, columnDirectionIcon, flexWrapIcon, noWrapIcon, wrapIcon, justifyContentIcon } from "./icons"
+import { blockIcon, inlineBlock, inlineIcon, flexIcon, directionIcon, rowDirectionIcon, columnDirectionIcon, flexWrapIcon, noWrapIcon, wrapIcon, justifyContentIcon, justifyCenterIcon, flexStartIcon, flexEndIcon, spaceGroundIcon, spaceBetweenIcon, spaceEvenlyIcon, alignItemsIcon, alignItemsCenterIcon, alignItemsStartIcon, alignItemsEnd, alignItemsStretch, alignItemsBaseline, alignContentIcon, alignContentCenterIcon, alignContentStartIcon, alignContentEndIcon, alignContentSpaceAroundIcon, alignContentSpaceBetweenIcon, alignContentStretchIcon } from "./icons"
 import "./style.less"
 
 export interface IDisplay {
@@ -59,23 +59,50 @@ export const DisplaySetter = memo((
               title={"Flex Wrap"}
               icon={flexWrapIcon}
             >
-              <Radio.Group value={value?.display}  options={[
+              <Radio.Group value={value?.display} options={[
                 { label: <IconView icon={noWrapIcon} />, value: 'nowrap' },
                 { label: <IconView icon={wrapIcon} />, value: 'wrap' },
               ]} optionType="button" />
             </FoldExtraItem>
             <FoldExtraItem span={24}
+              title={"Align content"}
+              icon={alignContentIcon}
+              marginTop={8}
+            >
+              <Radio.Group value={value?.display} options={[
+                { label: <IconView icon={alignContentCenterIcon} />, value: 'center' },
+                { label: <IconView icon={alignContentStartIcon} />, value: 'start' },
+                { label: <IconView icon={alignContentEndIcon} />, value: 'end' },
+                { label: <IconView icon={alignContentSpaceAroundIcon} />, value: 'space-around' },
+                { label: <IconView icon={alignContentSpaceBetweenIcon} />, value: 'space-between' },
+                { label: <IconView icon={alignContentStretchIcon} />, value: 'stretch' },
+              ]} optionType="button" />
+            </FoldExtraItem>
+            <FoldExtraItem span={24}
               title={"Justify content"}
               icon={justifyContentIcon}
-              marginTop = {8}
+              marginTop={8}
             >
-              <Radio.Group value={value?.display}  options={[
-                { label: <IconView icon={noWrapIcon} />, value: 'nowrap' },
-                { label: <IconView icon={wrapIcon} />, value: 'wrap' },
-                { label: <IconView icon={wrapIcon} />, value: 'wrap2' },
-                { label: <IconView icon={wrapIcon} />, value: 'wrap3' },
-                { label: <IconView icon={wrapIcon} />, value: 'wrap4' },
-                { label: <IconView icon={wrapIcon} />, value: 'wrap5' },
+              <Radio.Group value={value?.display} options={[
+                { label: <IconView icon={justifyCenterIcon} />, value: 'center' },
+                { label: <IconView icon={flexStartIcon} />, value: 'flex-start' },
+                { label: <IconView icon={flexEndIcon} />, value: 'flex-end' },
+                { label: <IconView icon={spaceGroundIcon} />, value: 'space-around' },
+                { label: <IconView icon={spaceBetweenIcon} />, value: 'space-between' },
+                { label: <IconView icon={spaceEvenlyIcon} />, value: 'space-evenly' },
+              ]} optionType="button" />
+            </FoldExtraItem>
+            <FoldExtraItem span={24}
+              title={"Align Items"}
+              icon={alignItemsIcon}
+              marginTop={8}
+            >
+              <Radio.Group value={value?.display} options={[
+                { label: <IconView icon={alignItemsCenterIcon} />, value: 'center' },
+                { label: <IconView icon={alignItemsStartIcon} />, value: 'start' },
+                { label: <IconView icon={alignItemsEnd} />, value: 'end' },
+                { label: <IconView icon={alignItemsStretch} />, value: 'stretch' },
+                { label: <IconView icon={alignItemsBaseline} />, value: 'baseline' },
               ]} optionType="button" />
             </FoldExtraItem>
           </Row>
