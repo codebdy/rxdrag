@@ -1,3 +1,4 @@
+import { Col, Row } from "antd"
 import { memo } from "react"
 import { Fold, FoldBase, FoldExtra } from "../Fold"
 import { TetradInput } from "../Fold/TetradInput"
@@ -30,10 +31,27 @@ export const BorderSetter = memo((props: {
   return (
     <Fold>
       <FoldBase title={title}>
-        
+
       </FoldBase>
       <FoldExtra>
-
+        <Col span={8}>
+          <Row>
+            <Col span={8}></Col>
+            <Col span={8}>┳</Col>
+            <Col span={8}></Col>
+            <Col span={8}>┣</Col>
+            <Col span={8}>╋</Col>
+            <Col span={8}>┫</Col>
+            <Col span={8}></Col>
+            <Col span={8}>┻</Col>
+            <Col span={8}></Col>
+          </Row>
+        </Col>
+        <Col span={16}>
+          <Row>
+            b
+          </Row>
+        </Col>
       </FoldExtra>
     </Fold>
   )
