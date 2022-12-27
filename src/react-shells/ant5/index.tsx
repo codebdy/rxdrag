@@ -1,4 +1,4 @@
-import {  IBlocksSchema, IDesignerEngine, IDocument, INodeSchema } from "core"
+import {  IDesignerEngine, IDocument, INodeSchema } from "core"
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Designer } from "core-react/Designer"
 import { SettingsForm } from "./SettingsForm"
@@ -31,7 +31,7 @@ export type Antd5EditorProps = {
   themeMode?: "dark" | "light",
   children?: React.ReactNode,
   locales?: ILocales,
-  schemas: INodeSchema | IBlocksSchema
+  schemas: INodeSchema
 }
 
 export const Antd5Editor = memo((props: Antd5EditorProps) => {

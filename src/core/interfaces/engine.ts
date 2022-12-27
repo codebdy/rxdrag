@@ -1,4 +1,4 @@
-import { IBlocksSchema, IDocument, INodeSchema, NodeBehavior } from "./document"
+import { IDocument, INodeSchema, NodeBehavior } from "./document"
 import { IDesignerShell } from "./shell"
 import { IMonitor } from "./monitor"
 import { IResourceManager } from "./resource"
@@ -12,7 +12,7 @@ export interface IDesignerEngine {
 	getLanguage(): string
 	setLanguage(lang: string): void
 	setSelectionMode(mode: SelectionMode): void
-	createDocument(schema: INodeSchema | IBlocksSchema): IDocument,
+	createDocument(schema: INodeSchema): IDocument,
 	getDocument(id: ID): IDocument | null,
 	getNodeDocument(nodeId: ID): IDocument | null,
 	getAllDocuments(): IDocument[] | null

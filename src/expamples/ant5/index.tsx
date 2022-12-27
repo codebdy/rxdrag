@@ -27,7 +27,8 @@ export const Antd5Example = memo(() => {
 
   const schemas = useMemo(() => {
     return {
-      componentName: "Root"
+      componentName: "Root",
+      chidren:[],
     }
   }, [])
 
