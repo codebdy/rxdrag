@@ -1,6 +1,6 @@
 import { GithubFilled } from "@ant-design/icons"
 import { Button, Space } from "antd"
-import { memo, useCallback, useState } from "react"
+import { memo, useCallback, useMemo, useState } from "react"
 import { Antd5Editor } from "react-shells/ant5"
 import { componentsIcon, historyIcon, outlineIcon } from "react-shells/ant5/icons"
 import { HistoryWidget } from "react-shells/ant5/widgets/HistoryWidget"
@@ -24,8 +24,16 @@ export const Antd5Example = memo(() => {
   const handleActive = useCallback((key: string) => {
     setActivedKey(key as LeftNavType)
   }, [])
+
+  const schemas = useMemo(() => {
+    return {
+      componentName: "Root"
+    }
+  }, [])
+
   return (
     <Antd5Editor
+      schemas={schemas}
       navPanel={
         <>
           {
