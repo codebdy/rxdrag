@@ -141,7 +141,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                     <div style={{ paddingBottom: 8 }}>
                       <Avatar style={{ backgroundColor: '#87d068' }} icon={<DollarCircleOutlined />} />
                     </div>
-                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>付款申请</Text>
+                    <Text style={{ fontSize: 12, fontWeight: "bold", }}>付款申请</Text>
                   </Col>
                   <Col style={{
                     display: "flex",
@@ -153,7 +153,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                     <div style={{ paddingBottom: 8 }}>
                       <Avatar style={{ backgroundColor: '#1890ff' }} icon={<ShoppingOutlined />} />
                     </div>
-                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>采购申请</Text>
+                    <Text style={{ fontSize: 12, fontWeight: "bold", }}>采购申请</Text>
                   </Col>
                   <Col style={{
                     display: "flex",
@@ -165,7 +165,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                     <div style={{ paddingBottom: 8 }}>
                       <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
                     </div>
-                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>差旅申请</Text>
+                    <Text style={{ fontSize: 12, fontWeight: "bold", }}>差旅申请</Text>
                   </Col>
                   <Col style={{
                     display: "flex",
@@ -177,7 +177,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                     <div style={{ paddingBottom: 8 }}>
                       <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
                     </div>
-                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>订舱申请</Text>
+                    <Text style={{ fontSize: 12, fontWeight: "bold", }}>订舱申请</Text>
                   </Col>
                   <Col style={{
                     display: "flex",
@@ -189,7 +189,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                     <div style={{ paddingBottom: 8 }}>
                       <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
                     </div>
-                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>用章流程</Text>
+                    <Text style={{ fontSize: 12, fontWeight: "bold", }}>用章流程</Text>
                   </Col>
 
                   <Col style={{
@@ -202,7 +202,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                     <div style={{ paddingBottom: 8 }}>
                       <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
                     </div>
-                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>用车申请</Text>
+                    <Text style={{ fontSize: 12, fontWeight: "bold", }}>用车申请</Text>
                   </Col>
                   <Col style={{
                     display: "flex",
@@ -214,7 +214,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                     <div style={{ paddingBottom: 8 }}>
                       <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
                     </div>
-                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>请假申请</Text>
+                    <Text style={{ fontSize: 12, fontWeight: "bold", }}>请假申请</Text>
                   </Col>
                   <Col style={{
                     display: "flex",
@@ -226,7 +226,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                     <div style={{ paddingBottom: 8 }}>
                       <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
                     </div>
-                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>评价反馈</Text>
+                    <Text style={{ fontSize: 12, fontWeight: "bold", }}>评价反馈</Text>
                   </Col>
                   <Col style={{
                     display: "flex",
@@ -238,10 +238,11 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                     <div style={{ paddingBottom: 8 }}>
                       <Avatar icon={<EllipsisOutlined />} />
                     </div>
-                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>全部应用</Text>
+                    <Text style={{ fontSize: 12, fontWeight: "bold", }}>全部应用</Text>
                   </Col>
                 </Row>
               </Card>
+              <img width={"100%"} style={{marginTop: 16, borderRadius: 5}} alt="ad" src="/imgs/ad.jpg"/>
               <Card
                 style={{ backgroundColor: colorBgContainer, marginTop: 16 }}
                 title="使用帮助"
