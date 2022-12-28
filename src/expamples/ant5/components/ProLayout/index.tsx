@@ -1,4 +1,4 @@
-import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, BookOutlined, SettingOutlined, DollarCircleOutlined, ShoppingOutlined, CarOutlined, EllipsisOutlined, RocketOutlined, ScheduleOutlined, SoundOutlined, StarOutlined, GiftOutlined, LikeOutlined, PlusOutlined } from "@ant-design/icons"
+import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, BookOutlined, SettingOutlined, DollarCircleOutlined, ShoppingOutlined, CarOutlined, EllipsisOutlined, RocketOutlined, ScheduleOutlined, SoundOutlined, StarOutlined, GiftOutlined, LikeOutlined, PlusOutlined, QuestionCircleOutlined } from "@ant-design/icons"
 import { Avatar, Badge, Button, Card, Col, ConfigProvider, Layout, Menu, Row, Statistic, theme, Typography } from "antd"
 import React from "react"
 import { forwardRef, memo, useState } from "react"
@@ -117,7 +117,11 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
               >
                 <Customers />
               </Card>
-              <Card style={{ backgroundColor: colorBgContainer, marginTop: 16 }} title={"动态"}>
+              <Card
+                style={{ backgroundColor: colorBgContainer, marginTop: 16 }}
+                title={"动态"}
+                actions={[<Button >加载更多</Button>]}
+              >
               </Card>
             </Col>
             <Col span={8}>
@@ -243,7 +247,14 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                 style={{ backgroundColor: colorBgContainer, marginTop: 16 }}
                 title="使用帮助"
               >
-                其它帮助
+                <div>
+                  <b>其它帮助</b>
+                </div>
+                <div style={{ marginLeft: '-16px', marginTop: 8 }}>
+                  <div><Button type="link" icon={<BookOutlined />}>新手引导</Button></div>
+                  <div><Button type="link" icon={<VideoCameraOutlined />}>视频演示</Button></div>
+                  <div><Button type="link" icon={<QuestionCircleOutlined />}>产品文档</Button></div>
+                </div>
               </Card>
               <Card
                 style={{ backgroundColor: colorBgContainer, marginTop: 16 }}
