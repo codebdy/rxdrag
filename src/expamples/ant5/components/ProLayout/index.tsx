@@ -11,12 +11,12 @@ export interface ProLayoutProps {
 export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
   props, ref) => {
   return (
-    <Layout ref= {ref}>
-      <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%' }}>header</Header>
-      <Layout>
-        <Sider>left sidebar</Sider>
+    <Layout ref={ref} style={{ minHeight: "100%", flex:1 }}>
+      <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%', color: "#fff", }}>header</Header>
+      <Layout >
+        <Sider style={{ color: "#fff" }}>left sidebar</Sider>
         <Content>main content</Content>
-        <Sider>right sidebar</Sider>
+        <Sider style={{ color: "#fff" }}>right sidebar</Sider>
       </Layout>
       <Footer>footer</Footer>
     </Layout>
