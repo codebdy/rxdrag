@@ -1,5 +1,6 @@
 import React from 'react';
 import { Avatar, List } from 'antd';
+import "./style.less"
 
 const data = [
   {
@@ -18,12 +19,13 @@ const data = [
 
 export const News: React.FC = () => (
   <List
-    itemLayout="horizontal"
+    className='rx-news'
+    style={{ marginLeft: -16, marginTop: -16 }}
     dataSource={data}
     renderItem={(item) => (
       <List.Item>
         <List.Item.Meta
-          avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+          avatar={<Avatar />}
           title={<a href="https://ant.design">{item.title}</a>}
           description="Ant Design, a design language for background applications, is refined by Ant UED Team"
         />
