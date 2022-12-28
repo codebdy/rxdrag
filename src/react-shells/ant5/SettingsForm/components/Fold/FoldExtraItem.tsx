@@ -9,7 +9,7 @@ export type ValueIconProps = {
 
 export const ValueIcon = memo(forwardRef<HTMLDivElement, ValueIconProps>((props, ref) => {
   return (
-    <IconView ref={ref} className="rx-value-icon" icon={props.icon} />
+    <FoldIcon ref={ref} className="rx-value-icon" icon={props.icon} />
   )
 }))
 
@@ -19,7 +19,7 @@ export type IconViewProps = {
   icon?: React.ReactNode | string
 }
 
-export const IconView = memo(forwardRef<HTMLDivElement, IconViewProps>((props, ref) => {
+export const FoldIcon = memo(forwardRef<HTMLDivElement, IconViewProps>((props, ref) => {
   const { icon, ...other } = props
   return (
     isStr(props.icon)

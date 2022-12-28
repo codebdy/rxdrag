@@ -1,6 +1,6 @@
 import { Radio, RadioChangeEvent } from "antd"
 import { memo, useCallback } from "react"
-import { FoldExtraItem, IconView } from "../../Fold/FoldExtraItem"
+import { FoldExtraItem, FoldIcon } from "../../Fold/FoldExtraItem"
 
 export const textDecorationIcon = ` <svg viewBox="0 0 1024 1024" height="1em" width="1em" fill="currentColor" focusable="false" aria-hidden="true"><path d="M551.208577,113.100229 C571.408577,121.400229 587.508577,137.900229 595.408577,158.200229 L734.856,519 L863,519 C890.061953,519 912,540.938047 912,568 C912,595.061953 890.061953,617 863,617 L772.732,617 L867.308577,861.700229 C875.308577,882.300229 865.008577,905.500229 844.408577,913.400229 C839.708577,915.200229 834.808577,916.100229 830.008577,916.100229 C814.008577,916.100229 798.808577,906.400229 792.708577,890.500229 L687.001,617 L343.875,617 L231.008577,891.300229 C222.608577,911.700229 199.208577,921.500229 178.808577,913.100229 C158.408577,904.700229 148.608577,881.300229 157.008577,860.900229 L257.366,617 L161,617 C133.938047,617 112,595.061953 112,568 C112,540.938047 133.938047,519 161,519 L297.69,519 L446.808577,156.600229 C454.908577,136.800229 470.308577,121.400229 490.008577,113.200229 C509.708577,105.000229 531.508577,104.900229 551.208577,113.100229 Z M520.808577,187.000229 L384.199,519 L649.125,519 L520.808577,187.000229 Z"></path></svg>`
 
@@ -27,8 +27,8 @@ export const FontDecorationSelect = memo((props: {
     >
       <Radio.Group  value={value} onChange={handleChange} options={[
         { label: '--', value: 'none' },
-        { label: <IconView icon={textUnlineIcon} />, value: 'underline' },
-        { label: <IconView icon={textLineThrough} />, value: 'line-through' },
+        { label: <FoldIcon icon={textUnlineIcon} />, value: 'underline' },
+        { label: <FoldIcon icon={textLineThrough} />, value: 'line-through' },
       ]}
         optionType="button" />
     </FoldExtraItem>
