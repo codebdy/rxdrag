@@ -2,6 +2,7 @@ import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, 
 import { Avatar, Badge, Card, Col, ConfigProvider, Layout, Menu, Row, Statistic, theme, Typography } from "antd"
 import React from "react"
 import { forwardRef, memo, useState } from "react"
+import { Jobs } from "./Jobs"
 import "./style.less"
 
 
@@ -102,22 +103,9 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
               </Card>
               <Card
                 style={{ backgroundColor: colorBgContainer, marginTop: 16 }}
-                title={<Badge count={5} color="grey" offset={[12, 7]}>待办事项</Badge>}
+                title={<Badge count={5} size={'small'} color="grey" offset={[8, 8]}>待办事项</Badge>}
               >
-                <Row gutter={16}>
-                  <Col span={6}>
-                    发起申请
-                  </Col>
-                  <Col span={6}>
-                    我的待办
-                  </Col>
-                  <Col span={6}>
-                    申请中
-                  </Col>
-                  <Col span={6}>
-                    抄送给我
-                  </Col>
-                </Row>
+                <Jobs />
               </Card>
               <Card style={{ backgroundColor: colorBgContainer, marginTop: 16 }} title={"最新客户"}>
               </Card>
