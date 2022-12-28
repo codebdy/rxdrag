@@ -1,12 +1,12 @@
 import { IComponentMaterial } from "core-react";
-import { Layout } from "antd";
 import { headerLocales } from "./locales";
 import { headerSchema } from "./schema";
+import { Header } from "expamples/ant5/components/layouts/Header";
 
 export const HeaderMaterial: IComponentMaterial = {
   componentName: "Layout.Header",
-  component: Layout.Header,
-  designer: Layout.Header,
+  component: Header,
+  designer: Header,
   designerLocales: headerLocales,
   designerSchema: headerSchema,
   behaviorRule: {

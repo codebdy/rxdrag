@@ -1,14 +1,14 @@
 import { Layout } from "antd"
 import React, { useMemo } from "react"
 import { forwardRef, memo, useState } from "react"
-import { LayoutContext } from "../ProLayout/context"
-import { SiderBar } from "../ProLayout/SiderBar"
-import { Topbar } from "../ProLayout/Topbar"
+import { LayoutContext } from "./context"
+import { Sider } from "./Sider"
+import { Header } from "./Header"
 
 const { Content, Footer } = Layout
 export interface ProLayoutProps {
-  sider?: React.ReactElement<typeof SiderBar>
-  header?: React.ReactElement<typeof Topbar>
+  sider?: React.ReactElement<typeof Sider>
+  header?: React.ReactElement<typeof Header>
   footer?: React.ReactElement<typeof Footer>
   content?: React.ReactElement<typeof Content>
 }

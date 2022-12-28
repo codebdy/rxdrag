@@ -3,11 +3,11 @@ import { Layout, Menu } from "antd"
 import { memo } from "react"
 import { useLayoutParams } from "../context"
 
-const { Sider, } = Layout
-export const SiderBar = memo(() => {
+const { Sider: AntdSider, } = Layout
+export const Sider = memo(() => {
   const { collapsed } = useLayoutParams() || {}
   return (
-    <Sider trigger={null} collapsible collapsed={collapsed}>
+    <AntdSider trigger={null} collapsible collapsed={collapsed}>
       <div className="logo" />
       <Menu
         theme="dark"
@@ -31,6 +31,6 @@ export const SiderBar = memo(() => {
           },
         ]}
       />
-    </Sider>
+    </AntdSider>
   )
 })
