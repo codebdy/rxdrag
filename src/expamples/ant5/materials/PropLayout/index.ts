@@ -6,6 +6,7 @@ import { HeaderMaterial } from "../Header";
 import { FooterMaterial } from "../Footer";
 import { ContentMaterial } from "../Content";
 import { ProLayout } from "expamples/ant5/components/ProLayout";
+import { SiderMaterial } from "../Sider";
 
 const name = "ProLayout"
 export const ProLayoutMaterial: IComponentMaterial = {
@@ -25,6 +26,11 @@ export const ProLayoutMaterial: IComponentMaterial = {
         slots: {
           header: {
             componentName: "Layout.Header",
+            props: {
+            }
+          },
+          sider: {
+            componentName: "Layout.Sider",
             props: {
             }
           },
@@ -50,6 +56,7 @@ export const ProLayoutMaterial: IComponentMaterial = {
   },
   slots: {
     header: HeaderMaterial,
+    sider: SiderMaterial,
     content: ContentMaterial,
     footer: FooterMaterial,
   },
