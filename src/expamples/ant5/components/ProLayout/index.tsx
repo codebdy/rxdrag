@@ -1,5 +1,8 @@
-import { Layout } from "antd"
-import { forwardRef, memo } from "react"
+import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons"
+import { Layout, Menu, theme } from "antd"
+import React from "react"
+import { forwardRef, memo, useState } from "react"
+import "./style.less"
 
 const { Header, Sider, Content, Footer } = Layout
 export interface ProLayoutProps {
@@ -10,15 +13,56 @@ export interface ProLayoutProps {
 
 export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
   props, ref) => {
+  const [collapsed, setCollapsed] = useState(false);
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
   return (
-    <Layout ref={ref} style={{ minHeight: "100%", flex:1 }}>
-      <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%', color: "#fff", }}>header</Header>
-      <Layout >
-        <Sider style={{ color: "#fff" }}>left sidebar</Sider>
-        <Content>main content</Content>
-        <Sider style={{ color: "#fff" }}>right sidebar</Sider>
+    <Layout>
+      <Sider trigger={null} collapsible collapsed={collapsed}>
+        <div className="logo" />
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={['1']}
+          items={[
+            {
+              key: '1',
+              icon: <UserOutlined />,
+              label: 'nav 1',
+            },
+            {
+              key: '2',
+              icon: <VideoCameraOutlined />,
+              label: 'nav 2',
+            },
+            {
+              key: '3',
+              icon: <UploadOutlined />,
+              label: 'nav 3',
+            },
+          ]}
+        />
+      </Sider>
+      <Layout className="site-layout">
+        <Header style={{ padding:0, background: colorBgContainer, position:"sticky", top:0, }}>
+          {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+            className: 'trigger',
+            onClick: () => setCollapsed(!collapsed),
+          })}
+        </Header>
+        <Content
+          style={{
+            margin: '24px 16px',
+            padding: 24,
+            minHeight: 280,
+            background: colorBgContainer,
+          }}
+        >
+          Content
+        </Content>
+        <Footer>Footer</Footer>
       </Layout>
-      <Footer>footer</Footer>
     </Layout>
   )
 }))
