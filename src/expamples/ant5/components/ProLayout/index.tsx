@@ -4,6 +4,7 @@ import React from "react"
 import { forwardRef, memo, useState } from "react"
 import { Customers } from "./Customers"
 import { Jobs } from "./Jobs"
+import { Notices } from "./Notices"
 import "./style.less"
 
 
@@ -284,7 +285,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                 style={{ backgroundColor: colorBgContainer, marginTop: 16 }}
                 title="公告"
               >
-
+                <Notices />
               </Card>
 
               <div style={{ marginTop: 16 }}>
