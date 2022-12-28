@@ -4,6 +4,7 @@ import React from "react"
 import { forwardRef, memo, useState } from "react"
 import { Customers } from "./Customers"
 import { Jobs } from "./Jobs"
+import { News } from "./News"
 import { Notices } from "./Notices"
 import "./style.less"
 
@@ -123,6 +124,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                 title={"动态"}
                 actions={[<Button >加载更多</Button>]}
               >
+                <News />
               </Card>
             </Col>
             <Col span={8}>
