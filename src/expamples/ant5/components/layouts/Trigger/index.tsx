@@ -5,17 +5,18 @@ import { useLayoutParams } from "../context"
 import "./style.less"
 
 export type TriggerProps = {
-
+  disable?: boolean,
 }
 
 export const Trigger = memo(forwardRef<HTMLDivElement, TriggerProps>((
   props, ref) => {
+  const { disable } = props
   const { collapsed, setCollapsed } = useLayoutParams() || {}
   return (
     React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
       className: 'trigger',
       ref: ref,
-      onClick: () => setCollapsed?.(!collapsed),
+      onClick: () => !disable && setCollapsed?.(!collapsed),
     })
   )
 }))

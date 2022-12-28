@@ -9,8 +9,11 @@ export const HeaderMaterial: IComponentMaterial = {
   designer: Header,
   designerLocales: headerLocales,
   designerSchema: headerSchema,
+  designerProps: {
+    disableTrigger: true,
+  },
   behaviorRule: {
-    draggable:false,
+    draggable: false,
     droppable: true,
     deletable: false,
     cloneable: false,

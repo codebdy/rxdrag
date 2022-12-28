@@ -9,11 +9,12 @@ export type HeaderProps = {
   dark?: boolean,
   children?: React.ReactNode,
   sticky?: boolean,
+  disableTrigger?: boolean
 }
 
 export const Header = memo(forwardRef<HTMLDivElement, HeaderProps>((
   props, ref) => {
-  const { hasTrigger = true, dark, children, ...other } = props;
+  const { hasTrigger = true, disableTrigger, dark, children, ...other } = props;
 
   return (
     <ConfigProvider
@@ -25,7 +26,7 @@ export const Header = memo(forwardRef<HTMLDivElement, HeaderProps>((
         ref={ref}
         {...other}
       >
-        {hasTrigger && <Trigger />}
+        {hasTrigger && <Trigger disable={disableTrigger} />}
         {children}
       </HeaderInner>
     </ConfigProvider>
