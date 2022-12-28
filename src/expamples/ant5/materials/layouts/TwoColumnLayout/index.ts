@@ -4,7 +4,7 @@ import { twoColumnLayoutLocales, twoColumnLayoutResourceLocales } from "./locale
 import { HeaderMaterial } from "../Header";
 import { FooterMaterial } from "../Footer";
 import { ContentMaterial } from "../Content";
-import { SiderMaterial } from "../../Sider";
+import { SiderMaterial } from "../Sider";
 import { TwoColumnLayout } from "expamples/ant5/components/layouts/TowColumnLayout";
 import { prosLayoutSchema } from "./schema";
 

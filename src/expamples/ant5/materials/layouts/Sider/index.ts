@@ -1,12 +1,12 @@
 import { IComponentMaterial } from "core-react";
-import { Layout } from "antd";
+import { Sider } from "expamples/ant5/components/layouts/Sider";
 import { siderLocales } from "./locales";
 import { siderSchema } from "./schema";
 
 export const SiderMaterial: IComponentMaterial = {
   componentName: "Layout.Sider",
-  component: Layout.Sider,
-  designer: Layout.Sider,
+  component: Sider,
+  designer: Sider,
   designerLocales: siderLocales,
   designerSchema: siderSchema,
   behaviorRule: {
