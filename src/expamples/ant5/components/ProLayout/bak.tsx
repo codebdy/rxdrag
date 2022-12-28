@@ -1,4 +1,4 @@
-import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined, BookOutlined } from "@ant-design/icons"
+import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined } from "@ant-design/icons"
 import { Layout, Menu, theme } from "antd"
 import React from "react"
 import { forwardRef, memo, useState } from "react"
@@ -68,13 +68,6 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
             padding: 16,
           }}
         >
-          <div>
-            <div>Hi, 欢迎使用 Apper 低代码平台！</div>
-            <div>
-              轻松创建、部署、管理您的Mes应用，提升开发效率，降低业务成本。
-              <BookOutlined />开启引导
-            </div>
-          </div>
           Content
         </Content>
         <Footer>Footer</Footer>
