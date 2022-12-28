@@ -1,5 +1,5 @@
 import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined, BookOutlined } from "@ant-design/icons"
-import { Button, ConfigProvider, Layout, Menu, theme, Typography } from "antd"
+import { Button, Col, ConfigProvider, Layout, Menu, Row, theme, Typography } from "antd"
 import React from "react"
 import { forwardRef, memo, useState } from "react"
 import "./style.less"
@@ -59,24 +59,28 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
             padding: 16,
           }}
         >
-          <ConfigProvider
-            theme={{
-              algorithm: theme.darkAlgorithm
-            }}
-          >
-            <div style={{
-              background: "url(/imgs/hero.png) center",
-              padding: "8px 16px 32px 16px",
-              color: "#fff",
-              borderRadius: 4,
-            }}>
-              <Title level={4}>Hi, 欢迎使用 Apper 低代码平台！</Title>
-              <Text>
-                轻松创建、部署、管理您的Mes应用，提升开发效率，降低业务成本。
-                <BookOutlined /> <Link style={{ color: "#fff", textDecoration: "underline" }} href="#">开启引导</Link>
-              </Text>
-            </div>
-          </ConfigProvider>
+          <Row>
+            <Col span={24}>
+              <ConfigProvider
+                theme={{
+                  algorithm: theme.darkAlgorithm
+                }}
+              >
+                <div style={{
+                  background: "url(/imgs/hero.png) center",
+                  padding: "8px 16px 32px 16px",
+                  color: "#fff",
+                  borderRadius: 4,
+                }}>
+                  <Title level={4}>Hi, 欢迎使用 Apper 低代码平台！</Title>
+                  <Text>
+                    轻松创建、部署、管理您的Mes应用，提升开发效率，降低业务成本。
+                    <BookOutlined /> <Link style={{ color: "#fff", textDecoration: "underline" }} href="#">开启引导</Link>
+                  </Text>
+                </div>
+              </ConfigProvider>
+            </Col>
+          </Row>
           Content
         </Content>
         <Footer>Footer</Footer>
