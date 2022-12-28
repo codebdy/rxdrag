@@ -1,13 +1,27 @@
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from "@ant-design/icons"
 import { Layout, Menu } from "antd"
-import { memo } from "react"
+import { forwardRef, memo } from "react"
 import { useLayoutParams } from "../context"
+import { Trigger } from "../Trigger"
 
 const { Sider: AntdSider, } = Layout
-export const Sider = memo(() => {
+
+export type SiderProps = {
+  hasTrigger?: boolean
+}
+
+export const Sider = memo(forwardRef<HTMLDivElement, SiderProps>((
+  props, ref) => {
+  const { hasTrigger, ...other } = props;
   const { collapsed } = useLayoutParams() || {}
   return (
-    <AntdSider trigger={null} collapsible collapsed={collapsed}>
+    <AntdSider
+      ref={ref}
+      trigger={hasTrigger ? <Trigger /> : null}
+      collapsible
+      collapsed={collapsed}
+      {...other}
+    >
       <div className="logo" />
       <Menu
         theme="dark"
@@ -33,4 +47,4 @@ export const Sider = memo(() => {
       />
     </AntdSider>
   )
-})
+}))
