@@ -1,5 +1,5 @@
-import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, BookOutlined, SettingOutlined } from "@ant-design/icons"
-import { Badge, Card, Col, ConfigProvider, Layout, Menu, Row, theme, Typography } from "antd"
+import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, BookOutlined, SettingOutlined, DollarCircleOutlined, ShoppingOutlined, CarOutlined, EllipsisOutlined } from "@ant-design/icons"
+import { Avatar, Badge, Card, Col, ConfigProvider, Layout, Menu, Row, theme, Typography } from "antd"
 import React from "react"
 import { forwardRef, memo, useState } from "react"
 import "./style.less"
@@ -102,7 +102,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
               </Card>
               <Card
                 style={{ backgroundColor: colorBgContainer, marginTop: 16 }}
-                title={<Badge count={5}  color="grey" offset={[12, 7]}>待办事项</Badge>}
+                title={<Badge count={5} color="grey" offset={[12, 7]}>待办事项</Badge>}
               >
                 <Row gutter={16}>
                   <Col span={6}>
@@ -131,15 +131,115 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                 extra={<SettingOutlined />}
               >
                 <Row gutter={16}>
-                  <Col>付款申请</Col>
-                  <Col>采购申请</Col>
-                  <Col>差旅申请</Col>
-                  <Col>订舱申请</Col>
-                  <Col>用章流程</Col>
-                  <Col>客户商机</Col>
-                  <Col>用车申请</Col>
-                  <Col>请假申请</Col>
-                  <Col>全部应用</Col>
+                  <Col style={{
+                    display: "flex",
+                    flexFlow: "column",
+                    alignItems: "center",
+                    padding: 16,
+
+                  }}>
+                    <div style={{ paddingBottom: 8 }}>
+                      <Avatar style={{ backgroundColor: '#87d068' }} icon={<DollarCircleOutlined />} />
+                    </div>
+                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>付款申请</Text>
+                  </Col>
+                  <Col style={{
+                    display: "flex",
+                    flexFlow: "column",
+                    alignItems: "center",
+                    padding: 16,
+                    fontWeight: "bold",
+                  }}>
+                    <div style={{ paddingBottom: 8 }}>
+                      <Avatar style={{ backgroundColor: '#1890ff' }} icon={<ShoppingOutlined />} />
+                    </div>
+                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>采购申请</Text>
+                  </Col>
+                  <Col style={{
+                    display: "flex",
+                    flexFlow: "column",
+                    alignItems: "center",
+                    padding: 16,
+                    fontWeight: "bold",
+                  }}>
+                    <div style={{ paddingBottom: 8 }}>
+                      <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
+                    </div>
+                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>差旅申请</Text>
+                  </Col>
+                  <Col style={{
+                    display: "flex",
+                    flexFlow: "column",
+                    alignItems: "center",
+                    padding: 16,
+                    fontWeight: "bold",
+                  }}>
+                    <div style={{ paddingBottom: 8 }}>
+                      <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
+                    </div>
+                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>订舱申请</Text>
+                  </Col>
+                  <Col style={{
+                    display: "flex",
+                    flexFlow: "column",
+                    alignItems: "center",
+                    padding: 16,
+                    fontWeight: "bold",
+                  }}>
+                    <div style={{ paddingBottom: 8 }}>
+                      <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
+                    </div>
+                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>用章流程</Text>
+                  </Col>
+
+                  <Col style={{
+                    display: "flex",
+                    flexFlow: "column",
+                    alignItems: "center",
+                    padding: 16,
+                    fontWeight: "bold",
+                  }}>
+                    <div style={{ paddingBottom: 8 }}>
+                      <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
+                    </div>
+                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>用车申请</Text>
+                  </Col>
+                  <Col style={{
+                    display: "flex",
+                    flexFlow: "column",
+                    alignItems: "center",
+                    padding: 16,
+                    fontWeight: "bold",
+                  }}>
+                    <div style={{ paddingBottom: 8 }}>
+                      <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
+                    </div>
+                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>请假申请</Text>
+                  </Col>
+                  <Col style={{
+                    display: "flex",
+                    flexFlow: "column",
+                    alignItems: "center",
+                    padding: 16,
+                    fontWeight: "bold",
+                  }}>
+                    <div style={{ paddingBottom: 8 }}>
+                      <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
+                    </div>
+                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>评价反馈</Text>
+                  </Col>
+                  <Col style={{
+                    display: "flex",
+                    flexFlow: "column",
+                    alignItems: "center",
+                    padding: 16,
+                    fontWeight: "bold",
+                  }}>
+                    <div style={{ paddingBottom: 8 }}>
+                      <Avatar icon={<EllipsisOutlined />} />
+                    </div>
+                    <Text style={{ fontSize: 13, fontWeight: "bold", }}>全部应用</Text>
+                  </Col>
                 </Row>
               </Card>
               <Card
