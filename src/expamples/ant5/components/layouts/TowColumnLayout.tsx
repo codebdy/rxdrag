@@ -1,10 +1,9 @@
 import { Layout } from "antd"
 import React, { useMemo } from "react"
 import { forwardRef, memo, useState } from "react"
-import { LayoutContext } from "./context"
-import { SiderBar } from "./SiderBar"
-import "./style.less"
-import { Topbar } from "./Topbar"
+import { LayoutContext } from "../ProLayout/context"
+import { SiderBar } from "../ProLayout/SiderBar"
+import { Topbar } from "../ProLayout/Topbar"
 
 const { Content, Footer } = Layout
 export interface ProLayoutProps {
@@ -14,7 +13,7 @@ export interface ProLayoutProps {
   content?: React.ReactElement<typeof Content>
 }
 
-export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
+export const TwoColumnLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
   props, ref) => {
   const { sider, header, footer, content } = props
   const [collapsed, setCollapsed] = useState<boolean>();

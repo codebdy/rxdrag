@@ -1,6 +1,6 @@
-export const proLayoutLocales = {
+export const twoColumnLayoutLocales = {
   "zh-CN": {
-    title: "布局",
+    title: "两列布局",
     description: "一种布局",
     settings: {
       header: "页眉",
@@ -20,11 +20,11 @@ export const proLayoutLocales = {
 }
 
 
-export const proLayoutResourceLocales = {
+export const twoColumnLayoutResourceLocales = {
   "zh-CN": {
-    "ProLayout": "布局",
+    "TwoColumnLayout": "两列布局",
   },
   'en-US': {
-    "ProLayout": "ProLayout",
+    "TwoColumnLayout": "Two Column Layout",
   }
 }

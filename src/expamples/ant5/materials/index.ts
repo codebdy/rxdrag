@@ -1,9 +1,9 @@
 import { IComponentMaterial } from "core-react";
 import { ButtonMaterial } from "./Button";
 import { ColMaterial } from "./Col";
-import { HCFLayoutMaterial } from "./HCFLayout";
+import { HCFLayoutMaterial } from "./layouts/HCFLayout";
 import { InputMaterial } from "./Input";
-import { ProLayoutMaterial } from "./PropLayout";
+import { TwoColumnLayoutMaterial } from "./layouts/TwoColumnLayout";
 import { RowMaterial } from "./Row";
 import { SelectMaterial } from "./Select";
 
@@ -17,5 +17,5 @@ export const layoutMaterials:IComponentMaterial[] = [
   RowMaterial,
   ColMaterial,
   HCFLayoutMaterial,
-  ProLayoutMaterial
+  TwoColumnLayoutMaterial
 ]

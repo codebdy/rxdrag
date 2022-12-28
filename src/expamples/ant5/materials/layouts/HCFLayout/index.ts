@@ -2,7 +2,7 @@ import { IComponentMaterial } from "core-react";
 import { colIcon } from "./icon";
 import { hCFLayoutLocales, hCFLayoutResourceLocales } from "./locales";
 import { hCFLayoutSchema } from "./schema";
-import { HCFLayout } from "expamples/ant5/components/HCFLayout";
+import { HCFLayout } from "expamples/ant5/components/layouts/HCFLayout";
 import { HeaderMaterial } from "../Header";
 import { FooterMaterial } from "../Footer";
 import { ContentMaterial } from "../Content";

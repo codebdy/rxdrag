@@ -1,19 +1,19 @@
 import { IComponentMaterial } from "core-react";
 import { colIcon } from "./icon";
-import { proLayoutLocales, proLayoutResourceLocales } from "./locales";
-import { prosLayoutSchema } from "./schema";
+import { twoColumnLayoutLocales, twoColumnLayoutResourceLocales } from "./locales";
 import { HeaderMaterial } from "../Header";
 import { FooterMaterial } from "../Footer";
 import { ContentMaterial } from "../Content";
-import { ProLayout } from "expamples/ant5/components/ProLayout";
-import { SiderMaterial } from "../Sider";
+import { SiderMaterial } from "../../Sider";
+import { TwoColumnLayout } from "expamples/ant5/components/layouts/TowColumnLayout";
+import { prosLayoutSchema } from "./schema";
 
-const name = "ProLayout"
-export const ProLayoutMaterial: IComponentMaterial = {
+const name = "TwoColumnLayout"
+export const TwoColumnLayoutMaterial: IComponentMaterial = {
   componentName: name,
-  component: ProLayout,
-  designer: ProLayout,
-  designerLocales: proLayoutLocales,
+  component: TwoColumnLayout,
+  designer: TwoColumnLayout,
+  designerLocales: twoColumnLayoutLocales,
   designerSchema: prosLayoutSchema,
   resource: {
     name: name,
@@ -50,7 +50,7 @@ export const ProLayoutMaterial: IComponentMaterial = {
   },
   icon: colIcon,
   color: "#dfa324",
-  resourceLocales: proLayoutResourceLocales,
+  resourceLocales: twoColumnLayoutResourceLocales,
   behaviorRule: {
     droppable: false,
   },
