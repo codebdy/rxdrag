@@ -1,4 +1,4 @@
-import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, BookOutlined, SettingOutlined, DollarCircleOutlined, ShoppingOutlined, CarOutlined, EllipsisOutlined } from "@ant-design/icons"
+import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, BookOutlined, SettingOutlined, DollarCircleOutlined, ShoppingOutlined, CarOutlined, EllipsisOutlined, RocketOutlined, ScheduleOutlined, SoundOutlined, StarOutlined, GiftOutlined } from "@ant-design/icons"
 import { Avatar, Badge, Card, Col, ConfigProvider, Layout, Menu, Row, theme, Typography } from "antd"
 import React from "react"
 import { forwardRef, memo, useState } from "react"
@@ -163,7 +163,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                     fontWeight: "bold",
                   }}>
                     <div style={{ paddingBottom: 8 }}>
-                      <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
+                      <Avatar style={{ backgroundColor: 'lightblue' }} icon={<GiftOutlined />} />
                     </div>
                     <Text style={{ fontSize: 12, fontWeight: "bold", }}>差旅申请</Text>
                   </Col>
@@ -175,7 +175,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                     fontWeight: "bold",
                   }}>
                     <div style={{ paddingBottom: 8 }}>
-                      <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
+                      <Avatar style={{ backgroundColor: 'orange' }} icon={<RocketOutlined />} />
                     </div>
                     <Text style={{ fontSize: 12, fontWeight: "bold", }}>订舱申请</Text>
                   </Col>
@@ -187,7 +187,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                     fontWeight: "bold",
                   }}>
                     <div style={{ paddingBottom: 8 }}>
-                      <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
+                      <Avatar style={{ backgroundColor: 'lightred' }} icon={<StarOutlined />} />
                     </div>
                     <Text style={{ fontSize: 12, fontWeight: "bold", }}>用章流程</Text>
                   </Col>
@@ -200,7 +200,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                     fontWeight: "bold",
                   }}>
                     <div style={{ paddingBottom: 8 }}>
-                      <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
+                      <Avatar style={{ backgroundColor: '#1890ff' }} icon={<CarOutlined />} />
                     </div>
                     <Text style={{ fontSize: 12, fontWeight: "bold", }}>用车申请</Text>
                   </Col>
@@ -212,7 +212,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                     fontWeight: "bold",
                   }}>
                     <div style={{ paddingBottom: 8 }}>
-                      <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
+                      <Avatar style={{ backgroundColor: 'lightblue' }} icon={<ScheduleOutlined />} />
                     </div>
                     <Text style={{ fontSize: 12, fontWeight: "bold", }}>请假申请</Text>
                   </Col>
@@ -224,7 +224,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                     fontWeight: "bold",
                   }}>
                     <div style={{ paddingBottom: 8 }}>
-                      <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<CarOutlined />} />
+                      <Avatar style={{ backgroundColor: 'lightgreen' }} icon={<SoundOutlined />} />
                     </div>
                     <Text style={{ fontSize: 12, fontWeight: "bold", }}>评价反馈</Text>
                   </Col>
