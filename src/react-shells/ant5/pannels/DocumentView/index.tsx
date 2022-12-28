@@ -31,21 +31,7 @@ export const DocumentView = memo((
           <Divider type="vertical" style={{ height: 16 }} />
           <CanvasSize />
           <div style={{ flex: 1 }}></div>
-          <Select
-            size="small"
-            defaultValue="page"
-            options={[
-              {
-                value: 'frame',
-                label: '框架',
-              },
-              {
-                value: 'page',
-                label: '页面',
-              },
-            ]}
-          />
-          <Divider type="vertical" />
+
           <ViewButtons />
         </CanvasToolbar>
         <Viewport>
