@@ -52,11 +52,13 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
         />
       </Sider>
       <Layout className="site-layout">
-        <Header style={{ padding: 0, background: colorBgContainer, position: "sticky", top: 0, zIndex: 1 }}>
+        <Header style={{ padding: 0, paddingRight: 16, background: colorBgContainer, position: "sticky", top: 0, zIndex: 1, display: "flex", alignItems: "center" }}>
           {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
             className: 'trigger',
             onClick: () => setCollapsed(!collapsed),
           })}
+          <div style={{ flex: 1 }}></div>
+          <Avatar icon={<UserOutlined />} />
         </Header>
         <Content
           style={{
