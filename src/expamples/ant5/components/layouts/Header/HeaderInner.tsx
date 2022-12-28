@@ -6,6 +6,7 @@ const { Header: AntdHeader, } = Layout
 export type HeaderProps = {
   style?: CSSProperties,
   children?:React.ReactNode,
+  sticky?: boolean,
 }
 
 export const HeaderInner = memo(forwardRef<HTMLDivElement, HeaderProps>((

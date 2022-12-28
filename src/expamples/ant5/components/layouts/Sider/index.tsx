@@ -7,13 +7,13 @@ import { Trigger } from "../Trigger"
 const { Sider: AntdSider, } = Layout
 
 export type SiderProps = {
-  isDark?: boolean
+  dark?: boolean
   hasTrigger?: boolean
 }
 
 export const Sider = memo(forwardRef<HTMLDivElement, SiderProps>((
   props, ref) => {
-  const { hasTrigger, isDark, ...other } = props;
+  const { hasTrigger, dark, ...other } = props;
   const { collapsed } = useLayoutParams() || {}
   return (
     <AntdSider

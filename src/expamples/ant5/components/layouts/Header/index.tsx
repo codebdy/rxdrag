@@ -1,5 +1,4 @@
-import { UserOutlined } from "@ant-design/icons"
-import { Avatar } from "antd"
+import { ConfigProvider, theme } from "antd"
 import { forwardRef, memo, CSSProperties } from "react"
 import { Trigger } from "../Trigger"
 import { HeaderInner } from "./HeaderInner"
@@ -7,21 +6,28 @@ import { HeaderInner } from "./HeaderInner"
 export type HeaderProps = {
   style?: CSSProperties
   hasTrigger?: boolean
-  isDark?: boolean
+  dark?: boolean,
+  children?: React.ReactNode,
+  sticky?: boolean,
 }
 
 export const Header = memo(forwardRef<HTMLDivElement, HeaderProps>((
   props, ref) => {
-  const { hasTrigger = true, isDark, ...other } = props;
+  const { hasTrigger = true, dark, children, ...other } = props;
 
   return (
-    <HeaderInner
-      ref={ref}
-      {...other}
+    <ConfigProvider
+      theme={{
+        algorithm: dark ? theme.darkAlgorithm : theme.defaultAlgorithm
+      }}
     >
-      {hasTrigger && <Trigger />}
-      <div style={{ flex: 1 }}></div>
-      <Avatar icon={<UserOutlined />} />
-    </HeaderInner>
+      <HeaderInner
+        ref={ref}
+        {...other}
+      >
+        {hasTrigger && <Trigger />}
+        {children}
+      </HeaderInner>
+    </ConfigProvider>
   )
 }))
