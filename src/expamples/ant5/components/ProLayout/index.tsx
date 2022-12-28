@@ -242,7 +242,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                   </Col>
                 </Row>
               </Card>
-              <img width={"100%"} style={{marginTop: 16, borderRadius: 5}} alt="ad" src="/imgs/ad.jpg"/>
+              <img width={"100%"} style={{ marginTop: 16, borderRadius: 5 }} alt="ad" src="/imgs/ad.jpg" />
               <Card
                 style={{ backgroundColor: colorBgContainer, marginTop: 16 }}
                 title="使用帮助"
@@ -256,10 +256,10 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
 
               </Card>
 
-              <div>
-                更新日志 <br />
-                反馈 <br />
-                服务协议 <br />
+              <div style={{marginTop: 16}}>
+                <Text>更新日志</Text> <br />
+                <Text>反馈</Text> <br />
+                <Text>服务协议</Text> <br />
               </div>
             </Col>
           </Row>
