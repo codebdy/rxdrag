@@ -52,23 +52,18 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
             onClick: () => setCollapsed(!collapsed),
           })}
         </Header>
-        <Breadcrumb style={{marginTop: 16, marginLeft:16}}>
-          <Breadcrumb.Item href="">
-            <HomeOutlined />
-          </Breadcrumb.Item>
-          <Breadcrumb.Item href="">
-            <UserOutlined />
-            <span>Application List</span>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>Application</Breadcrumb.Item>
-        </Breadcrumb>
         <Content
           style={{
             minHeight: 280,
             padding: 16,
           }}
         >
-          <div>
+          <div style={{
+            background: "url(/imgs/hero.png) center",
+            padding: 16,
+            color: "#fff",
+            borderRadius: 4,
+          }}>
             <div>Hi, 欢迎使用 Apper 低代码平台！</div>
             <div>
               轻松创建、部署、管理您的Mes应用，提升开发效率，降低业务成本。
