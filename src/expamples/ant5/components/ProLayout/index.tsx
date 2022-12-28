@@ -1,4 +1,4 @@
-import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, BookOutlined } from "@ant-design/icons"
+import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, BookOutlined, SettingOutlined } from "@ant-design/icons"
 import { Card, Col, ConfigProvider, Layout, Menu, Row, theme, Typography } from "antd"
 import React from "react"
 import { forwardRef, memo, useState } from "react"
@@ -48,7 +48,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
         />
       </Sider>
       <Layout className="site-layout">
-        <Header style={{ padding: 0, background: colorBgContainer, position: "sticky", top: 0, }}>
+        <Header style={{ padding: 0, background: colorBgContainer, position: "sticky", top: 0, zIndex: 1 }}>
           {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
             className: 'trigger',
             onClick: () => setCollapsed(!collapsed),
@@ -71,7 +71,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                   background: "url(/imgs/hero.png) center",
                   padding: "8px 24px 32px 24px",
                   color: "#fff",
-                  borderRadius: 4,
+                  borderRadius: 6,
                 }}>
                   <Title level={4}>Hi, 欢迎使用 Apper 低代码平台！</Title>
                   <Text>
@@ -84,13 +84,48 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
           </Row>
           <Row gutter={16} style={{ marginTop: 16 }}>
             <Col span={16}>
-              <Card style={{ backgroundColor: colorBgContainer}}>
-                <p>Card content</p>
-                <p>Card content</p>
-                <p>Card content</p>
+              <Card style={{ backgroundColor: colorBgContainer }}>
+                <Row gutter={16}>
+                  <Col span={6}>
+                    客户总数
+                  </Col>
+                  <Col span={6}>
+                    重点客户
+                  </Col>
+                  <Col span={6}>
+                    普通客户
+                  </Col>
+                  <Col span={6}>
+                    待回复
+                  </Col>
+                </Row>
+              </Card>
+              <Card style={{ backgroundColor: colorBgContainer, marginTop: 16 }} title={"待办事项"}>
+                <Row gutter={16}>
+                  <Col span={6}>
+                    发起申请
+                  </Col>
+                  <Col span={6}>
+                    我的待办
+                  </Col>
+                  <Col span={6}>
+                    申请中
+                  </Col>
+                  <Col span={6}>
+                    抄送给我
+                  </Col>
+                </Row>
               </Card>
             </Col>
-            <Col span={8}>right</Col>
+            <Col span={8}>
+              <Card
+                style={{ backgroundColor: colorBgContainer }}
+                title="快速入口"
+                extra={<SettingOutlined />}
+              >
+                Card content
+              </Card>
+            </Col>
           </Row>
         </Content>
         <Footer>Footer</Footer>
