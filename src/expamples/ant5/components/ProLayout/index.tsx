@@ -1,5 +1,5 @@
 import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, BookOutlined, SettingOutlined } from "@ant-design/icons"
-import { Card, Col, ConfigProvider, Layout, Menu, Row, theme, Typography } from "antd"
+import { Badge, Card, Col, ConfigProvider, Layout, Menu, Row, theme, Typography } from "antd"
 import React from "react"
 import { forwardRef, memo, useState } from "react"
 import "./style.less"
@@ -87,20 +87,23 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
               <Card style={{ backgroundColor: colorBgContainer }}>
                 <Row gutter={16}>
                   <Col span={6}>
-                    客户总数
+                    订单总数
                   </Col>
                   <Col span={6}>
-                    重点客户
+                    进行中
                   </Col>
                   <Col span={6}>
-                    普通客户
+                    待发货
                   </Col>
                   <Col span={6}>
-                    待回复
+                    待收款
                   </Col>
                 </Row>
               </Card>
-              <Card style={{ backgroundColor: colorBgContainer, marginTop: 16 }} title={"待办事项"}>
+              <Card
+                style={{ backgroundColor: colorBgContainer, marginTop: 16 }}
+                title={<Badge count={5}  color="grey" offset={[12, 7]}>待办事项</Badge>}
+              >
                 <Row gutter={16}>
                   <Col span={6}>
                     发起申请
@@ -116,6 +119,10 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                   </Col>
                 </Row>
               </Card>
+              <Card style={{ backgroundColor: colorBgContainer, marginTop: 16 }} title={"最新客户"}>
+              </Card>
+              <Card style={{ backgroundColor: colorBgContainer, marginTop: 16 }} title={"动态"}>
+              </Card>
             </Col>
             <Col span={8}>
               <Card
@@ -123,8 +130,36 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                 title="快速入口"
                 extra={<SettingOutlined />}
               >
-                Card content
+                <Row gutter={16}>
+                  <Col>付款申请</Col>
+                  <Col>采购申请</Col>
+                  <Col>差旅申请</Col>
+                  <Col>订舱申请</Col>
+                  <Col>用章流程</Col>
+                  <Col>客户商机</Col>
+                  <Col>用车申请</Col>
+                  <Col>请假申请</Col>
+                  <Col>全部应用</Col>
+                </Row>
               </Card>
+              <Card
+                style={{ backgroundColor: colorBgContainer, marginTop: 16 }}
+                title="使用帮助"
+              >
+                其它帮助
+              </Card>
+              <Card
+                style={{ backgroundColor: colorBgContainer, marginTop: 16 }}
+                title="公告"
+              >
+
+              </Card>
+
+              <div>
+                更新日志 <br />
+                反馈 <br />
+                服务协议 <br />
+              </div>
             </Col>
           </Row>
         </Content>
