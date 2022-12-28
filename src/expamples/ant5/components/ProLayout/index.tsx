@@ -1,7 +1,8 @@
-import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, BookOutlined, SettingOutlined, DollarCircleOutlined, ShoppingOutlined, CarOutlined, EllipsisOutlined, RocketOutlined, ScheduleOutlined, SoundOutlined, StarOutlined, GiftOutlined, LikeOutlined } from "@ant-design/icons"
-import { Avatar, Badge, Card, Col, ConfigProvider, Layout, Menu, Row, Statistic, theme, Typography } from "antd"
+import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, BookOutlined, SettingOutlined, DollarCircleOutlined, ShoppingOutlined, CarOutlined, EllipsisOutlined, RocketOutlined, ScheduleOutlined, SoundOutlined, StarOutlined, GiftOutlined, LikeOutlined, PlusOutlined } from "@ant-design/icons"
+import { Avatar, Badge, Button, Card, Col, ConfigProvider, Layout, Menu, Row, Statistic, theme, Typography } from "antd"
 import React from "react"
 import { forwardRef, memo, useState } from "react"
+import { Customers } from "./Customers"
 import { Jobs } from "./Jobs"
 import "./style.less"
 
@@ -104,10 +105,17 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
               <Card
                 style={{ backgroundColor: colorBgContainer, marginTop: 16 }}
                 title={<Badge count={5} size={'small'} color="grey" offset={[8, 8]}>待办事项</Badge>}
+                actions={[<Button type="text">查看全部 &gt;</Button>]}
               >
                 <Jobs />
               </Card>
-              <Card style={{ backgroundColor: colorBgContainer, marginTop: 16 }} title={"最新客户"}>
+              <Card
+                style={{ backgroundColor: colorBgContainer, marginTop: 16 }}
+                title={"最新客户"}
+                extra={<Button type="text" icon={<PlusOutlined />}>新建</Button>}
+                actions={[<Button type="text">查看全部 &gt;</Button>]}
+              >
+                <Customers />
               </Card>
               <Card style={{ backgroundColor: colorBgContainer, marginTop: 16 }} title={"动态"}>
               </Card>
@@ -245,14 +253,20 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
               </Card>
 
               <div style={{ marginTop: 16 }}>
-                <Text>更新日志</Text> <br />
-                <Text>反馈</Text> <br />
-                <Text>服务协议</Text> <br />
+                <p>
+                  <Text >更新日志</Text>
+                </p>
+                <p>
+                  <Text >反馈</Text>
+                </p>
+                <p>
+                  <Text >服务协议</Text>
+                </p>
               </div>
             </Col>
           </Row>
         </Content>
-        <Footer>Footer</Footer>
+        <Footer>Apper 低代码平台， 您的下一行未必是代码</Footer>
       </Layout>
     </Layout>
   )
