@@ -1,5 +1,5 @@
 import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, BookOutlined, SettingOutlined, DollarCircleOutlined, ShoppingOutlined, CarOutlined, EllipsisOutlined, RocketOutlined, ScheduleOutlined, SoundOutlined, StarOutlined, GiftOutlined, LikeOutlined, PlusOutlined, QuestionCircleOutlined } from "@ant-design/icons"
-import { Avatar, Badge, Button, Card, Col, ConfigProvider, Layout, Menu, Row, Statistic, theme, Typography } from "antd"
+import { Avatar, Badge, Button, Card, Col, ConfigProvider, Divider, Layout, Menu, Row, Statistic, theme, Typography } from "antd"
 import React from "react"
 import { forwardRef, memo, useState } from "react"
 import { Customers } from "./Customers"
@@ -247,6 +247,30 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
                 style={{ backgroundColor: colorBgContainer, marginTop: 16 }}
                 title="使用帮助"
               >
+                <div style={{ lineHeight: "30px", marginTop: -16 }}>
+                  <div>
+                    <Text>Apper 是什么?</Text>
+                  </div>
+                  <div>
+                    <Text>如何开发一个优秀模板?</Text>
+                  </div>
+                  <div>
+                    <Text>开发自定义组件需要注意的问题</Text>
+                  </div>
+                  <div>
+                    <Text>低代码该如何做?</Text>
+                  </div>
+                  <div>
+                    <Text>React的未来在哪里</Text>
+                  </div>
+                  <div>
+                    <Text>Redux， 繁琐背后的优雅</Text>
+                  </div>
+                  <div>
+                    <Text>查看全部</Text>
+                  </div>
+                </div>
+                <Divider />
                 <div>
                   <b>其它帮助</b>
                 </div>
