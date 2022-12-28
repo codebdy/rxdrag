@@ -3,6 +3,7 @@ import { ButtonMaterial } from "./Button";
 import { ColMaterial } from "./Col";
 import { HCFLayoutMaterial } from "./HCFLayout";
 import { InputMaterial } from "./Input";
+import { ProLayoutMaterial } from "./PropLayout";
 import { RowMaterial } from "./Row";
 import { SelectMaterial } from "./Select";
 
@@ -15,5 +16,6 @@ export const inputMaterials: IComponentMaterial[] = [
 export const layoutMaterials:IComponentMaterial[] = [
   RowMaterial,
   ColMaterial,
-  HCFLayoutMaterial
+  HCFLayoutMaterial,
+  ProLayoutMaterial
 ]
