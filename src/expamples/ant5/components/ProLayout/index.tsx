@@ -1,5 +1,5 @@
-import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined, BookOutlined } from "@ant-design/icons"
-import { Button, Col, ConfigProvider, Layout, Menu, Row, theme, Typography } from "antd"
+import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, BookOutlined } from "@ant-design/icons"
+import { Card, Col, ConfigProvider, Layout, Menu, Row, theme, Typography } from "antd"
 import React from "react"
 import { forwardRef, memo, useState } from "react"
 import "./style.less"
@@ -19,6 +19,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -68,7 +69,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
               >
                 <div style={{
                   background: "url(/imgs/hero.png) center",
-                  padding: "8px 16px 32px 16px",
+                  padding: "8px 24px 32px 24px",
                   color: "#fff",
                   borderRadius: 4,
                 }}>
@@ -81,7 +82,16 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
               </ConfigProvider>
             </Col>
           </Row>
-          Content
+          <Row gutter={16} style={{ marginTop: 16 }}>
+            <Col span={16}>
+              <Card style={{ backgroundColor: colorBgContainer}}>
+                <p>Card content</p>
+                <p>Card content</p>
+                <p>Card content</p>
+              </Card>
+            </Col>
+            <Col span={8}>right</Col>
+          </Row>
         </Content>
         <Footer>Footer</Footer>
       </Layout>
