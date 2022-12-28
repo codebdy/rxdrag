@@ -24,7 +24,7 @@ export function findIcons(keyword: string, categoryName?: string) {
   for (const category of iconCategories) {
     if (categoryName === category.name || !categoryName) {
       for (const group of category.iconGroups) {
-        const fundIcons = group.icons.filter(icon => (icon.iconKey.indexOf(keyword) > -1 || icon.keywords?.indexOf(keyword) > -1))
+        const fundIcons = group.icons.filter(icon => (icon.iconKey.indexOf(keyword) > -1 || (icon.keywords?.indexOf(keyword)||0) > -1))
         icons.push(...fundIcons);
       }
     }

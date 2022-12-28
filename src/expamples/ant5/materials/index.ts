@@ -6,11 +6,13 @@ import { InputMaterial } from "./Input";
 import { TwoColumnLayoutMaterial } from "./layouts/TwoColumnLayout";
 import { RowMaterial } from "./Row";
 import { SelectMaterial } from "./Select";
+import { LogoMaterial } from "./Logo";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
   InputMaterial,
-  SelectMaterial
+  SelectMaterial,
+  LogoMaterial,
 ]
 
 export const layoutMaterials:IComponentMaterial[] = [

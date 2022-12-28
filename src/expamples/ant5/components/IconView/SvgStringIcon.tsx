@@ -18,7 +18,7 @@ export const SvgStringIcon = React.forwardRef((
       {...rest}
       ref={ref}
       dangerouslySetInnerHTML={{
-        __html: icon
+        __html: icon || ""
       }}
     >
     </div>
