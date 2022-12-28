@@ -1,5 +1,5 @@
-import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, BookOutlined, SettingOutlined, DollarCircleOutlined, ShoppingOutlined, CarOutlined, EllipsisOutlined, RocketOutlined, ScheduleOutlined, SoundOutlined, StarOutlined, GiftOutlined } from "@ant-design/icons"
-import { Avatar, Badge, Card, Col, ConfigProvider, Layout, Menu, Row, theme, Typography } from "antd"
+import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined, BookOutlined, SettingOutlined, DollarCircleOutlined, ShoppingOutlined, CarOutlined, EllipsisOutlined, RocketOutlined, ScheduleOutlined, SoundOutlined, StarOutlined, GiftOutlined, LikeOutlined } from "@ant-design/icons"
+import { Avatar, Badge, Card, Col, ConfigProvider, Layout, Menu, Row, Statistic, theme, Typography } from "antd"
 import React from "react"
 import { forwardRef, memo, useState } from "react"
 import "./style.less"
@@ -86,17 +86,17 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
             <Col span={16}>
               <Card style={{ backgroundColor: colorBgContainer }}>
                 <Row gutter={16}>
-                  <Col span={6}>
-                    订单总数
+                  <Col span={8}>
+                    <Statistic title="订单总数" value={1128} prefix={<LikeOutlined />} />
                   </Col>
-                  <Col span={6}>
-                    进行中
+                  <Col span={5}>
+                    <Statistic title="进行中" value={10} />
                   </Col>
-                  <Col span={6}>
-                    待发货
+                  <Col span={5}>
+                    <Statistic title="待发货" value={3} />
                   </Col>
-                  <Col span={6}>
-                    待收款
+                  <Col span={5}>
+                    <Statistic title="待收款" value={2} />
                   </Col>
                 </Row>
               </Card>
@@ -256,7 +256,7 @@ export const ProLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
 
               </Card>
 
-              <div style={{marginTop: 16}}>
+              <div style={{ marginTop: 16 }}>
                 <Text>更新日志</Text> <br />
                 <Text>反馈</Text> <br />
                 <Text>服务协议</Text> <br />
