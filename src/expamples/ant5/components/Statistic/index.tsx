@@ -6,9 +6,11 @@ import { IIcon } from "react-shells/ant5/components/IconView/model";
 export const Statistic = memo(forwardRef<HTMLDivElement, StatisticProps & { prefix: IIcon }>((props, ref) => {
   const { prefix, ...other } = props;
   return (
-    <AntdStatistic
-      prefix={prefix && <IconView icon={prefix} />}
-      {...other}
-    />
+    <div ref={ref}>
+      <AntdStatistic
+        prefix={prefix && <IconView icon={prefix} />}
+        {...other}
+      />
+    </div>
   )
 }))

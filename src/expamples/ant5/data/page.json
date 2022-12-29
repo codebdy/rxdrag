@@ -98,7 +98,21 @@
                                 "style": {}
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "Statistic",
+                                  "props": {
+                                    "title": "订单总数",
+                                    "value": "1128",
+                                    "prefix": {
+                                      "iconKey": "DashboardOutlined"
+                                    },
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             },
                             {
                               "componentName": "Col",
@@ -107,7 +121,18 @@
                                 "style": {}
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "Statistic",
+                                  "props": {
+                                    "title": "进行中",
+                                    "value": "10",
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             },
                             {
                               "componentName": "Col",
@@ -116,7 +141,18 @@
                                 "style": {}
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "Statistic",
+                                  "props": {
+                                    "title": "待发货",
+                                    "value": "2",
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             },
                             {
                               "componentName": "Col",
@@ -125,7 +161,18 @@
                                 "style": {}
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "Statistic",
+                                  "props": {
+                                    "title": "待收款",
+                                    "value": "3",
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             }
                           ]
                         }
