@@ -31,6 +31,7 @@ import { BorderRadiusSetter } from "./components/border/radius";
 import { BorderSetter } from "./components/border";
 import { DisplaySetter } from "./components/DisplaySetter";
 import IconInput from "./components/IconInput";
+import { GutterInput } from "./components/GutterInput";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -107,7 +108,8 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         BorderRadiusSetter,
         BorderSetter,
         DisplaySetter,
-        IconInput
+        IconInput,
+        GutterInput
       }}
     >
 
