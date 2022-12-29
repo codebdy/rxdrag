@@ -190,19 +190,34 @@
                           "componentName": "DefaultSlot",
                           "props": {},
                           "slots": {},
-                          "children": []
-                        },
-                        "extra": {
-                          "componentName": "DefaultSlot",
-                          "props": {},
-                          "slots": {},
-                          "children": []
+                          "children": [
+                            {
+                              "componentName": "TextView",
+                              "props": {
+                                "content": "待办事项(5)",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
                         },
                         "actions": {
                           "componentName": "DefaultSlot",
                           "props": {},
                           "slots": {},
-                          "children": []
+                          "children": [
+                            {
+                              "componentName": "Button",
+                              "props": {
+                                "type": "text",
+                                "title": "查看全部 >",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
                         }
                       },
                       "children": []
@@ -259,7 +274,96 @@
                           ]
                         }
                       },
-                      "children": []
+                      "children": [
+                        {
+                          "componentName": "Row",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
                     }
                   ]
                 }
