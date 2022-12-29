@@ -1,5 +1,5 @@
 import { IComponentMaterial } from "core-react";
-import { Logo } from "react-shells/ant5/widgets/Logo";
+import { Logo } from "expamples/ant5/components/layouts/Logo";
 import { logoIcon } from "./icon";
 import { logoLocales, logoResourceLocales } from "./locales";
 import { logoSchema } from "./schema";
