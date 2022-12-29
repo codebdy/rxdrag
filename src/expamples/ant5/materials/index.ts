@@ -18,6 +18,11 @@ export const inputMaterials: IComponentMaterial[] = [
   SelectMaterial,
 ]
 
+export const displayMaterials: IComponentMaterial[] = [
+
+]
+
+
 export const layoutMaterials:IComponentMaterial[] = [
   RowMaterial,
   ColMaterial,

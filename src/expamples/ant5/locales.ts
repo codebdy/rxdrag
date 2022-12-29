@@ -4,6 +4,7 @@ export const toolsLocales: ILocales = {
   "zh-CN": {
     tools: {
       inputs: "输入控件",
+      displays: "显示控件",
       layouts: "布局控件"
     }
 
@@ -11,6 +12,7 @@ export const toolsLocales: ILocales = {
   'en-US': {
     tools: {
       inputs: "Inputs",
+      displays: "Displays",
       layouts: "Layouts"
     }
   }
