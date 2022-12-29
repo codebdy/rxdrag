@@ -12,12 +12,12 @@ export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
   InputMaterial,
   SelectMaterial,
-  LogoMaterial,
 ]
 
 export const layoutMaterials:IComponentMaterial[] = [
   RowMaterial,
   ColMaterial,
   HCFLayoutMaterial,
-  TwoColumnLayoutMaterial
+  TwoColumnLayoutMaterial,
+  LogoMaterial,
 ]
