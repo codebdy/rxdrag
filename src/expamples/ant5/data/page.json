@@ -375,7 +375,17 @@
           "componentName": "Layout.Footer",
           "props": {},
           "slots": {},
-          "children": []
+          "children": [
+            {
+              "componentName": "TextView",
+              "props": {
+                "content": "Apper Copyright ©2023",
+                "style": {}
+              },
+              "slots": {},
+              "children": []
+            }
+          ]
         }
       },
       "children": []
