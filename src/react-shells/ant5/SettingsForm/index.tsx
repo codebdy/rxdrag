@@ -126,8 +126,8 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
               <Form
                 labelAlign="left"
                 colon={false}
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
+                labelCol={{ span: 7 }}
+                wrapperCol={{ span: 17 }}
                 autoComplete="off"
                 style={{
                   flex: 1,

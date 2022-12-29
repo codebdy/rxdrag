@@ -61,7 +61,7 @@ const IconInput = memo((
   }, [reset])
 
   const handleConfirm = useCallback(() => {
-    let newValue: IIcon|undefined = {
+    let newValue: IIcon | undefined = {
       iconKey: iconType === IconType.Normal ? selectedIcon : undefined,
       svgString: iconType === IconType.Customized ? customizedIcon : undefined,
     }
@@ -80,14 +80,15 @@ const IconInput = memo((
       }}>
       <Badge
         count={
-          !isEmpertyIcon(inputValue) ?
-            <Button
-              icon={<CloseCircleFilled className="icon-remove-button-icon" />}
-              type="text"
-              size="small"
-              onClick={handelRemove}
-            />
-            : 0
+          <Button
+            style={{
+              display: isEmpertyIcon(inputValue) ? "none" : undefined
+            }}
+            icon={<CloseCircleFilled className="icon-remove-button-icon" />}
+            type="text"
+            size="small"
+            onClick={handelRemove}
+          />
         }
       >
         <Button
