@@ -1,0 +1,189 @@
+{
+  "componentName": "Root",
+  "slots": {},
+  "children": [
+    {
+      "componentName": "TwoColumnLayout",
+      "props": {},
+      "slots": {
+        "header": {
+          "componentName": "Layout.Header",
+          "props": {
+            "style": {
+              "display": "flex",
+              "justifyContent": "space-between",
+              "alignItems": "center"
+            }
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Avatar",
+              "props": {},
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        "sider": {
+          "componentName": "Layout.Sider",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Logo",
+              "slots": {},
+              "children": []
+            },
+            {
+              "componentName": "Menu",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        "content": {
+          "componentName": "Layout.Content",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "HeroTip",
+              "props": {
+                "style": {
+                  "marginTop": "16px",
+                  "marginRight": "16px",
+                  "marginBottom": "16px",
+                  "marginLeft": "16px"
+                }
+              },
+              "slots": {},
+              "children": []
+            },
+            {
+              "componentName": "Row",
+              "props": {
+                "style": {
+                  "marginTop": "12px",
+                  "marginRight": "12px",
+                  "marginBottom": "12px",
+                  "marginLeft": "12px"
+                },
+                "gutter": 8
+              },
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 16,
+                    "style": {}
+                  },
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Card",
+                      "props": {},
+                      "slots": {},
+                      "children": []
+                    },
+                    {
+                      "componentName": "Card",
+                      "props": {
+                        "style": {
+                          "marginTop": "16px"
+                        }
+                      },
+                      "slots": {
+                        "title": {
+                          "componentName": "DefaultSlot",
+                          "props": {},
+                          "slots": {},
+                          "children": []
+                        },
+                        "extra": {
+                          "componentName": "DefaultSlot",
+                          "props": {},
+                          "slots": {},
+                          "children": []
+                        },
+                        "actions": {
+                          "componentName": "DefaultSlot",
+                          "props": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Card",
+                      "props": {},
+                      "slots": {
+                        "title": {
+                          "componentName": "DefaultSlot",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "TextView",
+                              "props": {
+                                "content": "快捷入口",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        },
+                        "extra": {
+                          "componentName": "DefaultSlot",
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Button",
+                              "props": {
+                                "type": "text",
+                                "title": "",
+                                "icon": {
+                                  "iconKey": "SettingOutlined"
+                                },
+                                "shape": "circle",
+                                "style": {},
+                                "size": "middle"
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        }
+                      },
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "footer": {
+          "componentName": "Layout.Footer",
+          "props": {},
+          "slots": {},
+          "children": []
+        }
+      },
+      "children": []
+    }
+  ]
+}
