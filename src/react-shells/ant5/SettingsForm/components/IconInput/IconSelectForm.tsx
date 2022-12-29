@@ -2,7 +2,6 @@ import { Button, Input, Radio, RadioChangeEvent, Space, Tabs } from 'antd';
 import { useToolsTranslate } from 'core-react/hooks/useToolsTranslate';
 import React, { memo, useCallback, useMemo, useState } from 'react';
 import { findIcons, iconCategories } from 'react-shells/ant5/shared/icons/data';
-const { TabPane } = Tabs;
 
 export enum IconType {
   Normal = "normal",
@@ -56,75 +55,89 @@ const IconSelectForm = memo((
     onChangeCustomizedIcon(event.target.value)
   }, [onChangeCustomizedIcon])
 
-  return (
-    <Tabs defaultActiveKey={iconType || IconType.Normal} onChange={handleChange}>
-      <TabPane className='icon-pannel' tab={t("IconInput.IconLib")} key={IconType.Normal}>
-        <div className='icon-lib-actions'>
-          <Radio.Group
-            options={categoryButtons}
-            onChange={onCategoryChange}
-            value={categoryName}
-            optionType="button"
-            buttonStyle="solid"
-          />
-          <Input.Search allowClear style={{ flex: 1, marginLeft: 8 }} onChange={handleKeywordChange} />
-        </div>
-        {
-          keyword &&
-          <Space style={{ marginTop: 16 }} wrap>
-            {
-              findIcons(keyword, categoryName).map((icon, index) => {
-                return (
-                  <Button
-                    key={icon.iconKey + index}
-                    size='large'
-                    icon={<icon.icon />}
-                    type={icon.iconKey === selectedIcon ? "primary" : undefined}
-                    onClick={() => onSelected(icon.iconKey)}
-                  />
+  const items = useMemo(() => {
+    return [
+      {
+        key: IconType.Normal,
+        label: t("IconInput.IconLib"),
+        children: <>
+          <div className='icon-lib-actions'>
+            <Radio.Group
+              options={categoryButtons}
+              onChange={onCategoryChange}
+              value={categoryName}
+              optionType="button"
+              buttonStyle="solid"
+            />
+            <Input.Search allowClear style={{ flex: 1, marginLeft: 8 }} onChange={handleKeywordChange} />
+          </div>
+          {
+            keyword &&
+            <Space style={{ marginTop: 16 }} wrap>
+              {
+                findIcons(keyword, categoryName).map((icon, index) => {
+                  return (
+                    <Button
+                      key={icon.iconKey + index}
+                      size='large'
+                      icon={<icon.icon />}
+                      type={icon.iconKey === selectedIcon ? "primary" : undefined}
+                      onClick={() => onSelected(icon.iconKey)}
+                    />
 
-                )
-              })
-            }
-          </Space>
-        }
-        {
-          !keyword && getCategory(categoryName)?.iconGroups.map((group) => {
-            return (
-              <div key={group.name}>
-                <h3 style={{ padding: "16px 0" }}>
-                  {t("IconInput." + group.name)}
-                </h3>
-                <div>
-                  <Space wrap>
-                    {
-                      group.icons.map((icon, index) => {
-                        return (
-                          <Button
-                            key={icon.iconKey + index}
-                            size='large'
-                            icon={<icon.icon />}
-                            type={icon.iconKey === selectedIcon ? "primary" : undefined}
-                            onClick={() => onSelected(icon.iconKey)}
-                          />
-                        )
-                      })
-                    }
-                  </Space>
+                  )
+                })
+              }
+            </Space>
+          }
+          {
+            !keyword && getCategory(categoryName)?.iconGroups.map((group) => {
+              return (
+                <div key={group.name}>
+                  <h3 style={{ padding: "16px 0" }}>
+                    {t("IconInput." + group.name)}
+                  </h3>
+                  <div>
+                    <Space wrap>
+                      {
+                        group.icons.map((icon, index) => {
+                          return (
+                            <Button
+                              key={icon.iconKey + index}
+                              size='large'
+                              icon={<icon.icon />}
+                              type={icon.iconKey === selectedIcon ? "primary" : undefined}
+                              onClick={() => onSelected(icon.iconKey)}
+                            />
+                          )
+                        })
+                      }
+                    </Space>
+                  </div>
                 </div>
-              </div>
-            )
-          })
-        }
-
-      </TabPane>
-      <TabPane className='icon-pannel' tab={t("IconInput.Customized")} key={IconType.Customized}>
-        <Input.TextArea
+              )
+            })
+          }
+        </>
+      },
+      {
+        key: IconType.Customized,
+        label: t("IconInput.Customized"),
+        children: <Input.TextArea
           rows={16}
           value={customizedIcon}
           onChange={handleCustomizedChange}
         />
-      </TabPane>
+      }
+
+    ]
+  }, [categoryButtons, categoryName, customizedIcon, getCategory, handleCustomizedChange, handleKeywordChange, keyword, onCategoryChange, onSelected, selectedIcon, t])
+
+  return (
+    <Tabs
+      defaultActiveKey={iconType || IconType.Normal}
+      items={items}
+      onChange={handleChange}>
     </Tabs>
   )
 });
