@@ -1,4 +1,4 @@
-import { ConfigProvider, Layout, theme } from "antd"
+import { Layout } from "antd"
 import { forwardRef, memo } from "react"
 import { useLayoutParams } from "../context"
 import { Trigger } from "../Trigger"
@@ -16,20 +16,15 @@ export const Sider = memo(forwardRef<HTMLDivElement, SiderProps>((
   const { hasTrigger, dark = true, children, ...other } = props;
   const { collapsed } = useLayoutParams() || {}
   return (
-    <ConfigProvider
-      theme={{
-        algorithm: dark ? theme.darkAlgorithm : theme.defaultAlgorithm
-      }}
+    <AntdSider
+      ref={ref}
+      theme={dark ? 'dark' : 'light'}
+      trigger={hasTrigger ? <Trigger /> : null}
+      collapsible
+      collapsed={collapsed}
+      {...other}
     >
-      <AntdSider
-        ref={ref}
-        trigger={hasTrigger ? <Trigger /> : null}
-        collapsible
-        collapsed={collapsed}
-        {...other}
-      >
-        {children}
-      </AntdSider>
-    </ConfigProvider>
+      {children}
+    </AntdSider>
   )
 }))

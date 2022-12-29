@@ -26,6 +26,7 @@ export const Menu = memo(forwardRef<MenuRef>((props, ref) => {
           label: 'nav 3',
         },
       ]}
+      {...props}
     />
   )
 }))

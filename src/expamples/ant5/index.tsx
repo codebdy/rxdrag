@@ -28,7 +28,50 @@ export const Antd5Example = memo(() => {
   const schemas = useMemo(() => {
     return {
       componentName: "Root",
-      chidren:[],
+      "children": [
+        {
+          "componentName": "TwoColumnLayout",
+          "props": {},
+          "slots": {
+            "header": {
+              "componentName": "Layout.Header",
+              "props": {},
+              "slots": {},
+              "children": []
+            },
+            "sider": {
+              "componentName": "Layout.Sider",
+              "props": {},
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Logo",
+                  "slots": {},
+                  "children": []
+                },
+                {
+                  "componentName": "Menu",
+                  "slots": {},
+                  "children": []
+                }
+              ]
+            },
+            "content": {
+              "componentName": "Layout.Content",
+              "props": {},
+              "slots": {},
+              "children": []
+            },
+            "footer": {
+              "componentName": "Layout.Footer",
+              "props": {},
+              "slots": {},
+              "children": []
+            }
+          },
+          "children": []
+        }
+      ],
     }
   }, [])
 
