@@ -85,7 +85,51 @@
                       "componentName": "Card",
                       "props": {},
                       "slots": {},
-                      "children": []
+                      "children": [
+                        {
+                          "componentName": "Row",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 9,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 5,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 5,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 5,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
                     },
                     {
                       "componentName": "Card",
