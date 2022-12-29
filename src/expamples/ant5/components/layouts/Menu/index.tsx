@@ -1,10 +1,11 @@
-import { memo } from "react"
-import { Menu as AntdMenu } from "antd"
+import { forwardRef, memo } from "react"
+import { Menu as AntdMenu, MenuRef } from "antd"
 import { UserOutlined, VideoCameraOutlined, UploadOutlined } from "@ant-design/icons"
 
-export const Menu = memo(() => {
+export const Menu = memo(forwardRef<MenuRef>((props, ref) => {
   return (
     <AntdMenu
+      ref={ref}
       theme="dark"
       mode="inline"
       defaultSelectedKeys={['1']}
@@ -27,4 +28,4 @@ export const Menu = memo(() => {
       ]}
     />
   )
-})
+}))

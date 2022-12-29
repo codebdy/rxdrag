@@ -27,7 +27,7 @@ export const TwoColumnLayout = memo(forwardRef<HTMLDivElement, ProLayoutProps>((
 
   return (
     <LayoutContext.Provider value={params}>
-      <Layout>
+      <Layout ref={ref}>
         {sider}
         <Layout>
           {header}

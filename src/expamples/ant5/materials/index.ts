@@ -7,6 +7,7 @@ import { TwoColumnLayoutMaterial } from "./layouts/TwoColumnLayout";
 import { RowMaterial } from "./Row";
 import { SelectMaterial } from "./Select";
 import { LogoMaterial } from "./Logo";
+import { MenuMaterial } from "./Menu";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -20,4 +21,5 @@ export const layoutMaterials:IComponentMaterial[] = [
   HCFLayoutMaterial,
   TwoColumnLayoutMaterial,
   LogoMaterial,
+  MenuMaterial
 ]
