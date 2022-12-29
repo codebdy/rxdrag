@@ -38,6 +38,20 @@ export const settingLocales = {
       style: "样式",
       display: "显示",
 
+      confirm: "确认",
+      cancel: "取消",
+
+      IconInput: {
+        DialogTitle: "选择图标",
+        "Outlined": "线框风格",
+        "Filled": "实底风格",
+        "TwoTone": "双色风格",
+        "Directional": "方向性图标",
+        "Suggested": "提示建议性图标",
+        "Editor": "编辑类图标",
+        "IconLib": "图标库",
+        "Customized": "自定义"
+      }
     }
   },
   'en-US': {
@@ -78,6 +92,21 @@ export const settingLocales = {
 
       style: "Style",
       display: "display",
+
+      confirm: "Confirm",
+      cancel: "Cancel",
+
+      IconInput: {
+        DialogTitle: "Select Icon",
+        "Outlined": "Outlined",
+        "Filled": "Filled",
+        "TwoTone": "TwoTone",
+        "Directional": "Directional",
+        "Suggested": "Suggested",
+        "Editor": "Editor",
+        "IconLib": "IconLib",
+        "Customized": "Customized"
+      }
     }
   }
 }
