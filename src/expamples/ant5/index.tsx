@@ -91,11 +91,12 @@ export const Antd5Example = memo(() => {
                   "componentName": "Row",
                   "props": {
                     "style": {
-                      "marginTop": "16px",
-                      "marginRight": "16px",
-                      "marginBottom": "16px",
-                      "marginLeft": "16px"
-                    }
+                      "marginTop": "12px",
+                      "marginRight": "12px",
+                      "marginBottom": "12px",
+                      "marginLeft": "12px"
+                    },
+                    "gutter": 8
                   },
                   "slots": {},
                   "children": [
@@ -106,7 +107,33 @@ export const Antd5Example = memo(() => {
                         "style": {}
                       },
                       "slots": {},
-                      "children": []
+                      "children": [
+                        {
+                          "componentName": "Card",
+                          "props": {},
+                          "slots": {
+                            "title": {
+                              "componentName": "DefaultSlot",
+                              "props": {},
+                              "slots": {},
+                              "children": []
+                            },
+                            "extra": {
+                              "componentName": "DefaultSlot",
+                              "props": {},
+                              "slots": {},
+                              "children": []
+                            },
+                            "actions": {
+                              "componentName": "DefaultSlot",
+                              "props": {},
+                              "slots": {},
+                              "children": []
+                            }
+                          },
+                          "children": []
+                        }
+                      ]
                     },
                     {
                       "componentName": "Col",
@@ -115,7 +142,26 @@ export const Antd5Example = memo(() => {
                         "style": {}
                       },
                       "slots": {},
-                      "children": []
+                      "children": [
+                        {
+                          "componentName": "Card",
+                          "props": {},
+                          "slots": {
+                            "title": {
+                              "componentName": "DefaultSlot",
+                              "props": {},
+                              "slots": {},
+                              "children": []
+                            },
+                            "extra": {
+                              "componentName": "DefaultSlot",
+                              "slots": {},
+                              "children": []
+                            }
+                          },
+                          "children": []
+                        }
+                      ]
                     }
                   ]
                 }
