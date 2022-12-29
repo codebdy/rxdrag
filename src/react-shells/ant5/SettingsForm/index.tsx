@@ -109,7 +109,8 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         BorderSetter,
         DisplaySetter,
         IconInput,
-        GutterInput
+        GutterInput,
+        "Radio.Group": Radio.Group,
       }}
     >
 
