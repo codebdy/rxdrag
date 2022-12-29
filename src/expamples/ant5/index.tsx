@@ -86,6 +86,38 @@ export const Antd5Example = memo(() => {
                   },
                   "slots": {},
                   "children": []
+                },
+                {
+                  "componentName": "Row",
+                  "props": {
+                    "style": {
+                      "marginTop": "16px",
+                      "marginRight": "16px",
+                      "marginBottom": "16px",
+                      "marginLeft": "16px"
+                    }
+                  },
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Col",
+                      "props": {
+                        "span": 16,
+                        "style": {}
+                      },
+                      "slots": {},
+                      "children": []
+                    },
+                    {
+                      "componentName": "Col",
+                      "props": {
+                        "span": 8,
+                        "style": {}
+                      },
+                      "slots": {},
+                      "children": []
+                    }
+                  ]
                 }
               ]
             },

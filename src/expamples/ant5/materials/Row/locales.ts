@@ -3,15 +3,14 @@ export const rowLocales = {
     title: "行",
     description: "布局行",
     settings: {
-      type: "类型",
+      gutter: "空隙",
     }
 
   },
   'en-US': {
     title: "Row",
     settings: {
-      type: "Type",
-      title: "Title",
+      gutter: "Gutter",
     }
   }
 }
