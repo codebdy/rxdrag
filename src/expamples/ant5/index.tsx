@@ -73,7 +73,21 @@ export const Antd5Example = memo(() => {
               "componentName": "Layout.Content",
               "props": {},
               "slots": {},
-              "children": []
+              "children": [
+                {
+                  "componentName": "HeroTip",
+                  "props": {
+                    "style": {
+                      "marginTop": "16px",
+                      "marginRight": "16px",
+                      "marginBottom": "16px",
+                      "marginLeft": "16px"
+                    }
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              ]
             },
             "footer": {
               "componentName": "Layout.Footer",
