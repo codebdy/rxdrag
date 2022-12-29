@@ -6,13 +6,13 @@ export const avatarSchema: INodeSchema = createSchema(
     {
       componentName: "FormItem",
       props: {
-        label: "$title",
+        label: "$icon",
       },
       children: [
         {
-          componentName: "Input",
+          componentName: "IconInput",
           "x-field": {
-            name: "title",
+            name: "icon",
           },
         }
       ]
@@ -20,14 +20,14 @@ export const avatarSchema: INodeSchema = createSchema(
     {
       componentName: "FormItem",
       props: {
-        label: "$type",
+        label: "$shape",
       },
 
       children: [
         {
           componentName: "Select",
           "x-field": {
-            name: "type",
+            name: "shape",
           },
           props: {
             options: [
