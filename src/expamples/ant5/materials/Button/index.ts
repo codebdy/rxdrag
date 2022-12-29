@@ -4,20 +4,21 @@ import { buttonIcon } from "./icon";
 import { buttonLocales, buttonResourceLocales } from "./locales";
 import { buttonSchema } from "./schema";
 
+const name = "Button"
 export const ButtonMaterial: IComponentMaterial = {
-  componentName: "Button",
+  componentName: name,
   component: Button,
   designer: Button,
   designerLocales: buttonLocales,
   designerSchema: buttonSchema,
   resource: {
-    name: "Button",
+    name: name,
     elements: [
       {
-        componentName: "Button",
+        componentName: name,
         props: {
           type: "primary",
-          title: "Button",
+          title: name,
         }
       }
     ]

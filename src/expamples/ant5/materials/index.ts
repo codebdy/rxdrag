@@ -11,6 +11,7 @@ import { MenuMaterial } from "./Menu";
 import { AvatarMaterial } from "./Avatar";
 import { HeroTipMaterial } from "./HeroTip";
 import { CardMaterial } from "./Card";
+import { TextViewMaterial } from "./TextView";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -19,7 +20,7 @@ export const inputMaterials: IComponentMaterial[] = [
 ]
 
 export const displayMaterials: IComponentMaterial[] = [
-
+  TextViewMaterial
 ]
 
 
