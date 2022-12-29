@@ -44,7 +44,7 @@ export const CardMaterial: IComponentMaterial = {
   color: "#dfa324",
   resourceLocales: cardResourceLocales,
   behaviorRule: {
-    droppable: false,
+    droppable: true,
   },
   slots: {
     title: DefaultSlotMaterial,
