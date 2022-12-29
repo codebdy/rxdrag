@@ -73,9 +73,10 @@ const IconSelectForm = memo((
           keyword &&
           <Space style={{ marginTop: 16 }} wrap>
             {
-              findIcons(keyword, categoryName).map((icon) => {
+              findIcons(keyword, categoryName).map((icon, index) => {
                 return (
                   <Button
+                    key={icon.iconKey + index}
                     size='large'
                     icon={<icon.icon />}
                     type={icon.iconKey === selectedIcon ? "primary" : undefined}
@@ -90,16 +91,17 @@ const IconSelectForm = memo((
         {
           !keyword && getCategory(categoryName)?.iconGroups.map((group) => {
             return (
-              <div>
+              <div key={group.name}>
                 <h3 style={{ padding: "16px 0" }}>
                   {t("IconInput." + group.name)}
                 </h3>
                 <div>
                   <Space wrap>
                     {
-                      group.icons.map((icon) => {
+                      group.icons.map((icon, index) => {
                         return (
                           <Button
+                            key={icon.iconKey + index}
                             size='large'
                             icon={<icon.icon />}
                             type={icon.iconKey === selectedIcon ? "primary" : undefined}
