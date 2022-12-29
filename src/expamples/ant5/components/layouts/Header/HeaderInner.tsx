@@ -1,17 +1,18 @@
 import { Layout, theme } from "antd"
 import { forwardRef, memo, CSSProperties } from "react"
+import "./style.less"
 
 const { Header: AntdHeader, } = Layout
 
 export type HeaderProps = {
   style?: CSSProperties,
-  children?:React.ReactNode,
+  children?: React.ReactNode,
   sticky?: boolean,
 }
 
 export const HeaderInner = memo(forwardRef<HTMLDivElement, HeaderProps>((
   props, ref) => {
-    const {style, children, ...other} = props;
+  const { style, children, ...other } = props;
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -19,7 +20,8 @@ export const HeaderInner = memo(forwardRef<HTMLDivElement, HeaderProps>((
   return (
     <AntdHeader
       ref={ref}
-      style={{ padding: 0, paddingRight: 16, background: colorBgContainer, position: "sticky", top: 0, zIndex: 1, display: "flex", alignItems: "center", ...style }}
+      className="rx-top-bar"
+      style={{ background: colorBgContainer, ...style }}
       {...other}
     >
       {children}

@@ -35,9 +35,22 @@ export const Antd5Example = memo(() => {
           "slots": {
             "header": {
               "componentName": "Layout.Header",
-              "props": {},
+              "props": {
+                "style": {
+                  "display": "flex",
+                  "justifyContent": "space-between",
+                  "alignItems": "center"
+                }
+              },
               "slots": {},
-              "children": []
+              "children": [
+                {
+                  "componentName": "Avatar",
+                  "props": {},
+                  "slots": {},
+                  "children": []
+                }
+              ]
             },
             "sider": {
               "componentName": "Layout.Sider",

@@ -1,97 +1,79 @@
 import { INodeSchema } from "core";
+import { createSchema } from "react-shells/ant5/shared/createSchema";
 
-export const headerSchema: INodeSchema = {
-  componentName: "Tabs",
-  props: {},
-  "x-field": {
-    type: "object",
-    name: "props",
-  },
-  children: [
+export const headerSchema: INodeSchema = createSchema(
+  [
     {
-      componentName: "TabPanel",
+      componentName: "FormItem",
       props: {
-        title: "$properties"
+        label: "$title",
       },
       children: [
         {
-          componentName: "FormItem",
-          props: {
-            label: "$title",
-          },
+          componentName: "Input",
           "x-field": {
             name: "title",
           },
-          children: [
-            {
-              componentName: "Input"
-            }
-          ]
-        },
-        {
-          componentName: "FormItem",
-          props: {
-            label: "$type",
-          },
-          "x-field": {
-            name: "type",
-          },
-          children: [
-            {
-              componentName: "Select",
-              props: {
-                options: [
-                  {
-                    value: 'primary',
-                    label: 'Primary',
-                  },
-                  {
-                    value: 'ghost',
-                    label: 'Ghost',
-                  },
-                  {
-                    value: 'dashed',
-                    label: 'Dashed',
-                  },
-                  {
-                    value: 'link',
-                    label: 'Link',
-                  },
-                  {
-                    value: 'text',
-                    label: 'Text',
-                  },
-                  {
-                    value: 'default',
-                    label: 'Default',
-                  },
-                ]
-              }
-            }
-          ]
-        },
-        {
-          componentName: "FormItem",
-          props: {
-            label: "$disabled",
-            valuePropName: "checked",
-          },
-          "x-field": {
-            name: "disabled",
-          },
-          children: [
-            {
-              componentName: "Switch"
-            }
-          ]
-        },
+        }
       ]
     },
     {
-      componentName: "TabPanel",
+      componentName: "FormItem",
       props: {
-        title: "样式"
+        label: "$type",
       },
-    }
+
+      children: [
+        {
+          componentName: "Select",
+          "x-field": {
+            name: "type",
+          },
+          props: {
+            options: [
+              {
+                value: 'primary',
+                label: 'Primary',
+              },
+              {
+                value: 'ghost',
+                label: 'Ghost',
+              },
+              {
+                value: 'dashed',
+                label: 'Dashed',
+              },
+              {
+                value: 'link',
+                label: 'Link',
+              },
+              {
+                value: 'text',
+                label: 'Text',
+              },
+              {
+                value: 'default',
+                label: 'Default',
+              },
+            ]
+          }
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$disabled",
+      },
+      children: [
+        {
+          componentName: "Switch",
+          "x-field": {
+            name: "disabled",
+            valuePropName: "checked",
+          },
+        }
+      ]
+    },
   ]
-}
+)
