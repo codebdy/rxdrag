@@ -10,6 +10,7 @@ import { LogoMaterial } from "./Logo";
 import { MenuMaterial } from "./Menu";
 import { AvatarMaterial } from "./Avatar";
 import { HeroTipMaterial } from "./HeroTip";
+import { CardMaterial } from "./Card";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -25,5 +26,6 @@ export const layoutMaterials:IComponentMaterial[] = [
   LogoMaterial,
   MenuMaterial,
   AvatarMaterial,
-  HeroTipMaterial
+  HeroTipMaterial,
+  CardMaterial,
 ]

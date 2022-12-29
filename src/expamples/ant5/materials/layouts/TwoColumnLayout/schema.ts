@@ -119,6 +119,20 @@ export const prosLayoutSchema: INodeSchema = {
         {
           componentName: "FormItem",
           props: {
+            label: "$sider",
+          },
+          children: [
+            {
+              componentName: "SlotSwitch",
+              props: {
+                name: "sider"
+              }
+            }
+          ]
+        },
+        {
+          componentName: "FormItem",
+          props: {
             label: "$content",
           },
           children: [

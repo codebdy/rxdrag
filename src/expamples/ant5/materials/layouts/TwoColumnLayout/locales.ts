@@ -4,6 +4,7 @@ export const twoColumnLayoutLocales = {
     description: "一种布局",
     settings: {
       header: "页眉",
+      sider: "侧边栏",
       content: "内容区",
       footer: "页脚",
     }
@@ -13,6 +14,7 @@ export const twoColumnLayoutLocales = {
     title: "Pro layout",
     settings: {
       header: "Header",
+      sider: "Sider",
       content: "Content",
       footer: "Footer",
     }
