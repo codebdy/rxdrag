@@ -16,6 +16,7 @@ import { StatisticMaterial } from "./Statistic";
 import { BoxMaterial } from "./Box";
 import { IconViewMaterial } from "./IconView";
 import { JobsMaterial } from "./business/Jobs";
+import { RightAdMaterial } from "./business/RightAd";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -44,5 +45,6 @@ export const layoutMaterials:IComponentMaterial[] = [
 ]
 
 export const businessMaterials:IComponentMaterial[] = [
-  JobsMaterial
+  JobsMaterial,
+  RightAdMaterial
 ]

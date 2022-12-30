@@ -821,6 +821,11 @@
                           ]
                         }
                       ]
+                    },
+                    {
+                      "componentName": "RightAd",
+                      "slots": {},
+                      "children": []
                     }
                   ]
                 }
