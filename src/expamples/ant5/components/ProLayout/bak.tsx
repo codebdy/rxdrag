@@ -3,7 +3,7 @@ import { Avatar, Badge, Button, Card, Col, ConfigProvider, Divider, Layout, Menu
 import React from "react"
 import { forwardRef, memo, useState } from "react"
 import { Customers } from "./Customers"
-import { Jobs } from "./Jobs"
+import { Jobs } from "../Jobs"
 import { News } from "./News"
 import { Notices } from "./Notices"
 import "./style.less"
