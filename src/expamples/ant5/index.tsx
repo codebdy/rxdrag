@@ -1,4 +1,4 @@
-import { GithubFilled } from "@ant-design/icons"
+import { FileOutlined, GithubFilled } from "@ant-design/icons"
 import { Button, Space } from "antd"
 import { memo, useCallback, useMemo, useState } from "react"
 import { Antd5Editor } from "react-shells/ant5"
@@ -15,6 +15,7 @@ import { SaveButton } from "./widgets/SaveButton"
 import page from "./data/page.json"
 
 export enum LeftNavType {
+  pages = "pages",
   compoents = "components",
   outline = "outline",
   history = "history",
@@ -64,6 +65,11 @@ export const Antd5Example = memo(() => {
           //showTitle
           defaultActivedKey="components"
           items={[
+            {
+              key: LeftNavType.pages,
+              title: "pages",
+              icon: <FileOutlined style={{ fontSize: 18 }} />
+            },
             {
               key: LeftNavType.compoents,
               title: "components",
