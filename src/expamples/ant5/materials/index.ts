@@ -13,6 +13,7 @@ import { HeroTipMaterial } from "./HeroTip";
 import { CardMaterial } from "./Card";
 import { TextViewMaterial } from "./TextView";
 import { StatisticMaterial } from "./Statistic";
+import { BoxMaterial } from "./Box";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -36,4 +37,5 @@ export const layoutMaterials:IComponentMaterial[] = [
   AvatarMaterial,
   HeroTipMaterial,
   CardMaterial,
+  BoxMaterial,
 ]
