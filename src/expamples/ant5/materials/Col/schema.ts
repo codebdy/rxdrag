@@ -1,97 +1,21 @@
 import { INodeSchema } from "core";
+import { createSchema } from "react-shells/ant5/shared/createSchema";
 
-export const rowSchema: INodeSchema = {
-  componentName: "Tabs",
-  props: {},
-  "x-field": {
-    type: "object",
-    name: "props",
-  },
-  children: [
+export const rowSchema: INodeSchema = createSchema(
+  [
     {
-      componentName: "TabPanel",
+      componentName: "FormItem",
       props: {
-        title: "$properties"
+        label: "$span",
       },
       children: [
         {
-          componentName: "FormItem",
-          props: {
-            label: "$title",
-          },
+          componentName: "InputNumber",
           "x-field": {
-            name: "title",
+            name: "span",
           },
-          children: [
-            {
-              componentName: "Input"
-            }
-          ]
-        },
-        {
-          componentName: "FormItem",
-          props: {
-            label: "$type",
-          },
-          "x-field": {
-            name: "type",
-          },
-          children: [
-            {
-              componentName: "Select",
-              props: {
-                options: [
-                  {
-                    value: 'primary',
-                    label: 'Primary',
-                  },
-                  {
-                    value: 'ghost',
-                    label: 'Ghost',
-                  },
-                  {
-                    value: 'dashed',
-                    label: 'Dashed',
-                  },
-                  {
-                    value: 'link',
-                    label: 'Link',
-                  },
-                  {
-                    value: 'text',
-                    label: 'Text',
-                  },
-                  {
-                    value: 'default',
-                    label: 'Default',
-                  },
-                ]
-              }
-            }
-          ]
-        },
-        {
-          componentName: "FormItem",
-          props: {
-            label: "$disabled",
-            valuePropName: "checked",
-          },
-          "x-field": {
-            name: "disabled",
-          },
-          children: [
-            {
-              componentName: "Switch"
-            }
-          ]
-        },
+        }
       ]
     },
-    {
-      componentName: "TabPanel",
-      props: {
-        title: "样式"
-      },
-    }
   ]
-}
+)

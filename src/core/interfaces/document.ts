@@ -95,6 +95,7 @@ export interface NodeBehavior {
   isDeletable: () => boolean
   isCloneable: () => boolean
   isNoPlaceholder: () => boolean
+  isNoRef: () => boolean
 }
 
 export interface INodeSchema<IField = any> extends INodeMeta<IField> {

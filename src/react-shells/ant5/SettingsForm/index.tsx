@@ -30,6 +30,8 @@ import { PaddingStyleSetter } from "./components/padding";
 import { BorderRadiusSetter } from "./components/border/radius";
 import { BorderSetter } from "./components/border";
 import { DisplaySetter } from "./components/DisplaySetter";
+import IconInput from "./components/IconInput";
+import { GutterInput } from "./components/GutterInput";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -105,7 +107,10 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         PaddingStyleSetter,
         BorderRadiusSetter,
         BorderSetter,
-        DisplaySetter
+        DisplaySetter,
+        IconInput,
+        GutterInput,
+        "Radio.Group": Radio.Group,
       }}
     >
 
@@ -121,8 +126,8 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
               <Form
                 labelAlign="left"
                 colon={false}
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
+                labelCol={{ span: 7 }}
+                wrapperCol={{ span: 17 }}
                 autoComplete="off"
                 style={{
                   flex: 1,

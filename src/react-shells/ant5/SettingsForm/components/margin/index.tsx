@@ -35,8 +35,8 @@ export const MarginStyleSetter = memo((props: {
       keys={[
         'marginTop',
         'marginRight',
-        'marginBottom',
         'marginLeft',
+        'marginBottom',
       ]}
       title={title}
       title1={topTitle}

@@ -1,19 +1,58 @@
 import { IComponentMaterial } from "core-react";
 import { ButtonMaterial } from "./Button";
 import { ColMaterial } from "./Col";
-import { HCFLayoutMaterial } from "./HCFLayout";
+import { HCFLayoutMaterial } from "./layouts/HCFLayout";
 import { InputMaterial } from "./Input";
+import { TwoColumnLayoutMaterial } from "./layouts/TwoColumnLayout";
 import { RowMaterial } from "./Row";
 import { SelectMaterial } from "./Select";
+import { LogoMaterial } from "./Logo";
+import { MenuMaterial } from "./Menu";
+import { AvatarMaterial } from "./Avatar";
+import { HeroTipMaterial } from "./HeroTip";
+import { CardMaterial } from "./Card";
+import { TextViewMaterial } from "./TextView";
+import { StatisticMaterial } from "./Statistic";
+import { BoxMaterial } from "./Box";
+import { IconViewMaterial } from "./IconView";
+import { JobsMaterial } from "./business/Jobs";
+import { RightAdMaterial } from "./business/RightAd";
+import { DividerMaterial } from "./Divider";
+import { NewsMaterial } from "./business/News";
+import { CustomersMaterial } from "./business/Customers";
+import { NoticesMaterial } from "./business/Notices";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
   InputMaterial,
-  SelectMaterial
+  SelectMaterial,
 ]
+
+export const displayMaterials: IComponentMaterial[] = [
+  TextViewMaterial,
+  StatisticMaterial,
+  IconViewMaterial,
+  AvatarMaterial,
+]
+
 
 export const layoutMaterials:IComponentMaterial[] = [
   RowMaterial,
   ColMaterial,
-  HCFLayoutMaterial
+  HCFLayoutMaterial,
+  TwoColumnLayoutMaterial,
+  LogoMaterial,
+  MenuMaterial,
+  HeroTipMaterial,
+  CardMaterial,
+  BoxMaterial,
+  DividerMaterial,
+]
+
+export const businessMaterials:IComponentMaterial[] = [
+  JobsMaterial,
+  RightAdMaterial,
+  NewsMaterial,
+  CustomersMaterial,
+  NoticesMaterial,
 ]

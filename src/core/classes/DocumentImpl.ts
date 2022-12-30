@@ -70,6 +70,7 @@ export class DocumentImpl implements IDocument {
       sourceIds: [sourceId],
     }
     this.dispatch(this.createAction(DELETE_NODES, playload))
+    this.backup(HistoryableActionType.Remove)
   }
 
   removeSlot(id: string, name: string): void {

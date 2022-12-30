@@ -12,6 +12,7 @@ import { ThemeButton } from "react-shells/ant5/widgets/ThemeButton"
 import { toolsLocales } from "./locales"
 import { ResourceWidget } from "./ResourceWidget"
 import { SaveButton } from "./widgets/SaveButton"
+import page from "./data/page.json"
 
 export enum LeftNavType {
   compoents = "components",
@@ -26,10 +27,7 @@ export const Antd5Example = memo(() => {
   }, [])
 
   const schemas = useMemo(() => {
-    return {
-      componentName: "Root",
-      chidren:[],
-    }
+    return page
   }, [])
 
   return (

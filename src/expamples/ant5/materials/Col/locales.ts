@@ -3,15 +3,14 @@ export const colLocales = {
     title: "列",
     description: "布局列",
     settings: {
-      type: "类型",
+      span: "跨度",
     }
 
   },
   'en-US': {
     title: "Col",
     settings: {
-      type: "Type",
-      title: "Title",
+      span: "Span",
     }
   }
 }

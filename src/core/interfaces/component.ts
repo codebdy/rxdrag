@@ -31,6 +31,7 @@ export interface IBehaviorRule {
   allowAppendTo?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
   allowSiblingsTo?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
   noPlaceholder?: boolean,
+  noRef?: boolean,
 }
 
 export interface IDesignerParams {

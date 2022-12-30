@@ -15,11 +15,11 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const engine = useDesignerEngine()
   const behavior = useMemo(() => engine?.getNodeBehavior(node?.id || ""), [engine, node?.id])
 
-  useLayoutEffect(()=>{
-    setTimeout(()=>{
+  useLayoutEffect(() => {
+    setTimeout(() => {
       engine?.getShell().dispatch(new NodeMountedEvent(nodeId))
     }, 20)
-    
+
   }, [engine, nodeId])
 
   const handleRef = useCallback((element: HTMLElement | undefined) => {
@@ -59,7 +59,7 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const render = useCallback(() => {
     if (Component && node) {
       if (hasChildren) {
-        return <Component ref={handleRef} {...realProps} >
+        return <Component ref={!behavior?.isNoRef() ? handleRef : undefined} {...realProps} >
           {
             node.children?.map((childId: string) => {
               return <ComponentDesignerView key={childId} nodeId={childId} />;
@@ -67,19 +67,19 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
           }
         </Component >
       } else if (behavior?.isDroppable() && node.parentId) {
-        return <Component ref={handleRef} {...realProps}>
+        return <Component ref={!behavior?.isNoRef() ? handleRef : undefined} {...realProps}>
           {!behavior.isNoPlaceholder() && <PlaceHolder />}
         </Component>
       } else {
-        return <Component ref={handleRef} {...realProps} />
+        return <Component ref={!behavior?.isNoRef() ? handleRef : undefined} {...realProps} />
       }
     }
 
     return <></>
   }, [Component, behavior, handleRef, hasChildren, node, realProps])
 
-  useEffect(()=>{
-    return ()=>{
+  useEffect(() => {
+    return () => {
       engine?.getShell().dispatch(new NodeUnmountedEvent(nodeId))
     }
   }, [engine, nodeId])
