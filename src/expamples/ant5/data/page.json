@@ -20,7 +20,19 @@
             {
               "componentName": "Avatar",
               "props": {},
-              "slots": {},
+              "slots": {
+                "icon": {
+                  "componentName": "IconView",
+                  "props": {
+                    "icon": {
+                      "iconKey": "UserOutlined"
+                    },
+                    "style": {}
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              },
               "children": []
             }
           ]

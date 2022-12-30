@@ -1,5 +1,6 @@
+import { Avatar } from "antd";
 import { IComponentMaterial } from "core-react";
-import { Avatar } from "expamples/ant5/components/Avatar";
+import { IconViewMaterial } from "../IconView";
 import { avatarIcon } from "./icon";
 import { avatarLocales, avatarResourceLocales } from "./locales";
 import { avatarSchema } from "./schema";
@@ -20,6 +21,9 @@ export const AvatarMaterial: IComponentMaterial = {
         }
       }
     ]
+  },
+  slots: {
+    icon: IconViewMaterial,
   },
   icon: avatarIcon,
   color: "#dfa324",

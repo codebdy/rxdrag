@@ -6,56 +6,27 @@ export const avatarSchema: INodeSchema = createSchema(
     {
       componentName: "FormItem",
       props: {
-        label: "$icon",
-      },
-      children: [
-        {
-          componentName: "IconInput",
-          "x-field": {
-            name: "icon",
-          },
-        }
-      ]
-    },
-    {
-      componentName: "FormItem",
-      props: {
         label: "$shape",
       },
-
       children: [
         {
-          componentName: "Select",
+          componentName: "Radio.Group",
           "x-field": {
             name: "shape",
           },
           props: {
+            optionType: "button",
             options: [
               {
-                value: 'primary',
-                label: 'Primary',
+                label: "$circle",
+                value: "circle"
               },
               {
-                value: 'ghost',
-                label: 'Ghost',
+                label: "$square",
+                value: "square"
               },
-              {
-                value: 'dashed',
-                label: 'Dashed',
-              },
-              {
-                value: 'link',
-                label: 'Link',
-              },
-              {
-                value: 'text',
-                label: 'Text',
-              },
-              {
-                value: 'default',
-                label: 'Default',
-              },
-            ]
+            ],
+            defaultValue: "circle",
           }
         }
       ]
@@ -63,15 +34,44 @@ export const avatarSchema: INodeSchema = createSchema(
     {
       componentName: "FormItem",
       props: {
-        label: "$disabled",
+        label: "$color",
       },
       children: [
         {
-          componentName: "Switch",
+          componentName: "ColorInput",
           "x-field": {
-            name: "disabled",
-            valuePropName: "checked",
+            name: "color",
           },
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$size",
+      },
+      children: [
+        {
+          componentName: "InputNumber",
+          "x-field": {
+            name: "size",
+          },
+        }
+      ]
+    },
+  ],
+  [
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$icon",
+      },
+      children: [
+        {
+          componentName: "SlotSwitch",
+          props: {
+            name: "icon"
+          }
         }
       ]
     },

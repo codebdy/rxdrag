@@ -26,6 +26,7 @@ export const displayMaterials: IComponentMaterial[] = [
   TextViewMaterial,
   StatisticMaterial,
   IconViewMaterial,
+  AvatarMaterial,
 ]
 
 
@@ -36,7 +37,6 @@ export const layoutMaterials:IComponentMaterial[] = [
   TwoColumnLayoutMaterial,
   LogoMaterial,
   MenuMaterial,
-  AvatarMaterial,
   HeroTipMaterial,
   CardMaterial,
   BoxMaterial,
