@@ -34,20 +34,6 @@ export const avatarSchema: INodeSchema = createSchema(
     {
       componentName: "FormItem",
       props: {
-        label: "$color",
-      },
-      children: [
-        {
-          componentName: "ColorInput",
-          "x-field": {
-            name: "color",
-          },
-        }
-      ]
-    },
-    {
-      componentName: "FormItem",
-      props: {
         label: "$size",
       },
       children: [

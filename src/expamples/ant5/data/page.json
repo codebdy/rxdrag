@@ -324,16 +324,25 @@
                               "slots": {},
                               "children": [
                                 {
-                                  "componentName": "IconView",
+                                  "componentName": "Avatar",
                                   "props": {
-                                    "icon": {
-                                      "iconKey": "SettingOutlined"
-                                    },
-                                    "style": {},
-                                    "size": 24,
-                                    "color": "rgba(83,60,199,1)"
+                                    "style": {
+                                      "backgroundColor": "rgba(139,121,236,1)"
+                                    }
                                   },
-                                  "slots": {},
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "DollarCircleOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
                                   "children": []
                                 },
                                 {
