@@ -9,21 +9,20 @@ const { DirectoryTree } = Tree;
 const treeData: DataNode[] = [
   {
     title: '展示页',
-    key: '0-0',
+    key: 'displays',
     children: [
-      { title: '工作台', key: '0-0-0', isLeaf: true },
-      { title: '详情页', key: '0-0-1', isLeaf: true },
-      { title: '列表页', key: '0-0-2', isLeaf: true },
+      { title: '工作台', key: 'dashboard', isLeaf: true },
+      { title: '详情页', key: 'details', isLeaf: true },
+      { title: '列表页', key: 'list', isLeaf: true },
     ],
   },
   {
     title: '表单页',
-    key: '0-1',
+    key: 'forms',
     children: [
-      { title: '基础表单', key: '0-1-0', isLeaf: true },
-      { title: '分步表单', key: '0-1-1', isLeaf: true },
-      { title: '高级表单', key: '0-1-2', isLeaf: true },
-      { title: '分步表单', key: '0-1-3', isLeaf: true },
+      { title: '基础表单', key: 'basic-form', isLeaf: true },
+      { title: '分步表单', key: 'step-form', isLeaf: true },
+      { title: '高级表单', key: 'advance-form', isLeaf: true },
     ],
   },
 ];
@@ -47,7 +46,7 @@ export const PagesWidget = memo((
   return (
     <PaneContainer style={{ display: display ? undefined : "none" }}>
       <PaneTitle title="pages" />
-      <PanelContent style={{ paddingTop: 0 }}>
+      <PanelContent style={{ paddingTop: 8 }}>
         <DirectoryTree
           multiple
           defaultExpandAll
