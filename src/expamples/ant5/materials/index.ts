@@ -9,7 +9,7 @@ import { SelectMaterial } from "./Select";
 import { LogoMaterial } from "./Logo";
 import { MenuMaterial } from "./Menu";
 import { AvatarMaterial } from "./Avatar";
-import { HeroTipMaterial } from "./HeroTip";
+import { HeroTipMaterial } from "./business/HeroTip";
 import { CardMaterial } from "./Card";
 import { TextViewMaterial } from "./TextView";
 import { StatisticMaterial } from "./Statistic";
@@ -43,13 +43,13 @@ export const layoutMaterials:IComponentMaterial[] = [
   TwoColumnLayoutMaterial,
   LogoMaterial,
   MenuMaterial,
-  HeroTipMaterial,
   CardMaterial,
   BoxMaterial,
   DividerMaterial,
 ]
 
 export const businessMaterials:IComponentMaterial[] = [
+  HeroTipMaterial,
   JobsMaterial,
   RightAdMaterial,
   NewsMaterial,

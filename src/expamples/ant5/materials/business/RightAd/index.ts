@@ -20,7 +20,7 @@ export const RightAdMaterial: IComponentMaterial = {
     ]
   },
   icon: rightAdIcon,
-  color: "#dfa324",
+  color: "#8B572A",
   resourceLocales: rightAdResourceLocales,
   behaviorRule: {
     droppable: true,

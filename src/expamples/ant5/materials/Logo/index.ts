@@ -20,6 +20,6 @@ export const LogoMaterial: IComponentMaterial = {
     ]
   },
   icon: logoIcon,
-  color: "#dfa324",
+  color: "#3E2AD1",
   resourceLocales: logoResourceLocales,
 }

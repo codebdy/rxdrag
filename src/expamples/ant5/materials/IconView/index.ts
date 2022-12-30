@@ -20,6 +20,6 @@ export const IconViewMaterial: IComponentMaterial = {
     ]
   },
   icon: iconViewIcon,
-  color: "#dfa324",
+  color: "#8B79EC",
   resourceLocales: iconViewResourceLocales,
 }

@@ -20,7 +20,7 @@ export const CustomersMaterial: IComponentMaterial = {
     ]
   },
   icon: customersIcon,
-  color: "#dfa324",
+  color: "#8B79EC",
   resourceLocales: customersResourceLocales,
   behaviorRule: {
     droppable: true,
