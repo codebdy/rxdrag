@@ -2,6 +2,8 @@ export const iconViewLocales = {
   "zh-CN": {
     title: "图标",
     settings: {
+      size: "大小",
+      color: "颜色",
       icon: "图标",
     }
 
@@ -9,6 +11,8 @@ export const iconViewLocales = {
   'en-US': {
     title: "Icon",
     settings: {
+      size: "Size",
+      color: "Color",
       icon: "Icon",
     }
   }

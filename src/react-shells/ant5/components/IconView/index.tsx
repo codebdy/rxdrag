@@ -23,10 +23,11 @@ export interface IIconViewProps {
   icon?: IIcon;
   style?: CSSProperties,
   size?: number,
+  color?: string,
 }
 
 export const IconView = (props: IIconViewProps) => {
-  const { icon, size, ...other } = props;
+  const { icon, size, color, style, ...other } = props;
   if (isEmpertyIcon(icon)) {
     return <EmpertyIcon {...other} />;
   }
@@ -34,12 +35,12 @@ export const IconView = (props: IIconViewProps) => {
   if (icon?.iconKey) {
     const realIcon = getIcon(icon.iconKey);
     if (realIcon?.icon) {
-      return <realIcon.icon {...other} />;
+      return <realIcon.icon style={{color, ...style}} {...other}  />;
     }
   }
 
   if (icon?.svgString) {
-    return <SvgStringIcon icon={icon.svgString} {...other} />;
+    return <SvgStringIcon icon={icon.svgString} color={color} style={style} {...other} />;
   }
 
   return <EmpertyIcon {...other} />;
