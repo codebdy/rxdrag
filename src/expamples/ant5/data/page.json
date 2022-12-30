@@ -881,7 +881,9 @@
                               "componentName": "Col",
                               "props": {
                                 "span": 24,
-                                "style": {}
+                                "style": {
+                                  "marginTop": "8px"
+                                }
                               },
                               "slots": {},
                               "children": [
@@ -889,7 +891,9 @@
                                   "componentName": "TextView",
                                   "props": {
                                     "content": "开发自定义组件需要注意的问题",
-                                    "style": {}
+                                    "style": {
+                                      "marginTop": "8px"
+                                    }
                                   },
                                   "slots": {},
                                   "children": []
@@ -900,7 +904,9 @@
                               "componentName": "Col",
                               "props": {
                                 "span": 24,
-                                "style": {}
+                                "style": {
+                                  "marginTop": "8px"
+                                }
                               },
                               "slots": {},
                               "children": [
@@ -919,7 +925,9 @@
                               "componentName": "Col",
                               "props": {
                                 "span": 24,
-                                "style": {}
+                                "style": {
+                                  "marginTop": "8px"
+                                }
                               },
                               "slots": {},
                               "children": [
@@ -938,7 +946,9 @@
                               "componentName": "Col",
                               "props": {
                                 "span": 24,
-                                "style": {}
+                                "style": {
+                                  "marginTop": "8px"
+                                }
                               },
                               "slots": {},
                               "children": [
@@ -957,7 +967,9 @@
                               "componentName": "Col",
                               "props": {
                                 "span": 24,
-                                "style": {}
+                                "style": {
+                                  "marginTop": "8px"
+                                }
                               },
                               "slots": {},
                               "children": [
@@ -976,7 +988,9 @@
                               "componentName": "Col",
                               "props": {
                                 "span": 24,
-                                "style": {}
+                                "style": {
+                                  "marginTop": "8px"
+                                }
                               },
                               "slots": {},
                               "children": [
