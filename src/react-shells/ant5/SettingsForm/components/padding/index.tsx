@@ -26,8 +26,8 @@ export const PaddingStyleSetter = memo((props: {
       keys={[
         'paddingTop',
         'paddingRight',
-        'paddingBottom',
         'paddingLeft',
+        'paddingBottom',
       ]}
       title={title}
       title1={topTitle}

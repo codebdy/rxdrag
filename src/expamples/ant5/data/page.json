@@ -300,10 +300,44 @@
                               "componentName": "Col",
                               "props": {
                                 "span": 8,
-                                "style": {}
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px"
+                                }
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "IconView",
+                                  "props": {
+                                    "icon": {
+                                      "iconKey": "SettingOutlined"
+                                    },
+                                    "style": {},
+                                    "size": 24,
+                                    "color": "rgba(83,60,199,1)"
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "TextView",
+                                  "props": {
+                                    "content": "付款申请",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             },
                             {
                               "componentName": "Col",
