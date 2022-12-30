@@ -17,6 +17,7 @@ import { BoxMaterial } from "./Box";
 import { IconViewMaterial } from "./IconView";
 import { JobsMaterial } from "./business/Jobs";
 import { RightAdMaterial } from "./business/RightAd";
+import { DividerMaterial } from "./Divider";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -42,6 +43,7 @@ export const layoutMaterials:IComponentMaterial[] = [
   HeroTipMaterial,
   CardMaterial,
   BoxMaterial,
+  DividerMaterial,
 ]
 
 export const businessMaterials:IComponentMaterial[] = [
