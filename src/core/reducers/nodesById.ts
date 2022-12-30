@@ -1,4 +1,4 @@
-import { ADD_NODES, CHANGE_NODE_META, DELETE_NODES, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_SLOT } from "core/actions/registry"
+import { ADD_NODES, CHANGE_NODE_META, DELETE_NODES, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_DOCUMENT, REMOVE_SLOT } from "core/actions/registry"
 import { ID } from "core/interfaces"
 import { invariant } from "core/utils/util-invariant"
 import { IAction } from "fieldy/interfaces"
@@ -30,6 +30,15 @@ export function nodesById(
 			return revoverSnapshot(state, action as IDocumentAction<RecoverSnapshotPayload>)
 		case REMOVE_SLOT:
 			return removeSlot(state, action as IDocumentAction<RemoveSlotPayload>)
+
+		case REMOVE_DOCUMENT:
+			const newState: State = {}
+			for (const key of Object.keys(state)) {
+				if (state[key]?.documentId !== (action as IDocumentAction<DocumentActionPayload>).payload?.documentId) {
+					newState[key] = state[key]
+				}
+			}
+			return newState
 		default:
 			return state
 	}
@@ -197,8 +206,8 @@ function addSlot(state: NodesById, targetId: ID, slotName: string, slotId: ID): 
 		const node = state[targetId]
 		const newSlots: any = { ...node.slots, [slotName]: slotId }
 		newState[targetId] = { ...node, slots: newSlots }
-		if(slotId){
-			newState[slotId] = {...newState[slotId], parentId: targetId}
+		if (slotId) {
+			newState[slotId] = { ...newState[slotId], parentId: targetId }
 		}
 		return newState
 	}
