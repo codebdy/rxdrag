@@ -826,6 +826,33 @@
                       "componentName": "RightAd",
                       "slots": {},
                       "children": []
+                    },
+                    {
+                      "componentName": "Card",
+                      "props": {
+                        "style": {
+                          "marginTop": "16px"
+                        }
+                      },
+                      "slots": {
+                        "title": {
+                          "componentName": "DefaultSlot",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "TextView",
+                              "props": {
+                                "content": "使用帮助",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        }
+                      },
+                      "children": []
                     }
                   ]
                 }
