@@ -211,11 +211,20 @@
                               "componentName": "Button",
                               "props": {
                                 "type": "text",
-                                "title": "查看全部 >",
                                 "style": {}
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "TextView",
+                                  "props": {
+                                    "content": "查看全部 >",
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             }
                           ]
                         }
@@ -260,15 +269,22 @@
                               "componentName": "Button",
                               "props": {
                                 "type": "text",
-                                "title": "",
-                                "icon": {
-                                  "iconKey": "SettingOutlined"
-                                },
                                 "shape": "circle",
-                                "style": {},
-                                "size": "middle"
+                                "style": {}
                               },
-                              "slots": {},
+                              "slots": {
+                                "icon": {
+                                  "componentName": "IconView",
+                                  "props": {
+                                    "icon": {
+                                      "iconKey": "SettingOutlined"
+                                    },
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              },
                               "children": []
                             }
                           ]

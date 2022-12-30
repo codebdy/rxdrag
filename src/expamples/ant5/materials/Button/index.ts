@@ -1,5 +1,6 @@
+import { Button } from "antd";
 import { IComponentMaterial } from "core-react";
-import { Button } from "react-shells/ant5/components/Button";
+import { IconViewMaterial } from "../IconView";
 import { buttonIcon } from "./icon";
 import { buttonLocales, buttonResourceLocales } from "./locales";
 import { buttonSchema } from "./schema";
@@ -19,11 +20,25 @@ export const ButtonMaterial: IComponentMaterial = {
         props: {
           type: "primary",
           title: name,
-        }
+        },
+        children: [
+          {
+            componentName: "TextView",
+            props: {
+              content: name,
+            }
+          }
+        ]
       }
     ]
   },
   icon: buttonIcon,
   color: "#dfa324",
   resourceLocales: buttonResourceLocales,
+  slots: {
+    icon: IconViewMaterial,
+  },
+  behaviorRule: {
+    droppable: true,
+  }
 }

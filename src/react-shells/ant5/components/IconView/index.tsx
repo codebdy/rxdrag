@@ -35,7 +35,7 @@ export const IconView = forwardRef((props: IIconViewProps, ref) => {
   if (icon?.iconKey) {
     const realIcon = getIcon(icon.iconKey);
     if (realIcon?.icon) {
-      return <realIcon.icon ref={ref} style={{ color, fontSize: size, ...style }} {...other} />;
+      return <realIcon.icon ref={ref} style={{ ...style, color:color, fontSize: size,  }} {...other} />;
     }
   }
 

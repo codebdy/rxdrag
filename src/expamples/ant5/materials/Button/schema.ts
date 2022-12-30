@@ -123,20 +123,6 @@ export const buttonSchema: INodeSchema = createSchema(
     {
       componentName: "FormItem",
       props: {
-        label: "$icon",
-      },
-      children: [
-        {
-          componentName: "IconInput",
-          "x-field": {
-            name: "icon",
-          },
-        }
-      ]
-    },
-    {
-      componentName: "FormItem",
-      props: {
         label: "$shape",
       },
       children: [
@@ -194,6 +180,22 @@ export const buttonSchema: INodeSchema = createSchema(
               },
             ],
             defaultValue: "middle",
+          }
+        }
+      ]
+    },
+  ],
+  [
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$icon",
+      },
+      children: [
+        {
+          componentName: "SlotSwitch",
+          props: {
+            name: "icon"
           }
         }
       ]
