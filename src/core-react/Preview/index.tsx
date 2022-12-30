@@ -17,14 +17,13 @@ export const Preview = memo((
   const doc = useDocument()
   const [viewType] = useDocumentViewTypeState(doc?.id)
   const { components } = usePreviewComponents()
-  const attachedRef = useRef(false)
   const engine = useDesignerEngine()
   const rootRef = useRef<ReactDOM.Root>()
 
   const handleRefChange = useCallback((host: HTMLElement | null) => {
-    if (host && !attachedRef.current) {
+    if (host) {
       if (rootRef.current) {
-        rootRef.current.unmount()
+        //rootRef.current.unmount()
       }
       host.innerHTML = ""
       const shadow = host.attachShadow({ mode: 'open' });
@@ -45,14 +44,13 @@ export const Preview = memo((
       );
       rootRef.current = root;
       root.render(<PreviewRender engine={engine} doc={doc} components={components} />);
-      attachedRef.current = true
     }
   }, [components, doc, engine])
 
 
   return (
     <CanvasShell display={viewType === "preview"}    >
-      <ShadowCanvasView backgroundColor={backgroundColor} onRefChange={handleRefChange} />
+      <ShadowCanvasView key={doc?.id} backgroundColor={backgroundColor} onRefChange={handleRefChange} />
     </CanvasShell>
   )
 })

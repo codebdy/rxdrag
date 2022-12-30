@@ -18,6 +18,8 @@ export const DELETE_NODES = 'rx-core/DELETE_NODES'
 export const REMOVE_SLOT = 'rx-core/REMOVE_SLOT'
 export const CHANGE_NODE_META = 'rx-core/CHANGE_NODE_META'
 
+export const REMOVE_DOCUMENT = 'rx-core/REMOVE_DOCUMENT'
+
 export const BACKUP = 'rx-core/BACKUP'
 export const GOTO = 'rx-core/GOTO'
 export const RECOVER_SNAPSHOT = "rx-core/RECOVER_SNAPSHOT"

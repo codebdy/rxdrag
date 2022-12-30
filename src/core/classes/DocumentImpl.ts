@@ -5,7 +5,7 @@ import { ID, IDesignerEngine } from "core/interfaces";
 import { State } from "core/reducers";
 import { parseNodeSchema, paseNodes } from "core/funcs/parseNodeSchema";
 import { Store } from "redux";
-import { ADD_NODES, BACKUP, CHANGE_NODE_META, DELETE_NODES, GOTO, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_SLOT } from "core/actions/registry";
+import { ADD_NODES, BACKUP, CHANGE_NODE_META, DELETE_NODES, GOTO, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_DOCUMENT, REMOVE_SLOT } from "core/actions/registry";
 import { DocumentState } from "core/reducers/documentsById/document";
 import { NodesById } from "core/reducers/nodesById";
 import { isArr, isStr } from "core/utils/types";
@@ -113,8 +113,8 @@ export class DocumentImpl implements IDocument {
       const playload: AddNodesPayload = {
         documentId: this.id,
         nodes,
-        targetId:node.id,
-        slot:name,
+        targetId: node.id,
+        slot: name,
       }
       this.dispatch(this.createAction(ADD_NODES, playload))
     } else {
@@ -220,9 +220,11 @@ export class DocumentImpl implements IDocument {
   receiveSchema(schema: INodeSchema): ITreeNode {
     throw new Error("Method not implemented.");
   }
+  
   destory(): void {
-    throw new Error("Method not implemented.");
+    this.dispatch(this.createAction(REMOVE_DOCUMENT, { }))
   }
+
   transformNodeToSchema(node: ITreeNode): INodeSchema {
     throw new Error("Method not implemented.");
   }

@@ -1,4 +1,4 @@
-import { GithubFilled } from "@ant-design/icons"
+import { FileOutlined, GithubFilled } from "@ant-design/icons"
 import { Button, Space } from "antd"
 import { memo, useCallback, useMemo, useState } from "react"
 import { Antd5Editor } from "react-shells/ant5"
@@ -12,22 +12,29 @@ import { ThemeButton } from "react-shells/ant5/widgets/ThemeButton"
 import { toolsLocales } from "./locales"
 import { ResourceWidget } from "./ResourceWidget"
 import { SaveButton } from "./widgets/SaveButton"
-import page from "./data/page.json"
+import { PagesWidget } from "./PagesWidget"
+import { pages } from "./data"
 
 export enum LeftNavType {
+  pages = "pages",
   compoents = "components",
   outline = "outline",
   history = "history",
 }
 
 export const Antd5Example = memo(() => {
+  const [pageId, setPageId] = useState("dashboard")
   const [activedKey, setActivedKey] = useState<LeftNavType>(LeftNavType.compoents)
   const handleActive = useCallback((key: string) => {
     setActivedKey(key as LeftNavType)
   }, [])
 
   const schemas = useMemo(() => {
-    return page
+    return (pages as any)[pageId]
+  }, [pageId])
+
+  const handleSelect = useCallback((id: string) => {
+    setPageId(id)
   }, [])
 
   return (
@@ -39,6 +46,7 @@ export const Antd5Example = memo(() => {
             //ResourceWidget 内部会注册组件，要防止多次渲染
             <ResourceWidget display={activedKey === LeftNavType.compoents} />
           }
+          <PagesWidget display={activedKey === LeftNavType.pages} value={pageId} onSelect={handleSelect} />
           <HistoryWidget display={activedKey === LeftNavType.history} />
           <OutlineWidget display={activedKey === LeftNavType.outline} />
         </>
@@ -64,6 +72,11 @@ export const Antd5Example = memo(() => {
           //showTitle
           defaultActivedKey="components"
           items={[
+            {
+              key: LeftNavType.pages,
+              title: "pages",
+              icon: <FileOutlined style={{ fontSize: 18 }} />
+            },
             {
               key: LeftNavType.compoents,
               title: "components",

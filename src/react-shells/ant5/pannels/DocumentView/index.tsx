@@ -1,4 +1,4 @@
-import { Divider, Select } from "antd"
+import { Divider } from "antd"
 import { useToken } from "antd/es/theme/internal"
 import { IDocument } from "core"
 import { ShadowDomCanvas } from "core-react/canvas/ShadowDomCanvas"

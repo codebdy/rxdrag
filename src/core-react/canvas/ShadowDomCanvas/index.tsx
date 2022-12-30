@@ -2,7 +2,7 @@ import { useDesignerEngine } from "core-react/hooks";
 import { useDesignComponents } from "core-react/hooks/useDesignComponents";
 import { ShadowCanvasImpl } from "core/shell/ShadowCanvasImpl";
 import { MouseOverOutDriver } from "core/shell/drivers/MouseOverOutDriver";
-import { memo, useCallback, useRef } from "react"
+import { memo, useCallback } from "react"
 import ReactDOM from 'react-dom/client';
 import { CanvasRender } from "../CanvasRender";
 import { CanvasResizeDriver, CanvasScrollDriver, DragDropDriver, MouseClickDriver } from "core/shell/drivers";
@@ -24,10 +24,9 @@ export const ShadowDomCanvas = memo((
   const [viewType] = useDocumentViewTypeState(doc?.id)
   const engine = useDesignerEngine()
   const { components } = useDesignComponents()
-  const attachedRef = useRef(false)
 
   const handleRefChange = useCallback((host: HTMLElement | null) => {
-    if (host && engine && !attachedRef.current) {
+    if (host && engine ) {
       host.innerHTML = ""
       const shadow = host.attachShadow({ mode: 'open' });
       const renderIn = document.createElement('div');
@@ -73,7 +72,6 @@ export const ShadowDomCanvas = memo((
         )
         engine.getShell().addCanvas(canvas)
         root.render(<CanvasRender engine={engine} doc={doc} components={components} />);
-        attachedRef.current = true
       }
     }
   }, [components, doc, engine])
@@ -81,7 +79,7 @@ export const ShadowDomCanvas = memo((
 
   return (
     <CanvasShell display={viewType === "design"}    >
-      <ShadowCanvasView backgroundColor={backgroundColor} onRefChange={handleRefChange} />
+      <ShadowCanvasView key={doc?.id} backgroundColor={backgroundColor} onRefChange={handleRefChange} />
     </CanvasShell>
   )
 })

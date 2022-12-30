@@ -7,6 +7,7 @@ export const toolsLocales: ILocales = {
       displays: "显示控件",
       layouts: "布局控件",
       business: "业务组件",
+      pages: "页面",
     }
 
   },
@@ -16,6 +17,7 @@ export const toolsLocales: ILocales = {
       displays: "Displays",
       layouts: "Layouts",
       business: "Business",
+      pages: "Pages",
     }
   }
 }
