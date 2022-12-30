@@ -26,6 +26,6 @@ export const AvatarMaterial: IComponentMaterial = {
     icon: IconViewMaterial,
   },
   icon: avatarIcon,
-  color: "#dfa324",
+  color: "#0EDB77",
   resourceLocales: avatarResourceLocales,
 }
