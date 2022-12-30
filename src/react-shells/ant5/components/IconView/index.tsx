@@ -1,5 +1,5 @@
 import { BorderOutlined } from "@ant-design/icons";
-import { CSSProperties } from "react";
+import { CSSProperties, forwardRef } from "react";
 import { getIcon } from "react-shells/ant5/shared/icons/data";
 
 import { IIcon } from "./model";
@@ -26,7 +26,7 @@ export interface IIconViewProps {
   color?: string,
 }
 
-export const IconView = (props: IIconViewProps) => {
+export const IconView = forwardRef((props: IIconViewProps, ref) => {
   const { icon, size, color, style, ...other } = props;
   if (isEmpertyIcon(icon)) {
     return <EmpertyIcon {...other} />;
@@ -35,13 +35,13 @@ export const IconView = (props: IIconViewProps) => {
   if (icon?.iconKey) {
     const realIcon = getIcon(icon.iconKey);
     if (realIcon?.icon) {
-      return <realIcon.icon style={{color, ...style}} {...other}  />;
+      return <realIcon.icon ref={ref} style={{ color, fontSize: size, ...style }} {...other} />;
     }
   }
 
   if (icon?.svgString) {
-    return <SvgStringIcon icon={icon.svgString} color={color} style={style} {...other} />;
+    return <SvgStringIcon ref={ref} icon={icon.svgString} color={color} size={size} style={style} {...other} />;
   }
 
   return <EmpertyIcon {...other} />;
-};
+});
