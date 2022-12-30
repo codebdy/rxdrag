@@ -13,6 +13,7 @@ import { toolsLocales } from "./locales"
 import { ResourceWidget } from "./ResourceWidget"
 import { SaveButton } from "./widgets/SaveButton"
 import page from "./data/page.json"
+import { PagesWidget } from "./PagesWidget"
 
 export enum LeftNavType {
   pages = "pages",
@@ -40,6 +41,7 @@ export const Antd5Example = memo(() => {
             //ResourceWidget 内部会注册组件，要防止多次渲染
             <ResourceWidget display={activedKey === LeftNavType.compoents} />
           }
+          <PagesWidget display={activedKey === LeftNavType.pages} />
           <HistoryWidget display={activedKey === LeftNavType.history} />
           <OutlineWidget display={activedKey === LeftNavType.outline} />
         </>
