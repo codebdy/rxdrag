@@ -49,6 +49,7 @@ export const Antd5Editor = memo((props: Antd5EditorProps) => {
         docRef.current = undefined
       }
       const document = engine.createDocument(schemas)
+      engine.getActions().changeActivedDocument(document.id)
       setDoc(document)
     }
   }, [engine, schemas])

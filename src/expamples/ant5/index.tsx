@@ -12,7 +12,6 @@ import { ThemeButton } from "react-shells/ant5/widgets/ThemeButton"
 import { toolsLocales } from "./locales"
 import { ResourceWidget } from "./ResourceWidget"
 import { SaveButton } from "./widgets/SaveButton"
-import page from "./data/dashboard.json"
 import { PagesWidget } from "./PagesWidget"
 import { pages } from "./data"
 
