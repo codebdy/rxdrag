@@ -2,7 +2,7 @@
 import React, { forwardRef, memo, useMemo } from "react";
 import cls from 'classnames'
 import dayjs from "dayjs";
-
+import "./style.less"
 
 export enum TextType {
   Number = "Number",
@@ -36,7 +36,7 @@ export const TextView = memo(forwardRef<HTMLDivElement>((props: ITextProps, ref)
     {
       ...other,
       ref,
-      className: cls(props.className),
+      className: cls(props.className, "rx-text-view"),
       value: value,
     },
     text
