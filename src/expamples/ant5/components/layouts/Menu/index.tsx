@@ -13,7 +13,7 @@ export const Menu = memo(forwardRef<MenuRef>((props, ref) => {
         {
           key: '1',
           icon: <UserOutlined />,
-          label: 'nav 1',
+          label: '工作台',
         },
         {
           key: '2',

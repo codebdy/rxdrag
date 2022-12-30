@@ -14,6 +14,7 @@ import { CardMaterial } from "./Card";
 import { TextViewMaterial } from "./TextView";
 import { StatisticMaterial } from "./Statistic";
 import { BoxMaterial } from "./Box";
+import { IconViewMaterial } from "./IconView";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -23,7 +24,8 @@ export const inputMaterials: IComponentMaterial[] = [
 
 export const displayMaterials: IComponentMaterial[] = [
   TextViewMaterial,
-  StatisticMaterial
+  StatisticMaterial,
+  IconViewMaterial,
 ]
 
 
