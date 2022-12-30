@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef, memo } from 'react';
 import { Space, Table, Tag } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 
@@ -73,10 +73,14 @@ const data: DataType[] = [
   },
 ];
 
-export const Customers: React.FC = () =>
-  <Table
-    columns={columns}
-    dataSource={data}
-    pagination = {false}
-  />;
+export const Customers: React.FC = memo(forwardRef<HTMLDivElement>((props: any, ref) => {
+  return (
+    <Table
+      ref={ref}
+      columns={columns}
+      dataSource={data}
+      pagination={false}
+    />
+  )
+}))
 

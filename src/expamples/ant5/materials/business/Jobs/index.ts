@@ -2,7 +2,7 @@ import { IComponentMaterial } from "core-react";
 import { jobsIcon } from "./icon";
 import { jobsLocales, jobsResourceLocales } from "./locales";
 import { jobsSchema } from "./schema";
-import { Jobs } from "expamples/ant5/components/Jobs";
+import { Jobs } from "expamples/ant5/components/business/Jobs";
 
 const name = "Jobs"
 export const JobsMaterial: IComponentMaterial = {

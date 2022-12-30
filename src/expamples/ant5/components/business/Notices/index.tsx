@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef, memo } from 'react';
 import { List, Typography } from 'antd';
 
 const data = [
@@ -19,16 +19,18 @@ const data = [
   },
 ];
 
-export const Notices: React.FC = () => (
+export const Notices: React.FC = memo(forwardRef<HTMLDivElement>((props: any, ref) => {
 
-  <List
+  return (<List
+    {...props}
     style={{ marginLeft: -24, marginTop: -16 }}
     dataSource={data}
-    renderItem={(item) => (
+    renderItem={(item: any) => (
       <List.Item >
         <div><Typography.Text code>{item.type}</Typography.Text> {item.title}</div>
         <Typography.Text type="secondary">{item.date}</Typography.Text>
       </List.Item>
     )}
   />
-);
+  )
+}));

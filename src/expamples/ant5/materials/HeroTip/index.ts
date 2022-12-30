@@ -1,5 +1,5 @@
 import { IComponentMaterial } from "core-react";
-import { HeroTip } from "expamples/ant5/components/HeroTip";
+import { HeroTip } from "expamples/ant5/components/business/HeroTip";
 import { heroTipIcon } from "./icon";
 import { heroTipLocales, heroTipResourceLocales } from "./locales";
 import { heroTipSchema } from "./schema";

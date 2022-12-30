@@ -2,7 +2,7 @@ import { IComponentMaterial } from "core-react";
 import { rightAdIcon } from "./icon";
 import { rightAdLocales, rightAdResourceLocales } from "./locales";
 import { rightAdSchema } from "./schema";
-import { RightAd } from "expamples/ant5/components/RightAd";
+import { RightAd } from "expamples/ant5/components/business/RightAd";
 
 const name = "RightAd"
 export const RightAdMaterial: IComponentMaterial = {
