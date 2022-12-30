@@ -318,7 +318,11 @@
                                   "alignContent": "flex-start",
                                   "justifyContent": "center",
                                   "alignItems": "center",
-                                  "marginBottom": "8px"
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
                                 }
                               },
                               "slots": {},
@@ -327,7 +331,7 @@
                                   "componentName": "Avatar",
                                   "props": {
                                     "style": {
-                                      "backgroundColor": "rgba(139,121,236,1)"
+                                      "backgroundColor": "rgba(186,223,76,1)"
                                     }
                                   },
                                   "slots": {
@@ -364,73 +368,449 @@
                               "componentName": "Col",
                               "props": {
                                 "span": 8,
-                                "style": {}
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(139,121,236,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "ShoppingOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "TextView",
+                                  "props": {
+                                    "content": "采购申请",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             },
                             {
                               "componentName": "Col",
                               "props": {
                                 "span": 8,
-                                "style": {}
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(14,219,119,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "GiftOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "TextView",
+                                  "props": {
+                                    "content": "差旅申请",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             },
                             {
                               "componentName": "Col",
                               "props": {
                                 "span": 8,
-                                "style": {}
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(97,204,84,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "RocketOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "TextView",
+                                  "props": {
+                                    "content": "订舱申请",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             },
                             {
                               "componentName": "Col",
                               "props": {
                                 "span": 8,
-                                "style": {}
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(245,166,35,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "StarOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "TextView",
+                                  "props": {
+                                    "content": "用章流程",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             },
                             {
                               "componentName": "Col",
                               "props": {
                                 "span": 8,
-                                "style": {}
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(139,121,236,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "CarOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "TextView",
+                                  "props": {
+                                    "content": "用车申请",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             },
                             {
                               "componentName": "Col",
                               "props": {
                                 "span": 8,
-                                "style": {}
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(139,87,42,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "ScheduleOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "TextView",
+                                  "props": {
+                                    "content": "请假申请",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             },
                             {
                               "componentName": "Col",
                               "props": {
                                 "span": 8,
-                                "style": {}
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(126,211,33,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "SoundOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "TextView",
+                                  "props": {
+                                    "content": "评价反馈",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             },
                             {
                               "componentName": "Col",
                               "props": {
                                 "span": 8,
-                                "style": {}
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(181,181,182,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "EllipsisOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "TextView",
+                                  "props": {
+                                    "content": "全部应用",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             }
                           ]
                         }
