@@ -25,5 +25,6 @@ export const DividerMaterial: IComponentMaterial = {
   behaviorRule: {
     droppable: true,
     noPlaceholder: true,
+    noRef: true,
   }
 }
