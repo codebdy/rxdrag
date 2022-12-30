@@ -241,7 +241,13 @@
                           ]
                         }
                       },
-                      "children": []
+                      "children": [
+                        {
+                          "componentName": "Jobs",
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
                     }
                   ]
                 },

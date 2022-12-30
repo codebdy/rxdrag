@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Button, List } from 'antd';
 import "./style.less"
 
@@ -21,8 +21,9 @@ const data = [
   },
 ];
 
-export const Jobs: React.FC = () => (
+export const Jobs: React.FC = forwardRef<HTMLDivElement>((props, ref) => (
   <List
+    {...props}
     className='rx-jobs-list'
     itemLayout="horizontal"
     dataSource={data}
@@ -37,5 +38,5 @@ export const Jobs: React.FC = () => (
       </List.Item>
     )}
   />
-);
+));
 
