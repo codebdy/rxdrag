@@ -1,5 +1,5 @@
 import Tree, { DataNode, DirectoryTreeProps } from "antd/es/tree";
-import { memo } from "react"
+import { Key, memo, useCallback } from "react"
 import { PaneContainer } from "react-shells/ant5/layouts/ToggleAblePane/PaneContainer"
 import { PanelContent } from "react-shells/ant5/layouts/ToggleAblePane/PanelContent"
 import { PaneTitle } from "react-shells/ant5/layouts/ToggleAblePane/PaneTitle"
@@ -31,27 +31,25 @@ const treeData: DataNode[] = [
 export const PagesWidget = memo((
   props: {
     display: boolean,
+    value: string,
+    onSelect: (value: string) => void
   }
 ) => {
-  const { display } = props
+  const { value, onSelect, display } = props
 
-  const onSelect: DirectoryTreeProps['onSelect'] = (keys, info) => {
-    console.log('Trigger Select', keys, info);
-  };
+  const handleSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: Key[]) => {
+    onSelect(keys?.[0].toString() || "")
+  }, [onSelect]);
 
-  const onExpand: DirectoryTreeProps['onExpand'] = (keys, info) => {
-    console.log('Trigger Expand', keys, info);
-  };
-  
   return (
     <PaneContainer style={{ display: display ? undefined : "none" }}>
       <PaneTitle title="pages" />
       <PanelContent style={{ paddingTop: 8 }}>
         <DirectoryTree
-          multiple
+          selectedKeys={[value]}
+          multiple={false}
           defaultExpandAll
-          onSelect={onSelect}
-          onExpand={onExpand}
+          onSelect={handleSelect}
           treeData={treeData}
         />
       </PanelContent>
