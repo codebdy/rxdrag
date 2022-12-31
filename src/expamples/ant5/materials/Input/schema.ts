@@ -1,55 +1,36 @@
 import { INodeSchema } from "core";
+import { createSchema } from "react-shells/ant5/shared/createSchema";
 
-export const inputSchema: INodeSchema = {
-  componentName: "Tabs",
-  props: {},
-  "x-field": {
-    type: "object",
-    name: "props",
-  },
-  children: [
+export const inputSchema: INodeSchema = createSchema(
+  [
     {
-      componentName: "TabPanel",
+      componentName: "FormItem",
       props: {
-        title: "$properties"
+        label: "$placeholder",
+      },
+      "x-field": {
+        name: "placeholder",
       },
       children: [
         {
-          componentName: "FormItem",
-          props: {
-            label: "$placeholder",
-          },
-          "x-field": {
-            name: "placeholder",
-          },
-          children: [
-            {
-              componentName: "Input"
-            }
-          ]
-        },
-        {
-          componentName: "FormItem",
-          props: {
-            label: "$disabled",
-            valuePropName: "checked",
-          },
-          "x-field": {
-            name: "disabled",
-          },
-          children: [
-            {
-              componentName: "Switch"
-            }
-          ]
-        },
+          componentName: "Input"
+        }
       ]
     },
     {
-      componentName: "TabPanel",
+      componentName: "FormItem",
       props: {
-        title: "样式"
+        label: "$disabled",
+        valuePropName: "checked",
       },
-    }
+      "x-field": {
+        name: "disabled",
+      },
+      children: [
+        {
+          componentName: "Switch"
+        }
+      ]
+    },
   ]
-}
+)

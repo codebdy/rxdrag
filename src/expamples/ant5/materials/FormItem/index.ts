@@ -27,5 +27,6 @@ export const FormItemMaterial: IComponentMaterial = {
   resourceLocales: formItemResourceLocales,
   behaviorRule: {
     droppable: true,
+    noRef: true,
   }
 }
