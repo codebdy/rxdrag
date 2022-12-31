@@ -88,7 +88,7 @@
                       "props": {
                         "span": 24,
                         "style": {
-                          "marginTop": "8px"
+                          "marginTop": "16px"
                         }
                       },
                       "slots": {},
@@ -110,7 +110,7 @@
                       "props": {
                         "span": 24,
                         "style": {
-                          "marginTop": "8px"
+                          "marginTop": "16px"
                         }
                       },
                       "slots": {},
@@ -141,31 +141,7 @@
                 }
               },
               "slots": {},
-              "children": [
-                {
-                  "componentName": "Form",
-                  "slots": {},
-                  "children": [
-                    {
-                      "componentName": "FormItem",
-                      "props": {
-                        "label": "FormItem"
-                      },
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "Input",
-                          "props": {
-                            "placeholder": "输入框"
-                          },
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
+              "children": []
             }
           ]
         },

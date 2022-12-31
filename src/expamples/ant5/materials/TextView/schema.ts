@@ -29,7 +29,6 @@ export const textViewSchema: INodeSchema = createSchema(
             name: "mode",
           },
           props: {
-            optionType: "button",
             options: [
               {
                 label: "Normal",
