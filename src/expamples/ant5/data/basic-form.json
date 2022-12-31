@@ -141,7 +141,31 @@
                 }
               },
               "slots": {},
-              "children": []
+              "children": [
+                {
+                  "componentName": "Form",
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "FormItem",
+                      "props": {
+                        "label": "FormItem"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "Input",
+                          "props": {
+                            "placeholder": "输入框"
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

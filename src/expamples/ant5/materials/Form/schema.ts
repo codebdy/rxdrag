@@ -6,14 +6,48 @@ export const formSchema: INodeSchema = createSchema([
     componentName: "FormItem",
     props: {
       label: "$colon",
-      valuePropName: "checked",
-    },
-    "x-field": {
-      name: "colon",
     },
     children: [
       {
-        componentName: "Switch"
+        "x-field": {
+          name: "colon",
+          valuePropName: "checked",
+        },
+        componentName: "Switch",
+        props:{
+          defaultChecked: true,
+        }
+      }
+    ]
+  },
+  {
+    componentName: "FormItem",
+    props: {
+      label: "$layout",
+    },
+    children: [
+      {
+        componentName: "Select",
+        "x-field": {
+          name: "layout",
+        },
+        props: {
+          options: [
+            {
+              label: "Horizontal",
+              value: "horizontal"
+            },
+            {
+              label: "Vertical",
+              value: "vertical"
+            },
+            {
+              label: "Inline",
+              value: "inline"
+            },
+          ],
+          defaultValue: "horizontal",
+        }
       }
     ]
   },
@@ -21,13 +55,13 @@ export const formSchema: INodeSchema = createSchema([
     componentName: "FormItem",
     props: {
       label: "$disabled",
-      valuePropName: "checked",
-    },
-    "x-field": {
-      name: "disabled",
     },
     children: [
       {
+        "x-field": {
+          name: "disabled",
+          valuePropName: "checked",
+        },
         componentName: "Switch"
       }
     ]

@@ -16,6 +16,9 @@ export const FormMaterial: IComponentMaterial = {
     elements: [
       {
         componentName: name,
+        props:{
+          colon: false
+        }
       }
     ]
   },
