@@ -75,7 +75,13 @@
                         "style": {}
                       },
                       "slots": {},
-                      "children": []
+                      "children": [
+                        {
+                          "componentName": "Breadcrumb",
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
                     },
                     {
                       "componentName": "Col",
