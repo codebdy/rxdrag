@@ -1,6 +1,6 @@
 import { IComponentMaterial } from "core-react";
 import { formIcon } from "./icon";
-import { boxLocales, boxResourceLocales } from "./locales";
+import { formLocales, formResourceLocales } from "./locales";
 import { formSchema } from "./schema";
 import { Form } from "antd";
 
@@ -9,7 +9,7 @@ export const FormMaterial: IComponentMaterial = {
   componentName: name,
   component: Form,
   designer: Form,
-  designerLocales: boxLocales,
+  designerLocales: formLocales,
   designerSchema: formSchema,
   resource: {
     name: name,
@@ -21,7 +21,7 @@ export const FormMaterial: IComponentMaterial = {
   },
   icon: formIcon,
   color: "#dfa324",
-  resourceLocales: boxResourceLocales,
+  resourceLocales: formResourceLocales,
   behaviorRule: {
     droppable: true,
   }

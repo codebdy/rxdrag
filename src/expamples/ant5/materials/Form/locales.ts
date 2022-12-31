@@ -1,4 +1,4 @@
-export const boxLocales = {
+export const formLocales = {
   "zh-CN": {
     title: "表单",
     settings: {
@@ -13,7 +13,7 @@ export const boxLocales = {
 }
 
 
-export const boxResourceLocales = {
+export const formResourceLocales = {
   "zh-CN": {
     "Form": "表单",
   },
