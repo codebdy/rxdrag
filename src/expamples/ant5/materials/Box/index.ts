@@ -1,14 +1,14 @@
 import { IComponentMaterial } from "core-react";
-import { Col as AntdCol } from "antd";
 import { boxIcon } from "./icon";
 import { boxLocales, boxResourceLocales } from "./locales";
 import { boxSchema } from "./schema";
+import { Box } from "react-shells/ant5/components/Box";
 
 const name = "Box"
 export const BoxMaterial: IComponentMaterial = {
   componentName: name,
-  component: AntdCol,
-  designer: AntdCol,
+  component: Box,
+  designer: Box,
   designerLocales: boxLocales,
   designerSchema: boxSchema,
   resource: {

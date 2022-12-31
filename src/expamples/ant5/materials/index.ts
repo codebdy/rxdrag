@@ -21,6 +21,7 @@ import { DividerMaterial } from "./Divider";
 import { NewsMaterial } from "./business/News";
 import { CustomersMaterial } from "./business/Customers";
 import { NoticesMaterial } from "./business/Notices";
+import { PaperMaterial } from "./Paper";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -45,6 +46,7 @@ export const layoutMaterials:IComponentMaterial[] = [
   MenuMaterial,
   CardMaterial,
   BoxMaterial,
+  PaperMaterial,
   DividerMaterial,
 ]
 

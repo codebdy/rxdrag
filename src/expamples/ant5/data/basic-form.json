@@ -58,7 +58,68 @@
           "componentName": "Layout.Content",
           "props": {},
           "slots": {},
-          "children": []
+          "children": [
+            {
+              "componentName": "Paper",
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Row",
+                  "props": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Col",
+                      "props": {
+                        "span": 24,
+                        "style": {}
+                      },
+                      "slots": {},
+                      "children": []
+                    },
+                    {
+                      "componentName": "Col",
+                      "props": {
+                        "span": 24,
+                        "style": {}
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "基础表单",
+                            "style": {}
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "componentName": "Col",
+                      "props": {
+                        "span": 24,
+                        "style": {}
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。",
+                            "style": {}
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         "footer": {
           "componentName": "Layout.Footer",
