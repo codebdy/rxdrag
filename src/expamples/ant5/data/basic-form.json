@@ -87,7 +87,9 @@
                       "componentName": "Col",
                       "props": {
                         "span": 24,
-                        "style": {}
+                        "style": {
+                          "marginTop": "8px"
+                        }
                       },
                       "slots": {},
                       "children": [
@@ -95,7 +97,8 @@
                           "componentName": "TextView",
                           "props": {
                             "content": "基础表单",
-                            "style": {}
+                            "style": {},
+                            "mode": "h2"
                           },
                           "slots": {},
                           "children": []
@@ -106,7 +109,9 @@
                       "componentName": "Col",
                       "props": {
                         "span": 24,
-                        "style": {}
+                        "style": {
+                          "marginTop": "8px"
+                        }
                       },
                       "slots": {},
                       "children": [
@@ -124,6 +129,19 @@
                   ]
                 }
               ]
+            },
+            {
+              "componentName": "Card",
+              "props": {
+                "style": {
+                  "marginTop": "16px",
+                  "marginRight": "16px",
+                  "marginBottom": "16px",
+                  "marginLeft": "16px"
+                }
+              },
+              "slots": {},
+              "children": []
             }
           ]
         },
