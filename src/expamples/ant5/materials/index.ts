@@ -23,6 +23,7 @@ import { CustomersMaterial } from "./business/Customers";
 import { NoticesMaterial } from "./business/Notices";
 import { PaperMaterial } from "./Paper";
 import { BreadcrumbMaterial } from "./layouts/Breadcrumb";
+import { FormMaterial } from "./Form";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -37,6 +38,9 @@ export const displayMaterials: IComponentMaterial[] = [
   AvatarMaterial,
 ]
 
+export const fomrMaterials:IComponentMaterial[] = [
+  FormMaterial
+]
 
 export const layoutMaterials:IComponentMaterial[] = [
   RowMaterial,
