@@ -21,6 +21,10 @@ import { DividerMaterial } from "./Divider";
 import { NewsMaterial } from "./business/News";
 import { CustomersMaterial } from "./business/Customers";
 import { NoticesMaterial } from "./business/Notices";
+import { PaperMaterial } from "./Paper";
+import { BreadcrumbMaterial } from "./layouts/Breadcrumb";
+import { FormMaterial } from "./Form";
+import { FormItemMaterial } from "./FormItem";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -35,6 +39,10 @@ export const displayMaterials: IComponentMaterial[] = [
   AvatarMaterial,
 ]
 
+export const fomrMaterials:IComponentMaterial[] = [
+  FormMaterial,
+  FormItemMaterial
+]
 
 export const layoutMaterials:IComponentMaterial[] = [
   RowMaterial,
@@ -45,7 +53,9 @@ export const layoutMaterials:IComponentMaterial[] = [
   MenuMaterial,
   CardMaterial,
   BoxMaterial,
+  PaperMaterial,
   DividerMaterial,
+  BreadcrumbMaterial,
 ]
 
 export const businessMaterials:IComponentMaterial[] = [

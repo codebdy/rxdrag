@@ -13,7 +13,7 @@ export enum TextType {
 export interface ITextProps {
   value?: string;
   content?: string;
-  mode?: 'normal' | 'h1' | 'h2' | 'h3' | 'p';
+  mode?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'p';
   style?: React.CSSProperties;
   className?: string;
   textType?: TextType;

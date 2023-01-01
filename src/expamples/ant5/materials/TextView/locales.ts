@@ -3,13 +3,15 @@ export const textViewLocales = {
     title: "文本",
     settings: {
       content: "内容",
+      mode: "类型"
     }
 
   },
   'en-US': {
     title: "Text view",
     settings: {
-      content: "Content"
+      content: "Content",
+      mode: "Mode"
     }
   }
 }

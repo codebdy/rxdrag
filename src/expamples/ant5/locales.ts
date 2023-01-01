@@ -5,6 +5,7 @@ export const toolsLocales: ILocales = {
     tools: {
       inputs: "输入控件",
       displays: "显示控件",
+      forms:"表单控件",
       layouts: "布局控件",
       business: "业务组件",
       pages: "页面",
@@ -15,6 +16,7 @@ export const toolsLocales: ILocales = {
     tools: {
       inputs: "Inputs",
       displays: "Displays",
+      forms:"Forms",
       layouts: "Layouts",
       business: "Business",
       pages: "Pages",
