@@ -61,19 +61,21 @@ export class ActivedOutlineImpl implements IPlugin {
   private renderLine(id: ID) {
     this.clearLine()
     const element = this.engine.getShell().getElement(id)
-    if (element) {
+    const canvas = this.engine.getShell().getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
+    const containerRect = canvas?.getContainerRect()
+    if (element && containerRect) {
       const rect = element.getBoundingClientRect();
       const htmlDiv = document.createElement('div')
       htmlDiv.style.backgroundColor = "transparent"
       htmlDiv.style.position = "fixed"
       htmlDiv.style.border = `dashed 1px ${AUX_BACKGROUND_COLOR}`
       htmlDiv.style.pointerEvents = "none"
-      htmlDiv.style.left = numbToPx(rect.left)
-      htmlDiv.style.top = numbToPx(rect.top)
+      htmlDiv.style.left = numbToPx(rect.left - containerRect.x)
+      htmlDiv.style.top = numbToPx(rect.top - containerRect.y)
       htmlDiv.style.height = numbToPx(rect.height - 2)
       htmlDiv.style.width = numbToPx(rect.width - 2)
       htmlDiv.style.zIndex = addZIndex(window.getComputedStyle(htmlDiv).zIndex, 1)
-      element.ownerDocument.body?.appendChild(htmlDiv)
+      canvas?.appendChild(htmlDiv)
       this.outline = htmlDiv
     }
   }

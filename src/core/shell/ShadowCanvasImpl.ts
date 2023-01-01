@@ -6,7 +6,7 @@ export class ShadowCanvasImpl implements IShellPane {
   constructor(
     engine: IDesignerEngine,
     private shadow: ShadowRoot,
-    roolElement: HTMLElement,
+    private roolElement: HTMLElement,
     public id: ID,
     private driverFactories: IDriverFactory[]
   ) {
@@ -32,6 +32,10 @@ export class ShadowCanvasImpl implements IShellPane {
     return this.getElement(nodeId)?.getBoundingClientRect() || null
   }
   
+  getContainerRect(): IRect | null{
+    return this.roolElement.getBoundingClientRect()
+  }
+
   destory(): void {
     for (const driver of this.dirvers) {
       driver.teardown()

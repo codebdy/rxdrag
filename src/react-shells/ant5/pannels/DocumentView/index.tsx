@@ -7,6 +7,7 @@ import { JsonView } from "core-react/JsonView"
 import { Preview } from "core-react/Preview"
 import { memo } from "react"
 import { CanvasToolbar } from "react-shells/ant5/layouts/CanvasToolbar"
+import { AuxButtionsButtions } from "react-shells/ant5/widgets/AuxButtions"
 import { CanvasSize } from "react-shells/ant5/widgets/CanvasSize"
 import { NavbarWidget } from "react-shells/ant5/widgets/NavbarWidget"
 import { SelectionButtions } from "react-shells/ant5/widgets/SelectionButtions"
@@ -28,6 +29,8 @@ export const DocumentView = memo((
           <UndoRedoButtons />
           <Divider type="vertical" style={{ height: 16 }} />
           <SelectionButtions />
+          <Divider type="vertical" style={{ height: 16 }} />
+          <AuxButtionsButtions />
           <Divider type="vertical" style={{ height: 16 }} />
           <CanvasSize />
           <div style={{ flex: 1 }}></div>

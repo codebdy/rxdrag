@@ -15,6 +15,9 @@ export class IFrameCanvasImpl implements IShellPane {
       }
 		}
   }
+  getContainerRect(): IRect | null {
+    return this.iframe.getBoundingClientRect()
+  }
 
   appendChild(child: HTMLElement): void {
     this.body?.append(child)

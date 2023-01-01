@@ -8,7 +8,7 @@ const viewportStyle: CSSProperties = {
   display: "flex",
   flexFlow: "column",
   boxSizing: "border-box",
-  alignItems: "center"
+  alignItems: "center",
 }
 
 export interface ViewportProps {
