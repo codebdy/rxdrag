@@ -1,4 +1,4 @@
-import { CanvasWidthLimits, CanvasWidthLimitsPayload, CanvasWidthPayload, ID, IDesignerEngine, ViewTypePayload } from "core/interfaces";
+import { CanvasWidthLimits, CanvasWidthLimitsPayload, CanvasWidthPayload, ID, IDesignerEngine, SelectionModePayload, ViewTypePayload, DocumentSelectionMode } from "core/interfaces";
 import { DrageOverOptions, IActions, StartDragNodesOptions, StartDragResourceOptions, ThemeMode } from "core/interfaces/action";
 import { ACTIVE_NODE, CHANGE_ACTIVED_DOCUMENT, CHANGE_CANVAS_WIDTH, CHANGE_CANVAS_WIDTH_LIMITS, CHANGE_DOCUMENT_VIEW_TYPE, DRAG_HOVER, END_DRAG_NODES, END_DRAG_RESOURCE, SELECT_NODES, SET_SELECTION_MODE, SET_THEME_MODE, START_DRAG_NODES, START_DRAG_RESOURCE } from "./registry";
 
@@ -52,7 +52,11 @@ export class Actions implements IActions {
 		this.engine.dispatch({ type: SELECT_NODES, payload: { documentId, targetIds } })
 	}
 
-	setSelectionMode(payload: SelectionMode): void {
+	setSelectionMode(documentId: string, mode: DocumentSelectionMode): void {
+		const payload: SelectionModePayload = {
+			documentId,
+			mode: mode,
+		}
 		this.engine.dispatch({ type: SET_SELECTION_MODE, payload })
 	}
 
