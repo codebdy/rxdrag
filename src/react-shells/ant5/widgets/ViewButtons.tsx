@@ -1,7 +1,8 @@
-import { Button, Space } from "antd"
+import { Button, Space, Tooltip } from "antd"
 import { useActions } from "core-react/hooks/useActions"
 import { useActivedDocumentIdState } from "core-react/hooks/useActivedDocumentIdState"
 import { useDocumentViewTypeState } from "core-react/hooks/useDocumentViewTypeState"
+import { useToolsTranslate } from "core-react/hooks/useToolsTranslate"
 import { memo, useCallback, useEffect } from "react"
 import { designIcon, jsonIcon, playIcon } from "../icons"
 import { SvgIcon } from "../layouts/CanvasToolbar/SvgIcon"
@@ -10,6 +11,7 @@ export const ViewButtons = memo(() => {
   const [viewType, setViewType] = useDocumentViewTypeState()
   const [activedDocumentId] = useActivedDocumentIdState()
   const actions = useActions()
+  const t = useToolsTranslate()
 
   useEffect(() => {
     actions?.selectNodes([], activedDocumentId || "")
@@ -28,37 +30,43 @@ export const ViewButtons = memo(() => {
   }, [setViewType])
   return (
     <Space>
-      <Button
-        size="small"
-        type={viewType === "design" ? "default" : "text"}
-        icon={
-          <SvgIcon>
-            {designIcon}
-          </SvgIcon>
-        }
+      <Tooltip title={t("design")}>
+        <Button
+          size="small"
+          type={viewType === "design" ? "default" : "text"}
+          icon={
+            <SvgIcon>
+              {designIcon}
+            </SvgIcon>
+          }
 
-        onClick={handleDesign}
-      />
-      <Button
-        size="small"
-        type={viewType === "json" ? "default" : "text"}
-        icon={
-          <SvgIcon>
-            {jsonIcon}
-          </SvgIcon>
-        }
-        onClick={handleJson}
-      />
-      <Button
-        size="small"
-        type={viewType === "preview" ? "default" : "text"}
-        icon={
-          <SvgIcon>
-            {playIcon}
-          </SvgIcon>
-        }
-        onClick={handlePreview}
-      />
+          onClick={handleDesign}
+        />
+      </Tooltip>
+      <Tooltip title={t("jsonCode")}>
+        <Button
+          size="small"
+          type={viewType === "json" ? "default" : "text"}
+          icon={
+            <SvgIcon>
+              {jsonIcon}
+            </SvgIcon>
+          }
+          onClick={handleJson}
+        />
+      </Tooltip>
+      <Tooltip title={t("preview")}>
+        <Button
+          size="small"
+          type={viewType === "preview" ? "default" : "text"}
+          icon={
+            <SvgIcon>
+              {playIcon}
+            </SvgIcon>
+          }
+          onClick={handlePreview}
+        />
+      </Tooltip>
     </Space>
   )
 })
