@@ -24,7 +24,9 @@ export const commmonLocales: ILocales = {
       mobilePortrait: "手机竖屏",
       max: "最大",
       min: "最小",
-      responsive: "响应式屏幕"
+      responsive: "响应式屏幕",
+      auxMargin: "辅助边距",
+      auxLine: "辅助线"
     }
   },
   'en-US': {
@@ -50,7 +52,9 @@ export const commmonLocales: ILocales = {
       mobilePortrait: "Mobile Portrait",
       max: "Max",
       min: "Min",
-      responsive: "Responsive"
+      responsive: "Responsive",
+      auxMargin: "Aux margin",
+      auxLine: "Aux line"
     }
   }
 }
