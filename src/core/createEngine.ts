@@ -19,8 +19,8 @@ export function createEngine(
 ): IDesignerEngine {
 	const store = makeStoreInstance(options.debugMode)
 	const monitor = new Monitor(store)
-	const moter = new DesignerShell()
-	const engine = new DesignerEngine(store, moter, monitor, plugins)
+	const shell = new DesignerShell()
+	const engine = new DesignerEngine(store, shell, monitor, plugins)
 	engine.getComponentManager().registerBehaviors(rootBehavior)
 	return engine
 }

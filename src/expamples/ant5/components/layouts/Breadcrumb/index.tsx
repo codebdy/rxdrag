@@ -10,10 +10,10 @@ export const Breadcrumb = memo(forwardRef<HTMLDivElement, BreadcrumbProps>((
   props, ref) => {
   return (
     <AntdBreadcrumb {...props}>
-      <AntdBreadcrumb.Item href="">
+      <AntdBreadcrumb.Item>
         <HomeOutlined />
       </AntdBreadcrumb.Item>
-      <AntdBreadcrumb.Item href="">
+      <AntdBreadcrumb.Item>
         <span>Application List</span>
       </AntdBreadcrumb.Item>
       <AntdBreadcrumb.Item>Application</AntdBreadcrumb.Item>

@@ -13,6 +13,8 @@ import { DefualtLang } from "core/reducers/lang";
 import { ComponentManager } from "./ComponentManager";
 import { IPlugin, IPluginFactory } from "core/interfaces/plugin";
 import { isFn } from "core/utils/types";
+import { IDecoratorManager } from "core/interfaces/decorator";
+import { DecoratorManager } from "./DecoratorManager";
 
 export class DesignerEngine implements IDesignerEngine {
 	private documentsById: {
@@ -22,22 +24,27 @@ export class DesignerEngine implements IDesignerEngine {
 	private localesManager: ILocalesManager
 	private actions: IActions
 	private componentManager: IComponentManager
+	private decoratorManager: IDecoratorManager
 	private plugins: {
 		[name: string]: IPlugin | undefined
 	} = {}
 	public constructor(private store: Store<State>,
-		private driverHub: IDesignerShell,
+		private shell: IDesignerShell,
 		private monitor: IMonitor,
 		plugins: IPluginFactory[],
 		lang?: string
 	) {
 		this.localesManager = new LocalesManager(lang || DefualtLang)
 		this.resourceManager = new ResourceManager(this.localesManager)
+		this.decoratorManager = new DecoratorManager(this)
 		this.actions = new Actions(this)
 		this.componentManager = new ComponentManager(this)
 		for (const pluginFactory of plugins) {
 			this.registerPlugin(pluginFactory)
 		}
+	}
+	getDecoratorManager(): IDecoratorManager {
+		return this.decoratorManager
 	}
 
 	getComponentManager(): IComponentManager {
@@ -96,7 +103,7 @@ export class DesignerEngine implements IDesignerEngine {
 	}
 
 	public getShell(): IDesignerShell {
-		return this.driverHub
+		return this.shell
 	}
 
 	public getActions(): IActions {
@@ -111,7 +118,7 @@ export class DesignerEngine implements IDesignerEngine {
 		for (const key of Object.keys(this.plugins)) {
 			this.plugins[key]?.destory()
 		}
-		this.driverHub.destory()
+		this.shell.destory()
 	}
 
 	getNodeBehavior(nodeId: ID): NodeBehavior {

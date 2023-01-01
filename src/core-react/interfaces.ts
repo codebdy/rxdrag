@@ -22,3 +22,4 @@ export interface IComponentMaterial extends IComponentConfig, ITemplateMaterial 
     [name: string]: IComponentMaterial | true | string | undefined
   }
 }
+
