@@ -13,6 +13,9 @@ export class ContainerImpl implements IShellPane {
 			this.dirvers.push(dirverFactory(engine.getShell(), roolElement))
 		}
   }
+  getContainerRect(): IRect | null {
+    return this.roolElement.getBoundingClientRect()
+  }
 
   appendChild(child: HTMLElement): void {
     this.roolElement.append(child)

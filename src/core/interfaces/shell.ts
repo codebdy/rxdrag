@@ -4,6 +4,7 @@ import { ID, IRect } from "./types"
 export interface IShellPane {
 	id: ID
 	getElement(id: ID): HTMLElement | null
+	getContainerRect(): IRect | null
 	getTopRect(nodeId: ID): IRect | null
 	appendChild(child: HTMLElement): void
 	contains(child: HTMLElement): boolean

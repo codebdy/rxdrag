@@ -48,21 +48,24 @@ export class SelectedOutlineImpl implements IPlugin {
 
   listenSelectChange = (selectedIds: ID[] | null) => {
     this.clear()
+
     for (const id of selectedIds || []) {
       const element = this.engine.getShell().getElement(id)
-      if (element) {
+      const canvas = this.engine.getShell().getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
+      const containerRect = canvas?.getContainerRect()
+      if (element && containerRect) {
         const rect = element.getBoundingClientRect();
         const htmlDiv = document.createElement('div')
         htmlDiv.style.backgroundColor = "transparent"
         htmlDiv.style.position = "fixed"
         htmlDiv.style.border = `solid 2px ${AUX_BACKGROUND_COLOR}`
         htmlDiv.style.pointerEvents = "none"
-        htmlDiv.style.left = numbToPx(rect.left)
-        htmlDiv.style.top = numbToPx(rect.top)
+        htmlDiv.style.left = numbToPx(rect.left - containerRect.x)
+        htmlDiv.style.top = numbToPx(rect.top - containerRect.y)
         htmlDiv.style.height = numbToPx(rect.height - 4)
         htmlDiv.style.width = numbToPx(rect.width - 4)
         htmlDiv.style.zIndex = addZIndex(window.getComputedStyle(htmlDiv).zIndex, 1)
-        element.ownerDocument.body?.appendChild(htmlDiv)
+        canvas?.appendChild(htmlDiv)
         this.htmls[id] = htmlDiv
       }
     }

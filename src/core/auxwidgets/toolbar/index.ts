@@ -90,8 +90,8 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   private render() {
     const node = this.engine.getMonitor().getCurrentNode()
     const divEl = this.htmlElement
-    const rootEl = this.engine.getShell().getContainer()
-    divEl && rootEl?.contains(divEl) && rootEl?.removeChild(divEl)
+    const canvas = this.engine.getShell().getCanvas(this.engine.getMonitor().getNodeDocumentId(node?.id || "") || "")
+    divEl && canvas?.contains(divEl) && canvas?.removeChild(divEl)
     this.htmlElement = null
     if (!node) {
       if (divEl) {
@@ -101,9 +101,11 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     }
     const element = node.id && this.engine.getShell().getElement(node.id)
     const positionLimit = this.positionLimit(node.documentId)
-    if (element && positionLimit) {
+
+    const containerRect = canvas?.getContainerRect()
+
+    if (element && positionLimit && containerRect) {
       const rect = element.getBoundingClientRect();
-      const bodyRect = element.ownerDocument.body.getBoundingClientRect()
 
       const htmlDiv = document.createElement('div')
       htmlDiv.style.display = "flex"
@@ -122,16 +124,16 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
           top = rect.y + 2
         }
       }
-      const right = bodyRect.width - rect.x - rect.width;
+      const right = containerRect.width - (rect.x - containerRect.x) - rect.width;
       htmlDiv.style.position = "fixed"
       htmlDiv.style.right = numbToPx(right)
-      htmlDiv.style.top = numbToPx(top)
+      htmlDiv.style.top = numbToPx(top - containerRect.y)
       htmlDiv.style.fontSize = "12px"
       htmlDiv.style.padding = "0px"
       htmlDiv.style.zIndex = addZIndex(window.getComputedStyle(htmlDiv).zIndex, 10)
       htmlDiv.style.userSelect = "none"
 
-      rootEl?.appendChild(htmlDiv)
+      canvas?.appendChild(htmlDiv)
 
       const divRect = htmlDiv.getBoundingClientRect()
       if ((rect.x + rect.width - divRect.width) < positionLimit.left) {
@@ -174,23 +176,18 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
 
   private positionLimit(documentId: ID) {
     const bodyRect = document.body.getBoundingClientRect()
-    const rect = this.getRootElement(documentId)?.getBoundingClientRect()
+    const rect = this.engine.getShell().getCanvas(documentId)?.getContainerRect()
     if (!rect) {
       return null
     }
     return {
       right: bodyRect.width - rect.x - rect.width,
-      left: rect.left,
+      left: rect.x,
       top: rect.y,
-      bottom: rect.top + rect.height
+      bottom: rect.y + rect.height
     }
   }
 
-  private getRootElement(documentId: ID) {
-    const root = this.engine.getMonitor().getDocumentRootNode(documentId)
-
-    return root?.id ? this.engine.getShell().getElement(root?.id) : null
-  }
   private clear() {
     for (const ctrl of this.controls) {
       ctrl.teardown()
