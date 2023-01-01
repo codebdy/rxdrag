@@ -19,6 +19,8 @@ import {
 	Listener,
 	NodeListener,
 	SelectedChangeListener,
+	DocumentSelectionMode,
+	SelectionModeListener,
 	SnapshotIndexListener,
 	ThemeModeListener,
 	Unsubscribe,
@@ -35,10 +37,10 @@ export class NodeChangeHandler {
 	} = {}
 
 	handleNodeChange = (node: ITreeNode) => {
-		for(const id of Object.keys(this.listeners)){
-			if(id === node.id){
-				const  listeners = this.listeners[id]
-				for(const listener of listeners||[]){
+		for (const id of Object.keys(this.listeners)) {
+			if (id === node.id) {
+				const listeners = this.listeners[id]
+				for (const listener of listeners || []) {
 					listener(node)
 				}
 			}
@@ -49,7 +51,7 @@ export class NodeChangeHandler {
 		const unsubscribe = () => {
 			this.removeListener(id, listener)
 		}
-		if(!this.listeners[id]){
+		if (!this.listeners[id]) {
 			this.listeners[id] = []
 		}
 		this.listeners[id]?.push(listener)
@@ -68,6 +70,10 @@ export class Monitor implements IMonitor {
 	public constructor(store: Store<State>) {
 		this.store = store
 		this.doSubscribeToNodeChanged(this.nodechnageHandler.handleNodeChange)
+	}
+
+	getSelectionMode(document: string): DocumentSelectionMode {
+		return this.store.getState().documentsById[document]?.selectionMode || DocumentSelectionMode.Normal
 	}
 
 
@@ -407,6 +413,21 @@ export class Monitor implements IMonitor {
 		return this.store.subscribe(handleChange)
 	}
 
+	subscribeToSelectionMode(documentId: string, listener: SelectionModeListener): Unsubscribe {
+		invariant(typeof listener === 'function', 'listener must be a function.')
+
+		let previousState = this.store.getState().documentsById[documentId]?.selectionMode
+		const handleChange = () => {
+			const nextState = this.store.getState().documentsById[documentId]?.selectionMode
+			if (nextState === previousState) {
+				return
+			}
+
+			previousState = nextState
+			listener(nextState || DocumentSelectionMode.Normal)
+		}
+		return this.store.subscribe(handleChange)
+	}
 
 	isDragging(): boolean {
 		const state = this.store.getState()

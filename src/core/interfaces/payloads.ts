@@ -1,5 +1,5 @@
 import { NodesById } from "core/reducers/nodesById";
-import { ID } from "./types";
+import { ID, DocumentSelectionMode } from "./types";
 import { HistoryableActionType, ITreeNode, NodeChunk, NodeRelativePosition, ISnapshot, INodeMeta, CanvasWidthLimits, ViewType } from "./document";
 
 
@@ -38,6 +38,11 @@ export type CanvasWidthLimitsPayload = DocumentActionPayload & {
 export type ViewTypePayload = DocumentActionPayload & {
   viewType: ViewType;
 };
+
+export type SelectionModePayload = DocumentActionPayload & {
+  mode: DocumentSelectionMode;
+};
+
 
 export type AddNodesPayload = DocumentActionPayload & {
   targetId: ID;

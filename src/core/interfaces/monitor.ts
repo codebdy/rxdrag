@@ -4,6 +4,7 @@ import { DraggingResourceState } from "core/reducers/draggingResource"
 import { DragOverState } from "core/reducers/dragOver"
 import { ThemeMode } from "./action"
 import { CanvasWidthLimits, ISnapshot, ITreeNode, NodeListener, ViewType } from "./document"
+import { DocumentSelectionMode } from "./types"
 
 import { Listener, ID, Unsubscribe } from "./types"
 
@@ -21,6 +22,7 @@ export type SnapshotIndexListener = (index: number) => void
 export type CanvasWidthListener = (index: number | null) => void
 export type CanvasWidthLimitsListener = (limits: CanvasWidthLimits | null) => void
 export type DocumentViewListener = (viewType: ViewType) => void
+export type SelectionModeListener = (mode: DocumentSelectionMode) => void
 
 export interface IMonitor {
 	subscribeToStateChange(
@@ -42,6 +44,7 @@ export interface IMonitor {
 	subscribeToCanvasWidthChange(documentId: ID, listener: CanvasWidthListener): Unsubscribe
 	subscribeToCanvasWidthLimitsChange(documentId: ID, listener: CanvasWidthLimitsListener): Unsubscribe
 	subscribeToDocumentViewChange(documentId: ID, listener: DocumentViewListener): Unsubscribe
+	subscribeToSelectionMode(documentId: ID, listener: SelectionModeListener): Unsubscribe
 
 	//onViewPortResizeOrScroll(listener: Listener): Unsubscribe
 	isDragging(): boolean
@@ -54,5 +57,6 @@ export interface IMonitor {
 	getCurrentTree(): ITreeNode | null
 	getDrageOver(): DragOverState
 	getState(): State
+	getSelectionMode(document: ID): DocumentSelectionMode
 	//getDragging(): Dragging|null
 }

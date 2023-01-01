@@ -7,16 +7,13 @@ import { AddDecoratorEvent } from "core/shell/events/canvas/AddDecoratorEvent";
 import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
 import { NodeUnmountedEvent } from "core/shell/events/canvas/NodeUnmountedEvent";
 import { RemoveDecoratorEvent } from "core/shell/events/canvas/RemoveDecoratorEvent";
-import { addZIndex } from "core/utils/add-zindex";
 import { AUX_BACKGROUND_COLOR } from "../consts";
-import { numbToPx } from "../utils/numbToPx";
 
-export class SelectedOutlineImpl implements IPlugin {
+//这个不好用，有的地方会显示不全，废弃
+export class SelectedClassStyleOutlineImpl implements IPlugin {
   name: string = "default.selected-outline";
+  htmlStyle: HTMLElement;
   private unsubscribe: Unsubscribe;
-  private htmls: {
-    [id: ID]: HTMLElement
-  } = {}
   private nodeChangeUnsubscribe: Unsubscribe;
   private selecteNodes: ID[] | null = null
   private refreshedFlag = false
@@ -34,6 +31,9 @@ export class SelectedOutlineImpl implements IPlugin {
     if (!engine.getShell().getContainer) {
       console.error("Html 5 driver rootElement is undefined")
     }
+    const style = document.createElement('style');
+    style.innerHTML = `.rx-node-outline {  outline:solid 2px ${AUX_BACKGROUND_COLOR}; z-index:1;}`;
+    this.htmlStyle = style
     this.unmountUnsubscribe = this.engine.getShell().subscribeTo(NodeUnmountedEvent, this.handleNodeMounted)
     this.unsubscribe = engine.getMonitor().subscribeToSelectChange(this.listenSelectChange)
     this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
@@ -48,7 +48,7 @@ export class SelectedOutlineImpl implements IPlugin {
   }
 
   handleNodeMounted = (e: NodeMountedEvent) => {
-    if (Object.keys(this.htmls).length || this.selecteNodes?.length) {
+    if (this.selecteNodes?.length) {
       this.refresh()
     }
   }
@@ -59,21 +59,12 @@ export class SelectedOutlineImpl implements IPlugin {
     for (const id of selectedIds || []) {
       const element = this.engine.getShell().getElement(id)
       const canvas = this.engine.getShell().getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
-      const containerRect = canvas?.getContainerRect()
-      if (element && containerRect) {
-        const rect = element.getBoundingClientRect();
-        const htmlDiv = document.createElement('div')
-        htmlDiv.style.backgroundColor = "transparent"
-        htmlDiv.style.position = "fixed"
-        htmlDiv.style.border = `solid 2px ${AUX_BACKGROUND_COLOR}`
-        htmlDiv.style.pointerEvents = "none"
-        htmlDiv.style.left = numbToPx(rect.left - containerRect.x)
-        htmlDiv.style.top = numbToPx(rect.top - containerRect.y)
-        htmlDiv.style.height = numbToPx(rect.height - 4)
-        htmlDiv.style.width = numbToPx(rect.width - 4)
-        htmlDiv.style.zIndex = addZIndex(window.getComputedStyle(htmlDiv).zIndex, 1)
-        canvas?.appendChild(htmlDiv)
-        this.htmls[id] = htmlDiv
+      if (!canvas?.contains(this.htmlStyle)) {
+        canvas?.appendChild(this.htmlStyle)
+      }
+
+      if (element) {
+        element.classList.add('rx-node-outline')
       }
     }
     this.selecteNodes = selectedIds
@@ -89,12 +80,14 @@ export class SelectedOutlineImpl implements IPlugin {
 
   private hideWhenDragging = (dragging: boolean) => {
     if (dragging) {
-      for (const key of Object.keys(this.htmls)) {
-        this.htmls[key].style.display = "none"
+      for (const id of this.selecteNodes || []) {
+        const element = this.engine.getShell().getElement(id)
+        element?.classList.remove("rx-node-outline")
       }
     } else {
-      for (const key of Object.keys(this.htmls)) {
-        this.htmls[key].style.display = ""
+      for (const id of this.selecteNodes || []) {
+        const element = this.engine.getShell().getElement(id)
+        element?.classList.add("rx-node-outline")
       }
     }
   }
@@ -135,13 +128,13 @@ export class SelectedOutlineImpl implements IPlugin {
   }
 
   private clear() {
-    for (const id of Object.keys(this.htmls)) {
-      this.htmls[id].remove()
+    for (const id of this.selecteNodes || []) {
+      const element = this.engine.getShell().getElement(id)
+      element?.classList.remove("rx-node-outline")
     }
-    this.htmls = {}
   }
 }
 
-export const SelectedOutline = (engine: IDesignerEngine) => {
-  return new SelectedOutlineImpl(engine)
+export const SelectedClassStyleOutline = (engine: IDesignerEngine) => {
+  return new SelectedClassStyleOutlineImpl(engine)
 }

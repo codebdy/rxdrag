@@ -41,7 +41,7 @@ export type RxProps = {
 }
 //<<<=============================================
 
-export enum SelectionMode {
+export enum DocumentSelectionMode {
 	Normal = "normal",
 	RangeSelection = "rangeSelection"
 }

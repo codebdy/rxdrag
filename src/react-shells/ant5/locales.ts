@@ -26,7 +26,12 @@ export const commmonLocales: ILocales = {
       min: "最小",
       responsive: "响应式屏幕",
       auxMargin: "辅助边距",
-      auxLine: "辅助线"
+      auxLine: "辅助线",
+      design: "设计",
+      jsonCode: "JSON 代码",
+      preview: "预览",
+      pointSelection: "点选",
+      boxSelection: "框选"
     }
   },
   'en-US': {
@@ -54,7 +59,12 @@ export const commmonLocales: ILocales = {
       min: "Min",
       responsive: "Responsive",
       auxMargin: "Aux margin",
-      auxLine: "Aux line"
+      auxLine: "Aux line",
+      design: "Design",
+      jsonCode: "JSON Code",
+      preview: "Preview",
+      pointSelection: "Point selection",
+      boxSelection: "Box selection"
     }
   }
 }

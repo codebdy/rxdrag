@@ -1,4 +1,4 @@
-import { ID, SelectionMode } from "core/interfaces";
+import { ID, DocumentSelectionMode } from "core/interfaces";
 import { CanvasWidthLimits, IDocumentAction, ISnapshot, ViewType, } from "../../../interfaces/document";
 import { rootId } from "./rootId";
 import { selectedIds } from "./selectedIds";
@@ -10,7 +10,7 @@ import { canvasWidthLimits } from "./canvasWidthLimits";
 import { viewType } from "./viewType";
 
 export type DocumentState = {
-	selectionMode: SelectionMode
+	selectionMode: DocumentSelectionMode
 	changed: {
 		root?: boolean,
 		[block: string]: boolean | undefined
@@ -26,7 +26,7 @@ export type DocumentState = {
 }
 
 const initialState: DocumentState = {
-	selectionMode: SelectionMode.Normal,
+	selectionMode: DocumentSelectionMode.Normal,
 	changed: {
 		root: false,
 	},

@@ -1,4 +1,4 @@
-import { CanvasWidthLimits, ID, Identifier, IXYCoord, ViewType } from "core/interfaces"
+import { CanvasWidthLimits, ID, Identifier, IXYCoord, ViewType, DocumentSelectionMode } from "core/interfaces"
 import { RelativePosition } from "core/utils/coordinate"
 import { Action } from "redux"
 
@@ -46,11 +46,11 @@ export interface IActions {
 	startDragNodes(opitons: StartDragNodesOptions): void
 	endDragNodes(): void
 	selectNodes(targets: ID[], documentId: ID): void
-	setSelectionMode(mode: SelectionMode): void
+	setSelectionMode(documentId: string, mode: DocumentSelectionMode): void
 	changeActivedDocument(documentId: ID | null): void
 	setThemeMode(mode: ThemeMode): void
 	activeNode(nodeId?: ID | null): void
-	changeCanvasWidth(documentId:ID, width: number | null): void
-	changeCanvasWidthLimits(documentId:ID, limits: CanvasWidthLimits | null): void
-	changeDocumentView(documentId:ID, viewType: ViewType): void
+	changeCanvasWidth(documentId: ID, width: number | null): void
+	changeCanvasWidthLimits(documentId: ID, limits: CanvasWidthLimits | null): void
+	changeDocumentView(documentId: ID, viewType: ViewType): void
 }

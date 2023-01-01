@@ -1,6 +1,8 @@
 import { IDesignerEngine } from "core/interfaces";
 import { IDecorator, IDecoratorManager } from "core/interfaces/decorator";
+import { AddDecoratorEvent } from "core/shell/events/canvas/AddDecoratorEvent";
 import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
+import { RemoveDecoratorEvent } from "core/shell/events/canvas/RemoveDecoratorEvent";
 
 export type Decorators = {
   [key: string]: IDecorator | undefined
@@ -23,6 +25,7 @@ export class DecoratorManager implements IDecoratorManager {
 
     this.decorators[documentId][decorator.name] = decorator
     this.attachDecorator(decorator, documentId)
+    this.engine.getShell().dispatch(new AddDecoratorEvent())
   }
 
   removeDecorator(name: string, documentId: string): void {
@@ -30,6 +33,7 @@ export class DecoratorManager implements IDecoratorManager {
     if (decorator) {
       this.detachDecorator(decorator, documentId)
       delete this.decorators[documentId][name]
+      this.engine.getShell().dispatch(new RemoveDecoratorEvent())
     }
   }
   getDecorator(name: string, documentId: string): IDecorator | undefined {
@@ -54,11 +58,11 @@ export class DecoratorManager implements IDecoratorManager {
       return
     }
     const decorators = this.decorators[documentId]
-
+    const node = this.engine.getMonitor().getNode(nodeId)
     for (const name of Object.keys(decorators || {})) {
       const decorator = decorators[name]
-      if (decorator) {
-        decorator.decorate(el)
+      if (decorator && node) {
+        decorator.decorate(el, node)
       }
     }
   }
@@ -71,7 +75,7 @@ export class DecoratorManager implements IDecoratorManager {
       if (node.documentId === documentId) {
         const el = shell.getElement(id)
         if (el) {
-          decorator.decorate(el)
+          decorator.decorate(el, node)
         }
       }
     }
