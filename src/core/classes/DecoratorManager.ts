@@ -54,11 +54,11 @@ export class DecoratorManager implements IDecoratorManager {
       return
     }
     const decorators = this.decorators[documentId]
-
+    const node = this.engine.getMonitor().getNode(nodeId)
     for (const name of Object.keys(decorators || {})) {
       const decorator = decorators[name]
-      if (decorator) {
-        decorator.decorate(el)
+      if (decorator && node) {
+        decorator.decorate(el, node)
       }
     }
   }
@@ -71,7 +71,7 @@ export class DecoratorManager implements IDecoratorManager {
       if (node.documentId === documentId) {
         const el = shell.getElement(id)
         if (el) {
-          decorator.decorate(el)
+          decorator.decorate(el, node)
         }
       }
     }
