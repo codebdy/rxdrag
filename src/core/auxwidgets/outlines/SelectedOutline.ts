@@ -3,8 +3,10 @@ import { IPlugin } from "core/interfaces/plugin";
 import { DraggingNodesState } from "core/reducers/draggingNodes";
 import { DraggingResourceState } from "core/reducers/draggingResource";
 import { CanvasResizeEvent, CanvasScrollEvent } from "core/shell/events";
+import { AddDecoratorEvent } from "core/shell/events/canvas/AddDecoratorEvent";
 import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
 import { NodeUnmountedEvent } from "core/shell/events/canvas/NodeUnmountedEvent";
+import { RemoveDecoratorEvent } from "core/shell/events/canvas/RemoveDecoratorEvent";
 import { addZIndex } from "core/utils/add-zindex";
 import { AUX_BACKGROUND_COLOR } from "../consts";
 import { numbToPx } from "../utils/numbToPx";
@@ -25,6 +27,9 @@ export class SelectedOutlineImpl implements IPlugin {
   private unmountUnsubscribe: Unsubscribe
   private draggingNodesOff: Unsubscribe
   private draggingResourceOff: Unsubscribe
+  private addDecoratorOff: Unsubscribe
+  private removeDecoratorOff: Unsubscribe
+
   constructor(protected engine: IDesignerEngine) {
     if (!engine.getShell().getContainer) {
       console.error("Html 5 driver rootElement is undefined")
@@ -38,6 +43,8 @@ export class SelectedOutlineImpl implements IPlugin {
     this.unNodeMounted = this.engine.getShell().subscribeTo(NodeMountedEvent, this.handleNodeMounted)
     this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
     this.draggingResourceOff = this.engine.getMonitor().subscribeToDraggingResource(this.handleDraggingResource)
+    this.addDecoratorOff = this.engine.getShell().subscribeTo(AddDecoratorEvent, this.refresh)
+    this.removeDecoratorOff = this.engine.getShell().subscribeTo(RemoveDecoratorEvent, this.refresh)
   }
 
   handleNodeMounted = (e: NodeMountedEvent) => {
@@ -123,6 +130,8 @@ export class SelectedOutlineImpl implements IPlugin {
     this.unNodeMounted()
     this.draggingNodesOff?.()
     this.draggingResourceOff?.()
+    this.addDecoratorOff?.()
+    this.removeDecoratorOff?.()
   }
 
   private clear() {
