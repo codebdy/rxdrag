@@ -42,7 +42,7 @@ export const Designer = memo((props: DesignerProps) => {
         Toolbar,
       ],
       {
-        debugMode: true
+        debugMode: false
       }
     )
     setEngine(eng)

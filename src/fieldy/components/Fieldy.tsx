@@ -7,7 +7,7 @@ export const Fieldy = (props: {
 }) => {
   const { children } = props
   const fieldy = useMemo(() => {
-    return new FieldyEngine()
+    return new FieldyEngine(false)
   }, [])
 
   return <FieldyContext.Provider value={fieldy}>
