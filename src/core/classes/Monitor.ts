@@ -70,6 +70,7 @@ export class Monitor implements IMonitor {
 		this.doSubscribeToNodeChanged(this.nodechnageHandler.handleNodeChange)
 	}
 
+
 	getCurrentNode(): ITreeNode | null {
 		const state = this.getState()
 		if (!state.activedDocumentId) {

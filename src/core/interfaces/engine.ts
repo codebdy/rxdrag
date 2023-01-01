@@ -7,6 +7,7 @@ import { IAction, IActions } from "core/interfaces/action"
 import { ILocalesManager } from "./loacales"
 import { IComponentManager } from "./component"
 import { IPlugin, IPluginFactory } from "./plugin"
+import { IDecoratorManager } from "./decorator"
 
 export interface IDesignerEngine {
 	getLanguage(): string
@@ -22,6 +23,7 @@ export interface IDesignerEngine {
 	getComponentManager(): IComponentManager
 	getResourceManager(): IResourceManager
 	getLoacalesManager(): ILocalesManager
+	getDecoratorManager(): IDecoratorManager
 	getActions(): IActions
 
 	registerPlugin(pluginFactory: IPluginFactory): void

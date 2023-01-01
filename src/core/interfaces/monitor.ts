@@ -31,7 +31,7 @@ export interface IMonitor {
 	subscribeToDragOver(listener: DragOverListener): Unsubscribe
 	subscribeToSelectChange(listener: SelectedChangeListener): Unsubscribe
 	subscribeToCurrentNodeChanged(listener: CurrentNodesChangeListener): Unsubscribe
-	subscribeToNodeChanged(nodeId:ID, listener: NodeListener): Unsubscribe
+	subscribeToNodeChanged(nodeId: ID, listener: NodeListener): Unsubscribe
 	subscribeToHasNodeChanged(listener: Listener): Unsubscribe
 	subscribeToLangeChange(listener: LangListener): Unsubscribe
 	subscribeToThemeModeChange(listener: ThemeModeListener): Unsubscribe
