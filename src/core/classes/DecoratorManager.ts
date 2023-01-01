@@ -45,7 +45,7 @@ export class DecoratorManager implements IDecoratorManager {
 
     const el = this.engine.getShell().getElement(nodeId)
     if (!el) {
-      console.error("No Element")
+      //console.error("No Element")
       return
     }
     const documentId = this.engine.getMonitor().getNodeDocumentId(nodeId)
@@ -55,7 +55,7 @@ export class DecoratorManager implements IDecoratorManager {
     }
     const decorators = this.decorators[documentId]
 
-    for (const name of Object.keys(decorators)) {
+    for (const name of Object.keys(decorators || {})) {
       const decorator = decorators[name]
       if (decorator) {
         decorator.decorate(el)

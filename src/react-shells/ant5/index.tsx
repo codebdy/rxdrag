@@ -1,4 +1,4 @@
-import {  IDesignerEngine, IDocument, INodeSchema } from "core"
+import { IDesignerEngine, IDocument, INodeSchema } from "core"
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Designer } from "core-react/Designer"
 import { SettingsForm } from "./SettingsForm"
@@ -23,6 +23,7 @@ import { ConfigRoot } from "./pannels/ShellContainer/ConfigRoot"
 import { ILocales } from "core/interfaces/loacales"
 import { DocumentView } from "./pannels/DocumentView"
 import { settingLocales } from "./SettingsForm/locales/settingLocales"
+import "./style.less"
 
 export type Antd5EditorProps = {
   leftNav?: React.ReactNode,

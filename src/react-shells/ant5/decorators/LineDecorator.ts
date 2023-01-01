@@ -5,10 +5,10 @@ export class LineDecorator implements IDecorator {
   name: string = LINE_DECORTOR_NAME;
 
   decorate(el: HTMLElement): void {
-    throw new Error("Method not implemented.");
+    el.classList.add("rx-node-outlined")
   }
   unDecorate(el: HTMLElement): void {
-    throw new Error("Method not implemented.");
+    el.classList.remove("rx-node-outlined")
   }
 
 }
