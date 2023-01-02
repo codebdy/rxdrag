@@ -9,6 +9,8 @@ const unlockIcon = `
 `
 
 export class LockButton extends AbstractButton {
+  htmlEl?: HTMLElement
+  locked?: boolean
   constructor(protected engine: IDesignerEngine) {
     super("default.lock-button", engine)
 
@@ -16,8 +18,11 @@ export class LockButton extends AbstractButton {
 
   handleLock = () => {
     const node = this.engine.getMonitor().getCurrentNode()
-    if (node) {
-
+    if (node && this.htmlEl) {
+      const doc = this.engine.getNodeDocument(node.id)
+      this.locked = !this.locked
+      doc?.changeNodeMeta(node.id, { ...node.meta, locked: this.locked })
+      this.htmlEl.innerHTML = this.locked ? unlockIcon : lockIcon
     }
   }
 
@@ -27,9 +32,11 @@ export class LockButton extends AbstractButton {
       this.teardown()
       return null
     }
+    this.locked = node.meta.locked
     const htmlEl = this.createHtmlElement()
     htmlEl.innerHTML = node.meta.locked ? unlockIcon : lockIcon
     htmlEl.addEventListener("click", this.handleLock)
+    this.htmlEl = htmlEl
     return htmlEl
   }
 
