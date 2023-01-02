@@ -7,6 +7,8 @@ import { PlaceHolder } from "core-react/PlaceHolder";
 import { NodeContext } from "core-react/contexts";
 import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
 import { NodeUnmountedEvent } from "core/shell/events/canvas/NodeUnmountedEvent";
+import { Locked } from "./Locked";
+import { useLocked } from "core-react/hooks/useLocked";
 
 export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const { nodeId } = props;
@@ -14,7 +16,7 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const Component = useDesignComponent(node?.meta?.componentName);
   const engine = useDesignerEngine()
   const behavior = useMemo(() => engine?.getNodeBehavior(node?.id || ""), [engine, node?.id])
-
+  const locked = useLocked();
   useLayoutEffect(() => {
     setTimeout(() => {
       engine?.getShell().dispatch(new NodeMountedEvent(nodeId))
@@ -24,11 +26,11 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
 
   const handleRef = useCallback((element: HTMLElement | undefined) => {
     for (const key of Object.keys(node?.rxProps || {})) {
-      if (isHTMLElement(element)) {
+      if (isHTMLElement(element) && !locked) {
         element?.setAttribute(key, (node?.rxProps as any)[key])
       }
     }
-  }, [node?.rxProps])
+  }, [locked, node?.rxProps])
 
   const { style, ...other } = node?.meta.props || {}
   const { dStyle, ...dOther } = node?.designerProps || {}
@@ -45,14 +47,15 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   }, [node?.slots])
 
   const realProps = useMemo(() => {
+    const rxProps = !locked ? (node?.rxProps) : {}
     return {
       style: { ...style, ...dStyle },
       ...other,
-      ...node?.rxProps,
+      ...rxProps,
       ...dOther,
       ...slots
     }
-  }, [dOther, dStyle, node?.rxProps, other, slots, style])
+  }, [dOther, dStyle, locked, node?.rxProps, other, slots, style])
 
   const hasChildren = useMemo(() => !!node?.children?.length, [node?.children?.length])
 
@@ -60,11 +63,13 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
     if (Component && node) {
       if (hasChildren) {
         return <Component ref={!behavior?.isNoRef() ? handleRef : undefined} {...realProps} >
-          {
-            node.children?.map((childId: string) => {
-              return <ComponentDesignerView key={childId} nodeId={childId} />;
-            })
-          }
+          <Locked node={node}>
+            {
+              node.children?.map((childId: string) => {
+                return <ComponentDesignerView key={childId} nodeId={childId} />;
+              })
+            }
+          </Locked>
         </Component >
       } else if (behavior?.isDroppable() && node.parentId) {
         return <Component ref={!behavior?.isNoRef() ? handleRef : undefined} {...realProps}>
@@ -89,7 +94,6 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
       {
         render()
       }
-
     </NodeContext.Provider>
   );
 });
