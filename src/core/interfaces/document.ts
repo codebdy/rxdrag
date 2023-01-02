@@ -58,6 +58,7 @@ export interface INodeMeta<IField = any> {
     [key: string]: any,
   },
   "x-field"?: IField,
+  locked?: boolean,
   [key: string]: any,
 }
 
@@ -96,6 +97,7 @@ export interface NodeBehavior {
   isCloneable: () => boolean
   isNoPlaceholder: () => boolean
   isNoRef: () => boolean
+  isLockable: () => boolean
 }
 
 export interface INodeSchema<IField = any> extends INodeMeta<IField> {

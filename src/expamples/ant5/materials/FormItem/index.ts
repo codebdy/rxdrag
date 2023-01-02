@@ -18,7 +18,8 @@ export const FormItemMaterial: IComponentMaterial = {
         componentName: name,
         props: {
           label: "FormItem"
-        }
+        },
+        locked: true,
       }
     ]
   },
@@ -28,5 +29,6 @@ export const FormItemMaterial: IComponentMaterial = {
   behaviorRule: {
     droppable: true,
     noRef: true,
+    lockable: true,
   }
 }
