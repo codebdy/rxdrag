@@ -6,14 +6,31 @@ export const formItemSchema: INodeSchema = createSchema([
     componentName: "FormItem",
     props: {
       label: "$colon",
-      valuePropName: "checked",
-    },
-    "x-field": {
-      name: "colon",
     },
     children: [
       {
-        componentName: "Switch"
+        componentName: "Switch",
+        "x-field": {
+          name: "colon",
+          valuePropName: "checked",
+        },
+        props:{
+          defaultChecked: true
+        }
+      },
+    ]
+  },
+  {
+    componentName: "FormItem",
+    props: {
+      label: "$label",
+    },
+    children: [
+      {
+        componentName: "Input",
+        "x-field": {
+          name: "label",
+        },
       }
     ]
   },

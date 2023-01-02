@@ -19,3 +19,4 @@ export const DesignComponentsContext = createContext<IComponentsParams>(initialP
 export const PreviewComponentsContext = createContext<IComponentsParams>(initialParams)
 export const DocumentContext = createContext<IDocument | undefined>(undefined)
 export const NodeContext = createContext<ITreeNode | undefined>(undefined)
+export const LockContext = createContext<boolean | undefined>(undefined)

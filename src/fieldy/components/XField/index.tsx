@@ -4,7 +4,7 @@ import React, { memo } from "react"
 import { Reaction } from "../Reaction"
 import { useCreateFieldParams } from "./hooks/useCreateFieldParams"
 
-export const Field = memo((props: {
+export const XField = memo((props: {
   fieldMeta: IFieldMeta,
   children?: React.ReactNode
 }) => {

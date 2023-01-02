@@ -71,7 +71,7 @@ export class DragOverControllerImpl implements IPlugin {
       const node = this.engine.getMonitor().getNode(sourceId)
       if (position.position === RelativePosition.In && node) {
         const beheavior = this.engine.getNodeBehavior(position.targetId)
-        if (beheavior?.isDroppable()) {
+        if (beheavior?.isDroppable() && !node.meta.locked) {
           return AcceptType.Accept
         }
       } else {
@@ -97,7 +97,8 @@ export class DragOverControllerImpl implements IPlugin {
     }
     if (position.position === RelativePosition.In) {
       const beheavior = this.engine.getNodeBehavior(position.targetId)
-      if (beheavior?.isDroppable()) {
+      const node = this.engine.getMonitor().getNode(position.targetId)
+      if (beheavior?.isDroppable() && !node?.meta.locked) {
         return AcceptType.Accept
       }
       if (isArr(resource.elements)) {

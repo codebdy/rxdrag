@@ -2,12 +2,16 @@ export const formItemLocales = {
   "zh-CN": {
     title: "表单条目",
     settings: {
+      colon: "冒号",
+      label: "标签文本"
     }
 
   },
   'en-US': {
     title: "Form Item",
     settings: {
+      colon: "Colon",
+      label: "Label"
     }
   }
 }

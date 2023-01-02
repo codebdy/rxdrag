@@ -32,9 +32,11 @@ export interface IBehaviorRule {
   allowSiblingsTo?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
   noPlaceholder?: boolean,
   noRef?: boolean,
+  lockable?: boolean,
 }
 
 export interface IDesignerParams {
+  locked?: boolean,
   [key: string]: any
 }
 

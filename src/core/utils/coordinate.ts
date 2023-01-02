@@ -232,7 +232,7 @@ export class PositionJudger {
             }
           }
         } else {
-          console.error("can not find node element")
+          //console.error("can not find node element")
         }
       } else if (afterChild) {
         const element = this.engine.getShell().getElement(afterChild.id)
@@ -250,7 +250,7 @@ export class PositionJudger {
             }
           }
         } else {
-          console.error("can not find node element")
+          //console.error("can not find node element")
         }
       }
       return null
@@ -267,7 +267,7 @@ export class PositionJudger {
           position: this.rect?.atOutPosition(eventData, layout || "vertical") || null,
         };
       } else {
-        console.error("can not find node element")
+        //console.error("can not find node element")
         return null
       }
 

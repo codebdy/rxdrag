@@ -11,6 +11,7 @@ import { MoveButton } from "./controls/MoveButton";
 import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
 import { DraggingNodesState } from "core/reducers/draggingNodes";
 import { DraggingResourceState } from "core/reducers/draggingResource";
+import { LockButton } from "./controls/LockButton";
 
 export class ToolbarImpl implements IPlugin, IAuxToolbar {
   name: string = "default.toolbar";
@@ -31,6 +32,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     }
 
     this.addControl(new ComponentSelector(engine))
+    this.addControl(new LockButton(engine))
     this.addControl(new CloneButton(engine))
     this.addControl(new MoveButton(engine))
     this.addControl(new DeleteButton(engine))
