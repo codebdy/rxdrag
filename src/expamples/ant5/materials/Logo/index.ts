@@ -13,13 +13,14 @@ export const LogoMaterial: IComponentMaterial = {
   designerSchema: logoSchema,
   resource: {
     name: name,
+    icon: logoIcon,
+    color: "#3E2AD1",
+    resourceLocales: logoResourceLocales,
     elements: [
       {
         componentName: name,
       }
     ]
   },
-  icon: logoIcon,
-  color: "#3E2AD1",
-  resourceLocales: logoResourceLocales,
+
 }

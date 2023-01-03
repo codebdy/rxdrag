@@ -13,15 +13,15 @@ export const RightAdMaterial: IComponentMaterial = {
   designerSchema: rightAdSchema,
   resource: {
     name: name,
+    icon: rightAdIcon,
+    color: "#8B572A",
+    resourceLocales: rightAdResourceLocales,
     elements: [
       {
         componentName: name,
       }
     ]
   },
-  icon: rightAdIcon,
-  color: "#8B572A",
-  resourceLocales: rightAdResourceLocales,
   behaviorRule: {
     droppable: true,
     noPlaceholder: true,

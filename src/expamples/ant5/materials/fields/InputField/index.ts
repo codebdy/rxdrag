@@ -14,6 +14,9 @@ export const InputFieldMaterial: IComponentMaterial = {
   designerSchema: fieldSchema,
   resource: {
     name: "InputField",
+    icon: inputIcon,
+    color: "#dfa324",
+    resourceLocales: inputFieldResourceLocales,
     elements: [
       {
         componentName: name,
@@ -32,9 +35,6 @@ export const InputFieldMaterial: IComponentMaterial = {
       }
     ]
   },
-  icon: inputIcon,
-  color: "#dfa324",
-  resourceLocales: inputFieldResourceLocales,
   slots: {
     input: InputMaterial,
   },

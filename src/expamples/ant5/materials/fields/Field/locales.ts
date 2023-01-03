@@ -3,7 +3,7 @@ export const fieldLocales = {
     title: "字段",
     settings: {
       input: "输入控件",
-      label: "字段",
+      label: "标签",
     }
 
   },

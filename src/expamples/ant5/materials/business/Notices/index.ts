@@ -13,15 +13,16 @@ export const NoticesMaterial: IComponentMaterial = {
   designerSchema: noticesSchema,
   resource: {
     name: name,
+    icon: noticesIcon,
+    color: "#dfa324",
+    resourceLocales: noticesResourceLocales,
     elements: [
       {
         componentName: name,
       }
     ]
   },
-  icon: noticesIcon,
-  color: "#dfa324",
-  resourceLocales: noticesResourceLocales,
+
   behaviorRule: {
     droppable: true,
     noPlaceholder: true,

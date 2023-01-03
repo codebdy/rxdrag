@@ -13,15 +13,16 @@ export const CustomersMaterial: IComponentMaterial = {
   designerSchema: newsSchema,
   resource: {
     name: name,
+    icon: customersIcon,
+    color: "#8B79EC",
+    resourceLocales: customersResourceLocales,
     elements: [
       {
         componentName: name,
       }
     ]
   },
-  icon: customersIcon,
-  color: "#8B79EC",
-  resourceLocales: customersResourceLocales,
+
   behaviorRule: {
     droppable: true,
     noPlaceholder: true,

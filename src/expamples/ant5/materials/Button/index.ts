@@ -14,6 +14,9 @@ export const ButtonMaterial: IComponentMaterial = {
   designerSchema: buttonSchema,
   resource: {
     name: name,
+    icon: buttonIcon,
+    color: "#dfa324",
+    resourceLocales: buttonResourceLocales,
     elements: [
       {
         componentName: name,
@@ -32,9 +35,7 @@ export const ButtonMaterial: IComponentMaterial = {
       }
     ]
   },
-  icon: buttonIcon,
-  color: "#dfa324",
-  resourceLocales: buttonResourceLocales,
+
   slots: {
     icon: IconViewMaterial,
   },

@@ -13,15 +13,15 @@ export const PaperMaterial: IComponentMaterial = {
   designerSchema: paperSchema,
   resource: {
     name: name,
+    icon: paperIcon,
+    color: "#dfa324",
+    resourceLocales: paperResourceLocales,
     elements: [
       {
         componentName: name,
       }
     ]
   },
-  icon: paperIcon,
-  color: "#dfa324",
-  resourceLocales: paperResourceLocales,
   behaviorRule: {
     droppable: true,
   }

@@ -13,6 +13,9 @@ export const HeroTipMaterial: IComponentMaterial = {
   designerSchema: heroTipSchema,
   resource: {
     name: name,
+    icon: heroTipIcon,
+    color: "#dfa324",
+    resourceLocales: heroTipResourceLocales,
     elements: [
       {
         componentName: name,
@@ -21,7 +24,5 @@ export const HeroTipMaterial: IComponentMaterial = {
       }
     ]
   },
-  icon: heroTipIcon,
-  color: "#dfa324",
-  resourceLocales: heroTipResourceLocales,
+
 }

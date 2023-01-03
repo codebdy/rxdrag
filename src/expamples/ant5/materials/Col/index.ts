@@ -12,6 +12,9 @@ export const ColMaterial: IComponentMaterial = {
   designerSchema: rowSchema,
   resource: {
     name: "Col",
+    icon: colIcon,
+    color: "#dfa324",
+    resourceLocales: colResourceLocales,
     elements: [
       {
         componentName: "Col",
@@ -21,9 +24,7 @@ export const ColMaterial: IComponentMaterial = {
       }
     ]
   },
-  icon: colIcon,
-  color: "#dfa324",
-  resourceLocales: colResourceLocales,
+
   behaviorRule: {
     droppable: true,
   }

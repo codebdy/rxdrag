@@ -21,8 +21,8 @@ export function useRegisterComponentMaterial() {
     if (meterial.designerLocales) {
       localesManager?.registerComponentLocales(meterial.componentName, meterial.designerLocales)
     }
-    if (meterial.resourceLocales) {
-      localesManager?.registerResourceLocales(meterial.resourceLocales)
+    if (meterial.resource?.resourceLocales) {
+      localesManager?.registerResourceLocales(meterial.resource.resourceLocales)
     }
 
     for (const key of Object.keys(meterial.slots || {})) {
@@ -37,8 +37,8 @@ export function useRegisterComponentMaterial() {
       if (slotMaterial.designerLocales) {
         localesManager?.registerComponentLocales(slotMaterial.componentName, slotMaterial.designerLocales)
       }
-      if (slotMaterial.resourceLocales) {
-        localesManager?.registerResourceLocales(slotMaterial.resourceLocales)
+      if (slotMaterial.resource?.resourceLocales) {
+        localesManager?.registerResourceLocales(slotMaterial.resource.resourceLocales)
       }
       if (slotMaterial.resource) {
         resourceManager?.registerResources(slotMaterial.resource)

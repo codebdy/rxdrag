@@ -13,6 +13,9 @@ export const FormMaterial: IComponentMaterial = {
   designerSchema: formSchema,
   resource: {
     name: name,
+    icon: formIcon,
+    color: "#dfa324",
+    resourceLocales: formResourceLocales,
     elements: [
       {
         componentName: name,
@@ -22,9 +25,7 @@ export const FormMaterial: IComponentMaterial = {
       }
     ]
   },
-  icon: formIcon,
-  color: "#dfa324",
-  resourceLocales: formResourceLocales,
+
   behaviorRule: {
     droppable: true,
   }

@@ -13,6 +13,9 @@ export const TextViewMaterial: IComponentMaterial = {
   designerSchema: textViewSchema,
   resource: {
     name: name,
+    icon: textViewIcon,
+    color: "#dfa324",
+    resourceLocales: textViewResourceLocales,
     elements: [
       {
         componentName: name,
@@ -22,7 +25,5 @@ export const TextViewMaterial: IComponentMaterial = {
       }
     ]
   },
-  icon: textViewIcon,
-  color: "#dfa324",
-  resourceLocales: textViewResourceLocales,
+
 }

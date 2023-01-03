@@ -13,15 +13,16 @@ export const DividerMaterial: IComponentMaterial = {
   designerSchema: dividerSchema,
   resource: {
     name: name,
+    icon: dividerIcon,
+    color: "#dfa324",
+    resourceLocales: dividerResourceLocales,
     elements: [
       {
         componentName: name,
       }
     ]
   },
-  icon: dividerIcon,
-  color: "#dfa324",
-  resourceLocales: dividerResourceLocales,
+
   behaviorRule: {
     droppable: true,
     noPlaceholder: true,

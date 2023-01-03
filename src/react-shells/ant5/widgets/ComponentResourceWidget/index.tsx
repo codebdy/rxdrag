@@ -25,8 +25,8 @@ export const ComponentResourceWidget = memo((props: ComponentResourceWidgetProps
   return (
     <Col span={8}>
       <div className="resource-widget" {...resourceNode?.rxProps}>
-        <div className="resource-icon" style={{ backgroundColor: token.colorBorderSecondary, color: meterial.color }} >
-          {meterial.icon}
+        <div className="resource-icon" style={{ backgroundColor: token.colorBorderSecondary, color: meterial?.resource?.color }} >
+          {meterial.resource?.icon}
           <div style={{ display: "none" }}>
             {/** 为了在画布里面拿到style，这里渲染一遍 */}
             <Component />
