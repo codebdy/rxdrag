@@ -14,7 +14,7 @@ export const formSchema: INodeSchema = createSchema([
           valuePropName: "checked",
         },
         componentName: "Switch",
-        props:{
+        props: {
           defaultChecked: true,
         }
       }
@@ -114,8 +114,16 @@ export const formSchema: INodeSchema = createSchema([
       name: "labelCol",
     },
     componentName: "ColInput",
-    props:{
-      title:"$labelCol"
+    props: {
+      title: "$labelCol",
+      subTitles: {
+        span: "$span",
+        flex: "flex",
+        offset: "$offset",
+        order: "$order",
+        pull: "$pull",
+        push: "$push",
+      }
     }
   }
 ]

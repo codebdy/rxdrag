@@ -1,7 +1,6 @@
 import { RightOutlined } from "@ant-design/icons"
 import { Form } from "antd"
-import React, { memo, useCallback, useContext, useMemo, useState } from "react"
-import { CSSProperties } from "styled-components"
+import React, { memo, useCallback, useContext, useMemo, useState, CSSProperties } from "react"
 import { FoldContext } from "./context"
 import "./style.less"
 import cls from "classnames"
@@ -43,7 +42,8 @@ export const Fold = memo((props: FoldProps) => {
 
 export type FoldBaseProps = {
   title?: string,
-  children?: React.ReactNode
+  children?: React.ReactNode,
+  style?:CSSProperties
 }
 export const FoldBase = memo((props: FoldBaseProps) => {
   const { title, children, } = props

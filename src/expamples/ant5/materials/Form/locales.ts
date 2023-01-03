@@ -12,6 +12,11 @@ export const formLocales = {
       size: "大小",
       right: "右对齐",
       left: "左对齐",
+      span: "跨度",
+      offset: "偏移",
+      order: "顺序",
+      pull: "左移",
+      push: "右移",
     }
 
   },
@@ -28,6 +33,11 @@ export const formLocales = {
       size: "Size",
       right: "Right",
       left: "Left",
+      span: "Span",
+      offset: "Offset",
+      order: "Order",
+      pull: "Pull",
+      push: "Push",
     }
   }
 }
