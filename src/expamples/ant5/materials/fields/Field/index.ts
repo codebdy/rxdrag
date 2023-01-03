@@ -15,5 +15,5 @@ export const FieldMaterial: IComponentMaterial = {
     noPlaceholder: true,
     noRef: true,
     lockable: true,
-  }
+  },
 }

@@ -1,4 +1,4 @@
-import { IComponentMaterial } from "core-react";
+import { IComponentMaterial, IMaterialResource } from "core-react";
 import { ButtonMaterial } from "./Button";
 import { ColMaterial } from "./Col";
 import { HCFLayoutMaterial } from "./layouts/HCFLayout";
@@ -25,7 +25,7 @@ import { PaperMaterial } from "./Paper";
 import { BreadcrumbMaterial } from "./layouts/Breadcrumb";
 import { FormMaterial } from "./Form";
 import { FormItemMaterial } from "./FormItem";
-import { InputFieldMaterial } from "./fields/InputField";
+import { InputFieldResource } from "./fields/InputField";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -40,13 +40,12 @@ export const displayMaterials: IComponentMaterial[] = [
   AvatarMaterial,
 ]
 
-export const fomrMaterials:IComponentMaterial[] = [
+export const fomrMaterials: IComponentMaterial[] = [
   FormMaterial,
   FormItemMaterial,
-  InputFieldMaterial
 ]
 
-export const layoutMaterials:IComponentMaterial[] = [
+export const layoutMaterials: IComponentMaterial[] = [
   RowMaterial,
   ColMaterial,
   HCFLayoutMaterial,
@@ -60,11 +59,15 @@ export const layoutMaterials:IComponentMaterial[] = [
   BreadcrumbMaterial,
 ]
 
-export const businessMaterials:IComponentMaterial[] = [
+export const businessMaterials: IComponentMaterial[] = [
   HeroTipMaterial,
   JobsMaterial,
   RightAdMaterial,
   NewsMaterial,
   CustomersMaterial,
   NoticesMaterial,
+]
+
+export const fields: IMaterialResource[] = [
+  InputFieldResource,
 ]

@@ -4,9 +4,10 @@ import { ResourceCollapsePannel } from "expamples/ant5/ResourceWidget/ResourceCo
 import { PaneContainer } from "react-shells/ant5/layouts/ToggleAblePane/PaneContainer"
 import { ResourcesTitle } from "expamples/ant5/ResourceWidget/ResourcesTitle"
 import { ComponentResourceWidget } from "react-shells/ant5/widgets/ComponentResourceWidget"
-import { businessMaterials, displayMaterials, fomrMaterials, inputMaterials, layoutMaterials } from "../materials"
+import { businessMaterials, displayMaterials, fields, fomrMaterials, inputMaterials, layoutMaterials } from "../materials"
 import { useRegisterComponentMaterial } from "core-react/hooks/useRegisterComponentMaterial"
 import { FieldMaterial } from "../materials/fields/Field"
+import { TemplateResourceWidget } from "react-shells/ant5/widgets/TemplateResourceWidget"
 
 export const ResourceWidget = memo((
   props: {
@@ -50,6 +51,13 @@ export const ResourceWidget = memo((
                 <ComponentResourceWidget key={material.componentName} meterial={material} />
               )
             }))
+          }
+          {
+            fields.map(field=>{
+              return (
+                <TemplateResourceWidget key = {field.name} resource = {field} />
+              )
+            })
           }
         </ResourceCollapsePannel>
 
