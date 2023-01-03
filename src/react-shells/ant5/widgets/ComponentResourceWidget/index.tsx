@@ -1,8 +1,9 @@
 import { Col } from "antd"
 import { useToken } from "antd/es/theme/internal"
+import { IResourceNode } from "core"
 import { IComponentMaterial } from "core-react"
 import { useRegisterComponentMaterial } from "core-react/hooks/useRegisterComponentMaterial"
-import { memo } from "react"
+import { memo, useEffect, useState } from "react"
 import "./style.less"
 
 export type ComponentResourceWidgetProps = {
@@ -10,13 +11,20 @@ export type ComponentResourceWidgetProps = {
 }
 export const ComponentResourceWidget = memo((props: ComponentResourceWidgetProps) => {
   const { meterial } = props;
-  const resoureNode = useRegisterComponentMaterial(meterial)
+  const [resourceNode, setResourceNode] = useState<IResourceNode>()
+  const registerMaterial = useRegisterComponentMaterial()
 
+  useEffect(() => {
+    if (registerMaterial && meterial) {
+      setResourceNode(registerMaterial(meterial))
+    }
+  }, [meterial, registerMaterial])
   const [, token] = useToken()
   const Component = meterial.component
+
   return (
     <Col span={8}>
-      <div className="resource-widget" {...resoureNode?.rxProps}>
+      <div className="resource-widget" {...resourceNode?.rxProps}>
         <div className="resource-icon" style={{ backgroundColor: token.colorBorderSecondary, color: meterial.color }} >
           {meterial.icon}
           <div style={{ display: "none" }}>
@@ -24,7 +32,7 @@ export const ComponentResourceWidget = memo((props: ComponentResourceWidgetProps
             <Component />
           </div>
         </div>
-        <div className="resource-text">{resoureNode?.title}</div>
+        <div className="resource-text">{resourceNode?.title}</div>
       </div>
     </Col>
   )

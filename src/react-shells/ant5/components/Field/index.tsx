@@ -1,8 +1,7 @@
 import { Form } from "antd"
-import { INodeMeta } from "core"
-import { memo } from "react"
+import { ID, NodeStatus, NodeType, RXID_ATTR_NAME, RX_NODE_TYPE_ATTR_NAME, RX_STATUS_ATTR_NAME } from "core"
+import React, { memo, CSSProperties } from "react"
 
-//本组件强依赖fieldy
 export type FieldProps = {
   value?: any,
   onChange?: (value?: any) => void,
@@ -16,13 +15,47 @@ export type FieldProps = {
   labelCol?: any,
   wrapperCol?: any,
   validateStatus?: 'success' | 'warning' | 'error' | 'validating',
-  xComponent?: INodeMeta
+  input?: React.ReactElement,
+  className?: string,
+  style?: CSSProperties,
+  [RXID_ATTR_NAME]: ID,
+  [RX_NODE_TYPE_ATTR_NAME]?: NodeType, //默认为Normal
+  [RX_STATUS_ATTR_NAME]?: NodeStatus //默认为Normal
 }
 export const Field = memo((props: FieldProps) => {
-  const { value, onChange, xComponent, ...other } = props
+  const { colon,
+    extra,
+    help,
+    hidden,
+    label,
+    labelAlign,
+    wrapperCol,
+    validateStatus,
+    input,
+    className,
+    style,
+    [RXID_ATTR_NAME]: rxId,
+    [RX_NODE_TYPE_ATTR_NAME]: rxNodeType,
+    [RX_STATUS_ATTR_NAME]: rxStatus,
+    ...other
+  } = props
   return (
-    <Form.Item {...other}>
-      
+    <Form.Item {...{
+      colon,
+      extra,
+      help,
+      hidden,
+      label,
+      labelAlign,
+      wrapperCol,
+      validateStatus,
+      className,
+      style,
+      [RXID_ATTR_NAME]: rxId,
+      [RX_NODE_TYPE_ATTR_NAME]: rxNodeType,
+      [RX_STATUS_ATTR_NAME]: rxStatus,
+    }}>
+      {input && React.cloneElement(input, other)}
     </Form.Item>
   )
 })

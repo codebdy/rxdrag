@@ -25,6 +25,7 @@ import { PaperMaterial } from "./Paper";
 import { BreadcrumbMaterial } from "./layouts/Breadcrumb";
 import { FormMaterial } from "./Form";
 import { FormItemMaterial } from "./FormItem";
+import { InputFieldMaterial } from "./fields/InputField";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -41,7 +42,8 @@ export const displayMaterials: IComponentMaterial[] = [
 
 export const fomrMaterials:IComponentMaterial[] = [
   FormMaterial,
-  FormItemMaterial
+  FormItemMaterial,
+  InputFieldMaterial
 ]
 
 export const layoutMaterials:IComponentMaterial[] = [
