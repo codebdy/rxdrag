@@ -10,6 +10,7 @@ import { useToken } from "antd/es/theme/internal"
 import { ValueRow } from "./ValueRow"
 
 export type FoldProps = {
+  className?: string,
   children?: React.ReactNode
 }
 
@@ -33,7 +34,7 @@ export const Fold = memo((props: FoldProps) => {
 
   return (
     <FoldContext.Provider value={param}>
-      <div className='rx-fold-item'>
+      <div className={cls('rx-fold-item', props.className)}>
         {props.children}
       </div>
     </FoldContext.Provider>

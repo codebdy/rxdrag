@@ -6,10 +6,12 @@ export const formLocales = {
       disabled: "禁用",
       labelAlign: "标签对齐",
       labelWrap: "标签换行",
-      labelCol: "标签布局",
-      wrapperCol:"控件布局",
+      labelCol: "标签列",
+      wrapperCol: "控件布局",
       layout: "表单布局",
       size: "大小",
+      right: "右对齐",
+      left: "左对齐",
     }
 
   },
@@ -23,7 +25,9 @@ export const formLocales = {
       labelCol: "Label Col",
       wrapperCol: "Wrapper Col",
       layout: "layout",
-      size: "Size"
+      size: "Size",
+      right: "Right",
+      left: "Left",
     }
   }
 }

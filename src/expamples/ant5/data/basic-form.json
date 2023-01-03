@@ -144,6 +144,11 @@
               "children": [
                 {
                   "componentName": "Form",
+                  "props": {
+                    "layout": "horizontal",
+                    "disabled": false,
+                    "style": {}
+                  },
                   "slots": {},
                   "children": [
                     {
@@ -162,6 +167,24 @@
                           "children": []
                         }
                       ]
+                    },
+                    {
+                      "componentName": "Field",
+                      "props": {
+                        "label": "InputField"
+                      },
+                      "locked": true,
+                      "slots": {
+                        "input": {
+                          "componentName": "Input",
+                          "props": {
+                            "placeholder": "输入框"
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      },
+                      "children": []
                     }
                   ]
                 }
