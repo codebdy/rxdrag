@@ -1,4 +1,4 @@
-import { CanvasShell } from "core-react/canvas/ShadowDomCanvas/CanvasShell";
+import { CanvasShell } from "core-react/canvas/CanvasShell";
 import { ShadowCanvasView } from "core-react/canvas/ShadowDomCanvas/ShadowCanvasView";
 import { useDesignerEngine } from "core-react/hooks";
 import { useDocument } from "core-react/hooks/useDocument"

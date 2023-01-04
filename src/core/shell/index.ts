@@ -33,7 +33,9 @@ export class DesignerShell extends EventEngine implements IDesignerShell {
 	}
 
 	removeCanvas(documentId: string): void {
-		throw new Error('Method not implemented.')
+		const canvas = this.canvases[documentId]
+		canvas?.destory()
+		delete this.canvases[documentId]
 	}
 
 	getTopRect(nodeId: string): IRect | null {

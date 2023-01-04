@@ -2,6 +2,7 @@ import { useCanvasWidthLimitsState } from "core-react/hooks/useCanvasWidthLimits
 import { useCanvasWidthState } from "core-react/hooks/useCanvasWidthState"
 import { memo, useCallback, useEffect, useRef, useState } from "react"
 import { CanvaseHandler, PositionType } from "../CanvaseHandler"
+import "./style.less"
 
 export const CanvasShell = memo((
   props: {
@@ -58,7 +59,7 @@ export const CanvasShell = memo((
   return (
     <div
       ref={ref}
-      className="rx-shadow-dom-canvas-shell"
+      className="rx-canvas-shell"
       style={{
         width: realWidth ? realWidth : "100%",
         display: display ? "flex" : "none"

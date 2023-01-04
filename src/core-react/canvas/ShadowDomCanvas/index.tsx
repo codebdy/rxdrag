@@ -2,14 +2,14 @@ import { useDesignerEngine } from "core-react/hooks";
 import { useDesignComponents } from "core-react/hooks/useDesignComponents";
 import { ShadowCanvasImpl } from "core/shell/ShadowCanvasImpl";
 import { MouseOverOutDriver } from "core/shell/drivers/MouseOverOutDriver";
-import { memo, useCallback } from "react"
+import { memo, useCallback, useRef } from "react"
 import ReactDOM from 'react-dom/client';
 import { CanvasRender } from "../CanvasRender";
 import { CanvasResizeDriver, CanvasScrollDriver, DragDropDriver, MouseClickDriver } from "core/shell/drivers";
 import { DragOverDriver } from "core/shell/drivers/DragOverDriver";
 import "./style.less"
 import { useDocumentViewTypeState } from "core-react/hooks/useDocumentViewTypeState";
-import { CanvasShell } from "./CanvasShell";
+import { CanvasShell } from "../CanvasShell";
 import { ShadowCanvasView } from "./ShadowCanvasView";
 import { useDocument } from "core-react/hooks/useDocument";
 
@@ -21,6 +21,7 @@ export const ShadowDomCanvas = memo((
 ) => {
   const { backgroundColor } = props;
   const doc = useDocument()
+  const rootRef = useRef<ReactDOM.Root>()
   const [viewType] = useDocumentViewTypeState(doc?.id)
   const engine = useDesignerEngine()
   const { components } = useDesignComponents()
@@ -52,9 +53,15 @@ export const ShadowDomCanvas = memo((
         }
       }
       shadow.appendChild(renderIn);
+      if(rootRef.current){
+        rootRef.current.unmount()
+      }
+
       const root = ReactDOM.createRoot(
         renderIn
       );
+
+      rootRef.current = root
 
       if (doc) {
         const canvas = new ShadowCanvasImpl(engine,
