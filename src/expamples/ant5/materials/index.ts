@@ -28,6 +28,7 @@ import { FormItemMaterial } from "./FormItem";
 import { InputFieldResource } from "./fields/InputField";
 import { TextAreaMaterial } from "./inputs/Input/textarea";
 import { CheckboxMaterial } from "./inputs/CheckBox";
+import { DatePickerMaterial } from "./inputs/DatePicker";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -35,6 +36,7 @@ export const inputMaterials: IComponentMaterial[] = [
   TextAreaMaterial,
   SelectMaterial,
   CheckboxMaterial,
+  DatePickerMaterial,
 ]
 
 export const displayMaterials: IComponentMaterial[] = [
