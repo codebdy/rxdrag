@@ -2,10 +2,10 @@ import { IComponentMaterial, IMaterialResource } from "core-react";
 import { ButtonMaterial } from "./Button";
 import { ColMaterial } from "./Col";
 import { HCFLayoutMaterial } from "./layouts/HCFLayout";
-import { InputMaterial } from "./Input";
+import { InputMaterial } from "./inputs/Input";
 import { TwoColumnLayoutMaterial } from "./layouts/TwoColumnLayout";
 import { RowMaterial } from "./Row";
-import { SelectMaterial } from "./Select";
+import { SelectMaterial } from "./inputs/Select";
 import { LogoMaterial } from "./Logo";
 import { MenuMaterial } from "./Menu";
 import { AvatarMaterial } from "./Avatar";
@@ -26,13 +26,15 @@ import { BreadcrumbMaterial } from "./layouts/Breadcrumb";
 import { FormMaterial } from "./Form";
 import { FormItemMaterial } from "./FormItem";
 import { InputFieldResource } from "./fields/InputField";
-import { TextAreaMaterial } from "./Input/textarea";
+import { TextAreaMaterial } from "./inputs/Input/textarea";
+import { CheckboxMaterial } from "./inputs/CheckBox";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
   InputMaterial,
   TextAreaMaterial,
   SelectMaterial,
+  CheckboxMaterial,
 ]
 
 export const displayMaterials: IComponentMaterial[] = [

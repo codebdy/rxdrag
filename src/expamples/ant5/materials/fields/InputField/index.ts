@@ -1,5 +1,5 @@
 import { IMaterialResource } from "core-react";
-import { inputIcon } from "../../Input/icon";
+import { inputIcon } from "../../inputs/Input/icon";
 import { inputFieldResourceLocales } from "./locales";
 
 export const InputFieldResource: IMaterialResource = {

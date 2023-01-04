@@ -20,7 +20,7 @@ export const TextAreaMaterial: IComponentMaterial = {
     name: "TextArea",
     resourceLocales: textareaResourceLocales,
     icon: textareaIcon,
-    color: "blue",
+    color: "#F5A623",
     elements: [
       {
         componentName: "TextArea",

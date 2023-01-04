@@ -20,7 +20,7 @@ export const InputMaterial: IComponentMaterial = {
     name: "Input",
     resourceLocales: inputResourceLocales,
     icon: inputIcon,
-    color: "blue",
+    color: "#F5A623",
     elements: [
       {
         componentName: "Input",
