@@ -2,21 +2,25 @@ import { IShellPane, ID, IDesignerEngine, IDriver, IDriverFactory, RXID_ATTR_NAM
 
 export class IFrameCanvasImpl implements IShellPane {
   private dirvers: IDriver[] = []
-  
+
   constructor(
     engine: IDesignerEngine,
     private iframe: HTMLIFrameElement,
     public id: ID,
     private driverFactories: IDriverFactory[]
   ) {
-		for (const dirverFactory of this.driverFactories) {
-      if(this.iframe.contentWindow?.document){
+    for (const dirverFactory of this.driverFactories) {
+      if (this.iframe.contentWindow?.document) {
         this.dirvers.push(dirverFactory(engine.getShell(), this.iframe.contentWindow?.document))
       }
-		}
+    }
   }
   getContainerRect(): IRect | null {
-    return this.iframe.getBoundingClientRect()
+    const rect = this.iframe.contentWindow?.document?.body?.getBoundingClientRect()
+    if (!rect) {
+      return null
+    }
+    return { width: rect.width, height: rect.height, x: 0, y: 0, }
   }
 
   appendChild(child: HTMLElement): void {
@@ -33,7 +37,7 @@ export class IFrameCanvasImpl implements IShellPane {
   }
   getTopRect(nodeId: string): IRect | null {
     const rect = this.getElement(nodeId)?.getBoundingClientRect();
-    if(rect){
+    if (rect) {
       const frameRect = this.iframe.getBoundingClientRect()
       const scale = frameRect.width / (this.iframe as any)['offsetWidth']
       rect.x = rect.x * scale + frameRect.x
@@ -44,13 +48,13 @@ export class IFrameCanvasImpl implements IShellPane {
     return null
   }
   destory(): void {
-		for (const driver of this.dirvers) {
-			driver.teardown()
-		}
-		this.dirvers = []
+    for (const driver of this.dirvers) {
+      driver.teardown()
+    }
+    this.dirvers = []
   }
 
-  private get body(){
+  private get body() {
     return this.iframe.contentWindow?.document.body
   }
 }

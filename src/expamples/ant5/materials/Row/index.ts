@@ -12,6 +12,9 @@ export const RowMaterial: IComponentMaterial = {
   designerSchema: rowSchema,
   resource: {
     name: "Row",
+    icon: rowIcon,
+    color: "#dfa324",
+    resourceLocales: rowResourceLocales,
     elements: [
       {
         componentName: "Row",
@@ -46,9 +49,6 @@ export const RowMaterial: IComponentMaterial = {
       }
     ]
   },
-  icon: rowIcon,
-  color: "#dfa324",
-  resourceLocales: rowResourceLocales,
   behaviorRule: {
     droppable: true,
   }

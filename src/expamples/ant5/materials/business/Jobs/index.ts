@@ -13,15 +13,15 @@ export const JobsMaterial: IComponentMaterial = {
   designerSchema: jobsSchema,
   resource: {
     name: name,
+    icon: jobsIcon,
+    color: "#dfa324",
+    resourceLocales: jobsResourceLocales,
     elements: [
       {
         componentName: name,
       }
     ]
   },
-  icon: jobsIcon,
-  color: "#dfa324",
-  resourceLocales: jobsResourceLocales,
   behaviorRule: {
     droppable: true,
     noPlaceholder: true,

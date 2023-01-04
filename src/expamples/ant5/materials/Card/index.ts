@@ -14,6 +14,9 @@ export const CardMaterial: IComponentMaterial = {
   designerSchema: cardSchema,
   resource: {
     name: name,
+    icon: colIcon,
+    color: "#dfa324",
+    resourceLocales: cardResourceLocales,
     elements: [
       {
         componentName: name,
@@ -40,9 +43,7 @@ export const CardMaterial: IComponentMaterial = {
       }
     ]
   },
-  icon: colIcon,
-  color: "#dfa324",
-  resourceLocales: cardResourceLocales,
+
   behaviorRule: {
     droppable: true,
     noPlaceholder: true,

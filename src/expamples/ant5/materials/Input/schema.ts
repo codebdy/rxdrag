@@ -8,12 +8,13 @@ export const inputSchema: INodeSchema = createSchema(
       props: {
         label: "$placeholder",
       },
-      "x-field": {
-        name: "placeholder",
-      },
+
       children: [
         {
-          componentName: "Input"
+          componentName: "Input",
+          "x-field": {
+            name: "placeholder",
+          },
         }
       ]
     },

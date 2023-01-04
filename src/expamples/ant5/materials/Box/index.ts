@@ -13,15 +13,15 @@ export const BoxMaterial: IComponentMaterial = {
   designerSchema: boxSchema,
   resource: {
     name: name,
+    icon: boxIcon,
+    color: "#dfa324",
+    resourceLocales: boxResourceLocales,
     elements: [
       {
         componentName: name,
       }
     ]
   },
-  icon: boxIcon,
-  color: "#dfa324",
-  resourceLocales: boxResourceLocales,
   behaviorRule: {
     droppable: true,
   }

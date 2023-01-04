@@ -6,7 +6,7 @@ export class MarginDecorator implements IDecorator {
   name: string = MARGIN_DECORATOR_NAME;
 
   decorate(el: HTMLElement, node: ITreeNode): void {
-    if (node.children) {
+    if (node.children && !node.meta?.locked) {
       el.classList.add("rx-node-margin")
     }
   }

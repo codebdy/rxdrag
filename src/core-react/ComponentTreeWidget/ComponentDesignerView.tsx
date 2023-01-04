@@ -39,12 +39,12 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
     for (const name of Object.keys(node?.slots || {})) {
       const slotId = node?.slots?.[name]
       if (slotId) {
-        slts[name] = <ComponentDesignerView nodeId={slotId} />
+        slts[name] = <Locked node={node}><ComponentDesignerView nodeId={slotId} /></Locked>
       }
     }
 
     return slts
-  }, [node?.slots])
+  }, [node])
 
   const realProps = useMemo(() => {
     const rxProps = !locked ? (node?.rxProps) : {}

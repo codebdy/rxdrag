@@ -126,6 +126,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
           top = rect.y + 2
         }
       }
+
       const right = containerRect.width - (rect.x - containerRect.x) - rect.width;
       htmlDiv.style.position = "fixed"
       htmlDiv.style.right = numbToPx(right)

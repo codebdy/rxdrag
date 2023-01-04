@@ -13,15 +13,16 @@ export const BreadcrumbMaterial: IComponentMaterial = {
   designerSchema: breadcrumbSchema,
   resource: {
     name: name,
+    icon: breadcrumbIcon,
+    color: "#dfa324",
+    resourceLocales: breadcrumbResourceLocales,
     elements: [
       {
         componentName: name,
       }
     ]
   },
-  icon: breadcrumbIcon,
-  color: "#dfa324",
-  resourceLocales: breadcrumbResourceLocales,
+
   behaviorRule: {
     droppable: true,
   }

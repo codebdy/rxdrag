@@ -13,6 +13,9 @@ export const StatisticMaterial: IComponentMaterial = {
   designerSchema: staticSchema,
   resource: {
     name: name,
+    icon: statisticIcon,
+    color: "#dfa324",
+    resourceLocales: statisticResourceLocales,
     elements: [
       {
         componentName: name,
@@ -22,7 +25,5 @@ export const StatisticMaterial: IComponentMaterial = {
       }
     ]
   },
-  icon: statisticIcon,
-  color: "#dfa324",
-  resourceLocales: statisticResourceLocales,
+
 }

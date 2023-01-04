@@ -16,6 +16,9 @@ export const HCFLayoutMaterial: IComponentMaterial = {
   designerSchema: hCFLayoutSchema,
   resource: {
     name: name,
+    icon: colIcon,
+    color: "#dfa324",
+    resourceLocales: hCFLayoutResourceLocales,
     elements: [
       {
         componentName: name,
@@ -42,9 +45,7 @@ export const HCFLayoutMaterial: IComponentMaterial = {
       }
     ]
   },
-  icon: colIcon,
-  color: "#dfa324",
-  resourceLocales: hCFLayoutResourceLocales,
+
   behaviorRule: {
     droppable: false,
   },

@@ -17,6 +17,9 @@ export const TwoColumnLayoutMaterial: IComponentMaterial = {
   designerSchema: prosLayoutSchema,
   resource: {
     name: name,
+    icon: colIcon,
+    color: "#dfa324",
+    resourceLocales: twoColumnLayoutResourceLocales,
     elements: [
       {
         componentName: name,
@@ -48,9 +51,7 @@ export const TwoColumnLayoutMaterial: IComponentMaterial = {
       }
     ]
   },
-  icon: colIcon,
-  color: "#dfa324",
-  resourceLocales: twoColumnLayoutResourceLocales,
+
   behaviorRule: {
     droppable: false,
   },

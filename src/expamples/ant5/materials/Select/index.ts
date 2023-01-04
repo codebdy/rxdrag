@@ -15,13 +15,14 @@ export const SelectMaterial: IComponentMaterial = {
   },
   resource: {
     name: "Select",
+    resourceLocales: selectResourceLocales,
+    icon: selectIcon,
+    color: "green",
     elements: [
       {
         componentName: "Select",
       }
     ]
   },
-  resourceLocales: selectResourceLocales,
-  icon: selectIcon,
-  color: "green",
+
 }

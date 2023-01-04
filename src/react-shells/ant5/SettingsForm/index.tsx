@@ -32,6 +32,7 @@ import { BorderSetter } from "./components/border";
 import { DisplaySetter } from "./components/DisplaySetter";
 import IconInput from "./components/IconInput";
 import { GutterInput } from "./components/GutterInput";
+import { ColInput } from "./components/ColInput";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -111,9 +112,9 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         IconInput,
         GutterInput,
         "Radio.Group": Radio.Group,
+        ColInput,
       }}
     >
-
       <Fieldy>
         <Box style={propertiesStyle} {...props}>
           {

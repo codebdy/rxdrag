@@ -13,13 +13,13 @@ export const MenuMaterial: IComponentMaterial = {
   designerSchema: logoSchema,
   resource: {
     name: name,
+    icon: logoIcon,
+    color: "#F5A623",
+    resourceLocales: logoResourceLocales,
     elements: [
       {
         componentName: name,
       }
     ]
   },
-  icon: logoIcon,
-  color: "#F5A623",
-  resourceLocales: logoResourceLocales,
 }

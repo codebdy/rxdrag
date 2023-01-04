@@ -13,13 +13,14 @@ export const IconViewMaterial: IComponentMaterial = {
   designerSchema: iconViewSchema,
   resource: {
     name: name,
+    icon: iconViewIcon,
+    color: "#8B79EC",
+    resourceLocales: iconViewResourceLocales,
     elements: [
       {
         componentName: name,
       }
     ]
   },
-  icon: iconViewIcon,
-  color: "#8B79EC",
-  resourceLocales: iconViewResourceLocales,
+
 }

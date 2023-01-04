@@ -14,6 +14,9 @@ export const AvatarMaterial: IComponentMaterial = {
   designerSchema: avatarSchema,
   resource: {
     name: name,
+    icon: avatarIcon,
+    color: "#0EDB77",
+    resourceLocales: avatarResourceLocales,
     elements: [
       {
         componentName: name,
@@ -25,7 +28,4 @@ export const AvatarMaterial: IComponentMaterial = {
   slots: {
     icon: IconViewMaterial,
   },
-  icon: avatarIcon,
-  color: "#0EDB77",
-  resourceLocales: avatarResourceLocales,
 }

@@ -1,7 +1,7 @@
 import { Divider } from "antd"
 import { useToken } from "antd/es/theme/internal"
 import { IDocument } from "core"
-import { ShadowDomCanvas } from "core-react/canvas/ShadowDomCanvas"
+import { IframeCanvas } from "core-react/canvas/IframeCanvas"
 import { DocumentRoot } from "core-react/DocumentRoot"
 import { JsonView } from "core-react/JsonView"
 import { Preview } from "core-react/Preview"
@@ -39,7 +39,7 @@ export const DocumentView = memo((
         </CanvasToolbar>
         <Viewport>
           <JsonView />
-          <ShadowDomCanvas backgroundColor={token.colorBgBase} />
+          <IframeCanvas doc = {doc}/>
           <Preview backgroundColor={token.colorBgBase} />
         </Viewport>
         <NavbarWidget />
