@@ -79,4 +79,36 @@ export const inputBaseSchemas = [
       }
     ]
   },
+  {
+    componentName: "FormItem",
+    props: {
+      label: "$size",
+    },
+    children: [
+      {
+        componentName: "Radio.Group",
+        "x-field": {
+          name: "size",
+        },
+        props: {
+          optionType: "button",
+          options: [
+            {
+              label: "$large",
+              value: "large"
+            },
+            {
+              label: "$middle",
+              value: "middle"
+            },
+            {
+              label: "$small",
+              value: "small"
+            },
+          ],
+          defaultValue: "middle",
+        }
+      },
+    ]
+  },
 ]

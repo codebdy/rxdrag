@@ -12,7 +12,7 @@ export const DatePickerMaterial: IComponentMaterial = {
   designerLocales: datePickerLocales,
   designerSchema: datePickerSchema,
   designerProps: {
-    readOnly: true,
+    inputReadOnly: true,
     open: false,
   },
   resource: {
