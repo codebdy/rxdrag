@@ -33,5 +33,35 @@ export const inputSchema: INodeSchema = createSchema(
         }
       ]
     },
+  ],
+  [
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$addonBefore",
+      },
+      children: [
+        {
+          componentName: "SlotSwitch",
+          props: {
+            name: "addonBefore"
+          }
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$addonAfter",
+      },
+      children: [
+        {
+          componentName: "SlotSwitch",
+          props: {
+            name: "addonAfter"
+          }
+        }
+      ]
+    },
   ]
 )

@@ -13,6 +13,8 @@ export const fieldLocales = {
       order: "顺序",
       pull: "左移",
       push: "右移",
+      right: "右对齐",
+      left: "左对齐",
     }
 
   },
@@ -30,6 +32,8 @@ export const fieldLocales = {
       order: "Order",
       pull: "Pull",
       push: "Push",
+      right: "Right",
+      left: "Left",
     }
   }
 }

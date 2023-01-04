@@ -12,13 +12,13 @@ export const InputMaterial: IComponentMaterial = {
   designerSchema: inputSchema,
   designerProps: {
     readOnly: true,
-    style:{
-      cursor:"default",
+    style: {
+      cursor: "default",
     }
   },
-  resource:  {
+  resource: {
     name: "Input",
-    resourceLocales:inputResourceLocales,
+    resourceLocales: inputResourceLocales,
     icon: inputIcon,
     color: "blue",
     elements: [
@@ -28,7 +28,10 @@ export const InputMaterial: IComponentMaterial = {
           placeholder: "输入框",
         }
       }
-    ]
+    ],
   },
-
+  slots: {
+    addonAfter: true,
+    addonBefore: true,
+  }
 }

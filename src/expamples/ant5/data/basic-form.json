@@ -187,6 +187,47 @@
                       "children": []
                     }
                   ]
+                },
+                {
+                  "componentName": "Input",
+                  "props": {
+                    "placeholder": "输入框"
+                  },
+                  "slots": {
+                    "addonBefore": {
+                      "componentName": "DefaultSlot",
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "http",
+                            "style": {}
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    },
+                    "addonAfter": {
+                      "componentName": "DefaultSlot",
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "IconView",
+                          "props": {
+                            "icon": {
+                              "iconKey": "DollarCircleOutlined"
+                            },
+                            "style": {}
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  },
+                  "children": []
                 }
               ]
             }

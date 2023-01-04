@@ -40,7 +40,7 @@ export function useRegisterComponentMaterial() {
       if (slotMaterial.resource?.resourceLocales) {
         localesManager?.registerResourceLocales(slotMaterial.resource.resourceLocales)
       }
-      if (slotMaterial.resource) {
+      if (slotMaterial.resource && !resourceManager?.getResourceByName(slotMaterial.resource.name)) {
         resourceManager?.registerResources(slotMaterial.resource)
       }
     }
@@ -48,7 +48,7 @@ export function useRegisterComponentMaterial() {
     registerDesignComponents(designers)
     registerPreviewComponents(previews)
 
-    if (meterial.resource) {
+    if (meterial.resource ) {
       const resources = resourceManager?.registerResources(meterial.resource)
       return (resources?.[0])
     }
