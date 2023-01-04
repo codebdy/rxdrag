@@ -4,6 +4,15 @@ export const fieldLocales = {
     settings: {
       input: "输入控件",
       label: "标签",
+      labelAlign: "标签对齐",
+      labelWrap: "标签换行",
+      labelCol: "标签列",
+      wrapperCol: "控件布局",
+      span: "跨度",
+      offset: "偏移",
+      order: "顺序",
+      pull: "左移",
+      push: "右移",
     }
 
   },
@@ -12,6 +21,15 @@ export const fieldLocales = {
     settings: {
       input: "Input",
       label: "Label",
+      labelAlign: "Label Align",
+      labelWrap: "Label Wrap",
+      labelCol: "Label Col",
+      wrapperCol: "Wrapper Col",
+      span: "Span",
+      offset: "Offset",
+      order: "Order",
+      pull: "Pull",
+      push: "Push",
     }
   }
 }
