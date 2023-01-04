@@ -74,6 +74,7 @@ export interface ITreeNode {
   meta: INodeMeta
   parentId?: ID
   children: ID[]
+  isSlot: boolean,
   slots?: {
     [name: string]: ID
   }
