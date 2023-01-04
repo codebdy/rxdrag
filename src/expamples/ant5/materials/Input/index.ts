@@ -33,5 +33,7 @@ export const InputMaterial: IComponentMaterial = {
   slots: {
     addonAfter: true,
     addonBefore: true,
+    prefix: true,
+    suffix: true,
   }
 }

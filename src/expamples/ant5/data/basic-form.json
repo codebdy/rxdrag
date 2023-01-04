@@ -225,6 +225,38 @@
                           "children": []
                         }
                       ]
+                    },
+                    "prefix": {
+                      "componentName": "DefaultSlot",
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "$",
+                            "style": {}
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    },
+                    "suffix": {
+                      "componentName": "DefaultSlot",
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "IconView",
+                          "props": {
+                            "icon": {
+                              "iconKey": "RocketOutlined"
+                            },
+                            "style": {}
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
                     }
                   },
                   "children": []

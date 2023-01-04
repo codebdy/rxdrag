@@ -22,14 +22,77 @@ export const inputSchema: INodeSchema = createSchema(
       componentName: "FormItem",
       props: {
         label: "$disabled",
-        valuePropName: "checked",
-      },
-      "x-field": {
-        name: "disabled",
       },
       children: [
         {
-          componentName: "Switch"
+          componentName: "Switch",
+          "x-field": {
+            name: "disabled",
+            valuePropName: "checked",
+          },
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$allowClear",
+      },
+
+      children: [
+        {
+          componentName: "Switch",
+          "x-field": {
+            name: "allowClear",
+            valuePropName: "checked",
+          },
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$bordered",
+      },
+      children: [
+        {
+          componentName: "Switch",
+          "x-field": {
+            name: "bordered",
+            valuePropName: "checked",
+          },
+          props: {
+            defaultChecked: true,
+          }
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$showCount",
+      },
+      children: [
+        {
+          componentName: "Switch",
+          "x-field": {
+            name: "showCount",
+            valuePropName: "checked",
+          },
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$maxLength",
+      },
+      children: [
+        {
+          componentName: "InputNumber",
+          "x-field": {
+            name: "maxLength",
+          },
         }
       ]
     },
@@ -59,6 +122,34 @@ export const inputSchema: INodeSchema = createSchema(
           componentName: "SlotSwitch",
           props: {
             name: "addonAfter"
+          }
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$prefix",
+      },
+      children: [
+        {
+          componentName: "SlotSwitch",
+          props: {
+            name: "prefix"
+          }
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$suffix",
+      },
+      children: [
+        {
+          componentName: "SlotSwitch",
+          props: {
+            name: "suffix"
           }
         }
       ]
