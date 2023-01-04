@@ -1,5 +1,5 @@
-import { Checkbox } from "antd";
 import { IComponentMaterial } from "core-react";
+import { Checkbox } from "expamples/ant5/components/Checkbox";
 import { checkboxIcon } from "./icon";
 import { checkboxLocales, selectResourceLocales } from "./locales";
 import { selectSchema } from "./schema";
@@ -12,7 +12,7 @@ export const CheckboxMaterial: IComponentMaterial = {
   designerLocales: checkboxLocales,
   designerSchema: selectSchema,
   designerProps: {
-    open: false,
+    //readOnly: true,
   },
   resource: {
     name: name,
