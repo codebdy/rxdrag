@@ -12,6 +12,7 @@ import { DragOverDriver } from "core/shell/drivers/DragOverDriver";
 import { useThemeMode } from "core-react/hooks/useThemeMode";
 import { useDocumentViewTypeState } from "core-react/hooks/useDocumentViewTypeState";
 import { CanvasShell } from "./CanvasShell";
+import { MouseUpDriver } from "core/shell/drivers/MouseUpDriver";
 
 export const IframeCanvas = memo((
   props: {
@@ -77,6 +78,7 @@ export const IframeCanvas = memo((
           MouseOverOutDriver,
           CanvasResizeDriver,
           CanvasScrollDriver,
+          MouseUpDriver
         ]
       )
 

@@ -3,6 +3,9 @@ import { memo, useCallback, useEffect, useState } from "react"
 import "./style.less"
 import cls from "classnames"
 import { AUX_BACKGROUND_COLOR } from "core/auxwidgets/consts"
+import { useDesignerEngine } from "core-react/hooks"
+import { MouseMoveEvent } from "core/shell/events"
+import { MouseUpEvent } from "core/shell/events/mouse/MouseUpEvent"
 
 export enum PositionType {
   Left = "left",
@@ -22,6 +25,7 @@ export const CanvaseHandler = memo((
   const [firstX, setFirstX] = useState(0);
   const [lastX, setLastX] = useState(0);
   const themeMode = useThemeMode()
+  const engine = useDesignerEngine()
   const handleMouseMove = useCallback(
     (event: MouseEvent) => {
       if (dragging) {
@@ -50,14 +54,29 @@ export const CanvaseHandler = memo((
     [onDragBegin]
   );
 
-  useEffect(()=>{
+  const handleShellMouseMove = useCallback(
+    (event: MouseMoveEvent) => {
+      if (dragging) {
+        const x = event.orginalEvent.screenX || 0
+        onDistanceChange(lastX - x, firstX - x)
+        setLastX(x)
+      }
+    },
+    [dragging, firstX, lastX, onDistanceChange]
+  );
+
+  useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseup);
-    return ()=>{
+    const unsubMouseMove = engine?.getShell().subscribeTo(MouseMoveEvent, handleShellMouseMove)
+    const unsubMouseUp = engine?.getShell().subscribeTo(MouseUpEvent, handleMouseup)
+    return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseup);
+      unsubMouseMove?.()
+      unsubMouseUp?.()
     }
-  }, [handleMouseMove, handleMouseup])
+  }, [engine, handleMouseMove, handleMouseup, handleShellMouseMove])
 
   return (
     <div className={cls("rx-canvas-handler", position)}
