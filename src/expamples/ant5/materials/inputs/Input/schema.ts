@@ -1,71 +1,9 @@
 import { INodeSchema } from "core";
 import { createSchema } from "react-shells/ant5/shared/createSchema";
+import { inputBaseSchemas } from "../schemas";
 
 const inputPros = [
-  {
-    componentName: "FormItem",
-    props: {
-      label: "$placeholder",
-    },
-
-    children: [
-      {
-        componentName: "Input",
-        "x-field": {
-          name: "placeholder",
-        },
-      }
-    ]
-  },
-  {
-    componentName: "FormItem",
-    props: {
-      label: "$disabled",
-    },
-    children: [
-      {
-        componentName: "Switch",
-        "x-field": {
-          name: "disabled",
-          valuePropName: "checked",
-        },
-      }
-    ]
-  },
-  {
-    componentName: "FormItem",
-    props: {
-      label: "$allowClear",
-    },
-
-    children: [
-      {
-        componentName: "Switch",
-        "x-field": {
-          name: "allowClear",
-          valuePropName: "checked",
-        },
-      }
-    ]
-  },
-  {
-    componentName: "FormItem",
-    props: {
-      label: "$bordered",
-    },
-    children: [
-      {
-        componentName: "Switch",
-        "x-field": {
-          name: "bordered",
-          valuePropName: "checked",
-        },
-        props: {
-          defaultChecked: true,
-        }
-      }
-    ]
-  },
+  ...inputBaseSchemas,
   {
     componentName: "FormItem",
     props: {

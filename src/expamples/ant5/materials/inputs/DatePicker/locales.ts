@@ -1,17 +1,17 @@
+import { inputBaseLocales } from "../locales"
+
 export const datePickerLocales = {
   "zh-CN": {
     title: "日期选择框",
     settings: {
-      disabled: "无效",
-      label: "标签",
+      ...inputBaseLocales['zh-CN'],
     }
 
   },
   'en-US': {
     title: "DatePicker",
     settings: {
-      disabled: "Disabled",
-      label: "Label",
+      ...inputBaseLocales['en-US'],
     }
   }
 }

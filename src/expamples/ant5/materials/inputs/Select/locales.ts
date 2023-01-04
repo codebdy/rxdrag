@@ -1,17 +1,18 @@
+import { inputBaseLocales } from "../locales"
+
 export const selectLocales = {
   "zh-CN": {
     title: "下拉框",
     description: "下拉框",
     settings: {
-      disabled: "无效"
+      ...inputBaseLocales['zh-CN'],
     }
 
   },
   'en-US': {
     title: "Select",
     settings: {
-      type: "Type",
-      title: "Title",
+      ...inputBaseLocales['en-US'],
     }
   }
 }
