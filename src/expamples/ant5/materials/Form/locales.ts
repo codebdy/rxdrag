@@ -17,6 +17,9 @@ export const formLocales = {
       order: "顺序",
       pull: "左移",
       push: "右移",
+      large: "大",
+      middle: "中",
+      small: "小",
     }
 
   },
@@ -38,6 +41,9 @@ export const formLocales = {
       order: "Order",
       pull: "Pull",
       push: "Push",
+      large: "Large",
+      middle: "Middle",
+      small: "Small",
     }
   }
 }

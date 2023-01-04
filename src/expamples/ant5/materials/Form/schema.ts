@@ -125,6 +125,55 @@ export const formSchema: INodeSchema = createSchema([
         push: "$push",
       }
     }
+  },
+  {
+    "x-field": {
+      name: "wrapperCol",
+    },
+    componentName: "ColInput",
+    props: {
+      title: "$wrapperCol",
+      subTitles: {
+        span: "$span",
+        flex: "flex",
+        offset: "$offset",
+        order: "$order",
+        pull: "$pull",
+        push: "$push",
+      }
+    }
+  },
+  {
+    componentName: "FormItem",
+    props: {
+      label: "$size",
+    },
+    children: [
+      {
+        componentName: "Radio.Group",
+        "x-field": {
+          name: "size",
+        },
+        props: {
+          optionType: "button",
+          options: [
+            {
+              label: "$large",
+              value: "large"
+            },
+            {
+              label: "$middle",
+              value: "middle"
+            },
+            {
+              label: "$small",
+              value: "small"
+            },
+          ],
+          defaultValue: "middle",
+        }
+      }
+    ]
   }
 ]
 )
