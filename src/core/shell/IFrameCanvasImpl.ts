@@ -20,7 +20,7 @@ export class IFrameCanvasImpl implements IShellPane {
     if (!rect) {
       return null
     }
-    return { ...rect, x: 0, y: 0 }
+    return { width: rect.width, height: rect.height, x: 0, y: 0, }
   }
 
   appendChild(child: HTMLElement): void {
