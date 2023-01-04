@@ -68,7 +68,6 @@ export const IframeCanvas = memo((
   const themeMode = useThemeMode()
 
   useEffect(() => {
-    console.log("IframeCanvas useEffect")
     const frameRef = ref.current;
     if (frameRef && engine && frameRef.contentWindow) {
       if (frameRef.contentWindow) {

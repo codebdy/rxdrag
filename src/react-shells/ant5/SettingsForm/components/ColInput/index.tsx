@@ -1,5 +1,5 @@
 import { Col, Form, Input, InputNumber, Row, Select } from "antd"
-import { memo, useCallback, useState } from "react"
+import { memo, useCallback, useMemo, useState } from "react"
 import { Fold, FoldBase, FoldExtra } from "../Fold"
 import "./style.less"
 
@@ -47,8 +47,18 @@ export const ColInput = memo((props: ColInputProps) => {
   const handleSpanChange = useCallback((val: number | null) => {
     if (screen === "all") {
       onChange?.({ ...value, span: val || undefined })
+    } else {
+      onChange?.({ ...value, [screen]: { ...value?.[screen] as ColValue, span: val || undefined } })
     }
   }, [onChange, screen, value])
+
+  const spanValue = useMemo(() => {
+    if (screen === "all") {
+      return value?.span
+    } else {
+      return (value?.[screen] as ColValue)?.span
+    }
+  }, [screen, value])
 
   return (
     <Fold className="rx-col-input">
@@ -71,7 +81,7 @@ export const ColInput = memo((props: ColInputProps) => {
         <Row gutter={8}>
           <Col span={12}>
             <Form.Item label={subTitles?.span} labelAlign="right">
-              <InputNumber value={(value?.[screen] as ColValue)?.span} max={24} onChange={handleSpanChange} />
+              <InputNumber value={spanValue} max={24} onChange={handleSpanChange} />
             </Form.Item>
           </Col>
           <Col span={12}>
