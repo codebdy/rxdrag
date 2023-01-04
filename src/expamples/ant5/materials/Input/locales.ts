@@ -14,6 +14,7 @@ export const inputLocales = {
       showCount: "显示字数",
       prefix: "前缀",
       suffix: "后缀",
+      rows: "行数",
     }
 
   },
@@ -31,6 +32,7 @@ export const inputLocales = {
       showCount: "Show Count",
       prefix: "Prefix",
       suffix: "Suffix",
+      rows: "Rows",
     }
   }
 }
@@ -41,5 +43,14 @@ export const inputResourceLocales = {
   },
   'en-US': {
     "Input": "Input",
+  }
+}
+
+export const textareaResourceLocales = {
+  "zh-CN": {
+    "TextArea": "多行输入框",
+  },
+  'en-US': {
+    "TextArea": "TextArea",
   }
 }

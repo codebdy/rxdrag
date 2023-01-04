@@ -26,10 +26,12 @@ import { BreadcrumbMaterial } from "./layouts/Breadcrumb";
 import { FormMaterial } from "./Form";
 import { FormItemMaterial } from "./FormItem";
 import { InputFieldResource } from "./fields/InputField";
+import { TextAreaMaterial } from "./Input/textarea";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
   InputMaterial,
+  TextAreaMaterial,
   SelectMaterial,
 ]
 

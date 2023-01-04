@@ -24,9 +24,6 @@ export const InputMaterial: IComponentMaterial = {
     elements: [
       {
         componentName: "Input",
-        props: {
-          placeholder: "输入框",
-        }
       }
     ],
   },
