@@ -30,11 +30,13 @@ import { TextAreaMaterial } from "./inputs/Input/textarea";
 import { CheckboxMaterial } from "./inputs/CheckBox";
 import { DatePickerMaterial } from "./inputs/DatePicker";
 import { DateRangePickerMaterial } from "./inputs/DateRangePicker";
+import { InputNumberMaterial } from "./inputs/InputNumber";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
   InputMaterial,
   TextAreaMaterial,
+  InputNumberMaterial,
   SelectMaterial,
   CheckboxMaterial,
   DatePickerMaterial,
