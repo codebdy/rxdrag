@@ -33,6 +33,7 @@ import { DateRangePickerMaterial } from "./inputs/DateRangePicker";
 import { InputNumberMaterial } from "./inputs/InputNumber";
 import { MentionsMaterial } from "./inputs/Mentions";
 import { RadioMaterial } from "./inputs/Radio";
+import { RateMaterial } from "./inputs/Rate";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -45,6 +46,7 @@ export const inputMaterials: IComponentMaterial[] = [
   DateRangePickerMaterial,
   MentionsMaterial,
   RadioMaterial,
+  RateMaterial,
 ]
 
 export const displayMaterials: IComponentMaterial[] = [
