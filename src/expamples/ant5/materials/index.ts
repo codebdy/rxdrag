@@ -37,12 +37,15 @@ import { RateMaterial } from "./inputs/Rate";
 import { SliderMaterial } from "./inputs/Slider";
 import { SwitchMaterial } from "./inputs/Switch";
 import { TimePickerMaterial } from "./inputs/TimePicker";
+import { CascaderMaterial } from "./inputs/Cascader";
+import { AutoCompleteMaterial } from "./inputs/AutoComplete";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
   InputMaterial,
   TextAreaMaterial,
   InputNumberMaterial,
+  AutoCompleteMaterial,
   SelectMaterial,
   CheckboxMaterial,
   DatePickerMaterial,
@@ -53,6 +56,7 @@ export const inputMaterials: IComponentMaterial[] = [
   SliderMaterial,
   SwitchMaterial,
   TimePickerMaterial,
+  CascaderMaterial,
 ]
 
 export const displayMaterials: IComponentMaterial[] = [
