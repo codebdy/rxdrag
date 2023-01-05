@@ -75,6 +75,9 @@ export const fomrMaterials: IComponentMaterial[] = [
   FormItemMaterial,
 ]
 
+export const popupMaterials: IComponentMaterial[] = [
+]
+
 export const layoutMaterials: IComponentMaterial[] = [
   RowMaterial,
   ColMaterial,
