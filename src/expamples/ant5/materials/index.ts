@@ -31,6 +31,7 @@ import { CheckboxMaterial } from "./inputs/CheckBox";
 import { DatePickerMaterial } from "./inputs/DatePicker";
 import { DateRangePickerMaterial } from "./inputs/DateRangePicker";
 import { InputNumberMaterial } from "./inputs/InputNumber";
+import { MentionsMaterial } from "./inputs/Mentions";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -41,6 +42,7 @@ export const inputMaterials: IComponentMaterial[] = [
   CheckboxMaterial,
   DatePickerMaterial,
   DateRangePickerMaterial,
+  MentionsMaterial,
 ]
 
 export const displayMaterials: IComponentMaterial[] = [
