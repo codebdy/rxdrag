@@ -34,6 +34,8 @@ import { InputNumberMaterial } from "./inputs/InputNumber";
 import { MentionsMaterial } from "./inputs/Mentions";
 import { RadioMaterial } from "./inputs/Radio";
 import { RateMaterial } from "./inputs/Rate";
+import { SliderMaterial } from "./inputs/Slider";
+import { SwitchMaterial } from "./inputs/Switch";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -47,6 +49,8 @@ export const inputMaterials: IComponentMaterial[] = [
   MentionsMaterial,
   RadioMaterial,
   RateMaterial,
+  SliderMaterial,
+  SwitchMaterial,
 ]
 
 export const displayMaterials: IComponentMaterial[] = [
