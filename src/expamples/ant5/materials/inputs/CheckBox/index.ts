@@ -1,7 +1,7 @@
 import { IComponentMaterial } from "core-react";
 import { Checkbox } from "expamples/ant5/components/Checkbox";
 import { checkboxIcon } from "./icon";
-import { checkboxLocales, selectResourceLocales } from "./locales";
+import { checkboxLocales, checkBoxResourceLocales } from "./locales";
 import { selectSchema } from "./schema";
 
 const name = "Checkbox"
@@ -16,7 +16,7 @@ export const CheckboxMaterial: IComponentMaterial = {
   },
   resource: {
     name: name,
-    resourceLocales: selectResourceLocales,
+    resourceLocales: checkBoxResourceLocales,
     icon: checkboxIcon,
     color: "#8B79EC",
     elements: [

@@ -1,6 +1,6 @@
-export const checkboxLocales = {
+export const radioLocales = {
   "zh-CN": {
-    title: "复选框",
+    title: "单选框",
     settings: {
       disabled: "无效",
       label: "标签",
@@ -8,7 +8,7 @@ export const checkboxLocales = {
 
   },
   'en-US': {
-    title: "Checkbox",
+    title: "Radio",
     settings: {
       disabled: "Disabled",
       label: "Label",
@@ -16,11 +16,11 @@ export const checkboxLocales = {
   }
 }
 
-export const checkBoxResourceLocales = {
+export const radioResourceLocales = {
   "zh-CN": {
-    "Checkbox": "复选框",
+    "Radio": "单选框",
   },
   'en-US': {
-    "Checkbox": "Checkbox",
+    "Radio": "Radio",
   }
 }
