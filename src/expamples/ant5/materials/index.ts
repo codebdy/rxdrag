@@ -39,6 +39,8 @@ import { SwitchMaterial } from "./inputs/Switch";
 import { TimePickerMaterial } from "./inputs/TimePicker";
 import { CascaderMaterial } from "./inputs/Cascader";
 import { AutoCompleteMaterial } from "./inputs/AutoComplete";
+import { TransferMaterial } from "./inputs/Transfer";
+import { TreeSelectMaterial } from "./inputs/TreeSelect";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -57,6 +59,8 @@ export const inputMaterials: IComponentMaterial[] = [
   SwitchMaterial,
   TimePickerMaterial,
   CascaderMaterial,
+  TransferMaterial,
+  TreeSelectMaterial,
 ]
 
 export const displayMaterials: IComponentMaterial[] = [
