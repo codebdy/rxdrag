@@ -4,6 +4,7 @@ import { IIcon } from 'react-shells/ant5/components/IconView/model'
 import { useToken } from 'antd/es/theme/internal'
 import { RXID_ATTR_NAME } from 'core'
 import { useNode } from 'core-react/hooks/useNode'
+import { Button } from 'antd'
 
 
 export interface IDropdownMenuProps {
@@ -19,7 +20,7 @@ export interface IDropdownMenuProps {
 
 
 export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: IDropdownMenuProps, ref) => {
-  const { title, icon, placement = 'bottomLeft', children, actionComponent, menu, style, ...other } = props;
+  const { title, icon, placement = 'bottomLeft', children, actionComponent, menu, ...other } = props;
   const [visible, setVisiable] = useState(true);
   const actionRef = useRef<HTMLDivElement>(null);
   const [placementStyle, setPlacementStyle] = useState<any>()
@@ -119,11 +120,11 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: IDropdow
           {menu}
         </div>
       }
-      <div ref={actionRef} style={{ display: "inline", ...style }} {...other} >
+      <Button ref={actionRef} {...other} >
         {
-          actionComponent
+          children
         }
-      </div>
+      </Button>
     </>
   )
 }))

@@ -1,7 +1,6 @@
 import { IDesignerEngine, ID, Unsubscribe } from "core";
 import { CanvasResizeEvent, CanvasScrollEvent } from "core/shell/events";
 import { IPlugin } from "core/interfaces/plugin";
-import { addZIndex } from "core/utils/add-zindex";
 import { numbToPx } from "../utils/numbToPx";
 import { CloneButton } from "./controls/CloneButton";
 import { DeleteButton } from "./controls/DeleteButton";
@@ -12,6 +11,7 @@ import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
 import { DraggingNodesState } from "core/reducers/draggingNodes";
 import { DraggingResourceState } from "core/reducers/draggingResource";
 import { LockButton } from "./controls/LockButton";
+import { getMaxZIndex } from "../outlines/getMaxZIndex";
 
 export class ToolbarImpl implements IPlugin, IAuxToolbar {
   name: string = "default.toolbar";
@@ -133,7 +133,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
       htmlDiv.style.top = numbToPx(top - containerRect.y)
       htmlDiv.style.fontSize = "12px"
       htmlDiv.style.padding = "0px"
-      htmlDiv.style.zIndex = addZIndex(window.getComputedStyle(htmlDiv).zIndex, 10)
+      htmlDiv.style.zIndex = (getMaxZIndex(element) + 1).toString()
       htmlDiv.style.userSelect = "none"
 
       canvas?.appendChild(htmlDiv)

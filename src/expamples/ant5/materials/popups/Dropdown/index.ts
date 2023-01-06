@@ -25,26 +25,26 @@ export const DropdownMaterial: IComponentMaterial = {
       {
         componentName: name,
         slots: {
-          actionComponent: {
-            componentName: "Button",
-            children: [
-              {
-                componentName: "TextView",
-                props: {
-                  content: name,
-                }
-              }
-            ]
-          },
           menu: {
             componentName: "DefaultSlot"
           }
-        }
+        },
+        children: [
+          {
+            componentName: "TextView",
+            props: {
+              content: name,
+            }
+          }
+        ]
       }
     ]
   },
   slots: {
-    actionComponent: ButtonMaterial,
     menu: true,
   },
+  behaviorRule: {
+    droppable: true,
+    noPlaceholder: true,
+  }
 }
