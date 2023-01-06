@@ -23,7 +23,8 @@ export class StartDragControllerImpl implements IPlugin {
       const nodeId = e.data.targetRx?.rxId
       if (nodeId) {
         const beheavior = this.engine.getNodeBehavior(nodeId)
-        if (beheavior.isDraggable()) {
+        const node = this.engine.getMonitor().getNode(nodeId)
+        if (beheavior.isDraggable() && !node?.isSlot) {
           this.engine.getActions().startDragNodes({
             initialMousePosition: getPosition(e.data),
             offset: getOffset(e.data),
@@ -41,6 +42,6 @@ export class StartDragControllerImpl implements IPlugin {
 
 }
 
-export const StartDragController = (engine:IDesignerEngine)=>{
+export const StartDragController = (engine: IDesignerEngine) => {
   return new StartDragControllerImpl(engine)
 }

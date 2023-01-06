@@ -96,6 +96,7 @@ export const Antd5Example = memo(() => {
           onActive={handleActive}
         />
       }
-    />
+    >
+    </Antd5Editor>
   )
 })

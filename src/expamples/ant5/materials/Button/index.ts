@@ -42,5 +42,6 @@ export const ButtonMaterial: IComponentMaterial = {
   behaviorRule: {
     droppable: true,
     noPlaceholder: true,
+    lockable: true,
   }
 }

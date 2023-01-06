@@ -1,5 +1,5 @@
 import { isHTMLElement } from "core/utils/html-node";
-import React, { memo, useCallback, useEffect, useLayoutEffect, useMemo } from "react";
+import React, { memo, useCallback, useLayoutEffect, useMemo } from "react";
 import { useDesignComponent } from "core-react/hooks/useDesignComponent";
 import { useTreeNode } from "../hooks/useTreeNode";
 import { useDesignerEngine } from "core-react/hooks";
@@ -21,7 +21,9 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
     setTimeout(() => {
       engine?.getShell().dispatch(new NodeMountedEvent(nodeId))
     }, 20)
-
+    return () => {
+      engine?.getShell().dispatch(new NodeUnmountedEvent(nodeId))
+    }
   }, [engine, nodeId])
 
   const handleRef = useCallback((element: HTMLElement | undefined) => {
@@ -39,7 +41,7 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
     for (const name of Object.keys(node?.slots || {})) {
       const slotId = node?.slots?.[name]
       if (slotId) {
-        slts[name] = <Locked node={node}><ComponentDesignerView nodeId={slotId} /></Locked>
+        slts[name] = <ComponentDesignerView nodeId={slotId} />
       }
     }
 
@@ -79,15 +81,8 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
         return <Component ref={!behavior?.isNoRef() ? handleRef : undefined} {...realProps} />
       }
     }
-
     return <></>
   }, [Component, behavior, handleRef, hasChildren, node, realProps])
-
-  useEffect(() => {
-    return () => {
-      engine?.getShell().dispatch(new NodeUnmountedEvent(nodeId))
-    }
-  }, [engine, nodeId])
 
   return (
     <NodeContext.Provider value={node || undefined}>

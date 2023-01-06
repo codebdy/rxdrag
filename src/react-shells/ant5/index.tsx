@@ -36,7 +36,7 @@ export type Antd5EditorProps = {
 }
 
 export const Antd5Editor = memo((props: Antd5EditorProps) => {
-  const { leftNav, topBar, navPanel, locales, themeMode, schemas } = props;
+  const { leftNav, topBar, navPanel, locales, themeMode, schemas, children } = props;
   const [doc, setDoc] = useState<IDocument>()
   const [engine, setEngine] = useState<IDesignerEngine>()
   const docRef = useRef<IDocument>()
@@ -132,6 +132,7 @@ export const Antd5Editor = memo((props: Antd5EditorProps) => {
             </ToggleAblePane>
             <CenterContent>
               <DocumentView doc={doc} />
+              {children}
             </CenterContent>
             <ToggleAblePane toggleType={ToggleType.right} width={300}>
               <SettingsForm />
