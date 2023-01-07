@@ -16,7 +16,7 @@ export const DropdownMenuDesigner = memo((props: DropdownMenuProps) => {
       {children}
       <div style={{ padding: 8, boxSizing: "border-box" }}>
         <Button block type="dashed" size="small" icon={<PlusOutlined />} >
-          {t('add')}
+          {t('addItem')}
         </Button>
       </div>
     </div>

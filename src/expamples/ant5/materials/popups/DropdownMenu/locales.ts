@@ -4,13 +4,13 @@ export const locales = {
     settings: {
       disabled: "无效",
     },
-    add: "添加",
+    addItem: "添加菜单项",
   },
   'en-US': {
     title: "DropdownMenu",
     settings: {
       disabled: "Disabled",
     },
-    add: "Add",
+    addItem: "Add Item",
   }
 }
