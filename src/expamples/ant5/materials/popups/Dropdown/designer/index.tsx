@@ -5,7 +5,14 @@ import { useToken } from 'antd/es/theme/internal'
 import { RXID_ATTR_NAME } from 'core'
 import { useNode } from 'core-react/hooks/useNode'
 import { Button } from 'antd'
+import { CloseButton } from '../../CloseButton'
+import styled from 'styled-components'
+import { PopupButton } from '../../PopupButton'
 
+const ActionShell = styled.div`
+  position: relative;
+  display: inline-block;
+`
 
 export interface IDropdownMenuProps {
   title?: string,
@@ -21,17 +28,11 @@ export interface IDropdownMenuProps {
 
 export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: IDropdownMenuProps, ref) => {
   const { title, icon, placement = 'bottomLeft', children, actionComponent, menu, ...other } = props;
-  const [visible, setVisiable] = useState(true);
+  const [visible, setVisiable] = useState(false);
   const actionRef = useRef<HTMLDivElement>(null);
   const [placementStyle, setPlacementStyle] = useState<any>()
+  const [hover, setHover] = useState(false);
   const [, token] = useToken()
-
-  const handleShow = useCallback(() => {
-
-    //if (canShow) {
-    setVisiable(true);
-    //}
-  }, [])
 
   const handleClose = useCallback(() => {
     setVisiable(false);
@@ -100,13 +101,19 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: IDropdow
     }
   }, [node, placement])
 
-  useEffect(() => {
-    setTimeout(() => {
-      setPlacementStyle(getPlacementStyle())
-    }, 40)
-
+  const handleShow = useCallback(() => {
+    setPlacementStyle(getPlacementStyle())
+    //if (canShow) {
+    setVisiable(true);
+    //}
   }, [getPlacementStyle])
 
+  const handleMouseEnter = useCallback(() => {
+    setHover(true);
+  }, []);
+  const handleMouseLeave = useCallback(() => {
+    setHover(false);
+  }, []);
 
   return (
     <>
@@ -118,13 +125,25 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: IDropdow
             backgroundColor: token.colorBgContainer,
           }}>
           {menu}
+          <CloseButton
+            onClick={handleClose}
+          />
         </div>
       }
-      <Button ref={actionRef} {...other} >
+      <ActionShell
+        ref={actionRef}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <Button  {...other} >
+          {
+            children
+          }
+        </Button>
         {
-          children
+          hover && <PopupButton onClick={handleShow} />
         }
-      </Button>
+      </ActionShell>
     </>
   )
 }))
