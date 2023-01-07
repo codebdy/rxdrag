@@ -1,4 +1,5 @@
 import { IComponentMaterial } from "core-react";
+import { Dropdown } from "expamples/ant5/components/popups/Dropdown";
 import { ButtonMaterial } from "../../Button";
 import { DropdownDesigner } from "./designer";
 import { icon } from "./icon";
@@ -8,7 +9,7 @@ import { materialSchema } from "./schema";
 const name = "Dropdown"
 export const DropdownMaterial: IComponentMaterial = {
   componentName: name,
-  component: DropdownDesigner,
+  component: Dropdown,
   designer: DropdownDesigner,
   designerLocales: locales,
   designerSchema: materialSchema,
@@ -58,7 +59,7 @@ export const DropdownMaterial: IComponentMaterial = {
     actionComponent: ButtonMaterial,
   },
   behaviorRule: {
-    droppable: true,
+    droppable: false,
     noPlaceholder: true,
     noRef: true
   }
