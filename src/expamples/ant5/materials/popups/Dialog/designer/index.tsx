@@ -6,6 +6,7 @@ import { useCurrentNode } from "core-react/hooks/useCurrentNode";
 import { useNode } from "core-react/hooks/useNode";
 import { DialogProps } from "expamples/ant5/components/popups/Dialog";
 import { forwardRef, memo, useCallback, useRef, useState } from "react"
+import { CloseButton } from "../../CloseButton";
 import { PopupButton } from "../../PopupButton";
 import "./style.less"
 
@@ -111,7 +112,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
               }}>
                 {
                   closable &&
-                  <Button type='text' className="dialog-close" onClick={handleClose}>
+                  <Button type='text' className="dialog-close">
                     <CloseOutlined />
                   </Button>
                 }
@@ -124,6 +125,9 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
                 {content}
                 {footer && footer}
               </div>
+              <CloseButton
+                onClick={handleClose}
+              />
             </div>
           </div>
         </>
