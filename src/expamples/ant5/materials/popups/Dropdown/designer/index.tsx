@@ -1,21 +1,13 @@
-import React, { CSSProperties, forwardRef, memo, useCallback, useEffect, useRef, useState } from 'react'
+import React, { CSSProperties, memo, useCallback, useRef, useState } from 'react'
 import './styles.less'
 import { IIcon } from 'react-shells/ant5/components/IconView/model'
 import { useToken } from 'antd/es/theme/internal'
-import { RXID_ATTR_NAME } from 'core'
 import { useNode } from 'core-react/hooks/useNode'
-import { Button } from 'antd'
 import { CloseButton } from '../../CloseButton'
-import styled from 'styled-components'
 import { PopupButton } from '../../PopupButton'
 import { useDocument } from 'core-react/hooks/useDocument'
 import { useDesignerEngine } from 'core-react/hooks'
 import { useCurrentNode } from 'core-react/hooks/useCurrentNode'
-
-const ActionShell = styled.div`
-  position: relative;
-  display: inline-block;
-`
 
 export interface IDropdownMenuProps {
   title?: string,
@@ -28,9 +20,8 @@ export interface IDropdownMenuProps {
   menu?: React.ReactElement,
 }
 
-
-export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: IDropdownMenuProps, ref) => {
-  const { title, icon, placement = 'bottomLeft', children, actionComponent, menu, ...other } = props;
+export const DropdownDesigner = memo((props: IDropdownMenuProps) => {
+  const { title, icon, placement = 'bottomLeft', children, actionComponent, menu, style, ...other } = props;
   const [visible, setVisiable] = useState(false);
   const actionRef = useRef<HTMLDivElement>(null);
   const [placementStyle, setPlacementStyle] = useState<any>()
@@ -139,20 +130,22 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: IDropdow
           />
         </div>
       }
-      <ActionShell
+      <div
         ref={actionRef}
+        style={{
+          position: 'relative',
+          display: 'inline-block',
+          ...style
+        }}
+        {...other}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <Button  {...other} >
-          {
-            children
-          }
-        </Button>
+        {actionComponent}
         {
           (hover || currentNode?.id === node?.id) && !visible && <PopupButton onClick={handleShow} />
         }
-      </ActionShell>
+      </div>
     </>
   )
-}))
+})

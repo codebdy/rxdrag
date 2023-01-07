@@ -1,4 +1,3 @@
-import { Dropdown } from "antd";
 import { IComponentMaterial } from "core-react";
 import { ButtonMaterial } from "../../Button";
 import { DropdownDesigner } from "./designer";
@@ -27,6 +26,20 @@ export const DropdownMaterial: IComponentMaterial = {
         slots: {
           menu: {
             componentName: "DefaultSlot"
+          },
+          actionComponent: {
+            componentName: "Button",
+            props: {
+              title: name,
+            },
+            children: [
+              {
+                componentName: "TextView",
+                props: {
+                  content: name,
+                }
+              }
+            ]
           }
         },
         children: [
@@ -42,9 +55,11 @@ export const DropdownMaterial: IComponentMaterial = {
   },
   slots: {
     menu: true,
+    actionComponent: ButtonMaterial,
   },
   behaviorRule: {
     droppable: true,
     noPlaceholder: true,
+    noRef: true
   }
 }
