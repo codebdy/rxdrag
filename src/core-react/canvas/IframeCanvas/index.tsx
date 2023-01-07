@@ -53,6 +53,7 @@ export const IframeCanvas = memo((
     <body style="padding:0;margin:0">
       <noscript>You need to enable JavaScript to run this app.</noscript>
       <div id="root" style="height:100vh"></div>
+
     </body>
   </html>
   
@@ -61,6 +62,26 @@ export const IframeCanvas = memo((
   const engine = useDesignerEngine()
   const { components } = useDesignComponents()
   const themeMode = useThemeMode()
+
+  // useEffect(() => {
+  //   const head = document.getElementsByTagName('head')[0]
+  //   head?.addEventListener("DOMNodeInserted", handleDomInserted)
+
+  //   return () => {
+  //     head?.removeEventListener("DOMNodeInserted", handleDomInserted)
+  //   }
+  // }, [handleDomInserted])
+  // const frameRef = ref.current;
+  // if (frameRef && engine && frameRef.contentWindow) {
+  //   if (frameRef.contentWindow) {
+  //     (frameRef.contentWindow as any)["React"] = React;
+  //     (frameRef.contentWindow as any)["ReactDOM"] = ReactDOM;
+  //     (frameRef.contentWindow as any)["CanvasRender"] = CanvasRender;
+  //     (frameRef.contentWindow as any)["engine"] = engine;
+  //     (frameRef.contentWindow as any)["doc"] = doc;
+  //     (frameRef.contentWindow as any)["components"] = components;
+  //   }
+  // }
 
   const handleLoaded = useCallback(() => {
     const shell = engine?.getShell()

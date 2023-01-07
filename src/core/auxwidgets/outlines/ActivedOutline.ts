@@ -2,9 +2,9 @@ import { ID, IDesignerEngine, Unsubscribe } from "core";
 import { CanvasResizeEvent, CanvasScrollEvent } from "core/shell/events";
 import { MouseOutEvent } from "core/shell/events/mouse/MouseOutEvent";
 import { IPlugin } from "core/interfaces/plugin";
-import { addZIndex } from "core/utils/add-zindex";
 import { AUX_BACKGROUND_COLOR } from "../consts";
 import { numbToPx } from "../utils/numbToPx";
+import { getMaxZIndex } from "./getMaxZIndex";
 
 export class ActivedOutlineImpl implements IPlugin {
   name: string = "default.actived-outline";
@@ -74,7 +74,7 @@ export class ActivedOutlineImpl implements IPlugin {
       htmlDiv.style.top = numbToPx(rect.top - containerRect.y)
       htmlDiv.style.height = numbToPx(rect.height - 2)
       htmlDiv.style.width = numbToPx(rect.width - 2)
-      htmlDiv.style.zIndex = addZIndex(window.getComputedStyle(htmlDiv).zIndex, 1)
+      htmlDiv.style.zIndex = (getMaxZIndex(element) + 1).toString()
       canvas?.appendChild(htmlDiv)
       this.outline = htmlDiv
     }

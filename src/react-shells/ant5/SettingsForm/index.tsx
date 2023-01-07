@@ -1,6 +1,6 @@
 import { CSSProperties, memo, useCallback, useMemo } from "react"
 import { useCurrentNode } from "core-react/hooks/useCurrentNode"
-import { Form, Input, InputNumber, Radio, Select, Slider, Switch } from 'antd';
+import { Checkbox, Form, Input, InputNumber, Radio, Select, Slider, Switch } from 'antd';
 import { ComponentRender } from "core-react/ComponentRender";
 import { Tabs } from "./components/Tabs";
 import { TabPanel } from "./components/Tabs/TabPanel";
@@ -112,6 +112,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         IconInput,
         GutterInput,
         "Radio.Group": Radio.Group,
+        "Checkbox.Group": Checkbox.Group,
         ColInput,
       }}
     >

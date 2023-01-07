@@ -30,7 +30,7 @@ export class MoveButton extends AbstractButton {
   
   onRender(node: ITreeNode): HTMLElement | null {
     const behavior = this.engine.getNodeBehavior(node.id)
-    if (!behavior.isDraggable()) {
+    if (!behavior.isDraggable() || node.isSlot) {
       this.teardown()
       return null
     }

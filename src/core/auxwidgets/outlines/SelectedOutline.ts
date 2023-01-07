@@ -7,9 +7,9 @@ import { AddDecoratorEvent } from "core/shell/events/canvas/AddDecoratorEvent";
 import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
 import { NodeUnmountedEvent } from "core/shell/events/canvas/NodeUnmountedEvent";
 import { RemoveDecoratorEvent } from "core/shell/events/canvas/RemoveDecoratorEvent";
-import { addZIndex } from "core/utils/add-zindex";
 import { AUX_BACKGROUND_COLOR } from "../consts";
 import { numbToPx } from "../utils/numbToPx";
+import { getMaxZIndex } from "./getMaxZIndex";
 
 export class SelectedOutlineImpl implements IPlugin {
   name: string = "default.selected-outline";
@@ -71,7 +71,7 @@ export class SelectedOutlineImpl implements IPlugin {
         htmlDiv.style.top = numbToPx(rect.top - containerRect.y)
         htmlDiv.style.height = numbToPx(rect.height - 4)
         htmlDiv.style.width = numbToPx(rect.width - 4)
-        htmlDiv.style.zIndex = addZIndex(window.getComputedStyle(htmlDiv).zIndex, 1)
+        htmlDiv.style.zIndex = (getMaxZIndex(element) + 1).toString()
         canvas?.appendChild(htmlDiv)
         this.htmls[id] = htmlDiv
       }

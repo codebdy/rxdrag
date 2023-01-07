@@ -4,7 +4,7 @@ import { ResourceCollapsePannel } from "expamples/ant5/ResourceWidget/ResourceCo
 import { PaneContainer } from "react-shells/ant5/layouts/ToggleAblePane/PaneContainer"
 import { ResourcesTitle } from "expamples/ant5/ResourceWidget/ResourcesTitle"
 import { ComponentResourceWidget } from "react-shells/ant5/widgets/ComponentResourceWidget"
-import { businessMaterials, displayMaterials, fields, fomrMaterials, inputMaterials, layoutMaterials } from "../materials"
+import { businessMaterials, displayMaterials, fields, fomrMaterials, inputMaterials, layoutMaterials, popupMaterials } from "../materials"
 import { useRegisterComponentMaterial } from "core-react/hooks/useRegisterComponentMaterial"
 import { FieldMaterial } from "../materials/fields/Field"
 import { TemplateResourceWidget } from "react-shells/ant5/widgets/TemplateResourceWidget"
@@ -60,7 +60,15 @@ export const ResourceWidget = memo((
             })
           }
         </ResourceCollapsePannel>
-
+        <ResourceCollapsePannel title={t("popups")} defaultExpand>
+          {
+            popupMaterials.map((material => {
+              return (
+                <ComponentResourceWidget key={material.componentName} meterial={material} />
+              )
+            }))
+          }
+        </ResourceCollapsePannel>
         <ResourceCollapsePannel title={t("layouts")} defaultExpand>
           {
             layoutMaterials.map((material => {

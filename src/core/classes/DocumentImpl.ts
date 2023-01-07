@@ -23,7 +23,7 @@ export class DocumentImpl implements IDocument {
   initialize(rootSchema: INodeSchema, documentId: string): void {
     const nodesById: NodesById = {}
     if (!this.isBlocksSchema(rootSchema)) {
-      const root = parseNodeSchema(this.engine, documentId, rootSchema as INodeSchema, nodesById)
+      const root = parseNodeSchema(this.engine, documentId, rootSchema as INodeSchema, nodesById, false)
       this.dispatch({
         type: INITIALIZE,
         payload: {

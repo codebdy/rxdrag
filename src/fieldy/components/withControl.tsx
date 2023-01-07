@@ -2,7 +2,7 @@ import { useField } from "fieldy/hooks/useField"
 import { IFieldMeta } from "fieldy/interfaces"
 import { memo, useCallback } from "react"
 
-export function withControl(WrappedComponent: React.FC<any>, fieldMeta?: IFieldMeta): React.FC<any> {
+export function withControl(WrappedComponent: React.FC<any> | React.ComponentClass<any>, fieldMeta?: IFieldMeta): React.FC<any> | React.ComponentClass<any> {
   const fieldType = fieldMeta?.type || "normal"
 
   if (!fieldMeta) {
