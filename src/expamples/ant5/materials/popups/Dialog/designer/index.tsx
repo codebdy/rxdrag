@@ -106,7 +106,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
                 {
                   closable &&
                   <div className='dialog-close'>
-                    <Button type='text' onClick={handleClose}>
+                    <Button type='text' shape="circle" onClick={handleClose}>
                       <CloseOutlined />
                     </Button>
                   </div>
