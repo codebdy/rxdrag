@@ -36,7 +36,7 @@ export const DropdownMenuDesigner = memo(forwardRef<HTMLDivElement>((props: Drop
       {children}
       <div style={{ padding: 8, boxSizing: "border-box" }}>
         <Button block type="dashed" size="small" icon={<PlusOutlined />} onClick={handleAdd}>
-          {t('addItem')}
+          {t('add')}
         </Button>
       </div>
     </div>

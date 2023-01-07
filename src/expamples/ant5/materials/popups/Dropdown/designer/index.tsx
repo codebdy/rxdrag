@@ -1,4 +1,4 @@
-import React, { CSSProperties, memo, useCallback, useRef, useState } from 'react'
+import React, { CSSProperties, memo, useCallback, useEffect, useRef, useState } from 'react'
 import './styles.less'
 import { IIcon } from 'react-shells/ant5/components/IconView/model'
 import { useToken } from 'antd/es/theme/internal'
@@ -8,6 +8,7 @@ import { PopupButton } from '../../PopupButton'
 import { useDocument } from 'core-react/hooks/useDocument'
 import { useDesignerEngine } from 'core-react/hooks'
 import { useCurrentNode } from 'core-react/hooks/useCurrentNode'
+import { CanvasScrollEvent } from 'core/shell/events'
 
 export interface IDropdownMenuProps {
   title?: string,
@@ -114,6 +115,17 @@ export const DropdownDesigner = memo((props: IDropdownMenuProps) => {
   const handleMouseLeave = useCallback(() => {
     setHover(false);
   }, []);
+
+  const handleScroll = useCallback(() => {
+    setPlacementStyle(getPlacementStyle())
+  }, [getPlacementStyle])
+
+  useEffect(() => {
+    const unsub = engine?.getShell().subscribeTo(CanvasScrollEvent, handleScroll)
+    return () => {
+      unsub?.()
+    }
+  }, [engine, handleScroll])
 
   return (
     <>
