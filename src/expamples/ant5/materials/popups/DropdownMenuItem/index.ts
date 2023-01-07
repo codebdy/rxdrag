@@ -1,13 +1,13 @@
 import { IComponentMaterial } from "core-react";
-import { MenuItemDesigner } from "./designer";
+import { DropdownMenuItemDesigner } from "./designer";
 import { locales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "DropdownMenuItem"
 export const DropdownMenuItemMaterial: IComponentMaterial = {
   componentName: name,
-  component: MenuItemDesigner,
-  designer: MenuItemDesigner,
+  component: DropdownMenuItemDesigner,
+  designer: DropdownMenuItemDesigner,
   designerLocales: locales,
   designerSchema: materialSchema,
   designerProps: {

@@ -119,7 +119,7 @@ export const DropdownDesigner = memo((props: IDropdownMenuProps) => {
     <>
       {visible &&
         <div
-          className='menu-designer'
+          className='rx-dropdown-popup'
           style={{
             ...placementStyle,
             backgroundColor: token.colorBgContainer,
