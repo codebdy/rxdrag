@@ -1,6 +1,5 @@
-import React, { CSSProperties, memo, useCallback, useEffect, useRef, useState } from 'react'
+import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import './styles.less'
-import { IIcon } from 'react-shells/ant5/components/IconView/model'
 import { useToken } from 'antd/es/theme/internal'
 import { useNode } from 'core-react/hooks/useNode'
 import { CloseButton } from '../../CloseButton'
@@ -9,21 +8,11 @@ import { useDocument } from 'core-react/hooks/useDocument'
 import { useDesignerEngine } from 'core-react/hooks'
 import { useCurrentNode } from 'core-react/hooks/useCurrentNode'
 import { CanvasScrollEvent } from 'core/shell/events'
+import { IDropdownProps } from 'expamples/ant5/components/popups/Dropdown'
 
-export interface IDropdownProps {
-  title?: string,
-  icon?: IIcon,
-  style?: CSSProperties,
-  placement?: "bottom" | "bottomLeft" | "bottomRight" | "top" | "topLeft" | "topRight",
-  trigger?: Array<"click" | "hover" | "contextMenu">,
-  children?: React.ReactNode,
-  actionComponent?: React.ReactElement,
-  menu?: React.ReactElement,
-  arrow?: boolean,
-}
 
 export const DropdownDesigner = memo((props: IDropdownProps) => {
-  const { title, icon, placement = 'bottomLeft', children, actionComponent, menu, style, arrow, ...other } = props;
+  const { placement = 'bottomLeft', actionComponent, menu, style, arrow, ...other } = props;
   const [visible, setVisiable] = useState(false);
   const actionRef = useRef<HTMLDivElement>(null);
   const [placementStyle, setPlacementStyle] = useState<any>()

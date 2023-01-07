@@ -19,7 +19,7 @@ export type ComponentViewProps = {
 export const ComponentView = memo((
   props: ComponentViewProps
 ) => {
-  const { node } = props
+  const { node, ...other } = props
   const com = usePreviewComponent(node.componentName)
   const Component = com && withControl(com, node?.["x-field"]);
   const slots = useMemo(() => {
@@ -41,14 +41,14 @@ export const ComponentView = memo((
           Component &&
           (
             !!node.children?.length ?
-              <Component {...node.props} {...slots}>
+              <Component {...node.props} {...slots} {...other}>
                 {
                   node.children?.map(child => {
                     return (<ComponentView key={child.id} node={child} />)
                   })
                 }
               </Component>
-              : <Component {...node.props} {...slots}/>
+              : <Component {...node.props} {...slots} {...other}/>
           )
         }
       </ComponentField>
