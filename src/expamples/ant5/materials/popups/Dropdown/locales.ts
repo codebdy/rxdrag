@@ -2,14 +2,14 @@ export const locales = {
   "zh-CN": {
     title: "下拉菜单",
     settings: {
-      disabled: "无效",
+      arrow: "箭头",
     }
 
   },
   'en-US': {
     title: "Dropdown",
     settings: {
-      disabled: "Disabled",
+      arrow: "arrow",
     }
   }
 }

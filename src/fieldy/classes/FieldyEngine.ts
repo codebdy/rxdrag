@@ -138,7 +138,7 @@ export class FieldyEngine implements IFieldyEngine {
     if (this.getField(formName, fieldPath)?.fieldSchema.type === "object") {
       const values: any = {}
       this.getValue(formName, fieldPath, value, values)
-      const payload:SetFormValuesPayload = {
+      const payload: SetFormValuesPayload = {
         formName,
         values
       }
@@ -382,7 +382,10 @@ function trasformFlatValuesToNormal(originalValue: any = {}, flatValues: FormVal
       for (const fragField of fieldSchema.fragmentFields || []) {
         if (fragField.name) {
           const fieldPath = prefix + fragField.name
-          value[fragField.name] = flatValues[fieldPath]
+          const subValue = flatValues[fieldPath]
+          if (subValue !== undefined) {
+            value[fragField.name] = subValue
+          }
         } else {
           console.error("No subfield name on fragment")
         }
@@ -405,7 +408,10 @@ function trasformFlatValuesToNormal(originalValue: any = {}, flatValues: FormVal
       }
       value[fieldSchema.name] = arrayValue
     } else {
-      value[fieldSchema.name] = flatValues[fieldPath]
+      const subValue = flatValues[fieldPath]
+      if (subValue !== undefined) {
+        value[fieldSchema.name] = flatValues[fieldPath]
+      }
     }
   }
   return value

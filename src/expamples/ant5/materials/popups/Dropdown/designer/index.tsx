@@ -10,7 +10,7 @@ import { useDesignerEngine } from 'core-react/hooks'
 import { useCurrentNode } from 'core-react/hooks/useCurrentNode'
 import { CanvasScrollEvent } from 'core/shell/events'
 
-export interface IDropdownMenuProps {
+export interface IDropdownProps {
   title?: string,
   icon?: IIcon,
   style?: CSSProperties,
@@ -19,10 +19,11 @@ export interface IDropdownMenuProps {
   children?: React.ReactNode,
   actionComponent?: React.ReactElement,
   menu?: React.ReactElement,
+  arrow?: boolean,
 }
 
-export const DropdownDesigner = memo((props: IDropdownMenuProps) => {
-  const { title, icon, placement = 'bottomLeft', children, actionComponent, menu, style, ...other } = props;
+export const DropdownDesigner = memo((props: IDropdownProps) => {
+  const { title, icon, placement = 'bottomLeft', children, actionComponent, menu, style, arrow, ...other } = props;
   const [visible, setVisiable] = useState(false);
   const actionRef = useRef<HTMLDivElement>(null);
   const [placementStyle, setPlacementStyle] = useState<any>()

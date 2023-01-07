@@ -5,13 +5,13 @@ export const materialSchema: INodeSchema = createSchema([
   {
     componentName: "FormItem",
     props: {
-      label: "$disabled",
+      label: "$arrow",
     },
     children: [
       {
         componentName: "Switch",
         "x-field": {
-          name: "disabled",
+          name: "arrow",
           valuePropName: "checked",
         },
       }
