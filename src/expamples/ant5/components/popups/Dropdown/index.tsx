@@ -3,7 +3,7 @@ import { useComponentSchema } from "core-react/ComponentRender/hooks/useComponen
 import { CSSProperties, memo, useMemo } from "react"
 import { IconView } from "react-shells/ant5/components/IconView";
 
-export interface IDropdownProps {
+export type DropdownProps = {
   style?: CSSProperties,
   placement?: "bottom" | "bottomLeft" | "bottomRight" | "top" | "topLeft" | "topRight",
   trigger?: Array<"click" | "hover" | "contextMenu">,
@@ -14,7 +14,7 @@ export interface IDropdownProps {
 
 //本控件强依赖fieldy
 
-export const Dropdown = memo((props: IDropdownProps) => {
+export const Dropdown = memo((props: DropdownProps) => {
   const { actionComponent, menu, ...other } = props;
   const schema = useComponentSchema();
 

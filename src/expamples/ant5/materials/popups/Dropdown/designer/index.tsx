@@ -8,10 +8,10 @@ import { useDocument } from 'core-react/hooks/useDocument'
 import { useDesignerEngine } from 'core-react/hooks'
 import { useCurrentNode } from 'core-react/hooks/useCurrentNode'
 import { CanvasScrollEvent } from 'core/shell/events'
-import { IDropdownProps } from 'expamples/ant5/components/popups/Dropdown'
+import { DropdownProps } from 'expamples/ant5/components/popups/Dropdown'
 
 
-export const DropdownDesigner = memo((props: IDropdownProps) => {
+export const DropdownDesigner = memo((props: DropdownProps) => {
   const { placement = 'bottomLeft', actionComponent, menu, style, arrow, ...other } = props;
   const [visible, setVisiable] = useState(false);
   const actionRef = useRef<HTMLDivElement>(null);

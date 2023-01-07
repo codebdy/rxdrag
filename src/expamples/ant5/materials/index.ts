@@ -42,6 +42,7 @@ import { AutoCompleteMaterial } from "./inputs/AutoComplete";
 import { TransferMaterial } from "./inputs/Transfer";
 import { TreeSelectMaterial } from "./inputs/TreeSelect";
 import { DropdownMaterial } from "./popups/Dropdown";
+import { DialogMaterial } from "./popups/Dialog";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -77,7 +78,8 @@ export const fomrMaterials: IComponentMaterial[] = [
 ]
 
 export const popupMaterials: IComponentMaterial[] = [
-  DropdownMaterial
+  DropdownMaterial,
+  DialogMaterial
 ]
 
 export const layoutMaterials: IComponentMaterial[] = [
