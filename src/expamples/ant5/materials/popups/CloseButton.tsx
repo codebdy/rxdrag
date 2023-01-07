@@ -18,7 +18,7 @@ export const CloseButton = (
       style={{
         position: "absolute",
         top: -12,
-        right: -12,
+        right: -16,
         width: 16,
         minWidth: 16,
         height: 16,

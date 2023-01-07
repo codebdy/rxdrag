@@ -8,6 +8,9 @@ import { Button } from 'antd'
 import { CloseButton } from '../../CloseButton'
 import styled from 'styled-components'
 import { PopupButton } from '../../PopupButton'
+import { useDocument } from 'core-react/hooks/useDocument'
+import { useDesignerEngine } from 'core-react/hooks'
+import { useCurrentNode } from 'core-react/hooks/useCurrentNode'
 
 const ActionShell = styled.div`
   position: relative;
@@ -33,18 +36,23 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: IDropdow
   const [placementStyle, setPlacementStyle] = useState<any>()
   const [hover, setHover] = useState(false);
   const [, token] = useToken()
+  const engine = useDesignerEngine()
+  const doc = useDocument()
+  const node = useNode()
+  const currentNode = useCurrentNode();
 
   const handleClose = useCallback(() => {
     setVisiable(false);
-  }, [])
-
-  const node = useNode()
+    if (doc && node) {
+      engine?.getActions().selectNodes([node.id], doc.id)
+    }
+  }, [doc, engine, node])
 
   const getPlacementStyle = useCallback(() => {
-    const actionRxId = node?.slots?.['actionComponent']
+    //const actionRxId = node?.slots?.['actionComponent']
     const doc = actionRef?.current?.ownerDocument
-    const actionDom = doc?.querySelector(`[${RXID_ATTR_NAME}="${actionRxId}"]`)
-    const rect = actionDom?.getBoundingClientRect();
+    //const actionDom = doc?.querySelector(`[${RXID_ATTR_NAME}="${actionRxId}"]`)
+    const rect = actionRef.current?.getBoundingClientRect();
 
     if (!rect || !doc) {
       return
@@ -99,14 +107,15 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: IDropdow
           minWidth: rect.width,
         }
     }
-  }, [node, placement])
+  }, [placement])
 
   const handleShow = useCallback(() => {
     setPlacementStyle(getPlacementStyle())
-    //if (canShow) {
     setVisiable(true);
-    //}
-  }, [getPlacementStyle])
+    if (doc) {
+      engine?.getActions().selectNodes([node?.slots?.['menu'] || ""], doc.id)
+    }
+  }, [doc, engine, getPlacementStyle, node?.slots])
 
   const handleMouseEnter = useCallback(() => {
     setHover(true);
@@ -141,7 +150,7 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: IDropdow
           }
         </Button>
         {
-          hover && <PopupButton onClick={handleShow} />
+          (hover || currentNode?.id === node?.id) && !visible && <PopupButton onClick={handleShow} />
         }
       </ActionShell>
     </>

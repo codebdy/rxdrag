@@ -16,7 +16,7 @@ export const PopupButton = (
       style={{
         position: "absolute",
         top: "calc(50% - 8px)",
-        right: -8,
+        left: -8,
         width: 16,
         minWidth: 16,
         height: 16,
