@@ -89,8 +89,8 @@ function addIn(state: NodesById, sourceIds: ID[], targetId: ID, pos: NodeRelativ
 	const targetNode = state[targetId]
 	invariant(targetNode, "can not find target node")
 	const newChildren = pos === NodeRelativePosition.InBottom
-		? [...sourceIds, ...targetNode.children]
-		: [...targetNode.children, ...sourceIds]
+		? [...targetNode.children, ...sourceIds]
+		: [...sourceIds, ...targetNode.children]
 	let newState = Object.assign({}, state, {
 		[targetNode.id]: {
 			...targetNode,

@@ -4,6 +4,7 @@ export const locales = {
     settings: {
       disabled: "无效",
       icon: "图标",
+      title: "标题",
     }
 
   },
@@ -12,6 +13,7 @@ export const locales = {
     settings: {
       disabled: "Disabled",
       icon: "Icon",
+      title: "Title"
     }
   }
 }

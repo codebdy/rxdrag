@@ -19,7 +19,7 @@ export const DropdownMenuMaterial: IComponentMaterial = {
     menuItem: DropdownMenuItemMaterial,
   },
   behaviorRule: {
-    droppable: false,
+    droppable: true,
     noPlaceholder: true,
   }
 }
