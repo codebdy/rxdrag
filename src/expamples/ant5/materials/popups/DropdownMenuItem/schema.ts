@@ -17,4 +17,18 @@ export const materialSchema: INodeSchema = createSchema([
       }
     ]
   },
+  {
+    componentName: "FormItem",
+    props: {
+      label: "$icon",
+    },
+    children: [
+      {
+        componentName: "IconInput",
+        "x-field": {
+          name: "icon",
+        },
+      }
+    ]
+  },
 ])

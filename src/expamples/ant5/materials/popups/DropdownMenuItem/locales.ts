@@ -3,6 +3,7 @@ export const locales = {
     title: "下拉菜单",
     settings: {
       disabled: "无效",
+      icon: "图标",
     }
 
   },
@@ -10,15 +11,7 @@ export const locales = {
     title: "Dropdown",
     settings: {
       disabled: "Disabled",
+      icon: "Icon",
     }
-  }
-}
-
-export const resourceLocales = {
-  "zh-CN": {
-    "Dropdown": "下拉菜单",
-  },
-  'en-US': {
-    "Dropdown": "Dropdown",
   }
 }
