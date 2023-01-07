@@ -62,6 +62,5 @@ export const DialogMaterial: IComponentMaterial = {
   behaviorRule: {
     droppable: false,
     noPlaceholder: true,
-    noRef: true
   }
 }

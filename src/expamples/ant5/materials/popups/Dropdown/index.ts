@@ -62,6 +62,5 @@ export const DropdownMaterial: IComponentMaterial = {
   behaviorRule: {
     droppable: false,
     noPlaceholder: true,
-    noRef: true
   }
 }

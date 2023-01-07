@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useRef, useState } from 'react'
+import { forwardRef, memo, useCallback, useEffect, useRef, useState } from 'react'
 import './styles.less'
 import { useToken } from 'antd/es/theme/internal'
 import { useNode } from 'core-react/hooks/useNode'
@@ -10,11 +10,10 @@ import { useCurrentNode } from 'core-react/hooks/useCurrentNode'
 import { CanvasScrollEvent } from 'core/shell/events'
 import { DropdownProps } from 'expamples/ant5/components/popups/Dropdown'
 
-
-export const DropdownDesigner = memo((props: DropdownProps) => {
+export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: DropdownProps, ref) => {
   const { placement = 'bottomLeft', actionComponent, menu, style, arrow, ...other } = props;
   const [visible, setVisiable] = useState(false);
-  const actionRef = useRef<HTMLDivElement>(null);
+  const actionRef = useRef<HTMLDivElement | null>(null);
   const [placementStyle, setPlacementStyle] = useState<any>()
   const [hover, setHover] = useState(false);
   const [, token] = useToken()
@@ -117,6 +116,16 @@ export const DropdownDesigner = memo((props: DropdownProps) => {
     }
   }, [engine, handleScroll])
 
+  const handleRefChange = useCallback((node: HTMLDivElement | null) => {
+    actionRef.current = node;
+    if (typeof ref === 'function') {
+      ref(node);
+    } else if (ref) {
+      ref.current = node;
+    }
+  }, [ref])
+
+
   return (
     <>
       {visible &&
@@ -133,7 +142,7 @@ export const DropdownDesigner = memo((props: DropdownProps) => {
         </div>
       }
       <div
-        ref={actionRef}
+        ref={handleRefChange}
         style={{
           position: 'relative',
           display: 'inline-block',
@@ -150,4 +159,4 @@ export const DropdownDesigner = memo((props: DropdownProps) => {
       </div>
     </>
   )
-})
+}))
