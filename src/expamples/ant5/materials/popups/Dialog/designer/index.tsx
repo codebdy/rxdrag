@@ -2,7 +2,9 @@ import { CloseOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { useToken } from "antd/es/theme/internal";
 import { RXID_ATTR_NAME } from "core";
+import { useDesignerEngine } from "core-react/hooks";
 import { useCurrentNode } from "core-react/hooks/useCurrentNode";
+import { useDocument } from "core-react/hooks/useDocument";
 import { useNode } from "core-react/hooks/useNode";
 import { DialogProps } from "expamples/ant5/components/popups/Dialog";
 import { forwardRef, memo, useCallback, useRef, useState } from "react"
@@ -37,7 +39,9 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
   const currentNode = useCurrentNode();
   const realRef = useRef<HTMLDivElement | null>(null);
   const [, token] = useToken()
-
+  const engine = useDesignerEngine()
+  const doc = useDocument()
+  
   const handleMouseEnter = useCallback(() => {
     setHover(true);
   }, []);
@@ -47,7 +51,10 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
 
   const handleShow = useCallback(() => {
     setVisiable(true);
-  }, [])
+    if (doc && node) {
+      engine?.getActions().selectNodes([node.id], doc.id)
+    }
+  }, [doc, engine, node])
 
   const handleRefChange = useCallback((node: HTMLDivElement | null) => {
     realRef.current = node;

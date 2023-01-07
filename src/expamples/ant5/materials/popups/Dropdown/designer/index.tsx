@@ -9,9 +9,10 @@ import { useDesignerEngine } from 'core-react/hooks'
 import { useCurrentNode } from 'core-react/hooks/useCurrentNode'
 import { CanvasScrollEvent } from 'core/shell/events'
 import { DropdownProps } from 'expamples/ant5/components/popups/Dropdown'
+import { RXID_ATTR_NAME } from 'core'
 
-export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: DropdownProps, ref) => {
-  const { placement = 'bottomLeft', actionComponent, menu, style, arrow, ...other } = props;
+export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: DropdownProps & { [RXID_ATTR_NAME]?: string }, ref) => {
+  const { placement = 'bottomLeft', actionComponent, menu, style, arrow, [RXID_ATTR_NAME]: rxId, ...other } = props;
   const [visible, setVisiable] = useState(false);
   const actionRef = useRef<HTMLDivElement | null>(null);
   const [placementStyle, setPlacementStyle] = useState<any>()
@@ -93,10 +94,10 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: Dropdown
   const handleShow = useCallback(() => {
     setPlacementStyle(getPlacementStyle())
     setVisiable(true);
-    if (doc) {
-      engine?.getActions().selectNodes([node?.slots?.['menu'] || ""], doc.id)
+    if (doc && node) {
+      engine?.getActions().selectNodes([node.id], doc.id)
     }
-  }, [doc, engine, getPlacementStyle, node?.slots])
+  }, [doc, engine, getPlacementStyle, node])
 
   const handleMouseEnter = useCallback(() => {
     setHover(true);
@@ -134,7 +135,9 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: Dropdown
           style={{
             ...placementStyle,
             backgroundColor: token.colorBgContainer,
-          }}>
+          }}
+          {...!visible ? {} : { [RXID_ATTR_NAME]: rxId }}
+        >
           {menu}
           <CloseButton
             onClick={handleClose}
@@ -149,6 +152,7 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: Dropdown
           ...style
         }}
         {...other}
+        {...visible ? {} : { [RXID_ATTR_NAME]: rxId }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
