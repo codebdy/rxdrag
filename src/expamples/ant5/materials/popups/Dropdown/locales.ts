@@ -7,8 +7,8 @@ export const locales = {
       click: "点击",
       hover: "悬停",
       contextMenu: "右键",
-    }
-
+    },
+    add: "添加",
   },
   'en-US': {
     title: "Dropdown",
@@ -18,7 +18,8 @@ export const locales = {
       click: "Click",
       hover: "Hover",
       contextMenu: "ContextMenu",
-    }
+    },
+    add: "Add",
   }
 }
 

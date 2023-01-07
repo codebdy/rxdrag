@@ -8,18 +8,18 @@ export type DropdownProps = {
   placement?: "bottom" | "bottomLeft" | "bottomRight" | "top" | "topLeft" | "topRight",
   trigger?: Array<"click" | "hover" | "contextMenu">,
   actionComponent?: React.ReactElement,
-  menu?: React.ReactElement,
   arrow?: boolean,
+  children?: React.ReactNode
 }
 
 //本控件强依赖fieldy
 
 export const Dropdown = memo((props: DropdownProps) => {
-  const { actionComponent, menu, ...other } = props;
+  const { actionComponent, children, ...other } = props;
   const schema = useComponentSchema();
 
   const items: MenuProps['items'] = useMemo(() => {
-    const childrenNodes = schema?.slots?.['menu']?.children || []
+    const childrenNodes = schema?.children || []
 
     return childrenNodes.map((child, index) => {
       const icon: any = child.props?.icon;
@@ -29,7 +29,7 @@ export const Dropdown = memo((props: DropdownProps) => {
         label: child.props?.title,
       }
     })
-  }, [schema?.slots])
+  }, [schema])
   return (
     <AntdDropdown menu={{ items }} {...other}>
       {actionComponent ? actionComponent : <></>}

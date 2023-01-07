@@ -9,10 +9,13 @@ import { useDesignerEngine } from 'core-react/hooks'
 import { useCurrentNode } from 'core-react/hooks/useCurrentNode'
 import { CanvasScrollEvent } from 'core/shell/events'
 import { DropdownProps } from 'expamples/ant5/components/popups/Dropdown'
-import { RXID_ATTR_NAME } from 'core'
+import { HistoryableActionType, NodeRelativePosition, RXID_ATTR_NAME } from 'core'
+import { useComponentTranslate } from 'core-react/hooks/useComponentTranslate'
+import { Button } from 'antd'
+import { PlusOutlined } from '@ant-design/icons'
 
 export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: DropdownProps & { [RXID_ATTR_NAME]?: string }, ref) => {
-  const { placement = 'bottomLeft', actionComponent, menu, style, arrow, [RXID_ATTR_NAME]: rxId, ...other } = props;
+  const { placement = 'bottomLeft', actionComponent, style, arrow, [RXID_ATTR_NAME]: rxId, children, ...other } = props;
   const [visible, setVisiable] = useState(false);
   const actionRef = useRef<HTMLDivElement | null>(null);
   const [placementStyle, setPlacementStyle] = useState<any>()
@@ -22,6 +25,7 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: Dropdown
   const doc = useDocument()
   const node = useNode()
   const currentNode = useCurrentNode();
+  const t = useComponentTranslate("Dropdown")
 
   const handleClose = useCallback(() => {
     setVisiable(false);
@@ -126,6 +130,21 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: Dropdown
     }
   }, [ref])
 
+  const handleAdd = useCallback(() => {
+    if (doc && node) {
+      doc.addNewNodes(
+        {
+          componentName: "DropdownMenuItem",
+          props: {
+            title: "New Item"
+          }
+        },
+        node.id,
+        NodeRelativePosition.InBottom,
+      )
+      doc.backup(HistoryableActionType.Add)
+    }
+  }, [doc, node])
 
   return (
     <>
@@ -138,7 +157,14 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: Dropdown
           }}
           {...!visible ? {} : { [RXID_ATTR_NAME]: rxId }}
         >
-          {menu}
+          <div className="rx-dropdown-menu-designer" ref={ref} {...other}>
+            {children}
+            <div style={{ padding: 8, boxSizing: "border-box" }}>
+              <Button block type="dashed" size="small" icon={<PlusOutlined />} onClick={handleAdd}>
+                {t('add')}
+              </Button>
+            </div>
+          </div>
           <CloseButton
             onClick={handleClose}
           />
