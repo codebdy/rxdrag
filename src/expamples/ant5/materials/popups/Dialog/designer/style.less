@@ -27,19 +27,22 @@
     flex-flow: column;
     .dialog-close{
       position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 10;
+      top: 17px;
+      inset-inline-end: 17px;
+      z-index: 1010;
       padding: 0;
       color: rgba(0, 0, 0, 0.45);
-      font-weight: 700;
+      font-weight: 600;
       line-height: 1;
       text-decoration: none;
       background: transparent;
+      border-radius: 4px;
+      width: 22px;
+      height: 22px;
       border: 0;
       outline: 0;
       cursor: pointer;
-      transition: color 0.3s;
+      transition: color 0.2s,background-color 0.2s;
     }
     .dialog-header{
       padding: 16px 24px;

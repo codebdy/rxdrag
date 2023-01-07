@@ -1,5 +1,6 @@
 import { CloseOutlined } from "@ant-design/icons";
 import { Button } from "antd";
+import { useToken } from "antd/es/theme/internal";
 import { useCurrentNode } from "core-react/hooks/useCurrentNode";
 import { useNode } from "core-react/hooks/useNode";
 import { DialogProps } from "expamples/ant5/components/popups/Dialog";
@@ -11,7 +12,6 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
   const {
     title,
     icon,
-    children,
     width = 520,
     centered,
     closable = true,
@@ -20,6 +20,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
     keyboard,
     mask,
     maskClosable,
+    content,
     footer,
     changeRemind,
     actionComponent,
@@ -32,6 +33,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
   const node = useNode()
   const currentNode = useCurrentNode();
   const realRef = useRef<HTMLDivElement | null>(null);
+  const [, token] = useToken()
 
   const handleMouseEnter = useCallback(() => {
     setHover(true);
@@ -93,7 +95,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
               className='rx-dialog-content'
               style={{
                 width: width,
-                background: "#fff",
+                background: token.colorBgContainer,
                 marginTop: centered ? undefined : 100,
                 maxHeight: 'calc(100% - 200px)',
               }}
@@ -105,20 +107,18 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
               }}>
                 {
                   closable &&
-                  <div className='dialog-close'>
-                    <Button type='text' shape="circle" onClick={handleClose}>
-                      <CloseOutlined />
-                    </Button>
-                  </div>
+                  <Button type='text' className="dialog-close" onClick={handleClose}>
+                    <CloseOutlined />
+                  </Button>
                 }
 
                 <div className='dialog-header'>
                   <div className='dialog-title'>
-                    {"title"}
+                    {title}
                   </div>
                 </div>
-                {"Content"}
-                {footer && "footer"}
+                {content}
+                {footer && footer}
               </div>
             </div>
           </div>

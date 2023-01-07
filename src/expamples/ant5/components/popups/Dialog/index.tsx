@@ -2,17 +2,16 @@ import { CSSProperties, forwardRef, memo } from "react"
 import { IIcon } from "react-shells/ant5/components/IconView/model"
 
 export type DialogProps = {
-  title?: React.ReactNode,
+  title?: React.ReactElement,
   icon?: IIcon,
   style?: CSSProperties,
-  children?: React.ReactNode,
-
   centered?: boolean,
   closable?: boolean,
   destroyOnClose?: boolean,
   //关闭后聚焦触发元素
   focusTriggerAfterClose?: boolean,
-  footer?: boolean,
+  content?: React.ReactElement,
+  footer?: React.ReactElement,
   //是否支持键盘 esc 关闭
   keyboard?: boolean,
   //是否展示遮罩
@@ -30,12 +29,12 @@ export const Dialog = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) 
     title,
     actionComponent,
     style,
-    children,
     centered,
     closable,
     destroyOnClose,
     focusTriggerAfterClose,
-    footer: hasFooter,
+    content,
+    footer,
     keyboard,
     mask,
     maskClosable,
