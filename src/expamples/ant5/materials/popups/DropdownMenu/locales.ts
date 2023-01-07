@@ -1,24 +1,16 @@
 export const locales = {
   "zh-CN": {
-    title: "下拉菜单",
+    title: "菜单",
     settings: {
       disabled: "无效",
-    }
-
+    },
+    add: "添加",
   },
   'en-US': {
-    title: "Dropdown",
+    title: "DropdownMenu",
     settings: {
       disabled: "Disabled",
-    }
-  }
-}
-
-export const resourceLocales = {
-  "zh-CN": {
-    "Dropdown": "下拉菜单",
-  },
-  'en-US': {
-    "Dropdown": "Dropdown",
+    },
+    add: "Add",
   }
 }
