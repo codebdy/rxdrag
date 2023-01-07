@@ -1,6 +1,6 @@
 {
   "name": "rxeditor",
-  "version": "1.0.0 alpha",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
