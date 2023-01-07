@@ -30,19 +30,7 @@ export function useRegisterComponentMaterial() {
       if (slotMaterial === true || slotMaterial === undefined || isStr(slotMaterial)) {
         continue
       }
-      designers[slotMaterial.componentName] = slotMaterial.designer
-      previews[slotMaterial.componentName] = slotMaterial.component
-
-      componentManager?.registerComponents(slotMaterial)
-      if (slotMaterial.designerLocales) {
-        localesManager?.registerComponentLocales(slotMaterial.componentName, slotMaterial.designerLocales)
-      }
-      if (slotMaterial.resource?.resourceLocales) {
-        localesManager?.registerResourceLocales(slotMaterial.resource.resourceLocales)
-      }
-      if (slotMaterial.resource && !resourceManager?.getResourceByName(slotMaterial.resource.name)) {
-        resourceManager?.registerResources(slotMaterial.resource)
-      }
+      register(slotMaterial)
     }
 
     registerDesignComponents(designers)

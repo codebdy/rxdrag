@@ -1,5 +1,6 @@
 import { IComponentMaterial } from "core-react";
 import { DropdownMenu } from "expamples/ant5/components/popups/DropdownMenu";
+import { DropdownMenuItemMaterial } from "../DropdownMenuItem";
 import { DropdownMenuDesigner } from "./designer";
 import { locales } from "./locales";
 import { materialSchema } from "./schema";
@@ -15,7 +16,7 @@ export const DropdownMenuMaterial: IComponentMaterial = {
     //readOnly: true,
   },
   slots: {
-    menuItem: true,
+    menuItem: DropdownMenuItemMaterial,
   },
   behaviorRule: {
     droppable: false,
