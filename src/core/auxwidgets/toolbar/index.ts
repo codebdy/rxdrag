@@ -12,6 +12,7 @@ import { DraggingNodesState } from "core/reducers/draggingNodes";
 import { DraggingResourceState } from "core/reducers/draggingResource";
 import { LockButton } from "./controls/LockButton";
 import { getMaxZIndex } from "../outlines/getMaxZIndex";
+import { NodeUnmountedEvent } from "core/shell/events/canvas/NodeUnmountedEvent";
 
 export class ToolbarImpl implements IPlugin, IAuxToolbar {
   name: string = "default.toolbar";
@@ -25,6 +26,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   private unNodeMounted: Unsubscribe
   private draggingNodesOff: Unsubscribe
   private draggingResourceOff: Unsubscribe
+  private unmountUnsubscribe: Unsubscribe
   private refreshedFlag = false
   constructor(protected engine: IDesignerEngine,) {
     if (!engine.getShell().getContainer) {
@@ -42,6 +44,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     this.unViewporChange = this.engine.getShell().subscribeTo(CanvasResizeEvent, this.refresh)
     this.unThemeModeChange = engine.getMonitor().subscribeToThemeModeChange(this.handleThemeChange)
     this.unNodeMounted = this.engine.getShell().subscribeTo(NodeMountedEvent, this.handleNodeMounted)
+    this.unmountUnsubscribe = this.engine.getShell().subscribeTo(NodeUnmountedEvent, this.handleNodeMounted)
     this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
     this.draggingResourceOff = this.engine.getMonitor().subscribeToDraggingResource(this.handleDraggingResource)
   }
@@ -175,6 +178,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     this.unNodeMounted()
     this.draggingNodesOff?.()
     this.draggingResourceOff?.()
+    this.unmountUnsubscribe()
   }
 
   private positionLimit(documentId: ID) {

@@ -1,6 +1,7 @@
 import { CloseOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { useToken } from "antd/es/theme/internal";
+import { RXID_ATTR_NAME } from "core";
 import { useCurrentNode } from "core-react/hooks/useCurrentNode";
 import { useNode } from "core-react/hooks/useNode";
 import { DialogProps } from "expamples/ant5/components/popups/Dialog";
@@ -8,7 +9,7 @@ import { forwardRef, memo, useCallback, useRef, useState } from "react"
 import { PopupButton } from "../../PopupButton";
 import "./style.less"
 
-export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) => {
+export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProps & { [RXID_ATTR_NAME]?: string }, ref) => {
   const {
     title,
     icon,
@@ -25,6 +26,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
     changeRemind,
     actionComponent,
     style,
+    [RXID_ATTR_NAME]: rxId,
     ...other
   } = props;
 
@@ -48,12 +50,12 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
 
   const handleRefChange = useCallback((node: HTMLDivElement | null) => {
     realRef.current = node;
-    if (typeof ref === 'function') {
-      ref(node);
-    } else if (ref) {
-      ref.current = node;
-    }
-  }, [ref])
+    // if (typeof ref === 'function') {
+    //   ref(node);
+    // } else if (ref) {
+    //   ref.current = node;
+    // }
+  }, [])
 
   const handleClose = useCallback(() => {
     setVisiable(false)
@@ -64,6 +66,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
       ref={handleRefChange}
       style={{ display: "inline-block", position: "relative", ...style }}
       {...other}
+      {...visible ? {} : { [RXID_ATTR_NAME]: rxId }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -99,6 +102,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
                 marginTop: centered ? undefined : 100,
                 maxHeight: 'calc(100% - 200px)',
               }}
+              {...!visible ? {} : { [RXID_ATTR_NAME]: rxId }}
             >
               <div style={{
                 flex: 1,
