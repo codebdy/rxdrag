@@ -1,17 +1,32 @@
-import { Modal } from "antd";
+import { CloseOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 import { useCurrentNode } from "core-react/hooks/useCurrentNode";
 import { useNode } from "core-react/hooks/useNode";
-import { CSSProperties, forwardRef, memo, useCallback, useRef, useState } from "react"
+import { DialogProps } from "expamples/ant5/components/popups/Dialog";
+import { forwardRef, memo, useCallback, useRef, useState } from "react"
 import { PopupButton } from "../../PopupButton";
-
-export type DialogProps = {
-  title?: React.ReactNode,
-  style?: CSSProperties,
-  actionComponent?: React.ReactElement,
-}
+import "./style.less"
 
 export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) => {
-  const { title, actionComponent, style, ...other } = props
+  const {
+    title,
+    icon,
+    children,
+    width = 520,
+    centered,
+    closable = true,
+    destroyOnClose,
+    focusTriggerAfterClose,
+    keyboard,
+    mask,
+    maskClosable,
+    footer,
+    changeRemind,
+    actionComponent,
+    style,
+    ...other
+  } = props;
+
   const [visible, setVisiable] = useState(false);
   const [hover, setHover] = useState(false);
   const node = useNode()
@@ -37,7 +52,11 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
       ref.current = node;
     }
   }, [ref])
-  
+
+  const handleClose = useCallback(() => {
+    setVisiable(false)
+  }, [])
+
   return (
     <div
       ref={handleRefChange}
@@ -50,14 +69,61 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
       {
         (hover || currentNode?.id === node?.id) && !visible && <PopupButton onClick={handleShow} />
       }
-      <Modal
-        title="Basic Modal"
-        open={visible}
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Modal>
+      {visible &&
+        <>
+          <div className='rx-dialog-mask'
+            style={{
+              left: 0,
+              top: 0,
+              height: '100%',
+              width: '100%',
+            }}
+          >
+          </div>
+          <div className='rx-dialog-wrap'
+            style={{
+              left: 0,
+              top: 0,
+              height: '100%',
+              width: '100%',
+              alignItems: centered ? "center" : "flex-start",
+            }}
+          >
+            <div
+              className='rx-dialog-content'
+              style={{
+                width: width,
+                background: "#fff",
+                marginTop: centered ? undefined : 100,
+                maxHeight: 'calc(100% - 200px)',
+              }}
+            >
+              <div style={{
+                flex: 1,
+                height: 0,
+                overflow: "auto",
+              }}>
+                {
+                  closable &&
+                  <div className='dialog-close'>
+                    <Button type='text' onClick={handleClose}>
+                      <CloseOutlined />
+                    </Button>
+                  </div>
+                }
+
+                <div className='dialog-header'>
+                  <div className='dialog-title'>
+                    {"title"}
+                  </div>
+                </div>
+                {"Content"}
+                {footer && "footer"}
+              </div>
+            </div>
+          </div>
+        </>
+      }
     </div>
   )
 }))
