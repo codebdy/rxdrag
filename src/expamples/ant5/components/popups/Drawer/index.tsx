@@ -1,4 +1,4 @@
-import { Modal } from "antd";
+import { Drawer as AntdDrawer } from "antd";
 import React from "react";
 import { CSSProperties, forwardRef, memo, useCallback, useState } from "react"
 
@@ -38,6 +38,7 @@ export const Drawer = memo(forwardRef<HTMLDivElement>((props: DrawerProps, ref) 
     actionComponent,
     content,
     footer,
+    extra,
     style,
     ...other
   } = props;
@@ -54,14 +55,15 @@ export const Drawer = memo(forwardRef<HTMLDivElement>((props: DrawerProps, ref) 
   return (
     <div ref={ref} style={{ display: "inline-block", position: "relative", ...style }}  {...other}>
       {actionComponent && React.cloneElement(actionComponent, { onClick: handleOpen })}
-      <Modal
+      <AntdDrawer
         title={title}
         open={open}
         footer={footer}
-        onCancel={hancleClose}
+        extra={extra}
+        onClose={hancleClose}
       >
         {content}
-      </Modal>
+      </AntdDrawer>
     </div>
   )
 }))

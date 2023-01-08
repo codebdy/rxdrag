@@ -148,13 +148,13 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
 
   }, [height, placement])
 
-  const closeMargin = useMemo(()=>{
-    if(placement === "bottom"){
+  const closeMargin = useMemo(() => {
+    if (placement === "bottom") {
       return {
         marginTop: -6
       }
     }
-    if(placement === "top"){
+    if (placement === "top") {
       return {
         marginTop: 1
       }
@@ -224,7 +224,13 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
               <div className="drawer-body">
                 {content}
               </div>
-              {footer && footer}
+              <div
+                className="drawer-footer"
+                style={{ borderTop: `${token.colorBorder} solid 1px`, }}
+              >
+                {footer && footer}
+              </div>
+
               <CloseButton
                 style={{
                   ...closePosition,
