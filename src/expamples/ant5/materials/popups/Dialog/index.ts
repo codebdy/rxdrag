@@ -1,6 +1,9 @@
 import { IComponentMaterial } from "core-react";
 import { Dialog } from "expamples/ant5/components/popups/Dialog";
 import { ButtonMaterial } from "../../Button";
+import { DialogContentMaterial } from "../DialogContent";
+import { DialogFooterMaterial } from "../DialogFooter";
+import { DialogTitleMaterial } from "../DialogTitle";
 import { DialogDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
@@ -26,7 +29,7 @@ export const DialogMaterial: IComponentMaterial = {
         componentName: name,
         slots: {
           title: {
-            componentName: "DefaultSlot",
+            componentName: "DialogTitle",
             children:[
               {
                 componentName:"TextView",
@@ -37,10 +40,10 @@ export const DialogMaterial: IComponentMaterial = {
             ]
           },
           content: {
-            componentName: "DefaultSlot",
+            componentName: "DialogContent",
           },
           footer: {
-            componentName: "DefaultSlot",
+            componentName: "DialogFooter",
           },
           actionComponent: {
             componentName: "Button",
@@ -69,9 +72,9 @@ export const DialogMaterial: IComponentMaterial = {
     ]
   },
   slots: {
-    title: true,
-    content: true,
-    footer: true,
+    title: DialogTitleMaterial,
+    content: DialogContentMaterial,
+    footer: DialogFooterMaterial,
     actionComponent: ButtonMaterial,
   },
   behaviorRule: {

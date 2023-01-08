@@ -36,7 +36,7 @@ export function useRegisterComponentMaterial() {
     registerDesignComponents(designers)
     registerPreviewComponents(previews)
 
-    if (meterial.resource ) {
+    if (meterial.resource && !resourceManager?.getResourceByName(meterial.resource.name)) {
       const resources = resourceManager?.registerResources(meterial.resource)
       return (resources?.[0])
     }

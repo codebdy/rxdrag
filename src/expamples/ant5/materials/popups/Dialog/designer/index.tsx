@@ -41,7 +41,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
   const [, token] = useToken()
   const engine = useDesignerEngine()
   const doc = useDocument()
-  
+
   const handleMouseEnter = useCallback(() => {
     setHover(true);
   }, []);
@@ -129,8 +129,12 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
                     {title}
                   </div>
                 </div>
-                {content}
-                {footer && footer}
+                <div className="dialog-body">
+                  {content}
+                </div>
+                <div className="dialog-footer">
+                  {footer && footer}
+                </div>
               </div>
               <CloseButton
                 onClick={handleClose}
