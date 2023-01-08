@@ -6,26 +6,23 @@ import { useDesignerEngine } from "core-react/hooks";
 import { useCurrentNode } from "core-react/hooks/useCurrentNode";
 import { useDocument } from "core-react/hooks/useDocument";
 import { useNode } from "core-react/hooks/useNode";
-import { DialogProps } from "expamples/ant5/components/popups/Dialog";
+import { DrawerProps } from "expamples/ant5/components/popups/Drawer";
 import { forwardRef, memo, useCallback, useRef, useState } from "react"
 import { CloseButton } from "../../CloseButton";
 import { PopupButton } from "../../PopupButton";
 import "./style.less"
 
-export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProps & { [RXID_ATTR_NAME]?: string }, ref) => {
+export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProps & { [RXID_ATTR_NAME]?: string }, ref) => {
   const {
     title,
     width = 520,
-    centered,
     closable = true,
     destroyOnClose,
-    focusTriggerAfterClose,
     keyboard,
     mask,
     maskClosable,
     content,
     footer,
-    changeRemind,
     actionComponent,
     style,
     [RXID_ATTR_NAME]: rxId,
@@ -98,7 +95,6 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
               top: 0,
               height: '100%',
               width: '100%',
-              alignItems: centered ? "center" : "flex-start",
             }}
           >
             <div
@@ -106,7 +102,6 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
               style={{
                 width: width,
                 background: token.colorBgContainer,
-                marginTop: centered ? undefined : 100,
                 maxHeight: 'calc(100% - 200px)',
               }}
               {...!open ? {} : { [RXID_ATTR_NAME]: rxId }}
