@@ -1,0 +1,76 @@
+.rx-drawer-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+.rx-dialog-wrap {
+  position: fixed;
+  z-index: 12;
+  display: flex;
+  //flex-flow: column;
+  justify-content: center;
+  align-items: center;
+
+  .rx-dialog-content {
+    position: relative;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%);
+    display: flex;
+    flex-flow: column;
+    padding: 20px 24px;
+    box-sizing: border-box;
+
+    .dialog-close {
+      position: absolute;
+      top: 17px;
+      inset-inline-end: 17px;
+      z-index: 1010;
+      padding: 0;
+      color: rgba(0, 0, 0, 0.45);
+      font-weight: 600;
+      line-height: 1;
+      text-decoration: none;
+      background: transparent;
+      border-radius: 4px;
+      width: 22px;
+      height: 22px;
+      border: 0;
+      outline: 0;
+      cursor: pointer;
+      transition: color 0.2s, background-color 0.2s;
+    }
+
+    .dialog-header {
+      color: rgba(0, 0, 0, 0.85);
+      background: #fff;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 22px;
+      border-radius: 8px 8px 0 0;
+      margin-bottom: 8px;
+      box-sizing: border-box;
+    }
+
+    .dialog-body {
+      font-size: 14px;
+      line-height: 1.5715;
+      word-wrap: break-word;
+    }
+
+    .dialog-footer {
+      text-align: right;
+      background: transparent;
+      border-radius: 0 0 8px 8px;
+      margin-top: 12px;
+    }
+  }
+}
