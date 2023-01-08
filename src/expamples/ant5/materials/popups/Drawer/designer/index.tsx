@@ -53,6 +53,7 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
     if (doc && node) {
       engine?.getActions().selectNodes([node.id], doc.id)
     }
+    setHover(false)
   }, [doc, engine, node])
 
   const handleRefChange = useCallback((node: HTMLDivElement | null) => {
@@ -66,6 +67,7 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
 
   const handleClose = useCallback(() => {
     setOpen(false)
+    setHover(false)
   }, [])
 
   const realWidth = useMemo(() => {
