@@ -85,23 +85,81 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
   }, [height, placement])
 
   const position = useMemo(() => {
+    if (placement === "left") {
+      return {
+        top: 0,
+        left: 0,
+        right: 'auto',
+      }
+    }
+
+    if (placement === "top") {
+      return {
+        top: 0,
+        left: 0,
+        bottom: 'auto',
+      }
+    }
+
+
+    if (placement === "bottom") {
+      return {
+        top: 'auto',
+        bottom: 0,
+        left: 0,
+      }
+    }
+
+
     return {
       top: 0,
       right: 0,
+      left: 'auto',
     }
-  }, [])
+  }, [placement])
 
   const closePosition = useMemo(() => {
     if (placement === "right") {
       return {
         top: 1,
-        left: -16,
+        left: -18,
         right: 'auto',
       }
     }
+    if (placement === "left") {
+      return {
+        top: 1,
+        right: -18,
+        left: 'auto',
+      }
+    }
 
+    if (placement === "top") {
+      return {
+        top: height,
+        left: 0,
+      }
+    }
+
+    return {
+      bottom: height,
+      left: 0,
+    }
+
+  }, [height, placement])
+
+  const closeMargin = useMemo(()=>{
+    if(placement === "bottom"){
+      return {
+        marginTop: -6
+      }
+    }
+    if(placement === "top"){
+      return {
+        marginTop: 1
+      }
+    }
     return {}
-
   }, [placement])
 
   return (
@@ -169,7 +227,8 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
               {footer && footer}
               <CloseButton
                 style={{
-                  ...closePosition
+                  ...closePosition,
+                  ...closeMargin,
                 }}
                 onClick={handleClose}
               />
