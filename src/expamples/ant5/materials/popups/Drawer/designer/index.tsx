@@ -89,6 +89,19 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
     }
   }, [])
 
+  const closePosition = useMemo(() => {
+    if (placement === "right") {
+      return {
+        top: 1,
+        left: -16,
+        right: 'auto',
+      }
+    }
+
+    return {}
+
+  }, [placement])
+
   return (
     <div
       ref={handleRefChange}
@@ -152,10 +165,13 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
                 {content}
               </div>
               {footer && footer}
+              <CloseButton
+                style={{
+                  ...closePosition
+                }}
+                onClick={handleClose}
+              />
             </div>
-            <CloseButton
-              onClick={handleClose}
-            />
           </div>
         </>
       }

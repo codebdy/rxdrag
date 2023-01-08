@@ -10,7 +10,7 @@
 }
 
 .rx-drawer-wrap {
-  position: fixed;
+  position: fixed relative;
   z-index: 12;
   display: flex;
   //flex-flow: column;
@@ -26,6 +26,7 @@
     flex-flow: column;
     padding: 0;
     box-sizing: border-box;
+    z-index: inherit;
 
     .drawer-close {
       padding: 0;
