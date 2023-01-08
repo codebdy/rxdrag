@@ -1,9 +1,9 @@
-import { CSSProperties, forwardRef, memo } from "react"
-import { IIcon } from "react-shells/ant5/components/IconView/model"
+import { Modal } from "antd";
+import React from "react";
+import { CSSProperties, forwardRef, memo, useCallback, useState } from "react"
 
 export type DialogProps = {
   title?: React.ReactElement,
-  icon?: IIcon,
   style?: CSSProperties,
   centered?: boolean,
   closable?: boolean,
@@ -25,30 +25,34 @@ export type DialogProps = {
 
 export const Dialog = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) => {
   const {
-    icon,
     title,
     actionComponent,
-    style,
-    centered,
-    closable,
-    destroyOnClose,
-    focusTriggerAfterClose,
     content,
     footer,
-    keyboard,
-    mask,
-    maskClosable,
-    changeRemind,
-    width,
+    style,
     ...other
   } = props;
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = useCallback(() => {
+    setOpen(true)
+  }, [])
+
+  const hancleClose = useCallback(() => {
+    setOpen(false)
+  }, [])
 
   return (
-    <div ref={ref} style={{ display: "inline-block", position:"relative", ...style }}  {...other}>
-      {actionComponent}
-      {/* <Modal>
-
-      </Modal> */}
+    <div ref={ref} style={{ display: "inline-block", position: "relative", ...style }}  {...other}>
+      {actionComponent && React.cloneElement(actionComponent, { onClick: handleOpen })}
+      <Modal
+        title={title}
+        open={open}
+        footer={footer}
+        onCancel={hancleClose}
+      >
+        {content}
+      </Modal>
     </div>
   )
 }))

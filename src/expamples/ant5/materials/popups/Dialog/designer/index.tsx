@@ -15,7 +15,6 @@ import "./style.less"
 export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProps & { [RXID_ATTR_NAME]?: string }, ref) => {
   const {
     title,
-    icon,
     width = 520,
     centered,
     closable = true,
@@ -33,7 +32,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
     ...other
   } = props;
 
-  const [visible, setVisiable] = useState(false);
+  const [open, setOpen] = useState(false);
   const [hover, setHover] = useState(false);
   const node = useNode()
   const currentNode = useCurrentNode();
@@ -50,7 +49,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
   }, []);
 
   const handleShow = useCallback(() => {
-    setVisiable(true);
+    setOpen(true);
     if (doc && node) {
       engine?.getActions().selectNodes([node.id], doc.id)
     }
@@ -66,7 +65,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
   }, [])
 
   const handleClose = useCallback(() => {
-    setVisiable(false)
+    setOpen(false)
   }, [])
 
   return (
@@ -74,15 +73,15 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
       ref={handleRefChange}
       style={{ display: "inline-block", position: "relative", ...style }}
       {...other}
-      {...visible ? {} : { [RXID_ATTR_NAME]: rxId }}
+      {...open ? {} : { [RXID_ATTR_NAME]: rxId }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {actionComponent}
       {
-        (hover || currentNode?.id === node?.id) && !visible && <PopupButton onClick={handleShow} />
+        (hover || currentNode?.id === node?.id) && !open && <PopupButton onClick={handleShow} />
       }
-      {visible &&
+      {open &&
         <>
           <div className='rx-dialog-mask'
             style={{
@@ -110,7 +109,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
                 marginTop: centered ? undefined : 100,
                 maxHeight: 'calc(100% - 200px)',
               }}
-              {...!visible ? {} : { [RXID_ATTR_NAME]: rxId }}
+              {...!open ? {} : { [RXID_ATTR_NAME]: rxId }}
             >
               <div style={{
                 flex: 1,
