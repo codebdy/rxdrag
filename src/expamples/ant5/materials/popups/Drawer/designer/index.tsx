@@ -7,7 +7,7 @@ import { useCurrentNode } from "core-react/hooks/useCurrentNode";
 import { useDocument } from "core-react/hooks/useDocument";
 import { useNode } from "core-react/hooks/useNode";
 import { DrawerProps } from "expamples/ant5/components/popups/Drawer";
-import { forwardRef, memo, useCallback, useRef, useState } from "react"
+import { forwardRef, memo, useCallback, useMemo, useRef, useState } from "react"
 import { CloseButton } from "../../CloseButton";
 import { PopupButton } from "../../PopupButton";
 import "./style.less"
@@ -15,7 +15,6 @@ import "./style.less"
 export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProps & { [RXID_ATTR_NAME]?: string }, ref) => {
   const {
     title,
-    width = 520,
     closable = true,
     destroyOnClose,
     keyboard,
@@ -24,6 +23,10 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
     content,
     footer,
     actionComponent,
+    placement = "right",
+    height = 378,
+    width = 378,
+    extra,
     style,
     [RXID_ATTR_NAME]: rxId,
     ...other
@@ -65,6 +68,27 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
     setOpen(false)
   }, [])
 
+  const realWidth = useMemo(() => {
+    if (placement === "top" || placement === "bottom") {
+      return "100%"
+    }
+    return width
+  }, [placement, width])
+
+  const realHeight = useMemo(() => {
+    if (placement === "right" || placement === "left") {
+      return "100%"
+    }
+    return height
+  }, [height, placement])
+
+  const position = useMemo(() => {
+    return {
+      top: 0,
+      right: 0,
+    }
+  }, [])
+
   return (
     <div
       ref={handleRefChange}
@@ -89,7 +113,7 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
             }}
           >
           </div>
-          <div className='rx-dialog-wrap'
+          <div className='rx-drawer-wrap'
             style={{
               left: 0,
               top: 0,
@@ -98,42 +122,49 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
             }}
           >
             <div
-              className='rx-dialog-content'
+              className='rx-drawer-content'
               style={{
-                width: width,
+                width: realWidth,
                 background: token.colorBgContainer,
-                maxHeight: 'calc(100% - 200px)',
+                height: realHeight,
+                ...position,
               }}
               {...!open ? {} : { [RXID_ATTR_NAME]: rxId }}
             >
-              <div style={{
-                flex: 1,
-                height: 0,
-                overflow: "auto",
-              }}>
-                {
-                  closable &&
-                  <Button type='text' className="dialog-close">
-                    <CloseOutlined />
-                  </Button>
-                }
-
-                <div className='dialog-header'>
-                  <div className='dialog-title'>
+              <div
+                className='drawer-header'
+                style={{
+                  borderBottom: `${token.colorBorder} solid 1px`,
+                }}
+              >
+                <div className="drawer-header-title">
+                  {
+                    closable &&
+                    <Button type='text' className="drawer-close">
+                      <CloseOutlined />
+                    </Button>
+                  }
+                  <div className="drawer-title">
                     {title}
                   </div>
-                </div>
-                <div className="dialog-body">
-                  {content}
-                </div>
-                <div className="dialog-footer">
-                  {footer && footer}
+                  {extra}
                 </div>
               </div>
-              <CloseButton
-                onClick={handleClose}
-              />
+              <div className="drawer-body">
+                {content}
+              </div>
+              <div
+                className="drawer-footer"
+                style={{
+                  borderTop: `${token.colorBorder} solid 1px`,
+                }}
+              >
+                {footer && footer}
+              </div>
             </div>
+            <CloseButton
+              onClick={handleClose}
+            />
           </div>
         </>
       }
