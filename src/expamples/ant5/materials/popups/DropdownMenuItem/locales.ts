@@ -1,6 +1,6 @@
 export const locales = {
   "zh-CN": {
-    title: "下拉菜单",
+    title: "菜单项",
     settings: {
       disabled: "无效",
       icon: "图标",
@@ -9,7 +9,7 @@ export const locales = {
 
   },
   'en-US': {
-    title: "Dropdown",
+    title: "Dropdown Item",
     settings: {
       disabled: "Disabled",
       icon: "Icon",

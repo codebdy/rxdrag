@@ -1,7 +1,7 @@
 import { IComponentMaterial } from "core-react";
 import { Dropdown } from "expamples/ant5/components/popups/Dropdown";
 import { ButtonMaterial } from "../../Button";
-import { DropdownMenuMaterial } from "../DropdownMenu";
+import { DropdownMenuItemMaterial } from "../DropdownMenuItem";
 import { DropdownDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
@@ -26,9 +26,6 @@ export const DropdownMaterial: IComponentMaterial = {
       {
         componentName: name,
         slots: {
-          menu: {
-            componentName: "DropdownMenu"
-          },
           actionComponent: {
             componentName: "Button",
             props: {
@@ -44,24 +41,15 @@ export const DropdownMaterial: IComponentMaterial = {
             ]
           }
         },
-        children: [
-          {
-            componentName: "TextView",
-            props: {
-              content: name,
-            }
-          }
-        ]
       }
     ]
   },
   slots: {
-    menu: DropdownMenuMaterial,
     actionComponent: ButtonMaterial,
+    menuItem: DropdownMenuItemMaterial,
   },
   behaviorRule: {
-    droppable: false,
+    droppable: true,
     noPlaceholder: true,
-    noRef: true
   }
 }
