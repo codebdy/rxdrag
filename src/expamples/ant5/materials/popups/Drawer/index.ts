@@ -1,9 +1,10 @@
 import { IComponentMaterial } from "core-react";
-import { Dialog } from "expamples/ant5/components/popups/Dialog";
+import { Drawer } from "expamples/ant5/components/popups/Drawer";
 import { ButtonMaterial } from "../../Button";
-import { DialogContentMaterial } from "../DialogContent";
-import { DialogFooterMaterial } from "../DialogFooter";
-import { DialogTitleMaterial } from "../DialogTitle";
+import { DrawerContentMaterial } from "../DrawerContent";
+import { DrawerExtraMaterial } from "../DrawerExtra";
+import { DrawerFooterMaterial } from "../DrawerFooter";
+import { DrawerTitleMaterial } from "../DrawerTitle";
 import { DrawerDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
@@ -12,7 +13,7 @@ import { materialSchema } from "./schema";
 const name = "Drawer"
 export const DrawerMaterial: IComponentMaterial = {
   componentName: name,
-  component: Dialog,
+  component: Drawer,
   designer: DrawerDesigner,
   designerLocales: locales,
   designerSchema: materialSchema,
@@ -29,21 +30,24 @@ export const DrawerMaterial: IComponentMaterial = {
         componentName: name,
         slots: {
           title: {
-            componentName: "DialogTitle",
-            children:[
+            componentName: "DrawerTitle",
+            children: [
               {
-                componentName:"TextView",
+                componentName: "TextView",
                 props: {
                   content: name,
                 }
               }
             ]
           },
+          extra: {
+            componentName: "DrawerExtra",
+          },
           content: {
-            componentName: "DialogContent",
+            componentName: "DrawerContent",
           },
           footer: {
-            componentName: "DialogFooter",
+            componentName: "DrawerFooter",
           },
           actionComponent: {
             componentName: "Button",
@@ -72,9 +76,10 @@ export const DrawerMaterial: IComponentMaterial = {
     ]
   },
   slots: {
-    title: DialogTitleMaterial,
-    content: DialogContentMaterial,
-    footer: DialogFooterMaterial,
+    title: DrawerTitleMaterial,
+    extra: DrawerExtraMaterial,
+    content: DrawerContentMaterial,
+    footer: DrawerFooterMaterial,
     actionComponent: ButtonMaterial,
   },
   behaviorRule: {

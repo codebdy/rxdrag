@@ -144,23 +144,14 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
                       <CloseOutlined />
                     </Button>
                   }
-                  <div className="drawer-title">
-                    {title}
-                  </div>
+                  {title}
                   {extra}
                 </div>
               </div>
               <div className="drawer-body">
                 {content}
               </div>
-              <div
-                className="drawer-footer"
-                style={{
-                  borderTop: `${token.colorBorder} solid 1px`,
-                }}
-              >
-                {footer && footer}
-              </div>
+              {footer && footer}
             </div>
             <CloseButton
               onClick={handleClose}
