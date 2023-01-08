@@ -1,5 +1,5 @@
 import { Modal } from "antd";
-import React from "react";
+import React, { useRef } from "react";
 import { CSSProperties, forwardRef, memo, useCallback, useState } from "react"
 
 export type DialogProps = {
@@ -33,7 +33,8 @@ export const Dialog = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) 
     ...other
   } = props;
   const [open, setOpen] = useState(false);
-
+  const realRef = useRef<HTMLElement | null>(null);
+  
   const handleOpen = useCallback(() => {
     setOpen(true)
   }, [])
@@ -41,15 +42,24 @@ export const Dialog = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) 
   const hancleClose = useCallback(() => {
     setOpen(false)
   }, [])
+  const handleRefChange = useCallback((node: HTMLDivElement | null) => {
+    realRef.current = node;
+    if (typeof ref === 'function') {
+      ref(node);
+    } else if (ref) {
+      ref.current = node;
+    }
+  }, [ref])
 
   return (
-    <div ref={ref} style={{ display: "inline-block", position: "relative", ...style }}  {...other}>
+    <div ref={handleRefChange} style={{ display: "inline-block", position: "relative", ...style }}  {...other}>
       {actionComponent && React.cloneElement(actionComponent, { onClick: handleOpen })}
       <Modal
         title={title}
         open={open}
         footer={footer}
         onCancel={hancleClose}
+        getContainer={realRef.current ? () => realRef.current as any : undefined}
       >
         {content}
       </Modal>
