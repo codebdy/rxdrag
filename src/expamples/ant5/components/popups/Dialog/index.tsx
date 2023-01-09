@@ -39,7 +39,7 @@ export const Dialog = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) 
     setOpen(true)
   }, [])
 
-  const hancleClose = useCallback(() => {
+  const handleClose = useCallback(() => {
     setOpen(false)
   }, [])
   const handleRefChange = useCallback((node: HTMLDivElement | null) => {
@@ -58,7 +58,7 @@ export const Dialog = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) 
         title={title}
         open={open}
         footer={footer}
-        onCancel={hancleClose}
+        onCancel={handleClose}
         getContainer={realRef.current ? () => realRef.current as any : undefined}
       >
         {content}
