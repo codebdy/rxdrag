@@ -32,7 +32,7 @@ export type Antd5EditorProps = {
   themeMode?: "dark" | "light",
   children?: React.ReactNode,
   locales?: ILocales,
-  schemas: INodeSchema
+  schemas: INodeSchema,
 }
 
 export const Antd5Editor = memo((props: Antd5EditorProps) => {
