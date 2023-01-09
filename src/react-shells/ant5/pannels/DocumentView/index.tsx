@@ -19,10 +19,10 @@ import { Viewport } from "../Viewport"
 export const DocumentView = memo((
   props: {
     doc?: IDocument,
-    renderUrl: string,
+
   }
 ) => {
-  const { doc, renderUrl } = props
+  const { doc } = props
   const [, token] = useToken()
   return (
     doc ?
@@ -41,7 +41,7 @@ export const DocumentView = memo((
         </CanvasToolbar>
         <Viewport>
           <JsonView />
-          <IframeCanvas2 doc={doc} renderUrl={renderUrl} />
+          <IframeCanvas doc={doc} />
           <Preview backgroundColor={token.colorBgBase} />
         </Viewport>
         <NavbarWidget />

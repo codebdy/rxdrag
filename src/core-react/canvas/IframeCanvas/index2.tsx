@@ -85,7 +85,7 @@ export const IframeCanvas2 = memo((
       //   root.render(<CanvasRender engine={engine} doc={doc} components={components} />);
       // }
     }
-  }, [components, doc, engine])
+  }, [doc, engine])
 
   const key = useMemo(() => `canvas-${doc.id + themeMode}`, [doc.id, themeMode])
 
