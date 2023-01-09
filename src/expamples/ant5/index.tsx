@@ -40,6 +40,7 @@ export const Antd5Example = memo(() => {
   return (
     <Antd5Editor
       schemas={schemas}
+      renderUrl = "/canvas-render"
       navPanel={
         <>
           {

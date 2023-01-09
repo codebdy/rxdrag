@@ -1,8 +1,6 @@
 import { useMemo, useRef } from "react"
 import { memo, useCallback } from "react"
-import ReactDOM from 'react-dom/client';
 import { useDesignerEngine } from "core-react/hooks";
-import { CanvasRender } from "../CanvasRender"
 import { IDocument } from "core/interfaces";
 import { useDesignComponents } from "core-react/hooks/useDesignComponents";
 import { IFrameCanvasImpl } from "core/shell/IFrameCanvasImpl";

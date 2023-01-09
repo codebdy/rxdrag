@@ -6,15 +6,10 @@ import { useNode } from "core-react/hooks/useNode";
 import { DrawerProps } from "expamples/ant5/components/popups/Drawer";
 import { forwardRef, memo, useCallback, useRef, useState } from "react"
 import { PopupButton } from "../../PopupButton";
-import { Button, Popconfirm as AntdPopconfirm, Popover } from "antd"
+import { Button, message, Popconfirm as AntdPopconfirm, Popconfirm, Popover, Tooltip } from "antd"
 import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
 import { NodeUnmountedEvent } from "core/shell/events/canvas/NodeUnmountedEvent";
-const content = (
-  <div>
-    <p>Content</p>
-    <p>Content</p>
-  </div>
-);
+
 export const PopconfirmDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProps & { [RXID_ATTR_NAME]?: string }, ref) => {
   const {
     title,
@@ -27,7 +22,7 @@ export const PopconfirmDesigner = memo(forwardRef<HTMLDivElement>((props: Drawer
   } = props;
 
   const [open, setOpen] = useState(false);
-  const [hover, setHover] = useState(false);
+  //const [hover, setHover] = useState(false);
   const node = useNode()
   const currentNode = useCurrentNode();
   const realRef = useRef<HTMLDivElement | null>(null);
@@ -35,10 +30,10 @@ export const PopconfirmDesigner = memo(forwardRef<HTMLDivElement>((props: Drawer
   const doc = useDocument()
 
   const handleMouseEnter = useCallback(() => {
-    setHover(true);
+    //setHover(true);
   }, []);
   const handleMouseLeave = useCallback(() => {
-    setHover(false);
+    //setHover(false);
   }, []);
 
   const handleShow = useCallback(() => {
@@ -46,7 +41,7 @@ export const PopconfirmDesigner = memo(forwardRef<HTMLDivElement>((props: Drawer
     if (doc && node) {
       engine?.getActions().selectNodes([node.id], doc.id)
     }
-    setHover(false)
+    //setHover(false)
 
   }, [doc, engine, node])
 
@@ -68,19 +63,30 @@ export const PopconfirmDesigner = memo(forwardRef<HTMLDivElement>((props: Drawer
     realRef.current = node;
   }, [])
 
+
   const confirm = (e?: React.MouseEvent<HTMLElement>) => {
     console.log(e);
-    //message.success('Click on Yes');
+    message.success('Click on Yes');
   };
-
+  
   const cancel = (e?: React.MouseEvent<HTMLElement>) => {
     console.log(e);
-    //message.error('Click on No');
+    message.error('Click on No');
   };
 
+
   return (
-    <Popover content={content} title="Title" trigger="click">
-      <Button>Click me</Button>
-    </Popover>
+    <div ref={handleRefChange} style={{ display: "inline-block", position: "relative" }}>
+      <Popconfirm
+        title="Delete the task"
+        description="Are you sure to delete this task?"
+        onConfirm={confirm}
+        onCancel={cancel}
+        okText="Yes"
+        cancelText="No"
+      >
+        <a href="#">Delete</a>
+      </Popconfirm>
+    </div>
   )
 }))

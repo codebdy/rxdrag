@@ -3,15 +3,18 @@ import { IDesignerEngine, IDocument } from "core/interfaces";
 import { memo } from "react"
 import { CanvasRender } from "../CanvasRender"
 
-declare const window: Window & { engine?: IDesignerEngine, doc?: IDocument, components?: IComponents };
+declare const window: Window & { engine?: IDesignerEngine, doc?: IDocument };
 
-export const IFrameCanvasRender = memo(() => {
+export const IFrameCanvasRender = memo((props: {
+  designers: IComponents
+}) => {
+  const {designers}= props
   const engine = window.engine
   const doc = window.doc
-  const components = window.components
+
   return (
     doc ?
-      <CanvasRender engine={engine} doc={doc} components={components} />
+      <CanvasRender engine={engine} doc={doc} components={designers} />
       : null
   )
 })
