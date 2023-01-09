@@ -43,7 +43,6 @@ export class DecoratorManager implements IDecoratorManager {
   private handleMounted = (e: NodeMountedEvent) => {
     const nodeId = e.nodeId
     if (!nodeId) {
-      console.error("No Node")
       return
     }
 
