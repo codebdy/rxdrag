@@ -22,7 +22,6 @@ export const IframeCanvas2 = memo((
 ) => {
   const { doc, renderUrl } = props;
   const ref = useRef<HTMLIFrameElement>(null)
-  const rootRef = useRef<ReactDOM.Root>()
   const [viewType] = useDocumentViewTypeState(doc?.id)
   const styles = document.querySelectorAll("style")
   let styleText = ""
@@ -44,16 +43,13 @@ export const IframeCanvas2 = memo((
   //   }
   // }, [handleDomInserted])
   // const frameRef = ref.current;
-  // if (frameRef && engine && frameRef.contentWindow) {
-  //   if (frameRef.contentWindow) {
-  //     (frameRef.contentWindow as any)["React"] = React;
-  //     (frameRef.contentWindow as any)["ReactDOM"] = ReactDOM;
-  //     (frameRef.contentWindow as any)["CanvasRender"] = CanvasRender;
-  //     (frameRef.contentWindow as any)["engine"] = engine;
-  //     (frameRef.contentWindow as any)["doc"] = doc;
-  //     (frameRef.contentWindow as any)["components"] = components;
-  //   }
-  // }
+  if (ref && engine && ref.current?.contentWindow) {
+    if (ref.current.contentWindow) {
+      (ref.current.contentWindow as any)["engine"] = engine;
+      (ref.current.contentWindow as any)["doc"] = doc;
+      (ref.current.contentWindow as any)["components"] = components;
+    }
+  }
 
   const handleLoaded = useCallback(() => {
     const shell = engine?.getShell()
