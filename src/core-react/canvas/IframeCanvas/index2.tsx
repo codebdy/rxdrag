@@ -77,17 +77,17 @@ export const IframeCanvas2 = memo((
 
       shell?.addCanvas(canvasImpl)
 
-      const rootEl = ref.current.contentWindow?.document.getElementById("root")
-      if (rootEl) {
-        if (rootRef.current) {
-          rootRef.current.unmount()
-        }
-        const root = ReactDOM.createRoot(
-          rootEl
-        );
-        rootRef.current = root
-        root.render(<CanvasRender engine={engine} doc={doc} components={components} />);
-      }
+      // const rootEl = ref.current.contentWindow?.document.getElementById("root")
+      // if (rootEl) {
+      //   if (rootRef.current) {
+      //     rootRef.current.unmount()
+      //   }
+      //   const root = ReactDOM.createRoot(
+      //     rootEl
+      //   );
+      //   rootRef.current = root
+      //   root.render(<CanvasRender engine={engine} doc={doc} components={components} />);
+      // }
     }
   }, [components, doc, engine])
 

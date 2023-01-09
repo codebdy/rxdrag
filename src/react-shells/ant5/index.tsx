@@ -131,7 +131,7 @@ export const Antd5Editor = memo((props: Antd5EditorProps) => {
               }
             </ToggleAblePane>
             <CenterContent>
-              <DocumentView doc={doc} />
+              <DocumentView doc={doc} renderUrl="/canvas-render" />
               {children}
             </CenterContent>
             <ToggleAblePane toggleType={ToggleType.right} width={300}>
