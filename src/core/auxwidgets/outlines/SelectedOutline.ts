@@ -26,7 +26,7 @@ export class SelectedOutlineImpl implements IPlugin {
       console.error("Html 5 driver rootElement is undefined")
     }
     this.resizeObserver = new ResizeObserver(this.onResize)
-    this.unsubscribe = engine.getMonitor().subscribeToSelectChange(this.listenSelectChange)
+    this.unsubscribe = engine.getMonitor().subscribeToSelectChange(this.handleSelectChange)
     this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
     this.unCanvasScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
     this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
@@ -47,6 +47,7 @@ export class SelectedOutlineImpl implements IPlugin {
       const element = this.engine.getShell().getElement(id)
       const canvas = this.engine.getShell().getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
       const containerRect = canvas?.getContainerRect()
+
       if (element && containerRect) {
         const rect = element.getBoundingClientRect();
         const htmlDiv = document.createElement('div')
@@ -67,10 +68,15 @@ export class SelectedOutlineImpl implements IPlugin {
     }
   }
 
-  listenSelectChange = (selectedIds: ID[] | null) => {
+  handleSelectChange = (selectedIds: ID[] | null) => {
     this.resizeObserver.disconnect()
     this.selecteNodes = selectedIds
-    this.render()
+    this.refresh()
+    if (selectedIds?.length && !this.engine.getShell().getElement(selectedIds?.[0])) {
+      setTimeout(() => {
+        this.refresh()
+      }, 100)
+    }
   }
 
   handleDraggingNodes = (dragging: DraggingNodesState | null) => {
@@ -95,12 +101,6 @@ export class SelectedOutlineImpl implements IPlugin {
 
   onViewportChange = () => {
     this.refresh()
-  }
-
-  handleThemeChange = () => {
-    setTimeout(() => {
-      this.render()
-    }, 200)
   }
 
   refresh = () => {

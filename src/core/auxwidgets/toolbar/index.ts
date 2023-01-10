@@ -46,7 +46,12 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   }
   currentNodeChanged = (node: ITreeNode) => {
     this.resizeObserver.disconnect()
-    this.render()
+    this.refresh()
+    if (node && !this.engine.getShell().getElement(node.id)) {
+      setTimeout(() => {
+        this.refresh()
+      }, 100)
+    }
   }
 
   handleDraggingNodes = (dragging: DraggingNodesState | null) => {
