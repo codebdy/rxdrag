@@ -57,7 +57,7 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
     }
   }, [open, rxId])
 
-  const handleOpenChange = useCallback(() => {
+  const handleAfterOpenChange = useCallback(() => {
     taggleRxid()
     refreshSelect()
   }, [refreshSelect, taggleRxid])
@@ -93,7 +93,7 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
         title={title}
         extra={extra}
         footer={footer}
-        afterOpenChange={handleOpenChange}
+        afterOpenChange={handleAfterOpenChange}
         onClose = {handleClose}
         {...other}
       >

@@ -28,6 +28,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
   const realRef = useRef<HTMLDivElement | null>(null);
   const engine = useDesignerEngine()
   const doc = useDocument()
+  const popupRef = useRef<HTMLDivElement | null>(null);
 
   const handleMouseEnter = useCallback(() => {
     setHover(true);
@@ -36,29 +37,43 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
     setHover(false);
   }, []);
 
-  const handleShow = useCallback(() => {
-    setOpen(true);
+  const refreshSelect = useCallback((time: number = 20) => {
     if (doc && node) {
-      engine?.getActions().selectNodes([node.id], doc.id)
+      setTimeout(() => {
+        engine?.getActions().selectNodes([node.id], doc.id)
+      }, time)
     }
   }, [doc, engine, node])
 
-  const handleRefChange = useCallback((node: HTMLDivElement | null) => {
-    realRef.current = node;
-    // if (typeof ref === 'function') {
-    //   ref(node);
-    // } else if (ref) {
-    //   ref.current = node;
-    // }
+  const getModalEl = useCallback(()=>{
+    return realRef.current?.getElementsByClassName("ant-modal-content")?.[0]
   }, [])
+  const addRxdToPop = useCallback(() => {
+    popupRef.current?.setAttribute(RXID_ATTR_NAME, rxId || "")
+  }, [rxId])
+
+  const handleShow = useCallback(() => {
+    setOpen(true);
+    addRxdToPop()
+    refreshSelect(300)
+  }, [addRxdToPop, refreshSelect])
 
   const handleClose = useCallback(() => {
     setOpen(false)
+    popupRef.current?.removeAttribute(RXID_ATTR_NAME)
   }, [])
+
+  const handleAfterClose = useCallback(() => {
+    refreshSelect()
+  }, [refreshSelect])
+  const handlePopRefChange = useCallback((popEl: HTMLElement | null) => {
+    popupRef.current = getModalEl() as HTMLDivElement
+    addRxdToPop()
+  }, [addRxdToPop, getModalEl])
 
   return (
     <div
-      ref={handleRefChange}
+      ref={realRef}
       style={{ display: "inline-block", position: "relative", ...style }}
       {...open ? {} : { [RXID_ATTR_NAME]: rxId }}
       onMouseEnter={handleMouseEnter}
@@ -74,6 +89,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
         footer={footer}
         closable={closable}
         onCancel={handleClose}
+        afterClose= {handleAfterClose}
         getContainer={realRef.current ? () => realRef.current as any : undefined}
         {...other}>
         {content}
@@ -81,7 +97,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
           closable === false &&
           <CloseButton onClick={handleClose} />
         }
-
+        <div ref={handlePopRefChange}></div>
       </Modal>
 
     </div>

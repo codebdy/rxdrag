@@ -49,7 +49,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
 
   //临时措施，跟踪popup变化
   handleSelectChange = (selectedIds: ID[] | null) => {
-    this.resizeObserver.disconnect()
+    this.refresh()
     if (selectedIds?.length && !this.engine.getShell().getElement(selectedIds?.[0])) {
       setTimeout(() => {
         this.refresh()
