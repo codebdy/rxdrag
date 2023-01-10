@@ -13,7 +13,6 @@ import { HistoryableActionType, NodeRelativePosition, RXID_ATTR_NAME } from 'cor
 import { useComponentTranslate } from 'core-react/hooks/useComponentTranslate'
 import { Button } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
-import { NodeMountedEvent } from 'core/shell/events/canvas/NodeMountedEvent'
 
 export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: DropdownProps & { [RXID_ATTR_NAME]?: string }, ref) => {
   const { placement = 'bottomLeft', actionComponent, style, arrow, [RXID_ATTR_NAME]: rxId, children, ...other } = props;
@@ -34,7 +33,7 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: Dropdown
       engine?.getActions().selectNodes([node.id], doc.id)
     }
     setTimeout(()=>{
-      engine?.getShell().dispatch(new NodeMountedEvent())
+      //engine?.getShell().dispatch(new NodeMountedEvent())
     }, 20)
   }, [doc, engine, node])
 
@@ -106,9 +105,9 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: Dropdown
       engine?.getActions().selectNodes([node.id], doc.id)
     }
 
-    setTimeout(()=>{
-      engine?.getShell().dispatch(new NodeMountedEvent())
-    }, 20)
+    // setTimeout(()=>{
+    //   //engine?.getShell().dispatch(new NodeMountedEvent())
+    // }, 20)
   }, [doc, engine, getPlacementStyle, node])
 
   const handleMouseEnter = useCallback(() => {

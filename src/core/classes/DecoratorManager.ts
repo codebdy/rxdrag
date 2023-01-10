@@ -1,7 +1,6 @@
 import { IDesignerEngine } from "core/interfaces";
 import { IDecorator, IDecoratorManager } from "core/interfaces/decorator";
 import { AddDecoratorEvent } from "core/shell/events/canvas/AddDecoratorEvent";
-import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
 import { RemoveDecoratorEvent } from "core/shell/events/canvas/RemoveDecoratorEvent";
 
 export type Decorators = {
@@ -15,7 +14,7 @@ export type DocumentDecorators = {
 export class DecoratorManager implements IDecoratorManager {
   private decorators: DocumentDecorators = {}
   constructor(private engine: IDesignerEngine) {
-    engine.getShell().subscribeTo(NodeMountedEvent, this.handleMounted)
+    //engine.getShell().subscribeTo(NodeMountedEvent, this.handleMounted)
   }
 
   addDecorator(decorator: IDecorator, documentId: string): void {
@@ -40,7 +39,7 @@ export class DecoratorManager implements IDecoratorManager {
     return this.decorators?.[documentId]?.[name]
   }
 
-  private handleMounted = (e: NodeMountedEvent) => {
+  private handleMounted = (e: any/*NodeMountedEvent*/) => {
     const nodeId = e.nodeId
     if (!nodeId) {
       return

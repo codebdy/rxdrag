@@ -6,9 +6,7 @@ import { useNode } from "core-react/hooks/useNode";
 import React, { forwardRef, memo, useCallback, useRef, useState } from "react"
 import { PopupButton } from "../../PopupButton";
 import { Popconfirm, PopconfirmProps } from "antd"
-import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
 import { CloseButton } from "../../CloseButton";
-import { NodeUnmountedEvent } from "core/shell/events/canvas/NodeUnmountedEvent";
 
 export type PopconfirmExtraProps = {
   [RXID_ATTR_NAME]?: string,
@@ -60,7 +58,7 @@ export const PopconfirmDesigner = memo(forwardRef<HTMLDivElement, PopconfirmProp
   const handleOpenChange = useCallback((open: boolean) => {
     //setOpen(open)
     taggleRxid()
-    engine?.getShell().dispatch(new NodeMountedEvent())
+    //engine?.getShell().dispatch(new NodeMountedEvent())
   }, [engine, taggleRxid])
 
   const handleRefChange = useCallback((node: HTMLDivElement | null) => {
@@ -71,7 +69,7 @@ export const PopconfirmDesigner = memo(forwardRef<HTMLDivElement, PopconfirmProp
     setOpen(false)
     const el = realRef.current?.getElementsByClassName("ant-popover-content")?.[0]
     el?.removeAttribute(RXID_ATTR_NAME)
-    engine?.getShell().dispatch(new NodeUnmountedEvent())
+    //engine?.getShell().dispatch(new NodeUnmountedEvent())
   }, [engine])
 
   return (

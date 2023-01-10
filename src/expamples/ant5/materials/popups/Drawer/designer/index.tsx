@@ -7,8 +7,6 @@ import { DrawerProps } from "expamples/ant5/components/popups/Drawer";
 import { forwardRef, memo, useCallback, useRef, useState } from "react"
 import { PopupButton } from "../../PopupButton";
 import { Drawer as AntdDrawer } from "antd"
-import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
-import { NodeUnmountedEvent } from "core/shell/events/canvas/NodeUnmountedEvent";
 
 export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProps & { [RXID_ATTR_NAME]?: string }, ref) => {
   const {
@@ -56,7 +54,7 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
 
   const handleOpenChange = useCallback(() => {
     taggleRxid()
-    engine?.getShell().dispatch(new NodeMountedEvent())
+    //engine?.getShell().dispatch(new NodeMountedEvent())
   }, [engine, taggleRxid])
 
   const handleRefChange = useCallback((node: HTMLDivElement | null) => {
@@ -68,7 +66,7 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
     setHover(false)
     const el = realRef.current?.getElementsByClassName("ant-drawer-content-wrapper")?.[0]
     el?.removeAttribute(RXID_ATTR_NAME)
-    engine?.getShell().dispatch(new NodeUnmountedEvent())
+    //engine?.getShell().dispatch(new NodeUnmountedEvent())
   }, [engine])
 
 

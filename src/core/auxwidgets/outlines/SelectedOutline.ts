@@ -63,10 +63,7 @@ export class SelectedOutlineImpl implements IPlugin {
   }
 
   listenSelectChange = (selectedIds: ID[] | null) => {
-    for (const id of this.selecteNodes || []) {
-      const element = this.engine.getShell().getElement(id)
-      element && this.resizeObserver.unobserve(element)
-    }
+    this.resizeObserver.disconnect()
     this.selecteNodes = selectedIds
 
     this.render()
