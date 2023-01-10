@@ -16,7 +16,7 @@ export const HeroTip = memo(forwardRef<HTMLDivElement>((props: any, ref) => {
         style={{
           background: "url(/imgs/hero.png) center",
           padding: "8px 24px 32px 24px",
-          color: "#fff",
+
           borderRadius: 6,
           ...style
         }}
