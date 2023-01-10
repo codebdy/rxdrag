@@ -27,6 +27,14 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
   const engine = useDesignerEngine()
   const doc = useDocument()
 
+  const refreshSelect = useCallback((time: number = 20) => {
+    if (doc && node) {
+      setTimeout(() => {
+        engine?.getActions().selectNodes([node.id], doc.id)
+      }, time)
+    }
+  }, [doc, engine, node])
+
   const handleMouseEnter = useCallback(() => {
     setHover(true);
   }, []);
@@ -36,12 +44,9 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
 
   const handleShow = useCallback(() => {
     setOpen(true);
-    if (doc && node) {
-      engine?.getActions().selectNodes([node.id], doc.id)
-    }
     setHover(false)
-
-  }, [doc, engine, node])
+    refreshSelect(300)
+  }, [refreshSelect])
 
   const taggleRxid = useCallback(()=>{
     const el = realRef.current?.getElementsByClassName("ant-drawer-content-wrapper")?.[0]
@@ -54,8 +59,8 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
 
   const handleOpenChange = useCallback(() => {
     taggleRxid()
-    //engine?.getShell().dispatch(new NodeMountedEvent())
-  }, [engine, taggleRxid])
+    refreshSelect()
+  }, [refreshSelect, taggleRxid])
 
   const handleRefChange = useCallback((node: HTMLDivElement | null) => {
     realRef.current = node;
@@ -66,8 +71,7 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
     setHover(false)
     const el = realRef.current?.getElementsByClassName("ant-drawer-content-wrapper")?.[0]
     el?.removeAttribute(RXID_ATTR_NAME)
-    //engine?.getShell().dispatch(new NodeUnmountedEvent())
-  }, [engine])
+  }, [])
 
 
   return (

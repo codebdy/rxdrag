@@ -16,6 +16,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   name: string = "default.toolbar";
   resizeObserver: ResizeObserver
   private unsubscribe: Unsubscribe;
+  private unsubscribeSelect: Unsubscribe;
   private nodeChangeUnsubscribe: Unsubscribe;
   private controls: IAuxControl[] = [];
   private htmlElement: HTMLElement | null = null
@@ -35,6 +36,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     this.addControl(new MoveButton(engine))
     this.addControl(new DeleteButton(engine))
     this.unsubscribe = engine.getMonitor().subscribeToCurrentNodeChanged(this.currentNodeChanged)
+    this.unsubscribeSelect = engine.getMonitor().subscribeToSelectChange(this.handleSelectChange)
     this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
     this.unCanvasScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
     this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
@@ -44,6 +46,17 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   onResize = () => {
     this.refresh()
   }
+
+  //临时措施，跟踪popup变化
+  handleSelectChange = (selectedIds: ID[] | null) => {
+    this.resizeObserver.disconnect()
+    if (selectedIds?.length && !this.engine.getShell().getElement(selectedIds?.[0])) {
+      setTimeout(() => {
+        this.refresh()
+      }, 100)
+    }
+  }
+
   currentNodeChanged = (node: ITreeNode) => {
     this.resizeObserver.disconnect()
     this.refresh()
@@ -168,6 +181,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     this.clear()
     this.nodeChangeUnsubscribe()
     this.unsubscribe()
+    this.unsubscribeSelect()
     this.unCanvasScroll()
     this.draggingNodesOff?.()
     this.draggingResourceOff?.()
