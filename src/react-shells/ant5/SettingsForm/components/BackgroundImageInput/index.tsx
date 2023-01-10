@@ -1,5 +1,4 @@
 import { memo, useCallback, useState } from "react"
-import { parseElementStyle } from "css-background-parser"
 import { FoldExtraItem } from "../Fold/FoldExtraItem"
 import { Button, Input, Select } from "antd"
 import { createSpecialSizeOption, createUnitType, PolyInput } from "../PolyInput"
@@ -35,7 +34,6 @@ export const BackgroundImageInput = memo((
   const { imageTitle, imageSizeTitle, repeatTitle, positionTitle, value, onChange } = props
   const [image, setImage] = useState<string>()
   const [size, setSize] = useState<string>()
-  console.log('哈哈', parseElementStyle({ backgroundImage: "url(/ttt.jpg) repeat" }))
 
   const handleSizeChange = useCallback((size?: string | null) => {
 
