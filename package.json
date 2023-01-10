@@ -17,6 +17,7 @@
     "@types/react-dom": "^18.0.9",
     "antd": "5.1.2",
     "classnames": "^2.3.2",
+    "css-background-parser": "^0.1.0",
     "css-border-property": "^1.1.0",
     "dateformat": "^5.0.3",
     "dayjs": "^1.11.7",

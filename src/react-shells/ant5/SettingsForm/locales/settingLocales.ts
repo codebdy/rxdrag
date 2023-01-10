@@ -41,6 +41,11 @@ export const settingLocales = {
       confirm: "确认",
       cancel: "取消",
 
+      image:"图片",
+      imageSize:"图片尺寸",
+      repeat:"重复",
+      position:"定位",
+
       IconInput: {
         DialogTitle: "选择图标",
         "Outlined": "线框风格",
@@ -95,6 +100,11 @@ export const settingLocales = {
 
       confirm: "Confirm",
       cancel: "Cancel",
+
+      image:"Image",
+      imageSize:"ImageSize",
+      repeat:"Repeat",
+      position:"Positioin",
 
       IconInput: {
         DialogTitle: "Select Icon",

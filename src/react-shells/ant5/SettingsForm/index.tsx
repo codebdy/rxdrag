@@ -33,6 +33,7 @@ import { DisplaySetter } from "./components/DisplaySetter";
 import IconInput from "./components/IconInput";
 import { GutterInput } from "./components/GutterInput";
 import { ColInput } from "./components/ColInput";
+import { BackgroundImageInput } from "./components/BackgroundImageInput";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -114,6 +115,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         "Radio.Group": Radio.Group,
         "Checkbox.Group": Checkbox.Group,
         ColInput,
+        BackgroundImageInput,
       }}
     >
       <Fieldy>
