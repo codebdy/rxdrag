@@ -5,14 +5,14 @@ import { useDocument } from "core-react/hooks/useDocument";
 import { useNode } from "core-react/hooks/useNode";
 import { forwardRef, memo, useCallback, useRef, useState } from "react"
 import { PopupButton } from "../../PopupButton";
-import { PopoverProps, Tooltip } from "antd"
+import { Tooltip, TooltipProps } from "antd"
 import { CloseButton } from "../../CloseButton";
 
 export type TooltipExtraProps = {
   [RXID_ATTR_NAME]?: string,
 }
 
-export const TooltipDesigner = memo(forwardRef<HTMLDivElement, PopoverProps & TooltipExtraProps>((props, ref) => {
+export const TooltipDesigner = memo(forwardRef<HTMLDivElement, TooltipProps & TooltipExtraProps>((props, ref) => {
   const {
     title,
     children,

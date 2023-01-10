@@ -28,4 +28,9 @@ export const AvatarMaterial: IComponentMaterial = {
   slots: {
     icon: IconViewMaterial,
   },
+  behaviorRule:{
+    noRef: true,
+    droppable: true,
+    noPlaceholder: true,
+  }
 }

@@ -1,8 +1,8 @@
 import { Popconfirm } from "antd";
 import { IComponentMaterial } from "core-react";
 import { ButtonMaterial } from "../../Button";
-import { IconViewMaterial } from "../../IconView";
-import { TextViewMaterial } from "../../TextView";
+import { IconViewMaterial } from "../../displays/IconView";
+import { TextViewMaterial } from "../../displays/TextView";
 import { PopconfirmDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";

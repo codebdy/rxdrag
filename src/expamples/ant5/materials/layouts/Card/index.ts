@@ -2,7 +2,7 @@ import { IComponentMaterial } from "core-react";
 import { colIcon } from "./icon";
 import { cardLocales, cardResourceLocales } from "./locales";
 import { cardSchema } from "./schema";
-import { DefaultSlotMaterial } from "../DefualtSlot";
+import { DefaultSlotMaterial } from "../../DefualtSlot";
 import { Card } from "expamples/ant5/components/Card";
 
 const name = "Card"
