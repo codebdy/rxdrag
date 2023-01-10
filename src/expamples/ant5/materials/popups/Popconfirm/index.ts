@@ -42,7 +42,7 @@ export const PopconfirmMaterial: IComponentMaterial = {
           okText: {
             componentName: "TextView",
             props: {
-              content: "Okxx",
+              content: "Ok",
             }
           },
           cancelText: {
