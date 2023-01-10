@@ -30,5 +30,7 @@ export const AvatarMaterial: IComponentMaterial = {
   },
   behaviorRule:{
     noRef: true,
+    droppable: true,
+    noPlaceholder: true,
   }
 }

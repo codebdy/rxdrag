@@ -14,7 +14,7 @@ export function useRegisterComponentMaterial() {
   const { registerComponents: registerDesignComponents } = useDesignComponents()
   const { registerComponents: registerPreviewComponents } = usePreviewComponents()
 
-  const register = useCallback((meterial: IComponentMaterial) => {
+  const register = useCallback((meterial: IComponentMaterial, isSlot?:boolean) => {
     const designers = { [meterial.componentName]: meterial.designer }
     const previews = { [meterial.componentName]: meterial.component }
     componentManager?.registerComponents(meterial)
@@ -30,13 +30,13 @@ export function useRegisterComponentMaterial() {
       if (slotMaterial === true || slotMaterial === undefined || isStr(slotMaterial)) {
         continue
       }
-      register(slotMaterial)
+      register(slotMaterial, true)
     }
 
     registerDesignComponents(designers)
     registerPreviewComponents(previews)
 
-    if (meterial.resource && !resourceManager?.getResourceByName(meterial.resource.name)) {
+    if (meterial.resource && !resourceManager?.getResourceByName(meterial.resource.name) && !isSlot) {
       const resources = resourceManager?.registerResources(meterial.resource)
       return (resources?.[0])
     }
