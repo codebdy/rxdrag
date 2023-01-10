@@ -45,7 +45,7 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
 
   }, [doc, engine, node])
 
-  const removeTaggleRxid = useCallback(()=>{
+  const taggleRxid = useCallback(()=>{
     const el = realRef.current?.getElementsByClassName("ant-drawer-content-wrapper")?.[0]
     if(open){
       el?.setAttribute(RXID_ATTR_NAME, rxId || "")
@@ -55,9 +55,9 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
   }, [open, rxId])
 
   const handleOpenChange = useCallback(() => {
-    removeTaggleRxid()
+    taggleRxid()
     engine?.getShell().dispatch(new NodeMountedEvent())
-  }, [engine, removeTaggleRxid])
+  }, [engine, taggleRxid])
 
   const handleRefChange = useCallback((node: HTMLDivElement | null) => {
     realRef.current = node;

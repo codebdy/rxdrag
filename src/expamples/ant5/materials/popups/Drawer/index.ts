@@ -64,14 +64,6 @@ export const DrawerMaterial: IComponentMaterial = {
             ]
           }
         },
-        children: [
-          {
-            componentName: "TextView",
-            props: {
-              content: name,
-            }
-          }
-        ]
       }
     ]
   },

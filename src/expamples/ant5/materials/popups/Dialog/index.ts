@@ -1,6 +1,7 @@
 import { IComponentMaterial } from "core-react";
 import { Dialog } from "expamples/ant5/components/popups/Dialog";
 import { ButtonMaterial } from "../../Button";
+import { IconViewMaterial } from "../../IconView";
 import { DialogContentMaterial } from "../DialogContent";
 import { DialogFooterMaterial } from "../DialogFooter";
 import { DialogTitleMaterial } from "../DialogTitle";
@@ -58,16 +59,9 @@ export const DialogMaterial: IComponentMaterial = {
                 }
               }
             ]
-          }
+          },
+          
         },
-        children: [
-          {
-            componentName: "TextView",
-            props: {
-              content: name,
-            }
-          }
-        ]
       }
     ]
   },
@@ -76,6 +70,7 @@ export const DialogMaterial: IComponentMaterial = {
     content: DialogContentMaterial,
     footer: DialogFooterMaterial,
     actionComponent: ButtonMaterial,
+    icon: IconViewMaterial,
   },
   behaviorRule: {
     droppable: false,

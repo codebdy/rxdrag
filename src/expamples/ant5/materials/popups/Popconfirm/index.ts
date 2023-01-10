@@ -1,10 +1,8 @@
+import { Popconfirm } from "antd";
 import { IComponentMaterial } from "core-react";
-import { Drawer } from "expamples/ant5/components/popups/Drawer";
 import { ButtonMaterial } from "../../Button";
-import { DrawerContentMaterial } from "../DrawerContent";
-import { DrawerExtraMaterial } from "../DrawerExtra";
-import { DrawerFooterMaterial } from "../DrawerFooter";
-import { DrawerTitleMaterial } from "../DrawerTitle";
+import { IconViewMaterial } from "../../IconView";
+import { TextViewMaterial } from "../../TextView";
 import { PopconfirmDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
@@ -13,7 +11,7 @@ import { materialSchema } from "./schema";
 const name = "Popconfirm"
 export const PopconfirmMaterial: IComponentMaterial = {
   componentName: name,
-  component: Drawer,
+  component: Popconfirm,
   designer: PopconfirmDesigner,
   designerLocales: locales,
   designerSchema: materialSchema,
@@ -30,26 +28,32 @@ export const PopconfirmMaterial: IComponentMaterial = {
         componentName: name,
         slots: {
           title: {
-            componentName: "DrawerTitle",
-            children: [
-              {
-                componentName: "TextView",
-                props: {
-                  content: name,
-                }
-              }
-            ]
+            componentName: "TextView",
+            props: {
+              content: "Delete the task",
+            }
           },
-          extra: {
-            componentName: "DrawerExtra",
+          description: {
+            componentName: "TextView",
+            props: {
+              content: "Are you sure to delete this task?",
+            }
           },
-          content: {
-            componentName: "DrawerContent",
+          okText: {
+            componentName: "TextView",
+            props: {
+              content: "Okxx",
+            }
           },
-          footer: {
-            componentName: "DrawerFooter",
+          cancelText: {
+            componentName: "TextView",
+            props: {
+              content: "Cancel",
+            }
           },
-          actionComponent: {
+        },
+        children: [
+          {
             componentName: "Button",
             props: {
               title: name,
@@ -63,27 +67,20 @@ export const PopconfirmMaterial: IComponentMaterial = {
               }
             ]
           }
-        },
-        children: [
-          {
-            componentName: "TextView",
-            props: {
-              content: name,
-            }
-          }
         ]
       }
     ]
   },
   slots: {
-    title: DrawerTitleMaterial,
-    extra: DrawerExtraMaterial,
-    content: DrawerContentMaterial,
-    footer: DrawerFooterMaterial,
+    title: TextViewMaterial,
+    description: TextViewMaterial,
+    okText: TextViewMaterial,
+    cancelText: TextViewMaterial,
     actionComponent: ButtonMaterial,
+    icon: IconViewMaterial,
   },
   behaviorRule: {
-    droppable: false,
-    noPlaceholder: true,
+    droppable: true,
+    noPlaceholder: false,
   }
 }
