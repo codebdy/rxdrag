@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import { IComponentMaterial } from "core-react";
-import { IconViewMaterial } from "../IconView";
+import { IconViewMaterial } from "../displays/IconView";
 import { buttonIcon } from "./icon";
 import { buttonLocales, buttonResourceLocales } from "./locales";
 import { buttonSchema } from "./schema";

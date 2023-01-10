@@ -1,7 +1,7 @@
 import { IComponentMaterial } from "core-react";
 import { Dialog } from "expamples/ant5/components/popups/Dialog";
 import { ButtonMaterial } from "../../Button";
-import { IconViewMaterial } from "../../IconView";
+import { IconViewMaterial } from "../../displays/IconView";
 import { DialogContentMaterial } from "../DialogContent";
 import { DialogFooterMaterial } from "../DialogFooter";
 import { DialogTitleMaterial } from "../DialogTitle";

@@ -1,6 +1,6 @@
 import { Popover } from "antd";
 import { IComponentMaterial } from "core-react";
-import { TextViewMaterial } from "../../TextView";
+import { TextViewMaterial } from "../../displays/TextView";
 import { PopoverDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";

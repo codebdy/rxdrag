@@ -1,27 +1,27 @@
 import { IComponentMaterial, IMaterialResource } from "core-react";
 import { ButtonMaterial } from "./Button";
-import { ColMaterial } from "./Col";
+import { ColMaterial } from "./layouts/Col";
 import { HCFLayoutMaterial } from "./layouts/HCFLayout";
 import { InputMaterial } from "./inputs/Input";
 import { TwoColumnLayoutMaterial } from "./layouts/TwoColumnLayout";
-import { RowMaterial } from "./Row";
+import { RowMaterial } from "./layouts/Row";
 import { SelectMaterial } from "./inputs/Select";
-import { LogoMaterial } from "./Logo";
-import { MenuMaterial } from "./Menu";
-import { AvatarMaterial } from "./Avatar";
+import { LogoMaterial } from "./layouts/Logo";
+import { MenuMaterial } from "./layouts/Menu";
+import { AvatarMaterial } from "./displays/Avatar";
 import { HeroTipMaterial } from "./business/HeroTip";
-import { CardMaterial } from "./Card";
-import { TextViewMaterial } from "./TextView";
-import { StatisticMaterial } from "./Statistic";
-import { BoxMaterial } from "./Box";
-import { IconViewMaterial } from "./IconView";
+import { CardMaterial } from "./layouts/Card";
+import { TextViewMaterial } from "./displays/TextView";
+import { StatisticMaterial } from "./displays/Statistic";
+import { BoxMaterial } from "./layouts/Box";
+import { IconViewMaterial } from "./displays/IconView";
 import { JobsMaterial } from "./business/Jobs";
 import { RightAdMaterial } from "./business/RightAd";
-import { DividerMaterial } from "./Divider";
+import { DividerMaterial } from "./layouts/Divider";
 import { NewsMaterial } from "./business/News";
 import { CustomersMaterial } from "./business/Customers";
 import { NoticesMaterial } from "./business/Notices";
-import { PaperMaterial } from "./Paper";
+import { PaperMaterial } from "./layouts/Paper";
 import { BreadcrumbMaterial } from "./layouts/Breadcrumb";
 import { FormMaterial } from "./Form";
 import { FormItemMaterial } from "./FormItem";
@@ -47,6 +47,7 @@ import { DrawerMaterial } from "./popups/Drawer";
 import { PopconfirmMaterial } from "./popups/Popconfirm";
 import { PopoverMaterial } from "./popups/Popover";
 import { TooltipMaterial } from "./popups/Tooltip";
+import { BadgeMaterial } from "./displays/Badge";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -74,6 +75,7 @@ export const displayMaterials: IComponentMaterial[] = [
   StatisticMaterial,
   IconViewMaterial,
   AvatarMaterial,
+  BadgeMaterial,
 ]
 
 export const fomrMaterials: IComponentMaterial[] = [
