@@ -46,6 +46,7 @@ import { DialogMaterial } from "./popups/Dialog";
 import { DrawerMaterial } from "./popups/Drawer";
 import { PopconfirmMaterial } from "./popups/Popconfirm";
 import { PopoverMaterial } from "./popups/Popover";
+import { TooltipMaterial } from "./popups/Tooltip";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -86,6 +87,7 @@ export const popupMaterials: IComponentMaterial[] = [
   DrawerMaterial,
   PopconfirmMaterial,
   PopoverMaterial,
+  TooltipMaterial,
 ]
 
 export const layoutMaterials: IComponentMaterial[] = [
