@@ -32,6 +32,9 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: Dropdown
     if (doc && node) {
       engine?.getActions().selectNodes([node.id], doc.id)
     }
+    setTimeout(()=>{
+      //engine?.getShell().dispatch(new NodeMountedEvent())
+    }, 20)
   }, [doc, engine, node])
 
   const getPlacementStyle = useCallback(() => {
@@ -101,6 +104,10 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: Dropdown
     if (doc && node) {
       engine?.getActions().selectNodes([node.id], doc.id)
     }
+
+    // setTimeout(()=>{
+    //   //engine?.getShell().dispatch(new NodeMountedEvent())
+    // }, 20)
   }, [doc, engine, getPlacementStyle, node])
 
   const handleMouseEnter = useCallback(() => {

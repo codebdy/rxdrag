@@ -44,6 +44,7 @@ import { TreeSelectMaterial } from "./inputs/TreeSelect";
 import { DropdownMaterial } from "./popups/Dropdown";
 import { DialogMaterial } from "./popups/Dialog";
 import { DrawerMaterial } from "./popups/Drawer";
+import { PopconfirmMaterial } from "./popups/Popconfirm";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -81,7 +82,8 @@ export const fomrMaterials: IComponentMaterial[] = [
 export const popupMaterials: IComponentMaterial[] = [
   DropdownMaterial,
   DialogMaterial,
-  DrawerMaterial
+  DrawerMaterial,
+  PopconfirmMaterial,
 ]
 
 export const layoutMaterials: IComponentMaterial[] = [

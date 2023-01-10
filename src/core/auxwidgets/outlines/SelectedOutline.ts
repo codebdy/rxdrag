@@ -2,17 +2,14 @@ import { IDesignerEngine, ID, Unsubscribe } from "core";
 import { IPlugin } from "core/interfaces/plugin";
 import { DraggingNodesState } from "core/reducers/draggingNodes";
 import { DraggingResourceState } from "core/reducers/draggingResource";
-import { CanvasResizeEvent, CanvasScrollEvent } from "core/shell/events";
-import { AddDecoratorEvent } from "core/shell/events/canvas/AddDecoratorEvent";
-import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
-import { NodeUnmountedEvent } from "core/shell/events/canvas/NodeUnmountedEvent";
-import { RemoveDecoratorEvent } from "core/shell/events/canvas/RemoveDecoratorEvent";
+import { CanvasScrollEvent } from "core/shell/events";
 import { AUX_BACKGROUND_COLOR } from "../consts";
 import { numbToPx } from "../utils/numbToPx";
 import { getMaxZIndex } from "./getMaxZIndex";
 
 export class SelectedOutlineImpl implements IPlugin {
   name: string = "default.selected-outline";
+  resizeObserver: ResizeObserver
   private unsubscribe: Unsubscribe;
   private htmls: {
     [id: ID]: HTMLElement
@@ -21,45 +18,36 @@ export class SelectedOutlineImpl implements IPlugin {
   private selecteNodes: ID[] | null = null
   private refreshedFlag = false
   private unCanvasScroll: Unsubscribe
-  private unCanvasResize: Unsubscribe
-  private unThemeModeChange: Unsubscribe
-  private unNodeMounted: Unsubscribe
-  private unmountUnsubscribe: Unsubscribe
   private draggingNodesOff: Unsubscribe
   private draggingResourceOff: Unsubscribe
-  private addDecoratorOff: Unsubscribe
-  private removeDecoratorOff: Unsubscribe
 
   constructor(protected engine: IDesignerEngine) {
     if (!engine.getShell().getContainer) {
       console.error("Html 5 driver rootElement is undefined")
     }
-    this.unmountUnsubscribe = this.engine.getShell().subscribeTo(NodeUnmountedEvent, this.handleNodeMounted)
-    this.unsubscribe = engine.getMonitor().subscribeToSelectChange(this.listenSelectChange)
+    this.resizeObserver = new ResizeObserver(this.onResize)
+    this.unsubscribe = engine.getMonitor().subscribeToSelectChange(this.handleSelectChange)
     this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
     this.unCanvasScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
-    this.unCanvasResize = this.engine.getShell().subscribeTo(CanvasResizeEvent, this.refresh)
-    this.unThemeModeChange = engine.getMonitor().subscribeToThemeModeChange(this.handleThemeChange)
-    this.unNodeMounted = this.engine.getShell().subscribeTo(NodeMountedEvent, this.handleNodeMounted)
     this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
     this.draggingResourceOff = this.engine.getMonitor().subscribeToDraggingResource(this.handleDraggingResource)
-    this.addDecoratorOff = this.engine.getShell().subscribeTo(AddDecoratorEvent, this.refresh)
-    this.removeDecoratorOff = this.engine.getShell().subscribeTo(RemoveDecoratorEvent, this.refresh)
   }
 
-  handleNodeMounted = (e: NodeMountedEvent) => {
-    if (Object.keys(this.htmls).length || this.selecteNodes?.length) {
-      this.refresh()
-    }
+  onResize = () => {
+    this.refresh()
   }
 
-  listenSelectChange = (selectedIds: ID[] | null) => {
+  onMutation = (mutations: any) => {
+    this.refresh()
+  }
+
+  render = () => {
     this.clear()
-
-    for (const id of selectedIds || []) {
+    for (const id of this.selecteNodes || []) {
       const element = this.engine.getShell().getElement(id)
       const canvas = this.engine.getShell().getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
       const containerRect = canvas?.getContainerRect()
+
       if (element && containerRect) {
         const rect = element.getBoundingClientRect();
         const htmlDiv = document.createElement('div')
@@ -74,9 +62,21 @@ export class SelectedOutlineImpl implements IPlugin {
         htmlDiv.style.zIndex = (getMaxZIndex(element) + 1).toString()
         canvas?.appendChild(htmlDiv)
         this.htmls[id] = htmlDiv
+
+        this.resizeObserver.observe(element)
       }
     }
+  }
+
+  handleSelectChange = (selectedIds: ID[] | null) => {
+    this.resizeObserver.disconnect()
     this.selecteNodes = selectedIds
+    this.refresh()
+    if (selectedIds?.length && !this.engine.getShell().getElement(selectedIds?.[0])) {
+      setTimeout(() => {
+        this.refresh()
+      }, 100)
+    }
   }
 
   handleDraggingNodes = (dragging: DraggingNodesState | null) => {
@@ -103,17 +103,11 @@ export class SelectedOutlineImpl implements IPlugin {
     this.refresh()
   }
 
-  handleThemeChange = () => {
-    setTimeout(() => {
-      this.listenSelectChange(this.selecteNodes)
-    }, 200)
-  }
-
   refresh = () => {
     this.refreshedFlag = true
     setTimeout(() => {
       if (this.refreshedFlag) {
-        this.listenSelectChange(this.selecteNodes)
+        this.render()
         this.refreshedFlag = false
       }
     }, 20)
@@ -121,17 +115,11 @@ export class SelectedOutlineImpl implements IPlugin {
 
   destory(): void {
     this.clear()
-    this.unmountUnsubscribe()
     this.unsubscribe()
     this.nodeChangeUnsubscribe()
     this.unCanvasScroll()
-    this.unCanvasResize()
-    this.unThemeModeChange()
-    this.unNodeMounted()
     this.draggingNodesOff?.()
     this.draggingResourceOff?.()
-    this.addDecoratorOff?.()
-    this.removeDecoratorOff?.()
   }
 
   private clear() {

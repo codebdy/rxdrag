@@ -1,5 +1,5 @@
-import { IDesignerEngine, ID, Unsubscribe } from "core";
-import { CanvasResizeEvent, CanvasScrollEvent } from "core/shell/events";
+import { IDesignerEngine, ID, Unsubscribe, ITreeNode } from "core";
+import { CanvasScrollEvent } from "core/shell/events";
 import { IPlugin } from "core/interfaces/plugin";
 import { numbToPx } from "../utils/numbToPx";
 import { CloneButton } from "./controls/CloneButton";
@@ -7,46 +7,64 @@ import { DeleteButton } from "./controls/DeleteButton";
 import { ComponentSelector } from "./controls/Selector";
 import { IAuxControl, IAuxToolbar } from "./interfaces";
 import { MoveButton } from "./controls/MoveButton";
-import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
 import { DraggingNodesState } from "core/reducers/draggingNodes";
 import { DraggingResourceState } from "core/reducers/draggingResource";
 import { LockButton } from "./controls/LockButton";
 import { getMaxZIndex } from "../outlines/getMaxZIndex";
-import { NodeUnmountedEvent } from "core/shell/events/canvas/NodeUnmountedEvent";
 
 export class ToolbarImpl implements IPlugin, IAuxToolbar {
   name: string = "default.toolbar";
+  resizeObserver: ResizeObserver
   private unsubscribe: Unsubscribe;
+  private unsubscribeSelect: Unsubscribe;
   private nodeChangeUnsubscribe: Unsubscribe;
   private controls: IAuxControl[] = [];
   private htmlElement: HTMLElement | null = null
-  private unViewporScroll: Unsubscribe
-  private unViewporChange: Unsubscribe
-  private unThemeModeChange: Unsubscribe
-  private unNodeMounted: Unsubscribe
+  private unCanvasScroll: Unsubscribe
   private draggingNodesOff: Unsubscribe
   private draggingResourceOff: Unsubscribe
-  private unmountUnsubscribe: Unsubscribe
   private refreshedFlag = false
   constructor(protected engine: IDesignerEngine,) {
     if (!engine.getShell().getContainer) {
       console.error("Html 5 driver rootElement is undefined")
     }
+    this.resizeObserver = new ResizeObserver(this.onResize)
 
     this.addControl(new ComponentSelector(engine))
     this.addControl(new LockButton(engine))
     this.addControl(new CloneButton(engine))
     this.addControl(new MoveButton(engine))
     this.addControl(new DeleteButton(engine))
-    this.unsubscribe = engine.getMonitor().subscribeToCurrentNodeChanged(this.refresh)
+    this.unsubscribe = engine.getMonitor().subscribeToCurrentNodeChanged(this.currentNodeChanged)
+    this.unsubscribeSelect = engine.getMonitor().subscribeToSelectChange(this.handleSelectChange)
     this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
-    this.unViewporScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
-    this.unViewporChange = this.engine.getShell().subscribeTo(CanvasResizeEvent, this.refresh)
-    this.unThemeModeChange = engine.getMonitor().subscribeToThemeModeChange(this.handleThemeChange)
-    this.unNodeMounted = this.engine.getShell().subscribeTo(NodeMountedEvent, this.handleNodeMounted)
-    this.unmountUnsubscribe = this.engine.getShell().subscribeTo(NodeUnmountedEvent, this.handleNodeMounted)
+    this.unCanvasScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
     this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
     this.draggingResourceOff = this.engine.getMonitor().subscribeToDraggingResource(this.handleDraggingResource)
+  }
+
+  onResize = () => {
+    this.refresh()
+  }
+
+  //临时措施，跟踪popup变化
+  handleSelectChange = (selectedIds: ID[] | null) => {
+    this.refresh()
+    if (selectedIds?.length && !this.engine.getShell().getElement(selectedIds?.[0])) {
+      setTimeout(() => {
+        this.refresh()
+      }, 100)
+    }
+  }
+
+  currentNodeChanged = (node: ITreeNode) => {
+    this.resizeObserver.disconnect()
+    this.refresh()
+    if (node && !this.engine.getShell().getElement(node.id)) {
+      setTimeout(() => {
+        this.refresh()
+      }, 100)
+    }
   }
 
   handleDraggingNodes = (dragging: DraggingNodesState | null) => {
@@ -67,10 +85,6 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
         this.htmlElement.style.display = "flex"
       }
     }
-  }
-
-  handleNodeMounted = (e: NodeMountedEvent) => {
-    this.refresh()
   }
 
   replaceControl(control: IAuxControl): void {
@@ -148,13 +162,8 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
       }
 
       this.htmlElement = htmlDiv
+      this.resizeObserver.observe(element)
     }
-  }
-
-  handleThemeChange = () => {
-    setTimeout(() => {
-      this.render()
-    }, 200)
   }
 
   //20毫秒之内的事件，只刷新一次
@@ -172,13 +181,10 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     this.clear()
     this.nodeChangeUnsubscribe()
     this.unsubscribe()
-    this.unViewporScroll()
-    this.unViewporChange()
-    this.unThemeModeChange()
-    this.unNodeMounted()
+    this.unsubscribeSelect()
+    this.unCanvasScroll()
     this.draggingNodesOff?.()
     this.draggingResourceOff?.()
-    this.unmountUnsubscribe()
   }
 
   private positionLimit(documentId: ID) {

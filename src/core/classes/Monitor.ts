@@ -213,12 +213,10 @@ export class Monitor implements IMonitor {
 		let previousState = this.store.getState().documentsById
 		const handleChange = () => {
 			const nextState = this.store.getState().documentsById
-			const nodeIds = []
 			for (const key of Object.keys(nextState)) {
 				if (nextState[key]?.selectedIds === previousState[key]?.selectedIds) {
 					continue
 				}
-				nodeIds.push(...nextState[key]?.selectedIds || [])
 				listener(nextState[key]?.selectedIds || null, key)
 			}
 			previousState = nextState

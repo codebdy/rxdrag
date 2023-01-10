@@ -4,8 +4,6 @@ import { DraggingNodesState } from "core/reducers/draggingNodes";
 import { DraggingResourceState } from "core/reducers/draggingResource";
 import { CanvasResizeEvent, CanvasScrollEvent } from "core/shell/events";
 import { AddDecoratorEvent } from "core/shell/events/canvas/AddDecoratorEvent";
-import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
-import { NodeUnmountedEvent } from "core/shell/events/canvas/NodeUnmountedEvent";
 import { RemoveDecoratorEvent } from "core/shell/events/canvas/RemoveDecoratorEvent";
 import { AUX_BACKGROUND_COLOR } from "../consts";
 
@@ -20,8 +18,6 @@ export class SelectedClassStyleOutlineImpl implements IPlugin {
   private unCanvasScroll: Unsubscribe
   private unCanvasResize: Unsubscribe
   private unThemeModeChange: Unsubscribe
-  private unNodeMounted: Unsubscribe
-  private unmountUnsubscribe: Unsubscribe
   private draggingNodesOff: Unsubscribe
   private draggingResourceOff: Unsubscribe
   private addDecoratorOff: Unsubscribe
@@ -34,24 +30,19 @@ export class SelectedClassStyleOutlineImpl implements IPlugin {
     const style = document.createElement('style');
     style.innerHTML = `.rx-node-outline {  outline:solid 2px ${AUX_BACKGROUND_COLOR}; z-index:1;}`;
     this.htmlStyle = style
-    this.unmountUnsubscribe = this.engine.getShell().subscribeTo(NodeUnmountedEvent, this.handleNodeMounted)
+    //this.unmountUnsubscribe = this.engine.getShell().subscribeTo(NodeUnmountedEvent, this.handleNodeMounted)
     this.unsubscribe = engine.getMonitor().subscribeToSelectChange(this.listenSelectChange)
     this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
     this.unCanvasScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
     this.unCanvasResize = this.engine.getShell().subscribeTo(CanvasResizeEvent, this.refresh)
     this.unThemeModeChange = engine.getMonitor().subscribeToThemeModeChange(this.handleThemeChange)
-    this.unNodeMounted = this.engine.getShell().subscribeTo(NodeMountedEvent, this.handleNodeMounted)
+    //this.unNodeMounted = this.engine.getShell().subscribeTo(NodeMountedEvent, this.handleNodeMounted)
     this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
     this.draggingResourceOff = this.engine.getMonitor().subscribeToDraggingResource(this.handleDraggingResource)
     this.addDecoratorOff = this.engine.getShell().subscribeTo(AddDecoratorEvent, this.refresh)
     this.removeDecoratorOff = this.engine.getShell().subscribeTo(RemoveDecoratorEvent, this.refresh)
   }
 
-  handleNodeMounted = (e: NodeMountedEvent) => {
-    if (this.selecteNodes?.length) {
-      this.refresh()
-    }
-  }
 
   listenSelectChange = (selectedIds: ID[] | null) => {
     this.clear()
@@ -114,13 +105,11 @@ export class SelectedClassStyleOutlineImpl implements IPlugin {
 
   destory(): void {
     this.clear()
-    this.unmountUnsubscribe()
     this.unsubscribe()
     this.nodeChangeUnsubscribe()
     this.unCanvasScroll()
     this.unCanvasResize()
     this.unThemeModeChange()
-    this.unNodeMounted()
     this.draggingNodesOff?.()
     this.draggingResourceOff?.()
     this.addDecoratorOff?.()

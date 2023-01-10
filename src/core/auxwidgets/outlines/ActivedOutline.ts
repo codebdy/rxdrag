@@ -1,5 +1,5 @@
 import { ID, IDesignerEngine, Unsubscribe } from "core";
-import { CanvasResizeEvent, CanvasScrollEvent } from "core/shell/events";
+import { CanvasScrollEvent } from "core/shell/events";
 import { MouseOutEvent } from "core/shell/events/mouse/MouseOutEvent";
 import { IPlugin } from "core/interfaces/plugin";
 import { AUX_BACKGROUND_COLOR } from "../consts";
@@ -8,23 +8,29 @@ import { getMaxZIndex } from "./getMaxZIndex";
 
 export class ActivedOutlineImpl implements IPlugin {
   name: string = "default.actived-outline";
+  resizeObserver: ResizeObserver
   private outline: HTMLElement | null = null;
   private nodeChangeUnsubscribe: Unsubscribe;
   private currentId: ID | null = null
   private unActive: Unsubscribe
-  private unViewporScroll: Unsubscribe
-  private unViewporChange: Unsubscribe
+  private unCanvasScroll: Unsubscribe
 
   constructor(protected engine: IDesignerEngine) {
     if (!engine.getShell().getContainer) {
       console.error("Html 5 driver rootElement is undefined")
     }
+    this.resizeObserver = new ResizeObserver(this.onResize)
     this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
     this.unActive = engine.getMonitor().subscribeToActiveChanged(this.handleActivedChange)
-    this.unViewporScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
-    this.unViewporChange = this.engine.getShell().subscribeTo(CanvasResizeEvent, this.refresh)
+    this.unCanvasScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
   }
+
+  onResize = () => {
+    this.refresh()
+  }
+
   handleActivedChange = (activedId: ID | undefined | null): void => {
+    this.resizeObserver.disconnect()
     this.clearLine()
     if (activedId) {
       this.currentId = activedId
@@ -39,10 +45,6 @@ export class ActivedOutlineImpl implements IPlugin {
       return
     }
     this.renderLine(this.currentId)
-    //防止更新不彻底，两遍刷新补齐
-    setTimeout(() => {
-      this.currentId && this.renderLine(this.currentId)
-    }, 10)
   }
 
   handleOutNode = (e: MouseOutEvent): void => {
@@ -54,8 +56,7 @@ export class ActivedOutlineImpl implements IPlugin {
     this.clearLine()
     this.nodeChangeUnsubscribe()
     this.unActive()
-    this.unViewporScroll()
-    this.unViewporChange()
+    this.unCanvasScroll()
   }
 
   private renderLine(id: ID) {
@@ -77,6 +78,7 @@ export class ActivedOutlineImpl implements IPlugin {
       htmlDiv.style.zIndex = (getMaxZIndex(element) + 1).toString()
       canvas?.appendChild(htmlDiv)
       this.outline = htmlDiv
+      this.resizeObserver.observe(element)
     }
   }
 

@@ -29,7 +29,7 @@ export const CloseButton = (
         justifyContent: "center",
         ...style || {},
       }}
-      icon={<CloseOutlined style={{ fontSize: 8 }} />}
+      icon={<CloseOutlined style={{ fontSize: 10 }} />}
       {...other}
     >
     </Button>

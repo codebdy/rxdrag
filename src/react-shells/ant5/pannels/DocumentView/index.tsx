@@ -1,7 +1,7 @@
 import { Divider } from "antd"
 import { useToken } from "antd/es/theme/internal"
 import { IDocument } from "core"
-import { IframeCanvas } from "core-react/canvas/IframeCanvas"
+import { IframeCanvas2 } from "core-react/canvas/IframeCanvas/index2"
 import { DocumentRoot } from "core-react/DocumentRoot"
 import { JsonView } from "core-react/JsonView"
 import { Preview } from "core-react/Preview"
@@ -18,9 +18,10 @@ import { Viewport } from "../Viewport"
 export const DocumentView = memo((
   props: {
     doc?: IDocument,
+    renderUrl: string,
   }
 ) => {
-  const { doc } = props
+  const { doc, renderUrl } = props
   const [, token] = useToken()
   return (
     doc ?
@@ -39,7 +40,7 @@ export const DocumentView = memo((
         </CanvasToolbar>
         <Viewport>
           <JsonView />
-          <IframeCanvas doc = {doc}/>
+          <IframeCanvas2 doc={doc} renderUrl={renderUrl} />
           <Preview backgroundColor={token.colorBgBase} />
         </Viewport>
         <NavbarWidget />

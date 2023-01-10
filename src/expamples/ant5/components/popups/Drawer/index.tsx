@@ -4,7 +4,6 @@ import { CSSProperties, forwardRef, memo, useCallback, useState } from "react"
 
 export type DrawerProps = {
   autoFocus?: boolean,
-  afterOpenChange?: boolean,
   bodyStyle?: CSSProperties,
   closable?: boolean,
   contentWrapperStyle?: CSSProperties,
