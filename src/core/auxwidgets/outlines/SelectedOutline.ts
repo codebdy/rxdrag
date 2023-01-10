@@ -36,6 +36,11 @@ export class SelectedOutlineImpl implements IPlugin {
   onResize = () => {
     this.refresh()
   }
+
+  onMutation = (mutations: any) => {
+    this.refresh()
+  }
+
   render = () => {
     this.clear()
     for (const id of this.selecteNodes || []) {
@@ -65,7 +70,6 @@ export class SelectedOutlineImpl implements IPlugin {
   listenSelectChange = (selectedIds: ID[] | null) => {
     this.resizeObserver.disconnect()
     this.selecteNodes = selectedIds
-
     this.render()
   }
 

@@ -34,8 +34,6 @@ export class DraggedAttenuatorImpl implements IPlugin {
             if (node) {
               const canvas = this.shell.getCanvas(node?.documentId)
               canvas?.appendChild(this.htmlStyle)
-              //doc.getElementsByTagName('head')[0].appendChild(this.htmlStyle);
-              //console.log("哈哈", doc.getElementsByTagName('head')[0].contains(this.htmlStyle), this.htmlStyle)
               styleAdded = true
             }
           }

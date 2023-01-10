@@ -28,8 +28,21 @@ export const PopconfirmDesigner = memo(forwardRef<HTMLDivElement, PopconfirmProp
   const node = useNode()
   const currentNode = useCurrentNode();
   const realRef = useRef<HTMLDivElement | null>(null);
+  const popupRef = useRef<HTMLDivElement | null>(null);
   const engine = useDesignerEngine()
   const doc = useDocument()
+  const refreshSelect = useCallback((time: number = 20) => {
+    if (doc && node) {
+      setTimeout(() => {
+        engine?.getActions().selectNodes([node.id], doc.id)
+      }, time)
+    }
+  }, [doc, engine, node])
+
+  const addRxdToPop = useCallback(() => {
+    popupRef.current?.setAttribute(RXID_ATTR_NAME, rxId || "")
+  }, [rxId])
+
   const handleMouseEnter = useCallback(() => {
     setHover(true);
   }, []);
@@ -39,42 +52,32 @@ export const PopconfirmDesigner = memo(forwardRef<HTMLDivElement, PopconfirmProp
 
   const handleShow = useCallback(() => {
     setOpen(true);
-    if (doc && node) {
-      engine?.getActions().selectNodes([node.id], doc.id)
-    }
-    //setHover(false)
-
-  }, [doc, engine, node])
-
-  const taggleRxid = useCallback(() => {
-    const el = realRef.current?.getElementsByClassName("ant-popover-content")?.[0]
-    if (open) {
-      el?.setAttribute(RXID_ATTR_NAME, rxId || "")
-    } else {
-      el?.removeAttribute(RXID_ATTR_NAME)
-    }
-  }, [open, rxId])
-
-  const handleOpenChange = useCallback((open: boolean) => {
-    //setOpen(open)
-    taggleRxid()
-    //engine?.getShell().dispatch(new NodeMountedEvent())
-  }, [engine, taggleRxid])
-
-  const handleRefChange = useCallback((node: HTMLDivElement | null) => {
-    realRef.current = node;
-  }, [])
+    setHover(false)
+    addRxdToPop()
+    //有动画，需要长延时
+    refreshSelect(300)
+  }, [addRxdToPop, refreshSelect])
 
   const handleClose = useCallback(() => {
     setOpen(false)
-    const el = realRef.current?.getElementsByClassName("ant-popover-content")?.[0]
-    el?.removeAttribute(RXID_ATTR_NAME)
-    //engine?.getShell().dispatch(new NodeUnmountedEvent())
-  }, [engine])
+    popupRef.current?.removeAttribute(RXID_ATTR_NAME)
+    refreshSelect()
+  }, [refreshSelect])
+
+  const handlePopRefChange = useCallback((popEl: HTMLElement | null) => {
+    const els = realRef.current?.ownerDocument.getElementsByClassName("ant-popover-content")
+    for (let i = 0; i < (els?.length || 0); i++) {
+      const el = els?.[i]
+      if (el && el.contains(popEl)) {
+        popupRef.current = el as HTMLDivElement
+      }
+    }
+    addRxdToPop()
+  }, [addRxdToPop])
 
   return (
     <div
-      ref={handleRefChange}
+      ref={realRef}
       style={{ display: "inline-block", position: "relative" }}
       {...open ? {} : { [RXID_ATTR_NAME]: rxId }}
       onMouseEnter={handleMouseEnter}
@@ -94,11 +97,11 @@ export const PopconfirmDesigner = memo(forwardRef<HTMLDivElement, PopconfirmProp
                 onClick={handleClose}
               />
             }
+            <div ref={handlePopRefChange}></div>
           </>
         }
         description={description}
         okText={okText}
-        onOpenChange={handleOpenChange}
         cancelText={cancelText}
         {...other}
       >
