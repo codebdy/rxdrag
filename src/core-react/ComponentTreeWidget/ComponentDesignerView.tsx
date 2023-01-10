@@ -1,12 +1,10 @@
 import { isHTMLElement } from "core/utils/html-node";
-import React, { memo, useCallback, useLayoutEffect, useMemo } from "react";
+import React, { memo, useCallback, useMemo } from "react";
 import { useDesignComponent } from "core-react/hooks/useDesignComponent";
 import { useTreeNode } from "../hooks/useTreeNode";
 import { useDesignerEngine } from "core-react/hooks";
 import { PlaceHolder } from "core-react/PlaceHolder";
 import { NodeContext } from "core-react/contexts";
-import { NodeMountedEvent } from "core/shell/events/canvas/NodeMountedEvent";
-import { NodeUnmountedEvent } from "core/shell/events/canvas/NodeUnmountedEvent";
 import { Locked } from "./Locked";
 import { useLocked } from "core-react/hooks/useLocked";
 
@@ -17,14 +15,6 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const engine = useDesignerEngine()
   const behavior = useMemo(() => engine?.getNodeBehavior(node?.id || ""), [engine, node?.id])
   const locked = useLocked();
-  useLayoutEffect(() => {
-    setTimeout(() => {
-      engine?.getShell().dispatch(new NodeMountedEvent(nodeId))
-    }, 20)
-    return () => {
-      engine?.getShell().dispatch(new NodeUnmountedEvent(nodeId))
-    }
-  }, [engine, nodeId])
 
   const handleRef = useCallback((element: HTMLElement | undefined) => {
     for (const key of Object.keys(node?.rxProps || {})) {

@@ -1,7 +1,6 @@
 import { Divider } from "antd"
 import { useToken } from "antd/es/theme/internal"
 import { IDocument } from "core"
-import { IframeCanvas } from "core-react/canvas/IframeCanvas"
 import { IframeCanvas2 } from "core-react/canvas/IframeCanvas/index2"
 import { DocumentRoot } from "core-react/DocumentRoot"
 import { JsonView } from "core-react/JsonView"

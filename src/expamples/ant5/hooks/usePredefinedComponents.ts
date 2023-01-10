@@ -3,6 +3,7 @@ import { DefaultSlot } from "core-react/DefaultSlot";
 import { Root } from "core-react/Root";
 import { isStr } from "core/utils/types";
 import { useMemo } from "react";
+import { Field } from "react-shells/ant5/components/Field";
 import { businessMaterials, displayMaterials, fomrMaterials, inputMaterials, layoutMaterials, popupMaterials } from "../materials";
 
 export function usePredefinedComponents() {
@@ -10,6 +11,7 @@ export function usePredefinedComponents() {
     const designers: IComponents = {
       Root:Root,
       DefaultSlot: DefaultSlot,
+      Field: Field,
     }
     const components: IComponents = {}
     for (const com of [...inputMaterials,

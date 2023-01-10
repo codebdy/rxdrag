@@ -7,7 +7,6 @@ import { IFrameCanvasImpl } from "core/shell/IFrameCanvasImpl";
 import { CanvasResizeDriver, CanvasScrollDriver, DragDropDriver, MouseClickDriver, MouseMoveDriver } from "core/shell/drivers";
 import { MouseOverOutDriver } from "core/shell/drivers/MouseOverOutDriver";
 import { DragOverDriver } from "core/shell/drivers/DragOverDriver";
-import { useThemeMode } from "core-react/hooks/useThemeMode";
 import { useDocumentViewTypeState } from "core-react/hooks/useDocumentViewTypeState";
 import { CanvasShell } from "../CanvasShell";
 import { MouseUpDriver } from "core/shell/drivers/MouseUpDriver";
@@ -30,7 +29,6 @@ export const IframeCanvas2 = memo((
 
   const engine = useDesignerEngine()
   const { components } = useDesignComponents()
-  const themeMode = useThemeMode()
 
   // useEffect(() => {
   //   const head = document.getElementsByTagName('head')[0]
@@ -70,22 +68,10 @@ export const IframeCanvas2 = memo((
       )
 
       shell?.addCanvas(canvasImpl)
-
-      // const rootEl = ref.current.contentWindow?.document.getElementById("root")
-      // if (rootEl) {
-      //   if (rootRef.current) {
-      //     rootRef.current.unmount()
-      //   }
-      //   const root = ReactDOM.createRoot(
-      //     rootEl
-      //   );
-      //   rootRef.current = root
-      //   root.render(<CanvasRender engine={engine} doc={doc} components={components} />);
-      // }
     }
   }, [doc, engine])
 
-  const key = useMemo(() => `canvas-${doc.id + themeMode}`, [doc.id, themeMode])
+  const key = useMemo(() => `canvas-${doc.id}`, [doc.id])
 
   return (
     <CanvasShell display={viewType === "design"} >

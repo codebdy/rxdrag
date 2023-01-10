@@ -32,7 +32,7 @@ export abstract class EventEngine<EventType extends CustomEventClass = any> impl
   } = {}
 
   dispatch<T extends EventType = any>(event: T, context?: any) {
-    let interrupted = false
+    let interrupted = false;
     for (const key in this.subscribers) {
       if (isFn(this.subscribers[key])) {
         if (this.subscribers[key](event) === false) {
@@ -40,6 +40,7 @@ export abstract class EventEngine<EventType extends CustomEventClass = any> impl
         }
       }
     }
+
     return interrupted ? false : true
   }
 
