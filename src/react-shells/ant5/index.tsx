@@ -43,7 +43,6 @@ export const Antd5Editor = memo((props: Antd5EditorProps) => {
   const [engine, setEngine] = useState<IDesignerEngine>()
   const docRef = useRef<IDocument>()
   docRef.current = doc
-
   useEffect(() => {
     if (engine) {
       console.log("创建 document")
@@ -79,7 +78,7 @@ export const Antd5Editor = memo((props: Antd5EditorProps) => {
   return (
     <Designer
       onReady={handleReady}
-      themMode={themeMode}
+      themeMode={themeMode}
       components={initialComponents}
     >
       <ConfigRoot>

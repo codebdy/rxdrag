@@ -1,5 +1,5 @@
 import { IComponentMaterial } from "core-react";
-import { TextView } from "expamples/ant5/components/TextView";
+import { TextView } from "expamples/ant5/components/displays/TextView";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";

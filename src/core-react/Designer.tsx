@@ -7,24 +7,26 @@ import { IDesignerEngine } from "core";
 import { ActiveController, DragOverController, DragStopController, SelectionController } from "core/controllers";
 import { StartDragController } from "core/controllers/StartDragController";
 import { createEngine } from "core/createEngine";
-import { memo, useEffect, useState } from "react"
+import { memo, useEffect, useRef, useState } from "react"
 import { DesignerEngineContext } from "./contexts";
 import { DesignRoot } from "./DesignRoot";
 import { PreviewRoot } from "./PreviewRoot";
 import { IComponentMaterial } from "./interfaces";
 import { useComponentsFromMaterials } from "./hooks/useComponentsFromMaterials";
 import { DraggedAttenuator } from "core/auxwidgets/dragged-attenuator";
+import { ThemeMode } from "core/interfaces/action";
 
 export interface DesignerProps {
   components?: IComponentMaterial[]
   onReady?: (engine: IDesignerEngine) => void,
-  themMode?: "dark" | "light",
+  themeMode?: ThemeMode,
   children?: React.ReactNode
 }
 export const Designer = memo((props: DesignerProps) => {
-  const { themMode: theme = "light", components, children, onReady } = props
+  const { themeMode = "light", components, children, onReady } = props
   const [engine, setEngine] = useState<IDesignerEngine>();
-
+  const themeModeRef = useRef(themeMode)
+  themeModeRef.current = themeMode
   useEffect(() => {
     let eng: IDesignerEngine | undefined = undefined
     eng = createEngine(
@@ -55,9 +57,9 @@ export const Designer = memo((props: DesignerProps) => {
 
   useEffect(()=>{
     if(engine){
-      engine.getActions().setThemeMode(theme)
+      engine.getActions().setThemeMode(themeMode)
     }
-  }, [engine, theme])
+  }, [engine, themeMode])
 
   useEffect(() => {
     if (engine && components?.length) {

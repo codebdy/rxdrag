@@ -1,5 +1,5 @@
 import { IComponentMaterial } from "core-react";
-import { TimePicker } from "expamples/ant5/components/TimePicker";
+import { TimePicker } from "expamples/ant5/components/inputs/TimePicker";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";

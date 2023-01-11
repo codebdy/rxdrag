@@ -1,5 +1,5 @@
 import { IComponentMaterial } from "core-react";
-import { Transfer } from "expamples/ant5/components/Transfer";
+import { Transfer } from "expamples/ant5/components/inputs/Transfer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
