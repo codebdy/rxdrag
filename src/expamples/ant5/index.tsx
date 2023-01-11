@@ -42,6 +42,7 @@ export const Antd5Example = memo(() => {
       schemas={schemas}
       canvasUrl="/canvas-render"
       previewUrl="/preview-render"
+      themeMode = 'dark'
       navPanel={
         <>
           {
