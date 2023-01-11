@@ -1,5 +1,5 @@
 import { IComponentMaterial } from "core-react";
-import { DateRangePicker } from "expamples/ant5/components/DateRangePicker";
+import { DateRangePicker } from "expamples/ant5/components/inputs/DateRangePicker";
 import { rangePickerIcon } from "./icon";
 import { dateRangePickerLocales, dateRangePickerResourceLocales } from "./locales";
 import { dateRangePickerSchema } from "./schema";

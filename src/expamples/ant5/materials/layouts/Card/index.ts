@@ -3,7 +3,7 @@ import { colIcon } from "./icon";
 import { cardLocales, cardResourceLocales } from "./locales";
 import { cardSchema } from "./schema";
 import { DefaultSlotMaterial } from "../../DefualtSlot";
-import { Card } from "expamples/ant5/components/Card";
+import { Card } from "expamples/ant5/components/layouts/Card";
 
 const name = "Card"
 export const CardMaterial: IComponentMaterial = {

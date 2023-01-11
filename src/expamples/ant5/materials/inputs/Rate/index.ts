@@ -1,5 +1,5 @@
 import { IComponentMaterial } from "core-react";
-import { Rate } from "expamples/ant5/components/Rate";
+import { Rate } from "expamples/ant5/components/inputs/Rate";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
