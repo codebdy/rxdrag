@@ -6,6 +6,10 @@ export const useThemeMode = () => {
   const [themeMode, setThemeMode] = useState<ThemeMode>("light")
   const engine = useDesignerEngine()
 
+  useEffect(()=>{
+    setThemeMode(engine?.getMonitor().getState().themeMode || "light")
+  }, [engine])
+
   useEffect(() => {
     const monitor = engine?.getMonitor()
     if (monitor) {
