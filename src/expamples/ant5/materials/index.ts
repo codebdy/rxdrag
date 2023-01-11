@@ -48,6 +48,7 @@ import { PopconfirmMaterial } from "./popups/Popconfirm";
 import { PopoverMaterial } from "./popups/Popover";
 import { TooltipMaterial } from "./popups/Tooltip";
 import { BadgeMaterial } from "./displays/Badge";
+import { HeroMaterial } from "./layouts/Hero";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -104,6 +105,7 @@ export const layoutMaterials: IComponentMaterial[] = [
   PaperMaterial,
   DividerMaterial,
   BreadcrumbMaterial,
+  HeroMaterial,
 ]
 
 export const businessMaterials: IComponentMaterial[] = [

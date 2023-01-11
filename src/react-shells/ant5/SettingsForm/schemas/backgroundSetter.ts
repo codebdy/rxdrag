@@ -24,14 +24,37 @@ export const backgroundSetter: INodeSchema<IFieldMeta> = {
         {
           componentName: "BackgroundImageInput",
           props: {
-            title: "$backgroundImage",
-            imageTitle: "$image",
-            imageSizeTitle: "$imageSize",
-            repeatTitle: "$repeat",
-            positionTitle: "$position",
+            title: "$image",
           },
           "x-field": {
             name: "backgroundImage"
+          }
+        },
+        {
+          componentName: "BackgroundSizeInput",
+          props: {
+            title: "$imageSize",
+            },
+          "x-field": {
+            name: "backgroundSize"
+          }
+        },
+        {
+          componentName: "BackgroundRepeatInput",
+          props: {
+            title: "$repeat",
+          },
+          "x-field": {
+            name: "backgroundRepeat"
+          }
+        },
+        {
+          componentName: "BackgroundPositionInput",
+          props: {
+            title: "$position",
+          },
+          "x-field": {
+            name: "backgroundPosition"
           }
         },
       ]

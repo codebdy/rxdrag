@@ -46,6 +46,8 @@ export const settingLocales = {
       repeat:"重复",
       position:"定位",
 
+      selectImage:"选择图片",
+
       IconInput: {
         DialogTitle: "选择图标",
         "Outlined": "线框风格",
@@ -105,6 +107,8 @@ export const settingLocales = {
       imageSize:"ImageSize",
       repeat:"Repeat",
       position:"Positioin",
+
+      selectImage:"Select image",
 
       IconInput: {
         DialogTitle: "Select Icon",

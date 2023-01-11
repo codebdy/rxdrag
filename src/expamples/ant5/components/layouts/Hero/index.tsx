@@ -1,6 +1,7 @@
 import { ConfigProvider, theme } from "antd"
 import { ConfigContext } from "antd/es/config-provider";
 import { forwardRef, memo, CSSProperties, useContext, useMemo } from "react"
+import styled from "styled-components";
 
 export type HeroProps = {
   themeMode?: 'dark' | 'light' | 'inherit'
@@ -8,6 +9,11 @@ export type HeroProps = {
   children?: React.ReactNode,
   closeable?: boolean,
 }
+
+const HeroInner = styled.div`
+  padding: 8px 24px 32px 24px;
+  border-radius: 8px;
+`
 
 export const Hero = memo(forwardRef<HTMLDivElement>((props: HeroProps, ref) => {
   const { themeMode = 'inherit', children, ...other } = props
@@ -29,13 +35,12 @@ export const Hero = memo(forwardRef<HTMLDivElement>((props: HeroProps, ref) => {
         algorithm: algorithm
       }}
     >
-      <div
+      <HeroInner
         ref={ref}
-        className = "rx-hero"
         {...other}
       >
         {children}
-      </div>
+      </HeroInner>
     </ConfigProvider>
   )
 }))
