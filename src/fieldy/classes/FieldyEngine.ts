@@ -167,11 +167,10 @@ export class FieldyEngine implements IFieldyEngine {
   //递归找出改变的字段
   private getValue(formName: string, fieldPath: string, value: any, allValues: any) {
     allValues[fieldPath] = value
-    const fieldPaths = this.getSubFields(formName, fieldPath)
-    for (const key of fieldPaths) {
+    for (const key of Object.keys(value||{})) {
       const subName = key.substring(fieldPath.length + 1)
       if (subName) {
-        this.getValue(formName, key, value?.[subName], allValues)
+        this.getValue(formName, fieldPath + "." + key, value?.[key], allValues)
       }
     }
   }

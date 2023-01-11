@@ -1,4 +1,4 @@
-export const boxLocales = {
+export const locales = {
   "zh-CN": {
     title: "大块屏",
     settings: {
@@ -21,7 +21,7 @@ export const boxLocales = {
 }
 
 
-export const boxResourceLocales = {
+export const resourceLocales = {
   "zh-CN": {
     "Hero": "大块屏",
   },

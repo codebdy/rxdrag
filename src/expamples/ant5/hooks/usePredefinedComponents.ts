@@ -13,7 +13,11 @@ export function usePredefinedComponents() {
       DefaultSlot: DefaultSlot,
       Field: Field,
     }
-    const components: IComponents = {}
+    const components: IComponents = {
+      Root:Root,
+      DefaultSlot: DefaultSlot,
+      Field: Field,
+    }
     for (const com of [...inputMaterials,
     ...displayMaterials,
     ...fomrMaterials,

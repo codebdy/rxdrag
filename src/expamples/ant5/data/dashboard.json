@@ -1033,7 +1033,18 @@
                       ]
                     },
                     {
-                      "componentName": "RightAd",
+                      "componentName": "ImageView",
+                      "props": {
+                        "value": "/imgs/ad.jpg",
+                        "height": "30%",
+                        "style": {
+                          "marginTop": "16px",
+                          "borderTopLeftRadius": "8px",
+                          "borderTopRightRadius": "8px",
+                          "borderBottomRightRadius": "8px",
+                          "borderBottomLeftRadius": "8px"
+                        }
+                      },
                       "slots": {},
                       "children": []
                     },
