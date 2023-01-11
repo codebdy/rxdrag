@@ -1,10 +1,9 @@
 import { Divider } from "antd"
-import { useToken } from "antd/es/theme/internal"
 import { IDocument } from "core"
-import { IframeCanvas2 } from "core-react/canvas/IframeCanvas/index2"
+import { IframeCanvas } from "core-react/canvas/IframeCanvas"
 import { DocumentRoot } from "core-react/DocumentRoot"
 import { JsonView } from "core-react/JsonView"
-import { Preview } from "core-react/Preview"
+import { IframePreview } from "core-react/Preview"
 import { memo } from "react"
 import { CanvasToolbar } from "react-shells/ant5/layouts/CanvasToolbar"
 import { AuxButtionsButtions } from "react-shells/ant5/widgets/AuxButtions"
@@ -18,11 +17,12 @@ import { Viewport } from "../Viewport"
 export const DocumentView = memo((
   props: {
     doc?: IDocument,
-    renderUrl: string,
+    canvasUrl: string,
+    previewUrl: string,
   }
 ) => {
-  const { doc, renderUrl } = props
-  const [, token] = useToken()
+  const { doc, canvasUrl, previewUrl } = props
+
   return (
     doc ?
       <DocumentRoot doc={doc}>
@@ -40,8 +40,8 @@ export const DocumentView = memo((
         </CanvasToolbar>
         <Viewport>
           <JsonView />
-          <IframeCanvas2 doc={doc} renderUrl={renderUrl} />
-          <Preview backgroundColor={token.colorBgBase} />
+          <IframeCanvas doc={doc} renderUrl={canvasUrl} />
+          <IframePreview doc={doc} renderUrl={previewUrl} />
         </Viewport>
         <NavbarWidget />
       </DocumentRoot>

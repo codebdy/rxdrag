@@ -1,56 +1,40 @@
-import { CanvasShell } from "core-react/canvas/CanvasShell";
-import { ShadowCanvasView } from "core-react/canvas/ShadowDomCanvas/ShadowCanvasView";
+import { useCallback, useMemo } from "react"
+import { memo } from "react"
 import { useDesignerEngine } from "core-react/hooks";
-import { useDocument } from "core-react/hooks/useDocument"
-import { useDocumentViewTypeState } from "core-react/hooks/useDocumentViewTypeState"
-import { usePreviewComponents } from "core-react/hooks/usePreviewComponents";
-import { memo, useCallback, useRef } from "react"
-import ReactDOM from 'react-dom/client';
-import { PreviewRender } from "./PreviewRender";
+import { IDocument } from "core/interfaces";
+import { useDocumentViewTypeState } from "core-react/hooks/useDocumentViewTypeState";
+import { CanvasShell } from "core-react/canvas/CanvasShell";
 
-export const Preview = memo((
+export const IframePreview = memo((
   props: {
-    backgroundColor?: string,
+    doc: IDocument
+    renderUrl: string,
   }
 ) => {
-  const { backgroundColor } = props;
-  const doc = useDocument()
+  const { doc, renderUrl } = props;
   const [viewType] = useDocumentViewTypeState(doc?.id)
-  const { components } = usePreviewComponents()
   const engine = useDesignerEngine()
-  const rootRef = useRef<ReactDOM.Root>()
-
-  const handleRefChange = useCallback((host: HTMLElement | null) => {
-    if (host) {
-      if (rootRef.current) {
-        //rootRef.current.unmount()
+  const handleRefChange = useCallback((el: HTMLIFrameElement | null) => {
+    if (el && engine && el?.contentWindow) {
+      if (el.contentWindow) {
+        (el.contentWindow as any)["engine"] = engine;
+        (el.contentWindow as any)["doc"] = doc;
       }
-      host.innerHTML = ""
-      const shadow = host.attachShadow({ mode: 'open' });
-      const renderIn = document.createElement('div');
-      renderIn.style.height = "100%"
-      renderIn.style.width = "100%"
-      renderIn.style.overflow = "auto"
-      const styles = document.querySelectorAll("style")
-      for (let i = 0; i < styles.length; i++) {
-        const styleNode = document.createElement("style")
-        styleNode.innerHTML = styles[i].innerHTML
-        shadow.appendChild(styleNode)
-      }
-
-      shadow.appendChild(renderIn);
-      const root = ReactDOM.createRoot(
-        renderIn
-      );
-      rootRef.current = root;
-      root.render(<PreviewRender engine={engine} doc={doc} components={components} />);
     }
-  }, [components, doc, engine])
+  }, [doc, engine])
 
+  const key = useMemo(() => `preview-${doc.id}`, [doc.id])
 
   return (
-    <CanvasShell display={viewType === "preview"}    >
-      <ShadowCanvasView key={doc?.id} backgroundColor={backgroundColor} onRefChange={handleRefChange} />
+    <CanvasShell display={viewType === "preview"} >
+      <iframe
+        key={key}
+        ref={handleRefChange}
+        title={key}
+        style={{ border: "0", width: "100%", height: "100%" }}
+        src={renderUrl}
+      >
+      </iframe>
     </CanvasShell>
   )
 })

@@ -33,11 +33,12 @@ export type Antd5EditorProps = {
   children?: React.ReactNode,
   locales?: ILocales,
   schemas: INodeSchema,
-  renderUrl: string,
+  canvasUrl: string,
+  previewUrl: string,
 }
 
 export const Antd5Editor = memo((props: Antd5EditorProps) => {
-  const { leftNav, topBar, navPanel, locales, themeMode, schemas, children, renderUrl } = props;
+  const { leftNav, topBar, navPanel, locales, themeMode, schemas, children, canvasUrl, previewUrl } = props;
   const [doc, setDoc] = useState<IDocument>()
   const [engine, setEngine] = useState<IDesignerEngine>()
   const docRef = useRef<IDocument>()
@@ -132,7 +133,7 @@ export const Antd5Editor = memo((props: Antd5EditorProps) => {
               }
             </ToggleAblePane>
             <CenterContent>
-              <DocumentView doc={doc} renderUrl={renderUrl} />
+              <DocumentView doc={doc} canvasUrl={canvasUrl} previewUrl = {previewUrl} />
               {children}
             </CenterContent>
             <ToggleAblePane toggleType={ToggleType.right} width={300}>
