@@ -60,17 +60,109 @@
           "slots": {},
           "children": [
             {
-              "componentName": "HeroTip",
+              "componentName": "Hero",
               "props": {
                 "style": {
+                  "backgroundColor": "rgba(58,22,241,1)",
+                  "backgroundImage": "url(/imgs/hero.png)",
+                  "backgroundSize": "cover",
+                  "backgroundPosition": "center",
                   "marginTop": "16px",
                   "marginRight": "16px",
                   "marginBottom": "16px",
-                  "marginLeft": "16px"
-                }
+                  "marginLeft": "16px",
+                  "color": ""
+                },
+                "themeMode": "dark"
               },
               "slots": {},
-              "children": []
+              "children": [
+                {
+                  "componentName": "Row",
+                  "props": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Col",
+                      "props": {
+                        "span": 24,
+                        "style": {}
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "Hi，欢迎使用 Apper 低代码平台！",
+                            "mode": "h2",
+                            "style": {}
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "componentName": "Col",
+                      "props": {
+                        "span": 24,
+                        "style": {
+                          "marginTop": "8px"
+                        }
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "轻松创建、部署、管理您的Mes应用，提升开发效率，降低业务成本。 ",
+                            "style": {}
+                          },
+                          "slots": {},
+                          "children": []
+                        },
+                        {
+                          "componentName": "Button",
+                          "props": {
+                            "type": "link",
+                            "title": "Button",
+                            "style": {}
+                          },
+                          "slots": {
+                            "icon": {
+                              "componentName": "IconView",
+                              "props": {
+                                "icon": {
+                                  "iconKey": "BookOutlined"
+                                },
+                                "style": {
+                                  "marginRight": "4px"
+                                },
+                                "color": "rgba(255,255,255,1)"
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          },
+                          "children": [
+                            {
+                              "componentName": "TextView",
+                              "props": {
+                                "content": "开启引导",
+                                "style": {
+                                  "color": "rgba(255,255,255,1)"
+                                }
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             },
             {
               "componentName": "Row",

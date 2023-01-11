@@ -9,7 +9,6 @@ import { SelectMaterial } from "./inputs/Select";
 import { LogoMaterial } from "./layouts/Logo";
 import { MenuMaterial } from "./layouts/Menu";
 import { AvatarMaterial } from "./displays/Avatar";
-import { HeroTipMaterial } from "./business/HeroTip";
 import { CardMaterial } from "./layouts/Card";
 import { TextViewMaterial } from "./displays/TextView";
 import { StatisticMaterial } from "./displays/Statistic";
@@ -109,7 +108,6 @@ export const layoutMaterials: IComponentMaterial[] = [
 ]
 
 export const businessMaterials: IComponentMaterial[] = [
-  HeroTipMaterial,
   JobsMaterial,
   RightAdMaterial,
   NewsMaterial,
