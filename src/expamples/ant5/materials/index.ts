@@ -9,7 +9,6 @@ import { SelectMaterial } from "./inputs/Select";
 import { LogoMaterial } from "./layouts/Logo";
 import { MenuMaterial } from "./layouts/Menu";
 import { AvatarMaterial } from "./displays/Avatar";
-import { HeroTipMaterial } from "./business/HeroTip";
 import { CardMaterial } from "./layouts/Card";
 import { TextViewMaterial } from "./displays/TextView";
 import { StatisticMaterial } from "./displays/Statistic";
@@ -48,6 +47,7 @@ import { PopconfirmMaterial } from "./popups/Popconfirm";
 import { PopoverMaterial } from "./popups/Popover";
 import { TooltipMaterial } from "./popups/Tooltip";
 import { BadgeMaterial } from "./displays/Badge";
+import { HeroMaterial } from "./layouts/Hero";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -104,10 +104,10 @@ export const layoutMaterials: IComponentMaterial[] = [
   PaperMaterial,
   DividerMaterial,
   BreadcrumbMaterial,
+  HeroMaterial,
 ]
 
 export const businessMaterials: IComponentMaterial[] = [
-  HeroTipMaterial,
   JobsMaterial,
   RightAdMaterial,
   NewsMaterial,

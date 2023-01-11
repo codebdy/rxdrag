@@ -1,4 +1,5 @@
 import { INodeSchema } from "core";
+import { backgroundSetter } from "../SettingsForm/schemas/backgroundSetter";
 import { borderRediusSetter } from "../SettingsForm/schemas/borderRediusSetter";
 import { borderSetter } from "../SettingsForm/schemas/borderSetter";
 import { displaySetter } from "../SettingsForm/schemas/displaySetter";
@@ -80,20 +81,7 @@ const styleTab = {
       ]
     },
     displaySetter,
-    {
-      componentName: "FormItem",
-      props: {
-        label: "$background",
-      },
-      children: [
-        {
-          componentName: "ColorInput",
-          "x-field": {
-            name: "backgroundColor",
-          },
-        }
-      ]
-    },
+    backgroundSetter,
     fontStyleSetter,
     martinStyleSetter,
     paddingStyleSetter,

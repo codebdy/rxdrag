@@ -25,7 +25,7 @@ export const FoldIcon = memo(forwardRef<HTMLDivElement, IconViewProps>((props, r
     isStr(props.icon)
       ? <div ref={ref} {...other} dangerouslySetInnerHTML={{ __html: props.icon || "" }}>
       </div>
-      : <div ref={ref} >
+      : <div ref={ref} {...other} >
         {props.icon}
       </div>
   )
