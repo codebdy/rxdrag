@@ -1,7 +1,7 @@
 import { INodeSchema } from "core";
 import { createSchema } from "react-shells/ant5/shared/createSchema";
 
-export const textViewSchema: INodeSchema = createSchema(
+export const schema: INodeSchema = createSchema(
   [
     {
       componentName: "FormItem",

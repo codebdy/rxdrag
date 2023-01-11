@@ -1,4 +1,4 @@
-export const textViewLocales = {
+export const locales = {
   "zh-CN": {
     title: "文本",
     settings: {
@@ -17,7 +17,7 @@ export const textViewLocales = {
 }
 
 
-export const textViewResourceLocales = {
+export const resourceLocales = {
   "zh-CN": {
     "TextView": "文本",
   },

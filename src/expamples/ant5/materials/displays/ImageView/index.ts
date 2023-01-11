@@ -1,16 +1,16 @@
 import { IComponentMaterial } from "core-react";
-import { TextView } from "expamples/ant5/components/TextView";
+import { ImageView } from "react-shells/ant5/components/ImageView";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
-import { schema } from "./schema";
+import { maretialSchema } from "./schema";
 
-const name = "TextView"
-export const TextViewMaterial: IComponentMaterial = {
+const name = "ImageView"
+export const ImageViewMaterial: IComponentMaterial = {
   componentName: name,
-  component: TextView,
-  designer: TextView,
+  component: ImageView,
+  designer: ImageView,
   designerLocales: locales,
-  designerSchema: schema,
+  designerSchema: maretialSchema,
   resource: {
     name: name,
     icon: icon,

@@ -1033,7 +1033,13 @@
                       ]
                     },
                     {
-                      "componentName": "RightAd",
+                      "componentName": "ImageView",
+                      "props": {
+                        "content": "ImageView",
+                        "value": "/imgs/ad.jpg",
+                        "height": "30%",
+                        "style": {}
+                      },
                       "slots": {},
                       "children": []
                     },

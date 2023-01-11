@@ -34,6 +34,7 @@ import IconInput from "./components/IconInput";
 import { GutterInput } from "./components/GutterInput";
 import { ColInput } from "./components/ColInput";
 import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput } from "./components/BackgroundImageInput";
+import { ImageInput } from "./components/ImageInput";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -118,7 +119,8 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         BackgroundImageInput,
         BackgroundSizeInput,
         BackgroundRepeatInput,
-        BackgroundPositionInput
+        BackgroundPositionInput,
+        ImageInput,
       }}
     >
       <Fieldy>

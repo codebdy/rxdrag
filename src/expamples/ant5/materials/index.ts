@@ -48,6 +48,7 @@ import { PopoverMaterial } from "./popups/Popover";
 import { TooltipMaterial } from "./popups/Tooltip";
 import { BadgeMaterial } from "./displays/Badge";
 import { HeroMaterial } from "./layouts/Hero";
+import { ImageViewMaterial } from "./displays/ImageView";
 
 export const inputMaterials: IComponentMaterial[] = [
   ButtonMaterial,
@@ -76,6 +77,7 @@ export const displayMaterials: IComponentMaterial[] = [
   IconViewMaterial,
   AvatarMaterial,
   BadgeMaterial,
+  ImageViewMaterial,
 ]
 
 export const fomrMaterials: IComponentMaterial[] = [
