@@ -31,6 +31,7 @@ export type ImageViewProps = {
 
 export const ImageView = memo(forwardRef<HTMLDivElement, ImageViewProps>((props, ref) => {
   const { empertyIconSize = 120, value, style, height = '61.8%', ...other } = props;
+
   return (
     <ImageShell ref={ref} style={{ ...style, backgroundImage: `url(${value})`, paddingBottom: height }} {...other}>
       {

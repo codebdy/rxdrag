@@ -19,9 +19,6 @@ export const ImageViewMaterial: IComponentMaterial = {
     elements: [
       {
         componentName: name,
-        props: {
-          content: name,
-        }
       }
     ]
   },

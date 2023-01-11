@@ -88,7 +88,6 @@ function setInitialFlatValues(state: FormState, flatValues: any = {}) {
 }
 function setFlatValues(state: FormState, flatValues: any = {}) {
   const newFields = {} as FieldsState
-
   for (const key of Object.keys(flatValues || {})) {
     const fieldState = state?.fields?.[key]
     if (fieldState) {
