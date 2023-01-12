@@ -1,5 +1,6 @@
 import { Popover } from "antd";
 import { IComponentMaterial } from "core-react";
+import { DefaultSlotMaterial } from "../../DefualtSlot";
 import { TextViewMaterial } from "../../displays/TextView";
 import { PopoverDesigner } from "./designer";
 import { icon } from "./icon";
@@ -56,7 +57,7 @@ export const PopoverMaterial: IComponentMaterial = {
   },
   slots: {
     title: TextViewMaterial,
-    content: TextViewMaterial,
+    content: DefaultSlotMaterial,
   },
   behaviorRule: {
     droppable: true,
