@@ -36,28 +36,13 @@ export interface IDocumentAction<Payload extends DocumentActionPayload> extends 
 export type ViewType = "design" | "json" | "preview" | string
 export const DefulstViewType = "design"
 
-// export interface IReactionMeta {
-
-// }
-
-// export interface IFieldMeta {
-//   type?: "object" | "array" | "normal"
-//   name: string
-//   validateRule?: any
-//   defaultValue?: any
-//   valueProps?: string,
-//   //设置收集字段值变更的时机
-//   trigger?: string | string[],
-//   //是否接管输入输出控制，normal 类型默认true，其它默认 false
-//   withControl?: boolean
-// }
-
-export interface INodeMeta<IField = any> {
+export interface INodeMeta<IField = any, IReactions = any> {
   componentName: string,
   props?: {
     [key: string]: any,
   },
   "x-field"?: IField,
+  "x-reactions"?: IReactions,
   locked?: boolean,
   [key: string]: any,
 }

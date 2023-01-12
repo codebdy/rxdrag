@@ -1,7 +1,6 @@
 import { FieldContext } from "fieldy/contexts"
 import { IFieldMeta } from "fieldy/interfaces"
 import React, { memo } from "react"
-import { Reaction } from "../Reaction"
 import { useCreateFieldParams } from "./hooks/useCreateFieldParams"
 
 export const XField = memo((props: {
@@ -15,13 +14,7 @@ export const XField = memo((props: {
   return (
     <FieldContext.Provider value={params}>
       {
-        fieldMeta.effects
-          ? <Reaction>
-            {
-              children
-            }
-          </Reaction>
-          : children
+        children
       }
     </FieldContext.Provider>
   )

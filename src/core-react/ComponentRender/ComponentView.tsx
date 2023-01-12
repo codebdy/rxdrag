@@ -4,6 +4,7 @@ import { ComponentField } from "./ComponentField"
 import { ComponentSchemaContext } from "./contexts"
 import { usePreviewComponent } from "core-react/hooks/usePreviewComponent"
 import { withControl } from "fieldy/components/withControl"
+import { ComponentReaction } from "./ComponentReaction"
 
 export interface IComponentRenderSchema extends INodeSchema {
   id: ID,
@@ -37,20 +38,22 @@ export const ComponentView = memo((
   return (
     <ComponentSchemaContext.Provider value={node}>
       <ComponentField fieldMeta={node?.["x-field"]}>
-        {
-          Component &&
-          (
-            !!node.children?.length ?
-              <Component {...node.props} {...slots} {...other}>
-                {
-                  node.children?.map(child => {
-                    return (<ComponentView key={child.id} node={child} />)
-                  })
-                }
-              </Component>
-              : <Component {...node.props} {...slots} {...other}/>
-          )
-        }
+        <ComponentReaction reactionsMeta={node?.["x-reactions"]}>
+          {
+            Component &&
+            (
+              !!node.children?.length ?
+                <Component {...node.props} {...slots} {...other}>
+                  {
+                    node.children?.map(child => {
+                      return (<ComponentView key={child.id} node={child} />)
+                    })
+                  }
+                </Component>
+                : <Component {...node.props} {...slots} {...other} />
+            )
+          }
+        </ComponentReaction>
       </ComponentField>
     </ComponentSchemaContext.Provider>
   )

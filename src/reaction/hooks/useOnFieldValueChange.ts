@@ -1,15 +1,13 @@
 import { useFieldy, useFormName } from "fieldy/hooks"
-import { useField } from "fieldy/hooks/useField"
 import { useCallback, useEffect } from "react"
+import { IReactionsMeta } from "reaction/interfaces"
 import { useGetFieldPaths } from "./useGetFieldPaths"
 import { useNewFunction } from "./useNewFunction"
 
-export function useOnFieldValueChange() {
+export function useOnFieldValueChange(reaction?: IReactionsMeta) {
   const fieldy = useFieldy()
-  const fieldParams = useField()
-  const { fieldMeta } = fieldParams
   const formName = useFormName()
-  const reactionParams = fieldMeta?.effects?.onFieldValueChange
+  const reactionParams = reaction?.onFieldValueChange
 
   const getFieldPaths = useGetFieldPaths()
   const newFunc = useNewFunction()

@@ -19,23 +19,6 @@ export interface IFormProps {
   validateFirst?: boolean, //	是否只校验第一个非法规则	Boolean
 }
 
-// $form 虚拟表单， 
-// $field 当前字段, 设置字段：$field.setValue
-// $self 组件，设置组件属性:$self.setProps({dataSource:[...]}), 
-export interface IEffects {
-  onInit?: string,
-  onFormValueChange?: string,
-  //JS代码
-  onFieldValueChange?: {
-    field: string,
-    jsCode: string
-  },
-  onMultiFieldValueChange?: {
-    fields: string[],
-    jsCode: string
-  }//...
-}
-
 //跟core模块重复的定义，可能会在不同的项目中，暂时允许重复
 export interface IFieldMeta {
   //类型：对象、数组、常规、片段（name 为空）
@@ -53,7 +36,6 @@ export interface IFieldMeta {
   withControl?: boolean
   //是否虚拟字段，如果是，不输出最终值，不触发change
   virtual?: boolean
-  effects?: IEffects
   fragmentFields?: IFieldMeta[]
 }
 
