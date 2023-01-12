@@ -14,7 +14,7 @@ export type SchemaOptions = {
 }
 
 export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
-  const { propsSchemas, slotsSchemas } = opetions
+  const { propsSchemas, slotsSchemas, dataSchemas } = opetions
   const propsTab = propsSchemas ? [{
     componentName: "TabPanel",
     props: {
@@ -34,6 +34,14 @@ export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
     children: slotsSchemas
   }] : []
 
+  const dataTab = slotsSchemas ? [{
+    componentName: "TabPanel",
+    props: {
+      title: "$data",
+      id: "data",
+    },
+    children: dataSchemas
+  }] : []
   return {
     componentName: "Tabs",
     props: {},
@@ -44,7 +52,8 @@ export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
     children: [
       ...propsTab,
       styleTab,
-      ...slotsTab
+      ...slotsTab,
+      ...dataTab
     ]
   }
 }
