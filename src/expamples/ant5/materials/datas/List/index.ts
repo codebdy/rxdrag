@@ -1,5 +1,6 @@
 import { IComponentMaterial } from "core-react";
 import { List } from "expamples/ant5/components/datas/List";
+import { ListItemMaterial } from "../ListItem";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
@@ -12,7 +13,7 @@ export const ListMaterial: IComponentMaterial = {
   designerLocales: locales,
   designerSchema: materialSchema,
   designerProps: {
-    //readOnly: true,
+    dataSource: [{}]
   },
   resource: {
     name: name,
@@ -22,8 +23,16 @@ export const ListMaterial: IComponentMaterial = {
     elements: [
       {
         componentName: name,
+        slots: {
+          renderItem: {
+            componentName: "ListItem"
+          }
+        }
       }
     ]
+  },
+  slots: {
+    renderItem: ListItemMaterial,
   },
   behaviorRule: {
     droppable: false,
