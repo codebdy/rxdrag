@@ -1,5 +1,5 @@
 import { INodeSchema } from "core";
-import { IFieldSchema } from "fieldy";
+import { IFieldSchema } from "runtime/fieldy";
 
 export function extractFieldSchemas(node: INodeSchema) {
   const fieldSchema: IFieldSchema = { name: "$root$", fields: [] }

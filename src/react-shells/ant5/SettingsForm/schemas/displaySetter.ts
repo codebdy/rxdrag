@@ -1,5 +1,5 @@
 import { INodeSchema } from "core";
-import { IFieldMeta } from "fieldy";
+import { IFieldMeta } from "runtime/fieldy";
 
 export const displaySetter: INodeSchema<IFieldMeta> = {
   componentName: "Fold",

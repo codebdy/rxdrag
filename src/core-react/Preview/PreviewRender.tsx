@@ -1,9 +1,9 @@
-import { ComponentRender } from "core-react/ComponentRender"
 import { useDocumentViewTypeState } from "core-react/hooks/useDocumentViewTypeState"
 import { IComponents } from "core-react/interfaces"
 import { PreviewRoot } from "core-react/PreviewRoot"
 import { IDocument, INodeSchema } from "core/interfaces"
 import { memo, useEffect, useState } from "react"
+import { ComponentRender } from "runtime/ComponentRender"
 
 export const PreviewRender = memo((
   props: {
