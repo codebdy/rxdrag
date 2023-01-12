@@ -49,72 +49,99 @@ import { TooltipMaterial } from "./popups/Tooltip";
 import { BadgeMaterial } from "./displays/Badge";
 import { HeroMaterial } from "./layouts/Hero";
 import { ImageViewMaterial } from "./displays/ImageView";
+import { ListMaterial } from "./datas/List";
 
-export const inputMaterials: IComponentMaterial[] = [
-  ButtonMaterial,
-  InputMaterial,
-  TextAreaMaterial,
-  InputNumberMaterial,
-  AutoCompleteMaterial,
-  SelectMaterial,
-  CheckboxMaterial,
-  DatePickerMaterial,
-  DateRangePickerMaterial,
-  MentionsMaterial,
-  RadioMaterial,
-  RateMaterial,
-  SliderMaterial,
-  SwitchMaterial,
-  TimePickerMaterial,
-  CascaderMaterial,
-  TransferMaterial,
-  TreeSelectMaterial,
-]
+export type MaterialGroup = {
+  titleKey: string,
+  items: IComponentMaterial[]
+}
 
-export const displayMaterials: IComponentMaterial[] = [
-  TextViewMaterial,
-  StatisticMaterial,
-  IconViewMaterial,
-  AvatarMaterial,
-  BadgeMaterial,
-  ImageViewMaterial,
-]
-
-export const fomrMaterials: IComponentMaterial[] = [
-  FormMaterial,
-  FormItemMaterial,
-]
-
-export const popupMaterials: IComponentMaterial[] = [
-  DropdownMaterial,
-  DialogMaterial,
-  DrawerMaterial,
-  PopconfirmMaterial,
-  PopoverMaterial,
-  TooltipMaterial,
-]
-
-export const layoutMaterials: IComponentMaterial[] = [
-  RowMaterial,
-  ColMaterial,
-  HCFLayoutMaterial,
-  TwoColumnLayoutMaterial,
-  LogoMaterial,
-  MenuMaterial,
-  CardMaterial,
-  BoxMaterial,
-  PaperMaterial,
-  DividerMaterial,
-  BreadcrumbMaterial,
-  HeroMaterial,
-]
-
-export const businessMaterials: IComponentMaterial[] = [
-  JobsMaterial,
-  RightAdMaterial,
-  NewsMaterial,
-  CustomersMaterial,
-  NoticesMaterial,
+export const materials: MaterialGroup[] = [
+  {
+    titleKey: 'inputs',
+    items: [
+      ButtonMaterial,
+      InputMaterial,
+      TextAreaMaterial,
+      InputNumberMaterial,
+      AutoCompleteMaterial,
+      SelectMaterial,
+      CheckboxMaterial,
+      DatePickerMaterial,
+      DateRangePickerMaterial,
+      MentionsMaterial,
+      RadioMaterial,
+      RateMaterial,
+      SliderMaterial,
+      SwitchMaterial,
+      TimePickerMaterial,
+      CascaderMaterial,
+      TransferMaterial,
+      TreeSelectMaterial,
+    ]
+  },
+  {
+    titleKey: 'displays',
+    items: [
+      TextViewMaterial,
+      StatisticMaterial,
+      IconViewMaterial,
+      AvatarMaterial,
+      BadgeMaterial,
+      ImageViewMaterial,
+    ]
+  },
+  {
+    titleKey: 'forms',
+    items: [
+      FormMaterial,
+      FormItemMaterial,
+    ]
+  },
+  {
+    titleKey: 'popups',
+    items: [
+      DropdownMaterial,
+      DialogMaterial,
+      DrawerMaterial,
+      PopconfirmMaterial,
+      PopoverMaterial,
+      TooltipMaterial,
+    ]
+  },
+  {
+    titleKey: 'layouts',
+    items: [
+      RowMaterial,
+      ColMaterial,
+      HCFLayoutMaterial,
+      TwoColumnLayoutMaterial,
+      LogoMaterial,
+      MenuMaterial,
+      CardMaterial,
+      BoxMaterial,
+      PaperMaterial,
+      DividerMaterial,
+      BreadcrumbMaterial,
+      HeroMaterial,
+    ]
+  },
+  {
+    titleKey: 'datas',
+    items: [
+      ListMaterial,
+    ]
+  },
+  {
+    titleKey: 'business',
+    items: [
+      JobsMaterial,
+      RightAdMaterial,
+      NewsMaterial,
+      CustomersMaterial,
+      NoticesMaterial,
+    ]
+  }
 ]
 
 export const fields: IMaterialResource[] = [

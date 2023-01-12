@@ -4,10 +4,10 @@ import { Root } from "core-react/Root";
 import { isStr } from "core/utils/types";
 import { useMemo } from "react";
 import { Field } from "react-shells/ant5/components/Field";
-import { businessMaterials, displayMaterials, fomrMaterials, inputMaterials, layoutMaterials, popupMaterials } from "../materials";
+import { materials } from "../materials";
 
 export function usePredefinedComponents() {
-  const materials = useMemo(() => {
+  const coms = useMemo(() => {
     const designers: IComponents = {
       Root:Root,
       DefaultSlot: DefaultSlot,
@@ -18,28 +18,25 @@ export function usePredefinedComponents() {
       DefaultSlot: DefaultSlot,
       Field: Field,
     }
-    for (const com of [...inputMaterials,
-    ...displayMaterials,
-    ...fomrMaterials,
-    ...popupMaterials,
-    ...layoutMaterials,
-    ...businessMaterials,
-    ]) {
-      designers[com.componentName] = com.designer
-      components[com.componentName] = com.component
-      if(com.slots){
-        for(const key of Object.keys(com.slots)){
-          const slot = com.slots[key]
-          if (slot === true || slot === undefined || isStr(slot)) {
-            continue
+    for(const mGroup of materials){
+      for(const com of mGroup.items){
+        designers[com.componentName] = com.designer
+        components[com.componentName] = com.component
+        if(com.slots){
+          for(const key of Object.keys(com.slots)){
+            const slot = com.slots[key]
+            if (slot === true || slot === undefined || isStr(slot)) {
+              continue
+            }
+            designers[slot.componentName] = slot.designer
+            components[slot.componentName] = slot.component
           }
-          designers[slot.componentName] = slot.designer
-          components[slot.componentName] = slot.component
         }
       }
     }
+
     return { designers, components }
   }, [])
 
-  return materials
+  return coms
 }
