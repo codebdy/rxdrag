@@ -96,7 +96,7 @@ const options: SchemaOptions = {
       ]
     },
   ],
-  dataSchemas: []
+  logicSchemas: []
 }
 
 export const materialSchema: INodeSchema = createSchema(options)

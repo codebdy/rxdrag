@@ -10,11 +10,11 @@ import { paddingStyleSetter } from "../SettingsForm/schemas/paddingStyleSetter";
 export type SchemaOptions = {
   propsSchemas?: INodeSchema[],
   slotsSchemas?: INodeSchema[],
-  dataSchemas?: INodeSchema[],
+  logicSchemas?: INodeSchema[],
 }
 
 export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
-  const { propsSchemas, slotsSchemas, dataSchemas } = opetions
+  const { propsSchemas, slotsSchemas, logicSchemas } = opetions
   const propsTab = propsSchemas ? [{
     componentName: "TabPanel",
     props: {
@@ -37,10 +37,10 @@ export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
   const dataTab = slotsSchemas ? [{
     componentName: "TabPanel",
     props: {
-      title: "$data",
-      id: "data",
+      title: "$logic",
+      id: "logic",
     },
-    children: dataSchemas
+    children: logicSchemas
   }] : []
   return {
     componentName: "Tabs",
