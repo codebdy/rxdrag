@@ -1,5 +1,7 @@
 import { IComponentMaterial } from "core-react";
 import { List } from "expamples/ant5/components/datas/List";
+import { ListFooterMaterial } from "../ListFooter";
+import { ListHeaderMaterial } from "../ListHeader";
 import { ListItemMaterial } from "../ListItem";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
@@ -33,22 +35,22 @@ export const ListMaterial: IComponentMaterial = {
                   avatar: {
                     componentName: "Avatar"
                   },
-                  title:{
-                    componentName:"TextView",
-                    props:{
-                      content:"Title"
+                  title: {
+                    componentName: "TextView",
+                    props: {
+                      content: "Title"
                     }
                   },
-                  description:{
-                    componentName:"TextView",
-                    props:{
-                      content:"Description"
+                  description: {
+                    componentName: "TextView",
+                    props: {
+                      content: "Description"
                     }
                   },
                 }
               }
             ],
-            slots:{
+            slots: {
               actions: {
                 componentName: "ActionSlot"
               },
@@ -56,13 +58,15 @@ export const ListMaterial: IComponentMaterial = {
                 componentName: "ExtraSlot"
               },
             }
-          }
+          },
         }
       }
     ]
   },
   slots: {
     renderItem: ListItemMaterial,
+    header: ListHeaderMaterial,
+    footer: ListFooterMaterial,
   },
   behaviorRule: {
     droppable: false,
