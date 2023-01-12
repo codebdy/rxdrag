@@ -50,6 +50,7 @@ import { BadgeMaterial } from "./displays/Badge";
 import { HeroMaterial } from "./layouts/Hero";
 import { ImageViewMaterial } from "./displays/ImageView";
 import { ListMaterial } from "./datas/List";
+import { ListItemMetaMaterial } from "./datas/ListItemMeta";
 
 export type MaterialGroup = {
   titleKey: string,
@@ -130,6 +131,7 @@ export const materials: MaterialGroup[] = [
     titleKey: 'datas',
     items: [
       ListMaterial,
+      ListItemMetaMaterial,
     ]
   },
   {

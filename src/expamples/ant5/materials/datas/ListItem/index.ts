@@ -13,7 +13,7 @@ export const ListItemMaterial: IComponentMaterial = {
   designerProps: {
     //readOnly: true,
   },
-  
+
   resource: {
     name: name,
     elements: [
@@ -24,7 +24,7 @@ export const ListItemMaterial: IComponentMaterial = {
   },
 
   behaviorRule: {
-    droppable: false,
+    droppable: true,
     noPlaceholder: false,
   }
 }
