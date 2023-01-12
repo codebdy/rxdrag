@@ -29,7 +29,7 @@ export const PopoverMaterial: IComponentMaterial = {
           title: {
             componentName: "TextView",
             props: {
-              content: "Delete the task",
+              content: "Popover Title",
             }
           },
           content: {
