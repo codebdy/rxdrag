@@ -1,4 +1,4 @@
-export const slotLocales = {
+export const locales = {
   "zh-CN": {
     title: "默认卡槽",
     //description: "布局行",

@@ -59,16 +59,17 @@ export const materialSchema: INodeSchema = createSchema(
     {
       componentName: "FormItem",
       props: {
-        label: "$icon",
+        label: "$header",
       },
       children: [
         {
           componentName: "SlotSwitch",
           props: {
-            name: "icon"
+            name: "header"
           }
         }
       ]
     },
+
   ]
 )

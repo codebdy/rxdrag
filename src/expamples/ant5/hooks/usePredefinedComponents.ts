@@ -1,29 +1,26 @@
 import { IComponents } from "core-react";
-import { DefaultSlot } from "core-react/DefaultSlot";
 import { Root } from "core-react/Root";
 import { isStr } from "core/utils/types";
 import { useMemo } from "react";
 import { Field } from "react-shells/ant5/components/Field";
-import { materials } from "../materials";
+import { materials, slots } from "../materials";
 
 export function usePredefinedComponents() {
   const coms = useMemo(() => {
     const designers: IComponents = {
-      Root:Root,
-      DefaultSlot: DefaultSlot,
+      Root: Root,
       Field: Field,
     }
     const components: IComponents = {
-      Root:Root,
-      DefaultSlot: DefaultSlot,
+      Root: Root,
       Field: Field,
     }
-    for(const mGroup of materials){
-      for(const com of mGroup.items){
+    for (const mGroup of materials) {
+      for (const com of mGroup.items) {
         designers[com.componentName] = com.designer
         components[com.componentName] = com.component
-        if(com.slots){
-          for(const key of Object.keys(com.slots)){
+        if (com.slots) {
+          for (const key of Object.keys(com.slots)) {
             const slot = com.slots[key]
             if (slot === true || slot === undefined || isStr(slot)) {
               continue
@@ -33,6 +30,11 @@ export function usePredefinedComponents() {
           }
         }
       }
+    }
+
+    for (const com of slots) {
+      designers[com.componentName] = com.designer
+      components[com.componentName] = com.component
     }
 
     return { designers, components }

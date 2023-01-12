@@ -47,7 +47,15 @@ export const ListMaterial: IComponentMaterial = {
                   },
                 }
               }
-            ]
+            ],
+            slots:{
+              actions: {
+                componentName: "ActionSlot"
+              },
+              extra: {
+                componentName: "ExtraSlot"
+              },
+            }
           }
         }
       }

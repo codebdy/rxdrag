@@ -51,6 +51,9 @@ import { HeroMaterial } from "./layouts/Hero";
 import { ImageViewMaterial } from "./displays/ImageView";
 import { ListMaterial } from "./datas/List";
 import { ListItemMetaMaterial } from "./datas/ListItemMeta";
+import { DefaultSlotMaterial } from "./slots/DefualtSlot";
+import { ActionSlotMaterial } from "./slots/ActionSlot";
+import { ExtraSlotMaterial } from "./slots/ExtraSlot";
 
 export type MaterialGroup = {
   titleKey: string,
@@ -148,4 +151,10 @@ export const materials: MaterialGroup[] = [
 
 export const fields: IMaterialResource[] = [
   InputFieldResource,
+]
+
+export const slots: IComponentMaterial[] = [
+  DefaultSlotMaterial,
+  ActionSlotMaterial,
+  ExtraSlotMaterial
 ]

@@ -1,6 +1,6 @@
 import { Popover } from "antd";
 import { IComponentMaterial } from "core-react";
-import { DefaultSlotMaterial } from "../../DefualtSlot";
+import { DefaultSlotMaterial } from "../../slots/DefualtSlot";
 import { TextViewMaterial } from "../../displays/TextView";
 import { PopoverDesigner } from "./designer";
 import { icon } from "./icon";
