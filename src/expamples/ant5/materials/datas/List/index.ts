@@ -25,7 +25,29 @@ export const ListMaterial: IComponentMaterial = {
         componentName: name,
         slots: {
           renderItem: {
-            componentName: "ListItem"
+            componentName: "ListItem",
+            children: [
+              {
+                componentName: "ListItemMeta",
+                slots: {
+                  avatar: {
+                    componentName: "Avatar"
+                  },
+                  title:{
+                    componentName:"TextView",
+                    props:{
+                      content:"Title"
+                    }
+                  },
+                  description:{
+                    componentName:"TextView",
+                    props:{
+                      content:"Description"
+                    }
+                  },
+                }
+              }
+            ]
           }
         }
       }

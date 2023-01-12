@@ -14,7 +14,6 @@ export const ListItemMetaMaterial: IComponentMaterial = {
   designerLocales: locales,
   designerSchema: materialSchema,
   designerProps: {
-    dataSource: [{}]
   },
   resource: {
     name: name,
@@ -52,5 +51,6 @@ export const ListItemMetaMaterial: IComponentMaterial = {
   behaviorRule: {
     droppable: false,
     noPlaceholder: false,
+    noRef: true,
   }
 }

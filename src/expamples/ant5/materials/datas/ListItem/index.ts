@@ -19,6 +19,11 @@ export const ListItemMaterial: IComponentMaterial = {
     elements: [
       {
         componentName: name,
+        children: [
+          {
+            componentName: "ListItemMeta"
+          }
+        ]
       }
     ]
   },
