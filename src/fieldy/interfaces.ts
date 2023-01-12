@@ -19,9 +19,11 @@ export interface IFormProps {
   validateFirst?: boolean, //	是否只校验第一个非法规则	Boolean
 }
 
+// $form 虚拟表单， 
+// $field 当前字段, 设置字段：$field.setValue
+// $self 组件，设置组件属性:$self.setProps({dataSource:[...]}), 
 export interface IEffects {
   onInit?: string,
-  onChange?: string,
   onFormValueChange?: string,
   //JS代码
   onFieldValueChange?: {
