@@ -6,54 +6,65 @@ const options: SchemaOptions = {
     {
       componentName: "FormItem",
       props: {
-        label: "$count",
+        label: "$bordered",
       },
       children: [
         {
-          componentName: "InputNumber",
+          componentName: "Switch",
           "x-field": {
-            name: "count",
+            name: "bordered",
+            valuePropName: "checked",
           },
         }
       ],
     },
-
     {
       componentName: "FormItem",
       props: {
-        label: "$placement",
+        label: "$split",
+      },
+      children: [
+        {
+          componentName: "Switch",
+          "x-field": {
+            name: "split",
+            valuePropName: "checked",
+          },
+        }
+      ],
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$size",
       },
       children: [
         {
           componentName: "Radio.Group",
           "x-field": {
-            name: "placement",
+            name: "size",
           },
           props: {
             optionType: "button",
             options: [
               {
-                label: "$right",
-                value: "right"
+                label: "$large",
+                value: "large"
               },
               {
-                label: "$left",
-                value: "left"
+                label: "$middle",
+                value: "middle"
               },
               {
-                label: "$top",
-                value: "top"
-              },
-              {
-                label: "$bottom",
-                value: "bottom"
+                label: "$small",
+                value: "small"
               },
             ],
-            defaultValue: "right",
+            defaultValue: "middle",
           }
         }
       ]
-    },
+    }
   ],
   slotsSchemas: [
     {
