@@ -1,8 +1,8 @@
 import { INodeSchema } from "core";
-import { createSchema } from "react-shells/ant5/shared/createSchema";
+import { createSchema, SchemaOptions } from "react-shells/ant5/shared/createSchema";
 
-export const materialSchema: INodeSchema = createSchema(
-  [
+const options: SchemaOptions = {
+  propsSchemas: [
     {
       componentName: "FormItem",
       props: {
@@ -40,7 +40,7 @@ export const materialSchema: INodeSchema = createSchema(
       ]
     },
   ],
-  [
+  slotsSchemas: [
     {
       componentName: "FormItem",
       props: {
@@ -56,4 +56,5 @@ export const materialSchema: INodeSchema = createSchema(
       ]
     },
   ]
-)
+}
+export const materialSchema: INodeSchema = createSchema(options)

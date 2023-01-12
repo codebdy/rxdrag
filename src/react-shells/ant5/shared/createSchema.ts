@@ -7,24 +7,31 @@ import { fontStyleSetter } from "../SettingsForm/schemas/fontStyleSetter";
 import { martinStyleSetter } from "../SettingsForm/schemas/martinStyleSetter";
 import { paddingStyleSetter } from "../SettingsForm/schemas/paddingStyleSetter";
 
-export function createSchema(propsSchema?: INodeSchema[], slots?: INodeSchema[]): INodeSchema {
-  const propsTab = propsSchema ? [{
+export type SchemaOptions = {
+  propsSchemas?: INodeSchema[],
+  slotsSchemas?: INodeSchema[],
+  dataSchemas?: INodeSchema[],
+}
+
+export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
+  const { propsSchemas, slotsSchemas } = opetions
+  const propsTab = propsSchemas ? [{
     componentName: "TabPanel",
     props: {
       title: "$properties"
     },
     children: [
-      ...propsSchema || []
+      ...propsSchemas || []
     ]
   }] : [];
 
-  const slotsTab = slots ? [{
+  const slotsTab = slotsSchemas ? [{
     componentName: "TabPanel",
     props: {
       title: "$slots",
       id: "slots",
     },
-    children: slots
+    children: slotsSchemas
   }] : []
 
   return {
