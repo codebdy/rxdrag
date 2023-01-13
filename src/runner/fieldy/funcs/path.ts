@@ -1,4 +1,4 @@
-import { IFieldMeta, IFieldMetas } from "../interfaces";
+import { FieldsState, FieldState } from "../interfaces";
 
 export function isChild(path: string, parentPath?: string) {
   if (!parentPath) {
@@ -19,11 +19,14 @@ export function isChild(path: string, parentPath?: string) {
   return false
 }
 
-export function getChildFields(fieldSchemas: IFieldMetas, parentPath?: string) {
-  const fields: IFieldMeta[] = []
-  for (const path of Object.keys(fieldSchemas)) {
+export function getChildFields(allFields: FieldsState, parentPath?: string) {
+  const fields: FieldState[] = []
+  for (const path of Object.keys(allFields)) {
     if(isChild(path, parentPath)){
-      fields.push(fieldSchemas[path])
+      const field = allFields[path]
+      if(field){
+        fields.push(field)
+      }
     }
   }
   return fields

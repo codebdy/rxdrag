@@ -23,7 +23,7 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
       return setFlatValues(state, (action.payload as SetFormValuesPayload).values)
     }
     case SET_FORM_INITIAL_VALUES: {
-      const flatInitialValues = patFlatValues((action.payload as SetFormValuesPayload).values, state.fieldMetas)
+      const flatInitialValues = patFlatValues((action.payload as SetFormValuesPayload).values, state.fields)
       const stateWithInitialValues = setInitialFlatValues(state, flatInitialValues)
       return {
         ...state,
@@ -33,7 +33,7 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
       }
     }
     case SET_FORM_VALUES: {
-      const flatValues = patFlatValues((action.payload as SetFormValuesPayload).values, state.fieldMetas)
+      const flatValues = patFlatValues((action.payload as SetFormValuesPayload).values, state.fields)
       const stateWithFlateValues = setFlatValues(state, flatValues)
 
       return {
@@ -106,10 +106,10 @@ function setFlatValues(state: FormState, flatValues: any = {}) {
   }
 }
 
-function patFlatValues(values: FormValue | undefined, fieldSchemas: IFieldMetas, parentFieldPath?: string) {
+function patFlatValues(values: FormValue | undefined, allFields: FieldsState, parentFieldPath?: string) {
   const prefix = parentFieldPath ? parentFieldPath + "." : ""
   let flatValues: FormValue = {}
-  const childFields = getChildFields(fieldSchemas, parentFieldPath)
+  const childFields = getChildFields(allFields, parentFieldPath)
   for (const meta of childFields) {
     if (!meta.name) {
       continue
@@ -117,7 +117,7 @@ function patFlatValues(values: FormValue | undefined, fieldSchemas: IFieldMetas,
     const path = prefix + meta.name
 
     flatValues[path] = values?.[meta.name]
-    const subValues = patFlatValues(values?.[meta.name], fieldSchemas, path)
+    const subValues = patFlatValues(values?.[meta.name], allFields, path)
     flatValues = { ...flatValues, ...subValues }
   }
 
@@ -135,7 +135,7 @@ function makeFields(fieldSchemas: IFieldMetas) {
       path: path,
       basePath: path.substring(0, path.length - (meta.name?.length || 0) - 1),
       mounted: true,
-      fieldMeta: meta
+      meta: meta
     }
   }
   return flatFields

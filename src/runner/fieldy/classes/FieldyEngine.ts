@@ -1,7 +1,7 @@
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "core/utils/util-invariant";
 import { CREATE_FORM, FormActionPlayload, REMOVE_FORM, SetFieldValuePayload, SetFormFieldsPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES } from "runner/fieldy/actions";
-import { FieldChangeListener, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldMetas, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "runner/fieldy/interfaces";
+import { FieldChangeListener, FieldsState, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldMetas, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "runner/fieldy/interfaces";
 import { reduce, State } from "runner/fieldy/reducers";
 import { getChildFields } from "../funcs/path";
 
@@ -144,7 +144,7 @@ export class FieldyEngine implements IFieldyEngine {
 
   setFieldValue(formName: string, fieldPath: string, value: any): void {
     console.log("哈哈哈 setFieldValue1", fieldPath, value)
-    if (this.getField(formName, fieldPath)?.fieldMeta.type === "object") {
+    if (this.getField(formName, fieldPath)?.meta.type === "object") {
       const values: any = {}
       console.log("哈哈哈 setFieldValue", fieldPath, value, this.getValue(formName, fieldPath, value, values))
       this.getValue(formName, fieldPath, value, values)
@@ -204,7 +204,7 @@ export class FieldyEngine implements IFieldyEngine {
     const state = this.store.getState()
     const fieldState = state.forms[formName]?.fields?.[fieldPath]
     if (fieldState) {
-      if (fieldState.fieldMeta?.type === "object") {
+      if (fieldState.meta?.type === "object") {
         const value = { ...fieldState.value }
         const fields = this.getSubFields(formName, fieldPath)
         for (const key of fields) {
@@ -218,7 +218,7 @@ export class FieldyEngine implements IFieldyEngine {
           return value
         }
         return undefined
-      } else if (fieldState.fieldMeta?.type === "array") {
+      } else if (fieldState.meta?.type === "array") {
         throw new Error("Not implement arrray type")
       } else {//undefined or "normal"
         return fieldState.value
@@ -326,7 +326,7 @@ export class FieldyEngine implements IFieldyEngine {
       return {}
     }
     const flatValues = this.getFormFlatValues(name)
-    const normalValue = this.trasformFlatValuesToNormal(JSON.parse(JSON.stringify(formState.originalValue || {})), flatValues, formState.fieldMetas)
+    const normalValue = this.trasformFlatValuesToNormal(JSON.parse(JSON.stringify(formState.originalValue || {})), flatValues, formState.fields)
     return normalValue
   }
 
@@ -343,44 +343,44 @@ export class FieldyEngine implements IFieldyEngine {
     return flatValues
   }
 
-  private trasformFlatValuesToNormal(originalValue: any = {}, flatValues: FormValue, fieldSchemas: IFieldMetas, basePath?: string) {
+  private trasformFlatValuesToNormal(originalValue: any = {}, flatValues: FormValue, allFields: FieldsState, basePath?: string) {
     const value: FormValue = originalValue
     const prefix = basePath ? basePath + "." : ""
-    const childFields = getChildFields(fieldSchemas, basePath)
-    for (const fieldMeta of childFields) {
-      if (fieldMeta.type === "fragment") {
-        for (const fragField of fieldMeta.fragmentFields || []) {
-          if (fragField.name) {
-            const fieldPath = prefix + fragField.name
-            const subValue = flatValues[fieldPath]
-            if (subValue !== undefined) {
-              value[fragField.name] = subValue
-            }
-          } else {
-            console.error("No subfield name on fragment")
-          }
-        }
+    const childFields = getChildFields(allFields, basePath)
+    for (const field of childFields) {
+      // if (field.type === "fragment") {
+      //   for (const fragField of field.fragmentFields || []) {
+      //     if (fragField.name) {
+      //       const fieldPath = prefix + fragField.name
+      //       const subValue = flatValues[fieldPath]
+      //       if (subValue !== undefined) {
+      //         value[fragField.name] = subValue
+      //       }
+      //     } else {
+      //       console.error("No subfield name on fragment")
+      //     }
+      //   }
+      //   continue
+      // }
+
+      if (!field.name || field.meta.virtual) {
         continue
       }
 
-      if (!fieldMeta.name || fieldMeta.virtual) {
-        continue
-      }
-
-      const fieldPath = prefix + fieldMeta.name
-      if (fieldMeta.type === "object") {
-        value[fieldMeta.name] = this.trasformFlatValuesToNormal(value[fieldMeta.name], flatValues, fieldSchemas, fieldPath)
-      } else if (fieldMeta.type === "array") {
-        const objectValue = this.trasformFlatValuesToNormal(value[fieldMeta.name], flatValues, fieldSchemas, fieldPath)
+      const fieldPath = prefix + field.name
+      if (field.meta.type === "object") {
+        value[field.name] = this.trasformFlatValuesToNormal(value[field.name], flatValues, allFields, fieldPath)
+      } else if (field.meta.type === "array") {
+        const objectValue = this.trasformFlatValuesToNormal(value[field.name], flatValues, allFields, fieldPath)
         const arrayValue = []
         for (const key of Object.keys(objectValue)) {
           arrayValue[parseInt(key)] = objectValue[key]
         }
-        value[fieldMeta.name] = arrayValue
+        value[field.name] = arrayValue
       } else {
         const subValue = flatValues[fieldPath]
         if (subValue !== undefined) {
-          value[fieldMeta.name] = flatValues[fieldPath]
+          value[field.name] = flatValues[fieldPath]
         }
       }
     }

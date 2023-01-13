@@ -91,7 +91,7 @@ export type FieldState = {
   initialValue?: any;
   errors?: IFieldFeedback[];
   validateStatus?: FieldValidateStatus;
-  fieldMeta: IFieldMeta
+  meta: IFieldMeta
 }
 
 export type FieldsState = {
