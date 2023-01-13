@@ -1,7 +1,9 @@
 import { INodeSchema } from "core";
 import { createSchema, SchemaOptions } from "react-shells/ant5/shared/createSchema";
+import { IFieldMeta } from "runtime/fieldy";
+import { IReactionsMeta } from "runtime/reaction/interfaces";
 
-const options: SchemaOptions = {
+const options: SchemaOptions<IFieldMeta, IReactionsMeta> = {
   propsSchemas: [
     {
       componentName: "FormItem",
@@ -96,7 +98,45 @@ const options: SchemaOptions = {
       ]
     },
   ],
-  logicSchemas: []
+  logicSchemas: [
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$fieldType",
+      },
+      children: [
+        {
+          componentName: "Select",
+          "x-field": {
+            name: "type",
+          },
+          props: {
+            options: [
+              {
+                value: '',
+                label: '',
+              },
+              {
+                value: 'normal',
+                label: 'Normal',
+              },
+              {
+                value: 'object',
+                label: 'Object',
+              },
+              {
+                value: 'array',
+                label: 'Array',
+              },
+              {
+                value: 'fragment',
+                label: 'Fragment',
+              },
+            ]
+          }
+        }]
+    }
+  ]
 }
 
 export const materialSchema: INodeSchema = createSchema(options)

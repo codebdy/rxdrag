@@ -48,6 +48,8 @@ export const settingLocales = {
 
       selectImage:"选择图片",
 
+      fieldType:"字段类型",
+
       IconInput: {
         DialogTitle: "选择图标",
         "Outlined": "线框风格",
@@ -109,6 +111,8 @@ export const settingLocales = {
       position:"Positioin",
 
       selectImage:"Select image",
+
+      fieldType:"Field Type",
 
       IconInput: {
         DialogTitle: "Select Icon",

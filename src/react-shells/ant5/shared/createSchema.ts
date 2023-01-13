@@ -7,16 +7,20 @@ import { fontStyleSetter } from "../SettingsForm/schemas/fontStyleSetter";
 import { martinStyleSetter } from "../SettingsForm/schemas/martinStyleSetter";
 import { paddingStyleSetter } from "../SettingsForm/schemas/paddingStyleSetter";
 
-export type SchemaOptions = {
-  propsSchemas?: INodeSchema[],
-  slotsSchemas?: INodeSchema[],
-  logicSchemas?: INodeSchema[],
+export type SchemaOptions<IField = any,IReactions=any> = {
+  propsSchemas?: INodeSchema<IField, IReactions>[],
+  slotsSchemas?: INodeSchema<IField, IReactions>[],
+  logicSchemas?: INodeSchema<IField, IReactions>[],
 }
 
 export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
   const { propsSchemas, slotsSchemas, logicSchemas } = opetions
   const propsTab = propsSchemas ? [{
     componentName: "TabPanel",
+    "x-field": {
+      type: "object",
+      name: "props",
+    },
     props: {
       title: "$properties"
     },
@@ -34,7 +38,7 @@ export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
     children: slotsSchemas
   }] : []
 
-  const dataTab = slotsSchemas ? [{
+  const logicTab = slotsSchemas ? [{
     componentName: "TabPanel",
     props: {
       title: "$logic",
@@ -45,15 +49,11 @@ export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
   return {
     componentName: "Tabs",
     props: {},
-    "x-field": {
-      type: "object",
-      name: "props",
-    },
     children: [
       ...propsTab,
       styleTab,
       ...slotsTab,
-      ...dataTab
+      ...logicTab
     ]
   }
 }
@@ -65,7 +65,7 @@ const styleTab = {
   },
   "x-field": {
     type: "object",
-    name: "style"
+    name: "props.style"
   },
   children: [
     {

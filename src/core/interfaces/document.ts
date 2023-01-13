@@ -86,7 +86,7 @@ export interface NodeBehavior {
   isLockable: () => boolean
 }
 
-export interface INodeSchema<IField = any> extends INodeMeta<IField> {
+export interface INodeSchema<IField = any, IReactions = any> extends INodeMeta<IField, IReactions> {
   name?: string,
   //引用一段schema，ref赋值name，用于框架等分块编辑
   ref?: string,
