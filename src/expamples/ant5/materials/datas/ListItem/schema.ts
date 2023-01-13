@@ -2,59 +2,6 @@ import { INodeSchema } from "core";
 import { createSchema, SchemaOptions } from "react-shells/ant5/shared/createSchema";
 
 const options: SchemaOptions = {
-  propsSchemas:  [
-    {
-      componentName: "FormItem",
-      props: {
-        label: "$count",
-      },
-      children: [
-        {
-          componentName: "InputNumber",
-          "x-field": {
-            name: "count",
-          },
-        }
-      ],
-    },
-
-    {
-      componentName: "FormItem",
-      props: {
-        label: "$placement",
-      },
-      children: [
-        {
-          componentName: "Radio.Group",
-          "x-field": {
-            name: "placement",
-          },
-          props: {
-            optionType: "button",
-            options: [
-              {
-                label: "$right",
-                value: "right"
-              },
-              {
-                label: "$left",
-                value: "left"
-              },
-              {
-                label: "$top",
-                value: "top"
-              },
-              {
-                label: "$bottom",
-                value: "bottom"
-              },
-            ],
-            defaultValue: "right",
-          }
-        }
-      ]
-    },
-  ],
   slotsSchemas:  [
     {
       componentName: "FormItem",
