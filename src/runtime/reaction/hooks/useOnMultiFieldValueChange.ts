@@ -7,7 +7,7 @@ import { useNewFunction } from "./useNewFunction"
 export function useOnMultiFieldValueChange(reaction?: IReactionsMeta) {
   const fieldy = useFieldy()
   const formName = useFormName()
-  const reactionParams = reaction?.onMultiFieldValueChange
+  const reactionParams = reaction?.effects?.onMultiFieldValueChange
 
   const getFieldPaths = useGetFieldPaths()
   const newFunc = useNewFunction()

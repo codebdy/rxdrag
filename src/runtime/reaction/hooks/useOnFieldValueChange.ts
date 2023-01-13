@@ -7,7 +7,7 @@ import { useNewFunction } from "./useNewFunction"
 export function useOnFieldValueChange(reaction?: IReactionsMeta) {
   const fieldy = useFieldy()
   const formName = useFormName()
-  const reactionParams = reaction?.onFieldValueChange
+  const reactionParams = reaction?.effects?.onFieldValueChange
 
   const getFieldPaths = useGetFieldPaths()
   const newFunc = useNewFunction()
