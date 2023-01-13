@@ -133,7 +133,7 @@ function makeFields(fieldSchemas: IFieldMetas) {
       id: makeId(),
       ...meta,
       path: path,
-      basePath: path.substring(path.length - (meta.name?.length || 0)),
+      basePath: path.substring(0, path.length - (meta.name?.length || 0) - 1),
       mounted: true,
       fieldMeta: meta
     }

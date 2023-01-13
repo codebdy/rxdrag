@@ -9,7 +9,7 @@ export function isChild(path: string, parentPath?: string) {
   }
 
   if (path.startsWith(parentPath)) {
-    if (path.substring(parentPath.length).indexOf('.') === -1) {
+    if (path.substring(parentPath.length + 1).indexOf('.') === -1) {
       return true
     }
 

@@ -36,12 +36,14 @@ function doExtract(node: INodeSchema<IFieldMeta>, parentPath: string, schemas: I
         currentParentPath = path(currentParentPath, subFieldName)
         if (i < (subFieldArray.length - 1)) {
           attachField(schemas, currentParentPath, { type: "object", name: subFieldName })
+        } else {
+          attachField(schemas, currentParentPath, { ...fieldMeta, name: subFieldName })
         }
       }
     } else {
       currentParentPath = path(currentParentPath, fieldName)
+      attachField(schemas, currentParentPath, fieldMeta)
     }
-    attachField(schemas, currentParentPath, fieldMeta)
   }
   for (const child of node.children || []) {
     doExtract(child, currentParentPath, schemas)

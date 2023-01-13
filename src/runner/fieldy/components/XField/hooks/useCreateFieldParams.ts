@@ -45,6 +45,6 @@ export function useCreateFieldParams(fieldMeta: IFieldMeta) {
       setValue
     }
   }, [parentPath, relativePath, value, fieldMeta, feildName, path, setValue])
-  fieldMeta.name && fieldMeta.name?.indexOf('.') > -1 && console.log("哈哈", params)
+  fieldMeta.name && fieldMeta.name?.indexOf('.') > -1 && console.log("哈哈", params, value, path, fieldMeta)
   return params
 }

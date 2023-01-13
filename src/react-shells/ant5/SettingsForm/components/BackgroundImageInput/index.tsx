@@ -32,10 +32,17 @@ export const BackgroundImageInput = memo((
   }
 ) => {
   const { title, value, onChange, marginTop, span = 24 } = props
+  const handleSelectChange = useCallback((imageUrl?: string | null) => {
+    if (imageUrl) {
+      onChange?.(`url(${imageUrl})`)
+    } else {
+      onChange?.(undefined)
+    }
+  }, [onChange])
 
   return (
     <FoldExtraItem icon={imageIcon} span={span} title={title} marginTop={marginTop}>
-      <ImageInput value={value} onChange={onChange} />
+      <ImageInput value={value} onChange={handleSelectChange} />
     </FoldExtraItem>
   )
 })
@@ -50,9 +57,9 @@ export const BackgroundSizeInput = memo((
   }
 ) => {
   const { title, value, onChange, marginTop = 8, span = 12 } = props
-  const handleSelectChange = useCallback((imageUrl?: string | null) => {
-    if (imageUrl) {
-      onChange?.(`url(${imageUrl})`)
+  const handleSelectChange = useCallback((backgroundSize?: string | null) => {
+    if (backgroundSize) {
+      onChange?.(backgroundSize)
     } else {
       onChange?.(undefined)
     }
