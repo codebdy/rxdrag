@@ -14,7 +14,9 @@ const inputNumberPros = [
         componentName: "Switch",
         "x-field": {
           name: "showCount",
-          valuePropName: "checked",
+          params:{
+            valuePropName: "checked",
+          }
         },
       }
     ]

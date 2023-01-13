@@ -1,7 +1,9 @@
 import { INodeSchema } from "core";
 import { createSchema, SchemaOptions } from "react-shells/ant5/shared/createSchema";
+import { IBindParams } from "runner/ComponentRender/interfaces";
+import { IFieldMeta } from "runner/fieldy";
 
-const options: SchemaOptions = {
+const options: SchemaOptions<IFieldMeta<IBindParams>> = {
   propsSchemas: [
     {
       componentName: "FormItem",
@@ -70,7 +72,9 @@ const options: SchemaOptions = {
           componentName: "Switch",
           "x-field": {
             name: "disabled",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ]

@@ -14,7 +14,11 @@ const mentionsNumberPros = [
         componentName: "Switch",
         "x-field": {
           name: "showCount",
-          valuePropName: "checked",
+          params:{
+            params:{
+              valuePropName: "checked",
+            }
+          }
         },
       }
     ]

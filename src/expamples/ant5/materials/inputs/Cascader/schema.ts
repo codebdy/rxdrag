@@ -13,7 +13,9 @@ const options: SchemaOptions = {
           componentName: "Switch",
           "x-field": {
             name: "disabled",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ]

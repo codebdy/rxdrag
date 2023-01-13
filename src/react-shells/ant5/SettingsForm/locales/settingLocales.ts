@@ -56,6 +56,9 @@ export const settingLocales = {
       fragmentFields: "字段",
       fieldDefine: "字段定义",
       fieldBind: "字段绑定",
+      valuePropName: "值属性",
+      trigger: "触发属性",
+      withControl: "绑定控件",
       reactions: "行为控制",
 
       IconInput: {
@@ -128,6 +131,9 @@ export const settingLocales = {
       fragmentFields: "Fields",
       fieldDefine: "Field Define",
       fieldBind: "Field Bind",
+      valuePropName: "Value Prop",
+      trigger: "Trigger",
+      withControl: "With Control",
       reactions: "Reactions",
 
       IconInput: {

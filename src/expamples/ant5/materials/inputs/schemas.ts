@@ -24,7 +24,9 @@ export const inputBaseSchemas = [
         componentName: "Switch",
         "x-field": {
           name: "disabled",
-          valuePropName: "checked",
+          params:{
+            valuePropName: "checked",
+          }
         },
       }
     ]
@@ -40,7 +42,9 @@ export const inputBaseSchemas = [
         componentName: "Switch",
         "x-field": {
           name: "autoFocus",
-          valuePropName: "checked",
+          params:{
+            valuePropName: "checked",
+          }
         },
       }
     ]
@@ -56,7 +60,9 @@ export const inputBaseSchemas = [
         componentName: "Switch",
         "x-field": {
           name: "allowClear",
-          valuePropName: "checked",
+          params:{
+            valuePropName: "checked",
+          }
         },
       }
     ]
@@ -71,7 +77,9 @@ export const inputBaseSchemas = [
         componentName: "Switch",
         "x-field": {
           name: "bordered",
-          valuePropName: "checked",
+          params:{
+            valuePropName: "checked",
+          }
         },
         props: {
           defaultChecked: true,

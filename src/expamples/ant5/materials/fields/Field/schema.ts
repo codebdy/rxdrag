@@ -54,7 +54,9 @@ const options: SchemaOptions = {
         {
           "x-field": {
             name: "labelWrap",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
           componentName: "Switch"
         }

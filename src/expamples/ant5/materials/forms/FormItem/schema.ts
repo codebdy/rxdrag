@@ -13,7 +13,9 @@ const options: SchemaOptions = {
           componentName: "Switch",
           "x-field": {
             name: "colon",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
           props: {
             defaultChecked: true
@@ -72,7 +74,9 @@ const options: SchemaOptions = {
         {
           "x-field": {
             name: "labelWrap",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
           componentName: "Switch"
         }

@@ -70,7 +70,9 @@ const options: SchemaOptions = {
           componentName: "Switch",
           "x-field": {
             name: "disabled",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ]
@@ -85,7 +87,9 @@ const options: SchemaOptions = {
           componentName: "Switch",
           "x-field": {
             name: "block",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ]
@@ -100,7 +104,9 @@ const options: SchemaOptions = {
           componentName: "Switch",
           "x-field": {
             name: "danger",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ]
@@ -115,7 +121,9 @@ const options: SchemaOptions = {
           componentName: "Switch",
           "x-field": {
             name: "ghost",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ]

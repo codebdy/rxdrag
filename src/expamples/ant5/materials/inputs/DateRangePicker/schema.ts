@@ -146,7 +146,9 @@ const options: SchemaOptions = {
           componentName: "Switch",
           "x-field": {
             name: "showNow",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ]
@@ -161,7 +163,9 @@ const options: SchemaOptions = {
           componentName: "Switch",
           "x-field": {
             name: "showTime",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ]
@@ -176,7 +180,9 @@ const options: SchemaOptions = {
           componentName: "Switch",
           "x-field": {
             name: "showToday",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
           props: {
             defaultChecked: true,

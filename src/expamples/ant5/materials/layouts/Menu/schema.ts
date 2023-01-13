@@ -87,7 +87,9 @@ export const logoSchema: INodeSchema = {
               componentName: "Switch",
               "x-field": {
                 name: "disabled",
-                valuePropName: "checked",
+                params:{
+                  valuePropName: "checked",
+                }
               },
             }
           ]
