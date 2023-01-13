@@ -58,7 +58,7 @@ export const settingLocales = {
       fieldBind: "字段绑定",
       valuePropName: "值属性",
       trigger: "触发属性",
-      withControl: "绑定控件",
+      withControl: "控制字段",
       reactions: "行为控制",
 
       IconInput: {

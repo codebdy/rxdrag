@@ -16,7 +16,7 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IReactionsMeta> = {
           componentName: "Switch",
           "x-field": {
             name: "bordered",
-            params:{
+            params: {
               valuePropName: "checked",
             }
           },
@@ -33,7 +33,7 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IReactionsMeta> = {
           componentName: "Switch",
           "x-field": {
             name: "split",
-            params:{
+            params: {
               valuePropName: "checked",
             }
           },
@@ -204,10 +204,56 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IReactionsMeta> = {
     },
     {
       componentName: "CollapsePanel",
+      "x-field": {
+        name: "x-field.params",
+      },
       props: {
         title: "$fieldBind"
       },
       children: [
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$valuePropName",
+          },
+          children: [
+            {
+              componentName: "Input",
+              "x-field": {
+                name: "valuePropName",
+              },
+            }]
+        },
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$trigger",
+          },
+          children: [
+            {
+              componentName: "Input",
+              "x-field": {
+                name: "trigger",
+              },
+            }]
+        },
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$withControl",
+          },
+          children: [
+            {
+              componentName: "Switch",
+              "x-field": {
+                name: "withControl",
+                params: {
+                  valuePropName: "checked",
+                }
+              },
+            }
+          ]
+        }
       ]
     },
     {
