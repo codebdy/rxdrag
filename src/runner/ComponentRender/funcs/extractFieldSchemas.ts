@@ -1,8 +1,8 @@
 import { INodeSchema } from "core";
-import { IFieldMeta, IFieldSchemas } from "runner/fieldy";
+import { IFieldMeta, IFieldMetas } from "runner/fieldy";
 
-export function extractFieldSchemas(node: INodeSchema<IFieldMeta>): IFieldSchemas {
-  const schemas: IFieldSchemas = {}
+export function extractFieldSchemas(node: INodeSchema<IFieldMeta>): IFieldMetas {
+  const schemas: IFieldMetas = {}
   doExtract(node, "", schemas)
   return schemas
 }
@@ -14,7 +14,7 @@ function path(basePath: string, name: string) {
   return name
 }
 
-function attachField(schemas: IFieldSchemas, path: string, fieldMeta: IFieldMeta) {
+function attachField(schemas: IFieldMetas, path: string, fieldMeta: IFieldMeta) {
   if (schemas[path]) {
     schemas[path] = { ...schemas[path], ...fieldMeta }
   } else {
@@ -22,7 +22,7 @@ function attachField(schemas: IFieldSchemas, path: string, fieldMeta: IFieldMeta
   }
 }
 
-function doExtract(node: INodeSchema<IFieldMeta>, parentPath: string, schemas: IFieldSchemas) {
+function doExtract(node: INodeSchema<IFieldMeta>, parentPath: string, schemas: IFieldMetas) {
   const fieldMeta = node["x-field"]
   const fieldName = fieldMeta?.name?.trim()
   let currentParentPath = parentPath

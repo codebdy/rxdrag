@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react"
 import { FormNameContext } from "../contexts"
 import { useFieldy } from "../hooks"
-import { IFieldSchemas, FormState, FormValue } from "../interfaces"
+import { IFieldMetas, FormState, FormValue } from "../interfaces"
 
 export const VirtualForm = (props: {
-  fieldSchemas: IFieldSchemas
+  fieldSchemas: IFieldMetas
   initialValue?: any,
   defaultValue?: any,
   onValueChange?: (value?: any) => void,
@@ -19,7 +19,7 @@ export const VirtualForm = (props: {
   useEffect(() => {
     if (fieldy && fieldSchemas) {
       const name = fieldy.createForm()
-      fieldy.setFormSchema(name, fieldSchemas)
+      fieldy.setFormFieldMetas(name, fieldSchemas)
       setFormState(fieldy.getForm(name))
       setName(name)
       return () => {

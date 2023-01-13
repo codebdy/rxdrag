@@ -39,7 +39,7 @@ export interface IFieldMeta {
   fragmentFields?: IFieldMeta[]
 }
 
-export interface IFieldSchemas {
+export interface IFieldMetas {
   [path: string]: IFieldMeta
 }
 
@@ -108,7 +108,7 @@ export type FormState = {
   validating?: boolean;
   modified?: boolean;
   fields: FieldsState;
-  fieldMetas: IFieldMeta[];
+  fieldMetas: IFieldMetas;
   originalValue?: any;
 }
 
@@ -144,13 +144,13 @@ export interface IFieldyEngine {
   //动作
   createForm(options?: IFormProps): string
   removeForm(name: string): void
-  setFormSchema(name: string, fieldMetas: IFieldSchemas): void
+  setFormFieldMetas(name: string, fieldMetas: IFieldMetas): void
   //不触发change事件
   setFormInitialValue(name: string, value: FormValue): void
   setFormValues(name: string, value: FormValue): void
   setFormFlatValues(name: string, flatValues: FormValue): void
-  addFieldSchemas(name: string, fieldMetas: IFieldSchemas): void
-  removeSubFields(formName: string, fieldPath: string, ...subFieldNames: string[]): void
+  addFieldMetas(name: string, fieldMetas: IFieldMetas): void
+  removeFieldMetas(formName: string, ...fieldPaths: string[]): void
 
   //field动作
   setFieldValue(formName: string, fieldPath: string, value: any): void

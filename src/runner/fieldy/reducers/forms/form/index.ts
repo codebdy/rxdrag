@@ -1,6 +1,7 @@
 
 import { SET_FORM_FIELDS, SetFormFieldsPayload, SET_FORM_FLAT_VALUES, SetFormValuesPayload, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES, SET_FORM_INITIALZED_FLAG, SetFormInitializedFlagPayload, FieldActionPayload, SET_FIELD_VALUE } from "runner/fieldy/actions";
-import { FieldsState, FormState, FormValue, IAction } from "runner/fieldy/interfaces";
+import { getChildFields } from "runner/fieldy/funcs/path";
+import { FieldsState, FormState, FormValue, IAction, IFieldMetas } from "runner/fieldy/interfaces";
 import { fieldReduce } from "./field";
 var idSeed = 1
 function makeId() {
@@ -11,7 +12,7 @@ function makeId() {
 export function formReduce(state: FormState, action: IAction<any>): FormState | undefined {
   switch (action.type) {
     case SET_FORM_FIELDS:
-      const fields = patFlatFieldSchema((action.payload as SetFormFieldsPayload).fieldSchemas)
+      const fields = makeFields((action.payload as SetFormFieldsPayload).fieldSchemas)
       return {
         ...state,
         fields,
@@ -105,54 +106,37 @@ function setFlatValues(state: FormState, flatValues: any = {}) {
   }
 }
 
-function patFlatValues(values: FormValue | undefined, fieldSchemas: IFieldSchema[], parentFieldPath?: string) {
+function patFlatValues(values: FormValue | undefined, fieldSchemas: IFieldMetas, parentFieldPath?: string) {
   const prefix = parentFieldPath ? parentFieldPath + "." : ""
   let flatValues: FormValue = {}
-  for (const fieldSchema of fieldSchemas) {
-    const { fields, ...meta } = fieldSchema
-    if (!fieldSchema.name) {
+  const childFields = getChildFields(fieldSchemas, parentFieldPath)
+  for (const meta of childFields) {
+    if (!meta.name) {
       continue
     }
-    if (Object.keys(fields).length > 0 && meta.type !== "object") {
-      console.error("Not object type field has sub field")
-    }
-    const path = prefix + fieldSchema.name
+    const path = prefix + meta.name
 
-    flatValues[path] = values?.[fieldSchema.name]
-    if (fieldSchema.fields.length) {
-      const subValues = patFlatValues(values?.[fieldSchema.name], fieldSchema.fields, path)
-      flatValues = { ...flatValues, ...subValues }
-    }
+    flatValues[path] = values?.[meta.name]
+    const subValues = patFlatValues(values?.[meta.name], fieldSchemas, path)
+    flatValues = { ...flatValues, ...subValues }
   }
 
   return flatValues
 }
 
-function patFlatFieldSchema(fieldSchemas: IFieldSchema[], parentFieldPath?: string) {
-  const prefix = parentFieldPath ? parentFieldPath + "." : ""
+
+function makeFields(fieldSchemas: IFieldMetas) {
   let flatFields: FieldsState = {}
-  for (const fieldSchema of fieldSchemas || []) {
-    const { fields, ...meta } = fieldSchema
-    if (fieldSchema.type === "fragment") {
-      const subFields = patFlatFieldSchema(fieldSchema.fragmentFields || [], parentFieldPath)
-      flatFields = { ...flatFields, ...subFields }
-      continue
-    }
-    if (fields && Object.keys(fields).length > 0 && meta.type !== "object") {
-      console.error("Not object type field has sub field")
-    }
-    const path = prefix + fieldSchema.name
+  for (const path of Object.keys(fieldSchemas)) {
+    const meta = fieldSchemas[path]
     flatFields[path] = {
       id: makeId(),
       ...meta,
       path: path,
-      basePath: parentFieldPath,
+      basePath: path.substring(path.length - (meta.name?.length || 0)),
       mounted: true,
-      fieldMeta: fieldSchema
+      fieldMeta: meta
     }
-    const subFields = patFlatFieldSchema(fieldSchema.fields, path)
-    flatFields = { ...flatFields, ...subFields }
   }
-
   return flatFields
 }

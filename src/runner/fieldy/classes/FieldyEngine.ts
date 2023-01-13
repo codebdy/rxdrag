@@ -1,7 +1,7 @@
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "core/utils/util-invariant";
 import { CREATE_FORM, FormActionPlayload, REMOVE_FORM, SetFieldValuePayload, SetFormFieldsPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES } from "runner/fieldy/actions";
-import { FieldChangeListener, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldSchema, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "runner/fieldy/interfaces";
+import { FieldChangeListener, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction,  IFieldMetas,  IFieldyEngine, IFormProps, Listener, Unsubscribe } from "runner/fieldy/interfaces";
 import { reduce, State } from "runner/fieldy/reducers";
 
 var idSeed = 0
@@ -42,7 +42,7 @@ export class FieldyEngine implements IFieldyEngine {
     })
   }
 
-  setFormSchema(name: string, fieldSchemas: IFieldSchema[]): void {
+  setFormFieldMetas(name: string, fieldSchemas: IFieldMetas): void {
     const payload: SetFormFieldsPayload = {
       formName: name,
       fieldSchemas
@@ -53,6 +53,13 @@ export class FieldyEngine implements IFieldyEngine {
         payload: payload,
       }
     )
+  }
+
+  addFieldMetas(name: string, fieldMetas: IFieldMetas): void {
+    throw new Error("Method not implemented.");
+  }
+  removeFieldMetas(formName: string, ...fieldPaths: string[]): void {
+    throw new Error("Method not implemented.");
   }
 
   setFormInitialValue(name: string, value: FormValue): void {
@@ -180,17 +187,6 @@ export class FieldyEngine implements IFieldyEngine {
     this.setFieldValue(formName, fieldPath, oldValue ? { ...oldValue, ...value } : value)
   }
 
-  setSubFields(formName: string, fieldPath: string, subFieldSchemas: IFieldSchema[]): void {
-    throw new Error("Method not implemented.");
-  }
-
-  addSubFields(formName: string, fieldPath: string, subFieldSchemas: IFieldSchema[]): void {
-    throw new Error("Method not implemented.");
-  }
-
-  removeSubFields(formName: string, fieldPath: string, ...subFieldNames: string[]): void {
-    throw new Error("Method not implemented.");
-  }
 
   getFormValues(formName: string): FormValue {
     const formState = this.store.getState().forms[formName]
@@ -372,7 +368,7 @@ function getFormFlatValues(formState: FormState | undefined) {
   return flatValues
 }
 
-function trasformFlatValuesToNormal(originalValue: any = {}, flatValues: FormValue, fieldSchemas: IFieldSchema[], basePath?: string) {
+function trasformFlatValuesToNormal(originalValue: any = {}, flatValues: FormValue, fieldSchemas: IFieldMetas, basePath?: string) {
   const value: FormValue = originalValue
   const prefix = basePath ? basePath + "." : ""
 
