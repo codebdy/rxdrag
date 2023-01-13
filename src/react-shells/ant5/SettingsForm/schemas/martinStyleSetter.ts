@@ -1,5 +1,5 @@
 import { INodeSchema } from "core";
-import { IFieldMeta } from "runtime/fieldy";
+import { IFieldMeta } from "runner/fieldy";
 
 export const martinStyleSetter: INodeSchema<IFieldMeta> = {
   componentName: "Fold",

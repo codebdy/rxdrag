@@ -4,7 +4,7 @@ import { Checkbox, Form, Input, InputNumber, Radio, Select, Slider, Switch } fro
 import { Tabs } from "./components/Tabs";
 import { TabPanel } from "./components/Tabs/TabPanel";
 import { INodeMeta } from "core";
-import { Fieldy, VirtualForm } from "runtime/fieldy";
+import { Fieldy, VirtualForm } from "runner/fieldy";
 import { extractFieldSchemas } from "./extractFieldSchemas";
 import { useDesignerEngine } from "core-react/hooks";
 import { Box } from "../components/Box";
@@ -34,7 +34,7 @@ import { GutterInput } from "./components/GutterInput";
 import { ColInput } from "./components/ColInput";
 import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput } from "./components/BackgroundImageInput";
 import { ImageInput } from "./components/ImageInput";
-import { ComponentRender } from "runtime/ComponentRender";
+import { ComponentRender } from "runner/ComponentRender";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
