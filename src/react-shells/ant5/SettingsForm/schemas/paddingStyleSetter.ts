@@ -8,7 +8,6 @@ export const paddingStyleSetter: INodeSchema<IFieldMeta> = {
       componentName: "PaddingStyleSetter",
       "x-field": {
         type: "fragment",
-        withControl: true,
         fragmentFields: [
           {
             name: "paddingTop",
@@ -22,7 +21,10 @@ export const paddingStyleSetter: INodeSchema<IFieldMeta> = {
           {
             name: "paddingLeft",
           },
-        ]
+        ],
+        params:{
+          withControl: true,
+        }
       },
       props: {
         title: "$padding",

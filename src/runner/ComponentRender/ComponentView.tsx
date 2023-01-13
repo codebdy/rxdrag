@@ -3,10 +3,12 @@ import { memo, useMemo } from "react"
 import { ComponentField } from "./ComponentField"
 import { ComponentSchemaContext } from "./contexts"
 import { usePreviewComponent } from "core-react/hooks/usePreviewComponent"
-import { withControl } from "runner/fieldy/components/withControl"
+import { withControl } from "runner/ComponentRender/withControl"
 import { ComponentReaction } from "./ComponentReaction"
+import { IBindParams } from "./interfaces"
+import { IFieldMeta } from "runner/fieldy"
 
-export interface IComponentRenderSchema extends INodeSchema {
+export interface IComponentRenderSchema extends INodeSchema<IFieldMeta<IBindParams>> {
   id: ID,
   children?: IComponentRenderSchema[]
   slots?: {

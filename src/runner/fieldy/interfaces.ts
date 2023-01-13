@@ -19,7 +19,7 @@ export interface IFormProps {
   validateFirst?: boolean, //	是否只校验第一个非法规则	Boolean
 }
 
-export interface IFieldMeta {
+export interface IFieldMeta<Params = any> {
   //类型：对象、数组、常规、片段（name 为空）
   type?: "object" | "array" | "normal" | "fragment"
   name?: string
@@ -30,14 +30,7 @@ export interface IFieldMeta {
   fragmentFields?: IFieldMeta[]
   //校验规则
   validateRules?: any
-
-  ////===以下是渲染用的，需要移出该定义
-  //target里面的属性值
-  valuePropName?: string
-  //触发值变化
-  trigger?: string
-  //是否接管输入输出控制，normal 类型默认true，其它默认 false
-  withControl?: boolean
+  params?: Params,
 }
 
 //让path可以重复，避免fragment覆盖其他值

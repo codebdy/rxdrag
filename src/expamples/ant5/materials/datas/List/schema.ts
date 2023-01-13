@@ -1,9 +1,10 @@
 import { INodeSchema } from "core";
 import { createSchema, SchemaOptions } from "react-shells/ant5/shared/createSchema";
+import { IBindParams } from "runner/ComponentRender/interfaces";
 import { IFieldMeta } from "runner/fieldy";
 import { IReactionsMeta } from "runner/reaction/interfaces";
 
-const options: SchemaOptions<IFieldMeta, IReactionsMeta> = {
+const options: SchemaOptions<IFieldMeta<IBindParams>, IReactionsMeta> = {
   propsSchemas: [
     {
       componentName: "FormItem",
@@ -15,7 +16,9 @@ const options: SchemaOptions<IFieldMeta, IReactionsMeta> = {
           componentName: "Switch",
           "x-field": {
             name: "bordered",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ],
@@ -30,7 +33,9 @@ const options: SchemaOptions<IFieldMeta, IReactionsMeta> = {
           componentName: "Switch",
           "x-field": {
             name: "split",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ],

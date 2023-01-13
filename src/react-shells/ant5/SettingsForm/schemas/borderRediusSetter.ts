@@ -1,14 +1,14 @@
 import { INodeSchema } from "core";
+import { IBindParams } from "runner/ComponentRender/interfaces";
 import { IFieldMeta } from "runner/fieldy";
 
-export const borderRediusSetter: INodeSchema<IFieldMeta> = {
+export const borderRediusSetter: INodeSchema<IFieldMeta<IBindParams>> = {
   componentName: "Fold",
   children: [
     {
       componentName: "BorderRadiusSetter",
       "x-field": {
         type: "fragment",
-        withControl: true,
         fragmentFields: [
           {
             name: "borderTopLeftRadius",
@@ -22,7 +22,10 @@ export const borderRediusSetter: INodeSchema<IFieldMeta> = {
           {
             name: "borderBottomLeftRadius",
           },
-        ]
+        ],
+        params:{
+          withControl: true,
+        }
       },
       props: {
         title: "$borderRadius",

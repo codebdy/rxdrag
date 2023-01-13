@@ -8,7 +8,6 @@ export const borderSetter: INodeSchema<IFieldMeta> = {
       componentName: "BorderSetter",
       "x-field": {
         type: "fragment",
-        withControl: true,
         fragmentFields: [
           {
             name: "borderTop",
@@ -22,7 +21,10 @@ export const borderSetter: INodeSchema<IFieldMeta> = {
           {
             name: "borderLeft",
           },
-        ]
+        ],
+        params:{
+          withControl: true,
+        }
       },
       props: {
         title: "$border",

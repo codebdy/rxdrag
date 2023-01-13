@@ -8,7 +8,6 @@ export const displaySetter: INodeSchema<IFieldMeta> = {
       componentName: "DisplaySetter",
       "x-field": {
         type: "fragment",
-        withControl: true,
         fragmentFields: [
           {
             name: "display",
@@ -28,7 +27,10 @@ export const displaySetter: INodeSchema<IFieldMeta> = {
           {
             name: "alignItems",
           },
-        ]
+        ],
+        params:{
+          withControl: true,
+        }
       },
       props: {
         title: "$display",
