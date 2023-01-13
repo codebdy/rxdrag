@@ -66,9 +66,9 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentNode, engine, lang])
 
-  const fieldMetas = useMemo(() => {
+  const fieldSchemas = useMemo(() => {
     if (designerSchema) {
-      return designerSchema ? extractFieldSchemas(designerSchema) : {}
+      return designerSchema ? extractFieldSchemas(designerSchema) : []
     }
     return undefined
   }, [designerSchema])
@@ -126,9 +126,9 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
       <Fieldy>
         <Box style={propertiesStyle} {...props}>
           {
-            fieldMetas && currentNode &&
+            fieldSchemas && currentNode &&
             <VirtualForm
-              fieldMetas={fieldMetas}
+              fieldSchemas={fieldSchemas}
               initialValue={currentNode?.meta}
               onValueChange={handleMetaChange}
             >

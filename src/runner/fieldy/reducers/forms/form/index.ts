@@ -1,7 +1,7 @@
 
 import { SET_FORM_FIELDS, SetFormFieldsPayload, SET_FORM_FLAT_VALUES, SetFormValuesPayload, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES, SET_FORM_INITIALZED_FLAG, SetFormInitializedFlagPayload, FieldActionPayload, SET_FIELD_VALUE } from "runner/fieldy/actions";
-import { getChildFields } from "runner/fieldy/funcs/path";
-import { FieldsState, FormState, FormValue, IAction, IFieldMetas } from "runner/fieldy/interfaces";
+import { getChildFields, makePath } from "runner/fieldy/funcs/path";
+import { FieldsState, FormState, FormValue, IAction, IFieldSchema } from "runner/fieldy/interfaces";
 import { fieldReduce } from "./field";
 var idSeed = 1
 function makeId() {
@@ -16,7 +16,7 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
       return {
         ...state,
         fields,
-        fieldMetas: (action.payload as SetFormFieldsPayload).fieldSchemas,
+        fieldSchemas: (action.payload as SetFormFieldsPayload).fieldSchemas,
         mounted: true,
       }
     case SET_FORM_FLAT_VALUES: {
@@ -125,18 +125,35 @@ function patFlatValues(values: FormValue | undefined, allFields: FieldsState, pa
 }
 
 
-function makeFields(fieldSchemas: IFieldMetas) {
+function makeFields(fieldSchemas: IFieldSchema[]) {
   let flatFields: FieldsState = {}
-  for (const path of Object.keys(fieldSchemas)) {
-    const meta = fieldSchemas[path]
-    flatFields[path] = {
-      id: makeId(),
-      ...meta,
-      path: path,
-      basePath: path.substring(0, path.length - (meta.name?.length || 0) - 1),
-      mounted: true,
-      meta: meta
+  for (const schema of fieldSchemas) {
+    //没有name的一般都是辅助项目，除了fragement
+    if (schema.name) {
+      flatFields[schema.path] = {
+        ...flatFields[schema.path],
+        id: makeId(),
+        ...schema,
+        basePath: schema.path.substring(0, schema.path.length - (schema.name?.length || 0) - 1),
+        mounted: true,
+        meta: schema
+      }
+    } else if (schema.type === 'fragment') {
+      for (const fragMeta of schema.fragmentFields || []) {
+        const fragPath = makePath(schema.path, fragMeta.name)
+        flatFields[fragPath] = {
+          ...flatFields[fragPath],
+          id: makeId(),
+          ...fragMeta,
+          path: fragPath,
+          basePath: schema.path,
+          mounted: true,
+          meta: fragMeta
+        }
+      }
     }
+
   }
+
   return flatFields
 }

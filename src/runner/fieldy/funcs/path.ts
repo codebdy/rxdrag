@@ -1,5 +1,16 @@
 import { FieldsState, FieldState } from "../interfaces";
 
+export function makePath(basePath: string, name?: string) {
+  if (!name) {
+    return basePath
+  }
+  if (basePath) {
+    return basePath + "." + name
+  }
+  return name
+}
+
+
 export function isChild(path: string, parentPath?: string) {
   if (!parentPath) {
     if (path.indexOf(".") === -1) {

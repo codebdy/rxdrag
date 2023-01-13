@@ -2,31 +2,31 @@
 import React, { useEffect, useState } from "react"
 import { FormNameContext } from "../contexts"
 import { useFieldy } from "../hooks"
-import { IFieldMetas, FormState, FormValue } from "../interfaces"
+import { IFieldSchema, FormState, FormValue } from "../interfaces"
 
 export const VirtualForm = (props: {
-  fieldMetas: IFieldMetas
+  fieldSchemas: IFieldSchema[]
   initialValue?: any,
   defaultValue?: any,
   onValueChange?: (value?: any) => void,
   children?: React.ReactNode
 }) => {
-  const { fieldMetas, initialValue, children, onValueChange } = props
+  const { fieldSchemas, initialValue, children, onValueChange } = props
   const [name, setName] = useState<string>()
   const [formState, setFormState] = useState<FormState>()
   const fieldy = useFieldy()
 
   useEffect(() => {
-    if (fieldy && fieldMetas) {
+    if (fieldy && fieldSchemas) {
       const name = fieldy.createForm()
-      fieldy.setFormFieldMetas(name, fieldMetas)
+      fieldy.setFormFieldMetas(name, fieldSchemas)
       setFormState(fieldy.getForm(name))
       setName(name)
       return () => {
         fieldy.removeForm(name)
       }
     }
-  }, [fieldMetas, fieldy])
+  }, [fieldSchemas, fieldy])
 
   useEffect(() => {
     if (fieldy && formState?.mounted && name) {

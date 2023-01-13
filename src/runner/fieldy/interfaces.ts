@@ -26,21 +26,25 @@ export interface IFieldMeta {
   name?: string
   validateRule?: any
   defaultValue?: any
+  //是否虚拟字段，如果是，不输出最终值，不触发change， 该字段要废除
+  virtual?: boolean
+  fragmentFields?: IFieldMeta[]
+  //校验规则
+  rules?: { [key: string]: boolean | string }[]
+  //是否接管输入输出控制，normal 类型默认true，其它默认 false
+
+
+  ////===以下是渲染用的，需要移出该定义
   //target里面的属性值
   valuePropName?: string
   //触发值变化
   trigger?: string
-  //校验规则
-  rules?: { [key: string]: boolean | string }[]
-  //是否接管输入输出控制，normal 类型默认true，其它默认 false
   withControl?: boolean
-  //是否虚拟字段，如果是，不输出最终值，不触发change
-  virtual?: boolean
-  fragmentFields?: IFieldMeta[]
 }
 
-export interface IFieldMetas {
-  [path: string]: IFieldMeta
+//让path可以重复，避免fragment覆盖其他值
+export interface IFieldSchema extends IFieldMeta {
+  path: string
 }
 
 export interface IAction<Payload> extends Action<string> {
@@ -108,7 +112,7 @@ export type FormState = {
   validating?: boolean;
   modified?: boolean;
   fields: FieldsState;
-  fieldMetas: IFieldMetas;
+  fieldSchemas: IFieldSchema[];
   originalValue?: any;
 }
 
@@ -144,12 +148,12 @@ export interface IFieldyEngine {
   //动作
   createForm(options?: IFormProps): string
   removeForm(name: string): void
-  setFormFieldMetas(name: string, fieldMetas: IFieldMetas): void
+  setFormFieldMetas(name: string, fieldMetas: IFieldSchema[]): void
   //不触发change事件
   setFormInitialValue(name: string, value: FormValue): void
   setFormValues(name: string, value: FormValue): void
   setFormFlatValues(name: string, flatValues: FormValue): void
-  addFieldMetas(name: string, fieldMetas: IFieldMetas): void
+  addFieldMetas(name: string, fieldMetas: IFieldSchema[]): void
   removeFieldMetas(formName: string, ...fieldPaths: string[]): void
 
   //field动作

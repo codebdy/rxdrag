@@ -1,4 +1,4 @@
-import {  FormValue, IFieldMetas } from "runner/fieldy/interfaces"
+import {  FormValue, IFieldSchema } from "runner/fieldy/interfaces"
 export interface FormActionPlayload {
   formName: string,
   [key: string]: any,
@@ -9,7 +9,7 @@ export interface FieldActionPayload extends FormActionPlayload {
 }
 
 export interface SetFormFieldsPayload extends FormActionPlayload {
-  fieldSchemas: IFieldMetas
+  fieldSchemas: IFieldSchema[]
 }
 
 export interface SetFormValuesPayload extends FormActionPlayload {

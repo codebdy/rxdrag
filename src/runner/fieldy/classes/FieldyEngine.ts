@@ -1,7 +1,7 @@
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "core/utils/util-invariant";
 import { CREATE_FORM, FormActionPlayload, REMOVE_FORM, SetFieldValuePayload, SetFormFieldsPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES } from "runner/fieldy/actions";
-import { FieldChangeListener, FieldsState, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldMetas, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "runner/fieldy/interfaces";
+import { FieldChangeListener, FieldsState, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldSchema, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "runner/fieldy/interfaces";
 import { reduce, State } from "runner/fieldy/reducers";
 import { getChildFields } from "../funcs/path";
 
@@ -43,7 +43,7 @@ export class FieldyEngine implements IFieldyEngine {
     })
   }
 
-  setFormFieldMetas(name: string, fieldSchemas: IFieldMetas): void {
+  setFormFieldMetas(name: string, fieldSchemas: IFieldSchema[]): void {
     const payload: SetFormFieldsPayload = {
       formName: name,
       fieldSchemas
@@ -56,7 +56,7 @@ export class FieldyEngine implements IFieldyEngine {
     )
   }
 
-  addFieldMetas(name: string, fieldMetas: IFieldMetas): void {
+  addFieldMetas(name: string, fieldMetas: IFieldSchema[]): void {
     throw new Error("Method not implemented.");
   }
   removeFieldMetas(formName: string, ...fieldPaths: string[]): void {
@@ -125,7 +125,6 @@ export class FieldyEngine implements IFieldyEngine {
       if (nextState === previousState || !nextState?.modified) {
         return
       }
-      console.log("哈哈哈 subscribeToFormValuesChange", this.store.getState().forms[name])
       for (const key of Object.keys(nextState?.fields || {})) {
         if (previousState?.fields[key]?.value !== nextState?.fields[key]?.value) {
           changed = true
@@ -143,10 +142,8 @@ export class FieldyEngine implements IFieldyEngine {
   }
 
   setFieldValue(formName: string, fieldPath: string, value: any): void {
-    console.log("哈哈哈 setFieldValue1", fieldPath, value)
     if (this.getField(formName, fieldPath)?.meta.type === "object") {
       const values: any = {}
-      console.log("哈哈哈 setFieldValue", fieldPath, value, this.getValue(formName, fieldPath, value, values))
       this.getValue(formName, fieldPath, value, values)
       const payload: SetFormValuesPayload = {
         formName,
@@ -176,11 +173,15 @@ export class FieldyEngine implements IFieldyEngine {
 
   //递归找出改变的字段
   private getValue(formName: string, fieldPath: string, value: any, allValues: any) {
+    const fields = this.store.getState().forms[formName]?.fields
+    if (!fields) {
+      return
+    }
     allValues[fieldPath] = value
-    for (const key of Object.keys(value || {})) {
-      const subName = key.substring(fieldPath.length + 1)
-      if (subName) {
-        this.getValue(formName, fieldPath + "." + key, value?.[key], allValues)
+    const subFields = getChildFields(fields, fieldPath)
+    for (const field of subFields) {
+      if (field.name && Object.keys(value).find(key => key === field.name)) {
+        this.getValue(formName, field.path, value?.[field.name], allValues)
       }
     }
   }
