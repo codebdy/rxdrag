@@ -1,6 +1,6 @@
 
 import { SET_FORM_FIELDS, SetFormFieldsPayload, SET_FORM_FLAT_VALUES, SetFormValuesPayload, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES, SET_FORM_INITIALZED_FLAG, SetFormInitializedFlagPayload, FieldActionPayload, SET_FIELD_VALUE } from "runner/fieldy/actions";
-import { FieldsState, FormState, FormValue, IAction, IFieldSchema } from "runner/fieldy/interfaces";
+import { FieldsState, FormState, FormValue, IAction } from "runner/fieldy/interfaces";
 import { fieldReduce } from "./field";
 var idSeed = 1
 function makeId() {
@@ -15,14 +15,14 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
       return {
         ...state,
         fields,
-        fieldSchemas: (action.payload as SetFormFieldsPayload).fieldSchemas,
+        fieldMetas: (action.payload as SetFormFieldsPayload).fieldSchemas,
         mounted: true,
       }
     case SET_FORM_FLAT_VALUES: {
       return setFlatValues(state, (action.payload as SetFormValuesPayload).values)
     }
     case SET_FORM_INITIAL_VALUES: {
-      const flatInitialValues = patFlatValues((action.payload as SetFormValuesPayload).values, state.fieldSchemas)
+      const flatInitialValues = patFlatValues((action.payload as SetFormValuesPayload).values, state.fieldMetas)
       const stateWithInitialValues = setInitialFlatValues(state, flatInitialValues)
       return {
         ...state,
@@ -32,7 +32,7 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
       }
     }
     case SET_FORM_VALUES: {
-      const flatValues = patFlatValues((action.payload as SetFormValuesPayload).values, state.fieldSchemas)
+      const flatValues = patFlatValues((action.payload as SetFormValuesPayload).values, state.fieldMetas)
       const stateWithFlateValues = setFlatValues(state, flatValues)
 
       return {
@@ -148,7 +148,7 @@ function patFlatFieldSchema(fieldSchemas: IFieldSchema[], parentFieldPath?: stri
       path: path,
       basePath: parentFieldPath,
       mounted: true,
-      fieldSchema
+      fieldMeta: fieldSchema
     }
     const subFields = patFlatFieldSchema(fieldSchema.fields, path)
     flatFields = { ...flatFields, ...subFields }

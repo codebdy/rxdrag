@@ -5,7 +5,7 @@ import { Tabs } from "./components/Tabs";
 import { TabPanel } from "./components/Tabs/TabPanel";
 import { INodeMeta } from "core";
 import { Fieldy, VirtualForm } from "runner/fieldy";
-import { extractFieldSchemas } from "./extractFieldSchemas";
+import { extractFieldSchemas } from "../../../runner/ComponentRender/funcs/extractFieldSchemas";
 import { useDesignerEngine } from "core-react/hooks";
 import { Box } from "../components/Box";
 import { PreviewRoot } from "core-react/PreviewRoot";

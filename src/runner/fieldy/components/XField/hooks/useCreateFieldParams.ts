@@ -5,28 +5,46 @@ import { useSetValue } from "./useSetValue"
 import { useValue } from "./useValue"
 
 export function useCreateFieldParams(fieldMeta: IFieldMeta) {
-  const basePath = useFieldPath() || ""
+  const parentPath = useFieldPath() || ""
   const path = useMemo(() => {
     if (!fieldMeta.name) {
-      return basePath
+      return parentPath
     }
-    if (basePath) {
-      return basePath + "." + fieldMeta.name
+    if (parentPath) {
+      return parentPath + "." + fieldMeta.name.trim()
     } else {
-      return fieldMeta.name
+      return fieldMeta.name.trim()
     }
-  }, [basePath, fieldMeta.name])
+  }, [parentPath, fieldMeta.name])
+
+  const { relativePath, feildName } = useMemo(() => {
+    if (fieldMeta.name && fieldMeta.name?.indexOf('.') > -1) {
+      const arr = fieldMeta.name.split('.')
+      const name = arr[arr.length - 1].trim()
+      const rPath = (parentPath ? "." : "") + arr.slice(0, arr.length - 1).join('.')
+      return {
+        relativePath: rPath,
+        feildName: name
+      }
+    }
+
+    return {
+      relativePath: "",
+      feildName: fieldMeta.name?.trim()
+    }
+  }, [fieldMeta.name, parentPath])
+
   const value = useValue(path, fieldMeta)
   const setValue = useSetValue(value, path, fieldMeta)
   const params = useMemo(() => {
     return {
-      basePath,
+      basePath: parentPath + relativePath,
       value,
-      fieldMeta,
+      fieldMeta: { ...fieldMeta, name: feildName },
       path,
       setValue
     }
-  }, [basePath, fieldMeta, path, setValue, value])
-
+  }, [parentPath, relativePath, value, fieldMeta, feildName, path, setValue])
+  fieldMeta.name && fieldMeta.name?.indexOf('.') > -1 && console.log("哈哈", params)
   return params
 }

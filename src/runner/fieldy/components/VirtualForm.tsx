@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react"
 import { FormNameContext } from "../contexts"
 import { useFieldy } from "../hooks"
-import { IFieldSchema, FormState, FormValue } from "../interfaces"
+import { IFieldSchemas, FormState, FormValue } from "../interfaces"
 
 export const VirtualForm = (props: {
-  fieldSchemas: IFieldSchema[]
+  fieldSchemas: IFieldSchemas
   initialValue?: any,
   defaultValue?: any,
   onValueChange?: (value?: any) => void,

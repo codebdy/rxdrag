@@ -39,9 +39,8 @@ export interface IFieldMeta {
   fragmentFields?: IFieldMeta[]
 }
 
-export interface IFieldSchema extends IFieldMeta {
-  fields: IFieldSchema[]
-  fragmentFields?: IFieldSchema[]
+export interface IFieldSchemas {
+  [path: string]: IFieldMeta
 }
 
 export interface IAction<Payload> extends Action<string> {
@@ -92,7 +91,7 @@ export type FieldState = {
   initialValue?: any;
   errors?: IFieldFeedback[];
   validateStatus?: FieldValidateStatus;
-  fieldSchema: IFieldSchema
+  fieldMeta: IFieldMeta
 }
 
 export type FieldsState = {
@@ -109,7 +108,7 @@ export type FormState = {
   validating?: boolean;
   modified?: boolean;
   fields: FieldsState;
-  fieldSchemas: IFieldSchema[];
+  fieldMetas: IFieldMeta[];
   originalValue?: any;
 }
 
@@ -145,13 +144,12 @@ export interface IFieldyEngine {
   //动作
   createForm(options?: IFormProps): string
   removeForm(name: string): void
-  setFormSchema(name: string, fieldSchemas: IFieldSchema[]): void
+  setFormSchema(name: string, fieldMetas: IFieldSchemas): void
   //不触发change事件
   setFormInitialValue(name: string, value: FormValue): void
   setFormValues(name: string, value: FormValue): void
   setFormFlatValues(name: string, flatValues: FormValue): void
-  setSubFields(formName: string, fieldPath: string, subFieldSchemas: IFieldSchema[]): void
-  addSubFields(formName: string, fieldPath: string, subFieldSchemas: IFieldSchema[]): void
+  addFieldSchemas(name: string, fieldMetas: IFieldSchemas): void
   removeSubFields(formName: string, fieldPath: string, ...subFieldNames: string[]): void
 
   //field动作

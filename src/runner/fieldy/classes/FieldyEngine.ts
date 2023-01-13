@@ -135,7 +135,7 @@ export class FieldyEngine implements IFieldyEngine {
   }
 
   setFieldValue(formName: string, fieldPath: string, value: any): void {
-    if (this.getField(formName, fieldPath)?.fieldSchema.type === "object") {
+    if (this.getField(formName, fieldPath)?.fieldMeta.type === "object") {
       const values: any = {}
       this.getValue(formName, fieldPath, value, values)
       const payload: SetFormValuesPayload = {
@@ -211,7 +211,7 @@ export class FieldyEngine implements IFieldyEngine {
     const state = this.store.getState()
     const fieldState = state.forms[formName]?.fields?.[fieldPath]
     if (fieldState) {
-      if (fieldState.fieldSchema?.type === "object") {
+      if (fieldState.fieldMeta?.type === "object") {
         const value = { ...fieldState.value }
         const fields = this.getSubFields(formName, fieldPath)
         for (const key of fields) {
@@ -225,7 +225,7 @@ export class FieldyEngine implements IFieldyEngine {
           return value
         }
         return undefined
-      } else if (fieldState.fieldSchema?.type === "array") {
+      } else if (fieldState.fieldMeta?.type === "array") {
         throw new Error("Not implement arrray type")
       } else {//undefined or "normal"
         return fieldState.value
@@ -356,7 +356,7 @@ function getFormNormalValues(formState: FormState | undefined) {
     return {}
   }
   const flatValues = getFormFlatValues(formState)
-  const normalValue = trasformFlatValuesToNormal(JSON.parse(JSON.stringify(formState.originalValue || {})), flatValues, formState.fieldSchemas)
+  const normalValue = trasformFlatValuesToNormal(JSON.parse(JSON.stringify(formState.originalValue || {})), flatValues, formState.fieldMetas)
   return normalValue
 }
 
