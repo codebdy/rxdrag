@@ -16,7 +16,7 @@ export function formsReduce(state: FormsState, action: IAction<FormActionPlayloa
           ...state,
           [action.payload.formName]: {
             fields: {},
-            fieldMetas: [],
+            fieldMetas: {},
           }
         }
     }

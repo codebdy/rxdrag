@@ -3,6 +3,7 @@ import { invariant } from "core/utils/util-invariant";
 import { CREATE_FORM, FormActionPlayload, REMOVE_FORM, SetFieldValuePayload, SetFormFieldsPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES } from "runner/fieldy/actions";
 import { FieldChangeListener, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction,  IFieldMetas,  IFieldyEngine, IFormProps, Listener, Unsubscribe } from "runner/fieldy/interfaces";
 import { reduce, State } from "runner/fieldy/reducers";
+import { getChildFields } from "../funcs/path";
 
 var idSeed = 0
 
@@ -371,10 +372,10 @@ function getFormFlatValues(formState: FormState | undefined) {
 function trasformFlatValuesToNormal(originalValue: any = {}, flatValues: FormValue, fieldSchemas: IFieldMetas, basePath?: string) {
   const value: FormValue = originalValue
   const prefix = basePath ? basePath + "." : ""
-
-  for (const fieldSchema of fieldSchemas) {
-    if (fieldSchema.type === "fragment") {
-      for (const fragField of fieldSchema.fragmentFields || []) {
+  const childFields = getChildFields(fieldSchemas, basePath)
+  for (const fieldMeta of childFields) {
+    if (fieldMeta.type === "fragment") {
+      for (const fragField of fieldMeta.fragmentFields || []) {
         if (fragField.name) {
           const fieldPath = prefix + fragField.name
           const subValue = flatValues[fieldPath]
@@ -388,24 +389,24 @@ function trasformFlatValuesToNormal(originalValue: any = {}, flatValues: FormVal
       continue
     }
 
-    if (!fieldSchema.name || fieldSchema.virtual) {
+    if (!fieldMeta.name || fieldMeta.virtual) {
       continue
     }
 
-    const fieldPath = prefix + fieldSchema.name
-    if (fieldSchema.type === "object") {
-      value[fieldSchema.name] = trasformFlatValuesToNormal(value[fieldSchema.name], flatValues, fieldSchema.fields, fieldPath)
-    } else if (fieldSchema.type === "array") {
-      const objectValue = trasformFlatValuesToNormal(value[fieldSchema.name], flatValues, fieldSchema.fields, fieldPath)
+    const fieldPath = prefix + fieldMeta.name
+    if (fieldMeta.type === "object") {
+      value[fieldMeta.name] = trasformFlatValuesToNormal(value[fieldMeta.name], flatValues, fieldSchemas, fieldPath)
+    } else if (fieldMeta.type === "array") {
+      const objectValue = trasformFlatValuesToNormal(value[fieldMeta.name], flatValues, fieldSchemas, fieldPath)
       const arrayValue = []
       for (const key of Object.keys(objectValue)) {
         arrayValue[parseInt(key)] = objectValue[key]
       }
-      value[fieldSchema.name] = arrayValue
+      value[fieldMeta.name] = arrayValue
     } else {
       const subValue = flatValues[fieldPath]
       if (subValue !== undefined) {
-        value[fieldSchema.name] = flatValues[fieldPath]
+        value[fieldMeta.name] = flatValues[fieldPath]
       }
     }
   }
