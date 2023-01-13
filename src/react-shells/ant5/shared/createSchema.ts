@@ -7,7 +7,7 @@ import { fontStyleSetter } from "../SettingsForm/schemas/fontStyleSetter";
 import { martinStyleSetter } from "../SettingsForm/schemas/martinStyleSetter";
 import { paddingStyleSetter } from "../SettingsForm/schemas/paddingStyleSetter";
 
-export type SchemaOptions<IField = any,IReactions=any> = {
+export type SchemaOptions<IField = any, IReactions = any> = {
   propsSchemas?: INodeSchema<IField, IReactions>[],
   slotsSchemas?: INodeSchema<IField, IReactions>[],
   logicSchemas?: INodeSchema<IField, IReactions>[],
@@ -43,6 +43,9 @@ export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
     props: {
       title: "$logic",
       id: "logic",
+      style: {
+        padding: 0
+      },
     },
     children: logicSchemas
   }] : []

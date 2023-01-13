@@ -53,7 +53,10 @@ export const settingLocales = {
       validateRules: "校验规则",
       defaultValue: "默认值",
       value: "值",
-      fragmentFields:"字段",
+      fragmentFields: "字段",
+      fieldDefine: "字段定义",
+      fieldBind: "字段绑定",
+      reactions: "行为控制",
 
       IconInput: {
         DialogTitle: "选择图标",
@@ -122,7 +125,10 @@ export const settingLocales = {
       validateRules: "Rules",
       defaultValue: "Default",
       value: "Value",
-      fragmentFields:"Fields",
+      fragmentFields: "Fields",
+      fieldDefine: "Field Define",
+      fieldBind: "Field Bind",
+      reactions: "Reactions",
 
       IconInput: {
         DialogTitle: "Select Icon",

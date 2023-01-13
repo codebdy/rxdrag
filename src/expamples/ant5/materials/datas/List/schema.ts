@@ -100,93 +100,118 @@ const options: SchemaOptions<IFieldMeta, IReactionsMeta> = {
   ],
   logicSchemas: [
     {
-      componentName: "FormItem",
+      componentName: "CollapsePanel",
       props: {
-        label: "$fieldType",
+        title: "$fieldDefine",
+        defaultExpand: true,
       },
       children: [
         {
-          componentName: "Select",
-          "x-field": {
-            name: "x-field.type",
-          },
+          componentName: "FormItem",
           props: {
-            options: [
-              {
-                value: '',
-                label: '',
+            label: "$fieldType",
+          },
+          children: [
+            {
+              componentName: "Select",
+              "x-field": {
+                name: "x-field.type",
               },
-              {
-                value: 'normal',
-                label: 'Normal',
+              props: {
+                options: [
+                  {
+                    value: '',
+                    label: '',
+                  },
+                  {
+                    value: 'normal',
+                    label: 'Normal',
+                  },
+                  {
+                    value: 'object',
+                    label: 'Object',
+                  },
+                  {
+                    value: 'array',
+                    label: 'Array',
+                  },
+                  {
+                    value: 'fragment',
+                    label: 'Fragment',
+                  },
+                ]
+              }
+            }]
+        },
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$fieldName",
+          },
+          children: [
+            {
+              componentName: "Input",
+              "x-field": {
+                name: "x-field.name",
               },
-              {
-                value: 'object',
-                label: 'Object',
+            }]
+        },
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$defaultValue",
+          },
+          children: [
+            {
+              componentName: "Input",
+              "x-field": {
+                name: "x-field.defaultValue",
               },
-              {
-                value: 'array',
-                label: 'Array',
+            }]
+        },
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$fragmentFields",
+          },
+          children: [
+            {
+              componentName: "Input",
+              "x-field": {
+                name: "x-field.fragmentFields",
               },
-              {
-                value: 'fragment',
-                label: 'Fragment',
+            }]
+        },
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$validateRules",
+          },
+          children: [
+            {
+              componentName: "Input",
+              "x-field": {
+                name: "x-field.validateRules",
               },
-            ]
-          }
-        }]
+            }]
+        },
+      ]
     },
     {
-      componentName: "FormItem",
+      componentName: "CollapsePanel",
       props: {
-        label: "$fieldName",
+        title: "$fieldBind"
       },
       children: [
-        {
-          componentName: "Input",
-          "x-field": {
-            name: "x-field.name",
-          },
-        }]
+      ]
     },
     {
-      componentName: "FormItem",
+      componentName: "CollapsePanel",
       props: {
-        label: "$defaultValue",
+        title: "$reactions"
       },
       children: [
-        {
-          componentName: "Input",
-          "x-field": {
-            name: "x-field.defaultValue",
-          },
-        }]
-    },
-    {
-      componentName: "FormItem",
-      props: {
-        label: "$fragmentFields",
-      },
-      children: [
-        {
-          componentName: "Input",
-          "x-field": {
-            name: "x-field.fragmentFields",
-          },
-        }]
-    },
-    {
-      componentName: "FormItem",
-      props: {
-        label: "$validateRules",
-      },
-      children: [
-        {
-          componentName: "Input",
-          "x-field": {
-            name: "x-field.validateRules",
-          },
-        }]
+      ]
     },
   ]
 }

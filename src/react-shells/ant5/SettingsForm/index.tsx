@@ -35,6 +35,7 @@ import { ColInput } from "./components/ColInput";
 import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput } from "./components/BackgroundImageInput";
 import { ImageInput } from "./components/ImageInput";
 import { ComponentRender } from "runner/ComponentRender";
+import { CollapsePanel } from "./components/CollapsePanel";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -121,6 +122,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         BackgroundRepeatInput,
         BackgroundPositionInput,
         ImageInput,
+        CollapsePanel
       }}
     >
       <Fieldy>
