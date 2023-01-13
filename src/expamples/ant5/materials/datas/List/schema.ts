@@ -108,7 +108,7 @@ const options: SchemaOptions<IFieldMeta, IReactionsMeta> = {
         {
           componentName: "Select",
           "x-field": {
-            name: "type",
+            name: "x-field.type",
           },
           props: {
             options: [
@@ -135,7 +135,59 @@ const options: SchemaOptions<IFieldMeta, IReactionsMeta> = {
             ]
           }
         }]
-    }
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$fieldName",
+      },
+      children: [
+        {
+          componentName: "Input",
+          "x-field": {
+            name: "x-field.name",
+          },
+        }]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$defaultValue",
+      },
+      children: [
+        {
+          componentName: "Input",
+          "x-field": {
+            name: "x-field.defaultValue",
+          },
+        }]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$fragmentFields",
+      },
+      children: [
+        {
+          componentName: "Input",
+          "x-field": {
+            name: "x-field.fragmentFields",
+          },
+        }]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$validateRules",
+      },
+      children: [
+        {
+          componentName: "Input",
+          "x-field": {
+            name: "x-field.validateRules",
+          },
+        }]
+    },
   ]
 }
 

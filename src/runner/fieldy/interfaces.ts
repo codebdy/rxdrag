@@ -19,26 +19,24 @@ export interface IFormProps {
   validateFirst?: boolean, //	是否只校验第一个非法规则	Boolean
 }
 
-//跟core模块重复的定义，可能会在不同的项目中，暂时允许重复
 export interface IFieldMeta {
   //类型：对象、数组、常规、片段（name 为空）
   type?: "object" | "array" | "normal" | "fragment"
   name?: string
-  validateRule?: any
+  //validateRule?: any
   defaultValue?: any
   //是否虚拟字段，如果是，不输出最终值，不触发change， 该字段要废除
   virtual?: boolean
   fragmentFields?: IFieldMeta[]
   //校验规则
-  rules?: { [key: string]: boolean | string }[]
-  //是否接管输入输出控制，normal 类型默认true，其它默认 false
-
+  validateRules?: any
 
   ////===以下是渲染用的，需要移出该定义
   //target里面的属性值
   valuePropName?: string
   //触发值变化
   trigger?: string
+  //是否接管输入输出控制，normal 类型默认true，其它默认 false
   withControl?: boolean
 }
 

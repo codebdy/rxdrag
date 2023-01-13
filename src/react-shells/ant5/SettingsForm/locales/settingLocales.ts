@@ -41,14 +41,19 @@ export const settingLocales = {
       confirm: "确认",
       cancel: "取消",
 
-      image:"图片",
-      imageSize:"图片尺寸",
-      repeat:"重复",
-      position:"定位",
+      image: "图片",
+      imageSize: "图片尺寸",
+      repeat: "重复",
+      position: "定位",
 
-      selectImage:"选择图片",
+      selectImage: "选择图片",
 
-      fieldType:"字段类型",
+      fieldType: "字段类型",
+      fieldName: "字段名称",
+      validateRules: "校验规则",
+      defaultValue: "默认值",
+      value: "值",
+      fragmentFields:"字段",
 
       IconInput: {
         DialogTitle: "选择图标",
@@ -105,14 +110,19 @@ export const settingLocales = {
       confirm: "Confirm",
       cancel: "Cancel",
 
-      image:"Image",
-      imageSize:"ImageSize",
-      repeat:"Repeat",
-      position:"Positioin",
+      image: "Image",
+      imageSize: "ImageSize",
+      repeat: "Repeat",
+      position: "Positioin",
 
-      selectImage:"Select image",
+      selectImage: "Select image",
 
-      fieldType:"Field Type",
+      fieldType: "Field Type",
+      fieldName: "Field Name",
+      validateRules: "Rules",
+      defaultValue: "Default",
+      value: "Value",
+      fragmentFields:"Fields",
 
       IconInput: {
         DialogTitle: "Select Icon",
