@@ -60,6 +60,8 @@ export const settingLocales = {
       trigger: "触发属性",
       withControl: "控制字段",
       reactions: "行为控制",
+      effects: "响应规则",
+      configEffects: "配置响应规则",
 
       IconInput: {
         DialogTitle: "选择图标",
@@ -135,6 +137,8 @@ export const settingLocales = {
       trigger: "Trigger",
       withControl: "With Control",
       reactions: "Reactions",
+      effects: "Effects",
+      configEffects: "Config Effects",
 
       IconInput: {
         DialogTitle: "Select Icon",

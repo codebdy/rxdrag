@@ -261,7 +261,26 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IReactionsMeta> = {
       props: {
         title: "$reactions"
       },
+      "x-field": {
+        name: "x-reactions",
+      },
       children: [
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$effects",
+          },
+          children: [
+            {
+              componentName: "EffectsInput",
+              "x-field": {
+                name: "effects",
+              },
+              props: {
+                title: "$configEffects"
+              }
+            }]
+        },
       ]
     },
   ]
