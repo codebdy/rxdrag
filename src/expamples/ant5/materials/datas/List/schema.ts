@@ -214,6 +214,23 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IReactionsMeta> = {
         {
           componentName: "FormItem",
           props: {
+            label: "$withControl",
+          },
+          children: [
+            {
+              componentName: "Switch",
+              "x-field": {
+                name: "withControl",
+                params: {
+                  valuePropName: "checked",
+                }
+              },
+            }
+          ]
+        },
+        {
+          componentName: "FormItem",
+          props: {
             label: "$valuePropName",
           },
           children: [
@@ -237,23 +254,6 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IReactionsMeta> = {
               },
             }]
         },
-        {
-          componentName: "FormItem",
-          props: {
-            label: "$withControl",
-          },
-          children: [
-            {
-              componentName: "Switch",
-              "x-field": {
-                name: "withControl",
-                params: {
-                  valuePropName: "checked",
-                }
-              },
-            }
-          ]
-        }
       ]
     },
     {
