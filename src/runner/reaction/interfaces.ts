@@ -1,4 +1,23 @@
 
+export interface IComponentController{
+
+}
+
+export interface IFunctionInputs {
+  [name: string]: any
+}
+
+export type OutputHandler = () => void
+
+export interface IFunctionOutputs {
+  [name: string]: OutputHandler | undefined
+}
+
+export interface IFunctionArgs {
+  inputValue: IFunctionInputs,
+  outputs: IFunctionOutputs
+}
+
 export enum ImplementType {
   Code = "Code",
   Visual = "Visual"

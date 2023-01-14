@@ -29,7 +29,7 @@ export const displaySetter: INodeSchema<IFieldMeta> = {
           },
         ],
         params:{
-          withControl: true,
+          windBind: true,
         }
       },
       props: {

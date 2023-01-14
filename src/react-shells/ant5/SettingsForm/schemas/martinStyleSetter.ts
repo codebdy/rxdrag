@@ -24,7 +24,7 @@ export const martinStyleSetter: INodeSchema<IFieldMeta<IBindParams>> = {
           },
         ],
         params:{
-          withControl: true,
+          windBind: true,
         }
       },
       props: {

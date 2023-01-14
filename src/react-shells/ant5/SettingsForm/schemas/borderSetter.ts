@@ -23,7 +23,7 @@ export const borderSetter: INodeSchema<IFieldMeta> = {
           },
         ],
         params:{
-          withControl: true,
+          windBind: true,
         }
       },
       props: {

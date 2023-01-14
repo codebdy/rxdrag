@@ -3,7 +3,7 @@ import { memo, useMemo } from "react"
 import { ComponentField } from "./ComponentField"
 import { ComponentSchemaContext } from "./contexts"
 import { usePreviewComponent } from "core-react/hooks/usePreviewComponent"
-import { withControl } from "runner/ComponentRender/withControl"
+import { withBind } from "runner/ComponentRender/withBind"
 import { ComponentReaction } from "./ComponentReaction"
 import { IBindParams } from "./interfaces"
 import { IFieldMeta } from "runner/fieldy"
@@ -24,7 +24,7 @@ export const ComponentView = memo((
 ) => {
   const { node, ...other } = props
   const com = usePreviewComponent(node.componentName)
-  const Component = com && withControl(com, node?.["x-field"]);
+  const Component = com && withBind(com, node?.["x-field"]);
   const slots = useMemo(() => {
     const slts: { [key: string]: React.ReactElement } = {}
     for (const name of Object.keys(node?.slots || {})) {
