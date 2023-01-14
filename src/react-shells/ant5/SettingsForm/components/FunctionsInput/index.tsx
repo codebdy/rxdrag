@@ -1,6 +1,11 @@
 import { Button, Modal } from "antd"
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useState } from "react"
+import styled from "styled-components";
+
+const SytledContent = styled.div`
+  height: calc(100vh - 200px);
+`
 
 export const FunctionsInput = memo((props: {
   title: string
@@ -26,14 +31,19 @@ export const FunctionsInput = memo((props: {
       <Modal
         title={title}
         open={isModalOpen}
+        mask={false}
         okText={t("confirm")}
         cancelText={t("cancel")}
         onOk={handleOk}
         onCancel={handleCancel}
+        width={1199}
+        centered
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <SytledContent>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </SytledContent>
       </Modal>
     </>
 
