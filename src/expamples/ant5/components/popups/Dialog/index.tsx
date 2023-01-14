@@ -1,11 +1,9 @@
 import { Modal } from "antd";
-import React, { useMemo, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { CSSProperties, forwardRef, memo, useCallback, useState } from "react"
-import { DispatchActionHandlers } from "runner/reaction/DispatchActionHandlers";
-import { CLOSE_POPUP } from "../actions";
 
-//本组件强依赖 reaction模块
 export type DialogProps = {
+  open?: boolean,
   title?: React.ReactElement,
   style?: CSSProperties,
   centered?: boolean,
@@ -28,6 +26,7 @@ export type DialogProps = {
 
 export const Dialog = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) => {
   const {
+    open,
     title,
     actionComponent,
     content,
@@ -35,15 +34,19 @@ export const Dialog = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) 
     style,
     ...other
   } = props;
-  const [open, setOpen] = useState(false);
+  const [visiable, setVisiable] = useState<boolean>();
   const realRef = useRef<HTMLElement | null>(null);
 
+  useEffect(()=>{
+    setVisiable(open)
+  }, [open])
+
   const handleOpen = useCallback(() => {
-    setOpen(true)
+    setVisiable(true)
   }, [])
 
   const handleClose = useCallback(() => {
-    setOpen(false)
+    setVisiable(false)
   }, [])
   const handleRefChange = useCallback((node: HTMLDivElement | null) => {
     realRef.current = node;
@@ -54,26 +57,18 @@ export const Dialog = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) 
     }
   }, [ref])
 
-  const handlers = useMemo(() => {
-    return {
-      [CLOSE_POPUP]: () => setOpen(false)
-    }
-  }, [])
-
   return (
-    <DispatchActionHandlers acionHandlers={handlers}>
-      <div ref={handleRefChange} style={{ display: "inline-block", position: "relative", ...style }}  {...other}>
-        {actionComponent && React.cloneElement(actionComponent, { onClick: handleOpen })}
-        <Modal
-          title={title}
-          open={open}
-          footer={footer}
-          onCancel={handleClose}
-          getContainer={realRef.current ? () => realRef.current as any : undefined}
-        >
-          {content}
-        </Modal>
-      </div>
-    </DispatchActionHandlers>
+    <div ref={handleRefChange} style={{ display: "inline-block", position: "relative", ...style }}  {...other}>
+      {actionComponent && React.cloneElement(actionComponent, { onClick: handleOpen })}
+      <Modal
+        title={title}
+        open={visiable}
+        footer={footer}
+        onCancel={handleClose}
+        getContainer={realRef.current ? () => realRef.current as any : undefined}
+      >
+        {content}
+      </Modal>
+    </div>
   )
 }))

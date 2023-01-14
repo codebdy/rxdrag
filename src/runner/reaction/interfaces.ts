@@ -20,12 +20,20 @@ export interface IEffects {
   }//...
 }
 
+
 // $form 虚拟表单， 
 // $field 当前字段, 设置字段：$field.setValue
 // $self 组件，设置组件属性:$self.setProps({dataSource:[...]}), 
 export interface IReactionsMeta {
+  variables?: string[],
   effects?: IEffects,
-  actions?: {
+  events?: {
     [key: string]: IActionMeta
+  },
+  actions: {
+    [name: string]: {
+      args?: string[],
+      jsCode?: string,
+    }
   }
 }

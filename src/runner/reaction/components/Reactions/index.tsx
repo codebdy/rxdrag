@@ -1,10 +1,10 @@
 import { memo } from "react"
-import { useOnMultiFieldValueChange } from "./hooks/useOnMultiFieldValueChange"
-import { useOnFieldValueChange } from "./hooks/useOnFieldValueChange";
-import { useOnInit } from "./hooks/useOnInit";
-import { IReactionsMeta } from "./interfaces";
+import { useOnMultiFieldValueChange } from "../../hooks/useOnMultiFieldValueChange"
+import { useOnFieldValueChange } from "../../hooks/useOnFieldValueChange";
+import { useOnInit } from "../../hooks/useOnInit";
+import { IReactionsMeta } from "../../interfaces";
 
-export const Reaction = memo((
+export const Reactions = memo((
   props: {
     reaction?: IReactionsMeta,
     children?: React.ReactNode

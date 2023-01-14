@@ -108,7 +108,6 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IReactionsMeta> = {
       componentName: "CollapsePanel",
       props: {
         title: "$fieldDefine",
-        defaultExpand: true,
       },
       children: [
         {
@@ -265,6 +264,22 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IReactionsMeta> = {
         name: "x-reactions",
       },
       children: [
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$functions",
+          },
+          children: [
+            {
+              componentName: "FunctionsInput",
+              "x-field": {
+                name: "functions",
+              },
+              props: {
+                title: "$configFunctions"
+              }
+            }]
+        },
         {
           componentName: "FormItem",
           props: {

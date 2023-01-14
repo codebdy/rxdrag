@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-import { Reaction } from "runner/reaction"
+import { Reactions } from "runner/reaction/components/Reactions"
 import { IReactionsMeta } from "runner/reaction/interfaces"
 
 export const ComponentReaction = memo((
@@ -12,7 +12,7 @@ export const ComponentReaction = memo((
 
   return (
     reactionsMeta
-      ? <Reaction>{children}</Reaction>
+      ? <Reactions>{children}</Reactions>
       : <>{children}</>
   )
 })

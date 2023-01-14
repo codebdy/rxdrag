@@ -59,7 +59,10 @@ export const settingLocales = {
       valuePropName: "值属性",
       trigger: "触发属性",
       withControl: "控制字段",
-      reactions: "行为控制",
+      variables: "变量",
+      reactions: "交互行为",
+      functions: "函数定义",
+      configFunctions: "配置函数定义",
       effects: "响应规则",
       configEffects: "配置响应规则",
 
@@ -136,7 +139,10 @@ export const settingLocales = {
       valuePropName: "Value Prop",
       trigger: "Trigger",
       withControl: "With Control",
+      variables: "variables",
       reactions: "Reactions",
+      functions: "Functions",
+      configFunctions: "Config Functions",
       effects: "Effects",
       configEffects: "Config Effects",
 
