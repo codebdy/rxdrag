@@ -335,8 +335,53 @@
                       },
                       "children": [
                         {
-                          "componentName": "Jobs",
-                          "slots": {},
+                          "componentName": "List",
+                          "slots": {
+                            "renderItem": {
+                              "componentName": "ListItem",
+                              "slots": {
+                                "actions": {
+                                  "componentName": "ActionSlot",
+                                  "slots": {},
+                                  "children": []
+                                },
+                                "extra": {
+                                  "componentName": "ExtraSlot",
+                                  "slots": {},
+                                  "children": []
+                                }
+                              },
+                              "children": [
+                                {
+                                  "componentName": "ListItemMeta",
+                                  "slots": {
+                                    "avatar": {
+                                      "componentName": "Avatar",
+                                      "slots": {},
+                                      "children": []
+                                    },
+                                    "title": {
+                                      "componentName": "TextView",
+                                      "props": {
+                                        "content": "Title"
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    },
+                                    "description": {
+                                      "componentName": "TextView",
+                                      "props": {
+                                        "content": "Description"
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                }
+                              ]
+                            }
+                          },
                           "children": []
                         }
                       ]
