@@ -38,6 +38,7 @@ import { ComponentRender } from "runner/ComponentRender";
 import { CollapsePanel } from "./components/CollapsePanel";
 import { EffectsInput } from "./components/EffectsInput";
 import { FunctionsInput } from "./components/FunctionsInput";
+import { EventInput } from "./components/EventInput";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -127,6 +128,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         CollapsePanel,
         EffectsInput,
         FunctionsInput,
+        EventInput,
       }}
     >
       <Fieldy>

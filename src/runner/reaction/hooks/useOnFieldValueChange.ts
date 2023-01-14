@@ -13,10 +13,10 @@ export function useOnFieldValueChange(reaction?: IReactionsMeta) {
   const newFunc = useNewFunction()
 
   const handleFieldValueChange = useCallback((newValue: any, prevousValue: any) => {
-    if (reactionParams?.jsCode && fieldy && formName) {
-      newFunc(reactionParams.jsCode)
+    if (reactionParams?.func.jsCode && fieldy && formName) {
+      newFunc(reactionParams.func.jsCode)
     }
-  }, [fieldy, formName, newFunc, reactionParams?.jsCode])
+  }, [fieldy, formName, newFunc, reactionParams?.func.jsCode])
 
   useEffect(() => {
     if (reactionParams?.field && formName) {

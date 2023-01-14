@@ -1,5 +1,8 @@
 import { createContext } from "react";
-import { IActionMeta } from "runner/reaction/interfaces";
+
+export interface IActionMeta{
+
+}
 
 export type ActionHandler = (actionMeta?: IActionMeta) => boolean | void | Promise<boolean | void>
 

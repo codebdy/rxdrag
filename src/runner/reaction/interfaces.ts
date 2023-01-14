@@ -1,22 +1,28 @@
 
-export interface IActionMeta<PayLoad = any> {
-  uuid: string,
-  title: string,
-  type: string,
-  payload?: PayLoad,
+export enum ImplementType {
+  Code = "Code",
+  Visual = "Visual"
+}
+
+export interface IFunction {
+  title?: string,
+  name?: string,
+  type?: ImplementType,
+  jsCode?: string,
+  metas?: any,
 }
 
 export interface IEffects {
-  onInit?: string,
-  onFormValueChange?: string,
+  onInit?: IFunction,
+  onFormValueChange?: IFunction,
   //JS代码
   onFieldValueChange?: {
     field: string,
-    jsCode: string
+    func: IFunction
   },
   onMultiFieldValueChange?: {
     fields: string[],
-    jsCode: string
+    func: IFunction
   }//...
 }
 
@@ -28,12 +34,9 @@ export interface IReactionsMeta {
   variables?: string[],
   effects?: IEffects,
   events?: {
-    [key: string]: IActionMeta
+    [key: string]: IFunction | undefined
   },
-  actions: {
-    [name: string]: {
-      args?: string[],
-      jsCode?: string,
-    }
+  functions: {
+    [name: string]: IFunction | undefined
   }
 }

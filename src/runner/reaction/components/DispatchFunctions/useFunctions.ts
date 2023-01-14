@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ActionHandlersContext } from "./context";
 
-export function useActionHandlers(){
+export function useFunctions(){
   return useContext(ActionHandlersContext)
 }
