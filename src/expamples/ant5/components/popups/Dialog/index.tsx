@@ -1,7 +1,10 @@
 import { Modal } from "antd";
-import React, { useRef } from "react";
+import React, { useMemo, useRef } from "react";
 import { CSSProperties, forwardRef, memo, useCallback, useState } from "react"
+import { DispatchActionHandlers } from "runner/reaction/DispatchActionHandlers";
+import { CLOSE_POPUP } from "../actions";
 
+//本组件强依赖 reaction模块
 export type DialogProps = {
   title?: React.ReactElement,
   style?: CSSProperties,
@@ -34,7 +37,7 @@ export const Dialog = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) 
   } = props;
   const [open, setOpen] = useState(false);
   const realRef = useRef<HTMLElement | null>(null);
-  
+
   const handleOpen = useCallback(() => {
     setOpen(true)
   }, [])
@@ -51,18 +54,26 @@ export const Dialog = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) 
     }
   }, [ref])
 
+  const handlers = useMemo(() => {
+    return {
+      [CLOSE_POPUP]: () => setOpen(false)
+    }
+  }, [])
+
   return (
-    <div ref={handleRefChange} style={{ display: "inline-block", position: "relative", ...style }}  {...other}>
-      {actionComponent && React.cloneElement(actionComponent, { onClick: handleOpen })}
-      <Modal
-        title={title}
-        open={open}
-        footer={footer}
-        onCancel={handleClose}
-        getContainer={realRef.current ? () => realRef.current as any : undefined}
-      >
-        {content}
-      </Modal>
-    </div>
+    <DispatchActionHandlers acionHandlers={handlers}>
+      <div ref={handleRefChange} style={{ display: "inline-block", position: "relative", ...style }}  {...other}>
+        {actionComponent && React.cloneElement(actionComponent, { onClick: handleOpen })}
+        <Modal
+          title={title}
+          open={open}
+          footer={footer}
+          onCancel={handleClose}
+          getContainer={realRef.current ? () => realRef.current as any : undefined}
+        >
+          {content}
+        </Modal>
+      </div>
+    </DispatchActionHandlers>
   )
 }))
