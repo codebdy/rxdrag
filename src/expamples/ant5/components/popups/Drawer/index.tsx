@@ -1,6 +1,8 @@
 import { Drawer as AntdDrawer } from "antd";
-import React, { useRef } from "react";
+import React, { useMemo, useRef } from "react";
 import { CSSProperties, forwardRef, memo, useCallback, useState } from "react"
+import { DispatchActionHandlers } from "runner/reaction/DispatchActionHandlers";
+import { CLOSE_POPUP } from "../actions";
 
 export type DrawerProps = {
   autoFocus?: boolean,
@@ -59,20 +61,26 @@ export const Drawer = memo(forwardRef<HTMLDivElement>((props: DrawerProps, ref) 
       ref.current = node;
     }
   }, [ref])
-
+  const handlers = useMemo(() => {
+    return {
+      [CLOSE_POPUP]: () => setOpen(false)
+    }
+  }, [])
   return (
-    <div ref={handleRefChange} style={{ display: "inline-block", position: "relative", ...style }}  {...other}>
-      {actionComponent && React.cloneElement(actionComponent, { onClick: handleOpen })}
-      <AntdDrawer
-        title={title}
-        open={open}
-        footer={footer}
-        extra={extra}
-        getContainer={realRef.current ? () => realRef.current as any : undefined}
-        onClose={hancleClose}
-      >
-        {content}
-      </AntdDrawer>
-    </div>
+    <DispatchActionHandlers acionHandlers={handlers}>
+      <div ref={handleRefChange} style={{ display: "inline-block", position: "relative", ...style }}  {...other}>
+        {actionComponent && React.cloneElement(actionComponent, { onClick: handleOpen })}
+        <AntdDrawer
+          title={title}
+          open={open}
+          footer={footer}
+          extra={extra}
+          getContainer={realRef.current ? () => realRef.current as any : undefined}
+          onClose={hancleClose}
+        >
+          {content}
+        </AntdDrawer>
+      </div>
+    </DispatchActionHandlers>
   )
 }))
