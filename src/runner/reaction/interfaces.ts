@@ -1,5 +1,5 @@
 
-export interface IRxAction<PayLoad = any> {
+export interface IActionMeta<PayLoad = any> {
   uuid: string,
   title: string,
   type: string,
@@ -26,6 +26,6 @@ export interface IEffects {
 export interface IReactionsMeta {
   effects?: IEffects,
   actions?: {
-    [key: string]: IRxAction
+    [key: string]: IActionMeta
   }
 }

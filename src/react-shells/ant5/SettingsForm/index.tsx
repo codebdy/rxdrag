@@ -37,6 +37,7 @@ import { ImageInput } from "./components/ImageInput";
 import { ComponentRender } from "runner/ComponentRender";
 import { CollapsePanel } from "./components/CollapsePanel";
 import { EffectsInput } from "./components/EffectsInput";
+import { ActionInput } from "./components/ActionInput";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -124,7 +125,8 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         BackgroundPositionInput,
         ImageInput,
         CollapsePanel,
-        EffectsInput
+        EffectsInput,
+        ActionInput
       }}
     >
       <Fieldy>
