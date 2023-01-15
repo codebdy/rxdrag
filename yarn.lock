@@ -62,16 +62,31 @@
     resize-observer-polyfill "^1.5.1"
     throttle-debounce "^5.0.0"
 
-"@antv/x6@1.32.10":
-  version "1.32.10"
-  resolved "https://registry.npmmirror.com/@antv/x6/-/x6-1.32.10.tgz#234671590cc92313d9002abd53d9b6110c59c06d"
-  integrity sha512-qlTWNJoGdH6VDvG6t5zo3SUhH5yt+cdxfKPWn0EGH36roGt14RGJBn/JHe7Oe2E2TOxVBu8cMyzlKFI8xkyGMA==
+"@antv/x6-common@^2.0.x":
+  version "2.0.4"
+  resolved "https://registry.npmmirror.com/@antv/x6-common/-/x6-common-2.0.4.tgz#14dcfa4266d1ea594b0029b80defb916dbe01a7f"
+  integrity sha512-OeCMJUP2/fAbGLCfUuFU/p9oSdyG/RLNpDE4xUT8pBHfhhlKfoMDz9RkYr6+ZAg8F5hgN3zBkZDuLXhO6uN8hQ==
   dependencies:
-    csstype "^3.0.3"
-    jquery "^3.5.1"
-    jquery-mousewheel "^3.1.13"
     lodash-es "^4.17.15"
-    mousetrap "^1.6.5"
+    utility-types "^3.10.0"
+
+"@antv/x6-geometry@^2.0.x":
+  version "2.0.4"
+  resolved "https://registry.npmmirror.com/@antv/x6-geometry/-/x6-geometry-2.0.4.tgz#d08213e200e16c8d065a0235189239cb367a0797"
+  integrity sha512-dlsLNRRTiCw8TsJ/03j3y5IbbbK4Npf6zBH6kAx8nnW+edNT/TAOChvPRzizwD+vA7wY9Rp2AiRnp/vCdIYC5w==
+
+"@antv/x6-react-shape@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.npmmirror.com/@antv/x6-react-shape/-/x6-react-shape-2.1.0.tgz#b364a021d9690abb1f8f35cefd2da913dfd145d3"
+  integrity sha512-HY9tPbMU1Z7Tu2lwBenXJe53DzT2MFt9LXRBPyN+r5qu8kP3VMU1vzS+2+LsPFdPL3s71wolGjL1GExUoh77JQ==
+
+"@antv/x6@^2.1.5":
+  version "2.1.5"
+  resolved "https://registry.npmmirror.com/@antv/x6/-/x6-2.1.5.tgz#025678e159ed4bbc4f553769dafba528be2952c1"
+  integrity sha512-lpsjpPGSX+1/IHh4XPpdXYQUMkJtpOdD7APK6g1erJFAOTFLniK41/17V9BUbkxMV4+1nF2BBZ99MoLixl5Xvw==
+  dependencies:
+    "@antv/x6-common" "^2.0.x"
+    "@antv/x6-geometry" "^2.0.x"
     utility-types "^3.10.0"
 
 "@apideck/better-ajv-errors@^0.3.1":
@@ -3900,7 +3915,7 @@ cssstyle@^2.3.0:
   dependencies:
     cssom "~0.3.6"
 
-csstype@^3.0.10, csstype@^3.0.2, csstype@^3.0.3:
+csstype@^3.0.10, csstype@^3.0.2:
   version "3.1.1"
   resolved "https://registry.npmmirror.com/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
   integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
@@ -6335,16 +6350,6 @@ jest@^27.4.3:
     import-local "^3.0.2"
     jest-cli "^27.5.1"
 
-jquery-mousewheel@^3.1.13:
-  version "3.1.13"
-  resolved "https://registry.npmmirror.com/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz#06f0335f16e353a695e7206bf50503cb523a6ee5"
-  integrity sha512-GXhSjfOPyDemM005YCEHvzrEALhKDIswtxSHSR2e4K/suHVJKJxxRCGz3skPjNxjJjQa9AVSGGlYjv1M3VLIPg==
-
-jquery@^3.5.1:
-  version "3.6.3"
-  resolved "https://registry.npmmirror.com/jquery/-/jquery-3.6.3.tgz#23ed2ffed8a19e048814f13391a19afcdba160e6"
-  integrity sha512-bZ5Sy3YzKo9Fyc8wH2iIQK4JImJ6R0GWI9kL1/k7Z91ZBNgkRXE6U0JfHIizZbort8ZunhSI3jw9I6253ahKfg==
-
 js-sdsl@^4.1.4:
   version "4.2.0"
   resolved "https://registry.npmmirror.com/js-sdsl/-/js-sdsl-4.2.0.tgz#278e98b7bea589b8baaf048c20aeb19eb7ad09d0"
@@ -6823,11 +6828,6 @@ monaco-editor@^0.34.1:
   version "0.34.1"
   resolved "https://registry.npmmirror.com/monaco-editor/-/monaco-editor-0.34.1.tgz#1b75c4ad6bc4c1f9da656d740d98e0b850a22f87"
   integrity sha512-FKc80TyiMaruhJKKPz5SpJPIjL+dflGvz4CpuThaPMc94AyN7SeC9HQ8hrvaxX7EyHdJcUY5i4D0gNyJj1vSZQ==
-
-mousetrap@^1.6.5:
-  version "1.6.5"
-  resolved "https://registry.npmmirror.com/mousetrap/-/mousetrap-1.6.5.tgz#8a766d8c272b08393d5f56074e0b5ec183485bf9"
-  integrity sha512-QNo4kEepaIBwiT8CDhP98umTetp+JNfQYBWvC1pc6/OAibuXtRcxZ58Qz8skvEHYvURne/7R8T5VoOI7rDsEUA==
 
 ms@2.0.0:
   version "2.0.0"

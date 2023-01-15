@@ -1,6 +1,6 @@
 import { Graph, NodeView } from "@antv/x6";
 import { useCallback, useEffect } from "react";
-import { MyShape } from "../MyShape";
+import { NodeStatus } from "../AlgoNode";
 
 // 高亮
 export const magnetAvailabilityHighlighter = {
@@ -13,59 +13,35 @@ export const magnetAvailabilityHighlighter = {
   },
 }
 
+
 export function useEvents(graph?: Graph) {
-  const update = useCallback((view: NodeView) => {
-    const cell = view.cell
-    if (cell instanceof MyShape && graph) {
-      cell.getInPorts().forEach((port) => {
-        const portNode = view.findPortElem(port.id!, 'portBody')
-        view.unhighlight(portNode, {
-          highlighter: magnetAvailabilityHighlighter,
-        })
-      })
-      cell.updateInPorts(graph)
-    }
-  }, [graph])
+
   
   useEffect(() => {
     if (graph) {
-      graph.on('edge:connected', ({ previousView, currentView }) => {
-        if (previousView) {
-          update(previousView as NodeView)
-        }
-        if (currentView) {
-          update(currentView as NodeView)
-        }
-      })
-
-      graph.on('edge:removed', ({ edge, options }) => {
-        if (!options.ui) {
-          return
-        }
-
-        const target = edge.getTargetCell()
-        if (target instanceof MyShape) {
-          target.updateInPorts(graph)
-        }
-      })
-
-      graph.on('edge:mouseenter', ({ edge }) => {
-        edge.addTools([
-          'source-arrowhead',
-          'target-arrowhead',
-          {
-            name: 'button-remove',
-            args: {
-              distance: -30,
-            },
+      graph.on('edge:connected', ({ edge }) => {
+        edge.attr({
+          line: {
+            strokeDasharray: '',
           },
-        ])
+        })
       })
-
-      graph.on('edge:mouseleave', ({ edge }) => {
-        edge.removeTools()
+      
+      graph.on('node:change:data', ({ node }) => {
+        const edges = graph.getIncomingEdges(node)
+        const { status } = node.getData() as NodeStatus
+        edges?.forEach((edge) => {
+          if (status === 'running') {
+            edge.attr('line/strokeDasharray', 5)
+            edge.attr('line/style/animation', 'running-line 30s infinite linear')
+          } else {
+            edge.attr('line/strokeDasharray', '')
+            edge.attr('line/style/animation', '')
+          }
+        })
       })
+      
     }
 
-  }, [graph, update])
+  }, [graph])
 }
