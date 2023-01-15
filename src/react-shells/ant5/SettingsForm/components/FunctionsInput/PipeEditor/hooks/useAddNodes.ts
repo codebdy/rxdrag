@@ -90,7 +90,10 @@ const data = [
     "ports": [
       {
         "id": "1-1",
-        "group": "right"
+        "group": "out",
+        args: {
+          dx: 4,
+        }
       }
     ]
   },
@@ -110,11 +113,17 @@ const data = [
       },
       {
         "id": "2-2",
-        "group": "right"
+        "group": "out",
+        args: {
+          dx: 4,
+        }
       },
       {
         "id": "2-3",
-        "group": "right"
+        "group": "out",
+        args: {
+          dx: 4,
+        }
       }
     ]
   },
@@ -134,7 +143,10 @@ const data = [
       },
       {
         "id": "3-2",
-        "group": "right"
+        "group": "out",
+        args: {
+          dx: 4,
+        }
       }
     ]
   },
@@ -154,7 +166,10 @@ const data = [
       },
       {
         "id": "4-2",
-        "group": "right"
+        "group": "out",
+        args: {
+          dx: 4,
+        }
       }
     ]
   },
@@ -218,7 +233,7 @@ export function useAddNodes(graph?: Graph) {
 
   // 显示节点状态
   const showNodeStatus = useCallback(async (statusList: NodeStatus[][]) => {
-    if(!graph){
+    if (!graph) {
       return
     }
     const status = statusList.shift()

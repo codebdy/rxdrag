@@ -64,9 +64,22 @@ register({
             fill: '#fff',
           },
         },
+
       },
-      right: {
+      out: {
         position: 'right',
+        attrs: {
+          circle: {
+            r: 4,
+            magnet: true,
+            stroke: '#C2C8D5',
+            strokeWidth: 1,
+            fill: '#fff',
+          },
+        },
+      },
+      bottom: {
+        position: 'bottom',
         attrs: {
           circle: {
             r: 4,
@@ -100,7 +113,7 @@ Graph.registerEdge(
 Graph.registerConnector(
   'algo-connector',
   (s, e) => {
-    const offset = 4
+    const offset = 8
     const deltaX = Math.abs(e.x - s.x)
     const control = Math.floor((deltaX / 3) * 2)
 
