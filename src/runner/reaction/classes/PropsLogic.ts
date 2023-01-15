@@ -1,6 +1,6 @@
 import { Props } from "runner/reaction/classes/props";
 import { IHandlerArgs, InputHandlers, OutputJointers, ILogic } from "runner/reaction/interfaces";
-import { Jointer } from "../classes/jointer";
+import { Jointer } from "./jointer";
 
 export const OUTPUT = "output"
 export class PropsLogic implements ILogic {

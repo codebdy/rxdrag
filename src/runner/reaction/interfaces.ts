@@ -23,13 +23,16 @@ export type OutputJointers = {
 }
 
 export interface ILogic {
-  name: string,
   state: any,
   inputs: InputHandlers
   outputs?: InputHandlers
   getJointer?: (name: string) => IJointer | undefined
 }
 
+export interface IComponentController extends ILogic {
+  effects: InputHandlers,
+  events: InputHandlers,
+}
 
 export enum ImplementType {
   Code = "Code",
@@ -46,16 +49,17 @@ export interface IFunctionMeta {
 
 export interface IEffects {
   onInit?: IFunctionMeta,
-  onFormValueChange?: IFunctionMeta,
-  //JS代码
-  onFieldValueChange?: {
-    field: string,
-    func: IFunctionMeta
-  },
-  onMultiFieldValueChange?: {
-    fields: string[],
-    func: IFunctionMeta
-  }//...
+  onDestory?: IFunctionMeta,
+  // onFormValueChange?: IFunctionMeta,
+  // //JS代码
+  // onFieldValueChange?: {
+  //   field: string,
+  //   func: IFunctionMeta
+  // },
+  // onMultiFieldValueChange?: {
+  //   fields: string[],
+  //   func: IFunctionMeta
+  // }//...
 }
 
 export type MethodMetas = {
