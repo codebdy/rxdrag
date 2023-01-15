@@ -2,19 +2,32 @@ export type Unsubscribe = () => void
 
 export interface IHandlerArgs {
   inputValue?: any,
-  outputs?: IHandlers,
+  outputs?: InputHandlers,
   context?: any
 }
 
-export interface IHandlers {
-  [methodName: string]: (args?: IHandlerArgs) => void
+export type InputHandler = (args?: IHandlerArgs) => void
+
+export type InputHandlers = {
+  [name: string]: InputHandler
+}
+
+export interface IJointer {
+  flowIn: InputHandler,
+  addHandler: (handler: InputHandler) => void
+  removeHandler: (handler: InputHandler) => void
+}
+
+export type OutputJointers = {
+  [name: string]: IJointer | undefined
 }
 
 export interface ILogic {
   name: string,
   state: any,
-  inputs: IHandlers
-  outputs: IHandlers
+  inputs: InputHandlers
+  outputs?: InputHandlers
+  getJointer?: (name: string) => IJointer | undefined
 }
 
 
@@ -57,4 +70,10 @@ export interface IReactionsMeta {
     [key: string]: IFunctionMeta | undefined
   },
   methods: MethodMetas
+}
+
+export interface ILogicMeta {
+  name?: string,
+  outputEditable?: boolean,
+  inputEditable?: boolean,
 }

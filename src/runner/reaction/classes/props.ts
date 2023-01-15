@@ -6,6 +6,7 @@ export class Props {
   private listeners: {
     [id: string]: PropsListener | undefined
   } = {}
+  
   constructor(private props?: any) {
 
   }
