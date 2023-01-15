@@ -90,7 +90,7 @@ const data = [
     "ports": [
       {
         "id": "1-1",
-        "group": "bottom"
+        "group": "right"
       }
     ]
   },
@@ -106,15 +106,15 @@ const data = [
     "ports": [
       {
         "id": "2-1",
-        "group": "top"
+        "group": "left"
       },
       {
         "id": "2-2",
-        "group": "bottom"
+        "group": "right"
       },
       {
         "id": "2-3",
-        "group": "bottom"
+        "group": "right"
       }
     ]
   },
@@ -130,11 +130,11 @@ const data = [
     "ports": [
       {
         "id": "3-1",
-        "group": "top"
+        "group": "left"
       },
       {
         "id": "3-2",
-        "group": "bottom"
+        "group": "right"
       }
     ]
   },
@@ -150,11 +150,11 @@ const data = [
     "ports": [
       {
         "id": "4-1",
-        "group": "top"
+        "group": "left"
       },
       {
         "id": "4-2",
-        "group": "bottom"
+        "group": "right"
       }
     ]
   },

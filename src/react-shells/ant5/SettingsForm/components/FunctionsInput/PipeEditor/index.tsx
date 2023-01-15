@@ -53,8 +53,8 @@ register({
   component: AlgoNode,
   ports: {
     groups: {
-      top: {
-        position: 'top',
+      left: {
+        position: 'left',
         attrs: {
           circle: {
             r: 4,
@@ -65,8 +65,8 @@ register({
           },
         },
       },
-      bottom: {
-        position: 'bottom',
+      right: {
+        position: 'right',
         attrs: {
           circle: {
             r: 4,
@@ -101,16 +101,16 @@ Graph.registerConnector(
   'algo-connector',
   (s, e) => {
     const offset = 4
-    const deltaY = Math.abs(e.y - s.y)
-    const control = Math.floor((deltaY / 3) * 2)
+    const deltaX = Math.abs(e.x - s.x)
+    const control = Math.floor((deltaX / 3) * 2)
 
-    const v1 = { x: s.x, y: s.y + offset + control }
-    const v2 = { x: e.x, y: e.y - offset - control }
+    const v1 = { x: s.x + offset + control, y: s.y }
+    const v2 = { x: e.x - offset - control, y: e.y }
 
     return Path.normalize(
       `M ${s.x} ${s.y}
-       L ${s.x} ${s.y + offset}
-       C ${v1.x} ${v1.y} ${v2.x} ${v2.y} ${e.x} ${e.y - offset}
+       L ${s.x + offset} ${s.y}
+       C ${v1.x} ${v1.y} ${v2.x} ${v2.y} ${e.x - offset} ${e.y}
        L ${e.x} ${e.y}
       `,
     )
