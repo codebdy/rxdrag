@@ -66,7 +66,7 @@ MyShape.config({
       magnet: false,
     },
     body: {
-      fill: '#EFF4FF',
+      fill: 'transparent',
       stroke: '#5F95FF',
       strokeWidth: 1,
     },
@@ -87,7 +87,7 @@ MyShape.config({
             magnet: 'passive',
             r: 6,
             stroke: '#5F95FF',
-            fill: '#fff',
+            fill: '#tranparent',
             strokeWidth: 1,
           },
         },
@@ -100,7 +100,7 @@ MyShape.config({
           portBody: {
             magnet: true,
             r: 6,
-            fill: '#fff',
+            fill: '#tranparent',
             stroke: '#5F95FF',
             strokeWidth: 1,
           },

@@ -1,9 +1,11 @@
-import { Graph, NodeView, Shape } from "@antv/x6";
+import { Graph, Shape } from "@antv/x6";
 import { Button, Space } from "antd"
 import { useToken } from "antd/es/theme/internal";
 import { memo, useEffect, useRef, useState } from "react"
 import { redoIcon, undoIcon } from "react-shells/ant5/icons";
 import styled from "styled-components";
+import { useAddNodes } from "./hooks/useAddNodes";
+import { magnetAvailabilityHighlighter } from "./hooks/useEvents";
 import { MyShape } from "./MyShape";
 
 const SytledContent = styled.div`
@@ -41,24 +43,16 @@ const PropertyBox = styled.div`
   border-left: solid 1px;
   padding: 8px;
 `
-// 高亮
-const magnetAvailabilityHighlighter = {
-  name: 'stroke',
-  args: {
-    attrs: {
-      fill: '#fff',
-      stroke: '#47C769',
-    },
-  },
-}
 
 export const PipeEditor = memo(() => {
   const [, token] = useToken()
   const [graph, setGraph] = useState<Graph>()
   const canvasRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
+  useAddNodes(graph)
 
+
+  useEffect(() => {
     // 画布
     const graph = new Graph({
       container: canvasRef.current!,
@@ -68,7 +62,7 @@ export const PipeEditor = memo(() => {
           name: 'stroke',
           args: {
             attrs: {
-              fill: '#fff',
+              fill: '#transparent',
               stroke: '#31d0c6',
             },
           },
@@ -125,68 +119,11 @@ export const PipeEditor = memo(() => {
         },
       },
     })
+    setGraph(graph)
 
-    graph.addNode(
-      new MyShape().resize(120, 40).position(200, 50).updateInPorts(graph),
-    )
-
-    graph.addNode(
-      new MyShape().resize(120, 40).position(400, 50).updateInPorts(graph),
-    )
-
-    graph.addNode(
-      new MyShape().resize(120, 40).position(300, 250).updateInPorts(graph),
-    )
-
-    function update(view: NodeView) {
-      const cell = view.cell
-      if (cell instanceof MyShape) {
-        cell.getInPorts().forEach((port) => {
-          const portNode = view.findPortElem(port.id!, 'portBody')
-          view.unhighlight(portNode, {
-            highlighter: magnetAvailabilityHighlighter,
-          })
-        })
-        cell.updateInPorts(graph)
-      }
+    return ()=>{
+      graph.dispose()
     }
-
-    graph.on('edge:connected', ({ previousView, currentView }) => {
-      if (previousView) {
-        update(previousView as NodeView)
-      }
-      if (currentView) {
-        update(currentView as NodeView)
-      }
-    })
-
-    graph.on('edge:removed', ({ edge, options }) => {
-      if (!options.ui) {
-        return
-      }
-
-      const target = edge.getTargetCell()
-      if (target instanceof MyShape) {
-        target.updateInPorts(graph)
-      }
-    })
-
-    graph.on('edge:mouseenter', ({ edge }) => {
-      edge.addTools([
-        'source-arrowhead',
-        'target-arrowhead',
-        {
-          name: 'button-remove',
-          args: {
-            distance: -30,
-          },
-        },
-      ])
-    })
-
-    graph.on('edge:mouseleave', ({ edge }) => {
-      edge.removeTools()
-    })
   }, [])
 
   return (
