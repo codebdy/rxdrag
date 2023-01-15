@@ -8,6 +8,7 @@ import { AlgoNode } from "./AlgoNode";
 import { useAddNodes } from "./hooks/useAddNodes";
 import "./style.less"
 import { register } from '@antv/x6-react-shape'
+import { Selection } from '@antv/x6-plugin-selection'
 
 const SytledContent = styled.div`
   height: calc(100vh - 100px);
@@ -126,7 +127,7 @@ export const PipeEditor = memo(() => {
 
   useEffect(() => {
     // 画布
-    const graph:Graph = new Graph({
+    const graph: Graph = new Graph({
       container: canvasRef.current!,
       panning: {
         enabled: true,
@@ -175,6 +176,15 @@ export const PipeEditor = memo(() => {
         },
       },
     })
+
+    graph.use(new Selection({
+      enabled: true,
+      multiple: true,
+      rubberEdge: true,
+      rubberNode: true,
+      modifiers: 'shift',
+      rubberband: true,
+    }))
     setGraph(graph)
 
     return () => {

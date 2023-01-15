@@ -75,6 +75,11 @@
   resolved "https://registry.npmmirror.com/@antv/x6-geometry/-/x6-geometry-2.0.4.tgz#d08213e200e16c8d065a0235189239cb367a0797"
   integrity sha512-dlsLNRRTiCw8TsJ/03j3y5IbbbK4Npf6zBH6kAx8nnW+edNT/TAOChvPRzizwD+vA7wY9Rp2AiRnp/vCdIYC5w==
 
+"@antv/x6-plugin-selection@^2.1.5":
+  version "2.1.5"
+  resolved "https://registry.npmmirror.com/@antv/x6-plugin-selection/-/x6-plugin-selection-2.1.5.tgz#4b140519d88f336d5ea5abe46a78df2e62ee926c"
+  integrity sha512-Stxjw1WENURpgV4RAGnXW14q58X/ojxpAa3BIL1s2pVPn/xJWXgYzxg5YhiP+z+oJiqtWFTm4vk6S18aRCNOfg==
+
 "@antv/x6-react-shape@^2.1.0":
   version "2.1.0"
   resolved "https://registry.npmmirror.com/@antv/x6-react-shape/-/x6-react-shape-2.1.0.tgz#b364a021d9690abb1f8f35cefd2da913dfd145d3"
