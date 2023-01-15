@@ -1,4 +1,3 @@
-import { RedoOutlined, UndoOutlined } from "@ant-design/icons";
 import { Button, Modal, Space } from "antd"
 import { useToken } from "antd/es/theme/internal";
 import { memo, useCallback, useState } from "react"
@@ -62,10 +61,9 @@ export const FunctionsInput = memo((props: {
       <Modal
         title={title}
         open={isModalOpen}
-        mask={false}
         footer={false}
         onCancel={handleCancel}
-        width={1199}
+        width={"calc(100vw - 40px)"}
         centered
       >
         <SytledContent style={{ borderColor: token.colorBorder }}>
