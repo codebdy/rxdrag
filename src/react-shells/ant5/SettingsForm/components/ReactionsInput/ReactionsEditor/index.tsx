@@ -9,6 +9,7 @@ import { useAddNodes } from "./hooks/useAddNodes";
 import "./style.less"
 import { register } from '@antv/x6-react-shape'
 import { Selection } from '@antv/x6-plugin-selection'
+import { Members } from "./Members";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -130,7 +131,7 @@ Graph.registerConnector(
   },
   true,
 )
-export const PipeEditor = memo(() => {
+export const ReactionsEditor = memo(() => {
   const [, token] = useToken()
   const [graph, setGraph] = useState<Graph>()
   const canvasRef = useRef<HTMLDivElement>(null)
@@ -208,9 +209,7 @@ export const PipeEditor = memo(() => {
   return (
     <SytledContent style={{ borderColor: token.colorBorder }}>
       <LeftArea style={{ borderColor: token.colorBorder }}>
-        <p>
-          方法
-        </p>
+        <Members />
       </LeftArea>
       <CenterArea>
         <Toolbar style={{ borderColor: token.colorBorder }}>

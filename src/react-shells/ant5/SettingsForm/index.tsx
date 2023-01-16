@@ -37,7 +37,7 @@ import { ImageInput } from "./components/ImageInput";
 import { ComponentRender } from "runner/ComponentRender";
 import { CollapsePanel } from "./components/CollapsePanel";
 import { EffectsInput } from "./components/EffectsInput";
-import { FunctionsInput } from "./components/FunctionsInput";
+import { ReactionsInput } from "./components/ReactionsInput";
 import { EventInput } from "./components/EventInput";
 
 const propertiesStyle: CSSProperties = {
@@ -127,7 +127,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         ImageInput,
         CollapsePanel,
         EffectsInput,
-        FunctionsInput,
+        ReactionsInput,
         EventInput,
       }}
     >

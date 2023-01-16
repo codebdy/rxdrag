@@ -1,11 +1,9 @@
 import { Button, Modal } from "antd"
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useEffect, useState } from "react"
-import { PipeEditor } from "./PipeEditor";
+import { ReactionsEditor } from "./ReactionsEditor";
 
-
-
-export const FunctionsInput = memo((props: {
+export const ReactionsInput = memo((props: {
   title: string
 }) => {
   const { title, ...other } = props;
@@ -36,7 +34,7 @@ export const FunctionsInput = memo((props: {
         width={"calc(100vw - 40px)"}
         centered
       >
-        <PipeEditor />
+        <ReactionsEditor />
       </Modal>
     </>
 

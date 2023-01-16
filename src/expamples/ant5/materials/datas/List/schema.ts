@@ -271,7 +271,7 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IReactionsMeta> = {
           },
           children: [
             {
-              componentName: "FunctionsInput",
+              componentName: "ReactionsInput",
               "x-field": {
                 name: "functions",
               },
