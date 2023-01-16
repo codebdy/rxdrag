@@ -1,6 +1,6 @@
 import React, { memo } from "react"
 import { Reactions } from "runner/reaction/components/Reactions"
-import { IReactionsMeta } from "runner/reaction/interfaces"
+import { IReactionsMeta } from "runner/reaction/metas"
 
 export const ComponentReaction = memo((
   props: {

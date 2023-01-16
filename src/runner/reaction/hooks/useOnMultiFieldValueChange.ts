@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react"
 import { useFieldy, useFormName } from "runner/fieldy"
-import { IReactionsMeta } from "../interfaces"
+import { IReactionsMeta } from "../metas"
 import { useGetFieldPaths } from "./useGetFieldPaths"
 import { useNewFunction } from "./useNewFunction"
 

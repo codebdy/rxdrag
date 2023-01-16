@@ -2,7 +2,7 @@ import { INodeSchema } from "core";
 import { createSchema, SchemaOptions } from "react-shells/ant5/shared/createSchema";
 import { IBindParams } from "runner/ComponentRender/interfaces";
 import { IFieldMeta } from "runner/fieldy";
-import { IReactionsMeta } from "runner/reaction/interfaces";
+import { IReactionsMeta } from "runner/reaction/metas";
 
 const options: SchemaOptions<IFieldMeta<IBindParams>, IReactionsMeta> = {
   propsSchemas: [

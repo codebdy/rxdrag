@@ -35,38 +35,3 @@ export interface IComponentController extends ILogic {
   effects: InputHandlers,
   events: InputHandlers,
 }
-
-export interface IEffects {
-  onInit?: IFunctionMeta,
-  onDestory?: IFunctionMeta,
-  // onFormValueChange?: IFunctionMeta,
-  // //JS代码
-  // onFieldValueChange?: {
-  //   field: string,
-  //   func: IFunctionMeta
-  // },
-  // onMultiFieldValueChange?: {
-  //   fields: string[],
-  //   func: IFunctionMeta
-  // }//...
-}
-
-export type MethodMetas = {
-  [name: string]: IFunctionMeta | undefined
-}
-// $form 虚拟表单， 
-// $field 当前字段, 设置字段：$field.setValue
-// $self 组件，设置组件属性:$self.setProps({dataSource:[...]}), 
-export interface IReactionsMeta {
-  events?: {
-    [key: string]: IFunctionMeta | undefined
-  },
-  methods: MethodMetas,
-  variables?: string[],
-}
-
-export interface ILogicMeta {
-  name?: string,
-  outputEditable?: boolean,
-  inputEditable?: boolean,
-}

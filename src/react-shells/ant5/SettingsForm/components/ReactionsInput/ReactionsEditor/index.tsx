@@ -45,16 +45,20 @@ const CanvasContainer = styled.div`
 `
 const MiniMapContainer = styled.div`
   position: absolute;
-  height: auto;
-  width: auto;
+  width: 240px;
+  height: 160px;
   border: solid 1px;
   left: 16px;
   bottom: 16px;
   border-radius: 8px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   .x6-widget-minimap{
     background-color: transparent;
+    overflow: visible;
     .x6-graph{
       box-shadow: none;
     }
@@ -114,8 +118,8 @@ export const ReactionsEditor = memo(() => {
     graph.use(
       new MiniMap({
         container: miniMapRef.current || undefined,
-        width: 200,
-        height: 120
+        width: 180,
+        height: 80
       })
     );
     setGraph(graph)

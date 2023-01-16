@@ -1,5 +1,6 @@
-import { InputHandlers, OutputJointers, IReactionsMeta, IComponentController } from "runner/reaction/interfaces";
+import { InputHandlers, OutputJointers, IComponentController } from "runner/reaction/interfaces";
 import { Props } from "../classes/props";
+import { IReactionsMeta } from "../metas";
 
 export class ComponentController implements IComponentController {
   state: any;
