@@ -1,7 +1,7 @@
 import { Graph, Path } from "@antv/x6";
 import { register } from "@antv/x6-react-shape";
 import { Options } from "@antv/x6/lib/graph/options";
-import { AlgoNode } from "./AlgoNode";
+import { AlgoNode } from "../AlgoNode";
 
 export const config:Partial<Options.Manual> = {
   panning: {
