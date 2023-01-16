@@ -1,42 +1,36 @@
 import { Graph } from "@antv/x6";
-import { useEffect, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { config } from "./config";
 import { Selection } from '@antv/x6-plugin-selection'
 import { MiniMap } from "@antv/x6-plugin-minimap";
 
-export function useCreateGraph(canvasEl: HTMLDivElement | null, mapEl: HTMLDivElement | null) {
-  const graph: Graph | undefined = useMemo(() => {
-    if (canvasEl && mapEl) {
-      // 画布
-      return new Graph({
-        container: canvasEl!,
-        ...config,
-        connecting: {
-          snap: true,
-          allowBlank: false,
-          allowLoop: false,
-          highlight: true,
-          connector: 'algo-connector',
-          connectionPoint: 'anchor',
-          anchor: 'center',
-          validateMagnet({ magnet }) {
-            return magnet.getAttribute('port-group') !== 'top'
-          },
-          createEdge() {
-            return graph?.createEdge({
-              shape: 'dag-edge',
-              zIndex: -1,
-            })
-          },
-        },
-      })
-    }
-    return undefined
-
-  }, [canvasEl, mapEl])
-
+export function useCreateGraph() {
+  const [graph, setGraph] = useState<Graph>()
   useEffect(() => {
-    graph?.use(new Selection({
+    // 画布
+    const gph: Graph = new Graph({
+      container: document.getElementById("reactions-canvas-container")!,
+      ...config,
+      connecting: {
+        snap: true,
+        allowBlank: false,
+        allowLoop: false,
+        highlight: true,
+        connector: 'algo-connector',
+        connectionPoint: 'anchor',
+        anchor: 'center',
+        validateMagnet({ magnet }) {
+          return magnet.getAttribute('port-group') !== 'top'
+        },
+        createEdge() {
+          return gph?.createEdge({
+            shape: 'dag-edge',
+            zIndex: -1,
+          })
+        },
+      },
+    })
+    gph.use(new Selection({
       enabled: true,
       multiple: true,
       rubberEdge: true,
@@ -44,18 +38,22 @@ export function useCreateGraph(canvasEl: HTMLDivElement | null, mapEl: HTMLDivEl
       modifiers: 'shift',
       rubberband: true,
     }))
-    graph?.use(
+
+    gph.use(
       new MiniMap({
-        container: mapEl || undefined,
-        width: 180,
-        height: 80
+        container: document.getElementById("reactions-minimap-container")!,
+        width: 200,
+        height: 160,
+        padding: 10,
       })
     );
 
+    setGraph(gph)
+
     return () => {
-      graph?.dispose()
+      gph?.dispose()
     }
-  }, [graph, mapEl])
+  }, [])
 
   return graph
 }

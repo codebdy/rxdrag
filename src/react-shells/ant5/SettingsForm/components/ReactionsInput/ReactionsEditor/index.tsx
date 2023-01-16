@@ -16,20 +16,17 @@ const SytledContent = styled.div`
   display: flex;
   border: solid 1px;
 `
-
 const LeftArea = styled.div`
   width: 220px;
   border-right: solid 1px;
   padding: 8px;
 `
-
 const CenterArea = styled.div`
   position: relative;
   flex:1;
   display: flex;
   flex-flow: column;
 `
-
 const Toolbar = styled.div`
   display: flex;
   padding: 0 16px;
@@ -37,7 +34,6 @@ const Toolbar = styled.div`
   align-items: center;
   border-bottom: solid 1px;
 `
-
 const CanvasContainer = styled.div`
   flex: 1;
 `
@@ -52,7 +48,7 @@ const MiniMapContainer = styled.div`
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.06);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; 
   overflow: hidden;
   .x6-widget-minimap{
     background-color: transparent;
@@ -73,12 +69,9 @@ const RightArea = styled.div`
 const ToolbarButton = styled((props) => <Button type="text" size="small" {...props} />)`
 `
 export const ReactionsEditor = memo(() => {
-  const [showMap, setShowMap] = useState(true)
-  const [canvasEl, setCanvasEl] = useState<HTMLDivElement | null>(null)
-  const [mapEl, setMapEl] = useState<HTMLDivElement | null>(null)
+  const [showMap, setShowMap] = useState(false)
   const [, token] = useToken()
-  const graph = useCreateGraph(canvasEl, mapEl)
-
+  const graph = useCreateGraph()
   const params = useMemo(() => {
     return {
       graph
@@ -87,13 +80,6 @@ export const ReactionsEditor = memo(() => {
 
   const handleTaggleMap = useCallback(() => {
     setShowMap((show) => !show)
-  }, [])
-
-  const handleCanvasRefChange = useCallback((el: HTMLDivElement) => {
-    setCanvasEl(el)
-  }, [])
-  const handleMapRefChange = useCallback((el: HTMLDivElement) => {
-    setMapEl(el)
   }, [])
 
   return (
@@ -123,11 +109,11 @@ export const ReactionsEditor = memo(() => {
               <ToolbarButton icon={<ZoomInOutlined />}></ToolbarButton>
             </Space>
           </Toolbar>
-          <CanvasContainer ref={handleCanvasRefChange} style={{ backgroundColor: token.colorBgContainer }} >
+          <CanvasContainer id="reactions-canvas-container" style={{ backgroundColor: token.colorBgContainer }} >
             <Logic />
           </CanvasContainer>
           <MiniMapContainer
-            ref={handleMapRefChange}
+            id="reactions-minimap-container"
             style={{
               borderColor: token.colorBorder,
               backgroundColor: token.colorBgContainer,
