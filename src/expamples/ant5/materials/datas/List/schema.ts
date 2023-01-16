@@ -258,7 +258,7 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IReactionsMeta> = {
     {
       componentName: "CollapsePanel",
       props: {
-        title: "$reactions"
+        title: "$controller"
       },
       children: [
         {
