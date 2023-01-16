@@ -1,5 +1,4 @@
-import React from 'react'
-import { Graph, Node, Path, Cell } from '@antv/x6'
+import { Node } from '@antv/x6'
 import '@antv/x6-react-shape'
 
 export interface NodeStatus {
