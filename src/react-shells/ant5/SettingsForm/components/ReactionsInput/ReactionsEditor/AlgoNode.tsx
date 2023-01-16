@@ -27,11 +27,6 @@ export const AlgoNode = (props:{node?:Node}) => {
     <div className={`node ${status}`}>
       <img src={image.logo} />
       <span className="label">{label}</span>
-      <span className="status">
-        {status === 'success' && <img src={image.success} />}
-        {status === 'failed' && <img src={image.failed} />}
-        {status === 'running' && <img src={image.running} />}
-      </span>
     </div>
   )
 }

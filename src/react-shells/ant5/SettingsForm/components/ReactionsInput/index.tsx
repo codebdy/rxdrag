@@ -26,10 +26,10 @@ export const ReactionsInput = memo((props: {
     <>
       <Button {...other} onClick={showModal}>{title}</Button>
       <Modal
-        title={title}
+        title={`${title} - 对话框`}
         open={isModalOpen}
         cancelText={t("cancel")}
-        okText = {t("confirm")}
+        okText={t("confirm")}
         onCancel={handleCancel}
         width={"calc(100vw - 40px)"}
         centered
