@@ -11,6 +11,8 @@ import { register } from '@antv/x6-react-shape'
 import { Selection } from '@antv/x6-plugin-selection'
 import { Members } from "./Members";
 import { PropertyBox } from "./PropertyBox";
+import { MiniMap } from "@antv/x6-plugin-minimap";
+import { ZoomOutOutlined, ZoomInOutlined } from "@ant-design/icons";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -25,6 +27,7 @@ const LeftArea = styled.div`
 `
 
 const CenterArea = styled.div`
+  position: relative;
   flex:1;
   display: flex;
   flex-flow: column;
@@ -32,7 +35,7 @@ const CenterArea = styled.div`
 
 const Toolbar = styled.div`
   display: flex;
-  padding: 0 8px;
+  padding: 0 16px;
   height: 40px;
   align-items: center;
   border-bottom: solid 1px;
@@ -41,6 +44,23 @@ const Toolbar = styled.div`
 const CanvasContainer = styled.div`
   flex: 1;
 `
+const MiniMapContainer = styled.div`
+  position: absolute;
+  height: auto;
+  width: auto;
+  border: solid 1px;
+  left: 16px;
+  bottom: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  .x6-widget-minimap{
+    background-color: transparent;
+    .x6-graph{
+      box-shadow: none;
+    }
+  }
+`
 
 const RightArea = styled.div`
   width: 220px;
@@ -48,6 +68,11 @@ const RightArea = styled.div`
   display: flex;
   flex-flow: column;
 `
+
+const ToolbarButton = styled((props) => <Button type="text" size="small" {...props} />)`
+  
+`
+
 
 register({
   shape: 'dag-node',
@@ -137,6 +162,7 @@ export const ReactionsEditor = memo(() => {
   const [, token] = useToken()
   const [graph, setGraph] = useState<Graph>()
   const canvasRef = useRef<HTMLDivElement>(null)
+  const miniMapRef = useRef<HTMLDivElement>(null)
 
   useAddNodes(graph)
 
@@ -201,6 +227,13 @@ export const ReactionsEditor = memo(() => {
       modifiers: 'shift',
       rubberband: true,
     }))
+    graph.use(
+      new MiniMap({
+        container: miniMapRef.current || undefined,
+        width: 200,
+        height: 120
+      })
+    );
     setGraph(graph)
 
     return () => {
@@ -216,17 +249,22 @@ export const ReactionsEditor = memo(() => {
       <CenterArea>
         <Toolbar style={{ borderColor: token.colorBorder }}>
           <Space>
-            <Button type="text" size="small" icon={<span role="img" className="anticon">{undoIcon}</span>}></Button>
-            <Button disabled  size="small"type="text" icon={<span role="img" className="anticon">{redoIcon}</span>}></Button>
+            <ToolbarButton icon={<span role="img" className="anticon">{undoIcon}</span>}></ToolbarButton>
+            <ToolbarButton disabled icon={<span role="img" className="anticon">{redoIcon}</span>}></ToolbarButton>
             <Divider type="vertical" />
-            <Button type="text" size="small" icon={<span role="img" className="anticon"><svg width="1rem" height="1rem" viewBox="0 0 24 24">
+            <ToolbarButton icon={<span role="img" className="anticon"><svg width="1rem" height="1rem" viewBox="0 0 24 24">
               <path fill="currentColor" d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />
-            </svg></span>}></Button>
+            </svg></span>}></ToolbarButton>
+          </Space>
+          <div style={{flex:1}}></div>
+          <Space>
+            <ToolbarButton icon ={<ZoomOutOutlined />}></ToolbarButton>
+            <ToolbarButton icon ={<ZoomInOutlined />}></ToolbarButton>
           </Space>
         </Toolbar>
         <CanvasContainer ref={canvasRef} style={{ backgroundColor: token.colorBgContainer }} >
-
         </CanvasContainer>
+        <MiniMapContainer ref={miniMapRef} style={{ borderColor: token.colorBorder }} />
       </CenterArea>
       <RightArea style={{ borderColor: token.colorBorder }}>
         <PropertyBox />
