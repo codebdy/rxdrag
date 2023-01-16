@@ -1,3 +1,5 @@
+import { IFunctionMeta } from "./metas"
+
 export type Unsubscribe = () => void
 
 export interface IHandlerArgs {
@@ -34,19 +36,6 @@ export interface IComponentController extends ILogic {
   events: InputHandlers,
 }
 
-export enum ImplementType {
-  Code = "Code",
-  Visual = "Visual"
-}
-
-export interface IFunctionMeta {
-  title?: string,
-  name?: string,
-  type?: ImplementType,
-  jsCode?: string,
-  metas?: any,
-}
-
 export interface IEffects {
   onInit?: IFunctionMeta,
   onDestory?: IFunctionMeta,
@@ -69,11 +58,11 @@ export type MethodMetas = {
 // $field 当前字段, 设置字段：$field.setValue
 // $self 组件，设置组件属性:$self.setProps({dataSource:[...]}), 
 export interface IReactionsMeta {
-  effects?: IEffects,
   events?: {
     [key: string]: IFunctionMeta | undefined
   },
-  methods: MethodMetas
+  methods: MethodMetas,
+  variables?: string[],
 }
 
 export interface ILogicMeta {

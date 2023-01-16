@@ -7,22 +7,22 @@ import { useNewFunction } from "./useNewFunction"
 export function useOnMultiFieldValueChange(reaction?: IReactionsMeta) {
   const fieldy = useFieldy()
   const formName = useFormName()
-  const reactionParams = (reaction?.effects as any)?.onMultiFieldValueChange
+  //const reactionParams = (reaction?.effects as any)?.onMultiFieldValueChange
 
   const getFieldPaths = useGetFieldPaths()
   const newFunc = useNewFunction()
 
-  const handleFieldsValueChange = useCallback((newValues: any[], prevousValues: any[]) => {
-    if (reactionParams?.func.jsCode && fieldy && formName) {
-      newFunc(reactionParams?.func.jsCode)
-    }
-  }, [fieldy, formName, newFunc, reactionParams?.func.jsCode])
+  // const handleFieldsValueChange = useCallback((newValues: any[], prevousValues: any[]) => {
+  //   if (reactionParams?.func.jsCode && fieldy && formName) {
+  //     newFunc(reactionParams?.func.jsCode)
+  //   }
+  // }, [fieldy, formName, newFunc, reactionParams?.func.jsCode])
 
-  useEffect(() => {
-    if (reactionParams?.fields && formName) {
-      const unsub = fieldy?.subscribeToMultiFieldValueChange(formName, getFieldPaths(reactionParams.fields), handleFieldsValueChange)
-      return unsub
-    }
+  // useEffect(() => {
+  //   if (reactionParams?.fields && formName) {
+  //     const unsub = fieldy?.subscribeToMultiFieldValueChange(formName, getFieldPaths(reactionParams.fields), handleFieldsValueChange)
+  //     return unsub
+  //   }
 
-  }, [fieldy, formName, getFieldPaths, handleFieldsValueChange, reactionParams?.fields])
+  // }, [fieldy, formName, getFieldPaths, handleFieldsValueChange, reactionParams?.fields])
 }
