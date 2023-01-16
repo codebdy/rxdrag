@@ -273,7 +273,7 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IReactionsMeta> = {
                 name: "x-reactions",
               },
               props: {
-                title: "$controller"
+                title: "$configReactions"
               }
             }]
         },
