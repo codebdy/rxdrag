@@ -1,6 +1,6 @@
 import { Button, Divider, Space } from "antd"
 import { useToken } from "antd/es/theme/internal";
-import { memo, useCallback, useState } from "react"
+import { memo, useCallback, useMemo, useState } from "react"
 import { redoIcon, undoIcon } from "react-shells/ant5/icons";
 import styled from "styled-components";
 import { Members } from "./Members";
@@ -9,6 +9,7 @@ import { ZoomOutOutlined, ZoomInOutlined } from "@ant-design/icons";
 import { mapIcon } from "./icons";
 import { Logic } from "./Logic";
 import { useCreateGraph } from "./hooks/useCreateGraph";
+import { ReacionsEditorContext } from "./contexts";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -78,6 +79,12 @@ export const ReactionsEditor = memo(() => {
   const [, token] = useToken()
   const graph = useCreateGraph(canvasEl, mapEl)
 
+  const params = useMemo(() => {
+    return {
+      graph
+    }
+  }, [graph])
+
   const handleTaggleMap = useCallback(() => {
     setShowMap((show) => !show)
   }, [])
@@ -90,46 +97,48 @@ export const ReactionsEditor = memo(() => {
   }, [])
 
   return (
-    <SytledContent style={{ borderColor: token.colorBorder }}>
-      <LeftArea style={{ borderColor: token.colorBorder }}>
-        <Members />
-      </LeftArea>
-      <CenterArea>
-        <Toolbar style={{ borderColor: token.colorBorder }}>
-          <Space>
-            <ToolbarButton icon={<span role="img" className="anticon">{undoIcon}</span>}></ToolbarButton>
-            <ToolbarButton disabled icon={<span role="img" className="anticon">{redoIcon}</span>}></ToolbarButton>
-            <Divider type="vertical" />
-            <ToolbarButton icon={<span role="img" className="anticon"><svg width="1rem" height="1rem" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />
-            </svg></span>}></ToolbarButton>
-          </Space>
-          <div style={{ flex: 1 }}></div>
-          <Space>
-            <ToolbarButton
-              icon={mapIcon}
-              type={showMap ? "default" : "text"}
-              onClick={handleTaggleMap}
-            ></ToolbarButton>
-            <ToolbarButton icon={<ZoomOutOutlined />}></ToolbarButton>
-            <ToolbarButton icon={<ZoomInOutlined />}></ToolbarButton>
-          </Space>
-        </Toolbar>
-        <CanvasContainer ref={handleCanvasRefChange} style={{ backgroundColor: token.colorBgContainer }} >
-          <Logic />
-        </CanvasContainer>
-        <MiniMapContainer
-          ref={handleMapRefChange}
-          style={{
-            borderColor: token.colorBorder,
-            backgroundColor: token.colorBgContainer,
-            display: showMap ? "flex" : "none"
-          }}
-        />
-      </CenterArea>
-      <RightArea style={{ borderColor: token.colorBorder }}>
-        <PropertyBox />
-      </RightArea>
-    </SytledContent>
+    <ReacionsEditorContext.Provider value={params}>
+      <SytledContent style={{ borderColor: token.colorBorder }}>
+        <LeftArea style={{ borderColor: token.colorBorder }}>
+          <Members />
+        </LeftArea>
+        <CenterArea>
+          <Toolbar style={{ borderColor: token.colorBorder }}>
+            <Space>
+              <ToolbarButton icon={<span role="img" className="anticon">{undoIcon}</span>}></ToolbarButton>
+              <ToolbarButton disabled icon={<span role="img" className="anticon">{redoIcon}</span>}></ToolbarButton>
+              <Divider type="vertical" />
+              <ToolbarButton icon={<span role="img" className="anticon"><svg width="1rem" height="1rem" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />
+              </svg></span>}></ToolbarButton>
+            </Space>
+            <div style={{ flex: 1 }}></div>
+            <Space>
+              <ToolbarButton
+                icon={mapIcon}
+                type={showMap ? "default" : "text"}
+                onClick={handleTaggleMap}
+              ></ToolbarButton>
+              <ToolbarButton icon={<ZoomOutOutlined />}></ToolbarButton>
+              <ToolbarButton icon={<ZoomInOutlined />}></ToolbarButton>
+            </Space>
+          </Toolbar>
+          <CanvasContainer ref={handleCanvasRefChange} style={{ backgroundColor: token.colorBgContainer }} >
+            <Logic />
+          </CanvasContainer>
+          <MiniMapContainer
+            ref={handleMapRefChange}
+            style={{
+              borderColor: token.colorBorder,
+              backgroundColor: token.colorBgContainer,
+              display: showMap ? "flex" : "none"
+            }}
+          />
+        </CenterArea>
+        <RightArea style={{ borderColor: token.colorBorder }}>
+          <PropertyBox />
+        </RightArea>
+      </SytledContent>
+    </ReacionsEditorContext.Provider>
   )
 })
