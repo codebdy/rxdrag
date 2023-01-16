@@ -1,5 +1,5 @@
 import { Graph, Path } from "@antv/x6";
-import { Button, Space } from "antd"
+import { Button, Divider, Space } from "antd"
 import { useToken } from "antd/es/theme/internal";
 import { memo, useEffect, useRef, useState } from "react"
 import { redoIcon, undoIcon } from "react-shells/ant5/icons";
@@ -214,8 +214,12 @@ export const ReactionsEditor = memo(() => {
       <CenterArea>
         <Toolbar style={{ borderColor: token.colorBorder }}>
           <Space>
-            <Button shape="circle" type="text" icon={undoIcon}></Button>
-            <Button shape="circle" disabled type="text" icon={redoIcon}></Button>
+            <Button type="text" size="small" icon={<span role="img" className="anticon">{undoIcon}</span>}></Button>
+            <Button disabled  size="small"type="text" icon={<span role="img" className="anticon">{redoIcon}</span>}></Button>
+            <Divider type="vertical" />
+            <Button type="text" size="small" icon={<span role="img" className="anticon"><svg width="1rem" height="1rem" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />
+            </svg></span>}></Button>
           </Space>
         </Toolbar>
         <CanvasContainer ref={canvasRef} style={{ backgroundColor: token.colorBgContainer }} >
