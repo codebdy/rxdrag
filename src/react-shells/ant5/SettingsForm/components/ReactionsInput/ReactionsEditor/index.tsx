@@ -10,6 +10,7 @@ import "./style.less"
 import { register } from '@antv/x6-react-shape'
 import { Selection } from '@antv/x6-plugin-selection'
 import { Members } from "./Members";
+import { PropertyBox } from "./PropertyBox";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -41,10 +42,11 @@ const CanvasContainer = styled.div`
   flex: 1;
 `
 
-const PropertyBox = styled.div`
+const RightArea = styled.div`
   width: 220px;
   border-left: solid 1px;
-  padding: 8px;
+  display: flex;
+  flex-flow: column;
 `
 
 register({
@@ -226,9 +228,9 @@ export const ReactionsEditor = memo(() => {
 
         </CanvasContainer>
       </CenterArea>
-      <PropertyBox style={{ borderColor: token.colorBorder }}>
-        right
-      </PropertyBox>
+      <RightArea style={{ borderColor: token.colorBorder }}>
+        <PropertyBox />
+      </RightArea>
     </SytledContent>
   )
 })
