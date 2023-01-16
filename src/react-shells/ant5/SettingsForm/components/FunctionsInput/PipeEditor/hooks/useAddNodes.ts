@@ -219,7 +219,6 @@ export function useAddNodes(graph?: Graph) {
     if (graph) {
       const cells: Cell[] = []
       data.forEach((item) => {
-        console.log("哈哈2", item)
         if (item.shape === 'dag-node') {
           cells.push(graph.createNode(item))
         } else {

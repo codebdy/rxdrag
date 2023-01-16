@@ -1,4 +1,5 @@
 import { Button, Modal } from "antd"
+import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useEffect, useState } from "react"
 import { PipeEditor } from "./PipeEditor";
 
@@ -9,6 +10,7 @@ export const FunctionsInput = memo((props: {
 }) => {
   const { title, ...other } = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const t = useToolsTranslate()
 
   const showModal = useCallback(() => {
     setIsModalOpen(true);
@@ -28,7 +30,8 @@ export const FunctionsInput = memo((props: {
       <Modal
         title={title}
         open={isModalOpen}
-        footer={false}
+        cancelText={t("cancel")}
+        okText = {t("confirm")}
         onCancel={handleCancel}
         width={"calc(100vw - 40px)"}
         centered

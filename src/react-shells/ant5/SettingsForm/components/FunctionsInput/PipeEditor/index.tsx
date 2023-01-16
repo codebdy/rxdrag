@@ -11,7 +11,7 @@ import { register } from '@antv/x6-react-shape'
 import { Selection } from '@antv/x6-plugin-selection'
 
 const SytledContent = styled.div`
-  height: calc(100vh - 100px);
+  height: calc(100vh - 160px);
   display: flex;
   border: solid 1px;
 `
@@ -37,7 +37,7 @@ const Toolbar = styled.div`
 `
 
 const CanvasContainer = styled.div`
-  flex: 1
+  flex: 1;
 `
 
 const PropertyBox = styled.div`
@@ -208,7 +208,9 @@ export const PipeEditor = memo(() => {
   return (
     <SytledContent style={{ borderColor: token.colorBorder }}>
       <LeftArea style={{ borderColor: token.colorBorder }}>
-        left
+        <p>
+          方法
+        </p>
       </LeftArea>
       <CenterArea>
         <Toolbar style={{ borderColor: token.colorBorder }}>
