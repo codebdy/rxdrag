@@ -22,42 +22,71 @@ export interface IX6EdgeMeta {
   targetAnchor: any;
 }
 
-export interface ICallMeta {
+// export enum NodeType {
+//   Start = "Start",
+//   ComponentMethod = "ComponentMethod",
+//   Function = "Function",
+// }
+
+export interface INodeMeta {
+  uuid: string;
+  title?: string;
+}
+
+export interface IStartNodeMeta extends INodeMeta {
+}
+
+export interface IComponentMethodNodeMeta extends INodeMeta {
+  componentName: string
+  methodName: string
+}
+
+export interface IFunctionNodeMeta extends INodeMeta {
+  functionName: string
+}
+
+export interface IEndNodeMeta extends INodeMeta {
+  name: string
+}
+
+export interface IInvokeMeta {
   uuid: string;
   source: {
-    functionUuid: string;
+    nodeUuid: string;
     outputUuid: string;
   }
   target: {
-    functionUuid: string;
+    nodeUuid: string;
     inputUuid: string;
   };
 }
 
-export interface IPipesMeta {
+export interface IReactionMetas {
+  nodes: INodeMeta[]
+  invakes: IInvokeMeta[]
   x6Nodes: IX6NodeMeta[]
   x6Edges: IX6EdgeMeta[]
 }
 
-export interface IPointMeta {
-  uuid: string
+export interface IPortMeta {
   name: string
   title?: string
+  group: "in" | "out";
 }
 
 export interface IFunctionMeta {
   uuid: string,
   name?: string,
-  inputs?: IPointMeta[],
-  outputs?: IPointMeta[],
-  metas?: IPipesMeta,
+  inputs?: IPortMeta[],
+  outputs?: IPortMeta[],
+  metas?: IReactionMetas,
 }
 
 export interface IEventMeta extends IFunctionMeta {
   uuid: string,
   title?: string,
   name?: string,
-  metas?: IPipesMeta,
+  metas?: IReactionMetas,
 }
 
 // $form 虚拟表单， 
