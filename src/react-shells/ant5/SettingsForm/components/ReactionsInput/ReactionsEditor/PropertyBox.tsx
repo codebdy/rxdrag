@@ -2,6 +2,7 @@ import { Empty } from "antd"
 import { useToken } from "antd/es/theme/internal"
 import { memo } from "react"
 import styled from "styled-components"
+import { methodIcon } from "./icons"
 
 const Title = styled.div`
   height: 40px;
@@ -31,7 +32,7 @@ export const PropertyBox = memo(() => {
   return (
     <>
       <Title style={{ borderColor: token.colorBorder }}>
-        打开
+        {methodIcon}<span style={{ marginLeft: 8 }}>打开</span>
       </Title>
       <Content>
         <EmptyContainer>
