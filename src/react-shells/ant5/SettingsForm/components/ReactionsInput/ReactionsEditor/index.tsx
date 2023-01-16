@@ -1,7 +1,7 @@
 import { Graph } from "@antv/x6";
 import { Button, Divider, Space } from "antd"
 import { useToken } from "antd/es/theme/internal";
-import { memo, useEffect, useRef, useState } from "react"
+import { memo, useCallback, useEffect, useRef, useState } from "react"
 import { redoIcon, undoIcon } from "react-shells/ant5/icons";
 import styled from "styled-components";
 import { useAddNodes } from "./hooks/useAddNodes";
@@ -12,6 +12,7 @@ import { PropertyBox } from "./PropertyBox";
 import { MiniMap } from "@antv/x6-plugin-minimap";
 import { ZoomOutOutlined, ZoomInOutlined } from "@ant-design/icons";
 import { config } from "./config";
+import { mapIcon } from "./icons";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -75,10 +76,11 @@ const RightArea = styled.div`
 const ToolbarButton = styled((props) => <Button type="text" size="small" {...props} />)`
 `
 export const ReactionsEditor = memo(() => {
-  const [, token] = useToken()
+  const [showMap, setShowMap] = useState(true)
   const [graph, setGraph] = useState<Graph>()
   const canvasRef = useRef<HTMLDivElement>(null)
   const miniMapRef = useRef<HTMLDivElement>(null)
+  const [, token] = useToken()
 
   useAddNodes(graph)
 
@@ -129,6 +131,10 @@ export const ReactionsEditor = memo(() => {
     }
   }, [])
 
+  const handleTaggleMap = useCallback(() => {
+    setShowMap((show) => !show)
+  }, [])
+
   return (
     <SytledContent style={{ borderColor: token.colorBorder }}>
       <LeftArea style={{ borderColor: token.colorBorder }}>
@@ -146,13 +152,25 @@ export const ReactionsEditor = memo(() => {
           </Space>
           <div style={{ flex: 1 }}></div>
           <Space>
+            <ToolbarButton
+              icon={mapIcon}
+              type={showMap ? "default" : "text"}
+              onClick={handleTaggleMap}
+            ></ToolbarButton>
             <ToolbarButton icon={<ZoomOutOutlined />}></ToolbarButton>
             <ToolbarButton icon={<ZoomInOutlined />}></ToolbarButton>
           </Space>
         </Toolbar>
         <CanvasContainer ref={canvasRef} style={{ backgroundColor: token.colorBgContainer }} >
         </CanvasContainer>
-        <MiniMapContainer ref={miniMapRef} style={{ borderColor: token.colorBorder, backgroundColor: token.colorBgContainer }} />
+        <MiniMapContainer
+          ref={miniMapRef}
+          style={{
+            borderColor: token.colorBorder,
+            backgroundColor: token.colorBgContainer,
+            display: showMap ? "flex" : "none"
+          }}
+        />
       </CenterArea>
       <RightArea style={{ borderColor: token.colorBorder }}>
         <PropertyBox />
