@@ -61,9 +61,9 @@ export const settingLocales = {
       windBind: "绑定字段",
       controller: "控制器",
       variables: "变量",
-      reactions: "交互行为",
+      reactions: "交互",
       functions: "函数定义",
-      configReactions: "配置交互",
+      configReactions: "配置控制器",
       effects: "响应规则",
 
       IconInput: {
@@ -143,7 +143,7 @@ export const settingLocales = {
       variables: "variables",
       reactions: "Reactions",
       functions: "Functions",
-      configReactions: "Config Reactions",
+      configReactions: "Config Controller",
       effects: "Effects",
 
       IconInput: {
