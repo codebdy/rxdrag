@@ -1,4 +1,4 @@
-import { IFunctionMeta } from "./metas"
+import { IEventMeta } from "./metas"
 
 export type Unsubscribe = () => void
 
