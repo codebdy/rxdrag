@@ -62,9 +62,8 @@ export const settingLocales = {
       variables: "变量",
       reactions: "交互行为",
       functions: "函数定义",
-      configFunctions: "配置函数定义",
+      configReactions: "配置交互",
       effects: "响应规则",
-      configEffects: "配置响应规则",
 
       IconInput: {
         DialogTitle: "选择图标",
@@ -142,9 +141,8 @@ export const settingLocales = {
       variables: "variables",
       reactions: "Reactions",
       functions: "Functions",
-      configFunctions: "Config Functions",
+      configReactions: "Config Reactions",
       effects: "Effects",
-      configEffects: "Config Effects",
 
       IconInput: {
         DialogTitle: "Select Icon",
