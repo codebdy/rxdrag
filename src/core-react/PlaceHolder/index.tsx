@@ -1,6 +1,5 @@
 import { useNode } from "core-react/hooks/useNode"
 import { memo } from "react"
-import { useToken } from "antd/es/theme/internal"
 import styled from "styled-components"
 
 const PlaceHolderShell = styled.div`
@@ -23,15 +22,15 @@ const PlaceHolderInner = styled.div`
   justify-content: center;
   width: 100%;
   flex: 1;
-  background-color: #eee;
+  background-color: ${props=>props.theme.token.colorBorderSecondary};
+  color: ${props=>props.theme.token.colorText};
   border: dashed 1px;
 `
 export const PlaceHolder = memo(() => {
-  const [, token] = useToken()
   const node = useNode()
   return (
     <PlaceHolderShell >
-      <PlaceHolderInner style={{ backgroundColor: token.colorBorderSecondary, color: token.colorText }}>
+      <PlaceHolderInner>
         {node?.title}
       </PlaceHolderInner>
     </PlaceHolderShell>
