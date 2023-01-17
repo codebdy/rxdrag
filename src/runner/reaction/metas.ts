@@ -34,15 +34,12 @@ export interface INodeMeta {
 }
 
 export interface IStartNodeMeta extends INodeMeta {
+  name: string
 }
 
-export interface IComponentMethodNodeMeta extends INodeMeta {
+export interface IReactionNodeMeta extends INodeMeta {
   componentName: string
   methodName: string
-}
-
-export interface IFunctionNodeMeta extends INodeMeta {
-  functionName: string
 }
 
 export interface IEndNodeMeta extends INodeMeta {

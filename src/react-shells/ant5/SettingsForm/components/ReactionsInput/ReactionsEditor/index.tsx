@@ -26,9 +26,9 @@ const CenterArea = styled.div`
 `
 
 const CanvasArea = styled.div`
-position: relative;
-flex:1;
-display: flex;
+  position: relative;
+  flex:1;
+  display: flex;
 `
 
 const CanvasContainer = styled.div`
