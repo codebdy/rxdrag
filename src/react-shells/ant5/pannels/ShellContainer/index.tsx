@@ -8,7 +8,7 @@ const Container = styled(Box)`
   height: 100vh;
   display: flex;
   flex-flow: column;
-  background-color: ${props=>props.theme.token.colorBgBase};
+  background-color: ${props=>props.theme.token?.colorBgBase};
 `
 
 export const ShellContainer = memo((

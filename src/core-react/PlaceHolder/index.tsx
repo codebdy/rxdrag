@@ -22,8 +22,8 @@ const PlaceHolderInner = styled.div`
   justify-content: center;
   width: 100%;
   flex: 1;
-  background-color: ${props=>props.theme.token.colorBorderSecondary};
-  color: ${props=>props.theme.token.colorText};
+  background-color: ${props=>props.theme.token?.colorBorderSecondary};
+  color: ${props=>props.theme.token?.colorText};
   border: dashed 1px;
 `
 export const PlaceHolder = memo(() => {

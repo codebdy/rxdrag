@@ -10,7 +10,7 @@ const StyledToolbar = styled.div`
   padding: 0 16px;
   height: 40px;
   align-items: center;
-  border-bottom: ${props => props.theme.token.colorBorder} solid 1px;
+  border-bottom: ${props => props.theme.token?.colorBorder} solid 1px;
 `
 
 const ToolbarButton = styled((props) => <Button type="text" size="small" {...props} />)`

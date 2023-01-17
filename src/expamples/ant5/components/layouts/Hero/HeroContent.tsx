@@ -5,7 +5,7 @@ import styled, { ThemeProvider } from "styled-components"
 const HeroInner = styled.div`
   padding: 24px;
   border-radius: 8px;
-  color: ${props => props.theme.token.colorText};
+  color: ${props => props.theme.token?.colorText};
 `
 export type HeroContentProps = {
   style?: CSSProperties,

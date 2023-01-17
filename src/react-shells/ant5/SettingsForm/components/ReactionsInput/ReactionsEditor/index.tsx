@@ -11,11 +11,11 @@ import { Toolbox } from "./components/Toolbox/inex";
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
   display: flex;
-  border: ${props => props.theme.token.colorBorder} solid 1px;
+  border: ${props => props.theme.token?.colorBorder} solid 1px;
 `
 const LeftArea = styled.div`
   width: 180px;
-  border-right: ${props => props.theme.token.colorBorder} solid 1px;
+  border-right: ${props => props.theme.token?.colorBorder} solid 1px;
   padding: 8px;
 `
 const CenterArea = styled.div`
@@ -34,14 +34,14 @@ display: flex;
 const CanvasContainer = styled.div`
   position: relative;
   flex: 1;
-  background-color: ${props => props.theme.token.colorBgContainer};
+  background-color: ${props => props.theme.token?.colorBgContainer};
 `
 const MiniMapContainer = styled.div`
   position: absolute;
   width: 240px;
   height: 160px;
-  border: ${props => props.theme.token.colorBorder} solid 1px;
-  background-color: ${props => props.theme.token.colorBgContainer};
+  border: ${props => props.theme.token?.colorBorder} solid 1px;
+  background-color: ${props => props.theme.token?.colorBgContainer};
   left: 16px;
   bottom: 16px;
   border-radius: 8px;
@@ -61,7 +61,7 @@ const MiniMapContainer = styled.div`
 
 const RightArea = styled.div`
   width: 220px;
-  border-left: ${props => props.theme.token.colorBorder}  solid 1px;
+  border-left: ${props => props.theme.token?.colorBorder}  solid 1px;
   display: flex;
   flex-flow: column;
 `
