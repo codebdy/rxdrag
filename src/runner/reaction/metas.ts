@@ -1,10 +1,8 @@
 export interface IX6PortMeta {
-  id: string;
   group: "in" | "out";
 }
 
 export interface IX6NodeMeta {
-  id: string;
   /** 节点x坐标 */
   x?: number;
   /** 节点y坐标  */
@@ -16,20 +14,13 @@ export interface IX6NodeMeta {
 }
 
 export interface IX6EdgeMeta {
-  id: string;
   sourceAnchor: any;
   targetAnchor: any;
 }
 
-// export enum NodeType {
-//   Start = "Start",
-//   ComponentMethod = "ComponentMethod",
-//   Function = "Function",
-// }
-
 export interface INodeMeta {
   uuid: string;
-  title?: string;
+  label?: string;
   x6Node?: IX6NodeMeta;
 }
 
@@ -46,7 +37,7 @@ export interface IEndNodeMeta extends INodeMeta {
 export interface IPortMeta {
   uuid: string;
   name: string;
-  title?: string;
+  label?: string;
   x6Port?: IX6PortMeta;
 }
 
@@ -74,8 +65,10 @@ export interface IInvokeMeta {
 }
 
 export interface ILogicMetas {
-  nodes: INodeMeta[]
-  invakes: IInvokeMeta[]
+  inputs: IStartNodeMeta[];
+  outputs: IEndNodeMeta[];
+  reactions: IReactionNodeMeta[];
+  invakes: IInvokeMeta[];
 }
 
 export interface IReactionMeta {

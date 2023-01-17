@@ -2,6 +2,8 @@ import { Cell } from "@antv/x6";
 import { useContext, useEffect } from "react";
 import { ILogicMetas } from "runner/reaction/metas";
 import { ReacionsEditorContext } from "../contexts";
+import { createUuid } from "../utils";
+import { useGetStartNodeAttrs } from "./useGetStartNodeAttrs";
 const commonAttrs = {
   body: {
     fill: '#111',
@@ -49,33 +51,41 @@ export interface ILogicMetas {
 }
 */
 const metas: ILogicMetas = {
-  nodes:[],
+  inputs: [
+    {
+      uuid: createUuid(),
+      name: "input",
+      label: "输入"
+    }
+  ],
+  outputs: [],
+  reactions: [],
   invakes: []
 }
+
 export function useNodesShow() {
   const { graph } = useContext(ReacionsEditorContext) || {}
-
+  const getStartNodeAttrs = useGetStartNodeAttrs()
   useEffect(() => {
     if (graph) {
       const cells: Cell[] = []
-      cells.push(graph.createNode({
-        shape: 'circle',
-        "x": 30,
-        "y": 30,
-        width: 20,
-        height: 20,
-        label: '输入',
-        attrs: commonAttrs,
-      }))
-      cells.push(graph.createNode({
-        shape: 'circle',
-        "x": 130,
-        "y": 130,
-        width: 20,
-        height: 20,
-        label: 'circle',
-        attrs: commonAttrs2,
-      }))
+
+      for (let i = 0; i < metas.inputs.length; i++) {
+        const inputNode = metas.inputs[i]
+        cells.push(graph.createNode({
+          shape: 'circle',
+          x: 60,
+          y: 60 + 60 * i,
+          width: 20,
+          height: 20,
+          ...inputNode.x6Node,
+          id: inputNode.uuid,
+          label: inputNode.label,
+          attrs: getStartNodeAttrs(),
+        }))
+      }
+
+
       cells.push(graph.addNode({
         shape: 'rect',
         x: 340,
