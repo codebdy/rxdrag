@@ -13,7 +13,6 @@ export interface IX6NodeMeta {
   width?: number;
   /** 节点高度 */
   height?: number;
-  ports?: IX6PortMeta[];
 }
 
 export interface IX6EdgeMeta {
@@ -31,27 +30,35 @@ export interface IX6EdgeMeta {
 export interface INodeMeta {
   uuid: string;
   title?: string;
+  x6Node?: IX6NodeMeta;
 }
 
 export interface IStartNodeMeta extends INodeMeta {
-  name: string
-}
-
-export interface IPortMeta {
-  name: string
-  title?: string
-}
-
-export interface IReactionNodeMeta extends INodeMeta {
-  componentName: string
-  reactionName: string
-  inPorts: IPortMeta[]
-  outPorts: IPortMeta[]
+  name: string;
+  x6Node?: IX6NodeMeta;
 }
 
 export interface IEndNodeMeta extends INodeMeta {
-  name: string
+  name: string;
+  x6Node?: IX6NodeMeta;
 }
+
+export interface IPortMeta {
+  uuid: string;
+  name: string;
+  title?: string;
+  x6Port?: IX6PortMeta;
+}
+
+export interface IReactionNodeMeta extends INodeMeta {
+  uuid: string;
+  componentName: string;
+  reactionName: string;
+  inPorts: IPortMeta[];
+  outPorts: IPortMeta[];
+  x6Node?: IX6NodeMeta;
+}
+
 
 export interface IInvokeMeta {
   uuid: string;
@@ -63,20 +70,19 @@ export interface IInvokeMeta {
     nodeUuid: string;
     inputUuid: string;
   };
+  x6Edge: IX6EdgeMeta;
 }
 
-export interface IMetas {
+export interface ILogicMetas {
   nodes: INodeMeta[]
   invakes: IInvokeMeta[]
-  x6Nodes: IX6NodeMeta[]
-  x6Edges: IX6EdgeMeta[]
 }
 
 export interface IReactionMeta {
   uuid: string,
   name?: string,
   title?: string,
-  metas?: IMetas,
+  logicMetas?: ILogicMetas,
 }
 
 // $form 虚拟表单， 

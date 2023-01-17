@@ -1,5 +1,6 @@
 import { Cell } from "@antv/x6";
 import { useContext, useEffect } from "react";
+import { ILogicMetas } from "runner/reaction/metas";
 import { ReacionsEditorContext } from "../contexts";
 const commonAttrs = {
   body: {
@@ -39,7 +40,18 @@ const commonAttrs2 = {
     fill: "#fff"
   },
 }
-
+/*
+export interface ILogicMetas {
+  nodes: INodeMeta[]
+  invakes: IInvokeMeta[]
+  x6Nodes: IX6NodeMeta[]
+  x6Edges: IX6EdgeMeta[]
+}
+*/
+const metas: ILogicMetas = {
+  nodes:[],
+  invakes: []
+}
 export function useNodesShow() {
   const { graph } = useContext(ReacionsEditorContext) || {}
 
