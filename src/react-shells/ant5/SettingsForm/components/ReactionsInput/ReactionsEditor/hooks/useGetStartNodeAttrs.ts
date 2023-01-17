@@ -7,6 +7,7 @@ export function useGetStartNodeAttrs() {
         fill: '#111',
         stroke: '#ccc',
         strokeWidth: 2,
+        cursor: "crosshair",
       },
       label: {
         refX: '100%',
