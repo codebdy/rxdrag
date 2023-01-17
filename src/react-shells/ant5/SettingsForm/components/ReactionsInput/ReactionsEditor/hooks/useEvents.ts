@@ -1,6 +1,6 @@
 import { Graph, NodeView } from "@antv/x6";
 import { useCallback, useEffect } from "react";
-import { NodeStatus } from "../AlgoNode";
+import { NodeStatus } from "../components/ReactionNode";
 
 // 高亮
 export const magnetAvailabilityHighlighter = {

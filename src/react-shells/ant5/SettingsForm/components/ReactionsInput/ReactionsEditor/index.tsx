@@ -1,8 +1,8 @@
 import { memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components";
-import { Members } from "./Members";
-import { PropertyBox } from "./PropertyBox";
-import { Logic } from "./Logic";
+import { Members } from "./components/Members";
+import { PropertyBox } from "./components/PropertyBox";
+import { Logic } from "./components/Logic";
 import { useCreateGraph } from "./hooks/useCreateGraph";
 import { ReacionsEditorContext } from "./contexts";
 import { Toolbar } from "./components/Toolbar";

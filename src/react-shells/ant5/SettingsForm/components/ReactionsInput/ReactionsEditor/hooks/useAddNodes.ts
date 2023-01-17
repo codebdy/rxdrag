@@ -1,6 +1,6 @@
 import { Cell, Graph } from "@antv/x6";
 import { useCallback, useEffect } from "react";
-import { NodeStatus } from "../AlgoNode";
+import { NodeStatus } from "../components/ReactionNode";
 
 const nodeStatusList = [
   [

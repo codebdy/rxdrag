@@ -87,12 +87,14 @@ export function useNodesShow() {
 
 
       cells.push(graph.addNode({
-        shape: 'rect',
+        shape: 'reaction-node',
         x: 340,
         y: 240,
         width: 80,
         height: 40,
-        label: 'rect',
+        data: {
+          label: 'rect',
+        },
         attrs: commonAttrs,
         "ports": [
           {
@@ -110,5 +112,5 @@ export function useNodesShow() {
       }))
       graph.resetCells(cells)
     }
-  }, [graph])
+  }, [getStartNodeAttrs, graph])
 }

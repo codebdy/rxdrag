@@ -3,7 +3,7 @@ import { Button, Typography } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo } from "react"
 import styled from "styled-components";
-import { methodIcon } from "./icons";
+import { methodIcon } from "../icons";
 
 const { Text } = Typography;
 

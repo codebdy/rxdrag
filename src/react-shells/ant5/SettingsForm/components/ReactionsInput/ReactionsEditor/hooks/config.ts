@@ -1,7 +1,7 @@
 import { Graph, Path } from "@antv/x6";
 import { register } from "@antv/x6-react-shape";
 import { Options } from "@antv/x6/lib/graph/options";
-import { AlgoNode } from "../AlgoNode";
+import { ReactionNode } from "../components/ReactionNode";
 
 export const config:Partial<Options.Manual> = {
   panning: {
@@ -31,10 +31,10 @@ export const config:Partial<Options.Manual> = {
 
 
 register({
-  shape: 'dag-node',
+  shape: 'reaction-node',
   width: 180,
   height: 36,
-  component: AlgoNode,
+  component: ReactionNode,
   ports: {
     groups: {
       left: {
