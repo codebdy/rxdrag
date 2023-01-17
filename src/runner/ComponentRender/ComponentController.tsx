@@ -2,16 +2,16 @@ import React, { memo } from "react"
 import { Reactions } from "runner/reaction/components/Reactions"
 import { IControllerMeta } from "runner/reaction/metas"
 
-export const ComponentReaction = memo((
+export const ComponentController = memo((
   props: {
-    reactionsMeta?: IControllerMeta,
+    meta?: IControllerMeta,
     children?: React.ReactNode
   }
 ) => {
-  const { reactionsMeta, children } = props
+  const { meta, children } = props
 
   return (
-    reactionsMeta
+    meta
       ? <Reactions>{children}</Reactions>
       : <>{children}</>
   )

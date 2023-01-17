@@ -37,9 +37,16 @@ export interface IStartNodeMeta extends INodeMeta {
   name: string
 }
 
+export interface IPortMeta {
+  name: string
+  title?: string
+}
+
 export interface IReactionNodeMeta extends INodeMeta {
   componentName: string
-  methodName: string
+  reactionName: string
+  inPorts: IPortMeta[]
+  outPorts: IPortMeta[]
 }
 
 export interface IEndNodeMeta extends INodeMeta {
@@ -58,26 +65,18 @@ export interface IInvokeMeta {
   };
 }
 
-export interface IReactionMetas {
+export interface IMetas {
   nodes: INodeMeta[]
   invakes: IInvokeMeta[]
   x6Nodes: IX6NodeMeta[]
   x6Edges: IX6EdgeMeta[]
 }
 
-export interface IPortMeta {
-  name: string
-  title?: string
-  group: "in" | "out";
-}
-
 export interface IReactionMeta {
   uuid: string,
   name?: string,
   title?: string,
-  inputs?: IPortMeta[],
-  outputs?: IPortMeta[],
-  metas?: IReactionMetas,
+  metas?: IMetas,
 }
 
 // $form 虚拟表单， 
