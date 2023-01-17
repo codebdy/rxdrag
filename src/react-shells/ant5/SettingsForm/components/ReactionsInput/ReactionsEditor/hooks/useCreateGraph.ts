@@ -1,4 +1,4 @@
-import { Graph } from "@antv/x6";
+import { CellView, Graph } from "@antv/x6";
 import { useEffect, useState } from "react";
 import { config } from "./config";
 import { Selection } from '@antv/x6-plugin-selection'
@@ -11,12 +11,15 @@ export function useCreateGraph() {
     const gph: Graph = new Graph({
       container: document.getElementById("reactions-canvas-container")!,
       ...config,
+      interacting: (cellView: CellView) => {
+        return { nodeMovable: true, edgeLabelMovable: false };
+      },
       connecting: {
         snap: true,
         allowBlank: false,
         allowLoop: false,
         highlight: true,
-        connector: 'algo-connector',
+        connector: 'reactions-connector',
         connectionPoint: 'anchor',
         anchor: 'center',
         validateMagnet({ magnet }) {
@@ -24,7 +27,7 @@ export function useCreateGraph() {
         },
         createEdge() {
           return gph?.createEdge({
-            shape: 'dag-edge',
+            shape: 'reaction-edge',
             zIndex: -1,
           })
         },

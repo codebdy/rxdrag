@@ -4,10 +4,10 @@ export function useGetStartNodeAttrs() {
   const getStartNodeAttrs = useCallback(() => {
     return {
       body: {
-        fill: '#111',
+        fill: 'transparent',
         stroke: '#ccc',
         strokeWidth: 2,
-        cursor: "crosshair",
+        //cursor: "crosshair",
       },
       label: {
         refX: '100%',

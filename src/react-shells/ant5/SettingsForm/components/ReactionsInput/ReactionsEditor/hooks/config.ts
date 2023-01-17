@@ -3,7 +3,7 @@ import { register } from "@antv/x6-react-shape";
 import { Options } from "@antv/x6/lib/graph/options";
 import { ReactionNode } from "../components/ReactionNode";
 
-export const config:Partial<Options.Manual> = {
+export const config: Partial<Options.Manual> = {
   panning: {
     enabled: true,
     eventTypes: ['leftMouseDown', 'mouseWheel'],
@@ -80,7 +80,7 @@ register({
 )
 
 Graph.registerEdge(
-  'dag-edge',
+  'reaction-edge',
   {
     inherit: 'edge',
     attrs: {
@@ -95,7 +95,7 @@ Graph.registerEdge(
 )
 
 Graph.registerConnector(
-  'algo-connector',
+  'reactions-connector',
   (s, e) => {
     const offset = 8
     const deltaX = Math.abs(e.x - s.x)

@@ -82,6 +82,30 @@ export function useNodesShow() {
           id: inputNode.uuid,
           label: inputNode.label,
           attrs: getStartNodeAttrs(),
+          ports: {
+            groups: {
+              out: {
+                attrs: {
+                  circle: {
+                    r: 10,
+                    magnet: true,
+                    stroke: '#31d0c6',
+                    fill: '#fff',
+                    strokeWidth: 2,
+                  },
+                },
+              },
+            },
+            items: [
+              {
+                id: 'port1',
+                group: 'out',
+                args: {
+                  dx: 10,
+                }
+              },
+            ],
+          }
         }))
       }
 
@@ -96,7 +120,7 @@ export function useNodesShow() {
           label: 'rect',
         },
         attrs: commonAttrs,
-        "ports": [
+        ports: [
           {
             "id": "3-1",
             "group": "left"
