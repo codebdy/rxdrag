@@ -5,6 +5,7 @@ import { ReacionsEditorContext } from "../contexts";
 import { createUuid } from "../utils";
 import { useGetEndNodeAttrs } from "./useGetEndNodeAttrs";
 import { useGetStartNodeAttrs } from "./useGetStartNodeAttrs";
+import { useGetStartNodeConfig } from "./useGetStartNodeConfig";
 const commonAttrs = {
   body: {
     fill: '#111',
@@ -43,14 +44,7 @@ const commonAttrs2 = {
     fill: "#fff"
   },
 }
-/*
-export interface ILogicMetas {
-  nodes: INodeMeta[]
-  invakes: IInvokeMeta[]
-  x6Nodes: IX6NodeMeta[]
-  x6Edges: IX6EdgeMeta[]
-}
-*/
+
 const metas: ILogicMetas = {
   inputs: [
     {
@@ -72,50 +66,15 @@ const metas: ILogicMetas = {
 
 export function useNodesShow() {
   const { graph } = useContext(ReacionsEditorContext) || {}
-  const getStartNodeAttrs = useGetStartNodeAttrs()
+  const getStartNodeConfig = useGetStartNodeConfig()
   const getEndNodeAttrs = useGetEndNodeAttrs()
-  
+
   useEffect(() => {
     if (graph) {
       const cells: Cell[] = []
 
-      for (let i = 0; i < metas.inputs.length; i++) {
-        const inputNode = metas.inputs[i]
-        cells.push(graph.createNode({
-          shape: 'circle',
-          x: 90,
-          y: 60 + 60 * i,
-          width: 20,
-          height: 20,
-          ...inputNode.x6Node,
-          id: inputNode.uuid,
-          label: inputNode.label,
-          attrs: getStartNodeAttrs(),
-          ports: {
-            groups: {
-              out: {
-                attrs: {
-                  circle: {
-                    r: 10,
-                    magnet: true,
-                    stroke: '#31d0c6',
-                    fill: '#fff',
-                    strokeWidth: 2,
-                  },
-                },
-              },
-            },
-            items: [
-              {
-                id: 'port1',
-                group: 'out',
-                args: {
-                  dx: 10,
-                }
-              },
-            ],
-          }
-        }))
+      for (const inputNode of metas.inputs) {
+        cells.push(graph.createNode(getStartNodeConfig(inputNode)))
       }
 
       for (let i = 0; i < metas.outputs.length; i++) {
@@ -139,7 +98,7 @@ export function useNodesShow() {
                     magnet: true,
                     stroke: '#31d0c6',
                     fill: '#fff',
-                    strokeWidth: 4,
+                    strokeWidth: 5,
                   },
                 },
               },
@@ -209,5 +168,5 @@ export function useNodesShow() {
       }))
       graph.resetCells(cells)
     }
-  }, [getEndNodeAttrs, getStartNodeAttrs, graph])
+  }, [getEndNodeAttrs, getStartNodeConfig, graph])
 }

@@ -18,6 +18,8 @@ export function useCreateGraph() {
         snap: true,
         allowBlank: false,
         allowLoop: false,
+        allowNode: false,
+        allowEdge: false,
         highlight: true,
         connector: 'reactions-connector',
         connectionPoint: 'anchor',
