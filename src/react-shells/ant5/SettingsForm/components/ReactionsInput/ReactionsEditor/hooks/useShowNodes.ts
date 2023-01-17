@@ -3,9 +3,17 @@ import { useContext, useEffect } from "react";
 import { ReacionsEditorContext } from "../contexts";
 const commonAttrs = {
   body: {
-    fill: 'transparent',
+    fill: '#111',
     stroke: '#ccc',
     strokeWidth: 2,
+    filter: {
+      name: "outline",
+      args: {
+        color: 'rgba(22,104,220, 0.7)',
+        width: 2,
+        margin: 0,
+      },
+    },
   },
   label: {
     refX: '100%',
@@ -64,6 +72,19 @@ export function useNodesShow() {
         height: 40,
         label: 'rect',
         attrs: commonAttrs,
+        "ports": [
+          {
+            "id": "3-1",
+            "group": "left"
+          },
+          {
+            "id": "3-2",
+            "group": "out",
+            args: {
+              dx: 4,
+            }
+          }
+        ]
       }))
       graph.resetCells(cells)
     }

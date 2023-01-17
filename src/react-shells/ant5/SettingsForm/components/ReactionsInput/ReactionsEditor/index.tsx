@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { Members } from "./Members";
 import { PropertyBox } from "./PropertyBox";
 import { ZoomOutOutlined, ZoomInOutlined } from "@ant-design/icons";
-import { mapIcon } from "./icons";
+import { mapIcon, nodeIcon, outputIcon } from "./icons";
 import { Logic } from "./Logic";
 import { useCreateGraph } from "./hooks/useCreateGraph";
 import { ReacionsEditorContext } from "./contexts";
@@ -68,6 +68,13 @@ const RightArea = styled.div`
 
 const ToolbarButton = styled((props) => <Button type="text" size="small" {...props} />)`
 `
+
+const ToobarCenter = styled.div`
+  flex:1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 export const ReactionsEditor = memo(() => {
   const [showMap, setShowMap] = useState(false)
   const [, token] = useToken()
@@ -98,8 +105,12 @@ export const ReactionsEditor = memo(() => {
                 <path fill="currentColor" d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />
               </svg></span>}></ToolbarButton>
             </Space>
-            <div style={{ flex: 1 }}></div>
+            <ToobarCenter>
+            </ToobarCenter>
             <Space>
+              <ToolbarButton icon={nodeIcon}></ToolbarButton>
+              <ToolbarButton icon={outputIcon}></ToolbarButton>
+              <Divider type="vertical" />
               <ToolbarButton
                 icon={mapIcon}
                 type={showMap ? "default" : "text"}
