@@ -1,15 +1,11 @@
 import { useToken } from "antd/es/theme/internal"
-import { CSSProperties, forwardRef, memo } from "react"
-import styled from "styled-components"
+import { CSSProperties, forwardRef, memo, useMemo } from "react"
+import styled, { ThemeProvider } from "styled-components"
 
-const HeroInner = styled.div.attrs((props: { color?: string }) => {
-  return {
-    color: props.color
-  }
-})`
+const HeroInner = styled.div`
   padding: 24px;
   border-radius: 8px;
-  color: ${props => props.color}
+  color: ${props => props.theme.token.colorText};
 `
 export type HeroContentProps = {
   style?: CSSProperties,
@@ -18,11 +14,18 @@ export type HeroContentProps = {
 
 export const HeroConent = memo(forwardRef<HTMLDivElement, HeroContentProps>((props, ref) => {
   const [, token] = useToken()
+  const theme = useMemo(() => {
+    return {
+      token
+    }
+  }, [token])
+
   return (
-    <HeroInner
-      ref={ref}
-      color={token.colorText}
-      {...props}
-    />
+    <ThemeProvider theme={theme}>
+      <HeroInner
+        ref={ref}
+        {...props}
+      />
+    </ThemeProvider>
   )
 }))
