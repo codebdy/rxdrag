@@ -10,10 +10,10 @@ export function useGetStartNodeAttrs() {
         //cursor: "crosshair",
       },
       label: {
-        refX: '100%',
-        refX2: 4,
+        refX: '-10',
+        //refX2: -30,
         refY: 0.5,
-        textAnchor: 'start',
+        textAnchor: 'end',
         textVerticalAnchor: 'middle',
         fill: "#fff"
       },
