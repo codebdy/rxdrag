@@ -85,7 +85,7 @@ Graph.registerEdge(
     inherit: 'edge',
     attrs: {
       line: {
-        stroke: '#C2C8D5',
+        stroke: "#5e76c3",
         strokeWidth: 1,
         targetMarker: null,
       },

@@ -18,16 +18,16 @@ export function useGetStartNodeConfig() {
       label: nodeMeta.label,
       attrs: {
         body: {
-          fill: token.colorBgBase,
+          fill: "#8297da",
           stroke: token.colorText,
-          strokeWidth: STROKE_WIDTH,
+          strokeWidth: 0,//STROKE_WIDTH,
         },
         label: {
           refX: '-10',
           refY: 0.5,
           textAnchor: 'end',
           textVerticalAnchor: 'middle',
-          fill: token.colorText,
+          fill: token.colorTextSecondary,
         },
       },
       ports: {
@@ -37,8 +37,8 @@ export function useGetStartNodeConfig() {
               circle: {
                 r: 10,
                 magnet: true,
-                stroke: token.colorText,
-                fill: token.colorBgBase,
+                stroke: "#5e76c3",
+                fill: "#8297da",
                 strokeWidth: STROKE_WIDTH,
               },
             },
@@ -55,7 +55,7 @@ export function useGetStartNodeConfig() {
         ],
       }
     }
-  }, [token.colorBgBase, token.colorText])
+  }, [token.colorText, token.colorTextSecondary])
 
 
   return getConfig

@@ -20,7 +20,7 @@ export function useGetEndNodeConfig() {
         body: {
           fill: token.colorBgBase,
           stroke: token.colorText,
-          strokeWidth: STROKE_WIDTH,
+          strokeWidth: 0,//STROKE_WIDTH,
         },
         label: {
           refX: '100%',
@@ -28,7 +28,7 @@ export function useGetEndNodeConfig() {
           refY: 0.5,
           textAnchor: 'start',
           textVerticalAnchor: 'middle',
-          fill: token.colorText,
+          fill: token.colorTextSecondary,
         },
       },
       ports: {
@@ -38,8 +38,8 @@ export function useGetEndNodeConfig() {
               circle: {
                 r: 10,
                 magnet: true,
-                stroke: token.colorText,
                 fill: token.colorBgBase,
+                stroke: token.colorText,
                 strokeWidth: STROKE_WIDTH,
               },
             },
@@ -56,7 +56,7 @@ export function useGetEndNodeConfig() {
         ],
       }
     }
-  }, [token.colorBgBase, token.colorText])
+  }, [token.colorBgBase, token.colorText, token.colorTextSecondary])
 
 
   return getConfig
