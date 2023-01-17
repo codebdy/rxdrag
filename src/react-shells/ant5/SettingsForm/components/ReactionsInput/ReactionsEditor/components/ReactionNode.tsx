@@ -10,8 +10,7 @@ const NodeView = styled.div`
   height: 100%;
   background-color: #111;
   color: #fff;
-  border: 1px solid #c2c8d5;
-  border-left: 4px solid #5F95FF;
+  outline: 1px solid #c2c8d5;
   border-radius: 4px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.06);
 `

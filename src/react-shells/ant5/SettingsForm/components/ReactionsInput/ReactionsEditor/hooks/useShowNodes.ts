@@ -104,9 +104,6 @@ export function useNodesShow() {
           {
             "id": "3-2",
             "group": "out",
-            args: {
-              dx: 4,
-            }
           }
         ]
       }))
