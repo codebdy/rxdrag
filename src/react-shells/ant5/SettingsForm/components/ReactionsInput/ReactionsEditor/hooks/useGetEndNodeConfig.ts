@@ -1,16 +1,16 @@
 import { useCallback } from "react";
-import { IStartNodeMeta } from "runner/reaction/metas";
+import { IEndNodeMeta } from "runner/reaction/metas";
 import { Node } from "@antv/x6";
 import { useToken } from "antd/es/theme/internal";
 
-const STROKE_WIDTH = 2
-export function useGetStartNodeConfig() {
+const STROKE_WIDTH = 5
+export function useGetEndNodeConfig() {
   const [, token] = useToken()
-  const getConfig = useCallback((nodeMeta: IStartNodeMeta): Node.Metadata => {
+  const getConfig = useCallback((nodeMeta: IEndNodeMeta): Node.Metadata => {
     return {
       shape: 'circle',
-      x: 90,
-      y: 60,
+      x: 700,
+      y: 200,
       width: 20,
       height: 20,
       ...nodeMeta.x6Node,
@@ -23,9 +23,10 @@ export function useGetStartNodeConfig() {
           strokeWidth: STROKE_WIDTH,
         },
         label: {
-          refX: '-10',
+          refX: '100%',
+          refX2: 10,
           refY: 0.5,
-          textAnchor: 'end',
+          textAnchor: 'start',
           textVerticalAnchor: 'middle',
           fill: token.colorText,
         },

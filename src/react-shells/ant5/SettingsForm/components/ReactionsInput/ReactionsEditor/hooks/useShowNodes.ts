@@ -3,8 +3,7 @@ import { useContext, useEffect } from "react";
 import { ILogicMetas } from "runner/reaction/metas";
 import { ReacionsEditorContext } from "../contexts";
 import { createUuid } from "../utils";
-import { useGetEndNodeAttrs } from "./useGetEndNodeAttrs";
-import { useGetStartNodeAttrs } from "./useGetStartNodeAttrs";
+import { useGetEndNodeConfig } from "./useGetEndNodeConfig";
 import { useGetStartNodeConfig } from "./useGetStartNodeConfig";
 const commonAttrs = {
   body: {
@@ -67,7 +66,7 @@ const metas: ILogicMetas = {
 export function useNodesShow() {
   const { graph } = useContext(ReacionsEditorContext) || {}
   const getStartNodeConfig = useGetStartNodeConfig()
-  const getEndNodeAttrs = useGetEndNodeAttrs()
+  const getEndNodeConfig = useGetEndNodeConfig()
 
   useEffect(() => {
     if (graph) {
@@ -77,44 +76,10 @@ export function useNodesShow() {
         cells.push(graph.createNode(getStartNodeConfig(inputNode)))
       }
 
-      for (let i = 0; i < metas.outputs.length; i++) {
-        const outputNode = metas.outputs[i]
-        cells.push(graph.createNode({
-          shape: 'circle',
-          x: 700,
-          y: 200 + 60 * i,
-          width: 20,
-          height: 20,
-          ...outputNode.x6Node,
-          id: outputNode.uuid,
-          label: outputNode.label,
-          attrs: getEndNodeAttrs(),
-          ports: {
-            groups: {
-              in: {
-                attrs: {
-                  circle: {
-                    r: 10,
-                    magnet: true,
-                    stroke: '#31d0c6',
-                    fill: '#fff',
-                    strokeWidth: 5,
-                  },
-                },
-              },
-            },
-            items: [
-              {
-                id: 'port1',
-                group: 'in',
-                args: {
-                  dx: 10,
-                }
-              },
-            ],
-          }
-        }))
+      for (const outputNode of metas.outputs) {
+        cells.push(graph.createNode(getEndNodeConfig(outputNode)))
       }
+
       cells.push(graph.addNode({
         shape: 'reaction-node',
         x: 340,
@@ -168,5 +133,5 @@ export function useNodesShow() {
       }))
       graph.resetCells(cells)
     }
-  }, [getEndNodeAttrs, getStartNodeConfig, graph])
+  }, [getEndNodeConfig, getStartNodeConfig, graph])
 }
