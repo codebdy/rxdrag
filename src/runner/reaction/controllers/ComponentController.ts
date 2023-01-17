@@ -1,6 +1,6 @@
 import { InputHandlers, OutputJointers, IComponentController } from "runner/reaction/interfaces";
 import { Props } from "../classes/props";
-import { IReactionsMeta } from "../metas";
+import { IControllerMeta } from "../metas";
 
 export class ComponentController implements IComponentController {
   state: any;
@@ -10,7 +10,7 @@ export class ComponentController implements IComponentController {
   events: InputHandlers = {};
   private jointers: OutputJointers = {};
 
-  constructor(private meta: IReactionsMeta, private $props: Props, private $actions: InputHandlers) {
+  constructor(private meta: IControllerMeta, private $props: Props, private $actions: InputHandlers) {
 
   }
 

@@ -42,7 +42,7 @@ export const Members = memo(() => {
         </ListItem>
       </List>
       <Title>
-        <Text type="secondary">{t("methods")}</Text>
+        <Text type="secondary">{t("reactions")}</Text>
         <Button size="small" type="text" icon={<PlusOutlined />}></Button>
       </Title>
       <List>

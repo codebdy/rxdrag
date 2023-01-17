@@ -1,4 +1,3 @@
-import { IEventMeta } from "./metas"
 
 export type Unsubscribe = () => void
 

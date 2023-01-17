@@ -52,7 +52,7 @@ export function useNodesShow() {
         "y": 30,
         width: 20,
         height: 20,
-        label: '打开',
+        label: '输入',
         attrs: commonAttrs,
       }))
       cells.push(graph.createNode({

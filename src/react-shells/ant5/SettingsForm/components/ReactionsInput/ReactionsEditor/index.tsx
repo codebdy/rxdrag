@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { Members } from "./Members";
 import { PropertyBox } from "./PropertyBox";
 import { ZoomOutOutlined, ZoomInOutlined } from "@ant-design/icons";
-import { mapIcon, nodeIcon, outputIcon } from "./icons";
+import { inutIcon, mapIcon, nodeIcon, outputIcon } from "./icons";
 import { Logic } from "./Logic";
 import { useCreateGraph } from "./hooks/useCreateGraph";
 import { ReacionsEditorContext } from "./contexts";
@@ -17,7 +17,7 @@ const SytledContent = styled.div`
   border: solid 1px;
 `
 const LeftArea = styled.div`
-  width: 220px;
+  width: 180px;
   border-right: solid 1px;
   padding: 8px;
 `
@@ -108,6 +108,7 @@ export const ReactionsEditor = memo(() => {
             <ToobarCenter>
             </ToobarCenter>
             <Space>
+              <ToolbarButton icon={inutIcon}></ToolbarButton>
               <ToolbarButton icon={nodeIcon}></ToolbarButton>
               <ToolbarButton icon={outputIcon}></ToolbarButton>
               <Divider type="vertical" />

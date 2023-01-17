@@ -74,31 +74,25 @@ export interface IPortMeta {
   group: "in" | "out";
 }
 
-export interface IFunctionMeta {
+export interface IReactionMeta {
   uuid: string,
   name?: string,
+  title?: string,
   inputs?: IPortMeta[],
   outputs?: IPortMeta[],
-  metas?: IReactionMetas,
-}
-
-export interface IEventMeta extends IFunctionMeta {
-  uuid: string,
-  title?: string,
-  name?: string,
   metas?: IReactionMetas,
 }
 
 // $form 虚拟表单， 
 // $field 当前字段, 设置字段：$field.setValue
 // $self 组件，设置组件属性:$self.setProps({dataSource:[...]}), 
-export interface IReactionsMeta {
+export interface IControllerMeta {
   uuid: string,
   events?: {
-    [key: string]: IEventMeta | undefined
+    [key: string]: IReactionMeta | undefined
   },
-  methods?: {
-    [name: string]: IFunctionMeta | undefined
+  reactions?: {
+    [name: string]: IReactionMeta | undefined
   },
   variables?: string[],
 }

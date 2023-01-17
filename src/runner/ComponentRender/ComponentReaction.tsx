@@ -1,10 +1,10 @@
 import React, { memo } from "react"
 import { Reactions } from "runner/reaction/components/Reactions"
-import { IReactionsMeta } from "runner/reaction/metas"
+import { IControllerMeta } from "runner/reaction/metas"
 
 export const ComponentReaction = memo((
   props: {
-    reactionsMeta?: IReactionsMeta,
+    reactionsMeta?: IControllerMeta,
     children?: React.ReactNode
   }
 ) => {

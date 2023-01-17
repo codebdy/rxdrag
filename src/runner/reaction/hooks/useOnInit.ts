@@ -1,5 +1,5 @@
-import { IReactionsMeta } from "../metas";
+import { IControllerMeta } from "../metas";
 
-export function useOnInit(reaction?: IReactionsMeta){
+export function useOnInit(reaction?: IControllerMeta){
   
 }
