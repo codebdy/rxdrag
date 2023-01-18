@@ -6,7 +6,7 @@ import { Logic } from "./components/Logic";
 import { useCreateGraph } from "./hooks/useCreateGraph";
 import { ReacionsEditorContext } from "./contexts";
 import { Toolbar } from "./components/Toolbar";
-import { Toolbox } from "./components/Toolbox/inex";
+import { Toolbox } from "./components/Toolbox";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);

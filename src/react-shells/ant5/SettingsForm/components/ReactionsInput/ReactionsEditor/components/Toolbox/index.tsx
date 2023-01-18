@@ -1,7 +1,9 @@
-import { Collapse as AntdCollapse } from "antd";
+import { Col, Collapse as AntdCollapse, Row } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo } from "react";
 import styled from "styled-components";
+import { startIcon } from "../../icons";
+import { ToolItem } from "./ToolItem";
 const { Panel } = AntdCollapse;
 
 const StyledToolbox = styled.div`
@@ -28,7 +30,9 @@ export const Toolbox = memo(() => {
     <StyledToolbox>
       <Collapse defaultActiveKey={['1']} bordered={false}>
         <Panel header={t('ReactionsInput.basicReactions')} key="1">
-          <p>{text}</p>
+          <Row>
+            <ToolItem icon={startIcon} title="开始节点" />
+          </Row>
         </Panel>
         <Panel header={t('ReactionsInput.commonReactions')} key="2">
           <p>{text}</p>
