@@ -42,14 +42,18 @@ export const ComponentReactions = memo(() => {
         mask={false}
         getContainer={() => document.getElementById("reactions-editor-container") as any}
         closable={false}
-        extra={<Button type="text" icon={<CloseOutlined onClick={onClose} />} />}
+        extra={
+          <Button
+            type="text"
+            icon={<CloseOutlined />}
+            onClick={onClose}
+          />
+        }
         onClose={onClose}
         open={open}
         width={402}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        Some contents...
       </Drawer>
     </Container>
   )
