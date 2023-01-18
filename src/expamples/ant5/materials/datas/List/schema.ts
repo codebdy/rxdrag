@@ -268,6 +268,23 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
           },
           children: [
             {
+              componentName: "Switch",
+              "x-field": {
+                name: "hasController",
+                params: {
+                  valuePropName: "checked",
+                }
+              },
+            }
+          ]
+        },
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$config",
+          },
+          children: [
+            {
               componentName: "ReactionsInput",
               "x-field": {
                 name: "x-reactions",

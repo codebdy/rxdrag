@@ -60,6 +60,7 @@ export const settingLocales = {
       trigger: "触发属性",
       windBind: "绑定字段",
       controller: "控制器",
+      config: "配置",
       reactions: "交互",
       configReactions: "配置控制器",
 
@@ -147,6 +148,7 @@ export const settingLocales = {
       trigger: "Trigger",
       windBind: "With Bind",
       controller: "Controller",
+      config: "Config",
       reactions: "Reactions",
       configReactions: "Config Controller",
 
@@ -167,7 +169,7 @@ export const settingLocales = {
         reactions: "Reactions",
         basicReactions: "Basic Reactions",
         commonReactions: "Common Reactions",
-        dataModel:"Data Model",
+        dataModel: "Data Model",
         componentControl: "Component Control",
       }
     }

@@ -21,7 +21,7 @@ const SytledContent = styled.div`
     display: flex;
     flex-flow: column;
     overflow: hidden;
-  }
+  };
 `
 const LeftArea = styled.div`
   width: 180px;
