@@ -2,20 +2,38 @@ import { Col } from "antd"
 import React, { memo } from "react"
 import styled from "styled-components"
 
+const Icon = styled.div`
+  width: 100%;
+  font-size: 28px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: ${props => props.theme.token?.colorBorderSecondary};
+`
+
 const Shell = styled((props) => <Col span={12} {...props} />)`
   display: flex;
   flex-flow: column;
   align-items: center;
+  user-select: none;
+  cursor: move;
+  color: ${props => props.theme.token?.colorTextSecondary};
+  &:hover {
+    color: ${props => props.theme.token?.colorText};
+  };
+  &:hover ${Icon}{
+    background-color: ${props => props.theme.token?.colorBorder};
+  };
+  box-sizing: border-box;
 `
 
-const Icon = styled.div`
-  font-size: 32px;
-`
 
 const Title = styled.div`
+  margin-top: 8px;
   font-size: 12px;
-  color: ${props=>props.theme.token?.colorTextSecondary}
-  
 `
 
 export const ToolItem = memo((
