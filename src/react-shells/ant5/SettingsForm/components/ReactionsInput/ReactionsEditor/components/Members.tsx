@@ -12,6 +12,7 @@ const Title = styled.div`
   justify-content: space-between;
   padding: 8px;
   align-items: center;
+  user-select: none;
 `
 
 const List = styled.div`

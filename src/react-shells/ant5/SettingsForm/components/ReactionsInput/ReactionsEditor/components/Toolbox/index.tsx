@@ -7,6 +7,7 @@ import { ToolItem } from "./ToolItem";
 const { Panel } = AntdCollapse;
 
 const StyledToolbox = styled.div`
+  user-select: none;
   width: 180px;
   border-right: ${props => props.theme.token?.colorBorder} solid 1px;
   height: 100%;
@@ -44,7 +45,7 @@ export const Toolbox = memo(() => {
           </Row>
         </Panel>
         <Panel header={t('ReactionsInput.componentControl')} key="3">
-          <p>根组件</p>
+          <p>选择组件</p>
         </Panel>
       </Collapse>
     </StyledToolbox>
