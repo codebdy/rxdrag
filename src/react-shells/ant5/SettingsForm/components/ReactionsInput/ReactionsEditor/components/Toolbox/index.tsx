@@ -2,7 +2,7 @@ import { Collapse as AntdCollapse, Row } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo } from "react";
 import styled from "styled-components";
-import { delayIcon, endIcon, ifIcon, infoIcon, jsIcon, loadingIcon, loopIcon, mergeIcon, randomIcon, routeIcon, simulateIcon, startIcon, switchIcon } from "../../icons";
+import { delayIcon, endIcon, fieldIcon, fieldReadIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon, ifIcon, infoIcon, jsIcon, loadingIcon, loopIcon, mergeIcon, randomIcon, routeIcon, simulateIcon, startIcon, switchIcon } from "../../icons";
 import { ComponentReactions } from "./ComponentReactions";
 import { ToolItem } from "./ToolItem";
 const { Panel } = AntdCollapse;
@@ -51,12 +51,12 @@ export const Toolbox = memo(() => {
         </Panel>
         <Panel header={t('ReactionsInput.dataModel')} key="3">
           <Row gutter={8}>
-            <ToolItem icon={routeIcon} title="表单赋值" />
-            <ToolItem icon={routeIcon} title="表单校验" />
-            <ToolItem icon={routeIcon} title="表单取值" />
-            <ToolItem icon={routeIcon} title="字段赋值" />
-            <ToolItem icon={routeIcon} title="字段校验" />
-            <ToolItem icon={routeIcon} title="字段取值" />
+            <ToolItem icon={formIcon} title="表单赋值" />
+            <ToolItem icon={formValidateIcon} title="表单校验" />
+            <ToolItem icon={formReadIcon} title="表单取值" />
+            <ToolItem icon={fieldIcon} title="字段赋值" />
+            <ToolItem icon={fieldValidateIcon} title="字段校验" />
+            <ToolItem icon={fieldReadIcon} title="字段取值" />
             <ToolItem icon={routeIcon} title="表单值变化" />
             <ToolItem icon={routeIcon} title="字段值变化" />
             <ToolItem icon={routeIcon} title="表单状态" />
