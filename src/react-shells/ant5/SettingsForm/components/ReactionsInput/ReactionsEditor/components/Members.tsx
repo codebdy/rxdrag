@@ -29,7 +29,7 @@ export const Members = memo(() => {
   const t = useToolsTranslate()
   return (
     <>
-      <Title><Text type="secondary">{t("events")}</Text></Title>
+      <Title><Text type="secondary">{t("ReactionsInput.events")}</Text></Title>
       <List>
         <ListItem icon={<ThunderboltOutlined />}>
           初始化
@@ -42,7 +42,7 @@ export const Members = memo(() => {
         </ListItem>
       </List>
       <Title>
-        <Text type="secondary">{t("reactions")}</Text>
+        <Text type="secondary">{t("ReactionsInput.reactions")}</Text>
         <Button size="small" type="text" icon={<PlusOutlined />}></Button>
       </Title>
       <List>
@@ -54,7 +54,7 @@ export const Members = memo(() => {
         </ListItem>
       </List>
       <Title>
-        <Text type="secondary">{t("variables")}</Text>
+        <Text type="secondary">{t("ReactionsInput.variables")}</Text>
         <Button size="small" type="text" icon={<PlusOutlined />}></Button>
       </Title>
       <List>

@@ -1,4 +1,5 @@
 import { Collapse as AntdCollapse } from "antd";
+import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo } from "react";
 import styled from "styled-components";
 const { Panel } = AntdCollapse;
@@ -21,16 +22,18 @@ const text = `
 `;
 
 export const Toolbox = memo(() => {
+  const t = useToolsTranslate()
+
   return (
     <StyledToolbox>
-      <Collapse defaultActiveKey={['1']} bordered = {false}>
-        <Panel header="基础元件" key="1">
+      <Collapse defaultActiveKey={['1']} bordered={false}>
+        <Panel header={t('ReactionsInput.basicReactions')} key="1">
           <p>{text}</p>
         </Panel>
-        <Panel header="通用计算" key="2">
+        <Panel header={t('ReactionsInput.commonReactions')} key="2">
           <p>{text}</p>
         </Panel>
-        <Panel header="组件控制" key="3">
+        <Panel header={t('ReactionsInput.componentControl')} key="3">
           <p>{text}</p>
         </Panel>
       </Collapse>

@@ -60,12 +60,8 @@ export const settingLocales = {
       trigger: "触发属性",
       windBind: "绑定字段",
       controller: "控制器",
-      variables: "变量",
-      events: "事件",
       reactions: "交互",
-      functions: "函数定义",
       configReactions: "配置控制器",
-      effects: "响应规则",
 
       IconInput: {
         DialogTitle: "选择图标",
@@ -77,6 +73,15 @@ export const settingLocales = {
         "Editor": "编辑类图标",
         "IconLib": "图标库",
         "Customized": "自定义"
+      },
+
+      ReactionsInput:{
+        variables: "变量",
+        events: "事件",
+        reactions: "交互",
+        basicReactions:"基础元件",
+        commonReactions:"通用计算",
+        componentControl:"组件控制",
       }
     }
   },
@@ -141,12 +146,8 @@ export const settingLocales = {
       trigger: "Trigger",
       windBind: "With Bind",
       controller: "Controller",
-      variables: "variables",
-      events: "Events",
       reactions: "Reactions",
-      functions: "Functions",
       configReactions: "Config Controller",
-      effects: "Effects",
 
       IconInput: {
         DialogTitle: "Select Icon",
@@ -158,6 +159,14 @@ export const settingLocales = {
         "Editor": "Editor",
         "IconLib": "IconLib",
         "Customized": "Customized"
+      },
+      ReactionsInput:{
+        variables: "variables",
+        events: "Events",
+        reactions: "Reactions",
+        basicReactions:"Basic Reactions",
+        commonReactions:"Common Reactions",
+        componentControl:"Component Control",
       }
     }
   }
