@@ -5,7 +5,7 @@ import styled from "styled-components"
 const Icon = styled.div`
   width: 100%;
   font-size: 28px;
-  padding: 8px;
+  height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,6 +28,8 @@ const Shell = styled((props) => <Col span={12} {...props} />)`
     background-color: ${props => props.theme.token?.colorBorder};
   };
   box-sizing: border-box;
+  margin-top: 8px;
+  margin-bottom: 8px;
 `
 
 

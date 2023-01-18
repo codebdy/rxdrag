@@ -2,7 +2,7 @@ import { Collapse as AntdCollapse, Row } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo } from "react";
 import styled from "styled-components";
-import { endIcon, startIcon } from "../../icons";
+import { endIcon, ifIcon, loopIcon, mergeIcon, startIcon } from "../../icons";
 import { ToolItem } from "./ToolItem";
 const { Panel } = AntdCollapse;
 
@@ -31,8 +31,13 @@ export const Toolbox = memo(() => {
       <Collapse defaultActiveKey={['1']} bordered={false}>
         <Panel header={t('ReactionsInput.basicReactions')} key="1">
           <Row gutter={8}>
-            <ToolItem icon={startIcon} title="开始节点" />
-            <ToolItem icon={endIcon} title="结束节点" />
+            <ToolItem icon={startIcon} title="开始" />
+            <ToolItem icon={endIcon} title="结束" />
+            <ToolItem icon={ifIcon} title="条件" />
+            <ToolItem icon={loopIcon} title="循环" />
+            <ToolItem icon={mergeIcon} title="合并" />
+            <ToolItem icon={mergeIcon} title="分流" />
+            <ToolItem icon={mergeIcon} title="延时" />
           </Row>
         </Panel>
         <Panel header={t('ReactionsInput.commonReactions')} key="2">
