@@ -12,6 +12,10 @@ const SytledContent = styled.div`
   height: calc(100vh - 160px);
   display: flex;
   border: ${props => props.theme.token?.colorBorder} solid 1px;
+  .ant-drawer-header{
+    padding: 0 16px;
+    min-height: 53px;
+  }
 `
 const LeftArea = styled.div`
   width: 180px;
@@ -86,7 +90,7 @@ export const ReactionsEditor = memo(() => {
 
   return (
     <ReacionsEditorContext.Provider value={params}>
-      <SytledContent >
+      <SytledContent id="reactions-editor-container">
         <LeftArea>
           <Members />
         </LeftArea>

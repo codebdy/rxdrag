@@ -3,6 +3,7 @@ import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo } from "react";
 import styled from "styled-components";
 import { delayIcon, endIcon, ifIcon, infoIcon, loadingIcon, loopIcon, mergeIcon, randomIcon, routeIcon, simulateIcon, startIcon, switchIcon } from "../../icons";
+import { ComponentReactions } from "./ComponentReactions";
 import { ToolItem } from "./ToolItem";
 const { Panel } = AntdCollapse;
 
@@ -44,10 +45,8 @@ export const Toolbox = memo(() => {
             <ToolItem icon={loadingIcon} title="全局Loading" />
           </Row>
         </Panel>
-        <Panel header={t('ReactionsInput.componentControl')} key="3">
-          <p>选择组件</p>
-        </Panel>
       </Collapse>
+      <ComponentReactions />
     </StyledToolbox>
   )
 })
