@@ -68,12 +68,15 @@ const RightArea = styled.div`
 
 export const ReactionsEditor = memo(() => {
   const [showMap, setShowMap] = useState(false)
+  const [lining, setLining] = useState(false)
   const graph = useCreateGraph()
   const params = useMemo(() => {
     return {
-      graph
+      graph,
+      lining,
+      setLining,
     }
-  }, [graph])
+  }, [graph, lining])
 
   const handleToggleMap = useCallback(() => {
     setShowMap((show) => !show)

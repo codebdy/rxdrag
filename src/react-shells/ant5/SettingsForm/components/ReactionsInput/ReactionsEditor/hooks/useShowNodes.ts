@@ -1,10 +1,10 @@
 import { Cell } from "@antv/x6";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { ILogicMetas } from "runner/reaction/metas";
-import { ReacionsEditorContext } from "../contexts";
 import { createUuid } from "../utils";
 import { useGetEndNodeConfig } from "./useGetEndNodeConfig";
 import { useGetStartNodeConfig } from "./useGetStartNodeConfig";
+import { useGlobalState } from "./useGlobalState";
 const commonAttrs = {
   body: {
     fill: '#111',
@@ -64,7 +64,7 @@ const metas: ILogicMetas = {
 }
 
 export function useNodesShow() {
-  const { graph } = useContext(ReacionsEditorContext) || {}
+  const { graph } = useGlobalState()
   const getStartNodeConfig = useGetStartNodeConfig()
   const getEndNodeConfig = useGetEndNodeConfig()
 

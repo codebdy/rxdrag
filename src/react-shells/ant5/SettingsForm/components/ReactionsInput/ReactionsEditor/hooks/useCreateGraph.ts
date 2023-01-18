@@ -57,12 +57,6 @@ export function useCreateGraph() {
     );
 
     setGraph(gph)
-    gph.on("edge:added", (args) => {
-
-      console.log("哈哈哈", args)
-      // 对新创建的边进行插入数据库等持久化操作
-
-    });
 
     return () => {
       gph?.dispose()
