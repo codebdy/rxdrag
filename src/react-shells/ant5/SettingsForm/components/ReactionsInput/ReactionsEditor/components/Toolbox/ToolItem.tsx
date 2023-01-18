@@ -5,7 +5,7 @@ import styled from "styled-components"
 const Icon = styled.div`
   width: 100%;
   font-size: 28px;
-  height: 48px;
+  height: 54px;
   display: flex;
   justify-content: center;
   align-items: center;

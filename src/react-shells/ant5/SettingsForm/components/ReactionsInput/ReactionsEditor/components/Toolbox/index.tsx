@@ -2,12 +2,12 @@ import { Collapse as AntdCollapse, Row } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo } from "react";
 import styled from "styled-components";
-import { delayIcon, endIcon, ifIcon, infoIcon, loopIcon, mergeIcon, randomIcon, routeIcon, simulateIcon, startIcon, switchIcon } from "../../icons";
+import { delayIcon, endIcon, ifIcon, infoIcon, loadingIcon, loopIcon, mergeIcon, randomIcon, routeIcon, simulateIcon, startIcon, switchIcon } from "../../icons";
 import { ToolItem } from "./ToolItem";
 const { Panel } = AntdCollapse;
 
 const StyledToolbox = styled.div`
-  width: 160px;
+  width: 180px;
   border-right: ${props => props.theme.token?.colorBorder} solid 1px;
   height: 100%;
   overflow: auto;
@@ -37,9 +37,10 @@ export const Toolbox = memo(() => {
         </Panel>
         <Panel header={t('ReactionsInput.commonReactions')} key="2">
           <Row gutter={8}>
-            <ToolItem icon={routeIcon} title="打开路由" />
+            <ToolItem icon={routeIcon} title="路由跳转" />
             <ToolItem icon={infoIcon} title="提示消息" />
             <ToolItem icon={simulateIcon} title="数据模拟" />
+            <ToolItem icon={loadingIcon} title="全局Loading" />
           </Row>
         </Panel>
         <Panel header={t('ReactionsInput.componentControl')} key="3">
