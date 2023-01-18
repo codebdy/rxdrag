@@ -12,6 +12,7 @@ const Container = styled.div`
   justify-content:center;
   padding: 8px 16px;
   box-sizing: border-box;
+  border-top: solid 1px ${props => props.theme.token?.colorBorder};
 `
 
 export const ComponentReactions = memo(() => {
