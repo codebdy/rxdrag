@@ -79,7 +79,7 @@ export const settingLocales = {
         variables: "变量",
         events: "事件",
         reactions: "交互",
-        basicReactions:"基础元件",
+        basicReactions:"基础节点",
         commonReactions:"常用计算",
         componentControl:"组件控制",
       }

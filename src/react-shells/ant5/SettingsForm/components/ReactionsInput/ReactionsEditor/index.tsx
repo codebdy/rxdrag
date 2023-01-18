@@ -47,6 +47,7 @@ const CanvasArea = styled.div`
 const CanvasContainer = styled.div`
   position: relative;
   flex: 1;
+  background-color: ${props => props.theme.token?.colorBgContainer};
 `
 const MiniMapContainer = styled.div`
   position: absolute;
