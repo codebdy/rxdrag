@@ -75,13 +75,14 @@ export const settingLocales = {
         "Customized": "自定义"
       },
 
-      ReactionsInput:{
+      ReactionsInput: {
         variables: "变量",
         events: "事件",
         reactions: "交互",
-        basicReactions:"基础节点",
-        commonReactions:"常用计算",
-        componentControl:"组件控制",
+        basicReactions: "基础节点",
+        commonReactions: "常用计算",
+        dataModel: "数据模型",
+        componentControl: "组件控制",
       }
     }
   },
@@ -160,13 +161,14 @@ export const settingLocales = {
         "IconLib": "IconLib",
         "Customized": "Customized"
       },
-      ReactionsInput:{
+      ReactionsInput: {
         variables: "variables",
         events: "Events",
         reactions: "Reactions",
-        basicReactions:"Basic Reactions",
-        commonReactions:"Common Reactions",
-        componentControl:"Component Control",
+        basicReactions: "Basic Reactions",
+        commonReactions: "Common Reactions",
+        dataModel:"Data Model",
+        componentControl: "Component Control",
       }
     }
   }

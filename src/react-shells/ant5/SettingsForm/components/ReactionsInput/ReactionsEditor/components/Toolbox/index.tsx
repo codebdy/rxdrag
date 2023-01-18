@@ -49,6 +49,20 @@ export const Toolbox = memo(() => {
             <ToolItem icon={jsIcon} title="自定义代码" />
           </Row>
         </Panel>
+        <Panel header={t('ReactionsInput.dataModel')} key="3">
+          <Row gutter={8}>
+            <ToolItem icon={routeIcon} title="表单赋值" />
+            <ToolItem icon={routeIcon} title="表单校验" />
+            <ToolItem icon={routeIcon} title="表单取值" />
+            <ToolItem icon={routeIcon} title="字段赋值" />
+            <ToolItem icon={routeIcon} title="字段校验" />
+            <ToolItem icon={routeIcon} title="字段取值" />
+            <ToolItem icon={routeIcon} title="表单值变化" />
+            <ToolItem icon={routeIcon} title="字段值变化" />
+            <ToolItem icon={routeIcon} title="表单状态" />
+            <ToolItem icon={routeIcon} title="字段状态" />
+          </Row>
+        </Panel>
       </Collapse>
       <ComponentReactions />
     </StyledToolbox>

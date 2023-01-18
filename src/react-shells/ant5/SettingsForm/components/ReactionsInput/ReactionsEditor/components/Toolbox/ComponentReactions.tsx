@@ -3,7 +3,7 @@ import { Button, Drawer, Switch, Tree, Typography } from "antd";
 import { DataNode } from "antd/es/tree";
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components";
-import { maxSizeIcon, minSizeIcon, puzzleIcon } from "../../icons";
+import { maxSizeIcon, methodIcon, minSizeIcon, puzzleIcon } from "../../icons";
 
 const Container = styled.div`
   width: 100%;
@@ -21,6 +21,13 @@ const Content = styled.div`
   display: flex;
   flex-flow: column;
   padding: 8px;
+`
+
+const ItemTitle = styled.div`
+  border: ${props=>props.theme.token?.colorBorder} solid 1px;
+  padding: 0 6px; 
+  border-radius: 4px;
+  cursor: move;
 `
 
 const Bottom = styled.div`
@@ -48,10 +55,24 @@ const treeData: DataNode[] = [
           {
             title: '查询表单',
             key: '0-0-0-1',
+            children: [
+              {
+                title: <ItemTitle>{methodIcon} 读取数据</ItemTitle>,
+                key: '0-0-0-1-2',
+              },
+            ]
           },
           {
-            title: '设置数据',
-            key: '0-0-0-0',
+            title: <ItemTitle> {methodIcon} 设置状态</ItemTitle>,
+            key: '0-0-0-2',
+          },
+          {
+            title: <ItemTitle>{methodIcon} 设置变量</ItemTitle>,
+            key: '0-0-0-3',
+          },
+          {
+            title: <ItemTitle>{methodIcon} 读取变量</ItemTitle>,
+            key: '0-0-0-4',
           },
         ],
       },
@@ -147,6 +168,7 @@ export const ComponentReactions = memo(() => {
             <Tree
               showLine
               switcherIcon={<DownOutlined />}
+              showIcon={true}
               defaultExpandedKeys={['0-0-0']}
               treeData={treeData}
               rootStyle={{ backgroundColor: "transparent" }}
