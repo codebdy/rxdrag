@@ -17,7 +17,10 @@ const SytledContent = styled.div`
     min-height: 53px;
   }
   .ant-drawer-body{
-    padding: 8px;
+    padding: 0;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
   }
 `
 const LeftArea = styled.div`

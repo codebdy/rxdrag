@@ -1,5 +1,5 @@
 import { CloseOutlined, DownOutlined } from "@ant-design/icons";
-import { Button, Drawer, Tree } from "antd";
+import { Button, Drawer, Switch, Tree, Typography } from "antd";
 import { DataNode } from "antd/es/tree";
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components";
@@ -15,6 +15,24 @@ const Container = styled.div`
   box-sizing: border-box;
   border-top: solid 1px ${props => props.theme.token?.colorBorder};
 `
+
+const Content = styled.div`
+  flex:1;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  padding: 8px;
+`
+
+const Bottom = styled.div`
+  height: 30px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`
+
+
 const treeData: DataNode[] = [
   {
     title: 'parent 1',
@@ -121,13 +139,21 @@ export const ComponentReactions = memo(() => {
         open={open}
         width={maxSize ? 402 : 220}
       >
-        <Tree
-          showLine
-          switcherIcon={<DownOutlined />}
-          defaultExpandedKeys={['0-0-0']}
-          treeData={treeData}
-          rootStyle={{backgroundColor:"transparent"}}
-        />
+        <Content>
+          <div style={{ flex: 1, overflow: 'auto' }}>
+            <Tree
+              showLine
+              switcherIcon={<DownOutlined />}
+              defaultExpandedKeys={['0-0-0']}
+              treeData={treeData}
+              rootStyle={{ backgroundColor: "transparent" }}
+            />
+          </div>
+          <Bottom>
+            <Typography.Text color="secondary" style={{ marginRight: 8 }}>显示全部</Typography.Text>
+            <Switch />
+          </Bottom>
+        </Content>
       </Drawer>
     </Container>
   )
