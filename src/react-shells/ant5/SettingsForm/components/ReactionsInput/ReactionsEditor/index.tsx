@@ -23,12 +23,14 @@ const CenterArea = styled.div`
   flex:1;
   display: flex;
   flex-flow: column;
+  height: 100%;
 `
 
 const CanvasArea = styled.div`
   position: relative;
   flex:1;
   display: flex;
+  height: 0;
 `
 
 const CanvasContainer = styled.div`

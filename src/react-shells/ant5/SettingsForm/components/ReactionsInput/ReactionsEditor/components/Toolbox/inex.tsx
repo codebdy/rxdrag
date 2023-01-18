@@ -6,6 +6,8 @@ const { Panel } = AntdCollapse;
 const StyledToolbox = styled.div`
   width: 160px;
   border-right: ${props => props.theme.token?.colorBorder} solid 1px;
+  height: 100%;
+  overflow: auto;
 `
 
 const Collapse = styled(AntdCollapse)`

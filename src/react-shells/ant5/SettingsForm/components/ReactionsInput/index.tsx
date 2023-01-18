@@ -32,6 +32,7 @@ export const ReactionsInput = memo((props: {
         okText={t("confirm")}
         onCancel={handleCancel}
         width={"calc(100vw - 40px)"}
+        getContainer={false}
         centered
       >
         <ReactionsEditor />
