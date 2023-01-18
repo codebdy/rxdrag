@@ -12,11 +12,14 @@ const StyledToolbox = styled.div`
   width: 180px;
   border-right: ${props => props.theme.token?.colorBorder} solid 1px;
   height: 100%;
-  overflow: auto;
+  display: flex;
+  flex-flow: column;
 `
 
 const Collapse = styled(AntdCollapse)`
+  flex:1;
   border-radius: 0;
+  overflow: auto;
 `
 
 export const Toolbox = memo(() => {

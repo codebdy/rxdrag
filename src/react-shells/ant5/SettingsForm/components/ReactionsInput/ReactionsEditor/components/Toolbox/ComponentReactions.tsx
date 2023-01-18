@@ -10,7 +10,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content:center;
-  padding: 16px;
+  padding: 8px 16px;
   box-sizing: border-box;
 `
 
