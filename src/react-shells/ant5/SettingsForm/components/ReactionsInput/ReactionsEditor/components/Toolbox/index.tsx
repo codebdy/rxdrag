@@ -2,7 +2,7 @@ import { Collapse as AntdCollapse, Row } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo } from "react";
 import styled from "styled-components";
-import { delayIcon, endIcon, ifIcon, loopIcon, mergeIcon, randomIcon, startIcon, switchIcon } from "../../icons";
+import { delayIcon, endIcon, ifIcon, infoIcon, loopIcon, mergeIcon, randomIcon, routeIcon, simulateIcon, startIcon, switchIcon } from "../../icons";
 import { ToolItem } from "./ToolItem";
 const { Panel } = AntdCollapse;
 
@@ -17,18 +17,12 @@ const Collapse = styled(AntdCollapse)`
   border-radius: 0;
 `
 
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
-
 export const Toolbox = memo(() => {
   const t = useToolsTranslate()
 
   return (
     <StyledToolbox>
-      <Collapse defaultActiveKey={['1']} bordered={false}>
+      <Collapse defaultActiveKey={['1']} bordered={false} accordion>
         <Panel header={t('ReactionsInput.basicReactions')} key="1">
           <Row gutter={8}>
             <ToolItem icon={startIcon} title="开始" />
@@ -42,10 +36,14 @@ export const Toolbox = memo(() => {
           </Row>
         </Panel>
         <Panel header={t('ReactionsInput.commonReactions')} key="2">
-          <p>{text}</p>
+          <Row gutter={8}>
+            <ToolItem icon={routeIcon} title="打开路由" />
+            <ToolItem icon={infoIcon} title="提示消息" />
+            <ToolItem icon={simulateIcon} title="数据模拟" />
+          </Row>
         </Panel>
         <Panel header={t('ReactionsInput.componentControl')} key="3">
-          <p>{text}</p>
+          <p>根组件</p>
         </Panel>
       </Collapse>
     </StyledToolbox>
