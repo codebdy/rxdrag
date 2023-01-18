@@ -2,7 +2,7 @@ import { Collapse as AntdCollapse, Row } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo } from "react";
 import styled from "styled-components";
-import { delayIcon, endIcon, ifIcon, infoIcon, loadingIcon, loopIcon, mergeIcon, randomIcon, routeIcon, simulateIcon, startIcon, switchIcon } from "../../icons";
+import { delayIcon, endIcon, ifIcon, infoIcon, jsIcon, loadingIcon, loopIcon, mergeIcon, randomIcon, routeIcon, simulateIcon, startIcon, switchIcon } from "../../icons";
 import { ComponentReactions } from "./ComponentReactions";
 import { ToolItem } from "./ToolItem";
 const { Panel } = AntdCollapse;
@@ -46,6 +46,7 @@ export const Toolbox = memo(() => {
             <ToolItem icon={infoIcon} title="提示消息" />
             <ToolItem icon={simulateIcon} title="数据模拟" />
             <ToolItem icon={loadingIcon} title="全局Loading" />
+            <ToolItem icon={jsIcon} title="自定义代码" />
           </Row>
         </Panel>
       </Collapse>
