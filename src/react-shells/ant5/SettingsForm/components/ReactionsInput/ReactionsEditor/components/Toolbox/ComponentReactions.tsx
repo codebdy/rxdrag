@@ -5,7 +5,6 @@ import { memo, useCallback, useState } from "react"
 import styled from "styled-components";
 import { maxSizeIcon, minSizeIcon, puzzleIcon } from "../../icons";
 
-
 const Container = styled.div`
   width: 100%;
   display: flex;
@@ -35,24 +34,24 @@ const Bottom = styled.div`
 
 const treeData: DataNode[] = [
   {
-    title: 'parent 1',
+    title: '两列布局',
     key: '0-0',
     children: [
       {
-        title: 'parent 1-0',
+        title: '数据列表',
         key: '0-0-0',
         children: [
           {
-            title: 'leaf',
+            title: '分页',
             key: '0-0-0-0',
           },
           {
-            title: 'leaf',
+            title: '查询表单',
             key: '0-0-0-1',
           },
           {
-            title: 'leaf',
-            key: '0-0-0-2',
+            title: '设置数据',
+            key: '0-0-0-0',
           },
         ],
       },
@@ -82,6 +81,10 @@ const treeData: DataNode[] = [
       },
     ],
   },
+  {
+    title: '组件自身',
+    key: '0-1',
+  }
 ];
 
 export const ComponentReactions = memo(() => {
@@ -150,7 +153,7 @@ export const ComponentReactions = memo(() => {
             />
           </div>
           <Bottom>
-            <Typography.Text color="secondary" style={{ marginRight: 8 }}>显示全部</Typography.Text>
+            <Typography.Text color="secondary" style={{ marginRight: 8, fontSize: 13 }}>显示全部</Typography.Text>
             <Switch />
           </Bottom>
         </Content>
