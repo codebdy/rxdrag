@@ -126,6 +126,7 @@ export const ComponentReactions = memo(() => {
           switcherIcon={<DownOutlined />}
           defaultExpandedKeys={['0-0-0']}
           treeData={treeData}
+          rootStyle={{backgroundColor:"transparent"}}
         />
       </Drawer>
     </Container>

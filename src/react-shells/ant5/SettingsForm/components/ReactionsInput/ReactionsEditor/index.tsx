@@ -16,6 +16,9 @@ const SytledContent = styled.div`
     padding: 0 16px;
     min-height: 53px;
   }
+  .ant-drawer-body{
+    padding: 8px;
+  }
 `
 const LeftArea = styled.div`
   width: 180px;
