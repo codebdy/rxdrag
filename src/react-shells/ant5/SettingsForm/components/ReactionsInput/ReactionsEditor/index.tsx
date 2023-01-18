@@ -29,18 +29,24 @@ const CenterArea = styled.div`
   flex-flow: column;
   height: 100%;
 `
+const OpeateArea = styled.div`
+  position: relative;
+  flex:1;
+  display: flex;
+  width: 100%;
+  height: 0;
+`
 
 const CanvasArea = styled.div`
   position: relative;
   flex:1;
   display: flex;
-  height: 0;
+  flex-flow: column;
 `
 
 const CanvasContainer = styled.div`
   position: relative;
   flex: 1;
-  background-color: ${props => props.theme.token?.colorBgContainer};
 `
 const MiniMapContainer = styled.div`
   position: absolute;
@@ -96,18 +102,20 @@ export const ReactionsEditor = memo(() => {
         </LeftArea>
         <CenterArea>
           <Toolbar showMap={showMap} toggleShowMap={handleToggleMap} />
-          <CanvasArea>
+          <OpeateArea>
             <Toolbox />
-            <CanvasContainer id="reactions-canvas-container" >
-              <Logic />
-            </CanvasContainer>
-          </CanvasArea>
-          <MiniMapContainer
-            id="reactions-minimap-container"
-            style={{
-              display: showMap ? "flex" : "none"
-            }}
-          />
+            <CanvasArea>
+              <CanvasContainer id="reactions-canvas-container" >
+                <Logic />
+              </CanvasContainer>
+              <MiniMapContainer
+                id="reactions-minimap-container"
+                style={{
+                  display: showMap ? "flex" : "none"
+                }}
+              />
+            </CanvasArea>
+          </OpeateArea>
         </CenterArea>
         <RightArea>
           <PropertyBox />
