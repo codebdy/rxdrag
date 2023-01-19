@@ -1,9 +1,9 @@
 import { Edge } from "@antv/x6";
 import { useCallback, useEffect } from "react";
-import { useGlobalState } from "./useGlobalState";
+import { useEditorState } from "./useEditorState";
 
 export function useTraceLining() {
-  const { dispatch, graph } = useGlobalState()
+  const { dispatch, graph } = useEditorState()
 
   const handleEdgeAdded = useCallback(({ edge }: { edge: Edge }) => {
     if ((edge.target as any)?.x && (edge.target as any)?.y) {

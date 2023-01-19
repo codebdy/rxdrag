@@ -1,9 +1,9 @@
 import { memo } from "react"
-import { useNodesShow } from "../hooks/useShowNodes"
+import { useShowCells } from "../hooks/useShowCells"
 import { useTraceLining } from "../hooks/useTraceLining"
 
 export const Logic = memo(()=>{
-  useNodesShow()
+  useShowCells()
   useTraceLining()
   return null
 })
