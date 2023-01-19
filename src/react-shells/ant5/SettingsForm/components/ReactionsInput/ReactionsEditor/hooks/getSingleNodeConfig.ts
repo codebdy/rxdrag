@@ -3,6 +3,25 @@ import { IReactionMaterial } from "runner/reaction/interfaces/material"
 import { IReactionNodeMeta } from "runner/reaction/interfaces/metas"
 
 export const getSingleNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalToken, material: IReactionMaterial | undefined) => {
+  const ports = nodeMeta.ports?.map(
+    port => ({
+      id: port.name,
+      name: port.name,
+      group: port.group,
+      attrs: {
+        text: {
+          text: port.label,
+          fill: token.colorTextSecondary,
+        }
+      },
+      label: {
+        position: {
+          // 标签位置
+          name: port.group === 'out' ? 'right' : 'in', // 标签位置计算方法的名称
+        }
+      }
+    })
+  )
   return {
     shape: "reaction-node",
     x: 340,
@@ -26,7 +45,7 @@ export const getSingleNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalTo
               magnet: true,
               stroke: token.colorTextSecondary,
               strokeWidth: 1,
-              fill: token.colorBgContainer,
+              fill: token.colorBorderSecondary,
             },
           },
 
@@ -39,25 +58,12 @@ export const getSingleNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalTo
               magnet: true,
               stroke: token.colorTextSecondary,
               strokeWidth: 1,
-              fill: token.colorBgContainer,
+              fill: token.colorBorderSecondary,
             },
           },
         },
       },
-      items: [
-        {
-          "id": "3-1",
-          "group": "in"
-        },
-        {
-          "id": "3-2",
-          "group": "out",
-        },
-        {
-          "id": "3-3",
-          "group": "out",
-        }
-      ]
+      items: ports
     },
   }
 }
