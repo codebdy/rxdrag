@@ -31,7 +31,7 @@ export function useGetSingleNodeConfig() {
       shape: "reaction-node",
       x: 340,
       y: 240,
-      width: 80,
+      width: 120,
       height: 40,
       data: {
         nodeMeta,

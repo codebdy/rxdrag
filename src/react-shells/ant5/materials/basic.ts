@@ -19,14 +19,14 @@ export const basicReactions: IReactionMaterial[] = [
   {
     name: "condition",
     icon: ifIcon,
-    label: "$condition",
+    label: "$conditionCheck",
     reactionType: ReactionType.SingleReaction,
     color: "#5e76c3",
     meta: {
       ports: [
         {
           name: "input",
-          label: "$input",
+          label: "$inputCondition",
           group: "in",
         },
         {
@@ -117,6 +117,20 @@ export const basicReactions: IReactionMaterial[] = [
     icon: delayIcon,
     label: "$delay",
     reactionType: ReactionType.SingleReaction,
+    meta: {
+      ports: [
+        {
+          name: "startUp",
+          label: "$startUp",
+          group: "in",
+        },
+        {
+          name: "output",
+          label: "$output",
+          group: "out",
+        },
+      ],
+    }
   },
   {
     name: "random",

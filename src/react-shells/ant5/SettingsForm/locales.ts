@@ -86,7 +86,8 @@ export const settingLocales = {
         componentControl: "组件控制",
         start: "开始",
         end: "结束",
-        condition: "条件",
+        inputCondition: "输入条件",
+        conditionCheck: "条件判断",
         loop: "循环",
         merge: "合并",
         switch: "分流",
@@ -96,6 +97,7 @@ export const settingLocales = {
         output: "输出",
         true: "真",
         false: "假",
+        startUp: "启动",
       }
     }
   },
@@ -185,7 +187,8 @@ export const settingLocales = {
         componentControl: "Component Control",
         start: "Start",
         end: "End",
-        condition: "Condition",
+        inputCondition: "Input Condition",
+        conditionCheck: "Condition Check",
         loop: "Loop",
         merge: "Merge",
         switch: "Switch",
@@ -195,6 +198,7 @@ export const settingLocales = {
         output: "Output",
         true: "True",
         false: "False",
+        startUp: "Start Up",
       }
     }
   }
