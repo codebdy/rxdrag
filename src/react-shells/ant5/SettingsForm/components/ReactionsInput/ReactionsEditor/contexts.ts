@@ -5,7 +5,6 @@ import { ILogicMetas } from "runner/reaction/metas";
 export interface IReactionsEditorParams {
   graph?: Graph
   lining?: boolean,
-  setLining?: React.Dispatch<React.SetStateAction<boolean>>
   metas: ILogicMetas,
   dispatch: React.Dispatch<any>
 }

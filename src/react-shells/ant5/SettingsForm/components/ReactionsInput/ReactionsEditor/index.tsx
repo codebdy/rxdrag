@@ -10,6 +10,7 @@ import { Toolbox } from "./components/Toolbox";
 import { metasReducer } from "./reducers/metasReducer";
 import { ILogicMetas } from "runner/reaction/metas";
 import { Action } from "./actions";
+import { initialState, mainReducer } from "./reducers/mainReducer";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -88,31 +89,18 @@ const RightArea = styled.div`
   flex-flow: column;
 `
 
-const initialMetas: ILogicMetas = {
-  inputs: [],
-  outputs: [],
-  reactions: [],
-  invakes: []
-}
-
-const mainReducer = ({ metas }: { metas: ILogicMetas }, action: Action) => ({
-  metas: metasReducer(metas, action),
-});
-
 export const ReactionsEditor = memo(() => {
   const [showMap, setShowMap] = useState(false)
-  const [lining, setLining] = useState(false)
-  const [state, dispatch] = useReducer(mainReducer, { metas: initialMetas });
+  //const [lining, setLining] = useState(false)
+  const [state, dispatch] = useReducer(mainReducer, initialState);
   const graph = useCreateGraph()
   const params = useMemo(() => {
     return {
       graph,
-      lining,
-      setLining,
       ...state,
       dispatch,
     }
-  }, [graph, lining, state])
+  }, [graph, state])
 
   const handleToggleMap = useCallback(() => {
     setShowMap((show) => !show)

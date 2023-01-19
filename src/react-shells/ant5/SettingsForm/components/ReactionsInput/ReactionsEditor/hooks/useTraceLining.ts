@@ -3,17 +3,17 @@ import { useCallback, useEffect } from "react";
 import { useGlobalState } from "./useGlobalState";
 
 export function useTraceLining() {
-  const { setLining, graph } = useGlobalState()
+  const { dispatch, graph } = useGlobalState()
 
   const handleEdgeAdded = useCallback(({ edge }: { edge: Edge }) => {
-    if((edge.target as any)?.x && (edge.target as any)?.y){
-      setLining?.(true)
+    if ((edge.target as any)?.x && (edge.target as any)?.y) {
+      dispatch({ type: 'START_LINE' })
     }
-  }, [setLining])
+  }, [dispatch])
 
   const hadleMouseUp = useCallback(() => {
-    setLining?.(false)
-  }, [setLining])
+    dispatch({ type: 'END_LINE' })
+  }, [dispatch])
 
   useEffect(() => {
     if (graph) {
