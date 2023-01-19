@@ -23,14 +23,12 @@ export const basicReactions: IReactionMaterial[] = [
     reactionType: ReactionType.SingleReaction,
     color: "#5e76c3",
     meta: {
-      inPorts: [
+      ports: [
         {
           name: "input",
           label: "$input",
           group: "in",
         },
-      ],
-      outPorts: [
         {
           name: "true",
           label: "$ture",

@@ -18,7 +18,7 @@ export const getSingleNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalTo
     },
     ports: {
       groups: {
-        left: {
+        in: {
           position: 'left',
           attrs: {
             circle: {
@@ -47,7 +47,7 @@ export const getSingleNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalTo
       items: [
         {
           "id": "3-1",
-          "group": "left"
+          "group": "in"
         },
         {
           "id": "3-2",
