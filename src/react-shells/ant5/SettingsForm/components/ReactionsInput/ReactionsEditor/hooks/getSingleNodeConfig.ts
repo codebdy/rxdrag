@@ -14,6 +14,7 @@ export const getSingleNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalTo
       backgroundColor: token.colorBgContainer,
       color: token.colorTextSecondary,
       material,
+      token
     },
     ports: [
       {

@@ -1,5 +1,6 @@
 import { Node } from '@antv/x6'
 import '@antv/x6-react-shape'
+import { GlobalToken } from 'antd/es/theme/interface'
 import { IReactionMaterial } from 'runner/reaction/interfaces/marerial'
 import { IReactionNodeMeta } from 'runner/reaction/interfaces/metas'
 import styled from 'styled-components'
@@ -25,26 +26,31 @@ const Icon = styled.div`
 const Label = styled.span`
     display: inline-block;
     flex-shrink: 0;
-    width: 104px;
     margin-left: 8px;
     font-size: 13px;
 `
 
 export interface NodeViewParams {
   nodeMeta: IReactionNodeMeta;
-  backgroundColor: string;
   material: IReactionMaterial;
-  color: string;
+  token: GlobalToken
 }
 
 
 export const ReactionNode = (props: { node?: Node }) => {
   const { node } = props
   const data = node?.getData() as NodeViewParams
+  const { token } = data
   const { label } = data.nodeMeta
 
   return (
-    <NodeView className='node' style={{ backgroundColor: data.backgroundColor, color: data.color }}>
+    <NodeView
+      style={{
+        backgroundColor: token.colorBgContainer,
+        color: token.colorText,
+        outlineColor: token.colorTextSecondary,
+      }}
+    >
       <Icon style={{ color: data?.material.color }}>
         {data?.material?.icon}
       </Icon>
