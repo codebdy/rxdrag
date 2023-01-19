@@ -47,18 +47,70 @@ export const basicReactions: IReactionMaterial[] = [
     icon: loopIcon,
     label: "$loop",
     reactionType: ReactionType.SingleReaction,
+    meta: {
+      ports: [
+        {
+          name: "input",
+          label: "$input",
+          group: "in",
+        },
+        {
+          name: "output",
+          label: "$output",
+          group: "out",
+        },
+      ],
+    }
   },
   {
     name: "merge",
     icon: mergeIcon,
     label: "$merge",
     reactionType: ReactionType.SingleReaction,
+    meta: {
+      ports: [
+        {
+          name: "input1",
+          label: "$input",
+          group: "in",
+        },
+        {
+          name: "input2",
+          label: "$input",
+          group: "in",
+        },
+        {
+          name: "output",
+          label: "$output",
+          group: "out",
+        },
+      ],
+    }
   },
   {
     name: "switch",
     icon: switchIcon,
     label: "$switch",
     reactionType: ReactionType.SingleReaction,
+    meta: {
+      ports: [
+        {
+          name: "input",
+          label: "$input",
+          group: "in",
+        },
+        {
+          name: "output1",
+          label: "$output",
+          group: "out",
+        },
+        {
+          name: "output2",
+          label: "$output",
+          group: "out",
+        },
+      ],
+    }
   },
   {
     name: "delay",
