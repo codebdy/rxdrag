@@ -45,7 +45,7 @@ export const ReactionNode = (props: { node?: Node }) => {
 
   return (
     <NodeView className='node' style={{ backgroundColor: data.backgroundColor, color: data.color }}>
-      <Icon>
+      <Icon style={{ color: data?.material.color }}>
         {data?.material?.icon}
       </Icon>
       <Label>{label}</Label>

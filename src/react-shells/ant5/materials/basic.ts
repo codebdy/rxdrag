@@ -21,6 +21,7 @@ export const basicReactions: IReactionMaterial[] = [
     icon: ifIcon,
     label: "$condition",
     reactionType: ReactionType.SingleReaction,
+    color: "#5e76c3",
   },
   {
     name: "loop",
