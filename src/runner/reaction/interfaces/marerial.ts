@@ -1,6 +1,6 @@
 import { INodeSchema } from "core";
 import { IReaction } from "runner/reaction/interfaces/interfaces";
-import { ReactionType } from "./metas";
+import { IReactionNodeData, ReactionType } from "./metas";
 
 export interface IReactionMaterial {
   //唯一名称
@@ -10,5 +10,6 @@ export interface IReactionMaterial {
   icon?: React.ReactNode,
   color?: string,
   reaction?: IReaction,
-  schema?: INodeSchema
+  schema?: INodeSchema,
+  defaultData?: IReactionNodeData,
 }

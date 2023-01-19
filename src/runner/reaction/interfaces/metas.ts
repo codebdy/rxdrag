@@ -18,21 +18,6 @@ export interface IX6EdgeMeta {
   targetAnchor: any;
 }
 
-export interface INodeMeta {
-  uuid: string;
-  label?: string;
-  x6Node?: IX6NodeMeta;
-}
-
-// export interface IStartNodeMeta extends INodeMeta {
-//   name: string;
-//   x6Node?: IX6NodeMeta;
-// }
-
-// export interface IEndNodeMeta extends INodeMeta {
-//   name: string;
-//   x6Node?: IX6NodeMeta;
-// }
 
 export interface IPortMeta {
   uuid: string;
@@ -48,13 +33,17 @@ export enum ReactionType {
   ComponentReaction = "ComponentReaction",
 }
 
-export interface IReactionNodeMeta extends INodeMeta {
-  uuid: string;
+export interface IReactionNodeData{
   type?: ReactionType;
   componentName?: string;
   reactionName?: string;
   inPorts?: IPortMeta[];
   outPorts?: IPortMeta[];
+}
+
+export interface IReactionNodeMeta extends IReactionNodeData {
+  uuid: string;
+  label?: string;
   x6Node?: IX6NodeMeta;
 }
 
