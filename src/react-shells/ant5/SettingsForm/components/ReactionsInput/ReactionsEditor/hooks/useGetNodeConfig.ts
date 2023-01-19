@@ -1,61 +1,19 @@
 import { useCallback } from "react";
 import { Node } from "@antv/x6";
 import { useToken } from "antd/es/theme/internal";
-import { IReactionNodeMeta } from "runner/reaction/interfaces/metas";
+import { IReactionNodeMeta, ReactionType } from "runner/reaction/interfaces/metas";
+import { getStartNodeConfig } from "./getStartNodeConfig";
 
-const STROKE_WIDTH = 2
 export function useGetNodeConfig() {
   const [, token] = useToken()
-  const getConfig = useCallback((nodeMeta: IReactionNodeMeta): Node.Metadata => {
-    return {
-      shape: 'circle',
-      x: 90,
-      y: 60,
-      width: 20,
-      height: 20,
-      ...nodeMeta.x6Node,
-      id: nodeMeta.uuid,
-      label: nodeMeta.label,
-      attrs: {
-        body: {
-          fill: "#8297da",
-          stroke: token.colorText,
-          strokeWidth: 0,//STROKE_WIDTH,
-        },
-        label: {
-          refX: '-10',
-          refY: 0.5,
-          textAnchor: 'end',
-          textVerticalAnchor: 'middle',
-          fill: token.colorTextSecondary,
-        },
-      },
-      ports: {
-        groups: {
-          out: {
-            attrs: {
-              circle: {
-                r: 10,
-                magnet: true,
-                stroke: "#5e76c3",
-                fill: "#8297da",
-                strokeWidth: STROKE_WIDTH,
-              },
-            },
-          },
-        },
-        items: [
-          {
-            id: nodeMeta.uuid + '-port',
-            group: 'out',
-            args: {
-              dx: 10,
-            }
-          },
-        ],
-      },
+  const getConfig = useCallback((reactNodeMeta: IReactionNodeMeta): Node.Metadata => {
+    switch(reactNodeMeta.type){
+      case ReactionType.Start:
+        return getStartNodeConfig(reactNodeMeta, token)
     }
-  }, [token.colorText, token.colorTextSecondary])
+
+    throw new Error("Can not find reaction node meta: " + reactNodeMeta.type)
+  }, [token])
 
 
   return getConfig

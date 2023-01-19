@@ -1,6 +1,6 @@
 import { Collapse as AntdCollapse, Row } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import styled from "styled-components";
 import { useDnd } from "../../hooks/useDnd";
 import { useEditorState } from "../../hooks/useEditorState";
@@ -11,6 +11,7 @@ import { ToolItem } from "./ToolItem";
 import { basicReactions } from "react-shells/ant5/materials/basic";
 import { IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 import { createUuid } from "../../utils";
+import { IReactionMaterial } from "runner/reaction/interfaces/marerial";
 const { Panel } = AntdCollapse;
 
 const StyledToolbox = styled.div`
@@ -34,7 +35,7 @@ export const Toolbox = memo(() => {
   const dnd = useDnd()
   const getNodeConfig = useGetNodeConfig()
 
-  const startDragFn = () => {
+  const startDragFn = useCallback((marterial: IReactionMaterial) => {
     return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       if (!graph) {
         return;
@@ -42,11 +43,12 @@ export const Toolbox = memo(() => {
       const nodeMeta: IReactionNodeMeta = {
         uuid: createUuid(),
         label: "输入项",
+        type: marterial.reactionType,
       }
       const node = graph.createNode(getNodeConfig(nodeMeta));
       dnd?.start(node, e.nativeEvent as any);
     };
-  };
+  }, [dnd, getNodeConfig, graph])
 
   return (
     <StyledToolbox>
@@ -60,7 +62,7 @@ export const Toolbox = memo(() => {
                   icon={reaction.icon}
                   title={reaction.title}
                   color={reaction.color}
-                  onMouseDown={startDragFn()}
+                  onMouseDown={startDragFn(reaction)}
                 />)
               })
             }
