@@ -1,5 +1,5 @@
 import { GlobalToken } from "antd/es/theme/interface"
-import { IReactionMaterial } from "runner/reaction/interfaces/marerial"
+import { IReactionMaterial } from "runner/reaction/interfaces/material"
 import { IReactionNodeMeta } from "runner/reaction/interfaces/metas"
 
 export const getSingleNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalToken, material: IReactionMaterial | undefined) => {

@@ -1,5 +1,5 @@
 import { ReactionType } from "runner/reaction/interfaces/metas";
-import { IReactionMaterial } from "../../../runner/reaction/interfaces/marerial";
+import { IReactionMaterial } from "../../../runner/reaction/interfaces/material";
 import { delayIcon, endIcon, ifIcon, loopIcon, mergeIcon, randomIcon, startIcon, switchIcon } from "../icons/reactions";
 
 export const basicReactions: IReactionMaterial[] = [
@@ -22,6 +22,27 @@ export const basicReactions: IReactionMaterial[] = [
     label: "$condition",
     reactionType: ReactionType.SingleReaction,
     color: "#5e76c3",
+    meta: {
+      inPorts: [
+        {
+          name: "input",
+          label: "$input",
+          group: "in",
+        },
+      ],
+      outPorts: [
+        {
+          name: "true",
+          label: "$ture",
+          group: "out",
+        },
+        {
+          name: "false",
+          label: "$false",
+          group: "out",
+        },
+      ],
+    }
   },
   {
     name: "loop",

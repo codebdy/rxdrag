@@ -1,7 +1,3 @@
-export interface IX6PortMeta {
-  group: "in" | "out";
-}
-
 export interface IX6NodeMeta {
   /** 节点x坐标 */
   x?: number;
@@ -20,10 +16,9 @@ export interface IX6EdgeMeta {
 
 
 export interface IPortMeta {
-  uuid: string;
   name: string;
   label?: string;
-  x6Port?: IX6PortMeta;
+  group: "in" | "out";
 }
 
 export enum ReactionType {

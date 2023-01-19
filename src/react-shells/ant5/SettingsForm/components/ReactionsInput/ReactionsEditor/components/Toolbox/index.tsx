@@ -10,7 +10,7 @@ import { ToolItem } from "./ToolItem";
 import { basicReactions } from "react-shells/ant5/materials/basic";
 import { IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 import { createUuid } from "../../utils";
-import { IReactionMaterial } from "runner/reaction/interfaces/marerial";
+import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { useTrans } from "../../hooks/useTrans";
 const { Panel } = AntdCollapse;
 
@@ -46,7 +46,7 @@ export const Toolbox = memo(() => {
         label: t(marterial.label),
         type: marterial.reactionType,
         materialName: marterial.name,
-        ...marterial.defaultData
+        ...marterial.meta
       }
       const node = graph.createNode(getNodeConfig(nodeMeta));
       dnd?.start(node, e.nativeEvent as any);

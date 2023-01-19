@@ -11,5 +11,5 @@ export interface IReactionMaterial {
   color?: string,
   reaction?: IReaction,
   schema?: INodeSchema,
-  defaultData?: IReactionNodeData,
+  meta?: IReactionNodeData,
 }
