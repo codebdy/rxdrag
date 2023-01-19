@@ -84,6 +84,14 @@ export const settingLocales = {
         commonReactions: "常用计算",
         dataModel: "数据模型",
         componentControl: "组件控制",
+        start: "开始",
+        end: "结束",
+        condition: "条件",
+        loop: "循环",
+        merge: "合并",
+        switch: "分流",
+        delay: "延时",
+        random: "随机数",
       }
     }
   },
@@ -171,6 +179,14 @@ export const settingLocales = {
         commonReactions: "Common Reactions",
         dataModel: "Data Model",
         componentControl: "Component Control",
+        start: "Start",
+        end: "End",
+        condition: "Condition",
+        loop: "Loop",
+        merge: "Merge",
+        switch: "Switch",
+        delay: "Delay",
+        random: "Random",
       }
     }
   }

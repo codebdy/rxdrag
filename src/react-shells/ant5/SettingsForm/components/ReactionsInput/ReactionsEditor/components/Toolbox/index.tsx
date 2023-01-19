@@ -5,11 +5,10 @@ import styled from "styled-components";
 import { useDnd } from "../../hooks/useDnd";
 import { useEditorState } from "../../hooks/useEditorState";
 import { useGetStartNodeConfig } from "../../hooks/useGetStartNodeConfig";
-import { delayIcon, endIcon, fieldIcon, fieldReadIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon, ifIcon, infoIcon, jsIcon, loadingIcon, loopIcon, mergeIcon, randomIcon, routeIcon, simulateIcon, startIcon, subscribIcon, switchIcon } from "../../../../../../icons/reactions";
-import { createUuid } from "../../utils";
+import { fieldIcon, fieldReadIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon, infoIcon, jsIcon, loadingIcon, routeIcon, simulateIcon, subscribIcon } from "../../../../../../icons/reactions";
 import { ComponentReactions } from "./ComponentReactions";
 import { ToolItem } from "./ToolItem";
-import { IReactionNodeMeta } from "runner/reaction/interfaces/metas";
+import { basicReactions } from "react-shells/ant5/materials/basic";
 const { Panel } = AntdCollapse;
 
 const StyledToolbox = styled.div`
@@ -52,14 +51,17 @@ export const Toolbox = memo(() => {
       <Collapse defaultActiveKey={['1']} bordered={false} accordion>
         <Panel header={t('ReactionsInput.basicReactions')} key="1">
           <Row gutter={8}>
-            <ToolItem icon={startIcon} title="开始" onMouseDown={startDragFn()} />
-            <ToolItem icon={endIcon} title="结束" />
-            <ToolItem icon={ifIcon} title="条件" />
-            <ToolItem icon={loopIcon} title="循环" />
-            <ToolItem icon={mergeIcon} title="合并" />
-            <ToolItem icon={switchIcon} title="分流" />
-            <ToolItem icon={delayIcon} title="延时" />
-            <ToolItem icon={randomIcon} title="随机数" />
+            {
+              basicReactions.map((reaction) => {
+                return (<ToolItem
+                  key={reaction.name}
+                  icon={reaction.icon}
+                  title={reaction.title}
+                  color={reaction.color}
+                  onMouseDown={startDragFn()}
+                />)
+              })
+            }
           </Row>
         </Panel>
         <Panel header={t('ReactionsInput.commonReactions')} key="2">

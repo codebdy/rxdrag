@@ -1,10 +1,12 @@
 import { INodeSchema } from "core";
 import { IReaction } from "runner/reaction/interfaces/interfaces";
+import { ReactionType } from "./metas";
 
 export interface IReactionMaterial {
   //唯一名称
   name: string,
-  title?: string,
+  title: string,
+  reactionType: ReactionType,
   icon?: React.ReactNode,
   color?: string,
   reaction?: IReaction,
