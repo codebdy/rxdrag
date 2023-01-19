@@ -1,6 +1,6 @@
 import { Node } from '@antv/x6'
 import '@antv/x6-react-shape'
-import { IReactionNodeMeta } from 'runner/reaction/metas'
+import { IReactionNodeMeta } from 'runner/reaction/interfaces/metas'
 import styled from 'styled-components'
 
 const NodeView = styled.div`

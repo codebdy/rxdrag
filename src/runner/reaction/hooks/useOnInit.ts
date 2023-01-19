@@ -1,4 +1,4 @@
-import { IControllerMeta } from "../metas";
+import { IControllerMeta } from "../interfaces/metas";
 
 export function useOnInit(reaction?: IControllerMeta){
   

@@ -2,7 +2,7 @@ import { Empty } from "antd"
 import { useToken } from "antd/es/theme/internal"
 import { memo } from "react"
 import styled from "styled-components"
-import { methodIcon } from "../icons"
+import { methodIcon } from "../../../../../icons/reactions"
 
 const Title = styled.div`
   height: 40px;

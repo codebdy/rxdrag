@@ -1,6 +1,6 @@
 import React, { memo } from "react"
 import { Reactions } from "runner/reaction/components/Reactions"
-import { IControllerMeta } from "runner/reaction/metas"
+import { IControllerMeta } from "runner/reaction/interfaces/metas"
 
 export const ComponentController = memo((
   props: {

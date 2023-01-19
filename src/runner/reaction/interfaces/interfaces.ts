@@ -23,14 +23,14 @@ export type OutputJointers = {
   [name: string]: IJointer | undefined
 }
 
-export interface ILogic {
+export interface IReaction {
   state: any,
   inputs: InputHandlers
   outputs?: InputHandlers
   getJointer?: (name: string) => IJointer | undefined
 }
 
-export interface IComponentController extends ILogic {
+export interface IComponentController extends IReaction {
   effects: InputHandlers,
   events: InputHandlers,
 }

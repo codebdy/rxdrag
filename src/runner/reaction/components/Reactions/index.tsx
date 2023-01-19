@@ -2,7 +2,7 @@ import { memo } from "react"
 import { useOnMultiFieldValueChange } from "../../hooks/useOnMultiFieldValueChange"
 import { useOnFieldValueChange } from "../../hooks/useOnFieldValueChange";
 import { useOnInit } from "../../hooks/useOnInit";
-import { IControllerMeta } from "runner/reaction/metas";
+import { IControllerMeta } from "runner/reaction/interfaces/metas";
 
 export const Reactions = memo((
   props: {

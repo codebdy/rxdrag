@@ -72,7 +72,7 @@ export function useShowCells() {
       const oldNodes = graph.getNodes()
       const oldCells = graph.getCells()
 
-      for (const inputNode of metas.inputs) {
+      for (const inputNode of metas.reactions) {
         const grahpNode = oldNodes.find(node => node.id === inputNode.uuid)
         //更新
         if (grahpNode) {
@@ -83,13 +83,10 @@ export function useShowCells() {
         }
       }
 
-      for (const outputNode of metas.outputs) {
-        cells.push(graph.createNode(getEndNodeConfig(outputNode)))
-      }
 
       //删除不存在的
       for (const cell of oldCells) {
-        if (![...metas.inputs, ...metas.outputs, ...metas.reactions, ...metas.invakes].find(el => el.uuid === cell.id)) {
+        if (![...metas.reactions, ...metas.invakes].find(el => el.uuid === cell.id)) {
           cell.remove()
         }
       }
@@ -147,5 +144,5 @@ export function useShowCells() {
       // }))
       graph.resetCells(cells)
     }
-  }, [getEndNodeConfig, getStartNodeConfig, graph, metas.inputs, metas.invakes, metas.outputs, metas.reactions])
+  }, [getEndNodeConfig, getStartNodeConfig, graph, metas.invakes, metas.reactions])
 }

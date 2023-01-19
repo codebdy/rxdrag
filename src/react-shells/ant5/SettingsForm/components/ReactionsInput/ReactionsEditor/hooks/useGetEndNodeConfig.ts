@@ -1,12 +1,12 @@
 import { useCallback } from "react";
-import { IEndNodeMeta } from "runner/reaction/metas";
 import { Node } from "@antv/x6";
 import { useToken } from "antd/es/theme/internal";
+import { IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 
 const STROKE_WIDTH = 5
 export function useGetEndNodeConfig() {
   const [, token] = useToken()
-  const getConfig = useCallback((nodeMeta: IEndNodeMeta): Node.Metadata => {
+  const getConfig = useCallback((nodeMeta: IReactionNodeMeta): Node.Metadata => {
     return {
       shape: 'circle',
       x: 700,

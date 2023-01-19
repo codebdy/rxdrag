@@ -1,8 +1,8 @@
 import { Props } from "runner/reaction/classes/props";
-import { InputHandlers, ILogic } from "runner/reaction/interfaces";
+import { InputHandlers, IReaction } from "runner/reaction/interfaces/interfaces";
 
 
-export class PopupLogic implements ILogic {
+export class PopupLogic implements IReaction {
   name: string = "PopupLogic";
   state: any;
   inputs: InputHandlers = {};

@@ -1,6 +1,6 @@
 import { Graph } from "@antv/x6";
 import { createContext } from "react";
-import { ILogicMetas } from "runner/reaction/metas";
+import { ILogicMetas } from "runner/reaction/interfaces/metas";
 
 export interface IState {
   lining: boolean,
@@ -19,8 +19,6 @@ export const initialState: IState = {
   undoList: [],
   redoList: [],
   metas: {
-    inputs: [],
-    outputs: [],
     reactions: [],
     invakes: [],
   },

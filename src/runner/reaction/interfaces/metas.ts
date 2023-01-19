@@ -24,15 +24,15 @@ export interface INodeMeta {
   x6Node?: IX6NodeMeta;
 }
 
-export interface IStartNodeMeta extends INodeMeta {
-  name: string;
-  x6Node?: IX6NodeMeta;
-}
+// export interface IStartNodeMeta extends INodeMeta {
+//   name: string;
+//   x6Node?: IX6NodeMeta;
+// }
 
-export interface IEndNodeMeta extends INodeMeta {
-  name: string;
-  x6Node?: IX6NodeMeta;
-}
+// export interface IEndNodeMeta extends INodeMeta {
+//   name: string;
+//   x6Node?: IX6NodeMeta;
+// }
 
 export interface IPortMeta {
   uuid: string;
@@ -41,15 +41,22 @@ export interface IPortMeta {
   x6Port?: IX6PortMeta;
 }
 
+export enum ReactionType {
+  Start = "Start",
+  End = "End",
+  SingleReaction = "SingleReaction",
+  ComponentReaction = "ComponentReaction",
+}
+
 export interface IReactionNodeMeta extends INodeMeta {
   uuid: string;
-  componentName: string;
-  reactionName: string;
+  type?: ReactionType;
+  componentName?: string;
+  reactionName?: string;
   inPorts: IPortMeta[];
   outPorts: IPortMeta[];
   x6Node?: IX6NodeMeta;
 }
-
 
 export interface IInvokeMeta {
   uuid: string;
@@ -65,8 +72,6 @@ export interface IInvokeMeta {
 }
 
 export interface ILogicMetas {
-  inputs: IStartNodeMeta[];
-  outputs: IEndNodeMeta[];
   reactions: IReactionNodeMeta[];
   invakes: IInvokeMeta[];
 }

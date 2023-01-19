@@ -1,4 +1,4 @@
-import { IComponentController, InputHandlers, OutputJointers } from "../interfaces";
+import { IComponentController, InputHandlers, OutputJointers } from "../interfaces/interfaces";
 
 /**
  * 控制点:

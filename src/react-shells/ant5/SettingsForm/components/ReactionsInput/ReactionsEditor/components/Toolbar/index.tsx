@@ -3,7 +3,7 @@ import { Button, Divider, Space } from "antd"
 import { memo } from "react"
 import { undoIcon, redoIcon } from "react-shells/ant5/icons"
 import styled from "styled-components"
-import { mapIcon } from "../../icons"
+import { mapIcon } from "../../../../../../icons/reactions"
 
 const StyledToolbar = styled.div`
   display: flex;

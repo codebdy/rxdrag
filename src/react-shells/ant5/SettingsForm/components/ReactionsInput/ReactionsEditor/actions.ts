@@ -1,4 +1,4 @@
-import { IStartNodeMeta } from "runner/reaction/metas"
+import { IReactionNodeMeta } from "runner/reaction/interfaces/metas"
 
 export enum ActionType {
   START_LINE = 'ReactionsEditor/START_LINE',
@@ -13,7 +13,7 @@ export interface Action {
 }
 
 export interface AddStartNodeAcion extends Action {
-  payload: IStartNodeMeta
+  payload: IReactionNodeMeta
 }
 
 export interface RemoveNodeAcion extends Action {
@@ -21,5 +21,5 @@ export interface RemoveNodeAcion extends Action {
 }
 
 export interface ChangeStartNodeAcion extends Action {
-  payload: IStartNodeMeta
+  payload: IReactionNodeMeta
 }

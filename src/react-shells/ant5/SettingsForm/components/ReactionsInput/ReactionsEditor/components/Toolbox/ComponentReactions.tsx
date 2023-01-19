@@ -3,7 +3,7 @@ import { Button, Drawer, Tree } from "antd";
 import { DataNode } from "antd/es/tree";
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components";
-import { maxSizeIcon, methodIcon, minSizeIcon, puzzleIcon } from "../../icons";
+import { maxSizeIcon, methodIcon, minSizeIcon, puzzleIcon } from "../../../../../../icons/reactions";
 
 const Container = styled.div`
   width: 100%;

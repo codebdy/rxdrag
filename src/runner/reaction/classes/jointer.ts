@@ -1,4 +1,4 @@
-import { InputHandler, IHandlerArgs, IJointer } from "../interfaces";
+import { InputHandler, IHandlerArgs, IJointer } from "../interfaces/interfaces";
 
 export class Jointer implements IJointer{
   private outlets: InputHandler[] = []

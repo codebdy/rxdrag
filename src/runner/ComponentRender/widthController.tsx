@@ -1,6 +1,6 @@
 import { useField } from "runner/fieldy/hooks/useField"
 import { memo, useRef } from "react"
-import { IControllerMeta } from "runner/reaction/metas"
+import { IControllerMeta } from "runner/reaction/interfaces/metas"
 
 export function widthController(WrappedComponent: React.FC<any> | React.ComponentClass<any>, reactionMeta?: IControllerMeta): React.FC<any> | React.ComponentClass<any> {
 

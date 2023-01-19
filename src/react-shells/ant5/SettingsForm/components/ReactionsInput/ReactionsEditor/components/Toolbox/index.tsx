@@ -1,15 +1,15 @@
 import { Collapse as AntdCollapse, Row } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo } from "react";
-import { IStartNodeMeta } from "runner/reaction/metas";
 import styled from "styled-components";
 import { useDnd } from "../../hooks/useDnd";
 import { useEditorState } from "../../hooks/useEditorState";
 import { useGetStartNodeConfig } from "../../hooks/useGetStartNodeConfig";
-import { delayIcon, endIcon, fieldIcon, fieldReadIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon, ifIcon, infoIcon, jsIcon, loadingIcon, loopIcon, mergeIcon, randomIcon, routeIcon, simulateIcon, startIcon, subscribIcon, switchIcon } from "../../icons";
+import { delayIcon, endIcon, fieldIcon, fieldReadIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon, ifIcon, infoIcon, jsIcon, loadingIcon, loopIcon, mergeIcon, randomIcon, routeIcon, simulateIcon, startIcon, subscribIcon, switchIcon } from "../../../../../../icons/reactions";
 import { createUuid } from "../../utils";
 import { ComponentReactions } from "./ComponentReactions";
 import { ToolItem } from "./ToolItem";
+import { IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 const { Panel } = AntdCollapse;
 
 const StyledToolbox = styled.div`
@@ -38,13 +38,12 @@ export const Toolbox = memo(() => {
       if (!graph) {
         return;
       }
-      const nodeMeta: IStartNodeMeta = {
-        uuid: createUuid(),
-        name: "input",
-        label: "输入项",
-      }
-      const node = graph.createNode(getStartNodeConfig(nodeMeta));
-      dnd?.start(node, e.nativeEvent as any);
+      // const nodeMeta: IReactionNodeMeta = {
+      //   uuid: createUuid(),
+      //   label: "输入项",
+      // }
+      // const node = graph.createNode(getStartNodeConfig(nodeMeta));
+      // dnd?.start(node, e.nativeEvent as any);
     };
   };
 
