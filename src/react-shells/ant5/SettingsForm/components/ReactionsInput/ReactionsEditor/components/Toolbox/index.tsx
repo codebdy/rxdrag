@@ -4,11 +4,13 @@ import { memo } from "react";
 import styled from "styled-components";
 import { useDnd } from "../../hooks/useDnd";
 import { useEditorState } from "../../hooks/useEditorState";
-import { useGetStartNodeConfig } from "../../hooks/useGetStartNodeConfig";
+import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
 import { fieldIcon, fieldReadIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon, infoIcon, jsIcon, loadingIcon, routeIcon, simulateIcon, subscribIcon } from "../../../../../../icons/reactions";
 import { ComponentReactions } from "./ComponentReactions";
 import { ToolItem } from "./ToolItem";
 import { basicReactions } from "react-shells/ant5/materials/basic";
+import { IReactionNodeMeta } from "runner/reaction/interfaces/metas";
+import { createUuid } from "../../utils";
 const { Panel } = AntdCollapse;
 
 const StyledToolbox = styled.div`
@@ -30,19 +32,19 @@ export const Toolbox = memo(() => {
   const t = useToolsTranslate()
   const { graph } = useEditorState()
   const dnd = useDnd()
-  const getStartNodeConfig = useGetStartNodeConfig()
+  const getNodeConfig = useGetNodeConfig()
 
   const startDragFn = () => {
     return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       if (!graph) {
         return;
       }
-      // const nodeMeta: IReactionNodeMeta = {
-      //   uuid: createUuid(),
-      //   label: "输入项",
-      // }
-      // const node = graph.createNode(getStartNodeConfig(nodeMeta));
-      // dnd?.start(node, e.nativeEvent as any);
+      const nodeMeta: IReactionNodeMeta = {
+        uuid: createUuid(),
+        label: "输入项",
+      }
+      const node = graph.createNode(getNodeConfig(nodeMeta));
+      dnd?.start(node, e.nativeEvent as any);
     };
   };
 

@@ -1,7 +1,7 @@
 import { Cell } from "@antv/x6";
 import { useEffect } from "react";
 import { useGetEndNodeConfig } from "./useGetEndNodeConfig";
-import { useGetStartNodeConfig } from "./useGetStartNodeConfig";
+import { useGetNodeConfig } from "./useGetNodeConfig";
 import { useEditorState } from "./useEditorState";
 // const commonAttrs = {
 //   body: {
@@ -63,7 +63,7 @@ import { useEditorState } from "./useEditorState";
 
 export function useShowCells() {
   const { graph } = useEditorState()
-  const getStartNodeConfig = useGetStartNodeConfig()
+  const getStartNodeConfig = useGetNodeConfig()
   const getEndNodeConfig = useGetEndNodeConfig()
   const { metas } = useEditorState()
   useEffect(() => {

@@ -4,7 +4,7 @@ import { useToken } from "antd/es/theme/internal";
 import { IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 
 const STROKE_WIDTH = 2
-export function useGetStartNodeConfig() {
+export function useGetNodeConfig() {
   const [, token] = useToken()
   const getConfig = useCallback((nodeMeta: IReactionNodeMeta): Node.Metadata => {
     return {

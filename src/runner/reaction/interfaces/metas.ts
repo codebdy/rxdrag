@@ -53,8 +53,8 @@ export interface IReactionNodeMeta extends INodeMeta {
   type?: ReactionType;
   componentName?: string;
   reactionName?: string;
-  inPorts: IPortMeta[];
-  outPorts: IPortMeta[];
+  inPorts?: IPortMeta[];
+  outPorts?: IPortMeta[];
   x6Node?: IX6NodeMeta;
 }
 
