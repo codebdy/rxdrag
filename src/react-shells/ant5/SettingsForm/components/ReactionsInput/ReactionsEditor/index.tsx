@@ -88,7 +88,6 @@ const RightArea = styled.div`
 
 export const ReactionsEditor = memo(() => {
   const [showMap, setShowMap] = useState(false)
-  //const [lining, setLining] = useState(false)
   const [state, dispatch] = useReducer(mainReducer, initialState);
   const graph = useCreateGraph()
   const params: IReactionsEditorParams = useMemo(() => {
