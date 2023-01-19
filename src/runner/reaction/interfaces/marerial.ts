@@ -5,7 +5,7 @@ import { IReactionNodeData, ReactionType } from "./metas";
 export interface IReactionMaterial {
   //唯一名称
   name: string,
-  title: string,
+  label: string,
   reactionType: ReactionType,
   icon?: React.ReactNode,
   color?: string,

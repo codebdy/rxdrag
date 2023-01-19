@@ -1,5 +1,4 @@
 import { Collapse as AntdCollapse, Row } from "antd";
-import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback } from "react";
 import styled from "styled-components";
 import { useDnd } from "../../hooks/useDnd";
@@ -12,6 +11,7 @@ import { basicReactions } from "react-shells/ant5/materials/basic";
 import { IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 import { createUuid } from "../../utils";
 import { IReactionMaterial } from "runner/reaction/interfaces/marerial";
+import { useTrans } from "../../hooks/useTrans";
 const { Panel } = AntdCollapse;
 
 const StyledToolbox = styled.div`
@@ -30,10 +30,11 @@ const Collapse = styled(AntdCollapse)`
 `
 
 export const Toolbox = memo(() => {
-  const t = useToolsTranslate()
+  const t = useTrans();
   const { graph } = useEditorState()
   const dnd = useDnd()
   const getNodeConfig = useGetNodeConfig()
+
 
   const startDragFn = useCallback((marterial: IReactionMaterial) => {
     return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -42,25 +43,25 @@ export const Toolbox = memo(() => {
       }
       const nodeMeta: IReactionNodeMeta = {
         uuid: createUuid(),
-        label: "输入项",
+        label: t(marterial.label),
         type: marterial.reactionType,
       }
       const node = graph.createNode(getNodeConfig(nodeMeta));
       dnd?.start(node, e.nativeEvent as any);
     };
-  }, [dnd, getNodeConfig, graph])
+  }, [dnd, getNodeConfig, graph, t])
 
   return (
     <StyledToolbox>
       <Collapse defaultActiveKey={['1']} bordered={false} accordion>
-        <Panel header={t('ReactionsInput.basicReactions')} key="1">
+        <Panel header={t('$basicReactions')} key="1">
           <Row gutter={8}>
             {
               basicReactions.map((reaction) => {
                 return (<ToolItem
                   key={reaction.name}
                   icon={reaction.icon}
-                  title={reaction.title}
+                  title={reaction.label}
                   color={reaction.color}
                   onMouseDown={startDragFn(reaction)}
                 />)
@@ -68,7 +69,7 @@ export const Toolbox = memo(() => {
             }
           </Row>
         </Panel>
-        <Panel header={t('ReactionsInput.commonReactions')} key="2">
+        <Panel header={t('$commonReactions')} key="2">
           <Row gutter={8}>
             <ToolItem icon={routeIcon} title="路由跳转" />
             <ToolItem icon={infoIcon} title="提示消息" />
@@ -77,7 +78,7 @@ export const Toolbox = memo(() => {
             <ToolItem icon={jsIcon} title="自定义代码" />
           </Row>
         </Panel>
-        <Panel header={t('ReactionsInput.dataModel')} key="3">
+        <Panel header={t('$dataModel')} key="3">
           <Row gutter={8}>
             <ToolItem icon={formIcon} title="表单赋值" />
             <ToolItem icon={formValidateIcon} title="表单校验" />

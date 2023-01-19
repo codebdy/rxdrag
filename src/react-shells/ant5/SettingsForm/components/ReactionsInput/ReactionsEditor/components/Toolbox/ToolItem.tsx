@@ -1,7 +1,7 @@
 import { Col } from "antd"
-import { useToolsTranslate } from "core-react/hooks/useToolsTranslate"
-import React, { memo, useMemo } from "react"
+import React, { memo } from "react"
 import styled from "styled-components"
+import { useTrans } from "../../hooks/useTrans"
 
 const Icon = styled.div`
   width: 100%;
@@ -48,17 +48,11 @@ export const ToolItem = memo((
   }
 ) => {
   const { title, icon, color, ...other } = props
-  const t = useToolsTranslate();
-  const translatedTitle = useMemo(() => {
-    if (title?.startsWith('$')) {
-      return t("ReactionsInput." + title?.substring(1))
-    }
-    return title
-  }, [t, title])
+  const t = useTrans();
   return (
     <Shell {...other}>
       <Icon style={{ color }}>{icon}</Icon>
-      <Title>{translatedTitle}</Title>
+      <Title>{t(title)}</Title>
     </Shell>
   )
 })

@@ -92,6 +92,8 @@ export const settingLocales = {
         switch: "分流",
         delay: "延时",
         random: "随机数",
+        input: "输入",
+        output: "输出",
       }
     }
   },
@@ -187,6 +189,8 @@ export const settingLocales = {
         switch: "Switch",
         delay: "Delay",
         random: "Random",
+        input: "Input",
+        output: "Output",
       }
     }
   }
