@@ -35,47 +35,7 @@ register({
   width: 180,
   height: 36,
   component: ReactionNode,
-  ports: {
-    groups: {
-      left: {
-        position: 'left',
-        attrs: {
-          circle: {
-            r: 4,
-            magnet: true,
-            stroke: '#C2C8D5',
-            strokeWidth: 1,
-            fill: '#fff',
-          },
-        },
 
-      },
-      out: {
-        position: 'right',
-        attrs: {
-          circle: {
-            r: 4,
-            magnet: true,
-            stroke: '#C2C8D5',
-            strokeWidth: 1,
-            fill: '#fff',
-          },
-        },
-      },
-      bottom: {
-        position: 'bottom',
-        attrs: {
-          circle: {
-            r: 4,
-            magnet: true,
-            stroke: '#C2C8D5',
-            strokeWidth: 1,
-            fill: '#fff',
-          },
-        },
-      },
-    },
-  },
 },
 )
 

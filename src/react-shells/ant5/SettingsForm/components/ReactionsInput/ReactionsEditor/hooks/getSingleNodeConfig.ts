@@ -16,19 +16,48 @@ export const getSingleNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalTo
       material,
       token
     },
-    ports: [
-      {
-        "id": "3-1",
-        "group": "left"
+    ports: {
+      groups: {
+        left: {
+          position: 'left',
+          attrs: {
+            circle: {
+              r: 4,
+              magnet: true,
+              stroke: token.colorTextSecondary,
+              strokeWidth: 1,
+              fill: token.colorBgContainer,
+            },
+          },
+
+        },
+        out: {
+          position: 'right',
+          attrs: {
+            circle: {
+              r: 4,
+              magnet: true,
+              stroke: token.colorTextSecondary,
+              strokeWidth: 1,
+              fill: token.colorBgContainer,
+            },
+          },
+        },
       },
-      {
-        "id": "3-2",
-        "group": "out",
-      },
-      {
-        "id": "3-3",
-        "group": "out",
-      }
-    ]
+      items: [
+        {
+          "id": "3-1",
+          "group": "left"
+        },
+        {
+          "id": "3-2",
+          "group": "out",
+        },
+        {
+          "id": "3-3",
+          "group": "out",
+        }
+      ]
+    },
   }
 }
