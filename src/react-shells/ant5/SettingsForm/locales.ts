@@ -94,6 +94,8 @@ export const settingLocales = {
         random: "随机数",
         input: "输入",
         output: "输出",
+        true: "真",
+        false: "假",
       }
     }
   },
@@ -191,6 +193,8 @@ export const settingLocales = {
         random: "Random",
         input: "Input",
         output: "Output",
+        true: "True",
+        false: "False",
       }
     }
   }

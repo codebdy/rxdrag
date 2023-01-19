@@ -4,12 +4,13 @@ import { useToken } from "antd/es/theme/internal";
 import { IReactionNodeMeta, ReactionType } from "runner/reaction/interfaces/metas";
 import { getStartNodeConfig } from "./getStartNodeConfig";
 import { getEndNodeConfig } from "./getEndNodeConfig";
-import { getSingleNodeConfig } from "./getSingleNodeConfig";
 import { useGetMaterial } from "./useGetMaterial";
+import { useGetSingleNodeConfig } from "./useGetSingleNodeConfig";
 
 export function useGetNodeConfig() {
   const [, token] = useToken()
   const getMaterial = useGetMaterial();
+  const getSingleNodeConfig = useGetSingleNodeConfig()
   const getConfig = useCallback((reactNodeMeta: IReactionNodeMeta): Node.Metadata => {
     switch (reactNodeMeta.type) {
       case ReactionType.Start:
@@ -21,7 +22,7 @@ export function useGetNodeConfig() {
     }
 
     throw new Error("Can not find reaction node meta: " + reactNodeMeta.type)
-  }, [getMaterial, token])
+  }, [getMaterial, getSingleNodeConfig, token])
 
 
   return getConfig

@@ -31,7 +31,7 @@ export const basicReactions: IReactionMaterial[] = [
         },
         {
           name: "true",
-          label: "$ture",
+          label: "$true",
           group: "out",
         },
         {
