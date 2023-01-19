@@ -59,7 +59,6 @@ export function useShowCells() {
         }
       }
 
-
       //删除不存在的
       for (const cell of oldCells) {
         if (![...metas.reactions, ...metas.invakes].find(el => el.uuid === cell.id)) {

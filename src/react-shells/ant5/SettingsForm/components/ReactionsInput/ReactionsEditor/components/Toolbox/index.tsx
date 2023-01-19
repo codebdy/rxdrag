@@ -45,6 +45,7 @@ export const Toolbox = memo(() => {
         uuid: createUuid(),
         label: t(marterial.label),
         type: marterial.reactionType,
+        materialName: marterial.name,
         ...marterial.defaultData
       }
       const node = graph.createNode(getNodeConfig(nodeMeta));

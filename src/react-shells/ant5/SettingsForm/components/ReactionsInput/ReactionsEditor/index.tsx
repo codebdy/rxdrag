@@ -85,7 +85,6 @@ const RightArea = styled.div`
   display: flex;
   flex-flow: column;
 `
-
 export const ReactionsEditor = memo(() => {
   const [showMap, setShowMap] = useState(false)
   const [state, dispatch] = useReducer(mainReducer, initialState);

@@ -1,5 +1,6 @@
 import { Node } from '@antv/x6'
 import '@antv/x6-react-shape'
+import { IReactionMaterial } from 'runner/reaction/interfaces/marerial'
 import { IReactionNodeMeta } from 'runner/reaction/interfaces/metas'
 import styled from 'styled-components'
 
@@ -8,11 +9,17 @@ const NodeView = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: #111;
-  color: #fff;
   outline: 1px solid #c2c8d5;
   border-radius: 4px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.06);
+  padding: 0 16px;
+  box-sizing: border-box;
+`
+
+const Icon = styled.div`
+  display: flex;
+  font-size: 20px;
+  align-items: center;
 `
 
 const Label = styled.span`
@@ -20,24 +27,27 @@ const Label = styled.span`
     flex-shrink: 0;
     width: 104px;
     margin-left: 8px;
-    color: #fff;
-    font-size: 12px;
+    font-size: 13px;
 `
 
-export interface NodeStatus {
-  id: string
-  status: 'default' | 'success' | 'failed' | 'running'
-  label?: string
+export interface NodeViewParams {
+  nodeMeta: IReactionNodeMeta;
+  backgroundColor: string;
+  material: IReactionMaterial;
+  color: string;
 }
 
 
 export const ReactionNode = (props: { node?: Node }) => {
   const { node } = props
-  const data = node?.getData() as IReactionNodeMeta
-  const { label } = data
+  const data = node?.getData() as NodeViewParams
+  const { label } = data.nodeMeta
 
   return (
-    <NodeView className='node'>
+    <NodeView className='node' style={{ backgroundColor: data.backgroundColor, color: data.color }}>
+      <Icon>
+        {data?.material?.icon}
+      </Icon>
       <Label>{label}</Label>
     </NodeView>
   )
