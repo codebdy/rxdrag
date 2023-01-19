@@ -2,29 +2,7 @@ import { Cell } from "@antv/x6";
 import { useEffect } from "react";
 import { useGetNodeConfig } from "./useGetNodeConfig";
 import { useEditorState } from "./useEditorState";
-// const commonAttrs = {
-//   body: {
-//     fill: '#111',
-//     stroke: '#ccc',
-//     strokeWidth: 2,
-//     filter: {
-//       name: "outline",
-//       args: {
-//         color: 'rgba(22,104,220, 0.7)',
-//         width: 2,
-//         margin: 0,
-//       },
-//     },
-//   },
-//   label: {
-//     refX: '100%',
-//     refX2: 4,
-//     refY: 0.5,
-//     textAnchor: 'start',
-//     textVerticalAnchor: 'middle',
-//     fill: "#fff"
-//   },
-// }
+
 // const commonAttrs2 = {
 //   body: {
 //     fill: 'transparent',
@@ -88,58 +66,6 @@ export function useShowCells() {
           cell.remove()
         }
       }
-
-      // cells.push(graph.addNode({
-      //   shape: 'reaction-node',
-      //   x: 340,
-      //   y: 240,
-      //   width: 80,
-      //   height: 40,
-      //   data: {
-      //     label: 'rect',
-      //   },
-      //   attrs: commonAttrs,
-      //   ports: [
-      //     {
-      //       "id": "3-1",
-      //       "group": "left"
-      //     },
-      //     {
-      //       "id": "3-2",
-      //       "group": "out",
-      //     },
-      //     {
-      //       "id": "3-3",
-      //       "group": "out",
-      //     }
-      //   ]
-      // }))
-
-      // cells.push(graph.addNode({
-      //   shape: 'reaction-node',
-      //   x: 440,
-      //   y: 240,
-      //   width: 80,
-      //   height: 40,
-      //   data: {
-      //     label: 'rect',
-      //   },
-      //   attrs: commonAttrs,
-      //   ports: [
-      //     {
-      //       "id": "4-1",
-      //       "group": "left"
-      //     },
-      //     {
-      //       "id": "4-2",
-      //       "group": "out",
-      //     },
-      //     {
-      //       "id": "4-3",
-      //       "group": "out",
-      //     }
-      //   ]
-      // }))
       graph.resetCells(cells)
     }
   }, [getStartNodeConfig, graph, metas.invakes, metas.reactions])

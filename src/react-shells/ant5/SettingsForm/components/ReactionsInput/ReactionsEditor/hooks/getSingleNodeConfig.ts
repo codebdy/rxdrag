@@ -1,55 +1,52 @@
 import { GlobalToken } from "antd/es/theme/interface"
 import { IReactionNodeMeta } from "runner/reaction/interfaces/metas"
 
-const STROKE_WIDTH = 5
 export const getSingleNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalToken) => {
   return {
-    shape: 'circle',
-    x: 700,
-    y: 200,
-    width: 20,
-    height: 20,
-    ...nodeMeta.x6Node,
-    id: nodeMeta.uuid,
-    label: nodeMeta.label,
+    shape: 'reaction-node',
+    x: 340,
+    y: 240,
+    width: 80,
+    height: 40,
+    data: {
+      label: nodeMeta.label,
+    },
     attrs: {
       body: {
-        fill: token.colorBgBase,
-        stroke: token.colorText,
-        strokeWidth: 0,//STROKE_WIDTH,
-      },
-      label: {
-        refX: '100%',
-        refX2: 10,
-        refY: 0.5,
-        textAnchor: 'start',
-        textVerticalAnchor: 'middle',
-        fill: token.colorTextSecondary,
-      },
-    },
-    ports: {
-      groups: {
-        out: {
-          attrs: {
-            circle: {
-              r: 10,
-              magnet: true,
-              fill: token.colorBgBase,
-              stroke: token.colorText,
-              strokeWidth: STROKE_WIDTH,
-            },
+        fill: '#111',
+        stroke: '#ccc',
+        strokeWidth: 2,
+        filter: {
+          name: "outline",
+          args: {
+            color: 'rgba(22,104,220, 0.7)',
+            width: 2,
+            margin: 0,
           },
         },
       },
-      items: [
-        {
-          id: nodeMeta.uuid + '-port',
-          group: 'out',
-          args: {
-            dx: 10,
-          }
-        },
-      ],
-    }
+      label: {
+        refX: '100%',
+        refX2: 4,
+        refY: 0.5,
+        textAnchor: 'start',
+        textVerticalAnchor: 'middle',
+        fill: token.colorText
+      },
+    },
+    ports: [
+      {
+        "id": "3-1",
+        "group": "left"
+      },
+      {
+        "id": "3-2",
+        "group": "out",
+      },
+      {
+        "id": "3-3",
+        "group": "out",
+      }
+    ]
   }
 }
