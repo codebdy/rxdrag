@@ -69,11 +69,15 @@ export function useShowCells() {
   useEffect(() => {
     if (graph) {
       const cells: Cell[] = []
+      const oldNodes = graph.getNodes()
       const oldCells = graph.getCells()
-      for (const inputNode of metas.inputs) {
-        //更新
-        if (oldCells.find(cell => cell.id === inputNode.uuid)) {
 
+      for (const inputNode of metas.inputs) {
+        const grahpNode = oldNodes.find(node => node.id === inputNode.uuid)
+        //更新
+        if (grahpNode) {
+          grahpNode.setSize(inputNode.x6Node as any);
+          grahpNode.setPosition(inputNode.x6Node as any);
         } else {//新建
           cells.push(graph.createNode(getStartNodeConfig(inputNode)))
         }
@@ -143,5 +147,5 @@ export function useShowCells() {
       // }))
       graph.resetCells(cells)
     }
-  }, [getEndNodeConfig, getStartNodeConfig, graph, metas.inputs, metas.outputs])
+  }, [getEndNodeConfig, getStartNodeConfig, graph, metas.inputs, metas.invakes, metas.outputs, metas.reactions])
 }

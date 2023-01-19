@@ -53,7 +53,7 @@ export function useGetStartNodeConfig() {
             }
           },
         ],
-      }
+      },
     }
   }, [token.colorText, token.colorTextSecondary])
 
