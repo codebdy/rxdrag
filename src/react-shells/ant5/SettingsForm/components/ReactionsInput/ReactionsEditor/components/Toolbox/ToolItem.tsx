@@ -42,11 +42,12 @@ export const ToolItem = memo((
   props: {
     title?: string,
     icon?: React.ReactNode,
+    onMouseDown?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
   }
 ) => {
-  const { title, icon } = props
+  const { title, icon, ...other } = props
   return (
-    <Shell>
+    <Shell {...other}>
       <Icon>{icon}</Icon>
       <Title>{title}</Title>
     </Shell>
