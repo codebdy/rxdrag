@@ -4,13 +4,10 @@ import { Members } from "./components/Members";
 import { PropertyBox } from "./components/PropertyBox";
 import { Logic } from "./components/Logic";
 import { useCreateGraph } from "./hooks/useCreateGraph";
-import { ReacionsEditorContext } from "./contexts";
+import { initialState, IReactionsEditorParams, IState, ReacionsEditorContext } from "./contexts";
 import { Toolbar } from "./components/Toolbar";
 import { Toolbox } from "./components/Toolbox";
-import { metasReducer } from "./reducers/metasReducer";
-import { ILogicMetas } from "runner/reaction/metas";
-import { Action } from "./actions";
-import { initialState, mainReducer } from "./reducers/mainReducer";
+import { mainReducer } from "./reducers/mainReducer";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -94,10 +91,10 @@ export const ReactionsEditor = memo(() => {
   //const [lining, setLining] = useState(false)
   const [state, dispatch] = useReducer(mainReducer, initialState);
   const graph = useCreateGraph()
-  const params = useMemo(() => {
+  const params: IReactionsEditorParams = useMemo(() => {
     return {
       graph,
-      ...state,
+      ...(state as IState),
       dispatch,
     }
   }, [graph, state])

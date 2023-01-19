@@ -2,19 +2,31 @@ import { Graph } from "@antv/x6";
 import { createContext } from "react";
 import { ILogicMetas } from "runner/reaction/metas";
 
-export interface IReactionsEditorParams {
-  graph?: Graph
-  lining?: boolean,
+export interface IState {
+  lining: boolean,
+  undoList: ILogicMetas[],
+  redoList: ILogicMetas[],
   metas: ILogicMetas,
+}
+
+export interface IReactionsEditorParams extends IState {
+  graph?: Graph
   dispatch: React.Dispatch<any>
 }
 
-export const ReacionsEditorContext = createContext<IReactionsEditorParams>({
+export const initialState: IState = {
+  lining: false,
+  undoList: [],
+  redoList: [],
   metas: {
     inputs: [],
     outputs: [],
     reactions: [],
     invakes: [],
   },
+}
+
+export const ReacionsEditorContext = createContext<IReactionsEditorParams>({
+  ...initialState,
   dispatch: () => null,
 })
