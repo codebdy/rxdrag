@@ -45,6 +45,7 @@ export const Toolbox = memo(() => {
         uuid: createUuid(),
         label: t(marterial.label),
         type: marterial.reactionType,
+        ...marterial.defaultData
       }
       const node = graph.createNode(getNodeConfig(nodeMeta));
       dnd?.start(node, e.nativeEvent as any);

@@ -1,6 +1,5 @@
 import { Cell } from "@antv/x6";
 import { useEffect } from "react";
-import { useGetEndNodeConfig } from "./useGetEndNodeConfig";
 import { useGetNodeConfig } from "./useGetNodeConfig";
 import { useEditorState } from "./useEditorState";
 // const commonAttrs = {
@@ -64,7 +63,6 @@ import { useEditorState } from "./useEditorState";
 export function useShowCells() {
   const { graph } = useEditorState()
   const getStartNodeConfig = useGetNodeConfig()
-  const getEndNodeConfig = useGetEndNodeConfig()
   const { metas } = useEditorState()
   useEffect(() => {
     if (graph) {
@@ -144,5 +142,5 @@ export function useShowCells() {
       // }))
       graph.resetCells(cells)
     }
-  }, [getEndNodeConfig, getStartNodeConfig, graph, metas.invakes, metas.reactions])
+  }, [getStartNodeConfig, graph, metas.invakes, metas.reactions])
 }
