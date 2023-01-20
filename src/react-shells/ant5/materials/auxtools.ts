@@ -12,9 +12,9 @@ export const auxReactions: IReactionMaterial[] = [
     meta: {
       ports: [
         {
-          name: "debug",
+          name: "input",
           label: "",
-          group: "in",
+          group: "out",
         },
       ],
     }

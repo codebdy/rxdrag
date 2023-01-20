@@ -1,0 +1,1 @@
+Reaction editor，Reaction的svg图标如果有多个path，那么每个path要加key

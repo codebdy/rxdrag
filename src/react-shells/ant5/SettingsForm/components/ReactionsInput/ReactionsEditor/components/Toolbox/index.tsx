@@ -95,9 +95,9 @@ export const Toolbox = memo(() => {
         <Panel header={t('$auxTools')} key="4">
           <Row gutter={8}>
             {
-              auxReactions.map((reaction) => {
+              auxReactions.map((reaction, index) => {
                 return (<ToolItem
-                  key={reaction.name}
+                  key={reaction.name + index}
                   icon={reaction.icon}
                   title={reaction.label}
                   color={reaction.color}
