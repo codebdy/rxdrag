@@ -20,6 +20,7 @@ const magnetAvailabilityHighlighter = {
 export function useCreateGraph() {
   const [graph, setGraph] = useState<Graph>()
   const [, token] = useToken()
+
   useEffect(() => {
     // 画布
     const gph: Graph = new Graph({
@@ -60,7 +61,19 @@ export function useCreateGraph() {
         },
         validateConnection(args) {
           const { targetMagnet, targetCell } = args
-          return targetMagnet?.getAttribute('port-group') !== 'out' && targetCell?.getData()?.type !== ReactionType.Start
+          let isConnected = false;
+          const edges = gph?.getEdges() ||[];
+          const targetId = targetCell?.id;
+          const targetPort = targetMagnet?.getAttribute('port');
+          for(const edge of edges){
+            if(targetId && targetPort && (edge.target as any).cell === targetId && (edge.target as any).port === targetPort){
+              isConnected = true
+              break
+            }
+          }
+          return !isConnected &&
+            targetMagnet?.getAttribute('port-group') !== 'out' &&
+            targetCell?.getData()?.type !== ReactionType.Start
         },
         createEdge() {
           return gph?.createEdge({
