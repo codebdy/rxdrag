@@ -41,7 +41,7 @@ export function useCreateGraph() {
     gph.use(new Selection({
       enabled: true,
       multiple: false,
-      rubberband: true,
+      rubberband: false,
       movable: true,
       //showNodeSelectionBox: true,
     }))
