@@ -92,6 +92,13 @@ export function useCreateGraph() {
           return gph?.createEdge({
             shape: 'reaction-edge',
             zIndex: -1,
+            attrs: {
+              line: {
+                stroke: token.colorTextSecondary,
+                strokeWidth: 1,
+                targetMarker: null,
+              },
+            },
           })
         },
       },
@@ -118,7 +125,7 @@ export function useCreateGraph() {
     return () => {
       gph?.dispose()
     }
-  }, [token.colorPrimary])
+  }, [token.colorPrimary, token.colorTextSecondary])
 
   return graph
 }
