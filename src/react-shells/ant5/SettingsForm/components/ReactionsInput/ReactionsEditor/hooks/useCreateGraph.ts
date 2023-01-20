@@ -60,17 +60,30 @@ export function useCreateGraph() {
           return magnet.getAttribute('port-group') !== 'in' && cell?.getData()?.type !== ReactionType.End
         },
         validateConnection(args) {
-          const { targetMagnet, targetCell } = args
+          const { targetMagnet, targetCell, sourceCell, sourceMagnet } = args
           let isConnected = false;
-          const edges = gph?.getEdges() ||[];
+          const edges = gph?.getEdges() || [];
           const targetId = targetCell?.id;
+          const sourceId = sourceCell?.id;
           const targetPort = targetMagnet?.getAttribute('port');
-          for(const edge of edges){
-            if(targetId && targetPort && (edge.target as any).cell === targetId && (edge.target as any).port === targetPort){
+          const sourcePort = sourceMagnet?.getAttribute('port') || undefined;
+          for (const edge of edges) {
+            if (targetId && targetPort && (edge.target as any).cell === targetId && (edge.target as any).port === targetPort) {
               isConnected = true
               break
             }
+            //连接到结束点
+            if (!targetPort && targetId) {
+              if (targetId === (edge.target as any).cell
+                && sourceId === (edge.source as any).cell
+                && (edge.source as any).port === sourcePort) {
+                isConnected = true
+                break
+              }
+
+            }
           }
+
           return !isConnected &&
             targetMagnet?.getAttribute('port-group') !== 'out' &&
             targetCell?.getData()?.type !== ReactionType.Start
