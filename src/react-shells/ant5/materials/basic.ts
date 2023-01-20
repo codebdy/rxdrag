@@ -26,7 +26,7 @@ export const basicReactions: IReactionMaterial[] = [
       ports: [
         {
           name: "input",
-          label: "$inputCondition",
+          label: "",//"$inputCondition",
           group: "in",
         },
         {
@@ -51,12 +51,12 @@ export const basicReactions: IReactionMaterial[] = [
       ports: [
         {
           name: "input",
-          label: "$input",
+          label: "",//"$input",
           group: "in",
         },
         {
           name: "output",
-          label: "$output",
+          label: "",//"$output",
           group: "out",
         },
       ],
@@ -71,17 +71,17 @@ export const basicReactions: IReactionMaterial[] = [
       ports: [
         {
           name: "input1",
-          label: "$input",
+          label: "input 1",
           group: "in",
         },
         {
           name: "input2",
-          label: "$input",
+          label: "input 2",
           group: "in",
         },
         {
           name: "output",
-          label: "$output",
+          label: "",//"$output",
           group: "out",
         },
       ],
@@ -96,17 +96,17 @@ export const basicReactions: IReactionMaterial[] = [
       ports: [
         {
           name: "input",
-          label: "$input",
+          label: "",//"$input",
           group: "in",
         },
         {
           name: "output1",
-          label: "$output",
+          label: "output1",
           group: "out",
         },
         {
           name: "output2",
-          label: "$output",
+          label: "output2",
           group: "out",
         },
       ],
@@ -121,12 +121,12 @@ export const basicReactions: IReactionMaterial[] = [
       ports: [
         {
           name: "startUp",
-          label: "$startUp",
+          label: "",//"$startUp",
           group: "in",
         },
         {
           name: "output",
-          label: "$output",
+          label: "",//"$output",
           group: "out",
         },
       ],
@@ -137,5 +137,19 @@ export const basicReactions: IReactionMaterial[] = [
     icon: randomIcon,
     label: "$random",
     reactionType: ReactionType.SingleReaction,
+    meta: {
+      ports: [
+        {
+          name: "startUp",
+          label: "",//"$startUp",
+          group: "in",
+        },
+        {
+          name: "output",
+          label: "",//"$output",
+          group: "out",
+        },
+      ],
+    }
   },
 ]
