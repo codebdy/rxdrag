@@ -12,6 +12,7 @@ export const getEndNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalToken
     ...nodeMeta.x6Node,
     id: nodeMeta.uuid,
     label: nodeMeta.label,
+    data: nodeMeta,
     attrs: {
       body: {
         fill: token.colorBgBase,

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { config } from "./config";
 import { Selection } from '@antv/x6-plugin-selection'
 import { MiniMap } from "@antv/x6-plugin-minimap";
+import { ReactionType } from "runner/reaction/interfaces/metas";
 
 export function useCreateGraph() {
   const [graph, setGraph] = useState<Graph>()
@@ -27,8 +28,9 @@ export function useCreateGraph() {
         connector: 'reactions-connector',
         connectionPoint: 'anchor',
         anchor: 'center',
-        validateMagnet({ magnet }) {
-          return magnet.getAttribute('port-group') !== 'top'
+        validateMagnet(args) {
+          const { magnet, cell } = args
+          return magnet.getAttribute('port-group') !== 'in' && cell?.getData()?.type !== ReactionType.End
         },
         createEdge() {
           return gph?.createEdge({

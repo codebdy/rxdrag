@@ -12,6 +12,7 @@ export const getStartNodeConfig = (reactionNodeMeta: IReactionNodeMeta, token: G
     ...reactionNodeMeta.x6Node,
     id: reactionNodeMeta.uuid,
     label: reactionNodeMeta.label,
+    data: reactionNodeMeta,
     attrs: {
       body: {
         fill: "#8297da",
