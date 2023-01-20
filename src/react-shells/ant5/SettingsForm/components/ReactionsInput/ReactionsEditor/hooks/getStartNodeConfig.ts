@@ -15,8 +15,9 @@ export const getStartNodeConfig = (reactionNodeMeta: IReactionNodeMeta, token: G
     attrs: {
       body: {
         fill: "#8297da",
-        stroke: token.colorText,
-        strokeWidth: 0,//STROKE_WIDTH,
+        stroke: '#5e76c3',
+        strokeWidth: STROKE_WIDTH,
+        magnet: true,
       },
       label: {
         refX: '-10',
@@ -25,30 +26,6 @@ export const getStartNodeConfig = (reactionNodeMeta: IReactionNodeMeta, token: G
         textVerticalAnchor: 'middle',
         fill: token.colorTextSecondary,
       },
-    },
-    ports: {
-      groups: {
-        out: {
-          attrs: {
-            circle: {
-              r: 10,
-              magnet: true,
-              stroke: "#5e76c3",
-              fill: "#8297da",
-              strokeWidth: STROKE_WIDTH,
-            },
-          },
-        },
-      },
-      items: [
-        {
-          id: 'out',
-          group: 'out',
-          args: {
-            dx: 10,
-          }
-        },
-      ],
     },
   }
 }

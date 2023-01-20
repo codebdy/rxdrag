@@ -16,7 +16,8 @@ export const getEndNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalToken
       body: {
         fill: token.colorBgBase,
         stroke: token.colorText,
-        strokeWidth: 0,//STROKE_WIDTH,
+        strokeWidth: STROKE_WIDTH,
+        magnet: true,
       },
       label: {
         refX: '100%',
@@ -27,29 +28,5 @@ export const getEndNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalToken
         fill: token.colorTextSecondary,
       },
     },
-    ports: {
-      groups: {
-        out: {
-          attrs: {
-            circle: {
-              r: 10,
-              magnet: true,
-              fill: token.colorBgBase,
-              stroke: token.colorText,
-              strokeWidth: STROKE_WIDTH,
-            },
-          },
-        },
-      },
-      items: [
-        {
-          id: nodeMeta.uuid + '-port',
-          group: 'out',
-          args: {
-            dx: 10,
-          }
-        },
-      ],
-    }
   }
 }

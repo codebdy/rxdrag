@@ -40,11 +40,10 @@ export function useCreateGraph() {
     })
     gph.use(new Selection({
       enabled: true,
-      multiple: true,
-      rubberEdge: true,
-      rubberNode: true,
-      modifiers: 'shift',
+      multiple: false,
       rubberband: true,
+      movable: true,
+      //showNodeSelectionBox: true,
     }))
 
     gph.use(
