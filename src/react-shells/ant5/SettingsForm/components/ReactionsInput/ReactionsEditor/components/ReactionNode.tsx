@@ -8,11 +8,11 @@ import styled from 'styled-components'
 
 insertCss(`
 .x6-node-selected .node{
-  box-shadow: 0 0 0 4px rgba(24,144,255, 0.4);
+  box-shadow: 0 0 0 4px rgba(0,144,255, 0.5);
 }
 
 .x6-node-selected .start-node, .x6-node-selected .end-node {
-  outline: solid rgba(24,144,255, 0.4) 4px;
+  outline: solid rgba(24,144,255, 0.5) 4px;
 }
 
 .x6-edge:hover path:nth-child(2){
