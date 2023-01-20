@@ -3,7 +3,29 @@ import '@antv/x6-react-shape'
 import { GlobalToken } from 'antd/es/theme/interface'
 import { IReactionMaterial } from 'runner/reaction/interfaces/material'
 import { IReactionNodeMeta } from 'runner/reaction/interfaces/metas'
+import { insertCss } from 'insert-css'
 import styled from 'styled-components'
+
+insertCss(`
+.x6-node-selected .node{
+  box-shadow: 0 0 0 4px rgba(24,144,255, 0.4);
+}
+
+.x6-node-selected .start-node, .x6-node-selected .end-node {
+  outline: solid rgba(24,144,255, 0.4) 4px;
+}
+
+.x6-edge:hover path:nth-child(2){
+  stroke: #1890ff;
+  stroke-width: 1px;
+}
+
+.x6-edge-selected path:nth-child(2){
+  stroke: #1890ff;
+  stroke-width: 1.5px !important;
+}
+
+`)
 
 const NodeView = styled.div`
   display: flex;
@@ -45,6 +67,7 @@ export const ReactionNode = (props: { node?: Node }) => {
 
   return (
     <NodeView
+      className='node'
       style={{
         backgroundColor: token.colorBgContainer,
         color: token.colorText,

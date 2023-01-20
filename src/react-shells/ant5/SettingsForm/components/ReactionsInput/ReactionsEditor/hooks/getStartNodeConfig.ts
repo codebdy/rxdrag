@@ -19,6 +19,7 @@ export const getStartNodeConfig = (reactionNodeMeta: IReactionNodeMeta, token: G
         stroke: '#5e76c3',
         strokeWidth: STROKE_WIDTH,
         magnet: true,
+        class: "start-node",
       },
       label: {
         refX: '-10',

@@ -19,6 +19,7 @@ export const getEndNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalToken
         stroke: token.colorText,
         strokeWidth: STROKE_WIDTH,
         magnet: true,
+        class: 'end-node',
       },
       label: {
         refX: '100%',
