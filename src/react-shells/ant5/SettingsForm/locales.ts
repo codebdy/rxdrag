@@ -83,6 +83,7 @@ export const settingLocales = {
         basicReactions: "基础节点",
         commonReactions: "常用计算",
         dataModel: "数据模型",
+        auxTools: "辅助工具",
         componentControl: "组件控制",
         start: "开始",
         end: "结束",
@@ -98,6 +99,7 @@ export const settingLocales = {
         true: "真",
         false: "假",
         startUp: "启动",
+        debug: "调试",
       }
     }
   },
@@ -184,6 +186,7 @@ export const settingLocales = {
         basicReactions: "Basic Reactions",
         commonReactions: "Common Reactions",
         dataModel: "Data Model",
+        auxTools: "Aux Tools",
         componentControl: "Component Control",
         start: "Start",
         end: "End",
@@ -199,6 +202,7 @@ export const settingLocales = {
         true: "True",
         false: "False",
         startUp: "Start Up",
+        debug: "Debug",
       }
     }
   }

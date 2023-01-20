@@ -12,6 +12,7 @@ import { IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 import { createUuid } from "../../utils";
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { useTrans } from "../../hooks/useTrans";
+import { auxReactions } from "react-shells/ant5/materials/auxtools";
 const { Panel } = AntdCollapse;
 
 const StyledToolbox = styled.div`
@@ -89,6 +90,21 @@ export const Toolbox = memo(() => {
             <ToolItem icon={fieldValidateIcon} title="字段校验" />
             <ToolItem icon={fieldReadIcon} title="字段取值" />
             <ToolItem icon={subscribIcon} title="订阅变化" />
+          </Row>
+        </Panel>
+        <Panel header={t('$auxTools')} key="4">
+          <Row gutter={8}>
+            {
+              auxReactions.map((reaction) => {
+                return (<ToolItem
+                  key={reaction.name}
+                  icon={reaction.icon}
+                  title={reaction.label}
+                  color={reaction.color}
+                  onMouseDown={startDragFn(reaction)}
+                />)
+              })
+            }
           </Row>
         </Panel>
       </Collapse>
