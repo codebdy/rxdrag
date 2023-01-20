@@ -32,6 +32,10 @@ export function useCreateGraph() {
           const { magnet, cell } = args
           return magnet.getAttribute('port-group') !== 'in' && cell?.getData()?.type !== ReactionType.End
         },
+        validateConnection(args) {
+          const { targetMagnet, targetCell } = args
+          return targetMagnet?.getAttribute('port-group') !== 'out' && targetCell?.getData()?.type !== ReactionType.Start
+        },
         createEdge() {
           return gph?.createEdge({
             shape: 'reaction-edge',
