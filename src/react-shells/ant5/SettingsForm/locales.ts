@@ -96,8 +96,8 @@ export const settingLocales = {
         random: "随机数",
         input: "输入",
         output: "输出",
-        true: "真",
-        false: "假",
+        true: "是",
+        false: "否",
         startUp: "启动",
         debug: "调试",
       }

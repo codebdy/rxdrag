@@ -14,7 +14,7 @@ export const auxReactions: IReactionMaterial[] = [
         {
           name: "input",
           label: "",
-          group: "out",
+          group: "in",
         },
       ],
     }

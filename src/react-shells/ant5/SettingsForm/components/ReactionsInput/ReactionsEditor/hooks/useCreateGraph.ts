@@ -5,6 +5,17 @@ import { Selection } from '@antv/x6-plugin-selection'
 import { MiniMap } from "@antv/x6-plugin-minimap";
 import { ReactionType } from "runner/reaction/interfaces/metas";
 
+const magnetAvailabilityHighlighter = {
+  name: "stroke",
+  args: {
+    padding: 3,
+    attrs: {
+      strokeWidth: 3,
+      stroke: "#52c41a",
+    },
+  },
+};
+
 export function useCreateGraph() {
   const [graph, setGraph] = useState<Graph>()
   useEffect(() => {
@@ -14,6 +25,9 @@ export function useCreateGraph() {
       ...config,
       interacting: (cellView: CellView) => {
         return { nodeMovable: true, edgeLabelMovable: false };
+      },
+      highlighting: {
+        magnetAvailable: magnetAvailabilityHighlighter,
       },
       connecting: {
         //自动吸附
