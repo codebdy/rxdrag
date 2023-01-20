@@ -15,18 +15,6 @@ export const config: Partial<Options.Manual> = {
     maxScale: 1.5,
     minScale: 0.5,
   },
-  highlighting: {
-    magnetAdsorbed: {
-      name: 'stroke',
-      args: {
-        attrs: {
-          fill: '#fff',
-          stroke: '#31d0c6',
-          strokeWidth: 4,
-        },
-      },
-    },
-  },
 }
 
 

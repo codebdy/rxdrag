@@ -48,9 +48,9 @@ export function useGetSingleNodeConfig() {
               circle: {
                 r: 4,
                 magnet: true,
-                stroke: token.colorTextSecondary,
+                stroke: token.colorTextSecondary,//#5e76c3
                 strokeWidth: 1,
-                fill: token.colorBorderSecondary,
+                fill: token.colorBgContainer,
               },
             },
 
@@ -63,7 +63,7 @@ export function useGetSingleNodeConfig() {
                 magnet: true,
                 stroke: token.colorTextSecondary,
                 strokeWidth: 1,
-                fill: token.colorBorderSecondary,
+                fill: token.colorBgContainer,
               },
             },
           },

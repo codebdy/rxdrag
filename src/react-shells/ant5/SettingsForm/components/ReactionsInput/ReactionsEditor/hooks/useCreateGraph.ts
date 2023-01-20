@@ -4,13 +4,14 @@ import { config } from "./config";
 import { Selection } from '@antv/x6-plugin-selection'
 import { MiniMap } from "@antv/x6-plugin-minimap";
 import { ReactionType } from "runner/reaction/interfaces/metas";
+import { useToken } from "antd/es/theme/internal";
 
 const magnetAvailabilityHighlighter = {
   name: "stroke",
   args: {
     padding: 3,
     attrs: {
-      strokeWidth: 3,
+      strokeWidth: 2,
       stroke: "#52c41a",
     },
   },
@@ -18,6 +19,7 @@ const magnetAvailabilityHighlighter = {
 
 export function useCreateGraph() {
   const [graph, setGraph] = useState<Graph>()
+  const [, token] = useToken()
   useEffect(() => {
     // 画布
     const gph: Graph = new Graph({
@@ -28,7 +30,17 @@ export function useCreateGraph() {
       },
       highlighting: {
         magnetAvailable: magnetAvailabilityHighlighter,
+        magnetAdsorbed: {
+          name: 'stroke',
+          args: {
+            attrs: {
+              stroke: token.colorPrimary,
+              strokeWidth: 4,
+            },
+          },
+        },
       },
+
       connecting: {
         //自动吸附
         snap: {
@@ -80,7 +92,7 @@ export function useCreateGraph() {
     return () => {
       gph?.dispose()
     }
-  }, [])
+  }, [token.colorPrimary])
 
   return graph
 }

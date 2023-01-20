@@ -15,7 +15,7 @@ export const getStartNodeConfig = (reactionNodeMeta: IReactionNodeMeta, token: G
     data: reactionNodeMeta,
     attrs: {
       body: {
-        fill: "#8297da",
+        fill: token.colorBgContainer,//"#8297da",
         stroke: '#5e76c3',
         strokeWidth: STROKE_WIDTH,
         magnet: true,
