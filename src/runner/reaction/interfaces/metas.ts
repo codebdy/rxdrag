@@ -24,7 +24,6 @@ export interface IPortMeta {
 export enum ReactionType {
   Start = "Start",
   End = "End",
-  Debug = 'Debug',
   SingleReaction = "SingleReaction",
   ComponentReaction = "ComponentReaction",
 }

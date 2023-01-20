@@ -22,7 +22,7 @@ export function useCreateGraph() {
         allowBlank: false,
         allowLoop: false,
         allowNode: false,
-        allowEdge: true,
+        allowEdge: false,
         highlight: true,
         connector: 'reactions-connector',
         connectionPoint: 'anchor',

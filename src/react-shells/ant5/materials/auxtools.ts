@@ -7,14 +7,14 @@ export const auxReactions: IReactionMaterial[] = [
     name: "debug",
     icon: debugIcon,
     label: "$debug",
-    reactionType: ReactionType.Debug,
+    reactionType: ReactionType.SingleReaction,
     color: "orange",
     meta: {
       ports: [
         {
           name: "debug",
           label: "",
-          group: "out",
+          group: "in",
         },
       ],
     }
