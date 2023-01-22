@@ -1,4 +1,4 @@
-import { IReactionNodeMeta } from "runner/reaction/interfaces/metas"
+import { IInvokeMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas"
 
 export enum ActionType {
   START_LINE = 'ReactionsEditor/START_LINE',
@@ -6,20 +6,31 @@ export enum ActionType {
   ADD_NODE = 'ReactionsEditor/ADD_NODE',
   REMOVE_NODE = 'ReactionsEditor/REMOVE_NODE',
   CHANGE_NODE = 'ReactionsEditor/CHANGE_NODE',
+
+  ADD_EDGE = 'ReactionsEditor/ADD_EDGE',
+  REMOVE_EDGE = 'ReactionsEditor/REMOVE_EDGE',
 }
 
 export interface Action {
   type: ActionType
 }
 
-export interface AddNodeAcion extends Action {
+export interface AddNodeAction extends Action {
   payload: IReactionNodeMeta
 }
 
-export interface RemoveNodeAcion extends Action {
+export interface RemoveNodeAction extends Action {
   payload: string // node uuid
 }
 
-export interface ChangeNodeAcion extends Action {
+export interface ChangeNodeAction extends Action {
   payload: IReactionNodeMeta
+}
+
+export interface AddEdgeAction extends Action {
+  payload: IInvokeMeta
+}
+
+export interface RemoveEdgeAction extends Action {
+  payload: string // Edge uuid
 }

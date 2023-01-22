@@ -12,7 +12,6 @@ export function useAddNode() {
       ...meta,
       id: node.id,
       x6Node: {
-        id: node.id,
         x: node.getPosition().x,
         y: node.getPosition().y,
         width: node.getSize().width,

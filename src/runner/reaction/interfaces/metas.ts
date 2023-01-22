@@ -9,10 +9,10 @@ export interface IX6NodeMeta {
   height: number;
 }
 
-export interface IX6EdgeMeta {
-  sourceAnchor: any;
-  targetAnchor: any;
-}
+// export interface IX6EdgeMeta {
+//   sourceAnchor: any;
+//   targetAnchor: any;
+// }
 
 
 export interface IPortMeta {
@@ -45,14 +45,14 @@ export interface IReactionNodeMeta extends IReactionNodeData {
 export interface IInvokeMeta {
   id: string;
   source: {
-    nodeUuid: string;
-    outputUuid: string;
+    nodeId: string;
+    port?: string;
   }
   target: {
-    nodeUuid: string;
-    inputUuid: string;
+    nodeId: string;
+    port?: string;
   };
-  x6Edge: IX6EdgeMeta;
+  //x6Edge: IX6EdgeMeta;
 }
 
 export interface ILogicMetas {
