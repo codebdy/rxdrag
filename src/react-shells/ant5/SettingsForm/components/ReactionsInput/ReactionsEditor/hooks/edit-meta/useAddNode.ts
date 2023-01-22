@@ -8,20 +8,21 @@ export function useAddNode() {
   const { graph, dispatch } = useEditorState()
   const handleNodeAdd = useCallback(({ node }: { node: Node, index: number, options: any }) => {
     const { meta } = node.getData() as INodeData
-
+    const newData = {
+      ...meta,
+      id: node.id,
+      x6Node: {
+        id: node.id,
+        x: node.getPosition().x,
+        y: node.getPosition().y,
+        width: node.getSize().width,
+        height: node.getSize().height,
+      }
+    }
+    node.setData(newData)
     dispatch({
       type: ActionType.ADD_NODE,
-      payload: {
-        ...meta,
-        id: node.id,
-        x6Node: {
-          id: node.id,
-          x: node.getPosition().x,
-          y: node.getPosition().y,
-          width: node.getSize().width,
-          height: node.getSize().height,
-        }
-      }
+      payload: newData
     })
   }, [dispatch])
 

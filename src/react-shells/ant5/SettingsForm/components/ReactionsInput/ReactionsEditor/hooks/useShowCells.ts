@@ -15,9 +15,9 @@ export function useShowCells() {
       for (const reactionNode of metas.reactions) {
         const grahpNode = oldNodes.find(node => node.id === reactionNode.id)
         //更新
-        if (grahpNode) {
-          grahpNode.setSize(reactionNode.x6Node as any);
-          grahpNode.setPosition(reactionNode.x6Node as any);
+        if (grahpNode && reactionNode.x6Node) {
+          grahpNode.setSize(reactionNode.x6Node);
+          grahpNode.setPosition(reactionNode.x6Node);
         } else {//新建
           cells.push(graph.createNode(getStartNodeConfig(reactionNode)))
         }

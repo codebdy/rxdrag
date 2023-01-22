@@ -20,6 +20,6 @@ export interface RemoveNodeAcion extends Action {
   payload: string // node uuid
 }
 
-export interface ChangeStartNodeAcion extends Action {
+export interface ChangeNodeAcion extends Action {
   payload: IReactionNodeMeta
 }
