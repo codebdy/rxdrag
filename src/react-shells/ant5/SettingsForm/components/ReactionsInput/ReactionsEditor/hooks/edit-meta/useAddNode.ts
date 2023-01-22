@@ -13,6 +13,7 @@ export function useAddNode() {
       type: ActionType.ADD_NODE,
       payload: {
         ...meta,
+        id: node.id,
         x6Node: {
           id: node.id,
           x: node.getPosition().x,

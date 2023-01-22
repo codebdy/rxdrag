@@ -4,13 +4,13 @@ import { IReactionNodeMeta } from "runner/reaction/interfaces/metas"
 const STROKE_WIDTH = 5
 export const getEndNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalToken) => {
   return {
+    id: nodeMeta.id,
     shape: 'circle',
     x: 700,
     y: 200,
     width: 20,
     height: 20,
     ...nodeMeta.x6Node,
-    id: nodeMeta.uuid,
     label: nodeMeta.label,
     data: { meta:nodeMeta },
     attrs: {

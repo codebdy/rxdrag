@@ -43,7 +43,7 @@ export const Toolbox = memo(() => {
         return;
       }
       const nodeMeta: IReactionNodeMeta = {
-        uuid: createUuid(),
+        id: createUuid(),
         label: t(marterial.label),
         type: marterial.reactionType,
         materialName: marterial.name,

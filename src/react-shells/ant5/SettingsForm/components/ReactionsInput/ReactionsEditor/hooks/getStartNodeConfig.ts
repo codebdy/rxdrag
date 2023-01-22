@@ -2,17 +2,17 @@ import { GlobalToken } from "antd/es/theme/interface"
 import { IReactionNodeMeta } from "runner/reaction/interfaces/metas"
 
 const STROKE_WIDTH = 2
-export const getStartNodeConfig = (reactionNodeMeta: IReactionNodeMeta, token: GlobalToken) => {
+export const getStartNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalToken) => {
   return {
+    id: nodeMeta.id,
     shape: 'circle',
     x: 90,
     y: 60,
     width: 20,
     height: 20,
-    ...reactionNodeMeta.x6Node,
-    id: reactionNodeMeta.uuid,
-    label: reactionNodeMeta.label,
-    data: { meta: reactionNodeMeta },
+    ...nodeMeta.x6Node,
+    label: nodeMeta.label,
+    data: { meta: nodeMeta },
     attrs: {
       body: {
         fill: token.colorBgContainer,//"#8297da",

@@ -28,6 +28,7 @@ export function useGetSingleNodeConfig() {
       })
     )
     return {
+      id: nodeMeta.id,
       shape: "reaction-node",
       x: 340,
       y: 240,

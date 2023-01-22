@@ -35,7 +35,7 @@ export interface IReactionNodeData {
 }
 
 export interface IReactionNodeMeta extends IReactionNodeData {
-  uuid: string;
+  id: string;
   type: ReactionType;
   materialName: string;
   label?: string;
@@ -43,7 +43,7 @@ export interface IReactionNodeMeta extends IReactionNodeData {
 }
 
 export interface IInvokeMeta {
-  uuid: string;
+  id: string;
   source: {
     nodeUuid: string;
     outputUuid: string;
@@ -61,7 +61,7 @@ export interface ILogicMetas {
 }
 
 export interface IReactionMeta {
-  uuid: string,
+  id: string,
   name?: string,
   title?: string,
   logicMetas?: ILogicMetas,
@@ -71,7 +71,7 @@ export interface IReactionMeta {
 // $field 当前字段, 设置字段：$field.setValue
 // $self 组件，设置组件属性:$self.setProps({dataSource:[...]}), 
 export interface IControllerMeta {
-  uuid: string,
+  id: string,
   events?: {
     [key: string]: IReactionMeta | undefined
   },
