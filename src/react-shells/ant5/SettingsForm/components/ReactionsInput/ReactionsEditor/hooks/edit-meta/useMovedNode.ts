@@ -21,7 +21,8 @@ export function useMovedNode() {
         }
       }
     })
-  }, [dispatch])
+    graph?.select(node.id)
+  }, [dispatch, graph])
 
   useEffect(() => {
     graph?.on('node:moved', handleNodeMoved)

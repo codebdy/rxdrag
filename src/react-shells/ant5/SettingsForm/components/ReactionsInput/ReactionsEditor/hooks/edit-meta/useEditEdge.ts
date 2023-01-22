@@ -18,13 +18,13 @@ export function useEditEdge() {
         port: (edge.getTarget() as any).port,
       },
     }
-
+    graph?.select(edge.id)
     dispatch({
       type: isNew ? ActionType.ADD_EDGE : ActionType.CHANGE_EDGE,
       payload: newData
     })
     
-  }, [dispatch])
+  }, [dispatch, graph])
 
   useEffect(() => {
     graph?.on('edge:connected', handleNodeAdd)

@@ -19,11 +19,12 @@ export function useAddNode() {
       }
     }
     node.setData(newData)
+    graph?.select(node.id)
     dispatch({
       type: ActionType.ADD_NODE,
       payload: newData
     })
-  }, [dispatch])
+  }, [dispatch, graph])
 
   useEffect(() => {
     graph?.on('node:added', handleNodeAdd)
