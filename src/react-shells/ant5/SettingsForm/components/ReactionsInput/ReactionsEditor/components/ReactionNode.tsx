@@ -53,7 +53,7 @@ const Label = styled.span`
 `
 
 export interface NodeViewParams {
-  nodeMeta: IReactionNodeMeta;
+  meta: IReactionNodeMeta;
   material: IReactionMaterial;
   token: GlobalToken
 }
@@ -63,7 +63,7 @@ export const ReactionNode = (props: { node?: Node }) => {
   const { node } = props
   const data = node?.getData() as NodeViewParams
   const { token } = data
-  const { label } = data.nodeMeta
+  const { label } = data.meta
 
   return (
     <NodeView
