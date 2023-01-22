@@ -1,5 +1,5 @@
 import { memo } from "react"
-import { useAddEdge } from "../hooks/edit-meta/useAddEdge"
+import { useEditEdge } from "../hooks/edit-meta/useEditEdge"
 import { useAddNode } from "../hooks/edit-meta/useAddNode"
 import { useMovedNode } from "../hooks/edit-meta/useMovedNode"
 import { useArrowhead } from "../hooks/useArrowhead"
@@ -10,7 +10,7 @@ export const Logic = memo(()=>{
   useShowCells()
   useTraceLining()
   useAddNode()
-  useAddEdge()
+  useEditEdge()
   useMovedNode()
   useArrowhead()
   return null

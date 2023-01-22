@@ -3,19 +3,20 @@ import { useCallback, useEffect } from "react";
 import { useEditorState } from "./useEditorState";
 
 export function useArrowhead() {
-  const { graph, dispatch } = useEditorState()
+  const { graph } = useEditorState()
 
   const handleMouseEnter = useCallback(({ cell }: { cell: Cell }) => {
+    //只能支持到结束节点变换，开始节点暂不支持
     cell.addTools([
-      {
-        name: "source-arrowhead",
-        args: {
-          attrs: {
-            fill: "transparent",
-            stroke: "transparent",
-          },
-        },
-      },
+      // {
+      //   name: "source-arrowhead",
+      //   args: {
+      //     attrs: {
+      //       fill: "transparent",
+      //       stroke: "transparent",
+      //     },
+      //   },
+      // },
       {
         name: "target-arrowhead",
         args: {

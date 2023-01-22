@@ -8,6 +8,7 @@ export enum ActionType {
   CHANGE_NODE = 'ReactionsEditor/CHANGE_NODE',
 
   ADD_EDGE = 'ReactionsEditor/ADD_EDGE',
+  CHANGE_EDGE = 'ReactionsEditor/CHANGE_EDGE',
   REMOVE_EDGE = 'ReactionsEditor/REMOVE_EDGE',
 }
 
@@ -28,6 +29,10 @@ export interface ChangeNodeAction extends Action {
 }
 
 export interface AddEdgeAction extends Action {
+  payload: IInvokeMeta
+}
+
+export interface ChangeEdgeAction extends Action {
   payload: IInvokeMeta
 }
 

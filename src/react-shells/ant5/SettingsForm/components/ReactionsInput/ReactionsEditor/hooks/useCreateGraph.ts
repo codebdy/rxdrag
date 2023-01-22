@@ -1,4 +1,4 @@
-import { Graph } from "@antv/x6";
+import { CellView, Graph } from "@antv/x6";
 import { useEffect, useState } from "react";
 import { config } from "./config";
 import { Selection } from '@antv/x6-plugin-selection'
@@ -27,7 +27,7 @@ export function useCreateGraph() {
     const gph: Graph = new Graph({
       container: document.getElementById("reactions-canvas-container")!,
       ...config,
-      interacting: () => {
+      interacting: (cellView: CellView) => {
         return { nodeMovable: true, edgeLabelMovable: false };
       },
       highlighting: {
@@ -62,15 +62,26 @@ export function useCreateGraph() {
           return magnet.getAttribute('port-group') !== 'in' && cell?.getData<INodeData>()?.meta?.type !== ReactionType.End
         },
         validateConnection(args) {
-          const { targetMagnet, targetCell } = args
+          const { targetMagnet, targetCell, sourceCell, sourceMagnet } = args
           let isConnected = false;
           const edges = gph?.getEdges() || [];
           const targetId = targetCell?.id;
+          const sourceId = sourceCell?.id;
           const targetPort = targetMagnet?.getAttribute('port');
+          const sourcePort = sourceMagnet?.getAttribute('port') || undefined;
           for (const edge of edges) {
             if (targetId && targetPort && (edge.target as any).cell === targetId && (edge.target as any).port === targetPort) {
               isConnected = true
               break
+            }
+            //连接到结束点
+            if (!targetPort && targetId) {
+              if (targetId === (edge.target as any).cell
+                && sourceId === (edge.source as any).cell
+                && (edge.source as any).port === sourcePort) {
+                isConnected = true
+                break
+              }
             }
           }
 
