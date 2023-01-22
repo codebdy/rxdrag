@@ -9,12 +9,19 @@ export function useArrowhead() {
     cell.addTools([
       {
         name: "source-arrowhead",
+        args: {
+          attrs: {
+            fill: "transparent",
+            stroke: "transparent",
+          },
+        },
       },
       {
         name: "target-arrowhead",
         args: {
           attrs: {
-            fill: "red",
+            fill: "transparent",
+            stroke: "transparent",
           },
         },
       },
@@ -29,7 +36,7 @@ export function useArrowhead() {
     graph?.on("edge:mouseenter", handleMouseEnter);
     graph?.on("edge:mouseleave", handleMouseLeave);
 
-    return ()=>{
+    return () => {
       graph?.off("edge:mouseenter", handleMouseEnter);
       graph?.off("edge:mouseleave", handleMouseLeave);
     }
