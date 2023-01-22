@@ -81,7 +81,6 @@ export function useCreateGraph() {
                 isConnected = true
                 break
               }
-
             }
           }
 
