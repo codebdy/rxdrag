@@ -20,7 +20,7 @@ export const initialState: IState = {
   redoList: [],
   metas: {
     reactions: [],
-    invakes: [],
+    invokes: [],
   },
 }
 

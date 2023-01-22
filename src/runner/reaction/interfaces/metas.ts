@@ -57,7 +57,7 @@ export interface IInvokeMeta {
 
 export interface ILogicMetas {
   reactions: IReactionNodeMeta[];
-  invakes: IInvokeMeta[];
+  invokes: IInvokeMeta[];
 }
 
 export interface IReactionMeta {

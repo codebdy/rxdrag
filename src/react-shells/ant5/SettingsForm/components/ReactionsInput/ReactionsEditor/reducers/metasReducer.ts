@@ -11,7 +11,7 @@ export function metasReducer(state: ILogicMetas, action: Action): ILogicMetas {
       return { ...state, reactions: [...state.reactions.filter(reaction => reaction.id !== changeNodeAction.payload.id), changeNodeAction.payload] }
     }
     case ActionType.ADD_EDGE:{
-      return { ...state, invakes: [...state.invakes, (action as AddEdgeAction).payload] }
+      return { ...state, invokes: [...state.invokes, (action as AddEdgeAction).payload] }
     }
   }
   return state
