@@ -5,6 +5,7 @@ import { IReactionMaterial } from 'runner/reaction/interfaces/material'
 import { IReactionNodeMeta } from 'runner/reaction/interfaces/metas'
 import { insertCss } from 'insert-css'
 import styled from 'styled-components'
+import { INodeData } from '../interfaces'
 
 insertCss(`
 .x6-node-selected .node{
@@ -52,8 +53,7 @@ const Label = styled.span`
     font-size: 13px;
 `
 
-export interface NodeViewParams {
-  meta: IReactionNodeMeta;
+export interface NodeViewParams extends INodeData {
   material: IReactionMaterial;
   token: GlobalToken
 }

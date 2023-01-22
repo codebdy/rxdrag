@@ -5,6 +5,7 @@ import { Selection } from '@antv/x6-plugin-selection'
 import { MiniMap } from "@antv/x6-plugin-minimap";
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { useToken } from "antd/es/theme/internal";
+import { INodeData } from "../interfaces";
 
 const magnetAvailabilityHighlighter = {
   name: "stroke",
@@ -57,7 +58,7 @@ export function useCreateGraph() {
         anchor: 'center',
         validateMagnet(args) {
           const { magnet, cell } = args
-          return magnet.getAttribute('port-group') !== 'in' && cell?.getData()?.type !== ReactionType.End
+          return magnet.getAttribute('port-group') !== 'in' && cell?.getData<INodeData>()?.meta?.type !== ReactionType.End
         },
         validateConnection(args) {
           const { targetMagnet, targetCell, sourceCell, sourceMagnet } = args
@@ -86,7 +87,7 @@ export function useCreateGraph() {
 
           return !isConnected &&
             targetMagnet?.getAttribute('port-group') !== 'out' &&
-            targetCell?.getData()?.type !== ReactionType.Start
+            targetCell?.getData<INodeData>()?.meta?.type !== ReactionType.Start
         },
         createEdge() {
           return gph?.createEdge({
