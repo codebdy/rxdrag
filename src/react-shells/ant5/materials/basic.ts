@@ -1,6 +1,6 @@
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { IReactionMaterial } from "../../../runner/reaction/interfaces/material";
-import { delayIcon, endIcon, ifIcon, loopIcon, mergeIcon, randomIcon, setVariableIcon, startIcon, switchIcon } from "../icons/reactions";
+import { delayIcon, endIcon, ifIcon, listenVariableIcon, loopIcon, mergeIcon, randomIcon, setVariableIcon, startIcon, switchIcon } from "../icons/reactions";
 
 export const basicReactions: IReactionMaterial[] = [
   {
@@ -163,6 +163,21 @@ export const basicReactions: IReactionMaterial[] = [
           name: "input",
           label: "",//"$startUp",
           group: "in",
+        },
+      ],
+    }
+  },
+  {
+    name: "listenVariable",
+    icon: listenVariableIcon,
+    label: "$listenVariable",
+    reactionType: ReactionType.SingleReaction,
+    meta: {
+      ports: [
+        {
+          name: "output",
+          label: "",//"$startUp",
+          group: "out",
         },
       ],
     }

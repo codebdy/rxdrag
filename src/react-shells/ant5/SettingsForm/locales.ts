@@ -100,7 +100,8 @@ export const settingLocales = {
         false: "否",
         startUp: "启动",
         debug: "调试",
-        setVariable: "设置变量",
+        setVariable: "变量赋值",
+        listenVariable: "监听变量",
       }
     }
   },
@@ -205,6 +206,7 @@ export const settingLocales = {
         startUp: "Start Up",
         debug: "Debug",
         setVariable: "Set Variable",
+        listenVariable: "Listen Variable",
       }
     }
   }
