@@ -100,6 +100,7 @@ export const settingLocales = {
         false: "否",
         startUp: "启动",
         debug: "调试",
+        setVariable: "设置变量",
       }
     }
   },
@@ -203,6 +204,7 @@ export const settingLocales = {
         false: "False",
         startUp: "Start Up",
         debug: "Debug",
+        setVariable: "Set Variable",
       }
     }
   }
