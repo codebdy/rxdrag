@@ -7,6 +7,8 @@ import { useTrans } from "./useTrans"
 export function useGetSingleNodeConfig() {
   const t = useTrans()
   const getSingleNodeConfig = useCallback((nodeMeta: IReactionNodeMeta, token: GlobalToken, material: IReactionMaterial | undefined) => {
+    const height = 40
+    const width = 120
     const ports = nodeMeta.ports?.map(
       port => ({
         id: port.name,
@@ -31,14 +33,16 @@ export function useGetSingleNodeConfig() {
       shape: "reaction-node",
       x: 340,
       y: 240,
-      width: 120,
-      height: 40,
+      width: width,
+      height: height,
       data: {
         meta: nodeMeta,
         backgroundColor: token.colorBgContainer,
         color: token.colorTextSecondary,
         material,
-        token
+        token,
+        width: width,
+        height: height,
       },
       ports: {
         groups: {

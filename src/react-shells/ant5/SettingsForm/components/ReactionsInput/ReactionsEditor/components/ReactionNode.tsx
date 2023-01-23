@@ -2,7 +2,6 @@ import { Node } from '@antv/x6'
 import '@antv/x6-react-shape'
 import { GlobalToken } from 'antd/es/theme/interface'
 import { IReactionMaterial } from 'runner/reaction/interfaces/material'
-import { IReactionNodeMeta } from 'runner/reaction/interfaces/metas'
 import { insertCss } from 'insert-css'
 import styled from 'styled-components'
 import { INodeData } from '../interfaces'
@@ -55,7 +54,9 @@ const Label = styled.span`
 
 export interface NodeViewParams extends INodeData {
   material: IReactionMaterial;
-  token: GlobalToken
+  token: GlobalToken,
+  width: number,
+  height: number,
 }
 
 
@@ -65,6 +66,8 @@ export const ReactionNode = (props: { node?: Node }) => {
   const { token } = data
   const { label } = data.meta
 
+  const inputPortCount = data.meta.ports?.filter(port => port.group === "in").length
+  const outputPortCount = data.meta.ports?.filter(port => port.group === "out").length
   return (
     <NodeView
       className='node'
@@ -72,6 +75,10 @@ export const ReactionNode = (props: { node?: Node }) => {
         backgroundColor: token.colorBgContainer,
         color: token.colorText,
         outlineColor: token.colorTextSecondary,
+        borderTopLeftRadius: !inputPortCount ? data.height / 2 : undefined,
+        borderBottomLeftRadius: !inputPortCount ? data.height / 2 : undefined,
+        borderTopRightRadius: !outputPortCount ? data.height / 2 : undefined,
+        borderBottomRightRadius: !outputPortCount ? data.height / 2 : undefined,
       }}
     >
       <Icon style={{ color: data?.material.color }}>
