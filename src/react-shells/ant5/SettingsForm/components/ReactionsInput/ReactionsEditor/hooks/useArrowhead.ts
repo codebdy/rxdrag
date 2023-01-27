@@ -36,7 +36,6 @@ export function useArrowhead() {
   useEffect(() => {
     graph?.on("edge:mouseenter", handleMouseEnter);
     graph?.on("edge:mouseleave", handleMouseLeave);
-
     return () => {
       graph?.off("edge:mouseenter", handleMouseEnter);
       graph?.off("edge:mouseleave", handleMouseLeave);

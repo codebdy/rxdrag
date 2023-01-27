@@ -10,6 +10,8 @@ export enum ActionType {
   ADD_EDGE = 'ReactionsEditor/ADD_EDGE',
   CHANGE_EDGE = 'ReactionsEditor/CHANGE_EDGE',
   REMOVE_EDGE = 'ReactionsEditor/REMOVE_EDGE',
+
+  SELECTION = 'ReactionsEditor/SELECTION',
 }
 
 export interface Action {
@@ -38,4 +40,8 @@ export interface ChangeEdgeAction extends Action {
 
 export interface RemoveEdgeAction extends Action {
   payload: string // Edge uuid
+}
+
+export interface SelectionAction extends Action {
+  payload: string | undefined // Cell id
 }
