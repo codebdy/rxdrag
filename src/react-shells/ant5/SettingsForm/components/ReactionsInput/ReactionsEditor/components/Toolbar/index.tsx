@@ -1,6 +1,5 @@
 import { ZoomOutOutlined, ZoomInOutlined } from "@ant-design/icons"
 import { Button, Divider, Space } from "antd"
-import { useUndo } from "core-react/hooks/useUndo"
 import { memo, useCallback } from "react"
 import { undoIcon, redoIcon } from "react-shells/ant5/icons"
 import styled from "styled-components"
@@ -12,6 +11,7 @@ import { useZoomIn } from "../../hooks/useZoomIn"
 import { useZoomOut } from "../../hooks/useZoomOut"
 import { MAX_ZOOM, MIN_ZOOM } from "../../utils"
 import { useBackup } from "../../hooks/edit-meta/useBackup"
+import { useUndo } from "../../hooks/edit-meta/useUndo"
 
 const StyledToolbar = styled.div`
   display: flex;

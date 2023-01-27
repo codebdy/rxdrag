@@ -1,4 +1,4 @@
-import { IInvokeMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas"
+import { IInvokeMeta, ILogicMetas, IReactionNodeMeta } from "runner/reaction/interfaces/metas"
 import { ISnapshot } from "./contexts"
 
 export enum ActionType {
@@ -18,6 +18,7 @@ export enum ActionType {
   BACKUP = 'ReactionsEditor/BACKUP',
   SET_REDOLIST = 'ReactionsEditor/SET_REDOLIST',
   SET_UNOLIST = 'ReactionsEditor/SET_UNOLIST',
+  SET_METAS = 'ReactionsEditor/SET_METAS',
 }
 
 export interface Action {
@@ -67,4 +68,9 @@ export interface SetUndoListAction extends Action {
 export interface SetRedoListAction extends Action {
   payload: ISnapshot[]
 }
+
+export interface SetMetasAction extends Action {
+  payload: ILogicMetas
+}
+
 

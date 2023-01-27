@@ -1,8 +1,11 @@
 import { ILogicMetas } from "runner/reaction/interfaces/metas";
-import { Action, ActionType, AddEdgeAction, AddNodeAction, ChangeEdgeAction, ChangeNodeAction, RemoveNodeAction } from "../actions";
+import { Action, ActionType, AddEdgeAction, AddNodeAction, ChangeEdgeAction, ChangeNodeAction, RemoveNodeAction, SetMetasAction } from "../actions";
 
 export function metasReducer(state: ILogicMetas, action: Action): ILogicMetas {
   switch (action.type) {
+    case ActionType.SET_METAS: {
+      return (action as SetMetasAction).payload
+    }
     case ActionType.ADD_NODE: {
       return { ...state, reactions: [...state.reactions, (action as AddNodeAction).payload] }
     }
