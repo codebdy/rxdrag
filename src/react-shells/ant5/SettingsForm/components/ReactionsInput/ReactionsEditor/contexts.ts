@@ -2,10 +2,14 @@ import { Graph } from "@antv/x6";
 import { createContext } from "react";
 import { ILogicMetas } from "runner/reaction/interfaces/metas";
 
+export interface ISnapshot extends ILogicMetas {
+  selected?: string,
+}
+
 export interface IState {
   lining: boolean,
-  undoList: ILogicMetas[],
-  redoList: ILogicMetas[],
+  undoList: ISnapshot[],
+  redoList: ISnapshot[],
   metas: ILogicMetas,
   selected?: string,
   zoom: number,

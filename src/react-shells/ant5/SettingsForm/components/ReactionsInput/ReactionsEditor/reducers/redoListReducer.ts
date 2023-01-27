@@ -1,8 +1,14 @@
-import { Action } from "redux";
-import { ILogicMetas } from "runner/reaction/interfaces/metas";
+import { Action, ActionType, SetRedoListAction } from "../actions";
+import { ISnapshot } from "../contexts";
 
-export function redoListReducer(state:ILogicMetas[], action: Action){
-  return {
-    ...state,
+export function redoListReducer(state: ISnapshot[], action: Action) {
+  switch (action.type) {
+    case ActionType.BACKUP: {
+      return []
+    }
+    case ActionType.SET_REDOLIST: {
+      return (action as SetRedoListAction).payload
+    }
   }
+  return state
 }

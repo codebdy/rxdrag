@@ -1,4 +1,5 @@
 import { IInvokeMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas"
+import { ISnapshot } from "./contexts"
 
 export enum ActionType {
   START_LINE = 'ReactionsEditor/START_LINE',
@@ -15,8 +16,8 @@ export enum ActionType {
   SET_ZOOM = 'ReactionsEditor/SET_ZOOM',
 
   BACKUP = 'ReactionsEditor/BACKUP',
-  REDO = 'ReactionsEditor/REDO',
-  UNDO = 'ReactionsEditor/UNDO',
+  SET_REDOLIST = 'ReactionsEditor/SET_REDOLIST',
+  SET_UNOLIST = 'ReactionsEditor/SET_UNOLIST',
 }
 
 export interface Action {
@@ -54,3 +55,16 @@ export interface SelectionAction extends Action {
 export interface SetZoomAction extends Action {
   payload: number
 }
+
+export interface BackupAction extends Action {
+  payload: ISnapshot
+}
+
+export interface SetUndoListAction extends Action {
+  payload: ISnapshot[]
+}
+
+export interface SetRedoListAction extends Action {
+  payload: ISnapshot[]
+}
+
