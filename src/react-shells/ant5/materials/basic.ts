@@ -8,7 +8,7 @@ export const basicReactions: IReactionMaterial[] = [
     icon: startIcon,
     label: "$input",
     reactionType: ReactionType.Start,
-    color: "#5e76c3",
+    //color: "#5e76c3",
   },
   {
     name: "end",

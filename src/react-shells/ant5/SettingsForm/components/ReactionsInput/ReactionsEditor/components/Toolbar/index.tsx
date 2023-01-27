@@ -1,11 +1,13 @@
 import { ZoomOutOutlined, ZoomInOutlined } from "@ant-design/icons"
 import { Button, Divider, Space } from "antd"
+import { useUndo } from "core-react/hooks/useUndo"
 import { memo, useCallback } from "react"
 import { undoIcon, redoIcon } from "react-shells/ant5/icons"
 import styled from "styled-components"
 import { mapIcon, zoomResetIcon } from "../../../../../../icons/reactions"
 import { ActionType } from "../../actions"
 import { useEditorState } from "../../hooks/useEditorState"
+import { useRedo } from "../../hooks/useRedo"
 import { useZoomIn } from "../../hooks/useZoomIn"
 import { useZoomOut } from "../../hooks/useZoomOut"
 import { MAX_ZOOM, MIN_ZOOM } from "../../utils"
@@ -35,23 +37,33 @@ export const Toolbar = memo((
   }
 ) => {
   const { showMap, toggleShowMap } = props
-  const { selected, zoom, graph, dispatch } = useEditorState()
+  const { selected, zoom, graph, redoList, undoList, dispatch } = useEditorState()
   const handleRemove = useCallback(() => {
     selected && graph?.getCellById(selected)?.remove()
   }, [graph, selected])
 
   const zoomIn = useZoomIn()
   const zoomOut = useZoomOut()
+  const undo = useUndo()
+  const redo = useRedo()
 
-  const handleZoomReset = useCallback(()=>{
+  const handleZoomReset = useCallback(() => {
     dispatch({ type: ActionType.SET_ZOOM, payload: 1 })
   }, [dispatch])
 
   return (
     <StyledToolbar>
       <Space>
-        <ToolbarButton icon={<span role="img" className="anticon">{undoIcon}</span>}></ToolbarButton>
-        <ToolbarButton disabled icon={<span role="img" className="anticon">{redoIcon}</span>}></ToolbarButton>
+        <ToolbarButton
+          disabled={!undoList.length}
+          icon={<span role="img" className="anticon">{undoIcon}</span>}
+          onClick={undo}
+        ></ToolbarButton>
+        <ToolbarButton
+          disabled={!redoList.length}
+          icon={<span role="img" className="anticon">{redoIcon}</span>}
+          onClick={redo}
+        ></ToolbarButton>
         <Divider type="vertical" />
         <ToolbarButton
           disabled={!selected}
@@ -69,7 +81,7 @@ export const Toolbar = memo((
           type={showMap ? "default" : "text"}
           onClick={toggleShowMap}
         ></ToolbarButton>
-        
+
         <ToolbarButton
           icon={zoomResetIcon}
           disabled={zoom === 1}

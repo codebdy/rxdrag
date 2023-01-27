@@ -13,6 +13,10 @@ export enum ActionType {
 
   SELECTION = 'ReactionsEditor/SELECTION',
   SET_ZOOM = 'ReactionsEditor/SET_ZOOM',
+
+  BACKUP = 'ReactionsEditor/BACKUP',
+  REDO = 'ReactionsEditor/REDO',
+  UNDO = 'ReactionsEditor/UNDO',
 }
 
 export interface Action {
