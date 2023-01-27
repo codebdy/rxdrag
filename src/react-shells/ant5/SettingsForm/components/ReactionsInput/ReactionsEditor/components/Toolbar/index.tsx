@@ -3,7 +3,8 @@ import { Button, Divider, Space } from "antd"
 import { memo, useCallback } from "react"
 import { undoIcon, redoIcon } from "react-shells/ant5/icons"
 import styled from "styled-components"
-import { mapIcon } from "../../../../../../icons/reactions"
+import { mapIcon, zoomResetIcon } from "../../../../../../icons/reactions"
+import { ActionType } from "../../actions"
 import { useEditorState } from "../../hooks/useEditorState"
 import { useZoomIn } from "../../hooks/useZoomIn"
 import { useZoomOut } from "../../hooks/useZoomOut"
@@ -34,13 +35,17 @@ export const Toolbar = memo((
   }
 ) => {
   const { showMap, toggleShowMap } = props
-  const { selected, zoom, graph } = useEditorState()
+  const { selected, zoom, graph, dispatch } = useEditorState()
   const handleRemove = useCallback(() => {
     selected && graph?.getCellById(selected)?.remove()
   }, [graph, selected])
 
   const zoomIn = useZoomIn()
   const zoomOut = useZoomOut()
+
+  const handleZoomReset = useCallback(()=>{
+    dispatch({ type: ActionType.SET_ZOOM, payload: 1 })
+  }, [dispatch])
 
   return (
     <StyledToolbar>
@@ -64,6 +69,12 @@ export const Toolbar = memo((
           type={showMap ? "default" : "text"}
           onClick={toggleShowMap}
         ></ToolbarButton>
+        
+        <ToolbarButton
+          icon={zoomResetIcon}
+          disabled={zoom === 1}
+          onClick={handleZoomReset}
+        ></ToolbarButton>
         <ToolbarButton
           icon={<ZoomOutOutlined />}
           disabled={zoom === MIN_ZOOM}
@@ -74,6 +85,7 @@ export const Toolbar = memo((
           disabled={zoom === MAX_ZOOM}
           onClick={zoomIn}
         ></ToolbarButton>
+
       </Space>
     </StyledToolbar>
   )
