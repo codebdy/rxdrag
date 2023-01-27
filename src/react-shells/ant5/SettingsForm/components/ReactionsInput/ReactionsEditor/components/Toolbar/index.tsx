@@ -11,6 +11,7 @@ import { useRedo } from "../../hooks/edit-meta/useRedo"
 import { useZoomIn } from "../../hooks/useZoomIn"
 import { useZoomOut } from "../../hooks/useZoomOut"
 import { MAX_ZOOM, MIN_ZOOM } from "../../utils"
+import { useBackup } from "../../hooks/edit-meta/useBackup"
 
 const StyledToolbar = styled.div`
   display: flex;
@@ -38,9 +39,14 @@ export const Toolbar = memo((
 ) => {
   const { showMap, toggleShowMap } = props
   const { selected, zoom, graph, redoList, undoList, dispatch } = useEditorState()
+  const backup = useBackup()
   const handleRemove = useCallback(() => {
-    selected && graph?.getCellById(selected)?.remove()
-  }, [graph, selected])
+    if (selected) {
+      backup()
+      graph?.getCellById(selected)?.remove()
+    }
+
+  }, [backup, graph, selected])
 
   const zoomIn = useZoomIn()
   const zoomOut = useZoomOut()

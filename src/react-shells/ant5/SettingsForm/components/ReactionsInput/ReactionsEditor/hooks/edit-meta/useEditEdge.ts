@@ -3,10 +3,13 @@ import { useCallback, useEffect } from "react"
 import { IInvokeMeta } from "runner/reaction/interfaces/metas"
 import { ActionType } from "../../actions"
 import { useEditorState } from "../useEditorState"
+import { useBackup } from "./useBackup"
 
 export function useEditEdge() {
   const { graph, dispatch } = useEditorState()
+  const backup = useBackup()
   const handleNodeAdd = useCallback(({ isNew, edge }: { isNew: boolean, edge: Edge }) => {
+    backup()
     const newData: IInvokeMeta = {
       id: edge.id,
       source: {
@@ -24,7 +27,7 @@ export function useEditEdge() {
       payload: newData
     })
     
-  }, [dispatch, graph])
+  }, [backup, dispatch, graph])
 
   useEffect(() => {
     graph?.on('edge:connected', handleNodeAdd)

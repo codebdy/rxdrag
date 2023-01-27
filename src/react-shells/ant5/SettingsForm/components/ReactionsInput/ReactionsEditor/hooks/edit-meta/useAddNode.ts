@@ -3,11 +3,14 @@ import { useCallback, useEffect } from "react";
 import { ActionType } from "../../actions";
 import { INodeData } from "../../interfaces";
 import { useEditorState } from "../useEditorState";
+import { useBackup } from "./useBackup";
 
 export function useAddNode() {
   const { graph, dispatch } = useEditorState()
+  const backup = useBackup()
   const handleNodeAdd = useCallback(({ node }: { node: Node, index: number, options: any }) => {
     const { meta } = node.getData() as INodeData
+    backup()
     const newData = {
       ...meta,
       id: node.id,
@@ -24,7 +27,7 @@ export function useAddNode() {
       type: ActionType.ADD_NODE,
       payload: newData
     })
-  }, [dispatch, graph])
+  }, [backup, dispatch, graph])
 
   useEffect(() => {
     graph?.on('node:added', handleNodeAdd)
