@@ -12,6 +12,7 @@ export enum ActionType {
   REMOVE_EDGE = 'ReactionsEditor/REMOVE_EDGE',
 
   SELECTION = 'ReactionsEditor/SELECTION',
+  SET_ZOOM = 'ReactionsEditor/SET_ZOOM',
 }
 
 export interface Action {
@@ -44,4 +45,8 @@ export interface RemoveEdgeAction extends Action {
 
 export interface SelectionAction extends Action {
   payload: string | undefined // Cell id
+}
+
+export interface SetZoomAction extends Action {
+  payload: number
 }

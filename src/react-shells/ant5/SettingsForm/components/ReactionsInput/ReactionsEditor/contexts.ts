@@ -8,6 +8,7 @@ export interface IState {
   redoList: ILogicMetas[],
   metas: ILogicMetas,
   selected?: string,
+  zoom: number,
 }
 
 export interface IReactionsEditorParams extends IState {
@@ -24,6 +25,7 @@ export const initialState: IState = {
     invokes: [],
   },
   selected: undefined,
+  zoom: 1,
 }
 
 export const ReacionsEditorContext = createContext<IReactionsEditorParams>({
