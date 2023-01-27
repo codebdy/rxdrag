@@ -6,7 +6,7 @@ import { useArrowhead } from "../hooks/useArrowhead"
 import { useShowCells } from "../hooks/useShowCells"
 import { useTraceLining } from "../hooks/useTraceLining"
 import { useSelection } from "../hooks/useSelection"
-import { useRemove } from "../hooks/useRemove"
+import { useRemove } from "../hooks/edit-meta/useRemove"
 import { useZoom } from "../hooks/useZoom"
 
 export const Logic = memo(()=>{

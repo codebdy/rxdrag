@@ -1,7 +1,7 @@
 import { Cell } from "@antv/x6";
 import { useCallback, useEffect } from "react";
-import { ActionType } from "../actions";
-import { useEditorState } from "./useEditorState";
+import { ActionType } from "../../actions";
+import { useEditorState } from "../useEditorState";
 
 export function useRemove() {
   const { dispatch, graph } = useEditorState()
