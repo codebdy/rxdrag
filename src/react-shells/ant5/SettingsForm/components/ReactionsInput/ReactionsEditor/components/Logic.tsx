@@ -6,6 +6,7 @@ import { useArrowhead } from "../hooks/useArrowhead"
 import { useShowCells } from "../hooks/useShowCells"
 import { useTraceLining } from "../hooks/useTraceLining"
 import { useSelection } from "../hooks/useSelection"
+import { useRemove } from "../hooks/useRemove"
 
 export const Logic = memo(()=>{
   useShowCells()
@@ -15,5 +16,6 @@ export const Logic = memo(()=>{
   useMovedNode()
   useArrowhead()
   useSelection()
+  useRemove()
   return null
 })
