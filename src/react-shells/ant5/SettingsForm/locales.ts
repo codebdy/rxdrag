@@ -1,6 +1,8 @@
 export const settingLocales = {
   "zh-CN": {
     tools: {
+      edit: "编辑",
+      delete: "删除",
       font: "字体",
       fontWeight: "字重",
       fontStyle: "样式",
@@ -111,6 +113,8 @@ export const settingLocales = {
   },
   'en-US': {
     tools: {
+      edit: "Edit",
+      delete: "Delete",
       font: "Font",
       fontWeight: "Font Weight",
       fontStyle: "Style",
