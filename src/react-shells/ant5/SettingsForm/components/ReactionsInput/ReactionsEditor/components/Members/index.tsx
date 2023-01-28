@@ -1,11 +1,12 @@
 import { PlusOutlined, ThunderboltOutlined } from "@ant-design/icons";
 import { Button, Typography } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
-import { memo, useCallback } from "react"
+import { memo, useCallback, useState } from "react"
 import { IControllerMeta } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
 import { methodIcon } from "../../../../../../icons/reactions";
 import { EditableListItem } from "./EditableListItem";
+import { NameDialog } from "./NameDialog";
 
 const { Text } = Typography;
 
@@ -44,6 +45,8 @@ export const Members = memo((
   }
 ) => {
   const { value, selected, onSelect } = props
+  const [addReactionOpen, setAddReactionOpen] = useState(false)
+
   const t = useToolsTranslate()
 
   const handleEventClick = useCallback((id: string) => {
@@ -51,6 +54,21 @@ export const Members = memo((
       onSelect?.(id)
     }
   }, [onSelect])
+
+  const handleAddReaction = useCallback(() => {
+    setAddReactionOpen(true)
+  }, [])
+
+  const handleReactionCancel = useCallback(() => {
+    setAddReactionOpen(false)
+  }, [])
+
+  const handleAddReactionOk = useCallback((name?: string) => {
+    if(name){
+      
+    }
+    setAddReactionOpen(false)
+  }, [])
 
   return (
     <>
@@ -73,7 +91,12 @@ export const Members = memo((
       </List>
       <Title>
         <Text type="secondary">{t("ReactionsInput.reactions")}</Text>
-        <Button size="small" type="text" icon={<PlusOutlined />}></Button>
+        <Button
+          size="small"
+          type="text"
+          icon={<PlusOutlined />}
+          onClick={handleAddReaction}
+        ></Button>
       </Title>
       <List>
         <EditableListItem>
@@ -97,6 +120,12 @@ export const Members = memo((
           变量 1
         </ListItem>
       </List>
+      <NameDialog
+        title={'$addReaction'}
+        open={addReactionOpen}
+        onCancel={handleReactionCancel}
+        onOk={handleAddReactionOk}
+      />
     </>
   )
 })

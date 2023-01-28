@@ -83,6 +83,10 @@ export const settingLocales = {
       },
 
       ReactionsInput: {
+        confirm: "确认",
+        cancel: "取消",
+        addReaction: "添加交互",
+        name: "名称",
         variables: "变量",
         events: "事件",
         reactions: "交互",
@@ -108,6 +112,7 @@ export const settingLocales = {
         debug: "调试",
         setVariable: "变量赋值",
         listenVariable: "监听变量",
+        pleaseInputName: "请输入名称",
       }
     }
   },
@@ -194,6 +199,10 @@ export const settingLocales = {
         "Customized": "Customized"
       },
       ReactionsInput: {
+        confirm: "Confirm",
+        cancel: "Cancel",
+        addReaction: "Add Reaction",
+        name: "Name",
         variables: "variables",
         events: "Events",
         reactions: "Reactions",
@@ -219,6 +228,7 @@ export const settingLocales = {
         debug: "Debug",
         setVariable: "Set Variable",
         listenVariable: "Listen Variable",
+        pleaseInputName: "Please input name!",
       }
     }
   }
