@@ -22,21 +22,26 @@ export const ReactionsInput = memo((props: {
     setIsModalOpen(false);
   }, []);
 
-  const onSwitchChange = useCallback((checked: boolean) => {
+  const handleSwitchChange = useCallback((checked: boolean) => {
     if (checked) {
       const id = createUuid()
-      onChange?.({ ...value, id: id, name: value?.name || id })
+      onChange?.({ ...value, id: id })
     } else {
       onChange?.({ ...value, id: undefined })
     }
   }, [onChange, value]);
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value: inputValue } = e.target;
+    onChange?.({ ...value, name: inputValue })
+  };
 
   return (
     <div>
       <Form.Item
         label={title}
       >
-        <Switch onChange={onSwitchChange} />
+        <Switch onChange={handleSwitchChange} />
       </Form.Item>
       {
         value?.id &&
@@ -44,7 +49,7 @@ export const ReactionsInput = memo((props: {
           <Form.Item
             label={t("controllerName")}
           >
-            <Input value = {value.name} />
+            <Input value={value.name} onChange={handleNameChange} />
           </Form.Item>
           <Form.Item
             label={t("config")}
