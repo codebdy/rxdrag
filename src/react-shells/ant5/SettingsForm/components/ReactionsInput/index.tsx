@@ -45,7 +45,7 @@ export const ReactionsInput = memo((props: {
       <Form.Item
         label={title}
       >
-        <Switch onChange={handleSwitchChange} />
+        <Switch checked={!!value?.id} onChange={handleSwitchChange} />
       </Form.Item>
       {
         value?.id &&
