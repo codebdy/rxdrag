@@ -31,10 +31,14 @@ export const ReactionsInput = memo((props: {
     }
   }, [onChange, value]);
 
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: inputValue } = e.target;
     onChange?.({ ...value, name: inputValue })
-  };
+  }, [onChange, value]);
+
+  const handleConfigChange = useCallback((meta?: IControllerMeta) => {
+    onChange?.({ ...meta, id: value?.id, name: value?.name })
+  }, [onChange, value?.id, value?.name]);
 
   return (
     <div>
@@ -71,7 +75,7 @@ export const ReactionsInput = memo((props: {
             centered
             destroyOnClose
           >
-            <ReactionsEditor />
+            <ReactionsEditor value={value} onChange={handleConfigChange} />
           </Modal>
         </>
       }

@@ -8,6 +8,7 @@ import { initialState, IReactionsEditorParams, IState, ReacionsEditorContext } f
 import { Toolbar } from "./components/Toolbar";
 import { Toolbox } from "./components/Toolbox";
 import { mainReducer } from "./reducers/mainReducer";
+import { IControllerMeta } from "runner/reaction/interfaces/metas";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -85,7 +86,13 @@ const RightArea = styled.div`
   display: flex;
   flex-flow: column;
 `
-export const ReactionsEditor = memo(() => {
+export const ReactionsEditor = memo((
+  props: {
+    value?: IControllerMeta,
+    onChange?: (value?: IControllerMeta) => void,
+  }
+) => {
+  const { value, onChange } = props
   const [showMap, setShowMap] = useState(false)
   const [state, dispatch] = useReducer(mainReducer, initialState);
   const graph = useCreateGraph()
