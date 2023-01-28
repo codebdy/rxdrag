@@ -4,6 +4,7 @@ import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo } from "react"
 import styled from "styled-components";
 import { methodIcon } from "../../../../../icons/reactions";
+import { IEventMeta } from "../interfaces";
 
 const { Text } = Typography;
 
@@ -26,21 +27,26 @@ const ListItem = styled((props) => <Button type="text" {...props} />)`
   align-items: center;
   margin: 2px 0;
 `
-export const Members = memo(() => {
+export const Members = memo((
+  props: {
+    events: IEventMeta[]
+  }
+) => {
+  const { events } = props
   const t = useToolsTranslate()
   return (
     <>
       <Title><Text type="secondary">{t("ReactionsInput.events")}</Text></Title>
       <List>
-        <ListItem icon={<ThunderboltOutlined />}>
-          初始化
-        </ListItem>
-        <ListItem icon={<ThunderboltOutlined />}>
-          销毁
-        </ListItem>
-        <ListItem icon={<ThunderboltOutlined />}>
-          点击
-        </ListItem>
+        {
+          events.map((event) => {
+            return (
+              <ListItem key={event.name} icon={<ThunderboltOutlined />}>
+                {event.label}
+              </ListItem>
+            )
+          })
+        }
       </List>
       <Title>
         <Text type="secondary">{t("ReactionsInput.reactions")}</Text>

@@ -114,7 +114,7 @@ export const ReactionsEditor = memo((
     <ReacionsEditorContext.Provider value={params}>
       <SytledContent id="reactions-editor-container">
         <LeftArea>
-          <Members />
+          <Members events={events} />
         </LeftArea>
         <CenterArea>
           <Toolbar showMap={showMap} toggleShowMap={handleToggleMap} />
