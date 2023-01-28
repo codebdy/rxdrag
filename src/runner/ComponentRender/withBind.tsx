@@ -10,9 +10,9 @@ export function withBind(WrappedComponent: React.FC<any> | React.ComponentClass<
     return WrappedComponent
   }
 
-  if (fieldType === "normal" && fieldMeta.params?.windBind === false) {
+  if (fieldType === "normal" && fieldMeta.params?.withBind === false) {
     return WrappedComponent
-  } else if (fieldType !== "normal" && !fieldMeta.params?.windBind) {
+  } else if (fieldType !== "normal" && !fieldMeta.params?.withBind) {
     return WrappedComponent
   }
   const propName = fieldMeta.params?.valuePropName || "value"

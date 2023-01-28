@@ -213,13 +213,13 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
         {
           componentName: "FormItem",
           props: {
-            label: "$windBind",
+            label: "$withBind",
           },
           children: [
             {
               componentName: "Switch",
               "x-field": {
-                name: "windBind",
+                name: "withBind",
                 params: {
                   valuePropName: "checked",
                 }
@@ -274,6 +274,20 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
                 params: {
                   valuePropName: "checked",
                 }
+              },
+            }
+          ]
+        },
+        {
+          componentName: "FormItem",
+          props: {
+            label: "$controllerName",
+          },
+          children: [
+            {
+              componentName: "Input",
+              "x-field": {
+                
               },
             }
           ]

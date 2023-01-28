@@ -8,7 +8,8 @@ export const locales = {
       footer: "页脚",
       bordered: "边框",
       split: "分割线",
-      ...sizeLocales["zh-CN"]
+      ...sizeLocales["zh-CN"],
+      controllerName: "控制器名",
     }
 
   },
@@ -20,6 +21,7 @@ export const locales = {
       bordered: "Bordered",
       split: "Split",
       ...sizeLocales["en-US"],
+      controllerName: "Controller Name",
     }
   }
 }

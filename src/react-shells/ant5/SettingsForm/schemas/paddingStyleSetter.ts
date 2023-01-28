@@ -23,7 +23,7 @@ export const paddingStyleSetter: INodeSchema<IFieldMeta> = {
           },
         ],
         params:{
-          windBind: true,
+          withBind: true,
         }
       },
       props: {
