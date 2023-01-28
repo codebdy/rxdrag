@@ -9,6 +9,7 @@ import { Toolbar } from "./components/Toolbar";
 import { Toolbox } from "./components/Toolbox";
 import { mainReducer } from "./reducers/mainReducer";
 import { IControllerMeta } from "runner/reaction/interfaces/metas";
+import { IEventMeta } from "./interfaces";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -88,11 +89,12 @@ const RightArea = styled.div`
 `
 export const ReactionsEditor = memo((
   props: {
+    events: IEventMeta[],
     value?: IControllerMeta,
     onChange?: (value?: IControllerMeta) => void,
   }
 ) => {
-  const { value, onChange } = props
+  const { events, value, onChange } = props
   const [showMap, setShowMap] = useState(false)
   const [state, dispatch] = useReducer(mainReducer, initialState);
   const graph = useCreateGraph()

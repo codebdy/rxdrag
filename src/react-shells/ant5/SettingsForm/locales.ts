@@ -64,6 +64,9 @@ export const settingLocales = {
       reactions: "交互",
       configController: "配置控制器",
       controllerName: "控制器名",
+      init: "初始化",
+      destory: "销毁",
+      onClick: "点击",
 
       IconInput: {
         DialogTitle: "选择图标",
@@ -171,6 +174,9 @@ export const settingLocales = {
       reactions: "Reactions",
       configController: "Config Controller",
       controllerName: "Controller Name",
+      init: "Init",
+      destory: "Destory",
+      onClick: "Click",
 
       IconInput: {
         DialogTitle: "Select Icon",

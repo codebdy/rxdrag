@@ -3,14 +3,16 @@ import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useState } from "react"
 import { IControllerMeta } from "runner/reaction/interfaces/metas";
 import { ReactionsEditor } from "./ReactionsEditor";
+import { IEventMeta } from "./ReactionsEditor/interfaces";
 import { createUuid } from "./ReactionsEditor/utils";
 
 export const ReactionsInput = memo((props: {
+  events?: IEventMeta[]
   title: string,
   value?: IControllerMeta,
   onChange?: (value?: IControllerMeta) => void,
 }) => {
-  const { title, value, onChange, ...other } = props;
+  const { events, title, value, onChange, ...other } = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const t = useToolsTranslate()
 
@@ -75,7 +77,7 @@ export const ReactionsInput = memo((props: {
             centered
             destroyOnClose
           >
-            <ReactionsEditor value={value} onChange={handleConfigChange} />
+            <ReactionsEditor events={events || []} value={value} onChange={handleConfigChange} />
           </Modal>
         </>
       }

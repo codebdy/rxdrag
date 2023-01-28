@@ -268,6 +268,20 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
           },
           props: {
             title: "$controller",
+            events: [
+              {
+                name: "init",
+                label: "$init",
+              },
+              {
+                name: "destory",
+                label: "$destory",
+              },
+              {
+                name: "onClick",
+                label: "$onClick",
+              },
+            ],
           },
         },
       ]
