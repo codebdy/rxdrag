@@ -1,10 +1,10 @@
 import { PlusOutlined, ThunderboltOutlined } from "@ant-design/icons";
 import { Button, Typography } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
-import { memo } from "react"
+import { memo, useCallback } from "react"
+import { IControllerMeta } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
 import { methodIcon } from "../../../../../icons/reactions";
-import { IEventMeta } from "../interfaces";
 
 const { Text } = Typography;
 
@@ -27,22 +27,43 @@ const ListItem = styled((props) => <Button type="text" {...props} />)`
   align-items: center;
   margin: 2px 0;
 `
+
+export enum MemberType {
+  Event = "Event",
+  Reaction = "Reaction",
+  Variable = "Variable"
+}
+
 export const Members = memo((
   props: {
-    events: IEventMeta[]
+    value?: IControllerMeta,
+    selected?: string,
+    onSelect?: (id: string) => void,
   }
 ) => {
-  const { events } = props
+  const { value, selected, onSelect } = props
   const t = useToolsTranslate()
+
+  const handleEventClick = useCallback((id: string) => {
+    if (id) {
+      onSelect?.(id)
+    }
+  }, [onSelect])
+
   return (
     <>
       <Title><Text type="secondary">{t("ReactionsInput.events")}</Text></Title>
       <List>
         {
-          events.map((event) => {
+          value?.events?.map((event) => {
             return (
-              <ListItem key={event.name} icon={<ThunderboltOutlined />}>
-                {event.label}
+              <ListItem
+                key={event.name}
+                icon={<ThunderboltOutlined />}
+                onClick={() => handleEventClick(event.id)}
+                type={selected === event.id ? "default" : "text"}
+              >
+                {event.label || event.name}
               </ListItem>
             )
           })

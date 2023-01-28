@@ -63,6 +63,7 @@ export interface ILogicMetas {
 export interface IReactionMeta {
   id: string,
   name?: string,
+  label?: string,
   title?: string,
   logicMetas?: ILogicMetas,
 }
@@ -74,11 +75,7 @@ export interface IControllerMeta {
   // undefined 表示不开启控制器
   id?: string,
   name?: string,
-  events?: {
-    [key: string]: IReactionMeta | undefined
-  },
-  reactions?: {
-    [name: string]: IReactionMeta | undefined
-  },
-  variables?: string[],
+  events?: IReactionMeta[],
+  reactions?: IReactionMeta[],
+  variables?: { id: string, label: string }[],
 }

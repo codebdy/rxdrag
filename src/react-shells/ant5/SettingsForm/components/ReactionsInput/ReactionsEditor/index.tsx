@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useReducer, useState } from "react"
+import { memo, useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react"
 import styled from "styled-components";
 import { Members } from "./components/Members";
 import { PropertyBox } from "./components/PropertyBox";
@@ -8,8 +8,9 @@ import { initialState, IReactionsEditorParams, IState, ReacionsEditorContext } f
 import { Toolbar } from "./components/Toolbar";
 import { Toolbox } from "./components/Toolbox";
 import { mainReducer } from "./reducers/mainReducer";
-import { IControllerMeta } from "runner/reaction/interfaces/metas";
+import { IControllerMeta, IReactionMeta } from "runner/reaction/interfaces/metas";
 import { IEventMeta } from "./interfaces";
+import { createUuid } from "./utils";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -96,9 +97,32 @@ export const ReactionsEditor = memo((
   }
 ) => {
   const { events, value, onChange } = props
+  const [inputValue, setInputValue] = useState<IControllerMeta>()
+  const [selected, setSelected] = useState<string>()
   const [showMap, setShowMap] = useState(false)
   const [state, dispatch] = useReducer(mainReducer, initialState);
   const graph = useCreateGraph()
+  const inputValueRef = useRef(inputValue)
+  inputValueRef.current = inputValue
+
+  useEffect(() => {
+    setInputValue(value)
+  }, [value])
+
+  useEffect(() => {
+    const eventMetas: IReactionMeta[] = [...(inputValueRef.current?.events || [])]
+    for (const event of events) {
+      if (!inputValueRef.current?.events?.find(evt => evt.name === event.name)) {
+        eventMetas.push({
+          id: createUuid(),
+          name: event.name,
+          label: event.label,
+        })
+      }
+    }
+    setInputValue({ ...inputValueRef.current, events: eventMetas })
+  }, [events])
+
   const params: IReactionsEditorParams = useMemo(() => {
     return {
       graph,
@@ -115,7 +139,11 @@ export const ReactionsEditor = memo((
     <ReacionsEditorContext.Provider value={params}>
       <SytledContent id="reactions-editor-container">
         <LeftArea>
-          <Members events={events} />
+          <Members
+            value={inputValue}
+            selected={selected}
+            onSelect = {setSelected}
+          />
         </LeftArea>
         <CenterArea>
           <Toolbar showMap={showMap} toggleShowMap={handleToggleMap} />
