@@ -5,9 +5,9 @@ import { useGetEdgeConfig } from "./useGetEdgeConfig";
 
 export function useShowCells() {
   const { graph } = useEditorState()
-  const getStartNodeConfig = useGetNodeConfig()
+  const getNodeConfig = useGetNodeConfig()
   const getEdgeConfig = useGetEdgeConfig()
-  
+
   const { metas } = useEditorState()
   useEffect(() => {
     if (graph) {
@@ -21,14 +21,16 @@ export function useShowCells() {
           graphNode.setSize(reactionNode.x6Node);
           graphNode.setPosition(reactionNode.x6Node);
         } else {//新建
-          graph.createNode(getStartNodeConfig(reactionNode))
+          const node = graph.createNode(getNodeConfig(reactionNode))
+          graph.addNode(node)
         }
       }
 
-      for(const invoke of metas.invokes){
-        const graphEdge = oldEdges.find(edge=>edge.id === invoke.id)
-        if(!graphEdge){
-          graph.createEdge(getEdgeConfig(invoke))
+      for (const invoke of metas.invokes) {
+        const graphEdge = oldEdges.find(edge => edge.id === invoke.id)
+        if (!graphEdge) {
+          const edge = graph.createEdge(getEdgeConfig(invoke))
+          graph.addEdge(edge)
         }
       }
 
@@ -40,5 +42,5 @@ export function useShowCells() {
       }
 
     }
-  }, [getEdgeConfig, getStartNodeConfig, graph, metas, metas.invokes, metas.reactions])
+  }, [getEdgeConfig, getNodeConfig, graph, metas, metas.invokes, metas.reactions])
 }

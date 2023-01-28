@@ -6,6 +6,7 @@ export function useGetEdgeConfig() {
   const getEdgeConfig = useCallback((invakeMeta: IInvokeMeta) => {
 
     return {
+      id: invakeMeta.id,
       shape: "reaction-edge",
       source: {
         cell: invakeMeta.source.nodeId,

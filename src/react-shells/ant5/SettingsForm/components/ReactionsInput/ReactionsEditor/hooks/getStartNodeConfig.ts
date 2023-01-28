@@ -4,6 +4,7 @@ import { IReactionNodeMeta } from "runner/reaction/interfaces/metas"
 const STROKE_WIDTH = 2
 export const getStartNodeConfig = (nodeMeta: IReactionNodeMeta, token: GlobalToken) => {
   return {
+    id: nodeMeta.id,
     shape: 'circle',
     x: 90,
     y: 60,
