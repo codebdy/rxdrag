@@ -30,6 +30,7 @@ const LeftArea = styled.div`
   width: 180px;
   border-right: ${props => props.theme.token?.colorBorder} solid 1px;
   padding: 8px;
+  overflow: auto;
 `
 const CenterArea = styled.div`
   position: relative;

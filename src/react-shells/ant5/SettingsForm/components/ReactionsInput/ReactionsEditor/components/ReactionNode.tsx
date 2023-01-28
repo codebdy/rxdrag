@@ -13,6 +13,7 @@ insertCss(`
 
 .x6-node-selected .start-node, .x6-node-selected .end-node {
   outline: solid rgba(24,144,255, 0.5) 4px;
+  border-radius: 50%;
 }
 
 .x6-edge:hover path:nth-child(2){
