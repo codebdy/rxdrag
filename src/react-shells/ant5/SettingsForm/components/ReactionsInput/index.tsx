@@ -1,8 +1,9 @@
 import { Button, Form, Input, Modal, Switch } from "antd"
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
-import { memo, useCallback, useEffect, useState } from "react"
+import { memo, useCallback, useState } from "react"
 import { IControllerMeta } from "runner/reaction/interfaces/metas";
 import { ReactionsEditor } from "./ReactionsEditor";
+import { createUuid } from "./ReactionsEditor/utils";
 
 export const ReactionsInput = memo((props: {
   title: string,
@@ -21,16 +22,21 @@ export const ReactionsInput = memo((props: {
     setIsModalOpen(false);
   }, []);
 
-  useEffect(() => {
-
-  }, [])
+  const onSwitchChange = useCallback((checked: boolean) => {
+    if (checked) {
+      const id = createUuid()
+      onChange?.({ ...value, id: id, name: value?.name || id })
+    } else {
+      onChange?.({ ...value, id: undefined })
+    }
+  }, [onChange, value]);
 
   return (
     <div>
       <Form.Item
         label={title}
       >
-        <Switch />
+        <Switch onChange={onSwitchChange} />
       </Form.Item>
       {
         value?.id &&
@@ -38,7 +44,7 @@ export const ReactionsInput = memo((props: {
           <Form.Item
             label={t("controllerName")}
           >
-            <Input />
+            <Input value = {value.name} />
           </Form.Item>
           <Form.Item
             label={t("config")}
