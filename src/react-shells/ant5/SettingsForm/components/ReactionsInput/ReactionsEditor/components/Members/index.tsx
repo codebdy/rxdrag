@@ -4,7 +4,8 @@ import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback } from "react"
 import { IControllerMeta } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
-import { methodIcon } from "../../../../../icons/reactions";
+import { methodIcon } from "../../../../../../icons/reactions";
+import { EditableListItem } from "./EditableListItem";
 
 const { Text } = Typography;
 
@@ -26,6 +27,7 @@ const ListItem = styled((props) => <Button type="text" {...props} />)`
   display: flex;
   align-items: center;
   margin: 2px 0;
+  flex:1;
 `
 
 export enum MemberType {
@@ -74,9 +76,11 @@ export const Members = memo((
         <Button size="small" type="text" icon={<PlusOutlined />}></Button>
       </Title>
       <List>
-        <ListItem icon={methodIcon} type="default">
-          打开
-        </ListItem>
+        <EditableListItem>
+          <ListItem icon={methodIcon} type="default">
+            打开
+          </ListItem>
+        </EditableListItem>
         <ListItem icon={methodIcon}>
           关闭
         </ListItem>
