@@ -62,7 +62,8 @@ export const settingLocales = {
       controller: "控制器",
       config: "配置",
       reactions: "交互",
-      configReactions: "配置控制器",
+      configController: "配置控制器",
+      controllerName: "控制器名",
 
       IconInput: {
         DialogTitle: "选择图标",
@@ -168,7 +169,8 @@ export const settingLocales = {
       controller: "Controller",
       config: "Config",
       reactions: "Reactions",
-      configReactions: "Config Controller",
+      configController: "Config Controller",
+      controllerName: "Controller Name",
 
       IconInput: {
         DialogTitle: "Select Icon",

@@ -1,10 +1,10 @@
-import { Button, Modal } from "antd"
+import { Button, Form, Input, Modal, Row, Switch } from "antd"
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useEffect, useState } from "react"
 import { ReactionsEditor } from "./ReactionsEditor";
 
 export const ReactionsInput = memo((props: {
-  title: string
+  title: string,
 }) => {
   const { title, ...other } = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,25 +23,42 @@ export const ReactionsInput = memo((props: {
   }, [])
 
   return (
-    <>
-      <Button {...other} onClick={showModal}>{title}</Button>
-      <Modal
-        title={`${title} - 对话框`}
-        open={isModalOpen}
-        cancelText={t("cancel")}
-        okText={t("confirm")}
-        onCancel={handleCancel}
-        width={"calc(100vw - 40px)"}
-        style={{
-          transform: 'scale(1)',
-        }}
-        getContainer={false}
-        centered
-        destroyOnClose
+    <div>
+      <Form.Item
+        label={title}
       >
-        <ReactionsEditor />
-      </Modal>
-    </>
+        <Switch />
+      </Form.Item>
+      <>
+        <Form.Item
+          label={t("controllerName")}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label={t("config")}
+        >
+          <Button {...other} onClick={showModal}>{t("configController")}</Button>
+        </Form.Item>
+
+        <Modal
+          title={`${t("configController")} - 对话框`}
+          open={isModalOpen}
+          cancelText={t("cancel")}
+          okText={t("confirm")}
+          onCancel={handleCancel}
+          width={"calc(100vw - 40px)"}
+          style={{
+            transform: 'scale(1)',
+          }}
+          getContainer={false}
+          centered
+          destroyOnClose
+        >
+          <ReactionsEditor />
+        </Modal>
+      </>
+    </div>
 
   )
 })
