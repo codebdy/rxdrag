@@ -1,7 +1,10 @@
 import { CloseOutlined, DownOutlined } from "@ant-design/icons";
 import { Button, Drawer, Tree } from "antd";
 import { DataNode } from "antd/es/tree";
-import { memo, useCallback, useState } from "react"
+import { ID } from "core";
+import { useCurrentTree } from "core-react/hooks/useCurrentTree";
+import { useGetNode } from "core-react/hooks/useGetNode";
+import { memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components";
 import { maxSizeIcon, methodIcon, minSizeIcon, puzzleIcon } from "../../../../../../icons/reactions";
 
@@ -103,6 +106,44 @@ const treeData: DataNode[] = [
 export const ComponentReactions = memo(() => {
   const [open, setOpen] = useState(false);
   const [maxSize, setMaxSize] = useState(false);
+  const getNode = useGetNode()
+  const currentTree = useCurrentTree()
+  const transNode = useCallback((id: ID): DataNode | undefined => {
+    const node = getNode(id)
+    const children: DataNode[] = node?.children?.map(childId => transNode(childId)).filter(nd => nd !== undefined) as any || []
+    for (const key of Object.keys(node?.slots || {})) {
+      const slotId = node?.slots?.[key]
+      if (slotId) {
+        const slot = transNode(slotId)
+        if (slot) {
+          children.push(slot)
+        }
+      }
+    }
+    if (node) {
+      return {
+        title: node.title,
+        key: node.id,
+        children: children
+      }
+    }
+
+    return undefined
+  }, [getNode])
+
+  const treeItems: DataNode[] = useMemo(() => {
+    if (!currentTree) {
+      return []
+    }
+    const root = transNode(currentTree.id)
+    if (!root) {
+      return []
+    }
+    return [
+      root
+    ]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentTree, transNode])
 
   const handleToggleMaxSize = useCallback(() => {
     setMaxSize(mxSize => !mxSize)
@@ -161,7 +202,7 @@ export const ComponentReactions = memo(() => {
             switcherIcon={<DownOutlined />}
             showIcon={true}
             defaultExpandedKeys={['0-0-0']}
-            treeData={treeData}
+            treeData={treeItems}
             rootStyle={{ backgroundColor: "transparent" }}
           />
         </Content>

@@ -1,6 +1,6 @@
 import { Button, Form, Input, Modal, Switch } from "antd"
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
-import { memo, useCallback, useEffect, useRef, useState } from "react"
+import { memo, useCallback, useEffect, useState } from "react"
 import { IControllerMeta, IReactionMeta } from "runner/reaction/interfaces/metas";
 import { ReactionsEditor } from "./ReactionsEditor";
 import { IEventMeta } from "./ReactionsEditor/interfaces";
@@ -16,17 +16,15 @@ export const ReactionsInput = memo((props: {
   const [inputValue, setInputValue] = useState<IControllerMeta>()
   const [isModalOpen, setIsModalOpen] = useState(false);
   const t = useToolsTranslate()
-  const inputValueRef = useRef(inputValue)
-  inputValueRef.current = inputValue
   
   useEffect(() => {
     setInputValue(value)
   }, [value])
 
   useEffect(() => {
-    const eventMetas: IReactionMeta[] = [...(inputValueRef.current?.events || [])]
+    const eventMetas: IReactionMeta[] = [...(value?.events || [])]
     for (const event of events||[]) {
-      if (!inputValueRef.current?.events?.find(evt => evt.name === event.name)) {
+      if (!value?.events?.find(evt => evt.name === event.name)) {
         eventMetas.push({
           id: createUuid(),
           name: event.name,
@@ -34,8 +32,8 @@ export const ReactionsInput = memo((props: {
         })
       }
     }
-    setInputValue({ ...inputValueRef.current, events: eventMetas })
-  }, [events])
+    setInputValue({ ...value, events: eventMetas })
+  }, [events, value])
 
   const showModal = useCallback(() => {
     setIsModalOpen(true);
