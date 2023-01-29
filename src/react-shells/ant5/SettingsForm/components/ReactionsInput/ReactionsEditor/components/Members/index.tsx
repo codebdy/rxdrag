@@ -92,6 +92,23 @@ export const Members = memo((
     }
     setAddVariableOpen(false)
   }, [onChange, value])
+
+  const handleRemoveReaction = useCallback((id: string) => {
+    onChange?.({ ...value, reactions: value?.reactions?.filter(reaction => reaction.id !== id) })
+  }, [onChange, value])
+
+  const handleRemoveVariable = useCallback((id: string) => {
+    onChange?.({ ...value, variables: value?.variables?.filter(va => va.id !== id) })
+  }, [onChange, value])
+
+  const handleChangeReaction = useCallback((id: string, label: string) => {
+    onChange?.({ ...value, reactions: value?.reactions?.map(reaction => reaction.id !== id ? reaction : { ...reaction, label }) })
+  }, [onChange, value])
+
+  const handleChangeVariable = useCallback((id: string, label: string) => {
+    onChange?.({ ...value, variables: value?.variables?.map(va => va.id !== id ? va : { ...va, label }) })
+  }, [onChange, value])
+
   return (
     <>
       <Title><Text type="secondary">{t("ReactionsInput.events")}</Text></Title>
@@ -126,8 +143,11 @@ export const Members = memo((
             return (
               <EditableListItem
                 key={reaction.id}
+                id={reaction.id}
                 name={reaction.label || ""}
                 editTitle={t("$editReaction")}
+                onRemove={handleRemoveReaction}
+                onChange={handleChangeReaction}
               >
                 <ListItem
                   icon={methodIcon}
@@ -151,8 +171,11 @@ export const Members = memo((
             return (
               <EditableListItem
                 key={variable.id}
+                id={variable.id}
                 name={variable.label}
                 editTitle={t("$editVariable")}
+                onRemove={handleRemoveVariable}
+                onChange={handleChangeVariable}
               >
                 <ListItem
                   icon={variableIcon}

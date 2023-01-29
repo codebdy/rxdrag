@@ -15,9 +15,12 @@ export const EditableListItem = memo((
     name: string,
     children?: React.ReactNode,
     editTitle: string,
+    id: string,
+    onChange: (id: string, name: string) => void,
+    onRemove: (id: string) => void
   }
 ) => {
-  const { name, editTitle, children, ...other } = props
+  const { id, name, editTitle, children, onChange, onRemove, ...other } = props
   const [hover, setHover] = useState(false);
   const [open, setOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
@@ -30,14 +33,14 @@ export const EditableListItem = memo((
     setHover(false);
   }, []);
 
-  const handleItemClick: MenuProps['onClick'] = ({ key }) => {
+  const handleItemClick: MenuProps['onClick'] = useCallback(({ key }: any) => {
     setOpen(false);
     if (key === 'edit') {
       setEditOpen(true)
     } else if (key === "delete") {
-
+      onRemove(id)
     }
-  };
+  }, [id, onRemove]);
 
   const items: MenuProps['items'] = useMemo(() => [
     {
@@ -53,13 +56,14 @@ export const EditableListItem = memo((
   ], [t]);
 
 
-  const handleNameCancel = useCallback(()=>{
+  const handleNameCancel = useCallback(() => {
     setEditOpen(false)
   }, [])
 
-  const handleNameOk = useCallback(()=>{
+  const handleNameOk = useCallback((value?: string) => {
     setEditOpen(false)
-  }, [])
+    onChange(id, value || "")
+  }, [id, onChange])
 
   return (
     <>
@@ -81,6 +85,7 @@ export const EditableListItem = memo((
       <NameDialog
         title={editTitle}
         open={editOpen}
+        value={name}
         onCancel={handleNameCancel}
         onOk={handleNameOk}
       />
