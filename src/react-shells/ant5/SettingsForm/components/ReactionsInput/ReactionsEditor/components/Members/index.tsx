@@ -2,9 +2,9 @@ import { PlusOutlined, ThunderboltOutlined } from "@ant-design/icons";
 import { Button, Typography } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useState } from "react"
-import { IControllerMeta, IReactionMeta } from "runner/reaction/interfaces/metas";
+import { IControllerMeta, IReactionMeta, IVariableMeta } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
-import { methodIcon } from "../../../../../../icons/reactions";
+import { methodIcon, variableIcon } from "../../../../../../icons/reactions";
 import { createUuid } from "../../utils";
 import { EditableListItem } from "./EditableListItem";
 import { NameDialog } from "./NameDialog";
@@ -42,10 +42,11 @@ export const Members = memo((
 ) => {
   const { value, selected, onSelect, onChange } = props
   const [addReactionOpen, setAddReactionOpen] = useState(false)
+  const [addVariableOpen, setAddVariableOpen] = useState(false)
 
   const t = useToolsTranslate()
 
-  const handleEventClick = useCallback((id: string) => {
+  const handleMemberClick = useCallback((id: string) => {
     if (id) {
       onSelect?.(id)
     }
@@ -55,15 +56,18 @@ export const Members = memo((
     setAddReactionOpen(true)
   }, [])
 
-  const handleReactionCancel = useCallback(() => {
-    setAddReactionOpen(false)
+  const handleAddVariable = useCallback(() => {
+    setAddVariableOpen(true)
+  }, [])
+
+  const handleAddVariableCancel = useCallback(() => {
+    setAddVariableOpen(false)
   }, [])
 
   const handleAddReactionOk = useCallback((name?: string) => {
     if (name) {
       const newReaction: IReactionMeta = {
         id: createUuid(),
-        name: name,
         label: name,
       }
 
@@ -72,6 +76,22 @@ export const Members = memo((
     setAddReactionOpen(false)
   }, [onChange, value])
 
+
+  const handleAddReactionCancel = useCallback(() => {
+    setAddReactionOpen(false)
+  }, [])
+
+  const handleAddVariableOk = useCallback((name?: string) => {
+    if (name) {
+      const newVariable: IVariableMeta = {
+        id: createUuid(),
+        label: name,
+      }
+
+      onChange?.({ ...value, variables: [...value?.variables || [], newVariable] })
+    }
+    setAddVariableOpen(false)
+  }, [onChange, value])
   return (
     <>
       <Title><Text type="secondary">{t("ReactionsInput.events")}</Text></Title>
@@ -82,7 +102,7 @@ export const Members = memo((
               <ListItem
                 key={event.name}
                 icon={<ThunderboltOutlined />}
-                onClick={() => handleEventClick(event.id)}
+                onClick={() => handleMemberClick(event.id)}
                 type={selected === event.id ? "default" : "text"}
               >
                 {event.label || event.name}
@@ -102,15 +122,15 @@ export const Members = memo((
       </Title>
       <List>
         {
-          value?.reactions?.map((event) => {
+          value?.reactions?.map((reaction) => {
             return (
-              <EditableListItem key={event.id}>
+              <EditableListItem key={reaction.id}>
                 <ListItem
                   icon={methodIcon}
-                  onClick={() => handleEventClick(event.id)}
-                  type={selected === event.id ? "default" : "text"}
+                  onClick={() => handleMemberClick(reaction.id)}
+                  type={selected === reaction.id ? "default" : "text"}
                 >
-                  {event.label || event.name}
+                  {reaction.label || reaction.name}
                 </ListItem>
               </EditableListItem>
             )
@@ -119,21 +139,34 @@ export const Members = memo((
       </List>
       <Title>
         <Text type="secondary">{t("ReactionsInput.variables")}</Text>
-        <Button size="small" type="text" icon={<PlusOutlined />}></Button>
+        <Button size="small" type="text" icon={<PlusOutlined />} onClick={handleAddVariable}></Button>
       </Title>
       <List>
-        <ListItem>
-          变量 0
-        </ListItem>
-        <ListItem>
-          变量 1
-        </ListItem>
+        {
+          value?.variables?.map((variable) => {
+            return (
+              <EditableListItem key={variable.id}>
+                <ListItem
+                  icon={variableIcon}
+                >
+                  {variable.label}
+                </ListItem>
+              </EditableListItem>
+            )
+          })
+        }
       </List>
       <NameDialog
         title={'$addReaction'}
         open={addReactionOpen}
-        onCancel={handleReactionCancel}
+        onCancel={handleAddReactionCancel}
         onOk={handleAddReactionOk}
+      />
+      <NameDialog
+        title={'$addVariable'}
+        open={addVariableOpen}
+        onCancel={handleAddVariableCancel}
+        onOk={handleAddVariableOk}
       />
     </>
   )
