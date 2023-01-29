@@ -32,10 +32,10 @@ export function useGetSingleNodeConfig() {
     return {
       id: nodeMeta.id,
       shape: "reaction-node",
-      x: 340,
-      y: 240,
-      width: width,
-      height: height,
+      x: nodeMeta.x6Node?.x || 340,
+      y: nodeMeta.x6Node?.y || 240,
+      width: nodeMeta.x6Node?.width || width,
+      height: nodeMeta.x6Node?.height || height,
       data: {
         meta: nodeMeta,
         backgroundColor: token.colorBgContainer,
