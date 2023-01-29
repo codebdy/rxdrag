@@ -1,5 +1,7 @@
-import { memo, useCallback, useMemo, useReducer, useState } from "react"
+import { memo, useCallback, useEffect, useMemo, useReducer, useState } from "react"
+import { ILogicMetas } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
+import { ActionType } from "../actions";
 import { initialState, IReactionsEditorParams, IState, ReacionsEditorContext } from "../contexts"
 import { useCreateGraph } from "../hooks/useCreateGraph";
 import { mainReducer } from "../reducers/mainReducer";
@@ -65,11 +67,21 @@ const RightArea = styled.div`
   flex-flow: column;
 `
 
-export const ReactionMetaEditor = memo(() => {
+export const ReactionMetaEditor = memo((
+  props: {
+    metas?: ILogicMetas,
+    onChange?: (meta?: ILogicMetas) => void,
+  }
+) => {
+  const { metas, onChange } = props
   const [showMap, setShowMap] = useState(false)
   const [state, dispatch] = useReducer(mainReducer, initialState);
   const graph = useCreateGraph()
-  
+
+  useEffect(() => {
+    dispatch({ type: ActionType.SET_METAS, payload: metas || { reactions: [], invokes: [] } } as any)
+  }, [metas])
+
   const params: IReactionsEditorParams = useMemo(() => {
     return {
       graph,

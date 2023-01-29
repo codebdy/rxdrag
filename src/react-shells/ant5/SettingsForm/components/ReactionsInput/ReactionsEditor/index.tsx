@@ -76,7 +76,7 @@ export const ReactionsEditor = memo((
       </LeftArea>
       {
         selected &&
-        <ReactionMetaEditor />
+        <ReactionMetaEditor key={selected} />
       }
     </SytledContent>
   )
