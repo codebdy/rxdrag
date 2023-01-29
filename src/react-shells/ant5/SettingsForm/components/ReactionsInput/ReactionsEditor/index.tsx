@@ -1,9 +1,7 @@
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components";
 import { Members } from "./components/Members";
-import { IControllerMeta, ILogicMetas, IReactionMeta } from "runner/reaction/interfaces/metas";
-import { IEventMeta } from "./interfaces";
-import { createUuid } from "./utils";
+import { IControllerMeta, ILogicMetas } from "runner/reaction/interfaces/metas";
 import { ReactionMetaEditor } from "./components/ReactionMetaEditor";
 
 const SytledContent = styled.div`
@@ -29,63 +27,41 @@ const LeftArea = styled.div`
 `
 export const ReactionsEditor = memo((
   props: {
-    events: IEventMeta[],
     value?: IControllerMeta,
     onChange?: (value?: IControllerMeta) => void,
   }
 ) => {
-  const { events, value, onChange } = props
-  const [inputValue, setInputValue] = useState<IControllerMeta>()
+  const { value, onChange } = props
   const [selected, setSelected] = useState<string>()
 
-  const inputValueRef = useRef(inputValue)
-  inputValueRef.current = inputValue
-
-  useEffect(() => {
-    setInputValue(value)
-  }, [value])
-
-  useEffect(() => {
-    const eventMetas: IReactionMeta[] = [...(inputValueRef.current?.events || [])]
-    for (const event of events) {
-      if (!inputValueRef.current?.events?.find(evt => evt.name === event.name)) {
-        eventMetas.push({
-          id: createUuid(),
-          name: event.name,
-          label: event.label,
-        })
-      }
-    }
-    setInputValue({ ...inputValueRef.current, events: eventMetas })
-  }, [events])
-
-
   const handleMemberChange = useCallback((meta?: IControllerMeta) => {
-    setInputValue(meta)
-  }, [])
+    onChange?.(meta)
+    onChange?.(meta)
+  }, [onChange])
 
   const metas = useMemo(() => {
-    const reaction = inputValue?.reactions?.find(reaction => reaction.id === selected)
+    const reaction = value?.reactions?.find(reaction => reaction.id === selected)
     if (reaction) {
       return reaction.logicMetas
     }
 
-    return inputValue?.events?.find(evt => evt.id === selected)?.logicMetas
-  }, [inputValue?.events, inputValue?.reactions, selected])
+    return value?.events?.find(evt => evt.id === selected)?.logicMetas
+  }, [selected, value?.events, value?.reactions])
 
   const handleChange = useCallback((newMetas: ILogicMetas) => {
-    setInputValue({
-      ...inputValue,
-      reactions: inputValue?.reactions?.map(reaction => reaction.id === selected ? { ...reaction, logicMetas: newMetas } : reaction),
-      events: inputValue?.events?.map(event => event.id === selected ? { ...event, logicMetas: newMetas } : event),
-    })
-  }, [inputValue, selected])
+    const newValue = {
+      ...value,
+      reactions: value?.reactions?.map(reaction => reaction.id === selected ? { ...reaction, logicMetas: newMetas } : reaction),
+      events: value?.events?.map(event => event.id === selected ? { ...event, logicMetas: newMetas } : event),
+    }
+    onChange?.(newValue)
+  }, [onChange, selected, value])
 
   return (
     <SytledContent id="reactions-editor-container">
       <LeftArea>
         <Members
-          value={inputValue}
+          value={value}
           selected={selected}
           onSelect={setSelected}
           onChange={handleMemberChange}
