@@ -7,6 +7,7 @@ export interface ISnapshot extends ILogicMetas {
 }
 
 export interface IState {
+  changeFlag: number,
   lining: boolean,
   undoList: ISnapshot[],
   redoList: ISnapshot[],
@@ -21,6 +22,7 @@ export interface IReactionsEditorParams extends IState {
 }
 
 export const initialState: IState = {
+  changeFlag: 0,
   lining: false,
   undoList: [],
   redoList: [],

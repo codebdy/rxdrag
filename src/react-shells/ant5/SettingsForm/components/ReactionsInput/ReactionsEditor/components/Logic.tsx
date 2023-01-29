@@ -1,4 +1,4 @@
-import { memo, useEffect } from "react"
+import { memo, useEffect, useRef } from "react"
 import { useEditEdge } from "../hooks/edit-meta/useEditEdge"
 import { useAddNode } from "../hooks/edit-meta/useAddNode"
 import { useMovedNode } from "../hooks/edit-meta/useMovedNode"
@@ -13,12 +13,16 @@ import { useEditorState } from "../hooks/useEditorState"
 
 export const Logic = memo((
   props: {
-    initMetas: ILogicMetas,
-    onChange: (metas: ILogicMetas)=>void,
+    onChange: (metas: ILogicMetas) => void,
   }
 ) => {
-  const {initMetas} = props;
-  const { metas } = useEditorState()
+  const { onChange } = props;
+  const { changeFlag, metas } = useEditorState()
+  const metasRef = useRef(metas)
+  metasRef.current = metas;
+  const onChangeRef = useRef(onChange)
+  onChangeRef.current = onChange
+
   useShowCells()
   useTraceLining()
   useAddNode()
@@ -28,11 +32,11 @@ export const Logic = memo((
   useSelection()
   useRemove()
   useZoom()
-
   useEffect(() => {
-    if(metas !==initMetas){
-
+    if (changeFlag) {
+      onChangeRef.current(metasRef.current)
     }
-  }, [metas, initMetas])
+  }, [changeFlag])
+
   return null
 })

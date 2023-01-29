@@ -19,6 +19,8 @@ export enum ActionType {
   SET_REDOLIST = 'ReactionsEditor/SET_REDOLIST',
   SET_UNOLIST = 'ReactionsEditor/SET_UNOLIST',
   SET_METAS = 'ReactionsEditor/SET_METAS',
+
+  SET_CHANGE_FLAG = 'ReactionsEditor/SET_CHANGE_FLAG',
 }
 
 export interface Action {
@@ -72,5 +74,10 @@ export interface SetRedoListAction extends Action {
 export interface SetMetasAction extends Action {
   payload: ILogicMetas
 }
+
+export interface SetChangeFlagAction extends Action {
+  payload: number
+}
+
 
 

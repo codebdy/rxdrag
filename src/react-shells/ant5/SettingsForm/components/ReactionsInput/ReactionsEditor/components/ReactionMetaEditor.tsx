@@ -99,7 +99,7 @@ export const ReactionMetaEditor = memo((
     setShowMap((show) => !show)
   }, [])
 
-  const handleChange = useCallback((newMetas:ILogicMetas)=>{
+  const handleChange = useCallback((newMetas: ILogicMetas) => {
     onChange(newMetas)
   }, [onChange])
 
@@ -111,7 +111,7 @@ export const ReactionMetaEditor = memo((
           <Toolbox />
           <CanvasArea>
             <CanvasContainer id="reactions-canvas-container" >
-              <Logic initMetas={metas || emptyMetas} onChange={handleChange} />
+              <Logic onChange={handleChange} />
             </CanvasContainer>
             <MiniMapContainer
               id="reactions-minimap-container"

@@ -4,10 +4,12 @@ import { IInvokeMeta } from "runner/reaction/interfaces/metas"
 import { ActionType } from "../../actions"
 import { useEditorState } from "../useEditorState"
 import { useBackup } from "./useBackup"
+import { useMarkChange } from "./useMarkChange"
 
 export function useEditEdge() {
   const { graph, dispatch } = useEditorState()
   const backup = useBackup()
+  const markeChange = useMarkChange()
   const handleNodeAdd = useCallback(({ isNew, edge }: { isNew: boolean, edge: Edge }) => {
     backup()
     const newData: IInvokeMeta = {
@@ -26,8 +28,8 @@ export function useEditEdge() {
       type: isNew ? ActionType.ADD_EDGE : ActionType.CHANGE_EDGE,
       payload: newData
     })
-    
-  }, [backup, dispatch, graph])
+    markeChange()
+  }, [backup, dispatch, graph, markeChange])
 
   useEffect(() => {
     graph?.on('edge:connected', handleNodeAdd)

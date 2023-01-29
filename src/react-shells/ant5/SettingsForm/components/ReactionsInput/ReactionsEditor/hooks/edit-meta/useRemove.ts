@@ -5,10 +5,10 @@ import { useEditorState } from "../useEditorState";
 
 export function useRemove() {
   const { dispatch, graph } = useEditorState()
-
   const handleRemoved = useCallback(({ cell }: { cell: Cell }) => {
     if (cell.isNode()) {
       dispatch({ type: ActionType.REMOVE_NODE, payload: cell.id })
+      
     }
     if( cell.isEdge()) {
       dispatch({ type: ActionType.REMOVE_EDGE, payload: cell.id })

@@ -4,10 +4,12 @@ import { useEditorState } from "../useEditorState"
 import { Node } from "@antv/x6";
 import { ActionType } from "../../actions";
 import { useBackup } from "./useBackup";
+import { useMarkChange } from "./useMarkChange";
 
 export function useMovedNode() {
   const { graph, dispatch } = useEditorState()
   const backup = useBackup()
+  const markeChange = useMarkChange()
   const handleNodeMoved = useCallback(({ x, y, node }: { x: number, y: number, node: Node, index: number, options: any }) => {
     backup()
     const { meta } = node.getData() as INodeData
@@ -25,7 +27,8 @@ export function useMovedNode() {
       }
     })
     graph?.select(node.id)
-  }, [backup, dispatch, graph])
+    markeChange()
+  }, [backup, dispatch, graph, markeChange])
 
   useEffect(() => {
     graph?.on('node:moved', handleNodeMoved)

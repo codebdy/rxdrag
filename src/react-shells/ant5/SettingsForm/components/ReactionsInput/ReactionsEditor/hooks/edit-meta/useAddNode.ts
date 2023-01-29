@@ -4,9 +4,11 @@ import { ActionType } from "../../actions";
 import { INodeData } from "../../interfaces";
 import { useEditorState } from "../useEditorState";
 import { useBackup } from "./useBackup";
+import { useMarkChange } from "./useMarkChange";
 
 export function useAddNode() {
   const { graph, dispatch } = useEditorState()
+  const markeChange = useMarkChange()
   const backup = useBackup()
   const handleNodeAdd = useCallback(({ node }: { node: Node, index: number, options: any }) => {
     const { meta } = node.getData() as INodeData
@@ -27,7 +29,8 @@ export function useAddNode() {
       type: ActionType.ADD_NODE,
       payload: newData
     })
-  }, [backup, dispatch, graph])
+    markeChange()
+  }, [backup, dispatch, graph, markeChange])
 
   useEffect(() => {
     graph?.on('node:added', handleNodeAdd)

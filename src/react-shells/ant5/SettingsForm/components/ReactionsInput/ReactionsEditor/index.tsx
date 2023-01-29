@@ -65,21 +65,21 @@ export const ReactionsEditor = memo((
   }, [])
 
   const metas = useMemo(() => {
-    const reaction = value?.reactions?.find(reaction => reaction.id === selected)
+    const reaction = inputValue?.reactions?.find(reaction => reaction.id === selected)
     if (reaction) {
       return reaction.logicMetas
     }
 
-    return value?.events?.find(evt => evt.id === selected)?.logicMetas
-  }, [selected, value?.events, value?.reactions])
+    return inputValue?.events?.find(evt => evt.id === selected)?.logicMetas
+  }, [inputValue?.events, inputValue?.reactions, selected])
 
   const handleChange = useCallback((newMetas: ILogicMetas) => {
-    onChange?.({
-      ...value,
-      reactions: value?.reactions?.map(reaction => reaction.id === selected ? { ...reaction, logicMetas: newMetas } : reaction),
-      events: value?.events?.map(event => event.id === selected ? { ...event, logicMetas: newMetas } : event),
+    setInputValue({
+      ...inputValue,
+      reactions: inputValue?.reactions?.map(reaction => reaction.id === selected ? { ...reaction, logicMetas: newMetas } : reaction),
+      events: inputValue?.events?.map(event => event.id === selected ? { ...event, logicMetas: newMetas } : event),
     })
-  }, [onChange, selected, value])
+  }, [inputValue, selected])
 
   return (
     <SytledContent id="reactions-editor-container">
