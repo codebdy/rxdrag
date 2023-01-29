@@ -6,15 +6,16 @@ import { displaySetter } from "../SettingsForm/schemas/displaySetter";
 import { fontStyleSetter } from "../SettingsForm/schemas/fontStyleSetter";
 import { martinStyleSetter } from "../SettingsForm/schemas/martinStyleSetter";
 import { paddingStyleSetter } from "../SettingsForm/schemas/paddingStyleSetter";
+import { createReactionSchema, LogicOptions } from "./createReactionSchema";
 
 export type SchemaOptions<IField = any, IReactions = any> = {
   propsSchemas?: INodeSchema<IField, IReactions>[],
   slotsSchemas?: INodeSchema<IField, IReactions>[],
-  logicSchemas?: INodeSchema<IField, IReactions>[],
+  logicOptions?: LogicOptions,
 }
 
 export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
-  const { propsSchemas, slotsSchemas, logicSchemas } = opetions
+  const { propsSchemas, slotsSchemas, logicOptions } = opetions
   const propsTab = propsSchemas ? [{
     componentName: "TabPanel",
     "x-field": {
@@ -38,7 +39,7 @@ export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
     children: slotsSchemas
   }] : []
 
-  const logicTab = slotsSchemas ? [{
+  const logicTab = [{
     componentName: "TabPanel",
     props: {
       title: "$logic",
@@ -47,8 +48,8 @@ export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
         padding: 0
       },
     },
-    children: logicSchemas
-  }] : []
+    children: createReactionSchema(logicOptions)
+  }]
   return {
     componentName: "Tabs",
     props: {},
