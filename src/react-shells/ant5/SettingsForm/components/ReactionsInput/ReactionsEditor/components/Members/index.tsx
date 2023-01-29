@@ -124,7 +124,11 @@ export const Members = memo((
         {
           value?.reactions?.map((reaction) => {
             return (
-              <EditableListItem key={reaction.id}>
+              <EditableListItem
+                key={reaction.id}
+                name={reaction.label || ""}
+                editTitle={t("$editReaction")}
+              >
                 <ListItem
                   icon={methodIcon}
                   onClick={() => handleMemberClick(reaction.id)}
@@ -145,7 +149,11 @@ export const Members = memo((
         {
           value?.variables?.map((variable) => {
             return (
-              <EditableListItem key={variable.id}>
+              <EditableListItem
+                key={variable.id}
+                name={variable.label}
+                editTitle={t("$editVariable")}
+              >
                 <ListItem
                   icon={variableIcon}
                 >
