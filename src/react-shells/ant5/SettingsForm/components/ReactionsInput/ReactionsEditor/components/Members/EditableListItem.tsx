@@ -48,9 +48,11 @@ export const EditableListItem = memo((
     >
       {children}
       {
-        (hover || open) && <Dropdown menu={{ items }} trigger={['click']} onOpenChange={setOpen} >
-          <Button size="small" type="text" icon={<MoreOutlined />} style={{ marginLeft: 8 }} />
-        </Dropdown>
+        (hover || open)
+          ? <Dropdown menu={{ items }} trigger={['click']} onOpenChange={setOpen} >
+            <Button size="small" type="text" icon={<MoreOutlined />} style={{ marginLeft: 8 }} />
+          </Dropdown>
+          : <div style={{ width: 32 }}></div>
       }
 
     </ListItem>

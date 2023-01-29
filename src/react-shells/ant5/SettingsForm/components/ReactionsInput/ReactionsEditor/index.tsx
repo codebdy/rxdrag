@@ -135,6 +135,10 @@ export const ReactionsEditor = memo((
     setShowMap((show) => !show)
   }, [])
 
+  const handleMemberChange = useCallback((meta?: IControllerMeta) => {
+    setInputValue(meta)
+  }, [])
+
   return (
     <ReacionsEditorContext.Provider value={params}>
       <SytledContent id="reactions-editor-container">
@@ -142,7 +146,8 @@ export const ReactionsEditor = memo((
           <Members
             value={inputValue}
             selected={selected}
-            onSelect = {setSelected}
+            onSelect={setSelected}
+            onChange={handleMemberChange}
           />
         </LeftArea>
         <CenterArea>

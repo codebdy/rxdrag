@@ -2,9 +2,10 @@ import { PlusOutlined, ThunderboltOutlined } from "@ant-design/icons";
 import { Button, Typography } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useState } from "react"
-import { IControllerMeta } from "runner/reaction/interfaces/metas";
+import { IControllerMeta, IReactionMeta } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
 import { methodIcon } from "../../../../../../icons/reactions";
+import { createUuid } from "../../utils";
 import { EditableListItem } from "./EditableListItem";
 import { NameDialog } from "./NameDialog";
 
@@ -31,20 +32,15 @@ const ListItem = styled((props) => <Button type="text" {...props} />)`
   flex:1;
 `
 
-export enum MemberType {
-  Event = "Event",
-  Reaction = "Reaction",
-  Variable = "Variable"
-}
-
 export const Members = memo((
   props: {
     value?: IControllerMeta,
     selected?: string,
     onSelect?: (id: string) => void,
+    onChange?: (value?: IControllerMeta) => void,
   }
 ) => {
-  const { value, selected, onSelect } = props
+  const { value, selected, onSelect, onChange } = props
   const [addReactionOpen, setAddReactionOpen] = useState(false)
 
   const t = useToolsTranslate()
@@ -64,11 +60,17 @@ export const Members = memo((
   }, [])
 
   const handleAddReactionOk = useCallback((name?: string) => {
-    if(name){
-      
+    if (name) {
+      const newReaction: IReactionMeta = {
+        id: createUuid(),
+        name: name,
+        label: name,
+      }
+
+      onChange?.({ ...value, reactions: [...value?.reactions || [], newReaction] })
     }
     setAddReactionOpen(false)
-  }, [])
+  }, [onChange, value])
 
   return (
     <>
@@ -99,14 +101,21 @@ export const Members = memo((
         ></Button>
       </Title>
       <List>
-        <EditableListItem>
-          <ListItem icon={methodIcon} type="default">
-            打开
-          </ListItem>
-        </EditableListItem>
-        <ListItem icon={methodIcon}>
-          关闭
-        </ListItem>
+        {
+          value?.reactions?.map((event) => {
+            return (
+              <EditableListItem key={event.id}>
+                <ListItem
+                  icon={methodIcon}
+                  onClick={() => handleEventClick(event.id)}
+                  type={selected === event.id ? "default" : "text"}
+                >
+                  {event.label || event.name}
+                </ListItem>
+              </EditableListItem>
+            )
+          })
+        }
       </List>
       <Title>
         <Text type="secondary">{t("ReactionsInput.variables")}</Text>
