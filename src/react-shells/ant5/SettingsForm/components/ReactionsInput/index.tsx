@@ -65,6 +65,7 @@ export const ReactionsInput = memo((props: {
 
   const handleOk = useCallback(()=>{
     onChange?.(inputValue)
+    setIsModalOpen(false);
   }, [inputValue, onChange])
 
   return (
