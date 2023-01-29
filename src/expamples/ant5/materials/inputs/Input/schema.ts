@@ -1,5 +1,5 @@
 import { INodeSchema } from "core";
-import { createSchema } from "react-shells/ant5/shared/createSchema";
+import { createSchema, SchemaOptions } from "react-shells/ant5/shared/createSchema";
 import { inputBaseSchemas } from "../schemas";
 
 const inputPros = [
@@ -14,7 +14,9 @@ const inputPros = [
         componentName: "Switch",
         "x-field": {
           name: "showCount",
-          valuePropName: "checked",
+          params:{
+            valuePropName: "checked",
+          }
         },
       }
     ]
@@ -93,13 +95,14 @@ const inputSlots = [
     ]
   },
 ]
-export const inputSchema: INodeSchema = createSchema(
-  inputPros,
-  inputSlots
-)
+const options: SchemaOptions = {
+  propsSchemas:inputPros,
+  slotsSchemas:inputSlots
+}
+export const inputSchema: INodeSchema = createSchema(options)
 
-export const textAreaSchema: INodeSchema = createSchema(
-  [...inputPros,
+const textareaOptions: SchemaOptions = {
+  propsSchemas: [...inputPros,
   {
     componentName: "FormItem",
     props: {
@@ -115,5 +118,6 @@ export const textAreaSchema: INodeSchema = createSchema(
     ]
   },
   ],
-  inputSlots
-)
+  slotsSchemas: inputSlots,
+}
+export const textAreaSchema: INodeSchema = createSchema(textareaOptions)

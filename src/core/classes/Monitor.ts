@@ -231,9 +231,6 @@ export class Monitor implements IMonitor {
 		let previousNodeId = this.getSeletedNodeId(documentState?.selectedIds || [])
 		const handleChange = () => {
 			const activedDocumentId = this.getState().activedDocumentId
-			if (!activedDocumentId) {
-				console.warn("no actived document")
-			}
 			const nextState = this.store.getState().documentsById[activedDocumentId || ""]
 			const nodeId = this.getSeletedNodeId(nextState?.selectedIds || [])
 			const node = this.getState().nodesById[nodeId] || null

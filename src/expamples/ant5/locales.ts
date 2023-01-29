@@ -10,6 +10,8 @@ export const toolsLocales: ILocales = {
       business: "业务组件",
       pages: "页面",
       popups: "弹层控件",
+      datas: "数据控件",
+      fields: "字段模板"
     }
 
   },
@@ -22,6 +24,8 @@ export const toolsLocales: ILocales = {
       business: "Business",
       pages: "Pages",
       popups: "Popups",
+      datas: "Data",
+      fields: "Fields",
     }
   }
 }

@@ -1,5 +1,5 @@
 import { INodeSchema } from "core";
-import { IFieldMeta } from "fieldy";
+import { IFieldMeta } from "runner/fieldy";
 
 export const paddingStyleSetter: INodeSchema<IFieldMeta> = {
   componentName: "Fold",
@@ -8,7 +8,6 @@ export const paddingStyleSetter: INodeSchema<IFieldMeta> = {
       componentName: "PaddingStyleSetter",
       "x-field": {
         type: "fragment",
-        withControl: true,
         fragmentFields: [
           {
             name: "paddingTop",
@@ -22,7 +21,10 @@ export const paddingStyleSetter: INodeSchema<IFieldMeta> = {
           {
             name: "paddingLeft",
           },
-        ]
+        ],
+        params:{
+          withBind: true,
+        }
       },
       props: {
         title: "$padding",

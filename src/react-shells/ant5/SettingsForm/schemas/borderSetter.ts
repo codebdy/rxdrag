@@ -1,5 +1,5 @@
 import { INodeSchema } from "core";
-import { IFieldMeta } from "fieldy";
+import { IFieldMeta } from "runner/fieldy";
 
 export const borderSetter: INodeSchema<IFieldMeta> = {
   componentName: "Fold",
@@ -8,7 +8,6 @@ export const borderSetter: INodeSchema<IFieldMeta> = {
       componentName: "BorderSetter",
       "x-field": {
         type: "fragment",
-        withControl: true,
         fragmentFields: [
           {
             name: "borderTop",
@@ -22,7 +21,10 @@ export const borderSetter: INodeSchema<IFieldMeta> = {
           {
             name: "borderLeft",
           },
-        ]
+        ],
+        params:{
+          withBind: true,
+        }
       },
       props: {
         title: "$border",

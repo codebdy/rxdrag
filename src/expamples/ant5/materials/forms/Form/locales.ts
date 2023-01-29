@@ -1,3 +1,5 @@
+import { sizeLocales } from "../../locales"
+
 export const formLocales = {
   "zh-CN": {
     title: "表单",
@@ -9,7 +11,6 @@ export const formLocales = {
       labelCol: "标签列",
       wrapperCol: "控件布局",
       layout: "表单布局",
-      size: "大小",
       right: "右对齐",
       left: "左对齐",
       span: "跨度",
@@ -17,9 +18,7 @@ export const formLocales = {
       order: "顺序",
       pull: "左移",
       push: "右移",
-      large: "大",
-      middle: "中",
-      small: "小",
+      ...sizeLocales["zh-CN"]
     }
 
   },
@@ -33,7 +32,6 @@ export const formLocales = {
       labelCol: "Label Col",
       wrapperCol: "Wrapper Col",
       layout: "layout",
-      size: "Size",
       right: "Right",
       left: "Left",
       span: "Span",
@@ -41,9 +39,7 @@ export const formLocales = {
       order: "Order",
       pull: "Pull",
       push: "Push",
-      large: "Large",
-      middle: "Middle",
-      small: "Small",
+      ...sizeLocales["en-US"]
     }
   }
 }

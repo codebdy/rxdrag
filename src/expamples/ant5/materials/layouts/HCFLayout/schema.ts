@@ -75,10 +75,12 @@ export const hCFLayoutSchema: INodeSchema = {
           componentName: "FormItem",
           props: {
             label: "$disabled",
-            valuePropName: "checked",
           },
           "x-field": {
             name: "disabled",
+            params:{
+              valuePropName: "checked",
+            }
           },
           children: [
             {

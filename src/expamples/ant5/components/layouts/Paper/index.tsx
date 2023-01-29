@@ -1,8 +1,11 @@
-import { useToken } from "antd/es/theme/internal"
 import { forwardRef, memo } from "react"
-import { CSSProperties } from "styled-components"
-import "./style.less"
-import cls from "classnames"
+import styled, { CSSProperties } from "styled-components"
+
+const StyledPaper = styled.div`
+  border-radius: 5px;
+  padding: 16px;
+  background-color: ${props => props.theme.token?.colorBgContainer};
+`
 
 export type PaperProps = {
   style?: CSSProperties,
@@ -12,11 +15,10 @@ export type PaperProps = {
 
 export const Paper = memo(forwardRef<HTMLDivElement, PaperProps>((
   props, ref) => {
-  const { style, className, children, ...other } = props
-  const [, token] = useToken()
+  const { children, ...other } = props
   return (
-    <div ref={ref} className={cls(className, "rx-paper")} style={{ ...style, backgroundColor: token.colorBgContainer }} {...other}>
+    <StyledPaper ref={ref} {...other}>
       {children}
-    </div>
+    </StyledPaper>
   )
 }))

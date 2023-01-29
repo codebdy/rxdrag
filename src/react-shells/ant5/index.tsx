@@ -22,7 +22,7 @@ import { ThemeButton } from "./widgets/ThemeButton"
 import { ConfigRoot } from "./pannels/ShellContainer/ConfigRoot"
 import { ILocales } from "core/interfaces/loacales"
 import { DocumentView } from "./pannels/DocumentView"
-import { settingLocales } from "./SettingsForm/locales/settingLocales"
+import { settingLocales } from "./SettingsForm/locales"
 import "./style.less"
 
 export type Antd5EditorProps = {

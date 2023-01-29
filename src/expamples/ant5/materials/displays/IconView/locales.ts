@@ -1,19 +1,21 @@
+import { sizeLocales } from "../../locales"
+
 export const iconViewLocales = {
   "zh-CN": {
     title: "图标",
     settings: {
-      size: "大小",
       color: "颜色",
       icon: "图标",
+      ...sizeLocales["zh-CN"]
     }
 
   },
   'en-US': {
     title: "Icon",
     settings: {
-      size: "Size",
       color: "Color",
       icon: "Icon",
+      ...sizeLocales["en-US"]
     }
   }
 }

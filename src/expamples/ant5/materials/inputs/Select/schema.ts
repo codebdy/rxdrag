@@ -1,7 +1,11 @@
 import { INodeSchema } from "core";
-import { createSchema } from "react-shells/ant5/shared/createSchema";
 import { inputBaseSchemas } from "../schemas";
+import { createSchema, SchemaOptions } from "react-shells/ant5/shared/createSchema";
 
-export const selectSchema: INodeSchema = createSchema([
-  ...inputBaseSchemas
-])
+const options: SchemaOptions = {
+  propsSchemas: [
+    ...inputBaseSchemas
+  ]
+}
+
+export const selectSchema: INodeSchema = createSchema(options)

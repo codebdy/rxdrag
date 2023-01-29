@@ -1,8 +1,8 @@
 import { INodeSchema } from "core";
-import { createSchema } from "react-shells/ant5/shared/createSchema";
+import { createSchema, SchemaOptions } from "react-shells/ant5/shared/createSchema";
 
-export const buttonSchema: INodeSchema = createSchema(
-  [
+const options: SchemaOptions = {
+  propsSchemas: [
     {
       componentName: "FormItem",
       props: {
@@ -70,7 +70,9 @@ export const buttonSchema: INodeSchema = createSchema(
           componentName: "Switch",
           "x-field": {
             name: "disabled",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ]
@@ -85,7 +87,9 @@ export const buttonSchema: INodeSchema = createSchema(
           componentName: "Switch",
           "x-field": {
             name: "block",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ]
@@ -100,7 +104,9 @@ export const buttonSchema: INodeSchema = createSchema(
           componentName: "Switch",
           "x-field": {
             name: "danger",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ]
@@ -115,7 +121,9 @@ export const buttonSchema: INodeSchema = createSchema(
           componentName: "Switch",
           "x-field": {
             name: "ghost",
-            valuePropName: "checked",
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ]
@@ -185,7 +193,7 @@ export const buttonSchema: INodeSchema = createSchema(
       ]
     },
   ],
-  [
+  slotsSchemas: [
     {
       componentName: "FormItem",
       props: {
@@ -201,4 +209,6 @@ export const buttonSchema: INodeSchema = createSchema(
       ]
     },
   ]
-)
+}
+
+export const buttonSchema: INodeSchema = createSchema(options)

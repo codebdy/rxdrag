@@ -1,3 +1,5 @@
+import { sizeLocales } from "../locales"
+
 export const buttonLocales = {
   "zh-CN": {
     title: "按钮",
@@ -14,10 +16,7 @@ export const buttonLocales = {
       default: "默认",
       circle: "圆形",
       round: "圆角",
-      size: "尺寸",
-      large: "大",
-      middle: "中",
-      small: "小",
+      ...sizeLocales["zh-CN"]
     }
 
   },
@@ -35,10 +34,7 @@ export const buttonLocales = {
       default: "Default",
       circle: "Circle",
       round: "Round",
-      size: "size",
-      large: "large",
-      middle: "middle",
-      small: "small",
+      ...sizeLocales["en-US"]
     }
   }
 }

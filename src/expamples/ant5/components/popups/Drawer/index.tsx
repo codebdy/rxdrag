@@ -1,8 +1,9 @@
 import { Drawer as AntdDrawer } from "antd";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { CSSProperties, forwardRef, memo, useCallback, useState } from "react"
 
 export type DrawerProps = {
+  open?: boolean,
   autoFocus?: boolean,
   bodyStyle?: CSSProperties,
   closable?: boolean,
@@ -33,6 +34,7 @@ export type DrawerProps = {
 
 export const Drawer = memo(forwardRef<HTMLDivElement>((props: DrawerProps, ref) => {
   const {
+    open,
     title,
     actionComponent,
     content,
@@ -41,14 +43,18 @@ export const Drawer = memo(forwardRef<HTMLDivElement>((props: DrawerProps, ref) 
     style,
     ...other
   } = props;
-  const [open, setOpen] = useState(false);
+  const [visiable, setVisiable] = useState<boolean>();
   const realRef = useRef<HTMLElement | null>(null);
   const handleOpen = useCallback(() => {
-    setOpen(true)
+    setVisiable(true)
   }, [])
 
+  useEffect(() => {
+    setVisiable(open)
+  }, [open])
+
   const hancleClose = useCallback(() => {
-    setOpen(false)
+    setVisiable(false)
   }, [])
 
   const handleRefChange = useCallback((node: HTMLDivElement | null) => {
@@ -65,7 +71,7 @@ export const Drawer = memo(forwardRef<HTMLDivElement>((props: DrawerProps, ref) 
       {actionComponent && React.cloneElement(actionComponent, { onClick: handleOpen })}
       <AntdDrawer
         title={title}
-        open={open}
+        open={visiable}
         footer={footer}
         extra={extra}
         getContainer={realRef.current ? () => realRef.current as any : undefined}

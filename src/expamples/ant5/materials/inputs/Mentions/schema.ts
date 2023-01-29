@@ -1,6 +1,6 @@
 import { INodeSchema } from "core";
-import { createSchema } from "react-shells/ant5/shared/createSchema";
 import { inputBaseSchemas } from "../schemas";
+import { createSchema, SchemaOptions } from "react-shells/ant5/shared/createSchema";
 
 const mentionsNumberPros = [
   ...inputBaseSchemas,
@@ -14,7 +14,11 @@ const mentionsNumberPros = [
         componentName: "Switch",
         "x-field": {
           name: "showCount",
-          valuePropName: "checked",
+          params:{
+            params:{
+              valuePropName: "checked",
+            }
+          }
         },
       }
     ]
@@ -35,8 +39,9 @@ const mentionsNumberPros = [
   },
 ]
 
+const options: SchemaOptions = {
+  propsSchemas:mentionsNumberPros
+}
 
-export const inputNumberSchema: INodeSchema = createSchema(
-  mentionsNumberPros,
-)
+export const inputNumberSchema: INodeSchema = createSchema(options)
 

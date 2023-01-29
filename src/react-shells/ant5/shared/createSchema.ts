@@ -6,38 +6,58 @@ import { displaySetter } from "../SettingsForm/schemas/displaySetter";
 import { fontStyleSetter } from "../SettingsForm/schemas/fontStyleSetter";
 import { martinStyleSetter } from "../SettingsForm/schemas/martinStyleSetter";
 import { paddingStyleSetter } from "../SettingsForm/schemas/paddingStyleSetter";
+import { createReactionSchema, LogicOptions } from "./createReactionSchema";
 
-export function createSchema(propsSchema?: INodeSchema[], slots?: INodeSchema[]): INodeSchema {
-  const propsTab = propsSchema ? [{
+export type SchemaOptions<IField = any, IReactions = any> = {
+  propsSchemas?: INodeSchema<IField, IReactions>[],
+  slotsSchemas?: INodeSchema<IField, IReactions>[],
+  logicOptions?: LogicOptions,
+}
+
+export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
+  const { propsSchemas, slotsSchemas, logicOptions } = opetions
+  const propsTab = propsSchemas ? [{
     componentName: "TabPanel",
+    "x-field": {
+      type: "object",
+      name: "props",
+    },
     props: {
       title: "$properties"
     },
     children: [
-      ...propsSchema || []
+      ...propsSchemas || []
     ]
   }] : [];
 
-  const slotsTab = slots ? [{
+  const slotsTab = slotsSchemas ? [{
     componentName: "TabPanel",
     props: {
       title: "$slots",
       id: "slots",
     },
-    children: slots
+    children: slotsSchemas
   }] : []
 
+  const logicTab = [{
+    componentName: "TabPanel",
+    props: {
+      title: "$logic",
+      id: "logic",
+      style: {
+        padding: 0
+      },
+    },
+    children: createReactionSchema(logicOptions)
+  }]
   return {
     componentName: "Tabs",
     props: {},
-    "x-field": {
-      type: "object",
-      name: "props",
-    },
     children: [
       ...propsTab,
       styleTab,
-      ...slotsTab
+      ...slotsTab,
+      ...logicTab
     ]
   }
 }
@@ -49,7 +69,7 @@ const styleTab = {
   },
   "x-field": {
     type: "object",
-    name: "style"
+    name: "props.style"
   },
   children: [
     {

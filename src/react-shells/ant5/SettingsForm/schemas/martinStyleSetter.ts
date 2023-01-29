@@ -1,14 +1,14 @@
 import { INodeSchema } from "core";
-import { IFieldMeta } from "fieldy";
+import { IBindParams } from "runner/ComponentRender/interfaces";
+import { IFieldMeta } from "runner/fieldy";
 
-export const martinStyleSetter: INodeSchema<IFieldMeta> = {
+export const martinStyleSetter: INodeSchema<IFieldMeta<IBindParams>> = {
   componentName: "Fold",
   children: [
     {
       componentName: "MarginStyleSetter",
       "x-field": {
         type: "fragment",
-        withControl: true,
         fragmentFields: [
           {
             name: "marginTop",
@@ -22,7 +22,10 @@ export const martinStyleSetter: INodeSchema<IFieldMeta> = {
           {
             name: "marginLeft",
           },
-        ]
+        ],
+        params:{
+          withBind: true,
+        }
       },
       props: {
         title: "$margin",

@@ -12,7 +12,6 @@ export const DesignRoot = (props: {
     for (const com of components) {
       setComponents(coms => ({ ...coms, ...com }))
     }
-
   }, [])
 
   const params: IComponentsParams = useMemo(() => {

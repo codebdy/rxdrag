@@ -1,12 +1,11 @@
 import { CSSProperties, memo, useCallback, useMemo } from "react"
 import { useCurrentNode } from "core-react/hooks/useCurrentNode"
 import { Checkbox, Form, Input, InputNumber, Radio, Select, Slider, Switch } from 'antd';
-import { ComponentRender } from "core-react/ComponentRender";
 import { Tabs } from "./components/Tabs";
 import { TabPanel } from "./components/Tabs/TabPanel";
 import { INodeMeta } from "core";
-import { Fieldy, VirtualForm } from "fieldy";
-import { extractFieldSchemas } from "./extractFieldSchemas";
+import { Fieldy, VirtualForm } from "runner/fieldy";
+import { extractFieldSchemas } from "../../../runner/ComponentRender/funcs/extractFieldSchemas";
 import { useDesignerEngine } from "core-react/hooks";
 import { Box } from "../components/Box";
 import { PreviewRoot } from "core-react/PreviewRoot";
@@ -35,6 +34,11 @@ import { GutterInput } from "./components/GutterInput";
 import { ColInput } from "./components/ColInput";
 import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput } from "./components/BackgroundImageInput";
 import { ImageInput } from "./components/ImageInput";
+import { ComponentRender } from "runner/ComponentRender";
+import { CollapsePanel } from "./components/CollapsePanel";
+import { EffectsInput } from "./components/EffectsInput";
+import { ReactionsInput } from "./components/ReactionsInput";
+import { EventInput } from "./components/EventInput";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -121,6 +125,10 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         BackgroundRepeatInput,
         BackgroundPositionInput,
         ImageInput,
+        CollapsePanel,
+        EffectsInput,
+        ReactionsInput,
+        EventInput,
       }}
     >
       <Fieldy>
@@ -135,8 +143,8 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
               <Form
                 labelAlign="left"
                 colon={false}
-                labelCol={{ span: 6 }}
-                wrapperCol={{ span: 18 }}
+                labelCol={{ span: 7 }}
+                wrapperCol={{ span: 17 }}
                 autoComplete="off"
                 style={{
                   flex: 1,
