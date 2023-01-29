@@ -1,7 +1,7 @@
-import { memo, useCallback, useEffect, useRef, useState } from "react"
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import styled from "styled-components";
 import { Members } from "./components/Members";
-import { IControllerMeta, IReactionMeta } from "runner/reaction/interfaces/metas";
+import { IControllerMeta, ILogicMetas, IReactionMeta } from "runner/reaction/interfaces/metas";
 import { IEventMeta } from "./interfaces";
 import { createUuid } from "./utils";
 import { ReactionMetaEditor } from "./components/ReactionMetaEditor";
@@ -64,6 +64,23 @@ export const ReactionsEditor = memo((
     setInputValue(meta)
   }, [])
 
+  const metas = useMemo(() => {
+    const reaction = value?.reactions?.find(reaction => reaction.id === selected)
+    if (reaction) {
+      return reaction.logicMetas
+    }
+
+    return value?.events?.find(evt => evt.id === selected)?.logicMetas
+  }, [selected, value?.events, value?.reactions])
+
+  const handleChange = useCallback((newMetas: ILogicMetas) => {
+    onChange?.({
+      ...value,
+      reactions: value?.reactions?.map(reaction => reaction.id === selected ? { ...reaction, logicMetas: newMetas } : reaction),
+      events: value?.events?.map(event => event.id === selected ? { ...event, logicMetas: newMetas } : event),
+    })
+  }, [onChange, selected, value])
+
   return (
     <SytledContent id="reactions-editor-container">
       <LeftArea>
@@ -76,7 +93,11 @@ export const ReactionsEditor = memo((
       </LeftArea>
       {
         selected &&
-        <ReactionMetaEditor key={selected} />
+        <ReactionMetaEditor
+          key={selected}
+          metas={metas}
+          onChange={handleChange}
+        />
       }
     </SytledContent>
   )

@@ -67,20 +67,25 @@ const RightArea = styled.div`
   flex-flow: column;
 `
 
+
 export const ReactionMetaEditor = memo((
   props: {
     metas?: ILogicMetas,
-    onChange?: (meta?: ILogicMetas) => void,
+    onChange: (meta: ILogicMetas) => void,
   }
 ) => {
   const { metas, onChange } = props
+  const emptyMetas = useMemo(() => ({
+    reactions: [],
+    invokes: []
+  }), [])
   const [showMap, setShowMap] = useState(false)
   const [state, dispatch] = useReducer(mainReducer, initialState);
   const graph = useCreateGraph()
 
   useEffect(() => {
-    dispatch({ type: ActionType.SET_METAS, payload: metas || { reactions: [], invokes: [] } } as any)
-  }, [metas])
+    dispatch({ type: ActionType.SET_METAS, payload: metas || emptyMetas } as any)
+  }, [emptyMetas, metas])
 
   const params: IReactionsEditorParams = useMemo(() => {
     return {
@@ -94,6 +99,10 @@ export const ReactionMetaEditor = memo((
     setShowMap((show) => !show)
   }, [])
 
+  const handleChange = useCallback((newMetas:ILogicMetas)=>{
+    onChange(newMetas)
+  }, [onChange])
+
   return (
     <ReacionsEditorContext.Provider value={params}>
       <CenterArea>
@@ -102,7 +111,7 @@ export const ReactionMetaEditor = memo((
           <Toolbox />
           <CanvasArea>
             <CanvasContainer id="reactions-canvas-container" >
-              <Logic />
+              <Logic initMetas={metas || emptyMetas} onChange={handleChange} />
             </CanvasContainer>
             <MiniMapContainer
               id="reactions-minimap-container"
