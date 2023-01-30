@@ -127,6 +127,20 @@ export const ComponentReactions = memo(() => {
     const data: DataNode = {
       title: controller.name || node.title,
       key: controller.id!,
+      children: [
+        {
+          title: <ItemTitle> {methodIcon} 设置状态</ItemTitle>,
+          key: controller.id + 'setState',
+        },
+        {
+          title: <ItemTitle>{methodIcon} 设置变量</ItemTitle>,
+          key: controller.id + 'setVariable',
+        },
+        {
+          title: <ItemTitle>{methodIcon} 读取变量</ItemTitle>,
+          key: controller.id + 'readVariable',
+        },
+      ]
     }
     return data
   }, [])
