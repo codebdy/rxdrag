@@ -29,7 +29,7 @@ export interface IReactionNodeData {
   ports?: IPortMeta[];
 }
 
-export interface IReactionNodeMeta extends IReactionNodeData {
+export interface IReactionNodeMeta<ConfigMeta = any> extends IReactionNodeData {
   id: string;
   type: ReactionType;
   materialName: string;
@@ -37,6 +37,7 @@ export interface IReactionNodeMeta extends IReactionNodeData {
   controllerId?: string;
   reactionRef?: string;//ID or name
   x6Node?: IX6NodeMeta;
+  config?: ConfigMeta,
 }
 
 export interface IInvokeMeta {

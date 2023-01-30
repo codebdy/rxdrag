@@ -72,6 +72,7 @@ export const ComponentList = memo((
               </Typography.Text>
               <ReactionList>
                 <Space direction="vertical">
+                  <ItemTitle>{setPropIcon} {t("$setProp")}</ItemTitle>
                   {
                     !!controller.variables?.length &&
                     <>
@@ -79,8 +80,6 @@ export const ComponentList = memo((
                       <ItemTitle>{listenVariableIcon} {t("$listenVariable")}</ItemTitle>
                     </>
                   }
-
-                  <ItemTitle>{setPropIcon} {t("$setProp")}</ItemTitle>
                   {
                     controller.reactions?.map(reaction => {
                       return (<ItemTitle key={reaction.id}>{methodIcon} {reaction.label}</ItemTitle>)
