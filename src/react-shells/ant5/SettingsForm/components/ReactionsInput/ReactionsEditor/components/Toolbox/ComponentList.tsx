@@ -1,5 +1,5 @@
 import { DownOutlined } from "@ant-design/icons";
-import { Tree } from "antd";
+import { Space, Tree, Typography } from "antd";
 import { DataNode } from "antd/es/tree";
 import { ITreeNode } from "core";
 import { useCurrentNode } from "core-react/hooks/useCurrentNode";
@@ -9,9 +9,20 @@ import { IControllerMeta } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
 import { methodIcon } from "../../../../../../icons/reactions";
 
+const Container = styled.div`
+  display: flex;
+  flex-flow: column;
+`
+
+const ReactionList = styled.div`
+  display: flex;
+  flex-flow: column;
+  padding: 8px 16px 0 16px;
+`
+
 const ItemTitle = styled.div`
   border: ${props => props.theme.token?.colorBorder} solid 1px;
-  padding: 0 6px; 
+  padding: 4px 8px; 
   border-radius: 4px;
   cursor: move;
 `
@@ -54,6 +65,17 @@ export const ComponentList = memo(() => {
     return data
   }, [])
 
+  const controllerNodes = useMemo(() => {
+    if (currentNode) {
+      const nodes: ITreeNode[] = []
+      processNode(currentNode, nodes)
+
+      return nodes.reverse()
+    }
+
+    return []
+  }, [currentNode, processNode])
+
   const treeItems: DataNode[] = useMemo(() => {
 
     if (currentNode) {
@@ -69,14 +91,28 @@ export const ComponentList = memo(() => {
 
 
   return (
-    <Tree
-      showLine
-      switcherIcon={<DownOutlined />}
-      showIcon={true}
-      defaultExpandAll = {true}
-      selectable = {false}
-      treeData={treeItems}
-      rootStyle={{ backgroundColor: "transparent" }}
-    />
+    <div>
+      {
+        controllerNodes.map(node => {
+          const controller: IControllerMeta = node.meta?.["x-reactions"]
+          return (
+            <Container
+              key={node.id}
+            >
+              <Typography.Text type="secondary">
+                {controller.name || node.title}
+              </Typography.Text>
+              <ReactionList>
+                <Space direction ="vertical">
+                  <ItemTitle>{methodIcon} 设置属性</ItemTitle>
+                  <ItemTitle>{methodIcon} 设置变量</ItemTitle>
+                  <ItemTitle>{methodIcon} 读取变量</ItemTitle>
+                </Space>
+              </ReactionList>
+            </Container>
+          )
+        })
+      }
+    </div>
   )
 })
