@@ -61,7 +61,7 @@ export interface IReactionMeta {
   id: string,
   name?: string,
   label?: string,
-  title?: string,
+  //title?: string,
   logicMetas?: ILogicMetas,
 }
 

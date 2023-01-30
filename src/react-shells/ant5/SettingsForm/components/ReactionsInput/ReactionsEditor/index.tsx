@@ -68,10 +68,11 @@ export const ReactionsEditor = memo((
         />
       </LeftArea>
       {
-        selected &&
+        selected && value &&
         <ReactionMetaEditor
           key={selected}
           metas={metas}
+          currentController={value}
           onChange={handleChange}
         />
       }

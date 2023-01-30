@@ -1,6 +1,4 @@
-import { DownOutlined } from "@ant-design/icons";
-import { Space, Tree, Typography } from "antd";
-import { DataNode } from "antd/es/tree";
+import { Space, Typography } from "antd";
 import { ITreeNode } from "core";
 import { useCurrentNode } from "core-react/hooks/useCurrentNode";
 import { useGetNode } from "core-react/hooks/useGetNode";
@@ -8,6 +6,7 @@ import { memo, useCallback, useMemo } from "react"
 import { IControllerMeta } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
 import { methodIcon } from "../../../../../../icons/reactions";
+import { useTrans } from "../../hooks/useTrans";
 
 const Container = styled.div`
   display: flex;
@@ -26,9 +25,15 @@ const ItemTitle = styled.div`
   border-radius: 4px;
   cursor: move;
 `
-export const ComponentList = memo(() => {
+export const ComponentList = memo((
+  props: {
+    currentController: IControllerMeta
+  }
+) => {
+  const { currentController } = props;
   const currentNode = useCurrentNode()
   const getNode = useGetNode()
+  const t = useTrans()
 
   const processNode = useCallback((node: ITreeNode, nodes: ITreeNode[]) => {
     if (node.meta?.["x-reactions"]?.id) {
@@ -42,29 +47,6 @@ export const ComponentList = memo(() => {
     }
   }, [getNode])
 
-  const transNode = useCallback((node: ITreeNode): DataNode => {
-    const controller: IControllerMeta = node.meta?.["x-reactions"]
-    const data: DataNode = {
-      title: controller.name || node.title,
-      key: controller.id!,
-      children: [
-        {
-          title: <ItemTitle> {methodIcon} 设置属性</ItemTitle>,
-          key: controller.id + 'setProp',
-        },
-        {
-          title: <ItemTitle>{methodIcon} 设置变量</ItemTitle>,
-          key: controller.id + 'setVariable',
-        },
-        {
-          title: <ItemTitle>{methodIcon} 读取变量</ItemTitle>,
-          key: controller.id + 'readVariable',
-        },
-      ]
-    }
-    return data
-  }, [])
-
   const controllerNodes = useMemo(() => {
     if (currentNode) {
       const nodes: ITreeNode[] = []
@@ -76,25 +58,11 @@ export const ComponentList = memo(() => {
     return []
   }, [currentNode, processNode])
 
-  const treeItems: DataNode[] = useMemo(() => {
-
-    if (currentNode) {
-      const nodes: ITreeNode[] = []
-      processNode(currentNode, nodes)
-
-      return nodes.reverse().map((node) => transNode(node))
-    }
-
-    return []
-
-  }, [currentNode, processNode, transNode])
-
-
   return (
     <div>
       {
         controllerNodes.map(node => {
-          const controller: IControllerMeta = node.meta?.["x-reactions"]
+          const controller: IControllerMeta = currentController.id === node.meta?.["x-reactions"]?.id ? currentController : node.meta?.["x-reactions"]
           return (
             <Container
               key={node.id}
@@ -103,10 +71,21 @@ export const ComponentList = memo(() => {
                 {controller.name || node.title}
               </Typography.Text>
               <ReactionList>
-                <Space direction ="vertical">
-                  <ItemTitle>{methodIcon} 设置属性</ItemTitle>
-                  <ItemTitle>{methodIcon} 设置变量</ItemTitle>
-                  <ItemTitle>{methodIcon} 读取变量</ItemTitle>
+                <Space direction="vertical">
+                  {
+                    !!controller.variables?.length &&
+                    <>
+                      <ItemTitle>{methodIcon} {t("$setVariable")}</ItemTitle>
+                      <ItemTitle>{methodIcon} {t("$listenVariable")}</ItemTitle>
+                    </>
+                  }
+
+                  <ItemTitle>{methodIcon} {t("$setProp")}</ItemTitle>
+                  {
+                    controller.reactions?.map(reaction => {
+                      return (<ItemTitle key={reaction.id}>{methodIcon} {reaction.label}</ItemTitle>)
+                    })
+                  }
                 </Space>
               </ReactionList>
             </Container>

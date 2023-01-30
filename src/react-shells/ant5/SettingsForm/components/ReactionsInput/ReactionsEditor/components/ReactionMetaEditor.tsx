@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useMemo, useReducer, useState } from "react"
-import { ILogicMetas } from "runner/reaction/interfaces/metas";
+import { IControllerMeta, ILogicMetas } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
 import { ActionType } from "../actions";
 import { initialState, IReactionsEditorParams, IState, ReacionsEditorContext } from "../contexts"
@@ -72,9 +72,10 @@ export const ReactionMetaEditor = memo((
   props: {
     metas?: ILogicMetas,
     onChange: (meta: ILogicMetas) => void,
+    currentController: IControllerMeta,
   }
 ) => {
-  const { metas, onChange } = props
+  const { currentController, metas, onChange } = props
   const emptyMetas = useMemo(() => ({
     reactions: [],
     invokes: []
@@ -108,7 +109,7 @@ export const ReactionMetaEditor = memo((
       <CenterArea>
         <Toolbar showMap={showMap} toggleShowMap={handleToggleMap} />
         <OpeateArea>
-          <Toolbox />
+          <Toolbox currentController = {currentController}/>
           <CanvasArea>
             <CanvasContainer id="reactions-canvas-container" >
               <Logic onChange={handleChange} />

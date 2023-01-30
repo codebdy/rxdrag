@@ -7,7 +7,7 @@ import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
 import { fieldIcon, fieldReadIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon, infoIcon, jsIcon, loadingIcon, routeIcon, simulateIcon, subscribIcon } from "../../../../../../icons/reactions";
 import { ToolItem } from "./ToolItem";
 import { basicReactions } from "react-shells/ant5/materials/basic";
-import { IReactionNodeMeta } from "runner/reaction/interfaces/metas";
+import { IControllerMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 import { createUuid } from "../../utils";
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { useTrans } from "../../hooks/useTrans";
@@ -30,7 +30,10 @@ const Collapse = styled(AntdCollapse)`
   overflow: auto;
 `
 
-export const Toolbox = memo(() => {
+export const Toolbox = memo((props: {
+  currentController: IControllerMeta
+}) => {
+  const { currentController } = props;
   const t = useTrans();
   const { graph } = useEditorState()
   const dnd = useDnd()
@@ -55,7 +58,7 @@ export const Toolbox = memo(() => {
 
   return (
     <StyledToolbox>
-      <Collapse defaultActiveKey={['1']} bordered={false} accordion expandIconPosition = "end">
+      <Collapse defaultActiveKey={['1']} bordered={false} accordion expandIconPosition="end">
         <Panel header={t('$basicReactions')} key="basicReactions">
           <Row gutter={8}>
             {
@@ -92,7 +95,7 @@ export const Toolbox = memo(() => {
           </Row>
         </Panel>
         <Panel header={t('$componentController')} key="componentController">
-          <ComponentList />
+          <ComponentList currentController={currentController} />
         </Panel>
         <Panel header={t('$auxTools')} key="auxTools">
           <Row gutter={8}>
