@@ -1,6 +1,6 @@
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { IReactionMaterial } from "../../../runner/reaction/interfaces/material";
-import { delayIcon, endIcon, ifIcon, listenVariableIcon, loopIcon, mergeIcon, randomIcon, setPropIcon, setVariableIcon, startIcon, switchIcon } from "../icons/reactions";
+import { delayIcon, endIcon, ifIcon, loopIcon, mergeIcon, randomIcon, startIcon, switchIcon } from "../icons/reactions";
 
 export const basicReactions: IReactionMaterial[] = [
   {
@@ -152,49 +152,49 @@ export const basicReactions: IReactionMaterial[] = [
       ],
     }
   },
-  {
-    name: "setVariable",
-    icon: setVariableIcon,
-    label: "$setVariable",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      ports: [
-        {
-          name: "input",
-          label: "",//"$startUp",
-          group: "in",
-        },
-      ],
-    }
-  },
-  {
-    name: "listenVariable",
-    icon: listenVariableIcon,
-    label: "$listenVariable",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      ports: [
-        {
-          name: "output",
-          label: "",//"$startUp",
-          group: "out",
-        },
-      ],
-    }
-  },
-  {
-    name: "setProp",
-    icon: setPropIcon,
-    label: "$setProp",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      ports: [
-        {
-          name: "input",
-          label: "",//"$startUp",
-          group: "in",
-        },
-      ],
-    }
-  },
+  // {
+  //   name: "setVariable",
+  //   icon: setVariableIcon,
+  //   label: "$setVariable",
+  //   reactionType: ReactionType.SingleReaction,
+  //   meta: {
+  //     ports: [
+  //       {
+  //         name: "input",
+  //         label: "",//"$startUp",
+  //         group: "in",
+  //       },
+  //     ],
+  //   }
+  // },
+  // {
+  //   name: "listenVariable",
+  //   icon: listenVariableIcon,
+  //   label: "$listenVariable",
+  //   reactionType: ReactionType.SingleReaction,
+  //   meta: {
+  //     ports: [
+  //       {
+  //         name: "output",
+  //         label: "",//"$startUp",
+  //         group: "out",
+  //       },
+  //     ],
+  //   }
+  // },
+  // {
+  //   name: "setProp",
+  //   icon: setPropIcon,
+  //   label: "$setProp",
+  //   reactionType: ReactionType.SingleReaction,
+  //   meta: {
+  //     ports: [
+  //       {
+  //         name: "input",
+  //         label: "",//"$startUp",
+  //         group: "in",
+  //       },
+  //     ],
+  //   }
+  // },
 ]

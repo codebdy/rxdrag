@@ -5,7 +5,7 @@ import { useGetNode } from "core-react/hooks/useGetNode";
 import { memo, useCallback, useMemo } from "react"
 import { IControllerMeta } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
-import { methodIcon } from "../../../../../../icons/reactions";
+import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon } from "../../../../../../icons/reactions";
 import { useTrans } from "../../hooks/useTrans";
 
 const Container = styled.div`
@@ -75,12 +75,12 @@ export const ComponentList = memo((
                   {
                     !!controller.variables?.length &&
                     <>
-                      <ItemTitle>{methodIcon} {t("$setVariable")}</ItemTitle>
-                      <ItemTitle>{methodIcon} {t("$listenVariable")}</ItemTitle>
+                      <ItemTitle>{setVariableIcon} {t("$setVariable")}</ItemTitle>
+                      <ItemTitle>{listenVariableIcon} {t("$listenVariable")}</ItemTitle>
                     </>
                   }
 
-                  <ItemTitle>{methodIcon} {t("$setProp")}</ItemTitle>
+                  <ItemTitle>{setPropIcon} {t("$setProp")}</ItemTitle>
                   {
                     controller.reactions?.map(reaction => {
                       return (<ItemTitle key={reaction.id}>{methodIcon} {reaction.label}</ItemTitle>)

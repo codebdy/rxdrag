@@ -94,7 +94,7 @@ export const Toolbox = memo((props: {
             <ToolItem icon={subscribIcon} title="订阅变化" />
           </Row>
         </Panel>
-        <Panel header={t('$componentController')} key="componentController">
+        <Panel header={t('$componentControl')} key="componentControl">
           <ComponentList currentController={currentController} />
         </Panel>
         <Panel header={t('$auxTools')} key="auxTools">
