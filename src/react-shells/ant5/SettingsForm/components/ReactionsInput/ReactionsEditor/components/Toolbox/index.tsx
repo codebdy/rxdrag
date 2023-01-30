@@ -5,7 +5,6 @@ import { useDnd } from "../../hooks/useDnd";
 import { useEditorState } from "../../hooks/useEditorState";
 import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
 import { fieldIcon, fieldReadIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon, infoIcon, jsIcon, loadingIcon, routeIcon, simulateIcon, subscribIcon } from "../../../../../../icons/reactions";
-import { ComponentReactions } from "./ComponentReactions";
 import { ToolItem } from "./ToolItem";
 import { basicReactions } from "react-shells/ant5/materials/basic";
 import { IReactionNodeMeta } from "runner/reaction/interfaces/metas";
@@ -13,6 +12,7 @@ import { createUuid } from "../../utils";
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { useTrans } from "../../hooks/useTrans";
 import { auxReactions } from "react-shells/ant5/materials/auxtools";
+import { ComponentList } from "./ComponentList";
 const { Panel } = AntdCollapse;
 
 const StyledToolbox = styled.div`
@@ -55,8 +55,8 @@ export const Toolbox = memo(() => {
 
   return (
     <StyledToolbox>
-      <Collapse defaultActiveKey={['1']} bordered={false} accordion>
-        <Panel header={t('$basicReactions')} key="1">
+      <Collapse defaultActiveKey={['1']} bordered={false} accordion expandIconPosition = "end">
+        <Panel header={t('$basicReactions')} key="basicReactions">
           <Row gutter={8}>
             {
               basicReactions.map((reaction) => {
@@ -71,7 +71,7 @@ export const Toolbox = memo(() => {
             }
           </Row>
         </Panel>
-        <Panel header={t('$commonReactions')} key="2">
+        <Panel header={t('$commonReactions')} key="commonReactions">
           <Row gutter={8}>
             <ToolItem icon={routeIcon} title="路由跳转" />
             <ToolItem icon={infoIcon} title="提示消息" />
@@ -80,7 +80,7 @@ export const Toolbox = memo(() => {
             <ToolItem icon={jsIcon} title="自定义代码" />
           </Row>
         </Panel>
-        <Panel header={t('$dataModel')} key="3">
+        <Panel header={t('$dataModel')} key="dataModel">
           <Row gutter={8}>
             <ToolItem icon={formIcon} title="表单赋值" />
             <ToolItem icon={formValidateIcon} title="表单校验" />
@@ -91,7 +91,10 @@ export const Toolbox = memo(() => {
             <ToolItem icon={subscribIcon} title="订阅变化" />
           </Row>
         </Panel>
-        <Panel header={t('$auxTools')} key="4">
+        <Panel header={t('$componentController')} key="componentController">
+          <ComponentList />
+        </Panel>
+        <Panel header={t('$auxTools')} key="auxTools">
           <Row gutter={8}>
             {
               auxReactions.map((reaction, index) => {
@@ -107,7 +110,6 @@ export const Toolbox = memo(() => {
           </Row>
         </Panel>
       </Collapse>
-      <ComponentReactions />
     </StyledToolbox>
   )
 })

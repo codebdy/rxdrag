@@ -116,6 +116,8 @@ export const settingLocales = {
         setVariable: "变量赋值",
         listenVariable: "监听变量",
         pleaseInputName: "请输入名称",
+        setProp: "设置属性",
+        componentController: "组件控制器",
       }
     }
   },
@@ -235,6 +237,8 @@ export const settingLocales = {
         setVariable: "Set Variable",
         listenVariable: "Listen Variable",
         pleaseInputName: "Please input name!",
+        setProp: "Set prop",
+        componentController: "Component Controller"
       }
     }
   }

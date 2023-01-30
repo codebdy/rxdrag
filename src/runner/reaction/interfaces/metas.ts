@@ -9,12 +9,6 @@ export interface IX6NodeMeta {
   height: number;
 }
 
-// export interface IX6EdgeMeta {
-//   sourceAnchor: any;
-//   targetAnchor: any;
-// }
-
-
 export interface IPortMeta {
   name: string;
   label?: string;
@@ -25,7 +19,8 @@ export enum ReactionType {
   Start = "Start",
   End = "End",
   SingleReaction = "SingleReaction",
-  ComponentReaction = "ComponentReaction",
+  ControllerReaction = "ControllerReaction",
+  ControllerDefaultReaction = "ControllerDefaultReaction",
 }
 
 export interface IReactionNodeData {
@@ -39,6 +34,8 @@ export interface IReactionNodeMeta extends IReactionNodeData {
   type: ReactionType;
   materialName: string;
   label?: string;
+  controllerId?: string;
+  reactionRef?: string;//ID or name
   x6Node?: IX6NodeMeta;
 }
 
