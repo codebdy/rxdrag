@@ -3,7 +3,7 @@ import { ITreeNode } from "core";
 import { useCurrentNode } from "core-react/hooks/useCurrentNode";
 import { useGetNode } from "core-react/hooks/useGetNode";
 import { memo, useCallback, useMemo } from "react"
-import { listenVariableMaterial, setPropMaterial, setVariableMaterial } from "react-shells/ant5/materials/defaultReactions";
+import { listenVariableMaterial, reactionMaterial, setPropMaterial, setVariableMaterial } from "react-shells/ant5/materials/controllerReactions";
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { IControllerMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
@@ -43,6 +43,23 @@ export const ComponentList = memo((
   const { graph } = useEditorState()
   const dnd = useDnd()
   const getNodeConfig = useGetNodeConfig()
+
+  const startDefaultDragFn = useCallback((marterial: IReactionMaterial) => {
+    return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      if (!graph) {
+        return;
+      }
+      const nodeMeta: IReactionNodeMeta = {
+        id: createUuid(),
+        label: t(marterial.label),
+        type: marterial.reactionType,
+        materialName: marterial.name,
+        ...marterial.meta
+      }
+      const node = graph.createNode(getNodeConfig(nodeMeta));
+      dnd?.start(node, e.nativeEvent as any);
+    };
+  }, [dnd, getNodeConfig, graph, t])
 
   const startDragFn = useCallback((marterial: IReactionMaterial) => {
     return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -98,17 +115,17 @@ export const ComponentList = memo((
               </Typography.Text>
               <ReactionList>
                 <Space direction="vertical">
-                  <ItemTitle onMouseDown={startDragFn(setPropMaterial)}>{setPropIcon} {t("$setProp")}</ItemTitle>
+                  <ItemTitle onMouseDown={startDefaultDragFn(setPropMaterial)}>{setPropIcon} {t("$setProp")}</ItemTitle>
                   {
                     !!controller.variables?.length &&
                     <>
-                      <ItemTitle onMouseDown={startDragFn(setVariableMaterial)}>{setVariableIcon} {t("$setVariable")}</ItemTitle>
-                      <ItemTitle onMouseDown={startDragFn(listenVariableMaterial)}>{listenVariableIcon} {t("$listenVariable")}</ItemTitle>
+                      <ItemTitle onMouseDown={startDefaultDragFn(setVariableMaterial)}>{setVariableIcon} {t("$setVariable")}</ItemTitle>
+                      <ItemTitle onMouseDown={startDefaultDragFn(listenVariableMaterial)}>{listenVariableIcon} {t("$listenVariable")}</ItemTitle>
                     </>
                   }
                   {
                     controller.reactions?.map(reaction => {
-                      return (<ItemTitle key={reaction.id}>{methodIcon} {reaction.label}</ItemTitle>)
+                      return (<ItemTitle key={reaction.id} onMouseDown={startDragFn(reactionMaterial)}>{methodIcon} {reaction.label}</ItemTitle>)
                     })
                   }
                 </Space>

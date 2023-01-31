@@ -1,6 +1,6 @@
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { ReactionType } from "runner/reaction/interfaces/metas";
-import { setVariableIcon, listenVariableIcon, setPropIcon } from "../icons/reactions";
+import { setVariableIcon, listenVariableIcon, setPropIcon, methodIcon } from "../icons/reactions";
 
 export const setVariableMaterial: IReactionMaterial = {
   name: "setVariable",
@@ -50,8 +50,31 @@ export const setPropMaterial: IReactionMaterial =   {
   }
 }
 
-export const defaultReactions: IReactionMaterial[] = [
+export const reactionMaterial: IReactionMaterial =   {
+  name: "controllerReaction",
+  icon: methodIcon,
+  label: "reaction",
+  reactionType: ReactionType.ControllerReaction,
+  meta: {
+    ports: [
+      {
+        name: "input",
+        label: "",
+        group: "in",
+      },
+      {
+        name: "output",
+        label: "",
+        group: "out",
+      },
+    ],
+  }
+}
+
+
+export const controllerReactions: IReactionMaterial[] = [
   setVariableMaterial,
   listenVariableMaterial,
   setPropMaterial,
+  reactionMaterial
 ]

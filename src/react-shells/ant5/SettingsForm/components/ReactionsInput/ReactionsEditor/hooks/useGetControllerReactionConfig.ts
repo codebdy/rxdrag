@@ -5,7 +5,7 @@ import { IReactionNodeMeta } from "runner/reaction/interfaces/metas"
 import { usePortsConfig } from "./usePortsConfig"
 import { useTransformPorts } from "./useTransformPorts"
 
-export function useGetControllerDefaultReactionNodeConfig() {
+export function useGetControllerReactionConfig() {
   const [, token] = useToken()
   const transformPorts = useTransformPorts()
   const portsGroup = usePortsConfig()
