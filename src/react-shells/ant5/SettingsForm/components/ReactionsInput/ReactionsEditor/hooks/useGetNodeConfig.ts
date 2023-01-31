@@ -6,11 +6,14 @@ import { getStartNodeConfig } from "./getStartNodeConfig";
 import { getEndNodeConfig } from "./getEndNodeConfig";
 import { useGetMaterial } from "./useGetMaterial";
 import { useGetSingleNodeConfig } from "./useGetSingleNodeConfig";
+import { useGetControllerDefaultReactionNodeConfig } from "./useGetControllerDefaultReactionNodeConfig";
 
 export function useGetNodeConfig() {
   const [, token] = useToken()
   const getMaterial = useGetMaterial();
   const getSingleNodeConfig = useGetSingleNodeConfig()
+  const getDefaultNodeConfig = useGetControllerDefaultReactionNodeConfig()
+  
   const getConfig = useCallback((reactNodeMeta: IReactionNodeMeta): Node.Metadata => {
     switch (reactNodeMeta.type) {
       case ReactionType.Start:
@@ -18,11 +21,13 @@ export function useGetNodeConfig() {
       case ReactionType.End:
         return getEndNodeConfig(reactNodeMeta, token)
       case ReactionType.SingleReaction:
-        return getSingleNodeConfig(reactNodeMeta, token, getMaterial(reactNodeMeta.materialName))
+        return getSingleNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.materialName))
+      case ReactionType.ControllerDefaultReaction:
+        return getDefaultNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.materialName))
     }
 
     throw new Error("Can not find reaction node meta: " + reactNodeMeta.type)
-  }, [getMaterial, getSingleNodeConfig, token])
+  }, [getDefaultNodeConfig, getMaterial, getSingleNodeConfig, token])
 
 
   return getConfig

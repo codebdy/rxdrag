@@ -1,15 +1,15 @@
+import { useToken } from "antd/es/theme/internal"
 import { useCallback } from "react"
 import { IReactionMaterial } from "runner/reaction/interfaces/material"
 import { IReactionNodeMeta } from "runner/reaction/interfaces/metas"
-import { useTransformPorts } from "./useTransformPorts"
-import { useToken } from "antd/es/theme/internal"
 import { usePortsConfig } from "./usePortsConfig"
+import { useTransformPorts } from "./useTransformPorts"
 
-export function useGetSingleNodeConfig() {
+export function useGetControllerDefaultReactionNodeConfig() {
   const [, token] = useToken()
   const transformPorts = useTransformPorts()
   const portsGroup = usePortsConfig()
-  const getSingleNodeConfig = useCallback((nodeMeta: IReactionNodeMeta, material: IReactionMaterial | undefined) => {
+  const getNodeConfig = useCallback((nodeMeta: IReactionNodeMeta, material: IReactionMaterial | undefined) => {
     const height = 40
     const width = 120
     return {
@@ -35,5 +35,5 @@ export function useGetSingleNodeConfig() {
     }
   }, [portsGroup, token, transformPorts])
 
-  return getSingleNodeConfig
+  return getNodeConfig
 }

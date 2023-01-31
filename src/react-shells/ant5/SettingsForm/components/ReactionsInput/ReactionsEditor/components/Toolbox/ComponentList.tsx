@@ -3,10 +3,16 @@ import { ITreeNode } from "core";
 import { useCurrentNode } from "core-react/hooks/useCurrentNode";
 import { useGetNode } from "core-react/hooks/useGetNode";
 import { memo, useCallback, useMemo } from "react"
-import { IControllerMeta } from "runner/reaction/interfaces/metas";
+import { listenVariableMaterial, setPropMaterial, setVariableMaterial } from "react-shells/ant5/materials/defaultReactions";
+import { IReactionMaterial } from "runner/reaction/interfaces/material";
+import { IControllerMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
 import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon } from "../../../../../../icons/reactions";
+import { useDnd } from "../../hooks/useDnd";
+import { useEditorState } from "../../hooks/useEditorState";
+import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
 import { useTrans } from "../../hooks/useTrans";
+import { createUuid } from "../../utils";
 
 const Container = styled.div`
   display: flex;
@@ -34,6 +40,26 @@ export const ComponentList = memo((
   const currentNode = useCurrentNode()
   const getNode = useGetNode()
   const t = useTrans()
+  const { graph } = useEditorState()
+  const dnd = useDnd()
+  const getNodeConfig = useGetNodeConfig()
+
+  const startDragFn = useCallback((marterial: IReactionMaterial) => {
+    return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      if (!graph) {
+        return;
+      }
+      const nodeMeta: IReactionNodeMeta = {
+        id: createUuid(),
+        label: t(marterial.label),
+        type: marterial.reactionType,
+        materialName: marterial.name,
+        ...marterial.meta
+      }
+      const node = graph.createNode(getNodeConfig(nodeMeta));
+      dnd?.start(node, e.nativeEvent as any);
+    };
+  }, [dnd, getNodeConfig, graph, t])
 
   const processNode = useCallback((node: ITreeNode, nodes: ITreeNode[]) => {
     if (node.meta?.["x-reactions"]?.id) {
@@ -72,12 +98,12 @@ export const ComponentList = memo((
               </Typography.Text>
               <ReactionList>
                 <Space direction="vertical">
-                  <ItemTitle>{setPropIcon} {t("$setProp")}</ItemTitle>
+                  <ItemTitle onMouseDown={startDragFn(setPropMaterial)}>{setPropIcon} {t("$setProp")}</ItemTitle>
                   {
                     !!controller.variables?.length &&
                     <>
-                      <ItemTitle>{setVariableIcon} {t("$setVariable")}</ItemTitle>
-                      <ItemTitle>{listenVariableIcon} {t("$listenVariable")}</ItemTitle>
+                      <ItemTitle onMouseDown={startDragFn(setVariableMaterial)}>{setVariableIcon} {t("$setVariable")}</ItemTitle>
+                      <ItemTitle onMouseDown={startDragFn(listenVariableMaterial)}>{listenVariableIcon} {t("$listenVariable")}</ItemTitle>
                     </>
                   }
                   {
