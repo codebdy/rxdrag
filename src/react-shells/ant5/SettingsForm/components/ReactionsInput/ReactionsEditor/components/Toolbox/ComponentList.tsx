@@ -5,7 +5,7 @@ import { useGetNode } from "core-react/hooks/useGetNode";
 import { memo, useCallback, useMemo } from "react"
 import { listenVariableMaterial, reactionMaterial, setPropMaterial, setVariableMaterial } from "react-shells/ant5/materials/controllerReactions";
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
-import { IControllerMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
+import { IControllerMeta, IReactionMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
 import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon } from "../../../../../../icons/reactions";
 import { useDnd } from "../../hooks/useDnd";
@@ -61,14 +61,14 @@ export const ComponentList = memo((
     };
   }, [dnd, getNodeConfig, graph, t])
 
-  const startDragFn = useCallback((marterial: IReactionMaterial) => {
+  const startDragFn = useCallback((reaction: IReactionMeta, marterial: IReactionMaterial) => {
     return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       if (!graph) {
         return;
       }
       const nodeMeta: IReactionNodeMeta = {
         id: createUuid(),
-        label: t(marterial.label),
+        label: reaction.label||reaction.name,
         type: marterial.reactionType,
         materialName: marterial.name,
         ...marterial.meta
@@ -76,7 +76,7 @@ export const ComponentList = memo((
       const node = graph.createNode(getNodeConfig(nodeMeta));
       dnd?.start(node, e.nativeEvent as any);
     };
-  }, [dnd, getNodeConfig, graph, t])
+  }, [dnd, getNodeConfig, graph])
 
   const processNode = useCallback((node: ITreeNode, nodes: ITreeNode[]) => {
     if (node.meta?.["x-reactions"]?.id) {
@@ -125,7 +125,7 @@ export const ComponentList = memo((
                   }
                   {
                     controller.reactions?.map(reaction => {
-                      return (<ItemTitle key={reaction.id} onMouseDown={startDragFn(reactionMaterial)}>{methodIcon} {reaction.label}</ItemTitle>)
+                      return (<ItemTitle key={reaction.id} onMouseDown={startDragFn(reaction, reactionMaterial)}>{methodIcon} {reaction.label}</ItemTitle>)
                     })
                   }
                 </Space>
