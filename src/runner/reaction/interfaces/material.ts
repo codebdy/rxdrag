@@ -10,6 +10,6 @@ export interface IReactionMaterial {
   icon?: React.ReactNode,
   color?: string,
   reaction?: IReaction,
-  schemas?: INodeSchema[],
+  schema?: INodeSchema,
   meta?: IReactionNodeData,
 }

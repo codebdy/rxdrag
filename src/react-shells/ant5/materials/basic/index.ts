@@ -1,7 +1,7 @@
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { IReactionMaterial } from "../../../../runner/reaction/interfaces/material";
 import { delayIcon, endIcon, ifIcon, loopIcon, mergeIcon, randomIcon, startIcon, switchIcon } from "../../icons/reactions";
-import { startNodeSchemas } from "./StartNode/schema";
+import { startNodeSchema } from "./StartNode/schema";
 
 export const basicReactions: IReactionMaterial[] = [
   {
@@ -9,7 +9,7 @@ export const basicReactions: IReactionMaterial[] = [
     icon: startIcon,
     label: "$input",
     reactionType: ReactionType.Start,
-    schemas: startNodeSchemas,
+    schema: startNodeSchema,
   },
   {
     name: "end",

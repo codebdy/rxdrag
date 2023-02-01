@@ -1,10 +1,11 @@
 import { Empty, Form, Input, InputNumber, Radio, Select, Slider, Switch } from "antd"
 import { useToken } from "antd/es/theme/internal"
 import { PreviewRoot } from "core-react/PreviewRoot"
-import { memo } from "react"
-import { Fieldy } from "runner/fieldy"
+import { Fragment, memo, useCallback, useMemo } from "react"
+import { ComponentRender } from "runner/ComponentRender"
+import { extractFieldSchemas } from "runner/ComponentRender/funcs/extractFieldSchemas"
+import { Fieldy, VirtualForm } from "runner/fieldy"
 import styled from "styled-components"
-import { methodIcon } from "../../../../../../icons/reactions"
 import { useGetMaterial } from "../../hooks/useGetMaterial"
 import { useSelectedNode } from "../../hooks/useSelectedNode"
 
@@ -35,29 +36,58 @@ export const PropertyBox = memo(() => {
   const node = useSelectedNode()
   const getMaterial = useGetMaterial()
 
+  const material = useMemo(() => getMaterial(node?.materialName || ""), [getMaterial, node?.materialName])
+
+  const fieldSchemas = useMemo(() => {
+    if (material?.schema) {
+      return material?.schema ? extractFieldSchemas(material?.schema) : []
+    }
+    return []
+  }, [material?.schema])
+
+  const handleConfigChange = useCallback((config: any) => {
+
+  }, [])
+
   return (
     <>
       <Title style={{ borderColor: token.colorBorder }}>
-        {getMaterial(node?.materialName || "")?.icon}<span style={{ marginLeft: 8 }}>{node?.label}</span>
+        {material?.icon}<span style={{ marginLeft: 8 }}>{node?.label}</span>
       </Title>
       <Content>
-        <PreviewRoot
-          components={{
-            FormItem: Form.Item,
-            Input,
-            Select,
-            Switch,
-            Radio,
-            Slider,
-            InputNumber,
-          }}
-        >
-          <Fieldy>
-          </Fieldy>
-        </PreviewRoot>
-        <EmptyContainer>
-          <Empty />
-        </EmptyContainer>
+        {
+          node
+            ? <PreviewRoot
+              components={{
+                Fragment: Fragment,
+                FormItem: Form.Item,
+                Input,
+                Select,
+                Switch,
+                Radio,
+                Slider,
+                InputNumber,
+              }}
+            >
+              <Fieldy>
+                <VirtualForm
+                  fieldSchemas={fieldSchemas}
+                  initialValue={node?.config}
+                  onValueChange={handleConfigChange}
+                >
+                  {
+                    material?.schema &&
+                    <ComponentRender
+                      root={material?.schema}
+                    />
+                  }
+                </VirtualForm>
+              </Fieldy>
+            </PreviewRoot>
+            : <EmptyContainer>
+              <Empty />
+            </EmptyContainer>
+        }
       </Content>
     </>
   )
