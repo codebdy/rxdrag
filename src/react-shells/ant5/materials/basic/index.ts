@@ -1,7 +1,7 @@
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { IReactionMaterial } from "../../../../runner/reaction/interfaces/material";
 import { delayIcon, endIcon, ifIcon, loopIcon, mergeIcon, randomIcon, startIcon, switchIcon } from "../../icons/reactions";
-import { startNodeSchema } from "./StartNode/schema";
+import { startNodeSchema } from "./StartNode";
 
 export const basicReactions: IReactionMaterial[] = [
   {

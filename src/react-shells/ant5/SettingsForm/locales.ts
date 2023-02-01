@@ -1,6 +1,9 @@
+import { reactionMaterialLocales } from "../materials/locales";
+
 export const settingLocales = {
   "zh-CN": {
     tools: {
+      ...reactionMaterialLocales["zh-CN"],
       edit: "编辑",
       delete: "删除",
       font: "字体",
@@ -136,6 +139,7 @@ export const settingLocales = {
   },
   'en-US': {
     tools: {
+      ...reactionMaterialLocales["en-US"],
       edit: "Edit",
       delete: "Delete",
       font: "Font",

@@ -1,5 +1,7 @@
 import { Empty, Form, Input, InputNumber, Radio, Select, Slider, Switch } from "antd"
 import { useToken } from "antd/es/theme/internal"
+import { useDesignerEngine } from "core-react/hooks"
+import { useLanguage } from "core-react/hooks/useLanguage"
 import { PreviewRoot } from "core-react/PreviewRoot"
 import { Fragment, memo, useCallback, useMemo } from "react"
 import { ComponentRender } from "runner/ComponentRender"
@@ -35,7 +37,9 @@ export const PropertyBox = memo(() => {
   const [, token] = useToken()
   const node = useSelectedNode()
   const getMaterial = useGetMaterial()
-
+  const engine = useDesignerEngine()
+  const lang = useLanguage()
+  
   const material = useMemo(() => getMaterial(node?.materialName || ""), [getMaterial, node?.materialName])
 
   const fieldSchemas = useMemo(() => {
@@ -44,6 +48,20 @@ export const PropertyBox = memo(() => {
     }
     return []
   }, [material?.schema])
+
+  const designerSchema = useMemo(() => {
+    if (material?.schema) {
+      //翻译
+      return engine?.getLoacalesManager()
+        .translateDesignerSchema('',
+          JSON.parse(JSON.stringify(material?.schema))
+        )
+    } else {
+      return undefined
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [engine, material?.schema, lang])
 
   const handleConfigChange = useCallback((config: any) => {
 
@@ -76,9 +94,9 @@ export const PropertyBox = memo(() => {
                   onValueChange={handleConfigChange}
                 >
                   {
-                    material?.schema &&
+                    designerSchema &&
                     <ComponentRender
-                      root={material?.schema}
+                      root={designerSchema}
                     />
                   }
                 </VirtualForm>
