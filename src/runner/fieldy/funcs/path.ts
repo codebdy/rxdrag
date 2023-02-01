@@ -19,6 +19,10 @@ export function isChild(path: string, parentPath?: string) {
     return false
   }
 
+  if(parentPath === path){
+    return false
+  }
+
   if (path.startsWith(parentPath)) {
     if (path.substring(parentPath.length + 1).indexOf('.') === -1) {
       return true

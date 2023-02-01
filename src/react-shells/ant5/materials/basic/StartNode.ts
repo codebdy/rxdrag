@@ -6,7 +6,7 @@ export const startNodeSchema: INodeSchema = {
     {
       componentName: "FormItem",
       props: {
-        label: "Id",
+        label: "ID",
       },
       children: [
         {

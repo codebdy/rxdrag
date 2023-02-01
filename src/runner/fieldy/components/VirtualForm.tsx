@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react"
-import { FormNameContext } from "../contexts"
+import { FieldContext, FormNameContext } from "../contexts"
 import { useFieldy } from "../hooks"
 import { IFieldSchema, FormState, FormValue } from "../interfaces"
 
@@ -31,6 +31,7 @@ export const VirtualForm = (props: {
   useEffect(() => {
     if (fieldy && formState?.mounted && name) {
       fieldy?.setFormInitialValue(name, initialValue)
+      console.log("哈哈哈Init", fieldy.getForm(name))
     }
   }, [fieldy, formState?.mounted, initialValue, name])
 
@@ -44,9 +45,12 @@ export const VirtualForm = (props: {
 
   }, [fieldy, name, onValueChange])
 
+  //form嵌套时要清空field树，添加一个FieldContext.Provider来完成
   return (
-    <FormNameContext.Provider value={name}>
-      {children}
-    </FormNameContext.Provider>
+    <FieldContext.Provider value={{}}>
+      <FormNameContext.Provider value={name}>
+        {children}
+      </FormNameContext.Provider>
+    </FieldContext.Provider>
   )
 }

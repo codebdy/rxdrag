@@ -6,7 +6,7 @@ import { PreviewRoot } from "core-react/PreviewRoot"
 import { Fragment, memo, useCallback, useMemo } from "react"
 import { ComponentRender } from "runner/ComponentRender"
 import { extractFieldSchemas } from "runner/ComponentRender/funcs/extractFieldSchemas"
-import { Fieldy, VirtualForm } from "runner/fieldy"
+import { VirtualForm } from "runner/fieldy"
 import styled from "styled-components"
 import { useGetMaterial } from "../../hooks/useGetMaterial"
 import { useSelectedNode } from "../../hooks/useSelectedNode"
@@ -39,7 +39,7 @@ export const PropertyBox = memo(() => {
   const getMaterial = useGetMaterial()
   const engine = useDesignerEngine()
   const lang = useLanguage()
-  
+
   const material = useMemo(() => getMaterial(node?.materialName || ""), [getMaterial, node?.materialName])
 
   const fieldSchemas = useMemo(() => {
@@ -63,8 +63,8 @@ export const PropertyBox = memo(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [engine, material?.schema, lang])
 
-  const handleConfigChange = useCallback((config: any) => {
-
+  const handleNodeChange = useCallback((config: any) => {
+    
   }, [])
 
   return (
@@ -87,20 +87,18 @@ export const PropertyBox = memo(() => {
                 InputNumber,
               }}
             >
-              <Fieldy>
-                <VirtualForm
-                  fieldSchemas={fieldSchemas}
-                  initialValue={node?.config}
-                  onValueChange={handleConfigChange}
-                >
-                  {
-                    designerSchema &&
-                    <ComponentRender
-                      root={designerSchema}
-                    />
-                  }
-                </VirtualForm>
-              </Fieldy>
+              <VirtualForm
+                fieldSchemas={fieldSchemas}
+                initialValue={node}
+                onValueChange={handleNodeChange}
+              >
+                {
+                  designerSchema &&
+                  <ComponentRender
+                    root={designerSchema}
+                  />
+                }
+              </VirtualForm>
             </PreviewRoot>
             : <EmptyContainer>
               <Empty />
