@@ -122,6 +122,15 @@ export const settingLocales = {
         simulateData: "模拟数据",
         globalLoading: "全局Loading",
         jsCode: "JS代码",
+        setFormValue: "表单赋值",
+        validateForm: "校验表单",
+        success: "成功",
+        failure: "失败",
+        readFormValue: "读取表单",
+        setFieldValue: "字段赋值",
+        validateField: "校验字段",
+        readFieldValue: "读取字段",
+        subscribeField: "订阅变化",
       }
     }
   },
@@ -247,6 +256,15 @@ export const settingLocales = {
         simulateData: "Simulate data",
         globalLoading: "Global Loading",
         jsCode: "JS Code",
+        setFormValue: "Set Form Value",
+        validateForm: "Validate Form",
+        success: "Success",
+        failure: "Failure",
+        readFormValue: "Read Form Value",
+        setFieldValue: "Set Field Value",
+        validateField: "Validate Field",
+        readFieldValue: "Read Field",
+        subscribeField: "Subscribe Field",
       }
     }
   }

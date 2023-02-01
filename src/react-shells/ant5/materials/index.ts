@@ -1,4 +1,5 @@
 import { IReactionMaterial } from "runner/reaction/interfaces/material"
+import { auxReactions } from "./auxtools"
 import { basicReactions } from "./basic"
 import { commonReactions } from "./common"
 import { dataModelReactions } from "./dataModel"
@@ -21,4 +22,8 @@ export const reactionMaterials: MaterialCategory[] = [
     name: '$dataModel',
     materials: dataModelReactions,
   },
+  {
+    name: "$auxTools",
+    materials: auxReactions,
+  }
 ]

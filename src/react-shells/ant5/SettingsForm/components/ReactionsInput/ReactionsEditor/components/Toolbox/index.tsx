@@ -4,13 +4,11 @@ import styled from "styled-components";
 import { useDnd } from "../../hooks/useDnd";
 import { useEditorState } from "../../hooks/useEditorState";
 import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
-import { fieldIcon, fieldReadIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon, subscribIcon } from "../../../../../../icons/reactions";
 import { ToolItem } from "./ToolItem";
 import { IControllerMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 import { createUuid } from "../../utils";
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { useTrans } from "../../hooks/useTrans";
-import { auxReactions } from "react-shells/ant5/materials/auxtools";
 import { ComponentList } from "./ComponentList";
 import { reactionMaterials } from "react-shells/ant5/materials";
 const { Panel } = AntdCollapse;
@@ -80,34 +78,8 @@ export const Toolbox = memo((props: {
             )
           })
         }
-        <Panel header={t('$dataModel')} key="dataModel">
-          <Row gutter={8}>
-            <ToolItem icon={formIcon} title="表单赋值" />
-            <ToolItem icon={formValidateIcon} title="表单校验" />
-            <ToolItem icon={formReadIcon} title="表单取值" />
-            <ToolItem icon={fieldIcon} title="字段赋值" />
-            <ToolItem icon={fieldValidateIcon} title="字段校验" />
-            <ToolItem icon={fieldReadIcon} title="字段取值" />
-            <ToolItem icon={subscribIcon} title="订阅变化" />
-          </Row>
-        </Panel>
         <Panel header={t('$componentControl')} key="componentControl">
           <ComponentList currentController={currentController} />
-        </Panel>
-        <Panel header={t('$auxTools')} key="auxTools">
-          <Row gutter={8}>
-            {
-              auxReactions.map((reaction, index) => {
-                return (<ToolItem
-                  key={reaction.name + index}
-                  icon={reaction.icon}
-                  title={reaction.label}
-                  color={reaction.color}
-                  onMouseDown={startDragFn(reaction)}
-                />)
-              })
-            }
-          </Row>
         </Panel>
       </Collapse>
     </StyledToolbox>
