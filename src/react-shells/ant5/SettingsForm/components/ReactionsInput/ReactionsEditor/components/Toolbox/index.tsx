@@ -4,15 +4,15 @@ import styled from "styled-components";
 import { useDnd } from "../../hooks/useDnd";
 import { useEditorState } from "../../hooks/useEditorState";
 import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
-import { fieldIcon, fieldReadIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon, infoIcon, jsIcon, loadingIcon, routeIcon, simulateIcon, subscribIcon } from "../../../../../../icons/reactions";
+import { fieldIcon, fieldReadIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon, subscribIcon } from "../../../../../../icons/reactions";
 import { ToolItem } from "./ToolItem";
-import { basicReactions } from "react-shells/ant5/materials/basic";
 import { IControllerMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 import { createUuid } from "../../utils";
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { useTrans } from "../../hooks/useTrans";
 import { auxReactions } from "react-shells/ant5/materials/auxtools";
 import { ComponentList } from "./ComponentList";
+import { reactionMaterials } from "react-shells/ant5/materials";
 const { Panel } = AntdCollapse;
 
 const StyledToolbox = styled.div`
@@ -59,30 +59,27 @@ export const Toolbox = memo((props: {
   return (
     <StyledToolbox>
       <Collapse defaultActiveKey={['1']} bordered={false} accordion expandIconPosition="end">
-        <Panel header={t('$basicReactions')} key="basicReactions">
-          <Row gutter={8}>
-            {
-              basicReactions.map((reaction) => {
-                return (<ToolItem
-                  key={reaction.name}
-                  icon={reaction.icon}
-                  title={reaction.label}
-                  color={reaction.color}
-                  onMouseDown={startDragFn(reaction)}
-                />)
-              })
-            }
-          </Row>
-        </Panel>
-        <Panel header={t('$commonReactions')} key="commonReactions">
-          <Row gutter={8}>
-            <ToolItem icon={routeIcon} title="路由跳转" />
-            <ToolItem icon={infoIcon} title="提示消息" />
-            <ToolItem icon={simulateIcon} title="数据模拟" />
-            <ToolItem icon={loadingIcon} title="全局Loading" />
-            <ToolItem icon={jsIcon} title="自定义代码" />
-          </Row>
-        </Panel>
+        {
+          reactionMaterials.map(category => {
+            return (
+              <Panel key={category.name} header={t(category.name)}>
+                <Row gutter={8}>
+                  {
+                    category.materials.map((reaction) => {
+                      return (<ToolItem
+                        key={reaction.name}
+                        icon={reaction.icon}
+                        title={reaction.label}
+                        color={reaction.color}
+                        onMouseDown={startDragFn(reaction)}
+                      />)
+                    })
+                  }
+                </Row>
+              </Panel>
+            )
+          })
+        }
         <Panel header={t('$dataModel')} key="dataModel">
           <Row gutter={8}>
             <ToolItem icon={formIcon} title="表单赋值" />

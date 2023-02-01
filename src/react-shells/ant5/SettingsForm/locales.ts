@@ -117,6 +117,11 @@ export const settingLocales = {
         listenVariable: "监听变量",
         pleaseInputName: "请输入名称",
         setProp: "设置属性",
+        routeTo: "路由跳转",
+        infoMessage: "提示消息",
+        simulateData: "模拟数据",
+        globalLoading: "全局Loading",
+        jsCode: "JS代码",
       }
     }
   },
@@ -237,6 +242,11 @@ export const settingLocales = {
         listenVariable: "Listen Variable",
         pleaseInputName: "Please input name!",
         setProp: "Set prop",
+        routeTo: "Route To",
+        infoMessage: "Info Message",
+        simulateData: "Simulate data",
+        globalLoading: "Global Loading",
+        jsCode: "JS Code",
       }
     }
   }
