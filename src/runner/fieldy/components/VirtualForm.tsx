@@ -31,7 +31,6 @@ export const VirtualForm = (props: {
   useEffect(() => {
     if (fieldy && formState?.mounted && name) {
       fieldy?.setFormInitialValue(name, initialValue)
-      console.log("哈哈哈Init", fieldy.getForm(name))
     }
   }, [fieldy, formState?.mounted, initialValue, name])
 
