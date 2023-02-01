@@ -1,6 +1,7 @@
 import { Graph } from "@antv/x6";
 import { createContext } from "react";
 import { ILogicMetas } from "runner/reaction/interfaces/metas";
+import { EditorStore } from "./classes/EditorStore";
 
 export interface ISnapshot extends ILogicMetas {
   selected?: string,
@@ -8,7 +9,6 @@ export interface ISnapshot extends ILogicMetas {
 
 export interface IState {
   changeFlag: number,
-  lining: boolean,
   undoList: ISnapshot[],
   redoList: ISnapshot[],
   metas: ILogicMetas,
@@ -23,7 +23,6 @@ export interface IReactionsEditorParams extends IState {
 
 export const initialState: IState = {
   changeFlag: 0,
-  lining: false,
   undoList: [],
   redoList: [],
   metas: {
@@ -34,7 +33,9 @@ export const initialState: IState = {
   zoom: 1,
 }
 
-export const ReacionsEditorContext = createContext<IReactionsEditorParams>({
-  ...initialState,
-  dispatch: () => null,
-})
+//这个动态context会导致大量刷新，影响性能，以后考虑用Redux或者Recoil换掉
+//或者一个变量一个Context也能解决问题，但是不如Recoil方便
+export const ReacionsEditorContext = createContext<EditorStore|undefined>(undefined)
+
+
+export const GraphContext = createContext<Graph|undefined>(undefined)

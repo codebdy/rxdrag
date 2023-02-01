@@ -15,7 +15,7 @@ export const startNodeSchema: INodeSchema = {
             name: "id",
           },
           props:{
-            disabled: true,
+            readOnly: true,
           }
         }
       ]
@@ -31,9 +31,9 @@ export const startNodeSchema: INodeSchema = {
           "x-field": {
             name: "label",
           },
-          props:{
-            disabled: true,
-          }
+          // props:{
+          //   readOnly: true,
+          // }
         }
       ]
     },

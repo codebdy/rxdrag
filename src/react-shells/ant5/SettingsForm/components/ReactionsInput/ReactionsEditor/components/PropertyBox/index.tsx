@@ -8,6 +8,8 @@ import { ComponentRender } from "runner/ComponentRender"
 import { extractFieldSchemas } from "runner/ComponentRender/funcs/extractFieldSchemas"
 import { VirtualForm } from "runner/fieldy"
 import styled from "styled-components"
+import { ActionType } from "../../actions"
+import { useEditorState } from "../../hooks/useEditorState"
 import { useGetMaterial } from "../../hooks/useGetMaterial"
 import { useSelectedNode } from "../../hooks/useSelectedNode"
 
@@ -36,10 +38,11 @@ const EmptyContainer = styled.div`
 export const PropertyBox = memo(() => {
   const [, token] = useToken()
   const node = useSelectedNode()
+  console.log("哈哈哈 PropertyBox", )
   const getMaterial = useGetMaterial()
   const engine = useDesignerEngine()
   const lang = useLanguage()
-
+  const { dispatch } = useEditorState()
   const material = useMemo(() => getMaterial(node?.materialName || ""), [getMaterial, node?.materialName])
 
   const fieldSchemas = useMemo(() => {
@@ -63,9 +66,9 @@ export const PropertyBox = memo(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [engine, material?.schema, lang])
 
-  const handleNodeChange = useCallback((config: any) => {
-    
-  }, [])
+  const handleNodeChange = useCallback((nodeData: any) => {
+    dispatch({ type: ActionType.CHANGE_NODE, payload: { ...node, ...nodeData } })
+  }, [dispatch, node])
 
   return (
     <>
