@@ -3,11 +3,13 @@ import { useGetNodeConfig } from "./useGetNodeConfig";
 import { useGetEdgeConfig } from "./useGetEdgeConfig";
 import { useGraph } from "./useGraph";
 import { useMetas } from "./useMetas";
+import { useUpdateNode } from "./useUpdateNode";
 
 export function useShowCells() {
   const graph = useGraph()
   const getNodeConfig = useGetNodeConfig()
   const getEdgeConfig = useGetEdgeConfig()
+  const updateNode = useUpdateNode()
 
   const { metas } = useMetas()
   useEffect(() => {
@@ -19,8 +21,7 @@ export function useShowCells() {
         const graphNode = oldNodes.find(node => node.id === reactionNode.id)
         //更新
         if (graphNode && reactionNode.x6Node) {
-          graphNode.setSize(reactionNode.x6Node);
-          graphNode.setPosition(reactionNode.x6Node);
+          updateNode(graphNode, reactionNode)
         } else {//新建
           const node = graph.createNode(getNodeConfig(reactionNode))
           graph.addNode(node)
@@ -43,5 +44,5 @@ export function useShowCells() {
       }
 
     }
-  }, [getEdgeConfig, getNodeConfig, graph, metas, metas?.invokes, metas?.reactions])
+  }, [getEdgeConfig, getNodeConfig, graph, metas, metas?.invokes, metas?.reactions, updateNode])
 }
