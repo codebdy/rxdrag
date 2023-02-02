@@ -91,8 +91,6 @@ export const ReactionMetaEditor = memo((
     store.dispatch({ type: ActionType.SET_METAS, payload: metas || emptyMetas } as any)
   }, [emptyMetas, metas, store])
 
-
-
   const handleToggleMap = useCallback(() => {
     setShowMap((show) => !show)
   }, [])

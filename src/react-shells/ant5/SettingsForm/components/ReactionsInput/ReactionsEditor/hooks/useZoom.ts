@@ -3,7 +3,7 @@ import { ActionType } from "../actions";
 import { useEditorStore } from "./useEditorStore";
 
 export function useZoom() {
-  const [zoom, setZoom] = useState<number>()
+  const [zoom, setZoom] = useState<number>(0)
   const store = useEditorStore()
 
   const handleZoomChange = useCallback((zm: number) => {
@@ -19,8 +19,8 @@ export function useZoom() {
     return unsub
   }, [handleZoomChange, store])
 
-  useEffect(()=>{
-    setZoom(store?.store.getState().zoom)
+  useEffect(() => {
+    setZoom(store?.store.getState().zoom || 0)
   }, [store?.store])
 
   return { zoom, setZoom: doSetZoom }

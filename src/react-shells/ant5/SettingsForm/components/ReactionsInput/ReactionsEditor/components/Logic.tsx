@@ -9,6 +9,7 @@ import { useRemove } from "../hooks/edit-meta/useRemove"
 import { ILogicMetas } from "runner/reaction/interfaces/metas"
 import { useChangeFlag } from "../hooks/useChangeFlag"
 import { useMetas } from "../hooks/useMetas"
+import { useSetZoom } from "../hooks/useSetZoom"
 
 export const Logic = memo((
   props: {
@@ -30,6 +31,7 @@ export const Logic = memo((
   useArrowhead()
   useSelection()
   useRemove()
+  useSetZoom()
   useEffect(() => {
     if (changeFlag && metasRef.current) {
       onChangeRef.current(metasRef.current)
