@@ -8,9 +8,8 @@ export function useUpdateNode() {
     if (nodeMeta.x6Node) {
       graphNode.setSize(nodeMeta.x6Node);
       graphNode.setPosition(nodeMeta.x6Node);
-
+      graphNode.replaceData({ ...graphNode.data, meta: nodeMeta })
       if (nodeMeta.type === ReactionType.Start || nodeMeta.type === ReactionType.End) {
-        graphNode.replaceData({ meta: nodeMeta })
         graphNode.attr("text/text", nodeMeta.label)
       }
     }

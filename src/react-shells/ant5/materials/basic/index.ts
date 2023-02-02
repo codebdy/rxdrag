@@ -2,6 +2,7 @@ import { ReactionType } from "runner/reaction/interfaces/metas";
 import { IReactionMaterial } from "../../../../runner/reaction/interfaces/material";
 import { delayIcon, endIcon, ifIcon, loopIcon, mergeIcon, randomIcon, startIcon, switchIcon } from "../../icons/reactions";
 import { nodeBaseSchema } from "./schemas/base";
+import { conditionSchema } from "./schemas/condition";
 
 export const basicReactions: IReactionMaterial[] = [
   {
@@ -42,7 +43,8 @@ export const basicReactions: IReactionMaterial[] = [
           group: "out",
         },
       ],
-    }
+    },
+    schema: conditionSchema
   },
   {
     name: "loop",
