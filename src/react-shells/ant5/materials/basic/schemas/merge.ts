@@ -14,7 +14,7 @@ export const mergeSchema: INodeSchema = {
         {
           componentName: "PortsInput",
           "x-field": {
-            name: "ports",
+            name: "inPorts",
           },
         }
       ]
