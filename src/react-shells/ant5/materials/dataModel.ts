@@ -9,11 +9,10 @@ export const dataModelReactions: IReactionMaterial[] = [
     label: "$setFormValue",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input",
           label: "",
-          group: "in",
         },
       ],
     }
@@ -24,21 +23,20 @@ export const dataModelReactions: IReactionMaterial[] = [
     label: "$validateForm",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input",
           label: "",
-          group: "in",
         },
+      ],
+      outPorts: [
         {
           name: "success",
           label: "$success",
-          group: "out",
         },
         {
           name: "failure",
           label: "$failure",
-          group: "out",
         },
       ],
     }
@@ -49,16 +47,16 @@ export const dataModelReactions: IReactionMaterial[] = [
     label: "$readFormValue",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input",
           label: "",
-          group: "in",
         },
+      ],
+      outPorts: [
         {
           name: "output",
           label: "",
-          group: "out",
         },
       ],
     }
@@ -69,11 +67,10 @@ export const dataModelReactions: IReactionMaterial[] = [
     label: "$setFieldValue",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input",
           label: "",
-          group: "in",
         },
       ],
     }
@@ -84,21 +81,20 @@ export const dataModelReactions: IReactionMaterial[] = [
     label: "$validateField",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input",
           label: "",
-          group: "in",
         },
+      ],
+      outPorts: [
         {
           name: "success",
           label: "$success",
-          group: "out",
         },
         {
           name: "failure",
           label: "$failure",
-          group: "out",
         },
       ],
     }
@@ -109,16 +105,16 @@ export const dataModelReactions: IReactionMaterial[] = [
     label: "$readFieldValue",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input",
           label: "",
-          group: "in",
         },
+      ],
+      outPorts: [
         {
           name: "output",
           label: "",
-          group: "out",
         },
       ],
     }
@@ -129,11 +125,10 @@ export const dataModelReactions: IReactionMaterial[] = [
     label: "$subscribeField",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      outPorts: [
         {
           name: "output",
           label: "",
-          group: "out",
         },
       ],
     }

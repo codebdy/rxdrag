@@ -12,7 +12,7 @@ export interface IX6NodeMeta {
 export interface IPortMeta {
   name: string;
   label?: string;
-  group: "in" | "out";
+  //group: "in" | "out";
 }
 
 export enum ReactionType {
@@ -27,7 +27,8 @@ export interface IReactionNodeData {
   name?: string;
   componentName?: string;
   reactionName?: string;
-  ports?: IPortMeta[];
+  inPorts?: IPortMeta[];
+  outPorts?: IPortMeta[];
 }
 
 export interface IReactionNodeMeta<ConfigMeta = any> extends IReactionNodeData {

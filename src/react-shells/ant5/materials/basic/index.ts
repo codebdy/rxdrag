@@ -4,6 +4,7 @@ import { delayIcon, endIcon, ifIcon, loopIcon, mergeIcon, randomIcon, startIcon,
 import { startEndSchema } from "./schemas/base";
 import { conditionSchema } from "./schemas/condition";
 import { loopSchema } from "./schemas/loop";
+import { mergeSchema } from "./schemas/merge";
 
 export const basicReactions: IReactionMaterial[] = [
   {
@@ -33,21 +34,20 @@ export const basicReactions: IReactionMaterial[] = [
     reactionType: ReactionType.SingleReaction,
     color: "#5e76c3",
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input",
           label: "",//"$inputCondition",
-          group: "in",
         },
+      ],
+      outPorts: [
         {
           name: "true",
           label: "$true",
-          group: "out",
         },
         {
           name: "false",
           label: "$false",
-          group: "out",
         },
       ],
     },
@@ -59,16 +59,16 @@ export const basicReactions: IReactionMaterial[] = [
     label: "$loop",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input",
           label: "",//"$input",
-          group: "in",
         },
+      ],
+      outPorts: [
         {
           name: "output",
           label: "",//"$output",
-          group: "out",
         },
       ],
     },
@@ -80,46 +80,46 @@ export const basicReactions: IReactionMaterial[] = [
     label: "$merge",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input1",
           label: "input 1",
-          group: "in",
         },
         {
           name: "input2",
           label: "input 2",
-          group: "in",
         },
+      ],
+      outPorts: [
         {
           name: "output",
           label: "",//"$output",
-          group: "out",
         },
       ],
-    }
+    },
+    schema: mergeSchema,
   },
+
   {
     name: "switch",
     icon: switchIcon,
     label: "$switch",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input",
           label: "",//"$input",
-          group: "in",
         },
+      ],
+      outPorts: [
         {
           name: "output1",
           label: "output1",
-          group: "out",
         },
         {
           name: "output2",
           label: "output2",
-          group: "out",
         },
       ],
     }
@@ -130,16 +130,16 @@ export const basicReactions: IReactionMaterial[] = [
     label: "$delay",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "startUp",
           label: "",//"$startUp",
-          group: "in",
         },
+      ],
+      outPorts: [
         {
           name: "output",
           label: "",//"$output",
-          group: "out",
         },
       ],
     }
@@ -150,16 +150,16 @@ export const basicReactions: IReactionMaterial[] = [
     label: "$random",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "startUp",
           label: "",//"$startUp",
-          group: "in",
         },
+      ],
+      outPorts: [
         {
           name: "output",
           label: "",//"$output",
-          group: "out",
         },
       ],
     }

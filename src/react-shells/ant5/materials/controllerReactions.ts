@@ -8,11 +8,10 @@ export const setVariableMaterial: IReactionMaterial = {
   label: "$setVariable",
   reactionType: ReactionType.ControllerDefaultReaction,
   meta: {
-    ports: [
+    inPorts: [
       {
         name: "input",
         label: "",//"$startUp",
-        group: "in",
       },
     ],
   }
@@ -24,48 +23,46 @@ export const listenVariableMaterial: IReactionMaterial = {
   label: "$listenVariable",
   reactionType: ReactionType.ControllerDefaultReaction,
   meta: {
-    ports: [
+    outPorts: [
       {
         name: "output",
         label: "",//"$startUp",
-        group: "out",
       },
     ],
   }
 }
 
-export const setPropMaterial: IReactionMaterial =   {
+export const setPropMaterial: IReactionMaterial = {
   name: "setProp",
   icon: setPropIcon,
   label: "$setProp",
   reactionType: ReactionType.ControllerDefaultReaction,
   meta: {
-    ports: [
+    inPorts: [
       {
         name: "input",
         label: "",//"$startUp",
-        group: "in",
       },
     ],
   }
 }
 
-export const reactionMaterial: IReactionMaterial =   {
+export const reactionMaterial: IReactionMaterial = {
   name: "controllerReaction",
   icon: methodIcon,
   label: "reaction",
   reactionType: ReactionType.ControllerReaction,
   meta: {
-    ports: [
+    inPorts: [
       {
         name: "input",
         label: "",
-        group: "in",
       },
+    ],
+    outPorts: [
       {
         name: "output",
         label: "",
-        group: "out",
       },
     ],
   }

@@ -12,6 +12,7 @@ import { ActionType } from "../../actions"
 import { useDispatch } from "../../hooks/useDispatch"
 import { useGetMaterial } from "../../hooks/useGetMaterial"
 import { useSelectedNode } from "../../hooks/useSelectedNode"
+import { PortsInput } from "./PortsInput"
 
 const Title = styled.div`
   height: 40px;
@@ -88,6 +89,7 @@ export const PropertyBox = memo(() => {
                 Slider,
                 InputNumber,
                 TextArea: Input.TextArea,
+                PortsInput,
               }}
             >
               <VirtualForm

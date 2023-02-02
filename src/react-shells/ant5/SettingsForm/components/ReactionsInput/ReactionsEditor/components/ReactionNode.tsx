@@ -67,8 +67,8 @@ export const ReactionNode = (props: { node?: Node }) => {
   const { token } = data
   const { label } = data.meta
 
-  const inputPortCount = data.meta.ports?.filter(port => port.group === "in").length
-  const outputPortCount = data.meta.ports?.filter(port => port.group === "out").length
+  const inputPortCount = data.meta.inPorts?.length
+  const outputPortCount = data.meta.outPorts?.length
   return (
     <NodeView
       className='node'

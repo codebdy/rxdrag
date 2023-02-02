@@ -9,11 +9,10 @@ export const commonReactions: IReactionMaterial[] = [
     label: "$routeTo",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input",
           label: "",
-          group: "in",
         },
       ],
     }
@@ -24,11 +23,10 @@ export const commonReactions: IReactionMaterial[] = [
     label: "$infoMessage",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input",
           label: "",
-          group: "in",
         },
       ],
     },
@@ -39,16 +37,16 @@ export const commonReactions: IReactionMaterial[] = [
     label: "$simulateData",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input",
           label: "",
-          group: "in",
         },
+      ],
+      outPorts: [
         {
           name: "output",
           label: "",
-          group: "out",
         },
       ],
     }
@@ -59,11 +57,10 @@ export const commonReactions: IReactionMaterial[] = [
     label: "$globalLoading",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input",
           label: "",
-          group: "in",
         },
       ],
     }
@@ -74,16 +71,16 @@ export const commonReactions: IReactionMaterial[] = [
     label: "$jsCode",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input",
           label: "",
-          group: "in",
         },
+      ],
+      outPorts: [
         {
           name: "output",
           label: "",
-          group: "out",
         },
       ],
     }

@@ -6,12 +6,12 @@ import { useTrans } from "./useTrans";
 export function useTransformPorts() {
   const [, token] = useToken()
   const t = useTrans()
-  const transform = useCallback((ports?: IPortMeta[]) => {
+  const doTransform = useCallback((ports: IPortMeta[] | undefined, group: 'in' | 'out') => {
     return ports?.map(
       port => ({
         id: port.name,
         name: port.name,
-        group: port.group,
+        group: group,
         attrs: {
           text: {
             text: t(port.label),
@@ -22,12 +22,18 @@ export function useTransformPorts() {
         label: {
           position: {
             // 标签位置
-            name: port.group === 'out' ? 'right' : 'in', // 标签位置计算方法的名称,
+            name: group === 'out' ? 'right' : 'left', // 标签位置计算方法的名称,
           }
         }
       })
     )
   }, [t, token.colorTextSecondary])
+
+  const transform = useCallback((inPorts: IPortMeta[] | undefined, outPorts: IPortMeta[] | undefined,) => {
+    const ins = doTransform(inPorts, 'in') || []
+    const outs = doTransform(outPorts, 'out') || []
+    return [...ins, ...outs]
+  }, [doTransform])
 
   return transform
 }

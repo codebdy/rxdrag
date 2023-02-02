@@ -10,11 +10,10 @@ export const auxReactions: IReactionMaterial[] = [
     reactionType: ReactionType.SingleReaction,
     color: "orange",
     meta: {
-      ports: [
+      inPorts: [
         {
           name: "input",
           label: "",
-          group: "in",
         },
       ],
     }
