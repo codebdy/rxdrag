@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useCallback, useMemo, useState } from 'react';
 import { Space } from 'antd';
 import { Button, Table } from 'antd';
 import type { FormInstance } from 'antd/es/form';
@@ -45,9 +45,19 @@ interface DataType {
 
 type ColumnTypes = Exclude<EditableTableProps['columns'], undefined>;
 
-export const PortsTable: React.FC = memo((
+const components = {
+  body: {
+    row: EditableRow,
+    cell: EditableCell,
+  },
+};
 
+export const PortsTable = memo((
+  props: {
+    onClose: () => void
+  }
 ) => {
+  const { onClose } = props;
   const [dataSource, setDataSource] = useState<DataType[]>([
     {
       key: '0',
@@ -63,12 +73,12 @@ export const PortsTable: React.FC = memo((
 
   const [count, setCount] = useState(2);
 
-  const handleDelete = (key: React.Key) => {
+  const handleDelete = useCallback((key: React.Key) => {
     const newData = dataSource.filter((item) => item.key !== key);
     setDataSource(newData);
-  };
+  }, [dataSource]);
 
-  const defaultColumns: (ColumnTypes[number] & { editable?: boolean; dataIndex: string })[] = [
+  const defaultColumns: (ColumnTypes[number] & { editable?: boolean; dataIndex: string })[] = useMemo(() => [
     {
       title: '名称',
       dataIndex: 'name',
@@ -89,9 +99,9 @@ export const PortsTable: React.FC = memo((
           <Button type='text' icon={<DeleteOutlined />} onClick={() => handleDelete(record.key || "")} />
         ) : null,
     },
-  ];
+  ], [dataSource.length, handleDelete]);
 
-  const handleAdd = () => {
+  const handleAdd = useCallback(() => {
     const newData: DataType = {
       key: count,
       name: `input${count}`,
@@ -99,9 +109,9 @@ export const PortsTable: React.FC = memo((
     };
     setDataSource([...dataSource, newData]);
     setCount(count + 1);
-  };
+  }, [count, dataSource]);
 
-  const handleSave = (row: DataType) => {
+  const handleSave = useCallback((row: DataType) => {
     const newData = [...dataSource];
     const index = newData.findIndex((item) => row.key === item.key);
     const item = newData[index];
@@ -110,16 +120,10 @@ export const PortsTable: React.FC = memo((
       ...row,
     });
     setDataSource(newData);
-  };
+  }, [dataSource]);
 
-  const components = {
-    body: {
-      row: EditableRow,
-      cell: EditableCell,
-    },
-  };
 
-  const columns = defaultColumns.map((col) => {
+  const columns = useMemo(() => defaultColumns.map((col) => {
     if (!col.editable) {
       return col;
     }
@@ -133,7 +137,7 @@ export const PortsTable: React.FC = memo((
         handleSave,
       }),
     };
-  });
+  }), [defaultColumns, handleSave]);
 
   return (
     <Container>
@@ -151,7 +155,7 @@ export const PortsTable: React.FC = memo((
       </Button>
       <Footer>
         <Space>
-          <Button type="primary">关闭</Button>
+          <Button type="primary" onClick={onClose}>关闭</Button>
         </Space>
       </Footer>
     </Container>
