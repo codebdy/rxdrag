@@ -1,5 +1,7 @@
-import { memo } from "react";
+import { Button, Popover } from "antd";
+import { memo, useState } from "react";
 import { IPortMeta } from "runner/reaction/interfaces/metas";
+import { PortsTable } from "./PortsTable";
 
 export const PortsInput = memo((
   props: {
@@ -8,7 +10,27 @@ export const PortsInput = memo((
   }
 ) => {
   const { value, onChange } = props
-  return (<>
-    哈哈
-  </>)
+  const [open, setOpen] = useState(false);
+
+  const hide = () => {
+    setOpen(false);
+  };
+
+  const handleOpenChange = (newOpen: boolean) => {
+    setOpen(newOpen);
+  };
+  return (
+    <Popover
+      content={
+        <PortsTable />
+      }
+      title="桩列表"
+      placement="bottomRight"
+      trigger="click"
+      onOpenChange={handleOpenChange}
+    >
+      <Button>配置桩</Button>
+    </Popover>
+
+  )
 })
