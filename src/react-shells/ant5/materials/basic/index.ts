@@ -3,6 +3,7 @@ import { IReactionMaterial } from "../../../../runner/reaction/interfaces/materi
 import { delayIcon, endIcon, ifIcon, loopIcon, mergeIcon, randomIcon, startIcon, switchIcon } from "../../icons/reactions";
 import { startEndSchema } from "./schemas/base";
 import { conditionSchema } from "./schemas/condition";
+import { loopSchema } from "./schemas/loop";
 
 export const basicReactions: IReactionMaterial[] = [
   {
@@ -70,7 +71,8 @@ export const basicReactions: IReactionMaterial[] = [
           group: "out",
         },
       ],
-    }
+    },
+    schema: loopSchema,
   },
   {
     name: "merge",
