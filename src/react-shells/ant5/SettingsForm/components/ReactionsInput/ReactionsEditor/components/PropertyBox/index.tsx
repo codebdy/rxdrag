@@ -9,7 +9,7 @@ import { extractFieldSchemas } from "runner/ComponentRender/funcs/extractFieldSc
 import { VirtualForm } from "runner/fieldy"
 import styled from "styled-components"
 import { ActionType } from "../../actions"
-import { useEditorState } from "../../hooks/useEditorState"
+import { useEditorStore } from "../../hooks/useEditorStore"
 import { useGetMaterial } from "../../hooks/useGetMaterial"
 import { useSelectedNode } from "../../hooks/useSelectedNode"
 
@@ -42,7 +42,7 @@ export const PropertyBox = memo(() => {
   const getMaterial = useGetMaterial()
   const engine = useDesignerEngine()
   const lang = useLanguage()
-  const { dispatch } = useEditorState()
+  const { dispatch } = useEditorStore()
   const material = useMemo(() => getMaterial(node?.materialName || ""), [getMaterial, node?.materialName])
 
   const fieldSchemas = useMemo(() => {

@@ -35,7 +35,7 @@ export const initialState: IState = {
 
 //这个动态context会导致大量刷新，影响性能，以后考虑用Redux或者Recoil换掉
 //或者一个变量一个Context也能解决问题，但是不如Recoil方便
-export const ReacionsEditorContext = createContext<EditorStore|undefined>(undefined)
+export const ReacionsEditorStoreContext = createContext<EditorStore|undefined>(undefined)
 
 
 export const GraphContext = createContext<Graph|undefined>(undefined)

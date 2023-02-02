@@ -5,7 +5,7 @@ import { undoIcon, redoIcon } from "react-shells/ant5/icons"
 import styled from "styled-components"
 import { mapIcon, zoomResetIcon } from "../../../../../../icons/reactions"
 import { ActionType } from "../../actions"
-import { useEditorState } from "../../hooks/useEditorState"
+import { useEditorStore } from "../../hooks/useEditorStore"
 import { useRedo } from "../../hooks/edit-meta/useRedo"
 import { useZoomIn } from "../../hooks/useZoomIn"
 import { useZoomOut } from "../../hooks/useZoomOut"
@@ -39,7 +39,7 @@ export const Toolbar = memo((
   }
 ) => {
   const { showMap, toggleShowMap } = props
-  const { selected, zoom, graph, redoList, undoList, dispatch } = useEditorState()
+  const { selected, zoom, graph, redoList, undoList, dispatch } = useEditorStore()
   const backup = useBackup()
   const markeChange = useMarkChange()
   const handleRemove = useCallback(() => {

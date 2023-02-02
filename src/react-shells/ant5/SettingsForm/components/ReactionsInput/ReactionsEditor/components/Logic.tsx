@@ -6,9 +6,9 @@ import { useArrowhead } from "../hooks/useArrowhead"
 import { useShowCells } from "../hooks/useShowCells"
 import { useSelection } from "../hooks/useSelection"
 import { useRemove } from "../hooks/edit-meta/useRemove"
-import { useZoom } from "../hooks/useZoom"
+import { useSetZoom } from "../hooks/useSetZoom"
 import { ILogicMetas } from "runner/reaction/interfaces/metas"
-import { useEditorState } from "../hooks/useEditorState"
+import { useEditorStore } from "../hooks/useEditorStore"
 
 export const Logic = memo((
   props: {
@@ -16,7 +16,7 @@ export const Logic = memo((
   }
 ) => {
   const { onChange } = props;
-  const { changeFlag, metas } = useEditorState()
+  const { changeFlag, metas } = useEditorStore()
   const metasRef = useRef(metas)
   metasRef.current = metas;
   const onChangeRef = useRef(onChange)
@@ -29,7 +29,7 @@ export const Logic = memo((
   useArrowhead()
   useSelection()
   useRemove()
-  useZoom()
+  useSetZoom()
   useEffect(() => {
     if (changeFlag) {
       onChangeRef.current(metasRef.current)

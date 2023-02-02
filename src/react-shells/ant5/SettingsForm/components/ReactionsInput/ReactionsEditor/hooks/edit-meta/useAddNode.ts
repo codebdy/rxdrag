@@ -2,12 +2,12 @@ import { Node } from "@antv/x6";
 import { useCallback, useEffect } from "react";
 import { ActionType } from "../../actions";
 import { INodeData } from "../../interfaces";
-import { useEditorState } from "../useEditorState";
+import { useEditorStore } from "../useEditorStore";
 import { useBackup } from "./useBackup";
 import { useMarkChange } from "./useMarkChange";
 
 export function useAddNode() {
-  const { graph, dispatch } = useEditorState()
+  const { graph, dispatch } = useEditorStore()
   const markeChange = useMarkChange()
   const backup = useBackup()
   const handleNodeAdd = useCallback(({ node }: { node: Node, index: number, options: any }) => {

@@ -1,18 +1,27 @@
-import { useEffect } from "react";
-import { useEditorState } from "./useEditorState";
+import { useCallback, useEffect, useState } from "react";
+import { ActionType } from "../actions";
+import { useEditorStore } from "./useEditorStore";
 
 export function useZoom() {
-  const { zoom, graph } = useEditorState()
+  const [zoom, setZoom] = useState<number>()
+  const store = useEditorStore()
+
+  const handleZoomChange = useCallback((zm: number) => {
+    setZoom(zm)
+  }, [])
+
+  const doSetZoom = useCallback((zm: number) => {
+    store?.dispatch({ type: ActionType.SET_ZOOM, payload: zm })
+  }, [store])
 
   useEffect(() => {
-    if (graph) {
-      if (zoom === 0) {
-        graph.zoomToFit();
-        graph.center();
-      } else {
-        graph.zoomTo(zoom);
-      }
-    }
-  }, [graph, zoom]);
+    const unsub = store?.subscribeZoomChange(handleZoomChange)
+    return unsub
+  }, [handleZoomChange, store])
 
+  useEffect(()=>{
+    setZoom(store?.store.getState().zoom)
+  }, [store?.store])
+
+  return { zoom, setZoom: doSetZoom }
 }

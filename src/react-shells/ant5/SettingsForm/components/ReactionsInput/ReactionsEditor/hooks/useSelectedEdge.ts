@@ -1,7 +1,7 @@
-import { useEditorState } from "./useEditorState";
+import { useEditorStore } from "./useEditorStore";
 
 export function useSelectedEdge() {
-  const { selected, metas } = useEditorState()
+  const { selected, metas } = useEditorStore()
 
   return metas?.invokes?.find(invoke => invoke.id === selected)
 }

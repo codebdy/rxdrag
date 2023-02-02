@@ -22,7 +22,8 @@ export enum ActionType {
 }
 
 export interface Action {
-  type: ActionType
+  type: ActionType,
+  payload?: IReactionNodeMeta | string | IInvokeMeta | number | ISnapshot | ISnapshot | ISnapshot[]
 }
 
 export interface AddNodeAction extends Action {

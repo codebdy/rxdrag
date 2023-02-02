@@ -2,7 +2,7 @@ import { Collapse as AntdCollapse, Row } from "antd";
 import { memo, useCallback } from "react";
 import styled from "styled-components";
 import { useDnd } from "../../hooks/useDnd";
-import { useEditorState } from "../../hooks/useEditorState";
+import { useEditorStore } from "../../hooks/useEditorStore";
 import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
 import { ToolItem } from "./ToolItem";
 import { IControllerMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
@@ -33,7 +33,7 @@ export const Toolbox = memo((props: {
 }) => {
   const { currentController } = props;
   const t = useTrans();
-  const { graph } = useEditorState()
+  const { graph } = useEditorStore()
   const dnd = useDnd()
   const getNodeConfig = useGetNodeConfig()
 

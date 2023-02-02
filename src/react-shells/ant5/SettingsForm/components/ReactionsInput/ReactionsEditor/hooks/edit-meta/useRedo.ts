@@ -1,10 +1,10 @@
 import { useCallback } from "react"
 import { ActionType } from "../../actions"
-import { useEditorState } from "../useEditorState"
+import { useEditorStore } from "../useEditorStore"
 import { useMarkChange } from "./useMarkChange"
 
 export function useRedo() {
-  const { undoList, redoList, dispatch, selected, metas } = useEditorState()
+  const { undoList, redoList, dispatch, selected, metas } = useEditorStore()
   const markeChange = useMarkChange()
   const redo = useCallback(() => {
     const snapshot = redoList[redoList.length - 1]

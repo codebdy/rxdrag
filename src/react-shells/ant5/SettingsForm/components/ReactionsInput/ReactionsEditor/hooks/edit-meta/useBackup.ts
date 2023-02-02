@@ -1,9 +1,9 @@
 import { useCallback } from "react"
 import { ActionType } from "../../actions"
-import { useEditorState } from "../useEditorState"
+import { useEditorStore } from "../useEditorStore"
 
 export function useBackup() {
-  const { selected, metas, dispatch } = useEditorState()
+  const { selected, metas, dispatch } = useEditorStore()
   
   const backup = useCallback(() => {
     dispatch({ type: ActionType.BACKUP, payload: { ...metas, selected } })

@@ -1,10 +1,10 @@
 import { Cell } from "@antv/x6";
 import { useCallback, useEffect } from "react";
 import { ActionType } from "../../actions";
-import { useEditorState } from "../useEditorState";
+import { useEditorStore } from "../useEditorStore";
 
 export function useRemove() {
-  const { dispatch, graph } = useEditorState()
+  const { dispatch, graph } = useEditorStore()
   const handleRemoved = useCallback(({ cell }: { cell: Cell }) => {
     if (cell.isNode()) {
       dispatch({ type: ActionType.REMOVE_NODE, payload: cell.id })

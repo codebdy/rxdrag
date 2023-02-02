@@ -3,7 +3,7 @@ import { IControllerMeta, ILogicMetas } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
 import { ActionType } from "../actions";
 import { EditorStore } from "../classes/EditorStore";
-import { GraphContext, ReacionsEditorContext } from "../contexts"
+import { GraphContext, ReacionsEditorStoreContext } from "../contexts"
 import { useCreateGraph } from "../hooks/useCreateGraph";
 import { Logic } from "./Logic";
 import { PropertyBox } from "./PropertyBox";
@@ -103,7 +103,7 @@ export const ReactionMetaEditor = memo((
 
   return (
     <GraphContext.Provider value={graph}>
-      <ReacionsEditorContext.Provider value={store}>
+      <ReacionsEditorStoreContext.Provider value={store}>
         <CenterArea>
           <Toolbar showMap={showMap} toggleShowMap={handleToggleMap} />
           <OpeateArea>
@@ -124,7 +124,7 @@ export const ReactionMetaEditor = memo((
         <RightArea>
           <PropertyBox />
         </RightArea>
-      </ReacionsEditorContext.Provider>
+      </ReacionsEditorStoreContext.Provider>
     </GraphContext.Provider>
   )
 })

@@ -1,7 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { invariant } from "core/utils/util-invariant";
 import { Store } from "redux";
 import { Action } from "../actions";
 import { IState } from "../contexts";
+import { ZoomChangeListener } from "../interfaces";
 import { mainReducer } from "../reducers/mainReducer";
 
 export class EditorStore {
@@ -12,6 +14,22 @@ export class EditorStore {
 
   dispatch(action: Action) {
     this.store.dispatch(action)
+  }
+
+  subscribeZoomChange(listener: ZoomChangeListener) {
+    invariant(typeof listener === 'function', 'listener must be a function.')
+    let previousState: any = this.store.getState().zoom
+
+    const handleChange = () => {
+      const nextState = this.store.getState().zoom
+      if (nextState === previousState) {
+        return
+      }
+      previousState = nextState
+      listener(nextState)
+    }
+
+    return this.store.subscribe(handleChange)
   }
 }
 

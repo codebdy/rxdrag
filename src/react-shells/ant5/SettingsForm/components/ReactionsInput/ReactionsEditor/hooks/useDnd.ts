@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { useEditorState } from "./useEditorState";
+import { useEditorStore } from "./useEditorStore";
 import { Dnd } from "@antv/x6-plugin-dnd";
 
 export function useDnd() {
   const [dnd, setDnd] = React.useState<any>()
-  const { graph } = useEditorState()
+  const { graph } = useEditorStore()
   useEffect(() => {
     const theDnd = graph
       ? new Dnd({

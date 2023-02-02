@@ -1,14 +1,15 @@
 import { useEffect } from "react";
 import { useGetNodeConfig } from "./useGetNodeConfig";
-import { useEditorState } from "./useEditorState";
+import { useEditorStore } from "./useEditorStore";
 import { useGetEdgeConfig } from "./useGetEdgeConfig";
+import { useGraph } from "./useGraph";
 
 export function useShowCells() {
-  const { graph } = useEditorState()
+  const  graph  = useGraph()
   const getNodeConfig = useGetNodeConfig()
   const getEdgeConfig = useGetEdgeConfig()
 
-  const { metas } = useEditorState()
+  const { metas } = useEditorStore()
   useEffect(() => {
     if (graph) {
       const oldNodes = graph.getNodes()

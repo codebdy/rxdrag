@@ -1,10 +1,10 @@
 import { Cell } from "@antv/x6";
 import { useCallback, useEffect } from "react";
 import { ActionType } from "../actions";
-import { useEditorState } from "./useEditorState";
+import { useEditorStore } from "./useEditorStore";
 
 export function useSelection() {
-  const { graph, dispatch } = useEditorState()
+  const { graph, dispatch } = useEditorStore()
 
   const handleSelected = useCallback(({ cell }: { cell: Cell }) => {
     if (!graph?.getCellById(cell.id)) {

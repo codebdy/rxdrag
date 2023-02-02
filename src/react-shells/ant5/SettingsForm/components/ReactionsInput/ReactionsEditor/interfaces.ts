@@ -8,3 +8,5 @@ export interface IEventMeta {
 export interface INodeData {
   meta: IReactionNodeMeta
 }
+
+export type ZoomChangeListener = (zoom: number) => void
