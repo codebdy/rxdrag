@@ -12,7 +12,7 @@ export class EditorStore {
     this.store = makeStoreInstance(debugMode || false)
   }
 
-  dispatch(action: Action) {
+  dispatch = (action: Action) => {
     this.store.dispatch(action)
   }
 
@@ -96,7 +96,7 @@ export class EditorStore {
     return this.store.subscribe(handleChange)
   }
 
-  
+
   subscribeChangeFlagChange(listener: ChangeFlagChangeListener) {
     invariant(typeof listener === 'function', 'listener must be a function.')
     let previousState: any = this.store.getState().changeFlag
