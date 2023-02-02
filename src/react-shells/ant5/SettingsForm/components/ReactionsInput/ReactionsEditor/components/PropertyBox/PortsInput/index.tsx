@@ -24,7 +24,7 @@ export const PortsInput = memo((
       content={
         <PortsTable />
       }
-      title="桩列表"
+      title="输入桩列表"
       placement="bottomRight"
       trigger="click"
       onOpenChange={handleOpenChange}

@@ -3,7 +3,7 @@ import { InputRef, Space } from 'antd';
 import { Button, Form, Input, Popconfirm, Table } from 'antd';
 import type { FormInstance } from 'antd/es/form';
 import styled from 'styled-components';
-import { PlusOutlined } from '@ant-design/icons';
+import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 
 const Container = styled.div`
   width: 400px;
@@ -116,8 +116,7 @@ type EditableTableProps = Parameters<typeof Table>[0];
 interface DataType {
   key: React.Key;
   name: string;
-  age: string;
-  address: string;
+  label: string;
 }
 
 type ColumnTypes = Exclude<EditableTableProps['columns'], undefined>;
@@ -127,14 +126,12 @@ export const PortsTable: React.FC = () => {
     {
       key: '0',
       name: 'Edward King 0',
-      age: '32',
-      address: 'London, Park Lane no. 0',
+      label: '32',
     },
     {
       key: '1',
       name: 'Edward King 1',
-      age: '32',
-      address: 'London, Park Lane no. 1',
+      label: '32',
     },
   ]);
 
@@ -147,22 +144,23 @@ export const PortsTable: React.FC = () => {
 
   const defaultColumns: (ColumnTypes[number] & { editable?: boolean; dataIndex: string })[] = [
     {
-      title: 'name',
+      title: '名称',
       dataIndex: 'name',
-      width: '30%',
+      width: '40%',
       editable: true,
     },
     {
-      title: 'age',
-      dataIndex: 'age',
+      title: '标题',
+      dataIndex: 'label',
+      width: '40%',
     },
     {
-      title: 'operation',
+      title: '操作',
       dataIndex: 'operation',
       render: (_, record: { key?: React.Key }) =>
         dataSource.length >= 1 ? (
           <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key || "")}>
-            <a>Delete</a>
+            <Button type='text' icon={<DeleteOutlined />} />
           </Popconfirm>
         ) : null,
     },
@@ -172,8 +170,7 @@ export const PortsTable: React.FC = () => {
     const newData: DataType = {
       key: count,
       name: `Edward King ${count}`,
-      age: '32',
-      address: `London, Park Lane no. ${count}`,
+      label: `London, Park Lane no. ${count}`,
     };
     setDataSource([...dataSource, newData]);
     setCount(count + 1);
@@ -228,8 +225,7 @@ export const PortsTable: React.FC = () => {
       </Button>
       <Footer>
         <Space>
-          <Button>取消</Button>
-          <Button type="primary">确定</Button>
+          <Button type="primary">关闭</Button>
         </Space>
       </Footer>
     </Container>
