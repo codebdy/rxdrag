@@ -38,7 +38,6 @@ const EmptyContainer = styled.div`
 export const PropertyBox = memo(() => {
   const [, token] = useToken()
   const node = useSelectedNode()
-  console.log("哈哈哈 PropertyBox",)
   const getMaterial = useGetMaterial()
   const engine = useDesignerEngine()
   const lang = useLanguage()
