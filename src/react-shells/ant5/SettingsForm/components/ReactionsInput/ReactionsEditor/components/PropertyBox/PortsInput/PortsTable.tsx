@@ -1,14 +1,30 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { InputRef, Space } from 'antd';
-import { Button, Form, Input, Popconfirm, Table } from 'antd';
+import React, { memo, useState } from 'react';
+import { Space } from 'antd';
+import { Button, Table } from 'antd';
 import type { FormInstance } from 'antd/es/form';
 import styled from 'styled-components';
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { EditableCell } from './EditableCell';
+import { EditableRow } from './EditableRow';
 
 const Container = styled.div`
   width: 400px;
   display: flex;
   flex-flow: column;
+  .editable-cell {
+    position: relative;
+  }
+
+  .editable-cell-value-wrap {
+    padding: 5px 12px;
+    cursor: pointer;
+  }
+
+  .editable-row:hover .editable-cell-value-wrap {
+    padding: 4px 11px;
+    border: 1px solid ${props => props.theme.token?.colorBorder};
+    border-radius: 2px;
+  }
 `
 
 const Footer = styled.div`
@@ -17,99 +33,7 @@ const Footer = styled.div`
   margin-top: 16px;
 `
 
-const EditableContext = React.createContext<FormInstance<any> | null>(null);
-
-interface Item {
-  key: string;
-  name: string;
-  age: string;
-  address: string;
-}
-
-interface EditableRowProps {
-  index: number;
-}
-
-const EditableRow: React.FC<EditableRowProps> = ({ index, ...props }) => {
-  const [form] = Form.useForm();
-  return (
-    <Form form={form} component={false}>
-      <EditableContext.Provider value={form}>
-        <tr {...props} />
-      </EditableContext.Provider>
-    </Form>
-  );
-};
-
-interface EditableCellProps {
-  title: React.ReactNode;
-  editable: boolean;
-  children: React.ReactNode;
-  dataIndex: keyof Item;
-  record: Item;
-  handleSave: (record: Item) => void;
-}
-
-const EditableCell: React.FC<EditableCellProps> = ({
-  title,
-  editable,
-  children,
-  dataIndex,
-  record,
-  handleSave,
-  ...restProps
-}) => {
-  const [editing, setEditing] = useState(false);
-  const inputRef = useRef<InputRef>(null);
-  const form = useContext(EditableContext)!;
-
-  useEffect(() => {
-    if (editing) {
-      inputRef.current!.focus();
-    }
-  }, [editing]);
-
-  const toggleEdit = () => {
-    setEditing(!editing);
-    form.setFieldsValue({ [dataIndex]: record[dataIndex] });
-  };
-
-  const save = async () => {
-    try {
-      const values = await form.validateFields();
-
-      toggleEdit();
-      handleSave({ ...record, ...values });
-    } catch (errInfo) {
-      console.log('Save failed:', errInfo);
-    }
-  };
-
-  let childNode = children;
-
-  if (editable) {
-    childNode = editing ? (
-      <Form.Item
-        style={{ margin: 0 }}
-        name={dataIndex}
-        rules={[
-          {
-            required: true,
-            message: `${title} is required.`,
-          },
-        ]}
-      >
-        <Input ref={inputRef} onPressEnter={save} onBlur={save} />
-      </Form.Item>
-    ) : (
-      <div className="editable-cell-value-wrap" style={{ paddingRight: 24 }} onClick={toggleEdit}>
-        {children}
-      </div>
-    );
-  }
-
-  return <td {...restProps}>{childNode}</td>;
-};
+export const EditableContext = React.createContext<FormInstance<any> | null>(null);
 
 type EditableTableProps = Parameters<typeof Table>[0];
 
@@ -121,17 +45,19 @@ interface DataType {
 
 type ColumnTypes = Exclude<EditableTableProps['columns'], undefined>;
 
-export const PortsTable: React.FC = () => {
+export const PortsTable: React.FC = memo((
+
+) => {
   const [dataSource, setDataSource] = useState<DataType[]>([
     {
       key: '0',
-      name: 'Edward King 0',
-      label: '32',
+      name: 'input0',
+      label: '输入 0',
     },
     {
       key: '1',
-      name: 'Edward King 1',
-      label: '32',
+      name: 'input1',
+      label: '输入 1',
     },
   ]);
 
@@ -153,15 +79,14 @@ export const PortsTable: React.FC = () => {
       title: '标题',
       dataIndex: 'label',
       width: '40%',
+      editable: true,
     },
     {
       title: '操作',
       dataIndex: 'operation',
       render: (_, record: { key?: React.Key }) =>
         dataSource.length >= 1 ? (
-          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key || "")}>
-            <Button type='text' icon={<DeleteOutlined />} />
-          </Popconfirm>
+          <Button type='text' icon={<DeleteOutlined />} onClick={() => handleDelete(record.key || "")} />
         ) : null,
     },
   ];
@@ -169,8 +94,8 @@ export const PortsTable: React.FC = () => {
   const handleAdd = () => {
     const newData: DataType = {
       key: count,
-      name: `Edward King ${count}`,
-      label: `London, Park Lane no. ${count}`,
+      name: `input${count}`,
+      label: `输入 ${count}`,
     };
     setDataSource([...dataSource, newData]);
     setCount(count + 1);
@@ -215,6 +140,7 @@ export const PortsTable: React.FC = () => {
       <Table
         components={components}
         rowClassName={() => 'editable-row'}
+        size="small"
         bordered
         dataSource={dataSource}
         columns={columns as ColumnTypes}
@@ -230,4 +156,4 @@ export const PortsTable: React.FC = () => {
       </Footer>
     </Container>
   );
-};
+});
