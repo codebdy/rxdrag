@@ -61,7 +61,7 @@ const MiniMapContainer = styled.div`
 `
 
 const RightArea = styled.div`
-  width: 220px;
+  width: 280px;
   border-left: ${props => props.theme.token?.colorBorder}  solid 1px;
   display: flex;
   flex-flow: column;

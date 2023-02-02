@@ -87,6 +87,7 @@ export const PropertyBox = memo(() => {
                 Radio,
                 Slider,
                 InputNumber,
+                TextArea: Input.TextArea,
               }}
             >
               <VirtualForm
