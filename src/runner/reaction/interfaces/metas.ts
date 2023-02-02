@@ -24,6 +24,7 @@ export enum ReactionType {
 }
 
 export interface IReactionNodeData {
+  name?: string;
   componentName?: string;
   reactionName?: string;
   ports?: IPortMeta[];
@@ -33,6 +34,7 @@ export interface IReactionNodeMeta<ConfigMeta = any> extends IReactionNodeData {
   id: string;
   type: ReactionType;
   materialName: string;
+  name?: string;
   label?: string;
   controllerId?: string;
   reactionRef?: string;//ID or name
