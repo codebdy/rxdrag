@@ -1,19 +1,22 @@
 import { useCallback, useEffect } from "react"
 import { INodeData } from "../../interfaces"
-import { useEditorStore } from "../useEditorStore"
 import { Node } from "@antv/x6";
 import { ActionType } from "../../actions";
 import { useBackup } from "./useBackup";
 import { useMarkChange } from "./useMarkChange";
+import { useDispatch } from "../useDispatch";
+import { useGraph } from "../useGraph";
 
 export function useMovedNode() {
-  const { graph, dispatch } = useEditorStore()
+  const dispatch = useDispatch()
+  const graph = useGraph()
+
   const backup = useBackup()
   const markeChange = useMarkChange()
   const handleNodeMoved = useCallback(({ x, y, node }: { x: number, y: number, node: Node, index: number, options: any }) => {
     backup()
     const { meta } = node.getData() as INodeData
-    dispatch({
+    dispatch?.({
       type: ActionType.CHANGE_NODE,
       payload: {
         ...meta,

@@ -1,21 +1,21 @@
 import { useEffect } from "react";
 import { useGetNodeConfig } from "./useGetNodeConfig";
-import { useEditorStore } from "./useEditorStore";
 import { useGetEdgeConfig } from "./useGetEdgeConfig";
 import { useGraph } from "./useGraph";
+import { useMetas } from "./useMetas";
 
 export function useShowCells() {
-  const  graph  = useGraph()
+  const graph = useGraph()
   const getNodeConfig = useGetNodeConfig()
   const getEdgeConfig = useGetEdgeConfig()
 
-  const { metas } = useEditorStore()
+  const { metas } = useMetas()
   useEffect(() => {
     if (graph) {
       const oldNodes = graph.getNodes()
       const oldEdges = graph.getEdges()
       const oldCells = graph.getCells()
-      for (const reactionNode of metas.reactions) {
+      for (const reactionNode of metas?.reactions || []) {
         const graphNode = oldNodes.find(node => node.id === reactionNode.id)
         //更新
         if (graphNode && reactionNode.x6Node) {
@@ -27,7 +27,7 @@ export function useShowCells() {
         }
       }
 
-      for (const invoke of metas.invokes) {
+      for (const invoke of metas?.invokes || []) {
         const graphEdge = oldEdges.find(edge => edge.id === invoke.id)
         if (!graphEdge) {
           const edge = graph.createEdge(getEdgeConfig(invoke))
@@ -37,11 +37,11 @@ export function useShowCells() {
 
       //删除不存在的
       for (const cell of oldCells) {
-        if (![...metas.reactions, ...metas.invokes].find(el => el.id === cell.id)) {
+        if (![...metas?.reactions || [], ...metas?.invokes || []].find(el => el.id === cell.id)) {
           cell.remove()
         }
       }
 
     }
-  }, [getEdgeConfig, getNodeConfig, graph, metas, metas.invokes, metas.reactions])
+  }, [getEdgeConfig, getNodeConfig, graph, metas, metas?.invokes, metas?.reactions])
 }

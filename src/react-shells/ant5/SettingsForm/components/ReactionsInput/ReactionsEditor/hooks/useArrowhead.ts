@@ -1,9 +1,9 @@
 import { Cell } from "@antv/x6";
 import { useCallback, useEffect } from "react";
-import { useEditorStore } from "./useEditorStore";
+import { useGraph } from "./useGraph";
 
 export function useArrowhead() {
-  const { graph } = useEditorStore()
+  const graph = useGraph()
 
   const handleMouseEnter = useCallback(({ cell }: { cell: Cell }) => {
     //只能支持到结束节点变换，开始节点暂不支持

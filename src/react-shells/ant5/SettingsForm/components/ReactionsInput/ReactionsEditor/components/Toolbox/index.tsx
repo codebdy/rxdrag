@@ -2,7 +2,6 @@ import { Collapse as AntdCollapse, Row } from "antd";
 import { memo, useCallback } from "react";
 import styled from "styled-components";
 import { useDnd } from "../../hooks/useDnd";
-import { useEditorStore } from "../../hooks/useEditorStore";
 import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
 import { ToolItem } from "./ToolItem";
 import { IControllerMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
@@ -11,6 +10,7 @@ import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { useTrans } from "../../hooks/useTrans";
 import { ComponentList } from "./ComponentList";
 import { reactionMaterials } from "react-shells/ant5/materials";
+import { useGraph } from "../../hooks/useGraph";
 const { Panel } = AntdCollapse;
 
 const StyledToolbox = styled.div`
@@ -33,7 +33,7 @@ export const Toolbox = memo((props: {
 }) => {
   const { currentController } = props;
   const t = useTrans();
-  const { graph } = useEditorStore()
+  const graph = useGraph()
   const dnd = useDnd()
   const getNodeConfig = useGetNodeConfig()
 

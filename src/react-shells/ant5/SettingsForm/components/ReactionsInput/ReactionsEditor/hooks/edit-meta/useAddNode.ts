@@ -2,12 +2,15 @@ import { Node } from "@antv/x6";
 import { useCallback, useEffect } from "react";
 import { ActionType } from "../../actions";
 import { INodeData } from "../../interfaces";
-import { useEditorStore } from "../useEditorStore";
+import { useDispatch } from "../useDispatch";
+import { useGraph } from "../useGraph";
 import { useBackup } from "./useBackup";
 import { useMarkChange } from "./useMarkChange";
 
 export function useAddNode() {
-  const { graph, dispatch } = useEditorStore()
+  const graph = useGraph()
+  const dispatch = useDispatch()
+
   const markeChange = useMarkChange()
   const backup = useBackup()
   const handleNodeAdd = useCallback(({ node }: { node: Node, index: number, options: any }) => {
@@ -25,7 +28,7 @@ export function useAddNode() {
     }
     node.setData(newData)
     graph?.select(node.id)
-    dispatch({
+    dispatch?.({
       type: ActionType.ADD_NODE,
       payload: newData
     })

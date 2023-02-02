@@ -9,8 +9,8 @@ import { IControllerMeta, IReactionMeta, IReactionNodeMeta } from "runner/reacti
 import styled from "styled-components";
 import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon } from "../../../../../../icons/reactions";
 import { useDnd } from "../../hooks/useDnd";
-import { useEditorStore } from "../../hooks/useEditorStore";
 import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
+import { useGraph } from "../../hooks/useGraph";
 import { useTrans } from "../../hooks/useTrans";
 import { createUuid } from "../../utils";
 
@@ -40,7 +40,7 @@ export const ComponentList = memo((
   const currentNode = useCurrentNode()
   const getNode = useGetNode()
   const t = useTrans()
-  const { graph } = useEditorStore()
+  const graph = useGraph()
   const dnd = useDnd()
   const getNodeConfig = useGetNodeConfig()
 

@@ -2,12 +2,14 @@ import { Edge } from "@antv/x6"
 import { useCallback, useEffect } from "react"
 import { IInvokeMeta } from "runner/reaction/interfaces/metas"
 import { ActionType } from "../../actions"
-import { useEditorStore } from "../useEditorStore"
+import { useDispatch } from "../useDispatch"
+import { useGraph } from "../useGraph"
 import { useBackup } from "./useBackup"
 import { useMarkChange } from "./useMarkChange"
 
 export function useEditEdge() {
-  const { graph, dispatch } = useEditorStore()
+  const dispatch = useDispatch()
+  const graph = useGraph()
   const backup = useBackup()
   const markeChange = useMarkChange()
   const handleNodeAdd = useCallback(({ isNew, edge }: { isNew: boolean, edge: Edge }) => {
@@ -24,7 +26,7 @@ export function useEditEdge() {
       },
     }
     graph?.select(edge.id)
-    dispatch({
+    dispatch?.({
       type: isNew ? ActionType.ADD_EDGE : ActionType.CHANGE_EDGE,
       payload: newData
     })
