@@ -1,7 +1,8 @@
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { ReactionType } from "runner/reaction/interfaces/metas";
-import { setVariableIcon, listenVariableIcon, setPropIcon, methodIcon } from "../icons/reactions";
-import { createUuid } from "../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
+import { setVariableIcon, listenVariableIcon, setPropIcon, methodIcon } from "../../icons/reactions";
+import { createUuid } from "../../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
+import { setPropSchema } from "./schemas/setProp";
 
 export const setVariableMaterial: IReactionMaterial = {
   name: "setVariable",
@@ -48,6 +49,10 @@ export const setPropMaterial: IReactionMaterial = {
         label: "",//"$startUp",
       },
     ],
+  },
+  schema: setPropSchema,
+  subTitle: (config?: any) => {
+    return config?.prop
   }
 }
 

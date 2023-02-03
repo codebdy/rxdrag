@@ -8,6 +8,7 @@ export const reactionMaterialLocales = {
     configPorts: "配置桩",
     inputPortsConfig: "配置输入桩",
     outputPortsConfig: "配置输入桩",
+    prop: "属性",
   },
   'en-US': {
     name: "Name",
@@ -18,5 +19,6 @@ export const reactionMaterialLocales = {
     configPorts: "Config Ports",
     inputPortsConfig: "Config Input Ports",
     outputPortsConfig: "Config Output Ports",
+    prop: "Prop",
   }
 }

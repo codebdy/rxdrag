@@ -9,6 +9,8 @@ import { extractFieldSchemas } from "runner/ComponentRender/funcs/extractFieldSc
 import { VirtualForm } from "runner/fieldy"
 import styled from "styled-components"
 import { ActionType } from "../../actions"
+import { useBackup } from "../../hooks/edit-meta/useBackup"
+import { useMarkChange } from "../../hooks/edit-meta/useMarkChange"
 import { useDispatch } from "../../hooks/useDispatch"
 import { useGetMaterial } from "../../hooks/useGetMaterial"
 import { useSelectedNode } from "../../hooks/useSelectedNode"
@@ -44,7 +46,8 @@ export const PropertyBox = memo(() => {
   const lang = useLanguage()
   const dispatch = useDispatch()
   const material = useMemo(() => getMaterial(node?.materialName || ""), [getMaterial, node?.materialName])
-
+  const backup = useBackup()
+  const markeChange = useMarkChange()
   const fieldSchemas = useMemo(() => {
     if (material?.schema) {
       return material?.schema ? extractFieldSchemas(material?.schema) : []
@@ -65,10 +68,12 @@ export const PropertyBox = memo(() => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [engine, material?.schema, lang])
-
   const handleNodeChange = useCallback((nodeData: any) => {
-    dispatch?.({ type: ActionType.CHANGE_NODE, payload: { ...node, ...nodeData } })
-  }, [dispatch, node])
+    backup()
+    const newData = { ...node, ...nodeData }
+    dispatch?.({ type: ActionType.CHANGE_NODE, payload: newData })
+    markeChange()
+  }, [backup, dispatch, markeChange, node])
 
   return (
     <>
