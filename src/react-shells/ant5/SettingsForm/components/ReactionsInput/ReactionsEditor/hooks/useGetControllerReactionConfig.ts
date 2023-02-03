@@ -30,7 +30,7 @@ export function useGetControllerReactionConfig() {
       },
       ports: {
         groups: portsGroup,
-        items: transformPorts(nodeMeta.inPorts, nodeMeta.outPorts)
+        items: transformPorts(nodeMeta)
       },
     }
   }, [portsGroup, token, transformPorts])

@@ -18,11 +18,11 @@ export function useEditEdge() {
       id: edge.id,
       source: {
         nodeId: (edge.getSource() as any).cell,
-        port: (edge.getSource() as any).port,
+        portId: (edge.getSource() as any).port,
       },
       target: {
         nodeId: (edge.getTarget() as any).cell,
-        port: (edge.getTarget() as any).port,
+        portId: (edge.getTarget() as any).port,
       },
     }
     graph?.select(edge.id)

@@ -10,11 +10,11 @@ export function useGetEdgeConfig() {
       shape: "reaction-edge",
       source: {
         cell: invakeMeta.source.nodeId,
-        port: invakeMeta.source.port,
+        port: invakeMeta.source.portId,
       },
       target: {
         cell: invakeMeta.target.nodeId,
-        port: invakeMeta.target.port,
+        port: invakeMeta.target.portId,
       },
       zIndex: 0,
     }

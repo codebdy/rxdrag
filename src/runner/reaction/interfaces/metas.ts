@@ -48,11 +48,11 @@ export interface IInvokeMeta {
   id: string;
   source: {
     nodeId: string;
-    port?: string;
+    portId?: string;
   }
   target: {
     nodeId: string;
-    port?: string;
+    portId?: string;
   };
   //x6Edge: IX6EdgeMeta;
 }

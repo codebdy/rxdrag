@@ -1,6 +1,6 @@
 import { useToken } from "antd/es/theme/internal";
 import { useCallback } from "react";
-import { IPortMeta } from "runner/reaction/interfaces/metas";
+import { IPortMeta, IReactionNodeData } from "runner/reaction/interfaces/metas";
 import { useTrans } from "./useTrans";
 
 export function useTransformPorts() {
@@ -9,12 +9,12 @@ export function useTransformPorts() {
   const doTransform = useCallback((ports: IPortMeta[] | undefined, group: 'in' | 'out') => {
     return ports?.map(
       port => ({
-        id: port.name,
-        name: port.name,
+        id: port.id,
+        //name: port.name,
         group: group,
         attrs: {
           text: {
-            text: t(port.label),
+            text: t(port.label) || port.name,
             fill: token.colorTextSecondary,
             fontSize: 12,
           },
@@ -29,9 +29,9 @@ export function useTransformPorts() {
     )
   }, [t, token.colorTextSecondary])
 
-  const transform = useCallback((inPorts: IPortMeta[] | undefined, outPorts: IPortMeta[] | undefined,) => {
-    const ins = doTransform(inPorts, 'in') || []
-    const outs = doTransform(outPorts, 'out') || []
+  const transform = useCallback((meta: IReactionNodeData) => {
+    const ins = doTransform(meta.inPorts, 'in') || []
+    const outs = doTransform(meta.outPorts, 'out') || []
     return [...ins, ...outs]
   }, [doTransform])
 

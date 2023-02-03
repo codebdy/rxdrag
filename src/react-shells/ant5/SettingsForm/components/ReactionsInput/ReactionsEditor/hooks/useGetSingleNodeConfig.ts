@@ -32,7 +32,7 @@ export function useGetSingleNodeConfig() {
       },
       ports: {
         groups: portsGroup,
-        items: transformPorts(nodeMeta.inPorts, nodeMeta.outPorts)
+        items: transformPorts(nodeMeta)
       },
     }
   }, [getNodeWidth, portsGroup, token, transformPorts])
