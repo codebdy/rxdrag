@@ -4,15 +4,17 @@ import { IReactionNodeMeta } from "runner/reaction/interfaces/metas"
 import { useTransformPorts } from "./useTransformPorts"
 import { useToken } from "antd/es/theme/internal"
 import { usePortsConfig } from "./usePortsConfig"
-import { useGetSingleNodeWidth } from "./useGetSingleNodeWidth"
+import { useGetNodeWidth } from "./useGetNodeWidth"
+import { useGetNodeHeight } from "./useGetNodeHeight"
 
 export function useGetSingleNodeConfig() {
   const [, token] = useToken()
   const transformPorts = useTransformPorts()
   const portsGroup = usePortsConfig()
-  const getNodeWidth = useGetSingleNodeWidth()
+  const getNodeWidth = useGetNodeWidth()
+  const getHeight = useGetNodeHeight()
   const getSingleNodeConfig = useCallback((nodeMeta: IReactionNodeMeta, material: IReactionMaterial | undefined) => {
-    const height = 40
+    const height = getHeight(nodeMeta)
     const width = getNodeWidth(nodeMeta)
     return {
       id: nodeMeta.id,
@@ -35,7 +37,7 @@ export function useGetSingleNodeConfig() {
         items: transformPorts(nodeMeta)
       },
     }
-  }, [getNodeWidth, portsGroup, token, transformPorts])
+  }, [getHeight, getNodeWidth, portsGroup, token, transformPorts])
 
   return getSingleNodeConfig
 }

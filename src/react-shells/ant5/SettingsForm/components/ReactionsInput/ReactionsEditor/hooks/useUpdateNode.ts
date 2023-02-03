@@ -1,12 +1,13 @@
 import { useCallback } from "react";
 import { IReactionNodeMeta, ReactionType } from "runner/reaction/interfaces/metas";
 import { Node } from "@antv/x6"
-import { useGetSingleNodeWidth } from "./useGetSingleNodeWidth";
+import { useGetNodeWidth } from "./useGetNodeWidth";
 import { useTransformPorts } from "./useTransformPorts";
+import { useGetNodeHeight } from "./useGetNodeHeight";
 
 export function useUpdateNode() {
-  const getNodeWidth = useGetSingleNodeWidth()
-
+  const getNodeWidth = useGetNodeWidth()
+  const getHeight = useGetNodeHeight()
   const transPorts = useTransformPorts()
   const update = useCallback((graphNode: Node<Node.Properties>, nodeMeta: IReactionNodeMeta) => {
     if (nodeMeta.x6Node) {
@@ -15,7 +16,7 @@ export function useUpdateNode() {
       if (nodeMeta.type === ReactionType.Start || nodeMeta.type === ReactionType.End) {
         graphNode.attr("text/text", nodeMeta.label)
       } else {
-        graphNode.setSize({ ...nodeMeta.x6Node, width: getNodeWidth(nodeMeta) });
+        graphNode.setSize({ ...nodeMeta.x6Node, width: getNodeWidth(nodeMeta), height: getHeight(nodeMeta) });
         const oldPorts = graphNode.getPorts()
         const ports = transPorts(nodeMeta)
         for (const port of ports || []) {

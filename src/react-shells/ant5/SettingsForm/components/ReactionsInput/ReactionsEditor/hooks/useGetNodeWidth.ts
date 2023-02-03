@@ -14,7 +14,7 @@ function lengthOf(str: string) {
   return length;
 }
 
-export function useGetSingleNodeWidth() {
+export function useGetNodeWidth() {
   const getNodeWidth = useCallback((nodeMeta: IReactionNodeMeta) => {
     return (lengthOf(nodeMeta.label || "")) * 7 + 60
   }, [])
