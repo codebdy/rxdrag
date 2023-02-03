@@ -19,6 +19,7 @@ export const mergeSchema: INodeSchema = {
           props: {
             title: "$configPorts",
             popoverTitle: "$inputPortsConfig",
+            type: "input",
           }
         }
       ]

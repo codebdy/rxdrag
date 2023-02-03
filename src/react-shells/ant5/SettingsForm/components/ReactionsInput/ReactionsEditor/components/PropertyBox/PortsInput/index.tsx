@@ -9,9 +9,10 @@ export const PortsInput = memo((
     popoverTitle: string,
     value?: IPortMeta[],
     onChange?: (value?: IPortMeta[]) => void,
+    type: "input" | "output",
   }
 ) => {
-  const { title, popoverTitle, value, onChange } = props
+  const { title, popoverTitle, value, onChange, type } = props
   const [open, setOpen] = useState(false);
 
   const handleClose = useCallback(() => {
@@ -24,7 +25,7 @@ export const PortsInput = memo((
   return (
     <Popover
       content={
-        <PortsTable onClose={handleClose} value={value} onChange={onChange} />
+        <PortsTable type={type} onClose={handleClose} value={value} onChange={onChange} />
       }
       title={popoverTitle}
       open={open}

@@ -60,9 +60,10 @@ export const PortsTable = memo((
     onClose: () => void,
     value?: IPortMeta[],
     onChange?: (value?: IPortMeta[]) => void,
+    type: "input" | "output",
   }
 ) => {
-  const { onClose, value, onChange } = props;
+  const { onClose, value, onChange, type } = props;
   const t = useTrans()
   const dataSource = useMemo(() => {
     return value?.map(meta => {
@@ -108,11 +109,11 @@ export const PortsTable = memo((
     const newData: IPortMeta = {
       id: createUuid(),
       name: `input${count}`,
-      label: `${t("$input")} ${count}`,
+      label: `${t(type)} ${count}`,
     };
     onChange?.([...value || [], newData]);
     setCount(count + 1);
-  }, [count, onChange, t, value]);
+  }, [count, onChange, t, type, value]);
 
   const handleSave = useCallback((row: DataType) => {
     const newData = [...value || []];
