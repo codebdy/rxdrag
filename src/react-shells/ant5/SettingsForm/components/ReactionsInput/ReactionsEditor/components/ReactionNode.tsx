@@ -49,7 +49,7 @@ const ReactionName = styled.div`
 const ReactionOwner = styled.div`
   display: flex;
   font-size: 12px;
-  margin-top: 4px;
+  margin-top: 0px;
   white-space:nowrap;
   overflow: hidden;
   font-style: italic;

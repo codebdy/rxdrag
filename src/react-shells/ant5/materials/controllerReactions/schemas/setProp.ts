@@ -12,7 +12,7 @@ export const setPropSchema: INodeSchema = {
         {
           componentName: "Input",
           "x-field": {
-            name: "config.propx",
+            name: "config.prop",
           },
         }
       ]

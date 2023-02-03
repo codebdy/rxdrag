@@ -10,7 +10,7 @@ export function useGetSubLabel() {
   const getMaterial = useGetMaterial()
 
   const getLabel = useCallback((nodeMeta: IReactionNodeMeta<IConfigMeta>) => {
-    const material = getMaterial(nodeMeta.name)
+    const material = getMaterial(nodeMeta.materialName)
     const subTitle = material?.subTitle?.(nodeMeta.config)
     const controllerNode = controllerNodes.find(node => (node.meta?.["x-reactions"] as IControllerMeta | undefined)?.id === nodeMeta.config?.controllerId && nodeMeta.config?.controllerId)
     const controller = controllerNode?.meta?.["x-reactions"] as IControllerMeta | undefined
