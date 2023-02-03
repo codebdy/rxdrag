@@ -15,8 +15,10 @@ function lengthOf(str: string) {
 }
 
 export function useGetNodeWidth() {
-  const getNodeWidth = useCallback((nodeMeta: IReactionNodeMeta<IConfigMeta>) => {
-    return (lengthOf(nodeMeta.label || "")) * 7 + 60
+  const getNodeWidth = useCallback((nodeMeta: IReactionNodeMeta<IConfigMeta>, subLabel?: string) => {
+    const labeWidth = (lengthOf(nodeMeta.label || "")) * 7
+    const subLabelWidth = Math.round(lengthOf(subLabel || "") * 5.5)
+    return Math.max(labeWidth, subLabelWidth) + 60
   }, [])
 
   return getNodeWidth

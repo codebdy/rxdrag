@@ -39,6 +39,7 @@ const NodeView = styled.div`
   padding: 0 16px;
   box-sizing: border-box;
   justify-content: center;
+  align-items: center;
 `
 
 const ReactionName = styled.div`
@@ -50,6 +51,8 @@ const ReactionOwner = styled.div`
   font-size: 12px;
   margin-top: 4px;
   white-space:nowrap;
+  overflow: hidden;
+  font-style: italic;
 `
 
 const Icon = styled.div`

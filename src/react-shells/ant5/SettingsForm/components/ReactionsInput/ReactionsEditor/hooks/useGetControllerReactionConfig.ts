@@ -18,7 +18,7 @@ export function useGetControllerReactionConfig() {
   const getNodeConfig = useCallback((nodeMeta: IReactionNodeMeta<IConfigMeta>, material: IReactionMaterial | undefined) => {
     const subLabel = getSubLabel(nodeMeta)
     const height = getHeight(nodeMeta, !!subLabel)
-    const width = getNodeWidth(nodeMeta)
+    const width = getNodeWidth(nodeMeta, subLabel)
     console.log("哈哈 useGetControllerReactionConfig", subLabel)
     return {
       id: nodeMeta.id,

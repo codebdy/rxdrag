@@ -19,7 +19,7 @@ export function useUpdateNode() {
       if (nodeMeta.type === ReactionType.Start || nodeMeta.type === ReactionType.End) {
         graphNode.attr("text/text", nodeMeta.label)
       } else {
-        graphNode.setSize({ ...nodeMeta.x6Node, width: getNodeWidth(nodeMeta), height: getHeight(nodeMeta, !!subLabel) });
+        graphNode.setSize({ ...nodeMeta.x6Node, width: getNodeWidth(nodeMeta, subLabel), height: getHeight(nodeMeta, !!subLabel) });
         const oldPorts = graphNode.getPorts()
         const ports = transPorts(nodeMeta)
         for (const port of ports || []) {
