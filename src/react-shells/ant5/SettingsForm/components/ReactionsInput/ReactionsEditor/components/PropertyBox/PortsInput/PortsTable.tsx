@@ -109,7 +109,7 @@ export const PortsTable = memo((
     const newData: IPortMeta = {
       id: createUuid(),
       name: `input${count}`,
-      label: `${t(type)} ${count}`,
+      label: `${t("$"+type)} ${count}`,
     };
     onChange?.([...value || [], newData]);
     setCount(count + 1);

@@ -6,6 +6,7 @@ import { startEndSchema } from "./schemas/base";
 import { conditionSchema } from "./schemas/condition";
 import { loopSchema } from "./schemas/loop";
 import { mergeSchema } from "./schemas/merge";
+import { switchSchema } from "./schemas/switch";
 
 export const basicReactions: IReactionMaterial[] = [
   {
@@ -134,7 +135,8 @@ export const basicReactions: IReactionMaterial[] = [
           label: "output 1",
         },
       ],
-    }
+    },
+    schema: switchSchema
   },
   {
     name: "delay",

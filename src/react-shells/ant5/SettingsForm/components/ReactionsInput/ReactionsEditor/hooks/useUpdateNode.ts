@@ -34,7 +34,7 @@ export function useUpdateNode() {
         }
       }
     }
-  }, [getNodeWidth, transPorts])
+  }, [getHeight, getNodeWidth, transPorts])
 
   return update
 }
