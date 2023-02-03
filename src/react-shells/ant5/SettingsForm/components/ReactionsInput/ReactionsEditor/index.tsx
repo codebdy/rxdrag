@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Members } from "./components/Members";
 import { IControllerMeta, ILogicMetas } from "runner/reaction/interfaces/metas";
 import { ReactionMetaEditor } from "./components/ReactionMetaEditor";
+import { ControllerContext } from "./contexts";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -58,24 +59,25 @@ export const ReactionsEditor = memo((
   }, [onChange, selected, value])
 
   return (
-    <SytledContent id="reactions-editor-container">
-      <LeftArea>
-        <Members
-          value={value}
-          selected={selected}
-          onSelect={setSelected}
-          onChange={handleMemberChange}
-        />
-      </LeftArea>
-      {
-        selected && value &&
-        <ReactionMetaEditor
-          key={selected}
-          metas={metas}
-          currentController={value}
-          onChange={handleChange}
-        />
-      }
-    </SytledContent>
+    <ControllerContext.Provider value={value}>
+      <SytledContent id="reactions-editor-container">
+        <LeftArea>
+          <Members
+            value={value}
+            selected={selected}
+            onSelect={setSelected}
+            onChange={handleMemberChange}
+          />
+        </LeftArea>
+        {
+          selected && value &&
+          <ReactionMetaEditor
+            key={selected}
+            metas={metas}
+            onChange={handleChange}
+          />
+        }
+      </SytledContent>
+    </ControllerContext.Provider>
   )
 })

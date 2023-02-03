@@ -5,6 +5,7 @@ import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { IControllerMeta, IReactionMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
 import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon } from "../../../../../../icons/reactions";
+import { useController } from "../../hooks/useController";
 import { useControllerNodes } from "../../hooks/useControllerNodes";
 import { useDnd } from "../../hooks/useDnd";
 import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
@@ -30,16 +31,13 @@ const ItemTitle = styled.div`
   cursor: move;
 `
 export const ComponentList = memo((
-  props: {
-    currentController: IControllerMeta
-  }
+
 ) => {
-  const { currentController } = props;
   const t = useTrans()
   const graph = useGraph()
   const dnd = useDnd()
   const getNodeConfig = useGetNodeConfig()
-
+  const currentController = useController()
   const startDefaultDragFn = useCallback((marterial: IReactionMaterial, controllerId: string | undefined, reactionName: string) => {
     return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       if (!graph) {
@@ -88,7 +86,7 @@ export const ComponentList = memo((
     <div>
       {
         controllerNodes.map((node, index) => {
-          const controller: IControllerMeta = currentController.id === node.meta?.["x-reactions"]?.id ? currentController : node.meta?.["x-reactions"]
+          const controller: IControllerMeta = currentController?.id === node.meta?.["x-reactions"]?.id ? currentController : node.meta?.["x-reactions"]
           return (
             <Container
               key={node.id}

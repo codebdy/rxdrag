@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useDnd } from "../../hooks/useDnd";
 import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
 import { ToolItem } from "./ToolItem";
-import { IControllerMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
+import { IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 import { createUuid } from "../../utils";
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { useTrans } from "../../hooks/useTrans";
@@ -29,9 +29,7 @@ const Collapse = styled(AntdCollapse)`
 `
 
 export const Toolbox = memo((props: {
-  currentController: IControllerMeta
 }) => {
-  const { currentController } = props;
   const t = useTrans();
   const graph = useGraph()
   const dnd = useDnd()
@@ -79,7 +77,7 @@ export const Toolbox = memo((props: {
           })
         }
         <Panel header={t('$componentControl')} key="componentControl">
-          <ComponentList currentController={currentController} />
+          <ComponentList />
         </Panel>
       </Collapse>
     </StyledToolbox>

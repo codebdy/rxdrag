@@ -15,6 +15,7 @@ import { useDispatch } from "../../hooks/useDispatch"
 import { useGetMaterial } from "../../hooks/useGetMaterial"
 import { useSelectedNode } from "../../hooks/useSelectedNode"
 import { PortsInput } from "./PortsInput"
+import { VariableSelect } from "./VariableSelect"
 
 const Title = styled.div`
   height: 40px;
@@ -95,6 +96,7 @@ export const PropertyBox = memo(() => {
                 InputNumber,
                 TextArea: Input.TextArea,
                 PortsInput,
+                VariableSelect,
               }}
             >
               <VirtualForm
