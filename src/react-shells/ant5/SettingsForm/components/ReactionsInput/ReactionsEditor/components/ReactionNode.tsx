@@ -5,6 +5,7 @@ import { IReactionMaterial } from 'runner/reaction/interfaces/material'
 import { insertCss } from 'insert-css'
 import styled from 'styled-components'
 import { INodeData } from '../interfaces'
+import { ReactionType } from 'runner/reaction/interfaces/metas'
 
 insertCss(`
 .x6-node-selected .node{
@@ -30,7 +31,7 @@ insertCss(`
 
 const NodeView = styled.div`
   display: flex;
-  align-items: center;
+  flex-flow: column;
   width: 100%;
   height: 100%;
   outline: 1px solid #c2c8d5;
@@ -38,6 +39,17 @@ const NodeView = styled.div`
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.06);
   padding: 0 16px;
   box-sizing: border-box;
+  justify-content: center;
+`
+
+const ReactionName = styled.div`
+    display: flex;
+`
+
+const ReactionOwner = styled.div`
+  display: flex;
+  font-size: 12px;
+  margin-top: 4px;
 `
 
 const Icon = styled.div`
@@ -82,10 +94,18 @@ export const ReactionNode = (props: { node?: Node }) => {
         borderBottomRightRadius: !outputPortCount ? data.height / 2 : undefined,
       }}
     >
-      <Icon style={{ color: data?.material.color }}>
-        {data?.material?.icon}
-      </Icon>
-      <Label>{label}</Label>
+      <ReactionName>
+        <Icon style={{ color: data?.material.color }}>
+          {data?.material?.icon}
+        </Icon>
+        <Label>{label}</Label>
+      </ReactionName>
+      {
+        (data.meta?.type === ReactionType.ControllerDefaultReaction || data.meta?.type === ReactionType.ControllerReaction) &&
+        <ReactionOwner style={{ color: token.colorTextSecondary }}>
+          列表\656
+        </ReactionOwner>
+      }
     </NodeView>
   )
 }

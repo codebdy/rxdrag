@@ -133,7 +133,7 @@ export const settingLocales = {
         setFieldValue: "字段赋值",
         validateField: "校验字段",
         readFieldValue: "读取字段",
-        subscribeField: "订阅变化",
+        subscribeField: "订阅字段",
         add: "添加",
         close: "关闭",
         label: "标签",
