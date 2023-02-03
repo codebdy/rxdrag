@@ -78,7 +78,7 @@ export interface IReactionMeta {
 // $self 组件，设置组件属性:$self.setProps({dataSource:[...]}), 
 export interface IVariableMeta {
   id: string,
-  label: string
+  name: string
 }
 export interface IControllerMeta {
   // undefined 表示不开启控制器

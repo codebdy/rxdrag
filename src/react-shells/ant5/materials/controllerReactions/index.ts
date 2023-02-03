@@ -3,7 +3,7 @@ import { ReactionType } from "runner/reaction/interfaces/metas";
 import { setVariableIcon, listenVariableIcon, setPropIcon, methodIcon } from "../../icons/reactions";
 import { createUuid } from "../../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 import { setPropSchema } from "./schemas/setProp";
-import { setVariableSchema } from "./schemas/setVariable";
+import { variableSchema } from "./schemas/variable";
 
 export const setVariableMaterial: IReactionMaterial = {
   name: "setVariable",
@@ -19,7 +19,7 @@ export const setVariableMaterial: IReactionMaterial = {
       },
     ],
   },
-  schema: setVariableSchema,
+  schema: variableSchema,
   subTitle: (config?: any) => {
     return config?.variable
   }
@@ -38,6 +38,10 @@ export const listenVariableMaterial: IReactionMaterial = {
         label: "",//"$startUp",
       },
     ],
+  },
+  schema: variableSchema,
+  subTitle: (config?: any) => {
+    return config?.variable
   }
 }
 

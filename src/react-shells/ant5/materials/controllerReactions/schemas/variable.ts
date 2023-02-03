@@ -1,6 +1,6 @@
 import { INodeSchema } from "core";
 
-export const setVariableSchema: INodeSchema = {
+export const variableSchema: INodeSchema = {
   componentName: "Fragment",
   children: [
     {

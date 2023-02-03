@@ -85,7 +85,7 @@ export const Members = memo((
     if (name) {
       const newVariable: IVariableMeta = {
         id: createUuid(),
-        label: name,
+        name: name,
       }
 
       onChange?.({ ...value, variables: [...value?.variables || [], newVariable] })
@@ -106,7 +106,7 @@ export const Members = memo((
   }, [onChange, value])
 
   const handleChangeVariable = useCallback((id: string, label: string) => {
-    onChange?.({ ...value, variables: value?.variables?.map(va => va.id !== id ? va : { ...va, label }) })
+    onChange?.({ ...value, variables: value?.variables?.map(va => va.id !== id ? va : { ...va, name: label }) })
   }, [onChange, value])
 
   return (
@@ -172,7 +172,7 @@ export const Members = memo((
               <EditableListItem
                 key={variable.id}
                 id={variable.id}
-                name={variable.label}
+                name={variable.name}
                 editTitle={t("$editVariable")}
                 onRemove={handleRemoveVariable}
                 onChange={handleChangeVariable}
@@ -180,7 +180,7 @@ export const Members = memo((
                 <ListItem
                   icon={variableIcon}
                 >
-                  {variable.label}
+                  {variable.name}
                 </ListItem>
               </EditableListItem>
             )
