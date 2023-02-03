@@ -14,7 +14,7 @@ export function useGetSingleNodeConfig() {
   const getNodeWidth = useGetNodeWidth()
   const getHeight = useGetNodeHeight()
   const getSingleNodeConfig = useCallback((nodeMeta: IReactionNodeMeta<IConfigMeta>, material: IReactionMaterial | undefined) => {
-    const height = getHeight(nodeMeta)
+    const height = getHeight(nodeMeta, false)
     const width = getNodeWidth(nodeMeta)
     return {
       id: nodeMeta.id,

@@ -4,19 +4,22 @@ import { Node } from "@antv/x6"
 import { useGetNodeWidth } from "./useGetNodeWidth";
 import { useTransformPorts } from "./useTransformPorts";
 import { useGetNodeHeight } from "./useGetNodeHeight";
+import { useGetSubLabel } from "./useGetSubLabel";
 
 export function useUpdateNode() {
   const getNodeWidth = useGetNodeWidth()
   const getHeight = useGetNodeHeight()
   const transPorts = useTransformPorts()
+  const getSubLabel = useGetSubLabel()
   const update = useCallback((graphNode: Node<Node.Properties>, nodeMeta: IReactionNodeMeta<IConfigMeta>) => {
     if (nodeMeta.x6Node) {
       graphNode.setPosition(nodeMeta.x6Node);
-      graphNode.replaceData({ ...graphNode.data, meta: nodeMeta })
+      const subLabel = getSubLabel(nodeMeta)
+      graphNode.replaceData({ ...graphNode.data, meta: nodeMeta, subLabel })
       if (nodeMeta.type === ReactionType.Start || nodeMeta.type === ReactionType.End) {
         graphNode.attr("text/text", nodeMeta.label)
       } else {
-        graphNode.setSize({ ...nodeMeta.x6Node, width: getNodeWidth(nodeMeta), height: getHeight(nodeMeta) });
+        graphNode.setSize({ ...nodeMeta.x6Node, width: getNodeWidth(nodeMeta), height: getHeight(nodeMeta, !!subLabel) });
         const oldPorts = graphNode.getPorts()
         const ports = transPorts(nodeMeta)
         for (const port of ports || []) {
@@ -34,7 +37,7 @@ export function useUpdateNode() {
         }
       }
     }
-  }, [getHeight, getNodeWidth, transPorts])
+  }, [getHeight, getNodeWidth, getSubLabel, transPorts])
 
   return update
 }

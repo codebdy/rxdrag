@@ -34,7 +34,7 @@ export interface IReactionNodeData {
 
 export interface IConfigMeta {
   controllerId?: string;
-  reactionId?: string;
+  reactionRef?: string;//reaction id or name(default reaction)
   fieldName?: string;
 }
 

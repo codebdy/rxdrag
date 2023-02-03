@@ -2,6 +2,9 @@ import { useToken } from "antd/es/theme/internal"
 import { useCallback } from "react"
 import { IReactionMaterial } from "runner/reaction/interfaces/material"
 import { IConfigMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas"
+import { useGetNodeHeight } from "./useGetNodeHeight"
+import { useGetNodeWidth } from "./useGetNodeWidth"
+import { useGetSubLabel } from "./useGetSubLabel"
 import { usePortsConfig } from "./usePortsConfig"
 import { useTransformPorts } from "./useTransformPorts"
 
@@ -9,9 +12,14 @@ export function useGetControllerReactionConfig() {
   const [, token] = useToken()
   const transformPorts = useTransformPorts()
   const portsGroup = usePortsConfig()
+  const getNodeWidth = useGetNodeWidth()
+  const getHeight = useGetNodeHeight()
+  const getSubLabel = useGetSubLabel()
   const getNodeConfig = useCallback((nodeMeta: IReactionNodeMeta<IConfigMeta>, material: IReactionMaterial | undefined) => {
-    const height = 40
-    const width = 120
+    const subLabel = getSubLabel(nodeMeta)
+    const height = getHeight(nodeMeta, !!subLabel)
+    const width = getNodeWidth(nodeMeta)
+    console.log("哈哈 useGetControllerReactionConfig", subLabel)
     return {
       id: nodeMeta.id,
       shape: "reaction-node",
@@ -27,13 +35,14 @@ export function useGetControllerReactionConfig() {
         token,
         width: width,
         height: height,
+        subLabel: subLabel,
       },
       ports: {
         groups: portsGroup,
         items: transformPorts(nodeMeta)
       },
     }
-  }, [portsGroup, token, transformPorts])
+  }, [getHeight, getNodeWidth, getSubLabel, portsGroup, token, transformPorts])
 
   return getNodeConfig
 }

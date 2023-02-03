@@ -49,6 +49,7 @@ const ReactionOwner = styled.div`
   display: flex;
   font-size: 12px;
   margin-top: 4px;
+  white-space:nowrap;
 `
 
 const Icon = styled.div`
@@ -58,10 +59,10 @@ const Icon = styled.div`
 `
 
 const Label = styled.span`
-    display: inline-block;
-    flex-shrink: 0;
-    margin-left: 8px;
-    font-size: 13px;
+  display: inline-block;
+  flex-shrink: 0;
+  margin-left: 8px;
+  font-size: 13px;
 `
 
 export interface NodeViewParams extends INodeData {
@@ -69,14 +70,14 @@ export interface NodeViewParams extends INodeData {
   token: GlobalToken,
   width: number,
   height: number,
-  sublabel?: string,
+  subLabel?: string,
 }
 
 
 export const ReactionNode = (props: { node?: Node }) => {
   const { node } = props
   const data = node?.getData() as NodeViewParams
-  const { token, sublabel } = data
+  const { token, subLabel } = data
   const { label } = data.meta
 
   const inputPortCount = data.meta.inPorts?.length
@@ -101,9 +102,9 @@ export const ReactionNode = (props: { node?: Node }) => {
         <Label>{label}</Label>
       </ReactionName>
       {
-        sublabel &&
+        subLabel &&
         <ReactionOwner style={{ color: token.colorTextSecondary }}>
-          {sublabel}
+          {subLabel}
         </ReactionOwner>
       }
     </NodeView>
