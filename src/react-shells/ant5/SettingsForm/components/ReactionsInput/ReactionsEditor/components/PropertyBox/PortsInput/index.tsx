@@ -5,11 +5,13 @@ import { PortsTable } from "./PortsTable";
 
 export const PortsInput = memo((
   props: {
+    title: string,
+    popoverTitle: string,
     value?: IPortMeta[],
     onChange?: (value?: IPortMeta[]) => void
   }
 ) => {
-  const { value, onChange } = props
+  const { title, popoverTitle, value, onChange } = props
   const [open, setOpen] = useState(false);
 
   const hide = useCallback(() => {
@@ -24,12 +26,12 @@ export const PortsInput = memo((
       content={
         <PortsTable onClose={hide} />
       }
-      title="输入桩"
+      title={popoverTitle}
       placement="bottomRight"
       trigger="click"
       onOpenChange={handleOpenChange}
     >
-      <Button>配置桩</Button>
+      <Button>{title}</Button>
     </Popover>
 
   )

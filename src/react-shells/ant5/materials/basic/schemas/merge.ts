@@ -16,6 +16,10 @@ export const mergeSchema: INodeSchema = {
           "x-field": {
             name: "inPorts",
           },
+          props: {
+            title: "$configPorts",
+            popoverTitle: "$inputPortsConfig",
+          }
         }
       ]
     },

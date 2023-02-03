@@ -32,7 +32,7 @@ export const commmonLocales: ILocales = {
       jsonCode: "JSON 代码",
       preview: "预览",
       pointSelection: "点选",
-      boxSelection: "框选"
+      boxSelection: "框选",
     }
   },
   'en-US': {
@@ -66,7 +66,7 @@ export const commmonLocales: ILocales = {
       jsonCode: "JSON Code",
       preview: "Preview",
       pointSelection: "Point selection",
-      boxSelection: "Box selection"
+      boxSelection: "Box selection",
     }
   }
 }

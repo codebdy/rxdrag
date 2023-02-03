@@ -5,6 +5,8 @@ export const reactionMaterialLocales = {
     trueExpression: "是表达式",
     inputPorts: "输入桩",
     outputPorts: "输出桩",
+    configPorts: "配置桩",
+    inputPortsConfig: "配置输入桩",
   },
   'en-US': {
     name: "Name",
@@ -12,5 +14,7 @@ export const reactionMaterialLocales = {
     trueExpression: "True Expression",
     inputPorts: "Input ports",
     outputPorts: "Output ports",
+    configPorts: "Config Ports",
+    inputPortsConfig: "Config Input Ports",
   }
 }

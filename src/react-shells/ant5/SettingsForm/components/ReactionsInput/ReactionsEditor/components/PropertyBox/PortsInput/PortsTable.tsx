@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import { EditableCell } from './EditableCell';
 import { EditableRow } from './EditableRow';
+import { useTrans } from '../../../hooks/useTrans';
 
 const Container = styled.div`
   width: 400px;
@@ -58,6 +59,7 @@ export const PortsTable = memo((
   }
 ) => {
   const { onClose } = props;
+  const t = useTrans()
   const [dataSource, setDataSource] = useState<DataType[]>([
     {
       key: '0',
@@ -80,36 +82,36 @@ export const PortsTable = memo((
 
   const defaultColumns: (ColumnTypes[number] & { editable?: boolean; dataIndex: string })[] = useMemo(() => [
     {
-      title: '名称',
+      title: t("$name"),
       dataIndex: 'name',
       width: '40%',
       editable: true,
     },
     {
-      title: '标题',
+      title: t("$label"),
       dataIndex: 'label',
       width: '40%',
       editable: true,
     },
     {
-      title: '操作',
+      title: t("$operation"),
       dataIndex: 'operation',
       render: (_, record: { key?: React.Key }) =>
         dataSource.length >= 1 ? (
           <Button type='text' icon={<DeleteOutlined />} onClick={() => handleDelete(record.key || "")} />
         ) : null,
     },
-  ], [dataSource.length, handleDelete]);
+  ], [dataSource.length, handleDelete, t]);
 
   const handleAdd = useCallback(() => {
     const newData: DataType = {
       key: count,
       name: `input${count}`,
-      label: `输入 ${count}`,
+      label: `${t("$input")} ${count}`,
     };
     setDataSource([...dataSource, newData]);
     setCount(count + 1);
-  }, [count, dataSource]);
+  }, [count, dataSource, t]);
 
   const handleSave = useCallback((row: DataType) => {
     const newData = [...dataSource];
@@ -151,11 +153,11 @@ export const PortsTable = memo((
         pagination={false}
       />
       <Button onClick={handleAdd} type="dashed" style={{ marginTop: 8 }} icon={<PlusOutlined />}>
-        添加
+        {t("$add")}
       </Button>
       <Footer>
         <Space>
-          <Button type="primary" onClick={onClose}>关闭</Button>
+          <Button type="primary" onClick={onClose}>{t("$close")}</Button>
         </Space>
       </Footer>
     </Container>
