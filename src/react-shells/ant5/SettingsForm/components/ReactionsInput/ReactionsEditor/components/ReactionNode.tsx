@@ -5,7 +5,6 @@ import { IReactionMaterial } from 'runner/reaction/interfaces/material'
 import { insertCss } from 'insert-css'
 import styled from 'styled-components'
 import { INodeData } from '../interfaces'
-import { ReactionType } from 'runner/reaction/interfaces/metas'
 
 insertCss(`
 .x6-node-selected .node{
@@ -70,13 +69,14 @@ export interface NodeViewParams extends INodeData {
   token: GlobalToken,
   width: number,
   height: number,
+  sublabel?: string,
 }
 
 
 export const ReactionNode = (props: { node?: Node }) => {
   const { node } = props
   const data = node?.getData() as NodeViewParams
-  const { token } = data
+  const { token, sublabel } = data
   const { label } = data.meta
 
   const inputPortCount = data.meta.inPorts?.length
@@ -101,9 +101,9 @@ export const ReactionNode = (props: { node?: Node }) => {
         <Label>{label}</Label>
       </ReactionName>
       {
-        (data.meta?.type === ReactionType.ControllerDefaultReaction || data.meta?.type === ReactionType.ControllerReaction) &&
+        sublabel &&
         <ReactionOwner style={{ color: token.colorTextSecondary }}>
-          列表\656
+          {sublabel}
         </ReactionOwner>
       }
     </NodeView>

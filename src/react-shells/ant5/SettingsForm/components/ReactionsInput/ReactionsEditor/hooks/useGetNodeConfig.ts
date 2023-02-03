@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { Node } from "@antv/x6";
 import { useToken } from "antd/es/theme/internal";
-import { IReactionNodeMeta, ReactionType } from "runner/reaction/interfaces/metas";
+import { IConfigMeta, IReactionNodeMeta, ReactionType } from "runner/reaction/interfaces/metas";
 import { getStartNodeConfig } from "./getStartNodeConfig";
 import { getEndNodeConfig } from "./getEndNodeConfig";
 import { useGetMaterial } from "./useGetMaterial";
@@ -14,7 +14,7 @@ export function useGetNodeConfig() {
   const getSingleNodeConfig = useGetSingleNodeConfig()
   const getReactionNodeConfig = useGetControllerReactionConfig()
 
-  const getConfig = useCallback((reactNodeMeta: IReactionNodeMeta): Node.Metadata => {
+  const getConfig = useCallback((reactNodeMeta: IReactionNodeMeta<IConfigMeta>): Node.Metadata => {
     switch (reactNodeMeta.type) {
       case ReactionType.Start:
         return getStartNodeConfig(reactNodeMeta, token)

@@ -1,4 +1,4 @@
-import { ILogicMetas, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
+import { IConfigMeta, ILogicMetas, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 import { ISnapshot } from "./contexts";
 
 export interface IEventMeta {
@@ -7,7 +7,7 @@ export interface IEventMeta {
 }
 
 export interface INodeData {
-  meta: IReactionNodeMeta
+  meta: IReactionNodeMeta<IConfigMeta>
 }
 
 export type ZoomChangeListener = (zoom: number) => void
