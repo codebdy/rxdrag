@@ -1,3 +1,4 @@
+import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { IReactionMaterial } from "../../../../runner/reaction/interfaces/material";
 import { delayIcon, endIcon, ifIcon, loopIcon, mergeIcon, randomIcon, startIcon, switchIcon } from "../../icons/reactions";
@@ -36,16 +37,19 @@ export const basicReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",//"$inputCondition",
         },
       ],
       outPorts: [
         {
+          id: createUuid(),
           name: "true",
           label: "$true",
         },
         {
+          id: createUuid(),
           name: "false",
           label: "$false",
         },
@@ -61,12 +65,14 @@ export const basicReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",//"$input",
         },
       ],
       outPorts: [
         {
+          id: createUuid(),
           name: "output",
           label: "",//"$output",
         },
@@ -82,16 +88,19 @@ export const basicReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
-          name: "input1",
-          label: "input 1",
+          id: createUuid(),
+          name: "input0",
+          label: "input 0",
         },
         {
-          name: "input2",
-          label: "input 2",
+          id: createUuid(),
+          name: "input1",
+          label: "input 1",
         },
       ],
       outPorts: [
         {
+          id: createUuid(),
           name: "output",
           label: "",//"$output",
         },
@@ -108,18 +117,21 @@ export const basicReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",//"$input",
         },
       ],
       outPorts: [
         {
-          name: "output1",
-          label: "output1",
+          id: createUuid(),
+          name: "output0",
+          label: "output 0",
         },
         {
-          name: "output2",
-          label: "output2",
+          id: createUuid(),
+          name: "output1",
+          label: "output 1",
         },
       ],
     }
@@ -132,12 +144,14 @@ export const basicReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "startUp",
           label: "",//"$startUp",
         },
       ],
       outPorts: [
         {
+          id: createUuid(),
           name: "output",
           label: "",//"$output",
         },
@@ -152,12 +166,14 @@ export const basicReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "startUp",
           label: "",//"$startUp",
         },
       ],
       outPorts: [
         {
+          id: createUuid(),
           name: "output",
           label: "",//"$output",
         },

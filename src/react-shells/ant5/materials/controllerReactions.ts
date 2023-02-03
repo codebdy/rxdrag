@@ -1,6 +1,7 @@
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { setVariableIcon, listenVariableIcon, setPropIcon, methodIcon } from "../icons/reactions";
+import { createUuid } from "../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 
 export const setVariableMaterial: IReactionMaterial = {
   name: "setVariable",
@@ -10,6 +11,7 @@ export const setVariableMaterial: IReactionMaterial = {
   meta: {
     inPorts: [
       {
+        id: createUuid(),
         name: "input",
         label: "",//"$startUp",
       },
@@ -25,6 +27,7 @@ export const listenVariableMaterial: IReactionMaterial = {
   meta: {
     outPorts: [
       {
+        id: createUuid(),
         name: "output",
         label: "",//"$startUp",
       },
@@ -40,6 +43,7 @@ export const setPropMaterial: IReactionMaterial = {
   meta: {
     inPorts: [
       {
+        id: createUuid(),
         name: "input",
         label: "",//"$startUp",
       },
@@ -55,12 +59,14 @@ export const reactionMaterial: IReactionMaterial = {
   meta: {
     inPorts: [
       {
+        id: createUuid(),
         name: "input",
         label: "",
       },
     ],
     outPorts: [
       {
+        id: createUuid(),
         name: "output",
         label: "",
       },

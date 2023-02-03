@@ -7,6 +7,8 @@ import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import { EditableCell } from './EditableCell';
 import { EditableRow } from './EditableRow';
 import { useTrans } from '../../../hooks/useTrans';
+import { IPortMeta } from 'runner/reaction/interfaces/metas';
+import { createUuid } from '../../../utils';
 
 const Container = styled.div`
   width: 400px;
@@ -55,30 +57,29 @@ const components = {
 
 export const PortsTable = memo((
   props: {
-    onClose: () => void
+    onClose: () => void,
+    value?: IPortMeta[],
+    onChange?: (value?: IPortMeta[]) => void,
   }
 ) => {
-  const { onClose } = props;
+  const { onClose, value, onChange } = props;
   const t = useTrans()
-  const [dataSource, setDataSource] = useState<DataType[]>([
-    {
-      key: '0',
-      name: 'input0',
-      label: '输入 0',
-    },
-    {
-      key: '1',
-      name: 'input1',
-      label: '输入 1',
-    },
-  ]);
+  const dataSource = useMemo(() => {
+    return value?.map(meta => {
+      return {
+        key: meta.id,
+        name: meta.name,
+        label: meta.label,
+      }
+    }) || []
+  }, [value])
 
   const [count, setCount] = useState(2);
 
   const handleDelete = useCallback((key: React.Key) => {
-    const newData = dataSource.filter((item) => item.key !== key);
-    setDataSource(newData);
-  }, [dataSource]);
+    const newData = value?.filter((item) => item.id !== key);
+    onChange?.(newData);
+  }, [onChange, value]);
 
   const defaultColumns: (ColumnTypes[number] & { editable?: boolean; dataIndex: string })[] = useMemo(() => [
     {
@@ -104,25 +105,25 @@ export const PortsTable = memo((
   ], [dataSource.length, handleDelete, t]);
 
   const handleAdd = useCallback(() => {
-    const newData: DataType = {
-      key: count,
+    const newData: IPortMeta = {
+      id: createUuid(),
       name: `input${count}`,
       label: `${t("$input")} ${count}`,
     };
-    setDataSource([...dataSource, newData]);
+    onChange?.([...value || [], newData]);
     setCount(count + 1);
-  }, [count, dataSource, t]);
+  }, [count, onChange, t, value]);
 
   const handleSave = useCallback((row: DataType) => {
-    const newData = [...dataSource];
-    const index = newData.findIndex((item) => row.key === item.key);
+    const newData = [...value || []];
+    const index = newData.findIndex((item) => row.key === item.id);
     const item = newData[index];
     newData.splice(index, 1, {
       ...item,
       ...row,
     });
-    setDataSource(newData);
-  }, [dataSource]);
+    onChange?.(newData);
+  }, [onChange, value]);
 
 
   const columns = useMemo(() => defaultColumns.map((col) => {

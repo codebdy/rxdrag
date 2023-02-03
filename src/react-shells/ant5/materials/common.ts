@@ -1,6 +1,7 @@
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { infoIcon, jsIcon, loadingIcon, routeIcon, simulateIcon } from "../icons/reactions";
+import { createUuid } from "../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 
 export const commonReactions: IReactionMaterial[] = [
   {
@@ -11,6 +12,7 @@ export const commonReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",
         },
@@ -25,6 +27,7 @@ export const commonReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",
         },
@@ -39,12 +42,14 @@ export const commonReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",
         },
       ],
       outPorts: [
         {
+          id: createUuid(),
           name: "output",
           label: "",
         },
@@ -59,6 +64,7 @@ export const commonReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",
         },
@@ -73,12 +79,14 @@ export const commonReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",
         },
       ],
       outPorts: [
         {
+          id: createUuid(),
           name: "output",
           label: "",
         },

@@ -1,6 +1,7 @@
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { fieldIcon, fieldReadIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon, subscribeIcon } from "../icons/reactions";
+import { createUuid } from "../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 
 export const dataModelReactions: IReactionMaterial[] = [
   {
@@ -11,6 +12,7 @@ export const dataModelReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",
         },
@@ -25,16 +27,19 @@ export const dataModelReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",
         },
       ],
       outPorts: [
         {
+          id: createUuid(),
           name: "success",
           label: "$success",
         },
         {
+          id: createUuid(),
           name: "failure",
           label: "$failure",
         },
@@ -49,12 +54,14 @@ export const dataModelReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",
         },
       ],
       outPorts: [
         {
+          id: createUuid(),
           name: "output",
           label: "",
         },
@@ -69,6 +76,7 @@ export const dataModelReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",
         },
@@ -83,16 +91,19 @@ export const dataModelReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",
         },
       ],
       outPorts: [
         {
+          id: createUuid(),
           name: "success",
           label: "$success",
         },
         {
+          id: createUuid(),
           name: "failure",
           label: "$failure",
         },
@@ -107,12 +118,14 @@ export const dataModelReactions: IReactionMaterial[] = [
     meta: {
       inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",
         },
       ],
       outPorts: [
         {
+          id: createUuid(),
           name: "output",
           label: "",
         },
@@ -127,6 +140,7 @@ export const dataModelReactions: IReactionMaterial[] = [
     meta: {
       outPorts: [
         {
+          id: createUuid(),
           name: "output",
           label: "",
         },

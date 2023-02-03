@@ -10,6 +10,7 @@ export interface IX6NodeMeta {
 }
 
 export interface IPortMeta {
+  id: string;
   name: string;
   label?: string;
   //group: "in" | "out";
