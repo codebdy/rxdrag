@@ -15,12 +15,12 @@ export function useGetSubLabel() {
     const controllerNode = controllerNodes.find(node => (node.meta?.["x-reactions"] as IControllerMeta | undefined)?.id === nodeMeta.config?.controllerId && nodeMeta.config?.controllerId)
     const controller = controllerNode?.meta?.["x-reactions"] as IControllerMeta | undefined
     const controllerLabel = currentNode?.id !== controllerNode?.id ? controller?.name || controllerNode?.title : undefined
-    if(controllerLabel){
-      if(subTitle){
-        return controllerLabel + "/" + subTitle
+    if (controllerLabel) {
+      if (subTitle) {
+        return controllerLabel + ">" + subTitle
       }
-      return controllerLabel
-    } else{
+      return controllerLabel + ">"
+    } else {
       return subTitle
     }
   }, [controllerNodes, currentNode?.id, getMaterial])

@@ -15,11 +15,12 @@ export function useUpdateNode() {
     if (nodeMeta.x6Node) {
       graphNode.setPosition(nodeMeta.x6Node);
       const subLabel = getSubLabel(nodeMeta)
-      graphNode.replaceData({ ...graphNode.data, meta: nodeMeta, subLabel })
+      const height = getHeight(nodeMeta, !!subLabel)
+      graphNode.replaceData({ ...graphNode.data, meta: nodeMeta, subLabel, height: height })
       if (nodeMeta.type === ReactionType.Start || nodeMeta.type === ReactionType.End) {
         graphNode.attr("text/text", nodeMeta.label)
       } else {
-        graphNode.setSize({ ...nodeMeta.x6Node, width: getNodeWidth(nodeMeta, subLabel), height: getHeight(nodeMeta, !!subLabel) });
+        graphNode.setSize({ ...nodeMeta.x6Node, width: getNodeWidth(nodeMeta, subLabel), height: height });
         const oldPorts = graphNode.getPorts()
         const ports = transPorts(nodeMeta)
         for (const port of ports || []) {
