@@ -2,29 +2,28 @@ import { useCurrentNode } from "core-react/hooks/useCurrentNode";
 import { useCallback } from "react";
 import { IConfigMeta, IControllerMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
 import { useControllerNodes } from "./useControllerNodes";
+import { useGetMaterial } from "./useGetMaterial";
 
 export function useGetSubLabel() {
   const controllerNodes = useControllerNodes()
   const currentNode = useCurrentNode()
+  const getMaterial = useGetMaterial()
 
   const getLabel = useCallback((nodeMeta: IReactionNodeMeta<IConfigMeta>) => {
-    if (nodeMeta.config?.fieldName) {
-      return nodeMeta.config?.fieldName
-    }
+    const material = getMaterial(nodeMeta.name)
+    const subTitle = material?.subTitle?.(nodeMeta.config)
     const controllerNode = controllerNodes.find(node => (node.meta?.["x-reactions"] as IControllerMeta | undefined)?.id === nodeMeta.config?.controllerId && nodeMeta.config?.controllerId)
     const controller = controllerNode?.meta?.["x-reactions"] as IControllerMeta | undefined
-    console.log("哈哈 useGetSubLabel", controller, controllerNodes, nodeMeta.config?.controllerId)
-    if (controller) {
-      // for (const reaction of controller.reactions || []) {
-      //   console.log("哈哈 useGetSubLabel0", reaction, nodeMeta.config?.reactionRef)
-      //   if (reaction.id && reaction.id === nodeMeta.config?.reactionRef) {
-      //     return controller.name || controllerNode?.title + "/" + reaction.label || reaction.name
-      //   }
-      // }
-      
+    const controllerLabel = currentNode?.id !== controllerNode?.id ? controller?.name || controllerNode?.title : undefined
+    if(controllerLabel){
+      if(subTitle){
+        return controllerLabel + "/" + subTitle
+      }
+      return controllerLabel
+    } else{
+      return subTitle
     }
-    return currentNode?.id !== controllerNode?.id ? controller?.name || controllerNode?.title : undefined
-  }, [controllerNodes, currentNode?.id])
+  }, [controllerNodes, currentNode?.id, getMaterial])
 
   return getLabel
 }

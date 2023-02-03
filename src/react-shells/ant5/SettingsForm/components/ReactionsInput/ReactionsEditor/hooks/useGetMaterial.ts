@@ -4,7 +4,7 @@ import { controllerReactions } from "react-shells/ant5/materials/controllerReact
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 
 export function useGetMaterial() {
-  const getMaterial = useCallback((name: string) => {
+  const getMaterial = useCallback((name?: string) => {
     const materials: IReactionMaterial[] = [...controllerReactions]
     return materials.concat(...reactionMaterials.map(category => category.materials)).find(reaction => reaction.name === name)
   }, [])
