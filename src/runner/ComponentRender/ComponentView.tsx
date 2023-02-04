@@ -7,6 +7,7 @@ import { withBind } from "runner/ComponentRender/withBind"
 import { ComponentController } from "./ComponentController"
 import { IBindParams } from "./interfaces"
 import { IFieldMeta } from "runner/fieldy"
+import { withController } from "./withController"
 
 export interface IComponentRenderSchema extends INodeSchema<IFieldMeta<IBindParams>> {
   id: ID,
@@ -24,7 +25,7 @@ export const ComponentView = memo((
 ) => {
   const { node, ...other } = props
   const com = usePreviewComponent(node.componentName)
-  const Component = useMemo(() => com && withBind(com, node?.["x-field"]), [com, node]);
+  const Component = useMemo(() => com && withController(withBind(com, node?.["x-field"]), node["x-reactions"]), [com, node]);
   const slots = useMemo(() => {
     const slts: { [key: string]: React.ReactElement } = {}
     for (const name of Object.keys(node?.slots || {})) {

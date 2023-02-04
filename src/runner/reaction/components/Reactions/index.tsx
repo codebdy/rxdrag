@@ -6,14 +6,14 @@ import { IControllerMeta } from "runner/reaction/interfaces/metas";
 
 export const Reactions = memo((
   props: {
-    reaction?: IControllerMeta,
+    meta?: IControllerMeta,
     children?: React.ReactNode
   }
 ) => {
-  const { reaction, children } = props;
-  useOnMultiFieldValueChange(reaction);
-  useOnFieldValueChange(reaction);
-  useOnInit(reaction);
+  const { meta, children } = props;
+  useOnMultiFieldValueChange(meta);
+  useOnFieldValueChange(meta);
+  useOnInit(meta);
 
   return (
     <>

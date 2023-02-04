@@ -12,7 +12,7 @@ export const ComponentController = memo((
 
   return (
     meta
-      ? <Reactions>{children}</Reactions>
+      ? <Reactions meta={meta}>{children}</Reactions>
       : <>{children}</>
   )
 })
