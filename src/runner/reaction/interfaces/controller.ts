@@ -6,19 +6,17 @@ export type InputHandler = (inputValue?: any) => void
 
 export interface IJointer {
   id: string,
+  name?: string,
   push: InputHandler,
-  connect: (jointer: IJointer) => void
-  disconnect: (jointer: IJointer) => void
+  connect: (jointer: IJointer | InputHandler) => void
+  disconnect: (jointer: IJointer | InputHandler) => void
 }
 
-export type Jointers = {
-  [name: string]: IJointer | undefined
-}
 
 export interface IReaction {
   id: string
-  inputs: Jointers
-  outputs: Jointers
+  inputs: IJointer[]
+  outputs: IJointer[]
 }
 export type Reactions = {
   [id: string]: IReaction | undefined
@@ -50,4 +48,4 @@ export type ComponentControllers = {
   [id: string]: IComponentController | undefined
 }
 
-export type ReactionFactory = (controllers: ComponentControllers, meta: IReactionMeta<IConfigMeta>) => IReaction
+export type ReactionFactory = (meta: IReactionMeta<IConfigMeta>, context: any) => IReaction

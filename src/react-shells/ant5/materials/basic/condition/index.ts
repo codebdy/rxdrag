@@ -1,9 +1,10 @@
 import { ifIcon } from "react-shells/ant5/icons/reactions";
 import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
-import { ReactionType } from "runner/reaction";
+import { IReactionMaterial, ReactionType } from "runner/reaction";
+import { Condition } from "./reaction";
 import { conditionSchema } from "./schema";
 
-export const conditionMaterial = {
+export const conditionMaterial: IReactionMaterial = {
   name: "condition",
   icon: ifIcon,
   label: "$conditionCheck",
@@ -30,5 +31,6 @@ export const conditionMaterial = {
       },
     ],
   },
-  schema: conditionSchema
+  schema: conditionSchema,
+  reactionFactory: Condition,
 }

@@ -1,10 +1,9 @@
 import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { IReactionMaterial } from "../../../../runner/reaction/interfaces/material";
-import { delayIcon, endIcon, ifIcon, loopIcon, mergeIcon, randomIcon, startIcon, switchIcon } from "../../icons/reactions";
+import { delayIcon, endIcon, loopIcon, mergeIcon, randomIcon, startIcon, switchIcon } from "../../icons/reactions";
 import { startEndSchema } from "../baseSchema";
 import { conditionMaterial } from "./condition";
-import { conditionSchema } from "./condition/schema";
 import { loopSchema } from "./schemas/loop";
 import { mergeSchema } from "./schemas/merge";
 import { switchSchema } from "./schemas/switch";

@@ -1,9 +1,10 @@
-import { IReaction, Jointers } from "runner/reaction/interfaces/controller";
+import { IJointer, IReaction } from "runner/reaction/interfaces/controller";
 
 export class SetPropReaction implements IReaction {
-  inputs: Jointers = {};
-  outputs: Jointers = {};
+  inputs: IJointer[] = [];
+  outputs: IJointer[] = [];
   constructor(public id: string) {
 
   }
+
 }

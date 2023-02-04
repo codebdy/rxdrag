@@ -27,7 +27,7 @@ export class ComponentController implements IComponentController {
       if (!reaction) {
         continue
       }
-      const inputOne = reaction.inputs[Object.keys(reaction.inputs)[0]]
+      const inputOne = reaction.inputs[0]
       if (!inputOne) {
         continue
       }

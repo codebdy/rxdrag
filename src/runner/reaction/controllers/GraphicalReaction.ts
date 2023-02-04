@@ -1,12 +1,12 @@
 import { Jointer } from "../classes/jointer";
-import { IReaction, Jointers } from "../interfaces/controller";
+import { IJointer, IReaction } from "../interfaces/controller";
 import { IReactionMaterial } from "../interfaces/material";
 import { IReactionDefineMeta, ReactionType } from "../interfaces/metas";
 
 export class GraphicalReaction implements IReaction {
   id: string;
-  inputs: Jointers = {};
-  outputs: Jointers = {};
+  inputs: IJointer[] = [];
+  outputs: IJointer[] = [];
   reactions: IReaction[] = [];
   constructor(private meta: IReactionDefineMeta, private materials: IReactionMaterial[]) {
     this.id = meta.id
@@ -20,15 +20,15 @@ export class GraphicalReaction implements IReaction {
     for (const reactionMeta of this.meta.logicMetas?.reactions || []) {
       switch (reactionMeta.type) {
         case ReactionType.Start:
-          this.inputs[reactionMeta.id] = new Jointer(reactionMeta.id);
+          this.inputs.push(new Jointer(reactionMeta.id));
           break;
         case ReactionType.End:
-          this.outputs[reactionMeta.id] = new Jointer(reactionMeta.id);
+          this.outputs.push(new Jointer(reactionMeta.id));
           break;
         case ReactionType.SingleReaction:
           const material = this.getMaterial(reactionMeta.materialName)
-          if(material){
-            
+          if (material) {
+
           }
           break;
         case ReactionType.ControllerDefaultReaction:
@@ -39,7 +39,7 @@ export class GraphicalReaction implements IReaction {
     }
   }
 
-  private getMaterial(name:string){
-    return this.materials.find(material=>material.name === name)
+  private getMaterial(name: string) {
+    return this.materials.find(material => material.name === name)
   }
 }

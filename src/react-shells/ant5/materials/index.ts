@@ -2,7 +2,7 @@ import { IReactionMaterial } from "runner/reaction/interfaces/material"
 import { auxReactions } from "./auxtools"
 import { basicReactions } from "./basic"
 import { commonReactions } from "./common"
-import { controllerReactions } from "./controllerReactions"
+import { controllerReactions } from "./controller"
 import { dataModelReactions } from "./dataModel"
 
 export interface MaterialCategory {
