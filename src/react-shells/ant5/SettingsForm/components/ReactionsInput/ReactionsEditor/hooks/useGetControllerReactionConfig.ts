@@ -1,7 +1,7 @@
 import { useToken } from "antd/es/theme/internal"
 import { useCallback } from "react"
 import { IReactionMaterial } from "runner/reaction/interfaces/material"
-import { IConfigMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas"
+import { IConfigMeta, IReactionMeta } from "runner/reaction/interfaces/metas"
 import { useGetNodeHeight } from "./useGetNodeHeight"
 import { useGetNodeWidth } from "./useGetNodeWidth"
 import { useGetSubLabel } from "./useGetSubLabel"
@@ -15,7 +15,7 @@ export function useGetControllerReactionConfig() {
   const getNodeWidth = useGetNodeWidth()
   const getHeight = useGetNodeHeight()
   const getSubLabel = useGetSubLabel()
-  const getNodeConfig = useCallback((nodeMeta: IReactionNodeMeta<IConfigMeta>, material: IReactionMaterial | undefined) => {
+  const getNodeConfig = useCallback((nodeMeta: IReactionMeta<IConfigMeta>, material: IReactionMaterial | undefined) => {
     const subLabel = getSubLabel(nodeMeta)
     const height = getHeight(nodeMeta, !!subLabel)
     const width = getNodeWidth(nodeMeta, subLabel)

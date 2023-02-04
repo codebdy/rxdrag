@@ -1,6 +1,6 @@
 import { useCallback } from "react"
 import { IReactionMaterial } from "runner/reaction/interfaces/material"
-import { IConfigMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas"
+import { IConfigMeta, IReactionMeta } from "runner/reaction/interfaces/metas"
 import { useTransformPorts } from "./useTransformPorts"
 import { useToken } from "antd/es/theme/internal"
 import { usePortsConfig } from "./usePortsConfig"
@@ -13,7 +13,7 @@ export function useGetSingleNodeConfig() {
   const portsGroup = usePortsConfig()
   const getNodeWidth = useGetNodeWidth()
   const getHeight = useGetNodeHeight()
-  const getSingleNodeConfig = useCallback((nodeMeta: IReactionNodeMeta<IConfigMeta>, material: IReactionMaterial | undefined) => {
+  const getSingleNodeConfig = useCallback((nodeMeta: IReactionMeta<IConfigMeta>, material: IReactionMaterial | undefined) => {
     const height = getHeight(nodeMeta, false)
     const width = getNodeWidth(nodeMeta)
     return {

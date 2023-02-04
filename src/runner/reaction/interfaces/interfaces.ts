@@ -3,7 +3,6 @@ export type Unsubscribe = () => void
 
 export interface IHandlerArgs {
   inputValue?: any,
-  outputs?: InputHandlers,
   context?: any
 }
 
@@ -19,18 +18,29 @@ export interface IJointer {
   removeHandler: (handler: InputHandler) => void
 }
 
+export type OutputJointer = {
+  [name: string]: IJointer
+}
 export type OutputJointers = {
   [name: string]: IJointer | undefined
 }
 
 export interface IReaction {
-  state: any,
+  id: string
   inputs: InputHandlers
-  outputs?: InputHandlers
-  getJointer?: (name: string) => IJointer | undefined
+  outputs: OutputJointers
 }
 
-export interface IComponentController extends IReaction {
-  effects: InputHandlers,
-  events: InputHandlers,
+export type IVariableListener = (value: any) => void
+
+export interface IComponentController {
+  id: string,
+  name?: string,
+
+  events?: IReaction[],
+  reactions?: IReaction[],
+  setVariable(name: string, value: any): void,
+  listenVariable(name: string, listener: IVariableListener): void
 }
+
+export type ReactionFactory = (controller: IComponentController | undefined) => IReaction

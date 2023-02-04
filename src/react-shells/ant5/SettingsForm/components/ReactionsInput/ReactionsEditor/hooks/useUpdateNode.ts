@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { IConfigMeta, IReactionNodeMeta, ReactionType } from "runner/reaction/interfaces/metas";
+import { IConfigMeta, IReactionMeta, ReactionType } from "runner/reaction/interfaces/metas";
 import { Node } from "@antv/x6"
 import { useGetNodeWidth } from "./useGetNodeWidth";
 import { useTransformPorts } from "./useTransformPorts";
@@ -11,7 +11,7 @@ export function useUpdateNode() {
   const getHeight = useGetNodeHeight()
   const transPorts = useTransformPorts()
   const getSubLabel = useGetSubLabel()
-  const update = useCallback((graphNode: Node<Node.Properties>, nodeMeta: IReactionNodeMeta<IConfigMeta>) => {
+  const update = useCallback((graphNode: Node<Node.Properties>, nodeMeta: IReactionMeta<IConfigMeta>) => {
     if (nodeMeta.x6Node) {
       graphNode.setPosition(nodeMeta.x6Node);
       const subLabel = getSubLabel(nodeMeta)

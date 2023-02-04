@@ -1,4 +1,4 @@
-import { IInvokeMeta, ILogicMetas, IReactionNodeMeta } from "runner/reaction/interfaces/metas"
+import { IInvokeMeta, ILogicMetas, IReactionMeta } from "runner/reaction/interfaces/metas"
 import { ISnapshot } from "./contexts"
 
 export enum ActionType {
@@ -23,11 +23,11 @@ export enum ActionType {
 
 export interface Action {
   type: ActionType,
-  payload?: IReactionNodeMeta | string | IInvokeMeta | number | ISnapshot | ISnapshot | ISnapshot[]
+  payload?: IReactionMeta | string | IInvokeMeta | number | ISnapshot | ISnapshot | ISnapshot[]
 }
 
 export interface AddNodeAction extends Action {
-  payload: IReactionNodeMeta
+  payload: IReactionMeta
 }
 
 export interface RemoveNodeAction extends Action {
@@ -35,7 +35,7 @@ export interface RemoveNodeAction extends Action {
 }
 
 export interface ChangeNodeAction extends Action {
-  payload: IReactionNodeMeta
+  payload: IReactionMeta
 }
 
 export interface AddEdgeAction extends Action {

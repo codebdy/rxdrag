@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useDnd } from "../../hooks/useDnd";
 import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
 import { ToolItem } from "./ToolItem";
-import { IReactionNodeMeta } from "runner/reaction/interfaces/metas";
+import { IReactionMeta } from "runner/reaction/interfaces/metas";
 import { createUuid } from "../../utils";
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { useTrans } from "../../hooks/useTrans";
@@ -40,7 +40,7 @@ export const Toolbox = memo((props: {
       if (!graph) {
         return;
       }
-      const nodeMeta: IReactionNodeMeta = {
+      const nodeMeta: IReactionMeta = {
         id: createUuid(),
         label: t(marterial.label),
         type: marterial.reactionType,

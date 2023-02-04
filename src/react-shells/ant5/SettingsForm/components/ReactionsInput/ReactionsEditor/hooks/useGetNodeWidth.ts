@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { IConfigMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
+import { IConfigMeta, IReactionMeta } from "runner/reaction/interfaces/metas";
 
 function lengthOf(str: string) {
   var length = 0;
@@ -15,7 +15,7 @@ function lengthOf(str: string) {
 }
 
 export function useGetNodeWidth() {
-  const getNodeWidth = useCallback((nodeMeta: IReactionNodeMeta<IConfigMeta>, subLabel?: string) => {
+  const getNodeWidth = useCallback((nodeMeta: IReactionMeta<IConfigMeta>, subLabel?: string) => {
     const labeWidth = (lengthOf(nodeMeta.label || "")) * 7
     const subLabelWidth = Math.round(lengthOf(subLabel || "") * 5.5)
     return Math.max(labeWidth, subLabelWidth) + 60

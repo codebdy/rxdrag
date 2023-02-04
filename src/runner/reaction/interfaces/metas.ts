@@ -37,7 +37,7 @@ export interface IConfigMeta {
   reactionRef?: string;//reaction id or name(default reaction)
 }
 
-export interface IReactionNodeMeta<ConfigMeta extends IConfigMeta = IConfigMeta> extends IReactionNodeData {
+export interface IReactionMeta<ConfigMeta extends IConfigMeta = IConfigMeta> extends IReactionNodeData {
   id: string;
   type: ReactionType;
   materialName: string;
@@ -61,11 +61,11 @@ export interface IInvokeMeta {
 }
 
 export interface ILogicMetas {
-  reactions: IReactionNodeMeta<IConfigMeta>[];
+  reactions: IReactionMeta<IConfigMeta>[];
   invokes: IInvokeMeta[];
 }
 
-export interface IReactionMeta {
+export interface IReactionDefineMeta {
   id: string,
   name?: string,
   label?: string,
@@ -75,7 +75,7 @@ export interface IReactionMeta {
   jsCode?: string,
 }
 
-export interface IVariableMeta {
+export interface IVariableDefineMeta {
   id: string,
   name: string
 }
@@ -87,7 +87,7 @@ export interface IControllerMeta {
   // undefined 表示不开启控制器
   id?: string,
   name?: string,
-  events?: IReactionMeta[],
-  reactions?: IReactionMeta[],
-  variables?: IVariableMeta[],
+  events?: IReactionDefineMeta[],
+  reactions?: IReactionDefineMeta[],
+  variables?: IVariableDefineMeta[],
 }

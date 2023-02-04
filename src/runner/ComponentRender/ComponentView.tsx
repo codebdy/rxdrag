@@ -4,7 +4,6 @@ import { ComponentField } from "./ComponentField"
 import { ComponentSchemaContext } from "./contexts"
 import { usePreviewComponent } from "core-react/hooks/usePreviewComponent"
 import { withBind } from "runner/ComponentRender/withBind"
-import { ComponentController } from "./ComponentController"
 import { IBindParams } from "./interfaces"
 import { IFieldMeta } from "runner/fieldy"
 import { withController } from "./withController"
@@ -42,22 +41,20 @@ export const ComponentView = memo((
   return (
     <ComponentSchemaContext.Provider value={node}>
       <ComponentField fieldMeta={node?.["x-field"]}>
-        <ComponentController meta={node?.["x-reactions"]}>
-          {
-            Component &&
-            (
-              !!node.children?.length ?
-                <Component {...node.props} {...slots} {...other}>
-                  {
-                    node.children?.map(child => {
-                      return (<ComponentView key={child.id} node={child} />)
-                    })
-                  }
-                </Component>
-                : <Component {...node.props} {...slots} {...other} />
-            )
-          }
-        </ComponentController>
+        {
+          Component &&
+          (
+            !!node.children?.length ?
+              <Component {...node.props} {...slots} {...other}>
+                {
+                  node.children?.map(child => {
+                    return (<ComponentView key={child.id} node={child} />)
+                  })
+                }
+              </Component>
+              : <Component {...node.props} {...slots} {...other} />
+          )
+        }
       </ComponentField>
     </ComponentSchemaContext.Provider>
   )
