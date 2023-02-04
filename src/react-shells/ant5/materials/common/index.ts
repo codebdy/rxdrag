@@ -1,7 +1,8 @@
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { ReactionType } from "runner/reaction/interfaces/metas";
-import { infoIcon, jsIcon, loadingIcon, routeIcon, simulateIcon } from "../icons/reactions";
-import { createUuid } from "../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
+import { infoIcon, jsIcon, loadingIcon, routeIcon, simulateIcon } from "../../icons/reactions";
+import { createUuid } from "../../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
+import { jsCodeSchema } from "./schemas/jsCode";
 
 export const commonReactions: IReactionMaterial[] = [
   {
@@ -88,9 +89,10 @@ export const commonReactions: IReactionMaterial[] = [
         {
           id: createUuid(),
           name: "output",
-          label: "",
+          label: "output",
         },
       ],
-    }
+    },
+    schema: jsCodeSchema,
   },
 ]
