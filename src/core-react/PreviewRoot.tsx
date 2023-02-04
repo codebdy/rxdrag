@@ -1,12 +1,15 @@
 import { useCallback, useMemo, useState } from "react"
+import { IReactionMaterial } from "runner/reaction"
+import { Minions } from "runner/reaction/components"
 import { IComponentsParams, PreviewComponentsContext } from "./contexts"
 import { IComponents } from "./interfaces"
 
 export const PreviewRoot = (props: {
   components?: IComponents,
-  children: React.ReactNode
+  children: React.ReactNode,
+  reactionMaterials?: IReactionMaterial[]
 }) => {
-  const { components: initalComponents, children } = props
+  const { components: initalComponents, children, reactionMaterials = [] } = props
   const [components, setComponents] = useState<IComponents>({})
   const handleRegister = useCallback((...components: IComponents[]) => {
     for (const com of components) {
@@ -22,9 +25,11 @@ export const PreviewRoot = (props: {
   }, [components, handleRegister, initalComponents])
   return (
     <PreviewComponentsContext.Provider value={params}>
-      {
-        children
-      }
+      <Minions materials={reactionMaterials}>
+        {
+          children
+        }
+      </Minions>
     </PreviewComponentsContext.Provider>
   )
 }

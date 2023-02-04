@@ -1,5 +1,6 @@
 import { INIT_EVENT_NAME, DESTORY_EVENT_NAME } from "react-shells/ant5/shared/createReactionSchema";
-import { EventFuncs, IComponentController, InputFunc, PropsListener, Reactions, UnListener, VariableListener } from "runner/reaction/interfaces/interfaces";
+import { EventFuncs, IComponentController, InputFunc, PropsListener, Reactions, UnListener, VariableListener } from "runner/reaction/interfaces/controller";
+import { IReactionMaterial } from "../interfaces/material";
 import { IControllerMeta, IReactionDefineMeta } from "../interfaces/metas";
 import { CodeReaction } from "./CodeReaction";
 import { GraphicalReaction } from "./GraphicalReaction";
@@ -13,7 +14,7 @@ export class ComponentController implements IComponentController {
   events: EventFuncs = {};
   reactions: Reactions = {};
 
-  constructor(meta: IControllerMeta, protected parentReactions: Reactions) {
+  constructor(meta: IControllerMeta, protected parentReactions: Reactions, protected materials: IReactionMaterial[]) {
     this.id = meta.id!
     for (const reactionMeta of meta.reactions || []) {
       const reaction = this.makeReaction(reactionMeta)
@@ -31,11 +32,11 @@ export class ComponentController implements IComponentController {
         continue
       }
       if (eventMeta.name === INIT_EVENT_NAME) {
-        this.initEvent = inputOne.flowIn
+        this.initEvent = inputOne.push
       } else if (eventMeta.name === DESTORY_EVENT_NAME) {
-        this.destoryEvent = inputOne.flowIn
+        this.destoryEvent = inputOne.push
       } else if (eventMeta.name) {
-        this.events[eventMeta.name] = inputOne.flowIn
+        this.events[eventMeta.name] = inputOne.push
       }
     }
   }
@@ -52,7 +53,7 @@ export class ComponentController implements IComponentController {
 
   private makeReaction(reactionMeta: IReactionDefineMeta) {
     if (reactionMeta.logicMetas) {
-      return new GraphicalReaction(reactionMeta)
+      return new GraphicalReaction(reactionMeta, this.materials)
     } else if (reactionMeta.jsCode) {
       return new CodeReaction(reactionMeta)
     }

@@ -1,5 +1,5 @@
 import { INodeSchema } from "core";
-import { IReaction } from "runner/reaction/interfaces/interfaces";
+import { IReaction } from "runner/reaction/interfaces/controller";
 import { IConfigMeta, IReactionNodeData, ReactionType } from "./metas";
 
 export interface IReactionMaterial {

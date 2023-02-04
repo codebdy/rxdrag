@@ -2,18 +2,13 @@ import { IConfigMeta, IReactionMeta } from "./metas"
 
 export type Unsubscribe = () => void
 
-export interface IHandlerArgs {
-  inputValue?: any,
-  context?: any
-}
-
-export type InputHandler = (args?: IHandlerArgs) => void
+export type InputHandler = (inputValue?: any) => void
 
 export interface IJointer {
   id: string,
-  flowIn: InputHandler,
-  connect: (handler: InputHandler) => void
-  disconnect: (handler: InputHandler) => void
+  push: InputHandler,
+  connect: (jointer: IJointer) => void
+  disconnect: (jointer: IJointer) => void
 }
 
 export type Jointers = {

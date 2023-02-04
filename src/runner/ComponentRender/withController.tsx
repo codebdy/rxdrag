@@ -1,6 +1,7 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { ComponentController } from "runner/reaction/controllers/ComponentController"
-import { Reactions } from "runner/reaction/interfaces/interfaces"
+import { useMaterials } from "runner/reaction/hooks/useMaterials"
+import { Reactions } from "runner/reaction/interfaces/controller"
 import { IControllerMeta } from "runner/reaction/interfaces/metas"
 import { ReactionsContext } from "./contexts"
 import { useReactions } from "./hooks/useReactions"
@@ -14,7 +15,11 @@ export function withController(WrappedComponent: React.FC<any> | React.Component
   return memo((props: any) => {
     const [changedProps, setChangeProps] = useState<any>()
     const reactions = useReactions()
-    const controller = useMemo(() => new ComponentController(meta, reactions), [reactions])
+    const materials = useMaterials()
+    const controller = useMemo(
+      () => new ComponentController(meta, reactions, materials),
+      [materials, reactions]
+    )
 
     const newReactions: Reactions = useMemo(() => {
       return { ...reactions, ...controller.reactions }

@@ -1,4 +1,4 @@
-import { IReaction, Jointers } from "../interfaces/interfaces";
+import { IReaction, Jointers } from "../interfaces/controller";
 import { IReactionDefineMeta } from "../interfaces/metas";
 
 export class CodeReaction implements IReaction{

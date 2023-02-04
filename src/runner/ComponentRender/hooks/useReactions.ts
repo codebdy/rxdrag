@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Reactions } from "runner/reaction/interfaces/interfaces";
+import { Reactions } from "runner/reaction/interfaces/controller";
 import { EmpertyReactions, ReactionsContext } from "../contexts";
 
 export function useReactions() {
