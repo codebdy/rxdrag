@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { EmpertyReactions, Reactions, ReactionsContext } from "../contexts";
+import { Reactions } from "runner/reaction/interfaces/interfaces";
+import { EmpertyReactions, ReactionsContext } from "../contexts";
 
 export function useReactions() {
   const schema = useContext<Reactions>(ReactionsContext) || EmpertyReactions

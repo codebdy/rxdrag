@@ -31,17 +31,27 @@ export interface IReaction {
   inputs: InputHandlers
   outputs: OutputJointers
 }
+export type Reactions = {
+  [id: string]: IReaction | undefined
+}
 
 export type VariableListener = (value: any) => void
 export type PropsListener = (name: string, value: any) => void
-export type UnListener = ()=>void
+export type UnListener = () => void
+
+export type InputFunc = (inputValue?: any) => void
+export type EventFuncs = {
+  [name: string]: InputFunc | undefined
+}
 
 export interface IComponentController {
   id: string,
   name?: string,
 
-  events?: IReaction[],
-  reactions?: IReaction[],
+  events?: EventFuncs,
+  initEvent?: InputFunc,
+  destoryEvent?: InputFunc,
+  reactions?: Reactions,
   setVariable(name: string, value: any): void,
   subcribeToVariableChange(name: string, listener: VariableListener): UnListener
   subscribeToPropsChange(listener: PropsListener): UnListener

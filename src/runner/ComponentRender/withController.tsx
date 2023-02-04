@@ -1,7 +1,8 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { ComponentController } from "runner/reaction/controllers/ComponentController"
+import { Reactions } from "runner/reaction/interfaces/interfaces"
 import { IControllerMeta } from "runner/reaction/interfaces/metas"
-import { Reactions, ReactionsContext } from "./contexts"
+import { ReactionsContext } from "./contexts"
 import { useReactions } from "./hooks/useReactions"
 
 export function withController(WrappedComponent: React.FC<any> | React.ComponentClass<any>, meta?: IControllerMeta): React.FC<any> | React.ComponentClass<any> {
@@ -16,8 +17,8 @@ export function withController(WrappedComponent: React.FC<any> | React.Component
     const controller = useMemo(() => new ComponentController(meta, reactions), [reactions])
 
     const newReactions: Reactions = useMemo(() => {
-      return {}
-    }, [])
+      return { ...reactions, ...controller.reactions }
+    }, [controller.reactions, reactions])
 
     const newProps = useMemo(() => {
       return { ...props, ...controller.events, ...changedProps }
@@ -31,6 +32,11 @@ export function withController(WrappedComponent: React.FC<any> | React.Component
       const unlistener = controller.subscribeToPropsChange(handlePropsChange)
       return unlistener
     }, [controller, handlePropsChange])
+
+    useEffect(() => {
+      controller?.initEvent?.()
+      return controller?.destoryEvent
+    }, [controller])
 
     return <ReactionsContext.Provider value={newReactions}>
       <WrappedComponent {...newProps} />
