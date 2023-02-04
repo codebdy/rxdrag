@@ -146,6 +146,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
                 labelCol={{ span: 7 }}
                 wrapperCol={{ span: 17 }}
                 autoComplete="off"
+                labelWrap={true}
                 style={{
                   flex: 1,
                   height: '100%',

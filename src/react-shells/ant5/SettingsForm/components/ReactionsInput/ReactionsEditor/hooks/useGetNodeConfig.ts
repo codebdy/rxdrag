@@ -1,28 +1,34 @@
 import { useCallback } from "react";
 import { Node } from "@antv/x6";
 import { useToken } from "antd/es/theme/internal";
-import { IReactionNodeMeta, ReactionType } from "runner/reaction/interfaces/metas";
+import { IConfigMeta, IReactionNodeMeta, ReactionType } from "runner/reaction/interfaces/metas";
 import { getStartNodeConfig } from "./getStartNodeConfig";
 import { getEndNodeConfig } from "./getEndNodeConfig";
 import { useGetMaterial } from "./useGetMaterial";
 import { useGetSingleNodeConfig } from "./useGetSingleNodeConfig";
+import { useGetControllerReactionConfig } from "./useGetControllerReactionConfig";
 
 export function useGetNodeConfig() {
   const [, token] = useToken()
   const getMaterial = useGetMaterial();
   const getSingleNodeConfig = useGetSingleNodeConfig()
-  const getConfig = useCallback((reactNodeMeta: IReactionNodeMeta): Node.Metadata => {
+  const getReactionNodeConfig = useGetControllerReactionConfig()
+
+  const getConfig = useCallback((reactNodeMeta: IReactionNodeMeta<IConfigMeta>): Node.Metadata => {
     switch (reactNodeMeta.type) {
       case ReactionType.Start:
         return getStartNodeConfig(reactNodeMeta, token)
       case ReactionType.End:
         return getEndNodeConfig(reactNodeMeta, token)
       case ReactionType.SingleReaction:
-        return getSingleNodeConfig(reactNodeMeta, token, getMaterial(reactNodeMeta.materialName))
+        return getSingleNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.materialName))
+      case ReactionType.ControllerDefaultReaction:
+      case ReactionType.ControllerReaction:
+        return getReactionNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.materialName))
     }
 
     throw new Error("Can not find reaction node meta: " + reactNodeMeta.type)
-  }, [getMaterial, getSingleNodeConfig, token])
+  }, [getReactionNodeConfig, getMaterial, getSingleNodeConfig, token])
 
 
   return getConfig

@@ -1,10 +1,10 @@
-import { memo, useCallback, useEffect, useMemo, useReducer, useState } from "react"
+import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { ILogicMetas } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
 import { ActionType } from "../actions";
-import { initialState, IReactionsEditorParams, IState, ReacionsEditorContext } from "../contexts"
+import { EditorStore } from "../classes/EditorStore";
+import { GraphContext, ReacionsEditorStoreContext } from "../contexts"
 import { useCreateGraph } from "../hooks/useCreateGraph";
-import { mainReducer } from "../reducers/mainReducer";
 import { Logic } from "./Logic";
 import { PropertyBox } from "./PropertyBox";
 import { Toolbar } from "./Toolbar";
@@ -61,7 +61,7 @@ const MiniMapContainer = styled.div`
 `
 
 const RightArea = styled.div`
-  width: 220px;
+  width: 280px;
   border-left: ${props => props.theme.token?.colorBorder}  solid 1px;
   display: flex;
   flex-flow: column;
@@ -80,20 +80,15 @@ export const ReactionMetaEditor = memo((
     invokes: []
   }), [])
   const [showMap, setShowMap] = useState(false)
-  const [state, dispatch] = useReducer(mainReducer, initialState);
+  //const [state, dispatch] = useReducer(mainReducer, initialState);
   const graph = useCreateGraph()
+  const store: EditorStore = useMemo(() => {
+    return new EditorStore()
+  }, [])
 
   useEffect(() => {
-    dispatch({ type: ActionType.SET_METAS, payload: metas || emptyMetas } as any)
-  }, [emptyMetas, metas])
-
-  const params: IReactionsEditorParams = useMemo(() => {
-    return {
-      graph,
-      ...(state as IState),
-      dispatch,
-    }
-  }, [graph, state])
+    store.dispatch({ type: ActionType.SET_METAS, payload: metas || emptyMetas } as any)
+  }, [emptyMetas, metas, store])
 
   const handleToggleMap = useCallback(() => {
     setShowMap((show) => !show)
@@ -104,27 +99,29 @@ export const ReactionMetaEditor = memo((
   }, [onChange])
 
   return (
-    <ReacionsEditorContext.Provider value={params}>
-      <CenterArea>
-        <Toolbar showMap={showMap} toggleShowMap={handleToggleMap} />
-        <OpeateArea>
-          <Toolbox />
-          <CanvasArea>
-            <CanvasContainer id="reactions-canvas-container" >
-              <Logic onChange={handleChange} />
-            </CanvasContainer>
-            <MiniMapContainer
-              id="reactions-minimap-container"
-              style={{
-                display: showMap ? "flex" : "none"
-              }}
-            />
-          </CanvasArea>
-        </OpeateArea>
-      </CenterArea>
-      <RightArea>
-        <PropertyBox />
-      </RightArea>
-    </ReacionsEditorContext.Provider>
+    <GraphContext.Provider value={graph}>
+      <ReacionsEditorStoreContext.Provider value={store}>
+        <CenterArea>
+          <Toolbar showMap={showMap} toggleShowMap={handleToggleMap} />
+          <OpeateArea>
+            <Toolbox />
+            <CanvasArea>
+              <CanvasContainer id="reactions-canvas-container" >
+                <Logic onChange={handleChange} />
+              </CanvasContainer>
+              <MiniMapContainer
+                id="reactions-minimap-container"
+                style={{
+                  display: showMap ? "flex" : "none"
+                }}
+              />
+            </CanvasArea>
+          </OpeateArea>
+        </CenterArea>
+        <RightArea>
+          <PropertyBox />
+        </RightArea>
+      </ReacionsEditorStoreContext.Provider>
+    </GraphContext.Provider>
   )
 })

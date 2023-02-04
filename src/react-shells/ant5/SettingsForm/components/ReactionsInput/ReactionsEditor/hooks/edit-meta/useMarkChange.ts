@@ -1,12 +1,12 @@
 import { useCallback } from "react";
-import { ActionType } from "../../actions";
-import { useEditorState } from "../useEditorState";
+import { useChangeFlag } from "../useChangeFlag";
 
 export function useMarkChange() {
-  const { changeFlag, dispatch } = useEditorState()
+  const { changeFlag, setChangeFlag } = useChangeFlag()
+
   const markChange = useCallback(() => {
-    dispatch({ type: ActionType.SET_CHANGE_FLAG, payload: changeFlag + 1 })
-  }, [changeFlag, dispatch])
+    setChangeFlag(changeFlag + 1)
+  }, [changeFlag, setChangeFlag])
 
   return markChange;
 }

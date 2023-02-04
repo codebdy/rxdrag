@@ -9,54 +9,59 @@ export interface IX6NodeMeta {
   height: number;
 }
 
-// export interface IX6EdgeMeta {
-//   sourceAnchor: any;
-//   targetAnchor: any;
-// }
-
-
 export interface IPortMeta {
+  id: string;
   name: string;
   label?: string;
-  group: "in" | "out";
+  //group: "in" | "out";
 }
 
 export enum ReactionType {
   Start = "Start",
   End = "End",
   SingleReaction = "SingleReaction",
-  ComponentReaction = "ComponentReaction",
+  ControllerReaction = "ControllerReaction",
+  ControllerDefaultReaction = "ControllerDefaultReaction",
 }
 
 export interface IReactionNodeData {
+  name?: string;
   componentName?: string;
   reactionName?: string;
-  ports?: IPortMeta[];
+  inPorts?: IPortMeta[];
+  outPorts?: IPortMeta[];
 }
 
-export interface IReactionNodeMeta extends IReactionNodeData {
+export interface IConfigMeta {
+  controllerId?: string;
+  reactionRef?: string;//reaction id or name(default reaction)
+}
+
+export interface IReactionNodeMeta<ConfigMeta extends IConfigMeta = IConfigMeta> extends IReactionNodeData {
   id: string;
   type: ReactionType;
   materialName: string;
+  name?: string;
   label?: string;
   x6Node?: IX6NodeMeta;
+  config?: ConfigMeta,
 }
 
 export interface IInvokeMeta {
   id: string;
   source: {
     nodeId: string;
-    port?: string;
+    portId?: string;
   }
   target: {
     nodeId: string;
-    port?: string;
+    portId?: string;
   };
   //x6Edge: IX6EdgeMeta;
 }
 
 export interface ILogicMetas {
-  reactions: IReactionNodeMeta[];
+  reactions: IReactionNodeMeta<IConfigMeta>[];
   invokes: IInvokeMeta[];
 }
 
@@ -64,7 +69,7 @@ export interface IReactionMeta {
   id: string,
   name?: string,
   label?: string,
-  title?: string,
+  //title?: string,
   logicMetas?: ILogicMetas,
 }
 
@@ -73,7 +78,7 @@ export interface IReactionMeta {
 // $self 组件，设置组件属性:$self.setProps({dataSource:[...]}), 
 export interface IVariableMeta {
   id: string,
-  label: string
+  name: string
 }
 export interface IControllerMeta {
   // undefined 表示不开启控制器

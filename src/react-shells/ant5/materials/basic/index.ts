@@ -1,6 +1,12 @@
+import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 import { ReactionType } from "runner/reaction/interfaces/metas";
-import { IReactionMaterial } from "../../../runner/reaction/interfaces/material";
-import { delayIcon, endIcon, ifIcon, listenVariableIcon, loopIcon, mergeIcon, randomIcon, setVariableIcon, startIcon, switchIcon } from "../icons/reactions";
+import { IReactionMaterial } from "../../../../runner/reaction/interfaces/material";
+import { delayIcon, endIcon, ifIcon, loopIcon, mergeIcon, randomIcon, startIcon, switchIcon } from "../../icons/reactions";
+import { startEndSchema } from "./schemas/base";
+import { conditionSchema } from "./schemas/condition";
+import { loopSchema } from "./schemas/loop";
+import { mergeSchema } from "./schemas/merge";
+import { switchSchema } from "./schemas/switch";
 
 export const basicReactions: IReactionMaterial[] = [
   {
@@ -8,13 +14,20 @@ export const basicReactions: IReactionMaterial[] = [
     icon: startIcon,
     label: "$input",
     reactionType: ReactionType.Start,
-    //color: "#5e76c3",
+    meta: {
+      name: "input"
+    },
+    schema: startEndSchema,
   },
   {
     name: "end",
     icon: endIcon,
     label: "$output",
     reactionType: ReactionType.End,
+    meta: {
+      name: "output"
+    },
+    schema: startEndSchema,
   },
   {
     name: "condition",
@@ -23,24 +36,27 @@ export const basicReactions: IReactionMaterial[] = [
     reactionType: ReactionType.SingleReaction,
     color: "#5e76c3",
     meta: {
-      ports: [
+      inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",//"$inputCondition",
-          group: "in",
-        },
-        {
-          name: "true",
-          label: "$true",
-          group: "out",
-        },
-        {
-          name: "false",
-          label: "$false",
-          group: "out",
         },
       ],
-    }
+      outPorts: [
+        {
+          id: createUuid(),
+          name: "true",
+          label: "$true",
+        },
+        {
+          id: createUuid(),
+          name: "false",
+          label: "$false",
+        },
+      ],
+    },
+    schema: conditionSchema
   },
   {
     name: "loop",
@@ -48,19 +64,22 @@ export const basicReactions: IReactionMaterial[] = [
     label: "$loop",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",//"$input",
-          group: "in",
-        },
-        {
-          name: "output",
-          label: "",//"$output",
-          group: "out",
         },
       ],
-    }
+      outPorts: [
+        {
+          id: createUuid(),
+          name: "output",
+          label: "",//"$output",
+        },
+      ],
+    },
+    schema: loopSchema,
   },
   {
     name: "merge",
@@ -68,49 +87,56 @@ export const basicReactions: IReactionMaterial[] = [
     label: "$merge",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
+          id: createUuid(),
+          name: "input0",
+          label: "input 0",
+        },
+        {
+          id: createUuid(),
           name: "input1",
           label: "input 1",
-          group: "in",
-        },
-        {
-          name: "input2",
-          label: "input 2",
-          group: "in",
-        },
-        {
-          name: "output",
-          label: "",//"$output",
-          group: "out",
         },
       ],
-    }
+      outPorts: [
+        {
+          id: createUuid(),
+          name: "output",
+          label: "",//"$output",
+        },
+      ],
+    },
+    schema: mergeSchema,
   },
+
   {
     name: "switch",
     icon: switchIcon,
     label: "$switch",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",//"$input",
-          group: "in",
-        },
-        {
-          name: "output1",
-          label: "output1",
-          group: "out",
-        },
-        {
-          name: "output2",
-          label: "output2",
-          group: "out",
         },
       ],
-    }
+      outPorts: [
+        {
+          id: createUuid(),
+          name: "output0",
+          label: "output 0",
+        },
+        {
+          id: createUuid(),
+          name: "output1",
+          label: "output 1",
+        },
+      ],
+    },
+    schema: switchSchema
   },
   {
     name: "delay",
@@ -118,16 +144,18 @@ export const basicReactions: IReactionMaterial[] = [
     label: "$delay",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
+          id: createUuid(),
           name: "startUp",
           label: "",//"$startUp",
-          group: "in",
         },
+      ],
+      outPorts: [
         {
+          id: createUuid(),
           name: "output",
           label: "",//"$output",
-          group: "out",
         },
       ],
     }
@@ -138,46 +166,18 @@ export const basicReactions: IReactionMaterial[] = [
     label: "$random",
     reactionType: ReactionType.SingleReaction,
     meta: {
-      ports: [
+      inPorts: [
         {
+          id: createUuid(),
           name: "startUp",
           label: "",//"$startUp",
-          group: "in",
         },
+      ],
+      outPorts: [
         {
+          id: createUuid(),
           name: "output",
           label: "",//"$output",
-          group: "out",
-        },
-      ],
-    }
-  },
-  {
-    name: "setVariable",
-    icon: setVariableIcon,
-    label: "$setVariable",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      ports: [
-        {
-          name: "input",
-          label: "",//"$startUp",
-          group: "in",
-        },
-      ],
-    }
-  },
-  {
-    name: "listenVariable",
-    icon: listenVariableIcon,
-    label: "$listenVariable",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      ports: [
-        {
-          name: "output",
-          label: "",//"$startUp",
-          group: "out",
         },
       ],
     }

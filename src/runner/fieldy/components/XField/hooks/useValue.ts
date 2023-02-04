@@ -6,7 +6,6 @@ export function useValue(fieldPath: string, fieldMeta: IFieldMeta) {
   const [value, setValue] = useState<any>()
   const fieldy = useFieldy()
   const formName = useFormName()
-
   useEffect(() => {
     if (formName && fieldPath) {
       setValue(fieldy?.getFieldValue(formName, fieldPath))

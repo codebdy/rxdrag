@@ -1,6 +1,7 @@
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { IReactionMaterial } from "../../../runner/reaction/interfaces/material";
 import { debugIcon } from "../icons/reactions";
+import { createUuid } from "../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 
 export const auxReactions: IReactionMaterial[] = [
   {
@@ -10,11 +11,11 @@ export const auxReactions: IReactionMaterial[] = [
     reactionType: ReactionType.SingleReaction,
     color: "orange",
     meta: {
-      ports: [
+      inPorts: [
         {
+          id: createUuid(),
           name: "input",
           label: "",
-          group: "in",
         },
       ],
     }

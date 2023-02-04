@@ -1,20 +1,26 @@
 import { useCallback } from "react"
-import { ActionType } from "../../actions"
-import { useEditorState } from "../useEditorState"
+import { useMetas } from "../useMetas"
+import { useRedoList } from "../useRedoList"
+import { useSelected } from "../useSelected"
+import { useUndoList } from "../useUndoList"
 import { useMarkChange } from "./useMarkChange"
 
 export function useRedo() {
-  const { undoList, redoList, dispatch, selected, metas } = useEditorState()
+  const { undoList, setUndoList } = useUndoList()
+  const { redoList, setRedoList } = useRedoList()
+  const { metas, setMetas } = useMetas()
+  const { selected, setSelected } = useSelected()
+
   const markeChange = useMarkChange()
   const redo = useCallback(() => {
     const snapshot = redoList[redoList.length - 1]
     const { reactions, invokes } = snapshot
-    dispatch({ type: ActionType.SELECTION, payload: snapshot.selected })
-    dispatch({ type: ActionType.SET_METAS, payload: { reactions, invokes } })
-    dispatch({ type: ActionType.SET_UNOLIST, payload: [...undoList, { selected, ...metas }] })
-    dispatch({ type: ActionType.SET_REDOLIST, payload: redoList.slice(0, redoList.length - 1) })
+    setSelected(snapshot.selected)
+    setMetas({ reactions, invokes })
+    setUndoList([...undoList, { selected, ...metas|| { reactions: [], invokes: [] } }] )
+    setRedoList(redoList.slice(0, redoList.length - 1))
     markeChange()
-  }, [dispatch, markeChange, metas, redoList, selected, undoList])
+  }, [markeChange, metas, redoList, selected, setMetas, setRedoList, setSelected, setUndoList, undoList])
 
   return redo
 }

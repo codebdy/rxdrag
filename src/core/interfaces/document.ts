@@ -44,7 +44,7 @@ export interface INodeMeta<IField = any, IReactions = any> {
   "x-field"?: IField,
   "x-reactions"?: IReactions,
   locked?: boolean,
-  [key: string]: any,
+  //[key: string]: any,
 }
 
 export interface IDesignerProps {

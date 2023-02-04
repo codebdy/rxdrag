@@ -1,23 +1,26 @@
 import { Cell } from "@antv/x6";
 import { useCallback, useEffect } from "react";
-import { ActionType } from "../actions";
-import { useEditorState } from "./useEditorState";
+
+import { useGraph } from "./useGraph";
+import { useSelected } from "./useSelected";
 
 export function useSelection() {
-  const { graph, dispatch } = useEditorState()
+  const graph = useGraph()
+  const {setSelected} = useSelected()
 
   const handleSelected = useCallback(({ cell }: { cell: Cell }) => {
     if (!graph?.getCellById(cell.id)) {
       graph?.cleanSelection()
-      dispatch({ type: ActionType.SELECTION, payload: undefined })
+      setSelected(undefined)
+
     } else {
-      dispatch({ type: ActionType.SELECTION, payload: cell.id })
+      setSelected(cell.id)
     }
-  }, [dispatch, graph])
+  }, [graph, setSelected])
 
   const handleUnSelected = useCallback(({ cell }: { cell: Cell }) => {
-    dispatch({ type: ActionType.SELECTION, payload: undefined })
-  }, [dispatch])
+    setSelected(undefined)
+  }, [setSelected])
 
   useEffect(() => {
     graph?.on("cell:selected", handleSelected)

@@ -8,7 +8,6 @@ export const XField = memo((props: {
   children?: React.ReactNode
 }) => {
   const { fieldMeta, children } = props
-
   const params = useCreateFieldParams(fieldMeta)
 
   return (

@@ -1,4 +1,5 @@
 import { Button, Form, Input, Modal, Switch } from "antd"
+import { useCurrentNode } from "core-react/hooks/useCurrentNode";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useEffect, useState } from "react"
 import { IControllerMeta, IReactionMeta } from "runner/reaction/interfaces/metas";
@@ -16,6 +17,7 @@ export const ReactionsInput = memo((props: {
   const [inputValue, setInputValue] = useState<IControllerMeta>()
   const [isModalOpen, setIsModalOpen] = useState(false);
   const t = useToolsTranslate()
+  const node = useCurrentNode()
   
   useEffect(() => {
     setInputValue(value)
@@ -88,7 +90,7 @@ export const ReactionsInput = memo((props: {
           </Form.Item>
 
           <Modal
-            title={`${t("configController")} - 对话框`}
+            title={`${t("configController")} - ${node?.meta["x-reactions"]?.label || node?.title}`}
             open={isModalOpen}
             cancelText={t("cancel")}
             okText={t("confirm")}

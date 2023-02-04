@@ -1,34 +1,21 @@
-import { GlobalToken } from "antd/es/theme/interface"
 import { useCallback } from "react"
 import { IReactionMaterial } from "runner/reaction/interfaces/material"
-import { IReactionNodeMeta } from "runner/reaction/interfaces/metas"
-import { useTrans } from "./useTrans"
+import { IConfigMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas"
+import { useTransformPorts } from "./useTransformPorts"
+import { useToken } from "antd/es/theme/internal"
+import { usePortsConfig } from "./usePortsConfig"
+import { useGetNodeWidth } from "./useGetNodeWidth"
+import { useGetNodeHeight } from "./useGetNodeHeight"
 
 export function useGetSingleNodeConfig() {
-  const t = useTrans()
-  const getSingleNodeConfig = useCallback((nodeMeta: IReactionNodeMeta, token: GlobalToken, material: IReactionMaterial | undefined) => {
-    const height = 40
-    const width = 120
-    const ports = nodeMeta.ports?.map(
-      port => ({
-        id: port.name,
-        name: port.name,
-        group: port.group,
-        attrs: {
-          text: {
-            text: t(port.label),
-            fill: token.colorTextSecondary,
-            fontSize: 12,
-          },
-        },
-        label: {
-          position: {
-            // 标签位置
-            name: port.group === 'out' ? 'right' : 'in', // 标签位置计算方法的名称,
-          }
-        }
-      })
-    )
+  const [, token] = useToken()
+  const transformPorts = useTransformPorts()
+  const portsGroup = usePortsConfig()
+  const getNodeWidth = useGetNodeWidth()
+  const getHeight = useGetNodeHeight()
+  const getSingleNodeConfig = useCallback((nodeMeta: IReactionNodeMeta<IConfigMeta>, material: IReactionMaterial | undefined) => {
+    const height = getHeight(nodeMeta, false)
+    const width = getNodeWidth(nodeMeta)
     return {
       id: nodeMeta.id,
       shape: "reaction-node",
@@ -46,37 +33,11 @@ export function useGetSingleNodeConfig() {
         height: height,
       },
       ports: {
-        groups: {
-          in: {
-            position: 'left',
-            attrs: {
-              circle: {
-                r: 4,
-                magnet: true,
-                stroke: token.colorTextSecondary,//#5e76c3
-                strokeWidth: 1,
-                fill: token.colorBgContainer,
-              },
-            },
-
-          },
-          out: {
-            position: 'right',
-            attrs: {
-              circle: {
-                r: 4,
-                magnet: true,
-                stroke: token.colorTextSecondary,
-                strokeWidth: 1,
-                fill: token.colorBgContainer,
-              },
-            },
-          },
-        },
-        items: ports
+        groups: portsGroup,
+        items: transformPorts(nodeMeta)
       },
     }
-  }, [t])
+  }, [getHeight, getNodeWidth, portsGroup, token, transformPorts])
 
   return getSingleNodeConfig
 }

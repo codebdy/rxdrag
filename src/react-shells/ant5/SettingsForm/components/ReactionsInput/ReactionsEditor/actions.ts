@@ -2,8 +2,6 @@ import { IInvokeMeta, ILogicMetas, IReactionNodeMeta } from "runner/reaction/int
 import { ISnapshot } from "./contexts"
 
 export enum ActionType {
-  START_LINE = 'ReactionsEditor/START_LINE',
-  END_LINE = 'ReactionsEditor/END_LINE',
   ADD_NODE = 'ReactionsEditor/ADD_NODE',
   REMOVE_NODE = 'ReactionsEditor/REMOVE_NODE',
   CHANGE_NODE = 'ReactionsEditor/CHANGE_NODE',
@@ -24,7 +22,8 @@ export enum ActionType {
 }
 
 export interface Action {
-  type: ActionType
+  type: ActionType,
+  payload?: IReactionNodeMeta | string | IInvokeMeta | number | ISnapshot | ISnapshot | ISnapshot[]
 }
 
 export interface AddNodeAction extends Action {

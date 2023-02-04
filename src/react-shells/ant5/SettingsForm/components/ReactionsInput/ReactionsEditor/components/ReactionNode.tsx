@@ -30,7 +30,7 @@ insertCss(`
 
 const NodeView = styled.div`
   display: flex;
-  align-items: center;
+  flex-flow: column;
   width: 100%;
   height: 100%;
   outline: 1px solid #c2c8d5;
@@ -38,6 +38,21 @@ const NodeView = styled.div`
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.06);
   padding: 0 16px;
   box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+`
+
+const ReactionName = styled.div`
+    display: flex;
+`
+
+const ReactionOwner = styled.div`
+  display: flex;
+  font-size: 12px;
+  margin-top: 0px;
+  white-space:nowrap;
+  overflow: hidden;
+  font-style: italic;
 `
 
 const Icon = styled.div`
@@ -47,10 +62,10 @@ const Icon = styled.div`
 `
 
 const Label = styled.span`
-    display: inline-block;
-    flex-shrink: 0;
-    margin-left: 8px;
-    font-size: 13px;
+  display: inline-block;
+  flex-shrink: 0;
+  margin-left: 8px;
+  font-size: 13px;
 `
 
 export interface NodeViewParams extends INodeData {
@@ -58,17 +73,18 @@ export interface NodeViewParams extends INodeData {
   token: GlobalToken,
   width: number,
   height: number,
+  subLabel?: string,
 }
 
 
 export const ReactionNode = (props: { node?: Node }) => {
   const { node } = props
   const data = node?.getData() as NodeViewParams
-  const { token } = data
+  const { token, subLabel } = data
   const { label } = data.meta
 
-  const inputPortCount = data.meta.ports?.filter(port => port.group === "in").length
-  const outputPortCount = data.meta.ports?.filter(port => port.group === "out").length
+  const inputPortCount = data.meta.inPorts?.length
+  const outputPortCount = data.meta.outPorts?.length
   return (
     <NodeView
       className='node'
@@ -82,10 +98,18 @@ export const ReactionNode = (props: { node?: Node }) => {
         borderBottomRightRadius: !outputPortCount ? data.height / 2 : undefined,
       }}
     >
-      <Icon style={{ color: data?.material.color }}>
-        {data?.material?.icon}
-      </Icon>
-      <Label>{label}</Label>
+      <ReactionName>
+        <Icon style={{ color: data?.material.color }}>
+          {data?.material?.icon}
+        </Icon>
+        <Label>{label}</Label>
+      </ReactionName>
+      {
+        subLabel &&
+        <ReactionOwner style={{ color: token.colorTextSecondary }}>
+          {subLabel}
+        </ReactionOwner>
+      }
     </NodeView>
   )
 }

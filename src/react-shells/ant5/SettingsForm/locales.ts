@@ -1,6 +1,9 @@
+import { reactionMaterialLocales } from "../materials/locales";
+
 export const settingLocales = {
   "zh-CN": {
     tools: {
+      ...reactionMaterialLocales["zh-CN"],
       edit: "编辑",
       delete: "删除",
       font: "字体",
@@ -116,11 +119,31 @@ export const settingLocales = {
         setVariable: "变量赋值",
         listenVariable: "监听变量",
         pleaseInputName: "请输入名称",
+        setProp: "设置属性",
+        routeTo: "路由跳转",
+        infoMessage: "提示消息",
+        simulateData: "模拟数据",
+        globalLoading: "全局Loading",
+        jsCode: "JS代码",
+        setFormValue: "表单赋值",
+        validateForm: "校验表单",
+        success: "成功",
+        failure: "失败",
+        readFormValue: "读取表单",
+        setFieldValue: "字段赋值",
+        validateField: "校验字段",
+        readFieldValue: "读取字段",
+        subscribeField: "订阅字段",
+        add: "添加",
+        close: "关闭",
+        label: "标签",
+        operation: "操作",
       }
     }
   },
   'en-US': {
     tools: {
+      ...reactionMaterialLocales["en-US"],
       edit: "Edit",
       delete: "Delete",
       font: "Font",
@@ -235,6 +258,25 @@ export const settingLocales = {
         setVariable: "Set Variable",
         listenVariable: "Listen Variable",
         pleaseInputName: "Please input name!",
+        setProp: "Set prop",
+        routeTo: "Route To",
+        infoMessage: "Info Message",
+        simulateData: "Simulate data",
+        globalLoading: "Global Loading",
+        jsCode: "JS Code",
+        setFormValue: "Set Form Value",
+        validateForm: "Validate Form",
+        success: "Success",
+        failure: "Failure",
+        readFormValue: "Read Form Value",
+        setFieldValue: "Set Field Value",
+        validateField: "Validate Field",
+        readFieldValue: "Read Field",
+        subscribeField: "Subscribe Field",
+        add: "Add",
+        close: "Close",
+        label: "Label",
+        operation: "Operation",
       }
     }
   }

@@ -120,7 +120,6 @@ function patFlatValues(values: FormValue | undefined, allFields: FieldsState, pa
     const subValues = patFlatValues(values?.[meta.name], allFields, path)
     flatValues = { ...flatValues, ...subValues }
   }
-
   return flatValues
 }
 

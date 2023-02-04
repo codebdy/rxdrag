@@ -4,12 +4,12 @@ import { useAddNode } from "../hooks/edit-meta/useAddNode"
 import { useMovedNode } from "../hooks/edit-meta/useMovedNode"
 import { useArrowhead } from "../hooks/useArrowhead"
 import { useShowCells } from "../hooks/useShowCells"
-import { useTraceLining } from "../hooks/useTraceLining"
 import { useSelection } from "../hooks/useSelection"
 import { useRemove } from "../hooks/edit-meta/useRemove"
-import { useZoom } from "../hooks/useZoom"
 import { ILogicMetas } from "runner/reaction/interfaces/metas"
-import { useEditorState } from "../hooks/useEditorState"
+import { useChangeFlag } from "../hooks/useChangeFlag"
+import { useMetas } from "../hooks/useMetas"
+import { useSetZoom } from "../hooks/useSetZoom"
 
 export const Logic = memo((
   props: {
@@ -17,23 +17,23 @@ export const Logic = memo((
   }
 ) => {
   const { onChange } = props;
-  const { changeFlag, metas } = useEditorState()
+  const {changeFlag} = useChangeFlag()
+  const {metas} = useMetas()
   const metasRef = useRef(metas)
   metasRef.current = metas;
   const onChangeRef = useRef(onChange)
   onChangeRef.current = onChange
 
   useShowCells()
-  useTraceLining()
   useAddNode()
   useEditEdge()
   useMovedNode()
   useArrowhead()
   useSelection()
   useRemove()
-  useZoom()
+  useSetZoom()
   useEffect(() => {
-    if (changeFlag) {
+    if (changeFlag && metasRef.current) {
       onChangeRef.current(metasRef.current)
     }
   }, [changeFlag])

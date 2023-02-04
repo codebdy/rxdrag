@@ -4,8 +4,6 @@ import { memo, useCallback } from "react"
 import { undoIcon, redoIcon } from "react-shells/ant5/icons"
 import styled from "styled-components"
 import { mapIcon, zoomResetIcon } from "../../../../../../icons/reactions"
-import { ActionType } from "../../actions"
-import { useEditorState } from "../../hooks/useEditorState"
 import { useRedo } from "../../hooks/edit-meta/useRedo"
 import { useZoomIn } from "../../hooks/useZoomIn"
 import { useZoomOut } from "../../hooks/useZoomOut"
@@ -13,6 +11,11 @@ import { MAX_ZOOM, MIN_ZOOM } from "../../utils"
 import { useBackup } from "../../hooks/edit-meta/useBackup"
 import { useUndo } from "../../hooks/edit-meta/useUndo"
 import { useMarkChange } from "../../hooks/edit-meta/useMarkChange"
+import { useZoom } from "../../hooks/useZoom"
+import { useSelected } from "../../hooks/useSelected"
+import { useGraph } from "../../hooks/useGraph"
+import { useRedoList } from "../../hooks/useRedoList"
+import { useUndoList } from "../../hooks/useUndoList"
 
 const StyledToolbar = styled.div`
   display: flex;
@@ -39,7 +42,12 @@ export const Toolbar = memo((
   }
 ) => {
   const { showMap, toggleShowMap } = props
-  const { selected, zoom, graph, redoList, undoList, dispatch } = useEditorState()
+  const { zoom, setZoom } = useZoom()
+  const { selected } = useSelected()
+  const graph = useGraph()
+  const { redoList } = useRedoList()
+  const { undoList } = useUndoList()
+
   const backup = useBackup()
   const markeChange = useMarkChange()
   const handleRemove = useCallback(() => {
@@ -57,8 +65,8 @@ export const Toolbar = memo((
   const redo = useRedo()
 
   const handleZoomReset = useCallback(() => {
-    dispatch({ type: ActionType.SET_ZOOM, payload: 1 })
-  }, [dispatch])
+    setZoom(1)
+  }, [setZoom])
 
   return (
     <StyledToolbar>

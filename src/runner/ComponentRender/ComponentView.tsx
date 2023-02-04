@@ -1,5 +1,5 @@
 import { ID, INodeSchema } from "core"
-import { memo, useMemo } from "react"
+import { memo, useEffect, useMemo } from "react"
 import { ComponentField } from "./ComponentField"
 import { ComponentSchemaContext } from "./contexts"
 import { usePreviewComponent } from "core-react/hooks/usePreviewComponent"
@@ -24,7 +24,7 @@ export const ComponentView = memo((
 ) => {
   const { node, ...other } = props
   const com = usePreviewComponent(node.componentName)
-  const Component = com && withBind(com, node?.["x-field"]);
+  const Component = useMemo(() => com && withBind(com, node?.["x-field"]), [com, node]);
   const slots = useMemo(() => {
     const slts: { [key: string]: React.ReactElement } = {}
     for (const name of Object.keys(node?.slots || {})) {
@@ -36,7 +36,8 @@ export const ComponentView = memo((
 
     return slts
   }, [node?.slots])
-
+  useEffect(() => {
+  }, [node, slots, Component])
   return (
     <ComponentSchemaContext.Provider value={node}>
       <ComponentField fieldMeta={node?.["x-field"]}>
