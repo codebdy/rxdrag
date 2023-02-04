@@ -48,10 +48,10 @@ export interface IComponentController {
   id: string,
   name?: string,
 
-  events?: EventFuncs,
+  events: EventFuncs,
   initEvent?: InputFunc,
   destoryEvent?: InputFunc,
-  reactions?: Reactions,
+  reactions: Reactions,
   setVariable(name: string, value: any): void,
   subcribeToVariableChange(name: string, listener: VariableListener): UnListener
   subscribeToPropsChange(listener: PropsListener): UnListener
