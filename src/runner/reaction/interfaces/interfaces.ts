@@ -10,9 +10,10 @@ export interface IHandlerArgs {
 export type InputHandler = (args?: IHandlerArgs) => void
 
 export interface IJointer {
+  id: string,
   flowIn: InputHandler,
-  addHandler: (handler: InputHandler) => void
-  removeHandler: (handler: InputHandler) => void
+  connect: (handler: InputHandler) => void
+  disconnect: (handler: InputHandler) => void
 }
 
 export type Jointers = {
