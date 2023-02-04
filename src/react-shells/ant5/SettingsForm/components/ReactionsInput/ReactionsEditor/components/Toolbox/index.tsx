@@ -54,7 +54,7 @@ export const Toolbox = memo((props: {
 
   return (
     <StyledToolbox>
-      <Collapse defaultActiveKey={['1']} bordered={false} accordion expandIconPosition="end">
+      <Collapse defaultActiveKey={[reactionMaterials?.[0].name]} bordered={false} accordion expandIconPosition="end">
         {
           reactionMaterials.map(category => {
             return (

@@ -1,3 +1,4 @@
+import { IConfigMeta, IReactionMeta } from "./metas"
 
 export type Unsubscribe = () => void
 
@@ -31,7 +32,9 @@ export interface IReaction {
   outputs: OutputJointers
 }
 
-export type IVariableListener = (value: any) => void
+export type VariableListener = (value: any) => void
+export type PropsListener = (name: string, value: any) => void
+export type UnListener = ()=>void
 
 export interface IComponentController {
   id: string,
@@ -40,7 +43,12 @@ export interface IComponentController {
   events?: IReaction[],
   reactions?: IReaction[],
   setVariable(name: string, value: any): void,
-  listenVariable(name: string, listener: IVariableListener): void
+  subcribeToVariableChange(name: string, listener: VariableListener): UnListener
+  subscribeToPropsChange(listener: PropsListener): UnListener
 }
 
-export type ReactionFactory = (controller: IComponentController | undefined) => IReaction
+export type ComponentControllers = {
+  [id: string]: IComponentController | undefined
+}
+
+export type ReactionFactory = (controllers: ComponentControllers, meta: IReactionMeta<IConfigMeta>) => IReaction
