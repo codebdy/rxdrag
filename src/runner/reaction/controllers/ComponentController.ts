@@ -31,11 +31,11 @@ export class ComponentController implements IComponentController {
         continue
       }
       if (eventMeta.name === INIT_EVENT_NAME) {
-        this.initEvent = inputOne
+        this.initEvent = inputOne.flowIn
       } else if (eventMeta.name === DESTORY_EVENT_NAME) {
-        this.destoryEvent = inputOne
+        this.destoryEvent = inputOne.flowIn
       } else if (eventMeta.name) {
-        this.events[eventMeta.name] = inputOne
+        this.events[eventMeta.name] = inputOne.flowIn
       }
     }
   }

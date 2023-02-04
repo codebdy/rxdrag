@@ -1,8 +1,8 @@
-import { InputHandlers, IReaction, OutputJointers } from "runner/reaction/interfaces/interfaces";
+import { IReaction, Jointers } from "runner/reaction/interfaces/interfaces";
 
 export class JsCodeReaction implements IReaction{
-  inputs: InputHandlers = {};
-  outputs: OutputJointers = {};
+  inputs: Jointers = {};
+  outputs: Jointers = {};
   constructor(public id: string) {
 
   }

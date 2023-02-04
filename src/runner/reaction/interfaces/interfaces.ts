@@ -9,27 +9,20 @@ export interface IHandlerArgs {
 
 export type InputHandler = (args?: IHandlerArgs) => void
 
-export type InputHandlers = {
-  [name: string]: InputHandler
-}
-
 export interface IJointer {
   flowIn: InputHandler,
   addHandler: (handler: InputHandler) => void
   removeHandler: (handler: InputHandler) => void
 }
 
-export type OutputJointer = {
-  [name: string]: IJointer
-}
-export type OutputJointers = {
+export type Jointers = {
   [name: string]: IJointer | undefined
 }
 
 export interface IReaction {
   id: string
-  inputs: InputHandlers
-  outputs: OutputJointers
+  inputs: Jointers
+  outputs: Jointers
 }
 export type Reactions = {
   [id: string]: IReaction | undefined
