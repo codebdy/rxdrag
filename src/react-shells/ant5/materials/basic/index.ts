@@ -2,8 +2,9 @@ import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsI
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { IReactionMaterial } from "../../../../runner/reaction/interfaces/material";
 import { delayIcon, endIcon, ifIcon, loopIcon, mergeIcon, randomIcon, startIcon, switchIcon } from "../../icons/reactions";
-import { startEndSchema } from "./schemas/base";
-import { conditionSchema } from "./schemas/condition";
+import { startEndSchema } from "../baseSchema";
+import { conditionMaterial } from "./condition";
+import { conditionSchema } from "./condition/schema";
 import { loopSchema } from "./schemas/loop";
 import { mergeSchema } from "./schemas/merge";
 import { switchSchema } from "./schemas/switch";
@@ -29,35 +30,7 @@ export const basicReactions: IReactionMaterial[] = [
     },
     schema: startEndSchema,
   },
-  {
-    name: "condition",
-    icon: ifIcon,
-    label: "$conditionCheck",
-    reactionType: ReactionType.SingleReaction,
-    color: "#5e76c3",
-    meta: {
-      inPorts: [
-        {
-          id: createUuid(),
-          name: "input",
-          label: "",//"$inputCondition",
-        },
-      ],
-      outPorts: [
-        {
-          id: createUuid(),
-          name: "true",
-          label: "$true",
-        },
-        {
-          id: createUuid(),
-          name: "false",
-          label: "$false",
-        },
-      ],
-    },
-    schema: conditionSchema
-  },
+  conditionMaterial,
   {
     name: "loop",
     icon: loopIcon,

@@ -1,5 +1,5 @@
 import { INodeSchema } from "core";
-import { labelSchema } from "../../basic/schemas/base";
+import { labelSchema } from "../../baseSchema";
 
 export const jsCodeSchema: INodeSchema = {
   componentName: "Fragment",

@@ -8,7 +8,7 @@ export class GraphicalReaction implements IReaction {
   inputs: Jointers = {};
   outputs: Jointers = {};
   reactions: IReaction[] = [];
-  constructor(private meta: IReactionDefineMeta, materials: IReactionMaterial[]) {
+  constructor(private meta: IReactionDefineMeta, private materials: IReactionMaterial[]) {
     this.id = meta.id
     //第一步，解析节点
     this.constructReactions()
@@ -26,6 +26,10 @@ export class GraphicalReaction implements IReaction {
           this.outputs[reactionMeta.id] = new Jointer(reactionMeta.id);
           break;
         case ReactionType.SingleReaction:
+          const material = this.getMaterial(reactionMeta.materialName)
+          if(material){
+            
+          }
           break;
         case ReactionType.ControllerDefaultReaction:
           break;
@@ -33,5 +37,9 @@ export class GraphicalReaction implements IReaction {
           break;
       }
     }
+  }
+
+  private getMaterial(name:string){
+    return this.materials.find(material=>material.name === name)
   }
 }

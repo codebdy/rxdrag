@@ -1,5 +1,5 @@
 import { INodeSchema } from "core";
-import { labelSchema } from "./base";
+import { labelSchema } from "../../baseSchema";
 
 export const switchSchema: INodeSchema = {
   componentName: "Fragment",
