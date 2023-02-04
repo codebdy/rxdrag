@@ -69,8 +69,10 @@ export interface IReactionMeta {
   id: string,
   name?: string,
   label?: string,
-  //title?: string,
+  //可视化场景使用
   logicMetas?: ILogicMetas,
+  //不能可视化的场景使用，比如右侧属性面板
+  jsCode?: string,
 }
 
 // $form 虚拟表单， 
