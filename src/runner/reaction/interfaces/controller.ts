@@ -48,4 +48,4 @@ export type ComponentControllers = {
   [id: string]: IComponentController | undefined
 }
 
-export type ReactionFactory = (meta: IReactionMeta<IConfigMeta>, context: any) => IReaction
+export type ReactionFactory = (meta: IReactionMeta<IConfigMeta>, context?: any) => IReaction

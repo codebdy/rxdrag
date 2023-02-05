@@ -27,8 +27,8 @@ export class GraphicalReaction implements IReaction {
           break;
         case ReactionType.SingleReaction:
           const material = this.getMaterial(reactionMeta.materialName)
-          if (material) {
-
+          if (material?.reactionFactory) {
+            this.reactions.push(material.reactionFactory(reactionMeta))
           }
           break;
         case ReactionType.ControllerDefaultReaction:
