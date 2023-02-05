@@ -38,6 +38,25 @@ export class GraphicalReaction implements IReaction {
 
   private contructRelations(){
     for (const invokeMeta of this.meta.logicMetas?.invokes || []) {
+      let sourceJointer = this.inputs.find(jointer=>jointer.id === invokeMeta.source.nodeId)
+      if(!sourceJointer && invokeMeta.source.portId){
+        sourceJointer = this.reactions.find(reaction=>reaction.id === invokeMeta.source.nodeId)?.outputs.find(output=>output.id === invokeMeta.source.portId)
+      }
+
+      if(!sourceJointer){
+        throw new Error("Can find source jointer")
+      }
+
+      let targetJointer = this.outputs.find(jointer=>jointer.id === invokeMeta.target.nodeId)
+      if(!targetJointer && invokeMeta.target.portId){
+        targetJointer = this.reactions.find(reaction=>reaction.id === invokeMeta.target.nodeId)?.inputs.find(input=>input.id === invokeMeta.target.portId)
+      }
+
+      if(!targetJointer){
+        throw new Error("Can find target jointer")
+      }
+
+      sourceJointer.connect(targetJointer)
     }
   }
 
