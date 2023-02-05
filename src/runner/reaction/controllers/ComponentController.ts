@@ -1,9 +1,9 @@
 import { INIT_EVENT_NAME, DESTORY_EVENT_NAME } from "react-shells/ant5/shared/createReactionSchema";
-import { EventFuncs, IComponentController, InputFunc, IPropController, IReaction, IVariableController, PropsListener, Reactions, UnListener, VariableListener } from "runner/reaction/interfaces/controller";
+import { ComponentControllers, EventFuncs, IComponentController, InputFunc, IPropController, IReaction, IVariableController, PropsListener,  UnListener, VariableListener } from "runner/reaction/interfaces/controller";
 import { IReactionMaterial } from "../interfaces/material";
 import { IConfigMeta, IControllerMeta, IReactionDefineMeta, IReactionMeta } from "../interfaces/metas";
-import { CodeReaction } from "./CodeReaction";
-import { GraphicalReaction } from "./GraphicalReaction";
+import { GraphicalReaction } from "../../../react-shells/ant5/materials/controller/reaction/GraphicalReaction";
+import { CodeReaction } from "react-shells/ant5/materials/controller/reaction/CodeReaction";
 
 export class ComponentController implements IComponentController, IVariableController, IPropController {
   id: string;
@@ -11,16 +11,15 @@ export class ComponentController implements IComponentController, IVariableContr
   initEvent?: InputFunc | undefined;
   destoryEvent?: InputFunc | undefined;
   events: EventFuncs = {};
-  reactions: Reactions = {};
 
-  constructor(meta: IControllerMeta, protected parentReactions: Reactions, protected materials: IReactionMaterial[]) {
+  constructor(meta: IControllerMeta, protected parentControllers: ComponentControllers, protected materials: IReactionMaterial[]) {
     this.id = meta.id!
-    for (const reactionMeta of meta.reactions || []) {
-      const reaction = this.makeReaction(reactionMeta)
-      if (reaction) {
-        this.reactions[reactionMeta.id] = reaction
-      }
-    }
+    // for (const reactionMeta of meta.reactions || []) {
+    //   const reaction = this.makeReaction(reactionMeta)
+    //   if (reaction) {
+    //     this.reactions[reactionMeta.id] = reaction
+    //   }
+    // }
     for (const eventMeta of meta.events || []) {
       const reaction = this.makeReaction(eventMeta)
       if (!reaction) {

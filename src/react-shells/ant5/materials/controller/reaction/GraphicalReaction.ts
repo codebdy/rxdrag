@@ -1,14 +1,14 @@
-import { Jointer } from "../classes/jointer";
-import { IJointer, IReaction, IReactionFactoryOptions } from "../interfaces/controller";
-import { IReactionMaterial } from "../interfaces/material";
-import { IReactionDefineMeta, ReactionType } from "../interfaces/metas";
+import { Jointer } from "../../../../../runner/reaction/classes/jointer";
+import { IJointer, IReaction, IReactionFactoryOptions } from "../../../../../runner/reaction/interfaces/controller";
+import { IReactionMaterial } from "../../../../../runner/reaction/interfaces/material";
+import { IReactionDefineMeta, ReactionType } from "../../../../../runner/reaction/interfaces/metas";
 
 export class GraphicalReaction implements IReaction {
   id: string;
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];
   reactions: IReaction[] = [];
-  constructor(private meta: IReactionDefineMeta, private materials: IReactionMaterial[], private options:IReactionFactoryOptions) {
+  constructor(private meta: IReactionDefineMeta, private materials: IReactionMaterial[], private options?:IReactionFactoryOptions) {
     this.id = meta.id
     //第一步，解析节点
     this.constructReactions()
@@ -26,12 +26,11 @@ export class GraphicalReaction implements IReaction {
           this.outputs.push(new Jointer(reactionMeta.id));
           break;
         case ReactionType.SingleReaction:
+        case ReactionType.ControllerDefaultReaction:
           const material = this.getMaterial(reactionMeta.materialName)
           if (material?.reactionFactory) {
-            this.reactions.push(material.reactionFactory(reactionMeta))
+            this.reactions.push(material.reactionFactory(reactionMeta, this.options))
           }
-          break;
-        case ReactionType.ControllerDefaultReaction:
           break;
         case ReactionType.ControllerReaction:
           break;

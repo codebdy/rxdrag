@@ -1,3 +1,4 @@
+import { IReactionMaterial } from "./material"
 import { IConfigMeta, IReactionMeta } from "./metas"
 
 export type Unsubscribe = () => void
@@ -17,9 +18,6 @@ export interface IReaction {
   id: string
   inputs: IJointer[]
   outputs: IJointer[]
-}
-export type Reactions = {
-  [id: string]: IReaction | undefined
 }
 
 export type VariableListener = (value: any) => void
@@ -59,6 +57,7 @@ export interface IReactionFactoryOptions {
   //属于某个控件的reaction需要传的参数
   variableController?: IVariableController,
   propsController?: IPropController,
+  materials?: IReactionMaterial[] 
 }
 
 export type ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options?: IReactionFactoryOptions) => IReaction

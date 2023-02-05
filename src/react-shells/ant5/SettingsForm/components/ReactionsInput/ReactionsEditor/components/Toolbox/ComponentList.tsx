@@ -1,6 +1,7 @@
 import { Space, Typography } from "antd";
 import { memo, useCallback } from "react"
-import { listenVariableMaterial, reactionMaterial, setPropMaterial } from "react-shells/ant5/materials/controller";
+import { listenVariableMaterial, setPropMaterial } from "react-shells/ant5/materials/controller";
+import { reactionMaterial } from "react-shells/ant5/materials/controller/reaction";
 import { setVariableMaterial } from "react-shells/ant5/materials/controller/setProp";
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { IControllerMeta, IReactionDefineMeta, IReactionMeta } from "runner/reaction/interfaces/metas";

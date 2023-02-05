@@ -1,5 +1,5 @@
-import { IJointer, IReaction } from "../interfaces/controller";
-import { IReactionDefineMeta } from "../interfaces/metas";
+import { IReaction, IJointer, IReactionDefineMeta } from "runner/reaction";
+
 
 export class CodeReaction implements IReaction {
   id: string;

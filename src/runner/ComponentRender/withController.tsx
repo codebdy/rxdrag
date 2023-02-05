@@ -1,10 +1,10 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
+import { ComponentControllers } from "runner/reaction"
 import { ComponentController } from "runner/reaction/controllers/ComponentController"
 import { useMaterials } from "runner/reaction/hooks/useMaterials"
-import { Reactions } from "runner/reaction/interfaces/controller"
 import { IControllerMeta } from "runner/reaction/interfaces/metas"
-import { ReactionsContext } from "./contexts"
-import { useReactions } from "./hooks/useReactions"
+import { ControllersContext } from "./contexts"
+import { useControllers } from "./hooks/useControllers"
 
 export function withController(WrappedComponent: React.FC<any> | React.ComponentClass<any>, meta?: IControllerMeta): React.FC<any> | React.ComponentClass<any> {
 
@@ -14,16 +14,16 @@ export function withController(WrappedComponent: React.FC<any> | React.Component
 
   return memo((props: any) => {
     const [changedProps, setChangeProps] = useState<any>()
-    const reactions = useReactions()
+    const controllers = useControllers()
     const materials = useMaterials()
     const controller = useMemo(
-      () => new ComponentController(meta, reactions, materials),
-      [materials, reactions]
+      () => new ComponentController(meta, controllers, materials),
+      [materials, controllers]
     )
 
-    const newReactions: Reactions = useMemo(() => {
-      return { ...reactions, ...controller.reactions }
-    }, [controller.reactions, reactions])
+    const newControllers: ComponentControllers = useMemo(() => {
+      return { ...controllers, [controller.id]:controller }
+    }, [controller, controllers])
 
     const newProps = useMemo(() => {
       return { ...props, ...controller.events, ...changedProps }
@@ -43,8 +43,8 @@ export function withController(WrappedComponent: React.FC<any> | React.Component
       return controller?.destoryEvent
     }, [controller])
 
-    return <ReactionsContext.Provider value={newReactions}>
+    return <ControllersContext.Provider value={newControllers}>
       <WrappedComponent {...newProps} />
-    </ReactionsContext.Provider>
+    </ControllersContext.Provider>
   })
 }
