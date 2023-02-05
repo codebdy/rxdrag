@@ -1,11 +1,11 @@
 import { INIT_EVENT_NAME, DESTORY_EVENT_NAME } from "react-shells/ant5/shared/createReactionSchema";
-import { EventFuncs, IComponentController, InputFunc, IReaction, PropsListener, Reactions, UnListener, VariableListener } from "runner/reaction/interfaces/controller";
+import { EventFuncs, IComponentController, InputFunc, IPropController, IReaction, IVariableController, PropsListener, Reactions, UnListener, VariableListener } from "runner/reaction/interfaces/controller";
 import { IReactionMaterial } from "../interfaces/material";
 import { IConfigMeta, IControllerMeta, IReactionDefineMeta, IReactionMeta } from "../interfaces/metas";
 import { CodeReaction } from "./CodeReaction";
 import { GraphicalReaction } from "./GraphicalReaction";
 
-export class ComponentController implements IComponentController {
+export class ComponentController implements IComponentController, IVariableController, IPropController {
   id: string;
   name?: string;
   initEvent?: InputFunc | undefined;
@@ -39,23 +39,26 @@ export class ComponentController implements IComponentController {
       }
     }
   }
-  createReaction(meta: IReactionMeta<IConfigMeta>): IReaction {
+  setProp(name: string, value: any): void {
+    throw new Error("Method not implemented.");
+  }
+  createReaction = (meta: IReactionMeta<IConfigMeta>): IReaction => {
     throw new Error("Method not implemented.");
   }
 
-  setVariable(name: string, value: any): void {
+  setVariable = (name: string, value: any): void => {
     throw new Error("Method not implemented.");
   }
-  subcribeToVariableChange(name: string, listener: VariableListener): UnListener {
+  subcribeToVariableChange = (name: string, listener: VariableListener): UnListener => {
     throw new Error("Method not implemented.");
   }
-  subscribeToPropsChange(listener: PropsListener): UnListener {
+  subscribeToPropsChange = (listener: PropsListener): UnListener => {
     throw new Error("Method not implemented.");
   }
 
   private makeReaction(reactionMeta: IReactionDefineMeta) {
     if (reactionMeta.logicMetas) {
-      return new GraphicalReaction(reactionMeta, this.materials)
+      return new GraphicalReaction(reactionMeta, this.materials, { variableController: this, propsController: this })
     } else if (reactionMeta.jsCode) {
       return new CodeReaction(reactionMeta)
     }

@@ -1,5 +1,5 @@
 import { Jointer } from "../classes/jointer";
-import { IJointer, IReaction } from "../interfaces/controller";
+import { IJointer, IReaction, IReactionFactoryOptions } from "../interfaces/controller";
 import { IReactionMaterial } from "../interfaces/material";
 import { IReactionDefineMeta, ReactionType } from "../interfaces/metas";
 
@@ -8,7 +8,7 @@ export class GraphicalReaction implements IReaction {
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];
   reactions: IReaction[] = [];
-  constructor(private meta: IReactionDefineMeta, private materials: IReactionMaterial[]) {
+  constructor(private meta: IReactionDefineMeta, private materials: IReactionMaterial[], private options:IReactionFactoryOptions) {
     this.id = meta.id
     //第一步，解析节点
     this.constructReactions()
