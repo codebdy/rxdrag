@@ -11,6 +11,7 @@ export class ComponentController implements IComponentController, IVariableContr
   initEvent?: InputFunc | undefined;
   destoryEvent?: InputFunc | undefined;
   events: EventFuncs = {};
+  private variables: any = {};
 
   constructor(meta: IControllerMeta, protected parentControllers: ComponentControllers, protected materials: IReactionMaterial[]) {
     this.id = meta.id!
@@ -35,9 +36,6 @@ export class ComponentController implements IComponentController, IVariableContr
   subscribeToVariableChange(name: string, handle: (value: any) => void): void {
     throw new Error("Method not implemented.");
   }
-  setProp(name: string, value: any): void {
-    throw new Error("Method not implemented.");
-  }
   createReaction = (meta: IReactionMeta<IConfigMeta>): IReaction => {
     throw new Error("Method not implemented.");
   }
@@ -45,9 +43,15 @@ export class ComponentController implements IComponentController, IVariableContr
   setVariable = (name: string, value: any): void => {
     throw new Error("Method not implemented.");
   }
+
   subcribeToVariableChange = (name: string, listener: VariableListener): UnListener => {
     throw new Error("Method not implemented.");
   }
+
+  setProp(name: string, value: any): void {
+    throw new Error("Method not implemented.");
+  }
+
   subscribeToPropsChange = (listener: PropsListener): UnListener => {
     throw new Error("Method not implemented.");
   }
