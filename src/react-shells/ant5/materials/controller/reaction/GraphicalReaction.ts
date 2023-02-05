@@ -1,6 +1,5 @@
 import { Jointer } from "../../../../../runner/reaction/classes/jointer";
 import { IJointer, IReaction, IReactionFactoryOptions } from "../../../../../runner/reaction/interfaces/controller";
-import { IReactionMaterial } from "../../../../../runner/reaction/interfaces/material";
 import { IReactionDefineMeta, ReactionType } from "../../../../../runner/reaction/interfaces/metas";
 
 export class GraphicalReaction implements IReaction {
@@ -8,7 +7,7 @@ export class GraphicalReaction implements IReaction {
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];
   reactions: IReaction[] = [];
-  constructor(private meta: IReactionDefineMeta, private materials: IReactionMaterial[], private options?:IReactionFactoryOptions) {
+  constructor(private meta: IReactionDefineMeta, private options?:IReactionFactoryOptions) {
     this.id = meta.id
     //第一步，解析节点
     this.constructReactions()
@@ -39,6 +38,6 @@ export class GraphicalReaction implements IReaction {
   }
 
   private getMaterial(name: string) {
-    return this.materials.find(material => material.name === name)
+    return this.options?.materials?.find(material => material.name === name)
   }
 }

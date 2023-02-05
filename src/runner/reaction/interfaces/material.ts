@@ -1,5 +1,5 @@
 import { INodeSchema } from "core";
-import { IReaction, ReactionFactory } from "runner/reaction/interfaces/controller";
+import { ReactionFactory } from "runner/reaction/interfaces/controller";
 import { IConfigMeta, IReactionNodeData, ReactionType } from "./metas";
 
 export interface IReactionMaterial {
@@ -9,7 +9,7 @@ export interface IReactionMaterial {
   reactionType: ReactionType,
   icon?: React.ReactNode,
   color?: string,
-  reaction?: IReaction,
+  //reaction?: IReaction,
   schema?: INodeSchema,
   meta?: IReactionNodeData,
   subTitle?: (config?: IConfigMeta) => string | undefined,

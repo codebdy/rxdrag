@@ -57,7 +57,7 @@ export class ComponentController implements IComponentController, IVariableContr
 
   private makeReaction(reactionMeta: IReactionDefineMeta) {
     if (reactionMeta.logicMetas) {
-      return new GraphicalReaction(reactionMeta, this.materials, { variableController: this, propsController: this })
+      return new GraphicalReaction(reactionMeta, { variableController: this, propsController: this, materials:this.materials })
     } else if (reactionMeta.jsCode) {
       return new CodeReaction(reactionMeta)
     }
