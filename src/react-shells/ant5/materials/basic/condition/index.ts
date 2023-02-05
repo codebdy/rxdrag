@@ -32,5 +32,5 @@ export const conditionMaterial: IReactionMaterial = {
     ],
   },
   schema: conditionSchema,
-  reactionFactory: Condition,
+  reaction: Condition,
 }

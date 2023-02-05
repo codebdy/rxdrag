@@ -24,5 +24,5 @@ export const reactionMaterial: IReactionMaterial = {
       },
     ],
   },
-  reactionFactory: ControllerReaction,
+  reaction: ControllerReaction,
 }

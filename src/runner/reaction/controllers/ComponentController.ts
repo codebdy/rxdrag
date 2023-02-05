@@ -32,6 +32,9 @@ export class ComponentController implements IComponentController, IVariableContr
       }
     }
   }
+  subscribeToVariableChange(name: string, handle: (value: any) => void): void {
+    throw new Error("Method not implemented.");
+  }
   setProp(name: string, value: any): void {
     throw new Error("Method not implemented.");
   }

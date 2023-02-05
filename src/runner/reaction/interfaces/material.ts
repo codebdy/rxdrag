@@ -13,5 +13,5 @@ export interface IReactionMaterial {
   schema?: INodeSchema,
   meta?: IReactionNodeData,
   subTitle?: (config?: IConfigMeta) => string | undefined,
-  reactionFactory?: ReactionFactory
+  reaction?: ReactionFactory
 }

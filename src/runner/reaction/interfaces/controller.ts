@@ -31,6 +31,7 @@ export type EventFuncs = {
 
 export interface IVariableController {
   setVariable(name: string, value: any): void,
+  subscribeToVariableChange(name: string, handle: (value: any) => void): void
 }
 
 export interface IPropController {

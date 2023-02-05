@@ -22,5 +22,5 @@ export const setPropMaterial: IReactionMaterial = {
   subTitle: (config?: any) => {
     return config?.prop
   },
-  reactionFactory: SetProp,
+  reaction: SetProp,
 }
