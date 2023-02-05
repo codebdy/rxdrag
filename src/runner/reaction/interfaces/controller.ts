@@ -31,6 +31,14 @@ export type EventFuncs = {
   [name: string]: InputFunc | undefined
 }
 
+export interface IVariableController {
+  setVariable(name: string, value: any): void,
+}
+
+export interface IPropController {
+  setProp(name: string, value: any): void
+}
+
 export interface IComponentController {
   id: string,
   name?: string,
@@ -38,8 +46,7 @@ export interface IComponentController {
   events: EventFuncs,
   initEvent?: InputFunc,
   destoryEvent?: InputFunc,
-  reactions: Reactions,
-  setVariable(name: string, value: any): void,
+  createReaction(meta: IReactionMeta): IReaction,
   subcribeToVariableChange(name: string, listener: VariableListener): UnListener
   subscribeToPropsChange(listener: PropsListener): UnListener
 }
@@ -48,4 +55,10 @@ export type ComponentControllers = {
   [id: string]: IComponentController | undefined
 }
 
-export type ReactionFactory = (meta: IReactionMeta<IConfigMeta>, context?: any) => IReaction
+export interface IReactionFactoryOptions {
+  //属于某个控件的reaction需要传的参数
+  variableController?: IVariableController,
+  propsController?: IPropController,
+}
+
+export type ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options?: IReactionFactoryOptions) => IReaction

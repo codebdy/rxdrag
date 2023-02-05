@@ -1,29 +1,10 @@
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { ReactionType } from "runner/reaction/interfaces/metas";
-import { setVariableIcon, listenVariableIcon, setPropIcon, methodIcon } from "../../icons/reactions";
+import { listenVariableIcon, setPropIcon, methodIcon } from "../../icons/reactions";
 import { createUuid } from "../../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
+import { setVariableMaterial } from "./setProp";
 import { setPropSchema } from "./setProp/schema";
 import { variableSchema } from "./setVariable/schema";
-
-export const setVariableMaterial: IReactionMaterial = {
-  name: "setVariable",
-  icon: setVariableIcon,
-  label: "$setVariable",
-  reactionType: ReactionType.ControllerDefaultReaction,
-  meta: {
-    inPorts: [
-      {
-        id: createUuid(),
-        name: "input",
-        label: "",//"$startUp",
-      },
-    ],
-  },
-  schema: variableSchema,
-  subTitle: (config?: any) => {
-    return config?.variable
-  }
-}
 
 export const listenVariableMaterial: IReactionMaterial = {
   name: "listenVariable",

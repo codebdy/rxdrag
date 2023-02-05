@@ -1,10 +1,9 @@
 import { INIT_EVENT_NAME, DESTORY_EVENT_NAME } from "react-shells/ant5/shared/createReactionSchema";
-import { EventFuncs, IComponentController, InputFunc, PropsListener, Reactions, UnListener, VariableListener } from "runner/reaction/interfaces/controller";
+import { EventFuncs, IComponentController, InputFunc, IReaction, PropsListener, Reactions, UnListener, VariableListener } from "runner/reaction/interfaces/controller";
 import { IReactionMaterial } from "../interfaces/material";
-import { IControllerMeta, IReactionDefineMeta } from "../interfaces/metas";
+import { IConfigMeta, IControllerMeta, IReactionDefineMeta, IReactionMeta } from "../interfaces/metas";
 import { CodeReaction } from "./CodeReaction";
 import { GraphicalReaction } from "./GraphicalReaction";
-
 
 export class ComponentController implements IComponentController {
   id: string;
@@ -39,6 +38,9 @@ export class ComponentController implements IComponentController {
         this.events[eventMeta.name] = inputOne.push
       }
     }
+  }
+  createReaction(meta: IReactionMeta<IConfigMeta>): IReaction {
+    throw new Error("Method not implemented.");
   }
 
   setVariable(name: string, value: any): void {
