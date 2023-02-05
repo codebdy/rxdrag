@@ -1,5 +1,5 @@
 import { INIT_EVENT_NAME, DESTORY_EVENT_NAME } from "react-shells/ant5/shared/createReactionSchema";
-import { ComponentControllers, EventFuncs, IComponentController, InputFunc, IPropController, IReaction, IVariableController, PropsListener,  UnListener, VariableListener } from "runner/reaction/interfaces/controller";
+import { ComponentControllers, EventFuncs, IComponentController, InputFunc, IPropController, IReaction, IVariableController, PropsListener, UnListener, VariableListener } from "runner/reaction/interfaces/controller";
 import { IReactionMaterial } from "../interfaces/material";
 import { IConfigMeta, IControllerMeta, IReactionDefineMeta, IReactionMeta } from "../interfaces/metas";
 import { GraphicalReaction } from "../../../react-shells/ant5/materials/controller/reaction/GraphicalReaction";
@@ -14,14 +14,8 @@ export class ComponentController implements IComponentController, IVariableContr
 
   constructor(meta: IControllerMeta, protected parentControllers: ComponentControllers, protected materials: IReactionMaterial[]) {
     this.id = meta.id!
-    // for (const reactionMeta of meta.reactions || []) {
-    //   const reaction = this.makeReaction(reactionMeta)
-    //   if (reaction) {
-    //     this.reactions[reactionMeta.id] = reaction
-    //   }
-    // }
     for (const eventMeta of meta.events || []) {
-      const reaction = this.makeReaction(eventMeta)
+      const reaction = this.makeReaction(eventMeta, { ...parentControllers, [this.id]: this })
       if (!reaction) {
         continue
       }
@@ -55,9 +49,15 @@ export class ComponentController implements IComponentController, IVariableContr
     throw new Error("Method not implemented.");
   }
 
-  private makeReaction(reactionMeta: IReactionDefineMeta) {
+  private makeReaction(reactionMeta: IReactionDefineMeta, controllers: ComponentControllers) {
+    const options = {
+      variableController: this,
+      propsController: this,
+      materials: this.materials,
+      controllers
+    }
     if (reactionMeta.logicMetas) {
-      return new GraphicalReaction(reactionMeta, { variableController: this, propsController: this, materials:this.materials })
+      return new GraphicalReaction(reactionMeta, options)
     } else if (reactionMeta.jsCode) {
       return new CodeReaction(reactionMeta)
     }

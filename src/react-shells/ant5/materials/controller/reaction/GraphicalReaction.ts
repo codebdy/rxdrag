@@ -13,6 +13,7 @@ export class GraphicalReaction implements IReaction {
     this.constructReactions()
 
     //第二步， 构建连接关系
+    this.contructRelations()
   }
 
   private constructReactions() {
@@ -25,15 +26,18 @@ export class GraphicalReaction implements IReaction {
           this.outputs.push(new Jointer(reactionMeta.id));
           break;
         case ReactionType.SingleReaction:
-        case ReactionType.ControllerDefaultReaction:
+        case ReactionType.ControllerReaction:
           const material = this.getMaterial(reactionMeta.materialName)
           if (material?.reactionFactory) {
             this.reactions.push(material.reactionFactory(reactionMeta, this.options))
           }
           break;
-        case ReactionType.ControllerReaction:
-          break;
       }
+    }
+  }
+
+  private contructRelations(){
+    for (const invokeMeta of this.meta.logicMetas?.invokes || []) {
     }
   }
 
