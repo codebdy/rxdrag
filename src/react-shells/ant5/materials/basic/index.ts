@@ -4,9 +4,9 @@ import { IReactionMaterial } from "../../../../runner/reaction/interfaces/materi
 import { delayIcon, endIcon, loopIcon, mergeIcon, randomIcon, startIcon, switchIcon } from "../../icons/reactions";
 import { startEndSchema } from "../baseSchema";
 import { conditionMaterial } from "./condition";
-import { loopSchema } from "./loop";
-import { mergeSchema } from "./merge";
-import { switchSchema } from "./switch";
+import { loopSchema } from "./loop/schema";
+import { mergeSchema } from "./merge/schema";
+import { switchSchema } from "./switch/schema";
 
 export const basicReactions: IReactionMaterial[] = [
   {

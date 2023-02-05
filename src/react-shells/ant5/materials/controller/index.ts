@@ -2,8 +2,8 @@ import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { setVariableIcon, listenVariableIcon, setPropIcon, methodIcon } from "../../icons/reactions";
 import { createUuid } from "../../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
-import { setPropSchema } from "./setProp";
-import { variableSchema } from "./setVariable";
+import { setPropSchema } from "./setProp/schema";
+import { variableSchema } from "./setVariable/schema";
 
 export const setVariableMaterial: IReactionMaterial = {
   name: "setVariable",
