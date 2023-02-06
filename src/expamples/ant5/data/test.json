@@ -1,0 +1,64 @@
+{
+  "componentName": "Root",
+  "slots": {},
+  "children": [
+    {
+      "componentName": "Row",
+      "props": {},
+      "slots": {},
+      "children": [
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Button",
+              "props": {
+                "type": "primary",
+                "title": "Button"
+              },
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "TextView",
+                  "props": {
+                    "content": "Button"
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6
+          },
+          "slots": {},
+          "children": []
+        }
+      ]
+    }
+  ]
+}
