@@ -42,7 +42,119 @@
             ]
           },
           "slots": {},
-          "children": []
+          "children": [
+            {
+              "componentName": "Row",
+              "props": {},
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": []
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": []
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "componentName": "Row",
+              "props": {},
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": []
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": []
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "componentName": "Row",
+              "props": {},
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": []
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": []
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
         },
         {
           "componentName": "Col",
