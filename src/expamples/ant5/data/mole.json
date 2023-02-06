@@ -1,0 +1,637 @@
+{
+  "componentName": "Root",
+  "slots": {},
+  "children": [
+    {
+      "componentName": "Row",
+      "props": {
+        "style": {
+          "marginTop": "32px"
+        }
+      },
+      "x-field": {},
+      "x-reactions": {
+        "id": "f8229c79-60be-44fd-a231-2ce7fcaa2b22",
+        "name": "游戏容器",
+        "events": [
+          {
+            "id": "75b515fc-48f3-43e1-af6b-ed5afa5197a5",
+            "name": "init",
+            "label": "初始化",
+            "logicMetas": {
+              "reactions": [
+                {
+                  "id": "e5d63f37-7eba-40e3-8b10-a0f031a3b72f",
+                  "label": "监听变量",
+                  "type": "ControllerDefaultReaction",
+                  "materialName": "listenVariable",
+                  "outPorts": [
+                    {
+                      "id": "49d434d0-5180-4a6b-9fd6-70c9edf7d8e7",
+                      "name": "output",
+                      "label": ""
+                    }
+                  ],
+                  "config": {
+                    "controllerId": "f8229c79-60be-44fd-a231-2ce7fcaa2b22",
+                    "reactionRef": "setVariable",
+                    "variable": "运行"
+                  },
+                  "x6Node": {
+                    "x": 80,
+                    "y": 150,
+                    "width": 116,
+                    "height": 48
+                  }
+                },
+                {
+                  "id": "d9e7f528-01f4-465f-b803-16fe6d2dc6e9",
+                  "label": "随机数",
+                  "type": "SingleReaction",
+                  "materialName": "random",
+                  "inPorts": [
+                    {
+                      "id": "91214f7b-753c-4fe0-b3bb-2fb25d1a4284",
+                      "name": "startUp",
+                      "label": ""
+                    }
+                  ],
+                  "outPorts": [
+                    {
+                      "id": "d1ced5a9-c135-4495-a953-34bb78ee79d9",
+                      "name": "output",
+                      "label": ""
+                    }
+                  ],
+                  "x6Node": {
+                    "x": 630,
+                    "y": 250,
+                    "width": 102,
+                    "height": 32
+                  }
+                },
+                {
+                  "id": "06249fac-9ad8-488e-8609-5cd4463a56d4",
+                  "label": "条件判断",
+                  "type": "SingleReaction",
+                  "materialName": "condition",
+                  "inPorts": [
+                    {
+                      "id": "368c5ece-7ec6-497a-b2f9-d9ca10b1665d",
+                      "name": "input",
+                      "label": ""
+                    }
+                  ],
+                  "outPorts": [
+                    {
+                      "id": "863e8610-c4ad-41eb-9633-b3f08b224cc3",
+                      "name": "true",
+                      "label": "$true"
+                    },
+                    {
+                      "id": "5aad0672-0b46-49c8-bd89-6b6b23e5485a",
+                      "name": "false",
+                      "label": "$false"
+                    }
+                  ],
+                  "x6Node": {
+                    "x": 290,
+                    "y": 250,
+                    "width": 116,
+                    "height": 32
+                  }
+                }
+              ],
+              "invokes": [
+                {
+                  "id": "e48e36cf-b986-47fa-b387-288c8f0ad6d5",
+                  "source": {
+                    "nodeId": "e5d63f37-7eba-40e3-8b10-a0f031a3b72f",
+                    "portId": "49d434d0-5180-4a6b-9fd6-70c9edf7d8e7"
+                  },
+                  "target": {
+                    "nodeId": "06249fac-9ad8-488e-8609-5cd4463a56d4",
+                    "portId": "368c5ece-7ec6-497a-b2f9-d9ca10b1665d"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "cc71164d-76b0-40da-9649-ca765f9dfec1",
+            "name": "destory",
+            "label": "销毁"
+          },
+          {
+            "id": "785d4de1-961a-40e4-acc7-41f3464033a7",
+            "name": "onClick",
+            "label": "点击"
+          }
+        ],
+        "variables": [
+          {
+            "id": "effdda32-d4af-422f-9865-167a05c40447",
+            "name": "成绩"
+          },
+          {
+            "id": "2ee62cac-b1e7-4974-a521-17f15ffdb85a",
+            "name": "活跃地鼠"
+          },
+          {
+            "id": "f6bdab68-834e-4df4-b018-24f724d1321e",
+            "name": "运行"
+          }
+        ],
+        "reactions": [
+          {
+            "id": "2ff4dfd0-039d-4c00-8e13-95f518fae50b",
+            "label": "开始"
+          },
+          {
+            "id": "61507d00-c2d7-42e7-9e25-a9c4e16d8ec4",
+            "label": "结束"
+          }
+        ]
+      },
+      "slots": {},
+      "children": [
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 12,
+            "style": {}
+          },
+          "x-field": {},
+          "x-reactions": {
+            "id": "7e25d7c2-8df7-450c-9de2-efaabc484fad",
+            "name": "列容器",
+            "events": [
+              {
+                "id": "11c96872-656b-4475-ab76-1d89bbc64fef",
+                "name": "init",
+                "label": "初始化"
+              },
+              {
+                "id": "d7612c08-1224-4a48-bc53-8a56d99e9ca8",
+                "name": "destory",
+                "label": "销毁"
+              },
+              {
+                "id": "93b2e4dc-93a3-4e86-b20e-2592b95cd410",
+                "name": "onClick",
+                "label": "点击"
+              }
+            ],
+            "variables": [
+              {
+                "id": "66fddbc6-68d5-4437-9e76-f3cdff8a2481",
+                "name": "变量1"
+              }
+            ]
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Row",
+              "props": {},
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠1",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠2",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠3",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "componentName": "Row",
+              "props": {
+                "style": {
+                  "marginTop": "16px"
+                }
+              },
+              "x-field": {},
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠4",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠5",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠6",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "componentName": "Row",
+              "props": {
+                "style": {
+                  "marginTop": "16px"
+                }
+              },
+              "x-field": {},
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠7",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠8",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠9",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Row",
+              "props": {},
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 24,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Row",
+                      "props": {},
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "Col",
+                          "props": {
+                            "span": 12,
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Input",
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "componentName": "Row",
+              "props": {
+                "style": {
+                  "marginTop": "16px"
+                }
+              },
+              "x-field": {},
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 12,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "default",
+                        "title": "Button",
+                        "style": {}
+                      },
+                      "x-field": {},
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "开始",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 12,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "default",
+                        "title": "Button",
+                        "style": {}
+                      },
+                      "x-field": {},
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "结束",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

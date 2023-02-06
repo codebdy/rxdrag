@@ -14,7 +14,7 @@ export function useTransformPorts() {
         group: group,
         attrs: {
           text: {
-            text: t(port.label) || port.name,
+            text: t(port.label),
             fill: token.colorTextSecondary,
             fontSize: 12,
           },
