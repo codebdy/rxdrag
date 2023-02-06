@@ -3,7 +3,7 @@ import { InputHandler, IJointer } from "../interfaces/controller";
 export class Jointer implements IJointer {
   private outlets: (IJointer | InputHandler)[] = []
 
-  constructor(public id: string, public name?: string) {
+  constructor(public id: string, public name: string) {
 
   }
 

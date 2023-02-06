@@ -7,7 +7,7 @@ export type InputHandler = (inputValue?: any) => void
 
 export interface IJointer {
   id: string,
-  name?: string,
+  name: string,
   push: InputHandler,
   connect: (jointer: IJointer | InputHandler) => void
   disconnect: (jointer: IJointer | InputHandler) => void

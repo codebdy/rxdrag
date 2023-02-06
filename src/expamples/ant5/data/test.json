@@ -101,7 +101,7 @@
                                 "height": 32
                               },
                               "config": {
-                                "expression": "output(\"test\")"
+                                "expression": "({ inputValue, outputs }) => {\n  const { output } = outputs;\n  output('test');\n}"
                               }
                             }
                           ],

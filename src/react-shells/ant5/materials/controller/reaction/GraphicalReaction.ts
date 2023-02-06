@@ -21,10 +21,10 @@ export class GraphicalReaction implements IReaction {
     for (const reactionMeta of this.meta.logicMetas?.reactions || []) {
       switch (reactionMeta.type) {
         case ReactionType.Start:
-          this.inputs.push(new Jointer(reactionMeta.id));
+          this.inputs.push(new Jointer(reactionMeta.id, reactionMeta.name || "input"));
           break;
         case ReactionType.End:
-          this.outputs.push(new Jointer(reactionMeta.id));
+          this.outputs.push(new Jointer(reactionMeta.id, reactionMeta.name || "output"));
           break;
         case ReactionType.SingleReaction:
         case ReactionType.ControllerDefaultReaction:

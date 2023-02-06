@@ -1,5 +1,5 @@
 import { AbstractReaction, IConfigMeta, IReactionMeta } from "runner/reaction";
-import { IReactionFactoryOptions, ReactionFactory } from "runner/reaction/interfaces/controller";
+import { InputHandler, IReactionFactoryOptions, ReactionFactory } from "runner/reaction/interfaces/controller";
 
 export interface IJsCodeConfig extends IConfigMeta {
   expression?: string
@@ -18,8 +18,15 @@ export class JsCodeReaction extends AbstractReaction<IJsCodeConfig> {
   }
 
   inputHandler = (inputValue: string) => {
-    if (this.meta.config?.expression) {
-
+    const expression = this.meta.config?.expression?.trim()
+    if (expression) {
+      const outputs: { [name: string]: InputHandler } = {}
+      for(const output of this.outputs){
+        outputs[output.name] = output.push
+      }
+      
+      // eslint-disable-next-line no-new-func
+      new Function("return " + expression)()?.({ inputValue, outputs })
     }
   }
 
