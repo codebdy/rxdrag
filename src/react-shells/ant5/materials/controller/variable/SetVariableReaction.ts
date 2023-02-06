@@ -1,29 +1,34 @@
-import { AbstractReaction, IConfigMeta, IReactionMeta } from "runner/reaction";
-import { IReactionFactoryOptions, ReactionFactory } from "runner/reaction/interfaces/controller";
+import { IConfigMeta, IReactionMeta } from "runner/reaction";
+import { IComponentController, IReactionFactoryOptions, ReactionFactory } from "runner/reaction/interfaces/controller";
+import { AbstractControllerReaction } from "../AbstractControllerReaction";
 
 export interface IVariableConfig extends IConfigMeta {
   variable?: string
 }
 
-export class SetVariableReaction extends AbstractReaction<IVariableConfig> {
-
+export class SetVariableReaction extends AbstractControllerReaction {
+  controller: IComponentController
   constructor(meta: IReactionMeta<IVariableConfig>, options?: IReactionFactoryOptions) {
     super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("SetVariable inputs count error")
     }
-
-    if(!options?.variableController){
-      throw new Error("SetProp error: not set variableController")
+    if(!meta.config?.controllerId){
+      throw new Error("SetVariable not set controller id")
     }
+    const controller = options?.controllers?.[meta.config?.controllerId]
+    if(!controller){
+      throw new Error("Can not find controller")
+    }
+    this.controller = controller
 
     this.getInputByName("input")?.connect(this.inputHandler)
   }
 
   inputHandler = (inputValue: string) => {
     if (this.meta.config?.variable) {
-      this.options?.variableController?.setVariable(this.meta.config.variable, inputValue)
+      this.controller?.setVariable(this.meta.config.variable, inputValue)
     }
   }
 }

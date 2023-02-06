@@ -1,21 +1,14 @@
-import { AbstractReaction, IConfigMeta, IReactionMeta } from "runner/reaction";
+import { IReactionMeta } from "runner/reaction";
 import { IReactionFactoryOptions, ReactionFactory } from "runner/reaction/interfaces/controller";
+import { AbstractControllerReaction, IControllerReactionConfig } from "../AbstractControllerReaction";
 
-export interface ISetPropConfig extends IConfigMeta {
-  prop?: string
-}
+export class SetPropReaction extends AbstractControllerReaction {
 
-export class SetPropReaction extends AbstractReaction<ISetPropConfig> {
-
-  constructor(meta: IReactionMeta<ISetPropConfig>, options?: IReactionFactoryOptions) {
+  constructor(meta: IReactionMeta<IControllerReactionConfig>, options?: IReactionFactoryOptions) {
     super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("SetProp inputs count error")
-    }
-
-    if (!options?.propsController) {
-      throw new Error("SetProp error: not set PropsController")
     }
 
     this.getInputByName("input")?.connect(this.inputHandler)
@@ -23,11 +16,11 @@ export class SetPropReaction extends AbstractReaction<ISetPropConfig> {
 
   inputHandler = (inputValue: string) => {
     if (this.meta.config?.prop) {
-      this.options?.propsController?.setProp(this.meta.config.prop, inputValue)
+      this.controller?.setProp(this.meta.config.prop, inputValue)
     }
   }
 }
 
-export const SetProp: ReactionFactory = (meta: IReactionMeta<ISetPropConfig>, options?: IReactionFactoryOptions) => {
+export const SetProp: ReactionFactory = (meta: IReactionMeta<IControllerReactionConfig>, options?: IReactionFactoryOptions) => {
   return new SetPropReaction(meta, options)
 }

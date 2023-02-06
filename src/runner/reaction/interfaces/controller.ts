@@ -38,14 +38,13 @@ export interface IPropController {
   setProp(name: string, value: any): void
 }
 
-export interface IComponentController {
+export interface IComponentController extends IVariableController, IPropController {
   id: string,
   name?: string,
 
   events: EventFuncs,
   initEvent?: InputFunc,
   destoryEvent?: InputFunc,
-  createReaction(meta: IReactionMeta): IReaction,
   subscribeToPropsChange(listener: PropsListener): UnListener
 }
 
@@ -56,8 +55,8 @@ export type ComponentControllers = {
 export interface IReactionFactoryOptions {
   controllers?: ComponentControllers,
   //属于某个控件的reaction需要传的参数
-  variableController?: IVariableController,
-  propsController?: IPropController,
+  // variableController?: IVariableController,
+  // propsController?: IPropController,
   materials?: IReactionMaterial[],
 }
 

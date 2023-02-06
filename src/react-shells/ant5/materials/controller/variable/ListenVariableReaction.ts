@@ -1,8 +1,10 @@
-import { AbstractReaction, IReactionMeta } from "runner/reaction";
-import { IReactionFactoryOptions, ReactionFactory } from "runner/reaction/interfaces/controller";
+import { IReactionMeta } from "runner/reaction";
+import { IComponentController, IReactionFactoryOptions, ReactionFactory } from "runner/reaction/interfaces/controller";
+import { AbstractControllerReaction } from "../AbstractControllerReaction";
 import { IVariableConfig } from "./SetVariableReaction";
 
-export class ListenVariableReaction extends AbstractReaction<IVariableConfig> {
+export class ListenVariableReaction extends AbstractControllerReaction {
+  controller: IComponentController
   constructor(meta: IReactionMeta<IVariableConfig>, options?: IReactionFactoryOptions) {
     super(meta, options)
 
@@ -10,11 +12,17 @@ export class ListenVariableReaction extends AbstractReaction<IVariableConfig> {
       throw new Error("ListenVariable outputs count error")
     }
 
-    if (!options?.variableController) {
-      throw new Error("SetProp error: not set variableController")
+    if(!meta.config?.controllerId){
+      throw new Error("ListenVariable not set controller id")
     }
+    const controller = options?.controllers?.[meta.config?.controllerId]
+    if(!controller){
+      throw new Error("Can not find controller")
+    }
+    this.controller = controller
+
     if(meta.config?.variable){
-      options?.variableController?.subscribeToVariableChange(meta.config?.variable, this.outputHandler)
+      this.controller?.subscribeToVariableChange(meta.config?.variable, this.outputHandler)
     }else{
       console.error("Not set variable to ListenVariableReaction")
     }
@@ -22,7 +30,7 @@ export class ListenVariableReaction extends AbstractReaction<IVariableConfig> {
 
   outputHandler = (inputValue: string) => {
     if (this.meta.config?.variable) {
-      this.getOutputById("output")?.push(inputValue)
+      this.getOutputByName("output")?.push(inputValue)
     }
   }
 }
