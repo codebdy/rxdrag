@@ -10,6 +10,47 @@
         }
       },
       "x-field": {},
+      "x-reactions": {
+        "id": "f8229c79-60be-44fd-a231-2ce7fcaa2b22",
+        "name": "游戏容器",
+        "events": [
+          {
+            "id": "75b515fc-48f3-43e1-af6b-ed5afa5197a5",
+            "name": "init",
+            "label": "初始化"
+          },
+          {
+            "id": "cc71164d-76b0-40da-9649-ca765f9dfec1",
+            "name": "destory",
+            "label": "销毁"
+          },
+          {
+            "id": "785d4de1-961a-40e4-acc7-41f3464033a7",
+            "name": "onClick",
+            "label": "点击"
+          }
+        ],
+        "variables": [
+          {
+            "id": "effdda32-d4af-422f-9865-167a05c40447",
+            "name": "成绩"
+          },
+          {
+            "id": "2ee62cac-b1e7-4974-a521-17f15ffdb85a",
+            "name": "显示地鼠"
+          }
+        ],
+        "reactions": [
+          {
+            "id": "2ff4dfd0-039d-4c00-8e13-95f518fae50b",
+            "label": "开始"
+          },
+          {
+            "id": "6094654d-32c3-42fd-bc3e-b658a18bfb90",
+            "label": "结束"
+          }
+        ]
+      },
       "slots": {},
       "children": [
         {
@@ -430,9 +471,11 @@
                     {
                       "componentName": "Button",
                       "props": {
-                        "type": "primary",
-                        "title": "Button"
+                        "type": "default",
+                        "title": "Button",
+                        "style": {}
                       },
+                      "x-field": {},
                       "slots": {},
                       "children": [
                         {
@@ -461,9 +504,11 @@
                     {
                       "componentName": "Button",
                       "props": {
-                        "type": "primary",
-                        "title": "Button"
+                        "type": "default",
+                        "title": "Button",
+                        "style": {}
                       },
+                      "x-field": {},
                       "slots": {},
                       "children": [
                         {
