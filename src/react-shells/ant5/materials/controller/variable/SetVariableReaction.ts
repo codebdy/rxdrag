@@ -11,7 +11,7 @@ export class SetVariableReaction extends AbstractReaction<IVariableConfig> {
     super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
-      throw new Error("SetProp inputs count error")
+      throw new Error("SetVariable inputs count error")
     }
 
     if(!options?.variableController){

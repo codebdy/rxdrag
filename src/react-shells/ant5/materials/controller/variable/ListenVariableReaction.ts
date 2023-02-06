@@ -6,8 +6,8 @@ export class ListenVariableReaction extends AbstractReaction<IVariableConfig> {
   constructor(meta: IReactionMeta<IVariableConfig>, options?: IReactionFactoryOptions) {
     super(meta, options)
 
-    if (Object.keys(meta.inPorts || {}).length !== 1) {
-      throw new Error("SetProp inputs count error")
+    if (Object.keys(meta.outPorts || {}).length !== 1) {
+      throw new Error("ListenVariable outputs count error")
     }
 
     if (!options?.variableController) {
