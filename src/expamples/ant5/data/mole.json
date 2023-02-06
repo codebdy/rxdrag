@@ -4,7 +4,12 @@
   "children": [
     {
       "componentName": "Row",
-      "props": {},
+      "props": {
+        "style": {
+          "marginTop": "32px"
+        }
+      },
+      "x-field": {},
       "slots": {},
       "children": [
         {
@@ -56,7 +61,28 @@
                   },
                   "x-field": {},
                   "slots": {},
-                  "children": []
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠1",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "componentName": "Col",
@@ -66,7 +92,28 @@
                   },
                   "x-field": {},
                   "slots": {},
-                  "children": []
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠2",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "componentName": "Col",
@@ -76,13 +123,39 @@
                   },
                   "x-field": {},
                   "slots": {},
-                  "children": []
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠3",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
             {
               "componentName": "Row",
-              "props": {},
+              "props": {
+                "style": {
+                  "marginTop": "16px"
+                }
+              },
+              "x-field": {},
               "slots": {},
               "children": [
                 {
@@ -93,7 +166,28 @@
                   },
                   "x-field": {},
                   "slots": {},
-                  "children": []
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠4",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "componentName": "Col",
@@ -103,7 +197,28 @@
                   },
                   "x-field": {},
                   "slots": {},
-                  "children": []
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠5",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "componentName": "Col",
@@ -113,13 +228,39 @@
                   },
                   "x-field": {},
                   "slots": {},
-                  "children": []
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠6",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
             {
               "componentName": "Row",
-              "props": {},
+              "props": {
+                "style": {
+                  "marginTop": "16px"
+                }
+              },
+              "x-field": {},
               "slots": {},
               "children": [
                 {
@@ -130,7 +271,28 @@
                   },
                   "x-field": {},
                   "slots": {},
-                  "children": []
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠7",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "componentName": "Col",
@@ -140,7 +302,28 @@
                   },
                   "x-field": {},
                   "slots": {},
-                  "children": []
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠8",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "componentName": "Col",
@@ -150,7 +333,28 @@
                   },
                   "x-field": {},
                   "slots": {},
-                  "children": []
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "地鼠9",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             }
@@ -162,7 +366,123 @@
             "span": 6
           },
           "slots": {},
-          "children": []
+          "children": [
+            {
+              "componentName": "Row",
+              "props": {},
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 24,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Row",
+                      "props": {},
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "Col",
+                          "props": {
+                            "span": 12,
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Input",
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "componentName": "Row",
+              "props": {
+                "style": {
+                  "marginTop": "16px"
+                }
+              },
+              "x-field": {},
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 12,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "开始",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 12,
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "type": "primary",
+                        "title": "Button"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TextView",
+                          "props": {
+                            "content": "结束",
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }
