@@ -3,8 +3,8 @@ import { IReactionFactoryOptions, ReactionFactory } from "runner/reaction/interf
 import { IVariableConfig } from "./SetVariableReaction";
 
 export class ListenVariableReaction extends AbstractReaction<IVariableConfig> {
-  constructor(meta: IReactionMeta<IVariableConfig>, private options?: IReactionFactoryOptions) {
-    super(meta)
+  constructor(meta: IReactionMeta<IVariableConfig>, options?: IReactionFactoryOptions) {
+    super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("SetProp inputs count error")
@@ -28,5 +28,5 @@ export class ListenVariableReaction extends AbstractReaction<IVariableConfig> {
 }
 
 export const ListenVariable: ReactionFactory = (meta: IReactionMeta<IVariableConfig>, options?: IReactionFactoryOptions) => {
-  return new ListenVariableReaction(meta)
+  return new ListenVariableReaction(meta, options)
 }

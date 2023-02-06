@@ -7,8 +7,9 @@ export class GraphicalReaction implements IReaction {
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];
   reactions: IReaction[] = [];
-  constructor(private meta: IReactionDefineMeta, private options?:IReactionFactoryOptions) {
+  constructor(private meta: IReactionDefineMeta, private options?: IReactionFactoryOptions) {
     this.id = meta.id
+
     //第一步，解析节点
     this.constructReactions()
 
@@ -26,6 +27,7 @@ export class GraphicalReaction implements IReaction {
           this.outputs.push(new Jointer(reactionMeta.id));
           break;
         case ReactionType.SingleReaction:
+        case ReactionType.ControllerDefaultReaction:
         case ReactionType.ControllerReaction:
           const material = this.getMaterial(reactionMeta.materialName)
           if (material?.reaction) {
@@ -36,23 +38,23 @@ export class GraphicalReaction implements IReaction {
     }
   }
 
-  private contructRelations(){
+  private contructRelations() {
     for (const invokeMeta of this.meta.logicMetas?.invokes || []) {
-      let sourceJointer = this.inputs.find(jointer=>jointer.id === invokeMeta.source.nodeId)
-      if(!sourceJointer && invokeMeta.source.portId){
-        sourceJointer = this.reactions.find(reaction=>reaction.id === invokeMeta.source.nodeId)?.outputs.find(output=>output.id === invokeMeta.source.portId)
+      let sourceJointer = this.inputs.find(jointer => jointer.id === invokeMeta.source.nodeId)
+      if (!sourceJointer && invokeMeta.source.portId) {
+        sourceJointer = this.reactions.find(reaction => reaction.id === invokeMeta.source.nodeId)?.outputs.find(output => output.id === invokeMeta.source.portId)
       }
 
-      if(!sourceJointer){
+      if (!sourceJointer) {
         throw new Error("Can find source jointer")
       }
 
-      let targetJointer = this.outputs.find(jointer=>jointer.id === invokeMeta.target.nodeId)
-      if(!targetJointer && invokeMeta.target.portId){
-        targetJointer = this.reactions.find(reaction=>reaction.id === invokeMeta.target.nodeId)?.inputs.find(input=>input.id === invokeMeta.target.portId)
+      let targetJointer = this.outputs.find(jointer => jointer.id === invokeMeta.target.nodeId)
+      if (!targetJointer && invokeMeta.target.portId) {
+        targetJointer = this.reactions.find(reaction => reaction.id === invokeMeta.target.nodeId)?.inputs.find(input => input.id === invokeMeta.target.portId)
       }
 
-      if(!targetJointer){
+      if (!targetJointer) {
         throw new Error("Can find target jointer")
       }
 

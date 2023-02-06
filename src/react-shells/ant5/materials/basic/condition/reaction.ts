@@ -1,5 +1,5 @@
 import { AbstractReaction, IConfigMeta, IReactionMeta } from "runner/reaction";
-import { ReactionFactory } from "runner/reaction/interfaces/controller";
+import { IReactionFactoryOptions, ReactionFactory } from "runner/reaction/interfaces/controller";
 
 export interface IConditionConfig extends IConfigMeta {
   trueExpression?: string
@@ -7,8 +7,8 @@ export interface IConditionConfig extends IConfigMeta {
 
 export class ConditionReaction extends AbstractReaction<IConditionConfig> {
 
-  constructor(meta: IReactionMeta<IConditionConfig>) {
-    super(meta)
+  constructor(meta: IReactionMeta<IConditionConfig>, options?: IReactionFactoryOptions) {
+    super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("Condition inputs count error")
@@ -25,6 +25,6 @@ export class ConditionReaction extends AbstractReaction<IConditionConfig> {
 
 }
 
-export const Condition: ReactionFactory = (meta: IReactionMeta<IConditionConfig>) => {
-  return new ConditionReaction(meta)
+export const Condition: ReactionFactory = (meta: IReactionMeta<IConditionConfig>, options?: IReactionFactoryOptions) => {
+  return new ConditionReaction(meta, options)
 }

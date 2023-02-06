@@ -7,8 +7,8 @@ export interface IVariableConfig extends IConfigMeta {
 
 export class SetVariableReaction extends AbstractReaction<IVariableConfig> {
 
-  constructor(meta: IReactionMeta<IVariableConfig>, private options?: IReactionFactoryOptions) {
-    super(meta)
+  constructor(meta: IReactionMeta<IVariableConfig>, options?: IReactionFactoryOptions) {
+    super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("SetProp inputs count error")
@@ -29,5 +29,5 @@ export class SetVariableReaction extends AbstractReaction<IVariableConfig> {
 }
 
 export const SetVariable: ReactionFactory = (meta: IReactionMeta<IVariableConfig>, options?: IReactionFactoryOptions) => {
-  return new SetVariableReaction(meta)
+  return new SetVariableReaction(meta, options)
 }

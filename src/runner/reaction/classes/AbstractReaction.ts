@@ -1,11 +1,11 @@
-import { IConfigMeta, IJointer, IReaction, IReactionMeta } from "../interfaces";
+import { IConfigMeta, IJointer, IReaction, IReactionFactoryOptions, IReactionMeta } from "../interfaces";
 import { Jointer } from "./jointer";
 
 export abstract class AbstractReaction<ConfigMeta extends IConfigMeta> implements IReaction {
   id: string;
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];
-  constructor(protected meta: IReactionMeta<ConfigMeta>) {
+  constructor(protected meta: IReactionMeta<ConfigMeta>, protected options?: IReactionFactoryOptions) {
     this.id = meta.id
     for (const out of meta.outPorts || []) {
       this.outputs.push(new Jointer(out.id, out.name))

@@ -1,5 +1,5 @@
 import { AbstractReaction, IConfigMeta, IReactionMeta } from "runner/reaction";
-import { ReactionFactory } from "runner/reaction/interfaces/controller";
+import { IReactionFactoryOptions, ReactionFactory } from "runner/reaction/interfaces/controller";
 
 export interface IJsCodeConfig extends IConfigMeta {
   expression?: string
@@ -7,8 +7,8 @@ export interface IJsCodeConfig extends IConfigMeta {
 
 export class JsCodeReaction extends AbstractReaction<IJsCodeConfig> {
 
-  constructor(meta: IReactionMeta<IJsCodeConfig>) {
-    super(meta)
+  constructor(meta: IReactionMeta<IJsCodeConfig>, options?: IReactionFactoryOptions) {
+    super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("JsCodeReaction inputs count error")
@@ -25,6 +25,6 @@ export class JsCodeReaction extends AbstractReaction<IJsCodeConfig> {
 
 }
 
-export const JsCode: ReactionFactory = (meta: IReactionMeta<IJsCodeConfig>) => {
-  return new JsCodeReaction(meta)
+export const JsCode: ReactionFactory = (meta: IReactionMeta<IJsCodeConfig>, options?: IReactionFactoryOptions) => {
+  return new JsCodeReaction(meta, options)
 }

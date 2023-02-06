@@ -7,14 +7,14 @@ export interface ISetPropConfig extends IConfigMeta {
 
 export class SetPropReaction extends AbstractReaction<ISetPropConfig> {
 
-  constructor(meta: IReactionMeta<ISetPropConfig>, private options?: IReactionFactoryOptions) {
-    super(meta)
+  constructor(meta: IReactionMeta<ISetPropConfig>, options?: IReactionFactoryOptions) {
+    super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("SetProp inputs count error")
     }
 
-    if(!options?.propsController){
+    if (!options?.propsController) {
       throw new Error("SetProp error: not set PropsController")
     }
 
@@ -29,5 +29,5 @@ export class SetPropReaction extends AbstractReaction<ISetPropConfig> {
 }
 
 export const SetProp: ReactionFactory = (meta: IReactionMeta<ISetPropConfig>, options?: IReactionFactoryOptions) => {
-  return new SetPropReaction(meta)
+  return new SetPropReaction(meta, options)
 }
