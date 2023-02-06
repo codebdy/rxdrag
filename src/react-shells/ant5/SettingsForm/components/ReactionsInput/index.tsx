@@ -2,7 +2,7 @@ import { Button, Form, Input, Modal, Switch } from "antd"
 import { useCurrentNode } from "core-react/hooks/useCurrentNode";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useEffect, useState } from "react"
-import { IControllerMeta, IReactionMeta } from "runner/reaction/interfaces/metas";
+import { IControllerMeta, IReactionDefineMeta } from "runner/reaction/interfaces/metas";
 import { ReactionsEditor } from "./ReactionsEditor";
 import { IEventMeta } from "./ReactionsEditor/interfaces";
 import { createUuid } from "./ReactionsEditor/utils";
@@ -24,7 +24,7 @@ export const ReactionsInput = memo((props: {
   }, [value])
 
   useEffect(() => {
-    const eventMetas: IReactionMeta[] = [...(value?.events || [])]
+    const eventMetas: IReactionDefineMeta[] = [...(value?.events || [])]
     for (const event of events||[]) {
       if (!value?.events?.find(evt => evt.name === event.name)) {
         eventMetas.push({

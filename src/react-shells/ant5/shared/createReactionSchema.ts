@@ -1,3 +1,5 @@
+export const INIT_EVENT_NAME = "init"
+export const DESTORY_EVENT_NAME = "destory"
 
 export type LogicOptions = {
   canBindField?: boolean,
@@ -174,11 +176,11 @@ export function createReactionSchema(logicOptions?: LogicOptions) {
             title: "$controller",
             events: [
               {
-                name: "init",
+                name: INIT_EVENT_NAME,
                 label: "$init",
               },
               {
-                name: "destory",
+                name: DESTORY_EVENT_NAME,
                 label: "$destory",
               },
               {

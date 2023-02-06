@@ -2,6 +2,7 @@ import { IReactionMaterial } from "runner/reaction/interfaces/material"
 import { auxReactions } from "./auxtools"
 import { basicReactions } from "./basic"
 import { commonReactions } from "./common"
+import { controllerReactions } from "./controller"
 import { dataModelReactions } from "./dataModel"
 
 export interface MaterialCategory {
@@ -9,7 +10,7 @@ export interface MaterialCategory {
   materials: IReactionMaterial[]
 }
 
-export const reactionMaterials: MaterialCategory[] = [
+export const reactionMaterialCategories: MaterialCategory[] = [
   {
     name: '$basicReactions',
     materials: basicReactions,
@@ -27,3 +28,8 @@ export const reactionMaterials: MaterialCategory[] = [
     materials: auxReactions,
   }
 ]
+
+export const getAllMaterial = () => {
+  const materials: IReactionMaterial[] = [...controllerReactions]
+  return materials.concat(...reactionMaterialCategories.map(category => category.materials))
+}

@@ -2,7 +2,7 @@ import { PlusOutlined, ThunderboltOutlined } from "@ant-design/icons";
 import { Button, Typography } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useState } from "react"
-import { IControllerMeta, IReactionMeta, IVariableMeta } from "runner/reaction/interfaces/metas";
+import { IControllerMeta, IReactionDefineMeta, IVariableDefineMeta } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
 import { methodIcon, variableIcon } from "../../../../../../icons/reactions";
 import { createUuid } from "../../utils";
@@ -66,7 +66,7 @@ export const Members = memo((
 
   const handleAddReactionOk = useCallback((name?: string) => {
     if (name) {
-      const newReaction: IReactionMeta = {
+      const newReaction: IReactionDefineMeta = {
         id: createUuid(),
         label: name,
       }
@@ -83,7 +83,7 @@ export const Members = memo((
 
   const handleAddVariableOk = useCallback((name?: string) => {
     if (name) {
-      const newVariable: IVariableMeta = {
+      const newVariable: IVariableDefineMeta = {
         id: createUuid(),
         name: name,
       }

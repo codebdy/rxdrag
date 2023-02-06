@@ -37,7 +37,7 @@ export interface IConfigMeta {
   reactionRef?: string;//reaction id or name(default reaction)
 }
 
-export interface IReactionNodeMeta<ConfigMeta extends IConfigMeta = IConfigMeta> extends IReactionNodeData {
+export interface IReactionMeta<ConfigMeta extends IConfigMeta = IConfigMeta> extends IReactionNodeData {
   id: string;
   type: ReactionType;
   materialName: string;
@@ -61,30 +61,33 @@ export interface IInvokeMeta {
 }
 
 export interface ILogicMetas {
-  reactions: IReactionNodeMeta<IConfigMeta>[];
+  reactions: IReactionMeta<IConfigMeta>[];
   invokes: IInvokeMeta[];
 }
 
-export interface IReactionMeta {
+export interface IReactionDefineMeta {
   id: string,
   name?: string,
   label?: string,
-  //title?: string,
+  //可视化场景使用
   logicMetas?: ILogicMetas,
+  //不能可视化的场景使用，比如右侧属性面板
+  jsCode?: string,
+}
+
+export interface IVariableDefineMeta {
+  id: string,
+  name: string
 }
 
 // $form 虚拟表单， 
 // $field 当前字段, 设置字段：$field.setValue
 // $self 组件，设置组件属性:$self.setProps({dataSource:[...]}), 
-export interface IVariableMeta {
-  id: string,
-  name: string
-}
 export interface IControllerMeta {
   // undefined 表示不开启控制器
   id?: string,
   name?: string,
-  events?: IReactionMeta[],
-  reactions?: IReactionMeta[],
-  variables?: IVariableMeta[],
+  events?: IReactionDefineMeta[],
+  reactions?: IReactionDefineMeta[],
+  variables?: IVariableDefineMeta[],
 }

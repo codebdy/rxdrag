@@ -5,15 +5,17 @@ import { PreviewRoot } from "core-react/PreviewRoot"
 import { IDocument, INodeSchema } from "core/interfaces"
 import { memo, useEffect, useMemo, useState } from "react"
 import { ComponentRender } from "runner/ComponentRender"
+import { IReactionMaterial } from "runner/reaction"
 import { ThemeProvider } from "styled-components"
 
 export const PreviewRender = memo((
   props: {
     components?: IComponents
     doc?: IDocument,
+    reactionMaterials: IReactionMaterial[]
   }
 ) => {
-  const { components, doc } = props
+  const { components, doc, reactionMaterials } = props
   const [tree, setTree] = useState<INodeSchema>()
   const [viewType] = useDocumentViewTypeState(doc?.id)
   const [, token] = useToken()
@@ -33,6 +35,7 @@ export const PreviewRender = memo((
     <ThemeProvider theme={theme}>
       <PreviewRoot
         components={components}
+        reactionMaterials = {reactionMaterials}
       >
         {
           tree &&

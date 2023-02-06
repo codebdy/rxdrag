@@ -1,0 +1,428 @@
+{
+  "componentName": "Root",
+  "slots": {},
+  "children": [
+    {
+      "componentName": "Row",
+      "props": {},
+      "slots": {},
+      "children": [
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6,
+            "style": {}
+          },
+          "x-field": {},
+          "x-reactions": {
+            "id": "7e25d7c2-8df7-450c-9de2-efaabc484fad",
+            "name": "列容器",
+            "events": [
+              {
+                "id": "11c96872-656b-4475-ab76-1d89bbc64fef",
+                "name": "init",
+                "label": "初始化"
+              },
+              {
+                "id": "d7612c08-1224-4a48-bc53-8a56d99e9ca8",
+                "name": "destory",
+                "label": "销毁"
+              },
+              {
+                "id": "93b2e4dc-93a3-4e86-b20e-2592b95cd410",
+                "name": "onClick",
+                "label": "点击"
+              }
+            ],
+            "variables": [
+              {
+                "id": "66fddbc6-68d5-4437-9e76-f3cdff8a2481",
+                "name": "变量1"
+              }
+            ]
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Button",
+              "props": {
+                "type": "primary",
+                "title": "Button",
+                "style": {}
+              },
+              "x-field": {},
+              "x-reactions": {
+                "id": "c208de68-19cc-45d4-93b6-9576cbaa2326",
+                "events": [
+                  {
+                    "id": "01294977-ed1f-456a-9ee9-a254c75cd958",
+                    "name": "init",
+                    "label": "初始化"
+                  },
+                  {
+                    "id": "21a55126-79c5-42ad-a6af-d48a1aeebd3e",
+                    "name": "destory",
+                    "label": "销毁"
+                  },
+                  {
+                    "id": "95407ca6-f39e-42e7-8e8a-3dee90bb7e8c",
+                    "name": "onClick",
+                    "label": "点击",
+                    "logicMetas": {
+                      "reactions": [
+                        {
+                          "id": "650e0627-89fe-4448-91fd-4cb7946bdb4b",
+                          "label": "输入",
+                          "type": "Start",
+                          "materialName": "start",
+                          "name": "input",
+                          "x6Node": {
+                            "x": 100,
+                            "y": 130,
+                            "width": 20,
+                            "height": 20
+                          }
+                        },
+                        {
+                          "id": "f9f2de92-dd21-4a70-93dd-8a771bf65961",
+                          "label": "变量赋值",
+                          "type": "ControllerDefaultReaction",
+                          "materialName": "setVariable",
+                          "inPorts": [
+                            {
+                              "id": "1f7b254e-b968-4f0b-9412-977701b16970",
+                              "name": "input",
+                              "label": ""
+                            }
+                          ],
+                          "config": {
+                            "controllerId": "7e25d7c2-8df7-450c-9de2-efaabc484fad",
+                            "reactionRef": "setVariable",
+                            "variable": "变量1"
+                          },
+                          "x6Node": {
+                            "x": 470,
+                            "y": 240,
+                            "width": 126,
+                            "height": 48
+                          }
+                        },
+                        {
+                          "id": "13f4b500-f10b-490a-9f49-66ef10a7eca6",
+                          "label": "JS代码",
+                          "type": "SingleReaction",
+                          "materialName": "jsCode",
+                          "inPorts": [
+                            {
+                              "id": "4e9d760c-af7a-4717-8a59-46311af71c79",
+                              "name": "input",
+                              "label": ""
+                            }
+                          ],
+                          "outPorts": [
+                            {
+                              "id": "d3740591-0cbc-47a4-924a-0f9ca40ab7a2",
+                              "name": "output",
+                              "label": "output"
+                            }
+                          ],
+                          "x6Node": {
+                            "x": 220,
+                            "y": 210,
+                            "width": 102,
+                            "height": 32
+                          },
+                          "config": {
+                            "expression": "({ inputValue, outputs }) => {\n  const { output } = outputs;\n  output('测试');\n}"
+                          }
+                        }
+                      ],
+                      "invokes": [
+                        {
+                          "id": "9d5a356e-dcb6-41a4-926f-00a64035e480",
+                          "source": {
+                            "nodeId": "650e0627-89fe-4448-91fd-4cb7946bdb4b"
+                          },
+                          "target": {
+                            "nodeId": "13f4b500-f10b-490a-9f49-66ef10a7eca6",
+                            "portId": "4e9d760c-af7a-4717-8a59-46311af71c79"
+                          }
+                        },
+                        {
+                          "id": "da4a7f6b-3389-447f-983e-aafafa3e5413",
+                          "source": {
+                            "nodeId": "13f4b500-f10b-490a-9f49-66ef10a7eca6",
+                            "portId": "d3740591-0cbc-47a4-924a-0f9ca40ab7a2"
+                          },
+                          "target": {
+                            "nodeId": "f9f2de92-dd21-4a70-93dd-8a771bf65961",
+                            "portId": "1f7b254e-b968-4f0b-9412-977701b16970"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "TextView",
+                  "props": {
+                    "content": "Button",
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "x-reactions": {
+                    "id": "47d4c392-ada3-4b4b-9459-dee9d05e8a7a",
+                    "events": [
+                      {
+                        "id": "dd891873-a9de-4af2-b514-0f4fab0914fd",
+                        "name": "init",
+                        "label": "初始化",
+                        "logicMetas": {
+                          "reactions": [
+                            {
+                              "id": "80a912c7-f060-4972-8334-8d696123d216",
+                              "label": "输入",
+                              "type": "Start",
+                              "materialName": "start",
+                              "name": "input",
+                              "x6Node": {
+                                "x": 120,
+                                "y": 110,
+                                "width": 20,
+                                "height": 20
+                              }
+                            },
+                            {
+                              "id": "3073c5fb-82e2-4002-b318-642e004348c7",
+                              "label": "设置属性",
+                              "type": "ControllerDefaultReaction",
+                              "materialName": "setProp",
+                              "inPorts": [
+                                {
+                                  "id": "83e0ab08-cd91-43c5-ab84-a9b3ce7c87bb",
+                                  "name": "input",
+                                  "label": ""
+                                }
+                              ],
+                              "config": {
+                                "controllerId": "47d4c392-ada3-4b4b-9459-dee9d05e8a7a",
+                                "reactionRef": "setProp",
+                                "prop": "content"
+                              },
+                              "x6Node": {
+                                "x": 400,
+                                "y": 150,
+                                "width": 116,
+                                "height": 48
+                              }
+                            },
+                            {
+                              "id": "8d414786-9bb0-4726-897a-6ed560121b85",
+                              "label": "JS代码",
+                              "type": "SingleReaction",
+                              "materialName": "jsCode",
+                              "inPorts": [
+                                {
+                                  "id": "4955a397-4692-4a92-b8f4-97ddacd38982",
+                                  "name": "input",
+                                  "label": ""
+                                }
+                              ],
+                              "outPorts": [
+                                {
+                                  "id": "7c24accd-71db-4c09-964f-87cd1feea4a7",
+                                  "name": "output",
+                                  "label": "output"
+                                }
+                              ],
+                              "x6Node": {
+                                "x": 200,
+                                "y": 230,
+                                "width": 102,
+                                "height": 32
+                              },
+                              "config": {
+                                "expression": "({ inputValue, outputs }) => {\n  const { output } = outputs;\n  output('替换后的文字');\n}"
+                              }
+                            }
+                          ],
+                          "invokes": [
+                            {
+                              "id": "093af1a8-37ec-4965-8fc3-d18311c5e928",
+                              "source": {
+                                "nodeId": "80a912c7-f060-4972-8334-8d696123d216"
+                              },
+                              "target": {
+                                "nodeId": "8d414786-9bb0-4726-897a-6ed560121b85",
+                                "portId": "4955a397-4692-4a92-b8f4-97ddacd38982"
+                              }
+                            },
+                            {
+                              "id": "8d079f7d-0a8e-4092-a3a1-e87e232d9b0f",
+                              "source": {
+                                "nodeId": "8d414786-9bb0-4726-897a-6ed560121b85",
+                                "portId": "7c24accd-71db-4c09-964f-87cd1feea4a7"
+                              },
+                              "target": {
+                                "nodeId": "3073c5fb-82e2-4002-b318-642e004348c7",
+                                "portId": "83e0ab08-cd91-43c5-ab84-a9b3ce7c87bb"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "id": "5441e728-af4c-4473-a2f2-86516617fe9f",
+                        "name": "destory",
+                        "label": "销毁"
+                      },
+                      {
+                        "id": "cc7e7977-e923-4659-bb9b-8155688b150b",
+                        "name": "onClick",
+                        "label": "点击"
+                      }
+                    ]
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "componentName": "Button",
+              "props": {
+                "type": "primary",
+                "title": "Button"
+              },
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "TextView",
+                  "props": {
+                    "content": "被动按钮",
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "x-reactions": {
+                    "id": "047bc4dc-6ef7-41fa-b969-f9c308831770",
+                    "events": [
+                      {
+                        "id": "f1102e56-599f-4c66-8ea5-815c52c300cd",
+                        "name": "init",
+                        "label": "初始化",
+                        "logicMetas": {
+                          "reactions": [
+                            {
+                              "id": "d9c4d20b-3c28-4590-b229-da074107b18f",
+                              "label": "监听变量",
+                              "type": "ControllerDefaultReaction",
+                              "materialName": "listenVariable",
+                              "outPorts": [
+                                {
+                                  "id": "7d8db643-65d8-4a90-91f0-0488eeca98fc",
+                                  "name": "output",
+                                  "label": ""
+                                }
+                              ],
+                              "config": {
+                                "controllerId": "7e25d7c2-8df7-450c-9de2-efaabc484fad",
+                                "reactionRef": "setVariable",
+                                "variable": "变量1"
+                              },
+                              "x6Node": {
+                                "x": 240,
+                                "y": 230,
+                                "width": 126,
+                                "height": 48
+                              }
+                            },
+                            {
+                              "id": "b508ac63-fff7-48c9-a749-d24e0724e7da",
+                              "label": "设置属性",
+                              "type": "ControllerDefaultReaction",
+                              "materialName": "setProp",
+                              "inPorts": [
+                                {
+                                  "id": "9e7cfa83-9a21-4618-8ec6-f644d0f9a088",
+                                  "name": "input",
+                                  "label": ""
+                                }
+                              ],
+                              "config": {
+                                "controllerId": "047bc4dc-6ef7-41fa-b969-f9c308831770",
+                                "reactionRef": "setProp",
+                                "prop": "content"
+                              },
+                              "x6Node": {
+                                "x": 500,
+                                "y": 240,
+                                "width": 116,
+                                "height": 32
+                              }
+                            }
+                          ],
+                          "invokes": [
+                            {
+                              "id": "a039c8c0-3e56-4afa-89a4-a277cdfb3c1b",
+                              "source": {
+                                "nodeId": "d9c4d20b-3c28-4590-b229-da074107b18f",
+                                "portId": "7d8db643-65d8-4a90-91f0-0488eeca98fc"
+                              },
+                              "target": {
+                                "nodeId": "b508ac63-fff7-48c9-a749-d24e0724e7da",
+                                "portId": "9e7cfa83-9a21-4618-8ec6-f644d0f9a088"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "id": "ae29aa57-0da5-4acf-af7f-ef16512a8bfc",
+                        "name": "destory",
+                        "label": "销毁"
+                      },
+                      {
+                        "id": "0925b709-0fd5-417c-80c6-52a9b926bbfa",
+                        "name": "onClick",
+                        "label": "点击"
+                      }
+                    ]
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6
+          },
+          "slots": {},
+          "children": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 import { GlobalToken } from "antd/es/theme/interface"
-import { IConfigMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas"
+import { IConfigMeta, IReactionMeta } from "runner/reaction/interfaces/metas"
 
 const STROKE_WIDTH = 2
-export const getStartNodeConfig = (nodeMeta: IReactionNodeMeta<IConfigMeta>, token: GlobalToken) => {
+export const getStartNodeConfig = (nodeMeta: IReactionMeta<IConfigMeta>, token: GlobalToken) => {
   return {
     id: nodeMeta.id,
     shape: 'circle',

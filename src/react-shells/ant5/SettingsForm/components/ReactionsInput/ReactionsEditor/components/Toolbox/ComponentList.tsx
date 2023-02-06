@@ -1,8 +1,10 @@
 import { Space, Typography } from "antd";
 import { memo, useCallback } from "react"
-import { listenVariableMaterial, reactionMaterial, setPropMaterial, setVariableMaterial } from "react-shells/ant5/materials/controllerReactions";
+import { reactionMaterial } from "react-shells/ant5/materials/controller/reaction";
+import { setPropMaterial } from "react-shells/ant5/materials/controller/setProp";
+import { setVariableMaterial, listenVariableMaterial } from "react-shells/ant5/materials/controller/variable";
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
-import { IControllerMeta, IReactionMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
+import { IControllerMeta, IReactionDefineMeta, IReactionMeta } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
 import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon } from "../../../../../../icons/reactions";
 import { useController } from "../../hooks/useController";
@@ -43,7 +45,7 @@ export const ComponentList = memo((
       if (!graph) {
         return;
       }
-      const nodeMeta: IReactionNodeMeta = {
+      const nodeMeta: IReactionMeta = {
         id: createUuid(),
         label: t(marterial.label),
         type: marterial.reactionType,
@@ -59,12 +61,12 @@ export const ComponentList = memo((
     };
   }, [dnd, getNodeConfig, graph, t])
 
-  const startDragFn = useCallback((reaction: IReactionMeta, marterial: IReactionMaterial, controllerId: string | undefined) => {
+  const startDragFn = useCallback((reaction: IReactionDefineMeta, marterial: IReactionMaterial, controllerId: string | undefined) => {
     return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       if (!graph) {
         return;
       }
-      const nodeMeta: IReactionNodeMeta = {
+      const nodeMeta: IReactionMeta = {
         id: createUuid(),
         label: reaction.label || reaction.name,
         type: marterial.reactionType,

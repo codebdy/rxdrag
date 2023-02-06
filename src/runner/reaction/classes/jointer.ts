@@ -1,19 +1,27 @@
-import { InputHandler, IHandlerArgs, IJointer } from "../interfaces/interfaces";
+import { InputHandler, IJointer } from "../interfaces/controller";
 
-export class Jointer implements IJointer{
-  private outlets: InputHandler[] = []
+export class Jointer implements IJointer {
+  private outlets: (IJointer | InputHandler)[] = []
 
-  flowIn: InputHandler = (args?: IHandlerArgs) => {
-    for (const hanlder of this.outlets) {
-      hanlder(args)
+  constructor(public id: string, public name: string) {
+
+  }
+
+  push: InputHandler = (inputValue?: any) => {
+    for (const jointer of this.outlets) {
+      if (typeof jointer === "function") {
+        jointer(inputValue)
+      } else {
+        jointer.push(inputValue)
+      }
     }
   }
 
-  addHandler = (handler: InputHandler) => {
-    this.outlets.push(handler)
+  connect = (jointer: IJointer | InputHandler) => {
+    this.outlets.push(jointer)
   }
 
-  removeHandler = (handler: InputHandler) => {
-    this.outlets.splice(this.outlets.indexOf(handler), 1)
+  disconnect = (jointer: IJointer | InputHandler) => {
+    this.outlets.splice(this.outlets.indexOf(jointer), 1)
   }
 }

@@ -1,6 +1,6 @@
 import { useCurrentNode } from "core-react/hooks/useCurrentNode";
 import { useCallback } from "react";
-import { IConfigMeta, IControllerMeta, IReactionNodeMeta } from "runner/reaction/interfaces/metas";
+import { IConfigMeta, IControllerMeta, IReactionMeta } from "runner/reaction/interfaces/metas";
 import { useControllerNodes } from "./useControllerNodes";
 import { useGetMaterial } from "./useGetMaterial";
 
@@ -9,7 +9,7 @@ export function useGetSubLabel() {
   const currentNode = useCurrentNode()
   const getMaterial = useGetMaterial()
 
-  const getLabel = useCallback((nodeMeta: IReactionNodeMeta<IConfigMeta>) => {
+  const getLabel = useCallback((nodeMeta: IReactionMeta<IConfigMeta>) => {
     const material = getMaterial(nodeMeta.materialName)
     const subTitle = material?.subTitle?.(nodeMeta.config)
     const controllerNode = controllerNodes.find(node => (node.meta?.["x-reactions"] as IControllerMeta | undefined)?.id === nodeMeta.config?.controllerId && nodeMeta.config?.controllerId)

@@ -4,12 +4,12 @@ import styled from "styled-components";
 import { useDnd } from "../../hooks/useDnd";
 import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
 import { ToolItem } from "./ToolItem";
-import { IReactionNodeMeta } from "runner/reaction/interfaces/metas";
+import { IReactionMeta } from "runner/reaction/interfaces/metas";
 import { createUuid } from "../../utils";
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { useTrans } from "../../hooks/useTrans";
 import { ComponentList } from "./ComponentList";
-import { reactionMaterials } from "react-shells/ant5/materials";
+import { reactionMaterialCategories } from "react-shells/ant5/materials";
 import { useGraph } from "../../hooks/useGraph";
 const { Panel } = AntdCollapse;
 
@@ -40,7 +40,7 @@ export const Toolbox = memo((props: {
       if (!graph) {
         return;
       }
-      const nodeMeta: IReactionNodeMeta = {
+      const nodeMeta: IReactionMeta = {
         id: createUuid(),
         label: t(marterial.label),
         type: marterial.reactionType,
@@ -54,9 +54,9 @@ export const Toolbox = memo((props: {
 
   return (
     <StyledToolbox>
-      <Collapse defaultActiveKey={['1']} bordered={false} accordion expandIconPosition="end">
+      <Collapse defaultActiveKey={[reactionMaterialCategories?.[0].name]} bordered={false} accordion expandIconPosition="end">
         {
-          reactionMaterials.map(category => {
+          reactionMaterialCategories.map(category => {
             return (
               <Panel key={category.name} header={t(category.name)}>
                 <Row gutter={8}>
