@@ -1,8 +1,8 @@
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { ReactionType } from "runner/reaction/interfaces/metas";
-import { infoIcon, jsIcon, loadingIcon, routeIcon, simulateIcon } from "../../icons/reactions";
+import { infoIcon, loadingIcon, routeIcon, simulateIcon } from "../../icons/reactions";
 import { createUuid } from "../../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
-import { jsCodeSchema } from "./schemas/jsCode";
+import { jsCodeMaterial } from "./jsCode";
 
 export const commonReactions: IReactionMaterial[] = [
   {
@@ -72,27 +72,5 @@ export const commonReactions: IReactionMaterial[] = [
       ],
     }
   },
-  {
-    name: "jsCode",
-    icon: jsIcon,
-    label: "$jsCode",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      inPorts: [
-        {
-          id: createUuid(),
-          name: "input",
-          label: "",
-        },
-      ],
-      outPorts: [
-        {
-          id: createUuid(),
-          name: "output",
-          label: "output",
-        },
-      ],
-    },
-    schema: jsCodeSchema,
-  },
+  jsCodeMaterial,
 ]

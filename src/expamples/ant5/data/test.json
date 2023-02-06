@@ -25,7 +25,122 @@
                 {
                   "componentName": "TextView",
                   "props": {
-                    "content": "Button"
+                    "content": "Button",
+                    "style": {}
+                  },
+                  "x-field": {},
+                  "x-reactions": {
+                    "id": "47d4c392-ada3-4b4b-9459-dee9d05e8a7a",
+                    "events": [
+                      {
+                        "id": "dd891873-a9de-4af2-b514-0f4fab0914fd",
+                        "name": "init",
+                        "label": "初始化",
+                        "logicMetas": {
+                          "reactions": [
+                            {
+                              "id": "80a912c7-f060-4972-8334-8d696123d216",
+                              "label": "输入",
+                              "type": "Start",
+                              "materialName": "start",
+                              "name": "input",
+                              "x6Node": {
+                                "x": 120,
+                                "y": 110,
+                                "width": 20,
+                                "height": 20
+                              }
+                            },
+                            {
+                              "id": "3073c5fb-82e2-4002-b318-642e004348c7",
+                              "label": "设置属性",
+                              "type": "ControllerDefaultReaction",
+                              "materialName": "setProp",
+                              "inPorts": [
+                                {
+                                  "id": "83e0ab08-cd91-43c5-ab84-a9b3ce7c87bb",
+                                  "name": "input",
+                                  "label": ""
+                                }
+                              ],
+                              "config": {
+                                "controllerId": "47d4c392-ada3-4b4b-9459-dee9d05e8a7a",
+                                "reactionRef": "setProp",
+                                "prop": "content"
+                              },
+                              "x6Node": {
+                                "x": 400,
+                                "y": 150,
+                                "width": 116,
+                                "height": 48
+                              }
+                            },
+                            {
+                              "id": "8d414786-9bb0-4726-897a-6ed560121b85",
+                              "label": "JS代码",
+                              "type": "SingleReaction",
+                              "materialName": "jsCode",
+                              "inPorts": [
+                                {
+                                  "id": "4955a397-4692-4a92-b8f4-97ddacd38982",
+                                  "name": "input",
+                                  "label": ""
+                                }
+                              ],
+                              "outPorts": [
+                                {
+                                  "id": "7c24accd-71db-4c09-964f-87cd1feea4a7",
+                                  "name": "output",
+                                  "label": "output"
+                                }
+                              ],
+                              "x6Node": {
+                                "x": 200,
+                                "y": 230,
+                                "width": 102,
+                                "height": 32
+                              },
+                              "config": {
+                                "expression": "output(\"test\")"
+                              }
+                            }
+                          ],
+                          "invokes": [
+                            {
+                              "id": "093af1a8-37ec-4965-8fc3-d18311c5e928",
+                              "source": {
+                                "nodeId": "80a912c7-f060-4972-8334-8d696123d216"
+                              },
+                              "target": {
+                                "nodeId": "8d414786-9bb0-4726-897a-6ed560121b85",
+                                "portId": "4955a397-4692-4a92-b8f4-97ddacd38982"
+                              }
+                            },
+                            {
+                              "id": "8d079f7d-0a8e-4092-a3a1-e87e232d9b0f",
+                              "source": {
+                                "nodeId": "8d414786-9bb0-4726-897a-6ed560121b85",
+                                "portId": "7c24accd-71db-4c09-964f-87cd1feea4a7"
+                              },
+                              "target": {
+                                "nodeId": "3073c5fb-82e2-4002-b318-642e004348c7",
+                                "portId": "83e0ab08-cd91-43c5-ab84-a9b3ce7c87bb"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "id": "5441e728-af4c-4473-a2f2-86516617fe9f",
+                        "name": "destory",
+                        "label": "销毁"
+                      },
+                      {
+                        "id": "cc7e7977-e923-4659-bb9b-8155688b150b",
+                        "name": "onClick",
+                        "label": "点击"
+                      }
+                    ]
                   },
                   "slots": {},
                   "children": []
