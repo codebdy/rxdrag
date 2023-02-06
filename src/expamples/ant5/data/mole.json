@@ -1,0 +1,58 @@
+{
+  "componentName": "Root",
+  "slots": {},
+  "children": [
+    {
+      "componentName": "Row",
+      "props": {},
+      "slots": {},
+      "children": [
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 12,
+            "style": {}
+          },
+          "x-field": {},
+          "x-reactions": {
+            "id": "7e25d7c2-8df7-450c-9de2-efaabc484fad",
+            "name": "列容器",
+            "events": [
+              {
+                "id": "11c96872-656b-4475-ab76-1d89bbc64fef",
+                "name": "init",
+                "label": "初始化"
+              },
+              {
+                "id": "d7612c08-1224-4a48-bc53-8a56d99e9ca8",
+                "name": "destory",
+                "label": "销毁"
+              },
+              {
+                "id": "93b2e4dc-93a3-4e86-b20e-2592b95cd410",
+                "name": "onClick",
+                "label": "点击"
+              }
+            ],
+            "variables": [
+              {
+                "id": "66fddbc6-68d5-4437-9e76-f3cdff8a2481",
+                "name": "变量1"
+              }
+            ]
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6
+          },
+          "slots": {},
+          "children": []
+        }
+      ]
+    }
+  ]
+}

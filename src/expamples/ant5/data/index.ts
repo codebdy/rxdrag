@@ -5,12 +5,14 @@ import basicForm from "./basic-form.json"
 import stepForm from "./step-form.json"
 import advanceForm from "./advance-form.json"
 import test from "./test.json"
+import mole from "./mole.json"
 
 export const pages = {
   "dashboard": dashboard,
   "details": details,
   "list": list,
   "test":test,
+  "mole":mole,
 
   "basic-form": basicForm,
   "step-form": stepForm,
