@@ -12,6 +12,10 @@ export class ComponentController implements IComponentController, IVariableContr
   destoryEvent?: InputFunc | undefined;
   events: EventFuncs = {};
   private variables: any = {};
+  private variableListeners: {
+    [name: string]: VariableListener[]
+  } = {}
+  private propsListeners: PropsListener[] = []
 
   constructor(meta: IControllerMeta, protected parentControllers: ComponentControllers, protected materials: IReactionMaterial[]) {
     this.id = meta.id!
@@ -41,19 +45,35 @@ export class ComponentController implements IComponentController, IVariableContr
   }
 
   setVariable = (name: string, value: any): void => {
-    throw new Error("Method not implemented.");
+    this.variables[name] = value
+    const listeners = this.variableListeners[name] || []
+    for (const listener of listeners) {
+      listener(value)
+    }
   }
 
   subcribeToVariableChange = (name: string, listener: VariableListener): UnListener => {
-    throw new Error("Method not implemented.");
+    if (!this.variableListeners[name]) {
+      this.variableListeners[name] = []
+    }
+    this.variableListeners[name].push(listener)
+
+    return () => {
+      this.variableListeners[name].splice(this.variableListeners[name].indexOf(listener), 1)
+    }
   }
 
   setProp(name: string, value: any): void {
-    throw new Error("Method not implemented.");
+    for (const listener of this.propsListeners) {
+      listener(name, value)
+    }
   }
 
   subscribeToPropsChange = (listener: PropsListener): UnListener => {
-    throw new Error("Method not implemented.");
+    this.propsListeners.push(listener)
+    return () => {
+      this.propsListeners.splice(this.propsListeners.indexOf(listener), 1)
+    }
   }
 
   private makeReaction(reactionMeta: IReactionDefineMeta, controllers: ComponentControllers) {
