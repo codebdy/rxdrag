@@ -17,7 +17,105 @@
           {
             "id": "75b515fc-48f3-43e1-af6b-ed5afa5197a5",
             "name": "init",
-            "label": "初始化"
+            "label": "初始化",
+            "logicMetas": {
+              "reactions": [
+                {
+                  "id": "e5d63f37-7eba-40e3-8b10-a0f031a3b72f",
+                  "label": "监听变量",
+                  "type": "ControllerDefaultReaction",
+                  "materialName": "listenVariable",
+                  "outPorts": [
+                    {
+                      "id": "49d434d0-5180-4a6b-9fd6-70c9edf7d8e7",
+                      "name": "output",
+                      "label": ""
+                    }
+                  ],
+                  "config": {
+                    "controllerId": "f8229c79-60be-44fd-a231-2ce7fcaa2b22",
+                    "reactionRef": "setVariable",
+                    "variable": "运行"
+                  },
+                  "x6Node": {
+                    "x": 80,
+                    "y": 150,
+                    "width": 116,
+                    "height": 48
+                  }
+                },
+                {
+                  "id": "d9e7f528-01f4-465f-b803-16fe6d2dc6e9",
+                  "label": "随机数",
+                  "type": "SingleReaction",
+                  "materialName": "random",
+                  "inPorts": [
+                    {
+                      "id": "91214f7b-753c-4fe0-b3bb-2fb25d1a4284",
+                      "name": "startUp",
+                      "label": ""
+                    }
+                  ],
+                  "outPorts": [
+                    {
+                      "id": "d1ced5a9-c135-4495-a953-34bb78ee79d9",
+                      "name": "output",
+                      "label": ""
+                    }
+                  ],
+                  "x6Node": {
+                    "x": 630,
+                    "y": 250,
+                    "width": 102,
+                    "height": 32
+                  }
+                },
+                {
+                  "id": "06249fac-9ad8-488e-8609-5cd4463a56d4",
+                  "label": "条件判断",
+                  "type": "SingleReaction",
+                  "materialName": "condition",
+                  "inPorts": [
+                    {
+                      "id": "368c5ece-7ec6-497a-b2f9-d9ca10b1665d",
+                      "name": "input",
+                      "label": ""
+                    }
+                  ],
+                  "outPorts": [
+                    {
+                      "id": "863e8610-c4ad-41eb-9633-b3f08b224cc3",
+                      "name": "true",
+                      "label": "$true"
+                    },
+                    {
+                      "id": "5aad0672-0b46-49c8-bd89-6b6b23e5485a",
+                      "name": "false",
+                      "label": "$false"
+                    }
+                  ],
+                  "x6Node": {
+                    "x": 290,
+                    "y": 250,
+                    "width": 116,
+                    "height": 32
+                  }
+                }
+              ],
+              "invokes": [
+                {
+                  "id": "e48e36cf-b986-47fa-b387-288c8f0ad6d5",
+                  "source": {
+                    "nodeId": "e5d63f37-7eba-40e3-8b10-a0f031a3b72f",
+                    "portId": "49d434d0-5180-4a6b-9fd6-70c9edf7d8e7"
+                  },
+                  "target": {
+                    "nodeId": "06249fac-9ad8-488e-8609-5cd4463a56d4",
+                    "portId": "368c5ece-7ec6-497a-b2f9-d9ca10b1665d"
+                  }
+                }
+              ]
+            }
           },
           {
             "id": "cc71164d-76b0-40da-9649-ca765f9dfec1",
@@ -37,7 +135,11 @@
           },
           {
             "id": "2ee62cac-b1e7-4974-a521-17f15ffdb85a",
-            "name": "显示地鼠"
+            "name": "活跃地鼠"
+          },
+          {
+            "id": "f6bdab68-834e-4df4-b018-24f724d1321e",
+            "name": "运行"
           }
         ],
         "reactions": [
@@ -46,7 +148,7 @@
             "label": "开始"
           },
           {
-            "id": "6094654d-32c3-42fd-bc3e-b658a18bfb90",
+            "id": "61507d00-c2d7-42e7-9e25-a9c4e16d8ec4",
             "label": "结束"
           }
         ]
