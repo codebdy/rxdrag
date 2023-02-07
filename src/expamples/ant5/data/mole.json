@@ -11,7 +11,7 @@
       },
       "x-field": {},
       "x-reactions": {
-        "id": "f8229c79-60be-44fd-a231-2ce7fcaa2b22",
+        "id": "9a6d5769-790e-4a23-bdfc-6694d6bc5b5a",
         "name": "游戏容器",
         "events": [
           {
@@ -20,30 +20,6 @@
             "label": "初始化",
             "logicMetas": {
               "reactions": [
-                {
-                  "id": "e5d63f37-7eba-40e3-8b10-a0f031a3b72f",
-                  "label": "监听变量",
-                  "type": "ControllerDefaultReaction",
-                  "materialName": "listenVariable",
-                  "outPorts": [
-                    {
-                      "id": "49d434d0-5180-4a6b-9fd6-70c9edf7d8e7",
-                      "name": "output",
-                      "label": ""
-                    }
-                  ],
-                  "config": {
-                    "controllerId": "f8229c79-60be-44fd-a231-2ce7fcaa2b22",
-                    "reactionRef": "setVariable",
-                    "variable": "运行"
-                  },
-                  "x6Node": {
-                    "x": 30,
-                    "y": 210,
-                    "width": 116,
-                    "height": 48
-                  }
-                },
                 {
                   "id": "f704f7d7-ba77-4bbd-8aa9-90935e21694b",
                   "label": "变量赋值",
@@ -137,6 +113,30 @@
                   }
                 },
                 {
+                  "id": "e5d63f37-7eba-40e3-8b10-a0f031a3b72f",
+                  "label": "监听变量",
+                  "type": "ControllerDefaultReaction",
+                  "materialName": "listenVariable",
+                  "outPorts": [
+                    {
+                      "id": "49d434d0-5180-4a6b-9fd6-70c9edf7d8e7",
+                      "name": "output",
+                      "label": ""
+                    }
+                  ],
+                  "config": {
+                    "controllerId": "f8229c79-60be-44fd-a231-2ce7fcaa2b22",
+                    "reactionRef": "setVariable",
+                    "variable": "运行"
+                  },
+                  "x6Node": {
+                    "x": 70,
+                    "y": 150,
+                    "width": 116,
+                    "height": 48
+                  }
+                },
+                {
                   "id": "d9e7f528-01f4-465f-b803-16fe6d2dc6e9",
                   "label": "随机数",
                   "type": "SingleReaction",
@@ -156,10 +156,10 @@
                     }
                   ],
                   "x6Node": {
-                    "x": 670,
-                    "y": 290,
+                    "x": 680,
+                    "y": 280,
                     "width": 102,
-                    "height": 32
+                    "height": 48
                   },
                   "config": {
                     "maxValue": 9,
@@ -869,6 +869,85 @@
                         "style": {}
                       },
                       "x-field": {},
+                      "x-reactions": {
+                        "id": "aa82b386-7847-4652-8fae-263b30ec7b9d",
+                        "events": [
+                          {
+                            "id": "ebe972dd-cd78-41ff-a1d8-7a9da065bd85",
+                            "name": "init",
+                            "label": "初始化"
+                          },
+                          {
+                            "id": "246ca137-da84-42b9-b04a-b981aed60b23",
+                            "name": "destory",
+                            "label": "销毁"
+                          },
+                          {
+                            "id": "6fc70d5b-a9bf-47aa-ac19-8c3c7d7aab67",
+                            "name": "onClick",
+                            "label": "点击",
+                            "logicMetas": {
+                              "reactions": [
+                                {
+                                  "id": "7f5a7551-1dde-428e-bc15-0e1488ca654f",
+                                  "label": "开始",
+                                  "type": "ControllerReaction",
+                                  "materialName": "controllerReaction",
+                                  "inPorts": [
+                                    {
+                                      "id": "c782997a-911d-497b-a89d-bd31d358edef",
+                                      "name": "input",
+                                      "label": ""
+                                    }
+                                  ],
+                                  "outPorts": [
+                                    {
+                                      "id": "f8ac7a03-fc22-4da2-b257-6c0d7aaf24cc",
+                                      "name": "output",
+                                      "label": ""
+                                    }
+                                  ],
+                                  "config": {
+                                    "controllerId": "9a6d5769-790e-4a23-bdfc-6694d6bc5b5a",
+                                    "reactionRef": "2ff4dfd0-039d-4c00-8e13-95f518fae50b"
+                                  },
+                                  "x6Node": {
+                                    "x": 300,
+                                    "y": 210,
+                                    "width": 110,
+                                    "height": 48
+                                  }
+                                },
+                                {
+                                  "id": "6ad54b1a-931d-49b5-adba-669059fedf0c",
+                                  "label": "输入",
+                                  "type": "Start",
+                                  "materialName": "start",
+                                  "name": "input",
+                                  "x6Node": {
+                                    "x": 150,
+                                    "y": 90,
+                                    "width": 20,
+                                    "height": 20
+                                  }
+                                }
+                              ],
+                              "invokes": [
+                                {
+                                  "id": "37fce3fc-5822-4525-9f90-2d2ebb538683",
+                                  "source": {
+                                    "nodeId": "6ad54b1a-931d-49b5-adba-669059fedf0c"
+                                  },
+                                  "target": {
+                                    "nodeId": "7f5a7551-1dde-428e-bc15-0e1488ca654f",
+                                    "portId": "c782997a-911d-497b-a89d-bd31d358edef"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
                       "slots": {},
                       "children": [
                         {
@@ -902,6 +981,85 @@
                         "style": {}
                       },
                       "x-field": {},
+                      "x-reactions": {
+                        "id": "7899324c-54a2-40ba-92c3-74dc52394878",
+                        "events": [
+                          {
+                            "id": "bdefe493-86ff-45e7-910f-34c1262b39c6",
+                            "name": "init",
+                            "label": "初始化"
+                          },
+                          {
+                            "id": "1e243cb3-795f-46ac-ade6-fca2fc8a8fda",
+                            "name": "destory",
+                            "label": "销毁"
+                          },
+                          {
+                            "id": "c072da2b-d6af-4c2c-b315-11b114373d6a",
+                            "name": "onClick",
+                            "label": "点击",
+                            "logicMetas": {
+                              "reactions": [
+                                {
+                                  "id": "4d208785-db6a-4ad3-a179-0c2742c11f77",
+                                  "label": "输入",
+                                  "type": "Start",
+                                  "materialName": "start",
+                                  "name": "input",
+                                  "x6Node": {
+                                    "x": 220,
+                                    "y": 190,
+                                    "width": 20,
+                                    "height": 20
+                                  }
+                                },
+                                {
+                                  "id": "572282af-92bc-4e8a-993c-8a576dcedd8b",
+                                  "label": "结束",
+                                  "type": "ControllerReaction",
+                                  "materialName": "controllerReaction",
+                                  "inPorts": [
+                                    {
+                                      "id": "c782997a-911d-497b-a89d-bd31d358edef",
+                                      "name": "input",
+                                      "label": ""
+                                    }
+                                  ],
+                                  "outPorts": [
+                                    {
+                                      "id": "f8ac7a03-fc22-4da2-b257-6c0d7aaf24cc",
+                                      "name": "output",
+                                      "label": ""
+                                    }
+                                  ],
+                                  "config": {
+                                    "controllerId": "9a6d5769-790e-4a23-bdfc-6694d6bc5b5a",
+                                    "reactionRef": "61507d00-c2d7-42e7-9e25-a9c4e16d8ec4"
+                                  },
+                                  "x6Node": {
+                                    "x": 440,
+                                    "y": 220,
+                                    "width": 110,
+                                    "height": 48
+                                  }
+                                }
+                              ],
+                              "invokes": [
+                                {
+                                  "id": "7f956146-30a2-4319-9eac-7375333e3afe",
+                                  "source": {
+                                    "nodeId": "4d208785-db6a-4ad3-a179-0c2742c11f77"
+                                  },
+                                  "target": {
+                                    "nodeId": "572282af-92bc-4e8a-993c-8a576dcedd8b",
+                                    "portId": "c782997a-911d-497b-a89d-bd31d358edef"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
                       "slots": {},
                       "children": [
                         {
