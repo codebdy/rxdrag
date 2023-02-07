@@ -7,6 +7,7 @@ import { conditionMaterial } from "./condition";
 import { intervalMaterial } from "./interval";
 import { loopSchema } from "./loop/schema";
 import { mergeSchema } from "./merge/schema";
+import { randomMaterial } from "./random";
 import { switchSchema } from "./switch/schema";
 
 export const basicReactions: IReactionMaterial[] = [
@@ -133,28 +134,7 @@ export const basicReactions: IReactionMaterial[] = [
       ],
     }
   },
-  {
-    name: "random",
-    icon: randomIcon,
-    label: "$random",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      inPorts: [
-        {
-          id: createUuid(),
-          name: "startUp",
-          label: "",//"$startUp",
-        },
-      ],
-      outPorts: [
-        {
-          id: createUuid(),
-          name: "output",
-          label: "",//"$output",
-        },
-      ],
-    }
-  },
+  randomMaterial,
   intervalMaterial,
   {
     name: "fixedValue",

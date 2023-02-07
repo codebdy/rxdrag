@@ -45,37 +45,6 @@
                   }
                 },
                 {
-                  "id": "3859b197-be0d-410a-83f4-3582ae9ed2fe",
-                  "label": "信号发生器",
-                  "type": "SingleReaction",
-                  "materialName": "interval",
-                  "inPorts": [
-                    {
-                      "id": "f742a91a-e0bd-4880-a754-fe5bb49fb90d",
-                      "name": "startUp",
-                      "label": "$startUp"
-                    },
-                    {
-                      "id": "e156334c-7588-4995-bb37-cc6b07195a4c",
-                      "name": "stop",
-                      "label": "$stop"
-                    }
-                  ],
-                  "outPorts": [
-                    {
-                      "id": "439dee46-f267-47e9-b58f-a7969c0b0168",
-                      "name": "output",
-                      "label": ""
-                    }
-                  ],
-                  "x6Node": {
-                    "x": 460,
-                    "y": 280,
-                    "width": 130,
-                    "height": 32
-                  }
-                },
-                {
                   "id": "d9e7f528-01f4-465f-b803-16fe6d2dc6e9",
                   "label": "随机数",
                   "type": "SingleReaction",
@@ -157,6 +126,40 @@
                   },
                   "config": {
                     "trueExpression": "inputValue===true"
+                  }
+                },
+                {
+                  "id": "3859b197-be0d-410a-83f4-3582ae9ed2fe",
+                  "label": "信号发生器",
+                  "type": "SingleReaction",
+                  "materialName": "interval",
+                  "inPorts": [
+                    {
+                      "id": "f742a91a-e0bd-4880-a754-fe5bb49fb90d",
+                      "name": "startUp",
+                      "label": "$startUp"
+                    },
+                    {
+                      "id": "e156334c-7588-4995-bb37-cc6b07195a4c",
+                      "name": "stop",
+                      "label": "$stop"
+                    }
+                  ],
+                  "outPorts": [
+                    {
+                      "id": "439dee46-f267-47e9-b58f-a7969c0b0168",
+                      "name": "output",
+                      "label": ""
+                    }
+                  ],
+                  "x6Node": {
+                    "x": 460,
+                    "y": 280,
+                    "width": 130,
+                    "height": 32
+                  },
+                  "config": {
+                    "interval": 1000
                   }
                 }
               ],
