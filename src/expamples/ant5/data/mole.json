@@ -21,80 +21,6 @@
             "logicMetas": {
               "reactions": [
                 {
-                  "id": "e5d63f37-7eba-40e3-8b10-a0f031a3b72f",
-                  "label": "监听变量",
-                  "type": "ControllerDefaultReaction",
-                  "materialName": "listenVariable",
-                  "outPorts": [
-                    {
-                      "id": "49d434d0-5180-4a6b-9fd6-70c9edf7d8e7",
-                      "name": "output",
-                      "label": ""
-                    }
-                  ],
-                  "config": {
-                    "controllerId": "f8229c79-60be-44fd-a231-2ce7fcaa2b22",
-                    "reactionRef": "setVariable",
-                    "variable": "运行"
-                  },
-                  "x6Node": {
-                    "x": 80,
-                    "y": 150,
-                    "width": 116,
-                    "height": 48
-                  }
-                },
-                {
-                  "id": "d9e7f528-01f4-465f-b803-16fe6d2dc6e9",
-                  "label": "随机数",
-                  "type": "SingleReaction",
-                  "materialName": "random",
-                  "inPorts": [
-                    {
-                      "id": "91214f7b-753c-4fe0-b3bb-2fb25d1a4284",
-                      "name": "startUp",
-                      "label": ""
-                    }
-                  ],
-                  "outPorts": [
-                    {
-                      "id": "d1ced5a9-c135-4495-a953-34bb78ee79d9",
-                      "name": "output",
-                      "label": ""
-                    }
-                  ],
-                  "x6Node": {
-                    "x": 680,
-                    "y": 280,
-                    "width": 102,
-                    "height": 32
-                  }
-                },
-                {
-                  "id": "f704f7d7-ba77-4bbd-8aa9-90935e21694b",
-                  "label": "变量赋值",
-                  "type": "ControllerDefaultReaction",
-                  "materialName": "setVariable",
-                  "inPorts": [
-                    {
-                      "id": "d0138fe5-a18f-45e0-b629-b7e2d0e1da6f",
-                      "name": "input",
-                      "label": ""
-                    }
-                  ],
-                  "config": {
-                    "controllerId": "f8229c79-60be-44fd-a231-2ce7fcaa2b22",
-                    "reactionRef": "setVariable",
-                    "variable": "活跃地鼠"
-                  },
-                  "x6Node": {
-                    "x": 880,
-                    "y": 210,
-                    "width": 116,
-                    "height": 48
-                  }
-                },
-                {
                   "id": "06249fac-9ad8-488e-8609-5cd4463a56d4",
                   "label": "条件判断",
                   "type": "SingleReaction",
@@ -126,6 +52,30 @@
                   }
                 },
                 {
+                  "id": "e5d63f37-7eba-40e3-8b10-a0f031a3b72f",
+                  "label": "监听变量",
+                  "type": "ControllerDefaultReaction",
+                  "materialName": "listenVariable",
+                  "outPorts": [
+                    {
+                      "id": "49d434d0-5180-4a6b-9fd6-70c9edf7d8e7",
+                      "name": "output",
+                      "label": ""
+                    }
+                  ],
+                  "config": {
+                    "controllerId": "f8229c79-60be-44fd-a231-2ce7fcaa2b22",
+                    "reactionRef": "setVariable",
+                    "variable": "运行"
+                  },
+                  "x6Node": {
+                    "x": 30,
+                    "y": 210,
+                    "width": 116,
+                    "height": 48
+                  }
+                },
+                {
                   "id": "3859b197-be0d-410a-83f4-3582ae9ed2fe",
                   "label": "信号发生器",
                   "type": "SingleReaction",
@@ -150,10 +100,60 @@
                     }
                   ],
                   "x6Node": {
-                    "x": 480,
+                    "x": 460,
                     "y": 280,
                     "width": 130,
                     "height": 32
+                  }
+                },
+                {
+                  "id": "d9e7f528-01f4-465f-b803-16fe6d2dc6e9",
+                  "label": "随机数",
+                  "type": "SingleReaction",
+                  "materialName": "random",
+                  "inPorts": [
+                    {
+                      "id": "91214f7b-753c-4fe0-b3bb-2fb25d1a4284",
+                      "name": "startUp",
+                      "label": ""
+                    }
+                  ],
+                  "outPorts": [
+                    {
+                      "id": "d1ced5a9-c135-4495-a953-34bb78ee79d9",
+                      "name": "output",
+                      "label": ""
+                    }
+                  ],
+                  "x6Node": {
+                    "x": 670,
+                    "y": 290,
+                    "width": 102,
+                    "height": 32
+                  }
+                },
+                {
+                  "id": "f704f7d7-ba77-4bbd-8aa9-90935e21694b",
+                  "label": "变量赋值",
+                  "type": "ControllerDefaultReaction",
+                  "materialName": "setVariable",
+                  "inPorts": [
+                    {
+                      "id": "d0138fe5-a18f-45e0-b629-b7e2d0e1da6f",
+                      "name": "input",
+                      "label": ""
+                    }
+                  ],
+                  "config": {
+                    "controllerId": "f8229c79-60be-44fd-a231-2ce7fcaa2b22",
+                    "reactionRef": "setVariable",
+                    "variable": "活跃地鼠"
+                  },
+                  "x6Node": {
+                    "x": 880,
+                    "y": 330,
+                    "width": 116,
+                    "height": 48
                   }
                 }
               ],
