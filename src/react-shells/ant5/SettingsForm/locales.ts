@@ -111,7 +111,7 @@ export const settingLocales = {
         delay: "延时",
         random: "随机数",
         interval: "信号发生器",
-        fixedValue: "固定值",
+        fixedValue: "常量",
         input: "输入",
         output: "输出",
         true: "是",
