@@ -21,37 +21,6 @@
             "logicMetas": {
               "reactions": [
                 {
-                  "id": "06249fac-9ad8-488e-8609-5cd4463a56d4",
-                  "label": "条件判断",
-                  "type": "SingleReaction",
-                  "materialName": "condition",
-                  "inPorts": [
-                    {
-                      "id": "368c5ece-7ec6-497a-b2f9-d9ca10b1665d",
-                      "name": "input",
-                      "label": ""
-                    }
-                  ],
-                  "outPorts": [
-                    {
-                      "id": "863e8610-c4ad-41eb-9633-b3f08b224cc3",
-                      "name": "true",
-                      "label": "$true"
-                    },
-                    {
-                      "id": "5aad0672-0b46-49c8-bd89-6b6b23e5485a",
-                      "name": "false",
-                      "label": "$false"
-                    }
-                  ],
-                  "x6Node": {
-                    "x": 230,
-                    "y": 260,
-                    "width": 116,
-                    "height": 32
-                  }
-                },
-                {
                   "id": "e5d63f37-7eba-40e3-8b10-a0f031a3b72f",
                   "label": "监听变量",
                   "type": "ControllerDefaultReaction",
@@ -154,6 +123,40 @@
                     "y": 330,
                     "width": 116,
                     "height": 48
+                  }
+                },
+                {
+                  "id": "06249fac-9ad8-488e-8609-5cd4463a56d4",
+                  "label": "条件判断",
+                  "type": "SingleReaction",
+                  "materialName": "condition",
+                  "inPorts": [
+                    {
+                      "id": "368c5ece-7ec6-497a-b2f9-d9ca10b1665d",
+                      "name": "input",
+                      "label": ""
+                    }
+                  ],
+                  "outPorts": [
+                    {
+                      "id": "863e8610-c4ad-41eb-9633-b3f08b224cc3",
+                      "name": "true",
+                      "label": "$true"
+                    },
+                    {
+                      "id": "5aad0672-0b46-49c8-bd89-6b6b23e5485a",
+                      "name": "false",
+                      "label": "$false"
+                    }
+                  ],
+                  "x6Node": {
+                    "x": 230,
+                    "y": 260,
+                    "width": 116,
+                    "height": 32
+                  },
+                  "config": {
+                    "trueExpression": "inputValue===true"
                   }
                 }
               ],

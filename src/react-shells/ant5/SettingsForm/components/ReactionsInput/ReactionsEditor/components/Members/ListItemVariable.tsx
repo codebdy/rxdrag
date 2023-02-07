@@ -3,14 +3,14 @@ import { Button, Dropdown, MenuProps } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useMemo, useState } from "react";
 import styled from "styled-components";
-import { NameDialog } from "./NameDialog";
+import { VariableDialog } from "./VariableDialog";
 
 const ListItem = styled.div`
   display: flex;
   align-items: center;
 `
 
-export const EditableListItem = memo((
+export const ListItemVariable = memo((
   props: {
     name: string,
     children?: React.ReactNode,
@@ -82,7 +82,7 @@ export const EditableListItem = memo((
         }
 
       </ListItem>
-      <NameDialog
+      <VariableDialog
         title={editTitle}
         open={editOpen}
         value={name}

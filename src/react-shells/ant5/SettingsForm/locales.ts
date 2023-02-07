@@ -73,6 +73,10 @@ export const settingLocales = {
       destory: "销毁",
       onClick: "点击",
 
+      boolean: "布尔",
+      number: "数字",
+      string: "字符串",
+
       IconInput: {
         DialogTitle: "选择图标",
         "Outlined": "线框风格",
@@ -141,6 +145,7 @@ export const settingLocales = {
         close: "关闭",
         label: "标签",
         operation: "操作",
+        defalutValue: "默认值",
       }
     }
   },
@@ -216,6 +221,10 @@ export const settingLocales = {
       destory: "Destory",
       onClick: "Click",
 
+      boolean: "Boolean",
+      number: "Number",
+      string: "String",
+
       IconInput: {
         DialogTitle: "Select Icon",
         "Outlined": "Outlined",
@@ -283,6 +292,7 @@ export const settingLocales = {
         close: "Close",
         label: "Label",
         operation: "Operation",
+        defalutValue: "Default value",
       }
     }
   }

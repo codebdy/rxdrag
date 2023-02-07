@@ -6,8 +6,10 @@ import { IControllerMeta, IReactionDefineMeta, IVariableDefineMeta } from "runne
 import styled from "styled-components";
 import { methodIcon, variableIcon } from "../../../../../../icons/reactions";
 import { createUuid } from "../../utils";
-import { EditableListItem } from "./EditableListItem";
+import { ListItemReaction } from "./ListItemReaction";
+import { ListItemVariable } from "./ListItemVariable";
 import { NameDialog } from "./NameDialog";
+import { VariableDialog } from "./VariableDialog";
 
 const { Text } = Typography;
 
@@ -141,7 +143,7 @@ export const Members = memo((
         {
           value?.reactions?.map((reaction) => {
             return (
-              <EditableListItem
+              <ListItemReaction
                 key={reaction.id}
                 id={reaction.id}
                 name={reaction.label || ""}
@@ -156,7 +158,7 @@ export const Members = memo((
                 >
                   {reaction.label || reaction.name}
                 </ListItem>
-              </EditableListItem>
+              </ListItemReaction>
             )
           })
         }
@@ -169,7 +171,7 @@ export const Members = memo((
         {
           value?.variables?.map((variable) => {
             return (
-              <EditableListItem
+              <ListItemVariable
                 key={variable.id}
                 id={variable.id}
                 name={variable.name}
@@ -182,7 +184,7 @@ export const Members = memo((
                 >
                   {variable.name}
                 </ListItem>
-              </EditableListItem>
+              </ListItemVariable>
             )
           })
         }
@@ -193,7 +195,7 @@ export const Members = memo((
         onCancel={handleAddReactionCancel}
         onOk={handleAddReactionOk}
       />
-      <NameDialog
+      <VariableDialog
         title={'$addVariable'}
         open={addVariableOpen}
         onCancel={handleAddVariableCancel}
