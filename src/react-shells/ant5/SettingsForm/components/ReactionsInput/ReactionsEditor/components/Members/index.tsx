@@ -83,12 +83,12 @@ export const Members = memo((
     setAddReactionOpen(false)
   }, [])
 
-  const handleAddVariableOk = useCallback((name?: string) => {
-    if (name) {
+  const handleAddVariableOk = useCallback((meta?: IVariableDefineMeta) => {
+    if (meta) {
       const newVariable: IVariableDefineMeta = {
+        ...meta,
         id: createUuid(),
-        name: name,
-      }
+        }
 
       onChange?.({ ...value, variables: [...value?.variables || [], newVariable] })
     }
@@ -107,8 +107,8 @@ export const Members = memo((
     onChange?.({ ...value, reactions: value?.reactions?.map(reaction => reaction.id !== id ? reaction : { ...reaction, label }) })
   }, [onChange, value])
 
-  const handleChangeVariable = useCallback((id: string, label: string) => {
-    onChange?.({ ...value, variables: value?.variables?.map(va => va.id !== id ? va : { ...va, name: label }) })
+  const handleChangeVariable = useCallback((meta: IVariableDefineMeta) => {
+    onChange?.({ ...value, variables: value?.variables?.map(va => va.id !== meta.id ? va : { ...va, ...meta }) })
   }, [onChange, value])
 
   return (
@@ -173,8 +173,7 @@ export const Members = memo((
             return (
               <ListItemVariable
                 key={variable.id}
-                id={variable.id}
-                name={variable.name}
+                value={variable}
                 editTitle={t("$editVariable")}
                 onRemove={handleRemoveVariable}
                 onChange={handleChangeVariable}

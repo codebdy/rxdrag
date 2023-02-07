@@ -145,7 +145,7 @@ export const settingLocales = {
         close: "关闭",
         label: "标签",
         operation: "操作",
-        defalutValue: "默认值",
+        defaultValue: "默认值",
       }
     }
   },
@@ -292,7 +292,7 @@ export const settingLocales = {
         close: "Close",
         label: "Label",
         operation: "Operation",
-        defalutValue: "Default value",
+        defaultValue: "Default Value",
       }
     }
   }

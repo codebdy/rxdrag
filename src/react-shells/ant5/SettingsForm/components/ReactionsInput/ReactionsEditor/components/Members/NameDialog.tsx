@@ -34,7 +34,7 @@ export const NameDialog = memo((
       cancelText={t('$cancel')}
       onOk={handleOk}
       onCancel={handleCancel}
-      width={480}
+      width={380}
     >
       <Form
         name="name-input-form"

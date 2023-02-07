@@ -2,6 +2,7 @@ import { DeleteOutlined, EditOutlined, MoreOutlined } from "@ant-design/icons";
 import { Button, Dropdown, MenuProps } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useMemo, useState } from "react";
+import { IVariableDefineMeta } from "runner/reaction";
 import styled from "styled-components";
 import { VariableDialog } from "./VariableDialog";
 
@@ -12,15 +13,14 @@ const ListItem = styled.div`
 
 export const ListItemVariable = memo((
   props: {
-    name: string,
+    value: IVariableDefineMeta,
     children?: React.ReactNode,
     editTitle: string,
-    id: string,
-    onChange: (id: string, name: string) => void,
+    onChange: (value: IVariableDefineMeta) => void,
     onRemove: (id: string) => void
   }
 ) => {
-  const { id, name, editTitle, children, onChange, onRemove, ...other } = props
+  const { value, editTitle, children, onChange, onRemove, ...other } = props
   const [hover, setHover] = useState(false);
   const [open, setOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
@@ -38,9 +38,9 @@ export const ListItemVariable = memo((
     if (key === 'edit') {
       setEditOpen(true)
     } else if (key === "delete") {
-      onRemove(id)
+      onRemove(value.id)
     }
-  }, [id, onRemove]);
+  }, [onRemove, value.id]);
 
   const items: MenuProps['items'] = useMemo(() => [
     {
@@ -56,14 +56,14 @@ export const ListItemVariable = memo((
   ], [t]);
 
 
-  const handleNameCancel = useCallback(() => {
+  const handleCancel = useCallback(() => {
     setEditOpen(false)
   }, [])
 
-  const handleNameOk = useCallback((value?: string) => {
+  const handleOk = useCallback((newValue?: IVariableDefineMeta) => {
     setEditOpen(false)
-    onChange(id, value || "")
-  }, [id, onChange])
+    onChange({ ...value, ...newValue })
+  }, [onChange, value])
 
   return (
     <>
@@ -85,9 +85,9 @@ export const ListItemVariable = memo((
       <VariableDialog
         title={editTitle}
         open={editOpen}
-        value={name}
-        onCancel={handleNameCancel}
-        onOk={handleNameOk}
+        value={value}
+        onCancel={handleCancel}
+        onOk={handleOk}
       />
     </>
   )

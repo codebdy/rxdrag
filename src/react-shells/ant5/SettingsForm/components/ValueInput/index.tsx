@@ -1,5 +1,6 @@
-import { Button, Input } from "antd";
+import { Button, Input, InputNumber, Switch } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
+import { isBool, isNum, isStr } from "core/utils/types";
 import { memo, useCallback, useState } from "react";
 import styled from "styled-components";
 
@@ -19,6 +20,10 @@ const Container = styled.div`
   }
 `
 
+const InputCol = styled.div`
+  flex: 1;
+`
+
 export enum ValueType {
   Boolean = "boolean",
   Number = "number",
@@ -31,35 +36,69 @@ const types = [
   ValueType.Boolean,
 ]
 
+function getValueType(value?: any) {
+  if (isStr(value)) {
+    return ValueType.String
+  }
+  if (isBool(value)) {
+    return ValueType.Boolean
+  }
+  if (isNum(value)) {
+    return ValueType.Number
+  }
+  return ValueType.String
+}
+
 export const ValueInput = memo((
   props: {
-    defaultType?: ValueType
     value?: any,
     onChange?: (value?: any) => void
   }
 ) => {
-  const {defaultType = ValueType.String, value, onChange} = props
-  const [typeIndex, setTypeIndex] = useState(types.indexOf(defaultType))
+  const { value, onChange } = props
+  const [typeIndex, setTypeIndex] = useState(types.indexOf(getValueType(value)))
   const t = useToolsTranslate()
 
   const handleClick = useCallback(() => {
     const newIndex = typeIndex + 1
-    if(newIndex < types.length){
+    if (newIndex < types.length) {
       setTypeIndex(newIndex)
-    } else{
+    } else {
       setTypeIndex(0)
     }
   }, [setTypeIndex, typeIndex])
 
+  const handleStringChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange?.(event.target?.value)
+  }, [onChange])
+
+  const handleNumberChange = useCallback((newValue?: number | null) => {
+    onChange?.(newValue || undefined)
+  }, [onChange])
+
+  const handleBooleanChange = useCallback((checked: boolean) => {
+    onChange?.(checked)
+  }, [onChange])
+
   return (<Container>
-    {
-      types[typeIndex] === ValueType.String &&
-      <Input />
-    }
+    <InputCol>
+      {
+        types[typeIndex] === ValueType.String &&
+        <Input value={value} onChange={handleStringChange} />
+      }
+      {
+        types[typeIndex] === ValueType.Number &&
+        <InputNumber value={value as number | undefined} onChange={handleNumberChange} />
+      }
+      {
+        types[typeIndex] === ValueType.Boolean &&
+        <Switch checked={value} onChange={handleBooleanChange} />
+      }
+    </InputCol>
     <Button
       className='input-button'
       onClick={handleClick}>
-        {t(types[typeIndex])}
+      {t(types[typeIndex])}
     </Button>
   </Container>)
 })
