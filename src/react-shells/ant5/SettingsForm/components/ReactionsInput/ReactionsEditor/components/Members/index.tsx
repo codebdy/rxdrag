@@ -36,7 +36,7 @@ const ListItem = styled((props) => <Button type="text" {...props} />)`
 
 export const Members = memo((
   props: {
-    value?: IControllerMeta,
+    value: IControllerMeta,
     selected?: string,
     onSelect?: (id: string) => void,
     onChange?: (value?: IControllerMeta) => void,

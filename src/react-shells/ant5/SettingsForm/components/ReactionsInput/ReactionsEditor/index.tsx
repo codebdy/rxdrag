@@ -28,7 +28,7 @@ const LeftArea = styled.div`
 `
 export const ReactionsEditor = memo((
   props: {
-    value?: IControllerMeta,
+    value: IControllerMeta,
     onChange?: (value?: IControllerMeta) => void,
   }
 ) => {

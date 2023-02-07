@@ -18,14 +18,14 @@ export const ReactionsInput = memo((props: {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const t = useToolsTranslate()
   const node = useCurrentNode()
-  
+
   useEffect(() => {
     setInputValue(value)
   }, [value])
 
   useEffect(() => {
     const eventMetas: IReactionDefineMeta[] = [...(value?.events || [])]
-    for (const event of events||[]) {
+    for (const event of events || []) {
       if (!value?.events?.find(evt => evt.name === event.name)) {
         eventMetas.push({
           id: createUuid(),
@@ -34,7 +34,9 @@ export const ReactionsInput = memo((props: {
         })
       }
     }
-    setInputValue({ ...value, events: eventMetas })
+    if (value) {
+      setInputValue({ ...value, events: eventMetas })
+    }
   }, [events, value])
 
   const showModal = useCallback(() => {
@@ -47,23 +49,29 @@ export const ReactionsInput = memo((props: {
 
   const handleSwitchChange = useCallback((checked: boolean) => {
     if (checked) {
-      const id = createUuid()
-      onChange?.({ ...value, id: id })
+      const id = value?.id || createUuid()
+      onChange?.({ ...value, id: id, enable: true })
     } else {
-      onChange?.({ ...value, id: undefined })
+      if (value) {
+        onChange?.({ ...value, enable: false })
+      }
     }
   }, [onChange, value]);
 
   const handleNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: inputValue } = e.target;
-    onChange?.({ ...value, name: inputValue })
+    if (value) {
+      onChange?.({ ...value, name: inputValue })
+    }
   }, [onChange, value]);
 
   const handleConfigChange = useCallback((meta?: IControllerMeta) => {
-    setInputValue({ ...meta, id: value?.id, name: value?.name })
-  }, [value?.id, value?.name]);
+    if (value) {
+      setInputValue({ ...meta, id: value.id, name: value?.name })
+    }
+  }, [value]);
 
-  const handleOk = useCallback(()=>{
+  const handleOk = useCallback(() => {
     onChange?.(inputValue)
     setIsModalOpen(false);
   }, [inputValue, onChange])
@@ -95,7 +103,7 @@ export const ReactionsInput = memo((props: {
             cancelText={t("cancel")}
             okText={t("confirm")}
             onCancel={handleCancel}
-            onOk = {handleOk}
+            onOk={handleOk}
             width={"calc(100vw - 40px)"}
             style={{
               transform: 'scale(1)',
@@ -104,7 +112,10 @@ export const ReactionsInput = memo((props: {
             centered
             destroyOnClose
           >
-            <ReactionsEditor value={inputValue} onChange={handleConfigChange} />
+            {
+              inputValue &&
+              <ReactionsEditor value={inputValue} onChange={handleConfigChange} />
+            }
           </Modal>
         </>
       }

@@ -10,10 +10,6 @@ export class IntervalReaction extends AbstractReaction<IIntervalConfig> {
   constructor(meta: IReactionMeta<IIntervalConfig>, options?: IReactionFactoryOptions) {
     super(meta, options)
 
-    if (Object.keys(meta.inPorts || {}).length !== 1) {
-      throw new Error("Condition inputs count error")
-    }
-
     this.getInputByName("startUp")?.connect(this.startUpHandler)
     this.getInputByName("stop")?.connect(this.stopHandler)
   }
