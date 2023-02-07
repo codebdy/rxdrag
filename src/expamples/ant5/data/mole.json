@@ -233,7 +233,8 @@
         "variables": [
           {
             "id": "effdda32-d4af-422f-9865-167a05c40447",
-            "name": "成绩"
+            "name": "成绩",
+            "defaultValue": "0"
           },
           {
             "id": "2ee62cac-b1e7-4974-a521-17f15ffdb85a",
@@ -241,7 +242,8 @@
           },
           {
             "id": "f6bdab68-834e-4df4-b018-24f724d1321e",
-            "name": "运行"
+            "name": "运行",
+            "defaultValue": false
           }
         ],
         "reactions": [

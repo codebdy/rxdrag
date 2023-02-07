@@ -19,10 +19,15 @@ export class ConditionReaction extends AbstractReaction<IConditionConfig> {
 
   inputHandler = (inputValue: string) => {
     if (this.meta.config?.trueExpression) {
-
+      // eslint-disable-next-line no-new-func
+      const func = new Function('inputValue', this.meta.config?.trueExpression)
+      if(func(inputValue)){
+        this.getInputByName('true')?.push(inputValue)
+      }else{
+        this.getInputByName('false')?.push(inputValue)
+      }
     }
   }
-
 }
 
 export const Condition: ReactionFactory = (meta: IReactionMeta<IConditionConfig>, options?: IReactionFactoryOptions) => {
