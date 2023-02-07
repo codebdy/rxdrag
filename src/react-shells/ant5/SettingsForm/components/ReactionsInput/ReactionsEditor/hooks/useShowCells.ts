@@ -23,7 +23,8 @@ export function useShowCells() {
         if (graphNode && reactionNode.x6Node) {
           updateNode(graphNode, reactionNode)
         } else {//新建
-          const node = graph.createNode(getNodeConfig(reactionNode))
+          const nodeConfig = getNodeConfig(reactionNode)
+          const node = graph.createNode(nodeConfig)
           graph.addNode(node)
         }
       }

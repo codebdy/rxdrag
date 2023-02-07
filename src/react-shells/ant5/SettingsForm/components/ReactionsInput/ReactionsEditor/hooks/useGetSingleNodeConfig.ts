@@ -6,23 +6,26 @@ import { useToken } from "antd/es/theme/internal"
 import { usePortsConfig } from "./usePortsConfig"
 import { useGetNodeWidth } from "./useGetNodeWidth"
 import { useGetNodeHeight } from "./useGetNodeHeight"
+import { useGetSubLabel } from "./useGetSubLabel"
 
 export function useGetSingleNodeConfig() {
   const [, token] = useToken()
   const transformPorts = useTransformPorts()
   const portsGroup = usePortsConfig()
   const getNodeWidth = useGetNodeWidth()
+  const getSubLabel = useGetSubLabel()
   const getHeight = useGetNodeHeight()
   const getSingleNodeConfig = useCallback((nodeMeta: IReactionMeta<IConfigMeta>, material: IReactionMaterial | undefined) => {
-    const height = getHeight(nodeMeta, false)
+    const subLabel = getSubLabel(nodeMeta)
+    const height = getHeight(nodeMeta, !!subLabel)
     const width = getNodeWidth(nodeMeta)
-    return {
+    const config = {
       id: nodeMeta.id,
       shape: "reaction-node",
       x: nodeMeta.x6Node?.x || 340,
       y: nodeMeta.x6Node?.y || 240,
-      width: nodeMeta.x6Node?.width || width,
-      height: nodeMeta.x6Node?.height || height,
+      width: width,
+      height: height,
       data: {
         meta: nodeMeta,
         backgroundColor: token.colorBgContainer,
@@ -31,13 +34,15 @@ export function useGetSingleNodeConfig() {
         token,
         width: width,
         height: height,
+        subLabel,
       },
       ports: {
         groups: portsGroup,
         items: transformPorts(nodeMeta)
       },
     }
-  }, [getHeight, getNodeWidth, portsGroup, token, transformPorts])
+    return config
+  }, [getHeight, getNodeWidth, getSubLabel, portsGroup, token, transformPorts])
 
   return getSingleNodeConfig
 }

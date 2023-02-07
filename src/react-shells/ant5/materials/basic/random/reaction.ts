@@ -16,24 +16,15 @@ export class RandomReaction extends AbstractReaction<IRandomConfig> {
     }
 
     this.getInputByName("startUp")?.connect(this.startUpHandler)
-    this.getInputByName("stop")?.connect(this.stopHandler)
   }
 
   startUpHandler = () => {
-    // if (this.meta.config?.interval) {
-    //   this.timer = setInterval(this.outputHandler, this.meta.config?.interval)
-    // }
+    const min = this.meta.config?.minValue || 0
+    const max = (this.meta.config?.maxValue || 1) + 1
+    this.getOutputByName("output")?.push(this.getRandomInteger(min, max))
   }
-
-  stopHandler = () => {
-    // if (this.timer) {
-    //   clearInterval(this.timer)
-    //   this.timer = undefined
-    // }
-  }
-
-  outputHandler = () => {
-    this.getOutputByName("output")?.push()
+  private getRandomInteger = (min: number, max: number) => {
+    return Math.floor(Math.random() * (max - min)) + min;
   }
 }
 
