@@ -15,7 +15,6 @@ export abstract class AbstractControllerReaction extends AbstractReaction<IContr
     }
     const controller = options?.controllers?.[meta.config?.controllerId]
     if (!controller) {
-      console.log("哈哈", options?.controllers, meta)
       throw new Error("Can not find controller")
     }
     this.controller = controller

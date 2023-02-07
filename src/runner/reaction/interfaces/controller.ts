@@ -1,5 +1,5 @@
 import { IReactionMaterial } from "./material"
-import { IConfigMeta, IReactionMeta } from "./metas"
+import { IConfigMeta, IControllerMeta, IReactionMeta } from "./metas"
 
 export type Unsubscribe = () => void
 
@@ -41,6 +41,7 @@ export interface IPropController {
 export interface IComponentController extends IVariableController, IPropController {
   id: string,
   name?: string,
+  meta: IControllerMeta,
 
   events: EventFuncs,
   initEvent?: InputFunc,

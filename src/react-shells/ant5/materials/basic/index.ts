@@ -1,9 +1,10 @@
 import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { IReactionMaterial } from "../../../../runner/reaction/interfaces/material";
-import { delayIcon, endIcon, fixedValueIcon, loopIcon, mergeIcon, startIcon, switchIcon } from "../../icons/reactions";
+import { delayIcon, endIcon, loopIcon, mergeIcon, startIcon, switchIcon } from "../../icons/reactions";
 import { startEndSchema } from "../baseSchema";
 import { conditionMaterial } from "./condition";
+import { fixedValueMaterial } from "./fixedValue";
 import { intervalMaterial } from "./interval";
 import { loopSchema } from "./loop/schema";
 import { mergeSchema } from "./merge/schema";
@@ -136,26 +137,5 @@ export const basicReactions: IReactionMaterial[] = [
   },
   randomMaterial,
   intervalMaterial,
-  {
-    name: "fixedValue",
-    icon: fixedValueIcon,
-    label: "$fixedValue",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      inPorts: [
-        {
-          id: createUuid(),
-          name: "input",
-          label: "",
-        },
-      ],
-      outPorts: [
-        {
-          id: createUuid(),
-          name: "output",
-          label: "",//"$output",
-        },
-      ],
-    }
-  },
+  fixedValueMaterial,
 ]
