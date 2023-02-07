@@ -1,7 +1,7 @@
 import { Button, Input, InputNumber, Switch } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { isBool, isNum, isStr } from "core/utils/types";
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -58,6 +58,10 @@ export const ValueInput = memo((
   const { value, onChange } = props
   const [typeIndex, setTypeIndex] = useState(types.indexOf(getValueType(value)))
   const t = useToolsTranslate()
+
+  useEffect(() => {
+    setTypeIndex(types.indexOf(getValueType(value)))
+  }, [value])
 
   const handleClick = useCallback(() => {
     const newIndex = typeIndex + 1

@@ -272,30 +272,6 @@
                   }
                 },
                 {
-                  "id": "f0e18086-6f3f-425c-943e-2237834fa796",
-                  "label": "变量赋值",
-                  "type": "ControllerDefaultReaction",
-                  "materialName": "setVariable",
-                  "inPorts": [
-                    {
-                      "id": "3047bce9-1548-4a2e-a2f3-0702e8c4e726",
-                      "name": "input",
-                      "label": ""
-                    }
-                  ],
-                  "config": {
-                    "controllerId": "9a6d5769-790e-4a23-bdfc-6694d6bc5b5a",
-                    "reactionRef": "setVariable",
-                    "variable": "运行"
-                  },
-                  "x6Node": {
-                    "x": 440,
-                    "y": 170,
-                    "width": 116,
-                    "height": 32
-                  }
-                },
-                {
                   "id": "63871217-4671-4a8b-9a6f-5a229018fc5c",
                   "label": "固定值",
                   "type": "SingleReaction",
@@ -322,6 +298,30 @@
                   },
                   "config": {
                     "value": true
+                  }
+                },
+                {
+                  "id": "f0e18086-6f3f-425c-943e-2237834fa796",
+                  "label": "变量赋值",
+                  "type": "ControllerDefaultReaction",
+                  "materialName": "setVariable",
+                  "inPorts": [
+                    {
+                      "id": "3047bce9-1548-4a2e-a2f3-0702e8c4e726",
+                      "name": "input",
+                      "label": ""
+                    }
+                  ],
+                  "config": {
+                    "controllerId": "9a6d5769-790e-4a23-bdfc-6694d6bc5b5a",
+                    "reactionRef": "setVariable",
+                    "variable": "运行"
+                  },
+                  "x6Node": {
+                    "x": 450,
+                    "y": 170,
+                    "width": 116,
+                    "height": 48
                   }
                 }
               ],
