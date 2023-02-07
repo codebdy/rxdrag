@@ -45,32 +45,6 @@
                   }
                 },
                 {
-                  "id": "d9e7f528-01f4-465f-b803-16fe6d2dc6e9",
-                  "label": "随机数",
-                  "type": "SingleReaction",
-                  "materialName": "random",
-                  "inPorts": [
-                    {
-                      "id": "91214f7b-753c-4fe0-b3bb-2fb25d1a4284",
-                      "name": "startUp",
-                      "label": ""
-                    }
-                  ],
-                  "outPorts": [
-                    {
-                      "id": "d1ced5a9-c135-4495-a953-34bb78ee79d9",
-                      "name": "output",
-                      "label": ""
-                    }
-                  ],
-                  "x6Node": {
-                    "x": 670,
-                    "y": 290,
-                    "width": 102,
-                    "height": 32
-                  }
-                },
-                {
                   "id": "f704f7d7-ba77-4bbd-8aa9-90935e21694b",
                   "label": "变量赋值",
                   "type": "ControllerDefaultReaction",
@@ -160,6 +134,36 @@
                   },
                   "config": {
                     "interval": 1000
+                  }
+                },
+                {
+                  "id": "d9e7f528-01f4-465f-b803-16fe6d2dc6e9",
+                  "label": "随机数",
+                  "type": "SingleReaction",
+                  "materialName": "random",
+                  "inPorts": [
+                    {
+                      "id": "91214f7b-753c-4fe0-b3bb-2fb25d1a4284",
+                      "name": "startUp",
+                      "label": ""
+                    }
+                  ],
+                  "outPorts": [
+                    {
+                      "id": "d1ced5a9-c135-4495-a953-34bb78ee79d9",
+                      "name": "output",
+                      "label": ""
+                    }
+                  ],
+                  "x6Node": {
+                    "x": 670,
+                    "y": 290,
+                    "width": 102,
+                    "height": 32
+                  },
+                  "config": {
+                    "maxValue": 9,
+                    "minValue": 1
                   }
                 }
               ],

@@ -13,6 +13,8 @@ export const reactionMaterialLocales = {
     variable: "变量",
     interval: "间隔时间",
     millisecond: "毫秒",
+    maxValue: "最大值",
+    minValue: "最小值",
   },
   'en-US': {
     name: "Name",
@@ -28,5 +30,7 @@ export const reactionMaterialLocales = {
     variable: "Variable",
     interval: "Interval",
     millisecond: "Millisecond",
+    maxValue: "Max",
+    minValue: "Min",
   }
 }

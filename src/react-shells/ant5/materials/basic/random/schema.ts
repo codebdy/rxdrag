@@ -8,20 +8,6 @@ export const randomSchema: INodeSchema = {
     {
       componentName: "FormItem",
       props: {
-        label: "$maxValue",
-      },
-      children: [
-        {
-          componentName: "InputNumber",
-          "x-field": {
-            name: `config.maxValue`,
-          },
-        }
-      ]
-    },
-    {
-      componentName: "FormItem",
-      props: {
         label: "$minValue",
       },
       children: [
@@ -29,6 +15,20 @@ export const randomSchema: INodeSchema = {
           componentName: "InputNumber",
           "x-field": {
             name: `config.minValue`,
+          },
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$maxValue",
+      },
+      children: [
+        {
+          componentName: "InputNumber",
+          "x-field": {
+            name: `config.maxValue`,
           },
         }
       ]
