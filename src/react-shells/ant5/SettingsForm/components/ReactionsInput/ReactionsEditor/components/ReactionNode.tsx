@@ -74,6 +74,8 @@ export interface NodeViewParams extends INodeData {
   width: number,
   height: number,
   subLabel?: string,
+  inputCounts?: number,
+  outputCounts?: number,
 }
 
 
@@ -83,8 +85,9 @@ export const ReactionNode = (props: { node?: Node }) => {
   const { token, subLabel } = data
   const { label } = data.meta
 
-  const inputPortCount = data.meta.inPorts?.length
-  const outputPortCount = data.meta.outPorts?.length
+  const inputPortCount = data.meta.inPorts?.length || data.inputCounts
+  const outputPortCount = data.meta.outPorts?.length || data.outputCounts
+  
   return (
     <NodeView
       className='node'

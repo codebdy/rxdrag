@@ -35,6 +35,8 @@ export function useGetSingleNodeConfig() {
         width: width,
         height: height,
         subLabel,
+        inputCounts: nodeMeta.inPorts?.length,
+        outputCounts: nodeMeta.outPorts?.length,
       },
       ports: {
         groups: portsGroup,
