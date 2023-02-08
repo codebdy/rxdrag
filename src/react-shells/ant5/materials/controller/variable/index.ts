@@ -1,4 +1,4 @@
-import { listenVariableIcon, setVariableIcon } from "react-shells/ant5/icons/reactions"
+import { listenVariableIcon, setVariableIcon, variableIcon } from "react-shells/ant5/icons/reactions"
 import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils"
 import { IReactionMaterial, ReactionType } from "runner/reaction"
 import { ListenVariable } from "./ListenVariableReaction"
@@ -45,4 +45,33 @@ export const listenVariableMaterial: IReactionMaterial = {
     return config?.variable
   },
   reaction: ListenVariable,
+}
+
+
+export const readVariableMaterial: IReactionMaterial = {
+  name: "readVariable",
+  icon: variableIcon,
+  label: "$readVariable",
+  reactionType: ReactionType.ControllerDefaultReaction,
+  meta: {
+    inPorts: [
+      {
+        id: createUuid(),
+        name: "input",
+        label: "",
+      },
+    ],
+    outPorts: [
+      {
+        id: createUuid(),
+        name: "output",
+        label: "",
+      },
+    ],
+  },
+  schema: variableSchema,
+  subTitle: (config?: any) => {
+    return config?.variable
+  },
+  reaction: SetVariable,
 }
