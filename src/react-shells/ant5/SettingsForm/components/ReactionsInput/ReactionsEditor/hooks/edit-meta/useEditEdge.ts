@@ -25,13 +25,13 @@ export function useEditEdge() {
         portId: (edge.getTarget() as any).port,
       },
     }
-    graph?.select(edge.id)
+    //graph?.select(edge.id)
     dispatch?.({
       type: isNew ? ActionType.ADD_EDGE : ActionType.CHANGE_EDGE,
       payload: newData
     })
     markeChange()
-  }, [backup, dispatch, graph, markeChange])
+  }, [backup, dispatch, markeChange])
 
   useEffect(() => {
     graph?.on('edge:connected', handleNodeAdd)

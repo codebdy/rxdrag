@@ -24,6 +24,7 @@ export class IntervalReaction extends AbstractReaction<IIntervalConfig> {
   }
 
   stopHandler = () => {
+    console.log("定时器销毁", this.timer)
     if (this.timer) {
       clearInterval(this.timer)
       this.timer = undefined
