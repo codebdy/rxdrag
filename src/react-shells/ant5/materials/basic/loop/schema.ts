@@ -19,5 +19,19 @@ export const loopSchema: INodeSchema = {
         }
       ]
     },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$times",
+      },
+      children: [
+        {
+          componentName: "InputNumber",
+          "x-field": {
+            name: "config.times",
+          },
+        }
+      ]
+    },
   ],
 }
