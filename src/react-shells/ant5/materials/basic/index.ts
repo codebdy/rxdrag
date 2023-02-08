@@ -1,16 +1,15 @@
-import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { IReactionMaterial } from "../../../../runner/reaction/interfaces/material";
-import { endIcon, loopIcon, mergeIcon, startIcon, switchIcon } from "../../icons/reactions";
+import { endIcon, startIcon } from "../../icons/reactions";
 import { startEndSchema } from "../baseSchema";
 import { conditionMaterial } from "./condition";
 import { delayMaterial } from "./delay";
 import { fixedValueMaterial } from "./fixedValue";
 import { intervalMaterial } from "./interval";
-import { loopSchema } from "./loop/schema";
-import { mergeSchema } from "./merge/schema";
+import { loopMaterial } from "./loop";
+import { mergeMaterial } from "./merge";
 import { randomMaterial } from "./random";
-import { switchSchema } from "./switch/schema";
+import { switchMaterial } from "./switch";
 
 export const basicReactions: IReactionMaterial[] = [
   {
@@ -34,86 +33,9 @@ export const basicReactions: IReactionMaterial[] = [
     schema: startEndSchema,
   },
   conditionMaterial,
-  {
-    name: "loop",
-    icon: loopIcon,
-    label: "$loop",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      inPorts: [
-        {
-          id: createUuid(),
-          name: "input",
-          label: "",//"$input",
-        },
-      ],
-      outPorts: [
-        {
-          id: createUuid(),
-          name: "output",
-          label: "",//"$output",
-        },
-      ],
-    },
-    schema: loopSchema,
-  },
-  {
-    name: "merge",
-    icon: mergeIcon,
-    label: "$merge",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      inPorts: [
-        {
-          id: createUuid(),
-          name: "input0",
-          label: "input 0",
-        },
-        {
-          id: createUuid(),
-          name: "input1",
-          label: "input 1",
-        },
-      ],
-      outPorts: [
-        {
-          id: createUuid(),
-          name: "output",
-          label: "",//"$output",
-        },
-      ],
-    },
-    schema: mergeSchema,
-  },
-
-  {
-    name: "switch",
-    icon: switchIcon,
-    label: "$switch",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      inPorts: [
-        {
-          id: createUuid(),
-          name: "input",
-          label: "",//"$input",
-        },
-      ],
-      outPorts: [
-        {
-          id: createUuid(),
-          name: "output0",
-          label: "output 0",
-        },
-        {
-          id: createUuid(),
-          name: "output1",
-          label: "output 1",
-        },
-      ],
-    },
-    schema: switchSchema
-  },
+  loopMaterial,
+  mergeMaterial,
+  switchMaterial,
   delayMaterial,
   randomMaterial,
   intervalMaterial,
