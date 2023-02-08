@@ -52,7 +52,7 @@ export function useCreateGraph() {
         allowLoop: false,
         allowNode: false,
         allowEdge: false,
-        allowMulti: false,
+        allowMulti: true,
         highlight: true,
         connector: 'reactions-connector',
         connectionPoint: 'anchor',

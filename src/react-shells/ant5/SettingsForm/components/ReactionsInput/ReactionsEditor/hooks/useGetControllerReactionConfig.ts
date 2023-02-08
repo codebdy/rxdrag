@@ -19,14 +19,14 @@ export function useGetControllerReactionConfig() {
     const subLabel = getSubLabel(nodeMeta)
     const height = getHeight(nodeMeta, !!subLabel)
     const width = getNodeWidth(nodeMeta, subLabel)
-
+    const ports = transformPorts(nodeMeta)
     return {
       id: nodeMeta.id,
       shape: "reaction-node",
       x: nodeMeta.x6Node?.x || 340,
       y: nodeMeta.x6Node?.y || 240,
-      width: nodeMeta.x6Node?.width || width,
-      height: nodeMeta.x6Node?.height || height,
+      width: width,
+      height: height,
       data: {
         meta: nodeMeta,
         backgroundColor: token.colorBgContainer,
@@ -36,10 +36,12 @@ export function useGetControllerReactionConfig() {
         width: width,
         height: height,
         subLabel: subLabel,
+        inputCounts: nodeMeta.inPorts?.length || ports.filter(port => port.group === 'in').length,
+        outputCounts: nodeMeta.outPorts?.length || ports.filter(port => port.group === 'out').length,
       },
       ports: {
         groups: portsGroup,
-        items: transformPorts(nodeMeta)
+        items: ports
       },
     }
   }, [getHeight, getNodeWidth, getSubLabel, portsGroup, token, transformPorts])

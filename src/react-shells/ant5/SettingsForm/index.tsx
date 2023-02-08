@@ -39,6 +39,7 @@ import { CollapsePanel } from "./components/CollapsePanel";
 import { EffectsInput } from "./components/EffectsInput";
 import { ReactionsInput } from "./components/ReactionsInput";
 import { EventInput } from "./components/EventInput";
+import { ValueInput } from "./components/ValueInput";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -129,6 +130,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         EffectsInput,
         ReactionsInput,
         EventInput,
+        ValueInput,
       }}
     >
       <Fieldy>

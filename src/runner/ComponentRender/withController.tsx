@@ -16,13 +16,17 @@ export function withController(WrappedComponent: React.FC<any> | React.Component
     const [changedProps, setChangeProps] = useState<any>()
     const controllers = useControllers()
     const materials = useMaterials()
+
     const controller = useMemo(
-      () => new ComponentController(meta, controllers, materials),
+      () => {
+        console.log("创建控制器")
+        return new ComponentController(meta, controllers, materials)
+      },
       [materials, controllers]
     )
 
     const newControllers: ComponentControllers = useMemo(() => {
-      return { ...controllers, [controller.id]:controller }
+      return { ...controllers, [controller.id]: controller }
     }, [controller, controllers])
 
     const newProps = useMemo(() => {
@@ -30,7 +34,9 @@ export function withController(WrappedComponent: React.FC<any> | React.Component
     }, [changedProps, controller.events, props])
 
     const handlePropsChange = useCallback((name: string, value: any) => {
-      setChangeProps((changedProps: any) => ({ ...changedProps, [name]: value }))
+      setChangeProps((changedProps: any) => {
+        return ({ ...changedProps, [name]: value })
+      })
     }, [])
 
     useEffect(() => {
@@ -39,8 +45,14 @@ export function withController(WrappedComponent: React.FC<any> | React.Component
     }, [controller, handlePropsChange])
 
     useEffect(() => {
-      controller?.initEvent?.()
-      return controller?.destoryEvent
+      if (controller) {
+        controller.initEvent?.()
+        return () => {
+          controller.destoryEvent?.()
+          //暂时删掉，因为会有不响应的bug
+          //controller.destory()
+        }
+      }
     }, [controller])
 
     return <ControllersContext.Provider value={newControllers}>

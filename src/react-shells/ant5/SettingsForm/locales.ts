@@ -73,6 +73,10 @@ export const settingLocales = {
       destory: "销毁",
       onClick: "点击",
 
+      boolean: "布尔",
+      number: "数字",
+      string: "字符串",
+
       IconInput: {
         DialogTitle: "选择图标",
         "Outlined": "线框风格",
@@ -110,14 +114,18 @@ export const settingLocales = {
         switch: "分流",
         delay: "延时",
         random: "随机数",
+        interval: "信号发生器",
+        fixedValue: "常量",
         input: "输入",
         output: "输出",
         true: "是",
         false: "否",
         startUp: "启动",
+        stop: "停止",
         debug: "调试",
         setVariable: "变量赋值",
         listenVariable: "监听变量",
+        readVariable: "读取变量",
         pleaseInputName: "请输入名称",
         setProp: "设置属性",
         routeTo: "路由跳转",
@@ -138,6 +146,7 @@ export const settingLocales = {
         close: "关闭",
         label: "标签",
         operation: "操作",
+        defaultValue: "默认值",
       }
     }
   },
@@ -213,6 +222,10 @@ export const settingLocales = {
       destory: "Destory",
       onClick: "Click",
 
+      boolean: "Boolean",
+      number: "Number",
+      string: "String",
+
       IconInput: {
         DialogTitle: "Select Icon",
         "Outlined": "Outlined",
@@ -249,14 +262,18 @@ export const settingLocales = {
         switch: "Switch",
         delay: "Delay",
         random: "Random",
+        interval: "interval",
+        fixedValue: "Fixed value",
         input: "Input",
         output: "Output",
         true: "True",
         false: "False",
         startUp: "Start Up",
+        stop: "Stop",
         debug: "Debug",
         setVariable: "Set Variable",
         listenVariable: "Listen Variable",
+        readVariable :"Read Variable",
         pleaseInputName: "Please input name!",
         setProp: "Set prop",
         routeTo: "Route To",
@@ -277,6 +294,7 @@ export const settingLocales = {
         close: "Close",
         label: "Label",
         operation: "Operation",
+        defaultValue: "Default Value",
       }
     }
   }

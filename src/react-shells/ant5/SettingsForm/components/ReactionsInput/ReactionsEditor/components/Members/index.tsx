@@ -6,8 +6,10 @@ import { IControllerMeta, IReactionDefineMeta, IVariableDefineMeta } from "runne
 import styled from "styled-components";
 import { methodIcon, variableIcon } from "../../../../../../icons/reactions";
 import { createUuid } from "../../utils";
-import { EditableListItem } from "./EditableListItem";
+import { ListItemReaction } from "./ListItemReaction";
+import { ListItemVariable } from "./ListItemVariable";
 import { NameDialog } from "./NameDialog";
+import { VariableDialog } from "./VariableDialog";
 
 const { Text } = Typography;
 
@@ -34,7 +36,7 @@ const ListItem = styled((props) => <Button type="text" {...props} />)`
 
 export const Members = memo((
   props: {
-    value?: IControllerMeta,
+    value: IControllerMeta,
     selected?: string,
     onSelect?: (id: string) => void,
     onChange?: (value?: IControllerMeta) => void,
@@ -81,12 +83,12 @@ export const Members = memo((
     setAddReactionOpen(false)
   }, [])
 
-  const handleAddVariableOk = useCallback((name?: string) => {
-    if (name) {
+  const handleAddVariableOk = useCallback((meta?: IVariableDefineMeta) => {
+    if (meta) {
       const newVariable: IVariableDefineMeta = {
+        ...meta,
         id: createUuid(),
-        name: name,
-      }
+        }
 
       onChange?.({ ...value, variables: [...value?.variables || [], newVariable] })
     }
@@ -105,8 +107,8 @@ export const Members = memo((
     onChange?.({ ...value, reactions: value?.reactions?.map(reaction => reaction.id !== id ? reaction : { ...reaction, label }) })
   }, [onChange, value])
 
-  const handleChangeVariable = useCallback((id: string, label: string) => {
-    onChange?.({ ...value, variables: value?.variables?.map(va => va.id !== id ? va : { ...va, name: label }) })
+  const handleChangeVariable = useCallback((meta: IVariableDefineMeta) => {
+    onChange?.({ ...value, variables: value?.variables?.map(va => va.id !== meta.id ? va : { ...va, ...meta }) })
   }, [onChange, value])
 
   return (
@@ -141,7 +143,7 @@ export const Members = memo((
         {
           value?.reactions?.map((reaction) => {
             return (
-              <EditableListItem
+              <ListItemReaction
                 key={reaction.id}
                 id={reaction.id}
                 name={reaction.label || ""}
@@ -156,7 +158,7 @@ export const Members = memo((
                 >
                   {reaction.label || reaction.name}
                 </ListItem>
-              </EditableListItem>
+              </ListItemReaction>
             )
           })
         }
@@ -169,10 +171,9 @@ export const Members = memo((
         {
           value?.variables?.map((variable) => {
             return (
-              <EditableListItem
+              <ListItemVariable
                 key={variable.id}
-                id={variable.id}
-                name={variable.name}
+                value={variable}
                 editTitle={t("$editVariable")}
                 onRemove={handleRemoveVariable}
                 onChange={handleChangeVariable}
@@ -182,7 +183,7 @@ export const Members = memo((
                 >
                   {variable.name}
                 </ListItem>
-              </EditableListItem>
+              </ListItemVariable>
             )
           })
         }
@@ -193,7 +194,7 @@ export const Members = memo((
         onCancel={handleAddReactionCancel}
         onOk={handleAddReactionOk}
       />
-      <NameDialog
+      <VariableDialog
         title={'$addVariable'}
         open={addVariableOpen}
         onCancel={handleAddVariableCancel}

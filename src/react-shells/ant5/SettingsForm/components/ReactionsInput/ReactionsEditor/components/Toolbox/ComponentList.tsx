@@ -2,11 +2,11 @@ import { Space, Typography } from "antd";
 import { memo, useCallback } from "react"
 import { reactionMaterial } from "react-shells/ant5/materials/controller/reaction";
 import { setPropMaterial } from "react-shells/ant5/materials/controller/setProp";
-import { setVariableMaterial, listenVariableMaterial } from "react-shells/ant5/materials/controller/variable";
+import { setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "react-shells/ant5/materials/controller/variable";
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { IControllerMeta, IReactionDefineMeta, IReactionMeta } from "runner/reaction/interfaces/metas";
 import styled from "styled-components";
-import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon } from "../../../../../../icons/reactions";
+import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon, variableIcon } from "../../../../../../icons/reactions";
 import { useController } from "../../hooks/useController";
 import { useControllerNodes } from "../../hooks/useControllerNodes";
 import { useDnd } from "../../hooks/useDnd";
@@ -104,6 +104,7 @@ export const ComponentList = memo((
                     <>
                       <ItemTitle onMouseDown={startDefaultDragFn(setVariableMaterial, controller.id, setVariableMaterial.name)}>{setVariableIcon} {t("$setVariable")}</ItemTitle>
                       <ItemTitle onMouseDown={startDefaultDragFn(listenVariableMaterial, controller.id, setVariableMaterial.name)}>{listenVariableIcon} {t("$listenVariable")}</ItemTitle>
+                      <ItemTitle onMouseDown={startDefaultDragFn(readVariableMaterial, controller.id, setVariableMaterial.name)}>{variableIcon} {t("$readVariable")}</ItemTitle>
                     </>
                   }
                   {

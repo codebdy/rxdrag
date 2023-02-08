@@ -5,7 +5,7 @@ export abstract class AbstractReaction<ConfigMeta extends IConfigMeta> implement
   id: string;
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];
-  constructor(protected meta: IReactionMeta<ConfigMeta>, protected options?: IReactionFactoryOptions) {
+  constructor(public meta: IReactionMeta<ConfigMeta>, protected options?: IReactionFactoryOptions) {
     this.id = meta.id
     for (const out of meta.outPorts || []) {
       this.outputs.push(new Jointer(out.id, out.name))
@@ -14,6 +14,8 @@ export abstract class AbstractReaction<ConfigMeta extends IConfigMeta> implement
     for (const input of meta.inPorts || []) {
       this.inputs.push(new Jointer(input.id, input.name))
     }
+  }
+  destory = () => {
   }
 
   getOutputByName(name: string) {

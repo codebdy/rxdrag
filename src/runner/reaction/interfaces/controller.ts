@@ -1,5 +1,5 @@
 import { IReactionMaterial } from "./material"
-import { IConfigMeta, IReactionMeta } from "./metas"
+import { IConfigMeta, IControllerMeta, IReactionMeta } from "./metas"
 
 export type Unsubscribe = () => void
 
@@ -18,6 +18,8 @@ export interface IReaction {
   id: string
   inputs: IJointer[]
   outputs: IJointer[]
+  meta?: IReactionMeta
+  destory(): void
 }
 
 export type VariableListener = (value: any) => void
@@ -31,6 +33,7 @@ export type EventFuncs = {
 
 export interface IVariableController {
   setVariable(name: string, value: any): void,
+  getVariable(name: string): any,
   subscribeToVariableChange(name: string, listener: VariableListener): void
 }
 
@@ -41,11 +44,14 @@ export interface IPropController {
 export interface IComponentController extends IVariableController, IPropController {
   id: string,
   name?: string,
+  meta: IControllerMeta,
 
   events: EventFuncs,
   initEvent?: InputFunc,
   destoryEvent?: InputFunc,
   subscribeToPropsChange(listener: PropsListener): UnListener
+
+  destory(): void,
 }
 
 export type ComponentControllers = {
@@ -60,4 +66,4 @@ export interface IReactionFactoryOptions {
   materials?: IReactionMaterial[],
 }
 
-export type ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options?: IReactionFactoryOptions) => IReaction
+export type ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options: IReactionFactoryOptions) => IReaction

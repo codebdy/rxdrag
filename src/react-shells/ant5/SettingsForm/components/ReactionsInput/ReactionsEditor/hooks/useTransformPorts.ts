@@ -1,11 +1,13 @@
 import { useToken } from "antd/es/theme/internal";
 import { useCallback } from "react";
-import { IPortMeta, IReactionNodeData } from "runner/reaction/interfaces/metas";
+import { IPortMeta, IReactionMeta, ReactionType } from "runner/reaction/interfaces/metas";
+import { useGetControllerReactionPorts } from "./useGetControllerReactionPorts";
 import { useTrans } from "./useTrans";
 
 export function useTransformPorts() {
   const [, token] = useToken()
   const t = useTrans()
+  const getControllerPorts = useGetControllerReactionPorts();
   const doTransform = useCallback((ports: IPortMeta[] | undefined, group: 'in' | 'out') => {
     return ports?.map(
       port => ({
@@ -29,11 +31,17 @@ export function useTransformPorts() {
     )
   }, [t, token.colorTextSecondary])
 
-  const transform = useCallback((meta: IReactionNodeData) => {
-    const ins = doTransform(meta.inPorts, 'in') || []
-    const outs = doTransform(meta.outPorts, 'out') || []
-    return [...ins, ...outs]
-  }, [doTransform])
+  const transform = useCallback((meta: IReactionMeta) => {
+    if (meta.type === ReactionType.ControllerReaction) {
+      const ins = doTransform(getControllerPorts(meta, 'in'), 'in')||[]
+      const outs = doTransform(getControllerPorts(meta, 'out'), 'out')||[]
+      return [...ins, ...outs]
+    } else {
+      const ins = doTransform(meta.inPorts, 'in') || []
+      const outs = doTransform(meta.outPorts, 'out') || []
+      return [...ins, ...outs]
+    }
+  }, [doTransform, getControllerPorts])
 
   return transform
 }

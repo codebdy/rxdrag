@@ -11,6 +11,11 @@ export const reactionMaterialLocales = {
     outputPortsConfig: "配置输入桩",
     prop: "属性",
     variable: "变量",
+    interval: "间隔时间",
+    millisecond: "毫秒",
+    maxValue: "最大值",
+    minValue: "最小值",
+    time: "时间",
   },
   'en-US': {
     name: "Name",
@@ -24,5 +29,10 @@ export const reactionMaterialLocales = {
     outputPortsConfig: "Config Output Ports",
     prop: "Prop",
     variable: "Variable",
+    interval: "Interval",
+    millisecond: "Millisecond",
+    maxValue: "Max",
+    minValue: "Min",
+    time: "Time"
   }
 }

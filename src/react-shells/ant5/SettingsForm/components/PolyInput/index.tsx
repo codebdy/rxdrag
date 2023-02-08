@@ -1,6 +1,21 @@
 import React, { useEffect, useState, memo, useCallback, useRef } from 'react'
 import { Button, InputNumber } from 'antd'
-import './styles.less'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex: 1;
+
+  .ant-input-number {
+    width: auto;
+  }
+
+  .poly-button {
+    min-width: 32px;
+  }
+`
 
 export const takeNumber = (value: any, type: string) => {
   if (value === undefined) {
@@ -109,7 +124,7 @@ export const PolyInput = memo((
   }, [onChange, polyType])
 
   return (
-    <div className='rx-poly-input'>
+    <Container>
       {
         InputComponent &&
         <InputComponent value={polyType.toInputValue?.(value)} onChange={handleInputChange} />
@@ -123,6 +138,6 @@ export const PolyInput = memo((
         icon={<>{polyType?.title || polyType?.icon || polyType?.type}</>}
         onClick={handleClick}>
       </Button>
-    </div>
+    </Container>
   )
 })

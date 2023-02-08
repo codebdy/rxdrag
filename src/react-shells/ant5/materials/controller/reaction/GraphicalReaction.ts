@@ -1,14 +1,15 @@
 import { Jointer } from "../../../../../runner/reaction/classes/jointer";
 import { IJointer, IReaction, IReactionFactoryOptions } from "../../../../../runner/reaction/interfaces/controller";
-import { IReactionDefineMeta, ReactionType } from "../../../../../runner/reaction/interfaces/metas";
+import { IConfigMeta, IReactionDefineMeta, IReactionMeta, ReactionType } from "../../../../../runner/reaction/interfaces/metas";
 
 export class GraphicalReaction implements IReaction {
   id: string;
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];
   reactions: IReaction[] = [];
-  constructor(private meta: IReactionDefineMeta, private options?: IReactionFactoryOptions) {
-    this.id = meta.id
+  constructor(private defineMeta: IReactionDefineMeta, private options: IReactionFactoryOptions, public meta?: IReactionMeta<IConfigMeta>) {
+    //注意这个id的处理，自定reaction必须要用meta id，不能用defineMeta id
+    this.id = meta?.id || defineMeta.id
 
     //第一步，解析节点
     this.constructReactions()
@@ -16,9 +17,17 @@ export class GraphicalReaction implements IReaction {
     //第二步， 构建连接关系
     this.contructRelations()
   }
+  destory(): void {
+    for(const reaction of this.reactions){
+      reaction.destory()
+    }
+    this.reactions = []
+    this.outputs = []
+    this.inputs = []
+  }
 
   private constructReactions() {
-    for (const reactionMeta of this.meta.logicMetas?.reactions || []) {
+    for (const reactionMeta of this.defineMeta.logicMetas?.reactions || []) {
       switch (reactionMeta.type) {
         case ReactionType.Start:
           this.inputs.push(new Jointer(reactionMeta.id, reactionMeta.name || "input"));
@@ -39,7 +48,7 @@ export class GraphicalReaction implements IReaction {
   }
 
   private contructRelations() {
-    for (const invokeMeta of this.meta.logicMetas?.invokes || []) {
+    for (const invokeMeta of this.defineMeta.logicMetas?.invokes || []) {
       let sourceJointer = this.inputs.find(jointer => jointer.id === invokeMeta.source.nodeId)
       if (!sourceJointer && invokeMeta.source.portId) {
         sourceJointer = this.reactions.find(reaction => reaction.id === invokeMeta.source.nodeId)?.outputs.find(output => output.id === invokeMeta.source.portId)

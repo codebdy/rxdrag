@@ -77,15 +77,16 @@ export interface IReactionDefineMeta {
 
 export interface IVariableDefineMeta {
   id: string,
-  name: string
+  name: string,
+  defaultValue?: any,
 }
 
 // $form 虚拟表单， 
 // $field 当前字段, 设置字段：$field.setValue
 // $self 组件，设置组件属性:$self.setProps({dataSource:[...]}), 
 export interface IControllerMeta {
-  // undefined 表示不开启控制器
-  id?: string,
+  id: string,
+  enable?: boolean,
   name?: string,
   events?: IReactionDefineMeta[],
   reactions?: IReactionDefineMeta[],

@@ -10,7 +10,7 @@ const ListItem = styled.div`
   align-items: center;
 `
 
-export const EditableListItem = memo((
+export const ListItemReaction = memo((
   props: {
     name: string,
     children?: React.ReactNode,

@@ -20,4 +20,5 @@ export abstract class AbstractControllerReaction extends AbstractReaction<IContr
     this.controller = controller
   }
 
+  destory = () => {}
 }
