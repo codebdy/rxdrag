@@ -5496,7 +5496,7 @@
                 {
                   "componentName": "Col",
                   "props": {
-                    "span": 12,
+                    "span": 24,
                     "style": {}
                   },
                   "x-field": {},
