@@ -477,6 +477,63 @@
                 }
               ]
             }
+          },
+          {
+            "id": "0d62c0d6-600a-4bf5-bd2b-4728808a56b4",
+            "label": "计分",
+            "logicMetas": {
+              "reactions": [
+                {
+                  "id": "54643384-16d4-4e06-a23a-604e6033feae",
+                  "label": "输入",
+                  "type": "Start",
+                  "materialName": "start",
+                  "name": "input",
+                  "x6Node": {
+                    "x": 100,
+                    "y": 120,
+                    "width": 20,
+                    "height": 20
+                  }
+                },
+                {
+                  "id": "1b7b30a3-302d-48fd-9fef-b141e37d846d",
+                  "label": "变量赋值",
+                  "type": "ControllerDefaultReaction",
+                  "materialName": "setVariable",
+                  "inPorts": [
+                    {
+                      "id": "2b15066d-c71e-4781-a3d5-a4f93db7f1ea",
+                      "name": "input",
+                      "label": ""
+                    }
+                  ],
+                  "config": {
+                    "controllerId": "9a6d5769-790e-4a23-bdfc-6694d6bc5b5a",
+                    "reactionRef": "setVariable",
+                    "variable": "成绩"
+                  },
+                  "x6Node": {
+                    "x": 350,
+                    "y": 210,
+                    "width": 116,
+                    "height": 32
+                  }
+                }
+              ],
+              "invokes": [
+                {
+                  "id": "02762b7b-ab73-4166-b372-01b76b04b248",
+                  "source": {
+                    "nodeId": "54643384-16d4-4e06-a23a-604e6033feae"
+                  },
+                  "target": {
+                    "nodeId": "1b7b30a3-302d-48fd-9fef-b141e37d846d",
+                    "portId": "2b15066d-c71e-4781-a3d5-a4f93db7f1ea"
+                  }
+                }
+              ]
+            }
           }
         ],
         "enable": true
@@ -919,49 +976,6 @@
                                   }
                                 },
                                 {
-                                  "id": "c3e17ab9-1e12-4a4d-85e5-afedd157e08d",
-                                  "label": "设置属性",
-                                  "type": "ControllerDefaultReaction",
-                                  "materialName": "setProp",
-                                  "inPorts": [
-                                    {
-                                      "id": "69b61dbe-b523-4cc8-a37e-8c36c400da14",
-                                      "name": "input",
-                                      "label": ""
-                                    }
-                                  ],
-                                  "config": {
-                                    "controllerId": "e173dac5-dfea-4e59-ba1a-477cf14acd96",
-                                    "reactionRef": "setProp",
-                                    "prop": "danger"
-                                  },
-                                  "x6Node": {
-                                    "x": 450,
-                                    "y": 170,
-                                    "width": 116,
-                                    "height": 32
-                                  }
-                                },
-                                {
-                                  "id": "2353bb22-da48-4b8f-b5dd-38e3c615b420",
-                                  "label": "打到地鼠",
-                                  "type": "SingleReaction",
-                                  "materialName": "debug",
-                                  "inPorts": [
-                                    {
-                                      "id": "04f6cba3-7b2f-4630-bac9-dd3d4a633e00",
-                                      "name": "input",
-                                      "label": ""
-                                    }
-                                  ],
-                                  "x6Node": {
-                                    "x": 420,
-                                    "y": 290,
-                                    "width": 88,
-                                    "height": 32
-                                  }
-                                },
-                                {
                                   "id": "92cf71f7-2265-4208-b7e5-1c1c47666b3f",
                                   "label": "常量",
                                   "type": "SingleReaction",
@@ -989,6 +1003,30 @@
                                   "config": {
                                     "value": true
                                   }
+                                },
+                                {
+                                  "id": "c3e17ab9-1e12-4a4d-85e5-afedd157e08d",
+                                  "label": "设置属性",
+                                  "type": "ControllerDefaultReaction",
+                                  "materialName": "setProp",
+                                  "inPorts": [
+                                    {
+                                      "id": "69b61dbe-b523-4cc8-a37e-8c36c400da14",
+                                      "name": "input",
+                                      "label": ""
+                                    }
+                                  ],
+                                  "config": {
+                                    "controllerId": "e173dac5-dfea-4e59-ba1a-477cf14acd96",
+                                    "reactionRef": "setProp",
+                                    "prop": "danger"
+                                  },
+                                  "x6Node": {
+                                    "x": 500,
+                                    "y": 140,
+                                    "width": 116,
+                                    "height": 48
+                                  }
                                 }
                               ],
                               "invokes": [
@@ -1011,16 +1049,6 @@
                                   "target": {
                                     "nodeId": "c3e17ab9-1e12-4a4d-85e5-afedd157e08d",
                                     "portId": "69b61dbe-b523-4cc8-a37e-8c36c400da14"
-                                  }
-                                },
-                                {
-                                  "id": "543d11d4-4711-4c8c-abd3-1012a3ebc3fd",
-                                  "source": {
-                                    "nodeId": "889a9894-67ca-486f-9728-6d353fa317bb"
-                                  },
-                                  "target": {
-                                    "nodeId": "2353bb22-da48-4b8f-b5dd-38e3c615b420",
-                                    "portId": "04f6cba3-7b2f-4630-bac9-dd3d4a633e00"
                                   }
                                 }
                               ]
