@@ -1,7 +1,8 @@
+import { INodeSchema } from "core";
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { IReactionMaterial } from "../../../../runner/reaction/interfaces/material";
 import { endIcon, startIcon } from "../../icons/reactions";
-import { startEndSchema } from "../baseSchema";
+import { labelSchema, nameSchema } from "../baseSchema";
 import { conditionMaterial } from "./condition";
 import { delayMaterial } from "./delay";
 import { fixedValueMaterial } from "./fixedValue";
@@ -10,6 +11,11 @@ import { loopMaterial } from "./loop";
 import { mergeMaterial } from "./merge";
 import { randomMaterial } from "./random";
 import { switchMaterial } from "./switch";
+
+export const startEndSchema: INodeSchema = {
+  componentName: "Fragment",
+  children: [nameSchema, labelSchema],
+}
 
 export const basicReactions: IReactionMaterial[] = [
   {

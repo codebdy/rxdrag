@@ -1,5 +1,3 @@
-import { INodeSchema } from "core";
-
 export const labelSchema = {
   componentName: "FormItem",
   props: {
@@ -28,14 +26,4 @@ export const nameSchema = {
       },
     }
   ]
-}
-
-export const startEndSchema: INodeSchema = {
-  componentName: "Fragment",
-  children: [nameSchema, labelSchema],
-}
-
-export const nodeBaseSchema: INodeSchema = {
-  componentName: "Fragment",
-  children: [labelSchema],
 }
