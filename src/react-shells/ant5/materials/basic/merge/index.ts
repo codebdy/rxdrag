@@ -1,9 +1,10 @@
 import { mergeIcon } from "react-shells/ant5/icons/reactions";
 import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 import { IReactionMaterial, ReactionType } from "runner/reaction";
+import { Merge } from "./reaction";
 import { mergeSchema } from "./schema";
 
-export const mergeMaterial: IReactionMaterial  = {
+export const mergeMaterial: IReactionMaterial = {
   name: "merge",
   icon: mergeIcon,
   label: "$merge",
@@ -30,4 +31,5 @@ export const mergeMaterial: IReactionMaterial  = {
     ],
   },
   schema: mergeSchema,
+  reaction: Merge,
 }

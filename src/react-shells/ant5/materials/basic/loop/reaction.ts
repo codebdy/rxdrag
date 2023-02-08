@@ -11,10 +11,10 @@ export class LoopReaction extends AbstractReaction<ILoopConfig> {
   constructor(meta: IReactionMeta<ILoopConfig>, options?: IReactionFactoryOptions) {
     super(meta, options)
 
-    this.getInputByName("input")?.connect(this.inputUpHandler)
+    this.getInputByName("input")?.connect(this.inputHandler)
   }
 
-  inputUpHandler = (inputValue?: any) => {
+  inputHandler = (inputValue?: any) => {
     if (this.meta.config?.fromInput) {
       if (!isArr(inputValue)) {
         console.error("Loop input is not array")
