@@ -336,6 +336,15 @@
                       "children": [
                         {
                           "componentName": "List",
+                          "props": {
+                            "style": {}
+                          },
+                          "x-field": {},
+                          "x-reactions": {
+                            "id": "97b74524-499e-472b-ab0d-bf46f11fe185",
+                            "enable": true,
+                            "name": "待办列表"
+                          },
                           "slots": {
                             "renderItem": {
                               "componentName": "ListItem",
