@@ -39,6 +39,12 @@ export class ComponentController implements IComponentController {
         this.events[eventMeta.name] = inputOne.push
       }
     }
+    for(const variable of meta.variables||[]){
+      this.variables[variable.name] = variable.defaultValue
+    }
+  }
+  getVariable(name: string) {
+    return this.variables[name]
   }
 
   destory = () =>  {

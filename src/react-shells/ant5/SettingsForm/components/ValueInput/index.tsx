@@ -64,13 +64,20 @@ export const ValueInput = memo((
   }, [value])
 
   const handleClick = useCallback(() => {
-    const newIndex = typeIndex + 1
-    if (newIndex < types.length) {
-      setTypeIndex(newIndex)
-    } else {
-      setTypeIndex(0)
+    let newIndex = typeIndex + 1
+
+    if (newIndex >= types.length) {
+      newIndex = 0
     }
-  }, [setTypeIndex, typeIndex])
+    setTypeIndex(newIndex)
+    if (types[newIndex] === ValueType.String) {
+      onChange?.(value?.toString())
+    } else if (types[newIndex] === ValueType.Boolean) {
+      onChange?.(!!value)
+    } else if (types[newIndex] === ValueType.Number) {
+      onChange?.(0)
+    }
+  }, [onChange, typeIndex, value])
 
   const handleStringChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(event.target?.value)

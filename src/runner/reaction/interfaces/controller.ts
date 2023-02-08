@@ -33,6 +33,7 @@ export type EventFuncs = {
 
 export interface IVariableController {
   setVariable(name: string, value: any): void,
+  getVariable(name: string): any,
   subscribeToVariableChange(name: string, listener: VariableListener): void
 }
 
