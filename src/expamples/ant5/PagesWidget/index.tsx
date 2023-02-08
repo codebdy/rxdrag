@@ -39,7 +39,8 @@ export const PagesWidget = memo((
 ) => {
   const { value, onSelect, display } = props
 
-  const handleSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: Key[]) => {
+  const handleSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: Key[],root:any) => {
+    if(root.node.children) return 
     onSelect(keys?.[0].toString() || "")
   }, [onSelect]);
 
