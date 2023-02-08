@@ -18,6 +18,7 @@ export interface IReaction {
   id: string
   inputs: IJointer[]
   outputs: IJointer[]
+  meta?: IReactionMeta
 }
 
 export type VariableListener = (value: any) => void
@@ -61,4 +62,4 @@ export interface IReactionFactoryOptions {
   materials?: IReactionMaterial[],
 }
 
-export type ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options?: IReactionFactoryOptions) => IReaction
+export type ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options: IReactionFactoryOptions) => IReaction

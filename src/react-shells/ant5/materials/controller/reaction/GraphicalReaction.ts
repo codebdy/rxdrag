@@ -7,7 +7,7 @@ export class GraphicalReaction implements IReaction {
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];
   reactions: IReaction[] = [];
-  constructor(private defineMeta: IReactionDefineMeta, private options?: IReactionFactoryOptions, meta?: IReactionMeta<IConfigMeta>) {
+  constructor(private defineMeta: IReactionDefineMeta, private options: IReactionFactoryOptions, public meta?: IReactionMeta<IConfigMeta>) {
     //注意这个id的处理，自定reaction必须要用meta id，不能用defineMeta id
     this.id = meta?.id || defineMeta.id
 

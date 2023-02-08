@@ -164,6 +164,25 @@
                     "width": 116,
                     "height": 32
                   }
+                },
+                {
+                  "id": "f7746de2-176d-427b-8d36-af7835541636",
+                  "label": "调试",
+                  "type": "SingleReaction",
+                  "materialName": "debug",
+                  "inPorts": [
+                    {
+                      "id": "64c3783d-c851-4249-8068-410a4e8c3fee",
+                      "name": "input",
+                      "label": ""
+                    }
+                  ],
+                  "x6Node": {
+                    "x": 890,
+                    "y": 400,
+                    "width": 88,
+                    "height": 32
+                  }
                 }
               ],
               "invokes": [
@@ -220,6 +239,17 @@
                   "target": {
                     "nodeId": "2d2adab5-de73-4c56-8a35-39fa10af19ee",
                     "portId": "f82a970d-9e8b-4548-9479-cd87b974d562"
+                  }
+                },
+                {
+                  "id": "85ba6b5e-60ac-4667-a0a7-b031407e56a7",
+                  "source": {
+                    "nodeId": "d9e7f528-01f4-465f-b803-16fe6d2dc6e9",
+                    "portId": "d1ced5a9-c135-4495-a953-34bb78ee79d9"
+                  },
+                  "target": {
+                    "nodeId": "f7746de2-176d-427b-8d36-af7835541636",
+                    "portId": "64c3783d-c851-4249-8068-410a4e8c3fee"
                   }
                 }
               ]

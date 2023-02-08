@@ -3,7 +3,7 @@ import { CodeReaction } from "./CodeReaction"
 import { GraphicalReaction } from "./GraphicalReaction"
 
 
-export const ControllerReaction: ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options?: IReactionFactoryOptions) => {
+export const ControllerReaction: ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options: IReactionFactoryOptions) => {
   if (!meta?.config?.controllerId) {
     throw new Error("No controller id when create controller reaction by ReactionFactory")
   }
