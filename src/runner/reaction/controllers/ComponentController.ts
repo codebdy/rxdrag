@@ -1,5 +1,5 @@
 import { INIT_EVENT_NAME, DESTORY_EVENT_NAME } from "react-shells/ant5/shared/createReactionSchema";
-import { ComponentControllers, EventFuncs, IComponentController, InputFunc, PropsListener, UnListener, VariableListener } from "runner/reaction/interfaces/controller";
+import { ComponentControllers, EventFuncs, IComponentController, InputFunc, IReaction, PropsListener, UnListener, VariableListener } from "runner/reaction/interfaces/controller";
 import { IReactionMaterial } from "../interfaces/material";
 import { IControllerMeta, IReactionDefineMeta } from "../interfaces/metas";
 import { GraphicalReaction } from "../../../react-shells/ant5/materials/controller/reaction/GraphicalReaction";
@@ -17,10 +17,13 @@ export class ComponentController implements IComponentController {
   } = {}
   private propsListeners: PropsListener[] = []
 
+  private reactions: IReaction[] = []
+
   constructor(public meta: IControllerMeta, protected parentControllers: ComponentControllers, protected materials: IReactionMaterial[]) {
     this.id = meta.id!
     for (const eventMeta of meta.events || []) {
       const reaction = this.makeReaction(eventMeta, { ...parentControllers, [this.id]: this })
+      reaction && this.reactions.push(reaction)
       if (!reaction) {
         continue
       }
@@ -36,6 +39,14 @@ export class ComponentController implements IComponentController {
         this.events[eventMeta.name] = inputOne.push
       }
     }
+  }
+
+  destory = () =>  {
+    for(const reaction of this.reactions){
+      reaction.destory()
+    }
+    this.reactions = []
+    this.events = {}
   }
 
   setVariable = (name: string, value: any): void => {
@@ -56,7 +67,7 @@ export class ComponentController implements IComponentController {
     }
   }
 
-  setProp = (name: string, value: any): void =>{
+  setProp = (name: string, value: any): void => {
     for (const listener of this.propsListeners) {
       listener(name, value)
     }
@@ -69,7 +80,7 @@ export class ComponentController implements IComponentController {
     }
   }
 
-  private makeReaction = (reactionMeta: IReactionDefineMeta, controllers: ComponentControllers) =>{
+  private makeReaction = (reactionMeta: IReactionDefineMeta, controllers: ComponentControllers) => {
     const options = {
       variableController: this,
       propsController: this,

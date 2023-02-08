@@ -7,6 +7,7 @@ export interface IIntervalConfig extends IConfigMeta {
 
 export class IntervalReaction extends AbstractReaction<IIntervalConfig> {
   timer?: NodeJS.Timer
+  inputValue?: any
   constructor(meta: IReactionMeta<IIntervalConfig>, options?: IReactionFactoryOptions) {
     super(meta, options)
 
@@ -14,7 +15,9 @@ export class IntervalReaction extends AbstractReaction<IIntervalConfig> {
     this.getInputByName("stop")?.connect(this.stopHandler)
   }
 
-  startUpHandler = () => {
+  startUpHandler = (inputValue?: any) => {
+    this.stopHandler()
+    this.inputValue = inputValue
     if (this.meta.config?.interval) {
       this.timer = setInterval(this.outputHandler, this.meta.config?.interval)
     }
@@ -28,7 +31,11 @@ export class IntervalReaction extends AbstractReaction<IIntervalConfig> {
   }
 
   outputHandler = () => {
-    this.getOutputByName("output")?.push()
+    this.getOutputByName("output")?.push(this.inputValue)
+  }
+
+  destory = ()=> {
+     this.stopHandler()
   }
 }
 

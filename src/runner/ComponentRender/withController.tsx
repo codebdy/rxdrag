@@ -40,7 +40,10 @@ export function withController(WrappedComponent: React.FC<any> | React.Component
 
     useEffect(() => {
       controller?.initEvent?.()
-      return controller?.destoryEvent
+      return ()=>{
+        controller?.destoryEvent?.()
+        controller?.destory()
+      }
     }, [controller])
 
     return <ControllersContext.Provider value={newControllers}>

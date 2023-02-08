@@ -536,7 +536,287 @@
                       "componentName": "Button",
                       "props": {
                         "type": "primary",
-                        "title": "Button"
+                        "title": "Button",
+                        "disabled": true,
+                        "style": {},
+                        "ghost": false,
+                        "danger": false
+                      },
+                      "x-field": {},
+                      "x-reactions": {
+                        "id": "e173dac5-dfea-4e59-ba1a-477cf14acd96",
+                        "enable": true,
+                        "name": "地鼠1",
+                        "events": [
+                          {
+                            "id": "b68a5599-31db-457c-9c41-b78166755df6",
+                            "name": "init",
+                            "label": "初始化",
+                            "logicMetas": {
+                              "reactions": [
+                                {
+                                  "id": "9b9b3227-7872-4290-9dfd-34017b8e51d0",
+                                  "label": "输入",
+                                  "type": "Start",
+                                  "materialName": "start",
+                                  "name": "input",
+                                  "x6Node": {
+                                    "x": 160,
+                                    "y": 160,
+                                    "width": 20,
+                                    "height": 20
+                                  }
+                                },
+                                {
+                                  "id": "c1e8932d-d511-47cb-a9bf-eb57529c6bf4",
+                                  "label": "条件判断",
+                                  "type": "SingleReaction",
+                                  "materialName": "condition",
+                                  "inPorts": [
+                                    {
+                                      "id": "45169fd8-eaf5-4e7a-838a-b850e4d348a1",
+                                      "name": "input",
+                                      "label": ""
+                                    }
+                                  ],
+                                  "outPorts": [
+                                    {
+                                      "id": "7e48d801-788d-4766-8b3b-3beefdab2b34",
+                                      "name": "true",
+                                      "label": "$true"
+                                    },
+                                    {
+                                      "id": "60a22e98-9777-47f1-9528-e64fa370647f",
+                                      "name": "false",
+                                      "label": "$false"
+                                    }
+                                  ],
+                                  "x6Node": {
+                                    "x": 240,
+                                    "y": 220,
+                                    "width": 116,
+                                    "height": 32
+                                  },
+                                  "config": {
+                                    "trueExpression": "inputValue === 1"
+                                  }
+                                },
+                                {
+                                  "id": "d311de70-45df-4194-ad7f-f8b6b163c5c9",
+                                  "label": "设置属性",
+                                  "type": "ControllerDefaultReaction",
+                                  "materialName": "setProp",
+                                  "inPorts": [
+                                    {
+                                      "id": "fa34ab0e-b544-4ed1-a60e-f5ac2c13123a",
+                                      "name": "input",
+                                      "label": ""
+                                    }
+                                  ],
+                                  "config": {
+                                    "controllerId": "e173dac5-dfea-4e59-ba1a-477cf14acd96",
+                                    "reactionRef": "setProp",
+                                    "prop": "disabled"
+                                  },
+                                  "x6Node": {
+                                    "x": 600,
+                                    "y": 150,
+                                    "width": 116,
+                                    "height": 32
+                                  }
+                                },
+                                {
+                                  "id": "db7ee3f3-048d-42e3-b229-c6b9d63c05e1",
+                                  "label": "设置属性",
+                                  "type": "ControllerDefaultReaction",
+                                  "materialName": "setProp",
+                                  "inPorts": [
+                                    {
+                                      "id": "fa34ab0e-b544-4ed1-a60e-f5ac2c13123a",
+                                      "name": "input",
+                                      "label": ""
+                                    }
+                                  ],
+                                  "config": {
+                                    "controllerId": "e173dac5-dfea-4e59-ba1a-477cf14acd96",
+                                    "reactionRef": "setProp",
+                                    "prop": "disabled"
+                                  },
+                                  "x6Node": {
+                                    "x": 890,
+                                    "y": 350,
+                                    "width": 116,
+                                    "height": 32
+                                  }
+                                },
+                                {
+                                  "id": "75372bb7-6942-466b-9fcb-0c9a6caa96ec",
+                                  "label": "常量",
+                                  "type": "SingleReaction",
+                                  "materialName": "fixedValue",
+                                  "inPorts": [
+                                    {
+                                      "id": "0047d6c4-d277-428c-a5df-19d736825398",
+                                      "name": "input",
+                                      "label": ""
+                                    }
+                                  ],
+                                  "outPorts": [
+                                    {
+                                      "id": "15654454-dd44-4e80-a229-8221f1e31d7a",
+                                      "name": "output",
+                                      "label": ""
+                                    }
+                                  ],
+                                  "x6Node": {
+                                    "x": 430,
+                                    "y": 210,
+                                    "width": 88,
+                                    "height": 32
+                                  },
+                                  "config": {
+                                    "value": false
+                                  }
+                                },
+                                {
+                                  "id": "2ed79482-ae07-49b4-8ac1-c5c035546294",
+                                  "label": "常量",
+                                  "type": "SingleReaction",
+                                  "materialName": "fixedValue",
+                                  "inPorts": [
+                                    {
+                                      "id": "0047d6c4-d277-428c-a5df-19d736825398",
+                                      "name": "input",
+                                      "label": ""
+                                    }
+                                  ],
+                                  "outPorts": [
+                                    {
+                                      "id": "15654454-dd44-4e80-a229-8221f1e31d7a",
+                                      "name": "output",
+                                      "label": ""
+                                    }
+                                  ],
+                                  "x6Node": {
+                                    "x": 760,
+                                    "y": 280,
+                                    "width": 88,
+                                    "height": 32
+                                  },
+                                  "config": {
+                                    "value": true
+                                  }
+                                },
+                                {
+                                  "id": "d4b6b098-1e1e-41a2-8faa-19b684bc831b",
+                                  "label": "延时",
+                                  "type": "SingleReaction",
+                                  "materialName": "delay",
+                                  "inPorts": [
+                                    {
+                                      "id": "8076892c-fddd-4a06-950b-2a355b750836",
+                                      "name": "startUp",
+                                      "label": ""
+                                    }
+                                  ],
+                                  "outPorts": [
+                                    {
+                                      "id": "1554a8b9-5917-435a-8f05-e3ccf89b3796",
+                                      "name": "output",
+                                      "label": ""
+                                    }
+                                  ],
+                                  "x6Node": {
+                                    "x": 610,
+                                    "y": 280,
+                                    "width": 88,
+                                    "height": 32
+                                  },
+                                  "config": {
+                                    "time": 200
+                                  }
+                                }
+                              ],
+                              "invokes": [
+                                {
+                                  "id": "0b0be36b-93a1-4338-9939-172df39eb05e",
+                                  "source": {
+                                    "nodeId": "9b9b3227-7872-4290-9dfd-34017b8e51d0"
+                                  },
+                                  "target": {
+                                    "nodeId": "c1e8932d-d511-47cb-a9bf-eb57529c6bf4",
+                                    "portId": "45169fd8-eaf5-4e7a-838a-b850e4d348a1"
+                                  }
+                                },
+                                {
+                                  "id": "30b3e81d-7398-4061-9b37-301874496e11",
+                                  "source": {
+                                    "nodeId": "c1e8932d-d511-47cb-a9bf-eb57529c6bf4",
+                                    "portId": "7e48d801-788d-4766-8b3b-3beefdab2b34"
+                                  },
+                                  "target": {
+                                    "nodeId": "75372bb7-6942-466b-9fcb-0c9a6caa96ec",
+                                    "portId": "0047d6c4-d277-428c-a5df-19d736825398"
+                                  }
+                                },
+                                {
+                                  "id": "7708a6b4-7ef0-42bf-8a3e-471dda460148",
+                                  "source": {
+                                    "nodeId": "75372bb7-6942-466b-9fcb-0c9a6caa96ec",
+                                    "portId": "15654454-dd44-4e80-a229-8221f1e31d7a"
+                                  },
+                                  "target": {
+                                    "nodeId": "d4b6b098-1e1e-41a2-8faa-19b684bc831b",
+                                    "portId": "8076892c-fddd-4a06-950b-2a355b750836"
+                                  }
+                                },
+                                {
+                                  "id": "b24cf1db-2a22-4026-8401-b8b2b4541962",
+                                  "source": {
+                                    "nodeId": "d4b6b098-1e1e-41a2-8faa-19b684bc831b",
+                                    "portId": "1554a8b9-5917-435a-8f05-e3ccf89b3796"
+                                  },
+                                  "target": {
+                                    "nodeId": "2ed79482-ae07-49b4-8ac1-c5c035546294",
+                                    "portId": "0047d6c4-d277-428c-a5df-19d736825398"
+                                  }
+                                },
+                                {
+                                  "id": "790bb067-8805-407a-af87-1c55486b2eb3",
+                                  "source": {
+                                    "nodeId": "2ed79482-ae07-49b4-8ac1-c5c035546294",
+                                    "portId": "15654454-dd44-4e80-a229-8221f1e31d7a"
+                                  },
+                                  "target": {
+                                    "nodeId": "db7ee3f3-048d-42e3-b229-c6b9d63c05e1",
+                                    "portId": "fa34ab0e-b544-4ed1-a60e-f5ac2c13123a"
+                                  }
+                                },
+                                {
+                                  "id": "97f7b444-016d-4baa-a0c0-e17c4775b130",
+                                  "source": {
+                                    "nodeId": "75372bb7-6942-466b-9fcb-0c9a6caa96ec",
+                                    "portId": "15654454-dd44-4e80-a229-8221f1e31d7a"
+                                  },
+                                  "target": {
+                                    "nodeId": "d311de70-45df-4194-ad7f-f8b6b163c5c9",
+                                    "portId": "fa34ab0e-b544-4ed1-a60e-f5ac2c13123a"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "id": "95901bcd-7ab0-4bee-baab-4ae11d020095",
+                            "name": "destory",
+                            "label": "销毁"
+                          },
+                          {
+                            "id": "06d65cfd-fdea-4b51-9d06-fc42e3ca6115",
+                            "name": "onClick",
+                            "label": "点击"
+                          }
+                        ]
                       },
                       "slots": {},
                       "children": [

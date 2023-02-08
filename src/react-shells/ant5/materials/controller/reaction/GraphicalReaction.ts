@@ -17,6 +17,14 @@ export class GraphicalReaction implements IReaction {
     //第二步， 构建连接关系
     this.contructRelations()
   }
+  destory(): void {
+    for(const reaction of this.reactions){
+      reaction.destory()
+    }
+    this.reactions = []
+    this.outputs = []
+    this.inputs = []
+  }
 
   private constructReactions() {
     for (const reactionMeta of this.defineMeta.logicMetas?.reactions || []) {

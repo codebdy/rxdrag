@@ -15,6 +15,8 @@ export abstract class AbstractReaction<ConfigMeta extends IConfigMeta> implement
       this.inputs.push(new Jointer(input.id, input.name))
     }
   }
+  destory = () => {
+  }
 
   getOutputByName(name: string) {
     return this.outputs.find(out => out.name === name && name)

@@ -19,6 +19,7 @@ export interface IReaction {
   inputs: IJointer[]
   outputs: IJointer[]
   meta?: IReactionMeta
+  destory(): void
 }
 
 export type VariableListener = (value: any) => void
@@ -48,6 +49,8 @@ export interface IComponentController extends IVariableController, IPropControll
   initEvent?: InputFunc,
   destoryEvent?: InputFunc,
   subscribeToPropsChange(listener: PropsListener): UnListener
+
+  destory(): void,
 }
 
 export type ComponentControllers = {

@@ -15,6 +15,7 @@ export const reactionMaterialLocales = {
     millisecond: "毫秒",
     maxValue: "最大值",
     minValue: "最小值",
+    time: "时间",
   },
   'en-US': {
     name: "Name",
@@ -32,5 +33,6 @@ export const reactionMaterialLocales = {
     millisecond: "Millisecond",
     maxValue: "Max",
     minValue: "Min",
+    time: "Time"
   }
 }
