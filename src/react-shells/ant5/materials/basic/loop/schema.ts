@@ -5,19 +5,19 @@ export const loopSchema: INodeSchema = {
   componentName: "Fragment",
   children: [
     labelSchema,
-    // {
-    //   componentName: "FormItem",
-    //   props: {
-    //     label: "$trueExpression",
-    //   },
-    //   children: [
-    //     {
-    //       componentName: "TextArea",
-    //       "x-field": {
-    //         name: "config.trueExpression",
-    //       },
-    //     }
-    //   ]
-    // },
+    {
+      componentName: "FormItem",
+      props: {
+        label: "$fromInput",
+      },
+      children: [
+        {
+          componentName: "Switch",
+          "x-field": {
+            name: "config.fromInput",
+          },
+        }
+      ]
+    },
   ],
 }

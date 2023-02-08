@@ -1,6 +1,7 @@
 import { loopIcon } from "react-shells/ant5/icons/reactions";
 import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 import { IReactionMaterial, ReactionType } from "runner/reaction";
+import { Loop } from "./reaction";
 import { loopSchema } from "./schema";
 
 export const loopMaterial: IReactionMaterial = {
@@ -15,6 +16,7 @@ export const loopMaterial: IReactionMaterial = {
         name: "input",
         label: "",//"$input",
       },
+
     ],
     outPorts: [
       {
@@ -25,4 +27,5 @@ export const loopMaterial: IReactionMaterial = {
     ],
   },
   schema: loopSchema,
+  reaction: Loop,
 }
