@@ -110,7 +110,7 @@ export const ValueInput = memo((
       }
       {
         types[typeIndex] === ValueType.JSON &&
-        <JSONInput />
+        <JSONInput title={t("editJson")} />
       }
     </InputCol>
     <Button

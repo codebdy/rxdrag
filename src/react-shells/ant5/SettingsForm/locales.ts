@@ -76,6 +76,7 @@ export const settingLocales = {
       boolean: "布尔",
       number: "数字",
       string: "字符串",
+      editJson: "编辑 JSON",
 
       IconInput: {
         DialogTitle: "选择图标",
@@ -227,6 +228,7 @@ export const settingLocales = {
       boolean: "Boolean",
       number: "Number",
       string: "String",
+      editJson: "Edit JSON",
 
       IconInput: {
         DialogTitle: "Select Icon",

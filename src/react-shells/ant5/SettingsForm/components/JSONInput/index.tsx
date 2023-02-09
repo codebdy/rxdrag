@@ -5,10 +5,15 @@ import { useThemeMode } from "core-react/hooks/useThemeMode"
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate"
 import { memo, useCallback, useState } from "react"
 
-export const JSONInput = memo(() => {
+export const JSONInput = memo((
+  props: {
+    title?: string
+  }
+) => {
+  const { title } = props
   const [open, setOpen] = useState(false);
   const themeMode = useThemeMode()
-  
+
   const t = useToolsTranslate()
   const showDrawer = useCallback(() => {
     setOpen(true);
@@ -21,7 +26,7 @@ export const JSONInput = memo(() => {
     <>
       <Button icon={<EditOutlined />} onClick={showDrawer}>{t('edit')}</Button>
       <Drawer
-        title="Basic Drawer"
+        title={title}
         placement="right"
         mask={false}
         onClose={handleClose}
