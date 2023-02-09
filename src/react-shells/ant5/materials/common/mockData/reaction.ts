@@ -1,30 +1,47 @@
 import { AbstractReaction, IConfigMeta, IReactionMeta } from "runner/reaction";
 import { IReactionFactoryOptions, ReactionFactory } from "runner/reaction/interfaces/controller";
 
-export interface IRouteToConfig extends IConfigMeta {
-  url?: string,
-  fromInput?: boolean,
+export interface IMockDataConfig extends IConfigMeta {
+  isError?: boolean,
+  data?: any,
+  duration?: number,
 }
 
-export class RouteToReaction extends AbstractReaction<IRouteToConfig> {
-  constructor(meta: IReactionMeta<IRouteToConfig>, options?: IReactionFactoryOptions) {
+export class MockDataReaction extends AbstractReaction<IMockDataConfig> {
+  constructor(meta: IReactionMeta<IMockDataConfig>, options?: IReactionFactoryOptions) {
     super(meta, options)
 
     this.getInputByName("input")?.connect(this.inputHandler)
   }
 
   inputHandler = (inputValue?: any) => {
-    let url = inputValue
-    if (!this.meta.config?.fromInput) {
-      url = this.meta.config?.url
+    this.getLoadingInput()?.push(true)
+    if (this.meta.config?.isError) {
+      setTimeout(() => {
+        this.getLoadingInput()?.push(false)
+        this.getErrorInput()?.push(inputValue)
+      }, this.meta.config.duration)
+    } else {
+      setTimeout(() => {
+        this.getLoadingInput()?.push(false)
+        this.getSuccessInput()?.push(inputValue)
+      }, this.meta.config?.duration)
     }
+  }
 
-    if (url) {
-      this.options?.navigate?.(url)
-    }
+  private getSuccessInput = () => {
+    return this.getInputByName("success")
+  }
+
+  private getErrorInput = () => {
+    return this.getInputByName("error")
+  }
+
+  private getLoadingInput = () => {
+    return this.getInputByName("loading")
   }
 }
 
-export const RouteTo: ReactionFactory = (meta: IReactionMeta<IRouteToConfig>, options?: IReactionFactoryOptions) => {
-  return new RouteToReaction(meta, options)
+export const MockData: ReactionFactory = (meta: IReactionMeta<IMockDataConfig>, options?: IReactionFactoryOptions) => {
+  return new MockDataReaction(meta, options)
 }

@@ -15,6 +15,9 @@ export const loopSchema: INodeSchema = {
           componentName: "Switch",
           "x-field": {
             name: "config.fromInput",
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ]

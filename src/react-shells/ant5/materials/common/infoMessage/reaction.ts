@@ -13,8 +13,6 @@ export enum MessageType {
 export interface IInfoMessageConfig extends IConfigMeta {
   type?: MessageType,
   duration?: number,
-  fromInput?: boolean,
-  message?: string,
 }
 
 export class InfoMessageReaction extends AbstractReaction<IInfoMessageConfig> {
@@ -31,9 +29,6 @@ export class InfoMessageReaction extends AbstractReaction<IInfoMessageConfig> {
 
   inputHandler = (inputValue?: string) => {
     let msg = inputValue
-    if (!this.meta.config?.fromInput) {
-      msg = this.meta.config?.message
-    }
     switch (this.meta.config?.type) {
       case MessageType.Success:
         message.success(msg, this.meta.config?.duration)
@@ -54,7 +49,6 @@ export class InfoMessageReaction extends AbstractReaction<IInfoMessageConfig> {
         message.info(msg, this.meta.config?.duration)
         break;
     }
-
   }
 }
 

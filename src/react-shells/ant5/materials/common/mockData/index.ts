@@ -1,6 +1,8 @@
 import { simulateIcon } from "react-shells/ant5/icons/reactions";
 import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 import { IReactionMaterial, ReactionType } from "runner/reaction";
+import { MockData } from "./reaction";
+import { mockDataSchema } from "./schema";
 
 export const mockDataMaterial: IReactionMaterial = {
   name: "mockData",
@@ -32,5 +34,7 @@ export const mockDataMaterial: IReactionMaterial = {
         label: "$loading",
       },
     ],
-  }
+  },
+  schema: mockDataSchema,
+  reaction: MockData,
 }

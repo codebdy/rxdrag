@@ -46,37 +46,6 @@ export const infoMessageSchema: INodeSchema = {
     {
       componentName: "FormItem",
       props: {
-        label: "$fromInput",
-      },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "config.fromInput",
-            params: {
-              valuePropName: "checked",
-            }
-          },
-        }
-      ]
-    },
-    {
-      componentName: "FormItem",
-      props: {
-        label: "$message",
-      },
-      children: [
-        {
-          componentName: "TextArea",
-          "x-field": {
-            name: "config.message",
-          },
-        }
-      ]
-    },
-    {
-      componentName: "FormItem",
-      props: {
         label: "$duration",
       },
       children: [

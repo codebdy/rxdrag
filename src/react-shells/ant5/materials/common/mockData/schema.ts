@@ -1,20 +1,23 @@
 import { INodeSchema } from "core";
 import { labelSchema } from "../../baseSchema";
 
-export const routeToSchema: INodeSchema = {
+export const mockDataSchema: INodeSchema = {
   componentName: "Fragment",
   children: [
     labelSchema,
     {
       componentName: "FormItem",
       props: {
-        label: "$fromInput",
+        label: "$error",
       },
       children: [
         {
           componentName: "Switch",
           "x-field": {
-            name: "config.fromInput",
+            name: `config.isError`,
+            params:{
+              valuePropName: "checked",
+            }
           },
         }
       ]
@@ -22,13 +25,13 @@ export const routeToSchema: INodeSchema = {
     {
       componentName: "FormItem",
       props: {
-        label: "URL",
+        label: "$duration",
       },
       children: [
         {
-          componentName: "TextArea",
+          componentName: "InputNumber",
           "x-field": {
-            name: `config.url`,
+            name: "config.duration",
           },
         }
       ]
