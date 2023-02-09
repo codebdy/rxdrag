@@ -147,6 +147,8 @@ export const settingLocales = {
         label: "标签",
         operation: "操作",
         defaultValue: "默认值",
+        loading: "等待",
+        error: "错误",
       }
     }
   },
@@ -273,7 +275,7 @@ export const settingLocales = {
         debug: "Debug",
         setVariable: "Set Variable",
         listenVariable: "Listen Variable",
-        readVariable :"Read Variable",
+        readVariable: "Read Variable",
         pleaseInputName: "Please input name!",
         setProp: "Set prop",
         routeTo: "Route To",
@@ -295,6 +297,8 @@ export const settingLocales = {
         label: "Label",
         operation: "Operation",
         defaultValue: "Default Value",
+        loading: "Loading",
+        error: "Error",
       }
     }
   }

@@ -2,12 +2,12 @@ import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { infoMessageMaterial } from "./infoMessage";
 import { jsCodeMaterial } from "./jsCode";
 import { routeToMaterial } from "./routeTo";
-import { simulateDataMaterial } from "./simulateData";
+import { mockDataMaterial } from "./mockData";
 
 export const commonReactions: IReactionMaterial[] = [
   routeToMaterial,
   infoMessageMaterial,
-  simulateDataMaterial,
+  mockDataMaterial,
   // {
   //   name: "globalLoading",
   //   icon: loadingIcon,

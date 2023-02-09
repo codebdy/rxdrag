@@ -2,8 +2,8 @@ import { simulateIcon } from "react-shells/ant5/icons/reactions";
 import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 import { IReactionMaterial, ReactionType } from "runner/reaction";
 
-export const simulateDataMaterial: IReactionMaterial = {
-  name: "simulateData",
+export const mockDataMaterial: IReactionMaterial = {
+  name: "mockData",
   icon: simulateIcon,
   label: "$simulateData",
   reactionType: ReactionType.SingleReaction,
@@ -18,8 +18,18 @@ export const simulateDataMaterial: IReactionMaterial = {
     outPorts: [
       {
         id: createUuid(),
-        name: "output",
-        label: "",
+        name: "success",
+        label: "$success",
+      },
+      {
+        id: createUuid(),
+        name: "error",
+        label: "$error",
+      },
+      {
+        id: createUuid(),
+        name: "loading",
+        label: "$loading",
       },
     ],
   }
