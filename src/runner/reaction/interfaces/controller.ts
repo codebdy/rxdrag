@@ -60,9 +60,6 @@ export type ComponentControllers = {
 
 export interface IReactionFactoryOptions {
   controllers?: ComponentControllers,
-  //属于某个控件的reaction需要传的参数
-  // variableController?: IVariableController,
-  // propsController?: IPropController,
   materials?: IReactionMaterial[],
 }
 

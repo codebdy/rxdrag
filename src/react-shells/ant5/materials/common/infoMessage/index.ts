@@ -1,6 +1,8 @@
 import { infoIcon } from "react-shells/ant5/icons/reactions";
 import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 import { IReactionMaterial, ReactionType } from "runner/reaction";
+import { IInfoMessageConfig, InfoMessage } from "./reaction";
+import { infoMessageSchema } from "./schema";
 
 export const infoMessageMaterial: IReactionMaterial = {
   name: "infoMessage",
@@ -15,5 +17,12 @@ export const infoMessageMaterial: IReactionMaterial = {
         label: "",
       },
     ],
+  },
+  schema: infoMessageSchema,
+  reaction: InfoMessage,
+  subTitle: (config?: IInfoMessageConfig) => {
+    if (config?.type) {
+      return config?.type?.toString()
+    }
   },
 }
