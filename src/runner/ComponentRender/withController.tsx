@@ -1,4 +1,5 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { ComponentControllers } from "runner/reaction"
 import { ComponentController } from "runner/reaction/controllers/ComponentController"
 import { useMaterials } from "runner/reaction/hooks/useMaterials"
@@ -16,13 +17,14 @@ export function withController(WrappedComponent: React.FC<any> | React.Component
     const [changedProps, setChangeProps] = useState<any>()
     const controllers = useControllers()
     const materials = useMaterials()
+    const navigate = useNavigate()
 
     const controller = useMemo(
       () => {
         console.log("创建控制器")
-        return new ComponentController(meta, controllers, materials)
+        return new ComponentController(meta, controllers, materials, navigate)
       },
-      [materials, controllers]
+      [controllers, materials, navigate]
     )
 
     const newControllers: ComponentControllers = useMemo(() => {

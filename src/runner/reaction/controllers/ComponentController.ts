@@ -1,5 +1,5 @@
 import { INIT_EVENT_NAME, DESTORY_EVENT_NAME } from "react-shells/ant5/shared/createReactionSchema";
-import { ComponentControllers, EventFuncs, IComponentController, InputFunc, IReaction, PropsListener, UnListener, VariableListener } from "runner/reaction/interfaces/controller";
+import { ComponentControllers, EventFuncs, IComponentController, InputFunc, IReaction, Navigate, PropsListener, UnListener, VariableListener } from "runner/reaction/interfaces/controller";
 import { IReactionMaterial } from "../interfaces/material";
 import { IControllerMeta, IReactionDefineMeta } from "../interfaces/metas";
 import { GraphicalReaction } from "../../../react-shells/ant5/materials/controller/reaction/GraphicalReaction";
@@ -19,10 +19,10 @@ export class ComponentController implements IComponentController {
 
   private reactions: IReaction[] = []
 
-  constructor(public meta: IControllerMeta, protected parentControllers: ComponentControllers, protected materials: IReactionMaterial[]) {
+  constructor(public meta: IControllerMeta, protected parentControllers: ComponentControllers, protected materials: IReactionMaterial[], navigate:Navigate) {
     this.id = meta.id!
     for (const eventMeta of meta.events || []) {
-      const reaction = this.makeReaction(eventMeta, { ...parentControllers, [this.id]: this })
+      const reaction = this.makeReaction(eventMeta, { ...parentControllers, [this.id]: this }, navigate)
       reaction && this.reactions.push(reaction)
       if (!reaction) {
         continue
@@ -39,7 +39,7 @@ export class ComponentController implements IComponentController {
         this.events[eventMeta.name] = inputOne.push
       }
     }
-    for(const variable of meta.variables||[]){
+    for (const variable of meta.variables || []) {
       this.variables[variable.name] = variable.defaultValue
     }
   }
@@ -47,9 +47,9 @@ export class ComponentController implements IComponentController {
     return this.variables[name]
   }
 
-  destory = () =>  {
+  destory = () => {
     console.log("哈哈 destory")
-    for(const reaction of this.reactions){
+    for (const reaction of this.reactions) {
       reaction.destory()
     }
     this.reactions = []
@@ -87,12 +87,13 @@ export class ComponentController implements IComponentController {
     }
   }
 
-  private makeReaction = (reactionMeta: IReactionDefineMeta, controllers: ComponentControllers) => {
+  private makeReaction = (reactionMeta: IReactionDefineMeta, controllers: ComponentControllers, navigate: Navigate) => {
     const options = {
       variableController: this,
       propsController: this,
       materials: this.materials,
-      controllers
+      controllers,
+      navigate
     }
     if (reactionMeta.logicMetas) {
       return new GraphicalReaction(reactionMeta, options)

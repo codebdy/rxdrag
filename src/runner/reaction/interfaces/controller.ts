@@ -58,9 +58,13 @@ export type ComponentControllers = {
   [id: string]: IComponentController | undefined
 }
 
+export type Navigate = (url: string) => void
+
 export interface IReactionFactoryOptions {
   controllers?: ComponentControllers,
   materials?: IReactionMaterial[],
+  //路由跳转
+  navigate: Navigate
 }
 
 export type ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options: IReactionFactoryOptions) => IReaction
