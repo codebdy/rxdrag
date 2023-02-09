@@ -4,6 +4,7 @@ import { useDesignerEngine } from "core-react/hooks"
 import { useLanguage } from "core-react/hooks/useLanguage"
 import { PreviewRoot } from "core-react/PreviewRoot"
 import { Fragment, memo, useCallback, useMemo } from "react"
+import { JSONInput } from "react-shells/ant5/SettingsForm/components/JSONInput"
 import { ValueInput } from "react-shells/ant5/SettingsForm/components/ValueInput"
 import { ComponentRender } from "runner/ComponentRender"
 import { extractFieldSchemas } from "runner/ComponentRender/funcs/extractFieldSchemas"
@@ -99,6 +100,7 @@ export const PropertyBox = memo(() => {
                 PortsInput,
                 VariableSelect,
                 ValueInput,
+                JSONInput,
               }}
             >
               <VirtualForm

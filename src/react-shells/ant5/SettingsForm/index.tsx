@@ -40,6 +40,7 @@ import { EffectsInput } from "./components/EffectsInput";
 import { ReactionsInput } from "./components/ReactionsInput";
 import { EventInput } from "./components/EventInput";
 import { ValueInput } from "./components/ValueInput";
+import { JSONInput } from "./components/JSONInput";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -131,6 +132,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         ReactionsInput,
         EventInput,
         ValueInput,
+        JSONInput,
       }}
     >
       <Fieldy>

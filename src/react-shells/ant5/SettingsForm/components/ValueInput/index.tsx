@@ -3,11 +3,12 @@ import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { isBool, isNum, isStr } from "core/utils/types";
 import { memo, useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
+import { JSONInput } from "../JSONInput";
 
 const Container = styled.div`
   display: flex;
   width: 100%;
-  //align-items: center;
+  align-items: center;
   flex: 1;
 
   .ant-input-number {
@@ -55,10 +56,9 @@ export const ValueInput = memo((
   props: {
     value?: any,
     onChange?: (value?: any) => void,
-    multiline?: boolean,
   }
 ) => {
-  const { value, onChange, multiline } = props
+  const { value, onChange } = props
   const [typeIndex, setTypeIndex] = useState(types.indexOf(getValueType(value)))
   const t = useToolsTranslate()
 
@@ -98,7 +98,7 @@ export const ValueInput = memo((
     <InputCol>
       {
         types[typeIndex] === ValueType.String &&
-          (multiline ? <Input.TextArea value={value} onChange={handleStringChange} /> : <Input value={value} onChange={handleStringChange} />)
+        <Input value={value} onChange={handleStringChange} />
       }
       {
         types[typeIndex] === ValueType.Number &&
@@ -107,6 +107,10 @@ export const ValueInput = memo((
       {
         types[typeIndex] === ValueType.Boolean &&
         <Switch checked={value} onChange={handleBooleanChange} />
+      }
+      {
+        types[typeIndex] === ValueType.JSON &&
+        <JSONInput />
       }
     </InputCol>
     <Button

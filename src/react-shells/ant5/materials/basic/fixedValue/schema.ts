@@ -16,9 +16,6 @@ export const fixedValueSchema: INodeSchema = {
           "x-field": {
             name: `config.value`,
           },
-          props: {
-            multiline: true,
-          }
         }
       ]
     },
