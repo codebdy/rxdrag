@@ -77,6 +77,7 @@ export const settingLocales = {
       number: "数字",
       string: "字符串",
       editJson: "编辑 JSON",
+      formatError: "格式错误",
 
       IconInput: {
         DialogTitle: "选择图标",
@@ -229,6 +230,7 @@ export const settingLocales = {
       number: "Number",
       string: "String",
       editJson: "Edit JSON",
+      formatError: "Format Error",
 
       IconInput: {
         DialogTitle: "Select Icon",
