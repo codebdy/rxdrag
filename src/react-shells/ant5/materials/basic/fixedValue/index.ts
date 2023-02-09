@@ -9,6 +9,7 @@ export const fixedValueMaterial: IReactionMaterial = {
   icon: fixedValueIcon,
   label: "$fixedValue",
   reactionType: ReactionType.SingleReaction,
+  color: "#1668dc",
   meta: {
     inPorts: [
       {

@@ -7,7 +7,7 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   width: 100%;
-  align-items: center;
+  //align-items: center;
   flex: 1;
 
   .ant-input-number {
@@ -15,7 +15,7 @@ const Container = styled.div`
   }
 
   .input-button {
-    min-width: 96px;
+    min-width: 80px;
     margin-left: 2px;
   }
 `
@@ -27,13 +27,15 @@ const InputCol = styled.div`
 export enum ValueType {
   Boolean = "boolean",
   Number = "number",
-  String = "string"
+  String = "string",
+  JSON = "JSON",
 }
 
 const types = [
   ValueType.String,
   ValueType.Number,
   ValueType.Boolean,
+  ValueType.JSON,
 ]
 
 function getValueType(value?: any) {
@@ -52,10 +54,11 @@ function getValueType(value?: any) {
 export const ValueInput = memo((
   props: {
     value?: any,
-    onChange?: (value?: any) => void
+    onChange?: (value?: any) => void,
+    multiline?: boolean,
   }
 ) => {
-  const { value, onChange } = props
+  const { value, onChange, multiline } = props
   const [typeIndex, setTypeIndex] = useState(types.indexOf(getValueType(value)))
   const t = useToolsTranslate()
 
@@ -79,7 +82,7 @@ export const ValueInput = memo((
     }
   }, [onChange, typeIndex, value])
 
-  const handleStringChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleStringChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     onChange?.(event.target?.value)
   }, [onChange])
 
@@ -95,7 +98,7 @@ export const ValueInput = memo((
     <InputCol>
       {
         types[typeIndex] === ValueType.String &&
-        <Input value={value} onChange={handleStringChange} />
+          (multiline ? <Input.TextArea value={value} onChange={handleStringChange} /> : <Input value={value} onChange={handleStringChange} />)
       }
       {
         types[typeIndex] === ValueType.Number &&
