@@ -18,6 +18,7 @@ export const reactionMaterialLocales = {
     time: "时间",
     fromInput: "来自输入",
     times: "次数",
+    close: "关闭",
   },
   'en-US': {
     name: "Name",
@@ -37,6 +38,7 @@ export const reactionMaterialLocales = {
     minValue: "Min",
     time: "Time",
     fromInput: "From Input",
-    times: "Times"
+    times: "Times",
+    close: "Close",
   }
 }
