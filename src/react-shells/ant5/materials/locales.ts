@@ -16,6 +16,9 @@ export const reactionMaterialLocales = {
     maxValue: "最大值",
     minValue: "最小值",
     time: "时间",
+    fromInput: "来自输入",
+    times: "次数",
+    close: "关闭",
   },
   'en-US': {
     name: "Name",
@@ -33,6 +36,9 @@ export const reactionMaterialLocales = {
     millisecond: "Millisecond",
     maxValue: "Max",
     minValue: "Min",
-    time: "Time"
+    time: "Time",
+    fromInput: "From Input",
+    times: "Times",
+    close: "Close",
   }
 }

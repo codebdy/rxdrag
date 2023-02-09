@@ -1,9 +1,13 @@
 import { AbstractReaction, IConfigMeta, IReactionMeta } from "runner/reaction";
 import { IReactionFactoryOptions, ReactionFactory } from "runner/reaction/interfaces/controller";
 
-export class DebugReaction extends AbstractReaction<IConfigMeta> {
+export interface IDebugConfig extends IConfigMeta {
+  closed?: boolean
+}
 
-  constructor(meta: IReactionMeta<IConfigMeta>, options?: IReactionFactoryOptions) {
+export class DebugReaction extends AbstractReaction<IDebugConfig> {
+
+  constructor(meta: IReactionMeta<IDebugConfig>, options?: IReactionFactoryOptions) {
     super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
@@ -14,10 +18,12 @@ export class DebugReaction extends AbstractReaction<IConfigMeta> {
   }
 
   inputHandler = (inputValue: string) => {
-    console.log(`🪲${this.meta.label || "Debug"}:`, inputValue)
+    if(!this.meta.config?.closed){
+      console.log(`🪲${this.meta.label || "Debug"}:`, inputValue)
+    } 
   }
 }
 
-export const Debug: ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options?: IReactionFactoryOptions) => {
+export const Debug: ReactionFactory = (meta: IReactionMeta<IDebugConfig>, options?: IReactionFactoryOptions) => {
   return new DebugReaction(meta, options)
 }
