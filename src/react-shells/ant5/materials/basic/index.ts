@@ -10,7 +10,6 @@ import { intervalMaterial } from "./interval";
 import { loopMaterial } from "./loop";
 import { mergeMaterial } from "./merge";
 import { randomMaterial } from "./random";
-import { switchMaterial } from "./switch";
 
 export const startEndSchema: INodeSchema = {
   componentName: "Fragment",
@@ -41,7 +40,7 @@ export const basicReactions: IReactionMaterial[] = [
   conditionMaterial,
   loopMaterial,
   mergeMaterial,
-  switchMaterial,
+  //switchMaterial,
   delayMaterial,
   randomMaterial,
   intervalMaterial,
