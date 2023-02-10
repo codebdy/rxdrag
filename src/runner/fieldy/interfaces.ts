@@ -144,7 +144,7 @@ export interface IFieldyEngine {
   setFormInitialValue(name: string, value: FormValue): void
   setFormValues(name: string, value: FormValue): void
   setFormFlatValues(name: string, flatValues: FormValue): void
-  addFieldMetas(name: string, fieldMetas: IFieldSchema[]): void
+  addFieldMetas(name: string, ...fieldMetas: IFieldSchema[]): void
   removeFieldMetas(formName: string, ...fieldPaths: string[]): void
 
   //field动作

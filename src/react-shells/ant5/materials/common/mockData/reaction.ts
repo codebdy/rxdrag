@@ -15,30 +15,30 @@ export class MockDataReaction extends AbstractReaction<IMockDataConfig> {
   }
 
   inputHandler = (inputValue?: any) => {
-    this.getLoadingInput()?.push(true)
+    this.getLoadingOutput()?.push(true)
     if (this.meta.config?.isError) {
       setTimeout(() => {
-        this.getLoadingInput()?.push(false)
-        this.getErrorInput()?.push(inputValue)
+        this.getLoadingOutput()?.push(false)
+        this.getErrorOutput()?.push(inputValue)
       }, this.meta.config.duration)
     } else {
       setTimeout(() => {
-        this.getLoadingInput()?.push(false)
-        this.getSuccessInput()?.push(inputValue)
+        this.getLoadingOutput()?.push(false)
+        this.getSuccessOutput()?.push(inputValue)
       }, this.meta.config?.duration)
     }
   }
 
-  private getSuccessInput = () => {
-    return this.getInputByName("success")
+  private getSuccessOutput = () => {
+    return this.getOutputByName("success")
   }
 
-  private getErrorInput = () => {
-    return this.getInputByName("error")
+  private getErrorOutput = () => {
+    return this.getOutputByName("error")
   }
 
-  private getLoadingInput = () => {
-    return this.getInputByName("loading")
+  private getLoadingOutput = () => {
+    return this.getOutputByName("loading")
   }
 }
 

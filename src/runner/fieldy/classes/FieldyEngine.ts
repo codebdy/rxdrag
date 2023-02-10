@@ -56,7 +56,7 @@ export class FieldyEngine implements IFieldyEngine {
     )
   }
 
-  addFieldMetas(name: string, fieldMetas: IFieldSchema[]): void {
+  addFieldMetas(formName: string, ...fieldMetas: IFieldSchema[]): void {
     throw new Error("Method not implemented.");
   }
   removeFieldMetas(formName: string, ...fieldPaths: string[]): void {

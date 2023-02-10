@@ -365,107 +365,6 @@
                                       }
                                     },
                                     {
-                                      "id": "8463ba00-f8c4-4fc6-977c-e60eb4f9244a",
-                                      "label": "模拟数据",
-                                      "type": "SingleReaction",
-                                      "materialName": "mockData",
-                                      "inPorts": [
-                                        {
-                                          "id": "88e92274-e160-4ff8-aadf-93afa2b6f88d",
-                                          "name": "input",
-                                          "label": ""
-                                        }
-                                      ],
-                                      "outPorts": [
-                                        {
-                                          "id": "678fa57c-881b-4beb-b478-aaafce542c27",
-                                          "name": "success",
-                                          "label": "$success"
-                                        },
-                                        {
-                                          "id": "c2d7c478-d670-400f-a12e-5e5e716b65cc",
-                                          "name": "error",
-                                          "label": "$error"
-                                        },
-                                        {
-                                          "id": "603c32ad-98ce-42cd-8ae9-c1d9866789ae",
-                                          "name": "loading",
-                                          "label": "$loading"
-                                        }
-                                      ],
-                                      "x6Node": {
-                                        "x": 430,
-                                        "y": 180,
-                                        "width": 116,
-                                        "height": 48
-                                      }
-                                    },
-                                    {
-                                      "id": "01a831c5-f20a-4e95-9703-3dbd4108ba83",
-                                      "label": "设置属性",
-                                      "type": "ControllerDefaultReaction",
-                                      "materialName": "setProp",
-                                      "inPorts": [
-                                        {
-                                          "id": "60d97984-b9ba-4168-a5ee-b23d797d083a",
-                                          "name": "input",
-                                          "label": ""
-                                        }
-                                      ],
-                                      "config": {
-                                        "controllerId": "97b74524-499e-472b-ab0d-bf46f11fe185",
-                                        "reactionRef": "setProp"
-                                      },
-                                      "x6Node": {
-                                        "x": 730,
-                                        "y": 140,
-                                        "width": 116,
-                                        "height": 32
-                                      }
-                                    },
-                                    {
-                                      "id": "dbf653bc-6faf-407d-b650-7c188a1c5dde",
-                                      "label": "提示消息",
-                                      "type": "SingleReaction",
-                                      "materialName": "infoMessage",
-                                      "inPorts": [
-                                        {
-                                          "id": "e1533abd-cfa3-46b4-8db5-e1793fee6064",
-                                          "name": "input",
-                                          "label": ""
-                                        }
-                                      ],
-                                      "x6Node": {
-                                        "x": 730,
-                                        "y": 190,
-                                        "width": 116,
-                                        "height": 32
-                                      }
-                                    },
-                                    {
-                                      "id": "44ebc687-e3d5-4dac-820b-bb90165b32b8",
-                                      "label": "设置属性",
-                                      "type": "ControllerDefaultReaction",
-                                      "materialName": "setProp",
-                                      "inPorts": [
-                                        {
-                                          "id": "60d97984-b9ba-4168-a5ee-b23d797d083a",
-                                          "name": "input",
-                                          "label": ""
-                                        }
-                                      ],
-                                      "config": {
-                                        "controllerId": "97b74524-499e-472b-ab0d-bf46f11fe185",
-                                        "reactionRef": "setProp"
-                                      },
-                                      "x6Node": {
-                                        "x": 740,
-                                        "y": 260,
-                                        "width": 116,
-                                        "height": 32
-                                      }
-                                    },
-                                    {
                                       "id": "cd0fe57b-7d0e-48b5-9800-ebec22e3d5d6",
                                       "label": "常量",
                                       "type": "SingleReaction",
@@ -509,6 +408,115 @@
                                             "description": "提交人：张三，提交时间：2022-4-5 8:20"
                                           }
                                         ]
+                                      }
+                                    },
+                                    {
+                                      "id": "8463ba00-f8c4-4fc6-977c-e60eb4f9244a",
+                                      "label": "模拟数据",
+                                      "type": "SingleReaction",
+                                      "materialName": "mockData",
+                                      "inPorts": [
+                                        {
+                                          "id": "88e92274-e160-4ff8-aadf-93afa2b6f88d",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "outPorts": [
+                                        {
+                                          "id": "678fa57c-881b-4beb-b478-aaafce542c27",
+                                          "name": "success",
+                                          "label": "$success"
+                                        },
+                                        {
+                                          "id": "c2d7c478-d670-400f-a12e-5e5e716b65cc",
+                                          "name": "error",
+                                          "label": "$error"
+                                        },
+                                        {
+                                          "id": "603c32ad-98ce-42cd-8ae9-c1d9866789ae",
+                                          "name": "loading",
+                                          "label": "$loading"
+                                        }
+                                      ],
+                                      "x6Node": {
+                                        "x": 430,
+                                        "y": 180,
+                                        "width": 116,
+                                        "height": 48
+                                      },
+                                      "config": {
+                                        "duration": 500
+                                      }
+                                    },
+                                    {
+                                      "id": "01a831c5-f20a-4e95-9703-3dbd4108ba83",
+                                      "label": "设置属性",
+                                      "type": "ControllerDefaultReaction",
+                                      "materialName": "setProp",
+                                      "inPorts": [
+                                        {
+                                          "id": "60d97984-b9ba-4168-a5ee-b23d797d083a",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "config": {
+                                        "controllerId": "97b74524-499e-472b-ab0d-bf46f11fe185",
+                                        "reactionRef": "setProp",
+                                        "prop": "dataSource"
+                                      },
+                                      "x6Node": {
+                                        "x": 710,
+                                        "y": 90,
+                                        "width": 116,
+                                        "height": 48
+                                      }
+                                    },
+                                    {
+                                      "id": "dbf653bc-6faf-407d-b650-7c188a1c5dde",
+                                      "label": "提示消息",
+                                      "type": "SingleReaction",
+                                      "materialName": "infoMessage",
+                                      "inPorts": [
+                                        {
+                                          "id": "e1533abd-cfa3-46b4-8db5-e1793fee6064",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "x6Node": {
+                                        "x": 710,
+                                        "y": 180,
+                                        "width": 116,
+                                        "height": 48
+                                      },
+                                      "config": {
+                                        "type": "error"
+                                      }
+                                    },
+                                    {
+                                      "id": "44ebc687-e3d5-4dac-820b-bb90165b32b8",
+                                      "label": "设置属性",
+                                      "type": "ControllerDefaultReaction",
+                                      "materialName": "setProp",
+                                      "inPorts": [
+                                        {
+                                          "id": "60d97984-b9ba-4168-a5ee-b23d797d083a",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "config": {
+                                        "controllerId": "97b74524-499e-472b-ab0d-bf46f11fe185",
+                                        "reactionRef": "setProp",
+                                        "prop": "loading"
+                                      },
+                                      "x6Node": {
+                                        "x": 710,
+                                        "y": 280,
+                                        "width": 116,
+                                        "height": 48
                                       }
                                     }
                                   ],
@@ -589,7 +597,28 @@
                                 "actions": {
                                   "componentName": "ActionSlot",
                                   "slots": {},
-                                  "children": []
+                                  "children": [
+                                    {
+                                      "componentName": "Button",
+                                      "props": {
+                                        "type": "primary",
+                                        "title": "Button"
+                                      },
+                                      "slots": {},
+                                      "children": [
+                                        {
+                                          "componentName": "TextView",
+                                          "props": {
+                                            "content": "完成",
+                                            "style": {}
+                                          },
+                                          "x-field": {},
+                                          "slots": {},
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
                                 },
                                 "extra": {
                                   "componentName": "ExtraSlot",
