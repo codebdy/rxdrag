@@ -646,7 +646,10 @@
                                         "enable": true
                                       },
                                       "x-field": {
-                                        "name": "title"
+                                        "name": "title",
+                                        "params": {
+                                          "withBind": true
+                                        }
                                       },
                                       "slots": {},
                                       "children": []

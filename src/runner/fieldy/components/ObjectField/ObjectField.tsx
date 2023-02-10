@@ -12,7 +12,7 @@ export const ObjectField = memo((
 ) => {
   const { name, value, children } = props
   const  fieldMeta = useCreateField(name, "object", value)
-  console.log("哈哈 ObjectField", name)
+
   return (
     <XField fieldMeta={fieldMeta}>
       {children}

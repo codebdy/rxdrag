@@ -387,7 +387,7 @@ export class FieldyEngine implements IFieldyEngine {
       //   continue
       // }
 
-      if (!field.name || field.meta.virtual) {
+      if (!field.name) {
         continue
       }
 

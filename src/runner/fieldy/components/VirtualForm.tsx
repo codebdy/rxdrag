@@ -36,7 +36,6 @@ export const VirtualForm = (props: {
   useEffect(() => {
     if (fieldy && name) {
       const unsub = fieldy?.subscribeToFormValuesChange(name, (values: FormValue) => {
-        console.log("哈哈 VirtualForm", formState)
         onValueChange?.(values)
       })
       return unsub;

@@ -10,6 +10,7 @@ export function createReactionSchema(logicOptions?: LogicOptions) {
     ? [{
       componentName: "CollapsePanel",
       "x-field": {
+        type: "object",
         name: "x-field.params",
       },
       props: {

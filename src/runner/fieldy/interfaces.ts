@@ -27,8 +27,6 @@ export interface IFieldMeta<Params = any> {
   name?: string
   //validateRule?: any
   defaultValue?: any
-  //是否虚拟字段，如果是，不输出最终值，不触发change， 该字段要废除
-  virtual?: boolean
   fragmentFields?: IFieldMeta[]
   //校验规则
   validateRules?: any
@@ -150,6 +148,7 @@ export interface IFieldyEngine {
   removeFields(formName: string, ...fieldPaths: string[]): void
 
   //field动作
+  //setFieldIntialValue(formName: string, fieldPath: string, value: any): void
   setFieldValue(formName: string, fieldPath: string, value: any): void
   setFieldFragmentValue(formName: string, fieldPath: string, value: any): void
 

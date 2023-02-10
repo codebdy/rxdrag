@@ -9,7 +9,7 @@ export const XField = memo((props: {
 }) => {
   const { fieldMeta, children } = props
   const params = useCreateFieldParams(fieldMeta)
-
+  console.log("哈哈 XField", params)
   return (
     <FieldContext.Provider value={params}>
       {

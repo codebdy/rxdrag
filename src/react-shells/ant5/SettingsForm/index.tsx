@@ -80,6 +80,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
   }, [designerSchema])
 
   const handleMetaChange = useCallback((meta: INodeMeta) => {
+    console.log("哈哈 handleMetaChange", meta)
     if (currentNode) {
       changeMeta(currentNode.id, meta)
     }
