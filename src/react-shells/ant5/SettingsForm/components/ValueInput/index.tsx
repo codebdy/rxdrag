@@ -49,7 +49,7 @@ function getValueType(value?: any) {
   if (isNum(value)) {
     return ValueType.Number
   }
-  return ValueType.String
+  return ValueType.JSON
 }
 
 export const ValueInput = memo((
@@ -59,11 +59,17 @@ export const ValueInput = memo((
   }
 ) => {
   const { value, onChange } = props
-  const [typeIndex, setTypeIndex] = useState(types.indexOf(getValueType(value)))
+  const [typeIndex, setTypeIndex] = useState(0)
   const t = useToolsTranslate()
 
   useEffect(() => {
-    setTypeIndex(types.indexOf(getValueType(value)))
+    if (value === undefined) {
+      setTypeIndex(0)
+    } else {
+      const newIndex = types.indexOf(getValueType(value))
+      setTypeIndex(newIndex)
+    }
+
   }, [value])
 
   const handleClick = useCallback(() => {
@@ -79,6 +85,8 @@ export const ValueInput = memo((
       onChange?.(!!value)
     } else if (types[newIndex] === ValueType.Number) {
       onChange?.(0)
+    } else if (types[newIndex] === ValueType.JSON) {
+      onChange?.(null)
     }
   }, [onChange, typeIndex, value])
 
@@ -93,6 +101,11 @@ export const ValueInput = memo((
   const handleBooleanChange = useCallback((checked: boolean) => {
     onChange?.(checked)
   }, [onChange])
+
+  const handleJSONChange = useCallback((json: any) => {
+    onChange?.(json)
+  }, [onChange])
+
 
   return (<Container>
     <InputCol>
@@ -110,7 +123,7 @@ export const ValueInput = memo((
       }
       {
         types[typeIndex] === ValueType.JSON &&
-        <JSONInput title={t("editJson")} />
+        <JSONInput title={t("editJson")} value = {value} onChange = {handleJSONChange} />
       }
     </InputCol>
     <Button
