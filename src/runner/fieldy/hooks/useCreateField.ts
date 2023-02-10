@@ -9,7 +9,7 @@ export function useCreateField(name: string, type: FieldType, value?: any) {
   const formName = useFormName()
   const fieldy = useFieldy()
   const fieldPath = useMemo(() => {
-    return parentPath + "." + name
+    return parentPath ? parentPath + "." + name : name
   }, [name, parentPath])
 
   const formNameRef = useRef(formName)

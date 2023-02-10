@@ -11,6 +11,7 @@ export const ComponentField = memo((
   const { fieldMeta, children } = props
   const view = useMemo(() => {
     if (fieldMeta?.name || fieldMeta?.type === "fragment") {
+      console.log("哈哈", fieldMeta)
       return <XField fieldMeta={fieldMeta}>
         {children}
       </XField>

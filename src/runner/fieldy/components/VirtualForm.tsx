@@ -15,7 +15,6 @@ export const VirtualForm = (props: {
   const [name, setName] = useState<string>()
   const [formState, setFormState] = useState<FormState>()
   const fieldy = useFieldy()
-
   useEffect(() => {
     if (fieldy && fieldSchemas) {
       const name = fieldy.createForm()
@@ -37,12 +36,13 @@ export const VirtualForm = (props: {
   useEffect(() => {
     if (fieldy && name) {
       const unsub = fieldy?.subscribeToFormValuesChange(name, (values: FormValue) => {
+        console.log("哈哈 VirtualForm", formState)
         onValueChange?.(values)
       })
       return unsub;
     }
 
-  }, [fieldy, name, onValueChange])
+  }, [fieldy, formState, name, onValueChange])
 
   //form嵌套时要清空field树，添加一个FieldContext.Provider来完成
   return (

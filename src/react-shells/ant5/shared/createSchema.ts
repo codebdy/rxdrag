@@ -14,8 +14,8 @@ export type SchemaOptions<IField = any, IReactions = any> = {
   logicOptions?: LogicOptions,
 }
 
-export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
-  const { propsSchemas, slotsSchemas, logicOptions } = opetions
+export function createSchema(options: SchemaOptions = {}): INodeSchema {
+  const { propsSchemas, slotsSchemas, logicOptions } = options
   const propsTab = propsSchemas ? [{
     componentName: "TabPanel",
     "x-field": {

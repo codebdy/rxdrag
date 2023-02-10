@@ -232,7 +232,18 @@ export class FieldyEngine implements IFieldyEngine {
         }
         return undefined
       } else if (fieldState.meta?.type === "array") {
-        throw new Error("Not implement arrray type")
+        const value:any[] = []
+        const fields = this.getSubFields(formName, fieldPath)
+        for (const key of fields) {
+          const subValue = this.getFieldValue(formName, key)
+          if (subValue !== undefined) {
+            value.push(subValue)
+          }
+        }
+        if (value.length) {
+          return value
+        }
+        return []
       } else {//undefined or "normal"
         return fieldState.value
       }

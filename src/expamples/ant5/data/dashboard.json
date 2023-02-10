@@ -641,10 +641,12 @@
                                         "content": "Title",
                                         "style": {}
                                       },
-                                      "x-field": {},
                                       "x-reactions": {
                                         "id": "cc34f54c-b1e9-4454-b0a5-199069a4b5ef",
                                         "enable": true
+                                      },
+                                      "x-field": {
+                                        "name": "title"
                                       },
                                       "slots": {},
                                       "children": []
@@ -652,7 +654,8 @@
                                     "description": {
                                       "componentName": "TextView",
                                       "props": {
-                                        "content": "Description"
+                                        "content": "Description",
+                                        "style": {}
                                       },
                                       "slots": {},
                                       "children": []

@@ -58,7 +58,7 @@ export const settingLocales = {
       validateRules: "校验规则",
       defaultValue: "默认值",
       value: "值",
-      fragmentFields: "字段",
+      fragmentFields: "字段组合",
       fieldDefine: "字段定义",
       fieldBind: "字段绑定",
       valuePropName: "值属性",

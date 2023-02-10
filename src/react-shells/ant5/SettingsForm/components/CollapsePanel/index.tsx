@@ -8,9 +8,11 @@ export const CollapsePanel = memo((
     title?: string,
     children?: React.ReactNode,
     defaultExpand?: boolean,
+    onChange?: () => void,
   }
 ) => {
-  const { title, children, defaultExpand, ...other } = props;
+  //要滤除onChange事件
+  const { title, children, defaultExpand, onChange, ...other } = props;
   return (
     <AntdCollapse ghost defaultActiveKey={defaultExpand ? ['1'] : undefined} expandIconPosition="end" {...other}>
       <Panel header={title} key="1">

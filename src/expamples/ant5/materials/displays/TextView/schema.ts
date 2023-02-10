@@ -60,7 +60,10 @@ const options: SchemaOptions = {
         }
       ]
     },
-  ]
+  ],
+  logicOptions: {
+    canBindField: true,
+  }
 }
 
 export const schema: INodeSchema = createSchema(options)
