@@ -1,5 +1,5 @@
 
-import { SET_FORM_FIELDS, SetFormFieldsPayload, SET_FORM_FLAT_VALUES, SetFormValuesPayload, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES, SET_FORM_INITIALZED_FLAG, SetFormInitializedFlagPayload, FieldActionPayload, SET_FIELD_VALUE } from "runner/fieldy/actions";
+import { SET_FORM_FIELDS, SetFormFieldsPayload, SET_FORM_FLAT_VALUES, SetFormValuesPayload, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES, SET_FORM_INITIALZED_FLAG, SetFormInitializedFlagPayload, FieldActionPayload, SET_FIELD_VALUE, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload } from "runner/fieldy/actions";
 import { getChildFields, makePath } from "runner/fieldy/funcs/path";
 import { FieldsState, FormState, FormValue, IAction, IFieldSchema } from "runner/fieldy/interfaces";
 import { fieldReduce } from "./field";
@@ -18,6 +18,27 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
         fields,
         fieldSchemas: (action.payload as SetFormFieldsPayload).fieldSchemas,
         mounted: true,
+      }
+    case ADD_FORM_FIELDS:
+      const addFieldValuePayload = action.payload as SetFormFieldsPayload
+      const newFields = makeFields((action.payload as SetFormFieldsPayload).fieldSchemas)
+      return {
+        ...state,
+        fieldSchemas: [...state.fieldSchemas, ...addFieldValuePayload.fieldSchemas],
+        fields: { ...state.fields, ...newFields },
+      }
+    case REMOVE_FORM_FIELDS:
+      const removeFieldValuePayload = action.payload as RemoveFormFieldsPayload
+      const leftFields = {} as FieldsState
+      for (const key of Object.keys(state.fields)) {
+        if (!removeFieldValuePayload.paths?.find(path => path === key)) {
+          leftFields[key] = state.fields[key]
+        }
+      }
+      return {
+        ...state,
+        fieldSchemas: state.fieldSchemas.filter(field => !removeFieldValuePayload.paths?.find(path => path === field.path)),
+        fields: leftFields,
       }
     case SET_FORM_FLAT_VALUES: {
       return setFlatValues(state, (action.payload as SetFormValuesPayload).values)

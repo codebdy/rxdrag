@@ -5,6 +5,8 @@ import { PreviewRoot } from "core-react/PreviewRoot"
 import { IDocument, INodeSchema } from "core/interfaces"
 import { memo, useEffect, useMemo, useState } from "react"
 import { ComponentRender } from "runner/ComponentRender"
+import { extractFieldSchemas } from "runner/ComponentRender/funcs/extractFieldSchemas"
+import { Fieldy, VirtualForm } from "runner/fieldy"
 import { IReactionMaterial } from "runner/reaction"
 import { ThemeProvider } from "styled-components"
 
@@ -31,18 +33,29 @@ export const PreviewRender = memo((
     }
   }, [doc, viewType])
 
+  const fieldSchemas = useMemo(() => {
+    return tree ? extractFieldSchemas(tree) : []
+  }, [tree])
+
+
   return (
     <ThemeProvider theme={theme}>
       <PreviewRoot
         components={components}
-        reactionMaterials = {reactionMaterials}
+        reactionMaterials={reactionMaterials}
       >
-        {
-          tree &&
-          <ComponentRender
-            root={tree}
-          />
-        }
+        <Fieldy>
+          <VirtualForm
+            fieldSchemas={fieldSchemas}
+          >
+            {
+              tree &&
+              <ComponentRender
+                root={tree}
+              />
+            }
+          </VirtualForm>
+        </Fieldy>
       </PreviewRoot>
     </ThemeProvider>
   )

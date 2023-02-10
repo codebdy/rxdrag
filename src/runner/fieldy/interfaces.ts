@@ -19,9 +19,11 @@ export interface IFormProps {
   validateFirst?: boolean, //	是否只校验第一个非法规则	Boolean
 }
 
+export type FieldType = "object" | "array" | "normal" | "fragment"
+
 export interface IFieldMeta<Params = any> {
   //类型：对象、数组、常规、片段（name 为空）
-  type?: "object" | "array" | "normal" | "fragment"
+  type?: FieldType
   name?: string
   //validateRule?: any
   defaultValue?: any
@@ -144,8 +146,8 @@ export interface IFieldyEngine {
   setFormInitialValue(name: string, value: FormValue): void
   setFormValues(name: string, value: FormValue): void
   setFormFlatValues(name: string, flatValues: FormValue): void
-  addFieldMetas(name: string, ...fieldMetas: IFieldSchema[]): void
-  removeFieldMetas(formName: string, ...fieldPaths: string[]): void
+  addFields(name: string, ...fieldSchemas: IFieldSchema[]): void
+  removeFields(formName: string, ...fieldPaths: string[]): void
 
   //field动作
   setFieldValue(formName: string, fieldPath: string, value: any): void

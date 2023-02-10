@@ -1,6 +1,6 @@
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "core/utils/util-invariant";
-import { CREATE_FORM, FormActionPlayload, REMOVE_FORM, SetFieldValuePayload, SetFormFieldsPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES } from "runner/fieldy/actions";
+import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormFieldsPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES } from "runner/fieldy/actions";
 import { FieldChangeListener, FieldsState, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldSchema, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "runner/fieldy/interfaces";
 import { reduce, State } from "runner/fieldy/reducers";
 import { getChildFields } from "../funcs/path";
@@ -56,11 +56,23 @@ export class FieldyEngine implements IFieldyEngine {
     )
   }
 
-  addFieldMetas(formName: string, ...fieldMetas: IFieldSchema[]): void {
-    throw new Error("Method not implemented.");
+  addFields(formName: string, ...fieldSchemas: IFieldSchema[]): void {
+    this.dispatch({
+      type: ADD_FORM_FIELDS,
+      payload: {
+        formName: formName,
+        fieldSchemas: fieldSchemas,
+      }
+    })
   }
-  removeFieldMetas(formName: string, ...fieldPaths: string[]): void {
-    throw new Error("Method not implemented.");
+  removeFields(formName: string, ...fieldPaths: string[]): void {
+    this.dispatch({
+      type: REMOVE_FORM_FIELDS,
+      payload: {
+        formName: formName,
+        paths: fieldPaths,
+      }
+    })
   }
 
   setFormInitialValue(name: string, value: FormValue): void {

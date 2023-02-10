@@ -48,7 +48,6 @@ export class ComponentController implements IComponentController {
   }
 
   destory = () => {
-    console.log("哈哈 destory")
     for (const reaction of this.reactions) {
       reaction.destory()
     }
