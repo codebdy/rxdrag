@@ -1,7 +1,11 @@
 import { ErrorListener, IField, IFieldyEngine, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
 
 export class FieldImpl implements IField {
-  constructor(private fieldy: IFieldyEngine, private formName: string, private fieldPath: string) { }
+  refCount: number = 1;
+
+  constructor(private fieldy: IFieldyEngine, private formName: string, private fieldPath: string) {
+  }
+
 
   get value() {
     return this.fieldy.getFieldValue(this.formName, this.fieldPath)
@@ -15,6 +19,10 @@ export class FieldImpl implements IField {
     return this.fieldy.getFieldState(this.formName, this.fieldPath)?.path
   }
 
+  get basePath() {
+    return this.fieldy.getFieldState(this.formName, this.fieldPath)?.basePath
+  }
+
   destory(): void {
     throw new Error("Method not implemented.");
   }
@@ -23,7 +31,7 @@ export class FieldImpl implements IField {
     throw new Error("Method not implemented.");
   }
   setInitialValue(value: any): void {
-    throw new Error("Method not implemented.");
+    //this.fieldy.setFormInitialValue(this.formName)
   }
   inpuValue(value: any): void {
     throw new Error("Method not implemented.");
@@ -40,10 +48,10 @@ export class FieldImpl implements IField {
   onUnmount(listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
-  onValueChange(): Unsubscribe {
-    throw new Error("Method not implemented.");
+  onValueChange(listener: ValueChangeListener): Unsubscribe {
+    return this.fieldy.subscribeToFieldValueChange(this.formName, this.path || "", listener)
   }
-  onInitialValuesChange(): Unsubscribe {
+  onInitialValueChange(): Unsubscribe {
     throw new Error("Method not implemented.");
   }
   onInput(listener: ValueChangeListener): Unsubscribe {

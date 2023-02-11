@@ -1,4 +1,5 @@
 import { ErrorListener, FieldState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
+import { FieldImpl } from "./FieldImpl";
 
 function getFieldKey(formName: string, path: string) {
   return formName + "#" + path
@@ -20,16 +21,37 @@ export class FormImpl implements IForm {
   }
 
   registerField(fieldSchema: IFieldSchema): IField {
-    throw new Error("Method not implemented.");
+    const field = this.getField(fieldSchema.path)
+    if (field) {
+      field.refCount = field.refCount + 1
+      return field
+    } else {
+      if (fieldSchema.name) {
+        this.fieldy.addFields(this.name, fieldSchema)
+        const field = new FieldImpl(this.fieldy, this.name, fieldSchema.name)
+        this.fields[getFieldKey(this.name, fieldSchema.path)] = field
+        return field
+      }
+      throw new Error("Not set field name")
+    }
+
   }
+
   unregisterField(path: string): void {
-    throw new Error("Method not implemented.");
+    const field = this.getField(path)
+    if (field) {
+      field.refCount = field.refCount - 1
+      if (field.refCount <= 0) {
+        this.fieldy.removeFields(this.name, path)
+      }
+    }
   }
+
   setValue(value: any): void {
     throw new Error("Method not implemented.");
   }
   setInitialValue(value: any): void {
-    throw new Error("Method not implemented.");
+    this.fieldy.setFormInitialValue(this.name, value)
   }
   inpuValue(value: any): void {
     throw new Error("Method not implemented.");
@@ -49,7 +71,7 @@ export class FormImpl implements IForm {
   onValueChange(listener: ValueChangeListener): Unsubscribe {
     return this.fieldy.subscribeToFormValuesChange(this.name, listener)
   }
-  onInitialValuesChange(): Unsubscribe {
+  onInitialValueChange(): Unsubscribe {
     throw new Error("Method not implemented.");
   }
   onInput(listener: ValueChangeListener): Unsubscribe {

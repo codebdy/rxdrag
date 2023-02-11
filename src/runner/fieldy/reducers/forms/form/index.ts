@@ -153,7 +153,6 @@ function makeFields(fieldSchemas: IFieldSchema[]) {
       flatFields[schema.path] = {
         ...flatFields[schema.path],
         id: makeId(),
-        refCount: 1,
         ...schema,
         basePath: schema.path.substring(0, schema.path.length - (schema.name?.length || 0) - 1),
         mounted: true,
@@ -165,7 +164,6 @@ function makeFields(fieldSchemas: IFieldSchema[]) {
         flatFields[fragPath] = {
           ...flatFields[fragPath],
           id: makeId(),
-          refCount: 1,
           ...fragMeta,
           path: fragPath,
           basePath: schema.path,

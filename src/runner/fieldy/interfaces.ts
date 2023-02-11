@@ -76,8 +76,6 @@ export type FieldState = {
   name?: string;
   basePath?: string;
   path: string;
-  //引用数量
-  refCount: number;
   initialized?: boolean;//字段是否已被初始化
   mounted?: boolean; //字段是否已挂载
   unmounted?: boolean; //字段是否已卸载
@@ -130,7 +128,7 @@ export interface IFormNode {
   onMount(listener: Listener): Unsubscribe
   onUnmount(listener: Listener): Unsubscribe
   onValueChange(listener: ValueChangeListener): Unsubscribe
-  onInitialValuesChange(): Unsubscribe
+  onInitialValueChange(): Unsubscribe
   onInput(listener: ValueChangeListener): Unsubscribe
   onValidateStart(listener: Listener): Unsubscribe
   onValidateEnd(listener: Listener): Unsubscribe
@@ -148,6 +146,8 @@ export interface IForm extends IFormNode {
 }
 
 export interface IField extends IFormNode {
+  //引用数量
+  refCount: number;
   value?: any
   meta?: IFieldMeta
   basePath?: string
