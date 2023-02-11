@@ -31,7 +31,7 @@ export function useCreateField(name: string, type: FieldType, value?: any) {
       if (!field) {
         fieldy?.addFields(formName, fieldMeta)
       }
-      fieldy?.setFieldValue(formName, fieldPath, value)
+      fieldy?.setFieldIntialValue(formName, fieldPath, value)
     }
   }, [fieldMeta, fieldPath, fieldy, formName, value])
 

@@ -1,7 +1,13 @@
 import { Action } from "redux"
 import { FormActionPlayload } from "./actions"
 
+export type Errors = {
+
+}
+
 export type Listener = () => void
+export type ValueChangeListener = (value: any) => void
+export type ErrorListener = (errors: Errors) => void
 export type Unsubscribe = () => void
 
 export interface IFormProps {
@@ -70,6 +76,8 @@ export type FieldState = {
   name?: string;
   basePath?: string;
   path: string;
+  //引用数量
+  refCount: number;
   initialized?: boolean;//字段是否已被初始化
   mounted?: boolean; //字段是否已挂载
   unmounted?: boolean; //字段是否已卸载
@@ -111,28 +119,30 @@ export interface FormValue {
   [key: string]: any
 }
 
-//这段代码备用
-export interface IForm {
-  onFormInit(): void
-  onFormMount(): void
-  onFormUnmount(): void
-  onFormReact(): void
-  onFormValuesChange(): void
-  onFormInitialValuesChange(): void
-  onFormInputChange(): void
-  onFormSubmit(): void
-  onFormSubmitStart(): void
-  onFormSubmitEnd(): void
-  onFormSubmitFailed(): void
-  onFormSubmitSuccess(): void
-  onFormSubmitValidateStart(): void
-  onFormSubmitValidateEnd(): void
-  onFormSubmitValidateFailed(): void
-  onFormSubmitValidateSuccess(): void
-  onFormValidateStart(): void
-  onFormValidateEnd(): void
-  onFormValidateFailed(): void
-  onFormValidateSuccess(): void
+export interface IFromNode{
+  setValue(): void
+  setInitialValue(): void
+  validate(): void
+
+  onInit(listener: Listener): Unsubscribe
+  onMount(listener: Listener): Unsubscribe
+  onUnmount(listener: Listener): Unsubscribe
+  onValuesChange(): Unsubscribe
+  onInitialValuesChange(): Unsubscribe
+  onInput(listener: ValueChangeListener): Unsubscribe
+  onValidateStart(listener: Listener): Unsubscribe
+  onValidateEnd(listener: Listener): Unsubscribe
+  onValidateFailed(listener: ErrorListener): Unsubscribe
+  onValidateSuccess(listener: Listener): Unsubscribe
+}
+
+export interface IForm extends IFromNode{
+  registerField(fieldSchema: IFieldSchema): IField
+  unregisterField(path: number): void
+}
+
+export interface IField extends IFromNode{
+
 }
 
 export interface IFieldyEngine {
@@ -148,7 +158,7 @@ export interface IFieldyEngine {
   removeFields(formName: string, ...fieldPaths: string[]): void
 
   //field动作
-  //setFieldIntialValue(formName: string, fieldPath: string, value: any): void
+  setFieldIntialValue(formName: string, fieldPath: string, value: any): void
   setFieldValue(formName: string, fieldPath: string, value: any): void
   setFieldFragmentValue(formName: string, fieldPath: string, value: any): void
 

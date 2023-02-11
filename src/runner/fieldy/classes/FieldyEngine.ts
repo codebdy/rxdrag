@@ -152,6 +152,10 @@ export class FieldyEngine implements IFieldyEngine {
 
     return this.store.subscribe(handleChange)
   }
+  
+  setFieldIntialValue(formName: string, fieldPath: string, value: any): void {
+    throw new Error("Method not implemented.");
+  }
 
   setFieldValue(formName: string, fieldPath: string, value: any): void {
     if (this.getField(formName, fieldPath)?.meta.type === "object") {
