@@ -16,7 +16,7 @@ function makeId() {
 /**
  * 建议一个应用只创建一个Fieldy实例
  */
-export class FieldyEngine implements IFieldyEngine {
+export class FieldyEngineImpl implements IFieldyEngine {
   store: Store<State>
   constructor(debugMode?: boolean,) {
     this.store = makeStoreInstance(debugMode || false)

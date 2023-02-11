@@ -119,9 +119,10 @@ export interface FormValue {
   [key: string]: any
 }
 
-export interface IFromNode{
-  setValue(): void
-  setInitialValue(): void
+export interface IFormNode {
+  setValue(value: any): void
+  setInitialValue(value: any): void
+  inpuValue(value: any): void
   validate(): void
 
   onInit(listener: Listener): Unsubscribe
@@ -136,12 +137,12 @@ export interface IFromNode{
   onValidateSuccess(listener: Listener): Unsubscribe
 }
 
-export interface IForm extends IFromNode{
+export interface IForm extends IFormNode {
   registerField(fieldSchema: IFieldSchema): IField
   unregisterField(path: number): void
 }
 
-export interface IField extends IFromNode{
+export interface IField extends IFormNode {
 
 }
 

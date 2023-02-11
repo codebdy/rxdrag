@@ -1,4 +1,4 @@
-import { FieldyEngine } from "runner/fieldy/classes/FieldyEngine"
+import { FieldyEngineImpl } from "runner/fieldy/classes/FieldyEngineImpl"
 import { FieldyContext } from "runner/fieldy/contexts"
 import { useMemo } from "react"
 
@@ -7,7 +7,7 @@ export const Fieldy = (props: {
 }) => {
   const { children } = props
   const fieldy = useMemo(() => {
-    return new FieldyEngine(false)
+    return new FieldyEngineImpl(false)
   }, [])
 
   return <FieldyContext.Provider value={fieldy}>
