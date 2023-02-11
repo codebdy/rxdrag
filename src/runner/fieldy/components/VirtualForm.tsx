@@ -11,15 +11,12 @@ export const VirtualForm = (props: {
   onValueChange?: (value?: any) => void,
   children?: React.ReactNode
 }) => {
-  const { fieldSchemas, initialValue, children, onValueChange } = props
+  const { fieldSchemas, initialValue, defaultValue, children, onValueChange } = props
   const [form, setForm] = useState<IForm>()
-  //const [formState, setFormState] = useState<FormState>()
   const fieldy = useFieldy()
   useEffect(() => {
     if (fieldy && fieldSchemas) {
       const form = fieldy.createForm()
-      // fieldy.setFormFieldMetas(name, fieldSchemas)
-      // setFormState(fieldy.getForm(name))
       setForm(form)
       return () => {
         fieldy.removeForm(form.name)
@@ -28,20 +25,20 @@ export const VirtualForm = (props: {
   }, [fieldSchemas, fieldy])
 
   useEffect(() => {
-    if (fieldy && formState?.mounted && name) {
-      fieldy?.setFormInitialValue(name, initialValue)
+    if (fieldy) {
+      form?.setInitialValue(initialValue||defaultValue)
     }
-  }, [fieldy, formState?.mounted, initialValue, name])
+  }, [defaultValue, fieldy, form, initialValue])
 
   useEffect(() => {
-    if (fieldy && name) {
-      const unsub = fieldy?.subscribeToFormValuesChange(name, (values: FormValue) => {
+    if (fieldy) {
+      const unsub = form?.onValueChange((values: FormValue) => {
         onValueChange?.(values)
       })
       return unsub;
     }
 
-  }, [fieldy, formState, name, onValueChange])
+  }, [fieldy, form, onValueChange])
 
   //form嵌套时要清空field树，添加一个FieldContext.Provider来完成
   return (

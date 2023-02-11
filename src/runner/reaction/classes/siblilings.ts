@@ -10,18 +10,18 @@ export class Siblings {
     if (!field.path) {
       return
     }
-    for (const key of Object.keys(form?.fields || {})) {
-      //同在根节点
-      if (!field.basePath) {
-        if (key.indexOf(".") === -1) {
-          this[key] = fieldy.getField(formName, key)?.value
-        }
-      } else if (key.startsWith(field.basePath)) {
-        const siblingKey = key.substring(field.basePath.length + 1)
-        if (siblingKey && siblingKey.indexOf(".") === -1) {
-          this[siblingKey] = form.getField(key)?.value
-        }
-      }
-    }
+    // for (const key of Object.keys(form?.fields || {})) {
+    //   //同在根节点
+    //   if (!field.basePath) {
+    //     if (key.indexOf(".") === -1) {
+    //       this[key] = fieldy.getField(formName, key)?.value
+    //     }
+    //   } else if (key.startsWith(field.basePath)) {
+    //     const siblingKey = key.substring(field.basePath.length + 1)
+    //     if (siblingKey && siblingKey.indexOf(".") === -1) {
+    //       this[siblingKey] = form.getField(key)?.value
+    //     }
+    //   }
+    // }
   }
 }

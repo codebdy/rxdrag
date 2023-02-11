@@ -1,4 +1,4 @@
-import { ErrorListener, FieldState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
+import { ErrorListener, FieldState, FormValuesChangeListener, IField, IFieldSchema, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
 
 function getFieldKey(formName: string, path: string) {
   return formName + "#" + path
@@ -46,8 +46,8 @@ export class FormImpl implements IForm {
   onUnmount(listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
-  onValuesChange(): Unsubscribe {
-    throw new Error("Method not implemented.");
+  onValueChange(listener: ValueChangeListener): Unsubscribe {
+    return this.fieldy.subscribeToFormValuesChange(this.name, listener)
   }
   onInitialValuesChange(): Unsubscribe {
     throw new Error("Method not implemented.");

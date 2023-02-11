@@ -129,7 +129,7 @@ export interface IFormNode {
   onInit(listener: Listener): Unsubscribe
   onMount(listener: Listener): Unsubscribe
   onUnmount(listener: Listener): Unsubscribe
-  onValuesChange(): Unsubscribe
+  onValueChange(listener: ValueChangeListener): Unsubscribe
   onInitialValuesChange(): Unsubscribe
   onInput(listener: ValueChangeListener): Unsubscribe
   onValidateStart(listener: Listener): Unsubscribe

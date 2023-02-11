@@ -40,7 +40,7 @@ export class FieldImpl implements IField {
   onUnmount(listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
-  onValuesChange(): Unsubscribe {
+  onValueChange(): Unsubscribe {
     throw new Error("Method not implemented.");
   }
   onInitialValuesChange(): Unsubscribe {
