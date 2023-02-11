@@ -9,7 +9,6 @@ export function fieldReduce(state: FieldState, action: IAction<FieldActionPayloa
         ...state,
         value: setFieldValuePayload.value
       }
-      console.log("哈哈 set field value", newData)
       return newData
     default:
       return state

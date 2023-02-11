@@ -17,7 +17,7 @@ export function useRegisterField(fieldMeta: IFieldMeta, value?:any) {
   }, [parentPath, fieldMeta.name])
   const form = useForm()
   useEffect(() => {
-    if (form) {
+    if (form && fieldMeta.name) {
       form?.registerField({ ...fieldMeta, path })
       return ()=>form?.unregisterField(path)
     }
