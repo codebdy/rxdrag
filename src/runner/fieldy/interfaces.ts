@@ -112,7 +112,8 @@ export type FormState = {
   modified?: boolean;
   fields: FieldsState;
   fieldSchemas: IFieldSchema[];
-  originalValue?: any;
+  initialValue?: any;
+  value?: any;
 }
 
 export interface FormValue {
@@ -143,10 +144,12 @@ export interface IForm extends IFormNode {
 }
 
 export interface IField extends IFormNode {
-
+  value?: any
+  destory(): void
 }
 
 export interface IFieldyEngine {
+  getField(formName: string, path: string): IField
   //动作
   createForm(options?: IFormProps): string
   removeForm(name: string): void
@@ -156,6 +159,8 @@ export interface IFieldyEngine {
   setFormValues(name: string, value: FormValue): void
   setFormFlatValues(name: string, flatValues: FormValue): void
   addFields(name: string, ...fieldSchemas: IFieldSchema[]): void
+  registerField(formName: string, fieldSchema: IFieldSchema): void
+  unregisterField(formName: string, path: string): void
   removeFields(formName: string, ...fieldPaths: string[]): void
 
   //field动作
@@ -165,7 +170,7 @@ export interface IFieldyEngine {
 
   //监测
   getForm(name: string): FormState | undefined
-  getField(formName: string, fieldPath: string): FieldState | undefined
+  getFieldState(formName: string, fieldPath: string): FieldState | undefined
   getFieldValue(formName: string, fieldPath: string): any
   getFormValues(formName: string): FormValue
   getFormFlatValues(formName: string): FormValue

@@ -1,7 +1,15 @@
 import { ErrorListener, IField, IFieldyEngine, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
 
 export class FieldImpl implements IField {
-  constructor(private enginge: IFieldyEngine, private formName: string, private fieldPath: string) { }
+  constructor(private fieldy: IFieldyEngine, private formName: string, private fieldPath: string) { }
+
+  get value() {
+    return this.fieldy.getFieldValue(this.formName, this.fieldPath)
+  }
+
+  destory(): void {
+    throw new Error("Method not implemented.");
+  }
 
   setValue(value: any): void {
     throw new Error("Method not implemented.");

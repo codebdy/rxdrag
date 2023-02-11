@@ -49,7 +49,7 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
       return {
         ...state,
         ...stateWithInitialValues,
-        originalValue: (action.payload as SetFormValuesPayload).values,
+        initialValue: (action.payload as SetFormValuesPayload).values,
         initialized: true,
       }
     }
@@ -60,7 +60,7 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
       return {
         ...state,
         ...stateWithFlateValues,
-        originalValue: (action.payload as SetFormValuesPayload).values,
+        initialValue: (action.payload as SetFormValuesPayload).values,
       }
     }
 

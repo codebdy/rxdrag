@@ -10,7 +10,7 @@ export function useFieldState(fieldPath: string) {
 
   useEffect(() => {
     if (formName && fieldPath) {
-      setFieldState(fieldy?.getField(formName, fieldPath))
+      setFieldState(fieldy?.getFieldState(formName, fieldPath))
     }
   }, [fieldPath, fieldy, formName])
 
