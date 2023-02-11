@@ -142,7 +142,7 @@ export interface IForm extends IFormNode {
   name: string
   getField(path: string): IField | undefined
   registerField(fieldSchema: IFieldSchema): IField
-  unregisterField(path: number): void
+  unregisterField(path: string): void
 
   getFieldState(fieldPath: string): FieldState | undefined
 }

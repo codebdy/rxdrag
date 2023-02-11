@@ -1,4 +1,4 @@
-import { ErrorListener, FieldState, FormValuesChangeListener, IField, IFieldSchema, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
+import { ErrorListener, FieldState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
 
 function getFieldKey(formName: string, path: string) {
   return formName + "#" + path
@@ -8,7 +8,7 @@ export class FormImpl implements IForm {
   fields: {
     [key: string]: IField | undefined
   } = {}
-  
+
   constructor(private fieldy: IFieldyEngine, public name: string) { }
 
   getFieldState(fieldPath: string): FieldState | undefined {
@@ -22,7 +22,7 @@ export class FormImpl implements IForm {
   registerField(fieldSchema: IFieldSchema): IField {
     throw new Error("Method not implemented.");
   }
-  unregisterField(path: number): void {
+  unregisterField(path: string): void {
     throw new Error("Method not implemented.");
   }
   setValue(value: any): void {

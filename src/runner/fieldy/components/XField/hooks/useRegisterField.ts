@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { useFieldPath, useFieldy, useForm } from "runner/fieldy/hooks";
+import { useFieldPath, useForm } from "runner/fieldy/hooks";
 import { IField, IFieldMeta } from "runner/fieldy/interfaces";
 
-export function useRegisterField(fieldMeta: IFieldMeta) {
+export function useRegisterField(fieldMeta: IFieldMeta, value?:any) {
   const [field, setField] = useState<IField>()
   const parentPath = useFieldPath() || ""
   const path = useMemo(() => {
@@ -15,21 +15,20 @@ export function useRegisterField(fieldMeta: IFieldMeta) {
       return fieldMeta.name.trim()
     }
   }, [parentPath, fieldMeta.name])
-  const fieldy = useFieldy()
-  const formName = useForm()
+  const form = useForm()
   useEffect(() => {
-    if (formName) {
-      fieldy?.registerField(formName, { ...fieldMeta, path })
-      return fieldy?.unregisterField(formName, path)
+    if (form) {
+      form?.registerField({ ...fieldMeta, path })
+      return ()=>form?.unregisterField(path)
     }
-  }, [fieldMeta, fieldy, formName, path])
+  }, [fieldMeta, form, path])
 
   useEffect(() => {
-    if (formName) {
-      const field = fieldy?.getField(formName, path)
+    if (form) {
+      const field = form?.getField( path)
       setField(field)
     }
-  }, [fieldy, formName, path])
+  }, [form, path])
 
   return field
 }
