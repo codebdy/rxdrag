@@ -139,28 +139,33 @@ export interface IFormNode {
 }
 
 export interface IForm extends IFormNode {
+  name: string
+  getField(path: string): IField | undefined
   registerField(fieldSchema: IFieldSchema): IField
   unregisterField(path: number): void
+
+  getFieldState(fieldPath: string): FieldState | undefined
 }
 
 export interface IField extends IFormNode {
   value?: any
+  meta?: IFieldMeta
+  basePath?: string
+  path?: string
   destory(): void
 }
 
 export interface IFieldyEngine {
-  getField(formName: string, path: string): IField
+  //getField(formName: string, path: string): IField | undefined
   //动作
-  createForm(options?: IFormProps): string
+  createForm(options?: IFormProps): IForm
   removeForm(name: string): void
-  setFormFieldMetas(name: string, fieldMetas: IFieldSchema[]): void
+  //setFormFieldMetas(name: string, fieldMetas: IFieldSchema[]): void
   //不触发change事件
   setFormInitialValue(name: string, value: FormValue): void
   setFormValues(name: string, value: FormValue): void
   setFormFlatValues(name: string, flatValues: FormValue): void
   addFields(name: string, ...fieldSchemas: IFieldSchema[]): void
-  registerField(formName: string, fieldSchema: IFieldSchema): void
-  unregisterField(formName: string, path: string): void
   removeFields(formName: string, ...fieldPaths: string[]): void
 
   //field动作
@@ -169,7 +174,8 @@ export interface IFieldyEngine {
   setFieldFragmentValue(formName: string, fieldPath: string, value: any): void
 
   //监测
-  getForm(name: string): FormState | undefined
+  getForm(name: string): IForm | undefined
+  getFormState(name: string): FormState | undefined
   getFieldState(formName: string, fieldPath: string): FieldState | undefined
   getFieldValue(formName: string, fieldPath: string): any
   getFormValues(formName: string): FormValue

@@ -1,12 +1,12 @@
 import { useCallback, useEffect } from "react"
-import { useFieldy, useFormName } from "runner/fieldy"
+import { useFieldy, useForm } from "runner/fieldy"
 import { IControllerMeta } from "../interfaces/metas"
 import { useGetFieldPaths } from "./useGetFieldPaths"
 import { useNewFunction } from "./useNewFunction"
 
 export function useOnFieldValueChange(reaction?: IControllerMeta) {
   const fieldy = useFieldy()
-  const formName = useFormName()
+  const formName = useForm()
   //const reactionParams = (reaction?.effects as any)?.onFieldValueChange
 
   const getFieldPaths = useGetFieldPaths()

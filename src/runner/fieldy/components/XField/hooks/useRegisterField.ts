@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useFieldPath, useFieldy, useFormName } from "runner/fieldy/hooks";
+import { useFieldPath, useFieldy, useForm } from "runner/fieldy/hooks";
 import { IField, IFieldMeta } from "runner/fieldy/interfaces";
 
 export function useRegisterField(fieldMeta: IFieldMeta) {
@@ -16,7 +16,7 @@ export function useRegisterField(fieldMeta: IFieldMeta) {
     }
   }, [parentPath, fieldMeta.name])
   const fieldy = useFieldy()
-  const formName = useFormName()
+  const formName = useForm()
   useEffect(() => {
     if (formName) {
       fieldy?.registerField(formName, { ...fieldMeta, path })

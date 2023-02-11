@@ -7,6 +7,14 @@ export class FieldImpl implements IField {
     return this.fieldy.getFieldValue(this.formName, this.fieldPath)
   }
 
+  get meta() {
+    return this.fieldy.getFieldState(this.formName, this.fieldPath)?.meta
+  }
+
+  get path() {
+    return this.fieldy.getFieldState(this.formName, this.fieldPath)?.path
+  }
+
   destory(): void {
     throw new Error("Method not implemented.");
   }

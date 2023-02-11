@@ -1,9 +1,10 @@
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "core/utils/util-invariant";
-import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormFieldsPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES } from "runner/fieldy/actions";
-import { FieldChangeListener, FieldsState, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IField, IFieldSchema, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "runner/fieldy/interfaces";
+import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES } from "runner/fieldy/actions";
+import { FieldChangeListener, FieldsState, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Listener, Unsubscribe } from "runner/fieldy/interfaces";
 import { reduce, State } from "runner/fieldy/reducers";
 import { getChildFields } from "../funcs/path";
+import { FormImpl } from "./FormImpl";
 
 var idSeed = 0
 
@@ -18,21 +19,16 @@ function makeId() {
  */
 export class FieldyEngineImpl implements IFieldyEngine {
   store: Store<State>
+
+  forms:{
+    [name:string]:IForm|undefined
+  } = {}
+
   constructor(debugMode?: boolean,) {
     this.store = makeStoreInstance(debugMode || false)
   }
 
-  getField(formName: string, path: string): IField {
-    throw new Error("Method not implemented.");
-  }
-  registerField(formName: string, fieldSchema: IFieldSchema): void {
-    throw new Error("Method not implemented.");
-  }
-  unregisterField(formName: string, path: string): void {
-    throw new Error("Method not implemented.");
-  }
-
-  createForm(options?: IFormProps): string {
+  createForm(options?: IFormProps): IForm {
     const name = makeId()
     this.dispatch({
       type: CREATE_FORM,
@@ -41,7 +37,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
       }
     })
 
-    return name
+    return new FormImpl(this, name)
   }
 
   removeForm(name: string): void {
@@ -53,18 +49,18 @@ export class FieldyEngineImpl implements IFieldyEngine {
     })
   }
 
-  setFormFieldMetas(name: string, fieldSchemas: IFieldSchema[]): void {
-    const payload: SetFormFieldsPayload = {
-      formName: name,
-      fieldSchemas
-    }
-    this.dispatch(
-      {
-        type: SET_FORM_FIELDS,
-        payload: payload,
-      }
-    )
-  }
+  // setFormFieldMetas(name: string, fieldSchemas: IFieldSchema[]): void {
+  //   const payload: SetFormFieldsPayload = {
+  //     formName: name,
+  //     fieldSchemas
+  //   }
+  //   this.dispatch(
+  //     {
+  //       type: SET_FORM_FIELDS,
+  //       payload: payload,
+  //     }
+  //   )
+  // }
 
   addFields(formName: string, ...fieldSchemas: IFieldSchema[]): void {
     this.dispatch({
@@ -118,7 +114,11 @@ export class FieldyEngineImpl implements IFieldyEngine {
     )
   }
 
-  getForm(name: string): FormState | undefined {
+  getForm(name: string): IForm | undefined {
+    return this.forms[name]
+  }
+  
+  getFormState(name: string): FormState | undefined {
     return this.store.getState().forms[name]
   }
   subscribeToFormInitialized(name: string, listener: Listener): Unsubscribe {
@@ -162,7 +162,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
 
     return this.store.subscribe(handleChange)
   }
-  
+
   setFieldIntialValue(formName: string, fieldPath: string, value: any): void {
     throw new Error("Method not implemented.");
   }
@@ -246,7 +246,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
         }
         return undefined
       } else if (fieldState.meta?.type === "array") {
-        const value:any[] = []
+        const value: any[] = []
         const fields = this.getSubFields(formName, fieldPath)
         for (const key of fields) {
           const subValue = this.getFieldValue(formName, key)

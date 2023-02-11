@@ -2,11 +2,11 @@ import { useEffect, useMemo, useRef } from "react"
 import { FieldType, IFieldSchema } from "../interfaces"
 import { useFieldPath } from "./useFieldPath"
 import { useFieldy } from "./useFieldy"
-import { useFormName } from "./useFormName"
+import { useForm } from "./useForm"
 
 export function useCreateField(name: string, type: FieldType, value?: any) {
   const parentPath = useFieldPath() || ""
-  const formName = useFormName()
+  const formName = useForm()
   const fieldy = useFieldy()
   const fieldPath = useMemo(() => {
     return parentPath ? parentPath + "." + name : name

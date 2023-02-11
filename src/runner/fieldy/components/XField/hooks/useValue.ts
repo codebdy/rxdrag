@@ -1,11 +1,11 @@
-import { useFieldy, useFormName } from "runner/fieldy/hooks";
+import { useFieldy, useForm } from "runner/fieldy/hooks";
 import { FieldState, IFieldMeta } from "runner/fieldy/interfaces";
 import { useCallback, useEffect, useState } from "react";
 
 export function useValue(fieldPath: string, fieldMeta: IFieldMeta) {
   const [value, setValue] = useState<any>()
   const fieldy = useFieldy()
-  const formName = useFormName()
+  const formName = useForm()
   useEffect(() => {
     if (formName && fieldPath) {
       setValue(fieldy?.getFieldValue(formName, fieldPath))

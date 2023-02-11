@@ -1,29 +1,29 @@
 import { FieldState } from "runner/fieldy/interfaces";
 import { useCallback, useEffect, useState } from "react";
 import { useFieldy } from "./useFieldy";
-import { useFormName } from "./useFormName";
+import { useForm } from "./useForm";
 
 export function useFieldState(fieldPath: string) {
   const [fieldState, setFieldState] = useState<FieldState>()
   const fieldy = useFieldy()
-  const formName = useFormName()
+  const form = useForm()
 
   useEffect(() => {
-    if (formName && fieldPath) {
-      setFieldState(fieldy?.getFieldState(formName, fieldPath))
+    if (fieldPath) {
+      setFieldState(form?.getFieldState(fieldPath))
     }
-  }, [fieldPath, fieldy, formName])
+  }, [fieldPath, fieldy, form])
 
   const handleFieldChange = useCallback((fieldState: FieldState | undefined) => {
     setFieldState(fieldState)
   }, [])
 
   useEffect(() => {
-    if (formName && fieldPath) {
-      const unsub = fieldy?.subscribeToFieldChange(formName, fieldPath, handleFieldChange)
+    if (form?.name && fieldPath) {
+      const unsub = fieldy?.subscribeToFieldChange(form.name, fieldPath, handleFieldChange)
       return unsub
     }
-  }, [fieldPath, fieldy, formName, handleFieldChange])
+  }, [fieldPath, fieldy, form?.name, handleFieldChange])
 
   return fieldState
 }
