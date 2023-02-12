@@ -68,7 +68,7 @@ export type FieldChangeListener = (field: FieldState | undefined) => void
 export type FieldValueChangeListener = (value: any, previousValue: any) => void
 export type FieldValuesChangeListener = (values: any[], previousValues: any[]) => void
 export type FormChangeListener = (form: FormState) => void
-export type FormValueChangeListener = (value: FormValue, flatValue: FormValue) => void
+export type FormValueChangeListener = (value: FormValue) => void
 
 export type FieldState = {
   //自动生成id，用于组件key值

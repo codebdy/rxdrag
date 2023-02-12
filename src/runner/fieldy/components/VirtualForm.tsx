@@ -26,7 +26,6 @@ export const VirtualForm = (props: {
 
   useEffect(() => {
     if (fieldy && form) {
-      console.log("哈哈 设置 initialValue")
       form.setInitialValue(initialValue || defaultValue)
     }
   }, [defaultValue, fieldy, form, initialValue])

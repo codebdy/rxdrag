@@ -7,7 +7,6 @@ export const Fieldy = (props: {
 }) => {
   const { children } = props
   const fieldy = useMemo(() => {
-    console.log("哈哈 create Fieldy")
     return new FieldyEngineImpl(false)
   }, [])
 

@@ -15,7 +15,6 @@ export function fieldReduce(state: FieldState, action: IAction<FieldActionPayloa
       }
     case SET_FIELD_INITAL_VALUE:
       const setFieldInitialValuePayload = action.payload as SetFieldValuePayload
-      console.log("哈哈哈 fieldReduce", setFieldInitialValuePayload)
       return {
         ...state,
         initialValue: setFieldInitialValuePayload.value,

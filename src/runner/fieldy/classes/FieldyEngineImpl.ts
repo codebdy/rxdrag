@@ -140,10 +140,10 @@ export class FieldyEngineImpl implements IFieldyEngine {
         }
       }
       const normalValues = this.getFormNormalValues(name)
-      const flatValues = this.getFormFlatValues(name)
+
       previousState = nextState
       if (changed) {
-        listener(normalValues, flatValues)
+        listener(normalValues)
       }
     }
 
@@ -151,7 +151,6 @@ export class FieldyEngineImpl implements IFieldyEngine {
   }
 
   setFieldIntialValue(formName: string, fieldPath: string, value: any): void {
-    console.log("哈哈哈 fieldy setFieldIntialValue", formName, fieldPath, value)
     const payload: SetFieldValuePayload = {
       formName,
       path: fieldPath,
@@ -186,6 +185,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
         path: fieldPath,
         value
       }
+      
       this.dispatch(
         {
           type: SET_FIELD_VALUE,
@@ -195,9 +195,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
     }
   }
 
-
   inputFieldValue(formName: string, fieldPath: string, value: any): void {
-    this.setFieldValue(formName, fieldPath, value)
     this.dispatch(
       {
         type: SET_FIELD_MODIFY,
@@ -207,6 +205,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
         },
       }
     )
+    this.setFieldValue(formName, fieldPath, value)
   }
 
   //递归找出改变的字段
@@ -418,6 +417,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
       }
 
       const fieldPath = prefix + field.name
+      console.log("合成field path", fieldPath, prefix, field.name, field)
       if (field.meta.type === "object") {
         value[field.name] = this.trasformFlatValuesToNormal(value[field.name], flatValues, allFields, fieldPath)
       } else if (field.meta.type === "array") {

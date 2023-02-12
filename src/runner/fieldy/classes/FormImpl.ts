@@ -7,6 +7,8 @@ export class FormImpl implements IForm {
   } = {}
 
   constructor(private fieldy: IFieldyEngine, public name: string) { }
+
+  initialValue?: any;
   get value() {
     return this.fieldy.getFormValue(this.name)
   }

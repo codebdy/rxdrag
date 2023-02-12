@@ -7,7 +7,6 @@ import { useForm } from "./useForm"
 export function useCreateField(name: string, type: FieldType, value?: any) {
   const parentPath = useFieldPath() || ""
   const formName = useForm()
-  const fieldy = useFieldy()
   const fieldPath = useMemo(() => {
     return parentPath ? parentPath + "." + name : name
   }, [name, parentPath])
@@ -16,7 +15,6 @@ export function useCreateField(name: string, type: FieldType, value?: any) {
   formNameRef.current = formName
   const fieldPathRef = useRef(fieldPath)
   fieldPathRef.current = fieldPath
-  //console.log("哈哈 useCreateField", name, fieldy?.getForm(formName||""))
   const fieldMeta: IFieldSchema = useMemo(() => {
     return {
       path: fieldPath,

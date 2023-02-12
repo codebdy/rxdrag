@@ -72,12 +72,11 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
   }, [currentNode, engine, lang])
 
   const handleMetaChange = useCallback((meta: INodeMeta) => {
+    console.log("哈哈 meta变化", meta)
     if (currentNode) {
       changeMeta(currentNode.id, meta)
     }
   }, [changeMeta, currentNode])
-
-  console.log("哈哈哈 Settings form", currentNode, designerSchema)
 
   return (
     <PreviewRoot
