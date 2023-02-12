@@ -3,23 +3,37 @@ import { IFieldMeta } from "runner/fieldy/interfaces"
 import { memo, useCallback, useEffect, useState } from "react"
 import { IBindParams } from "./interfaces"
 
+//这个代码要重构，需要明确的withbind指令
 export function withBind(WrappedComponent: React.FC<any> | React.ComponentClass<any>, fieldMeta?: IFieldMeta<IBindParams>): React.FC<any> | React.ComponentClass<any> {
-  const fieldType = fieldMeta?.type || "normal"
 
   if (!fieldMeta) {
     return WrappedComponent
   }
 
-  if (fieldType === "normal" && fieldMeta.params?.withBind === false) {
-    return WrappedComponent
-  } else if (fieldType !== "normal" && !fieldMeta.params?.withBind) {
+  if (JSON.stringify(fieldMeta) === "{}") {
     return WrappedComponent
   }
+  const fieldType = fieldMeta?.type || "normal"
+  if (fieldMeta.name) {
+    if (fieldType === "normal") {
+      if (fieldMeta.params?.withBind === false) {
+        return WrappedComponent
+      }
+    } else if (!fieldMeta.params?.withBind) {
+      return WrappedComponent
+    }
+  } else {
+    if (!fieldMeta.params?.withBind) {
+      return WrappedComponent
+    }
+  }
+
   const propName = fieldMeta.params?.valuePropName || "value"
 
   return memo((props: any) => {
-    const [ value, setValue ] = useState<any>()
+    const [value, setValue] = useState<any>()
     const field = useField()
+
     const trigger = fieldMeta.params?.trigger || "onChange"
     const handleChange = useCallback((e?: { target?: { value?: any, [key: string]: any } }) => {
       let newValue = e?.target?.[propName]
@@ -29,17 +43,18 @@ export function withBind(WrappedComponent: React.FC<any> | React.ComponentClass<
       field?.inpuValue(newValue)
     }, [field])
 
-    const handleValueChange = useCallback((value:any)=>{
+    const handleValueChange = useCallback((value: any) => {
       setValue(value)
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
       return field?.onValueChange(handleValueChange)
     }, [field, handleValueChange])
 
-    useEffect(()=>{
+    //withBind判断不准时，这个代码会有奇怪的堆栈溢出bug,不要依赖field.value,只能依赖field用来取初始值
+    useEffect(() => {
       setValue(field?.value)
-    }, [field?.value])
+    }, [field])
 
     return <WrappedComponent {...{ [propName]: value, [trigger]: handleChange }} {...props} />
   })

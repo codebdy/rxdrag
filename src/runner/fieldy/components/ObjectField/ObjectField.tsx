@@ -1,6 +1,6 @@
 import { memo } from "react"
-import { useCreateField } from "runner/fieldy/hooks/useCreateField_del"
 import { XField } from "../XField"
+import { useCreateFieldSchema } from "../XField/hooks/useCreateFieldSchema"
 
 //动态增加字段用这个，否则不要碰它
 export const ObjectField = memo((
@@ -11,10 +11,9 @@ export const ObjectField = memo((
   }
 ) => {
   const { name, value, children } = props
-  const  fieldMeta = useCreateField(name, "object", value)
-
+  const  fieldMeta = useCreateFieldSchema(name, "object")
   return (
-    <XField fieldMeta={fieldMeta}>
+    <XField fieldMeta={fieldMeta} initialValue = {value}>
       {children}
     </XField>
   )

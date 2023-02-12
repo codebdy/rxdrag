@@ -25,7 +25,7 @@ export const TextView = memo(forwardRef<HTMLDivElement>((props: ITextProps, ref)
   const tagName = props.mode === 'normal' || !props.mode ? 'div' : props.mode
 
   const text = useMemo(() => {
-    const txtValue = props.content || value;
+    const txtValue = value === undefined ? props.content : value?.toString();
     if (textType === TextType.Date) {
       return dayjs(txtValue).format(formatMask || "YYYY-MM-DD HH:mm:ss");
     }

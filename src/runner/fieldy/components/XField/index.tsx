@@ -12,12 +12,10 @@ export const XField = memo((props: {
   const field = useRegisterField(fieldMeta, initialValue)
 
   return (
-    field ?
-      <FieldContext.Provider value={field}>
-        {
-          children
-        }
-      </FieldContext.Provider>
-      : <></>
+    <FieldContext.Provider value={field}>
+      {
+        children
+      }
+    </FieldContext.Provider>
   )
 })

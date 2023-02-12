@@ -12,7 +12,6 @@ export const ArrayField = memo((
 ) => {
   const { name, value, children } = props
   const fieldMeta = useCreateFieldSchema(name, "array")
-
   return (
     <XField fieldMeta={fieldMeta} initialValue={value}>
       {children}

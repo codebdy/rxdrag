@@ -12,6 +12,7 @@ export const ComponentField = memo((
 ) => {
   const { fieldMeta, children } = props
   const parentField = useFieldNode()
+
   const view = useMemo(() => {
     if (fieldMeta?.name || fieldMeta?.type === "fragment") {
       const initialValue = parseValue(parentField?.value, fieldMeta.name)
