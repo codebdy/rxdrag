@@ -54,6 +54,7 @@ import { ListItemMetaMaterial } from "./datas/ListItemMeta";
 import { DefaultSlotMaterial } from "./slots/DefualtSlot";
 import { ActionSlotMaterial } from "./slots/ActionSlot";
 import { ExtraSlotMaterial } from "./slots/ExtraSlot";
+import { TableMaterial } from "./datas/Table";
 
 export type MaterialGroup = {
   titleKey: string,
@@ -135,6 +136,7 @@ export const materials: MaterialGroup[] = [
     items: [
       ListMaterial,
       ListItemMetaMaterial,
+      TableMaterial,
     ]
   },
   {
