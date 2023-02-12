@@ -7,10 +7,11 @@ export const Fieldy = (props: {
 }) => {
   const { children } = props
   const fieldy = useMemo(() => {
+    console.log("哈哈 create Fieldy")
     return new FieldyEngineImpl(false)
   }, [])
 
-  return <FieldyContext.Provider value={fieldy}>
-    {children}
+  return fieldy && <FieldyContext.Provider value={fieldy}>
+    { children}
   </FieldyContext.Provider>
 }

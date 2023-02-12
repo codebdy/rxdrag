@@ -39,6 +39,7 @@ export const ComponentView = memo((
   useEffect(() => {
   }, [node, slots, Component])
   return (
+    node &&
     <ComponentSchemaContext.Provider value={node}>
       <ComponentField fieldMeta={node?.["x-field"]}>
         {

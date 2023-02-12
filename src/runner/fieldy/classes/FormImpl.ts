@@ -1,23 +1,22 @@
 import { ErrorListener, FieldState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
 import { FieldImpl } from "./FieldImpl";
 
-function getFieldKey(formName: string, path: string) {
-  return formName + "#" + path
-}
-
 export class FormImpl implements IForm {
   fields: {
     [key: string]: IField | undefined
   } = {}
 
   constructor(private fieldy: IFieldyEngine, public name: string) { }
+  get value() {
+    return this.fieldy.getFormValue(this.name)
+  }
 
   getFieldState(fieldPath: string): FieldState | undefined {
     return this.fieldy.getFieldState(this.name, fieldPath)
   }
 
   getField(path: string): IField | undefined {
-    return this.fields[getFieldKey(this.name, path)]
+    return this.fields[path]
   }
 
   registerField(fieldSchema: IFieldSchema): IField {
@@ -27,9 +26,13 @@ export class FormImpl implements IForm {
       return field
     } else {
       if (fieldSchema.name) {
-        this.fieldy.addFields(this.name, fieldSchema)
-        const field = new FieldImpl(this.fieldy, this.name, fieldSchema.name)
-        this.fields[getFieldKey(this.name, fieldSchema.path)] = field
+        if(this.fieldy.getFieldState(this.name, fieldSchema.path)){
+          console.log("哈哈 字段已经注册")
+        }else{
+          this.fieldy.addFields(this.name, fieldSchema)
+        }
+        const field = new FieldImpl(this.fieldy, this.name, fieldSchema.path)
+        this.fields[fieldSchema.path] = field
         return field
       }
       throw new Error("Not set field name")
@@ -43,6 +46,7 @@ export class FormImpl implements IForm {
       field.refCount = field.refCount - 1
       if (field.refCount <= 0) {
         this.fieldy.removeFields(this.name, path)
+        delete this.fields[path]
       }
     }
   }

@@ -6,17 +6,18 @@ import { useRegisterField } from "./hooks/useRegisterField"
 export const XField = memo((props: {
   fieldMeta: IFieldMeta,
   children?: React.ReactNode,
-  value?: any,
+  initialValue?: any,
 }) => {
-  const { fieldMeta, value, children } = props
-  //const params = useCreateFieldParams(fieldMeta)
-  //const name = useFormName()
-  const field = useRegisterField(fieldMeta, value)
+  const { fieldMeta, initialValue, children } = props
+  const field = useRegisterField(fieldMeta, initialValue)
+
   return (
-    <FieldContext.Provider value={field}>
-      {
-        children
-      }
-    </FieldContext.Provider>
+    field ?
+      <FieldContext.Provider value={field}>
+        {
+          children
+        }
+      </FieldContext.Provider>
+      : <></>
   )
 })

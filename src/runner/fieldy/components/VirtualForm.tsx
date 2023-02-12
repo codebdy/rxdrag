@@ -2,31 +2,32 @@
 import React, { useEffect, useState } from "react"
 import { FieldContext, FormContext } from "../contexts"
 import { useFieldy } from "../hooks"
-import { IFieldSchema, FormValue, IForm } from "../interfaces"
+import { FormValue, IForm } from "../interfaces"
 
 export const VirtualForm = (props: {
-  fieldSchemas: IFieldSchema[]
   initialValue?: any,
   defaultValue?: any,
   onValueChange?: (value?: any) => void,
   children?: React.ReactNode
 }) => {
-  const { fieldSchemas, initialValue, defaultValue, children, onValueChange } = props
+  const { initialValue, defaultValue, children, onValueChange } = props
   const [form, setForm] = useState<IForm>()
   const fieldy = useFieldy()
+
   useEffect(() => {
-    if (fieldy && fieldSchemas) {
+    if (fieldy) {
       const form = fieldy.createForm()
       setForm(form)
       return () => {
         fieldy.removeForm(form.name)
       }
     }
-  }, [fieldSchemas, fieldy])
+  }, [fieldy])
 
   useEffect(() => {
-    if (fieldy) {
-      form?.setInitialValue(initialValue||defaultValue)
+    if (fieldy && form) {
+      console.log("哈哈 设置 initialValue")
+      form.setInitialValue(initialValue || defaultValue)
     }
   }, [defaultValue, fieldy, form, initialValue])
 
@@ -44,7 +45,7 @@ export const VirtualForm = (props: {
   return (
     <FieldContext.Provider value={undefined}>
       <FormContext.Provider value={form}>
-        {children}
+        {form && children}
       </FormContext.Provider>
     </FieldContext.Provider>
   )

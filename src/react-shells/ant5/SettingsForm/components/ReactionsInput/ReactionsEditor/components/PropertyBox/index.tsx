@@ -7,7 +7,6 @@ import { Fragment, memo, useCallback, useMemo } from "react"
 import { JSONInput } from "react-shells/ant5/SettingsForm/components/JSONInput"
 import { ValueInput } from "react-shells/ant5/SettingsForm/components/ValueInput"
 import { ComponentRender } from "runner/ComponentRender"
-import { extractFieldSchemas } from "runner/ComponentRender/funcs/extractFieldSchemas"
 import { VirtualForm } from "runner/fieldy"
 import styled from "styled-components"
 import { ActionType } from "../../actions"
@@ -51,12 +50,6 @@ export const PropertyBox = memo(() => {
   const material = useMemo(() => getMaterial(node?.materialName || ""), [getMaterial, node?.materialName])
   const backup = useBackup()
   const markeChange = useMarkChange()
-  const fieldSchemas = useMemo(() => {
-    if (material?.schema) {
-      return material?.schema ? extractFieldSchemas(material?.schema) : []
-    }
-    return []
-  }, [material?.schema])
 
   const designerSchema = useMemo(() => {
     if (material?.schema) {
@@ -104,7 +97,7 @@ export const PropertyBox = memo(() => {
               }}
             >
               <VirtualForm
-                fieldSchemas={fieldSchemas}
+                //fieldSchemas={fieldSchemas}
                 initialValue={node}
                 onValueChange={handleNodeChange}
               >

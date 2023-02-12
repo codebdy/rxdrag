@@ -16,7 +16,7 @@ export class FieldImpl implements IField {
   }
 
   get path() {
-    return this.fieldy.getFieldState(this.formName, this.fieldPath)?.path
+    return this.fieldPath
   }
 
   get basePath() {
@@ -31,7 +31,7 @@ export class FieldImpl implements IField {
     throw new Error("Method not implemented.");
   }
   setInitialValue(value: any): void {
-    //this.fieldy.setFormInitialValue(this.formName)
+    this.fieldy.setFieldIntialValue(this.formName, this.path, value)
   }
   inpuValue(value: any): void {
     throw new Error("Method not implemented.");

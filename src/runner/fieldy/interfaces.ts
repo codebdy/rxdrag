@@ -119,6 +119,8 @@ export interface FormValue {
 }
 
 export interface IFormNode {
+  initialValue?: any
+  value?: any
   setValue(value: any): void
   setInitialValue(value: any): void
   inpuValue(value: any): void
@@ -148,10 +150,9 @@ export interface IForm extends IFormNode {
 export interface IField extends IFormNode {
   //引用数量
   refCount: number;
-  value?: any
   meta?: IFieldMeta
   basePath?: string
-  path?: string
+  path: string
   destory(): void
 }
 
@@ -178,7 +179,7 @@ export interface IFieldyEngine {
   getFormState(name: string): FormState | undefined
   getFieldState(formName: string, fieldPath: string): FieldState | undefined
   getFieldValue(formName: string, fieldPath: string): any
-  getFormValues(formName: string): FormValue
+  getFormValue(formName: string): FormValue
   getFormFlatValues(formName: string): FormValue
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe
   subscribeToFormValuesChange(name: string, listener: FormValuesChangeListener): Unsubscribe

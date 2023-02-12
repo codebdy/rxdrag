@@ -14,7 +14,7 @@ export const ArrayField = memo((
   const fieldMeta = useCreateFieldSchema(name, "array")
 
   return (
-    <XField fieldMeta={fieldMeta} value={value}>
+    <XField fieldMeta={fieldMeta} initialValue={value}>
       {children}
     </XField>
   )

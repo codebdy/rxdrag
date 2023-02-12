@@ -16,7 +16,6 @@ export const ComponentRender = memo((props: {
       setNode(undefined)
     }
   }, [root])
-
   return (
     <>
       {node && <ComponentView node={node} />}

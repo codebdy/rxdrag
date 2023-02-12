@@ -172,7 +172,6 @@ function makeFields(fieldSchemas: IFieldSchema[]) {
         }
       }
     }
-
   }
 
   return flatFields

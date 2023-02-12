@@ -1,6 +1,6 @@
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "core/utils/util-invariant";
-import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES } from "runner/fieldy/actions";
+import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormValuesPayload, SET_FIELD_INITAL_VALUE, SET_FIELD_VALUE, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES } from "runner/fieldy/actions";
 import { FieldChangeListener, FieldsState, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Listener, Unsubscribe } from "runner/fieldy/interfaces";
 import { reduce, State } from "runner/fieldy/reducers";
 import { getChildFields } from "../funcs/path";
@@ -20,8 +20,8 @@ function makeId() {
 export class FieldyEngineImpl implements IFieldyEngine {
   store: Store<State>
 
-  forms:{
-    [name:string]:IForm|undefined
+  forms: {
+    [name: string]: IForm | undefined
   } = {}
 
   constructor(debugMode?: boolean,) {
@@ -48,19 +48,6 @@ export class FieldyEngineImpl implements IFieldyEngine {
       }
     })
   }
-
-  // setFormFieldMetas(name: string, fieldSchemas: IFieldSchema[]): void {
-  //   const payload: SetFormFieldsPayload = {
-  //     formName: name,
-  //     fieldSchemas
-  //   }
-  //   this.dispatch(
-  //     {
-  //       type: SET_FORM_FIELDS,
-  //       payload: payload,
-  //     }
-  //   )
-  // }
 
   addFields(formName: string, ...fieldSchemas: IFieldSchema[]): void {
     this.dispatch({
@@ -117,7 +104,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
   getForm(name: string): IForm | undefined {
     return this.forms[name]
   }
-  
+
   getFormState(name: string): FormState | undefined {
     return this.store.getState().forms[name]
   }
@@ -164,7 +151,18 @@ export class FieldyEngineImpl implements IFieldyEngine {
   }
 
   setFieldIntialValue(formName: string, fieldPath: string, value: any): void {
-    throw new Error("Method not implemented.");
+    console.log("哈哈哈 fieldy setFieldIntialValue", formName, fieldPath, value)
+    const payload: SetFieldValuePayload = {
+      formName,
+      path: fieldPath,
+      value
+    }
+    this.dispatch(
+      {
+        type: SET_FIELD_INITAL_VALUE,
+        payload: payload,
+      }
+    )
   }
 
   setFieldValue(formName: string, fieldPath: string, value: any): void {
@@ -218,7 +216,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
   }
 
 
-  getFormValues(formName: string): FormValue {
+  getFormValue(formName: string): FormValue {
     return this.getFormNormalValues(formName)
   }
 
