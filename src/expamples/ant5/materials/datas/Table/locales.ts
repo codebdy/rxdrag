@@ -26,9 +26,9 @@ export const locales = {
 
 export const resourceLocales = {
   "zh-CN": {
-    "List": "表格",
+    "Table": "表格",
   },
   'en-US': {
-    "List": "Table",
+    "Table": "Table",
   }
 }
