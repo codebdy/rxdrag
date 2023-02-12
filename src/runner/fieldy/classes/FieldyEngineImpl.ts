@@ -1,7 +1,7 @@
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "core/utils/util-invariant";
-import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormValuesPayload, SET_FIELD_INITAL_VALUE, SET_FIELD_VALUE, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES } from "runner/fieldy/actions";
-import { FieldChangeListener, FieldsState, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Listener, Unsubscribe } from "runner/fieldy/interfaces";
+import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_VALUE, SET_FORM_FLAT_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SET_MULTI_FIELD_VALUES } from "runner/fieldy/actions";
+import { FieldChangeListener, FieldsState, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValueChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Listener, Unsubscribe } from "runner/fieldy/interfaces";
 import { reduce, State } from "runner/fieldy/reducers";
 import { getChildFields } from "../funcs/path";
 import { FormImpl } from "./FormImpl";
@@ -70,32 +70,32 @@ export class FieldyEngineImpl implements IFieldyEngine {
 
   setFormInitialValue(name: string, value: FormValue): void {
     this.store.dispatch({
-      type: SET_FORM_INITIAL_VALUES,
+      type: SET_FORM_INITIAL_VALUE,
       payload: {
         formName: name,
-        values: value,
+        value: value,
       }
     })
   }
 
-  setFormValues(name: string, value: FormValue): void {
+  setFormValue(name: string, value: FormValue): void {
     this.store.dispatch({
-      type: SET_FORM_VALUES,
+      type: SET_FORM_VALUE,
       payload: {
         formName: name,
-        values: value,
+        value: value,
       }
     })
   }
 
-  setFormFlatValues(name: string, flatValues: FormValue): void {
-    const payload: SetFormValuesPayload = {
+  setFormFlatValue(name: string, flatValues: FormValue): void {
+    const payload: SetFormValuePayload = {
       formName: name,
-      values: flatValues
+      value: flatValues
     }
     this.dispatch(
       {
-        type: SET_FORM_FLAT_VALUES,
+        type: SET_FORM_FLAT_VALUE,
         payload: payload,
       }
     )
@@ -124,7 +124,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
     return this.store.subscribe(handleChange)
   }
 
-  subscribeToFormValuesChange(name: string, listener: FormValuesChangeListener): Unsubscribe {
+  subscribeToFormValuesChange(name: string, listener: FormValueChangeListener): Unsubscribe {
     invariant(typeof listener === 'function', 'listener must be a function.')
 
     let previousState = this.store.getState().forms[name]
@@ -167,11 +167,11 @@ export class FieldyEngineImpl implements IFieldyEngine {
 
   setFieldValue(formName: string, fieldPath: string, value: any): void {
     if (this.getFieldState(formName, fieldPath)?.meta.type === "object") {
-      const values: any = {}
-      this.getValue(formName, fieldPath, value, values)
-      const payload: SetFormValuesPayload = {
+      const value: any = {}
+      this.getValue(formName, fieldPath, value, value)
+      const payload: SetFormValuePayload = {
         formName,
-        values
+        value: value
       }
 
       this.dispatch(

@@ -16,8 +16,8 @@ export interface RemoveFormFieldsPayload extends FormActionPlayload {
   paths: string[]
 }
 
-export interface SetFormValuesPayload extends FormActionPlayload {
-  values: FormValue
+export interface SetFormValuePayload extends FormActionPlayload {
+  value: FormValue
 }
 
 export interface SetFormInitializedFlagPayload extends FormActionPlayload {

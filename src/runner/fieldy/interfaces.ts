@@ -11,8 +11,8 @@ export type ErrorListener = (errors: Errors) => void
 export type Unsubscribe = () => void
 
 export interface IFormProps {
-  values?: Object,	//表单值	Object	{}
-  initialValues?: Object, 	//表单默认值	Object	{}
+  value?: Object,	//表单值	Object	{}
+  initialValue?: Object, 	//表单默认值	Object	{}
   pattern?: "editable" | "disabled" | "readOnly" | "readPretty", //	表单交互模式	
   display?: "visible" | "hidden" | "none", //表单显隐	
   hidden?: boolean, //	UI 隐藏	Boolean	true
@@ -68,7 +68,7 @@ export type FieldChangeListener = (field: FieldState | undefined) => void
 export type FieldValueChangeListener = (value: any, previousValue: any) => void
 export type FieldValuesChangeListener = (values: any[], previousValues: any[]) => void
 export type FormChangeListener = (form: FormState) => void
-export type FormValuesChangeListener = (values: FormValue, flatValues: FormValue) => void
+export type FormValueChangeListener = (value: FormValue, flatValue: FormValue) => void
 
 export type FieldState = {
   //自动生成id，用于组件key值
@@ -163,8 +163,8 @@ export interface IFieldyEngine {
   //setFormFieldMetas(name: string, fieldMetas: IFieldSchema[]): void
   //不触发change事件
   setFormInitialValue(name: string, value: FormValue): void
-  setFormValues(name: string, value: FormValue): void
-  setFormFlatValues(name: string, flatValues: FormValue): void
+  setFormValue(name: string, value: FormValue): void
+  setFormFlatValue(name: string, flatValues: FormValue): void
   addFields(name: string, ...fieldSchemas: IFieldSchema[]): void
   removeFields(formName: string, ...fieldPaths: string[]): void
 
@@ -182,7 +182,7 @@ export interface IFieldyEngine {
   getFormValue(formName: string): FormValue
   getFormFlatValues(formName: string): FormValue
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe
-  subscribeToFormValuesChange(name: string, listener: FormValuesChangeListener): Unsubscribe
+  subscribeToFormValuesChange(name: string, listener: FormValueChangeListener): Unsubscribe
   subscribeToFieldChange(formName: string, path: string, listener: FieldChangeListener): Unsubscribe
   subscribeToFieldValueChange(formName: string, fieldPath: string, listener: FieldValueChangeListener): Unsubscribe
   subscribeToMultiFieldValueChange(formName: string, fieldPaths: string[], listener: FieldValuesChangeListener): Unsubscribe
