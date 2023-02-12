@@ -417,7 +417,6 @@ export class FieldyEngineImpl implements IFieldyEngine {
       }
 
       const fieldPath = prefix + field.name
-      console.log("合成field path", fieldPath, prefix, field.name, field)
       if (field.meta.type === "object") {
         value[field.name] = this.trasformFlatValuesToNormal(value[field.name], flatValues, allFields, fieldPath)
       } else if (field.meta.type === "array") {

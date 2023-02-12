@@ -72,7 +72,6 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
   }, [currentNode, engine, lang])
 
   const handleMetaChange = useCallback((meta: INodeMeta) => {
-    console.log("哈哈 meta变化", meta)
     if (currentNode) {
       changeMeta(currentNode.id, meta)
     }
@@ -135,6 +134,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
             <VirtualForm
               initialValue={currentNode?.meta}
               onValueChange={handleMetaChange}
+              key = {currentNode.id}
             >
               <Form
                 labelAlign="left"
