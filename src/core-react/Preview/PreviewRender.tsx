@@ -5,6 +5,7 @@ import { PreviewRoot } from "core-react/PreviewRoot"
 import { IDocument, INodeSchema } from "core/interfaces"
 import { memo, useEffect, useMemo, useState } from "react"
 import { ComponentRender } from "runner/ComponentRender"
+import { Fieldy, VirtualForm } from "runner/fieldy"
 import { IReactionMaterial } from "runner/reaction"
 import { ThemeProvider } from "styled-components"
 
@@ -33,17 +34,21 @@ export const PreviewRender = memo((
 
   return (
     <ThemeProvider theme={theme}>
-      <PreviewRoot
-        components={components}
-        reactionMaterials = {reactionMaterials}
-      >
-        {
-          tree &&
-          <ComponentRender
-            root={tree}
-          />
-        }
-      </PreviewRoot>
+      {
+        tree &&
+        <PreviewRoot
+          components={components}
+          reactionMaterials={reactionMaterials}
+        >
+          <Fieldy>
+            <VirtualForm>
+              <ComponentRender
+                root={tree}
+              />
+            </VirtualForm>
+          </Fieldy>
+        </PreviewRoot>
+      }
     </ThemeProvider>
   )
 })

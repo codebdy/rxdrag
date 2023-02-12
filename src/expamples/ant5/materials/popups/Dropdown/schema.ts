@@ -13,8 +13,9 @@ const options: SchemaOptions = {
           componentName: "Switch",
           "x-field": {
             name: "arrow",
-            params:{
+            params: {
               valuePropName: "checked",
+              withBind: true,
             }
           },
         }
@@ -30,6 +31,9 @@ const options: SchemaOptions = {
           componentName: "Radio.Group",
           "x-field": {
             name: "trigger",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             optionType: "button",

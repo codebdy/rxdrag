@@ -30,6 +30,9 @@ export const logoSchema: INodeSchema = {
               componentName: "Input",
               "x-field": {
                 name: "title",
+                params: {
+                  withBind: true,
+                }
               },
             }
           ]
@@ -45,6 +48,9 @@ export const logoSchema: INodeSchema = {
               componentName: "Select",
               "x-field": {
                 name: "type",
+                params: {
+                  withBind: true,
+                }
               },
               props: {
                 options: [
@@ -87,8 +93,9 @@ export const logoSchema: INodeSchema = {
               componentName: "Switch",
               "x-field": {
                 name: "disabled",
-                params:{
+                params: {
                   valuePropName: "checked",
+                  withBind: true,
                 }
               },
             }
@@ -116,6 +123,9 @@ export const logoSchema: INodeSchema = {
               componentName: "SizeInput",
               "x-field": {
                 name: "width",
+                params: {
+                  withBind: true,
+                }
               },
             }
           ]
@@ -130,6 +140,9 @@ export const logoSchema: INodeSchema = {
               componentName: "SizeInput",
               "x-field": {
                 name: "height",
+                params: {
+                  withBind: true,
+                }
               },
             }
           ]
@@ -145,6 +158,9 @@ export const logoSchema: INodeSchema = {
               componentName: "ColorInput",
               "x-field": {
                 name: "backgroundColor",
+                params: {
+                  withBind: true,
+                }
               },
             }
           ]
@@ -164,6 +180,9 @@ export const logoSchema: INodeSchema = {
               componentName: "Slider",
               "x-field": {
                 name: "opacity",
+                params: {
+                  withBind: true,
+                }
               },
               props: {
                 max: 1,

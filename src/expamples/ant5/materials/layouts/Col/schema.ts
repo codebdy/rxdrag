@@ -13,6 +13,9 @@ const options: SchemaOptions = {
           componentName: "InputNumber",
           "x-field": {
             name: "span",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]

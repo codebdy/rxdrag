@@ -1,17 +1,18 @@
 import { FieldContext } from "runner/fieldy/contexts"
 import { IFieldMeta } from "runner/fieldy/interfaces"
 import React, { memo } from "react"
-import { useCreateFieldParams } from "./hooks/useCreateFieldParams"
+import { useRegisterField } from "./hooks/useRegisterField"
 
 export const XField = memo((props: {
   fieldMeta: IFieldMeta,
-  children?: React.ReactNode
+  children?: React.ReactNode,
+  initialValue?: any,
 }) => {
-  const { fieldMeta, children } = props
-  const params = useCreateFieldParams(fieldMeta)
+  const { fieldMeta, initialValue, children } = props
+  const field = useRegisterField(fieldMeta, initialValue)
 
   return (
-    <FieldContext.Provider value={params}>
+    <FieldContext.Provider value={field}>
       {
         children
       }

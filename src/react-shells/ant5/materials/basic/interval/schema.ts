@@ -15,6 +15,9 @@ export const intervalSchema: INodeSchema = {
           componentName: "InputNumber",
           "x-field": {
             name: `config.interval`,
+            params: {
+              withBind: true,
+            }
           },
         }
       ]

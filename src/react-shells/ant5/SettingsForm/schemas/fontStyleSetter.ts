@@ -13,7 +13,10 @@ export const fontStyleSetter: INodeSchema<IFieldMeta> = {
         {
           componentName: "FontSelect",
           "x-field": {
-            name: "fontFamily"
+            name: "fontFamily",
+            params: {
+              withBind: true,
+            }
           }
         }
       ]
@@ -27,7 +30,10 @@ export const fontStyleSetter: INodeSchema<IFieldMeta> = {
             title: "$fontWeight",
           },
           "x-field": {
-            name: "fontWeight"
+            name: "fontWeight",
+            params: {
+              withBind: true,
+            }
           }
         },
         {
@@ -36,7 +42,10 @@ export const fontStyleSetter: INodeSchema<IFieldMeta> = {
             title: "$fontStyle",
           },
           "x-field": {
-            name: "fontStyle"
+            name: "fontStyle",
+            params: {
+              withBind: true,
+            }
           }
         },
         {
@@ -46,7 +55,10 @@ export const fontStyleSetter: INodeSchema<IFieldMeta> = {
             span: 24
           },
           "x-field": {
-            name: "color"
+            name: "color",
+            params: {
+              withBind: true,
+            }
           }
         },
         {
@@ -56,7 +68,10 @@ export const fontStyleSetter: INodeSchema<IFieldMeta> = {
             span: 12
           },
           "x-field": {
-            name: "fontSize"
+            name: "fontSize",
+            params: {
+              withBind: true,
+            }
           }
         },
         {
@@ -66,7 +81,10 @@ export const fontStyleSetter: INodeSchema<IFieldMeta> = {
             span: 12
           },
           "x-field": {
-            name: "lineHeight"
+            name: "lineHeight",
+            params: {
+              withBind: true,
+            }
           }
         },
         {
@@ -75,7 +93,10 @@ export const fontStyleSetter: INodeSchema<IFieldMeta> = {
             title: "$textAlign",
           },
           "x-field": {
-            name: "textAlign"
+            name: "textAlign",
+            params: {
+              withBind: true,
+            }
           }
         },
         {
@@ -84,7 +105,10 @@ export const fontStyleSetter: INodeSchema<IFieldMeta> = {
             title: "$fontDecoration",
           },
           "x-field": {
-            name: "textDecoration"
+            name: "textDecoration",
+            params: {
+              withBind: true,
+            }
           }
         },
       ]

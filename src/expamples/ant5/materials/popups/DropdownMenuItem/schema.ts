@@ -13,6 +13,9 @@ const options: SchemaOptions = {
           componentName: "Input",
           "x-field": {
             name: "title",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]
@@ -29,6 +32,7 @@ const options: SchemaOptions = {
             name: "disabled",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
         }
@@ -44,6 +48,9 @@ const options: SchemaOptions = {
           componentName: "IconInput",
           "x-field": {
             name: "icon",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]

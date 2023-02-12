@@ -1,55 +1,51 @@
 
 import React, { useEffect, useState } from "react"
-import { FieldContext, FormNameContext } from "../contexts"
+import { FieldContext, FormContext } from "../contexts"
 import { useFieldy } from "../hooks"
-import { IFieldSchema, FormState, FormValue } from "../interfaces"
+import { FormValue, IForm } from "../interfaces"
 
 export const VirtualForm = (props: {
-  fieldSchemas: IFieldSchema[]
   initialValue?: any,
   defaultValue?: any,
   onValueChange?: (value?: any) => void,
   children?: React.ReactNode
 }) => {
-  const { fieldSchemas, initialValue, children, onValueChange } = props
-  const [name, setName] = useState<string>()
-  const [formState, setFormState] = useState<FormState>()
+  const { initialValue, defaultValue, children, onValueChange } = props
+  const [form, setForm] = useState<IForm>()
   const fieldy = useFieldy()
 
   useEffect(() => {
-    if (fieldy && fieldSchemas) {
-      const name = fieldy.createForm()
-      fieldy.setFormFieldMetas(name, fieldSchemas)
-      setFormState(fieldy.getForm(name))
-      setName(name)
+    if (fieldy) {
+      const form = fieldy.createForm()
+      setForm(form)
       return () => {
-        fieldy.removeForm(name)
+        fieldy.removeForm(form.name)
       }
     }
-  }, [fieldSchemas, fieldy])
+  }, [fieldy])
 
   useEffect(() => {
-    if (fieldy && formState?.mounted && name) {
-      fieldy?.setFormInitialValue(name, initialValue)
+    if (fieldy && form) {
+      form.setInitialValue(initialValue || defaultValue)
     }
-  }, [fieldy, formState?.mounted, initialValue, name])
+  }, [defaultValue, fieldy, form, initialValue])
 
   useEffect(() => {
-    if (fieldy && name) {
-      const unsub = fieldy?.subscribeToFormValuesChange(name, (values: FormValue) => {
-        onValueChange?.(values)
+    if (fieldy) {
+      const unsub = form?.onValueChange((value: FormValue) => {
+        onValueChange?.(value)
       })
       return unsub;
     }
 
-  }, [fieldy, name, onValueChange])
+  }, [fieldy, form, onValueChange])
 
   //form嵌套时要清空field树，添加一个FieldContext.Provider来完成
   return (
-    <FieldContext.Provider value={{}}>
-      <FormNameContext.Provider value={name}>
-        {children}
-      </FormNameContext.Provider>
+    <FieldContext.Provider value={undefined}>
+      <FormContext.Provider value={form}>
+        {form && children}
+      </FormContext.Provider>
     </FieldContext.Provider>
   )
 }

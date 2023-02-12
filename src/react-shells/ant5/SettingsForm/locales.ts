@@ -58,7 +58,7 @@ export const settingLocales = {
       validateRules: "校验规则",
       defaultValue: "默认值",
       value: "值",
-      fragmentFields: "字段",
+      fragmentFields: "字段组合",
       fieldDefine: "字段定义",
       fieldBind: "字段绑定",
       valuePropName: "值属性",
@@ -76,6 +76,8 @@ export const settingLocales = {
       boolean: "布尔",
       number: "数字",
       string: "字符串",
+      editJson: "编辑 JSON",
+      formatError: "格式错误",
 
       IconInput: {
         DialogTitle: "选择图标",
@@ -147,6 +149,8 @@ export const settingLocales = {
         label: "标签",
         operation: "操作",
         defaultValue: "默认值",
+        loading: "等待",
+        error: "错误",
       }
     }
   },
@@ -225,6 +229,8 @@ export const settingLocales = {
       boolean: "Boolean",
       number: "Number",
       string: "String",
+      editJson: "Edit JSON",
+      formatError: "Format Error",
 
       IconInput: {
         DialogTitle: "Select Icon",
@@ -273,7 +279,7 @@ export const settingLocales = {
         debug: "Debug",
         setVariable: "Set Variable",
         listenVariable: "Listen Variable",
-        readVariable :"Read Variable",
+        readVariable: "Read Variable",
         pleaseInputName: "Please input name!",
         setProp: "Set prop",
         routeTo: "Route To",
@@ -295,6 +301,8 @@ export const settingLocales = {
         label: "Label",
         operation: "Operation",
         defaultValue: "Default Value",
+        loading: "Loading",
+        error: "Error",
       }
     }
   }

@@ -13,6 +13,9 @@ const options: SchemaOptions = {
           componentName: "Radio.Group",
           "x-field": {
             name: "themeMode",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             optionType: "button",

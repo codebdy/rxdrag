@@ -10,6 +10,9 @@ export const inputBaseSchemas = [
         componentName: "Input",
         "x-field": {
           name: "placeholder",
+          params: {
+            withBind: true,
+          }
         },
       }
     ]
@@ -26,6 +29,7 @@ export const inputBaseSchemas = [
           name: "disabled",
           params:{
             valuePropName: "checked",
+            withBind: true,
           }
         },
       }
@@ -44,6 +48,7 @@ export const inputBaseSchemas = [
           name: "autoFocus",
           params:{
             valuePropName: "checked",
+            withBind: true,
           }
         },
       }
@@ -62,6 +67,7 @@ export const inputBaseSchemas = [
           name: "allowClear",
           params:{
             valuePropName: "checked",
+            withBind: true,
           }
         },
       }
@@ -79,6 +85,7 @@ export const inputBaseSchemas = [
           name: "bordered",
           params:{
             valuePropName: "checked",
+            withBind: true,
           }
         },
         props: {
@@ -97,6 +104,9 @@ export const inputBaseSchemas = [
         componentName: "Radio.Group",
         "x-field": {
           name: "size",
+          params: {
+            withBind: true,
+          }
         },
         props: {
           optionType: "button",

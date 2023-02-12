@@ -58,12 +58,13 @@ export type ComponentControllers = {
   [id: string]: IComponentController | undefined
 }
 
+export type Navigate = (url: string) => void
+
 export interface IReactionFactoryOptions {
   controllers?: ComponentControllers,
-  //属于某个控件的reaction需要传的参数
-  // variableController?: IVariableController,
-  // propsController?: IPropController,
   materials?: IReactionMaterial[],
+  //路由跳转
+  navigate: Navigate
 }
 
 export type ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options: IReactionFactoryOptions) => IReaction

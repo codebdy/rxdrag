@@ -14,10 +14,9 @@ const mentionsNumberPros = [
         componentName: "Switch",
         "x-field": {
           name: "showCount",
-          params:{
-            params:{
-              valuePropName: "checked",
-            }
+          params: {
+            valuePropName: "checked",
+            withBind: true,
           }
         },
       }
@@ -33,6 +32,9 @@ const mentionsNumberPros = [
         componentName: "InputNumber",
         "x-field": {
           name: "maxLength",
+          params: {
+            withBind: true,
+          }
         },
       }
     ]
@@ -40,7 +42,7 @@ const mentionsNumberPros = [
 ]
 
 const options: SchemaOptions = {
-  propsSchemas:mentionsNumberPros
+  propsSchemas: mentionsNumberPros
 }
 
 export const inputNumberSchema: INodeSchema = createSchema(options)

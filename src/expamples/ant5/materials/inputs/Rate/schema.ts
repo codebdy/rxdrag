@@ -16,6 +16,7 @@ const options: SchemaOptions = {
             name: "disabled",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
         }

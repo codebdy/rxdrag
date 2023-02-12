@@ -5,7 +5,6 @@ import { Tabs } from "./components/Tabs";
 import { TabPanel } from "./components/Tabs/TabPanel";
 import { INodeMeta } from "core";
 import { Fieldy, VirtualForm } from "runner/fieldy";
-import { extractFieldSchemas } from "../../../runner/ComponentRender/funcs/extractFieldSchemas";
 import { useDesignerEngine } from "core-react/hooks";
 import { Box } from "../components/Box";
 import { PreviewRoot } from "core-react/PreviewRoot";
@@ -40,6 +39,7 @@ import { EffectsInput } from "./components/EffectsInput";
 import { ReactionsInput } from "./components/ReactionsInput";
 import { EventInput } from "./components/EventInput";
 import { ValueInput } from "./components/ValueInput";
+import { JSONInput } from "./components/JSONInput";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -70,13 +70,6 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentNode, engine, lang])
-
-  const fieldSchemas = useMemo(() => {
-    if (designerSchema) {
-      return designerSchema ? extractFieldSchemas(designerSchema) : []
-    }
-    return undefined
-  }, [designerSchema])
 
   const handleMetaChange = useCallback((meta: INodeMeta) => {
     if (currentNode) {
@@ -131,16 +124,17 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         ReactionsInput,
         EventInput,
         ValueInput,
+        JSONInput,
       }}
     >
       <Fieldy>
         <Box style={propertiesStyle} {...props}>
           {
-            fieldSchemas && currentNode &&
+            currentNode &&
             <VirtualForm
-              fieldSchemas={fieldSchemas}
               initialValue={currentNode?.meta}
               onValueChange={handleMetaChange}
+              key = {currentNode.id}
             >
               <Form
                 labelAlign="left"

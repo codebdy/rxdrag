@@ -19,6 +19,14 @@ export const reactionMaterialLocales = {
     fromInput: "来自输入",
     times: "次数",
     close: "关闭",
+    type: "类型",
+    duration: "持续时间",
+    message: "消息",
+    success: "成功",
+    error: "错误",
+    info: "通知",
+    warning: "警告",
+    loading: "等待",
   },
   'en-US': {
     name: "Name",
@@ -40,5 +48,13 @@ export const reactionMaterialLocales = {
     fromInput: "From Input",
     times: "Times",
     close: "Close",
+    type: "Type",
+    duration: "Duration",
+    message: "Message",
+    success: "Success",
+    error: "Error",
+    info: "Info",
+    warning: "Warning",
+    loading: "Loading",
   }
 }

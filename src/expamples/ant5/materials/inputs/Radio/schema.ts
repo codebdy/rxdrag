@@ -13,6 +13,9 @@ const options: SchemaOptions = {
           componentName: "Input",
           "x-field": {
             name: "label",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]
@@ -29,6 +32,7 @@ const options: SchemaOptions = {
             name: "disabled",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
         }

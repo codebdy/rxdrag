@@ -13,6 +13,9 @@ const options: SchemaOptions = {
           componentName: "ImageInput",
           "x-field": {
             name: "value",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]
@@ -27,6 +30,9 @@ const options: SchemaOptions = {
           componentName: "SizeInput",
           "x-field": {
             name: "height",
+            params: {
+              withBind: true,
+            }
           },
           props:{
             exclude:["inherit", "auto"]

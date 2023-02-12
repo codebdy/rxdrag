@@ -13,6 +13,9 @@ const options: SchemaOptions = {
           componentName: "Radio.Group",
           "x-field": {
             name: "shape",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             optionType: "button",
@@ -41,6 +44,9 @@ const options: SchemaOptions = {
           componentName: "InputNumber",
           "x-field": {
             name: "size",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]

@@ -10,7 +10,11 @@ export function createReactionSchema(logicOptions?: LogicOptions) {
     ? [{
       componentName: "CollapsePanel",
       "x-field": {
+        type: "object",
         name: "x-field.params",
+        params: {
+          withBind: true,
+        }
       },
       props: {
         title: "$fieldBind"
@@ -28,6 +32,7 @@ export function createReactionSchema(logicOptions?: LogicOptions) {
                 name: "withBind",
                 params: {
                   valuePropName: "checked",
+                  withBind: true,
                 }
               },
             }
@@ -43,6 +48,9 @@ export function createReactionSchema(logicOptions?: LogicOptions) {
               componentName: "Input",
               "x-field": {
                 name: "valuePropName",
+                params: {
+                  withBind: true,
+                }
               },
             }]
         },
@@ -56,6 +64,9 @@ export function createReactionSchema(logicOptions?: LogicOptions) {
               componentName: "Input",
               "x-field": {
                 name: "trigger",
+                params: {
+                  withBind: true,
+                }
               },
             }]
         },
@@ -79,6 +90,9 @@ export function createReactionSchema(logicOptions?: LogicOptions) {
               componentName: "Select",
               "x-field": {
                 name: "x-field.type",
+                params: {
+                  withBind: true,
+                }
               },
               props: {
                 options: [
@@ -116,6 +130,9 @@ export function createReactionSchema(logicOptions?: LogicOptions) {
               componentName: "Input",
               "x-field": {
                 name: "x-field.name",
+                params: {
+                  withBind: true,
+                }
               },
             }]
         },
@@ -129,6 +146,9 @@ export function createReactionSchema(logicOptions?: LogicOptions) {
               componentName: "Input",
               "x-field": {
                 name: "x-field.defaultValue",
+                params: {
+                  withBind: true,
+                }
               },
             }]
         },
@@ -142,6 +162,9 @@ export function createReactionSchema(logicOptions?: LogicOptions) {
               componentName: "Input",
               "x-field": {
                 name: "x-field.fragmentFields",
+                params: {
+                  withBind: true,
+                }
               },
             }]
         },
@@ -155,6 +178,9 @@ export function createReactionSchema(logicOptions?: LogicOptions) {
               componentName: "Input",
               "x-field": {
                 name: "x-field.validateRules",
+                params: {
+                  withBind: true,
+                }
               },
             }]
         },
@@ -171,6 +197,9 @@ export function createReactionSchema(logicOptions?: LogicOptions) {
           componentName: "ReactionsInput",
           "x-field": {
             name: "x-reactions",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             title: "$controller",

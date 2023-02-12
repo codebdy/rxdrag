@@ -1,9 +1,10 @@
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "core/utils/util-invariant";
-import { CREATE_FORM, FormActionPlayload, REMOVE_FORM, SetFieldValuePayload, SetFormFieldsPayload, SetFormValuesPayload, SET_FIELD_VALUE, SET_FORM_FIELDS, SET_FORM_FLAT_VALUES, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES } from "runner/fieldy/actions";
-import { FieldChangeListener, FieldsState, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValuesChangeListener, IAction, IFieldSchema, IFieldyEngine, IFormProps, Listener, Unsubscribe } from "runner/fieldy/interfaces";
+import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_MODIFY, SET_FIELD_VALUE, SET_FORM_FLAT_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SET_MULTI_FIELD_VALUES } from "runner/fieldy/actions";
+import { FieldChangeListener, FieldsState, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValueChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Listener, Unsubscribe } from "runner/fieldy/interfaces";
 import { reduce, State } from "runner/fieldy/reducers";
 import { getChildFields } from "../funcs/path";
+import { FormImpl } from "./FormImpl";
 
 var idSeed = 0
 
@@ -16,13 +17,18 @@ function makeId() {
 /**
  * 建议一个应用只创建一个Fieldy实例
  */
-export class FieldyEngine implements IFieldyEngine {
+export class FieldyEngineImpl implements IFieldyEngine {
   store: Store<State>
+
+  forms: {
+    [name: string]: IForm | undefined
+  } = {}
+
   constructor(debugMode?: boolean,) {
     this.store = makeStoreInstance(debugMode || false)
   }
 
-  createForm(options?: IFormProps): string {
+  createForm(options?: IFormProps): IForm {
     const name = makeId()
     this.dispatch({
       type: CREATE_FORM,
@@ -31,7 +37,7 @@ export class FieldyEngine implements IFieldyEngine {
       }
     })
 
-    return name
+    return new FormImpl(this, name)
   }
 
   removeForm(name: string): void {
@@ -43,60 +49,63 @@ export class FieldyEngine implements IFieldyEngine {
     })
   }
 
-  setFormFieldMetas(name: string, fieldSchemas: IFieldSchema[]): void {
-    const payload: SetFormFieldsPayload = {
-      formName: name,
-      fieldSchemas
-    }
-    this.dispatch(
-      {
-        type: SET_FORM_FIELDS,
-        payload: payload,
+  addFields(formName: string, ...fieldSchemas: IFieldSchema[]): void {
+    this.dispatch({
+      type: ADD_FORM_FIELDS,
+      payload: {
+        formName: formName,
+        fieldSchemas: fieldSchemas,
       }
-    )
+    })
   }
-
-  addFieldMetas(name: string, fieldMetas: IFieldSchema[]): void {
-    throw new Error("Method not implemented.");
-  }
-  removeFieldMetas(formName: string, ...fieldPaths: string[]): void {
-    throw new Error("Method not implemented.");
+  removeFields(formName: string, ...fieldPaths: string[]): void {
+    this.dispatch({
+      type: REMOVE_FORM_FIELDS,
+      payload: {
+        formName: formName,
+        paths: fieldPaths,
+      }
+    })
   }
 
   setFormInitialValue(name: string, value: FormValue): void {
     this.store.dispatch({
-      type: SET_FORM_INITIAL_VALUES,
+      type: SET_FORM_INITIAL_VALUE,
       payload: {
         formName: name,
-        values: value,
+        value: value,
       }
     })
   }
 
-  setFormValues(name: string, value: FormValue): void {
+  setFormValue(name: string, value: FormValue): void {
     this.store.dispatch({
-      type: SET_FORM_VALUES,
+      type: SET_FORM_VALUE,
       payload: {
         formName: name,
-        values: value,
+        value: value,
       }
     })
   }
 
-  setFormFlatValues(name: string, flatValues: FormValue): void {
-    const payload: SetFormValuesPayload = {
+  setFormFlatValue(name: string, flatValues: FormValue): void {
+    const payload: SetFormValuePayload = {
       formName: name,
-      values: flatValues
+      value: flatValues
     }
     this.dispatch(
       {
-        type: SET_FORM_FLAT_VALUES,
+        type: SET_FORM_FLAT_VALUE,
         payload: payload,
       }
     )
   }
 
-  getForm(name: string): FormState | undefined {
+  getForm(name: string): IForm | undefined {
+    return this.forms[name]
+  }
+
+  getFormState(name: string): FormState | undefined {
     return this.store.getState().forms[name]
   }
   subscribeToFormInitialized(name: string, listener: Listener): Unsubscribe {
@@ -115,7 +124,7 @@ export class FieldyEngine implements IFieldyEngine {
     return this.store.subscribe(handleChange)
   }
 
-  subscribeToFormValuesChange(name: string, listener: FormValuesChangeListener): Unsubscribe {
+  subscribeToFormValuesChange(name: string, listener: FormValueChangeListener): Unsubscribe {
     invariant(typeof listener === 'function', 'listener must be a function.')
 
     let previousState = this.store.getState().forms[name]
@@ -131,23 +140,37 @@ export class FieldyEngine implements IFieldyEngine {
         }
       }
       const normalValues = this.getFormNormalValues(name)
-      const flatValues = this.getFormFlatValues(name)
+
       previousState = nextState
       if (changed) {
-        listener(normalValues, flatValues)
+        listener(normalValues)
       }
     }
 
     return this.store.subscribe(handleChange)
   }
 
+  setFieldIntialValue(formName: string, fieldPath: string, value: any): void {
+    const payload: SetFieldValuePayload = {
+      formName,
+      path: fieldPath,
+      value
+    }
+    this.dispatch(
+      {
+        type: SET_FIELD_INITAL_VALUE,
+        payload: payload,
+      }
+    )
+  }
+
   setFieldValue(formName: string, fieldPath: string, value: any): void {
-    if (this.getField(formName, fieldPath)?.meta.type === "object") {
-      const values: any = {}
-      this.getValue(formName, fieldPath, value, values)
-      const payload: SetFormValuesPayload = {
+    if (this.getFieldState(formName, fieldPath)?.meta.type === "object") {
+      const value: any = {}
+      this.getValue(formName, fieldPath, value, value)
+      const payload: SetFormValuePayload = {
         formName,
-        values
+        value: value
       }
 
       this.dispatch(
@@ -162,6 +185,7 @@ export class FieldyEngine implements IFieldyEngine {
         path: fieldPath,
         value
       }
+      
       this.dispatch(
         {
           type: SET_FIELD_VALUE,
@@ -169,6 +193,19 @@ export class FieldyEngine implements IFieldyEngine {
         }
       )
     }
+  }
+
+  inputFieldValue(formName: string, fieldPath: string, value: any): void {
+    this.dispatch(
+      {
+        type: SET_FIELD_MODIFY,
+        payload: {
+          formName,
+          path: fieldPath,
+        },
+      }
+    )
+    this.setFieldValue(formName, fieldPath, value)
   }
 
   //递归找出改变的字段
@@ -192,11 +229,11 @@ export class FieldyEngine implements IFieldyEngine {
   }
 
 
-  getFormValues(formName: string): FormValue {
+  getFormValue(formName: string): FormValue {
     return this.getFormNormalValues(formName)
   }
 
-  getField(formName: string, fieldPath: string): FieldState | undefined {
+  getFieldState(formName: string, fieldPath: string): FieldState | undefined {
     const state = this.store.getState()
     return state.forms[formName]?.fields?.[fieldPath]
   }
@@ -220,7 +257,18 @@ export class FieldyEngine implements IFieldyEngine {
         }
         return undefined
       } else if (fieldState.meta?.type === "array") {
-        throw new Error("Not implement arrray type")
+        const value: any[] = []
+        const fields = this.getSubFields(formName, fieldPath)
+        for (const key of fields) {
+          const subValue = this.getFieldValue(formName, key)
+          if (subValue !== undefined) {
+            value.push(subValue)
+          }
+        }
+        if (value.length) {
+          return value
+        }
+        return []
       } else {//undefined or "normal"
         return fieldState.value
       }
@@ -327,7 +375,7 @@ export class FieldyEngine implements IFieldyEngine {
       return {}
     }
     const flatValues = this.getFormFlatValues(name)
-    const normalValue = this.trasformFlatValuesToNormal(JSON.parse(JSON.stringify(formState.originalValue || {})), flatValues, formState.fields)
+    const normalValue = this.trasformFlatValuesToNormal(JSON.parse(JSON.stringify(formState.initialValue || {})), flatValues, formState.fields)
     return normalValue
   }
 
@@ -364,7 +412,7 @@ export class FieldyEngine implements IFieldyEngine {
       //   continue
       // }
 
-      if (!field.name || field.meta.virtual) {
+      if (!field.name) {
         continue
       }
 

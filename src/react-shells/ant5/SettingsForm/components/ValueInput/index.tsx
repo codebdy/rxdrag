@@ -3,6 +3,7 @@ import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { isBool, isNum, isStr } from "core/utils/types";
 import { memo, useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
+import { JSONInput } from "../JSONInput";
 
 const Container = styled.div`
   display: flex;
@@ -15,7 +16,7 @@ const Container = styled.div`
   }
 
   .input-button {
-    min-width: 96px;
+    min-width: 80px;
     margin-left: 2px;
   }
 `
@@ -27,13 +28,15 @@ const InputCol = styled.div`
 export enum ValueType {
   Boolean = "boolean",
   Number = "number",
-  String = "string"
+  String = "string",
+  JSON = "JSON",
 }
 
 const types = [
   ValueType.String,
   ValueType.Number,
   ValueType.Boolean,
+  ValueType.JSON,
 ]
 
 function getValueType(value?: any) {
@@ -46,21 +49,27 @@ function getValueType(value?: any) {
   if (isNum(value)) {
     return ValueType.Number
   }
-  return ValueType.String
+  return ValueType.JSON
 }
 
 export const ValueInput = memo((
   props: {
     value?: any,
-    onChange?: (value?: any) => void
+    onChange?: (value?: any) => void,
   }
 ) => {
   const { value, onChange } = props
-  const [typeIndex, setTypeIndex] = useState(types.indexOf(getValueType(value)))
+  const [typeIndex, setTypeIndex] = useState(0)
   const t = useToolsTranslate()
 
   useEffect(() => {
-    setTypeIndex(types.indexOf(getValueType(value)))
+    if (value === undefined) {
+      setTypeIndex(0)
+    } else {
+      const newIndex = types.indexOf(getValueType(value))
+      setTypeIndex(newIndex)
+    }
+
   }, [value])
 
   const handleClick = useCallback(() => {
@@ -76,10 +85,12 @@ export const ValueInput = memo((
       onChange?.(!!value)
     } else if (types[newIndex] === ValueType.Number) {
       onChange?.(0)
+    } else if (types[newIndex] === ValueType.JSON) {
+      onChange?.(null)
     }
   }, [onChange, typeIndex, value])
 
-  const handleStringChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleStringChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     onChange?.(event.target?.value)
   }, [onChange])
 
@@ -90,6 +101,11 @@ export const ValueInput = memo((
   const handleBooleanChange = useCallback((checked: boolean) => {
     onChange?.(checked)
   }, [onChange])
+
+  const handleJSONChange = useCallback((json: any) => {
+    onChange?.(json)
+  }, [onChange])
+
 
   return (<Container>
     <InputCol>
@@ -104,6 +120,10 @@ export const ValueInput = memo((
       {
         types[typeIndex] === ValueType.Boolean &&
         <Switch checked={value} onChange={handleBooleanChange} />
+      }
+      {
+        types[typeIndex] === ValueType.JSON &&
+        <JSONInput title={t("editJson")} value = {value} onChange = {handleJSONChange} />
       }
     </InputCol>
     <Button

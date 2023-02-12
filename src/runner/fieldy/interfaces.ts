@@ -1,12 +1,18 @@
 import { Action } from "redux"
 import { FormActionPlayload } from "./actions"
 
+export type Errors = {
+
+}
+
 export type Listener = () => void
+export type ValueChangeListener = (value: any) => void
+export type ErrorListener = (errors: Errors) => void
 export type Unsubscribe = () => void
 
 export interface IFormProps {
-  values?: Object,	//表单值	Object	{}
-  initialValues?: Object, 	//表单默认值	Object	{}
+  value?: Object,	//表单值	Object	{}
+  initialValue?: Object, 	//表单默认值	Object	{}
   pattern?: "editable" | "disabled" | "readOnly" | "readPretty", //	表单交互模式	
   display?: "visible" | "hidden" | "none", //表单显隐	
   hidden?: boolean, //	UI 隐藏	Boolean	true
@@ -19,14 +25,14 @@ export interface IFormProps {
   validateFirst?: boolean, //	是否只校验第一个非法规则	Boolean
 }
 
+export type FieldType = "object" | "array" | "normal" | "fragment"
+
 export interface IFieldMeta<Params = any> {
   //类型：对象、数组、常规、片段（name 为空）
-  type?: "object" | "array" | "normal" | "fragment"
+  type?: FieldType
   name?: string
   //validateRule?: any
   defaultValue?: any
-  //是否虚拟字段，如果是，不输出最终值，不触发change， 该字段要废除
-  virtual?: boolean
   fragmentFields?: IFieldMeta[]
   //校验规则
   validateRules?: any
@@ -62,7 +68,7 @@ export type FieldChangeListener = (field: FieldState | undefined) => void
 export type FieldValueChangeListener = (value: any, previousValue: any) => void
 export type FieldValuesChangeListener = (values: any[], previousValues: any[]) => void
 export type FormChangeListener = (form: FormState) => void
-export type FormValuesChangeListener = (values: FormValue, flatValues: FormValue) => void
+export type FormValueChangeListener = (value: FormValue) => void
 
 export type FieldState = {
   //自动生成id，用于组件key值
@@ -97,68 +103,86 @@ export type FormState = {
   mounted?: boolean; //字段是否已挂载
   unmounted?: boolean; //字段是否已卸载
   initialized?: boolean;
-  display?: FieldDisplayTypes;
+  //display?: FieldDisplayTypes;
   pattern?: FieldPatternTypes;
   loading?: boolean;
   validating?: boolean;
   modified?: boolean;
   fields: FieldsState;
   fieldSchemas: IFieldSchema[];
-  originalValue?: any;
+  initialValue?: any;
+  value?: any;
 }
 
 export interface FormValue {
   [key: string]: any
 }
 
-//这段代码备用
-export interface IForm {
-  onFormInit(): void
-  onFormMount(): void
-  onFormUnmount(): void
-  onFormReact(): void
-  onFormValuesChange(): void
-  onFormInitialValuesChange(): void
-  onFormInputChange(): void
-  onFormSubmit(): void
-  onFormSubmitStart(): void
-  onFormSubmitEnd(): void
-  onFormSubmitFailed(): void
-  onFormSubmitSuccess(): void
-  onFormSubmitValidateStart(): void
-  onFormSubmitValidateEnd(): void
-  onFormSubmitValidateFailed(): void
-  onFormSubmitValidateSuccess(): void
-  onFormValidateStart(): void
-  onFormValidateEnd(): void
-  onFormValidateFailed(): void
-  onFormValidateSuccess(): void
+export interface IFormNode {
+  initialValue?: any
+  value?: any
+  setValue(value: any): void
+  setInitialValue(value: any): void
+  inpuValue(value: any): void
+  validate(): void
+
+  onInit(listener: Listener): Unsubscribe
+  onMount(listener: Listener): Unsubscribe
+  onUnmount(listener: Listener): Unsubscribe
+  onValueChange(listener: ValueChangeListener): Unsubscribe
+  onInitialValueChange(): Unsubscribe
+  onValidateStart(listener: Listener): Unsubscribe
+  onValidateEnd(listener: Listener): Unsubscribe
+  onValidateFailed(listener: ErrorListener): Unsubscribe
+  onValidateSuccess(listener: Listener): Unsubscribe
+}
+
+export interface IForm extends IFormNode {
+  name: string
+  getField(path: string): IField | undefined
+  registerField(fieldSchema: IFieldSchema): IField
+  unregisterField(path: string): void
+
+  getFieldState(fieldPath: string): FieldState | undefined
+}
+
+export interface IField extends IFormNode {
+  //引用数量
+  refCount: number;
+  meta?: IFieldMeta
+  basePath?: string
+  path: string
+  destory(): void
 }
 
 export interface IFieldyEngine {
+  //getField(formName: string, path: string): IField | undefined
   //动作
-  createForm(options?: IFormProps): string
+  createForm(options?: IFormProps): IForm
   removeForm(name: string): void
-  setFormFieldMetas(name: string, fieldMetas: IFieldSchema[]): void
+  //setFormFieldMetas(name: string, fieldMetas: IFieldSchema[]): void
   //不触发change事件
   setFormInitialValue(name: string, value: FormValue): void
-  setFormValues(name: string, value: FormValue): void
-  setFormFlatValues(name: string, flatValues: FormValue): void
-  addFieldMetas(name: string, fieldMetas: IFieldSchema[]): void
-  removeFieldMetas(formName: string, ...fieldPaths: string[]): void
+  setFormValue(name: string, value: FormValue): void
+  setFormFlatValue(name: string, flatValues: FormValue): void
+  addFields(name: string, ...fieldSchemas: IFieldSchema[]): void
+  removeFields(formName: string, ...fieldPaths: string[]): void
 
   //field动作
+  setFieldIntialValue(formName: string, fieldPath: string, value: any): void
   setFieldValue(formName: string, fieldPath: string, value: any): void
   setFieldFragmentValue(formName: string, fieldPath: string, value: any): void
+  inputFieldValue(formName: string, fieldPath: string, value: any): void
 
   //监测
-  getForm(name: string): FormState | undefined
-  getField(formName: string, fieldPath: string): FieldState | undefined
+  getForm(name: string): IForm | undefined
+  getFormState(name: string): FormState | undefined
+  getFieldState(formName: string, fieldPath: string): FieldState | undefined
   getFieldValue(formName: string, fieldPath: string): any
-  getFormValues(formName: string): FormValue
+  getFormValue(formName: string): FormValue
   getFormFlatValues(formName: string): FormValue
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe
-  subscribeToFormValuesChange(name: string, listener: FormValuesChangeListener): Unsubscribe
+  subscribeToFormValuesChange(name: string, listener: FormValueChangeListener): Unsubscribe
   subscribeToFieldChange(formName: string, path: string, listener: FieldChangeListener): Unsubscribe
   subscribeToFieldValueChange(formName: string, fieldPath: string, listener: FieldValueChangeListener): Unsubscribe
   subscribeToMultiFieldValueChange(formName: string, fieldPaths: string[], listener: FieldValuesChangeListener): Unsubscribe

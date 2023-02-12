@@ -1,76 +1,27 @@
 import { IReactionMaterial } from "runner/reaction/interfaces/material";
-import { ReactionType } from "runner/reaction/interfaces/metas";
-import { infoIcon, loadingIcon, routeIcon, simulateIcon } from "../../icons/reactions";
-import { createUuid } from "../../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
+import { infoMessageMaterial } from "./infoMessage";
 import { jsCodeMaterial } from "./jsCode";
+import { routeToMaterial } from "./routeTo";
+import { mockDataMaterial } from "./mockData";
 
 export const commonReactions: IReactionMaterial[] = [
-  {
-    name: "routeTo",
-    icon: routeIcon,
-    label: "$routeTo",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      inPorts: [
-        {
-          id: createUuid(),
-          name: "input",
-          label: "",
-        },
-      ],
-    }
-  },
-  {
-    name: "infoMessage",
-    icon: infoIcon,
-    label: "$infoMessage",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      inPorts: [
-        {
-          id: createUuid(),
-          name: "input",
-          label: "",
-        },
-      ],
-    },
-  },
-  {
-    name: "simulateData",
-    icon: simulateIcon,
-    label: "$simulateData",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      inPorts: [
-        {
-          id: createUuid(),
-          name: "input",
-          label: "",
-        },
-      ],
-      outPorts: [
-        {
-          id: createUuid(),
-          name: "output",
-          label: "",
-        },
-      ],
-    }
-  },
-  {
-    name: "globalLoading",
-    icon: loadingIcon,
-    label: "$globalLoading",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      inPorts: [
-        {
-          id: createUuid(),
-          name: "input",
-          label: "",
-        },
-      ],
-    }
-  },
+  routeToMaterial,
+  infoMessageMaterial,
+  mockDataMaterial,
+  // {
+  //   name: "globalLoading",
+  //   icon: loadingIcon,
+  //   label: "$globalLoading",
+  //   reactionType: ReactionType.SingleReaction,
+  //   meta: {
+  //     inPorts: [
+  //       {
+  //         id: createUuid(),
+  //         name: "input",
+  //         label: "",
+  //       },
+  //     ],
+  //   }
+  // },
   jsCodeMaterial,
 ]

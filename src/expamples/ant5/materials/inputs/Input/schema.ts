@@ -16,6 +16,7 @@ const inputPros = [
           name: "showCount",
           params:{
             valuePropName: "checked",
+            withBind: true,
           }
         },
       }
@@ -31,6 +32,9 @@ const inputPros = [
         componentName: "InputNumber",
         "x-field": {
           name: "maxLength",
+          params: {
+            withBind: true,
+          }
         },
       }
     ]
@@ -113,6 +117,9 @@ const textareaOptions: SchemaOptions = {
         componentName: "InputNumber",
         "x-field": {
           name: "rows",
+          params: {
+            withBind: true,
+          }
         },
       }
     ]

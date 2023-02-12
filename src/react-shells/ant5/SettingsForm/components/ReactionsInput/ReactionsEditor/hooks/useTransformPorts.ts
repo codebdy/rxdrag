@@ -13,6 +13,10 @@ export function useTransformPorts() {
       port => ({
         id: port.id,
         //name: port.name,
+        markup: [
+          { tagName: "circle", selector: "bopdy" },
+          { tagName: "rect", selector: "bg" }
+        ],
         group: group,
         attrs: {
           text: {
@@ -20,6 +24,15 @@ export function useTransformPorts() {
             fill: token.colorTextSecondary,
             fontSize: 12,
           },
+          bg: {
+            ref: "text",
+            refWidth: "100%",
+            refHeight: "100%",
+            refX: group === 'out' ? 15 : -40,
+            //refX2: group === 'out' ? 28 : -12,
+            refY: -6,
+            fill: token.colorBgContainer,
+          }
         },
         label: {
           position: {
@@ -29,12 +42,12 @@ export function useTransformPorts() {
         }
       })
     )
-  }, [t, token.colorTextSecondary])
+  }, [t, token.colorBgContainer, token.colorTextSecondary])
 
   const transform = useCallback((meta: IReactionMeta) => {
     if (meta.type === ReactionType.ControllerReaction) {
-      const ins = doTransform(getControllerPorts(meta, 'in'), 'in')||[]
-      const outs = doTransform(getControllerPorts(meta, 'out'), 'out')||[]
+      const ins = doTransform(getControllerPorts(meta, 'in'), 'in') || []
+      const outs = doTransform(getControllerPorts(meta, 'out'), 'out') || []
       return [...ins, ...outs]
     } else {
       const ins = doTransform(meta.inPorts, 'in') || []

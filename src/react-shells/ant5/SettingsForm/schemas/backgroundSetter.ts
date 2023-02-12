@@ -14,6 +14,9 @@ export const backgroundSetter: INodeSchema<IFieldMeta> = {
           componentName: "ColorInput",
           "x-field": {
             name: "backgroundColor",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]
@@ -27,7 +30,10 @@ export const backgroundSetter: INodeSchema<IFieldMeta> = {
             title: "$image",
           },
           "x-field": {
-            name: "backgroundImage"
+            name: "backgroundImage",
+            params: {
+              withBind: true,
+            }
           }
         },
         {
@@ -36,7 +42,10 @@ export const backgroundSetter: INodeSchema<IFieldMeta> = {
             title: "$imageSize",
             },
           "x-field": {
-            name: "backgroundSize"
+            name: "backgroundSize",
+            params: {
+              withBind: true,
+            }
           }
         },
         {
@@ -45,7 +54,10 @@ export const backgroundSetter: INodeSchema<IFieldMeta> = {
             title: "$repeat",
           },
           "x-field": {
-            name: "backgroundRepeat"
+            name: "backgroundRepeat",
+            params: {
+              withBind: true,
+            }
           }
         },
         {
@@ -54,7 +66,10 @@ export const backgroundSetter: INodeSchema<IFieldMeta> = {
             title: "$position",
           },
           "x-field": {
-            name: "backgroundPosition"
+            name: "backgroundPosition",
+            params: {
+              withBind: true,
+            }
           }
         },
       ]

@@ -13,6 +13,9 @@ const options: SchemaOptions = {
           componentName: "Input",
           "x-field": {
             name: "content",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]
@@ -27,6 +30,9 @@ const options: SchemaOptions = {
           componentName: "Select",
           "x-field": {
             name: "mode",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             options: [
@@ -60,7 +66,10 @@ const options: SchemaOptions = {
         }
       ]
     },
-  ]
+  ],
+  logicOptions: {
+    canBindField: true,
+  }
 }
 
 export const schema: INodeSchema = createSchema(options)

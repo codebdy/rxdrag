@@ -16,6 +16,9 @@ const options: SchemaOptions = {
           componentName: "Select",
           "x-field": {
             name: "mode",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             options: [
@@ -54,6 +57,9 @@ const options: SchemaOptions = {
           componentName: "Select",
           "x-field": {
             name: "picker",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             defaultValue: "year",
@@ -93,6 +99,9 @@ const options: SchemaOptions = {
           componentName: "Select",
           "x-field": {
             name: "placement",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             defaultValue: "bottomLeft",
@@ -129,6 +138,9 @@ const options: SchemaOptions = {
           componentName: "Input",
           "x-field": {
             name: "format",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             defaultValue: "YYYY-MM-DD"
@@ -148,6 +160,7 @@ const options: SchemaOptions = {
             name: "showNow",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
         }
@@ -165,6 +178,7 @@ const options: SchemaOptions = {
             name: "showTime",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
         }
@@ -182,6 +196,7 @@ const options: SchemaOptions = {
             name: "showToday",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
           props: {

@@ -12,8 +12,12 @@ export interface SetFormFieldsPayload extends FormActionPlayload {
   fieldSchemas: IFieldSchema[]
 }
 
-export interface SetFormValuesPayload extends FormActionPlayload {
-  values: FormValue
+export interface RemoveFormFieldsPayload extends FormActionPlayload {
+  paths: string[]
+}
+
+export interface SetFormValuePayload extends FormActionPlayload {
+  value: FormValue
 }
 
 export interface SetFormInitializedFlagPayload extends FormActionPlayload {

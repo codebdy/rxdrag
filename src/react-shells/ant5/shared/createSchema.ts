@@ -14,8 +14,8 @@ export type SchemaOptions<IField = any, IReactions = any> = {
   logicOptions?: LogicOptions,
 }
 
-export function createSchema(opetions: SchemaOptions = {}): INodeSchema {
-  const { propsSchemas, slotsSchemas, logicOptions } = opetions
+export function createSchema(options: SchemaOptions = {}): INodeSchema {
+  const { propsSchemas, slotsSchemas, logicOptions } = options
   const propsTab = propsSchemas ? [{
     componentName: "TabPanel",
     "x-field": {
@@ -82,6 +82,9 @@ const styleTab = {
           componentName: "SizeInput",
           "x-field": {
             name: "width",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]
@@ -96,6 +99,9 @@ const styleTab = {
           componentName: "SizeInput",
           "x-field": {
             name: "height",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]
@@ -117,6 +123,9 @@ const styleTab = {
           componentName: "Slider",
           "x-field": {
             name: "opacity",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             max: 1,

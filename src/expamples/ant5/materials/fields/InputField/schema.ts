@@ -13,6 +13,7 @@ const options: SchemaOptions = {
           componentName: "Input",
           "x-field": {
             name: "label",
+            withBind: true,
           },
         }
       ]
