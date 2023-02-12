@@ -15,6 +15,9 @@ export const routeToSchema: INodeSchema = {
           componentName: "Switch",
           "x-field": {
             name: "config.fromInput",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]
@@ -29,6 +32,9 @@ export const routeToSchema: INodeSchema = {
           componentName: "TextArea",
           "x-field": {
             name: `config.url`,
+            params: {
+              withBind: true,
+            }
           },
         }
       ]

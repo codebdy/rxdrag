@@ -82,6 +82,9 @@ const styleTab = {
           componentName: "SizeInput",
           "x-field": {
             name: "width",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]
@@ -96,6 +99,9 @@ const styleTab = {
           componentName: "SizeInput",
           "x-field": {
             name: "height",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]
@@ -117,6 +123,9 @@ const styleTab = {
           componentName: "Slider",
           "x-field": {
             name: "opacity",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             max: 1,

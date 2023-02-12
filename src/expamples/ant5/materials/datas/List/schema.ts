@@ -18,6 +18,7 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
             name: "bordered",
             params: {
               valuePropName: "checked",
+              withBind: true,
             }
           },
         }
@@ -35,6 +36,7 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
             name: "split",
             params: {
               valuePropName: "checked",
+              withBind: true,
             }
           },
         }
@@ -50,6 +52,9 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
           componentName: "Radio.Group",
           "x-field": {
             name: "size",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             optionType: "button",

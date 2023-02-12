@@ -15,6 +15,9 @@ export const switchSchema: INodeSchema = {
           componentName: "PortsInput",
           "x-field": {
             name: "outPorts",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             title: "$configPorts",

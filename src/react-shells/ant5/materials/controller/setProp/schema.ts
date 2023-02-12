@@ -13,6 +13,9 @@ export const setPropSchema: INodeSchema = {
           componentName: "Input",
           "x-field": {
             name: "config.prop",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]

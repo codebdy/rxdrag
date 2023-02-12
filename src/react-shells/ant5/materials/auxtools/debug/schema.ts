@@ -15,6 +15,9 @@ export const debugSchema: INodeSchema = {
           componentName: "Switch",
           "x-field": {
             name: `config.closed`,
+            params: {
+              withBind: true,
+            }
           },
         }
       ]

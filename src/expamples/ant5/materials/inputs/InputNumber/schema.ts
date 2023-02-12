@@ -16,6 +16,7 @@ const inputNumberPros = [
           name: "showCount",
           params:{
             valuePropName: "checked",
+            withBind: true,
           }
         },
       }
@@ -31,6 +32,9 @@ const inputNumberPros = [
         componentName: "InputNumber",
         "x-field": {
           name: "maxLength",
+          params: {
+            withBind: true,
+          }
         },
       }
     ]

@@ -17,6 +17,7 @@ export const loopSchema: INodeSchema = {
             name: "config.fromInput",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
         }
@@ -32,6 +33,9 @@ export const loopSchema: INodeSchema = {
           componentName: "InputNumber",
           "x-field": {
             name: "config.times",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]

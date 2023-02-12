@@ -15,6 +15,9 @@ export const fixedValueSchema: INodeSchema = {
           componentName: "ValueInput",
           "x-field": {
             name: `config.value`,
+            params: {
+              withBind: true,
+            }
           },
         }
       ]

@@ -1,7 +1,9 @@
 import { INodeSchema } from "core";
 import { createSchema, SchemaOptions } from "react-shells/ant5/shared/createSchema";
+import { IBindParams } from "runner/ComponentRender/interfaces";
+import { IFieldMeta } from "runner/fieldy/interfaces";
 
-const options: SchemaOptions = {
+const options: SchemaOptions<IFieldMeta<IBindParams>> = {
   propsSchemas: [
     {
       componentName: "FormItem",
@@ -13,6 +15,9 @@ const options: SchemaOptions = {
           componentName: "Input",
           "x-field": {
             name: "title",
+            params:{
+              withBind: true,
+            }
           },
         }
       ]
@@ -28,6 +33,9 @@ const options: SchemaOptions = {
           componentName: "Select",
           "x-field": {
             name: "type",
+            params:{
+              withBind: true,
+            }
           },
           props: {
             options: [
@@ -72,6 +80,7 @@ const options: SchemaOptions = {
             name: "disabled",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
         }
@@ -89,6 +98,7 @@ const options: SchemaOptions = {
             name: "block",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
         }
@@ -106,6 +116,7 @@ const options: SchemaOptions = {
             name: "danger",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
         }
@@ -123,6 +134,7 @@ const options: SchemaOptions = {
             name: "ghost",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
         }
@@ -138,6 +150,7 @@ const options: SchemaOptions = {
           componentName: "Radio.Group",
           "x-field": {
             name: "shape",
+            withBind: true,
           },
           props: {
             optionType: "button",
@@ -170,6 +183,7 @@ const options: SchemaOptions = {
           componentName: "Radio.Group",
           "x-field": {
             name: "size",
+            withBind: true,
           },
           props: {
             optionType: "button",

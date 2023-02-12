@@ -15,6 +15,9 @@ const options: SchemaOptions<IFieldMeta<IBindParams>> = {
           componentName: "Input",
           "x-field": {
             name: "title",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]
@@ -30,6 +33,9 @@ const options: SchemaOptions<IFieldMeta<IBindParams>> = {
           componentName: "Select",
           "x-field": {
             name: "type",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             options: [
@@ -74,6 +80,7 @@ const options: SchemaOptions<IFieldMeta<IBindParams>> = {
             name: "disabled",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
         }

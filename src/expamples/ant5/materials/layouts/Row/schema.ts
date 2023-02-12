@@ -13,6 +13,9 @@ const options: SchemaOptions = {
           componentName: "GutterInput",
           "x-field": {
             name: "gutter",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]

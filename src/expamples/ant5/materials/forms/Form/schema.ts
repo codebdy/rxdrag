@@ -14,6 +14,7 @@ const options: SchemaOptions = {
             name: "colon",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
           componentName: "Switch",
@@ -33,6 +34,9 @@ const options: SchemaOptions = {
           componentName: "Select",
           "x-field": {
             name: "layout",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             options: [
@@ -65,6 +69,7 @@ const options: SchemaOptions = {
             name: "disabled",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
           componentName: "Switch"
@@ -80,6 +85,9 @@ const options: SchemaOptions = {
         {
           "x-field": {
             name: "labelAlign",
+            params: {
+              withBind: true,
+            }
           },
           componentName: "Radio.Group",
           props: {
@@ -110,6 +118,7 @@ const options: SchemaOptions = {
             name: "labelWrap",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
           componentName: "Switch"
@@ -119,6 +128,9 @@ const options: SchemaOptions = {
     {
       "x-field": {
         name: "labelCol",
+        params: {
+          withBind: true,
+        }
       },
       componentName: "ColInput",
       props: {
@@ -136,6 +148,9 @@ const options: SchemaOptions = {
     {
       "x-field": {
         name: "wrapperCol",
+        params: {
+          withBind: true,
+        }
       },
       componentName: "ColInput",
       props: {
@@ -160,6 +175,9 @@ const options: SchemaOptions = {
           componentName: "Radio.Group",
           "x-field": {
             name: "size",
+            params: {
+              withBind: true,
+            }
           },
           props: {
             optionType: "button",

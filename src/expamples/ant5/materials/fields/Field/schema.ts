@@ -13,6 +13,9 @@ const options: SchemaOptions = {
           componentName: "Input",
           "x-field": {
             name: "label",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]
@@ -26,6 +29,9 @@ const options: SchemaOptions = {
         {
           "x-field": {
             name: "labelAlign",
+            params: {
+              withBind: true,
+            }
           },
           componentName: "Radio.Group",
           props: {
@@ -56,6 +62,7 @@ const options: SchemaOptions = {
             name: "labelWrap",
             params:{
               valuePropName: "checked",
+              withBind: true,
             }
           },
           componentName: "Switch"
@@ -65,6 +72,9 @@ const options: SchemaOptions = {
     {
       "x-field": {
         name: "labelCol",
+        params: {
+          withBind: true,
+        }
       },
       componentName: "ColInput",
       props: {
@@ -82,6 +92,9 @@ const options: SchemaOptions = {
     {
       "x-field": {
         name: "wrapperCol",
+        params: {
+          withBind: true,
+        }
       },
       componentName: "ColInput",
       props: {

@@ -13,6 +13,9 @@ const options: SchemaOptions = {
           componentName: "InputNumber",
           "x-field": {
             name: "size",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]
@@ -27,6 +30,9 @@ const options: SchemaOptions = {
           componentName: "ColorInput",
           "x-field": {
             name: "color",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]
@@ -41,6 +47,9 @@ const options: SchemaOptions = {
           componentName: "IconInput",
           "x-field": {
             name: "icon",
+            params: {
+              withBind: true,
+            }
           },
         }
       ]

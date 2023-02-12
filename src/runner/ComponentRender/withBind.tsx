@@ -3,29 +3,10 @@ import { IFieldMeta } from "runner/fieldy/interfaces"
 import { memo, useCallback, useEffect, useState } from "react"
 import { IBindParams } from "./interfaces"
 
-//这个代码要重构，需要明确的withbind指令
 export function withBind(WrappedComponent: React.FC<any> | React.ComponentClass<any>, fieldMeta?: IFieldMeta<IBindParams>): React.FC<any> | React.ComponentClass<any> {
 
-  if (!fieldMeta) {
+  if (!fieldMeta?.params?.withBind) {
     return WrappedComponent
-  }
-
-  if (JSON.stringify(fieldMeta) === "{}") {
-    return WrappedComponent
-  }
-  const fieldType = fieldMeta?.type || "normal"
-  if (fieldMeta.name) {
-    if (fieldType === "normal") {
-      if (fieldMeta.params?.withBind === false) {
-        return WrappedComponent
-      }
-    } else if (!fieldMeta.params?.withBind) {
-      return WrappedComponent
-    }
-  } else {
-    if (!fieldMeta.params?.withBind) {
-      return WrappedComponent
-    }
   }
 
   const propName = fieldMeta.params?.valuePropName || "value"

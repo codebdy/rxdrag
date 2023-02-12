@@ -15,6 +15,9 @@ export const conditionSchema: INodeSchema = {
           componentName: "TextArea",
           "x-field": {
             name: `config.trueExpression`,
+            params: {
+              withBind: true,
+            }
           },
         }
       ]
