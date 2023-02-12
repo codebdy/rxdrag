@@ -15,11 +15,12 @@ export class MockDataReaction extends AbstractReaction<IMockDataConfig> {
   }
 
   inputHandler = (inputValue?: any) => {
+
     this.getLoadingOutput()?.push(true)
     if (this.meta.config?.isError) {
       setTimeout(() => {
         this.getLoadingOutput()?.push(false)
-        this.getErrorOutput()?.push(inputValue)
+        this.getErrorOutput()?.push("Read data error")
       }, this.meta.config.duration)
     } else {
       setTimeout(() => {

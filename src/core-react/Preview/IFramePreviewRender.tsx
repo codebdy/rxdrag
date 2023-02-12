@@ -14,7 +14,6 @@ export const IFramePreviewRender = memo((props: {
   const { components, reactionMaterials } = props
   const engine = window.engine
   const doc = window.doc
-
   return (
     <DesignerEngineContext.Provider value={engine}>
       {

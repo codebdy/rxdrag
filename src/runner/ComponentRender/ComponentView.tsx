@@ -24,6 +24,7 @@ export const ComponentView = memo((
 ) => {
   const { node, ...other } = props
   const com = usePreviewComponent(node.componentName)
+
   const Component = useMemo(() => com && withController(withBind(com, node?.["x-field"]), node["x-reactions"]), [com, node]);
   const slots = useMemo(() => {
     const slts: { [key: string]: React.ReactElement } = {}
