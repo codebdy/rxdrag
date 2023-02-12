@@ -195,6 +195,12 @@ export class FieldyEngineImpl implements IFieldyEngine {
     }
   }
 
+
+  inputFieldValue(formName: string, fieldPath: string, value: any): void {
+
+    
+  }
+
   //递归找出改变的字段
   private getValue(formName: string, fieldPath: string, value: any, allValues: any) {
     const fields = this.store.getState().forms[formName]?.fields

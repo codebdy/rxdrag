@@ -26,12 +26,11 @@ export class FormImpl implements IForm {
       return field
     } else {
       if (fieldSchema.name) {
-        if(this.fieldy.getFieldState(this.name, fieldSchema.path)){
-          console.log("哈哈 字段已经注册")
-        }else{
+        //这段代码可能需要重构未：如果已经存在Field定义，则合并
+        if(!this.fieldy.getFieldState(this.name, fieldSchema.path)){
           this.fieldy.addFields(this.name, fieldSchema)
         }
-        const field = new FieldImpl(this.fieldy, this.name, fieldSchema.path)
+        const field = new FieldImpl(this.fieldy, this, fieldSchema.path)
         this.fields[fieldSchema.path] = field
         return field
       }

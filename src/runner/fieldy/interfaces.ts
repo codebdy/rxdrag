@@ -103,7 +103,7 @@ export type FormState = {
   mounted?: boolean; //字段是否已挂载
   unmounted?: boolean; //字段是否已卸载
   initialized?: boolean;
-  display?: FieldDisplayTypes;
+  //display?: FieldDisplayTypes;
   pattern?: FieldPatternTypes;
   loading?: boolean;
   validating?: boolean;
@@ -131,7 +131,6 @@ export interface IFormNode {
   onUnmount(listener: Listener): Unsubscribe
   onValueChange(listener: ValueChangeListener): Unsubscribe
   onInitialValueChange(): Unsubscribe
-  onInput(listener: ValueChangeListener): Unsubscribe
   onValidateStart(listener: Listener): Unsubscribe
   onValidateEnd(listener: Listener): Unsubscribe
   onValidateFailed(listener: ErrorListener): Unsubscribe
@@ -173,6 +172,7 @@ export interface IFieldyEngine {
   setFieldIntialValue(formName: string, fieldPath: string, value: any): void
   setFieldValue(formName: string, fieldPath: string, value: any): void
   setFieldFragmentValue(formName: string, fieldPath: string, value: any): void
+  inputFieldValue(formName: string, fieldPath: string, value: any): void
 
   //监测
   getForm(name: string): IForm | undefined

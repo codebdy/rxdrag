@@ -1,5 +1,5 @@
 
-import { SET_FORM_FIELDS, SetFormFieldsPayload, SET_FORM_FLAT_VALUES, SetFormValuesPayload, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES, SET_FORM_INITIALZED_FLAG, SetFormInitializedFlagPayload, FieldActionPayload, SET_FIELD_VALUE, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload } from "runner/fieldy/actions";
+import { SET_FORM_FIELDS, SetFormFieldsPayload, SET_FORM_FLAT_VALUES, SetFormValuesPayload, SET_FORM_INITIAL_VALUES, SET_FORM_VALUES, SET_MULTI_FIELD_VALUES, SET_FORM_INITIALZED_FLAG, SetFormInitializedFlagPayload, FieldActionPayload, SET_FIELD_VALUE, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload, INPUT_FIELD_VALUE } from "runner/fieldy/actions";
 import { getChildFields, makePath } from "runner/fieldy/funcs/path";
 import { FieldsState, FormState, FormValue, IAction, IFieldSchema } from "runner/fieldy/interfaces";
 import { fieldReduce } from "./field";
@@ -72,6 +72,13 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
       return {
         ...state,
         initialized: (action.payload as SetFormInitializedFlagPayload).initialized
+      }
+    }
+
+    case INPUT_FIELD_VALUE: {
+      return {
+        ...state,
+        modified: true,
       }
     }
   }
