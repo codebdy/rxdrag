@@ -1,15 +1,18 @@
-import { FieldActionPayload, SetFieldValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_VALUE } from "runner/fieldy/actions";
+import { FieldActionPayload, SET_FIELD_MODIFY, SetFieldValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_VALUE } from "runner/fieldy/actions";
 import { FieldState, IAction } from "runner/fieldy/interfaces";
 
 export function fieldReduce(state: FieldState, action: IAction<FieldActionPayload>): FieldState {
   switch (action.type) {
-    case SET_FIELD_VALUE:
-      const setFieldValuePayload = action.payload as SetFieldValuePayload
-      const newData = {
+    case SET_FIELD_MODIFY:
+      return {
         ...state,
-        value: setFieldValuePayload.value
+        modified: true,
       }
-      return newData
+    case SET_FIELD_VALUE:
+      return {
+        ...state,
+        value: (action.payload as SetFieldValuePayload).value
+      }
     case SET_FIELD_INITAL_VALUE:
       const setFieldInitialValuePayload = action.payload as SetFieldValuePayload
       console.log("哈哈哈 fieldReduce", setFieldInitialValuePayload)
