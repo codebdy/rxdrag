@@ -20,7 +20,9 @@
 
 import { memo } from "react"
 
-export const Table = memo(()=>{
+export const Table = memo((
+
+)=>{
  
   return (
     <></>
