@@ -3,8 +3,8 @@ import { locales } from "./locales";
 import { slotSchema } from "./schema";
 import { DefaultSlot } from "core-react/DefaultSlot";
 
-const name = "ListHeader"
-export const ListHeaderMaterial: IComponentMaterial = {
+const name = "Header"
+export const HeaderMaterial: IComponentMaterial = {
   componentName: name,
   component: DefaultSlot,
   designer: DefaultSlot,

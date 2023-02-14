@@ -1,7 +1,7 @@
 import { IComponentMaterial } from "core-react";
 import { List } from "expamples/ant5/components/datas/List";
-import { ListFooterMaterial } from "../ListFooter";
-import { ListHeaderMaterial } from "../ListHeader";
+import { FooterMaterial } from "../../common/Footer";
+import { HeaderMaterial } from "../../common/Header";
 import { ListItemMaterial } from "../ListItem";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
@@ -65,8 +65,8 @@ export const ListMaterial: IComponentMaterial = {
   },
   slots: {
     renderItem: ListItemMaterial,
-    header: ListHeaderMaterial,
-    footer: ListFooterMaterial,
+    header: HeaderMaterial,
+    footer: FooterMaterial,
   },
   behaviorRule: {
     droppable: false,

@@ -3,8 +3,8 @@ import { locales } from "./locales";
 import { slotSchema } from "./schema";
 import { DefaultSlot } from "core-react/DefaultSlot";
 
-const name = "ListFooter"
-export const ListFooterMaterial: IComponentMaterial = {
+const name = "Footer"
+export const FooterMaterial: IComponentMaterial = {
   componentName: name,
   component: DefaultSlot,
   designer: DefaultSlot,

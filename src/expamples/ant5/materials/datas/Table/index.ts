@@ -1,7 +1,7 @@
 import { IComponentMaterial } from "core-react";
 import { List } from "expamples/ant5/components/datas/List";
-import { ListFooterMaterial } from "../ListFooter";
-import { ListHeaderMaterial } from "../ListHeader";
+import { FooterMaterial } from "../../common/Footer";
+import { HeaderMaterial } from "../../common/Header";
 import { ListItemMaterial } from "../ListItem";
 import { TableDesigner } from "./designer";
 import { icon } from "./icon";
@@ -66,11 +66,11 @@ export const TableMaterial: IComponentMaterial = {
   },
   slots: {
     renderItem: ListItemMaterial,
-    header: ListHeaderMaterial,
-    footer: ListFooterMaterial,
+    header: HeaderMaterial,
+    footer: FooterMaterial,
   },
   behaviorRule: {
-    droppable: false,
-    noPlaceholder: false,
+    droppable: true,
+    noPlaceholder: true,
   }
 }
