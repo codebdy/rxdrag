@@ -3,6 +3,7 @@ import { List } from "expamples/ant5/components/datas/List";
 import { FooterMaterial } from "../../common/Footer";
 import { HeaderMaterial } from "../../common/Header";
 import { ListItemMaterial } from "../ListItem";
+import { TableSummaryMaterial } from "../TableSummary";
 import { TableDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
@@ -68,6 +69,7 @@ export const TableMaterial: IComponentMaterial = {
     renderItem: ListItemMaterial,
     header: HeaderMaterial,
     footer: FooterMaterial,
+    summary: TableSummaryMaterial,
   },
   behaviorRule: {
     droppable: true,

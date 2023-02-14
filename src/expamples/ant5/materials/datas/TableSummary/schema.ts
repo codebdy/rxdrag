@@ -107,20 +107,6 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
         },
       ]
     },
-    {
-      componentName: "FormItem",
-      props: {
-        label: "$summary",
-      },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "summary"
-          }
-        },
-      ]
-    },
   ],
   logicOptions: {
     canBindField: true,

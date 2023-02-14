@@ -1,7 +1,9 @@
-import { Table } from "antd";
+import { Table, Typography } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { TableProps } from "expamples/ant5/components/datas/Table"
 import { forwardRef, memo } from "react"
+
+const { Text } = Typography;
 
 interface DataType {
   key: string;
@@ -43,6 +45,11 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
       title={header && (() => header)}
       footer={footer && (() => footer)}
       {...other}
+      summary={(pageData) => {
+        return (
+          summary
+        );
+      }}
     />
   )
 }))
