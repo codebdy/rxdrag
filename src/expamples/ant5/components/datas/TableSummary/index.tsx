@@ -4,6 +4,7 @@ import { forwardRef, memo } from "react"
 const { Text } = Typography;
 
 // Table.Summary不能接受rxid跟ref，需要根据tfoot tag name 跟 class 魔改到dom上
+// 先获取父节点rx-id，然后查询子节点
 export const TableSummary = memo(forwardRef<HTMLDivElement>((props, ref) => {
   return (
     <Table.Summary {...props}>
