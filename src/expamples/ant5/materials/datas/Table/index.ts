@@ -3,6 +3,7 @@ import { List } from "expamples/ant5/components/datas/List";
 import { ListFooterMaterial } from "../ListFooter";
 import { ListHeaderMaterial } from "../ListHeader";
 import { ListItemMaterial } from "../ListItem";
+import { TableDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
@@ -11,11 +12,11 @@ const name = "Table"
 export const TableMaterial: IComponentMaterial = {
   componentName: name,
   component: List,
-  designer: List,
+  designer: TableDesigner,
   designerLocales: locales,
   designerSchema: materialSchema,
   designerProps: {
-    dataSource: [{}]
+    dataSource: [{ key: "1" }]
   },
   resource: {
     name: name,

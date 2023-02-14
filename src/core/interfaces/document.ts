@@ -43,8 +43,10 @@ export interface INodeMeta<IField = any, IReactions = any> {
   },
   "x-field"?: IField,
   "x-reactions"?: IReactions,
+  //锁定子控件
   locked?: boolean,
-  //[key: string]: any,
+  //自己渲染，引擎不渲染
+  selfRender?: boolean,
 }
 
 export interface IDesignerProps {
@@ -87,9 +89,9 @@ export interface NodeBehavior {
 }
 
 export interface INodeSchema<IField = any, IReactions = any> extends INodeMeta<IField, IReactions> {
-  name?: string,
+  //name?: string,
   //引用一段schema，ref赋值name，用于框架等分块编辑
-  ref?: string,
+  //ref?: string,
   children?: INodeSchema[]
   slots?: {
     [name: string]: INodeSchema | undefined

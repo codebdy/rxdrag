@@ -18,12 +18,22 @@
 
 // designer自带属性编辑组件
 
+import { PaginationProps } from "antd"
 import { memo } from "react"
 
-export const Table = memo((
+export type TableProps = {
+  header?: React.ReactElement,
+  footer?: React.ReactElement,
+  summary?: React.ReactElement,
+  dataSource?: any[],
+  pagination?: PaginationProps,
+}
 
-)=>{
- 
+// 本控件强依赖ComponentRender
+export const Table = memo((
+  props: TableProps
+) => {
+  const { header, footer, ...other } = props
   return (
     <></>
   )
