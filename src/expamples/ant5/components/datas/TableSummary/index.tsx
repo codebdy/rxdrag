@@ -1,11 +1,27 @@
 import { Table, Typography } from "antd"
-import { forwardRef, memo } from "react"
+import { useGetElement } from "core-react/hooks/useGetElement";
+import { useNode } from "core-react/hooks/useNode";
+import { isFunction } from "lodash";
+import { forwardRef, memo, useLayoutEffect } from "react"
 
 const { Text } = Typography;
 
 // Table.Summary不能接受rxid跟ref，需要根据tfoot tag name 跟 class 魔改到dom上
 // 先获取父节点rx-id，然后查询子节点
 export const TableSummary = memo(forwardRef<HTMLDivElement>((props, ref) => {
+  const node = useNode()
+  const getElement = useGetElement()
+  useLayoutEffect(()=>{
+    const parentElement = node?.parentId && getElement(node?.parentId)
+    if(parentElement){
+      const element = (parentElement as HTMLElement).getElementsByTagName("tfoot")?.[0]
+      if(isFunction(ref)){
+        ref(element)
+      }
+    }
+
+  }, [getElement, node?.parentId, ref])
+  
   return (
     <Table.Summary {...props}>
       <Table.Summary.Row>
