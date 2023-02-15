@@ -2,8 +2,9 @@ import { useField } from "runner/fieldy/hooks/useField"
 import { IFieldMeta } from "runner/fieldy/interfaces"
 import { memo, useCallback, useEffect, useState } from "react"
 import { IBindParams } from "./interfaces"
+import { ReactComponent } from "./types"
 
-export function withBind(WrappedComponent: React.FC<any> | React.ComponentClass<any>, fieldMeta?: IFieldMeta<IBindParams>): React.FC<any> | React.ComponentClass<any> {
+export function withBind(WrappedComponent:ReactComponent, fieldMeta?: IFieldMeta<IBindParams>): ReactComponent {
 
   if (!fieldMeta?.params?.withBind) {
     return WrappedComponent

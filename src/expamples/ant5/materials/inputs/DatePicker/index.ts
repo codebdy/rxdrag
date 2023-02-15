@@ -1,5 +1,6 @@
+import { DatePicker } from "antd";
 import { IComponentMaterial } from "core-react";
-import { DatePicker } from "expamples/ant5/components/inputs/DatePicker";
+import { forwardRefById } from "core-react/forwardRefById";
 import { datePickerIcon } from "./icon";
 import { datePickerLocales, datePickerResourceLocales } from "./locales";
 import { datePickerSchema } from "./schema";
@@ -8,7 +9,7 @@ const name = "DatePicker"
 export const DatePickerMaterial: IComponentMaterial = {
   componentName: name,
   component: DatePicker,
-  designer: DatePicker,
+  designer: forwardRefById(DatePicker, element => element?.parentElement?.parentElement),
   designerLocales: datePickerLocales,
   designerSchema: datePickerSchema,
   designerProps: {

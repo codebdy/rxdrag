@@ -1,16 +1,17 @@
 import { forwardRef, memo } from "react"
 import { Radio as AntdRadio } from "antd"
+import { forwardRefById } from "core-react/forwardRefById"
 
 export type RadioProps = {
   label?: string
 }
+const ForwardRadio = forwardRefById(AntdRadio, element => element?.parentElement?.parentElement)
+
 export const Radio = memo(forwardRef<HTMLInputElement>((props: RadioProps, ref) => {
   const { label, ...other } = props;
   return (
-    <span  ref={ref}>
-      <AntdRadio {...other}>
-        {label}
-      </AntdRadio>
-    </span>
+    <ForwardRadio ref={ref} {...other}>
+      {label}
+    </ForwardRadio>
   )
 }))

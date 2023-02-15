@@ -1,5 +1,6 @@
+import { DatePicker } from "antd";
 import { IComponentMaterial } from "core-react";
-import { DateRangePicker } from "expamples/ant5/components/inputs/DateRangePicker";
+import { forwardRefById } from "core-react/forwardRefById";
 import { rangePickerIcon } from "./icon";
 import { dateRangePickerLocales, dateRangePickerResourceLocales } from "./locales";
 import { dateRangePickerSchema } from "./schema";
@@ -7,8 +8,8 @@ import { dateRangePickerSchema } from "./schema";
 const name = "DateRangePicker"
 export const DateRangePickerMaterial: IComponentMaterial = {
   componentName: name,
-  component: DateRangePicker,
-  designer: DateRangePicker,
+  component: DatePicker.RangePicker,
+  designer: forwardRefById(DatePicker.RangePicker, element => element?.parentElement?.parentElement),
   designerLocales: dateRangePickerLocales,
   designerSchema: dateRangePickerSchema,
   designerProps: {
