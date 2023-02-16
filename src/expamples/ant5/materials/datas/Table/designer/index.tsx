@@ -4,6 +4,7 @@ import { useGetNode } from "core-react/hooks/useGetNode";
 import { useNode } from "core-react/hooks/useNode";
 import { TableProps } from "expamples/ant5/components/datas/Table"
 import { forwardRef, memo, useMemo } from "react"
+import { TableColumnDesigner } from "../../TableColumn/designer";
 
 const { Text } = Typography;
 
@@ -45,10 +46,13 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
       title: 'Cash Assets',
       className: 'column-money',
       dataIndex: 'money',
-      align: 'right',
+      //align: 'right',
+      render: () => {
+        return <TableColumnDesigner rx-id={child?.id!} >哈哈</TableColumnDesigner>
+      }
     }))
   }, [getNode, node?.children])
-  console.log("就哈哈哈", node)
+
   return (
     <Table
       ref={ref}
