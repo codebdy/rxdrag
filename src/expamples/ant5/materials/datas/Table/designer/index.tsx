@@ -11,13 +11,11 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
 ) => {
   const { header, footer, summary, ...other } = props
   const node = useNode()
-  const childNodes = useTreeNodes(node?.children||[])
+  const childNodes = useTreeNodes(node?.children || [])
   const colums = useMemo(() => {
     return childNodes?.map(child => ({
-      title: child?.meta?.props?.title,
-      className: 'column-money',
+      ...child?.meta?.props,
       dataIndex: 'money',
-      //align: 'right',
       render: () => {
         return <ComponentDesignerView nodeId={child?.id!} />
       }

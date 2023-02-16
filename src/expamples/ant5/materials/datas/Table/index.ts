@@ -62,6 +62,26 @@ export const TableMaterial: IComponentMaterial = {
             }
           },
         },
+        children: [
+          {
+            componentName: 'TableColumn',
+            props: {
+              title: "Column1"
+            }
+          },
+          {
+            componentName: 'TableColumn',
+            props: {
+              title: "Column2"
+            }
+          },
+          {
+            componentName: 'TableColumn',
+            props: {
+              title: "Column3"
+            }
+          },
+        ],
         selfRender: true,
       }
     ]

@@ -72,7 +72,7 @@ export interface ITreeNode {
   designerProps?: IDesignerProps
   //用来编辑属性的schema
   designerSchema?: INodeSchema
-  //设计器专用属性，比如是否弹窗的标志及状态
+  //设计器专用属性，比如是否锁定
   designerParams?: IDesignerParams
 }
 

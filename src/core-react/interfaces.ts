@@ -22,10 +22,5 @@ export interface IComponentMaterial extends IComponentConfig {
   slots?: {
     [name: string]: IComponentMaterial | true | string | undefined
   },
-
-  //控制器
-  controller?: {
-
-  }
 }
 
