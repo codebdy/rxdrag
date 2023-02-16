@@ -61,7 +61,8 @@ export const TableMaterial: IComponentMaterial = {
               },
             }
           },
-        }
+        },
+        selfRender: true,
       }
     ]
   },

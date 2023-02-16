@@ -1,7 +1,9 @@
 import { Table, Typography } from "antd";
 import { ColumnsType } from "antd/es/table";
+import { useGetNode } from "core-react/hooks/useGetNode";
+import { useNode } from "core-react/hooks/useNode";
 import { TableProps } from "expamples/ant5/components/datas/Table"
-import { forwardRef, memo } from "react"
+import { forwardRef, memo, useMemo } from "react"
 
 const { Text } = Typography;
 
@@ -36,11 +38,21 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
   ref
 ) => {
   const { header, footer, summary, ...other } = props
-
+  const node = useNode()
+  const getNode = useGetNode()
+  const colums = useMemo(() => {
+    return node?.children?.map(childId => getNode(childId)).filter(child => child).map(child => ({
+      title: 'Cash Assets',
+      className: 'column-money',
+      dataIndex: 'money',
+      align: 'right',
+    }))
+  }, [getNode, node?.children])
+  console.log("就哈哈哈", node)
   return (
     <Table
       ref={ref}
-      columns={[]}
+      columns={colums as any}
       bordered
       title={header && (() => header)}
       footer={footer && (() => footer)}
