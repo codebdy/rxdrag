@@ -56,7 +56,6 @@ import { ActionSlotMaterial } from "./slots/ActionSlot";
 import { ExtraSlotMaterial } from "./slots/ExtraSlot";
 import { TableMaterial } from "./datas/Table";
 import { TableColumnMaterial } from "./datas/TableColumn";
-import { TableColumnGroupMaterial } from "./datas/TableColumnGroup";
 
 export type MaterialGroup = {
   titleKey: string,
@@ -140,7 +139,6 @@ export const materials: MaterialGroup[] = [
       ListItemMetaMaterial,
       TableMaterial,
       TableColumnMaterial,
-      TableColumnGroupMaterial,
     ]
   },
   {
