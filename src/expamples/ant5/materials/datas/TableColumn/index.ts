@@ -24,6 +24,9 @@ export const TableColumnMaterial: IComponentMaterial = {
     elements: [
       {
         componentName: name,
+        props: {
+          title: "Column"
+        }
       }
     ]
   },

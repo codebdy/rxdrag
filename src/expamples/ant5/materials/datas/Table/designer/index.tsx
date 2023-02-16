@@ -1,7 +1,7 @@
 import { Table } from "antd";
 import { ComponentDesignerView } from "core-react/ComponentTreeWidget/ComponentDesignerView";
-import { useGetNode } from "core-react/hooks/useGetNode";
 import { useNode } from "core-react/hooks/useNode";
+import { useTreeNodes } from "core-react/hooks/useTreeNodes";
 import { TableProps } from "expamples/ant5/components/datas/Table"
 import { forwardRef, memo, useMemo } from "react"
 
@@ -11,10 +11,10 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
 ) => {
   const { header, footer, summary, ...other } = props
   const node = useNode()
-  const getNode = useGetNode()
+  const childNodes = useTreeNodes(node?.children||[])
   const colums = useMemo(() => {
-    return node?.children?.map(childId => getNode(childId)).filter(child => child).map(child => ({
-      title: 'Cash Assets',
+    return childNodes?.map(child => ({
+      title: child?.meta?.props?.title,
       className: 'column-money',
       dataIndex: 'money',
       //align: 'right',
@@ -22,7 +22,7 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
         return <ComponentDesignerView nodeId={child?.id!} />
       }
     }))
-  }, [getNode, node?.children])
+  }, [childNodes])
 
   return (
     <Table

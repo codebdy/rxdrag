@@ -2,34 +2,23 @@ import { INodeSchema } from "core";
 import { createSchema, SchemaOptions } from "react-shells/ant5/shared/createSchema";
 
 const options: SchemaOptions = {
-  slotsSchemas:  [
+  propsSchemas: [
     {
       componentName: "FormItem",
       props: {
-        label: "$actions",
+        label: "$title",
       },
       children: [
         {
-          componentName: "SlotSwitch",
-          props: {
-            name: "actions"
-          }
+          componentName: "Input",
+          "x-field": {
+            name: "title",
+            params: {
+              withBind: true,
+            }
+          },
         }
-      ]
-    },
-    {
-      componentName: "FormItem",
-      props: {
-        label: "$extra",
-      },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "extra"
-          }
-        }
-      ]
+      ],
     },
   ]
 }
