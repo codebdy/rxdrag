@@ -6,7 +6,7 @@ import { isFunction } from "lodash"
 type Callback = (element?: HTMLElement | null) => HTMLElement | undefined | null
 const defaultCallback = (element?: HTMLElement | null) => element
 
-export function forwardRefById(WrappedComponent: ReactComponent, callback: Callback = defaultCallback): ReactComponent {
+export function switchRefById(WrappedComponent: ReactComponent, callback: Callback = defaultCallback): ReactComponent {
 
   return memo(forwardRef<HTMLInputElement>((props: any, ref) => {
     const node = useNode()

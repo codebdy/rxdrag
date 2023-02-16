@@ -1,38 +1,9 @@
-import { Table, Typography } from "antd";
-import { ColumnsType } from "antd/es/table";
+import { Table } from "antd";
+import { ComponentDesignerView } from "core-react/ComponentTreeWidget/ComponentDesignerView";
 import { useGetNode } from "core-react/hooks/useGetNode";
 import { useNode } from "core-react/hooks/useNode";
 import { TableProps } from "expamples/ant5/components/datas/Table"
 import { forwardRef, memo, useMemo } from "react"
-import { TableColumnDesigner } from "../../TableColumn/designer";
-
-const { Text } = Typography;
-
-interface DataType {
-  key: string;
-  name: string;
-  money: string;
-  address: string;
-}
-
-const columns: ColumnsType<DataType> = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    render: (text) => <a>{text}</a>,
-  },
-  {
-    title: 'Cash Assets',
-    className: 'column-money',
-    dataIndex: 'money',
-    align: 'right',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-  },
-];
-
 
 export const TableDesigner = memo(forwardRef<HTMLDivElement>((
   props: TableProps,
@@ -48,7 +19,7 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
       dataIndex: 'money',
       //align: 'right',
       render: () => {
-        return <TableColumnDesigner rx-id={child?.id!} >哈哈</TableColumnDesigner>
+        return <ComponentDesignerView nodeId={child?.id!} />
       }
     }))
   }, [getNode, node?.children])

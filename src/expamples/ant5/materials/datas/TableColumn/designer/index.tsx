@@ -1,23 +1,19 @@
-import { RxProps } from "core"
-import { memo, useCallback } from "react"
+import { switchRef } from "core-react/switchRef"
+import { forwardRef, memo } from "react"
 
-export const TableColumnDesigner = memo((
-  props: RxProps & {
+const TableColumnDesignerImpl = memo(forwardRef<HTMLDivElement>((
+  props: {
     children?: React.ReactNode,
-  }
+  },
+  ref
 ) => {
-  const { children, ...other } = props
-  const handleRefChange = useCallback((ele: HTMLDivElement | null) => {
-    if (ele) {
-      for (const key of Object.keys(other)) {
-        ele.parentElement?.setAttribute(key, (other as any)[key])
-      }
-    }
-  }, [other])
+  const { children } = props
   return (
     <>
       {children}
-      <div ref={handleRefChange} style={{ display: 'none' }}></div>
+      <div ref={ref} style={{ display: 'none' }}></div>
     </>
   )
-})
+}))
+
+export const TableColumnDesigner = switchRef(TableColumnDesignerImpl, element => element?.parentElement)
