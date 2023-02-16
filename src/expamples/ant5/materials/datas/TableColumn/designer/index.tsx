@@ -15,8 +15,9 @@ export const TableColumnDesigner = memo((
     }
   }, [other])
   return (
-    <div ref={handleRefChange}>
+    <>
       {children}
-    </div>
+      <div ref={handleRefChange} style={{ display: 'none' }}></div>
+    </>
   )
 })
