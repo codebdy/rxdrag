@@ -14,6 +14,26 @@ export type SchemaOptions<IField = any, IReactions = any> = {
   logicOptions?: LogicOptions,
 }
 
+export function attachFormItem(schemas?: INodeSchema[]) {
+  return schemas?.map(schema => ({
+    componentName: "FormItem",
+    props: {
+      label: schema?.["x-field"]?.label,
+    },
+    children: [
+      schema
+    ],
+  }))
+}
+
+export function withFormItem(options: SchemaOptions = {}) {
+  return {
+    ...options,
+    propsSchemas: attachFormItem(options.propsSchemas),
+    slotsSchemas: attachFormItem(options.slotsSchemas),
+  }
+}
+
 export function createSchema(options: SchemaOptions = {}): INodeSchema {
   const { propsSchemas, slotsSchemas, logicOptions } = options
   const propsTab = propsSchemas ? [{

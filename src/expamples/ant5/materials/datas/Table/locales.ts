@@ -7,7 +7,7 @@ export const locales = {
       header: "页眉",
       footer: "页脚",
       bordered: "边框",
-      split: "分割线",
+      summary: "概要",
       ...sizeLocales["zh-CN"],
     }
 
@@ -18,7 +18,7 @@ export const locales = {
       header: "Header",
       footer: "Footer",
       bordered: "Bordered",
-      split: "Split",
+      summary: "Summary",
       ...sizeLocales["en-US"],
     }
   }
