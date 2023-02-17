@@ -63,6 +63,17 @@ const options: SchemaOptions = {
         }
       },
     },
+    //需要修改输入控件，数组输入
+    {
+      componentName: "Input",
+      props: {
+        name: "responsive",
+        placeholdr: "需要替换",
+      },
+      "x-field": {
+        label: "$responsiveBreakpoints",
+      },
+    },
   ]
 }
 
