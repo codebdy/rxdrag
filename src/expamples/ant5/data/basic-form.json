@@ -96,7 +96,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "基础表单",
+                            "value": "基础表单",
                             "style": {},
                             "mode": "h2"
                           },
@@ -118,7 +118,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。",
+                            "value": "表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。",
                             "style": {}
                           },
                           "slots": {},
@@ -201,7 +201,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "http",
+                            "value": "http",
                             "style": {}
                           },
                           "slots": {},
@@ -233,7 +233,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "$",
+                            "value": "$",
                             "style": {}
                           },
                           "slots": {},
@@ -273,7 +273,7 @@
             {
               "componentName": "TextView",
               "props": {
-                "content": "Apper Copyright ©2023",
+                "value": "Apper Copyright ©2023",
                 "style": {}
               },
               "slots": {},

@@ -6,7 +6,7 @@ const options: SchemaOptions = {
     {
       componentName: "Input",
       "x-field": {
-        name: "content",
+        name: "value",
         label: "$content",
         params: {
           withBind: true,

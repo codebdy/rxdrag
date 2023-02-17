@@ -12,7 +12,6 @@ export enum TextType {
 
 export interface ITextProps {
   value?: string;
-  content?: string;
   mode?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'p';
   style?: React.CSSProperties;
   className?: string;
@@ -25,12 +24,12 @@ export const TextView = memo(forwardRef<HTMLDivElement>((props: ITextProps, ref)
   const tagName = props.mode === 'normal' || !props.mode ? 'div' : props.mode
 
   const text = useMemo(() => {
-    const txtValue = value === undefined ? props.content : value?.toString();
+    const txtValue = value?.toString();
     if (textType === TextType.Date) {
       return dayjs(txtValue).format(formatMask || "YYYY-MM-DD HH:mm:ss");
     }
     return txtValue;
-  }, [formatMask, props.content, textType, value])
+  }, [formatMask, textType, value])
   return React.createElement(
     tagName,
     {

@@ -302,7 +302,7 @@
                 {
                   "componentName": "TextView",
                   "props": {
-                    "content": "被动按钮",
+                    "value": "被动按钮",
                     "style": {}
                   },
                   "x-field": {},

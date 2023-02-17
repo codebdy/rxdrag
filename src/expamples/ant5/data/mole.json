@@ -1169,7 +1169,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "地鼠1",
+                            "value": "地鼠1",
                             "style": {}
                           },
                           "x-field": {},
@@ -1686,7 +1686,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "地鼠2",
+                            "value": "地鼠2",
                             "style": {}
                           },
                           "x-field": {},
@@ -2203,7 +2203,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "地鼠3",
+                            "value": "地鼠3",
                             "style": {}
                           },
                           "x-field": {},
@@ -2732,7 +2732,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "地鼠4",
+                            "value": "地鼠4",
                             "style": {}
                           },
                           "x-field": {},
@@ -3249,7 +3249,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "地鼠5",
+                            "value": "地鼠5",
                             "style": {}
                           },
                           "x-field": {},
@@ -3766,7 +3766,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "地鼠6",
+                            "value": "地鼠6",
                             "style": {}
                           },
                           "x-field": {},
@@ -4295,7 +4295,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "地鼠7",
+                            "value": "地鼠7",
                             "style": {}
                           },
                           "x-field": {},
@@ -4812,7 +4812,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "地鼠8",
+                            "value": "地鼠8",
                             "style": {}
                           },
                           "x-field": {},
@@ -5329,7 +5329,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "地鼠9",
+                            "value": "地鼠9",
                             "style": {}
                           },
                           "x-field": {},
@@ -5646,7 +5646,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "开始",
+                            "value": "开始",
                             "style": {}
                           },
                           "x-field": {},
@@ -5842,7 +5842,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "结束",
+                            "value": "结束",
                             "style": {}
                           },
                           "x-field": {},

@@ -68,7 +68,7 @@
             {
               "componentName": "TextView",
               "props": {
-                "content": "Apper Copyright ©2023",
+                "value": "Apper Copyright ©2023",
                 "style": {}
               },
               "slots": {},

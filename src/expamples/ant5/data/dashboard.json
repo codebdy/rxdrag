@@ -93,7 +93,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "Hi，欢迎使用 Apper 低代码平台！",
+                            "value": "Hi，欢迎使用 Apper 低代码平台！",
                             "mode": "h2",
                             "style": {}
                           },
@@ -115,7 +115,7 @@
                         {
                           "componentName": "TextView",
                           "props": {
-                            "content": "轻松创建、部署、管理您的Mes应用，提升开发效率，降低业务成本。 ",
+                            "value": "轻松创建、部署、管理您的Mes应用，提升开发效率，降低业务成本。 ",
                             "style": {}
                           },
                           "slots": {},
@@ -148,7 +148,7 @@
                             {
                               "componentName": "TextView",
                               "props": {
-                                "content": "开启引导",
+                                "value": "开启引导",
                                 "style": {
                                   "color": "rgba(255,255,255,1)"
                                 }
@@ -298,7 +298,7 @@
                             {
                               "componentName": "TextView",
                               "props": {
-                                "content": "待办事项(5)",
+                                "value": "待办事项(5)",
                                 "style": {}
                               },
                               "slots": {},
@@ -322,7 +322,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "查看全部 >",
+                                    "value": "查看全部 >",
                                     "style": {}
                                   },
                                   "slots": {},
@@ -613,7 +613,7 @@
                                         {
                                           "componentName": "TextView",
                                           "props": {
-                                            "content": "完成",
+                                            "value": "完成",
                                             "style": {}
                                           },
                                           "x-field": {},
@@ -642,7 +642,7 @@
                                     "title": {
                                       "componentName": "TextView",
                                       "props": {
-                                        "content": "Title",
+                                        "value": "Title",
                                         "style": {}
                                       },
                                       "x-reactions": {
@@ -661,7 +661,7 @@
                                     "description": {
                                       "componentName": "TextView",
                                       "props": {
-                                        "content": "Description",
+                                        "value": "Description",
                                         "style": {}
                                       },
                                       "x-field": {
@@ -699,7 +699,7 @@
                             {
                               "componentName": "TextView",
                               "props": {
-                                "content": "最新客户",
+                                "value": "最新客户",
                                 "style": {}
                               },
                               "slots": {},
@@ -723,7 +723,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "查看全部 >",
+                                    "value": "查看全部 >",
                                     "style": {}
                                   },
                                   "slots": {},
@@ -1033,7 +1033,7 @@
                                     "title": {
                                       "componentName": "TextView",
                                       "props": {
-                                        "content": "Title"
+                                        "value": "Title"
                                       },
                                       "slots": {},
                                       "children": []
@@ -1041,7 +1041,7 @@
                                     "description": {
                                       "componentName": "TextView",
                                       "props": {
-                                        "content": "Description"
+                                        "value": "Description"
                                       },
                                       "slots": {},
                                       "children": []
@@ -1102,7 +1102,7 @@
                             {
                               "componentName": "TextView",
                               "props": {
-                                "content": "动态",
+                                "value": "动态",
                                 "style": {}
                               },
                               "slots": {},
@@ -1126,7 +1126,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "加载更多",
+                                    "value": "加载更多",
                                     "style": {}
                                   },
                                   "slots": {},
@@ -1167,7 +1167,7 @@
                             {
                               "componentName": "TextView",
                               "props": {
-                                "content": "快捷入口",
+                                "value": "快捷入口",
                                 "style": {}
                               },
                               "slots": {},
@@ -1254,7 +1254,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "付款申请",
+                                    "value": "付款申请",
                                     "style": {
                                       "fontWeight": 700,
                                       "fontSize": "13px",
@@ -1310,7 +1310,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "采购申请",
+                                    "value": "采购申请",
                                     "style": {
                                       "fontWeight": 700,
                                       "fontSize": "13px",
@@ -1366,7 +1366,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "差旅申请",
+                                    "value": "差旅申请",
                                     "style": {
                                       "fontWeight": 700,
                                       "fontSize": "13px",
@@ -1422,7 +1422,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "订舱申请",
+                                    "value": "订舱申请",
                                     "style": {
                                       "fontWeight": 700,
                                       "fontSize": "13px",
@@ -1478,7 +1478,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "用章流程",
+                                    "value": "用章流程",
                                     "style": {
                                       "fontWeight": 700,
                                       "fontSize": "13px",
@@ -1534,7 +1534,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "用车申请",
+                                    "value": "用车申请",
                                     "style": {
                                       "fontWeight": 700,
                                       "fontSize": "13px",
@@ -1590,7 +1590,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "请假申请",
+                                    "value": "请假申请",
                                     "style": {
                                       "fontWeight": 700,
                                       "fontSize": "13px",
@@ -1646,7 +1646,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "评价反馈",
+                                    "value": "评价反馈",
                                     "style": {
                                       "fontWeight": 700,
                                       "fontSize": "13px",
@@ -1702,7 +1702,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "全部应用",
+                                    "value": "全部应用",
                                     "style": {
                                       "fontWeight": 700,
                                       "fontSize": "13px",
@@ -1750,7 +1750,7 @@
                             {
                               "componentName": "TextView",
                               "props": {
-                                "content": "使用帮助",
+                                "value": "使用帮助",
                                 "style": {}
                               },
                               "slots": {},
@@ -1776,7 +1776,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "Apper 是什么?",
+                                    "value": "Apper 是什么?",
                                     "style": {}
                                   },
                                   "slots": {},
@@ -1797,7 +1797,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "开发自定义组件需要注意的问题",
+                                    "value": "开发自定义组件需要注意的问题",
                                     "style": {
                                       "marginTop": "8px"
                                     }
@@ -1820,7 +1820,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "如何开发一个优秀模板?",
+                                    "value": "如何开发一个优秀模板?",
                                     "style": {}
                                   },
                                   "slots": {},
@@ -1841,7 +1841,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "低代码该如何做?",
+                                    "value": "低代码该如何做?",
                                     "style": {}
                                   },
                                   "slots": {},
@@ -1862,7 +1862,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "React的未来在哪里",
+                                    "value": "React的未来在哪里",
                                     "style": {}
                                   },
                                   "slots": {},
@@ -1883,7 +1883,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "Redux， 繁琐背后的优雅",
+                                    "value": "Redux， 繁琐背后的优雅",
                                     "style": {}
                                   },
                                   "slots": {},
@@ -1904,7 +1904,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "查看全部",
+                                    "value": "查看全部",
                                     "style": {}
                                   },
                                   "slots": {},
@@ -1926,7 +1926,7 @@
                             {
                               "componentName": "TextView",
                               "props": {
-                                "content": "其它帮助",
+                                "value": "其它帮助",
                                 "style": {
                                   "fontWeight": 600
                                 }
@@ -1966,7 +1966,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "新手引导",
+                                    "value": "新手引导",
                                     "style": {
                                       "display": "inline",
                                       "marginLeft": "8px"
@@ -2009,7 +2009,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "视频演示",
+                                    "value": "视频演示",
                                     "style": {
                                       "marginLeft": "8px"
                                     }
@@ -2051,7 +2051,7 @@
                                 {
                                   "componentName": "TextView",
                                   "props": {
-                                    "content": "产品文档",
+                                    "value": "产品文档",
                                     "style": {
                                       "marginLeft": "8px"
                                     }
@@ -2081,7 +2081,7 @@
                             {
                               "componentName": "TextView",
                               "props": {
-                                "content": "公告",
+                                "value": "公告",
                                 "style": {}
                               },
                               "slots": {},
@@ -2116,7 +2116,7 @@
                             {
                               "componentName": "TextView",
                               "props": {
-                                "content": "更新日志",
+                                "value": "更新日志",
                                 "style": {}
                               },
                               "slots": {},
@@ -2137,7 +2137,7 @@
                             {
                               "componentName": "TextView",
                               "props": {
-                                "content": "反馈",
+                                "value": "反馈",
                                 "style": {}
                               },
                               "slots": {},
@@ -2158,7 +2158,7 @@
                             {
                               "componentName": "TextView",
                               "props": {
-                                "content": "服务协议",
+                                "value": "服务协议",
                                 "style": {}
                               },
                               "slots": {},
@@ -2182,7 +2182,7 @@
             {
               "componentName": "TextView",
               "props": {
-                "content": "Apper Copyright ©2023",
+                "value": "Apper Copyright ©2023",
                 "style": {}
               },
               "slots": {},
