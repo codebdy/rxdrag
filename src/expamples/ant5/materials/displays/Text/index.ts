@@ -1,14 +1,14 @@
 import { IComponentMaterial } from "core-react";
-import { TextView } from "expamples/ant5/components/displays/TextView";
+import { Text } from "expamples/ant5/components/displays/typography/Text";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";
 
-const name = "TextView"
+const name = "Text"
 export const TextViewMaterial: IComponentMaterial = {
   componentName: name,
-  component: TextView,
-  designer: TextView,
+  component: Text,
+  designer: Text,
   designerLocales: locales,
   designerSchema: schema,
   resource: {

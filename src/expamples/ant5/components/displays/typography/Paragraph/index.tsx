@@ -1,19 +1,13 @@
 
-import React, { forwardRef, memo } from "react";
+import { forwardRef, memo } from "react";
 import { Typography as AntdTypography } from "antd";
+import { useFormat } from "../hooks/useFormat";
+import { ITypographyProps, TypographyType } from "../types";
 
-export enum TextType {
-  Number = "Number",
-  Date = "Date",
-  Text = "Text",
-}
+export const Paragraph = memo(forwardRef<HTMLDivElement, ITypographyProps>((props, ref) => {
+  const { value, textType = TypographyType.Text , formatMask, ...other } = props;
 
-export interface ILinkProps {
-  value?: string;
-}
-export const Typography = memo(forwardRef<HTMLDivElement>((props: ILinkProps, ref) => {
-  const { value, ...other } = props;
+  const text = useFormat(value, textType, formatMask)
 
-
-  return (<AntdTypography></AntdTypography>)
+  return (<AntdTypography.Paragraph ref={ref} {...other}>{text}</AntdTypography.Paragraph>)
 }))

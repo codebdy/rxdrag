@@ -1,6 +1,6 @@
 import { Tooltip } from "antd";
 import { IComponentMaterial } from "core-react";
-import { TextViewMaterial } from "../../displays/TextView";
+import { TextViewMaterial } from "../../displays/Text";
 import { TooltipDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
@@ -26,7 +26,7 @@ export const TooltipMaterial: IComponentMaterial = {
         componentName: name,
         slots: {
           title: {
-            componentName: "TextView",
+            componentName: "Text",
             props: {
               content: "prompt text",
             }
@@ -40,7 +40,7 @@ export const TooltipMaterial: IComponentMaterial = {
             },
             children: [
               {
-                componentName: "TextView",
+                componentName: "Text",
                 props: {
                   content: name,
                 }

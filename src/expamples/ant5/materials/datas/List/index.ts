@@ -36,13 +36,13 @@ export const ListMaterial: IComponentMaterial = {
                     componentName: "Avatar"
                   },
                   title: {
-                    componentName: "TextView",
+                    componentName: "Text",
                     props: {
                       content: "Title"
                     }
                   },
                   description: {
-                    componentName: "TextView",
+                    componentName: "Text",
                     props: {
                       content: "Description"
                     }

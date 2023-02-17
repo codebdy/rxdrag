@@ -10,7 +10,7 @@ import { LogoMaterial } from "./layouts/Logo";
 import { MenuMaterial } from "./layouts/Menu";
 import { AvatarMaterial } from "./displays/Avatar";
 import { CardMaterial } from "./layouts/Card";
-import { TextViewMaterial } from "./displays/TextView";
+import { TextViewMaterial } from "./displays/Text";
 import { StatisticMaterial } from "./displays/Statistic";
 import { BoxMaterial } from "./layouts/Box";
 import { IconViewMaterial } from "./displays/IconView";

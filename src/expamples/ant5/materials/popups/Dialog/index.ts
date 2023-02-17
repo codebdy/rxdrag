@@ -33,7 +33,7 @@ export const DialogMaterial: IComponentMaterial = {
             componentName: "DialogTitle",
             children:[
               {
-                componentName:"TextView",
+                componentName:"Text",
                 props: {
                   content: name,
                 }
@@ -53,7 +53,7 @@ export const DialogMaterial: IComponentMaterial = {
             },
             children: [
               {
-                componentName: "TextView",
+                componentName: "Text",
                 props: {
                   content: name,
                 }

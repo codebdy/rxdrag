@@ -19,9 +19,9 @@ export const locales = {
 
 export const resourceLocales = {
   "zh-CN": {
-    "TextView": "文本",
+    "Text": "文本",
   },
   'en-US': {
-    "TextView": "TextView",
+    "Text": "Text",
   }
 }

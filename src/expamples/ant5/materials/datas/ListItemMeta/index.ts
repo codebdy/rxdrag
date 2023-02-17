@@ -1,7 +1,7 @@
 import { List } from "antd";
 import { IComponentMaterial } from "core-react";
 import { AvatarMaterial } from "../../displays/Avatar";
-import { TextViewMaterial } from "../../displays/TextView";
+import { TextViewMaterial } from "../../displays/Text";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
@@ -28,13 +28,13 @@ export const ListItemMetaMaterial: IComponentMaterial = {
             componentName: "Avatar"
           },
           title:{
-            componentName:"TextView",
+            componentName:"Text",
             props:{
               content:"Title"
             }
           },
           description:{
-            componentName:"TextView",
+            componentName:"Text",
             props:{
               content:"Description"
             }

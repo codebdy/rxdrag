@@ -4,9 +4,9 @@ import { ComponentControllers, IComponentController } from "runner/reaction"
 import { ComponentController } from "runner/reaction/controllers/ComponentController"
 import { useMaterials } from "runner/reaction/hooks/useMaterials"
 import { IControllerMeta } from "runner/reaction/interfaces/metas"
-import { ControllersContext } from "./contexts"
-import { useControllers } from "./hooks/useControllers"
-import { ReactComponent } from "./types"
+import { ControllersContext } from "../contexts"
+import { useControllers } from "../hooks/useControllers"
+import { ReactComponent } from "../types"
 
 export function withController(WrappedComponent: ReactComponent, meta?: IControllerMeta): ReactComponent {
 

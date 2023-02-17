@@ -33,7 +33,7 @@ export const DropdownMaterial: IComponentMaterial = {
             },
             children: [
               {
-                componentName: "TextView",
+                componentName: "Text",
                 props: {
                   content: name,
                 }
