@@ -55,6 +55,7 @@ import { ActionSlotMaterial } from "./slots/ActionSlot";
 import { ExtraSlotMaterial } from "./slots/ExtraSlot";
 import { TableMaterial } from "./datas/Table";
 import { TableColumnMaterial } from "./datas/TableColumn";
+import { LinkMaterial } from "./displays/Link";
 
 export type MaterialGroup = {
   titleKey: string,
@@ -89,6 +90,7 @@ export const materials: MaterialGroup[] = [
     titleKey: 'displays',
     items: [
       TextViewMaterial,
+      LinkMaterial,
       StatisticMaterial,
       IconViewMaterial,
       AvatarMaterial,
