@@ -18,11 +18,10 @@ export interface ITextProps {
   textType?: TextType;
   formatMask?: string;
 }
-export const TextView = memo(forwardRef<HTMLDivElement>((props: ITextProps, ref) => {
+export const TextView = memo(forwardRef<HTMLDivElement, ITextProps>((props, ref) => {
   const { value, textType = TextType.Text, formatMask, ...other } = props;
 
   const tagName = props.mode === 'normal' || !props.mode ? 'div' : props.mode
-
   const text = useMemo(() => {
     const txtValue = value?.toString();
     if (textType === TextType.Date) {

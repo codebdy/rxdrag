@@ -4,7 +4,7 @@ import { memo, useCallback, useEffect, useState } from "react"
 import { IBindParams } from "./interfaces"
 import { ReactComponent } from "./types"
 
-export function withBind(WrappedComponent:ReactComponent, fieldMeta?: IFieldMeta<IBindParams>): ReactComponent {
+export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMeta<IBindParams>): ReactComponent {
 
   if (!fieldMeta?.params?.withBind) {
     return WrappedComponent
@@ -13,7 +13,7 @@ export function withBind(WrappedComponent:ReactComponent, fieldMeta?: IFieldMeta
   const propName = fieldMeta.params?.valuePropName || "value"
 
   return memo((props: any) => {
-    const [value, setValue] = useState<any>()
+    const [value, setValue] = useState<any>(props?.value)
     const field = useField()
 
     const trigger = fieldMeta.params?.trigger || "onChange"
@@ -37,7 +37,6 @@ export function withBind(WrappedComponent:ReactComponent, fieldMeta?: IFieldMeta
     useEffect(() => {
       setValue(field?.value)
     }, [field])
-
-    return <WrappedComponent {...{ [propName]: value, [trigger]: handleChange }} {...props} />
+    return <WrappedComponent {...props} {...{ [propName]: value, [trigger]: handleChange }} />
   })
 }
