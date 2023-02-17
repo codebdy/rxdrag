@@ -20,7 +20,7 @@ export const TextViewMaterial: IComponentMaterial = {
       {
         componentName: name,
         props: {
-          content: name,
+          value: name,
         }
       }
     ]

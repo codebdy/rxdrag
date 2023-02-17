@@ -1,5 +1,5 @@
 import { IComponentMaterial } from "core-react";
-import { TextView } from "expamples/ant5/components/displays/TextView";
+import { Link } from "expamples/ant5/components/displays/Link";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";
@@ -7,8 +7,8 @@ import { schema } from "./schema";
 const name = "Link"
 export const LinkMaterial: IComponentMaterial = {
   componentName: name,
-  component: TextView,
-  designer: TextView,
+  component: Link,
+  designer: Link,
   designerLocales: locales,
   designerSchema: schema,
   resource: {
@@ -20,7 +20,7 @@ export const LinkMaterial: IComponentMaterial = {
       {
         componentName: name,
         props: {
-          content: name,
+          value: name,
         }
       }
     ]

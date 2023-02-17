@@ -2,14 +2,18 @@ export const locales = {
   "zh-CN": {
     title: "链接",
     settings: {
-
+      content: "内容",
+      href: "链接",
+      target: "目标窗口",
     }
 
   },
   'en-US': {
     title: "Link",
     settings: {
-
+      content: "content",
+      href: "Href",
+      target: "Target",
     }
   }
 }

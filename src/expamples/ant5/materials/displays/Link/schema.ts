@@ -6,7 +6,7 @@ const options: SchemaOptions = {
     {
       componentName: "Input",
       "x-field": {
-        name: "content",
+        name: "value",
         label: "$content",
         params: {
           withBind: true,
@@ -14,44 +14,25 @@ const options: SchemaOptions = {
       },
     },
     {
-      componentName: "Select",
+      componentName: "Input",
       "x-field": {
-        name: "mode",
-        label: "$mode",
+        name: "href",
+        label: "$href",
         params: {
           withBind: true,
         }
       },
-      props: {
-        options: [
-          {
-            label: "Normal",
-            value: "Normal"
-          },
-          {
-            label: "H1",
-            value: "h1"
-          },
-          {
-            label: "H2",
-            value: "h2"
-          },
-          {
-            label: "H3",
-            value: "h3"
-          },
-          {
-            label: "H4",
-            value: "h4"
-          },
-          {
-            label: "p",
-            value: "p"
-          },
-        ],
-        defaultValue: "default",
-      }
-    }
+    },
+    {
+      componentName: "Input",
+      "x-field": {
+        name: "target",
+        label: "$target",
+        params: {
+          withBind: true,
+        }
+      },
+    },
   ],
   logicOptions: {
     canBindField: true,
