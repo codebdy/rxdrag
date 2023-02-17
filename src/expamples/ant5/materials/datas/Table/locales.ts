@@ -8,6 +8,14 @@ export const locales = {
       footer: "页脚",
       bordered: "边框",
       summary: "概要",
+      pagination: "分页",
+      false: "不显示",
+      topLeft: "左上",
+      topCenter: "中上",
+      topRight: "右上",
+      bottomLeft: "左下",
+      bottomCenter: "中下",
+      bottomRight: "右下",
       ...sizeLocales["zh-CN"],
     }
 
@@ -19,6 +27,14 @@ export const locales = {
       footer: "Footer",
       bordered: "Bordered",
       summary: "Summary",
+      pagination: "Pagination",
+      false: "Not Show",
+      topLeft: "Top Left",
+      topCenter: "Top Center",
+      topRight: "Top Right",
+      bottomLeft: "Bottom Left",
+      bottomCenter: "Bottom Center",
+      bottomRight: "Bottom Right",
       ...sizeLocales["en-US"],
     }
   }

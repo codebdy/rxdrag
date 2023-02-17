@@ -18,29 +18,56 @@
 
 // designer自带属性编辑组件
 
-import { PaginationProps } from "antd"
-import { memo, useState } from "react"
+import { memo, useCallback, useState } from "react"
 import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils"
 import { ArrayField } from "runner/fieldy/components/ArrayField/ArrayField"
+import { Table as AntdTable } from "antd"
+
+export interface IDataSource {
+  nodes?: [],
+  total?: number,
+}
 
 export type TableProps = {
   header?: React.ReactElement,
   footer?: React.ReactElement,
   summary?: React.ReactElement,
-  dataSource?: any[],
-  pagination?: PaginationProps,
+  dataSource?: IDataSource,
+  pagination?: false | 'topLeft' | 'topCenter' | 'topRight' | 'bottomLeft' | 'bottomCenter' | 'bottomRight',
+  pageSize?: number,
 }
 
 // 本控件强依赖ComponentRender
 export const Table = memo((
   props: TableProps
 ) => {
-  const { header, footer, dataSource, ...other } = props
+  const { header, footer, dataSource, pagination, summary, pageSize, ...other } = props
   const [id] = useState(createUuid())
 
+  const handleChange = useCallback(() => {
+
+  }, [])
+
   return (
-    <ArrayField name={id} value={dataSource}>
-      <Table dataSource={dataSource} {...other}/>
+    <ArrayField name={id} value={dataSource?.nodes}>
+      <AntdTable
+        dataSource={dataSource?.nodes}
+        pagination={
+          pagination === false
+            ? pagination
+            : {
+              position: pagination && [pagination],
+              pageSize: pageSize,
+            }
+        }
+        summary={(pageData) => {
+          return (
+            summary
+          );
+        }}
+        onChange={handleChange}
+        {...other}
+      />
     </ArrayField>
   )
 })

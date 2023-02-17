@@ -17,7 +17,6 @@ export const TableMaterial: IComponentMaterial = {
   designerLocales: locales,
   designerSchema: materialSchema,
   designerProps: {
-    dataSource: [{ key: "1" }]
   },
   resource: {
     name: name,

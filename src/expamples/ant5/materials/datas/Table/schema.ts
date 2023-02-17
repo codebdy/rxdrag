@@ -41,6 +41,46 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
         defaultValue: "large",
       }
     },
+    {
+      componentName: "Select",
+      "x-field": {
+        name: "pagination",
+        label: "$pagination",
+      },
+      props: {
+        options: [
+          {
+            label: "$false",
+            value: false,
+          },
+          {
+            label: "$topLeft",
+            value: "topLeft"
+          },
+          {
+            label: "$topCenter",
+            value: "topCenter"
+          },
+          {
+            label: "$topRight",
+            value: "topRight"
+          },
+          {
+            label: "$bottomLeft",
+            value: "bottomLeft"
+          },
+          {
+            label: "$bottomCenter",
+            value: "bottomCenter"
+          },
+          {
+            label: "$bottomRight",
+            value: "bottomRight"
+          },
+        ],
+        defaultValue: "bottomRight",
+      }
+    },
   ],
   slotsSchemas: [
     {
