@@ -1,5 +1,5 @@
+import { Table } from "antd";
 import { IComponentMaterial } from "core-react";
-import { List } from "expamples/ant5/components/datas/List";
 import { FooterMaterial } from "../../common/Footer";
 import { HeaderMaterial } from "../../common/Header";
 import { ListItemMaterial } from "../ListItem";
@@ -12,7 +12,7 @@ import { materialSchema } from "./schema";
 const name = "Table"
 export const TableMaterial: IComponentMaterial = {
   componentName: name,
-  component: List,
+  component: Table,
   designer: TableDesigner,
   designerLocales: locales,
   designerSchema: materialSchema,

@@ -16,6 +16,7 @@ export const locales = {
       bottomLeft: "左下",
       bottomCenter: "中下",
       bottomRight: "右下",
+      rowKey: "行主键",
       ...sizeLocales["zh-CN"],
     }
 
@@ -35,6 +36,7 @@ export const locales = {
       bottomLeft: "Bottom Left",
       bottomCenter: "Bottom Center",
       bottomRight: "Bottom Right",
+      rowKey: "Row Key",
       ...sizeLocales["en-US"],
     }
   }

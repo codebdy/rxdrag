@@ -736,6 +736,350 @@
                       },
                       "children": [
                         {
+                          "componentName": "Table",
+                          "selfRender": true,
+                          "props": {
+                            "pagination": false,
+                            "style": {}
+                          },
+                          "x-reactions": {
+                            "id": "97be3def-3b81-46cf-b77c-1b27f83a9f16",
+                            "enable": true,
+                            "events": [
+                              {
+                                "id": "88f2c6a9-c5ef-4e3c-bae9-9d175ab66030",
+                                "name": "init",
+                                "label": "初始化",
+                                "logicMetas": {
+                                  "reactions": [
+                                    {
+                                      "id": "b75a13c3-ee7d-4e01-8828-fa752bd00703",
+                                      "label": "输入",
+                                      "type": "Start",
+                                      "materialName": "start",
+                                      "name": "input",
+                                      "x6Node": {
+                                        "x": 100,
+                                        "y": 90,
+                                        "width": 20,
+                                        "height": 20
+                                      }
+                                    },
+                                    {
+                                      "id": "c0be6294-eba1-4528-8b2e-253d044b7a2d",
+                                      "label": "模拟数据",
+                                      "type": "SingleReaction",
+                                      "materialName": "mockData",
+                                      "inPorts": [
+                                        {
+                                          "id": "543c5ee6-c07b-4355-9fb5-55c0f408f5dc",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "outPorts": [
+                                        {
+                                          "id": "2d8323a1-0bd5-4540-ab0a-71dad26832ed",
+                                          "name": "success",
+                                          "label": "$success"
+                                        },
+                                        {
+                                          "id": "962dbf84-e368-4292-8a9c-d611766a8184",
+                                          "name": "error",
+                                          "label": "$error"
+                                        },
+                                        {
+                                          "id": "4f8b425a-ea5b-4167-9cc7-37323ec875fb",
+                                          "name": "loading",
+                                          "label": "$loading"
+                                        }
+                                      ],
+                                      "x6Node": {
+                                        "x": 410,
+                                        "y": 110,
+                                        "width": 116,
+                                        "height": 48
+                                      },
+                                      "config": {
+                                        "duration": 500
+                                      }
+                                    },
+                                    {
+                                      "id": "81186513-199d-4623-8f3b-f2cf5ce3a3e5",
+                                      "label": "设置属性",
+                                      "type": "ControllerDefaultReaction",
+                                      "materialName": "setProp",
+                                      "inPorts": [
+                                        {
+                                          "id": "818f8fca-b431-4b3c-9660-5461f2325ede",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "config": {
+                                        "controllerId": "97be3def-3b81-46cf-b77c-1b27f83a9f16",
+                                        "reactionRef": "setProp",
+                                        "prop": "loading"
+                                      },
+                                      "x6Node": {
+                                        "x": 650,
+                                        "y": 220,
+                                        "width": 116,
+                                        "height": 48
+                                      }
+                                    },
+                                    {
+                                      "id": "de82a362-7c81-4361-8fe8-8c32176863d7",
+                                      "label": "设置属性",
+                                      "type": "ControllerDefaultReaction",
+                                      "materialName": "setProp",
+                                      "inPorts": [
+                                        {
+                                          "id": "818f8fca-b431-4b3c-9660-5461f2325ede",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "config": {
+                                        "controllerId": "97be3def-3b81-46cf-b77c-1b27f83a9f16",
+                                        "reactionRef": "setProp",
+                                        "prop": "dataSource"
+                                      },
+                                      "x6Node": {
+                                        "x": 650,
+                                        "y": 50,
+                                        "width": 116,
+                                        "height": 48
+                                      }
+                                    },
+                                    {
+                                      "id": "696dd67a-b439-4e1c-963a-897aab5dae55",
+                                      "label": "提示消息",
+                                      "type": "SingleReaction",
+                                      "materialName": "infoMessage",
+                                      "inPorts": [
+                                        {
+                                          "id": "4976315b-b17b-44c2-a460-3ffaf79a840f",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "x6Node": {
+                                        "x": 650,
+                                        "y": 130,
+                                        "width": 116,
+                                        "height": 48
+                                      },
+                                      "config": {
+                                        "type": "error"
+                                      }
+                                    },
+                                    {
+                                      "id": "d326508f-00c7-416c-afce-77c95aaacef7",
+                                      "label": "常量",
+                                      "type": "SingleReaction",
+                                      "materialName": "fixedValue",
+                                      "inPorts": [
+                                        {
+                                          "id": "8b51b6a3-f3f4-4f52-bf5c-4d3bc6f416c0",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "outPorts": [
+                                        {
+                                          "id": "c25c076e-a9ef-49a6-999d-979db30035ca",
+                                          "name": "output",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "x6Node": {
+                                        "x": 240,
+                                        "y": 100,
+                                        "width": 88,
+                                        "height": 32
+                                      },
+                                      "config": {
+                                        "value": {
+                                          "nodes": [
+                                            {
+                                              "id": "1",
+                                              "name": "John Brown",
+                                              "age": 32,
+                                              "address": "New York No. 1 Lake Park",
+                                              "tags": [
+                                                "nice",
+                                                "developer"
+                                              ]
+                                            },
+                                            {
+                                              "id": "2",
+                                              "name": "Jim Green",
+                                              "age": 42,
+                                              "address": "London No. 1 Lake Park",
+                                              "tags": [
+                                                "loser"
+                                              ]
+                                            },
+                                            {
+                                              "id": "3",
+                                              "name": "Joe Black",
+                                              "age": 32,
+                                              "address": "Sidney No. 1 Lake Park",
+                                              "tags": [
+                                                "cool",
+                                                "teacher"
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "invokes": [
+                                    {
+                                      "id": "a820fd68-483f-4ac4-9ddb-531d39396068",
+                                      "source": {
+                                        "nodeId": "b75a13c3-ee7d-4e01-8828-fa752bd00703"
+                                      },
+                                      "target": {
+                                        "nodeId": "d326508f-00c7-416c-afce-77c95aaacef7",
+                                        "portId": "8b51b6a3-f3f4-4f52-bf5c-4d3bc6f416c0"
+                                      }
+                                    },
+                                    {
+                                      "id": "b79c9206-8668-44ea-8130-1e18fd69a088",
+                                      "source": {
+                                        "nodeId": "d326508f-00c7-416c-afce-77c95aaacef7",
+                                        "portId": "c25c076e-a9ef-49a6-999d-979db30035ca"
+                                      },
+                                      "target": {
+                                        "nodeId": "c0be6294-eba1-4528-8b2e-253d044b7a2d",
+                                        "portId": "543c5ee6-c07b-4355-9fb5-55c0f408f5dc"
+                                      }
+                                    },
+                                    {
+                                      "id": "2dae8074-cb0a-4765-bb1b-5d13be17712e",
+                                      "source": {
+                                        "nodeId": "c0be6294-eba1-4528-8b2e-253d044b7a2d",
+                                        "portId": "2d8323a1-0bd5-4540-ab0a-71dad26832ed"
+                                      },
+                                      "target": {
+                                        "nodeId": "de82a362-7c81-4361-8fe8-8c32176863d7",
+                                        "portId": "818f8fca-b431-4b3c-9660-5461f2325ede"
+                                      }
+                                    },
+                                    {
+                                      "id": "dda7a25f-3f67-4478-8ea5-7a8cfc3df25b",
+                                      "source": {
+                                        "nodeId": "c0be6294-eba1-4528-8b2e-253d044b7a2d",
+                                        "portId": "4f8b425a-ea5b-4167-9cc7-37323ec875fb"
+                                      },
+                                      "target": {
+                                        "nodeId": "81186513-199d-4623-8f3b-f2cf5ce3a3e5",
+                                        "portId": "818f8fca-b431-4b3c-9660-5461f2325ede"
+                                      }
+                                    },
+                                    {
+                                      "id": "3c4d2680-8f16-4342-804f-dacc6cf25cab",
+                                      "source": {
+                                        "nodeId": "c0be6294-eba1-4528-8b2e-253d044b7a2d",
+                                        "portId": "962dbf84-e368-4292-8a9c-d611766a8184"
+                                      },
+                                      "target": {
+                                        "nodeId": "696dd67a-b439-4e1c-963a-897aab5dae55",
+                                        "portId": "4976315b-b17b-44c2-a460-3ffaf79a840f"
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "id": "82834e66-fafd-4bd6-8d72-7ca210ed3150",
+                                "name": "destory",
+                                "label": "销毁"
+                              },
+                              {
+                                "id": "d50e0c91-db02-4f20-847b-89eee14b695e",
+                                "name": "onClick",
+                                "label": "点击"
+                              }
+                            ]
+                          },
+                          "slots": {
+                            "renderItem": {
+                              "componentName": "ListItem",
+                              "slots": {
+                                "actions": {
+                                  "componentName": "ActionSlot",
+                                  "slots": {},
+                                  "children": []
+                                },
+                                "extra": {
+                                  "componentName": "ExtraSlot",
+                                  "slots": {},
+                                  "children": []
+                                }
+                              },
+                              "children": [
+                                {
+                                  "componentName": "ListItemMeta",
+                                  "slots": {
+                                    "avatar": {
+                                      "componentName": "Avatar",
+                                      "slots": {},
+                                      "children": []
+                                    },
+                                    "title": {
+                                      "componentName": "TextView",
+                                      "props": {
+                                        "content": "Title"
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    },
+                                    "description": {
+                                      "componentName": "TextView",
+                                      "props": {
+                                        "content": "Description"
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "componentName": "TableColumn",
+                              "props": {
+                                "title": "名称"
+                              },
+                              "slots": {},
+                              "children": []
+                            },
+                            {
+                              "componentName": "TableColumn",
+                              "props": {
+                                "title": "标签"
+                              },
+                              "slots": {},
+                              "children": []
+                            },
+                            {
+                              "componentName": "TableColumn",
+                              "props": {
+                                "title": "操作"
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
                           "componentName": "Customers",
                           "slots": {},
                           "children": []

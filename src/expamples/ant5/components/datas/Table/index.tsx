@@ -31,13 +31,14 @@ export type TableProps = {
   dataSource?: IDataSource,
   pagination?: false | 'topLeft' | 'topCenter' | 'topRight' | 'bottomLeft' | 'bottomCenter' | 'bottomRight',
   pageSize?: number,
+  rowKey?: string,
 }
 
 // 本控件强依赖ComponentRender
 export const Table = memo((
   props: TableProps
 ) => {
-  const { header, footer, dataSource, pagination, summary, pageSize, ...other } = props
+  const { header, footer, dataSource, pagination, summary, pageSize, rowKey = "id", ...other } = props
   const [id] = useState(createUuid())
 
   const handleChange = useCallback(() => {
@@ -48,6 +49,7 @@ export const Table = memo((
     <ArrayField name={id} value={dataSource?.nodes}>
       <AntdTable
         dataSource={dataSource?.nodes}
+        rowKey = {rowKey}
         pagination={
           pagination === false
             ? pagination

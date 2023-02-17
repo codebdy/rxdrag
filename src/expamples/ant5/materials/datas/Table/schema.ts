@@ -7,6 +7,13 @@ import { IControllerMeta } from "runner/reaction/interfaces/metas";
 const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
   propsSchemas: [
     {
+      componentName: "Input",
+      "x-field": {
+        name: "rowKey",
+        label: "$rowKey",
+      },
+    },
+    {
       componentName: "Switch",
       "x-field": {
         name: "bordered",
