@@ -15,7 +15,6 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
   const colums = useMemo(() => {
     return childNodes?.map(child => ({
       ...child?.meta?.props,
-      dataIndex: 'money',
       render: () => {
         return <ComponentDesignerView nodeId={child?.id!} />
       }

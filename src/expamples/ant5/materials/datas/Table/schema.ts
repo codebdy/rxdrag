@@ -13,7 +13,6 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
         label: "$bordered",
         params: {
           valuePropName: "checked",
-          withBind: true,
         }
       },
     },
@@ -22,9 +21,6 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
       "x-field": {
         name: "size",
         label: "$size",
-        params: {
-          withBind: true,
-        }
       },
       props: {
         optionType: "button",
@@ -76,7 +72,7 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
     },
   ],
   logicOptions: {
-    canBindField: true,
+    canBindField: false,
   }
 }
 

@@ -9,7 +9,8 @@ export const locales = {
       right: "右",
       ellipsis: "超宽省略",
       fixed: "固定",
-      responsiveBreakpoints:"响应断点",
+      responsiveBreakpoints: "响应断点",
+      width: "宽度",
     }
 
   },
@@ -23,7 +24,8 @@ export const locales = {
       right: "Right",
       ellipsis: "Ellipsis",
       fixed: "Fixed",
-      responsiveBreakpoints:"responsive",
+      responsiveBreakpoints: "responsive",
+      width: "Width",
     }
   }
 }

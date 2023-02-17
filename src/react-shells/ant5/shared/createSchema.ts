@@ -1,4 +1,7 @@
 import { INodeSchema } from "core";
+import { IBindParams } from "runner/ComponentRender/interfaces";
+import { IFieldMeta } from "runner/fieldy";
+import { IControllerMeta } from "runner/reaction";
 import { backgroundSetter } from "../SettingsForm/schemas/backgroundSetter";
 import { borderRediusSetter } from "../SettingsForm/schemas/borderRediusSetter";
 import { borderSetter } from "../SettingsForm/schemas/borderSetter";
@@ -14,14 +17,23 @@ export type SchemaOptions<IField = any, IReactions = any> = {
   logicOptions?: LogicOptions,
 }
 
-export function attachFormItem(schemas?: INodeSchema[]) {
+export function attachFormItem(schemas?: INodeSchema<IFieldMeta<IBindParams>, IControllerMeta>[]): INodeSchema<IFieldMeta<IBindParams>, IControllerMeta>[] | undefined {
   return schemas?.map(schema => ({
     componentName: "FormItem",
     props: {
       label: schema?.["x-field"]?.label,
     },
     children: [
-      schema
+      {
+        ...schema,
+        "x-field": {
+          ...schema?.["x-field"],
+          params: {
+            ...schema?.["x-field"]?.params,
+            withBind: schema?.["x-field"]?.params?.withBind === undefined ? true : schema?.["x-field"]?.params?.withBind
+          }
+        }
+      }
     ],
   }))
 }

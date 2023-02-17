@@ -7,10 +7,13 @@ export function useTreeNodes(ids: ID[]) {
   const [nodes, setNodes] = useState<(ITreeNode | null)[] | null>()
   const monitor = useDesignerEngine()?.getMonitor()
   const handleNodeChange = useCallback((nd: ITreeNode) => {
-    if (nodes?.find(node => node?.id === nd.id)) {
-      setNodes(nodes => nodes?.filter(node => node?.id === nd.id ? nd : node))
-    }
-  }, [nodes])
+    setNodes(nodes => {
+      if (nodes?.find(node => node?.id === nd.id)) {
+        return nodes?.map(node => node?.id === nd.id ? nd : node)
+      }
+      return nodes;
+    })
+  }, [])
 
   useEffect(() => {
     if (monitor) {
