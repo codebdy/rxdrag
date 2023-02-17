@@ -40,6 +40,7 @@ import { ReactionsInput } from "./components/ReactionsInput";
 import { EventInput } from "./components/EventInput";
 import { ValueInput } from "./components/ValueInput";
 import { JSONInput } from "./components/JSONInput";
+import { CheckboxGroup } from "./components/CheckboxGroup";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -113,6 +114,8 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         GutterInput,
         "Radio.Group": Radio.Group,
         "Checkbox.Group": Checkbox.Group,
+        Checkbox: Checkbox,
+        CheckboxGroup: CheckboxGroup,
         ColInput,
         BackgroundImageInput,
         BackgroundSizeInput,
@@ -134,7 +137,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
             <VirtualForm
               initialValue={currentNode?.meta}
               onValueChange={handleMetaChange}
-              key = {currentNode.id}
+              key={currentNode.id}
             >
               <Form
                 labelAlign="left"

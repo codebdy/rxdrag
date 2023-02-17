@@ -59,16 +59,40 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
         }
       },
     },
-    //需要修改输入控件，数组输入
     {
-      componentName: "Input",
-      props: {
-        placeholdr: "需要替换",
-      },
+      componentName: "CheckboxGroup",
       "x-field": {
         name: "responsive",
         label: "$responsiveBreakpoints",
       },
+      props: {
+        options: [
+          {
+            label: "xxl",
+            value: "xxl"
+          },
+          {
+            label: "xl",
+            value: "xl"
+          },
+          {
+            label: "lg",
+            value: "lg"
+          },
+          {
+            label: "md",
+            value: "md"
+          },
+          {
+            label: "sm",
+            value: "sm"
+          },
+          {
+            label: "xs",
+            value: "xs"
+          },
+        ],
+      }
     },
     {
       componentName: "InputNumber",
