@@ -3,28 +3,23 @@ import React, { forwardRef, memo, useMemo } from "react";
 import cls from 'classnames'
 import dayjs from "dayjs";
 import "./style.less"
-
-export enum TextType {
-  Number = "Number",
-  Date = "Date",
-  Text = "Text",
-}
+import { TypographyType } from "../typography/types";
 
 export interface ITextProps {
   value?: string;
   mode?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'p';
   style?: React.CSSProperties;
   className?: string;
-  textType?: TextType;
+  textType?: TypographyType;
   formatMask?: string;
 }
 export const TextView = memo(forwardRef<HTMLDivElement, ITextProps>((props, ref) => {
-  const { value, textType = TextType.Text, formatMask, ...other } = props;
+  const { value, textType = TypographyType.Text, formatMask, ...other } = props;
 
   const tagName = props.mode === 'normal' || !props.mode ? 'div' : props.mode
   const text = useMemo(() => {
     const txtValue = value?.toString();
-    if (textType === TextType.Date) {
+    if (textType === TypographyType.Date) {
       return dayjs(txtValue).format(formatMask || "YYYY-MM-DD HH:mm:ss");
     }
     return txtValue;

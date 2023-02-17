@@ -1,5 +1,5 @@
 import { IComponentMaterial } from "core-react";
-import { Link } from "expamples/ant5/components/displays/Link";
+import { Link } from "expamples/ant5/components/displays/typography/Link";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";
