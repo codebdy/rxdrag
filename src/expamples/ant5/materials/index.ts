@@ -56,6 +56,7 @@ import { ExtraSlotMaterial } from "./slots/ExtraSlot";
 import { TableMaterial } from "./datas/Table";
 import { TableColumnMaterial } from "./datas/TableColumn";
 import { LinkMaterial } from "./displays/Link";
+import { SpaceMaterial } from "./layouts/Space";
 
 export type MaterialGroup = {
   titleKey: string,
@@ -131,6 +132,7 @@ export const materials: MaterialGroup[] = [
       DividerMaterial,
       BreadcrumbMaterial,
       HeroMaterial,
+      SpaceMaterial,
     ]
   },
   {
