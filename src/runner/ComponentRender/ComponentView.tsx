@@ -49,7 +49,7 @@ export const ComponentView = memo((
             !!node.children?.length ?
               <Component {...node.props} {...slots} {...other}>
                 {
-                  node.children?.map(child => {
+                  !node.selfRender && node.children?.map(child => {
                     return (<ComponentView key={child.id} node={child} />)
                   })
                 }

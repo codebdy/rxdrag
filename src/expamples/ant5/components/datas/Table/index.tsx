@@ -18,11 +18,13 @@
 
 // designer自带属性编辑组件
 
-import { memo, useCallback, useState } from "react"
+import { memo, useCallback, useMemo, useState } from "react"
 import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils"
 import { ArrayField } from "runner/fieldy/components/ArrayField/ArrayField"
 import { Table as AntdTable } from "antd"
 import { IDataSource } from "../IDataSource"
+import { useComponentSchema } from "runner/ComponentRender/hooks/useComponentSchema"
+import { ComponentView } from "runner/ComponentRender/ComponentView"
 
 export type TableProps = {
   header?: React.ReactElement,
@@ -40,6 +42,15 @@ export const Table = memo((
 ) => {
   const { header, footer, dataSource, pagination, summary, pageSize, rowKey = "id", ...other } = props
   const [id] = useState(createUuid())
+  const nodeSchema = useComponentSchema()
+  const columns = useMemo(() => {
+    return nodeSchema?.children?.map(child => ({
+      ...child?.props,
+      render: () => {
+        return <ComponentView node={child} />
+      }
+    }))
+  }, [nodeSchema?.children])
 
   const handleChange = useCallback(() => {
 
@@ -48,8 +59,9 @@ export const Table = memo((
   return (
     <ArrayField name={id} value={dataSource?.nodes}>
       <AntdTable
+        columns={columns as any}
         dataSource={dataSource?.nodes}
-        rowKey = {rowKey}
+        rowKey={rowKey}
         pagination={
           pagination === false
             ? pagination

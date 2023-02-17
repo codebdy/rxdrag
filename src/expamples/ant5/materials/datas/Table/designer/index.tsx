@@ -12,7 +12,7 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
   const { header, footer, summary, dataSource, pagination, ...other } = props
   const node = useNode()
   const childNodes = useTreeNodes(node?.children || [])
-  const colums = useMemo(() => {
+  const columns = useMemo(() => {
     return childNodes?.map(child => ({
       ...child?.meta?.props,
       render: () => {
@@ -24,7 +24,7 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
   return (
     <Table
       ref={ref}
-      columns={colums as any}
+      columns={columns as any}
       title={header && (() => header)}
       footer={footer && (() => footer)}
       dataSource={[{ key: "1" }]}
