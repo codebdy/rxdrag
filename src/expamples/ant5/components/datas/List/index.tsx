@@ -3,9 +3,11 @@ import { List as AntdList, ListProps } from "antd"
 import { ArrayField } from "runner/fieldy/components/ArrayField/ArrayField"
 import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils"
 import { ObjectField } from "runner/fieldy/components/ObjectField/ObjectField"
+import { IDataSource } from "../IDataSource"
 
 export type ListAddonProps = {
   renderItem?: React.ReactElement,
+  dataSource?: IDataSource,
 }
 
 export const List = memo(forwardRef<HTMLDivElement>((props: ListProps<any> & ListAddonProps, ref) => {
@@ -13,9 +15,9 @@ export const List = memo(forwardRef<HTMLDivElement>((props: ListProps<any> & Lis
   const [id] = useState(createUuid())
 
   return (
-    <ArrayField name={id} value={dataSource}>
+    <ArrayField name={id} value={dataSource?.nodes}>
       <AntdList
-        dataSource={dataSource}
+        dataSource={dataSource?.nodes}
         renderItem={(item, index) => (
           <ObjectField name={index.toString()} value={item}>
             {renderItem}

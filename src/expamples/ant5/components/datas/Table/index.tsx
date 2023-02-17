@@ -22,11 +22,7 @@ import { memo, useCallback, useState } from "react"
 import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils"
 import { ArrayField } from "runner/fieldy/components/ArrayField/ArrayField"
 import { Table as AntdTable } from "antd"
-
-export interface IDataSource {
-  nodes?: [],
-  total?: number,
-}
+import { IDataSource } from "../IDataSource"
 
 export type TableProps = {
   header?: React.ReactElement,

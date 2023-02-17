@@ -339,7 +339,9 @@
                           "props": {
                             "style": {}
                           },
-                          "x-field": {},
+                          "x-field": {
+                            "params": {}
+                          },
                           "x-reactions": {
                             "id": "97b74524-499e-472b-ab0d-bf46f11fe185",
                             "enable": true,
@@ -362,52 +364,6 @@
                                         "y": 160,
                                         "width": 20,
                                         "height": 20
-                                      }
-                                    },
-                                    {
-                                      "id": "cd0fe57b-7d0e-48b5-9800-ebec22e3d5d6",
-                                      "label": "常量",
-                                      "type": "SingleReaction",
-                                      "materialName": "fixedValue",
-                                      "inPorts": [
-                                        {
-                                          "id": "c57a20a4-6e4e-4831-b692-0f250c198d7e",
-                                          "name": "input",
-                                          "label": ""
-                                        }
-                                      ],
-                                      "outPorts": [
-                                        {
-                                          "id": "4d51e2a8-a5c0-4088-8f11-1caddfffe661",
-                                          "name": "output",
-                                          "label": ""
-                                        }
-                                      ],
-                                      "x6Node": {
-                                        "x": 260,
-                                        "y": 170,
-                                        "width": 88,
-                                        "height": 32
-                                      },
-                                      "config": {
-                                        "value": [
-                                          {
-                                            "title": "新建订单",
-                                            "description": "提交人：张三，提交时间：2022-4-5 8:20"
-                                          },
-                                          {
-                                            "title": "申请开发火星",
-                                            "description": "提交人：李四，提交时间：2022-4-5 8:20"
-                                          },
-                                          {
-                                            "title": "申请给沙特付货款",
-                                            "description": "提交人：王五，提交时间：2022-4-5 8:20"
-                                          },
-                                          {
-                                            "title": "客户Jack跟进",
-                                            "description": "提交人：孙六，提交时间：2022-4-5 8:20"
-                                          }
-                                        ]
                                       }
                                     },
                                     {
@@ -517,6 +473,54 @@
                                         "y": 280,
                                         "width": 116,
                                         "height": 48
+                                      }
+                                    },
+                                    {
+                                      "id": "cd0fe57b-7d0e-48b5-9800-ebec22e3d5d6",
+                                      "label": "常量",
+                                      "type": "SingleReaction",
+                                      "materialName": "fixedValue",
+                                      "inPorts": [
+                                        {
+                                          "id": "c57a20a4-6e4e-4831-b692-0f250c198d7e",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "outPorts": [
+                                        {
+                                          "id": "4d51e2a8-a5c0-4088-8f11-1caddfffe661",
+                                          "name": "output",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "x6Node": {
+                                        "x": 260,
+                                        "y": 170,
+                                        "width": 88,
+                                        "height": 32
+                                      },
+                                      "config": {
+                                        "value": {
+                                          "nodes": [
+                                            {
+                                              "title": "新建订单",
+                                              "description": "提交人：张三，提交时间：2022-4-5 8:20"
+                                            },
+                                            {
+                                              "title": "申请开发火星",
+                                              "description": "提交人：李四，提交时间：2022-4-5 8:20"
+                                            },
+                                            {
+                                              "title": "申请给沙特付货款",
+                                              "description": "提交人：王五，提交时间：2022-4-5 8:20"
+                                            },
+                                            {
+                                              "title": "客户Jack跟进",
+                                              "description": "提交人：孙六，提交时间：2022-4-5 8:20"
+                                            }
+                                          ]
+                                        }
                                       }
                                     }
                                   ],
