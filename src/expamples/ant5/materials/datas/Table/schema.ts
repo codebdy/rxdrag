@@ -38,7 +38,7 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
             value: "small"
           },
         ],
-        defaultValue: "middle",
+        defaultValue: "large",
       }
     },
   ],

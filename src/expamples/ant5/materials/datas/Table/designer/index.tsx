@@ -25,7 +25,6 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
     <Table
       ref={ref}
       columns={colums as any}
-      bordered
       title={header && (() => header)}
       footer={footer && (() => footer)}
       {...other}
