@@ -1,5 +1,5 @@
-import { Table } from "antd";
 import { IComponentMaterial } from "core-react";
+import { Table } from "expamples/ant5/components/datas/Table";
 import { FooterMaterial } from "../../common/Footer";
 import { HeaderMaterial } from "../../common/Header";
 import { ListItemMaterial } from "../ListItem";
