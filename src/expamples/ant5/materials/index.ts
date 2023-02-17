@@ -14,7 +14,6 @@ import { TextViewMaterial } from "./displays/TextView";
 import { StatisticMaterial } from "./displays/Statistic";
 import { BoxMaterial } from "./layouts/Box";
 import { IconViewMaterial } from "./displays/IconView";
-import { JobsMaterial } from "./business/Jobs";
 import { RightAdMaterial } from "./business/RightAd";
 import { DividerMaterial } from "./layouts/Divider";
 import { NewsMaterial } from "./business/News";
@@ -144,7 +143,6 @@ export const materials: MaterialGroup[] = [
   {
     titleKey: 'business',
     items: [
-      JobsMaterial,
       RightAdMaterial,
       NewsMaterial,
       CustomersMaterial,

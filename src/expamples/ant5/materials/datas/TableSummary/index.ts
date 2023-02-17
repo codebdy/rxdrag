@@ -1,6 +1,6 @@
 import { Table } from "antd";
 import { IComponentMaterial } from "core-react";
-import { TableSummary } from "expamples/ant5/components/datas/TableSummary";
+import { TableSummaryDesigner } from "expamples/ant5/materials/datas/TableSummary/Designer";
 import { locales } from "./locales";
 import { materialSchema } from "./schema";
 
@@ -8,7 +8,7 @@ const name = "TableSummary"
 export const TableSummaryMaterial: IComponentMaterial = {
   componentName: name,
   component: Table.Summary,
-  designer: TableSummary,
+  designer: TableSummaryDesigner,
   designerLocales: locales,
   designerSchema: materialSchema,
   designerProps: {
