@@ -1,5 +1,6 @@
-import { Space } from "antd";
 import { IComponentMaterial } from "core-react";
+import { Space } from "expamples/ant5/components/layouts/Space";
+import { SpaceDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";
@@ -8,7 +9,7 @@ const name = "Space"
 export const SpaceMaterial: IComponentMaterial = {
   componentName: name,
   component: Space,
-  designer: Space,
+  designer: SpaceDesigner,
   designerLocales: locales,
   designerSchema: schema,
   resource: {
@@ -20,11 +21,12 @@ export const SpaceMaterial: IComponentMaterial = {
       {
         componentName: name,
         props: {
-        }
+        },
+        selfRender: true,
       }
     ]
   },
-  behaviorRule:{
+  behaviorRule: {
     noRef: true,
     droppable: true,
     noPlaceholder: false,
