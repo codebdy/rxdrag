@@ -12,7 +12,57 @@ const options: SchemaOptions = {
           withBind: true,
         }
       },
-    }
+    },
+    {
+      componentName: "Radio.Group",
+      "x-field": {
+        name: "align",
+        label: "$align",
+        params: {
+          withBind: true,
+        }
+      },
+      props: {
+        optionType: "button",
+        options: [
+          {
+            label: "$left",
+            value: "left"
+          },
+          {
+            label: "$center",
+            value: "center"
+          },
+          {
+            label: "$right",
+            value: "right"
+          },
+        ],
+        defaultValue: "left",
+      }
+    },
+    {
+      componentName: "Switch",
+      "x-field": {
+        name: "ellipsis",
+        label: "$ellipsis",
+        params: {
+          withBind: true,
+          valuePropName: "checked",
+        }
+      },
+    },
+    {
+      componentName: "Switch",
+      "x-field": {
+        name: "fixed",
+        label: "$fixed",
+        params: {
+          withBind: true,
+          valuePropName: "checked",
+        }
+      },
+    },
   ]
 }
 

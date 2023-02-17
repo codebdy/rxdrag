@@ -3,6 +3,12 @@ export const locales = {
     title: "表格列",
     settings: {
       title: "标题",
+      align: "对齐",
+      left: "左",
+      center: "中",
+      right: "右",
+      ellipsis: "超宽省略",
+      fixed: "固定",
     }
 
   },
@@ -10,6 +16,12 @@ export const locales = {
     title: "Table Column",
     settings: {
       title: "Title",
+      align: "Align",
+      left: "Left",
+      center: "Center",
+      right: "Right",
+      ellipsis: "Ellipsis",
+      fixed: "Fixed",
     }
   }
 }
