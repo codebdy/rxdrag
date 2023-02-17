@@ -19,7 +19,9 @@
 // designer自带属性编辑组件
 
 import { PaginationProps } from "antd"
-import { memo } from "react"
+import { memo, useState } from "react"
+import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils"
+import { ArrayField } from "runner/fieldy/components/ArrayField/ArrayField"
 
 export type TableProps = {
   header?: React.ReactElement,
@@ -33,8 +35,12 @@ export type TableProps = {
 export const Table = memo((
   props: TableProps
 ) => {
-  const { header, footer, ...other } = props
+  const { header, footer, dataSource, ...other } = props
+  const [id] = useState(createUuid())
+
   return (
-    <></>
+    <ArrayField name={id} value={dataSource}>
+      <Table dataSource={dataSource} {...other}/>
+    </ArrayField>
   )
 })
