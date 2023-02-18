@@ -8,7 +8,6 @@ export type LoopPanelProps = {
 
 export const LoopPanel = memo(forwardRef<HTMLDivElement, LoopPanelProps>((props, ref) => {
   const { value, children } = props;
-  console.log("哈哈", value)
   return (
     <>
       {

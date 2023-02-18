@@ -259,6 +259,10 @@ export class FieldyEngineImpl implements IFieldyEngine {
       } else if (fieldState.meta?.type === "array") {
         const value: any[] = []
         const fields = this.getSubFields(formName, fieldPath)
+        //子字段不存在，可能没渲染完，直接返回value。因为列表根据初值动态增加字段
+        if(fields.length === 0){
+          return fieldState.value
+        }
         for (const key of fields) {
           const subValue = this.getFieldValue(formName, key)
           if (subValue !== undefined) {

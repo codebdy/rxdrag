@@ -26,9 +26,9 @@ import { IDataSource } from "../IDataSource"
 import { useComponentSchema } from "runner/ComponentRender/hooks/useComponentSchema"
 import { ComponentView } from "runner/ComponentRender/ComponentView"
 import { ObjectField } from "runner/fieldy/components/ObjectField"
-import { IFieldMeta, useFieldPath, useFieldState } from "runner/fieldy"
+import { IFieldMeta } from "runner/fieldy"
 import { IBindParams } from "runner/ComponentRender/interfaces"
-import { Field } from "runner/fieldy/components/Field"
+import { useFieldState } from "runner/fieldy/hooks/useFieldState"
 
 interface RowProps {
   "data-row-key": string | undefined;
@@ -47,18 +47,13 @@ const TableCell: React.FC<TableCellProps> = ({
   children,
   ...restProps
 }) => {
-  const parentPath = useFieldPath()
-  const parentField = useFieldState(parentPath || "")
-  fieldMeta?.name && console.log("哈哈哈 TableCell", fieldMeta?.name, parentField?.value?.[fieldMeta.name])
+  const parentField = useFieldState()
+
   return <td {...restProps}>
     {
       fieldMeta?.name && fieldMeta.params?.withBind
         ? parentField?.value?.[fieldMeta.name]?.toString()
-        : (
-          fieldMeta?.name
-            ? <Field name={fieldMeta.name} value={parentField?.value?.[fieldMeta.name]}>{children}</Field>
-            : children
-        )
+        : children
     }
   </td>;
 };
