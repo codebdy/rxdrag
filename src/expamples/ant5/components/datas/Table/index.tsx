@@ -44,12 +44,14 @@ export const Table = memo((
   const [id] = useState(createUuid())
   const nodeSchema = useComponentSchema()
   const columns = useMemo(() => {
-    return nodeSchema?.children?.map(child => ({
-      ...child?.props,
-      render: () => {
-        return <ComponentView node={child} />
+    return nodeSchema?.children?.map(child => {
+      return {
+        ...child?.props,
+        render: () => {
+          return <ComponentView node={child} />
+        }
       }
-    }))
+    })
   }, [nodeSchema?.children])
 
   const handleChange = useCallback(() => {
