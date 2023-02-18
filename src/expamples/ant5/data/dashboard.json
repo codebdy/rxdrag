@@ -142,7 +142,8 @@
                               "slots": {},
                               "children": []
                             }
-                          }
+                          },
+                          "children": []
                         }
                       ]
                     }
@@ -304,7 +305,8 @@
                                 "title": "查看全部",
                                 "style": {}
                               },
-                              "slots": {}
+                              "slots": {},
+                              "children": []
                             }
                           ]
                         }
@@ -584,7 +586,8 @@
                                         "type": "primary",
                                         "title": "完成"
                                       },
-                                      "slots": {}
+                                      "slots": {},
+                                      "children": []
                                     }
                                   ]
                                 },
@@ -683,7 +686,8 @@
                                 "title": "查看全部 >",
                                 "style": {}
                               },
-                              "slots": {}
+                              "slots": {},
+                              "children": []
                             }
                           ]
                         }
@@ -1013,7 +1017,22 @@
                                 "title": "名称"
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "Link",
+                                  "props": {
+                                    "value": "Link"
+                                  },
+                                  "x-field": {
+                                    "params": {
+                                      "withBind": true
+                                    },
+                                    "name": "name"
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             },
                             {
                               "componentName": "TableColumn",
@@ -1076,7 +1095,8 @@
                                 "title": "加载更多",
                                 "style": {}
                               },
-                              "slots": {}
+                              "slots": {},
+                              "children": []
                             }
                           ]
                         }
@@ -1905,7 +1925,8 @@
                                   "slots": {},
                                   "children": []
                                 }
-                              }
+                              },
+                              "children": []
                             }
                           ]
                         },
@@ -1934,7 +1955,8 @@
                                   "slots": {},
                                   "children": []
                                 }
-                              }
+                              },
+                              "children": []
                             }
                           ]
                         },
@@ -1963,7 +1985,8 @@
                                   "slots": {},
                                   "children": []
                                 }
-                              }
+                              },
+                              "children": []
                             }
                           ]
                         }
