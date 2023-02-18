@@ -2,7 +2,7 @@ import { useMemo, useRef } from "react"
 import { FieldType, IFieldSchema } from "../../../interfaces"
 import { useFieldPath } from "../../../hooks/useFieldPath"
 
-export function useCreateFieldSchema(name: string, type: FieldType) {
+export function useCreateFieldSchema(name: string, type?: FieldType) {
   const parentPath = useFieldPath() || ""
   const fieldPath = useMemo(() => {
     return parentPath ? parentPath + "." + name : name

@@ -59,6 +59,7 @@ import { LinkMaterial } from "./displays/typography/Link";
 import { SpaceMaterial } from "./layouts/Space";
 import { TitleMaterial } from "./displays/typography/Title";
 import { ParagraphMaterial } from "./displays/typography/Paragraph";
+import { LoopPanelMaterial } from "./displays/LoopPanel";
 
 export type MaterialGroup = {
   titleKey: string,
@@ -101,6 +102,7 @@ export const materials: MaterialGroup[] = [
       AvatarMaterial,
       BadgeMaterial,
       ImageViewMaterial,
+      LoopPanelMaterial,
     ]
   },
   {

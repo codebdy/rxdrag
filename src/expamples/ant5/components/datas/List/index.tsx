@@ -2,7 +2,7 @@ import React, { forwardRef, memo, useState } from "react"
 import { List as AntdList, ListProps } from "antd"
 import { ArrayField } from "runner/fieldy/components/ArrayField/ArrayField"
 import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils"
-import { ObjectField } from "runner/fieldy/components/ObjectField/ObjectField"
+import { ObjectField } from "runner/fieldy/components/ObjectField"
 import { IDataSource } from "../IDataSource"
 
 export type ListAddonProps = {

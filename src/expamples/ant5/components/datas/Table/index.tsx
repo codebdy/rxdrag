@@ -25,7 +25,7 @@ import { Table as AntdTable } from "antd"
 import { IDataSource } from "../IDataSource"
 import { useComponentSchema } from "runner/ComponentRender/hooks/useComponentSchema"
 import { ComponentView } from "runner/ComponentRender/ComponentView"
-import { ObjectField } from "runner/fieldy/components/ObjectField/ObjectField"
+import { ObjectField } from "runner/fieldy/components/ObjectField"
 import { IFieldMeta, useFieldPath, useFieldState } from "runner/fieldy"
 import { IBindParams } from "runner/ComponentRender/interfaces"
 
