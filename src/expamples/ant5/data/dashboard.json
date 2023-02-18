@@ -1058,9 +1058,9 @@
                                   "slots": {},
                                   "children": [
                                     {
-                                      "componentName": "Text",
+                                      "componentName": "Tag",
                                       "props": {
-                                        "value": "Text"
+                                        "value": "Tag"
                                       },
                                       "x-field": {
                                         "params": {

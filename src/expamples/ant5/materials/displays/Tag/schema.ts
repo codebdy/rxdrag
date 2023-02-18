@@ -1,6 +1,5 @@
 import { INodeSchema } from "core";
 import { createSchema, SchemaOptions, withFormItem } from "react-shells/ant5/shared/createSchema";
-import { typographySchema } from "../schema";
 
 const options: SchemaOptions = {
   propsSchemas: [
@@ -11,7 +10,6 @@ const options: SchemaOptions = {
         label: "$content",
       },
     },
-    ...typographySchema,
   ],
   logicOptions: {
     canBindField: true,
