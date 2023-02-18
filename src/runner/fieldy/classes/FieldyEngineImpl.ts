@@ -185,7 +185,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
         path: fieldPath,
         value
       }
-      
+
       this.dispatch(
         {
           type: SET_FIELD_VALUE,
@@ -260,7 +260,8 @@ export class FieldyEngineImpl implements IFieldyEngine {
         const value: any[] = []
         const fields = this.getSubFields(formName, fieldPath)
         //子字段不存在，可能没渲染完，直接返回value。因为列表根据初值动态增加字段
-        if(fields.length === 0){
+        //还有个问题，就是数组长度变化，这种情况要更新数组字段的全部值，后面数组编辑时，要留意数组值的整体更新
+        if (fields.length !== fieldState.value?.length) {
           return fieldState.value
         }
         for (const key of fields) {
