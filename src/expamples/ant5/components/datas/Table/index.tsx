@@ -28,6 +28,7 @@ import { ComponentView } from "runner/ComponentRender/ComponentView"
 import { ObjectField } from "runner/fieldy/components/ObjectField"
 import { IFieldMeta, useFieldPath, useFieldState } from "runner/fieldy"
 import { IBindParams } from "runner/ComponentRender/interfaces"
+import { Field } from "runner/fieldy/components/Field"
 
 interface RowProps {
   "data-row-key": string | undefined;
@@ -48,11 +49,16 @@ const TableCell: React.FC<TableCellProps> = ({
 }) => {
   const parentPath = useFieldPath()
   const parentField = useFieldState(parentPath || "")
+  fieldMeta?.name && console.log("哈哈哈 TableCell", fieldMeta?.name, parentField?.value?.[fieldMeta.name])
   return <td {...restProps}>
     {
       fieldMeta?.name && fieldMeta.params?.withBind
         ? parentField?.value?.[fieldMeta.name]?.toString()
-        : children
+        : (
+          fieldMeta?.name
+            ? <Field name={fieldMeta.name} value={parentField?.value?.[fieldMeta.name]}>{children}</Field>
+            : children
+        )
     }
   </td>;
 };
@@ -96,6 +102,7 @@ export const Table = memo((
     const { "data-row-key": rowKeyValue } = props
     const row = dataSource?.nodes?.find(node => node?.[rowKey] === rowKeyValue)
     const index = row ? dataSource?.nodes?.indexOf(row) : undefined
+
     return (
       index !== undefined
         ? <ObjectField name={index?.toString() || ""} value={row}>
