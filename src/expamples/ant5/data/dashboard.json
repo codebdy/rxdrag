@@ -862,7 +862,7 @@
                                         "value": {
                                           "nodes": [
                                             {
-                                              "id": "1",
+                                              "id": "xx",
                                               "name": "John Brown",
                                               "age": 32,
                                               "address": "New York No. 1 Lake Park",
@@ -1041,22 +1041,7 @@
                                 "title": "标签"
                               },
                               "slots": {},
-                              "children": [
-                                {
-                                  "componentName": "Text",
-                                  "props": {
-                                    "value": "Text"
-                                  },
-                                  "x-field": {
-                                    "params": {
-                                      "withBind": true
-                                    },
-                                    "name": "tags"
-                                  },
-                                  "slots": {},
-                                  "children": []
-                                }
-                              ]
+                              "children": []
                             },
                             {
                               "componentName": "TableColumn",

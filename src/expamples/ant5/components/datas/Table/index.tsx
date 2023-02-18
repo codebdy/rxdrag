@@ -25,6 +25,11 @@ import { Table as AntdTable } from "antd"
 import { IDataSource } from "../IDataSource"
 import { useComponentSchema } from "runner/ComponentRender/hooks/useComponentSchema"
 import { ComponentView } from "runner/ComponentRender/ComponentView"
+import { ObjectField } from "runner/fieldy/components/ObjectField/ObjectField"
+
+interface RowProps {
+  "data-row-key": string | undefined;
+}
 
 export type TableProps = {
   header?: React.ReactElement,
@@ -57,6 +62,18 @@ export const Table = memo((
   const handleChange = useCallback(() => {
 
   }, [])
+  const TableRow: React.FC<RowProps> = useMemo(() => (props) => {
+    const { "data-row-key": rowKeyValue } = props
+    const row = dataSource?.nodes?.find(node => node?.[rowKey] === rowKeyValue)
+    const index = row ? dataSource?.nodes?.indexOf(row) : undefined
+    return (
+      index !== undefined
+        ? <ObjectField name={index?.toString() || ""} value={row}>
+          <tr {...props} />
+        </ObjectField>
+        : <tr {...props} />
+    );
+  }, [dataSource?.nodes, rowKey]);
 
   return (
     <ArrayField name={id} value={dataSource?.nodes}>
@@ -64,6 +81,11 @@ export const Table = memo((
         columns={columns as any}
         dataSource={dataSource?.nodes}
         rowKey={rowKey}
+        components={{
+          body: {
+            row: TableRow,
+          },
+        }}
         pagination={
           pagination === false
             ? pagination
