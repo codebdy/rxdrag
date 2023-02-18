@@ -1040,8 +1040,39 @@
                               "props": {
                                 "title": "标签"
                               },
+                              "x-field": {
+                                "params": {},
+                                "type": "array",
+                                "name": "tags"
+                              },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "LoopPanel",
+                                  "props": {},
+                                  "x-field": {
+                                    "params": {
+                                      "withBind": true
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": [
+                                    {
+                                      "componentName": "Text",
+                                      "props": {
+                                        "value": "Text"
+                                      },
+                                      "x-field": {
+                                        "params": {
+                                          "withBind": true
+                                        }
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  ]
+                                }
+                              ]
                             },
                             {
                               "componentName": "TableColumn",

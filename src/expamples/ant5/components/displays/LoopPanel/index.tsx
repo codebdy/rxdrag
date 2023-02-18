@@ -1,4 +1,5 @@
 import { forwardRef, memo } from "react"
+import { Field } from "runner/fieldy/components/Field";
 
 export type LoopPanelProps = {
   value?: any[],
@@ -12,11 +13,11 @@ export const LoopPanel = memo(forwardRef<HTMLDivElement, LoopPanelProps>((props,
       {
         value?.map((item, index) => {
           return (
-            <>
+            <Field key={index} name={index.toString()} value={item}>
               {
                 children
               }
-            </>
+            </Field>
           )
         })
       }
