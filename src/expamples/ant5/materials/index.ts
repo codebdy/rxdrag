@@ -10,7 +10,7 @@ import { LogoMaterial } from "./layouts/Logo";
 import { MenuMaterial } from "./layouts/Menu";
 import { AvatarMaterial } from "./displays/Avatar";
 import { CardMaterial } from "./layouts/Card";
-import { TextMaterial } from "./displays/Text";
+import { TextMaterial } from "./displays/typography/Text";
 import { StatisticMaterial } from "./displays/Statistic";
 import { BoxMaterial } from "./layouts/Box";
 import { IconViewMaterial } from "./displays/IconView";
@@ -55,10 +55,10 @@ import { ActionSlotMaterial } from "./slots/ActionSlot";
 import { ExtraSlotMaterial } from "./slots/ExtraSlot";
 import { TableMaterial } from "./datas/Table";
 import { TableColumnMaterial } from "./datas/TableColumn";
-import { LinkMaterial } from "./displays/Link";
+import { LinkMaterial } from "./displays/typography/Link";
 import { SpaceMaterial } from "./layouts/Space";
-import { TitleMaterial } from "./displays/Title";
-import { ParagraphMaterial } from "./displays/Paragraph";
+import { TitleMaterial } from "./displays/typography/Title";
+import { ParagraphMaterial } from "./displays/typography/Paragraph";
 
 export type MaterialGroup = {
   titleKey: string,

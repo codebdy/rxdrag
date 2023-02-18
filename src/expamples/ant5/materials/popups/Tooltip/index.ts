@@ -1,6 +1,6 @@
 import { Tooltip } from "antd";
 import { IComponentMaterial } from "core-react";
-import { TextMaterial } from "../../displays/Text";
+import { TextMaterial } from "../../displays/typography/Text";
 import { TooltipDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";

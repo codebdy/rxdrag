@@ -1,7 +1,7 @@
 import { List } from "antd";
 import { IComponentMaterial } from "core-react";
 import { AvatarMaterial } from "../../displays/Avatar";
-import { TextMaterial } from "../../displays/Text";
+import { TextMaterial } from "../../displays/typography/Text";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
