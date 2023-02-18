@@ -26,10 +26,36 @@ import { IDataSource } from "../IDataSource"
 import { useComponentSchema } from "runner/ComponentRender/hooks/useComponentSchema"
 import { ComponentView } from "runner/ComponentRender/ComponentView"
 import { ObjectField } from "runner/fieldy/components/ObjectField/ObjectField"
+import { IFieldMeta, useFieldPath, useFieldState } from "runner/fieldy"
+import { IBindParams } from "runner/ComponentRender/interfaces"
 
 interface RowProps {
   "data-row-key": string | undefined;
 }
+
+interface TableCellProps {
+  editable: boolean;
+  children: React.ReactNode;
+  record: any;
+  fieldMeta?: IFieldMeta<IBindParams>;
+}
+
+const TableCell: React.FC<TableCellProps> = ({
+  fieldMeta,
+  record,
+  children,
+  ...restProps
+}) => {
+  const parentPath = useFieldPath()
+  const parentField = useFieldState(parentPath || "")
+  return <td {...restProps}>
+    {
+      fieldMeta?.name && fieldMeta.params?.withBind
+        ? parentField?.value?.[fieldMeta.name]?.toString()
+        : children
+    }
+  </td>;
+};
 
 export type TableProps = {
   header?: React.ReactElement,
@@ -54,7 +80,11 @@ export const Table = memo((
         ...child?.props,
         render: () => {
           return <ComponentView node={child} />
-        }
+        },
+        onCell: (record: any, index?: number) => ({
+          record,
+          fieldMeta: child["x-field"],
+        }),
       }
     })
   }, [nodeSchema?.children])
@@ -84,8 +114,10 @@ export const Table = memo((
         components={{
           body: {
             row: TableRow,
+            cell: TableCell,
           },
         }}
+
         pagination={
           pagination === false
             ? pagination

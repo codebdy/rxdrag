@@ -101,7 +101,10 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
         label: "$width",
       },
     },
-  ]
+  ],
+  logicOptions: {
+    canBindField: true,
+  }
 }
 
 export const materialSchema: INodeSchema = createSchema(withFormItem(options))
