@@ -1,5 +1,5 @@
 import { INodeSchema } from "core";
-import { createSchema, SchemaOptions } from "react-shells/ant5/shared/createSchema";
+import { createSchema, SchemaOptions, withFormItem } from "react-shells/ant5/shared/createSchema";
 import { IBindParams } from "runner/ComponentRender/interfaces";
 import { IFieldMeta } from "runner/fieldy";
 import { IControllerMeta } from "runner/reaction/interfaces/metas";
@@ -7,105 +7,59 @@ import { IControllerMeta } from "runner/reaction/interfaces/metas";
 const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
   propsSchemas: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "bordered",
         label: "$bordered",
-      },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "bordered",
-            params: {
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
+        params: {
+          valuePropName: "checked",
         }
-      ],
+      },
     },
     {
-      componentName: "FormItem",
-      props: {
-        label: "$split",
-      },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "split",
-            params: {
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-        }
-      ],
-    },
-    {
-      componentName: "FormItem",
-      props: {
+      componentName: "Radio.Group",
+      "x-field": {
+        name: "size",
         label: "$size",
       },
-      children: [
-        {
-          componentName: "Radio.Group",
-          "x-field": {
-            name: "size",
-            params: {
-              withBind: true,
-            }
+      props: {
+        optionType: "button",
+        options: [
+          {
+            label: "$large",
+            value: "large"
           },
-          props: {
-            optionType: "button",
-            options: [
-              {
-                label: "$large",
-                value: "large"
-              },
-              {
-                label: "$middle",
-                value: "middle"
-              },
-              {
-                label: "$small",
-                value: "small"
-              },
-            ],
-            defaultValue: "middle",
-          }
-        }
-      ]
-    }
+          {
+            label: "$middle",
+            value: "middle"
+          },
+          {
+            label: "$small",
+            value: "small"
+          },
+        ],
+        defaultValue: "middle",
+      }
+    },
   ],
   slotsSchemas: [
     {
-      componentName: "FormItem",
+      componentName: "SlotSwitch",
       props: {
-        label: "$header",
+        name: "header"
       },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "header"
-          }
-        },
-      ]
+      "x-field": {
+        label: "$header",
+      }
     },
     {
-      componentName: "FormItem",
+      componentName: "SlotSwitch",
       props: {
-        label: "$footer",
+        name: "footer"
       },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "footer"
-          }
-        },
-      ]
+      "x-field": {
+        label: "$footer",
+      }
     },
   ],
   logicOptions: {
@@ -113,4 +67,4 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
   }
 }
 
-export const materialSchema: INodeSchema = createSchema(options)
+export const materialSchema: INodeSchema = createSchema(withFormItem(options))
