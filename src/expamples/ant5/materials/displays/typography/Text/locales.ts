@@ -1,15 +1,17 @@
+import { typographyLocales } from "../locales"
+
 export const locales = {
   "zh-CN": {
     title: "文本",
     settings: {
-      mode: "类型"
+      ...typographyLocales["zh-CN"],
     }
 
   },
   'en-US': {
     title: "Text view",
     settings: {
-      mode: "Mode"
+      ...typographyLocales["en-US"],
     }
   }
 }

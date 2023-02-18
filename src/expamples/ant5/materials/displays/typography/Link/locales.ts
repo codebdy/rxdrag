@@ -1,8 +1,10 @@
+import { typographyLocales } from "../locales"
+
 export const locales = {
   "zh-CN": {
     title: "链接",
     settings: {
-      content: "内容",
+      ...typographyLocales["zh-CN"],
       href: "链接",
       target: "目标窗口",
     }
@@ -11,7 +13,7 @@ export const locales = {
   'en-US': {
     title: "Link",
     settings: {
-      content: "content",
+      ...typographyLocales["en-US"],
       href: "Href",
       target: "Target",
     }

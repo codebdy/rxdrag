@@ -85,6 +85,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         TabPanel,
         FormItem: Form.Item,
         Input,
+        TextArea: Input.TextArea,
         Select,
         Switch,
         SlotSwitch,

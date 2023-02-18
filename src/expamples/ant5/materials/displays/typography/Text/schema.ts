@@ -1,5 +1,6 @@
 import { INodeSchema } from "core";
 import { createSchema, SchemaOptions, withFormItem } from "react-shells/ant5/shared/createSchema";
+import { typographySchema } from "../schema";
 
 const options: SchemaOptions = {
   propsSchemas: [
@@ -13,45 +14,7 @@ const options: SchemaOptions = {
         }
       },
     },
-    {
-      componentName: "Select",
-      "x-field": {
-        name: "mode",
-        label: "$mode",
-        params: {
-          withBind: true,
-        }
-      },
-      props: {
-        options: [
-          {
-            label: "Normal",
-            value: "Normal"
-          },
-          {
-            label: "H1",
-            value: "h1"
-          },
-          {
-            label: "H2",
-            value: "h2"
-          },
-          {
-            label: "H3",
-            value: "h3"
-          },
-          {
-            label: "H4",
-            value: "h4"
-          },
-          {
-            label: "p",
-            value: "p"
-          },
-        ],
-        defaultValue: "default",
-      }
-    }
+    ...typographySchema,
   ],
   logicOptions: {
     canBindField: true,
