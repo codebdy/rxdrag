@@ -584,7 +584,8 @@
                                       "componentName": "Button",
                                       "props": {
                                         "type": "primary",
-                                        "title": "完成"
+                                        "title": "完成",
+                                        "size": "middle"
                                       },
                                       "slots": {},
                                       "children": []
@@ -1040,15 +1041,52 @@
                                 "title": "标签"
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "Text"
+                                  },
+                                  "x-field": {
+                                    "params": {
+                                      "withBind": true
+                                    },
+                                    "name": "tags"
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             },
                             {
                               "componentName": "TableColumn",
                               "props": {
-                                "title": "操作"
+                                "title": "操作",
+                                "width": 120
                               },
                               "slots": {},
-                              "children": []
+                              "children": [
+                                {
+                                  "componentName": "Button",
+                                  "props": {
+                                    "type": "link",
+                                    "title": "编辑",
+                                    "size": "small"
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "Button",
+                                  "props": {
+                                    "type": "link",
+                                    "title": "删除",
+                                    "size": "small"
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
                             }
                           ]
                         },
