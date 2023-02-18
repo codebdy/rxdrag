@@ -2,7 +2,7 @@ import { Popconfirm } from "antd";
 import { IComponentMaterial } from "core-react";
 import { ButtonMaterial } from "../../Button";
 import { IconViewMaterial } from "../../displays/IconView";
-import { TextViewMaterial } from "../../displays/Text";
+import { TextMaterial } from "../../displays/Text";
 import { PopconfirmDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
@@ -72,10 +72,10 @@ export const PopconfirmMaterial: IComponentMaterial = {
     ]
   },
   slots: {
-    title: TextViewMaterial,
-    description: TextViewMaterial,
-    okText: TextViewMaterial,
-    cancelText: TextViewMaterial,
+    title: TextMaterial,
+    description: TextMaterial,
+    okText: TextMaterial,
+    cancelText: TextMaterial,
     actionComponent: ButtonMaterial,
     icon: IconViewMaterial,
   },

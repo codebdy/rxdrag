@@ -1,6 +1,6 @@
 import { Tooltip } from "antd";
 import { IComponentMaterial } from "core-react";
-import { TextViewMaterial } from "../../displays/Text";
+import { TextMaterial } from "../../displays/Text";
 import { TooltipDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
@@ -52,7 +52,7 @@ export const TooltipMaterial: IComponentMaterial = {
     ]
   },
   slots: {
-    title: TextViewMaterial,
+    title: TextMaterial,
   },
   behaviorRule: {
     droppable: true,

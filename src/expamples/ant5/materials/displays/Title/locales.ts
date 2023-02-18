@@ -1,15 +1,15 @@
 export const locales = {
   "zh-CN": {
-    title: "文本",
+    title: "标题",
     settings: {
-      mode: "类型"
+
     }
 
   },
   'en-US': {
     title: "Text view",
     settings: {
-      mode: "Mode"
+
     }
   }
 }
@@ -17,9 +17,9 @@ export const locales = {
 
 export const resourceLocales = {
   "zh-CN": {
-    "Text": "文本",
+    "Title": "标题",
   },
   'en-US': {
-    "Text": "Text",
+    "Title": "Title",
   }
 }

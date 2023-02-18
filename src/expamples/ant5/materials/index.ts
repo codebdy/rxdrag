@@ -10,7 +10,7 @@ import { LogoMaterial } from "./layouts/Logo";
 import { MenuMaterial } from "./layouts/Menu";
 import { AvatarMaterial } from "./displays/Avatar";
 import { CardMaterial } from "./layouts/Card";
-import { TextViewMaterial } from "./displays/Text";
+import { TextMaterial } from "./displays/Text";
 import { StatisticMaterial } from "./displays/Statistic";
 import { BoxMaterial } from "./layouts/Box";
 import { IconViewMaterial } from "./displays/IconView";
@@ -57,6 +57,8 @@ import { TableMaterial } from "./datas/Table";
 import { TableColumnMaterial } from "./datas/TableColumn";
 import { LinkMaterial } from "./displays/Link";
 import { SpaceMaterial } from "./layouts/Space";
+import { TitleMaterial } from "./displays/Title";
+import { ParagraphMaterial } from "./displays/Paragraph";
 
 export type MaterialGroup = {
   titleKey: string,
@@ -90,8 +92,10 @@ export const materials: MaterialGroup[] = [
   {
     titleKey: 'displays',
     items: [
-      TextViewMaterial,
+      TitleMaterial,
+      TextMaterial,
       LinkMaterial,
+      ParagraphMaterial,
       StatisticMaterial,
       IconViewMaterial,
       AvatarMaterial,

@@ -1,14 +1,14 @@
 import { IComponentMaterial } from "core-react";
-import { Text } from "expamples/ant5/components/displays/typography/Text";
+import { Title } from "expamples/ant5/components/displays/typography/Title";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";
 
-const name = "Text"
-export const TextMaterial: IComponentMaterial = {
+const name = "Title"
+export const TitleMaterial: IComponentMaterial = {
   componentName: name,
-  component: Text,
-  designer: Text,
+  component: Title,
+  designer: Title,
   designerLocales: locales,
   designerSchema: schema,
   resource: {
