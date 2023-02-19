@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useFieldPath, useFieldy, useForm } from "runner/fieldy"
+import { useFieldPath, useForm } from "runner/fieldy"
 import { ComponentControllers, IComponentController } from "runner/reaction"
 import { ComponentController } from "runner/reaction/controllers/ComponentController"
 import { useMaterials } from "runner/reaction/hooks/useMaterials"
@@ -24,25 +24,26 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
     const form = useForm()
     const fieldPath = useFieldPath()
 
+    const handlePropsChange = useCallback((name: string, value: any) => {
+      setChangeProps((changedProps: any) => {
+        return ({ ...changedProps, [name]: value })
+      })
+    }, [])
+    
     useEffect(() => {
       if (meta && controllers && materials) {
         const ctrl = new ComponentController(meta, controllers, {materials, navigate, form, fieldPath})
+        const unlistener = ctrl?.subscribeToPropsChange(handlePropsChange)
         ctrl.initEvent?.()
         setController(ctrl)
+
         return () => {
           ctrl.destoryEvent?.()
           ctrl.destory()
+          unlistener?.()
         }
       }
-    }, [controllers, fieldPath, form, materials, navigate])
-
-    // const controller = useMemo(
-    //   () => {
-    //     console.log("创建控制器")
-    //     return new ComponentController(meta, controllers, materials, navigate)
-    //   },
-    //   [controllers, materials, navigate]
-    // )
+    }, [controllers, fieldPath, form, handlePropsChange, materials, navigate])
 
     const newControllers: ComponentControllers = useMemo(() => {
       return controller ? { ...controllers, [controller.id]: controller } : controllers
@@ -51,28 +52,6 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
     const newProps = useMemo(() => {
       return { ...props, ...controller?.events, ...changedProps }
     }, [changedProps, controller?.events, props])
-
-    const handlePropsChange = useCallback((name: string, value: any) => {
-      setChangeProps((changedProps: any) => {
-        return ({ ...changedProps, [name]: value })
-      })
-    }, [])
-
-    useEffect(() => {
-      const unlistener = controller?.subscribeToPropsChange(handlePropsChange)
-      return unlistener
-    }, [controller, handlePropsChange])
-
-    // useEffect(() => {
-    //   if (controller) {
-    //     controller.initEvent?.()
-    //     return () => {
-    //       controller.destoryEvent?.()
-    //       //暂时删掉，因为会有不响应的bug
-    //       //controller.destory()
-    //     }
-    //   }
-    // }, [controller])
 
     return (
       controller

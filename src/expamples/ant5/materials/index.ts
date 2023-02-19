@@ -17,7 +17,6 @@ import { IconViewMaterial } from "./displays/IconView";
 import { RightAdMaterial } from "./business/RightAd";
 import { DividerMaterial } from "./layouts/Divider";
 import { NewsMaterial } from "./business/News";
-import { CustomersMaterial } from "./business/Customers";
 import { NoticesMaterial } from "./business/Notices";
 import { PaperMaterial } from "./layouts/Paper";
 import { BreadcrumbMaterial } from "./layouts/Breadcrumb";
@@ -158,7 +157,6 @@ export const materials: MaterialGroup[] = [
     items: [
       RightAdMaterial,
       NewsMaterial,
-      CustomersMaterial,
       NoticesMaterial,
     ]
   }

@@ -6,7 +6,6 @@ export class SetPropReaction extends AbstractControllerReaction {
 
   constructor(meta: IReactionMeta<IControllerReactionConfig>, options?: IReactionFactoryOptions) {
     super(meta, options)
-
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("SetProp inputs count error")
     }
