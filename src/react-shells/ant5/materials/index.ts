@@ -3,7 +3,7 @@ import { auxReactions } from "./auxtools"
 import { basicReactions } from "./basic"
 import { commonReactions } from "./common"
 import { controllerReactions } from "./controller"
-import { dataModelReactions } from "./dataModel"
+import { dataModelReactions } from "./model"
 
 export interface MaterialCategory {
   name: string,

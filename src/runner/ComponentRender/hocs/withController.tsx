@@ -1,5 +1,6 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useFieldPath, useFieldy, useForm } from "runner/fieldy"
 import { ComponentControllers, IComponentController } from "runner/reaction"
 import { ComponentController } from "runner/reaction/controllers/ComponentController"
 import { useMaterials } from "runner/reaction/hooks/useMaterials"
@@ -20,10 +21,12 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
     const controllers = useControllers()
     const materials = useMaterials()
     const navigate = useNavigate()
+    const form = useForm()
+    const fieldPath = useFieldPath()
 
     useEffect(() => {
-      if (meta && controllers && materials && navigate) {
-        const ctrl = new ComponentController(meta, controllers, materials, navigate)
+      if (meta && controllers && materials) {
+        const ctrl = new ComponentController(meta, controllers, {materials, navigate, form, fieldPath})
         ctrl.initEvent?.()
         setController(ctrl)
         return () => {
@@ -31,7 +34,7 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
           ctrl.destory()
         }
       }
-    }, [controllers, materials, navigate])
+    }, [controllers, fieldPath, form, materials, navigate])
 
     // const controller = useMemo(
     //   () => {

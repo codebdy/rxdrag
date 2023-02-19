@@ -1075,7 +1075,182 @@
                                           {
                                             "id": "721cd8c4-4cac-4704-9b23-29f258b860ae",
                                             "name": "init",
-                                            "label": "初始化"
+                                            "label": "初始化",
+                                            "logicMetas": {
+                                              "reactions": [
+                                                {
+                                                  "id": "e561153b-4590-46bb-90f1-716f6f719cf2",
+                                                  "label": "订阅字段",
+                                                  "type": "SingleReaction",
+                                                  "materialName": "subscribeField",
+                                                  "outPorts": [
+                                                    {
+                                                      "id": "34229a69-2eed-4764-b9c1-ae39c0027249",
+                                                      "name": "output",
+                                                      "label": ""
+                                                    }
+                                                  ],
+                                                  "x6Node": {
+                                                    "x": 130,
+                                                    "y": 150,
+                                                    "width": 116,
+                                                    "height": 32
+                                                  }
+                                                },
+                                                {
+                                                  "id": "aace7a67-6bb2-4433-b19e-aed17957c479",
+                                                  "label": "设置属性",
+                                                  "type": "ControllerDefaultReaction",
+                                                  "materialName": "setProp",
+                                                  "inPorts": [
+                                                    {
+                                                      "id": "15f2f240-37d1-46cd-a104-c9e902f55fd7",
+                                                      "name": "input",
+                                                      "label": ""
+                                                    }
+                                                  ],
+                                                  "config": {
+                                                    "controllerId": "3d935028-e718-474e-a798-7d95bb4a2a09",
+                                                    "reactionRef": "setProp",
+                                                    "prop": "color"
+                                                  },
+                                                  "x6Node": {
+                                                    "x": 470,
+                                                    "y": 140,
+                                                    "width": 116,
+                                                    "height": 48
+                                                  }
+                                                },
+                                                {
+                                                  "id": "6255d3f2-aa7d-432e-b48a-77d9a487404c",
+                                                  "label": "JS代码",
+                                                  "type": "SingleReaction",
+                                                  "materialName": "jsCode",
+                                                  "inPorts": [
+                                                    {
+                                                      "id": "300a9253-19d0-4a08-a936-05e5f51390a7",
+                                                      "name": "input",
+                                                      "label": ""
+                                                    }
+                                                  ],
+                                                  "outPorts": [
+                                                    {
+                                                      "id": "97e732f6-761b-48c6-9c33-dc6db777282f",
+                                                      "name": "output",
+                                                      "label": "output"
+                                                    }
+                                                  ],
+                                                  "x6Node": {
+                                                    "x": 290,
+                                                    "y": 150,
+                                                    "width": 102,
+                                                    "height": 32
+                                                  },
+                                                  "config": {
+                                                    "expression": "({ inputValue, outputs }) => {\n  const { output } = outputs;\nlet color = inputValue?.length > 5 ? 'geekblue' : 'green';\n  output(color);\n}"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "04d2512b-f184-47e5-bac1-00f9572dcee8",
+                                                  "label": "设置属性",
+                                                  "type": "ControllerDefaultReaction",
+                                                  "materialName": "setProp",
+                                                  "inPorts": [
+                                                    {
+                                                      "id": "563b97c9-8042-4f48-8ebe-817456ac2a5e",
+                                                      "name": "input",
+                                                      "label": ""
+                                                    }
+                                                  ],
+                                                  "config": {
+                                                    "controllerId": "3d935028-e718-474e-a798-7d95bb4a2a09",
+                                                    "reactionRef": "setProp",
+                                                    "prop": "value"
+                                                  },
+                                                  "x6Node": {
+                                                    "x": 470,
+                                                    "y": 230,
+                                                    "width": 116,
+                                                    "height": 48
+                                                  }
+                                                },
+                                                {
+                                                  "id": "fedc169a-4a64-408b-a200-503f216734f1",
+                                                  "label": "JS代码",
+                                                  "type": "SingleReaction",
+                                                  "materialName": "jsCode",
+                                                  "inPorts": [
+                                                    {
+                                                      "id": "c586983f-7b44-4c71-90a4-d4ff9f9f1d0b",
+                                                      "name": "input",
+                                                      "label": ""
+                                                    }
+                                                  ],
+                                                  "outPorts": [
+                                                    {
+                                                      "id": "2b8a4de8-b2cf-43f4-aae8-60c91b0136e3",
+                                                      "name": "output",
+                                                      "label": "output"
+                                                    }
+                                                  ],
+                                                  "x6Node": {
+                                                    "x": 290,
+                                                    "y": 240,
+                                                    "width": 102,
+                                                    "height": 32
+                                                  },
+                                                  "config": {
+                                                    "expression": "({ inputValue, outputs }) => {\n  const { output } = outputs;\n  output(inputValue?.toUpperCase());\n}"
+                                                  }
+                                                }
+                                              ],
+                                              "invokes": [
+                                                {
+                                                  "id": "25bdbed3-b1ed-446d-b6fe-15737af58b7d",
+                                                  "source": {
+                                                    "nodeId": "e561153b-4590-46bb-90f1-716f6f719cf2",
+                                                    "portId": "34229a69-2eed-4764-b9c1-ae39c0027249"
+                                                  },
+                                                  "target": {
+                                                    "nodeId": "6255d3f2-aa7d-432e-b48a-77d9a487404c",
+                                                    "portId": "300a9253-19d0-4a08-a936-05e5f51390a7"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "eb7db197-e8f0-47bf-9f7f-c0cfae2f3732",
+                                                  "source": {
+                                                    "nodeId": "6255d3f2-aa7d-432e-b48a-77d9a487404c",
+                                                    "portId": "97e732f6-761b-48c6-9c33-dc6db777282f"
+                                                  },
+                                                  "target": {
+                                                    "nodeId": "aace7a67-6bb2-4433-b19e-aed17957c479",
+                                                    "portId": "15f2f240-37d1-46cd-a104-c9e902f55fd7"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "8a755b9d-27d8-46c3-95fa-c829bcf15026",
+                                                  "source": {
+                                                    "nodeId": "e561153b-4590-46bb-90f1-716f6f719cf2",
+                                                    "portId": "34229a69-2eed-4764-b9c1-ae39c0027249"
+                                                  },
+                                                  "target": {
+                                                    "nodeId": "fedc169a-4a64-408b-a200-503f216734f1",
+                                                    "portId": "c586983f-7b44-4c71-90a4-d4ff9f9f1d0b"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "119e329e-a3a0-4dc1-8a12-2e3b88136e76",
+                                                  "source": {
+                                                    "nodeId": "fedc169a-4a64-408b-a200-503f216734f1",
+                                                    "portId": "2b8a4de8-b2cf-43f4-aae8-60c91b0136e3"
+                                                  },
+                                                  "target": {
+                                                    "nodeId": "04d2512b-f184-47e5-bac1-00f9572dcee8",
+                                                    "portId": "563b97c9-8042-4f48-8ebe-817456ac2a5e"
+                                                  }
+                                                }
+                                              ]
+                                            }
                                           },
                                           {
                                             "id": "6afcdf3f-3e92-4e96-a352-fa47774b66bd",

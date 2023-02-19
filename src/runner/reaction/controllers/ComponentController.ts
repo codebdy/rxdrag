@@ -1,6 +1,5 @@
 import { INIT_EVENT_NAME, DESTORY_EVENT_NAME } from "react-shells/ant5/shared/createReactionSchema";
-import { ComponentControllers, EventFuncs, IComponentController, InputFunc, IReaction, Navigate, PropsListener, UnListener, VariableListener } from "runner/reaction/interfaces/controller";
-import { IReactionMaterial } from "../interfaces/material";
+import { ComponentControllers, EventFuncs, IComponentController, InputFunc, IReaction, IReactionFactoryOptions, PropsListener, UnListener, VariableListener } from "runner/reaction/interfaces/controller";
 import { IControllerMeta, IReactionDefineMeta } from "../interfaces/metas";
 import { GraphicalReaction } from "../../../react-shells/ant5/materials/controller/reaction/GraphicalReaction";
 import { CodeReaction } from "react-shells/ant5/materials/controller/reaction/CodeReaction";
@@ -19,10 +18,10 @@ export class ComponentController implements IComponentController {
 
   private reactions: IReaction[] = []
 
-  constructor(public meta: IControllerMeta, protected parentControllers: ComponentControllers, protected materials: IReactionMaterial[], navigate:Navigate) {
+  constructor(public meta: IControllerMeta, protected parentControllers: ComponentControllers, protected options?:IReactionFactoryOptions) {
     this.id = meta.id!
     for (const eventMeta of meta.events || []) {
-      const reaction = this.makeReaction(eventMeta, { ...parentControllers, [this.id]: this }, navigate)
+      const reaction = this.makeReaction(eventMeta, { ...parentControllers, [this.id]: this })
       reaction && this.reactions.push(reaction)
       if (!reaction) {
         continue
@@ -86,13 +85,12 @@ export class ComponentController implements IComponentController {
     }
   }
 
-  private makeReaction = (reactionMeta: IReactionDefineMeta, controllers: ComponentControllers, navigate: Navigate) => {
+  private makeReaction = (reactionMeta: IReactionDefineMeta, controllers: ComponentControllers) => {
     const options = {
+      ...this.options,
       variableController: this,
       propsController: this,
-      materials: this.materials,
       controllers,
-      navigate
     }
     if (reactionMeta.logicMetas) {
       return new GraphicalReaction(reactionMeta, options)

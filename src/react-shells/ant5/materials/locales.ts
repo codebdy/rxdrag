@@ -27,6 +27,7 @@ export const reactionMaterialLocales = {
     info: "通知",
     warning: "警告",
     loading: "等待",
+    field: "字段",
   },
   'en-US': {
     name: "Name",
@@ -56,5 +57,6 @@ export const reactionMaterialLocales = {
     info: "Info",
     warning: "Warning",
     loading: "Loading",
+    field: "Field",
   }
 }
