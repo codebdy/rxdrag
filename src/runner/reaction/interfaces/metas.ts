@@ -91,4 +91,8 @@ export interface IControllerMeta {
   events?: IReactionDefineMeta[],
   reactions?: IReactionDefineMeta[],
   variables?: IVariableDefineMeta[],
+  //js代码表述的表达式
+  expressions?: {
+    [propName: string]: string | undefined,
+  }
 }

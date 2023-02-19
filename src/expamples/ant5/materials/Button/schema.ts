@@ -95,6 +95,7 @@ const options: SchemaOptions<IFieldMeta<IBindParams>> = {
       },
       props: {
         optionType: "button",
+        size: "small",
         options: [
           {
             label: "$default",
@@ -120,6 +121,7 @@ const options: SchemaOptions<IFieldMeta<IBindParams>> = {
       },
       props: {
         optionType: "button",
+        size: "small",
         options: [
           {
             label: "$large",

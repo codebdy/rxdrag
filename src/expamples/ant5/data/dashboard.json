@@ -1067,6 +1067,28 @@
                                           "withBind": true
                                         }
                                       },
+                                      "x-reactions": {
+                                        "id": "3d935028-e718-474e-a798-7d95bb4a2a09",
+                                        "enable": true,
+                                        "name": "标签",
+                                        "events": [
+                                          {
+                                            "id": "721cd8c4-4cac-4704-9b23-29f258b860ae",
+                                            "name": "init",
+                                            "label": "初始化"
+                                          },
+                                          {
+                                            "id": "6afcdf3f-3e92-4e96-a352-fa47774b66bd",
+                                            "name": "destory",
+                                            "label": "销毁"
+                                          },
+                                          {
+                                            "id": "13b899d2-cd23-4d31-9fde-55efb2b12bf2",
+                                            "name": "onClick",
+                                            "label": "点击"
+                                          }
+                                        ]
+                                      },
                                       "slots": {},
                                       "children": []
                                     }

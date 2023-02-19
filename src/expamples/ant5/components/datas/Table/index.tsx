@@ -31,7 +31,7 @@ import { IBindParams } from "runner/ComponentRender/interfaces"
 import { useFieldState } from "runner/fieldy/hooks/useFieldState"
 
 interface RowProps {
-  "data-row-key": string | undefined;
+  index: number,
 }
 
 interface TableCellProps {
@@ -94,18 +94,17 @@ export const Table = memo((
 
   }, [])
   const TableRow: React.FC<RowProps> = useMemo(() => (props) => {
-    const { "data-row-key": rowKeyValue } = props
-    const row = dataSource?.nodes?.find(node => node?.[rowKey] === rowKeyValue)
-    const index = row ? dataSource?.nodes?.indexOf(row) : undefined
+    const { index, ...other } = props
+    const row = dataSource?.nodes?.[index]
 
     return (
       index !== undefined
         ? <ObjectField name={index?.toString() || ""} value={row}>
-          <tr {...props} />
+          <tr {...other} />
         </ObjectField>
-        : <tr {...props} />
+        : <tr {...other} />
     );
-  }, [dataSource?.nodes, rowKey]);
+  }, [dataSource?.nodes]);
 
   return (
     <ArrayField name={id} value={dataSource?.nodes}>
@@ -113,6 +112,7 @@ export const Table = memo((
         columns={columns as any}
         dataSource={dataSource?.nodes}
         rowKey={rowKey}
+        onRow={(_, index) => ({ index } as any)}
         components={{
           body: {
             row: TableRow,
