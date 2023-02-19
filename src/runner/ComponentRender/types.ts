@@ -1,1 +1,1 @@
-export type ReactComponent = React.FC<any> | React.ComponentClass<any>
+export type ReactComponent = React.FC<any> | React.ComponentClass<any> | string

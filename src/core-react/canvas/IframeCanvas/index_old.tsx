@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { useDesignerEngine } from "core-react/hooks";
 import { CanvasRender } from "../CanvasRender"
 import { IDocument } from "core/interfaces";
-import { useDesignComponents } from "core-react/hooks/useDesignComponents";
+import { useDesignComponentsParams } from "core-react/hooks/useDesignComponentsParams";
 import { IFrameCanvasImpl } from "core/shell/IFrameCanvasImpl";
 import { CanvasResizeDriver, CanvasScrollDriver, DragDropDriver, MouseClickDriver, MouseMoveDriver } from "core/shell/drivers";
 import { MouseOverOutDriver } from "core/shell/drivers/MouseOverOutDriver";
@@ -60,7 +60,7 @@ export const IframeCanvasOld = memo((
   `, [styleText])
 
   const engine = useDesignerEngine()
-  const { components } = useDesignComponents()
+  const { components } = useDesignComponentsParams()
   const themeMode = useThemeMode()
 
   // useEffect(() => {

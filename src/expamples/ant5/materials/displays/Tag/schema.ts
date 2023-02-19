@@ -21,7 +21,7 @@ const options: SchemaOptions = {
       },
     },
     {
-      componentName: "ColorInput",
+      componentName: "TagColorInput",
       "x-field": {
         name: "color",
         label: "$color",

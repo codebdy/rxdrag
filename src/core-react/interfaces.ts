@@ -1,10 +1,10 @@
 import { IComponentConfig } from "core/interfaces";
-import React from "react";
+import { ReactComponent } from "runner/ComponentRender/types";
 
-export type ReactComponent = React.FC<any> | React.ComponentClass<any>
+//export type ReactComponent = React.FC<any> | React.ComponentClass<any>
 
 export interface IComponents {
-  [key: string]: ReactComponent
+  [key: string]: ReactComponent | undefined
 }
 
 
