@@ -13,7 +13,6 @@ export class SubscribeFieldReaction extends AbstractReaction<ISubscribeFieldConf
       const field = options?.form?.getField(path)
       if(field){
         field.onValueChange(this.handleValueChange)
-        this.outputValue(field.value)
       }
     }
   }

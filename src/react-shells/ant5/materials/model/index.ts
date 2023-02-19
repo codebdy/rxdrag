@@ -2,6 +2,7 @@ import { IReactionMaterial } from "runner/reaction/interfaces/material";
 import { ReactionType } from "runner/reaction/interfaces/metas";
 import { fieldIcon, fieldReadIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon } from "../../icons/reactions";
 import { createUuid } from "../../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
+import { readFieldValueMaterial } from "./readFieldValue";
 import { subscribeFieldMaterial } from "./subscribeField";
 
 export const dataModelReactions: IReactionMaterial[] = [
@@ -111,27 +112,6 @@ export const dataModelReactions: IReactionMaterial[] = [
       ],
     }
   },
-  {
-    name: "readFieldValue",
-    icon: fieldReadIcon,
-    label: "$readFieldValue",
-    reactionType: ReactionType.SingleReaction,
-    meta: {
-      inPorts: [
-        {
-          id: createUuid(),
-          name: "input",
-          label: "",
-        },
-      ],
-      outPorts: [
-        {
-          id: createUuid(),
-          name: "output",
-          label: "",
-        },
-      ],
-    }
-  },
+  readFieldValueMaterial,
   subscribeFieldMaterial,
 ]

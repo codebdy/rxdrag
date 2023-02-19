@@ -1,7 +1,7 @@
 import { INodeSchema } from "core";
 import { labelSchema } from "../../baseSchema";
 
-export const subscribeFieldSchema: INodeSchema = {
+export const readFieldValueSchema: INodeSchema = {
   componentName: "Fragment",
   children: [
     labelSchema,
