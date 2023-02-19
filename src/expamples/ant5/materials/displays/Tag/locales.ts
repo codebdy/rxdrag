@@ -30,3 +30,14 @@ export const resourceLocales = {
     "Tag": "Tag",
   }
 }
+
+export const toolsLocales = {
+  "zh-CN": {
+    "predefined": "预定义",
+    "customized": "自定义",
+  },
+  'en-US': {
+    "predefined": "Predefined",
+    "customized": "Customized",
+  }
+}
