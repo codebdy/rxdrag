@@ -1,5 +1,5 @@
 import { useDesignerEngine } from "core-react/hooks";
-import { useDesignComponents } from "core-react/hooks/useDesignComponents";
+import { useDesignComponentsParams } from "core-react/hooks/useDesignComponentsParams";
 import { ShadowCanvasImpl } from "core/shell/ShadowCanvasImpl";
 import { MouseOverOutDriver } from "core/shell/drivers/MouseOverOutDriver";
 import { memo, useCallback, useRef } from "react"
@@ -24,7 +24,7 @@ export const ShadowDomCanvas = memo((
   const rootRef = useRef<ReactDOM.Root>()
   const [viewType] = useDocumentViewTypeState(doc?.id)
   const engine = useDesignerEngine()
-  const { components } = useDesignComponents()
+  const { components } = useDesignComponentsParams()
 
   const handleRefChange = useCallback((host: HTMLElement | null) => {
     if (host && engine ) {

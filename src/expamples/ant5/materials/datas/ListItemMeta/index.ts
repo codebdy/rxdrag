@@ -1,7 +1,7 @@
 import { List } from "antd";
 import { IComponentMaterial } from "core-react";
 import { AvatarMaterial } from "../../displays/Avatar";
-import { TextViewMaterial } from "../../displays/TextView";
+import { TextMaterial } from "../../displays/typography/Text";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
@@ -28,13 +28,13 @@ export const ListItemMetaMaterial: IComponentMaterial = {
             componentName: "Avatar"
           },
           title:{
-            componentName:"TextView",
+            componentName:"Text",
             props:{
               content:"Title"
             }
           },
           description:{
-            componentName:"TextView",
+            componentName:"Text",
             props:{
               content:"Description"
             }
@@ -45,8 +45,8 @@ export const ListItemMetaMaterial: IComponentMaterial = {
   },
   slots: {
     avatar: AvatarMaterial,
-    title: TextViewMaterial,
-    description: TextViewMaterial,
+    title: TextMaterial,
+    description: TextMaterial,
   },
   behaviorRule: {
     droppable: false,

@@ -40,6 +40,8 @@ import { ReactionsInput } from "./components/ReactionsInput";
 import { EventInput } from "./components/EventInput";
 import { ValueInput } from "./components/ValueInput";
 import { JSONInput } from "./components/JSONInput";
+import { CheckboxGroup } from "./components/CheckboxGroup";
+import { useDesignComponentsParams } from "core-react/hooks/useDesignComponentsParams";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -56,6 +58,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
   const currentNode = useCurrentNode()
   const changeMeta = useChangeNodeMeta()
   const lang = useLanguage()
+  const { tools } = useDesignComponentsParams()
 
   const designerSchema = useMemo(() => {
     if (currentNode && currentNode.designerSchema) {
@@ -84,6 +87,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         TabPanel,
         FormItem: Form.Item,
         Input,
+        TextArea: Input.TextArea,
         Select,
         Switch,
         SlotSwitch,
@@ -113,6 +117,8 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         GutterInput,
         "Radio.Group": Radio.Group,
         "Checkbox.Group": Checkbox.Group,
+        Checkbox: Checkbox,
+        CheckboxGroup: CheckboxGroup,
         ColInput,
         BackgroundImageInput,
         BackgroundSizeInput,
@@ -125,6 +131,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         EventInput,
         ValueInput,
         JSONInput,
+        ...tools,
       }}
     >
       <Fieldy>
@@ -134,7 +141,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
             <VirtualForm
               initialValue={currentNode?.meta}
               onValueChange={handleMetaChange}
-              key = {currentNode.id}
+              key={currentNode.id}
             >
               <Form
                 labelAlign="left"

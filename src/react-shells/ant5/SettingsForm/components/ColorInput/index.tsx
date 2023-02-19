@@ -1,9 +1,18 @@
 import React, { useRef } from 'react'
 import { Input, Popover } from 'antd'
 import { ColorResult, SketchPicker } from 'react-color'
-import './styles.less'
 import { useToken } from 'antd/es/theme/internal'
+import styled from 'styled-components'
 
+const Container = styled.div`
+  width: 100%;
+  .color-tips {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+`
 export interface IColorInputProps {
   value?: string
   onChange?: (color: string) => void
@@ -11,11 +20,10 @@ export interface IColorInputProps {
 
 export const ColorInput: React.FC<IColorInputProps> = (props) => {
   const container = useRef<HTMLDivElement>(null)
-  const prefix = 'rx-color-input'
   const color = props.value as string
   const [, token] = useToken()
   return (
-    <div ref={container} className={prefix}>
+    <Container ref={container}>
       <Input
         value={props.value}
         onChange={(e) => {
@@ -37,7 +45,7 @@ export const ColorInput: React.FC<IColorInputProps> = (props) => {
             }
           >
             <div
-              className={prefix + '-color-tips'}
+              className={'color-tips'}
               style={{
                 backgroundColor: color,
                 border:`${token.colorBorder} solid 1px`
@@ -46,6 +54,6 @@ export const ColorInput: React.FC<IColorInputProps> = (props) => {
           </Popover>
         }
       />
-    </div>
+    </Container>
   )
 }

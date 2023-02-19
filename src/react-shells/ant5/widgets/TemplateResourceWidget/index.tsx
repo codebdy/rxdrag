@@ -1,13 +1,12 @@
 import { Col } from "antd"
 import { useToken } from "antd/es/theme/internal"
-import { IResourceNode } from "core"
-import { IMaterialResource } from "core-react"
+import { IResource, IResourceNode } from "core"
 import { useRegisterResource } from "core-react/hooks/useRegisterResource"
 import { memo, useEffect, useState } from "react"
 import "./style.less"
 
 export type TemplateResourceWidgetProps = {
-  resource: IMaterialResource
+  resource: IResource
 }
 export const TemplateResourceWidget = memo((props: TemplateResourceWidgetProps) => {
   const { resource } = props;

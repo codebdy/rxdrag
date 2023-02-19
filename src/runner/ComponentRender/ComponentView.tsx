@@ -3,10 +3,10 @@ import { memo, useEffect, useMemo } from "react"
 import { ComponentField } from "./ComponentField"
 import { ComponentSchemaContext } from "./contexts"
 import { usePreviewComponent } from "core-react/hooks/usePreviewComponent"
-import { withBind } from "runner/ComponentRender/withBind"
 import { IBindParams } from "./interfaces"
 import { IFieldMeta } from "runner/fieldy"
-import { withController } from "./withController"
+import { withController } from "./hocs/withController"
+import { withBind } from "./hocs/withBind"
 
 export interface IComponentRenderSchema extends INodeSchema<IFieldMeta<IBindParams>> {
   id: ID,
@@ -25,7 +25,7 @@ export const ComponentView = memo((
   const { node, ...other } = props
   const com = usePreviewComponent(node.componentName)
 
-  const Component = useMemo(() => com && withController(withBind(com, node?.["x-field"]), node["x-reactions"]), [com, node]);
+  const Component = useMemo(() => com && withBind(withController(com, node["x-reactions"]), node?.["x-field"]), [com, node]);
   const slots = useMemo(() => {
     const slts: { [key: string]: React.ReactElement } = {}
     for (const name of Object.keys(node?.slots || {})) {
@@ -49,7 +49,7 @@ export const ComponentView = memo((
             !!node.children?.length ?
               <Component {...node.props} {...slots} {...other}>
                 {
-                  node.children?.map(child => {
+                  !node.selfRender && node.children?.map(child => {
                     return (<ComponentView key={child.id} node={child} />)
                   })
                 }

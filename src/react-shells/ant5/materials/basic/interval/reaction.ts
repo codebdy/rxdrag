@@ -19,7 +19,7 @@ export class IntervalReaction extends AbstractReaction<IIntervalConfig> {
     this.stopHandler()
     this.inputValue = inputValue
     if (this.meta.config?.interval) {
-      this.timer = setInterval(this.outputHandler, this.meta.config?.interval)
+      this.timer = setInterval(this.handleOutput, this.meta.config?.interval)
     }
   }
 
@@ -31,7 +31,7 @@ export class IntervalReaction extends AbstractReaction<IIntervalConfig> {
     }
   }
 
-  outputHandler = () => {
+  handleOutput = () => {
     this.getOutputByName("output")?.push(this.inputValue)
   }
 

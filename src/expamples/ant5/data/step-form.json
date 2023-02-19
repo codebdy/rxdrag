@@ -54,7 +54,7 @@
             }
           ]
         },
-        "content": {
+        "value": {
           "componentName": "Layout.Content",
           "props": {},
           "slots": {},
@@ -66,9 +66,9 @@
           "slots": {},
           "children": [
             {
-              "componentName": "TextView",
+              "componentName": "Text",
               "props": {
-                "content": "Apper Copyright ©2023",
+                "value": "Apper Copyright ©2023",
                 "style": {}
               },
               "slots": {},

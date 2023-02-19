@@ -67,8 +67,8 @@ export function useCreateGraph() {
           const edges = gph?.getEdges() || [];
           const targetId = targetCell?.id;
           const sourceId = sourceCell?.id;
-          const targetPort = targetMagnet?.getAttribute('port');
-          const sourcePort = sourceMagnet?.getAttribute('port') || undefined;
+          const targetPort = targetMagnet?.parentElement?.getAttribute('port');
+          const sourcePort = sourceMagnet?.parentElement?.getAttribute('port') || undefined;
           for (const edge of edges) {
             if (targetId && targetPort && (edge.target as any).cell === targetId && (edge.target as any).port === targetPort) {
               isConnected = true
@@ -86,7 +86,7 @@ export function useCreateGraph() {
           }
 
           return !isConnected &&
-            targetMagnet?.getAttribute('port-group') !== 'out' &&
+            targetMagnet?.parentElement?.getAttribute('port-group') !== 'out' &&
             targetCell?.getData<INodeData>()?.meta?.type !== ReactionType.Start
         },
         createEdge() {

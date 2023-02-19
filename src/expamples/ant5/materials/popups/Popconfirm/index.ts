@@ -2,7 +2,7 @@ import { Popconfirm } from "antd";
 import { IComponentMaterial } from "core-react";
 import { ButtonMaterial } from "../../Button";
 import { IconViewMaterial } from "../../displays/IconView";
-import { TextViewMaterial } from "../../displays/TextView";
+import { TextMaterial } from "../../displays/typography/Text";
 import { PopconfirmDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
@@ -28,25 +28,25 @@ export const PopconfirmMaterial: IComponentMaterial = {
         componentName: name,
         slots: {
           title: {
-            componentName: "TextView",
+            componentName: "Text",
             props: {
               content: "Delete the task",
             }
           },
           description: {
-            componentName: "TextView",
+            componentName: "Text",
             props: {
               content: "Are you sure to delete this task?",
             }
           },
           okText: {
-            componentName: "TextView",
+            componentName: "Text",
             props: {
               content: "Ok",
             }
           },
           cancelText: {
-            componentName: "TextView",
+            componentName: "Text",
             props: {
               content: "Cancel",
             }
@@ -60,7 +60,7 @@ export const PopconfirmMaterial: IComponentMaterial = {
             },
             children: [
               {
-                componentName: "TextView",
+                componentName: "Text",
                 props: {
                   content: name,
                 }
@@ -72,10 +72,10 @@ export const PopconfirmMaterial: IComponentMaterial = {
     ]
   },
   slots: {
-    title: TextViewMaterial,
-    description: TextViewMaterial,
-    okText: TextViewMaterial,
-    cancelText: TextViewMaterial,
+    title: TextMaterial,
+    description: TextMaterial,
+    okText: TextMaterial,
+    cancelText: TextMaterial,
     actionComponent: ButtonMaterial,
     icon: IconViewMaterial,
   },

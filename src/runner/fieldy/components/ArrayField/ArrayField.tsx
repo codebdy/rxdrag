@@ -1,6 +1,5 @@
 import { memo } from "react"
-import { useCreateFieldSchema } from "runner/fieldy/components/XField/hooks/useCreateFieldSchema"
-import { XField } from "../XField"
+import { Field } from "../Field"
 
 //动态增加字段用这个，否则不要碰它
 export const ArrayField = memo((
@@ -11,10 +10,9 @@ export const ArrayField = memo((
   }
 ) => {
   const { name, value, children } = props
-  const fieldMeta = useCreateFieldSchema(name, "array")
   return (
-    <XField fieldMeta={fieldMeta} initialValue={value}>
+    <Field name={name} value={value} type="array">
       {children}
-    </XField>
+    </Field>
   )
 })

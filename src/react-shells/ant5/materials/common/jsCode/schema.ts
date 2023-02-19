@@ -41,6 +41,13 @@ export const jsCodeSchema: INodeSchema = {
               withBind: true,
             }
           },
+          props:{
+            defaultValue:
+`({ inputValue, outputs }) => {
+  const { output } = outputs;
+  output('not implement');
+}`
+          }
         }
       ]
     },

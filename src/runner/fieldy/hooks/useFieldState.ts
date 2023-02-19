@@ -1,29 +1,8 @@
-import { FieldState } from "runner/fieldy/interfaces";
-import { useCallback, useEffect, useState } from "react";
-import { useFieldy } from "./useFieldy";
-import { useForm } from "./useForm";
+import { useFieldPath } from "./useFieldPath";
+import { useFieldStateByPath } from "./useFieldStateByPath";
 
-export function useFieldState(fieldPath: string) {
-  const [fieldState, setFieldState] = useState<FieldState>()
-  const fieldy = useFieldy()
-  const form = useForm()
-
-  useEffect(() => {
-    if (fieldPath) {
-      setFieldState(form?.getFieldState(fieldPath))
-    }
-  }, [fieldPath, fieldy, form])
-
-  const handleFieldChange = useCallback((fieldState: FieldState | undefined) => {
-    setFieldState(fieldState)
-  }, [])
-
-  useEffect(() => {
-    if (form?.name && fieldPath) {
-      const unsub = fieldy?.subscribeToFieldChange(form.name, fieldPath, handleFieldChange)
-      return unsub
-    }
-  }, [fieldPath, fieldy, form?.name, handleFieldChange])
-
-  return fieldState
+export function useFieldState(){
+  const path = useFieldPath()
+  const fieldState = useFieldStateByPath(path || "")
+  return fieldState;
 }

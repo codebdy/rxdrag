@@ -33,7 +33,7 @@ export const DrawerMaterial: IComponentMaterial = {
             componentName: "DrawerTitle",
             children: [
               {
-                componentName: "TextView",
+                componentName: "Text",
                 props: {
                   content: name,
                 }
@@ -56,7 +56,7 @@ export const DrawerMaterial: IComponentMaterial = {
             },
             children: [
               {
-                componentName: "TextView",
+                componentName: "Text",
                 props: {
                   content: name,
                 }

@@ -57,7 +57,7 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
         return <Component ref={!behavior?.isNoRef() ? handleRef : undefined} {...realProps} >
           <Locked node={node}>
             {
-              node.children?.map((childId: string) => {
+              !node.meta?.selfRender && node.children?.map((childId: string) => {
                 return <ComponentDesignerView key={childId} nodeId={childId} />;
               })
             }

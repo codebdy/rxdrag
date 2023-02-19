@@ -1,3 +1,4 @@
+import { IForm } from "runner/fieldy"
 import { IReactionMaterial } from "./material"
 import { IConfigMeta, IControllerMeta, IReactionMeta } from "./metas"
 
@@ -63,8 +64,10 @@ export type Navigate = (url: string) => void
 export interface IReactionFactoryOptions {
   controllers?: ComponentControllers,
   materials?: IReactionMaterial[],
+  form?: IForm,
+  fieldPath?: string,
   //路由跳转
-  navigate: Navigate
+  navigate?: Navigate
 }
 
 export type ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options: IReactionFactoryOptions) => IReaction

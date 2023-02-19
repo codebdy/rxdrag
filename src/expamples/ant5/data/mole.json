@@ -676,7 +676,7 @@
                       "componentName": "Button",
                       "props": {
                         "type": "primary",
-                        "title": "Button",
+                        "title": "地鼠1",
                         "disabled": true,
                         "style": {},
                         "ghost": false,
@@ -1164,19 +1164,7 @@
                           }
                         ]
                       },
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "TextView",
-                          "props": {
-                            "content": "地鼠1",
-                            "style": {}
-                          },
-                          "x-field": {},
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
+                      "slots": {}
                     }
                   ]
                 },
@@ -1193,7 +1181,7 @@
                       "componentName": "Button",
                       "props": {
                         "type": "primary",
-                        "title": "Button",
+                        "title": "地鼠2",
                         "disabled": true,
                         "style": {},
                         "ghost": false,
@@ -1681,19 +1669,7 @@
                           }
                         ]
                       },
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "TextView",
-                          "props": {
-                            "content": "地鼠2",
-                            "style": {}
-                          },
-                          "x-field": {},
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
+                      "slots": {}
                     }
                   ]
                 },
@@ -1710,7 +1686,7 @@
                       "componentName": "Button",
                       "props": {
                         "type": "primary",
-                        "title": "Button",
+                        "title": "地鼠3",
                         "disabled": true,
                         "style": {},
                         "ghost": false,
@@ -2198,19 +2174,7 @@
                           }
                         ]
                       },
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "TextView",
-                          "props": {
-                            "content": "地鼠3",
-                            "style": {}
-                          },
-                          "x-field": {},
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
+                      "slots": {}
                     }
                   ]
                 }
@@ -2239,7 +2203,7 @@
                       "componentName": "Button",
                       "props": {
                         "type": "primary",
-                        "title": "Button",
+                        "title": "地鼠4",
                         "disabled": true,
                         "style": {},
                         "ghost": false,
@@ -2727,19 +2691,7 @@
                           }
                         ]
                       },
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "TextView",
-                          "props": {
-                            "content": "地鼠4",
-                            "style": {}
-                          },
-                          "x-field": {},
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
+                      "slots": {}
                     }
                   ]
                 },
@@ -2756,7 +2708,7 @@
                       "componentName": "Button",
                       "props": {
                         "type": "primary",
-                        "title": "Button",
+                        "title": "地鼠5",
                         "disabled": true,
                         "style": {},
                         "ghost": false,
@@ -3244,19 +3196,7 @@
                           }
                         ]
                       },
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "TextView",
-                          "props": {
-                            "content": "地鼠5",
-                            "style": {}
-                          },
-                          "x-field": {},
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
+                      "slots": {}
                     }
                   ]
                 },
@@ -3273,7 +3213,7 @@
                       "componentName": "Button",
                       "props": {
                         "type": "primary",
-                        "title": "Button",
+                        "title": "地鼠6",
                         "disabled": true,
                         "style": {},
                         "ghost": false,
@@ -3761,19 +3701,7 @@
                           }
                         ]
                       },
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "TextView",
-                          "props": {
-                            "content": "地鼠6",
-                            "style": {}
-                          },
-                          "x-field": {},
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
+                      "slots": {}
                     }
                   ]
                 }
@@ -3802,7 +3730,7 @@
                       "componentName": "Button",
                       "props": {
                         "type": "primary",
-                        "title": "Button",
+                        "title": "地鼠7",
                         "disabled": true,
                         "style": {},
                         "ghost": false,
@@ -4290,19 +4218,7 @@
                           }
                         ]
                       },
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "TextView",
-                          "props": {
-                            "content": "地鼠7",
-                            "style": {}
-                          },
-                          "x-field": {},
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
+                      "slots": {}
                     }
                   ]
                 },
@@ -4319,7 +4235,7 @@
                       "componentName": "Button",
                       "props": {
                         "type": "primary",
-                        "title": "Button",
+                        "title": "地鼠8",
                         "disabled": true,
                         "style": {},
                         "ghost": false,
@@ -4807,19 +4723,7 @@
                           }
                         ]
                       },
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "TextView",
-                          "props": {
-                            "content": "地鼠8",
-                            "style": {}
-                          },
-                          "x-field": {},
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
+                      "slots": {}
                     }
                   ]
                 },
@@ -4836,7 +4740,7 @@
                       "componentName": "Button",
                       "props": {
                         "type": "primary",
-                        "title": "Button",
+                        "title": "地鼠9",
                         "disabled": true,
                         "style": {},
                         "ghost": false,
@@ -5324,19 +5228,7 @@
                           }
                         ]
                       },
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "TextView",
-                          "props": {
-                            "content": "地鼠9",
-                            "style": {}
-                          },
-                          "x-field": {},
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
+                      "slots": {}
                     }
                   ]
                 }
@@ -5506,7 +5398,7 @@
                       "componentName": "Button",
                       "props": {
                         "type": "default",
-                        "title": "Button",
+                        "title": "开始",
                         "style": {}
                       },
                       "x-field": {},
@@ -5641,25 +5533,13 @@
                         ],
                         "enable": true
                       },
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "TextView",
-                          "props": {
-                            "content": "开始",
-                            "style": {}
-                          },
-                          "x-field": {},
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
+                      "slots": {}
                     },
                     {
                       "componentName": "Button",
                       "props": {
                         "type": "default",
-                        "title": "Button",
+                        "title": "结束",
                         "style": {
                           "marginLeft": "8px"
                         },
@@ -5837,19 +5717,7 @@
                         ],
                         "enable": true
                       },
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "TextView",
-                          "props": {
-                            "content": "结束",
-                            "style": {}
-                          },
-                          "x-field": {},
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
+                      "slots": {}
                     }
                   ]
                 }

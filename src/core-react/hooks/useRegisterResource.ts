@@ -1,4 +1,4 @@
-import { IMaterialResource } from "core-react/interfaces";
+import { IResource } from "core/interfaces";
 import { useCallback } from "react";
 import { useLocalesManager } from "./useLocalesManager";
 import { useResourceManager } from "./useResourceManager";
@@ -7,7 +7,7 @@ export function useRegisterResource() {
   const resourceManager = useResourceManager()
   const localesManager = useLocalesManager()
 
-  const register = useCallback((resource: IMaterialResource) => {
+  const register = useCallback((resource: IResource) => {
 
     if (resource.resourceLocales) {
       localesManager?.registerResourceLocales(resource.resourceLocales)

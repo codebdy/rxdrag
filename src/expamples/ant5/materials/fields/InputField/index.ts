@@ -1,8 +1,9 @@
-import { IMaterialResource } from "core-react";
+
+import { IResource } from "core";
 import { inputIcon } from "../../inputs/Input/icon";
 import { inputFieldResourceLocales } from "./locales";
 
-export const InputFieldResource: IMaterialResource = {
+export const InputFieldResource: IResource = {
   name: "InputField",
   icon: inputIcon,
   color: "#dfa324",

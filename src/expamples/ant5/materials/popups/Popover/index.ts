@@ -1,7 +1,7 @@
 import { Popover } from "antd";
 import { IComponentMaterial } from "core-react";
 import { DefaultSlotMaterial } from "../../slots/DefualtSlot";
-import { TextViewMaterial } from "../../displays/TextView";
+import { TextMaterial } from "../../displays/typography/Text";
 import { PopoverDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
@@ -27,7 +27,7 @@ export const PopoverMaterial: IComponentMaterial = {
         componentName: name,
         slots: {
           title: {
-            componentName: "TextView",
+            componentName: "Text",
             props: {
               content: "Popover Title",
             }
@@ -44,7 +44,7 @@ export const PopoverMaterial: IComponentMaterial = {
             },
             children: [
               {
-                componentName: "TextView",
+                componentName: "Text",
                 props: {
                   content: name,
                 }
@@ -56,7 +56,7 @@ export const PopoverMaterial: IComponentMaterial = {
     ]
   },
   slots: {
-    title: TextViewMaterial,
+    title: TextMaterial,
     content: DefaultSlotMaterial,
   },
   behaviorRule: {

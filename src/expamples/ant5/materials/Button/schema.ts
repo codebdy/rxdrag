@@ -1,228 +1,151 @@
 import { INodeSchema } from "core";
-import { createSchema, SchemaOptions } from "react-shells/ant5/shared/createSchema";
+import { createSchema, createSlotsSchema, SchemaOptions, withFormItem } from "react-shells/ant5/shared/createSchema";
 import { IBindParams } from "runner/ComponentRender/interfaces";
 import { IFieldMeta } from "runner/fieldy/interfaces";
 
 const options: SchemaOptions<IFieldMeta<IBindParams>> = {
   propsSchemas: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Input",
+      "x-field": {
+        name: "title",
         label: "$title",
       },
-      children: [
-        {
-          componentName: "Input",
-          "x-field": {
-            name: "title",
-            params:{
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Select",
+      "x-field": {
+        name: "type",
         label: "$type",
       },
-
-      children: [
-        {
-          componentName: "Select",
-          "x-field": {
-            name: "type",
-            params:{
-              withBind: true,
-            }
+      props: {
+        options: [
+          {
+            value: 'primary',
+            label: 'Primary',
           },
-          props: {
-            options: [
-              {
-                value: 'primary',
-                label: 'Primary',
-              },
-              {
-                value: 'ghost',
-                label: 'Ghost',
-              },
-              {
-                value: 'dashed',
-                label: 'Dashed',
-              },
-              {
-                value: 'link',
-                label: 'Link',
-              },
-              {
-                value: 'text',
-                label: 'Text',
-              },
-              {
-                value: 'default',
-                label: 'Default',
-              },
-            ]
-          }
-        }
-      ]
+          {
+            value: 'ghost',
+            label: 'Ghost',
+          },
+          {
+            value: 'dashed',
+            label: 'Dashed',
+          },
+          {
+            value: 'link',
+            label: 'Link',
+          },
+          {
+            value: 'text',
+            label: 'Text',
+          },
+          {
+            value: 'default',
+            label: 'Default',
+          },
+        ]
+      }
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "disabled",
         label: "$disabled",
-      },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "disabled",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
+        params: {
+          valuePropName: "checked",
         }
-      ]
+      },
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "block",
         label: "$block",
-      },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "block",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
+        params: {
+          valuePropName: "checked",
         }
-      ]
+      },
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "danger",
         label: "$danger",
-      },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "danger",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
+        params: {
+          valuePropName: "checked",
         }
-      ]
+      },
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "ghost",
         label: "$ghost",
-      },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "ghost",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
+        params: {
+          valuePropName: "checked",
         }
-      ]
+      },
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Radio.Group",
+      "x-field": {
+        name: "shape",
         label: "$shape",
       },
-      children: [
-        {
-          componentName: "Radio.Group",
-          "x-field": {
-            name: "shape",
-            withBind: true,
+      props: {
+        optionType: "button",
+        size: "small",
+        options: [
+          {
+            label: "$default",
+            value: "default"
           },
-          props: {
-            optionType: "button",
-            options: [
-              {
-                label: "$default",
-                value: "default"
-              },
-              {
-                label: "$circle",
-                value: "circle"
-              },
-              {
-                label: "$round",
-                value: "round"
-              },
-            ],
-            defaultValue: "default",
-          }
-        }
-      ]
+          {
+            label: "$circle",
+            value: "circle"
+          },
+          {
+            label: "$round",
+            value: "round"
+          },
+        ],
+        defaultValue: "default",
+      }
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Radio.Group",
+      "x-field": {
+        name: "size",
         label: "$size",
       },
-      children: [
-        {
-          componentName: "Radio.Group",
-          "x-field": {
-            name: "size",
-            withBind: true,
+      props: {
+        optionType: "button",
+        size: "small",
+        options: [
+          {
+            label: "$large",
+            value: "large"
           },
-          props: {
-            optionType: "button",
-            options: [
-              {
-                label: "$large",
-                value: "large"
-              },
-              {
-                label: "$middle",
-                value: "middle"
-              },
-              {
-                label: "$small",
-                value: "small"
-              },
-            ],
-            defaultValue: "middle",
-          }
-        }
-      ]
+          {
+            label: "$middle",
+            value: "middle"
+          },
+          {
+            label: "$small",
+            value: "small"
+          },
+        ],
+        defaultValue: "middle",
+      }
     },
   ],
-  slotsSchemas: [
+  slotsSchemas: createSlotsSchema(
     {
-      componentName: "FormItem",
-      props: {
-        label: "$icon",
-      },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "icon"
-          }
-        }
-      ]
-    },
-  ]
+      name: "icon",
+      label: "$icon"
+    }
+  )
 }
 
-export const buttonSchema: INodeSchema = createSchema(options)
+export const buttonSchema: INodeSchema = createSchema(withFormItem(options))

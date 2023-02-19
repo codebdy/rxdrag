@@ -167,7 +167,7 @@
               "slots": {},
               "children": [
                 {
-                  "componentName": "TextView",
+                  "componentName": "Text",
                   "props": {
                     "content": "Button",
                     "style": {}
@@ -300,9 +300,9 @@
               "slots": {},
               "children": [
                 {
-                  "componentName": "TextView",
+                  "componentName": "Text",
                   "props": {
-                    "content": "被动按钮",
+                    "value": "被动按钮",
                     "style": {}
                   },
                   "x-field": {},

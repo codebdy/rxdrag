@@ -40,8 +40,11 @@ export interface IDesignerParams {
   [key: string]: any
 }
 
-export interface IComponentConfig {
+export interface IComponentConfig<ComponentType = any> {
+  packageName?: string //npm包名 生成代码用
   componentName: string
+  component: ComponentType,
+  designer: ComponentType,
   behaviorRule?: IBehaviorRule
   designerSchema?: INodeSchema
   designerLocales?: ILocales
@@ -51,7 +54,12 @@ export interface IComponentConfig {
   //slots用到的组件，值为true时，用缺省组件DefaultSlot, string时，存的是已经注册过的component resource名字
   slots?: {
     [name: string]: IComponentConfig | true | string | undefined
-  }
+  },
+  //自定义属性面板用的多语言资源
+  toolsLocales?: ILocales
+  tools?: {
+    [name: string]: ComponentType | undefined
+  },
 }
 
 //可独立注册的行为规则

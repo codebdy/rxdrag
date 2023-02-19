@@ -1,4 +1,4 @@
-import { IComponentMaterial, IMaterialResource } from "core-react";
+import { IComponentMaterial } from "core-react";
 import { ButtonMaterial } from "./Button";
 import { ColMaterial } from "./layouts/Col";
 import { HCFLayoutMaterial } from "./layouts/HCFLayout";
@@ -10,15 +10,13 @@ import { LogoMaterial } from "./layouts/Logo";
 import { MenuMaterial } from "./layouts/Menu";
 import { AvatarMaterial } from "./displays/Avatar";
 import { CardMaterial } from "./layouts/Card";
-import { TextViewMaterial } from "./displays/TextView";
+import { TextMaterial } from "./displays/typography/Text";
 import { StatisticMaterial } from "./displays/Statistic";
 import { BoxMaterial } from "./layouts/Box";
 import { IconViewMaterial } from "./displays/IconView";
-import { JobsMaterial } from "./business/Jobs";
 import { RightAdMaterial } from "./business/RightAd";
 import { DividerMaterial } from "./layouts/Divider";
 import { NewsMaterial } from "./business/News";
-import { CustomersMaterial } from "./business/Customers";
 import { NoticesMaterial } from "./business/Notices";
 import { PaperMaterial } from "./layouts/Paper";
 import { BreadcrumbMaterial } from "./layouts/Breadcrumb";
@@ -54,6 +52,15 @@ import { ListItemMetaMaterial } from "./datas/ListItemMeta";
 import { DefaultSlotMaterial } from "./slots/DefualtSlot";
 import { ActionSlotMaterial } from "./slots/ActionSlot";
 import { ExtraSlotMaterial } from "./slots/ExtraSlot";
+import { TableMaterial } from "./datas/Table";
+import { TableColumnMaterial } from "./datas/TableColumn";
+import { LinkMaterial } from "./displays/typography/Link";
+import { SpaceMaterial } from "./layouts/Space";
+import { TitleMaterial } from "./displays/typography/Title";
+import { ParagraphMaterial } from "./displays/typography/Paragraph";
+import { LoopPanelMaterial } from "./displays/LoopPanel";
+import { TagMaterial } from "./displays/Tag";
+import { IResource } from "core";
 
 export type MaterialGroup = {
   titleKey: string,
@@ -87,12 +94,17 @@ export const materials: MaterialGroup[] = [
   {
     titleKey: 'displays',
     items: [
-      TextViewMaterial,
+      TitleMaterial,
+      TextMaterial,
+      LinkMaterial,
+      ParagraphMaterial,
       StatisticMaterial,
       IconViewMaterial,
       AvatarMaterial,
       BadgeMaterial,
       ImageViewMaterial,
+      LoopPanelMaterial,
+      TagMaterial,
     ]
   },
   {
@@ -128,6 +140,7 @@ export const materials: MaterialGroup[] = [
       DividerMaterial,
       BreadcrumbMaterial,
       HeroMaterial,
+      SpaceMaterial,
     ]
   },
   {
@@ -135,21 +148,21 @@ export const materials: MaterialGroup[] = [
     items: [
       ListMaterial,
       ListItemMetaMaterial,
+      TableMaterial,
+      TableColumnMaterial,
     ]
   },
   {
     titleKey: 'business',
     items: [
-      JobsMaterial,
       RightAdMaterial,
       NewsMaterial,
-      CustomersMaterial,
       NoticesMaterial,
     ]
   }
 ]
 
-export const fields: IMaterialResource[] = [
+export const fields: IResource[] = [
   InputFieldResource,
 ]
 
