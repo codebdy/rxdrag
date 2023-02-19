@@ -1,5 +1,5 @@
 import { INodeSchema } from "core";
-import { createSchema, SchemaOptions, withFormItem } from "react-shells/ant5/shared/createSchema";
+import { createSchema, createSlotsSchema, SchemaOptions, withFormItem } from "react-shells/ant5/shared/createSchema";
 import { IBindParams } from "runner/ComponentRender/interfaces";
 import { IFieldMeta } from "runner/fieldy/interfaces";
 
@@ -74,7 +74,6 @@ const options: SchemaOptions<IFieldMeta<IBindParams>> = {
         label: "$danger",
         params: {
           valuePropName: "checked",
-          withBind: true,
         }
       },
     },
@@ -85,7 +84,6 @@ const options: SchemaOptions<IFieldMeta<IBindParams>> = {
         label: "$ghost",
         params: {
           valuePropName: "checked",
-          withBind: true,
         }
       },
     },
@@ -140,17 +138,12 @@ const options: SchemaOptions<IFieldMeta<IBindParams>> = {
       }
     },
   ],
-  slotsSchemas: [
+  slotsSchemas: createSlotsSchema(
     {
-      componentName: "SlotSwitch",
-      props: {
-        name: "icon"
-      },
-      "x-field": {
-        label: "$icon",
-      }
+      name: "icon",
+      label: "$icon"
     }
-  ]
+  )
 }
 
 export const buttonSchema: INodeSchema = createSchema(withFormItem(options))

@@ -38,6 +38,25 @@ export function attachFormItem(schemas?: INodeSchema<IFieldMeta<IBindParams>, IC
   }))
 }
 
+export type SlotsOption = {
+  name: string,
+  label: string,
+}
+
+export function createSlotsSchema(...options: SlotsOption[]) {
+  return options.map((opt) => {
+    return ({
+      componentName: "SlotSwitch",
+      props: {
+        name: opt.name
+      },
+      "x-field": {
+        label: opt.label,
+      }
+    })
+  })
+}
+
 export function withFormItem(options: SchemaOptions = {}) {
   return {
     ...options,

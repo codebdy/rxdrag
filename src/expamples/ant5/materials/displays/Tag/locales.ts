@@ -3,12 +3,20 @@ export const locales = {
   "zh-CN": {
     title: "标签",
     settings: {
+      content: "内容",
+      closable: "可关闭",
+      color: "颜色",
+      icon: "图标",
     }
 
   },
   'en-US': {
     title: "Tag",
     settings: {
+      content: "Content",
+      closable: "Closable",
+      color: "Color",
+      icon: "Icon",
     }
   }
 }

@@ -1,5 +1,6 @@
 import { IComponentMaterial } from "core-react";
 import { Tag } from "expamples/ant5/components/displays/Tag";
+import { IconViewMaterial } from "../IconView";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";
@@ -25,5 +26,7 @@ export const TagMaterial: IComponentMaterial = {
       }
     ]
   },
-
+  slots: {
+    icon: IconViewMaterial,
+  },
 }

@@ -19,6 +19,11 @@ export const IconViewMaterial: IComponentMaterial = {
     elements: [
       {
         componentName: name,
+        props: {
+          icon: {
+            iconKey: "QuestionOutlined",
+          }
+        }
       }
     ]
   },

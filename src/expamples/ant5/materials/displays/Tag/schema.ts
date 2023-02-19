@@ -1,5 +1,5 @@
 import { INodeSchema } from "core";
-import { createSchema, SchemaOptions, withFormItem } from "react-shells/ant5/shared/createSchema";
+import { createSchema, createSlotsSchema, SchemaOptions, withFormItem } from "react-shells/ant5/shared/createSchema";
 
 const options: SchemaOptions = {
   propsSchemas: [
@@ -10,7 +10,30 @@ const options: SchemaOptions = {
         label: "$content",
       },
     },
+    {
+      componentName: "Switch",
+      "x-field": {
+        name: "closable",
+        label: "$closable",
+        params: {
+          valuePropName: "checked",
+        }
+      },
+    },
+    {
+      componentName: "ColorInput",
+      "x-field": {
+        name: "color",
+        label: "$color",
+      },
+    },
   ],
+  slotsSchemas: createSlotsSchema(
+    {
+      name: "icon",
+      label: "$icon"
+    }
+  ),
   logicOptions: {
     canBindField: true,
   }
