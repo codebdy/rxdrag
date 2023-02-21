@@ -1,4 +1,4 @@
-import { switchRef } from "core-react/switchRef"
+import { switchRef } from "core-react/hocs/switchRef"
 import { forwardRef, memo } from "react"
 
 const TableColumnDesignerImpl = memo(forwardRef<HTMLDivElement>((

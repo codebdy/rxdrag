@@ -1,12 +1,10 @@
 import { forwardRef, memo, useLayoutEffect } from "react"
 import { ReactComponent } from "runner/ComponentRender/types"
-import { useNode } from "./hooks/useNode"
+import { useNode } from "../hooks/useNode"
 import { isFunction } from "lodash"
+import { Callback, defaultCallback } from "./types"
 
-type Callback = (element?: HTMLElement | null) => HTMLElement | undefined | null
-const defaultCallback = (element?: HTMLElement | null) => element
-
-export function switchRefById(WrappedComponent: ReactComponent, callback: Callback = defaultCallback): ReactComponent {
+export function forwardRefById(WrappedComponent: ReactComponent, callback: Callback = defaultCallback): ReactComponent {
 
   return memo(forwardRef<HTMLInputElement>((props: any, ref) => {
     const node = useNode()

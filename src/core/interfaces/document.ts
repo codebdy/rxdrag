@@ -1,6 +1,6 @@
 import { NodesById } from "core/reducers/nodesById";
 import { IAction } from "./action";
-import { IDesignerParams } from "./component";
+//import { IDesignerParams } from "./component";
 import { DocumentActionPayload } from "./payloads";
 import { ID, RxProps } from "./types";
 
@@ -73,7 +73,7 @@ export interface ITreeNode {
   //用来编辑属性的schema
   designerSchema?: INodeSchema
   //设计器专用属性，比如是否锁定
-  designerParams?: IDesignerParams
+  //designerParams?: IDesignerParams
 }
 
 export interface NodeBehavior {

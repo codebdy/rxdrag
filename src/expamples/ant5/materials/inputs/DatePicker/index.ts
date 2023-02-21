@@ -1,6 +1,6 @@
 import { DatePicker } from "antd";
 import { IComponentMaterial } from "core-react";
-import { switchRefById } from "core-react/switchRefById";
+import { forwardRefById } from "core-react/hocs/forwardRefById";
 import { datePickerIcon } from "./icon";
 import { datePickerLocales, datePickerResourceLocales } from "./locales";
 import { datePickerSchema } from "./schema";
@@ -9,7 +9,7 @@ const name = "DatePicker"
 export const DatePickerMaterial: IComponentMaterial = {
   componentName: name,
   component: DatePicker,
-  designer: switchRefById(DatePicker, element => element?.parentElement?.parentElement),
+  designer: forwardRefById(DatePicker, element => element?.parentElement?.parentElement),
   designerLocales: datePickerLocales,
   designerSchema: datePickerSchema,
   designerProps: {
