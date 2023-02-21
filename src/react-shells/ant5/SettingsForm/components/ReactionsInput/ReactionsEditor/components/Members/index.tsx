@@ -2,7 +2,7 @@ import { PlusOutlined, ThunderboltOutlined } from "@ant-design/icons";
 import { Button, Typography } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useState } from "react"
-import { IControllerMeta, IReactionDefineMeta, IVariableDefineMeta } from "runner/reaction/interfaces/metas";
+import { IControllerMeta, IReactionDefineMeta, IVariableDefineMeta } from "runner/minions/interfaces/metas";
 import styled from "styled-components";
 import { methodIcon, variableIcon } from "../../../../../../icons/reactions";
 import { createUuid } from "../../utils";

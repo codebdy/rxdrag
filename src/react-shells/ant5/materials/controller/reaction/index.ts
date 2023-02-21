@@ -1,5 +1,5 @@
 import { methodIcon } from "react-shells/ant5/icons/reactions";
-import { IReactionMaterial, ReactionType } from "runner/reaction";
+import { IReactionMaterial, ReactionType } from "runner/minions";
 import { ControllerReaction } from "./factory";
 
 export const reactionMaterial: IReactionMaterial = {

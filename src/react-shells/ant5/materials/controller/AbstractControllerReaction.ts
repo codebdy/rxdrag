@@ -1,4 +1,4 @@
-import { AbstractReaction, IComponentController, IConfigMeta, IReactionFactoryOptions, IReactionMeta } from "runner/reaction"
+import { AbstractReaction, IComponentController, IConfigMeta, IReactionFactoryOptions, IReactionMeta } from "runner/minions"
 
 export interface IControllerReactionConfig extends IConfigMeta {
   prop?: string

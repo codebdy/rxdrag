@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { Node } from "@antv/x6";
 import { useToken } from "antd/es/theme/internal";
-import { IConfigMeta, IReactionMeta, ReactionType } from "runner/reaction/interfaces/metas";
+import { IConfigMeta, IReactionMeta, ReactionType } from "runner/minions/interfaces/metas";
 import { getStartNodeConfig } from "./getStartNodeConfig";
 import { getEndNodeConfig } from "./getEndNodeConfig";
 import { useGetMaterial } from "./useGetMaterial";

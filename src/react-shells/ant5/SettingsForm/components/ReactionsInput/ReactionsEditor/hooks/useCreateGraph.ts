@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { config } from "./config";
 import { Selection } from '@antv/x6-plugin-selection'
 import { MiniMap } from "@antv/x6-plugin-minimap";
-import { ReactionType } from "runner/reaction/interfaces/metas";
+import { ReactionType } from "runner/minions/interfaces/metas";
 import { useToken } from "antd/es/theme/internal";
 import { INodeData } from "../interfaces";
 

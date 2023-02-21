@@ -1,5 +1,5 @@
 import { GlobalToken } from "antd/es/theme/interface"
-import { IReactionMeta } from "runner/reaction/interfaces/metas"
+import { IReactionMeta } from "runner/minions/interfaces/metas"
 
 const STROKE_WIDTH = 5
 export const getEndNodeConfig = (nodeMeta: IReactionMeta, token: GlobalToken) => {

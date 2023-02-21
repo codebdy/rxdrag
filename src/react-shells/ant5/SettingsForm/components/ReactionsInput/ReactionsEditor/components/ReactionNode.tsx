@@ -1,7 +1,7 @@
 import { Node } from '@antv/x6'
 import '@antv/x6-react-shape'
 import { GlobalToken } from 'antd/es/theme/interface'
-import { IReactionMaterial } from 'runner/reaction/interfaces/material'
+import { IReactionMaterial } from 'runner/minions/interfaces/material'
 import { insertCss } from 'insert-css'
 import styled from 'styled-components'
 import { INodeData } from '../interfaces'

@@ -1,5 +1,5 @@
 import { ID, INodeSchema } from "core"
-import { memo, useEffect, useMemo } from "react"
+import { memo, useMemo } from "react"
 import { ComponentField } from "./ComponentField"
 import { ComponentSchemaContext } from "./contexts"
 import { usePreviewComponent } from "core-react/hooks/usePreviewComponent"

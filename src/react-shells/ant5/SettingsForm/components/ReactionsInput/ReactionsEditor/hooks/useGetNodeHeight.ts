@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { IConfigMeta, IReactionMeta } from "runner/reaction/interfaces/metas";
+import { IConfigMeta, IReactionMeta } from "runner/minions/interfaces/metas";
 
 export function useGetNodeHeight() {
   const getNodeHeight = useCallback((nodeMeta: IReactionMeta<IConfigMeta>, hasSubLabel: boolean) => {

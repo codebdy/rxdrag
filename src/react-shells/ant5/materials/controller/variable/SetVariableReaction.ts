@@ -1,5 +1,5 @@
-import { IConfigMeta, IReactionMeta } from "runner/reaction";
-import { IComponentController, IReactionFactoryOptions, ReactionFactory } from "runner/reaction/interfaces/controller";
+import { IConfigMeta, IReactionMeta } from "runner/minions";
+import { IComponentController, IReactionFactoryOptions, ReactionFactory } from "runner/minions/interfaces/controller";
 import { AbstractControllerReaction } from "../AbstractControllerReaction";
 
 export interface IVariableConfig extends IConfigMeta {

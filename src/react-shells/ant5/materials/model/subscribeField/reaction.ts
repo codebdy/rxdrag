@@ -1,5 +1,5 @@
-import { AbstractReaction, IConfigMeta, IReactionMeta } from "runner/reaction";
-import { IReactionFactoryOptions, ReactionFactory } from "runner/reaction/interfaces/controller";
+import { AbstractReaction, IConfigMeta, IReactionMeta } from "runner/minions";
+import { IReactionFactoryOptions, ReactionFactory } from "runner/minions/interfaces/controller";
 
 export interface ISubscribeFieldConfig extends IConfigMeta {
   fieldPath?: string,

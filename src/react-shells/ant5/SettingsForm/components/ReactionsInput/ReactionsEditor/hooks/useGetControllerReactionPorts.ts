@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { IPortMeta, IReactionMeta, ReactionType } from "runner/reaction";
+import { IPortMeta, IReactionMeta, ReactionType } from "runner/minions";
 import { useGetControllerMeta } from "./useGetControllerMeta";
 
 export function useGetControllerReactionPorts() {

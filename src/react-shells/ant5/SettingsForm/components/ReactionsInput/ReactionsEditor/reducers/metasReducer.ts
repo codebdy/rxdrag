@@ -1,4 +1,4 @@
-import { ILogicMetas } from "runner/reaction/interfaces/metas";
+import { ILogicMetas } from "runner/minions/interfaces/metas";
 import { Action, ActionType, AddEdgeAction, AddNodeAction, ChangeEdgeAction, ChangeNodeAction, RemoveNodeAction, SetMetasAction } from "../actions";
 
 export function metasReducer(state: ILogicMetas, action: Action): ILogicMetas {

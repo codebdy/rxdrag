@@ -1,6 +1,6 @@
 import { Select } from "antd"
 import { memo, useMemo } from "react"
-import { IControllerMeta } from "runner/reaction/interfaces/metas"
+import { IControllerMeta } from "runner/minions/interfaces/metas"
 import { useController } from "../../../hooks/useController"
 import { useControllerNodes } from "../../../hooks/useControllerNodes"
 import { useSelectedNode } from "../../../hooks/useSelectedNode"

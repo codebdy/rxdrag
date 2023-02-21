@@ -1,6 +1,6 @@
 import { jsIcon } from "react-shells/ant5/icons/reactions";
 import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
-import { IReactionMaterial, ReactionType } from "runner/reaction";
+import { IReactionMaterial, ReactionType } from "runner/minions";
 import { JsCode } from "./reaction";
 import { jsCodeSchema } from "./schema";
 

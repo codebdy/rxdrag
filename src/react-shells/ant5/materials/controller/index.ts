@@ -1,4 +1,4 @@
-import { IReactionMaterial } from "runner/reaction/interfaces/material";
+import { IReactionMaterial } from "runner/minions/interfaces/material";
 import { reactionMaterial } from "./reaction";
 import { setPropMaterial } from "./setProp";
 import { listenVariableMaterial, readVariableMaterial, setVariableMaterial } from "./variable";

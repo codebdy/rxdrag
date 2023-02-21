@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react"
-import { ILogicMetas } from "runner/reaction/interfaces/metas"
+import { ILogicMetas } from "runner/minions/interfaces/metas"
 import { ActionType } from "../actions"
 import { useEditorStore } from "./useEditorStore"
 

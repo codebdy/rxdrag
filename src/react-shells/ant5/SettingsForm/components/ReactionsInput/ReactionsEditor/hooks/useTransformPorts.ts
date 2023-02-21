@@ -1,6 +1,6 @@
 import { useToken } from "antd/es/theme/internal";
 import { useCallback } from "react";
-import { IPortMeta, IReactionMeta, ReactionType } from "runner/reaction/interfaces/metas";
+import { IPortMeta, IReactionMeta, ReactionType } from "runner/minions/interfaces/metas";
 import { useGetControllerReactionPorts } from "./useGetControllerReactionPorts";
 import { useTrans } from "./useTrans";
 

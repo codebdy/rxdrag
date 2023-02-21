@@ -11,11 +11,7 @@ import { viewType } from "./viewType";
 
 export type DocumentState = {
 	selectionMode: DocumentSelectionMode
-	changed: {
-		root?: boolean,
-		[block: string]: boolean | undefined
-	}
-	activedBlock?: string
+	changed: boolean
 	selectedIds: ID[] | null
 	history: ISnapshot[]
 	rootId?: ID
@@ -27,9 +23,7 @@ export type DocumentState = {
 
 const initialState: DocumentState = {
 	selectionMode: DocumentSelectionMode.Normal,
-	changed: {
-		root: false,
-	},
+	changed: false,
 	history: [],
 	selectedIds: null,
 	snapshotIndex: 0,

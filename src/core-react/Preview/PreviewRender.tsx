@@ -6,7 +6,7 @@ import { IDocument, INodeSchema } from "core/interfaces"
 import { memo, useEffect, useMemo, useState } from "react"
 import { ComponentRender } from "runner/ComponentRender"
 import { Fieldy, VirtualForm } from "runner/fieldy"
-import { IReactionMaterial } from "runner/reaction"
+import { IReactionMaterial } from "runner/minions"
 import { ThemeProvider } from "styled-components"
 
 export const PreviewRender = memo((

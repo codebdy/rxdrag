@@ -1,6 +1,6 @@
-import { Jointer } from "../../../../../runner/reaction/classes/jointer";
-import { IJointer, IReaction, IReactionFactoryOptions } from "../../../../../runner/reaction/interfaces/controller";
-import { IConfigMeta, IReactionDefineMeta, IReactionMeta, ReactionType } from "../../../../../runner/reaction/interfaces/metas";
+import { Jointer } from "../../../../../runner/minions/classes/jointer";
+import { IJointer, IReaction, IReactionFactoryOptions } from "../../../../../runner/minions/interfaces/controller";
+import { IConfigMeta, IReactionDefineMeta, IReactionMeta, ReactionType } from "../../../../../runner/minions/interfaces/metas";
 
 export class GraphicalReaction implements IReaction {
   id: string;

@@ -1,4 +1,4 @@
-import { ReactionFactory, IReactionMeta, IReactionFactoryOptions, IConfigMeta } from "runner/reaction"
+import { ReactionFactory, IReactionMeta, IReactionFactoryOptions, IConfigMeta } from "runner/minions"
 import { CodeReaction } from "./CodeReaction"
 import { GraphicalReaction } from "./GraphicalReaction"
 

@@ -1,5 +1,5 @@
 import { useCallback } from "react"
-import { IInvokeMeta } from "runner/reaction/interfaces/metas"
+import { IInvokeMeta } from "runner/minions/interfaces/metas"
 
 export function useGetEdgeConfig() {
 

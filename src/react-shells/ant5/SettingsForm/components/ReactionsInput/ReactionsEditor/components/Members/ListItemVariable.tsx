@@ -2,7 +2,7 @@ import { DeleteOutlined, EditOutlined, MoreOutlined } from "@ant-design/icons";
 import { Button, Dropdown, MenuProps } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useMemo, useState } from "react";
-import { IVariableDefineMeta } from "runner/reaction";
+import { IVariableDefineMeta } from "runner/minions";
 import styled from "styled-components";
 import { VariableDialog } from "./VariableDialog";
 

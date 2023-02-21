@@ -1,4 +1,4 @@
-import { IConfigMeta, ILogicMetas, IReactionMeta } from "runner/reaction/interfaces/metas";
+import { IConfigMeta, ILogicMetas, IReactionMeta } from "runner/minions/interfaces/metas";
 import { ISnapshot } from "./contexts";
 
 export interface IEventMeta {

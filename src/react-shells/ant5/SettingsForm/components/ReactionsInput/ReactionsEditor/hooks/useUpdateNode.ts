@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { IConfigMeta, IReactionMeta, ReactionType } from "runner/reaction/interfaces/metas";
+import { IConfigMeta, IReactionMeta, ReactionType } from "runner/minions/interfaces/metas";
 import { Node } from "@antv/x6"
 import { useGetNodeWidth } from "./useGetNodeWidth";
 import { useTransformPorts } from "./useTransformPorts";
