@@ -8,7 +8,7 @@ const HiddenElement = styled.div`
   display: none;
 `
 
-export function forwardRefChildren(WrappedComponent: ReactComponent, callback: Callback = defaultCallback): ReactComponent {
+export function forwardRefByChildren(WrappedComponent: ReactComponent, callback: Callback = defaultCallback): ReactComponent {
 
   return memo(forwardRef<HTMLInputElement>((props: any, ref) => {
     const { children, ...rest } = props
