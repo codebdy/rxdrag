@@ -37,8 +37,7 @@ export const ComponentView = memo((
 
     return slts
   }, [node?.slots])
-  useEffect(() => {
-  }, [node, slots, Component])
+
   return (
     node &&
     <ComponentSchemaContext.Provider value={node}>
