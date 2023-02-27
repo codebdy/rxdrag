@@ -1,0 +1,42 @@
+<mxfile host="app.diagrams.net" modified="2023-02-27T08:06:07.085Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="lW92iU-WWMgW_zCaHLMv" version="20.8.23" type="github">
+  <diagram name="第 1 页" id="8kP688jFtD6BUtxzAYGf">
+    <mxGraphModel dx="1434" dy="788" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="6xqGjWUEeGNGR1zVx9vZ-1" value="«interface»&lt;br&gt;&lt;b&gt;ISubscribable&lt;/b&gt;" style="html=1;" parent="1" vertex="1">
+          <mxGeometry x="255" y="230" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="6xqGjWUEeGNGR1zVx9vZ-2" value="«interface»&lt;br&gt;&lt;b&gt;IDispatchable&lt;/b&gt;" style="html=1;" parent="1" vertex="1">
+          <mxGeometry x="414" y="230" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="F2fiHndrUwXcWpXvVazz-1" value="EventEngine" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="350" width="160" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="F2fiHndrUwXcWpXvVazz-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="F2fiHndrUwXcWpXvVazz-1">
+          <mxGeometry y="26" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="F2fiHndrUwXcWpXvVazz-6" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="F2fiHndrUwXcWpXvVazz-1" target="6xqGjWUEeGNGR1zVx9vZ-1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="430" y="330" as="sourcePoint" />
+            <mxPoint x="590" y="330" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="400" y="320" />
+              <mxPoint x="310" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="F2fiHndrUwXcWpXvVazz-7" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="F2fiHndrUwXcWpXvVazz-1" target="6xqGjWUEeGNGR1zVx9vZ-2">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="510" y="330" as="sourcePoint" />
+            <mxPoint x="670" y="330" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="400" y="320" />
+              <mxPoint x="470" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
