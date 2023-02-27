@@ -19,14 +19,14 @@ export interface IDispatchable<T> {
   dispatch(event: T): void | boolean
 }
 
-export interface Subscribable {
+export interface ISubscribable {
   subscribeTo<T extends CustomEventClass>(
     type: T,
     subscriber: ISubscriber<InstanceType<T>>
   ): Unsubscribe,
 }
 
-export abstract class EventEngine<EventType extends CustomEventClass = any> implements IDispatchable<EventType>, Subscribable {
+export abstract class EventEngine<EventType extends CustomEventClass = any> implements IDispatchable<EventType>, ISubscribable {
   private subscribers: {
     [key: string]: ISubscriber
   } = {}
