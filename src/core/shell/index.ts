@@ -12,10 +12,6 @@ export class DesignerShell extends EventEngine implements IDesignerShell {
 		this.container = el
 	}
 
-	removeContainer(): void {
-		console.error('Method not implemented.')
-	}
-
 	getContainer(): IShellPane | undefined {
 		return this.container
 	}

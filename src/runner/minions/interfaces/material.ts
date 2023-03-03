@@ -1,5 +1,5 @@
 import { INodeSchema } from "core";
-import { ReactionFactory } from "runner/reaction/interfaces/controller";
+import { ReactionFactory } from "runner/minions/interfaces/controller";
 import { IConfigMeta, IReactionNodeData, ReactionType } from "./metas";
 
 export interface IReactionMaterial {

@@ -1,6 +1,6 @@
-import { IReactionMaterial } from "runner/reaction/interfaces/material";
-import { ReactionType } from "runner/reaction/interfaces/metas";
-import { fieldIcon, fieldReadIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon } from "../../icons/reactions";
+import { IReactionMaterial } from "runner/minions/interfaces/material";
+import { ReactionType } from "runner/minions/interfaces/metas";
+import { fieldIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon } from "../../icons/reactions";
 import { createUuid } from "../../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
 import { readFieldValueMaterial } from "./readFieldValue";
 import { subscribeFieldMaterial } from "./subscribeField";

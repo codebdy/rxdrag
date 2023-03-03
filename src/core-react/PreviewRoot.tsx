@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react"
-import { IReactionMaterial } from "runner/reaction"
-import { Minions } from "runner/reaction/components"
+import { IReactionMaterial } from "runner/minions"
+import { Minions } from "runner/minions/components"
 import { IComponentsParams, PreviewComponentsContext } from "./contexts"
 import { IComponents } from "./interfaces"
 

@@ -1,6 +1,6 @@
 import { Button, Popover } from "antd";
 import { memo, useCallback, useState } from "react";
-import { IPortMeta } from "runner/reaction/interfaces/metas";
+import { IPortMeta } from "runner/minions/interfaces/metas";
 import { PortsTable } from "./PortsTable";
 
 export const PortsInput = memo((

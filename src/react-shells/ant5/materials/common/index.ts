@@ -1,4 +1,4 @@
-import { IReactionMaterial } from "runner/reaction/interfaces/material";
+import { IReactionMaterial } from "runner/minions/interfaces/material";
 import { infoMessageMaterial } from "./infoMessage";
 import { jsCodeMaterial } from "./jsCode";
 import { routeToMaterial } from "./routeTo";

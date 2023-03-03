@@ -1,6 +1,6 @@
 import { INodeSchema } from "core";
-import { ReactionType } from "runner/reaction/interfaces/metas";
-import { IReactionMaterial } from "../../../../runner/reaction/interfaces/material";
+import { ReactionType } from "runner/minions/interfaces/metas";
+import { IReactionMaterial } from "../../../../runner/minions/interfaces/material";
 import { endIcon, startIcon } from "../../icons/reactions";
 import { labelSchema, nameSchema } from "../baseSchema";
 import { conditionMaterial } from "./condition";

@@ -1,12 +1,12 @@
 import { forwardRef, memo } from "react"
 import { Checkbox as AntdCheckbox } from "antd"
-import { switchRefById } from "core-react/switchRefById"
+import { forwardRefById } from "core-react/hocs/forwardRefById"
 
 export type CheckboxProps = {
   label?: string
 }
 
-const ForwardCheckbox = switchRefById(AntdCheckbox, element=>element?.parentElement?.parentElement)
+const ForwardCheckbox = forwardRefById(AntdCheckbox, element=>element?.parentElement?.parentElement)
 
 export const Checkbox = memo(forwardRef<HTMLInputElement>((props: CheckboxProps, ref) => {
   const { label, ...other } = props;

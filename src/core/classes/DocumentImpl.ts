@@ -60,9 +60,6 @@ export class DocumentImpl implements IDocument {
 
     return nodes
   }
-  addNodeFormOutside(outsideNode: ITreeNode, targetId: string, pos: NodeRelativePosition): void {
-    throw new Error("Method not implemented.");
-  }
 
   remove = (sourceId: string): void => {
     const playload: DeleteNodesPayload = {
@@ -132,9 +129,7 @@ export class DocumentImpl implements IDocument {
       this.backup(HistoryableActionType.Clone)
     }
   }
-  copyTo(sourceId: string, targetId: string, pos: NodeRelativePosition): void {
-    throw new Error("Method not implemented.");
-  }
+
   changeNodeMeta(id: string, newMeta: INodeMeta): void {
     const payload: ChangeMetaPayloads = {
       id,
@@ -214,19 +209,9 @@ export class DocumentImpl implements IDocument {
     const state = this.store.getState()
     return state?.nodesById?.[id] || null
   }
-  getSchemaBlockNode(id: string): ITreeNode | null {
-    throw new Error("Method not implemented.");
-  }
-  receiveSchema(schema: INodeSchema): ITreeNode {
-    throw new Error("Method not implemented.");
-  }
-  
+
   destory(): void {
     this.dispatch(this.createAction(REMOVE_DOCUMENT, { }))
-  }
-
-  transformNodeToSchema(node: ITreeNode): INodeSchema {
-    throw new Error("Method not implemented.");
   }
 
   getSchemaTree(): INodeSchema | null {

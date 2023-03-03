@@ -1,6 +1,6 @@
 import { ITreeNode, ID } from "core";
 import { useCallback, useEffect, useState } from "react";
-import { UnListener } from "runner/reaction";
+import { UnListener } from "runner/minions";
 import { useDesignerEngine } from "./useDesignerEngine";
 
 export function useTreeNodes(ids: ID[]) {

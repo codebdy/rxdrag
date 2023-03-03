@@ -1,4 +1,4 @@
-import { IDispatchable, ICustomEvent, Subscribable } from "./event"
+import { IDispatchable, ICustomEvent, ISubscribable } from "./event"
 import { ID, IRect } from "./types"
 
 export interface IShellPane {
@@ -22,13 +22,12 @@ export type Canvases = {
 
 
 //处理鼠标键盘事件，将其转换为 Engine 事件。
-export interface IDesignerShell extends Subscribable, IDispatchable<ICustomEvent<any>> {
+export interface IDesignerShell extends ISubscribable, IDispatchable<ICustomEvent<any>> {
 	//状态
 	dragging: boolean
 
 	getContainer(): IShellPane | undefined
 	setContainer(container: IShellPane): void
-	removeContainer(): void
 
 	getCanvas(documentId: ID): IShellPane | undefined
 	getAllCanvases(): Canvases

@@ -1,6 +1,6 @@
 import { useCallback } from "react"
-import { IReactionMaterial } from "runner/reaction/interfaces/material"
-import { IConfigMeta, IReactionMeta } from "runner/reaction/interfaces/metas"
+import { IReactionMaterial } from "runner/minions/interfaces/material"
+import { IConfigMeta, IReactionMeta } from "runner/minions/interfaces/metas"
 import { useTransformPorts } from "./useTransformPorts"
 import { useToken } from "antd/es/theme/internal"
 import { usePortsConfig } from "./usePortsConfig"

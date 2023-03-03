@@ -1,6 +1,6 @@
 import { NodesById } from "core/reducers/nodesById";
 import { IAction } from "./action";
-import { IDesignerParams } from "./component";
+//import { IDesignerParams } from "./component";
 import { DocumentActionPayload } from "./payloads";
 import { ID, RxProps } from "./types";
 
@@ -73,7 +73,7 @@ export interface ITreeNode {
   //用来编辑属性的schema
   designerSchema?: INodeSchema
   //设计器专用属性，比如是否锁定
-  designerParams?: IDesignerParams
+  //designerParams?: IDesignerParams
 }
 
 export interface NodeBehavior {
@@ -123,18 +123,14 @@ export enum HistoryableActionType {
  */
 export interface IDocument {
   id: ID
-  receiveSchema(schema: INodeSchema): ITreeNode
   destory(): void
-  transformNodeToSchema(node: ITreeNode): INodeSchema
 
   initialize(rootSchema: INodeSchema, documentId: ID): void
   moveTo(sourceId: ID, targetId: ID, pos: NodeRelativePosition): void
   multiMoveTo(sourceIds: ID[], targetId: ID, pos: NodeRelativePosition): void
   addNewNodes(elements: INodeSchema | INodeSchema[], targetId: ID, pos: NodeRelativePosition): NodeChunk
-  addNodeFormOutside(outsideNode: ITreeNode, targetId: ID, pos: NodeRelativePosition): void
   remove(sourceId: ID): void
   clone(sourceId: ID): void
-  copyTo(sourceId: ID, targetId: ID, pos: NodeRelativePosition): void
   changeNodeMeta(id: ID, newMeta: INodeMeta): void
   removeSlot(id: ID, name: string): void
   addSlot(id: ID, name: string): void
@@ -146,7 +142,6 @@ export interface IDocument {
 
   getRootNode(): ITreeNode | null
   getNode(id: ID): ITreeNode | null
-  getSchemaBlockNode(id: ID): ITreeNode | null
 
   getSchemaTree(): INodeSchema | null
 }

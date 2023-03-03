@@ -76,7 +76,6 @@ export class Monitor implements IMonitor {
 		return this.store.getState().documentsById[document]?.selectionMode || DocumentSelectionMode.Normal
 	}
 
-
 	getCurrentNode(): ITreeNode | null {
 		const state = this.getState()
 		if (!state.activedDocumentId) {

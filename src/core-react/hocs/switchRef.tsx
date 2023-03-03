@@ -1,9 +1,8 @@
 import { forwardRef, memo, useCallback } from "react"
 import { ReactComponent } from "runner/ComponentRender/types"
 import { isFunction } from "lodash"
+import { Callback, defaultCallback } from "./types"
 
-type Callback = (element?: HTMLElement | null) => HTMLElement | undefined | null
-const defaultCallback = (element?: HTMLElement | null) => element
 
 export function switchRef(WrappedComponent: ReactComponent, callback: Callback = defaultCallback): ReactComponent {
 

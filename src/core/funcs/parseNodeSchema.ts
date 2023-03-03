@@ -23,7 +23,7 @@ export function parseNodeSchema(engine: IDesignerEngine, documentId: ID, schema:
     },
     designerSchema: comDesigner?.designerSchema,
     designerProps: comDesigner?.designerProps,
-    designerParams: comDesigner?.designerParams,
+    //designerParams: comDesigner?.designerParams,
     slots: {},
   };
   for (const child of children || []) {

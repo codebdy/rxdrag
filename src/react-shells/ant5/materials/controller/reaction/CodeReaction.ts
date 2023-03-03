@@ -1,4 +1,4 @@
-import { IReaction, IJointer, IReactionDefineMeta, IConfigMeta, IReactionMeta } from "runner/reaction";
+import { IReaction, IJointer, IReactionDefineMeta, IConfigMeta, IReactionMeta } from "runner/minions";
 
 
 export class CodeReaction implements IReaction {

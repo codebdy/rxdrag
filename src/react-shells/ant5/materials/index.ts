@@ -1,4 +1,4 @@
-import { IReactionMaterial } from "runner/reaction/interfaces/material"
+import { IReactionMaterial } from "runner/minions/interfaces/material"
 import { auxReactions } from "./auxtools"
 import { basicReactions } from "./basic"
 import { commonReactions } from "./common"

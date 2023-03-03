@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ComponentControllers } from "runner/reaction";
+import { ComponentControllers } from "runner/minions";
 import { EmpertyControllers, ControllersContext } from "../contexts";
 
 export function useControllers() {
