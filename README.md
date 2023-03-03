@@ -1,6 +1,8 @@
 # 基于HTML的可视化编辑器
 
- [演示地址](https://rxeditor.vercel.app/).
+[演示地址](https://rxeditor.vercel.app/). 
+
+[实践，制作一个高扩展、可视化低代码前端，详实、完整](https://zhuanlan.zhihu.com/p/610182592)
 
 ## Available Scripts
 
