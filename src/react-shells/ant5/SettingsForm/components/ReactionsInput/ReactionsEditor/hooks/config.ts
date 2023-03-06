@@ -23,9 +23,7 @@ register({
   width: 180,
   height: 36,
   component: ReactionNode,
-
-},
-)
+})
 
 Graph.registerEdge(
   'reaction-edge',

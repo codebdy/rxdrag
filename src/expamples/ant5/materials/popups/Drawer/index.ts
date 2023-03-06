@@ -54,14 +54,6 @@ export const DrawerMaterial: IComponentMaterial = {
             props: {
               title: name,
             },
-            children: [
-              {
-                componentName: "Text",
-                props: {
-                  content: name,
-                }
-              }
-            ]
           }
         },
       }

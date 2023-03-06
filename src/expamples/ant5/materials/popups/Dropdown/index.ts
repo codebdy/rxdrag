@@ -31,14 +31,6 @@ export const DropdownMaterial: IComponentMaterial = {
             props: {
               title: name,
             },
-            children: [
-              {
-                componentName: "Text",
-                props: {
-                  content: name,
-                }
-              }
-            ]
           }
         },
       }

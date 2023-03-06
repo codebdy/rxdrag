@@ -42,14 +42,6 @@ export const PopoverMaterial: IComponentMaterial = {
             props: {
               title: name,
             },
-            children: [
-              {
-                componentName: "Text",
-                props: {
-                  content: name,
-                }
-              }
-            ]
           }
         ]
       }
