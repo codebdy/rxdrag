@@ -28,7 +28,7 @@ export const TooltipMaterial: IComponentMaterial = {
           title: {
             componentName: "Text",
             props: {
-              content: "prompt text",
+              value: "prompt text",
             }
           },
         },
@@ -38,14 +38,6 @@ export const TooltipMaterial: IComponentMaterial = {
             props: {
               title: name,
             },
-            children: [
-              {
-                componentName: "Text",
-                props: {
-                  content: name,
-                }
-              }
-            ]
           }
         ]
       }

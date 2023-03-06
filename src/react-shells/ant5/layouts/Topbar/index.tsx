@@ -1,8 +1,15 @@
 import React, { CSSProperties, memo } from "react"
 import { Box } from "../../components/Box"
 import { useStyles } from "../../hooks/useStyles";
-import cls from "classnames"
-import "./style.less"
+import styled from "styled-components";
+
+const StyledBox= styled(Box)`
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+`
 
 export const Topbar = memo((
   props: {
@@ -17,8 +24,8 @@ export const Topbar = memo((
   }))
 
   return (
-    <Box className = {cls("rx-editor-topbar", className)} style={{ ...styles, ...style }} {...other}>
+    <StyledBox className = {className} style={{ ...styles, ...style }} {...other}>
       {children}
-    </Box>
+    </StyledBox>
   )
 })

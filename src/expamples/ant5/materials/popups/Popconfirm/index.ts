@@ -30,25 +30,25 @@ export const PopconfirmMaterial: IComponentMaterial = {
           title: {
             componentName: "Text",
             props: {
-              content: "Delete the task",
+              value: "Delete the task",
             }
           },
           description: {
             componentName: "Text",
             props: {
-              content: "Are you sure to delete this task?",
+              value: "Are you sure to delete this task?",
             }
           },
           okText: {
             componentName: "Text",
             props: {
-              content: "Ok",
+              value: "Ok",
             }
           },
           cancelText: {
             componentName: "Text",
             props: {
-              content: "Cancel",
+              value: "Cancel",
             }
           },
         },
@@ -58,14 +58,6 @@ export const PopconfirmMaterial: IComponentMaterial = {
             props: {
               title: name,
             },
-            children: [
-              {
-                componentName: "Text",
-                props: {
-                  content: name,
-                }
-              }
-            ]
           }
         ]
       }
