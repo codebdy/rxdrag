@@ -37,8 +37,9 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 RxEditor已重启，基于模型驱动架构，插件式扩展。 
 目标支持react，vue等主流前端库。内核是Immutable数据模型。
 
-QQ交流群：957619750  （过节发红包，妇女节也发）
+QQ交流群：957619750  
 
-微信群 
+## 微信群 
+
 ![微信群](https://github.com/rxdrag/rxeditor/blob/master/doc/images/wechatgroup.jpg?raw=true)
 
