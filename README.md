@@ -39,3 +39,6 @@ RxEditor已重启，基于模型驱动架构，插件式扩展。
 
 QQ交流群：957619750  （过节发红包，妇女节也发）
 
+微信群 
+![微信群](https://github.com/rxdrag/rxeditor/blob/master/doc/images/wechatgroup.jpg?raw=true)
+
