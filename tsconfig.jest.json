@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2015",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "types": ["node", "jest", "testing-library__jest-dom"]
+  }
+}
