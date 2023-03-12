@@ -1,5 +1,5 @@
-import { getRecentRxElement } from "core/shell/utils/getRecentRxElement"
-import { ID, NodeStatus, NodeType, RXID_ATTR_NAME, RX_NODE_TYPE_ATTR_NAME, RX_STATUS_ATTR_NAME } from "core/interfaces"
+import { getRecentRxElement } from "shell/utils/getRecentRxElement"
+import { ID, NodeStatus, NodeType, RXID_ATTR_NAME, RX_NODE_TYPE_ATTR_NAME, RX_STATUS_ATTR_NAME } from "interfaces"
 import { IEventData } from "../eventdata"
 
 export interface NodeRxInfo {

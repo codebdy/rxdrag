@@ -1,6 +1,6 @@
-import { MouseClickEvent, MouseDoubleClickEvent } from "core/shell/events/mouse"
-import { IDriver, IDriverFactory } from "core/interfaces"
-import { IDispatchable, ICustomEvent } from "core/interfaces/event"
+import { MouseClickEvent, MouseDoubleClickEvent } from "shell/events/mouse"
+import { IDriver, IDriverFactory } from "interfaces"
+import { IDispatchable, ICustomEvent } from "interfaces/event"
 
 export class MouseClickDriverImpl implements IDriver {
 

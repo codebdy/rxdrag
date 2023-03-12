@@ -1,7 +1,7 @@
-import { ADD_NODES, CHANGE_NODE_META, DELETE_NODES, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_DOCUMENT, REMOVE_SLOT } from "core/actions/registry"
-import { ID } from "core/interfaces"
-import { IAction } from "core/interfaces/action"
-import { invariant } from "core/utils/util-invariant"
+import { ADD_NODES, CHANGE_NODE_META, DELETE_NODES, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_DOCUMENT, REMOVE_SLOT } from "actions/registry"
+import { ID } from "interfaces"
+import { IAction } from "interfaces/action"
+import { invariant } from "utils/util-invariant"
 import { IDocumentAction, NodeRelativePosition, ITreeNode } from "../interfaces/document"
 import { DocumentInitPayload, AddNodesPayload, DocumentActionPayload, MoveNodesPayload, DeleteNodesPayload, ChangeMetaPayloads, RecoverSnapshotPayload, RemoveSlotPayload } from "../interfaces/payloads"
 

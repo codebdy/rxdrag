@@ -1,14 +1,14 @@
 import { IDesignerEngine, ID, Unsubscribe, ITreeNode } from "core";
-import { CanvasScrollEvent } from "core/shell/events";
-import { IPlugin } from "core/interfaces/plugin";
+import { CanvasScrollEvent } from "shell/events";
+import { IPlugin } from "interfaces/plugin";
 import { numbToPx } from "../utils/numbToPx";
 import { CloneButton } from "./controls/CloneButton";
 import { DeleteButton } from "./controls/DeleteButton";
 import { ComponentSelector } from "./controls/Selector";
 import { IAuxControl, IAuxToolbar } from "./interfaces";
 import { MoveButton } from "./controls/MoveButton";
-import { DraggingNodesState } from "core/reducers/draggingNodes";
-import { DraggingResourceState } from "core/reducers/draggingResource";
+import { DraggingNodesState } from "reducers/draggingNodes";
+import { DraggingResourceState } from "reducers/draggingResource";
 import { LockButton } from "./controls/LockButton";
 import { getMaxZIndex } from "../outlines/getMaxZIndex";
 

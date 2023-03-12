@@ -5,10 +5,10 @@ import { draggingNodes, DraggingNodesState } from './draggingNodes'
 import { DragOverState } from './dragOver'
 import { reduce as dragOver } from './dragOver'
 import { draggingResource, DraggingResourceState } from "./draggingResource";
-import { IAction, ThemeMode } from "core/interfaces/action";
+import { IAction, ThemeMode } from "interfaces/action";
 import { DefualtLang, lang } from "./lang";
 import { nodesById, NodesById } from "./nodesById";
-import { ID } from "core/interfaces";
+import { ID } from "interfaces";
 import { activedDocumentId } from "./activedDocumentId";
 import { themeMode } from "./themeMode";
 import { activedNodeId } from "./activedNodeId";

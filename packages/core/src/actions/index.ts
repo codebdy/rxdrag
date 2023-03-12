@@ -1,5 +1,5 @@
-import { CanvasWidthLimits, CanvasWidthLimitsPayload, CanvasWidthPayload, ID, IDesignerEngine, SelectionModePayload, ViewTypePayload, DocumentSelectionMode } from "core/interfaces";
-import { DrageOverOptions, IActions, StartDragNodesOptions, StartDragResourceOptions, ThemeMode } from "core/interfaces/action";
+import { CanvasWidthLimits, CanvasWidthLimitsPayload, CanvasWidthPayload, ID, IDesignerEngine, SelectionModePayload, ViewTypePayload, DocumentSelectionMode } from "interfaces";
+import { DrageOverOptions, IActions, StartDragNodesOptions, StartDragResourceOptions, ThemeMode } from "interfaces/action";
 import { ACTIVE_NODE, CHANGE_ACTIVED_DOCUMENT, CHANGE_CANVAS_WIDTH, CHANGE_CANVAS_WIDTH_LIMITS, CHANGE_DOCUMENT_VIEW_TYPE, DRAG_HOVER, END_DRAG_NODES, END_DRAG_RESOURCE, SELECT_NODES, SET_SELECTION_MODE, SET_THEME_MODE, START_DRAG_NODES, START_DRAG_RESOURCE } from "./registry";
 
 export class Actions implements IActions {

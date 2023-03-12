@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/auxwidgets/consts.ts"],"sourcesContent":["export const AUX_BACKGROUND_COLOR = \"#1890ff\"\r\nexport const AUX_COLOR = \"#fff\"\r\nexport const TOOLBAR_HEIGHT = 20"],"names":["AUX_BACKGROUND_COLOR","AUX_COLOR","TOOLBAR_HEIGHT"],"mappings":"AAAA,OAAO,MAAMA,uBAAuB,UAAS;AAC7C,OAAO,MAAMC,YAAY,OAAM;AAC/B,OAAO,MAAMC,iBAAiB,GAAE"}

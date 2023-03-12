@@ -1,7 +1,7 @@
 import { IDesignerEngine, IDesignerShell, Unsubscribe } from "core";
-import { DragStartEvent } from "core/shell/events/mouse";
-import { IPlugin } from "core/interfaces/plugin";
-import { DraggingNodesState } from "core/reducers/draggingNodes";
+import { DragStartEvent } from "shell/events/mouse";
+import { IPlugin } from "interfaces/plugin";
+import { DraggingNodesState } from "reducers/draggingNodes";
 
 export class DraggedAttenuatorImpl implements IPlugin {
   name: string = "default.dragged-attenuator";

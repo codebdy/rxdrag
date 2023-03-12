@@ -1,4 +1,4 @@
-import { getKeyCodeFromEvent, KeyCode } from "core/utils/keycode"
+import { getKeyCodeFromEvent, KeyCode } from "utils/keycode"
 
 export class AbstractKeyboardEvent {
   data: KeyCode

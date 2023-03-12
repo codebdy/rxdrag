@@ -1,4 +1,4 @@
-import { ID, DocumentSelectionMode } from "core/interfaces";
+import { ID, DocumentSelectionMode } from "interfaces";
 import { CanvasWidthLimits, IDocumentAction, ISnapshot, ViewType, } from "../../../interfaces/document";
 import { rootId } from "./rootId";
 import { selectedIds } from "./selectedIds";

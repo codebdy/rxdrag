@@ -1,6 +1,6 @@
-import { IAction, StartDragNodesOptions } from "core/interfaces/action"
-import { ID, IXYCoord } from "core/interfaces/types"
-import { END_DRAG_NODES, START_DRAG_NODES } from "core/actions/registry"
+import { IAction, StartDragNodesOptions } from "interfaces/action"
+import { ID, IXYCoord } from "interfaces/types"
+import { END_DRAG_NODES, START_DRAG_NODES } from "actions/registry"
 
 export type DraggingNodesState = {
 	initialMousePosition: IXYCoord

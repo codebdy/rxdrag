@@ -11,7 +11,5 @@
     "examples/*",
     "packages/*"
   ],
-  "devDependencies": {
-    "@tsconfig/strictest": "^1.0.2"
-  }
+  "devDependencies": {}
 }

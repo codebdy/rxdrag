@@ -1,4 +1,4 @@
-import { NodesById } from "core/reducers/nodesById";
+import { NodesById } from "reducers/nodesById";
 import { IAction } from "./action";
 //import { IDesignerParams } from "./component";
 import { DocumentActionPayload } from "./payloads";

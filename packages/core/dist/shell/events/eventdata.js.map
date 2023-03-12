@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/shell/events/eventdata.ts"],"sourcesContent":["import { IShellPane } from \"interfaces\";\r\n\r\nexport interface IEventData {\r\n  targetPanel?: IShellPane\r\n}"],"names":[],"mappings":"AAAA,WAIC"}

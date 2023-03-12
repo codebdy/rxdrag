@@ -1,5 +1,4 @@
 {
-  "extends": "@tsconfig/strictest",
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
@@ -7,6 +6,7 @@
     "lib": ["ESNext", "DOM"],
     "jsx": "react-jsx",
     "declaration": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "strict": true
   }
 }

@@ -1,5 +1,3 @@
-import { IXYCoord } from "core";
-
 export function getPosition(e: { clientX: number, clientY: number }): IXYCoord {
   return {
     x: e.clientX,

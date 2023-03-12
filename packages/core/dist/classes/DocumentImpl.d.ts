@@ -1,0 +1,36 @@
+import { HistoryableActionType, IDocument, IDocumentAction, INodeMeta, INodeSchema, ITreeNode, NodeChunk, NodeRelativePosition } from "../interfaces/document";
+import { DocumentActionPayload } from "../interfaces/payloads";
+import { IDesignerEngine } from "interfaces";
+import { State } from "reducers";
+import { Store } from "redux";
+export declare class DocumentImpl implements IDocument {
+    private engine;
+    private store;
+    id: string;
+    constructor(schema: INodeSchema, engine: IDesignerEngine, store: Store<State>);
+    initialize(rootSchema: INodeSchema, documentId: string): void;
+    moveTo: (sourceId: string, targetId: string, pos: NodeRelativePosition) => void;
+    multiMoveTo(sourceIds: string[], targetId: string, pos: NodeRelativePosition): void;
+    addNewNodes(elements: INodeSchema | INodeSchema[], targetId: string, pos: NodeRelativePosition): NodeChunk;
+    remove: (sourceId: string) => void;
+    removeSlot(id: string, name: string): void;
+    addSlot(id: string, name: string): void;
+    clone(sourceId: string): void;
+    changeNodeMeta(id: string, newMeta: INodeMeta): void;
+    backup(actionType: HistoryableActionType): void;
+    undo(): void;
+    redo(): void;
+    goto(index: number): void;
+    getRootNode(): ITreeNode | null;
+    getNode: (id: string) => ITreeNode | null;
+    destory(): void;
+    getSchemaTree(): INodeSchema | null;
+    dispatch(action: IDocumentAction<any>): void;
+    createAction(actionType: string, payload: any): IDocumentAction<DocumentActionPayload>;
+    private getNodeSchema;
+    private receiveNodes;
+    private dispatchGoto;
+    private getState;
+    private isBlocksSchema;
+    private revoverSnapshot;
+}

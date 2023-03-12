@@ -1,5 +1,5 @@
-import { IDriver, IDriverFactory } from "core/interfaces"
-import { IDispatchable, ICustomEvent } from "core/interfaces/event"
+import { IDriver, IDriverFactory } from "interfaces"
+import { IDispatchable, ICustomEvent } from "interfaces/event"
 import { MouseUpEvent } from "../events/mouse/MouseUpEvent"
 
 export class MouseUpDriverImpl implements IDriver {

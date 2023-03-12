@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/interfaces/plugin.ts"],"sourcesContent":["import { IDesignerEngine } from \"./engine\"\r\n\r\nexport interface IPlugin {\r\n  //唯一名称，可用于覆盖默认值\r\n  name: string,\r\n  destory(): void,\r\n}\r\n\r\nexport type IPluginFactory = (\r\n  engine: IDesignerEngine,\r\n) => IPlugin\r\n"],"names":[],"mappings":"AAAA,WAUY"}

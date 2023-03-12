@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/auxwidgets/index.ts"],"sourcesContent":["export * from \"./ghost\""],"names":[],"mappings":"AAAA,cAAc,UAAS"}

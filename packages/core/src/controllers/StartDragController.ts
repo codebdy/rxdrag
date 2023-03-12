@@ -1,7 +1,7 @@
-import { DragStartEvent } from "core/shell/events/mouse";
-import { IDesignerEngine, NodeType, Unsubscribe } from "core/interfaces";
-import { getOffset, getPosition } from "core/shell/utils/xycoord";
-import { IPlugin } from "core/interfaces/plugin";
+import { DragStartEvent } from "shell/events/mouse";
+import { IDesignerEngine, NodeType, Unsubscribe } from "interfaces";
+import { getOffset, getPosition } from "shell/utils/xycoord";
+import { IPlugin } from "interfaces/plugin";
 
 export class StartDragControllerImpl implements IPlugin {
   name: string = "default.start-drag-controller";

@@ -1,4 +1,4 @@
-import { RXID_ATTR_NAME } from "core/interfaces";
+import { RXID_ATTR_NAME } from "interfaces";
 
 export function getRecentRxElement(el:HTMLElement, atrrName:string = RXID_ATTR_NAME): HTMLElement|undefined{
   if(el.getAttribute(atrrName)){

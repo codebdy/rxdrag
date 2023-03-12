@@ -1,6 +1,6 @@
-import { ACTIVE_NODE } from "core/actions/registry"
-import { ID } from "core/interfaces"
-import { IAction } from "core/interfaces/action"
+import { ACTIVE_NODE } from "actions/registry"
+import { ID } from "interfaces"
+import { IAction } from "interfaces/action"
 
 export type State = ID | undefined | null
 

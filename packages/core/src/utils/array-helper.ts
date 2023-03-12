@@ -1,16 +1,16 @@
-export function first(array) {
+export function first(array: any[]) {
   if (array.length > 0) {
     return array[0];
   }
 }
 
-export function last(array) {
+export function last(array: any[]) {
   if (array.length > 0) {
     return array[array.length - 1];
   }
 }
 
-export function before(refence, array) {
+export function before(refence: any, array?: any[]) {
   if (!array) {
     return undefined;
   }
@@ -21,7 +21,7 @@ export function before(refence, array) {
   }
 }
 
-export function after(refence, array) {
+export function after(refence: any, array: any[]) {
   for (var i = 0; i < array.length; i++) {
     if (array[i] === refence && i < array.length) {
       return array[i + 1];
@@ -29,7 +29,7 @@ export function after(refence, array) {
   }
 }
 
-export function insertBefore(child, refence, array) {
+export function insertBefore(child: any, refence: any, array: any[]) {
   for (var i = 0; i < array.length; i++) {
     if (array[i] === refence) {
       array.splice(i, 0, child);
@@ -40,7 +40,7 @@ export function insertBefore(child, refence, array) {
   array.push(child);
 }
 
-export function insertAfter(child, refence, array) {
+export function insertAfter(child: any, refence: any, array: any[]) {
   for (var i = 0; i < array.length; i++) {
     if (array[i] === refence) {
       array.splice(i + 1, 0, child);
@@ -49,7 +49,7 @@ export function insertAfter(child, refence, array) {
   }
 }
 
-export function remove(node, array) {
+export function remove(node: any, array: any[]) {
   for (var i = 0; i < array.length; i++) {
     if (array[i] === node) {
       array.splice(i, 1);
@@ -60,19 +60,19 @@ export function remove(node, array) {
   return array;
 }
 
-export function batchRemove(nodes, array) {
+export function batchRemove(nodes: any[], array: any[]) {
   for (var i = 0; i < nodes.length; i++) {
     remove(nodes[i], array);
   }
 }
 
-export function add(node, array) {
+export function add(node: any, array: any[]) {
   if (!contains(node, array)) {
     array.push(node);
   }
 }
 
-export function contains(node, array) {
+export function contains(node: any, array: any[]) {
   for (var i = 0; i < array.length; i++) {
     if (array[i] === node) {
       return true;
@@ -82,7 +82,7 @@ export function contains(node, array) {
   return false;
 }
 
-export function toggle(node, array) {
+export function toggle(node: any, array: any[]) {
   if (contains(node, array)) {
     remove(node, array);
   } else {
@@ -90,11 +90,11 @@ export function toggle(node, array) {
   }
 }
 
-export function clear(array) {
+export function clear(array: any[]) {
   array.length = 0;
 }
 
-export function exchange(first, second, array) {
+export function exchange(first: any, second: any, array: any[]) {
   let rtArray = [...array];
   let firstIndex = indexOf(first, array);
   let secondIndex = indexOf(second, array);
@@ -103,7 +103,7 @@ export function exchange(first, second, array) {
   return rtArray;
 }
 
-export function indexOf(node, array) {
+export function indexOf(node: any, array: any[]) {
   for (var i = 0; i < array.length; i++) {
     if (array[i] === node) {
       return i;

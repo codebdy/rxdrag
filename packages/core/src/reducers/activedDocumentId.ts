@@ -1,6 +1,6 @@
-import { CHANGE_ACTIVED_DOCUMENT } from "core/actions/registry"
-import { ID } from "core/interfaces"
-import { IAction } from "core/interfaces/action"
+import { CHANGE_ACTIVED_DOCUMENT } from "actions/registry"
+import { ID } from "interfaces"
+import { IAction } from "interfaces/action"
 
 export type State = ID | null
 

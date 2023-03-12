@@ -16,3 +16,5 @@ export interface IAuxControl {
   onRender(node: ITreeNode): HTMLElement | null
   teardown(): void
 }
+
+export { ITreeNode }

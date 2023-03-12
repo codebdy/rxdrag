@@ -1,7 +1,6 @@
-import { ID, IDesignerEngine, Unsubscribe } from "core";
-import { CanvasScrollEvent } from "core/shell/events";
-import { MouseOutEvent } from "core/shell/events/mouse/MouseOutEvent";
-import { IPlugin } from "core/interfaces/plugin";
+import { CanvasScrollEvent } from "shell/events";
+import { MouseOutEvent } from "shell/events/mouse/MouseOutEvent";
+import { IPlugin } from "interfaces/plugin";
 import { AUX_BACKGROUND_COLOR } from "../consts";
 import { numbToPx } from "../utils/numbToPx";
 import { getMaxZIndex } from "./getMaxZIndex";

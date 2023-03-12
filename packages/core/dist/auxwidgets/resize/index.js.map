@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/auxwidgets/resize/index.ts"],"sourcesContent":["\r\nexport class Resize {\r\n}"],"names":["Resize"],"mappings":"AACA,OAAO,MAAMA;AACb,CAAC"}

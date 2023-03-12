@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.ts"],"sourcesContent":["export * from \"./interfaces\"\r\nexport { createEngine } from \"./createEngine\""],"names":["createEngine"],"mappings":"AAAA,cAAc,eAAc;AAC5B,SAASA,YAAY,QAAQ,iBAAgB"}

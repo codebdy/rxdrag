@@ -1,4 +1,4 @@
-import { NodesById } from "core/reducers/nodesById";
+import { NodesById } from "reducers/nodesById";
 import { ID, DocumentSelectionMode } from "./types";
 import { HistoryableActionType, ITreeNode, NodeChunk, NodeRelativePosition, ISnapshot, INodeMeta, CanvasWidthLimits, ViewType } from "./document";
 

@@ -1,5 +1,5 @@
-import { AUX_BACKGROUND_COLOR, AUX_COLOR, TOOLBAR_HEIGHT } from "core/auxwidgets/consts";
-import { IDesignerEngine, ITreeNode } from "core/interfaces";
+import { AUX_BACKGROUND_COLOR, AUX_COLOR, TOOLBAR_HEIGHT } from "auxwidgets/consts";
+import { IDesignerEngine, ITreeNode } from "../interfaces";
 import { IAuxControl } from "../interfaces";
 
 export abstract class AbstractButton implements IAuxControl{

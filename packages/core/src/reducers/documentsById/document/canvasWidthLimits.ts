@@ -1,5 +1,5 @@
-import { CHANGE_CANVAS_WIDTH_LIMITS } from "core/actions/registry"
-import { CanvasWidthLimits, CanvasWidthLimitsPayload, IDocumentAction } from "core/interfaces"
+import { CHANGE_CANVAS_WIDTH_LIMITS } from "actions/registry"
+import { CanvasWidthLimits, CanvasWidthLimitsPayload, IDocumentAction } from "interfaces"
 
 export type State = CanvasWidthLimits | null
 

@@ -1,7 +1,7 @@
-import { IDesignerEngine } from "core/interfaces";
-import { IDecorator, IDecoratorManager } from "core/interfaces/decorator";
-import { AddDecoratorEvent } from "core/shell/events/canvas/AddDecoratorEvent";
-import { RemoveDecoratorEvent } from "core/shell/events/canvas/RemoveDecoratorEvent";
+import { IDesignerEngine } from "interfaces";
+import { IDecorator, IDecoratorManager } from "interfaces/decorator";
+import { AddDecoratorEvent } from "shell/events/canvas/AddDecoratorEvent";
+import { RemoveDecoratorEvent } from "shell/events/canvas/RemoveDecoratorEvent";
 
 export type Decorators = {
   [key: string]: IDecorator | undefined

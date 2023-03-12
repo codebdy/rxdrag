@@ -1,4 +1,4 @@
-import { IDesignerShell, IDriver, IDriverFactory } from "core/interfaces"
+import { IDesignerShell, IDriver, IDriverFactory } from "interfaces"
 import { DragMoveEvent } from "../events"
 
 export class DragOverDriverImpl implements IDriver {

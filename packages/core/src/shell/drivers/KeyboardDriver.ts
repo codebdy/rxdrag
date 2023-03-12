@@ -1,6 +1,6 @@
-import { KeyDownEvent, KeyUpEvent } from "core/shell/events/keyboard"
-import { IDriver, IDriverFactory } from "core/interfaces"
-import { IDispatchable, ICustomEvent } from "core/interfaces/event"
+import { KeyDownEvent, KeyUpEvent } from "shell/events/keyboard"
+import { IDriver, IDriverFactory } from "interfaces"
+import { IDispatchable, ICustomEvent } from "interfaces/event"
 
 function filter(event: KeyboardEvent) {
   const target: any = event.target

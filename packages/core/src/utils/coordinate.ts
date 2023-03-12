@@ -1,6 +1,6 @@
-import { IMouseEventData } from "core/shell/events/mouse/AbstractMouseEvent";
-import { IDesignerEngine, IRect, ITreeNode } from "core/interfaces";
-import { before } from "core/utils/array-helper";
+import { IMouseEventData } from "shell/events/mouse/AbstractMouseEvent";
+import { IDesignerEngine, IRect, ITreeNode } from "interfaces";
+import { before } from "./array-helper";
 import { calcElementLayout } from "./element";
 
 const dropInMargin = 8

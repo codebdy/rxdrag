@@ -1,0 +1,14 @@
+export declare function first(array: any[]): any;
+export declare function last(array: any[]): any;
+export declare function before(refence: any, array?: any[]): any;
+export declare function after(refence: any, array: any[]): any;
+export declare function insertBefore(child: any, refence: any, array: any[]): void;
+export declare function insertAfter(child: any, refence: any, array: any[]): void;
+export declare function remove(node: any, array: any[]): any[];
+export declare function batchRemove(nodes: any[], array: any[]): void;
+export declare function add(node: any, array: any[]): void;
+export declare function contains(node: any, array: any[]): boolean;
+export declare function toggle(node: any, array: any[]): void;
+export declare function clear(array: any[]): void;
+export declare function exchange(first: any, second: any, array: any[]): any[];
+export declare function indexOf(node: any, array: any[]): number;

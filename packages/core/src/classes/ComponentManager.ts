@@ -1,5 +1,5 @@
-import { IBehavior, IBehaviorRule, IComponentConfig, IComponentManager, IDesignerEngine, ITreeNode, Selector } from "core/interfaces";
-import { isFn } from "core/utils/types";
+import { IBehavior, IBehaviorRule, IComponentConfig, IComponentManager, IDesignerEngine, ITreeNode, Selector } from "interfaces";
+import { isFn } from "utils/types";
 
 export class ComponentBehavior implements IBehavior {
   selector: string | Selector;

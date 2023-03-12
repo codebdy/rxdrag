@@ -1,4 +1,4 @@
-import { IDesignerEngine, ITreeNode } from "core/interfaces";
+import { IDesignerEngine, ITreeNode } from "interfaces";
 import { AbstractButton } from "./AbstractButton";
 
 const lockIcon = `

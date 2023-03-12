@@ -1,12 +1,12 @@
-import { INodeSchema } from "core/interfaces/document";
-import { ID, RxProps } from "core/interfaces";
+import { INodeSchema } from "interfaces/document";
+import { ID, RxProps } from "interfaces";
 import { ILocales } from "./loacales";
 
-export interface IResource {
+export interface IResource<Icon = any> {
   //唯一名称，防止重复注册
   name: string
   elements: INodeSchema[] | INodeSchema,
-  icon?: React.ReactElement,
+  icon?: Icon
   color?: string,
   resourceLocales?: ILocales,
   imageUrl?: string,

@@ -1,5 +1,5 @@
-import { REMOVE_DOCUMENT } from "core/actions/registry"
-import { DocumentActionPayload, IDocumentAction } from "core/interfaces"
+import { REMOVE_DOCUMENT } from "actions/registry"
+import { DocumentActionPayload, IDocumentAction } from "interfaces"
 import { documentReduce, DocumentState } from "./document"
 export type DocumentByIdState = {
   [key: string]: DocumentState | undefined

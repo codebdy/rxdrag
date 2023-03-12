@@ -1,4 +1,4 @@
-import { IShellPane, ID, IDesignerEngine, IDriver, IDriverFactory, RXID_ATTR_NAME, IRect } from "core/interfaces";
+import { IShellPane, ID, IDesignerEngine, IDriver, IDriverFactory, RXID_ATTR_NAME, IRect } from "interfaces";
 
 export class ShadowCanvasImpl implements IShellPane {
   private dirvers: IDriver[] = []
