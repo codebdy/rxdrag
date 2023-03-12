@@ -1,12 +1,12 @@
-import { IDesignerEngine, NodeRelativePosition } from "core";
-import { DragStopEvent } from "shell/events";
-import { HistoryableActionType, IDocument, Unsubscribe } from "interfaces";
-import { AcceptType, DrageOverOptions } from "interfaces/action";
-import { IPlugin } from "interfaces/plugin";
-import { DraggingNodesState } from "reducers/draggingNodes";
-import { DraggingResourceState } from "reducers/draggingResource";
-import { RelativePosition } from "utils/coordinate";
-import { invariant } from "utils/util-invariant";
+import { IDesignerEngine, NodeRelativePosition } from "../interfaces";
+import { DragStopEvent } from "../shell/events";
+import { HistoryableActionType, IDocument, Unsubscribe } from "../interfaces";
+import { AcceptType, DrageOverOptions } from "../interfaces/action";
+import { IPlugin } from "../interfaces/plugin";
+import { DraggingNodesState } from "../reducers/draggingNodes";
+import { DraggingResourceState } from "../reducers/draggingResource";
+import { RelativePosition } from "../utils/coordinate";
+import { invariant } from "../utils/util-invariant";
 
 export class DragStopControllerImpl implements IPlugin {
   name: string = "default.drag-stop-controller";

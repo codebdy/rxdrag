@@ -1,5 +1,5 @@
-import { AUX_BACKGROUND_COLOR, AUX_COLOR, TOOLBAR_HEIGHT } from "auxwidgets/consts";
-import { ID, IDesignerEngine, ITreeNode } from "interfaces";
+import { AUX_BACKGROUND_COLOR, AUX_COLOR, TOOLBAR_HEIGHT } from "../../consts";
+import { ID, IDesignerEngine, ITreeNode } from "../../../interfaces";
 import { IAuxControl } from "../interfaces";
 
 export class ComponentSelector implements IAuxControl {

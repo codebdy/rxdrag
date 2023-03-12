@@ -1,4 +1,4 @@
-import { IDesignerEngine, ITreeNode } from "core/interfaces"
+import { IDesignerEngine, ITreeNode } from "../../interfaces"
 
 export interface IAuxToolbar {
   addControl(control: IAuxControl, index?: number): void

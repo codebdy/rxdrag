@@ -1,8 +1,8 @@
-import { IDesignerEngine, ID, Unsubscribe } from "core";
-import { IPlugin } from "interfaces/plugin";
-import { DraggingNodesState } from "reducers/draggingNodes";
-import { DraggingResourceState } from "reducers/draggingResource";
-import { CanvasScrollEvent } from "shell/events";
+import { IDesignerEngine, ID, Unsubscribe } from "../../interfaces";
+import { IPlugin } from "../../interfaces/plugin";
+import { DraggingNodesState } from "../../reducers/draggingNodes";
+import { DraggingResourceState } from "../../reducers/draggingResource";
+import { CanvasScrollEvent } from "../../shell/events";
 import { AUX_BACKGROUND_COLOR } from "../consts";
 import { numbToPx } from "../utils/numbToPx";
 import { getMaxZIndex } from "./getMaxZIndex";

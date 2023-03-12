@@ -1,6 +1,6 @@
-import { createAuxProps, IDesignerEngine, ITreeNode, NodeType, RXID_ATTR_NAME, RxProps, Unsubscribe } from "interfaces";
-import { DragStartEvent } from "shell/events";
-import { getOffset, getPosition } from "shell/utils/xycoord";
+import { createAuxProps, IDesignerEngine, ITreeNode, NodeType, RXID_ATTR_NAME, RxProps, Unsubscribe } from "../../../interfaces";
+import { DragStartEvent } from "../../../shell/events";
+import { getOffset, getPosition } from "../../../shell/utils/xycoord";
 import { AbstractButton } from "./AbstractButton";
 
 export class MoveButton extends AbstractButton {

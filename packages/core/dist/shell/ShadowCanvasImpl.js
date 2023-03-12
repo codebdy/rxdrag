@@ -1,4 +1,4 @@
-import { RXID_ATTR_NAME } from "interfaces";
+import { RXID_ATTR_NAME } from "../interfaces";
 export class ShadowCanvasImpl {
     appendChild(child) {
         this.shadow.append(child);

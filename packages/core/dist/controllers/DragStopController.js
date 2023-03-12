@@ -1,9 +1,9 @@
-import { NodeRelativePosition } from "core";
-import { DragStopEvent } from "shell/events";
-import { HistoryableActionType } from "interfaces";
-import { AcceptType } from "interfaces/action";
-import { RelativePosition } from "utils/coordinate";
-import { invariant } from "utils/util-invariant";
+import { NodeRelativePosition } from "../interfaces";
+import { DragStopEvent } from "../shell/events";
+import { HistoryableActionType } from "../interfaces";
+import { AcceptType } from "../interfaces/action";
+import { RelativePosition } from "../utils/coordinate";
+import { invariant } from "../utils/util-invariant";
 export class DragStopControllerImpl {
     drop(e) {
         const monitor = this.engine.getMonitor();

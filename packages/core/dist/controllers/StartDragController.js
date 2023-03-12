@@ -1,6 +1,6 @@
-import { DragStartEvent } from "shell/events/mouse";
-import { NodeType } from "interfaces";
-import { getOffset, getPosition } from "shell/utils/xycoord";
+import { DragStartEvent } from "../shell/events/mouse";
+import { NodeType } from "../interfaces";
+import { getOffset, getPosition } from "../shell/utils/xycoord";
 export class StartDragControllerImpl {
     destory() {
         this.unsucribe();

@@ -1,7 +1,7 @@
-import { numbToPx } from "auxwidgets/utils/numbToPx";
-import { AcceptType } from "interfaces/action";
-import { addZIndex } from "utils/add-zindex";
-import { RelativePosition } from "utils/coordinate";
+import { numbToPx } from "../utils/numbToPx";
+import { AcceptType } from "../../interfaces/action";
+import { addZIndex } from "../../utils/add-zindex";
+import { RelativePosition } from "../../utils/coordinate";
 export class InsertionCursorImpl {
     destory() {
         this.detachDragover();

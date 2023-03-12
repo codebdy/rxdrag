@@ -1,4 +1,4 @@
-import { CanvasScrollEvent } from "shell/events";
+import { CanvasScrollEvent } from "../../shell/events";
 import { numbToPx } from "../utils/numbToPx";
 import { CloneButton } from "./controls/CloneButton";
 import { DeleteButton } from "./controls/DeleteButton";

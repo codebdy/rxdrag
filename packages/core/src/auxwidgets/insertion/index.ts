@@ -1,10 +1,10 @@
-import { numbToPx } from "auxwidgets/utils/numbToPx";
-import { IDesignerEngine, IDesignerShell, Unsubscribe } from "core";
-import { AcceptType } from "interfaces/action";
-import { IPlugin } from "interfaces/plugin";
-import { DragOverState } from "reducers/dragOver";
-import { addZIndex } from "utils/add-zindex";
-import { RelativePosition } from "utils/coordinate";
+import { numbToPx } from "../utils/numbToPx";
+import { IDesignerEngine, IDesignerShell, Unsubscribe } from "../../interfaces";
+import { AcceptType } from "../../interfaces/action";
+import { IPlugin } from "../../interfaces/plugin";
+import { DragOverState } from "../../reducers/dragOver";
+import { addZIndex } from "../../utils/add-zindex";
+import { RelativePosition } from "../../utils/coordinate";
 
 export class InsertionCursorImpl implements IPlugin {
   name: string = "default.insertion";

@@ -1,6 +1,6 @@
-import { IDesignerEngine, NodeType, Unsubscribe } from "core";
-import { MouseClickEvent } from "shell/events";
-import { IPlugin } from "interfaces/plugin";
+import { IDesignerEngine, NodeType, Unsubscribe } from "../interfaces";
+import { MouseClickEvent } from "../shell/events";
+import { IPlugin } from "../interfaces/plugin";
 
 export class SelectionControllerImpl implements IPlugin {
   name: string = "default.selection-controller";

@@ -1,6 +1,6 @@
-import { NodeType } from "core";
-import { MouseOutEvent } from "shell/events/mouse/MouseOutEvent";
-import { MouseOverEvent } from "shell/events/mouse/MouseOverEvent";
+import { NodeType } from "../interfaces";
+import { MouseOutEvent } from "../shell/events/mouse/MouseOutEvent";
+import { MouseOverEvent } from "../shell/events/mouse/MouseOverEvent";
 export class ActiveControllerImpl {
     destory() {
         this.unover();

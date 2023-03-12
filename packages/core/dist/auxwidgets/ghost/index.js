@@ -1,4 +1,4 @@
-import { MouseMoveEvent } from "shell/events/mouse";
+import { MouseMoveEvent } from "../../shell/events/mouse";
 import { numbToPx } from "../utils/numbToPx";
 export class GhostWidgetImpl {
     destory() {

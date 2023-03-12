@@ -1,5 +1,5 @@
-import { NodeType } from "core";
-import { MouseClickEvent } from "shell/events";
+import { NodeType } from "../interfaces";
+import { MouseClickEvent } from "../shell/events";
 export class SelectionControllerImpl {
     destory() {
         this.unsucribe();

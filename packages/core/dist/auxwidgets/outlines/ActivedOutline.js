@@ -1,4 +1,4 @@
-import { CanvasScrollEvent } from "shell/events";
+import { CanvasScrollEvent } from "../../shell/events";
 import { AUX_BACKGROUND_COLOR } from "../consts";
 import { numbToPx } from "../utils/numbToPx";
 import { getMaxZIndex } from "./getMaxZIndex";

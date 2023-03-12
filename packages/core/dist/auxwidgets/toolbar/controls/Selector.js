@@ -1,4 +1,4 @@
-import { AUX_BACKGROUND_COLOR, AUX_COLOR, TOOLBAR_HEIGHT } from "auxwidgets/consts";
+import { AUX_BACKGROUND_COLOR, AUX_COLOR, TOOLBAR_HEIGHT } from "../../consts";
 export class ComponentSelector {
     selector(node, engine) {
         return true;

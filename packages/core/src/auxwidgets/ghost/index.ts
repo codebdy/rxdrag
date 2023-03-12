@@ -1,8 +1,8 @@
-import { IDesignerEngine, IDesignerShell, Unsubscribe } from "core";
-import { DragStartEvent, MouseMoveEvent } from "shell/events/mouse";
-import { IPlugin } from "interfaces/plugin";
-import { DraggingNodesState } from "reducers/draggingNodes";
-import { DraggingResourceState } from "reducers/draggingResource";
+import { IDesignerEngine, IDesignerShell, Unsubscribe } from "../../interfaces";
+import { DragStartEvent, MouseMoveEvent } from "../../shell/events/mouse";
+import { IPlugin } from "../../interfaces/plugin";
+import { DraggingNodesState } from "../../reducers/draggingNodes";
+import { DraggingResourceState } from "../../reducers/draggingResource";
 import { numbToPx } from "../utils/numbToPx";
 
 export class GhostWidgetImpl implements IPlugin {

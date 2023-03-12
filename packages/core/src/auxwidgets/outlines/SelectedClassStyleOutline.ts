@@ -1,10 +1,10 @@
-import { IDesignerEngine, ID, Unsubscribe } from "core";
-import { IPlugin } from "interfaces/plugin";
-import { DraggingNodesState } from "reducers/draggingNodes";
-import { DraggingResourceState } from "reducers/draggingResource";
-import { CanvasResizeEvent, CanvasScrollEvent } from "shell/events";
-import { AddDecoratorEvent } from "shell/events/canvas/AddDecoratorEvent";
-import { RemoveDecoratorEvent } from "shell/events/canvas/RemoveDecoratorEvent";
+import { IDesignerEngine, ID, Unsubscribe } from "../../interfaces";
+import { IPlugin } from "../../interfaces/plugin";
+import { DraggingNodesState } from "../../reducers/draggingNodes";
+import { DraggingResourceState } from "../../reducers/draggingResource";
+import { CanvasResizeEvent, CanvasScrollEvent } from "../../shell/events";
+import { AddDecoratorEvent } from "../../shell/events/canvas/AddDecoratorEvent";
+import { RemoveDecoratorEvent } from "../../shell/events/canvas/RemoveDecoratorEvent";
 import { AUX_BACKGROUND_COLOR } from "../consts";
 
 //这个不好用，有的地方会显示不全，废弃

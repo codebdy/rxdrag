@@ -1,7 +1,7 @@
-import { IDesignerEngine, NodeType, Unsubscribe } from "core";
-import { IPlugin } from "interfaces/plugin";
-import { MouseOutEvent } from "shell/events/mouse/MouseOutEvent";
-import { MouseOverEvent } from "shell/events/mouse/MouseOverEvent";
+import { IDesignerEngine, NodeType, Unsubscribe } from "../interfaces";
+import { IPlugin } from "../interfaces/plugin";
+import { MouseOutEvent } from "../shell/events/mouse/MouseOutEvent";
+import { MouseOverEvent } from "../shell/events/mouse/MouseOverEvent";
 
 export class ActiveControllerImpl implements IPlugin {
   name: string = "default.active-controller";

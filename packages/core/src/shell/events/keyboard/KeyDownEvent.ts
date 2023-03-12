@@ -1,4 +1,4 @@
-import { ICustomEvent } from 'interfaces/event'
+import { ICustomEvent } from '../../../interfaces/event'
 import { AbstractKeyboardEvent } from './AbstractKeyboardEvent'
 
 export class KeyDownEvent

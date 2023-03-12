@@ -1,4 +1,4 @@
-import { RXID_ATTR_NAME } from "interfaces";
+import { RXID_ATTR_NAME } from "../interfaces";
 export class IFrameCanvasImpl {
     getContainerRect() {
         var _this_iframe_contentWindow, _this_iframe_contentWindow_document, _this_iframe_contentWindow_document_body;

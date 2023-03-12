@@ -26,10 +26,10 @@ function _objectSpread(target) {
     }
     return target;
 }
-import { DragMoveEvent } from "shell/events";
-import { AcceptType } from "interfaces/action";
+import { DragMoveEvent } from "../shell/events";
+import { AcceptType } from "../interfaces/action";
 import { PositionJudger, RelativePosition } from "../utils/coordinate";
-import { isArr } from "utils/types";
+import { isArr } from "../utils/types";
 export class DragOverControllerImpl {
     handleDragOver(targetId, e) {
         const node = this.engine.getMonitor().getNode(targetId);

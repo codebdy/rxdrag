@@ -1,6 +1,6 @@
-import { CanvasResizeEvent, CanvasScrollEvent } from "shell/events";
-import { AddDecoratorEvent } from "shell/events/canvas/AddDecoratorEvent";
-import { RemoveDecoratorEvent } from "shell/events/canvas/RemoveDecoratorEvent";
+import { CanvasResizeEvent, CanvasScrollEvent } from "../../shell/events";
+import { AddDecoratorEvent } from "../../shell/events/canvas/AddDecoratorEvent";
+import { RemoveDecoratorEvent } from "../../shell/events/canvas/RemoveDecoratorEvent";
 import { AUX_BACKGROUND_COLOR } from "../consts";
 //这个不好用，有的地方会显示不全，废弃
 export class SelectedClassStyleOutlineImpl {

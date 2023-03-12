@@ -1,9 +1,10 @@
-import { CanvasScrollEvent } from "shell/events";
-import { MouseOutEvent } from "shell/events/mouse/MouseOutEvent";
-import { IPlugin } from "interfaces/plugin";
+import { CanvasScrollEvent } from "../../shell/events";
+import { MouseOutEvent } from "../../shell/events/mouse/MouseOutEvent";
+import { IPlugin } from "../../interfaces/plugin";
 import { AUX_BACKGROUND_COLOR } from "../consts";
 import { numbToPx } from "../utils/numbToPx";
 import { getMaxZIndex } from "./getMaxZIndex";
+import { ID, IDesignerEngine, Unsubscribe } from "../../interfaces";
 
 export class ActivedOutlineImpl implements IPlugin {
   name: string = "default.actived-outline";

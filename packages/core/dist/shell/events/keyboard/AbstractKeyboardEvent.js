@@ -1,4 +1,4 @@
-import { getKeyCodeFromEvent } from "utils/keycode";
+import { getKeyCodeFromEvent } from "../../../utils/keycode";
 export class AbstractKeyboardEvent {
     get eventType() {
         return this.originEvent.type;

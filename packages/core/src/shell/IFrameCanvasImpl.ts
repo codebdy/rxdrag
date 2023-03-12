@@ -1,4 +1,4 @@
-import { IShellPane, ID, IDesignerEngine, IDriver, IDriverFactory, RXID_ATTR_NAME, IRect } from "interfaces";
+import { IShellPane, ID, IDesignerEngine, IDriver, IDriverFactory, RXID_ATTR_NAME, IRect } from "../interfaces";
 
 export class IFrameCanvasImpl implements IShellPane {
   private dirvers: IDriver[] = []

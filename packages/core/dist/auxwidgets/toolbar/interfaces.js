@@ -1,4 +1,4 @@
-import { ITreeNode } from "core/interfaces";
+import { ITreeNode } from "../../interfaces";
 export { ITreeNode };
 
 //# sourceMappingURL=interfaces.js.map
