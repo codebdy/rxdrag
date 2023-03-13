@@ -1,4 +1,4 @@
-import { IConfigMeta, IJointer, IReaction, IReactionFactoryOptions, IReactionMeta } from "../interfaces";
+import { IConfigMeta, IJointer, IReaction, IReactionFactoryOptions, IReactionMeta } from "../interfaces/IReactionFactoryOptions";
 import { Jointer } from "./jointer";
 
 export abstract class AbstractReaction<ConfigMeta extends IConfigMeta> implements IReaction {

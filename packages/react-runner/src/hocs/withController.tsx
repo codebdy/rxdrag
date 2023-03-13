@@ -1,7 +1,7 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useFieldPath, useForm } from "runner/fieldy"
-import { ComponentControllers, IComponentController } from "runner/minions"
+import { Controllers, IComponentController } from "runner/minions"
 import { ComponentController } from "runner/minions/controllers/ComponentController"
 import { useMaterials } from "runner/minions/hooks/useMaterials"
 import { IControllerMeta } from "runner/minions/interfaces/metas"
@@ -45,7 +45,7 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
       }
     }, [controllers, fieldPath, form, handlePropsChange, materials, navigate])
 
-    const newControllers: ComponentControllers = useMemo(() => {
+    const newControllers: Controllers = useMemo(() => {
       return controller ? { ...controllers, [controller.id]: controller } : controllers
     }, [controller, controllers])
 

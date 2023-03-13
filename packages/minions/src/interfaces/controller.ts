@@ -1,4 +1,4 @@
-import { IReactionMeta } from "packages/schema/src/reaction"
+import { IControllerMeta } from "@rxdrag/schema"
 
 export type Unsubscribe = () => void
 
@@ -35,6 +35,6 @@ export interface IController extends IVariableController, IPropController {
   destory(): void,
 }
 
-export type ReactionControllers = {
+export type Controllers = {
   [id: string]: IController | undefined
 }

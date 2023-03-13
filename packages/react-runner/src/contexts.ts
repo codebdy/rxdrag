@@ -1,9 +1,9 @@
 import { createContext } from "react";
-import { ComponentControllers } from "runner/minions";
 import { IComponentRenderSchema } from "./ComponentView";
+import {Controllers} from "@rxdrag/minions"
 
-export const EmpertyControllers: ComponentControllers = {}
+export const EmpertyControllers: Controllers = {}
 
 export const ComponentSchemaContext = createContext<IComponentRenderSchema | undefined>(undefined)
-export const ControllersContext = createContext<ComponentControllers>(EmpertyControllers)
+export const ControllersContext = createContext<Controllers>(EmpertyControllers)
 

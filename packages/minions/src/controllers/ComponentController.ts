@@ -1,5 +1,5 @@
 import { INIT_EVENT_NAME, DESTORY_EVENT_NAME } from "react-shells/ant5/shared/createReactionSchema";
-import { ComponentControllers, EventFuncs, IComponentController, InputFunc, IReaction, IReactionFactoryOptions, PropsListener, UnListener, VariableListener } from "runner/minions/interfaces/controller";
+import { Controllers, EventFuncs, IComponentController, InputFunc, IReaction, IReactionFactoryOptions, PropsListener, UnListener, VariableListener } from "runner/minions/interfaces/controller";
 import { IControllerMeta, IReactionDefineMeta } from "../interfaces/metas";
 import { GraphicalReaction } from "../../../react-shells/ant5/materials/controller/reaction/GraphicalReaction";
 import { CodeReaction } from "react-shells/ant5/materials/controller/reaction/CodeReaction";
@@ -18,7 +18,7 @@ export class ComponentController implements IComponentController {
 
   private reactions: IReaction[] = []
 
-  constructor(public meta: IControllerMeta, protected parentControllers: ComponentControllers, protected options?:IReactionFactoryOptions) {
+  constructor(public meta: IControllerMeta, protected parentControllers: Controllers, protected options?:IReactionFactoryOptions) {
     this.id = meta.id!
     for (const eventMeta of meta.events || []) {
       const reaction = this.makeReaction(eventMeta, { ...parentControllers, [this.id]: this })
@@ -85,7 +85,7 @@ export class ComponentController implements IComponentController {
     }
   }
 
-  private makeReaction = (reactionMeta: IReactionDefineMeta, controllers: ComponentControllers) => {
+  private makeReaction = (reactionMeta: IReactionDefineMeta, controllers: Controllers) => {
     const options = {
       ...this.options,
       variableController: this,
