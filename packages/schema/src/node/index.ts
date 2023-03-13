@@ -1,10 +1,13 @@
-export interface INodeMeta<IField = any, INodeController = any> {
+export interface INodeMeta<IField = any, INodeController = any, IScripts = any> {
   componentName: string,
   props?: {
     [key: string]: any,
   },
   "x-field"?: IField,
+  //节点控制器，逻辑编排用
   "x-controller"?: INodeController,
+  //控制脚本
+  "x-scripts"?: IScripts,
   //锁定子控件
   locked?: boolean,
   //自己渲染，引擎不渲染
