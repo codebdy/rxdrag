@@ -1,11 +1,33 @@
-import { useThemeMode } from "core-react/hooks/useThemeMode"
+import { useThemeMode, useDesignerEngine } from "../../hooks"
 import { memo, useCallback, useEffect, useState } from "react"
-import "./style.less"
-import cls from "classnames"
-import { AUX_BACKGROUND_COLOR } from "core/auxwidgets/consts"
-import { useDesignerEngine } from "core-react/hooks"
-import { MouseMoveEvent } from "core/shell/events"
-import { MouseUpEvent } from "core/shell/events/mouse/MouseUpEvent"
+import { AUX_BACKGROUND_COLOR, MouseMoveEvent, MouseUpEvent } from "@rxdrag/core"
+
+import styled from "styled-components"
+import "./style.css"
+
+const Container = styled.div`
+  position: absolute;
+  top: 0;
+  left: -4px;
+  width: 4px;
+  height: 100%;
+  cursor: w-resize;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  &:hover{
+    .colored-handler.light{
+      background-color: #ccc;
+    }
+    .colored-handler.dark{
+      background-color: #666;
+    }
+  }
+
+  .colored-handler{
+    width: 4px;
+  }
+`
 
 export enum PositionType {
   Left = "left",
@@ -79,13 +101,13 @@ export const CanvaseHandler = memo((
   }, [engine, handleMouseMove, handleMouseup, handleShellMouseMove])
 
   return (
-    <div className={cls("rx-canvas-handler", position)}
+    <Container className={position}
       onMouseDown={handleMouseDown}
     >
       <div
-        className={cls("colored-handler", themeMode)}
+        className={"colored-handler" + " " + themeMode}
         style={{ backgroundColor: dragging ? AUX_BACKGROUND_COLOR : undefined }}
       ></div>
-    </div>
+    </Container>
   )
 })
