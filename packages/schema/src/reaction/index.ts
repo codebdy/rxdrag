@@ -1,2 +1,2 @@
-export * from "./controller"
+export * from "./meta"
 export * from "./scripts"

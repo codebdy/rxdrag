@@ -1,16 +1,3 @@
-export interface IReactionMaterial {
-  //唯一名称
-  name: string,
-  label: string,
-  reactionType: ReactionType,
-  icon?: React.ReactNode,
-  color?: string,
-  //reaction?: IReaction,
-  schema?: INodeSchema,
-  meta?: IReactionNodeData,
-  subTitle?: (config?: IConfigMeta) => string | undefined,
-  reaction?: ReactionFactory
-}
 
 export type Navigate = (url: string) => void
 
@@ -23,4 +10,4 @@ export interface IReactionFactoryOptions {
   navigate?: Navigate
 }
 
-export type ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options: IReactionFactoryOptions) => IReaction
+
