@@ -1,12 +1,9 @@
-import { isHTMLElement } from "core/utils/html-node";
+import { isHTMLElement } from "@rxdrag/shared";
 import React, { memo, useCallback, useMemo } from "react";
-import { useDesignComponent } from "core-react/hooks/useDesignComponent";
-import { useTreeNode } from "../hooks/useTreeNode";
-import { useDesignerEngine } from "core-react/hooks";
-import { PlaceHolder } from "core-react/PlaceHolder";
-import { NodeContext } from "core-react/contexts";
+import { useDesignComponent, useDesignerEngine, useLocked, useTreeNode} from "../hooks";
+import { PlaceHolder } from "../PlaceHolder";
+import { NodeContext } from "../contexts";
 import { Locked } from "./Locked";
-import { useLocked } from "core-react/hooks/useLocked";
 
 export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const { nodeId } = props;

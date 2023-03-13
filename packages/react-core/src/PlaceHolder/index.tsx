@@ -1,4 +1,4 @@
-import { useNode } from "core-react/hooks/useNode"
+import { useNode } from "../hooks/useNode"
 import { memo } from "react"
 import styled from "styled-components"
 

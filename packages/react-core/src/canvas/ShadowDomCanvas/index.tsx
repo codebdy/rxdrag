@@ -1,17 +1,14 @@
-import { useDesignerEngine } from "core-react/hooks";
-import { useDesignComponentsParams } from "core-react/hooks/useDesignComponentsParams";
-import { ShadowCanvasImpl } from "core/shell/ShadowCanvasImpl";
-import { MouseOverOutDriver } from "core/shell/drivers/MouseOverOutDriver";
+import { useDesignerEngine, useDesignComponentsParams } from "../../hooks";
+import { ShadowCanvasImpl, MouseOverOutDriver, DragOverDriver } from "@rxdrag/core";
 import { memo, useCallback, useRef } from "react"
 import ReactDOM from 'react-dom/client';
 import { CanvasRender } from "../CanvasRender";
-import { CanvasResizeDriver, CanvasScrollDriver, DragDropDriver, MouseClickDriver } from "core/shell/drivers";
-import { DragOverDriver } from "core/shell/drivers/DragOverDriver";
-import "./style.less"
-import { useDocumentViewTypeState } from "core-react/hooks/useDocumentViewTypeState";
+import { CanvasResizeDriver, CanvasScrollDriver, DragDropDriver, MouseClickDriver } from "@rxdrag/core";
+import "./style.css"
+import { useDocumentViewTypeState } from "../../hooks/useDocumentViewTypeState";
 import { CanvasShell } from "../CanvasShell";
 import { ShadowCanvasView } from "./ShadowCanvasView";
-import { useDocument } from "core-react/hooks/useDocument";
+import { useDocument } from "../../hooks/useDocument";
 
 //放在flex column 布局的容器下
 export const ShadowDomCanvas = memo((
@@ -27,7 +24,7 @@ export const ShadowDomCanvas = memo((
   const { components } = useDesignComponentsParams()
 
   const handleRefChange = useCallback((host: HTMLElement | null) => {
-    if (host && engine ) {
+    if (host && engine) {
       host.innerHTML = ""
       const shadow = host.attachShadow({ mode: 'open' });
       const renderIn = document.createElement('div');
@@ -45,15 +42,15 @@ export const ShadowDomCanvas = memo((
       for (let i = 0; i < links.length; i++) {
         if (links[i].rel.toLowerCase() === "stylesheet") {
           const linkNode = document.createElement("link")
-          for(let j = 0; j <links[i].attributes.length; j++){
-            linkNode.setAttribute(links[i].attributes[j].name, links[i].attributes[j].value) 
+          for (let j = 0; j < links[i].attributes.length; j++) {
+            linkNode.setAttribute(links[i].attributes[j].name, links[i].attributes[j].value)
           }
           linkNode.innerHTML = links[i].innerHTML
           shadow.appendChild(linkNode)
         }
       }
       shadow.appendChild(renderIn);
-      if(rootRef.current){
+      if (rootRef.current) {
         rootRef.current.unmount()
       }
 

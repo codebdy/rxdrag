@@ -1,5 +1,5 @@
-import { LockContext } from "core-react/contexts"
-import { ITreeNode } from "core/interfaces"
+import { LockContext } from "../contexts"
+import { ITreeNode } from "@rxdrag/core"
 import { memo } from "react"
 
 export const Locked = memo((

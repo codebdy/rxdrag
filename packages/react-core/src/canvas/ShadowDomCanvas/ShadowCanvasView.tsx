@@ -1,4 +1,4 @@
-import { useThemeMode } from "core-react/hooks/useThemeMode"
+import { useThemeMode } from "../../hooks/useThemeMode"
 import { memo } from "react"
 
 export const ShadowCanvasView = memo((

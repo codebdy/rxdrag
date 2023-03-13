@@ -1,8 +1,7 @@
-import { useCanvasWidthLimitsState } from "core-react/hooks/useCanvasWidthLimitsState"
-import { useCanvasWidthState } from "core-react/hooks/useCanvasWidthState"
+import { useCanvasWidthLimitsState,useCanvasWidthState } from "../../hooks"
 import { memo, useCallback, useEffect, useRef, useState } from "react"
 import { CanvaseHandler, PositionType } from "../CanvaseHandler"
-import "./style.less"
+import "./style.css"
 
 export const CanvasShell = memo((
   props: {

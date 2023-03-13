@@ -1,8 +1,6 @@
 import { memo } from "react"
 import Editor from '@monaco-editor/react';
-import { useDocumentViewTypeState } from "core-react/hooks/useDocumentViewTypeState";
-import { useThemeMode } from "core-react/hooks/useThemeMode";
-import { useDocument } from "core-react/hooks/useDocument";
+import { useDocumentViewTypeState, useThemeMode, useDocument } from "../hooks";
 
 export const JsonView = memo((
   props: {

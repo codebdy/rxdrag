@@ -1,14 +1,11 @@
 import { useMemo, useRef } from "react"
 import { memo, useCallback } from "react"
-import { useDesignerEngine } from "core-react/hooks";
-import { IDocument } from "core/interfaces";
-import { IFrameCanvasImpl } from "core/shell/IFrameCanvasImpl";
-import { CanvasResizeDriver, CanvasScrollDriver, DragDropDriver, MouseClickDriver, MouseMoveDriver } from "core/shell/drivers";
-import { MouseOverOutDriver } from "core/shell/drivers/MouseOverOutDriver";
-import { DragOverDriver } from "core/shell/drivers/DragOverDriver";
-import { useDocumentViewTypeState } from "core-react/hooks/useDocumentViewTypeState";
+import { useDesignerEngine } from "../../hooks";
+import { IDocument, IFrameCanvasImpl } from "@rxdrag/core";
+import { CanvasResizeDriver, CanvasScrollDriver, DragDropDriver, MouseClickDriver, MouseMoveDriver } from "@rxdrag/core";
+import { MouseOverOutDriver, DragOverDriver, MouseUpDriver } from "@rxdrag/core";
+import { useDocumentViewTypeState } from "../../hooks/useDocumentViewTypeState";
 import { CanvasShell } from "../CanvasShell";
-import { MouseUpDriver } from "core/shell/drivers/MouseUpDriver";
 
 export const IframeCanvas = memo((
   props: {

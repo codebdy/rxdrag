@@ -1,5 +1,5 @@
-import { DocumentContext } from "core-react/contexts"
-import { IDocument } from "core/interfaces"
+import { DocumentContext } from "../contexts"
+import { IDocument } from "@rxdrag/core"
 import { memo } from "react"
 
 export const DocumentRoot = memo((

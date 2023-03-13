@@ -1,8 +1,8 @@
 import { forwardRef, memo, useLayoutEffect } from "react"
-import { ReactComponent } from "runner/ComponentRender/types"
 import { useNode } from "../hooks/useNode"
 import { isFunction } from "lodash"
 import { Callback, defaultCallback } from "./types"
+import { ReactComponent } from "@rxdrag/react-shared"
 
 export function forwardRefById(WrappedComponent: ReactComponent, callback: Callback = defaultCallback): ReactComponent {
 

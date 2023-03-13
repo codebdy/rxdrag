@@ -1,6 +1,6 @@
+import { ReactComponent } from "@rxdrag/react-shared"
 import { isFunction } from "lodash"
 import { forwardRef, memo, useCallback } from "react"
-import { ReactComponent } from "runner/ComponentRender/types"
 import styled from "styled-components"
 import { Callback, defaultCallback } from "./types"
 
