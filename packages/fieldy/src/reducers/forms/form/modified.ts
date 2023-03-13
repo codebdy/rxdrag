@@ -1,5 +1,5 @@
-import { IAction } from "core/interfaces/action";
-import { SET_FIELD_MODIFY } from "runner/fieldy/actions";
+import { SET_FIELD_MODIFY } from "../../../actions";
+import { IAction } from "../../../interfaces";
 
 export function modifiedReduer(state: boolean|undefined, action:IAction<any>){
   switch (action.type) {

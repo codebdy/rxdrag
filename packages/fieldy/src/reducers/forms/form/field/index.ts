@@ -1,5 +1,5 @@
-import { FieldActionPayload, SET_FIELD_MODIFY, SetFieldValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_VALUE } from "runner/fieldy/actions";
-import { FieldState, IAction } from "runner/fieldy/interfaces";
+import { FieldActionPayload, SET_FIELD_MODIFY, SetFieldValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_VALUE } from "../../../../actions";
+import { FieldState, IAction } from "../../../../interfaces";
 
 export function fieldReduce(state: FieldState, action: IAction<FieldActionPayload>): FieldState {
   switch (action.type) {

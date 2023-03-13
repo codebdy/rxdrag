@@ -1,6 +1,6 @@
-import { IAction } from "core/interfaces/action";
-import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload } from "runner/fieldy/actions";
-import { IFieldSchema } from "runner/fieldy/interfaces";
+import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload } from "../../../actions";
+import { IFieldSchema } from "../../../interfaces";
+import { IAction } from "../../../interfaces";
 
 export function fieldSchemasReduer(state: IFieldSchema[], action: IAction<any>) {
   switch (action.type) {
