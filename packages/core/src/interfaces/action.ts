@@ -1,7 +1,7 @@
 import { CanvasWidthLimits, ViewType } from "./document"
 import { RelativePosition } from "../utils/coordinate"
 import { Action } from "redux"
-import { DocumentSelectionMode, ID, Identifier, IXYCoord } from "./types"
+import { DocumentSelectionMode, ID, Identifier, IXYCoord, ThemeMode } from "./types"
 
 export interface IAction<Payload> extends Action<Identifier> {
 	payload?: Payload
@@ -36,8 +36,6 @@ export type DrageOverOptions = {
 	targetId: ID;
 	position: RelativePosition | null;
 }
-
-export type ThemeMode = "light" | "dark"
 
 export interface IActions {
 	//用来操作状态的动作

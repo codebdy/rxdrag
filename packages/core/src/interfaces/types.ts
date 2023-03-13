@@ -4,6 +4,7 @@ export type TargetType = Identifier | Identifier[]
 export type Unsubscribe = () => void
 export type Listener = () => void
 export type ID = string
+export type ThemeMode = "light" | "dark"
 
 export interface IXYCoord{
 	x: number

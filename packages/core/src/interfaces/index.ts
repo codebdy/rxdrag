@@ -1,3 +1,4 @@
+export * from "./action"
 export * from "./component"
 export * from "./shell"
 export * from "./document"

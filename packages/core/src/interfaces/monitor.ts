@@ -2,9 +2,8 @@ import { State } from "../reducers"
 import { DraggingNodesState } from "../reducers/draggingNodes"
 import { DraggingResourceState } from "../reducers/draggingResource"
 import { DragOverState } from "../reducers/dragOver"
-import { ThemeMode } from "./action"
 import { CanvasWidthLimits, ISnapshot, ITreeNode, NodeListener, ViewType } from "./document"
-import { DocumentSelectionMode } from "./types"
+import { DocumentSelectionMode, ThemeMode } from "./types"
 
 import { Listener, ID, Unsubscribe } from "./types"
 

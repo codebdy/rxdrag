@@ -1,4 +1,5 @@
 export *from "./actions"
 export * from "./auxwidgets"
 export * from "./interfaces"
+export * from "./controllers"
 export { createEngine } from "./createEngine"

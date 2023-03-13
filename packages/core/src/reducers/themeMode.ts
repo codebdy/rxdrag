@@ -1,5 +1,6 @@
 import { SET_THEME_MODE } from "../actions/registry"
-import { IAction, ThemeMode } from "../interfaces/action"
+import { ThemeMode } from "../interfaces"
+import { IAction } from "../interfaces/action"
 
 export type State = ThemeMode
 

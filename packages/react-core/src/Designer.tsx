@@ -1,20 +1,26 @@
-import { GhostWidget } from "@rxdrag/core";
-import { InsertionCursor } from "core/auxwidgets/insertion";
-import { ActivedOutline } from "core/auxwidgets/outlines/ActivedOutline";
-import { SelectedOutline } from "core/auxwidgets/outlines/SelectedOutline";
-import { Toolbar } from "core/auxwidgets/toolbar";
-import { IDesignerEngine } from "core";
-import { ActiveController, DragOverController, DragStopController, SelectionController } from "core/controllers";
-import { StartDragController } from "core/controllers/StartDragController";
-import { createEngine } from "core/createEngine";
+import {
+  GhostWidget,
+  InsertionCursor,
+  ActivedOutline,
+  SelectedOutline,
+  Toolbar,
+  IDesignerEngine,
+  ActiveController, 
+  DragOverController, 
+  DragStopController, 
+  SelectionController,
+  StartDragController,
+  createEngine,
+  ThemeMode,
+  DraggedAttenuator,
+} from "@rxdrag/core";
+
 import { memo, useEffect, useRef, useState } from "react"
 import { DesignerEngineContext } from "./contexts";
 import { DesignRoot } from "./DesignRoot";
 import { PreviewRoot } from "../../react-runner/src/RunRoot";
 import { IComponentMaterial } from "./interfaces";
 import { useComponentsFromMaterials } from "./hooks/useComponentsFromMaterials";
-import { DraggedAttenuator } from "core/auxwidgets/dragged-attenuator";
-import { ThemeMode } from "core/interfaces/action";
 
 export interface DesignerProps {
   components?: IComponentMaterial[]
@@ -55,8 +61,8 @@ export const Designer = memo((props: DesignerProps) => {
 
   }, [onReady])
 
-  useEffect(()=>{
-    if(engine){
+  useEffect(() => {
+    if (engine) {
       engine.getActions().setThemeMode(themeMode)
     }
   }, [engine, themeMode])
