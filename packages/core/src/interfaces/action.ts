@@ -1,6 +1,7 @@
-import { CanvasWidthLimits, ID, Identifier, IXYCoord, ViewType, DocumentSelectionMode } from "interfaces"
+import { CanvasWidthLimits, ViewType } from "./document"
 import { RelativePosition } from "utils/coordinate"
 import { Action } from "redux"
+import { DocumentSelectionMode, ID, Identifier, IXYCoord } from "./types"
 
 export interface IAction<Payload> extends Action<Identifier> {
 	payload?: Payload
