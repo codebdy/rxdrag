@@ -1,4 +1,4 @@
-import { invariant } from '../utils/util-invariant'
+import { invariant } from '@rxdrag/shared'
 import type { Store } from 'redux'
 import {
 	ActiveDocumentListener,

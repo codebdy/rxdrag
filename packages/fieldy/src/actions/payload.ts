@@ -1,4 +1,4 @@
-import {  FormValue, IFieldSchema } from "runner/fieldy/interfaces"
+import {  FormValue, IFieldSchema } from "../interfaces"
 export interface FormActionPlayload {
   formName: string,
   [key: string]: any,

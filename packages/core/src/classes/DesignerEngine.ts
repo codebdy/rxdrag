@@ -3,7 +3,7 @@ import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager,
 import { Store } from "redux";
 import { ResourceManager } from "./ResourceManager";
 import { DocumentImpl } from "../classes/DocumentImpl";
-import { invariant } from "../utils/util-invariant";
+import { invariant } from "@rxdrag/shared";
 import { IActions, IAction } from "../interfaces/action";
 import { Actions } from "../actions";
 import { ILocalesManager } from "../interfaces/loacales";

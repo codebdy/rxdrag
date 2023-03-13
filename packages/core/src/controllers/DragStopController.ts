@@ -6,7 +6,7 @@ import { IPlugin } from "../interfaces/plugin";
 import { DraggingNodesState } from "../reducers/draggingNodes";
 import { DraggingResourceState } from "../reducers/draggingResource";
 import { RelativePosition } from "../utils/coordinate";
-import { invariant } from "../utils/util-invariant";
+import { invariant } from "@rxdrag/shared";
 
 export class DragStopControllerImpl implements IPlugin {
   name: string = "default.drag-stop-controller";
