@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/auxwidgets/utils/numbToPx.ts"],"sourcesContent":["export function numbToPx(num?: number): string {\r\n  return Math.round(num || 0) + \"px\"\r\n}"],"names":["numbToPx","num","Math","round"],"mappings":"AAAA,OAAO,SAASA,SAASC,GAAY,EAAU;IAC7C,OAAOC,KAAKC,KAAK,CAACF,OAAO,KAAK;AAChC,CAAC"}

@@ -1,4 +1,4 @@
-import { CanvasWidthLimits } from "core/interfaces";
+import { CanvasWidthLimits } from "@rxvisual/core";
 import { useCallback, useEffect, useState } from "react";
 import { useActivedDocumentIdState } from "./useActivedDocumentIdState";
 import { useDesignerEngine } from "./useDesignerEngine";

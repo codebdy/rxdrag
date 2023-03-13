@@ -10,7 +10,7 @@
     "build": "run-s build_types build_esm"
   },
   "dependencies": {
-    "@rxvisual/core": "^1.0.0",
+    "@rxvisual/core": "workspace:^",
     "react": "^18.2.0"
   },
   "devDependencies": {
