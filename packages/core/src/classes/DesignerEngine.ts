@@ -12,7 +12,7 @@ import { CHANGE_ACTIVED_DOCUMENT, SET_LANGUAGE } from "../actions/registry";
 import { DefualtLang } from "../reducers/lang";
 import { ComponentManager } from "./ComponentManager";
 import { IPlugin, IPluginFactory } from "../interfaces/plugin";
-import { isFn } from "../utils/types";
+import { isFn } from "@rxdrag/shared";
 import { IDecoratorManager } from "../interfaces/decorator";
 import { DecoratorManager } from "./DecoratorManager";
 import { INodeSchema } from "@rxdrag/schema";

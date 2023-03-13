@@ -1,4 +1,4 @@
-import { IResource } from "core/interfaces";
+import { IResource } from "@rxdrag/core";
 import { useCallback } from "react";
 import { useLocalesManager } from "./useLocalesManager";
 import { useResourceManager } from "./useResourceManager";

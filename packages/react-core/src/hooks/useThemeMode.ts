@@ -1,4 +1,4 @@
-import { ThemeMode } from "core/interfaces/action";
+import { ThemeMode } from "@rxdrag/core";
 import { useEffect, useState } from "react";
 import { useDesignerEngine } from "./useDesignerEngine";
 
@@ -6,7 +6,7 @@ export const useThemeMode = () => {
   const [themeMode, setThemeMode] = useState<ThemeMode>("light")
   const engine = useDesignerEngine()
 
-  useEffect(()=>{
+  useEffect(() => {
     setThemeMode(engine?.getMonitor().getState().themeMode || "light")
   }, [engine])
 

@@ -7,7 +7,7 @@ import { parseNodeSchema, paseNodes } from "../funcs/parseNodeSchema";
 import { Store } from "redux";
 import { ADD_NODES, BACKUP, CHANGE_NODE_META, DELETE_NODES, GOTO, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_DOCUMENT, REMOVE_SLOT } from "../actions/registry";
 import { DocumentState } from "../reducers/documentsById/document";
-import { isArr, isStr } from "../utils/types";
+import { isArr, isStr } from "@rxdrag/shared";
 import { INodeSchema, INodeMeta } from "@rxdrag/schema";
 
 export class DocumentImpl implements IDocument {

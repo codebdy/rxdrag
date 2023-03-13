@@ -1,4 +1,4 @@
-import { ITreeNode } from "core";
+import { ITreeNode } from "@rxdrag/core";
 import { useEffect, useState } from "react";
 import { useDocument } from "./useDocument";
 

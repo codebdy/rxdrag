@@ -1,6 +1,6 @@
-import { ITreeNode, ID } from "core";
+import { ITreeNode, ID } from "@rxdrag/core";
 import { useCallback, useEffect, useState } from "react";
-import { UnListener } from "runner/minions";
+import { Unsubscribe } from "@rxdrag/core";
 import { useDesignerEngine } from "./useDesignerEngine";
 
 export function useTreeNodes(ids: ID[]) {
@@ -18,7 +18,7 @@ export function useTreeNodes(ids: ID[]) {
   useEffect(() => {
     if (monitor) {
       const nds: (ITreeNode | null)[] = []
-      const offs: UnListener[] = []
+      const offs: Unsubscribe[] = []
       for (const id of ids) {
         nds.push(monitor.getNode(id))
         offs.push(monitor?.subscribeToNodeChanged(id, handleNodeChange))

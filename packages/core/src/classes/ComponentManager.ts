@@ -1,5 +1,5 @@
 import { IBehavior, IBehaviorRule, IComponentConfig, IComponentManager, IDesignerEngine, ITreeNode, Selector } from "../interfaces";
-import { isFn } from "../utils/types";
+import { isFn } from "@rxdrag/shared";
 
 export class ComponentBehavior implements IBehavior {
   selector: string | Selector;

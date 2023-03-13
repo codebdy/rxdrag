@@ -1,7 +1,7 @@
 
-import { isFn } from "../utils/types"
 import _ from "lodash"
 import { Unsubscribe } from "./types"
+import { isFn } from "@rxdrag/shared"
 
 export interface ICustomEvent<EventData = any> {
   type: string

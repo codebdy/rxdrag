@@ -1,4 +1,4 @@
-import { ID, DocumentSelectionMode } from "core/interfaces";
+import { ID, DocumentSelectionMode } from "@rxdrag/core";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useActivedDocumentIdState } from "./useActivedDocumentIdState";
 import { useDesignerEngine } from "./useDesignerEngine";

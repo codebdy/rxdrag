@@ -5,6 +5,7 @@ import { useDesignComponentsParams } from "./useDesignComponentsParams";
 import { useLocalesManager } from "./useLocalesManager";
 import { usePreviewComponents } from "./usePreviewComponents";
 import { useResourceManager } from "./useResourceManager";
+import { isStr } from "@rxdrag/shared"
 
 export function useRegisterComponentMaterial() {
   const resourceManager = useResourceManager()

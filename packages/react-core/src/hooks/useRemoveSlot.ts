@@ -1,4 +1,4 @@
-import { ID } from "core/interfaces";
+import { ID } from "@rxdrag/core";
 import { useCallback } from "react";
 import { useDesignerEngine } from "./useDesignerEngine";
 

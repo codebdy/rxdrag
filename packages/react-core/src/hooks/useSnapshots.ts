@@ -1,4 +1,4 @@
-import { ISnapshot } from "core/interfaces";
+import { ISnapshot } from "@rxdrag/core";
 import { useCallback, useEffect, useState } from "react";
 import { useActivedDocumentIdState } from "./useActivedDocumentIdState";
 import { useMonitor } from "./useMonitor";
