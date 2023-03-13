@@ -1,5 +1,5 @@
-import { IComponentConfig } from "core/interfaces";
-import { ReactComponent } from "runner/ComponentRender/types";
+import { IComponentConfig } from "@rxvisual/core/";
+import { ReactComponent } from "@rxvisual/viewer/types";
 
 //export type ReactComponent = React.FC<any> | React.ComponentClass<any>
 
