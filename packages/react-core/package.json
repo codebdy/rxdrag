@@ -1,7 +1,8 @@
 {
-  "name": "@rxvisual/render-react",
+  "name": "@rxvisual/react-core",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
     "clean": "shx rm -rf dist/",
@@ -9,11 +10,13 @@
     "build_esm": "swc -C module.type=es6 -d dist src/",
     "build": "run-s build_types build_esm"
   },
+  "dependencies": {
+    "@rxvisual/core": "1.0.0",
+    "react": "^18.2.0"
+  },
   "devDependencies": {
     "@swc/cli": "^0.1.62",
-    "@swc/core": "^1.3.39"
-  },
-  "dependencies": {
-    "react": "^18.2.0"
+    "@swc/core": "^1.3.39",
+    "@types/react": "^18.0.28"
   }
 }
