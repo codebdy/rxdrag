@@ -1,6 +1,6 @@
 import { memo } from "react"
 import { MaterialsContext } from "../context"
-import { IReactionMaterial } from "../interfaces"
+import {IReactionMaterial} from "@rxdrag/schema"
 
 export const Minions = memo((
   props: {
