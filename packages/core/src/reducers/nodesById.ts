@@ -1,13 +1,11 @@
-import { ADD_NODES, CHANGE_NODE_META, DELETE_NODES, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_DOCUMENT, REMOVE_SLOT } from "actions/registry"
-import { ID } from "interfaces"
-import { IAction } from "interfaces/action"
-import { invariant } from "utils/util-invariant"
-import { IDocumentAction, NodeRelativePosition, ITreeNode } from "../interfaces/document"
+import { ADD_NODES, CHANGE_NODE_META, DELETE_NODES, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_DOCUMENT, REMOVE_SLOT } from "../actions/registry"
+import { ID } from "../interfaces"
+import { IAction } from "../interfaces/action"
+import { invariant } from "../utils/util-invariant"
+import { IDocumentAction, NodeRelativePosition, ITreeNode, NodesById } from "../interfaces/document"
 import { DocumentInitPayload, AddNodesPayload, DocumentActionPayload, MoveNodesPayload, DeleteNodesPayload, ChangeMetaPayloads, RecoverSnapshotPayload, RemoveSlotPayload } from "../interfaces/payloads"
 
-export type NodesById = {
-	[id: ID]: ITreeNode
-}
+
 export type State = NodesById
 
 export function nodesById(

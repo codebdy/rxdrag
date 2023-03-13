@@ -1,5 +1,5 @@
-import { GOTO } from "actions/registry"
-import { GotoPayload, IDocumentAction } from "interfaces"
+import { GOTO } from "../../../actions/registry"
+import { GotoPayload, IDocumentAction } from "../../../interfaces"
 
 export type State = number
 

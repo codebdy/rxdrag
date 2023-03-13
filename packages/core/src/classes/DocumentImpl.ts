@@ -1,14 +1,13 @@
-import { makeRxId } from "utils/make-rxId";
-import { HistoryableActionType, IDocument, IDocumentAction, INodeMeta, INodeSchema, ISnapshot, ITreeNode, NodeChunk, NodeRelativePosition } from "../interfaces/document";
+import { makeRxId } from "../utils/make-rxId";
+import { HistoryableActionType, IDocument, IDocumentAction, INodeMeta, INodeSchema, ISnapshot, ITreeNode, NodeChunk, NodeRelativePosition, NodesById } from "../interfaces/document";
 import { AddNodesPayload, BackupPayload, ChangeMetaPayloads, DeleteNodesPayload, DocumentActionPayload, GotoPayload, MoveNodesPayload, RecoverSnapshotPayload, RemoveSlotPayload } from "../interfaces/payloads";
-import { ID, IDesignerEngine } from "interfaces";
-import { State } from "reducers";
-import { parseNodeSchema, paseNodes } from "funcs/parseNodeSchema";
+import { ID, IDesignerEngine } from "../interfaces";
+import { State } from "../reducers";
+import { parseNodeSchema, paseNodes } from "../funcs/parseNodeSchema";
 import { Store } from "redux";
-import { ADD_NODES, BACKUP, CHANGE_NODE_META, DELETE_NODES, GOTO, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_DOCUMENT, REMOVE_SLOT } from "actions/registry";
-import { DocumentState } from "reducers/documentsById/document";
-import { NodesById } from "reducers/nodesById";
-import { isArr, isStr } from "utils/types";
+import { ADD_NODES, BACKUP, CHANGE_NODE_META, DELETE_NODES, GOTO, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_DOCUMENT, REMOVE_SLOT } from "../actions/registry";
+import { DocumentState } from "../reducers/documentsById/document";
+import { isArr, isStr } from "../utils/types";
 
 export class DocumentImpl implements IDocument {
   id: string;

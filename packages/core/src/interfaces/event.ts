@@ -1,5 +1,5 @@
 
-import { isFn } from "utils/types"
+import { isFn } from "../utils/types"
 import _ from "lodash"
 import { Unsubscribe } from "./types"
 

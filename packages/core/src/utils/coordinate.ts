@@ -1,5 +1,5 @@
-import { IMouseEventData } from "shell/events/mouse/AbstractMouseEvent";
-import { IDesignerEngine, IRect, ITreeNode } from "interfaces";
+import { IMouseEventData } from "../shell/events/mouse/AbstractMouseEvent";
+import { IDesignerEngine, IRect, ITreeNode } from "../interfaces";
 import { before } from "./array-helper";
 import { calcElementLayout } from "./element";
 

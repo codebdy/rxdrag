@@ -1,5 +1,5 @@
-import { BACKUP } from "actions/registry"
-import { BackupPayload, IDocumentAction, ISnapshot } from "interfaces"
+import { BACKUP } from "../../../actions/registry"
+import { BackupPayload, IDocumentAction, ISnapshot } from "../../../interfaces"
 
 export type State = ISnapshot[]
 

@@ -1,4 +1,4 @@
-import { makeRxId } from "utils/make-rxId";
+import { makeRxId } from "../utils/make-rxId";
 import { NodeType, RXID_ATTR_NAME, RxProps, RX_NODE_TYPE_ATTR_NAME } from "./types";
 
 export function createAuxProps(): RxProps {

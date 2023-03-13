@@ -1,5 +1,5 @@
-import { IDriver, IDriverFactory } from 'interfaces'
-import { IDispatchable, ICustomEvent } from 'interfaces/event'
+import { IDriver, IDriverFactory } from '../../interfaces'
+import { IDispatchable, ICustomEvent } from '../../interfaces/event'
 import { CanvasScrollEvent } from '../events'
 
 export class CanvasScrollDriverImpl implements IDriver {

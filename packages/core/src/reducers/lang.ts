@@ -1,5 +1,5 @@
-import { SET_LANGUAGE } from "actions/registry"
-import { IAction } from "interfaces/action"
+import { SET_LANGUAGE } from "../actions/registry"
+import { IAction } from "../interfaces/action"
 
 export type State = string
 export const DefualtLang = "zh-CN"

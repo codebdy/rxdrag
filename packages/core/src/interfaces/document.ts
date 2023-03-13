@@ -1,8 +1,11 @@
-import { NodesById } from "reducers/nodesById";
 import { IAction } from "./action";
 //import { IDesignerParams } from "./component";
 import { DocumentActionPayload } from "./payloads";
 import { ID, RxProps } from "./types";
+
+export type NodesById = {
+	[id: ID]: ITreeNode
+}
 
 export type CanvasWidthLimits = {
   minWidth?: number,

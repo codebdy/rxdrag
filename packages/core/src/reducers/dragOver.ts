@@ -1,5 +1,5 @@
-import { DRAG_HOVER } from "actions/registry"
-import { DrageOverOptions, IAction } from "interfaces/action"
+import { DRAG_HOVER } from "../actions/registry"
+import { DrageOverOptions, IAction } from "../interfaces/action"
 
 export type DragOverState = DrageOverOptions | null
 

@@ -1,6 +1,6 @@
-import { END_DRAG_RESOURCE, START_DRAG_RESOURCE } from "actions/registry"
-import { IAction, StartDragResourceOptions } from "interfaces/action"
-import { ID, IXYCoord } from "interfaces/types"
+import { END_DRAG_RESOURCE, START_DRAG_RESOURCE } from "../actions/registry"
+import { IAction, StartDragResourceOptions } from "../interfaces/action"
+import { ID, IXYCoord } from "../interfaces/types"
 
 export type DraggingResourceState = {
 	initialMousePosition: IXYCoord

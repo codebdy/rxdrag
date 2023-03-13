@@ -1,4 +1,4 @@
-import { IBehavior, ITreeNode } from "interfaces";
+import { IBehavior, ITreeNode } from "../interfaces";
 
 export const rootBehavior: IBehavior = {
   name: "default.root",

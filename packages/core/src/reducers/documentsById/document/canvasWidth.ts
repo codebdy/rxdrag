@@ -1,5 +1,5 @@
-import { CHANGE_CANVAS_WIDTH } from "actions/registry"
-import { CanvasWidthPayload, IDocumentAction } from "interfaces"
+import { IDocumentAction, CanvasWidthPayload } from "../../../interfaces"
+import { CHANGE_CANVAS_WIDTH } from "../../../actions/registry"
 
 export type State = number | null
 

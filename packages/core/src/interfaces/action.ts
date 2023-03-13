@@ -1,5 +1,5 @@
 import { CanvasWidthLimits, ViewType } from "./document"
-import { RelativePosition } from "utils/coordinate"
+import { RelativePosition } from "../utils/coordinate"
 import { Action } from "redux"
 import { DocumentSelectionMode, ID, Identifier, IXYCoord } from "./types"
 

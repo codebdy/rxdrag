@@ -1,6 +1,6 @@
-import { Canvases, IRect, IShellPane } from 'interfaces'
-import { IDesignerShell } from 'interfaces'
-import { EventEngine } from 'interfaces/event'
+import { Canvases, IRect, IShellPane } from '../interfaces'
+import { IDesignerShell } from '../interfaces'
+import { EventEngine } from '../interfaces/event'
 
 
 export class DesignerShell extends EventEngine implements IDesignerShell {

@@ -1,5 +1,5 @@
-import { INITIALIZE } from "actions/registry"
-import { DocumentInitPayload, ID, IDocumentAction } from "interfaces"
+import { INITIALIZE } from "../../../actions/registry"
+import { DocumentInitPayload, ID, IDocumentAction } from "../../../interfaces"
 
 export type State = ID | undefined
 

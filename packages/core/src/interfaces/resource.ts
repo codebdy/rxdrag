@@ -1,6 +1,6 @@
-import { INodeSchema } from "interfaces/document";
-import { ID, RxProps } from "interfaces";
+import { INodeSchema } from "./document";
 import { ILocales } from "./loacales";
+import { ID, RxProps } from "./types";
 
 export interface IResource<Icon = any> {
   //唯一名称，防止重复注册

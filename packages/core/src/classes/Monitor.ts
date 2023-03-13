@@ -26,7 +26,7 @@ import {
 	Unsubscribe,
 } from '../interfaces/index'
 import type { State } from '../reducers/index'
-import { DragOverState } from 'reducers/dragOver'
+import { DragOverState } from '../reducers/dragOver'
 
 /**
  * 为优化性能而生

@@ -1,5 +1,5 @@
-import { RECOVER_SNAPSHOT, SELECT_NODES } from "actions/registry"
-import { ID, IDocumentAction, RecoverSnapshotPayload, SelectNodesPayload } from "interfaces"
+import { RECOVER_SNAPSHOT, SELECT_NODES } from "../../../actions/registry"
+import { ID, IDocumentAction, RecoverSnapshotPayload, SelectNodesPayload } from "../../../interfaces"
 
 export type State = ID[] | null
 

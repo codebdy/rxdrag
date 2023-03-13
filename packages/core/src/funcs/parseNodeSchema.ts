@@ -1,7 +1,6 @@
-import { ID, IDesignerEngine, INodeSchema, ITreeNode, NodeChunk, RXID_ATTR_NAME } from "interfaces";
-import { NodesById } from "reducers/nodesById";
-import { makeRxId } from "utils/make-rxId";
-import { isArr } from "utils/types";
+import { ID, IDesignerEngine, INodeSchema, ITreeNode, NodeChunk, NodesById, RXID_ATTR_NAME } from "../interfaces";
+import { makeRxId } from "../utils/make-rxId";
+import { isArr } from "../utils/types";
 
 export function parseNodeSchema(engine: IDesignerEngine, documentId: ID, schema: INodeSchema, nodesById: NodesById, isSlot: boolean, parentId?: string): ITreeNode {
   const { children, slots = {}, ...metaData } = schema;

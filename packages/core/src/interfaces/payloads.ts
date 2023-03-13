@@ -1,6 +1,5 @@
-import { NodesById } from "reducers/nodesById";
 import { ID, DocumentSelectionMode } from "./types";
-import { HistoryableActionType, ITreeNode, NodeChunk, NodeRelativePosition, ISnapshot, INodeMeta, CanvasWidthLimits, ViewType } from "./document";
+import { HistoryableActionType, ITreeNode, NodeChunk, NodeRelativePosition, ISnapshot, INodeMeta, CanvasWidthLimits, ViewType, NodesById } from "./document";
 
 
 export type DocumentActionPayload = {

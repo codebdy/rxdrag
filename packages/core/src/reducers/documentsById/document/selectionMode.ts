@@ -1,6 +1,6 @@
-import { IAction, } from "interfaces/action";
-import { DocumentSelectionMode, SelectionModePayload } from "interfaces";
-import { SET_SELECTION_MODE } from "actions/registry";
+import { IAction, } from "../../../interfaces/action";
+import { DocumentSelectionMode, SelectionModePayload } from "../../../interfaces";
+import { SET_SELECTION_MODE } from "../../../actions/registry";
 
 export type SelectionModeState = DocumentSelectionMode
 

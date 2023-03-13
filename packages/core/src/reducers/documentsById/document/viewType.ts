@@ -1,5 +1,5 @@
-import { CHANGE_DOCUMENT_VIEW_TYPE } from "actions/registry"
-import { DefulstViewType, IDocumentAction, ViewType, ViewTypePayload } from "interfaces"
+import { CHANGE_DOCUMENT_VIEW_TYPE } from "../../../actions/registry"
+import { DefulstViewType, IDocumentAction, ViewType, ViewTypePayload } from "../../../interfaces"
 
 export type State = ViewType
 

@@ -1,4 +1,4 @@
-import { DragStartEvent, DragStopEvent } from "shell/events/mouse"
+import { DragStartEvent, DragStopEvent } from "../../shell/events/mouse"
 import { IDesignerShell, IDriver, IDriverFactory } from "../../interfaces"
 
 export class DragDropDriverImpl implements IDriver {

@@ -1,6 +1,6 @@
-import { INodeSchema } from "interfaces";
-import { ILocales, ILocalesManager } from "interfaces/loacales";
-import { isArr, isObj, isStr } from "utils/types";
+import { INodeSchema } from "../interfaces";
+import { ILocales, ILocalesManager } from "../interfaces/loacales";
+import { isArr, isObj, isStr } from "../utils/types";
 import _ from "lodash"
 
 export class LocalesManager implements ILocalesManager {

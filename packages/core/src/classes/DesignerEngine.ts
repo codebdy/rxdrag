@@ -1,19 +1,19 @@
-import { State } from "reducers";
-import { IDesignerEngine, IDesignerShell, IMonitor, INodeSchema, IDocument, IResourceManager, ID, IComponentManager, NodeBehavior, AbleCheckFunction } from "interfaces";
+import { State } from "../reducers";
+import { IDesignerEngine, IDesignerShell, IMonitor, INodeSchema, IDocument, IResourceManager, ID, IComponentManager, NodeBehavior, AbleCheckFunction } from "../interfaces";
 import { Store } from "redux";
 import { ResourceManager } from "./ResourceManager";
-import { DocumentImpl } from "classes/DocumentImpl";
-import { invariant } from "utils/util-invariant";
-import { IActions, IAction } from "interfaces/action";
-import { Actions } from "actions";
-import { ILocalesManager } from "interfaces/loacales";
+import { DocumentImpl } from "../classes/DocumentImpl";
+import { invariant } from "../utils/util-invariant";
+import { IActions, IAction } from "../interfaces/action";
+import { Actions } from "../actions";
+import { ILocalesManager } from "../interfaces/loacales";
 import { LocalesManager } from "./LocalesManager";
-import { CHANGE_ACTIVED_DOCUMENT, SET_LANGUAGE } from "actions/registry";
-import { DefualtLang } from "reducers/lang";
+import { CHANGE_ACTIVED_DOCUMENT, SET_LANGUAGE } from "../actions/registry";
+import { DefualtLang } from "../reducers/lang";
 import { ComponentManager } from "./ComponentManager";
-import { IPlugin, IPluginFactory } from "interfaces/plugin";
-import { isFn } from "utils/types";
-import { IDecoratorManager } from "interfaces/decorator";
+import { IPlugin, IPluginFactory } from "../interfaces/plugin";
+import { isFn } from "../utils/types";
+import { IDecoratorManager } from "../interfaces/decorator";
 import { DecoratorManager } from "./DecoratorManager";
 
 export class DesignerEngine implements IDesignerEngine {
