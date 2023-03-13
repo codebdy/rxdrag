@@ -4,7 +4,7 @@ import { reduce, State } from './reducers'
 import { IDesignerEngine } from './interfaces'
 import { Monitor } from './classes/Monitor'
 import { DesignerEngine } from './classes/DesignerEngine'
-import { DesignerShell } from './shell'
+import { DesignerShell } from './shell/DesignerShell'
 import { rootBehavior } from './behaviors/rootBehavior'
 import { IPluginFactory } from './interfaces/plugin'
 
