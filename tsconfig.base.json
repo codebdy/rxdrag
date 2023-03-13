@@ -7,6 +7,6 @@
     "jsx": "react-jsx",
     "declaration": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true
+    "strict": true,
   }
 }

@@ -1,4 +1,4 @@
-import { INodeSchema } from "core"
+import { INodeSchema } from "@rxvisual/core"
 import { memo, useEffect, useState } from "react"
 import { ComponentView, IComponentRenderSchema } from "./ComponentView"
 import { transToRenderSchema } from "./transform"
