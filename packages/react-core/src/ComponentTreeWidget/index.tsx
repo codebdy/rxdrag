@@ -1,4 +1,4 @@
-import { IDocument } from "core"
+import { IDocument } from "@rxdrag/core"
 import { memo } from "react"
 import { DocumentContext } from "../contexts"
 import { ComponentDesignerView } from "./ComponentDesignerView"
