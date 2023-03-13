@@ -1,4 +1,4 @@
-import { InputHandler, IJointer } from "../interfaces/controller";
+import { InputHandler, IJointer } from "../../../schema/src/reaction/controller";
 
 export class Jointer implements IJointer {
   private outlets: (IJointer | InputHandler)[] = []

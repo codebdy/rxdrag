@@ -8,7 +8,7 @@ export function useControllerNodes(){
   const currentNode = useCurrentNode()
   
   const processNode = useCallback((node: ITreeNode, nodes: ITreeNode[]) => {
-    if (node.meta?.["x-reactions"]?.enable) {
+    if (node.meta?.["x-controller"]?.enable) {
       nodes.push(node)
     }
     if (node.parentId) {

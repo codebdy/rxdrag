@@ -1,5 +1,6 @@
 import { Action } from "redux"
 import { FormActionPlayload } from "./actions"
+import {IFieldMeta} from "@rxvisual/schema"
 
 export type Errors = {
 
@@ -25,20 +26,6 @@ export interface IFormProps {
   validateFirst?: boolean, //	是否只校验第一个非法规则	Boolean
 }
 
-export type FieldType = "object" | "array" | "normal" | "fragment"
-
-export interface IFieldMeta<Params = any> {
-  //类型：对象、数组、常规、片段（name 为空）
-  type?: FieldType
-  name?: string
-  label?: string
-  //validateRule?: any
-  defaultValue?: any
-  fragmentFields?: IFieldMeta[]
-  //校验规则
-  validateRules?: any
-  params?: Params,
-}
 
 //让path可以重复，避免fragment覆盖其他值
 export interface IFieldSchema extends IFieldMeta {

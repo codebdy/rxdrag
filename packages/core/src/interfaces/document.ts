@@ -2,6 +2,7 @@ import { IAction } from "./action";
 //import { IDesignerParams } from "./component";
 import { DocumentActionPayload } from "./payloads";
 import { ID, RxProps } from "./types";
+import {INodeMeta, INodeSchema} from "@rxvisual/schema"
 
 export type NodesById = {
 	[id: ID]: ITreeNode
@@ -39,18 +40,6 @@ export interface IDocumentAction<Payload extends DocumentActionPayload> extends 
 export type ViewType = "design" | "json" | "preview" | string
 export const DefulstViewType = "design"
 
-export interface INodeMeta<IField = any, IReactions = any> {
-  componentName: string,
-  props?: {
-    [key: string]: any,
-  },
-  "x-field"?: IField,
-  "x-reactions"?: IReactions,
-  //锁定子控件
-  locked?: boolean,
-  //自己渲染，引擎不渲染
-  selfRender?: boolean,
-}
 
 export interface IDesignerProps {
   style?: any
@@ -89,16 +78,6 @@ export interface NodeBehavior {
   isNoPlaceholder: () => boolean
   isNoRef: () => boolean
   isLockable: () => boolean
-}
-
-export interface INodeSchema<IField = any, IReactions = any> extends INodeMeta<IField, IReactions> {
-  //name?: string,
-  //引用一段schema，ref赋值name，用于框架等分块编辑
-  //ref?: string,
-  children?: INodeSchema[]
-  slots?: {
-    [name: string]: INodeSchema | undefined
-  }
 }
 
 // export interface IBlocksSchema {

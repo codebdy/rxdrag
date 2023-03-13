@@ -196,7 +196,7 @@ export function createReactionSchema(logicOptions?: LogicOptions) {
         {
           componentName: "ReactionsInput",
           "x-field": {
-            name: "x-reactions",
+            name: "x-controller",
             params: {
               withBind: true,
             }

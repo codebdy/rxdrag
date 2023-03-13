@@ -1,6 +1,6 @@
 import { IDriver, IDriverFactory } from "../../interfaces"
 import { IDispatchable, ICustomEvent } from "../../interfaces/event"
-import { isHTMLElement } from "../../utils/html-node"
+import { isHTMLElement } from "../../utils/types"
 import { CanvasResizeEvent } from "../events"
 
 export class CanvasResizeDriverImpl implements IDriver {

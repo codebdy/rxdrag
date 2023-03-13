@@ -98,7 +98,7 @@ export const ReactionsInput = memo((props: {
           </Form.Item>
 
           <Modal
-            title={`${t("configController")} - ${node?.meta["x-reactions"]?.label || node?.title}`}
+            title={`${t("configController")} - ${node?.meta["x-controller"]?.label || node?.title}`}
             open={isModalOpen}
             cancelText={t("cancel")}
             okText={t("confirm")}

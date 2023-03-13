@@ -1,7 +1,3 @@
-import { IForm } from "runner/fieldy"
-import { IReactionMaterial } from "./material"
-import { IConfigMeta, IControllerMeta, IReactionMeta } from "./metas"
-
 export type Unsubscribe = () => void
 
 export type InputHandler = (inputValue?: any) => void
@@ -42,7 +38,7 @@ export interface IPropController {
   setProp(name: string, value: any): void
 }
 
-export interface IComponentController extends IVariableController, IPropController {
+export interface IController extends IVariableController, IPropController {
   id: string,
   name?: string,
   meta: IControllerMeta,
@@ -55,19 +51,6 @@ export interface IComponentController extends IVariableController, IPropControll
   destory(): void,
 }
 
-export type ComponentControllers = {
-  [id: string]: IComponentController | undefined
+export type ReactionControllers = {
+  [id: string]: IController | undefined
 }
-
-export type Navigate = (url: string) => void
-
-export interface IReactionFactoryOptions {
-  controllers?: ComponentControllers,
-  materials?: IReactionMaterial[],
-  form?: IForm,
-  fieldPath?: string,
-  //路由跳转
-  navigate?: Navigate
-}
-
-export type ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options: IReactionFactoryOptions) => IReaction

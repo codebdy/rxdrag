@@ -10,7 +10,7 @@
         }
       },
       "x-field": {},
-      "x-reactions": {
+      "x-controller": {
         "id": "9a6d5769-790e-4a23-bdfc-6694d6bc5b5a",
         "name": "游戏容器",
         "events": [
@@ -629,7 +629,7 @@
             "style": {}
           },
           "x-field": {},
-          "x-reactions": {
+          "x-controller": {
             "id": "7e25d7c2-8df7-450c-9de2-efaabc484fad",
             "name": "列容器",
             "events": [
@@ -683,7 +683,7 @@
                         "danger": false
                       },
                       "x-field": {},
-                      "x-reactions": {
+                      "x-controller": {
                         "id": "e173dac5-dfea-4e59-ba1a-477cf14acd96",
                         "enable": true,
                         "name": "地鼠1",
@@ -1188,7 +1188,7 @@
                         "danger": false
                       },
                       "x-field": {},
-                      "x-reactions": {
+                      "x-controller": {
                         "id": "e173dac5-dfea-4e59-ba1a-477cf14acd96",
                         "enable": true,
                         "name": "地鼠2",
@@ -1693,7 +1693,7 @@
                         "danger": false
                       },
                       "x-field": {},
-                      "x-reactions": {
+                      "x-controller": {
                         "id": "e173dac5-dfea-4e59-ba1a-477cf14acd96",
                         "enable": true,
                         "name": "地鼠3",
@@ -2210,7 +2210,7 @@
                         "danger": false
                       },
                       "x-field": {},
-                      "x-reactions": {
+                      "x-controller": {
                         "id": "e173dac5-dfea-4e59-ba1a-477cf14acd96",
                         "enable": true,
                         "name": "地鼠4",
@@ -2715,7 +2715,7 @@
                         "danger": false
                       },
                       "x-field": {},
-                      "x-reactions": {
+                      "x-controller": {
                         "id": "e173dac5-dfea-4e59-ba1a-477cf14acd96",
                         "enable": true,
                         "name": "地鼠5",
@@ -3220,7 +3220,7 @@
                         "danger": false
                       },
                       "x-field": {},
-                      "x-reactions": {
+                      "x-controller": {
                         "id": "e173dac5-dfea-4e59-ba1a-477cf14acd96",
                         "enable": true,
                         "name": "地鼠6",
@@ -3737,7 +3737,7 @@
                         "danger": false
                       },
                       "x-field": {},
-                      "x-reactions": {
+                      "x-controller": {
                         "id": "e173dac5-dfea-4e59-ba1a-477cf14acd96",
                         "enable": true,
                         "name": "地鼠7",
@@ -4242,7 +4242,7 @@
                         "danger": false
                       },
                       "x-field": {},
-                      "x-reactions": {
+                      "x-controller": {
                         "id": "e173dac5-dfea-4e59-ba1a-477cf14acd96",
                         "enable": true,
                         "name": "地鼠8",
@@ -4747,7 +4747,7 @@
                         "danger": false
                       },
                       "x-field": {},
-                      "x-reactions": {
+                      "x-controller": {
                         "id": "e173dac5-dfea-4e59-ba1a-477cf14acd96",
                         "enable": true,
                         "name": "地鼠9",
@@ -5277,7 +5277,7 @@
                                 "style": {}
                               },
                               "x-field": {},
-                              "x-reactions": {
+                              "x-controller": {
                                 "id": "debb2015-1dd4-44e2-9ee7-060ca9e12357",
                                 "name": "分数显示",
                                 "events": [
@@ -5402,7 +5402,7 @@
                         "style": {}
                       },
                       "x-field": {},
-                      "x-reactions": {
+                      "x-controller": {
                         "id": "aa82b386-7847-4652-8fae-263b30ec7b9d",
                         "events": [
                           {
@@ -5546,7 +5546,7 @@
                         "disabled": true
                       },
                       "x-field": {},
-                      "x-reactions": {
+                      "x-controller": {
                         "id": "7899324c-54a2-40ba-92c3-74dc52394878",
                         "events": [
                           {

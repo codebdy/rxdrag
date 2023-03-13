@@ -88,7 +88,7 @@ export const ComponentList = memo((
     <div>
       {
         controllerNodes.map((node, index) => {
-          const controller: IControllerMeta = currentController?.id === node.meta?.["x-reactions"]?.id ? currentController : node.meta?.["x-reactions"]
+          const controller: IControllerMeta = currentController?.id === node.meta?.["x-controller"]?.id ? currentController : node.meta?.["x-controller"]
           return (
             <Container
               key={node.id}

@@ -1,5 +1,5 @@
 import { IComponentConfig } from "@rxvisual/core";
-import { ReactComponent } from "@rxvisual/viewer";
+import { ReactComponent } from "@rxvisual/render-react";
 
 //export type ReactComponent = React.FC<any> | React.ComponentClass<any>
 

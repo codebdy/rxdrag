@@ -320,7 +320,7 @@
                           "x-field": {
                             "params": {}
                           },
-                          "x-reactions": {
+                          "x-controller": {
                             "id": "97b74524-499e-472b-ab0d-bf46f11fe185",
                             "enable": true,
                             "name": "待办列表",
@@ -613,7 +613,7 @@
                                         "value": "Title",
                                         "style": {}
                                       },
-                                      "x-reactions": {
+                                      "x-controller": {
                                         "id": "cc34f54c-b1e9-4454-b0a5-199069a4b5ef",
                                         "enable": true
                                       },
@@ -701,7 +701,7 @@
                             "pagination": false,
                             "style": {}
                           },
-                          "x-reactions": {
+                          "x-controller": {
                             "id": "97be3def-3b81-46cf-b77c-1b27f83a9f16",
                             "enable": true,
                             "events": [
@@ -1067,7 +1067,7 @@
                                           "withBind": true
                                         }
                                       },
-                                      "x-reactions": {
+                                      "x-controller": {
                                         "id": "3d935028-e718-474e-a798-7d95bb4a2a09",
                                         "enable": true,
                                         "name": "标签",

@@ -1,4 +1,4 @@
-import { IDesignerProps, INodeSchema, ITreeNode } from "./document"
+import { IDesignerProps, ITreeNode } from "./document"
 import { IDesignerEngine } from "./engine"
 import { ILocales } from "./loacales"
 import { IResource } from "./resource"
