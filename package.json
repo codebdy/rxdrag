@@ -1,7 +1,7 @@
 {
-  "name": "rxvisual",
+  "name": "rxdrag",
   "version": "1.0.0",
-  "description": "RxVisual Monorepo",
+  "description": "RxDrag Monorepo",
   "main": "index.js",
   "repository": "https://github.com/rxdrag/rxeditor.git",
   "author": "Water.Li",
