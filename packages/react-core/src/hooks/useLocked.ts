@@ -1,4 +1,4 @@
-import { LockContext } from "core-react/contexts";
+import { LockContext } from "../contexts";
 import { useContext } from "react";
 
 export function useLocked() {

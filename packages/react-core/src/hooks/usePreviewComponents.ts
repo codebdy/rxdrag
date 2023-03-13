@@ -1,4 +1,4 @@
-import { IComponentsParams, PreviewComponentsContext } from "core-react/contexts";
+import { IComponentsParams, PreviewComponentsContext } from "../contexts";
 import { useContext } from "react";
 
 export function usePreviewComponents(){

@@ -1,4 +1,4 @@
-import { ITreeNode } from "core";
+import { ITreeNode } from "@rxdrag/core";
 import { useCallback, useEffect, useState } from "react";
 import { useDesignerEngine } from "./useDesignerEngine";
 

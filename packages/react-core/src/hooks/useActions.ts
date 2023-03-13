@@ -1,6 +1,6 @@
-import { IDesignerEngine } from "core";
+import { IDesignerEngine } from "@rxdrag/core";
+import { DesignerEngineContext } from "../contexts";
 import { useContext } from "react";
-import { DesignerEngineContext } from "core-react/contexts";
 
 export function useActions(){
   const designer = useContext<IDesignerEngine|undefined>(DesignerEngineContext)

@@ -1,4 +1,4 @@
-import { IComponentMaterial, IComponents } from "interfaces";
+import { IComponentMaterial, IComponents } from "../interfaces";
 import { useMemo } from "react";
 
 export function useComponentsFromMaterials(materials?: IComponentMaterial[]){

@@ -1,4 +1,4 @@
-import { IDesignerEngine } from "core";
+import { IDesignerEngine } from "@rxdrag/core";
 import { useContext } from "react";
 import { DesignerEngineContext } from "../contexts";
 

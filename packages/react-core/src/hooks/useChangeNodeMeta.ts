@@ -1,4 +1,5 @@
-import { ID, INodeMeta } from "core/interfaces";
+import { ID } from "@rxdrag/core";
+import { INodeMeta } from "@rxdrag/schema";
 import { useCallback } from "react";
 import { useDesignerEngine } from "./useDesignerEngine";
 

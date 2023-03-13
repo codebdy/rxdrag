@@ -1,5 +1,5 @@
-import { NodeContext } from "core-react/contexts";
-import { ITreeNode } from "core/interfaces";
+import { NodeContext } from "../contexts";
+import { ITreeNode } from "@rxdrag/core";
 import { useContext } from "react";
 
 export function useNode(){

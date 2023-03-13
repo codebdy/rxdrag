@@ -1,4 +1,4 @@
-import { DefulstViewType, ID, ViewType } from "core/interfaces";
+import { DefulstViewType, ID, ViewType } from "@rxdrag/core";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useActivedDocumentIdState } from "./useActivedDocumentIdState";
 import { useDesignerEngine } from "./useDesignerEngine";

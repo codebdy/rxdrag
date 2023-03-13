@@ -1,4 +1,4 @@
-import { DesignComponentsContext, IDesignerComponentsParams } from "core-react/contexts";
+import { DesignComponentsContext, IDesignerComponentsParams } from "../contexts";
 import { useContext } from "react";
 
 export function useDesignComponentsParams() {

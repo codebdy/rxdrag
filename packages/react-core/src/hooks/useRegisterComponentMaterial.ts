@@ -1,5 +1,4 @@
-import { IComponentMaterial } from "core-react/interfaces";
-import { isStr } from "core/utils/types";
+import { IComponentMaterial } from "../interfaces";
 import { useCallback } from "react";
 import { useComponentManager } from "./useComponentManager";
 import { useDesignComponentsParams } from "./useDesignComponentsParams";
