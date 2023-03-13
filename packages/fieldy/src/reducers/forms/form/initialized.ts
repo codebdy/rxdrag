@@ -1,5 +1,5 @@
-import { IAction } from "core/interfaces/action";
-import { SetFormInitializedFlagPayload, SET_FORM_INITIALZED_FLAG, SET_FORM_INITIAL_VALUE } from "runner/fieldy/actions";
+import { SetFormInitializedFlagPayload, SET_FORM_INITIALZED_FLAG, SET_FORM_INITIAL_VALUE } from "../../../actions";
+import { IAction } from "../../../interfaces";
 
 export function initializedReduer(state: boolean | undefined, action: IAction<any>) {
   switch (action.type) {

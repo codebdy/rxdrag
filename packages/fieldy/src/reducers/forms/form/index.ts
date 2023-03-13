@@ -1,5 +1,5 @@
 
-import { FormState, IAction } from "runner/fieldy/interfaces";
+import { FormState, IAction } from "../../../interfaces";
 import { fieldsReduer } from "./fields";
 import { fieldSchemasReduer } from "./fieldSchemas";
 import { initializedReduer } from "./initialized";

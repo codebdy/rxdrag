@@ -1,7 +1,7 @@
-import { FormActionPlayload, REMOVE_FORM, CREATE_FORM } from "runner/fieldy/actions";
-import { IAction } from "runner/fieldy/interfaces";
+import { FormActionPlayload, REMOVE_FORM, CREATE_FORM } from "../../actions";
 import { FormsState } from "..";
 import { formReduce } from "./form";
+import { IAction } from "../../interfaces";
 
 export function formsReduce(state: FormsState, action: IAction<FormActionPlayload>): FormsState {
   if (action.payload) {

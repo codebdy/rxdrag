@@ -1,5 +1,5 @@
-import { IAction } from "core/interfaces/action";
-import { SetFormValuePayload, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE } from "runner/fieldy/actions";
+import { SetFormValuePayload, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE } from "../../../actions";
+import { IAction } from "../../../interfaces";
 
 export function valueReduer(state: any, action: IAction<any>) {
   switch (action.type) {
