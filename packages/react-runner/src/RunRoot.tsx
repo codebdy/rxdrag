@@ -1,8 +1,7 @@
 import { useCallback, useMemo, useState } from "react"
-import { IReactionMaterial } from "runner/minions"
-import { Minions } from "runner/minions/components"
-import { IComponentsParams, PreviewComponentsContext } from "./contexts"
-import { IComponents } from "./interfaces"
+import { IComponentsParams, PreviewComponentsContext } from "../../react-core/src/contexts"
+import { IComponents } from "../../react-core/src/interfaces"
+import { IReactionMaterial } from "@rxvisual/schema"
 
 export const PreviewRoot = (props: {
   components?: IComponents,
@@ -25,11 +24,9 @@ export const PreviewRoot = (props: {
   }, [components, handleRegister, initalComponents])
   return (
     <PreviewComponentsContext.Provider value={params}>
-      <Minions materials={reactionMaterials}>
-        {
-          children
-        }
-      </Minions>
+      {
+        children
+      }
     </PreviewComponentsContext.Provider>
   )
 }

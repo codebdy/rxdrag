@@ -10,7 +10,7 @@ import { createEngine } from "core/createEngine";
 import { memo, useEffect, useRef, useState } from "react"
 import { DesignerEngineContext } from "./contexts";
 import { DesignRoot } from "./DesignRoot";
-import { PreviewRoot } from "./PreviewRoot";
+import { PreviewRoot } from "../../react-runner/src/RunRoot";
 import { IComponentMaterial } from "./interfaces";
 import { useComponentsFromMaterials } from "./hooks/useComponentsFromMaterials";
 import { DraggedAttenuator } from "core/auxwidgets/dragged-attenuator";
