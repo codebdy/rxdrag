@@ -34,8 +34,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 # Rxeditor项目重启
 
-RxEditor已重启，基于模型驱动架构，插件式扩展。 
-目标支持react，vue等主流前端库。内核是Immutable数据模型。
+RxEditor已重启，重命名为 RxDrag 基于模型驱动架构，插件式扩展。 
+旨在提供一套低代码前端组合库，包含可视化编辑，表单模型，逻辑编排等内容。
 
 QQ交流群：957619750  
 
