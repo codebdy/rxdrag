@@ -1,7 +1,8 @@
 {
   "name": "@rxvisual/core-react",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
     "clean": "shx rm -rf dist/",
@@ -10,7 +11,7 @@
     "build": "run-s build_types build_esm"
   },
   "dependencies": {
-    "@rxvisual/core": "workspace:^",
+    "@rxvisual/core": "1.0.0",
     "react": "^18.2.0"
   },
   "devDependencies": {
