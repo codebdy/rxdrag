@@ -1,5 +1,5 @@
-import { IComponentConfig } from "@rxvisual/core";
-import { ReactComponent } from "@rxvisual/react-shared";
+import { IComponentConfig } from "@rxdrag/core";
+import { ReactComponent } from "@rxdrag/react-shared";
 
 //export type ReactComponent = React.FC<any> | React.ComponentClass<any>
 

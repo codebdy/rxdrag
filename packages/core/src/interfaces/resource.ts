@@ -1,4 +1,4 @@
-import { INodeSchema } from "./document";
+import { INodeSchema } from "@rxdrag/schema";
 import { ILocales } from "./loacales";
 import { ID, RxProps } from "./types";
 

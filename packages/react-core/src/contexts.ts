@@ -1,4 +1,4 @@
-import { IDesignerEngine, IDocument, ITreeNode } from "@rxvisual/core";
+import { IDesignerEngine, IDocument, ITreeNode } from "@rxdrag/core";
 import { createContext } from "react";
 import { IComponents } from "./interfaces";
 

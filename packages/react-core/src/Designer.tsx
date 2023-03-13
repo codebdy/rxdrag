@@ -1,4 +1,4 @@
-import { GhostWidget } from "core/auxwidgets/ghost";
+import { GhostWidget } from "@rxdrag/core";
 import { InsertionCursor } from "core/auxwidgets/insertion";
 import { ActivedOutline } from "core/auxwidgets/outlines/ActivedOutline";
 import { SelectedOutline } from "core/auxwidgets/outlines/SelectedOutline";

@@ -1,6 +1,6 @@
 import { Action } from "redux"
 import { FormActionPlayload } from "./actions"
-import {IFieldMeta} from "@rxvisual/schema"
+import {IFieldMeta} from "@rxdrag/schema"
 
 export type Errors = {
 

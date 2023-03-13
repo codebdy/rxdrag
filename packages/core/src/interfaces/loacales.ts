@@ -1,4 +1,4 @@
-import { INodeSchema } from "./document"
+import { INodeSchema } from "@rxdrag/schema"
 
 export interface ILangLocales {
   resources?: {

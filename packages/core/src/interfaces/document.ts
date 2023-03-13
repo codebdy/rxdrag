@@ -2,7 +2,7 @@ import { IAction } from "./action";
 //import { IDesignerParams } from "./component";
 import { DocumentActionPayload } from "./payloads";
 import { ID, RxProps } from "./types";
-import {INodeMeta, INodeSchema} from "@rxvisual/schema"
+import {INodeMeta, INodeSchema} from "@rxdrag/schema"
 
 export type NodesById = {
 	[id: ID]: ITreeNode

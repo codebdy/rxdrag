@@ -1,5 +1,6 @@
 import { ID, DocumentSelectionMode } from "./types";
-import { HistoryableActionType, ITreeNode, NodeChunk, NodeRelativePosition, ISnapshot, INodeMeta, CanvasWidthLimits, ViewType, NodesById } from "./document";
+import { HistoryableActionType, ITreeNode, NodeChunk, NodeRelativePosition, ISnapshot, CanvasWidthLimits, ViewType, NodesById } from "./document";
+import { INodeMeta } from "@rxdrag/schema";
 
 
 export type DocumentActionPayload = {

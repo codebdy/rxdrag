@@ -1,3 +1,4 @@
+import { INodeSchema } from "@rxdrag/schema"
 import { IDesignerProps, ITreeNode } from "./document"
 import { IDesignerEngine } from "./engine"
 import { ILocales } from "./loacales"

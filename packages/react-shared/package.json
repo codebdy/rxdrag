@@ -1,5 +1,5 @@
 {
-  "name": "@rxvisual/react-shared",
+  "name": "@rxdrag/react-shared",
   "version": "1.0.0",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -11,7 +11,7 @@
     "build": "run-s build_types build_esm"
   },
   "dependencies": {
-    "@rxvisual/core": "1.0.0",
+    "@rxdrag/core": "1.0.0",
     "react": "^18.2.0"
   },
   "devDependencies": {

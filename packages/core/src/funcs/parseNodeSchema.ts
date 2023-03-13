@@ -1,4 +1,5 @@
-import { ID, IDesignerEngine, INodeSchema, ITreeNode, NodeChunk, NodesById, RXID_ATTR_NAME } from "../interfaces";
+import { INodeSchema } from "@rxdrag/schema";
+import { ID, IDesignerEngine, ITreeNode, NodeChunk, NodesById, RXID_ATTR_NAME } from "../interfaces";
 import { makeRxId } from "../utils/make-rxId";
 import { isArr } from "../utils/types";
 

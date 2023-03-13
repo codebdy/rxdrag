@@ -1,3 +1,5 @@
+import { IXYCoord } from "../../interfaces"
+
 export function getPosition(e: { clientX: number, clientY: number }): IXYCoord {
   return {
     x: e.clientX,

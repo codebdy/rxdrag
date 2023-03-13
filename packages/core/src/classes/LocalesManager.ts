@@ -1,7 +1,7 @@
-import { INodeSchema } from "../interfaces";
 import { ILocales, ILocalesManager } from "../interfaces/loacales";
 import { isArr, isObj, isStr } from "../utils/types";
 import _ from "lodash"
+import { INodeSchema } from "@rxdrag/schema";
 
 export class LocalesManager implements ILocalesManager {
   locales: ILocales = {

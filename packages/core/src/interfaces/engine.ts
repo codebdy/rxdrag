@@ -1,4 +1,4 @@
-import { IDocument, INodeSchema, NodeBehavior } from "./document"
+import { IDocument, NodeBehavior } from "./document"
 import { IDesignerShell } from "./shell"
 import { IMonitor } from "./monitor"
 import { IResourceManager } from "./resource"
@@ -8,6 +8,7 @@ import { ILocalesManager } from "./loacales"
 import { IComponentManager } from "./component"
 import { IPlugin, IPluginFactory } from "./plugin"
 import { IDecoratorManager } from "./decorator"
+import { INodeSchema } from "@rxdrag/schema"
 
 export interface IDesignerEngine {
 	getLanguage(): string
