@@ -1,7 +1,7 @@
 {
   "name": "@rxdrag/shared",
   "version": "1.0.0",
-  "description": "rx visual core",
+  "description": "rxdrag shared",
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",

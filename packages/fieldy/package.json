@@ -1,7 +1,7 @@
 {
-  "name": "@rxdrag/core",
+  "name": "@rxdrag/fieldy",
   "version": "1.0.0",
-  "description": "rx visual core",
+  "description": "rxdrag fieldy",
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",

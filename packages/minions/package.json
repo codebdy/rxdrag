@@ -1,7 +1,7 @@
 {
-  "name": "@rxdrag/core",
+  "name": "@rxdrag/minions",
   "version": "1.0.0",
-  "description": "rx visual core",
+  "description": "rx visual minions",
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
