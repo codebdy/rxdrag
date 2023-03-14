@@ -1,4 +1,3 @@
-import React from "react";
 import { forwardRef, memo } from "react";
 import "./style.less"
 

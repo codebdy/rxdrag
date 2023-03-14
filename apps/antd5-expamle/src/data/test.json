@@ -14,7 +14,7 @@
             "style": {}
           },
           "x-field": {},
-          "x-controller": {
+          "x-reactions": {
             "id": "7e25d7c2-8df7-450c-9de2-efaabc484fad",
             "name": "列容器",
             "events": [
@@ -52,7 +52,7 @@
                 "style": {}
               },
               "x-field": {},
-              "x-controller": {
+              "x-reactions": {
                 "id": "c208de68-19cc-45d4-93b6-9576cbaa2326",
                 "events": [
                   {
@@ -174,7 +174,7 @@
                 "type": "primary",
                 "title": "Button"
               },
-              "x-controller": {
+              "x-reactions": {
                 "id": "fc6bbbfe-ccf1-47e0-b522-e848c50b4e8e",
                 "enable": true,
                 "events": [

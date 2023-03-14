@@ -1,4 +1,4 @@
-import { ILocales } from "core/interfaces/loacales";
+import { ILocales } from "@rxdrag/core";
 
 export const toolsLocales: ILocales = {
   "zh-CN": {
