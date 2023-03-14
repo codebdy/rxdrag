@@ -14,6 +14,6 @@ export default {
       strict: false,
     },
   ],
-  external: ['@reduxjs/toolkit', 'redux', '@rxdrag/shared'],
+  external: ['@reduxjs/toolkit', 'redux', '@rxdrag/shared', 'lodash'],
   plugins: [typescript(), uglify()],
 }
