@@ -20,6 +20,8 @@
     "@types/node": "^16.18.3",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
+    "@rxdrag/core": "1.0.0",
+    "@rxdrag/react-core": "1.0.0",
     "antd": "5.1.2",
     "classnames": "^2.3.2",
     "css-border-property": "^1.1.0",

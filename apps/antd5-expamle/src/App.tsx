@@ -1,9 +1,6 @@
-import { IFrameCanvasRender } from 'core-react/canvas/IframeCanvas/IFrameCanvasRender';
-import { IFramePreviewRender } from 'core-react/Preview/IFramePreviewRender';
-import { Antd5Example } from 'expamples/ant5';
-import { usePredefinedComponents } from 'expamples/ant5/hooks/usePredefinedComponents';
+import { Antd5Example } from './Antd5Example';
+import { IFrameCanvasRender, IFramePreviewRender } from '@rxdrag/react-core';
 import { Routes, Route } from 'react-router-dom';
-import { getAllMaterial } from 'react-shells/ant5/materials';
 import './App.css';
 
 function App() {
