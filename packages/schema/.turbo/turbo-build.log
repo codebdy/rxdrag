@@ -10,4 +10,4 @@
 > @rxdrag/schema@1.0.0 build_esm D:\lowcode\rxeditor\packages\schema
 > swc -C module.type=es6 -d dist src/
 
-Successfully compiled: 8 files with swc (116.64ms)
+Successfully compiled: 8 files with swc (62.54ms)
