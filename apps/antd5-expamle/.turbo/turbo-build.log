@@ -2,7 +2,10 @@
 > rxdrag-antd-example@1.0.0 build D:\lowcode\rxeditor\apps\antd5-expamle
 > craco build
 
-Could not find a required file.
-  Name: index.html
-  Searched in: D:\lowcode\rxeditor\apps\antd5-expamle\public
+Creating an optimized production build...
+Failed to compile.
+
+Module not found: Error: Can't resolve 'expamples/ant5' in 'D:\lowcode\rxeditor\apps\antd5-expamle\src'
+
+
  ELIFECYCLE  Command failed with exit code 1.
