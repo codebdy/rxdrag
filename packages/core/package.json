@@ -15,29 +15,21 @@
     "transform": {
       ".(ts|tsx)": "ts-jest"
     },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
     "moduleFileExtensions": [
       "ts",
-      "tsx",
       "js"
     ],
     "modulePathIgnorePatterns": [
       "<rootDir>/dist/"
     ]
   },
-  "peerDependencies": {
-    "react": ">= 16.8.0",
-    "react-dom": ">= 16.8.0"
-  },
+  "peerDependencies": {},
   "devDependencies": {
     "@types/jest": "^26.0.7",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
-    "eslint-plugin-react-hooks": "^4.0.8",
     "jest": "^26.1.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-test-renderer": "^16.13.1",
     "rollup": "^3.19.1",
     "rollup-plugin-typescript2": "^0.25.3",
     "rollup-plugin-uglify": "^6.0.4",
