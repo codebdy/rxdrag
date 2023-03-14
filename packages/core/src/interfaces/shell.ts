@@ -17,7 +17,7 @@ export interface IDriver {
 }
 
 export type Canvases = {
-	[documentId: ID]: IShellPane | undefined
+	[documentId in ID]: IShellPane | undefined
 }
 
 

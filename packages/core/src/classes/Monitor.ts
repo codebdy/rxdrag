@@ -33,7 +33,7 @@ import { DragOverState } from '../reducers/dragOver'
  */
 export class NodeChangeHandler {
 	listeners: {
-		[id: ID]: NodeListener[] | undefined
+		[id in ID]: NodeListener[] | undefined
 	} = {}
 
 	handleNodeChange = (node: ITreeNode) => {

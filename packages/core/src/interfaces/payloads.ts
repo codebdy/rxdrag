@@ -22,7 +22,7 @@ export type GotoPayload = DocumentActionPayload & {
 
 export type DocumentInitPayload = DocumentActionPayload & {
   nodesById: {
-    [id: ID]: ITreeNode;
+    [id in ID]: ITreeNode;
   };
   rootId?: ID;
 };

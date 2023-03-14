@@ -27,6 +27,7 @@
   "peerDependencies": {},
   "devDependencies": {
     "@types/jest": "^26.0.7",
+    "@types/resize-observer-browser": "^0.1.7",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
     "jest": "^26.1.0",

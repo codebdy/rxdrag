@@ -5,7 +5,7 @@ import { ID, RxProps } from "./types";
 import {INodeMeta, INodeSchema} from "@rxdrag/schema"
 
 export type NodesById = {
-	[id: ID]: ITreeNode
+	[id in ID]: ITreeNode
 }
 
 export type CanvasWidthLimits = {

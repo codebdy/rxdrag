@@ -12,7 +12,7 @@ export class SelectedOutlineImpl implements IPlugin {
   resizeObserver: ResizeObserver
   private unsubscribe: Unsubscribe;
   private htmls: {
-    [id: ID]: HTMLElement
+    [id in ID]: HTMLElement
   } = {}
   private nodeChangeUnsubscribe: Unsubscribe;
   private selecteNodes: ID[] | null = null

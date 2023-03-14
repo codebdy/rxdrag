@@ -19,7 +19,7 @@ import { INodeSchema } from "@rxdrag/schema";
 
 export class DesignerEngine implements IDesignerEngine {
 	private documentsById: {
-		[id: ID]: IDocument
+		[id in ID]: IDocument
 	} = {}
 	private resourceManager: IResourceManager
 	private localesManager: ILocalesManager
