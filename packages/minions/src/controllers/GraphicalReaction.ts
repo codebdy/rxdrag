@@ -1,6 +1,6 @@
-import { Jointer } from "../../../../../runner/minions/classes/jointer";
-import { IJointer, IReaction, IReactionFactoryOptions } from "../../../../../runner/minions/interfaces/controller";
-import { IConfigMeta, IReactionDefineMeta, IReactionMeta, ReactionType } from "../../../../../runner/minions/interfaces/metas";
+import { IConfigMeta, IJointer, IReaction, IReactionDefineMeta, IReactionMeta, ReactionType } from "@rxdrag/schema";
+import { Jointer } from "../classes/jointer";
+import { IFactoryOptions, IReactionFactoryOptions } from "./IFactoryOptions";
 
 export class GraphicalReaction implements IReaction {
   id: string;
@@ -18,7 +18,7 @@ export class GraphicalReaction implements IReaction {
     this.contructRelations()
   }
   destory(): void {
-    for(const reaction of this.reactions){
+    for (const reaction of this.reactions) {
       reaction.destory()
     }
     this.reactions = []

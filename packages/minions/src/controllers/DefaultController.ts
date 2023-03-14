@@ -1,10 +1,12 @@
 import { IControllerMeta, IReaction, IReactionDefineMeta } from "@rxdrag/schema";
 import { Controllers, EventFuncs, IController, InputFunc, PropsListener, UnListener, VariableListener } from "../interfaces";
+import { IFactoryOptions, IReactionFactoryOptions } from "./IFactoryOptions"
+import { GraphicalReaction } from "./GraphicalReaction"
 
 export const INIT_EVENT_NAME = "init"
 export const DESTORY_EVENT_NAME = "destory"
 
-export class DefaultController<IReactionFactoryOptions> implements IController {
+export class DefaultController<IOptions extends IFactoryOptions> implements IController {
   id: string;
   name?: string;
   initEvent?: InputFunc | undefined;
@@ -18,7 +20,7 @@ export class DefaultController<IReactionFactoryOptions> implements IController {
 
   private reactions: IReaction[] = []
 
-  constructor(public meta: IControllerMeta, protected parentControllers: Controllers, protected options?: IReactionFactoryOptions) {
+  constructor(public meta: IControllerMeta, protected parentControllers: Controllers, protected options?: IOptions) {
     this.id = meta.id!
     for (const eventMeta of meta.events || []) {
       const reaction = this.makeReaction(eventMeta, { ...parentControllers, [this.id]: this })
@@ -86,7 +88,7 @@ export class DefaultController<IReactionFactoryOptions> implements IController {
   }
 
   private makeReaction = (reactionMeta: IReactionDefineMeta, controllers: Controllers) => {
-    const options = {
+    const options: IReactionFactoryOptions = {
       ...this.options,
       variableController: this,
       propsController: this,
@@ -94,8 +96,6 @@ export class DefaultController<IReactionFactoryOptions> implements IController {
     }
     if (reactionMeta.logicMetas) {
       return new GraphicalReaction(reactionMeta, options)
-    } else if (reactionMeta.jsCode) {
-      return new CodeReaction(reactionMeta)
     }
   }
 }

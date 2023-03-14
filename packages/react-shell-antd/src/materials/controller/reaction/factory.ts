@@ -1,6 +1,6 @@
 import { ReactionFactory, IReactionMeta, IReactionFactoryOptions, IConfigMeta } from "runner/minions"
 import { CodeReaction } from "./CodeReaction"
-import { GraphicalReaction } from "./GraphicalReaction"
+import { GraphicalReaction } from "../../../../../minions/src/controllers/GraphicalReaction"
 
 
 export const ControllerReaction: ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options: IReactionFactoryOptions) => {
