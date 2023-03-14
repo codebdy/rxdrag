@@ -1,0 +1,12 @@
+
+> @rxdrag/langs@1.0.0 build D:\lowcode\rxeditor\packages\langs
+> run-s build_types build_esm
+
+
+> @rxdrag/langs@1.0.0 build_types D:\lowcode\rxeditor\packages\langs
+> tsc -b .
+
+error TS18003: No inputs were found in config file 'D:/lowcode/rxeditor/packages/langs/tsconfig.json'. Specified 'include' paths were '["./src/index.ts"]' and 'exclude' paths were '["dist"]'.
+ ELIFECYCLE  Command failed with exit code 1.
+ERROR: "build_types" exited with 1.
+ ELIFECYCLE  Command failed with exit code 1.

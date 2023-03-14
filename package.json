@@ -1,25 +1,18 @@
 {
   "name": "rxdrag",
   "version": "1.0.0",
-  "description": "RxDrag Monorepo",
+  "description": "",
   "main": "index.js",
-  "repository": "https://github.com/rxdrag/rxeditor.git",
-  "author": "Water.Li",
-  "license": "MIT",
   "private": true,
   "scripts": {
-    "bootstrap": "yarn --frozen-lockfile",
-    "build": "yarn workspace my-package build",
-    "clean": "yarn workspaces run clean",
-    "lint": "yarn workspaces run lint",
-    "test": "yarn workspaces run test",
-    "start": "yarn workspace my-app start"
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
   "devDependencies": {
-    "typescript": "^4.5.5",
-    "cross-env": "^7.0.3"
+    "turbo": "^1.8.3"
   }
 }

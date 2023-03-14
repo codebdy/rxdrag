@@ -1,0 +1,8 @@
+
+> rxvisual-antd-example@1.0.0 build D:\lowcode\rxeditor\apps\antd5-expamle
+> craco build
+
+'craco' ²»ÊÇÄÚ²¿»òÍâ²¿ÃüÁî£¬Ò²²»ÊÇ¿ÉÔËĞĞµÄ³ÌĞò
+»òÅú´¦ÀíÎÄ¼ş¡£
+â€‰ELIFECYCLEâ€‰ Command failed with exit code 1.
+â€‰WARNâ€‰  Local package.json exists, but node_modules missing, did you mean to install?

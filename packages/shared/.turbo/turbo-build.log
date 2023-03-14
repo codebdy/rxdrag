@@ -1,0 +1,9 @@
+
+> @rxdrag/shared@1.0.0 build D:\lowcode\rxeditor\packages\shared
+> rollup -c
+
+(node:22484) ExperimentalWarning: Importing JSON modules is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[36m
+[1msrc/index.ts[22m → [1mdist/index.js[22m...[39m
+[32mcreated [1mdist/index.js[22m in [1m5.3s[22m[39m

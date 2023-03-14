@@ -1,0 +1,13 @@
+
+> @rxdrag/fieldy@1.0.0 build D:\lowcode\rxeditor\packages\fieldy
+> run-s build_types build_esm
+
+
+> @rxdrag/fieldy@1.0.0 build_types D:\lowcode\rxeditor\packages\fieldy
+> tsc -b .
+
+
+> @rxdrag/fieldy@1.0.0 build_esm D:\lowcode\rxeditor\packages\fieldy
+> swc -C module.type=es6 -d dist src/
+
+Successfully compiled: 27 files with swc (37.03ms)
