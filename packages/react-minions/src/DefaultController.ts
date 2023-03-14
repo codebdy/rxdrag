@@ -4,7 +4,8 @@ import { IControllerMeta, IReactionDefineMeta } from "../interfaces/metas";
 import { GraphicalReaction } from "../../../react-shells/ant5/materials/controller/reaction/GraphicalReaction";
 import { CodeReaction } from "react-shells/ant5/materials/controller/reaction/CodeReaction";
 
-export class ComponentController implements IComponentController {
+
+export class DefaultController implements IController {
   id: string;
   name?: string;
   initEvent?: InputFunc | undefined;

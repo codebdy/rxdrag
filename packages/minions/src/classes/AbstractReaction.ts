@@ -1,7 +1,7 @@
-import { IConfigMeta, IJointer, IReaction, IReactionFactoryOptions, IReactionMeta } from "../interfaces/IReactionFactoryOptions";
+import { IConfigMeta, IJointer, IReaction, IReactionMeta } from "@rxdrag/schema";
 import { Jointer } from "./jointer";
 
-export abstract class AbstractReaction<ConfigMeta extends IConfigMeta> implements IReaction {
+export abstract class AbstractReaction<ConfigMeta extends IConfigMeta, IReactionFactoryOptions = any> implements IReaction {
   id: string;
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];

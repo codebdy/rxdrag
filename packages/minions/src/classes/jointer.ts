@@ -1,4 +1,4 @@
-import { InputHandler, IJointer } from "@rxdrag/schema/src/reaction/meta";
+import { InputHandler, IJointer } from "@rxdrag/schema";
 
 export class Jointer implements IJointer {
   private outlets: (IJointer | InputHandler)[] = []

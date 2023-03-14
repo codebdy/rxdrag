@@ -1,5 +1,4 @@
-export const INIT_EVENT_NAME = "init"
-export const DESTORY_EVENT_NAME = "destory"
+
 
 export type LogicOptions = {
   canBindField?: boolean,
