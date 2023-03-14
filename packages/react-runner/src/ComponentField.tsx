@@ -1,6 +1,7 @@
 import React, { memo, useMemo } from "react"
 import { IFieldMeta } from "@rxdrag/schema"
-import { useFieldNode } from "@rxdrag/react-fieldy"
+import { parsePathValue } from "@rxdrag/fieldy"
+import { XField, useFieldNode } from "@rxdrag/react-fieldy"
 
 export const ComponentField = memo((
   props: {
@@ -13,7 +14,7 @@ export const ComponentField = memo((
 
   const view = useMemo(() => {
     if (fieldMeta?.name || fieldMeta?.type === "fragment") {
-      const initialValue = parseValue(parentField?.value, fieldMeta.name)
+      const initialValue = parsePathValue(parentField?.value, fieldMeta.name)
       return <XField fieldMeta={fieldMeta} initialValue={initialValue}>
         {children}
       </XField>

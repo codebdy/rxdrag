@@ -1,4 +1,4 @@
-export function parseValue(rootValue: any, path?: string) {
+export function parsePathValue(rootValue: any, path?: string) {
   if (!path) {
     return undefined
   }
