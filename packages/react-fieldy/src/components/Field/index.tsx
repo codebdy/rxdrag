@@ -1,5 +1,5 @@
+import { FieldType } from "@rxdrag/schema"
 import { memo } from "react"
-import { FieldType } from "runner/fieldy/interfaces"
 import { XField } from "../XField"
 import { useCreateFieldSchema } from "../XField/hooks/useCreateFieldSchema"
 

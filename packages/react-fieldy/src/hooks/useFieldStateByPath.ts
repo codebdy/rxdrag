@@ -1,4 +1,4 @@
-import { FieldState } from "runner/fieldy/interfaces";
+import { FieldState } from "@rxdrag/fieldy";
 import { useCallback, useEffect, useState } from "react";
 import { useFieldy } from "./useFieldy";
 import { useForm } from "./useForm";

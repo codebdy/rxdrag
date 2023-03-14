@@ -1,6 +1,7 @@
-import { FormContext } from "runner/fieldy/contexts"
+
+import { IForm } from "@rxdrag/fieldy"
 import { useContext } from "react"
-import { IForm } from "../interfaces"
+import { FormContext } from "../contexts"
 
 export function useForm() {
   const form = useContext<IForm | undefined>(FormContext)
