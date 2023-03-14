@@ -3,6 +3,7 @@
   "compilerOptions": {
     //"baseUrl": "./src",
     "emitDeclarationOnly": true,
+    "declaration": true,
     "outDir": "dist"
   },
   "include": ["./src/index.ts"]
