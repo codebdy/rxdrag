@@ -10,8 +10,11 @@ node_modules
 
 # production
 /build
-
 dist
+.turbo
+build/**
+
+.next/**
 
 # misc
 .DS_Store
