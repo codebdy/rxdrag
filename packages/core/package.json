@@ -46,6 +46,7 @@
   ],
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
+    "@rxdrag/shared": "1.0.0",
     "lodash": "^4.17.21",
     "redux": "^4.2.1"
   }

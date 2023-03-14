@@ -2,8 +2,9 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     //"baseUrl": "./src",
-    "emitDeclarationOnly": true,
-    "outDir": "dist"
+    "emitDeclarationOnly": false,
+    "outDir": "dist",
+    "declaration": true,
   },
   "include": ["./src/index.ts"]
 }
