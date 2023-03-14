@@ -1,8 +1,8 @@
 
+import { FormValue, IForm } from "@rxdrag/fieldy"
 import React, { useEffect, useState } from "react"
 import { FieldContext, FormContext } from "../contexts"
 import { useFieldy } from "../hooks"
-import { FormValue, IForm } from "../interfaces"
 
 export const VirtualForm = (props: {
   initialValue?: any,

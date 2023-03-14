@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useFieldPath, useForm } from "runner/fieldy/hooks";
-import { IField, IFieldMeta } from "runner/fieldy/interfaces";
+import { IField } from "@rxdrag/fieldy";
 import { useFieldSchemas } from "./useFieldSchemas";
+import { IFieldMeta } from "@rxdrag/schema";
+import { useFieldPath, useForm } from "../../../hooks";
 
 export function useRegisterField(fieldMeta: IFieldMeta, initialValue?: any) {
   const [field, setField] = useState<IField>()

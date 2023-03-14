@@ -1,6 +1,7 @@
-import { FieldyEngineImpl } from "runner/fieldy/classes/FieldyEngineImpl"
-import { FieldyContext } from "runner/fieldy/contexts"
+
+import { FieldyEngineImpl } from "@rxdrag/fieldy"
 import { useMemo } from "react"
+import { FieldyContext } from "../contexts"
 
 export const Fieldy = (props: {
   children: React.ReactNode
@@ -11,6 +12,6 @@ export const Fieldy = (props: {
   }, [])
 
   return fieldy && <FieldyContext.Provider value={fieldy}>
-    { children}
+    {children}
   </FieldyContext.Provider>
 }

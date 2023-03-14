@@ -1,6 +1,6 @@
-import { FieldContext } from "runner/fieldy/contexts"
-import { IFieldMeta } from "runner/fieldy/interfaces"
+import { IFieldMeta } from "@rxdrag/schema"
 import React, { memo } from "react"
+import { FieldContext } from "../../contexts"
 import { useRegisterField } from "./hooks/useRegisterField"
 
 export const XField = memo((props: {
