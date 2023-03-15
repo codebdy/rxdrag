@@ -4,7 +4,7 @@
     "baseUrl": "."
   },
   "paths": {
-    "@rxdrag/react-shared": ["packages/react-shared/src"]
+
   },
   "exclude": [
     "**/node_modules/**",

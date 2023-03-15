@@ -3,9 +3,9 @@ import { useCallback } from "react";
 import { useComponentManager } from "./useComponentManager";
 import { useDesignComponentsParams } from "./useDesignComponentsParams";
 import { useLocalesManager } from "./useLocalesManager";
-import { usePreviewComponents } from "./usePreviewComponents";
 import { useResourceManager } from "./useResourceManager";
 import { isStr } from "@rxdrag/shared"
+import { usePreviewComponents } from "@rxdrag/react-shared";
 
 export function useRegisterComponentMaterial() {
   const resourceManager = useResourceManager()

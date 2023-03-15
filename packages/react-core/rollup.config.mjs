@@ -24,7 +24,8 @@ export default {
     "@monaco-editor/react",
     "@rxdrag/core",
     "react-dom/client",
-    "styled-components"
+    "styled-components",
+    "@rxdrag/react-shared"
   ],
   plugins: [
     less(),

@@ -19,9 +19,9 @@ import {
 import { memo, useEffect, useRef, useState } from "react"
 import { DesignerEngineContext } from "./contexts";
 import { DesignRoot } from "./DesignRoot";
-import { PreviewRoot } from "@rxdrag/react-runner";
 import { IComponentMaterial } from "./interfaces";
 import { useComponentsFromMaterials } from "./hooks/useComponentsFromMaterials";
+import { PreviewRoot } from "@rxdrag/react-shared";
 
 export interface DesignerProps {
   components?: IComponentMaterial[]
