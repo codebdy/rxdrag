@@ -1,4 +1,4 @@
-import { makeRxId } from "../utils/make-rxId";
+import { makeRxId } from "@rxdrag/shared";
 import { HistoryableActionType, IDocument, IDocumentAction, ISnapshot, ITreeNode, NodeChunk, NodeRelativePosition, NodesById } from "../interfaces/document";
 import { AddNodesPayload, BackupPayload, ChangeMetaPayloads, DeleteNodesPayload, DocumentActionPayload, GotoPayload, MoveNodesPayload, RecoverSnapshotPayload, RemoveSlotPayload } from "../interfaces/payloads";
 import { ID, IDesignerEngine } from "../interfaces";

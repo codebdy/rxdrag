@@ -1,6 +1,6 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { ID, IDesignerEngine, ITreeNode, NodeChunk, NodesById, RXID_ATTR_NAME } from "../interfaces";
-import { makeRxId } from "../utils/make-rxId";
+import { makeRxId } from "@rxdrag/shared"
 import { isArr } from "@rxdrag/shared";
 
 export function parseNodeSchema(engine: IDesignerEngine, documentId: ID, schema: INodeSchema, nodesById: NodesById, isSlot: boolean, parentId?: string): ITreeNode {

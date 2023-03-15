@@ -1,5 +1,5 @@
-import { INodeSchema } from "core";
-import { makeRxId } from "core/utils/make-rxId";
+import { INodeSchema } from "@rxdrag/schema";
+import { makeRxId } from "@rxdrag/shared";
 import { IComponentRenderSchema } from "./ComponentView";
 
 export function transToRenderSchema(node:INodeSchema) :IComponentRenderSchema{

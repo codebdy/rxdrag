@@ -1,6 +1,6 @@
 import { ID, NodeType, RXID_ATTR_NAME, RX_NODE_TYPE_ATTR_NAME } from "../interfaces";
 import { ILocalesManager } from "../interfaces/loacales";
-import { makeRxId } from "../utils/make-rxId";
+import { makeRxId } from "@rxdrag/shared";
 import { IResource, IResourceManager, IResourceNode } from "../interfaces/resource";
 
 export class ResourceManager implements IResourceManager {
