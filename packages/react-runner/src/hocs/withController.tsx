@@ -1,13 +1,11 @@
+import { IController } from "@rxdrag/minions"
+import { useMaterials } from "@rxdrag/react-minions"
+import { ReactComponent } from "@rxdrag/react-shared"
+import { IControllerMeta } from "@rxdrag/schema"
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useFieldPath, useForm } from "runner/fieldy"
-import { Controllers, IComponentController } from "runner/minions"
-import { ComponentController } from "runner/minions/controllers/ComponentController"
-import { useMaterials } from "runner/minions/hooks/useMaterials"
-import { IControllerMeta } from "runner/minions/interfaces/metas"
 import { ControllersContext } from "../contexts"
 import { useControllers } from "../hooks/useControllers"
-import { ReactComponent } from "../types"
 
 export function withController(WrappedComponent: ReactComponent, meta?: IControllerMeta): ReactComponent {
 
@@ -17,7 +15,7 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
 
   return memo((props: any) => {
     const [changedProps, setChangeProps] = useState<any>()
-    const [controller, setController] = useState<IComponentController>()
+    const [controller, setController] = useState<IController>()
     const controllers = useControllers()
     const materials = useMaterials()
     const navigate = useNavigate()
