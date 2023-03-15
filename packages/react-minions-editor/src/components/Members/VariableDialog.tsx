@@ -1,9 +1,8 @@
+import React from "react"
+import { IVariableDefineMeta } from "@rxdrag/schema"
 import { Form, Input, Modal } from "antd"
 import { memo, useCallback, useEffect } from "react"
-import { ValueInput } from "react-shells/ant5/SettingsForm/components/ValueInput"
-import { IVariableDefineMeta } from "runner/minions"
 import { useTrans } from "../../hooks/useTrans"
-
 
 export const VariableDialog = memo((
   props: {

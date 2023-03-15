@@ -1,9 +1,10 @@
 import { DeleteOutlined, EditOutlined, MoreOutlined } from "@ant-design/icons";
 import { Button, Dropdown, MenuProps } from "antd";
-import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useMemo, useState } from "react";
 import styled from "styled-components";
 import { NameDialog } from "./NameDialog";
+import { useToolsTranslate } from "@rxdrag/react-core";
+import React from "react";
 
 const ListItem = styled.div`
   display: flex;

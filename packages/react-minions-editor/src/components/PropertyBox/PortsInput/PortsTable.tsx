@@ -8,7 +8,7 @@ import { EditableCell } from './EditableCell';
 import { EditableRow } from './EditableRow';
 import { useTrans } from '../../../hooks/useTrans';
 import { IPortMeta } from 'runner/minions/interfaces/metas';
-import { createUuid } from '../../../utils';
+import { createUuid } from '../../../../../shared/src/create-uuid';
 
 const Container = styled.div`
   width: 400px;

@@ -5,7 +5,7 @@ import { useDnd } from "../../hooks/useDnd";
 import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
 import { ToolItem } from "./ToolItem";
 import { IReactionMeta } from "runner/minions/interfaces/metas";
-import { createUuid } from "../../utils";
+import { createUuid } from "../../../../shared/src/create-uuid";
 import { IReactionMaterial } from "runner/minions/interfaces/material";
 import { useTrans } from "../../hooks/useTrans";
 import { ComponentList } from "./ComponentList";

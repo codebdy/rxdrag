@@ -1,3 +1,4 @@
+import React from "react"
 import { Form, Input, Modal } from "antd"
 import { memo, useCallback } from "react"
 import { useTrans } from "../../hooks/useTrans"

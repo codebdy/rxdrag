@@ -1,10 +1,11 @@
+import React from "react";
 import { DeleteOutlined, EditOutlined, MoreOutlined } from "@ant-design/icons";
 import { Button, Dropdown, MenuProps } from "antd";
-import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
+import { useToolsTranslate } from "@rxdrag/react-core";
 import { memo, useCallback, useMemo, useState } from "react";
-import { IVariableDefineMeta } from "runner/minions";
 import styled from "styled-components";
 import { VariableDialog } from "./VariableDialog";
+import { IVariableDefineMeta } from "@rxdrag/schema";
 
 const ListItem = styled.div`
   display: flex;
