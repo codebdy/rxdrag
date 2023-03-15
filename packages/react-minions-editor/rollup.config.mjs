@@ -18,6 +18,10 @@ export default {
   external: [
     "@rxdrag/shared", 
     "react",
+    "styled-components",
+    "@ant-design/icons",
+    "@rxdrag/react-core",
+    "@rxdrag/react-shared",
   ],
   plugins: [
     less(),

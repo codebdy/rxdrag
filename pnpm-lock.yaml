@@ -365,6 +365,7 @@ importers:
       '@ant-design/icons': ^4.8.0
       '@antv/x6': ^2.1.5
       '@rxdrag/react-core': ^1.0.0
+      '@rxdrag/react-props-inputs': ^1.0.0
       '@rxdrag/react-shared': ^1.0.0
       '@rxdrag/schema': ^1.0.0
       '@types/jest': ^26.0.7
@@ -390,6 +391,7 @@ importers:
       '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
       '@antv/x6': registry.npmmirror.com/@antv/x6/2.5.5
       '@rxdrag/react-core': link:../react-core
+      '@rxdrag/react-props-inputs': link:../react-props-inputs
       '@rxdrag/react-shared': link:../react-shared
       '@rxdrag/schema': link:../schema
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
@@ -429,10 +431,8 @@ importers:
       babel-runtime: ^6.26.0
       jest: ^26.1.0
       lint-staged: ^13.2.0
-      lodash: ^4.17.21
       react: ^18.2.0
       react-dom: ^18.2.0
-      redux: ^4.2.1
       rollup: ^3.19.1
       rollup-plugin-less: ^1.1.3
       rollup-plugin-peer-deps-external: ^2.2.4
@@ -450,10 +450,8 @@ importers:
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
       '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
       antd: registry.npmmirror.com/antd/5.1.2_biqbaboplfbrettd7655fr4n2y
-      lodash: registry.npmmirror.com/lodash/4.17.21
       react: registry.npmmirror.com/react/18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
-      redux: registry.npmmirror.com/redux/4.2.1
       styled-components: registry.npmmirror.com/styled-components/5.3.9_biqbaboplfbrettd7655fr4n2y
     devDependencies:
       '@types/jest': registry.npmmirror.com/@types/jest/26.0.24
