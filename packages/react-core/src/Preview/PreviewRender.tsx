@@ -1,3 +1,4 @@
+import React from "react"
 import { useToken } from "antd/es/theme/internal"
 import { useDocumentViewTypeState } from "core-react/hooks/useDocumentViewTypeState"
 import { IComponents } from "core-react/interfaces"

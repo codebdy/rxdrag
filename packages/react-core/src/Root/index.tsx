@@ -1,5 +1,6 @@
+import React from "react"
 import { forwardRef } from "react"
-import "./style.less"
+import "./style.css"
 
 export interface RootProps {
 }

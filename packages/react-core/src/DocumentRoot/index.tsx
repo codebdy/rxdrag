@@ -1,3 +1,4 @@
+import React from "react"
 import { DocumentContext } from "../contexts"
 import { IDocument } from "@rxdrag/core"
 import { memo } from "react"

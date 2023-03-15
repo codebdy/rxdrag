@@ -1,3 +1,4 @@
+import React from "react"
 import { useCallback, useMemo, useState } from "react"
 import { DesignComponentsContext, IDesignerComponentsParams } from "./contexts"
 import { IComponents } from "./interfaces"

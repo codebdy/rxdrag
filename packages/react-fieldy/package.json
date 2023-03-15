@@ -1,7 +1,7 @@
 {
   "name": "@rxdrag/react-fieldy",
   "version": "1.0.0",
-  "description": "Core",
+  "description": "react-fieldy",
   "author": "Water.li",
   "license": "MIT",
   "main": "dist/index.js",

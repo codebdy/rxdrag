@@ -1,3 +1,4 @@
+import React from "react"
 import { memo } from "react"
 import Editor from '@monaco-editor/react';
 import { useDocumentViewTypeState, useThemeMode, useDocument } from "../hooks";

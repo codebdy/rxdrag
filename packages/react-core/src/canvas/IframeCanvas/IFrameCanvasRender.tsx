@@ -1,3 +1,4 @@
+import React from "react"
 import { IComponents } from "core-react/interfaces";
 import { IDesignerEngine, IDocument } from "core/interfaces";
 import { memo } from "react"

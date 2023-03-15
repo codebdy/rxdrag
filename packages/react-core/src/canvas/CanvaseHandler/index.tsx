@@ -1,3 +1,4 @@
+import React from "react"
 import { useThemeMode, useDesignerEngine } from "../../hooks"
 import { memo, useCallback, useEffect, useState } from "react"
 import { AUX_BACKGROUND_COLOR, MouseMoveEvent, MouseUpEvent } from "@rxdrag/core"

@@ -1,9 +1,10 @@
+import React from "react"
 import { IDocument } from "@rxdrag/core"
 import { memo } from "react"
 import { DocumentContext } from "../contexts"
 import { ComponentDesignerView } from "./ComponentDesignerView"
 
-import "./style.less"
+import "./style.css"
 
 export type ComponentTreeWidgetProps = {
   doc: IDocument

@@ -1,3 +1,4 @@
+import React from "react"
 import { useCanvasWidthLimitsState,useCanvasWidthState } from "../../hooks"
 import { memo, useCallback, useEffect, useRef, useState } from "react"
 import { CanvaseHandler, PositionType } from "../CanvaseHandler"
