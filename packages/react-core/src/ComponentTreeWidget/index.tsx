@@ -4,7 +4,7 @@ import { memo } from "react"
 import { DocumentContext } from "../contexts"
 import { ComponentDesignerView } from "./ComponentDesignerView"
 
-import "./style.css"
+import "./style.less"
 
 export type ComponentTreeWidgetProps = {
   doc: IDocument

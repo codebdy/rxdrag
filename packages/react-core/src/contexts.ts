@@ -1,6 +1,6 @@
 import { IDesignerEngine, IDocument, ITreeNode } from "@rxdrag/core";
 import { createContext } from "react";
-import { IComponents } from "./interfaces";
+import { IComponents } from "@rxdrag/react-shared";
 
 export interface IComponentsParams {
   components: IComponents,

@@ -5,7 +5,7 @@ import { memo, useCallback, useRef } from "react"
 import ReactDOM from 'react-dom/client';
 import { CanvasRender } from "../CanvasRender";
 import { CanvasResizeDriver, CanvasScrollDriver, DragDropDriver, MouseClickDriver } from "@rxdrag/core";
-import "./style.css"
+import "./style.less"
 import { useDocumentViewTypeState } from "../../hooks/useDocumentViewTypeState";
 import { CanvasShell } from "../CanvasShell";
 import { ShadowCanvasView } from "./ShadowCanvasView";

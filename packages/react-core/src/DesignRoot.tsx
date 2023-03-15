@@ -1,7 +1,7 @@
 import React from "react"
 import { useCallback, useMemo, useState } from "react"
 import { DesignComponentsContext, IDesignerComponentsParams } from "./contexts"
-import { IComponents } from "./interfaces"
+import { IComponents } from "@rxdrag/react-shared"
 
 export const DesignRoot = (props: {
   components?: IComponents,

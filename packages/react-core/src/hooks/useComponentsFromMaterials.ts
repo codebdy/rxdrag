@@ -1,5 +1,6 @@
-import { IComponentMaterial, IComponents } from "../interfaces";
+import { IComponentMaterial } from "../interfaces";
 import { useMemo } from "react";
+import {IComponents} from "@rxdrag/react-shared"
 
 export function useComponentsFromMaterials(materials?: IComponentMaterial[]){
   const components = useMemo(()=>{

@@ -1,12 +1,7 @@
 import { IComponentConfig } from "@rxdrag/core";
-import { ReactComponent } from "@rxdrag/react-shared";
+import { ReactComponent} from "@rxdrag/react-shared";
 
 //export type ReactComponent = React.FC<any> | React.ComponentClass<any>
-
-export interface IComponents {
-  [key: string]: ReactComponent | undefined
-}
-
 
 export interface IComponentMaterial extends IComponentConfig<ReactComponent> {
   //packageName?: string //npm包名 生成代码用
