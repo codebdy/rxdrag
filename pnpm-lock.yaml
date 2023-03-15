@@ -415,6 +415,7 @@ importers:
       rollup-plugin-typescript2: ^0.25.3
       styled-components: ^5.3.9
       ts-jest: ^26.1.3
+      tslib: ^2.5.0
       typescript: ^3.9.10
     dependencies:
       '@monaco-editor/react': registry.npmmirror.com/@monaco-editor/react/4.4.6_biqbaboplfbrettd7655fr4n2y
@@ -444,6 +445,7 @@ importers:
       rollup-plugin-peer-deps-external: registry.npmmirror.com/rollup-plugin-peer-deps-external/2.2.4_rollup@3.19.1
       rollup-plugin-typescript2: registry.npmmirror.com/rollup-plugin-typescript2/0.25.3_j7ozytxwzpzekjajytqp5hcyta
       ts-jest: registry.npmmirror.com/ts-jest/26.5.6_eee4nuuc45mdmx5rmbx7hzjjtq
+      tslib: registry.npmmirror.com/tslib/2.5.0
       typescript: registry.npmmirror.com/typescript/3.9.10
 
   packages/react-shared:
