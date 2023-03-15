@@ -1,4 +1,5 @@
-import { INodeSchema } from "@rxdrag/core"
+import { INodeSchema } from "@rxdrag/schema"
+import React from "react"
 import { memo, useEffect, useState } from "react"
 import { ComponentView, IComponentRenderSchema } from "./ComponentView"
 import { transToRenderSchema } from "./transform"

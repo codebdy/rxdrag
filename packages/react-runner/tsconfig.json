@@ -3,8 +3,9 @@
   "compilerOptions": {
     //"baseUrl": "./src",
     "emitDeclarationOnly": false,
+    "declaration": true,
     "outDir": "dist",
-    "jsx": "react-jsx"
+    "jsx": "react"
   },
   "include": ["./src/index.ts"]
 }

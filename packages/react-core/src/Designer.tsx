@@ -19,7 +19,7 @@ import {
 import { memo, useEffect, useRef, useState } from "react"
 import { DesignerEngineContext } from "./contexts";
 import { DesignRoot } from "./DesignRoot";
-import { PreviewRoot } from "../../react-runner/src/RunRoot";
+import { PreviewRoot } from "@rxdrag/react-runner";
 import { IComponentMaterial } from "./interfaces";
 import { useComponentsFromMaterials } from "./hooks/useComponentsFromMaterials";
 

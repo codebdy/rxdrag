@@ -1,8 +1,9 @@
 import React from "react"
 import { useCallback, useMemo, useState } from "react"
-import { IComponentsParams, PreviewComponentsContext } from "../../react-core/src/contexts"
 import { IReactionMaterial } from "@rxdrag/schema"
-import { IComponents } from "@rxdrag/react-shared"
+import { PreviewComponentsContext } from "./contexts"
+import { IComponentsParams } from "./interfaces"
+import { IComponents } from "./types"
 
 export const PreviewRoot = (props: {
   components?: IComponents,

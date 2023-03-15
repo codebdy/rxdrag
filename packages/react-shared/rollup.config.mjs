@@ -16,15 +16,8 @@ export default {
     },
   ],
   external: [
-    "@reduxjs/toolkit", 
-    "redux", 
     "@rxdrag/shared", 
-    "lodash", 
     "react",
-    "@monaco-editor/react",
-    "@rxdrag/core",
-    "react-dom/client",
-    "styled-components"
   ],
   plugins: [
     less(),
