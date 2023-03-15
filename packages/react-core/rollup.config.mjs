@@ -28,7 +28,7 @@ export default {
     "@rxdrag/react-shared"
   ],
   plugins: [
-    less(),
+    less({insert:true}),
     // Exclude peer dependencies from the bundle
     external(),
     // Compile TypeScript files
