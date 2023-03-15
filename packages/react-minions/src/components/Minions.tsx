@@ -1,4 +1,4 @@
-import { memo } from "react"
+import React, { memo } from "react"
 import { MaterialsContext } from "../context"
 import {IReactionMaterial} from "@rxdrag/schema"
 
