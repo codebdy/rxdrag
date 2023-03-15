@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Controllers } from "runner/minions";
+import { Controllers } from "@rxdrag/minions";
 import { EmpertyControllers, ControllersContext } from "../contexts";
 
 export function useControllers() {
