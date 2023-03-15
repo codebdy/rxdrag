@@ -1,15 +1,16 @@
+import React from "react";
 import { PlusOutlined, ThunderboltOutlined } from "@ant-design/icons";
 import { Button, Typography } from "antd";
-import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { memo, useCallback, useState } from "react"
-import { IControllerMeta, IReactionDefineMeta, IVariableDefineMeta } from "runner/minions/interfaces/metas";
 import styled from "styled-components";
-import { methodIcon, variableIcon } from "../../../../../../icons/reactions";
 import { createUuid } from "../../utils";
 import { ListItemReaction } from "./ListItemReaction";
 import { ListItemVariable } from "./ListItemVariable";
 import { NameDialog } from "./NameDialog";
 import { VariableDialog } from "./VariableDialog";
+import { IControllerMeta, IReactionDefineMeta, IVariableDefineMeta } from "@rxdrag/schema";
+import { useToolsTranslate } from "@rxdrag/react-core";
+import { methodIcon, variableIcon } from "@rxdrag/react-shared"
 
 const { Text } = Typography;
 
@@ -27,7 +28,7 @@ const List = styled.div`
   padding: 0 8px;
 `
 
-const ListItem = styled((props) => <Button type="text" {...props} />)`
+const ListItem = styled((props: any) => <Button type="text" {...props} />)`
   display: flex;
   align-items: center;
   margin: 2px 0;
@@ -88,7 +89,7 @@ export const Members = memo((
       const newVariable: IVariableDefineMeta = {
         ...meta,
         id: createUuid(),
-        }
+      }
 
       onChange?.({ ...value, variables: [...value?.variables || [], newVariable] })
     }

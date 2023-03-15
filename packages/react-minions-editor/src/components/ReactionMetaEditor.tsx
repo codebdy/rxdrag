@@ -1,5 +1,6 @@
+import React from "react";
+import { ILogicMetas } from "@rxdrag/schema";
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
-import { ILogicMetas } from "runner/minions/interfaces/metas";
 import styled from "styled-components";
 import { ActionType } from "../actions";
 import { EditorStore } from "../classes/EditorStore";
