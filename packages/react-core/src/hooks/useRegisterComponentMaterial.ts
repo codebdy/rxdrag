@@ -46,6 +46,7 @@ export function useRegisterComponentMaterial() {
       const resources = resourceManager?.registerResources(meterial.resource)
       return (resources?.[0])
     }
+    return undefined
   }, [componentManager, localesManager, registerDesignComponents, registerPreviewComponents, registerTools, resourceManager])
 
   return register

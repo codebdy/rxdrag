@@ -15,7 +15,7 @@ export function forwardRefByChildren(WrappedComponent: ReactComponent, callback:
     const { children, ...rest } = props
     const handleRefChange = useCallback((element: HTMLElement | null) => {
       if (isFunction(ref)) {
-        ref(element?.parentElement)
+        ref(element?.parentElement||null)
       }
     }, [ref])
 

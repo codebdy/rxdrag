@@ -21,6 +21,7 @@ export const useLanguage = () => {
 
       return unsub
     }
+    return undefined
   }, [engine])
   return lang;
 }

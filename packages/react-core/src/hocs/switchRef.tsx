@@ -6,10 +6,10 @@ import { ReactComponent } from "@rxdrag/react-shared"
 
 export function switchRef(WrappedComponent: ReactComponent, callback: Callback = defaultCallback): ReactComponent {
 
-  return memo(forwardRef<HTMLInputElement>((props: any, ref) => {
+  return memo(forwardRef<HTMLElement>((props: any, ref) => {
     const handleRefChange = useCallback((element: HTMLElement | null) => {
       if (isFunction(ref)) {
-        ref(callback(element))
+        ref(callback(element) || null)
       }
     }, [ref])
 

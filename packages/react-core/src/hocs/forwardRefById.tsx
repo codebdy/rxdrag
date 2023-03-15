@@ -7,12 +7,12 @@ import { ReactComponent } from "@rxdrag/react-shared"
 
 export function forwardRefById(WrappedComponent: ReactComponent, callback: Callback = defaultCallback): ReactComponent {
 
-  return memo(forwardRef<HTMLInputElement>((props: any, ref) => {
+  return memo(forwardRef<HTMLElement>((props: any, ref) => {
     const node = useNode()
     useLayoutEffect(() => {
       const element = node?.id ? document.getElementById(node?.id) : null
       if (isFunction(ref)) {
-        ref(callback(element))
+        ref(callback(element)||null)
       }
 
     }, [node?.id, ref])
