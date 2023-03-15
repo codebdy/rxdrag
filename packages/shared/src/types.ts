@@ -1,3 +1,5 @@
+export type ID = string
+
 const isType =
   <T>(type: string | string[]) =>
   (obj: unknown): obj is T =>
