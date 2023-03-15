@@ -26,7 +26,9 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.7",
+    "@types/lodash": "^4.14.191",
     "@types/resize-observer-browser": "^0.1.7",
+    "@types/styled-components": "^5.1.26",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
     "jest": "^26.1.0",
@@ -63,6 +65,7 @@
     "@rxdrag/core": "^1.0.0",
     "@rxdrag/react-shared": "^1.0.0",
     "@rxdrag/shared": "^1.0.0",
+    "@rxdrag/schema": "^1.0.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "lodash": "^4.17.21",

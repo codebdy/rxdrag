@@ -221,11 +221,14 @@ importers:
       '@reduxjs/toolkit': ^1.9.3
       '@rxdrag/core': ^1.0.0
       '@rxdrag/react-shared': ^1.0.0
+      '@rxdrag/schema': ^1.0.0
       '@rxdrag/shared': ^1.0.0
       '@types/jest': ^26.0.7
+      '@types/lodash': ^4.14.191
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
       '@types/resize-observer-browser': ^0.1.7
+      '@types/styled-components': ^5.1.26
       babel-core: ^6.26.3
       babel-runtime: ^6.26.0
       jest: ^26.1.0
@@ -247,6 +250,7 @@ importers:
       '@reduxjs/toolkit': registry.npmmirror.com/@reduxjs/toolkit/1.9.3_react@18.2.0
       '@rxdrag/core': link:../core
       '@rxdrag/react-shared': link:../react-shared
+      '@rxdrag/schema': link:../schema
       '@rxdrag/shared': link:../shared
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
       '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
@@ -257,7 +261,9 @@ importers:
       styled-components: registry.npmmirror.com/styled-components/5.3.9_biqbaboplfbrettd7655fr4n2y
     devDependencies:
       '@types/jest': registry.npmmirror.com/@types/jest/26.0.24
+      '@types/lodash': registry.npmmirror.com/@types/lodash/4.14.191
       '@types/resize-observer-browser': registry.npmmirror.com/@types/resize-observer-browser/0.1.7
+      '@types/styled-components': registry.npmmirror.com/@types/styled-components/5.1.26
       babel-core: registry.npmmirror.com/babel-core/6.26.3
       babel-runtime: registry.npmmirror.com/babel-runtime/6.26.0
       jest: registry.npmmirror.com/jest/26.6.3
