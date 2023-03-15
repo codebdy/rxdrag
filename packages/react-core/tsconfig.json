@@ -4,7 +4,8 @@
     //"baseUrl": "./src",
     "emitDeclarationOnly": true,
     "declaration": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "jsx": "react-jsx"
   },
   "include": ["./src/index.ts"]
 }

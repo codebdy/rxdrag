@@ -1,3 +1,4 @@
+import React from "react"
 import { FieldType } from "@rxdrag/schema"
 import { memo } from "react"
 import { XField } from "../XField"
