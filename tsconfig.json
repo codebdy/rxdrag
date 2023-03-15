@@ -3,5 +3,13 @@
   "compilerOptions": {
     "baseUrl": "."
   },
-  "exclude": ["**/node_modules/**", "**/lib/**", "**/dist/**", "rollup.config.js"]
+  "paths": {
+    "@rxdrag/react-shared": ["packages/react-shared/src"]
+  },
+  "exclude": [
+    "**/node_modules/**",
+    "**/lib/**",
+    "**/dist/**",
+    "rollup.config.js"
+  ]
 }

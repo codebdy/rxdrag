@@ -3,6 +3,7 @@
   "compilerOptions": {
     //"baseUrl": "./src",
     "emitDeclarationOnly": false,
+    "declaration": true,
     "outDir": "dist",
     "jsx": "react"
   },
