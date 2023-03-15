@@ -13,6 +13,7 @@ node_modules
 dist
 .turbo
 build/**
+rollup.build.css
 
 .next/**
 

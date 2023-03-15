@@ -370,7 +370,6 @@ importers:
     specifiers:
       '@monaco-editor/react': ^4.4.6
       '@reduxjs/toolkit': ^1.9.3
-      '@rxdrag/react-fieldy': 1.0.0
       '@rxdrag/react-minions': 1.0.0
       '@rxdrag/react-shared': 1.0.0
       '@rxdrag/schema': 1.0.0
@@ -398,7 +397,6 @@ importers:
     dependencies:
       '@monaco-editor/react': registry.npmmirror.com/@monaco-editor/react/4.4.6_biqbaboplfbrettd7655fr4n2y
       '@reduxjs/toolkit': registry.npmmirror.com/@reduxjs/toolkit/1.9.3_react@18.2.0
-      '@rxdrag/react-fieldy': link:../react-fieldy
       '@rxdrag/react-minions': link:../react-minions
       '@rxdrag/react-shared': link:../react-shared
       '@rxdrag/schema': link:../schema
