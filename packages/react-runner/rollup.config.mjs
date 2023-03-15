@@ -23,6 +23,7 @@ export default {
     "react",
     "@monaco-editor/react",
     "@rxdrag/core",
+    "@rxdrag/react-shared",
     "react-dom/client",
     "styled-components"
   ],

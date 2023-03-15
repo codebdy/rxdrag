@@ -1,4 +1,4 @@
-import { usePreviewComponents } from "@rxdrag/react-shared";
+import { usePreviewComponents } from "./usePreviewComponents";
 
 export function usePreviewComponent(name?: string) {
   const {components} = usePreviewComponents();

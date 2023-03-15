@@ -6,6 +6,7 @@ import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ControllersContext } from "../contexts"
 import { useControllers } from "../hooks/useControllers"
+import { useForm } from "@rxdrag/react-fieldy"
 
 export function withController(WrappedComponent: ReactComponent, meta?: IControllerMeta): ReactComponent {
 
@@ -27,10 +28,10 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
         return ({ ...changedProps, [name]: value })
       })
     }, [])
-    
+
     useEffect(() => {
       if (meta && controllers && materials) {
-        const ctrl = new ComponentController(meta, controllers, {materials, navigate, form, fieldPath})
+        const ctrl = new ComponentController(meta, controllers, { materials, navigate, form, fieldPath })
         const unlistener = ctrl?.subscribeToPropsChange(handlePropsChange)
         ctrl.initEvent?.()
         setController(ctrl)
