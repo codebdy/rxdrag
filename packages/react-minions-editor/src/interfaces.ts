@@ -1,4 +1,4 @@
-import { IConfigMeta, ILogicMetas, IReactionMeta } from "runner/minions/interfaces/metas";
+import { IReactionMeta, IConfigMeta, ILogicMetas } from "@rxdrag/schema";
 import { ISnapshot } from "./contexts";
 
 export interface IEventMeta {
