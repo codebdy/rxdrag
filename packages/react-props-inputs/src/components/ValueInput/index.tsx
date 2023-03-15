@@ -1,6 +1,7 @@
+import React from "react";
 import { Button, Input, InputNumber, Switch } from "antd";
-import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
-import { isBool, isNum, isStr } from "core/utils/types";
+import { useToolsTranslate } from "@rxdrag/react-core";
+import { isBool, isNum, isStr } from "@rxdrag/shared";
 import { memo, useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { JSONInput } from "../JSONInput";

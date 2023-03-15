@@ -1,9 +1,11 @@
 import { EditOutlined } from "@ant-design/icons"
 import Editor from "@monaco-editor/react"
-import { Button, Drawer, Space, Typography } from "antd"
-import { useThemeMode } from "core-react/hooks/useThemeMode"
-import { useToolsTranslate } from "core-react/hooks/useToolsTranslate"
+import { Button, Drawer as AntdDrawer, Space, Typography } from "antd"
+import { useThemeMode, useToolsTranslate } from "@rxdrag/react-core"
 import { memo, useCallback, useEffect, useState } from "react"
+import React from "react"
+
+const Drawer = AntdDrawer as any
 
 export const JSONInput = memo((
   props: {

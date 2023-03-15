@@ -1,7 +1,7 @@
 {
-  "name": "@rxdrag/react-runner",
+  "name": "@rxdrag/react-props-inputs",
   "version": "1.0.0",
-  "description": "react-runner",
+  "description": "react-props-inputs",
   "author": "Water.li",
   "license": "MIT",
   "main": "dist/index.js",
@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.7",
-    "@types/resize-observer-browser": "^0.1.7",
+    "@types/styled-components": "^5.1.26",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
     "jest": "^26.1.0",
@@ -58,22 +58,16 @@
     ]
   },
   "dependencies": {
+    "@ant-design/icons": "^4.8.0",
     "@monaco-editor/react": "^4.4.6",
-    "@reduxjs/toolkit": "^1.9.3",
-    "@rxdrag/fieldy": "^1.0.0",
-    "@rxdrag/react-fieldy": "^1.0.0",
-    "@rxdrag/react-minions": "^1.0.0",
     "@rxdrag/react-shared": "^1.0.0",
-    "@rxdrag/minions": "^1.0.0",
-    "@rxdrag/schema": "^1.0.0",
     "@rxdrag/shared": "^1.0.0",
+    "@rxdrag/react-core": "^1.0.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "lodash": "^4.17.21",
+    "antd": "5.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.9.0",
-    "redux": "^4.2.1",
     "styled-components": "^5.3.9"
   }
 }
