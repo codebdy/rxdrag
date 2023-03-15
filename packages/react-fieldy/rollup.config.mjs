@@ -22,7 +22,8 @@ export default {
     "lodash", 
     "react",
     "react-dom/client",
-    "@rxdrag/react-shared"
+    "@rxdrag/react-shared",
+    "@rxdrag/fieldy",
   ],
   plugins: [
     less({insert:true}),
