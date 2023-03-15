@@ -13,7 +13,6 @@ import { useDnd } from "../../hooks/useDnd";
 import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
 import { useGraph } from "../../hooks/useGraph";
 import { useTrans } from "../../hooks/useTrans";
-import { createUuid } from "../../../../shared/src/create-uuid";
 
 const Container = styled.div`
   display: flex;

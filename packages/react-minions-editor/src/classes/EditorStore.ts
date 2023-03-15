@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { invariant } from "core/utils/util-invariant";
+import { invariant } from "@rxdrag/shared"
 import { Store } from "redux";
 import { Action } from "../actions";
 import { IState } from "../contexts";

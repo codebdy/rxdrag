@@ -1,5 +1,4 @@
 import { useCallback } from "react";
-import { MIN_ZOOM } from "../../../shared/src/create-uuid";
 import { useZoom } from "./useZoom";
 
 export function useZoomOut() {

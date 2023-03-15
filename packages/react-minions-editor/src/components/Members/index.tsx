@@ -3,7 +3,6 @@ import { PlusOutlined, ThunderboltOutlined } from "@ant-design/icons";
 import { Button, Typography } from "antd";
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components";
-import { createUuid } from "../../../../shared/src/create-uuid";
 import { ListItemReaction } from "./ListItemReaction";
 import { ListItemVariable } from "./ListItemVariable";
 import { NameDialog } from "./NameDialog";
@@ -11,6 +10,7 @@ import { VariableDialog } from "./VariableDialog";
 import { IControllerMeta, IReactionDefineMeta, IVariableDefineMeta } from "@rxdrag/schema";
 import { useToolsTranslate } from "@rxdrag/react-core";
 import { methodIcon, variableIcon } from "@rxdrag/react-shared"
+import {createUuid} from "@rxdrag/shared"
 
 const { Text } = Typography;
 
