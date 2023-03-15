@@ -4,12 +4,12 @@ import { IConfigMeta, IReactionMeta, IReactionNodeData, ReactionType } from "./m
 
 export type ReactionFactory<IReactionFactoryOptions = any> = (meta: IReactionMeta<IConfigMeta>, options: IReactionFactoryOptions) => IReaction
 
-export interface IReactionMaterial {
+export interface IReactionMaterial<ComponentNode = any> {
   //唯一名称
   name: string,
   label: string,
   reactionType: ReactionType,
-  icon?: React.ReactNode,
+  icon?: ComponentNode,
   color?: string,
   //reaction?: IReaction,
   schema?: INodeSchema,

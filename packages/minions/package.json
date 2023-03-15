@@ -43,5 +43,6 @@
     "rxdrag"
   ],
   "dependencies": {
+    "@rxdrag/schema": "1.0.0"
   }
 }

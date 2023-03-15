@@ -8,6 +8,7 @@
     "sourceMap": true,
     "jsx": "react",
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": false,
     "noImplicitThis": true,
@@ -15,5 +16,6 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true
   },
-  "include": ["./src/index.ts"]
+  "include": ["./src/index.ts"],
+  "exclude": ["node_modules", "lib", "dist"]
 }
