@@ -1,6 +1,6 @@
 import typescript from "rollup-plugin-typescript2";
 import external from "rollup-plugin-peer-deps-external";
-import less from 'rollup-plugin-less';
+import less from "rollup-plugin-less";
 
 import pkg from "./package.json" assert { type: "json" };
 
@@ -16,18 +16,20 @@ export default {
     },
   ],
   external: [
-    "@rxdrag/shared", 
+    "@rxdrag/shared",
     "react",
     "styled-components",
     "@ant-design/icons",
     "@rxdrag/react-core",
     "@rxdrag/react-shared",
+    "antd",
+    "uuid",
   ],
   plugins: [
     less(),
     // Exclude peer dependencies from the bundle
     external(),
     // Compile TypeScript files
-    typescript()
+    typescript(),
   ],
 };

@@ -9,7 +9,7 @@ node_modules
 /coverage
 
 # production
-/build
+build
 dist
 .turbo
 build/**
