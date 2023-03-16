@@ -1,3 +1,4 @@
+import { createUuid } from "@rxdrag/shared";
 import { Space, Typography } from "antd";
 import { memo, useCallback } from "react"
 import { reactionMaterial } from "react-shells/ant5/materials/controller/reaction";

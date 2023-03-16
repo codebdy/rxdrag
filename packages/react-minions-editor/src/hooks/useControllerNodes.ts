@@ -1,6 +1,4 @@
-import { ITreeNode } from "core"
-import { useCurrentNode } from "core-react/hooks/useCurrentNode"
-import { useGetNode } from "core-react/hooks/useGetNode"
+import { useCurrentNode, useGetNode } from "@rxdrag/react-core"
 import { useCallback, useMemo } from "react"
 
 export function useControllerNodes(){
