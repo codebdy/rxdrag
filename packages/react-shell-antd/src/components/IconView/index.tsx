@@ -4,19 +4,8 @@ import { getIcon } from "@rxdrag/react-shell-antd/shared/icons/data";
 
 import { IIcon } from "./model";
 import { SvgStringIcon } from "./SvgStringIcon";
-
-export const isEmpertyIcon = (icon?: IIcon) => {
-  return !icon || (!icon.iconKey && !icon.svgString)
-}
-
-export const EmpertyIcon = (
-  props: {
-    style?: CSSProperties
-  }
-) => {
-  const { style, ...other } = props;
-  return <BorderOutlined style={{ ...style, color: "transparent", }} {...other} />
-};
+import { EmpertyIcon, isEmpertyIcon } from "../../SettingsForm/components";
+import React from "react";
 
 
 export interface IIconViewProps {

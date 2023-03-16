@@ -42,6 +42,7 @@ import { ValueInput } from "./components/ValueInput";
 import { JSONInput } from "./components/JSONInput";
 import { CheckboxGroup } from "./components/CheckboxGroup";
 import { useDesignComponentsParams } from "core-react/hooks/useDesignComponentsParams";
+import React from "react";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
