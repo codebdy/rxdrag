@@ -612,6 +612,7 @@ importers:
       '@rxdrag/shared': ^1.0.0
       '@types/insert-css': ^2.0.1
       '@types/jest': ^26.0.7
+      '@types/node': ^16.18.3
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
       '@types/styled-components': ^5.1.26
@@ -651,6 +652,7 @@ importers:
     devDependencies:
       '@types/insert-css': registry.npmmirror.com/@types/insert-css/2.0.1
       '@types/jest': registry.npmmirror.com/@types/jest/26.0.24
+      '@types/node': registry.npmmirror.com/@types/node/16.18.16
       '@types/styled-components': registry.npmmirror.com/@types/styled-components/5.1.26
       babel-core: registry.npmmirror.com/babel-core/6.26.3
       babel-runtime: registry.npmmirror.com/babel-runtime/6.26.0

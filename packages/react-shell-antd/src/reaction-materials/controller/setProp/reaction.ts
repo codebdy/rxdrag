@@ -1,5 +1,6 @@
-import { IReactionMeta } from "runner/minions";
-import { IReactionFactoryOptions, ReactionFactory } from "runner/minions/interfaces/controller";
+
+import { IReactionFactoryOptions } from "@rxdrag/minions";
+import { IReactionMeta, ReactionFactory } from "@rxdrag/schema";
 import { AbstractControllerReaction, IControllerReactionConfig } from "../AbstractControllerReaction";
 
 export class SetPropReaction extends AbstractControllerReaction {

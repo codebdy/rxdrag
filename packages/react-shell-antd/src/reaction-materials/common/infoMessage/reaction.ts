@@ -1,6 +1,7 @@
+import { AbstractReaction, IReactionFactoryOptions } from "@rxdrag/minions";
+import { IConfigMeta, IReactionMeta, ReactionFactory } from "@rxdrag/schema";
 import { message } from "antd";
-import { AbstractReaction, IConfigMeta, IReactionMeta } from "runner/minions";
-import { IReactionFactoryOptions, ReactionFactory } from "runner/minions/interfaces/controller";
+
 
 export enum MessageType {
   Success = "success",

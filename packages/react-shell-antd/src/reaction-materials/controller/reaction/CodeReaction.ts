@@ -1,5 +1,4 @@
-import { IReaction, IJointer, IReactionDefineMeta, IConfigMeta, IReactionMeta } from "runner/minions";
-
+import { IReaction, IJointer, IReactionDefineMeta, IReactionMeta, IConfigMeta } from "@rxdrag/schema";
 
 export class CodeReaction implements IReaction {
   id: string;

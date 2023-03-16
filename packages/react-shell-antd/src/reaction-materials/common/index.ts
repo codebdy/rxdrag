@@ -1,8 +1,8 @@
-import { IReactionMaterial } from "runner/minions/interfaces/material";
 import { infoMessageMaterial } from "./infoMessage";
 import { jsCodeMaterial } from "./jsCode";
 import { routeToMaterial } from "./routeTo";
 import { mockDataMaterial } from "./mockData";
+import { IReactionMaterial } from "@rxdrag/schema";
 
 export const commonReactions: IReactionMaterial[] = [
   routeToMaterial,

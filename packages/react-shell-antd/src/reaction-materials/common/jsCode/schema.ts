@@ -1,4 +1,4 @@
-import { INodeSchema } from "core";
+import { INodeSchema } from "@rxdrag/schema";
 import { labelSchema } from "../../baseSchema";
 
 export const jsCodeSchema: INodeSchema = {

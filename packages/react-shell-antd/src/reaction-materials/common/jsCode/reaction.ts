@@ -1,5 +1,5 @@
-import { AbstractReaction, IConfigMeta, IReactionMeta } from "runner/minions";
-import { InputHandler, IReactionFactoryOptions, ReactionFactory } from "runner/minions/interfaces/controller";
+import { AbstractReaction, IReactionFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IReactionMeta, InputHandler, ReactionFactory } from "@rxdrag/schema"
 
 export interface IJsCodeConfig extends IConfigMeta {
   expression?: string

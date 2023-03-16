@@ -1,6 +1,7 @@
-import { infoIcon } from "react-shells/ant5/icons/reactions";
-import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
-import { IReactionMaterial, ReactionType } from "runner/minions";
+
+import { infoIcon } from "@rxdrag/react-shared";
+import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { createUuid } from "@rxdrag/shared";
 import { IInfoMessageConfig, InfoMessage } from "./reaction";
 import { infoMessageSchema } from "./schema";
 

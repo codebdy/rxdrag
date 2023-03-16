@@ -1,7 +1,6 @@
-import { routeIcon } from "react-shells/ant5/icons/reactions";
-import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
-import { IReactionMaterial } from "runner/minions";
-import { ReactionType } from "runner/minions/interfaces/metas";
+import { routeIcon } from "@rxdrag/react-shared";
+import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { createUuid } from "@rxdrag/shared";
 import { RouteTo } from "./reaction";
 import { routeToSchema } from "./schema";
 

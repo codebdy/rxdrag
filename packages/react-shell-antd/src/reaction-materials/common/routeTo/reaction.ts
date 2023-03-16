@@ -1,5 +1,6 @@
-import { AbstractReaction, IConfigMeta, IReactionMeta } from "runner/minions";
-import { IReactionFactoryOptions, ReactionFactory } from "runner/minions/interfaces/controller";
+import { AbstractReaction, IReactionFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IReactionMeta, ReactionFactory } from "@rxdrag/schema"
+
 
 export interface IRouteToConfig extends IConfigMeta {
   url?: string,
