@@ -8,7 +8,7 @@ importers:
     devDependencies:
       turbo: registry.npmmirror.com/turbo/1.8.3
 
-  apps/antd5-expamle:
+  apps/antd5-example:
     specifiers:
       '@ant-design/icons': ^4.8.0
       '@antv/x6': ^2.1.5
