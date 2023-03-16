@@ -1,5 +1,5 @@
+import { IPortMeta, IReactionMeta, ReactionType } from "@rxdrag/schema";
 import { useCallback } from "react";
-import { IPortMeta, IReactionMeta, ReactionType } from "runner/minions";
 import { useGetControllerMeta } from "./useGetControllerMeta";
 
 export function useGetControllerReactionPorts() {

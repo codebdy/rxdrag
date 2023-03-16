@@ -1,5 +1,5 @@
+import { IControllerMeta } from "@rxdrag/schema"
 import { useCallback } from "react"
-import { IControllerMeta } from "runner/minions"
 import {useControllerNodes} from "./useControllerNodes"
 
 export function useGetControllerMeta(){

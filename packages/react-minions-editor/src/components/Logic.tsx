@@ -6,10 +6,10 @@ import { useArrowhead } from "../hooks/useArrowhead"
 import { useShowCells } from "../hooks/useShowCells"
 import { useSelection } from "../hooks/useSelection"
 import { useRemove } from "../hooks/edit-meta/useRemove"
-import { ILogicMetas } from "runner/minions/interfaces/metas"
 import { useChangeFlag } from "../hooks/useChangeFlag"
 import { useMetas } from "../hooks/useMetas"
 import { useSetZoom } from "../hooks/useSetZoom"
+import { ILogicMetas } from "@rxdrag/schema"
 
 export const Logic = memo((
   props: {

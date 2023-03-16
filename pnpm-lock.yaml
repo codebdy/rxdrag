@@ -383,6 +383,7 @@ importers:
       '@rxdrag/react-shared': ^1.0.0
       '@rxdrag/schema': ^1.0.0
       '@rxdrag/shared': ^1.0.0
+      '@types/insert-css': ^2.0.1
       '@types/jest': ^26.0.7
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
@@ -391,6 +392,7 @@ importers:
       antd: 5.1.2
       babel-core: ^6.26.3
       babel-runtime: ^6.26.0
+      insert-css: ^2.0.0
       jest: ^26.1.0
       lint-staged: ^13.2.0
       react: ^18.2.0
@@ -418,11 +420,13 @@ importers:
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
       '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
       antd: registry.npmmirror.com/antd/5.1.2_biqbaboplfbrettd7655fr4n2y
+      insert-css: registry.npmmirror.com/insert-css/2.0.0
       react: registry.npmmirror.com/react/18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
       redux: registry.npmmirror.com/redux/4.2.1
       styled-components: registry.npmmirror.com/styled-components/5.3.9_biqbaboplfbrettd7655fr4n2y
     devDependencies:
+      '@types/insert-css': registry.npmmirror.com/@types/insert-css/2.0.1
       '@types/jest': registry.npmmirror.com/@types/jest/26.0.24
       '@types/resize-observer-browser': registry.npmmirror.com/@types/resize-observer-browser/0.1.7
       '@types/styled-components': registry.npmmirror.com/@types/styled-components/5.1.26

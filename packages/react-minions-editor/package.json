@@ -25,6 +25,7 @@
     ]
   },
   "devDependencies": {
+    "@types/insert-css": "^2.0.1",
     "@types/jest": "^26.0.7",
     "@types/resize-observer-browser": "^0.1.7",
     "@types/styled-components": "^5.1.26",
@@ -72,6 +73,7 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "antd": "5.1.2",
+    "insert-css": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "redux": "^4.2.1",

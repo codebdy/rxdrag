@@ -1,5 +1,5 @@
+import { IReactionMeta, IConfigMeta } from "@rxdrag/schema"
 import { GlobalToken } from "antd/es/theme/interface"
-import { IConfigMeta, IReactionMeta } from "runner/minions/interfaces/metas"
 
 const STROKE_WIDTH = 2
 export const getStartNodeConfig = (nodeMeta: IReactionMeta<IConfigMeta>, token: GlobalToken) => {

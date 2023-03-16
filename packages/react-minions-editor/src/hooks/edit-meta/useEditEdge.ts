@@ -1,6 +1,6 @@
 import { Edge } from "@antv/x6"
+import { IInvokeMeta } from "@rxdrag/schema"
 import { useCallback, useEffect } from "react"
-import { IInvokeMeta } from "runner/minions/interfaces/metas"
 import { ActionType } from "../../actions"
 import { useDispatch } from "../useDispatch"
 import { useGraph } from "../useGraph"

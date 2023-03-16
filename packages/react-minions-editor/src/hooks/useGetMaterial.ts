@@ -1,11 +1,11 @@
 import { useCallback } from "react";
-import { getAllMaterial } from "react-shells/ant5/materials";
+import { useMaterials } from "./useMaterials";
 
 export function useGetMaterial() {
+  const materials = useMaterials() || []
   const getMaterial = useCallback((name?: string) => {
-    const materials = getAllMaterial()
     return materials.find(reaction => reaction.name === name)
-  }, [])
+  }, [materials])
 
   return getMaterial
 }

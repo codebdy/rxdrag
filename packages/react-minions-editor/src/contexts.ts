@@ -1,5 +1,5 @@
 import { Graph } from "@antv/x6";
-import { IControllerMeta, ILogicMetas } from "@rxdrag/schema";
+import { IControllerMeta, ILogicMetas, IReactionMaterial } from "@rxdrag/schema";
 import { createContext } from "react";
 import { EditorStore } from "./classes/EditorStore";
 
@@ -40,3 +40,4 @@ export const ReacionsEditorStoreContext = createContext<EditorStore | undefined>
 
 export const GraphContext = createContext<Graph | undefined>(undefined)
 export const ControllerContext = createContext<IControllerMeta | undefined>(undefined)
+export const MaterialsContext = createContext<IReactionMaterial[]>([])
