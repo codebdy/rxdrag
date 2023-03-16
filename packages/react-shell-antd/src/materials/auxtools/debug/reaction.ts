@@ -1,5 +1,5 @@
-import { AbstractReaction, IConfigMeta, IReactionMeta } from "runner/minions";
-import { IReactionFactoryOptions, ReactionFactory } from "runner/minions/interfaces/controller";
+import { IConfigMeta, IReactionMeta, ReactionFactory } from "@rxdrag/schema"
+import { AbstractReaction, IReactionFactoryOptions } from "@rxdrag/minions"
 
 export interface IDebugConfig extends IConfigMeta {
   closed?: boolean
@@ -18,9 +18,9 @@ export class DebugReaction extends AbstractReaction<IDebugConfig> {
   }
 
   inputHandler = (inputValue: string) => {
-    if(!this.meta.config?.closed){
+    if (!this.meta.config?.closed) {
       console.log(`🪲${this.meta.label || "Debug"}:`, inputValue)
-    } 
+    }
   }
 }
 

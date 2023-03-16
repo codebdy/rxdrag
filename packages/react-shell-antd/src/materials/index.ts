@@ -1,4 +1,5 @@
 
+import { IReactionMaterial } from "@rxdrag/schema"
 import { auxReactions } from "./auxtools"
 import { basicReactions } from "./basic"
 import { commonReactions } from "./common"
