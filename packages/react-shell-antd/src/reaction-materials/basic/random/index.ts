@@ -1,6 +1,7 @@
-import { randomIcon } from "react-shells/ant5/icons/reactions";
-import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
-import { IReactionMaterial, ReactionType } from "runner/minions";
+
+import { randomIcon } from "@rxdrag/react-shared";
+import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { createUuid } from "@rxdrag/shared";
 import { IRandomConfig, Random } from "./reaction";
 import { randomSchema } from "./schema";
 

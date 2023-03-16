@@ -1,6 +1,6 @@
-import { switchIcon } from "react-shells/ant5/icons/reactions";
-import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
-import { IReactionMaterial, ReactionType } from "runner/minions";
+import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { createUuid } from "@rxdrag/shared";
+import { switchIcon } from "@rxdrag/react-shared";
 import { switchSchema } from "./schema";
 
 export const switchMaterial: IReactionMaterial = {

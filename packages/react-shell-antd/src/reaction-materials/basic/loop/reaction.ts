@@ -1,6 +1,6 @@
-import { isArr, isNum } from "core/utils/types";
-import { AbstractReaction, IConfigMeta, IReactionMeta } from "runner/minions";
-import { IReactionFactoryOptions, ReactionFactory } from "runner/minions/interfaces/controller";
+import { AbstractReaction, IReactionFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IReactionMeta, ReactionFactory } from "@rxdrag/schema"
+import { isArr, isNum } from "@rxdrag/shared"
 
 export interface ILoopConfig extends IConfigMeta {
   fromInput?: boolean,

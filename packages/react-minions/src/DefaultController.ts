@@ -1,5 +1,5 @@
 import { INIT_EVENT_NAME, DESTORY_EVENT_NAME } from "react-shells/ant5/shared/createReactionSchema";
-import { Controllers, EventFuncs, IComponentController, InputFunc, IReaction, IReactionFactoryOptions, PropsListener, UnListener, VariableListener } from "runner/minions/interfaces/controller";
+import { Controllers, EventFuncs, IController, InputFunc, IReaction, IReactionFactoryOptions, PropsListener, UnListener, VariableListener } from "runner/minions/interfaces/controller";
 import { IControllerMeta, IReactionDefineMeta } from "../interfaces/metas";
 import { GraphicalReaction } from "../../../react-shells/ant5/materials/controller/reaction/GraphicalReaction";
 import { CodeReaction } from "react-shells/ant5/materials/controller/reaction/CodeReaction";

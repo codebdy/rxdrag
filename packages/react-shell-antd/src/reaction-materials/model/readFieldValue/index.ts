@@ -1,6 +1,6 @@
-import { fieldReadIcon } from "react-shells/ant5/icons/reactions";
-import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
-import { IReactionMaterial, ReactionType } from "runner/minions";
+import { fieldReadIcon } from "@rxdrag/react-shared";
+import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { createUuid } from "@rxdrag/shared";
 import { ReadFieldValue } from "./reaction";
 import { readFieldValueSchema } from "./schema";
 

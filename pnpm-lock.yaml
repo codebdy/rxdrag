@@ -604,8 +604,10 @@ importers:
     specifiers:
       '@ant-design/icons': ^4.8.0
       '@reduxjs/toolkit': ^1.9.3
+      '@rxdrag/fieldy': ^1.0.0
       '@rxdrag/minions': ^1.0.0
       '@rxdrag/react-core': ^1.0.0
+      '@rxdrag/react-fieldy': ^1.0.0
       '@rxdrag/react-props-inputs': ^1.0.0
       '@rxdrag/react-shared': ^1.0.0
       '@rxdrag/schema': ^1.0.0
@@ -635,8 +637,10 @@ importers:
     dependencies:
       '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
       '@reduxjs/toolkit': registry.npmmirror.com/@reduxjs/toolkit/1.9.3_react@18.2.0
+      '@rxdrag/fieldy': link:../fieldy
       '@rxdrag/minions': link:../minions
       '@rxdrag/react-core': link:../react-core
+      '@rxdrag/react-fieldy': link:../react-fieldy
       '@rxdrag/react-props-inputs': link:../react-props-inputs
       '@rxdrag/react-shared': link:../react-shared
       '@rxdrag/schema': link:../schema

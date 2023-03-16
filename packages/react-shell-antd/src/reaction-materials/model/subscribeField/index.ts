@@ -1,6 +1,6 @@
-import { subscribeIcon } from "react-shells/ant5/icons/reactions";
-import { createUuid } from "react-shells/ant5/SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
-import { IReactionMaterial, ReactionType } from "runner/minions";
+import { subscribeIcon } from "@rxdrag/react-shared";
+import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { createUuid } from "@rxdrag/shared";
 import { SubscribeField } from "./reaction";
 import { subscribeFieldSchema } from "./schema";
 

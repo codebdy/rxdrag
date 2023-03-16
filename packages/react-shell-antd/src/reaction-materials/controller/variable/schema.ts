@@ -1,4 +1,4 @@
-import { INodeSchema } from "core";
+import { INodeSchema } from "@rxdrag/schema";
 
 export const variableSchema: INodeSchema = {
   componentName: "Fragment",

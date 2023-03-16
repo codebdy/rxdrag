@@ -1,5 +1,5 @@
-import { IConfigMeta, IReactionMeta } from "runner/minions";
-import { IComponentController, IReactionFactoryOptions, ReactionFactory } from "runner/minions/interfaces/controller";
+import { IController, IReactionFactoryOptions } from "@rxdrag/minions";
+import { IConfigMeta, IReactionMeta, ReactionFactory } from "@rxdrag/schema";
 import { AbstractControllerReaction } from "../AbstractControllerReaction";
 
 export interface IVariableConfig extends IConfigMeta {
@@ -7,7 +7,7 @@ export interface IVariableConfig extends IConfigMeta {
 }
 
 export class SetVariableReaction extends AbstractControllerReaction {
-  controller: IComponentController
+  controller: IController
   constructor(meta: IReactionMeta<IVariableConfig>, options?: IReactionFactoryOptions) {
     super(meta, options)
 

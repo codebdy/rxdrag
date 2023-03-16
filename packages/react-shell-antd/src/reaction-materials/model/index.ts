@@ -1,7 +1,6 @@
-import { IReactionMaterial } from "runner/minions/interfaces/material";
-import { ReactionType } from "runner/minions/interfaces/metas";
-import { fieldIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon } from "../../icons/reactions";
-import { createUuid } from "../../SettingsForm/components/ReactionsInput/ReactionsEditor/utils";
+import { formIcon, formValidateIcon, formReadIcon, fieldIcon, fieldValidateIcon } from "@rxdrag/react-shared";
+import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { createUuid } from "@rxdrag/shared";
 import { readFieldValueMaterial } from "./readFieldValue";
 import { subscribeFieldMaterial } from "./subscribeField";
 

@@ -67,6 +67,8 @@
     "@rxdrag/react-shared": "^1.0.0",
     "@rxdrag/schema": "^1.0.0",
     "@rxdrag/shared": "^1.0.0",
+    "@rxdrag/fieldy": "^1.0.0",
+    "@rxdrag/react-fieldy": "^1.0.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "antd": "5.1.2",
