@@ -374,6 +374,9 @@ importers:
     specifiers:
       '@ant-design/icons': ^4.8.0
       '@antv/x6': ^2.1.5
+      '@antv/x6-plugin-minimap': ^2.0.2
+      '@antv/x6-plugin-selection': ^2.1.5
+      '@antv/x6-react-shape': ^2.1.0
       '@reduxjs/toolkit': ^1.9.3
       '@rxdrag/react-core': ^1.0.0
       '@rxdrag/react-props-inputs': ^1.0.0
@@ -403,6 +406,9 @@ importers:
     dependencies:
       '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
       '@antv/x6': registry.npmmirror.com/@antv/x6/2.5.5
+      '@antv/x6-plugin-minimap': registry.npmmirror.com/@antv/x6-plugin-minimap/2.0.2_@antv+x6@2.5.5
+      '@antv/x6-plugin-selection': registry.npmmirror.com/@antv/x6-plugin-selection/2.1.5_@antv+x6@2.5.5
+      '@antv/x6-react-shape': registry.npmmirror.com/@antv/x6-react-shape/2.1.1_xgfqvueruxflxzn2skgp353zve
       '@reduxjs/toolkit': registry.npmmirror.com/@reduxjs/toolkit/1.9.3_react@18.2.0
       '@rxdrag/react-core': link:../react-core
       '@rxdrag/react-props-inputs': link:../react-props-inputs
