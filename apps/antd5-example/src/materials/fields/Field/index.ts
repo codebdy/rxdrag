@@ -1,5 +1,5 @@
 import { IComponentMaterial } from "core-react";
-import { Field } from "react-shells/ant5/components/Field";
+import { Field } from "@rxdrag/react-shell-antd/components/Field";
 import { fieldLocales } from "./locales";
 import { fieldSchema } from "./schema";
 

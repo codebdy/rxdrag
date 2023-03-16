@@ -1,5 +1,5 @@
+import { useTranslate } from "@rxdrag/react-core"
 import { Button, Space } from "antd"
-import { useTranslate } from "core-react/hooks/useTranslate"
 import { memo } from "react"
 import { useSaveJson } from "../hooks/useSaveJson"
 

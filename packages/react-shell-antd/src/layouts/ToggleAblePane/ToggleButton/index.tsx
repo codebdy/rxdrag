@@ -1,5 +1,5 @@
 import { LeftOutlined, RightOutlined } from "@ant-design/icons"
-import { useStyles } from "react-shells/ant5/hooks/useStyles"
+import { useStyles } from "@rxdrag/react-shell-antd/hooks/useStyles"
 import "./style.less"
 import cls from "classnames"
 

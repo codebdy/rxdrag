@@ -1,5 +1,5 @@
 import { IComponentMaterial } from "core-react";
-import { ImageView } from "react-shells/ant5/components/ImageView";
+import { ImageView } from "@rxdrag/react-shell-antd/components/ImageView";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { maretialSchema } from "./schema";

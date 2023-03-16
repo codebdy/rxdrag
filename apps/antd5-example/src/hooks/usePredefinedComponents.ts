@@ -2,7 +2,7 @@ import { IComponents } from "core-react";
 import { Root } from "core-react/Root";
 import { isStr } from "core/utils/types";
 import { useMemo } from "react";
-import { Field } from "react-shells/ant5/components/Field";
+import { Field } from "@rxdrag/react-shell-antd/components/Field";
 import { materials, slots } from "../materials";
 
 export function usePredefinedComponents() {

@@ -9,9 +9,9 @@ import { useGetNode } from "core-react/hooks/useGetNode";
 import { useNodeChanged } from "core-react/hooks/useNodeChanged";
 import { useSelectedNodeIds } from "core-react/hooks/useSelectedNodeIds";
 import { Key, memo, useCallback, useMemo } from "react"
-import { PaneContainer } from "react-shells/ant5/layouts/ToggleAblePane/PaneContainer"
-import { PanelContent } from "react-shells/ant5/layouts/ToggleAblePane/PanelContent"
-import { PaneTitle } from "react-shells/ant5/layouts/ToggleAblePane/PaneTitle"
+import { PaneContainer } from "@rxdrag/react-shell-antd/layouts/ToggleAblePane/PaneContainer"
+import { PanelContent } from "@rxdrag/react-shell-antd/layouts/ToggleAblePane/PanelContent"
+import { PaneTitle } from "@rxdrag/react-shell-antd/layouts/ToggleAblePane/PaneTitle"
 
 export const OutlineWidget = memo((
   props: {

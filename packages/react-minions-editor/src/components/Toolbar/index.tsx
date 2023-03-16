@@ -1,7 +1,7 @@
 import { ZoomOutOutlined, ZoomInOutlined } from "@ant-design/icons"
 import { Button, Divider, Space } from "antd"
 import { memo, useCallback } from "react"
-import { undoIcon, redoIcon } from "react-shells/ant5/icons"
+import { undoIcon, redoIcon } from "@rxdrag/react-shell-antd/icons"
 import styled from "styled-components"
 import { mapIcon, zoomResetIcon } from "../../../../../../icons/reactions"
 import { useRedo } from "../../hooks/edit-meta/useRedo"

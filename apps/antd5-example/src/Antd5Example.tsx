@@ -1,14 +1,18 @@
 import { FileOutlined, GithubFilled } from "@ant-design/icons"
 import { Button, Space } from "antd"
 import { memo, useCallback, useMemo, useState } from "react"
-import { Antd5Editor } from "react-shells/ant5"
-import { componentsIcon, historyIcon, outlineIcon } from "react-shells/ant5/icons"
-import { HistoryWidget } from "react-shells/ant5/widgets/HistoryWidget"
-import { LangButtons } from "react-shells/ant5/widgets/LangButtons"
-import { LeftNavWidget } from "react-shells/ant5/widgets/LeftNavWidget"
-import { Logo } from "react-shells/ant5/widgets/Logo"
-import { OutlineWidget } from "react-shells/ant5/widgets/OutlineWidget"
-import { ThemeButton } from "react-shells/ant5/widgets/ThemeButton"
+import {
+  Antd5Editor,
+  HistoryWidget,
+  LangButtons,
+  LeftNavWidget,
+  Logo,
+  OutlineWidget,
+  ThemeButton,
+  componentsIcon,
+  historyIcon,
+  outlineIcon,
+} from "@rxdrag/react-shell-antd"
 import { toolsLocales } from "./locales"
 import { ResourceWidget } from "./ResourceWidget"
 import { SaveButton } from "./widgets/SaveButton"
@@ -42,7 +46,7 @@ export const Antd5Example = memo(() => {
       schemas={schemas}
       canvasUrl="/canvas-render"
       previewUrl="/preview-render"
-      themeMode = 'dark'
+      themeMode='dark'
       navPanel={
         <>
           {

@@ -1,6 +1,6 @@
 import { MenuProps, Dropdown as AntdDropdown } from "antd";
 import { CSSProperties, memo, useMemo } from "react"
-import { IconView } from "react-shells/ant5/components/IconView";
+import { IconView } from "@rxdrag/react-shell-antd/components/IconView";
 import { useComponentSchema } from "runner/ComponentRender/hooks/useComponentSchema";
 
 export type DropdownProps = {

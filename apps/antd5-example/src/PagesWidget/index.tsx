@@ -1,8 +1,8 @@
 import Tree, { DataNode, DirectoryTreeProps } from "antd/es/tree";
 import { Key, memo, useCallback } from "react"
-import { PaneContainer } from "react-shells/ant5/layouts/ToggleAblePane/PaneContainer"
-import { PanelContent } from "react-shells/ant5/layouts/ToggleAblePane/PanelContent"
-import { PaneTitle } from "react-shells/ant5/layouts/ToggleAblePane/PaneTitle"
+import { PaneContainer } from "@rxdrag/react-shell-antd/layouts/ToggleAblePane/PaneContainer"
+import { PanelContent } from "@rxdrag/react-shell-antd/layouts/ToggleAblePane/PanelContent"
+import { PaneTitle } from "@rxdrag/react-shell-antd/layouts/ToggleAblePane/PaneTitle"
 
 const { DirectoryTree } = Tree;
 

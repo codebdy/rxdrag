@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { getAllMaterial } from "react-shells/ant5/materials";
+import { getAllMaterial } from "@rxdrag/react-shell-antd/materials";
 
 export function useGetMaterial() {
   const getMaterial = useCallback((name?: string) => {

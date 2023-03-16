@@ -1,5 +1,5 @@
 import { inputBaseSchemas } from "../schemas";
-import { createSchema, SchemaOptions } from "react-shells/ant5/shared/createSchema";
+import { createSchema, SchemaOptions } from "@rxdrag/react-shell-antd/shared/createSchema";
 import { INodeSchema } from "core";
 
 const inputNumberPros = [

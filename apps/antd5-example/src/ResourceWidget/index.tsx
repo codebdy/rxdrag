@@ -1,13 +1,13 @@
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate"
 import { memo, useEffect } from "react"
 import { ResourceCollapsePannel } from "expamples/ant5/ResourceWidget/ResourceCollapsePannel"
-import { PaneContainer } from "react-shells/ant5/layouts/ToggleAblePane/PaneContainer"
+import { PaneContainer } from "@rxdrag/react-shell-antd/layouts/ToggleAblePane/PaneContainer"
 import { ResourcesTitle } from "expamples/ant5/ResourceWidget/ResourcesTitle"
-import { ComponentResourceWidget } from "react-shells/ant5/widgets/ComponentResourceWidget"
+import { ComponentResourceWidget } from "@rxdrag/react-shell-antd/widgets/ComponentResourceWidget"
 import { fields, materials } from "../materials"
 import { useRegisterComponentMaterial } from "core-react/hooks/useRegisterComponentMaterial"
 import { FieldMaterial } from "../materials/fields/Field"
-import { TemplateResourceWidget } from "react-shells/ant5/widgets/TemplateResourceWidget"
+import { TemplateResourceWidget } from "@rxdrag/react-shell-antd/widgets/TemplateResourceWidget"
 
 export const ResourceWidget = memo((
   props: {

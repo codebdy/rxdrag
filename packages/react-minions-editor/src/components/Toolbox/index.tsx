@@ -8,7 +8,7 @@ import { IReactionMeta } from "runner/minions/interfaces/metas";
 import { IReactionMaterial } from "runner/minions/interfaces/material";
 import { useTrans } from "../../hooks/useTrans";
 import { ComponentList } from "./ComponentList";
-import { reactionMaterialCategories } from "react-shells/ant5/materials";
+import { reactionMaterialCategories } from "@rxdrag/react-shell-antd/materials";
 import { useGraph } from "../../hooks/useGraph";
 const { Panel } = AntdCollapse;
 

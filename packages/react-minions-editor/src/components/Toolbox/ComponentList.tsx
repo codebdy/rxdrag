@@ -1,9 +1,9 @@
 import { createUuid } from "@rxdrag/shared";
 import { Space, Typography } from "antd";
 import { memo, useCallback } from "react"
-import { reactionMaterial } from "react-shells/ant5/materials/controller/reaction";
-import { setPropMaterial } from "react-shells/ant5/materials/controller/setProp";
-import { setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "react-shells/ant5/materials/controller/variable";
+import { reactionMaterial } from "@rxdrag/react-shell-antd/materials/controller/reaction";
+import { setPropMaterial } from "@rxdrag/react-shell-antd/materials/controller/setProp";
+import { setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "@rxdrag/react-shell-antd/materials/controller/variable";
 import { IReactionMaterial } from "runner/minions/interfaces/material";
 import { IControllerMeta, IReactionDefineMeta, IReactionMeta } from "runner/minions/interfaces/metas";
 import styled from "styled-components";

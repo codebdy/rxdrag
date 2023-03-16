@@ -1,5 +1,5 @@
 import { IComponentMaterial } from "core-react";
-import { IconView } from "react-shells/ant5/components/IconView";
+import { IconView } from "@rxdrag/react-shell-antd/components/IconView";
 import { iconViewIcon } from "./icon";
 import { iconViewLocales, iconViewResourceLocales } from "./locales";
 import { iconViewSchema } from "./schema";

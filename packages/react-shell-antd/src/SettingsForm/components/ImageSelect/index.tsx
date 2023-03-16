@@ -3,7 +3,7 @@ import { useToken } from "antd/es/theme/internal"
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate"
 import React, { useCallback, useEffect } from "react"
 import { memo, useState } from "react"
-import { ImageView } from "react-shells/ant5/components/ImageView"
+import { ImageView } from "@rxdrag/react-shell-antd/components/ImageView"
 import styled from "styled-components"
 
 const ImageContainer = styled.div.attrs((props: { actived?: boolean, borderColor?: string }) => ({

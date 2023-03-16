@@ -1,8 +1,8 @@
-import { INIT_EVENT_NAME, DESTORY_EVENT_NAME } from "react-shells/ant5/shared/createReactionSchema";
+import { INIT_EVENT_NAME, DESTORY_EVENT_NAME } from "@rxdrag/react-shell-antd/shared/createReactionSchema";
 import { Controllers, EventFuncs, IController, InputFunc, IReaction, IReactionFactoryOptions, PropsListener, UnListener, VariableListener } from "runner/minions/interfaces/controller";
 import { IControllerMeta, IReactionDefineMeta } from "../interfaces/metas";
-import { GraphicalReaction } from "../../../react-shells/ant5/materials/controller/reaction/GraphicalReaction";
-import { CodeReaction } from "react-shells/ant5/materials/controller/reaction/CodeReaction";
+import { GraphicalReaction } from "../../../@rxdrag/react-shell-antd/materials/controller/reaction/GraphicalReaction";
+import { CodeReaction } from "@rxdrag/react-shell-antd/materials/controller/reaction/CodeReaction";
 
 
 export class DefaultController implements IController {

@@ -2,7 +2,7 @@ import { IComponentMaterial } from "core-react";
 import { boxIcon } from "./icon";
 import { boxLocales, boxResourceLocales } from "./locales";
 import { boxSchema } from "./schema";
-import { Box } from "react-shells/ant5/components/Box";
+import { Box } from "@rxdrag/react-shell-antd/components/Box";
 
 const name = "Box"
 export const BoxMaterial: IComponentMaterial = {

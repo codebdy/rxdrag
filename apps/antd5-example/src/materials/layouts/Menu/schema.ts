@@ -1,10 +1,10 @@
 import { INodeSchema } from "core";
-import { borderRediusSetter } from "react-shells/ant5/SettingsForm/schemas/borderRediusSetter";
-import { borderSetter } from "react-shells/ant5/SettingsForm/schemas/borderSetter";
-import { displaySetter } from "react-shells/ant5/SettingsForm/schemas/displaySetter";
-import { fontStyleSetter } from "react-shells/ant5/SettingsForm/schemas/fontStyleSetter";
-import { martinStyleSetter } from "react-shells/ant5/SettingsForm/schemas/martinStyleSetter";
-import { paddingStyleSetter } from "react-shells/ant5/SettingsForm/schemas/paddingStyleSetter";
+import { borderRediusSetter } from "@rxdrag/react-shell-antd/SettingsForm/schemas/borderRediusSetter";
+import { borderSetter } from "@rxdrag/react-shell-antd/SettingsForm/schemas/borderSetter";
+import { displaySetter } from "@rxdrag/react-shell-antd/SettingsForm/schemas/displaySetter";
+import { fontStyleSetter } from "@rxdrag/react-shell-antd/SettingsForm/schemas/fontStyleSetter";
+import { martinStyleSetter } from "@rxdrag/react-shell-antd/SettingsForm/schemas/martinStyleSetter";
+import { paddingStyleSetter } from "@rxdrag/react-shell-antd/SettingsForm/schemas/paddingStyleSetter";
 
 export const logoSchema: INodeSchema = {
   componentName: "Tabs",

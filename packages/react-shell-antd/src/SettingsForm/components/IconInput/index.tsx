@@ -3,8 +3,8 @@ import { Badge, Button, Modal } from "antd";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import React, { CSSProperties, useCallback, useEffect, useState } from "react";
 import { memo } from "react"
-import { IconView } from "react-shells/ant5/components/IconView";
-import { IIcon } from "react-shells/ant5/components/IconView/model";
+import { IconView } from "@rxdrag/react-shell-antd/components/IconView";
+import { IIcon } from "@rxdrag/react-shell-antd/components/IconView/model";
 import IconSelectForm, { IconType } from "./IconSelectForm";
 import "./style.less"
 
