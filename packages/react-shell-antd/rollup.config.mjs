@@ -22,6 +22,8 @@ export default {
     "@ant-design/icons",
     "@rxdrag/react-core",
     "@rxdrag/react-shared",
+    "@rxdrag/minions",
+    "@rxdrag/schema",
     "antd",
     "uuid",
   ],
