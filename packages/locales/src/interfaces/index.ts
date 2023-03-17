@@ -22,11 +22,11 @@ export interface ILocales {
 }
 
 export interface ILocalesManager {
-  setLanguage(lang: string): void
+  lang: string
+  //setLanguage(lang: string): void
   getMessage(key: string): string | null
   getResouceMessage(key: string): string | null
   getComponentMessage(componentName: string, key: string): string | null
-  //getComponentSettingsMessage(componentName: string, key: string): string | null
   getToolsMessage(key: string): string | null
   registerLocales(...locales: ILocales[]): void
   registerResourceLocales(...locales: ILocales[]): void

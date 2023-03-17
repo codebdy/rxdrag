@@ -1,10 +1,11 @@
 import { useCallback } from "react"
+import { useTranslate } from "@rxdrag/react-locales"
 
 export function useTrans() {
-  const t = useToolsTranslate();
+  const t = useTranslate();
   const trans = useCallback((message?: string) => {
     if (message?.startsWith('$')) {
-      return t("ReactionsInput." + message?.substring(1))
+      return t(message?.substring(1))
     }
     return message
   }, [t])

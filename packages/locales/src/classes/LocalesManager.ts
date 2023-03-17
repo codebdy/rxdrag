@@ -6,11 +6,11 @@ import { INodeSchema } from "@rxdrag/schema";
 export class LocalesManager implements ILocalesManager {
   locales: ILocales = {
   }
-  constructor(private lang: string) { }
+  constructor(public lang: string) { }
 
-  setLanguage(lang: string): void {
-    this.lang = lang
-  }
+  // setLanguage(lang: string): void {
+  //   this.lang = lang
+  // }
 
   getMessage(key: string): string | null {
     return this.getValueByKey(this.locales[this.lang], key)
