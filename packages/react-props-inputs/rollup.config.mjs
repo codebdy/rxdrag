@@ -16,8 +16,11 @@ export default {
     },
   ],
   external: [
+    "antd",
     "@reduxjs/toolkit",
+    "@ant-design/icons",
     "redux",
+    "@rxdrag/react-core",
     "@rxdrag/shared",
     "lodash",
     "react",
