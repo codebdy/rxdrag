@@ -1,6 +1,7 @@
+import { IPortMeta } from "@rxdrag/schema";
 import { Button, Popover } from "antd";
+import React from "react";
 import { memo, useCallback, useState } from "react";
-import { IPortMeta } from "runner/minions/interfaces/metas";
 import { PortsTable } from "./PortsTable";
 
 export const PortsInput = memo((

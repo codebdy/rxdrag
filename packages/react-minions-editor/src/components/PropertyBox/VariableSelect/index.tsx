@@ -1,6 +1,7 @@
+import { IControllerMeta } from "@rxdrag/schema"
 import { Select } from "antd"
+import React from "react"
 import { memo, useMemo } from "react"
-import { IControllerMeta } from "runner/minions/interfaces/metas"
 import { useController } from "../../../hooks/useController"
 import { useControllerNodes } from "../../../hooks/useControllerNodes"
 import { useSelectedNode } from "../../../hooks/useSelectedNode"

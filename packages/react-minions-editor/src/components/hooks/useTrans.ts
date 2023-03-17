@@ -1,4 +1,3 @@
-import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
 import { useCallback } from "react"
 
 export function useTrans() {

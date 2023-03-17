@@ -7,7 +7,8 @@ import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import { EditableCell } from './EditableCell';
 import { EditableRow } from './EditableRow';
 import { useTrans } from '../../../hooks/useTrans';
-import { IPortMeta } from 'runner/minions/interfaces/metas';
+import { IPortMeta } from '@rxdrag/schema';
+import { createUuid } from '@rxdrag/shared';
 
 const Container = styled.div`
   width: 400px;
