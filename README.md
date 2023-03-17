@@ -37,6 +37,10 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 RxEditor已重启，重命名为 RxDrag 基于模型驱动架构，插件式扩展。 
 旨在提供一套低代码前端组合库，包含可视化编辑，表单模型，逻辑编排等内容。
 
+# 自研后端还在开发，后期后端可能会参考可逆计算方面的一些东西：
+Nop Platform 是基于可逆计算理论从零开始构建、专为DSL而生的低代码平台。它可以与任意采用JSON格式的前端模型相结合，基于它的元编程能力可以将前端与GPT AI模型打通，成为AI驱动的低代码平台。 
+[https://github.com/entropy-cloud/nop-entropy](https://github.com/entropy-cloud/nop-entropy)
+
 QQ交流群：957619750  
 
 ## 微信群 
