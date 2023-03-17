@@ -1,3 +1,4 @@
+import React from "react";
 import { memo } from "react"
 import { TetradInput } from "../Fold/TetradInput"
 import { marginTopIcon, marginRightIcon, marginLeftIcon, marginBottomIcon } from "../margin";

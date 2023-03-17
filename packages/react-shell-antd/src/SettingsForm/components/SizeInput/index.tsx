@@ -1,4 +1,5 @@
-import { isArr, isStr } from 'core/utils/types'
+import { isArr, isStr } from '@rxdrag/shared'
+import React from 'react'
 import { memo, useMemo } from 'react'
 import { FoldExtraItem } from '../Fold/FoldExtraItem'
 import { createSpecialSizeOption, createUnitType, PolyInput } from '../PolyInput'

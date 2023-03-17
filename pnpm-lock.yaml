@@ -625,6 +625,7 @@ importers:
       '@types/jest': ^26.0.7
       '@types/node': ^16.18.3
       '@types/react': ^18.0.28
+      '@types/react-color': ^3.0.6
       '@types/react-dom': ^18.0.11
       '@types/styled-components': ^5.1.26
       antd: 5.1.2
@@ -635,6 +636,7 @@ importers:
       jest: ^26.1.0
       lint-staged: ^13.2.0
       react: ^18.2.0
+      react-color: ^2.19.3
       react-dom: ^18.2.0
       redux: ^4.2.1
       rollup: ^3.19.1
@@ -661,6 +663,7 @@ importers:
       classnames: registry.npmmirror.com/classnames/2.3.2
       insert-css: registry.npmmirror.com/insert-css/2.0.0
       react: registry.npmmirror.com/react/18.2.0
+      react-color: registry.npmmirror.com/react-color/2.19.3_react@18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
       redux: registry.npmmirror.com/redux/4.2.1
       styled-components: registry.npmmirror.com/styled-components/5.3.9_biqbaboplfbrettd7655fr4n2y
@@ -670,6 +673,7 @@ importers:
       '@types/jest': registry.npmmirror.com/@types/jest/26.0.24
       '@types/node': registry.npmmirror.com/@types/node/16.18.16
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
+      '@types/react-color': registry.npmmirror.com/@types/react-color/3.0.6
       '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
       '@types/styled-components': registry.npmmirror.com/@types/styled-components/5.1.26
       babel-core: registry.npmmirror.com/babel-core/6.26.3

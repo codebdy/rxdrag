@@ -1,3 +1,4 @@
+import React from "react"
 import { memo } from "react"
 import { FoldExtraItem } from "../../Fold/FoldExtraItem"
 import { SizeInput } from "../../SizeInput"

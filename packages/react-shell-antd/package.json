@@ -30,6 +30,7 @@
     "@types/jest": "^26.0.7",
     "@types/node": "^16.18.3",
     "@types/react": "^18.0.28",
+    "@types/react-color": "^3.0.6",
     "@types/react-dom": "^18.0.11",
     "@types/styled-components": "^5.1.26",
     "babel-core": "^6.26.3",
@@ -78,6 +79,7 @@
     "classnames": "^2.3.2",
     "insert-css": "^2.0.0",
     "react": "^18.2.0",
+    "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
     "redux": "^4.2.1",
     "styled-components": "^5.3.9"

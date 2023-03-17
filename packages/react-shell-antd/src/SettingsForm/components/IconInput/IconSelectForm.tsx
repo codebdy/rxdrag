@@ -1,7 +1,7 @@
+import { useToolsTranslate } from '@rxdrag/react-core';
 import { Button, Input, Radio, RadioChangeEvent, Space, Tabs } from 'antd';
-import { useToolsTranslate } from 'core-react/hooks/useToolsTranslate';
 import React, { memo, useCallback, useMemo, useState } from 'react';
-import { findIcons, iconCategories } from '@rxdrag/react-shell-antd/shared/icons/data';
+import { findIcons, iconCategories } from '../../../shared';
 
 export enum IconType {
   Normal = "normal",

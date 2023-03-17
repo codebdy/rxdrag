@@ -4,9 +4,9 @@ import React, { memo, useCallback, useContext, useMemo, useState, CSSProperties 
 import { FoldContext } from "./context"
 import "./style.less"
 import cls from "classnames"
-import { isBool } from "core/utils/types"
 import { useToken } from "antd/es/theme/internal"
 import { ValueRow } from "./ValueRow"
+import { isBool } from "@rxdrag/shared"
 
 export type FoldProps = {
   className?: string,

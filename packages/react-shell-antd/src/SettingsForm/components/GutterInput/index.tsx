@@ -1,3 +1,4 @@
+import React from "react"
 import { InputNumber } from "antd"
 import { memo, useCallback } from "react"
 

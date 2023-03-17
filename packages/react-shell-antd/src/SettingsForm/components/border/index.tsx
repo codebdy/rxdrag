@@ -5,6 +5,7 @@ import "./style.less"
 import cls from "classnames"
 import { SizeInput } from "../SizeInput"
 import { ColorInput } from "../ColorInput"
+import React from "react"
 var border = require('css-border-property')
 
 export interface IBorder {
