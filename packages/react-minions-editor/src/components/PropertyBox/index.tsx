@@ -1,4 +1,3 @@
-import { useDesignerEngine, useLanguage } from "@rxdrag/react-core"
 import { Empty, Form, Input, InputNumber, Radio, Select, Slider, Switch } from "antd"
 import { useToken } from "antd/es/theme/internal"
 import React, { Fragment, memo, useCallback, useMemo } from "react"
@@ -13,6 +12,9 @@ import { PortsInput } from "./PortsInput"
 import { VariableSelect } from "./VariableSelect"
 import { PreviewRoot } from "@rxdrag/react-shared"
 import { VirtualForm } from "@rxdrag/react-fieldy"
+import { useLocalesManager } from "@rxdrag/react-locales"
+import {ComponentRender} from "@rxdrag/react-runner"
+import { JSONInput, ValueInput } from "@rxdrag/react-props-inputs"
 
 const Title = styled.div`
   height: 40px;
@@ -40,8 +42,7 @@ export const PropertyBox = memo(() => {
   const [, token] = useToken()
   const node = useSelectedNode()
   const getMaterial = useGetMaterial()
-  const engine = useDesignerEngine()
-  const lang = useLanguage()
+  const localesManager = useLocalesManager()
   const dispatch = useDispatch()
   const material = useMemo(() => getMaterial(node?.materialName || ""), [getMaterial, node?.materialName])
   const backup = useBackup()
@@ -50,8 +51,7 @@ export const PropertyBox = memo(() => {
   const designerSchema = useMemo(() => {
     if (material?.schema) {
       //翻译
-      return engine?.getLoacalesManager()
-        .translateDesignerSchema('',
+      return localesManager?.translateDesignerSchema('',
           JSON.parse(JSON.stringify(material?.schema))
         )
     } else {
@@ -59,7 +59,7 @@ export const PropertyBox = memo(() => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [engine, material?.schema, lang])
+  }, [localesManager, material?.schema])
   const handleNodeChange = useCallback((nodeData: any) => {
     backup()
     const newData = { ...node, ...nodeData }
