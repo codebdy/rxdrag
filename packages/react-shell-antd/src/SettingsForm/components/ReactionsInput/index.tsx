@@ -1,3 +1,4 @@
+import React from "react"
 import { Button, Form, Input, Modal, Switch } from "antd"
 import { useCurrentNode } from "core-react/hooks/useCurrentNode";
 import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
