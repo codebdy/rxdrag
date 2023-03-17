@@ -3,6 +3,6 @@ import { useContext } from "react";
 import { DesignerEngineContext } from "../contexts";
 
 export function useLocalesManager(){
-  const designer = useContext<IDesignerEngine|undefined>(DesignerEngineContext)
+  const designer = useContext<IDesignerEngine | undefined>(DesignerEngineContext)
   return designer?.getLoacalesManager();
 }
