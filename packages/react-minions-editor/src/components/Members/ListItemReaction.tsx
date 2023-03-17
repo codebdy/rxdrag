@@ -3,7 +3,7 @@ import { Button, Dropdown, MenuProps } from "antd";
 import { memo, useCallback, useMemo, useState } from "react";
 import styled from "styled-components";
 import { NameDialog } from "./NameDialog";
-import { useToolsTranslate } from "@rxdrag/react-core";
+import { useTranslate } from "@rxdrag/react-locales";
 import React from "react";
 
 const ListItem = styled.div`
@@ -25,7 +25,7 @@ export const ListItemReaction = memo((
   const [hover, setHover] = useState(false);
   const [open, setOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
-  const t = useToolsTranslate()
+  const t = useTranslate()
 
   const handleMouseEnter = useCallback(() => {
     setHover(true);
