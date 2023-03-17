@@ -1,5 +1,6 @@
+import React from "react";
+import { ReactComponent } from "@rxdrag/react-shared";
 import { forwardRef, memo, useMemo } from "react";
-import { ReactComponent } from "../types";
 
 export function mapComponent(WrappedComponent: ReactComponent, maps: { [key: string]: string }): ReactComponent {
 

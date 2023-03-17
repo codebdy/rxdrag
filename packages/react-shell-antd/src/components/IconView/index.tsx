@@ -1,11 +1,10 @@
 import { BorderOutlined } from "@ant-design/icons";
 import { CSSProperties, forwardRef } from "react";
-import { getIcon } from "@rxdrag/react-shell-antd/shared/icons/data";
-
 import { IIcon } from "./model";
 import { SvgStringIcon } from "./SvgStringIcon";
 import { EmpertyIcon, isEmpertyIcon } from "../../SettingsForm/components";
 import React from "react";
+import { getIcon } from "../../shared";
 
 
 export interface IIconViewProps {
