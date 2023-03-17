@@ -1,13 +1,9 @@
+import { IControllerMeta, IReactionDefineMeta, IReactionMaterial, IReactionMeta } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { Space, Typography } from "antd";
+import React from "react";
 import { memo, useCallback } from "react"
-import { reactionMaterial } from "@rxdrag/react-shell-antd/materials/controller/reaction";
-import { setPropMaterial } from "@rxdrag/react-shell-antd/materials/controller/setProp";
-import { setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "@rxdrag/react-shell-antd/materials/controller/variable";
-import { IReactionMaterial } from "runner/minions/interfaces/material";
-import { IControllerMeta, IReactionDefineMeta, IReactionMeta } from "runner/minions/interfaces/metas";
 import styled from "styled-components";
-import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon, variableIcon } from "../../../../../../icons/reactions";
 import { useController } from "../../hooks/useController";
 import { useControllerNodes } from "../../hooks/useControllerNodes";
 import { useDnd } from "../../hooks/useDnd";

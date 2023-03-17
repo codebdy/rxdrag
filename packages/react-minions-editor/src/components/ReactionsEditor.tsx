@@ -1,9 +1,9 @@
+import { IControllerMeta, ILogicMetas } from "@rxdrag/schema";
 import React, { memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components";
-import { Members } from "./components/Members";
-import { IControllerMeta, ILogicMetas } from "runner/minions/interfaces/metas";
-import { ReactionMetaEditor } from "./components/ReactionMetaEditor";
 import { ControllerContext } from "./contexts";
+import { ReactionMetaEditor } from "./ReactionMetaEditor"
+import { Members } from "./Members";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);

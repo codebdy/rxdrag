@@ -1,4 +1,4 @@
-import { IInvokeMeta, ILogicMetas, IReactionMeta } from "runner/minions/interfaces/metas"
+import { IInvokeMeta, ILogicMetas, IReactionMeta } from "@rxdrag/schema"
 import { ISnapshot } from "./contexts"
 
 export enum ActionType {
