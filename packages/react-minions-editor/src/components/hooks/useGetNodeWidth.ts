@@ -1,5 +1,5 @@
+import { IReactionMeta, IConfigMeta } from "@rxdrag/schema";
 import { useCallback } from "react";
-import { IConfigMeta, IReactionMeta } from "runner/minions/interfaces/metas";
 
 function lengthOf(str: string) {
   var length = 0;

@@ -1,9 +1,10 @@
 import { useCallback } from "react";
-import { getAllMaterial } from "@rxdrag/react-shell-antd/materials";
+import {useMaterials} from "@rxdrag/react-minions";
 
 export function useGetMaterial() {
+  const materials = useMaterials()
   const getMaterial = useCallback((name?: string) => {
-    const materials = getAllMaterial()
+
     return materials.find(reaction => reaction.name === name)
   }, [])
 

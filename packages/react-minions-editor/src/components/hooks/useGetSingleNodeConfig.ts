@@ -1,12 +1,11 @@
 import { useCallback } from "react"
-import { IReactionMaterial } from "runner/minions/interfaces/material"
-import { IConfigMeta, IReactionMeta } from "runner/minions/interfaces/metas"
 import { useTransformPorts } from "./useTransformPorts"
 import { useToken } from "antd/es/theme/internal"
 import { usePortsConfig } from "./usePortsConfig"
 import { useGetNodeWidth } from "./useGetNodeWidth"
 import { useGetNodeHeight } from "./useGetNodeHeight"
 import { useGetSubLabel } from "./useGetSubLabel"
+import { IReactionMeta, IConfigMeta, IReactionMaterial } from "@rxdrag/schema"
 
 export function useGetSingleNodeConfig() {
   const [, token] = useToken()

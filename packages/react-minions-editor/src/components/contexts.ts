@@ -1,7 +1,8 @@
 import { Graph } from "@antv/x6";
+import { IControllerMeta, ILogicMetas } from "@rxdrag/schema";
 import { createContext } from "react";
-import { IControllerMeta, ILogicMetas } from "runner/minions/interfaces/metas";
-import { EditorStore } from "./classes/EditorStore";
+import { EditorStore } from "../classes/EditorStore";
+
 
 export interface ISnapshot extends ILogicMetas {
   selected?: string,

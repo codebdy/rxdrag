@@ -68,6 +68,7 @@
     "@rxdrag/core": "^1.0.0",
     "@rxdrag/fieldy": "^1.0.0",
     "@rxdrag/minions": "^1.0.0",
+    "@rxdrag/react-minions-editor": "^1.0.0",
     "@rxdrag/react-core": "^1.0.0",
     "@rxdrag/react-fieldy": "^1.0.0",
     "@rxdrag/react-props-inputs": "^1.0.0",

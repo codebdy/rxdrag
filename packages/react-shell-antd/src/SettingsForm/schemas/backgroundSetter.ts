@@ -1,5 +1,4 @@
-import { INodeSchema } from "core";
-import { IFieldMeta } from "runner/fieldy";
+import { IFieldMeta, INodeSchema } from "@rxdrag/schema";
 
 export const backgroundSetter: INodeSchema<IFieldMeta> = {
   componentName: "Fold",

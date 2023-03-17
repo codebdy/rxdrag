@@ -1,12 +1,11 @@
 import React from "react"
 import { Button, Form, Input, Modal, Switch } from "antd"
-import { useCurrentNode } from "core-react/hooks/useCurrentNode";
-import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
+import {IEventMeta} from "@rxdrag/react-minions-editor"
 import { memo, useCallback, useEffect, useState } from "react"
-import { IControllerMeta, IReactionDefineMeta } from "runner/minions/interfaces/metas";
-import { ReactionsEditor } from "./ReactionsEditor";
-import { IEventMeta } from "./ReactionsEditor/interfaces";
-import { createUuid } from "./ReactionsEditor/utils";
+import { IControllerMeta, IReactionDefineMeta } from "@rxdrag/schema"
+import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
+import { createUuid } from "@rxdrag/shared"
+
 
 export const ReactionsInput = memo((props: {
   events?: IEventMeta[]

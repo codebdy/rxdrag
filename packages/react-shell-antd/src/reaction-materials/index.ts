@@ -1,36 +1,8 @@
-
-import { IReactionMaterial } from "@rxdrag/schema"
-import { auxReactions } from "./auxtools"
-import { basicReactions } from "./basic"
-import { commonReactions } from "./common"
-import { controllerReactions } from "./controller"
-import { dataModelReactions } from "./model"
-
-export interface MaterialCategory {
-  name: string,
-  materials: IReactionMaterial[]
-}
-
-export const reactionMaterialCategories: MaterialCategory[] = [
-  {
-    name: '$basicReactions',
-    materials: basicReactions,
-  },
-  {
-    name: '$commonReactions',
-    materials: commonReactions,
-  },
-  {
-    name: '$dataModel',
-    materials: dataModelReactions,
-  },
-  {
-    name: "$auxTools",
-    materials: auxReactions,
-  }
-]
-
-export const getAllMaterial = () => {
-  const materials: IReactionMaterial[] = [...controllerReactions]
-  return materials.concat(...reactionMaterialCategories.map(category => category.materials))
-}
+export * from "./auxtools"
+export * from "./basic"
+export * from "./common"
+export * from "./controller"
+export * from "./model"
+export * from "./baseSchema"
+export * from "./locales"
+export * from "./materials"

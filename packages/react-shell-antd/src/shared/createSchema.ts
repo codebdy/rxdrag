@@ -1,7 +1,5 @@
-import { INodeSchema } from "core";
-import { IBindParams } from "runner/ComponentRender/interfaces";
-import { IFieldMeta } from "runner/fieldy";
-import { IControllerMeta } from "runner/minions";
+import { IBindParams } from "@rxdrag/react-runner";
+import { IControllerMeta, IFieldMeta, INodeSchema } from "@rxdrag/schema";
 import { backgroundSetter } from "../SettingsForm/schemas/backgroundSetter";
 import { borderRediusSetter } from "../SettingsForm/schemas/borderRediusSetter";
 import { borderSetter } from "../SettingsForm/schemas/borderSetter";

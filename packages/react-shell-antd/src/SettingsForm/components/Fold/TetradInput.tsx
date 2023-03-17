@@ -1,7 +1,7 @@
+import React from "react"
 import { memo, useCallback, useMemo } from "react"
 import { Fold, FoldBase, FoldExtra } from "../Fold"
 import { SizeInput, SizeInputItem } from "../SizeInput"
-
 
 export const TetradInput = memo((props: {
   title?: string,

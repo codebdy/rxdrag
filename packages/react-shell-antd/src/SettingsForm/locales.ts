@@ -1,4 +1,4 @@
-import { reactionMaterialLocales } from "../materials/locales";
+import { reactionMaterialLocales } from "../reaction-materials"
 
 export const settingLocales = {
   "zh-CN": {

@@ -1,3 +1,4 @@
+import { DESTORY_EVENT_NAME, INIT_EVENT_NAME } from "@rxdrag/minions"
 
 
 export type LogicOptions = {

@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useState } from "react"
+import React, { memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components";
 import { Members } from "./components/Members";
 import { IControllerMeta, ILogicMetas } from "runner/minions/interfaces/metas";
