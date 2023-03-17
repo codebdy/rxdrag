@@ -357,6 +357,7 @@ importers:
 
   packages/react-locales:
     specifiers:
+      '@rxdrag/locales': ^1.0.0
       '@rxdrag/shared': ^1.0.0
       '@types/jest': ^26.0.7
       '@types/lodash': ^4.14.191
@@ -378,6 +379,7 @@ importers:
       tslib: ^2.5.0
       typescript: ^3.9.10
     dependencies:
+      '@rxdrag/locales': link:../locales
       '@rxdrag/shared': link:../shared
       lodash: registry.npmmirror.com/lodash/4.17.21
       react: registry.npmmirror.com/react/18.2.0
