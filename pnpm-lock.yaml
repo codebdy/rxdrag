@@ -244,6 +244,7 @@ importers:
       '@monaco-editor/react': ^4.4.6
       '@reduxjs/toolkit': ^1.9.3
       '@rxdrag/core': ^1.0.0
+      '@rxdrag/locales': ^1.0.0
       '@rxdrag/react-shared': ^1.0.0
       '@rxdrag/schema': ^1.0.0
       '@rxdrag/shared': ^1.0.0
@@ -273,6 +274,7 @@ importers:
       '@monaco-editor/react': registry.npmmirror.com/@monaco-editor/react/4.4.6_biqbaboplfbrettd7655fr4n2y
       '@reduxjs/toolkit': registry.npmmirror.com/@reduxjs/toolkit/1.9.3_react@18.2.0
       '@rxdrag/core': link:../core
+      '@rxdrag/locales': link:../locales
       '@rxdrag/react-shared': link:../react-shared
       '@rxdrag/schema': link:../schema
       '@rxdrag/shared': link:../shared

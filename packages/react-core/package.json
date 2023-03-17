@@ -68,6 +68,7 @@
     "@rxdrag/react-shared": "^1.0.0",
     "@rxdrag/schema": "^1.0.0",
     "@rxdrag/shared": "^1.0.0",
+    "@rxdrag/locales": "^1.0.0",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
