@@ -8,9 +8,9 @@ import { ListItemVariable } from "./ListItemVariable";
 import { NameDialog } from "./NameDialog";
 import { VariableDialog } from "./VariableDialog";
 import { IControllerMeta, IReactionDefineMeta, IVariableDefineMeta } from "@rxdrag/schema";
-import { useToolsTranslate } from "@rxdrag/react-core";
 import { methodIcon, variableIcon } from "@rxdrag/react-shared"
-import {createUuid} from "@rxdrag/shared"
+import { createUuid } from "@rxdrag/shared"
+import { useTranslate } from "@rxdrag/react-locales"
 
 const { Text } = Typography;
 
@@ -47,7 +47,7 @@ export const Members = memo((
   const [addReactionOpen, setAddReactionOpen] = useState(false)
   const [addVariableOpen, setAddVariableOpen] = useState(false)
 
-  const t = useToolsTranslate()
+  const t = useTranslate()
 
   const handleMemberClick = useCallback((id: string) => {
     if (id) {

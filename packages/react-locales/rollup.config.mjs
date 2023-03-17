@@ -17,6 +17,7 @@ export default {
   external: [
     "lodash", 
     "react",
+    "@rxdrag/locales"
   ],
   plugins: [
     // Exclude peer dependencies from the bundle
