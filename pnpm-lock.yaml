@@ -116,7 +116,8 @@ importers:
   packages/core:
     specifiers:
       '@reduxjs/toolkit': ^1.9.3
-      '@rxdrag/shared': 1.0.0
+      '@rxdrag/schema': ^1.0.0
+      '@rxdrag/shared': ^1.0.0
       '@types/jest': ^26.0.7
       '@types/resize-observer-browser': ^0.1.7
       babel-core: ^6.26.3
@@ -130,6 +131,7 @@ importers:
       typescript: ^3.8.3
     dependencies:
       '@reduxjs/toolkit': registry.npmmirror.com/@reduxjs/toolkit/1.9.3
+      '@rxdrag/schema': link:../schema
       '@rxdrag/shared': link:../shared
       lodash: registry.npmmirror.com/lodash/4.17.21
       redux: registry.npmmirror.com/redux/4.2.1
@@ -385,8 +387,10 @@ importers:
       '@antv/x6-plugin-selection': ^2.1.5
       '@antv/x6-react-shape': ^2.1.0
       '@reduxjs/toolkit': ^1.9.3
+      '@rxdrag/fieldy': ^1.0.0
       '@rxdrag/minions': ^1.0.0
       '@rxdrag/react-core': ^1.0.0
+      '@rxdrag/react-fieldy': ^1.0.0
       '@rxdrag/react-minions': ^1.0.0
       '@rxdrag/react-props-inputs': ^1.0.0
       '@rxdrag/react-shared': ^1.0.0
@@ -422,8 +426,10 @@ importers:
       '@antv/x6-plugin-selection': registry.npmmirror.com/@antv/x6-plugin-selection/2.1.5_@antv+x6@2.5.5
       '@antv/x6-react-shape': registry.npmmirror.com/@antv/x6-react-shape/2.1.1_xgfqvueruxflxzn2skgp353zve
       '@reduxjs/toolkit': registry.npmmirror.com/@reduxjs/toolkit/1.9.3_react@18.2.0
+      '@rxdrag/fieldy': link:../fieldy
       '@rxdrag/minions': link:../minions
       '@rxdrag/react-core': link:../react-core
+      '@rxdrag/react-fieldy': link:../react-fieldy
       '@rxdrag/react-minions': link:../react-minions
       '@rxdrag/react-props-inputs': link:../react-props-inputs
       '@rxdrag/react-shared': link:../react-shared
