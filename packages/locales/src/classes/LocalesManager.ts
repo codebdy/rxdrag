@@ -1,4 +1,4 @@
-import { ILocales, ILocalesManager } from "../interfaces/loacales";
+import { ILocales, ILocalesManager } from "../interfaces";
 import { isArr, isObj, isStr } from "@rxdrag/shared";
 import _ from "lodash"
 import { INodeSchema } from "@rxdrag/schema";
