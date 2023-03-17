@@ -45,5 +45,5 @@ QQ交流群：957619750
 
 ## 微信群 
 
-![微信群](https://github.com/rxdrag/rxeditor/blob/master/doc/images/wechatgroup2.jpg?raw=true)
+<img src="https://github.com/rxdrag/rxeditor/blob/master/doc/images/wechatgroup2.jpg?raw=true" alt="微信群" width="300" />
 
