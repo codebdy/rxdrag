@@ -1,7 +1,7 @@
 import { Col, Tooltip } from "antd"
 import React, { CSSProperties, forwardRef, memo } from "react"
 import cls from "classnames"
-import { isStr } from "core/utils/types"
+import { isStr } from "@rxdrag/shared"
 
 export type ValueIconProps = {
   icon?: React.ReactNode | string

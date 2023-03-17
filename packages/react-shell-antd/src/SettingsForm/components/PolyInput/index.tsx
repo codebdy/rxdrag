@@ -127,7 +127,7 @@ export const PolyInput = memo((
     <Container>
       {
         InputComponent &&
-        <InputComponent value={polyType.toInputValue?.(value)} onChange={handleInputChange} />
+        <InputComponent value={polyType?.toInputValue?.(value)} onChange={handleInputChange} />
       }
       <Button
         className='poly-button'

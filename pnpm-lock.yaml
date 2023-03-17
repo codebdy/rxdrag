@@ -630,6 +630,7 @@ importers:
       antd: 5.1.2
       babel-core: ^6.26.3
       babel-runtime: ^6.26.0
+      classnames: ^2.3.2
       insert-css: ^2.0.0
       jest: ^26.1.0
       lint-staged: ^13.2.0
@@ -657,6 +658,7 @@ importers:
       '@rxdrag/schema': link:../schema
       '@rxdrag/shared': link:../shared
       antd: registry.npmmirror.com/antd/5.1.2_biqbaboplfbrettd7655fr4n2y
+      classnames: registry.npmmirror.com/classnames/2.3.2
       insert-css: registry.npmmirror.com/insert-css/2.0.0
       react: registry.npmmirror.com/react/18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0

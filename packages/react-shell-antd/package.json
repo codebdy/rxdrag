@@ -25,12 +25,12 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
     "@types/antd": "^1.0.0",
     "@types/insert-css": "^2.0.1",
     "@types/jest": "^26.0.7",
     "@types/node": "^16.18.3",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
     "@types/styled-components": "^5.1.26",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
@@ -75,6 +75,7 @@
     "@rxdrag/schema": "^1.0.0",
     "@rxdrag/shared": "^1.0.0",
     "antd": "5.1.2",
+    "classnames": "^2.3.2",
     "insert-css": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
