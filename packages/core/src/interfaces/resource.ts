@@ -1,5 +1,5 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { ILocales } from "./loacales";
+import { ILocales } from "@rxdrag/locales";
 import { ID, RxProps } from "./types";
 
 export interface IResource<Icon = any> {

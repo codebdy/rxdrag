@@ -120,6 +120,7 @@ importers:
       '@rxdrag/schema': ^1.0.0
       '@rxdrag/shared': ^1.0.0
       '@types/jest': ^26.0.7
+      '@types/lodash': ^4.14.191
       '@types/resize-observer-browser': ^0.1.7
       babel-core: ^6.26.3
       babel-runtime: ^6.26.0
@@ -139,6 +140,7 @@ importers:
       redux: registry.npmmirror.com/redux/4.2.1
     devDependencies:
       '@types/jest': registry.npmmirror.com/@types/jest/26.0.24
+      '@types/lodash': registry.npmmirror.com/@types/lodash/4.14.191
       '@types/resize-observer-browser': registry.npmmirror.com/@types/resize-observer-browser/0.1.7
       babel-core: registry.npmmirror.com/babel-core/6.26.3
       babel-runtime: registry.npmmirror.com/babel-runtime/6.26.0

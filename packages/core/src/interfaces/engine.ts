@@ -4,11 +4,11 @@ import { IMonitor } from "./monitor"
 import { IResourceManager } from "./resource"
 import { ID } from "./types"
 import { IAction, IActions } from "./action"
-import { ILocalesManager } from "./loacales"
 import { IComponentManager } from "./component"
 import { IPlugin, IPluginFactory } from "./plugin"
 import { IDecoratorManager } from "./decorator"
 import { INodeSchema } from "@rxdrag/schema"
+import { ILocalesManager } from "@rxdrag/locales"
 
 export interface IDesignerEngine {
 	getLanguage(): string
