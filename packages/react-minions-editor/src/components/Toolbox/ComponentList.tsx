@@ -1,3 +1,4 @@
+import { setPropIcon } from "@rxdrag/react-shared";
 import { IControllerMeta, IReactionDefineMeta, IReactionMaterial, IReactionMeta } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { Space, Typography } from "antd";

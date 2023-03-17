@@ -1,6 +1,5 @@
-import { useCurrentNode } from "core-react/hooks/useCurrentNode";
+import { IReactionMeta, IConfigMeta, IControllerMeta } from "@rxdrag/schema";
 import { useCallback } from "react";
-import { IConfigMeta, IControllerMeta, IReactionMeta } from "runner/minions/interfaces/metas";
 import { useControllerNodes } from "./useControllerNodes";
 import { useGetMaterial } from "./useGetMaterial";
 

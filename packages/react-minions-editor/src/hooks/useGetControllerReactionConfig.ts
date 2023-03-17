@@ -1,7 +1,6 @@
+import { IConfigMeta, IReactionMaterial, IReactionMeta } from "@rxdrag/schema"
 import { useToken } from "antd/es/theme/internal"
 import { useCallback } from "react"
-import { IReactionMaterial } from "runner/minions/interfaces/material"
-import { IConfigMeta, IReactionMeta } from "runner/minions/interfaces/metas"
 import { useGetNodeHeight } from "./useGetNodeHeight"
 import { useGetNodeWidth } from "./useGetNodeWidth"
 import { useGetSubLabel } from "./useGetSubLabel"

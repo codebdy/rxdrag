@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { MIN_ZOOM } from "./utils";
 import { useZoom } from "./useZoom";
 
 export function useZoomOut() {

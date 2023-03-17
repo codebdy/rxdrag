@@ -12,7 +12,7 @@ import { useSelectedNode } from "../../hooks/useSelectedNode"
 import { PortsInput } from "./PortsInput"
 import { VariableSelect } from "./VariableSelect"
 import { PreviewRoot } from "@rxdrag/react-shared"
-import {VirtualForm} from "@rxdrag/react-fieldy"
+import { VirtualForm } from "@rxdrag/react-fieldy"
 
 const Title = styled.div`
   height: 40px;

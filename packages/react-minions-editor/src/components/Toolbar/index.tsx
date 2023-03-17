@@ -1,9 +1,7 @@
 import { ZoomOutOutlined, ZoomInOutlined } from "@ant-design/icons"
 import { Button, Divider, Space } from "antd"
 import { memo, useCallback } from "react"
-import { undoIcon, redoIcon } from "@rxdrag/react-shell-antd/icons"
 import styled from "styled-components"
-import { mapIcon, zoomResetIcon } from "../../../../../../icons/reactions"
 import { useRedo } from "../../hooks/edit-meta/useRedo"
 import { useZoomIn } from "../../hooks/useZoomIn"
 import { useZoomOut } from "../../hooks/useZoomOut"
@@ -15,6 +13,9 @@ import { useSelected } from "../../hooks/useSelected"
 import { useGraph } from "../../hooks/useGraph"
 import { useRedoList } from "../../hooks/useRedoList"
 import { useUndoList } from "../../hooks/useUndoList"
+import React from "react"
+import { MAX_ZOOM, MIN_ZOOM } from "@rxdrag/shared"
+import { undoIcon, redoIcon, zoomResetIcon, mapIcon } from "@rxdrag/react-shared"
 
 const StyledToolbar = styled.div`
   display: flex;

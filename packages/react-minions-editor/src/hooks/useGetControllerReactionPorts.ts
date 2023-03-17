@@ -1,4 +1,4 @@
-import { IPortMeta, IReactionMeta, ReactionType } from "@rxdrag/schema";
+import { IReactionMeta, ReactionType, IPortMeta } from "@rxdrag/schema";
 import { useCallback } from "react";
 import { useGetControllerMeta } from "./useGetControllerMeta";
 

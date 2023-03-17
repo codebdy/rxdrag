@@ -1,5 +1,5 @@
+import { IInvokeMeta } from "@rxdrag/schema"
 import { useCallback } from "react"
-import { IInvokeMeta } from "runner/minions/interfaces/metas"
 
 export function useGetEdgeConfig() {
 

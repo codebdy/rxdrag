@@ -1,5 +1,3 @@
-
-import { useToolsTranslate } from "@rxdrag/react-core";
 import { useCallback } from "react"
 
 export function useTrans() {

@@ -1,10 +1,10 @@
 import { useCallback } from "react";
-import { IConfigMeta, IReactionMeta, ReactionType } from "runner/minions/interfaces/metas";
 import { Node } from "@antv/x6"
 import { useGetNodeWidth } from "./useGetNodeWidth";
 import { useTransformPorts } from "./useTransformPorts";
 import { useGetNodeHeight } from "./useGetNodeHeight";
 import { useGetSubLabel } from "./useGetSubLabel";
+import { IConfigMeta, IReactionMeta, ReactionType } from "@rxdrag/schema";
 
 export function useUpdateNode() {
   const getNodeWidth = useGetNodeWidth()

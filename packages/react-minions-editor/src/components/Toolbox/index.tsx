@@ -4,12 +4,12 @@ import styled from "styled-components";
 import { useDnd } from "../../hooks/useDnd";
 import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
 import { ToolItem } from "./ToolItem";
-import { IReactionMeta } from "runner/minions/interfaces/metas";
-import { IReactionMaterial } from "runner/minions/interfaces/material";
 import { useTrans } from "../../hooks/useTrans";
 import { ComponentList } from "./ComponentList";
-import { reactionMaterialCategories } from "@rxdrag/react-shell-antd/materials";
 import { useGraph } from "../../hooks/useGraph";
+import { IReactionMaterial, IReactionMeta } from "@rxdrag/schema";
+import { createUuid } from "@rxdrag/shared";
+import React from "react";
 const { Panel } = AntdCollapse;
 
 const StyledToolbox = styled.div`
