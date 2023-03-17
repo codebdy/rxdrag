@@ -1,5 +1,6 @@
 import { IReactionMaterial } from "@rxdrag/schema"
 import {Controllers} from "@rxdrag/minions"
+import { IForm } from "@rxdrag/fieldy"
 
 export type Navigate = (url: string) => void
 
