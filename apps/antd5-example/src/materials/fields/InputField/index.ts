@@ -1,5 +1,5 @@
 
-import { IResource } from "core";
+import { IResource } from "@rxdrag/core";
 import { inputIcon } from "../../inputs/Input/icon";
 import { inputFieldResourceLocales } from "./locales";
 

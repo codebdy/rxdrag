@@ -1,6 +1,6 @@
 import React from "react"
 import { Button, Form, Input, Modal, Switch } from "antd"
-import {ControllerMetaEditor, IEventMeta} from "@rxdrag/react-minions-editor"
+import { ControllerMetaEditor, IEventMeta } from "@rxdrag/react-minions-editor"
 import { memo, useCallback, useEffect, useState } from "react"
 import { IControllerMeta, IReactionDefineMeta } from "@rxdrag/schema"
 import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
@@ -113,7 +113,12 @@ export const ReactionsInput = memo((props: {
           >
             {
               inputValue &&
-              <ControllerMetaEditor value={inputValue} onChange={handleConfigChange} />
+              <ControllerMetaEditor
+                value={inputValue}
+                onChange={handleConfigChange}
+                controllerMetas={[]}
+                mareials={[]}
+              />
             }
           </Modal>
         </>

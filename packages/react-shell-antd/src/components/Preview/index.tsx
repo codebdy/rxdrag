@@ -1,10 +1,7 @@
-import React from "react"
 import { useCallback, useMemo } from "react"
 import { memo } from "react"
-import { useDesignerEngine } from "../hooks";
 import { IDocument } from "@rxdrag/core";
-import { useDocumentViewTypeState } from "../hooks/useDocumentViewTypeState";
-import { CanvasShell } from "../canvas/CanvasShell";
+import { useDocumentViewTypeState, useDesignerEngine, CanvasShell } from "@rxdrag/react-core";
 
 export const IframePreview = memo((
   props: {

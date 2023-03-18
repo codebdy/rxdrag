@@ -2,7 +2,7 @@ import React, { CSSProperties, memo } from "react"
 import { Box } from "../../components/Box"
 import cls from "classnames"
 import "./style.less"
-import { useStyles } from "@rxdrag/react-shell-antd/hooks/useStyles"
+import { useStyles } from "../../hooks"
 
 export const CenterContent = memo((
   props: {

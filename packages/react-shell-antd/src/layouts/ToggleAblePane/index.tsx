@@ -1,6 +1,6 @@
 import React, { CSSProperties, memo, useCallback, useMemo, useState } from "react"
-import { useStyles } from "@rxdrag/react-shell-antd/hooks/useStyles";
 import { Box } from "../../components/Box"
+import { useStyles } from "../../hooks";
 import { ToggleAblePaneContext } from "./context";
 import "./style.less"
 import { ToggleButton, ToggleType } from "./ToggleButton";

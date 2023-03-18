@@ -19,11 +19,12 @@ import { ConfigRoot } from "./pannels/ShellContainer/ConfigRoot"
 import { DocumentView } from "./pannels/DocumentView"
 import { settingLocales } from "./SettingsForm/locales"
 import "./style.less"
-import { ILocales, IDocument, IDesignerEngine } from "@rxdrag/core"
+import { IDocument, IDesignerEngine } from "@rxdrag/core"
 import { Root, Designer } from "@rxdrag/react-core"
 import { componentsIcon, outlineIcon, historyIcon } from "@rxdrag/react-shared"
 import { INodeSchema } from "@rxdrag/schema"
 import { Workbench } from "./pannels"
+import {ILocales} from "@rxdrag/locales"
 
 export type Antd5EditorProps = {
   leftNav?: React.ReactNode,

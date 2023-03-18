@@ -1,5 +1,4 @@
-import { ITreeNode } from "core";
-import { IDecorator } from "core/interfaces/decorator";
+import { IDecorator, ITreeNode } from "@rxdrag/core";
 
 export const LINE_DECORTOR_NAME = "lineDecorator"
 export class LineDecorator implements IDecorator {
