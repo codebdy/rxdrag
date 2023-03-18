@@ -1,17 +1,15 @@
 import { useCallback } from "react"
-import { useControllerNodes } from "../../../react-shell-antd/src/SettingsForm/components/ReactionsInput/hooks/useControllerNodes"
-import { IControllerMeta } from "@rxdrag/schema"
+import { useAllControllers } from "./useAllControllers"
 
 export function useGetControllerMeta() {
-  const controllerNodes = useControllerNodes()
+  const controllerMetas = useAllControllers()
   const getControllerMeta = useCallback((controllerId: string) => {
-    for (const node of controllerNodes) {
-      const controllerMeta = node.meta["x-controller"] as IControllerMeta | undefined
-      if (controllerMeta?.id === controllerId) {
-        return controllerMeta
+    for (const ctrl of controllerMetas) {
+      if (ctrl?.id === controllerId) {
+        return ctrl
       }
     }
-  }, [controllerNodes])
+  }, [controllerMetas])
 
   return getControllerMeta
 }

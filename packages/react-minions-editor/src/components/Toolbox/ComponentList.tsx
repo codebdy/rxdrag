@@ -5,8 +5,8 @@ import { Space, Typography } from "antd";
 import React from "react";
 import { memo, useCallback } from "react"
 import styled from "styled-components";
+import { useAllControllers } from "../../hooks";
 import { useController } from "../../hooks/useController";
-import { useControllerNodes } from "../../../../react-shell-antd/src/SettingsForm/components/ReactionsInput/hooks/useControllerNodes";
 import { useDnd } from "../../hooks/useDnd";
 import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
 import { useGraph } from "../../hooks/useGraph";
@@ -79,19 +79,19 @@ export const ComponentList = memo((
     };
   }, [dnd, getNodeConfig, graph])
 
-  const controllerNodes = useControllerNodes()
+  const controllers = useAllControllers()
 
   return (
     <div>
       {
-        controllerNodes.map((node, index) => {
-          const controller: IControllerMeta = currentController?.id === node.meta?.["x-controller"]?.id ? currentController : node.meta?.["x-controller"]
+        controllers.map((ctrl, index) => {
+          const controller: IControllerMeta = currentController?.id === ctrl.id ? currentController : ctrl
           return (
             <Container
-              key={node.id}
+              key={ctrl.id}
             >
               <Typography.Text type="secondary" style={{ marginTop: index !== 0 ? 8 : 0 }}>
-                {controller.name || node.title}
+                {controller.name || "unnamed"}
               </Typography.Text>
               <ReactionList>
                 <Space direction="vertical">

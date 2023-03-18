@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useTranslate } from "../../../react-locales/src/hooks/useTranslate";
+import { useTranslate } from "@rxdrag/react-locales";
 
 export function useToolsTranslate() {
   const t1 = useTranslate("tools")

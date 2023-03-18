@@ -6,7 +6,6 @@ import { IControllerMeta, IReactionDefineMeta } from "@rxdrag/schema"
 import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
 
-
 export const ReactionsInput = memo((props: {
   events?: IEventMeta[]
   title: string,

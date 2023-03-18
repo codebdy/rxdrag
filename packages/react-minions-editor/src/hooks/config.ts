@@ -1,7 +1,7 @@
 import { Graph, Path } from "@antv/x6";
 import { register } from "@antv/x6-react-shape";
 import { Options } from "@antv/x6/lib/graph/options";
-import { ReactionNode } from "../ReactionNode";
+import { ReactionNode } from "../components";
 
 export const config: Partial<Options.Manual> = {
   panning: {
