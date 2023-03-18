@@ -1,5 +1,5 @@
-import { INodeSchema } from "core";
-import { createSchema, SchemaOptions, withFormItem } from "@rxdrag/react-shell-antd/shared/createSchema";
+import { INodeSchema } from "@rxdrag/schema";
+import { createSchema, SchemaOptions, withFormItem } from "@rxdrag/react-shell-antd";
 import { IBindParams } from "runner/ComponentRender/interfaces";
 import { IFieldMeta } from "runner/fieldy";
 import { IControllerMeta } from "runner/minions/interfaces/metas";

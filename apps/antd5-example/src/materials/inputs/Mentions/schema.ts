@@ -1,6 +1,6 @@
-import { INodeSchema } from "core";
+import { INodeSchema } from "@rxdrag/schema";
 import { inputBaseSchemas } from "../schemas";
-import { createSchema, SchemaOptions } from "@rxdrag/react-shell-antd/shared/createSchema";
+import { createSchema, SchemaOptions } from "@rxdrag/react-shell-antd";
 
 const mentionsNumberPros = [
   ...inputBaseSchemas,

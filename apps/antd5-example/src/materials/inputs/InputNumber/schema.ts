@@ -1,6 +1,6 @@
 import { inputBaseSchemas } from "../schemas";
-import { createSchema, SchemaOptions } from "@rxdrag/react-shell-antd/shared/createSchema";
-import { INodeSchema } from "core";
+import { createSchema, SchemaOptions } from "@rxdrag/react-shell-antd";
+import { INodeSchema } from "@rxdrag/schema";
 
 const inputNumberPros = [
   ...inputBaseSchemas,

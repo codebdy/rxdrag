@@ -1,4 +1,4 @@
-import { INodeSchema } from "core";
+import { INodeSchema } from "@rxdrag/schema";
 import { borderRediusSetter } from "@rxdrag/react-shell-antd/SettingsForm/schemas/borderRediusSetter";
 import { borderSetter } from "@rxdrag/react-shell-antd/SettingsForm/schemas/borderSetter";
 import { displaySetter } from "@rxdrag/react-shell-antd/SettingsForm/schemas/displaySetter";

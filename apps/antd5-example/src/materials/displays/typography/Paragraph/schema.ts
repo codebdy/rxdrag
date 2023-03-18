@@ -1,5 +1,5 @@
-import { INodeSchema } from "core";
-import { createSchema, SchemaOptions, withFormItem } from "@rxdrag/react-shell-antd/shared/createSchema";
+import { INodeSchema } from "@rxdrag/schema";
+import { createSchema, SchemaOptions, withFormItem } from "@rxdrag/react-shell-antd";
 import { typographySchema } from "../schema";
 
 const options: SchemaOptions = {
