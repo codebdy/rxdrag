@@ -1,10 +1,14 @@
-import { setPropIcon } from "@rxdrag/react-shared";
+import { useTrans, useGraph, useDnd, useGetNodeConfig, useController, useAllControllers } from "@rxdrag/react-minions-editor";
+import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon, variableIcon } from "@rxdrag/react-shared";
 import { IControllerMeta, IReactionDefineMeta, IReactionMaterial, IReactionMeta } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { Space, Typography } from "antd";
 import React from "react";
 import { memo, useCallback } from "react"
 import styled from "styled-components";
+import { reactionMaterial } from "../../../reaction-materials/controller/reaction";
+import { setPropMaterial } from "../../../reaction-materials/controller/setProp";
+import { setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "../../../reaction-materials/controller/variable";
 
 
 const Container = styled.div`

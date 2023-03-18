@@ -36,6 +36,7 @@ import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy";
 import { ComponentRender } from "@rxdrag/react-runner";
 import { PreviewRoot } from "@rxdrag/react-shared";
 import { INodeMeta } from "@rxdrag/schema";
+import { JSONInput, ValueInput } from "@rxdrag/react-props-inputs";
 
 
 const propertiesStyle: CSSProperties = {

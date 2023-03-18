@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
@@ -15,11 +16,11 @@
     "@rxdrag/minions": "workspace:*",
     "@rxdrag/react-core": "workspace:*",
     "@rxdrag/react-fieldy": "workspace:*",
+    "@rxdrag/react-locales": "workspace:*",
     "@rxdrag/react-minions-editor": "workspace:*",
     "@rxdrag/react-props-inputs": "workspace:*",
     "@rxdrag/react-runner": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
-    "@rxdrag/react-locales": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "antd": "5.1.2",
@@ -35,7 +36,9 @@
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
+    "@types/react-color": "^3.0.6",
     "@types/react-dom": "^18.0.11",
+    "@types/styled-components": "^5.1.26",
     "@vitejs/plugin-react": "^3.1.0",
     "typescript": "^4.9.3",
     "vite": "^4.2.0"

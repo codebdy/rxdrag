@@ -1,9 +1,9 @@
 import { forwardRef, memo, useMemo } from "react"
 import { Tabs as AntdTabs } from 'antd';
 import "./style.less"
-import { isArr } from "core/utils/types";
 import cls from "classnames"
-import { useComponentSchema } from "runner/ComponentRender/hooks/useComponentSchema";
+import { useComponentSchema } from "@rxdrag/react-runner";
+import { isArr } from "@rxdrag/shared";
 
 export const Tabs = memo(forwardRef<HTMLDivElement>((
   props: {
