@@ -1,3 +1,15 @@
+.rx-canvas-shell {
+  position: relative;
+  height: 0;
+  flex: 1;
+  width: 400px;
+  transform: scale3d(1, 1, 1);
+  display: flex;
+  flex-flow: column;
+}
+.rx-canvas-shell.transition {
+  transition: width 0.3s;
+}
 .rx-root-component {
   min-height: 100%;
   min-width: 100%;
@@ -29,16 +41,4 @@
   overflow: hidden;
   transform: scale3d(1, 1, 1);
   user-select: none;
-}
-.rx-canvas-shell {
-  position: relative;
-  height: 0;
-  flex: 1;
-  width: 400px;
-  transform: scale3d(1, 1, 1);
-  display: flex;
-  flex-flow: column;
-}
-.rx-canvas-shell.transition {
-  transition: width 0.3s;
 }

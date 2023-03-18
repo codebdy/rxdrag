@@ -1,5 +1,5 @@
 import { IInvokeMeta, ILogicMetas, IReactionMeta } from "@rxdrag/schema"
-import { ISnapshot } from "./contexts"
+import { ISnapshot } from "../interfaces"
 
 export enum ActionType {
   ADD_NODE = 'ReactionsEditor/ADD_NODE',
