@@ -1,6 +1,6 @@
 import { IReactionMeta, IConfigMeta, IControllerMeta } from "@rxdrag/schema";
 import { useCallback } from "react";
-import { useControllerNodes } from "./useControllerNodes";
+import { useControllerNodes } from "../../../react-shell-antd/src/SettingsForm/components/ReactionsInput/hooks/useControllerNodes";
 import { useGetMaterial } from "./useGetMaterial";
 
 export function useGetSubLabel() {

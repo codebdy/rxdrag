@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from "react"
-import { INodeData } from "../../interfaces"
+import { INodeData } from "../../interfaces/interfaces"
 import { Node } from "@antv/x6";
 import { ActionType } from "../../actions";
 import { useBackup } from "./useBackup";

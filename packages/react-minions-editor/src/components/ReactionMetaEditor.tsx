@@ -4,7 +4,7 @@ import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
 import { ActionType } from "../actions";
 import { EditorStore } from "../classes/EditorStore";
-import { GraphContext, ReacionsEditorStoreContext } from "../contexts"
+import { GraphContext, ReacionsEditorStoreContext } from "../interfaces/state"
 import { useCreateGraph } from "../hooks/useCreateGraph";
 import { Logic } from "./Logic";
 import { PropertyBox } from "./PropertyBox";

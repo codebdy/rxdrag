@@ -1,5 +1,5 @@
 import { IReactionMeta, IConfigMeta, ILogicMetas } from "@rxdrag/schema";
-import { ISnapshot } from "./contexts";
+import { ISnapshot } from "./state";
 
 export interface IEventMeta {
   name: string,

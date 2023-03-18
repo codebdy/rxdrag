@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
 import { ActionType } from "../actions"
-import { ISnapshot } from "../contexts"
+import { ISnapshot } from "../interfaces/state"
 import { useEditorStore } from "./useEditorStore"
 
 export function useRedoList() {

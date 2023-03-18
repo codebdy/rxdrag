@@ -6,7 +6,7 @@ import React from "react";
 import { memo, useCallback } from "react"
 import styled from "styled-components";
 import { useController } from "../../hooks/useController";
-import { useControllerNodes } from "../../hooks/useControllerNodes";
+import { useControllerNodes } from "../../../../react-shell-antd/src/SettingsForm/components/ReactionsInput/hooks/useControllerNodes";
 import { useDnd } from "../../hooks/useDnd";
 import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
 import { useGraph } from "../../hooks/useGraph";

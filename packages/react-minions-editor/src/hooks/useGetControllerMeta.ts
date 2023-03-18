@@ -1,5 +1,5 @@
 import { useCallback } from "react"
-import { useControllerNodes } from "./useControllerNodes"
+import { useControllerNodes } from "../../../react-shell-antd/src/SettingsForm/components/ReactionsInput/hooks/useControllerNodes"
 import { IControllerMeta } from "@rxdrag/schema"
 
 export function useGetControllerMeta() {

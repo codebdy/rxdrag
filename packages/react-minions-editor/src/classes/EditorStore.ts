@@ -2,8 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { invariant } from "@rxdrag/shared"
 import { Store } from "redux";
 import { Action } from "../actions";
-import { IState } from "../contexts";
-import { ChangeFlagChangeListener, MetasChangeListener, RedoListChangeListener, SelectedChangeListener, UndoListChangeListener, ZoomChangeListener } from "../interfaces";
+import { IState } from "../interfaces/state";
+import { ChangeFlagChangeListener, MetasChangeListener, RedoListChangeListener, SelectedChangeListener, UndoListChangeListener, ZoomChangeListener } from "../interfaces/interfaces";
 import { mainReducer } from "../reducers/mainReducer";
 
 export class EditorStore {

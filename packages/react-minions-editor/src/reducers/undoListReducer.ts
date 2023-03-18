@@ -1,5 +1,5 @@
 import { Action, ActionType, BackupAction, SetUndoListAction } from "../actions";
-import { ISnapshot } from "../contexts";
+import { ISnapshot } from "../interfaces/state";
 
 export function undoListReducer(state: ISnapshot[], action: Action) {
   switch (action.type) {

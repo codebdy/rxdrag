@@ -4,7 +4,7 @@ import { config } from "./config";
 import { Selection } from '@antv/x6-plugin-selection'
 import { MiniMap } from "@antv/x6-plugin-minimap";
 import { useToken } from "antd/es/theme/internal";
-import { INodeData } from "../interfaces";
+import { INodeData } from "../interfaces/interfaces";
 import { ReactionType } from "@rxdrag/schema";
 
 const magnetAvailabilityHighlighter = {

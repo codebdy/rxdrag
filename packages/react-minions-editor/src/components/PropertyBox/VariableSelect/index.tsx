@@ -1,10 +1,7 @@
-import { IControllerMeta } from "@rxdrag/schema"
 import { Select } from "antd"
 import React from "react"
 import { memo, useMemo } from "react"
-import { useController } from "../../../hooks/useController"
-import { useControllerNodes } from "../../../hooks/useControllerNodes"
-import { useSelectedNode } from "../../../hooks/useSelectedNode"
+import { useController, useSelectedNode, useAllControllers } from "../../../hooks/"
 
 export const VariableSelect = memo((
   props: {
@@ -13,14 +10,14 @@ export const VariableSelect = memo((
   }
 ) => {
   const { value, onChange } = props
-  const controllerNodes = useControllerNodes()
+  const controllers = useAllControllers()
   const currentController = useController()
   const selectedReactionNode = useSelectedNode()
   const targetController = useMemo(() => {
-    const node = controllerNodes.find(node => node.meta?.["x-controller"]?.id === selectedReactionNode?.config?.controllerId)
-    const controller: IControllerMeta = currentController?.id === node?.meta?.["x-controller"]?.id ? currentController : node?.meta?.["x-controller"]
+    const ctrl = controllers.find(ctrl => ctrl.id === selectedReactionNode?.config?.controllerId)
+    const controller = currentController?.id === ctrl?.id ? currentController : ctrl
     return controller
-  }, [controllerNodes, currentController, selectedReactionNode?.config?.controllerId])
+  }, [controllers, currentController, selectedReactionNode?.config?.controllerId])
 
   return (
     <Select

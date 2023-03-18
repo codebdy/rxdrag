@@ -5,7 +5,7 @@ import { GlobalToken } from 'antd/es/theme/interface'
 import { insertCss } from 'insert-css'
 import React from 'react'
 import styled from 'styled-components'
-import { INodeData } from '../interfaces'
+import { INodeData } from '../interfaces/interfaces'
 
 insertCss(`
 .x6-node-selected .node{

@@ -114,7 +114,7 @@ export const ReactionsInput = memo((props: {
           >
             {
               inputValue &&
-              <ReactionsEditor value={inputValue} onChange={handleConfigChange} />
+              <ControllerMetaEditor value={inputValue} onChange={handleConfigChange} />
             }
           </Modal>
         </>

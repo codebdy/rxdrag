@@ -1,5 +1,5 @@
 import { Action, ActionType, SetRedoListAction } from "../actions";
-import { ISnapshot } from "../contexts";
+import { ISnapshot } from "../interfaces/state";
 
 export function redoListReducer(state: ISnapshot[], action: Action) {
   switch (action.type) {

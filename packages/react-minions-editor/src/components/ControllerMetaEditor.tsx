@@ -1,7 +1,7 @@
 import { IControllerMeta, ILogicMetas } from "@rxdrag/schema";
 import React, { memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components";
-import { ControllerContext } from "./contexts";
+import { ControllerContext, ControllersContext } from "../contexts";
 import { ReactionMetaEditor } from "./ReactionMetaEditor"
 import { Members } from "./Members";
 
@@ -26,13 +26,14 @@ const LeftArea = styled.div`
   padding: 8px;
   overflow: auto;
 `
-export const ReactionsEditor = memo((
+export const ControllerMetaEditor = memo((
   props: {
     value: IControllerMeta,
     onChange?: (value?: IControllerMeta) => void,
+    controllerMetas: IControllerMeta[]
   }
 ) => {
-  const { value, onChange } = props
+  const { value, onChange, controllerMetas } = props
   const [selected, setSelected] = useState<string>()
 
   const handleMemberChange = useCallback((meta?: IControllerMeta) => {
@@ -59,25 +60,27 @@ export const ReactionsEditor = memo((
   }, [onChange, selected, value])
 
   return (
-    <ControllerContext.Provider value={value}>
-      <SytledContent id="reactions-editor-container">
-        <LeftArea>
-          <Members
-            value={value}
-            selected={selected}
-            onSelect={setSelected}
-            onChange={handleMemberChange}
-          />
-        </LeftArea>
-        {
-          selected && value &&
-          <ReactionMetaEditor
-            key={selected}
-            metas={metas}
-            onChange={handleChange}
-          />
-        }
-      </SytledContent>
-    </ControllerContext.Provider>
+    <ControllersContext.Provider value={controllerMetas}>
+      <ControllerContext.Provider value={value}>
+        <SytledContent id="reactions-editor-container">
+          <LeftArea>
+            <Members
+              value={value}
+              selected={selected}
+              onSelect={setSelected}
+              onChange={handleMemberChange}
+            />
+          </LeftArea>
+          {
+            selected && value &&
+            <ReactionMetaEditor
+              key={selected}
+              metas={metas}
+              onChange={handleChange}
+            />
+          }
+        </SytledContent>
+      </ControllerContext.Provider>
+    </ControllersContext.Provider>
   )
 })

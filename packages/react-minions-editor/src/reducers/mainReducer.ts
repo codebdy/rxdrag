@@ -1,5 +1,5 @@
 import { Action } from "../actions";
-import { initialState, IState } from "../contexts";
+import { initialState, IState } from "../interfaces/state";
 import { changeFlagReducer } from "./changeFlagReducer";
 import { metasReducer } from "./metasReducer";
 import { redoListReducer } from "./redoListReducer";
