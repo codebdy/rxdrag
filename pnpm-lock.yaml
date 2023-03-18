@@ -518,6 +518,73 @@ importers:
       '@antv/x6-plugin-selection': ^2.1.5
       '@antv/x6-react-shape': ^2.1.0
       '@reduxjs/toolkit': ^1.9.3
+      '@rxdrag/fieldy': workspace:*
+      '@rxdrag/locales': workspace:*
+      '@rxdrag/minions': workspace:*
+      '@rxdrag/react-fieldy': workspace:*
+      '@rxdrag/react-locales': workspace:*
+      '@rxdrag/react-minions': workspace:*
+      '@rxdrag/react-props-inputs': workspace:*
+      '@rxdrag/react-runner': workspace:*
+      '@rxdrag/react-shared': workspace:*
+      '@rxdrag/schema': workspace:*
+      '@rxdrag/shared': workspace:*
+      '@types/insert-css': ^2.0.1
+      '@types/react': ^18.0.28
+      '@types/react-dom': ^18.0.11
+      '@types/styled-components': ^5.1.26
+      '@vitejs/plugin-react': ^3.1.0
+      antd: 5.1.2
+      insert-css: ^2.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      redux: ^4.2.1
+      styled-components: ^5.3.9
+      typescript: ^4.9.3
+      vite: ^4.2.0
+    dependencies:
+      '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
+      '@antv/x6': registry.npmmirror.com/@antv/x6/2.5.5
+      '@antv/x6-plugin-dnd': registry.npmmirror.com/@antv/x6-plugin-dnd/2.0.4_@antv+x6@2.5.5
+      '@antv/x6-plugin-minimap': registry.npmmirror.com/@antv/x6-plugin-minimap/2.0.2_@antv+x6@2.5.5
+      '@antv/x6-plugin-selection': registry.npmmirror.com/@antv/x6-plugin-selection/2.1.5_@antv+x6@2.5.5
+      '@antv/x6-react-shape': registry.npmmirror.com/@antv/x6-react-shape/2.1.1_xgfqvueruxflxzn2skgp353zve
+      '@reduxjs/toolkit': registry.npmmirror.com/@reduxjs/toolkit/1.9.3_react@18.2.0
+      '@rxdrag/fieldy': link:../fieldy
+      '@rxdrag/locales': link:../locales
+      '@rxdrag/minions': link:../minions
+      '@rxdrag/react-fieldy': link:../react-fieldy
+      '@rxdrag/react-locales': link:../react-locales
+      '@rxdrag/react-minions': link:../react-minions
+      '@rxdrag/react-props-inputs': link:../react-props-inputs
+      '@rxdrag/react-runner': link:../react-runner
+      '@rxdrag/react-shared': link:../react-shared
+      '@rxdrag/schema': link:../schema
+      '@rxdrag/shared': link:../shared
+      antd: registry.npmmirror.com/antd/5.1.2_biqbaboplfbrettd7655fr4n2y
+      insert-css: registry.npmmirror.com/insert-css/2.0.0
+      react: registry.npmmirror.com/react/18.2.0
+      react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
+      redux: registry.npmmirror.com/redux/4.2.1
+      styled-components: registry.npmmirror.com/styled-components/5.3.9_biqbaboplfbrettd7655fr4n2y
+    devDependencies:
+      '@types/insert-css': registry.npmmirror.com/@types/insert-css/2.0.1
+      '@types/react': registry.npmmirror.com/@types/react/18.0.28
+      '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
+      '@types/styled-components': registry.npmmirror.com/@types/styled-components/5.1.26
+      '@vitejs/plugin-react': registry.npmmirror.com/@vitejs/plugin-react/3.1.0_vite@4.2.0
+      typescript: registry.npmmirror.com/typescript/4.9.5
+      vite: registry.npmmirror.com/vite/4.2.0
+
+  packages/react-minions-editor-o:
+    specifiers:
+      '@ant-design/icons': ^4.8.0
+      '@antv/x6': ^2.1.5
+      '@antv/x6-plugin-dnd': ^2.0.4
+      '@antv/x6-plugin-minimap': ^2.0.2
+      '@antv/x6-plugin-selection': ^2.1.5
+      '@antv/x6-react-shape': ^2.1.0
+      '@reduxjs/toolkit': ^1.9.3
       '@rxdrag/fieldy': ^1.0.0
       '@rxdrag/locales': ^1.0.0
       '@rxdrag/minions': ^1.0.0
@@ -806,7 +873,7 @@ importers:
       '@rxdrag/react-core': link:../react-core
       '@rxdrag/react-fieldy': link:../react-fieldy
       '@rxdrag/react-locales': link:../react-locales
-      '@rxdrag/react-minions-editor': link:../react-minions-editor
+      '@rxdrag/react-minions-editor': link:../react-minions-editor-o
       '@rxdrag/react-props-inputs': link:../react-props-inputs
       '@rxdrag/react-runner': link:../react-runner
       '@rxdrag/react-shared': link:../react-shared
@@ -5213,7 +5280,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': registry.npmmirror.com/@babel/plugin-transform-react-jsx-source/7.19.6_@babel+core@7.21.3
       magic-string: registry.npmmirror.com/magic-string/0.27.0
       react-refresh: registry.npmmirror.com/react-refresh/0.14.0
-      vite: registry.npmmirror.com/vite/4.2.0_@types+node@18.15.3
+      vite: registry.npmmirror.com/vite/4.2.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -17978,6 +18045,41 @@ packages:
     name: vary
     version: 1.1.2
     engines: {node: '>= 0.8'}
+
+  registry.npmmirror.com/vite/4.2.0:
+    resolution: {integrity: sha512-AbDTyzzwuKoRtMIRLGNxhLRuv1FpRgdIw+1y6AQG73Q5+vtecmvzKo/yk8X/vrHDpETRTx01ABijqUHIzBXi0g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vite/-/vite-4.2.0.tgz}
+    name: vite
+    version: 4.2.0
+    engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': '>= 14'
+      less: '*'
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      esbuild: registry.npmmirror.com/esbuild/0.17.12
+      postcss: registry.npmmirror.com/postcss/8.4.21
+      resolve: registry.npmmirror.com/resolve/1.22.1
+      rollup: registry.npmmirror.com/rollup/3.19.1
+    optionalDependencies:
+      fsevents: registry.npmmirror.com/fsevents/2.3.2
+    dev: true
 
   registry.npmmirror.com/vite/4.2.0_@types+node@18.15.3:
     resolution: {integrity: sha512-AbDTyzzwuKoRtMIRLGNxhLRuv1FpRgdIw+1y6AQG73Q5+vtecmvzKo/yk8X/vrHDpETRTx01ABijqUHIzBXi0g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vite/-/vite-4.2.0.tgz}
