@@ -57,7 +57,7 @@ export class DesignerEngine implements IDesignerEngine {
 		return this.getMonitor().getState().lang
 	}
 	setLanguage(lang: string): void {
-		this.getLoacalesManager().setLanguage(lang)
+		this.getLoacalesManager().lang = lang
 		this.dispatch({
 			type: SET_LANGUAGE,
 			payload: lang

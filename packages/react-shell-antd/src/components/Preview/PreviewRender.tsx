@@ -1,14 +1,10 @@
+import { IDocument } from "@rxdrag/core"
+import { IComponents, PreviewRoot } from "@rxdrag/react-shared"
+import { IReactionMaterial, INodeSchema } from "@rxdrag/schema"
 import React from "react"
-import { useToken } from "antd/es/theme/internal"
-import { useDocumentViewTypeState } from "core-react/hooks/useDocumentViewTypeState"
-import { IComponents } from "core-react/interfaces"
-import { PreviewRoot } from "core-react/PreviewRoot"
-import { IDocument, INodeSchema } from "core/interfaces"
 import { memo, useEffect, useMemo, useState } from "react"
-import { ComponentRender } from "runner/ComponentRender"
-import { Fieldy, VirtualForm } from "runner/fieldy"
-import { IReactionMaterial } from "runner/minions"
 import { ThemeProvider } from "styled-components"
+
 
 export const PreviewRender = memo((
   props: {
