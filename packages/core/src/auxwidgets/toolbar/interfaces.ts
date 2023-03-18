@@ -17,4 +17,3 @@ export interface IAuxControl {
   teardown(): void
 }
 
-export { ITreeNode }
