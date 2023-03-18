@@ -10,6 +10,7 @@ import { useGraph } from "../../hooks/useGraph";
 import { IReactionMaterial, IReactionMeta } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import React from "react";
+import { useMaterialCategories } from "@rxdrag/react-minions";
 const { Panel } = AntdCollapse;
 
 const StyledToolbox = styled.div`
@@ -33,6 +34,7 @@ export const Toolbox = memo((props: {
   const graph = useGraph()
   const dnd = useDnd()
   const getNodeConfig = useGetNodeConfig()
+  const materialCategories = useMaterialCategories()
 
   const startDragFn = useCallback((marterial: IReactionMaterial) => {
     return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -53,9 +55,9 @@ export const Toolbox = memo((props: {
 
   return (
     <StyledToolbox>
-      <Collapse defaultActiveKey={[reactionMaterialCategories?.[0].name]} bordered={false} accordion expandIconPosition="end">
+      <Collapse defaultActiveKey={[materialCategories?.[0].name]} bordered={false} accordion expandIconPosition="end">
         {
-          reactionMaterialCategories.map(category => {
+          materialCategories.map(category => {
             return (
               <Panel key={category.name} header={t(category.name)}>
                 <Row gutter={8}>

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ControllerContext, ControllersContext } from "../contexts";
 import { ReactionMetaEditor } from "./ReactionMetaEditor"
 import { Members } from "./Members";
-import { MaterialsContext } from "@rxdrag/react-minions";
+import { Minions } from "@rxdrag/react-minions";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -62,7 +62,7 @@ export const ControllerMetaEditor = memo((
   }, [onChange, selected, value])
 
   return (
-    <MaterialsContext.Provider value={mareials}>
+    <Minions materials={mareials}>
       <ControllersContext.Provider value={controllerMetas}>
         <ControllerContext.Provider value={value}>
           <SytledContent id="reactions-editor-container">
@@ -85,6 +85,6 @@ export const ControllerMetaEditor = memo((
           </SytledContent>
         </ControllerContext.Provider>
       </ControllersContext.Provider>
-    </MaterialsContext.Provider>
+    </Minions>
   )
 })
