@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GraphContext } from "../interfaces/state";
+import { GraphContext } from "../contexts";
 
 export function useGraph() {
   return useContext(GraphContext)
