@@ -1,6 +1,6 @@
+import { IDesignerEngine, IDocument } from "@rxdrag/core";
+import { IComponents } from "@rxdrag/react-shared";
 import React from "react"
-import { IComponents } from "core-react/interfaces";
-import { IDesignerEngine, IDocument } from "core/interfaces";
 import { memo } from "react"
 import { CanvasRender } from "../CanvasRender"
 
