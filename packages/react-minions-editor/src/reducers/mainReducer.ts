@@ -6,6 +6,7 @@ import { redoListReducer } from "./redoListReducer";
 import { selectedReducer } from "./selectedReducer";
 import { undoListReducer } from "./undoListReducer";
 import { zoomReducer } from "./zoomReducer";
+import * as tslib from 'tslib';
 
 export const mainReducer = (
   { changeFlag, redoList, undoList, metas, selected, zoom }: IState = initialState,

@@ -37,7 +37,8 @@ export default {
     "@antv/x6-plugin-selection",
     "@antv/x6-plugin-dnd",
     "@antv/x6-plugin-minimap",
-    "antd/es/theme/internal",
+    "antd/es/theme/internal"
+
   ],
   plugins: [
     less(),
