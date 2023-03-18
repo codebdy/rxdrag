@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useDesignerEngine } from "./useDesignerEngine";
 import { useLanguage } from "./useLanguage";
-import { useTranslate } from "@react/react-locales";
+import { useTranslate } from "@rxdrag/react-locales";
 
 export function useComponentTranslate(component: string) {
   const t1 = useTranslate("components")

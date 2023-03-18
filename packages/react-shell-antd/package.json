@@ -25,7 +25,6 @@
     ]
   },
   "devDependencies": {
-    "@types/antd": "^1.0.0",
     "@types/insert-css": "^2.0.1",
     "@types/jest": "^26.0.7",
     "@types/node": "^16.18.3",
@@ -68,9 +67,9 @@
     "@rxdrag/core": "^1.0.0",
     "@rxdrag/fieldy": "^1.0.0",
     "@rxdrag/minions": "^1.0.0",
-    "@rxdrag/react-minions-editor": "^1.0.0",
     "@rxdrag/react-core": "^1.0.0",
     "@rxdrag/react-fieldy": "^1.0.0",
+    "@rxdrag/react-minions-editor": "^1.0.0",
     "@rxdrag/react-props-inputs": "^1.0.0",
     "@rxdrag/react-runner": "^1.0.0",
     "@rxdrag/react-shared": "^1.0.0",
