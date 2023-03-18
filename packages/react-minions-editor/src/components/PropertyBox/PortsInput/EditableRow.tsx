@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form } from 'antd';
-import { EditableContext } from './PortsTable';
+import { EditableContext } from "./EditableContext";
 
 export interface EditableRowProps {
   index: number;

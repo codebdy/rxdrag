@@ -73,9 +73,10 @@ export const ReactionMetaEditor = memo((
   props: {
     metas?: ILogicMetas,
     onChange: (meta: ILogicMetas) => void,
+    toolbox?: React.ReactNode,
   }
 ) => {
-  const { metas, onChange } = props
+  const { metas, onChange, toolbox } = props
   const emptyMetas = useMemo(() => ({
     reactions: [],
     invokes: []
@@ -105,7 +106,9 @@ export const ReactionMetaEditor = memo((
         <CenterArea>
           <Toolbar showMap={showMap} toggleShowMap={handleToggleMap} />
           <OpeateArea>
-            <Toolbox />
+            <Toolbox>
+              {toolbox}
+            </Toolbox>
             <CanvasArea>
               <CanvasContainer id="reactions-canvas-container" >
                 <Logic onChange={handleChange} />

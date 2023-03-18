@@ -1,7 +1,6 @@
 import React, { memo, useCallback, useMemo, useState } from 'react';
 import { Space } from 'antd';
 import { Button, Table } from 'antd';
-import type { FormInstance } from 'antd/es/form';
 import styled from 'styled-components';
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import { EditableCell } from './EditableCell';
@@ -35,8 +34,6 @@ const Footer = styled.div`
   justify-content: flex-end;
   margin-top: 16px;
 `
-
-export const EditableContext = React.createContext<FormInstance<any> | null>(null);
 
 type EditableTableProps = Parameters<typeof Table>[0];
 

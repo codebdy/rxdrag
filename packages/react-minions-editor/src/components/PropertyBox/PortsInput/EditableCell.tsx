@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { InputRef } from 'antd';
 import { Form, Input } from 'antd';
-import { EditableContext } from './PortsTable';
+import { EditableContext } from "./EditableContext";
 
 interface Item {
   key: string;

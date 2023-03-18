@@ -1,16 +1,11 @@
 import { Collapse as AntdCollapse, Row } from "antd";
-import { memo, useCallback } from "react";
+import { memo, ReactNode } from "react";
 import styled from "styled-components";
-import { useDnd } from "../../hooks/useDnd";
-import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
+import React from "react";
 import { ToolItem } from "./ToolItem";
 import { useTrans } from "../../hooks/useTrans";
-import { ComponentList } from "./ComponentList";
-import { useGraph } from "../../hooks/useGraph";
-import { IReactionMaterial, IReactionMeta } from "@rxdrag/schema";
-import { createUuid } from "@rxdrag/shared";
-import React from "react";
 import { useMaterialCategories } from "@rxdrag/react-minions";
+import { ReactionResource } from "./ReactionResource"
 const { Panel } = AntdCollapse;
 
 const StyledToolbox = styled.div`
@@ -29,29 +24,11 @@ const Collapse = styled(AntdCollapse)`
 `
 
 export const Toolbox = memo((props: {
+  children?: ReactNode
 }) => {
+  const { children } = props
   const t = useTrans();
-  const graph = useGraph()
-  const dnd = useDnd()
-  const getNodeConfig = useGetNodeConfig()
   const materialCategories = useMaterialCategories()
-
-  const startDragFn = useCallback((marterial: IReactionMaterial) => {
-    return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-      if (!graph) {
-        return;
-      }
-      const nodeMeta: IReactionMeta = {
-        id: createUuid(),
-        label: t(marterial.label),
-        type: marterial.reactionType,
-        materialName: marterial.name,
-        ...marterial.meta
-      }
-      const node = graph.createNode(getNodeConfig(nodeMeta));
-      dnd?.start(node, e.nativeEvent as any);
-    };
-  }, [dnd, getNodeConfig, graph, t])
 
   return (
     <StyledToolbox>
@@ -63,13 +40,19 @@ export const Toolbox = memo((props: {
                 <Row gutter={8}>
                   {
                     category.materials.map((reaction) => {
-                      return (<ToolItem
-                        key={reaction.name}
-                        icon={reaction.icon}
-                        title={reaction.label}
-                        color={reaction.color}
-                        onMouseDown={startDragFn(reaction)}
-                      />)
+                      return <ReactionResource key={reaction.name} material={reaction}>
+                        {
+                          (onStartDrag) => {
+                            return <ToolItem
+                              icon={reaction.icon}
+                              title={reaction.label}
+                              color={reaction.color}
+                              onMouseDown={onStartDrag}
+                            />
+                          }
+                        }
+                      </ReactionResource>
+
                     })
                   }
                 </Row>
@@ -77,9 +60,9 @@ export const Toolbox = memo((props: {
             )
           })
         }
-        <Panel header={t('$componentControl')} key="componentControl">
-          <ComponentList />
-        </Panel>
+        {
+          children
+        }
       </Collapse>
     </StyledToolbox>
   )

@@ -5,12 +5,7 @@ import { Space, Typography } from "antd";
 import React from "react";
 import { memo, useCallback } from "react"
 import styled from "styled-components";
-import { useAllControllers } from "../../hooks";
-import { useController } from "../../hooks/useController";
-import { useDnd } from "../../hooks/useDnd";
-import { useGetNodeConfig } from "../../hooks/useGetNodeConfig";
-import { useGraph } from "../../hooks/useGraph";
-import { useTrans } from "../../hooks/useTrans";
+
 
 const Container = styled.div`
   display: flex;

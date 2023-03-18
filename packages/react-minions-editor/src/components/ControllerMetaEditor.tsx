@@ -33,9 +33,10 @@ export const ControllerMetaEditor = memo((
     onChange?: (value?: IControllerMeta) => void,
     controllerMetas: IControllerMeta[],
     mareials: ReactionMaterialCategory<ReactNode>[],
+    toolbox?: React.ReactNode,
   }
 ) => {
-  const { value, onChange, controllerMetas, mareials } = props
+  const { value, onChange, controllerMetas, mareials, toolbox } = props
   const [selected, setSelected] = useState<string>()
 
   const handleMemberChange = useCallback((meta?: IControllerMeta) => {
@@ -80,6 +81,7 @@ export const ControllerMetaEditor = memo((
                 key={selected}
                 metas={metas}
                 onChange={handleChange}
+                toolbox = {toolbox}
               />
             }
           </SytledContent>
