@@ -1,3 +1,4 @@
+import React from "react"
 import { ZoomOutOutlined, ZoomInOutlined } from "@ant-design/icons"
 import { Button, Divider, Space } from "antd"
 import { memo, useCallback } from "react"
@@ -13,9 +14,8 @@ import { useSelected } from "../../hooks/useSelected"
 import { useGraph } from "../../hooks/useGraph"
 import { useRedoList } from "../../hooks/useRedoList"
 import { useUndoList } from "../../hooks/useUndoList"
-import React from "react"
-import { MAX_ZOOM, MIN_ZOOM } from "@rxdrag/shared"
 import { undoIcon, redoIcon, zoomResetIcon, mapIcon } from "@rxdrag/react-shared"
+import { MIN_ZOOM, MAX_ZOOM } from "../../hooks/consts"
 
 const StyledToolbar = styled.div`
   display: flex;

@@ -1,9 +1,10 @@
-import { IControllerMeta, ILogicMetas } from "@rxdrag/schema";
-import React, { memo, useCallback, useMemo, useState } from "react"
+import { IControllerMeta, ILogicMetas, ReactionMaterialCategory } from "@rxdrag/schema";
+import React, { memo, ReactNode, useCallback, useMemo, useState } from "react"
 import styled from "styled-components";
 import { ControllerContext, ControllersContext } from "../contexts";
 import { ReactionMetaEditor } from "./ReactionMetaEditor"
 import { Members } from "./Members";
+import { MaterialsContext } from "@rxdrag/react-minions";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -30,10 +31,11 @@ export const ControllerMetaEditor = memo((
   props: {
     value: IControllerMeta,
     onChange?: (value?: IControllerMeta) => void,
-    controllerMetas: IControllerMeta[]
+    controllerMetas: IControllerMeta[],
+    mareials: ReactionMaterialCategory<ReactNode>[],
   }
 ) => {
-  const { value, onChange, controllerMetas } = props
+  const { value, onChange, controllerMetas, mareials } = props
   const [selected, setSelected] = useState<string>()
 
   const handleMemberChange = useCallback((meta?: IControllerMeta) => {
@@ -60,27 +62,29 @@ export const ControllerMetaEditor = memo((
   }, [onChange, selected, value])
 
   return (
-    <ControllersContext.Provider value={controllerMetas}>
-      <ControllerContext.Provider value={value}>
-        <SytledContent id="reactions-editor-container">
-          <LeftArea>
-            <Members
-              value={value}
-              selected={selected}
-              onSelect={setSelected}
-              onChange={handleMemberChange}
-            />
-          </LeftArea>
-          {
-            selected && value &&
-            <ReactionMetaEditor
-              key={selected}
-              metas={metas}
-              onChange={handleChange}
-            />
-          }
-        </SytledContent>
-      </ControllerContext.Provider>
-    </ControllersContext.Provider>
+    <MaterialsContext.Provider value={mareials}>
+      <ControllersContext.Provider value={controllerMetas}>
+        <ControllerContext.Provider value={value}>
+          <SytledContent id="reactions-editor-container">
+            <LeftArea>
+              <Members
+                value={value}
+                selected={selected}
+                onSelect={setSelected}
+                onChange={handleMemberChange}
+              />
+            </LeftArea>
+            {
+              selected && value &&
+              <ReactionMetaEditor
+                key={selected}
+                metas={metas}
+                onChange={handleChange}
+              />
+            }
+          </SytledContent>
+        </ControllerContext.Provider>
+      </ControllersContext.Provider>
+    </MaterialsContext.Provider>
   )
 })

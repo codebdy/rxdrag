@@ -1,7 +1,7 @@
 
 import { useCallback } from "react";
 import { useZoom } from "./useZoom";
-import { MAX_ZOOM } from "./utils";
+import { MAX_ZOOM } from "./consts";
 
 export function useZoomIn() {
   const { zoom = 1, setZoom } = useZoom()

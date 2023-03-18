@@ -1,17 +1,14 @@
 
-import { IReactionMaterial } from "@rxdrag/schema"
+import { IReactionMaterial, ReactionMaterialCategory } from "@rxdrag/schema"
+import { ReactNode } from "react"
 import { auxReactions } from "./auxtools"
 import { basicReactions } from "./basic"
 import { commonReactions } from "./common"
 import { controllerReactions } from "./controller"
 import { dataModelReactions } from "./model"
 
-export interface MaterialCategory {
-  name: string,
-  materials: IReactionMaterial[]
-}
 
-export const reactionMaterialCategories: MaterialCategory[] = [
+export const reactionMaterialCategories: ReactionMaterialCategory<ReactNode>[] = [
   {
     name: '$basicReactions',
     materials: basicReactions,

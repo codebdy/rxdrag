@@ -17,3 +17,8 @@ export interface IReactionMaterial<ComponentNode = any> {
   subTitle?: (config?: IConfigMeta) => string | undefined,
   reaction?: ReactionFactory
 }
+
+export interface ReactionMaterialCategory<ComponentNode = any> {
+  name: string;
+  materials: IReactionMaterial<ComponentNode>[];
+}
