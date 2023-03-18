@@ -1,13 +1,12 @@
+import { ISnapshot } from "@rxdrag/core";
+import { useSnapshots, useActivedDocument } from "@rxdrag/react-core";
 import { Table } from "antd";
 import { ColumnsType } from "antd/es/table";
-import { ISnapshot } from "core";
-import { useActivedDocument } from "core-react/hooks/useActivedDocument";
-import { useSnapshots } from "core-react/hooks/useSnapshots";
 import dayjs from "dayjs";
 import React, { memo, useCallback, useMemo } from "react"
-import { PaneContainer } from "@rxdrag/react-shell-antd/layouts/ToggleAblePane/PaneContainer"
-import { PanelContent } from "@rxdrag/react-shell-antd/layouts/ToggleAblePane/PanelContent"
-import { PaneTitle } from "@rxdrag/react-shell-antd/layouts/ToggleAblePane/PaneTitle"
+import { PaneContainer } from "../../layouts/ToggleAblePane/PaneContainer";
+import { PanelContent } from "../../layouts/ToggleAblePane/PanelContent";
+import { PaneTitle } from "../../layouts/ToggleAblePane/PaneTitle";
 
 interface DataType {
   key: string;

@@ -1,11 +1,9 @@
+import { useDesignerEngine, useDocument, useToolsTranslate } from "@rxdrag/react-core"
+import { lineIcon, marginIcon } from "@rxdrag/react-shared"
 import { Button, Space, Tooltip } from "antd"
-import { useDesignerEngine } from "core-react/hooks"
-import { useDocument } from "core-react/hooks/useDocument"
-import { useToolsTranslate } from "core-react/hooks/useToolsTranslate"
 import { memo, useCallback, useEffect, useState } from "react"
 import { LineDecorator, LINE_DECORTOR_NAME } from "../decorators/LineDecorator"
 import { MarginDecorator, MARGIN_DECORATOR_NAME } from "../decorators/MarginDecorator"
-import { lineIcon, marginIcon } from "../icons"
 import { SvgIcon } from "../layouts/CanvasToolbar/SvgIcon"
 
 export const AuxButtionsButtions = memo(() => {

@@ -1,6 +1,5 @@
+import { useDesignerEngine, useLanguage } from "@rxdrag/react-core"
 import { Radio, RadioChangeEvent } from "antd"
-import { useDesignerEngine } from "core-react/hooks"
-import { useLanguage } from "core-react/hooks/useLanguage"
 import { memo, useCallback } from "react"
 
 export const LangButtons = memo(() => {

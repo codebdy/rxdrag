@@ -1,10 +1,7 @@
+import { useDocumentViewTypeState, useActivedDocumentIdState, useActions, useToolsTranslate } from "@rxdrag/react-core"
+import { designIcon, jsonIcon, playIcon } from "@rxdrag/react-shared"
 import { Button, Space, Tooltip } from "antd"
-import { useActions } from "core-react/hooks/useActions"
-import { useActivedDocumentIdState } from "core-react/hooks/useActivedDocumentIdState"
-import { useDocumentViewTypeState } from "core-react/hooks/useDocumentViewTypeState"
-import { useToolsTranslate } from "core-react/hooks/useToolsTranslate"
 import { memo, useCallback, useEffect } from "react"
-import { designIcon, jsonIcon, playIcon } from "../icons"
 import { SvgIcon } from "../layouts/CanvasToolbar/SvgIcon"
 
 export const ViewButtons = memo(() => {

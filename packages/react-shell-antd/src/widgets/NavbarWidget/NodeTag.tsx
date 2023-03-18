@@ -1,9 +1,6 @@
+import { useActiveIdState, useCurrentNode, useTreeNode, useSelect } from "@rxdrag/react-core";
+import { ID } from "@rxdrag/shared";
 import { useToken } from "antd/es/theme/internal"
-import { ID } from "core"
-import { useActiveIdState } from "core-react/hooks/useActiveIdState"
-import { useCurrentNode } from "core-react/hooks/useCurrentNode"
-import { useSelect } from "core-react/hooks/useSelect"
-import { useTreeNode } from "core-react/hooks/useTreeNode"
 import { memo, useCallback, useMemo } from "react"
 
 export const NodeTag = memo((props: {

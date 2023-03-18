@@ -1,8 +1,5 @@
+import { useCurrentNode, useTreeNode, useRemoveSlot, useAddSlot } from "@rxdrag/react-core"
 import { Switch } from "antd"
-import { useAddSlot } from "core-react/hooks/useAddSlot"
-import { useCurrentNode } from "core-react/hooks/useCurrentNode"
-import { useRemoveSlot } from "core-react/hooks/useRemoveSlot"
-import { useTreeNode } from "core-react/hooks/useTreeNode"
 import { memo, useCallback, useMemo } from "react"
 
 export const SlotSwitch = memo((props: {

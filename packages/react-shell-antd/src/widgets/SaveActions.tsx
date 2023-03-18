@@ -1,5 +1,5 @@
+import { useTranslate } from "@rxdrag/react-locales"
 import { Button, Space } from "antd"
-import { useTranslate } from "core-react/hooks/useTranslate"
 import { memo } from "react"
 
 export const SaveActions = memo(() => {

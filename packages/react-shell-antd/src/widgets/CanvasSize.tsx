@@ -2,10 +2,10 @@ import { Button, Space, Tooltip } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import { SvgIcon } from "../layouts/CanvasToolbar/SvgIcon"
 import { SlScreenDesktop, SlScreenTablet } from "react-icons/sl";
-import { mobileIcon, responsiveIcon } from "../icons";
-import { useToolsTranslate } from "core-react/hooks/useToolsTranslate";
-import { CanvasWidthLimits } from "core";
-import { useCanvasWidthLimitsState } from "core-react/hooks/useCanvasWidthLimitsState";
+import { CanvasWidthLimits } from "@rxdrag/core";
+import { useCanvasWidthLimitsState, useToolsTranslate } from "@rxdrag/react-core";
+import { mobileIcon, responsiveIcon } from "@rxdrag/react-shared";
+
 
 export enum ScreenType {
   Desktop = "desktop",

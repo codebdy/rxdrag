@@ -1,8 +1,7 @@
+import { IResourceNode } from "@rxdrag/core"
+import { IComponentMaterial, useRegisterComponentMaterial } from "@rxdrag/react-core"
 import { Col } from "antd"
 import { useToken } from "antd/es/theme/internal"
-import { IResourceNode } from "core"
-import { IComponentMaterial } from "core-react"
-import { useRegisterComponentMaterial } from "core-react/hooks/useRegisterComponentMaterial"
 import { memo, useEffect, useState } from "react"
 import "./style.less"
 

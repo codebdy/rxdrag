@@ -2,10 +2,8 @@ import React, { CSSProperties, memo } from "react"
 import { useStyles } from "../../hooks/useStyles";
 import cls from "classnames"
 import "./style.less"
-import { useCurrentNode } from "core-react/hooks/useCurrentNode";
 import { NodeTag } from "./NodeTag";
-import { useDocumentViewTypeState } from "core-react/hooks/useDocumentViewTypeState";
-import { useDocument } from "core-react/hooks/useDocument";
+import { useCurrentNode, useDocument, useDocumentViewTypeState } from "@rxdrag/react-core";
 
 export const NavbarWidget = memo((
   props: {

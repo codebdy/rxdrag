@@ -1,17 +1,12 @@
 import { DownOutlined } from "@ant-design/icons";
+import { useActiveIdState, useGetNode, useActions, useCurrentTree, useNodeChanged, useSelectedNodeIds } from "@rxdrag/react-core";
+import { ID } from "@rxdrag/shared";
 import { Tree, TreeProps } from "antd";
 import { DataNode } from "antd/es/tree";
-import { ID } from "core";
-import { useActions } from "core-react/hooks/useActions";
-import { useActiveIdState } from "core-react/hooks/useActiveIdState";
-import { useCurrentTree } from "core-react/hooks/useCurrentTree";
-import { useGetNode } from "core-react/hooks/useGetNode";
-import { useNodeChanged } from "core-react/hooks/useNodeChanged";
-import { useSelectedNodeIds } from "core-react/hooks/useSelectedNodeIds";
 import { Key, memo, useCallback, useMemo } from "react"
-import { PaneContainer } from "@rxdrag/react-shell-antd/layouts/ToggleAblePane/PaneContainer"
-import { PanelContent } from "@rxdrag/react-shell-antd/layouts/ToggleAblePane/PanelContent"
-import { PaneTitle } from "@rxdrag/react-shell-antd/layouts/ToggleAblePane/PaneTitle"
+import { PaneContainer } from "../../layouts/ToggleAblePane/PaneContainer";
+import { PanelContent } from "../../layouts/ToggleAblePane/PanelContent";
+import { PaneTitle } from "../../layouts/ToggleAblePane/PaneTitle";
 
 export const OutlineWidget = memo((
   props: {

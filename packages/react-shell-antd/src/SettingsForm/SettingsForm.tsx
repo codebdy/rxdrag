@@ -1,16 +1,9 @@
 import { CSSProperties, memo, useCallback, useMemo } from "react"
-import { useCurrentNode } from "core-react/hooks/useCurrentNode"
 import { Checkbox, Form, Input, InputNumber, Radio, Select, Slider, Switch } from 'antd';
 import { Tabs } from "./components/Tabs";
 import { TabPanel } from "./components/Tabs/TabPanel";
-import { INodeMeta } from "core";
-import { Fieldy, VirtualForm } from "runner/fieldy";
-import { useDesignerEngine } from "core-react/hooks";
 import { Box } from "../components/Box";
-import { PreviewRoot } from "core-react/PreviewRoot";
-import { useChangeNodeMeta } from "core-react/hooks/useChangeNodeMeta";
 import { SlotSwitch } from "./components/SlotSwitch";
-import { useLanguage } from "core-react/hooks/useLanguage";
 import { Fold, FoldBase, FoldExtra } from "./components/Fold";
 import { FoldExtraItem } from "./components/Fold/FoldExtraItem";
 import { FontSelect } from "./components/font/FontSelect";
@@ -33,16 +26,17 @@ import { GutterInput } from "./components/GutterInput";
 import { ColInput } from "./components/ColInput";
 import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput } from "./components/BackgroundImageInput";
 import { ImageInput } from "./components/ImageInput";
-import { ComponentRender } from "runner/ComponentRender";
 import { CollapsePanel } from "./components/CollapsePanel";
 import { EffectsInput } from "./components/EffectsInput";
 import { ReactionsInput } from "./components/ReactionsInput";
 import { EventInput } from "./components/EventInput";
-import { ValueInput } from "./components/ValueInput";
-import { JSONInput } from "./components/JSONInput";
 import { CheckboxGroup } from "./components/CheckboxGroup";
-import { useDesignComponentsParams } from "core-react/hooks/useDesignComponentsParams";
-import React from "react";
+import { useDesignerEngine, useCurrentNode, useChangeNodeMeta, useLanguage, useDesignComponentsParams } from "@rxdrag/react-core";
+import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy";
+import { ComponentRender } from "@rxdrag/react-runner";
+import { PreviewRoot } from "@rxdrag/react-shared";
+import { INodeMeta } from "@rxdrag/schema";
+
 
 const propertiesStyle: CSSProperties = {
   flex: 1,

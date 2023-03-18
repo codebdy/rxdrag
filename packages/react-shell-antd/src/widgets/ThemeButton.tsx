@@ -1,6 +1,5 @@
+import { useDesignerEngine, useThemeMode } from "@rxdrag/react-core"
 import { Button } from "antd"
-import { useDesignerEngine } from "core-react/hooks"
-import { useThemeMode } from "core-react/hooks/useThemeMode"
 import { memo, useCallback } from "react"
 import { BsMoonStarsFill, BsSunFill } from "react-icons/bs"
 

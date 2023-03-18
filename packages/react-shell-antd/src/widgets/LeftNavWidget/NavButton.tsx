@@ -1,6 +1,6 @@
+import { useTranslate } from "@rxdrag/react-locales";
 import { Button, Tooltip, Typography } from "antd";
 import { useToken } from "antd/es/theme/internal";
-import { useTranslate } from "core-react/hooks/useTranslate";
 import { memo, useCallback, useMemo } from "react"
 
 const { Text } = Typography;
