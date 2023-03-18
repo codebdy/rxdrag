@@ -1,7 +1,0 @@
-Reaction editor，Reaction的svg图标如果有多个path，那么每个path要加key
-
-Context 下发 reaction，能保证列表里的控件能拿到唯一id的reaction
-
-可以进一步简化属性面板的schema，现在的还是太罗嗦 OK
-
-一个组件可以由多个部分组成，比如表格列由列头单元格跟body单元格组合而成，需要修改core以及plugin相关

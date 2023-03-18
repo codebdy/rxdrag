@@ -1,44 +1,73 @@
-# 基于HTML的可视化编辑器
+# Turborepo starter
 
-[演示地址](https://rxeditor.vercel.app/). 
+This is an official pnpm starter turborepo.
 
-[实践，制作一个高扩展、可视化低代码前端，详实、完整](https://zhuanlan.zhihu.com/p/610182592)
+## What's inside?
 
-## Available Scripts
+This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes the following packages/apps:
 
-In the project directory, you can run:
+### Apps and Packages
 
-### `npm start`
+- `docs`: a [Next.js](https://nextjs.org/) app
+- `web`: another [Next.js](https://nextjs.org/) app
+- `ui`: a stub React component library shared by both `web` and `docs` applications
+- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Utilities
 
-### `npm test`
+This turborepo has some additional tools already setup for you:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
 
-### `npm run build`
+### Build
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To build all apps and packages, run the following command:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+cd my-turborepo
+pnpm run build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Develop
 
+To develop all apps and packages, run the following command:
 
-# Rxeditor项目重启
+```
+cd my-turborepo
+pnpm run dev
+```
 
-RxEditor已重启，基于模型驱动架构，插件式扩展。 
-目标支持react，vue等主流前端库。内核是Immutable数据模型。
+### Remote Caching
 
-QQ交流群：957619750  
+Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
-微信群 
-![微信群](https://github.com/rxdrag/rxeditor/blob/master/doc/images/wechatgroup.jpg?raw=true)
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
+```
+cd my-turborepo
+pnpm dlx turbo login
+```
+
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
+
+```
+pnpm dlx turbo link
+```
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)

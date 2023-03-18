@@ -1,10 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    //"baseUrl": "./src",
-    "emitDeclarationOnly": false,
-    "outDir": "dist",
-    "jsx": "react",
-  },
-  "include": ["./src/index.ts"]
+  "extends": "../tsconfig/react-library.json",
+  "include": ["./src"],
+  "exclude": ["dist", "build", "node_modules"]
 }

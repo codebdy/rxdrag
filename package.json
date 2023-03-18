@@ -1,22 +1,25 @@
 {
   "name": "rxdrag",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "dev": "turbo run dev",
-    "build": "turbo run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "workspaces": [
-    "apps/",
+    "apps/*",
     "packages/*"
   ],
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
   "devDependencies": {
-    "turbo": "^1.8.3"
-  }
+    "eslint-config-custom": "workspace:*",
+    "prettier": "latest",
+    "turbo": "latest"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "packageManager": "pnpm@7.29.3"
 }

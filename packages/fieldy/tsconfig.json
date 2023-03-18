@@ -1,9 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    //"baseUrl": "./src",
-    "emitDeclarationOnly": false,
-    "outDir": "dist"
-  },
-  "include": ["./src/index.ts"]
+  "extends": "../tsconfig/base.json",
+  "include": ["./src"],
+  "exclude": ["dist", "build", "node_modules"]
 }
