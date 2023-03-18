@@ -1,6 +1,5 @@
+import { useNode, ComponentDesignerView } from "@rxdrag/react-core";
 import { Space as AntdSpace } from "antd"
-import { ComponentDesignerView } from "core-react/ComponentTreeWidget/ComponentDesignerView";
-import { useNode } from "core-react/hooks/useNode";
 import { forwardRef, memo } from "react"
 
 export const SpaceDesigner = memo(forwardRef<HTMLDivElement>((

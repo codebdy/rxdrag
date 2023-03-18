@@ -1,10 +1,7 @@
+import { RXID_ATTR_NAME } from "@rxdrag/core";
+import { useNode, useCurrentNode, useDesignerEngine, useDocument } from "@rxdrag/react-core";
 import { Modal } from "antd";
-import { RXID_ATTR_NAME } from "core";
-import { useDesignerEngine } from "core-react/hooks";
-import { useCurrentNode } from "core-react/hooks/useCurrentNode";
-import { useDocument } from "core-react/hooks/useDocument";
-import { useNode } from "core-react/hooks/useNode";
-import { DialogProps } from "expamples/ant5/components/popups/Dialog";
+import { DialogProps } from "components/popups/Dialog";
 import { forwardRef, memo, useCallback, useRef, useState } from "react"
 import { CloseButton } from "../../CloseButton";
 import { PopupButton } from "../../PopupButton";

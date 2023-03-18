@@ -2,7 +2,7 @@ import React from "react"
 import { IDesignerEngine, IDocument } from "@rxdrag/core"
 import { memo, useMemo } from "react"
 import { DesignerEngineContext } from "../../contexts";
-import { ComponentTreeWidget } from "../../ComponentTreeWidget";
+import { ComponentTreeWidget } from "../../ComponentTreeWidget/ComponentTreeWidget";
 import { DesignRoot } from "../../DesignRoot";
 import { IComponents } from "@rxdrag/react-shared";
 import { Scroller } from "./Scroller";
