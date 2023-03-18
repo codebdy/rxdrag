@@ -48,6 +48,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "dev": "craco start",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
@@ -78,6 +79,7 @@
     "@types/react-color": "^3.0.6",
     "@types/styled-components": "^5.1.26",
     "@types/uuid": "^9.0.0",
+    "tsconfig": "workspace:*",
     "craco-less": "^2.0.0"
   }
 }
