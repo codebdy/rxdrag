@@ -9,7 +9,8 @@
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c -w",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint *.ts*"
   },
   "jest": {
     "transform": {
