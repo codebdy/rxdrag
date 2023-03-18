@@ -1,4 +1,4 @@
-import { memo } from "react"
+import React, { memo } from "react"
 import { Field } from "../Field"
 
 //动态增加字段用这个，否则不要碰它

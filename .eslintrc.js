@@ -7,4 +7,10 @@ module.exports = {
       rootDir: ["apps/*/"],
     },
   },
+  rules: {
+    "react/display-name": [
+      false,
+      { ignoreTranspilerName: ture, checkContextObjects: false },
+    ],
+  },
 };

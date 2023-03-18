@@ -1,9 +1,17 @@
-import { INIT_EVENT_NAME, DESTORY_EVENT_NAME } from "@rxdrag/react-shell-antd/shared/createReactionSchema";
-import { Controllers, EventFuncs, IController, InputFunc, IReaction, IReactionFactoryOptions, PropsListener, UnListener, VariableListener } from "runner/minions/interfaces/controller";
-import { IControllerMeta, IReactionDefineMeta } from "../interfaces/metas";
-import { GraphicalReaction } from "../../../@rxdrag/react-shell-antd/materials/controller/reaction/GraphicalReaction";
-import { CodeReaction } from "@rxdrag/react-shell-antd/materials/controller/reaction/CodeReaction";
-
+import {
+  IController,
+  InputFunc,
+  VariableListener,
+  EventFuncs,
+  PropsListener,
+  Controllers,
+  IReactionFactoryOptions,
+  INIT_EVENT_NAME,
+  DESTORY_EVENT_NAME,
+  UnListener,
+  GraphicalReaction
+} from "@rxdrag/minions"
+import { IReaction, IControllerMeta, IReactionDefineMeta } from "@rxdrag/schema";
 
 export class DefaultController implements IController {
   id: string;
@@ -19,7 +27,7 @@ export class DefaultController implements IController {
 
   private reactions: IReaction[] = []
 
-  constructor(public meta: IControllerMeta, protected parentControllers: Controllers, protected options?:IReactionFactoryOptions) {
+  constructor(public meta: IControllerMeta, protected parentControllers: Controllers, protected options?: IReactionFactoryOptions) {
     this.id = meta.id!
     for (const eventMeta of meta.events || []) {
       const reaction = this.makeReaction(eventMeta, { ...parentControllers, [this.id]: this })
@@ -95,8 +103,8 @@ export class DefaultController implements IController {
     }
     if (reactionMeta.logicMetas) {
       return new GraphicalReaction(reactionMeta, options)
-    } else if (reactionMeta.jsCode) {
+    } /*else if (reactionMeta.jsCode) {
       return new CodeReaction(reactionMeta)
-    }
+    }*/
   }
 }

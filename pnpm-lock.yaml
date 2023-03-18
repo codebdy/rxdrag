@@ -493,7 +493,8 @@ importers:
 
   packages/react-minions:
     specifiers:
-      '@rxdrag/schema': ^1.0.0
+      '@rxdrag/minions': workspace:*
+      '@rxdrag/schema': workspace:*
       '@types/jest': ^26.0.7
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
@@ -512,6 +513,7 @@ importers:
       tslib: ^2.5.0
       typescript: ^3.9.10
     dependencies:
+      '@rxdrag/minions': link:../minions
       '@rxdrag/schema': link:../schema
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
       '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
