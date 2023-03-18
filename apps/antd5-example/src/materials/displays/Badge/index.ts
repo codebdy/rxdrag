@@ -1,5 +1,5 @@
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { Badge } from "antd";
-import { IComponentMaterial } from "core-react";
 import { BadgeDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";

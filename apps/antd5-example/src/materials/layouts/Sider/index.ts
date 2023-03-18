@@ -1,5 +1,5 @@
-import { IComponentMaterial } from "core-react";
-import { Sider } from "expamples/ant5/components/layouts/Sider";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { Sider } from "components/layouts/Sider";
 import { siderLocales } from "./locales";
 import { siderSchema } from "./schema";
 

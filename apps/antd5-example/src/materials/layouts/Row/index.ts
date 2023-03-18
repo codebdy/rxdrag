@@ -1,4 +1,4 @@
-import { IComponentMaterial } from "core-react";
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { Row as AntdRow } from "antd";
 import { rowIcon } from "./icon";
 import { rowLocales, rowResourceLocales } from "./locales";

@@ -1,4 +1,4 @@
-import { IComponentMaterial } from "core-react";
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { Divider } from "antd";
 import { dividerIcon } from "./icon";
 import { dividerLocales, dividerResourceLocales } from "./locales";

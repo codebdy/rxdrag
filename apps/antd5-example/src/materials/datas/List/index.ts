@@ -1,5 +1,5 @@
-import { IComponentMaterial } from "core-react";
-import { List } from "expamples/ant5/components/datas/List";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { List } from "antd";
 import { FooterMaterial } from "../../common/Footer";
 import { HeaderMaterial } from "../../common/Header";
 import { ListItemMaterial } from "../ListItem";

@@ -1,5 +1,5 @@
-import { IComponentMaterial } from "core-react";
-import { Menu } from "expamples/ant5/components/layouts/Menu";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { Menu } from "components/layouts/Menu";
 import { logoIcon } from "./icon";
 import { menuLocales, logoResourceLocales } from "./locales";
 import { logoSchema } from "./schema";

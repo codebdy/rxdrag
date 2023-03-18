@@ -1,5 +1,5 @@
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { Mentions } from "antd";
-import { IComponentMaterial } from "core-react";
 import { inputLocales } from "../Input/locales";
 import { mentionsIcon } from "./icon";
 import { mentionsResourceLocales } from "./locales";

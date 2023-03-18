@@ -1,5 +1,5 @@
-import { IComponentMaterial } from "core-react";
-import { Button } from "expamples/ant5/components/Button";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { Button } from "components/Button";
 import { IconViewMaterial } from "../displays/IconView";
 import { buttonIcon } from "./icon";
 import { buttonLocales, buttonResourceLocales } from "./locales";

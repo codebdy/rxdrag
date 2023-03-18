@@ -1,5 +1,5 @@
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { Popconfirm } from "antd";
-import { IComponentMaterial } from "core-react";
 import { ButtonMaterial } from "../../Button";
 import { IconViewMaterial } from "../../displays/IconView";
 import { TextMaterial } from "../../displays/typography/Text";

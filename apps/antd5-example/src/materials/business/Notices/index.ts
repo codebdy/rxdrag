@@ -1,5 +1,5 @@
-import { IComponentMaterial } from "core-react";
-import { Notices } from "expamples/ant5/components/business/Notices";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { Notices } from "components/business/Notices";
 import { noticesIcon } from "./icon";
 import { noticesLocales, noticesResourceLocales } from "./locales";
 import { noticesSchema } from "./schema";

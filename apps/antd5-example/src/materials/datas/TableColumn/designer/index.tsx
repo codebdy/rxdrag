@@ -1,4 +1,4 @@
-import { forwardRefByChildren } from "core-react/hocs/forwardRefByChildren"
+import { forwardRefByChildren } from "@rxdrag/react-core"
 import { memo } from "react"
 
 const TableColumnDesignerImpl = memo((

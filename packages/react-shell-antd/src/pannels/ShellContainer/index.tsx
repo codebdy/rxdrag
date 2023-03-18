@@ -2,7 +2,7 @@ import { useToken } from "antd/es/theme/internal"
 import React, { memo, useMemo } from "react"
 import { Box } from "../../components/Box"
 import styled, { ThemeProvider } from "styled-components"
-import { useThemeMode } from "core-react/hooks/useThemeMode"
+import { useThemeMode } from "@rxdrag/react-core"
 
 const Container = styled(Box)`
   width: 100%;

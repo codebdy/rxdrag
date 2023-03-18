@@ -19,16 +19,11 @@
 // designer自带属性编辑组件
 
 import { memo, useCallback, useMemo, useState } from "react"
-import { createUuid } from "@rxdrag/react-shell-antd/SettingsForm/components/ReactionsInput/ReactionsEditor/utils"
-import { ArrayField } from "runner/fieldy/components/ArrayField/ArrayField"
 import { Table as AntdTable } from "antd"
 import { IDataSource } from "../IDataSource"
-import { useComponentSchema } from "runner/ComponentRender/hooks/useComponentSchema"
-import { ComponentView } from "runner/ComponentRender/ComponentView"
-import { ObjectField } from "runner/fieldy/components/ObjectField"
-import { IFieldMeta } from "runner/fieldy"
-import { IBindParams } from "runner/ComponentRender/interfaces"
-import { useFieldState } from "runner/fieldy/hooks/useFieldState"
+import { IFieldMeta } from "@rxdrag/schema";
+import { createUuid } from "@rxdrag/shared";
+
 
 interface RowProps {
   index: number,

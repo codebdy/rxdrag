@@ -1,8 +1,5 @@
-import { Table } from "antd";
-import { ComponentDesignerView } from "core-react/ComponentTreeWidget/ComponentDesignerView";
-import { useNode } from "core-react/hooks/useNode";
-import { useTreeNodes } from "core-react/hooks/useTreeNodes";
-import { TableProps } from "expamples/ant5/components/datas/Table"
+import { useNode, useTreeNodes, ComponentDesignerView } from "@rxdrag/react-core";
+import { Table, TableProps } from "antd";
 import { forwardRef, memo, useMemo } from "react"
 
 export const TableDesigner = memo(forwardRef<HTMLDivElement>((

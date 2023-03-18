@@ -1,5 +1,5 @@
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { Input } from "antd";
-import { IComponentMaterial } from "core-react";
 import { inputIcon } from "./icon";
 import { inputLocales, inputResourceLocales } from "./locales";
 import { inputSchema } from "./schema";

@@ -1,8 +1,8 @@
 import { CloseOutlined } from "@ant-design/icons"
+import { useToolsTranslate } from "@rxdrag/react-core"
 import { Button } from "antd"
-import { useToolsTranslate } from "core-react/hooks/useToolsTranslate"
 import { memo, useCallback } from "react"
-import { useStyles } from "@rxdrag/react-shell-antd/hooks/useStyles"
+import { useStyles } from "../../../hooks"
 import { useToggleState } from "../hooks/useToggleState"
 import "./style.less"
 

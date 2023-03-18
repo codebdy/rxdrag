@@ -1,5 +1,5 @@
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { Select } from "antd";
-import { IComponentMaterial } from "core-react";
 import { selectIcon } from "./icon";
 import { selectLocales, selectResourceLocales } from "./locales";
 import { selectSchema } from "./schema";

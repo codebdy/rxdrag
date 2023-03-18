@@ -1,12 +1,9 @@
-import { RXID_ATTR_NAME } from "core";
-import { useDesignerEngine } from "core-react/hooks";
-import { useCurrentNode } from "core-react/hooks/useCurrentNode";
-import { useDocument } from "core-react/hooks/useDocument";
-import { useNode } from "core-react/hooks/useNode";
 import React, { forwardRef, memo, useCallback, useRef, useState } from "react"
 import { PopupButton } from "../../PopupButton";
 import { Popconfirm, PopconfirmProps } from "antd"
 import { CloseButton } from "../../CloseButton";
+import { RXID_ATTR_NAME } from "@rxdrag/core";
+import { useNode, useCurrentNode, useDesignerEngine, useDocument } from "@rxdrag/react-core";
 
 export type PopconfirmExtraProps = {
   [RXID_ATTR_NAME]?: string,

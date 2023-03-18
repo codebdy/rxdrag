@@ -1,11 +1,11 @@
-import { IComponentMaterial } from "core-react";
 import { colIcon } from "./icon";
 import { hCFLayoutLocales, hCFLayoutResourceLocales } from "./locales";
 import { hCFLayoutSchema } from "./schema";
-import { HCFLayout } from "expamples/ant5/components/layouts/HCFLayout";
 import { HeaderMaterial } from "../Header";
 import { FooterMaterial } from "../Footer";
 import { ContentMaterial } from "../Content";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { HCFLayout } from "components/layouts/HCFLayout";
 
 const name = "HCFLayout"
 export const HCFLayoutMaterial: IComponentMaterial = {

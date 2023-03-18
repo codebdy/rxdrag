@@ -1,7 +1,6 @@
-import { IComponentMaterial } from "core-react";
+import { IComponentMaterial, DefaultSlot } from "@rxdrag/react-core";
 import { locales } from "./locales";
 import { slotSchema } from "./schema";
-import { DefaultSlot } from "core-react/DefaultSlot";
 
 const name = "DefaultSlot"
 export const DefaultSlotMaterial: IComponentMaterial = {

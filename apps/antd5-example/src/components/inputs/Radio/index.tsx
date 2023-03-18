@@ -1,6 +1,6 @@
 import { forwardRef, memo } from "react"
 import { Radio as AntdRadio } from "antd"
-import { forwardRefById } from "core-react/hocs/forwardRefById"
+import { forwardRefById } from "@rxdrag/react-core"
 
 export type RadioProps = {
   label?: string

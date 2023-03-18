@@ -1,5 +1,5 @@
+import { useThemeMode } from "@rxdrag/react-core"
 import { ConfigProvider, theme } from "antd"
-import { useThemeMode } from "core-react/hooks/useThemeMode"
 import { memo } from "react"
 
 export const ConfigRoot = memo((

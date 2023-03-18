@@ -1,6 +1,5 @@
+import { forwardRefById, IComponentMaterial } from "@rxdrag/react-core";
 import { TimePicker } from "antd";
-import { IComponentMaterial } from "core-react";
-import { forwardRefById } from "core-react/hocs/forwardRefById";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";

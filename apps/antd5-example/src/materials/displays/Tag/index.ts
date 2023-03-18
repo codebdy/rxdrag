@@ -1,5 +1,5 @@
-import { IComponentMaterial } from "core-react";
-import { Tag } from "expamples/ant5/components/displays/Tag";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { Tag } from "components/displays/Tag";
 import { IconViewMaterial } from "../IconView";
 import { icon } from "./icon";
 import { locales, resourceLocales, toolsLocales } from "./locales";

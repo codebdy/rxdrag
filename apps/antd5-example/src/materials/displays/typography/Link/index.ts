@@ -1,5 +1,4 @@
-import { IComponentMaterial } from "core-react";
-import { Link } from "expamples/ant5/components/displays/typography/Link";
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";

@@ -1,4 +1,4 @@
-import { IComponentMaterial } from "core-react";
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { Layout } from "antd";
 import { footerLocales } from "./locales";
 import { footerSchema } from "./schema";

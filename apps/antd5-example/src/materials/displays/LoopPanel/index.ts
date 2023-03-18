@@ -1,5 +1,5 @@
-import { IComponentMaterial } from "core-react";
-import { LoopPanel } from "expamples/ant5/components/displays/LoopPanel";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { LoopPanel } from "components/displays/LoopPanel";
 import { LoopPanelDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";

@@ -1,5 +1,5 @@
-import { IComponentMaterial } from "core-react";
-import { Slider } from "expamples/ant5/components/inputs/Slider";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { Slider } from "components/inputs/Slider";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";

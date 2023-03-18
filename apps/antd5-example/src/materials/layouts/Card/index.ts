@@ -1,8 +1,8 @@
-import { IComponentMaterial } from "core-react";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { Card } from "components/layouts/Card";
 import { colIcon } from "./icon";
 import { cardLocales, cardResourceLocales } from "./locales";
 import { cardSchema } from "./schema";
-import { Card } from "expamples/ant5/components/layouts/Card";
 
 const name = "Card"
 export const CardMaterial: IComponentMaterial = {

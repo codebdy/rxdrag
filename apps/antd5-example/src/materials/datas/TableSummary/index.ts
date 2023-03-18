@@ -1,6 +1,6 @@
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { Table } from "antd";
-import { IComponentMaterial } from "core-react";
-import { TableSummaryDesigner } from "expamples/ant5/materials/datas/TableSummary/Designer";
+import { TableSummaryDesigner } from "./Designer";
 import { locales } from "./locales";
 import { materialSchema } from "./schema";
 

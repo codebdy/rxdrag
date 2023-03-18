@@ -1,6 +1,6 @@
 import { forwardRef, memo } from "react"
 import { Checkbox as AntdCheckbox } from "antd"
-import { forwardRefById } from "core-react/hocs/forwardRefById"
+import { forwardRefById } from "@rxdrag/react-core"
 
 export type CheckboxProps = {
   label?: string

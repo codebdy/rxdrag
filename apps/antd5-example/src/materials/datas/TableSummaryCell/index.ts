@@ -1,5 +1,5 @@
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { Table } from "antd";
-import { IComponentMaterial } from "core-react";
 import { FooterMaterial } from "../../common/Footer";
 import { HeaderMaterial } from "../../common/Header";
 import { ListItemMaterial } from "../ListItem";

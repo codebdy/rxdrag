@@ -1,8 +1,8 @@
-import { IComponentMaterial } from "core-react";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { Paper } from "components/layouts/Paper";
 import { paperIcon } from "./icon";
 import { paperLocales, paperResourceLocales } from "./locales";
 import { paperSchema } from "./schema";
-import { Paper } from "expamples/ant5/components/layouts/Paper";
 
 const name = "Paper"
 export const PaperMaterial: IComponentMaterial = {

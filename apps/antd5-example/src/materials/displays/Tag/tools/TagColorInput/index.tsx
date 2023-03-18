@@ -1,7 +1,6 @@
+import { useToolsTranslate } from "@rxdrag/react-core"
 import { Button } from "antd"
-import { useToolsTranslate } from "core-react/hooks/useToolsTranslate"
 import { memo, useCallback, useEffect, useState } from "react"
-import { ColorInput } from "@rxdrag/react-shell-antd/SettingsForm/components/ColorInput"
 import styled from "styled-components"
 import { PredefinedColorInput } from "./PredefinedColorInput"
 

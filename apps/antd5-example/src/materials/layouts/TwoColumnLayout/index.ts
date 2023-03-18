@@ -1,12 +1,12 @@
-import { IComponentMaterial } from "core-react";
 import { colIcon } from "./icon";
 import { twoColumnLayoutLocales, twoColumnLayoutResourceLocales } from "./locales";
 import { HeaderMaterial } from "../Header";
 import { FooterMaterial } from "../Footer";
 import { ContentMaterial } from "../Content";
 import { SiderMaterial } from "../Sider";
-import { TwoColumnLayout } from "expamples/ant5/components/layouts/TowColumnLayout";
 import { prosLayoutSchema } from "./schema";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { TwoColumnLayout } from "components/layouts/TowColumnLayout";
 
 const name = "TwoColumnLayout"
 export const TwoColumnLayoutMaterial: IComponentMaterial = {

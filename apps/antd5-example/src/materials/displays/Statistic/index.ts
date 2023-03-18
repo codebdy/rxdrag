@@ -1,5 +1,5 @@
-import { IComponentMaterial } from "core-react";
-import { Statistic } from "expamples/ant5/components/displays/Statistic";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { Statistic } from "antd";
 import { statisticIcon } from "./icon";
 import { statisticLocales, statisticResourceLocales } from "./locales";
 import { staticSchema } from "./schema";

@@ -1,5 +1,5 @@
-import { IComponentMaterial } from "core-react";
-import { TableColumn } from "expamples/ant5/components/datas/TableColumn";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { TableColumn } from "components/datas/TableColumn";
 import { TableColumnDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";

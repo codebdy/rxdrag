@@ -1,6 +1,5 @@
+import { IComponentMaterial, forwardRefById } from "@rxdrag/react-core";
 import { DatePicker } from "antd";
-import { IComponentMaterial } from "core-react";
-import { forwardRefById } from "core-react/hocs/forwardRefById";
 import { rangePickerIcon } from "./icon";
 import { dateRangePickerLocales, dateRangePickerResourceLocales } from "./locales";
 import { dateRangePickerSchema } from "./schema";

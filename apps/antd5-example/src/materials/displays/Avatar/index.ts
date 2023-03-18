@@ -1,5 +1,5 @@
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { Avatar } from "antd";
-import { IComponentMaterial } from "core-react";
 import { IconViewMaterial } from "../IconView";
 import { avatarIcon } from "./icon";
 import { avatarLocales, avatarResourceLocales } from "./locales";

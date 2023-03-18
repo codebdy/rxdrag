@@ -1,5 +1,5 @@
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { List } from "antd";
-import { IComponentMaterial } from "core-react";
 import { AvatarMaterial } from "../../displays/Avatar";
 import { TextMaterial } from "../../displays/typography/Text";
 import { icon } from "./icon";

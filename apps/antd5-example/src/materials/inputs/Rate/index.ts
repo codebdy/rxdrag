@@ -1,6 +1,6 @@
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { Rate } from "antd";
-import { IComponentMaterial } from "core-react";
-import { RateDesigner } from "expamples/ant5/materials/inputs/Rate/designer";
+import { RateDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";

@@ -1,11 +1,11 @@
 import { Popover } from "antd";
-import { IComponentMaterial } from "core-react";
 import { DefaultSlotMaterial } from "../../slots/DefualtSlot";
 import { TextMaterial } from "../../displays/typography/Text";
 import { PopoverDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
+import { IComponentMaterial } from "@rxdrag/react-core";
 
 const name = "Popover"
 export const PopoverMaterial: IComponentMaterial = {

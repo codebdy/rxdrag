@@ -1,5 +1,5 @@
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { Tooltip } from "antd";
-import { IComponentMaterial } from "core-react";
 import { TextMaterial } from "../../displays/typography/Text";
 import { TooltipDesigner } from "./designer";
 import { icon } from "./icon";

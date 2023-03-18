@@ -1,5 +1,5 @@
-import { IComponentMaterial } from "core-react";
-import { Radio } from "expamples/ant5/components/inputs/Radio";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { Radio } from "components/inputs/Radio";
 import { radioIcon } from "./icon";
 import { radioLocales, radioResourceLocales } from "./locales";
 import { radioSchema } from "./schema";

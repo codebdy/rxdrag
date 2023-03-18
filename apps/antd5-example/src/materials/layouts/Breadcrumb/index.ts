@@ -1,8 +1,8 @@
-import { IComponentMaterial } from "core-react";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { Breadcrumb } from "components/layouts/Breadcrumb";
 import { breadcrumbIcon } from "./icon";
 import { breadcrumbLocales, breadcrumbResourceLocales } from "./locales";
 import { breadcrumbSchema } from "./schema";
-import { Breadcrumb } from "expamples/ant5/components/layouts/Breadcrumb";
 
 const name = "Breadcrumb"
 export const BreadcrumbMaterial: IComponentMaterial = {

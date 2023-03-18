@@ -1,5 +1,5 @@
+import { useActivedDocument } from "@rxdrag/react-core";
 import { message } from "antd";
-import { useActivedDocument } from "core-react/hooks/useActivedDocument";
 import { useCallback } from "react";
 import { saveFile } from "./helper/saveFile";
 

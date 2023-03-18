@@ -1,5 +1,5 @@
-import { IComponentMaterial } from "core-react";
-import { Checkbox } from "expamples/ant5/components/inputs/Checkbox";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { Checkbox } from "components/inputs/Checkbox";
 import { checkboxIcon } from "./icon";
 import { checkboxLocales, checkBoxResourceLocales } from "./locales";
 import { selectSchema } from "./schema";

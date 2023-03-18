@@ -1,5 +1,5 @@
-import { IComponentMaterial } from "core-react";
-import { Dropdown } from "expamples/ant5/components/popups/Dropdown";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { Dropdown } from "components/popups/Dropdown";
 import { ButtonMaterial } from "../../Button";
 import { DropdownMenuItemMaterial } from "../DropdownMenuItem";
 import { DropdownDesigner } from "./designer";

@@ -1,7 +1,7 @@
-import { IComponentMaterial } from "core-react";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { Header } from "components/layouts/Header";
 import { headerLocales } from "./locales";
 import { headerSchema } from "./schema";
-import { Header } from "expamples/ant5/components/layouts/Header";
 
 export const HeaderMaterial: IComponentMaterial = {
   componentName: "Layout.Header",

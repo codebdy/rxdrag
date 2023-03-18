@@ -1,4 +1,5 @@
-import { IComponentMaterial } from "core-react";
+
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { Col as AntdCol } from "antd";
 import { colIcon } from "./icon";
 import { colLocales, colResourceLocales } from "./locales";

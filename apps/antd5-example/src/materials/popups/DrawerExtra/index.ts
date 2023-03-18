@@ -1,5 +1,5 @@
-import { IComponentMaterial } from "core-react";
-import { DrawerExtra } from "expamples/ant5/components/popups/DrawerExtra";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { DrawerExtra } from "components/popups/DrawerExtra";
 import { locales } from "./locales";
 import { materialSchema } from "./schema";
 

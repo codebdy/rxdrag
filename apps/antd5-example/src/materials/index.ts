@@ -1,4 +1,3 @@
-import { IComponentMaterial } from "core-react";
 import { ButtonMaterial } from "./Button";
 import { ColMaterial } from "./layouts/Col";
 import { HCFLayoutMaterial } from "./layouts/HCFLayout";
@@ -60,7 +59,8 @@ import { TitleMaterial } from "./displays/typography/Title";
 import { ParagraphMaterial } from "./displays/typography/Paragraph";
 import { LoopPanelMaterial } from "./displays/LoopPanel";
 import { TagMaterial } from "./displays/Tag";
-import { IResource } from "core";
+import { IComponentMaterial } from "@rxdrag/react-core";
+import { IResource } from "@rxdrag/core";
 
 export type MaterialGroup = {
   titleKey: string,

@@ -1,8 +1,8 @@
-import { IComponentMaterial } from "core-react";
 import { formIcon } from "./icon";
 import { formLocales, formResourceLocales } from "./locales";
 import { formSchema } from "./schema";
 import { Form } from "antd";
+import { IComponentMaterial } from "@rxdrag/react-core";
 
 const name = "Form"
 export const FormMaterial: IComponentMaterial = {

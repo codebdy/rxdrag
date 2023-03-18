@@ -1,8 +1,8 @@
-import { IComponentMaterial } from "core-react";
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { boxIcon } from "./icon";
 import { boxLocales, boxResourceLocales } from "./locales";
 import { boxSchema } from "./schema";
-import { Box } from "@rxdrag/react-shell-antd/components/Box";
+
 
 const name = "Box"
 export const BoxMaterial: IComponentMaterial = {

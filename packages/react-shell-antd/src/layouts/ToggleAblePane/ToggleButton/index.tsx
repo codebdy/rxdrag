@@ -1,7 +1,7 @@
 import { LeftOutlined, RightOutlined } from "@ant-design/icons"
-import { useStyles } from "@rxdrag/react-shell-antd/hooks/useStyles"
 import "./style.less"
 import cls from "classnames"
+import { useStyles } from "../../../hooks"
 
 export enum ToggleType {
   left = "left",

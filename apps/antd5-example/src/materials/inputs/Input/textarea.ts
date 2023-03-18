@@ -1,5 +1,5 @@
+import { IComponentMaterial } from "@rxdrag/react-core";
 import { Input } from "antd";
-import { IComponentMaterial } from "core-react";
 import { textareaIcon } from "./icon";
 import { inputLocales, textareaResourceLocales } from "./locales";
 import { textAreaSchema } from "./schema";
