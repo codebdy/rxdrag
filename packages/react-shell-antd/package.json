@@ -5,6 +5,7 @@
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
+    "build": "tsc && vite build",
     "lint": "eslint \"**/*.ts\"",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
