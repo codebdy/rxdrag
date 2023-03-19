@@ -22,12 +22,13 @@
     "react-router-dom": "^6.8.1"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.4.6",
     "@rxdrag/core": "workspace:*",
+    "@rxdrag/locales": "workspace:*",
+    "@rxdrag/react-locales": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
-    "@rxdrag/locales": "workspace:*",
-    "@rxdrag/react-locales": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1"
