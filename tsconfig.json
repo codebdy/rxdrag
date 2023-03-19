@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
-    "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -10,17 +13,15 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "ESNext",
+    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "types": ["vitest/globals"],
-    "baseUrl": ".",
-    "paths": {
-      "@rxdrag/*": ["packages/*/src/index", "apps/*/src/App"]
-    }
+    "baseUrl": "src",
+    "jsx": "react-jsx"
   },
-  "include": ["apps", "packages"]
+  "include": [
+    "src"
+  ]
 }

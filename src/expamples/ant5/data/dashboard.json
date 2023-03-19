@@ -1,0 +1,2400 @@
+{
+  "componentName": "Root",
+  "slots": {},
+  "children": [
+    {
+      "componentName": "TwoColumnLayout",
+      "props": {},
+      "slots": {
+        "header": {
+          "componentName": "Layout.Header",
+          "props": {
+            "style": {
+              "display": "flex",
+              "justifyContent": "space-between",
+              "alignItems": "center"
+            }
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Avatar",
+              "props": {},
+              "slots": {
+                "icon": {
+                  "componentName": "IconView",
+                  "props": {
+                    "icon": {
+                      "iconKey": "UserOutlined"
+                    },
+                    "style": {}
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              },
+              "children": []
+            }
+          ]
+        },
+        "sider": {
+          "componentName": "Layout.Sider",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Logo",
+              "slots": {},
+              "children": []
+            },
+            {
+              "componentName": "Menu",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        "content": {
+          "componentName": "Layout.Content",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Hero",
+              "props": {
+                "style": {
+                  "backgroundColor": "rgba(58,22,241,1)",
+                  "backgroundImage": "url(/imgs/hero.png)",
+                  "backgroundSize": "cover",
+                  "backgroundPosition": "center",
+                  "marginTop": "16px",
+                  "marginRight": "16px",
+                  "marginBottom": "16px",
+                  "marginLeft": "16px",
+                  "color": ""
+                },
+                "themeMode": "dark"
+              },
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Row",
+                  "props": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Col",
+                      "props": {
+                        "span": 24,
+                        "style": {}
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "Text",
+                          "props": {
+                            "value": "Hi，欢迎使用 Apper 低代码平台！",
+                            "mode": "h2",
+                            "style": {}
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "componentName": "Col",
+                      "props": {
+                        "span": 24,
+                        "style": {
+                          "marginTop": "8px"
+                        }
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "Text",
+                          "props": {
+                            "value": "轻松创建、部署、管理您的Mes应用，提升开发效率，降低业务成本。 ",
+                            "style": {}
+                          },
+                          "slots": {},
+                          "children": []
+                        },
+                        {
+                          "componentName": "Button",
+                          "props": {
+                            "type": "link",
+                            "title": "开启引导",
+                            "style": {
+                              "color": "rgba(255,255,255,1)"
+                            }
+                          },
+                          "slots": {
+                            "icon": {
+                              "componentName": "IconView",
+                              "props": {
+                                "icon": {
+                                  "iconKey": "BookOutlined"
+                                },
+                                "color": "rgba(255,255,255,1)"
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          },
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "componentName": "Row",
+              "props": {
+                "style": {
+                  "marginTop": "12px",
+                  "marginRight": "12px",
+                  "marginBottom": "12px",
+                  "marginLeft": "12px"
+                },
+                "gutter": 8
+              },
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 16,
+                    "style": {}
+                  },
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Card",
+                      "props": {},
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "Row",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 9,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Statistic",
+                                  "props": {
+                                    "title": "订单总数",
+                                    "value": "1128",
+                                    "prefix": {
+                                      "iconKey": "DashboardOutlined"
+                                    },
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 5,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Statistic",
+                                  "props": {
+                                    "title": "进行中",
+                                    "value": "10",
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 5,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Statistic",
+                                  "props": {
+                                    "title": "待发货",
+                                    "value": "2",
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 5,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Statistic",
+                                  "props": {
+                                    "title": "待收款",
+                                    "value": "3",
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "componentName": "Card",
+                      "props": {
+                        "style": {
+                          "marginTop": "16px"
+                        }
+                      },
+                      "slots": {
+                        "title": {
+                          "componentName": "DefaultSlot",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Text",
+                              "props": {
+                                "value": "待办事项(5)",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        },
+                        "actions": {
+                          "componentName": "DefaultSlot",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Button",
+                              "props": {
+                                "type": "text",
+                                "title": "查看全部",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "componentName": "List",
+                          "props": {
+                            "style": {}
+                          },
+                          "x-field": {
+                            "params": {}
+                          },
+                          "x-reactions": {
+                            "id": "97b74524-499e-472b-ab0d-bf46f11fe185",
+                            "enable": true,
+                            "name": "待办列表",
+                            "events": [
+                              {
+                                "id": "466e314f-3cf9-48fc-ad49-d03a097e3eba",
+                                "name": "init",
+                                "label": "初始化",
+                                "logicMetas": {
+                                  "reactions": [
+                                    {
+                                      "id": "1909dfff-4600-49ff-a07c-0087f9e2713a",
+                                      "label": "输入",
+                                      "type": "Start",
+                                      "materialName": "start",
+                                      "name": "input",
+                                      "x6Node": {
+                                        "x": 130,
+                                        "y": 160,
+                                        "width": 20,
+                                        "height": 20
+                                      }
+                                    },
+                                    {
+                                      "id": "8463ba00-f8c4-4fc6-977c-e60eb4f9244a",
+                                      "label": "模拟数据",
+                                      "type": "SingleReaction",
+                                      "materialName": "mockData",
+                                      "inPorts": [
+                                        {
+                                          "id": "88e92274-e160-4ff8-aadf-93afa2b6f88d",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "outPorts": [
+                                        {
+                                          "id": "678fa57c-881b-4beb-b478-aaafce542c27",
+                                          "name": "success",
+                                          "label": "$success"
+                                        },
+                                        {
+                                          "id": "c2d7c478-d670-400f-a12e-5e5e716b65cc",
+                                          "name": "error",
+                                          "label": "$error"
+                                        },
+                                        {
+                                          "id": "603c32ad-98ce-42cd-8ae9-c1d9866789ae",
+                                          "name": "loading",
+                                          "label": "$loading"
+                                        }
+                                      ],
+                                      "x6Node": {
+                                        "x": 430,
+                                        "y": 180,
+                                        "width": 116,
+                                        "height": 48
+                                      },
+                                      "config": {
+                                        "duration": 500
+                                      }
+                                    },
+                                    {
+                                      "id": "01a831c5-f20a-4e95-9703-3dbd4108ba83",
+                                      "label": "设置属性",
+                                      "type": "ControllerDefaultReaction",
+                                      "materialName": "setProp",
+                                      "inPorts": [
+                                        {
+                                          "id": "60d97984-b9ba-4168-a5ee-b23d797d083a",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "config": {
+                                        "controllerId": "97b74524-499e-472b-ab0d-bf46f11fe185",
+                                        "reactionRef": "setProp",
+                                        "prop": "dataSource"
+                                      },
+                                      "x6Node": {
+                                        "x": 710,
+                                        "y": 90,
+                                        "width": 116,
+                                        "height": 48
+                                      }
+                                    },
+                                    {
+                                      "id": "dbf653bc-6faf-407d-b650-7c188a1c5dde",
+                                      "label": "提示消息",
+                                      "type": "SingleReaction",
+                                      "materialName": "infoMessage",
+                                      "inPorts": [
+                                        {
+                                          "id": "e1533abd-cfa3-46b4-8db5-e1793fee6064",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "x6Node": {
+                                        "x": 710,
+                                        "y": 180,
+                                        "width": 116,
+                                        "height": 48
+                                      },
+                                      "config": {
+                                        "type": "error"
+                                      }
+                                    },
+                                    {
+                                      "id": "44ebc687-e3d5-4dac-820b-bb90165b32b8",
+                                      "label": "设置属性",
+                                      "type": "ControllerDefaultReaction",
+                                      "materialName": "setProp",
+                                      "inPorts": [
+                                        {
+                                          "id": "60d97984-b9ba-4168-a5ee-b23d797d083a",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "config": {
+                                        "controllerId": "97b74524-499e-472b-ab0d-bf46f11fe185",
+                                        "reactionRef": "setProp",
+                                        "prop": "loading"
+                                      },
+                                      "x6Node": {
+                                        "x": 710,
+                                        "y": 280,
+                                        "width": 116,
+                                        "height": 48
+                                      }
+                                    },
+                                    {
+                                      "id": "cd0fe57b-7d0e-48b5-9800-ebec22e3d5d6",
+                                      "label": "常量",
+                                      "type": "SingleReaction",
+                                      "materialName": "fixedValue",
+                                      "inPorts": [
+                                        {
+                                          "id": "c57a20a4-6e4e-4831-b692-0f250c198d7e",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "outPorts": [
+                                        {
+                                          "id": "4d51e2a8-a5c0-4088-8f11-1caddfffe661",
+                                          "name": "output",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "x6Node": {
+                                        "x": 260,
+                                        "y": 170,
+                                        "width": 88,
+                                        "height": 32
+                                      },
+                                      "config": {
+                                        "value": {
+                                          "nodes": [
+                                            {
+                                              "title": "新建订单",
+                                              "description": "提交人：张三，提交时间：2022-4-5 8:20"
+                                            },
+                                            {
+                                              "title": "申请开发火星",
+                                              "description": "提交人：李四，提交时间：2022-4-5 8:20"
+                                            },
+                                            {
+                                              "title": "申请给沙特付货款",
+                                              "description": "提交人：王五，提交时间：2022-4-5 8:20"
+                                            },
+                                            {
+                                              "title": "客户Jack跟进",
+                                              "description": "提交人：孙六，提交时间：2022-4-5 8:20"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "invokes": [
+                                    {
+                                      "id": "b5738c10-7957-4cd1-9230-e7c53aafe164",
+                                      "source": {
+                                        "nodeId": "1909dfff-4600-49ff-a07c-0087f9e2713a"
+                                      },
+                                      "target": {
+                                        "nodeId": "cd0fe57b-7d0e-48b5-9800-ebec22e3d5d6",
+                                        "portId": "c57a20a4-6e4e-4831-b692-0f250c198d7e"
+                                      }
+                                    },
+                                    {
+                                      "id": "c2471be9-d420-4ada-b345-3b18d49f0aee",
+                                      "source": {
+                                        "nodeId": "cd0fe57b-7d0e-48b5-9800-ebec22e3d5d6",
+                                        "portId": "4d51e2a8-a5c0-4088-8f11-1caddfffe661"
+                                      },
+                                      "target": {
+                                        "nodeId": "8463ba00-f8c4-4fc6-977c-e60eb4f9244a",
+                                        "portId": "88e92274-e160-4ff8-aadf-93afa2b6f88d"
+                                      }
+                                    },
+                                    {
+                                      "id": "2d8190b1-aa45-4aeb-b275-eaacb2efa472",
+                                      "source": {
+                                        "nodeId": "8463ba00-f8c4-4fc6-977c-e60eb4f9244a",
+                                        "portId": "678fa57c-881b-4beb-b478-aaafce542c27"
+                                      },
+                                      "target": {
+                                        "nodeId": "01a831c5-f20a-4e95-9703-3dbd4108ba83",
+                                        "portId": "60d97984-b9ba-4168-a5ee-b23d797d083a"
+                                      }
+                                    },
+                                    {
+                                      "id": "cbbe66ad-831b-4dce-9887-a83d8de1b0eb",
+                                      "source": {
+                                        "nodeId": "8463ba00-f8c4-4fc6-977c-e60eb4f9244a",
+                                        "portId": "c2d7c478-d670-400f-a12e-5e5e716b65cc"
+                                      },
+                                      "target": {
+                                        "nodeId": "dbf653bc-6faf-407d-b650-7c188a1c5dde",
+                                        "portId": "e1533abd-cfa3-46b4-8db5-e1793fee6064"
+                                      }
+                                    },
+                                    {
+                                      "id": "1e0bc6a5-ac79-484c-9c7a-1bc861d82362",
+                                      "source": {
+                                        "nodeId": "8463ba00-f8c4-4fc6-977c-e60eb4f9244a",
+                                        "portId": "603c32ad-98ce-42cd-8ae9-c1d9866789ae"
+                                      },
+                                      "target": {
+                                        "nodeId": "44ebc687-e3d5-4dac-820b-bb90165b32b8",
+                                        "portId": "60d97984-b9ba-4168-a5ee-b23d797d083a"
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "id": "ce6b7ccf-c3a3-4c4e-9573-7fcbb577c48a",
+                                "name": "destory",
+                                "label": "销毁"
+                              },
+                              {
+                                "id": "ce230801-061c-4fb7-85a7-e2afb9e2b742",
+                                "name": "onClick",
+                                "label": "点击"
+                              }
+                            ]
+                          },
+                          "slots": {
+                            "renderItem": {
+                              "componentName": "ListItem",
+                              "slots": {
+                                "actions": {
+                                  "componentName": "ActionSlot",
+                                  "slots": {},
+                                  "children": [
+                                    {
+                                      "componentName": "Button",
+                                      "props": {
+                                        "type": "primary",
+                                        "title": "完成",
+                                        "size": "middle"
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                "extra": {
+                                  "componentName": "ExtraSlot",
+                                  "slots": {},
+                                  "children": []
+                                }
+                              },
+                              "children": [
+                                {
+                                  "componentName": "ListItemMeta",
+                                  "slots": {
+                                    "avatar": {
+                                      "componentName": "Avatar",
+                                      "slots": {},
+                                      "children": []
+                                    },
+                                    "title": {
+                                      "componentName": "Text",
+                                      "props": {
+                                        "value": "Title",
+                                        "style": {}
+                                      },
+                                      "x-reactions": {
+                                        "id": "cc34f54c-b1e9-4454-b0a5-199069a4b5ef",
+                                        "enable": true
+                                      },
+                                      "x-field": {
+                                        "name": "title",
+                                        "params": {
+                                          "withBind": true
+                                        }
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    },
+                                    "description": {
+                                      "componentName": "Text",
+                                      "props": {
+                                        "value": "Description",
+                                        "style": {}
+                                      },
+                                      "x-field": {
+                                        "params": {
+                                          "withBind": true
+                                        },
+                                        "name": "description"
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                }
+                              ]
+                            }
+                          },
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "componentName": "Card",
+                      "props": {
+                        "style": {
+                          "marginTop": "16px"
+                        }
+                      },
+                      "slots": {
+                        "title": {
+                          "componentName": "DefaultSlot",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Text",
+                              "props": {
+                                "value": "最新客户",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        },
+                        "actions": {
+                          "componentName": "DefaultSlot",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Button",
+                              "props": {
+                                "type": "text",
+                                "title": "查看全部 >",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "componentName": "Table",
+                          "selfRender": true,
+                          "props": {
+                            "pagination": false,
+                            "style": {}
+                          },
+                          "x-reactions": {
+                            "id": "97be3def-3b81-46cf-b77c-1b27f83a9f16",
+                            "enable": true,
+                            "events": [
+                              {
+                                "id": "88f2c6a9-c5ef-4e3c-bae9-9d175ab66030",
+                                "name": "init",
+                                "label": "初始化",
+                                "logicMetas": {
+                                  "reactions": [
+                                    {
+                                      "id": "b75a13c3-ee7d-4e01-8828-fa752bd00703",
+                                      "label": "输入",
+                                      "type": "Start",
+                                      "materialName": "start",
+                                      "name": "input",
+                                      "x6Node": {
+                                        "x": 100,
+                                        "y": 90,
+                                        "width": 20,
+                                        "height": 20
+                                      }
+                                    },
+                                    {
+                                      "id": "c0be6294-eba1-4528-8b2e-253d044b7a2d",
+                                      "label": "模拟数据",
+                                      "type": "SingleReaction",
+                                      "materialName": "mockData",
+                                      "inPorts": [
+                                        {
+                                          "id": "543c5ee6-c07b-4355-9fb5-55c0f408f5dc",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "outPorts": [
+                                        {
+                                          "id": "2d8323a1-0bd5-4540-ab0a-71dad26832ed",
+                                          "name": "success",
+                                          "label": "$success"
+                                        },
+                                        {
+                                          "id": "962dbf84-e368-4292-8a9c-d611766a8184",
+                                          "name": "error",
+                                          "label": "$error"
+                                        },
+                                        {
+                                          "id": "4f8b425a-ea5b-4167-9cc7-37323ec875fb",
+                                          "name": "loading",
+                                          "label": "$loading"
+                                        }
+                                      ],
+                                      "x6Node": {
+                                        "x": 410,
+                                        "y": 110,
+                                        "width": 116,
+                                        "height": 48
+                                      },
+                                      "config": {
+                                        "duration": 500
+                                      }
+                                    },
+                                    {
+                                      "id": "81186513-199d-4623-8f3b-f2cf5ce3a3e5",
+                                      "label": "设置属性",
+                                      "type": "ControllerDefaultReaction",
+                                      "materialName": "setProp",
+                                      "inPorts": [
+                                        {
+                                          "id": "818f8fca-b431-4b3c-9660-5461f2325ede",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "config": {
+                                        "controllerId": "97be3def-3b81-46cf-b77c-1b27f83a9f16",
+                                        "reactionRef": "setProp",
+                                        "prop": "loading"
+                                      },
+                                      "x6Node": {
+                                        "x": 650,
+                                        "y": 220,
+                                        "width": 116,
+                                        "height": 48
+                                      }
+                                    },
+                                    {
+                                      "id": "de82a362-7c81-4361-8fe8-8c32176863d7",
+                                      "label": "设置属性",
+                                      "type": "ControllerDefaultReaction",
+                                      "materialName": "setProp",
+                                      "inPorts": [
+                                        {
+                                          "id": "818f8fca-b431-4b3c-9660-5461f2325ede",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "config": {
+                                        "controllerId": "97be3def-3b81-46cf-b77c-1b27f83a9f16",
+                                        "reactionRef": "setProp",
+                                        "prop": "dataSource"
+                                      },
+                                      "x6Node": {
+                                        "x": 650,
+                                        "y": 50,
+                                        "width": 116,
+                                        "height": 48
+                                      }
+                                    },
+                                    {
+                                      "id": "696dd67a-b439-4e1c-963a-897aab5dae55",
+                                      "label": "提示消息",
+                                      "type": "SingleReaction",
+                                      "materialName": "infoMessage",
+                                      "inPorts": [
+                                        {
+                                          "id": "4976315b-b17b-44c2-a460-3ffaf79a840f",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "x6Node": {
+                                        "x": 650,
+                                        "y": 130,
+                                        "width": 116,
+                                        "height": 48
+                                      },
+                                      "config": {
+                                        "type": "error"
+                                      }
+                                    },
+                                    {
+                                      "id": "d326508f-00c7-416c-afce-77c95aaacef7",
+                                      "label": "常量",
+                                      "type": "SingleReaction",
+                                      "materialName": "fixedValue",
+                                      "inPorts": [
+                                        {
+                                          "id": "8b51b6a3-f3f4-4f52-bf5c-4d3bc6f416c0",
+                                          "name": "input",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "outPorts": [
+                                        {
+                                          "id": "c25c076e-a9ef-49a6-999d-979db30035ca",
+                                          "name": "output",
+                                          "label": ""
+                                        }
+                                      ],
+                                      "x6Node": {
+                                        "x": 240,
+                                        "y": 100,
+                                        "width": 88,
+                                        "height": 32
+                                      },
+                                      "config": {
+                                        "value": {
+                                          "nodes": [
+                                            {
+                                              "id": "xx",
+                                              "name": "John Brown",
+                                              "age": 32,
+                                              "address": "New York No. 1 Lake Park",
+                                              "tags": [
+                                                "nice",
+                                                "developer"
+                                              ]
+                                            },
+                                            {
+                                              "id": "2",
+                                              "name": "Jim Green",
+                                              "age": 42,
+                                              "address": "London No. 1 Lake Park",
+                                              "tags": [
+                                                "loser"
+                                              ]
+                                            },
+                                            {
+                                              "id": "3",
+                                              "name": "Joe Black",
+                                              "age": 32,
+                                              "address": "Sidney No. 1 Lake Park",
+                                              "tags": [
+                                                "cool",
+                                                "teacher"
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "invokes": [
+                                    {
+                                      "id": "a820fd68-483f-4ac4-9ddb-531d39396068",
+                                      "source": {
+                                        "nodeId": "b75a13c3-ee7d-4e01-8828-fa752bd00703"
+                                      },
+                                      "target": {
+                                        "nodeId": "d326508f-00c7-416c-afce-77c95aaacef7",
+                                        "portId": "8b51b6a3-f3f4-4f52-bf5c-4d3bc6f416c0"
+                                      }
+                                    },
+                                    {
+                                      "id": "b79c9206-8668-44ea-8130-1e18fd69a088",
+                                      "source": {
+                                        "nodeId": "d326508f-00c7-416c-afce-77c95aaacef7",
+                                        "portId": "c25c076e-a9ef-49a6-999d-979db30035ca"
+                                      },
+                                      "target": {
+                                        "nodeId": "c0be6294-eba1-4528-8b2e-253d044b7a2d",
+                                        "portId": "543c5ee6-c07b-4355-9fb5-55c0f408f5dc"
+                                      }
+                                    },
+                                    {
+                                      "id": "2dae8074-cb0a-4765-bb1b-5d13be17712e",
+                                      "source": {
+                                        "nodeId": "c0be6294-eba1-4528-8b2e-253d044b7a2d",
+                                        "portId": "2d8323a1-0bd5-4540-ab0a-71dad26832ed"
+                                      },
+                                      "target": {
+                                        "nodeId": "de82a362-7c81-4361-8fe8-8c32176863d7",
+                                        "portId": "818f8fca-b431-4b3c-9660-5461f2325ede"
+                                      }
+                                    },
+                                    {
+                                      "id": "dda7a25f-3f67-4478-8ea5-7a8cfc3df25b",
+                                      "source": {
+                                        "nodeId": "c0be6294-eba1-4528-8b2e-253d044b7a2d",
+                                        "portId": "4f8b425a-ea5b-4167-9cc7-37323ec875fb"
+                                      },
+                                      "target": {
+                                        "nodeId": "81186513-199d-4623-8f3b-f2cf5ce3a3e5",
+                                        "portId": "818f8fca-b431-4b3c-9660-5461f2325ede"
+                                      }
+                                    },
+                                    {
+                                      "id": "3c4d2680-8f16-4342-804f-dacc6cf25cab",
+                                      "source": {
+                                        "nodeId": "c0be6294-eba1-4528-8b2e-253d044b7a2d",
+                                        "portId": "962dbf84-e368-4292-8a9c-d611766a8184"
+                                      },
+                                      "target": {
+                                        "nodeId": "696dd67a-b439-4e1c-963a-897aab5dae55",
+                                        "portId": "4976315b-b17b-44c2-a460-3ffaf79a840f"
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "id": "82834e66-fafd-4bd6-8d72-7ca210ed3150",
+                                "name": "destory",
+                                "label": "销毁"
+                              },
+                              {
+                                "id": "d50e0c91-db02-4f20-847b-89eee14b695e",
+                                "name": "onClick",
+                                "label": "点击"
+                              }
+                            ]
+                          },
+                          "slots": {
+                            "renderItem": {
+                              "componentName": "ListItem",
+                              "slots": {
+                                "actions": {
+                                  "componentName": "ActionSlot",
+                                  "slots": {},
+                                  "children": []
+                                },
+                                "extra": {
+                                  "componentName": "ExtraSlot",
+                                  "slots": {},
+                                  "children": []
+                                }
+                              },
+                              "children": [
+                                {
+                                  "componentName": "ListItemMeta",
+                                  "slots": {
+                                    "avatar": {
+                                      "componentName": "Avatar",
+                                      "slots": {},
+                                      "children": []
+                                    },
+                                    "title": {
+                                      "componentName": "Text",
+                                      "props": {
+                                        "value": "Title"
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    },
+                                    "description": {
+                                      "componentName": "Text",
+                                      "props": {
+                                        "value": "Description"
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "componentName": "TableColumn",
+                              "props": {
+                                "title": "名称"
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Link",
+                                  "props": {
+                                    "value": "Link"
+                                  },
+                                  "x-field": {
+                                    "params": {
+                                      "withBind": true
+                                    },
+                                    "name": "name"
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "TableColumn",
+                              "props": {
+                                "title": "标签"
+                              },
+                              "x-field": {
+                                "params": {},
+                                "type": "array",
+                                "name": "tags"
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "LoopPanel",
+                                  "props": {},
+                                  "x-field": {
+                                    "params": {
+                                      "withBind": true
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": [
+                                    {
+                                      "componentName": "Tag",
+                                      "props": {
+                                        "value": "Tag"
+                                      },
+                                      "x-field": {
+                                        "params": {
+                                          "withBind": true
+                                        }
+                                      },
+                                      "x-reactions": {
+                                        "id": "3d935028-e718-474e-a798-7d95bb4a2a09",
+                                        "enable": true,
+                                        "name": "标签",
+                                        "events": [
+                                          {
+                                            "id": "721cd8c4-4cac-4704-9b23-29f258b860ae",
+                                            "name": "init",
+                                            "label": "初始化",
+                                            "logicMetas": {
+                                              "reactions": [
+                                                {
+                                                  "id": "fedc169a-4a64-408b-a200-503f216734f1",
+                                                  "label": "JS代码",
+                                                  "type": "SingleReaction",
+                                                  "materialName": "jsCode",
+                                                  "inPorts": [
+                                                    {
+                                                      "id": "c586983f-7b44-4c71-90a4-d4ff9f9f1d0b",
+                                                      "name": "input",
+                                                      "label": ""
+                                                    }
+                                                  ],
+                                                  "outPorts": [
+                                                    {
+                                                      "id": "2b8a4de8-b2cf-43f4-aae8-60c91b0136e3",
+                                                      "name": "output",
+                                                      "label": "output"
+                                                    }
+                                                  ],
+                                                  "x6Node": {
+                                                    "x": 290,
+                                                    "y": 240,
+                                                    "width": 102,
+                                                    "height": 32
+                                                  },
+                                                  "config": {
+                                                    "expression": "({ inputValue, outputs }) => {\n  const { output } = outputs;\n  output(inputValue?.toUpperCase());\n}"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "31a26ac7-1843-4db3-8b52-c38cd0dc792e",
+                                                  "label": "输入",
+                                                  "type": "Start",
+                                                  "materialName": "start",
+                                                  "name": "input",
+                                                  "x6Node": {
+                                                    "x": 50,
+                                                    "y": 90,
+                                                    "width": 20,
+                                                    "height": 20
+                                                  }
+                                                },
+                                                {
+                                                  "id": "eb0ea405-5d32-4813-85e8-d1769e752bdc",
+                                                  "label": "读取字段",
+                                                  "type": "SingleReaction",
+                                                  "materialName": "readFieldValue",
+                                                  "inPorts": [
+                                                    {
+                                                      "id": "ff1a4716-798b-45f8-9e3e-fe426fa45f7b",
+                                                      "name": "input",
+                                                      "label": ""
+                                                    }
+                                                  ],
+                                                  "outPorts": [
+                                                    {
+                                                      "id": "3a4ed5c8-bcff-4669-ab4e-018a288d893b",
+                                                      "name": "output",
+                                                      "label": ""
+                                                    }
+                                                  ],
+                                                  "x6Node": {
+                                                    "x": 100,
+                                                    "y": 170,
+                                                    "width": 116,
+                                                    "height": 32
+                                                  }
+                                                },
+                                                {
+                                                  "id": "6255d3f2-aa7d-432e-b48a-77d9a487404c",
+                                                  "label": "JS代码",
+                                                  "type": "SingleReaction",
+                                                  "materialName": "jsCode",
+                                                  "inPorts": [
+                                                    {
+                                                      "id": "300a9253-19d0-4a08-a936-05e5f51390a7",
+                                                      "name": "input",
+                                                      "label": ""
+                                                    }
+                                                  ],
+                                                  "outPorts": [
+                                                    {
+                                                      "id": "97e732f6-761b-48c6-9c33-dc6db777282f",
+                                                      "name": "output",
+                                                      "label": "output"
+                                                    }
+                                                  ],
+                                                  "x6Node": {
+                                                    "x": 300,
+                                                    "y": 140,
+                                                    "width": 102,
+                                                    "height": 32
+                                                  },
+                                                  "config": {
+                                                    "expression": "({ inputValue, outputs }) => {\n  const { output } = outputs;\nlet color = inputValue?.length > 5 ? 'geekblue' : 'green';\n  output(color);\n}"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "aace7a67-6bb2-4433-b19e-aed17957c479",
+                                                  "label": "设置属性",
+                                                  "type": "ControllerDefaultReaction",
+                                                  "materialName": "setProp",
+                                                  "inPorts": [
+                                                    {
+                                                      "id": "15f2f240-37d1-46cd-a104-c9e902f55fd7",
+                                                      "name": "input",
+                                                      "label": ""
+                                                    }
+                                                  ],
+                                                  "config": {
+                                                    "controllerId": "3d935028-e718-474e-a798-7d95bb4a2a09",
+                                                    "reactionRef": "setProp",
+                                                    "prop": "color"
+                                                  },
+                                                  "x6Node": {
+                                                    "x": 540,
+                                                    "y": 130,
+                                                    "width": 116,
+                                                    "height": 48
+                                                  }
+                                                },
+                                                {
+                                                  "id": "04d2512b-f184-47e5-bac1-00f9572dcee8",
+                                                  "label": "设置属性",
+                                                  "type": "ControllerDefaultReaction",
+                                                  "materialName": "setProp",
+                                                  "inPorts": [
+                                                    {
+                                                      "id": "563b97c9-8042-4f48-8ebe-817456ac2a5e",
+                                                      "name": "input",
+                                                      "label": ""
+                                                    }
+                                                  ],
+                                                  "config": {
+                                                    "controllerId": "3d935028-e718-474e-a798-7d95bb4a2a09",
+                                                    "reactionRef": "setProp",
+                                                    "prop": "value"
+                                                  },
+                                                  "x6Node": {
+                                                    "x": 520,
+                                                    "y": 230,
+                                                    "width": 116,
+                                                    "height": 48
+                                                  }
+                                                }
+                                              ],
+                                              "invokes": [
+                                                {
+                                                  "id": "eb7db197-e8f0-47bf-9f7f-c0cfae2f3732",
+                                                  "source": {
+                                                    "nodeId": "6255d3f2-aa7d-432e-b48a-77d9a487404c",
+                                                    "portId": "97e732f6-761b-48c6-9c33-dc6db777282f"
+                                                  },
+                                                  "target": {
+                                                    "nodeId": "aace7a67-6bb2-4433-b19e-aed17957c479",
+                                                    "portId": "15f2f240-37d1-46cd-a104-c9e902f55fd7"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "119e329e-a3a0-4dc1-8a12-2e3b88136e76",
+                                                  "source": {
+                                                    "nodeId": "fedc169a-4a64-408b-a200-503f216734f1",
+                                                    "portId": "2b8a4de8-b2cf-43f4-aae8-60c91b0136e3"
+                                                  },
+                                                  "target": {
+                                                    "nodeId": "04d2512b-f184-47e5-bac1-00f9572dcee8",
+                                                    "portId": "563b97c9-8042-4f48-8ebe-817456ac2a5e"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "59191255-0f72-4bac-828e-d066856fdb59",
+                                                  "source": {
+                                                    "nodeId": "31a26ac7-1843-4db3-8b52-c38cd0dc792e"
+                                                  },
+                                                  "target": {
+                                                    "nodeId": "eb0ea405-5d32-4813-85e8-d1769e752bdc",
+                                                    "portId": "ff1a4716-798b-45f8-9e3e-fe426fa45f7b"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "e25ed949-7260-4399-a58e-5e1fd76bc196",
+                                                  "source": {
+                                                    "nodeId": "eb0ea405-5d32-4813-85e8-d1769e752bdc",
+                                                    "portId": "3a4ed5c8-bcff-4669-ab4e-018a288d893b"
+                                                  },
+                                                  "target": {
+                                                    "nodeId": "6255d3f2-aa7d-432e-b48a-77d9a487404c",
+                                                    "portId": "300a9253-19d0-4a08-a936-05e5f51390a7"
+                                                  }
+                                                },
+                                                {
+                                                  "id": "0bef999e-a1ef-4db5-a988-78b722da2d85",
+                                                  "source": {
+                                                    "nodeId": "eb0ea405-5d32-4813-85e8-d1769e752bdc",
+                                                    "portId": "3a4ed5c8-bcff-4669-ab4e-018a288d893b"
+                                                  },
+                                                  "target": {
+                                                    "nodeId": "fedc169a-4a64-408b-a200-503f216734f1",
+                                                    "portId": "c586983f-7b44-4c71-90a4-d4ff9f9f1d0b"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "id": "6afcdf3f-3e92-4e96-a352-fa47774b66bd",
+                                            "name": "destory",
+                                            "label": "销毁"
+                                          },
+                                          {
+                                            "id": "13b899d2-cd23-4d31-9fde-55efb2b12bf2",
+                                            "name": "onClick",
+                                            "label": "点击"
+                                          }
+                                        ]
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "TableColumn",
+                              "props": {
+                                "title": "操作",
+                                "width": 120
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Button",
+                                  "props": {
+                                    "type": "link",
+                                    "title": "编辑",
+                                    "size": "small"
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "Button",
+                                  "props": {
+                                    "type": "link",
+                                    "title": "删除",
+                                    "size": "small"
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "componentName": "Card",
+                      "props": {
+                        "style": {
+                          "marginTop": "16px"
+                        }
+                      },
+                      "slots": {
+                        "title": {
+                          "componentName": "DefaultSlot",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Text",
+                              "props": {
+                                "value": "动态",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        },
+                        "actions": {
+                          "componentName": "DefaultSlot",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Button",
+                              "props": {
+                                "type": "default",
+                                "title": "加载更多",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "componentName": "News",
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 8,
+                    "style": {}
+                  },
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Card",
+                      "props": {},
+                      "slots": {
+                        "title": {
+                          "componentName": "DefaultSlot",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Text",
+                              "props": {
+                                "value": "快捷入口",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        },
+                        "extra": {
+                          "componentName": "DefaultSlot",
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Button",
+                              "props": {
+                                "type": "text",
+                                "shape": "circle",
+                                "style": {}
+                              },
+                              "slots": {
+                                "icon": {
+                                  "componentName": "IconView",
+                                  "props": {
+                                    "icon": {
+                                      "iconKey": "SettingOutlined"
+                                    },
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              },
+                              "children": []
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "componentName": "Row",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(186,223,76,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "DollarCircleOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "付款申请",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(139,121,236,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "ShoppingOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "采购申请",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(14,219,119,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "GiftOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "差旅申请",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(97,204,84,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "RocketOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "订舱申请",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(245,166,35,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "StarOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "用章流程",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(139,121,236,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "CarOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "用车申请",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(139,87,42,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "ScheduleOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "请假申请",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(126,211,33,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "SoundOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "评价反馈",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 8,
+                                "style": {
+                                  "display": "flex",
+                                  "flexDirection": "column",
+                                  "alignContent": "flex-start",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "marginBottom": "8px",
+                                  "paddingTop": "8px",
+                                  "paddingRight": "8px",
+                                  "paddingBottom": "8px",
+                                  "paddingLeft": "8px"
+                                }
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Avatar",
+                                  "props": {
+                                    "style": {
+                                      "backgroundColor": "rgba(181,181,182,1)"
+                                    }
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "EllipsisOutlined"
+                                        },
+                                        "style": {}
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                },
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "全部应用",
+                                    "style": {
+                                      "fontWeight": 700,
+                                      "fontSize": "13px",
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "componentName": "ImageView",
+                      "props": {
+                        "value": "/imgs/ad.jpg",
+                        "height": "30%",
+                        "style": {
+                          "marginTop": "16px",
+                          "borderTopLeftRadius": "8px",
+                          "borderTopRightRadius": "8px",
+                          "borderBottomRightRadius": "8px",
+                          "borderBottomLeftRadius": "8px"
+                        }
+                      },
+                      "slots": {},
+                      "children": []
+                    },
+                    {
+                      "componentName": "Card",
+                      "props": {
+                        "style": {
+                          "marginTop": "16px"
+                        }
+                      },
+                      "slots": {
+                        "title": {
+                          "componentName": "DefaultSlot",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Text",
+                              "props": {
+                                "value": "使用帮助",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "componentName": "Row",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 24,
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "Apper 是什么?",
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 24,
+                                "style": {
+                                  "marginTop": "8px"
+                                }
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "开发自定义组件需要注意的问题",
+                                    "style": {
+                                      "marginTop": "8px"
+                                    }
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 24,
+                                "style": {
+                                  "marginTop": "8px"
+                                }
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "如何开发一个优秀模板?",
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 24,
+                                "style": {
+                                  "marginTop": "8px"
+                                }
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "低代码该如何做?",
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 24,
+                                "style": {
+                                  "marginTop": "8px"
+                                }
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "React的未来在哪里",
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 24,
+                                "style": {
+                                  "marginTop": "8px"
+                                }
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "Redux， 繁琐背后的优雅",
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "componentName": "Col",
+                              "props": {
+                                "span": 24,
+                                "style": {
+                                  "marginTop": "8px"
+                                }
+                              },
+                              "slots": {},
+                              "children": [
+                                {
+                                  "componentName": "Text",
+                                  "props": {
+                                    "value": "查看全部",
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "componentName": "Divider",
+                          "slots": {},
+                          "children": []
+                        },
+                        {
+                          "componentName": "Box",
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Text",
+                              "props": {
+                                "value": "其它帮助",
+                                "style": {
+                                  "fontWeight": 600
+                                }
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "componentName": "Box",
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Button",
+                              "props": {
+                                "type": "link",
+                                "title": "新手引导",
+                                "style": {
+                                  "marginLeft": "-16px"
+                                }
+                              },
+                              "slots": {
+                                "icon": {
+                                  "componentName": "IconView",
+                                  "props": {
+                                    "icon": {
+                                      "iconKey": "BookOutlined"
+                                    },
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              },
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "componentName": "Box",
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Button",
+                              "props": {
+                                "type": "link",
+                                "title": "视频演示",
+                                "style": {
+                                  "marginLeft": "-16px"
+                                }
+                              },
+                              "slots": {
+                                "icon": {
+                                  "componentName": "IconView",
+                                  "props": {
+                                    "icon": {
+                                      "iconKey": "VideoCameraOutlined"
+                                    },
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              },
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "componentName": "Box",
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Button",
+                              "props": {
+                                "type": "link",
+                                "title": "产品文档",
+                                "style": {
+                                  "marginLeft": "-16px"
+                                }
+                              },
+                              "slots": {
+                                "icon": {
+                                  "componentName": "IconView",
+                                  "props": {
+                                    "icon": {
+                                      "iconKey": "QuestionCircleOutlined"
+                                    },
+                                    "style": {}
+                                  },
+                                  "slots": {},
+                                  "children": []
+                                }
+                              },
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "componentName": "Card",
+                      "props": {
+                        "style": {
+                          "marginTop": "16px"
+                        }
+                      },
+                      "slots": {
+                        "title": {
+                          "componentName": "DefaultSlot",
+                          "props": {},
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Text",
+                              "props": {
+                                "value": "公告",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "componentName": "Notices",
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "componentName": "Row",
+                      "props": {},
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "Col",
+                          "props": {
+                            "span": 24,
+                            "style": {
+                              "marginTop": "16px"
+                            }
+                          },
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Text",
+                              "props": {
+                                "value": "更新日志",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "componentName": "Col",
+                          "props": {
+                            "span": 24,
+                            "style": {
+                              "marginTop": "8px"
+                            }
+                          },
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Text",
+                              "props": {
+                                "value": "反馈",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "componentName": "Col",
+                          "props": {
+                            "span": 24,
+                            "style": {
+                              "marginTop": "8px"
+                            }
+                          },
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Text",
+                              "props": {
+                                "value": "服务协议",
+                                "style": {}
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "footer": {
+          "componentName": "Layout.Footer",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Text",
+              "props": {
+                "value": "Apper Copyright ©2023",
+                "style": {}
+              },
+              "slots": {},
+              "children": []
+            }
+          ]
+        }
+      },
+      "children": []
+    }
+  ]
+}

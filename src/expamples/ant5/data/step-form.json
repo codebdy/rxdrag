@@ -1,0 +1,83 @@
+{
+  "componentName": "Root",
+  "slots": {},
+  "children": [
+    {
+      "componentName": "TwoColumnLayout",
+      "props": {},
+      "slots": {
+        "header": {
+          "componentName": "Layout.Header",
+          "props": {
+            "style": {
+              "display": "flex",
+              "justifyContent": "space-between",
+              "alignItems": "center"
+            }
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Avatar",
+              "props": {},
+              "slots": {
+                "icon": {
+                  "componentName": "IconView",
+                  "props": {
+                    "icon": {
+                      "iconKey": "UserOutlined"
+                    },
+                    "style": {}
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              },
+              "children": []
+            }
+          ]
+        },
+        "sider": {
+          "componentName": "Layout.Sider",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Logo",
+              "slots": {},
+              "children": []
+            },
+            {
+              "componentName": "Menu",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        "value": {
+          "componentName": "Layout.Content",
+          "props": {},
+          "slots": {},
+          "children": []
+        },
+        "footer": {
+          "componentName": "Layout.Footer",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Text",
+              "props": {
+                "value": "Apper Copyright ©2023",
+                "style": {}
+              },
+              "slots": {},
+              "children": []
+            }
+          ]
+        }
+      },
+      "children": []
+    }
+  ]
+}
