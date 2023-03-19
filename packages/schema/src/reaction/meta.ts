@@ -17,11 +17,11 @@ export interface IPortMeta {
 }
 
 export enum ReactionType {
-  Start = "Start",
-  End = "End",
-  SingleReaction = "SingleReaction",
-  ControllerReaction = "ControllerReaction",
-  ControllerDefaultReaction = "ControllerDefaultReaction",
+  Start = 'Start',
+  End = 'End',
+  SingleReaction = 'SingleReaction',
+  ControllerReaction = 'ControllerReaction',
+  ControllerDefaultReaction = 'ControllerDefaultReaction'
 }
 
 export interface IReactionNodeData {
@@ -34,17 +34,18 @@ export interface IReactionNodeData {
 
 export interface IConfigMeta {
   controllerId?: string;
-  reactionRef?: string;//reaction id or name(default reaction)
+  reactionRef?: string; //reaction id or name(default reaction)
 }
 
-export interface IReactionMeta<ConfigMeta extends IConfigMeta = IConfigMeta> extends IReactionNodeData {
+export interface IReactionMeta<ConfigMeta extends IConfigMeta = IConfigMeta>
+  extends IReactionNodeData {
   id: string;
   type: ReactionType;
   materialName: string;
   name?: string;
   label?: string;
   x6Node?: IX6NodeMeta;
-  config?: ConfigMeta,
+  config?: ConfigMeta;
 }
 
 export interface IInvokeMeta {
@@ -52,7 +53,7 @@ export interface IInvokeMeta {
   source: {
     nodeId: string;
     portId?: string;
-  }
+  };
   target: {
     nodeId: string;
     portId?: string;
@@ -66,33 +67,33 @@ export interface ILogicMetas {
 }
 
 export interface IReactionDefineMeta {
-  id: string,
-  name?: string,
-  label?: string,
+  id: string;
+  name?: string;
+  label?: string;
   //可视化场景使用
-  logicMetas?: ILogicMetas,
+  logicMetas?: ILogicMetas;
   //不能可视化的场景使用，比如右侧属性面板
-  jsCode?: string,
+  jsCode?: string;
 }
 
 export interface IVariableDefineMeta {
-  id: string,
-  name: string,
-  defaultValue?: any,
+  id: string;
+  name: string;
+  defaultValue?: any;
 }
 
-// $form 虚拟表单， 
+// $form 虚拟表单，
 // $field 当前字段, 设置字段：$field.setValue
-// $self 组件，设置组件属性:$self.setProps({dataSource:[...]}), 
+// $self 组件，设置组件属性:$self.setProps({dataSource:[...]}),
 export interface IControllerMeta {
-  id: string,
-  enable?: boolean,
-  name?: string,
-  events?: IReactionDefineMeta[],
-  reactions?: IReactionDefineMeta[],
-  variables?: IVariableDefineMeta[],
+  id: string;
+  enable?: boolean;
+  name?: string;
+  events?: IReactionDefineMeta[];
+  reactions?: IReactionDefineMeta[];
+  variables?: IVariableDefineMeta[];
   //js代码表述的表达式
   expressions?: {
-    [propName: string]: string | undefined,
-  }
+    [propName: string]: string | undefined;
+  };
 }

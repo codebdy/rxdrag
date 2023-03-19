@@ -1,73 +1,118 @@
-# Turborepo starter
+Monorepo starter using Vite and Turborepo to create microfrontend React apps, libraries, docs, testing, tooling, and more.
 
-This is an official pnpm starter turborepo.
+# Requirements
 
-## What's inside?
+Install [pnpm](https://pnpm.io/).
 
-This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes the following packages/apps:
+We recommend an LTS version of [Node.js](https://nodejs.org/en/) >= 16.
 
-### Apps and Packages
+# Local Development
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+To work on Rxdrag web apps, from the root,
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+1. Run `pnpm install`
 
-### Utilities
+2. Run `pnpm dev`
 
-This turborepo has some additional tools already setup for you:
+# Environment
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+Please see `apps/core/.env` for a list of environment variables you can set.
 
-### Build
+# Testing
 
-To build all apps and packages, run the following command:
+To run tests for all packages with Vitest, from the root, run `pnpm test`.
 
-```
-cd my-turborepo
-pnpm run build
-```
+To run end-to-end tests for all apps with Cypress, from the root, run `pnpm e2e`.
 
-### Develop
+When writing tests, we have helpers available in both environments using [@testing-library](https://testing-library.com/docs/queries/about).
 
-To develop all apps and packages, run the following command:
+# Production
 
-```
-cd my-turborepo
-pnpm run dev
-```
+To deploy the `@rxdrag/core` app, from the root,
 
-### Remote Caching
+1. Run `pnpm build`
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+2. Run `pnpm --filter "@rxdrag/core" run preview` to preview the app.
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+In production, please see [`rxdrag/server`](https://github.rxdrag.com/rxdrag/rxdrag-server).
 
-```
-cd my-turborepo
-pnpm dlx turbo login
-```
+# Tooling
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+We use the following tools:
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
+- [Vite](https://vitejs.dev/)
+- [Turbo](https://turbo.build/repo)
+- [React](https://reactjs.org/)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+- [Storybook](https://storybook.js.org/)
+- [Plop](https://github.com/plopjs/plop)
+- [Husky](https://github.com/typicode/husky)
+- [Vitest](https://github.com/vitest-dev/vitest)
+- [Cypress](https://www.cypress.io/)
+- [Sentry](https://github.com/getsentry/sentry)
+- [Changesets](https://github.com/changesets/changesets)
 
-```
-pnpm dlx turbo link
-```
+# Guide
 
-## Useful Links
+## How do I create a new app or package?
 
-Learn more about the power of Turborepo:
+To create a new app, run `pnpm new-app` or `pnpm new-app-ts` (TypeScript).
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+To add a library, run `pnpm new-library` or `pnpm new-library-ts` (TypeScript).
+
+## How should I create a branch for my new code?
+
+The `main` branch is the production code.
+
+Each package has a branch called `next-<package>`, e.g. `next-shared`. This is an eternal branch with the new code for `<package>`.
+
+To create an update, branch `feature/*` from `next-<package>` and merge back into `next-<package>` to commit your work.
+
+UAT branches are available, and should be named `uat-<package>` to provide a deployment in the staging environment.
+
+## How do I preview my new code?
+
+Every time a commit is pushed up, it will have a new review app deployed.
+
+If it is a `uat-<package>` branch, it will be available at `https://review.rxdrag.com/uat-<package>`.
+
+All other commits will be available to preview at `https://review.rxdrag.com/<commit-short-sha>`, where `<commit-short-sha>` is the first 8 characters of the commit hash.
+
+## How do I add a dependency to my project?
+
+To add a dependency to a specific workspace, run `pnpm --filter "workspace" add <package-to-add>`, e.g. `pnpm --filter "@rxdrag/data" add d3`.
+
+> **Note: Do not add dependencies to the root workspace.**
+
+## What libraries should I know about?
+
+Please see our [Storybook](https://storybook.rxdrag.com) to see the docs and learn about what packages you can use. You can run Storybook locally while you work on your projects with `pnpm run docs`.
+
+`@rxdrag/core`: Our main Rxdrag web app
+
+`@rxdrag/shell`: Our core UI and design library that extends and configures Material UI
+
+`@rxdrag/shared`: Shared code between all Rxdrag packages
+
+`@rxdrag/<app>-ui`: Packages with this name format are UI libraries built for specific apps but can still be used by other apps, e.g. `@rxdrag/dashboard-ui` was built for the Dashboard portal but may provide useful UI for your project
+
+## How do I version, tag, release, or publish a new version of a package?
+
+We handle this with the `changesets` CLI tool.
+
+A developer creates a changeset, which is just a changelog for the package being updated. Then they'll version it, and if required, release it to a registry.
+
+1. Ensure you are on a `next-<package>` branch. Merge `main` in
+2. Run `pnpm changeset-create` to write your changelog (use spacebar to pick packages)
+3. Run `pnpm changeset-save-prerelease <tag-suffix>` **only** if you want to create a specific prerelease version. For example, `pnpm changeset-save-prerelease rc` creates `@rxdrag/package@1.7.3-rc.0`
+4. To create the new version, run `pnpm changeset-save`
+5. To publish the new version to the registry, run `pnpm changeset-tag-and-publish`
+6. To instead **only tag** the new versions, but not publish, run `pnpm changeset-tag`
+7. Run `git push --follow-tags`
+
+## How do I fix CORS errors in development for a URL I am using in my project?
+
+If you are facing CORS errors in development, you may want to update your API's CORS rules in that environment. If that is not an option and your package is built with Vite (e.g. `@rxdrag/core`), please update the development server proxy rules:
+
+In `apps/core/vite.config.ts`, configure your local API URL and the target API URL in the `server.proxy` object.

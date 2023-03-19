@@ -1,2 +1,5 @@
-export * from "./classes"
-export * from "./interfaces"
+/**
+ * @rxdrag/locales: locales
+ */
+
+export const libName = 'locales';

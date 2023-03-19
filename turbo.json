@@ -1,15 +1,36 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
+
+  "globalDependencies": [".env.local"],
+
+  "globalEnv": [
+    "CI",
+    "NODE_ENV",
+    "BASE_URL",
+    "REACT_APP_AUTH_API",
+    "REACT_APP_SENTRY_DSN",
+    "REACT_APP_SENTRY_TOKEN",
+    "REACT_APP_SENTRY"
+  ],
+
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": ["dist/**", "build/**", "public/build/**"]
+    },
+    "dev": {
+      "cache": false
     },
     "lint": {
       "outputs": []
     },
-    "dev": {
+    "test": {
+      "outputs": []
+    },
+    "test:watch": {
+      "cache": false
+    },
+    "clean": {
       "cache": false
     }
   }

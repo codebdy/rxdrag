@@ -2,15 +2,9 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Default",
   "compilerOptions": {
-    "lib": [
-      "ES2015",
-      "es6",
-      "dom"
-    ],
-    "target": "es5",
     "composite": false,
     "declaration": true,
-    "declarationMap": true,
+    "declarationMap": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "inlineSources": false,
@@ -21,12 +15,7 @@
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "strict": true,
-    "baseUrl": "./src",
-    "paths": {
-      "tslib" : ["path/to/node_modules/tslib/tslib.d.ts"]
-    }
+    "noImplicitAny": true
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

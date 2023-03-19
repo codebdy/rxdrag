@@ -1,5 +1,5 @@
-import _ from "lodash";
+import _ from 'lodash';
 
 export function makeRxId() {
-  return "rx-" + _.uniqueId();
+  return 'rx-' + _.uniqueId();
 }

@@ -1,0 +1,36 @@
+{
+  "name": "@rxdrag/{{name}}",
+  "version": "1.1.0",
+  "author": "{{maintainer}}",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "exports": {
+    ".": {
+      "development": "./src/index.js",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "test"
+  ],
+  "scripts": {
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@rxdrag/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "vite": "^4.2.0"
+  },
+  "peerDependencies": {
+    "@types/node": "*",
+    "@vitejs/plugin-react-swc": "3.x",
+    "typescript": "4.x",
+    "vite": "4.x",
+    "vitest": "*"
+  }
+}

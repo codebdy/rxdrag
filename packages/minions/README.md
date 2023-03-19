@@ -1,2 +1,9 @@
-逻辑引擎
-依赖fieldy
+# Summary
+
+minions
+
+# Contributors
+
+`@rxdrag/minions` is maintained by:
+
+- Water.Li

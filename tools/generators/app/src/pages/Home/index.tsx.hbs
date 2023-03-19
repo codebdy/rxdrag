@@ -1,0 +1,18 @@
+import Shell from '@rxdrag/shell';
+import { Box, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
+
+function Home() {
+  return (
+    <Shell>
+      <Box p={2}>
+        <Typography>
+          This is the Rxdrag {{titleCaseWithoutSpace name}} Homepage from <code>@rxdrag/{{name}}</code>.
+        </Typography>
+        <Link to="/">Click to go back home.</Link>
+      </Box>
+    </Shell>
+  );
+}
+
+export default Home;
