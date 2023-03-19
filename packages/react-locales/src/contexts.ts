@@ -1,6 +1,4 @@
-import { IField, IFieldyEngine, IForm } from "@rxdrag/fieldy";
-import { createContext } from "react";
+import { createContext } from "react"
+import {ILocalesManager} from "@rxdrag/locales"
 
-export const FieldyContext = createContext<IFieldyEngine | undefined>(undefined)
-export const FormContext = createContext<IForm | undefined>(undefined)
-export const FieldContext = createContext<IField | undefined>(undefined)
+export const LocalesContext = createContext<ILocalesManager | undefined>(undefined)
