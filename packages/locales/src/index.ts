@@ -1,5 +1,2 @@
-/**
- * @rxdrag/locales: locales
- */
-
-export const libName = 'locales';
+export * from "./classes"
+export * from "./interfaces"

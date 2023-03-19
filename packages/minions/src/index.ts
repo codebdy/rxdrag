@@ -1,5 +1,3 @@
-/**
- * @rxdrag/minions: minions
- */
-
-export const libName = 'minions';
+export * from "./classes"
+export * from "./controllers"
+export * from "./interfaces"
