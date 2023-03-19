@@ -21,7 +21,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@myorg/shared": "workspace:*"
+    "@rxdrag/shared": "workspace:*"
   },
   "devDependencies": {
     "vite": "^4.2.0"
