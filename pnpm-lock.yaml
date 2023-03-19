@@ -54,7 +54,7 @@ importers:
       typescript: ^4.9.3
       vite: ^4.2.0
     dependencies:
-      '@rxdrag/shared': link:../../packages/test2
+      '@rxdrag/shared': link:../../packages/shared
       antd: registry.npmmirror.com/antd/5.3.1_biqbaboplfbrettd7655fr4n2y
       react: registry.npmmirror.com/react/18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
@@ -77,7 +77,7 @@ importers:
       eslint-config-turbo: registry.npmmirror.com/eslint-config-turbo/0.0.9_eslint@8.30.0
       eslint-plugin-cypress: 2.12.1_eslint@8.30.0
 
-  packages/test2:
+  packages/shared:
     specifiers:
       '@mui/icons-material': 5.x
       '@mui/material': 5.x
@@ -105,7 +105,7 @@ importers:
       react: registry.npmmirror.com/react/18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
       react-router-dom: registry.npmmirror.com/react-router-dom/5.3.4_react@18.2.0
-      typescript: registry.npmmirror.com/typescript/4.9.4
+      typescript: registry.npmmirror.com/typescript/4.9.5
       vitest: registry.npmmirror.com/vitest/0.25.8
     devDependencies:
       vite: registry.npmmirror.com/vite/4.2.0_@types+node@18.11.17
@@ -7674,20 +7674,6 @@ packages:
       '@babel/types': registry.npmmirror.com/@babel/types/7.21.3
     dev: false
 
-  registry.npmmirror.com/@babel/runtime/7.20.6:
-    resolution:
-      {
-        integrity: sha512-Q+8MqP7TiHMWzSfwiJwXCjyf4GYA4Dgw3emg/7xmwsdLJOZUp+nMqcOwOzzYheuM1rhDu8FSj2l0aoMygEuXuA==,
-        registry: https://registry.npm.taobao.org/,
-        tarball: https://registry.npmmirror.com/@babel/runtime/-/runtime-7.20.6.tgz
-      }
-    name: '@babel/runtime'
-    version: 7.20.6
-    engines: { node: '>=6.9.0' }
-    dependencies:
-      regenerator-runtime: registry.npmmirror.com/regenerator-runtime/0.13.11
-    dev: false
-
   registry.npmmirror.com/@babel/runtime/7.21.0:
     resolution:
       {
@@ -8692,7 +8678,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.20.6
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.21.0
       '@mui/material': registry.npmmirror.com/@mui/material/5.11.0_zula6vjvt3wdocc4mwcxqa6nzi
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
       react: registry.npmmirror.com/react/18.2.0
@@ -8723,7 +8709,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.20.6
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.21.0
       '@mui/base': registry.npmmirror.com/@mui/base/5.0.0-alpha.110_zula6vjvt3wdocc4mwcxqa6nzi
       '@mui/core-downloads-tracker': registry.npmmirror.com/@mui/core-downloads-tracker/5.11.0
       '@mui/system': registry.npmmirror.com/@mui/system/5.11.0_pmekkgnqduwlme35zpnqhenc34
@@ -8811,7 +8797,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.20.6
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.21.0
       '@emotion/hash': registry.npmmirror.com/@emotion/hash/0.9.0
       '@mui/private-theming': registry.npmmirror.com/@mui/private-theming/5.11.0_pmekkgnqduwlme35zpnqhenc34
       '@mui/types': registry.npmmirror.com/@mui/types/7.2.3_@types+react@18.0.28
@@ -12624,7 +12610,7 @@ packages:
     peerDependencies:
       react: '>=15'
     dependencies:
-      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.20.6
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.21.0
       history: registry.npmmirror.com/history/4.10.1
       loose-envify: registry.npmmirror.com/loose-envify/1.4.0
       prop-types: registry.npmmirror.com/prop-types/15.8.1
@@ -13277,19 +13263,6 @@ packages:
     name: type-fest
     version: 0.20.2
     engines: { node: '>=10' }
-    dev: false
-
-  registry.npmmirror.com/typescript/4.9.4:
-    resolution:
-      {
-        integrity: sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==,
-        registry: https://registry.npm.taobao.org/,
-        tarball: https://registry.npmmirror.com/typescript/-/typescript-4.9.4.tgz
-      }
-    name: typescript
-    version: 4.9.4
-    engines: { node: '>=4.2.0' }
-    hasBin: true
     dev: false
 
   registry.npmmirror.com/typescript/4.9.5:
