@@ -1,6 +1,6 @@
-import { IDesignerEngine } from "../../../interfaces";
+import { IDesignerEngine, ITreeNode } from "../../../interfaces";
 import { AUX_BACKGROUND_COLOR, AUX_COLOR, TOOLBAR_HEIGHT } from "../../consts";
-import { IAuxControl, ITreeNode } from "../interfaces";
+import { IAuxControl } from "../interfaces";
 
 export abstract class AbstractButton implements IAuxControl{
   protected htmlElement: HTMLElement | null = null
