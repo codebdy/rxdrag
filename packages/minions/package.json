@@ -14,7 +14,8 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@rxdrag/shared": "workspace:*"
+    "@rxdrag/shared": "workspace:*",
+    "@rxdrag/schema": "workspace:*"
   },
   "devDependencies": {
     "vite": "^4.2.0"

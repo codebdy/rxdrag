@@ -14,7 +14,11 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@rxdrag/shared": "workspace:*"
+    "@reduxjs/toolkit": "^1.9.3",
+    "@rxdrag/shared": "workspace:*",
+    "@rxdrag/schema": "workspace:*",
+    "lodash": "^4.17.21",
+    "redux": "^4.2.1"
   },
   "devDependencies": {
     "vite": "^4.2.0"
