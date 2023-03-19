@@ -1,0 +1,178 @@
+env:
+  STORAGE: /builds
+  STORAGE_USER:
+  REVIEW_SITE: https://review.rxdrag.com
+  REACT_APP_AUTH_API:
+  REACT_APP_GRAPHQL_URL: https://api.review.rxdrag.com/graphql
+  REACT_APP_SENTRY_DSN:
+  REACT_APP_SENTRY_TOKEN:
+  REACT_APP_SENTRY:
+
+on: [push, pull_request]
+
+jobs:
+  cache-install-build-test:
+    name: Install (cached) dependencies, Run tests, Build packages.
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo ::set-output name=STORE_PATH::$(pnpm store path)
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Setup turbo cache
+        id: turbo-cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules/.cache/turbo
+          key: turbo-${{ runner.os }}-${{ github.ref_name }}-${{ github.sha }}
+          restore-keys: |
+            turbo-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Set build variables
+        shell: bash
+        run: |
+          if [ "$GITHUB_REF_NAME" == "uat*" ]; then
+            # UAT deployment
+            export BASE_URL=/$GITHUB_REF_NAME
+
+          elif [ "$GITHUB_REF_TYPE" == "tag" && "$GITHUB_REF_NAME" != "main" ]; then
+            # Tagged deployment
+            export BASE_URL=$(echo "/${GITHUB_REF_NAME:7}" | sed -r 's/@/-/g')
+
+          elif [ "$GITHUB_REF_NAME" == "main" ]; then
+            # Production deployment
+            export REACT_APP_GRAPHQL_URL=https://api.rxdrag.com/graphql
+            export REACT_APP_HEAD_COMMIT="$GITHUB_SHA"
+
+          else
+            # Review deployment
+            export BASE_URL="${GITHUB_SHA:0:8}"
+          fi
+
+          echo ::set-output name=BASE_URL::$BASE_URL
+
+      - name: Setup turbo cache
+        uses: actions/cache@v3
+        with:
+          path: .turbo
+          key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ github.sha }}
+          restore-keys: |
+            turbo-${{ github.job }}-${{ github.ref_name }}-
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ github.event.repository.name }}.${{ github.ref_name }}.artifact
+          path: |
+            apps/**/dist
+            packages/**/dist
+
+  review:
+    name: Launch Review App for this commit
+    needs: [cache-install-build-test]
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    environment: review
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ github.event.repository.name }}.${{ github.ref_name }}.artifact
+
+      - name: Upload review app artifacts
+        run: |
+          whoami
+          # TODO(agarun)
+
+  deploy:
+    name: Copy `@rxdrag/core` app files
+    needs: [cache-install-build-test]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ github.event.repository.name }}.${{ github.ref_name }}.artifact
+
+      - name: Upload production app artifacts
+        run: |
+          whoami
+          # TODO(agarun)
+
+  e2e:
+    name: Run end-to-end tests
+    needs: [cache-install-build-test, deploy]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm --filter "@rxdrag/e2e" install
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v5
+        with:
+          install: false
+          start: pnpm start
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 120

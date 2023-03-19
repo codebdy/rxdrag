@@ -1,1 +1,0 @@
-export const CLOSE_POPUP = "popups/CLOSE_POPUP"

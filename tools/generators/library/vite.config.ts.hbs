@@ -1,0 +1,23 @@
+import { defineConfig } from 'vite';
+import { defaultLibraryViteConfig } from '../../packages/shared/src/utils/vite';
+
+export default defineConfig({
+  ...defaultLibraryViteConfig,
+  // Configuration for building your library.
+  // See: https://vitejs.dev/guide/build.html#library-mode
+  build: {
+    lib: {
+      // Could also be a dictionary or array of multiple entry points.
+      entry: 'src/index.js',
+      name: 'Rxdrag{{titleCaseWithoutSpace name}}',
+      fileName: 'index',
+      // Change this to the formats you want to support.
+      // Don't forgot to update your package.json as well.
+      formats: ['es', 'cjs']
+    },
+    rollupOptions: {
+      // External packages that should not be bundled into your library.
+      external: ['react', 'react-dom', 'react-router-dom', 'react/jsx-runtime', '@mui/icons-material', '@mui/material', '@emotion/react', '@emotion/styled']
+    }
+  }
+});
