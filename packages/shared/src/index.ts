@@ -1,5 +1,4 @@
-/**
- * @rxdrag/shared: Rxdrag Application
- */
-
-export const testText = '哈哈哈';
+export * from './create-uuid';
+export * from './types';
+export * from './util-invariant';
+export * from './make-rxId';
