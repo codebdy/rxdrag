@@ -79,6 +79,57 @@ importers:
       eslint-config-turbo: registry.npmmirror.com/eslint-config-turbo/0.0.9_eslint@8.30.0
       eslint-plugin-cypress: 2.12.1_eslint@8.30.0
 
+  packages/fieldy:
+    specifiers:
+      '@rxdrag/shared': workspace:*
+      '@types/node': '*'
+      '@vitejs/plugin-react-swc': 3.x
+      typescript: 4.x
+      vite: ^4.2.0
+      vitest: '*'
+    dependencies:
+      '@rxdrag/shared': link:../shared
+      '@types/node': registry.npmmirror.com/@types/node/18.11.17
+      '@vitejs/plugin-react-swc': registry.npmmirror.com/@vitejs/plugin-react-swc/3.0.1_vite@4.2.0
+      typescript: registry.npmmirror.com/typescript/4.9.5
+      vitest: registry.npmmirror.com/vitest/0.25.8
+    devDependencies:
+      vite: registry.npmmirror.com/vite/4.2.0_@types+node@18.11.17
+
+  packages/locales:
+    specifiers:
+      '@rxdrag/shared': workspace:*
+      '@types/node': '*'
+      '@vitejs/plugin-react-swc': 3.x
+      typescript: 4.x
+      vite: ^4.2.0
+      vitest: '*'
+    dependencies:
+      '@rxdrag/shared': link:../shared
+      '@types/node': registry.npmmirror.com/@types/node/18.11.17
+      '@vitejs/plugin-react-swc': registry.npmmirror.com/@vitejs/plugin-react-swc/3.0.1_vite@4.2.0
+      typescript: registry.npmmirror.com/typescript/4.9.5
+      vitest: registry.npmmirror.com/vitest/0.25.8
+    devDependencies:
+      vite: registry.npmmirror.com/vite/4.2.0_@types+node@18.11.17
+
+  packages/minions:
+    specifiers:
+      '@rxdrag/shared': workspace:*
+      '@types/node': '*'
+      '@vitejs/plugin-react-swc': 3.x
+      typescript: 4.x
+      vite: ^4.2.0
+      vitest: '*'
+    dependencies:
+      '@rxdrag/shared': link:../shared
+      '@types/node': registry.npmmirror.com/@types/node/18.11.17
+      '@vitejs/plugin-react-swc': registry.npmmirror.com/@vitejs/plugin-react-swc/3.0.1_vite@4.2.0
+      typescript: registry.npmmirror.com/typescript/4.9.5
+      vitest: registry.npmmirror.com/vitest/0.25.8
+    devDependencies:
+      vite: registry.npmmirror.com/vite/4.2.0_@types+node@18.11.17
+
   packages/schema:
     specifiers:
       '@types/node': '*'
