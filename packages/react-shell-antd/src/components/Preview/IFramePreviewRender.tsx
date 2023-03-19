@@ -1,5 +1,5 @@
 import { IDesignerEngine, IDocument } from "@rxdrag/core";
-import { DesignerEngineContext } from "@rxdrag/react-core/dist/contexts";
+import { DesignerEngineContext } from "@rxdrag/react-core";
 import { IComponents } from "@rxdrag/react-shared";
 import { IReactionMaterial } from "@rxdrag/schema";
 import React from "react"

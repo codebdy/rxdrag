@@ -183,11 +183,13 @@ importers:
       '@rxdrag/shared': workspace:*
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
+      '@types/styled-components': ^5.1.26
       eslint: ^7.32.0
       eslint-config-rxdrag: workspace:*
       react: ^18.2.0
       react-dom: ^18.2.0
       react-router-dom: ^6.8.1
+      styled-components: ^5.3.9
       tsconfig: workspace:*
       typescript: ^4.9.4
     dependencies:
@@ -201,9 +203,11 @@ importers:
       react: registry.npmmirror.com/react/18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
       react-router-dom: registry.npmmirror.com/react-router-dom/6.9.0_biqbaboplfbrettd7655fr4n2y
+      styled-components: registry.npmmirror.com/styled-components/5.3.9_pumtretovylab5lwhztzjp2kuy
     devDependencies:
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
       '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
+      '@types/styled-components': registry.npmmirror.com/@types/styled-components/5.1.26
       eslint: registry.npmmirror.com/eslint/7.32.0
       eslint-config-rxdrag: link:../eslint-config-rxdrag
       tsconfig: link:../tsconfig
