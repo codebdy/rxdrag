@@ -502,6 +502,7 @@ importers:
       '@rxdrag/schema': workspace:*
       '@rxdrag/shared': workspace:*
       '@types/react': ^18.0.28
+      '@types/react-color': ^3.0.6
       '@types/react-dom': ^18.0.11
       antd: 5.1.2
       classnames: ^2.3.2
@@ -547,6 +548,7 @@ importers:
       styled-components: registry.npmmirror.com/styled-components/5.3.9_pumtretovylab5lwhztzjp2kuy
     devDependencies:
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
+      '@types/react-color': registry.npmmirror.com/@types/react-color/3.0.6
       '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
       eslint: registry.npmmirror.com/eslint/7.32.0
       eslint-config-rxdrag: link:../eslint-config-rxdrag
@@ -7077,6 +7079,15 @@ packages:
     name: '@types/prop-types'
     version: 15.7.5
 
+  registry.npmmirror.com/@types/react-color/3.0.6:
+    resolution: {integrity: sha512-OzPIO5AyRmLA7PlOyISlgabpYUa3En74LP8mTMa0veCA719SvYQov4WLMsHvCgXP+L+KI9yGhYnqZafVGG0P4w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react-color/-/react-color-3.0.6.tgz}
+    name: '@types/react-color'
+    version: 3.0.6
+    dependencies:
+      '@types/react': registry.npmmirror.com/@types/react/18.0.28
+      '@types/reactcss': registry.npmmirror.com/@types/reactcss/1.2.6
+    dev: true
+
   registry.npmmirror.com/@types/react-dom/18.0.11:
     resolution: {integrity: sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react-dom/-/react-dom-18.0.11.tgz}
     name: '@types/react-dom'
@@ -7092,6 +7103,14 @@ packages:
       '@types/prop-types': registry.npmmirror.com/@types/prop-types/15.7.5
       '@types/scheduler': registry.npmmirror.com/@types/scheduler/0.16.2
       csstype: registry.npmmirror.com/csstype/3.1.1
+
+  registry.npmmirror.com/@types/reactcss/1.2.6:
+    resolution: {integrity: sha512-qaIzpCuXNWomGR1Xq8SCFTtF4v8V27Y6f+b9+bzHiv087MylI/nTCqqdChNeWS7tslgROmYB7yeiruWX7WnqNg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/reactcss/-/reactcss-1.2.6.tgz}
+    name: '@types/reactcss'
+    version: 1.2.6
+    dependencies:
+      '@types/react': registry.npmmirror.com/@types/react/18.0.28
+    dev: true
 
   registry.npmmirror.com/@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/scheduler/-/scheduler-0.16.2.tgz}
