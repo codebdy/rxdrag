@@ -33,8 +33,8 @@ module.exports = function (plop) {
       {
         type: 'input',
         name: 'maintainer',
-        message: 'maintainer email',
-        default: 'Aaron Agarunov'
+        message: 'maintainer name',
+        default: 'Water.li'
       }
     ],
     actions: [
@@ -106,13 +106,13 @@ const {{titleCaseWithoutSpace name}}App = React.lazy(() => import('@rxdrag/{{nam
         type: 'input',
         name: 'description',
         message: 'library description',
-        default: 'Rxdrag Application'
+        default: 'Rxdrag Package'
       },
       {
         type: 'input',
         name: 'maintainer',
-        message: 'maintainer email',
-        default: 'Aaron Agarunov'
+        message: 'maintainer name',
+        default: 'Water.Li'
       }
     ],
     actions: [
