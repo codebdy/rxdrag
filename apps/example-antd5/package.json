@@ -10,11 +10,15 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
+    "@rxdrag/react-core": "workspace:^1.1.0",
+    "@rxdrag/react-shell-antd": "workspace:^1.1.0",
     "@rxdrag/schema": "workspace:^1.1.0",
     "@rxdrag/shared": "workspace:^1.1.0",
     "antd": "^5.3.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0",
+    "web-vitals": "^3.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

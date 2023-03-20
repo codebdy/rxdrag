@@ -46,6 +46,8 @@ importers:
   apps/example-antd5:
     specifiers:
       '@ant-design/icons': ^4.8.0
+      '@rxdrag/react-core': workspace:^1.1.0
+      '@rxdrag/react-shell-antd': workspace:^1.1.0
       '@rxdrag/schema': workspace:^1.1.0
       '@rxdrag/shared': workspace:^1.1.0
       '@types/react': ^18.0.28
@@ -54,15 +56,21 @@ importers:
       antd: ^5.3.1
       react: ^18.2.0
       react-dom: ^18.2.0
+      react-router-dom: ^6.9.0
       typescript: ^4.9.3
       vite: ^4.2.0
+      web-vitals: ^3.3.0
     dependencies:
       '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
+      '@rxdrag/react-core': link:../../packages/react-core
+      '@rxdrag/react-shell-antd': link:../../packages/react-shell-antd
       '@rxdrag/schema': link:../../packages/schema
       '@rxdrag/shared': link:../../packages/shared
       antd: registry.npmmirror.com/antd/5.3.1_biqbaboplfbrettd7655fr4n2y
       react: registry.npmmirror.com/react/18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
+      react-router-dom: registry.npmmirror.com/react-router-dom/6.9.0_biqbaboplfbrettd7655fr4n2y
+      web-vitals: registry.npmmirror.com/web-vitals/3.3.0
     devDependencies:
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
       '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
@@ -11543,6 +11551,12 @@ packages:
       glob-to-regexp: registry.npmmirror.com/glob-to-regexp/0.4.1
       graceful-fs: registry.npmmirror.com/graceful-fs/4.2.10
     dev: true
+
+  registry.npmmirror.com/web-vitals/3.3.0:
+    resolution: {integrity: sha512-GZsEmJBNclIpViS/7QVOTr7Kbt4BgLeR7kQ5zCCtJVuiWsA+K6xTXaoEXssvl8yYFICEyNmA2Nr+vgBYTnS4bA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/web-vitals/-/web-vitals-3.3.0.tgz}
+    name: web-vitals
+    version: 3.3.0
+    dev: false
 
   registry.npmmirror.com/webidl-conversions/7.0.0:
     resolution: {integrity: sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/webidl-conversions/-/webidl-conversions-7.0.0.tgz}
