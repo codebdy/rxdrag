@@ -204,6 +204,7 @@ importers:
     specifiers:
       '@ant-design/icons': ^4.8.0
       '@rxdrag/react-fieldy': workspace:^1.1.0
+      '@rxdrag/react-runner': workspace:^1.1.0
       '@rxdrag/react-shared': workspace:*
       '@rxdrag/shared': workspace:*
       '@types/react': ^18.0.28
@@ -213,12 +214,14 @@ importers:
       eslint-config-rxdrag: workspace:*
       react: ^18.2.0
       react-dom: ^18.2.0
+      react-router-dom: ^6.8.1
       styled-components: ^5.3.9
       tsconfig: workspace:*
       typescript: ^4.9.4
     dependencies:
       '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
       '@rxdrag/react-fieldy': link:../react-fieldy
+      '@rxdrag/react-runner': link:../react-runner
       '@rxdrag/react-shared': link:../react-shared
       '@rxdrag/shared': link:../shared
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
@@ -226,6 +229,40 @@ importers:
       antd: registry.npmmirror.com/antd/5.1.2_biqbaboplfbrettd7655fr4n2y
       react: registry.npmmirror.com/react/18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
+      react-router-dom: registry.npmmirror.com/react-router-dom/6.9.0_biqbaboplfbrettd7655fr4n2y
+      styled-components: registry.npmmirror.com/styled-components/5.3.9_pumtretovylab5lwhztzjp2kuy
+    devDependencies:
+      eslint: registry.npmmirror.com/eslint/7.32.0
+      eslint-config-rxdrag: link:../eslint-config-rxdrag
+      tsconfig: link:../tsconfig
+      typescript: registry.npmmirror.com/typescript/4.9.5
+
+  packages/react-antd-icons:
+    specifiers:
+      '@ant-design/icons': ^4.8.0
+      '@rxdrag/react-shared': workspace:*
+      '@rxdrag/shared': workspace:*
+      '@types/react': ^18.0.28
+      '@types/react-dom': ^18.0.11
+      antd: 5.1.2
+      eslint: ^7.32.0
+      eslint-config-rxdrag: workspace:*
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      react-router-dom: ^6.8.1
+      styled-components: ^5.3.9
+      tsconfig: workspace:*
+      typescript: ^4.9.4
+    dependencies:
+      '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
+      '@rxdrag/react-shared': link:../react-shared
+      '@rxdrag/shared': link:../shared
+      '@types/react': registry.npmmirror.com/@types/react/18.0.28
+      '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
+      antd: registry.npmmirror.com/antd/5.1.2_biqbaboplfbrettd7655fr4n2y
+      react: registry.npmmirror.com/react/18.2.0
+      react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
+      react-router-dom: registry.npmmirror.com/react-router-dom/6.9.0_biqbaboplfbrettd7655fr4n2y
       styled-components: registry.npmmirror.com/styled-components/5.3.9_pumtretovylab5lwhztzjp2kuy
     devDependencies:
       eslint: registry.npmmirror.com/eslint/7.32.0
