@@ -1,7 +1,6 @@
 import { forwardRef, memo } from "react"
-import { IIcon } from "@rxdrag/react-shell-antd/components/IconView/model"
 import cls from "classnames"
-import { IconView } from "@rxdrag/react-shell-antd/components/IconView"
+import { IconView} from "@rxdrag/react-antd-shell"
 
 export type DropdownMenuItemProps = {
   className?: string,

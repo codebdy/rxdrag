@@ -1,5 +1,5 @@
 {
-  "name": "@rxdrag/react-minions-editor",
+  "name": "@rxdrag/react-antd-minions-editor",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -20,7 +20,7 @@
     "@rxdrag/react-fieldy": "workspace:*",
     "@rxdrag/react-locales": "workspace:*",
     "@rxdrag/react-minions": "workspace:*",
-    "@rxdrag/react-props-inputs": "workspace:*",
+    "@rxdrag/react-antd-props-inputs": "workspace:*",
     "@rxdrag/react-runner": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/schema": "workspace:*",

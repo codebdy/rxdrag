@@ -9,7 +9,7 @@ import {
   Logo,
   OutlineWidget,
   ThemeButton,
-} from "@rxdrag/react-shell-antd"
+} from "@rxdrag/react-antd-shell"
 import { componentsIcon, outlineIcon, historyIcon } from "@rxdrag/react-shared"
 import { toolsLocales } from "./locales"
 import { ResourceWidget } from "./ResourceWidget"

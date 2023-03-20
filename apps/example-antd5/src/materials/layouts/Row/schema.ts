@@ -1,4 +1,4 @@
-import { createSchema, SchemaOptions } from "@rxdrag/react-shell-antd";
+import { createSchema, SchemaOptions } from "@rxdrag/react-antd-shell";
 import { INodeSchema } from "@rxdrag/schema";
 
 const options: SchemaOptions = {

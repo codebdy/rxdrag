@@ -1,5 +1,5 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { borderRediusSetter, borderSetter, displaySetter, fontStyleSetter, martinStyleSetter, paddingStyleSetter } from "@rxdrag/react-shell-antd";
+import { borderRediusSetter, borderSetter, displaySetter, fontStyleSetter, martinStyleSetter, paddingStyleSetter } from "@rxdrag/react-antd-shell";
 
 export const logoSchema: INodeSchema = {
   componentName: "Tabs",

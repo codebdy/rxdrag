@@ -3,7 +3,7 @@ import { IVariableDefineMeta } from "@rxdrag/schema"
 import { Form, Input, Modal } from "antd"
 import { memo, useCallback, useEffect } from "react"
 import { useTrans } from "../../hooks/useTrans"
-import { ValueInput } from "@rxdrag/react-props-inputs"
+import { ValueInput } from "@rxdrag/react-antd-props-inputs"
 
 export const VariableDialog = memo((
   props: {

@@ -1,7 +1,6 @@
+import { ComponentView, useComponentSchema } from "@rxdrag/react-runner";
 import { Space as AntdSpace } from "antd"
 import { forwardRef, memo } from "react"
-import { ComponentView } from "runner/ComponentRender/ComponentView";
-import { useComponentSchema } from "runner/ComponentRender/hooks/useComponentSchema";
 
 export const Space = memo(forwardRef<HTMLDivElement>((
   props: { children?: React.ReactNode }, ref) => {

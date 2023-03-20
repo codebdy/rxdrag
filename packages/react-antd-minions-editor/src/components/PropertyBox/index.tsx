@@ -14,7 +14,7 @@ import { PreviewRoot } from "@rxdrag/react-shared"
 import { VirtualForm } from "@rxdrag/react-fieldy"
 import { useLocalesManager } from "@rxdrag/react-locales"
 import {ComponentRender} from "@rxdrag/react-runner"
-import { JSONInput, ValueInput } from "@rxdrag/react-props-inputs"
+import { JSONInput, ValueInput } from "@rxdrag/react-antd-props-inputs"
 
 const Title = styled.div`
   height: 40px;

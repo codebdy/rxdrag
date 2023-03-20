@@ -1,7 +1,7 @@
 import React, { forwardRef, memo, useState } from "react"
 import { List as AntdList, ListProps } from "antd"
 import { ArrayField } from "runner/fieldy/components/ArrayField/ArrayField"
-import { createUuid } from "@rxdrag/react-shell-antd/SettingsForm/components/ReactionsInput/ReactionsEditor/utils"
+import { createUuid } from "@rxdrag/react-antd-shell/SettingsForm/components/ReactionsInput/ReactionsEditor/utils"
 import { ObjectField } from "runner/fieldy/components/ObjectField"
 import { IDataSource } from "../IDataSource"
 

@@ -1,7 +1,7 @@
 import { SettingOutlined } from "@ant-design/icons"
 import { Button } from "antd"
 import { memo } from "react"
-import { PaneTitle } from "@rxdrag/react-shell-antd"
+import { PaneTitle } from "@rxdrag/react-antd-shell"
 
 export const ResourcesTitle = memo(() => {
   return (

@@ -1,17 +1,15 @@
 {
-  "name": "@rxdrag/react-shell-antd",
+  "name": "@rxdrag/react-antd-props-inputs",
   "version": "1.1.0",
   "main": "index.ts",
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
-    "build": "tsc && vite build",
     "lint": "eslint \"**/*.ts\"",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
-    "@types/react-color": "^3.0.6",
     "@types/react-dom": "^18.0.11",
     "eslint": "^7.32.0",
     "eslint-config-rxdrag": "workspace:*",
@@ -25,29 +23,15 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
-    "@reduxjs/toolkit": "^1.9.3",
-    "@rxdrag/core": "workspace:*",
-    "@rxdrag/fieldy": "workspace:*",
-    "@rxdrag/locales": "workspace:*",
-    "@rxdrag/minions": "workspace:*",
+    "@monaco-editor/react": "^4.4.6",
     "@rxdrag/react-core": "workspace:*",
-    "@rxdrag/react-fieldy": "workspace:*",
-    "@rxdrag/react-locales": "workspace:*",
-    "@rxdrag/react-minions-editor": "workspace:*",
-    "@rxdrag/react-props-inputs": "workspace:*",
-    "@rxdrag/react-runner": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
-    "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
     "antd": "5.1.2",
-    "classnames": "^2.3.2",
-    "dayjs": "^1.11.7",
-    "insert-css": "^2.0.0",
     "react": "^18.2.0",
-    "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.7.1",
-    "redux": "^4.2.1",
     "styled-components": "^5.3.9"
   }
 }

@@ -1,4 +1,4 @@
-import { useTrans, useGraph, useDnd, useGetNodeConfig, useController, useAllControllers } from "@rxdrag/react-minions-editor";
+import { useTrans, useGraph, useDnd, useGetNodeConfig, useController, useAllControllers } from "@rxdrag/react-antd-minions-editor";
 import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon, variableIcon } from "@rxdrag/react-shared";
 import { IControllerMeta, IReactionDefineMeta, IReactionMaterial, IReactionMeta } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
