@@ -1,0 +1,288 @@
+{
+  "componentName": "Root",
+  "slots": {},
+  "children": [
+    {
+      "componentName": "TwoColumnLayout",
+      "props": {},
+      "slots": {
+        "header": {
+          "componentName": "Layout.Header",
+          "props": {
+            "style": {
+              "display": "flex",
+              "justifyContent": "space-between",
+              "alignItems": "center"
+            }
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Avatar",
+              "props": {},
+              "slots": {
+                "icon": {
+                  "componentName": "IconView",
+                  "props": {
+                    "icon": {
+                      "iconKey": "UserOutlined"
+                    },
+                    "style": {}
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              },
+              "children": []
+            }
+          ]
+        },
+        "sider": {
+          "componentName": "Layout.Sider",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Logo",
+              "slots": {},
+              "children": []
+            },
+            {
+              "componentName": "Menu",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        "content": {
+          "componentName": "Layout.Content",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Paper",
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Row",
+                  "props": {},
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Col",
+                      "props": {
+                        "span": 24,
+                        "style": {}
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "Breadcrumb",
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "componentName": "Col",
+                      "props": {
+                        "span": 24,
+                        "style": {
+                          "marginTop": "16px"
+                        }
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "Text",
+                          "props": {
+                            "value": "基础表单",
+                            "style": {},
+                            "mode": "h2"
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "componentName": "Col",
+                      "props": {
+                        "span": 24,
+                        "style": {
+                          "marginTop": "16px"
+                        }
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "Text",
+                          "props": {
+                            "value": "表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。",
+                            "style": {}
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "componentName": "Card",
+              "props": {
+                "style": {
+                  "marginTop": "16px",
+                  "marginRight": "16px",
+                  "marginBottom": "16px",
+                  "marginLeft": "16px"
+                }
+              },
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Form",
+                  "props": {
+                    "layout": "horizontal",
+                    "disabled": false,
+                    "style": {}
+                  },
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "FormItem",
+                      "props": {
+                        "label": "FormItem"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "Input",
+                          "props": {
+                            "placeholder": "输入框"
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "componentName": "Field",
+                      "props": {
+                        "label": "InputField"
+                      },
+                      "locked": true,
+                      "slots": {
+                        "input": {
+                          "componentName": "Input",
+                          "props": {
+                            "placeholder": "输入框"
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "componentName": "Input",
+                  "props": {
+                    "placeholder": "输入框"
+                  },
+                  "slots": {
+                    "addonBefore": {
+                      "componentName": "DefaultSlot",
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "Text",
+                          "props": {
+                            "value": "http",
+                            "style": {}
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    },
+                    "addonAfter": {
+                      "componentName": "DefaultSlot",
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "IconView",
+                          "props": {
+                            "icon": {
+                              "iconKey": "DollarCircleOutlined"
+                            },
+                            "style": {}
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    },
+                    "prefix": {
+                      "componentName": "DefaultSlot",
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "Text",
+                          "props": {
+                            "value": "$",
+                            "style": {}
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    },
+                    "suffix": {
+                      "componentName": "DefaultSlot",
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "IconView",
+                          "props": {
+                            "icon": {
+                              "iconKey": "RocketOutlined"
+                            },
+                            "style": {}
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        "footer": {
+          "componentName": "Layout.Footer",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Text",
+              "props": {
+                "value": "Apper Copyright ©2023",
+                "style": {}
+              },
+              "slots": {},
+              "children": []
+            }
+          ]
+        }
+      },
+      "children": []
+    }
+  ]
+}

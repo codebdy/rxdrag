@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.8.0",
     "@rxdrag/schema": "workspace:^1.1.0",
     "@rxdrag/shared": "workspace:^1.1.0",
     "antd": "^5.3.1",

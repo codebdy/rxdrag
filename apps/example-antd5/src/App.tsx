@@ -1,16 +1,21 @@
-import type { FC } from 'react';
-import { Button } from 'antd';
-import 'antd/dist/reset.css';
+import { Antd5Example } from './Antd5Example';
+import { IFrameCanvasRender, IFramePreviewRender } from '@rxdrag/react-core';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import { createUuid } from '@rxdrag/shared';
-import { INodeSchema } from '@rxdrag/schema';
 
-export const schema: INodeSchema = {} as any;
+function App() {
+  const { designers, components } = usePredefinedComponents()
+  return (
+    <Routes>
+      <Route path={'/'} element={<Antd5Example />}>
+      </Route>
+      <Route path={'/canvas-render'} element={<IFrameCanvasRender designers={designers} />}>
+      </Route>
+      <Route path={'/preview-render'} element={<IFramePreviewRender components={components} reactionMaterials={getAllMaterial()} />}>
+      </Route>
+    </Routes>
 
-const App: FC = () => (
-  <div className="App">
-    <Button type="primary">Button {createUuid()}</Button>
-  </div>
-);
+  );
+}
 
 export default App;

@@ -45,6 +45,7 @@ importers:
 
   apps/example-antd5:
     specifiers:
+      '@ant-design/icons': ^4.8.0
       '@rxdrag/schema': workspace:^1.1.0
       '@rxdrag/shared': workspace:^1.1.0
       '@types/react': ^18.0.28
@@ -56,6 +57,7 @@ importers:
       typescript: ^4.9.3
       vite: ^4.2.0
     dependencies:
+      '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
       '@rxdrag/schema': link:../../packages/schema
       '@rxdrag/shared': link:../../packages/shared
       antd: registry.npmmirror.com/antd/5.3.1_biqbaboplfbrettd7655fr4n2y
@@ -7200,7 +7202,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': registry.npmmirror.com/@babel/plugin-transform-react-jsx-source/7.19.6_@babel+core@7.21.3
       magic-string: registry.npmmirror.com/magic-string/0.27.0
       react-refresh: registry.npmmirror.com/react-refresh/0.14.0
-      vite: registry.npmmirror.com/vite/4.2.0_less@4.1.3
+      vite: registry.npmmirror.com/vite/4.2.0
     transitivePeerDependencies:
       - supports-color
     dev: true
