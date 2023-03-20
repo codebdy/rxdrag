@@ -1,5 +1,5 @@
+import { ListItem } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { ListItem } from "components/datas/ListItem";
 import { ActionSlotMaterial } from "../../slots/ActionSlot";
 import { ExtraSlotMaterial } from "../../slots/ExtraSlot";
 import { locales } from "./locales";

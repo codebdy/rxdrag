@@ -1,5 +1,5 @@
+import { Drawer } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { Drawer } from "components/popups/Drawer";
 import { ButtonMaterial } from "../../Button";
 import { DrawerContentMaterial } from "../DrawerContent";
 import { DrawerExtraMaterial } from "../DrawerExtra";

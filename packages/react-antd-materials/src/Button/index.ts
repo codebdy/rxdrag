@@ -1,5 +1,5 @@
+import { Button } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { Button } from "components/Button";
 import { IconViewMaterial } from "../displays/IconView";
 import { buttonIcon } from "./icon";
 import { buttonLocales, buttonResourceLocales } from "./locales";

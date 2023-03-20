@@ -1,5 +1,5 @@
+import { TableColumn } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { TableColumn } from "components/datas/TableColumn";
 import { TableColumnDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";

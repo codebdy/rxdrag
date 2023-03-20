@@ -1,5 +1,5 @@
+import { Tag } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { Tag } from "components/displays/Tag";
 import { IconViewMaterial } from "../IconView";
 import { icon } from "./icon";
 import { locales, resourceLocales, toolsLocales } from "./locales";

@@ -1,5 +1,5 @@
+import { Dialog } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { Dialog } from "components/popups/Dialog";
 import { ButtonMaterial } from "../../Button";
 import { IconViewMaterial } from "../../displays/IconView";
 import { DialogContentMaterial } from "../DialogContent";
