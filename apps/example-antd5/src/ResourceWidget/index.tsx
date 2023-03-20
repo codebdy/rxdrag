@@ -1,7 +1,8 @@
+import { ComponentResourceWidget, PaneContainer, TemplateResourceWidget } from "@rxdrag/react-antd-shell"
 import { useToolsTranslate, useRegisterComponentMaterial } from "@rxdrag/react-core"
 import { materials, fields } from "materials"
-import { FieldMaterial } from "materials/fields/Field"
 import { memo, useEffect } from "react"
+import { FieldMaterial } from "@rxdrag/react-antd-materials"
 import { ResourceCollapsePannel } from "./ResourceCollapsePannel"
 import { ResourcesTitle } from "./ResourcesTitle"
 

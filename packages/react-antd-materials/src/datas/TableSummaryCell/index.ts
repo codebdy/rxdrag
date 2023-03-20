@@ -7,7 +7,7 @@ import { locales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "TableSummaryRow"
-export const TableMaterial: IComponentMaterial = {
+export const TableCellMaterial: IComponentMaterial = {
   componentName: name,
   component: Table.Summary.Row,
   designer: Table.Summary.Row,
