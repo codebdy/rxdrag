@@ -388,6 +388,7 @@ importers:
       '@rxdrag/fieldy': workspace:*
       '@rxdrag/locales': workspace:*
       '@rxdrag/minions': workspace:*
+      '@rxdrag/react-antd-components': workspace:^1.1.0
       '@rxdrag/react-antd-minions-editor': workspace:*
       '@rxdrag/react-antd-props-inputs': workspace:*
       '@rxdrag/react-core': workspace:*
@@ -422,6 +423,7 @@ importers:
       '@rxdrag/fieldy': link:../fieldy
       '@rxdrag/locales': link:../locales
       '@rxdrag/minions': link:../minions
+      '@rxdrag/react-antd-components': link:../react-antd-components
       '@rxdrag/react-antd-minions-editor': link:../react-antd-minions-editor
       '@rxdrag/react-antd-props-inputs': link:../react-antd-props-inputs
       '@rxdrag/react-core': link:../react-core

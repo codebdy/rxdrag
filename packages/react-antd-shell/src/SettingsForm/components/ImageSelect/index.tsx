@@ -4,7 +4,7 @@ import { useToken } from "antd/es/theme/internal"
 import React, { useCallback, useEffect } from "react"
 import { memo, useState } from "react"
 import styled from "styled-components"
-import { ImageView } from "../../../components"
+import { ImageView } from "@rxdrag/react-antd-components"
 
 const ImageContainer = styled.div.attrs((props: { actived?: boolean, borderColor?: string }) => ({
   ...props,
@@ -34,10 +34,10 @@ export const ImageSelect = memo((
   const t = useToolsTranslate()
   const [, token] = useToken()
 
-  useEffect(()=>{
+  useEffect(() => {
     setSelected(value)
   }, [value])
-  
+
   const handleClick = useCallback(() => {
     setOpen(true)
   }, [])
