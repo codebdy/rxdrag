@@ -3,11 +3,11 @@ import './styles.less'
 import { useToken } from 'antd/es/theme/internal'
 import { Button } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
-import { DropdownProps } from 'components/popups/Dropdown'
 import { CanvasScrollEvent, HistoryableActionType, NodeRelativePosition, RXID_ATTR_NAME } from '@rxdrag/core'
 import { useDesignerEngine, useDocument, useNode, useCurrentNode, useComponentTranslate } from '@rxdrag/react-core'
-import { CloseButton } from 'materials/popups/CloseButton'
-import { PopupButton } from 'materials/popups/PopupButton'
+import { CloseButton } from '../../CloseButton'
+import { PopupButton } from '../../PopupButton'
+import { DropdownProps } from '@rxdrag/react-antd-components'
 
 export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: DropdownProps & { [RXID_ATTR_NAME]?: string }, ref) => {
   const { placement = 'bottomLeft', actionComponent, style, arrow, [RXID_ATTR_NAME]: rxId, children, ...other } = props;
