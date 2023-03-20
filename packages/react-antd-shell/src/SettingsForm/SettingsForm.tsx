@@ -1,42 +1,15 @@
 import { CSSProperties, memo, useCallback, useMemo } from "react"
-import { Checkbox, Form, Input, InputNumber, Radio, Select, Slider, Switch } from 'antd';
-import { Tabs } from "./components/Tabs";
-import { TabPanel } from "./components/Tabs/TabPanel";
-import { Box } from "../components/Box";
-import { SlotSwitch } from "./components/SlotSwitch";
-import { Fold, FoldBase, FoldExtra } from "./components/Fold";
-import { FoldExtraItem } from "./components/Fold/FoldExtraItem";
-import { FontSelect } from "./components/font/FontSelect";
-import { ColorInput } from "./components/ColorInput";
-import { SizeInput } from "./components/SizeInput";
-import { FontColorInput } from "./components/font/FontColorInput";
-import { FontDecorationSelect } from "./components/font/FontDecorationSelect";
-import { FontLineHeightInput } from "./components/font/FontLineHeightInput";
-import { FontStyleSelect } from "./components/font/FontStyleSelect";
-import { FontWeightInput } from "./components/font/FontWeightInput";
-import { TextAlignSelect } from "./components/font/TextAlignSelect";
-import { FontSizeInput } from "./components/font/FontSizeInput";
-import { MarginStyleSetter } from "./components/margin";
-import { PaddingStyleSetter } from "./components/padding";
-import { BorderRadiusSetter } from "./components/border/radius";
-import { BorderSetter } from "./components/border";
-import { DisplaySetter } from "./components/DisplaySetter";
-import IconInput from "./components/IconInput";
-import { GutterInput } from "./components/GutterInput";
-import { ColInput } from "./components/ColInput";
-import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput } from "./components/BackgroundImageInput";
-import { ImageInput } from "./components/ImageInput";
-import { CollapsePanel } from "./components/CollapsePanel";
-import { EffectsInput } from "./components/EffectsInput";
-import { ReactionsInput } from "./components/ReactionsInput";
-import { EventInput } from "./components/EventInput";
-import { CheckboxGroup } from "./components/CheckboxGroup";
+import { Checkbox, Form, Input, InputNumber, Radio, Select, Slider, Switch, Tabs } from 'antd';
 import { useDesignerEngine, useCurrentNode, useChangeNodeMeta, useLanguage, useDesignComponentsParams } from "@rxdrag/react-core";
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy";
 import { ComponentRender } from "@rxdrag/react-runner";
 import { PreviewRoot } from "@rxdrag/react-shared";
 import { INodeMeta } from "@rxdrag/schema";
-import { JSONInput, ValueInput } from "@rxdrag/react-antd-props-inputs";
+import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput, BorderSetter, CheckboxGroup, ColInput, CollapsePanel, DisplaySetter, EffectsInput, EventInput, Fold, FoldBase, FoldExtra, FontColorInput, FontDecorationSelect, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, ReactionsInput, SizeInput, SlotSwitch, TabPanel, TextAlignSelect, ValueInput } from "@rxdrag/react-antd-props-inputs";
+import { ColorInput } from "@rxdrag/react-antd-props-inputs/src/components/ColorInput";
+import { FoldExtraItem } from "@rxdrag/react-antd-props-inputs/src/components/Fold/FoldExtraItem";
+import IconInput from "@rxdrag/react-antd-props-inputs/src/components/IconInput";
+import { Box } from "../components";
 
 
 const propertiesStyle: CSSProperties = {
