@@ -48,6 +48,7 @@ importers:
       '@ant-design/icons': ^4.8.0
       '@rxdrag/core': workspace:^1.1.0
       '@rxdrag/locales': workspace:^1.1.0
+      '@rxdrag/react-antd-materials': workspace:^1.1.0
       '@rxdrag/react-antd-shell': workspace:^1.1.0
       '@rxdrag/react-core': workspace:^1.1.0
       '@rxdrag/react-locales': workspace:^1.1.0
@@ -72,6 +73,7 @@ importers:
       '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
       '@rxdrag/core': link:../../packages/core
       '@rxdrag/locales': link:../../packages/locales
+      '@rxdrag/react-antd-materials': link:../../packages/react-antd-materials
       '@rxdrag/react-antd-shell': link:../../packages/react-antd-shell
       '@rxdrag/react-core': link:../../packages/react-core
       '@rxdrag/react-locales': link:../../packages/react-locales
@@ -201,6 +203,7 @@ importers:
   packages/react-antd-materials:
     specifiers:
       '@ant-design/icons': ^4.8.0
+      '@rxdrag/react-core': workspace:^1.1.0
       '@rxdrag/react-shared': workspace:*
       '@rxdrag/shared': workspace:*
       '@types/react': ^18.0.28
@@ -210,11 +213,13 @@ importers:
       eslint-config-rxdrag: workspace:*
       react: ^18.2.0
       react-dom: ^18.2.0
+      react-router-dom: ^6.8.1
       styled-components: ^5.3.9
       tsconfig: workspace:*
       typescript: ^4.9.4
     dependencies:
       '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
+      '@rxdrag/react-core': link:../react-core
       '@rxdrag/react-shared': link:../react-shared
       '@rxdrag/shared': link:../shared
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
@@ -222,6 +227,7 @@ importers:
       antd: registry.npmmirror.com/antd/5.1.2_biqbaboplfbrettd7655fr4n2y
       react: registry.npmmirror.com/react/18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
+      react-router-dom: registry.npmmirror.com/react-router-dom/6.9.0_biqbaboplfbrettd7655fr4n2y
       styled-components: registry.npmmirror.com/styled-components/5.3.9_pumtretovylab5lwhztzjp2kuy
     devDependencies:
       eslint: registry.npmmirror.com/eslint/7.32.0
