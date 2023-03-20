@@ -1,5 +1,5 @@
+import { DialogFooter } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { DialogFooter } from "components/popups/DialogFooter";
 import { locales } from "./locales";
 import { materialSchema } from "./schema";
 

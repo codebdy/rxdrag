@@ -1,5 +1,5 @@
+import { Checkbox } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { Checkbox } from "components/inputs/Checkbox";
 import { checkboxIcon } from "./icon";
 import { checkboxLocales, checkBoxResourceLocales } from "./locales";
 import { selectSchema } from "./schema";

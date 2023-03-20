@@ -203,6 +203,7 @@ importers:
   packages/react-antd-components:
     specifiers:
       '@ant-design/icons': ^4.8.0
+      '@rxdrag/react-fieldy': workspace:^1.1.0
       '@rxdrag/react-shared': workspace:*
       '@rxdrag/shared': workspace:*
       '@types/react': ^18.0.28
@@ -217,6 +218,7 @@ importers:
       typescript: ^4.9.4
     dependencies:
       '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
+      '@rxdrag/react-fieldy': link:../react-fieldy
       '@rxdrag/react-shared': link:../react-shared
       '@rxdrag/shared': link:../shared
       '@types/react': registry.npmmirror.com/@types/react/18.0.28

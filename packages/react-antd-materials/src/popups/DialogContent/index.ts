@@ -1,5 +1,5 @@
+import { DialogContent } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { DialogContent } from "components/popups/DialogContent";
 import { locales } from "./locales";
 import { materialSchema } from "./schema";
 

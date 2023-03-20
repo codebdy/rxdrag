@@ -1,11 +1,11 @@
 import { colIcon } from "./icon";
 import { hCFLayoutLocales, hCFLayoutResourceLocales } from "./locales";
 import { hCFLayoutSchema } from "./schema";
-import { HeaderMaterial } from "../Header";
-import { FooterMaterial } from "../Footer";
 import { ContentMaterial } from "../Content";
 import { IComponentMaterial } from "@rxdrag/react-core";
 import { HCFLayout } from "@rxdrag/react-antd-components";
+import { LayoutHeaderMaterial } from "../LayoutHeader";
+import { LayoutFooterMaterial } from "../LayoutFooter";
 
 const name = "HCFLayout"
 export const HCFLayoutMaterial: IComponentMaterial = {
@@ -50,8 +50,8 @@ export const HCFLayoutMaterial: IComponentMaterial = {
     droppable: false,
   },
   slots: {
-    header: HeaderMaterial,
+    header: LayoutHeaderMaterial,
     content: ContentMaterial,
-    footer: FooterMaterial,
+    footer: LayoutFooterMaterial,
   },
 }

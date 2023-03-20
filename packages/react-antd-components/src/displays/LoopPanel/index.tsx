@@ -1,5 +1,5 @@
 import { forwardRef, memo } from "react"
-import { Field } from "runner/fieldy/components/Field";
+import { Field } from "@rxdrag/react-fieldy"
 
 export type LoopPanelProps = {
   value?: any[],

@@ -1,5 +1,5 @@
+import { Radio } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { Radio } from "components/inputs/Radio";
 import { radioIcon } from "./icon";
 import { radioLocales, radioResourceLocales } from "./locales";
 import { radioSchema } from "./schema";

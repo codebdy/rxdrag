@@ -1,12 +1,12 @@
 import { colIcon } from "./icon";
 import { twoColumnLayoutLocales, twoColumnLayoutResourceLocales } from "./locales";
-import { HeaderMaterial } from "../Header";
-import { FooterMaterial } from "../Footer";
 import { ContentMaterial } from "../Content";
 import { SiderMaterial } from "../Sider";
 import { prosLayoutSchema } from "./schema";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { TwoColumnLayout } from "components/layouts/TowColumnLayout";
+import { TwoColumnLayout } from "@rxdrag/react-antd-components";
+import { LayoutHeaderMaterial } from "../LayoutHeader";
+import { LayoutFooterMaterial } from "../LayoutFooter";
 
 const name = "TwoColumnLayout"
 export const TwoColumnLayoutMaterial: IComponentMaterial = {
@@ -56,9 +56,9 @@ export const TwoColumnLayoutMaterial: IComponentMaterial = {
     droppable: false,
   },
   slots: {
-    header: HeaderMaterial,
+    header: LayoutHeaderMaterial,
     sider: SiderMaterial,
     content: ContentMaterial,
-    footer: FooterMaterial,
+    footer: LayoutFooterMaterial,
   },
 }

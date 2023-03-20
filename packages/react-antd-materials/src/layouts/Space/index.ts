@@ -1,5 +1,5 @@
+import { Space } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { Space } from "components/layouts/Space";
 import { SpaceDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
