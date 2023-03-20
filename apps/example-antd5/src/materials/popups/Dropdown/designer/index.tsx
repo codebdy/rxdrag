@@ -1,18 +1,13 @@
 import { forwardRef, memo, useCallback, useEffect, useRef, useState } from 'react'
 import './styles.less'
 import { useToken } from 'antd/es/theme/internal'
-import { useNode } from 'core-react/hooks/useNode'
-import { CloseButton } from '../../CloseButton'
-import { PopupButton } from '../../PopupButton'
-import { useDocument } from 'core-react/hooks/useDocument'
-import { useDesignerEngine } from 'core-react/hooks'
-import { useCurrentNode } from 'core-react/hooks/useCurrentNode'
-import { CanvasScrollEvent } from 'core/shell/events'
-import { DropdownProps } from 'expamples/ant5/components/popups/Dropdown'
-import { HistoryableActionType, NodeRelativePosition, RXID_ATTR_NAME } from 'core'
-import { useComponentTranslate } from 'core-react/hooks/useComponentTranslate'
 import { Button } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
+import { DropdownProps } from 'components/popups/Dropdown'
+import { CanvasScrollEvent, HistoryableActionType, NodeRelativePosition, RXID_ATTR_NAME } from '@rxdrag/core'
+import { useDesignerEngine, useDocument, useNode, useCurrentNode, useComponentTranslate } from '@rxdrag/react-core'
+import { CloseButton } from 'materials/popups/CloseButton'
+import { PopupButton } from 'materials/popups/PopupButton'
 
 export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: DropdownProps & { [RXID_ATTR_NAME]?: string }, ref) => {
   const { placement = 'bottomLeft', actionComponent, style, arrow, [RXID_ATTR_NAME]: rxId, children, ...other } = props;

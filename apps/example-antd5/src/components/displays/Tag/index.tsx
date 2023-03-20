@@ -1,4 +1,4 @@
 import { Tag as AntdTag } from "antd"
-import { mapComponent } from "runner/ComponentRender/hocs/mapComponent"
+import { mapComponent } from "@rxdrag/react-runner"
 
 export const Tag = mapComponent(AntdTag, { value: 'children' })

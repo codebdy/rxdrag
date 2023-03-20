@@ -14,6 +14,7 @@
     "@rxdrag/locales": "workspace:^1.1.0",
     "@rxdrag/react-core": "workspace:^1.1.0",
     "@rxdrag/react-locales": "workspace:^1.1.0",
+    "@rxdrag/react-runner": "workspace:^1.1.0",
     "@rxdrag/react-shared": "workspace:^1.1.0",
     "@rxdrag/react-shell-antd": "workspace:^1.1.0",
     "@rxdrag/schema": "workspace:^1.1.0",
