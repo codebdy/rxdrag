@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
+    "@rxdrag/core": "workspace:^1.1.0",
+    "@rxdrag/locales": "workspace:^1.1.0",
     "@rxdrag/react-core": "workspace:^1.1.0",
+    "@rxdrag/react-locales": "workspace:^1.1.0",
+    "@rxdrag/react-shared": "workspace:^1.1.0",
     "@rxdrag/react-shell-antd": "workspace:^1.1.0",
     "@rxdrag/schema": "workspace:^1.1.0",
     "@rxdrag/shared": "workspace:^1.1.0",
@@ -18,6 +22,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.9.0",
+    "vite-tsconfig-paths": "^4.0.7",
     "web-vitals": "^3.3.0"
   },
   "devDependencies": {
