@@ -1,5 +1,5 @@
+import { Header } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { Header } from "components/layouts/Header";
 import { headerLocales } from "./locales";
 import { headerSchema } from "./schema";
 

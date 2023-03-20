@@ -1,5 +1,5 @@
+import { Logo } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { Logo } from "components/layouts/Logo";
 import { logoIcon } from "./icon";
 import { logoLocales, logoResourceLocales } from "./locales";
 import { logoSchema } from "./schema";

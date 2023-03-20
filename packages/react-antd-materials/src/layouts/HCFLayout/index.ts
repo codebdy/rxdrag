@@ -5,7 +5,7 @@ import { HeaderMaterial } from "../Header";
 import { FooterMaterial } from "../Footer";
 import { ContentMaterial } from "../Content";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { HCFLayout } from "components/layouts/HCFLayout";
+import { HCFLayout } from "@rxdrag/react-antd-components";
 
 const name = "HCFLayout"
 export const HCFLayoutMaterial: IComponentMaterial = {

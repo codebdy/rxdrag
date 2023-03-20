@@ -1,5 +1,5 @@
+import { Card } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { Card } from "components/layouts/Card";
 import { colIcon } from "./icon";
 import { cardLocales, cardResourceLocales } from "./locales";
 import { cardSchema } from "./schema";

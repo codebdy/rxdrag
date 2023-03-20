@@ -1,5 +1,5 @@
+import { Menu } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { Menu } from "components/layouts/Menu";
 import { logoIcon } from "./icon";
 import { menuLocales, logoResourceLocales } from "./locales";
 import { logoSchema } from "./schema";

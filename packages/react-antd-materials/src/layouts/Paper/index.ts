@@ -1,5 +1,5 @@
+import { Paper } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { Paper } from "components/layouts/Paper";
 import { paperIcon } from "./icon";
 import { paperLocales, paperResourceLocales } from "./locales";
 import { paperSchema } from "./schema";
