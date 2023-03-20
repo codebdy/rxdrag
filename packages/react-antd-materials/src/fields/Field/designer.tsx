@@ -3,27 +3,12 @@ import { ID } from "@rxdrag/shared"
 import { Form } from "antd"
 import React, { memo, CSSProperties } from "react"
 
-export type FieldProps = {
-  value?: any,
-  onChange?: (value?: any) => void,
-  colon?: boolean,
-  extra?: string,
-  help?: string,
-  hidden?: boolean,
-  initialValue?: any,
-  label?: string,
-  labelAlign?: 'left' | 'right',
-  labelCol?: any,
-  wrapperCol?: any,
-  validateStatus?: 'success' | 'warning' | 'error' | 'validating',
-  input?: React.ReactElement,
-  className?: string,
-  style?: CSSProperties,
+export type FieldDesignerProps = FieldProps &{
   [RXID_ATTR_NAME]: ID,
   [RX_NODE_TYPE_ATTR_NAME]?: NodeType, //默认为Normal
   [RX_STATUS_ATTR_NAME]?: NodeStatus //默认为Normal
 }
-export const Field = memo((props: FieldProps) => {
+export const Field = memo((props: FieldDesignerProps) => {
   const { colon,
     extra,
     help,

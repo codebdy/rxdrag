@@ -203,6 +203,7 @@ importers:
   packages/react-antd-materials:
     specifiers:
       '@ant-design/icons': ^4.8.0
+      '@rxdrag/core': workspace:^1.1.0
       '@rxdrag/react-core': workspace:^1.1.0
       '@rxdrag/react-shared': workspace:*
       '@rxdrag/shared': workspace:*
@@ -219,6 +220,7 @@ importers:
       typescript: ^4.9.4
     dependencies:
       '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
+      '@rxdrag/core': link:../core
       '@rxdrag/react-core': link:../react-core
       '@rxdrag/react-shared': link:../react-shared
       '@rxdrag/shared': link:../shared
