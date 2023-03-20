@@ -281,6 +281,7 @@ importers:
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
       antd: 5.1.2
+      classnames: ^2.3.2
       eslint: ^7.32.0
       eslint-config-rxdrag: workspace:*
       react: ^18.2.0
@@ -299,6 +300,7 @@ importers:
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
       '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
       antd: registry.npmmirror.com/antd/5.1.2_biqbaboplfbrettd7655fr4n2y
+      classnames: registry.npmmirror.com/classnames/2.3.2
       react: registry.npmmirror.com/react/18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
       react-router-dom: registry.npmmirror.com/react-router-dom/6.9.0_biqbaboplfbrettd7655fr4n2y
@@ -390,9 +392,11 @@ importers:
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
       antd: 5.1.2
+      css-border-property: ^1.1.0
       eslint: ^7.32.0
       eslint-config-rxdrag: workspace:*
       react: ^18.2.0
+      react-color: ^2.19.3
       react-dom: ^18.2.0
       react-router-dom: ^6.8.1
       styled-components: ^5.3.9
@@ -407,7 +411,9 @@ importers:
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
       '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
       antd: registry.npmmirror.com/antd/5.1.2_biqbaboplfbrettd7655fr4n2y
+      css-border-property: registry.npmmirror.com/css-border-property/1.1.0
       react: registry.npmmirror.com/react/18.2.0
+      react-color: registry.npmmirror.com/react-color/2.19.3_react@18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
       react-router-dom: registry.npmmirror.com/react-router-dom/6.9.0_biqbaboplfbrettd7655fr4n2y
       styled-components: registry.npmmirror.com/styled-components/5.3.9_pumtretovylab5lwhztzjp2kuy
@@ -426,6 +432,7 @@ importers:
       '@rxdrag/locales': workspace:*
       '@rxdrag/minions': workspace:*
       '@rxdrag/react-antd-components': workspace:^1.1.0
+      '@rxdrag/react-antd-icons': workspace:^1.1.0
       '@rxdrag/react-antd-minions-editor': workspace:*
       '@rxdrag/react-antd-props-inputs': workspace:*
       '@rxdrag/react-core': workspace:*
@@ -461,6 +468,7 @@ importers:
       '@rxdrag/locales': link:../locales
       '@rxdrag/minions': link:../minions
       '@rxdrag/react-antd-components': link:../react-antd-components
+      '@rxdrag/react-antd-icons': link:../react-antd-icons
       '@rxdrag/react-antd-minions-editor': link:../react-antd-minions-editor
       '@rxdrag/react-antd-props-inputs': link:../react-antd-props-inputs
       '@rxdrag/react-core': link:../react-core

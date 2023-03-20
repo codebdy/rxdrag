@@ -31,6 +31,7 @@
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/minions": "workspace:*",
     "@rxdrag/react-antd-components": "workspace:^1.1.0",
+    "@rxdrag/react-antd-icons": "workspace:^1.1.0",
     "@rxdrag/react-antd-minions-editor": "workspace:*",
     "@rxdrag/react-antd-props-inputs": "workspace:*",
     "@rxdrag/react-core": "workspace:*",

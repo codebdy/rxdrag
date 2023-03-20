@@ -13,7 +13,7 @@ export type ColValue = {
   push?: number,
 }
 
-export type ValueType = ColValue & {
+export type ColValueType = ColValue & {
   xs?: ColValue,
   sm?: ColValue,
   md?: ColValue,
@@ -33,8 +33,8 @@ export type ColInputProps = {
     pull?: string,
     push?: string,
   },
-  value?: ValueType,
-  onChange?: (value?: ValueType) => void
+  value?: ColValueType,
+  onChange?: (value?: ColValueType) => void
 }
 
 export const ColInput = memo((props: ColInputProps) => {
