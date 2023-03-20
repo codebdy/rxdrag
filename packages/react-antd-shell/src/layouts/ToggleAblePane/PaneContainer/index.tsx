@@ -9,14 +9,14 @@ const Container = styled.div`
   flex-flow: column;
 `
 
-export type BoxProps = {
+export type PaneContainerProps = {
   style?: CSSProperties,
   className?: string,
   children?: React.ReactNode
 }
 
 export const PaneContainer = memo((
-  props: BoxProps,
+  props: PaneContainerProps,
 ) => {
   const { children, ...other } = props;
 

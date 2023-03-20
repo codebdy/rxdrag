@@ -1,25 +1,12 @@
 import { BorderOutlined, CloseCircleFilled } from "@ant-design/icons";
+import { IconView, IIcon } from "@rxdrag/react-antd-components";
 import { useToolsTranslate } from "@rxdrag/react-core";
 import { Badge, Button, Modal } from "antd";
 import React, { CSSProperties, useCallback, useEffect, useState } from "react";
 import { memo } from "react"
-import { IconView } from "../../../components";
-import { IIcon } from "../../../components/IconView/model";
 import IconSelectForm, { IconType } from "./IconSelectForm";
 import "./style.less"
 
-export const isEmpertyIcon = (icon?: IIcon) => {
-  return !icon || (!icon.iconKey && !icon.svgString)
-}
-
-export const EmpertyIcon = (
-  props: {
-    style?: CSSProperties
-  }
-) => {
-  const { style, ...other } = props;
-  return <BorderOutlined style={{ ...style, color: "transparent", }} {...other} />
-};
 
 const IconInput = memo((
   props: {

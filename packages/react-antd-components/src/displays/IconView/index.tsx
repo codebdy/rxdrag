@@ -1,10 +1,24 @@
 import { BorderOutlined } from "@ant-design/icons";
 import { CSSProperties, forwardRef } from "react";
-import { IIcon } from "./model";
 import { SvgStringIcon } from "./SvgStringIcon";
-import { EmpertyIcon, isEmpertyIcon } from "../../SettingsForm/components";
-import React from "react";
-import { getIcon } from "../../shared";
+
+export interface IIcon {
+  iconKey?: string;
+  svgString?: string;
+}
+
+export const isEmpertyIcon = (icon?: IIcon) => {
+  return !icon || (!icon.iconKey && !icon.svgString)
+}
+
+export const EmpertyIcon = (
+  props: {
+    style?: CSSProperties
+  }
+) => {
+  const { style, ...other } = props;
+  return <BorderOutlined style={{ ...style, color: "transparent", }} {...other} />
+};
 
 
 export interface IIconViewProps {
