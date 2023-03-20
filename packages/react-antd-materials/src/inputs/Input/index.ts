@@ -4,6 +4,8 @@ import { inputIcon } from "./icon";
 import { inputLocales, inputResourceLocales } from "./locales";
 import { inputSchema } from "./schema";
 
+export * from "./textarea"
+
 export const InputMaterial: IComponentMaterial = {
   componentName: "Input",
   component: Input,

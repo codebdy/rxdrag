@@ -1,5 +1,5 @@
+import { Transfer } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { Transfer } from "components/inputs/Transfer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";

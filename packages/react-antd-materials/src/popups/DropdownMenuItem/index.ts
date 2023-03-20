@@ -1,5 +1,5 @@
+import { DropdownMenuItem } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { DropdownMenuItem } from "components/popups/DropdownMenuItem";
 import { DropdownMenuItemDesigner } from "./designer";
 import { locales } from "./locales";
 import { materialSchema } from "./schema";

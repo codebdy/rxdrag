@@ -3,7 +3,7 @@ import { Layout } from "antd";
 import { footerLocales } from "./locales";
 import { footerSchema } from "./schema";
 
-export const FooterMaterial: IComponentMaterial = {
+export const LayoutFooterMaterial: IComponentMaterial = {
   componentName: "Layout.Footer",
   component: Layout.Footer,
   designer: Layout.Footer,

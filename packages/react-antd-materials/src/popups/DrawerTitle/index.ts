@@ -1,5 +1,5 @@
+import { DrawerTitle } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { DrawerTitle } from "components/popups/DrawerTitle";
 import { locales } from "./locales";
 import { materialSchema } from "./schema";
 

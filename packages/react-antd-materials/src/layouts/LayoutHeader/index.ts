@@ -3,7 +3,7 @@ import { IComponentMaterial } from "@rxdrag/react-core";
 import { headerLocales } from "./locales";
 import { headerSchema } from "./schema";
 
-export const HeaderMaterial: IComponentMaterial = {
+export const LayoutHeaderMaterial: IComponentMaterial = {
   componentName: "Layout.Header",
   component: Header,
   designer: Header,
