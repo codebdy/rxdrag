@@ -2,7 +2,7 @@ import { FileOutlined, GithubFilled } from "@ant-design/icons"
 import { Button, Space } from "antd"
 import { memo, useCallback, useMemo, useState } from "react"
 import {
-  Antd5Editor,
+  RxEditorAntd,
   HistoryWidget,
   LangButtons,
   LeftNavWidget,
@@ -40,7 +40,7 @@ export const Antd5Example = memo(() => {
   }, [])
 
   return (
-    <Antd5Editor
+    <RxEditorAntd
       schemas={schemas}
       canvasUrl="/canvas-render"
       previewUrl="/preview-render"
@@ -102,6 +102,6 @@ export const Antd5Example = memo(() => {
         />
       }
     >
-    </Antd5Editor>
+    </RxEditorAntd>
   )
 })

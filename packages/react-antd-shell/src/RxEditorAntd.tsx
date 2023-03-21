@@ -38,7 +38,7 @@ export type Antd5EditorProps = {
   previewUrl: string,
 }
 
-export const Antd5Editor = memo((props: Antd5EditorProps) => {
+export const RxEditorAntd = memo((props: Antd5EditorProps) => {
   const { leftNav, topBar, navPanel, locales, themeMode, schemas, children, canvasUrl, previewUrl } = props;
   const [doc, setDoc] = useState<IDocument>()
   const [engine, setEngine] = useState<IDesignerEngine>()
