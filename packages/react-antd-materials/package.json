@@ -25,6 +25,7 @@
     "@ant-design/icons": "^4.8.0",
     "@rxdrag/core": "workspace:^1.1.0",
     "@rxdrag/react-antd-components": "workspace:^1.1.0",
+    "@rxdrag/react-antd-icons": "workspace:^1.1.0",
     "@rxdrag/react-core": "workspace:^1.1.0",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/shared": "workspace:*",

@@ -1,7 +1,6 @@
+import { IIcon, IconView } from "@rxdrag/react-antd-icons";
 import { Statistic as AntdStatistic, StatisticProps } from "antd"
 import { forwardRef, memo } from "react"
-import { IconView } from "../IconView";
-import { IIcon } from "../IconView/model";
 
 
 export const Statistic = memo(forwardRef<HTMLDivElement, StatisticProps & { prefix: IIcon }>((props, ref) => {

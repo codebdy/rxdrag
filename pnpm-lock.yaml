@@ -277,6 +277,7 @@ importers:
       '@ant-design/icons': ^4.8.0
       '@rxdrag/core': workspace:^1.1.0
       '@rxdrag/react-antd-components': workspace:^1.1.0
+      '@rxdrag/react-antd-icons': workspace:^1.1.0
       '@rxdrag/react-core': workspace:^1.1.0
       '@rxdrag/react-shared': workspace:*
       '@rxdrag/shared': workspace:*
@@ -296,6 +297,7 @@ importers:
       '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
       '@rxdrag/core': link:../core
       '@rxdrag/react-antd-components': link:../react-antd-components
+      '@rxdrag/react-antd-icons': link:../react-antd-icons
       '@rxdrag/react-core': link:../react-core
       '@rxdrag/react-shared': link:../react-shared
       '@rxdrag/shared': link:../shared

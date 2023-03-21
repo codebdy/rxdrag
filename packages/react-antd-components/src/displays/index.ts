@@ -1,4 +1,3 @@
-export * from "./IconView"
 export * from "./ImageView"
 export * from "./LoopPanel"
 export * from "./Statistic"
