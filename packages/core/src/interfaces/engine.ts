@@ -1,3 +1,5 @@
+import { ILocalesManager } from "@rxdrag/locales"
+import { INodeSchema } from "@rxdrag/schema"
 import { IDocument, NodeBehavior } from "./document"
 import { IDesignerShell } from "./shell"
 import { IMonitor } from "./monitor"
@@ -7,8 +9,6 @@ import { IAction, IActions } from "./action"
 import { IComponentManager } from "./component"
 import { IPlugin, IPluginFactory } from "./plugin"
 import { IDecoratorManager } from "./decorator"
-import { INodeSchema } from "@rxdrag/schema"
-import { ILocalesManager } from "@rxdrag/locales"
 
 export interface IDesignerEngine {
 	getLanguage(): string

@@ -1,5 +1,4 @@
 import React, { CSSProperties, memo } from "react"
-import { Box } from "../../components/Box"
 import { useStyles } from "../../hooks/useStyles";
 import cls from "classnames"
 import "./style.less"
@@ -17,8 +16,8 @@ export const CanvasToolbar = memo((
   }))
 
   return (
-    <Box className={cls("rx-canvas-toolbar", className)} style={{ ...styles, ...style }} {...other}>
+    <div className={cls("rx-canvas-toolbar", className)} style={{ ...styles, ...style }} {...other}>
       {children}
-    </Box>
+    </div>
   )
 })

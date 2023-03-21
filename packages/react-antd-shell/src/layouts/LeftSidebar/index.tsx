@@ -1,6 +1,5 @@
 import { GlobalToken } from "antd/es/theme/interface";
 import React, { CSSProperties, memo } from "react"
-import { Box } from "../../components/Box"
 import { useStyles } from "../../hooks/useStyles";
 import "./style.less"
 
@@ -19,8 +18,8 @@ export const LeftSidebar = memo((
   const { style, children, ...other } = props;
   const styles = useStyles(sidebarStyles)
   return (
-    <Box className="rx-left-sidebar" style={{ ...styles, ...style }} {...other}>
+    <div className="rx-left-sidebar" style={{ ...styles, ...style }} {...other}>
       {children}
-    </Box>
+    </div>
   )
 })

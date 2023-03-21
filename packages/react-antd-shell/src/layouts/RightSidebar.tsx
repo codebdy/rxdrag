@@ -1,5 +1,4 @@
 import React, { memo } from "react"
-import { Box } from "../components/Box"
 
 export const RightSidebar = memo((
   props: {
@@ -8,8 +7,8 @@ export const RightSidebar = memo((
 ) => {
   const { children, ...other } = props;
   return (
-    <Box {...other}>
+    <div {...other}>
       {children}
-    </Box>
+    </div>
   )
 })

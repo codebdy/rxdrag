@@ -1,5 +1,4 @@
 import React, { CSSProperties, memo, useCallback, useMemo, useState } from "react"
-import { Box } from "../../components/Box"
 import { useStyles } from "../../hooks";
 import { ToggleAblePaneContext } from "./context";
 import "./style.less"
@@ -31,14 +30,14 @@ export const ToggleAblePane = memo((
 
   return (
     <ToggleAblePaneContext.Provider value={params}>
-      <Box className="rx-editor-left-pane" style={{ ...styles, ...style, width: toggled ? 0 : width }} {...other}>
-        <Box className="pane-content">
-          <Box className="pane-placeholder" style={{ width: width }}>
+      <div className="rx-editor-left-pane" style={{ ...styles, ...style, width: toggled ? 0 : width }} {...other}>
+        <div className="pane-content">
+          <div className="pane-placeholder" style={{ width: width }}>
             {children}
-          </Box>
-        </Box>
+          </div>
+        </div>
         <ToggleButton toggleType={toggleType} toggled={toggled} onClick={handleToggle} />
-      </Box >
+      </div >
     </ToggleAblePaneContext.Provider>
   )
 })

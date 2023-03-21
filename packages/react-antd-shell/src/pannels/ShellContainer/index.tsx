@@ -1,10 +1,9 @@
 import { useToken } from "antd/es/theme/internal"
 import React, { memo, useMemo } from "react"
-import { Box } from "../../components/Box"
 import styled, { ThemeProvider } from "styled-components"
 import { useThemeMode } from "@rxdrag/react-core"
 
-const Container = styled(Box)`
+const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;

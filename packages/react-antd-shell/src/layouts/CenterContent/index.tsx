@@ -1,5 +1,4 @@
 import React, { CSSProperties, memo } from "react"
-import { Box } from "../../components/Box"
 import cls from "classnames"
 import "./style.less"
 import { useStyles } from "../../hooks"
@@ -17,8 +16,8 @@ export const CenterContent = memo((
   }))
 
   return (
-    <Box className={cls(className, "rx-center-content")} style={{ ...styles, ...style }} {...other}>
+    <div className={cls(className, "rx-center-content")} style={{ ...styles, ...style }} {...other}>
       {children}
-    </Box>
+    </div>
   )
 })

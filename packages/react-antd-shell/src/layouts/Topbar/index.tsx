@@ -1,9 +1,8 @@
 import React, { CSSProperties, memo } from "react"
-import { Box } from "../../components/Box"
 import { useStyles } from "../../hooks/useStyles";
 import styled from "styled-components";
 
-const StyledBox= styled(Box)`
+const StyledBox= styled.div`
   padding: 0 8px;
   display: flex;
   align-items: center;

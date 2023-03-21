@@ -1,7 +1,6 @@
 import { ContainerImpl, DragDropDriver, CanvasResizeDriver, MouseMoveDriver, KeyboardDriver } from "@rxdrag/core"
 import { useDesignerEngine, useShell } from "@rxdrag/react-core"
 import { memo, useCallback, useEffect } from "react"
-import { Box } from "../../components/Box"
 import "./style.less"
 
 export interface WorkbenchProps {
@@ -29,7 +28,7 @@ export const Workbench = memo((props: WorkbenchProps) => {
     }
   }, [shell])
   return (
-    <Box ref={handleRefChange} className="rx-workbench" {...props}>
-    </Box>
+    <div ref={handleRefChange} className="rx-workbench" {...props}>
+    </div>
   )
 })

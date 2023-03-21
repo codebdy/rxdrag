@@ -1,7 +1,7 @@
 import { INodeSchema } from "@rxdrag/schema"
+import { ILocales } from "@rxdrag/locales"
 import { IDesignerProps, ITreeNode } from "./document"
 import { IDesignerEngine } from "./engine"
-import { ILocales } from "@rxdrag/locales"
 import { IResource } from "./resource"
 import { ID } from "./types"
 
