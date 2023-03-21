@@ -1,5 +1,6 @@
 export * from "./FontColorInput"
 export * from "./FontDecorationSelect"
+export * from "./FontLineHeightInput"
 export * from "./FontSelect"
 export * from "./FontSizeInput"
 export * from "./FontStyleSelect"

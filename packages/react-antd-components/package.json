@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
+    "@rxdrag/react-antd-icons": "workspace:^1.1.0",
     "@rxdrag/react-fieldy": "workspace:^1.1.0",
     "@rxdrag/react-runner": "workspace:^1.1.0",
     "@rxdrag/react-shared": "workspace:*",

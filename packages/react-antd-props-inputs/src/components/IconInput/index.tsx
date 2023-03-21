@@ -1,14 +1,14 @@
-import { BorderOutlined, CloseCircleFilled } from "@ant-design/icons";
-import { IconView, IIcon } from "@rxdrag/react-antd-components";
+import { CloseCircleFilled } from "@ant-design/icons";
 import { useToolsTranslate } from "@rxdrag/react-core";
 import { Badge, Button, Modal } from "antd";
-import React, { CSSProperties, useCallback, useEffect, useState } from "react";
+import React, {  useCallback, useEffect, useState } from "react";
 import { memo } from "react"
 import IconSelectForm, { IconType } from "./IconSelectForm";
+import {IIcon, isEmpertyIcon, IconView} from "@rxdrag/react-antd-icons"
 import "./style.less"
 
 
-const IconInput = memo((
+export const IconInput = memo((
   props: {
     value?: IIcon,
     onChange?: (event: { target: { value?: IIcon } }) => void,
@@ -108,5 +108,3 @@ const IconInput = memo((
     </div>
   )
 })
-
-export default IconInput;

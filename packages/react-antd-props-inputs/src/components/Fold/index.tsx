@@ -13,6 +13,8 @@ export type FoldProps = {
   children?: React.ReactNode
 }
 
+export * from "./FoldExtraItem"
+
 export const Fold = memo((props: FoldProps) => {
   const [expand, setExpand] = useState<boolean>()
 
