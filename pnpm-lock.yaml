@@ -396,6 +396,7 @@ importers:
       '@monaco-editor/react': ^4.4.6
       '@rxdrag/react-antd-icons': workspace:^1.1.0
       '@rxdrag/react-core': workspace:*
+      '@rxdrag/react-runner': workspace:^1.1.0
       '@rxdrag/react-shared': workspace:*
       '@rxdrag/shared': workspace:*
       '@types/react': ^18.0.28
@@ -417,6 +418,7 @@ importers:
       '@monaco-editor/react': registry.npmmirror.com/@monaco-editor/react/4.4.6_waewrrayshn643ztij6zbniufy
       '@rxdrag/react-antd-icons': link:../react-antd-icons
       '@rxdrag/react-core': link:../react-core
+      '@rxdrag/react-runner': link:../react-runner
       '@rxdrag/react-shared': link:../react-shared
       '@rxdrag/shared': link:../shared
       '@types/react': registry.npmmirror.com/@types/react/18.0.28

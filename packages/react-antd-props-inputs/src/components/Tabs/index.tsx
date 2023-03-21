@@ -4,6 +4,7 @@ import "./style.less"
 import cls from "classnames"
 import { useComponentSchema } from "@rxdrag/react-runner";
 import { isArr } from "@rxdrag/shared";
+import React from "react";
 
 export * from "./TabPanel"
 
