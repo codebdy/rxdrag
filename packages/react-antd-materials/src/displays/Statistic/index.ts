@@ -1,5 +1,5 @@
+import { Statistic } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { Statistic } from "antd";
 import { statisticIcon } from "./icon";
 import { statisticLocales, statisticResourceLocales } from "./locales";
 import { staticSchema } from "./schema";
@@ -11,6 +11,7 @@ export const StatisticMaterial: IComponentMaterial = {
   designer: Statistic,
   designerLocales: statisticLocales,
   designerSchema: staticSchema,
+  
   resource: {
     name: name,
     icon: statisticIcon,
@@ -25,5 +26,7 @@ export const StatisticMaterial: IComponentMaterial = {
       }
     ]
   },
-
+  behaviorRule: {
+    noRef: true,
+  }
 }

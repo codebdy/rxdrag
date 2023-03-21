@@ -1,6 +1,6 @@
+import { isHTMLElement } from "@rxdrag/shared"
 import { IDriver, IDriverFactory } from "../../interfaces"
 import { IDispatchable, ICustomEvent } from "../../interfaces/event"
-import { isHTMLElement } from "@rxdrag/shared"
 import { CanvasResizeEvent } from "../events"
 
 export class CanvasResizeDriverImpl implements IDriver {
@@ -18,7 +18,7 @@ export class CanvasResizeDriverImpl implements IDriver {
   }
 
   attach() {
-    if (isHTMLElement(this.element)) {
+    if (isHTMLElement(this.element) && this.element.tagName) {
       this.resizeObserver.observe(this.element as Element)
     }
     this.win().addEventListener('resize', this.onResize)
