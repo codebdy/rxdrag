@@ -1,3 +1,4 @@
+import { Title } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";

@@ -1,3 +1,4 @@
+import { IconView } from "@rxdrag/react-antd-icons";
 import { IComponentMaterial } from "@rxdrag/react-core";
 import { iconViewIcon } from "./icon";
 import { iconViewLocales, iconViewResourceLocales } from "./locales";

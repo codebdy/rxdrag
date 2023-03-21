@@ -2,6 +2,7 @@ import { IComponentMaterial } from "@rxdrag/react-core";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";
+import {Text} from "@rxdrag/react-antd-components"
 
 const name = "Text"
 export const TextMaterial: IComponentMaterial = {

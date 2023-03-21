@@ -2,6 +2,7 @@ import { IComponentMaterial } from "@rxdrag/react-core";
 import { boxIcon } from "./icon";
 import { boxLocales, boxResourceLocales } from "./locales";
 import { boxSchema } from "./schema";
+import { Box } from "@rxdrag/react-antd-components"
 
 
 const name = "Box"
