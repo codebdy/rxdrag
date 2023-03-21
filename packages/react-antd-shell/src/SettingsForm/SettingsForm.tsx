@@ -6,8 +6,6 @@ import { ComponentRender } from "@rxdrag/react-runner";
 import { PreviewRoot } from "@rxdrag/react-shared";
 import { INodeMeta } from "@rxdrag/schema";
 import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput, BorderRadiusSetter, BorderSetter, CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, ReactionsInput, SizeInput, SlotSwitch, TabPanel, TextAlignSelect, ValueInput } from "@rxdrag/react-antd-props-inputs";
-import { Box } from "../components";
-
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -101,7 +99,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
       }}
     >
       <Fieldy>
-        <Box style={propertiesStyle} {...props}>
+        <div style={propertiesStyle} {...props}>
           {
             currentNode &&
             <VirtualForm
@@ -130,7 +128,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
               </Form>
             </VirtualForm>
           }
-        </Box>
+        </div>
       </Fieldy>
     </PreviewRoot>
   )
