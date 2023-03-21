@@ -48,6 +48,7 @@ importers:
       '@ant-design/icons': ^4.8.0
       '@rxdrag/core': workspace:^1.1.0
       '@rxdrag/locales': workspace:^1.1.0
+      '@rxdrag/react-antd-components': workspace:^1.1.0
       '@rxdrag/react-antd-materials': workspace:^1.1.0
       '@rxdrag/react-antd-shell': workspace:^1.1.0
       '@rxdrag/react-core': workspace:^1.1.0
@@ -73,6 +74,7 @@ importers:
       '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
       '@rxdrag/core': link:../../packages/core
       '@rxdrag/locales': link:../../packages/locales
+      '@rxdrag/react-antd-components': link:../../packages/react-antd-components
       '@rxdrag/react-antd-materials': link:../../packages/react-antd-materials
       '@rxdrag/react-antd-shell': link:../../packages/react-antd-shell
       '@rxdrag/react-core': link:../../packages/react-core

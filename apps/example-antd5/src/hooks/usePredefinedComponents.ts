@@ -1,6 +1,8 @@
 import { Root } from "@rxdrag/react-core";
+import { IComponents } from "@rxdrag/react-shared";
 import { isStr } from "@rxdrag/shared";
 import { useMemo } from "react";
+import {Field} from "@rxdrag/react-antd-components";
 import { materials, slots } from "../materials";
 
 export function usePredefinedComponents() {
