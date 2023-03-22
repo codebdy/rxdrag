@@ -88,7 +88,6 @@ export const ReactionNode = (props: { node?: Node }) => {
 
   const inputPortCount = data.meta.inPorts?.length || data.inputCounts
   const outputPortCount = data.meta.outPorts?.length || data.outputCounts
-  
   return (
     <NodeView
       className='node'
@@ -103,7 +102,7 @@ export const ReactionNode = (props: { node?: Node }) => {
       }}
     >
       <ReactionName>
-        <Icon style={{ color: data?.material.color }}>
+        <Icon style={{ color: data?.material?.color }}>
           {data?.material?.icon}
         </Icon>
         <Label>{label}</Label>
