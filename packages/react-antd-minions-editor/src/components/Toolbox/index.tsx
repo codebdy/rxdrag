@@ -1,7 +1,6 @@
 import { Collapse as AntdCollapse, Row } from "antd";
 import { memo, ReactNode } from "react";
 import styled from "styled-components";
-import React from "react";
 import { ToolItem } from "./ToolItem";
 import { useTrans } from "../../hooks/useTrans";
 import { useMaterialCategories } from "@rxdrag/react-minions";
@@ -32,7 +31,7 @@ export const Toolbox = memo((props: {
 
   return (
     <StyledToolbox>
-      <Collapse defaultActiveKey={[materialCategories?.[0].name]} bordered={false} accordion expandIconPosition="end">
+      <Collapse defaultActiveKey={[materialCategories?.[0]?.name]} bordered={false} accordion expandIconPosition="end">
         {
           materialCategories.map(category => {
             return (
