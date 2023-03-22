@@ -1,5 +1,5 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { createSchema, SchemaOptions, withFormItem } from "@rxdrag/react-antd-shell";
+import { SchemaOptions, createSchema, withFormItem } from "../../../shared";
 
 const options: SchemaOptions = {
   propsSchemas: [

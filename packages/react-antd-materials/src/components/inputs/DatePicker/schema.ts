@@ -1,6 +1,6 @@
 import { INodeSchema } from "@rxdrag/schema";
+import { SchemaOptions, createSchema } from "../../../shared";
 import { inputBaseSchemas } from "../schemas";
-import { createSchema, SchemaOptions } from "@rxdrag/react-antd-shell";
 
 const options: SchemaOptions = {
   propsSchemas: [

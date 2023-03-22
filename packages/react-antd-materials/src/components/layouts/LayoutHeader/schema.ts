@@ -1,7 +1,7 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { createSchema, SchemaOptions } from "@rxdrag/react-antd-shell";
 import { IBindParams } from "runner/ComponentRender/interfaces";
 import { IFieldMeta } from "runner/fieldy";
+import { SchemaOptions, createSchema } from "../../../shared";
 
 const options: SchemaOptions<IFieldMeta<IBindParams>> = {
   propsSchemas: [

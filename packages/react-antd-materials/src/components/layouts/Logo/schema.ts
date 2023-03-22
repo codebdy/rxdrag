@@ -1,4 +1,4 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { createSchema } from "@rxdrag/react-antd-shell";
+import { createSchema } from "@rxdrag/react-antd-materials";
 
 export const logoSchema: INodeSchema = createSchema()

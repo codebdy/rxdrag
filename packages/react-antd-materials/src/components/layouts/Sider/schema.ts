@@ -1,4 +1,4 @@
-import { createSchema } from "@rxdrag/react-antd-shell";
+import { createSchema } from "@rxdrag/react-antd-materials";
 import { INodeSchema } from "@rxdrag/schema";
 
 export const siderSchema: INodeSchema = createSchema()
