@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import { getAllMaterial } from '@rxdrag/react-antd-shell';
 import './App.css';
 import { IFrameCanvasRender } from '@rxdrag/react-core';
 import { IFramePreviewRender } from "@rxdrag/react-antd-shell"
+import { getAllMaterial } from "@rxdrag/react-minions-materials"
 import { usePredefinedComponents } from './hooks/usePredefinedComponents';
 import { Antd5Example } from './Antd5Example';
 

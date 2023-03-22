@@ -1,4 +1,4 @@
-import { reactionMaterialLocales } from "../reaction-materials"
+import { reactionMaterialLocales } from "@rxdrag/react-minions-materials";
 
 export const settingLocales = {
   "zh-CN": {

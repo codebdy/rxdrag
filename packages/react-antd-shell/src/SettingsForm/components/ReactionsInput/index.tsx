@@ -5,7 +5,7 @@ import { memo, useCallback, useEffect, useState } from "react"
 import { IControllerMeta, IReactionDefineMeta } from "@rxdrag/schema"
 import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
-import { reactionMaterialCategories } from "../../../reaction-materials"
+import {reactionMaterialCategories} from "@rxdrag/react-minions-materials"
 
 export const ReactionsInput = memo((props: {
   events?: IEventMeta[]
