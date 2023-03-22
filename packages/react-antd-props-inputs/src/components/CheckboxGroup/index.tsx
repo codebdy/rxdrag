@@ -25,7 +25,7 @@ export const CheckboxGroup = memo((
       <Row>
         {
           options?.map(opt => {
-            return <Col>
+            return <Col key={opt.value}>
               <Checkbox value={opt.value}>{opt.label}</Checkbox>
             </Col>
           })
