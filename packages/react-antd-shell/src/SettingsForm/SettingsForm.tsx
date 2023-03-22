@@ -5,7 +5,8 @@ import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy";
 import { ComponentRender } from "@rxdrag/react-runner";
 import { PreviewRoot } from "@rxdrag/react-shared";
 import { INodeMeta } from "@rxdrag/schema";
-import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput, BorderRadiusSetter, BorderSetter, CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, ReactionsInput, SizeInput, SlotSwitch, TabPanel, Tabs, TextAlignSelect, ValueInput } from "@rxdrag/react-antd-props-inputs";
+import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput, BorderRadiusSetter, BorderSetter, CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, SizeInput, SlotSwitch, TabPanel, Tabs, TextAlignSelect, ValueInput } from "@rxdrag/react-antd-props-inputs";
+import { ReactionsInput } from "./components";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,

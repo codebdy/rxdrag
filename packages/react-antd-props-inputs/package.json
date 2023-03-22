@@ -25,7 +25,6 @@
     "@ant-design/icons": "^4.8.0",
     "@monaco-editor/react": "^4.4.6",
     "@rxdrag/react-antd-icons": "workspace:^1.1.0",
-    "@rxdrag/react-antd-minions-editor": "workspace:^1.0.0",
     "@rxdrag/react-core": "workspace:*",
     "@rxdrag/react-runner": "workspace:^1.1.0",
     "@rxdrag/react-shared": "workspace:*",
