@@ -1,2 +1,2 @@
 export * from "./useMaterials"
-export * from "./useMaterialCategories"
+export * from "./useMaterials"

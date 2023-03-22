@@ -8,6 +8,8 @@ import { createUuid } from "@rxdrag/shared"
 import { reactionMaterialCategories } from "@rxdrag/react-minions-materials"
 import { useControllerMetas } from "./hooks/useControllerMetas"
 import { ComponentList } from "./ComponentList"
+import { getReactionMaterials } from "./hooks/getReactionMaterials"
+import { Toolbox } from "./Toolbox"
 
 export const ReactionsInput = memo((props: {
   events?: IEventMeta[]
@@ -121,8 +123,8 @@ export const ReactionsInput = memo((props: {
                 value={inputValue}
                 onChange={handleConfigChange}
                 controllerMetas={controllers}
-                mareials={reactionMaterialCategories}
-                toolbox = {<ComponentList />}
+                materials={getReactionMaterials()}
+                toolbox = {<Toolbox />}
               />
             }
           </Modal>

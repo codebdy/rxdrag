@@ -9,7 +9,7 @@ import { useCreateGraph } from "../hooks/useCreateGraph";
 import { Logic } from "./Logic";
 import { PropertyBox } from "./PropertyBox";
 import { Toolbar } from "./Toolbar";
-import { Toolbox } from "./Toolbox";
+import { Toolbox } from "./Toolbox/Toolbox";
 
 const CenterArea = styled.div`
   position: relative;

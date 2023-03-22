@@ -1,6 +1,6 @@
 import { IConfigMeta, IJointer, IReaction, IReactionDefineMeta, IReactionMeta, ReactionType } from "@rxdrag/schema";
 import { Jointer } from "../classes/jointer";
-import { IFactoryOptions, IReactionFactoryOptions } from "./IFactoryOptions";
+import { IReactionFactoryOptions } from "./IFactoryOptions";
 
 export class GraphicalReaction implements IReaction {
   id: string;

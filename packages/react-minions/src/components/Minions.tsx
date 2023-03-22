@@ -1,10 +1,10 @@
 import React, { memo, ReactNode } from "react"
 import { MaterialsContext } from "../context"
-import { ReactionMaterialCategory } from "@rxdrag/schema"
+import { IReactionMaterial } from "@rxdrag/schema"
 
 export const Minions = memo((
   props: {
-    materials: ReactionMaterialCategory<ReactNode>[]
+    materials: IReactionMaterial<ReactNode>[]
     children?: React.ReactNode
   }
 ) => {

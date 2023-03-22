@@ -1,4 +1,4 @@
-import { IControllerMeta, ILogicMetas, ReactionMaterialCategory } from "@rxdrag/schema";
+import { IControllerMeta, ILogicMetas, IReactionMaterial, ReactionMaterialCategory } from "@rxdrag/schema";
 import React, { memo, ReactNode, useCallback, useMemo, useState } from "react"
 import styled from "styled-components";
 import { ControllerContext, ControllersContext } from "../contexts";
@@ -32,13 +32,12 @@ export const ControllerMetaEditor = memo((
     value: IControllerMeta,
     onChange?: (value?: IControllerMeta) => void,
     controllerMetas: IControllerMeta[],
-    mareials: ReactionMaterialCategory<ReactNode>[],
+    materials: IReactionMaterial<ReactNode>[],
     toolbox?: React.ReactNode,
   }
 ) => {
-  const { value, onChange, controllerMetas, mareials, toolbox } = props
+  const { value, onChange, controllerMetas, materials, toolbox } = props
   const [selected, setSelected] = useState<string>()
-
   const handleMemberChange = useCallback((meta?: IControllerMeta) => {
     onChange?.(meta)
     onChange?.(meta)
@@ -63,7 +62,7 @@ export const ControllerMetaEditor = memo((
   }, [onChange, selected, value])
 
   return (
-    <Minions materials={mareials}>
+    <Minions materials={materials}>
       <ControllersContext.Provider value={controllerMetas}>
         <ControllerContext.Provider value={value}>
           <SytledContent id="reactions-editor-container">
@@ -81,7 +80,7 @@ export const ControllerMetaEditor = memo((
                 key={selected}
                 metas={metas}
                 onChange={handleChange}
-                toolbox = {toolbox}
+                toolbox={toolbox}
               />
             }
           </SytledContent>
