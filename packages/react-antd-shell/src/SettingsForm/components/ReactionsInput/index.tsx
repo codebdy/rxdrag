@@ -5,7 +5,8 @@ import { memo, useCallback, useEffect, useState } from "react"
 import { IControllerMeta, IReactionDefineMeta } from "@rxdrag/schema"
 import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
-import {reactionMaterialCategories} from "@rxdrag/react-minions-materials"
+import { reactionMaterialCategories } from "@rxdrag/react-minions-materials"
+import { useControllerMetas } from "./hooks/useControllerMetas"
 
 export const ReactionsInput = memo((props: {
   events?: IEventMeta[]
@@ -18,6 +19,7 @@ export const ReactionsInput = memo((props: {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const t = useToolsTranslate()
   const node = useCurrentNode()
+  const controllers = useControllerMetas()
 
   useEffect(() => {
     setInputValue(value)
@@ -117,7 +119,7 @@ export const ReactionsInput = memo((props: {
               <ControllerMetaEditor
                 value={inputValue}
                 onChange={handleConfigChange}
-                controllerMetas={[]}
+                controllerMetas={controllers}
                 mareials={reactionMaterialCategories}
               />
             }

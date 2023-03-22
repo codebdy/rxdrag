@@ -2,7 +2,7 @@ import { ITreeNode } from "@rxdrag/core"
 import { useGetNode, useCurrentNode } from "@rxdrag/react-core"
 import { useCallback, useMemo } from "react"
 
-export function useControllerNodes(){
+export function useControllerMetas(){
   const getNode = useGetNode()
   const currentNode = useCurrentNode()
   
@@ -23,7 +23,7 @@ export function useControllerNodes(){
       const nodes: ITreeNode[] = []
       processNode(currentNode, nodes)
 
-      return nodes.reverse()
+      return nodes.reverse().map(node=>node.meta?.["x-controller"])
     }
 
     return []
