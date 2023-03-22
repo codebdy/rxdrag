@@ -90,7 +90,7 @@ export const ComponentList = memo((
               key={ctrl.id}
             >
               <Typography.Text type="secondary" style={{ marginTop: index !== 0 ? 8 : 0 }}>
-                {controller.name || "unnamed"}
+                {controller.name}
               </Typography.Text>
               <ReactionList>
                 <Space direction="vertical">
