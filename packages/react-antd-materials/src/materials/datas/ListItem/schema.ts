@@ -1,5 +1,5 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { SchemaOptions } from "../../..";
+import { createSchema, SchemaOptions } from "../../..";
 
 const options: SchemaOptions = {
   slotsSchemas:  [

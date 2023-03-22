@@ -1,4 +1,5 @@
 import { INodeSchema } from "@rxdrag/schema";
+import { displaySetter, fontStyleSetter, martinStyleSetter, paddingStyleSetter, borderRediusSetter, borderSetter } from "../../../shared/schemas";
 
 
 export const logoSchema: INodeSchema = {
