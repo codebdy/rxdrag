@@ -1,4 +1,7 @@
 import { useTrans, useGraph, useDnd, useGetNodeConfig, useController, useAllControllers } from "@rxdrag/react-antd-minions-editor";
+import { reactionMaterial } from "@rxdrag/react-minions-materials/src/controller/reaction";
+import { setPropMaterial } from "@rxdrag/react-minions-materials/src/controller/setProp";
+import { setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "@rxdrag/react-minions-materials/src/controller/variable";
 import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon, variableIcon } from "@rxdrag/react-shared";
 import { IControllerMeta, IReactionDefineMeta, IReactionMaterial, IReactionMeta } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
@@ -6,9 +9,7 @@ import { Space, Typography } from "antd";
 import React from "react";
 import { memo, useCallback } from "react"
 import styled from "styled-components";
-import { reactionMaterial } from "../../../reaction-materials/controller/reaction";
-import { setPropMaterial } from "../../../reaction-materials/controller/setProp";
-import { setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "../../../reaction-materials/controller/variable";
+
 
 const Container = styled.div`
   display: flex;
