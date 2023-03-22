@@ -53,7 +53,7 @@ export const PropertyBox = memo(() => {
       //翻译
       return localesManager?.translateDesignerSchema('',
           JSON.parse(JSON.stringify(material?.schema))
-        )
+        )||material?.schema
     } else {
       return undefined
     }
