@@ -5,6 +5,7 @@ import { memo, useCallback, useEffect, useState } from "react"
 import { IControllerMeta, IReactionDefineMeta } from "@rxdrag/schema"
 import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
+import { reactionMaterialCategories } from "../../../reaction-materials"
 
 export const ReactionsInput = memo((props: {
   events?: IEventMeta[]
@@ -117,7 +118,7 @@ export const ReactionsInput = memo((props: {
                 value={inputValue}
                 onChange={handleConfigChange}
                 controllerMetas={[]}
-                mareials={[]}
+                mareials={reactionMaterialCategories}
               />
             }
           </Modal>

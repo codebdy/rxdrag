@@ -10,7 +10,6 @@ import { reactionMaterial } from "../../../reaction-materials/controller/reactio
 import { setPropMaterial } from "../../../reaction-materials/controller/setProp";
 import { setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "../../../reaction-materials/controller/variable";
 
-
 const Container = styled.div`
   display: flex;
   flex-flow: column;
