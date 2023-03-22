@@ -671,7 +671,9 @@ importers:
   packages/react-minions-materials:
     specifiers:
       '@rxdrag/minions': workspace:*
+      '@rxdrag/react-shared': workspace:^1.1.0
       '@rxdrag/schema': workspace:*
+      '@rxdrag/shared': workspace:^1.1.0
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
       eslint: ^7.32.0
@@ -683,7 +685,9 @@ importers:
       typescript: ^4.9.4
     dependencies:
       '@rxdrag/minions': link:../minions
+      '@rxdrag/react-shared': link:../react-shared
       '@rxdrag/schema': link:../schema
+      '@rxdrag/shared': link:../shared
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
       '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
       react: registry.npmmirror.com/react/18.2.0
