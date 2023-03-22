@@ -7,6 +7,7 @@ import { IReactionMaterial, INodeSchema } from "@rxdrag/schema"
 import { useToken } from "antd/es/theme/internal"
 import { memo, useEffect, useMemo, useState } from "react"
 import { ThemeProvider } from "styled-components"
+import { Minions } from "@rxdrag/react-minions"
 
 export const PreviewRender = memo((
   props: {
@@ -37,15 +38,16 @@ export const PreviewRender = memo((
         tree &&
         <PreviewRoot
           components={components}
-          reactionMaterials={reactionMaterials}
         >
-          <Fieldy>
-            <VirtualForm>
-              <ComponentRender
-                root={tree}
-              />
-            </VirtualForm>
-          </Fieldy>
+          <Minions materials={reactionMaterials}>
+            <Fieldy>
+              <VirtualForm>
+                <ComponentRender
+                  root={tree}
+                />
+              </VirtualForm>
+            </Fieldy>
+          </Minions>
         </PreviewRoot>
       }
     </ThemeProvider>

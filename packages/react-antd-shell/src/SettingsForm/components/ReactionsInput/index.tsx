@@ -5,11 +5,9 @@ import { memo, useCallback, useEffect, useState } from "react"
 import { IControllerMeta, IReactionDefineMeta } from "@rxdrag/schema"
 import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
-import { reactionMaterialCategories } from "@rxdrag/react-minions-materials"
 import { useControllerMetas } from "./hooks/useControllerMetas"
-import { ComponentList } from "./ComponentList"
-import { getReactionMaterials } from "./hooks/getReactionMaterials"
 import { Toolbox } from "./Toolbox"
+import { getAllMaterial } from "@rxdrag/react-minions-materials"
 
 export const ReactionsInput = memo((props: {
   events?: IEventMeta[]
@@ -123,8 +121,8 @@ export const ReactionsInput = memo((props: {
                 value={inputValue}
                 onChange={handleConfigChange}
                 controllerMetas={controllers}
-                materials={getReactionMaterials()}
-                toolbox = {<Toolbox />}
+                materials={getAllMaterial()}
+                toolbox={<Toolbox />}
               />
             }
           </Modal>
