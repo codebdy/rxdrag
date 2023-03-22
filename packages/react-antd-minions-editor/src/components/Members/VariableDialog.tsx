@@ -20,12 +20,12 @@ export const VariableDialog = memo((
 
   const handleOk = useCallback(() => {
     form.validateFields().then((values: any) => {
-      onOk?.({...value, ...values})
+      onOk?.({ ...value, ...values })
       form.resetFields()
     })
   }, [form, onOk, value])
 
-  useEffect(()=>{
+  useEffect(() => {
     form.setFieldsValue(value)
   }, [form, value])
 
@@ -36,6 +36,7 @@ export const VariableDialog = memo((
 
   return (
     <Modal {...other}
+      forceRender
       title={t(title)}
       okText={t('$confirm')}
       cancelText={t('$cancel')}
