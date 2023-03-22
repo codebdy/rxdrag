@@ -1,6 +1,7 @@
 import { IBindParams } from "@rxdrag/react-runner";
 import { IControllerMeta, IFieldMeta, INodeSchema } from "@rxdrag/schema";
 import { createReactionSchema, LogicOptions } from "./createReactionSchema";
+import { displaySetter, backgroundSetter, fontStyleSetter, martinStyleSetter, paddingStyleSetter, borderRediusSetter, borderSetter } from "./schemas";
 
 export type SchemaOptions<IField = any, IReactions = any> = {
   propsSchemas?: INodeSchema<IField, IReactions>[],
