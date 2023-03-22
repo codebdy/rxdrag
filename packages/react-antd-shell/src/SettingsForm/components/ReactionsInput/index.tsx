@@ -74,6 +74,7 @@ export const ReactionsInput = memo((props: {
     onChange?.(inputValue)
     setIsModalOpen(false);
   }, [inputValue, onChange])
+  console.log("哈哈", value)
 
   return (
     <div>

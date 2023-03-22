@@ -280,10 +280,13 @@ importers:
     specifiers:
       '@ant-design/icons': ^4.8.0
       '@rxdrag/core': workspace:^1.1.0
+      '@rxdrag/minions': workspace:^1.1.0
       '@rxdrag/react-antd-components': workspace:^1.1.0
       '@rxdrag/react-antd-icons': workspace:^1.1.0
       '@rxdrag/react-core': workspace:^1.1.0
+      '@rxdrag/react-runner': workspace:^1.1.0
       '@rxdrag/react-shared': workspace:*
+      '@rxdrag/schema': workspace:^1.1.0
       '@rxdrag/shared': workspace:*
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
@@ -300,10 +303,13 @@ importers:
     dependencies:
       '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.8.0_biqbaboplfbrettd7655fr4n2y
       '@rxdrag/core': link:../core
+      '@rxdrag/minions': link:../minions
       '@rxdrag/react-antd-components': link:../react-antd-components
       '@rxdrag/react-antd-icons': link:../react-antd-icons
       '@rxdrag/react-core': link:../react-core
+      '@rxdrag/react-runner': link:../react-runner
       '@rxdrag/react-shared': link:../react-shared
+      '@rxdrag/schema': link:../schema
       '@rxdrag/shared': link:../shared
       '@types/react': registry.npmmirror.com/@types/react/18.0.28
       '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
@@ -396,7 +402,6 @@ importers:
       '@monaco-editor/react': ^4.4.6
       '@rxdrag/react-antd-icons': workspace:^1.1.0
       '@rxdrag/react-core': workspace:*
-      '@rxdrag/react-runner': workspace:^1.1.0
       '@rxdrag/react-shared': workspace:*
       '@rxdrag/schema': workspace:^1.1.0
       '@rxdrag/shared': workspace:*
@@ -419,7 +424,6 @@ importers:
       '@monaco-editor/react': registry.npmmirror.com/@monaco-editor/react/4.4.6_waewrrayshn643ztij6zbniufy
       '@rxdrag/react-antd-icons': link:../react-antd-icons
       '@rxdrag/react-core': link:../react-core
-      '@rxdrag/react-runner': link:../react-runner
       '@rxdrag/react-shared': link:../react-shared
       '@rxdrag/schema': link:../schema
       '@rxdrag/shared': link:../shared

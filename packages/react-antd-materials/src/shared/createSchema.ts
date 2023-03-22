@@ -1,12 +1,5 @@
 import { IBindParams } from "@rxdrag/react-runner";
 import { IControllerMeta, IFieldMeta, INodeSchema } from "@rxdrag/schema";
-import { backgroundSetter } from "../SettingsForm/schemas/backgroundSetter";
-import { borderRediusSetter } from "../SettingsForm/schemas/borderRediusSetter";
-import { borderSetter } from "../SettingsForm/schemas/borderSetter";
-import { displaySetter } from "../SettingsForm/schemas/displaySetter";
-import { fontStyleSetter } from "../SettingsForm/schemas/fontStyleSetter";
-import { martinStyleSetter } from "../SettingsForm/schemas/martinStyleSetter";
-import { paddingStyleSetter } from "../SettingsForm/schemas/paddingStyleSetter";
 import { createReactionSchema, LogicOptions } from "./createReactionSchema";
 
 export type SchemaOptions<IField = any, IReactions = any> = {
