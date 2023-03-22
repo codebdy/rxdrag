@@ -81,7 +81,7 @@ export const ComponentList = memo((
   const controllers = useAllControllers()
 
   return (
-    <div>
+    <>
       {
         controllers.map((ctrl, index) => {
           const controller: IControllerMeta = currentController?.id === ctrl.id ? currentController : ctrl
@@ -114,6 +114,6 @@ export const ComponentList = memo((
           )
         })
       }
-    </div>
+    </>
   )
 })

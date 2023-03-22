@@ -59,10 +59,12 @@ export const Toolbox = memo((props: {
             )
           })
         }
-        {
-          children
-        }
+        <Panel header={t('$componentControl')} key="componentControl">
+          {
+            children
+          }
+        </Panel>
       </Collapse>
-    </StyledToolbox>
+    </StyledToolbox >
   )
 })
