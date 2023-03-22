@@ -1,4 +1,4 @@
-import { LoopPanelProps } from "expamples/ant5/components/displays/LoopPanel";
+import { LoopPanelProps } from "@rxdrag/react-antd-components";
 import { forwardRef, memo } from "react"
 
 

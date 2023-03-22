@@ -2,7 +2,7 @@ import { RXID_ATTR_NAME, RX_NODE_TYPE_ATTR_NAME, NodeType, RX_STATUS_ATTR_NAME, 
 import { FieldProps } from "@rxdrag/react-antd-components"
 import { ID } from "@rxdrag/shared"
 import { Form } from "antd"
-import React, { memo, CSSProperties } from "react"
+import React, { memo } from "react"
 
 export type FieldDesignerProps = FieldProps &{
   [RXID_ATTR_NAME]: ID,

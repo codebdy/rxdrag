@@ -1,7 +1,7 @@
 import { RXID_ATTR_NAME } from "@rxdrag/core";
+import { DialogProps } from "@rxdrag/react-antd-components";
 import { useNode, useCurrentNode, useDesignerEngine, useDocument } from "@rxdrag/react-core";
 import { Modal } from "antd";
-import { DialogProps } from "components/popups/Dialog";
 import { forwardRef, memo, useCallback, useRef, useState } from "react"
 import { CloseButton } from "../../CloseButton";
 import { PopupButton } from "../../PopupButton";

@@ -1,4 +1,4 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { createSchema } from "@rxdrag/react-antd-materials";
+import { createSchema } from "../../../shared";
 
 export const boxSchema: INodeSchema = createSchema()

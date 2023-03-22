@@ -1,5 +1,6 @@
+import { TableProps } from "@rxdrag/react-antd-components";
 import { useNode, useTreeNodes, ComponentDesignerView } from "@rxdrag/react-core";
-import { Table, TableProps } from "antd";
+import { Table } from "antd";
 import { forwardRef, memo, useMemo } from "react"
 
 export const TableDesigner = memo(forwardRef<HTMLDivElement>((
@@ -27,7 +28,7 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
       dataSource={[{ key: "1" }]}
       pagination={pagination === false ? pagination : { position: pagination && [pagination] }}
       {...other}
-      summary={(pageData) => {
+      summary={(_pageData) => {
         return (
           summary
         );

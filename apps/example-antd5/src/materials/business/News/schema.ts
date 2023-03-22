@@ -1,4 +1,4 @@
-import { createSchema } from "@rxdrag/react-antd-materials";
+import { createSchema } from "../../../shared";
 import { INodeSchema } from "@rxdrag/schema";
 
 export const newsSchema: INodeSchema = createSchema()
