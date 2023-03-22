@@ -2,7 +2,6 @@ import { AbstractReaction, IReactionFactoryOptions } from "@rxdrag/minions";
 import { IConfigMeta, IReactionMeta, ReactionFactory } from "@rxdrag/schema";
 import { message } from "antd";
 
-
 export enum MessageType {
   Success = "success",
   Error = "error",

@@ -1,6 +1,6 @@
 import { forwardRef, memo, useCallback } from "react"
 import { Rate as AntdRate } from "antd"
-import { isFunction } from "lodash"
+import { isFn } from "@rxdrag/shared"
 
 export type RateProps = {
   disabled?: boolean
@@ -9,7 +9,7 @@ export type RateProps = {
 export const RateDesigner = memo(forwardRef<HTMLInputElement>((props: RateProps, ref) => {
   const { ...other } = props;
   const handleRefChange = useCallback((rate: any | null) => {
-    if(isFunction(ref) && rate){
+    if(isFn(ref) && rate){
       ref(rate.rate)
     }
   }, [ref])

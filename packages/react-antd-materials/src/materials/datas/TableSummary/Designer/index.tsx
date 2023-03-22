@@ -1,5 +1,5 @@
+import { isFn } from "@rxdrag/shared";
 import { Table } from "antd"
-import { isFunction } from "lodash";
 import { forwardRef, memo, useCallback } from "react"
 import { PlaceHolder } from "./PlaceHolder";
 
@@ -9,7 +9,7 @@ export const TableSummaryDesigner = memo(forwardRef<HTMLDivElement>((props: { ch
   const { children, ...other } = props;
 
   const handleRefChange = useCallback((element: HTMLElement | null) => {
-    if (isFunction(ref)) {
+    if (isFn(ref)) {
       ref(element?.parentElement)
     }
   }, [ref])

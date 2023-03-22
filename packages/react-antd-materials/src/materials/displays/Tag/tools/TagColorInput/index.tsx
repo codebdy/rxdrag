@@ -3,6 +3,7 @@ import { Button } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
 import { PredefinedColorInput } from "./PredefinedColorInput"
+import { ColorInput } from "@rxdrag/react-antd-props-inputs"
 
 const Container = styled.div`
   display: flex;

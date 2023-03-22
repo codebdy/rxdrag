@@ -1,9 +1,9 @@
 import React from "react"
 import { forwardRef, memo, useLayoutEffect } from "react"
 import { useNode } from "../hooks/useNode"
-import { isFunction } from "lodash"
 import { Callback, defaultCallback } from "./types"
 import { ReactComponent } from "@rxdrag/react-shared"
+import { isFn } from "@rxdrag/shared"
 
 export function forwardRefById(WrappedComponent: ReactComponent, callback: Callback = defaultCallback): ReactComponent {
 
@@ -11,7 +11,7 @@ export function forwardRefById(WrappedComponent: ReactComponent, callback: Callb
     const node = useNode()
     useLayoutEffect(() => {
       const element = node?.id ? document.getElementById(node?.id) : null
-      if (isFunction(ref)) {
+      if (isFn(ref)) {
         ref(callback(element)||null)
       }
 
