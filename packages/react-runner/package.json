@@ -25,6 +25,7 @@
     "@monaco-editor/react": "^4.4.6",
     "@reduxjs/toolkit": "^1.9.3",
     "@rxdrag/fieldy": "workspace:*",
+    "@rxdrag/locales": "workspace:^1.1.0",
     "@rxdrag/minions": "workspace:*",
     "@rxdrag/react-fieldy": "workspace:*",
     "@rxdrag/react-minions": "workspace:*",

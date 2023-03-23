@@ -15,14 +15,13 @@ import {
   ThemeMode,
   DraggedAttenuator,
 } from "@rxdrag/core";
-
 import { memo, useEffect, useRef, useState } from "react"
 import { DesignerEngineContext } from "./contexts";
 import { DesignRoot } from "./DesignRoot";
 import { IComponentMaterial } from "./interfaces";
 import { useComponentsFromMaterials } from "./hooks/useComponentsFromMaterials";
-import { PreviewRoot } from "@rxdrag/react-shared";
 import { LocalesContext } from "@rxdrag/react-locales";
+import { PreviewRoot } from "@rxdrag/react-runner"
 
 export interface DesignerProps {
   components?: IComponentMaterial[]

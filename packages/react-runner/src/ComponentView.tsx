@@ -7,7 +7,7 @@ import { withController } from "./hocs/withController"
 import { withBind } from "./hocs/withBind"
 import { IFieldMeta, INodeSchema } from "@rxdrag/schema"
 import { ID } from "@rxdrag/shared"
-import { usePreviewComponent } from "@rxdrag/react-shared"
+import { usePreviewComponent } from "./hooks"
 
 export interface IComponentRenderSchema extends INodeSchema<IFieldMeta<IBindParams>> {
   id: ID,

@@ -540,6 +540,7 @@ importers:
       '@rxdrag/core': workspace:*
       '@rxdrag/locales': workspace:*
       '@rxdrag/react-locales': workspace:*
+      '@rxdrag/react-runner': workspace:^1.1.0
       '@rxdrag/react-shared': workspace:*
       '@rxdrag/schema': workspace:*
       '@rxdrag/shared': workspace:*
@@ -561,6 +562,7 @@ importers:
       '@rxdrag/core': link:../core
       '@rxdrag/locales': link:../locales
       '@rxdrag/react-locales': link:../react-locales
+      '@rxdrag/react-runner': link:../react-runner
       '@rxdrag/react-shared': link:../react-shared
       '@rxdrag/schema': link:../schema
       '@rxdrag/shared': link:../shared
@@ -718,6 +720,7 @@ importers:
       '@monaco-editor/react': ^4.4.6
       '@reduxjs/toolkit': ^1.9.3
       '@rxdrag/fieldy': workspace:*
+      '@rxdrag/locales': workspace:^1.1.0
       '@rxdrag/minions': workspace:*
       '@rxdrag/react-fieldy': workspace:*
       '@rxdrag/react-minions': workspace:*
@@ -740,6 +743,7 @@ importers:
       '@monaco-editor/react': registry.npmmirror.com/@monaco-editor/react/4.4.6_waewrrayshn643ztij6zbniufy
       '@reduxjs/toolkit': registry.npmmirror.com/@reduxjs/toolkit/1.9.3_react@18.2.0
       '@rxdrag/fieldy': link:../fieldy
+      '@rxdrag/locales': link:../locales
       '@rxdrag/minions': link:../minions
       '@rxdrag/react-fieldy': link:../react-fieldy
       '@rxdrag/react-minions': link:../react-minions

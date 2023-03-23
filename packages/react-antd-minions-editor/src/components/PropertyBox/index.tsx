@@ -10,10 +10,9 @@ import { useGetMaterial } from "../../hooks/useGetMaterial"
 import { useSelectedNode } from "../../hooks/useSelectedNode"
 import { PortsInput } from "./PortsInput"
 import { VariableSelect } from "./VariableSelect"
-import { PreviewRoot } from "@rxdrag/react-shared"
 import { VirtualForm } from "@rxdrag/react-fieldy"
 import { useLocalesManager } from "@rxdrag/react-locales"
-import {ComponentRender} from "@rxdrag/react-runner"
+import { ComponentRender, PreviewRoot } from "@rxdrag/react-runner"
 import { JSONInput, ValueInput } from "@rxdrag/react-antd-props-inputs"
 
 const Title = styled.div`
@@ -52,8 +51,8 @@ export const PropertyBox = memo(() => {
     if (material?.schema) {
       //翻译
       return localesManager?.translateDesignerSchema('',
-          JSON.parse(JSON.stringify(material?.schema))
-        )||material?.schema
+        JSON.parse(JSON.stringify(material?.schema))
+      ) || material?.schema
     } else {
       return undefined
     }

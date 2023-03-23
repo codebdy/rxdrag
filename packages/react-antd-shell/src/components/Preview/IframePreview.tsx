@@ -2,6 +2,7 @@ import { useCallback, useMemo } from "react"
 import { memo } from "react"
 import { IDocument } from "@rxdrag/core";
 import { useDocumentViewTypeState, useDesignerEngine, CanvasShell } from "@rxdrag/react-core";
+import { PreviewRoot } from "@rxdrag/react-runner";
 
 export const IframePreview = memo((
   props: {

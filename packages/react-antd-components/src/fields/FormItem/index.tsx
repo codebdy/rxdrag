@@ -2,8 +2,7 @@ import React from "react"
 import { Form } from "antd";
 import { forwardRef, memo } from "react";
 import { useFieldPath } from "@rxdrag/react-fieldy";
-import { usePreviewComponents } from "@rxdrag/react-shared";
-import { useComponentSchema, ComponentView } from "@rxdrag/react-runner";
+import { useComponentSchema, ComponentView, usePreviewComponents } from "@rxdrag/react-runner";
 
 export const FormItem = memo(forwardRef<HTMLDivElement>((
   props: {
