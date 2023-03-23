@@ -1,10 +1,13 @@
-import { IControllerMeta, ILogicMetas, IReactionMaterial, ReactionMaterialCategory } from "@rxdrag/schema";
+import { IControllerMeta, ILogicMetas, IReactionMaterial } from "@rxdrag/schema";
 import React, { memo, ReactNode, useCallback, useMemo, useState } from "react"
 import styled from "styled-components";
 import { ControllerContext, ControllersContext } from "../contexts";
 import { ReactionMetaEditor } from "./ReactionMetaEditor"
 import { Members } from "./Members";
 import { Minions } from "@rxdrag/react-minions";
+import { LocalesContext } from "@rxdrag/react-locales";
+import { LocalesManager } from "@rxdrag/locales"
+import { minionsEditorLocales } from "../locales";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -34,9 +37,11 @@ export const ControllerMetaEditor = memo((
     controllerMetas: IControllerMeta[],
     materials: IReactionMaterial<ReactNode>[],
     toolbox?: React.ReactNode,
+    lang?: string,
   }
 ) => {
-  const { value, onChange, controllerMetas, materials, toolbox } = props
+  const { value, onChange, controllerMetas, materials, toolbox, lang } = props
+  const [localesManager] = useState(new LocalesManager(lang, minionsEditorLocales))
   const [selected, setSelected] = useState<string>()
   const handleMemberChange = useCallback((meta?: IControllerMeta) => {
     onChange?.(meta)
@@ -62,30 +67,32 @@ export const ControllerMetaEditor = memo((
   }, [onChange, selected, value])
 
   return (
-    <Minions materials={materials}>
-      <ControllersContext.Provider value={controllerMetas}>
-        <ControllerContext.Provider value={value}>
-          <SytledContent id="reactions-editor-container">
-            <LeftArea>
-              <Members
-                value={value}
-                selected={selected}
-                onSelect={setSelected}
-                onChange={handleMemberChange}
-              />
-            </LeftArea>
-            {
-              selected && value &&
-              <ReactionMetaEditor
-                key={selected}
-                metas={metas}
-                onChange={handleChange}
-                toolbox={toolbox}
-              />
-            }
-          </SytledContent>
-        </ControllerContext.Provider>
-      </ControllersContext.Provider>
-    </Minions>
+    <LocalesContext.Provider value={localesManager}>
+      <Minions materials={materials}>
+        <ControllersContext.Provider value={controllerMetas}>
+          <ControllerContext.Provider value={value}>
+            <SytledContent id="reactions-editor-container">
+              <LeftArea>
+                <Members
+                  value={value}
+                  selected={selected}
+                  onSelect={setSelected}
+                  onChange={handleMemberChange}
+                />
+              </LeftArea>
+              {
+                selected && value &&
+                <ReactionMetaEditor
+                  key={selected}
+                  metas={metas}
+                  onChange={handleChange}
+                  toolbox={toolbox}
+                />
+              }
+            </SytledContent>
+          </ControllerContext.Provider>
+        </ControllersContext.Provider>
+      </Minions>
+    </LocalesContext.Provider>
   )
 })

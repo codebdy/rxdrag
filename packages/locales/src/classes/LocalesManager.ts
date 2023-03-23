@@ -1,19 +1,23 @@
-import { ILocales, ILocalesManager } from "../interfaces";
 import { isArr, isObj, isStr } from "@rxdrag/shared";
 import _ from "lodash"
 import { INodeSchema } from "@rxdrag/schema";
+import { ILocales, ILocalesManager } from "../interfaces";
 
 export class LocalesManager implements ILocalesManager {
   locales: ILocales = {
   }
-  constructor(public lang: string) { }
+  constructor(public lang: string = "zh-CN", loacales?: ILocales) {
+    if (loacales) {
+      this.locales = loacales
+    }
+  }
 
   // setLanguage(lang: string): void {
   //   this.lang = lang
   // }
 
   getMessage(key: string): string | null {
-    return this.getValueByKey(this.locales[this.lang], key)
+    return this.getValueByKey(this.locales?.[this.lang], key)
   }
 
   getResouceMessage(key: string): string | null {
@@ -22,12 +26,12 @@ export class LocalesManager implements ILocalesManager {
   }
 
   getComponentMessage(componentName: string, key: string): string | null {
-    const currenLocales = this.locales[this.lang]?.components
-    return this.getValueByKey(currenLocales?.[componentName] || {},key)
+    const currenLocales = this.locales?.[this.lang]?.components
+    return this.getValueByKey(currenLocales?.[componentName] || {}, key)
   }
 
   getToolsMessage(key: string): string | null {
-    const currenLocales = this.locales[this.lang]?.tools
+    const currenLocales = this.locales?.[this.lang]?.tools
     return this.getValueByKey(currenLocales || {}, key)
   }
 
@@ -120,7 +124,7 @@ export class LocalesManager implements ILocalesManager {
     } else {
       const valueByMergedKey = locales[key]
       //处理这种情况：Layout.Header
-      if(valueByMergedKey){
+      if (valueByMergedKey) {
         return valueByMergedKey
       }
       return this.getValueByKey(locales[subKey] || {}, others.join("."))

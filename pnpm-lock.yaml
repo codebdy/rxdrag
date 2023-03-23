@@ -7309,7 +7309,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': registry.npmmirror.com/@babel/plugin-transform-react-jsx-source/7.19.6_@babel+core@7.21.3
       magic-string: registry.npmmirror.com/magic-string/0.27.0
       react-refresh: registry.npmmirror.com/react-refresh/0.14.0
-      vite: registry.npmmirror.com/vite/4.2.0
+      vite: registry.npmmirror.com/vite/4.2.0_less@4.1.3
     transitivePeerDependencies:
       - supports-color
     dev: true
