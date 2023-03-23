@@ -6,9 +6,9 @@ import {
   SelectedOutline,
   Toolbar,
   IDesignerEngine,
-  ActiveController, 
-  DragOverController, 
-  DragStopController, 
+  ActiveController,
+  DragOverController,
+  DragStopController,
   SelectionController,
   StartDragController,
   createEngine,
@@ -22,6 +22,7 @@ import { DesignRoot } from "./DesignRoot";
 import { IComponentMaterial } from "./interfaces";
 import { useComponentsFromMaterials } from "./hooks/useComponentsFromMaterials";
 import { PreviewRoot } from "@rxdrag/react-shared";
+import { LocalesContext } from "@rxdrag/react-locales";
 
 export interface DesignerProps {
   components?: IComponentMaterial[]
@@ -78,12 +79,14 @@ export const Designer = memo((props: DesignerProps) => {
   const { designComponents, previewComponents } = useComponentsFromMaterials(components)
 
   return (
-    <DesignerEngineContext.Provider value={engine}>
-      <DesignRoot components={designComponents}>
-        <PreviewRoot components={previewComponents}>
-          {children}
-        </PreviewRoot>
-      </DesignRoot >
-    </DesignerEngineContext.Provider>
+    <LocalesContext.Provider value={engine?.getLoacalesManager()}>
+      <DesignerEngineContext.Provider value={engine}>
+        <DesignRoot components={designComponents}>
+          <PreviewRoot components={previewComponents}>
+            {children}
+          </PreviewRoot>
+        </DesignRoot >
+      </DesignerEngineContext.Provider>
+    </LocalesContext.Provider>
   )
 })
