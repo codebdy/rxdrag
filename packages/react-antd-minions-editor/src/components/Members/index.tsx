@@ -114,7 +114,7 @@ export const Members = memo((
 
   return (
     <>
-      <Title><Text type="secondary">{t("ReactionsInput.events")}</Text></Title>
+      <Title><Text type="secondary">{t("events")}</Text></Title>
       <List>
         {
           value?.events?.map((event) => {
@@ -132,7 +132,7 @@ export const Members = memo((
         }
       </List>
       <Title>
-        <Text type="secondary">{t("ReactionsInput.reactions")}</Text>
+        <Text type="secondary">{t("reactions")}</Text>
         <Button
           size="small"
           type="text"
@@ -165,7 +165,7 @@ export const Members = memo((
         }
       </List>
       <Title>
-        <Text type="secondary">{t("ReactionsInput.variables")}</Text>
+        <Text type="secondary">{t("variables")}</Text>
         <Button size="small" type="text" icon={<PlusOutlined />} onClick={handleAddVariable}></Button>
       </Title>
       <List>
