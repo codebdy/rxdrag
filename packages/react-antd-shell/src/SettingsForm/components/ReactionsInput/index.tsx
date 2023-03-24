@@ -7,7 +7,7 @@ import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
 import { useControllerMetas } from "./hooks/useControllerMetas"
 import { Toolbox } from "./Toolbox"
-import { getAllMaterial } from "@rxdrag/react-minions-materials"
+import { getAllMaterial, reactionMaterialLocales } from "@rxdrag/react-minions-materials"
 
 export const ReactionsInput = memo((props: {
   events?: IEventMeta[]
@@ -123,6 +123,7 @@ export const ReactionsInput = memo((props: {
                 controllerMetas={controllers}
                 materials={getAllMaterial()}
                 toolbox={<Toolbox />}
+                locales = {reactionMaterialLocales}
               />
             }
           </Modal>

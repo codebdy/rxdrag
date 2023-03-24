@@ -1,12 +1,12 @@
 import { IControllerMeta, ILogicMetas, IReactionMaterial } from "@rxdrag/schema";
-import React, { memo, ReactNode, useCallback, useMemo, useState } from "react"
+import React, { memo, ReactNode, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
 import { ControllerContext, ControllersContext } from "../contexts";
 import { ReactionMetaEditor } from "./ReactionMetaEditor"
 import { Members } from "./Members";
 import { Minions } from "@rxdrag/react-minions";
 import { LocalesContext } from "@rxdrag/react-locales";
-import { LocalesManager } from "@rxdrag/locales"
+import { ILocales, LocalesManager } from "@rxdrag/locales"
 import { minionsEditorLocales } from "../locales";
 
 const SytledContent = styled.div`
@@ -38,10 +38,16 @@ export const ControllerMetaEditor = memo((
     materials: IReactionMaterial<ReactNode>[],
     toolbox?: React.ReactNode,
     lang?: string,
+    locales?:ILocales,
   }
 ) => {
-  const { value, onChange, controllerMetas, materials, toolbox, lang } = props
+  const { value, onChange, controllerMetas, materials, toolbox, lang , locales} = props
   const [localesManager] = useState(new LocalesManager(lang, minionsEditorLocales))
+
+  useEffect(()=>{
+    locales && localesManager.registerLocales(locales)
+  }, [localesManager, locales])
+
   const [selected, setSelected] = useState<string>()
   const handleMemberChange = useCallback((meta?: IControllerMeta) => {
     onChange?.(meta)

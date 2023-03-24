@@ -7,9 +7,7 @@ export class LocalesManager implements ILocalesManager {
   locales: ILocales = {
   }
   constructor(public lang: string = "zh-CN", loacales?: ILocales) {
-    if (loacales) {
-      this.locales = loacales
-    }
+    loacales && this.registerLocales(loacales)
   }
 
   // setLanguage(lang: string): void {
