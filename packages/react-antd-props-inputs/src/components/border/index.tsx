@@ -6,7 +6,7 @@ import cls from "classnames"
 import { SizeInput } from "../SizeInput"
 import { ColorInput } from "../ColorInput"
 import React from "react"
-import * as border from 'css-border-property'
+var border = require('css-border-property')
 
 export * from "./radius"
 
