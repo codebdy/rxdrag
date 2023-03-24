@@ -5,7 +5,7 @@ import { IReactionMaterial, IReactionMeta } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 
 export type ReactionResourceProps = {
-  children?: (onMouseDown: (() => void)) => ReactNode,
+  children?: (onMouseDown: ((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void)) => ReactNode,
   material: IReactionMaterial<React.ReactNode>,
 }
 
@@ -16,24 +16,22 @@ export const ReactionResource = memo((props: ReactionResourceProps) => {
   const dnd = useDnd()
   const getNodeConfig = useGetNodeConfig()
 
-  const startDragFn = useCallback(() => {
-    return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-      if (!graph) {
-        return;
-      }
-      const nodeMeta: IReactionMeta = {
-        id: createUuid(),
-        label: t(material.label),
-        type: material.reactionType,
-        materialName: material.name,
-        ...material.meta
-      }
-      const node = graph.createNode(getNodeConfig(nodeMeta));
-      dnd?.start(node, e.nativeEvent as any);
-    };
+  const handleDrag = useCallback((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (!graph) {
+      return;
+    }
+    const nodeMeta: IReactionMeta = {
+      id: createUuid(),
+      label: t(material.label),
+      type: material.reactionType,
+      materialName: material.name,
+      ...material.meta
+    }
+    const node = graph.createNode(getNodeConfig(nodeMeta));
+    dnd?.start(node, e.nativeEvent as any);
   }, [dnd, getNodeConfig, graph, t])
 
   return <>
-    {children?.(startDragFn)}
+    {children?.(handleDrag)}
   </>
 })

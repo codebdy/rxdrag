@@ -36,7 +36,6 @@ export const Toolbox = memo(() => {
                         }
                       }
                     </ReactionResource>
-
                   })
                 }
               </Row>
