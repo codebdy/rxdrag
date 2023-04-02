@@ -7,7 +7,7 @@ export interface IJointer {
   name: string;
   push: InputHandler;
   connect: (jointer: IJointer | InputHandler) => void;
-  disconnect: (jointer: IJointer | InputHandler) => void;
+  //disconnect: (jointer: IJointer | InputHandler) => void;
 }
 
 export interface IReaction {

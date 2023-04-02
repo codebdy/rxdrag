@@ -1,12 +1,14 @@
 import { InputHandler, IJointer } from "@rxdrag/schema";
 
 export class Jointer implements IJointer {
+  //出口
   private outlets: (IJointer | InputHandler)[] = []
 
   constructor(public id: string, public name: string) {
 
   }
 
+  //入口
   push: InputHandler = (inputValue?: any) => {
     for (const jointer of this.outlets) {
       if (typeof jointer === "function") {

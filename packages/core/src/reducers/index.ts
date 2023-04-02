@@ -1,3 +1,5 @@
+import { ID, NodesById, ThemeMode } from "../interfaces";
+import { IAction } from "../interfaces/action";
 import { DocumentByIdState, documentsById } from "./documentsById";
 import { State as StateIdState } from './stateId'
 import { reduce as stateId } from './stateId'
@@ -5,10 +7,8 @@ import { draggingNodes, DraggingNodesState } from './draggingNodes'
 import { DragOverState } from './dragOver'
 import { reduce as dragOver } from './dragOver'
 import { draggingResource, DraggingResourceState } from "./draggingResource";
-import { IAction } from "../interfaces/action";
 import { DefualtLang, lang } from "./lang";
 import { nodesById } from "./nodesById";
-import { ID, NodesById, ThemeMode } from "../interfaces";
 import { activedDocumentId } from "./activedDocumentId";
 import { themeMode } from "./themeMode";
 import { activedNodeId } from "./activedNodeId";

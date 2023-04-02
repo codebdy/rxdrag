@@ -26,20 +26,25 @@ export class GraphicalReaction implements IReaction {
     this.inputs = []
   }
 
+  //一个图的构建所有节点
   private constructReactions() {
     for (const reactionMeta of this.defineMeta.logicMetas?.reactions || []) {
       switch (reactionMeta.type) {
         case ReactionType.Start:
+          //start只有一个端口，所以name可以跟meta name一样
           this.inputs.push(new Jointer(reactionMeta.id, reactionMeta.name || "input"));
           break;
         case ReactionType.End:
+          //end 只有一个端口，所以name可以跟meta name一样
           this.outputs.push(new Jointer(reactionMeta.id, reactionMeta.name || "output"));
           break;
         case ReactionType.SingleReaction:
         case ReactionType.ControllerDefaultReaction:
         case ReactionType.ControllerReaction:
+          //拿到 material的目的是为了拿到上面的 reaction factory
           const material = this.getMaterial(reactionMeta.materialName)
           if (material?.reaction) {
+            //通过material上的 reation factory 生成reaction节点
             this.reactions.push(material.reaction(reactionMeta, this.options))
           }
           break;
@@ -47,6 +52,7 @@ export class GraphicalReaction implements IReaction {
     }
   }
 
+  //连接一个图的所有节点，把所有的jointer连起来
   private contructRelations() {
     for (const invokeMeta of this.defineMeta.logicMetas?.invokes || []) {
       let sourceJointer = this.inputs.find(jointer => jointer.id === invokeMeta.source.nodeId)
