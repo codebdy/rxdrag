@@ -43,7 +43,7 @@ export function fieldsReduer(state: FieldsState, action: IAction<any>): FieldsSt
   }
   
   const payload = action.payload as FieldActionPayload
-  let newState = state
+  const newState = state
 
   if (payload.path) {
     const filedState = newState[payload.path]
@@ -56,7 +56,7 @@ export function fieldsReduer(state: FieldsState, action: IAction<any>): FieldsSt
 }
 
 function makeFields(fieldSchemas: IFieldSchema[]) {
-  let flatFields: FieldsState = {}
+  const flatFields: FieldsState = {}
   for (const schema of fieldSchemas) {
     //没有name的一般都是辅助项目，除了fragement
     if (schema.name) {

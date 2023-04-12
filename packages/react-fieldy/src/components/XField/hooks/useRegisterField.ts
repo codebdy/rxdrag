@@ -10,7 +10,7 @@ export function useRegisterField(fieldMeta: IFieldMeta, initialValue?: any) {
 
   const form = useForm()
 
-  // 处理带点的name，比如：props.style.fontSize
+  // 处理带点的name，比如：props.style.fontSize， 返回：props, props.style, props.style.fontSize三个Field meta
   const fieldSchemas = useFieldSchemas(fieldMeta, parentPath)
 
   useEffect(() => {
@@ -20,6 +20,7 @@ export function useRegisterField(fieldMeta: IFieldMeta, initialValue?: any) {
         const field = form.registerField(fieldSchema)
         if (i === fieldSchemas.length - 1) {
           field.setInitialValue(initialValue)
+          //返回最后一个field，比如props.style.fontSize
           setField(field)
         }
       }
