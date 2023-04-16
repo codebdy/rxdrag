@@ -22,16 +22,14 @@ export const IframeCanvas = memo((
 
   const engine = useDesignerEngine()
 
-  if (ref && engine && ref.current?.contentWindow) {
-    if (ref.current.contentWindow) {
-      (ref.current.contentWindow as any)["engine"] = engine;
-      (ref.current.contentWindow as any)["doc"] = doc;
-    }
-  }
-
   const handleLoaded = useCallback(() => {
     const shell = engine?.getShell()
     if (ref.current && engine && ref.current.contentWindow) {
+      (ref.current.contentWindow as any)["engine"] = engine;
+      (ref.current.contentWindow as any)["doc"] = doc;
+      // 需要确认 iframe 加载完毕以后再渲染，实际顺序无法保证，所以通过 postMessage 来通知子窗口
+      ref.current.contentWindow.postMessage('iframeReady');
+
       shell?.removeCanvas(doc.id)
       const canvasImpl = new IFrameCanvasImpl(
         engine,
