@@ -7,6 +7,7 @@ import { CanvasResizeDriver, CanvasScrollDriver, DragDropDriver, MouseClickDrive
 import { MouseOverOutDriver, DragOverDriver, MouseUpDriver } from "@rxdrag/core";
 import { useDocumentViewTypeState } from "../../hooks/useDocumentViewTypeState";
 import { CanvasShell } from "../CanvasShell";
+import { EVENT_IFRAME_READY } from "./consts";
 
 export const IframeCanvas = memo((
   props: {
@@ -28,7 +29,7 @@ export const IframeCanvas = memo((
       (ref.current.contentWindow as any)["engine"] = engine;
       (ref.current.contentWindow as any)["doc"] = doc;
       // 需要确认 iframe 加载完毕以后再渲染，实际顺序无法保证，所以通过 postMessage 来通知子窗口
-      ref.current.contentWindow.postMessage('iframeReady');
+      ref.current.contentWindow.postMessage(EVENT_IFRAME_READY);
 
       shell?.removeCanvas(doc.id)
       const canvasImpl = new IFrameCanvasImpl(

@@ -1,0 +1,1 @@
+export const EVENT_IFRAME_READY = 'iframeReady'

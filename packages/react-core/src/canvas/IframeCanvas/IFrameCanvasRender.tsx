@@ -3,6 +3,7 @@ import { IComponents } from "@rxdrag/react-shared";
 import React, { useState } from "react"
 import { memo } from "react"
 import { CanvasRender } from "../CanvasRender"
+import { EVENT_IFRAME_READY } from "./consts";
 
 declare const window: Window & { engine?: IDesignerEngine, doc?: IDocument };
 
@@ -14,15 +15,15 @@ export const IFrameCanvasRender = memo((props: {
   const engine = window.engine
   const doc = window.doc
 
-  function receiveMessageFromIndex(event: MessageEvent) {
+  function receiveMessageFromParent(event: MessageEvent) {
     // 监听父窗口 ready 事件
-    if (event.data === 'iframeReady') {
+    if (event.data === EVENT_IFRAME_READY) {
       console.log('RXDrag: iframeReady');
       setReady(true);
     }
   }
 
-  window.addEventListener('message', receiveMessageFromIndex, false);
+  window.addEventListener('message', receiveMessageFromParent, false);
 
   return (
     doc && engine && !!ready ?
