@@ -1,2 +1,2 @@
-export * from "./createReactionSchema"
+export * from "./createControllerSchema"
 export * from "./createSchema"
