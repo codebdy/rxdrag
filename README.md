@@ -109,9 +109,9 @@ RxEditor已重启，基于模型驱动架构，插件式扩展。
 
 ## How do I fix CORS errors in development for a URL I am using in my project?
 
-# QQ群：957619750  
+## QQ群：957619750  
 
-# 微信群:  
+## 微信群:  
 <img src="https://github.com/rxdrag/rxeditor/blob/master/doc/images/wechatgroup6.jpg?raw=true" style="width:300px">
 
 In `apps/core/vite.config.ts`, configure your local API URL and the target API URL in the `server.proxy` object.
