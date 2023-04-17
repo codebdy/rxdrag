@@ -11,6 +11,7 @@
     "test"
   ],
   "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "test": "vitest"
   },
   "dependencies": {
@@ -21,7 +22,8 @@
     "redux": "^4.2.1"
   },
   "devDependencies": {
-    "vite": "^4.2.0"
+    "@rxdrag/eslint-config-custom": "workspace:*",
+    "@rxdrag/tsconfig": "workspace:*"
   },
   "peerDependencies": {
     "@types/node": "*",

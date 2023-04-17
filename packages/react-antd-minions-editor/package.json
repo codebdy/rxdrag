@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "build": "tsc && vite build"
   },
   "dependencies": {
@@ -34,6 +35,9 @@
     "styled-components": "^5.3.9"
   },
   "devDependencies": {
+    "eslint": "^7.32.0",
+    "@rxdrag/eslint-config-custom": "workspace:*",
+    "@rxdrag/tsconfig": "workspace:*",
     "@types/insert-css": "^2.0.1",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",

@@ -1,0 +1,19 @@
+{
+  "name": "@rxdrag/eslint-config-custom",
+  "author": "Water.Li",
+  "version": "1.1.0",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "dependencies": {
+    "eslint": "^8.29.0",
+    "prettier": "^2.5.1",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-turbo": "latest",
+    "eslint-plugin-cypress": "^2.12.1"
+  }
+}

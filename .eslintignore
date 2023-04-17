@@ -1,0 +1,7 @@
+node_modules/
+target/
+.next/
+build/
+dist/
+
+crates/*/tests/**
