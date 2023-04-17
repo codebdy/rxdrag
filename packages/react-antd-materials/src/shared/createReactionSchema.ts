@@ -6,72 +6,136 @@ export type LogicOptions = {
 }
 
 export function createReactionSchema(logicOptions?: LogicOptions) {
+  const reactionCollapse = [{
+    componentName: "CollapsePanel",
+    "x-field": {
+      type: "object",
+      name: "x-field.reaction",
+    },
+    props: {
+      title: "$fieldReaction"
+    },
+    children: [
+      {
+        componentName: "FormItem",
+        props: {
+          label: "$withBind",
+        },
+        children: [
+          {
+            componentName: "Switch",
+            "x-field": {
+              name: "withBind",
+              params: {
+                valuePropName: "checked",
+                withBind: true,
+              }
+            },
+          }
+        ]
+      },
+      {
+        componentName: "FormItem",
+        props: {
+          label: "$valuePropName",
+        },
+        children: [
+          {
+            componentName: "Input",
+            "x-field": {
+              name: "valuePropName",
+              params: {
+                withBind: true,
+              }
+            },
+          }]
+      },
+      {
+        componentName: "FormItem",
+        props: {
+          label: "$trigger",
+        },
+        children: [
+          {
+            componentName: "Input",
+            "x-field": {
+              name: "trigger",
+              params: {
+                withBind: true,
+              }
+            },
+          }]
+      },
+    ]
+  }]
   const bindCollapse = logicOptions?.canBindField
-    ? [{
-      componentName: "CollapsePanel",
-      "x-field": {
-        type: "object",
-        name: "x-field.params",
-        params: {
-          withBind: true,
-        }
+    ? [
+      {
+        componentName: "CollapsePanel",
+        "x-field": {
+          type: "object",
+          name: "x-field.params",
+          params: {
+            withBind: true,
+          }
+        },
+        props: {
+          title: "$fieldBind"
+        },
+        children: [
+          {
+            componentName: "FormItem",
+            props: {
+              label: "$withBind",
+            },
+            children: [
+              {
+                componentName: "Switch",
+                "x-field": {
+                  name: "withBind",
+                  params: {
+                    valuePropName: "checked",
+                    withBind: true,
+                  }
+                },
+              }
+            ]
+          },
+          {
+            componentName: "FormItem",
+            props: {
+              label: "$valuePropName",
+            },
+            children: [
+              {
+                componentName: "Input",
+                "x-field": {
+                  name: "valuePropName",
+                  params: {
+                    withBind: true,
+                  }
+                },
+              }]
+          },
+          {
+            componentName: "FormItem",
+            props: {
+              label: "$trigger",
+            },
+            children: [
+              {
+                componentName: "Input",
+                "x-field": {
+                  name: "trigger",
+                  params: {
+                    withBind: true,
+                  }
+                },
+              }]
+          },
+        ]
       },
-      props: {
-        title: "$fieldBind"
-      },
-      children: [
-        {
-          componentName: "FormItem",
-          props: {
-            label: "$withBind",
-          },
-          children: [
-            {
-              componentName: "Switch",
-              "x-field": {
-                name: "withBind",
-                params: {
-                  valuePropName: "checked",
-                  withBind: true,
-                }
-              },
-            }
-          ]
-        },
-        {
-          componentName: "FormItem",
-          props: {
-            label: "$valuePropName",
-          },
-          children: [
-            {
-              componentName: "Input",
-              "x-field": {
-                name: "valuePropName",
-                params: {
-                  withBind: true,
-                }
-              },
-            }]
-        },
-        {
-          componentName: "FormItem",
-          props: {
-            label: "$trigger",
-          },
-          children: [
-            {
-              componentName: "Input",
-              "x-field": {
-                name: "trigger",
-                params: {
-                  withBind: true,
-                }
-              },
-            }]
-        },
-      ]
-    },]
+    ]
     : []
   return [
     {
@@ -187,6 +251,7 @@ export function createReactionSchema(logicOptions?: LogicOptions) {
       ]
     },
     ...bindCollapse,
+    ...reactionCollapse,
     {
       componentName: "CollapsePanel",
       props: {

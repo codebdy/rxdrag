@@ -1,5 +1,3 @@
-import { reactionMaterialLocales } from "@rxdrag/react-minions-materials";
-
 export const settingLocales = {
   "zh-CN": {
     tools: {
@@ -60,6 +58,7 @@ export const settingLocales = {
       fragmentFields: "字段组合",
       fieldDefine: "字段定义",
       fieldBind: "字段绑定",
+      fieldReaction: "字段联动",
       valuePropName: "值属性",
       trigger: "触发属性",
       withBind: "绑定字段",
@@ -150,6 +149,7 @@ export const settingLocales = {
       fragmentFields: "Fields",
       fieldDefine: "Field Define",
       fieldBind: "Field Bind",
+      fieldReaction: "Field Reaction",
       valuePropName: "Value Prop",
       trigger: "Trigger",
       withBind: "With Bind",

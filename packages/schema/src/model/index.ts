@@ -24,9 +24,11 @@ export enum DisplayType {
 //表达式代码，格式：{{...}}
 export type Expression = string;
 
-export interface IModelMeta {
+export interface IReactionMeta {
+  //值
+  value?: unknown | Expression,
   //字段显示类型
-  display?: DisplayType | Expression
+  display?: DisplayType | Expression,
   //交互模式
   pattern?: PatternType | Expression,
   //可见
@@ -40,10 +42,12 @@ export interface IModelMeta {
 }
 
 //表单元数据
-export type IFormMeta = IModelMeta
+export type IFormMeta = {
+  reactionMeta?: IReactionMeta
+}
 
 //字段元数据
-export interface IFieldMeta<Params = unknown> extends IModelMeta {
+export interface IFieldMeta<Params = unknown> {
   //类型：对象、数组、常规、片段（name 为空）
   type?: FieldType;
   name?: string;
@@ -54,6 +58,8 @@ export interface IFieldMeta<Params = unknown> extends IModelMeta {
   //校验规则
   validateRules?: unknown;
   params?: Params;
+  //联动配置
+  reaction?: IReactionMeta;
   //下拉列表类组件的数据源
   dataSource?: unknown | Expression;
 }

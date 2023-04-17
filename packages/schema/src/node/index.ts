@@ -1,7 +1,6 @@
 export interface INodeMeta<
   IField = unknown,
-  INodeController = unknown,
-  IScripts = unknown
+  INodeController = unknown
 > {
   componentName: string;
   props?: {
@@ -10,8 +9,6 @@ export interface INodeMeta<
   'x-field'?: IField;
   //节点控制器，逻辑编排用
   'x-controller'?: INodeController;
-  //控制脚本
-  'x-scripts'?: IScripts;
   //锁定子控件
   locked?: boolean;
   //自己渲染，引擎不渲染
