@@ -14,8 +14,8 @@
     "@types/react-color": "^3.0.6",
     "@types/react-dom": "^18.0.11",
     "eslint": "^7.32.0",
-    "eslint-config-rxdrag": "workspace:*",
-    "tsconfig": "workspace:*",
+    "@rxdrag/eslint-config-custom": "workspace:*",
+    "@rxdrag/tsconfig": "workspace:*",
     "typescript": "^4.9.4"
   },
   "peerDependencies": {
