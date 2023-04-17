@@ -1,5 +1,5 @@
 {
-  "extends": "@rxdrag/tsconfig/vite.json",
+  "extends": "@rxdrag/tsconfig/react-library.json",
   "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }
