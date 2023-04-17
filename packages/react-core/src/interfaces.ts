@@ -1,0 +1,14 @@
+import { IComponentConfig } from "@rxdrag/core";
+import { ReactComponent} from "@rxdrag/react-shared";
+
+//export type ReactComponent = React.FC<any> | React.ComponentClass<any>
+
+export interface IComponentMaterial extends IComponentConfig<ReactComponent> {
+  //packageName?: string //npm包名 生成代码用
+  //resource?: IMaterialResource,
+  //slots用到的组件，值为true时，用缺省组件DefaultSlot, string时，存的是已经注册过的component resource名字
+  // slots?: {
+  //   [name: string]: IComponentMaterial | true | string | undefined
+  // },
+}
+
