@@ -112,6 +112,6 @@ RxEditor已重启，基于模型驱动架构，插件式扩展。
 QQ群：957619750  
 
 微信群 
-![微信群](https://github.com/rxdrag/rxeditor/blob/master/doc/images/wechatgroup6.jpg?raw=true)
+<img src="https://github.com/rxdrag/rxeditor/blob/master/doc/images/wechatgroup6.jpg?raw=true" style="width:200px">
 
 In `apps/core/vite.config.ts`, configure your local API URL and the target API URL in the `server.proxy` object.
