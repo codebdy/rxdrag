@@ -10,7 +10,7 @@ export const ColMaterial: IComponentMaterial = {
   component: AntdCol,
   designer: AntdCol,
   designerLocales: colLocales,
-  designerSchema: rowSchema,
+  propsSchema: rowSchema,
   resource: {
     name: "Col",
     icon: colIcon,

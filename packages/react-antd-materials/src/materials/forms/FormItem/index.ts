@@ -10,7 +10,7 @@ export const FormItemMaterial: IComponentMaterial = {
   component: Form.Item,
   designer: Form.Item,
   designerLocales: formItemLocales,
-  designerSchema: formItemSchema,
+  propsSchema: formItemSchema,
   resource: {
     name: name,
     icon: formItemIcon,

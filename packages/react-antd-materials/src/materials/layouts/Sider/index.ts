@@ -8,7 +8,7 @@ export const SiderMaterial: IComponentMaterial = {
   component: Sider,
   designer: Sider,
   designerLocales: siderLocales,
-  designerSchema: siderSchema,
+  propsSchema: siderSchema,
   behaviorRule: {
     draggable:false,
     droppable: true,

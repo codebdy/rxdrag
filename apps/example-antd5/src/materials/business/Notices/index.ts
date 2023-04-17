@@ -10,7 +10,7 @@ export const NoticesMaterial: IComponentMaterial = {
   component: Notices,
   designer: Notices,
   designerLocales: noticesLocales,
-  designerSchema: noticesSchema,
+  propsSchema: noticesSchema,
   resource: {
     name: name,
     icon: noticesIcon,

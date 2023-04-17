@@ -12,7 +12,7 @@ export const TooltipMaterial: IComponentMaterial = {
   component: Tooltip,
   designer: TooltipDesigner,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     //readOnly: true,
   },

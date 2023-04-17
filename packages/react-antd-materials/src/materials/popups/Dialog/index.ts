@@ -16,7 +16,7 @@ export const DialogMaterial: IComponentMaterial = {
   component: Dialog,
   designer: DialogDesigner,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     //readOnly: true,
   },

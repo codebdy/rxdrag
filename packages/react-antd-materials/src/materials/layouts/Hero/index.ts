@@ -10,7 +10,7 @@ export const HeroMaterial: IComponentMaterial = {
   component: Hero,
   designer: Hero,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   resource: {
     name: name,
     icon: icon,

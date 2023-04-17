@@ -10,7 +10,7 @@ export const LinkMaterial: IComponentMaterial = {
   component: Link,
   designer: Link,
   designerLocales: locales,
-  designerSchema: schema,
+  propsSchema: schema,
   resource: {
     name: name,
     icon: icon,

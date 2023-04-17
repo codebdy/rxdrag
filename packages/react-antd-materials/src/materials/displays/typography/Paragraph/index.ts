@@ -10,7 +10,7 @@ export const ParagraphMaterial: IComponentMaterial = {
   component: Paragraph,
   designer: Paragraph,
   designerLocales: locales,
-  designerSchema: schema,
+  propsSchema: schema,
   resource: {
     name: name,
     icon: icon,

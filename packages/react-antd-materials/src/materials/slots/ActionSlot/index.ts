@@ -8,7 +8,7 @@ export const ActionSlotMaterial: IComponentMaterial = {
   component: DefaultSlot,
   designer: DefaultSlot,
   designerLocales: locales,
-  designerSchema: slotSchema,
+  propsSchema: slotSchema,
   behaviorRule: {
     draggable: false,
     droppable: true,

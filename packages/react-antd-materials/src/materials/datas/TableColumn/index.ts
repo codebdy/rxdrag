@@ -11,7 +11,7 @@ export const TableColumnMaterial: IComponentMaterial = {
   component: TableColumn,
   designer: TableColumnDesigner,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     //readOnly: true,
   },

@@ -62,7 +62,7 @@ export interface ITreeNode {
   //设计时的属性，比如readOnly， open等
   designerProps?: IDesignerProps
   //用来编辑属性的schema
-  designerSchema?: INodeSchema
+  propsSchema?: INodeSchema
 }
 
 export interface NodeBehavior {

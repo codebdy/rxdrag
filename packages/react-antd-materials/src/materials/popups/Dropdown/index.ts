@@ -13,7 +13,7 @@ export const DropdownMaterial: IComponentMaterial = {
   component: Dropdown,
   designer: DropdownDesigner,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     //readOnly: true,
   },

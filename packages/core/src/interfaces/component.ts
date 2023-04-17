@@ -43,7 +43,7 @@ export interface IComponentConfig<ComponentType = unknown> {
   component: ComponentType,
   designer: ComponentType,
   behaviorRule?: IBehaviorRule
-  designerSchema?: INodeSchema
+  propsSchema?: INodeSchema
   designerLocales?: ILocales
   designerProps?: IDesignerProps
   resource?: IResource

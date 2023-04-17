@@ -13,7 +13,7 @@ export const HCFLayoutMaterial: IComponentMaterial = {
   component: HCFLayout,
   designer: HCFLayout,
   designerLocales: hCFLayoutLocales,
-  designerSchema: hCFLayoutSchema,
+  propsSchema: hCFLayoutSchema,
   resource: {
     name: name,
     icon: colIcon,

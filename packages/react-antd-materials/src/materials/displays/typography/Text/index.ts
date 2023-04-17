@@ -10,7 +10,7 @@ export const TextMaterial: IComponentMaterial = {
   component: Text,
   designer: Text,
   designerLocales: locales,
-  designerSchema: schema,
+  propsSchema: schema,
   resource: {
     name: name,
     icon: icon,

@@ -10,7 +10,7 @@ export const DatePickerMaterial: IComponentMaterial = {
   component: DatePicker,
   designer: forwardRefById(DatePicker, element => element?.parentElement?.parentElement),
   designerLocales: datePickerLocales,
-  designerSchema: datePickerSchema,
+  propsSchema: datePickerSchema,
   designerProps: {
     inputReadOnly: true,
     open: false,

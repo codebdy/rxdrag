@@ -10,7 +10,7 @@ export const FieldMaterial: IComponentMaterial = {
   component: Field,
   designer: FieldDesigner,
   designerLocales: fieldLocales,
-  designerSchema: fieldSchema,
+  propsSchema: fieldSchema,
   behaviorRule: {
     droppable: false,
     noPlaceholder: true,

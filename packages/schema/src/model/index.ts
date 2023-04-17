@@ -40,10 +40,10 @@ export interface IModelMeta {
 }
 
 //表单元数据
-export type IFormMeta  = IModelMeta
+export type IFormMeta = IModelMeta
 
 //字段元数据
-export interface IFieldMeta<Params = unknown> extends IModelMeta{
+export interface IFieldMeta<Params = unknown> extends IModelMeta {
   //类型：对象、数组、常规、片段（name 为空）
   type?: FieldType;
   name?: string;
@@ -54,4 +54,6 @@ export interface IFieldMeta<Params = unknown> extends IModelMeta{
   //校验规则
   validateRules?: unknown;
   params?: Params;
+  //下拉列表类组件的数据源
+  dataSource?: unknown | Expression;
 }

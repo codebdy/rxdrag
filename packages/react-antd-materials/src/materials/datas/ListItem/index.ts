@@ -11,7 +11,7 @@ export const ListItemMaterial: IComponentMaterial = {
   component: ListItem,
   designer: ListItem,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     //readOnly: true,
   },

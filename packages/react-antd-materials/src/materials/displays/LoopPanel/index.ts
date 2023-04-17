@@ -11,7 +11,7 @@ export const LoopPanelMaterial: IComponentMaterial = {
   component: LoopPanel,
   designer: LoopPanelDesigner,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
   },
   resource: {

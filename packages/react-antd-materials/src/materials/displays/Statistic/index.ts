@@ -10,7 +10,7 @@ export const StatisticMaterial: IComponentMaterial = {
   component: Statistic,
   designer: Statistic,
   designerLocales: statisticLocales,
-  designerSchema: staticSchema,
+  propsSchema: staticSchema,
   
   resource: {
     name: name,

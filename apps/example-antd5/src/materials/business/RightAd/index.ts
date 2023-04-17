@@ -10,7 +10,7 @@ export const RightAdMaterial: IComponentMaterial = {
   component: RightAd,
   designer: RightAd,
   designerLocales: rightAdLocales,
-  designerSchema: rightAdSchema,
+  propsSchema: rightAdSchema,
   resource: {
     name: name,
     icon: rightAdIcon,

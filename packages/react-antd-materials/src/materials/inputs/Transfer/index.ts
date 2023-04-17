@@ -10,7 +10,7 @@ export const TransferMaterial: IComponentMaterial = {
   component: Transfer,
   designer: Transfer,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
   },
   resource: {

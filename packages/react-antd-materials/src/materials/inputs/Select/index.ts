@@ -9,7 +9,7 @@ export const SelectMaterial: IComponentMaterial = {
   component: Select,
   designer: Select,
   designerLocales: selectLocales,
-  designerSchema: selectSchema,
+  propsSchema: selectSchema,
   designerProps: {
     open: false
   },

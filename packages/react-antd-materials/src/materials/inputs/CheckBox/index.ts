@@ -10,7 +10,7 @@ export const CheckboxMaterial: IComponentMaterial = {
   component: Checkbox,
   designer: Checkbox,
   designerLocales: checkboxLocales,
-  designerSchema: selectSchema,
+  propsSchema: selectSchema,
   designerProps: {
     //readOnly: true,
   },

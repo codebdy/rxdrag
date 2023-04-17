@@ -11,7 +11,7 @@ export const MentionsMaterial: IComponentMaterial = {
   component: Mentions,
   designer: Mentions,
   designerLocales: inputLocales,
-  designerSchema: inputNumberSchema,
+  propsSchema: inputNumberSchema,
   designerProps: {
     readOnly: true,
     style: {

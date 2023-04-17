@@ -10,7 +10,7 @@ export const AutoCompleteMaterial: IComponentMaterial = {
   component: AutoComplete,
   designer: AutoComplete,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     // readOnly: true,
     // inputReadOnly: true,

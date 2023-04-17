@@ -14,7 +14,7 @@ export const TwoColumnLayoutMaterial: IComponentMaterial = {
   component: TwoColumnLayout,
   designer: TwoColumnLayout,
   designerLocales: twoColumnLayoutLocales,
-  designerSchema: prosLayoutSchema,
+  propsSchema: prosLayoutSchema,
   resource: {
     name: name,
     icon: colIcon,

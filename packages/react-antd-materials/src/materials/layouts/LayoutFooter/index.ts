@@ -8,7 +8,7 @@ export const LayoutFooterMaterial: IComponentMaterial = {
   component: Layout.Footer,
   designer: Layout.Footer,
   designerLocales: footerLocales,
-  designerSchema: footerSchema,
+  propsSchema: footerSchema,
   behaviorRule: {
     draggable:false,
     droppable: true,

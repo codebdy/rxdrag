@@ -9,7 +9,7 @@ export const RowMaterial: IComponentMaterial = {
   component: AntdRow,
   designer: AntdRow,
   designerLocales: rowLocales,
-  designerSchema: rowSchema,
+  propsSchema: rowSchema,
   resource: {
     name: "Row",
     icon: rowIcon,

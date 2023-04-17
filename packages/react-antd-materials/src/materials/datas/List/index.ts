@@ -13,7 +13,7 @@ export const ListMaterial: IComponentMaterial = {
   component: List,
   designer: List,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     dataSource: { nodes: [{}] }
   },

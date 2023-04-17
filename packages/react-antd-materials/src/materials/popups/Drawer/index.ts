@@ -16,7 +16,7 @@ export const DrawerMaterial: IComponentMaterial = {
   component: Drawer,
   designer: DrawerDesigner,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     //readOnly: true,
   },

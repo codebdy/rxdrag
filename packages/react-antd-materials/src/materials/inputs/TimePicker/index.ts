@@ -10,7 +10,7 @@ export const TimePickerMaterial: IComponentMaterial = {
   component: TimePicker,
   designer: forwardRefById(TimePicker, element => element?.parentElement?.parentElement),
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
   },
   resource: {

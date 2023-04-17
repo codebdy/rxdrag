@@ -11,7 +11,7 @@ export const BoxMaterial: IComponentMaterial = {
   component: Box,
   designer: Box,
   designerLocales: boxLocales,
-  designerSchema: boxSchema,
+  propsSchema: boxSchema,
   resource: {
     name: name,
     icon: boxIcon,

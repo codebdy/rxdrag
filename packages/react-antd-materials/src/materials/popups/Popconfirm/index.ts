@@ -14,7 +14,7 @@ export const PopconfirmMaterial: IComponentMaterial = {
   component: Popconfirm,
   designer: PopconfirmDesigner,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     //readOnly: true,
   },

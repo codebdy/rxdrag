@@ -24,12 +24,12 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
   const lang = useLanguage()
   const { tools } = useDesignComponentsParams()
 
-  const designerSchema = useMemo(() => {
-    if (currentNode && currentNode.designerSchema) {
+  const propsSchema = useMemo(() => {
+    if (currentNode && currentNode.propsSchema) {
       //翻译
       return engine?.getLoacalesManager()
         .translateDesignerSchema(currentNode?.meta.componentName,
-          JSON.parse(JSON.stringify(currentNode.designerSchema))
+          JSON.parse(JSON.stringify(currentNode.propsSchema))
         )
     } else {
       return undefined
@@ -121,9 +121,9 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
                 }}
               >
                 {
-                  designerSchema &&
+                  propsSchema &&
                   <ComponentRender
-                    root={designerSchema}
+                    root={propsSchema}
                   />
                 }
               </Form>
