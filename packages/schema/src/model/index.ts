@@ -2,9 +2,13 @@ export type FieldType = 'object' | 'array' | 'normal' | 'fragment';
 
 
 export enum PatternType {
+  //可编辑
   editable = 'editable',
+  //禁用
   disabled = 'disabled',
+  //只读
   readOnly = 'readOnly',
+  //阅读模式，比如把input转成text，需要组件支持
   readPretty = 'readPretty'
 }
 
