@@ -1,6 +1,6 @@
 import { IReactionMeta } from './meta';
 
-export type InputHandler = (inputValue?: any) => void;
+export type InputHandler = (inputValue?: unknown) => void;
 
 export interface IJointer {
   id: string;

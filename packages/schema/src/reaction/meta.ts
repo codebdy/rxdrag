@@ -79,7 +79,7 @@ export interface IReactionDefineMeta {
 export interface IVariableDefineMeta {
   id: string;
   name: string;
-  defaultValue?: any;
+  defaultValue?: unknown;
 }
 
 // $form 虚拟表单，

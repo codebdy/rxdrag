@@ -1,11 +1,11 @@
 export interface INodeMeta<
-  IField = any,
-  INodeController = any,
-  IScripts = any
+  IField = unknown,
+  INodeController = unknown,
+  IScripts = unknown
 > {
   componentName: string;
   props?: {
-    [key: string]: any;
+    [key: string]: unknown;
   };
   'x-field'?: IField;
   //节点控制器，逻辑编排用
@@ -18,7 +18,7 @@ export interface INodeMeta<
   selfRender?: boolean;
 }
 
-export interface INodeSchema<IField = any, IReactions = any>
+export interface INodeSchema<IField = unknown, IReactions = unknown>
   extends INodeMeta<IField, IReactions> {
   //name?: string,
   //引用一段schema，ref赋值name，用于框架等分块编辑
