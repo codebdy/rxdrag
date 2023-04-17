@@ -18,8 +18,8 @@ export interface INodeMeta<
   selfRender?: boolean;
 }
 
-export interface INodeSchema<IField = unknown, IReactions = unknown>
-  extends INodeMeta<IField, IReactions> {
+export interface INodeSchema<IField = unknown, INodeController = unknown>
+  extends INodeMeta<IField, INodeController> {
   //name?: string,
   //引用一段schema，ref赋值name，用于框架等分块编辑
   //ref?: string,
