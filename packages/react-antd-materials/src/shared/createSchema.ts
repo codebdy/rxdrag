@@ -1,36 +1,8 @@
-import { IBindParams } from "@rxdrag/react-runner";
-import { IControllerMeta, IFieldMeta, INodeSchema } from "@rxdrag/schema";
+import { INodeSchema } from "@rxdrag/schema";
 import { createControllerSchema } from "./createControllerSchema";
 import { displaySetter, backgroundSetter, fontStyleSetter, martinStyleSetter, paddingStyleSetter, borderRediusSetter, borderSetter } from "./schemas";
-import { FieldOptions, createFieldSchema } from "./createFieldSchema";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type SchemaOptions<IField = any, IReactions = any> = {
-  propsSchemas?: INodeSchema<IField, IReactions>[],
-  slotsSchemas?: INodeSchema<IField, IReactions>[],
-  logicOptions?: FieldOptions,
-}
-
-export function attachFormItem(schemas?: INodeSchema<IFieldMeta<IBindParams>, IControllerMeta>[]): INodeSchema<IFieldMeta<IBindParams>, IControllerMeta>[] | undefined {
-  return schemas?.map(schema => ({
-    componentName: "FormItem",
-    props: {
-      label: schema?.["x-field"]?.label,
-    },
-    children: [
-      {
-        ...schema,
-        "x-field": {
-          ...schema?.["x-field"],
-          params: {
-            ...schema?.["x-field"]?.params,
-            withBind: schema?.["x-field"]?.params?.withBind === undefined ? true : schema?.["x-field"]?.params?.withBind
-          }
-        }
-      }
-    ],
-  }))
-}
+import { createFieldSchema } from "./createFieldSchema";
+import { SchemaOptions } from "./SchemaOptions";
 
 export type SlotsOption = {
   name: string,
@@ -49,14 +21,6 @@ export function createSlotsSchema(...options: SlotsOption[]) {
       }
     })
   })
-}
-
-export function withFormItem(options: SchemaOptions = {}) {
-  return {
-    ...options,
-    propsSchemas: attachFormItem(options.propsSchemas),
-    slotsSchemas: attachFormItem(options.slotsSchemas),
-  }
 }
 
 export function createSchema(options: SchemaOptions = {}): INodeSchema {

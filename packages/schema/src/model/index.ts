@@ -24,7 +24,7 @@ export enum DisplayType {
 //表达式代码，格式：{{...}}
 export type Expression = string;
 
-export interface IReactionMeta {
+export interface IReactionProps {
   //值
   value?: unknown | Expression,
   //字段显示类型
@@ -43,7 +43,7 @@ export interface IReactionMeta {
 
 //表单元数据
 export type IFormMeta = {
-  reactionMeta?: IReactionMeta
+  reactionProps?: IReactionProps
 }
 
 //字段元数据
@@ -59,7 +59,7 @@ export interface IFieldMeta<Params = unknown> {
   validateRules?: unknown;
   params?: Params;
   //联动配置
-  reaction?: IReactionMeta;
+  reactionProps?: IReactionProps;
   //下拉列表类组件的数据源
   dataSource?: unknown | Expression;
 }
