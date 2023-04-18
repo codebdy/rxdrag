@@ -29,17 +29,17 @@ export interface IReactionProps {
   value?: {
     value?: unknown,
     expression?: Expression,
-  },
+  } | Expression,
   //字段显示类型
   display?: {
     value?: DisplayType,
     expression?: Expression,
-  },
+  } | Expression,
   //交互模式
   pattern?: {
     value?: PatternType,
     expression?: Expression,
-  },
+  } | Expression,
   //可见
   // visible?: {
   //   value?: boolean,
@@ -49,17 +49,17 @@ export interface IReactionProps {
   hidden?: {
     value?: boolean,
     expression?: Expression,
-  },
+  } | Expression,
   //禁用
   disabled?: {
     value?: boolean,
     expression?: Expression,
-  },
+  } | Expression,
   //只读
   readonly?: {
     value?: boolean,
     expression?: Expression,
-  },
+  } | Expression,
 }
 
 //表单元数据
