@@ -7,7 +7,11 @@ export class PropExpression {
   public changedValue() {
     const $self = this.field;
     const $form = this.field.form;
-    new Function("return " + this.expression)()?.({ $self, $form })
-    return { value: "", changed: false }
+    const value = new Function("return " + this.expression)()?.({ $self, $form })
+    if (value !== this.previousValue) {
+      this.previousValue = value
+      return { value, changed: true }
+    }
+    return { undefined, changed: false }
   }
 }
