@@ -27,6 +27,6 @@ export const StatisticMaterial: IComponentMaterial = {
     ]
   },
   behaviorRule: {
-    noRef: true,
+    noRef: false,
   }
 }
