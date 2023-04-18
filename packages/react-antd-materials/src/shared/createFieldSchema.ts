@@ -60,6 +60,55 @@ export function createFieldSchema(logicOptions?: FieldOptions) {
       label: "$value",
       name: "value",
       valueInputSchema: {
+        componentName: "ValueInput",
+        "x-field": {
+          name: "value",
+          params: {
+            withBind: true,
+          }
+        },
+      },
+    },
+    {
+      label: "$display",
+      name: "display",
+      valueInputSchema: {
+        componentName: "Select",
+        props: {
+          style: {
+            flex: 1,
+          },
+          options: [
+            {
+              value: '',
+              label: '',
+            },
+            {
+              value: 'none',
+              label: 'none',
+            },
+            {
+              value: 'hidden',
+              label: 'hidden',
+            },
+            {
+              value: 'visible',
+              label: 'visible',
+            },
+          ],
+        },
+        "x-field": {
+          name: "value",
+          params: {
+            withBind: true,
+          }
+        },
+      },
+    },
+    {
+      label: "$visible",
+      name: "visible",
+      valueInputSchema: {
         componentName: "div",
         props: {
           style: {
@@ -69,35 +118,20 @@ export function createFieldSchema(logicOptions?: FieldOptions) {
         children: [
           {
             componentName: "Switch",
+            props: {
+              defaultChecked: true,
+            },
             "x-field": {
-              name: "withBind",
-              label: "$withBind",
+              name: "value",
               params: {
                 valuePropName: "checked",
+                withBind: true,
               }
             },
           }
         ]
       },
     },
-    {
-      label: "$display",
-      name: "display",
-      valueInputSchema: {
-        componentName: "Input",
-        props: {
-          style: {
-            flex: 1,
-          }
-        },
-        "x-field": {
-          name: "value",
-          params: {
-            withBind: true,
-          }
-        },
-      },
-    }
   ]
   const reactionCollapse = [{
     componentName: "CollapsePanel",

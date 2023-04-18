@@ -77,6 +77,12 @@ export const settingLocales = {
       editJson: "编辑 JSON",
       formatError: "格式错误",
 
+      pattern: "风格",
+      visible: "可见",
+      hidden: "隐藏",
+      disabled: "禁用",
+      readonly: "只读",
+
       IconInput: {
         DialogTitle: "选择图标",
         "Outlined": "线框风格",
@@ -167,6 +173,12 @@ export const settingLocales = {
       string: "String",
       editJson: "Edit JSON",
       formatError: "Format Error",
+
+      pattern: "Pattern",
+      visible: "Visible",
+      hidden: "Hidden",
+      disabled: "Disabled",
+      readonly: "Readonly",
 
       IconInput: {
         DialogTitle: "Select Icon",
