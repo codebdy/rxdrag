@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "@rxdrag/shared";
 import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_MODIFY, SET_FIELD_VALUE, SET_FORM_FLAT_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SET_MULTI_FIELD_VALUES } from "../actions";
@@ -6,7 +8,7 @@ import { reduce, State } from "../reducers";
 import { getChildFields } from "../funcs/path";
 import { FormImpl } from "./FormImpl";
 
-var idSeed = 0
+let idSeed = 0
 
 function makeId() {
   idSeed = idSeed + 1;
@@ -28,7 +30,8 @@ export class FieldyEngineImpl implements IFieldyEngine {
     this.store = makeStoreInstance(debugMode || false)
   }
 
-  createForm(options?: IFormProps): IForm {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  createForm(_options?: IFormProps): IForm {
     const name = makeId()
     this.dispatch({
       type: CREATE_FORM,
@@ -150,7 +153,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
     return this.store.subscribe(handleChange)
   }
 
-  setFieldIntialValue(formName: string, fieldPath: string, value: any): void {
+  setFieldIntialValue(formName: string, fieldPath: string, value: unknown): void {
     const payload: SetFieldValuePayload = {
       formName,
       path: fieldPath,
@@ -164,7 +167,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
     )
   }
 
-  setFieldValue(formName: string, fieldPath: string, value: any): void {
+  setFieldValue(formName: string, fieldPath: string, value: unknown): void {
     if (this.getFieldState(formName, fieldPath)?.meta.type === "object") {
       const value: any = {}
       this.getValue(formName, fieldPath, value, value)
@@ -195,7 +198,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
     }
   }
 
-  inputFieldValue(formName: string, fieldPath: string, value: any): void {
+  inputFieldValue(formName: string, fieldPath: string, value: unknown): void {
     this.dispatch(
       {
         type: SET_FIELD_MODIFY,
@@ -209,6 +212,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
   }
 
   //递归找出改变的字段
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private getValue(formName: string, fieldPath: string, value: any, allValues: any) {
     const fields = this.store.getState().forms[formName]?.fields
     if (!fields) {
@@ -223,7 +227,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
     }
   }
 
-  setFieldFragmentValue(formName: string, fieldPath: string, value: any): void {
+  setFieldFragmentValue(formName: string, fieldPath: string, value: object): void {
     const oldValue = this.getFieldValue(formName, fieldPath)
     this.setFieldValue(formName, fieldPath, oldValue ? { ...oldValue, ...value } : value)
   }
@@ -243,7 +247,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
     const fieldState = state.forms[formName]?.fields?.[fieldPath]
     if (fieldState) {
       if (fieldState.meta?.type === "object") {
-        const value = { ...fieldState.value }
+        const value = { ...fieldState.value as object } as any
         const fields = this.getSubFields(formName, fieldPath)
         for (const key of fields) {
           const subValue = this.getFieldValue(formName, key)
@@ -261,7 +265,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
         const fields = this.getSubFields(formName, fieldPath)
         //子字段不存在，可能没渲染完，直接返回value。因为列表根据初值动态增加字段
         //还有个问题，就是数组长度变化，这种情况要更新数组字段的全部值，后面数组编辑时，要留意数组值的整体更新
-        if (fields.length !== fieldState.value?.length) {
+        if (fields.length !== (fieldState.value as Array<unknown> | undefined)?.length) {
           return fieldState.value
         }
         for (const key of fields) {

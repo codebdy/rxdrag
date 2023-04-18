@@ -1,11 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ErrorListener, IField, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
 
 export class FieldImpl implements IField {
-  refCount: number = 1;
+  refCount = 1;
 
   constructor(private fieldy: IFieldyEngine, private form: IForm, private fieldPath: string) {
   }
-
 
   get value() {
     return this.fieldy.getFieldValue(this.form.name, this.fieldPath)
@@ -27,15 +27,15 @@ export class FieldImpl implements IField {
     throw new Error("Method not implemented.");
   }
 
-  setValue(value: any): void {
+  setValue(value: unknown): void {
     this.fieldy.setFieldValue(this.form.name, this.path, value)
   }
 
-  setInitialValue(value: any): void {
+  setInitialValue(value: unknown): void {
     this.fieldy.setFieldIntialValue(this.form.name, this.path, value)
   }
 
-  inpuValue(value: any): void {
+  inpuValue(value: unknown): void {
     this.fieldy.inputFieldValue(this.form.name, this.path, value)
   }
 
@@ -43,15 +43,15 @@ export class FieldImpl implements IField {
     throw new Error("Method not implemented.");
   }
 
-  onInit(listener: Listener): Unsubscribe {
+  onInit(_listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
 
-  onMount(listener: Listener): Unsubscribe {
+  onMount(_listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
 
-  onUnmount(listener: Listener): Unsubscribe {
+  onUnmount(_listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
 
@@ -62,16 +62,16 @@ export class FieldImpl implements IField {
     throw new Error("Method not implemented.");
   }
 
-  onValidateStart(listener: Listener): Unsubscribe {
+  onValidateStart(_listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
-  onValidateEnd(listener: Listener): Unsubscribe {
+  onValidateEnd(_listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
-  onValidateFailed(listener: ErrorListener): Unsubscribe {
+  onValidateFailed(_listener: ErrorListener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
-  onValidateSuccess(listener: Listener): Unsubscribe {
+  onValidateSuccess(_listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
 
