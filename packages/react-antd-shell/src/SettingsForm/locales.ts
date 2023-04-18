@@ -83,7 +83,7 @@ export const settingLocales = {
       hidden: "隐藏",
       disabled: "禁用",
       readonly: "只读",
-      readPretty:"阅读",
+      readPretty: "阅读",
 
       IconInput: {
         DialogTitle: "选择图标",
@@ -96,6 +96,9 @@ export const settingLocales = {
         "IconLib": "图标库",
         "Customized": "自定义"
       },
+      ExpressionInput: {
+        DialogTitle: "表达式编辑"
+      }
     }
   },
   'en-US': {
@@ -182,7 +185,7 @@ export const settingLocales = {
       hidden: "Hidden",
       disabled: "Disabled",
       readonly: "Readonly",
-      readPretty:"readPretty",
+      readPretty: "readPretty",
 
       IconInput: {
         DialogTitle: "Select Icon",
@@ -195,6 +198,9 @@ export const settingLocales = {
         "IconLib": "IconLib",
         "Customized": "Customized"
       },
+      ExpressionInput: {
+        DialogTitle: "Expression"
+      }
     }
   }
 }

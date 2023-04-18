@@ -28,17 +28,17 @@ export interface IReactionProps {
   //值
   value?: {
     value?: unknown,
-    expression?: Expression,
+    expression?: string,
   } | Expression,
   //字段显示类型
   display?: {
     value?: DisplayType,
-    expression?: Expression,
+    expression?: string,
   } | Expression,
   //交互模式
   pattern?: {
     value?: PatternType,
-    expression?: Expression,
+    expression?: string,
   } | Expression,
   //可见
   // visible?: {
@@ -48,17 +48,17 @@ export interface IReactionProps {
   //隐藏
   hidden?: {
     value?: boolean,
-    expression?: Expression,
+    expression?: string,
   } | Expression,
   //禁用
   disabled?: {
     value?: boolean,
-    expression?: Expression,
+    expression?: string,
   } | Expression,
   //只读
   readonly?: {
     value?: boolean,
-    expression?: Expression,
+    expression?: string,
   } | Expression,
 }
 

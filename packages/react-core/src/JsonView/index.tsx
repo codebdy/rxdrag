@@ -3,10 +3,7 @@ import { memo } from "react"
 import Editor from '@monaco-editor/react';
 import { useDocumentViewTypeState, useThemeMode, useDocument } from "../hooks";
 
-export const JsonView = memo((
-  props: {
-  }
-) => {
+export const JsonView = memo(() => {
   const doc = useDocument()
   const [viewType] = useDocumentViewTypeState(doc?.id)
   const themeMode = useThemeMode()
