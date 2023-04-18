@@ -6,7 +6,7 @@ import { useRegisterField } from "./hooks/useRegisterField"
 export const XField = memo((props: {
   fieldMeta: IFieldMeta,
   children?: React.ReactNode,
-  initialValue?: any,
+  initialValue?: unknown,
 }) => {
   const { fieldMeta, initialValue, children } = props
   const field = useRegisterField(fieldMeta, initialValue)

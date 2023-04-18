@@ -4,7 +4,7 @@ import { useFieldSchemas } from "./useFieldSchemas";
 import { IFieldMeta } from "@rxdrag/schema";
 import { useFieldPath, useForm } from "../../../hooks";
 
-export function useRegisterField(fieldMeta: IFieldMeta, initialValue?: any) {
+export function useRegisterField(fieldMeta: IFieldMeta, initialValue?: unknown) {
   const [field, setField] = useState<IField>()
   const parentPath = useFieldPath() || ""
 
