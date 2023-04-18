@@ -1,16 +1,101 @@
+import { IBindParams } from "@rxdrag/react-runner"
+import { INodeSchema, IFieldMeta, IControllerMeta } from "@rxdrag/schema"
 import { attachFormItem } from "./attachFormItem"
 
 export type FieldOptions = {
   canBindField?: boolean,
 }
 
-export function createFieldSchema(logicOptions?: FieldOptions) {
-  const reactionFields = [
-    {
-      componentName: "ExpressionInput",
+export interface IExpressionField {
+  label: string,
+  name: string,
+  valueInputSchema: INodeSchema<IFieldMeta<IBindParams>, IControllerMeta>,
+}
+
+export function transformExpresionField(expFields: IExpressionField[]) {
+  return expFields.map(expField => {
+    return {
+      componentName: "FormItem",
+      props: {
+        label: expField.label,
+      },
       "x-field": {
-        name: "value",
-        label: "$value",
+        name: expField.name,
+      },
+      children: [
+        {
+          componentName: "div",
+          props: {
+            style: {
+              display: "flex",
+              alignItems: "center",
+            }
+          },
+          children: [
+            expField.valueInputSchema,
+            {
+              componentName: "ExpressionInput",
+              props: {
+                style: {
+                  marginLeft: 8,
+                }
+              },
+              "x-field": {
+                name: "expression",
+                params: {
+                  withBind: true,
+                }
+              },
+            }
+          ]
+        }
+      ]
+    }
+  })
+}
+
+export function createFieldSchema(logicOptions?: FieldOptions) {
+  const reactionFields: IExpressionField[] = [
+    {
+      label: "$value",
+      name: "value",
+      valueInputSchema: {
+        componentName: "div",
+        props: {
+          style: {
+            flex: 1,
+          }
+        },
+        children: [
+          {
+            componentName: "Switch",
+            "x-field": {
+              name: "withBind",
+              label: "$withBind",
+              params: {
+                valuePropName: "checked",
+              }
+            },
+          }
+        ]
+      },
+    },
+    {
+      label: "$display",
+      name: "display",
+      valueInputSchema: {
+        componentName: "Input",
+        props: {
+          style: {
+            flex: 1,
+          }
+        },
+        "x-field": {
+          name: "value",
+          params: {
+            withBind: true,
+          }
+        },
       },
     }
   ]
@@ -23,7 +108,7 @@ export function createFieldSchema(logicOptions?: FieldOptions) {
     props: {
       title: "$fieldReaction"
     },
-    children: attachFormItem(reactionFields)
+    children: transformExpresionField(reactionFields)
   }]
 
   const bindFields = [

@@ -26,19 +26,40 @@ export type Expression = string;
 
 export interface IReactionProps {
   //值
-  value?: unknown | Expression,
+  value?: {
+    value?: unknown,
+    expression?: Expression,
+  },
   //字段显示类型
-  display?: DisplayType | Expression,
+  display?: {
+    value?: DisplayType,
+    expression?: Expression,
+  },
   //交互模式
-  pattern?: PatternType | Expression,
+  pattern?: {
+    value?: PatternType,
+    expression?: Expression,
+  },
   //可见
-  visible?: boolean | Expression
+  visible?: {
+    value?: boolean,
+    expression?: Expression,
+  },
   //隐藏
-  hidden?: boolean | Expression
+  hidden?: {
+    value?: boolean,
+    expression?: Expression,
+  },
   //禁用
-  disabled?: boolean | Expression
+  disabled?: {
+    value?: boolean,
+    expression?: Expression,
+  },
   //只读
-  readonly?: boolean | Expression
+  readonly?: {
+    value?: boolean,
+    expression?: Expression,
+  },
 }
 
 //表单元数据

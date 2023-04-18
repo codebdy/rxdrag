@@ -1,10 +1,13 @@
+import { FunctionOutlined } from "@ant-design/icons"
+import { Button } from "antd"
 import { memo } from "react"
 
-export const ExpressionInput = memo(()=>{
-  return(
-    <div>
-      ExpressionInput
-    </div>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const ExpressionInput = memo((props: any) => {
+  return (
+    <>
+      <Button icon={<FunctionOutlined />} {...props} />
+    </>
   )
 })
 

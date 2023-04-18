@@ -1,5 +1,5 @@
 import { CSSProperties, memo, useCallback, useMemo } from "react"
-import { Checkbox, Form, Input, InputNumber, Radio, Select, Slider, Switch } from 'antd';
+import { Checkbox, Form, Input, InputNumber, Radio, Select, Slider, Space, Switch } from 'antd';
 import { useDesignerEngine, useCurrentNode, useChangeNodeMeta, useLanguage, useDesignComponentsParams } from "@rxdrag/react-core";
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy";
 import { ComponentRender, PreviewRoot } from "@rxdrag/react-runner";
@@ -92,6 +92,7 @@ export const SettingsForm = memo(() => {
         ValueInput,
         JSONInput,
         ExpressionInput,
+        Space,
         ...tools,
       }}
       localesManager={engine?.getLoacalesManager()}
