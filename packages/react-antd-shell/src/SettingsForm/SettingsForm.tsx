@@ -4,7 +4,7 @@ import { useDesignerEngine, useCurrentNode, useChangeNodeMeta, useLanguage, useD
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy";
 import { ComponentRender, PreviewRoot } from "@rxdrag/react-runner";
 import { INodeMeta } from "@rxdrag/schema";
-import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput, BorderRadiusSetter, BorderSetter, CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, SizeInput, SlotSwitch, TabPanel, Tabs, TextAlignSelect, ValueInput } from "@rxdrag/react-antd-props-inputs";
+import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput, BorderRadiusSetter, BorderSetter, CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, ExpressionInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, SizeInput, SlotSwitch, TabPanel, Tabs, TextAlignSelect, ValueInput } from "@rxdrag/react-antd-props-inputs";
 import { ReactionsInput } from "./components";
 
 const propertiesStyle: CSSProperties = {
@@ -91,6 +91,7 @@ export const SettingsForm = memo(() => {
         EventInput,
         ValueInput,
         JSONInput,
+        ExpressionInput,
         ...tools,
       }}
       localesManager={engine?.getLoacalesManager()}
