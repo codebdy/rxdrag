@@ -3,8 +3,9 @@ import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { FixedValue } from "./reaction";
 import { fixedValueSchema } from "./schema";
+import { ReactNode } from "react";
 
-export const fixedValueMaterial: IReactionMaterial = {
+export const fixedValueMaterial: IReactionMaterial<ReactNode> = {
   name: "fixedValue",
   icon: fixedValueIcon,
   label: "$fixedValue",

@@ -13,11 +13,7 @@ const propertiesStyle: CSSProperties = {
   width: "100%",
 }
 
-export interface SettingsFormProps {
-  //children?: React.ReactNode
-}
-
-export const SettingsForm = memo((props: SettingsFormProps) => {
+export const SettingsForm = memo(() => {
   const engine = useDesignerEngine()
   const currentNode = useCurrentNode()
   const changeMeta = useChangeNodeMeta()
@@ -100,7 +96,7 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
       localesManager={engine?.getLoacalesManager()}
     >
       <Fieldy>
-        <div style={propertiesStyle} {...props}>
+        <div style={propertiesStyle}>
           {
             currentNode &&
             <VirtualForm

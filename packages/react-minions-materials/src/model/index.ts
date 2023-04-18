@@ -3,8 +3,9 @@ import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { readFieldValueMaterial } from "./readFieldValue";
 import { subscribeFieldMaterial } from "./subscribeField";
+import { ReactNode } from "react";
 
-export const dataModelReactions: IReactionMaterial[] = [
+export const dataModelReactions: IReactionMaterial<ReactNode>[] = [
   {
     name: "setFormValue",
     icon: formIcon,

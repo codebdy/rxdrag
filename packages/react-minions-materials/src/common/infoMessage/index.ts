@@ -4,8 +4,9 @@ import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { IInfoMessageConfig, InfoMessage } from "./reaction";
 import { infoMessageSchema } from "./schema";
+import { ReactNode } from "react";
 
-export const infoMessageMaterial: IReactionMaterial = {
+export const infoMessageMaterial: IReactionMaterial<ReactNode> = {
   name: "infoMessage",
   icon: infoIcon,
   label: "$infoMessage",

@@ -3,8 +3,9 @@ import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { Merge } from "./reaction";
 import { mergeSchema } from "./schema";
+import { ReactNode } from "react";
 
-export const mergeMaterial: IReactionMaterial = {
+export const mergeMaterial: IReactionMaterial<ReactNode> = {
   name: "merge",
   icon: mergeIcon,
   label: "$merge",

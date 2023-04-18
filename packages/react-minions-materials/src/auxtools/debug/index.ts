@@ -4,8 +4,9 @@ import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { Debug } from "./reaction";
 import { debugSchema } from "./schema";
+import { ReactNode } from "react";
 
-export const debugMaterial: IReactionMaterial = {
+export const debugMaterial: IReactionMaterial<ReactNode> = {
   name: "debug",
   icon: debugIcon,
   label: "$debug",

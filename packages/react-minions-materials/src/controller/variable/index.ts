@@ -5,8 +5,9 @@ import { ListenVariable } from "./ListenVariableReaction"
 import { ReadVariable } from "./ReadVariableReaction"
 import { variableSchema } from "./schema"
 import { IVariableConfig, SetVariable } from "./SetVariableReaction"
+import { ReactNode } from "react"
 
-export const setVariableMaterial: IReactionMaterial = {
+export const setVariableMaterial: IReactionMaterial<ReactNode> = {
   name: "setVariable",
   icon: setVariableIcon,
   label: "$setVariable",
@@ -27,7 +28,7 @@ export const setVariableMaterial: IReactionMaterial = {
   reaction: SetVariable,
 }
 
-export const listenVariableMaterial: IReactionMaterial = {
+export const listenVariableMaterial: IReactionMaterial<ReactNode> = {
   name: "listenVariable",
   icon: listenVariableIcon,
   label: "$listenVariable",
@@ -49,7 +50,7 @@ export const listenVariableMaterial: IReactionMaterial = {
 }
 
 
-export const readVariableMaterial: IReactionMaterial = {
+export const readVariableMaterial: IReactionMaterial<ReactNode> = {
   name: "readVariable",
   icon: variableIcon,
   label: "$readVariable",
