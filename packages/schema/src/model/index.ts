@@ -41,10 +41,10 @@ export interface IReactionProps {
     expression?: Expression,
   },
   //可见
-  visible?: {
-    value?: boolean,
-    expression?: Expression,
-  },
+  // visible?: {
+  //   value?: boolean,
+  //   expression?: Expression,
+  // },
   //隐藏
   hidden?: {
     value?: boolean,

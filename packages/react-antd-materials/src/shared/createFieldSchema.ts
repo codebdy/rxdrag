@@ -106,8 +106,8 @@ export function createFieldSchema(logicOptions?: FieldOptions) {
       },
     },
     {
-      label: "$visible",
-      name: "visible",
+      label: "$hidden",
+      name: "hidden",
       valueInputSchema: {
         componentName: "div",
         props: {
@@ -118,9 +118,6 @@ export function createFieldSchema(logicOptions?: FieldOptions) {
         children: [
           {
             componentName: "Switch",
-            props: {
-              defaultChecked: true,
-            },
             "x-field": {
               name: "value",
               params: {
