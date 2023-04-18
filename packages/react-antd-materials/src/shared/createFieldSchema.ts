@@ -106,8 +106,96 @@ export function createFieldSchema(logicOptions?: FieldOptions) {
       },
     },
     {
+      label: "$pattern",
+      name: "pattern",
+      valueInputSchema: {
+        componentName: "Select",
+        props: {
+          style: {
+            flex: 1,
+          },
+          options: [
+            {
+              value: '',
+              label: '',
+            },
+            {
+              value: 'editable',
+              label: '$editable',
+            },
+            {
+              value: 'disabled',
+              label: '$disabled',
+            },
+            {
+              value: 'readOnly',
+              label: '$readonly',
+            },
+            {
+              value: 'readPretty',
+              label: '$readPretty',
+            },
+          ],
+        },
+        "x-field": {
+          name: "value",
+          params: {
+            withBind: true,
+          }
+        },
+      },
+    },
+    {
       label: "$hidden",
       name: "hidden",
+      valueInputSchema: {
+        componentName: "div",
+        props: {
+          style: {
+            flex: 1,
+          }
+        },
+        children: [
+          {
+            componentName: "Switch",
+            "x-field": {
+              name: "value",
+              params: {
+                valuePropName: "checked",
+                withBind: true,
+              }
+            },
+          }
+        ]
+      },
+    },
+    {
+      label: "$disabled",
+      name: "disabled",
+      valueInputSchema: {
+        componentName: "div",
+        props: {
+          style: {
+            flex: 1,
+          }
+        },
+        children: [
+          {
+            componentName: "Switch",
+            "x-field": {
+              name: "value",
+              params: {
+                valuePropName: "checked",
+                withBind: true,
+              }
+            },
+          }
+        ]
+      },
+    },
+    {
+      label: "$readonly",
+      name: "readonly",
       valueInputSchema: {
         componentName: "div",
         props: {

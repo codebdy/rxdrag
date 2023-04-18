@@ -78,10 +78,12 @@ export const settingLocales = {
       formatError: "格式错误",
 
       pattern: "风格",
+      editable: "可编辑",
       visible: "可见",
       hidden: "隐藏",
       disabled: "禁用",
       readonly: "只读",
+      readPretty:"阅读",
 
       IconInput: {
         DialogTitle: "选择图标",
@@ -175,10 +177,12 @@ export const settingLocales = {
       formatError: "Format Error",
 
       pattern: "Pattern",
+      editable: "Editable",
       visible: "Visible",
       hidden: "Hidden",
       disabled: "Disabled",
       readonly: "Readonly",
+      readPretty:"readPretty",
 
       IconInput: {
         DialogTitle: "Select Icon",
