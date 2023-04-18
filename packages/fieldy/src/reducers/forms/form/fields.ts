@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-case-declarations */
 import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload, SetFormValuePayload, SET_FORM_FLAT_VALUE, SET_MULTI_FIELD_VALUES, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, FieldActionPayload } from "../../../actions";
 import { getChildFields, makePath } from "../../../funcs/path";
 import { FieldsState, FormValue, IAction, IFieldSchema } from "../../../interfaces";
 import { fieldReduce } from "./field";
 
-var idSeed = 1
+let idSeed = 1
 function makeId() {
   idSeed = idSeed + 1
   return "field-" + idSeed
 }
 
-export function fieldsReduer(state: FieldsState, action: IAction<any>): FieldsState {
+export function fieldsReduer(state: FieldsState, action: IAction<unknown>): FieldsState {
   switch (action.type) {
     case SET_FORM_FIELDS:
       const fields = makeFields((action.payload as SetFormFieldsPayload).fieldSchemas)
@@ -41,14 +43,14 @@ export function fieldsReduer(state: FieldsState, action: IAction<any>): FieldsSt
       return setFlatValues(state, flatValues)
     }
   }
-  
+
   const payload = action.payload as FieldActionPayload
   const newState = state
 
   if (payload.path) {
     const filedState = newState[payload.path]
     if (filedState) {
-      const fieldState = fieldReduce(filedState, action)
+      const fieldState = fieldReduce(filedState, action as IAction<FieldActionPayload>)
       return { ...newState, [payload.path]: fieldState }
     }
   }
@@ -101,7 +103,7 @@ function setFlatValues(state: FieldsState, flatValues: any = {}) {
   return Object.assign({}, state.fields, newFields)
 }
 
-function setInitialFlatValues(state: FieldsState, flatValues: any = {}):FieldsState {
+function setInitialFlatValues(state: FieldsState, flatValues: any = {}): FieldsState {
   const newFields = {} as FieldsState
   for (const key of Object.keys(state?.fields || {})) {
     const fieldState = state?.[key]
@@ -128,7 +130,7 @@ function patFlatValues(value: FormValue | undefined, allFields: FieldsState, par
     const path = prefix + meta.name
 
     flatValues[path] = value?.[meta.name]
-    const subValues = patFlatValues(value?.[meta.name], allFields, path)
+    const subValues = patFlatValues(value?.[meta.name] as FormValue | undefined, allFields, path)
     flatValues = { ...flatValues, ...subValues }
   }
   return flatValues

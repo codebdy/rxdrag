@@ -1,11 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { isStr } from "@rxdrag/shared";
 import { ErrorListener, FormState, IField, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
+import { PropExpression } from "./reaction/PropExpression";
+import assert from "assert";
 
 export class FieldImpl implements IField {
   refCount = 1;
+  expressions: PropExpression[] = []
 
   constructor(public fieldy: IFieldyEngine, public form: IForm, private fieldPath: string) {
     if (this.meta?.reactionMeta) {
+      this.makeExpressions();
       //初始化完成时，计算一次联动
       form.fieldy.subscribeToFormInitialized(form.name, this.handleFieldReaction)
       form.fieldy.subscribeToFormChange(form.name, this.handleFieldReaction)
@@ -80,11 +85,42 @@ export class FieldImpl implements IField {
     throw new Error("Method not implemented.");
   }
 
+  private makeExpressions() {
+    if (this.meta?.reactionMeta) {
+      for (const key in Object.keys(this.meta.reactionMeta)) {
+        const expresion = this.meta.reactionMeta[key]
+        const expressionText = (expresion as { expression?: string })?.expression
+        if (expressionText) {
+          this.expressions.push(new PropExpression(this, key, expressionText))
+        } else if (isStr(expresion)) {
+          let expressionText = expresion.trim()
+          if (expressionText.startsWith("{{") && expressionText.endsWith("}}")) {
+            expressionText = expressionText.replace(/^\{\{/, "").replace(/\}\}$/, "");
+          }
+          if (expressionText) {
+            this.expressions.push(new PropExpression(this, key, expressionText))
+          }
+        }
+      }
+    }
+  }
+
   /**
    * 表单变化响应函数：处理联动
    * @param form 
    */
   private handleFieldReaction = (form: FormState) => {
-    throw new Error("Not implement")
+    const updatedValues: { [key: string]: unknown } = {}
+    for(const expresion of this.expressions){
+      const {value, changed} = expresion.changedValue()
+      if(changed){
+        updatedValues[expresion.propName] = value
+      }
+    }
+    if(Object.keys(updatedValues).length > 0){
+      const oldFieldState = this.fieldy.getFieldState(this.form.name, this.fieldPath)
+      assert(oldFieldState, "FieldState is undefined!")
+      this.fieldy.setFieldState(this.form.name, {...oldFieldState, ...updatedValues})
+    }
   }
 }

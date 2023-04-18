@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "@rxdrag/shared";
-import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_MODIFY, SET_FIELD_VALUE, SET_FORM_FLAT_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SET_MULTI_FIELD_VALUES } from "../actions";
+import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_MODIFY, SET_FIELD_VALUE, SET_FORM_FLAT_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SET_MULTI_FIELD_VALUES, SetFieldStatePayload, SET_FIELD_STATE } from "../actions";
 import { FieldChangeListener, FieldsState, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValueChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Listener, Unsubscribe } from "../interfaces";
 import { reduce, State } from "../reducers";
 import { getChildFields } from "../funcs/path";
@@ -111,7 +111,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
   getFormState(name: string): FormState | undefined {
     return this.store.getState().forms[name]
   }
-  
+
   subscribeToFormInitialized(name: string, listener: FormChangeListener): Unsubscribe {
     invariant(typeof listener === 'function', 'listener must be a function.')
 
@@ -198,6 +198,21 @@ export class FieldyEngineImpl implements IFieldyEngine {
       )
     }
   }
+
+  setFieldState(formName: string, fieldState: FieldState): void {
+    const payload: SetFieldStatePayload = {
+      formName,
+      path: fieldState.path,
+      fieldState: fieldState
+    }
+    this.dispatch(
+      {
+        type: SET_FIELD_STATE,
+        payload: payload,
+      }
+    )
+  }
+
 
   inputFieldValue(formName: string, fieldPath: string, value: unknown): void {
     this.dispatch(
@@ -296,9 +311,9 @@ export class FieldyEngineImpl implements IFieldyEngine {
         return
       }
       previousState = nextState
-      if(nextState){
+      if (nextState) {
         listener(nextState)
-      }else{
+      } else {
         console.error("can not find form")
       }
     }

@@ -162,6 +162,7 @@ export interface IFieldyEngine {
   setFieldValue(formName: string, fieldPath: string, value: unknown): void
   setFieldFragmentValue(formName: string, fieldPath: string, value: unknown): void
   inputFieldValue(formName: string, fieldPath: string, value: unknown): void
+  setFieldState(formName: string, fieldState: FieldState): void
 
   //监测
   getForm(name: string): IForm | undefined

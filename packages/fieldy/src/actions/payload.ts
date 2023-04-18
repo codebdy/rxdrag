@@ -1,7 +1,7 @@
-import {  FormValue, IFieldSchema } from "../interfaces"
+import {  FieldState, FormValue, IFieldSchema } from "../interfaces"
 export interface FormActionPlayload {
   formName: string,
-  [key: string]: any,
+  [key: string]: unknown,
 }
 
 export interface FieldActionPayload extends FormActionPlayload {
@@ -25,5 +25,10 @@ export interface SetFormInitializedFlagPayload extends FormActionPlayload {
 }
 
 export interface SetFieldValuePayload extends FieldActionPayload {
-  value?: any
+  value?: unknown
 }
+
+export interface SetFieldStatePayload extends FieldActionPayload {
+  fieldState: FieldState
+}
+

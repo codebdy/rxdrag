@@ -60,6 +60,10 @@ export interface IFieldReactionMeta {
     value?: boolean,
     expression?: string,
   } | Expression,
+  [key: string]: {
+    value?: unknown,
+    expression?: string,
+  } | Expression | undefined,
 }
 
 //表单元数据
