@@ -111,7 +111,8 @@ export class FieldyEngineImpl implements IFieldyEngine {
   getFormState(name: string): FormState | undefined {
     return this.store.getState().forms[name]
   }
-  subscribeToFormInitialized(name: string, listener: Listener): Unsubscribe {
+  
+  subscribeToFormInitialized(name: string, listener: FormChangeListener): Unsubscribe {
     invariant(typeof listener === 'function', 'listener must be a function.')
 
     let previousState = this.store.getState().forms[name]
@@ -121,7 +122,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
         return
       }
       previousState = nextState
-      listener()
+      nextState && listener(nextState)
     }
 
     return this.store.subscribe(handleChange)
@@ -286,7 +287,23 @@ export class FieldyEngineImpl implements IFieldyEngine {
   }
 
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe {
-    throw new Error("Method not implemented.");
+    invariant(typeof listener === 'function', 'listener must be a function.')
+
+    let previousState = this.store.getState().forms[name]
+    const handleChange = () => {
+      const nextState = this.store.getState().forms[name]
+      if (nextState === previousState) {
+        return
+      }
+      previousState = nextState
+      if(nextState){
+        listener(nextState)
+      }else{
+        console.error("can not find form")
+      }
+    }
+
+    return this.store.subscribe(handleChange)
   }
 
   subscribeToFieldChange(formName: string, path: string, listener: FieldChangeListener): Unsubscribe {

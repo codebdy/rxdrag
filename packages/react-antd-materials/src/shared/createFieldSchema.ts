@@ -222,7 +222,7 @@ export function createFieldSchema(logicOptions?: FieldOptions) {
     componentName: "CollapsePanel",
     "x-field": {
       type: "object",
-      name: "x-field.reactionProps",
+      name: "x-field.reactionMeta",
     },
     props: {
       title: "$fieldReaction"

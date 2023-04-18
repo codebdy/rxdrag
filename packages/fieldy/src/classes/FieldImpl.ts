@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ErrorListener, IField, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
+import { ErrorListener, FormState, IField, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
 
 export class FieldImpl implements IField {
   refCount = 1;
 
-  constructor(private fieldy: IFieldyEngine, private form: IForm, private fieldPath: string) {
+  constructor(public fieldy: IFieldyEngine, public form: IForm, private fieldPath: string) {
+    if (this.meta?.reactionMeta) {
+      //初始化完成时，计算一次联动
+      form.fieldy.subscribeToFormInitialized(form.name, this.handleFieldReaction)
+      form.fieldy.subscribeToFormChange(form.name, this.handleFieldReaction)
+    }
   }
 
   get value() {
@@ -75,4 +80,11 @@ export class FieldImpl implements IField {
     throw new Error("Method not implemented.");
   }
 
+  /**
+   * 表单变化响应函数：处理联动
+   * @param form 
+   */
+  private handleFieldReaction = (form: FormState) => {
+    throw new Error("Not implement")
+  }
 }

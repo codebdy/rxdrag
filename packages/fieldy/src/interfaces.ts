@@ -106,6 +106,7 @@ export interface FormValue {
 }
 
 export interface IFormNode {
+  fieldy: IFieldyEngine
   initialValue?: unknown
   value?: unknown
   setValue(value: unknown): void
@@ -134,6 +135,7 @@ export interface IForm extends IFormNode {
 }
 
 export interface IField extends IFormNode {
+  form: IForm
   //引用数量
   refCount: number;
   meta?: IFieldMeta
@@ -173,7 +175,7 @@ export interface IFieldyEngine {
   subscribeToFieldChange(formName: string, path: string, listener: FieldChangeListener): Unsubscribe
   subscribeToFieldValueChange(formName: string, fieldPath: string, listener: FieldValueChangeListener): Unsubscribe
   subscribeToMultiFieldValueChange(formName: string, fieldPaths: string[], listener: FieldValuesChangeListener): Unsubscribe
-  subscribeToFormInitialized(formName: string, listener: Listener): Unsubscribe
+  subscribeToFormInitialized(formName: string, listener: FormChangeListener): Unsubscribe
 
   dispatch(action: IAction<FormActionPlayload>): void
 }

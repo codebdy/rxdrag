@@ -7,7 +7,7 @@ export class FormImpl implements IForm {
     [key: string]: IField | undefined
   } = {}
 
-  constructor(private fieldy: IFieldyEngine, public name: string) { }
+  constructor(public fieldy: IFieldyEngine, public name: string) { }
 
   initialValue?: unknown;
   get value() {
