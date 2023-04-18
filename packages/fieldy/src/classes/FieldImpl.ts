@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { isStr } from "@rxdrag/shared";
 import { ErrorListener, FormState, IField, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
-import { PropExpression } from "./reaction/PropExpression";
+import { PropExpression } from "./PropExpression";
 import assert from "assert";
 
 export class FieldImpl implements IField {

@@ -132,8 +132,6 @@ export interface IForm extends IFormNode {
   unregisterField(path: string): void
 
   getFieldState(fieldPath: string): FieldState | undefined
-
-  field(fieldPath: string):FieldState | undefined
 }
 
 export interface IField extends IFormNode {
