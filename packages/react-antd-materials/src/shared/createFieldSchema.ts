@@ -20,6 +20,7 @@ export function transformExpresionField(expFields: IExpressionField[]) {
         label: expField.label,
       },
       "x-field": {
+        type: "object",
         name: expField.name,
       },
       children: [
@@ -56,19 +57,20 @@ export function transformExpresionField(expFields: IExpressionField[]) {
 
 export function createFieldSchema(logicOptions?: FieldOptions) {
   const reactionFields: IExpressionField[] = [
-    {
-      label: "$value",
-      name: "value",
-      valueInputSchema: {
-        componentName: "ValueInput",
-        "x-field": {
-          name: "value",
-          params: {
-            withBind: true,
-          }
-        },
-      },
-    },
+    // 有可能会导致死循环，暂时不用value
+    // {
+    //   label: "$value",
+    //   name: "value",
+    //   valueInputSchema: {
+    //     componentName: "ValueInput",
+    //     "x-field": {
+    //       name: "value",
+    //       params: {
+    //         withBind: true,
+    //       }
+    //     },
+    //   },
+    // },
     {
       label: "$display",
       name: "display",

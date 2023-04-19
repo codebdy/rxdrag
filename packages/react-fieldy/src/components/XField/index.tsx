@@ -1,7 +1,8 @@
-import { IFieldMeta } from "@rxdrag/schema"
-import React, { memo } from "react"
+import { DisplayType, IFieldMeta } from "@rxdrag/schema"
+import React, { memo, useCallback, useEffect, useState } from "react"
 import { FieldContext } from "../../contexts"
 import { useRegisterField } from "./hooks/useRegisterField"
+import { FieldState } from "@rxdrag/fieldy"
 
 export const XField = memo((props: {
   fieldMeta: IFieldMeta,
@@ -9,12 +10,22 @@ export const XField = memo((props: {
   initialValue?: unknown,
 }) => {
   const { fieldMeta, initialValue, children } = props
+  const [hidden, setHidden] = useState(false);
   const field = useRegisterField(fieldMeta, initialValue)
+
+  const handleFieldChange = useCallback((fieldState: FieldState | undefined) => {
+    setHidden(fieldState?.hidden || fieldState?.display === DisplayType.hidden || fieldState?.display === DisplayType.none)
+  }, [])
+
+  useEffect(() => {
+    const unsub = field?.fieldy.subscribeToFieldChange(field.form.name, field.path, handleFieldChange)
+    return unsub
+  }, [field?.fieldy, field?.form.name, field?.path, handleFieldChange])
 
   return (
     <FieldContext.Provider value={field}>
       {
-        children
+        !hidden && children
       }
     </FieldContext.Provider>
   )

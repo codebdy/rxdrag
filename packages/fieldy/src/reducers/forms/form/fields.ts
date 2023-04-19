@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-case-declarations */
+import { isStr } from "@rxdrag/shared";
 import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload, SetFormValuePayload, SET_FORM_FLAT_VALUE, SET_MULTI_FIELD_VALUES, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, FieldActionPayload } from "../../../actions";
 import { getChildFields, makePath } from "../../../funcs/path";
 import { FieldsState, FormValue, IAction, IFieldSchema } from "../../../interfaces";
 import { fieldReduce } from "./field";
+import { DisplayType, Expression, PatternType } from "@rxdrag/schema";
 
 let idSeed = 1
 function makeId() {
@@ -68,7 +70,12 @@ function makeFields(fieldSchemas: IFieldSchema[]) {
         ...schema,
         basePath: schema.path.substring(0, schema.path.length - (schema.name?.length || 0) - 1),
         mounted: true,
-        meta: schema
+        meta: schema,
+        display: extractValue(schema?.reactionMeta?.display) as DisplayType | undefined,
+        pattern: extractValue(schema?.reactionMeta?.pattern) as PatternType | undefined,
+        hidden: extractValue(schema?.reactionMeta?.hidden) as boolean | undefined,
+        disabled: extractValue(schema?.reactionMeta?.disabled) as boolean | undefined,
+        readonly: extractValue(schema?.reactionMeta?.readonly) as boolean | undefined,
       }
     } else if (schema.type === 'fragment') {
       for (const fragMeta of schema.fragmentFields || []) {
@@ -87,6 +94,19 @@ function makeFields(fieldSchemas: IFieldSchema[]) {
   }
 
   return flatFields
+}
+
+function extractValue(expOrValue?: {
+  value?: unknown,
+  expression?: string,
+} | Expression) {
+  if (isStr(expOrValue)) {
+    if (expOrValue.trim().startsWith("{{")) {
+      return undefined
+    }
+  }
+
+  return (expOrValue as { value: unknown })?.value || expOrValue
 }
 
 function setFlatValues(state: FieldsState, flatValues: any = {}) {

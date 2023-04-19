@@ -7,7 +7,8 @@ import assert from "assert";
 export class FieldImpl implements IField {
   refCount = 1;
   expressions: PropExpression[] = []
-
+  //发起变化标号，防止无限递归
+  initiateExpressionChange = false;
   constructor(public fieldy: IFieldyEngine, public form: IForm, private fieldPath: string) {
     if (this.meta?.reactionMeta) {
       this.makeExpressions();
@@ -111,6 +112,11 @@ export class FieldImpl implements IField {
    */
   private handleFieldReaction = (form: FormState) => {
     const updatedValues: { [key: string]: unknown } = {}
+    if(this.initiateExpressionChange){
+      this.initiateExpressionChange = false;
+      return
+    }
+
     for(const expresion of this.expressions){
       const {value, changed} = expresion.changedValue()
       if(changed){
@@ -120,6 +126,7 @@ export class FieldImpl implements IField {
     if(Object.keys(updatedValues).length > 0){
       const oldFieldState = this.fieldy.getFieldState(this.form.name, this.fieldPath)
       assert(oldFieldState, "FieldState is undefined!")
+      this.initiateExpressionChange = true;
       this.fieldy.setFieldState(this.form.name, {...oldFieldState, ...updatedValues})
     }
   }

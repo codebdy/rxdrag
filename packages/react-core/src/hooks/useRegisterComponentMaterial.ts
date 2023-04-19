@@ -6,6 +6,8 @@ import { useLocalesManager } from "./useLocalesManager";
 import { useResourceManager } from "./useResourceManager";
 import { isStr } from "@rxdrag/shared"
 import { usePreviewComponents } from "@rxdrag/react-runner";
+import { ReactComponent } from "@rxdrag/react-shared";
+import { IComponentConfig } from "@rxdrag/core";
 
 export function useRegisterComponentMaterial() {
   const resourceManager = useResourceManager()
@@ -35,7 +37,7 @@ export function useRegisterComponentMaterial() {
       if (slotMaterial === true || slotMaterial === undefined || isStr(slotMaterial)) {
         continue
       }
-      register(slotMaterial, true)
+      register(slotMaterial as IComponentConfig<ReactComponent>, true)
     }
 
     registerDesignComponents(designers)

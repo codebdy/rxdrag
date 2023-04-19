@@ -70,6 +70,9 @@ export type FieldState = {
   visited?: boolean; //触发过 onFocus 则永远为 true
   display?: DisplayType;
   pattern?: PatternType;
+  hidden?: boolean;
+  disabled?: boolean;
+  readonly?: boolean;
   loading?: boolean;
   validating?: boolean;
   modified?: boolean;
@@ -141,6 +144,7 @@ export interface IField extends IFormNode {
   meta?: IFieldMeta
   basePath?: string
   path: string
+
   destory(): void
 }
 
