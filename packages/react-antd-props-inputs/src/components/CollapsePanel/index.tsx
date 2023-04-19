@@ -13,10 +13,11 @@ export const CollapsePanel = memo((
   }
 ) => {
   //要滤除onChange事件
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { title, children, defaultExpand, onChange, ...other } = props;
   return (
     <AntdCollapse ghost defaultActiveKey={defaultExpand ? ['1'] : undefined} expandIconPosition="end" {...other}>
-      <Panel header={title} key="1">
+      <Panel header={title} key="1" forceRender>
         {children}
       </Panel>
     </AntdCollapse>

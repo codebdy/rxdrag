@@ -225,6 +225,10 @@ export function createFieldSchema(fieldOptions?: FieldOptions) {
     "x-field": {
       type: "object",
       name: "x-field.reactionMeta",
+      reactionMeta: {
+        //$name的使用方式还有问题
+        hidden: "{{!$form.getField('x-field.name')}}"
+      }
     },
     props: {
       title: "$fieldReaction"

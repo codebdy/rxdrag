@@ -12,7 +12,7 @@ export class FieldImpl implements IField {
     if (this.meta?.reactionMeta) {
       this.makeExpressions();
       //初始化完成时，计算一次联动
-      form.fieldy.subscribeToFormInitialized(form.name, this.handleFieldReaction)
+      //form.fieldy.subscribeToFormInitialized(form.name, this.handleFieldReaction)
       form.fieldy.subscribeToFormChange(form.name, this.handleFieldReaction)
     }
   }
@@ -110,6 +110,9 @@ export class FieldImpl implements IField {
    * @param form 
    */
   private handleFieldReaction = (form: FormState) => {
+    // if(!form.initialized){
+    //   return
+    // }
     const updatedValues: { [key: string]: unknown } = {}
     if(this.initiateExpressionChange){
       this.initiateExpressionChange = false;

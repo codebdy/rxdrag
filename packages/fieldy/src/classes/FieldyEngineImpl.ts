@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "@rxdrag/shared";
-import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_MODIFY, SET_FIELD_VALUE, SET_FORM_FLAT_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SET_MULTI_FIELD_VALUES, SetFieldStatePayload, SET_FIELD_STATE } from "../actions";
+import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_MODIFY, SET_FIELD_VALUE, SET_FORM_FLAT_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SET_MULTI_FIELD_VALUES, SetFieldStatePayload, SET_FIELD_STATE, SET_FORM_INITIALZED_FLAG } from "../actions";
 import { FieldChangeListener, FieldsState, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValueChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Listener, Unsubscribe } from "../interfaces";
 import { reduce, State } from "../reducers";
 import { getChildFields } from "../funcs/path";
@@ -79,6 +79,14 @@ export class FieldyEngineImpl implements IFieldyEngine {
         value: value,
       }
     })
+
+    this.store.dispatch({
+      type: SET_FORM_INITIALZED_FLAG,
+      payload: {
+        formName: name,
+        initialized: true,
+      }
+    })
   }
 
   setFormValue(name: string, value: FormValue): void {
@@ -114,7 +122,6 @@ export class FieldyEngineImpl implements IFieldyEngine {
 
   subscribeToFormInitialized(name: string, listener: FormChangeListener): Unsubscribe {
     invariant(typeof listener === 'function', 'listener must be a function.')
-
     let previousState = this.store.getState().forms[name]
     const handleChange = () => {
       const nextState = this.store.getState().forms[name]
@@ -307,6 +314,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
     let previousState = this.store.getState().forms[name]
     const handleChange = () => {
       const nextState = this.store.getState().forms[name]
+
       if (nextState === previousState) {
         return
       }
