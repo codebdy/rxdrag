@@ -28,7 +28,7 @@ export class FormImpl implements IForm {
       field.refCount = field.refCount + 1
       return field
     } else {
-      if (fieldSchema.name) {
+      if (fieldSchema.name || fieldSchema.type === "fragment") {
         //这段代码可能需要重构未：如果已经存在Field定义，则合并
         if(!this.fieldy.getFieldState(this.name, fieldSchema.path)){
           this.fieldy.addFields(this.name, fieldSchema)

@@ -5,7 +5,6 @@ import { IFieldMeta } from "@rxdrag/schema"
 import { memo, useCallback, useEffect, useState } from "react"
 import { IBindParams } from "../interfaces"
 
-
 export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMeta<IBindParams>): ReactComponent {
 
   if (!fieldMeta?.params?.withBind) {
@@ -14,12 +13,12 @@ export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMet
 
   const propName = fieldMeta.params?.valuePropName || "value"
 
-  return memo((props: any) => {
-    const [value, setValue] = useState<any>(props?.value)
+  return memo((props: {value?:unknown}) => {
+    const [value, setValue] = useState<unknown>(props?.value)
     const field = useField()
 
     const trigger = fieldMeta.params?.trigger || "onChange"
-    const handleChange = useCallback((e?: { target?: { value?: any, [key: string]: any } }) => {
+    const handleChange = useCallback((e?: { target?: { value?: unknown, [key: string]: unknown } }) => {
       let newValue = e?.target?.[propName]
       if (newValue === undefined && !e?.target) {
         newValue = e
@@ -27,10 +26,9 @@ export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMet
       field?.inpuValue(newValue)
     }, [field])
 
-    const handleValueChange = useCallback((value: any) => {
+    const handleValueChange = useCallback((value: unknown) => {
       setValue(value)
     }, [])
-
     useEffect(() => {
       return field?.onValueChange(handleValueChange)
     }, [field, handleValueChange])
