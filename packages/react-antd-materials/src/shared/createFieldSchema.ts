@@ -55,7 +55,7 @@ export function transformExpresionField(expFields: IExpressionField[]) {
   })
 }
 
-export function createFieldSchema(logicOptions?: FieldOptions) {
+export function createFieldSchema(fieldOptions?: FieldOptions) {
   const reactionFields: IExpressionField[] = [
     // 有可能会导致死循环，暂时不用value
     // {
@@ -251,7 +251,7 @@ export function createFieldSchema(logicOptions?: FieldOptions) {
       },
     },
   ]
-  const bindCollapse = logicOptions?.canBindField
+  const bindCollapse = fieldOptions?.canBindField
     ? [
       {
         componentName: "CollapsePanel",

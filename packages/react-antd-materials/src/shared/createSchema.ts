@@ -24,7 +24,7 @@ export function createSlotsSchema(...options: SlotsOption[]) {
 }
 
 export function createSchema(options: SchemaOptions = {}): INodeSchema {
-  const { propsSchemas, slotsSchemas, logicOptions: fieldOptions } = options
+  const { propsSchemas, slotsSchemas, fieldOptions: fieldOptions } = options
   const propsTab = propsSchemas ? [{
     componentName: "TabPanel",
     "x-field": {

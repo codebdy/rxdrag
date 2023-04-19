@@ -5,5 +5,5 @@ import { FieldOptions } from "./createFieldSchema";
 export type SchemaOptions<IField = any, IReactions = any> = {
   propsSchemas?: INodeSchema<IField, IReactions>[];
   slotsSchemas?: INodeSchema<IField, IReactions>[];
-  logicOptions?: FieldOptions;
+  fieldOptions?: FieldOptions;
 };

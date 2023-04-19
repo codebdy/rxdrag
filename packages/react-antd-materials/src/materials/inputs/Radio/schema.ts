@@ -38,6 +38,9 @@ const options: SchemaOptions = {
         }
       ]
     },
-  ]
+  ],
+  fieldOptions: {
+    canBindField: true,
+  }
 }
 export const radioSchema: INodeSchema = createSchema(options)

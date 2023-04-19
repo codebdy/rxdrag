@@ -34,7 +34,7 @@ const options: SchemaOptions = {
       label: "$icon"
     }
   ),
-  logicOptions: {
+  fieldOptions: {
     canBindField: true,
   }
 }

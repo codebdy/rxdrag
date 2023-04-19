@@ -36,7 +36,7 @@ const options: SchemaOptions = {
     },
     ...typographySchema,
   ],
-  logicOptions: {
+  fieldOptions: {
     canBindField: true,
   }
 }

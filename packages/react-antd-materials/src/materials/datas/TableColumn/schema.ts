@@ -99,7 +99,7 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
       },
     },
   ],
-  logicOptions: {
+  fieldOptions: {
     canBindField: true,
   }
 }

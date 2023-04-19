@@ -21,7 +21,10 @@ const options: SchemaOptions = {
         }
       ]
     },
-  ]
+  ],
+  fieldOptions: {
+    canBindField: true,
+  }
 }
 
 export const materialSchema: INodeSchema = createSchema(options)
