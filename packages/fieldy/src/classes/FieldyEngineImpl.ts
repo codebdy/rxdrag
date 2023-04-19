@@ -332,7 +332,16 @@ export class FieldyEngineImpl implements IFieldyEngine {
           return value
         }
         return []
-      } else {//undefined or "normal"
+      } else if (fieldState.meta?.type === "fragment"){
+        const value = {} as any
+        for(const subfield of fieldState.meta.fragmentFields||[]){
+          if(subfield.name){
+            value[subfield.name] = this.getFieldValue(formName, fieldState.basePath + "." + subfield.name)
+          }
+        }
+
+        return value
+      }else {//undefined or "normal"
         return fieldState.value
       }
     }

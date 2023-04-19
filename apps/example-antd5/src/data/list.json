@@ -56,7 +56,16 @@
         },
         "content": {
           "componentName": "Layout.Content",
-          "props": {},
+          "props": {
+            "style": {
+              "display": "flex",
+              "flexDirection": "column",
+              "alignContent": "flex-start",
+              "justifyContent": "flex-start",
+              "alignItems": "flex-start",
+              "backgroundColor": "rgba(63,39,184,1)"
+            }
+          },
           "slots": {},
           "children": []
         },
