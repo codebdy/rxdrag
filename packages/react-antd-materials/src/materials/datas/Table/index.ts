@@ -2,7 +2,6 @@ import { Table } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
 import { FooterMaterial } from "../../common/Footer";
 import { HeaderMaterial } from "../../common/Header";
-import { ListItemMaterial } from "../ListItem";
 import { TableSummaryMaterial } from "../TableSummary";
 import { TableDesigner } from "./designer";
 import { icon } from "./icon";
@@ -27,39 +26,6 @@ export const TableMaterial: IComponentMaterial = {
       {
         componentName: name,
         slots: {
-          renderItem: {
-            componentName: "ListItem",
-            children: [
-              {
-                componentName: "ListItemMeta",
-                slots: {
-                  avatar: {
-                    componentName: "Avatar"
-                  },
-                  title: {
-                    componentName: "Text",
-                    props: {
-                      content: "Title"
-                    }
-                  },
-                  description: {
-                    componentName: "Text",
-                    props: {
-                      content: "Description"
-                    }
-                  },
-                }
-              }
-            ],
-            slots: {
-              actions: {
-                componentName: "ActionSlot"
-              },
-              extra: {
-                componentName: "ExtraSlot"
-              },
-            }
-          },
         },
         children: [
           {
@@ -86,7 +52,6 @@ export const TableMaterial: IComponentMaterial = {
     ]
   },
   slots: {
-    renderItem: ListItemMaterial,
     header: HeaderMaterial,
     footer: FooterMaterial,
     summary: TableSummaryMaterial,

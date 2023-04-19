@@ -176,17 +176,47 @@ export class FieldyEngineImpl implements IFieldyEngine {
   }
 
   setFieldValue(formName: string, fieldPath: string, value: unknown): void {
-    if (this.getFieldState(formName, fieldPath)?.meta.type === "object") {
-      const value: any = {}
-      this.getValue(formName, fieldPath, value, value)
+    const field = this.getFieldState(formName, fieldPath)
+    const fieldType = field?.meta.type
+    //这段代码还有问题
+    if (fieldType === "object") {
+      const allValue: any = {}
+      this.getValue(formName, fieldPath, value, allValue)
       const payload: SetFormValuePayload = {
         formName,
-        value: value
+        value: allValue
       }
 
       this.dispatch(
         {
           type: SET_MULTI_FIELD_VALUES,
+          payload: payload,
+        }
+      )
+    } else if (fieldType === "fragment") {
+      for(const name of Object.keys(value||{})){
+        const payload: SetFieldValuePayload = {
+          formName,
+          path: field?.basePath + "." + name,
+          value: (value as any)?.[name],
+        }
+        this.dispatch(
+          {
+            type: SET_FIELD_VALUE,
+            payload: payload,
+          }
+        )
+      }
+
+      //Fragment根节点值改变，来触发刷新
+      const payload: SetFieldValuePayload = {
+        formName,
+        path: field?.path||"",
+        value: value,
+      }
+      this.dispatch(
+        {
+          type: SET_FIELD_VALUE,
           payload: payload,
         }
       )
@@ -203,6 +233,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
           payload: payload,
         }
       )
+
     }
   }
 
@@ -446,20 +477,20 @@ export class FieldyEngineImpl implements IFieldyEngine {
     const prefix = basePath ? basePath + "." : ""
     const childFields = getChildFields(allFields, basePath)
     for (const field of childFields) {
-      // if (field.type === "fragment") {
-      //   for (const fragField of field.fragmentFields || []) {
-      //     if (fragField.name) {
-      //       const fieldPath = prefix + fragField.name
-      //       const subValue = flatValues[fieldPath]
-      //       if (subValue !== undefined) {
-      //         value[fragField.name] = subValue
-      //       }
-      //     } else {
-      //       console.error("No subfield name on fragment")
-      //     }
-      //   }
-      //   continue
-      // }
+      if (field.meta.type === "fragment") {
+        for (const fragField of field.meta.fragmentFields || []) {
+          if (fragField.name) {
+            const fieldPath = prefix + fragField.name
+            const subValue = flatValues[fieldPath]
+            if (subValue !== undefined) {
+              value[fragField.name] = subValue
+            }
+          } else {
+            console.error("No subfield name on fragment")
+          }
+        }
+        continue
+      }
 
       if (!field.name) {
         continue

@@ -25,28 +25,29 @@ export const DisplaySetter = memo((
   const { title, value, onChange } = props
 
   const [, token] = useToken()
+
   const handleDispalyChange = useCallback((e: RadioChangeEvent) => {
-    onChange?.({ ...value, display: e.target.value || undefined as any })
+    onChange?.({ ...value, display: e.target.value || undefined as unknown })
   }, [onChange, value])
 
   const handleDirectionChange = useCallback((e: RadioChangeEvent) => {
-    onChange?.({ ...value, flexDirection: e.target.value || undefined as any })
+    onChange?.({ ...value, flexDirection: e.target.value || undefined as unknown })
   }, [onChange, value])
 
   const handleWrapChange = useCallback((e: RadioChangeEvent) => {
-    onChange?.({ ...value, flexWrap: e.target.value || undefined as any })
+    onChange?.({ ...value, flexWrap: e.target.value || undefined as unknown })
   }, [onChange, value])
 
   const handleAlignContentChange = useCallback((e: RadioChangeEvent) => {
-    onChange?.({ ...value, alignContent: e.target.value || undefined as any })
+    onChange?.({ ...value, alignContent: e.target.value || undefined as unknown })
   }, [onChange, value])
 
   const handleJustifyContentChange = useCallback((e: RadioChangeEvent) => {
-    onChange?.({ ...value, justifyContent: e.target.value || undefined as any })
+    onChange?.({ ...value, justifyContent: e.target.value || undefined as unknown })
   }, [onChange, value])
 
   const handlealignItemsChange = useCallback((e: RadioChangeEvent) => {
-    onChange?.({ ...value, alignItems: e.target.value || undefined as any })
+    onChange?.({ ...value, alignItems: e.target.value || undefined as unknown })
   }, [onChange, value])
 
   return (
