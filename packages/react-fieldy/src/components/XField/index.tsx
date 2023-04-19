@@ -18,6 +18,10 @@ export const XField = memo((props: {
   }, [])
 
   useEffect(() => {
+    setHidden(field?.form.getFieldState(field.path)?.hidden || false)
+  }, [field?.form, field?.path])
+
+  useEffect(() => {
     const unsub = field?.fieldy.subscribeToFieldChange(field.form.name, field.path, handleFieldChange)
     return unsub
   }, [field?.fieldy, field?.form.name, field?.path, handleFieldChange])
