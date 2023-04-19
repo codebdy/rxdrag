@@ -2,7 +2,6 @@
 import { isStr } from "@rxdrag/shared";
 import { ErrorListener, FormState, IField, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
 import { PropExpression } from "./PropExpression";
-import assert from "assert";
 
 export class FieldImpl implements IField {
   refCount = 1;
@@ -88,13 +87,13 @@ export class FieldImpl implements IField {
 
   private makeExpressions() {
     if (this.meta?.reactionMeta) {
-      for (const key in Object.keys(this.meta.reactionMeta)) {
-        const expresion = this.meta.reactionMeta[key]
-        const expressionText = (expresion as { expression?: string })?.expression
+      for (const key of Object.keys(this.meta.reactionMeta)) {
+        const exobj = this.meta.reactionMeta[key]
+        const expressionText = (exobj as { expression?: string })?.expression
         if (expressionText) {
           this.expressions.push(new PropExpression(this, key, expressionText))
-        } else if (isStr(expresion)) {
-          let expressionText = expresion.trim()
+        } else if (isStr(exobj)) {
+          let expressionText = exobj.trim()
           if (expressionText.startsWith("{{") && expressionText.endsWith("}}")) {
             expressionText = expressionText.replace(/^\{\{/, "").replace(/\}\}$/, "");
           }
@@ -116,7 +115,6 @@ export class FieldImpl implements IField {
       this.initiateExpressionChange = false;
       return
     }
-
     for(const expresion of this.expressions){
       const {value, changed} = expresion.changedValue()
       if(changed){
@@ -125,9 +123,9 @@ export class FieldImpl implements IField {
     }
     if(Object.keys(updatedValues).length > 0){
       const oldFieldState = this.fieldy.getFieldState(this.form.name, this.fieldPath)
-      assert(oldFieldState, "FieldState is undefined!")
+      console.assert(oldFieldState, "FieldState is undefined!")
       this.initiateExpressionChange = true;
-      this.fieldy.setFieldState(this.form.name, {...oldFieldState, ...updatedValues})
+      oldFieldState && this.fieldy.setFieldState(this.form.name, {...oldFieldState, ...updatedValues})
     }
   }
 }

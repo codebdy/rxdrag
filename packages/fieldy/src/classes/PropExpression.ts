@@ -15,11 +15,20 @@ export class PropExpression {
         sbilings["$" + sibling.name] = this.field.form.getField(sibling.path);
       }
     }
-    const value = new Function("return " + this.expression)()?.({ $self, $form, ...sbilings })
-    if (value !== this.previousValue) {
-      this.previousValue = value
-      return { value, changed: true }
+    try{
+      const value = new Function("$self", "$form", ...Object.keys(sbilings) ,"return " + this.expression)(
+        $self,
+        $form,
+        ...Object.values(sbilings)
+      )
+      if (value !== this.previousValue) {
+        this.previousValue = value
+        return { value, changed: true }
+      }
+    }catch(e){
+      console.error(e)
     }
+
     return { undefined, changed: false }
   }
 }

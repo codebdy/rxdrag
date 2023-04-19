@@ -29,7 +29,7 @@ export const XField = memo((props: {
   return (
     <FieldContext.Provider value={field}>
       {
-        !hidden && children
+        hidden === false && children
       }
     </FieldContext.Provider>
   )

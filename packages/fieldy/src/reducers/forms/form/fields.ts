@@ -96,6 +96,11 @@ function makeFields(fieldSchemas: IFieldSchema[]) {
   return flatFields
 }
 
+type ExpressionObj = {
+  value?: unknown,
+  expression?: string,
+}
+
 function extractValue(expOrValue?: {
   value?: unknown,
   expression?: string,
@@ -104,9 +109,16 @@ function extractValue(expOrValue?: {
     if (expOrValue.trim().startsWith("{{")) {
       return undefined
     }
+    return expOrValue;
   }
-
-  return (expOrValue as { value: unknown })?.value || expOrValue
+  if (expOrValue?.expression) {
+    return expOrValue.value
+  }
+  const keys = Object.keys(expOrValue || {})
+  if (keys.find((key) => key === "value") || keys.find((key) => key === "expression")) {
+    (expOrValue as ExpressionObj)?.value
+  }
+  return keys.length == 0 ? undefined : expOrValue
 }
 
 function setFlatValues(state: FieldsState, flatValues: any = {}) {
