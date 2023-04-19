@@ -5,7 +5,7 @@ import { ComponentSchemaContext } from "./contexts"
 import { IBindParams } from "./interfaces"
 import { withController } from "./hocs/withController"
 import { withBind } from "./hocs/withBind"
-import { IFieldMeta, INodeSchema } from "@rxdrag/schema"
+import { IControllerMeta, IFieldMeta, INodeSchema } from "@rxdrag/schema"
 import { ID } from "@rxdrag/shared"
 import { usePreviewComponent } from "./hooks"
 
@@ -26,7 +26,7 @@ export const ComponentView = memo((
   const { node, ...other } = props
   const com = usePreviewComponent(node.componentName)
 
-  const Component = useMemo(() => com && withBind(withController(com, node["x-controller"]), node?.["x-field"]), [com, node]);
+  const Component = useMemo(() => com && withBind(withController(com, node["x-controller"] as IControllerMeta), node?.["x-field"]), [com, node]);
   const slots = useMemo(() => {
     const slts: { [key: string]: React.ReactElement } = {}
     for (const name of Object.keys(node?.slots || {})) {
@@ -46,7 +46,7 @@ export const ComponentView = memo((
         {
           Component &&
           (
-            !!node.children?.length ?
+            node.children?.length ?
               <Component {...node.props} {...slots} {...other}>
                 {
                   !node.selfRender && node.children?.map(child => {

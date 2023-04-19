@@ -8,7 +8,7 @@ export const ContentMaterial: IComponentMaterial = {
   component: Layout.Content,
   designer: Layout.Content,
   designerLocales: contentLocales,
-  designerSchema: contentSchema,
+  propsSchema: contentSchema,
   behaviorRule: {
     draggable:false,
     droppable: true,

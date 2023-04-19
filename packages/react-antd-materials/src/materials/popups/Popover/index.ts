@@ -13,7 +13,7 @@ export const PopoverMaterial: IComponentMaterial = {
   component: Popover,
   designer: PopoverDesigner,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     //readOnly: true,
   },

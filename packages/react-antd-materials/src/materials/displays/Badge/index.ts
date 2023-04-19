@@ -11,7 +11,7 @@ export const BadgeMaterial: IComponentMaterial = {
   component: Badge,
   designer: BadgeDesigner,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     //readOnly: true,
   },

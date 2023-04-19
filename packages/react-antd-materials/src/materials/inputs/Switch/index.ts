@@ -10,7 +10,7 @@ export const SwitchMaterial: IComponentMaterial = {
   component: Switch,
   designer: Switch,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     checked: false,
   },

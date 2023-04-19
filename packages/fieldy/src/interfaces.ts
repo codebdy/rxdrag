@@ -1,21 +1,21 @@
 import { Action } from "redux"
 import { FormActionPlayload } from "./actions"
-import {IFieldMeta} from "@rxdrag/schema"
+import { DisplayType, IFieldMeta, PatternType } from "@rxdrag/schema"
 
 export type Errors = {
-
+  message?: string
 }
 
 export type Listener = () => void
-export type ValueChangeListener = (value: any) => void
+export type ValueChangeListener = (value: unknown) => void
 export type ErrorListener = (errors: Errors) => void
 export type Unsubscribe = () => void
 
 export interface IFormProps {
-  value?: Object,	//表单值	Object	{}
-  initialValue?: Object, 	//表单默认值	Object	{}
-  pattern?: "editable" | "disabled" | "readOnly" | "readPretty", //	表单交互模式	
-  display?: "visible" | "hidden" | "none", //表单显隐	
+  value?: object,	//表单值	Object	{}
+  initialValue?: object, 	//表单默认值	Object	{}
+  pattern?: PatternType, //	表单交互模式	
+  display?: DisplayType, //表单显隐	
   hidden?: boolean, //	UI 隐藏	Boolean	true
   visible?: boolean, //	显示 / 隐藏(数据隐藏)	Boolean	true
   editable?: boolean, //	是否可编辑	Boolean	true
@@ -36,8 +36,7 @@ export interface IAction<Payload> extends Action<string> {
   payload?: Payload
 }
 
-export type FieldDisplayTypes = 'none' | 'hidden' | 'visible'
-export type FieldPatternTypes = 'editable' | 'disabled' | 'readOnly' | 'readPretty'
+
 export type FieldValidateStatus = 'error' | 'warning' | 'success' | 'validating'
 export interface IFieldFeedback {
   path?: string
@@ -53,8 +52,8 @@ export interface IFieldFeedback {
 }
 
 export type FieldChangeListener = (field: FieldState | undefined) => void
-export type FieldValueChangeListener = (value: any, previousValue: any) => void
-export type FieldValuesChangeListener = (values: any[], previousValues: any[]) => void
+export type FieldValueChangeListener = (value: unknown, previousValue: unknown) => void
+export type FieldValuesChangeListener = (values: unknown[], previousValues: unknown[]) => void
 export type FormChangeListener = (form: FormState) => void
 export type FormValueChangeListener = (value: FormValue) => void
 
@@ -69,15 +68,18 @@ export type FieldState = {
   unmounted?: boolean; //字段是否已卸载
   active?: boolean; //触发 onFocus 为 true，触发 onBlur 为 false
   visited?: boolean; //触发过 onFocus 则永远为 true
-  display?: FieldDisplayTypes;
-  pattern?: FieldPatternTypes;
+  display?: DisplayType;
+  pattern?: PatternType;
+  hidden?: boolean;
+  disabled?: boolean;
+  readonly?: boolean;
   loading?: boolean;
   validating?: boolean;
   modified?: boolean;
   required?: boolean;
-  value?: any;
-  defaultValue?: any;
-  initialValue?: any;
+  value?: unknown;
+  defaultValue?: unknown;
+  initialValue?: unknown;
   errors?: IFieldFeedback[];
   validateStatus?: FieldValidateStatus;
   meta: IFieldMeta
@@ -91,27 +93,28 @@ export type FormState = {
   mounted?: boolean; //字段是否已挂载
   unmounted?: boolean; //字段是否已卸载
   initialized?: boolean;
-  //display?: FieldDisplayTypes;
-  pattern?: FieldPatternTypes;
+  display?: DisplayType;
+  pattern?: PatternType;
   loading?: boolean;
   validating?: boolean;
   modified?: boolean;
   fields: FieldsState;
   fieldSchemas: IFieldSchema[];
-  initialValue?: any;
-  value?: any;
+  initialValue?: unknown;
+  value?: unknown;
 }
 
 export interface FormValue {
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export interface IFormNode {
-  initialValue?: any
-  value?: any
-  setValue(value: any): void
-  setInitialValue(value: any): void
-  inpuValue(value: any): void
+  fieldy: IFieldyEngine
+  initialValue?: unknown
+  value?: unknown
+  setValue(value: unknown): void
+  setInitialValue(value: unknown): void
+  inpuValue(value: unknown): void
   validate(): void
 
   onInit(listener: Listener): Unsubscribe
@@ -135,11 +138,13 @@ export interface IForm extends IFormNode {
 }
 
 export interface IField extends IFormNode {
+  form: IForm
   //引用数量
   refCount: number;
   meta?: IFieldMeta
   basePath?: string
   path: string
+
   destory(): void
 }
 
@@ -157,16 +162,17 @@ export interface IFieldyEngine {
   removeFields(formName: string, ...fieldPaths: string[]): void
 
   //field动作
-  setFieldIntialValue(formName: string, fieldPath: string, value: any): void
-  setFieldValue(formName: string, fieldPath: string, value: any): void
-  setFieldFragmentValue(formName: string, fieldPath: string, value: any): void
-  inputFieldValue(formName: string, fieldPath: string, value: any): void
+  setFieldIntialValue(formName: string, fieldPath: string, value: unknown): void
+  setFieldValue(formName: string, fieldPath: string, value: unknown): void
+  setFieldFragmentValue(formName: string, fieldPath: string, value: unknown): void
+  inputFieldValue(formName: string, fieldPath: string, value: unknown): void
+  setFieldState(formName: string, fieldState: FieldState): void
 
   //监测
   getForm(name: string): IForm | undefined
   getFormState(name: string): FormState | undefined
   getFieldState(formName: string, fieldPath: string): FieldState | undefined
-  getFieldValue(formName: string, fieldPath: string): any
+  getFieldValue(formName: string, fieldPath: string): unknown
   getFormValue(formName: string): FormValue
   getFormFlatValues(formName: string): FormValue
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe
@@ -174,7 +180,7 @@ export interface IFieldyEngine {
   subscribeToFieldChange(formName: string, path: string, listener: FieldChangeListener): Unsubscribe
   subscribeToFieldValueChange(formName: string, fieldPath: string, listener: FieldValueChangeListener): Unsubscribe
   subscribeToMultiFieldValueChange(formName: string, fieldPaths: string[], listener: FieldValuesChangeListener): Unsubscribe
-  subscribeToFormInitialized(formName: string, listener: Listener): Unsubscribe
+  subscribeToFormInitialized(formName: string, listener: FormChangeListener): Unsubscribe
 
   dispatch(action: IAction<FormActionPlayload>): void
 }

@@ -10,7 +10,7 @@ export const CardMaterial: IComponentMaterial = {
   component: Card,
   designer: Card,
   designerLocales: cardLocales,
-  designerSchema: cardSchema,
+  propsSchema: cardSchema,
   resource: {
     name: name,
     icon: colIcon,

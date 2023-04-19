@@ -87,7 +87,7 @@ export const ReactionsInput = memo((props: {
         <Switch checked={value?.enable} onChange={handleSwitchChange} />
       </Form.Item>
       {
-        value?.id &&
+        value?.id && value?.enable &&
         <>
           <Form.Item
             label={t("controllerName")}
@@ -101,7 +101,8 @@ export const ReactionsInput = memo((props: {
           </Form.Item>
 
           <Modal
-            title={`${t("configController")} - ${node?.meta["x-controller"]?.label || node?.title}`}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            title={`${t("configController")} - ${(node?.meta["x-controller"] as any)?.label || node?.title}`}
             open={isModalOpen}
             cancelText={t("cancel")}
             okText={t("confirm")}

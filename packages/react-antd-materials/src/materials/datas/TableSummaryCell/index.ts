@@ -12,7 +12,7 @@ export const TableCellMaterial: IComponentMaterial = {
   component: Table.Summary.Row,
   designer: Table.Summary.Row,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     dataSource: [{ key: "1" }]
   },

@@ -15,7 +15,7 @@ export const TableMaterial: IComponentMaterial = {
   component: Table,
   designer: TableDesigner,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
   },
   resource: {

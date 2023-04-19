@@ -11,7 +11,7 @@ export const ButtonMaterial: IComponentMaterial = {
   component: Button,
   designer: Button,
   designerLocales: buttonLocales,
-  designerSchema: buttonSchema,
+  propsSchema: buttonSchema,
   resource: {
     name: name,
     icon: buttonIcon,

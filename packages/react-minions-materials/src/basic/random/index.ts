@@ -4,8 +4,9 @@ import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { IRandomConfig, Random } from "./reaction";
 import { randomSchema } from "./schema";
+import { ReactNode } from "react";
 
-export const randomMaterial: IReactionMaterial = {
+export const randomMaterial: IReactionMaterial<ReactNode> = {
   name: "random",
   icon: randomIcon,
   label: "$random",

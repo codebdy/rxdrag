@@ -9,7 +9,7 @@ export const DialogTitleMaterial: IComponentMaterial = {
   component: DialogTitle,
   designer: DialogTitle,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     //readOnly: true,
   },

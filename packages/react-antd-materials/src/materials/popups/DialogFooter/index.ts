@@ -9,7 +9,7 @@ export const DialogFooterMaterial: IComponentMaterial = {
   component: DialogFooter,
   designer: DialogFooter,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     //readOnly: true,
   },

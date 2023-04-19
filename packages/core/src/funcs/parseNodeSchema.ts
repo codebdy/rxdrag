@@ -21,7 +21,7 @@ export function parseNodeSchema(engine: IDesignerEngine, documentId: ID, schema:
     rxProps: {
       [RXID_ATTR_NAME]: rxId,
     },
-    designerSchema: comDesigner?.designerSchema,
+    propsSchema: comDesigner?.propsSchema,
     designerProps: comDesigner?.designerProps,
     //designerParams: comDesigner?.designerParams,
     slots: {},

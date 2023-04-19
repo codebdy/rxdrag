@@ -9,7 +9,7 @@ export const DrawerFooterMaterial: IComponentMaterial = {
   component: DrawerFooter,
   designer: DrawerFooter,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     //readOnly: true,
   },

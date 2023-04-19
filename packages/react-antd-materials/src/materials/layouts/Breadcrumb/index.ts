@@ -10,7 +10,7 @@ export const BreadcrumbMaterial: IComponentMaterial = {
   component: Breadcrumb,
   designer: Breadcrumb,
   designerLocales: breadcrumbLocales,
-  designerSchema: breadcrumbSchema,
+  propsSchema: breadcrumbSchema,
   resource: {
     name: name,
     icon: breadcrumbIcon,

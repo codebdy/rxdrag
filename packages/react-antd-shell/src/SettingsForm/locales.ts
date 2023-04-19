@@ -1,5 +1,3 @@
-import { reactionMaterialLocales } from "@rxdrag/react-minions-materials";
-
 export const settingLocales = {
   "zh-CN": {
     tools: {
@@ -60,6 +58,7 @@ export const settingLocales = {
       fragmentFields: "字段组合",
       fieldDefine: "字段定义",
       fieldBind: "字段绑定",
+      fieldReaction: "字段联动",
       valuePropName: "值属性",
       trigger: "触发属性",
       withBind: "绑定字段",
@@ -78,6 +77,14 @@ export const settingLocales = {
       editJson: "编辑 JSON",
       formatError: "格式错误",
 
+      pattern: "风格",
+      editable: "可编辑",
+      visible: "可见",
+      hidden: "隐藏",
+      disabled: "禁用",
+      readonly: "只读",
+      readPretty: "阅读",
+
       IconInput: {
         DialogTitle: "选择图标",
         "Outlined": "线框风格",
@@ -89,6 +96,9 @@ export const settingLocales = {
         "IconLib": "图标库",
         "Customized": "自定义"
       },
+      ExpressionInput: {
+        DialogTitle: "表达式编辑"
+      }
     }
   },
   'en-US': {
@@ -150,6 +160,7 @@ export const settingLocales = {
       fragmentFields: "Fields",
       fieldDefine: "Field Define",
       fieldBind: "Field Bind",
+      fieldReaction: "Field Reaction",
       valuePropName: "Value Prop",
       trigger: "Trigger",
       withBind: "With Bind",
@@ -168,6 +179,14 @@ export const settingLocales = {
       editJson: "Edit JSON",
       formatError: "Format Error",
 
+      pattern: "Pattern",
+      editable: "Editable",
+      visible: "Visible",
+      hidden: "Hidden",
+      disabled: "Disabled",
+      readonly: "Readonly",
+      readPretty: "readPretty",
+
       IconInput: {
         DialogTitle: "Select Icon",
         "Outlined": "Outlined",
@@ -179,6 +198,9 @@ export const settingLocales = {
         "IconLib": "IconLib",
         "Customized": "Customized"
       },
+      ExpressionInput: {
+        DialogTitle: "Expression"
+      }
     }
   }
 }

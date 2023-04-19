@@ -1,10 +1,10 @@
 import { CSSProperties, memo, useCallback, useMemo } from "react"
-import { Checkbox, Form, Input, InputNumber, Radio, Select, Slider, Switch } from 'antd';
+import { Checkbox, Form, Input, InputNumber, Radio, Select, Slider, Space, Switch } from 'antd';
 import { useDesignerEngine, useCurrentNode, useChangeNodeMeta, useLanguage, useDesignComponentsParams } from "@rxdrag/react-core";
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy";
 import { ComponentRender, PreviewRoot } from "@rxdrag/react-runner";
 import { INodeMeta } from "@rxdrag/schema";
-import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput, BorderRadiusSetter, BorderSetter, CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, SizeInput, SlotSwitch, TabPanel, Tabs, TextAlignSelect, ValueInput } from "@rxdrag/react-antd-props-inputs";
+import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput, BorderRadiusSetter, BorderSetter, CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, ExpressionInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, SizeInput, SlotSwitch, TabPanel, Tabs, TextAlignSelect, ValueInput } from "@rxdrag/react-antd-props-inputs";
 import { ReactionsInput } from "./components";
 
 const propertiesStyle: CSSProperties = {
@@ -13,23 +13,19 @@ const propertiesStyle: CSSProperties = {
   width: "100%",
 }
 
-export interface SettingsFormProps {
-  //children?: React.ReactNode
-}
-
-export const SettingsForm = memo((props: SettingsFormProps) => {
+export const SettingsForm = memo(() => {
   const engine = useDesignerEngine()
   const currentNode = useCurrentNode()
   const changeMeta = useChangeNodeMeta()
   const lang = useLanguage()
   const { tools } = useDesignComponentsParams()
 
-  const designerSchema = useMemo(() => {
-    if (currentNode && currentNode.designerSchema) {
+  const propsSchema = useMemo(() => {
+    if (currentNode && currentNode.propsSchema) {
       //翻译
       return engine?.getLoacalesManager()
         .translateDesignerSchema(currentNode?.meta.componentName,
-          JSON.parse(JSON.stringify(currentNode.designerSchema))
+          JSON.parse(JSON.stringify(currentNode.propsSchema))
         )
     } else {
       return undefined
@@ -95,12 +91,14 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
         EventInput,
         ValueInput,
         JSONInput,
+        ExpressionInput,
+        Space,
         ...tools,
       }}
       localesManager={engine?.getLoacalesManager()}
     >
       <Fieldy>
-        <div style={propertiesStyle} {...props}>
+        <div style={propertiesStyle}>
           {
             currentNode &&
             <VirtualForm
@@ -121,9 +119,9 @@ export const SettingsForm = memo((props: SettingsFormProps) => {
                 }}
               >
                 {
-                  designerSchema &&
+                  propsSchema &&
                   <ComponentRender
-                    root={designerSchema}
+                    root={propsSchema}
                   />
                 }
               </Form>

@@ -10,7 +10,7 @@ export const NewsMaterial: IComponentMaterial = {
   component: News,
   designer: News,
   designerLocales: newsLocales,
-  designerSchema: newsSchema,
+  propsSchema: newsSchema,
   resource: {
     name: name,
     icon: newsIcon,

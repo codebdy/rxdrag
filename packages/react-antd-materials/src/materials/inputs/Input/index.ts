@@ -11,7 +11,7 @@ export const InputMaterial: IComponentMaterial = {
   component: Input,
   designer: Input,
   designerLocales: inputLocales,
-  designerSchema: inputSchema,
+  propsSchema: inputSchema,
   designerProps: {
     readOnly: true,
     style: {

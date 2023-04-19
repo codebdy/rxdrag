@@ -28,6 +28,6 @@ export const reactionMaterialCategories: ReactionMaterialCategory<ReactNode>[] =
 ]
 
 export const getAllMaterial = () => {
-  const materials: IReactionMaterial[] = [...controllerReactions]
+  const materials: IReactionMaterial<ReactNode>[] = [...controllerReactions]
   return materials.concat(...reactionMaterialCategories.map(category => category.materials))
 }

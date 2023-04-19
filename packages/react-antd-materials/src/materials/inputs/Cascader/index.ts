@@ -10,7 +10,7 @@ export const CascaderMaterial: IComponentMaterial = {
   component: Cascader,
   designer: Cascader,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
   },
   resource: {

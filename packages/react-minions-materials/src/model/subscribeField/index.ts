@@ -3,8 +3,9 @@ import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { SubscribeField } from "./reaction";
 import { subscribeFieldSchema } from "./schema";
+import { ReactNode } from "react";
 
-export const subscribeFieldMaterial: IReactionMaterial = {
+export const subscribeFieldMaterial: IReactionMaterial<ReactNode> = {
   name: "subscribeField",
   icon: subscribeIcon,
   label: "$subscribeField",

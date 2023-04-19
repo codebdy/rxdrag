@@ -12,7 +12,7 @@ export const ListItemMetaMaterial: IComponentMaterial = {
   component: List.Item.Meta,
   designer: List.Item.Meta,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
   },
   resource: {

@@ -8,13 +8,14 @@ import { intervalMaterial } from "./interval";
 import { loopMaterial } from "./loop";
 import { mergeMaterial } from "./merge";
 import { randomMaterial } from "./random";
+import { ReactNode } from "react";
 
 export const startEndSchema: INodeSchema = {
   componentName: "Fragment",
   children: [nameSchema, labelSchema],
 }
 
-export const basicReactions: IReactionMaterial[] = [
+export const basicReactions: IReactionMaterial<ReactNode>[] = [
   {
     name: "start",
     icon: startIcon,

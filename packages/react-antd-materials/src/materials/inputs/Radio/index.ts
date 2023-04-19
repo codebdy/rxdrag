@@ -10,7 +10,7 @@ export const RadioMaterial: IComponentMaterial = {
   component: Radio,
   designer: Radio,
   designerLocales: radioLocales,
-  designerSchema: radioSchema,
+  propsSchema: radioSchema,
   designerProps: {
     //readOnly: true,
   },

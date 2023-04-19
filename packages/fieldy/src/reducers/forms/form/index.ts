@@ -12,7 +12,7 @@ import { unmountedReduer } from "./unmounted";
 import { validatingReduer } from "./validating";
 import { valueReduer } from "./value";
 
-export function formReduce(state: FormState, action: IAction<any>): FormState | undefined {
+export function formReduce(state: FormState, action: IAction<unknown>): FormState | undefined {
   return {
     mounted: mountedReduer(state.mounted, action),
     unmounted: unmountedReduer(state.unmounted, action),
@@ -23,7 +23,7 @@ export function formReduce(state: FormState, action: IAction<any>): FormState | 
     modified: modifiedReduer(state.modified, action),
     fields: fieldsReduer(state.fields, action),
     fieldSchemas: fieldSchemasReduer(state.fieldSchemas, action),
-    initialValue: initialValueReduer(state.initialValue, action),
+    initialValue: initialValueReduer(state.initialValue as boolean | undefined, action),
     value: valueReduer(state.value, action),
   }
 }

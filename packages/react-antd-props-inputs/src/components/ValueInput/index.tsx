@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Button, Input, InputNumber, Switch } from "antd";
 import { useToolsTranslate } from "@rxdrag/react-core";

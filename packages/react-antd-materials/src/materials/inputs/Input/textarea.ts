@@ -9,7 +9,7 @@ export const TextAreaMaterial: IComponentMaterial = {
   component: Input.TextArea,
   designer: Input.TextArea,
   designerLocales: inputLocales,
-  designerSchema: textAreaSchema,
+  propsSchema: textAreaSchema,
   designerProps: {
     readOnly: true,
     style: {

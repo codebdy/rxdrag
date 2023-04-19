@@ -3,8 +3,9 @@ import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { JsCode } from "./reaction";
 import { jsCodeSchema } from "./schema";
+import { ReactNode } from "react";
 
-export const jsCodeMaterial: IReactionMaterial = {
+export const jsCodeMaterial: IReactionMaterial<ReactNode> = {
   name: "jsCode",
   icon: jsIcon,
   label: "$jsCode",

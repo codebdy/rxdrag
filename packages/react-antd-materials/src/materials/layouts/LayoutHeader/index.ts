@@ -8,7 +8,7 @@ export const LayoutHeaderMaterial: IComponentMaterial = {
   component: Header,
   designer: Header,
   designerLocales: headerLocales,
-  designerSchema: headerSchema,
+  propsSchema: headerSchema,
   designerProps: {
     disableTrigger: true,
   },

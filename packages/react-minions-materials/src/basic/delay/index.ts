@@ -3,8 +3,9 @@ import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { Delay, IDelayConfig } from "./reaction";
 import { delaySchema } from "./schema";
+import { ReactNode } from "react";
 
-export const delayMaterial: IReactionMaterial = {
+export const delayMaterial: IReactionMaterial<ReactNode> = {
   name: "delay",
   icon: delayIcon,
   label: "$delay",

@@ -10,7 +10,7 @@ export const LogoMaterial: IComponentMaterial = {
   component: Logo,
   designer: Logo,
   designerLocales: logoLocales,
-  designerSchema: logoSchema,
+  propsSchema: logoSchema,
   resource: {
     name: name,
     icon: logoIcon,

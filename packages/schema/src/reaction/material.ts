@@ -7,12 +7,12 @@ import {
   ReactionType
 } from './meta';
 
-export type ReactionFactory<IReactionFactoryOptions = any> = (
+export type ReactionFactory<IReactionFactoryOptions = unknown> = (
   meta: IReactionMeta<IConfigMeta>,
   options: IReactionFactoryOptions
 ) => IReaction;
 
-export interface IReactionMaterial<ComponentNode = any> {
+export interface IReactionMaterial<ComponentNode = unknown> {
   //唯一名称
   name: string;
   label: string;
@@ -26,7 +26,7 @@ export interface IReactionMaterial<ComponentNode = any> {
   reaction?: ReactionFactory;
 }
 
-export interface ReactionMaterialCategory<ComponentNode = any> {
+export interface ReactionMaterialCategory<ComponentNode = unknown> {
   name: string;
   materials: IReactionMaterial<ComponentNode>[];
 }

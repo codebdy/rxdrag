@@ -36,21 +36,16 @@ export interface IBehaviorRule {
   lockable?: boolean,
 }
 
-// export interface IDesignerParams {
-//   locked?: boolean,
-//   [key: string]: any
-// }
-
-export interface IComponentConfig<ComponentType = any> {
-  packageName?: string //npm包名 生成代码用
+export interface IComponentConfig<ComponentType = unknown> {
+  package?: string //npm包名 生成代码用
+  version?: string // npm包版本 生成代码用
   componentName: string
   component: ComponentType,
   designer: ComponentType,
   behaviorRule?: IBehaviorRule
-  designerSchema?: INodeSchema
+  propsSchema?: INodeSchema
   designerLocales?: ILocales
   designerProps?: IDesignerProps
-  //designerParams?: IDesignerParams
   resource?: IResource
   //slots用到的组件，值为true时，用缺省组件DefaultSlot, string时，存的是已经注册过的component resource名字
   slots?: {

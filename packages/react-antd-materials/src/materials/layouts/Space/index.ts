@@ -11,7 +11,7 @@ export const SpaceMaterial: IComponentMaterial = {
   component: Space,
   designer: SpaceDesigner,
   designerLocales: locales,
-  designerSchema: schema,
+  propsSchema: schema,
   resource: {
     name: name,
     icon: icon,

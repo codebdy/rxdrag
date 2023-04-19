@@ -47,7 +47,7 @@ export const PropertyBox = memo(() => {
   const backup = useBackup()
   const markeChange = useMarkChange()
 
-  const designerSchema = useMemo(() => {
+  const propsSchema = useMemo(() => {
     if (material?.schema) {
       //翻译
       return localesManager?.translateDesignerSchema('',
@@ -97,9 +97,9 @@ export const PropertyBox = memo(() => {
                 onValueChange={handleNodeChange}
               >
                 {
-                  designerSchema &&
+                  propsSchema &&
                   <ComponentRender
-                    root={designerSchema}
+                    root={propsSchema}
                   />
                 }
               </VirtualForm>

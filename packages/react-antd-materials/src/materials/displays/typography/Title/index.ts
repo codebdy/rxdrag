@@ -10,7 +10,7 @@ export const TitleMaterial: IComponentMaterial = {
   component: Title,
   designer: Title,
   designerLocales: locales,
-  designerSchema: schema,
+  propsSchema: schema,
   resource: {
     name: name,
     icon: icon,

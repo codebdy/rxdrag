@@ -1,11 +1,21 @@
-import { ErrorListener, IField, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { isStr } from "@rxdrag/shared";
+import { ErrorListener, FormState, IField, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces";
+import { PropExpression } from "./PropExpression";
 
 export class FieldImpl implements IField {
-  refCount: number = 1;
-
-  constructor(private fieldy: IFieldyEngine, private form: IForm, private fieldPath: string) {
+  refCount = 1;
+  expressions: PropExpression[] = []
+  //发起变化标号，防止无限递归
+  initiateExpressionChange = false;
+  constructor(public fieldy: IFieldyEngine, public form: IForm, private fieldPath: string) {
+    if (this.meta?.reactionMeta) {
+      this.makeExpressions();
+      //初始化完成时，计算一次联动
+      //form.fieldy.subscribeToFormInitialized(form.name, this.handleFieldReaction)
+      form.fieldy.subscribeToFormChange(form.name, this.handleFieldReaction)
+    }
   }
-
 
   get value() {
     return this.fieldy.getFieldValue(this.form.name, this.fieldPath)
@@ -27,15 +37,15 @@ export class FieldImpl implements IField {
     throw new Error("Method not implemented.");
   }
 
-  setValue(value: any): void {
+  setValue(value: unknown): void {
     this.fieldy.setFieldValue(this.form.name, this.path, value)
   }
 
-  setInitialValue(value: any): void {
+  setInitialValue(value: unknown): void {
     this.fieldy.setFieldIntialValue(this.form.name, this.path, value)
   }
 
-  inpuValue(value: any): void {
+  inpuValue(value: unknown): void {
     this.fieldy.inputFieldValue(this.form.name, this.path, value)
   }
 
@@ -43,15 +53,15 @@ export class FieldImpl implements IField {
     throw new Error("Method not implemented.");
   }
 
-  onInit(listener: Listener): Unsubscribe {
+  onInit(_listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
 
-  onMount(listener: Listener): Unsubscribe {
+  onMount(_listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
 
-  onUnmount(listener: Listener): Unsubscribe {
+  onUnmount(_listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
 
@@ -62,17 +72,63 @@ export class FieldImpl implements IField {
     throw new Error("Method not implemented.");
   }
 
-  onValidateStart(listener: Listener): Unsubscribe {
+  onValidateStart(_listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
-  onValidateEnd(listener: Listener): Unsubscribe {
+  onValidateEnd(_listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
-  onValidateFailed(listener: ErrorListener): Unsubscribe {
+  onValidateFailed(_listener: ErrorListener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
-  onValidateSuccess(listener: Listener): Unsubscribe {
+  onValidateSuccess(_listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
 
+  private makeExpressions() {
+    if (this.meta?.reactionMeta) {
+      for (const key of Object.keys(this.meta.reactionMeta)) {
+        const exobj = this.meta.reactionMeta[key]
+        const expressionText = (exobj as { expression?: string })?.expression
+        if (expressionText) {
+          this.expressions.push(new PropExpression(this, key, expressionText))
+        } else if (isStr(exobj)) {
+          let expressionText = exobj.trim()
+          if (expressionText.startsWith("{{") && expressionText.endsWith("}}")) {
+            expressionText = expressionText.replace(/^\{\{/, "").replace(/\}\}$/, "");
+          }
+          if (expressionText) {
+            this.expressions.push(new PropExpression(this, key, expressionText))
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * 表单变化响应函数：处理联动
+   * @param form 
+   */
+  private handleFieldReaction = (form: FormState) => {
+    // if(!form.initialized){
+    //   return
+    // }
+    const updatedValues: { [key: string]: unknown } = {}
+    if(this.initiateExpressionChange){
+      this.initiateExpressionChange = false;
+      return
+    }
+    for(const expresion of this.expressions){
+      const {value, changed} = expresion.changedValue()
+      if(changed){
+        updatedValues[expresion.propName] = value
+      }
+    }
+    if(Object.keys(updatedValues).length > 0){
+      const oldFieldState = this.fieldy.getFieldState(this.form.name, this.fieldPath)
+      console.assert(oldFieldState, "FieldState is undefined!")
+      this.initiateExpressionChange = true;
+      oldFieldState && this.fieldy.setFieldState(this.form.name, {...oldFieldState, ...updatedValues})
+    }
+  }
 }

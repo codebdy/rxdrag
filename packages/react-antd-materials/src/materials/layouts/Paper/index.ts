@@ -10,7 +10,7 @@ export const PaperMaterial: IComponentMaterial = {
   component: Paper,
   designer: Paper,
   designerLocales: paperLocales,
-  designerSchema: paperSchema,
+  propsSchema: paperSchema,
   resource: {
     name: name,
     icon: paperIcon,

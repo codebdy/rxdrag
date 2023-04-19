@@ -1,15 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-case-declarations */
+import { isStr } from "@rxdrag/shared";
 import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload, SetFormValuePayload, SET_FORM_FLAT_VALUE, SET_MULTI_FIELD_VALUES, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, FieldActionPayload } from "../../../actions";
 import { getChildFields, makePath } from "../../../funcs/path";
 import { FieldsState, FormValue, IAction, IFieldSchema } from "../../../interfaces";
 import { fieldReduce } from "./field";
+import { DisplayType, Expression, PatternType } from "@rxdrag/schema";
 
-var idSeed = 1
+let idSeed = 1
 function makeId() {
   idSeed = idSeed + 1
   return "field-" + idSeed
 }
 
-export function fieldsReduer(state: FieldsState, action: IAction<any>): FieldsState {
+export function fieldsReduer(state: FieldsState, action: IAction<unknown>): FieldsState {
   switch (action.type) {
     case SET_FORM_FIELDS:
       const fields = makeFields((action.payload as SetFormFieldsPayload).fieldSchemas)
@@ -41,14 +45,14 @@ export function fieldsReduer(state: FieldsState, action: IAction<any>): FieldsSt
       return setFlatValues(state, flatValues)
     }
   }
-  
+
   const payload = action.payload as FieldActionPayload
   const newState = state
 
   if (payload.path) {
     const filedState = newState[payload.path]
     if (filedState) {
-      const fieldState = fieldReduce(filedState, action)
+      const fieldState = fieldReduce(filedState, action as IAction<FieldActionPayload>)
       return { ...newState, [payload.path]: fieldState }
     }
   }
@@ -66,7 +70,12 @@ function makeFields(fieldSchemas: IFieldSchema[]) {
         ...schema,
         basePath: schema.path.substring(0, schema.path.length - (schema.name?.length || 0) - 1),
         mounted: true,
-        meta: schema
+        meta: schema,
+        display: extractValue(schema?.reactionMeta?.display) as DisplayType | undefined,
+        pattern: extractValue(schema?.reactionMeta?.pattern) as PatternType | undefined,
+        hidden: extractValue(schema?.reactionMeta?.hidden) as boolean | undefined,
+        disabled: extractValue(schema?.reactionMeta?.disabled) as boolean | undefined,
+        readonly: extractValue(schema?.reactionMeta?.readonly) as boolean | undefined,
       }
     } else if (schema.type === 'fragment') {
       for (const fragMeta of schema.fragmentFields || []) {
@@ -87,6 +96,31 @@ function makeFields(fieldSchemas: IFieldSchema[]) {
   return flatFields
 }
 
+type ExpressionObj = {
+  value?: unknown,
+  expression?: string,
+}
+
+function extractValue(expOrValue?: {
+  value?: unknown,
+  expression?: string,
+} | Expression) {
+  if (isStr(expOrValue)) {
+    if (expOrValue.trim().startsWith("{{")) {
+      return undefined
+    }
+    return expOrValue;
+  }
+  if (expOrValue?.expression) {
+    return expOrValue.value
+  }
+  const keys = Object.keys(expOrValue || {})
+  if (keys.find((key) => key === "value") || keys.find((key) => key === "expression")) {
+    (expOrValue as ExpressionObj)?.value
+  }
+  return keys.length == 0 ? undefined : expOrValue
+}
+
 function setFlatValues(state: FieldsState, flatValues: any = {}) {
   const newFields = {} as FieldsState
   for (const key of Object.keys(flatValues || {})) {
@@ -101,7 +135,7 @@ function setFlatValues(state: FieldsState, flatValues: any = {}) {
   return Object.assign({}, state.fields, newFields)
 }
 
-function setInitialFlatValues(state: FieldsState, flatValues: any = {}):FieldsState {
+function setInitialFlatValues(state: FieldsState, flatValues: any = {}): FieldsState {
   const newFields = {} as FieldsState
   for (const key of Object.keys(state?.fields || {})) {
     const fieldState = state?.[key]
@@ -128,7 +162,7 @@ function patFlatValues(value: FormValue | undefined, allFields: FieldsState, par
     const path = prefix + meta.name
 
     flatValues[path] = value?.[meta.name]
-    const subValues = patFlatValues(value?.[meta.name], allFields, path)
+    const subValues = patFlatValues(value?.[meta.name] as FormValue | undefined, allFields, path)
     flatValues = { ...flatValues, ...subValues }
   }
   return flatValues

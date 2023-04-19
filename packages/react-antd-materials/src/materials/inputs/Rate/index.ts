@@ -11,7 +11,7 @@ export const RateMaterial: IComponentMaterial = {
   component: Rate,
   designer: RateDesigner,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     //readOnly: true,
   },

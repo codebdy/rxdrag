@@ -10,7 +10,7 @@ export const TableSummaryMaterial: IComponentMaterial = {
   component: Table.Summary,
   designer: TableSummaryDesigner,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
 
   },

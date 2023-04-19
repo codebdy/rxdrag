@@ -4,8 +4,9 @@ import { createUuid } from "@rxdrag/shared"
 import { IControllerReactionConfig } from "../AbstractControllerReaction"
 import { SetProp } from "./reaction"
 import { setPropSchema } from "./schema"
+import { ReactNode } from "react"
 
-export const setPropMaterial: IReactionMaterial = {
+export const setPropMaterial: IReactionMaterial<ReactNode> = {
   name: "setProp",
   icon: setPropIcon,
   label: "$setProp",

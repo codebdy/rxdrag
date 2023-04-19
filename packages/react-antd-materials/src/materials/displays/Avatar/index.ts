@@ -11,7 +11,7 @@ export const AvatarMaterial: IComponentMaterial = {
   component: Avatar,
   designer: Avatar,
   designerLocales: avatarLocales,
-  designerSchema: avatarSchema,
+  propsSchema: avatarSchema,
   resource: {
     name: name,
     icon: avatarIcon,

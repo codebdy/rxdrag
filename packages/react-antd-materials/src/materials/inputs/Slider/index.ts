@@ -10,7 +10,7 @@ export const SliderMaterial: IComponentMaterial = {
   component: Slider,
   designer: Slider,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     //readOnly: true,
   },

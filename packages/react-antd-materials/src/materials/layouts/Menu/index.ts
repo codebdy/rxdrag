@@ -10,7 +10,7 @@ export const MenuMaterial: IComponentMaterial = {
   component: Menu,
   designer: Menu,
   designerLocales: menuLocales,
-  designerSchema: logoSchema,
+  propsSchema: logoSchema,
   resource: {
     name: name,
     icon: logoIcon,

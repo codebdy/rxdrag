@@ -10,7 +10,7 @@ export const IconViewMaterial: IComponentMaterial = {
   component: IconView,
   designer: IconView,
   designerLocales: iconViewLocales,
-  designerSchema: iconViewSchema,
+  propsSchema: iconViewSchema,
   resource: {
     name: name,
     icon: iconViewIcon,

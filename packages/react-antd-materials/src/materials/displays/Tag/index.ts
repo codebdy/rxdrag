@@ -12,7 +12,7 @@ export const TagMaterial: IComponentMaterial = {
   component: Tag,
   designer: Tag,
   designerLocales: locales,
-  designerSchema: schema,
+  propsSchema: schema,
   resource: {
     name: name,
     icon: icon,

@@ -58,7 +58,42 @@
           "componentName": "Layout.Content",
           "props": {},
           "slots": {},
-          "children": []
+          "children": [
+            {
+              "componentName": "Input",
+              "props": {},
+              "x-field": {
+                "params": {
+                  "withBind": true
+                },
+                "reactionMeta": {},
+                "name": "test1"
+              },
+              "slots": {},
+              "children": []
+            },
+            {
+              "componentName": "Input",
+              "props": {},
+              "x-field": {
+                "params": {
+                  "withBind": true
+                },
+                "reactionMeta": {
+                  "display": {},
+                  "pattern": {},
+                  "hidden": {
+                    "expression": "$test1.value === \"1\""
+                  },
+                  "disabled": {},
+                  "readonly": {}
+                },
+                "name": "test2"
+              },
+              "slots": {},
+              "children": []
+            }
+          ]
         },
         "footer": {
           "componentName": "Layout.Footer",

@@ -10,7 +10,7 @@ export const TreeSelectMaterial: IComponentMaterial = {
   component: TreeSelect,
   designer: TreeSelect,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
   },
   resource: {

@@ -23,7 +23,7 @@ export class ComponentManager implements IComponentManager {
     return this.components[componentName]
   }
   // getDesignerSchema(componentName: string): INodeSchema | undefined {
-  //   return this.components[componentName]?.designerSchema
+  //   return this.components[componentName]?.propsSchema
   // }
 
   registerComponents(...componentDesigners: IComponentConfig[]): void {

@@ -10,7 +10,7 @@ export const ImageViewMaterial: IComponentMaterial = {
   component: ImageView,
   designer: ImageView,
   designerLocales: locales,
-  designerSchema: maretialSchema,
+  propsSchema: maretialSchema,
   resource: {
     name: name,
     icon: icon,

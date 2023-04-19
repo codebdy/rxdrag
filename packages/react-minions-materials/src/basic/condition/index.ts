@@ -3,8 +3,9 @@ import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { Condition } from "./reaction";
 import { conditionSchema } from "./schema";
+import { ReactNode } from "react";
 
-export const conditionMaterial: IReactionMaterial = {
+export const conditionMaterial: IReactionMaterial<ReactNode> = {
   name: "condition",
   icon: ifIcon,
   label: "$conditionCheck",

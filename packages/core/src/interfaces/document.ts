@@ -1,5 +1,4 @@
 import { IAction } from "./action";
-//import { IDesignerParams } from "./component";
 import { DocumentActionPayload } from "./payloads";
 import { ID, RxProps } from "./types";
 import {INodeMeta, INodeSchema} from "@rxdrag/schema"
@@ -42,8 +41,8 @@ export const DefulstViewType = "design"
 
 
 export interface IDesignerProps {
-  style?: any
-  [key: string]: any,
+  style?: unknown
+  [key: string]: unknown,
 }
 
 export interface ITreeNode {
@@ -63,9 +62,7 @@ export interface ITreeNode {
   //设计时的属性，比如readOnly， open等
   designerProps?: IDesignerProps
   //用来编辑属性的schema
-  designerSchema?: INodeSchema
-  //设计器专用属性，比如是否锁定
-  //designerParams?: IDesignerParams
+  propsSchema?: INodeSchema
 }
 
 export interface NodeBehavior {
@@ -116,6 +113,7 @@ export interface IDocument {
   changeNodeMeta(id: ID, newMeta: INodeMeta): void
   removeSlot(id: ID, name: string): void
   addSlot(id: ID, name: string): void
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dispatch(action: IDocumentAction<any>): void
   backup(actionType: HistoryableActionType): void
   undo(): void

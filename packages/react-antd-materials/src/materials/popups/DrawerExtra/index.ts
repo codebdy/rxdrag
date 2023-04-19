@@ -9,7 +9,7 @@ export const DrawerExtraMaterial: IComponentMaterial = {
   component: DrawerExtra,
   designer: DrawerExtra,
   designerLocales: locales,
-  designerSchema: materialSchema,
+  propsSchema: materialSchema,
   designerProps: {
     //readOnly: true,
   },

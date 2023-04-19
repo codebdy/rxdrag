@@ -10,7 +10,7 @@ export const DividerMaterial: IComponentMaterial = {
   component: Divider,
   designer: Divider,
   designerLocales: dividerLocales,
-  designerSchema: dividerSchema,
+  propsSchema: dividerSchema,
   resource: {
     name: name,
     icon: dividerIcon,
