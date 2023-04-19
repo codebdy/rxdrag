@@ -8,7 +8,7 @@ import { useCreateFieldSchema } from "../XField/hooks/useCreateFieldSchema"
 export const Field = memo((
   props: {
     name: string,
-    value?: any,
+    value?: unknown,
     children?: React.ReactNode,
     type?: FieldType,
   }
