@@ -4,7 +4,7 @@ import { getOffset, getPosition } from "../shell/utils/xycoord";
 import { IPlugin } from "../interfaces/plugin";
 
 export class StartDragControllerImpl implements IPlugin {
-  name: string = "default.start-drag-controller";
+  name = "default.start-drag-controller";
 
   unsucribe: Unsubscribe
   constructor(protected engine: IDesignerEngine) {
