@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react"
 import { useMemo, useRef } from "react"
 import { memo, useCallback } from "react"
