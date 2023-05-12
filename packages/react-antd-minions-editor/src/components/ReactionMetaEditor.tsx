@@ -2,7 +2,7 @@ import React from "react";
 import { ILogicMetas } from "@rxdrag/schema";
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
-import { ActionType } from "../actions";
+import { Action, ActionType } from "../actions";
 import { EditorStore } from "../classes/EditorStore";
 import { GraphContext, ReacionsEditorStoreContext } from "../contexts"
 import { useCreateGraph } from "../hooks/useCreateGraph";
@@ -89,7 +89,7 @@ export const ReactionMetaEditor = memo((
   }, [])
 
   useEffect(() => {
-    store.dispatch({ type: ActionType.SET_METAS, payload: metas || emptyMetas } as any)
+    store.dispatch({ type: ActionType.SET_METAS, payload: metas || emptyMetas } as Action)
   }, [emptyMetas, metas, store])
 
   const handleToggleMap = useCallback(() => {
