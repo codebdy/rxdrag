@@ -1,10 +1,11 @@
 import { ITreeNode } from "@rxdrag/core"
-import { useGetNode, useCurrentNode } from "@rxdrag/react-core"
+import { useGetNode, useCurrentNode, useTreeNode } from "@rxdrag/react-core"
 import { useCallback, useMemo } from "react"
 
 export function useControllerMetas() {
   const getNode = useGetNode()
   const currentNode = useCurrentNode()
+  const latestNode = useTreeNode(currentNode?.id ||"")
 
   const processNode = useCallback((node: ITreeNode, nodes: ITreeNode[]) => {
     if (node.meta?.["x-controller"]?.enable) {
@@ -19,15 +20,15 @@ export function useControllerMetas() {
   }, [getNode])
 
   const controllerNodes = useMemo(() => {
-    if (currentNode) {
+    if (latestNode) {
       const nodes: ITreeNode[] = []
-      processNode(currentNode, nodes)
+      processNode(latestNode, nodes)
 
-      return nodes.reverse().map(node => ({ ...node.meta?.["x-controller"], name: node.meta?.["x-controller"]?.name || node.title }))
+      return nodes.reverse().map(node => ({ ...node.meta?.["x-controller"]||{}, name: node.meta?.["x-controller"]?.name || node.title }))
     }
 
     return []
-  }, [currentNode, processNode])
+  }, [latestNode, processNode])
 
   return controllerNodes
 }
