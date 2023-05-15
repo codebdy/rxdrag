@@ -1,7 +1,7 @@
 import React from "react";
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
-import { Action, ActionType } from "../actions";
+import { Action, ActionType, SetMetasAction } from "../actions";
 import { EditorStore } from "../classes/EditorStore";
 import { GraphContext, ReacionsEditorStoreContext } from "../contexts"
 import { useCreateGraph } from "../hooks/useCreateGraph";
@@ -69,7 +69,7 @@ const RightArea = styled.div`
 `
 
 
-export const ReactionMetaEditor = memo((
+export const LogicFlowMetaEditor = memo((
   props: {
     metas?: ILogicFlowDefinition,
     onChange: (meta: ILogicFlowDefinition) => void,
@@ -89,7 +89,8 @@ export const ReactionMetaEditor = memo((
   }, [])
 
   useEffect(() => {
-    store.dispatch({ type: ActionType.SET_METAS, payload: metas || emptyMetas } as Action)
+    const action: SetMetasAction = { type: ActionType.SET_METAS, payload: { nodes: metas?.nodes || [], lines: metas?.lines || [] } }
+    store.dispatch(action)
   }, [emptyMetas, metas, store])
 
   const handleToggleMap = useCallback(() => {

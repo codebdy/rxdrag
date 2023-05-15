@@ -1,7 +1,6 @@
-import { ILogicFlowDefinition } from "@rxdrag/schema";
-import { Action, ActionType, AddEdgeAction, AddNodeAction, ChangeEdgeAction, ChangeNodeAction, RemoveNodeAction, SetMetasAction } from "../actions";
+import { Action, ActionType, AddEdgeAction, AddNodeAction, ChangeEdgeAction, ChangeNodeAction, Metas, RemoveNodeAction, SetMetasAction } from "../actions";
 
-export function metasReducer(state: ILogicFlowDefinition, action: Action): ILogicFlowDefinition {
+export function metasReducer(state: Metas, action: Action):Metas {
   switch (action.type) {
     case ActionType.SET_METAS: {
       return (action as SetMetasAction).payload

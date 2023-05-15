@@ -8,13 +8,13 @@ import { undoListReducer } from "./undoListReducer";
 import { zoomReducer } from "./zoomReducer";
 
 export const mainReducer = (
-  { changeFlag, redoList, undoList, metas, selected, zoom }: IState = initialState,
+  { changeFlag, redoList, undoList, nodes, lines, selected, zoom }: IState = initialState,
   action: Action
 ): IState => ({
   changeFlag: changeFlagReducer(changeFlag, action),
   redoList: redoListReducer(redoList, action),
   undoList: undoListReducer(undoList, action),
-  metas: metasReducer(metas, action),
+  ...metasReducer({ nodes, lines }, action),
   selected: selectedReducer(selected, action),
   zoom: zoomReducer(zoom, action),
 });

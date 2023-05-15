@@ -2,7 +2,7 @@ import { IControllerMeta, IActivityMaterial, ILogicFlowDefinition } from "@rxdra
 import React, { memo, ReactNode, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
 import { ControllerContext, ControllersContext } from "../contexts";
-import { ReactionMetaEditor } from "./ReactionMetaEditor"
+import { LogicFlowMetaEditor } from "./LogicFlowMetaEditor"
 import { Members } from "./Members";
 import { Minions } from "@rxdrag/react-minions";
 import { LocalesContext } from "@rxdrag/react-locales";
@@ -54,7 +54,7 @@ export const ControllerMetaEditor = memo((
     onChange?.(meta)
   }, [onChange])
 
-  const metas = useMemo(() => {
+  const logicFlowMeta = useMemo(() => {
     const logicflow = value?.reactions?.find(reaction => reaction.id === selected)
     if (logicflow) {
       return logicflow
@@ -88,9 +88,9 @@ export const ControllerMetaEditor = memo((
               </LeftArea>
               {
                 selected && value &&
-                <ReactionMetaEditor
+                <LogicFlowMetaEditor
                   key={selected}
-                  metas={metas}
+                  metas={logicFlowMeta}
                   onChange={handleChange}
                   toolbox={toolbox}
                 />
