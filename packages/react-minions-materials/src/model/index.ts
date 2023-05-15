@@ -1,5 +1,5 @@
 import { formIcon, formValidateIcon, formReadIcon, fieldIcon, fieldValidateIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { readFieldValueMaterial } from "./readFieldValue";
 import { subscribeFieldMaterial } from "./subscribeField";
@@ -10,7 +10,7 @@ export const dataModelReactions: IActivityMaterial<ReactNode>[] = [
     name: "setFormValue",
     icon: formIcon,
     label: "$setFormValue",
-    reactionType: ReactionType.SingleReaction,
+    reactionType: ActivityType.SingleActivity,
     meta: {
       inPorts: [
         {
@@ -25,7 +25,7 @@ export const dataModelReactions: IActivityMaterial<ReactNode>[] = [
     name: "validateForm",
     icon: formValidateIcon,
     label: "$validateForm",
-    reactionType: ReactionType.SingleReaction,
+    reactionType: ActivityType.SingleActivity,
     meta: {
       inPorts: [
         {
@@ -52,7 +52,7 @@ export const dataModelReactions: IActivityMaterial<ReactNode>[] = [
     name: "readFormValue",
     icon: formReadIcon,
     label: "$readFormValue",
-    reactionType: ReactionType.SingleReaction,
+    reactionType: ActivityType.SingleActivity,
     meta: {
       inPorts: [
         {
@@ -74,7 +74,7 @@ export const dataModelReactions: IActivityMaterial<ReactNode>[] = [
     name: "setFieldValue",
     icon: fieldIcon,
     label: "$setFieldValue",
-    reactionType: ReactionType.SingleReaction,
+    reactionType: ActivityType.SingleActivity,
     meta: {
       inPorts: [
         {
@@ -89,7 +89,7 @@ export const dataModelReactions: IActivityMaterial<ReactNode>[] = [
     name: "validateField",
     icon: fieldValidateIcon,
     label: "$validateField",
-    reactionType: ReactionType.SingleReaction,
+    reactionType: ActivityType.SingleActivity,
     meta: {
       inPorts: [
         {

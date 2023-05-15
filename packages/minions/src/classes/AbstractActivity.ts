@@ -1,11 +1,11 @@
-import { IConfigMeta, IJointer, IReaction, IReactionMeta } from "@rxdrag/schema";
+import { IConfigMeta, IJointer, IActivity, IActivityDefine } from "@rxdrag/schema";
 import { Jointer } from "./jointer";
 
-export abstract class AbstractReaction<ConfigMeta extends IConfigMeta, IActivityFactoryOptions = any> implements IReaction {
+export abstract class AbstractActivity<ConfigMeta extends IConfigMeta, IActivityFactoryOptions = any> implements IActivity {
   id: string;
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];
-  constructor(public meta: IReactionMeta<ConfigMeta>, protected options?: IActivityFactoryOptions) {
+  constructor(public meta: IActivityDefine<ConfigMeta>, protected options?: IActivityFactoryOptions) {
     this.id = meta.id
     for (const out of meta.outPorts || []) {
       this.outputs.push(new Jointer(out.id, out.name))

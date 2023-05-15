@@ -1,5 +1,5 @@
 import { intervalIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { IIntervalConfig, Interval } from "./reaction";
 import { intervalSchema } from "./schema";
@@ -9,7 +9,7 @@ export const intervalMaterial: IActivityMaterial<ReactNode> = {
   name: "interval",
   icon: intervalIcon,
   label: "$interval",
-  reactionType: ReactionType.SingleReaction,
+  reactionType: ActivityType.SingleActivity,
   meta: {
     inPorts: [
       {

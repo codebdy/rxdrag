@@ -1,13 +1,13 @@
 import { methodIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { ControllerReaction } from "./factory";
 import { ReactNode } from "react";
 
-export const reactionMaterial: IActivityMaterial<ReactNode> = {
+export const activityMaterial: IActivityMaterial<ReactNode> = {
   name: "controllerReaction",
   icon: methodIcon,
   label: "reaction",
-  reactionType: ReactionType.ControllerReaction,
+  reactionType: ActivityType.ControllerReaction,
   meta: {
 
   },

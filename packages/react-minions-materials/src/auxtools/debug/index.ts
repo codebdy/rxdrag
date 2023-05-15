@@ -1,6 +1,6 @@
 
 import { debugIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { Debug } from "./reaction";
 import { debugSchema } from "./schema";
@@ -10,7 +10,7 @@ export const debugMaterial: IActivityMaterial<ReactNode> = {
   name: "debug",
   icon: debugIcon,
   label: "$debug",
-  reactionType: ReactionType.SingleReaction,
+  reactionType: ActivityType.SingleActivity,
   color: "orange",
   meta: {
     inPorts: [

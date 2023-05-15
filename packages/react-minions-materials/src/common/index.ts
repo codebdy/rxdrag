@@ -13,7 +13,7 @@ export const commonReactions: IActivityMaterial<ReactNode>[] = [
   //   name: "globalLoading",
   //   icon: loadingIcon,
   //   label: "$globalLoading",
-  //   reactionType: ReactionType.SingleReaction,
+  //   reactionType: ActivityType.SingleReaction,
   //   meta: {
   //     inPorts: [
   //       {

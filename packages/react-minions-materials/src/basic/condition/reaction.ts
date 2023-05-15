@@ -1,13 +1,13 @@
-import { AbstractReaction, IActivityFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IReactionMeta, ActivityFactory } from "@rxdrag/schema"
+import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema"
 
 export interface IConditionConfig extends IConfigMeta {
   trueExpression?: string
 }
 
-export class ConditionReaction extends AbstractReaction<IConditionConfig> {
+export class ConditionReaction extends AbstractActivity<IConditionConfig> {
 
-  constructor(meta: IReactionMeta<IConditionConfig>, options?: IActivityFactoryOptions) {
+  constructor(meta: IActivityDefine<IConditionConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
@@ -32,6 +32,6 @@ export class ConditionReaction extends AbstractReaction<IConditionConfig> {
   }
 }
 
-export const Condition: ActivityFactory = (meta: IReactionMeta<IConditionConfig>, options?: IActivityFactoryOptions) => {
+export const Condition: ActivityFactory = (meta: IActivityDefine<IConditionConfig>, options?: IActivityFactoryOptions) => {
   return new ConditionReaction(meta, options)
 }

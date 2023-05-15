@@ -1,5 +1,5 @@
 import { simulateIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { MockData } from "./reaction";
 import { mockDataSchema } from "./schema";
@@ -9,7 +9,7 @@ export const mockDataMaterial: IActivityMaterial<ReactNode> = {
   name: "mockData",
   icon: simulateIcon,
   label: "$simulateData",
-  reactionType: ReactionType.SingleReaction,
+  reactionType: ActivityType.SingleActivity,
   meta: {
     inPorts: [
       {

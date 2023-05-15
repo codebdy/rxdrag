@@ -1,4 +1,4 @@
-export declare function useTransformPorts(): (meta: IReactionMeta) => {
+export declare function useTransformPorts(): (meta: IActivityDefine) => {
     id: any;
     markup: {
         tagName: string;

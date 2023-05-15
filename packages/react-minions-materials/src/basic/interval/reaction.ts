@@ -1,15 +1,15 @@
-import { AbstractReaction, IActivityFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IReactionMeta, ActivityFactory } from "@rxdrag/schema"
+import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema"
 
 
 export interface IIntervalConfig extends IConfigMeta {
   interval?: number
 }
 
-export class IntervalReaction extends AbstractReaction<IIntervalConfig> {
+export class IntervalReaction extends AbstractActivity<IIntervalConfig> {
   timer?: NodeJS.Timer
   inputValue?: any
-  constructor(meta: IReactionMeta<IIntervalConfig>, options?: IActivityFactoryOptions) {
+  constructor(meta: IActivityDefine<IIntervalConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     this.getInputByName("startUp")?.connect(this.startUpHandler)
@@ -41,6 +41,6 @@ export class IntervalReaction extends AbstractReaction<IIntervalConfig> {
   }
 }
 
-export const Interval: ActivityFactory = (meta: IReactionMeta<IIntervalConfig>, options?: IActivityFactoryOptions) => {
+export const Interval: ActivityFactory = (meta: IActivityDefine<IIntervalConfig>, options?: IActivityFactoryOptions) => {
   return new IntervalReaction(meta, options)
 }

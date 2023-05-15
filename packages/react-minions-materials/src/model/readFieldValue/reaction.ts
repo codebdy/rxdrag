@@ -1,12 +1,12 @@
-import { AbstractReaction, IActivityFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IReactionMeta, ActivityFactory } from "@rxdrag/schema"
+import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema"
 
 export interface IReadFieldValueConfig extends IConfigMeta {
   fieldPath?: string,
 }
 
-export class ReadFieldValueReaction extends AbstractReaction<IReadFieldValueConfig> {
-  constructor(meta: IReactionMeta<IReadFieldValueConfig>, options?: IActivityFactoryOptions) {
+export class ReadFieldValueReaction extends AbstractActivity<IReadFieldValueConfig> {
+  constructor(meta: IActivityDefine<IReadFieldValueConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
     this.getInputByName("input")?.connect(this.inputHandler)
   }
@@ -26,6 +26,6 @@ export class ReadFieldValueReaction extends AbstractReaction<IReadFieldValueConf
   }
 }
 
-export const ReadFieldValue: ActivityFactory = (meta: IReactionMeta<IReadFieldValueConfig>, options?: IActivityFactoryOptions) => {
+export const ReadFieldValue: ActivityFactory = (meta: IActivityDefine<IReadFieldValueConfig>, options?: IActivityFactoryOptions) => {
   return new ReadFieldValueReaction(meta, options)
 }

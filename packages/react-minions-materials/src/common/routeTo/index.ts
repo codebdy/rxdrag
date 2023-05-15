@@ -1,5 +1,5 @@
 import { routeIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { RouteTo } from "./reaction";
 import { routeToSchema } from "./schema";
@@ -9,7 +9,7 @@ export const routeToMaterial: IActivityMaterial<ReactNode> = {
   name: "routeTo",
   icon: routeIcon,
   label: "$routeTo",
-  reactionType: ReactionType.SingleReaction,
+  reactionType: ActivityType.SingleActivity,
   meta: {
     inPorts: [
       {

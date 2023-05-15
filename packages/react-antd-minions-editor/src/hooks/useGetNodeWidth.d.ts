@@ -1,1 +1,1 @@
-export declare function useGetNodeWidth(): (nodeMeta: IReactionMeta<IConfigMeta>, subLabel?: string) => number;
+export declare function useGetNodeWidth(): (nodeMeta: IActivityDefine<IConfigMeta>, subLabel?: string) => number;

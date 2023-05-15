@@ -5,7 +5,7 @@ import { getEndNodeConfig } from "./getEndNodeConfig";
 import { useGetMaterial } from "./useGetMaterial";
 import { useGetSingleNodeConfig } from "./useGetSingleNodeConfig";
 import { useGetControllerReactionConfig } from "./useGetControllerReactionConfig";
-import { ReactionType } from "@rxdrag/schema";
+import { ActivityType } from "@rxdrag/schema";
 export function useGetNodeConfig() {
     const [, token] = useToken();
     const getMaterial = useGetMaterial();
@@ -13,14 +13,14 @@ export function useGetNodeConfig() {
     const getReactionNodeConfig = useGetControllerReactionConfig();
     const getConfig = useCallback((reactNodeMeta) => {
         switch (reactNodeMeta.type) {
-            case ReactionType.Start:
+            case ActivityType.Start:
                 return getStartNodeConfig(reactNodeMeta, token);
-            case ReactionType.End:
+            case ActivityType.End:
                 return getEndNodeConfig(reactNodeMeta, token);
-            case ReactionType.SingleReaction:
+            case ActivityType.SingleReaction:
                 return getSingleNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.materialName));
-            case ReactionType.ControllerDefaultReaction:
-            case ReactionType.ControllerReaction:
+            case ActivityType.ControllerDefaultReaction:
+            case ActivityType.ControllerReaction:
                 return getReactionNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.materialName));
         }
         throw new Error("Can not find reaction node meta: " + reactNodeMeta.type);

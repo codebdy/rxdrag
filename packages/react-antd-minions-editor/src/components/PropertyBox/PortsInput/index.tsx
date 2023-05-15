@@ -1,4 +1,4 @@
-import { IPortMeta } from "@rxdrag/schema";
+import { IPortDefine } from "@rxdrag/schema";
 import { Button, Popover } from "antd";
 import React from "react";
 import { memo, useCallback, useState } from "react";
@@ -8,8 +8,8 @@ export const PortsInput = memo((
   props: {
     title: string,
     popoverTitle: string,
-    value?: IPortMeta[],
-    onChange?: (value?: IPortMeta[]) => void,
+    value?: IPortDefine[],
+    onChange?: (value?: IPortDefine[]) => void,
     type: "input" | "output",
   }
 ) => {

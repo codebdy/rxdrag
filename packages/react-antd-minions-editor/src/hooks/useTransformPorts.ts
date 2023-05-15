@@ -1,4 +1,4 @@
-import { IPortMeta, IReactionMeta, ReactionType } from "@rxdrag/schema";
+import { IPortDefine, IActivityDefine, ActivityType } from "@rxdrag/schema";
 import { useToken } from "antd/es/theme/internal";
 import { useCallback } from "react";
 import { useGetControllerReactionPorts } from "./useGetControllerReactionPorts";
@@ -8,7 +8,7 @@ export function useTransformPorts() {
   const [, token] = useToken()
   const t = useTrans()
   const getControllerPorts = useGetControllerReactionPorts();
-  const doTransform = useCallback((ports: IPortMeta[] | undefined, group: 'in' | 'out') => {
+  const doTransform = useCallback((ports: IPortDefine[] | undefined, group: 'in' | 'out') => {
     return ports?.map(
       port => ({
         id: port.id,
@@ -44,8 +44,8 @@ export function useTransformPorts() {
     )
   }, [t, token.colorBgContainer, token.colorTextSecondary])
 
-  const transform = useCallback((meta: IReactionMeta) => {
-    if (meta.type === ReactionType.ControllerReaction) {
+  const transform = useCallback((meta: IActivityDefine) => {
+    if (meta.type === ActivityType.ControllerReaction) {
       const ins = doTransform(getControllerPorts(meta, 'in'), 'in') || []
       const outs = doTransform(getControllerPorts(meta, 'out'), 'out') || []
       return [...ins, ...outs]

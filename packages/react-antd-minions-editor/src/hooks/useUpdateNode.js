@@ -3,7 +3,7 @@ import { useGetNodeWidth } from "./useGetNodeWidth";
 import { useTransformPorts } from "./useTransformPorts";
 import { useGetNodeHeight } from "./useGetNodeHeight";
 import { useGetSubLabel } from "./useGetSubLabel";
-import { ReactionType } from "@rxdrag/schema";
+import { ActivityType } from "@rxdrag/schema";
 export function useUpdateNode() {
     const getNodeWidth = useGetNodeWidth();
     const getHeight = useGetNodeHeight();
@@ -15,7 +15,7 @@ export function useUpdateNode() {
             const subLabel = getSubLabel(nodeMeta);
             const height = getHeight(nodeMeta, !!subLabel);
             graphNode.replaceData({ ...graphNode.data, meta: nodeMeta, subLabel, height: height });
-            if (nodeMeta.type === ReactionType.Start || nodeMeta.type === ReactionType.End) {
+            if (nodeMeta.type === ActivityType.Start || nodeMeta.type === ActivityType.End) {
                 graphNode.attr("text/text", nodeMeta.label);
             }
             else {

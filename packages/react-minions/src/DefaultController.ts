@@ -10,9 +10,9 @@ import {
   INIT_EVENT_NAME,
   DESTORY_EVENT_NAME,
   UnListener,
-  GraphicalReaction
+  GraphicalActivity
 } from "@rxdrag/minions"
-import { IReaction, IControllerMeta, IReactionDefineMeta } from "@rxdrag/schema";
+import { IActivity, IControllerMeta, ILogicFlowDefinition } from "@rxdrag/schema";
 
 export class DefaultController implements IController {
   id: string;
@@ -26,7 +26,7 @@ export class DefaultController implements IController {
   } = {}
   private propsListeners: PropsListener[] = []
 
-  private reactions: IReaction[] = []
+  private reactions: IActivity[] = []
 
   constructor(public meta: IControllerMeta, protected parentControllers: Controllers, protected options?: IActivityFactoryOptions) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -96,17 +96,13 @@ export class DefaultController implements IController {
     }
   }
 
-  private makeReaction = (reactionMeta: IReactionDefineMeta, controllers: Controllers) => {
+  private makeReaction = (reactionMeta: ILogicFlowDefinition, controllers: Controllers) => {
     const options = {
       ...this.options,
       variableController: this,
       propsController: this,
       controllers,
     }
-    if (reactionMeta.logicMetas) {
-      return new GraphicalReaction(reactionMeta, options)
-    } /*else if (reactionMeta.jsCode) {
-      return new CodeReaction(reactionMeta)
-    }*/
+    return new GraphicalActivity(reactionMeta, options)
   }
 }

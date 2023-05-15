@@ -7,7 +7,7 @@ import { ListItemReaction } from "./ListItemReaction";
 import { ListItemVariable } from "./ListItemVariable";
 import { NameDialog } from "./NameDialog";
 import { VariableDialog } from "./VariableDialog";
-import { IControllerMeta, IReactionDefineMeta, IVariableDefineMeta } from "@rxdrag/schema";
+import { IControllerMeta, ILogicFlowDefinition, IVariableDefineMeta } from "@rxdrag/schema";
 import { methodIcon, variableIcon } from "@rxdrag/react-shared"
 import { createUuid } from "@rxdrag/shared"
 import { useTranslate } from "@rxdrag/react-locales"
@@ -69,7 +69,7 @@ export const Members = memo((
 
   const handleAddReactionOk = useCallback((name?: string) => {
     if (name) {
-      const newReaction: IReactionDefineMeta = {
+      const newReaction: ILogicFlowDefinition = {
         id: createUuid(),
         label: name,
       }

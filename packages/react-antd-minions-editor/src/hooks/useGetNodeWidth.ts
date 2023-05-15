@@ -1,4 +1,4 @@
-import { IReactionMeta, IConfigMeta } from "@rxdrag/schema";
+import { IActivityDefine, IConfigMeta } from "@rxdrag/schema";
 import { useCallback } from "react";
 
 function lengthOf(str: string) {
@@ -15,7 +15,7 @@ function lengthOf(str: string) {
 }
 
 export function useGetNodeWidth() {
-  const getNodeWidth = useCallback((nodeMeta: IReactionMeta<IConfigMeta>, subLabel?: string) => {
+  const getNodeWidth = useCallback((nodeMeta: IActivityDefine<IConfigMeta>, subLabel?: string) => {
     const labeWidth = (lengthOf(nodeMeta.label || "")) * 7
     const subLabelWidth = Math.round(lengthOf(subLabel || "") * 5.5)
     return Math.max(labeWidth, subLabelWidth) + 60

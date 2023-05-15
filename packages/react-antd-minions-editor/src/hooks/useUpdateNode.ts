@@ -4,20 +4,20 @@ import { useGetNodeWidth } from "./useGetNodeWidth";
 import { useTransformPorts } from "./useTransformPorts";
 import { useGetNodeHeight } from "./useGetNodeHeight";
 import { useGetSubLabel } from "./useGetSubLabel";
-import { IConfigMeta, IReactionMeta, ReactionType } from "@rxdrag/schema";
+import { IConfigMeta, IActivityDefine, ActivityType } from "@rxdrag/schema";
 
 export function useUpdateNode() {
   const getNodeWidth = useGetNodeWidth()
   const getHeight = useGetNodeHeight()
   const transPorts = useTransformPorts()
   const getSubLabel = useGetSubLabel()
-  const update = useCallback((graphNode: Node<Node.Properties>, nodeMeta: IReactionMeta<IConfigMeta>) => {
+  const update = useCallback((graphNode: Node<Node.Properties>, nodeMeta: IActivityDefine<IConfigMeta>) => {
     if (nodeMeta.x6Node) {
       graphNode.setPosition(nodeMeta.x6Node);
       const subLabel = getSubLabel(nodeMeta)
       const height = getHeight(nodeMeta, !!subLabel)
       graphNode.replaceData({ ...graphNode.data, meta: nodeMeta, subLabel, height: height })
-      if (nodeMeta.type === ReactionType.Start || nodeMeta.type === ReactionType.End) {
+      if (nodeMeta.type === ActivityType.Start || nodeMeta.type === ActivityType.End) {
         graphNode.attr("text/text", nodeMeta.label)
       } else {
         graphNode.setSize({ ...nodeMeta.x6Node, width: getNodeWidth(nodeMeta, subLabel), height: height });

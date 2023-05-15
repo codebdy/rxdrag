@@ -6,7 +6,7 @@ import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import { EditableCell } from './EditableCell';
 import { EditableRow } from './EditableRow';
 import { useTrans } from '../../../hooks/useTrans';
-import { IPortMeta } from '@rxdrag/schema';
+import { IPortDefine } from '@rxdrag/schema';
 import { createUuid } from '@rxdrag/shared';
 
 const Container = styled.div`
@@ -55,8 +55,8 @@ const components = {
 export const PortsTable = memo((
   props: {
     onClose: () => void,
-    value?: IPortMeta[],
-    onChange?: (value?: IPortMeta[]) => void,
+    value?: IPortDefine[],
+    onChange?: (value?: IPortDefine[]) => void,
     type: "input" | "output",
   }
 ) => {
@@ -103,7 +103,7 @@ export const PortsTable = memo((
   ], [dataSource.length, handleDelete, t]);
 
   const handleAdd = useCallback(() => {
-    const newData: IPortMeta = {
+    const newData: IPortDefine = {
       id: createUuid(),
       name: `input${count}`,
       label: `${t("$"+type)} ${count}`,

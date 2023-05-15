@@ -1,13 +1,13 @@
-import { AbstractReaction, IActivityFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IReactionMeta, ActivityFactory } from "@rxdrag/schema"
+import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema"
 
 export interface IFixedValueConfig extends IConfigMeta {
   value?: any,
 }
 
-export class FixedValueReaction extends AbstractReaction<IFixedValueConfig> {
+export class FixedValueReaction extends AbstractActivity<IFixedValueConfig> {
 
-  constructor(meta: IReactionMeta<IFixedValueConfig>, options?: IActivityFactoryOptions) {
+  constructor(meta: IActivityDefine<IFixedValueConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
@@ -22,6 +22,6 @@ export class FixedValueReaction extends AbstractReaction<IFixedValueConfig> {
   }
 }
 
-export const FixedValue: ActivityFactory = (meta: IReactionMeta<IFixedValueConfig>, options?: IActivityFactoryOptions) => {
+export const FixedValue: ActivityFactory = (meta: IActivityDefine<IFixedValueConfig>, options?: IActivityFactoryOptions) => {
   return new FixedValueReaction(meta, options)
 }

@@ -1,5 +1,5 @@
 import { IActivityMaterial } from "@rxdrag/schema";
-export declare function useGetControllerReactionConfig(): (nodeMeta: IReactionMeta<IConfigMeta>, material: IActivityMaterial | undefined) => {
+export declare function useGetControllerReactionConfig(): (nodeMeta: IActivityDefine<IConfigMeta>, material: IActivityMaterial | undefined) => {
     id: any;
     shape: string;
     x: any;
@@ -7,7 +7,7 @@ export declare function useGetControllerReactionConfig(): (nodeMeta: IReactionMe
     width: number;
     height: number;
     data: {
-        meta: IReactionMeta<IConfigMeta>;
+        meta: IActivityDefine<IConfigMeta>;
         backgroundColor: string;
         color: string;
         material: any;

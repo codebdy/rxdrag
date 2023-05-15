@@ -1,16 +1,16 @@
-import { AbstractReaction, IActivityFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IReactionMeta, ActivityFactory } from "@rxdrag/schema"
+import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema"
 
 export interface IMergeConfig extends IConfigMeta {
   fromInput?: boolean,
   times?: number
 }
 
-export class MergeReaction extends AbstractReaction<IMergeConfig> {
+export class MergeReaction extends AbstractActivity<IMergeConfig> {
   private noPassInputs: string[] = []
   private values: any = {}
 
-  constructor(meta: IReactionMeta<IMergeConfig>, options?: IActivityFactoryOptions) {
+  constructor(meta: IActivityDefine<IMergeConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
     for (const input of meta.inPorts || []) {
       this.noPassInputs.push(input.id)
@@ -33,6 +33,6 @@ export class MergeReaction extends AbstractReaction<IMergeConfig> {
   }
 }
 
-export const Merge: ActivityFactory = (meta: IReactionMeta<IMergeConfig>, options?: IActivityFactoryOptions) => {
+export const Merge: ActivityFactory = (meta: IActivityDefine<IMergeConfig>, options?: IActivityFactoryOptions) => {
   return new MergeReaction(meta, options)
 }

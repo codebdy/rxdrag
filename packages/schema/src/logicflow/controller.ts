@@ -1,4 +1,4 @@
-import { IReactionMeta } from './meta';
+import { IActivityDefine } from './meta';
 
 export type InputHandler = (inputValue?: unknown) => void;
 
@@ -10,10 +10,10 @@ export interface IJointer {
   //disconnect: (jointer: IJointer | InputHandler) => void;
 }
 
-export interface IReaction {
+export interface IActivity {
   id: string;
   inputs: IJointer[];
   outputs: IJointer[];
-  meta?: IReactionMeta;
+  meta?: IActivityDefine;
   destory(): void;
 }

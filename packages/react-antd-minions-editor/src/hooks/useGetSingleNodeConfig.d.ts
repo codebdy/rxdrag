@@ -1,5 +1,5 @@
 import { IActivityMaterial } from "@rxdrag/schema";
-export declare function useGetSingleNodeConfig(): (nodeMeta: IReactionMeta<IConfigMeta>, material: IActivityMaterial | undefined) => {
+export declare function useGetSingleNodeConfig(): (nodeMeta: IActivityDefine<IConfigMeta>, material: IActivityMaterial | undefined) => {
     id: any;
     shape: string;
     x: any;
@@ -7,7 +7,7 @@ export declare function useGetSingleNodeConfig(): (nodeMeta: IReactionMeta<IConf
     width: number;
     height: number;
     data: {
-        meta: IReactionMeta<IConfigMeta>;
+        meta: IActivityDefine<IConfigMeta>;
         backgroundColor: string;
         color: string;
         material: any;

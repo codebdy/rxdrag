@@ -1,6 +1,6 @@
 
 import { randomIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { IRandomConfig, Random } from "./reaction";
 import { randomSchema } from "./schema";
@@ -10,7 +10,7 @@ export const randomMaterial: IActivityMaterial<ReactNode> = {
   name: "random",
   icon: randomIcon,
   label: "$random",
-  reactionType: ReactionType.SingleReaction,
+  reactionType: ActivityType.SingleActivity,
   meta: {
     inPorts: [
       {

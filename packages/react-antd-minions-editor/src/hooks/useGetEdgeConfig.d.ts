@@ -1,4 +1,4 @@
-export declare function useGetEdgeConfig(): (invakeMeta: IInvokeMeta) => {
+export declare function useGetEdgeConfig(): (invakeMeta: ILineDefine) => {
     id: any;
     shape: string;
     source: {

@@ -1,7 +1,7 @@
-import { IControllerMeta, IReaction, IReactionDefineMeta } from "@rxdrag/schema";
+import { IControllerMeta, IActivity, ILogicFlowDefinition } from "@rxdrag/schema";
 import { Controllers, EventFuncs, IController, InputFunc, PropsListener, UnListener, VariableListener } from "../interfaces";
 import { IFactoryOptions, IActivityFactoryOptions } from "./IFactoryOptions"
-import { GraphicalReaction } from "./GraphicalReaction"
+import { GraphicalActivity } from "./GraphicalActivity"
 
 export const INIT_EVENT_NAME = "init"
 export const DESTORY_EVENT_NAME = "destory"
@@ -18,7 +18,7 @@ export class DefaultController<IOptions extends IFactoryOptions> implements ICon
   } = {}
   private propsListeners: PropsListener[] = []
 
-  private reactions: IReaction[] = []
+  private reactions: IActivity[] = []
 
   constructor(public meta: IControllerMeta, protected parentControllers: Controllers, protected options?: IOptions) {
     this.id = meta.id!
@@ -87,15 +87,13 @@ export class DefaultController<IOptions extends IFactoryOptions> implements ICon
     }
   }
 
-  private makeReaction = (reactionMeta: IReactionDefineMeta, controllers: Controllers) => {
+  private makeReaction = (reactionMeta: ILogicFlowDefinition, controllers: Controllers) => {
     const options: IActivityFactoryOptions = {
       ...this.options,
       variableController: this,
       propsController: this,
       controllers,
     }
-    if (reactionMeta.logicMetas) {
-      return new GraphicalReaction(reactionMeta, options)
-    }
+    return new GraphicalActivity(reactionMeta, options)
   }
 }

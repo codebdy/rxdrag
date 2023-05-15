@@ -1,11 +1,11 @@
-import { IReactionMeta, IConfigMeta, ILogicMetas } from "@rxdrag/schema";
+import { IActivityDefine, IConfigMeta, ILogicMetas } from "@rxdrag/schema";
 import { ISnapshot } from "./state";
 export interface IEventMeta {
     name: string;
     label: string;
 }
 export interface INodeData {
-    meta: IReactionMeta<IConfigMeta>;
+    meta: IActivityDefine<IConfigMeta>;
 }
 export type ZoomChangeListener = (zoom: number) => void;
 export type MetasChangeListener = (metas: ILogicMetas) => void;

@@ -1,4 +1,4 @@
-import { IInvokeMeta, ILogicMetas, IReactionMeta } from "@rxdrag/schema"
+import { ILineDefine, ILogicMetas, IActivityDefine } from "@rxdrag/schema"
 import { ISnapshot } from "./interfaces/state"
 
 export enum ActionType {
@@ -23,11 +23,11 @@ export enum ActionType {
 
 export interface Action {
   type: ActionType,
-  payload?: IReactionMeta | string | IInvokeMeta | number | ISnapshot | ISnapshot | ISnapshot[]
+  payload?: IActivityDefine | string | ILineDefine | number | ISnapshot | ISnapshot | ISnapshot[]
 }
 
 export interface AddNodeAction extends Action {
-  payload: IReactionMeta
+  payload: IActivityDefine
 }
 
 export interface RemoveNodeAction extends Action {
@@ -35,15 +35,15 @@ export interface RemoveNodeAction extends Action {
 }
 
 export interface ChangeNodeAction extends Action {
-  payload: IReactionMeta
+  payload: IActivityDefine
 }
 
 export interface AddEdgeAction extends Action {
-  payload: IInvokeMeta
+  payload: ILineDefine
 }
 
 export interface ChangeEdgeAction extends Action {
-  payload: IInvokeMeta
+  payload: ILineDefine
 }
 
 export interface RemoveEdgeAction extends Action {

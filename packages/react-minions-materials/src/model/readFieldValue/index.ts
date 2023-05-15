@@ -1,5 +1,5 @@
 import { fieldReadIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { ReadFieldValue } from "./reaction";
 import { readFieldValueSchema } from "./schema";
@@ -9,7 +9,7 @@ export const readFieldValueMaterial: IActivityMaterial<ReactNode> = {
   name: "readFieldValue",
   icon: fieldReadIcon,
   label: "$readFieldValue",
-  reactionType: ReactionType.SingleReaction,
+  reactionType: ActivityType.SingleActivity,
   meta: {
     inPorts: [
       {

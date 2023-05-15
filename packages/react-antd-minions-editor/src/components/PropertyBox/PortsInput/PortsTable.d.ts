@@ -1,8 +1,8 @@
 import React from 'react';
-import { IPortMeta } from '@rxdrag/schema';
+import { IPortDefine } from '@rxdrag/schema';
 export declare const PortsTable: React.MemoExoticComponent<(props: {
     onClose: () => void;
-    value?: IPortMeta[] | undefined;
-    onChange?: ((value?: IPortMeta[]) => void) | undefined;
+    value?: IPortDefine[] | undefined;
+    onChange?: ((value?: IPortDefine[]) => void) | undefined;
     type: "input" | "output";
 }) => JSX.Element>;

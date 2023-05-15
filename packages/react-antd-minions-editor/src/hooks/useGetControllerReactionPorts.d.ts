@@ -1,1 +1,1 @@
-export declare function useGetControllerReactionPorts(): (meta: IReactionMeta, group: 'in' | 'out') => IPortMeta[] | undefined;
+export declare function useGetControllerReactionPorts(): (meta: IActivityDefine, group: 'in' | 'out') => IPortDefine[] | undefined;

@@ -1,4 +1,4 @@
-import { ReactionType } from "@rxdrag/schema";
+import { ActivityType } from "@rxdrag/schema";
 import { useToken } from "antd/es/theme/internal";
 import { useCallback } from "react";
 import { useGetControllerReactionPorts } from "./useGetControllerReactionPorts";
@@ -41,7 +41,7 @@ export function useTransformPorts() {
         }));
     }, [t, token.colorBgContainer, token.colorTextSecondary]);
     const transform = useCallback((meta) => {
-        if (meta.type === ReactionType.ControllerReaction) {
+        if (meta.type === ActivityType.ControllerReaction) {
             const ins = doTransform(getControllerPorts(meta, 'in'), 'in') || [];
             const outs = doTransform(getControllerPorts(meta, 'out'), 'out') || [];
             return [...ins, ...outs];

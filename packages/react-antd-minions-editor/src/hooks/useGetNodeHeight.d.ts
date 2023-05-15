@@ -1,1 +1,1 @@
-export declare function useGetNodeHeight(): (nodeMeta: IReactionMeta<IConfigMeta>, hasSubLabel: boolean) => number;
+export declare function useGetNodeHeight(): (nodeMeta: IActivityDefine<IConfigMeta>, hasSubLabel: boolean) => number;

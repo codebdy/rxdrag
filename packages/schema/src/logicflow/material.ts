@@ -1,29 +1,30 @@
+import { IActivityFactoryOptions } from '@rxdrag/minions';
 import { INodeSchema } from '../node';
-import { IReaction } from './controller';
+import { IActivity } from './controller';
 import {
   IConfigMeta,
-  IReactionMeta,
+  IActivityDefine,
   IReactionNodeData,
-  ReactionType
+  ActivityType
 } from './meta';
 
 export type ActivityFactory<IActivityFactoryOptions = unknown> = (
-  meta: IReactionMeta<IConfigMeta>,
+  meta: IActivityDefine<IConfigMeta>,
   options: IActivityFactoryOptions
-) => IReaction;
+) => IActivity;
 
 export interface IActivityMaterial<ComponentNode = unknown> {
   //唯一名称
   name: string;
   label: string;
-  reactionType: ReactionType;
+  reactionType: ActivityType;
   icon?: ComponentNode;
   color?: string;
-  //reaction?: IReaction,
+  //reaction?: IActivity,
   schema?: INodeSchema;
   meta?: IReactionNodeData;
   subTitle?: (config?: IConfigMeta) => string | undefined;
-  reaction?: ActivityFactory;
+  reaction?: ActivityFactory<IActivityFactoryOptions>;
 }
 
 export interface ActivityMaterialCategory<ComponentNode = unknown> {

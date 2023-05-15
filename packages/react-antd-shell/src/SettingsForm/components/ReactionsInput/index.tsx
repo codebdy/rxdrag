@@ -2,12 +2,12 @@ import React from "react"
 import { Button, Form, Input, Modal, Switch } from "antd"
 import { ControllerMetaEditor, IEventMeta } from "@rxdrag/react-antd-minions-editor"
 import { memo, useCallback, useEffect, useState } from "react"
-import { IControllerMeta, IReactionDefineMeta } from "@rxdrag/schema"
+import { IControllerMeta, ILogicFlowDefinition } from "@rxdrag/schema"
 import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
 import { useControllerMetas } from "./hooks/useControllerMetas"
 import { Toolbox } from "./Toolbox"
-import { getAllMaterial, reactionMaterialLocales } from "@rxdrag/react-minions-materials"
+import { getAllMaterial, activityMaterialLocales } from "@rxdrag/react-minions-materials"
 
 export const ReactionsInput = memo((props: {
   events?: IEventMeta[]
@@ -27,7 +27,7 @@ export const ReactionsInput = memo((props: {
   }, [value])
 
   useEffect(() => {
-    const eventMetas: IReactionDefineMeta[] = [...(value?.events || [])]
+    const eventMetas: ILogicFlowDefinition[] = [...(value?.events || [])]
     for (const event of events || []) {
       if (!value?.events?.find(evt => evt.name === event.name)) {
         eventMetas.push({
@@ -124,7 +124,7 @@ export const ReactionsInput = memo((props: {
                 controllerMetas={controllers}
                 materials={getAllMaterial()}
                 toolbox={<Toolbox />}
-                locales = {reactionMaterialLocales}
+                locales = {activityMaterialLocales}
               />
             }
           </Modal>

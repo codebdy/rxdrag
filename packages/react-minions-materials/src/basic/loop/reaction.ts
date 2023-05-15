@@ -1,5 +1,5 @@
-import { AbstractReaction, IActivityFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IReactionMeta, ActivityFactory } from "@rxdrag/schema"
+import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema"
 import { isArr, isNum } from "@rxdrag/shared"
 
 export interface ILoopConfig extends IConfigMeta {
@@ -7,8 +7,8 @@ export interface ILoopConfig extends IConfigMeta {
   times?: number
 }
 
-export class LoopReaction extends AbstractReaction<ILoopConfig> {
-  constructor(meta: IReactionMeta<ILoopConfig>, options?: IActivityFactoryOptions) {
+export class LoopReaction extends AbstractActivity<ILoopConfig> {
+  constructor(meta: IActivityDefine<ILoopConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     this.getInputByName("input")?.connect(this.inputHandler)
@@ -35,6 +35,6 @@ export class LoopReaction extends AbstractReaction<ILoopConfig> {
   }
 }
 
-export const Loop: ActivityFactory = (meta: IReactionMeta<ILoopConfig>, options?: IActivityFactoryOptions) => {
+export const Loop: ActivityFactory = (meta: IActivityDefine<ILoopConfig>, options?: IActivityFactoryOptions) => {
   return new LoopReaction(meta, options)
 }

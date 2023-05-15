@@ -1,13 +1,13 @@
-import { AbstractReaction, IActivityFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IReactionMeta, InputHandler, ActivityFactory } from "@rxdrag/schema"
+import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IActivityDefine, InputHandler, ActivityFactory } from "@rxdrag/schema"
 
 export interface IJsCodeConfig extends IConfigMeta {
   expression?: string
 }
 
-export class JsCodeReaction extends AbstractReaction<IJsCodeConfig> {
+export class JsCodeReaction extends AbstractActivity<IJsCodeConfig> {
 
-  constructor(meta: IReactionMeta<IJsCodeConfig>, options?: IActivityFactoryOptions) {
+  constructor(meta: IActivityDefine<IJsCodeConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
@@ -32,6 +32,6 @@ export class JsCodeReaction extends AbstractReaction<IJsCodeConfig> {
 
 }
 
-export const JsCode: ActivityFactory = (meta: IReactionMeta<IJsCodeConfig>, options?: IActivityFactoryOptions) => {
+export const JsCode: ActivityFactory = (meta: IActivityDefine<IJsCodeConfig>, options?: IActivityFactoryOptions) => {
   return new JsCodeReaction(meta, options)
 }
