@@ -1,11 +1,11 @@
-import { IReactionFactoryOptions, GraphicalReaction } from "@rxdrag/minions"
-import { ReactionFactory, IReactionMeta, IConfigMeta } from "@rxdrag/schema"
+import { IActivityFactoryOptions, GraphicalReaction } from "@rxdrag/minions"
+import { ActivityFactory, IReactionMeta, IConfigMeta } from "@rxdrag/schema"
 import { CodeReaction } from "./CodeReaction"
 
 
-export const ControllerReaction: ReactionFactory = (meta: IReactionMeta<IConfigMeta>, options: IReactionFactoryOptions) => {
+export const ControllerReaction: ActivityFactory = (meta: IReactionMeta<IConfigMeta>, options: IActivityFactoryOptions) => {
   if (!meta?.config?.controllerId) {
-    throw new Error("No controller id when create controller reaction by ReactionFactory")
+    throw new Error("No controller id when create controller reaction by ActivityFactory")
   }
   const defineMeta = options?.controllers?.[meta?.config?.controllerId]?.meta.reactions?.find(reactionMeta=>reactionMeta.id === meta.config?.reactionRef)
   if (defineMeta?.logicMetas) {

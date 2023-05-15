@@ -1,5 +1,5 @@
-import { AbstractReaction, IReactionFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IReactionMeta, ReactionFactory } from "@rxdrag/schema"
+import { AbstractReaction, IActivityFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IReactionMeta, ActivityFactory } from "@rxdrag/schema"
 
 export interface IConditionConfig extends IConfigMeta {
   trueExpression?: string
@@ -7,7 +7,7 @@ export interface IConditionConfig extends IConfigMeta {
 
 export class ConditionReaction extends AbstractReaction<IConditionConfig> {
 
-  constructor(meta: IReactionMeta<IConditionConfig>, options?: IReactionFactoryOptions) {
+  constructor(meta: IReactionMeta<IConditionConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
@@ -32,6 +32,6 @@ export class ConditionReaction extends AbstractReaction<IConditionConfig> {
   }
 }
 
-export const Condition: ReactionFactory = (meta: IReactionMeta<IConditionConfig>, options?: IReactionFactoryOptions) => {
+export const Condition: ActivityFactory = (meta: IReactionMeta<IConditionConfig>, options?: IActivityFactoryOptions) => {
   return new ConditionReaction(meta, options)
 }

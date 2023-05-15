@@ -1,6 +1,6 @@
 import { IControllerMeta, IReaction, IReactionDefineMeta } from "@rxdrag/schema";
 import { Controllers, EventFuncs, IController, InputFunc, PropsListener, UnListener, VariableListener } from "../interfaces";
-import { IFactoryOptions, IReactionFactoryOptions } from "./IFactoryOptions"
+import { IFactoryOptions, IActivityFactoryOptions } from "./IFactoryOptions"
 import { GraphicalReaction } from "./GraphicalReaction"
 
 export const INIT_EVENT_NAME = "init"
@@ -88,7 +88,7 @@ export class DefaultController<IOptions extends IFactoryOptions> implements ICon
   }
 
   private makeReaction = (reactionMeta: IReactionDefineMeta, controllers: Controllers) => {
-    const options: IReactionFactoryOptions = {
+    const options: IActivityFactoryOptions = {
       ...this.options,
       variableController: this,
       propsController: this,

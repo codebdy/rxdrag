@@ -1,4 +1,4 @@
-import { AbstractReaction, IController, IReactionFactoryOptions } from "@rxdrag/minions"
+import { AbstractReaction, IController, IActivityFactoryOptions } from "@rxdrag/minions"
 import { IConfigMeta, IReactionMeta } from "@rxdrag/schema"
 
 export interface IControllerReactionConfig extends IConfigMeta {
@@ -8,7 +8,7 @@ export interface IControllerReactionConfig extends IConfigMeta {
 
 export abstract class AbstractControllerReaction extends AbstractReaction<IControllerReactionConfig> {
   controller: IController
-  constructor(meta: IReactionMeta<IControllerReactionConfig>, options?: IReactionFactoryOptions) {
+  constructor(meta: IReactionMeta<IControllerReactionConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     if (!meta.config?.controllerId) {

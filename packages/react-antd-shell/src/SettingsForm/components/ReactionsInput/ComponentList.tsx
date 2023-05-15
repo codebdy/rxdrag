@@ -3,7 +3,7 @@ import { reactionMaterial } from "@rxdrag/react-minions-materials/src/controller
 import { setPropMaterial } from "@rxdrag/react-minions-materials/src/controller/setProp";
 import { setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "@rxdrag/react-minions-materials/src/controller/variable";
 import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon, variableIcon } from "@rxdrag/react-shared";
-import { IControllerMeta, IReactionDefineMeta, IReactionMaterial, IReactionMeta } from "@rxdrag/schema";
+import { IControllerMeta, IReactionDefineMeta, IActivityMaterial, IReactionMeta } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { Space, Typography } from "antd";
 import React from "react";
@@ -36,7 +36,7 @@ export const ComponentList = memo((
   const dnd = useDnd()
   const getNodeConfig = useGetNodeConfig()
   const currentController = useController()
-  const startDefaultDragFn = useCallback((marterial: IReactionMaterial, controllerId: string | undefined, reactionName: string) => {
+  const startDefaultDragFn = useCallback((marterial: IActivityMaterial, controllerId: string | undefined, reactionName: string) => {
     return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       if (!graph) {
         return;
@@ -57,7 +57,7 @@ export const ComponentList = memo((
     };
   }, [dnd, getNodeConfig, graph, t])
 
-  const startDragFn = useCallback((reaction: IReactionDefineMeta, marterial: IReactionMaterial, controllerId: string | undefined) => {
+  const startDragFn = useCallback((reaction: IReactionDefineMeta, marterial: IActivityMaterial, controllerId: string | undefined) => {
     return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       if (!graph) {
         return;

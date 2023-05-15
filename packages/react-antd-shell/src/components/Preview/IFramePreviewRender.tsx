@@ -1,7 +1,7 @@
 import { IDesignerEngine, IDocument } from "@rxdrag/core";
 import { DesignerEngineContext } from "@rxdrag/react-core";
 import { IComponents } from "@rxdrag/react-shared";
-import { IReactionMaterial } from "@rxdrag/schema";
+import { IActivityMaterial } from "@rxdrag/schema";
 import { memo } from "react"
 import { PreviewRender } from "./PreviewRender";
 
@@ -9,7 +9,7 @@ declare const window: Window & { engine?: IDesignerEngine, doc?: IDocument };
 
 export const IFramePreviewRender = memo((props: {
   components: IComponents,
-  reactionMaterials: IReactionMaterial[]
+  reactionMaterials: IActivityMaterial[]
 }) => {
   const { components, reactionMaterials } = props
   const engine = window.engine

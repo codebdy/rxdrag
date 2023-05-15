@@ -1,12 +1,12 @@
 import React, { ReactNode } from "react"
 import { memo, useCallback } from "react"
 import { useGraph, useDnd, useTrans, useGetNodeConfig } from "../../hooks";
-import { IReactionMaterial, IReactionMeta } from "@rxdrag/schema";
+import { IActivityMaterial, IReactionMeta } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 
 export type ReactionResourceProps = {
   children?: (onMouseDown: ((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void)) => ReactNode,
-  material: IReactionMaterial<React.ReactNode>,
+  material: IActivityMaterial<React.ReactNode>,
 }
 
 export const ReactionResource = memo((props: ReactionResourceProps) => {

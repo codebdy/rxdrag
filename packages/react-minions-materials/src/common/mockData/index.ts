@@ -1,11 +1,11 @@
 import { simulateIcon } from "@rxdrag/react-shared";
-import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ReactionType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { MockData } from "./reaction";
 import { mockDataSchema } from "./schema";
 import { ReactNode } from "react";
 
-export const mockDataMaterial: IReactionMaterial<ReactNode> = {
+export const mockDataMaterial: IActivityMaterial<ReactNode> = {
   name: "mockData",
   icon: simulateIcon,
   label: "$simulateData",

@@ -1,12 +1,12 @@
-import { IReactionMaterial } from "@rxdrag/schema"
+import { IActivityMaterial } from "@rxdrag/schema"
 import {Controllers} from "@rxdrag/minions"
 import { IForm } from "@rxdrag/fieldy"
 
 export type Navigate = (url: string) => void
 
-export interface IReactionFactoryOptions {
+export interface IActivityFactoryOptions {
   controllers?: Controllers,
-  materials?: IReactionMaterial[],
+  materials?: IActivityMaterial[],
   form?: IForm,
   fieldPath?: string,
   //路由跳转

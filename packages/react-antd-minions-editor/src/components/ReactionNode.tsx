@@ -1,6 +1,6 @@
 import { Node } from '@antv/x6'
 import '@antv/x6-react-shape'
-import { IReactionMaterial } from '@rxdrag/schema'
+import { IActivityMaterial } from '@rxdrag/schema'
 import { GlobalToken } from 'antd/es/theme/interface'
 import { insertCss } from 'insert-css'
 import React from 'react'
@@ -70,7 +70,7 @@ const Label = styled.span`
 `
 
 export interface NodeViewParams extends INodeData {
-  material: IReactionMaterial;
+  material: IActivityMaterial;
   token: GlobalToken,
   width: number,
   height: number,

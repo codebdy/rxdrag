@@ -1,5 +1,5 @@
-import { IConfigMeta, IReactionMeta, ReactionFactory } from "@rxdrag/schema"
-import { AbstractReaction, IReactionFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IReactionMeta, ActivityFactory } from "@rxdrag/schema"
+import { AbstractReaction, IActivityFactoryOptions } from "@rxdrag/minions"
 
 export interface IDebugConfig extends IConfigMeta {
   closed?: boolean
@@ -7,7 +7,7 @@ export interface IDebugConfig extends IConfigMeta {
 
 export class DebugReaction extends AbstractReaction<IDebugConfig> {
 
-  constructor(meta: IReactionMeta<IDebugConfig>, options?: IReactionFactoryOptions) {
+  constructor(meta: IReactionMeta<IDebugConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
@@ -24,6 +24,6 @@ export class DebugReaction extends AbstractReaction<IDebugConfig> {
   }
 }
 
-export const Debug: ReactionFactory = (meta: IReactionMeta<IDebugConfig>, options?: IReactionFactoryOptions) => {
+export const Debug: ActivityFactory = (meta: IReactionMeta<IDebugConfig>, options?: IActivityFactoryOptions) => {
   return new DebugReaction(meta, options)
 }

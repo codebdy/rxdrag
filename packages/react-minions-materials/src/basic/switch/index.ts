@@ -1,9 +1,9 @@
-import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ReactionType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { switchIcon } from "@rxdrag/react-shared";
 import { switchSchema } from "./schema";
 
-export const switchMaterial: IReactionMaterial = {
+export const switchMaterial: IActivityMaterial = {
   name: "switch",
   icon: switchIcon,
   label: "$switch",

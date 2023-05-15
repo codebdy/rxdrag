@@ -1,12 +1,12 @@
-import { AbstractReaction, IReactionFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IReactionMeta, ReactionFactory } from "@rxdrag/schema"
+import { AbstractReaction, IActivityFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IReactionMeta, ActivityFactory } from "@rxdrag/schema"
 import { IForm } from "@rxdrag/fieldy"
 
 export interface ISubscribeFieldConfig extends IConfigMeta {
   fieldPath?: string,
 }
 
-export interface IShellReactionFactoryOptions extends IReactionFactoryOptions {
+export interface IShellReactionFactoryOptions extends IActivityFactoryOptions {
   form?: IForm,
   fieldPath?: string,
 }
@@ -32,6 +32,6 @@ export class SubscribeFieldReaction extends AbstractReaction<ISubscribeFieldConf
   }
 }
 
-export const SubscribeField: ReactionFactory = (meta: IReactionMeta<ISubscribeFieldConfig>, options?: IReactionFactoryOptions) => {
+export const SubscribeField: ActivityFactory = (meta: IReactionMeta<ISubscribeFieldConfig>, options?: IActivityFactoryOptions) => {
   return new SubscribeFieldReaction(meta, options)
 }

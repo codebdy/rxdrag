@@ -1,5 +1,5 @@
-import { IController, IReactionFactoryOptions } from "@rxdrag/minions";
-import { IConfigMeta, IReactionMeta, ReactionFactory } from "@rxdrag/schema";
+import { IController, IActivityFactoryOptions } from "@rxdrag/minions";
+import { IConfigMeta, IReactionMeta, ActivityFactory } from "@rxdrag/schema";
 import { AbstractControllerReaction } from "../AbstractControllerReaction";
 
 export interface IVariableConfig extends IConfigMeta {
@@ -8,7 +8,7 @@ export interface IVariableConfig extends IConfigMeta {
 
 export class SetVariableReaction extends AbstractControllerReaction {
   controller: IController
-  constructor(meta: IReactionMeta<IVariableConfig>, options?: IReactionFactoryOptions) {
+  constructor(meta: IReactionMeta<IVariableConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
@@ -33,6 +33,6 @@ export class SetVariableReaction extends AbstractControllerReaction {
   }
 }
 
-export const SetVariable: ReactionFactory = (meta: IReactionMeta<IVariableConfig>, options?: IReactionFactoryOptions) => {
+export const SetVariable: ActivityFactory = (meta: IReactionMeta<IVariableConfig>, options?: IActivityFactoryOptions) => {
   return new SetVariableReaction(meta, options)
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   IController,
   InputFunc,
@@ -5,7 +6,7 @@ import {
   EventFuncs,
   PropsListener,
   Controllers,
-  IReactionFactoryOptions,
+  IActivityFactoryOptions,
   INIT_EVENT_NAME,
   DESTORY_EVENT_NAME,
   UnListener,
@@ -27,7 +28,8 @@ export class DefaultController implements IController {
 
   private reactions: IReaction[] = []
 
-  constructor(public meta: IControllerMeta, protected parentControllers: Controllers, protected options?: IReactionFactoryOptions) {
+  constructor(public meta: IControllerMeta, protected parentControllers: Controllers, protected options?: IActivityFactoryOptions) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     this.id = meta.id!
     for (const eventMeta of meta.events || []) {
       const reaction = this.makeReaction(eventMeta, { ...parentControllers, [this.id]: this })

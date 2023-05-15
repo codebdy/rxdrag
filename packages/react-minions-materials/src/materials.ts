@@ -1,5 +1,5 @@
 
-import { IReactionMaterial, ReactionMaterialCategory } from "@rxdrag/schema"
+import { IActivityMaterial, ActivityMaterialCategory } from "@rxdrag/schema"
 import { ReactNode } from "react"
 import { auxReactions } from "./auxtools"
 import { basicReactions } from "./basic"
@@ -8,7 +8,7 @@ import { controllerReactions } from "./controller"
 import { dataModelReactions } from "./model"
 
 
-export const reactionMaterialCategories: ReactionMaterialCategory<ReactNode>[] = [
+export const activityMaterialCategories: ActivityMaterialCategory<ReactNode>[] = [
   {
     name: '$basicReactions',
     materials: basicReactions,
@@ -28,6 +28,6 @@ export const reactionMaterialCategories: ReactionMaterialCategory<ReactNode>[] =
 ]
 
 export const getAllMaterial = () => {
-  const materials: IReactionMaterial<ReactNode>[] = [...controllerReactions]
-  return materials.concat(...reactionMaterialCategories.map(category => category.materials))
+  const materials: IActivityMaterial<ReactNode>[] = [...controllerReactions]
+  return materials.concat(...activityMaterialCategories.map(category => category.materials))
 }

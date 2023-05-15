@@ -1,4 +1,4 @@
-import { IControllerMeta, ILogicMetas, IReactionMaterial } from "@rxdrag/schema";
+import { IControllerMeta, ILogicMetas, IActivityMaterial } from "@rxdrag/schema";
 import React, { memo, ReactNode, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
 import { ControllerContext, ControllersContext } from "../contexts";
@@ -35,7 +35,7 @@ export const ControllerMetaEditor = memo((
     value: IControllerMeta,
     onChange?: (value?: IControllerMeta) => void,
     controllerMetas: IControllerMeta[],
-    materials: IReactionMaterial<ReactNode>[],
+    materials: IActivityMaterial<ReactNode>[],
     toolbox?: React.ReactNode,
     lang?: string,
     locales?:ILocales,

@@ -1,5 +1,5 @@
-import { AbstractReaction, IReactionFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IReactionMeta, InputHandler, ReactionFactory } from "@rxdrag/schema"
+import { AbstractReaction, IActivityFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IReactionMeta, InputHandler, ActivityFactory } from "@rxdrag/schema"
 
 export interface IJsCodeConfig extends IConfigMeta {
   expression?: string
@@ -7,7 +7,7 @@ export interface IJsCodeConfig extends IConfigMeta {
 
 export class JsCodeReaction extends AbstractReaction<IJsCodeConfig> {
 
-  constructor(meta: IReactionMeta<IJsCodeConfig>, options?: IReactionFactoryOptions) {
+  constructor(meta: IReactionMeta<IJsCodeConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
@@ -32,6 +32,6 @@ export class JsCodeReaction extends AbstractReaction<IJsCodeConfig> {
 
 }
 
-export const JsCode: ReactionFactory = (meta: IReactionMeta<IJsCodeConfig>, options?: IReactionFactoryOptions) => {
+export const JsCode: ActivityFactory = (meta: IReactionMeta<IJsCodeConfig>, options?: IActivityFactoryOptions) => {
   return new JsCodeReaction(meta, options)
 }

@@ -1,13 +1,13 @@
 import { IConfigMeta, IJointer, IReaction, IReactionDefineMeta, IReactionMeta, ReactionType } from "@rxdrag/schema";
 import { Jointer } from "../classes/jointer";
-import { IReactionFactoryOptions } from "./IFactoryOptions";
+import { IActivityFactoryOptions } from "./IFactoryOptions";
 
 export class GraphicalReaction implements IReaction {
   id: string;
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];
   reactions: IReaction[] = [];
-  constructor(private defineMeta: IReactionDefineMeta, private options: IReactionFactoryOptions, public meta?: IReactionMeta<IConfigMeta>) {
+  constructor(private defineMeta: IReactionDefineMeta, private options: IActivityFactoryOptions, public meta?: IReactionMeta<IConfigMeta>) {
     //注意这个id的处理，自定reaction必须要用meta id，不能用defineMeta id
     this.id = meta?.id || defineMeta.id
 

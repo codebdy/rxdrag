@@ -1,11 +1,11 @@
 import { intervalIcon } from "@rxdrag/react-shared";
-import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ReactionType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { IIntervalConfig, Interval } from "./reaction";
 import { intervalSchema } from "./schema";
 import { ReactNode } from "react";
 
-export const intervalMaterial: IReactionMaterial<ReactNode> = {
+export const intervalMaterial: IActivityMaterial<ReactNode> = {
   name: "interval",
   icon: intervalIcon,
   label: "$interval",

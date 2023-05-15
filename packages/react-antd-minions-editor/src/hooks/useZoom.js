@@ -1,0 +1,21 @@
+import { useCallback, useEffect, useState } from "react";
+import { ActionType } from "../actions";
+import { useEditorStore } from "./useEditorStore";
+export function useZoom() {
+    const [zoom, setZoom] = useState(0);
+    const store = useEditorStore();
+    const handleZoomChange = useCallback((zm) => {
+        setZoom(zm);
+    }, []);
+    const doSetZoom = useCallback((zm) => {
+        store?.dispatch({ type: ActionType.SET_ZOOM, payload: zm });
+    }, [store]);
+    useEffect(() => {
+        const unsub = store?.subscribeZoomChange(handleZoomChange);
+        return unsub;
+    }, [handleZoomChange, store]);
+    useEffect(() => {
+        setZoom(store?.store.getState().zoom || 0);
+    }, [store?.store]);
+    return { zoom, setZoom: doSetZoom };
+}

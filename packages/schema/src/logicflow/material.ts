@@ -7,12 +7,12 @@ import {
   ReactionType
 } from './meta';
 
-export type ReactionFactory<IReactionFactoryOptions = unknown> = (
+export type ActivityFactory<IActivityFactoryOptions = unknown> = (
   meta: IReactionMeta<IConfigMeta>,
-  options: IReactionFactoryOptions
+  options: IActivityFactoryOptions
 ) => IReaction;
 
-export interface IReactionMaterial<ComponentNode = unknown> {
+export interface IActivityMaterial<ComponentNode = unknown> {
   //唯一名称
   name: string;
   label: string;
@@ -23,10 +23,10 @@ export interface IReactionMaterial<ComponentNode = unknown> {
   schema?: INodeSchema;
   meta?: IReactionNodeData;
   subTitle?: (config?: IConfigMeta) => string | undefined;
-  reaction?: ReactionFactory;
+  reaction?: ActivityFactory;
 }
 
-export interface ReactionMaterialCategory<ComponentNode = unknown> {
+export interface ActivityMaterialCategory<ComponentNode = unknown> {
   name: string;
-  materials: IReactionMaterial<ComponentNode>[];
+  materials: IActivityMaterial<ComponentNode>[];
 }

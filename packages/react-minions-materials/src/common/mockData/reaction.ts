@@ -1,5 +1,5 @@
-import { AbstractReaction, IReactionFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IReactionMeta, ReactionFactory } from "@rxdrag/schema"
+import { AbstractReaction, IActivityFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IReactionMeta, ActivityFactory } from "@rxdrag/schema"
 
 
 export interface IMockDataConfig extends IConfigMeta {
@@ -9,7 +9,7 @@ export interface IMockDataConfig extends IConfigMeta {
 }
 
 export class MockDataReaction extends AbstractReaction<IMockDataConfig> {
-  constructor(meta: IReactionMeta<IMockDataConfig>, options?: IReactionFactoryOptions) {
+  constructor(meta: IReactionMeta<IMockDataConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     this.getInputByName("input")?.connect(this.inputHandler)
@@ -44,6 +44,6 @@ export class MockDataReaction extends AbstractReaction<IMockDataConfig> {
   }
 }
 
-export const MockData: ReactionFactory = (meta: IReactionMeta<IMockDataConfig>, options?: IReactionFactoryOptions) => {
+export const MockData: ActivityFactory = (meta: IReactionMeta<IMockDataConfig>, options?: IActivityFactoryOptions) => {
   return new MockDataReaction(meta, options)
 }

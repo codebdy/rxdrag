@@ -1,7 +1,7 @@
 import { memo } from "react"
 import { Collapse as AntdCollapse, Row } from "antd";
 import styled from "styled-components";
-import { reactionMaterialCategories } from "@rxdrag/react-minions-materials";
+import { activityMaterialCategories } from "@rxdrag/react-minions-materials";
 import { ComponentList } from "./ComponentList";
 import { ReactionResource, ToolItem, useTrans } from "@rxdrag/react-antd-minions-editor";
 
@@ -16,9 +16,9 @@ const { Panel } = AntdCollapse;
 export const Toolbox = memo(() => {
   const t = useTrans()
   return (
-    <Collapse defaultActiveKey={[reactionMaterialCategories?.[0]?.name]} bordered={false} accordion expandIconPosition="end">
+    <Collapse defaultActiveKey={[activityMaterialCategories?.[0]?.name]} bordered={false} accordion expandIconPosition="end">
       {
-        reactionMaterialCategories.map(category => {
+        activityMaterialCategories.map(category => {
           return (
             <Panel key={category.name} header={t(category.name)}>
               <Row gutter={8}>

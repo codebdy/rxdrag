@@ -1,5 +1,5 @@
 import { Graph } from "@antv/x6";
-import { IControllerMeta, ILogicMetas, ReactionMaterialCategory } from "@rxdrag/schema";
+import { IControllerMeta, ILogicMetas, ActivityMaterialCategory } from "@rxdrag/schema";
 import { createContext } from "react";
 import { EditorStore } from "./classes/EditorStore";
 import { IState } from "./interfaces/state";

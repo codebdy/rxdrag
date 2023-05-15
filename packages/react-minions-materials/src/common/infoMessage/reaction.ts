@@ -1,5 +1,5 @@
-import { AbstractReaction, IReactionFactoryOptions } from "@rxdrag/minions";
-import { IConfigMeta, IReactionMeta, ReactionFactory } from "@rxdrag/schema";
+import { AbstractReaction, IActivityFactoryOptions } from "@rxdrag/minions";
+import { IConfigMeta, IReactionMeta, ActivityFactory } from "@rxdrag/schema";
 import { message } from "antd";
 
 export enum MessageType {
@@ -17,7 +17,7 @@ export interface IInfoMessageConfig extends IConfigMeta {
 
 export class InfoMessageReaction extends AbstractReaction<IInfoMessageConfig> {
 
-  constructor(meta: IReactionMeta<IInfoMessageConfig>, options?: IReactionFactoryOptions) {
+  constructor(meta: IReactionMeta<IInfoMessageConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
@@ -52,6 +52,6 @@ export class InfoMessageReaction extends AbstractReaction<IInfoMessageConfig> {
   }
 }
 
-export const InfoMessage: ReactionFactory = (meta: IReactionMeta<IInfoMessageConfig>, options?: IReactionFactoryOptions) => {
+export const InfoMessage: ActivityFactory = (meta: IReactionMeta<IInfoMessageConfig>, options?: IActivityFactoryOptions) => {
   return new InfoMessageReaction(meta, options)
 }

@@ -1,5 +1,5 @@
 import { startIcon, endIcon } from "@rxdrag/react-shared";
-import { INodeSchema, IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { INodeSchema, IActivityMaterial, ReactionType } from "@rxdrag/schema";
 import { labelSchema, nameSchema } from "../baseSchema";
 import { conditionMaterial } from "./condition";
 import { delayMaterial } from "./delay";
@@ -15,7 +15,7 @@ export const startEndSchema: INodeSchema = {
   children: [nameSchema, labelSchema],
 }
 
-export const basicReactions: IReactionMaterial<ReactNode>[] = [
+export const basicReactions: IActivityMaterial<ReactNode>[] = [
   {
     name: "start",
     icon: startIcon,
