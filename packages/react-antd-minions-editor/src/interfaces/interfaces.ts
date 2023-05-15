@@ -1,4 +1,4 @@
-import { IActivityDefine, IConfigMeta, ILogicMetas } from "@rxdrag/schema";
+import { IActivityDefine, IConfigMeta, ILogicFlowDefinition } from "@rxdrag/schema";
 import { ISnapshot } from "./state";
 
 export interface IEventMeta {
@@ -11,7 +11,7 @@ export interface INodeData {
 }
 
 export type ZoomChangeListener = (zoom: number) => void
-export type MetasChangeListener = (metas: ILogicMetas) => void
+export type MetasChangeListener = (metas: ILogicFlowDefinition) => void
 export type SelectedChangeListener = (selected?: string) => void
 export type UndoListChangeListener = (undos: ISnapshot[]) => void
 export type RedoListChangeListener = (redos: ISnapshot[]) => void

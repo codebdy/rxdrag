@@ -1,4 +1,4 @@
-import { IControllerMeta, ILogicMetas, IActivityMaterial } from "@rxdrag/schema";
+import { IControllerMeta, IActivityMaterial, ILogicFlowDefinition } from "@rxdrag/schema";
 import React, { memo, ReactNode, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
 import { ControllerContext, ControllersContext } from "../contexts";
@@ -55,19 +55,19 @@ export const ControllerMetaEditor = memo((
   }, [onChange])
 
   const metas = useMemo(() => {
-    const reaction = value?.reactions?.find(reaction => reaction.id === selected)
-    if (reaction) {
-      return reaction.logicMetas
+    const logicflow = value?.reactions?.find(reaction => reaction.id === selected)
+    if (logicflow) {
+      return logicflow
     }
 
-    return value?.events?.find(evt => evt.id === selected)?.logicMetas
+    return value?.events?.find(evt => evt.id === selected)
   }, [selected, value?.events, value?.reactions])
 
-  const handleChange = useCallback((newMetas: ILogicMetas) => {
+  const handleChange = useCallback((newMetas: ILogicFlowDefinition) => {
     const newValue = {
       ...value,
-      reactions: value?.reactions?.map(reaction => reaction.id === selected ? { ...reaction, logicMetas: newMetas } : reaction),
-      events: value?.events?.map(event => event.id === selected ? { ...event, logicMetas: newMetas } : event),
+      reactions: value?.reactions?.map(reaction => reaction.id === selected ? { ...reaction, ...newMetas } : reaction),
+      events: value?.events?.map(event => event.id === selected ? { ...event, ...newMetas } : event),
     }
     onChange?.(newValue)
   }, [onChange, selected, value])

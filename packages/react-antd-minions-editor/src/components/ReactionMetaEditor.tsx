@@ -1,5 +1,4 @@
 import React from "react";
-import { ILogicMetas } from "@rxdrag/schema";
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
 import { Action, ActionType } from "../actions";
@@ -10,6 +9,7 @@ import { Logic } from "./Logic";
 import { PropertyBox } from "./PropertyBox";
 import { Toolbar } from "./Toolbar";
 import { Toolbox } from "./Toolbox/Toolbox";
+import { ILogicFlowDefinition } from "@rxdrag/schema";
 
 const CenterArea = styled.div`
   position: relative;
@@ -71,8 +71,8 @@ const RightArea = styled.div`
 
 export const ReactionMetaEditor = memo((
   props: {
-    metas?: ILogicMetas,
-    onChange: (meta: ILogicMetas) => void,
+    metas?: ILogicFlowDefinition,
+    onChange: (meta: ILogicFlowDefinition) => void,
     toolbox?: React.ReactNode,
   }
 ) => {
@@ -96,7 +96,7 @@ export const ReactionMetaEditor = memo((
     setShowMap((show) => !show)
   }, [])
 
-  const handleChange = useCallback((newMetas: ILogicMetas) => {
+  const handleChange = useCallback((newMetas: ILogicFlowDefinition) => {
     onChange(newMetas)
   }, [onChange])
 

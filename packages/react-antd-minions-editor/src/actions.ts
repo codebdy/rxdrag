@@ -1,4 +1,4 @@
-import { ILineDefine, ILogicMetas, IActivityDefine } from "@rxdrag/schema"
+import { ILineDefine, IActivityDefine, ILogicFlowDefinition } from "@rxdrag/schema"
 import { ISnapshot } from "./interfaces/state"
 
 export enum ActionType {
@@ -23,7 +23,7 @@ export enum ActionType {
 
 export interface Action {
   type: ActionType,
-  payload?: IActivityDefine | string | ILineDefine | number | ISnapshot | ISnapshot | ISnapshot[]
+  payload?: IActivityDefine | string | ILineDefine | number | ISnapshot | ISnapshot | ISnapshot[] | ILogicFlowDefinition
 }
 
 export interface AddNodeAction extends Action {
@@ -71,7 +71,7 @@ export interface SetRedoListAction extends Action {
 }
 
 export interface SetMetasAction extends Action {
-  payload: ILogicMetas
+  payload: ILogicFlowDefinition
 }
 
 export interface SetChangeFlagAction extends Action {

@@ -18,13 +18,13 @@ export class DefaultController<IOptions extends IFactoryOptions> implements ICon
   } = {}
   private propsListeners: PropsListener[] = []
 
-  private reactions: IActivity[] = []
+  private activites: IActivity[] = []
 
   constructor(public meta: IControllerMeta, protected parentControllers: Controllers, protected options?: IOptions) {
     this.id = meta.id!
     for (const eventMeta of meta.events || []) {
       const reaction = this.makeReaction(eventMeta, { ...parentControllers, [this.id]: this })
-      reaction && this.reactions.push(reaction)
+      reaction && this.activites.push(reaction)
       if (!reaction) {
         continue
       }
@@ -49,10 +49,10 @@ export class DefaultController<IOptions extends IFactoryOptions> implements ICon
   }
 
   destory = () => {
-    for (const reaction of this.reactions) {
+    for (const reaction of this.activites) {
       reaction.destory()
     }
-    this.reactions = []
+    this.activites = []
     this.events = {}
   }
 

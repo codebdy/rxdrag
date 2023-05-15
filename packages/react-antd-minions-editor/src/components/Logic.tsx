@@ -9,16 +9,16 @@ import { useRemove } from "../hooks/edit-meta/useRemove"
 import { useChangeFlag } from "../hooks/useChangeFlag"
 import { useMetas } from "../hooks/useMetas"
 import { useSetZoom } from "../hooks/useSetZoom"
-import { ILogicMetas } from "@rxdrag/schema"
+import { ILogicFlowDefinition } from "@rxdrag/schema"
 
 export const Logic = memo((
   props: {
-    onChange: (metas: ILogicMetas) => void,
+    onChange: (metas: ILogicFlowDefinition) => void,
   }
 ) => {
   const { onChange } = props;
-  const {changeFlag} = useChangeFlag()
-  const {metas} = useMetas()
+  const { changeFlag } = useChangeFlag()
+  const { metas } = useMetas()
   const metasRef = useRef(metas)
   metasRef.current = metas;
   const onChangeRef = useRef(onChange)

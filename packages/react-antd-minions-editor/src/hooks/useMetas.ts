@@ -1,17 +1,17 @@
-import { ILogicMetas } from "@rxdrag/schema"
 import { useCallback, useEffect, useState } from "react"
 import { ActionType } from "../actions"
 import { useEditorStore } from "./useEditorStore"
+import { ILogicFlowDefinition } from "@rxdrag/schema"
 
 export function useMetas() {
-  const [metas, setMetas] = useState<ILogicMetas>()
+  const [metas, setMetas] = useState<ILogicFlowDefinition>()
   const store = useEditorStore()
 
-  const handleMetasChange = useCallback((mts: ILogicMetas) => {
+  const handleMetasChange = useCallback((mts: ILogicFlowDefinition) => {
     setMetas(mts)
   }, [])
 
-  const doSetMetas = useCallback((mts: ILogicMetas) => {
+  const doSetMetas = useCallback((mts: ILogicFlowDefinition) => {
     store?.dispatch({ type: ActionType.SET_METAS, payload: mts })
   }, [store])
 

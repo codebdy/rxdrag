@@ -1,10 +1,10 @@
 import { IAction } from "./action";
 import { DocumentActionPayload } from "./payloads";
 import { ID, RxProps } from "./types";
-import {INodeMeta, INodeSchema} from "@rxdrag/schema"
+import { INodeMeta, INodeSchema } from "@rxdrag/schema"
 
 export type NodesById = {
-	[id in ID]: ITreeNode
+  [id in ID]: ITreeNode
 }
 
 export type CanvasWidthLimits = {
@@ -45,11 +45,11 @@ export interface IDesignerProps {
   [key: string]: unknown,
 }
 
-export interface ITreeNode {
+export interface ITreeNode<IField = unknown, INodeController = unknown> {
   id: ID
   title?: string
   description?: string
-  meta: INodeMeta
+  meta: INodeMeta<IField, INodeController>
   parentId?: ID
   children: ID[]
   isSlot: boolean,

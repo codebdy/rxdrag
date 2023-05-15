@@ -281,7 +281,7 @@
             "defaultValue": false
           }
         ],
-        "reactions": [
+        "logicflow": [
           {
             "id": "2ff4dfd0-039d-4c00-8e13-95f518fae50b",
             "label": "开始",
