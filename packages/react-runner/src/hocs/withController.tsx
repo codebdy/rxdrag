@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react"
 import { useMaterials } from "@rxdrag/react-minions"
 import { ReactComponent } from "@rxdrag/react-shared"
@@ -31,8 +32,8 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
     }, [])
 
     useEffect(() => {
-      if (meta && controllers && materials) {
-        const ctrl = new DefaultController(meta, controllers, { materials, navigate, form, fieldPath })
+      if (meta && materials) {
+        const ctrl = new DefaultController(meta, controllers||{}, { materials, navigate, form, fieldPath })
         const unlistener = ctrl?.subscribeToPropsChange(handlePropsChange)
         ctrl.initEvent?.()
         setController(ctrl)
