@@ -5,5 +5,7 @@ export function useSelectedNode() {
   const { selected } = useSelected()
   const { metas } = useMetas()
 
-  return metas?.reactions?.find(reaction => reaction.id === selected)
+  console.log("哈哈", metas, selected)
+
+  return metas?.nodes?.find(node => node.id === selected)
 }

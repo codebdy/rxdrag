@@ -22,6 +22,7 @@ export function useMetas() {
 
   useEffect(() => {
     const state = store?.store.getState()
+    console.log("哈哈哈 useMetas", state)
     setMetas({ lines: state?.lines || [], nodes: state?.nodes || [] })
   }, [store?.store])
 

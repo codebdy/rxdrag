@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { invariant } from "@rxdrag/shared"
 import { Store } from "redux";
 import { Action } from "../actions";
-import { IState } from "../interfaces/state";
+import { ISnapshot, IState } from "../interfaces/state";
 import { ChangeFlagChangeListener, MetasChangeListener, RedoListChangeListener, SelectedChangeListener, UndoListChangeListener, ZoomChangeListener } from "../interfaces/interfaces";
 import { mainReducer } from "../reducers/mainReducer";
 
@@ -18,7 +18,7 @@ export class EditorStore {
 
   subscribeZoomChange(listener: ZoomChangeListener) {
     invariant(typeof listener === 'function', 'listener must be a function.')
-    let previousState: any = this.store.getState().zoom
+    let previousState: number | undefined = this.store.getState().zoom
 
     const handleChange = () => {
       const nextState = this.store.getState().zoom
@@ -34,10 +34,10 @@ export class EditorStore {
 
   subscribeMetasChange(listener: MetasChangeListener) {
     invariant(typeof listener === 'function', 'listener must be a function.')
-    let previousState: any = this.store.getState().metas
+    let previousState: IState = this.store.getState()
 
     const handleChange = () => {
-      const nextState = this.store.getState().metas
+      const nextState = this.store.getState()
       if (nextState === previousState) {
         return
       }
@@ -50,7 +50,7 @@ export class EditorStore {
 
   subscribeSelectedChange(listener: SelectedChangeListener) {
     invariant(typeof listener === 'function', 'listener must be a function.')
-    let previousState: any = this.store.getState().selected
+    let previousState: string | undefined = this.store.getState().selected
 
     const handleChange = () => {
       const nextState = this.store.getState().selected
@@ -66,7 +66,7 @@ export class EditorStore {
 
   subscribeUndoLisrtChange(listener: UndoListChangeListener) {
     invariant(typeof listener === 'function', 'listener must be a function.')
-    let previousState: any = this.store.getState().undoList
+    let previousState: ISnapshot[] | undefined = this.store.getState().undoList
 
     const handleChange = () => {
       const nextState = this.store.getState().undoList
@@ -82,7 +82,7 @@ export class EditorStore {
 
   subscribeRedoLisrtChange(listener: RedoListChangeListener) {
     invariant(typeof listener === 'function', 'listener must be a function.')
-    let previousState: any = this.store.getState().redoList
+    let previousState: ISnapshot[] | undefined = this.store.getState().redoList
 
     const handleChange = () => {
       const nextState = this.store.getState().redoList
@@ -99,7 +99,7 @@ export class EditorStore {
 
   subscribeChangeFlagChange(listener: ChangeFlagChangeListener) {
     invariant(typeof listener === 'function', 'listener must be a function.')
-    let previousState: any = this.store.getState().changeFlag
+    let previousState: number = this.store.getState().changeFlag
 
     const handleChange = () => {
       const nextState = this.store.getState().changeFlag
@@ -119,6 +119,7 @@ function makeStoreInstance(debugMode: boolean): Store<IState> {
   // we'll need to consider how to pull off dev-tooling
   const reduxDevTools =
     typeof window !== 'undefined' &&
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).__REDUX_DEVTOOLS_EXTENSION__
   return configureStore(
     {

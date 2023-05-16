@@ -2,7 +2,7 @@ import { IConfigMeta, IJointer, IActivity, ILogicFlowDefinition, IActivityDefine
 import { Jointer } from "../classes/jointer";
 import { IActivityFactoryOptions } from "./IFactoryOptions";
 
-export class GraphicalActivity implements IActivity {
+export class LogicFlow implements IActivity {
   id: string;
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];
@@ -15,7 +15,7 @@ export class GraphicalActivity implements IActivity {
     this.constructActivities()
 
     //第二步， 构建连接关系
-    this.contructRelations()
+    this.contructLines()
   }
   destory(): void {
     for (const activity of this.activities) {
@@ -42,7 +42,7 @@ export class GraphicalActivity implements IActivity {
         case ActivityType.ControllerDefaultReaction:
         case ActivityType.ControllerReaction:
           //拿到 material的目的是为了拿到上面的 reaction factory
-          const material = this.getMaterial(activityMeta.materialName)
+          const material = this.getMaterial(activityMeta.materialName) as any
           if (material?.reaction) {
             //通过material上的 reation factory 生成reaction节点
             this.activities.push(material.reaction(activityMeta, this.options))
@@ -53,7 +53,7 @@ export class GraphicalActivity implements IActivity {
   }
 
   //连接一个图的所有节点，把所有的jointer连起来
-  private contructRelations() {
+  private contructLines() {
     for (const lineMeta of this.defineMeta.lines || []) {
       let sourceJointer = this.inputs.find(jointer => jointer.id === lineMeta.source.nodeId)
       if (!sourceJointer && lineMeta.source.portId) {

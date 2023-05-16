@@ -1,3 +1,3 @@
 export * from "./DefaultController"
-export * from "./GraphicalActivity"
+export * from "./LogicFlow"
 export * from "./IFactoryOptions"

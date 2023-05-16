@@ -1,4 +1,4 @@
-import { IActivityFactoryOptions, GraphicalActivity } from "@rxdrag/minions"
+import { IActivityFactoryOptions, LogicFlow } from "@rxdrag/minions"
 import { ActivityFactory, IActivityDefine, IConfigMeta } from "@rxdrag/schema"
 
 
@@ -8,7 +8,7 @@ export const ControllerReaction: ActivityFactory<IActivityFactoryOptions> = (met
   }
   const defineMeta = options?.controllers?.[meta?.config?.controllerId]?.meta.reactions?.find(reactionMeta => reactionMeta.id === meta.config?.reactionRef)
   if (defineMeta) {
-    return new GraphicalActivity(defineMeta, options, meta)
+    return new LogicFlow(defineMeta, options, meta)
   } else {
     throw new Error("No implement on Controller reaction meta")
   }

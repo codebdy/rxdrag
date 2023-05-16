@@ -1,6 +1,6 @@
 import { Empty, Form, Input, InputNumber, Radio, Select, Slider, Switch } from "antd"
 import { useToken } from "antd/es/theme/internal"
-import React, { Fragment, memo, useCallback, useEffect, useMemo } from "react"
+import React, { Fragment, memo, useCallback, useMemo } from "react"
 import styled from "styled-components"
 import { ActionType } from "../../actions"
 import { useBackup } from "../../hooks/edit-meta/useBackup"
@@ -59,6 +59,7 @@ export const PropertyBox = memo(() => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [localesManager, material?.schema])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleNodeChange = useCallback((nodeData: any) => {
     backup()
     const newData = { ...node, ...nodeData }
@@ -95,6 +96,7 @@ export const PropertyBox = memo(() => {
                 //fieldSchemas={fieldSchemas}
                 initialValue={node}
                 onValueChange={handleNodeChange}
+                key={node.id}
               >
                 {
                   propsSchema &&

@@ -1,7 +1,7 @@
 import { IControllerMeta, IActivity, ILogicFlowDefinition } from "@rxdrag/schema";
 import { Controllers, EventFuncs, IController, InputFunc, PropsListener, UnListener, VariableListener } from "../interfaces";
 import { IFactoryOptions, IActivityFactoryOptions } from "./IFactoryOptions"
-import { GraphicalActivity } from "./GraphicalActivity"
+import { LogicFlow } from "./LogicFlow"
 
 export const INIT_EVENT_NAME = "init"
 export const DESTORY_EVENT_NAME = "destory"
@@ -94,6 +94,6 @@ export class DefaultController<IOptions extends IFactoryOptions> implements ICon
       propsController: this,
       controllers,
     }
-    return new GraphicalActivity(reactionMeta, options)
+    return new LogicFlow(reactionMeta, options)
   }
 }
