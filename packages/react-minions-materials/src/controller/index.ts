@@ -1,13 +1,13 @@
-import { IReactionMaterial } from "@rxdrag/schema";
-import { reactionMaterial } from "./reaction";
+import { IActivityMaterial } from "@rxdrag/schema";
+import { activityMaterial } from "./reaction";
 import { setPropMaterial } from "./setProp";
 import { listenVariableMaterial, readVariableMaterial, setVariableMaterial } from "./variable";
 import { ReactNode } from "react";
 
-export const controllerReactions: IReactionMaterial<ReactNode>[] = [
+export const controllerReactions: IActivityMaterial<ReactNode>[] = [
   setVariableMaterial,
   listenVariableMaterial,
   setPropMaterial,
   readVariableMaterial,
-  reactionMaterial,
+  activityMaterial,
 ]

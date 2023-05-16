@@ -3,6 +3,7 @@ import { ActionType } from "../../actions"
 import { useDispatch } from "../useDispatch"
 import { useMetas } from "../useMetas"
 import { useSelected } from "../useSelected"
+import { ISnapshot } from "../../interfaces"
 
 export function useBackup() {
   const dispatch = useDispatch()
@@ -10,7 +11,7 @@ export function useBackup() {
   const { metas } = useMetas()
 
   const backup = useCallback(() => {
-    dispatch?.({ type: ActionType.BACKUP, payload: { ...metas, selected }  as any})
+    dispatch?.({ type: ActionType.BACKUP, payload: { ...metas, selected }  as ISnapshot})
   }, [dispatch, metas, selected])
 
   return backup

@@ -1,14 +1,14 @@
-import { AbstractReaction, IReactionFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IReactionMeta, ReactionFactory } from "@rxdrag/schema"
+import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema"
 
 export interface IDelayConfig extends IConfigMeta {
   time?: number
 }
 
-export class DelayReaction extends AbstractReaction<IDelayConfig> {
+export class DelayReaction extends AbstractActivity<IDelayConfig> {
   inputValue?: any
   timeout?: NodeJS.Timeout
-  constructor(meta: IReactionMeta<IDelayConfig>, options?: IReactionFactoryOptions) {
+  constructor(meta: IActivityDefine<IDelayConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     this.getInputByName("startUp")?.connect(this.startUpHandler)
@@ -38,6 +38,6 @@ export class DelayReaction extends AbstractReaction<IDelayConfig> {
   }
 }
 
-export const Delay: ReactionFactory = (meta: IReactionMeta<IDelayConfig>, options?: IReactionFactoryOptions) => {
+export const Delay: ActivityFactory = (meta: IActivityDefine<IDelayConfig>, options?: IActivityFactoryOptions) => {
   return new DelayReaction(meta, options)
 }

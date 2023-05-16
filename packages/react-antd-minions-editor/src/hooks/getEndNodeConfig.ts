@@ -1,8 +1,8 @@
-import { IReactionMeta } from "@rxdrag/schema"
+import { IActivityDefine } from "@rxdrag/schema"
 import { GlobalToken } from "antd/es/theme/interface"
 
 const STROKE_WIDTH = 5
-export const getEndNodeConfig = (nodeMeta: IReactionMeta, token: GlobalToken) => {
+export const getEndNodeConfig = (nodeMeta: IActivityDefine, token: GlobalToken) => {
   return {
     id: nodeMeta.id,
     shape: 'circle',

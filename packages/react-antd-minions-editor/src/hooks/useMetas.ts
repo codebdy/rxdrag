@@ -1,7 +1,7 @@
-import { ILogicMetas } from "@rxdrag/schema"
 import { useCallback, useEffect, useState } from "react"
 import { ActionType } from "../actions"
 import { useEditorStore } from "./useEditorStore"
+import { ILogicMetas } from "../interfaces"
 
 export function useMetas() {
   const [metas, setMetas] = useState<ILogicMetas>()
@@ -21,7 +21,8 @@ export function useMetas() {
   }, [handleMetasChange, store])
 
   useEffect(() => {
-    setMetas(store?.store.getState().metas)
+    const state = store?.store.getState()
+    setMetas({ lines: state?.lines || [], nodes: state?.nodes || [] })
   }, [store?.store])
 
   return { metas, setMetas: doSetMetas }

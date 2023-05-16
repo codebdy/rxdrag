@@ -1,4 +1,4 @@
-import { IReactionMaterial } from "@rxdrag/schema";
+import { IActivityMaterial } from "@rxdrag/schema";
 import { createContext, ReactNode } from "react";
 
-export const MaterialsContext = createContext<IReactionMaterial<ReactNode>[]>([])
+export const MaterialsContext = createContext<IActivityMaterial<ReactNode>[]>([])

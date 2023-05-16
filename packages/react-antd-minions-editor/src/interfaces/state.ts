@@ -1,7 +1,10 @@
 import { Graph } from "@antv/x6";
-import { ILogicMetas } from "@rxdrag/schema";
+import { IActivityDefine, IConfigMeta, ILineDefine } from "@rxdrag/schema";
+import { Action } from "../actions";
 
-export interface ISnapshot extends ILogicMetas {
+export interface ISnapshot  {
+  nodes: IActivityDefine<IConfigMeta>[];
+  lines: ILineDefine[];
   selected?: string,
 }
 
@@ -9,24 +12,23 @@ export interface IState {
   changeFlag: number,
   undoList: ISnapshot[],
   redoList: ISnapshot[],
-  metas: ILogicMetas,
+  nodes: IActivityDefine<IConfigMeta>[];
+  lines: ILineDefine[];
   selected?: string,
   zoom: number,
 }
 
 export interface IReactionsEditorParams extends IState {
   graph?: Graph
-  dispatch: React.Dispatch<any>
+  dispatch: React.Dispatch<Action>
 }
 
 export const initialState: IState = {
   changeFlag: 0,
   undoList: [],
   redoList: [],
-  metas: {
-    reactions: [],
-    invokes: [],
-  },
+  nodes: [],
+  lines:[],
   selected: undefined,
   zoom: 1,
 }

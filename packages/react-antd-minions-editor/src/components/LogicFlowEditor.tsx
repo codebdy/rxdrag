@@ -1,8 +1,7 @@
 import React from "react";
-import { ILogicMetas } from "@rxdrag/schema";
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
-import { Action, ActionType } from "../actions";
+import { ActionType, SetMetasAction } from "../actions";
 import { EditorStore } from "../classes/EditorStore";
 import { GraphContext, ReacionsEditorStoreContext } from "../contexts"
 import { useCreateGraph } from "../hooks/useCreateGraph";
@@ -10,6 +9,7 @@ import { Logic } from "./Logic";
 import { PropertyBox } from "./PropertyBox";
 import { Toolbar } from "./Toolbar";
 import { Toolbox } from "./Toolbox/Toolbox";
+import { ILogicMetas } from "../interfaces";
 
 const CenterArea = styled.div`
   position: relative;
@@ -69,7 +69,7 @@ const RightArea = styled.div`
 `
 
 
-export const ReactionMetaEditor = memo((
+export const LogicFlowEditor = memo((
   props: {
     metas?: ILogicMetas,
     onChange: (meta: ILogicMetas) => void,
@@ -78,8 +78,8 @@ export const ReactionMetaEditor = memo((
 ) => {
   const { metas, onChange, toolbox } = props
   const emptyMetas = useMemo(() => ({
-    reactions: [],
-    invokes: []
+    nodes: [],
+    lines: []
   }), [])
   const [showMap, setShowMap] = useState(false)
   //const [state, dispatch] = useReducer(mainReducer, initialState);
@@ -89,7 +89,8 @@ export const ReactionMetaEditor = memo((
   }, [])
 
   useEffect(() => {
-    store.dispatch({ type: ActionType.SET_METAS, payload: metas || emptyMetas } as Action)
+    const action: SetMetasAction = { type: ActionType.SET_METAS, payload: { nodes: metas?.nodes || [], lines: metas?.lines || [] } }
+    store.dispatch(action)
   }, [emptyMetas, metas, store])
 
   const handleToggleMap = useCallback(() => {

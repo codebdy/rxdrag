@@ -13,7 +13,7 @@ export function useAddNode() {
 
   const markeChange = useMarkChange()
   const backup = useBackup()
-  const handleNodeAdd = useCallback(({ node }: { node: Node, index: number, options: any }) => {
+  const handleNodeAdd = useCallback(({ node }: { node: Node, index: number, options: unknown }) => {
     const { meta } = node.getData() as INodeData
     backup()
     const newData = {

@@ -1,15 +1,15 @@
 import { mergeIcon } from "@rxdrag/react-shared";
-import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { Merge } from "./reaction";
 import { mergeSchema } from "./schema";
 import { ReactNode } from "react";
 
-export const mergeMaterial: IReactionMaterial<ReactNode> = {
+export const mergeMaterial: IActivityMaterial<ReactNode> = {
   name: "merge",
   icon: mergeIcon,
   label: "$merge",
-  reactionType: ReactionType.SingleReaction,
+  reactionType: ActivityType.SingleActivity,
   meta: {
     inPorts: [
       {

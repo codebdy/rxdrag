@@ -1,11 +1,11 @@
 
-import { IReactionFactoryOptions } from "@rxdrag/minions";
-import { IReactionMeta, ReactionFactory } from "@rxdrag/schema";
+import { IActivityFactoryOptions } from "@rxdrag/minions";
+import { IActivityDefine, ActivityFactory } from "@rxdrag/schema";
 import { AbstractControllerReaction, IControllerReactionConfig } from "../AbstractControllerReaction";
 
 export class SetPropReaction extends AbstractControllerReaction {
 
-  constructor(meta: IReactionMeta<IControllerReactionConfig>, options?: IReactionFactoryOptions) {
+  constructor(meta: IActivityDefine<IControllerReactionConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("SetProp inputs count error")
@@ -21,6 +21,6 @@ export class SetPropReaction extends AbstractControllerReaction {
   }
 }
 
-export const SetProp: ReactionFactory = (meta: IReactionMeta<IControllerReactionConfig>, options?: IReactionFactoryOptions) => {
+export const SetProp: ActivityFactory = (meta: IActivityDefine<IControllerReactionConfig>, options?: IActivityFactoryOptions) => {
   return new SetPropReaction(meta, options)
 }

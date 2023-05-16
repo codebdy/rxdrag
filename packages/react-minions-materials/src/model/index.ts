@@ -1,16 +1,16 @@
 import { formIcon, formValidateIcon, formReadIcon, fieldIcon, fieldValidateIcon } from "@rxdrag/react-shared";
-import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { readFieldValueMaterial } from "./readFieldValue";
 import { subscribeFieldMaterial } from "./subscribeField";
 import { ReactNode } from "react";
 
-export const dataModelReactions: IReactionMaterial<ReactNode>[] = [
+export const dataModelReactions: IActivityMaterial<ReactNode>[] = [
   {
     name: "setFormValue",
     icon: formIcon,
     label: "$setFormValue",
-    reactionType: ReactionType.SingleReaction,
+    reactionType: ActivityType.SingleActivity,
     meta: {
       inPorts: [
         {
@@ -25,7 +25,7 @@ export const dataModelReactions: IReactionMaterial<ReactNode>[] = [
     name: "validateForm",
     icon: formValidateIcon,
     label: "$validateForm",
-    reactionType: ReactionType.SingleReaction,
+    reactionType: ActivityType.SingleActivity,
     meta: {
       inPorts: [
         {
@@ -52,7 +52,7 @@ export const dataModelReactions: IReactionMaterial<ReactNode>[] = [
     name: "readFormValue",
     icon: formReadIcon,
     label: "$readFormValue",
-    reactionType: ReactionType.SingleReaction,
+    reactionType: ActivityType.SingleActivity,
     meta: {
       inPorts: [
         {
@@ -74,7 +74,7 @@ export const dataModelReactions: IReactionMaterial<ReactNode>[] = [
     name: "setFieldValue",
     icon: fieldIcon,
     label: "$setFieldValue",
-    reactionType: ReactionType.SingleReaction,
+    reactionType: ActivityType.SingleActivity,
     meta: {
       inPorts: [
         {
@@ -89,7 +89,7 @@ export const dataModelReactions: IReactionMaterial<ReactNode>[] = [
     name: "validateField",
     icon: fieldValidateIcon,
     label: "$validateField",
-    reactionType: ReactionType.SingleReaction,
+    reactionType: ActivityType.SingleActivity,
     meta: {
       inPorts: [
         {

@@ -1,5 +1,5 @@
-import { AbstractReaction, IReactionFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IReactionMeta, ReactionFactory } from "@rxdrag/schema"
+import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema"
 
 
 export interface IRouteToConfig extends IConfigMeta {
@@ -7,8 +7,8 @@ export interface IRouteToConfig extends IConfigMeta {
   fromInput?: boolean,
 }
 
-export class RouteToReaction extends AbstractReaction<IRouteToConfig> {
-  constructor(meta: IReactionMeta<IRouteToConfig>, options?: IReactionFactoryOptions) {
+export class RouteToReaction extends AbstractActivity<IRouteToConfig> {
+  constructor(meta: IActivityDefine<IRouteToConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     this.getInputByName("input")?.connect(this.inputHandler)
@@ -26,6 +26,6 @@ export class RouteToReaction extends AbstractReaction<IRouteToConfig> {
   }
 }
 
-export const RouteTo: ReactionFactory = (meta: IReactionMeta<IRouteToConfig>, options?: IReactionFactoryOptions) => {
+export const RouteTo: ActivityFactory = (meta: IActivityDefine<IRouteToConfig>, options?: IActivityFactoryOptions) => {
   return new RouteToReaction(meta, options)
 }

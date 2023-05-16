@@ -1,15 +1,15 @@
 import { ifIcon } from "@rxdrag/react-shared";
-import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { Condition } from "./reaction";
 import { conditionSchema } from "./schema";
 import { ReactNode } from "react";
 
-export const conditionMaterial: IReactionMaterial<ReactNode> = {
+export const conditionMaterial: IActivityMaterial<ReactNode> = {
   name: "condition",
   icon: ifIcon,
   label: "$conditionCheck",
-  reactionType: ReactionType.SingleReaction,
+  reactionType: ActivityType.SingleActivity,
   color: "#5e76c3",
   meta: {
     inPorts: [

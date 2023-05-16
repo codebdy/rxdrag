@@ -1,15 +1,15 @@
 import { jsIcon } from "@rxdrag/react-shared";
-import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { JsCode } from "./reaction";
 import { jsCodeSchema } from "./schema";
 import { ReactNode } from "react";
 
-export const jsCodeMaterial: IReactionMaterial<ReactNode> = {
+export const jsCodeMaterial: IActivityMaterial<ReactNode> = {
   name: "jsCode",
   icon: jsIcon,
   label: "$jsCode",
-  reactionType: ReactionType.SingleReaction,
+  reactionType: ActivityType.SingleActivity,
   meta: {
     inPorts: [
       {

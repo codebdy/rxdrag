@@ -1,12 +1,12 @@
 import React, { ReactNode } from "react"
 import { memo, useCallback } from "react"
 import { useGraph, useDnd, useTrans, useGetNodeConfig } from "../../hooks";
-import { IReactionMaterial, IReactionMeta } from "@rxdrag/schema";
+import { IActivityMaterial, IActivityDefine } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 
 export type ReactionResourceProps = {
   children?: (onMouseDown: ((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void)) => ReactNode,
-  material: IReactionMaterial<React.ReactNode>,
+  material: IActivityMaterial<React.ReactNode>,
 }
 
 export const ReactionResource = memo((props: ReactionResourceProps) => {
@@ -20,7 +20,7 @@ export const ReactionResource = memo((props: ReactionResourceProps) => {
     if (!graph) {
       return;
     }
-    const nodeMeta: IReactionMeta = {
+    const nodeMeta: IActivityDefine = {
       id: createUuid(),
       label: t(material.label),
       type: material.reactionType,

@@ -1,4 +1,4 @@
-export interface IX6NodeMeta {
+export interface IX6NodeDefine {
   /** 节点x坐标 */
   x: number;
   /** 节点y坐标  */
@@ -9,17 +9,17 @@ export interface IX6NodeMeta {
   height: number;
 }
 
-export interface IPortMeta {
+export interface IPortDefine {
   id: string;
   name: string;
   label?: string;
   //group: "in" | "out";
 }
 
-export enum ReactionType {
+export enum ActivityType {
   Start = 'Start',
   End = 'End',
-  SingleReaction = 'SingleReaction',
+  SingleActivity = 'SingleReaction',
   ControllerReaction = 'ControllerReaction',
   ControllerDefaultReaction = 'ControllerDefaultReaction'
 }
@@ -28,8 +28,8 @@ export interface IReactionNodeData {
   name?: string;
   componentName?: string;//##@@
   reactionName?: string;
-  inPorts?: IPortMeta[];
-  outPorts?: IPortMeta[];
+  inPorts?: IPortDefine[];
+  outPorts?: IPortDefine[];
 }
 
 export interface IConfigMeta {
@@ -37,43 +37,34 @@ export interface IConfigMeta {
   reactionRef?: string; //reaction id or name(default reaction)
 }
 
-export interface IReactionMeta<ConfigMeta extends IConfigMeta = IConfigMeta>
+export interface IActivityDefine<ConfigMeta extends IConfigMeta = IConfigMeta>
   extends IReactionNodeData {
   id: string;
-  type: ReactionType;
+  type: ActivityType;
   materialName: string;
   //name?: string;
   label?: string;
-  x6Node?: IX6NodeMeta;
+  x6Node?: IX6NodeDefine;
   config?: ConfigMeta;
 }
 
-export interface IInvokeMeta {
+export interface IPortRefDefine{
+  nodeId: string;
+  portId?: string;
+}
+
+export interface ILineDefine {
   id: string;
-  source: {
-    nodeId: string;
-    portId?: string;
-  };
-  target: {
-    nodeId: string;
-    portId?: string;
-  };
-  //x6Edge: IX6EdgeMeta;
+  source: IPortRefDefine;
+  target: IPortRefDefine;
 }
 
-export interface ILogicMetas {
-  reactions: IReactionMeta<IConfigMeta>[];
-  invokes: IInvokeMeta[];
-}
-
-export interface IReactionDefineMeta {
+export interface ILogicFlowDefinition {
   id: string;
   name?: string;
   label?: string;
-  //可视化场景使用
-  logicMetas?: ILogicMetas;
-  //不能可视化的场景使用，比如右侧属性面板
-  jsCode?: string;
+  nodes: IActivityDefine<IConfigMeta>[];
+  lines: ILineDefine[];
 }
 
 export interface IVariableDefineMeta {
@@ -89,8 +80,8 @@ export interface IControllerMeta {
   id: string;
   enable?: boolean;
   name?: string;
-  events?: IReactionDefineMeta[];
-  reactions?: IReactionDefineMeta[];
+  events?: ILogicFlowDefinition[];
+  reactions?: ILogicFlowDefinition[];
   variables?: IVariableDefineMeta[];
   //js代码表述的表达式
   expressions?: {

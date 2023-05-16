@@ -6,7 +6,7 @@ import { getEndNodeConfig } from "./getEndNodeConfig";
 import { useGetMaterial } from "./useGetMaterial";
 import { useGetSingleNodeConfig } from "./useGetSingleNodeConfig";
 import { useGetControllerReactionConfig } from "./useGetControllerReactionConfig";
-import { IReactionMeta, IConfigMeta, ReactionType } from "@rxdrag/schema";
+import { IActivityDefine, IConfigMeta, ActivityType } from "@rxdrag/schema";
 
 export function useGetNodeConfig() {
   const [, token] = useToken()
@@ -14,16 +14,16 @@ export function useGetNodeConfig() {
   const getSingleNodeConfig = useGetSingleNodeConfig()
   const getReactionNodeConfig = useGetControllerReactionConfig()
 
-  const getConfig = useCallback((reactNodeMeta: IReactionMeta<IConfigMeta>): Node.Metadata => {
+  const getConfig = useCallback((reactNodeMeta: IActivityDefine<IConfigMeta>): Node.Metadata => {
     switch (reactNodeMeta.type) {
-      case ReactionType.Start:
+      case ActivityType.Start:
         return getStartNodeConfig(reactNodeMeta, token)
-      case ReactionType.End:
+      case ActivityType.End:
         return getEndNodeConfig(reactNodeMeta, token)
-      case ReactionType.SingleReaction:
+      case ActivityType.SingleActivity:
         return getSingleNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.materialName))
-      case ReactionType.ControllerDefaultReaction:
-      case ReactionType.ControllerReaction:
+      case ActivityType.ControllerDefaultReaction:
+      case ActivityType.ControllerReaction:
         return getReactionNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.materialName))
     }
 

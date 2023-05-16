@@ -1,5 +1,5 @@
 import { setVariableIcon, listenVariableIcon, variableIcon } from "@rxdrag/react-shared"
-import { IReactionMaterial, ReactionType } from "@rxdrag/schema"
+import { IActivityMaterial, ActivityType } from "@rxdrag/schema"
 import { createUuid } from "@rxdrag/shared"
 import { ListenVariable } from "./ListenVariableReaction"
 import { ReadVariable } from "./ReadVariableReaction"
@@ -7,11 +7,11 @@ import { variableSchema } from "./schema"
 import { IVariableConfig, SetVariable } from "./SetVariableReaction"
 import { ReactNode } from "react"
 
-export const setVariableMaterial: IReactionMaterial<ReactNode> = {
+export const setVariableMaterial: IActivityMaterial<ReactNode> = {
   name: "setVariable",
   icon: setVariableIcon,
   label: "$setVariable",
-  reactionType: ReactionType.ControllerDefaultReaction,
+  reactionType: ActivityType.ControllerDefaultReaction,
   meta: {
     inPorts: [
       {
@@ -28,11 +28,11 @@ export const setVariableMaterial: IReactionMaterial<ReactNode> = {
   reaction: SetVariable,
 }
 
-export const listenVariableMaterial: IReactionMaterial<ReactNode> = {
+export const listenVariableMaterial: IActivityMaterial<ReactNode> = {
   name: "listenVariable",
   icon: listenVariableIcon,
   label: "$listenVariable",
-  reactionType: ReactionType.ControllerDefaultReaction,
+  reactionType: ActivityType.ControllerDefaultReaction,
   meta: {
     outPorts: [
       {
@@ -50,11 +50,11 @@ export const listenVariableMaterial: IReactionMaterial<ReactNode> = {
 }
 
 
-export const readVariableMaterial: IReactionMaterial<ReactNode> = {
+export const readVariableMaterial: IActivityMaterial<ReactNode> = {
   name: "readVariable",
   icon: variableIcon,
   label: "$readVariable",
-  reactionType: ReactionType.ControllerDefaultReaction,
+  reactionType: ActivityType.ControllerDefaultReaction,
   meta: {
     inPorts: [
       {

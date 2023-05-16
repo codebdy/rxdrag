@@ -1,13 +1,13 @@
-import { IReactionMeta, ReactionType, IPortMeta } from "@rxdrag/schema";
+import { IActivityDefine, ActivityType, IPortDefine } from "@rxdrag/schema";
 import { useCallback } from "react";
 import { useGetControllerMeta } from "./useGetControllerMeta";
 
 export function useGetControllerReactionPorts() {
   const getControllerMeta = useGetControllerMeta()
-  const getReactionPorts = useCallback((meta: IReactionMeta, group: 'in' | 'out') => {
-    const reactionType = group === "in" ? ReactionType.Start : ReactionType.End
-    const ports: IPortMeta[] | undefined = getControllerMeta(meta.config?.controllerId || "")?.reactions
-      ?.find(reaction => reaction.id === meta.config?.reactionRef)?.logicMetas?.reactions.filter(reaction => reaction.type === reactionType)?.map(reaction => ({ id: reaction.id, name: reaction.name || "", label: reaction.label }))
+  const getReactionPorts = useCallback((meta: IActivityDefine, group: 'in' | 'out') => {
+    const activityType = group === "in" ? ActivityType.Start : ActivityType.End
+    const ports: IPortDefine[] | undefined = getControllerMeta(meta.config?.controllerId || "")?.reactions
+      ?.find(activityMeta => activityMeta.id === meta.config?.reactionRef)?.nodes?.filter(activityMeta => activityMeta.type === activityType)?.map(activityMeta => ({ id: activityMeta.id, name: activityMeta.name || "", label: activityMeta.label }))
 
     return ports
   }, [getControllerMeta])

@@ -2,12 +2,13 @@ import React from "react"
 import { Button, Form, Input, Modal, Switch } from "antd"
 import { ControllerMetaEditor, IEventMeta } from "@rxdrag/react-antd-minions-editor"
 import { memo, useCallback, useEffect, useState } from "react"
-import { IControllerMeta, IReactionDefineMeta } from "@rxdrag/schema"
+import { IControllerMeta, ILogicFlowDefinition } from "@rxdrag/schema"
 import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
 import { useControllerMetas } from "./hooks/useControllerMetas"
 import { Toolbox } from "./Toolbox"
-import { getAllMaterial, reactionMaterialLocales } from "@rxdrag/react-minions-materials"
+import { getAllMaterial, activityMaterialLocales } from "@rxdrag/react-minions-materials"
+import { ITreeNode } from "@rxdrag/core"
 
 export const ReactionsInput = memo((props: {
   events?: IEventMeta[]
@@ -19,7 +20,7 @@ export const ReactionsInput = memo((props: {
   const [inputValue, setInputValue] = useState<IControllerMeta>()
   const [isModalOpen, setIsModalOpen] = useState(false);
   const t = useToolsTranslate()
-  const node = useCurrentNode()
+  const node = useCurrentNode() as ITreeNode<unknown, IControllerMeta> | null
   const controllers = useControllerMetas()
 
   useEffect(() => {
@@ -27,13 +28,15 @@ export const ReactionsInput = memo((props: {
   }, [value])
 
   useEffect(() => {
-    const eventMetas: IReactionDefineMeta[] = [...(value?.events || [])]
+    const eventMetas: ILogicFlowDefinition[] = [...(value?.events || [])]
     for (const event of events || []) {
       if (!value?.events?.find(evt => evt.name === event.name)) {
         eventMetas.push({
           id: createUuid(),
           name: event.name,
           label: event.label,
+          nodes: [],
+          lines: [],
         })
       }
     }
@@ -68,7 +71,7 @@ export const ReactionsInput = memo((props: {
     }
   }, [onChange, value]);
 
-  const handleConfigChange = useCallback((meta?: IControllerMeta) => {
+  const handleChange = useCallback((meta?: IControllerMeta) => {
     if (value) {
       setInputValue({ ...meta, id: value.id, name: value?.name })
     }
@@ -101,8 +104,7 @@ export const ReactionsInput = memo((props: {
           </Form.Item>
 
           <Modal
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            title={`${t("configController")} - ${(node?.meta["x-controller"] as any)?.label || node?.title}`}
+            title={`${t("configController")} - ${inputValue?.name || node?.title}`}
             open={isModalOpen}
             cancelText={t("cancel")}
             okText={t("confirm")}
@@ -120,11 +122,11 @@ export const ReactionsInput = memo((props: {
               inputValue &&
               <ControllerMetaEditor
                 value={inputValue}
-                onChange={handleConfigChange}
+                onChange={handleChange}
                 controllerMetas={controllers}
                 materials={getAllMaterial()}
                 toolbox={<Toolbox />}
-                locales = {reactionMaterialLocales}
+                locales={activityMaterialLocales}
               />
             }
           </Modal>

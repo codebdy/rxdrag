@@ -1,4 +1,4 @@
-export const reactionMaterialLocales = {
+export const activityMaterialLocales = {
   "zh-CN": {
     name: "名称",
     label: "标签",

@@ -1,12 +1,12 @@
-import { IReactionMaterial } from "@rxdrag/schema";
+import { IActivityMaterial } from "@rxdrag/schema";
 import { Controllers, IPropController, IVariableController } from "../interfaces";
 
 export interface IFactoryOptions {
   controllers?: Controllers,
-  materials?: IReactionMaterial[],
+  materials?: IActivityMaterial[],
 }
 
-export interface IReactionFactoryOptions extends IFactoryOptions {
+export interface IActivityFactoryOptions extends IFactoryOptions {
   variableController?: IVariableController,
   propsController?: IPropController,
 }

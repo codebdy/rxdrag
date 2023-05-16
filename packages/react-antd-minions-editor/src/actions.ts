@@ -1,5 +1,6 @@
-import { IInvokeMeta, ILogicMetas, IReactionMeta } from "@rxdrag/schema"
+import { ILineDefine, IActivityDefine } from "@rxdrag/schema"
 import { ISnapshot } from "./interfaces/state"
+import { ILogicMetas } from "./interfaces"
 
 export enum ActionType {
   ADD_NODE = 'ReactionsEditor/ADD_NODE',
@@ -21,13 +22,14 @@ export enum ActionType {
   SET_CHANGE_FLAG = 'ReactionsEditor/SET_CHANGE_FLAG',
 }
 
+
 export interface Action {
   type: ActionType,
-  payload?: IReactionMeta | string | IInvokeMeta | number | ISnapshot | ISnapshot | ISnapshot[]
+  payload?: IActivityDefine | string | ILineDefine | number | ISnapshot | ISnapshot | ISnapshot[] | ILogicMetas
 }
 
 export interface AddNodeAction extends Action {
-  payload: IReactionMeta
+  payload: IActivityDefine
 }
 
 export interface RemoveNodeAction extends Action {
@@ -35,15 +37,15 @@ export interface RemoveNodeAction extends Action {
 }
 
 export interface ChangeNodeAction extends Action {
-  payload: IReactionMeta
+  payload: IActivityDefine
 }
 
 export interface AddEdgeAction extends Action {
-  payload: IInvokeMeta
+  payload: ILineDefine
 }
 
 export interface ChangeEdgeAction extends Action {
-  payload: IInvokeMeta
+  payload: ILineDefine
 }
 
 export interface RemoveEdgeAction extends Action {

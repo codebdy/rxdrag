@@ -1,9 +1,9 @@
-import { IInvokeMeta } from "@rxdrag/schema"
+import { ILineDefine } from "@rxdrag/schema"
 import { useCallback } from "react"
 
 export function useGetEdgeConfig() {
 
-  const getEdgeConfig = useCallback((invakeMeta: IInvokeMeta) => {
+  const getEdgeConfig = useCallback((invakeMeta: ILineDefine) => {
 
     return {
       id: invakeMeta.id,

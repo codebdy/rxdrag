@@ -15,11 +15,11 @@ export function useUndo() {
 
   const undo = useCallback(() => {
     const snapshot = undoList[undoList.length - 1]
-    const { reactions, invokes } = snapshot
+    const { nodes, lines } = snapshot
     setSelected(snapshot.selected)
-    setMetas({ reactions, invokes })
+    setMetas({ nodes, lines })
     setUndoList(undoList.slice(0, undoList.length - 1))
-    setRedoList([...redoList, { selected, ...metas || { reactions: [], invokes: [] } }])
+    setRedoList([...redoList, { selected, ...metas || { nodes: [], lines: [] } }])
     markeChange()
   }, [markeChange, metas, redoList, selected, setMetas, setRedoList, setSelected, setUndoList, undoList])
 

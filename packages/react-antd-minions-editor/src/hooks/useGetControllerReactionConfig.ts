@@ -1,4 +1,4 @@
-import { IConfigMeta, IReactionMaterial, IReactionMeta } from "@rxdrag/schema"
+import { IConfigMeta, IActivityMaterial, IActivityDefine } from "@rxdrag/schema"
 import { useToken } from "antd/es/theme/internal"
 import { useCallback } from "react"
 import { useGetNodeHeight } from "./useGetNodeHeight"
@@ -14,7 +14,7 @@ export function useGetControllerReactionConfig() {
   const getNodeWidth = useGetNodeWidth()
   const getHeight = useGetNodeHeight()
   const getSubLabel = useGetSubLabel()
-  const getNodeConfig = useCallback((nodeMeta: IReactionMeta<IConfigMeta>, material: IReactionMaterial | undefined) => {
+  const getNodeConfig = useCallback((nodeMeta: IActivityDefine<IConfigMeta>, material: IActivityMaterial | undefined) => {
     const subLabel = getSubLabel(nodeMeta)
     const height = getHeight(nodeMeta, !!subLabel)
     const width = getNodeWidth(nodeMeta, subLabel)

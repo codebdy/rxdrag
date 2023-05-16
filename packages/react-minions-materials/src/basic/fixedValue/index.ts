@@ -1,15 +1,15 @@
 import { fixedValueIcon } from "@rxdrag/react-shared";
-import { IReactionMaterial, ReactionType } from "@rxdrag/schema";
+import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { FixedValue } from "./reaction";
 import { fixedValueSchema } from "./schema";
 import { ReactNode } from "react";
 
-export const fixedValueMaterial: IReactionMaterial<ReactNode> = {
+export const fixedValueMaterial: IActivityMaterial<ReactNode> = {
   name: "fixedValue",
   icon: fixedValueIcon,
   label: "$fixedValue",
-  reactionType: ReactionType.SingleReaction,
+  reactionType: ActivityType.SingleActivity,
   color: "#1668dc",
   meta: {
     inPorts: [

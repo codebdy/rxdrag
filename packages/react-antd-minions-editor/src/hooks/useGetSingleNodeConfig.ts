@@ -5,7 +5,7 @@ import { usePortsConfig } from "./usePortsConfig"
 import { useGetNodeWidth } from "./useGetNodeWidth"
 import { useGetNodeHeight } from "./useGetNodeHeight"
 import { useGetSubLabel } from "./useGetSubLabel"
-import { IReactionMeta, IConfigMeta, IReactionMaterial } from "@rxdrag/schema"
+import { IActivityDefine, IConfigMeta, IActivityMaterial } from "@rxdrag/schema"
 
 export function useGetSingleNodeConfig() {
   const [, token] = useToken()
@@ -14,7 +14,7 @@ export function useGetSingleNodeConfig() {
   const getNodeWidth = useGetNodeWidth()
   const getSubLabel = useGetSubLabel()
   const getHeight = useGetNodeHeight()
-  const getSingleNodeConfig = useCallback((nodeMeta: IReactionMeta<IConfigMeta>, material: IReactionMaterial | undefined) => {
+  const getSingleNodeConfig = useCallback((nodeMeta: IActivityDefine<IConfigMeta>, material: IActivityMaterial | undefined) => {
     const subLabel = getSubLabel(nodeMeta)
     const height = getHeight(nodeMeta, !!subLabel)
     const width = getNodeWidth(nodeMeta)

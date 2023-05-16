@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Edge } from "@antv/x6"
-import { IInvokeMeta } from "@rxdrag/schema"
+import { ILineDefine } from "@rxdrag/schema"
 import { useCallback, useEffect } from "react"
 import { ActionType } from "../../actions"
 import { useDispatch } from "../useDispatch"
@@ -14,7 +15,7 @@ export function useEditEdge() {
   const markeChange = useMarkChange()
   const handleNodeAdd = useCallback(({ isNew, edge }: { isNew: boolean, edge: Edge }) => {
     backup()
-    const newData: IInvokeMeta = {
+    const newData: ILineDefine = {
       id: edge.id,
       source: {
         nodeId: (edge.getSource() as any).cell,

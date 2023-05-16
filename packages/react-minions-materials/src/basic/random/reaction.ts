@@ -1,14 +1,14 @@
-import { AbstractReaction, IReactionFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IReactionMeta, ReactionFactory } from "@rxdrag/schema"
+import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
+import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema"
 
 export interface IRandomConfig extends IConfigMeta {
   maxValue?: number,
   minValue?: number,
 }
 
-export class RandomReaction extends AbstractReaction<IRandomConfig> {
+export class RandomReaction extends AbstractActivity<IRandomConfig> {
 
-  constructor(meta: IReactionMeta<IRandomConfig>, options?: IReactionFactoryOptions) {
+  constructor(meta: IActivityDefine<IRandomConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
@@ -28,6 +28,6 @@ export class RandomReaction extends AbstractReaction<IRandomConfig> {
   }
 }
 
-export const Random: ReactionFactory = (meta: IReactionMeta<IRandomConfig>, options?: IReactionFactoryOptions) => {
+export const Random: ActivityFactory = (meta: IActivityDefine<IRandomConfig>, options?: IActivityFactoryOptions) => {
   return new RandomReaction(meta, options)
 }

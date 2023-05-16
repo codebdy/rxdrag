@@ -14,7 +14,7 @@ function App() {
       </Route>
       <Route path={'/canvas-render'} element={<IFrameCanvasRender designers={designers} />}>
       </Route>
-      <Route path={'/preview-render'} element={<IFramePreviewRender components={components} reactionMaterials={getAllMaterial()} />}>
+      <Route path={'/preview-render'} element={<IFramePreviewRender components={components} activityMaterials={getAllMaterial()} />}>
       </Route>
     </Routes>
 

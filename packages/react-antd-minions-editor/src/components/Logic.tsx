@@ -9,7 +9,7 @@ import { useRemove } from "../hooks/edit-meta/useRemove"
 import { useChangeFlag } from "../hooks/useChangeFlag"
 import { useMetas } from "../hooks/useMetas"
 import { useSetZoom } from "../hooks/useSetZoom"
-import { ILogicMetas } from "@rxdrag/schema"
+import { ILogicMetas } from "../interfaces"
 
 export const Logic = memo((
   props: {
@@ -17,8 +17,8 @@ export const Logic = memo((
   }
 ) => {
   const { onChange } = props;
-  const {changeFlag} = useChangeFlag()
-  const {metas} = useMetas()
+  const { changeFlag } = useChangeFlag()
+  const { metas } = useMetas()
   const metasRef = useRef(metas)
   metasRef.current = metas;
   const onChangeRef = useRef(onChange)

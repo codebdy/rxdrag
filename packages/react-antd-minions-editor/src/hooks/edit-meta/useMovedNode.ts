@@ -13,7 +13,7 @@ export function useMovedNode() {
 
   const backup = useBackup()
   const markeChange = useMarkChange()
-  const handleNodeMoved = useCallback(({ x, y, node }: { x: number, y: number, node: Node, index: number, options: any }) => {
+  const handleNodeMoved = useCallback(({ node }: { x: number, y: number, node: Node, index: number, options: unknown }) => {
     backup()
     const { meta } = node.getData() as INodeData
     dispatch?.({

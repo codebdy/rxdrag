@@ -14,10 +14,10 @@ export function useRedo() {
   const markeChange = useMarkChange()
   const redo = useCallback(() => {
     const snapshot = redoList[redoList.length - 1]
-    const { reactions, invokes } = snapshot
+    const { nodes, lines } = snapshot
     setSelected(snapshot.selected)
-    setMetas({ reactions, invokes })
-    setUndoList([...undoList, { selected, ...metas|| { reactions: [], invokes: [] } }] )
+    setMetas({ nodes, lines })
+    setUndoList([...undoList, { selected, ...metas|| { nodes: [], lines: [] } }] )
     setRedoList(redoList.slice(0, redoList.length - 1))
     markeChange()
   }, [markeChange, metas, redoList, selected, setMetas, setRedoList, setSelected, setUndoList, undoList])

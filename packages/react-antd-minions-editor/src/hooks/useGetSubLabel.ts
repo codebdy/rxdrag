@@ -1,4 +1,4 @@
-import { IReactionMeta, IConfigMeta, IControllerMeta } from "@rxdrag/schema";
+import { IActivityDefine, IConfigMeta, IControllerMeta } from "@rxdrag/schema";
 import { useCallback } from "react";
 import { useAllControllers } from "./useAllControllers";
 import { useController } from "./useController";
@@ -9,7 +9,7 @@ export function useGetSubLabel() {
   const currentController = useController()
   const getMaterial = useGetMaterial()
 
-  const getLabel = useCallback((nodeMeta: IReactionMeta<IConfigMeta>) => {
+  const getLabel = useCallback((nodeMeta: IActivityDefine<IConfigMeta>) => {
     const material = getMaterial(nodeMeta.materialName)
     const subTitle = material?.subTitle?.(nodeMeta.config)
     const controller = controllers.find(ctrl => ctrl?.id === nodeMeta.config?.controllerId && nodeMeta.config?.controllerId)
