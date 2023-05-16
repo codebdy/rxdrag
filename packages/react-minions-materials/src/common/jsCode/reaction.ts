@@ -14,7 +14,7 @@ export class JsCodeReaction extends AbstractActivity<IJsCodeConfig> {
       throw new Error("JsCodeReaction inputs count error")
     }
 
-    this.getInputByName("input")?.connect(this.inputHandler)
+    this.getInputByName("input")?.connect(this.inputHandler as any)
   }
 
   inputHandler = (inputValue: string) => {

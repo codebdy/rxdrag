@@ -11,7 +11,7 @@ export class SetPropReaction extends AbstractControllerReaction {
       throw new Error("SetProp inputs count error")
     }
 
-    this.getInputByName("input")?.connect(this.inputHandler)
+    this.getInputByName("input")?.connect(this.inputHandler as any)
   }
 
   inputHandler = (inputValue: string) => {

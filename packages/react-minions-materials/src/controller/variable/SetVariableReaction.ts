@@ -23,7 +23,7 @@ export class SetVariableReaction extends AbstractControllerReaction {
     }
     this.controller = controller
 
-    this.getInputByName("input")?.connect(this.inputHandler)
+    this.getInputByName("input")?.connect(this.inputHandler as any)
   }
 
   inputHandler = (inputValue: string) => {

@@ -12,7 +12,7 @@ export class MockDataReaction extends AbstractActivity<IMockDataConfig> {
   constructor(meta: IActivityDefine<IMockDataConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
-    this.getInputByName("input")?.connect(this.inputHandler)
+    this.getInputByName("input")?.connect(this.inputHandler as any)
   }
 
   inputHandler = (inputValue?: any) => {

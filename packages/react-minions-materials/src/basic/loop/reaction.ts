@@ -11,7 +11,7 @@ export class LoopReaction extends AbstractActivity<ILoopConfig> {
   constructor(meta: IActivityDefine<ILoopConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
-    this.getInputByName("input")?.connect(this.inputHandler)
+    this.getInputByName("input")?.connect(this.inputHandler as any)
   }
 
   inputHandler = (inputValue?: any) => {

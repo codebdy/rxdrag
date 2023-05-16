@@ -7,12 +7,12 @@ import {
   ActivityType
 } from './meta';
 
-export type ActivityFactory<IActivityFactoryOptions = unknown> = (
+export type ActivityFactory<IActivityFactoryOptions = any> = (
   meta: IActivityDefine<IConfigMeta>,
   options: IActivityFactoryOptions
 ) => IActivity;
 
-export interface IActivityMaterial<ComponentNode = unknown> {
+export interface IActivityMaterial<ComponentNode = any> {
   //唯一名称
   name: string;
   label: string;
