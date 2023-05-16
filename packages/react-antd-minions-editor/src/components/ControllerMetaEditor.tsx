@@ -2,7 +2,7 @@ import { IControllerMeta, IActivityMaterial, ILogicFlowDefinition } from "@rxdra
 import React, { memo, ReactNode, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
 import { ControllerContext, ControllersContext } from "../contexts";
-import { LogicFlowMetaEditor } from "./LogicFlowMetaEditor"
+import { LogicFlowEditor } from "./LogicFlowEditor"
 import { Members } from "./Members";
 import { Minions } from "@rxdrag/react-minions";
 import { LocalesContext } from "@rxdrag/react-locales";
@@ -88,7 +88,7 @@ export const ControllerMetaEditor = memo((
               </LeftArea>
               {
                 selected && value &&
-                <LogicFlowMetaEditor
+                <LogicFlowEditor
                   key={selected}
                   metas={logicFlowMeta}
                   onChange={handleChange}

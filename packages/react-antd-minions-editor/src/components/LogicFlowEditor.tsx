@@ -1,7 +1,7 @@
 import React from "react";
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
-import { Action, ActionType, SetMetasAction } from "../actions";
+import { ActionType, SetMetasAction } from "../actions";
 import { EditorStore } from "../classes/EditorStore";
 import { GraphContext, ReacionsEditorStoreContext } from "../contexts"
 import { useCreateGraph } from "../hooks/useCreateGraph";
@@ -9,7 +9,7 @@ import { Logic } from "./Logic";
 import { PropertyBox } from "./PropertyBox";
 import { Toolbar } from "./Toolbar";
 import { Toolbox } from "./Toolbox/Toolbox";
-import { ILogicFlowDefinition } from "@rxdrag/schema";
+import { ILogicMetas } from "../interfaces";
 
 const CenterArea = styled.div`
   position: relative;
@@ -69,17 +69,17 @@ const RightArea = styled.div`
 `
 
 
-export const LogicFlowMetaEditor = memo((
+export const LogicFlowEditor = memo((
   props: {
-    metas?: ILogicFlowDefinition,
-    onChange: (meta: ILogicFlowDefinition) => void,
+    metas?: ILogicMetas,
+    onChange: (meta: ILogicMetas) => void,
     toolbox?: React.ReactNode,
   }
 ) => {
   const { metas, onChange, toolbox } = props
   const emptyMetas = useMemo(() => ({
-    reactions: [],
-    invokes: []
+    nodes: [],
+    lines: []
   }), [])
   const [showMap, setShowMap] = useState(false)
   //const [state, dispatch] = useReducer(mainReducer, initialState);
@@ -97,7 +97,7 @@ export const LogicFlowMetaEditor = memo((
     setShowMap((show) => !show)
   }, [])
 
-  const handleChange = useCallback((newMetas: ILogicFlowDefinition) => {
+  const handleChange = useCallback((newMetas: ILogicMetas) => {
     onChange(newMetas)
   }, [onChange])
 

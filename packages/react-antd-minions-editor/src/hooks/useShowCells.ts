@@ -17,7 +17,7 @@ export function useShowCells() {
       const oldNodes = graph.getNodes()
       const oldEdges = graph.getEdges()
       const oldCells = graph.getCells()
-      for (const reactionNode of metas?.reactions || []) {
+      for (const reactionNode of metas?.nodes || []) {
         const graphNode = oldNodes.find(node => node.id === reactionNode.id)
         //更新
         if (graphNode && reactionNode.x6Node) {
@@ -29,7 +29,7 @@ export function useShowCells() {
         }
       }
 
-      for (const invoke of metas?.invokes || []) {
+      for (const invoke of metas?.lines || []) {
         const graphEdge = oldEdges.find(edge => edge.id === invoke.id)
         if (!graphEdge) {
           const edge = graph.createEdge(getEdgeConfig(invoke))
@@ -39,11 +39,11 @@ export function useShowCells() {
 
       //删除不存在的
       for (const cell of oldCells) {
-        if (![...metas?.reactions || [], ...metas?.invokes || []].find(el => el.id === cell.id)) {
+        if (![...metas?.nodes || [], ...metas?.lines || []].find(el => el.id === cell.id)) {
           cell.remove()
         }
       }
 
     }
-  }, [getEdgeConfig, getNodeConfig, graph, metas, metas?.invokes, metas?.reactions, updateNode])
+  }, [getEdgeConfig, getNodeConfig, graph, metas, metas?.lines, metas?.nodes, updateNode])
 }

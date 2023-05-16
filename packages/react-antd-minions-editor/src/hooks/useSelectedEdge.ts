@@ -5,5 +5,5 @@ export function useSelectedEdge() {
   const { selected } = useSelected()
   const { metas } = useMetas()
 
-  return metas?.invokes?.find(invoke => invoke.id === selected)
+  return metas?.lines?.find(line => line.id === selected)
 }

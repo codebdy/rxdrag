@@ -1,5 +1,6 @@
-import { ILineDefine, IActivityDefine, ILogicFlowDefinition, IConfigMeta } from "@rxdrag/schema"
+import { ILineDefine, IActivityDefine } from "@rxdrag/schema"
 import { ISnapshot } from "./interfaces/state"
+import { ILogicMetas } from "./interfaces"
 
 export enum ActionType {
   ADD_NODE = 'ReactionsEditor/ADD_NODE',
@@ -21,14 +22,10 @@ export enum ActionType {
   SET_CHANGE_FLAG = 'ReactionsEditor/SET_CHANGE_FLAG',
 }
 
-export type Metas = {
-  nodes: IActivityDefine<IConfigMeta>[];
-  lines: ILineDefine[];
-}
 
 export interface Action {
   type: ActionType,
-  payload?: IActivityDefine | string | ILineDefine | number | ISnapshot | ISnapshot | ISnapshot[] | ILogicFlowDefinition
+  payload?: IActivityDefine | string | ILineDefine | number | ISnapshot | ISnapshot | ISnapshot[] | ILogicMetas
 }
 
 export interface AddNodeAction extends Action {
@@ -76,7 +73,7 @@ export interface SetRedoListAction extends Action {
 }
 
 export interface SetMetasAction extends Action {
-  payload: Metas
+  payload: ILogicMetas
 }
 
 export interface SetChangeFlagAction extends Action {

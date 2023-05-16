@@ -9,11 +9,11 @@ import { useRemove } from "../hooks/edit-meta/useRemove"
 import { useChangeFlag } from "../hooks/useChangeFlag"
 import { useMetas } from "../hooks/useMetas"
 import { useSetZoom } from "../hooks/useSetZoom"
-import { ILogicFlowDefinition } from "@rxdrag/schema"
+import { ILogicMetas } from "../interfaces"
 
 export const Logic = memo((
   props: {
-    onChange: (metas: ILogicFlowDefinition) => void,
+    onChange: (metas: ILogicMetas) => void,
   }
 ) => {
   const { onChange } = props;

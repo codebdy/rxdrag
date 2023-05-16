@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Edge } from "@antv/x6"
 import { ILineDefine } from "@rxdrag/schema"
 import { useCallback, useEffect } from "react"

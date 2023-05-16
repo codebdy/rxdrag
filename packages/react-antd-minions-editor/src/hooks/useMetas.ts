@@ -1,17 +1,17 @@
 import { useCallback, useEffect, useState } from "react"
 import { ActionType } from "../actions"
 import { useEditorStore } from "./useEditorStore"
-import { ILogicFlowDefinition } from "@rxdrag/schema"
+import { ILogicMetas } from "../interfaces"
 
 export function useMetas() {
-  const [metas, setMetas] = useState<ILogicFlowDefinition>()
+  const [metas, setMetas] = useState<ILogicMetas>()
   const store = useEditorStore()
 
-  const handleMetasChange = useCallback((mts: ILogicFlowDefinition) => {
+  const handleMetasChange = useCallback((mts: ILogicMetas) => {
     setMetas(mts)
   }, [])
 
-  const doSetMetas = useCallback((mts: ILogicFlowDefinition) => {
+  const doSetMetas = useCallback((mts: ILogicMetas) => {
     store?.dispatch({ type: ActionType.SET_METAS, payload: mts })
   }, [store])
 
@@ -21,7 +21,8 @@ export function useMetas() {
   }, [handleMetasChange, store])
 
   useEffect(() => {
-    setMetas(store?.store.getState().metas)
+    const state = store?.store.getState()
+    setMetas({ lines: state?.lines || [], nodes: state?.nodes || [] })
   }, [store?.store])
 
   return { metas, setMetas: doSetMetas }

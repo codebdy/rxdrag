@@ -1,6 +1,7 @@
-import { Action, ActionType, AddEdgeAction, AddNodeAction, ChangeEdgeAction, ChangeNodeAction, Metas, RemoveNodeAction, SetMetasAction } from "../actions";
+import { Action, ActionType, AddEdgeAction, AddNodeAction, ChangeEdgeAction, ChangeNodeAction, RemoveNodeAction, SetMetasAction } from "../actions";
+import { ILogicMetas } from "../interfaces";
 
-export function metasReducer(state: Metas, action: Action):Metas {
+export function metasReducer(state: ILogicMetas, action: Action):ILogicMetas {
   switch (action.type) {
     case ActionType.SET_METAS: {
       return (action as SetMetasAction).payload

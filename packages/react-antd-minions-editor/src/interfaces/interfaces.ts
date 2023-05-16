@@ -1,5 +1,10 @@
-import { IActivityDefine, IConfigMeta, ILogicFlowDefinition } from "@rxdrag/schema";
+import { IActivityDefine, IConfigMeta, ILineDefine, ILogicFlowDefinition } from "@rxdrag/schema";
 import { ISnapshot } from "./state";
+
+export type ILogicMetas = {
+  nodes: IActivityDefine<IConfigMeta>[];
+  lines: ILineDefine[];
+}
 
 export interface IEventMeta {
   name: string,
