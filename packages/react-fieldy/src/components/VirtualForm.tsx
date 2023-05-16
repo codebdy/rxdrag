@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { FormValue, IForm } from "@rxdrag/fieldy"
 import React, { useEffect, useState } from "react"

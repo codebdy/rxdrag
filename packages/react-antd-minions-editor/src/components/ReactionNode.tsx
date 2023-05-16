@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Node } from '@antv/x6'
 import '@antv/x6-react-shape'
 import { IActivityMaterial } from '@rxdrag/schema'
@@ -103,7 +104,7 @@ export const ReactionNode = (props: { node?: Node }) => {
     >
       <ReactionName>
         <Icon style={{ color: data?.material?.color }}>
-          {data?.material?.icon}
+          {data?.material?.icon as any}
         </Icon>
         <Label>{label}</Label>
       </ReactionName>

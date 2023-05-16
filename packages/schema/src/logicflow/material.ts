@@ -1,4 +1,3 @@
-import { IActivityFactoryOptions } from '@rxdrag/minions';
 import { INodeSchema } from '../node';
 import { IActivity } from './controller';
 import {
@@ -24,7 +23,8 @@ export interface IActivityMaterial<ComponentNode = unknown> {
   schema?: INodeSchema;
   meta?: IReactionNodeData;
   subTitle?: (config?: IConfigMeta) => string | undefined;
-  reaction?: ActivityFactory<IActivityFactoryOptions>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  reaction?: ActivityFactory<any>;
 }
 
 export interface ActivityMaterialCategory<ComponentNode = unknown> {

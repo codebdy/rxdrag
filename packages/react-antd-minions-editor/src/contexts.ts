@@ -15,10 +15,8 @@ export const initialState: IState = {
   changeFlag: 0,
   undoList: [],
   redoList: [],
-  metas: {
-    nodes: [],
-    lines: [],
-  },
+  nodes: [],
+  lines: [],
   selected: undefined,
   zoom: 1,
 }

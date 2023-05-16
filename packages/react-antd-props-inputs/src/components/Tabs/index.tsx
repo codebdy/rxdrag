@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { forwardRef, memo, useMemo } from "react"
 import { Tabs as AntdTabs } from 'antd';
 import "./style.less"
@@ -21,7 +22,7 @@ export const Tabs = memo(forwardRef<HTMLDivElement>((
     if (isArr(children)) {
       return children.map(((child, index) => {
         const childSchema = schema?.children?.[index]
-        const key = childSchema?.props?.title + index
+        const key = childSchema?.props?.title as any + index
         return {
           label: childSchema?.props?.title,
           key: childSchema?.props?.id || key,
@@ -33,7 +34,7 @@ export const Tabs = memo(forwardRef<HTMLDivElement>((
   return (
     <div ref={ref} className={cls("rx-tabs", className)} {...other}>
       <AntdTabs
-        items={items}
+        items={items as any}
       ></AntdTabs>
     </div>
   )
