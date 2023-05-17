@@ -1,7 +1,5 @@
-import { Col } from "antd"
 import React, { memo } from "react"
 import styled from "styled-components"
-import { useTrans } from "../../hooks/useTrans"
 
 const Icon = styled.div`
   width: 100%;
@@ -15,7 +13,7 @@ const Icon = styled.div`
   background-color: ${props => props.theme.token?.colorBorderSecondary};
 `
 
-const Shell = styled((props) => <Col span={12} {...props} />)`
+const Shell = styled((props) => <div {...props} />)`
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -48,11 +46,10 @@ export const ToolItem = memo((
   }
 ) => {
   const { title, icon, color, ...other } = props
-  const t = useTrans();
   return (
     <Shell {...other}>
       <Icon style={{ color }}>{icon}</Icon>
-      <Title>{t(title)}</Title>
+      <Title>{title}</Title>
     </Shell>
   )
 })

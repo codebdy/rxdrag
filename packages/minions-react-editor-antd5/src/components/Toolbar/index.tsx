@@ -1,6 +1,4 @@
 import React from "react"
-import { ZoomOutOutlined, ZoomInOutlined } from "@ant-design/icons"
-import { Button, Divider, Space } from "antd"
 import { memo, useCallback } from "react"
 import styled from "styled-components"
 import { useRedo } from "../../hooks/edit-meta/useRedo"

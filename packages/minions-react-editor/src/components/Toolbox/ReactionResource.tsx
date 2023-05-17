@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react"
 import { memo, useCallback } from "react"
-import { useGraph, useDnd, useTrans, useGetNodeConfig } from "../../hooks";
-import { IActivityMaterial, IActivityDefine } from "@rxdrag/schema";
+import { useGraph, useDnd, useGetNodeConfig } from "../../hooks";
 import { createUuid } from "@rxdrag/shared";
+import { IActivityDefine, IActivityMaterial } from "@rxdrag/minions";
 
 export type ReactionResourceProps = {
   children?: (onMouseDown: ((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void)) => ReactNode,
@@ -11,7 +11,6 @@ export type ReactionResourceProps = {
 
 export const ReactionResource = memo((props: ReactionResourceProps) => {
   const { children, material } = props
-  const t = useTrans();
   const graph = useGraph()
   const dnd = useDnd()
   const getNodeConfig = useGetNodeConfig()
@@ -22,14 +21,15 @@ export const ReactionResource = memo((props: ReactionResourceProps) => {
     }
     const nodeMeta: IActivityDefine = {
       id: createUuid(),
-      label: t(material.label),
+      label: material.label,
       type: material.activityType,
-      materialName: material.name,
-      ...material.meta
+      activityName: material.name,
+      ...material.defaultPorts
     }
     const node = graph.createNode(getNodeConfig(nodeMeta));
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dnd?.start(node, e.nativeEvent as any);
-  }, [dnd, getNodeConfig, graph, t])
+  }, [dnd, getNodeConfig, graph, material.activityType, material.defaultPorts, material.label, material.name])
 
   return <>
     {children?.(handleDrag)}

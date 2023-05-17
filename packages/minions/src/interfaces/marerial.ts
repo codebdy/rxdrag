@@ -1,7 +1,7 @@
 import { ActivityType, IPortDefine } from "./dsl";
 
 export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown> {
-  //唯一名称
+  //唯一名称, 这个名字直接对应 activityName
   name: string;
   label: string;
   activityType: ActivityType;
@@ -14,7 +14,7 @@ export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown
     outPorts?: IPortDefine[];
   };
   subTitle?: (config?: unknown) => string | undefined;
-  activityName: string;
+  //activityName: string;
 }
 
 export interface ActivityMaterialCategory<ComponentNode = unknown> {
