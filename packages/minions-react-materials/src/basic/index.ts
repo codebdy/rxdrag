@@ -1,5 +1,4 @@
 import { startIcon, endIcon } from "@rxdrag/react-shared";
-import { INodeSchema, IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { labelSchema, nameSchema } from "../baseSchema";
 import { conditionMaterial } from "./condition";
 import { delayMaterial } from "./delay";
@@ -9,6 +8,8 @@ import { loopMaterial } from "./loop";
 import { mergeMaterial } from "./merge";
 import { randomMaterial } from "./random";
 import { ReactNode } from "react";
+import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
+import { INodeSchema } from "@rxdrag/schema";
 
 export const startEndSchema: INodeSchema = {
   componentName: "Fragment",

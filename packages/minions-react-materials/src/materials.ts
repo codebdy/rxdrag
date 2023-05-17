@@ -1,11 +1,10 @@
 
-import { IActivityMaterial, ActivityMaterialCategory } from "@rxdrag/schema"
 import { ReactNode } from "react"
 import { auxReactions } from "./auxtools"
 import { basicReactions } from "./basic"
 import { commonReactions } from "./common"
 import { controllerReactions } from "./controller"
-import { dataModelReactions } from "./model"
+import { ActivityMaterialCategory, IActivityMaterial } from "@rxdrag/minions-schema"
 
 
 export const activityMaterialCategories: ActivityMaterialCategory<ReactNode>[] = [
