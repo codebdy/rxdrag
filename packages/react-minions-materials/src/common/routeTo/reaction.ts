@@ -11,7 +11,7 @@ export class RouteToReaction extends AbstractActivity<IRouteToConfig> {
   constructor(meta: IActivityDefine<IRouteToConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
-    this.getInputByName("input")?.connect(this.inputHandler)
+    this.getInputByName("input")?.connect(this.inputHandler as any)
   }
 
   inputHandler = (inputValue?: any) => {

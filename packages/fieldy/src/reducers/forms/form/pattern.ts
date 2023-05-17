@@ -1,5 +1,6 @@
-import { IAction, FieldPatternTypes } from "../../../interfaces";
+import { PatternType } from "@rxdrag/schema";
+import { IAction } from "../../../interfaces";
 
-export function patternReduer(state: FieldPatternTypes | undefined, action: IAction<any>) {
+export function patternReduer(state: PatternType | undefined, action: IAction<any>) {
   return state
 }

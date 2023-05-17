@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { isHTMLElement } from "@rxdrag/shared";
 import React, { memo, useCallback, useMemo } from "react";
 import { useDesignComponent, useDesignerEngine, useLocked, useTreeNode} from "../hooks";
@@ -38,7 +39,7 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const realProps = useMemo(() => {
     const rxProps = !locked ? (node?.rxProps) : {}
     return {
-      style: { ...style, ...dStyle },
+      style: { ...style||{}, ...dStyle||{} },
       ...other,
       ...rxProps,
       ...dOther,

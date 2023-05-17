@@ -14,7 +14,7 @@ export class FixedValueReaction extends AbstractActivity<IFixedValueConfig> {
       throw new Error("Fixed value inputs count error")
     }
 
-    this.getInputByName("input")?.connect(this.inputHandler)
+    this.getInputByName("input")?.connect(this.inputHandler as any)
   }
 
   inputHandler = () => {

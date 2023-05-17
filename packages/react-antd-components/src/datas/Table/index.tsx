@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 // expandedRowRender 作为Slot，可以实现嵌套表格
 // row render ，设置ObjectField
@@ -33,12 +34,13 @@ interface RowProps {
 interface TableCellProps {
   editable: boolean;
   children: React.ReactNode;
-  record: any;
+  record: unknown;
   fieldMeta?: IFieldMeta<IBindParams>;
 }
 
 const TableCell: React.FC<TableCellProps> = ({
   fieldMeta,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   record,
   children,
   ...restProps
@@ -48,7 +50,8 @@ const TableCell: React.FC<TableCellProps> = ({
   return <td {...restProps}>
     {
       fieldMeta?.name && fieldMeta.params?.withBind
-        ? parentField?.value?.[fieldMeta.name]?.toString()
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ? (parentField?.value as any)?.[fieldMeta.name]?.toString()
         : children
     }
   </td>;
@@ -78,7 +81,7 @@ export const Table = memo((
         render: () => {
           return <ComponentView node={child} />
         },
-        onCell: (record: any, index?: number) => ({
+        onCell: (record: unknown) => ({
           record,
           fieldMeta: child["x-field"],
         }),
@@ -87,7 +90,7 @@ export const Table = memo((
   }, [nodeSchema?.children])
 
   const handleChange = useCallback(() => {
-
+    console.error("Not implement")
   }, [])
   const TableRow: React.FC<RowProps> = useMemo(() => (props) => {
     const { index, ...other } = props

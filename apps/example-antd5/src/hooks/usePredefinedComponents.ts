@@ -1,5 +1,5 @@
 import { Root } from "@rxdrag/react-core";
-import { IComponents } from "@rxdrag/react-shared";
+import { IComponents, ReactComponent } from "@rxdrag/react-shared";
 import { isStr } from "@rxdrag/shared";
 import { useMemo } from "react";
 import {Field} from "@rxdrag/react-antd-components";
@@ -25,8 +25,8 @@ export function usePredefinedComponents() {
             if (slot === true || slot === undefined || isStr(slot)) {
               continue
             }
-            designers[slot.componentName] = slot.designer
-            components[slot.componentName] = slot.component
+            designers[slot.componentName] = slot.designer as ReactComponent
+            components[slot.componentName] = slot.component as ReactComponent
           }
         }
       }

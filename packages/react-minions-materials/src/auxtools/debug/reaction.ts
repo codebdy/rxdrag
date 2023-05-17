@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema"
 import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
 
@@ -14,7 +15,7 @@ export class DebugReaction extends AbstractActivity<IDebugConfig> {
       throw new Error("Debug inputs count error")
     }
 
-    this.getInputByName("input")?.connect(this.inputHandler)
+    this.getInputByName("input")?.connect(this.inputHandler as any)
   }
 
   inputHandler = (inputValue: string) => {

@@ -28,6 +28,7 @@ const List = styled.div`
   padding: 0 8px;
 `
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ListItem = styled((props: any) => <Button type="text" {...props} />)`
   display: flex;
   align-items: center;
@@ -72,6 +73,8 @@ export const Members = memo((
       const newReaction: ILogicFlowDefinition = {
         id: createUuid(),
         label: name,
+        nodes: [],
+        lines: [],
       }
 
       onChange?.({ ...value, reactions: [...value?.reactions || [], newReaction] })

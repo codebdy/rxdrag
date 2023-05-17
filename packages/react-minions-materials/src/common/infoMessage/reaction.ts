@@ -24,7 +24,7 @@ export class InfoMessageReaction extends AbstractActivity<IInfoMessageConfig> {
       throw new Error("Debug inputs count error")
     }
 
-    this.getInputByName("input")?.connect(this.inputHandler)
+    this.getInputByName("input")?.connect(this.inputHandler as any)
   }
 
   inputHandler = (inputValue?: string) => {

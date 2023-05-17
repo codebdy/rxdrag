@@ -27,7 +27,7 @@ export const Dropdown = memo((props: DropdownProps) => {
         key: index,
         icon: icon && <div style={{ paddingRight: 8 }}><IconView icon={icon} /></div>,
         label: child.props?.title,
-      }
+      } as any
     })
   }, [schema])
   return (

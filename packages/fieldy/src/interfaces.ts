@@ -7,7 +7,8 @@ export type Errors = {
 }
 
 export type Listener = () => void
-export type ValueChangeListener = (value: unknown) => void
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ValueChangeListener = (value: any) => void
 export type ErrorListener = (errors: Errors) => void
 export type Unsubscribe = () => void
 

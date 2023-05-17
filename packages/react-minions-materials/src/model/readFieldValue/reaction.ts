@@ -8,7 +8,7 @@ export interface IReadFieldValueConfig extends IConfigMeta {
 export class ReadFieldValueReaction extends AbstractActivity<IReadFieldValueConfig> {
   constructor(meta: IActivityDefine<IReadFieldValueConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
-    this.getInputByName("input")?.connect(this.inputHandler)
+    this.getInputByName("input")?.connect(this.inputHandler as any)
   }
 
   inputHandler = (inputValue?: any) => {

@@ -1,4 +1,4 @@
-import { IControllerMeta, IActivityMaterial, ILogicFlowDefinition } from "@rxdrag/schema";
+import { IControllerMeta, IActivityMaterial } from "@rxdrag/schema";
 import React, { memo, ReactNode, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
 import { ControllerContext, ControllersContext } from "../contexts";
@@ -8,6 +8,7 @@ import { Minions } from "@rxdrag/react-minions";
 import { LocalesContext } from "@rxdrag/react-locales";
 import { ILocales, LocalesManager } from "@rxdrag/locales"
 import { minionsEditorLocales } from "../locales";
+import { ILogicMetas } from "../interfaces";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -63,7 +64,7 @@ export const ControllerMetaEditor = memo((
     return value?.events?.find(evt => evt.id === selected)
   }, [selected, value?.events, value?.reactions])
 
-  const handleChange = useCallback((newMetas: ILogicFlowDefinition) => {
+  const handleChange = useCallback((newMetas: ILogicMetas) => {
     const newValue = {
       ...value,
       reactions: value?.reactions?.map(reaction => reaction.id === selected ? { ...reaction, ...newMetas } : reaction),

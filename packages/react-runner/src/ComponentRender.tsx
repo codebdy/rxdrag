@@ -12,7 +12,7 @@ export const ComponentRender = memo((props: {
 
   useEffect(() => {
     if (root) {
-      setNode(transToRenderSchema(root))
+      setNode(transToRenderSchema(root as any))
     } else {
       setNode(undefined)
     }
