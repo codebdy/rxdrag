@@ -145,6 +145,58 @@ importers:
         specifier: ^1.0.9
         version: registry.npmmirror.com/vite-plugin-require-transform@1.0.9
 
+  apps/minions-example-antd5:
+    dependencies:
+      '@ant-design/icons':
+        specifier: ^4.8.0
+        version: registry.npmmirror.com/@ant-design/icons@4.8.0(react-dom@18.2.0)(react@18.2.0)
+      antd:
+        specifier: ^5.1.2
+        version: registry.npmmirror.com/antd@5.1.2(react-dom@18.2.0)(react@18.2.0)
+      classnames:
+        specifier: ^2.3.2
+        version: registry.npmmirror.com/classnames@2.3.2
+      css-border-property:
+        specifier: ^1.1.0
+        version: registry.npmmirror.com/css-border-property@1.1.0
+      react:
+        specifier: ^18.2.0
+        version: registry.npmmirror.com/react@18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+      react-router-dom:
+        specifier: ^6.9.0
+        version: registry.npmmirror.com/react-router-dom@6.9.0(react-dom@18.2.0)(react@18.2.0)
+      vite-tsconfig-paths:
+        specifier: ^4.0.7
+        version: registry.npmmirror.com/vite-tsconfig-paths@4.0.7(typescript@4.9.4)(vite@4.2.0)
+      web-vitals:
+        specifier: ^3.3.0
+        version: registry.npmmirror.com/web-vitals@3.3.0
+    devDependencies:
+      '@rxdrag/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
+      '@types/react':
+        specifier: ^18.0.28
+        version: registry.npmmirror.com/@types/react@18.0.28
+      '@types/react-dom':
+        specifier: ^18.0.11
+        version: registry.npmmirror.com/@types/react-dom@18.0.11
+      '@vitejs/plugin-react':
+        specifier: ^3.1.0
+        version: registry.npmmirror.com/@vitejs/plugin-react@3.1.0(vite@4.2.0)
+      typescript:
+        specifier: ^4.9.3
+        version: registry.npmmirror.com/typescript@4.9.4
+      vite:
+        specifier: ^4.2.0
+        version: registry.npmmirror.com/vite@4.2.0(@types/node@18.11.17)(less@4.1.3)
+      vite-plugin-require-transform:
+        specifier: ^1.0.9
+        version: registry.npmmirror.com/vite-plugin-require-transform@1.0.9
+
   packages/core:
     dependencies:
       '@reduxjs/toolkit':
@@ -9329,6 +9381,22 @@ packages:
     dependencies:
       punycode: registry.npmmirror.com/punycode@2.3.0
 
+  registry.npmmirror.com/tsconfck@2.1.0(typescript@4.9.4):
+    resolution: {integrity: sha512-lztI9ohwclQHISVWrM/hlcgsRpphsii94DV9AQtAw2XJSVNiv+3ppdEsrL5J+xc5oTeHXe1qDqlOAGw8VSa9+Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tsconfck/-/tsconfck-2.1.0.tgz}
+    id: registry.npmmirror.com/tsconfck/2.1.0
+    name: tsconfck
+    version: 2.1.0
+    engines: {node: ^14.13.1 || ^16 || >=18}
+    hasBin: true
+    peerDependencies:
+      typescript: ^4.3.5 || ^5.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: registry.npmmirror.com/typescript@4.9.4
+    dev: false
+
   registry.npmmirror.com/tsconfck@2.1.0(typescript@4.9.5):
     resolution: {integrity: sha512-lztI9ohwclQHISVWrM/hlcgsRpphsii94DV9AQtAw2XJSVNiv+3ppdEsrL5J+xc5oTeHXe1qDqlOAGw8VSa9+Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tsconfck/-/tsconfck-2.1.0.tgz}
     id: registry.npmmirror.com/tsconfck/2.1.0
@@ -9477,6 +9545,13 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  registry.npmmirror.com/typescript@4.9.4:
+    resolution: {integrity: sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/typescript/-/typescript-4.9.4.tgz}
+    name: typescript
+    version: 4.9.4
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+
   registry.npmmirror.com/typescript@4.9.5:
     resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/typescript/-/typescript-4.9.5.tgz}
     name: typescript
@@ -9568,6 +9643,26 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  registry.npmmirror.com/vite-tsconfig-paths@4.0.7(typescript@4.9.4)(vite@4.2.0):
+    resolution: {integrity: sha512-MwIYaby6kcbQGZqMH+gAK6h0UYQGOkjsuAgw4q6bP/5vWkn8VKvnmLuCQHA2+IzHAJHnE8OFTO4lnJLFMf9+7Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vite-tsconfig-paths/-/vite-tsconfig-paths-4.0.7.tgz}
+    id: registry.npmmirror.com/vite-tsconfig-paths/4.0.7
+    name: vite-tsconfig-paths
+    version: 4.0.7
+    peerDependencies:
+      vite: '*'
+    peerDependenciesMeta:
+      vite:
+        optional: true
+    dependencies:
+      debug: registry.npmmirror.com/debug@4.3.4(supports-color@5.5.0)
+      globrex: registry.npmmirror.com/globrex@0.1.2
+      tsconfck: registry.npmmirror.com/tsconfck@2.1.0(typescript@4.9.4)
+      vite: registry.npmmirror.com/vite@4.2.0(@types/node@18.11.17)(less@4.1.3)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+    dev: false
 
   registry.npmmirror.com/vite-tsconfig-paths@4.0.7(typescript@4.9.5)(vite@4.2.0):
     resolution: {integrity: sha512-MwIYaby6kcbQGZqMH+gAK6h0UYQGOkjsuAgw4q6bP/5vWkn8VKvnmLuCQHA2+IzHAJHnE8OFTO4lnJLFMf9+7Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vite-tsconfig-paths/-/vite-tsconfig-paths-4.0.7.tgz}
