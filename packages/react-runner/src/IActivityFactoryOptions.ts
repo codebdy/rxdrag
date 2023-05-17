@@ -1,6 +1,5 @@
-import { IActivityMaterial } from "@rxdrag/schema"
-import {Controllers} from "@rxdrag/minions"
 import { IForm } from "@rxdrag/fieldy"
+import { Controllers } from "@rxdrag/minions-react"
 
 export type Navigate = (url: string) => void
 

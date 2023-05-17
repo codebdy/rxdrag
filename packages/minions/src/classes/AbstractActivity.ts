@@ -2,12 +2,11 @@ import { IActivity, IJointer } from "../interfaces/activity";
 import { Jointer } from "./Jointer";
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
-
-export abstract class AbstractActivity<ConfigMeta = undefined, IActivityFactoryOptions = any> implements IActivity {
+export abstract class AbstractActivity<ConfigMeta = unknown, ActivityFactoryOptions = unknown> implements IActivity {
   id: string;
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];
-  constructor(public meta: IActivityDefine<ConfigMeta>, protected options?: IActivityFactoryOptions) {
+  constructor(public meta: IActivityDefine<ConfigMeta>, protected options?: ActivityFactoryOptions) {
     this.id = meta.id
     for (const out of meta.outPorts || []) {
       this.outputs.push(new Jointer(out.id, out.name))

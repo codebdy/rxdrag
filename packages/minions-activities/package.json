@@ -15,8 +15,8 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@rxdrag/shared": "workspace:*",
-    "@rxdrag/schema": "workspace:*"
+    "@rxdrag/minions": "workspace:*",
+    "@rxdrag/minions-schema": "workspace:*"
   },
   "devDependencies": {
     "@rxdrag/eslint-config-custom": "workspace:*",

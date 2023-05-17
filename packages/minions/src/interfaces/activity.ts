@@ -1,4 +1,4 @@
-import { IActivityDefine } from "./dsl";
+import { IActivityDefine } from "@rxdrag/minions-schema";
 
 export type InputHandler = (inputValue?: unknown) => void;
 

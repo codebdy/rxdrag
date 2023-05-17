@@ -1,4 +1,4 @@
-import { IActivityMaterial } from "@rxdrag/minions-schema";
+import { IActivityMaterial } from "@rxdrag/schema";
 import { debugMaterial } from "./debug";
 import { ReactNode } from "react";
 

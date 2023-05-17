@@ -14,11 +14,11 @@
     "@rxdrag/tsconfig": "workspace:*",
     "typescript": "^4.9.4"
   },
-  "peerDependencies": {
-  },
+  "peerDependencies": {},
   "dependencies": {
-    "@rxdrag/minions": "workspace:*",
+    "@rxdrag/minions-schema": "workspace:*",
     "@rxdrag/schema": "workspace:*",
-    "@rxdrag/shared": "workspace:*"
+    "@rxdrag/shared": "workspace:*",
+    "@rxdrag/minions-activities": "workspace:*"
   }
 }

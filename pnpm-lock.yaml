@@ -371,12 +371,12 @@ importers:
 
   packages/minions-activities:
     dependencies:
-      '@rxdrag/schema':
+      '@rxdrag/minions':
         specifier: workspace:*
-        version: link:../schema
-      '@rxdrag/shared':
+        version: link:../minions
+      '@rxdrag/minions-schema':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../minions-schema
       '@types/node':
         specifier: '*'
         version: registry.npmmirror.com/@types/node@18.11.17
@@ -594,9 +594,12 @@ importers:
 
   packages/minions-react-materials:
     dependencies:
-      '@rxdrag/minions':
+      '@rxdrag/minions-activities':
         specifier: workspace:*
-        version: link:../minions
+        version: link:../minions-activities
+      '@rxdrag/minions-schema':
+        specifier: workspace:*
+        version: link:../minions-schema
       '@rxdrag/schema':
         specifier: workspace:*
         version: link:../schema
