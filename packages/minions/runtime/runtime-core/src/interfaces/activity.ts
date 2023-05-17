@@ -1,4 +1,3 @@
-import { IActivityDefine } from "@rxdrag/minions-schema";
 
 export type InputHandler = (inputValue?: unknown) => void;
 
@@ -9,15 +8,19 @@ export interface IJointer {
   connect: (jointerInput: InputHandler) => void;
 }
 
-export interface IActivity {
-  id: string;
+export interface IActivityJointers {
   inputs: IJointer[];
   outputs: IJointer[];
-  meta?: IActivityDefine;
+}
+
+export interface IActivity<ConfigMeta = unknown> {
+  id: string;
+  jointers: IActivityJointers,
+  config?: ConfigMeta;
   destory(): void;
 }
 
 export type ActivityFactory<ConfigMeta = unknown, ActivityFactoryOptions = unknown> = (
-  meta: IActivityDefine<ConfigMeta>,
+  config: ConfigMeta,
   options: ActivityFactoryOptions
 ) => IActivity;

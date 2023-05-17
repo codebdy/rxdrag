@@ -2,24 +2,22 @@ import { AbstractActivity, ActivityFactory } from "@rxdrag/minions"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
 export interface IDebugConfig {
+  tip?:string,
   closed?: boolean
 }
 
-export class DebugActivity extends AbstractActivity<IDebugConfig> {
+export class DebugActivity extends SingleInputActivity<IDebugConfig> {
 
-  constructor(meta: IActivityDefine<IDebugConfig>) {
-    super(meta)
+  constructor(config: IDebugConfig) {
+    super(config)
 
-    if (Object.keys(meta.inPorts || {}).length !== 1) {
-      throw new Error("Debug inputs count error")
-    }
 
     this.getInputByName("input")?.connect(this.inputHandler as any)
   }
 
   inputHandler = (inputValue: string) => {
-    if (!this.meta.config?.closed) {
-      console.log(`🪲${this.meta.label || "Debug"}:`, inputValue)
+    if (!this.config?.closed) {
+      console.log(`🪲${this.config.label || "Debug"}:`, inputValue)
     }
   }
 }
