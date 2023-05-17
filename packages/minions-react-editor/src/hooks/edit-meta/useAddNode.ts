@@ -1,11 +1,11 @@
 import { Node } from "@antv/x6";
 import { useCallback, useEffect } from "react";
-import { ActionType } from "../../../../minions-react-editor/src/actions";
 import { INodeData } from "../../interfaces/interfaces";
 import { useDispatch } from "../useDispatch";
 import { useGraph } from "../useGraph";
 import { useBackup } from "./useBackup";
 import { useMarkChange } from "./useMarkChange";
+import { ActionType } from "../../actions";
 
 export function useAddNode() {
   const graph = useGraph()

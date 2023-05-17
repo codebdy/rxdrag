@@ -1,4 +1,4 @@
-import { Action } from "../../../minions-react-editor/src/actions";
+import { Action } from "../actions";
 import { initialState, IState } from "../interfaces/state";
 import { changeFlagReducer } from "./changeFlagReducer";
 import { metasReducer } from "./metasReducer";

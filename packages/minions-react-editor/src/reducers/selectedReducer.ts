@@ -1,5 +1,4 @@
-import { Action } from "redux";
-import { ActionType, SelectionAction } from "../../../minions-react-editor/src/actions";
+import { Action, ActionType, SelectionAction } from "../actions"
 
 export function selectedReducer(state: string | undefined, action: Action): (string | undefined) {
   switch (action.type) {

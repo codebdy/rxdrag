@@ -1,11 +1,11 @@
 import { useCallback, useEffect } from "react"
 import { INodeData } from "../../interfaces/interfaces"
 import { Node } from "@antv/x6";
-import { ActionType } from "../../../../minions-react-editor/src/actions";
 import { useBackup } from "./useBackup";
 import { useMarkChange } from "./useMarkChange";
 import { useDispatch } from "../useDispatch";
 import { useGraph } from "../useGraph";
+import { ActionType } from "../../actions";
 
 export function useMovedNode() {
   const dispatch = useDispatch()

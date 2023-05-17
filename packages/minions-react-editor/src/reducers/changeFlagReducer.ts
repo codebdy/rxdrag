@@ -1,5 +1,4 @@
-import { Action } from "redux";
-import { ActionType, SetChangeFlagAction } from "../../../minions-react-editor/src/actions";
+import { Action, ActionType, SetChangeFlagAction } from "../actions"
 
 export function changeFlagReducer(state: number, action: Action) {
   switch (action.type) {

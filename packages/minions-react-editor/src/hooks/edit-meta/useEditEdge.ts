@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Edge } from "@antv/x6"
-import { ILineDefine } from "@rxdrag/schema"
 import { useCallback, useEffect } from "react"
-import { ActionType } from "../../../../minions-react-editor/src/actions"
 import { useDispatch } from "../useDispatch"
 import { useGraph } from "../useGraph"
 import { useBackup } from "./useBackup"
 import { useMarkChange } from "./useMarkChange"
+import { ILineDefine } from "@rxdrag/minions"
+import { ActionType } from "../../actions"
 
 export function useEditEdge() {
   const dispatch = useDispatch()

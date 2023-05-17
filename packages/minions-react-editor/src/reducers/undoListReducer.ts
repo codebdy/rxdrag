@@ -1,4 +1,4 @@
-import { Action, ActionType, BackupAction, SetUndoListAction } from "../../../minions-react-editor/src/actions";
+import { Action, ActionType, BackupAction, SetUndoListAction } from "../actions";
 import { ISnapshot } from "../interfaces/state";
 
 export function undoListReducer(state: ISnapshot[], action: Action) {

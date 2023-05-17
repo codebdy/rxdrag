@@ -1,4 +1,4 @@
-import { Action, ActionType, AddEdgeAction, AddNodeAction, ChangeEdgeAction, ChangeNodeAction, RemoveNodeAction, SetMetasAction } from "../../../minions-react-editor/src/actions";
+import { ActionType, SetMetasAction, AddNodeAction, ChangeNodeAction, AddEdgeAction, ChangeEdgeAction, RemoveNodeAction, Action } from "../actions";
 import { ILogicMetas } from "../interfaces";
 
 export function metasReducer(state: ILogicMetas, action: Action):ILogicMetas {

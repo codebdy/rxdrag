@@ -1,9 +1,8 @@
 import { Graph } from "@antv/x6";
-import { IControllerMeta } from "@rxdrag/schema";
 import { createContext } from "react";
 import { EditorStore } from "./classes/EditorStore";
 import { IState } from "./interfaces/state";
-import { Action } from "../../minions-react-editor/src/actions";
+import { Action } from "./actions";
 
 
 export interface IReactionsEditorParams extends IState {

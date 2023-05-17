@@ -1,5 +1,4 @@
-import { Action } from "redux";
-import { ActionType, SetZoomAction } from "../../../minions-react-editor/src/actions";
+import { Action, ActionType, SetZoomAction } from "../actions"
 
 export function zoomReducer(state: number, action: Action): number {
   switch (action.type) {

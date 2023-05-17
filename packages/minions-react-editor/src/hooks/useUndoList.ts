@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react"
-import { ActionType } from "../../../minions-react-editor/src/actions"
 import { ISnapshot } from "../interfaces/state"
 import { useEditorStore } from "./useEditorStore"
+import { ActionType } from "../actions"
 
 export function useUndoList() {
   const [undoList, setUndoList] = useState<ISnapshot[]>([])

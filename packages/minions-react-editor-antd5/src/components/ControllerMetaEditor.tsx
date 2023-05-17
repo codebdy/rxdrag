@@ -1,14 +1,11 @@
-import { IControllerMeta, IActivityMaterial } from "@rxdrag/schema";
 import React, { memo, ReactNode, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
-import { ControllerContext, ControllersContext } from "../contexts";
-import { LogicFlowEditor } from "../../../minions-react-editor/src/components/LogicFlowEditor"
 import { Members } from "./Members";
-import { Minions } from "@rxdrag/react-minions";
 import { LocalesContext } from "@rxdrag/react-locales";
 import { ILocales, LocalesManager } from "@rxdrag/locales"
 import { minionsEditorLocales } from "../locales";
-import { ILogicMetas } from "../interfaces";
+import { IControllerMeta } from "@rxdrag/schema";
+import { IActivityMaterial } from "@rxdrag/minions";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);

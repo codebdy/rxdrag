@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react"
-import { ActionType } from "../../../minions-react-editor/src/actions"
 import { useEditorStore } from "./useEditorStore"
 import { ILogicMetas } from "../interfaces"
+import { ActionType } from "../actions"
 
 export function useMetas() {
   const [metas, setMetas] = useState<ILogicMetas>()

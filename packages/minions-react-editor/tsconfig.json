@@ -1,5 +1,5 @@
 {
   "extends": "@rxdrag/tsconfig/react-library.json",
-  "include": [".", "../minions-react-editor-antd5/src/components/ReactionNode.tsx"],
+  "include": [".", "src/components/ReactionNode.tsx"],
   "exclude": ["dist", "build", "node_modules"]
 }

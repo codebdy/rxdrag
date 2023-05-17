@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Node } from '@antv/x6'
 import '@antv/x6-react-shape'
-import { IActivityMaterial } from '@rxdrag/schema'
-import { GlobalToken } from 'antd/es/theme/interface'
 import { insertCss } from 'insert-css'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import { INodeData } from '../../../minions-react-editor/src/interfaces/interfaces'
+import { INodeData } from '../interfaces/interfaces'
+import { IThemeToken } from '../interfaces'
+import { IActivityMaterial } from '@rxdrag/minions'
 
 insertCss(`
 .x6-node-selected .node{
@@ -72,7 +71,7 @@ const Label = styled.span`
 
 export interface NodeViewParams extends INodeData {
   material: IActivityMaterial;
-  token: GlobalToken,
+  token: IThemeToken,
   width: number,
   height: number,
   subLabel?: string,
@@ -104,7 +103,7 @@ export const ReactionNode = (props: { node?: Node }) => {
     >
       <ReactionName>
         <Icon style={{ color: data?.material?.color }}>
-          {data?.material?.icon as any}
+          {data?.material?.icon as ReactNode | undefined}
         </Icon>
         <Label>{label}</Label>
       </ReactionName>

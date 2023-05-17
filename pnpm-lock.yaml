@@ -433,6 +433,24 @@ importers:
 
   packages/minions-react-editor:
     dependencies:
+      '@antv/x6':
+        specifier: ^2.1.5
+        version: registry.npmmirror.com/@antv/x6@2.5.6
+      '@antv/x6-plugin-dnd':
+        specifier: ^2.0.4
+        version: registry.npmmirror.com/@antv/x6-plugin-dnd@2.0.4(@antv/x6@2.5.6)
+      '@antv/x6-plugin-minimap':
+        specifier: ^2.0.2
+        version: registry.npmmirror.com/@antv/x6-plugin-minimap@2.0.2(@antv/x6@2.5.6)
+      '@antv/x6-plugin-selection':
+        specifier: ^2.1.5
+        version: registry.npmmirror.com/@antv/x6-plugin-selection@2.1.5(@antv/x6@2.5.6)
+      '@antv/x6-react-shape':
+        specifier: ^2.1.0
+        version: registry.npmmirror.com/@antv/x6-react-shape@2.1.1(@antv/x6@2.5.6)(react-dom@18.2.0)(react@18.2.0)
+      '@reduxjs/toolkit':
+        specifier: ^1.9.3
+        version: registry.npmmirror.com/@reduxjs/toolkit@1.9.3(react@18.2.0)
       '@rxdrag/minions':
         specifier: workspace:*
         version: link:../minions
@@ -448,6 +466,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.0.11
         version: registry.npmmirror.com/@types/react-dom@18.0.11
+      insert-css:
+        specifier: ^2.0.0
+        version: registry.npmmirror.com/insert-css@2.0.0
       react:
         specifier: ^18.2.0
         version: registry.npmmirror.com/react@18.2.0
@@ -476,24 +497,6 @@ importers:
       '@ant-design/icons':
         specifier: ^4.8.0
         version: registry.npmmirror.com/@ant-design/icons@4.8.0(react-dom@18.2.0)(react@18.2.0)
-      '@antv/x6':
-        specifier: ^2.1.5
-        version: registry.npmmirror.com/@antv/x6@2.5.6
-      '@antv/x6-plugin-dnd':
-        specifier: ^2.0.4
-        version: registry.npmmirror.com/@antv/x6-plugin-dnd@2.0.4(@antv/x6@2.5.6)
-      '@antv/x6-plugin-minimap':
-        specifier: ^2.0.2
-        version: registry.npmmirror.com/@antv/x6-plugin-minimap@2.0.2(@antv/x6@2.5.6)
-      '@antv/x6-plugin-selection':
-        specifier: ^2.1.5
-        version: registry.npmmirror.com/@antv/x6-plugin-selection@2.1.5(@antv/x6@2.5.6)
-      '@antv/x6-react-shape':
-        specifier: ^2.1.0
-        version: registry.npmmirror.com/@antv/x6-react-shape@2.1.1(@antv/x6@2.5.6)(react-dom@18.2.0)(react@18.2.0)
-      '@reduxjs/toolkit':
-        specifier: ^1.9.3
-        version: registry.npmmirror.com/@reduxjs/toolkit@1.9.3(react@18.2.0)
       '@rxdrag/fieldy':
         specifier: workspace:*
         version: link:../fieldy
@@ -506,6 +509,9 @@ importers:
       '@rxdrag/minions-react':
         specifier: workspace:*
         version: link:../minions-react
+      '@rxdrag/minions-react-editor':
+        specifier: workspace:*
+        version: link:../minions-react-editor
       '@rxdrag/react-antd-props-inputs':
         specifier: workspace:*
         version: link:../react-antd-props-inputs
@@ -530,9 +536,6 @@ importers:
       antd:
         specifier: 5.1.2
         version: registry.npmmirror.com/antd@5.1.2(react-dom@18.2.0)(react@18.2.0)
-      insert-css:
-        specifier: ^2.0.0
-        version: registry.npmmirror.com/insert-css@2.0.0
       less:
         specifier: ^4.1.3
         version: registry.npmmirror.com/less@4.1.3

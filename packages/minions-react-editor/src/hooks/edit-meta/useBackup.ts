@@ -1,9 +1,9 @@
 import { useCallback } from "react"
-import { ActionType } from "../../../../minions-react-editor/src/actions"
 import { useDispatch } from "../useDispatch"
 import { useMetas } from "../useMetas"
 import { useSelected } from "../useSelected"
 import { ISnapshot } from "../../interfaces"
+import { ActionType } from "../../actions"
 
 export function useBackup() {
   const dispatch = useDispatch()

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { ActionType } from "../../../minions-react-editor/src/actions";
 import { useEditorStore } from "./useEditorStore";
+import { ActionType } from "../actions";
 
 export function useZoom() {
   const [zoom, setZoom] = useState<number>(0)

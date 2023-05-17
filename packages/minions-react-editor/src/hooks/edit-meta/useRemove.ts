@@ -1,8 +1,8 @@
 import { Cell } from "@antv/x6";
 import { useCallback, useEffect } from "react";
-import { ActionType } from "../../../../minions-react-editor/src/actions";
 import { useDispatch } from "../useDispatch";
 import { useGraph } from "../useGraph";
+import { ActionType } from "../../actions";
 
 export function useRemove() {
   const dispatch = useDispatch()
