@@ -1,5 +1,0 @@
-{
-  "extends": "@rxdrag/tsconfig/react-library.json",
-  "include": [".", "../minions/src/interfaces/marerial.ts"],
-  "exclude": ["dist", "build", "node_modules"]
-}
