@@ -7,6 +7,9 @@ import { GraphContext, LogicFlowEditorStoreContext } from "../contexts"
 import { useCreateGraph } from "../hooks/useCreateGraph";
 import { Logic } from "./Logic";
 import { ILogicMetas } from "../interfaces";
+import { Toolbar } from "./Toolbar";
+import { Toolbox } from "./Toolbox";
+import { PropertyBox } from "./PropertyBox";
 
 const CenterArea = styled.div`
   position: relative;
@@ -71,9 +74,11 @@ export const LogicFlowEditor = memo((
     metas?: ILogicMetas,
     onChange: (meta: ILogicMetas) => void,
     toolbox?: React.ReactNode,
+    toolbar?: React.ReactNode,
+    propertyBox?: React.ReactNode,
   }
 ) => {
-  const { metas, onChange, toolbox } = props
+  const { metas, onChange, toolbox, toolbar, propertyBox } = props
   const emptyMetas = useMemo(() => ({
     nodes: [],
     lines: []
@@ -102,7 +107,9 @@ export const LogicFlowEditor = memo((
     <GraphContext.Provider value={graph}>
       <LogicFlowEditorStoreContext.Provider value={store}>
         <CenterArea>
-          <Toolbar showMap={showMap} toggleShowMap={handleToggleMap} />
+          <Toolbar>
+            {toolbar}
+          </Toolbar>
           <OpeateArea>
             <Toolbox>
               {toolbox}
@@ -121,7 +128,9 @@ export const LogicFlowEditor = memo((
           </OpeateArea>
         </CenterArea>
         <RightArea>
-          <PropertyBox />
+          <PropertyBox>
+            {propertyBox}
+          </PropertyBox>
         </RightArea>
       </LogicFlowEditorStoreContext.Provider>
     </GraphContext.Provider>
