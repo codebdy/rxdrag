@@ -1,6 +1,7 @@
 packages:
   # all packages in direct subdirs of packages/
   - 'packages/*'
+  - 'packages/locales/*'
   - 'packages/rxdrag/*'
   - 'packages/rxdrag/editor/*'
   - 'packages/rxdrag/runtime/*'

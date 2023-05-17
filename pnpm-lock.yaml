@@ -66,40 +66,40 @@ importers:
         specifier: ^4.8.0
         version: registry.npmmirror.com/@ant-design/icons@4.8.0(react-dom@18.2.0)(react@18.2.0)
       '@rxdrag/core':
-        specifier: workspace:^1.1.0
-        version: link:../../packages/core
+        specifier: workspace:*
+        version: link:../../packages/rxdrag/editor/core
       '@rxdrag/locales':
-        specifier: workspace:^1.1.0
-        version: link:../../packages/locales
+        specifier: workspace:*
+        version: link:../../packages/locales/locales
       '@rxdrag/react-antd-components':
-        specifier: workspace:^1.1.0
-        version: link:../../packages/react-antd-components
+        specifier: workspace:*
+        version: link:../../packages/rxdrag/runtime/react-antd-components
       '@rxdrag/react-antd-materials':
-        specifier: workspace:^1.1.0
-        version: link:../../packages/react-antd-materials
+        specifier: workspace:*
+        version: link:../../packages/rxdrag/editor/react-antd-materials
       '@rxdrag/react-antd-shell':
-        specifier: workspace:^1.1.0
-        version: link:../../packages/react-antd-shell
+        specifier: workspace:*
+        version: link:../../packages/rxdrag/editor/react-antd-shell
       '@rxdrag/react-core':
-        specifier: workspace:^1.1.0
-        version: link:../../packages/react-core
+        specifier: workspace:*
+        version: link:../../packages/rxdrag/editor/react-core
       '@rxdrag/react-locales':
-        specifier: workspace:^1.1.0
-        version: link:../../packages/react-locales
+        specifier: workspace:*
+        version: link:../../packages/locales/locales-react
       '@rxdrag/react-minions-materials':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../packages/minions/editor/react-materials
       '@rxdrag/react-runner':
-        specifier: workspace:^1.1.0
-        version: link:../../packages/react-runner
+        specifier: workspace:*
+        version: link:../../packages/rxdrag/runtime/react-runner
       '@rxdrag/react-shared':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../packages/react-shared
       '@rxdrag/schema':
-        specifier: workspace:^1.1.0
-        version: link:../../packages/schema
+        specifier: workspace:*
+        version: link:../../packages/rxdrag/schema
       '@rxdrag/shared':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../packages/shared
       antd:
         specifier: ^5.1.2
@@ -197,49 +197,6 @@ importers:
         specifier: ^1.0.9
         version: registry.npmmirror.com/vite-plugin-require-transform@1.0.9
 
-  packages/core:
-    dependencies:
-      '@reduxjs/toolkit':
-        specifier: ^1.9.3
-        version: registry.npmmirror.com/@reduxjs/toolkit@1.9.3(react@18.2.0)
-      '@rxdrag/locales':
-        specifier: workspace:*
-        version: link:../locales
-      '@rxdrag/schema':
-        specifier: workspace:*
-        version: link:../schema
-      '@rxdrag/shared':
-        specifier: workspace:*
-        version: link:../shared
-      '@types/node':
-        specifier: '*'
-        version: registry.npmmirror.com/@types/node@18.11.17
-      '@vitejs/plugin-react-swc':
-        specifier: 3.x
-        version: registry.npmmirror.com/@vitejs/plugin-react-swc@3.0.1(vite@4.2.0)
-      lodash:
-        specifier: ^4.17.21
-        version: registry.npmmirror.com/lodash@4.17.21
-      redux:
-        specifier: ^4.2.1
-        version: registry.npmmirror.com/redux@4.2.1
-      typescript:
-        specifier: 4.x
-        version: registry.npmmirror.com/typescript@4.9.5
-      vite:
-        specifier: 4.x
-        version: registry.npmmirror.com/vite@4.2.0(@types/node@18.11.17)(less@4.1.3)
-      vitest:
-        specifier: '*'
-        version: registry.npmmirror.com/vitest@0.25.8(jsdom@22.0.0)
-    devDependencies:
-      '@rxdrag/eslint-config-custom':
-        specifier: workspace:*
-        version: link:../eslint-config-custom
-      '@rxdrag/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
-
   packages/eslint-config-custom:
     dependencies:
       '@typescript-eslint/eslint-plugin':
@@ -267,17 +224,17 @@ importers:
         specifier: ^2.5.1
         version: registry.npmmirror.com/prettier@2.8.1
 
-  packages/fieldy:
+  packages/fieldy/fieldy:
     dependencies:
       '@reduxjs/toolkit':
         specifier: ^1.9.3
         version: registry.npmmirror.com/@reduxjs/toolkit@1.9.3(react@18.2.0)
       '@rxdrag/schema':
         specifier: workspace:*
-        version: link:../schema
+        version: link:../../rxdrag/schema
       '@rxdrag/shared':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../../shared
       '@types/node':
         specifier: '*'
         version: registry.npmmirror.com/@types/node@18.11.17
@@ -292,7 +249,7 @@ importers:
         version: registry.npmmirror.com/redux@4.2.1
       typescript:
         specifier: 4.x
-        version: registry.npmmirror.com/typescript@4.9.5
+        version: registry.npmmirror.com/typescript@4.9.4
       vite:
         specifier: 4.x
         version: registry.npmmirror.com/vite@4.2.0(@types/node@18.11.17)(less@4.1.3)
@@ -302,46 +259,67 @@ importers:
     devDependencies:
       '@rxdrag/eslint-config-custom':
         specifier: workspace:*
-        version: link:../eslint-config-custom
+        version: link:../../eslint-config-custom
       '@rxdrag/tsconfig':
         specifier: workspace:*
-        version: link:../tsconfig
+        version: link:../../tsconfig
 
-  packages/locales:
+  packages/fieldy/fieldy-react:
     dependencies:
+      '@reduxjs/toolkit':
+        specifier: ^1.9.3
+        version: registry.npmmirror.com/@reduxjs/toolkit@1.9.3(react@18.2.0)
+      '@rxdrag/fieldy':
+        specifier: workspace:*
+        version: link:../fieldy
+      '@rxdrag/react-shared':
+        specifier: workspace:*
+        version: link:../../react-shared
       '@rxdrag/schema':
         specifier: workspace:*
-        version: link:../schema
+        version: link:../../rxdrag/schema
       '@rxdrag/shared':
         specifier: workspace:*
-        version: link:../shared
-      '@types/node':
-        specifier: '*'
-        version: registry.npmmirror.com/@types/node@18.11.17
-      '@vitejs/plugin-react-swc':
-        specifier: 3.x
-        version: registry.npmmirror.com/@vitejs/plugin-react-swc@3.0.1(vite@4.2.0)
+        version: link:../../shared
+      '@types/react':
+        specifier: ^18.0.28
+        version: registry.npmmirror.com/@types/react@18.0.28
+      '@types/react-dom':
+        specifier: ^18.0.11
+        version: registry.npmmirror.com/@types/react-dom@18.0.11
       lodash:
         specifier: ^4.17.21
         version: registry.npmmirror.com/lodash@4.17.21
-      typescript:
-        specifier: 4.x
-        version: registry.npmmirror.com/typescript@4.9.5
-      vite:
-        specifier: 4.x
-        version: registry.npmmirror.com/vite@4.2.0(@types/node@18.11.17)(less@4.1.3)
-      vitest:
-        specifier: '*'
-        version: registry.npmmirror.com/vitest@0.25.8(jsdom@22.0.0)
+      react:
+        specifier: ^18.2.0
+        version: registry.npmmirror.com/react@18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+      react-router-dom:
+        specifier: ^6.8.1
+        version: registry.npmmirror.com/react-router-dom@6.9.0(react-dom@18.2.0)(react@18.2.0)
+      redux:
+        specifier: ^4.2.1
+        version: registry.npmmirror.com/redux@4.2.1
+      styled-components:
+        specifier: ^5.3.9
+        version: registry.npmmirror.com/styled-components@5.3.9(react-dom@18.2.0)(react-is@17.0.2)(react@18.2.0)
     devDependencies:
       '@rxdrag/eslint-config-custom':
         specifier: workspace:*
-        version: link:../eslint-config-custom
+        version: link:../../eslint-config-custom
       '@rxdrag/tsconfig':
         specifier: workspace:*
-        version: link:../tsconfig
+        version: link:../../tsconfig
+      eslint:
+        specifier: ^7.32.0
+        version: registry.npmmirror.com/eslint@7.32.0
+      typescript:
+        specifier: ^4.9.4
+        version: registry.npmmirror.com/typescript@4.9.4
 
-  packages/minions/dsl:
+  packages/fieldy/schema:
     dependencies:
       '@types/node':
         specifier: '*'
@@ -360,47 +338,127 @@ importers:
         specifier: ^4.2.0
         version: registry.npmmirror.com/vite@4.2.0(@types/node@18.11.17)(less@4.1.3)
 
-  packages/minions/editor/react-antd5:
+  packages/locales/locales:
+    dependencies:
+      '@rxdrag/schema':
+        specifier: workspace:*
+        version: link:../../rxdrag/schema
+      '@rxdrag/shared':
+        specifier: workspace:*
+        version: link:../../shared
+      '@types/node':
+        specifier: '*'
+        version: registry.npmmirror.com/@types/node@18.11.17
+      '@vitejs/plugin-react-swc':
+        specifier: 3.x
+        version: registry.npmmirror.com/@vitejs/plugin-react-swc@3.0.1(vite@4.2.0)
+      lodash:
+        specifier: ^4.17.21
+        version: registry.npmmirror.com/lodash@4.17.21
+      typescript:
+        specifier: 4.x
+        version: registry.npmmirror.com/typescript@4.9.4
+      vite:
+        specifier: 4.x
+        version: registry.npmmirror.com/vite@4.2.0(@types/node@18.11.17)(less@4.1.3)
+      vitest:
+        specifier: '*'
+        version: registry.npmmirror.com/vitest@0.25.8(jsdom@22.0.0)
+    devDependencies:
+      '@rxdrag/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../eslint-config-custom
+      '@rxdrag/tsconfig':
+        specifier: workspace:*
+        version: link:../../tsconfig
+
+  packages/locales/locales-react:
+    dependencies:
+      '@rxdrag/locales':
+        specifier: workspace:*
+        version: link:../locales
+      '@rxdrag/shared':
+        specifier: workspace:*
+        version: link:../../shared
+      lodash:
+        specifier: ^4.17.21
+        version: registry.npmmirror.com/lodash@4.17.21
+      react:
+        specifier: ^18.2.0
+        version: registry.npmmirror.com/react@18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+      react-router-dom:
+        specifier: ^6.8.1
+        version: registry.npmmirror.com/react-router-dom@6.9.0(react-dom@18.2.0)(react@18.2.0)
+      redux:
+        specifier: ^4.2.1
+        version: registry.npmmirror.com/redux@4.2.1
+      styled-components:
+        specifier: ^5.3.9
+        version: registry.npmmirror.com/styled-components@5.3.9(react-dom@18.2.0)(react-is@17.0.2)(react@18.2.0)
+    devDependencies:
+      '@rxdrag/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../eslint-config-custom
+      '@rxdrag/tsconfig':
+        specifier: workspace:*
+        version: link:../../tsconfig
+      '@types/react':
+        specifier: ^18.0.28
+        version: registry.npmmirror.com/@types/react@18.0.28
+      '@types/react-dom':
+        specifier: ^18.0.11
+        version: registry.npmmirror.com/@types/react-dom@18.0.11
+      eslint:
+        specifier: ^7.32.0
+        version: registry.npmmirror.com/eslint@7.32.0
+      typescript:
+        specifier: ^4.9.4
+        version: registry.npmmirror.com/typescript@4.9.4
+
+  packages/minions-editor-antd5:
     dependencies:
       '@ant-design/icons':
         specifier: ^4.8.0
         version: registry.npmmirror.com/@ant-design/icons@4.8.0(react-dom@18.2.0)(react@18.2.0)
       '@rxdrag/fieldy':
         specifier: workspace:*
-        version: link:../../../fieldy
+        version: link:../fieldy/fieldy
       '@rxdrag/locales':
         specifier: workspace:*
-        version: link:../../../locales
-      '@rxdrag/minions-schema':
-        specifier: workspace:*
-        version: link:../../dsl
+        version: link:../locales/locales
       '@rxdrag/minions-editor-react':
         specifier: workspace:*
-        version: link:../react-core
+        version: link:../minions/editor/react-shell
       '@rxdrag/minions-runtime-react':
         specifier: workspace:*
-        version: link:../../runtime/core-react
+        version: link:../minions/runtime/runtime-react
+      '@rxdrag/minions-schema':
+        specifier: workspace:*
+        version: link:../minions/schema
       '@rxdrag/react-antd-props-inputs':
         specifier: workspace:*
-        version: link:../../../react-antd-props-inputs
+        version: link:../rxdrag/editor/react-antd-props-inputs
       '@rxdrag/react-fieldy':
         specifier: workspace:*
-        version: link:../../../react-fieldy
+        version: link:../fieldy/fieldy-react
       '@rxdrag/react-locales':
         specifier: workspace:*
-        version: link:../../../react-locales
+        version: link:../locales/locales-react
       '@rxdrag/react-runner':
         specifier: workspace:*
-        version: link:../../../react-runner
+        version: link:../rxdrag/runtime/react-runner
       '@rxdrag/react-shared':
         specifier: workspace:*
-        version: link:../../../react-shared
+        version: link:../react-shared
       '@rxdrag/schema':
         specifier: workspace:*
-        version: link:../../../schema
+        version: link:../rxdrag/schema
       '@rxdrag/shared':
         specifier: workspace:*
-        version: link:../../../shared
+        version: link:../shared
       antd:
         specifier: 5.1.2
         version: registry.npmmirror.com/antd@5.1.2(react-dom@18.2.0)(react@18.2.0)
@@ -422,10 +480,10 @@ importers:
     devDependencies:
       '@rxdrag/eslint-config-custom':
         specifier: workspace:*
-        version: link:../../../eslint-config-custom
+        version: link:../eslint-config-custom
       '@rxdrag/tsconfig':
         specifier: workspace:*
-        version: link:../../../tsconfig
+        version: link:../tsconfig
       '@types/insert-css':
         specifier: ^2.0.1
         version: registry.npmmirror.com/@types/insert-css@2.0.1
@@ -454,7 +512,35 @@ importers:
         specifier: ^4.2.0
         version: registry.npmmirror.com/vite@4.2.0(@types/node@18.11.17)(less@4.1.3)
 
-  packages/minions/editor/react-core:
+  packages/minions/editor/react-materials:
+    dependencies:
+      '@rxdrag/minions-activities':
+        specifier: workspace:*
+        version: link:../../runtime/activities
+      '@rxdrag/minions-schema':
+        specifier: workspace:*
+        version: link:../../schema
+      '@rxdrag/schema':
+        specifier: workspace:*
+        version: link:../../../rxdrag/schema
+      '@rxdrag/shared':
+        specifier: workspace:*
+        version: link:../../../shared
+    devDependencies:
+      '@rxdrag/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../../eslint-config-custom
+      '@rxdrag/tsconfig':
+        specifier: workspace:*
+        version: link:../../../tsconfig
+      eslint:
+        specifier: ^7.32.0
+        version: registry.npmmirror.com/eslint@7.32.0
+      typescript:
+        specifier: ^4.9.4
+        version: registry.npmmirror.com/typescript@4.9.4
+
+  packages/minions/editor/react-shell:
     dependencies:
       '@antv/x6':
         specifier: ^2.1.5
@@ -476,7 +562,7 @@ importers:
         version: registry.npmmirror.com/@reduxjs/toolkit@1.9.3(react@18.2.0)
       '@rxdrag/minions-schema':
         specifier: workspace:*
-        version: link:../../dsl
+        version: link:../../schema
       '@rxdrag/react-shared':
         specifier: workspace:*
         version: link:../../../react-shared
@@ -515,42 +601,14 @@ importers:
         specifier: ^4.9.4
         version: registry.npmmirror.com/typescript@4.9.4
 
-  packages/minions/editor/react-materials:
-    dependencies:
-      '@rxdrag/minions-activities':
-        specifier: workspace:*
-        version: link:../../runtime/activities
-      '@rxdrag/minions-schema':
-        specifier: workspace:*
-        version: link:../../dsl
-      '@rxdrag/schema':
-        specifier: workspace:*
-        version: link:../../../schema
-      '@rxdrag/shared':
-        specifier: workspace:*
-        version: link:../../../shared
-    devDependencies:
-      '@rxdrag/eslint-config-custom':
-        specifier: workspace:*
-        version: link:../../../eslint-config-custom
-      '@rxdrag/tsconfig':
-        specifier: workspace:*
-        version: link:../../../tsconfig
-      eslint:
-        specifier: ^7.32.0
-        version: registry.npmmirror.com/eslint@7.32.0
-      typescript:
-        specifier: ^4.9.4
-        version: registry.npmmirror.com/typescript@4.9.4
-
   packages/minions/runtime/activities:
     dependencies:
-      '@rxdrag/minions-schema':
-        specifier: workspace:*
-        version: link:../../dsl
       '@rxdrag/minions-runtime':
         specifier: workspace:*
-        version: link:../core
+        version: link:../runtime-core
+      '@rxdrag/minions-schema':
+        specifier: workspace:*
+        version: link:../../schema
       '@types/node':
         specifier: '*'
         version: registry.npmmirror.com/@types/node@18.11.17
@@ -574,7 +632,7 @@ importers:
         specifier: workspace:*
         version: link:../../../tsconfig
 
-  packages/minions/runtime/core:
+  packages/minions/runtime/runtime-core:
     dependencies:
       '@types/node':
         specifier: '*'
@@ -597,19 +655,19 @@ importers:
         version: link:../../../eslint-config-custom
       '@rxdrag/minions-schema':
         specifier: workspace:*
-        version: link:../../dsl
+        version: link:../../schema
       '@rxdrag/tsconfig':
         specifier: workspace:*
         version: link:../../../tsconfig
 
-  packages/minions/runtime/core-react:
+  packages/minions/runtime/runtime-react:
     dependencies:
-      '@rxdrag/minions-schema':
-        specifier: workspace:*
-        version: link:../../dsl
       '@rxdrag/minions-runtime':
         specifier: workspace:*
-        version: link:../core
+        version: link:../runtime-core
+      '@rxdrag/minions-schema':
+        specifier: workspace:*
+        version: link:../../schema
       '@types/react':
         specifier: ^18.0.28
         version: registry.npmmirror.com/@types/react@18.0.28
@@ -639,66 +697,24 @@ importers:
         specifier: ^4.9.4
         version: registry.npmmirror.com/typescript@4.9.4
 
-  packages/react-antd-components:
+  packages/minions/schema:
     dependencies:
-      '@ant-design/icons':
-        specifier: ^4.8.0
-        version: registry.npmmirror.com/@ant-design/icons@4.8.0(react-dom@18.2.0)(react@18.2.0)
-      '@rxdrag/react-antd-icons':
-        specifier: workspace:^1.1.0
-        version: link:../react-antd-icons
-      '@rxdrag/react-core':
-        specifier: workspace:^1.1.0
-        version: link:../react-core
-      '@rxdrag/react-fieldy':
-        specifier: workspace:^1.1.0
-        version: link:../react-fieldy
-      '@rxdrag/react-runner':
-        specifier: workspace:^1.1.0
-        version: link:../react-runner
-      '@rxdrag/react-shared':
-        specifier: workspace:*
-        version: link:../react-shared
-      '@rxdrag/schema':
-        specifier: workspace:^1.1.0
-        version: link:../schema
-      '@rxdrag/shared':
-        specifier: workspace:*
-        version: link:../shared
-      '@types/react':
-        specifier: ^18.0.28
-        version: registry.npmmirror.com/@types/react@18.0.28
-      '@types/react-dom':
-        specifier: ^18.0.11
-        version: registry.npmmirror.com/@types/react-dom@18.0.11
-      antd:
-        specifier: 5.1.2
-        version: registry.npmmirror.com/antd@5.1.2(react-dom@18.2.0)(react@18.2.0)
-      dayjs:
-        specifier: ^1.11.7
-        version: registry.npmmirror.com/dayjs@1.11.7
-      react:
-        specifier: ^18.2.0
-        version: registry.npmmirror.com/react@18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
-      react-router-dom:
-        specifier: ^6.8.1
-        version: registry.npmmirror.com/react-router-dom@6.9.0(react-dom@18.2.0)(react@18.2.0)
-      styled-components:
-        specifier: ^5.3.9
-        version: registry.npmmirror.com/styled-components@5.3.9(react-dom@18.2.0)(react-is@17.0.2)(react@18.2.0)
-    devDependencies:
-      '@rxdrag/eslint-config-custom':
-        specifier: workspace:*
-        version: link:../eslint-config-custom
-      '@rxdrag/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
+      '@types/node':
+        specifier: '*'
+        version: registry.npmmirror.com/@types/node@18.11.17
+      '@vitejs/plugin-react-swc':
+        specifier: 3.x
+        version: registry.npmmirror.com/@vitejs/plugin-react-swc@3.0.1(vite@4.2.0)
       typescript:
-        specifier: ^4.9.4
-        version: registry.npmmirror.com/typescript@4.9.5
+        specifier: 4.x
+        version: registry.npmmirror.com/typescript@4.9.4
+      vitest:
+        specifier: '*'
+        version: registry.npmmirror.com/vitest@0.25.8(jsdom@22.0.0)
+    devDependencies:
+      vite:
+        specifier: ^4.2.0
+        version: registry.npmmirror.com/vite@4.2.0(@types/node@18.11.17)(less@4.1.3)
 
   packages/react-antd-icons:
     dependencies:
@@ -746,7 +762,87 @@ importers:
         specifier: ^4.9.4
         version: registry.npmmirror.com/typescript@4.9.5
 
-  packages/react-antd-materials:
+  packages/react-shared:
+    dependencies:
+      '@rxdrag/schema':
+        specifier: workspace:*
+        version: link:../rxdrag/schema
+      '@rxdrag/shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@types/react':
+        specifier: ^18.0.28
+        version: registry.npmmirror.com/@types/react@18.0.28
+      '@types/react-dom':
+        specifier: ^18.0.11
+        version: registry.npmmirror.com/@types/react-dom@18.0.11
+      react:
+        specifier: ^18.2.0
+        version: registry.npmmirror.com/react@18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+      react-router-dom:
+        specifier: ^6.8.1
+        version: registry.npmmirror.com/react-router-dom@6.9.0(react-dom@18.2.0)(react@18.2.0)
+    devDependencies:
+      '@rxdrag/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      '@rxdrag/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      eslint:
+        specifier: ^7.32.0
+        version: registry.npmmirror.com/eslint@7.32.0
+      typescript:
+        specifier: ^4.9.4
+        version: registry.npmmirror.com/typescript@4.9.5
+
+  packages/rxdrag/editor/core:
+    dependencies:
+      '@reduxjs/toolkit':
+        specifier: ^1.9.3
+        version: registry.npmmirror.com/@reduxjs/toolkit@1.9.3(react@18.2.0)
+      '@rxdrag/locales':
+        specifier: workspace:*
+        version: link:../../../locales/locales
+      '@rxdrag/schema':
+        specifier: workspace:*
+        version: link:../../schema
+      '@rxdrag/shared':
+        specifier: workspace:*
+        version: link:../../../shared
+      '@types/node':
+        specifier: '*'
+        version: registry.npmmirror.com/@types/node@18.11.17
+      '@vitejs/plugin-react-swc':
+        specifier: 3.x
+        version: registry.npmmirror.com/@vitejs/plugin-react-swc@3.0.1(vite@4.2.0)
+      lodash:
+        specifier: ^4.17.21
+        version: registry.npmmirror.com/lodash@4.17.21
+      redux:
+        specifier: ^4.2.1
+        version: registry.npmmirror.com/redux@4.2.1
+      typescript:
+        specifier: 4.x
+        version: registry.npmmirror.com/typescript@4.9.4
+      vite:
+        specifier: 4.x
+        version: registry.npmmirror.com/vite@4.2.0(@types/node@18.11.17)(less@4.1.3)
+      vitest:
+        specifier: '*'
+        version: registry.npmmirror.com/vitest@0.25.8(jsdom@22.0.0)
+    devDependencies:
+      '@rxdrag/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../../eslint-config-custom
+      '@rxdrag/tsconfig':
+        specifier: workspace:*
+        version: link:../../../tsconfig
+
+  packages/rxdrag/editor/react-antd-materials:
     dependencies:
       '@ant-design/icons':
         specifier: ^4.8.0
@@ -756,13 +852,13 @@ importers:
         version: link:../core
       '@rxdrag/minions-runtime':
         specifier: workspace:*
-        version: link:../minions/runtime/core
+        version: link:../../../minions/runtime/runtime-core
       '@rxdrag/react-antd-components':
         specifier: workspace:^1.1.0
-        version: link:../react-antd-components
+        version: link:../../runtime/react-antd-components
       '@rxdrag/react-antd-icons':
         specifier: workspace:^1.1.0
-        version: link:../react-antd-icons
+        version: link:../../../react-antd-icons
       '@rxdrag/react-antd-props-inputs':
         specifier: workspace:^1.1.0
         version: link:../react-antd-props-inputs
@@ -771,16 +867,16 @@ importers:
         version: link:../react-core
       '@rxdrag/react-runner':
         specifier: workspace:^1.1.0
-        version: link:../react-runner
+        version: link:../../runtime/react-runner
       '@rxdrag/react-shared':
         specifier: workspace:*
-        version: link:../react-shared
+        version: link:../../../react-shared
       '@rxdrag/schema':
         specifier: workspace:^1.1.0
-        version: link:../schema
+        version: link:../../schema
       '@rxdrag/shared':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../../../shared
       '@types/react':
         specifier: ^18.0.28
         version: registry.npmmirror.com/@types/react@18.0.28
@@ -808,18 +904,18 @@ importers:
     devDependencies:
       '@rxdrag/eslint-config-custom':
         specifier: workspace:*
-        version: link:../eslint-config-custom
+        version: link:../../../eslint-config-custom
       '@rxdrag/tsconfig':
         specifier: workspace:*
-        version: link:../tsconfig
+        version: link:../../../tsconfig
       eslint:
         specifier: ^7.32.0
         version: registry.npmmirror.com/eslint@7.32.0
       typescript:
         specifier: ^4.9.4
-        version: registry.npmmirror.com/typescript@4.9.5
+        version: registry.npmmirror.com/typescript@4.9.4
 
-  packages/react-antd-props-inputs:
+  packages/rxdrag/editor/react-antd-props-inputs:
     dependencies:
       '@ant-design/icons':
         specifier: ^4.8.0
@@ -829,25 +925,25 @@ importers:
         version: registry.npmmirror.com/@monaco-editor/react@4.4.6(monaco-editor@0.36.1)(react-dom@18.2.0)(react@18.2.0)
       '@rxdrag/react-antd-components':
         specifier: workspace:^1.1.0
-        version: link:../react-antd-components
+        version: link:../../runtime/react-antd-components
       '@rxdrag/react-antd-icons':
         specifier: workspace:^1.1.0
-        version: link:../react-antd-icons
+        version: link:../../../react-antd-icons
       '@rxdrag/react-core':
         specifier: workspace:*
         version: link:../react-core
       '@rxdrag/react-runner':
         specifier: workspace:^1.1.0
-        version: link:../react-runner
+        version: link:../../runtime/react-runner
       '@rxdrag/react-shared':
         specifier: workspace:*
-        version: link:../react-shared
+        version: link:../../../react-shared
       '@rxdrag/schema':
         specifier: workspace:^1.1.0
-        version: link:../schema
+        version: link:../../schema
       '@rxdrag/shared':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../../../shared
       '@types/react':
         specifier: ^18.0.28
         version: registry.npmmirror.com/@types/react@18.0.28
@@ -881,18 +977,18 @@ importers:
     devDependencies:
       '@rxdrag/eslint-config-custom':
         specifier: workspace:*
-        version: link:../eslint-config-custom
+        version: link:../../../eslint-config-custom
       '@rxdrag/tsconfig':
         specifier: workspace:*
-        version: link:../tsconfig
+        version: link:../../../tsconfig
       eslint:
         specifier: ^7.32.0
         version: registry.npmmirror.com/eslint@7.32.0
       typescript:
         specifier: ^4.9.4
-        version: registry.npmmirror.com/typescript@4.9.5
+        version: registry.npmmirror.com/typescript@4.9.4
 
-  packages/react-antd-shell:
+  packages/rxdrag/editor/react-antd-shell:
     dependencies:
       '@ant-design/icons':
         specifier: ^4.8.0
@@ -905,25 +1001,25 @@ importers:
         version: link:../core
       '@rxdrag/fieldy':
         specifier: workspace:*
-        version: link:../fieldy
+        version: link:../../../fieldy/fieldy
       '@rxdrag/locales':
         specifier: workspace:*
-        version: link:../locales
+        version: link:../../../locales/locales
       '@rxdrag/minions-editor-react-antd5':
         specifier: workspace:*
-        version: link:../minions/editor/react-antd5
+        version: link:../../../minions-editor-antd5
       '@rxdrag/minions-runtime':
         specifier: workspace:*
-        version: link:../minions/runtime/core
+        version: link:../../../minions/runtime/runtime-core
       '@rxdrag/minions-runtime-react':
         specifier: workspace:*
-        version: link:../minions/runtime/core-react
+        version: link:../../../minions/runtime/runtime-react
       '@rxdrag/react-antd-components':
         specifier: workspace:*
-        version: link:../react-antd-components
+        version: link:../../runtime/react-antd-components
       '@rxdrag/react-antd-icons':
         specifier: workspace:*
-        version: link:../react-antd-icons
+        version: link:../../../react-antd-icons
       '@rxdrag/react-antd-props-inputs':
         specifier: workspace:*
         version: link:../react-antd-props-inputs
@@ -932,25 +1028,25 @@ importers:
         version: link:../react-core
       '@rxdrag/react-fieldy':
         specifier: workspace:*
-        version: link:../react-fieldy
+        version: link:../../../fieldy/fieldy-react
       '@rxdrag/react-locales':
         specifier: workspace:*
-        version: link:../react-locales
+        version: link:../../../locales/locales-react
       '@rxdrag/react-minions-materials':
         specifier: workspace:*
-        version: link:../minions/editor/react-materials
+        version: link:../../../minions/editor/react-materials
       '@rxdrag/react-runner':
         specifier: workspace:*
-        version: link:../react-runner
+        version: link:../../runtime/react-runner
       '@rxdrag/react-shared':
         specifier: workspace:*
-        version: link:../react-shared
+        version: link:../../../react-shared
       '@rxdrag/schema':
         specifier: workspace:*
-        version: link:../schema
+        version: link:../../schema
       '@rxdrag/shared':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../../../shared
       antd:
         specifier: 5.1.2
         version: registry.npmmirror.com/antd@5.1.2(react-dom@18.2.0)(react@18.2.0)
@@ -987,10 +1083,10 @@ importers:
     devDependencies:
       '@rxdrag/eslint-config-custom':
         specifier: workspace:*
-        version: link:../eslint-config-custom
+        version: link:../../../eslint-config-custom
       '@rxdrag/tsconfig':
         specifier: workspace:*
-        version: link:../tsconfig
+        version: link:../../../tsconfig
       '@types/react':
         specifier: ^18.0.28
         version: registry.npmmirror.com/@types/react@18.0.28
@@ -1005,9 +1101,9 @@ importers:
         version: registry.npmmirror.com/eslint@7.32.0
       typescript:
         specifier: ^4.9.4
-        version: registry.npmmirror.com/typescript@4.9.5
+        version: registry.npmmirror.com/typescript@4.9.4
 
-  packages/react-core:
+  packages/rxdrag/editor/react-core:
     dependencies:
       '@monaco-editor/react':
         specifier: ^4.4.6
@@ -1017,22 +1113,22 @@ importers:
         version: link:../core
       '@rxdrag/locales':
         specifier: workspace:*
-        version: link:../locales
+        version: link:../../../locales/locales
       '@rxdrag/react-locales':
         specifier: workspace:*
-        version: link:../react-locales
+        version: link:../../../locales/locales-react
       '@rxdrag/react-runner':
         specifier: workspace:^1.1.0
-        version: link:../react-runner
+        version: link:../../runtime/react-runner
       '@rxdrag/react-shared':
         specifier: workspace:*
-        version: link:../react-shared
+        version: link:../../../react-shared
       '@rxdrag/schema':
         specifier: workspace:*
-        version: link:../schema
+        version: link:../../schema
       '@rxdrag/shared':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../../../shared
       lodash:
         specifier: ^4.17.21
         version: registry.npmmirror.com/lodash@4.17.21
@@ -1051,10 +1147,10 @@ importers:
     devDependencies:
       '@rxdrag/eslint-config-custom':
         specifier: workspace:*
-        version: link:../eslint-config-custom
+        version: link:../../../eslint-config-custom
       '@rxdrag/tsconfig':
         specifier: workspace:*
-        version: link:../tsconfig
+        version: link:../../../tsconfig
       '@types/lodash':
         specifier: ^4.14.191
         version: registry.npmmirror.com/@types/lodash@4.14.191
@@ -1072,34 +1168,46 @@ importers:
         version: registry.npmmirror.com/eslint@7.32.0
       typescript:
         specifier: ^4.9.4
-        version: registry.npmmirror.com/typescript@4.9.5
+        version: registry.npmmirror.com/typescript@4.9.4
 
-  packages/react-fieldy:
+  packages/rxdrag/runtime/react-antd-components:
     dependencies:
-      '@reduxjs/toolkit':
-        specifier: ^1.9.3
-        version: registry.npmmirror.com/@reduxjs/toolkit@1.9.3(react@18.2.0)
-      '@rxdrag/fieldy':
-        specifier: workspace:*
-        version: link:../fieldy
+      '@ant-design/icons':
+        specifier: ^4.8.0
+        version: registry.npmmirror.com/@ant-design/icons@4.8.0(react-dom@18.2.0)(react@18.2.0)
+      '@rxdrag/react-antd-icons':
+        specifier: workspace:^1.1.0
+        version: link:../../../react-antd-icons
+      '@rxdrag/react-core':
+        specifier: workspace:^1.1.0
+        version: link:../../editor/react-core
+      '@rxdrag/react-fieldy':
+        specifier: workspace:^1.1.0
+        version: link:../../../fieldy/fieldy-react
+      '@rxdrag/react-runner':
+        specifier: workspace:^1.1.0
+        version: link:../react-runner
       '@rxdrag/react-shared':
         specifier: workspace:*
-        version: link:../react-shared
+        version: link:../../../react-shared
       '@rxdrag/schema':
-        specifier: workspace:*
-        version: link:../schema
+        specifier: workspace:^1.1.0
+        version: link:../../schema
       '@rxdrag/shared':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../../../shared
       '@types/react':
         specifier: ^18.0.28
         version: registry.npmmirror.com/@types/react@18.0.28
       '@types/react-dom':
         specifier: ^18.0.11
         version: registry.npmmirror.com/@types/react-dom@18.0.11
-      lodash:
-        specifier: ^4.17.21
-        version: registry.npmmirror.com/lodash@4.17.21
+      antd:
+        specifier: 5.1.2
+        version: registry.npmmirror.com/antd@5.1.2(react-dom@18.2.0)(react@18.2.0)
+      dayjs:
+        specifier: ^1.11.7
+        version: registry.npmmirror.com/dayjs@1.11.7
       react:
         specifier: ^18.2.0
         version: registry.npmmirror.com/react@18.2.0
@@ -1109,73 +1217,21 @@ importers:
       react-router-dom:
         specifier: ^6.8.1
         version: registry.npmmirror.com/react-router-dom@6.9.0(react-dom@18.2.0)(react@18.2.0)
-      redux:
-        specifier: ^4.2.1
-        version: registry.npmmirror.com/redux@4.2.1
       styled-components:
         specifier: ^5.3.9
         version: registry.npmmirror.com/styled-components@5.3.9(react-dom@18.2.0)(react-is@17.0.2)(react@18.2.0)
     devDependencies:
       '@rxdrag/eslint-config-custom':
         specifier: workspace:*
-        version: link:../eslint-config-custom
+        version: link:../../../eslint-config-custom
       '@rxdrag/tsconfig':
         specifier: workspace:*
-        version: link:../tsconfig
-      eslint:
-        specifier: ^7.32.0
-        version: registry.npmmirror.com/eslint@7.32.0
+        version: link:../../../tsconfig
       typescript:
         specifier: ^4.9.4
-        version: registry.npmmirror.com/typescript@4.9.5
+        version: registry.npmmirror.com/typescript@4.9.4
 
-  packages/react-locales:
-    dependencies:
-      '@rxdrag/locales':
-        specifier: workspace:*
-        version: link:../locales
-      '@rxdrag/shared':
-        specifier: workspace:*
-        version: link:../shared
-      lodash:
-        specifier: ^4.17.21
-        version: registry.npmmirror.com/lodash@4.17.21
-      react:
-        specifier: ^18.2.0
-        version: registry.npmmirror.com/react@18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
-      react-router-dom:
-        specifier: ^6.8.1
-        version: registry.npmmirror.com/react-router-dom@6.9.0(react-dom@18.2.0)(react@18.2.0)
-      redux:
-        specifier: ^4.2.1
-        version: registry.npmmirror.com/redux@4.2.1
-      styled-components:
-        specifier: ^5.3.9
-        version: registry.npmmirror.com/styled-components@5.3.9(react-dom@18.2.0)(react-is@17.0.2)(react@18.2.0)
-    devDependencies:
-      '@rxdrag/eslint-config-custom':
-        specifier: workspace:*
-        version: link:../eslint-config-custom
-      '@rxdrag/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
-      '@types/react':
-        specifier: ^18.0.28
-        version: registry.npmmirror.com/@types/react@18.0.28
-      '@types/react-dom':
-        specifier: ^18.0.11
-        version: registry.npmmirror.com/@types/react-dom@18.0.11
-      eslint:
-        specifier: ^7.32.0
-        version: registry.npmmirror.com/eslint@7.32.0
-      typescript:
-        specifier: ^4.9.4
-        version: registry.npmmirror.com/typescript@4.9.5
-
-  packages/react-runner:
+  packages/rxdrag/runtime/react-runner:
     dependencies:
       '@monaco-editor/react':
         specifier: ^4.4.6
@@ -1185,28 +1241,28 @@ importers:
         version: registry.npmmirror.com/@reduxjs/toolkit@1.9.3(react@18.2.0)
       '@rxdrag/fieldy':
         specifier: workspace:*
-        version: link:../fieldy
+        version: link:../../../fieldy/fieldy
       '@rxdrag/locales':
         specifier: workspace:^1.1.0
-        version: link:../locales
+        version: link:../../../locales/locales
       '@rxdrag/minions-runtime':
         specifier: workspace:*
-        version: link:../minions/runtime/core
+        version: link:../../../minions/runtime/runtime-core
       '@rxdrag/minions-runtime-react':
         specifier: workspace:*
-        version: link:../minions/runtime/core-react
+        version: link:../../../minions/runtime/runtime-react
       '@rxdrag/react-fieldy':
         specifier: workspace:*
-        version: link:../react-fieldy
+        version: link:../../../fieldy/fieldy-react
       '@rxdrag/react-shared':
         specifier: workspace:*
-        version: link:../react-shared
+        version: link:../../../react-shared
       '@rxdrag/schema':
         specifier: workspace:*
-        version: link:../schema
+        version: link:../../schema
       '@rxdrag/shared':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../../../shared
       '@types/react':
         specifier: ^18.0.28
         version: registry.npmmirror.com/@types/react@18.0.28
@@ -1234,55 +1290,18 @@ importers:
     devDependencies:
       '@rxdrag/eslint-config-custom':
         specifier: workspace:*
-        version: link:../eslint-config-custom
+        version: link:../../../eslint-config-custom
       '@rxdrag/tsconfig':
         specifier: workspace:*
-        version: link:../tsconfig
+        version: link:../../../tsconfig
       eslint:
         specifier: ^7.32.0
         version: registry.npmmirror.com/eslint@7.32.0
       typescript:
         specifier: ^4.9.4
-        version: registry.npmmirror.com/typescript@4.9.5
+        version: registry.npmmirror.com/typescript@4.9.4
 
-  packages/react-shared:
-    dependencies:
-      '@rxdrag/schema':
-        specifier: workspace:*
-        version: link:../schema
-      '@rxdrag/shared':
-        specifier: workspace:*
-        version: link:../shared
-      '@types/react':
-        specifier: ^18.0.28
-        version: registry.npmmirror.com/@types/react@18.0.28
-      '@types/react-dom':
-        specifier: ^18.0.11
-        version: registry.npmmirror.com/@types/react-dom@18.0.11
-      react:
-        specifier: ^18.2.0
-        version: registry.npmmirror.com/react@18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
-      react-router-dom:
-        specifier: ^6.8.1
-        version: registry.npmmirror.com/react-router-dom@6.9.0(react-dom@18.2.0)(react@18.2.0)
-    devDependencies:
-      '@rxdrag/eslint-config-custom':
-        specifier: workspace:*
-        version: link:../eslint-config-custom
-      '@rxdrag/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
-      eslint:
-        specifier: ^7.32.0
-        version: registry.npmmirror.com/eslint@7.32.0
-      typescript:
-        specifier: ^4.9.4
-        version: registry.npmmirror.com/typescript@4.9.5
-
-  packages/schema:
+  packages/rxdrag/schema:
     dependencies:
       '@types/node':
         specifier: '*'
@@ -1292,7 +1311,7 @@ importers:
         version: registry.npmmirror.com/@vitejs/plugin-react-swc@3.0.1(vite@4.2.0)
       typescript:
         specifier: 4.x
-        version: registry.npmmirror.com/typescript@4.9.5
+        version: registry.npmmirror.com/typescript@4.9.4
       vitest:
         specifier: '*'
         version: registry.npmmirror.com/vitest@0.25.8(jsdom@22.0.0)

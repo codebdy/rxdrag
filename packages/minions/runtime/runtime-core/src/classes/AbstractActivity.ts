@@ -1,18 +1,14 @@
-import { IActivity, IJointer } from "../interfaces/activity";
+import { IActivity, IActivityJointers, IJointer } from "../interfaces/activity";
 import { Jointer } from "./Jointer";
 
 export abstract class AbstractActivity<ConfigMeta = unknown> implements IActivity {
   id: string;
-  inputs: IJointer[] = [];
-  outputs: IJointer[] = [];
+  jointers: IActivityJointers;
   constructor(public meta: IActivityDefine<ConfigMeta>) {
     this.id = meta.id
-    for (const out of meta.outPorts || []) {
-      this.outputs.push(new Jointer(out.id, out.name))
-    }
-
-    for (const input of meta.inPorts || []) {
-      this.inputs.push(new Jointer(input.id, input.name))
+    this.jointers = {
+      inputs:[],
+      outputs:[]
     }
   }
   destory = () => {

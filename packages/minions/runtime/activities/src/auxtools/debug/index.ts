@@ -1,5 +1,3 @@
-import { AbstractActivity, ActivityFactory } from "@rxdrag/minions"
-import { IActivityDefine } from "@rxdrag/minions-schema"
 
 export interface IDebugConfig {
   tip?:string,
@@ -22,6 +20,7 @@ export class DebugActivity extends SingleInputActivity<IDebugConfig> {
   }
 }
 
+//Jointer的构建不在这里，在统一的FlowLogic类
 export const Debug: ActivityFactory<IDebugConfig> = (meta: IActivityDefine<IDebugConfig>) => {
   return new DebugActivity(meta)
 }
