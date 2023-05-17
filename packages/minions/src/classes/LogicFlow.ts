@@ -1,14 +1,15 @@
-import { IJointer, IActivity } from "../interfaces";
+import { IJointer, IActivity, IMinions } from "../interfaces";
 import { Jointer } from "./Jointer";
+import { ActivityType, ILogicFlowDefinition } from "@rxdrag/minions-schema"
 
-export class LogicFlow {
+export class LogicFlow<ActivityFactoryOptions> {
   id: string;
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];
   activities: IActivity[] = [];
-  constructor(private defineMeta: ILogicFlowDefinition, private options: IActivityFactoryOptions, public meta?: IActivityDefine<unknown>) {
-    //注意这个id的处理，自定reaction必须要用meta id，不能用defineMeta id
-    this.id = meta?.id || defineMeta.id
+  constructor(private flowMeta: ILogicFlowDefinition, private options: ActivityFactoryOptions, private minions: IMinions) {
+    //注意这个id的处理
+    this.id = flowMeta.id
 
     //第一步，解析节点
     this.constructActivities()
@@ -27,7 +28,7 @@ export class LogicFlow {
 
   //一个图的构建所有节点
   private constructActivities() {
-    for (const activityMeta of this.defineMeta.nodes || []) {
+    for (const activityMeta of this.flowMeta.nodes || []) {
       switch (activityMeta.type) {
         case ActivityType.Start:
           //start只有一个端口，所以name可以跟meta name一样
@@ -38,11 +39,9 @@ export class LogicFlow {
           this.outputs.push(new Jointer(activityMeta.id, activityMeta.name || "output"));
           break;
         case ActivityType.Activity:
-          //拿到 material的目的是为了拿到上面的 reaction factory
-          const material = this.getMaterial(activityMeta.materialName) as any
-          if (material?.reaction) {
+          if (activityMeta.name) {
             //通过material上的 reation factory 生成reaction节点
-            this.activities.push(material.reaction(activityMeta, this.options))
+            this.activities.push(this.minions.createActivity(activityMeta.name, this.options))
           }
           break;
       }
@@ -51,7 +50,7 @@ export class LogicFlow {
 
   //连接一个图的所有节点，把所有的jointer连起来
   private contructLines() {
-    for (const lineMeta of this.defineMeta.lines || []) {
+    for (const lineMeta of this.flowMeta.lines || []) {
       let sourceJointer = this.inputs.find(jointer => jointer.id === lineMeta.source.nodeId)
       if (!sourceJointer && lineMeta.source.portId) {
         sourceJointer = this.activities.find(reaction => reaction.id === lineMeta.source.nodeId)?.outputs.find(output => output.id === lineMeta.source.portId)
@@ -72,9 +71,5 @@ export class LogicFlow {
 
       sourceJointer.connect(targetJointer.push)
     }
-  }
-
-  private getMaterial(name: string) {
-    return this.options?.materials?.find(material => material.name === name)
   }
 }

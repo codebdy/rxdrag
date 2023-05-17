@@ -1,4 +1,4 @@
-import { IActivityMaterial } from "@rxdrag/minions";
+import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { Controllers, IVariableController, IPropController } from "../interfaces/controller";
 
 export interface IFactoryOptions {

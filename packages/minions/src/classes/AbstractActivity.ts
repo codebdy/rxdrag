@@ -1,6 +1,6 @@
 import { IActivity, IJointer } from "../interfaces/activity";
-import { IActivityDefine } from "../interfaces/dsl";
 import { Jointer } from "./Jointer";
+import { IActivityDefine } from "@rxdrag/minions-schema"
 
 
 export abstract class AbstractActivity<ConfigMeta = undefined, IActivityFactoryOptions = any> implements IActivity {

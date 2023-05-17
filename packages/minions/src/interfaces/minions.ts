@@ -6,5 +6,5 @@ export type ActivityFactories = {
 
 export interface IMinions {
   register(activities: ActivityFactories): void
-  createActivity(activityName: string): IActivity
+  createActivity<ActivityFactoryOptions>(activityName: string, options: ActivityFactoryOptions): IActivity
 }
