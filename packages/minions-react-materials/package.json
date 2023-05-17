@@ -1,0 +1,24 @@
+{
+  "name": "@rxdrag/react-minions-materials",
+  "version": "1.1.0",
+  "main": "index.ts",
+  "types": "./index.ts",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint \"**/*.ts\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "@rxdrag/eslint-config-custom": "workspace:*",
+    "@rxdrag/tsconfig": "workspace:*",
+    "typescript": "^4.9.4"
+  },
+  "peerDependencies": {
+  },
+  "dependencies": {
+    "@rxdrag/minions": "workspace:*",
+    "@rxdrag/schema": "workspace:*",
+    "@rxdrag/shared": "workspace:*"
+  }
+}

@@ -1,9 +1,4 @@
-# Summary
-
-minions
-
-# Contributors
-
-`@rxdrag/minions` is maintained by:
-
-- Water.Li
+依赖：
+@rxdrag/tsconfig
+@rxdrag/eslint-config-custom
+用于配置编译环境

@@ -1,5 +1,5 @@
 {
-  "name": "@rxdrag/react-runner",
+  "name": "@rxdrag/minions-react",
   "version": "1.1.0",
   "main": "index.ts",
   "types": "./index.ts",
@@ -22,23 +22,10 @@
     "react-router-dom": "^6.8.1"
   },
   "dependencies": {
-    "@monaco-editor/react": "^4.4.6",
-    "@reduxjs/toolkit": "^1.9.3",
-    "@rxdrag/fieldy": "workspace:*",
-    "@rxdrag/locales": "workspace:^1.1.0",
     "@rxdrag/minions": "workspace:*",
-    "@rxdrag/react-fieldy": "workspace:*",
-    "@rxdrag/minions-react": "workspace:*",
-    "@rxdrag/react-shared": "workspace:*",
-    "@rxdrag/schema": "workspace:*",
-    "@rxdrag/shared": "workspace:*",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "lodash": "^4.17.21",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.9.0",
-    "redux": "^4.2.1",
-    "styled-components": "^5.3.9"
+    "react-dom": "^18.2.0"
   }
 }
