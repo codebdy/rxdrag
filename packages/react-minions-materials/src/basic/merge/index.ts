@@ -9,7 +9,7 @@ export const mergeMaterial: IActivityMaterial<ReactNode> = {
   name: "merge",
   icon: mergeIcon,
   label: "$merge",
-  reactionType: ActivityType.SingleActivity,
+  activityType: ActivityType.SingleActivity,
   meta: {
     inPorts: [
       {

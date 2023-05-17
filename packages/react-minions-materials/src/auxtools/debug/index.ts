@@ -10,7 +10,7 @@ export const debugMaterial: IActivityMaterial<ReactNode> = {
   name: "debug",
   icon: debugIcon,
   label: "$debug",
-  reactionType: ActivityType.SingleActivity,
+  activityType: ActivityType.SingleActivity,
   color: "orange",
   meta: {
     inPorts: [

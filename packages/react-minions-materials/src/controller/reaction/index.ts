@@ -7,7 +7,7 @@ export const activityMaterial: IActivityMaterial<ReactNode> = {
   name: "controllerReaction",
   icon: methodIcon,
   label: "reaction",
-  reactionType: ActivityType.ControllerReaction,
+  activityType: ActivityType.ControllerReaction,
   meta: {
 
   },

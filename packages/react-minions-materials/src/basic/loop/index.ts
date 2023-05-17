@@ -9,7 +9,7 @@ export const loopMaterial: IActivityMaterial<ReactNode> = {
   name: "loop",
   icon: loopIcon,
   label: "$loop",
-  reactionType: ActivityType.SingleActivity,
+  activityType: ActivityType.SingleActivity,
   meta: {
     inPorts: [
       {

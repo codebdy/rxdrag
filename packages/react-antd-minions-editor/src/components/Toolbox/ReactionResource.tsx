@@ -23,7 +23,7 @@ export const ReactionResource = memo((props: ReactionResourceProps) => {
     const nodeMeta: IActivityDefine = {
       id: createUuid(),
       label: t(material.label),
-      type: material.reactionType,
+      type: material.activityType,
       materialName: material.name,
       ...material.meta
     }

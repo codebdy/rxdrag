@@ -9,7 +9,7 @@ export const fixedValueMaterial: IActivityMaterial<ReactNode> = {
   name: "fixedValue",
   icon: fixedValueIcon,
   label: "$fixedValue",
-  reactionType: ActivityType.SingleActivity,
+  activityType: ActivityType.SingleActivity,
   color: "#1668dc",
   meta: {
     inPorts: [

@@ -9,7 +9,7 @@ export const conditionMaterial: IActivityMaterial<ReactNode> = {
   name: "condition",
   icon: ifIcon,
   label: "$conditionCheck",
-  reactionType: ActivityType.SingleActivity,
+  activityType: ActivityType.SingleActivity,
   color: "#5e76c3",
   meta: {
     inPorts: [

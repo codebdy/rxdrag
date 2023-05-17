@@ -9,7 +9,7 @@ export const mockDataMaterial: IActivityMaterial<ReactNode> = {
   name: "mockData",
   icon: simulateIcon,
   label: "$simulateData",
-  reactionType: ActivityType.SingleActivity,
+  activityType: ActivityType.SingleActivity,
   meta: {
     inPorts: [
       {

@@ -45,7 +45,7 @@ export const ComponentList = memo((
       const nodeMeta: IActivityDefine = {
         id: createUuid(),
         label: t(marterial.label),
-        type: marterial.reactionType,
+        type: marterial.activityType,
         materialName: marterial.name,
         ...marterial.meta,
         config: {
@@ -66,7 +66,7 @@ export const ComponentList = memo((
       const nodeMeta: IActivityDefine = {
         id: createUuid(),
         label: reaction.label || reaction.name,
-        type: marterial.reactionType,
+        type: marterial.activityType,
         materialName: marterial.name,
         ...marterial.meta,
         config: {

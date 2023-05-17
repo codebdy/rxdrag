@@ -20,7 +20,7 @@ export const basicReactions: IActivityMaterial<ReactNode>[] = [
     name: "start",
     icon: startIcon,
     label: "$input",
-    reactionType: ActivityType.Start,
+    activityType: ActivityType.Start,
     meta: {
       name: "input"
     },
@@ -30,7 +30,7 @@ export const basicReactions: IActivityMaterial<ReactNode>[] = [
     name: "end",
     icon: endIcon,
     label: "$output",
-    reactionType: ActivityType.End,
+    activityType: ActivityType.End,
     meta: {
       name: "output"
     },

@@ -1,7 +1,9 @@
-import { IConfigMeta, IJointer, IActivity, IActivityDefine } from "@rxdrag/schema";
-import { Jointer } from "./jointer";
+import { IActivity, IJointer } from "../interfaces/activity";
+import { IActivityDefine } from "../interfaces/dsl";
+import { Jointer } from "./Jointer2";
 
-export abstract class AbstractActivity<ConfigMeta extends IConfigMeta, IActivityFactoryOptions = any> implements IActivity {
+
+export abstract class AbstractActivity<ConfigMeta = undefined, IActivityFactoryOptions = any> implements IActivity {
   id: string;
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];

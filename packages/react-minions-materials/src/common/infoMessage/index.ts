@@ -10,7 +10,7 @@ export const infoMessageMaterial: IActivityMaterial<ReactNode> = {
   name: "infoMessage",
   icon: infoIcon,
   label: "$infoMessage",
-  reactionType: ActivityType.SingleActivity,
+  activityType: ActivityType.SingleActivity,
   meta: {
     inPorts: [
       {

@@ -1,4 +1,4 @@
-import { InputHandler, IJointer } from "@rxdrag/schema";
+import { IJointer, InputHandler } from "../interfaces/activity"
 
 export class Jointer implements IJointer {
   //出口

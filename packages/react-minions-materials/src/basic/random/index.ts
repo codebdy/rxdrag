@@ -10,7 +10,7 @@ export const randomMaterial: IActivityMaterial<ReactNode> = {
   name: "random",
   icon: randomIcon,
   label: "$random",
-  reactionType: ActivityType.SingleActivity,
+  activityType: ActivityType.SingleActivity,
   meta: {
     inPorts: [
       {

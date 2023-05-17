@@ -9,7 +9,7 @@ export const intervalMaterial: IActivityMaterial<ReactNode> = {
   name: "interval",
   icon: intervalIcon,
   label: "$interval",
-  reactionType: ActivityType.SingleActivity,
+  activityType: ActivityType.SingleActivity,
   meta: {
     inPorts: [
       {

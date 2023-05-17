@@ -9,7 +9,7 @@ export const delayMaterial: IActivityMaterial<ReactNode> = {
   name: "delay",
   icon: delayIcon,
   label: "$delay",
-  reactionType: ActivityType.SingleActivity,
+  activityType: ActivityType.SingleActivity,
   meta: {
     inPorts: [
       {

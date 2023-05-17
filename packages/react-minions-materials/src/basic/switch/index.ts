@@ -7,7 +7,7 @@ export const switchMaterial: IActivityMaterial = {
   name: "switch",
   icon: switchIcon,
   label: "$switch",
-  reactionType: ActivityType.SingleActivity,
+  activityType: ActivityType.SingleActivity,
   meta: {
     inPorts: [
       {

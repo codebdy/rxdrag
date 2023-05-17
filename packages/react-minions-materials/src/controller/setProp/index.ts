@@ -10,7 +10,7 @@ export const setPropMaterial: IActivityMaterial<ReactNode> = {
   name: "setProp",
   icon: setPropIcon,
   label: "$setProp",
-  reactionType: ActivityType.ControllerDefaultReaction,
+  activityType: ActivityType.ControllerDefaultReaction,
   meta: {
     inPorts: [
       {

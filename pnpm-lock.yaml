@@ -372,6 +372,37 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
 
+  packages/minions-activities:
+    dependencies:
+      '@rxdrag/schema':
+        specifier: workspace:*
+        version: link:../schema
+      '@rxdrag/shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@types/node':
+        specifier: '*'
+        version: registry.npmmirror.com/@types/node@18.11.17
+      '@vitejs/plugin-react-swc':
+        specifier: 3.x
+        version: registry.npmmirror.com/@vitejs/plugin-react-swc@3.0.1(vite@4.2.0)
+      typescript:
+        specifier: 4.x
+        version: registry.npmmirror.com/typescript@4.9.4
+      vite:
+        specifier: 4.x
+        version: registry.npmmirror.com/vite@4.2.0(@types/node@18.11.17)(less@4.1.3)
+      vitest:
+        specifier: '*'
+        version: registry.npmmirror.com/vitest@0.25.8(jsdom@22.0.0)
+    devDependencies:
+      '@rxdrag/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      '@rxdrag/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+
   packages/react-antd-components:
     dependencies:
       '@ant-design/icons':

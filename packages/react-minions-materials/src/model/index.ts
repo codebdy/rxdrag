@@ -10,7 +10,7 @@ export const dataModelReactions: IActivityMaterial<ReactNode>[] = [
     name: "setFormValue",
     icon: formIcon,
     label: "$setFormValue",
-    reactionType: ActivityType.SingleActivity,
+    activityType: ActivityType.SingleActivity,
     meta: {
       inPorts: [
         {
@@ -25,7 +25,7 @@ export const dataModelReactions: IActivityMaterial<ReactNode>[] = [
     name: "validateForm",
     icon: formValidateIcon,
     label: "$validateForm",
-    reactionType: ActivityType.SingleActivity,
+    activityType: ActivityType.SingleActivity,
     meta: {
       inPorts: [
         {
@@ -52,7 +52,7 @@ export const dataModelReactions: IActivityMaterial<ReactNode>[] = [
     name: "readFormValue",
     icon: formReadIcon,
     label: "$readFormValue",
-    reactionType: ActivityType.SingleActivity,
+    activityType: ActivityType.SingleActivity,
     meta: {
       inPorts: [
         {
@@ -74,7 +74,7 @@ export const dataModelReactions: IActivityMaterial<ReactNode>[] = [
     name: "setFieldValue",
     icon: fieldIcon,
     label: "$setFieldValue",
-    reactionType: ActivityType.SingleActivity,
+    activityType: ActivityType.SingleActivity,
     meta: {
       inPorts: [
         {
@@ -89,7 +89,7 @@ export const dataModelReactions: IActivityMaterial<ReactNode>[] = [
     name: "validateField",
     icon: fieldValidateIcon,
     label: "$validateField",
-    reactionType: ActivityType.SingleActivity,
+    activityType: ActivityType.SingleActivity,
     meta: {
       inPorts: [
         {

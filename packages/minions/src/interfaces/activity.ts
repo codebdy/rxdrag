@@ -1,4 +1,4 @@
-import { IActivityDefine } from './meta';
+import { IActivityDefine } from "./dsl";
 
 export type InputHandler = (inputValue?: unknown) => void;
 
@@ -6,8 +6,7 @@ export interface IJointer {
   id: string;
   name: string;
   push: InputHandler;
-  connect: (jointer: IJointer | InputHandler) => void;
-  //disconnect: (jointer: IJointer | InputHandler) => void;
+  connect: (jointerInput: InputHandler) => void;
 }
 
 export interface IActivity {
@@ -17,3 +16,8 @@ export interface IActivity {
   meta?: IActivityDefine;
   destory(): void;
 }
+
+export type ActivityFactory<ActivityFactoryOptions = unknown, ConfigMeta = unknown> = (
+  meta: IActivityDefine<ConfigMeta>,
+  options: ActivityFactoryOptions
+) => IActivity;

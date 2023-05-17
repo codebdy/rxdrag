@@ -1,6 +1,6 @@
 {
-  "name": "@rxdrag/minions",
-  "version": "1.1.0",
+  "name": "@rxdrag/minions-activities",
+  "version": "1.0.0",
   "author": "Water.Li",
   "type": "module",
   "main": "./src/index.ts",
@@ -15,7 +15,8 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@rxdrag/shared": "workspace:*"
+    "@rxdrag/shared": "workspace:*",
+    "@rxdrag/schema": "workspace:*"
   },
   "devDependencies": {
     "@rxdrag/eslint-config-custom": "workspace:*",

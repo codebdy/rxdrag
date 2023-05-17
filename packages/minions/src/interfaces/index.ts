@@ -1,1 +1,1 @@
-export * from "./controller"
+export * from "../../../react-minions/src/interfaces/controller"

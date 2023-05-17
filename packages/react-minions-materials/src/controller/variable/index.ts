@@ -11,7 +11,7 @@ export const setVariableMaterial: IActivityMaterial<ReactNode> = {
   name: "setVariable",
   icon: setVariableIcon,
   label: "$setVariable",
-  reactionType: ActivityType.ControllerDefaultReaction,
+  activityType: ActivityType.ControllerDefaultReaction,
   meta: {
     inPorts: [
       {
@@ -32,7 +32,7 @@ export const listenVariableMaterial: IActivityMaterial<ReactNode> = {
   name: "listenVariable",
   icon: listenVariableIcon,
   label: "$listenVariable",
-  reactionType: ActivityType.ControllerDefaultReaction,
+  activityType: ActivityType.ControllerDefaultReaction,
   meta: {
     outPorts: [
       {
@@ -54,7 +54,7 @@ export const readVariableMaterial: IActivityMaterial<ReactNode> = {
   name: "readVariable",
   icon: variableIcon,
   label: "$readVariable",
-  reactionType: ActivityType.ControllerDefaultReaction,
+  activityType: ActivityType.ControllerDefaultReaction,
   meta: {
     inPorts: [
       {

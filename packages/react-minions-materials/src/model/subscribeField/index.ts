@@ -9,7 +9,7 @@ export const subscribeFieldMaterial: IActivityMaterial<ReactNode> = {
   name: "subscribeField",
   icon: subscribeIcon,
   label: "$subscribeField",
-  reactionType: ActivityType.SingleActivity,
+  activityType: ActivityType.SingleActivity,
   meta: {
     outPorts: [
       {
