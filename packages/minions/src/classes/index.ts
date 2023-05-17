@@ -1,2 +1,2 @@
 export * from "./AbstractActivity"
-export * from "./Jointer2"
+export * from "./Jointer"

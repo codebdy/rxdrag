@@ -1,8 +1,8 @@
-import { IActivityDefine, IConfigMeta, ILineDefine } from "@rxdrag/schema";
+import { IActivityDefine, ILineDefine } from "@rxdrag/minions";
 import { ISnapshot } from "./state";
 
 export type ILogicMetas = {
-  nodes: IActivityDefine<IConfigMeta>[];
+  nodes: IActivityDefine<undefined>[];
   lines: ILineDefine[];
 }
 
@@ -12,7 +12,7 @@ export interface IEventMeta {
 }
 
 export interface INodeData {
-  meta: IActivityDefine<IConfigMeta>
+  meta: IActivityDefine<undefined>
 }
 
 export type ZoomChangeListener = (zoom: number) => void

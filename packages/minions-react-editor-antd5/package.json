@@ -13,7 +13,7 @@
     "@rxdrag/minions-react-editor": "workspace:*",
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/locales": "workspace:*",
-    "@rxdrag/minions": "workspace:*",
+    "@rxdrag/minions-schema": "workspace:*",
     "@rxdrag/react-fieldy": "workspace:*",
     "@rxdrag/react-locales": "workspace:*",
     "@rxdrag/minions-react": "workspace:*",

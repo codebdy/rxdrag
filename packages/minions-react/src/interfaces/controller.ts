@@ -1,4 +1,4 @@
-import { IControllerMeta } from "@rxdrag/schema"
+import { IControllerMeta } from "./meta"
 
 export type Unsubscribe = () => void
 

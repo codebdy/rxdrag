@@ -28,7 +28,7 @@
     "@antv/x6-plugin-selection": "^2.1.5",
     "@antv/x6-react-shape": "^2.1.0",
     "@reduxjs/toolkit": "^1.9.3",
-    "@rxdrag/minions": "workspace:*",
+    "@rxdrag/minions-schema": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "@types/react": "^18.0.28",

@@ -1,13 +1,12 @@
-import { IConfigMeta, IJointer, IActivity, ILogicFlowDefinition, IActivityDefine, ActivityType } from "@rxdrag/schema";
-import { Jointer } from "../classes/jointer";
-import { IActivityFactoryOptions } from "./IFactoryOptions";
+import { IJointer, IActivity } from "../interfaces";
+import { Jointer } from "./Jointer";
 
-export class LogicFlow implements IActivity {
+export class LogicFlow {
   id: string;
   inputs: IJointer[] = [];
   outputs: IJointer[] = [];
   activities: IActivity[] = [];
-  constructor(private defineMeta: ILogicFlowDefinition, private options: IActivityFactoryOptions, public meta?: IActivityDefine<IConfigMeta>) {
+  constructor(private defineMeta: ILogicFlowDefinition, private options: IActivityFactoryOptions, public meta?: IActivityDefine<unknown>) {
     //注意这个id的处理，自定reaction必须要用meta id，不能用defineMeta id
     this.id = meta?.id || defineMeta.id
 
@@ -38,9 +37,7 @@ export class LogicFlow implements IActivity {
           //end 只有一个端口，所以name可以跟meta name一样
           this.outputs.push(new Jointer(activityMeta.id, activityMeta.name || "output"));
           break;
-        case ActivityType.SingleActivity:
-        case ActivityType.ControllerDefaultReaction:
-        case ActivityType.ControllerReaction:
+        case ActivityType.Activity:
           //拿到 material的目的是为了拿到上面的 reaction factory
           const material = this.getMaterial(activityMeta.materialName) as any
           if (material?.reaction) {
@@ -73,7 +70,7 @@ export class LogicFlow implements IActivity {
         throw new Error("Can find target jointer")
       }
 
-      sourceJointer.connect(targetJointer)
+      sourceJointer.connect(targetJointer.push)
     }
   }
 

@@ -1,6 +1,6 @@
 import { IActivity, IJointer } from "../interfaces/activity";
 import { IActivityDefine } from "../interfaces/dsl";
-import { Jointer } from "./Jointer2";
+import { Jointer } from "./Jointer";
 
 
 export abstract class AbstractActivity<ConfigMeta = undefined, IActivityFactoryOptions = any> implements IActivity {

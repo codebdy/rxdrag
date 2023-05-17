@@ -1,7 +1,8 @@
-import { IControllerMeta, IActivity, ILogicFlowDefinition } from "@rxdrag/schema";
-import { Controllers, EventFuncs, IController, InputFunc, PropsListener, UnListener, VariableListener } from "../interfaces";
+import { IActivity, ILogicFlowDefinition } from "@rxdrag/minions";
+import { IController, InputFunc, EventFuncs, VariableListener, PropsListener, Controllers, UnListener } from "../interfaces/controller";
 import { IFactoryOptions, IActivityFactoryOptions } from "./IFactoryOptions"
 import { LogicFlow } from "./LogicFlow"
+import { IControllerMeta } from "../interfaces";
 
 export const INIT_EVENT_NAME = "init"
 export const DESTORY_EVENT_NAME = "destory"
@@ -21,6 +22,7 @@ export class DefaultController<IOptions extends IFactoryOptions> implements ICon
   private activites: IActivity[] = []
 
   constructor(public meta: IControllerMeta, protected parentControllers: Controllers, protected options?: IOptions) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     this.id = meta.id!
     for (const eventMeta of meta.events || []) {
       const reaction = this.makeReaction(eventMeta, { ...parentControllers, [this.id]: this })

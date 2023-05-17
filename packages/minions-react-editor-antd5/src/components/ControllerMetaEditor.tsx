@@ -4,8 +4,9 @@ import { Members } from "./Members";
 import { LocalesContext } from "@rxdrag/react-locales";
 import { ILocales, LocalesManager } from "@rxdrag/locales"
 import { minionsEditorLocales } from "../locales";
-import { IControllerMeta } from "@rxdrag/schema";
 import { IActivityMaterial } from "@rxdrag/minions";
+import { ILogicMetas, LogicFlowEditor, IControllerMeta } from "@rxdrag/minions-react-editor";
+import { Minions } from "@rxdrag/minions-react";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -36,13 +37,13 @@ export const ControllerMetaEditor = memo((
     materials: IActivityMaterial<ReactNode>[],
     toolbox?: React.ReactNode,
     lang?: string,
-    locales?:ILocales,
+    locales?: ILocales,
   }
 ) => {
-  const { value, onChange, controllerMetas, materials, toolbox, lang , locales} = props
+  const { value, onChange, controllerMetas, materials, toolbox, lang, locales } = props
   const [localesManager] = useState(new LocalesManager(lang, minionsEditorLocales))
 
-  useEffect(()=>{
+  useEffect(() => {
     locales && localesManager.registerLocales(locales)
   }, [localesManager, locales])
 

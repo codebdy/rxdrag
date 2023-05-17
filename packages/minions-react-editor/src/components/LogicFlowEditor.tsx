@@ -1,5 +1,5 @@
 import React from "react";
-import { memo, useCallback, useEffect, useMemo, useState } from "react"
+import { memo, useCallback, useEffect, useMemo } from "react"
 import styled from "styled-components";
 import { ActionType, SetMetasAction } from "../actions";
 import { EditorStore } from "../classes/EditorStore";
@@ -76,15 +76,14 @@ export const LogicFlowEditor = memo((
     toolbox?: React.ReactNode,
     toolbar?: React.ReactNode,
     propertyBox?: React.ReactNode,
+    showMap?: boolean,
   }
 ) => {
-  const { metas, onChange, toolbox, toolbar, propertyBox } = props
+  const { metas, onChange, toolbox, toolbar, propertyBox, showMap } = props
   const emptyMetas = useMemo(() => ({
     nodes: [],
     lines: []
   }), [])
-  const [showMap, setShowMap] = useState(false)
-  //const [state, dispatch] = useReducer(mainReducer, initialState);
   const graph = useCreateGraph()
   const store: EditorStore = useMemo(() => {
     return new EditorStore()
@@ -94,10 +93,6 @@ export const LogicFlowEditor = memo((
     const action: SetMetasAction = { type: ActionType.SET_METAS, payload: { nodes: metas?.nodes || [], lines: metas?.lines || [] } }
     store.dispatch(action)
   }, [emptyMetas, metas, store])
-
-  const handleToggleMap = useCallback(() => {
-    setShowMap((show) => !show)
-  }, [])
 
   const handleChange = useCallback((newMetas: ILogicMetas) => {
     onChange(newMetas)
