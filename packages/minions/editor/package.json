@@ -1,5 +1,5 @@
 {
-  "name": "@rxdrag/react-minions-materials",
+  "name": "@rxdrag/minions-editor",
   "version": "1.1.0",
   "main": "index.ts",
   "types": "./index.ts",
@@ -17,8 +17,6 @@
   "peerDependencies": {},
   "dependencies": {
     "@rxdrag/minions-schema": "workspace:*",
-    "@rxdrag/schema": "workspace:*",
-    "@rxdrag/shared": "workspace:*",
     "@rxdrag/minions-activities": "workspace:*"
   }
 }

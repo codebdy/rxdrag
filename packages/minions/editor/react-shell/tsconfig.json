@@ -1,5 +1,0 @@
-{
-  "extends": "@rxdrag/tsconfig/react-library.json",
-  "include": [".", "src/components/ReactionNode.tsx"],
-  "exclude": ["dist", "build", "node_modules"]
-}

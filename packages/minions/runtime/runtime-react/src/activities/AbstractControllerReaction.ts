@@ -1,7 +1,5 @@
-import { AbstractActivity, IController, IActivityFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IActivityDefine } from "@rxdrag/schema"
 
-export interface IControllerReactionConfig extends IConfigMeta {
+export interface IControllerReactionConfig{
   prop?: string
   variable?: string
 }

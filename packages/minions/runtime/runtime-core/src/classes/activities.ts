@@ -1,4 +1,6 @@
-export type ActivityClass = { new(...args: any[]): {} }
+import { IActivity } from "../interfaces";
+
+export type ActivityClass = { new(...args: any[]): IActivity }
 
 export const activityConstructors: {
   [activityName: string]: ActivityClass

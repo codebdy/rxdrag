@@ -1,16 +1,19 @@
-import { setPropIcon } from "@rxdrag/react-shared"
-import { IActivityMaterial, ActivityType } from "@rxdrag/schema"
-import { createUuid } from "@rxdrag/shared"
+import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
 import { IControllerReactionConfig } from "../AbstractControllerReaction"
 import { SetProp } from "./reaction"
 import { setPropSchema } from "./schema"
 import { ReactNode } from "react"
+import { v4 as uuidv4 } from 'uuid';
+
+export const createUuid = () => {
+  return uuidv4();
+};
 
 export const setPropMaterial: IActivityMaterial<ReactNode> = {
   name: "setProp",
   icon: setPropIcon,
   label: "$setProp",
-  activityType: ActivityType.ControllerDefaultReaction,
+  activityType: ActivityType.Activity,
   meta: {
     inPorts: [
       {

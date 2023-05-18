@@ -1,28 +1,25 @@
-import { setPropIcon } from "@rxdrag/react-shared"
-import { IActivityMaterial, ActivityType } from "@rxdrag/schema"
-import { createUuid } from "@rxdrag/shared"
-import { IControllerReactionConfig } from "../AbstractControllerReaction"
-import { SetProp } from "./reaction"
-import { setPropSchema } from "./schema"
-import { ReactNode } from "react"
 
-export const setPropMaterial: IActivityMaterial<ReactNode> = {
-  name: "setProp",
-  icon: setPropIcon,
-  label: "$setProp",
-  activityType: ActivityType.ControllerDefaultReaction,
-  meta: {
-    inPorts: [
-      {
-        id: createUuid(),
-        name: "input",
-        label: "",//"$startUp",
-      },
-    ],
-  },
-  schema: setPropSchema,
-  subTitle: (config?: IControllerReactionConfig) => {
-    return config?.prop
-  },
-  reaction: SetProp,
+import { SingleInputActivity, activity } from "@rxdrag/minions-runtime";
+import { IActivityDefine } from "@rxdrag/minions-schema";
+import { ControllerReactionFactoryOptions } from "../hooks/useFactoryOptions";
+
+export const SetPropActivityName = "system-react.setProp"
+export interface ISetPropConfig {
+  prop?: string
+}
+
+@activity(SetPropActivityName)
+export class SetProp extends SingleInputActivity<ISetPropConfig, ControllerReactionFactoryOptions> {
+  constructor(meta: IActivityDefine<ISetPropConfig>, options: ControllerReactionFactoryOptions) {
+    super(meta, options)
+    if (Object.keys(meta.inPorts || {}).length !== 1) {
+      throw new Error("SetProp inputs count error")
+    }
+  }
+
+  execute = (inputValue: string) => {
+    if (this.meta.config?.prop) {
+      this.options?.controller?.setProp(this.meta.config.prop, inputValue)
+    }
+  }
 }

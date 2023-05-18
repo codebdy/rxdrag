@@ -1,8 +1,9 @@
-import { IActivity, ILogicFlowDefinition } from "@rxdrag/minions";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IController, InputFunc, EventFuncs, VariableListener, PropsListener, Controllers, UnListener } from "../interfaces/controller";
 import { IFactoryOptions, IActivityFactoryOptions } from "./IFactoryOptions"
-import { LogicFlow } from "./LogicFlow"
 import { IControllerMeta } from "../interfaces";
+import { IActivity, LogicFlow } from "@rxdrag/minions-runtime";
+import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
 
 export const INIT_EVENT_NAME = "init"
 export const DESTORY_EVENT_NAME = "destory"
@@ -13,6 +14,7 @@ export class DefaultController<IOptions extends IFactoryOptions> implements ICon
   initEvent?: InputFunc | undefined;
   destoryEvent?: InputFunc | undefined;
   events: EventFuncs = {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private variables: any = {};
   private variableListeners: {
     [name: string]: VariableListener[]

@@ -1,20 +1,24 @@
-import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema"
+import { SingleInputActivity, activity } from "@rxdrag/minions-runtime"
+import { IActivityDefine } from "@rxdrag/minions-schema"
 
+export const RouteToActivityName = "system-react.routeTo"
 
-export interface IRouteToConfig extends IConfigMeta {
+export interface IRouteToConfig {
   url?: string,
   fromInput?: boolean,
 }
 
-export class RouteToReaction extends AbstractActivity<IRouteToConfig> {
-  constructor(meta: IActivityDefine<IRouteToConfig>, options?: IActivityFactoryOptions) {
-    super(meta, options)
+export interface IRouteToOptions {
+  navigate?: (url: string) => void
+}
 
-    this.getInputByName("input")?.connect(this.inputHandler as any)
+@activity(RouteToActivityName)
+export class RouteTo extends SingleInputActivity<IRouteToConfig, IRouteToOptions> {
+  constructor(meta: IActivityDefine<IRouteToConfig>, options?: IRouteToOptions) {
+    super(meta, options)
   }
 
-  inputHandler = (inputValue?: any) => {
+  execute = (inputValue?: string) => {
     let url = inputValue
     if (!this.meta.config?.fromInput) {
       url = this.meta.config?.url
@@ -24,8 +28,4 @@ export class RouteToReaction extends AbstractActivity<IRouteToConfig> {
       this.options?.navigate?.(url)
     }
   }
-}
-
-export const RouteTo: ActivityFactory = (meta: IActivityDefine<IRouteToConfig>, options?: IActivityFactoryOptions) => {
-  return new RouteToReaction(meta, options)
 }
