@@ -35,9 +35,6 @@ importers:
       '@types/react-router-dom':
         specifier: ^5.3.3
         version: 5.3.3
-      husky:
-        specifier: ^8.0.2
-        version: 8.0.2
       jsdom:
         specifier: latest
         version: registry.npmmirror.com/jsdom@22.0.0
@@ -193,6 +190,100 @@ importers:
       vite-plugin-require-transform:
         specifier: ^1.0.9
         version: registry.npmmirror.com/vite-plugin-require-transform@1.0.9
+
+  packages/controller-editor-antd5:
+    dependencies:
+      '@ant-design/icons':
+        specifier: ^4.8.0
+        version: registry.npmmirror.com/@ant-design/icons@4.8.0(react-dom@18.2.0)(react@18.2.0)
+      '@rxdrag/fieldy':
+        specifier: workspace:*
+        version: link:../fieldy/fieldy
+      '@rxdrag/locales':
+        specifier: workspace:*
+        version: link:../locales/locales
+      '@rxdrag/minions-controller-editor':
+        specifier: workspace:*
+        version: link:../minions/editor/controller-editor
+      '@rxdrag/minions-runtime-react':
+        specifier: workspace:*
+        version: link:../minions/runtime/runtime-react
+      '@rxdrag/minions-schema':
+        specifier: workspace:*
+        version: link:../minions/schema
+      '@rxdrag/react-antd-props-inputs':
+        specifier: workspace:*
+        version: link:../rxdrag/editor/react-antd-props-inputs
+      '@rxdrag/react-fieldy':
+        specifier: workspace:*
+        version: link:../fieldy/fieldy-react
+      '@rxdrag/react-locales':
+        specifier: workspace:*
+        version: link:../locales/locales-react
+      '@rxdrag/react-runner':
+        specifier: workspace:*
+        version: link:../rxdrag/runtime/react-runner
+      '@rxdrag/react-shared':
+        specifier: workspace:*
+        version: link:../react-shared
+      '@rxdrag/schema':
+        specifier: workspace:*
+        version: link:../rxdrag/schema
+      '@rxdrag/shared':
+        specifier: workspace:*
+        version: link:../shared
+      antd:
+        specifier: 5.1.2
+        version: registry.npmmirror.com/antd@5.1.2(react-dom@18.2.0)(react@18.2.0)
+      less:
+        specifier: ^4.1.3
+        version: registry.npmmirror.com/less@4.1.3
+      react:
+        specifier: ^18.2.0
+        version: registry.npmmirror.com/react@18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+      redux:
+        specifier: ^4.2.1
+        version: registry.npmmirror.com/redux@4.2.1
+      styled-components:
+        specifier: ^5.3.9
+        version: registry.npmmirror.com/styled-components@5.3.9(react-dom@18.2.0)(react-is@17.0.2)(react@18.2.0)
+    devDependencies:
+      '@rxdrag/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      '@rxdrag/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@types/insert-css':
+        specifier: ^2.0.1
+        version: registry.npmmirror.com/@types/insert-css@2.0.1
+      '@types/react':
+        specifier: ^18.0.28
+        version: registry.npmmirror.com/@types/react@18.0.28
+      '@types/react-dom':
+        specifier: ^18.0.11
+        version: registry.npmmirror.com/@types/react-dom@18.0.11
+      '@types/styled-components':
+        specifier: ^5.1.26
+        version: registry.npmmirror.com/@types/styled-components@5.1.26
+      '@vitejs/plugin-react':
+        specifier: ^3.1.0
+        version: registry.npmmirror.com/@vitejs/plugin-react@3.1.0(vite@4.2.0)
+      eslint:
+        specifier: ^7.32.0
+        version: registry.npmmirror.com/eslint@7.32.0
+      less-loader:
+        specifier: ^11.1.0
+        version: registry.npmmirror.com/less-loader@11.1.0(less@4.1.3)(webpack@5.76.2)
+      typescript:
+        specifier: ^4.9.3
+        version: registry.npmmirror.com/typescript@4.9.4
+      vite:
+        specifier: ^4.2.0
+        version: registry.npmmirror.com/vite@4.2.0(@types/node@18.11.17)(less@4.1.3)
 
   packages/eslint-config-custom:
     dependencies:
@@ -415,47 +506,20 @@ importers:
         specifier: ^4.9.4
         version: registry.npmmirror.com/typescript@4.9.4
 
-  packages/minions-editor-antd5:
+  packages/minions-react-antd5-activites:
     dependencies:
       '@ant-design/icons':
         specifier: ^4.8.0
         version: registry.npmmirror.com/@ant-design/icons@4.8.0(react-dom@18.2.0)(react@18.2.0)
-      '@rxdrag/fieldy':
+      '@rxdrag/minions-runtime':
         specifier: workspace:*
-        version: link:../fieldy/fieldy
-      '@rxdrag/locales':
-        specifier: workspace:*
-        version: link:../locales/locales
-      '@rxdrag/minions-controller-editor':
-        specifier: workspace:*
-        version: link:../minions/editor/controller-editor
+        version: link:../minions/runtime/runtime-core
       '@rxdrag/minions-runtime-react':
         specifier: workspace:*
         version: link:../minions/runtime/runtime-react
       '@rxdrag/minions-schema':
         specifier: workspace:*
         version: link:../minions/schema
-      '@rxdrag/react-antd-props-inputs':
-        specifier: workspace:*
-        version: link:../rxdrag/editor/react-antd-props-inputs
-      '@rxdrag/react-fieldy':
-        specifier: workspace:*
-        version: link:../fieldy/fieldy-react
-      '@rxdrag/react-locales':
-        specifier: workspace:*
-        version: link:../locales/locales-react
-      '@rxdrag/react-runner':
-        specifier: workspace:*
-        version: link:../rxdrag/runtime/react-runner
-      '@rxdrag/react-shared':
-        specifier: workspace:*
-        version: link:../react-shared
-      '@rxdrag/schema':
-        specifier: workspace:*
-        version: link:../rxdrag/schema
-      '@rxdrag/shared':
-        specifier: workspace:*
-        version: link:../shared
       antd:
         specifier: 5.1.2
         version: registry.npmmirror.com/antd@5.1.2(react-dom@18.2.0)(react@18.2.0)
@@ -468,12 +532,6 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
-      redux:
-        specifier: ^4.2.1
-        version: registry.npmmirror.com/redux@4.2.1
-      styled-components:
-        specifier: ^5.3.9
-        version: registry.npmmirror.com/styled-components@5.3.9(react-dom@18.2.0)(react-is@17.0.2)(react@18.2.0)
     devDependencies:
       '@rxdrag/eslint-config-custom':
         specifier: workspace:*
@@ -481,18 +539,12 @@ importers:
       '@rxdrag/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
-      '@types/insert-css':
-        specifier: ^2.0.1
-        version: registry.npmmirror.com/@types/insert-css@2.0.1
       '@types/react':
         specifier: ^18.0.28
         version: registry.npmmirror.com/@types/react@18.0.28
       '@types/react-dom':
         specifier: ^18.0.11
         version: registry.npmmirror.com/@types/react-dom@18.0.11
-      '@types/styled-components':
-        specifier: ^5.1.26
-        version: registry.npmmirror.com/@types/styled-components@5.1.26
       '@vitejs/plugin-react':
         specifier: ^3.1.0
         version: registry.npmmirror.com/@vitejs/plugin-react@3.1.0(vite@4.2.0)
@@ -517,6 +569,12 @@ importers:
       '@rxdrag/minions-activities':
         specifier: workspace:*
         version: link:../minions/runtime/activities
+      '@rxdrag/minions-react-antd5-activites':
+        specifier: workspace:*
+        version: link:../minions-react-antd5-activites
+      '@rxdrag/minions-runtime-react':
+        specifier: workspace:*
+        version: link:../minions/runtime/runtime-react
       '@rxdrag/minions-schema':
         specifier: workspace:*
         version: link:../minions/schema
@@ -1084,6 +1142,9 @@ importers:
       '@reduxjs/toolkit':
         specifier: ^1.9.3
         version: registry.npmmirror.com/@reduxjs/toolkit@1.9.3(react@18.2.0)
+      '@rxdrag/controller-editor-antd5':
+        specifier: workspace:*
+        version: link:../../../controller-editor-antd5
       '@rxdrag/core':
         specifier: workspace:*
         version: link:../core
@@ -1093,9 +1154,6 @@ importers:
       '@rxdrag/locales':
         specifier: workspace:*
         version: link:../../../locales/locales
-      '@rxdrag/minions-editor-react-antd5':
-        specifier: workspace:*
-        version: link:../../../minions-editor-antd5
       '@rxdrag/minions-runtime':
         specifier: workspace:*
         version: link:../../../minions/runtime/runtime-core
@@ -2574,12 +2632,6 @@ packages:
   /human-signals@3.0.1:
     resolution: {integrity: sha512-rQLskxnM/5OCldHo+wNXbpVgDn5A17CUoKX+7Sokwaknlq7CdSnphy0W39GU8dw59XiCXmFXDg4fRuckQRKewQ==}
     engines: {node: '>=12.20.0'}
-    dev: true
-
-  /husky@8.0.2:
-    resolution: {integrity: sha512-Tkv80jtvbnkK3mYWxPZePGFpQ/tT3HNSs/sasF9P2YfkMezDl3ON37YN6jUUI4eTg5LcyVynlb6r4eyvOmspvg==}
-    engines: {node: '>=14'}
-    hasBin: true
     dev: true
 
   /ieee754@1.2.1:

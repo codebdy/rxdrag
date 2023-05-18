@@ -1,7 +1,9 @@
-import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions";
-import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema";
+import { SingleInputActivity, activity } from "@rxdrag/minions-runtime";
+import { IActivityFactoryOptions } from "@rxdrag/minions-runtime-react";
+import { IActivityDefine } from "@rxdrag/minions-schema";
 import { message } from "antd";
 
+export const MessageActivityName = "system-react-antd5.message"
 export enum MessageType {
   Success = "success",
   Error = "error",
@@ -10,12 +12,13 @@ export enum MessageType {
   Loading = "loading",
 }
 
-export interface IInfoMessageConfig extends IConfigMeta {
+export interface IInfoMessageConfig {
   type?: MessageType,
   duration?: number,
 }
 
-export class InfoMessageReaction extends AbstractActivity<IInfoMessageConfig> {
+@activity(MessageActivityName)
+export class InfoMessageReaction extends SingleInputActivity<IInfoMessageConfig> {
 
   constructor(meta: IActivityDefine<IInfoMessageConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
@@ -24,11 +27,10 @@ export class InfoMessageReaction extends AbstractActivity<IInfoMessageConfig> {
       throw new Error("Debug inputs count error")
     }
 
-    this.getInputByName("input")?.connect(this.inputHandler as any)
   }
 
-  inputHandler = (inputValue?: string) => {
-    let msg = inputValue
+  execute = (inputValue?: string) => {
+    const msg = inputValue
     switch (this.meta.config?.type) {
       case MessageType.Success:
         message.success(msg, this.meta.config?.duration)
@@ -50,8 +52,4 @@ export class InfoMessageReaction extends AbstractActivity<IInfoMessageConfig> {
         break;
     }
   }
-}
-
-export const InfoMessage: ActivityFactory = (meta: IActivityDefine<IInfoMessageConfig>, options?: IActivityFactoryOptions) => {
-  return new InfoMessageReaction(meta, options)
 }

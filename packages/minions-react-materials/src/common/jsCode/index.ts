@@ -1,16 +1,15 @@
 import { jsIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
-import { JsCode } from "./reaction";
 import { jsCodeSchema } from "./schema";
 import { ReactNode } from "react";
+import { JsCodeActivityName } from "@rxdrag/minions-activities";
+import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
 
 export const jsCodeMaterial: IActivityMaterial<ReactNode> = {
-  name: "jsCode",
   icon: jsIcon,
   label: "$jsCode",
   activityType: ActivityType.Activity,
-  meta: {
+  defaultPorts: {
     inPorts: [
       {
         id: createUuid(),
@@ -27,5 +26,5 @@ export const jsCodeMaterial: IActivityMaterial<ReactNode> = {
     ],
   },
   schema: jsCodeSchema,
-  reaction: JsCode,
+  activityName: JsCodeActivityName,
 }

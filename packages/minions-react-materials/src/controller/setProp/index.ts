@@ -1,15 +1,16 @@
 import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
 import { IControllerReactionConfig } from "../AbstractControllerReaction"
-import { SetProp } from "./reaction"
 import { setPropSchema } from "./schema"
 import { ReactNode } from "react"
 import { createUuid } from "@rxdrag/shared";
+import { setPropIcon } from "@rxdrag/react-shared";
+import { SetPropActivityName } from "@rxdrag/minions-runtime-react";
+
 export const setPropMaterial: IActivityMaterial<ReactNode> = {
-  name: "setProp",
   icon: setPropIcon,
   label: "$setProp",
   activityType: ActivityType.Activity,
-  meta: {
+  defaultPorts: {
     inPorts: [
       {
         id: createUuid(),
@@ -22,5 +23,5 @@ export const setPropMaterial: IActivityMaterial<ReactNode> = {
   subTitle: (config?: IControllerReactionConfig) => {
     return config?.prop
   },
-  reaction: SetProp,
+  activityName: SetPropActivityName,
 }

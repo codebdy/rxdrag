@@ -32,7 +32,7 @@
     "@rxdrag/minions-runtime": "workspace:*",
     "@rxdrag/react-antd-components": "workspace:*",
     "@rxdrag/react-antd-icons": "workspace:*",
-    "@rxdrag/minions-editor-react-antd5": "workspace:*",
+    "@rxdrag/controller-editor-antd5": "workspace:*",
     "@rxdrag/react-antd-props-inputs": "workspace:*",
     "@rxdrag/react-core": "workspace:*",
     "@rxdrag/react-fieldy": "workspace:*",

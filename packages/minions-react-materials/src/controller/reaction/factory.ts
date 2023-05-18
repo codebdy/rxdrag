@@ -1,5 +1,3 @@
-import { IActivityFactoryOptions, LogicFlow } from "@rxdrag/minions"
-import { ActivityFactory, IActivityDefine, IConfigMeta } from "@rxdrag/schema"
 
 
 export const ControllerReaction: ActivityFactory<IActivityFactoryOptions> = (meta: IActivityDefine<IConfigMeta>, options: IActivityFactoryOptions) => {
