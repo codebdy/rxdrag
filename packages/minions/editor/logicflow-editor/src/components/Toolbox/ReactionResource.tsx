@@ -1,8 +1,9 @@
 import React, { ReactNode } from "react"
 import { memo, useCallback } from "react"
 import { useGraph, useDnd, useGetNodeConfig } from "../../hooks";
-import { IActivityMaterial, IActivityDefine } from "@rxdrag/minions-schema";
+import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { v4 as uuidv4 } from 'uuid';
+import { IActivityNode } from "../../interfaces";
 
 export const createUuid = () => {
   return uuidv4();
@@ -23,17 +24,17 @@ export const ReactionResource = memo((props: ReactionResourceProps) => {
     if (!graph) {
       return;
     }
-    const nodeMeta: IActivityDefine = {
+    const nodeMeta: IActivityNode = {
       id: createUuid(),
       label: material.label,
       type: material.activityType,
-      activityName: material.name,
+      activityName: material.activityName,
       ...material.defaultPorts
     }
     const node = graph.createNode(getNodeConfig(nodeMeta));
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dnd?.start(node, e.nativeEvent as any);
-  }, [dnd, getNodeConfig, graph, material.activityType, material.defaultPorts, material.label, material.name])
+  }, [dnd, getNodeConfig, graph, material.activityName, material.activityType, material.defaultPorts, material.label])
 
   return <>
     {children?.(handleDrag)}

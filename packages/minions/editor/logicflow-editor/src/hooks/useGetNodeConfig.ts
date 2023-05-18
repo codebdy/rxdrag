@@ -4,12 +4,14 @@ import { getStartNodeConfig } from "./getStartNodeConfig";
 import { getEndNodeConfig } from "./getEndNodeConfig";
 import { useGetMaterial } from "./useGetMaterial";
 import { useGetSingleNodeConfig } from "./useGetSingleNodeConfig";
-import { IActivityNode, IThemeToken } from "../interfaces";
+import { IActivityNode } from "../interfaces";
 import { ActivityType } from "@rxdrag/minions-schema";
+import { useThemeToken } from "./useThemeToken";
 
-export function useGetNodeConfig(token: IThemeToken) {
+export function useGetNodeConfig() {
   const getMaterial = useGetMaterial();
   const getSingleNodeConfig = useGetSingleNodeConfig()
+  const token = useThemeToken()
   // const getReactionNodeConfig = useGetControllerReactionConfig()
 
   const getConfig = useCallback((reactNodeMeta: IActivityNode): Node.Metadata => {

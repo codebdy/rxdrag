@@ -20,6 +20,7 @@ export const Toolbox = memo(() => {
     <Collapse defaultActiveKey={[activityMaterialCategories?.[0]?.name]} bordered={false} accordion expandIconPosition="end">
       {
         activityMaterialCategories.map(category => {
+          console.log("哈哈", category.name)
           return (
             <Panel key={category.name} header={t(category.name)}>
               <Row gutter={8}>
@@ -44,9 +45,9 @@ export const Toolbox = memo(() => {
           )
         })
       }
-      <Panel header={t('$componentControl')} key="componentControl">
+      {/* <Panel header={t('$componentControl')} key="componentControl">
         <ComponentList />
-      </Panel>
+      </Panel> */}
     </Collapse>
   )
 })

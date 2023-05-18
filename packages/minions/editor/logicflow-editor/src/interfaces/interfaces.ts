@@ -13,7 +13,7 @@ export interface IX6NodeDefine {
 }
 
 export interface IActivityNode extends IActivityDefine {
-  x6Node: IX6NodeDefine
+  x6Node?: IX6NodeDefine
 }
 
 export type ILogicMetas = {

@@ -18,23 +18,17 @@ export const startEndSchema: INodeSchema = {
 
 export const basicReactions: IActivityMaterial<ReactNode>[] = [
   {
-    name: "start",
+    activityName: "start",
     icon: startIcon,
     label: "$input",
     activityType: ActivityType.Start,
-    meta: {
-      name: "input"
-    },
     schema: startEndSchema,
   },
   {
-    name: "end",
+    activityName: "end",
     icon: endIcon,
     label: "$output",
     activityType: ActivityType.End,
-    meta: {
-      name: "output"
-    },
     schema: startEndSchema,
   },
   conditionMaterial,
