@@ -1,36 +1,35 @@
 import { delayIcon } from "@rxdrag/react-shared";
-import { ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
-import { Delay, IDelayConfig } from "./reaction";
 import { delaySchema } from "./schema";
 import { ReactNode } from "react";
+import { ActivityType, IActivityMaterial } from "@rxdrag/minions-schema";
+import { DelayActivityName, IDelayConfig } from "@rxdrag/minions-activities";
 
 export const delayMaterial: IActivityMaterial<ReactNode> = {
-  name: "delay",
   icon: delayIcon,
   label: "$delay",
-  activityType: ActivityType.SingleActivity,
-  meta: {
+  activityType: ActivityType.Activity,
+  defaultPorts: {
     inPorts: [
       {
         id: createUuid(),
-        name: "startUp",
-        label: "",//"$startUp",
+        name: "input",
+        label: "",
       },
     ],
     outPorts: [
       {
         id: createUuid(),
         name: "output",
-        label: "",//"$output",
+        label: "",
       },
     ],
   },
   schema: delaySchema,
-  reaction: Delay,
   subTitle: (config?: IDelayConfig) => {
     if (config?.time) {
       return config?.time?.toString()
     }
   },
+  activityName: DelayActivityName
 }

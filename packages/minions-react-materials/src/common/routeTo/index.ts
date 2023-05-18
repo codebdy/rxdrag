@@ -9,7 +9,7 @@ export const routeToMaterial: IActivityMaterial<ReactNode> = {
   name: "routeTo",
   icon: routeIcon,
   label: "$routeTo",
-  activityType: ActivityType.SingleActivity,
+  activityType: ActivityType.Activity,
   meta: {
     inPorts: [
       {

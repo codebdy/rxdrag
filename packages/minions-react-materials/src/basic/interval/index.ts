@@ -1,16 +1,15 @@
 import { intervalIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
-import { IIntervalConfig, Interval } from "./reaction";
 import { intervalSchema } from "./schema";
 import { ReactNode } from "react";
+import { IIntervalConfig, IntervalActivityName } from "@rxdrag/minions-activities";
+import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
 
 export const intervalMaterial: IActivityMaterial<ReactNode> = {
-  name: "interval",
   icon: intervalIcon,
   label: "$interval",
-  activityType: ActivityType.SingleActivity,
-  meta: {
+  activityType: ActivityType.Activity,
+  defaultPorts: {
     inPorts: [
       {
         id: createUuid(),
@@ -37,5 +36,5 @@ export const intervalMaterial: IActivityMaterial<ReactNode> = {
       return config?.interval?.toString()
     }
   },
-  reaction: Interval,
+  activityName: IntervalActivityName
 }

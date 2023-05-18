@@ -1,2 +1,2 @@
 export * from "./jsCode"
-export * from "./mockData"
+export * from "./mock"

@@ -1,7 +1,7 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { labelSchema } from "../../baseSchema";
 
-export const mockDataSchema: INodeSchema = {
+export const mockSchema: INodeSchema = {
   componentName: "Fragment",
   children: [
     labelSchema,

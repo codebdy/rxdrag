@@ -2,7 +2,7 @@ import { startIcon, endIcon } from "@rxdrag/react-shared";
 import { labelSchema, nameSchema } from "../baseSchema";
 import { conditionMaterial } from "./condition";
 import { delayMaterial } from "./delay";
-import { fixedValueMaterial } from "./fixedValue";
+import { constValueMaterial } from "./constValue";
 import { intervalMaterial } from "./interval";
 import { loopMaterial } from "./loop";
 import { mergeMaterial } from "./merge";
@@ -44,5 +44,5 @@ export const basicReactions: IActivityMaterial<ReactNode>[] = [
   delayMaterial,
   randomMaterial,
   intervalMaterial,
-  fixedValueMaterial,
+  constValueMaterial,
 ]

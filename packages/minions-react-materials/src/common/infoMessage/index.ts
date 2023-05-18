@@ -1,17 +1,15 @@
 
 import { infoIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
-import { IInfoMessageConfig, InfoMessage } from "./reaction";
 import { infoMessageSchema } from "./schema";
 import { ReactNode } from "react";
+import { ActivityType, IActivityMaterial } from "@rxdrag/minions-schema";
 
 export const infoMessageMaterial: IActivityMaterial<ReactNode> = {
-  name: "infoMessage",
   icon: infoIcon,
   label: "$infoMessage",
-  activityType: ActivityType.SingleActivity,
-  meta: {
+  activityType: ActivityType.Activity,
+  defaultPorts: {
     inPorts: [
       {
         id: createUuid(),

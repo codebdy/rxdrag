@@ -1,16 +1,15 @@
 import { loopIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
-import { Loop } from "./reaction";
 import { loopSchema } from "./schema";
 import { ReactNode } from "react";
+import { LoopActivityName } from "@rxdrag/minions-activities";
+import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
 
 export const loopMaterial: IActivityMaterial<ReactNode> = {
-  name: "loop",
   icon: loopIcon,
   label: "$loop",
-  activityType: ActivityType.SingleActivity,
-  meta: {
+  activityType: ActivityType.Activity,
+  defaultPorts: {
     inPorts: [
       {
         id: createUuid(),
@@ -28,5 +27,5 @@ export const loopMaterial: IActivityMaterial<ReactNode> = {
     ],
   },
   schema: loopSchema,
-  reaction: Loop,
+  activityName: LoopActivityName,
 }

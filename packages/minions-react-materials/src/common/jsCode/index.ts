@@ -9,7 +9,7 @@ export const jsCodeMaterial: IActivityMaterial<ReactNode> = {
   name: "jsCode",
   icon: jsIcon,
   label: "$jsCode",
-  activityType: ActivityType.SingleActivity,
+  activityType: ActivityType.Activity,
   meta: {
     inPorts: [
       {

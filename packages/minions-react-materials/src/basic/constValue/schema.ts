@@ -1,29 +1,24 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { labelSchema } from "../../baseSchema";
 
-export const switchSchema: INodeSchema = {
+export const constValueSchema: INodeSchema = {
   componentName: "Fragment",
   children: [
     labelSchema,
     {
       componentName: "FormItem",
       props: {
-        label: "$outputPorts",
+        label: "$value",
       },
       children: [
         {
-          componentName: "PortsInput",
+          componentName: "ValueInput",
           "x-field": {
-            name: "outPorts",
+            name: `config.value`,
             params: {
               withBind: true,
             }
           },
-          props: {
-            title: "$configPorts",
-            popoverTitle: "$outputPortsConfig",
-            type: "output",
-          }
         }
       ]
     },

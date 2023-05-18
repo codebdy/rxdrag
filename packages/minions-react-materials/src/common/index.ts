@@ -1,14 +1,14 @@
 import { infoMessageMaterial } from "./infoMessage";
 import { jsCodeMaterial } from "./jsCode";
 import { routeToMaterial } from "./routeTo";
-import { mockDataMaterial } from "./mockData";
+import { mockMaterial } from "./mock";
 import { IActivityMaterial } from "@rxdrag/schema";
 import { ReactNode } from "react";
 
 export const commonReactions: IActivityMaterial<ReactNode>[] = [
   routeToMaterial,
   infoMessageMaterial,
-  mockDataMaterial,
+  mockMaterial,
   // {
   //   name: "globalLoading",
   //   icon: loadingIcon,

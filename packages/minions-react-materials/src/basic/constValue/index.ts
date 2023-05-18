@@ -1,17 +1,16 @@
 import { fixedValueIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
-import { FixedValue } from "./reaction";
-import { fixedValueSchema } from "./schema";
+import { constValueSchema } from "./schema";
 import { ReactNode } from "react";
+import { ActivityType, IActivityMaterial } from "@rxdrag/minions-schema";
+import { ConstActivityName } from "@rxdrag/minions-activities";
 
-export const fixedValueMaterial: IActivityMaterial<ReactNode> = {
-  name: "fixedValue",
+export const constValueMaterial: IActivityMaterial<ReactNode> = {
   icon: fixedValueIcon,
   label: "$fixedValue",
-  activityType: ActivityType.SingleActivity,
+  activityType: ActivityType.Activity,
   color: "#1668dc",
-  meta: {
+  defaultPorts: {
     inPorts: [
       {
         id: createUuid(),
@@ -27,6 +26,6 @@ export const fixedValueMaterial: IActivityMaterial<ReactNode> = {
       },
     ],
   },
-  schema: fixedValueSchema,
-  reaction: FixedValue,
+  schema: constValueSchema,
+  activityName: ConstActivityName,
 }

@@ -1,8 +1,6 @@
 import { ActivityType, IPortDefine } from "./dsl";
 
 export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown> {
-  //唯一名称, 这个名字直接对应 activityName
-  name: string;
   label: string;
   activityType: ActivityType;
   icon?: ComponentNode;
@@ -13,8 +11,9 @@ export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown
     inPorts?: IPortDefine[];
     outPorts?: IPortDefine[];
   };
-  subTitle?: (config?: unknown) => string | undefined;
-  //activityName: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  subTitle?: (config?: any, options?: any) => string | undefined;
+  activityName: string;
 }
 
 export interface ActivityMaterialCategory<ComponentNode = unknown> {

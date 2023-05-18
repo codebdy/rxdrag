@@ -1,17 +1,16 @@
 
 import { randomIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
-import { IRandomConfig, Random } from "./reaction";
 import { randomSchema } from "./schema";
 import { ReactNode } from "react";
+import { IRandomConfig, RandomActivityName } from "@rxdrag/minions-activities";
+import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
 
 export const randomMaterial: IActivityMaterial<ReactNode> = {
-  name: "random",
   icon: randomIcon,
   label: "$random",
-  activityType: ActivityType.SingleActivity,
-  meta: {
+  activityType: ActivityType.Activity,
+  defaultPorts: {
     inPorts: [
       {
         id: createUuid(),
@@ -28,7 +27,7 @@ export const randomMaterial: IActivityMaterial<ReactNode> = {
     ],
   },
   schema: randomSchema,
-  reaction: Random,
+  activityName: RandomActivityName,
   subTitle: (config?: IRandomConfig) => {
     if (config?.maxValue || config?.minValue) {
       return `${config.minValue || ""} ~ ${config.maxValue || ""}`

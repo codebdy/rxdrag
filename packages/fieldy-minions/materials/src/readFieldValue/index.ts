@@ -9,7 +9,7 @@ export const readFieldValueMaterial: IActivityMaterial<ReactNode> = {
   name: "readFieldValue",
   icon: fieldReadIcon,
   label: "$readFieldValue",
-  activityType: ActivityType.SingleActivity,
+  activityType: ActivityType.Activity,
   meta: {
     inPorts: [
       {

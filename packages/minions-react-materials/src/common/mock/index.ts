@@ -1,16 +1,15 @@
 import { simulateIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
-import { MockData } from "./reaction";
-import { mockDataSchema } from "./schema";
+import { mockSchema } from "./schema";
 import { ReactNode } from "react";
+import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
+import { MockActivityName } from "@rxdrag/minions-activities";
 
-export const mockDataMaterial: IActivityMaterial<ReactNode> = {
-  name: "mockData",
+export const mockMaterial: IActivityMaterial<ReactNode> = {
   icon: simulateIcon,
   label: "$simulateData",
-  activityType: ActivityType.SingleActivity,
-  meta: {
+  activityType: ActivityType.Activity,
+  defaultPorts: {
     inPorts: [
       {
         id: createUuid(),
@@ -36,6 +35,6 @@ export const mockDataMaterial: IActivityMaterial<ReactNode> = {
       },
     ],
   },
-  schema: mockDataSchema,
-  reaction: MockData,
+  schema: mockSchema,
+  activityName: MockActivityName,
 }

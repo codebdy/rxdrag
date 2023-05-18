@@ -1,17 +1,16 @@
 import { ifIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
-import { Condition } from "./reaction";
 import { conditionSchema } from "./schema";
 import { ReactNode } from "react";
+import { ActivityType, IActivityMaterial } from "@rxdrag/minions-schema";
+import { ConditionActivityName } from "@rxdrag/minions-activities";
 
 export const conditionMaterial: IActivityMaterial<ReactNode> = {
-  name: "condition",
   icon: ifIcon,
   label: "$conditionCheck",
-  activityType: ActivityType.SingleActivity,
+  activityType: ActivityType.Activity,
   color: "#5e76c3",
-  meta: {
+  defaultPorts: {
     inPorts: [
       {
         id: createUuid(),
@@ -33,5 +32,5 @@ export const conditionMaterial: IActivityMaterial<ReactNode> = {
     ],
   },
   schema: conditionSchema,
-  reaction: Condition,
+  activityName: ConditionActivityName
 }

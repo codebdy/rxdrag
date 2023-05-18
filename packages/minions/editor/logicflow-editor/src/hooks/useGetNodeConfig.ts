@@ -20,7 +20,7 @@ export function useGetNodeConfig() {
         return getStartNodeConfig(reactNodeMeta, token)
       case ActivityType.End:
         return getEndNodeConfig(reactNodeMeta, token)
-      case ActivityType.SingleActivity:
+      case ActivityType.Activity:
         return getSingleNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.materialName))
       case ActivityType.ControllerDefaultReaction:
       case ActivityType.ControllerReaction:
