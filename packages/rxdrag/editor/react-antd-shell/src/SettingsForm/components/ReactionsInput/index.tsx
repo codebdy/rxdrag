@@ -1,14 +1,16 @@
 import React from "react"
 import { Button, Form, Input, Modal, Switch } from "antd"
-import { ControllerMetaEditor, IEventMeta } from "@rxdrag/minions-logicflow-editor"
+import { IEventMeta } from "@rxdrag/minions-logicflow-editor"
 import { memo, useCallback, useEffect, useState } from "react"
-import { IControllerMeta, ILogicFlowDefinition } from "@rxdrag/schema"
 import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
 import { useControllerMetas } from "./hooks/useControllerMetas"
 import { Toolbox } from "./Toolbox"
 import { getAllMaterial, activityMaterialLocales } from "@rxdrag/minions-react-materials"
 import { ITreeNode } from "@rxdrag/core"
+import { IControllerMeta } from "@rxdrag/minions-runtime-react"
+import { ILogicFlowDefinition } from "@rxdrag/minions-schema"
+import { ControllerMetaEditorAntd5 } from "@rxdrag/controller-editor-antd5"
 
 export const ReactionsInput = memo((props: {
   events?: IEventMeta[]
@@ -120,7 +122,7 @@ export const ReactionsInput = memo((props: {
           >
             {
               inputValue &&
-              <ControllerMetaEditor
+              <ControllerMetaEditorAntd5
                 value={inputValue}
                 onChange={handleChange}
                 controllerMetas={controllers}

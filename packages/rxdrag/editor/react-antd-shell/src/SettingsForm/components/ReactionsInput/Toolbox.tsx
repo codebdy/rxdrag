@@ -3,7 +3,7 @@ import { Collapse as AntdCollapse, Row } from "antd";
 import styled from "styled-components";
 import { activityMaterialCategories } from "@rxdrag/minions-react-materials";
 import { ComponentList } from "./ComponentList";
-import { ReactionResource, ToolItem, useTrans } from "@rxdrag/minions-logicflow-editor";
+import { ReactionResource, ToolItem } from "@rxdrag/minions-logicflow-editor";
 
 const Collapse = styled(AntdCollapse)`
   flex:1;
@@ -14,7 +14,7 @@ const Collapse = styled(AntdCollapse)`
 const { Panel } = AntdCollapse;
 
 export const Toolbox = memo(() => {
-  const t = useTrans()
+ // const t = useTrans()
   return (
     <Collapse defaultActiveKey={[activityMaterialCategories?.[0]?.name]} bordered={false} accordion expandIconPosition="end">
       {

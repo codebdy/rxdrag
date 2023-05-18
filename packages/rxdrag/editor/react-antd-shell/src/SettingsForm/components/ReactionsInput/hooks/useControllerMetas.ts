@@ -1,6 +1,6 @@
 import { ITreeNode } from "@rxdrag/core"
+import { IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { useGetNode, useCurrentNode, useTreeNode } from "@rxdrag/react-core"
-import { IControllerMeta } from "@rxdrag/schema"
 import { useCallback, useMemo } from "react"
 
 export function useControllerMetas() {
