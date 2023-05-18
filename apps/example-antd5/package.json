@@ -17,7 +17,6 @@
     "@rxdrag/react-antd-shell": "workspace:*",
     "@rxdrag/react-core": "workspace:*",
     "@rxdrag/react-locales": "workspace:*",
-    "@rxdrag/react-minions-materials": "workspace:*",
     "@rxdrag/react-runner": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/schema": "workspace:*",

@@ -38,7 +38,6 @@
     "@rxdrag/react-fieldy": "workspace:*",
     "@rxdrag/react-locales": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
-    "@rxdrag/react-minions-materials": "workspace:*",
     "@rxdrag/react-runner": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/schema": "workspace:*",

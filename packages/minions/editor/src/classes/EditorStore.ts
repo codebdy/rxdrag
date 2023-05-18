@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { invariant } from "@rxdrag/shared"
 import { Store } from "redux";
 import { Action } from "../actions";
 import { ISnapshot, IState } from "../interfaces/state";
@@ -17,7 +16,6 @@ export class EditorStore {
   }
 
   subscribeZoomChange(listener: ZoomChangeListener) {
-    invariant(typeof listener === 'function', 'listener must be a function.')
     let previousState: number | undefined = this.store.getState().zoom
 
     const handleChange = () => {
@@ -33,7 +31,6 @@ export class EditorStore {
   }
 
   subscribeMetasChange(listener: MetasChangeListener) {
-    invariant(typeof listener === 'function', 'listener must be a function.')
     let previousState: IState = this.store.getState()
 
     const handleChange = () => {
@@ -49,7 +46,6 @@ export class EditorStore {
   }
 
   subscribeSelectedChange(listener: SelectedChangeListener) {
-    invariant(typeof listener === 'function', 'listener must be a function.')
     let previousState: string | undefined = this.store.getState().selected
 
     const handleChange = () => {
@@ -65,7 +61,6 @@ export class EditorStore {
   }
 
   subscribeUndoLisrtChange(listener: UndoListChangeListener) {
-    invariant(typeof listener === 'function', 'listener must be a function.')
     let previousState: ISnapshot[] | undefined = this.store.getState().undoList
 
     const handleChange = () => {
@@ -81,7 +76,6 @@ export class EditorStore {
   }
 
   subscribeRedoLisrtChange(listener: RedoListChangeListener) {
-    invariant(typeof listener === 'function', 'listener must be a function.')
     let previousState: ISnapshot[] | undefined = this.store.getState().redoList
 
     const handleChange = () => {
@@ -98,7 +92,6 @@ export class EditorStore {
 
 
   subscribeChangeFlagChange(listener: ChangeFlagChangeListener) {
-    invariant(typeof listener === 'function', 'listener must be a function.')
     let previousState: number = this.store.getState().changeFlag
 
     const handleChange = () => {
