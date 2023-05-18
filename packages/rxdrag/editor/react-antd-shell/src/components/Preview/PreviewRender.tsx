@@ -3,11 +3,12 @@ import { useDocumentViewTypeState } from "@rxdrag/react-core"
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy"
 import { ComponentRender, PreviewRoot } from "@rxdrag/react-runner"
 import { IComponents } from "@rxdrag/react-shared"
-import { IActivityMaterial, INodeSchema } from "@rxdrag/schema"
+import { INodeSchema } from "@rxdrag/schema"
 import { useToken } from "antd/es/theme/internal"
 import { ReactNode, memo, useEffect, useMemo, useState } from "react"
 import { ThemeProvider } from "styled-components"
-import { Minions } from "@rxdrag/react-minions"
+import { IActivityMaterial } from "@rxdrag/minions-schema"
+import { Minions } from "@rxdrag/minions-runtime-react"
 
 export const PreviewRender = memo((
   props: {

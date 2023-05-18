@@ -1,6 +1,6 @@
 import React from "react"
 import { Button, Form, Input, Modal, Switch } from "antd"
-import { ControllerMetaEditor, IEventMeta } from "@rxdrag/react-antd-minions-editor"
+import { ControllerMetaEditor, IEventMeta } from "@rxdrag/minions-logicflow-editor"
 import { memo, useCallback, useEffect, useState } from "react"
 import { IControllerMeta, ILogicFlowDefinition } from "@rxdrag/schema"
 import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"

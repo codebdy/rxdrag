@@ -1160,12 +1160,21 @@ importers:
       '@rxdrag/locales':
         specifier: workspace:*
         version: link:../../../locales/locales
+      '@rxdrag/minions-logicflow-editor':
+        specifier: workspace:*
+        version: link:../../../minions/editor/logicflow-editor
+      '@rxdrag/minions-react-materials':
+        specifier: workspace:*
+        version: link:../../../minions-react-materials
       '@rxdrag/minions-runtime':
         specifier: workspace:*
         version: link:../../../minions/runtime/runtime-core
       '@rxdrag/minions-runtime-react':
         specifier: workspace:*
         version: link:../../../minions/runtime/runtime-react
+      '@rxdrag/minions-schema':
+        specifier: workspace:*
+        version: link:../../../minions/schema
       '@rxdrag/react-antd-components':
         specifier: workspace:*
         version: link:../../runtime/react-antd-components

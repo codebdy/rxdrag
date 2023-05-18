@@ -4,6 +4,7 @@ import { EditorStore } from "./classes/EditorStore";
 import { IState } from "./interfaces/state";
 import { Action } from "./actions";
 import { IActivityMaterial } from "@rxdrag/minions-schema";
+import { IThemeToken } from "./interfaces";
 
 
 export interface IReactionsEditorParams extends IState {
@@ -24,4 +25,6 @@ export const initialState: IState = {
 export const LogicFlowEditorStoreContext = createContext<EditorStore | undefined>(undefined)
 export const GraphContext = createContext<Graph | undefined>(undefined)
 export const MaterialsContext = createContext<IActivityMaterial<ReactNode>[]>([])
+
+export const ThemeTokenContext = createContext<IThemeToken>({})
 

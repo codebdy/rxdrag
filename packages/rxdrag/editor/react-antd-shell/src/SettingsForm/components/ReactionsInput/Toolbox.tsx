@@ -3,7 +3,7 @@ import { Collapse as AntdCollapse, Row } from "antd";
 import styled from "styled-components";
 import { activityMaterialCategories } from "@rxdrag/minions-react-materials";
 import { ComponentList } from "./ComponentList";
-import { ReactionResource, ToolItem, useTrans } from "@rxdrag/react-antd-minions-editor";
+import { ReactionResource, ToolItem, useTrans } from "@rxdrag/minions-logicflow-editor";
 
 const Collapse = styled(AntdCollapse)`
   flex:1;

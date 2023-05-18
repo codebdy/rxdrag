@@ -1,17 +1,18 @@
 import { useCallback } from "react";
 import { Node } from "@antv/x6"
 import { useGetNodeWidth } from "./useGetNodeWidth";
-import { useTransformPorts } from "./useTransformPorts";
 import { useGetNodeHeight } from "./useGetNodeHeight";
 import { useGetSubLabel } from "./useGetSubLabel";
-import { IConfigMeta, IActivityDefine, ActivityType } from "@rxdrag/schema";
+import { IActivityNode } from "../interfaces";
+import { ActivityType } from "@rxdrag/minions-schema";
+import { useTransformPorts } from "./useTransformPorts";
 
 export function useUpdateNode() {
   const getNodeWidth = useGetNodeWidth()
   const getHeight = useGetNodeHeight()
   const transPorts = useTransformPorts()
   const getSubLabel = useGetSubLabel()
-  const update = useCallback((graphNode: Node<Node.Properties>, nodeMeta: IActivityDefine<IConfigMeta>) => {
+  const update = useCallback((graphNode: Node<Node.Properties>, nodeMeta: IActivityNode) => {
     if (nodeMeta.x6Node) {
       graphNode.setPosition(nodeMeta.x6Node);
       const subLabel = getSubLabel(nodeMeta)
@@ -38,7 +39,7 @@ export function useUpdateNode() {
         }
       }
     }
-  }, [getHeight, getNodeWidth, getSubLabel, transPorts])
+  }, [getHeight, getNodeWidth, getSubLabel])
 
   return update
 }

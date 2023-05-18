@@ -2,25 +2,21 @@ import { IActivityDefine } from "@rxdrag/minions-schema";
 import { IActivityFactoryOptions } from "../../controllers";
 import { IController } from "../../interfaces";
 import { AbstractControllerActivity } from "../AbstractControllerActivity";
+import { IVariableConfig } from "./SetVariableReaction";
 import { activity } from "@rxdrag/minions-runtime";
 
-export interface IVariableConfig {
-  controllerId: string
-  variable?: string
-}
-
-export const SetVariableActivityName = "system-react.setVariable"
-@activity(SetVariableActivityName)
-export class SetVariableReaction extends AbstractControllerActivity {
+export const ReadVariableActivityName = "system-react.readVariable"
+@activity(ReadVariableActivityName)
+export class ReadVariableActivity extends AbstractControllerActivity {
   controller: IController
   constructor(meta: IActivityDefine<IVariableConfig>, options?: IActivityFactoryOptions) {
     super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
-      throw new Error("SetVariable inputs count error")
+      throw new Error("ReadVariable inputs count error")
     }
     if (!meta.config?.controllerId) {
-      throw new Error("SetVariable not set controller id")
+      throw new Error("ReadVariable not set controller id")
     }
     const controller = options?.controllers?.[meta.config?.controllerId]
     if (!controller) {
@@ -29,9 +25,9 @@ export class SetVariableReaction extends AbstractControllerActivity {
     this.controller = controller
   }
 
-  execute = (inputValue: string) => {
+  execute = () => {
     if (this.meta.config?.variable) {
-      this.controller?.setVariable(this.meta.config.variable, inputValue)
+      this.next(this.controller.getVariable(this.meta.config.variable))
     }
   }
 }

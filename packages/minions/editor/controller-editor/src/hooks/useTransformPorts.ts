@@ -1,10 +1,9 @@
-import { IPortDefine, IActivityDefine } from "@rxdrag/minions-schema";
+import { IPortDefine, IActivityDefine, ActivityType } from "@rxdrag/minions-schema";
 import { useCallback } from "react";
-import { useThemeToken } from "./useThemeToken";
+import { IThemeToken } from "../../../logicflow-editor/src/interfaces";
 
-export function useTransformPorts() {
-  const token = useThemeToken()
-  //const getControllerPorts = useGetControllerReactionPorts();
+export function useTransformPorts(token: IThemeToken) {
+  const getControllerPorts = useGetControllerReactionPorts();
   const doTransform = useCallback((ports: IPortDefine[] | undefined, group: 'in' | 'out') => {
     return ports?.map(
       port => ({
@@ -17,7 +16,7 @@ export function useTransformPorts() {
         group: group,
         attrs: {
           text: {
-            text: port.label,
+            text: t(port.label),
             fill: token.colorTextSecondary,
             fontSize: 12,
           },
@@ -39,22 +38,19 @@ export function useTransformPorts() {
         }
       })
     )
-  }, [token.colorBgContainer, token.colorTextSecondary])
+  }, [t, token.colorBgContainer, token.colorTextSecondary])
 
   const transform = useCallback((meta: IActivityDefine) => {
-    // if (meta.type === ActivityType.ControllerReaction) {
-    //   const ins = doTransform(getControllerPorts(meta, 'in'), 'in') || []
-    //   const outs = doTransform(getControllerPorts(meta, 'out'), 'out') || []
-    //   return [...ins, ...outs]
-    // } else {
-    //   const ins = doTransform(meta.inPorts, 'in') || []
-    //   const outs = doTransform(meta.outPorts, 'out') || []
-    //   return [...ins, ...outs]
-    // }
-    const ins = doTransform(meta.inPorts, 'in') || []
-    const outs = doTransform(meta.outPorts, 'out') || []
-    return [...ins, ...outs]
-  }, [doTransform])
+    if (meta.type === ActivityType.ControllerReaction) {
+      const ins = doTransform(getControllerPorts(meta, 'in'), 'in') || []
+      const outs = doTransform(getControllerPorts(meta, 'out'), 'out') || []
+      return [...ins, ...outs]
+    } else {
+      const ins = doTransform(meta.inPorts, 'in') || []
+      const outs = doTransform(meta.outPorts, 'out') || []
+      return [...ins, ...outs]
+    }
+  }, [doTransform, getControllerPorts])
 
   return transform
 }
