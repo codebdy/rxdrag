@@ -11,6 +11,11 @@ export interface IJointer {
 export interface IActivityJointers {
   inputs: IJointer[];
   outputs: IJointer[];
+
+  getOutputByName(name: string): IJointer|undefined
+  getOutputById(id: string): IJointer|undefined
+  getInputByName(name: string): IJointer|undefined
+  getInputById(id: string): IJointer|undefined
 }
 
 export interface IActivity<ConfigMeta = unknown> {

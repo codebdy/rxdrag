@@ -1,4 +1,4 @@
-import { AbstractActivity, ActivityFactory } from "@rxdrag/minions"
+import { AbstractActivity, ActivityFactory } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
 export interface IConditionConfig {

@@ -1,15 +1,13 @@
 import { IActivity, IActivityJointers, IJointer, IMinions } from "../interfaces";
+import { ActivityJointers } from "./ActivityJointer";
 import { Jointer } from "./Jointer";
+import { ActivityType, ILogicFlowDefinition } from "@rxdrag/minions-schema"
 
 export class LogicFlow<ActivityFactoryOptions> {
   id: string;
-  jointers: IActivityJointers;
+  jointers: IActivityJointers = new ActivityJointers();
   activities: IActivity[] = [];
   constructor(private flowMeta: ILogicFlowDefinition, private options: ActivityFactoryOptions, private minions: IMinions) {
-    this.jointers = {
-      inputs: [],
-      outputs: []
-    }
 
     //注意这个id的处理
     this.id = flowMeta.id
@@ -25,10 +23,7 @@ export class LogicFlow<ActivityFactoryOptions> {
       activity.destory()
     }
     this.activities = []
-    this.jointers = {
-      inputs: [],
-      outputs: []
-    };
+    this.jointers = new ActivityJointers();
   }
 
   //一个图的构建所有节点
@@ -47,16 +42,16 @@ export class LogicFlow<ActivityFactoryOptions> {
           if (activityMeta.name) {
             //通过material上的 reation factory 生成reaction节点
             const activity = this.minions.createActivity(activityMeta.name, this.options);
+
             //构造Jointers
             for (const out of activityMeta.outPorts || []) {
               activity.jointers.outputs.push(new Jointer(out.id, out.name))
             }
-
             for (const input of activityMeta.inPorts || []) {
               activity.jointers.inputs.push(new Jointer(input.id, input.name))
             }
 
-            this.activities.push()
+            this.activities.push(activity)
           }
           break;
       }

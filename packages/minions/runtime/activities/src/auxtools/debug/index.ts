@@ -1,28 +1,23 @@
+import { SingleInputActivity, activity } from "@rxdrag/minions-runtime"
+import { IActivityDefine } from "@rxdrag/minions-schema"
+
+export const DebugActivityName = "debug"
 
 export interface IDebugConfig {
-  tip?:string,
+  tip?: string,
   closed?: boolean
 }
 
+@activity(DebugActivityName)
 export class DebugActivity extends SingleInputActivity<IDebugConfig> {
 
-  constructor(config: IDebugConfig) {
-    super(config)
-
-
-    this.getInputByName("input")?.connect(this.inputHandler as any)
+  constructor(meta: IActivityDefine<IDebugConfig>) {
+    super(meta)
   }
 
-  inputHandler = (inputValue: string) => {
+  execute(inputValue: any): void {
     if (!this.config?.closed) {
-      console.log(`🪲${this.config.label || "Debug"}:`, inputValue)
+      console.log(`🪲${this.config?.tip || "Debug"}:`, inputValue)
     }
   }
 }
-
-//Jointer的构建不在这里，在统一的FlowLogic类
-export const Debug: ActivityFactory<IDebugConfig> = (meta: IActivityDefine<IDebugConfig>) => {
-  return new DebugActivity(meta)
-}
-
-export const DebugActivityName = "debug"
