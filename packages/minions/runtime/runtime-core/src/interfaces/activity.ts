@@ -2,6 +2,7 @@
 export type InputHandler = (inputValue?: unknown) => void;
 
 export interface IJointer {
+  //当key使用，不参与业务逻辑
   id: string;
   name: string;
   push: InputHandler;
@@ -12,10 +13,8 @@ export interface IActivityJointers {
   inputs: IJointer[];
   outputs: IJointer[];
 
-  getOutputByName(name: string): IJointer|undefined
-  getOutputById(id: string): IJointer|undefined
-  getInputByName(name: string): IJointer|undefined
-  getInputById(id: string): IJointer|undefined
+  getOutput(name: string): IJointer|undefined
+  getInput(name: string): IJointer|undefined
 }
 
 export interface IActivity<ConfigMeta = unknown> {
@@ -24,8 +23,3 @@ export interface IActivity<ConfigMeta = unknown> {
   config?: ConfigMeta;
   destory(): void;
 }
-
-export type ActivityFactory<ConfigMeta = unknown, ActivityFactoryOptions = unknown> = (
-  config: ConfigMeta,
-  options: ActivityFactoryOptions
-) => IActivity;

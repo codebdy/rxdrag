@@ -1,38 +1,32 @@
-import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema"
+import { MultipleInputActivity } from "@rxdrag/minions-runtime"
+import { IActivityDefine } from "@rxdrag/minions-schema"
 
-export interface IMergeConfig extends IConfigMeta {
+
+export interface IMergeConfig {
   fromInput?: boolean,
   times?: number
 }
 
-export class MergeReaction extends AbstractActivity<IMergeConfig> {
+export class MergeReaction extends MultipleInputActivity<IMergeConfig> {
   private noPassInputs: string[] = []
   private values: any = {}
 
-  constructor(meta: IActivityDefine<IMergeConfig>, options?: IActivityFactoryOptions) {
-    super(meta, options)
+  constructor(meta: IActivityDefine<IMergeConfig>) {
+    super(meta)
     for (const input of meta.inPorts || []) {
-      this.noPassInputs.push(input.id)
-      this.getInputById(input.id)?.connect(this.createInputHandler(input.id))
+      this.noPassInputs.push(input.name)
+      const handler = this.createInputHandler(input.name)
+      this.registerHandler(input.name, handler)
     }
   }
 
-  createInputHandler = (id: string) => {
+  createInputHandler = (name: string) => {
     return (inputValue?: any) => {
-      this.values[id] = inputValue
-      this.noPassInputs.splice(this.noPassInputs.indexOf(id), 1)
+      this.values[name] = inputValue
+      this.noPassInputs.splice(this.noPassInputs.indexOf(name), 1)
       if (this.noPassInputs.length === 0) {
-        this.output(this.values)
+        this.next(this.values)
       }
     }
   }
-
-  output = (value: any) => {
-    this.getOutputByName("output")?.push(value)
-  }
-}
-
-export const Merge: ActivityFactory = (meta: IActivityDefine<IMergeConfig>, options?: IActivityFactoryOptions) => {
-  return new MergeReaction(meta, options)
 }
