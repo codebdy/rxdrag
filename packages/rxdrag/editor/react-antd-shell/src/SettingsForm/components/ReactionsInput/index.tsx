@@ -7,7 +7,7 @@ import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
 import { useControllerMetas } from "./hooks/useControllerMetas"
 import { Toolbox } from "./Toolbox"
-import { getAllMaterial, activityMaterialLocales } from "@rxdrag/react-minions-materials"
+import { getAllMaterial, activityMaterialLocales } from "@rxdrag/minions-react-materials"
 import { ITreeNode } from "@rxdrag/core"
 
 export const ReactionsInput = memo((props: {

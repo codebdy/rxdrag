@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "@rxdrag/react-minions-materials/src/controller/variable";
+import { setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "@rxdrag/minions-react-materials/src/controller/variable";
 import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon, variableIcon } from "@rxdrag/react-shared";
 import { createUuid } from "@rxdrag/shared";
 import { Space, Typography } from "antd";

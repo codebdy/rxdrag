@@ -1,5 +1,5 @@
 {
-  "name": "@rxdrag/react-fieldy",
+  "name": "@rxdrag/minions-react-materials",
   "version": "1.1.0",
   "main": "index.ts",
   "types": "./index.ts",
@@ -22,17 +22,14 @@
     "react-router-dom": "^6.8.1"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.3",
-    "@rxdrag/fieldy": "workspace:*",
-    "@rxdrag/react-shared": "workspace:*",
-    "@rxdrag/fieldy-schema": "workspace:*",
-    "@rxdrag/shared": "workspace:*",
+    "@rxdrag/fieldy": "workspace:^1.1.0",
+    "@rxdrag/react-shared": "workspace:^1.1.0",
+    "@rxdrag/schema": "workspace:*",
+    "@rxdrag/shared": "workspace:^1.1.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "lodash": "^4.17.21",
+    "antd": "5.1.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "redux": "^4.2.1",
-    "styled-components": "^5.3.9"
+    "react-dom": "^18.2.0"
   }
 }

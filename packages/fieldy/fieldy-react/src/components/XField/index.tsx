@@ -1,4 +1,4 @@
-import { DisplayType, IFieldMeta } from "@rxdrag/schema"
+import { DisplayType, IFieldMeta } from "@rxdrag/fieldy-schema"
 import React, { memo, useCallback, useEffect, useState } from "react"
 import { FieldContext } from "../../contexts"
 import { useRegisterField } from "./hooks/useRegisterField"
