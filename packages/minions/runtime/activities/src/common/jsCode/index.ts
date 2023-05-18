@@ -1,27 +1,28 @@
-import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IActivityDefine, InputHandler, ActivityFactory } from "@rxdrag/schema"
+import { InputHandler, SingleInputActivity, activity } from "@rxdrag/minions-runtime"
+import { IActivityDefine } from "@rxdrag/minions-schema"
 
-export interface IJsCodeConfig extends IConfigMeta {
+export const JsCodeActivityName = "system.jsCode"
+
+export interface IJsCodeConfig {
   expression?: string
 }
 
-export class JsCodeReaction extends AbstractActivity<IJsCodeConfig> {
+@activity(JsCodeActivityName)
+export class JsCode extends SingleInputActivity<IJsCodeConfig> {
 
-  constructor(meta: IActivityDefine<IJsCodeConfig>, options?: IActivityFactoryOptions) {
+  constructor(meta: IActivityDefine<IJsCodeConfig>, options?: unknown) {
     super(meta, options)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("JsCodeReaction inputs count error")
     }
-
-    this.getInputByName("input")?.connect(this.inputHandler as any)
   }
 
-  inputHandler = (inputValue: string) => {
+  execute = (inputValue: string) => {
     const expression = this.meta.config?.expression?.trim()
     if (expression) {
       const outputs: { [name: string]: InputHandler } = {}
-      for(const output of this.outputs){
+      for(const output of this.jointers.outputs){
         outputs[output.name] = output.push
       }
       
@@ -30,8 +31,4 @@ export class JsCodeReaction extends AbstractActivity<IJsCodeConfig> {
     }
   }
 
-}
-
-export const JsCode: ActivityFactory = (meta: IActivityDefine<IJsCodeConfig>, options?: IActivityFactoryOptions) => {
-  return new JsCodeReaction(meta, options)
 }

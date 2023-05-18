@@ -1,33 +1,28 @@
-import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema"
+import { SingleInputActivity, activity } from "@rxdrag/minions-runtime"
+import { IActivityDefine } from "@rxdrag/minions-schema"
 
-export interface IRandomConfig extends IConfigMeta {
+export const RandomActivityName = "system.random"
+export interface IRandomConfig {
   maxValue?: number,
   minValue?: number,
 }
 
-export class RandomReaction extends AbstractActivity<IRandomConfig> {
-
-  constructor(meta: IActivityDefine<IRandomConfig>, options?: IActivityFactoryOptions) {
-    super(meta, options)
+@activity(RandomActivityName)
+export class Random extends SingleInputActivity<IRandomConfig> {
+  constructor(meta: IActivityDefine<IRandomConfig>) {
+    super(meta)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("Condition inputs count error")
     }
-
-    this.getInputByName("startUp")?.connect(this.startUpHandler)
   }
 
-  startUpHandler = () => {
+  execute = () => {
     const min = this.meta.config?.minValue || 0
     const max = (this.meta.config?.maxValue || 1) + 1
-    this.getOutputByName("output")?.push(this.getRandomInteger(min, max))
+    this.next(this.getRandomInteger(min, max))
   }
   private getRandomInteger = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min)) + min;
   }
-}
-
-export const Random: ActivityFactory = (meta: IActivityDefine<IRandomConfig>, options?: IActivityFactoryOptions) => {
-  return new RandomReaction(meta, options)
 }

@@ -2,12 +2,12 @@ import { IActivityDefine } from "@rxdrag/minions-schema";
 import { AbstractActivity } from "./AbstractActivity";
 import { InputHandler } from "../interfaces";
 
-export class MultipleInputActivity<ConfigMeta> extends AbstractActivity<ConfigMeta>{
+export class MultipleInputActivity<ConfigMeta, FactoryOptions=unknown> extends AbstractActivity<ConfigMeta, FactoryOptions>{
   handlers: {
     [name: string]: InputHandler | undefined
   } = {}
-  constructor(meta: IActivityDefine<ConfigMeta>) {
-    super(meta)
+  constructor(meta: IActivityDefine<ConfigMeta>, options?: FactoryOptions) {
+    super(meta, options)
   }
 
   connect = (): void => {
