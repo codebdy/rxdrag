@@ -23,7 +23,5 @@ export const initialState: IState = {
 
 export const LogicFlowEditorStoreContext = createContext<EditorStore | undefined>(undefined)
 export const GraphContext = createContext<Graph | undefined>(undefined)
-//export const ControllerContext = createContext<IControllerMeta | undefined>(undefined)
-//export const ControllersContext = createContext<IControllerMeta[]>([])
 export const MaterialsContext = createContext<IActivityMaterial<ReactNode>[]>([])
 

@@ -1,6 +1,6 @@
-import { ILineDefine, IActivityDefine } from "@rxdrag/schema"
 import { ISnapshot } from "./interfaces/state"
-import { ILogicMetas } from "./interfaces"
+import { IActivityNode, ILogicMetas } from "./interfaces"
+import { ILineDefine } from "@rxdrag/minions-schema"
 
 export enum ActionType {
   ADD_NODE = 'ReactionsEditor/ADD_NODE',
@@ -25,11 +25,11 @@ export enum ActionType {
 
 export interface Action {
   type: ActionType,
-  payload?: IActivityDefine | string | ILineDefine | number | ISnapshot | ISnapshot | ISnapshot[] | ILogicMetas
+  payload?: IActivityNode | string | ILineDefine | number | ISnapshot | ISnapshot | ISnapshot[] | ILogicMetas
 }
 
 export interface AddNodeAction extends Action {
-  payload: IActivityDefine
+  payload: IActivityNode
 }
 
 export interface RemoveNodeAction extends Action {
@@ -37,7 +37,7 @@ export interface RemoveNodeAction extends Action {
 }
 
 export interface ChangeNodeAction extends Action {
-  payload: IActivityDefine
+  payload: IActivityNode
 }
 
 export interface AddEdgeAction extends Action {

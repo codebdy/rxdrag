@@ -1,5 +1,5 @@
 {
   "extends": "@rxdrag/tsconfig/react-library.json",
-  "include": ["."],
+  "include": [".", "../controller-editor/src/hooks/useAllControllers.ts"],
   "exclude": ["dist", "build", "node_modules"]
 }
