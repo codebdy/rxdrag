@@ -13,8 +13,8 @@ export interface IActivityJointers {
   inputs: IJointer[];
   outputs: IJointer[];
 
-  getOutput(name: string): IJointer|undefined
-  getInput(name: string): IJointer|undefined
+  getOutput(name: string): IJointer | undefined
+  getInput(name: string): IJointer | undefined
 }
 
 export interface IActivity<ConfigMeta = unknown> {

@@ -20,11 +20,8 @@ export class MultipleInputActivity<ConfigMeta> extends AbstractActivity<ConfigMe
     }
   }
 
+  //必须在 connect前完成注册，最好是构造函数里调用
   registerHandler = (name: string, handler: InputHandler) => {
     this.handlers[name] = handler;
-  }
-
-  next = (inputValue: unknown, outputName: string = "output") => {
-    this.jointers.getInput(outputName)?.push(inputValue)
   }
 }

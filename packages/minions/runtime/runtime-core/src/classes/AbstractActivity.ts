@@ -15,4 +15,8 @@ export abstract class AbstractActivity<ConfigMeta = unknown> implements IActivit
   }
 
   abstract connect(): void
+
+  next = (inputValue: unknown, outputName: string = "output") => {
+    this.jointers.getInput(outputName)?.push(inputValue)
+  }
 }

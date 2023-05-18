@@ -1,7 +1,7 @@
 import { SingleInputActivity, activity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
-export const DebugActivityName = "debug"
+export const DebugActivityName = "system.debug"
 
 export interface IDebugConfig {
   tip?: string,
