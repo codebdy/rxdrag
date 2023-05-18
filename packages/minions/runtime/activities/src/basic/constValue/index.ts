@@ -1,11 +1,14 @@
-import { AbstractActivity, ActivityFactory } from "@rxdrag/minions"
+import { SingleInputActivity, activity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
+
+export const ConstActivityName = "system.constValue"
 
 export interface IConstValueConfig {
   value?: any,
 }
 
-export class ConstValueActivity extends AbstractActivity<IConstValueConfig> {
+@activity(ConstActivityName)
+export class ConstValue extends SingleInputActivity<IConstValueConfig> {
 
   constructor(meta: IActivityDefine<IConstValueConfig>) {
     super(meta)
@@ -13,17 +16,9 @@ export class ConstValueActivity extends AbstractActivity<IConstValueConfig> {
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("Fixed value inputs count error")
     }
-
-    this.getInputByName("input")?.connect(this.inputHandler as any)
   }
 
-  inputHandler = () => {
-    this.getOutputByName("output")?.push(this.meta.config?.value)
+  execute(inputValue: any): void {
+    this.next(this.meta.config?.value)
   }
 }
-
-export const ConstValue: ActivityFactory<IConstValueConfig> = (meta: IActivityDefine<IConstValueConfig>) => {
-  return new ConstValueActivity(meta)
-}
-
-export const ConstValueName = "const"

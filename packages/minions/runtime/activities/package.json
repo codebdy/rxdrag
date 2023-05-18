@@ -16,11 +16,13 @@
   },
   "dependencies": {
     "@rxdrag/minions-runtime": "workspace:*",
-    "@rxdrag/minions-schema": "workspace:*"
+    "@rxdrag/minions-schema": "workspace:*",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@rxdrag/eslint-config-custom": "workspace:*",
-    "@rxdrag/tsconfig": "workspace:*"
+    "@rxdrag/tsconfig": "workspace:*",
+    "@types/lodash": "^4.14.191"
   },
   "peerDependencies": {
     "@types/node": "*",

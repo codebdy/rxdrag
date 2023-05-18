@@ -1,20 +1,21 @@
-import { AbstractActivity, ActivityFactory } from "@rxdrag/minions"
+import { SingleInputActivity, activity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
+
+export const DelayActivityName = "system.delay"
 
 export interface IDelayConfig {
   time?: number
 }
 
-export class DelayActivity extends AbstractActivity<IDelayConfig> {
+@activity(DelayActivityName)
+export class Delay extends SingleInputActivity<IDelayConfig> {
   inputValue?: any
   timeout?: NodeJS.Timeout
   constructor(meta: IActivityDefine<IDelayConfig>) {
     super(meta)
-
-    this.getInputByName("startUp")?.connect(this.startUpHandler)
   }
 
-  startUpHandler = (inputValue?: any) => {
+  execute = (inputValue?: any) => {
     this.clear()
     this.inputValue = inputValue
     if (this.meta.config?.time) {
@@ -23,7 +24,7 @@ export class DelayActivity extends AbstractActivity<IDelayConfig> {
   }
 
   outputHandler = () => {
-    this.getOutputByName("output")?.push(this.inputValue)
+    this.next(this.inputValue)
   }
 
   clear = () => {
@@ -37,9 +38,3 @@ export class DelayActivity extends AbstractActivity<IDelayConfig> {
     this.clear()
   }
 }
-
-export const Delay: ActivityFactory<IDelayConfig> = (meta: IActivityDefine<IDelayConfig>) => {
-  return new DelayActivity(meta)
-}
-
-export const DelayActivityName = "delay"

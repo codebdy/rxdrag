@@ -1,19 +1,21 @@
-import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema"
+import { activity, MultipleInputActivity } from "@rxdrag/minions-runtime"
+import { IActivityDefine } from "@rxdrag/minions-schema"
 
+export const IntervalActivityName = "system.interval"
 
-export interface IIntervalConfig extends IConfigMeta {
+export interface IIntervalConfig {
   interval?: number
 }
 
-export class IntervalReaction extends AbstractActivity<IIntervalConfig> {
+@activity(IntervalActivityName)
+export class Interval extends MultipleInputActivity<IIntervalConfig> {
   timer?: NodeJS.Timer
   inputValue?: any
-  constructor(meta: IActivityDefine<IIntervalConfig>, options?: IActivityFactoryOptions) {
-    super(meta, options)
+  constructor(meta: IActivityDefine<IIntervalConfig>) {
+    super(meta)
 
-    this.getInputByName("startUp")?.connect(this.startUpHandler)
-    this.getInputByName("stop")?.connect(this.stopHandler)
+    this.registerHandler("startUp", this.startUpHandler);
+    this.registerHandler("stop", this.stopHandler);
   }
 
   startUpHandler = (inputValue?: any) => {
@@ -33,14 +35,10 @@ export class IntervalReaction extends AbstractActivity<IIntervalConfig> {
   }
 
   handleOutput = () => {
-    this.getOutputByName("output")?.push(this.inputValue)
+    this.next(this.inputValue)
   }
 
-  destory = ()=> {
-     this.stopHandler()
+  destory = () => {
+    this.stopHandler()
   }
-}
-
-export const Interval: ActivityFactory = (meta: IActivityDefine<IIntervalConfig>, options?: IActivityFactoryOptions) => {
-  return new IntervalReaction(meta, options)
 }

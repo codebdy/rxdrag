@@ -9,7 +9,7 @@ export interface IDebugConfig {
 }
 
 @activity(DebugActivityName)
-export class DebugActivity extends SingleInputActivity<IDebugConfig> {
+export class Debug extends SingleInputActivity<IDebugConfig> {
 
   constructor(meta: IActivityDefine<IDebugConfig>) {
     super(meta)

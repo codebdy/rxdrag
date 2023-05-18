@@ -615,6 +615,9 @@ importers:
       '@vitejs/plugin-react-swc':
         specifier: 3.x
         version: registry.npmmirror.com/@vitejs/plugin-react-swc@3.0.1(vite@4.2.0)
+      lodash:
+        specifier: ^4.17.21
+        version: registry.npmmirror.com/lodash@4.17.21
       typescript:
         specifier: 4.x
         version: registry.npmmirror.com/typescript@4.9.4
@@ -631,6 +634,9 @@ importers:
       '@rxdrag/tsconfig':
         specifier: workspace:*
         version: link:../../../tsconfig
+      '@types/lodash':
+        specifier: ^4.14.191
+        version: registry.npmmirror.com/@types/lodash@4.14.191
 
   packages/minions/runtime/runtime-core:
     dependencies:

@@ -8,7 +8,7 @@ export interface IConditionConfig {
 }
 
 @activity(ConditionActivityName)
-export class ConditionActivity extends SingleInputActivity<IConditionConfig> {
+export class Condition extends SingleInputActivity<IConditionConfig> {
   constructor(meta: IActivityDefine<IConditionConfig>) {
     super(meta)
     if (Object.keys(meta.inPorts || {}).length !== 1) {
@@ -25,6 +25,6 @@ export class ConditionActivity extends SingleInputActivity<IConditionConfig> {
     }
 
     const flowTo = result ? "true" : "false";
-    this.next(flowTo, inputValue)
+    this.next(inputValue, flowTo)
   }
 }
