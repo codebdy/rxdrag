@@ -1,11 +1,12 @@
-import { CellView, Graph } from "@antv/x6";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Graph } from "@antv/x6";
 import { useEffect, useState } from "react";
 import { config } from "./config";
 import { Selection } from '@antv/x6-plugin-selection'
 import { MiniMap } from "@antv/x6-plugin-minimap";
-import { useToken } from "antd/es/theme/internal";
 import { INodeData } from "../interfaces/interfaces";
-import { ActivityType } from "@rxdrag/schema";
+import { IThemeToken } from "../interfaces";
+import { ActivityType } from "@rxdrag/minions-schema";
 
 const magnetAvailabilityHighlighter = {
   name: "stroke",
@@ -18,16 +19,16 @@ const magnetAvailabilityHighlighter = {
   },
 };
 
-export function useCreateGraph() {
+export function useCreateGraph(token: IThemeToken) {
   const [graph, setGraph] = useState<Graph>()
-  const [, token] = useToken()
 
   useEffect(() => {
     // 画布
     const gph: Graph = new Graph({
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       container: document.getElementById("reactions-canvas-container")!,
       ...config,
-      interacting: (cellView: CellView) => {
+      interacting: () => {
         return { nodeMovable: true, edgeLabelMovable: false };
       },
       highlighting: {
@@ -114,6 +115,7 @@ export function useCreateGraph() {
 
     gph.use(
       new MiniMap({
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         container: document.getElementById("reactions-minimap-container")!,
         width: 200,
         height: 160,

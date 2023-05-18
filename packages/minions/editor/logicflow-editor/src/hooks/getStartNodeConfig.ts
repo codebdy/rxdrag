@@ -1,16 +1,15 @@
-import { IActivityDefine, IConfigMeta } from "@rxdrag/schema"
-import { GlobalToken } from "antd/es/theme/interface"
+import { IActivityNode, IThemeToken } from "../interfaces"
 
 const STROKE_WIDTH = 2
-export const getStartNodeConfig = (nodeMeta: IActivityDefine<IConfigMeta>, token: GlobalToken) => {
+export const getStartNodeConfig = (nodeMeta: IActivityNode, token: IThemeToken) => {
   return {
     id: nodeMeta.id,
     shape: 'circle',
-    x: 90,
-    y: 60,
-    width: 20,
-    height: 20,
     ...nodeMeta.x6Node,
+    x: nodeMeta.x6Node.x || 90,
+    y: nodeMeta.x6Node.y || 60,
+    width: nodeMeta.x6Node.width || 20,
+    height: nodeMeta.x6Node.height || 20,
     label: nodeMeta.label,
     data: { meta: nodeMeta },
     attrs: {

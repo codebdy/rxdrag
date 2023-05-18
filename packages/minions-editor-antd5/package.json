@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
-    "@rxdrag/minions-editor": "workspace:*",
+    "@rxdrag/minions-controller-editor": "workspace:*",
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/minions-schema": "workspace:*",

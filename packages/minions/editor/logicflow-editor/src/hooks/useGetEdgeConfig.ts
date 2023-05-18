@@ -1,4 +1,4 @@
-import { ILineDefine } from "@rxdrag/schema"
+import { ILineDefine } from "@rxdrag/minions-schema"
 import { useCallback } from "react"
 
 export function useGetEdgeConfig() {

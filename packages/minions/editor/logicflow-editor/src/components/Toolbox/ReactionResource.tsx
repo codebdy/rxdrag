@@ -1,8 +1,12 @@
 import React, { ReactNode } from "react"
 import { memo, useCallback } from "react"
 import { useGraph, useDnd, useGetNodeConfig } from "../../hooks";
-import { createUuid } from "@rxdrag/shared";
-import { IActivityDefine, IActivityMaterial } from "@rxdrag/minions";
+import { IActivityMaterial, IActivityDefine } from "@rxdrag/minions-schema";
+import { v4 as uuidv4 } from 'uuid';
+
+export const createUuid = () => {
+  return uuidv4();
+};
 
 export type ReactionResourceProps = {
   children?: (onMouseDown: ((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void)) => ReactNode,

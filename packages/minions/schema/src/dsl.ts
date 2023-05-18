@@ -12,13 +12,14 @@ export enum ActivityType {
 
 export interface IActivityDefine<ConfigMeta = unknown> {
   id: string;
-  name?: string;
+  //name?: string;
   type: ActivityType;
   activityName: string;
   label?: string;
   config?: ConfigMeta;
   inPorts?: IPortDefine[];
   outPorts?: IPortDefine[];
+  materialName?: string;
 }
 
 export interface IPortRefDefine{

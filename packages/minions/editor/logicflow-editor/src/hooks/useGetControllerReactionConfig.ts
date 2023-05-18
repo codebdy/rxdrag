@@ -1,20 +1,20 @@
-import { IConfigMeta, IActivityMaterial, IActivityDefine } from "@rxdrag/schema"
-import { useToken } from "antd/es/theme/internal"
 import { useCallback } from "react"
 import { useGetNodeHeight } from "./useGetNodeHeight"
 import { useGetNodeWidth } from "./useGetNodeWidth"
 import { useGetSubLabel } from "./useGetSubLabel"
 import { usePortsConfig } from "./usePortsConfig"
 import { useTransformPorts } from "./useTransformPorts"
+import { IActivityMaterial } from "@rxdrag/minions-schema"
+import { IActivityNode, IThemeToken } from "../interfaces"
 
-export function useGetControllerReactionConfig() {
-  const [, token] = useToken()
+export function useGetControllerReactionConfig(token: IThemeToken) {
+
   const transformPorts = useTransformPorts()
   const portsGroup = usePortsConfig()
   const getNodeWidth = useGetNodeWidth()
   const getHeight = useGetNodeHeight()
   const getSubLabel = useGetSubLabel()
-  const getNodeConfig = useCallback((nodeMeta: IActivityDefine<IConfigMeta>, material: IActivityMaterial | undefined) => {
+  const getNodeConfig = useCallback((nodeMeta: IActivityNode, material: IActivityMaterial | undefined) => {
     const subLabel = getSubLabel(nodeMeta)
     const height = getHeight(nodeMeta, !!subLabel)
     const width = getNodeWidth(nodeMeta, subLabel)

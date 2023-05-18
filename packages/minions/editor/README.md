@@ -1,2 +1,0 @@
-依赖schema包的 INodeSchema
-第三方应用要么转化schema，要么重写该模块

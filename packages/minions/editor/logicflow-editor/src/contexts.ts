@@ -1,8 +1,9 @@
 import { Graph } from "@antv/x6";
-import { createContext } from "react";
+import { ReactNode, createContext } from "react";
 import { EditorStore } from "./classes/EditorStore";
 import { IState } from "./interfaces/state";
 import { Action } from "./actions";
+import { IActivityMaterial } from "@rxdrag/minions-schema";
 
 
 export interface IReactionsEditorParams extends IState {
@@ -22,6 +23,7 @@ export const initialState: IState = {
 
 export const LogicFlowEditorStoreContext = createContext<EditorStore | undefined>(undefined)
 export const GraphContext = createContext<Graph | undefined>(undefined)
-export const ControllerContext = createContext<IControllerMeta | undefined>(undefined)
-export const ControllersContext = createContext<IControllerMeta[]>([])
+//export const ControllerContext = createContext<IControllerMeta | undefined>(undefined)
+//export const ControllersContext = createContext<IControllerMeta[]>([])
+export const MaterialsContext = createContext<IActivityMaterial<ReactNode>[]>([])
 

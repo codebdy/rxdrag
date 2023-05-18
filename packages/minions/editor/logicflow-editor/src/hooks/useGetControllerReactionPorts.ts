@@ -1,6 +1,6 @@
-import { IActivityDefine, ActivityType, IPortDefine } from "@rxdrag/schema";
 import { useCallback } from "react";
 import { useGetControllerMeta } from "./useGetControllerMeta";
+import { IActivityDefine, ActivityType, IPortDefine } from "@rxdrag/minions-schema";
 
 export function useGetControllerReactionPorts() {
   const getControllerMeta = useGetControllerMeta()

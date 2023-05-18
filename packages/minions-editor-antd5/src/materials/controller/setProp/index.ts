@@ -3,12 +3,7 @@ import { IControllerReactionConfig } from "../AbstractControllerReaction"
 import { SetProp } from "./reaction"
 import { setPropSchema } from "./schema"
 import { ReactNode } from "react"
-import { v4 as uuidv4 } from 'uuid';
-
-export const createUuid = () => {
-  return uuidv4();
-};
-
+import { createUuid } from "@rxdrag/shared";
 export const setPropMaterial: IActivityMaterial<ReactNode> = {
   name: "setProp",
   icon: setPropIcon,

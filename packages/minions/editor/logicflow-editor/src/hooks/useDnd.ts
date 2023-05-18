@@ -3,7 +3,7 @@ import { Dnd } from "@antv/x6-plugin-dnd";
 import { useGraph } from "./useGraph";
 
 export function useDnd() {
-  const [dnd, setDnd] = React.useState<any>()
+  const [dnd, setDnd] = React.useState<Dnd>()
   const graph = useGraph()
   useEffect(() => {
     const theDnd = graph

@@ -7,6 +7,7 @@ packages:
   - 'packages/rxdrag/runtime/*'
   - 'packages/fieldy/*'
   - 'packages/minions/*'
+  - 'packages/minions/editor/*'
   - 'packages/minions/runtime/*'
   - 'apps/*'
   # exclude packages that are inside test directories

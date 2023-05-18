@@ -5,7 +5,6 @@ import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { INodeData } from '../interfaces/interfaces'
 import { IThemeToken } from '../interfaces'
-import { IActivityMaterial } from '@rxdrag/minions'
 
 insertCss(`
 .x6-node-selected .node{
@@ -70,7 +69,8 @@ const Label = styled.span`
 `
 
 export interface NodeViewParams extends INodeData {
-  material: IActivityMaterial;
+  color?: string;
+  icon?: React.ReactElement,
   token: IThemeToken,
   width: number,
   height: number,
@@ -78,7 +78,6 @@ export interface NodeViewParams extends INodeData {
   inputCounts?: number,
   outputCounts?: number,
 }
-
 
 export const ReactionNode = (props: { node?: Node }) => {
   const { node } = props
@@ -102,8 +101,8 @@ export const ReactionNode = (props: { node?: Node }) => {
       }}
     >
       <ReactionName>
-        <Icon style={{ color: data?.material?.color }}>
-          {data?.material?.icon as ReactNode | undefined}
+        <Icon style={{ color: data?.color }}>
+          {data?.icon as ReactNode | undefined}
         </Icon>
         <Label>{label}</Label>
       </ReactionName>

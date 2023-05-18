@@ -5,8 +5,8 @@ import { useDispatch } from "../useDispatch"
 import { useGraph } from "../useGraph"
 import { useBackup } from "./useBackup"
 import { useMarkChange } from "./useMarkChange"
-import { ILineDefine } from "@rxdrag/minions"
 import { ActionType } from "../../actions"
+import { ILineDefine } from "@rxdrag/minions-schema"
 
 export function useEditEdge() {
   const dispatch = useDispatch()
