@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 import { ControllersContext } from "../contexts"
 import { useControllers } from "../hooks/useControllers"
 import { useFieldPath, useForm } from "@rxdrag/react-fieldy"
-import { Controllers, DefaultController, IController, IControllerMeta, useMaterials } from "@rxdrag/minions-runtime-react"
+import { Controllers, DefaultController, IController, IControllerMeta } from "@rxdrag/minions-runtime-react"
 
 export function withController(WrappedComponent: ReactComponent, meta?: IControllerMeta): ReactComponent {
 
@@ -18,7 +18,7 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
     const [changedProps, setChangeProps] = useState<any>()
     const [controller, setController] = useState<IController>()
     const controllers = useControllers()
-    const materials = useMaterials()
+    //const materials = useMaterials()
     const navigate = useNavigate()
     const form = useForm()
     const fieldPath = useFieldPath()
@@ -30,8 +30,8 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
     }, [])
 
     useEffect(() => {
-      if (meta && materials) {
-        const ctrl = new DefaultController(meta, controllers || {}, { materials: materials as any, navigate, form, fieldPath })
+      if (meta) {
+        const ctrl = new DefaultController(meta, controllers || {}, { navigate, form, fieldPath } as any)
         const unlistener = ctrl?.subscribeToPropsChange(handlePropsChange)
         ctrl.initEvent?.()
         setController(ctrl)
@@ -42,7 +42,7 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
           unlistener?.()
         }
       }
-    }, [controllers, fieldPath, form, handlePropsChange, materials, navigate])
+    }, [controllers, fieldPath, form, handlePropsChange, navigate])
 
     const newControllers: Controllers = useMemo(() => {
       return controller ? { ...controllers, [controller.id]: controller } : controllers

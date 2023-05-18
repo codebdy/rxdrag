@@ -1,8 +1,8 @@
-import { IPortDefine } from "@rxdrag/schema";
 import { Button, Popover } from "antd";
 import React from "react";
 import { memo, useCallback, useState } from "react";
 import { PortsTable } from "./PortsTable";
+import { IPortDefine } from "@rxdrag/minions-schema";
 
 export const PortsInput = memo((
   props: {

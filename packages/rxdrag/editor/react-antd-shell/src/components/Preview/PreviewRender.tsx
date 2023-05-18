@@ -5,19 +5,16 @@ import { ComponentRender, PreviewRoot } from "@rxdrag/react-runner"
 import { IComponents } from "@rxdrag/react-shared"
 import { INodeSchema } from "@rxdrag/schema"
 import { useToken } from "antd/es/theme/internal"
-import { ReactNode, memo, useEffect, useMemo, useState } from "react"
+import { memo, useEffect, useMemo, useState } from "react"
 import { ThemeProvider } from "styled-components"
-import { IActivityMaterial } from "@rxdrag/minions-schema"
-import { Minions } from "@rxdrag/minions-runtime-react"
 
 export const PreviewRender = memo((
   props: {
     components?: IComponents
     doc?: IDocument,
-    activityMaterials: IActivityMaterial<ReactNode>[]
   }
 ) => {
-  const { components, doc, activityMaterials } = props
+  const { components, doc } = props
   const [tree, setTree] = useState<INodeSchema>()
   const [viewType] = useDocumentViewTypeState(doc?.id)
   const [, token] = useToken()
@@ -40,15 +37,13 @@ export const PreviewRender = memo((
         <PreviewRoot
           components={components}
         >
-          <Minions materials={activityMaterials}>
-            <Fieldy>
-              <VirtualForm>
-                <ComponentRender
-                  root={tree}
-                />
-              </VirtualForm>
-            </Fieldy>
-          </Minions>
+          <Fieldy>
+            <VirtualForm>
+              <ComponentRender
+                root={tree}
+              />
+            </VirtualForm>
+          </Fieldy>
         </PreviewRoot>
       }
     </ThemeProvider>

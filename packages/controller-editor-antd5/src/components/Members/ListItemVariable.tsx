@@ -5,7 +5,7 @@ import { useTranslate } from "@rxdrag/react-locales";
 import { memo, useCallback, useMemo, useState } from "react";
 import styled from "styled-components";
 import { VariableDialog } from "./VariableDialog";
-import { IVariableDefineMeta } from "@rxdrag/schema";
+import { IVariableDefineMeta } from "@rxdrag/minions-runtime-react";
 
 const ListItem = styled.div`
   display: flex;

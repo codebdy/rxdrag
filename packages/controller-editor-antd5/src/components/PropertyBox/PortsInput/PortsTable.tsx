@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import { EditableCell } from './EditableCell';
 import { EditableRow } from './EditableRow';
-import { useTrans } from '../../../hooks/useTrans';
-import { IPortDefine } from '@rxdrag/schema';
 import { createUuid } from '@rxdrag/shared';
+import { IPortDefine } from '@rxdrag/minions-schema';
+import { useTrans } from '../../../hooks/useTrans';
 
 const Container = styled.div`
   width: 400px;

@@ -7,10 +7,11 @@ import { ListItemReaction } from "./ListItemReaction";
 import { ListItemVariable } from "./ListItemVariable";
 import { NameDialog } from "./NameDialog";
 import { VariableDialog } from "./VariableDialog";
-import { IControllerMeta, ILogicFlowDefinition, IVariableDefineMeta } from "@rxdrag/schema";
 import { methodIcon, variableIcon } from "@rxdrag/react-shared"
 import { createUuid } from "@rxdrag/shared"
 import { useTranslate } from "@rxdrag/react-locales"
+import { IControllerMeta, IVariableDefineMeta } from "@rxdrag/minions-runtime-react";
+import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
 
 const { Text } = Typography;
 

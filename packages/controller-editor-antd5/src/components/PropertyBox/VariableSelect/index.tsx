@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useAllControllers, useController } from "@rxdrag/minions-controller-editor"
+import { useSelectedNode } from "@rxdrag/minions-logicflow-editor"
 import { Select } from "antd"
 import React from "react"
 import { memo, useMemo } from "react"
-import { useController, useSelectedNode, useAllControllers } from "../../../hooks/"
 
 export const VariableSelect = memo((
   props: {
@@ -14,16 +16,16 @@ export const VariableSelect = memo((
   const currentController = useController()
   const selectedReactionNode = useSelectedNode()
   const targetController = useMemo(() => {
-    const ctrl = controllers.find(ctrl => ctrl.id === selectedReactionNode?.config?.controllerId)
-    const controller = currentController?.id === ctrl?.id ? currentController : ctrl
+    const ctrl = controllers.find(ctrl => ctrl.id === (selectedReactionNode?.config as any)?.controllerId)
+    const controller = (currentController as any)?.id === ctrl?.id ? currentController : ctrl
     return controller
-  }, [controllers, currentController, selectedReactionNode?.config?.controllerId])
+  }, [controllers, currentController, selectedReactionNode?.config])
 
   return (
     <Select
       value={value}
       options={
-        targetController?.variables?.map(variable => {
+        targetController?.variables?.map((variable: { name: any }) => {
           return {
             value: variable.name,
             label: variable.name

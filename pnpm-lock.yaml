@@ -208,6 +208,9 @@ importers:
       '@rxdrag/minions-controller-editor':
         specifier: workspace:*
         version: link:../minions/editor/controller-editor
+      '@rxdrag/minions-logicflow-editor':
+        specifier: workspace:*
+        version: link:../minions/editor/logicflow-editor
       '@rxdrag/minions-runtime-react':
         specifier: workspace:*
         version: link:../minions/runtime/runtime-react

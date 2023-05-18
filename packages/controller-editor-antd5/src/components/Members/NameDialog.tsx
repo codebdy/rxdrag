@@ -17,6 +17,7 @@ export const NameDialog = memo((
   const [form] = Form.useForm()
 
   const handleOk = useCallback(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     form.validateFields().then((values: any) => {
       onOk?.(values?.name)
       form.resetFields()

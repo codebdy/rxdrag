@@ -1,5 +1,6 @@
 export * from "./edit-meta"
 export * from "./config"
+export * from "./consts"
 export * from "./getEndNodeConfig"
 export * from "./getStartNodeConfig"
 export * from "./useArrowhead"
