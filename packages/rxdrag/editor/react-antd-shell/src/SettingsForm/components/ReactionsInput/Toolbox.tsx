@@ -2,7 +2,6 @@ import { memo } from "react"
 import { Collapse as AntdCollapse, Row } from "antd";
 import styled from "styled-components";
 import { activityMaterialCategories } from "@rxdrag/minions-react-materials";
-import { ComponentList } from "./ComponentList";
 import { ReactionResource, ToolItem } from "@rxdrag/minions-logicflow-editor";
 import { useTrans } from "@rxdrag/controller-editor-antd5/src/hooks/useTrans";
 
@@ -20,7 +19,6 @@ export const Toolbox = memo(() => {
     <Collapse defaultActiveKey={[activityMaterialCategories?.[0]?.name]} bordered={false} accordion expandIconPosition="end">
       {
         activityMaterialCategories.map(category => {
-          console.log("哈哈", category.name)
           return (
             <Panel key={category.name} header={t(category.name)}>
               <Row gutter={8}>
