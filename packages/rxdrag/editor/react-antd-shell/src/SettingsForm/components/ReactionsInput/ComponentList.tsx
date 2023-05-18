@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "@rxdrag/minions-react-materials/src/controller/variable";
+import { useGraph, useDnd, useGetNodeConfig } from "@rxdrag/minions-logicflow-editor";
+import { setPropMaterial, setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "@rxdrag/minions-react-materials";
+import { IControllerMeta } from "@rxdrag/minions-runtime-react";
+import { IActivityMaterial, IActivityDefine, ILogicFlowDefinition } from "@rxdrag/minions-schema";
 import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon, variableIcon } from "@rxdrag/react-shared";
 import { createUuid } from "@rxdrag/shared";
 import { Space, Typography } from "antd";

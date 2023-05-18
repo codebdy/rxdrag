@@ -1,6 +1,4 @@
 import { useCallback } from "react";
-import { useAllControllers } from "../../../controller-editor/src/hooks/useAllControllers";
-import { useController } from "./useController";
 import { useGetMaterial } from "./useGetMaterial";
 import { IActivityDefine } from "@rxdrag/minions-schema";
 

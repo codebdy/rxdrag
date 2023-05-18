@@ -645,6 +645,12 @@ importers:
       '@rxdrag/minions-activities':
         specifier: workspace:*
         version: link:../../runtime/activities
+      '@rxdrag/minions-logicflow-editor':
+        specifier: workspace:*
+        version: link:../logicflow-editor
+      '@rxdrag/minions-runtime-react':
+        specifier: workspace:*
+        version: link:../../runtime/runtime-react
       '@rxdrag/minions-schema':
         specifier: workspace:*
         version: link:../../schema

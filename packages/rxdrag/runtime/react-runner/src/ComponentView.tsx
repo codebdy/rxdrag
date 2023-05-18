@@ -5,9 +5,10 @@ import { ComponentSchemaContext } from "./contexts"
 import { IBindParams } from "./interfaces"
 import { withController } from "./hocs/withController"
 import { withBind } from "./hocs/withBind"
-import { IControllerMeta, IFieldMeta, INodeSchema } from "@rxdrag/schema"
 import { ID } from "@rxdrag/shared"
 import { usePreviewComponent } from "./hooks"
+import { IControllerMeta } from "@rxdrag/minions-runtime-react"
+import { INodeSchema } from "@rxdrag/schema"
 
 export interface IComponentRenderSchema extends INodeSchema<IFieldMeta<IBindParams>> {
   id: ID,

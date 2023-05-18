@@ -1,5 +1,5 @@
 {
   "extends": "@rxdrag/tsconfig/react-library.json",
-  "include": [".", "../react-minions/src/interfaces/controller.ts"],
+  "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }

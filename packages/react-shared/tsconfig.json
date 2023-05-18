@@ -1,5 +1,5 @@
 {
   "extends": "@rxdrag/tsconfig/react-library.json",
-  "include": [".", "../react-runner/src/hooks/usePreviewComponents.ts"],
+  "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }

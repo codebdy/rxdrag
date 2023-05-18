@@ -1,12 +1,5 @@
 import React, { memo, ReactNode, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
-import { Members } from "./Members";
-import { LocalesContext } from "@rxdrag/react-locales";
-import { ILocales, LocalesManager } from "@rxdrag/locales"
-import { minionsEditorLocales } from "../locales";
-import { IActivityMaterial } from "@rxdrag/minions";
-import { ILogicMetas, LogicFlowEditor, IControllerMeta } from "@rxdrag/minions-react-editor";
-import { Minions } from "@rxdrag/minions-react";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -29,7 +22,7 @@ const LeftArea = styled.div`
   padding: 8px;
   overflow: auto;
 `
-export const ControllerMetaEditor = memo((
+export const ControllerMetaEditorAntd5 = memo((
   props: {
     value: IControllerMeta,
     onChange?: (value?: IControllerMeta) => void,
@@ -73,31 +66,29 @@ export const ControllerMetaEditor = memo((
 
   return (
     <LocalesContext.Provider value={localesManager}>
-      <Minions materials={materials}>
-        <ControllersContext.Provider value={controllerMetas}>
-          <ControllerContext.Provider value={value}>
-            <SytledContent id="reactions-editor-container">
-              <LeftArea>
-                <Members
-                  value={value}
-                  selected={selected}
-                  onSelect={setSelected}
-                  onChange={handleMemberChange}
-                />
-              </LeftArea>
-              {
-                selected && value &&
-                <LogicFlowEditor
-                  key={selected}
-                  metas={logicFlowMeta}
-                  onChange={handleChange}
-                  toolbox={toolbox}
-                />
-              }
-            </SytledContent>
-          </ControllerContext.Provider>
-        </ControllersContext.Provider>
-      </Minions>
+      <ControllersContext.Provider value={controllerMetas}>
+        <ControllerContext.Provider value={value}>
+          <SytledContent id="reactions-editor-container">
+            <LeftArea>
+              <Members
+                value={value}
+                selected={selected}
+                onSelect={setSelected}
+                onChange={handleMemberChange}
+              />
+            </LeftArea>
+            {
+              selected && value &&
+              <LogicFlowEditor
+                key={selected}
+                metas={logicFlowMeta}
+                onChange={handleChange}
+                toolbox={toolbox}
+              />
+            }
+          </SytledContent>
+        </ControllerContext.Provider>
+      </ControllersContext.Provider>
     </LocalesContext.Provider>
   )
 })

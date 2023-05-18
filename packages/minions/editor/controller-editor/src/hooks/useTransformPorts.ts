@@ -1,6 +1,5 @@
 import { IPortDefine, IActivityDefine, ActivityType } from "@rxdrag/minions-schema";
 import { useCallback } from "react";
-import { IThemeToken } from "../../../logicflow-editor/src/interfaces";
 
 export function useTransformPorts(token: IThemeToken) {
   const getControllerPorts = useGetControllerReactionPorts();
