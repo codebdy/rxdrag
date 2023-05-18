@@ -2,10 +2,10 @@ import { useCallback } from "react";
 import { Node } from "@antv/x6"
 import { useGetNodeWidth } from "./useGetNodeWidth";
 import { useGetNodeHeight } from "./useGetNodeHeight";
-import { useGetSubLabel } from "./useGetSubLabel";
 import { IActivityNode } from "../interfaces";
 import { ActivityType } from "@rxdrag/minions-schema";
 import { useTransformPorts } from "./useTransformPorts";
+import { useGetSubLabel } from "./useGetSubLabel";
 
 export function useUpdateNode() {
   const getNodeWidth = useGetNodeWidth()
@@ -39,7 +39,7 @@ export function useUpdateNode() {
         }
       }
     }
-  }, [getHeight, getNodeWidth, getSubLabel])
+  }, [getHeight, getNodeWidth, getSubLabel, transPorts])
 
   return update
 }

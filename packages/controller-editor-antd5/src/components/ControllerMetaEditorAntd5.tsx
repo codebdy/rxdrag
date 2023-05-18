@@ -1,5 +1,15 @@
 import React, { memo, ReactNode, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
+import { minionsEditorLocales } from "../locales";
+import { ILocales, LocalesManager } from "@rxdrag/locales";
+import { ControllerContext } from "@rxdrag/minions-controller-editor";
+import { ILogicMetas, LogicFlowEditor } from "@rxdrag/minions-logicflow-editor";
+import { IControllerMeta } from "@rxdrag/minions-runtime-react";
+import { IActivityMaterial } from "@rxdrag/minions-schema";
+import { LocalesContext } from "@rxdrag/react-locales";
+import { ControllersContext } from "@rxdrag/react-runner";
+import { Members } from "./Members";
+import { useToken } from "antd/es/theme/internal";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -35,7 +45,7 @@ export const ControllerMetaEditorAntd5 = memo((
 ) => {
   const { value, onChange, controllerMetas, materials, toolbox, lang, locales } = props
   const [localesManager] = useState(new LocalesManager(lang, minionsEditorLocales))
-
+  const [, token] = useToken();
   useEffect(() => {
     locales && localesManager.registerLocales(locales)
   }, [localesManager, locales])
@@ -84,6 +94,8 @@ export const ControllerMetaEditorAntd5 = memo((
                 metas={logicFlowMeta}
                 onChange={handleChange}
                 toolbox={toolbox}
+                materials={materials}
+                token={token}
               />
             }
           </SytledContent>
