@@ -1,11 +1,9 @@
 import { setVariableIcon, listenVariableIcon, variableIcon } from "@rxdrag/react-shared"
 import { createUuid } from "@rxdrag/shared"
-import { ListenVariable } from "./ListenVariableReaction"
-import { ReadVariable } from "./ReadVariableReaction"
 import { variableSchema } from "./schema"
-import { IVariableConfig, SetVariable } from "./SetVariableReaction"
 import { ReactNode } from "react"
 import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema"
+import { IVariableConfig, ListenVariableActivityName, ReadVariableActivityName, SetVariableActivityName } from "@rxdrag/minions-runtime-react"
 
 export const setVariableMaterial: IActivityMaterial<ReactNode> = {
   icon: setVariableIcon,
@@ -28,11 +26,10 @@ export const setVariableMaterial: IActivityMaterial<ReactNode> = {
 }
 
 export const listenVariableMaterial: IActivityMaterial<ReactNode> = {
-  name: "listenVariable",
   icon: listenVariableIcon,
   label: "$listenVariable",
-  activityType: ActivityType.ControllerDefaultReaction,
-  meta: {
+  activityType: ActivityType.Activity,
+  defaultPorts: {
     outPorts: [
       {
         id: createUuid(),
@@ -45,16 +42,15 @@ export const listenVariableMaterial: IActivityMaterial<ReactNode> = {
   subTitle: (config?: IVariableConfig) => {
     return config?.variable
   },
-  reaction: ListenVariable,
+  activityName: ListenVariableActivityName,
 }
 
 
 export const readVariableMaterial: IActivityMaterial<ReactNode> = {
-  name: "readVariable",
   icon: variableIcon,
   label: "$readVariable",
-  activityType: ActivityType.ControllerDefaultReaction,
-  meta: {
+  activityType: ActivityType.Activity,
+  defaultPorts: {
     inPorts: [
       {
         id: createUuid(),
@@ -74,5 +70,5 @@ export const readVariableMaterial: IActivityMaterial<ReactNode> = {
   subTitle: (config?: IVariableConfig) => {
     return config?.variable
   },
-  reaction: ReadVariable,
+  activityName: ReadVariableActivityName,
 }
