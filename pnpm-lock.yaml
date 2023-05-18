@@ -71,6 +71,9 @@ importers:
       '@rxdrag/locales':
         specifier: workspace:*
         version: link:../../packages/locales/locales
+      '@rxdrag/minions-react-materials':
+        specifier: workspace:*
+        version: link:../../packages/minions-react-materials
       '@rxdrag/react-antd-components':
         specifier: workspace:*
         version: link:../../packages/rxdrag/runtime/react-antd-components
@@ -994,31 +997,34 @@ importers:
         specifier: ^4.8.0
         version: registry.npmmirror.com/@ant-design/icons@4.8.0(react-dom@18.2.0)(react@18.2.0)
       '@rxdrag/core':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../core
       '@rxdrag/minions-runtime':
         specifier: workspace:*
         version: link:../../../minions/runtime/runtime-core
+      '@rxdrag/minions-runtime-react':
+        specifier: workspace:*
+        version: link:../../../minions/runtime/runtime-react
       '@rxdrag/react-antd-components':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../runtime/react-antd-components
       '@rxdrag/react-antd-icons':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../../react-antd-icons
       '@rxdrag/react-antd-props-inputs':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../react-antd-props-inputs
       '@rxdrag/react-core':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../react-core
       '@rxdrag/react-runner':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../runtime/react-runner
       '@rxdrag/react-shared':
         specifier: workspace:*
         version: link:../../../react-shared
       '@rxdrag/schema':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../schema
       '@rxdrag/shared':
         specifier: workspace:*

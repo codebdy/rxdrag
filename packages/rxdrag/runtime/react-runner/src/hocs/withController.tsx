@@ -1,14 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react"
-import { useMaterials } from "@rxdrag/react-minions"
 import { ReactComponent } from "@rxdrag/react-shared"
-import { IControllerMeta } from "@rxdrag/schema"
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ControllersContext } from "../contexts"
 import { useControllers } from "../hooks/useControllers"
 import { useFieldPath, useForm } from "@rxdrag/react-fieldy"
-import { IController, DefaultController, Controllers } from "@rxdrag/minions"
+import { Controllers, DefaultController, IController, IControllerMeta, useMaterials } from "@rxdrag/minions-runtime-react"
 
 export function withController(WrappedComponent: ReactComponent, meta?: IControllerMeta): ReactComponent {
 
@@ -33,7 +31,7 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
 
     useEffect(() => {
       if (meta && materials) {
-        const ctrl = new DefaultController(meta, controllers||{}, { materials, navigate, form, fieldPath })
+        const ctrl = new DefaultController(meta, controllers || {}, { materials: materials as any, navigate, form, fieldPath })
         const unlistener = ctrl?.subscribeToPropsChange(handlePropsChange)
         ctrl.initEvent?.()
         setController(ctrl)

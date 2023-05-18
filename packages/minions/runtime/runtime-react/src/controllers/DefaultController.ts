@@ -32,7 +32,7 @@ export class DefaultController<IOptions extends IFactoryOptions> implements ICon
       if (!reaction) {
         continue
       }
-      const inputOne = reaction.inputs[0]
+      const inputOne = reaction.jointers.inputs[0]
       if (!inputOne) {
         continue
       }

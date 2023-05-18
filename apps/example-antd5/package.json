@@ -20,6 +20,7 @@
     "@rxdrag/react-runner": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/fieldy-schema": "workspace:*",
+    "@rxdrag/minions-react-materials": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "antd": "^5.1.2",
     "classnames": "^2.3.2",

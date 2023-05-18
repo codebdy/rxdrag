@@ -1,5 +1,4 @@
-import { DESTORY_EVENT_NAME, INIT_EVENT_NAME } from "@rxdrag/minions"
-
+import { DESTORY_EVENT_NAME, INIT_EVENT_NAME } from "@rxdrag/minions-runtime-react";
 
 export function createControllerSchema() {
   return [
