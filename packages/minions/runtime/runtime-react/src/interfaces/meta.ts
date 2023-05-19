@@ -1,4 +1,4 @@
-import { ILogicFlowDefinition } from "@rxdrag/minions";
+import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
 
 export interface IVariableDefineMeta {
   id: string;
@@ -6,9 +6,6 @@ export interface IVariableDefineMeta {
   defaultValue?: unknown;
 }
 
-// $form 虚拟表单，
-// $field 当前字段, 设置字段：$field.setValue
-// $self 组件，设置组件属性:$self.setProps({dataSource:[...]}),
 export interface IControllerMeta {
   id: string;
   enable?: boolean;

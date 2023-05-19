@@ -1,5 +1,7 @@
 import { IPortDefine, IActivityDefine, ActivityType } from "@rxdrag/minions-schema";
 import { useCallback } from "react";
+import { useGetControllerReactionPorts } from "./useGetControllerReactionPorts";
+import { IThemeToken } from "@rxdrag/minions-logicflow-editor";
 
 export function useTransformPorts(token: IThemeToken) {
   const getControllerPorts = useGetControllerReactionPorts();
@@ -37,19 +39,19 @@ export function useTransformPorts(token: IThemeToken) {
         }
       })
     )
-  }, [t, token.colorBgContainer, token.colorTextSecondary])
+  }, [token.colorBgContainer, token.colorTextSecondary])
 
   const transform = useCallback((meta: IActivityDefine) => {
-    if (meta.type === ActivityType.ControllerReaction) {
-      const ins = doTransform(getControllerPorts(meta, 'in'), 'in') || []
-      const outs = doTransform(getControllerPorts(meta, 'out'), 'out') || []
-      return [...ins, ...outs]
-    } else {
+    // if (meta.type === ActivityType.ControllerReaction) {
+    //   const ins = doTransform(getControllerPorts(meta, 'in'), 'in') || []
+    //   const outs = doTransform(getControllerPorts(meta, 'out'), 'out') || []
+    //   return [...ins, ...outs]
+    // } else {
       const ins = doTransform(meta.inPorts, 'in') || []
       const outs = doTransform(meta.outPorts, 'out') || []
       return [...ins, ...outs]
-    }
-  }, [doTransform, getControllerPorts])
+    // }
+  }, [doTransform])
 
   return transform
 }

@@ -1,10 +1,10 @@
 import { IActivityDefine } from "@rxdrag/minions-schema";
 import { AbstractActivity } from "./AbstractActivity";
 
-export abstract class SingleInputActivity<ConfigMeta, FactoryOptions = unknown> extends AbstractActivity<ConfigMeta, FactoryOptions>{
+export abstract class SingleInputActivity<ConfigMeta, LogicFlowContext = unknown> extends AbstractActivity<ConfigMeta, LogicFlowContext>{
 
-  constructor(meta: IActivityDefine<ConfigMeta>, options?: FactoryOptions) {
-    super(meta, options)
+  constructor(meta: IActivityDefine<ConfigMeta>, context?: LogicFlowContext) {
+    super(meta, context)
   }
 
   connect(): void {

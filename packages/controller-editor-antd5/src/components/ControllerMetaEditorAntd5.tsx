@@ -95,10 +95,10 @@ export const ControllerMetaEditorAntd5 = memo((
             />
           </LeftArea>
           {
-            selected && value &&
+            logicFlowMeta && value &&
             <LogicFlowEditorAntd5
-              key={selected}
-              value={logicFlowMeta}
+              key={logicFlowMeta.id}
+              value={logicFlowMeta as ILogicMetas}
               onChange={handleChange}
               materialCategories={materialCategories}
               setters={{ VariableSelect }}

@@ -19,7 +19,7 @@ export class SetProp extends SingleInputActivity<ISetPropConfig, ControllerReact
 
   execute = (inputValue: string) => {
     if (this.meta.config?.prop) {
-      this.options?.controller?.setProp(this.meta.config.prop, inputValue)
+      this.context?.controller?.setProp(this.meta.config.prop, inputValue)
     }
   }
 }

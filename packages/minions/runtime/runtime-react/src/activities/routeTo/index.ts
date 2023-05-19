@@ -8,14 +8,14 @@ export interface IRouteToConfig {
   fromInput?: boolean,
 }
 
-export interface IRouteToOptions {
+export interface IRouteToContext {
   navigate?: (url: string) => void
 }
 
 @activity(RouteToActivityName)
-export class RouteTo extends SingleInputActivity<IRouteToConfig, IRouteToOptions> {
-  constructor(meta: IActivityDefine<IRouteToConfig>, options?: IRouteToOptions) {
-    super(meta, options)
+export class RouteTo extends SingleInputActivity<IRouteToConfig, IRouteToContext> {
+  constructor(meta: IActivityDefine<IRouteToConfig>, context?: IRouteToContext) {
+    super(meta, context)
   }
 
   execute = (inputValue?: string) => {
@@ -25,7 +25,7 @@ export class RouteTo extends SingleInputActivity<IRouteToConfig, IRouteToOptions
     }
 
     if (url) {
-      this.options?.navigate?.(url)
+      this.context?.navigate?.(url)
     }
   }
 }

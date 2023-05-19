@@ -4,11 +4,11 @@ import { Jointer } from "./Jointer";
 import { ActivityType, ILogicFlowDefinition } from "@rxdrag/minions-schema"
 import { activityConstructors } from "./activities";
 
-export class LogicFlow<ActivityFactoryOptions> {
+export class LogicFlow<LogicFlowContext> {
   id: string;
   jointers: IActivityJointers = new ActivityJointers();
   activities: IActivity[] = [];
-  constructor(private flowMeta: ILogicFlowDefinition, private options: ActivityFactoryOptions) {
+  constructor(private flowMeta: ILogicFlowDefinition, private context: LogicFlowContext) {
 
     //注意这个id的处理
     this.id = flowMeta.id
@@ -33,20 +33,20 @@ export class LogicFlow<ActivityFactoryOptions> {
       switch (activityMeta.type) {
         case ActivityType.Start:
           //start只有一个端口，所以name可以跟meta name一样
-          this.jointers.inputs.push(new Jointer(activityMeta.id, activityMeta.name || "input"));
+          this.jointers.inputs.push(new Jointer(activityMeta.id, activityMeta.activityName || "input"));
           break;
         case ActivityType.End:
           //end 只有一个端口，所以name可以跟meta name一样
-          this.jointers.outputs.push(new Jointer(activityMeta.id, activityMeta.name || "output"));
+          this.jointers.outputs.push(new Jointer(activityMeta.id, activityMeta.activityName || "output"));
           break;
         case ActivityType.Activity:
-          if (activityMeta.name) {
+          if (activityMeta.activityName) {
             //通过material上的 reation factory 生成reaction节点
-            const activityClass = activityConstructors[activityMeta.name]
-            if(!activityClass){
-              throw new Error("Can not find activity by name:" + activityMeta.name)
+            const activityClass = activityConstructors[activityMeta.activityName]
+            if (!activityClass) {
+              throw new Error("Can not find activity by name:" + activityMeta.activityName)
             }
-            const activity = new activityClass(activityMeta, this.options);
+            const activity = new activityClass(activityMeta, this.context);
 
             //构造Jointers
             for (const out of activityMeta.outPorts || []) {
