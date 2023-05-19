@@ -50,6 +50,19 @@ export const ControllerMetaEditorAntd5 = memo((
     locales && localesManager.registerLocales(locales)
   }, [localesManager, locales])
 
+  const trans = useCallback((msg?: string) => {
+    if (msg?.startsWith("$")) {
+      const localMsg = localesManager.getMessage(msg.substring(1))
+      return localMsg
+    }
+    return msg
+  }, [localesManager])
+
+  //翻译物料
+  const translateMaterial = useCallback((material: IActivityMaterial<ReactNode>) => {
+    return { ...material, label: trans(material.label) || "" }
+  }, [trans])
+
   const [selected, setSelected] = useState<string>()
   const handleMemberChange = useCallback((meta?: IControllerMeta) => {
     onChange?.(meta)
@@ -94,7 +107,7 @@ export const ControllerMetaEditorAntd5 = memo((
                 metas={logicFlowMeta}
                 onChange={handleChange}
                 toolbox={toolbox}
-                materials={materials}
+                materials={materials.map(material => translateMaterial(material))}
                 token={token}
               />
             }

@@ -14,7 +14,7 @@ const Collapse = styled(AntdCollapse)`
 const { Panel } = AntdCollapse;
 
 export const Toolbox = memo(() => {
-   const t = useTrans()
+  const t = useTrans()
   return (
     <Collapse defaultActiveKey={[activityMaterialCategories?.[0]?.name]} bordered={false} accordion expandIconPosition="end">
       {
@@ -23,14 +23,14 @@ export const Toolbox = memo(() => {
             <Panel key={category.name} header={t(category.name)}>
               <ToolItemCategory>
                 {
-                  category.materials.map((reaction, index) => {
-                    return <ReactionResource key={index + reaction.activityName} material={reaction}>
+                  category.materials.map((materail, index) => {
+                    return <ReactionResource key={index + materail.activityName} material={materail}>
                       {
                         (onStartDrag) => {
                           return <ToolItem
-                            icon={reaction.icon}
-                            title={reaction.label}
-                            color={reaction.color}
+                            icon={materail.icon}
+                            title={t(materail.label)}
+                            color={materail.color}
                             onMouseDown={onStartDrag}
                           />
                         }

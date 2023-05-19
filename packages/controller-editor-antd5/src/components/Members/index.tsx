@@ -116,9 +116,21 @@ export const Members = memo((
     onChange?.({ ...value, variables: value?.variables?.map(va => va.id !== meta.id ? va : { ...va, ...meta }) })
   }, [onChange, value])
 
+  const handleAddEvent = useCallback(() => {
+    console.log("Not implement")
+  }, [])
+
   return (
     <>
-      <Title><Text type="secondary">{t("events")}</Text></Title>
+      <Title>
+        <Text type="secondary">{t("events")}</Text>
+        <Button
+          size="small"
+          type="text"
+          icon={<PlusOutlined />}
+          onClick={handleAddEvent}
+        ></Button>
+      </Title>
       <List>
         {
           value?.events?.map((event) => {
