@@ -31,6 +31,7 @@ export function useGetSingleNodeConfig() {
         backgroundColor: token.colorBgContainer,
         color: token.colorTextSecondary,
         icon: material?.icon,
+        iconColor: material?.color,
         token,
         width: width,
         height: height,

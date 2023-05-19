@@ -70,6 +70,7 @@ const Label = styled.span`
 
 export interface NodeViewParams extends INodeData {
   color?: string;
+  iconColor?: string;
   icon?: React.ReactElement,
   token: IThemeToken,
   width: number,
@@ -101,7 +102,7 @@ export const ReactionNode = (props: { node?: Node }) => {
       }}
     >
       <ReactionName>
-        <Icon style={{ color: data?.color }}>
+        <Icon style={{ color: data?.iconColor }}>
           {data?.icon as ReactNode | undefined}
         </Icon>
         <Label>{label}</Label>
