@@ -31,7 +31,7 @@ export const PropertyBox = memo((props: {
   const { children } = props;
   const node = useSelectedNode()
   const getMaterial = useGetMaterial()
-  const material = useMemo(() => getMaterial(node?.materialName || ""), [getMaterial, node?.materialName])
+  const material = useMemo(() => getMaterial(node?.activityName || ""), [getMaterial, node?.activityName])
 
   return (
     <>

@@ -3,7 +3,7 @@ import { memo, useCallback, useEffect, useMemo } from "react"
 import styled from "styled-components";
 import { ActionType, SetMetasAction } from "../actions";
 import { EditorStore } from "../classes/EditorStore";
-import { GraphContext, LogicFlowEditorStoreContext, MaterialsContext } from "../contexts"
+import { GraphContext, LogicFlowEditorStoreContext, MaterialsContext, ThemeTokenContext } from "../contexts"
 import { useCreateGraph } from "../hooks/useCreateGraph";
 import { Logic } from "./Logic";
 import { ILogicMetas, IThemeToken } from "../interfaces";
@@ -102,37 +102,39 @@ export const LogicFlowEditor = memo((
   }, [onChange])
 
   return (
-    <MaterialsContext.Provider value = {materials}>
-      <GraphContext.Provider value={graph}>
-        <LogicFlowEditorStoreContext.Provider value={store}>
-          <CenterArea>
-            <Toolbar>
-              {toolbar}
-            </Toolbar>
-            <OpeateArea>
-              <Toolbox>
-                {toolbox}
-              </Toolbox>
-              <CanvasArea>
-                <CanvasContainer id="reactions-canvas-container" >
-                  <Logic onChange={handleChange} />
-                </CanvasContainer>
-                <MiniMapContainer
-                  id="reactions-minimap-container"
-                  style={{
-                    display: showMap ? "flex" : "none"
-                  }}
-                />
-              </CanvasArea>
-            </OpeateArea>
-          </CenterArea>
-          <RightArea>
-            <PropertyBox>
-              {propertyBox}
-            </PropertyBox>
-          </RightArea>
-        </LogicFlowEditorStoreContext.Provider>
-      </GraphContext.Provider>
-    </MaterialsContext.Provider>
+    <ThemeTokenContext.Provider value={token}>
+      <MaterialsContext.Provider value={materials}>
+        <GraphContext.Provider value={graph}>
+          <LogicFlowEditorStoreContext.Provider value={store}>
+            <CenterArea>
+              <Toolbar>
+                {toolbar}
+              </Toolbar>
+              <OpeateArea>
+                <Toolbox>
+                  {toolbox}
+                </Toolbox>
+                <CanvasArea>
+                  <CanvasContainer id="reactions-canvas-container" >
+                    <Logic onChange={handleChange} />
+                  </CanvasContainer>
+                  <MiniMapContainer
+                    id="reactions-minimap-container"
+                    style={{
+                      display: showMap ? "flex" : "none"
+                    }}
+                  />
+                </CanvasArea>
+              </OpeateArea>
+            </CenterArea>
+            <RightArea>
+              <PropertyBox>
+                {propertyBox}
+              </PropertyBox>
+            </RightArea>
+          </LogicFlowEditorStoreContext.Provider>
+        </GraphContext.Provider>
+      </MaterialsContext.Provider>
+    </ThemeTokenContext.Provider>
   )
 })

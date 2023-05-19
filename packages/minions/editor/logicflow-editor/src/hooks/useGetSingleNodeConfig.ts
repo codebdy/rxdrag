@@ -1,20 +1,21 @@
 import { useCallback } from "react"
 import { useTransformPorts } from "./useTransformPorts"
-import { useToken } from "antd/es/theme/internal"
 import { usePortsConfig } from "./usePortsConfig"
 import { useGetNodeWidth } from "./useGetNodeWidth"
 import { useGetNodeHeight } from "./useGetNodeHeight"
 import { useGetSubLabel } from "./useGetSubLabel"
-import { IActivityDefine, IConfigMeta, IActivityMaterial } from "@rxdrag/schema"
+import { useThemeToken } from "./useThemeToken"
+import { IActivityNode } from "../interfaces"
+import { IActivityMaterial } from "@rxdrag/minions-schema"
 
 export function useGetSingleNodeConfig() {
-  const [, token] = useToken()
+  const token = useThemeToken()
   const transformPorts = useTransformPorts()
   const portsGroup = usePortsConfig()
   const getNodeWidth = useGetNodeWidth()
   const getSubLabel = useGetSubLabel()
   const getHeight = useGetNodeHeight()
-  const getSingleNodeConfig = useCallback((nodeMeta: IActivityDefine<IConfigMeta>, material: IActivityMaterial | undefined) => {
+  const getSingleNodeConfig = useCallback((nodeMeta: IActivityNode, material: IActivityMaterial | undefined) => {
     const subLabel = getSubLabel(nodeMeta)
     const height = getHeight(nodeMeta, !!subLabel)
     const width = getNodeWidth(nodeMeta)

@@ -21,10 +21,10 @@ export function useGetNodeConfig() {
       case ActivityType.End:
         return getEndNodeConfig(reactNodeMeta, token)
       case ActivityType.Activity:
-        return getSingleNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.materialName))
+        return getSingleNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.activityName))
       // case ActivityType.ControllerDefaultReaction:
       // case ActivityType.ControllerReaction:
-      //   return getReactionNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.materialName))
+      //   return getReactionNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.activityName))
     }
 
     throw new Error("Can not find reaction node meta: " + reactNodeMeta.type)

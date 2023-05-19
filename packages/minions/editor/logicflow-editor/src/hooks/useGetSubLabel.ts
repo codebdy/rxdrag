@@ -8,7 +8,7 @@ export function useGetSubLabel() {
    const getMaterial = useGetMaterial()
 
   const getLabel = useCallback((nodeMeta: IActivityDefine<unknown>) => {
-    const material = getMaterial(nodeMeta.materialName)
+    const material = getMaterial(nodeMeta.activityName)
     const subTitle = material?.subTitle?.(nodeMeta.config)
     // const controller = controllers.find(ctrl => ctrl?.id === nodeMeta.config?.controllerId && nodeMeta.config?.controllerId)
 

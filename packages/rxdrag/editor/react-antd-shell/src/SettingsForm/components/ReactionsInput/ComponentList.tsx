@@ -45,7 +45,7 @@ export const ComponentList = memo((
         id: createUuid(),
         label: t(marterial.label),
         type: marterial.activityType,
-        materialName: marterial.name,
+        activityName: marterial.name,
         ...marterial.meta,
         config: {
           controllerId,
@@ -66,7 +66,7 @@ export const ComponentList = memo((
         id: createUuid(),
         label: reaction.label || reaction.name,
         type: marterial.activityType,
-        materialName: marterial.name,
+        activityName: marterial.name,
         ...marterial.meta,
         config: {
           controllerId,

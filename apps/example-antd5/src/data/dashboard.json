@@ -334,7 +334,7 @@
                                     "id": "1909dfff-4600-49ff-a07c-0087f9e2713a",
                                     "label": "输入",
                                     "type": "Start",
-                                    "materialName": "start",
+                                    "activityName": "start",
                                     "name": "input",
                                     "x6Node": {
                                       "x": 130,
@@ -347,7 +347,7 @@
                                     "id": "8463ba00-f8c4-4fc6-977c-e60eb4f9244a",
                                     "label": "模拟数据",
                                     "type": "SingleReaction",
-                                    "materialName": "mockData",
+                                    "activityName": "mockData",
                                     "inPorts": [
                                       {
                                         "id": "88e92274-e160-4ff8-aadf-93afa2b6f88d",
@@ -386,7 +386,7 @@
                                     "id": "01a831c5-f20a-4e95-9703-3dbd4108ba83",
                                     "label": "设置属性",
                                     "type": "ControllerDefaultReaction",
-                                    "materialName": "setProp",
+                                    "activityName": "setProp",
                                     "inPorts": [
                                       {
                                         "id": "60d97984-b9ba-4168-a5ee-b23d797d083a",
@@ -410,7 +410,7 @@
                                     "id": "dbf653bc-6faf-407d-b650-7c188a1c5dde",
                                     "label": "提示消息",
                                     "type": "SingleReaction",
-                                    "materialName": "infoMessage",
+                                    "activityName": "infoMessage",
                                     "inPorts": [
                                       {
                                         "id": "e1533abd-cfa3-46b4-8db5-e1793fee6064",
@@ -432,7 +432,7 @@
                                     "id": "44ebc687-e3d5-4dac-820b-bb90165b32b8",
                                     "label": "设置属性",
                                     "type": "ControllerDefaultReaction",
-                                    "materialName": "setProp",
+                                    "activityName": "setProp",
                                     "inPorts": [
                                       {
                                         "id": "60d97984-b9ba-4168-a5ee-b23d797d083a",
@@ -456,7 +456,7 @@
                                     "id": "cd0fe57b-7d0e-48b5-9800-ebec22e3d5d6",
                                     "label": "常量",
                                     "type": "SingleReaction",
-                                    "materialName": "fixedValue",
+                                    "activityName": "fixedValue",
                                     "inPorts": [
                                       {
                                         "id": "c57a20a4-6e4e-4831-b692-0f250c198d7e",
@@ -712,7 +712,7 @@
                                     "id": "b75a13c3-ee7d-4e01-8828-fa752bd00703",
                                     "label": "输入",
                                     "type": "Start",
-                                    "materialName": "start",
+                                    "activityName": "start",
                                     "name": "input",
                                     "x6Node": {
                                       "x": 100,
@@ -725,7 +725,7 @@
                                     "id": "c0be6294-eba1-4528-8b2e-253d044b7a2d",
                                     "label": "模拟数据",
                                     "type": "SingleReaction",
-                                    "materialName": "mockData",
+                                    "activityName": "mockData",
                                     "inPorts": [
                                       {
                                         "id": "543c5ee6-c07b-4355-9fb5-55c0f408f5dc",
@@ -764,7 +764,7 @@
                                     "id": "81186513-199d-4623-8f3b-f2cf5ce3a3e5",
                                     "label": "设置属性",
                                     "type": "ControllerDefaultReaction",
-                                    "materialName": "setProp",
+                                    "activityName": "setProp",
                                     "inPorts": [
                                       {
                                         "id": "818f8fca-b431-4b3c-9660-5461f2325ede",
@@ -788,7 +788,7 @@
                                     "id": "de82a362-7c81-4361-8fe8-8c32176863d7",
                                     "label": "设置属性",
                                     "type": "ControllerDefaultReaction",
-                                    "materialName": "setProp",
+                                    "activityName": "setProp",
                                     "inPorts": [
                                       {
                                         "id": "818f8fca-b431-4b3c-9660-5461f2325ede",
@@ -812,7 +812,7 @@
                                     "id": "696dd67a-b439-4e1c-963a-897aab5dae55",
                                     "label": "提示消息",
                                     "type": "SingleReaction",
-                                    "materialName": "infoMessage",
+                                    "activityName": "infoMessage",
                                     "inPorts": [
                                       {
                                         "id": "4976315b-b17b-44c2-a460-3ffaf79a840f",
@@ -834,7 +834,7 @@
                                     "id": "d326508f-00c7-416c-afce-77c95aaacef7",
                                     "label": "常量",
                                     "type": "SingleReaction",
-                                    "materialName": "fixedValue",
+                                    "activityName": "fixedValue",
                                     "inPorts": [
                                       {
                                         "id": "8b51b6a3-f3f4-4f52-bf5c-4d3bc6f416c0",
@@ -1077,7 +1077,7 @@
                                                 "id": "fedc169a-4a64-408b-a200-503f216734f1",
                                                 "label": "JS代码",
                                                 "type": "SingleReaction",
-                                                "materialName": "jsCode",
+                                                "activityName": "jsCode",
                                                 "inPorts": [
                                                   {
                                                     "id": "c586983f-7b44-4c71-90a4-d4ff9f9f1d0b",
@@ -1106,7 +1106,7 @@
                                                 "id": "31a26ac7-1843-4db3-8b52-c38cd0dc792e",
                                                 "label": "输入",
                                                 "type": "Start",
-                                                "materialName": "start",
+                                                "activityName": "start",
                                                 "name": "input",
                                                 "x6Node": {
                                                   "x": 50,
@@ -1119,7 +1119,7 @@
                                                 "id": "eb0ea405-5d32-4813-85e8-d1769e752bdc",
                                                 "label": "读取字段",
                                                 "type": "SingleReaction",
-                                                "materialName": "readFieldValue",
+                                                "activityName": "readFieldValue",
                                                 "inPorts": [
                                                   {
                                                     "id": "ff1a4716-798b-45f8-9e3e-fe426fa45f7b",
@@ -1145,7 +1145,7 @@
                                                 "id": "6255d3f2-aa7d-432e-b48a-77d9a487404c",
                                                 "label": "JS代码",
                                                 "type": "SingleReaction",
-                                                "materialName": "jsCode",
+                                                "activityName": "jsCode",
                                                 "inPorts": [
                                                   {
                                                     "id": "300a9253-19d0-4a08-a936-05e5f51390a7",
@@ -1174,7 +1174,7 @@
                                                 "id": "aace7a67-6bb2-4433-b19e-aed17957c479",
                                                 "label": "设置属性",
                                                 "type": "ControllerDefaultReaction",
-                                                "materialName": "setProp",
+                                                "activityName": "setProp",
                                                 "inPorts": [
                                                   {
                                                     "id": "15f2f240-37d1-46cd-a104-c9e902f55fd7",
@@ -1198,7 +1198,7 @@
                                                 "id": "04d2512b-f184-47e5-bac1-00f9572dcee8",
                                                 "label": "设置属性",
                                                 "type": "ControllerDefaultReaction",
-                                                "materialName": "setProp",
+                                                "activityName": "setProp",
                                                 "inPorts": [
                                                   {
                                                     "id": "563b97c9-8042-4f48-8ebe-817456ac2a5e",
