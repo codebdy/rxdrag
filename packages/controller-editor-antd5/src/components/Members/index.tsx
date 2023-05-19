@@ -11,6 +11,7 @@ import { createUuid } from "@rxdrag/shared"
 import { useTranslate } from "@rxdrag/react-locales"
 import { IControllerMeta, IVariableDefineMeta } from "@rxdrag/minions-runtime-react";
 import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
+import { EventDialog } from "./EventDialog";
 
 const { Text } = Typography;
 
@@ -45,6 +46,7 @@ export const Members = memo((
   }
 ) => {
   const { value, selected, onSelect, onChange } = props
+  const [addEventOpen, setAddEventOpen] = useState(false)
   const [addReactionOpen, setAddReactionOpen] = useState(false)
   const [addVariableOpen, setAddVariableOpen] = useState(false)
 
@@ -55,6 +57,18 @@ export const Members = memo((
       onSelect?.(id)
     }
   }, [onSelect])
+
+  const handleAddEvent= useCallback(() => {
+    setAddEventOpen(true)
+  }, [])
+
+  const handleAddEventOk = useCallback((name?: string) => {
+    
+  },[])
+
+  const handleAddEventCancel = useCallback(() => {
+    setAddEventOpen(false)
+  }, [])
 
   const handleAddReaction = useCallback(() => {
     setAddReactionOpen(true)
@@ -114,10 +128,6 @@ export const Members = memo((
   const handleChangeVariable = useCallback((meta: IVariableDefineMeta) => {
     onChange?.({ ...value, variables: value?.variables?.map(va => va.id !== meta.id ? va : { ...va, ...meta }) })
   }, [onChange, value])
-
-  const handleAddEvent = useCallback(() => {
-    console.log("Not implement")
-  }, [])
 
   return (
     <>
@@ -204,6 +214,12 @@ export const Members = memo((
           })
         }
       </List>
+      <EventDialog
+        title={'$addEvent'}
+        open={addEventOpen}
+        onCancel={handleAddEventCancel}
+        onOk={handleAddEventOk}
+      />
       <NameDialog
         title={'$addReaction'}
         open={addReactionOpen}
