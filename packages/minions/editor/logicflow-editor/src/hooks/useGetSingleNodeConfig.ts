@@ -30,7 +30,7 @@ export function useGetSingleNodeConfig() {
         meta: nodeMeta,
         backgroundColor: token.colorBgContainer,
         color: token.colorTextSecondary,
-        material,
+        icon: material?.icon,
         token,
         width: width,
         height: height,
