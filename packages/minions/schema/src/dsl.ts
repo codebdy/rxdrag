@@ -19,7 +19,6 @@ export interface IActivityDefine<ConfigMeta = unknown> {
   config?: ConfigMeta;
   inPorts?: IPortDefine[];
   outPorts?: IPortDefine[];
-  materialName?: string;
 }
 
 export interface IPortRefDefine{

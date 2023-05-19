@@ -7,7 +7,7 @@ const Title = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
-  border-bottom: solid 1px ${props => props.theme?.token?.borderColor};
+  border-bottom: ${props => props.theme.token?.colorBorder} solid 1px;
   padding: 0 16px;
 `
 

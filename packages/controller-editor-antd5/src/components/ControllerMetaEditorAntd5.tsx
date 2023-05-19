@@ -10,6 +10,7 @@ import { LocalesContext } from "@rxdrag/react-locales";
 import { ControllersContext } from "@rxdrag/react-runner";
 import { Members } from "./Members";
 import { useToken } from "antd/es/theme/internal";
+import { PropertyBox } from "./PropertyBox";
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -95,7 +96,9 @@ export const ControllerMetaEditorAntd5 = memo((
                 metas={logicFlowMeta}
                 onChange={handleChange}
                 toolbox={toolbox}
+                propertyBox={<PropertyBox />}
                 token={token}
+                materials = {materials}
               />
             }
           </SytledContent>

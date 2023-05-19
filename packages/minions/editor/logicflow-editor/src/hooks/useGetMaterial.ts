@@ -4,7 +4,7 @@ import { useMaterials } from "./useMaterials";
 export function useGetMaterial() {
   const materials = useMaterials()
   const getMaterial = useCallback((name?: string) => {
-    return materials.find(reaction => reaction.name === name)
+    return materials.find(material => material.activityName === name)
   }, [materials])
 
   return getMaterial
