@@ -9,13 +9,13 @@ export function useTransMaterial() {
       inPorts: [],
       outPorts: []
     }
-    for(const port of material.defaultPorts?.inPorts||[]){
-      ports.inPorts?.push({...port, label: trans(port.label)})
+    for (const port of material.defaultPorts?.inPorts || []) {
+      ports.inPorts?.push({ ...port, label: trans(port.label) })
     }
-    for(const port of material.defaultPorts?.outPorts||[]){
-      ports.outPorts?.push({...port, label: trans(port.label)})
+    for (const port of material.defaultPorts?.outPorts || []) {
+      ports.outPorts?.push({ ...port, label: trans(port.label) })
     }
-    return { ...material, label: trans(material.label) || "" }
+    return { ...material, label: trans(material.label) || "", defaultPorts: ports }
   }, [trans])
 
   return translateMaterial
