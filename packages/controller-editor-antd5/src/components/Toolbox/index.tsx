@@ -1,10 +1,9 @@
-import { memo } from "react"
+import { ReactNode, memo } from "react"
 import { Collapse as AntdCollapse } from "antd";
 import styled from "styled-components";
-import { activityMaterialCategories } from "@rxdrag/minions-react-materials";
 import { ReactionResource, ToolItem, ToolItemCategory } from "@rxdrag/minions-logicflow-editor";
-import { useTrans } from "@rxdrag/controller-editor-antd5/src/hooks/useTrans";
-import { useTransMaterial } from "@rxdrag/controller-editor-antd5";
+import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
+import { useTransMaterial } from "../../hooks";
 
 const Collapse = styled(AntdCollapse)`
   flex:1;
@@ -14,15 +13,17 @@ const Collapse = styled(AntdCollapse)`
 
 const { Panel } = AntdCollapse;
 
-export const Toolbox = memo(() => {
-  const t = useTrans()
+export const Toolbox = memo((props:{
+  materialCategories:ActivityMaterialCategory<ReactNode>[] 
+}) => {
+  const {materialCategories} = props;
   const transMaterial = useTransMaterial()
   return (
-    <Collapse defaultActiveKey={[activityMaterialCategories?.[0]?.name]} bordered={false} accordion expandIconPosition="end">
+    <Collapse defaultActiveKey={[materialCategories?.[0]?.name]} bordered={false} accordion expandIconPosition="end">
       {
-        activityMaterialCategories.map(category => {
+        materialCategories.map(category => {
           return (
-            <Panel key={category.name} header={t(category.name)}>
+            <Panel key={category.name} header={category.name}>
               <ToolItemCategory>
                 {
                   category.materials.map((materail, index) => {
@@ -31,7 +32,7 @@ export const Toolbox = memo(() => {
                         (onStartDrag) => {
                           return <ToolItem
                             icon={materail.icon}
-                            title={t(materail.label)}
+                            title={materail.label}
                             color={materail.color}
                             onMouseDown={onStartDrag}
                           />

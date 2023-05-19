@@ -1,5 +1,10 @@
 import { ActivityType, IPortDefine } from "./dsl";
 
+export interface IPorts {
+  inPorts?: IPortDefine[];
+  outPorts?: IPortDefine[];
+}
+
 export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown> {
   label: string;
   activityType: ActivityType;
@@ -7,10 +12,7 @@ export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown
   color?: string;
   //属性面板配置
   schema?: NodeSchema;
-  defaultPorts?: {
-    inPorts?: IPortDefine[];
-    outPorts?: IPortDefine[];
-  };
+  defaultPorts?: IPorts;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   subTitle?: (config?: any, options?: any) => string | undefined;
   activityName: string;

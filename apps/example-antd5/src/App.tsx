@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import { IFrameCanvasRender } from '@rxdrag/react-core';
 import { IFramePreviewRender } from "@rxdrag/react-antd-shell"
-import { getAllMaterial } from "@rxdrag/minions-react-materials"
 import { usePredefinedComponents } from './hooks/usePredefinedComponents';
 import { Antd5Example } from './Antd5Example';
 
@@ -14,7 +13,7 @@ function App() {
       </Route>
       <Route path={'/canvas-render'} element={<IFrameCanvasRender designers={designers} />}>
       </Route>
-      <Route path={'/preview-render'} element={<IFramePreviewRender components={components} activityMaterials={getAllMaterial()} />}>
+      <Route path={'/preview-render'} element={<IFramePreviewRender components={components} />}>
       </Route>
     </Routes>
 

@@ -5,8 +5,7 @@ import { memo, useCallback, useEffect, useState } from "react"
 import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
 import { useControllerMetas } from "./hooks/useControllerMetas"
-import { Toolbox } from "./Toolbox"
-import { getAllMaterial, activityMaterialLocales } from "@rxdrag/minions-react-materials"
+import { activityMaterialLocales, activityMaterialCategories } from "@rxdrag/minions-react-materials"
 import { ITreeNode } from "@rxdrag/core"
 import { IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { ILogicFlowDefinition } from "@rxdrag/minions-schema"
@@ -126,8 +125,7 @@ export const ReactionsInput = memo((props: {
                 value={inputValue}
                 onChange={handleChange}
                 controllerMetas={controllers}
-                materials={getAllMaterial()}
-                toolbox={<Toolbox />}
+                materialCategories={activityMaterialCategories}
                 locales={activityMaterialLocales}
               />
             }

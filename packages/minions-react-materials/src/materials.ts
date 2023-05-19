@@ -3,7 +3,7 @@ import { ReactNode } from "react"
 import { auxReactions } from "./auxtools"
 import { basicReactions } from "./basic"
 import { commonReactions } from "./common"
-import { ActivityMaterialCategory, IActivityMaterial } from "@rxdrag/minions-schema"
+import { ActivityMaterialCategory } from "@rxdrag/minions-schema"
 
 
 export const activityMaterialCategories: ActivityMaterialCategory<ReactNode>[] = [
@@ -25,7 +25,3 @@ export const activityMaterialCategories: ActivityMaterialCategory<ReactNode>[] =
   }
 ]
 
-export const getAllMaterial = () => {
-  const materials: IActivityMaterial<ReactNode>[] = []//[...controllerReactions]
-  return materials.concat(...activityMaterialCategories.map(category => category.materials))
-}

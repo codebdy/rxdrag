@@ -25,7 +25,7 @@ export function useTransformPorts() {
             ref: "text",
             refWidth: "100%",
             refHeight: "100%",
-            refX: group === 'out' ? 15 : -40,
+            refX: group === 'out' ? 15 : -50,
             //refX2: group === 'out' ? 28 : -12,
             refY: -6,
             fill: token.colorBgContainer,
