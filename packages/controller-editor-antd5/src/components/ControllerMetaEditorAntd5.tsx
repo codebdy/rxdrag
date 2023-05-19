@@ -47,6 +47,7 @@ export const ControllerMetaEditorAntd5 = memo((
   props: ControllerMetaEditorAntd5Props
 ) => {
   const { value, onChange, controllerMetas, materialCategories, ...other } = props
+  const [localsRegiterFlag, setLocalsRegisterFlag] = useState(0)
 
   const [selected, setSelected] = useState<string>()
 
@@ -54,6 +55,7 @@ export const ControllerMetaEditorAntd5 = memo((
 
   useEffect(() => {
     localesManger?.registerLocales(controllerEditorLocales)
+    setLocalsRegisterFlag(flag => flag + 1)
   }, [localesManger])
 
   const handleMemberChange = useCallback((meta?: IControllerMeta) => {
@@ -85,6 +87,7 @@ export const ControllerMetaEditorAntd5 = memo((
         <SytledContent id="reactions-editor-container">
           <LeftArea>
             <Members
+              key={localsRegiterFlag}
               value={value}
               selected={selected}
               onSelect={setSelected}
