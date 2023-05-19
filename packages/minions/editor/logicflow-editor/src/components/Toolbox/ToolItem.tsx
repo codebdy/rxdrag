@@ -14,6 +14,8 @@ const Icon = styled.div`
 `
 
 const Shell = styled((props) => <div {...props} />)`
+  width: calc(50% - 8px);
+  margin: 4px;
   display: flex;
   flex-flow: column;
   align-items: center;

@@ -1,8 +1,8 @@
 import { memo } from "react"
-import { Collapse as AntdCollapse, Row } from "antd";
+import { Collapse as AntdCollapse } from "antd";
 import styled from "styled-components";
 import { activityMaterialCategories } from "@rxdrag/minions-react-materials";
-import { ReactionResource, ToolItem } from "@rxdrag/minions-logicflow-editor";
+import { ReactionResource, ToolItem, ToolItemCategory } from "@rxdrag/minions-logicflow-editor";
 import { useTrans } from "@rxdrag/controller-editor-antd5/src/hooks/useTrans";
 
 const Collapse = styled(AntdCollapse)`
@@ -21,7 +21,7 @@ export const Toolbox = memo(() => {
         activityMaterialCategories.map(category => {
           return (
             <Panel key={category.name} header={t(category.name)}>
-              <Row gutter={8}>
+              <ToolItemCategory>
                 {
                   category.materials.map((reaction, index) => {
                     return <ReactionResource key={index + reaction.activityName} material={reaction}>
@@ -38,7 +38,7 @@ export const Toolbox = memo(() => {
                     </ReactionResource>
                   })
                 }
-              </Row>
+              </ToolItemCategory>
             </Panel>
           )
         })
