@@ -1,5 +1,5 @@
 import { IBindParams } from "@rxdrag/react-runner";
-import { IFieldMeta, INodeSchema } from "@rxdrag/schema";
+import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema, createSlotsSchema, withFormItem } from "../../shared";
 
 const options: SchemaOptions<IFieldMeta<IBindParams>> = {

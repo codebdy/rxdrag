@@ -1266,6 +1266,9 @@ importers:
       '@rxdrag/locales':
         specifier: workspace:*
         version: link:../../../locales/locales
+      '@rxdrag/minions-controller-editor':
+        specifier: workspace:*
+        version: link:../../../minions/editor/controller-editor
       '@rxdrag/minions-logicflow-editor':
         specifier: workspace:*
         version: link:../../../minions/editor/logicflow-editor

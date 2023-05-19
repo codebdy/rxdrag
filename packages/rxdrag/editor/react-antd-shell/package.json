@@ -43,6 +43,7 @@
     "@rxdrag/react-runner": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/minions-logicflow-editor": "workspace:*",
+    "@rxdrag/minions-controller-editor": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "antd": "5.1.2",

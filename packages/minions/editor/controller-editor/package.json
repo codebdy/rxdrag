@@ -28,6 +28,7 @@
     "@rxdrag/minions-schema": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
     "@rxdrag/minions-logicflow-editor": "workspace:*",
+    "@rxdrag/minions-controller-editor": "workspace:*",
     "insert-css": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -3,7 +3,7 @@ import { DESTORY_EVENT_NAME, INIT_EVENT_NAME } from "@rxdrag/minions-runtime-rea
 export function createControllerSchema() {
   return [
     {
-      componentName: "ReactionsInput",
+      componentName: "ControllerSetter",
       "x-field": {
         name: "x-controller",
         params: {

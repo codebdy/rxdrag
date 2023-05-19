@@ -21,11 +21,6 @@ export type ILogicMetas = {
   lines: ILineDefine[];
 }
 
-export interface IEventMeta {
-  name: string,
-  label: string,
-}
-
 export interface INodeData {
   meta: IActivityDefine<undefined>
 }
