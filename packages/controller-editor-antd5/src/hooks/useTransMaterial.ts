@@ -1,10 +1,10 @@
 import { IActivityMaterial } from "@rxdrag/minions-schema"
-import { useCallback } from "react"
+import { ReactNode, useCallback } from "react"
 import { useTrans } from "./useTrans"
 
-export function useTransMaterial(){
+export function useTransMaterial() {
   const trans = useTrans()
-  const translateMaterial = useCallback((material: IActivityMaterial) => {
+  const translateMaterial = useCallback((material: IActivityMaterial<ReactNode>): IActivityMaterial<ReactNode> => {
     return { ...material, label: trans(material.label) || "" }
   }, [trans])
 

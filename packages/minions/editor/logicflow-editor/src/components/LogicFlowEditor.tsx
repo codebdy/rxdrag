@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { memo, useCallback, useEffect, useMemo } from "react"
 import styled from "styled-components";
 import { ActionType, SetMetasAction } from "../actions";
@@ -10,7 +10,6 @@ import { ILogicMetas, IThemeToken } from "../interfaces";
 import { Toolbar } from "./Toolbar";
 import { Toolbox } from "./Toolbox";
 import { PropertyBox } from "./PropertyBox";
-import { IActivityMaterial } from "@rxdrag/minions-schema";
 
 const CenterArea = styled.div`
   position: relative;
@@ -78,11 +77,10 @@ export const LogicFlowEditor = memo((
     toolbar?: React.ReactNode,
     propertyBox?: React.ReactNode,
     showMap?: boolean,
-    materials: IActivityMaterial<ReactNode>[],
     token: IThemeToken
   }
 ) => {
-  const { metas, onChange, toolbox, toolbar, propertyBox, showMap, materials, token } = props
+  const { metas, onChange, toolbox, toolbar, propertyBox, showMap, token } = props
   const emptyMetas = useMemo(() => ({
     nodes: [],
     lines: []
