@@ -1,9 +1,9 @@
 import React from "react"
 import { Form, Input, Modal } from "antd"
 import { memo, useCallback, useEffect } from "react"
-import { useTrans } from "../../hooks/useTrans"
 import { ValueInput } from "@rxdrag/react-antd-props-inputs"
 import { IVariableDefineMeta } from "@rxdrag/minions-runtime-react"
+import { useTrans } from "@rxdrag/logicflow-editor-antd5"
 
 export const VariableDialog = memo((
   props: {

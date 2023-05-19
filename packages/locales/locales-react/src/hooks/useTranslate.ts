@@ -6,7 +6,7 @@ export function useTranslate(module?: string) {
   const t = useCallback((key: string) => {
     const keyPath = module ? module + "." + key : key
     return localesManager?.getMessage(keyPath) || key
-  }, [localesManager])
+  }, [localesManager, module])
 
   return t
 }

@@ -72,8 +72,8 @@ const RightArea = styled.div`
 
 export const LogicFlowEditor = memo((
   props: {
-    metas?: ILogicMetas,
-    onChange: (meta: ILogicMetas) => void,
+    value?: ILogicMetas,
+    onChange?: (value: ILogicMetas) => void,
     toolbox?: React.ReactNode,
     toolbar?: React.ReactNode,
     propertyBox?: React.ReactNode,
@@ -82,7 +82,7 @@ export const LogicFlowEditor = memo((
     token: IThemeToken
   }
 ) => {
-  const { metas, onChange, toolbox, toolbar, propertyBox, showMap, materials, token } = props
+  const { value, onChange, toolbox, toolbar, propertyBox, showMap, materials, token } = props
   const emptyMetas = useMemo(() => ({
     nodes: [],
     lines: []
@@ -93,12 +93,12 @@ export const LogicFlowEditor = memo((
   }, [])
 
   useEffect(() => {
-    const action: SetMetasAction = { type: ActionType.SET_METAS, payload: { nodes: metas?.nodes || [], lines: metas?.lines || [] } }
+    const action: SetMetasAction = { type: ActionType.SET_METAS, payload: { nodes: value?.nodes || [], lines: value?.lines || [] } }
     store.dispatch(action)
-  }, [emptyMetas, metas, store])
+  }, [emptyMetas, value, store])
 
   const handleChange = useCallback((newMetas: ILogicMetas) => {
-    onChange(newMetas)
+    onChange?.(newMetas)
   }, [onChange])
 
   return (

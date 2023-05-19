@@ -1,4 +1,3 @@
-import React from "react";
 import { PlusOutlined, ThunderboltOutlined } from "@ant-design/icons";
 import { Button, Typography } from "antd";
 import { memo, useCallback, useState } from "react"

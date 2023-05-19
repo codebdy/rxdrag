@@ -1,5 +1,5 @@
 {
-  "name": "@rxdrag/controller-editor-antd5",
+  "name": "@rxdrag/logicflow-editor-antd5",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
-    "@rxdrag/minions-controller-editor": "workspace:*",
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/minions-schema": "workspace:*",
@@ -20,7 +19,6 @@
     "@rxdrag/react-antd-props-inputs": "workspace:*",
     "@rxdrag/react-runner": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
-    "@rxdrag/logicflow-editor-antd5": "workspace:*",
     "@rxdrag/minions-logicflow-editor": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
