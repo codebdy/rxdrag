@@ -11,6 +11,13 @@ export const controllerEditorLocales = {
     variables: "变量",
     events: "事件",
     reactions: "交互",
+    add: "添加",
+    close: "关闭",
+    label: "标签",
+    operation: "操作",
+    defaultValue: "默认值",
+    loading: "等待",
+    error: "错误",
   },
   'en-US': {
     confirm: "Confirm",
@@ -23,5 +30,12 @@ export const controllerEditorLocales = {
     variables: "variables",
     events: "Events",
     reactions: "Reactions",
+    add: "Add",
+    close: "Close",
+    label: "Label",
+    operation: "Operation",
+    defaultValue: "Default Value",
+    loading: "Loading",
+    error: "Error",
   }
 }
