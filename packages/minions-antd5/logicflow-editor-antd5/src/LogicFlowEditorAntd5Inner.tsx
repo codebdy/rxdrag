@@ -10,13 +10,14 @@ export type LogicFlowEditorAntd5InnerProps = {
   value: ILogicMetas,
   onChange?: (value: ILogicMetas) => void,
   materialCategories: ActivityMaterialCategory<ReactNode>[],
-  setters?: IComponents
+  setters?: IComponents,
+  toolboxAddons?: React.ReactNode,
 }
 
 export const ControllerMetaEditorAntd5Inner = memo((
   props: LogicFlowEditorAntd5InnerProps
 ) => {
-  const { value, onChange, materialCategories, setters } = props
+  const { value, onChange, materialCategories, setters, toolboxAddons } = props
   const [, token] = useToken();
   const categories = useTransMaterialCategorys(materialCategories);
   const materials = useMemo(() => {
@@ -27,7 +28,7 @@ export const ControllerMetaEditorAntd5Inner = memo((
     <LogicFlowEditor
       value={value}
       onChange={onChange}
-      toolbox={<Toolbox materialCategories={categories} />}
+      toolbox={<Toolbox materialCategories={categories} addons={toolboxAddons} />}
       propertyBox={<PropertyBox setters={setters} />}
       token={token}
       materials={materials}

@@ -9,8 +9,12 @@ import { LogicFlowEditorAntd5 } from "@rxdrag/logicflow-editor-antd5";
 import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
 import { VariableSelect } from "./VariableSelect";
 import { ILocales } from "@rxdrag/locales";
-import { useLocalesManager } from "@rxdrag/react-locales";
+import { useLocalesManager, useTranslate } from "@rxdrag/react-locales";
 import { controllerEditorLocales } from "../locales";
+import { ComponentList } from "./ComponentList";
+import { Collapse } from "antd";
+
+const { Panel } = Collapse;
 
 const SytledContent = styled.div`
   height: calc(100vh - 160px);
@@ -53,6 +57,7 @@ export const ControllerMetaEditorAntd5 = memo((
   const [selected, setSelected] = useState<string>()
 
   const localesManger = useLocalesManager();
+  const t = useTranslate();
 
   useEffect(() => {
     localesManger?.registerLocales(controllerEditorLocales)
@@ -105,6 +110,11 @@ export const ControllerMetaEditorAntd5 = memo((
               materialCategories={materialCategories}
               setters={{ VariableSelect }}
               {...other}
+              toolboxAddons={
+                <Panel header={t('componentControl')} key="componentControl">
+                  <ComponentList />
+                </Panel>
+              }
             />
           }
         </SytledContent>

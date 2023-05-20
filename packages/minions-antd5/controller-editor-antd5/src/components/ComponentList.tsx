@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { useTrans } from "@rxdrag/logicflow-editor-antd5";
+import { useAllControllers, useController } from "@rxdrag/minions-controller-editor";
 import { useGraph, useDnd, useGetNodeConfig } from "@rxdrag/minions-logicflow-editor";
-import { setPropMaterial, setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "@rxdrag/minions-react-materials";
+import { setPropMaterial, setVariableMaterial, listenVariableMaterial, readVariableMaterial, reactionMaterial } from "@rxdrag/minions-react-materials";
 import { IControllerMeta } from "@rxdrag/minions-runtime-react";
 import { IActivityMaterial, IActivityDefine, ILogicFlowDefinition } from "@rxdrag/minions-schema";
 import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon, variableIcon } from "@rxdrag/react-shared";
@@ -9,7 +11,6 @@ import { Space, Typography } from "antd";
 import React from "react";
 import { memo, useCallback } from "react"
 import styled from "styled-components";
-
 
 const Container = styled.div`
   display: flex;
@@ -45,8 +46,8 @@ export const ComponentList = memo((
         id: createUuid(),
         label: t(marterial.label),
         type: marterial.activityType,
-        activityName: marterial.name,
-        ...marterial.meta,
+        activityName: marterial.activityName,
+        ...marterial.defaultPorts,
         config: {
           controllerId,
           reactionRef: reactionName,
@@ -66,8 +67,8 @@ export const ComponentList = memo((
         id: createUuid(),
         label: reaction.label || reaction.name,
         type: marterial.activityType,
-        activityName: marterial.name,
-        ...marterial.meta,
+        activityName: marterial.activityName,
+        ...marterial.defaultPorts,
         config: {
           controllerId,
           reactionRef: reaction.id,
@@ -94,18 +95,18 @@ export const ComponentList = memo((
               </Typography.Text>
               <ReactionList>
                 <Space direction="vertical">
-                  <ItemTitle onMouseDown={startDefaultDragFn(setPropMaterial, controller.id, setPropMaterial.name)}>{setPropIcon} {t("$setProp")}</ItemTitle>
+                  <ItemTitle onMouseDown={startDefaultDragFn(setPropMaterial, controller.id, setPropMaterial.activityName)}>{setPropIcon} {t("$setProp")}</ItemTitle>
                   {
                     !!controller.variables?.length &&
                     <>
-                      <ItemTitle onMouseDown={startDefaultDragFn(setVariableMaterial, controller.id, setVariableMaterial.name)}>{setVariableIcon} {t("$setVariable")}</ItemTitle>
-                      <ItemTitle onMouseDown={startDefaultDragFn(listenVariableMaterial, controller.id, setVariableMaterial.name)}>{listenVariableIcon} {t("$listenVariable")}</ItemTitle>
-                      <ItemTitle onMouseDown={startDefaultDragFn(readVariableMaterial, controller.id, setVariableMaterial.name)}>{variableIcon} {t("$readVariable")}</ItemTitle>
+                      <ItemTitle onMouseDown={startDefaultDragFn(setVariableMaterial, controller.id, setVariableMaterial.activityName)}>{setVariableIcon} {t("$setVariable")}</ItemTitle>
+                      <ItemTitle onMouseDown={startDefaultDragFn(listenVariableMaterial, controller.id, setVariableMaterial.activityName)}>{listenVariableIcon} {t("$listenVariable")}</ItemTitle>
+                      <ItemTitle onMouseDown={startDefaultDragFn(readVariableMaterial, controller.id, setVariableMaterial.activityName)}>{variableIcon} {t("$readVariable")}</ItemTitle>
                     </>
                   }
                   {
                     controller.reactions?.map(reaction => {
-                      return (<ItemTitle key={reaction.id} onMouseDown={startDragFn(reaction, activityMaterial, controller.id)}>{methodIcon} {reaction.label}</ItemTitle>)
+                      return (<ItemTitle key={reaction.id} onMouseDown={startDragFn(reaction, reactionMaterial, controller.id)}>{methodIcon} {reaction.label}</ItemTitle>)
                     })
                   }
                 </Space>

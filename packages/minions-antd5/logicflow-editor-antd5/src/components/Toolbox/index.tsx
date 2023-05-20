@@ -12,10 +12,11 @@ const Collapse = styled(AntdCollapse)`
 
 const { Panel } = AntdCollapse;
 
-export const Toolbox = memo((props:{
-  materialCategories:ActivityMaterialCategory<ReactNode>[] 
+export const Toolbox = memo((props: {
+  materialCategories: ActivityMaterialCategory<ReactNode>[],
+  addons?: React.ReactNode,
 }) => {
-  const {materialCategories} = props;
+  const { materialCategories, addons } = props;
 
   return (
     <Collapse defaultActiveKey={[materialCategories?.[0]?.name]} bordered={false} accordion expandIconPosition="end">
@@ -45,9 +46,7 @@ export const Toolbox = memo((props:{
           )
         })
       }
-      {/* <Panel header={t('$componentControl')} key="componentControl">
-        <ComponentList />
-      </Panel> */}
+      {addons}
     </Collapse>
   )
 })

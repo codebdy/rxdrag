@@ -435,6 +435,9 @@ importers:
       '@rxdrag/minions-logicflow-editor':
         specifier: workspace:*
         version: link:../../minions/editor/logicflow-editor
+      '@rxdrag/minions-react-materials':
+        specifier: workspace:*
+        version: link:../minions-react-materials
       '@rxdrag/minions-runtime-react':
         specifier: workspace:*
         version: link:../../minions/runtime/runtime-react
