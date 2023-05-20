@@ -16,6 +16,7 @@ export const routeToSchema: INodeSchema = {
           "x-field": {
             name: "config.fromInput",
             params: {
+              valuePropName: "checked",
               withBind: true,
             }
           },
