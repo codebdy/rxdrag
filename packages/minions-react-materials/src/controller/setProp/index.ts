@@ -1,5 +1,4 @@
 import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
-import { IControllerReactionConfig } from "../AbstractControllerReaction"
 import { setPropSchema } from "./schema"
 import { ReactNode } from "react"
 import { createUuid } from "@rxdrag/shared";

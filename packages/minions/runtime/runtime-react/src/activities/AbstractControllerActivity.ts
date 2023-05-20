@@ -1,17 +1,14 @@
 import { SingleInputActivity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
-import { IActivityFactoryOptions } from "../controllers"
-import { IController } from "../interfaces"
+import { IController, IControllerContext } from "../interfaces"
 
-export interface IControllerActivityConfig{
-  controllerId: string,
-  prop?: string
-  variable?: string
+export interface IControllerConfig {
+  controllerId?: string
 }
 
-export abstract class AbstractControllerActivity extends SingleInputActivity<IControllerActivityConfig> {
+export abstract class AbstractControllerActivity<Config extends IControllerConfig = IControllerConfig> extends SingleInputActivity<Config> {
   controller: IController
-  constructor(meta: IActivityDefine<IControllerActivityConfig>, options?: IActivityFactoryOptions) {
+  constructor(meta: IActivityDefine<Config>, options?: IControllerContext) {
     super(meta, options)
 
     if (!meta.config?.controllerId) {
@@ -24,6 +21,7 @@ export abstract class AbstractControllerActivity extends SingleInputActivity<ICo
     this.controller = controller
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  destory = () => {}
+  destory = () => {
+    throw new Error("Method not implemented.");
+  }
 }

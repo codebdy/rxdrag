@@ -3,23 +3,23 @@ import { IControllerMeta } from "./meta"
 export type Unsubscribe = () => void
 
 
-export type VariableListener = (value: any) => void
-export type PropsListener = (name: string, value: any) => void
+export type VariableListener = (value: unknown) => void
+export type PropsListener = (name: string, value: unknown) => void
 export type UnListener = () => void
 
-export type InputFunc = (inputValue?: any) => void
+export type InputFunc = (inputValue?: unknown) => void
 export type EventFuncs = {
   [name: string]: InputFunc | undefined
 }
 
 export interface IVariableController {
-  setVariable(name: string, value: any): void,
-  getVariable(name: string): any,
+  setVariable(name: string, value: unknown): void,
+  getVariable(name: string): unknown,
   subscribeToVariableChange(name: string, listener: VariableListener): void
 }
 
 export interface IPropController {
-  setProp(name: string, value: any): void
+  setProp(name: string, value: unknown): void
 }
 
 export interface IController extends IVariableController, IPropController {

@@ -1,20 +1,18 @@
 import { IActivityDefine } from "@rxdrag/minions-schema";
-import { IActivityFactoryOptions } from "../../controllers";
-import { IController } from "../../interfaces";
-import { AbstractControllerActivity } from "../AbstractControllerActivity";
+import { IController, IControllerContext } from "../../interfaces";
+import { AbstractControllerActivity, IControllerConfig } from "../AbstractControllerActivity";
 import { activity } from "@rxdrag/minions-runtime";
 
-export interface IVariableConfig {
-  controllerId: string
+export interface IVariableConfig extends IControllerConfig{
   variable?: string
 }
 
 export const SetVariableActivityName = "system-react.setVariable"
 @activity(SetVariableActivityName)
-export class SetVariableReaction extends AbstractControllerActivity {
+export class SetVariableReaction extends AbstractControllerActivity<IVariableConfig> {
   controller: IController
-  constructor(meta: IActivityDefine<IVariableConfig>, options?: IActivityFactoryOptions) {
-    super(meta, options)
+  constructor(meta: IActivityDefine<IVariableConfig>, context?: IControllerContext) {
+    super(meta, context)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("SetVariable inputs count error")
@@ -22,7 +20,7 @@ export class SetVariableReaction extends AbstractControllerActivity {
     if (!meta.config?.controllerId) {
       throw new Error("SetVariable not set controller id")
     }
-    const controller = options?.controllers?.[meta.config?.controllerId]
+    const controller = context?.controllers?.[meta.config?.controllerId]
     if (!controller) {
       throw new Error("Can not find controller")
     }
