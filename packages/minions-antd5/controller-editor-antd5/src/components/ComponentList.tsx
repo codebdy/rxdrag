@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useTrans } from "@rxdrag/logicflow-editor-antd5";
-import { useAllControllers, useController } from "@rxdrag/minions-controller-editor";
+import { useAllControllerMetas, useControllerMeta } from "@rxdrag/minions-controller-editor";
 import { useGraph, useDnd, useGetNodeConfig } from "@rxdrag/minions-logicflow-editor";
 import { setPropMaterial, setVariableMaterial, listenVariableMaterial, readVariableMaterial, reactionMaterial } from "@rxdrag/minions-react-materials";
 import { IControllerMeta } from "@rxdrag/minions-runtime-react";
@@ -36,7 +36,10 @@ export const ComponentList = memo((
   const graph = useGraph()
   const dnd = useDnd()
   const getNodeConfig = useGetNodeConfig()
-  const currentController = useController()
+  const controllerMetas = useAllControllerMetas()
+
+  const currentController = useControllerMeta()
+
   const startDefaultDragFn = useCallback((marterial: IActivityMaterial, controllerId: string | undefined, reactionName: string) => {
     return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       if (!graph) {
@@ -79,12 +82,10 @@ export const ComponentList = memo((
     };
   }, [dnd, getNodeConfig, graph])
 
-  const controllers = useAllControllers()
-
   return (
     <>
       {
-        controllers.map((ctrl, index) => {
+        controllerMetas.map((ctrl, index) => {
           const controller: IControllerMeta = currentController?.id === ctrl.id ? currentController : ctrl
           return (
             <Container

@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { Controllers } from "@rxdrag/minions";
-import { EmpertyControllers, ControllersContext } from "../contexts";
+import { EmpertyControllers, ControllerMetasContext } from "../contexts";
 
 export function useControllers() {
-  const schema = useContext<Controllers>(ControllersContext) || EmpertyControllers
+  const schema = useContext<Controllers>(ControllerMetasContext) || EmpertyControllers
   return schema;
 }

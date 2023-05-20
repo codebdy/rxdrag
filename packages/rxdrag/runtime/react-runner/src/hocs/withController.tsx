@@ -3,7 +3,7 @@ import React from "react"
 import { ReactComponent } from "@rxdrag/react-shared"
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { ControllersContext } from "../contexts"
+import { ControllerMetasContext } from "../contexts"
 import { useControllers } from "../hooks/useControllers"
 import { useFieldPath, useForm } from "@rxdrag/react-fieldy"
 import { Controllers, DefaultController, IController, IControllerMeta } from "@rxdrag/minions-runtime-react"
@@ -54,9 +54,9 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
 
     return (
       controller
-        ? <ControllersContext.Provider value={newControllers}>
+        ? <ControllerMetasContext.Provider value={newControllers}>
           <WrappedComponent {...newProps} />
-        </ControllersContext.Provider>
+        </ControllerMetasContext.Provider>
         : <></>
     )
   })

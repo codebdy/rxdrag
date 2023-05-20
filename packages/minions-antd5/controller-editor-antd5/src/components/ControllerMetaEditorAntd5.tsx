@@ -1,9 +1,8 @@
 import { memo, ReactNode, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
-import { ControllerContext, IEventMeta } from "@rxdrag/minions-controller-editor";
+import { ControllerMetaContext, ControllerMetasContext, IEventMeta } from "@rxdrag/minions-controller-editor";
 import { IControllerMeta } from "@rxdrag/minions-runtime-react";
 import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
-import { ControllersContext } from "@rxdrag/react-runner";
 import { Members } from "./Members";
 import { LogicFlowEditorAntd5 } from "@rxdrag/logicflow-editor-antd5";
 import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
@@ -53,7 +52,6 @@ export const ControllerMetaEditorAntd5 = memo((
 ) => {
   const { value, onChange, controllerMetas, materialCategories, eventMetas, ...other } = props
   const [localsRegiterFlag, setLocalsRegisterFlag] = useState(0)
-
   const [selected, setSelected] = useState<string>()
 
   const localesManger = useLocalesManager();
@@ -88,8 +86,8 @@ export const ControllerMetaEditorAntd5 = memo((
   }, [onChange, selected, value])
 
   return (
-    <ControllersContext.Provider value={controllerMetas}>
-      <ControllerContext.Provider value={value}>
+    <ControllerMetasContext.Provider value={controllerMetas}>
+      <ControllerMetaContext.Provider value={value}>
         <SytledContent id="reactions-editor-container">
           <LeftArea>
             <Members
@@ -118,7 +116,7 @@ export const ControllerMetaEditorAntd5 = memo((
             />
           }
         </SytledContent>
-      </ControllerContext.Provider>
-    </ControllersContext.Provider>
+      </ControllerMetaContext.Provider>
+    </ControllerMetasContext.Provider>
   )
 })

@@ -1,8 +1,8 @@
 import { useCallback } from "react"
-import { useAllControllers } from "./useAllControllers"
+import { useAllControllerMetas } from "./useAllControllers"
 
 export function useGetControllerMeta() {
-  const controllerMetas = useAllControllers()
+  const controllerMetas = useAllControllerMetas()
   const getControllerMeta = useCallback((controllerId: string) => {
     for (const ctrl of controllerMetas) {
       if (ctrl?.id === controllerId) {

@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { ControllerContext } from "../contexts";
+import { ControllerMetaContext } from "../contexts";
 
-export function useController(){
-  return useContext(ControllerContext)
+export function useControllerMeta(){
+  return useContext(ControllerMetaContext)
 }
