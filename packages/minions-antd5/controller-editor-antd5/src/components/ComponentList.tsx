@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useTrans } from "@rxdrag/logicflow-editor-antd5";
-import { useAllControllerMetas, useControllerMeta } from "@rxdrag/minions-controller-editor";
+import { useAllControllerMetas } from "@rxdrag/minions-controller-editor";
 import { useGraph, useDnd, useGetNodeConfig } from "@rxdrag/minions-logicflow-editor";
 import { setPropMaterial, setVariableMaterial, listenVariableMaterial, readVariableMaterial, reactionMaterial } from "@rxdrag/minions-react-materials";
-import { IControllerMeta } from "@rxdrag/minions-runtime-react";
 import { IActivityMaterial, IActivityDefine, ILogicFlowDefinition } from "@rxdrag/minions-schema";
 import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon, variableIcon } from "@rxdrag/react-shared";
 import { createUuid } from "@rxdrag/shared";
@@ -37,8 +36,6 @@ export const ComponentList = memo((
   const dnd = useDnd()
   const getNodeConfig = useGetNodeConfig()
   const controllerMetas = useAllControllerMetas()
-
-  const currentController = useControllerMeta()
 
   const startDefaultDragFn = useCallback((marterial: IActivityMaterial, controllerId: string | undefined, reactionName: string) => {
     return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -85,11 +82,10 @@ export const ComponentList = memo((
   return (
     <>
       {
-        controllerMetas.map((ctrl, index) => {
-          const controllerMeta: IControllerMeta = currentController?.id === ctrl.id ? currentController : ctrl
+        controllerMetas.map((controllerMeta, index) => {
           return (
             <Container
-              key={ctrl.id}
+              key={controllerMeta.id}
             >
               <Typography.Text type="secondary" style={{ marginTop: index !== 0 ? 8 : 0 }}>
                 {controllerMeta.name || controllerMeta.id}

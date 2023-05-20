@@ -55,7 +55,7 @@ export const ControllerMetaEditorAntd5 = memo((
   const [localsRegiterFlag, setLocalsRegisterFlag] = useState(0)
   const [selected, setSelected] = useState<string>()
   const extractLogicFlowMetas = useExtractReferencedLogicFlowMetas();
-  
+
   const localesManger = useLocalesManager();
   const t = useTranslate();
 
@@ -87,8 +87,11 @@ export const ControllerMetaEditorAntd5 = memo((
     onChange?.(newValue)
   }, [onChange, selected, value])
 
+  //把最新的数据传入
+  const newControllerMetas = useMemo(() => controllerMetas.map(meta => meta.id === value.id ? value : meta), [controllerMetas, value])
+
   return (
-    <ControllerMetasContext.Provider value={controllerMetas}>
+    <ControllerMetasContext.Provider value={newControllerMetas}>
       <ControllerMetaContext.Provider value={value}>
         <SytledContent id="reactions-editor-container">
           <LeftArea>
@@ -110,7 +113,7 @@ export const ControllerMetaEditorAntd5 = memo((
               materialCategories={materialCategories}
               setters={{ VariableSelect }}
               {...other}
-              canBeReferencedLogflowMetas={extractLogicFlowMetas(controllerMetas)}
+              canBeReferencedLogflowMetas={extractLogicFlowMetas(newControllerMetas)}
               toolboxAddons={
                 <Panel header={t('componentControl')} key="componentControl">
                   <ComponentList />
