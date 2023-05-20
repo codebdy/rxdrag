@@ -3,6 +3,7 @@ import { useTrans } from "@rxdrag/logicflow-editor-antd5";
 import { useAllControllerMetas } from "@rxdrag/minions-controller-editor";
 import { useGraph, useDnd, useGetNodeConfig } from "@rxdrag/minions-logicflow-editor";
 import { setPropMaterial, setVariableMaterial, listenVariableMaterial, readVariableMaterial, reactionMaterial } from "@rxdrag/minions-react-materials";
+import { IReactionConfig } from "@rxdrag/minions-runtime-react";
 import { IActivityMaterial, IActivityDefine, ILogicFlowDefinition } from "@rxdrag/minions-schema";
 import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon, variableIcon } from "@rxdrag/react-shared";
 import { createUuid } from "@rxdrag/shared";
@@ -63,7 +64,7 @@ export const ComponentList = memo((
       if (!graph) {
         return;
       }
-      const nodeMeta: IActivityDefine = {
+      const nodeMeta: IActivityDefine<IReactionConfig> = {
         id: createUuid(),
         label: reaction.label || reaction.name,
         type: marterial.activityType,
@@ -71,7 +72,7 @@ export const ComponentList = memo((
         ...marterial.defaultPorts,
         config: {
           controllerId,
-          reactionRef: reaction.id,
+          logicFlowId: reaction.id,
         }
       }
       const node = graph.createNode(getNodeConfig(nodeMeta));
