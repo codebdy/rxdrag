@@ -40,8 +40,8 @@ export class LogicFlow<LogicFlowContext> {
           this.jointers.outputs.push(new Jointer(activityMeta.id, activityMeta.activityName || "output"));
           break;
         case ActivityType.Activity:
+        case ActivityType.LogicFlowActivity:
           if (activityMeta.activityName) {
-            //通过material上的 reation factory 生成reaction节点
             const activityClass = activityConstructors[activityMeta.activityName]
             if (!activityClass) {
               throw new Error("Can not find activity by name:" + activityMeta.activityName)

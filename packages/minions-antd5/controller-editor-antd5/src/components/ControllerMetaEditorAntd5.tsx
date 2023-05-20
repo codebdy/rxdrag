@@ -12,6 +12,7 @@ import { useLocalesManager, useTranslate } from "@rxdrag/react-locales";
 import { controllerEditorLocales } from "../locales";
 import { ComponentList } from "./ComponentList";
 import { Collapse } from "antd";
+import { useExtractReferencedLogicFlowMetas } from "../hooks/useExtractReferencedLogicFlowMetas";
 
 const { Panel } = Collapse;
 
@@ -53,7 +54,8 @@ export const ControllerMetaEditorAntd5 = memo((
   const { value, onChange, controllerMetas, materialCategories, eventMetas, ...other } = props
   const [localsRegiterFlag, setLocalsRegisterFlag] = useState(0)
   const [selected, setSelected] = useState<string>()
-
+  const extractLogicFlowMetas = useExtractReferencedLogicFlowMetas();
+  
   const localesManger = useLocalesManager();
   const t = useTranslate();
 
@@ -108,6 +110,7 @@ export const ControllerMetaEditorAntd5 = memo((
               materialCategories={materialCategories}
               setters={{ VariableSelect }}
               {...other}
+              canBeReferencedLogflowMetas={extractLogicFlowMetas(controllerMetas)}
               toolboxAddons={
                 <Panel header={t('componentControl')} key="componentControl">
                   <ComponentList />

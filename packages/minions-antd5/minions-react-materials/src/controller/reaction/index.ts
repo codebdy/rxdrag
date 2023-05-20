@@ -7,7 +7,7 @@ export const reactionMaterial: IActivityMaterial<ReactNode> = {
   activityName: ReactionActivityName,
   icon: methodIcon,
   label: "reaction",
-  activityType: ActivityType.Activity,
+  activityType: ActivityType.LogicFlowActivity,
   defaultPorts: {
   },
 }

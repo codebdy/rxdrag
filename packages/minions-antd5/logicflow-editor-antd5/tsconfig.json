@@ -1,5 +1,5 @@
 {
   "extends": "@rxdrag/tsconfig/react-library.json",
-  "include": [".", "../controller-editor-antd5/src/components/ComponentList.tsx"],
+  "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }

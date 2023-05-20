@@ -8,7 +8,11 @@ export enum ActivityType {
   Start = 'Start',
   End = 'End',
   Activity = 'Activity',
-  //LogicFlowActivity = "LogicFlowActivity"
+  LogicFlowActivity = "LogicFlowActivity"
+}
+
+export interface ILogicFlowConfig {
+  logicFlowId: string
 }
 
 export interface IActivityDefine<ConfigMeta = unknown> {

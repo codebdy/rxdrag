@@ -1,11 +1,15 @@
 import { useCallback } from "react"
 import { useTransformPorts } from "./useTransformPorts"
 import { IActivityMaterial } from "@rxdrag/minions-schema"
-import { IThemeToken, usePortsConfig, useGetNodeWidth, useGetNodeHeight, useGetSubLabel, IActivityNode } from "@rxdrag/minions-logicflow-editor"
+import { IThemeToken, IActivityNode } from "../interfaces"
+import { useGetNodeHeight } from "./useGetNodeHeight"
+import { useGetNodeWidth } from "./useGetNodeWidth"
+import { useGetSubLabel } from "./useGetSubLabel"
+import { usePortsConfig } from "./usePortsConfig"
 
-export function useGetControllerReactionConfig(token: IThemeToken) {
+export function useGetLogicFlowNodeConfig(token: IThemeToken) {
 
-  const transformPorts = useTransformPorts(token)
+  const transformPorts = useTransformPorts()
   const portsGroup = usePortsConfig()
   const getNodeWidth = useGetNodeWidth()
   const getHeight = useGetNodeHeight()

@@ -1,10 +1,11 @@
-import { IPortDefine, IActivityDefine } from "@rxdrag/minions-schema";
+import { IPortDefine, IActivityDefine, ActivityType, ILogicFlowConfig } from "@rxdrag/minions-schema";
 import { useCallback } from "react";
 import { useThemeToken } from "./useThemeToken";
+import { useGetLogicFlowNodePorts } from "./useGetLogicFlowNodePorts";
 
 export function useTransformPorts() {
   const token = useThemeToken()
-  //const getControllerPorts = useGetControllerReactionPorts();
+  const getLogicFlowPorts = useGetLogicFlowNodePorts();
   const doTransform = useCallback((ports: IPortDefine[] | undefined, group: 'in' | 'out') => {
     return ports?.map(
       port => ({
@@ -42,19 +43,19 @@ export function useTransformPorts() {
   }, [token.colorBgContainer, token.colorTextSecondary])
 
   const transform = useCallback((meta: IActivityDefine) => {
-    // if (meta.type === ActivityType.ControllerReaction) {
-    //   const ins = doTransform(getControllerPorts(meta, 'in'), 'in') || []
-    //   const outs = doTransform(getControllerPorts(meta, 'out'), 'out') || []
-    //   return [...ins, ...outs]
-    // } else {
-    //   const ins = doTransform(meta.inPorts, 'in') || []
-    //   const outs = doTransform(meta.outPorts, 'out') || []
-    //   return [...ins, ...outs]
-    // }
-    const ins = doTransform(meta.inPorts, 'in') || []
-    const outs = doTransform(meta.outPorts, 'out') || []
-    return [...ins, ...outs]
-  }, [doTransform])
+    if (meta.type === ActivityType.LogicFlowActivity) {
+      const ins = doTransform(getLogicFlowPorts(meta as IActivityDefine<ILogicFlowConfig>, 'in'), 'in') || []
+      const outs = doTransform(getLogicFlowPorts(meta as IActivityDefine<ILogicFlowConfig>, 'out'), 'out') || []
+      return [...ins, ...outs]
+    } else {
+      const ins = doTransform(meta.inPorts, 'in') || []
+      const outs = doTransform(meta.outPorts, 'out') || []
+      return [...ins, ...outs]
+    }
+    // const ins = doTransform(meta.inPorts, 'in') || []
+    // const outs = doTransform(meta.outPorts, 'out') || []
+    // return [...ins, ...outs]
+  }, [doTransform, getLogicFlowPorts])
 
   return transform
 }

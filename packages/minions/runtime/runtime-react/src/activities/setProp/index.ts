@@ -1,17 +1,18 @@
 
-import { SingleInputActivity, activity } from "@rxdrag/minions-runtime";
+import { activity } from "@rxdrag/minions-runtime";
 import { IActivityDefine } from "@rxdrag/minions-schema";
-import { ControllerReactionFactoryOptions } from "../hooks/useFactoryOptions";
+import { IControllerContext } from "../../interfaces";
+import { AbstractControllerActivity, IControllerConfig } from "../AbstractControllerActivity";
 
 export const SetPropActivityName = "system-react.setProp"
-export interface ISetPropConfig {
+export interface ISetPropConfig extends IControllerConfig{
   prop?: string
 }
 
 @activity(SetPropActivityName)
-export class SetPropActivity extends SingleInputActivity<ISetPropConfig, ControllerReactionFactoryOptions> {
-  constructor(meta: IActivityDefine<ISetPropConfig>, options: ControllerReactionFactoryOptions) {
-    super(meta, options)
+export class SetPropActivity extends AbstractControllerActivity<ISetPropConfig> {
+  constructor(meta: IActivityDefine<ISetPropConfig>, context: IControllerContext) {
+    super(meta, context)
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("SetProp inputs count error")
     }
@@ -19,7 +20,7 @@ export class SetPropActivity extends SingleInputActivity<ISetPropConfig, Control
 
   execute = (inputValue: string) => {
     if (this.meta.config?.prop) {
-      this.context?.controller?.setProp(this.meta.config.prop, inputValue)
+      this.controller?.setProp(this.meta.config.prop, inputValue)
     }
   }
 }

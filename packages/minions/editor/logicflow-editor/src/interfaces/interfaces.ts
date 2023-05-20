@@ -17,7 +17,7 @@ export interface IActivityNode extends IActivityDefine {
 }
 
 export type ILogicMetas = {
-  nodes: IActivityDefine<undefined>[];
+  nodes: IActivityNode[];
   lines: ILineDefine[];
 }
 
