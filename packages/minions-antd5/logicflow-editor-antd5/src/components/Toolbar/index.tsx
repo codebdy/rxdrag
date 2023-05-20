@@ -11,6 +11,7 @@ const StyledToolbar = styled.div`
   padding: 0 16px;
   height: 40px;
   align-items: center;
+  width: 100%;
   border-bottom: ${props => props.theme.token?.colorBorder} solid 1px;
 `
 

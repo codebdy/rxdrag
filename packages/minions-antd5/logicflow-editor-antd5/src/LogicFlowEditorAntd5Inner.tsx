@@ -1,5 +1,5 @@
-import { ReactNode, memo, useMemo } from "react"
-import { Toolbox, PropertyBox } from "./components"
+import { ReactNode, memo, useCallback, useMemo, useState } from "react"
+import { Toolbox, PropertyBox, Toolbar } from "./components"
 import { useTransMaterialCategorys } from "./hooks/useTransMaterialCategorys"
 import { ILogicMetas, LogicFlowEditor } from "@rxdrag/minions-logicflow-editor"
 import { ActivityMaterialCategory, IActivityMaterial } from "@rxdrag/minions-schema"
@@ -18,20 +18,27 @@ export const ControllerMetaEditorAntd5Inner = memo((
   props: LogicFlowEditorAntd5InnerProps
 ) => {
   const { value, onChange, materialCategories, setters, toolboxAddons } = props
+  const [showMap, setShowMap] = useState(false);
   const [, token] = useToken();
   const categories = useTransMaterialCategorys(materialCategories);
   const materials = useMemo(() => {
     const materials: IActivityMaterial<ReactNode>[] = []
     return materials.concat(...categories.map(category => category.materials))
   }, [categories])
+
+  const handleToggleShowMap = useCallback(() => {
+    setShowMap(show => !show)
+  }, [])
   return (
     <LogicFlowEditor
       value={value}
       onChange={onChange}
+      toolbar={<Toolbar showMap={showMap} toggleShowMap={handleToggleShowMap} />}
       toolbox={<Toolbox materialCategories={categories} addons={toolboxAddons} />}
       propertyBox={<PropertyBox setters={setters} />}
       token={token}
       materials={materials}
+      showMap={showMap}
     />
   )
 })
