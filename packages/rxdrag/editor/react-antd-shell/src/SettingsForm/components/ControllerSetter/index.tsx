@@ -56,9 +56,9 @@ export const ControllerSetter = memo((props: {
 
   const handleChange = useCallback((meta?: IControllerMeta) => {
     if (value) {
-      setInputValue({ ...meta, id: value.id, name: value?.name })
+      setInputValue({ ...meta, id: value.id, name: value?.name||node?.title })
     }
-  }, [value]);
+  }, [node?.title, value]);
 
   const handleOk = useCallback(() => {
     onChange?.(inputValue)

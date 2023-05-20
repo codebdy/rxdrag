@@ -24,8 +24,7 @@ export function useControllerMetas() {
     if (latestNode) {
       const nodes: ITreeNode<unknown, IControllerMeta>[] = []
       processNode(latestNode, nodes)
-
-      return nodes.reverse().map(node => ({ ...node.meta?.["x-controller"] || {}, name: node.meta?.["x-controller"]?.name || node.title })) as IControllerMeta[]
+      return nodes.map(node => ({ ...node.meta?.["x-controller"] || {}, name: node.meta?.["x-controller"]?.name || node.title })) as IControllerMeta[]
     }
 
     return []

@@ -86,28 +86,30 @@ export const ComponentList = memo((
     <>
       {
         controllerMetas.map((ctrl, index) => {
-          const controller: IControllerMeta = currentController?.id === ctrl.id ? currentController : ctrl
+          const controllerMeta: IControllerMeta = currentController?.id === ctrl.id ? currentController : ctrl
           return (
             <Container
               key={ctrl.id}
             >
               <Typography.Text type="secondary" style={{ marginTop: index !== 0 ? 8 : 0 }}>
-                {controller.name}
+                {controllerMeta.name || controllerMeta.id}
               </Typography.Text>
               <ReactionList>
                 <Space direction="vertical">
-                  <ItemTitle onMouseDown={startDefaultDragFn(setPropMaterial, controller.id, setPropMaterial.activityName)}>{setPropIcon} {t("$setProp")}</ItemTitle>
+                  <ItemTitle
+                    onMouseDown={startDefaultDragFn(setPropMaterial, controllerMeta.id, setPropMaterial.activityName)}>{setPropIcon} {t("$setProp")}
+                  </ItemTitle>
                   {
-                    !!controller.variables?.length &&
+                    !!controllerMeta.variables?.length &&
                     <>
-                      <ItemTitle onMouseDown={startDefaultDragFn(setVariableMaterial, controller.id, setVariableMaterial.activityName)}>{setVariableIcon} {t("$setVariable")}</ItemTitle>
-                      <ItemTitle onMouseDown={startDefaultDragFn(listenVariableMaterial, controller.id, setVariableMaterial.activityName)}>{listenVariableIcon} {t("$listenVariable")}</ItemTitle>
-                      <ItemTitle onMouseDown={startDefaultDragFn(readVariableMaterial, controller.id, setVariableMaterial.activityName)}>{variableIcon} {t("$readVariable")}</ItemTitle>
+                      <ItemTitle onMouseDown={startDefaultDragFn(setVariableMaterial, controllerMeta.id, setVariableMaterial.activityName)}>{setVariableIcon} {t("$setVariable")}</ItemTitle>
+                      <ItemTitle onMouseDown={startDefaultDragFn(listenVariableMaterial, controllerMeta.id, setVariableMaterial.activityName)}>{listenVariableIcon} {t("$listenVariable")}</ItemTitle>
+                      <ItemTitle onMouseDown={startDefaultDragFn(readVariableMaterial, controllerMeta.id, setVariableMaterial.activityName)}>{variableIcon} {t("$readVariable")}</ItemTitle>
                     </>
                   }
                   {
-                    controller.reactions?.map(reaction => {
-                      return (<ItemTitle key={reaction.id} onMouseDown={startDragFn(reaction, reactionMaterial, controller.id)}>{methodIcon} {reaction.label}</ItemTitle>)
+                    controllerMeta.reactions?.map(reaction => {
+                      return (<ItemTitle key={reaction.id} onMouseDown={startDragFn(reaction, reactionMaterial, controllerMeta.id)}>{methodIcon} {reaction.label}</ItemTitle>)
                     })
                   }
                 </Space>
