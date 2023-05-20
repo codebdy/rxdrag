@@ -1,8 +1,7 @@
-import { useToken } from "antd/es/theme/internal"
-import React, { memo, useMemo } from "react"
-import styled, { ThemeProvider } from "styled-components"
-import { useThemeMode } from "@rxdrag/react-core"
 import { IThemeToken } from "@rxdrag/minions-logicflow-editor"
+import { useToken } from "antd/es/theme/internal"
+import { memo, useMemo } from "react"
+import styled, { ThemeProvider } from "styled-components"
 
 const Container = styled.div`
   width: 100%;
@@ -12,13 +11,13 @@ const Container = styled.div`
   background-color: ${props => props.theme.token?.colorBgBase};
 `
 
+
 export const ShellContainer = memo((
   props: {
     children?: React.ReactNode
   }
 ) => {
   const [, token] = useToken()
-  const themeMode = useThemeMode()
   const theme: { token: IThemeToken } = useMemo(() => {
     return {
       token
@@ -27,7 +26,7 @@ export const ShellContainer = memo((
 
   return (
     <ThemeProvider theme={theme}>
-      <Container className={themeMode}>
+      <Container>
         {props.children}
       </Container>
     </ThemeProvider>

@@ -62,6 +62,21 @@ importers:
       '@ant-design/icons':
         specifier: ^4.8.0
         version: registry.npmmirror.com/@ant-design/icons@4.8.0(react-dom@18.2.0)(react@18.2.0)
+      '@rxdrag/controller-editor-antd5':
+        specifier: workspace:*
+        version: link:../../packages/minions-antd5/controller-editor-antd5
+      '@rxdrag/minions-controller-editor':
+        specifier: workspace:*
+        version: link:../../packages/minions/editor/controller-editor
+      '@rxdrag/minions-logicflow-editor':
+        specifier: workspace:*
+        version: link:../../packages/minions/editor/logicflow-editor
+      '@rxdrag/minions-react-materials':
+        specifier: workspace:*
+        version: link:../../packages/minions-antd5/minions-react-materials
+      '@rxdrag/minions-runtime-react':
+        specifier: workspace:*
+        version: link:../../packages/minions/runtime/runtime-react
       antd:
         specifier: ^5.1.2
         version: registry.npmmirror.com/antd@5.1.2(react-dom@18.2.0)(react@18.2.0)
@@ -80,6 +95,9 @@ importers:
       react-router-dom:
         specifier: ^6.9.0
         version: registry.npmmirror.com/react-router-dom@6.9.0(react-dom@18.2.0)(react@18.2.0)
+      styled-components:
+        specifier: ^5.3.9
+        version: registry.npmmirror.com/styled-components@5.3.9(react-dom@18.2.0)(react-is@17.0.2)(react@18.2.0)
       vite-tsconfig-paths:
         specifier: ^4.0.7
         version: registry.npmmirror.com/vite-tsconfig-paths@4.0.7(typescript@4.9.4)(vite@4.2.0)
@@ -3144,7 +3162,7 @@ packages:
     engines: {node: '>=8.6'}
     dependencies:
       braces: 3.0.2
-      picomatch: 2.3.1
+      picomatch: registry.npmmirror.com/picomatch@2.3.1
     dev: true
 
   /mimic-fn@2.1.0:
@@ -3432,11 +3450,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       path-root-regex: 0.1.2
-    dev: true
-
-  /picomatch@2.3.1:
-    resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
-    engines: {node: '>=8.6'}
     dev: true
 
   /pidtree@0.6.0:
