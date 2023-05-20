@@ -34,7 +34,7 @@ export const ListItemReaction = memo((
     setHover(false);
   }, []);
 
-  const handleItemClick: MenuProps['onClick'] = useCallback(({ key }: any) => {
+  const handleItemClick: MenuProps['onClick'] = useCallback(({ key }: { key: string }) => {
     setOpen(false);
     if (key === 'edit') {
       setEditOpen(true)

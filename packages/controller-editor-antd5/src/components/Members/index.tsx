@@ -12,6 +12,7 @@ import { useTranslate } from "@rxdrag/react-locales"
 import { IControllerMeta, IVariableDefineMeta } from "@rxdrag/minions-runtime-react";
 import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
 import { IEventMeta } from "@rxdrag/minions-controller-editor";
+import { ListItemEvent } from "./ListItemEvent";
 
 const { Text } = Typography;
 
@@ -49,24 +50,6 @@ export const Members = memo((
   const { value, selected, onSelect, onChange, eventMetas } = props
   const [addReactionOpen, setAddReactionOpen] = useState(false)
   const [addVariableOpen, setAddVariableOpen] = useState(false)
-
-  // useEffect(() => {
-  //   const eventMetas: ILogicFlowDefinition[] = [...(value?.events || [])]
-  //   for (const event of events || []) {
-  //     if (!value?.events?.find(evt => evt.name === event.name)) {
-  //       eventMetas.push({
-  //         id: createUuid(),
-  //         name: event.name,
-  //         label: event.label,
-  //         nodes: [],
-  //         lines: [],
-  //       })
-  //     }
-  //   }
-  //   if (value) {
-  //     setInputValue({ ...value, events: eventMetas })
-  //   }
-  // }, [events, value])
 
   const handleAddEvent = useCallback((event: IEventMeta) => {
     const ev = {
@@ -159,33 +142,48 @@ export const Members = memo((
     onChange?.({ ...value, variables: value?.variables?.map(va => va.id !== meta.id ? va : { ...va, ...meta }) })
   }, [onChange, value])
 
+  const handleRemoveEvent = useCallback((name: string) => {
+    onChange?.({ ...value, events: value?.events?.filter(ev => ev.name !== name) })
+  }, [onChange, value])
+
   return (
     <>
       <Title>
         <Text type="secondary">{t("events")}</Text>
-        <Dropdown
-          menu={{ items }}
-          trigger={['click']}
-        >
-          <Button
-            size="small"
-            type="text"
-            icon={<PlusOutlined />}
-          ></Button>
-        </Dropdown>
+        {
+          items.length > 0 && <Dropdown
+            menu={{ items }}
+            trigger={['click']}
+          >
+            <Button
+              size="small"
+              type="text"
+              icon={<PlusOutlined />}
+            ></Button>
+          </Dropdown>
+        }
       </Title>
       <List>
         {
-          value?.events?.map((event) => {
+          eventMetas?.filter(ev => value?.events?.find(evt => ev.name === evt.name)).map(ev => value?.events?.find(evt => ev.name === evt.name)).map((event) => {
+            if (!event) {
+              console.warn(`Event not be displayed because it is not in event config`)
+              return <></>
+            }
             return (
-              <ListItem
+              <ListItemEvent
                 key={event.name}
-                icon={<ThunderboltOutlined />}
-                onClick={() => handleMemberClick(event.id)}
-                type={selected === event.id ? "default" : "text"}
+                name={event.name || ""}
+                onRemove={handleRemoveEvent}
               >
-                {event.label || event.name}
-              </ListItem>
+                <ListItem
+                  icon={<ThunderboltOutlined />}
+                  onClick={() => handleMemberClick(event.id)}
+                  type={selected === event.id ? "default" : "text"}
+                >
+                  {event.label || event.name}
+                </ListItem>
+              </ListItemEvent>
             )
           })
         }
