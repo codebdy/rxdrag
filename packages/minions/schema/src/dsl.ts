@@ -8,6 +8,7 @@ export enum ActivityType {
   Start = 'Start',
   End = 'End',
   Activity = 'Activity',
+  LogicFlowActivity = "LogicFlowActivity"
 }
 
 export interface IActivityDefine<ConfigMeta = unknown> {
@@ -21,7 +22,7 @@ export interface IActivityDefine<ConfigMeta = unknown> {
   outPorts?: IPortDefine[];
 }
 
-export interface IPortRefDefine{
+export interface IPortRefDefine {
   nodeId: string;
   portId?: string;
 }

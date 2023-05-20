@@ -3,7 +3,7 @@ import { setPropSchema } from "./schema"
 import { ReactNode } from "react"
 import { createUuid } from "@rxdrag/shared";
 import { setPropIcon } from "@rxdrag/react-shared";
-import { SetPropActivityName } from "@rxdrag/minions-runtime-react";
+import { ISetPropConfig, SetPropActivityName } from "@rxdrag/minions-runtime-react";
 
 export const setPropMaterial: IActivityMaterial<ReactNode> = {
   icon: setPropIcon,
@@ -19,7 +19,7 @@ export const setPropMaterial: IActivityMaterial<ReactNode> = {
     ],
   },
   schema: setPropSchema,
-  subTitle: (config?: IControllerReactionConfig) => {
+  subTitle: (config?: ISetPropConfig) => {
     return config?.prop
   },
   activityName: SetPropActivityName,

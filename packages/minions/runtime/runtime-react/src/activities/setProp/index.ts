@@ -9,7 +9,7 @@ export interface ISetPropConfig {
 }
 
 @activity(SetPropActivityName)
-export class SetProp extends SingleInputActivity<ISetPropConfig, ControllerReactionFactoryOptions> {
+export class SetPropActivity extends SingleInputActivity<ISetPropConfig, ControllerReactionFactoryOptions> {
   constructor(meta: IActivityDefine<ISetPropConfig>, options: ControllerReactionFactoryOptions) {
     super(meta, options)
     if (Object.keys(meta.inPorts || {}).length !== 1) {

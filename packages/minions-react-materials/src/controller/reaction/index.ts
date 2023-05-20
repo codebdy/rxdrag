@@ -1,15 +1,13 @@
+import { ReactionActivityName } from "@rxdrag/minions-runtime-react";
+import { ActivityType, IActivityMaterial } from "@rxdrag/minions-schema";
 import { methodIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
-import { ControllerReaction } from "./factory";
 import { ReactNode } from "react";
 
-export const activityMaterial: IActivityMaterial<ReactNode> = {
-  name: "controllerReaction",
+export const reactionMaterial: IActivityMaterial<ReactNode> = {
+  activityName: ReactionActivityName,
   icon: methodIcon,
   label: "reaction",
-  activityType: ActivityType.ControllerReaction,
-  meta: {
-
+  activityType: ActivityType.LogicFlowActivity,
+  defaultPorts: {
   },
-  reaction: ControllerReaction,
 }
