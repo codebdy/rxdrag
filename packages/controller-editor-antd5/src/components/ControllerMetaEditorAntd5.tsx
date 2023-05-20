@@ -1,6 +1,6 @@
 import { memo, ReactNode, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
-import { ControllerContext } from "@rxdrag/minions-controller-editor";
+import { ControllerContext, IEventMeta } from "@rxdrag/minions-controller-editor";
 import { IControllerMeta } from "@rxdrag/minions-runtime-react";
 import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
 import { ControllersContext } from "@rxdrag/react-runner";
@@ -41,12 +41,13 @@ export type ControllerMetaEditorAntd5Props = {
   onChange?: (value?: IControllerMeta) => void,
   controllerMetas: IControllerMeta[],
   materialCategories: ActivityMaterialCategory<ReactNode>[],
+  eventMetas?: IEventMeta[]
 }
 
 export const ControllerMetaEditorAntd5 = memo((
   props: ControllerMetaEditorAntd5Props
 ) => {
-  const { value, onChange, controllerMetas, materialCategories, ...other } = props
+  const { value, onChange, controllerMetas, materialCategories, eventMetas, ...other } = props
   const [localsRegiterFlag, setLocalsRegisterFlag] = useState(0)
 
   const [selected, setSelected] = useState<string>()
@@ -90,6 +91,7 @@ export const ControllerMetaEditorAntd5 = memo((
               key={localsRegiterFlag}
               value={value}
               selected={selected}
+              eventMetas={eventMetas}
               onSelect={setSelected}
               onChange={handleMemberChange}
             />

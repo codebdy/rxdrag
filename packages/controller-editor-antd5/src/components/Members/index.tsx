@@ -1,6 +1,6 @@
 import { PlusOutlined, ThunderboltOutlined } from "@ant-design/icons";
 import { Button, Dropdown, MenuProps, Typography } from "antd";
-import { memo, useCallback, useState } from "react"
+import { memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components";
 import { ListItemReaction } from "./ListItemReaction";
 import { ListItemVariable } from "./ListItemVariable";
@@ -11,6 +11,7 @@ import { createUuid } from "@rxdrag/shared"
 import { useTranslate } from "@rxdrag/react-locales"
 import { IControllerMeta, IVariableDefineMeta } from "@rxdrag/minions-runtime-react";
 import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
+import { IEventMeta } from "@rxdrag/minions-controller-editor";
 
 const { Text } = Typography;
 
@@ -36,33 +37,59 @@ const ListItem = styled((props: any) => <Button type="text" {...props} />)`
   flex:1;
 `
 
-const items: MenuProps['items'] = [
-  {
-    label: <a href="https://www.antgroup.com">1st menu item</a>,
-    key: '0',
-  },
-  {
-    label: <a href="https://www.aliyun.com">2nd menu item</a>,
-    key: '1',
-  },
-  {
-    label: '3rd menu item',
-    key: '3',
-  },
-];
-
-
 export const Members = memo((
   props: {
     value: IControllerMeta,
     selected?: string,
     onSelect?: (id: string) => void,
     onChange?: (value?: IControllerMeta) => void,
+    eventMetas?: IEventMeta[]
   }
 ) => {
-  const { value, selected, onSelect, onChange } = props
+  const { value, selected, onSelect, onChange, eventMetas } = props
   const [addReactionOpen, setAddReactionOpen] = useState(false)
   const [addVariableOpen, setAddVariableOpen] = useState(false)
+
+  // useEffect(() => {
+  //   const eventMetas: ILogicFlowDefinition[] = [...(value?.events || [])]
+  //   for (const event of events || []) {
+  //     if (!value?.events?.find(evt => evt.name === event.name)) {
+  //       eventMetas.push({
+  //         id: createUuid(),
+  //         name: event.name,
+  //         label: event.label,
+  //         nodes: [],
+  //         lines: [],
+  //       })
+  //     }
+  //   }
+  //   if (value) {
+  //     setInputValue({ ...value, events: eventMetas })
+  //   }
+  // }, [events, value])
+
+  const handleAddEvent = useCallback((event: IEventMeta) => {
+    const ev = {
+      id: createUuid(),
+      name: event.name,
+      label: event.label,
+      nodes: [],
+      lines: [],
+    }
+
+    onChange?.({ ...value, events: [...value?.events || [], ev] })
+  }, [onChange, value])
+
+  const items: MenuProps['items'] = useMemo(() => {
+    return eventMetas?.filter(event => !value.events?.find(ev => ev.name === event.name)).map(ev => {
+      return {
+        key: ev.name,
+        label: ev.label,
+        onClick: () => handleAddEvent(ev)
+      }
+    }) || []
+  }, [eventMetas, handleAddEvent, value.events]);
+
 
   const t = useTranslate()
 
@@ -136,7 +163,10 @@ export const Members = memo((
     <>
       <Title>
         <Text type="secondary">{t("events")}</Text>
-        <Dropdown menu={{ items }} trigger={['click']}>
+        <Dropdown
+          menu={{ items }}
+          trigger={['click']}
+        >
           <Button
             size="small"
             type="text"

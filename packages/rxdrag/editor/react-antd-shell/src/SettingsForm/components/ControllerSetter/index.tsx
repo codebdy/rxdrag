@@ -7,7 +7,6 @@ import { useControllerMetas } from "./hooks/useControllerMetas"
 import { activityMaterialLocales, activityMaterialCategories } from "@rxdrag/minions-react-materials"
 import { ITreeNode } from "@rxdrag/core"
 import { IControllerMeta } from "@rxdrag/minions-runtime-react"
-import { ILogicFlowDefinition } from "@rxdrag/minions-schema"
 import { ControllerMetaEditorAntd5 } from "@rxdrag/controller-editor-antd5"
 import { IEventMeta } from "@rxdrag/minions-controller-editor"
 
@@ -28,23 +27,6 @@ export const ControllerSetter = memo((props: {
     setInputValue(value)
   }, [value])
 
-  useEffect(() => {
-    const eventMetas: ILogicFlowDefinition[] = [...(value?.events || [])]
-    for (const event of events || []) {
-      if (!value?.events?.find(evt => evt.name === event.name)) {
-        eventMetas.push({
-          id: createUuid(),
-          name: event.name,
-          label: event.label,
-          nodes: [],
-          lines: [],
-        })
-      }
-    }
-    if (value) {
-      setInputValue({ ...value, events: eventMetas })
-    }
-  }, [events, value])
 
   const showModal = useCallback(() => {
     setIsModalOpen(true);
@@ -127,6 +109,7 @@ export const ControllerSetter = memo((props: {
                 controllerMetas={controllers}
                 materialCategories={activityMaterialCategories}
                 locales={activityMaterialLocales}
+                eventMetas={events}
               />
             }
           </Modal>

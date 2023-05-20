@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useAllControllers, useController } from "@rxdrag/minions-controller-editor"
 import { useSelectedNode } from "@rxdrag/minions-logicflow-editor"
+import { IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { Select } from "antd"
-import React from "react"
 import { memo, useMemo } from "react"
 
 export const VariableSelect = memo((
@@ -18,7 +18,7 @@ export const VariableSelect = memo((
   const targetController = useMemo(() => {
     const ctrl = controllers.find(ctrl => ctrl.id === (selectedReactionNode?.config as any)?.controllerId)
     const controller = (currentController as any)?.id === ctrl?.id ? currentController : ctrl
-    return controller
+    return controller as IControllerMeta | undefined
   }, [controllers, currentController, selectedReactionNode?.config])
 
   return (
