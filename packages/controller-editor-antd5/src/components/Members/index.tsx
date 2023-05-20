@@ -67,6 +67,7 @@ export const Members = memo((
     return eventMetas?.filter(event => !value.events?.find(ev => ev.name === event.name)).map(ev => {
       return {
         key: ev.name,
+        icon: <ThunderboltOutlined />,
         label: ev.label,
         onClick: () => handleAddEvent(ev)
       }

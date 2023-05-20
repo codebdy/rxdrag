@@ -3,7 +3,7 @@ import { labelSchema, nameSchema } from "../baseSchema";
 import { conditionMaterial } from "./condition";
 import { delayMaterial } from "./delay";
 import { constValueMaterial } from "./constValue";
-import { intervalMaterial } from "./interval";
+import { signalsMaterial } from "./signals";
 import { loopMaterial } from "./loop";
 import { mergeMaterial } from "./merge";
 import { randomMaterial } from "./random";
@@ -37,6 +37,6 @@ export const basicReactions: IActivityMaterial<ReactNode>[] = [
   //switchMaterial,
   delayMaterial,
   randomMaterial,
-  intervalMaterial,
+  signalsMaterial,
   constValueMaterial,
 ]
