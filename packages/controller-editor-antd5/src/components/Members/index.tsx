@@ -1,5 +1,5 @@
 import { PlusOutlined, ThunderboltOutlined } from "@ant-design/icons";
-import { Button, Typography } from "antd";
+import { Button, Dropdown, MenuProps, Typography } from "antd";
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components";
 import { ListItemReaction } from "./ListItemReaction";
@@ -11,7 +11,6 @@ import { createUuid } from "@rxdrag/shared"
 import { useTranslate } from "@rxdrag/react-locales"
 import { IControllerMeta, IVariableDefineMeta } from "@rxdrag/minions-runtime-react";
 import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
-import { EventDialog } from "./EventDialog";
 
 const { Text } = Typography;
 
@@ -37,6 +36,22 @@ const ListItem = styled((props: any) => <Button type="text" {...props} />)`
   flex:1;
 `
 
+const items: MenuProps['items'] = [
+  {
+    label: <a href="https://www.antgroup.com">1st menu item</a>,
+    key: '0',
+  },
+  {
+    label: <a href="https://www.aliyun.com">2nd menu item</a>,
+    key: '1',
+  },
+  {
+    label: '3rd menu item',
+    key: '3',
+  },
+];
+
+
 export const Members = memo((
   props: {
     value: IControllerMeta,
@@ -46,7 +61,6 @@ export const Members = memo((
   }
 ) => {
   const { value, selected, onSelect, onChange } = props
-  const [addEventOpen, setAddEventOpen] = useState(false)
   const [addReactionOpen, setAddReactionOpen] = useState(false)
   const [addVariableOpen, setAddVariableOpen] = useState(false)
 
@@ -58,17 +72,6 @@ export const Members = memo((
     }
   }, [onSelect])
 
-  const handleAddEvent= useCallback(() => {
-    setAddEventOpen(true)
-  }, [])
-
-  const handleAddEventOk = useCallback((name?: string) => {
-    
-  },[])
-
-  const handleAddEventCancel = useCallback(() => {
-    setAddEventOpen(false)
-  }, [])
 
   const handleAddReaction = useCallback(() => {
     setAddReactionOpen(true)
@@ -133,12 +136,13 @@ export const Members = memo((
     <>
       <Title>
         <Text type="secondary">{t("events")}</Text>
-        <Button
-          size="small"
-          type="text"
-          icon={<PlusOutlined />}
-          onClick={handleAddEvent}
-        ></Button>
+        <Dropdown menu={{ items }} trigger={['click']}>
+          <Button
+            size="small"
+            type="text"
+            icon={<PlusOutlined />}
+          ></Button>
+        </Dropdown>
       </Title>
       <List>
         {
@@ -214,12 +218,6 @@ export const Members = memo((
           })
         }
       </List>
-      <EventDialog
-        title={'$addEvent'}
-        open={addEventOpen}
-        onCancel={handleAddEventCancel}
-        onOk={handleAddEventOk}
-      />
       <NameDialog
         title={'$addReaction'}
         open={addReactionOpen}
