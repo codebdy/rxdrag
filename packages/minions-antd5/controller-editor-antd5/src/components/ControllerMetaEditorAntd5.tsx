@@ -17,7 +17,6 @@ import { useExtractReferencedLogicFlowMetas } from "../hooks/useExtractReference
 const { Panel } = Collapse;
 
 const SytledContent = styled.div`
-  height: calc(100vh - 160px);
   display: flex;
   border: ${props => props.theme.token?.colorBorder} solid 1px;
   .ant-drawer-header{
@@ -45,13 +44,14 @@ export type ControllerMetaEditorAntd5Props = {
   onChange?: (value?: IControllerMeta) => void,
   controllerMetas: IControllerMeta[],
   materialCategories: ActivityMaterialCategory<ReactNode>[],
-  eventMetas?: IEventMeta[]
+  eventMetas?: IEventMeta[],
+  height?: number | string,
 }
 
 export const ControllerMetaEditorAntd5 = memo((
   props: ControllerMetaEditorAntd5Props
 ) => {
-  const { value, onChange, controllerMetas, materialCategories, eventMetas, ...other } = props
+  const { value, onChange, controllerMetas, materialCategories, eventMetas, height, ...other } = props
   const [localsRegiterFlag, setLocalsRegisterFlag] = useState(0)
   const [selected, setSelected] = useState<string>()
   const extractLogicFlowMetas = useExtractReferencedLogicFlowMetas();
@@ -93,7 +93,7 @@ export const ControllerMetaEditorAntd5 = memo((
   return (
     <ControllerMetasContext.Provider value={newControllerMetas}>
       <ControllerMetaContext.Provider value={value}>
-        <SytledContent id="reactions-editor-container">
+        <SytledContent id="reactions-editor-container" style={{ height: height || 'calc(100vh - 160px)' }}>
           <LeftArea>
             <Members
               key={localsRegiterFlag}

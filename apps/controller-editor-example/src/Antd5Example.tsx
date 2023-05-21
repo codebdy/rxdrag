@@ -24,7 +24,7 @@ export const Antd5Example = memo(() => {
       <ControllerMetaEditorAntd5
         value={inputValue}
         onChange={handleChange}
-        controllerMetas={[]}
+        controllerMetas={[inputValue]}
         materialCategories={activityMaterialCategories}
         locales={activityMaterialLocales}
         eventMetas={[
@@ -41,6 +41,7 @@ export const Antd5Example = memo(() => {
             label: "事件3"
           },
         ]}
+        height={"100vh"}
       />
     </ShellContainer>
   )
