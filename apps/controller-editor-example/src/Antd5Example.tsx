@@ -3,6 +3,7 @@ import { memo, useCallback, useState } from "react"
 import { ControllerMetaEditorAntd5 } from "@rxdrag/controller-editor-antd5"
 import { IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { activityMaterialCategories, activityMaterialLocales } from "@rxdrag/minions-react-materials"
+import { Fieldy } from "@rxdrag/react-fieldy"
 
 export const Antd5Example = memo(() => {
   const [inputValue, setInputValue] = useState<IControllerMeta>({
@@ -20,29 +21,31 @@ export const Antd5Example = memo(() => {
 
 
   return (
-    <ShellContainer>
-      <ControllerMetaEditorAntd5
-        value={inputValue}
-        onChange={handleChange}
-        controllerMetas={[inputValue]}
-        materialCategories={activityMaterialCategories}
-        locales={activityMaterialLocales}
-        eventMetas={[
-          {
-            name: "event1",
-            label: "事件1"
-          },
-          {
-            name: "event2",
-            label: "事件2"
-          },
-          {
-            name: "event3",
-            label: "事件3"
-          },
-        ]}
-        height={"100vh"}
-      />
-    </ShellContainer>
+    <Fieldy>
+      <ShellContainer>
+        <ControllerMetaEditorAntd5
+          value={inputValue}
+          onChange={handleChange}
+          controllerMetas={[inputValue]}
+          materialCategories={activityMaterialCategories}
+          locales={activityMaterialLocales}
+          eventMetas={[
+            {
+              name: "event1",
+              label: "事件1"
+            },
+            {
+              name: "event2",
+              label: "事件2"
+            },
+            {
+              name: "event3",
+              label: "事件3"
+            },
+          ]}
+          height={"100%"}
+        />
+      </ShellContainer>
+    </Fieldy>
   )
 })

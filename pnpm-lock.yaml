@@ -77,6 +77,9 @@ importers:
       '@rxdrag/minions-runtime-react':
         specifier: workspace:*
         version: link:../../packages/minions/runtime/runtime-react
+      '@rxdrag/react-fieldy':
+        specifier: workspace:*
+        version: link:../../packages/fieldy/fieldy-react
       antd:
         specifier: ^5.1.2
         version: registry.npmmirror.com/antd@5.1.2(react-dom@18.2.0)(react@18.2.0)
