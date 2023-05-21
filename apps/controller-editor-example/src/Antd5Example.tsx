@@ -4,6 +4,7 @@ import { ControllerMetaEditorAntd5 } from "@rxdrag/controller-editor-antd5"
 import { IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { activityMaterialCategories, activityMaterialLocales } from "@rxdrag/minions-react-materials"
 import { Fieldy } from "@rxdrag/react-fieldy"
+import { Form } from "antd"
 
 export const Antd5Example = memo(() => {
   const [inputValue, setInputValue] = useState<IControllerMeta>({
@@ -23,28 +24,41 @@ export const Antd5Example = memo(() => {
   return (
     <Fieldy>
       <ShellContainer>
-        <ControllerMetaEditorAntd5
-          value={inputValue}
-          onChange={handleChange}
-          controllerMetas={[inputValue]}
-          materialCategories={activityMaterialCategories}
-          locales={activityMaterialLocales}
-          eventMetas={[
-            {
-              name: "event1",
-              label: "事件1"
-            },
-            {
-              name: "event2",
-              label: "事件2"
-            },
-            {
-              name: "event3",
-              label: "事件3"
-            },
-          ]}
-          height={"100%"}
-        />
+        <Form
+          labelAlign="left"
+          colon={false}
+          labelCol={{ span: 7 }}
+          wrapperCol={{ span: 17 }}
+          autoComplete="off"
+          labelWrap={true}
+          style={{
+            flex: 1,
+            height: '100%',
+          }}
+        >
+          <ControllerMetaEditorAntd5
+            value={inputValue}
+            onChange={handleChange}
+            controllerMetas={[inputValue]}
+            materialCategories={activityMaterialCategories}
+            locales={activityMaterialLocales}
+            eventMetas={[
+              {
+                name: "event1",
+                label: "事件1"
+              },
+              {
+                name: "event2",
+                label: "事件2"
+              },
+              {
+                name: "event3",
+                label: "事件3"
+              },
+            ]}
+            height={"100%"}
+          />
+        </Form>
       </ShellContainer>
     </Fieldy>
   )
