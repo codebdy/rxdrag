@@ -1,23 +1,20 @@
-import * as Koa from 'koa';
-import * as bodyParser from 'koa-bodyparser';
-import * as cors from '@koa/cors';
-import * as helmet from 'koa-helmet';
-import * as json from 'koa-json';
-import * as logger from 'koa-logger';
 import 'reflect-metadata';
-import router from './server';
+import { useKoaServer, useContainer } from 'routing-controllers';
+import { Container } from 'typedi';
 
-const app = new Koa();
-const port = process.env.PORT || 3000;
+import { ErrorHandler } from './middlewares/ErrorHandler';
+import { UserController } from './controllers/UserController';
+import { app, port } from './server';
 
-app.use(helmet());
-app.use(cors());
-app.use(json());
-app.use(logger());
-app.use(bodyParser());
+useContainer(Container);
 
-app.use(router.routes()).use(router.allowedMethods());
+const koaApp = useKoaServer(app, {
+  routePrefix: '/api',
+  defaultErrorHandler: false,
+  controllers: [UserController],
+  middlewares: [ErrorHandler]
+});
 
-app.listen(port, () => {
-  console.log(`🚀 App listening on the port ${port}`);
+koaApp.listen(port, () => {
+  console.log(`🚀 App run on http://localhost:${port}`);
 });

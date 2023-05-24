@@ -26,6 +26,6 @@
     "@rxdrag/tsconfig": "workspace:*",
     "typescript": "^4.9.3",
     "vite": "^4.2.0",
-    "vite-plugin-require-transform": "^1.0.9"
+    "vite-plugin-require-transform": "1.0.9"
   }
 }

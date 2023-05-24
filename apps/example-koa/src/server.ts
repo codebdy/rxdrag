@@ -1,11 +1,19 @@
-import * as Router from 'koa-router';
-import IndexController from './controllers/index.controller';
-import UsersController from './controllers/users.controller';
+import * as Koa from 'koa';
+import * as bodyParser from 'koa-bodyparser';
+import * as cors from '@koa/cors';
+import * as helmet from 'koa-helmet';
+import * as json from 'koa-json';
+import * as logger from 'koa-logger';
+import * as onerror from 'koa-onerror';
 
-const router = new Router();
+const app = new Koa();
+const port = process.env.PORT || 3000;
 
-router.get('/', IndexController.getIndex);
+onerror(app);
+app.use(helmet());
+app.use(cors());
+app.use(json());
+app.use(logger());
+app.use(bodyParser());
 
-router.get('/users', UsersController.getUsers);
-
-export default router;
+export { app, port };
