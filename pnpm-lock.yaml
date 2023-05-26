@@ -1485,6 +1485,9 @@ importers:
       '@rxdrag/eslint-config-custom':
         specifier: workspace:*
         version: link:../../../eslint-config-custom
+      '@rxdrag/fieldy-minions-materials':
+        specifier: workspace:*
+        version: link:../../../fieldy-minions/materials
       '@rxdrag/tsconfig':
         specifier: workspace:*
         version: link:../../../tsconfig

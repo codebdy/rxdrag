@@ -9,6 +9,8 @@ import { ITreeNode } from "@rxdrag/core"
 import { IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { ControllerMetaEditorAntd5 } from "@rxdrag/controller-editor-antd5"
 import { IEventMeta } from "@rxdrag/minions-controller-editor"
+import { fieldyActivityMaterialCategory, fieldyActivityMaterialLocales } from "@rxdrag/fieldy-minions-materials"
+import _ from "lodash";
 
 export const ControllerSetter = memo((props: {
   events?: IEventMeta[]
@@ -56,7 +58,7 @@ export const ControllerSetter = memo((props: {
 
   const handleChange = useCallback((meta?: IControllerMeta) => {
     if (value) {
-      setInputValue({ ...meta, id: value.id, name: value?.name||node?.title })
+      setInputValue({ ...meta, id: value.id, name: value?.name || node?.title })
     }
   }, [node?.title, value]);
 
@@ -107,8 +109,8 @@ export const ControllerSetter = memo((props: {
                 value={inputValue}
                 onChange={handleChange}
                 controllerMetas={controllers}
-                materialCategories={activityMaterialCategories}
-                locales={activityMaterialLocales}
+                materialCategories={[...activityMaterialCategories, fieldyActivityMaterialCategory]}
+                locales={_.merge(activityMaterialLocales, fieldyActivityMaterialLocales)}
                 eventMetas={events}
               />
             }

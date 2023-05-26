@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { forwardRef, memo, useMemo } from "react";
 import { ReactComponent } from "../types";
