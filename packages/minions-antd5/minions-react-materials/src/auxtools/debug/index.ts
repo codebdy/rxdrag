@@ -8,7 +8,7 @@ import { INodeSchema } from "@rxdrag/schema";
 import { DebugActivityName } from "@rxdrag/minions-activities"
 
 export const debugMaterial: IActivityMaterial<ReactNode, INodeSchema> = {
-  name: DebugActivityName,
+  activityName: DebugActivityName,
   icon: debugIcon,
   label: "$debug",
   activityType: ActivityType.Activity,
