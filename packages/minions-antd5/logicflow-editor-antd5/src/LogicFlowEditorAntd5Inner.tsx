@@ -12,20 +12,21 @@ export type LogicFlowEditorAntd5InnerProps = {
   materialCategories: ActivityMaterialCategory<ReactNode>[],
   setters?: IComponents,
   toolboxAddons?: React.ReactNode,
-  canBeReferencedLogflowMetas?: ILogicFlowDefinition[]
+  canBeReferencedLogflowMetas?: ILogicFlowDefinition[],
+  addonMaterials?: IActivityMaterial<ReactNode>[],
 }
 
-export const ControllerMetaEditorAntd5Inner = memo((
+export const LogicMetaEditorAntd5Inner = memo((
   props: LogicFlowEditorAntd5InnerProps
 ) => {
-  const { value, onChange, materialCategories, setters, toolboxAddons, canBeReferencedLogflowMetas } = props
+  const { value, onChange, materialCategories, setters, toolboxAddons, canBeReferencedLogflowMetas, addonMaterials } = props
   const [showMap, setShowMap] = useState(false);
   const [, token] = useToken();
   const categories = useTransMaterialCategorys(materialCategories);
   const materials = useMemo(() => {
-    const materials: IActivityMaterial<ReactNode>[] = []
+    const materials: IActivityMaterial<ReactNode>[] = [...addonMaterials || []]
     return materials.concat(...categories.map(category => category.materials))
-  }, [categories])
+  }, [addonMaterials, categories])
 
   const handleToggleShowMap = useCallback(() => {
     setShowMap(show => !show)

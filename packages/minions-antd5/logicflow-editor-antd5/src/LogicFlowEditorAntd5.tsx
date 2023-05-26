@@ -1,5 +1,5 @@
 import { memo, useState, useEffect } from "react"
-import { LogicFlowEditorAntd5InnerProps, ControllerMetaEditorAntd5Inner } from "./LogicFlowEditorAntd5Inner"
+import { LogicFlowEditorAntd5InnerProps, LogicMetaEditorAntd5Inner } from "./LogicFlowEditorAntd5Inner"
 import { ILocales, LocalesManager } from "@rxdrag/locales"
 import { LocalesContext } from "@rxdrag/react-locales"
 
@@ -17,7 +17,7 @@ export const LogicFlowEditorAntd5 = memo((
 
   return (
     <LocalesContext.Provider value={localesManager}>
-      <ControllerMetaEditorAntd5Inner {...other} />
+      <LogicMetaEditorAntd5Inner {...other} />
     </LocalesContext.Provider>
   )
 })

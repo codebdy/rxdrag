@@ -72,7 +72,6 @@ export const PropertyBox = memo((
             }}
           >
             <VirtualForm
-              //fieldSchemas={fieldSchemas}
               initialValue={node}
               onValueChange={handleNodeChange}
               key={node.id}

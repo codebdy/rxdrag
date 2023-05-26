@@ -13,6 +13,7 @@ import { controllerEditorLocales } from "../locales";
 import { ComponentList } from "./ComponentList";
 import { Collapse } from "antd";
 import { useExtractReferencedLogicFlowMetas } from "../hooks/useExtractReferencedLogicFlowMetas";
+import { addOnMaterials } from "@rxdrag/minions-react-materials";
 
 const { Panel } = Collapse;
 
@@ -119,6 +120,8 @@ export const ControllerMetaEditorAntd5 = memo((
                   <ComponentList />
                 </Panel>
               }
+
+              addonMaterials={addOnMaterials}
             />
           }
         </SytledContent>

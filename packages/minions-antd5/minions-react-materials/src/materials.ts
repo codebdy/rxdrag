@@ -3,7 +3,8 @@ import { ReactNode } from "react"
 import { auxReactions } from "./auxtools"
 import { basicReactions } from "./basic"
 import { commonReactions } from "./common"
-import { ActivityMaterialCategory } from "@rxdrag/minions-schema"
+import { ActivityMaterialCategory, IActivityMaterial } from "@rxdrag/minions-schema"
+import { setPropMaterial, reactionMaterial, setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "./controller"
 
 
 export const activityMaterialCategories: ActivityMaterialCategory<ReactNode>[] = [
@@ -23,5 +24,13 @@ export const activityMaterialCategories: ActivityMaterialCategory<ReactNode>[] =
     name: "$auxTools",
     materials: auxReactions,
   }
+]
+
+export const addOnMaterials:IActivityMaterial<ReactNode>[] = [
+  setPropMaterial,
+  reactionMaterial,
+  setVariableMaterial,
+  listenVariableMaterial,
+  readVariableMaterial
 ]
 

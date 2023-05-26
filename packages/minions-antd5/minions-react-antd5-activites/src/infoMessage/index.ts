@@ -1,5 +1,4 @@
 import { SingleInputActivity, activity } from "@rxdrag/minions-runtime";
-import { IActivityFactoryOptions } from "@rxdrag/minions-runtime-react";
 import { IActivityDefine } from "@rxdrag/minions-schema";
 import { message } from "antd";
 
@@ -20,8 +19,8 @@ export interface IInfoMessageConfig {
 @activity(MessageActivityName)
 export class InfoMessageReaction extends SingleInputActivity<IInfoMessageConfig> {
 
-  constructor(meta: IActivityDefine<IInfoMessageConfig>, options?: IActivityFactoryOptions) {
-    super(meta, options)
+  constructor(meta: IActivityDefine<IInfoMessageConfig>) {
+    super(meta)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("Debug inputs count error")
