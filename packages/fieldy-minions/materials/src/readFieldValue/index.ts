@@ -1,16 +1,16 @@
-import { fieldReadIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
-import { ReadFieldValue } from "./reaction";
 import { readFieldValueSchema } from "./schema";
 import { ReactNode } from "react";
+import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
+import { fieldReadIcon } from "../icons";
+import { ReadFieldValueActivityName } from "@rxdrag/fieldy-minions-activities";
 
 export const readFieldValueMaterial: IActivityMaterial<ReactNode> = {
-  name: "readFieldValue",
+  activityName: ReadFieldValueActivityName,
   icon: fieldReadIcon,
   label: "$readFieldValue",
   activityType: ActivityType.Activity,
-  meta: {
+  defaultPorts: {
     inPorts: [
       {
         id: createUuid(),
@@ -27,5 +27,4 @@ export const readFieldValueMaterial: IActivityMaterial<ReactNode> = {
     ],
   },
   schema: readFieldValueSchema,
-  reaction: ReadFieldValue,
 }

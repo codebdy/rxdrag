@@ -1,4 +1,4 @@
-import { IForm } from "@rxdrag/fieldy/fieldy";
+import { IForm } from "@rxdrag/fieldy";
 
 export interface IFieldyContext {
   form?: IForm

@@ -1,9 +1,9 @@
-import { formIcon, formValidateIcon, formReadIcon, fieldIcon, fieldValidateIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { readFieldValueMaterial } from "./readFieldValue";
 import { subscribeFieldMaterial } from "./subscribeField";
 import { ReactNode } from "react";
+import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
+import { fieldIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon } from "./icons";
 
 export const dataModelReactions: IActivityMaterial<ReactNode>[] = [
   {
