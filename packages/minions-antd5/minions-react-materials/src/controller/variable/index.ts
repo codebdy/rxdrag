@@ -1,9 +1,9 @@
-import { setVariableIcon, listenVariableIcon, variableIcon } from "@rxdrag/react-shared"
 import { createUuid } from "@rxdrag/shared"
 import { variableSchema } from "./schema"
 import { ReactNode } from "react"
 import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema"
 import { IVariableConfig, ListenVariableActivityName, ReadVariableActivityName, SetVariableActivityName } from "@rxdrag/minions-runtime-react"
+import { setVariableIcon, listenVariableIcon, variableIcon } from "../../icons"
 
 export const setVariableMaterial: IActivityMaterial<ReactNode> = {
   icon: setVariableIcon,

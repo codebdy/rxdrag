@@ -4,7 +4,7 @@ import { SvgIcon } from "../layouts/CanvasToolbar/SvgIcon"
 import { SlScreenDesktop, SlScreenTablet } from "react-icons/sl";
 import { CanvasWidthLimits } from "@rxdrag/core";
 import { useCanvasWidthLimitsState, useToolsTranslate } from "@rxdrag/react-core";
-import { mobileIcon, responsiveIcon } from "@rxdrag/react-shared";
+import { mobileIcon, responsiveIcon } from "../icons";
 
 
 export enum ScreenType {

@@ -1,10 +1,10 @@
 
-import { randomIcon } from "@rxdrag/react-shared";
 import { createUuid } from "@rxdrag/shared";
 import { randomSchema } from "./schema";
 import { ReactNode } from "react";
 import { IRandomConfig, RandomActivityName } from "@rxdrag/minions-activities";
 import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
+import { randomIcon } from "../../icons";
 
 export const randomMaterial: IActivityMaterial<ReactNode> = {
   icon: randomIcon,

@@ -1,9 +1,9 @@
-import { fixedValueIcon } from "@rxdrag/react-shared";
 import { createUuid } from "@rxdrag/shared";
 import { constValueSchema } from "./schema";
 import { ReactNode } from "react";
 import { ActivityType, IActivityMaterial } from "@rxdrag/minions-schema";
 import { ConstActivityName } from "@rxdrag/minions-activities";
+import { fixedValueIcon } from "../../icons";
 
 export const constValueMaterial: IActivityMaterial<ReactNode> = {
   icon: fixedValueIcon,

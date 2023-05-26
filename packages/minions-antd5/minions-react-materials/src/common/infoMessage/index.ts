@@ -1,10 +1,10 @@
 
-import { infoIcon } from "@rxdrag/react-shared";
 import { createUuid } from "@rxdrag/shared";
 import { infoMessageSchema } from "./schema";
 import { ReactNode } from "react";
 import { ActivityType, IActivityMaterial } from "@rxdrag/minions-schema";
 import { MessageActivityName, IInfoMessageConfig } from "@rxdrag/minions-react-antd5-activites"
+import { infoIcon } from "../../icons";
 
 export const infoMessageMaterial: IActivityMaterial<ReactNode> = {
   icon: infoIcon,

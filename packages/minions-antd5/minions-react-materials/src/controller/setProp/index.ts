@@ -2,8 +2,8 @@ import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
 import { setPropSchema } from "./schema"
 import { ReactNode } from "react"
 import { createUuid } from "@rxdrag/shared";
-import { setPropIcon } from "@rxdrag/react-shared";
 import { ISetPropConfig, SetPropActivityName } from "@rxdrag/minions-runtime-react";
+import { setPropIcon } from "../../icons";
 
 export const setPropMaterial: IActivityMaterial<ReactNode> = {
   icon: setPropIcon,

@@ -1,9 +1,9 @@
-import { jsIcon } from "@rxdrag/react-shared";
 import { createUuid } from "@rxdrag/shared";
 import { jsCodeSchema } from "./schema";
 import { ReactNode } from "react";
 import { JsCodeActivityName } from "@rxdrag/minions-activities";
 import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
+import { jsIcon } from "../../icons";
 
 export const jsCodeMaterial: IActivityMaterial<ReactNode> = {
   icon: jsIcon,

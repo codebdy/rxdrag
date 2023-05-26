@@ -1,9 +1,9 @@
-import { intervalIcon } from "@rxdrag/react-shared";
 import { createUuid } from "@rxdrag/shared";
 import { intervalSchema } from "./schema";
 import { ReactNode } from "react";
 import { IIntervalConfig, SignalsName } from "@rxdrag/minions-activities";
 import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
+import { intervalIcon } from "../../icons";
 
 export const signalsMaterial: IActivityMaterial<ReactNode> = {
   icon: intervalIcon,

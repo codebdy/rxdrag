@@ -1,10 +1,9 @@
-import React from "react"
 import { memo, useCallback } from "react"
 import styled from "styled-components"
-import { undoIcon, redoIcon, zoomResetIcon, mapIcon } from "@rxdrag/react-shared"
 import { Button, Divider, Space } from "antd"
 import { ZoomInOutlined, ZoomOutOutlined } from "@ant-design/icons"
 import { MAX_ZOOM, MIN_ZOOM, useBackup, useGraph, useMarkChange, useRedo, useRedoList, useSelected, useUndo, useUndoList, useZoom, useZoomIn, useZoomOut } from "@rxdrag/minions-logicflow-editor"
+import { undoIcon, redoIcon, mapIcon, zoomResetIcon } from "./icons"
 
 const StyledToolbar = styled.div`
   display: flex;

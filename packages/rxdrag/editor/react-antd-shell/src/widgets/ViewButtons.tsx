@@ -1,8 +1,8 @@
 import { useDocumentViewTypeState, useActivedDocumentIdState, useActions, useToolsTranslate } from "@rxdrag/react-core"
-import { designIcon, jsonIcon, playIcon } from "@rxdrag/react-shared"
 import { Button, Space, Tooltip } from "antd"
 import { memo, useCallback, useEffect } from "react"
 import { SvgIcon } from "../layouts/CanvasToolbar/SvgIcon"
+import { designIcon, jsonIcon, playIcon } from "../icons"
 
 export const ViewButtons = memo(() => {
   const [viewType, setViewType] = useDocumentViewTypeState()

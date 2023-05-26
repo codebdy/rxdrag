@@ -1,9 +1,9 @@
-import { loopIcon } from "@rxdrag/react-shared";
 import { createUuid } from "@rxdrag/shared";
 import { loopSchema } from "./schema";
 import { ReactNode } from "react";
 import { LoopActivityName } from "@rxdrag/minions-activities";
 import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
+import { loopIcon } from "../../icons";
 
 export const loopMaterial: IActivityMaterial<ReactNode> = {
   icon: loopIcon,

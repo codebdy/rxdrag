@@ -5,7 +5,6 @@ import { useGraph, useDnd, useGetNodeConfig } from "@rxdrag/minions-logicflow-ed
 import { setPropMaterial, setVariableMaterial, listenVariableMaterial, readVariableMaterial, reactionMaterial } from "@rxdrag/minions-react-materials";
 import { IReactionConfig } from "@rxdrag/minions-runtime-react";
 import { IActivityMaterial, IActivityDefine, ILogicFlowDefinition } from "@rxdrag/minions-schema";
-import { listenVariableIcon, methodIcon, setPropIcon, setVariableIcon, variableIcon } from "@rxdrag/react-shared";
 import { createUuid } from "@rxdrag/shared";
 import { Space, Typography } from "antd";
 import React from "react";
@@ -94,19 +93,19 @@ export const ComponentList = memo((
               <ReactionList>
                 <Space direction="vertical">
                   <ItemTitle
-                    onMouseDown={startDefaultDragFn(setPropMaterial, controllerMeta.id, setPropMaterial.activityName)}>{setPropIcon} {t("$setProp")}
+                    onMouseDown={startDefaultDragFn(setPropMaterial, controllerMeta.id, setPropMaterial.activityName)}>{setPropMaterial.icon} {t("$setProp")}
                   </ItemTitle>
                   {
                     !!controllerMeta.variables?.length &&
                     <>
-                      <ItemTitle onMouseDown={startDefaultDragFn(setVariableMaterial, controllerMeta.id, setVariableMaterial.activityName)}>{setVariableIcon} {t("$setVariable")}</ItemTitle>
-                      <ItemTitle onMouseDown={startDefaultDragFn(listenVariableMaterial, controllerMeta.id, setVariableMaterial.activityName)}>{listenVariableIcon} {t("$listenVariable")}</ItemTitle>
-                      <ItemTitle onMouseDown={startDefaultDragFn(readVariableMaterial, controllerMeta.id, setVariableMaterial.activityName)}>{variableIcon} {t("$readVariable")}</ItemTitle>
+                      <ItemTitle onMouseDown={startDefaultDragFn(setVariableMaterial, controllerMeta.id, setVariableMaterial.activityName)}>{setVariableMaterial.icon} {t("$setVariable")}</ItemTitle>
+                      <ItemTitle onMouseDown={startDefaultDragFn(listenVariableMaterial, controllerMeta.id, setVariableMaterial.activityName)}>{listenVariableMaterial.icon} {t("$listenVariable")}</ItemTitle>
+                      <ItemTitle onMouseDown={startDefaultDragFn(readVariableMaterial, controllerMeta.id, setVariableMaterial.activityName)}>{readVariableMaterial.icon} {t("$readVariable")}</ItemTitle>
                     </>
                   }
                   {
                     controllerMeta.reactions?.map(reaction => {
-                      return (<ItemTitle key={reaction.id} onMouseDown={startDragFn(reaction, reactionMaterial, controllerMeta.id)}>{methodIcon} {reaction.label}</ItemTitle>)
+                      return (<ItemTitle key={reaction.id} onMouseDown={startDragFn(reaction, reactionMaterial, controllerMeta.id)}>{reactionMaterial.icon} {reaction.label}</ItemTitle>)
                     })
                   }
                 </Space>

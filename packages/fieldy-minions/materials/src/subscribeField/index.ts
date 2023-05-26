@@ -1,16 +1,16 @@
-import { subscribeIcon } from "@rxdrag/react-shared";
-import { IActivityMaterial, ActivityType } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
-import { SubscribeField } from "./reaction";
 import { subscribeFieldSchema } from "./schema";
 import { ReactNode } from "react";
+import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
+import { subscribeIcon } from "../icons";
+import { ReadSubscribeFieldActivityName } from "@rxdrag/fieldy-minions-activities";
 
 export const subscribeFieldMaterial: IActivityMaterial<ReactNode> = {
-  name: "subscribeField",
+  activityName: ReadSubscribeFieldActivityName,
   icon: subscribeIcon,
   label: "$subscribeField",
   activityType: ActivityType.Activity,
-  meta: {
+  defaultPorts: {
     outPorts: [
       {
         id: createUuid(),
@@ -20,5 +20,4 @@ export const subscribeFieldMaterial: IActivityMaterial<ReactNode> = {
     ],
   },
   schema: subscribeFieldSchema,
-  reaction: SubscribeField,
 }

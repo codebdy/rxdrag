@@ -6,13 +6,13 @@ import { ListItemReaction } from "./ListItemReaction";
 import { ListItemVariable } from "./ListItemVariable";
 import { NameDialog } from "./NameDialog";
 import { VariableDialog } from "./VariableDialog";
-import { methodIcon, variableIcon } from "@rxdrag/react-shared"
 import { createUuid } from "@rxdrag/shared"
 import { useTranslate } from "@rxdrag/react-locales"
-import { IControllerMeta, IVariableDefineMeta } from "@rxdrag/minions-runtime-react";
+import { IControllerMeta, IVariableDefineMeta, ReactionActivityName, SetVariableActivityName } from "@rxdrag/minions-runtime-react";
 import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
 import { IEventMeta } from "@rxdrag/minions-controller-editor";
 import { ListItemEvent } from "./ListItemEvent";
+import { useGetMaterial } from "@rxdrag/minions-logicflow-editor";
 
 const { Text } = Typography;
 
@@ -50,7 +50,7 @@ export const Members = memo((
   const { value, selected, onSelect, onChange, eventMetas } = props
   const [addReactionOpen, setAddReactionOpen] = useState(false)
   const [addVariableOpen, setAddVariableOpen] = useState(false)
-
+  const getMaterial = useGetMaterial();
   const handleAddEvent = useCallback((event: IEventMeta) => {
     const ev = {
       id: createUuid(),
@@ -211,7 +211,7 @@ export const Members = memo((
                 onChange={handleChangeReaction}
               >
                 <ListItem
-                  icon={methodIcon}
+                  icon={getMaterial(ReactionActivityName)}
                   onClick={() => handleMemberClick(reaction.id)}
                   type={selected === reaction.id ? "default" : "text"}
                 >
@@ -238,7 +238,7 @@ export const Members = memo((
                 onChange={handleChangeVariable}
               >
                 <ListItem
-                  icon={variableIcon}
+                  icon={getMaterial(SetVariableActivityName)}
                 >
                   {variable.name}
                 </ListItem>

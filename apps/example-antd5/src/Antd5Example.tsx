@@ -9,8 +9,10 @@ import {
   Logo,
   OutlineWidget,
   ThemeButton,
+  componentsIcon,
+  historyIcon,
+  outlineIcon,
 } from "@rxdrag/react-antd-shell"
-import { componentsIcon, outlineIcon, historyIcon } from "@rxdrag/react-shared"
 import { toolsLocales } from "./locales"
 import { ResourceWidget } from "./ResourceWidget"
 import { SaveButton } from "./widgets/SaveButton"

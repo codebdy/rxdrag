@@ -1,9 +1,9 @@
-import { mergeIcon } from "@rxdrag/react-shared";
 import { createUuid } from "@rxdrag/shared";
 import { mergeSchema } from "./schema";
 import { ReactNode } from "react";
 import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
 import { MergeActivityName } from "@rxdrag/minions-activities";
+import { mergeIcon } from "../../icons";
 
 export const mergeMaterial: IActivityMaterial<ReactNode> = {
   icon: mergeIcon,
