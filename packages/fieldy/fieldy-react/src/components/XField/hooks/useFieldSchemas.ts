@@ -1,7 +1,7 @@
-import { IFieldMeta } from "@rxdrag/schema";
 import { useEffect, useState } from "react";
 import { IFieldSchema } from "@rxdrag/fieldy"
 import { makeRxId } from "@rxdrag/shared";
+import { IFieldMeta } from "@rxdrag/fieldy-schema";
 
 const getPath = (parentPath: string, name: string) => {
   if (parentPath) {

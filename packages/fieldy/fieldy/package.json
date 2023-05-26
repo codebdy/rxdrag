@@ -23,7 +23,8 @@
   },
   "devDependencies": {
     "@rxdrag/eslint-config-custom": "workspace:*",
-    "@rxdrag/tsconfig": "workspace:*"
+    "@rxdrag/tsconfig": "workspace:*",
+    "@rxdrag/fieldy-schema": "workspace:*"
   },
   "peerDependencies": {
     "@types/node": "*",

@@ -1,31 +1,26 @@
-import { AbstractActivity, IActivityFactoryOptions } from "@rxdrag/minions"
-import { IConfigMeta, IActivityDefine, ActivityFactory } from "@rxdrag/schema"
+import { SingleInputActivity, activity } from "@rxdrag/minions/runtime/runtime-core"
+import { IActivityDefine } from "@rxdrag/minions/schema"
+import { IFieldyContext } from "../context"
 
-export interface IReadFieldValueConfig extends IConfigMeta {
+export const ReadFieldValueActivityName = "fieldy.readFieldValue"
+
+export interface IReadFieldValueConfig {
   fieldPath?: string,
 }
 
-export class ReadFieldValueReaction extends AbstractActivity<IReadFieldValueConfig> {
-  constructor(meta: IActivityDefine<IReadFieldValueConfig>, options?: IActivityFactoryOptions) {
-    super(meta, options)
-    this.getInputByName("input")?.connect(this.inputHandler as any)
+@activity(ReadFieldValueActivityName)
+export class ReadFieldValueReaction extends SingleInputActivity<IReadFieldValueConfig, IFieldyContext> {
+  constructor(meta: IActivityDefine<IReadFieldValueConfig>, context:IFieldyContext) {
+    super(meta, context)
   }
 
-  inputHandler = (inputValue?: any) => {
-    const path = this.meta.config?.fieldPath || this.options?.fieldPath
+  execute(): void {
+    const path = this.meta.config?.fieldPath 
     if(path){
-      const field = this.options?.form?.getField(path)
+      const field = this.context?.form?.getField(path)
       if(field){
-        this.outputValue(field.value)
+        this.next(field.value)
       }
     }
   }
-
-  outputValue = (value?:any)=>{
-    this.getOutputByName("output")?.push(value)
-  }
-}
-
-export const ReadFieldValue: ActivityFactory = (meta: IActivityDefine<IReadFieldValueConfig>, options?: IActivityFactoryOptions) => {
-  return new ReadFieldValueReaction(meta, options)
 }

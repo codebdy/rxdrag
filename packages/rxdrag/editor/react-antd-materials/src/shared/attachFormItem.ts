@@ -1,5 +1,7 @@
+import { IFieldMeta } from "@rxdrag/fieldy-schema";
+import { IControllerMeta } from "@rxdrag/minions-runtime-react";
 import { IBindParams } from "@rxdrag/react-runner";
-import { IControllerMeta, IFieldMeta, INodeSchema } from "@rxdrag/schema";
+import { INodeSchema } from "@rxdrag/schema";
 
 
 export function attachFormItem(schemas?: INodeSchema<IFieldMeta<IBindParams>, IControllerMeta>[]): INodeSchema<IFieldMeta<IBindParams>, IControllerMeta>[] | undefined {

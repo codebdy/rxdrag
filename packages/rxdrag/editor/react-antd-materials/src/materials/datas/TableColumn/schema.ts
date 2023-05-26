@@ -1,6 +1,8 @@
 import { IBindParams } from "@rxdrag/react-runner";
-import { IControllerMeta, IFieldMeta, INodeSchema } from "@rxdrag/schema";
+import { INodeSchema } from "@rxdrag/schema";
 import { createSchema, SchemaOptions, withFormItem } from "../../../shared";
+import { IFieldMeta } from "@rxdrag/fieldy-schema";
+import { IControllerMeta } from "@rxdrag/minions-runtime-react";
 
 const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
   propsSchemas: [

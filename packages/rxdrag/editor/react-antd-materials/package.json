@@ -31,6 +31,7 @@
     "@rxdrag/react-core": "workspace:*",
     "@rxdrag/react-runner": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
+    "@rxdrag/fieldy-schema": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",

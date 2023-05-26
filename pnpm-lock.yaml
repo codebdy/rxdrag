@@ -278,6 +278,9 @@ importers:
       '@rxdrag/eslint-config-custom':
         specifier: workspace:*
         version: link:../../eslint-config-custom
+      '@rxdrag/fieldy-schema':
+        specifier: workspace:*
+        version: link:../schema
       '@rxdrag/tsconfig':
         specifier: workspace:*
         version: link:../../tsconfig
@@ -1129,6 +1132,9 @@ importers:
       '@rxdrag/core':
         specifier: workspace:*
         version: link:../core
+      '@rxdrag/fieldy-schema':
+        specifier: workspace:*
+        version: link:../../../fieldy/schema
       '@rxdrag/minions-runtime':
         specifier: workspace:*
         version: link:../../../minions/runtime/runtime-core
@@ -1466,23 +1472,26 @@ importers:
       '@ant-design/icons':
         specifier: ^4.8.0
         version: registry.npmmirror.com/@ant-design/icons@4.8.0(react-dom@18.2.0)(react@18.2.0)
+      '@rxdrag/fieldy-schema':
+        specifier: workspace:*
+        version: link:../../../fieldy/schema
       '@rxdrag/react-antd-icons':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../../react-antd-icons
       '@rxdrag/react-core':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../editor/react-core
       '@rxdrag/react-fieldy':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../../fieldy/fieldy-react
       '@rxdrag/react-runner':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../react-runner
       '@rxdrag/react-shared':
         specifier: workspace:*
         version: link:../../../react-shared
       '@rxdrag/schema':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../schema
       '@rxdrag/shared':
         specifier: workspace:*
@@ -1533,6 +1542,9 @@ importers:
       '@rxdrag/fieldy':
         specifier: workspace:*
         version: link:../../../fieldy/fieldy
+      '@rxdrag/fieldy-schema':
+        specifier: workspace:*
+        version: link:../../../fieldy/schema
       '@rxdrag/locales':
         specifier: workspace:^1.1.0
         version: link:../../../locales/locales

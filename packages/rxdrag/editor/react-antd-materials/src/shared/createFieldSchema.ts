@@ -1,6 +1,8 @@
 import { IBindParams } from "@rxdrag/react-runner"
-import { INodeSchema, IFieldMeta, IControllerMeta } from "@rxdrag/schema"
+import { INodeSchema} from "@rxdrag/schema"
 import { attachFormItem } from "./attachFormItem"
+import { IFieldMeta } from "@rxdrag/fieldy-schema"
+import { IControllerMeta } from "@rxdrag/minions-runtime-react"
 
 export type FieldOptions = {
   canBindField?: boolean,

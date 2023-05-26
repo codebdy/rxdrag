@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from "react"
-import { IFieldMeta } from "@rxdrag/schema"
 import { parsePathValue } from "@rxdrag/fieldy"
 import { XField, useFieldNode } from "@rxdrag/react-fieldy"
+import { IFieldMeta } from "@rxdrag/fieldy-schema"
 
 export const ComponentField = memo((
   props: {

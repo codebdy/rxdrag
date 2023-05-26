@@ -1,4 +1,5 @@
-import { INodeSchema, IFieldMeta } from "@rxdrag/schema";
+import { IFieldMeta } from "@rxdrag/fieldy-schema";
+import { INodeSchema } from "@rxdrag/schema";
 
 export const paddingStyleSetter: INodeSchema<IFieldMeta> = {
   componentName: "Fold",

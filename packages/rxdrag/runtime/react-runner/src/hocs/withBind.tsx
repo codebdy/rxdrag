@@ -1,9 +1,9 @@
 import React from "react"
 import { useField } from "@rxdrag/react-fieldy"
 import { ReactComponent } from "@rxdrag/react-shared"
-import { IFieldMeta } from "@rxdrag/schema"
 import { memo, useCallback, useEffect, useState } from "react"
 import { IBindParams } from "../interfaces"
+import { IFieldMeta } from "@rxdrag/fieldy-schema"
 
 export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMeta<IBindParams>): ReactComponent {
 

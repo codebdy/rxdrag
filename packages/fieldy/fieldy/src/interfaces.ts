@@ -1,6 +1,6 @@
 import { Action } from "redux"
 import { FormActionPlayload } from "./actions"
-import { DisplayType, IFieldMeta, PatternType } from "@rxdrag/schema"
+import { DisplayType, IFieldMeta, PatternType } from "@rxdrag/fieldy-schema"
 
 export type Errors = {
   message?: string

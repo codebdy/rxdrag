@@ -1,5 +1,6 @@
+import { IFieldMeta } from "@rxdrag/fieldy-schema";
 import { IBindParams } from "@rxdrag/react-runner";
-import { INodeSchema, IFieldMeta } from "@rxdrag/schema";
+import { INodeSchema } from "@rxdrag/schema";
 
 export const martinStyleSetter: INodeSchema<IFieldMeta<IBindParams>> = {
   componentName: "Fold",

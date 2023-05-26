@@ -1,6 +1,7 @@
 import { IBindParams } from "@rxdrag/react-runner";
 import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema, createSlotsSchema, withFormItem } from "../../shared";
+import { IFieldMeta } from "@rxdrag/fieldy-schema"
 
 const options: SchemaOptions<IFieldMeta<IBindParams>> = {
   propsSchemas: [

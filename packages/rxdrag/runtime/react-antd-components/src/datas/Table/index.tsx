@@ -22,10 +22,10 @@
 import { memo, useCallback, useMemo, useState } from "react"
 import { Table as AntdTable } from "antd"
 import { IDataSource } from "../IDataSource"
-import { IFieldMeta } from "@rxdrag/schema";
 import { createUuid } from "@rxdrag/shared";
 import { ComponentView, IBindParams, useComponentSchema } from "@rxdrag/react-runner";
 import { ArrayField, ObjectField, useFieldState } from "@rxdrag/react-fieldy";
+import { IFieldMeta } from "@rxdrag/fieldy-schema";
 
 interface RowProps {
   index: number,
