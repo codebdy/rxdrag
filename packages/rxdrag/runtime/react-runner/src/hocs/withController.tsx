@@ -6,7 +6,10 @@ import { useNavigate } from "react-router-dom"
 import { ControllerMetasContext } from "../contexts"
 import { useControllers } from "../hooks/useControllers"
 import { useFieldPath, useForm } from "@rxdrag/react-fieldy"
-import { Controllers, DefaultController, IController, IControllerMeta } from "@rxdrag/minions-runtime-react"
+import { Controllers, DefaultController, IController, IControllerMeta, IRouteToContext } from "@rxdrag/minions-runtime-react"
+import { IFieldyLogicFlowContext } from "@rxdrag/fieldy-minions-activities"
+
+export type LogicFlowContext = IFieldyLogicFlowContext & IRouteToContext
 
 export function withController(WrappedComponent: ReactComponent, meta?: IControllerMeta): ReactComponent {
 
@@ -31,7 +34,7 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
 
     useEffect(() => {
       if (meta) {
-        const ctrl = new DefaultController(meta, controllers || {}, { navigate, form, fieldPath } as any)
+        const ctrl = new DefaultController<LogicFlowContext>(meta, controllers || {}, { navigate, form, fieldPath })
         const unlistener = ctrl?.subscribeToPropsChange(handlePropsChange)
         ctrl.initEvent?.()
         setController(ctrl)

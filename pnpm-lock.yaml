@@ -1649,6 +1649,9 @@ importers:
       '@rxdrag/fieldy':
         specifier: workspace:*
         version: link:../../../fieldy/fieldy
+      '@rxdrag/fieldy-minions-activities':
+        specifier: workspace:*
+        version: link:../../../fieldy-minions/activities
       '@rxdrag/fieldy-schema':
         specifier: workspace:*
         version: link:../../../fieldy/schema

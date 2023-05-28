@@ -1,5 +1,6 @@
 import { IForm } from "@rxdrag/fieldy";
 
-export interface IFieldyContext {
-  form?: IForm
+export interface IFieldyLogicFlowContext {
+  form?: IForm,
+  fieldPath?: string,
 }

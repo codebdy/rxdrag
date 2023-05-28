@@ -1,7 +1,7 @@
 import { activity, IActivity, IActivityJointers } from "@rxdrag/minions-runtime";
 import { ActivityJointers } from "@rxdrag/minions-runtime";
 import { IActivityDefine } from "@rxdrag/minions-schema";
-import { IFieldyContext } from "../context"
+import { IFieldyLogicFlowContext } from "../context"
 
 export const ReadSubscribeFieldActivityName = "fieldy.subscribeField"
 
@@ -16,7 +16,7 @@ export class SubscribeFieldActivity implements IActivity {
   jointers: IActivityJointers;
   config?: ISubscribeFieldConfig;
 
-  constructor(meta: IActivityDefine<ISubscribeFieldConfig>, context?: IFieldyContext) {
+  constructor(meta: IActivityDefine<ISubscribeFieldConfig>, context?: IFieldyLogicFlowContext) {
     this.id = meta.id
     this.jointers = new ActivityJointers()
     this.config = meta.config;
