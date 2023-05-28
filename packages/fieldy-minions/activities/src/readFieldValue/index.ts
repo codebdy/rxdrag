@@ -1,4 +1,4 @@
-import { SingleInputActivity, activity } from "@rxdrag/minions-runtime"
+import { SingleInputActivity, Activity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 import { IFieldyLogicFlowContext } from "../context"
 
@@ -8,7 +8,7 @@ export interface IReadFieldValueConfig {
   fieldPath?: string,
 }
 
-@activity(ReadFieldValueActivityName)
+@Activity(ReadFieldValueActivityName)
 export class ReadFieldValueActivity extends SingleInputActivity<IReadFieldValueConfig, IFieldyLogicFlowContext> {
   constructor(meta: IActivityDefine<IReadFieldValueConfig>, context:IFieldyLogicFlowContext) {
     super(meta, context)

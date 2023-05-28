@@ -2,10 +2,10 @@ import { IActivityDefine } from "@rxdrag/minions-schema";
 import { IController, IControllerContext } from "../../interfaces";
 import { AbstractControllerActivity } from "../AbstractControllerActivity";
 import { IVariableConfig } from "./SetVariableReaction";
-import { activity } from "@rxdrag/minions-runtime";
+import { Activity } from "@rxdrag/minions-runtime";
 
 export const ListenVariableActivityName = "system-react.listenVariable"
-@activity(ListenVariableActivityName)
+@Activity(ListenVariableActivityName)
 export class ListenVariableActivity extends AbstractControllerActivity<IVariableConfig> {
   controller: IController
   constructor(meta: IActivityDefine<IVariableConfig>, context?: IControllerContext) {

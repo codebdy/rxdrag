@@ -1,4 +1,4 @@
-import { SingleInputActivity, activity } from "@rxdrag/minions-runtime"
+import { SingleInputActivity, Activity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
 export const RouteToActivityName = "system-react.routeTo"
@@ -12,7 +12,7 @@ export interface IRouteToContext {
   navigate?: (url: string) => void
 }
 
-@activity(RouteToActivityName)
+@Activity(RouteToActivityName)
 export class RouteTo extends SingleInputActivity<IRouteToConfig, IRouteToContext> {
   constructor(meta: IActivityDefine<IRouteToConfig>, context?: IRouteToContext) {
     super(meta, context)

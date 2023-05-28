@@ -1,4 +1,4 @@
-import { IActivity, IActivityJointers, LogicFlow, activity } from "@rxdrag/minions-runtime";
+import { IActivity, IActivityJointers, LogicFlow, Activity } from "@rxdrag/minions-runtime";
 import { IActivityDefine, ILogicFlowConfig } from "@rxdrag/minions-schema";
 import { IControllerContext } from "../../interfaces";
 import { IControllerConfig } from "../AbstractControllerActivity";
@@ -8,7 +8,7 @@ export const ReactionActivityName = "system-react.reaction"
 export interface IReactionConfig extends IControllerConfig, ILogicFlowConfig {
 }
 
-@activity(ReactionActivityName)
+@Activity(ReactionActivityName)
 export class ReactionActivity implements IActivity {
   id: string;
   jointers: IActivityJointers;

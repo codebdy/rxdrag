@@ -1,4 +1,4 @@
-import { InputHandler, SingleInputActivity, activity } from "@rxdrag/minions-runtime"
+import { InputHandler, SingleInputActivity, Activity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
 export const JsCodeActivityName = "system.jsCode"
@@ -7,7 +7,7 @@ export interface IJsCodeConfig {
   expression?: string
 }
 
-@activity(JsCodeActivityName)
+@Activity(JsCodeActivityName)
 export class JsCode extends SingleInputActivity<IJsCodeConfig> {
 
   constructor(meta: IActivityDefine<IJsCodeConfig>, options?: unknown) {

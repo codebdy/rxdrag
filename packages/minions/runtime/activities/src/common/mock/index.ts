@@ -1,4 +1,4 @@
-import { SingleInputActivity, activity } from "@rxdrag/minions-runtime"
+import { SingleInputActivity, Activity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
 export const MockActivityName = "system.mock"
@@ -9,7 +9,7 @@ export interface IMockDataConfig {
   duration?: number,
 }
 
-@activity(MockActivityName)
+@Activity(MockActivityName)
 export class Mock extends SingleInputActivity<IMockDataConfig> {
   constructor(meta: IActivityDefine<IMockDataConfig>) {
     super(meta)

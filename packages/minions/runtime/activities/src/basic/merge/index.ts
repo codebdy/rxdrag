@@ -1,4 +1,4 @@
-import { MultipleInputActivity, activity } from "@rxdrag/minions-runtime"
+import { MultipleInputActivity, Activity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
 export const MergeActivityName = "system.merge"
@@ -8,7 +8,7 @@ export interface IMergeConfig {
   times?: number
 }
 
-@activity(MergeActivityName)
+@Activity(MergeActivityName)
 export class MergeActivity extends MultipleInputActivity<IMergeConfig> {
   private noPassInputs: string[] = []
   private values: any = {}

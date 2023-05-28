@@ -1,14 +1,14 @@
 import { IActivityDefine } from "@rxdrag/minions-schema";
 import { IController, IControllerContext } from "../../interfaces";
 import { AbstractControllerActivity, IControllerConfig } from "../AbstractControllerActivity";
-import { activity } from "@rxdrag/minions-runtime";
+import { Activity } from "@rxdrag/minions-runtime";
 
 export interface IVariableConfig extends IControllerConfig{
   variable?: string
 }
 
 export const SetVariableActivityName = "system-react.setVariable"
-@activity(SetVariableActivityName)
+@Activity(SetVariableActivityName)
 export class SetVariableReaction extends AbstractControllerActivity<IVariableConfig> {
   controller: IController
   constructor(meta: IActivityDefine<IVariableConfig>, context?: IControllerContext) {

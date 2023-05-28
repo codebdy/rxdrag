@@ -1,4 +1,4 @@
-import { SingleInputActivity, activity } from "@rxdrag/minions-runtime"
+import { SingleInputActivity, Activity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
 export const DelayActivityName = "system.delay"
@@ -7,7 +7,7 @@ export interface IDelayConfig {
   time?: number
 }
 
-@activity(DelayActivityName)
+@Activity(DelayActivityName)
 export class Delay extends SingleInputActivity<IDelayConfig> {
   inputValue?: any
   timeout?: NodeJS.Timeout

@@ -1,5 +1,5 @@
 
-import { activity } from "@rxdrag/minions-runtime";
+import { Activity } from "@rxdrag/minions-runtime";
 import { IActivityDefine } from "@rxdrag/minions-schema";
 import { IControllerContext } from "../../interfaces";
 import { AbstractControllerActivity, IControllerConfig } from "../AbstractControllerActivity";
@@ -9,7 +9,7 @@ export interface ISetPropConfig extends IControllerConfig{
   prop?: string
 }
 
-@activity(SetPropActivityName)
+@Activity(SetPropActivityName)
 export class SetPropActivity extends AbstractControllerActivity<ISetPropConfig> {
   constructor(meta: IActivityDefine<ISetPropConfig>, context: IControllerContext) {
     super(meta, context)

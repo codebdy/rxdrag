@@ -1,4 +1,4 @@
-import { SingleInputActivity, activity } from "@rxdrag/minions-runtime"
+import { SingleInputActivity, Activity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 import _ from "lodash"
 
@@ -9,7 +9,7 @@ export interface ILoopConfig {
   times?: number
 }
 
-@activity(LoopActivityName)
+@Activity(LoopActivityName)
 export class Loop extends SingleInputActivity<ILoopConfig> {
   constructor(meta: IActivityDefine<ILoopConfig>) {
     super(meta)

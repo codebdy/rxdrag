@@ -2,7 +2,7 @@ import { IActivity, IActivityJointers } from "../interfaces";
 import { ActivityJointers } from "./ActivityJointer";
 import { Jointer } from "./Jointer";
 import { ActivityType, ILogicFlowDefinition } from "@rxdrag/minions-schema"
-import { activityConstructors } from "./activities";
+import { activities } from "./activities";
 
 export class LogicFlow<LogicFlowContext> {
   id: string;
@@ -42,7 +42,7 @@ export class LogicFlow<LogicFlowContext> {
         case ActivityType.Activity:
         case ActivityType.LogicFlowActivity:
           if (activityMeta.activityName) {
-            const activityClass = activityConstructors[activityMeta.activityName]
+            const activityClass = activities[activityMeta.activityName]
             if (!activityClass) {
               throw new Error("Can not find activity by name:" + activityMeta.activityName)
             }

@@ -1,4 +1,4 @@
-import { SingleInputActivity, activity } from "@rxdrag/minions-runtime";
+import { SingleInputActivity, Activity } from "@rxdrag/minions-runtime";
 import { IActivityDefine } from "@rxdrag/minions-schema";
 import { message } from "antd";
 
@@ -16,7 +16,7 @@ export interface IInfoMessageConfig {
   duration?: number,
 }
 
-@activity(MessageActivityName)
+@Activity(MessageActivityName)
 export class InfoMessageReaction extends SingleInputActivity<IInfoMessageConfig> {
 
   constructor(meta: IActivityDefine<IInfoMessageConfig>) {

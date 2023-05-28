@@ -1,4 +1,4 @@
-import { activity, IActivity, IActivityJointers } from "@rxdrag/minions-runtime";
+import { Activity, IActivity, IActivityJointers } from "@rxdrag/minions-runtime";
 import { ActivityJointers } from "@rxdrag/minions-runtime";
 import { IActivityDefine } from "@rxdrag/minions-schema";
 import { IFieldyLogicFlowContext } from "../context"
@@ -10,7 +10,7 @@ export interface ISubscribeFieldConfig {
 }
 
 //这个代码看出，AbstractActivity结构并不合理，抽时间重构
-@activity(ReadSubscribeFieldActivityName)
+@Activity(ReadSubscribeFieldActivityName)
 export class SubscribeFieldActivity implements IActivity {
   id: string;
   jointers: IActivityJointers;

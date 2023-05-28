@@ -1,4 +1,4 @@
-import { activity, MultipleInputActivity } from "@rxdrag/minions-runtime"
+import { Activity, MultipleInputActivity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
 export const SignalsName = "system.signals"
@@ -7,7 +7,7 @@ export interface IIntervalConfig {
   interval?: number
 }
 
-@activity(SignalsName)
+@Activity(SignalsName)
 export class Signals extends MultipleInputActivity<IIntervalConfig> {
   timer?: NodeJS.Timer
   inputValue?: any

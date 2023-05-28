@@ -1,4 +1,4 @@
-import { activity, IActivity, IActivityJointers } from "@rxdrag/minions-runtime";
+import { Activity, IActivity, IActivityJointers } from "@rxdrag/minions-runtime";
 import { ActivityJointers } from "@rxdrag/minions-runtime";
 import { IActivityDefine } from "@rxdrag/minions-schema";
 import { IFieldyLogicFlowContext } from "../context"
@@ -6,7 +6,7 @@ import { IFieldyLogicFlowContext } from "../context"
 export const ReadSubscribeFormActivityName = "fieldy.subscribeForm"
 
 //这个代码看出，AbstractActivity结构并不合理，抽时间重构
-@activity(ReadSubscribeFormActivityName)
+@Activity(ReadSubscribeFormActivityName)
 export class SubscribeFormActivity implements IActivity {
   id: string;
   jointers: IActivityJointers;

@@ -1,4 +1,4 @@
-import { SingleInputActivity, activity } from "@rxdrag/minions-runtime"
+import { SingleInputActivity, Activity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
 export const RandomActivityName = "system.random"
@@ -7,7 +7,7 @@ export interface IRandomConfig {
   minValue?: number,
 }
 
-@activity(RandomActivityName)
+@Activity(RandomActivityName)
 export class Random extends SingleInputActivity<IRandomConfig> {
   constructor(meta: IActivityDefine<IRandomConfig>) {
     super(meta)

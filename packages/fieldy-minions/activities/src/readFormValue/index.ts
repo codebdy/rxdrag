@@ -1,10 +1,10 @@
-import { activity, SingleInputActivity } from "@rxdrag/minions-runtime"
+import { Activity, SingleInputActivity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 import { IFieldyLogicFlowContext } from "../context"
 
 export const ReadFormValueActivityName = "fieldy.readFormValue"
 
-@activity(ReadFormValueActivityName)
+@Activity(ReadFormValueActivityName)
 export class ReadFormValueActivity extends SingleInputActivity<unknown, IFieldyLogicFlowContext> {
   constructor(meta: IActivityDefine<unknown>, context: IFieldyLogicFlowContext) {
     super(meta, context)
