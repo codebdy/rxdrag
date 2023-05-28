@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { ReactComponent } from "@rxdrag/react-shared";
 import React from "react";
 import { forwardRef, memo, useMemo } from "react";
-import { ReactComponent } from "../types";
 
 export function mapComponent(WrappedComponent: ReactComponent, maps: { [key: string]: string }): ReactComponent {
 
