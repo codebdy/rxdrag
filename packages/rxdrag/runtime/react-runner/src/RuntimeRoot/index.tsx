@@ -3,9 +3,10 @@ import React from "react"
 import { useCallback, useMemo, useState } from "react"
 import { PreviewComponentsContext } from "../contexts"
 import { IComponentsParams } from "../interfaces"
-import {ILocalesManager} from "@rxdrag/locales"
+import { ILocalesManager } from "@rxdrag/locales"
+import { MinionsRoot } from "@rxdrag/minions-runtime-react"
 
-export const PreviewRoot = (props: {
+export const RuntimeRoot = (props: {
   components?: IComponents,
   children: React.ReactNode,
   localesManager?: ILocalesManager,
@@ -25,10 +26,12 @@ export const PreviewRoot = (props: {
     }
   }, [components, handleRegister, initalComponents])
   return (
-    <PreviewComponentsContext.Provider value={params}>
-      {
-        children
-      }
-    </PreviewComponentsContext.Provider>
+    <MinionsRoot>
+      <PreviewComponentsContext.Provider value={params}>
+        {
+          children
+        }
+      </PreviewComponentsContext.Provider>
+    </MinionsRoot>
   )
 }

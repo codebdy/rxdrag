@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { PortsInput } from "./PortsInput"
 import { VirtualForm } from "@rxdrag/react-fieldy"
 import { useLocalesManager } from "@rxdrag/react-locales"
-import { ComponentRender, PreviewRoot } from "@rxdrag/react-runner"
+import { ComponentRender, RuntimeRoot } from "@rxdrag/react-runner"
 import { JSONInput, ValueInput } from "@rxdrag/react-antd-props-inputs"
 import { useSelectedNode, useGetMaterial, useDispatch, useBackup, useMarkChange, ActionType } from "@rxdrag/minions-logicflow-editor"
 import { INodeSchema } from "@rxdrag/schema"
@@ -54,7 +54,7 @@ export const PropertyBox = memo((
     <>
       {
         node
-          ? <PreviewRoot
+          ? <RuntimeRoot
             components={{
               Fragment: Fragment,
               FormItem: Form.Item,
@@ -83,7 +83,7 @@ export const PropertyBox = memo((
                 />
               }
             </VirtualForm>
-          </PreviewRoot>
+          </RuntimeRoot>
           : <EmptyContainer>
             <Empty />
           </EmptyContainer>

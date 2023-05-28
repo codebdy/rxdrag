@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IController, InputFunc, EventFuncs, VariableListener, PropsListener, Controllers, UnListener } from "../interfaces/controller";
-import { IFactoryOptions, IActivityFactoryOptions } from "./IFactoryOptions"
 import { IControllerMeta } from "../interfaces";
 import { IActivity, LogicFlow } from "@rxdrag/minions-runtime";
 import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
@@ -8,7 +7,7 @@ import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
 export const INIT_EVENT_NAME = "init"
 export const DESTORY_EVENT_NAME = "destory"
 
-export class DefaultController<IOptions extends IFactoryOptions> implements IController {
+export class DefaultController<LogicFlowContext> implements IController {
   id: string;
   name?: string;
   initEvent?: InputFunc | undefined;
@@ -23,7 +22,7 @@ export class DefaultController<IOptions extends IFactoryOptions> implements ICon
 
   private activites: IActivity[] = []
 
-  constructor(public meta: IControllerMeta, protected parentControllers: Controllers, protected options?: IOptions) {
+  constructor(public meta: IControllerMeta, protected parentControllers: Controllers, protected context?: LogicFlowContext) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     this.id = meta.id!
     for (const eventMeta of meta.events || []) {
@@ -92,12 +91,12 @@ export class DefaultController<IOptions extends IFactoryOptions> implements ICon
   }
 
   private makeReaction = (reactionMeta: ILogicFlowDefinition, controllers: Controllers) => {
-    const options: IActivityFactoryOptions = {
-      ...this.options,
+    const context = {
+      ...this.context,
       variableController: this,
       propsController: this,
       controllers,
     }
-    return new LogicFlow(reactionMeta, options)
+    return new LogicFlow(reactionMeta, context)
   }
 }

@@ -21,7 +21,7 @@ import { DesignRoot } from "./DesignRoot";
 import { IComponentMaterial } from "./interfaces";
 import { useComponentsFromMaterials } from "./hooks/useComponentsFromMaterials";
 import { LocalesContext } from "@rxdrag/react-locales";
-import { PreviewRoot } from "@rxdrag/react-runner"
+import { RuntimeRoot } from "@rxdrag/react-runner"
 
 export interface DesignerProps {
   components?: IComponentMaterial[]
@@ -81,9 +81,9 @@ export const Designer = memo((props: DesignerProps) => {
     <LocalesContext.Provider value={engine?.getLoacalesManager()}>
       <DesignerEngineContext.Provider value={engine}>
         <DesignRoot components={designComponents}>
-          <PreviewRoot components={previewComponents}>
+          <RuntimeRoot components={previewComponents}>
             {children}
-          </PreviewRoot>
+          </RuntimeRoot>
         </DesignRoot >
       </DesignerEngineContext.Provider>
     </LocalesContext.Provider>

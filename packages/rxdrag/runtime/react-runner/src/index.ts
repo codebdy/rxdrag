@@ -1,6 +1,6 @@
 export * from "./hocs"
 export * from "./hooks"
-export * from "./PreviewRoot"
+export * from "./RuntimeRoot"
 export * from "./ComponentField"
 export * from "./ComponentRender"
 export * from "./ComponentView"

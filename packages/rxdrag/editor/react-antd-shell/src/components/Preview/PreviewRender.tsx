@@ -1,7 +1,7 @@
 import { IDocument } from "@rxdrag/core"
 import { useDocumentViewTypeState } from "@rxdrag/react-core"
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy"
-import { ComponentRender, PreviewRoot } from "@rxdrag/react-runner"
+import { ComponentRender, RuntimeRoot } from "@rxdrag/react-runner"
 import { IComponents } from "@rxdrag/react-shared"
 import { INodeSchema } from "@rxdrag/schema"
 import { useToken } from "antd/es/theme/internal"
@@ -34,7 +34,7 @@ export const PreviewRender = memo((
     <ThemeProvider theme={theme}>
       {
         tree &&
-        <PreviewRoot
+        <RuntimeRoot
           components={components}
         >
           <Fieldy>
@@ -44,7 +44,7 @@ export const PreviewRender = memo((
               />
             </VirtualForm>
           </Fieldy>
-        </PreviewRoot>
+        </RuntimeRoot>
       }
     </ThemeProvider>
   )
