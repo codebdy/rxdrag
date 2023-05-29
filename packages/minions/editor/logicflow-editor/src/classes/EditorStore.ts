@@ -39,7 +39,7 @@ export class EditorStore {
         return
       }
       previousState = nextState
-      listener(nextState)
+      listener({ lines: nextState.lines, nodes: nextState.nodes })
     }
 
     return this.store.subscribe(handleChange)

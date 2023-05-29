@@ -9,14 +9,14 @@ export function transToRenderSchema(node: INodeSchema<IFieldMeta<IBindParams> | 
   for (const key of Object.keys(node.slots || {})) {
     const slot = node.slots?.[key];
     if (slot) {
-      slots[key] = transToRenderSchema(slot as any)
+      slots[key] = transToRenderSchema(slot as INodeSchema<IFieldMeta<IBindParams> | undefined>)
     }
   }
 
   return {
     id: makeRxId(),
     ...node,
-    children: node?.children?.map(child => transToRenderSchema(child as any)),
+    children: node?.children?.map(child => transToRenderSchema(child as INodeSchema<IFieldMeta<IBindParams> | undefined>)),
     slots
   }
 }

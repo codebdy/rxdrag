@@ -1,16 +1,16 @@
 
-import { Activity } from "@rxdrag/minions-runtime";
+import { Activity, Input } from "@rxdrag/minions-runtime";
 import { IActivityDefine } from "@rxdrag/minions-schema";
 import { IControllerContext } from "../../interfaces";
 import { AbstractControllerActivity, IControllerConfig } from "../AbstractControllerActivity";
 
-export const SetPropActivityName = "system-react.setProp"
 export interface ISetPropConfig extends IControllerConfig{
   prop?: string
 }
 
-@Activity(SetPropActivityName)
+@Activity(SetPropActivity.NAME)
 export class SetPropActivity extends AbstractControllerActivity<ISetPropConfig> {
+  public static NAME = "system-react.setProp"
   constructor(meta: IActivityDefine<ISetPropConfig>, context: IControllerContext) {
     super(meta, context)
     if (Object.keys(meta.inPorts || {}).length !== 1) {
@@ -18,7 +18,8 @@ export class SetPropActivity extends AbstractControllerActivity<ISetPropConfig> 
     }
   }
 
-  execute = (inputValue: string) => {
+  @Input()
+  inputHandler = (inputValue: string) => {
     if (this.meta.config?.prop) {
       this.controller?.setProp(this.meta.config.prop, inputValue)
     }

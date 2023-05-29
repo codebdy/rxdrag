@@ -1,4 +1,4 @@
-import { SingleInputActivity } from "@rxdrag/minions-runtime"
+import { AbstractActivity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 import { IController, IControllerContext } from "../interfaces"
 
@@ -6,7 +6,7 @@ export interface IControllerConfig {
   controllerId?: string
 }
 
-export abstract class AbstractControllerActivity<Config extends IControllerConfig = IControllerConfig> extends SingleInputActivity<Config> {
+export abstract class AbstractControllerActivity<Config extends IControllerConfig = IControllerConfig> extends AbstractActivity<Config> {
   controller: IController
   constructor(meta: IActivityDefine<Config>, options?: IControllerContext) {
     super(meta, options)
@@ -22,6 +22,6 @@ export abstract class AbstractControllerActivity<Config extends IControllerConfi
   }
 
   destory = () => {
-    throw new Error("Method not implemented.");
+    //throw new Error("Method not implemented.");
   }
 }

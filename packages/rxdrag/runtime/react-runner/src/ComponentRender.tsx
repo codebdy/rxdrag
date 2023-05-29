@@ -1,8 +1,9 @@
 import { INodeSchema } from "@rxdrag/schema"
-import React from "react"
 import { memo, useEffect, useState } from "react"
 import { ComponentView, IComponentRenderSchema } from "./ComponentView"
 import { transToRenderSchema } from "./transform"
+import { IFieldMeta } from "@rxdrag/fieldy-schema"
+import { IBindParams } from "./interfaces"
 
 export const ComponentRender = memo((props: {
   root: INodeSchema
@@ -12,7 +13,7 @@ export const ComponentRender = memo((props: {
 
   useEffect(() => {
     if (root) {
-      setNode(transToRenderSchema(root as any))
+      setNode(transToRenderSchema(root as INodeSchema<IFieldMeta<IBindParams> | undefined>))
     } else {
       setNode(undefined)
     }
