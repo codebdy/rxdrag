@@ -38,13 +38,24 @@ export const ControllerSetter = memo((props: {
     setIsModalOpen(false);
   }, []);
 
-  const handleSwitchChange = useCallback((checked: boolean) => {
+  const handleEnableChange = useCallback((checked: boolean) => {
     if (checked) {
       const id = value?.id || createUuid()
       onChange?.({ ...value, id: id, enable: true })
     } else {
       if (value) {
         onChange?.({ ...value, enable: false })
+      }
+    }
+  }, [onChange, value]);
+
+  const handleGlobalChange = useCallback((checked: boolean) => {
+    if (checked) {
+      const id = value?.id || createUuid()
+      onChange?.({ ...value, id: id, global: true })
+    } else {
+      if (value) {
+        onChange?.({ ...value, global: false })
       }
     }
   }, [onChange, value]);
@@ -72,7 +83,7 @@ export const ControllerSetter = memo((props: {
       <Form.Item
         label={title}
       >
-        <Switch checked={value?.enable} onChange={handleSwitchChange} />
+        <Switch checked={value?.enable} onChange={handleEnableChange} />
       </Form.Item>
       {
         value?.id && value?.enable &&
@@ -87,7 +98,11 @@ export const ControllerSetter = memo((props: {
           >
             <Button {...other} onClick={showModal}>{t("configController")}</Button>
           </Form.Item>
-
+          <Form.Item
+            label={t("global")}
+          >
+            <Switch checked={value?.global} onChange={handleGlobalChange} />
+          </Form.Item>
           <Modal
             title={`${t("configController")} - ${inputValue?.name || node?.title}`}
             open={isModalOpen}

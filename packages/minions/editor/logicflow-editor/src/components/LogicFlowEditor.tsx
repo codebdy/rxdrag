@@ -98,7 +98,6 @@ export const LogicFlowEditor = memo((
   }, [emptyMetas, value, store])
 
   const handleChange = useCallback((newMetas: ILogicMetas) => {
-    console.log("哈哈哈", newMetas)
     onChange?.(newMetas)
   }, [onChange])
 

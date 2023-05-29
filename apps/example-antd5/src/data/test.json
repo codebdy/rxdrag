@@ -248,6 +248,12 @@
                 "type": "primary",
                 "title": "按钮2"
               },
+              "x-controller": {
+                "id": "859cc0c8-2e51-43e2-9208-ea3f072fd6ac",
+                "enable": true,
+                "name": "按钮2",
+                "global": true
+              },
               "slots": {},
               "children": []
             }

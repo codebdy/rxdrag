@@ -9,6 +9,7 @@ export interface IVariableDefineMeta {
 export interface IControllerMeta {
   id: string;
   enable?: boolean;
+  global?: boolean;
   name?: string;
   events?: ILogicFlowDefinition[];
   reactions?: ILogicFlowDefinition[];
