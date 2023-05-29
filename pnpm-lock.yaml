@@ -806,6 +806,9 @@ importers:
       '@rxdrag/minions-react-antd5-activites':
         specifier: workspace:*
         version: link:../minions-react-antd5-activites
+      '@rxdrag/minions-runtime':
+        specifier: workspace:*
+        version: link:../../minions/runtime/runtime-core
       '@rxdrag/minions-runtime-react':
         specifier: workspace:*
         version: link:../../minions/runtime/runtime-react

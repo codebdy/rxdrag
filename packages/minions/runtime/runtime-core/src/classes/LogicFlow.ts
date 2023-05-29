@@ -42,7 +42,7 @@ export class LogicFlow<LogicFlowContext> {
         case ActivityType.Activity:
         case ActivityType.LogicFlowActivity:
           if (activityMeta.activityName) {
-            const activityClass = activities[activityMeta.activityName]
+            const activityClass = activities[activityMeta.activityName]?.target
             if (!activityClass) {
               throw new Error("Can not find activity by name:" + activityMeta.activityName)
             }

@@ -1,15 +1,14 @@
 import { SingleInputActivity, Activity, Input, AbstractActivity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
-export const DebugActivityName = "system.debug"
-
 export interface IDebugConfig {
   tip?: string,
   closed?: boolean
 }
 
-@Activity(DebugActivityName)
+@Activity(Debug.NAME)
 export class Debug extends AbstractActivity<IDebugConfig> {
+  public static NAME = "system.debug"
 
   constructor(meta: IActivityDefine<IDebugConfig>) {
     super(meta)

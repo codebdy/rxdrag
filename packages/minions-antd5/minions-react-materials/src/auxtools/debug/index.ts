@@ -4,11 +4,12 @@ import { debugSchema } from "./schema";
 import { ReactNode } from "react";
 import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
 import { INodeSchema } from "@rxdrag/schema";
-import { DebugActivityName } from "@rxdrag/minions-activities"
+import { Debug } from "@rxdrag/minions-activities"
 import { debugIcon } from "../../icons";
+import { DEFAULT_INPUT_NAME } from "@rxdrag/minions-runtime";
 
 export const debugMaterial: IActivityMaterial<ReactNode, INodeSchema> = {
-  activityName: DebugActivityName,
+  activityName: Debug.NAME,
   icon: debugIcon,
   label: "$debug",
   activityType: ActivityType.Activity,
@@ -17,7 +18,7 @@ export const debugMaterial: IActivityMaterial<ReactNode, INodeSchema> = {
     inPorts: [
       {
         id: createUuid(),
-        name: "input",
+        name: DEFAULT_INPUT_NAME,
         label: "",
       },
     ],

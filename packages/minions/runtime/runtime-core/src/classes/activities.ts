@@ -1,6 +1,9 @@
 import { IActivity } from "../interfaces";
 import _ from "lodash"
 
+export const DEFAULT_INPUT_NAME = "input"
+export const DEFAULT_OUTPUT_NAME = "output"
+
 export type ActivityClass = { new(...args: any[]): IActivity }
 
 export interface IActivityInfo {
@@ -26,14 +29,14 @@ export function Activity(activityName: string): (target: ActivityClass, context:
     }
 
     activities[activityName] = activityInfo;
-    activityName === "system.debug" && console.log("==== class反射", activityInfo)
+    activityName === "system.debug" && console.log("==== class反射", activityName, activityInfo)
   }
 }
 
 export type InputHandler = (inputValue: any) => void
 
 //这个函数应该有Typescript的版本兼容问题，目前编译器是typescript4.x，但是eslint 像是配置的5.0
-export function Input(inputName: string = "input"): (target: any, propertyName: any, descriptor?: PropertyDescriptor) => void {
+export function Input(inputName: string = DEFAULT_INPUT_NAME): (target: any, propertyName: any, descriptor?: PropertyDescriptor) => void {
 
   return function (target: any, propertyName: any, descriptor?: PropertyDescriptor) {
 
