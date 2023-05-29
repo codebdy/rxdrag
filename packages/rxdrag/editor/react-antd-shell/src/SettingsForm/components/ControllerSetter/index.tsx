@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { Button, Form, Input, Modal, Switch } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
@@ -11,6 +11,7 @@ import { ControllerMetaEditorAntd5 } from "@rxdrag/controller-editor-antd5"
 import { IEventMeta } from "@rxdrag/minions-controller-editor"
 import { fieldyActivityMaterialCategory, fieldyActivityMaterialLocales } from "@rxdrag/fieldy-minions-materials"
 import _ from "lodash";
+import { useGlobalControllerMetas } from "./hooks/useGlobalControllerMetas"
 
 export const ControllerSetter = memo((props: {
   events?: IEventMeta[]
@@ -24,11 +25,17 @@ export const ControllerSetter = memo((props: {
   const t = useToolsTranslate()
   const node = useCurrentNode() as ITreeNode<unknown, IControllerMeta> | null
   const controllers = useControllerMetas()
+  const globalControllers = useGlobalControllerMetas();
+
+  const mergedControllers = useMemo(() => [
+    ...controllers,
+    ...globalControllers.filter(controllerMeta => !controllers.find(ctrl => controllerMeta.id === ctrl.id))
+  ],
+    [controllers, globalControllers])
 
   useEffect(() => {
     setInputValue(value)
   }, [value])
-
 
   const showModal = useCallback(() => {
     setIsModalOpen(true);
@@ -123,7 +130,7 @@ export const ControllerSetter = memo((props: {
               <ControllerMetaEditorAntd5
                 value={inputValue}
                 onChange={handleChange}
-                controllerMetas={controllers}
+                controllerMetas={mergedControllers}
                 materialCategories={[...activityMaterialCategories, fieldyActivityMaterialCategory]}
                 locales={_.merge(activityMaterialLocales, fieldyActivityMaterialLocales)}
                 eventMetas={events}

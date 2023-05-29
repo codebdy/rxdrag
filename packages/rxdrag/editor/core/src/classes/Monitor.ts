@@ -71,6 +71,22 @@ export class Monitor implements IMonitor {
 		this.store = store
 		this.doSubscribeToNodeChanged(this.nodechnageHandler.handleNodeChange)
 	}
+	getAllNodes(): ITreeNode<unknown, unknown>[] {
+		const state = this.getState()
+		if (!state.activedDocumentId) {
+			return []
+		}
+		const nodes: ITreeNode[] = []
+
+		for (const key of Object.keys(state.nodesById)) {
+			const node = state.nodesById[key]
+			if(node.documentId === state.activedDocumentId){
+				nodes.push(node)
+			}
+		}
+
+		return nodes;
+	}
 
 	getSelectionMode(document: string): DocumentSelectionMode {
 		return this.store.getState().documentsById[document]?.selectionMode || DocumentSelectionMode.Normal

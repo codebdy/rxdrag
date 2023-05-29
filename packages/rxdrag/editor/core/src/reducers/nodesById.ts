@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ADD_NODES, CHANGE_NODE_META, DELETE_NODES, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_DOCUMENT, REMOVE_SLOT } from "../actions/registry"
 import { ID } from "../interfaces"
 import { IAction } from "../interfaces/action"
 import { invariant } from "@rxdrag/shared"
-import { IDocumentAction, NodeRelativePosition, ITreeNode, NodesById } from "../interfaces/document"
+import { IDocumentAction, NodeRelativePosition, NodesById } from "../interfaces/document"
 import { DocumentInitPayload, AddNodesPayload, DocumentActionPayload, MoveNodesPayload, DeleteNodesPayload, ChangeMetaPayloads, RecoverSnapshotPayload, RemoveSlotPayload } from "../interfaces/payloads"
 
 
@@ -13,6 +14,7 @@ export function nodesById(
 	action: IAction<DocumentActionPayload | ChangeMetaPayloads>,
 ): State {
 	const { payload } = action
+	const newState: State = {}
 	switch (action.type) {
 		case INITIALIZE:
 			return (payload as DocumentInitPayload)?.nodesById || {}
@@ -30,7 +32,6 @@ export function nodesById(
 			return removeSlot(state, action as IDocumentAction<RemoveSlotPayload>)
 
 		case REMOVE_DOCUMENT:
-			const newState: State = {}
 			for (const key of Object.keys(state)) {
 				if (state[key]?.documentId !== (action as IDocumentAction<DocumentActionPayload>).payload?.documentId) {
 					newState[key] = state[key]
@@ -170,8 +171,8 @@ function revoverSnapshot(state: NodesById, action: IDocumentAction<RecoverSnapsh
 
 function removeSlot(state: NodesById, action: IDocumentAction<RemoveSlotPayload>): NodesById {
 	const nodeId = action.payload?.nodeId
+	const newState: NodesById = { ...state }
 	if (action.payload && nodeId) {
-		let newState: NodesById = { ...state }
 		const node = state[nodeId]
 		const newSlots: any = {}
 		for (const slotName of Object.keys(node.slots || {})) {
@@ -199,8 +200,8 @@ function removeSlot(state: NodesById, action: IDocumentAction<RemoveSlotPayload>
 }
 
 function addSlot(state: NodesById, targetId: ID, slotName: string, slotId: ID): NodesById {
+	const newState: NodesById = { ...state }
 	if (targetId) {
-		let newState: NodesById = { ...state }
 		const node = state[targetId]
 		const newSlots: any = { ...node.slots, [slotName]: slotId }
 		newState[targetId] = { ...node, slots: newSlots }

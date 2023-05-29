@@ -55,6 +55,7 @@ export interface IMonitor {
 	getDocumentRootNode(doumentId: ID): ITreeNode | null
 	getCurrentNode(): ITreeNode | null
 	getCurrentTree(): ITreeNode | null
+	getAllNodes(): ITreeNode[]
 	getDrageOver(): DragOverState
 	getState(): State
 	getSelectionMode(document: ID): DocumentSelectionMode
