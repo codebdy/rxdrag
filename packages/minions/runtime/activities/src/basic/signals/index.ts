@@ -1,23 +1,23 @@
-import { Activity, MultipleInputActivity } from "@rxdrag/minions-runtime"
+import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
-
-export const SignalsName = "system.signals"
 
 export interface IIntervalConfig {
   interval?: number
 }
 
-@Activity(SignalsName)
-export class Signals extends MultipleInputActivity<IIntervalConfig> {
+@Activity(Signals.NAME)
+export class Signals extends AbstractActivity<IIntervalConfig> {
+  public static NAME = "system.signals"
+  public static INPUT_NAME_STARTUP = "startUp"
+  public static INPUT_NAME_STOP = "stop"
+
   timer?: NodeJS.Timer
   inputValue?: any
   constructor(meta: IActivityDefine<IIntervalConfig>) {
     super(meta)
-
-    this.registerHandler("startUp", this.startUpHandler);
-    this.registerHandler("stop", this.stopHandler);
   }
 
+  @Input(Signals.INPUT_NAME_STARTUP)
   startUpHandler = (inputValue?: any) => {
     this.stopHandler()
     this.inputValue = inputValue
@@ -26,6 +26,7 @@ export class Signals extends MultipleInputActivity<IIntervalConfig> {
     }
   }
 
+  @Input(Signals.INPUT_NAME_STOP)
   stopHandler = () => {
     console.log("定时器销毁", this.timer)
     if (this.timer) {

@@ -1,4 +1,4 @@
-import { MultipleInputActivity, Activity } from "@rxdrag/minions-runtime"
+import { MultipleInputActivity, Activity, DynamicInput } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
 export const MergeActivityName = "system.merge"
@@ -20,6 +20,11 @@ export class MergeActivity extends MultipleInputActivity<IMergeConfig> {
       const handler = this.createInputHandler(input.name)
       this.registerHandler(input.name, handler)
     }
+  }
+
+  @DynamicInput
+  inputHandler = (inputName: string, inputValue: unknown) => {
+
   }
 
   createInputHandler = (name: string) => {

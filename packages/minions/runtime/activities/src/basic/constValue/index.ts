@@ -1,14 +1,13 @@
-import { SingleInputActivity, Activity } from "@rxdrag/minions-runtime"
+import { Activity, Input, AbstractActivity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
-
-export const ConstActivityName = "system.constValue"
 
 export interface IConstValueConfig {
   value?: any,
 }
 
-@Activity(ConstActivityName)
-export class ConstValue extends SingleInputActivity<IConstValueConfig> {
+@Activity(ConstValue.NAME)
+export class ConstValue extends AbstractActivity<IConstValueConfig> {
+  public static NAME = "system.constValue"
 
   constructor(meta: IActivityDefine<IConstValueConfig>) {
     super(meta)
@@ -18,7 +17,8 @@ export class ConstValue extends SingleInputActivity<IConstValueConfig> {
     }
   }
 
-  execute(inputValue: any): void {
+  @Input()
+  inputHandler(): void {
     this.next(this.meta.config?.value)
   }
 }

@@ -2,10 +2,12 @@ import { createUuid } from "@rxdrag/shared";
 import { constValueSchema } from "./schema";
 import { ReactNode } from "react";
 import { ActivityType, IActivityMaterial } from "@rxdrag/minions-schema";
-import { ConstActivityName } from "@rxdrag/minions-activities";
+import { ConstValue } from "@rxdrag/minions-activities";
 import { fixedValueIcon } from "../../icons";
+import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
 
 export const constValueMaterial: IActivityMaterial<ReactNode> = {
+  activityName: ConstValue.NAME,
   icon: fixedValueIcon,
   label: "$fixedValue",
   activityType: ActivityType.Activity,
@@ -14,18 +16,17 @@ export const constValueMaterial: IActivityMaterial<ReactNode> = {
     inPorts: [
       {
         id: createUuid(),
-        name: "input",
+        name: DEFAULT_INPUT_NAME,
         label: "",
       },
     ],
     outPorts: [
       {
         id: createUuid(),
-        name: "output",
-        label: "",//"$output",
+        name: DEFAULT_OUTPUT_NAME,
+        label: "",
       },
     ],
   },
   schema: constValueSchema,
-  activityName: ConstActivityName,
 }

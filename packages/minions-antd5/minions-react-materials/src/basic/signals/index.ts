@@ -1,9 +1,10 @@
 import { createUuid } from "@rxdrag/shared";
 import { intervalSchema } from "./schema";
 import { ReactNode } from "react";
-import { IIntervalConfig, SignalsName } from "@rxdrag/minions-activities";
+import { IIntervalConfig, Signals } from "@rxdrag/minions-activities";
 import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
 import { intervalIcon } from "../../icons";
+import { DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
 
 export const signalsMaterial: IActivityMaterial<ReactNode> = {
   icon: intervalIcon,
@@ -13,20 +14,20 @@ export const signalsMaterial: IActivityMaterial<ReactNode> = {
     inPorts: [
       {
         id: createUuid(),
-        name: "startUp",
+        name: Signals.INPUT_NAME_STARTUP,
         label: "$startUp",
       },
       {
         id: createUuid(),
-        name: "stop",
+        name: Signals.INPUT_NAME_STOP,
         label: "$stop",
       },
     ],
     outPorts: [
       {
         id: createUuid(),
-        name: "output",
-        label: "",//"$output",
+        name: DEFAULT_OUTPUT_NAME,
+        label: "",
       },
     ],
   },
@@ -36,5 +37,5 @@ export const signalsMaterial: IActivityMaterial<ReactNode> = {
       return config?.interval?.toString()
     }
   },
-  activityName: SignalsName
+  activityName: Signals.NAME
 }

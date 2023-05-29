@@ -3,6 +3,7 @@ import _ from "lodash"
 
 export const DEFAULT_INPUT_NAME = "input"
 export const DEFAULT_OUTPUT_NAME = "output"
+export const EXCEPTION_OUTPUT_NAME = "exception"
 
 export type ActivityClass = { new(...args: any[]): IActivity }
 
@@ -12,7 +13,7 @@ export interface IActivityInfo {
 }
 
 export type ActivityInfos = {
-  [activityName: string]: IActivityInfo
+  [activityName: string]: IActivityInfo | undefined
 }
 
 const activityInfoArray: IActivityInfo[] = []
@@ -21,10 +22,10 @@ export const activities: ActivityInfos = {}
 
 export function Activity(activityName: string): (target: ActivityClass, context: ClassDecoratorContext<ActivityClass>) => void {
   return function (target: ActivityClass, context: ClassDecoratorContext<ActivityClass>) {
-    let activityInfo = activityInfoArray.find(info=>info.target === target) 
+    let activityInfo = activityInfoArray.find(info => info.target === target)
 
-    if(!activityInfo){
-      activityInfo = { target:target, methodMap: {} }
+    if (!activityInfo) {
+      activityInfo = { target: target, methodMap: {} }
       activityInfoArray.push(activityInfo)
     }
 
@@ -40,14 +41,19 @@ export function Input(inputName: string = DEFAULT_INPUT_NAME): (target: any, pro
 
   return function (target: any, propertyName: any, descriptor?: PropertyDescriptor) {
 
-    let activityInfo = activityInfoArray.find(info=>info.target === target?.constructor) 
+    let activityInfo = activityInfoArray.find(info => info.target === target?.constructor)
 
-    if(!activityInfo){
-      activityInfo = { target:target?.constructor, methodMap: {} }
+    if (!activityInfo) {
+      activityInfo = { target: target?.constructor, methodMap: {} }
       activityInfoArray.push(activityInfo)
     }
 
     activityInfo.methodMap[inputName] = propertyName;
   }
+}
+
+//动态输入
+export function DynamicInput(target: undefined, context: any): void  {
+  //throw new Error("Function not implemented.")
 }
 

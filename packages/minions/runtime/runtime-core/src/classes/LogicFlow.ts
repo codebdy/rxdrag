@@ -27,7 +27,7 @@ export class LogicFlow<LogicFlowContext> {
     this.jointers = new ActivityJointers();
   }
 
-  //一个图的构建所有节点
+  //构建一个图的所有节点
   private constructActivities() {
     for (const activityMeta of this.flowMeta.nodes || []) {
       switch (activityMeta.type) {
@@ -42,7 +42,8 @@ export class LogicFlow<LogicFlowContext> {
         case ActivityType.Activity:
         case ActivityType.LogicFlowActivity:
           if (activityMeta.activityName) {
-            const activityClass = activities[activityMeta.activityName]?.target
+            const activityInfo = activities[activityMeta.activityName]
+            const activityClass = activityInfo?.target
             if (!activityClass) {
               throw new Error("Can not find activity by name:" + activityMeta.activityName)
             }
@@ -54,6 +55,12 @@ export class LogicFlow<LogicFlowContext> {
             }
             for (const input of activityMeta.inPorts || []) {
               activity.jointers.inputs.push(new Jointer(input.id, input.name))
+            }
+
+            //把input端口跟处理函数相连
+            for (const inputName of Object.keys(activityInfo.methodMap)) {
+              const handleName = activityInfo.methodMap[inputName]
+              handleName && activity.jointers.getInput(inputName)?.connect((activity as any)?.[handleName])
             }
 
             this.activities.push(activity)

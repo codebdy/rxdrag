@@ -14,8 +14,6 @@ export abstract class AbstractActivity<ConfigMeta = unknown, LogicFlowContext = 
   destory = () => {
   }
 
-//  abstract connect(): void
-
   next = (inputValue: unknown, outputName: string = "output") => {
     this.jointers.getOutput(outputName)?.push(inputValue)
   }
