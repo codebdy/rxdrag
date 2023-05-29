@@ -56,17 +56,6 @@ export const ControllerSetter = memo((props: {
     }
   }, [onChange, value]);
 
-  const handleGlobalChange = useCallback((checked: boolean) => {
-    if (checked) {
-      const id = value?.id || createUuid()
-      onChange?.({ ...value, id: id, global: true })
-    } else {
-      if (value) {
-        onChange?.({ ...value, global: false })
-      }
-    }
-  }, [onChange, value]);
-
   const handleNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: inputValue } = e.target;
     if (value) {
@@ -104,11 +93,6 @@ export const ControllerSetter = memo((props: {
             label={t("config")}
           >
             <Button {...other} onClick={showModal}>{t("configController")}</Button>
-          </Form.Item>
-          <Form.Item
-            label={t("global")}
-          >
-            <Switch checked={value?.global} onChange={handleGlobalChange} />
           </Form.Item>
           <Modal
             title={`${t("configController")} - ${inputValue?.name || node?.title}`}

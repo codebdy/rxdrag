@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IController, InputFunc, EventFuncs, VariableListener, PropsListener, Controllers, UnListener } from "../interfaces/controller";
 import { IControllerMeta } from "../interfaces";
 import { IActivity, LogicFlow } from "@rxdrag/minions-runtime";
@@ -10,6 +9,7 @@ export const DESTORY_EVENT_NAME = "destory"
 export class DefaultController<LogicFlowContext> implements IController {
   id: string;
   name?: string;
+  inited?: boolean;
   initEvent?: InputFunc | undefined;
   destoryEvent?: InputFunc | undefined;
   events: EventFuncs = {};
@@ -47,6 +47,7 @@ export class DefaultController<LogicFlowContext> implements IController {
       this.variables[variable.name] = variable.defaultValue
     }
   }
+
   getVariable(name: string) {
     return this.variables[name]
   }
@@ -59,7 +60,7 @@ export class DefaultController<LogicFlowContext> implements IController {
     this.events = {}
   }
 
-  setVariable = (name: string, value: any): void => {
+  setVariable = (name: string, value: unknown): void => {
     this.variables[name] = value
     const listeners = this.variableListeners[name] || []
     for (const listener of listeners) {
@@ -77,7 +78,7 @@ export class DefaultController<LogicFlowContext> implements IController {
     }
   }
 
-  setProp = (name: string, value: any): void => {
+  setProp = (name: string, value: unknown): void => {
     for (const listener of this.propsListeners) {
       listener(name, value)
     }
@@ -90,13 +91,13 @@ export class DefaultController<LogicFlowContext> implements IController {
     }
   }
 
-  private makeReaction = (reactionMeta: ILogicFlowDefinition, controllers: Controllers) => {
+  private makeReaction = (logicFlowMeta: ILogicFlowDefinition, controllers: Controllers) => {
     const context = {
       ...this.context,
       variableController: this,
       propsController: this,
       controllers,
     }
-    return new LogicFlow(reactionMeta, context)
+    return new LogicFlow(logicFlowMeta, context)
   }
 }
