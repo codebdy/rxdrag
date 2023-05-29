@@ -1,4 +1,4 @@
-import { SingleInputActivity, Activity, Input, AbstractActivity } from "@rxdrag/minions-runtime"
+import { Activity, Input, AbstractActivity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
 export interface IDebugConfig {
