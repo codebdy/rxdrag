@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useLayoutEffect } from "react"
+import React from "react"
 import { ReactComponent } from "@rxdrag/react-shared"
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
@@ -33,12 +33,12 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
     }, [])
 
     useEffect(() => {
-      console.log("哈哈哈 useEffect", meta.name||meta.id)
       if (meta) {
         const ctrl = new DefaultController<LogicFlowContext>(meta, controllers || {}, { navigate, form, fieldPath })
         const unlistener = ctrl?.subscribeToPropsChange(handlePropsChange)
         ctrl.initEvent?.()
         setController(ctrl)
+
         return () => {
           ctrl.destoryEvent?.()
           ctrl.destory()
@@ -54,10 +54,6 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
     const newProps = useMemo(() => {
       return { ...props, ...controller?.events, ...changedProps }
     }, [changedProps, controller?.events, props])
-
-    useLayoutEffect(()=>{
-      console.log("哈哈哈 useLayoutEffect", meta.name||meta.id)
-    }, [])
 
     return (
       controller

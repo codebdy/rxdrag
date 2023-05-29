@@ -138,30 +138,6 @@
                         }
                       },
                       {
-                        "id": "0bb26097-87d2-4562-a2fe-9c95228f188f",
-                        "label": "设置属性",
-                        "type": "Activity",
-                        "activityName": "system-react.setProp",
-                        "inPorts": [
-                          {
-                            "id": "7f1db27d-ba06-473c-a63b-2e8af09bae02",
-                            "name": "input",
-                            "label": ""
-                          }
-                        ],
-                        "config": {
-                          "controllerId": "55b4863e-c920-4176-8dca-a144dd2396a5",
-                          "reactionRef": "system-react.setProp",
-                          "prop": "title"
-                        },
-                        "x6Node": {
-                          "x": 340,
-                          "y": 110,
-                          "width": 116,
-                          "height": 32
-                        }
-                      },
-                      {
                         "id": "86d51645-b74d-4a95-997d-731bd8de7223",
                         "label": "常量",
                         "type": "Activity",
@@ -187,10 +163,11 @@
                           "height": 32
                         },
                         "config": {
-                          "value": "标题一"
+                          "value": "哈哈"
                         }
                       },
                       {
+<<<<<<< HEAD
                         "id": "2635bad2-7784-4d14-87f4-4019dc7c97fc",
                         "label": "常量",
                         "type": "Activity",
@@ -198,10 +175,20 @@
                         "inPorts": [
                           {
                             "id": "fe0ae815-71ad-4e2a-8c47-0243166bc513",
+=======
+                        "id": "0bb26097-87d2-4562-a2fe-9c95228f188f",
+                        "label": "设置属性",
+                        "type": "Activity",
+                        "activityName": "system-react.setProp",
+                        "inPorts": [
+                          {
+                            "id": "7f1db27d-ba06-473c-a63b-2e8af09bae02",
+>>>>>>> parent of 364304a6 (编辑时可以使用全局控制器，运行时未完成)
                             "name": "input",
                             "label": ""
                           }
                         ],
+<<<<<<< HEAD
                         "outPorts": [
                           {
                             "id": "1260c52e-c789-4ea1-9f1a-d5a631374929",
@@ -217,6 +204,18 @@
                         },
                         "config": {
                           "value": "标题二"
+=======
+                        "config": {
+                          "controllerId": "55b4863e-c920-4176-8dca-a144dd2396a5",
+                          "reactionRef": "system-react.setProp",
+                          "prop": "title"
+                        },
+                        "x6Node": {
+                          "x": 340,
+                          "y": 110,
+                          "width": 116,
+                          "height": 32
+>>>>>>> parent of 364304a6 (编辑时可以使用全局控制器，运行时未完成)
                         }
                       }
                     ],
@@ -262,6 +261,7 @@
                           "nodeId": "0bb26097-87d2-4562-a2fe-9c95228f188f",
                           "portId": "7f1db27d-ba06-473c-a63b-2e8af09bae02"
                         }
+<<<<<<< HEAD
                       },
                       {
                         "id": "adc67dd4-6045-4b7d-a491-fdfab9bc655f",
@@ -272,6 +272,8 @@
                           "nodeId": "2635bad2-7784-4d14-87f4-4019dc7c97fc",
                           "portId": "fe0ae815-71ad-4e2a-8c47-0243166bc513"
                         }
+=======
+>>>>>>> parent of 364304a6 (编辑时可以使用全局控制器，运行时未完成)
                       }
                     ]
                   }
