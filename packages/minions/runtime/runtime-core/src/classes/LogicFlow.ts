@@ -60,7 +60,9 @@ export class LogicFlow<LogicFlowContext> {
             //把input端口跟处理函数相连
             for (const inputName of Object.keys(activityInfo.methodMap)) {
               const handleName = activityInfo.methodMap[inputName]
-              handleName && activity.jointers.getInput(inputName)?.connect((activity as any)?.[handleName])
+              const handle = (activity as any)?.[handleName];
+              const handleWithThis = handle?.bind(activity);
+              handleName && activity.jointers.getInput(inputName)?.connect(handleWithThis)
             }
 
             this.activities.push(activity)

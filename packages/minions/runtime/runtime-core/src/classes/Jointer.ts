@@ -2,28 +2,23 @@ import { IJointer, InputHandler } from "../interfaces/activity"
 
 export class Jointer implements IJointer {
   //出口
-  private outlets: (IJointer | InputHandler)[] = []
+  private outlets: InputHandler[] = []
 
   constructor(public id: string, public name: string) {
-
   }
 
   //入口
   push: InputHandler = (inputValue?: any) => {
-    for (const jointer of this.outlets) {
-      if (typeof jointer === "function") {
-        jointer(inputValue)
-      } else {
-        jointer.push(inputValue)
-      }
+    for (const jointerInput of this.outlets) {
+      jointerInput(inputValue)
     }
   }
 
-  connect = (jointer: IJointer | InputHandler) => {
+  connect = (jointer: InputHandler) => {
     this.outlets.push(jointer)
   }
 
-  disconnect = (jointer: IJointer | InputHandler) => {
+  disconnect = (jointer: InputHandler) => {
     this.outlets.splice(this.outlets.indexOf(jointer), 1)
   }
 }

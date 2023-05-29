@@ -11,14 +11,13 @@ export class ConstValue extends AbstractActivity<IConstValueConfig> {
 
   constructor(meta: IActivityDefine<IConstValueConfig>) {
     super(meta)
-
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("Fixed value inputs count error")
     }
   }
 
   @Input()
-  inputHandler(): void {
+  inputHandler = (): void => {
     this.next(this.meta.config?.value)
   }
 }

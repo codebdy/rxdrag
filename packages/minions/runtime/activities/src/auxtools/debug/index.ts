@@ -15,15 +15,10 @@ export class Debug extends AbstractActivity<IDebugConfig> {
   }
 
   @Input()
-  execute(inputValue: any): void {
+  inputHandler(inputValue: any): void {
     if (!this.config?.closed) {
       console.log(`🪲${this.config?.tip || "Debug"}:`, inputValue)
     }
-  }
-
-  @Input("input2")
-  input2Handler(){
-
   }
 }
 
