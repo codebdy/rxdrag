@@ -27,15 +27,20 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
 
     useEffect(() => {
       if (meta) {
-        const ctrl = new DefaultController<LogicFlowContext>(meta, logicFlowContext)
+        let ctrl = controllers[meta.id]
+        //如果controller没有被提前创建
+        if (!ctrl) {
+          ctrl = new DefaultController<LogicFlowContext>(meta, logicFlowContext)
+        }
+
         ctrl.init(controllers || {});
         const unlistener = ctrl?.subscribeToPropsChange(handlePropsChange)
         ctrl.initEvent?.()
         setController(ctrl)
 
         return () => {
-          ctrl.destoryEvent?.()
-          ctrl.destory()
+          ctrl?.destoryEvent?.()
+          ctrl?.destory()
           unlistener?.()
         }
       }
