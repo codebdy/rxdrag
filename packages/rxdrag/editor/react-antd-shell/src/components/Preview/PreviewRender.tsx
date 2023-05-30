@@ -1,4 +1,6 @@
 import { IDocument } from "@rxdrag/core"
+import { IFieldSchema } from "@rxdrag/fieldy"
+import { IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { useDocumentViewTypeState } from "@rxdrag/react-core"
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy"
 import { ComponentRender, RuntimeRoot } from "@rxdrag/react-runner"
@@ -36,7 +38,7 @@ export const PreviewRender = memo((
         tree &&
         <RuntimeRoot
           components={components}
-          schema={tree}
+          schema={tree as INodeSchema<IFieldSchema, IControllerMeta>}
         >
           <Fieldy>
             <VirtualForm>
