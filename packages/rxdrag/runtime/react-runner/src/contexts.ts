@@ -7,7 +7,7 @@ import { Controllers } from "@rxdrag/minions-runtime-react";
 export const EmpertyControllers: Controllers = {}
 
 export const ComponentSchemaContext = createContext<IComponentRenderSchema | undefined>(undefined)
-export const ControllerMetasContext = createContext<Controllers>(EmpertyControllers)
+export const ControllersContext = createContext<Controllers>(EmpertyControllers)
 
 export const initialParams: IComponentsParams = {
   components: {},

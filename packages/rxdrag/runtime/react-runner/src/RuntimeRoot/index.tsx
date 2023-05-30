@@ -1,12 +1,13 @@
 import { IComponents } from "@rxdrag/react-shared"
 import React from "react"
 import { useCallback, useMemo, useState } from "react"
-import { PreviewComponentsContext } from "../contexts"
+import { ControllersContext, PreviewComponentsContext } from "../contexts"
 import { IComponentsParams } from "../interfaces"
 import { ILocalesManager } from "@rxdrag/locales"
 import { IControllerMeta, MinionsRoot } from "@rxdrag/minions-runtime-react"
 import { INodeSchema } from "@rxdrag/schema"
 import { IFieldSchema } from "@rxdrag/fieldy"
+import { useCreateGlobalControllers } from "../hooks/useCreateGlobalControllers"
 
 export const RuntimeRoot = (props: {
   components?: IComponents,
@@ -30,14 +31,16 @@ export const RuntimeRoot = (props: {
   }, [components, handleRegister, initalComponents])
 
   //构建全局Controller+这些Controller的祖辈们
-
+  const globalControllers = useCreateGlobalControllers()
   return (
-    <MinionsRoot>
-      <PreviewComponentsContext.Provider value={params}>
-        {
-          children
-        }
-      </PreviewComponentsContext.Provider>
-    </MinionsRoot>
+    <ControllersContext.Provider value={globalControllers}>
+      <MinionsRoot>
+        <PreviewComponentsContext.Provider value={params}>
+          {
+            children
+          }
+        </PreviewComponentsContext.Provider>
+      </MinionsRoot>
+    </ControllersContext.Provider>
   )
 }

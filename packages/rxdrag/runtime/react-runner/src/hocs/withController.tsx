@@ -2,14 +2,10 @@
 import React from "react"
 import { ReactComponent } from "@rxdrag/react-shared"
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { ControllerMetasContext } from "../contexts"
+import { ControllersContext } from "../contexts"
 import { useControllers } from "../hooks/useControllers"
-import { useFieldPath, useForm } from "@rxdrag/react-fieldy"
-import { Controllers, DefaultController, IController, IControllerMeta, IRouteToContext } from "@rxdrag/minions-runtime-react"
-import { IFieldyLogicFlowContext } from "@rxdrag/fieldy-minions-activities"
-
-export type LogicFlowContext = IFieldyLogicFlowContext & IRouteToContext
+import { Controllers, DefaultController, IController, IControllerMeta } from "@rxdrag/minions-runtime-react"
+import { LogicFlowContext, useLogicFlowContext } from "../hooks/useLogicFlowContext"
 
 export function withController(WrappedComponent: ReactComponent, meta?: IControllerMeta): ReactComponent {
 
@@ -21,10 +17,7 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
     const [changedProps, setChangeProps] = useState<any>()
     const [controller, setController] = useState<IController>()
     const controllers = useControllers()
-    //const materials = useMaterials()
-    const navigate = useNavigate()
-    const form = useForm()
-    const fieldPath = useFieldPath()
+    const logicFlowContext = useLogicFlowContext();
 
     const handlePropsChange = useCallback((name: string, value: any) => {
       setChangeProps((changedProps: any) => {
@@ -34,7 +27,8 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
 
     useEffect(() => {
       if (meta) {
-        const ctrl = new DefaultController<LogicFlowContext>(meta, controllers || {}, { navigate, form, fieldPath })
+        const ctrl = new DefaultController<LogicFlowContext>(meta, logicFlowContext)
+        ctrl.init(controllers || {});
         const unlistener = ctrl?.subscribeToPropsChange(handlePropsChange)
         ctrl.initEvent?.()
         setController(ctrl)
@@ -45,7 +39,7 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
           unlistener?.()
         }
       }
-    }, [controllers, fieldPath, form, handlePropsChange, navigate])
+    }, [controllers, handlePropsChange, logicFlowContext])
 
     const newControllers: Controllers = useMemo(() => {
       return controller ? { ...controllers, [controller.id]: controller } : controllers
@@ -57,9 +51,9 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
 
     return (
       controller
-        ? <ControllerMetasContext.Provider value={newControllers}>
+        ? <ControllersContext.Provider value={newControllers}>
           <WrappedComponent {...newProps} />
-        </ControllerMetasContext.Provider>
+        </ControllersContext.Provider>
         : <></>
     )
   })

@@ -26,6 +26,7 @@ export interface IController extends IVariableController, IPropController {
   id: string,
   name?: string,
   meta: IControllerMeta,
+  init: (controllers: Controllers) => void,
 
   events: EventFuncs,
   initEvent?: InputFunc,

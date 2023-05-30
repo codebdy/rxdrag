@@ -13,7 +13,6 @@ export class DefaultController<LogicFlowContext> implements IController {
   initEvent?: InputFunc | undefined;
   destoryEvent?: InputFunc | undefined;
   events: EventFuncs = {};
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private variables: any = {};
   private variableListeners: {
     [name: string]: VariableListener[]
@@ -22,11 +21,15 @@ export class DefaultController<LogicFlowContext> implements IController {
 
   private activites: IActivity[] = []
 
-  constructor(public meta: IControllerMeta, protected parentControllers: Controllers, protected context?: LogicFlowContext) {
+  constructor(public meta: IControllerMeta, protected context?: LogicFlowContext) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     this.id = meta.id!
-    for (const eventMeta of meta.events || []) {
-      const reaction = this.makeReaction(eventMeta, { ...parentControllers, [this.id]: this })
+  }
+
+  //为了预构造全局，分两阶段初始化
+  init(relatedControllers: Controllers | undefined) {
+    for (const eventMeta of this.meta.events || []) {
+      const reaction = this.makeReaction(eventMeta, { ...relatedControllers, [this.id]: this })
       reaction && this.activites.push(reaction)
       if (!reaction) {
         continue
@@ -43,10 +46,11 @@ export class DefaultController<LogicFlowContext> implements IController {
         this.events[eventMeta.name] = inputOne.push
       }
     }
-    for (const variable of meta.variables || []) {
+    for (const variable of this.meta.variables || []) {
       this.variables[variable.name] = variable.defaultValue
     }
   }
+
   getVariable(name: string) {
     return this.variables[name]
   }
