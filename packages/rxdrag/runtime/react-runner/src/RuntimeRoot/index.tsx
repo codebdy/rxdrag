@@ -15,7 +15,7 @@ export const RuntimeRoot = (props: {
   schema?: INodeSchema<IFieldSchema, IControllerMeta>,
   localesManager?: ILocalesManager,
 }) => {
-  const { components: initalComponents, children, localesManager } = props
+  const { components: initalComponents, children, schema, localesManager } = props
   const [components, setComponents] = useState<IComponents>({})
   const handleRegister = useCallback((...components: IComponents[]) => {
     for (const com of components) {
@@ -31,7 +31,7 @@ export const RuntimeRoot = (props: {
   }, [components, handleRegister, initalComponents])
 
   //构建全局Controller+这些Controller的祖辈们
-  const globalControllers = useCreateGlobalControllers()
+  const globalControllers = useCreateGlobalControllers(schema)
   return (
     <ControllersContext.Provider value={globalControllers}>
       <MinionsRoot>

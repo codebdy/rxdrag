@@ -8,14 +8,15 @@ export interface IControllerConfig {
 
 export abstract class AbstractControllerActivity<Config extends IControllerConfig = IControllerConfig> extends AbstractActivity<Config> {
   controller: IController
-  constructor(meta: IActivityDefine<Config>, options?: IControllerContext) {
-    super(meta, options)
+  constructor(meta: IActivityDefine<Config>, contexts?: IControllerContext) {
+    super(meta, contexts)
 
     if (!meta.config?.controllerId) {
       throw new Error("ControllerReaction not set controller id")
     }
-    const controller = options?.controllers?.[meta.config?.controllerId]
+    const controller = contexts?.controllers?.[meta.config?.controllerId]
     if (!controller) {
+      console.log("未找到控制器", contexts?.controllers, meta.config?.controllerId)
       throw new Error("Can not find controller")
     }
     this.controller = controller

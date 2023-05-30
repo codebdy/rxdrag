@@ -8,7 +8,7 @@ type ControllerMetas = {
   [id: string]: IControllerMeta | undefined
 }
 
-export function useCreateGlobalControllers(schema?: INodeSchema<IFieldSchema, IControllerMeta>) {
+export function useCreateGlobalControllers(schema: INodeSchema<IFieldSchema, IControllerMeta> | undefined) {
   const [controllers, setControllers] = useState<Controllers>({});
 
   const controllerRef = useRef(controllers)

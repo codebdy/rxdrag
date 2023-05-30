@@ -36,6 +36,7 @@ export const PreviewRender = memo((
         tree &&
         <RuntimeRoot
           components={components}
+          schema={tree}
         >
           <Fieldy>
             <VirtualForm>
