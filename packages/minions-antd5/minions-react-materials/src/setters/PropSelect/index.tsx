@@ -43,6 +43,7 @@ export const PropSelect = memo((
       >
         <AutoComplete
           allowClear
+          value={value?.prop}
           options={controller?.props?.map(prop => ({ value: prop }))}
           onChange={handlePropChange}
         />
