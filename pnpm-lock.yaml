@@ -77,6 +77,9 @@ importers:
       '@rxdrag/minions-runtime-react':
         specifier: workspace:*
         version: link:../../packages/minions/runtime/runtime-react
+      '@rxdrag/minions-schema':
+        specifier: workspace:*
+        version: link:../../packages/minions/schema
       '@rxdrag/react-fieldy':
         specifier: workspace:*
         version: link:../../packages/fieldy/fieldy-react
@@ -803,6 +806,12 @@ importers:
       '@rxdrag/minions-activities':
         specifier: workspace:*
         version: link:../../minions/runtime/activities
+      '@rxdrag/minions-controller-editor':
+        specifier: workspace:*
+        version: link:../../minions/editor/controller-editor
+      '@rxdrag/minions-logicflow-editor':
+        specifier: workspace:*
+        version: link:../../minions/editor/logicflow-editor
       '@rxdrag/minions-react-antd5-activites':
         specifier: workspace:*
         version: link:../minions-react-antd5-activites
@@ -815,6 +824,9 @@ importers:
       '@rxdrag/minions-schema':
         specifier: workspace:*
         version: link:../../minions/schema
+      '@rxdrag/react-locales':
+        specifier: workspace:*
+        version: link:../../locales/locales-react
       '@rxdrag/react-shared':
         specifier: workspace:*
         version: link:../../react-shared

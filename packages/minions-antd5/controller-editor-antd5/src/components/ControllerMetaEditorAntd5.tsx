@@ -6,10 +6,10 @@ import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
 import { Members } from "./Members";
 import { LogicFlowEditorAntd5 } from "@rxdrag/logicflow-editor-antd5";
 import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
-import { VariableSelect } from "./VariableSelect";
 import { ILocales } from "@rxdrag/locales";
 import { useLocalesManager } from "@rxdrag/react-locales";
 import { controllerEditorLocales } from "../locales";
+import { PropSelect, VariableSelect } from "@rxdrag/minions-react-materials";
 
 const SytledContent = styled.div`
   display: flex;
@@ -105,7 +105,10 @@ export const ControllerMetaEditorAntd5 = memo((
               value={logicFlowMeta as ILogicMetas}
               onChange={handleChange}
               materialCategories={materialCategories}
-              setters={{ VariableSelect }}
+              setters={{
+                VariableSelect,
+                PropSelect,
+              }}
               {...other}
             />
           }

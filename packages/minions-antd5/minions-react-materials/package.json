@@ -25,6 +25,7 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@rxdrag/fieldy": "workspace:*",
+    "@rxdrag/react-locales": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/minions-schema": "workspace:*",
     "@rxdrag/schema": "workspace:*",
@@ -33,6 +34,8 @@
     "@rxdrag/minions-react-antd5-activites": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
     "@rxdrag/minions-runtime": "workspace:*",
+    "@rxdrag/minions-logicflow-editor": "workspace:*",
+    "@rxdrag/minions-controller-editor": "workspace:*",
     "antd": "5.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

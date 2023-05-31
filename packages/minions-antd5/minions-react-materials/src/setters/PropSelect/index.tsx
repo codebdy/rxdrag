@@ -1,27 +1,25 @@
-import { useTrans } from "@rxdrag/logicflow-editor-antd5"
+import { useTranslate } from "@rxdrag/react-locales"
 import { Form, Select } from "antd"
 import { memo } from "react"
 
 export const PropSelect = memo(() => {
-  const t = useTrans()
+  const t = useTranslate()
   return (<>
     <Form.Item
-      label={t("controller")}
+      label={t("component")}
     >
       <Select
         defaultValue="lucy"
         style={{ width: 120 }}
-        loading
         options={[{ value: 'lucy', label: 'Lucy' }]}
       />
     </Form.Item>
     <Form.Item
-      label={t("variable")}
+      label={t("prop")}
     >
       <Select
         defaultValue="lucy"
         style={{ width: 120 }}
-        loading
         options={[{ value: 'lucy', label: 'Lucy' }]}
       />
     </Form.Item>
