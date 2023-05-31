@@ -34,7 +34,6 @@ export const basicActivities: IActivityMaterial<ReactNode>[] = [
   conditionMaterial,
   loopMaterial,
   mergeMaterial,
-  //switchMaterial,
   delayMaterial,
   randomMaterial,
   signalsMaterial,

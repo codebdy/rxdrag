@@ -4,6 +4,7 @@ export type Unsubscribe = () => void
 
 
 export type VariableListener = (value: unknown) => void
+export type PropListener = (value: unknown) => void
 export type PropsListener = (name: string, value: unknown) => void
 export type UnListener = () => void
 
@@ -15,11 +16,13 @@ export type EventFuncs = {
 export interface IVariableController {
   setVariable(name: string, value: unknown): void,
   getVariable(name: string): unknown,
-  subscribeToVariableChange(name: string, listener: VariableListener): void
+  subscribeToVariableChange(name: string, listener: VariableListener): UnListener
 }
 
 export interface IPropController {
   setProp(name: string, value: unknown): void
+  getProp(name: string): unknown,
+  subscribeToPropChange(name: string, listener: PropListener): UnListener
 }
 
 export interface IController extends IVariableController, IPropController {

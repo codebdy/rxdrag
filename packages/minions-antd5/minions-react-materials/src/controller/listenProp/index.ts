@@ -1,21 +1,21 @@
 import { ActivityType } from "@rxdrag/minions-schema";
-import { propSchema } from "./schema"
 import { createUuid } from "@rxdrag/shared";
-import { IPropConfig, SetPropActivity } from "@rxdrag/minions-runtime-react";
-import { setPropIcon } from "../../icons";
+import { IPropConfig, ListenPropActivity } from "@rxdrag/minions-runtime-react";
+import { listenPropIcon } from "../../icons";
 
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { IControllerEditorContextParam } from "@rxdrag/minions-controller-editor";
+import { propSchema } from "../setProp/schema";
 
-export const setPropMaterial: IRxDragActivityMaterial<IPropConfig, IControllerEditorContextParam> = {
-  icon: setPropIcon,
-  label: "$setProp",
+export const listenPropMaterial: IRxDragActivityMaterial<IPropConfig, IControllerEditorContextParam> = {
+  icon: listenPropIcon,
+  label: "$listenProp",
   activityType: ActivityType.Activity,
   defaultPorts: {
-    inPorts: [
+    outPorts: [
       {
         id: createUuid(),
-        name: "input",
+        name: "output",
         label: "",
       },
     ],
@@ -25,5 +25,5 @@ export const setPropMaterial: IRxDragActivityMaterial<IPropConfig, IControllerEd
     const controllerName = context?.controllers?.find(controler => controler.id === config?.param?.controllerId)?.name
     return controllerName ? (controllerName + "/" + (config?.param?.prop || "")) : ""
   },
-  activityName: SetPropActivity.NAME,
+  activityName: ListenPropActivity.NAME,
 }

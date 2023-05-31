@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IController, InputFunc, EventFuncs, VariableListener, PropsListener, Controllers, UnListener } from "../interfaces/controller";
+import { IController, InputFunc, EventFuncs, VariableListener, PropsListener, Controllers, UnListener, PropListener } from "../interfaces/controller";
 import { IControllerMeta } from "../interfaces";
 import { IActivity, LogicFlow } from "@rxdrag/minions-runtime";
 import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
@@ -14,9 +14,15 @@ export class DefaultController<LogicFlowContext> implements IController {
   destoryEvent?: InputFunc | undefined;
   events: EventFuncs = {};
   private variables: any = {};
+  private props: any = {};
   private variableListeners: {
     [name: string]: VariableListener[]
   } = {}
+
+  private propListeners: {
+    [name: string]: PropListener[]
+  } = {}
+
   private propsListeners: PropsListener[] = []
 
   private activites: IActivity[] = []
@@ -82,8 +88,30 @@ export class DefaultController<LogicFlowContext> implements IController {
   }
 
   setProp = (name: string, value: any): void => {
+    this.props[name] = value;
+    //综合通知
     for (const listener of this.propsListeners) {
-      listener(name, value)
+      listener(name, this.props[name])
+    }
+
+    //逐个通知
+    const listeners = this.propListeners[name] || []
+    for (const listener of listeners) {
+      listener(value)
+    }
+  }
+
+  getProp(name: string): unknown {
+    return this.props[name]
+  }
+
+  subscribeToPropChange(name: string, listener: PropListener): UnListener {
+    if (!this.propListeners[name]) {
+      this.propListeners[name] = []
+    }
+    this.propListeners[name].push(listener)
+    return () => {
+      this.propListeners[name].splice(this.propListeners[name].indexOf(listener), 1)
     }
   }
 
