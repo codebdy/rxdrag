@@ -16,7 +16,7 @@ export const setPropMaterial: IRxDragActivityMaterial<ISetPropConfig, IControlle
       {
         id: createUuid(),
         name: "input",
-        label: "",//"$startUp",
+        label: "",
       },
     ],
   },

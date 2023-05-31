@@ -20,13 +20,17 @@ export const PropSelect = memo((
         options={[{ value: 'lucy', label: 'Lucy' }]}
       />
     </Form.Item>
-    <Form.Item
-      label={t("prop")}
-    >
-      <Select
-        defaultValue="lucy"
-        options={[{ value: 'lucy', label: 'Lucy' }]}
-      />
-    </Form.Item>
+    {
+      value?.param?.controllerId &&
+      <Form.Item
+        label={t("prop")}
+      >
+        <Select
+          defaultValue="lucy"
+          options={[{ value: 'lucy', label: 'Lucy' }]}
+        />
+      </Form.Item>
+    }
+
   </>)
 })
