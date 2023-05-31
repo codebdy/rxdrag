@@ -84,7 +84,7 @@ export const ControllerMetaEditorAntd5 = memo((
   //把最新的数据传入
   const editorContextParam: IControllerEditorContextParam = useMemo(() => {
     return {
-      controllers: controllerMetas.map(meta => meta.id === value.id ? value : meta) || [],
+      controllers: controllerMetas,//controllerMetas.map(meta => meta.id === value.id ? { ...value, props: meta.props } : meta) || [],
       controller: value,
     }
   }, [controllerMetas, value])

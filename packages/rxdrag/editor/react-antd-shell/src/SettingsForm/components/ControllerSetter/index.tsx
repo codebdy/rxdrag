@@ -30,13 +30,13 @@ export const ControllerSetter = memo((props: {
   const fillProps = useFillControllerProps();
 
   const mergedControllers = useMemo(() => [
-    inputValue,
+    fillProps(inputValue, node),
     ...parentControllers,
     ...globalControllers.filter(controllerMeta => !parentControllers.find(ctrl => controllerMeta.id === ctrl.id) && inputValue?.id !== controllerMeta.id)
-  ].map(meta=>fillProps(meta, node)),
+  ],
     [inputValue, parentControllers, globalControllers, fillProps, node])
 
-  useEffect(() => {
+    useEffect(() => {
     setInputValue(value)
   }, [value])
 
