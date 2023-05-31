@@ -1,13 +1,13 @@
 import { ActivityType } from "@rxdrag/minions-schema";
 import { setPropSchema } from "./schema"
 import { createUuid } from "@rxdrag/shared";
-import { ISetPropConfig, SetPropActivity } from "@rxdrag/minions-runtime-react";
+import { IPropConfig, SetPropActivity } from "@rxdrag/minions-runtime-react";
 import { setPropIcon } from "../../icons";
 
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { IControllerEditorContextParam } from "@rxdrag/minions-controller-editor";
 
-export const setPropMaterial: IRxDragActivityMaterial<ISetPropConfig, IControllerEditorContextParam> = {
+export const setPropMaterial: IRxDragActivityMaterial<IPropConfig, IControllerEditorContextParam> = {
   icon: setPropIcon,
   label: "$setProp",
   activityType: ActivityType.Activity,
@@ -21,7 +21,7 @@ export const setPropMaterial: IRxDragActivityMaterial<ISetPropConfig, IControlle
     ],
   },
   schema: setPropSchema,
-  subTitle: (config?: ISetPropConfig, context?: IControllerEditorContextParam) => {
+  subTitle: (config?: IPropConfig, context?: IControllerEditorContextParam) => {
     const controllerName = context?.controllers?.find(controler => controler.id === config?.param?.controllerId)?.name
     return controllerName ? (controllerName + "/" + (config?.param?.prop || "")) : ""
   },

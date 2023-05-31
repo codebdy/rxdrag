@@ -197,6 +197,61 @@
                           "width": 116,
                           "height": 32
                         }
+                      },
+                      {
+                        "id": "4c11fd24-71e5-4d73-8c11-f87fcb535985",
+                        "label": "设置属性",
+                        "type": "Activity",
+                        "activityName": "system-react.setProp",
+                        "inPorts": [
+                          {
+                            "id": "2667eac6-b561-443c-9439-f2d964ad9c0d",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 380,
+                          "y": 260,
+                          "width": 116,
+                          "height": 32
+                        },
+                        "config": {
+                          "param": {
+                            "controllerId": "859cc0c8-2e51-43e2-9208-ea3f072fd6ac",
+                            "prop": "danger"
+                          }
+                        }
+                      },
+                      {
+                        "id": "204bb2f3-e2e5-42ac-9b18-8d7f55d5caae",
+                        "label": "常量",
+                        "type": "Activity",
+                        "activityName": "system.constValue",
+                        "inPorts": [
+                          {
+                            "id": "a09db987-ff53-4082-9909-8d0a120d69d9",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [
+                          {
+                            "id": "84bae5dd-99a7-405d-890c-518952aaec7e",
+                            "name": "output",
+                            "label": ""
+                          }
+                        ],
+                        "x6Node": {
+                          "x": 200,
+                          "y": 220,
+                          "width": 88,
+                          "height": 32
+                        },
+                        "config": {
+                          "value": true
+                        }
                       }
                     ],
                     "lines": [
@@ -240,6 +295,27 @@
                         "target": {
                           "nodeId": "a31c96f6-de32-4de8-9210-65b662cd25d2",
                           "portId": "b7f57d1c-c72c-4ad1-a869-82f4f4b330ea"
+                        }
+                      },
+                      {
+                        "id": "e21b5f74-f046-461d-afb9-815249fd44f2",
+                        "source": {
+                          "nodeId": "e1d59fbb-65cc-44e7-8b14-91121d70a560"
+                        },
+                        "target": {
+                          "nodeId": "204bb2f3-e2e5-42ac-9b18-8d7f55d5caae",
+                          "portId": "a09db987-ff53-4082-9909-8d0a120d69d9"
+                        }
+                      },
+                      {
+                        "id": "3d5cf7d9-5e89-41e1-af4a-69f888780d26",
+                        "source": {
+                          "nodeId": "204bb2f3-e2e5-42ac-9b18-8d7f55d5caae",
+                          "portId": "84bae5dd-99a7-405d-890c-518952aaec7e"
+                        },
+                        "target": {
+                          "nodeId": "4c11fd24-71e5-4d73-8c11-f87fcb535985",
+                          "portId": "2667eac6-b561-443c-9439-f2d964ad9c0d"
                         }
                       }
                     ]

@@ -8,14 +8,14 @@ export interface IPropParam extends IControllerParam {
   prop?: string
 }
 
-export interface ISetPropConfig extends IControllerConfig {
+export interface IPropConfig extends IControllerConfig {
   param?: IPropParam
 }
 
 @Activity(SetPropActivity.NAME)
-export class SetPropActivity extends AbstractControllerActivity<ISetPropConfig> {
+export class SetPropActivity extends AbstractControllerActivity<IPropConfig> {
   public static NAME = "system-react.setProp"
-  constructor(meta: IActivityDefine<ISetPropConfig>, context: IControllerContext) {
+  constructor(meta: IActivityDefine<IPropConfig>, context: IControllerContext) {
     super(meta, context)
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("SetProp inputs count error")

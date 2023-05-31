@@ -12,7 +12,7 @@ export const variableSchema: INodeSchema = {
         {
           componentName: "VariableSelect",
           "x-field": {
-            name: "config.variable",
+            name: "config.param",
             params: {
               withBind: true,
             }

@@ -1,7 +1,7 @@
 import { IActivityDefine } from "@rxdrag/minions-schema";
 import { IController, IControllerContext } from "../../interfaces";
 import { AbstractControllerActivity } from "../AbstractControllerActivity";
-import { IVariableConfig } from "./SetVariableReaction";
+import { IVariableConfig } from "./SetVariableActivity";
 import { Activity } from "@rxdrag/minions-runtime";
 
 export const ListenVariableActivityName = "system-react.listenVariable"
@@ -15,24 +15,24 @@ export class ListenVariableActivity extends AbstractControllerActivity<IVariable
       throw new Error("ListenVariable outputs count error")
     }
 
-    if (!meta.config?.controllerId) {
+    if (!meta.config?.param?.controllerId) {
       throw new Error("ListenVariable not set controller id")
     }
-    const controller = context?.controllers?.[meta.config?.controllerId]
+    const controller = context?.controllers?.[meta.config?.param?.controllerId]
     if (!controller) {
       throw new Error("Can not find controller")
     }
     this.controller = controller
 
-    if (meta.config?.variable) {
-      this.controller?.subscribeToVariableChange(meta.config?.variable, this.execute)
+    if (meta.config?.param?.variable) {
+      this.controller?.subscribeToVariableChange(meta.config?.param.variable, this.valueHandler)
     } else {
       console.error("Not set variable to ListenVariableReaction")
     }
   }
 
-  execute = (inputValue: unknown) => {
-    if (this.meta.config?.variable) {
+  valueHandler = (inputValue: unknown) => {
+    if (this.meta.config?.param?.variable) {
       this.next(inputValue)
     }
   }

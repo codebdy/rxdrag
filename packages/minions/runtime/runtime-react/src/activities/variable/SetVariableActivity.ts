@@ -1,21 +1,29 @@
 import { IActivityDefine } from "@rxdrag/minions-schema";
 import { IController, IControllerContext } from "../../interfaces";
-import { AbstractControllerActivity } from "../AbstractControllerActivity";
-import { IVariableConfig } from "./SetVariableActivity";
+import { AbstractControllerActivity, IControllerConfig, IControllerParam } from "../AbstractControllerActivity";
 import { Activity, Input } from "@rxdrag/minions-runtime";
 
-export const ReadVariableActivityName = "system-react.readVariable"
-@Activity(ReadVariableActivityName)
-export class ReadVariableActivity extends AbstractControllerActivity<IVariableConfig> {
+export interface IVirableParam extends IControllerParam {
+  variable?: string
+}
+
+export interface IVariableConfig extends IControllerConfig {
+  param?: IVirableParam
+}
+
+@Activity(SetVariableActivity.NAME)
+export class SetVariableActivity extends AbstractControllerActivity<IVariableConfig> {
+  public static NAME = "system-react.setVariable"
+  
   controller: IController
   constructor(meta: IActivityDefine<IVariableConfig>, context?: IControllerContext) {
     super(meta, context)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
-      throw new Error("ReadVariable inputs count error")
+      throw new Error("SetVariable inputs count error")
     }
     if (!meta.config?.param?.controllerId) {
-      throw new Error("ReadVariable not set controller id")
+      throw new Error("SetVariable not set controller id")
     }
     const controller = context?.controllers?.[meta.config?.param?.controllerId]
     if (!controller) {
@@ -23,11 +31,10 @@ export class ReadVariableActivity extends AbstractControllerActivity<IVariableCo
     }
     this.controller = controller
   }
-
   @Input()
-  inputHandler = () => {
+  inputHandler = (inputValue: string) => {
     if (this.meta.config?.param?.variable) {
-      this.next(this.controller.getVariable(this.meta.config?.param.variable))
+      this.controller?.setVariable(this.meta.config.param?.variable, inputValue)
     }
   }
 }
