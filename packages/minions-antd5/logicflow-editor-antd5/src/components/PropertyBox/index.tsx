@@ -1,4 +1,4 @@
-import { Empty, Form, Input, InputNumber, Radio, Select, Slider, Switch } from "antd"
+import { Form, Input, InputNumber, Radio, Select, Slider, Switch } from "antd"
 import React, { Fragment, memo, useCallback, useMemo } from "react"
 import styled from "styled-components"
 import { PortsInput } from "./PortsInput"
@@ -85,7 +85,7 @@ export const PropertyBox = memo((
             </VirtualForm>
           </RuntimeRoot>
           : <EmptyContainer>
-            <Empty />
+            {/* <Empty /> */}
           </EmptyContainer>
       }
     </>

@@ -3,7 +3,7 @@ import { Button, Form, Input, Modal, Switch } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
-import { useControllerMetas } from "./hooks/useControllerMetas"
+import { useParentControllerMetas } from "./hooks/useParentControllerMetas"
 import { ITreeNode } from "@rxdrag/core"
 import { IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { ControllerMetaEditorAntd5 } from "@rxdrag/controller-editor-antd5"
@@ -15,22 +15,23 @@ import { controllerSetterLocales } from "./locales"
 export const ControllerSetter = memo((props: {
   events?: IEventMeta[]
   title: string,
-  value?: IControllerMeta,
+  value: IControllerMeta,
   onChange?: (value?: IControllerMeta) => void,
 }) => {
   const { events, title, value, onChange, ...other } = props;
-  const [inputValue, setInputValue] = useState<IControllerMeta>()
+  const [inputValue, setInputValue] = useState<IControllerMeta>(value)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const t = useToolsTranslate()
   const node = useCurrentNode() as ITreeNode<unknown, IControllerMeta> | null
-  const controllers = useControllerMetas()
+  const parentControllers = useParentControllerMetas()
   const globalControllers = useGlobalControllerMetas();
 
   const mergedControllers = useMemo(() => [
-    ...controllers,
-    ...globalControllers.filter(controllerMeta => !controllers.find(ctrl => controllerMeta.id === ctrl.id))
+    inputValue,
+    ...parentControllers,
+    ...globalControllers.filter(controllerMeta => !parentControllers.find(ctrl => controllerMeta.id === ctrl.id) && inputValue?.id !== controllerMeta.id)
   ],
-    [controllers, globalControllers])
+    [inputValue, parentControllers, globalControllers])
 
   useEffect(() => {
     setInputValue(value)

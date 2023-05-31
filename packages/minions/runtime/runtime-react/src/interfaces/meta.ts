@@ -14,4 +14,6 @@ export interface IControllerMeta {
   events?: ILogicFlowDefinition[];
   reactions?: ILogicFlowDefinition[];
   variables?: IVariableDefineMeta[];
+  //可以配置，如果没有配置的话，可以在解析时填充
+  props?: string[];
 }

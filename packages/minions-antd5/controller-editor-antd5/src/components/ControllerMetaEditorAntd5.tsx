@@ -1,6 +1,6 @@
 import { memo, ReactNode, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
-import { ControllerMetaContext, ControllerMetasContext, IEventMeta } from "@rxdrag/minions-controller-editor";
+import { ControllerEditorContext, IControllerEditorContextParam, IEventMeta } from "@rxdrag/minions-controller-editor";
 import { IControllerMeta } from "@rxdrag/minions-runtime-react";
 import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
 import { Members } from "./Members";
@@ -82,38 +82,41 @@ export const ControllerMetaEditorAntd5 = memo((
   }, [onChange, selected, value])
 
   //把最新的数据传入
-  const newControllerMetas = useMemo(() => controllerMetas.map(meta => meta.id === value.id ? value : meta), [controllerMetas, value])
+  const editorContextParam: IControllerEditorContextParam = useMemo(() => {
+    return {
+      controllers: controllerMetas.map(meta => meta.id === value.id ? value : meta) || [],
+      controller: value,
+    }
+  }, [controllerMetas, value])
 
   return (
-    <ControllerMetasContext.Provider value={newControllerMetas}>
-      <ControllerMetaContext.Provider value={value}>
-        <SytledContent id="reactions-editor-container" style={{ height: height || 'calc(100vh - 160px)' }}>
-          <LeftArea>
-            <Members
-              key={localsRegiterFlag}
-              value={value}
-              selected={selected}
-              eventMetas={eventMetas}
-              onSelect={setSelected}
-              onChange={handleMemberChange}
-            />
-          </LeftArea>
-          {
-            logicFlowMeta && value &&
-            <LogicFlowEditorAntd5
-              key={logicFlowMeta.id}
-              value={logicFlowMeta as ILogicMetas}
-              onChange={handleChange}
-              materialCategories={materialCategories}
-              setters={{
-                VariableSelect,
-                PropSelect,
-              }}
-              {...other}
-            />
-          }
-        </SytledContent>
-      </ControllerMetaContext.Provider>
-    </ControllerMetasContext.Provider>
+    <ControllerEditorContext.Provider value={editorContextParam}>
+      <SytledContent id="reactions-editor-container" style={{ height: height || 'calc(100vh - 160px)' }}>
+        <LeftArea>
+          <Members
+            key={localsRegiterFlag}
+            value={value}
+            selected={selected}
+            eventMetas={eventMetas}
+            onSelect={setSelected}
+            onChange={handleMemberChange}
+          />
+        </LeftArea>
+        {
+          logicFlowMeta && value &&
+          <LogicFlowEditorAntd5
+            key={logicFlowMeta.id}
+            value={logicFlowMeta as ILogicMetas}
+            onChange={handleChange}
+            materialCategories={materialCategories}
+            setters={{
+              VariableSelect,
+              PropSelect,
+            }}
+            {...other}
+          />
+        }
+      </SytledContent>
+    </ControllerEditorContext.Provider>
   )
 })
