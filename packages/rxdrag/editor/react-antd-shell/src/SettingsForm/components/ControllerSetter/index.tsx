@@ -4,14 +4,13 @@ import { memo, useCallback, useEffect, useState } from "react"
 import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
 import { useControllerMetas } from "./hooks/useControllerMetas"
-import { activityMaterialLocales, activityMaterialCategories } from "@rxdrag/minions-react-materials"
 import { ITreeNode } from "@rxdrag/core"
 import { IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { ControllerMetaEditorAntd5 } from "@rxdrag/controller-editor-antd5"
 import { IEventMeta } from "@rxdrag/minions-controller-editor"
-import { fieldyActivityMaterialCategory, fieldyActivityMaterialLocales } from "@rxdrag/fieldy-minions-materials"
-import _ from "lodash";
 import { useGlobalControllerMetas } from "./hooks/useGlobalControllerMetas"
+import { activityMaterialCategories } from "./materials"
+import { controllerSetterLocales } from "./locales"
 
 export const ControllerSetter = memo((props: {
   events?: IEventMeta[]
@@ -131,8 +130,8 @@ export const ControllerSetter = memo((props: {
                 value={inputValue}
                 onChange={handleChange}
                 controllerMetas={mergedControllers}
-                materialCategories={[...activityMaterialCategories, fieldyActivityMaterialCategory]}
-                locales={_.merge(activityMaterialLocales, fieldyActivityMaterialLocales)}
+                materialCategories={activityMaterialCategories}
+                locales={controllerSetterLocales}
                 eventMetas={events}
               />
             }

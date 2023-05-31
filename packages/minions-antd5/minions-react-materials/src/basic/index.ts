@@ -16,7 +16,7 @@ export const startEndSchema: INodeSchema = {
   children: [nameSchema, labelSchema],
 }
 
-export const basicReactions: IActivityMaterial<ReactNode>[] = [
+export const basicActivities: IActivityMaterial<ReactNode>[] = [
   {
     activityName: "start",
     icon: startIcon,

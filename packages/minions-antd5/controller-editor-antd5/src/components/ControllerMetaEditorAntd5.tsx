@@ -8,14 +8,8 @@ import { LogicFlowEditorAntd5 } from "@rxdrag/logicflow-editor-antd5";
 import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
 import { VariableSelect } from "./VariableSelect";
 import { ILocales } from "@rxdrag/locales";
-import { useLocalesManager, useTranslate } from "@rxdrag/react-locales";
+import { useLocalesManager } from "@rxdrag/react-locales";
 import { controllerEditorLocales } from "../locales";
-import { ComponentList } from "./ComponentList";
-import { Collapse } from "antd";
-import { useExtractReferencedLogicFlowMetas } from "../hooks/useExtractReferencedLogicFlowMetas";
-import { addOnMaterials } from "@rxdrag/minions-react-materials";
-
-const { Panel } = Collapse;
 
 const SytledContent = styled.div`
   display: flex;
@@ -55,10 +49,9 @@ export const ControllerMetaEditorAntd5 = memo((
   const { value, onChange, controllerMetas, materialCategories, eventMetas, height, ...other } = props
   const [localsRegiterFlag, setLocalsRegisterFlag] = useState(0)
   const [selected, setSelected] = useState<string>()
-  const extractLogicFlowMetas = useExtractReferencedLogicFlowMetas();
+  //const extractLogicFlowMetas = useExtractReferencedLogicFlowMetas();
 
   const localesManger = useLocalesManager();
-  const t = useTranslate();
 
   useEffect(() => {
     localesManger?.registerLocales(controllerEditorLocales)
@@ -114,14 +107,6 @@ export const ControllerMetaEditorAntd5 = memo((
               materialCategories={materialCategories}
               setters={{ VariableSelect }}
               {...other}
-              canBeReferencedLogflowMetas={extractLogicFlowMetas(newControllerMetas)}
-              toolboxAddons={
-                <Panel header={t('componentControl')} key="componentControl">
-                  <ComponentList />
-                </Panel>
-              }
-
-              addonMaterials={addOnMaterials}
             />
           }
         </SytledContent>

@@ -1,36 +1,20 @@
+import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
+import { ReactNode } from "react";
+import { basicActivities } from "./basic";
+import { auxActivities } from "./auxtools";
+import { commonActivites } from "./common";
 
-import { ReactNode } from "react"
-import { auxReactions } from "./auxtools"
-import { basicReactions } from "./basic"
-import { commonReactions } from "./common"
-import { ActivityMaterialCategory, IActivityMaterial } from "@rxdrag/minions-schema"
-import { setPropMaterial, reactionMaterial, setVariableMaterial, listenVariableMaterial, readVariableMaterial } from "./controller"
+export const  basicActivityCategory:ActivityMaterialCategory<ReactNode> = {
+  name: '$basicReactions',
+    materials: basicActivities,
+}
 
+export const  commonActivityCategory:ActivityMaterialCategory<ReactNode> = {
+  name: '$commonReactions',
+  materials: commonActivites,
+}
 
-export const activityMaterialCategories: ActivityMaterialCategory<ReactNode>[] = [
-  {
-    name: '$basicReactions',
-    materials: basicReactions,
-  },
-  {
-    name: '$commonReactions',
-    materials: commonReactions,
-  },
-  // {
-  //   name: '$dataModel',
-  //   materials: dataModelReactions,
-  // },
-  {
-    name: "$auxTools",
-    materials: auxReactions,
-  }
-]
-
-export const addOnMaterials:IActivityMaterial<ReactNode>[] = [
-  setPropMaterial,
-  reactionMaterial,
-  setVariableMaterial,
-  listenVariableMaterial,
-  readVariableMaterial
-]
-
+export const  auxActivityCategory:ActivityMaterialCategory<ReactNode> = {
+  name: "$auxTools",
+  materials: auxActivities,
+}

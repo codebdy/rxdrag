@@ -2,10 +2,10 @@ import { infoMessageMaterial } from "./infoMessage";
 import { jsCodeMaterial } from "./jsCode";
 import { routeToMaterial } from "./routeTo";
 import { mockMaterial } from "./mock";
-import { IActivityMaterial } from "@rxdrag/schema";
 import { ReactNode } from "react";
+import { IActivityMaterial } from "@rxdrag/minions-schema";
 
-export const commonReactions: IActivityMaterial<ReactNode>[] = [
+export const commonActivites: IActivityMaterial<ReactNode>[] = [
   routeToMaterial,
   infoMessageMaterial,
   mockMaterial,
