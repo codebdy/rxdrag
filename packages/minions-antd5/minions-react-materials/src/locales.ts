@@ -64,6 +64,7 @@ export const activityMaterialLocales = {
     info: "通知",
     warning: "警告",
     field: "字段",
+    componentControl: "组件控制",
   },
   'en-US': {
     basicReactions: "Basic Reactions",
@@ -131,5 +132,6 @@ export const activityMaterialLocales = {
     info: "Info",
     warning: "Warning",
     field: "Field",
+    componentControl: "Component Control",
   }
 }

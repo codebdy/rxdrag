@@ -20,7 +20,6 @@ export const controllerEditorLocales = {
     defaultValue: "默认值",
     loading: "等待",
     error: "错误",
-    componentControl: "组件控制",
   },
   'en-US': {
     confirm: "Confirm",
@@ -42,6 +41,5 @@ export const controllerEditorLocales = {
     defaultValue: "Default Value",
     loading: "Loading",
     error: "Error",
-    componentControl: "Component Control",
   }
 }
