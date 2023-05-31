@@ -1,4 +1,4 @@
-import { IVariableConfig, ListenVariableActivity } from "@rxdrag/minions-runtime-react"
+import { IVariableConfig, ListenVariable } from "@rxdrag/minions-runtime-react"
 import { ActivityType } from "@rxdrag/minions-schema"
 import { createUuid } from "@rxdrag/shared"
 import { listenVariableIcon } from "../../icons"
@@ -23,5 +23,5 @@ export const listenVariableMaterial: IRxDragActivityMaterial<IVariableConfig, IC
   subTitle: (config?: IVariableConfig) => {
     return config?.param?.variable
   },
-  activityName: ListenVariableActivity.NAME,
+  activityName: ListenVariable.NAME,
 }

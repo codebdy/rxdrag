@@ -15,7 +15,8 @@ export const commonActivityCategory: ActivityMaterialCategory<ReactNode> = {
   materials: commonActivites,
 }
 
-export const controllerActivityCategory:ActivityMaterialCategory<ReactNode> = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const controllerActivityCategory: ActivityMaterialCategory<ReactNode, any, any, any> = {
   name: '$componentControl',
   materials: controllerActivites,
 }

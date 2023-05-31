@@ -1,3 +1,3 @@
-export * from "./ListenPropActivity"
-export * from "./ReadPropActivity"
-export * from "./SetPropActivity"
+export * from "./ListenProp"
+export * from "./ReadProp"
+export * from "./SetProp"

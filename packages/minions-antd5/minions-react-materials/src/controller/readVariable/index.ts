@@ -1,5 +1,5 @@
 import { IControllerEditorContextParam } from "@rxdrag/minions-controller-editor"
-import { IVariableConfig, ReadVariableActivity } from "@rxdrag/minions-runtime-react"
+import { IVariableConfig, ReadVariable } from "@rxdrag/minions-runtime-react"
 import { ActivityType } from "@rxdrag/minions-schema"
 import { createUuid } from "@rxdrag/shared"
 import { variableIcon } from "../../icons"
@@ -30,5 +30,5 @@ export const readVariableMaterial: IRxDragActivityMaterial<IVariableConfig, ICon
   subTitle: (config?: IVariableConfig) => {
     return config?.param?.variable
   },
-  activityName: ReadVariableActivity.NAME,
+  activityName: ReadVariable.NAME,
 }

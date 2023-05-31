@@ -11,8 +11,8 @@ export interface IVariableConfig extends IControllerConfig {
   param?: IVirableParam
 }
 
-@Activity(SetVariableActivity.NAME)
-export class SetVariableActivity extends AbstractControllerActivity<IVariableConfig> {
+@Activity(SetVariable.NAME)
+export class SetVariable extends AbstractControllerActivity<IVariableConfig> {
   public static NAME = "system-react.setVariable"
   
   controller: IController

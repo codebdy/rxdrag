@@ -1,6 +1,6 @@
 import { ActivityType } from "@rxdrag/minions-schema";
 import { createUuid } from "@rxdrag/shared";
-import { IPropConfig, ListenPropActivity } from "@rxdrag/minions-runtime-react";
+import { IPropConfig, ListenProp } from "@rxdrag/minions-runtime-react";
 import { listenPropIcon } from "../../icons";
 
 import { IRxDragActivityMaterial } from "../../interfaces";
@@ -25,5 +25,5 @@ export const listenPropMaterial: IRxDragActivityMaterial<IPropConfig, IControlle
     const controllerName = context?.controllers?.find(controler => controler.id === config?.param?.controllerId)?.name
     return controllerName ? (controllerName + "/" + (config?.param?.prop || "")) : ""
   },
-  activityName: ListenPropActivity.NAME,
+  activityName: ListenProp.NAME,
 }

@@ -1,22 +1,22 @@
 import { IActivityDefine } from "@rxdrag/minions-schema";
 import { IController, IControllerContext } from "../../interfaces";
 import { AbstractControllerActivity } from "../AbstractControllerActivity";
-import { IVariableConfig } from "./SetVariableActivity";
 import { Activity, Input } from "@rxdrag/minions-runtime";
+import { IPropConfig } from "./SetProp";
 
-@Activity(ReadVariableActivity.NAME)
-export class ReadVariableActivity extends AbstractControllerActivity<IVariableConfig> {
-  public static NAME = "system-react.readVariable"
+@Activity(ReadProp.NAME)
+export class ReadProp extends AbstractControllerActivity<IPropConfig> {
+  public static NAME = "system-react.readProp"
   
   controller: IController
-  constructor(meta: IActivityDefine<IVariableConfig>, context?: IControllerContext) {
+  constructor(meta: IActivityDefine<IPropConfig>, context?: IControllerContext) {
     super(meta, context)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
-      throw new Error("ReadVariable inputs count error")
+      throw new Error("ReadProp inputs count error")
     }
     if (!meta.config?.param?.controllerId) {
-      throw new Error("ReadVariable not set controller id")
+      throw new Error("ReadProp not set controller id")
     }
     const controller = context?.controllers?.[meta.config?.param?.controllerId]
     if (!controller) {
@@ -27,8 +27,8 @@ export class ReadVariableActivity extends AbstractControllerActivity<IVariableCo
 
   @Input()
   inputHandler = () => {
-    if (this.meta.config?.param?.variable) {
-      this.next(this.controller.getVariable(this.meta.config?.param.variable))
+    if (this.meta.config?.param?.prop) {
+      this.next(this.controller.getProp(this.meta.config?.param.prop))
     }
   }
 }

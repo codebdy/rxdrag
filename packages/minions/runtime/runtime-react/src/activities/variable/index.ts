@@ -1,3 +1,3 @@
-export * from "./ListenVariableActivity"
-export * from "./ReadVariableActivity"
-export * from "./SetVariableActivity"
+export * from "./ListenVariable"
+export * from "./ReadVariable"
+export * from "./SetVariable"

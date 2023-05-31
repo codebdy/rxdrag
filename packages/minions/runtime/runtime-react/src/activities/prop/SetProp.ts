@@ -12,8 +12,8 @@ export interface IPropConfig extends IControllerConfig {
   param?: IPropParam
 }
 
-@Activity(SetPropActivity.NAME)
-export class SetPropActivity extends AbstractControllerActivity<IPropConfig> {
+@Activity(SetProp.NAME)
+export class SetProp extends AbstractControllerActivity<IPropConfig> {
   public static NAME = "system-react.setProp"
   constructor(meta: IActivityDefine<IPropConfig>, context: IControllerContext) {
     super(meta, context)

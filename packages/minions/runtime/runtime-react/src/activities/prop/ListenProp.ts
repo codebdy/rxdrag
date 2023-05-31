@@ -2,10 +2,10 @@ import { IActivityDefine } from "@rxdrag/minions-schema";
 import { IController, IControllerContext } from "../../interfaces";
 import { AbstractControllerActivity } from "../AbstractControllerActivity";
 import { Activity } from "@rxdrag/minions-runtime";
-import { IPropConfig } from "./SetPropActivity";
+import { IPropConfig } from "./SetProp";
 
-@Activity(ListenPropActivity.NAME)
-export class ListenPropActivity extends AbstractControllerActivity<IPropConfig> {
+@Activity(ListenProp.NAME)
+export class ListenProp extends AbstractControllerActivity<IPropConfig> {
   public static NAME = "system-react.listenProp"
 
   controller: IController

@@ -17,7 +17,7 @@ export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown
   activityName: string;
 }
 
-export interface ActivityMaterialCategory<ComponentNode = unknown> {
+export interface ActivityMaterialCategory<ComponentNode = unknown, NodeSchema = unknown, Config = unknown, MaterialContext = unknown> {
   name: string;
-  materials: IActivityMaterial<ComponentNode>[];
+  materials: IActivityMaterial<ComponentNode, NodeSchema, Config, MaterialContext>[];
 }

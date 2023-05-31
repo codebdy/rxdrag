@@ -8,7 +8,7 @@ import { NameDialog } from "./NameDialog";
 import { VariableDialog } from "./VariableDialog";
 import { createUuid } from "@rxdrag/shared"
 import { useTranslate } from "@rxdrag/react-locales"
-import { IControllerMeta, IVariableDefineMeta, ReactionActivityName, SetVariableActivity } from "@rxdrag/minions-runtime-react";
+import { IControllerMeta, IVariableDefineMeta, ReactionActivityName, SetVariable } from "@rxdrag/minions-runtime-react";
 import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
 import { IEventMeta } from "@rxdrag/minions-controller-editor";
 import { ListItemEvent } from "./ListItemEvent";
@@ -238,7 +238,7 @@ export const Members = memo((
                 onChange={handleChangeVariable}
               >
                 <ListItem
-                  icon={getMaterial(SetVariableActivity.NAME)}
+                  icon={getMaterial(SetVariable.NAME)}
                 >
                   {variable.name}
                 </ListItem>
