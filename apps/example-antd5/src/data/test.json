@@ -118,54 +118,6 @@
                         }
                       },
                       {
-                        "id": "ad41c503-240b-4abe-90d1-0d2f54f1f609",
-                        "label": "设置属性",
-                        "type": "Activity",
-                        "activityName": "system-react.setProp",
-                        "inPorts": [
-                          {
-                            "id": "b7f57d1c-c72c-4ad1-a869-82f4f4b330ea",
-                            "name": "input",
-                            "label": ""
-                          }
-                        ],
-                        "config": {
-                          "controllerId": "4acd9cca-b662-4046-a19a-2a5a699679e2",
-                          "reactionRef": "system-react.setProp",
-                          "prop": "title"
-                        },
-                        "x6Node": {
-                          "x": 420,
-                          "y": 170,
-                          "width": 116,
-                          "height": 32
-                        }
-                      },
-                      {
-                        "id": "a31c96f6-de32-4de8-9210-65b662cd25d2",
-                        "label": "设置属性",
-                        "type": "Activity",
-                        "activityName": "system-react.setProp",
-                        "inPorts": [
-                          {
-                            "id": "b7f57d1c-c72c-4ad1-a869-82f4f4b330ea",
-                            "name": "input",
-                            "label": ""
-                          }
-                        ],
-                        "config": {
-                          "controllerId": "859cc0c8-2e51-43e2-9208-ea3f072fd6ac",
-                          "reactionRef": "system-react.setProp",
-                          "prop": "title"
-                        },
-                        "x6Node": {
-                          "x": 450,
-                          "y": 40,
-                          "width": 116,
-                          "height": 32
-                        }
-                      },
-                      {
                         "id": "d4ba0d10-e06d-4a4a-9bcd-b44337a50bef",
                         "label": "常量",
                         "type": "Activity",
@@ -192,6 +144,58 @@
                         },
                         "config": {
                           "value": "标题"
+                        }
+                      },
+                      {
+                        "id": "a31c96f6-de32-4de8-9210-65b662cd25d2",
+                        "label": "设置属性",
+                        "type": "Activity",
+                        "activityName": "system-react.setProp",
+                        "inPorts": [
+                          {
+                            "id": "b7f57d1c-c72c-4ad1-a869-82f4f4b330ea",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "config": {
+                          "reactionRef": "system-react.setProp",
+                          "param": {
+                            "controllerId": "859cc0c8-2e51-43e2-9208-ea3f072fd6ac",
+                            "prop": "title"
+                          }
+                        },
+                        "x6Node": {
+                          "x": 450,
+                          "y": 40,
+                          "width": 116,
+                          "height": 32
+                        }
+                      },
+                      {
+                        "id": "ad41c503-240b-4abe-90d1-0d2f54f1f609",
+                        "label": "设置属性",
+                        "type": "Activity",
+                        "activityName": "system-react.setProp",
+                        "inPorts": [
+                          {
+                            "id": "b7f57d1c-c72c-4ad1-a869-82f4f4b330ea",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "config": {
+                          "reactionRef": "system-react.setProp",
+                          "param": {
+                            "controllerId": "4acd9cca-b662-4046-a19a-2a5a699679e2",
+                            "prop": "title"
+                          }
+                        },
+                        "x6Node": {
+                          "x": 420,
+                          "y": 170,
+                          "width": 116,
+                          "height": 32
                         }
                       }
                     ],

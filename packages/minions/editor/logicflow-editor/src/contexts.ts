@@ -27,3 +27,6 @@ export const GraphContext = createContext<Graph | undefined>(undefined)
 export const MaterialsContext = createContext<IActivityMaterial<ReactNode>[]>([])
 export const ThemeTokenContext = createContext<IThemeToken>({})
 
+//全局上下文，主要用于getSubTitle
+export const LogicFlowContext = createContext<unknown>(undefined)
+

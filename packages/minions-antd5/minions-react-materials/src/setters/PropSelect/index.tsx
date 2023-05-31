@@ -22,6 +22,10 @@ export const PropSelect = memo((
     onChange?.({ controllerId: controllerId, prop: undefined })
   }, [onChange])
 
+  const handlePropChange =  useCallback((prop: string) => {
+    onChange?.({ ...value, prop })
+  }, [onChange, value])
+
   return (<>
     <Form.Item
       label={t("component")}
@@ -40,6 +44,7 @@ export const PropSelect = memo((
         <AutoComplete
           allowClear
           options={controller?.props?.map(prop => ({ value: prop }))}
+          onChange={handlePropChange}
         />
       </Form.Item>
     }

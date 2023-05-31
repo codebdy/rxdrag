@@ -113,6 +113,8 @@ export const ControllerMetaEditorAntd5 = memo((
               VariableSelect,
               PropSelect,
             }}
+            //用于绘图显示subtitle
+            logicFlowContext={editorContextParam}
             {...other}
           />
         }
