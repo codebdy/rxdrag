@@ -28,6 +28,7 @@
     "@ant-design/icons": "^4.8.0",
     "@reduxjs/toolkit": "^1.9.3",
     "@rxdrag/core": "workspace:*",
+    "@rxdrag/fieldy-schema": "workspace:*",
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/minions-runtime": "workspace:*",

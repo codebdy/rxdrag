@@ -1412,6 +1412,9 @@ importers:
       '@rxdrag/fieldy':
         specifier: workspace:*
         version: link:../../../fieldy/fieldy
+      '@rxdrag/fieldy-schema':
+        specifier: workspace:*
+        version: link:../../../fieldy/schema
       '@rxdrag/locales':
         specifier: workspace:*
         version: link:../../../locales/locales

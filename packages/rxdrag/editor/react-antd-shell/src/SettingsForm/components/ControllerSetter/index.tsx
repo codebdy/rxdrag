@@ -11,6 +11,8 @@ import { IEventMeta } from "@rxdrag/minions-controller-editor"
 import { useGlobalControllerMetas } from "./hooks/useGlobalControllerMetas"
 import { activityMaterialCategories } from "./materials"
 import { controllerSetterLocales } from "./locales"
+import { useFillControllerProps } from "./hooks/useFillControllerProps"
+import { INodeSchema } from "@rxdrag/schema"
 
 export const ControllerSetter = memo((props: {
   events?: IEventMeta[]
@@ -22,16 +24,17 @@ export const ControllerSetter = memo((props: {
   const [inputValue, setInputValue] = useState<IControllerMeta>(value)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const t = useToolsTranslate()
-  const node = useCurrentNode() as ITreeNode<unknown, IControllerMeta> | null
+  const node = useCurrentNode() as ITreeNode<INodeSchema, IControllerMeta> | undefined
   const parentControllers = useParentControllerMetas()
   const globalControllers = useGlobalControllerMetas();
+  const fillProps = useFillControllerProps();
 
   const mergedControllers = useMemo(() => [
     inputValue,
     ...parentControllers,
     ...globalControllers.filter(controllerMeta => !parentControllers.find(ctrl => controllerMeta.id === ctrl.id) && inputValue?.id !== controllerMeta.id)
-  ],
-    [inputValue, parentControllers, globalControllers])
+  ].map(meta=>fillProps(meta, node)),
+    [inputValue, parentControllers, globalControllers, fillProps, node])
 
   useEffect(() => {
     setInputValue(value)

@@ -2,7 +2,7 @@ import { useAllControllerMetas } from "@rxdrag/minions-controller-editor";
 import { IPropParam } from "@rxdrag/minions-runtime-react";
 import { useTranslate } from "@rxdrag/react-locales"
 import { AutoComplete, Form, Select } from "antd"
-import { memo, useCallback } from "react"
+import { memo, useCallback, useMemo } from "react"
 
 //本控件强依赖rxdrag editor
 export const PropSelect = memo((
@@ -14,9 +14,12 @@ export const PropSelect = memo((
   const { value, onChange } = props;
   const controllers = useAllControllerMetas();
   const t = useTranslate()
+  const controller = useMemo(() => {
+    return controllers?.find(meta => meta.id === value?.controllerId)
+  }, [controllers, value?.controllerId])
 
-  const hanldeControllerChange = useCallback((value: string) => {
-    onChange?.({ controllerId: value, prop: undefined })
+  const hanldeControllerChange = useCallback((controllerId: string) => {
+    onChange?.({ controllerId: controllerId, prop: undefined })
   }, [onChange])
 
   return (<>
@@ -35,11 +38,8 @@ export const PropSelect = memo((
         label={t("prop")}
       >
         <AutoComplete
-          options={[
-            { value: 'Burns Bay Road' },
-            { value: 'Downing Street' },
-            { value: 'Wall Street' },
-          ]}
+          allowClear
+          options={controller?.props?.map(prop => ({ value: prop }))}
         />
       </Form.Item>
     }

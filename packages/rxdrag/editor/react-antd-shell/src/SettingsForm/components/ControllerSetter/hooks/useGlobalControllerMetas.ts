@@ -1,10 +1,11 @@
 import { ITreeNode } from "@rxdrag/core";
 import { IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { useCurrentNode, useAllNodes } from "@rxdrag/react-core"
+import { INodeSchema } from "@rxdrag/schema";
 import { useMemo } from "react"
 
 export function useGlobalControllerMetas() {
-  const nodes = useAllNodes() || [] as ITreeNode<unknown, IControllerMeta>[];
+  const nodes = useAllNodes() || [] as ITreeNode<INodeSchema, IControllerMeta>[];
 
   const currentNode = useCurrentNode()
 
