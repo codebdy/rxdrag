@@ -4,9 +4,10 @@ import { AbstractControllerActivity } from "../AbstractControllerActivity";
 import { IVariableConfig } from "./SetVariableActivity";
 import { Activity, Input } from "@rxdrag/minions-runtime";
 
-export const ReadVariableActivityName = "system-react.readVariable"
-@Activity(ReadVariableActivityName)
+@Activity(ReadVariableActivity.NAME)
 export class ReadVariableActivity extends AbstractControllerActivity<IVariableConfig> {
+  public static NAME = "system-react.readVariable"
+  
   controller: IController
   constructor(meta: IActivityDefine<IVariableConfig>, context?: IControllerContext) {
     super(meta, context)
