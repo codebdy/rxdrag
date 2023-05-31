@@ -3,10 +3,10 @@ import { readFieldValueSchema } from "./schema";
 import { ReactNode } from "react";
 import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
 import { fieldReadIcon } from "../icons";
-import { ReadFieldValueActivityName } from "@rxdrag/fieldy-minions-activities";
+import { ReadFieldValue } from "@rxdrag/fieldy-minions-activities";
 
 export const readFieldValueMaterial: IActivityMaterial<ReactNode> = {
-  activityName: ReadFieldValueActivityName,
+  activityName: ReadFieldValue.NAME,
   icon: fieldReadIcon,
   label: "$readFieldValue",
   activityType: ActivityType.Activity,

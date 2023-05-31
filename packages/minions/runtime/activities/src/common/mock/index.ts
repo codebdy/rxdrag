@@ -1,7 +1,5 @@
-import { SingleInputActivity, Activity } from "@rxdrag/minions-runtime"
+import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
-
-export const MockActivityName = "system.mock"
 
 export interface IMockDataConfig {
   isError?: boolean,
@@ -9,13 +7,16 @@ export interface IMockDataConfig {
   duration?: number,
 }
 
-@Activity(MockActivityName)
-export class Mock extends SingleInputActivity<IMockDataConfig> {
+@Activity(Mock.NAME)
+export class Mock extends AbstractActivity<IMockDataConfig> {
+  public static NAME = "system.mock"
+
   constructor(meta: IActivityDefine<IMockDataConfig>) {
     super(meta)
   }
 
-  execute = (inputValue?: any) => {
+  @Input()
+  inputHandler = (inputValue?: any) => {
     const portLoading = "loading"
     this.next(true, portLoading)
     if (this.meta.config?.isError) {

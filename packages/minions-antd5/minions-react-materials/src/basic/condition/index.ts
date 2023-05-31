@@ -2,7 +2,7 @@ import { createUuid } from "@rxdrag/shared";
 import { conditionSchema } from "./schema";
 import { ReactNode } from "react";
 import { ActivityType, IActivityMaterial } from "@rxdrag/minions-schema";
-import { ConditionActivityName } from "@rxdrag/minions-activities";
+import { Condition } from "@rxdrag/minions-activities";
 import { ifIcon } from "../../icons";
 
 export const conditionMaterial: IActivityMaterial<ReactNode> = {
@@ -32,5 +32,5 @@ export const conditionMaterial: IActivityMaterial<ReactNode> = {
     ],
   },
   schema: conditionSchema,
-  activityName: ConditionActivityName
+  activityName: Condition.NAME
 }

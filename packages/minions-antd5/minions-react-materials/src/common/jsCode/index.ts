@@ -1,11 +1,11 @@
 import { createUuid } from "@rxdrag/shared";
 import { jsCodeSchema } from "./schema";
-import { ReactNode } from "react";
-import { JsCodeActivityName } from "@rxdrag/minions-activities";
-import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
+import { ActivityType } from "@rxdrag/minions-schema";
 import { jsIcon } from "../../icons";
+import { JsCode } from "@rxdrag/minions-activities";
+import { IRxDragActivityMaterial } from "../../interfaces";
 
-export const jsCodeMaterial: IActivityMaterial<ReactNode> = {
+export const jsCodeMaterial: IRxDragActivityMaterial = {
   icon: jsIcon,
   label: "$jsCode",
   activityType: ActivityType.Activity,
@@ -26,5 +26,5 @@ export const jsCodeMaterial: IActivityMaterial<ReactNode> = {
     ],
   },
   schema: jsCodeSchema,
-  activityName: JsCodeActivityName,
+  activityName: JsCode.NAME,
 }

@@ -1,7 +1,5 @@
-import { SingleInputActivity, Activity } from "@rxdrag/minions-runtime"
+import { Activity, AbstractActivity, Input } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
-
-export const RouteToActivityName = "system-react.routeTo"
 
 export interface IRouteToConfig {
   url?: string,
@@ -12,13 +10,16 @@ export interface IRouteToContext {
   navigate?: (url: string) => void
 }
 
-@Activity(RouteToActivityName)
-export class RouteTo extends SingleInputActivity<IRouteToConfig, IRouteToContext> {
+@Activity(RouteTo.NAME)
+export class RouteTo extends AbstractActivity<IRouteToConfig, IRouteToContext> {
+  public static NAME = "system-react.routeTo";
+
   constructor(meta: IActivityDefine<IRouteToConfig>, context?: IRouteToContext) {
     super(meta, context)
   }
 
-  execute = (inputValue?: string) => {
+  @Input()
+  inputHandler = (inputValue?: string) => {
     let url = inputValue
     if (!this.meta.config?.fromInput) {
       url = this.meta.config?.url

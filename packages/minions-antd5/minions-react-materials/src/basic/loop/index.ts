@@ -1,11 +1,11 @@
 import { createUuid } from "@rxdrag/shared";
 import { loopSchema } from "./schema";
-import { ReactNode } from "react";
-import { LoopActivityName } from "@rxdrag/minions-activities";
-import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
+import { ActivityType } from "@rxdrag/minions-schema";
 import { loopIcon } from "../../icons";
+import { IRxDragActivityMaterial } from "../../interfaces";
+import { Loop } from "@rxdrag/minions-activities";
 
-export const loopMaterial: IActivityMaterial<ReactNode> = {
+export const loopMaterial: IRxDragActivityMaterial = {
   icon: loopIcon,
   label: "$loop",
   activityType: ActivityType.Activity,
@@ -14,7 +14,7 @@ export const loopMaterial: IActivityMaterial<ReactNode> = {
       {
         id: createUuid(),
         name: "input",
-        label: "",//"$input",
+        label: "",
       },
 
     ],
@@ -22,10 +22,10 @@ export const loopMaterial: IActivityMaterial<ReactNode> = {
       {
         id: createUuid(),
         name: "output",
-        label: "",//"$output",
+        label: "",
       },
     ],
   },
   schema: loopSchema,
-  activityName: LoopActivityName,
+  activityName: Loop.NAME,
 }

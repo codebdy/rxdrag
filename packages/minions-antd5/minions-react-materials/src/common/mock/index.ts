@@ -1,11 +1,11 @@
 import { createUuid } from "@rxdrag/shared";
 import { mockSchema } from "./schema";
-import { ReactNode } from "react";
-import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
-import { MockActivityName } from "@rxdrag/minions-activities";
+import { ActivityType } from "@rxdrag/minions-schema";
 import { simulateIcon } from "../../icons";
+import { Mock } from "@rxdrag/minions-activities";
+import { IRxDragActivityMaterial } from "../../interfaces";
 
-export const mockMaterial: IActivityMaterial<ReactNode> = {
+export const mockMaterial: IRxDragActivityMaterial = {
   icon: simulateIcon,
   label: "$simulateData",
   activityType: ActivityType.Activity,
@@ -36,5 +36,5 @@ export const mockMaterial: IActivityMaterial<ReactNode> = {
     ],
   },
   schema: mockSchema,
-  activityName: MockActivityName,
+  activityName: Mock.NAME,
 }

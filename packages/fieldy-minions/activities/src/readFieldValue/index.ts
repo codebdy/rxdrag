@@ -1,20 +1,21 @@
-import { SingleInputActivity, Activity } from "@rxdrag/minions-runtime"
+import { Activity, Input, AbstractActivity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 import { IFieldyLogicFlowContext } from "../context"
-
-export const ReadFieldValueActivityName = "fieldy.readFieldValue"
 
 export interface IReadFieldValueConfig {
   fieldPath?: string,
 }
 
-@Activity(ReadFieldValueActivityName)
-export class ReadFieldValueActivity extends SingleInputActivity<IReadFieldValueConfig, IFieldyLogicFlowContext> {
+@Activity(ReadFieldValue.NAME)
+export class ReadFieldValue extends AbstractActivity<IReadFieldValueConfig, IFieldyLogicFlowContext> {
+  public static NAME = "fieldy.readFieldValue"
+
   constructor(meta: IActivityDefine<IReadFieldValueConfig>, context:IFieldyLogicFlowContext) {
     super(meta, context)
   }
 
-  execute(): void {
+  @Input()
+  inputHandler(): void {
     const path = this.meta.config?.fieldPath 
     if(path){
       const field = this.context?.form?.getField(path)

@@ -1,14 +1,14 @@
-import { AbstractActivity, SingleInputActivity, Activity } from "@rxdrag/minions-runtime"
+import { AbstractActivity, Activity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
-
-export const ConditionActivityName = "system.condition"
 
 export interface IConditionConfig {
   trueExpression?: string
 }
 
-@Activity(ConditionActivityName)
-export class Condition extends SingleInputActivity<IConditionConfig> {
+@Activity(Condition.NAME)
+export class Condition extends AbstractActivity<IConditionConfig> {
+  public static NAME = "system.condition"
+
   constructor(meta: IActivityDefine<IConditionConfig>) {
     super(meta)
     if (Object.keys(meta.inPorts || {}).length !== 1) {

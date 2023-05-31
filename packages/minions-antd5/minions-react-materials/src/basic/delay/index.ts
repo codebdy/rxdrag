@@ -1,11 +1,11 @@
 import { createUuid } from "@rxdrag/shared";
 import { delaySchema } from "./schema";
-import { ReactNode } from "react";
-import { ActivityType, IActivityMaterial } from "@rxdrag/minions-schema";
-import { DelayActivityName, IDelayConfig } from "@rxdrag/minions-activities";
+import { ActivityType } from "@rxdrag/minions-schema";
+import { Delay, IDelayConfig } from "@rxdrag/minions-activities";
 import { delayIcon } from "../../icons";
+import { IRxDragActivityMaterial } from "../../interfaces";
 
-export const delayMaterial: IActivityMaterial<ReactNode> = {
+export const delayMaterial: IRxDragActivityMaterial<IDelayConfig> = {
   icon: delayIcon,
   label: "$delay",
   activityType: ActivityType.Activity,
@@ -31,5 +31,5 @@ export const delayMaterial: IActivityMaterial<ReactNode> = {
       return config?.time?.toString()
     }
   },
-  activityName: DelayActivityName
+  activityName: Delay.NAME
 }

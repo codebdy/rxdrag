@@ -1,8 +1,7 @@
-import { SingleInputActivity, Activity } from "@rxdrag/minions-runtime";
+import { Activity, AbstractActivity, Input } from "@rxdrag/minions-runtime";
 import { IActivityDefine } from "@rxdrag/minions-schema";
 import { message } from "antd";
 
-export const MessageActivityName = "system-react-antd5.message"
 export enum MessageType {
   Success = "success",
   Error = "error",
@@ -16,9 +15,9 @@ export interface IInfoMessageConfig {
   duration?: number,
 }
 
-@Activity(MessageActivityName)
-export class InfoMessageReaction extends SingleInputActivity<IInfoMessageConfig> {
-
+@Activity(InfoMessage.NAME)
+export class InfoMessage extends AbstractActivity<IInfoMessageConfig> {
+  public static NAME = "system-react-antd5.message";
   constructor(meta: IActivityDefine<IInfoMessageConfig>) {
     super(meta)
 
@@ -28,7 +27,8 @@ export class InfoMessageReaction extends SingleInputActivity<IInfoMessageConfig>
 
   }
 
-  execute = (inputValue?: string) => {
+  @Input()
+  inputHandler = (inputValue?: string) => {
     const msg = inputValue
     switch (this.meta.config?.type) {
       case MessageType.Success:

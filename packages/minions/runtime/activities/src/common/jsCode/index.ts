@@ -1,15 +1,14 @@
-import { InputHandler, SingleInputActivity, Activity } from "@rxdrag/minions-runtime"
+import { InputHandler, Activity, AbstractActivity, Input } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
-export const JsCodeActivityName = "system.jsCode"
 
 export interface IJsCodeConfig {
   expression?: string
 }
 
-@Activity(JsCodeActivityName)
-export class JsCode extends SingleInputActivity<IJsCodeConfig> {
-
+@Activity(JsCode.NAME)
+export class JsCode extends AbstractActivity<IJsCodeConfig> {
+  public static NAME = "system.jsCode"
   constructor(meta: IActivityDefine<IJsCodeConfig>, options?: unknown) {
     super(meta, options)
 
@@ -18,14 +17,15 @@ export class JsCode extends SingleInputActivity<IJsCodeConfig> {
     }
   }
 
-  execute = (inputValue: string) => {
+  @Input()
+  inputHandler = (inputValue: string) => {
     const expression = this.meta.config?.expression?.trim()
     if (expression) {
       const outputs: { [name: string]: InputHandler } = {}
-      for(const output of this.jointers.outputs){
+      for (const output of this.jointers.outputs) {
         outputs[output.name] = output.push
       }
-      
+
       // eslint-disable-next-line no-new-func
       new Function("return " + expression)()?.({ inputValue, outputs })
     }

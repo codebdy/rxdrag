@@ -1,12 +1,12 @@
 import { createUuid } from "@rxdrag/shared";
 import { intervalSchema } from "./schema";
-import { ReactNode } from "react";
 import { IIntervalConfig, Signals } from "@rxdrag/minions-activities";
-import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
+import { ActivityType } from "@rxdrag/minions-schema";
 import { intervalIcon } from "../../icons";
 import { DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
+import { IRxDragActivityMaterial } from "../../interfaces";
 
-export const signalsMaterial: IActivityMaterial<ReactNode> = {
+export const signalsMaterial: IRxDragActivityMaterial<IIntervalConfig> = {
   icon: intervalIcon,
   label: "$signals",
   activityType: ActivityType.Activity,

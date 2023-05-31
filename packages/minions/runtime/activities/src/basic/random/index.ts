@@ -1,14 +1,14 @@
-import { SingleInputActivity, Activity } from "@rxdrag/minions-runtime"
+import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
-export const RandomActivityName = "system.random"
 export interface IRandomConfig {
   maxValue?: number,
   minValue?: number,
 }
 
-@Activity(RandomActivityName)
-export class Random extends SingleInputActivity<IRandomConfig> {
+@Activity(Random.NAME)
+export class Random extends AbstractActivity<IRandomConfig> {
+  public static NAME = "system.random"
   constructor(meta: IActivityDefine<IRandomConfig>) {
     super(meta)
 
@@ -17,7 +17,8 @@ export class Random extends SingleInputActivity<IRandomConfig> {
     }
   }
 
-  execute = () => {
+  @Input()
+  inputHandler = () => {
     const min = this.meta.config?.minValue || 0
     const max = (this.meta.config?.maxValue || 1) + 1
     this.next(this.getRandomInteger(min, max))

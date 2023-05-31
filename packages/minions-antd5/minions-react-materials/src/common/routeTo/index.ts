@@ -1,11 +1,11 @@
 import { createUuid } from "@rxdrag/shared";
 import { routeToSchema } from "./schema";
-import { ReactNode } from "react";
-import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
-import { RouteToActivityName } from "@rxdrag/minions-runtime-react";
+import { ActivityType } from "@rxdrag/minions-schema";
 import { routeIcon } from "../../icons";
+import { RouteTo } from "@rxdrag/minions-runtime-react";
+import { IRxDragActivityMaterial } from "../../interfaces";
 
-export const routeToMaterial: IActivityMaterial<ReactNode> = {
+export const routeToMaterial: IRxDragActivityMaterial = {
   icon: routeIcon,
   label: "$routeTo",
   activityType: ActivityType.Activity,
@@ -19,5 +19,5 @@ export const routeToMaterial: IActivityMaterial<ReactNode> = {
     ],
   },
   schema: routeToSchema,
-  activityName: RouteToActivityName,
+  activityName: RouteTo.NAME,
 }

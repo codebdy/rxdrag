@@ -1,11 +1,11 @@
 import { createUuid } from "@rxdrag/shared";
 import { mergeSchema } from "./schema";
-import { ReactNode } from "react";
-import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
-import { MergeActivityName } from "@rxdrag/minions-activities";
+import { ActivityType } from "@rxdrag/minions-schema";
 import { mergeIcon } from "../../icons";
+import { Merge } from "@rxdrag/minions-activities";
+import { IRxDragActivityMaterial } from "../../interfaces";
 
-export const mergeMaterial: IActivityMaterial<ReactNode> = {
+export const mergeMaterial: IRxDragActivityMaterial = {
   icon: mergeIcon,
   label: "$merge",
   activityType: ActivityType.Activity,
@@ -31,5 +31,5 @@ export const mergeMaterial: IActivityMaterial<ReactNode> = {
     ],
   },
   schema: mergeSchema,
-  activityName: MergeActivityName,
+  activityName: Merge.NAME,
 }
