@@ -1,8 +1,15 @@
+import { ISetPropConfig } from "@rxdrag/minions-runtime-react";
 import { useTranslate } from "@rxdrag/react-locales"
 import { Form, Select } from "antd"
 import { memo } from "react"
 
-export const PropSelect = memo(() => {
+export const PropSelect = memo((
+  props: {
+    value?: ISetPropConfig,
+    onChange?: (value?: ISetPropConfig) => void,
+  }
+) => {
+  const { value, onChange } = props;
   const t = useTranslate()
   return (<>
     <Form.Item
@@ -10,7 +17,6 @@ export const PropSelect = memo(() => {
     >
       <Select
         defaultValue="lucy"
-        style={{ width: 120 }}
         options={[{ value: 'lucy', label: 'Lucy' }]}
       />
     </Form.Item>
@@ -19,7 +25,6 @@ export const PropSelect = memo(() => {
     >
       <Select
         defaultValue="lucy"
-        style={{ width: 120 }}
         options={[{ value: 'lucy', label: 'Lucy' }]}
       />
     </Form.Item>

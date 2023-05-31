@@ -2,10 +2,14 @@
 import { Activity, Input } from "@rxdrag/minions-runtime";
 import { IActivityDefine } from "@rxdrag/minions-schema";
 import { IControllerContext } from "../../interfaces";
-import { AbstractControllerActivity, IControllerConfig } from "../AbstractControllerActivity";
+import { AbstractControllerActivity, IControllerConfig, IControllerParam } from "../AbstractControllerActivity";
 
-export interface ISetPropConfig extends IControllerConfig{
+export interface IPropParam extends IControllerParam {
   prop?: string
+}
+
+export interface ISetPropConfig extends IControllerConfig {
+  param?: IPropParam
 }
 
 @Activity(SetPropActivity.NAME)
@@ -20,8 +24,8 @@ export class SetPropActivity extends AbstractControllerActivity<ISetPropConfig> 
 
   @Input()
   inputHandler = (inputValue: string) => {
-    if (this.meta.config?.prop) {
-      this.controller?.setProp(this.meta.config.prop, inputValue)
+    if (this.meta.config?.param?.prop) {
+      this.controller?.setProp(this.meta.config?.param.prop, inputValue)
     }
   }
 }

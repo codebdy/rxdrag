@@ -2,8 +2,11 @@ import { AbstractActivity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 import { IController, IControllerContext } from "../interfaces"
 
-export interface IControllerConfig {
+export interface IControllerParam {
   controllerId?: string
+}
+export interface IControllerConfig {
+  param?: IControllerParam
 }
 
 export abstract class AbstractControllerActivity<Config extends IControllerConfig = IControllerConfig> extends AbstractActivity<Config> {
@@ -11,12 +14,12 @@ export abstract class AbstractControllerActivity<Config extends IControllerConfi
   constructor(meta: IActivityDefine<Config>, contexts?: IControllerContext) {
     super(meta, contexts)
 
-    if (!meta.config?.controllerId) {
+    if (!meta.config?.param?.controllerId) {
       throw new Error("ControllerReaction not set controller id")
     }
-    const controller = contexts?.controllers?.[meta.config?.controllerId]
+    const controller = contexts?.controllers?.[meta.config?.param?.controllerId]
     if (!controller) {
-      console.log("未找到控制器", contexts?.controllers, meta.config?.controllerId)
+      console.log("未找到控制器", contexts?.controllers, meta.config?.param?.controllerId)
       throw new Error("Can not find controller")
     }
     this.controller = controller

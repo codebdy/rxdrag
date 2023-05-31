@@ -5,7 +5,7 @@ export interface IPorts {
   outPorts?: IPortDefine[];
 }
 
-export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown> {
+export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown, Config = unknown, MaterialContext = unknown> {
   label: string;
   activityType: ActivityType;
   icon?: ComponentNode;
@@ -13,8 +13,7 @@ export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown
   //属性面板配置
   schema?: NodeSchema;
   defaultPorts?: IPorts;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  subTitle?: (config?: any, options?: any) => string | undefined;
+  subTitle?: (config?: Config, context?: MaterialContext) => string | undefined;
   activityName: string;
 }
 
