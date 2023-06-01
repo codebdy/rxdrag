@@ -1,4 +1,4 @@
-import { AbstractActivity, Activity } from "@rxdrag/minions-runtime"
+import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
 export interface IDelayConfig {
@@ -14,7 +14,8 @@ export class Delay extends AbstractActivity<IDelayConfig> {
     super(meta)
   }
 
-  execute = (inputValue?: any) => {
+  @Input()
+  inputHandler = (inputValue?: any) => {
     this.clear()
     this.inputValue = inputValue
     if (this.meta.config?.time) {

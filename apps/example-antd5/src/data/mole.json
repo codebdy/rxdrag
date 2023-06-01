@@ -11,6 +11,40 @@
         }
       },
       "x-field": {},
+      "x-controller": {
+        "id": "06c7b84e-662e-4161-998a-c95b8d9ec026",
+        "enable": true,
+        "name": "游戏容器",
+        "global": false,
+        "events": [],
+        "variables": [
+          {
+            "name": "成绩",
+            "defaultValue": 0,
+            "id": "a227ac6d-7b3f-4289-8d19-e59fe558df45"
+          }
+        ],
+        "reactions": [
+          {
+            "id": "599563e0-506c-4443-b61f-390fbe222ee2",
+            "label": "计分",
+            "nodes": [],
+            "lines": []
+          },
+          {
+            "id": "4745fece-c5ee-4b38-b972-de9fb30c820e",
+            "label": "开始",
+            "nodes": [],
+            "lines": []
+          },
+          {
+            "id": "8a24c0b1-09df-4a6e-a351-a4c84d4e3a33",
+            "label": "结束",
+            "nodes": [],
+            "lines": []
+          }
+        ]
+      },
       "slots": {},
       "children": [
         {
@@ -44,7 +78,9 @@
                         "disabled": true,
                         "style": {},
                         "ghost": false,
-                        "danger": false
+                        "danger": false,
+                        "shape": "circle",
+                        "size": "large"
                       },
                       "x-field": {},
                       "slots": {},
@@ -69,7 +105,9 @@
                         "disabled": true,
                         "style": {},
                         "ghost": false,
-                        "danger": false
+                        "danger": false,
+                        "shape": "circle",
+                        "size": "large"
                       },
                       "x-field": {},
                       "slots": {},
@@ -94,7 +132,9 @@
                         "disabled": true,
                         "style": {},
                         "ghost": false,
-                        "danger": false
+                        "danger": false,
+                        "shape": "circle",
+                        "size": "large"
                       },
                       "x-field": {},
                       "slots": {},
@@ -131,7 +171,9 @@
                         "disabled": true,
                         "style": {},
                         "ghost": false,
-                        "danger": false
+                        "danger": false,
+                        "shape": "circle",
+                        "size": "large"
                       },
                       "x-field": {},
                       "slots": {},
@@ -156,7 +198,9 @@
                         "disabled": true,
                         "style": {},
                         "ghost": false,
-                        "danger": false
+                        "danger": false,
+                        "shape": "circle",
+                        "size": "large"
                       },
                       "x-field": {},
                       "slots": {},
@@ -181,7 +225,9 @@
                         "disabled": true,
                         "style": {},
                         "ghost": false,
-                        "danger": false
+                        "danger": false,
+                        "shape": "circle",
+                        "size": "large"
                       },
                       "x-field": {},
                       "slots": {},
@@ -218,7 +264,9 @@
                         "disabled": true,
                         "style": {},
                         "ghost": false,
-                        "danger": false
+                        "danger": false,
+                        "shape": "circle",
+                        "size": "large"
                       },
                       "x-field": {},
                       "slots": {},
@@ -243,7 +291,9 @@
                         "disabled": true,
                         "style": {},
                         "ghost": false,
-                        "danger": false
+                        "danger": false,
+                        "shape": "circle",
+                        "size": "large"
                       },
                       "x-field": {},
                       "slots": {},
@@ -268,7 +318,9 @@
                         "disabled": true,
                         "style": {},
                         "ghost": false,
-                        "danger": false
+                        "danger": false,
+                        "shape": "circle",
+                        "size": "large"
                       },
                       "x-field": {},
                       "slots": {},
@@ -359,6 +411,41 @@
                         "style": {}
                       },
                       "x-field": {},
+                      "x-controller": {
+                        "id": "ada497c5-d0b6-45f9-aad8-70592570ec52",
+                        "enable": true,
+                        "events": [
+                          {
+                            "id": "718a5c8d-710a-40b2-b553-a50e4d7546a1",
+                            "name": "onClick",
+                            "label": "点击",
+                            "nodes": [
+                              {
+                                "id": "7eae11d0-52ae-41d4-aea9-ae7c4db712fa",
+                                "label": "交互",
+                                "type": "LogicFlowActivity",
+                                "activityName": "system-react.reaction",
+                                "inPorts": [],
+                                "outPorts": [],
+                                "x6Node": {
+                                  "x": 250,
+                                  "y": 120,
+                                  "width": 132,
+                                  "height": 48
+                                },
+                                "config": {
+                                  "param": {
+                                    "controllerId": "06c7b84e-662e-4161-998a-c95b8d9ec026",
+                                    "logicFlowId": "4745fece-c5ee-4b38-b972-de9fb30c820e"
+                                  }
+                                }
+                              }
+                            ],
+                            "lines": []
+                          }
+                        ],
+                        "name": "按钮"
+                      },
                       "slots": {},
                       "children": []
                     },
@@ -373,6 +460,41 @@
                         "disabled": true
                       },
                       "x-field": {},
+                      "x-controller": {
+                        "id": "59d6c605-769c-41e6-9f86-d729df9f7bae",
+                        "enable": true,
+                        "events": [
+                          {
+                            "id": "9232eba4-ce1a-4bbe-af7e-c35df693df87",
+                            "name": "onClick",
+                            "label": "点击",
+                            "nodes": [
+                              {
+                                "id": "2f2d672e-f030-429b-ae12-5fe613315f28",
+                                "label": "交互",
+                                "type": "LogicFlowActivity",
+                                "activityName": "system-react.reaction",
+                                "inPorts": [],
+                                "outPorts": [],
+                                "x6Node": {
+                                  "x": 330,
+                                  "y": 160,
+                                  "width": 88,
+                                  "height": 32
+                                },
+                                "config": {
+                                  "param": {
+                                    "controllerId": "06c7b84e-662e-4161-998a-c95b8d9ec026",
+                                    "logicFlowId": "8a24c0b1-09df-4a6e-a351-a4c84d4e3a33"
+                                  }
+                                }
+                              }
+                            ],
+                            "lines": []
+                          }
+                        ],
+                        "name": "按钮"
+                      },
                       "slots": {},
                       "children": []
                     }

@@ -1,4 +1,4 @@
-import { AbstractActivity, Activity } from "@rxdrag/minions-runtime"
+import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
 export interface IConditionConfig {
@@ -16,7 +16,8 @@ export class Condition extends AbstractActivity<IConditionConfig> {
     }
   }
 
-  execute(inputValue: any): void {
+  @Input()
+  inputHandler(inputValue: any): void {
     let result = inputValue
     if (this.meta.config?.trueExpression) {
       // eslint-disable-next-line no-new-func
