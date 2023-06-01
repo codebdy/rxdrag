@@ -98,6 +98,7 @@ export const ControllerMetaEditorAntd5 = memo((
             value={value}
             selected={selected}
             eventMetas={eventMetas}
+            materialCategories={materialCategories}
             onSelect={setSelected}
             onChange={handleMemberChange}
           />

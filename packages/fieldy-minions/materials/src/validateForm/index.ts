@@ -1,15 +1,15 @@
 import { ActivityType } from "@rxdrag/minions-schema";
 import { createUuid } from "@rxdrag/shared";
-import { IFieldConfig, ValidateField } from "@rxdrag/fieldy-minions-activities";
+import { formValidateIcon } from "../icons";
 import { IFieldyActivityMaterial } from "../types";
-import { fieldValidateIcon } from "../icons";
-import { fieldSchema } from "../readFieldValue/schema";
+import { ValidateForm } from "@rxdrag/fieldy-minions-activities";
 import { DEFAULT_INPUT_NAME } from "@rxdrag/minions-runtime";
+import { formSchema } from "../readFormValue/schema";
 
-export const validateFieldMaterial: IFieldyActivityMaterial<IFieldConfig> = {
-  activityName: ValidateField.NAME,
-  icon: fieldValidateIcon,
-  label: "$validateField",
+export const validateFormMaterial: IFieldyActivityMaterial = {
+  activityName: ValidateForm.NAME,
+  icon: formValidateIcon,
+  label: "$validateForm",
   activityType: ActivityType.Activity,
   defaultPorts: {
     inPorts: [
@@ -22,18 +22,15 @@ export const validateFieldMaterial: IFieldyActivityMaterial<IFieldConfig> = {
     outPorts: [
       {
         id: createUuid(),
-        name: ValidateField.OUTPUT_NAME_SUCCESS,
+        name: ValidateForm.OUTPUT_NAME_SUCCESS,
         label: "$success",
       },
       {
         id: createUuid(),
-        name: ValidateField.OUTPUT_NAME_FAILURE,
+        name: ValidateForm.OUTPUT_NAME_FAILURE,
         label: "$failure",
       },
     ],
   },
-  schema: fieldSchema,
-  subTitle: (config?: IFieldConfig) => {
-    return config?.fieldPath
-  },
+  schema: formSchema,
 }

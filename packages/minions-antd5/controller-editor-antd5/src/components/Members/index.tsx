@@ -1,6 +1,6 @@
 import { PlusOutlined, ThunderboltOutlined } from "@ant-design/icons";
 import { Button, Dropdown, MenuProps, Typography } from "antd";
-import { memo, useCallback, useMemo, useState } from "react"
+import { ReactNode, memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components";
 import { ListItemReaction } from "./ListItemReaction";
 import { ListItemVariable } from "./ListItemVariable";
@@ -8,11 +8,10 @@ import { NameDialog } from "./NameDialog";
 import { VariableDialog } from "./VariableDialog";
 import { createUuid } from "@rxdrag/shared"
 import { useTranslate } from "@rxdrag/react-locales"
-import { IControllerMeta, IVariableDefineMeta, ReactionActivityName, SetVariable } from "@rxdrag/minions-runtime-react";
-import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
+import { IControllerMeta, IVariableDefineMeta, Reaction, ReadVariable } from "@rxdrag/minions-runtime-react";
+import { ActivityMaterialCategory, IActivityMaterial, ILogicFlowDefinition } from "@rxdrag/minions-schema";
 import { IEventMeta } from "@rxdrag/minions-controller-editor";
 import { ListItemEvent } from "./ListItemEvent";
-import { useGetMaterial } from "@rxdrag/minions-logicflow-editor";
 
 const { Text } = Typography;
 
@@ -44,13 +43,19 @@ export const Members = memo((
     selected?: string,
     onSelect?: (id: string) => void,
     onChange?: (value?: IControllerMeta) => void,
-    eventMetas?: IEventMeta[]
+    eventMetas?: IEventMeta[],
+    materialCategories: ActivityMaterialCategory<ReactNode>[],
   }
 ) => {
-  const { value, selected, onSelect, onChange, eventMetas } = props
+  const { value, selected, onSelect, onChange, eventMetas, materialCategories } = props
   const [addReactionOpen, setAddReactionOpen] = useState(false)
   const [addVariableOpen, setAddVariableOpen] = useState(false)
-  const getMaterial = useGetMaterial();
+  const getMaterial = useCallback((name?: string) => {
+    let materials: IActivityMaterial<ReactNode>[] = []
+    materials = materials.concat(...materialCategories.map(category => category.materials))
+    return materials.find(material => material.activityName === name)
+  }, [materialCategories])
+
   const handleAddEvent = useCallback((event: IEventMeta) => {
     const ev = {
       id: createUuid(),
@@ -211,7 +216,7 @@ export const Members = memo((
                 onChange={handleChangeReaction}
               >
                 <ListItem
-                  icon={getMaterial(ReactionActivityName)}
+                  icon={getMaterial(Reaction.NAME)?.icon}
                   onClick={() => handleMemberClick(reaction.id)}
                   type={selected === reaction.id ? "default" : "text"}
                 >
@@ -238,7 +243,7 @@ export const Members = memo((
                 onChange={handleChangeVariable}
               >
                 <ListItem
-                  icon={getMaterial(SetVariable.NAME)}
+                  icon={getMaterial(ReadVariable.NAME)?.icon}
                 >
                   {variable.name}
                 </ListItem>

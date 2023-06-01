@@ -1,12 +1,12 @@
 import { createUuid } from "@rxdrag/shared";
-import { subscribeFieldSchema } from "./schema";
 import { ActivityType } from "@rxdrag/minions-schema";
 import { subscribeIcon } from "../icons";
 import { SubscribeField } from "@rxdrag/fieldy-minions-activities";
-import { IFieldActivityMaterial } from "../types";
+import { IFieldyActivityMaterial } from "../types";
 import { DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
+import { fieldSchema } from "../readFieldValue/schema";
 
-export const subscribeFieldMaterial: IFieldActivityMaterial = {
+export const subscribeFieldMaterial: IFieldyActivityMaterial = {
   activityName: SubscribeField.NAME,
   icon: subscribeIcon,
   label: "$subscribeField",
@@ -20,5 +20,5 @@ export const subscribeFieldMaterial: IFieldActivityMaterial = {
       },
     ],
   },
-  schema: subscribeFieldSchema,
+  schema: fieldSchema,
 }

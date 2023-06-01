@@ -1,23 +1,15 @@
-import { Activity, IActivity, IActivityJointers } from "@rxdrag/minions-runtime";
-import { ActivityJointers } from "@rxdrag/minions-runtime";
+import { AbstractActivity, Activity } from "@rxdrag/minions-runtime";
 import { IActivityDefine } from "@rxdrag/minions-schema";
 import { IFieldyLogicFlowContext } from "../context"
 
-export const ReadSubscribeFormActivityName = "fieldy.subscribeForm"
 
-//这个代码看出，AbstractActivity结构并不合理，抽时间重构
-@Activity(ReadSubscribeFormActivityName)
-export class SubscribeForm implements IActivity {
-  id: string;
-  jointers: IActivityJointers;
+@Activity(SubscribeForm.NAME)
+export class SubscribeForm extends AbstractActivity<unknown, IFieldyLogicFlowContext> {
+  public static NAME = "fieldy.subscribeForm"
 
   constructor(meta: IActivityDefine<unknown>, context?: IFieldyLogicFlowContext) {
-    this.id = meta.id
-    this.jointers = new ActivityJointers()
+    super(meta, context)
     context?.form?.onValueChange(this.handleValueChange);
-  }
-  destory(): void {
-    //throw new Error("Method not implemented.");
   }
 
   handleValueChange = (value?: unknown) => {

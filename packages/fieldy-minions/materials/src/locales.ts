@@ -2,6 +2,7 @@ export const fieldyActivityMaterialLocales = {
   "zh-CN": {
     dataModel: "数据模型",
     setFormValue: "表单赋值",
+    subscribeForm: "订阅表单",
     validateForm: "校验表单",
     readFormValue: "读取表单",
     setFieldValue: "字段赋值",
@@ -13,6 +14,7 @@ export const fieldyActivityMaterialLocales = {
   'en-US': {
     dataModel: "Data Model",
     setFormValue: "Set Form Value",
+    subscribeForm: "Subsribe From",
     validateForm: "Validate Form",
     readFormValue: "Read Form Value",
     setFieldValue: "Set Field Value",

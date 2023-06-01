@@ -1,14 +1,14 @@
 import { ActivityType } from "@rxdrag/minions-schema";
 import { createUuid } from "@rxdrag/shared";
-import { formIcon } from "../icons";
+import { fieldIcon } from "../icons";
 import { IFieldConfig, SetFieldValue } from "@rxdrag/fieldy-minions-activities";
-import { IFieldActivityMaterial } from "../types";
+import { IFieldyActivityMaterial } from "../types";
 import { fieldSchema } from "../readFieldValue/schema";
 import { DEFAULT_INPUT_NAME } from "@rxdrag/minions-runtime";
 
-export const setFieldValueMaterial: IFieldActivityMaterial<IFieldConfig> = {
+export const setFieldValueMaterial: IFieldyActivityMaterial<IFieldConfig> = {
     activityName: SetFieldValue.NAME,
-    icon: formIcon,
+    icon: fieldIcon,
     label: "$setFieldValue",
     activityType: ActivityType.Activity,
     defaultPorts: {
