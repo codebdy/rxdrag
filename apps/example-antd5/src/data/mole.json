@@ -6464,9 +6464,10 @@
                     {
                       "componentName": "Button",
                       "props": {
-                        "type": "default",
+                        "type": "primary",
                         "title": "开始",
-                        "style": {}
+                        "style": {},
+                        "block": false
                       },
                       "x-field": {},
                       "x-controller": {
