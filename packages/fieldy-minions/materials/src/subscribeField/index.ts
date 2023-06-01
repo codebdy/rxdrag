@@ -3,10 +3,10 @@ import { subscribeFieldSchema } from "./schema";
 import { ReactNode } from "react";
 import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
 import { subscribeIcon } from "../icons";
-import { ReadSubscribeFieldActivityName } from "@rxdrag/fieldy-minions-activities";
+import { SubscribeField } from "@rxdrag/fieldy-minions-activities";
 
 export const subscribeFieldMaterial: IActivityMaterial<ReactNode> = {
-  activityName: ReadSubscribeFieldActivityName,
+  activityName: SubscribeField.NAME,
   icon: subscribeIcon,
   label: "$subscribeField",
   activityType: ActivityType.Activity,

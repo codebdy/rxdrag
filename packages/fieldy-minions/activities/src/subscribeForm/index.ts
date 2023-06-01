@@ -7,7 +7,7 @@ export const ReadSubscribeFormActivityName = "fieldy.subscribeForm"
 
 //这个代码看出，AbstractActivity结构并不合理，抽时间重构
 @Activity(ReadSubscribeFormActivityName)
-export class SubscribeFormActivity implements IActivity {
+export class SubscribeForm implements IActivity {
   id: string;
   jointers: IActivityJointers;
 

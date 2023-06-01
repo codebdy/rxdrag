@@ -2,9 +2,9 @@ import { Activity, AbstractActivity, Input } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 import { IFieldyLogicFlowContext } from "../context"
 
-@Activity(ReadFormValue.NAME)
-export class ReadFormValue extends AbstractActivity<unknown, IFieldyLogicFlowContext> {
-  public static NAME = "fieldy.readFormValue"
+@Activity(ValidateForm.NAME)
+export class ValidateForm extends AbstractActivity<unknown, IFieldyLogicFlowContext> {
+  public static NAME = "fieldy.validateFormValue"
 
   constructor(meta: IActivityDefine<unknown>, context: IFieldyLogicFlowContext) {
     super(meta, context)
@@ -12,6 +12,6 @@ export class ReadFormValue extends AbstractActivity<unknown, IFieldyLogicFlowCon
 
   @Input()
   inputHandler(): void {
-    this.next(this.context?.form?.value)
+    this.context?.form?.validate();
   }
 }
