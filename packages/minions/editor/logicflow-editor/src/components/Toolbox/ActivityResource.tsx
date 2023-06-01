@@ -9,12 +9,12 @@ export const createUuid = () => {
   return uuidv4();
 };
 
-export type ReactionResourceProps = {
+export type ActivityResourceProps = {
   children?: (onMouseDown: ((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void)) => ReactNode,
   material: IActivityMaterial<React.ReactNode>,
 }
 
-export const ReactionResource = memo((props: ReactionResourceProps) => {
+export const ActivityResource = memo((props: ActivityResourceProps) => {
   const { children, material } = props
   const graph = useGraph()
   const dnd = useDnd()

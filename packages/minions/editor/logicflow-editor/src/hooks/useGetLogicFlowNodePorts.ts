@@ -7,7 +7,7 @@ export function useGetLogicFlowNodePorts() {
   
   const getLogicFlowPorts = useCallback((meta: IActivityDefine<ILogicFlowConfig>, group: 'in' | 'out') => {
     const activityType = group === "in" ? ActivityType.Start : ActivityType.End
-    const logMeta = getLogicFlowMeta(meta.config?.logicFlowId || "")
+    const logMeta = getLogicFlowMeta(meta.config?.param?.logicFlowId || "")
     const ports: IPortDefine[] | undefined = logMeta?.nodes?.filter(activityMeta => activityMeta.type === activityType)?.map(activityMeta => ({ id: activityMeta.id, name: activityMeta.activityName || "", label: activityMeta.label }))
     return ports
   }, [getLogicFlowMeta])

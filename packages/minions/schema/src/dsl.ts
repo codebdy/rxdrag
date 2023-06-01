@@ -12,7 +12,9 @@ export enum ActivityType {
 }
 
 export interface ILogicFlowConfig {
-  logicFlowId: string
+  param?:{
+    logicFlowId: string
+  }
 }
 
 export interface IActivityDefine<ConfigMeta = unknown> {

@@ -1,7 +1,7 @@
 import { ReactNode, memo } from "react"
 import { Collapse as AntdCollapse } from "antd";
 import styled from "styled-components";
-import { ReactionResource, ToolItem, ToolItemCategory } from "@rxdrag/minions-logicflow-editor";
+import { ActivityResource, ToolItem, ToolItemCategory } from "@rxdrag/minions-logicflow-editor";
 import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
 
 const Collapse = styled(AntdCollapse)`
@@ -27,7 +27,7 @@ export const Toolbox = memo((props: {
               <ToolItemCategory>
                 {
                   category.materials.map((materail, index) => {
-                    return <ReactionResource key={index + materail.activityName} material={materail}>
+                    return <ActivityResource key={index + materail.activityName} material={materail}>
                       {
                         (onStartDrag) => {
                           return <ToolItem
@@ -38,7 +38,7 @@ export const Toolbox = memo((props: {
                           />
                         }
                       }
-                    </ReactionResource>
+                    </ActivityResource>
                   })
                 }
               </ToolItemCategory>

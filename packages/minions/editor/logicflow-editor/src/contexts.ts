@@ -3,7 +3,7 @@ import { ReactNode, createContext } from "react";
 import { EditorStore } from "./classes/EditorStore";
 import { IState } from "./interfaces/state";
 import { Action } from "./actions";
-import { IActivityMaterial } from "@rxdrag/minions-schema";
+import { IActivityMaterial, ILogicFlowDefinition } from "@rxdrag/minions-schema";
 import { IThemeToken } from "./interfaces";
 
 
@@ -29,4 +29,6 @@ export const ThemeTokenContext = createContext<IThemeToken>({})
 
 //全局上下文，主要用于getSubTitle
 export const LogicFlowContext = createContext<unknown>(undefined)
+//所有可以被引用的编排
+export const CanBeReferencedLogicFlowMetasContext = createContext<ILogicFlowDefinition[]>([])
 
