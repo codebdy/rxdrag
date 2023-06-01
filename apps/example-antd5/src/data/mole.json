@@ -7,7 +7,11 @@
       "props": {
         "style": {
           "marginTop": "32px",
-          "backgroundColor": "rgba(81,79,92,1)"
+          "backgroundColor": "rgba(81,79,92,1)",
+          "paddingTop": "32px",
+          "paddingRight": "32px",
+          "paddingBottom": "32px",
+          "paddingLeft": "32px"
         }
       },
       "x-field": {},
@@ -16,7 +20,15 @@
         "enable": true,
         "name": "游戏容器",
         "global": false,
-        "events": [],
+        "events": [
+          {
+            "id": "37a6e8ba-ebd0-469c-8617-b5cd55399665",
+            "name": "init",
+            "label": "初始化",
+            "nodes": [],
+            "lines": []
+          }
+        ],
         "variables": [
           {
             "name": "成绩",
@@ -27,26 +39,350 @@
             "name": "活跃地鼠",
             "defaultValue": 0,
             "id": "9939381c-f814-460f-8f66-53c3a5518f51"
+          },
+          {
+            "name": "运行",
+            "defaultValue": false,
+            "id": "b3a32734-667c-44fa-8224-90a269238049"
           }
         ],
         "reactions": [
           {
             "id": "599563e0-506c-4443-b61f-390fbe222ee2",
             "label": "计分",
-            "nodes": [],
-            "lines": []
+            "nodes": [
+              {
+                "id": "4871856e-3f50-43f8-864f-6aa8c681f527",
+                "label": "输入",
+                "type": "Start",
+                "activityName": "start",
+                "inPorts": [],
+                "outPorts": [],
+                "x6Node": {
+                  "x": 130,
+                  "y": 110,
+                  "width": 20,
+                  "height": 20
+                }
+              },
+              {
+                "id": "90a68aeb-aa8c-40a0-a4e3-f33d9981ca32",
+                "label": "变量赋值",
+                "type": "Activity",
+                "activityName": "system-react.setVariable",
+                "inPorts": [
+                  {
+                    "id": "ae4d5e36-e0ef-4f69-9565-9112351b26e5",
+                    "name": "input",
+                    "label": ""
+                  }
+                ],
+                "outPorts": [],
+                "x6Node": {
+                  "x": 590,
+                  "y": 130,
+                  "width": 132,
+                  "height": 48
+                },
+                "config": {
+                  "param": {
+                    "controllerId": "06c7b84e-662e-4161-998a-c95b8d9ec026",
+                    "variable": "成绩"
+                  }
+                }
+              },
+              {
+                "id": "6c6bcc32-9fc0-4fde-b4b4-b96811c040d2",
+                "label": "读取变量",
+                "type": "Activity",
+                "activityName": "system-react.readVariable",
+                "inPorts": [
+                  {
+                    "id": "99d0f2c3-118b-4be7-bb59-d6c380553ce0",
+                    "name": "input",
+                    "label": ""
+                  }
+                ],
+                "outPorts": [
+                  {
+                    "id": "12ec951e-4409-4b68-9ab2-ea71b1c376e4",
+                    "name": "output",
+                    "label": ""
+                  }
+                ],
+                "x6Node": {
+                  "x": 200,
+                  "y": 160,
+                  "width": 116,
+                  "height": 48
+                },
+                "config": {
+                  "param": {
+                    "controllerId": "06c7b84e-662e-4161-998a-c95b8d9ec026",
+                    "variable": "成绩"
+                  }
+                }
+              },
+              {
+                "id": "181f104d-8c0a-493f-b262-616af9b2d174",
+                "label": "JS代码-计算成绩",
+                "type": "Activity",
+                "activityName": "system.jsCode",
+                "inPorts": [
+                  {
+                    "id": "ead482c4-8c25-42c3-8132-67e1ac5f9c86",
+                    "name": "input",
+                    "label": ""
+                  }
+                ],
+                "outPorts": [
+                  {
+                    "id": "7a3d9f65-3111-425a-85d1-febd8f6c78a1",
+                    "name": "output",
+                    "label": "output"
+                  }
+                ],
+                "x6Node": {
+                  "x": 360,
+                  "y": 80,
+                  "width": 165,
+                  "height": 32
+                },
+                "config": {
+                  "expression": "({ inputValue, outputs }) => {\n  const { output } = outputs;\n  output(inputValue+1);\n}"
+                }
+              }
+            ],
+            "lines": [
+              {
+                "id": "48d6a054-d129-4e34-9888-e2e6f0e0f64e",
+                "source": {
+                  "nodeId": "4871856e-3f50-43f8-864f-6aa8c681f527"
+                },
+                "target": {
+                  "nodeId": "6c6bcc32-9fc0-4fde-b4b4-b96811c040d2",
+                  "portId": "99d0f2c3-118b-4be7-bb59-d6c380553ce0"
+                }
+              },
+              {
+                "id": "a9146dca-ee97-4b5f-a47b-adede0726244",
+                "source": {
+                  "nodeId": "181f104d-8c0a-493f-b262-616af9b2d174",
+                  "portId": "7a3d9f65-3111-425a-85d1-febd8f6c78a1"
+                },
+                "target": {
+                  "nodeId": "90a68aeb-aa8c-40a0-a4e3-f33d9981ca32",
+                  "portId": "ae4d5e36-e0ef-4f69-9565-9112351b26e5"
+                }
+              },
+              {
+                "id": "291b814d-828e-449b-af4d-7b1cc35f99b6",
+                "source": {
+                  "nodeId": "6c6bcc32-9fc0-4fde-b4b4-b96811c040d2",
+                  "portId": "12ec951e-4409-4b68-9ab2-ea71b1c376e4"
+                },
+                "target": {
+                  "nodeId": "181f104d-8c0a-493f-b262-616af9b2d174",
+                  "portId": "ead482c4-8c25-42c3-8132-67e1ac5f9c86"
+                }
+              }
+            ]
           },
           {
             "id": "4745fece-c5ee-4b38-b972-de9fb30c820e",
             "label": "开始",
-            "nodes": [],
-            "lines": []
+            "nodes": [
+              {
+                "id": "8b175aad-82d1-423e-9ddd-ac4751f6c58d",
+                "label": "输入",
+                "type": "Start",
+                "activityName": "start",
+                "inPorts": [],
+                "outPorts": [],
+                "x6Node": {
+                  "x": 160,
+                  "y": 130,
+                  "width": 20,
+                  "height": 20
+                }
+              },
+              {
+                "id": "705c99fd-0b07-4cbe-a94e-5364f77bb133",
+                "label": "常量",
+                "type": "Activity",
+                "activityName": "system.constValue",
+                "inPorts": [
+                  {
+                    "id": "2541df55-c378-48cb-a92d-19b20549d20a",
+                    "name": "input",
+                    "label": ""
+                  }
+                ],
+                "outPorts": [
+                  {
+                    "id": "6f1e44cc-0a84-4ef0-bc17-e900bf263fcb",
+                    "name": "output",
+                    "label": ""
+                  }
+                ],
+                "x6Node": {
+                  "x": 270,
+                  "y": 140,
+                  "width": 88,
+                  "height": 32
+                },
+                "config": {
+                  "value": true
+                }
+              },
+              {
+                "id": "47630729-3ef4-4422-9f54-993f9befdfd2",
+                "label": "变量赋值",
+                "type": "Activity",
+                "activityName": "system-react.setVariable",
+                "inPorts": [
+                  {
+                    "id": "ae4d5e36-e0ef-4f69-9565-9112351b26e5",
+                    "name": "input",
+                    "label": ""
+                  }
+                ],
+                "outPorts": [],
+                "x6Node": {
+                  "x": 430,
+                  "y": 160,
+                  "width": 116,
+                  "height": 32
+                },
+                "config": {
+                  "param": {
+                    "controllerId": "06c7b84e-662e-4161-998a-c95b8d9ec026",
+                    "variable": "运行"
+                  }
+                }
+              }
+            ],
+            "lines": [
+              {
+                "id": "6164d42e-b5b5-4349-8e6c-c1d8643737c1",
+                "source": {
+                  "nodeId": "8b175aad-82d1-423e-9ddd-ac4751f6c58d"
+                },
+                "target": {
+                  "nodeId": "705c99fd-0b07-4cbe-a94e-5364f77bb133",
+                  "portId": "2541df55-c378-48cb-a92d-19b20549d20a"
+                }
+              },
+              {
+                "id": "a5dc0760-6521-491c-a9d1-9abcb80dbcf2",
+                "source": {
+                  "nodeId": "705c99fd-0b07-4cbe-a94e-5364f77bb133",
+                  "portId": "6f1e44cc-0a84-4ef0-bc17-e900bf263fcb"
+                },
+                "target": {
+                  "nodeId": "47630729-3ef4-4422-9f54-993f9befdfd2",
+                  "portId": "ae4d5e36-e0ef-4f69-9565-9112351b26e5"
+                }
+              }
+            ]
           },
           {
             "id": "8a24c0b1-09df-4a6e-a351-a4c84d4e3a33",
             "label": "结束",
-            "nodes": [],
-            "lines": []
+            "nodes": [
+              {
+                "id": "266ed601-f54e-44dc-986c-15a60f00242c",
+                "label": "输入",
+                "type": "Start",
+                "activityName": "start",
+                "inPorts": [],
+                "outPorts": [],
+                "x6Node": {
+                  "x": 90,
+                  "y": 120,
+                  "width": 20,
+                  "height": 20
+                }
+              },
+              {
+                "id": "59b1cad5-bd21-41b2-8135-9d471803df31",
+                "label": "常量",
+                "type": "Activity",
+                "activityName": "system.constValue",
+                "inPorts": [
+                  {
+                    "id": "2541df55-c378-48cb-a92d-19b20549d20a",
+                    "name": "input",
+                    "label": ""
+                  }
+                ],
+                "outPorts": [
+                  {
+                    "id": "6f1e44cc-0a84-4ef0-bc17-e900bf263fcb",
+                    "name": "output",
+                    "label": ""
+                  }
+                ],
+                "x6Node": {
+                  "x": 200,
+                  "y": 150,
+                  "width": 88,
+                  "height": 32
+                },
+                "config": {
+                  "value": false
+                }
+              },
+              {
+                "id": "93b49d00-85da-4e3c-bfd7-3c116917200b",
+                "label": "变量赋值",
+                "type": "Activity",
+                "activityName": "system-react.setVariable",
+                "inPorts": [
+                  {
+                    "id": "ae4d5e36-e0ef-4f69-9565-9112351b26e5",
+                    "name": "input",
+                    "label": ""
+                  }
+                ],
+                "outPorts": [],
+                "x6Node": {
+                  "x": 400,
+                  "y": 170,
+                  "width": 116,
+                  "height": 32
+                },
+                "config": {
+                  "param": {
+                    "controllerId": "06c7b84e-662e-4161-998a-c95b8d9ec026",
+                    "variable": "运行"
+                  }
+                }
+              }
+            ],
+            "lines": [
+              {
+                "id": "028c6a93-502b-45c1-90d8-29e8973c9dad",
+                "source": {
+                  "nodeId": "266ed601-f54e-44dc-986c-15a60f00242c"
+                },
+                "target": {
+                  "nodeId": "59b1cad5-bd21-41b2-8135-9d471803df31",
+                  "portId": "2541df55-c378-48cb-a92d-19b20549d20a"
+                }
+              },
+              {
+                "id": "168c7f9b-a526-4b8a-ae89-0ed531cc0403",
+                "source": {
+                  "nodeId": "59b1cad5-bd21-41b2-8135-9d471803df31",
+                  "portId": "6f1e44cc-0a84-4ef0-bc17-e900bf263fcb"
+                },
+                "target": {
+                  "nodeId": "93b49d00-85da-4e3c-bfd7-3c116917200b",
+                  "portId": "ae4d5e36-e0ef-4f69-9565-9112351b26e5"
+                }
+              }
+            ]
           }
         ]
       },
