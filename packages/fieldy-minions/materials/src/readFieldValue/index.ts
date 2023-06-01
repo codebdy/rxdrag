@@ -1,11 +1,12 @@
 import { createUuid } from "@rxdrag/shared";
-import { readFieldValueSchema } from "./schema";
-import { ReactNode } from "react";
-import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
+import { fieldSchema } from "./schema";
+import { ActivityType } from "@rxdrag/minions-schema";
 import { fieldReadIcon } from "../icons";
-import { ReadFieldValue } from "@rxdrag/fieldy-minions-activities";
+import { IFieldConfig, ReadFieldValue } from "@rxdrag/fieldy-minions-activities";
+import { IFieldActivityMaterial } from "../types";
+import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
 
-export const readFieldValueMaterial: IActivityMaterial<ReactNode> = {
+export const readFieldValueMaterial: IFieldActivityMaterial<IFieldConfig> = {
   activityName: ReadFieldValue.NAME,
   icon: fieldReadIcon,
   label: "$readFieldValue",
@@ -14,17 +15,20 @@ export const readFieldValueMaterial: IActivityMaterial<ReactNode> = {
     inPorts: [
       {
         id: createUuid(),
-        name: "input",
+        name: DEFAULT_INPUT_NAME,
         label: "",
       },
     ],
     outPorts: [
       {
         id: createUuid(),
-        name: "output",
+        name: DEFAULT_OUTPUT_NAME,
         label: "",
       },
     ],
   },
-  schema: readFieldValueSchema,
+  schema: fieldSchema,
+  subTitle: (config?: IFieldConfig) => {
+    return config?.fieldPath
+  },
 }

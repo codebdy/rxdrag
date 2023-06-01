@@ -1,12 +1,14 @@
-import { createUuid } from "@rxdrag/shared";
 import { readFieldValueMaterial } from "./readFieldValue";
 import { subscribeFieldMaterial } from "./subscribeField";
 import { ReactNode } from "react";
-import { IActivityMaterial, ActivityType, ActivityMaterialCategory } from "@rxdrag/minions-schema";
-import { fieldIcon, fieldValidateIcon, formIcon, formReadIcon, formValidateIcon } from "./icons";
+import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
+import { setFieldValueMaterial } from "./setFieldValue";
+import { IFieldActivityMaterial } from "./types";
+import { validateFieldMaterial } from "./validaeField";
 
 
-export const fieldyActivities: IActivityMaterial<ReactNode>[] = [
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const fieldyActivities: IFieldActivityMaterial<any>[] = [
   // {
   //   name: "setFormValue",
   //   icon: formIcon,
@@ -113,8 +115,10 @@ export const fieldyActivities: IActivityMaterial<ReactNode>[] = [
   //     ],
   //   }
   // },
+  setFieldValueMaterial,
   readFieldValueMaterial,
   subscribeFieldMaterial,
+  validateFieldMaterial,
 ]
 
 export const fieldyActivityMaterialCategory: ActivityMaterialCategory<ReactNode>=   {

@@ -1,13 +1,13 @@
 import { Activity, Input, AbstractActivity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 import { IFieldyLogicFlowContext } from "../context"
-import { IFieldValueConfig } from "../readFieldValue"
+import { IFieldConfig } from "../readFieldValue"
 
-@Activity(ValidateFieldValue.NAME)
-export class ValidateFieldValue extends AbstractActivity<IFieldValueConfig, IFieldyLogicFlowContext> {
-  public static NAME = "fieldy.validateFieldValue"
+@Activity(ValidateField.NAME)
+export class ValidateField extends AbstractActivity<IFieldConfig, IFieldyLogicFlowContext> {
+  public static NAME = "fieldy.validateField"
 
-  constructor(meta: IActivityDefine<IFieldValueConfig>, context: IFieldyLogicFlowContext) {
+  constructor(meta: IActivityDefine<IFieldConfig>, context: IFieldyLogicFlowContext) {
     super(meta, context)
   }
 

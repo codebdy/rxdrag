@@ -2,15 +2,15 @@ import { Activity, Input, AbstractActivity } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 import { IFieldyLogicFlowContext } from "../context"
 
-export interface IFieldValueConfig {
+export interface IFieldConfig {
   fieldPath?: string,
 }
 
 @Activity(ReadFieldValue.NAME)
-export class ReadFieldValue extends AbstractActivity<IFieldValueConfig, IFieldyLogicFlowContext> {
+export class ReadFieldValue extends AbstractActivity<IFieldConfig, IFieldyLogicFlowContext> {
   public static NAME = "fieldy.readFieldValue"
 
-  constructor(meta: IActivityDefine<IFieldValueConfig>, context:IFieldyLogicFlowContext) {
+  constructor(meta: IActivityDefine<IFieldConfig>, context:IFieldyLogicFlowContext) {
     super(meta, context)
   }
 

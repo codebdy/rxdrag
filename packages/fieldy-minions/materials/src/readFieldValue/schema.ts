@@ -1,7 +1,7 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { labelSchema } from "../base-schema";
 
-export const readFieldValueSchema: INodeSchema = {
+export const fieldSchema: INodeSchema = {
   componentName: "Fragment",
   children: [
     labelSchema,
