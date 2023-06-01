@@ -18,6 +18,8 @@ import { ResourceWidget } from "./ResourceWidget"
 import { SaveButton } from "./widgets/SaveButton"
 import { PagesWidget } from "./PagesWidget"
 import { pages } from "./data"
+import { minionsLocales } from "minions/locales"
+import { minionsMaterialCategories } from "minions/materials"
 
 export enum LeftNavType {
   pages = "pages",
@@ -34,6 +36,7 @@ export const Antd5Example = memo(() => {
   }, [])
 
   const schemas = useMemo(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (pages as any)[pageId]
   }, [pageId])
 
@@ -47,6 +50,10 @@ export const Antd5Example = memo(() => {
       canvasUrl="/canvas-render"
       previewUrl="/preview-render"
       themeMode='dark'
+      minionOptions={{
+        minionMaterials: minionsMaterialCategories,
+        minionLocales: minionsLocales,
+      }}
       navPanel={
         <>
           {

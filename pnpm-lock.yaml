@@ -141,6 +141,9 @@ importers:
       '@rxdrag/core':
         specifier: workspace:*
         version: link:../../packages/rxdrag/editor/core
+      '@rxdrag/fieldy-minions-materials':
+        specifier: workspace:*
+        version: link:../../packages/fieldy-minions/materials
       '@rxdrag/fieldy-schema':
         specifier: workspace:*
         version: link:../../packages/fieldy/schema
@@ -150,6 +153,9 @@ importers:
       '@rxdrag/minions-react-materials':
         specifier: workspace:*
         version: link:../../packages/minions-antd5/minions-react-materials
+      '@rxdrag/minions-schema':
+        specifier: workspace:*
+        version: link:../../packages/minions/schema
       '@rxdrag/react-antd-components':
         specifier: workspace:*
         version: link:../../packages/rxdrag/runtime/react-antd-components

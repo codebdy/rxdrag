@@ -13,6 +13,7 @@ import { activityMaterialCategories } from "./materials"
 import { controllerSetterLocales } from "./locales"
 import { useFillControllerProps } from "./hooks/useFillControllerProps"
 import { INodeSchema } from "@rxdrag/schema"
+import { useMinionOptions } from "../../../hooks/useMinionOptions"
 
 export const ControllerSetter = memo((props: {
   events?: IEventMeta[]
@@ -28,6 +29,7 @@ export const ControllerSetter = memo((props: {
   const parentControllers = useParentControllerMetas()
   const globalControllers = useGlobalControllerMetas();
   const fillProps = useFillControllerProps();
+  const minionOptions = useMinionOptions();
 
   const mergedControllers = useMemo(() => [
     fillProps(inputValue, node),
@@ -36,7 +38,7 @@ export const ControllerSetter = memo((props: {
   ],
     [inputValue, parentControllers, globalControllers, fillProps, node])
 
-    useEffect(() => {
+  useEffect(() => {
     setInputValue(value)
   }, [value])
 
@@ -134,8 +136,8 @@ export const ControllerSetter = memo((props: {
                 value={inputValue}
                 onChange={handleChange}
                 controllerMetas={mergedControllers}
-                materialCategories={activityMaterialCategories}
-                locales={controllerSetterLocales}
+                materialCategories={minionOptions?.minionMaterials || activityMaterialCategories}
+                locales={minionOptions?.minionLocales || controllerSetterLocales}
                 eventMetas={events}
               />
             }

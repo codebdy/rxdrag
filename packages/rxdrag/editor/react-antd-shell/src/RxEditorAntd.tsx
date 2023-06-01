@@ -23,8 +23,9 @@ import { IDocument, IDesignerEngine } from "@rxdrag/core"
 import { Root, Designer } from "@rxdrag/react-core"
 import { INodeSchema } from "@rxdrag/schema"
 import { Workbench } from "./pannels"
-import {ILocales} from "@rxdrag/locales"
+import { ILocales } from "@rxdrag/locales"
 import { componentsIcon, outlineIcon, historyIcon } from "./icons"
+import { IMinionOptions, MinionOptionContext } from "./contexts"
 
 export type Antd5EditorProps = {
   leftNav?: React.ReactNode,
@@ -36,10 +37,12 @@ export type Antd5EditorProps = {
   schemas: INodeSchema,
   canvasUrl: string,
   previewUrl: string,
+  //逻辑编排配置项
+  minionOptions?: IMinionOptions,
 }
 
 export const RxEditorAntd = memo((props: Antd5EditorProps) => {
-  const { leftNav, topBar, navPanel, locales, themeMode, schemas, children, canvasUrl, previewUrl } = props;
+  const { leftNav, topBar, navPanel, locales, themeMode, schemas, children, canvasUrl, previewUrl, minionOptions } = props;
   const [doc, setDoc] = useState<IDocument>()
   const [engine, setEngine] = useState<IDesignerEngine>()
   const docRef = useRef<IDocument>()
@@ -76,72 +79,76 @@ export const RxEditorAntd = memo((props: Antd5EditorProps) => {
       }
     ]
   }, [])
+
   return (
-    <Designer
-      onReady={handleReady}
-      themeMode={themeMode}
-      components={initialComponents}
-    >
-      <ConfigRoot>
-        <ShellContainer>
-          <Topbar >
-            {
-              topBar || <>
-                <Logo />
-                <Space>
-                  <ThemeButton />
-                  <LangButtons />
-                  <AntdButton
-                    href="https://github.com/rxdrag/rxeditor"
-                    target="_blank"
-                    icon={<GithubFilled />}
-                  > Github</AntdButton>
-                  <SaveActions />
-                </Space>
-              </>
-            }
-          </Topbar>
-          <Workbench>
-            <LeftSidebar>
+    <MinionOptionContext.Provider value={minionOptions}>
+      <Designer
+        onReady={handleReady}
+        themeMode={themeMode}
+        components={initialComponents}
+      >
+
+        <ConfigRoot>
+          <ShellContainer>
+            <Topbar >
               {
-                leftNav || <LeftNavWidget
-                  //showTitle
-                  defaultActivedKey="components"
-                  items={[
-                    {
-                      key: "components",
-                      title: "components",
-                      icon: componentsIcon
-                    },
-                    {
-                      key: "outline",
-                      title: "outline",
-                      icon: outlineIcon
-                    },
-                    {
-                      key: "history",
-                      title: "history",
-                      icon: historyIcon
-                    },
-                  ]}
-                />
+                topBar || <>
+                  <Logo />
+                  <Space>
+                    <ThemeButton />
+                    <LangButtons />
+                    <AntdButton
+                      href="https://github.com/rxdrag/rxeditor"
+                      target="_blank"
+                      icon={<GithubFilled />}
+                    > Github</AntdButton>
+                    <SaveActions />
+                  </Space>
+                </>
               }
-            </LeftSidebar>
-            <ToggleAblePane>
-              {
-                navPanel
-              }
-            </ToggleAblePane>
-            <CenterContent>
-              <DocumentView doc={doc} canvasUrl={canvasUrl} previewUrl = {previewUrl} />
-              {children}
-            </CenterContent>
-            <ToggleAblePane toggleType={ToggleType.right} width={300}>
-              <SettingsForm />
-            </ToggleAblePane>
-          </Workbench>
-        </ShellContainer>
-      </ConfigRoot>
-    </Designer>
+            </Topbar>
+            <Workbench>
+              <LeftSidebar>
+                {
+                  leftNav || <LeftNavWidget
+                    //showTitle
+                    defaultActivedKey="components"
+                    items={[
+                      {
+                        key: "components",
+                        title: "components",
+                        icon: componentsIcon
+                      },
+                      {
+                        key: "outline",
+                        title: "outline",
+                        icon: outlineIcon
+                      },
+                      {
+                        key: "history",
+                        title: "history",
+                        icon: historyIcon
+                      },
+                    ]}
+                  />
+                }
+              </LeftSidebar>
+              <ToggleAblePane>
+                {
+                  navPanel
+                }
+              </ToggleAblePane>
+              <CenterContent>
+                <DocumentView doc={doc} canvasUrl={canvasUrl} previewUrl={previewUrl} />
+                {children}
+              </CenterContent>
+              <ToggleAblePane toggleType={ToggleType.right} width={300}>
+                <SettingsForm />
+              </ToggleAblePane>
+            </Workbench>
+          </ShellContainer>
+        </ConfigRoot>
+      </Designer>
+    </MinionOptionContext.Provider>
   )
 })
