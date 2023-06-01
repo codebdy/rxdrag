@@ -4,7 +4,7 @@ import { Jointer } from "./Jointer";
 import { ActivityType, ILogicFlowDefinition } from "@rxdrag/minions-schema"
 import { activities } from "./activities";
 
-export class LogicFlow<LogicFlowContext> {
+export class LogicFlow<LogicFlowContext = unknown> {
   id: string;
   jointers: IActivityJointers = new ActivityJointers();
   activities: IActivity[] = [];

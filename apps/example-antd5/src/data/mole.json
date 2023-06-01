@@ -22,6 +22,11 @@
             "name": "成绩",
             "defaultValue": 0,
             "id": "a227ac6d-7b3f-4289-8d19-e59fe558df45"
+          },
+          {
+            "name": "活跃地鼠",
+            "defaultValue": 0,
+            "id": "9939381c-f814-460f-8f66-53c3a5518f51"
           }
         ],
         "reactions": [
@@ -370,7 +375,8 @@
                             {
                               "componentName": "Input",
                               "props": {
-                                "style": {}
+                                "style": {},
+                                "disabled": false
                               },
                               "x-field": {},
                               "slots": {},
