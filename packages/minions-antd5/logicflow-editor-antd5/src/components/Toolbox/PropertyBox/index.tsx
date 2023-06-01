@@ -2,7 +2,6 @@ import { Empty, Form, Input, InputNumber, Radio, Select, Slider, Switch } from "
 import React, { Fragment, memo, useCallback, useMemo } from "react"
 import styled from "styled-components"
 import { PortsInput } from "./PortsInput"
-import { VariableSelect } from "./VariableSelect"
 import { VirtualForm } from "@rxdrag/react-fieldy"
 import { useLocalesManager } from "@rxdrag/react-locales"
 import { ComponentRender, RuntimeRoot } from "@rxdrag/react-runner"
@@ -61,7 +60,6 @@ export const PropertyBox = memo(() => {
               InputNumber,
               TextArea: Input.TextArea,
               PortsInput,
-              VariableSelect,
               ValueInput,
               JSONInput,
             }}

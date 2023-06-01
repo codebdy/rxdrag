@@ -6,6 +6,7 @@ import { readVariableMaterial } from "./readVariable";
 import { listenVariableMaterial } from "./listenVariable";
 import { listenPropMaterial } from "./listenProp";
 import { readPropMaterial } from "./readProp";
+import { reactionMaterial } from "./reaction";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const controllerActivites: IRxDragActivityMaterial<any, IControllerEditorContextParam>[] = [
@@ -15,4 +16,5 @@ export const controllerActivites: IRxDragActivityMaterial<any, IControllerEditor
   setVariableMaterial,
   listenVariableMaterial,
   readVariableMaterial,
+  reactionMaterial,
 ]

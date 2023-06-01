@@ -68,6 +68,7 @@ export const activityMaterialLocales = {
     field: "字段",
     componentControl: "组件控制",
     component: "组件",
+    reaction: "交互",
   },
   'en-US': {
     basicReactions: "Basic Reactions",
@@ -139,5 +140,6 @@ export const activityMaterialLocales = {
     field: "Field",
     componentControl: "Component Control",
     component: "Component",
+    reaction: "Reaction"
   }
 }

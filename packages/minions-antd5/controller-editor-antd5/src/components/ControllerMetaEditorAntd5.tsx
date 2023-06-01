@@ -9,7 +9,7 @@ import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
 import { ILocales } from "@rxdrag/locales";
 import { useLocalesManager } from "@rxdrag/react-locales";
 import { controllerEditorLocales } from "../locales";
-import { PropSelect, VariableSelect } from "@rxdrag/minions-react-materials";
+import { PropSelect, ReactionSelect, VariableSelect } from "@rxdrag/minions-react-materials";
 
 const SytledContent = styled.div`
   display: flex;
@@ -113,6 +113,7 @@ export const ControllerMetaEditorAntd5 = memo((
             setters={{
               VariableSelect,
               PropSelect,
+              ReactionSelect,
             }}
             //用于绘图显示subtitle
             logicFlowContext={editorContextParam}
