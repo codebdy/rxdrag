@@ -19,6 +19,7 @@ export class Signals extends AbstractActivity<IIntervalConfig> {
 
   @Input(Signals.INPUT_NAME_STARTUP)
   startUpHandler = (inputValue?: any) => {
+    console.log("启动定时器")
     this.stopHandler()
     this.inputValue = inputValue
     if (this.meta.config?.interval) {
@@ -28,8 +29,8 @@ export class Signals extends AbstractActivity<IIntervalConfig> {
 
   @Input(Signals.INPUT_NAME_STOP)
   stopHandler = () => {
-    console.log("定时器销毁", this.timer)
     if (this.timer) {
+      console.log("停止定时器", this.timer)
       clearInterval(this.timer)
       this.timer = undefined
     }
@@ -40,6 +41,7 @@ export class Signals extends AbstractActivity<IIntervalConfig> {
   }
 
   destory = () => {
+    console.log("定时器销毁", this.timer)
     this.stopHandler()
   }
 }

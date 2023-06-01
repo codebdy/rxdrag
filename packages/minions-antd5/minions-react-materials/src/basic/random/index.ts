@@ -5,6 +5,7 @@ import { IRandomConfig, Random } from "@rxdrag/minions-activities";
 import { ActivityType } from "@rxdrag/minions-schema";
 import { randomIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
+import { DEFAULT_INPUT_NAME } from "@rxdrag/minions-runtime";
 
 export const randomMaterial: IRxDragActivityMaterial<IRandomConfig> = {
   icon: randomIcon,
@@ -14,15 +15,15 @@ export const randomMaterial: IRxDragActivityMaterial<IRandomConfig> = {
     inPorts: [
       {
         id: createUuid(),
-        name: "startUp",
-        label: "",//"$startUp",
+        name: Random.INPUT_NAME_STARTUP,
+        label: "",
       },
     ],
     outPorts: [
       {
         id: createUuid(),
-        name: "output",
-        label: "",//"$output",
+        name: DEFAULT_INPUT_NAME,
+        label: "",
       },
     ],
   },

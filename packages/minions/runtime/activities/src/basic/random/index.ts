@@ -9,6 +9,8 @@ export interface IRandomConfig {
 @Activity(Random.NAME)
 export class Random extends AbstractActivity<IRandomConfig> {
   public static NAME = "system.random"
+  public static INPUT_NAME_STARTUP = "startUp"
+
   constructor(meta: IActivityDefine<IRandomConfig>) {
     super(meta)
 
@@ -17,7 +19,7 @@ export class Random extends AbstractActivity<IRandomConfig> {
     }
   }
 
-  @Input()
+  @Input(Random.INPUT_NAME_STARTUP)
   inputHandler = () => {
     const min = this.meta.config?.minValue || 0
     const max = (this.meta.config?.maxValue || 1) + 1
