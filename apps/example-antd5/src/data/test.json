@@ -592,6 +592,43 @@
                     "name": "测试",
                     "id": "f619fd78-d3c2-4003-9be0-f6b7fb1c1c7d"
                   }
+                ],
+                "reactions": [
+                  {
+                    "id": "0159a2fb-987a-452b-98b7-9ae70ad2c93d",
+                    "label": "交互测试",
+                    "nodes": [
+                      {
+                        "id": "89ce1562-f975-40f4-a457-776069108bc8",
+                        "label": "输入",
+                        "type": "Start",
+                        "activityName": "start",
+                        "inPorts": [],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 70,
+                          "y": 120,
+                          "width": 20,
+                          "height": 20
+                        }
+                      },
+                      {
+                        "id": "a4533057-c629-496f-b115-923c55b3921d",
+                        "label": "输出",
+                        "type": "End",
+                        "activityName": "end",
+                        "inPorts": [],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 440,
+                          "y": 160,
+                          "width": 20,
+                          "height": 20
+                        }
+                      }
+                    ],
+                    "lines": []
+                  }
                 ]
               },
               "slots": {},
