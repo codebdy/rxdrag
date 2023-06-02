@@ -1,42 +1,44 @@
-export interface IRestfulDataSource<Param = unknown> {
-  init(param: Param): void;
-  entityName?: string;
-  idColumn?: string;
-  //同时作为缓存key
-  toUrl(): string;
-  //请求参数
-  getRequestInit(): RequestInit | undefined;
-  //点号分割的数据path，用于获取列表数据或者实体数据
+export interface IQueryParam {
+  //参数转换成的字符串，作为请求url的一部分或者全部
+  url?: string,
+  requestInit?: RequestInit,
+  entity?: string;
   dataPath?: string;
+  idField?: string;
 }
 
-
-export interface IQueryReponse {
+export interface IReponseHandler {
   onError?(error?: Error): void,
-  onComplate?(data?: unknown): void,
+  onData?(data?: unknown): void,
   onLoading?(loading?: boolean): void,
-  revalidating?(revalidating?: boolean): void,
+  onRevalidating?(revalidating?: boolean): void,
 }
+
+export interface IRestfulQuerySession {
+  query(param: IQueryParam, responseOptions: IReponseHandler): void;
+  destory(): void;
+}
+
 
 export type Unsubscribe = () => void
 export type QueryCallback = () => void
 
 export interface IRestfulQuery {
   clearCache(): void;
-  subscribeQuery(dataSouce: IRestfulDataSource, responseOptions: IQueryReponse): Unsubscribe;
-  unsubscribeQuery(url: string): void;
+  subscribeQuery(param: IQueryParam, responseHandler: IReponseHandler): Unsubscribe;
+  unsubscribeQuery(url: string, handler: IReponseHandler): void;
   save(): void;
 }
 
-export enum DataSouceType {
-  DataSource1 = "dataSource1",
-  DataSource2 = "dataSource2",
+export enum DataQueryType {
+  DataQuery1 = "dataQuery1",
+  DataQuery2 = "dataQuery2",
 }
 
 //根据需要，自定义配置样式
 export interface IQueryConfig<T = unknown> {
   //用来识别使用哪个数据源
-  dataSourceType: DataSouceType;
-  dataSourceParam?: T;
+  dataQueryType: DataQueryType;
+  dataQueryParam?: T;
 }
 

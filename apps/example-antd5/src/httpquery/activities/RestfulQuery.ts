@@ -1,8 +1,7 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
-import { GlobalQuery } from "httpquery/lib/classes/RestfulQuery"
 import { DataSouceFactory } from "httpquery/lib/classes/factory"
-import { IQueryConfig, IRestfulDataSource } from "httpquery/lib/interfaces"
+import { IQueryConfig, IQueryParam, IRestfulQuerySession } from "httpquery/lib/interfaces"
 
 @Activity(RestfulQuery.NAME)
 export class RestfulQuery extends AbstractActivity<IQueryConfig> {
@@ -10,28 +9,26 @@ export class RestfulQuery extends AbstractActivity<IQueryConfig> {
   public static OUTPUT_NAME_DATA = "dataOut"
   public static OUTPUT_NAME_QUERYING = "querying"
   public static OUTPUT_NAME_ERROR = "error"
-  public dataSouce?: IRestfulDataSource;
+  public dataQuery?: IRestfulQuerySession;
 
   constructor(meta: IActivityDefine<IQueryConfig>) {
     super(meta)
+    if (meta.config) {
+      const dataQuery = DataSouceFactory(meta.config)
+      if (!dataQuery) {
+        console.error("Create data source error!")
+        this.next(undefined);
+        return
+      }
+
+      this.dataQuery = dataQuery;
+    }
   }
 
   @Input()
-  inputHandler(params: unknown): void {
-    if (!this.meta.config) {
-      this.next(undefined);
-      return
-    }
-    const dataSouce = DataSouceFactory(this.meta.config)
-    if (!dataSouce) {
-      console.error("Create data source error!")
-      this.next(undefined);
-      return
-    }
-    dataSouce?.init(params)
-    this.dataSouce = dataSouce;
-    GlobalQuery.subscribeQuery(dataSouce, {
-      onComplate: this.complateHandler,
+  inputHandler(params: IQueryParam): void {
+    this?.dataQuery?.query(params, {
+      onData: this.complateHandler,
       onError: this.errorHandler,
       onLoading: this.loadinghandler,
     })
@@ -50,7 +47,6 @@ export class RestfulQuery extends AbstractActivity<IQueryConfig> {
   }
 
   destory = () => {
-    const url = this.dataSouce?.toUrl()
-    url && GlobalQuery.unsubscribeQuery(url)
+    this.dataQuery?.destory()
   }
 }

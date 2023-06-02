@@ -1,22 +1,19 @@
-import { IRestfulDataSource } from "../interfaces";
+import { IQueryParam, IReponseHandler, IRestfulQuerySession } from "../interfaces";
 
 export interface IDataSouce2Config {
   entityName?: string;
 }
 
-export class DataSource2 implements IRestfulDataSource {
+export class DataSource2 implements IRestfulQuerySession {
   constructor(private param: IDataSouce2Config) { }
+  query(param: IQueryParam, responseOptions: IReponseHandler): void {
+    throw new Error("Method not implemented.");
+  }
+  destory(): void {
+    throw new Error("Method not implemented.");
+  }
   init(param: unknown): void {
     throw new Error("Method not implemented.");
   }
-  getRequestInit(): RequestInit | undefined {
-    throw new Error("Method not implemented.");
-  }
-  entityName?: string | undefined;
-  idColumn?: string | undefined;
-  toUrl(): string {
-    throw new Error("Method not implemented.");
-  }
-  dataPath?: string | undefined;
 
 }
