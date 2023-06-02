@@ -10,6 +10,7 @@ export interface IDataSouce1Config {
 }
 
 export class QuerySession1 implements IRestfulQuerySession {
+  // handler要中转，来确保引用对GlobalQuery 不变
   private responseHandler: IReponseHandler;
   //private param?: IQueryParam;
   private responseHandlerFromParam?: IReponseHandler;
@@ -26,7 +27,7 @@ export class QuerySession1 implements IRestfulQuerySession {
     this.responseHandlerFromParam = handler
     //重新订阅一次
     this.unsubscribe?.()
-    this.unsubscribe = GlobalQuery.subscribeQuery(param, this.responseHandler)
+    this.unsubscribe = GlobalQuery.subscribeQuery(this.mergeParam(param), this.responseHandler)
   }
   destory(): void {
     this.unsubscribe?.()
@@ -45,5 +46,9 @@ export class QuerySession1 implements IRestfulQuerySession {
   }
   onRevalidating = (revalidating?: boolean) => {
     this.responseHandlerFromParam?.onRevalidating?.(revalidating)
+  }
+
+  mergeParam(param: IQueryParam) {
+    return { ...param, url: (this.config.rootUrl || "") + param.url }
   }
 }

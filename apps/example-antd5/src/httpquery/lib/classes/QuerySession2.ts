@@ -4,7 +4,7 @@ export interface IDataSouce2Config {
   entityName?: string;
 }
 
-export class DataSource2 implements IRestfulQuerySession {
+export class QuerySession2 implements IRestfulQuerySession {
   constructor(private param: IDataSouce2Config) { }
   query(param: IQueryParam, responseOptions: IReponseHandler): void {
     throw new Error("Method not implemented.");

@@ -1,6 +1,6 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
-import { DataSouceFactory } from "httpquery/lib/classes/factory"
+import { QuerySessionFactory } from "httpquery/lib/classes/factory"
 import { IQueryConfig, IQueryParam, IRestfulQuerySession } from "httpquery/lib/interfaces"
 
 @Activity(RestfulQuery.NAME)
@@ -14,7 +14,7 @@ export class RestfulQuery extends AbstractActivity<IQueryConfig> {
   constructor(meta: IActivityDefine<IQueryConfig>) {
     super(meta)
     if (meta.config) {
-      const dataQuery = DataSouceFactory(meta.config)
+      const dataQuery = QuerySessionFactory(meta.config)
       if (!dataQuery) {
         console.error("Create data source error!")
         this.next(undefined);
