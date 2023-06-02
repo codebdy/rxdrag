@@ -1,1 +1,1 @@
-fetch
+export * from "./interfaces"
