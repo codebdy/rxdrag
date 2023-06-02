@@ -5,6 +5,14 @@ export interface IPorts {
   outPorts?: IPortDefine[];
 }
 
+/**
+ *                     **重要提醒**
+ * =======================================================
+ *    React时，因为x6的问题，多个path的时候，
+ *    icon的path 一定要加key
+ * =======================================================
+ * 
+ */
 export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown, Config = unknown, MaterialContext = unknown> {
   label: string;
   activityType: ActivityType;

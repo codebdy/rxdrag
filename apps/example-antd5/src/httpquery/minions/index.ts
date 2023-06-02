@@ -1,1 +1,1 @@
-export * from "./PaginationQuery"
+export * from "./DataQuery"
