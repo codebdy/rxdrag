@@ -9,7 +9,7 @@ import { dataQuerySchema } from "./schema";
 export const dataQueryMaterial: IQueryActivityMaterial = {
   activityName: DataQuery.NAME,
   icon: dataQueryIcon,
-  label: "$dataQuery",
+  label: "$restfulQuery",
   activityType: ActivityType.Activity,
   defaultPorts: {
     inPorts: [
