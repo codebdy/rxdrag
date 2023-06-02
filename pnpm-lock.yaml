@@ -153,6 +153,9 @@ importers:
       '@rxdrag/minions-react-materials':
         specifier: workspace:*
         version: link:../../packages/minions-antd5/minions-react-materials
+      '@rxdrag/minions-runtime':
+        specifier: workspace:*
+        version: link:../../packages/minions/runtime/runtime-core
       '@rxdrag/minions-schema':
         specifier: workspace:*
         version: link:../../packages/minions/schema
@@ -177,6 +180,9 @@ importers:
       '@rxdrag/react-shared':
         specifier: workspace:*
         version: link:../../packages/react-shared
+      '@rxdrag/schema':
+        specifier: workspace:*
+        version: link:../../packages/rxdrag/schema
       '@rxdrag/shared':
         specifier: workspace:*
         version: link:../../packages/shared
