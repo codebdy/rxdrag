@@ -1,7 +1,7 @@
-import { IQueryParam, IReponseHandler, IRestfulQuery, Unsubscribe } from "../interfaces"
+import { IQueryParam, IReponseHandler, Unsubscribe } from "../interfaces"
 import { QueryRecord, QueryStatus } from "./QueryRecord"
 
-export class RestfulQuery implements IRestfulQuery {
+export class Restful {
   cache: {
     [url: string]: QueryRecord | undefined
   } = {}
@@ -54,4 +54,4 @@ export class RestfulQuery implements IRestfulQuery {
   }
 }
 
-export const GlobalQuery = new RestfulQuery()
+export const GlobalQuery = new Restful()

@@ -23,12 +23,12 @@ export interface IRestfulQuerySession {
 export type Unsubscribe = () => void
 export type QueryCallback = () => void
 
-export interface IRestfulQuery {
-  clearCache(): void;
-  subscribeQuery(param: IQueryParam, responseHandler: IReponseHandler): Unsubscribe;
-  unsubscribeQuery(url: string, handler: IReponseHandler): void;
-  save(): void;
-}
+// export interface IRestfulQuery {
+//   clearCache(): void;
+//   subscribeQuery(param: IQueryParam, responseHandler: IReponseHandler): Unsubscribe;
+//   unsubscribeQuery(url: string, handler: IReponseHandler): void;
+//   save(): void;
+// }
 
 export enum DataQueryType {
   DataQuery1 = "dataQuery1",
