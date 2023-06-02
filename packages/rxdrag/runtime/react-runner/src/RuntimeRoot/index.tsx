@@ -4,7 +4,7 @@ import { useCallback, useMemo, useState } from "react"
 import { ControllersContext, PreviewComponentsContext } from "../contexts"
 import { IComponentsParams } from "../interfaces"
 import { ILocalesManager } from "@rxdrag/locales"
-import { IControllerMeta, MinionsRoot } from "@rxdrag/minions-runtime-react"
+import { IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { INodeSchema } from "@rxdrag/schema"
 import { IFieldSchema } from "@rxdrag/fieldy"
 import { useCreateGlobalControllers } from "../hooks/useCreateGlobalControllers"
@@ -34,13 +34,11 @@ export const RuntimeRoot = (props: {
   const globalControllers = useCreateGlobalControllers(schema)
   return (
     <ControllersContext.Provider value={globalControllers}>
-      <MinionsRoot>
-        <PreviewComponentsContext.Provider value={params}>
-          {
-            children
-          }
-        </PreviewComponentsContext.Provider>
-      </MinionsRoot>
+      <PreviewComponentsContext.Provider value={params}>
+        {
+          children
+        }
+      </PreviewComponentsContext.Provider>
     </ControllersContext.Provider>
   )
 }

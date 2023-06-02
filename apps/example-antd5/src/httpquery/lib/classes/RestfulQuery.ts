@@ -1,23 +1,9 @@
 import { IQueryParam, IReponseHandler, IRestfulQuery, Unsubscribe } from "../interfaces"
-
-export enum QueryStatus {
-  querying = 1,
-  error,
-  revalidating,
-  complated,
-}
-
-export interface IQueryRecord {
-  param: IQueryParam
-  status?: QueryStatus;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data?: any;
-  handlers: IReponseHandler[]
-}
+import { QueryRecord, QueryStatus } from "./QueryRecord"
 
 export class RestfulQuery implements IRestfulQuery {
   cache: {
-    [url: string]: IQueryRecord | undefined
+    [url: string]: QueryRecord | undefined
   } = {}
 
   clearCache(): void {
@@ -27,20 +13,26 @@ export class RestfulQuery implements IRestfulQuery {
   subscribeQuery(param: IQueryParam, responseHandler: IReponseHandler): Unsubscribe {
     if (param.url) {
       const record = this.cache[param.url]
+      //如果存在，注册handler
       if (record && !record.handlers.find(h => h === responseHandler)) {
         record.handlers.push(responseHandler)
       }
       if (record?.status === QueryStatus.complated) {
         responseHandler.onData?.(record.data)
+        record.revalidate()
       } else if (record?.status === QueryStatus.querying) {
         responseHandler.onLoading?.(true)
-      } else if (record?.status === QueryStatus.revalidating){
+      } else if (record?.status === QueryStatus.revalidating) {
         responseHandler.onRevalidating?.(true)
         responseHandler.onData?.(record.data)
-      } else if (record?.status === QueryStatus.error){
+      } else if (record?.status === QueryStatus.error) {
         //重新加载
-      } else if (!record){
+        record.revalidate()
+      } else if (!record) {
+        const newRecord = new QueryRecord(param, [responseHandler])
+        this.cache[param.url] = newRecord;
         //初次加载
+        newRecord.load()
       }
     }
 
@@ -60,7 +52,6 @@ export class RestfulQuery implements IRestfulQuery {
   save(): void {
     throw new Error("Method not implemented.")
   }
-
 }
 
 export const GlobalQuery = new RestfulQuery()

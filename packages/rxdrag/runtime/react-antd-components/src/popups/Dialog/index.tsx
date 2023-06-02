@@ -65,6 +65,7 @@ export const Dialog = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) 
         open={visiable}
         footer={footer}
         onCancel={handleClose}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         getContainer={realRef.current ? () => realRef.current as any : undefined}
       >
         {content}
