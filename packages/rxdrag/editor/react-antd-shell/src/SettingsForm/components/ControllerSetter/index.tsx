@@ -138,6 +138,7 @@ export const ControllerSetter = memo((props: {
                 controllerMetas={mergedControllers}
                 materialCategories={minionOptions?.minionMaterials || activityMaterialCategories}
                 locales={minionOptions?.minionLocales || controllerSetterLocales}
+                setters={minionOptions?.minionPropSetters}
                 eventMetas={events}
               />
             }

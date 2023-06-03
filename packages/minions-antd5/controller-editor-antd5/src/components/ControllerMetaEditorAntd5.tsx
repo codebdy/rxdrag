@@ -11,6 +11,7 @@ import { useLocalesManager } from "@rxdrag/react-locales";
 import { controllerEditorLocales } from "../locales";
 import { PropSelect, ReactionSelect, VariableSelect } from "@rxdrag/minions-react-materials";
 import { useExtractReferencedLogicFlowMetas } from "../hooks/useExtractReferencedLogicFlowMetas";
+import { IComponents } from "@rxdrag/react-shared";
 
 const SytledContent = styled.div`
   display: flex;
@@ -36,6 +37,7 @@ const LeftArea = styled.div`
 export type ControllerMetaEditorAntd5Props = {
   lang?: string,
   locales?: ILocales,
+  setters?: IComponents,
   value: IControllerMeta,
   onChange?: (value?: IControllerMeta) => void,
   controllerMetas: IControllerMeta[],
@@ -47,7 +49,7 @@ export type ControllerMetaEditorAntd5Props = {
 export const ControllerMetaEditorAntd5 = memo((
   props: ControllerMetaEditorAntd5Props
 ) => {
-  const { value, onChange, controllerMetas, materialCategories, eventMetas, height, ...other } = props
+  const { value, onChange, controllerMetas, materialCategories, eventMetas, height, setters, ...other } = props
   const [localsRegiterFlag, setLocalsRegisterFlag] = useState(0)
   const [selected, setSelected] = useState<string>()
   const extractLogicFlowMetas = useExtractReferencedLogicFlowMetas();
@@ -115,6 +117,7 @@ export const ControllerMetaEditorAntd5 = memo((
               VariableSelect,
               PropSelect,
               ReactionSelect,
+              ...setters
             }}
             //用于绘图显示subtitle
             logicFlowContext={editorContextParam}
