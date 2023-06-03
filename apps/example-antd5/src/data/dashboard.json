@@ -404,7 +404,10 @@
                                       "width": 102,
                                       "height": 48
                                     },
-                                    "rootUrl": "/api/todo-list"
+                                    "config": {
+                                      "dataPath": "",
+                                      "rootUrl": "/api/todo-list"
+                                    }
                                   }
                                 ],
                                 "lines": [

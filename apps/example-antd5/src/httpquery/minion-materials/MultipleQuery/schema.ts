@@ -14,7 +14,7 @@ export const dataQuerySchema: INodeSchema = {
         {
           componentName: "Input",
           "x-field": {
-            name: "rootUrl",
+            name: "config.rootUrl",
             params: {
               withBind: true,
             }
@@ -31,7 +31,7 @@ export const dataQuerySchema: INodeSchema = {
         {
           componentName: "Input",
           "x-field": {
-            name: "entityName",
+            name: "config.entityName",
             params: {
               withBind: true,
             }
@@ -48,7 +48,7 @@ export const dataQuerySchema: INodeSchema = {
         {
           componentName: "Input",
           "x-field": {
-            name: "dataPath",
+            name: "config.dataPath",
             params: {
               withBind: true,
             }
@@ -65,7 +65,7 @@ export const dataQuerySchema: INodeSchema = {
         {
           componentName: "Input",
           "x-field": {
-            name: "idName",
+            name: "config.idName",
             params: {
               withBind: true,
             }

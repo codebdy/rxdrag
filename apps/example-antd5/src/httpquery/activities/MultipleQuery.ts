@@ -9,7 +9,7 @@ export class MultipleQuery extends AbstractActivity<IQueryConfig> {
   public static OUTPUT_NAME_DATA = "dataOut"
   public static OUTPUT_NAME_QUERYING = "querying"
   public static OUTPUT_NAME_ERROR = "error"
-  public dataQuery?: IRestfulQuerySession;
+  public querySession?: IRestfulQuerySession;
 
   constructor(meta: IActivityDefine<IQueryConfig>) {
     super(meta)
@@ -21,13 +21,13 @@ export class MultipleQuery extends AbstractActivity<IQueryConfig> {
         return
       }
 
-      this.dataQuery = dataQuery;
+      this.querySession = dataQuery;
     }
   }
 
   @Input()
   inputHandler(params: IQueryParam): void {
-    this?.dataQuery?.query(params, {
+    this?.querySession?.query(params, {
       onData: this.complateHandler,
       onError: this.errorHandler,
       onLoading: this.loadinghandler,
@@ -47,6 +47,6 @@ export class MultipleQuery extends AbstractActivity<IQueryConfig> {
   }
 
   destory = () => {
-    this.dataQuery?.destory()
+    this.querySession?.destory()
   }
 }

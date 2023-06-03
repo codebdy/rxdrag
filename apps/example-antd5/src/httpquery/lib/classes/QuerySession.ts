@@ -41,7 +41,7 @@ export class QuerySession implements IRestfulQuerySession {
     this.responseHandlerFromParam?.onRevalidating?.(revalidating)
   }
 
-  mergeParam(param: IQueryParam) {
-    return { ...param, url: (this.config?.rootUrl || "") + param.url }
+  mergeParam(param?: IQueryParam) {
+    return { ...param, url: (this.config?.rootUrl || "") + (param?.url || "") }
   }
 }
