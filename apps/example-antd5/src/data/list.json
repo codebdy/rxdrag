@@ -175,8 +175,55 @@
                             "id": "25b52890-40c2-4d15-9bef-b726cc0effe3",
                             "name": "onPageChange",
                             "label": "分页",
-                            "nodes": [],
+                            "nodes": [
+                              {
+                                "id": "d970f079-f5aa-49ca-a188-2c7232a9219e",
+                                "label": "输入",
+                                "type": "Start",
+                                "activityName": "start",
+                                "inPorts": [],
+                                "outPorts": [],
+                                "x6Node": {
+                                  "x": 190,
+                                  "y": 110,
+                                  "width": 20,
+                                  "height": 20
+                                }
+                              },
+                              {
+                                "id": "8563ab84-8d7e-49f1-9eee-3e33c35e4c19",
+                                "label": "变量赋值",
+                                "type": "Activity",
+                                "activityName": "system-react.setVariable",
+                                "inPorts": [
+                                  {
+                                    "id": "2c5bcdce-f582-489d-9ff5-cf8f78818b6b",
+                                    "name": "input",
+                                    "label": ""
+                                  }
+                                ],
+                                "outPorts": [],
+                                "x6Node": {
+                                  "x": 390,
+                                  "y": 120,
+                                  "width": 116,
+                                  "height": 32
+                                },
+                                "config": {
+                                  "param": {
+                                    "controllerId": "de0143a2-498e-4013-8416-5a5919ff4acb",
+                                    "variable": "查询条件"
+                                  }
+                                }
+                              }
+                            ],
                             "lines": []
+                          }
+                        ],
+                        "variables": [
+                          {
+                            "name": "查询条件",
+                            "id": "a1d02d61-1688-45f8-9f14-4a6a7098b2f1"
                           }
                         ]
                       },
