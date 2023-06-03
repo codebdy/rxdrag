@@ -44,13 +44,14 @@ export class DefaultController<LogicFlowContext> implements IController {
       if (!inputOne) {
         continue
       }
+      const enventHandler = (...args: unknown[]) => inputOne.push(args);
       if (eventMeta.name === INIT_EVENT_NAME) {
         //事件参数转成数组传给编排节点
-        this.initEvent = (...args: unknown[]) => inputOne.push(args)
+        this.initEvent = enventHandler
       } else if (eventMeta.name === DESTORY_EVENT_NAME) {
-        this.destoryEvent = (...args: unknown[]) => inputOne.push(args)
+        this.destoryEvent = enventHandler
       } else if (eventMeta.name) {
-        this.events[eventMeta.name] = (...args: unknown[]) => inputOne.push(args)
+        this.events[eventMeta.name] = enventHandler
       }
     }
     for (const variable of this.meta.variables || []) {
