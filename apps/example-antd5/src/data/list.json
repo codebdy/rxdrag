@@ -58,16 +58,152 @@
           "componentName": "Layout.Content",
           "props": {
             "style": {
-              "display": "flex",
-              "flexDirection": "column",
-              "alignContent": "flex-start",
-              "justifyContent": "flex-start",
-              "alignItems": "flex-start",
-              "backgroundColor": "rgba(63,39,184,1)"
+              "display": "block",
+              "flexDirection": "row",
+              "alignContent": "center",
+              "justifyContent": "space-around",
+              "alignItems": "center",
+              "backgroundColor": "",
+              "flexWrap": "wrap"
             }
           },
           "slots": {},
-          "children": []
+          "children": [
+            {
+              "componentName": "Row",
+              "props": {},
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 24,
+                    "style": {
+                      "display": "block"
+                    }
+                  },
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Row",
+                      "props": {
+                        "style": {
+                          "height": "100%"
+                        }
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "Col",
+                          "props": {
+                            "span": 8
+                          },
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Input",
+                              "props": {},
+                              "x-field": {
+                                "name": "name",
+                                "params": {},
+                                "reactionMeta": {
+                                  "display": {},
+                                  "pattern": {},
+                                  "hidden": {},
+                                  "disabled": {},
+                                  "readonly": {}
+                                }
+                              },
+                              "x-controller": {
+                                "id": "67ba7358-b919-4234-8ae9-b0a0d666d3c3",
+                                "enable": true,
+                                "name": "查询输入",
+                                "global": true
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "componentName": "Col",
+                          "props": {
+                            "span": 6
+                          },
+                          "slots": {},
+                          "children": [
+                            {
+                              "componentName": "Button",
+                              "props": {
+                                "type": "primary",
+                                "title": "查询"
+                              },
+                              "x-controller": {
+                                "id": "1d22cf82-414a-420f-8b67-587e473acdfb",
+                                "enable": true,
+                                "name": "查询按钮"
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "componentName": "Col",
+                  "props": {
+                    "span": 24
+                  },
+                  "slots": {},
+                  "children": [
+                    {
+                      "componentName": "Table",
+                      "selfRender": true,
+                      "props": {
+                        "bordered": false
+                      },
+                      "x-controller": {
+                        "id": "de0143a2-498e-4013-8416-5a5919ff4acb",
+                        "enable": true,
+                        "global": true,
+                        "name": "表格"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "TableColumn",
+                          "props": {
+                            "title": "Column1"
+                          },
+                          "slots": {},
+                          "children": []
+                        },
+                        {
+                          "componentName": "TableColumn",
+                          "props": {
+                            "title": "Column2"
+                          },
+                          "slots": {},
+                          "children": []
+                        },
+                        {
+                          "componentName": "TableColumn",
+                          "props": {
+                            "title": "Column3"
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         "footer": {
           "componentName": "Layout.Footer",

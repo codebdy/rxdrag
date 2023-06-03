@@ -8,9 +8,9 @@ export type PropListener = (value: unknown) => void
 export type PropsListener = (name: string, value: unknown) => void
 export type UnListener = () => void
 
-export type InputFunc = (inputValue?: unknown) => void
+export type EventFunc = (...args: unknown[]) => void
 export type EventFuncs = {
-  [name: string]: InputFunc | undefined
+  [name: string]: EventFunc | undefined
 }
 
 export interface IVariableController {
@@ -32,8 +32,8 @@ export interface IController extends IVariableController, IPropController {
   init: (controllers: Controllers) => void,
 
   events: EventFuncs,
-  initEvent?: InputFunc,
-  destoryEvent?: InputFunc,
+  initEvent?: EventFunc,
+  destoryEvent?: EventFunc,
   subscribeToPropsChange(listener: PropsListener): UnListener
 
   destory(): void,

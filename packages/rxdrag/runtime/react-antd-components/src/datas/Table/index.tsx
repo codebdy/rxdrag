@@ -65,13 +65,14 @@ export type TableProps = {
   pagination?: false | 'topLeft' | 'topCenter' | 'topRight' | 'bottomLeft' | 'bottomCenter' | 'bottomRight',
   pageSize?: number,
   rowKey?: string,
+  onPageChange?: (page: number, pageSize: number) => void
 }
 
 // 本控件强依赖ComponentRender
 export const Table = memo((
   props: TableProps
 ) => {
-  const { header, footer, dataSource, pagination, summary, pageSize, rowKey = "id", ...other } = props
+  const { header, footer, dataSource, pagination, summary, pageSize, rowKey = "id", onPageChange, ...other } = props
   const [id] = useState(createUuid())
   const nodeSchema = useComponentSchema()
   const columns = useMemo(() => {
@@ -105,12 +106,18 @@ export const Table = memo((
     );
   }, [dataSource?.nodes]);
 
+  const handlePageChange = useCallback((page: number, pageSize: number) => {
+    onPageChange?.(page, pageSize)
+  }, [onPageChange])
+
   return (
     <ArrayField name={id} value={dataSource?.nodes}>
       <AntdTable
         columns={columns as any}
         dataSource={dataSource?.nodes}
         rowKey={rowKey}
+        title={header && (() => header)}
+        footer={footer && (() => footer)}
         onRow={(_, index) => ({ index } as any)}
         components={{
           body: {
@@ -125,9 +132,10 @@ export const Table = memo((
             : {
               position: pagination && [pagination],
               pageSize: pageSize,
+              onChange: handlePageChange
             }
         }
-        summary={(pageData) => {
+        summary={() => {
           return (
             summary
           );

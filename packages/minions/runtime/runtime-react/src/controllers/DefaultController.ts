@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IController, InputFunc, EventFuncs, VariableListener, PropsListener, Controllers, UnListener, PropListener } from "../interfaces/controller";
+import { IController, EventFunc, EventFuncs, VariableListener, PropsListener, Controllers, UnListener, PropListener } from "../interfaces/controller";
 import { IControllerMeta } from "../interfaces";
 import { IActivity, LogicFlow } from "@rxdrag/minions-runtime";
 import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
@@ -10,8 +10,8 @@ export const DESTORY_EVENT_NAME = "destory"
 export class DefaultController<LogicFlowContext> implements IController {
   id: string;
   name?: string;
-  initEvent?: InputFunc | undefined;
-  destoryEvent?: InputFunc | undefined;
+  initEvent?: EventFunc | undefined;
+  destoryEvent?: EventFunc | undefined;
   events: EventFuncs = {};
   private variables: any = {};
   private props: any = {};
@@ -45,11 +45,12 @@ export class DefaultController<LogicFlowContext> implements IController {
         continue
       }
       if (eventMeta.name === INIT_EVENT_NAME) {
-        this.initEvent = inputOne.push
+        //事件参数转成数组传给编排节点
+        this.initEvent = (...args: unknown[]) => inputOne.push(args)
       } else if (eventMeta.name === DESTORY_EVENT_NAME) {
-        this.destoryEvent = inputOne.push
+        this.destoryEvent = (...args: unknown[]) => inputOne.push(args)
       } else if (eventMeta.name) {
-        this.events[eventMeta.name] = inputOne.push
+        this.events[eventMeta.name] = (...args: unknown[]) => inputOne.push(args)
       }
     }
     for (const variable of this.meta.variables || []) {

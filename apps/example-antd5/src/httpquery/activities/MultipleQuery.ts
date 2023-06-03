@@ -27,6 +27,7 @@ export class MultipleQuery extends AbstractActivity<IQueryConfig> {
 
   @Input()
   inputHandler(params: IQueryParam): void {
+    //@@ 最好能添加防抖处理，把一段小段时间间隔内的请求，合并为一个请求，使用最后的参数查询
     this?.querySession?.query(params, {
       onData: this.complateHandler,
       onError: this.errorHandler,
