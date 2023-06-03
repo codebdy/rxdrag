@@ -408,6 +408,69 @@
                                       "dataPath": "",
                                       "rootUrl": "/api/todo-list"
                                     }
+                                  },
+                                  {
+                                    "id": "0854b24a-553b-4fb7-819e-bd25daf7e00d",
+                                    "label": "调试",
+                                    "type": "Activity",
+                                    "activityName": "system.debug",
+                                    "inPorts": [
+                                      {
+                                        "id": "b57b42f0-bf11-4098-9f02-f1bede5a3b51",
+                                        "name": "input",
+                                        "label": ""
+                                      }
+                                    ],
+                                    "outPorts": [],
+                                    "x6Node": {
+                                      "x": 580,
+                                      "y": 290,
+                                      "width": 88,
+                                      "height": 32
+                                    }
+                                  },
+                                  {
+                                    "id": "30dec2ae-ef9c-444b-9153-f1264316dac6",
+                                    "label": "提示消息",
+                                    "type": "Activity",
+                                    "activityName": "system-react-antd5.message",
+                                    "inPorts": [
+                                      {
+                                        "id": "e362de9d-5795-407d-977a-d2274b238394",
+                                        "name": "input",
+                                        "label": ""
+                                      }
+                                    ],
+                                    "outPorts": [],
+                                    "x6Node": {
+                                      "x": 570,
+                                      "y": 350,
+                                      "width": 116,
+                                      "height": 32
+                                    },
+                                    "config": {
+                                      "type": "error"
+                                    }
+                                  },
+                                  {
+                                    "id": "77e1c7fa-cbea-4473-8a81-9389889de71f",
+                                    "label": "调试",
+                                    "type": "Activity",
+                                    "activityName": "system.debug",
+                                    "inPorts": [
+                                      {
+                                        "id": "b57b42f0-bf11-4098-9f02-f1bede5a3b51",
+                                        "name": "input",
+                                        "label": ""
+                                      }
+                                    ],
+                                    "outPorts": [],
+                                    "x6Node": {
+                                      "x": 570,
+                                      "y": 420,
+                                      "width": 88,
+                                      "height": 32
+                                    }
                                   }
                                 ],
                                 "lines": [
@@ -430,6 +493,39 @@
                                     "target": {
                                       "nodeId": "bf37c5c8-849f-49ca-9d42-408dd0e576cd",
                                       "portId": "a1e42087-fda5-431b-bdfa-30144f3da585"
+                                    }
+                                  },
+                                  {
+                                    "id": "bbf550b7-5909-4927-8d6d-7882b3c2db23",
+                                    "source": {
+                                      "nodeId": "e56117a4-0084-4955-8e5b-5e903d84402b",
+                                      "portId": "d7e376be-6dc4-4854-8ee3-01582c2f9304"
+                                    },
+                                    "target": {
+                                      "nodeId": "0854b24a-553b-4fb7-819e-bd25daf7e00d",
+                                      "portId": "b57b42f0-bf11-4098-9f02-f1bede5a3b51"
+                                    }
+                                  },
+                                  {
+                                    "id": "86011c34-f064-41f4-be95-edffb794098c",
+                                    "source": {
+                                      "nodeId": "e56117a4-0084-4955-8e5b-5e903d84402b",
+                                      "portId": "a6cb6d07-3dc8-4b46-b9cc-5d6f6a4060f1"
+                                    },
+                                    "target": {
+                                      "nodeId": "77e1c7fa-cbea-4473-8a81-9389889de71f",
+                                      "portId": "b57b42f0-bf11-4098-9f02-f1bede5a3b51"
+                                    }
+                                  },
+                                  {
+                                    "id": "361c8803-8627-4f02-8a79-f887add3be2e",
+                                    "source": {
+                                      "nodeId": "e56117a4-0084-4955-8e5b-5e903d84402b",
+                                      "portId": "a6cb6d07-3dc8-4b46-b9cc-5d6f6a4060f1"
+                                    },
+                                    "target": {
+                                      "nodeId": "30dec2ae-ef9c-444b-9153-f1264316dac6",
+                                      "portId": "e362de9d-5795-407d-977a-d2274b238394"
                                     }
                                   }
                                 ]

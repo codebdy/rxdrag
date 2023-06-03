@@ -28,26 +28,26 @@ export class InfoMessage extends AbstractActivity<IInfoMessageConfig> {
   }
 
   @Input()
-  inputHandler = (inputValue?: string) => {
+  inputHandler = (inputValue?: string | Error) => {
     const msg = inputValue
     switch (this.meta.config?.type) {
       case MessageType.Success:
-        message.success(msg, this.meta.config?.duration)
+        message.success(msg as string, this.meta.config?.duration)
         break;
       case MessageType.Error:
-        message.error(msg, this.meta.config?.duration)
+        inputValue && message.error((inputValue as Error)?.message, this.meta.config?.duration)
         break;
       case MessageType.Info:
-        message.info(msg, this.meta.config?.duration)
+        message.info(msg as string, this.meta.config?.duration)
         break;
       case MessageType.Warning:
-        message.warning(msg, this.meta.config?.duration)
+        message.warning(msg as string, this.meta.config?.duration)
         break;
       case MessageType.Loading:
-        message.loading(msg, this.meta.config?.duration)
+        message.loading(msg as string, this.meta.config?.duration)
         break;
       default:
-        message.info(msg, this.meta.config?.duration)
+        message.info(msg as string, this.meta.config?.duration)
         break;
     }
   }

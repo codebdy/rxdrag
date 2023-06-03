@@ -1,10 +1,17 @@
 import { IQueryParam, IReponseHandler } from "../interfaces";
+import _ from "lodash"
+import axios from 'axios';
 
 export enum QueryStatus {
   querying = 1,
   error,
   revalidating,
   complated,
+}
+
+const PREDEFINED_HEADERS = {
+  "Accept": "application/json",
+  'Content-Type': 'application/json'
 }
 
 export class QueryRecord {
@@ -16,16 +23,13 @@ export class QueryRecord {
   revalidate() {
     if (this.param.url) {
       this.emitRevalidating(true)
-      fetch(this.param.url, this.param.requestInit).then((res: Response) => {
+      axios(this.param.url, _.merge(PREDEFINED_HEADERS, this.param.axiosConfig)).then((res) => {
+        this.emitData(res.data)
         this.emitRevalidating(false)
-        this.emitError(undefined)
-        res.json().then((value) => {
-          this.emitData(value)
-        }).catch(e => {
-          this.emitError(e)
-        })
       }).catch(e => {
+        console.error(e)
         this.emitError(e)
+        this.emitRevalidating(false)
       })
     }
   }
@@ -33,16 +37,13 @@ export class QueryRecord {
   load() {
     if (this.param.url) {
       this.emitLoading(true)
-      fetch(this.param.url, this.param.requestInit).then((res: Response) => {
+      axios(this.param.url, _.merge(PREDEFINED_HEADERS, this.param.axiosConfig)).then((res) => {
+        this.emitData(res.data)
         this.emitLoading(false)
-        this.emitError(undefined)
-        res.json().then((value) => {
-          this.emitData(value)
-        }).catch(e => {
-          this.emitError(e)
-        })
       }).catch(e => {
+        console.error(e)
         this.emitError(e)
+        this.emitLoading(false)
       })
     }
   }
