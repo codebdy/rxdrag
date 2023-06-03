@@ -169,7 +169,16 @@
                         "id": "de0143a2-498e-4013-8416-5a5919ff4acb",
                         "enable": true,
                         "global": true,
-                        "name": "表格"
+                        "name": "表格",
+                        "events": [
+                          {
+                            "id": "25b52890-40c2-4d15-9bef-b726cc0effe3",
+                            "name": "onPageChange",
+                            "label": "分页",
+                            "nodes": [],
+                            "lines": []
+                          }
+                        ]
                       },
                       "slots": {},
                       "children": [

@@ -24,7 +24,7 @@ export function createSlotsSchema(...options: SlotsOption[]) {
 }
 
 export function createSchema(options: SchemaOptions = {}): INodeSchema {
-  const { propsSchemas, slotsSchemas, fieldOptions: fieldOptions } = options
+  const { propsSchemas, slotsSchemas, fieldOptions: fieldOptions, events } = options
   const propsTab = propsSchemas ? [{
     componentName: "TabPanel",
     "x-field": {
@@ -64,7 +64,7 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
       title: "$logic",
       id: "logic",
     },
-    children: createControllerSchema()
+    children: createControllerSchema(events)
   }
   return {
     componentName: "Tabs",

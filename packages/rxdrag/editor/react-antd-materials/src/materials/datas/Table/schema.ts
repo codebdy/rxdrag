@@ -120,7 +120,13 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, IControllerMeta> = {
   ],
   fieldOptions: {
     canBindField: false,
-  }
+  },
+  events: [
+    {
+      name: "onPageChange",
+      label: "$paginationChange",
+    }
+  ],
 }
 
 export const materialSchema: INodeSchema = createSchema(withFormItem(options))

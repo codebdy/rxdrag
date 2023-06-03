@@ -44,9 +44,9 @@ export class DefaultController<LogicFlowContext> implements IController {
       if (!inputOne) {
         continue
       }
+      //事件参数转成数组传给编排节点
       const enventHandler = (...args: unknown[]) => inputOne.push(args);
       if (eventMeta.name === INIT_EVENT_NAME) {
-        //事件参数转成数组传给编排节点
         this.initEvent = enventHandler
       } else if (eventMeta.name === DESTORY_EVENT_NAME) {
         this.destoryEvent = enventHandler

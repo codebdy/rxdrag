@@ -17,6 +17,7 @@ export const locales = {
       bottomCenter: "中下",
       bottomRight: "右下",
       rowKey: "行主键",
+      paginationChange: "分页",
       ...sizeLocales["zh-CN"],
     }
 
@@ -37,6 +38,7 @@ export const locales = {
       bottomCenter: "Bottom Center",
       bottomRight: "Bottom Right",
       rowKey: "Row Key",
+      paginationChange: "Pagination Change",
       ...sizeLocales["en-US"],
     }
   }

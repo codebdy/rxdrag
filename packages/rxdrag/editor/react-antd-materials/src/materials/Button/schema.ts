@@ -145,7 +145,13 @@ const options: SchemaOptions<IFieldMeta<IBindParams>> = {
       name: "icon",
       label: "$icon"
     }
-  )
+  ),
+  events: [
+    {
+      name: "onClick",
+      label: "$onClick",
+    }
+  ],
 }
 
 export const buttonSchema: INodeSchema = createSchema(withFormItem(options))
