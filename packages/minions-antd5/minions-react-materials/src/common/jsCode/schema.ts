@@ -8,6 +8,28 @@ export const jsCodeSchema: INodeSchema = {
     {
       componentName: "FormItem",
       props: {
+        label: "$inputPorts",
+      },
+      children: [
+        {
+          componentName: "PortsInput",
+          "x-field": {
+            name: "inPorts",
+            params: {
+              withBind: true,
+            }
+          },
+          props: {
+            title: "$configPorts",
+            popoverTitle: "$inputPortsConfig",
+            type: "input",
+          }
+        }
+      ]
+    },
+    {
+      componentName: "FormItem",
+      props: {
         label: "$outputPorts",
       },
       children: [
@@ -41,9 +63,9 @@ export const jsCodeSchema: INodeSchema = {
               withBind: true,
             }
           },
-          props:{
+          props: {
             defaultValue:
-`({ inputValue, outputs }) => {
+              `({ inputs, outputs }) => {
   const { output } = outputs;
   output('not implement');
 }`

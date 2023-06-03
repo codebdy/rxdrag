@@ -1,4 +1,4 @@
-import { InputHandler, Activity, AbstractActivity, Input } from "@rxdrag/minions-runtime"
+import { InputHandler, Activity, AbstractActivity, Input, DynamicInput } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
 
@@ -9,16 +9,27 @@ export interface IJsCodeConfig {
 @Activity(JsCode.NAME)
 export class JsCode extends AbstractActivity<IJsCodeConfig> {
   public static NAME = "system.jsCode"
+  private noPassInputs: string[] = []
+  private inputs: any = {}
+
   constructor(meta: IActivityDefine<IJsCodeConfig>, options?: unknown) {
     super(meta, options)
 
-    if (Object.keys(meta.inPorts || {}).length !== 1) {
-      throw new Error("JsCodeReaction inputs count error")
+    for (const input of meta.inPorts || []) {
+      this.noPassInputs.push(input.name)
     }
   }
 
-  @Input()
-  inputHandler = (inputValue: string) => {
+  @DynamicInput
+  inputHandler = (inputName: string, inputValue: unknown) => {
+    this.inputs[inputName] = inputValue
+    this.noPassInputs.splice(this.noPassInputs.indexOf(inputName), 1)
+    if (this.noPassInputs.length === 0) {
+      this.outputHandler(this.inputs)
+    }
+  }
+
+  outputHandler = (inputs: any) => {
     const expression = this.meta.config?.expression?.trim()
     if (expression) {
       const outputs: { [name: string]: InputHandler } = {}
@@ -27,7 +38,7 @@ export class JsCode extends AbstractActivity<IJsCodeConfig> {
       }
 
       // eslint-disable-next-line no-new-func
-      new Function("return " + expression)()?.({ inputValue, outputs })
+      new Function("return " + expression)()?.({ inputs, outputs })
     }
   }
 
