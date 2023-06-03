@@ -5,7 +5,6 @@ import { GlobalQuery } from "./RestfulQuery";
 export class QuerySession implements IRestfulQuerySession {
   // handler要中转，来确保引用对GlobalQuery 不变
   private responseHandler: IReponseHandler;
-  //private param?: IQueryParam;
   private responseHandlerFromParam?: IReponseHandler;
   private unsubscribe?: Unsubscribe
   constructor(private config?: IQueryConfig) {

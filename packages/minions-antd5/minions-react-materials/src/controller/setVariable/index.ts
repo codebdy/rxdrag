@@ -18,6 +18,13 @@ export const setVariableMaterial: IRxDragActivityMaterial<IVariableConfig, ICont
         label: "",
       },
     ],
+    outPorts: [
+      {
+        id: createUuid(),
+        name: "output",
+        label: "",
+      },
+    ],
   },
   schema: variableSchema,
   subTitle: (config?: IVariableConfig, context?: IControllerEditorContextParam) => {

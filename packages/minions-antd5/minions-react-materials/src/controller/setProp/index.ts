@@ -19,6 +19,13 @@ export const setPropMaterial: IRxDragActivityMaterial<IPropConfig, IControllerEd
         label: "",
       },
     ],
+    outPorts: [
+      {
+        id: createUuid(),
+        name: "output",
+        label: "",
+      },
+    ],
   },
   schema: propSchema,
   subTitle: (config?: IPropConfig, context?: IControllerEditorContextParam) => {

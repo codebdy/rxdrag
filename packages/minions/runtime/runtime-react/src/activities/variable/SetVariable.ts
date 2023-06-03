@@ -14,7 +14,7 @@ export interface IVariableConfig extends IControllerConfig {
 @Activity(SetVariable.NAME)
 export class SetVariable extends AbstractControllerActivity<IVariableConfig> {
   public static NAME = "system-react.setVariable"
-  
+
   controller: IController
   constructor(meta: IActivityDefine<IVariableConfig>, context?: IControllerContext) {
     super(meta, context)
@@ -36,5 +36,6 @@ export class SetVariable extends AbstractControllerActivity<IVariableConfig> {
     if (this.meta.config?.param?.variable) {
       this.controller?.setVariable(this.meta.config.param?.variable, inputValue)
     }
+    this.next(inputValue);
   }
 }

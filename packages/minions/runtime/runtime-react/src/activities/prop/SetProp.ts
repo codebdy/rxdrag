@@ -27,5 +27,6 @@ export class SetProp extends AbstractControllerActivity<IPropConfig> {
     if (this.meta.config?.param?.prop) {
       this.controller?.setProp(this.meta.config?.param.prop, inputValue)
     }
+    this.next(inputValue);
   }
 }
