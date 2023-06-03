@@ -1,2 +1,2 @@
-export * from "./jsCode"
-export * from "./mock"
+export * from "./JsCode"
+export * from "./Mock"
