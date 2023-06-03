@@ -2,14 +2,14 @@ import { ActivityType } from "@rxdrag/minions-schema";
 import { createUuid } from "@rxdrag/shared";
 import { DEFAULT_INPUT_NAME } from "@rxdrag/minions-runtime";
 import { IQueryActivityMaterial } from "../types";
-import { dataQueryIcon2 } from "../icons";
-import { dataQuery2Schema } from "./schema";
-import { RestfulQuery } from "httpquery/activities";
+import { dataQueryIcon } from "../icons";
+import { dataQuerySchema } from "./schema";
+import { MultipleQuery } from "httpquery/activities";
 
-export const dataQuery2Material: IQueryActivityMaterial = {
-  activityName: RestfulQuery.NAME,
-  icon: dataQueryIcon2,
-  label: "$restfulQuery2",
+export const multipleQueryMaterial: IQueryActivityMaterial = {
+  activityName: MultipleQuery.NAME,
+  icon: dataQueryIcon,
+  label: "$multipleQuery",
   activityType: ActivityType.Activity,
   defaultPorts: {
     inPorts: [
@@ -22,20 +22,20 @@ export const dataQuery2Material: IQueryActivityMaterial = {
     outPorts: [
       {
         id: createUuid(),
-        name: RestfulQuery.OUTPUT_NAME_DATA,
+        name: MultipleQuery.OUTPUT_NAME_DATA,
         label: "$dataOut",
       },
       {
         id: createUuid(),
-        name: RestfulQuery.OUTPUT_NAME_QUERYING,
+        name: MultipleQuery.OUTPUT_NAME_QUERYING,
         label: "$querying",
       },
       {
         id: createUuid(),
-        name: RestfulQuery.OUTPUT_NAME_ERROR,
+        name: MultipleQuery.OUTPUT_NAME_ERROR,
         label: "$error",
       },
     ],
   },
-  schema: dataQuery2Schema
+  schema: dataQuerySchema
 }

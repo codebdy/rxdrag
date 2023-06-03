@@ -1,12 +1,12 @@
 import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
 import { ReactNode } from "react";
-import { dataQueryMaterial } from "./DataQuery";
-import { dataQuery2Material } from "./DataQuery2";
+import { multipleQueryMaterial } from "./MultipleQuery";
+import { singleQueryMaterial } from "./SingleQuery";
 
 export const httpQueryMaterialCategory: ActivityMaterialCategory<ReactNode>=   {
   name: '$dataSource',
   materials: [
-    dataQueryMaterial,
-    dataQuery2Material
+    multipleQueryMaterial,
+    singleQueryMaterial
   ],
 }

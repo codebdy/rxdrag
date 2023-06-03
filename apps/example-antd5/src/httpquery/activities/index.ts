@@ -1,1 +1,3 @@
-export * from "./RestfulQuery"
+//引入mock
+import "../../mock"
+export * from "./MultipleQuery"

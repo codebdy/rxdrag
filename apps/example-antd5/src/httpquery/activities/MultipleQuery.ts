@@ -3,9 +3,9 @@ import { IActivityDefine } from "@rxdrag/minions-schema"
 import { QuerySessionFactory } from "httpquery/lib/classes/factory"
 import { IQueryConfig, IQueryParam, IRestfulQuerySession } from "httpquery/lib/interfaces"
 
-@Activity(RestfulQuery.NAME)
-export class RestfulQuery extends AbstractActivity<IQueryConfig> {
-  public static NAME = "example.DataQuery"
+@Activity(MultipleQuery.NAME)
+export class MultipleQuery extends AbstractActivity<IQueryConfig> {
+  public static NAME = "example.MultipleQuery"
   public static OUTPUT_NAME_DATA = "dataOut"
   public static OUTPUT_NAME_QUERYING = "querying"
   public static OUTPUT_NAME_ERROR = "error"
@@ -35,15 +35,15 @@ export class RestfulQuery extends AbstractActivity<IQueryConfig> {
   }
 
   complateHandler = (data: unknown) => {
-    this.next(data, RestfulQuery.OUTPUT_NAME_DATA)
+    this.next(data, MultipleQuery.OUTPUT_NAME_DATA)
   }
 
   errorHandler = (error?: Error) => {
-    this.next(error, RestfulQuery.OUTPUT_NAME_ERROR)
+    this.next(error, MultipleQuery.OUTPUT_NAME_ERROR)
   }
 
   loadinghandler = (loading?: boolean) => {
-    this.next(loading, RestfulQuery.OUTPUT_NAME_QUERYING)
+    this.next(loading, MultipleQuery.OUTPUT_NAME_QUERYING)
   }
 
   destory = () => {

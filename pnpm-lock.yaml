@@ -195,6 +195,9 @@ importers:
       css-border-property:
         specifier: ^1.1.0
         version: registry.npmmirror.com/css-border-property@1.1.0
+      mockjs:
+        specifier: ^1.1.0
+        version: registry.npmmirror.com/mockjs@1.1.0
       react:
         specifier: ^18.2.0
         version: registry.npmmirror.com/react@18.2.0
@@ -211,6 +214,9 @@ importers:
         specifier: ^3.3.0
         version: registry.npmmirror.com/web-vitals@3.3.0
     devDependencies:
+      '@types/mockjs':
+        specifier: ^1.0.7
+        version: registry.npmmirror.com/@types/mockjs@1.0.7
       '@types/react':
         specifier: ^18.0.28
         version: registry.npmmirror.com/@types/react@18.0.28
@@ -5706,6 +5712,12 @@ packages:
     version: 4.14.191
     dev: true
 
+  registry.npmmirror.com/@types/mockjs@1.0.7:
+    resolution: {integrity: sha512-OCxXz6hEaJOVpRwuJMiVY5a6LtJcih+br9gwB/Q8ooOBikvk5FpBQ31OlNimXo3EqKha1Z7PFBni+q9m+8NCWg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/mockjs/-/mockjs-1.0.7.tgz}
+    name: '@types/mockjs'
+    version: 1.0.7
+    dev: true
+
   registry.npmmirror.com/@types/node@12.20.55:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-12.20.55.tgz}
     name: '@types/node'
@@ -6567,6 +6579,13 @@ packages:
     name: commander
     version: 2.20.3
     dev: true
+
+  registry.npmmirror.com/commander@9.4.1:
+    resolution: {integrity: sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/commander/-/commander-9.4.1.tgz}
+    name: commander
+    version: 9.4.1
+    engines: {node: ^12.20.0 || >=14}
+    dev: false
 
   registry.npmmirror.com/compute-scroll-into-view@3.0.0:
     resolution: {integrity: sha512-Yk1An4qzo5++Cu6peT9PsmRKIU8tALpmdoE09n//AfGQFcPfx21/tMGMsmKYmLJWaBJrGOJ5Jz5hoU+7cZZUWQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/compute-scroll-into-view/-/compute-scroll-into-view-3.0.0.tgz}
@@ -8211,6 +8230,15 @@ packages:
     version: 3.1.2
     dependencies:
       brace-expansion: registry.npmmirror.com/brace-expansion@1.1.11
+
+  registry.npmmirror.com/mockjs@1.1.0:
+    resolution: {integrity: sha512-eQsKcWzIaZzEZ07NuEyO4Nw65g0hdWAyurVol1IPl1gahRwY+svqzfgfey8U8dahLwG44d6/RwEzuK52rSa/JQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mockjs/-/mockjs-1.1.0.tgz}
+    name: mockjs
+    version: 1.1.0
+    hasBin: true
+    dependencies:
+      commander: registry.npmmirror.com/commander@9.4.1
+    dev: false
 
   registry.npmmirror.com/monaco-editor@0.36.1:
     resolution: {integrity: sha512-/CaclMHKQ3A6rnzBzOADfwdSJ25BFoFT0Emxsc4zYVyav5SkK9iA6lEtIeuN/oRYbwPgviJT+t3l+sjFa28jYg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/monaco-editor/-/monaco-editor-0.36.1.tgz}
