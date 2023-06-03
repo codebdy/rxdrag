@@ -23,13 +23,17 @@ export class QueryRecord {
   revalidate() {
     if (this.param.url) {
       this.emitRevalidating(true)
+      this.status = QueryStatus.revalidating
       axios(this.param.url, _.merge(PREDEFINED_HEADERS, this.param.axiosConfig)).then((res) => {
-        this.emitData(res.data)
+        this.data = res.data
+        this.emitData(this.data)
         this.emitRevalidating(false)
+        this.status = QueryStatus.complated
       }).catch(e => {
         console.error(e)
         this.emitError(e)
         this.emitRevalidating(false)
+        this.status = QueryStatus.error
       })
     }
   }
@@ -37,13 +41,17 @@ export class QueryRecord {
   load() {
     if (this.param.url) {
       this.emitLoading(true)
+      this.status = QueryStatus.querying
       axios(this.param.url, _.merge(PREDEFINED_HEADERS, this.param.axiosConfig)).then((res) => {
-        this.emitData(res.data)
+        this.data = res.data
+        this.emitData(this.data)
         this.emitLoading(false)
+        this.status = QueryStatus.complated
       }).catch(e => {
         console.error(e)
         this.emitError(e)
         this.emitLoading(false)
+        this.status = QueryStatus.error
       })
     }
   }
