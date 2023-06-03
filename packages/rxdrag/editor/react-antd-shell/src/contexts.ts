@@ -4,9 +4,9 @@ import { IComponents } from "@rxdrag/react-shared";
 import { ReactNode, createContext } from "react";
 
 export interface IMinionOptions {
-  minionMaterials?: ActivityMaterialCategory<ReactNode>[],
-  minionLocales?: ILocales,
-  minionPropSetters?: IComponents,
+  materials?: ActivityMaterialCategory<ReactNode>[],
+  locales?: ILocales,
+  propSetters?: IComponents,
 }
 
 export const MinionOptionContext = createContext<IMinionOptions | undefined>(undefined)

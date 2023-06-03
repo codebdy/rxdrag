@@ -51,8 +51,8 @@ export const Antd5Example = memo(() => {
       previewUrl="/preview-render"
       themeMode='dark'
       minionOptions={{
-        minionMaterials: minionsMaterialCategories,
-        minionLocales: minionsLocales,
+        materials: minionsMaterialCategories,
+        locales: minionsLocales,
       }}
       navPanel={
         <>
