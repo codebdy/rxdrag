@@ -658,6 +658,156 @@
                             "pagination": false,
                             "style": {}
                           },
+                          "x-controller": {
+                            "id": "a7079965-8fac-4dd5-8232-5c6c168c1c93",
+                            "enable": true,
+                            "events": [
+                              {
+                                "id": "2358fdcc-866a-45bd-a736-5293d6027fbf",
+                                "name": "init",
+                                "label": "初始化",
+                                "nodes": [
+                                  {
+                                    "id": "1f0ec675-11a5-49fd-960b-3e656897bf87",
+                                    "label": "输入",
+                                    "type": "Start",
+                                    "activityName": "start",
+                                    "inPorts": [],
+                                    "outPorts": [],
+                                    "x6Node": {
+                                      "x": 190,
+                                      "y": 100,
+                                      "width": 20,
+                                      "height": 20
+                                    }
+                                  },
+                                  {
+                                    "id": "3b3d76e2-cf46-43c6-a4f0-267da343e3af",
+                                    "label": "提示消息",
+                                    "type": "Activity",
+                                    "activityName": "system-react-antd5.message",
+                                    "inPorts": [
+                                      {
+                                        "id": "24c215c9-02ea-4143-9367-028ce585e5bc",
+                                        "name": "input",
+                                        "label": ""
+                                      }
+                                    ],
+                                    "outPorts": [],
+                                    "x6Node": {
+                                      "x": 470,
+                                      "y": 280,
+                                      "width": 116,
+                                      "height": 32
+                                    },
+                                    "config": {
+                                      "type": "error"
+                                    }
+                                  },
+                                  {
+                                    "id": "75963280-0724-4def-9c3b-d529fa59f700",
+                                    "label": "设置属性",
+                                    "type": "Activity",
+                                    "activityName": "system-react.setProp",
+                                    "inPorts": [
+                                      {
+                                        "id": "10c2e4ef-ddf7-4a98-8900-613600b172dd",
+                                        "name": "input",
+                                        "label": ""
+                                      }
+                                    ],
+                                    "outPorts": [],
+                                    "x6Node": {
+                                      "x": 500,
+                                      "y": 180,
+                                      "width": 116,
+                                      "height": 32
+                                    },
+                                    "config": {
+                                      "param": {
+                                        "controllerId": "a7079965-8fac-4dd5-8232-5c6c168c1c93",
+                                        "prop": "dataSource"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "id": "be820d27-8cf0-4172-ac92-36d5c8fdcb6b",
+                                    "label": "列表源",
+                                    "type": "Activity",
+                                    "activityName": "example.MultipleQuery",
+                                    "inPorts": [
+                                      {
+                                        "id": "9e2e04b8-706c-453c-ac56-1e2fff1099ee",
+                                        "name": "input",
+                                        "label": ""
+                                      }
+                                    ],
+                                    "outPorts": [
+                                      {
+                                        "id": "641873c1-c047-43bf-afbd-11c7c160bb72",
+                                        "name": "dataOut",
+                                        "label": "数据输出"
+                                      },
+                                      {
+                                        "id": "1bf0b7e6-2799-41e9-bd09-f3e1057a5c6e",
+                                        "name": "querying",
+                                        "label": "查询中"
+                                      },
+                                      {
+                                        "id": "715b000e-ccea-4bb0-a98a-0969601509cf",
+                                        "name": "error",
+                                        "label": "错误"
+                                      }
+                                    ],
+                                    "x6Node": {
+                                      "x": 280,
+                                      "y": 160,
+                                      "width": 102,
+                                      "height": 48
+                                    },
+                                    "config": {
+                                      "rootUrl": "/api/customers"
+                                    }
+                                  }
+                                ],
+                                "lines": [
+                                  {
+                                    "id": "87fe39ba-4121-4f28-b2bd-5fffb3061977",
+                                    "source": {
+                                      "nodeId": "1f0ec675-11a5-49fd-960b-3e656897bf87"
+                                    },
+                                    "target": {
+                                      "nodeId": "be820d27-8cf0-4172-ac92-36d5c8fdcb6b",
+                                      "portId": "9e2e04b8-706c-453c-ac56-1e2fff1099ee"
+                                    }
+                                  },
+                                  {
+                                    "id": "d5c466da-b66e-4f52-bab7-745860d1aea3",
+                                    "source": {
+                                      "nodeId": "be820d27-8cf0-4172-ac92-36d5c8fdcb6b",
+                                      "portId": "641873c1-c047-43bf-afbd-11c7c160bb72"
+                                    },
+                                    "target": {
+                                      "nodeId": "75963280-0724-4def-9c3b-d529fa59f700",
+                                      "portId": "10c2e4ef-ddf7-4a98-8900-613600b172dd"
+                                    }
+                                  },
+                                  {
+                                    "id": "1986dd18-e7a4-4e54-998f-fd493b73a370",
+                                    "source": {
+                                      "nodeId": "be820d27-8cf0-4172-ac92-36d5c8fdcb6b",
+                                      "portId": "715b000e-ccea-4bb0-a98a-0969601509cf"
+                                    },
+                                    "target": {
+                                      "nodeId": "3b3d76e2-cf46-43c6-a4f0-267da343e3af",
+                                      "portId": "24c215c9-02ea-4143-9367-028ce585e5bc"
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "name": "表格"
+                          },
                           "slots": {
                             "renderItem": {
                               "componentName": "ListItem",
