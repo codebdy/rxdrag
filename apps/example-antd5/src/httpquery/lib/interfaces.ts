@@ -35,10 +35,12 @@ export enum DataQueryType {
   DataQuery2 = "dataQuery2",
 }
 
-//根据需要，自定义配置样式
-export interface IQueryConfig<T = unknown> {
-  //用来识别使用哪个数据源
-  dataQueryType: DataQueryType;
-  dataQueryParam?: T;
+export interface IQueryConfig {
+  rootUrl?: string;
+  entityName?: string;
+  requestInit?: RequestInit;
+  dataPath?: string;
+  idName?: string;
 }
+
 

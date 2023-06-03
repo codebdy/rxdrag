@@ -344,43 +344,92 @@
                                     }
                                   },
                                   {
-                                    "id": "b4af4942-9484-4f28-8b52-9e25fbe4df74",
-                                    "label": "数据源1",
+                                    "id": "bf37c5c8-849f-49ca-9d42-408dd0e576cd",
+                                    "label": "设置属性",
                                     "type": "Activity",
-                                    "activityName": "example.DataQuery",
+                                    "activityName": "system-react.setProp",
                                     "inPorts": [
                                       {
-                                        "id": "5f81f128-7fcb-45e3-9051-0a3398251962",
+                                        "id": "a1e42087-fda5-431b-bdfa-30144f3da585",
+                                        "name": "input",
+                                        "label": ""
+                                      }
+                                    ],
+                                    "outPorts": [],
+                                    "x6Node": {
+                                      "x": 530,
+                                      "y": 210,
+                                      "width": 116,
+                                      "height": 32
+                                    },
+                                    "config": {
+                                      "param": {
+                                        "controllerId": "65f7a014-194b-466b-8f4d-e32fd78d946c",
+                                        "prop": "dataSource"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "id": "e56117a4-0084-4955-8e5b-5e903d84402b",
+                                    "label": "列表源",
+                                    "type": "Activity",
+                                    "activityName": "example.MultipleQuery",
+                                    "inPorts": [
+                                      {
+                                        "id": "4070dee0-5d8a-4993-974b-d621bf303465",
                                         "name": "input",
                                         "label": ""
                                       }
                                     ],
                                     "outPorts": [
                                       {
-                                        "id": "98af4c20-386d-4236-b02b-4d6cf3ef6198",
+                                        "id": "796b3d25-44ca-4513-b810-13612373c911",
                                         "name": "dataOut",
                                         "label": "数据输出"
                                       },
                                       {
-                                        "id": "56a23186-10c9-4a38-8bd5-d35cfdd755a4",
+                                        "id": "d7e376be-6dc4-4854-8ee3-01582c2f9304",
                                         "name": "querying",
                                         "label": "查询中"
                                       },
                                       {
-                                        "id": "edf0b5b8-1b2b-4cf1-800c-d84089fae6d8",
+                                        "id": "a6cb6d07-3dc8-4b46-b9cc-5d6f6a4060f1",
                                         "name": "error",
                                         "label": "错误"
                                       }
                                     ],
                                     "x6Node": {
-                                      "x": 350,
-                                      "y": 200,
-                                      "width": 109,
+                                      "x": 280,
+                                      "y": 230,
+                                      "width": 102,
                                       "height": 48
-                                    }
+                                    },
+                                    "rootUrl": "/api/todo-list"
                                   }
                                 ],
-                                "lines": []
+                                "lines": [
+                                  {
+                                    "id": "e0dd7150-29cf-4b7b-9011-cfa5cf425944",
+                                    "source": {
+                                      "nodeId": "d758b04a-4a65-4161-b474-3d56274c88be"
+                                    },
+                                    "target": {
+                                      "nodeId": "e56117a4-0084-4955-8e5b-5e903d84402b",
+                                      "portId": "4070dee0-5d8a-4993-974b-d621bf303465"
+                                    }
+                                  },
+                                  {
+                                    "id": "18705dc7-d0e2-42bf-87c7-2bda819c3957",
+                                    "source": {
+                                      "nodeId": "e56117a4-0084-4955-8e5b-5e903d84402b",
+                                      "portId": "796b3d25-44ca-4513-b810-13612373c911"
+                                    },
+                                    "target": {
+                                      "nodeId": "bf37c5c8-849f-49ca-9d42-408dd0e576cd",
+                                      "portId": "a1e42087-fda5-431b-bdfa-30144f3da585"
+                                    }
+                                  }
+                                ]
                               }
                             ],
                             "name": "列表"

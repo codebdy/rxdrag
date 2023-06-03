@@ -56,6 +56,8 @@ export interface IComponentConfig<ComponentType = unknown> {
   tools?: {
     [name: string]: ComponentType | undefined
   },
+  //可被编排的属性列表，用于逻辑编排属性板下拉提示
+  logicalProps?: string[] | { value: string, label?: string }[]
 }
 
 //可独立注册的行为规则

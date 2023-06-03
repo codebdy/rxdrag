@@ -1,6 +1,6 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
-import { QuerySessionFactory } from "httpquery/lib/classes/factory"
+import { QuerySession } from "httpquery/lib/classes/QuerySession"
 import { IQueryConfig, IQueryParam, IRestfulQuerySession } from "httpquery/lib/interfaces"
 
 @Activity(MultipleQuery.NAME)
@@ -14,7 +14,7 @@ export class MultipleQuery extends AbstractActivity<IQueryConfig> {
   constructor(meta: IActivityDefine<IQueryConfig>) {
     super(meta)
     if (meta.config) {
-      const dataQuery = QuerySessionFactory(meta.config)
+      const dataQuery = new QuerySession(meta.config)
       if (!dataQuery) {
         console.error("Create data source error!")
         this.next(undefined);

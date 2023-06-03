@@ -8,6 +8,7 @@ export const httpQueryMaterialLocales = {
     error: "错误",
     entityName: "实体名",
     dataPath: "数据路径",
+    idName: "ID名"
   },
   'en-US': {
     dataSource: "Data Source",
@@ -18,5 +19,6 @@ export const httpQueryMaterialLocales = {
     error: "Error",
     entityName: "Entity name",
     dataPath: "Data path",
+    idName: "ID Name"
   }
 }

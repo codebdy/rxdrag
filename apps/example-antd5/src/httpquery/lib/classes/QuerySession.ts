@@ -1,21 +1,14 @@
-import { IQueryParam, IReponseHandler, IRestfulQuerySession, Unsubscribe } from "../interfaces";
+import { IQueryConfig, IQueryParam, IReponseHandler, IRestfulQuerySession, Unsubscribe } from "../interfaces";
 import { GlobalQuery } from "./RestfulQuery";
 
-export interface IDataSouce1Config {
-  rootUrl?: string;
-  entityName?: string;
-  requestInit?: RequestInit;
-  dataPath?: string;
-  idColumn?: string;
-}
 
-export class QuerySession1 implements IRestfulQuerySession {
+export class QuerySession implements IRestfulQuerySession {
   // handler要中转，来确保引用对GlobalQuery 不变
   private responseHandler: IReponseHandler;
   //private param?: IQueryParam;
   private responseHandlerFromParam?: IReponseHandler;
   private unsubscribe?: Unsubscribe
-  constructor(private config: IDataSouce1Config) {
+  constructor(private config?: IQueryConfig) {
     this.responseHandler = {
       onError: this.onError,
       onData: this.onData,
@@ -49,6 +42,6 @@ export class QuerySession1 implements IRestfulQuerySession {
   }
 
   mergeParam(param: IQueryParam) {
-    return { ...param, url: (this.config.rootUrl || "") + param.url }
+    return { ...param, url: (this.config?.rootUrl || "") + param.url }
   }
 }

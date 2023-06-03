@@ -12,7 +12,7 @@ export const commmonLocales: ILocales = {
       style: "样式",
       slots: "卡槽",
       field: "字段",
-      logic: "编排",
+      logic: "逻辑",
       save: "保存",
       publish: "发布",
       components: "组件",
