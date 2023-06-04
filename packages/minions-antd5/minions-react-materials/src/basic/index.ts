@@ -6,17 +6,19 @@ import { signalsMaterial } from "./signals";
 import { loopMaterial } from "./loop";
 import { mergeMaterial } from "./merge";
 import { randomMaterial } from "./random";
-import { ReactNode } from "react";
 import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
 import { INodeSchema } from "@rxdrag/schema";
 import { endIcon, startIcon } from "../icons";
+import { splitArrayMaterial } from "./SplitArray";
+import { splitObjectMaterial } from "./SplitObject";
 
 export const startEndSchema: INodeSchema = {
   componentName: "Fragment",
   children: [nameSchema, labelSchema],
 }
 
-export const basicActivities: IActivityMaterial<ReactNode>[] = [
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const basicActivities: IActivityMaterial<any, any, any, any>[] = [
   {
     activityName: "start",
     icon: startIcon,
@@ -38,4 +40,6 @@ export const basicActivities: IActivityMaterial<ReactNode>[] = [
   randomMaterial,
   signalsMaterial,
   constValueMaterial,
+  splitArrayMaterial,
+  splitObjectMaterial
 ]

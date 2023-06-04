@@ -69,6 +69,8 @@ export const activityMaterialLocales = {
     componentControl: "组件控制",
     component: "组件",
     reaction: "交互",
+    splitArray: "拆分数组",
+    splitObject: "拆分对象",
   },
   'en-US': {
     basicReactions: "Basic Reactions",
@@ -140,6 +142,8 @@ export const activityMaterialLocales = {
     field: "Field",
     componentControl: "Component Control",
     component: "Component",
-    reaction: "Reaction"
+    reaction: "Reaction",
+    splitArray: "Split Array",
+    splitObject: "Split Object",
   }
 }
