@@ -8,7 +8,7 @@ import { numbToPx } from "../utils/numbToPx";
 import { getMaxZIndex } from "./getMaxZIndex";
 
 export class SelectedOutlineImpl implements IPlugin {
-  name: string = "default.selected-outline";
+  name = "default.selected-outline";
   resizeObserver: ResizeObserver
   private unsubscribe: Unsubscribe;
   private htmls: {
@@ -37,7 +37,7 @@ export class SelectedOutlineImpl implements IPlugin {
     this.refresh()
   }
 
-  onMutation = (mutations: any) => {
+  onMutation = () => {
     this.refresh()
   }
 
@@ -47,7 +47,6 @@ export class SelectedOutlineImpl implements IPlugin {
       const element = this.engine.getShell().getElement(id)
       const canvas = this.engine.getShell().getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
       const containerRect = canvas?.getContainerRect()
-
       if (element && containerRect) {
         const rect = element.getBoundingClientRect();
         const htmlDiv = document.createElement('div')

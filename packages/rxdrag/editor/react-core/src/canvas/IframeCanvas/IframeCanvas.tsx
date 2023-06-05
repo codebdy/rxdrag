@@ -26,14 +26,17 @@ export const IframeCanvas = memo((
   const engine = useDesignerEngine()
 
   const handleLoaded = useCallback(() => {
-    const shell = engine?.getShell()
     if (ref.current && engine && ref.current.contentWindow) {
       (ref.current.contentWindow as any)["engine"] = engine;
-      (ref.current.contentWindow as any)["doc"] = doc;
       // 需要确认 iframe 加载完毕以后再渲染，实际顺序无法保证，所以通过 postMessage 来通知子窗口
       ref.current.contentWindow.postMessage({ name: EVENT_IFRAME_READY });
+      setLoaded(true)
+    }
+  }, [engine])
 
-      shell?.removeCanvas(doc.id)
+  useEffect(() => {
+    const shell = engine?.getShell()
+    if (loaded && engine && ref.current) {
       const canvasImpl = new IFrameCanvasImpl(
         engine,
         ref.current,
@@ -51,15 +54,13 @@ export const IframeCanvas = memo((
       )
 
       shell?.addCanvas(canvasImpl)
-      setLoaded(true)
-    }
-  }, [doc, engine])
-
-  useEffect(() => {
-    if (loaded) {
       ref.current?.contentWindow?.postMessage({ name: EVENT_DOC_CHANGE, payload: doc.id });
+
+      return () => {
+        shell?.removeCanvas(doc.id)
+      }
     }
-  }, [doc.id, loaded])
+  }, [doc.id, engine, loaded])
 
   const key = useMemo(() => `canvas-${doc.id}`, [doc.id])
 

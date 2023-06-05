@@ -39,6 +39,7 @@ export class IFrameCanvasImpl implements IShellPane {
     const rect = this.getElement(nodeId)?.getBoundingClientRect();
     if (rect) {
       const frameRect = this.iframe.getBoundingClientRect()
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const scale = frameRect.width / (this.iframe as any)['offsetWidth']
       rect.x = rect.x * scale + frameRect.x
       rect.y = rect.y * scale + frameRect.y

@@ -1,5 +1,4 @@
 import { CanvasScrollEvent } from "../../shell/events";
-import { MouseOutEvent } from "../../shell/events/mouse/MouseOutEvent";
 import { IPlugin } from "../../interfaces/plugin";
 import { AUX_BACKGROUND_COLOR } from "../consts";
 import { numbToPx } from "../utils/numbToPx";
@@ -7,7 +6,7 @@ import { getMaxZIndex } from "./getMaxZIndex";
 import { ID, IDesignerEngine, Unsubscribe } from "../../interfaces";
 
 export class ActivedOutlineImpl implements IPlugin {
-  name: string = "default.actived-outline";
+  name = "default.actived-outline";
   resizeObserver: ResizeObserver
   private outline: HTMLElement | null = null;
   private nodeChangeUnsubscribe: Unsubscribe;
@@ -47,7 +46,7 @@ export class ActivedOutlineImpl implements IPlugin {
     this.renderLine(this.currentId)
   }
 
-  handleOutNode = (e: MouseOutEvent): void => {
+  handleOutNode = (): void => {
     this.clearLine()
     this.currentId = null
   }

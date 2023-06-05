@@ -20,13 +20,12 @@ export const IframePreview = memo((
     if (ref.current && engine && ref.current?.contentWindow) {
       if (ref.current.contentWindow) {
         (ref.current.contentWindow as any)["engine"] = engine;
-        (ref.current.contentWindow as any)["doc"] = doc;
         // 需要确认 iframe 加载完毕以后再渲染，实际顺序无法保证，所以通过 postMessage 来通知子窗口
         ref.current.contentWindow.postMessage({ name: EVENT_IFRAME_READY });
         setLoaded(true);
       }
     }
-  }, [doc, engine])
+  }, [engine])
 
   const key = useMemo(() => `preview-${doc.id}`, [doc.id])
 

@@ -4,7 +4,7 @@ import { EventEngine } from '../interfaces/event'
 
 
 export class DesignerShell extends EventEngine implements IDesignerShell {
-	dragging: boolean = false
+	dragging = false
 	private container?: IShellPane
 	private canvases: Canvases = {}
 

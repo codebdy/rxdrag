@@ -6,7 +6,7 @@ import { CanvasResizeEvent } from "../events"
 export class CanvasResizeDriverImpl implements IDriver {
   resizeObserver: ResizeObserver
 
-  constructor(private dispatcher: IDispatchable<ICustomEvent<any>>, private element: Element | Node | HTMLElement) {
+  constructor(private dispatcher: IDispatchable<ICustomEvent<unknown>>, private element: Element | Node | HTMLElement) {
     this.resizeObserver = new ResizeObserver(this.onResize)
     this.attach()
   }
@@ -25,20 +25,20 @@ export class CanvasResizeDriverImpl implements IDriver {
   }
 
   teardown(): void {
-    if (isHTMLElement(this.element)) {
+    if (isHTMLElement(this.element) && this.element.tagName) {
       this.resizeObserver.unobserve(this.element as Element)
     }
     this.resizeObserver.disconnect()
     this.win().removeEventListener('resize', this.onResize)
   }
 
-  private win(){
+  private win() {
     return (this.element as Document)?.defaultView || this.element?.ownerDocument?.defaultView || window
   }
 }
 
 export const CanvasResizeDriver: IDriverFactory = (
-  dispatcher: IDispatchable<ICustomEvent<any>>,
+  dispatcher: IDispatchable<ICustomEvent<unknown>>,
   element: Element | Node | HTMLElement,
 ) => {
   return new CanvasResizeDriverImpl(

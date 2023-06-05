@@ -22,7 +22,7 @@ export type Canvases = {
 
 
 //处理鼠标键盘事件，将其转换为 Engine 事件。
-export interface IDesignerShell extends ISubscribable, IDispatchable<ICustomEvent<any>> {
+export interface IDesignerShell extends ISubscribable, IDispatchable<ICustomEvent<unknown>> {
 	//状态
 	dragging: boolean
 

@@ -9,7 +9,7 @@ import { AUX_BACKGROUND_COLOR } from "../consts";
 
 //这个不好用，有的地方会显示不全，废弃
 export class SelectedClassStyleOutlineImpl implements IPlugin {
-  name: string = "default.selected-outline";
+  name = "default.selected-outline";
   htmlStyle: HTMLElement;
   private unsubscribe: Unsubscribe;
   private nodeChangeUnsubscribe: Unsubscribe;
