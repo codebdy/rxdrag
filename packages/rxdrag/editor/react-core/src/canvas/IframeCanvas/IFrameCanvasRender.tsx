@@ -5,6 +5,7 @@ import { memo } from "react"
 import { CanvasRender } from "../CanvasRender"
 import { EVENT_DOC_CHANGE, EVENT_IFRAME_READY } from "./consts";
 import { ID } from "@rxdrag/shared";
+import { useDocumentViewTypeState } from "../../hooks";
 
 declare const window: Window & { engine?: IDesignerEngine, doc?: IDocument };
 
@@ -20,7 +21,7 @@ export const IFrameCanvasRender = memo((props: {
   const [doc, setDoc] = useState<IDocument | null>();
   const [ready, setReady] = useState(false);
   const engine = window.engine
-  //const doc = window.doc
+  const [viewType] = useDocumentViewTypeState(doc?.id)
 
   const receiveMessageFromParent = useCallback((event: MessageEvent<IFrameCanvasEvent>) => {
     // 监听父窗口 ready 事件
@@ -39,7 +40,7 @@ export const IFrameCanvasRender = memo((props: {
 
 
   return (
-    doc && engine && !!ready ?
+    doc && engine && !!ready && viewType === "design" ? 
       <CanvasRender key={doc.id} engine={engine} doc={doc} components={designers} />
       : null
   )

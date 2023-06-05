@@ -3,11 +3,13 @@ import { IComponentRenderSchema } from "./ComponentView";
 import { IComponentsParams } from "./interfaces";
 import { IComponents } from "@rxdrag/react-shared";
 import { Controllers } from "@rxdrag/minions-runtime-react";
+import { RuntimeEngine } from "./RuntimeRoot/RuntimeEngine";
 
 export const EmpertyControllers: Controllers = {}
 
 export const ComponentSchemaContext = createContext<IComponentRenderSchema | undefined>(undefined)
 export const ControllersContext = createContext<Controllers>(EmpertyControllers)
+export const RuntimeEngineContext = createContext<RuntimeEngine | undefined>(undefined)
 
 export const initialParams: IComponentsParams = {
   components: {},

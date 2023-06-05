@@ -1,27 +1,29 @@
 import { IComponents } from "@rxdrag/react-shared"
-import React from "react"
+import React, { useEffect } from "react"
 import { useCallback, useMemo, useState } from "react"
-import { ControllersContext, PreviewComponentsContext } from "../contexts"
+import { ControllersContext, PreviewComponentsContext, RuntimeEngineContext } from "../contexts"
 import { IComponentsParams } from "../interfaces"
 import { ILocalesManager } from "@rxdrag/locales"
-import { IControllerMeta } from "@rxdrag/minions-runtime-react"
-import { INodeSchema } from "@rxdrag/schema"
-import { IFieldSchema } from "@rxdrag/fieldy"
-import { useCreateGlobalControllers } from "../hooks/useCreateGlobalControllers"
+import { ControllerFactories, RuntimeEngine } from "./RuntimeEngine"
+import { useLogicFlowContext } from "../hooks/useLogicFlowContext"
+import { IComponentRenderSchema } from "../ComponentView"
+import { LOGICFLOW_FACTORY_NAME, LogicFlowControllerFactory, SCRIPT_FACTORY_NAME, ScriptControllerFactory } from "@rxdrag/minions-runtime-react"
 
 export const RuntimeRoot = (props: {
   components?: IComponents,
   children: React.ReactNode,
-  schema?: INodeSchema<IFieldSchema, IControllerMeta>,
+  schema?: IComponentRenderSchema,
   localesManager?: ILocalesManager,
+  controllerFactories?: ControllerFactories,
 }) => {
-  const { components: initalComponents, children, schema, localesManager } = props
+  const { components: initalComponents, children, schema, controllerFactories } = props
+  const [runtimeEngine, setRuntimeEngine] = useState<RuntimeEngine>()
   const [components, setComponents] = useState<IComponents>({})
+  const logicFlowContext = useLogicFlowContext();
   const handleRegister = useCallback((...components: IComponents[]) => {
     for (const com of components) {
       setComponents(coms => ({ ...coms, ...com }))
     }
-
   }, [])
   const params: IComponentsParams = useMemo(() => {
     return {
@@ -30,15 +32,23 @@ export const RuntimeRoot = (props: {
     }
   }, [components, handleRegister, initalComponents])
 
-  //构建全局Controller+这些Controller的祖辈们
-  const globalControllers = useCreateGlobalControllers(schema)
+  useEffect(() => {
+    const defaultFactories = {
+      [LOGICFLOW_FACTORY_NAME]: LogicFlowControllerFactory,
+      [SCRIPT_FACTORY_NAME]: ScriptControllerFactory
+    }
+    controllerFactories && setRuntimeEngine(new RuntimeEngine(schema, { ...defaultFactories, ...controllerFactories }, logicFlowContext))
+  }, [controllerFactories, logicFlowContext, schema])
+
   return (
-    <ControllersContext.Provider value={globalControllers}>
-      <PreviewComponentsContext.Provider value={params}>
-        {
-          children
-        }
-      </PreviewComponentsContext.Provider>
-    </ControllersContext.Provider>
+    <RuntimeEngineContext.Provider value={runtimeEngine}>
+      <ControllersContext.Provider value={runtimeEngine?.globalControllers || {}}>
+        <PreviewComponentsContext.Provider value={params}>
+          {
+            children
+          }
+        </PreviewComponentsContext.Provider>
+      </ControllersContext.Provider>
+    </RuntimeEngineContext.Provider>
   )
 }

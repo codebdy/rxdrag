@@ -1,4 +1,4 @@
-import { IControllerMeta } from "./meta"
+import { IControllerMeta, ILogicFlowControllerMeta } from "./meta"
 
 export type Unsubscribe = () => void
 
@@ -28,7 +28,7 @@ export interface IPropController {
 export interface IController extends IVariableController, IPropController {
   id: string,
   name?: string,
-  meta: IControllerMeta,
+  meta: ILogicFlowControllerMeta,
   init: (controllers: Controllers) => void,
 
   events: EventFuncs,
@@ -40,5 +40,7 @@ export interface IController extends IVariableController, IPropController {
 }
 
 export type Controllers = {
-  [id: string]: IController | undefined
+  [controllerId: string]: IController | undefined
 }
+
+export type ControllerFactory = (meta: IControllerMeta, controllerContext: unknown) => IController

@@ -2,7 +2,7 @@ import { IBindParams } from "@rxdrag/react-runner"
 import { INodeSchema} from "@rxdrag/schema"
 import { attachFormItem } from "./attachFormItem"
 import { IFieldMeta } from "@rxdrag/fieldy-schema"
-import { IControllerMeta } from "@rxdrag/minions-runtime-react"
+import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
 
 export type FieldOptions = {
   canBindField?: boolean,
@@ -11,7 +11,7 @@ export type FieldOptions = {
 export interface IExpressionField {
   label: string,
   name: string,
-  valueInputSchema: INodeSchema<IFieldMeta<IBindParams>, IControllerMeta>,
+  valueInputSchema: INodeSchema<IFieldMeta<IBindParams>, ILogicFlowControllerMeta>,
 }
 
 export function transformExpresionField(expFields: IExpressionField[]) {

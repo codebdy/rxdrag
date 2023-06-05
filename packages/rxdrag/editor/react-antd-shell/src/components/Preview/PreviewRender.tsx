@@ -1,6 +1,6 @@
 import { IDocument } from "@rxdrag/core"
 import { IFieldSchema } from "@rxdrag/fieldy"
-import { IControllerMeta } from "@rxdrag/minions-runtime-react"
+import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
 import { useDocumentViewTypeState } from "@rxdrag/react-core"
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy"
 import { ComponentRender, RuntimeRoot } from "@rxdrag/react-runner"
@@ -31,14 +31,14 @@ export const PreviewRender = memo((
       setTree(doc?.getSchemaTree() || undefined)
     }
   }, [doc, viewType])
-  console.log("开始预览文档", doc?.id)
+
   return (
     <ThemeProvider theme={theme}>
       {
-        tree &&
+        tree && viewType === "preview" &&
         <RuntimeRoot
           components={components}
-          schema={tree as INodeSchema<IFieldSchema, IControllerMeta>}
+          schema={doc?.getSchemaTree() as INodeSchema<IFieldSchema, ILogicFlowControllerMeta>}
         >
           <Fieldy>
             <VirtualForm>

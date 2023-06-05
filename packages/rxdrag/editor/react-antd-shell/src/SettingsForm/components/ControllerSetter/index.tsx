@@ -1,11 +1,11 @@
 import React, { useMemo } from "react"
-import { Button, Form, Input, Modal, Switch } from "antd"
+import { Button, Form, Input, Modal, Radio, Switch } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
 import { useParentControllerMetas } from "./hooks/useParentControllerMetas"
 import { ITreeNode } from "@rxdrag/core"
-import { IControllerMeta } from "@rxdrag/minions-runtime-react"
+import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
 import { ControllerMetaEditorAntd5 } from "@rxdrag/controller-editor-antd5"
 import { IEventMeta } from "@rxdrag/minions-controller-editor"
 import { useGlobalControllerMetas } from "./hooks/useGlobalControllerMetas"
@@ -18,14 +18,14 @@ import { useMinionOptions } from "../../../hooks/useMinionOptions"
 export const ControllerSetter = memo((props: {
   events?: IEventMeta[]
   title: string,
-  value: IControllerMeta,
-  onChange?: (value?: IControllerMeta) => void,
+  value: ILogicFlowControllerMeta,
+  onChange?: (value?: ILogicFlowControllerMeta) => void,
 }) => {
   const { events, title, value, onChange, ...other } = props;
-  const [inputValue, setInputValue] = useState<IControllerMeta>(value)
+  const [inputValue, setInputValue] = useState<ILogicFlowControllerMeta>(value)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const t = useToolsTranslate()
-  const node = useCurrentNode() as ITreeNode<INodeSchema, IControllerMeta> | undefined
+  const node = useCurrentNode() as ITreeNode<INodeSchema, ILogicFlowControllerMeta> | undefined
   const parentControllers = useParentControllerMetas()
   const globalControllers = useGlobalControllerMetas();
   const fillProps = useFillControllerProps();
@@ -79,7 +79,7 @@ export const ControllerSetter = memo((props: {
     }
   }, [onChange, value]);
 
-  const handleChange = useCallback((meta?: IControllerMeta) => {
+  const handleChange = useCallback((meta?: ILogicFlowControllerMeta) => {
     if (value) {
       setInputValue({ ...meta, id: value.id, name: value?.name || node?.title })
     }
@@ -92,6 +92,15 @@ export const ControllerSetter = memo((props: {
 
   return (
     <div>
+      <Form.Item
+        label={title}
+      >
+        <Radio.Group>
+          <Radio.Button value="a" onClick={e => console.log(e)}>快捷</Radio.Button>
+          <Radio.Button value="b">编排</Radio.Button>
+          <Radio.Button value="c">脚本</Radio.Button>
+        </Radio.Group>
+      </Form.Item>
       <Form.Item
         label={title}
       >

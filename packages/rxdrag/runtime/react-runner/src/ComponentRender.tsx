@@ -10,7 +10,6 @@ export const ComponentRender = memo((props: {
 }) => {
   const { root } = props
   const [node, setNode] = useState<IComponentRenderSchema>()
-
   useEffect(() => {
     if (root) {
       setNode(transToRenderSchema(root as INodeSchema<IFieldMeta<IBindParams> | undefined>))

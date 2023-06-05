@@ -1,6 +1,6 @@
 import { ITreeNode } from "@rxdrag/core";
 import { IFieldMeta } from "@rxdrag/fieldy-schema";
-import { IControllerMeta } from "@rxdrag/minions-runtime-react";
+import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
 import { INodeSchema } from "@rxdrag/schema";
 import { useCallback } from "react";
 
@@ -48,7 +48,7 @@ export function useFillControllerProps() {
       }
     }
   }, [])
-  const fill = useCallback((controllerMeta: IControllerMeta, node?: ITreeNode<INodeSchema, IControllerMeta>) => {
+  const fill = useCallback((controllerMeta: ILogicFlowControllerMeta, node?: ITreeNode<INodeSchema, ILogicFlowControllerMeta>) => {
     const props: string[] = []
     getSchemaFields(getPropsField(node?.propsSchema as INodeSchema<IFieldMeta>) as INodeSchema<IFieldMeta>, props)
     return { ...controllerMeta, props }

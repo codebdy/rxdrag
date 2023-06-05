@@ -1,7 +1,7 @@
 import { memo, ReactNode, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components";
 import { ControllerEditorContext, IControllerEditorContextParam, IEventMeta } from "@rxdrag/minions-controller-editor";
-import { IControllerMeta } from "@rxdrag/minions-runtime-react";
+import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
 import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
 import { Members } from "./Members";
 import { LogicFlowEditorAntd5 } from "@rxdrag/logicflow-editor-antd5";
@@ -38,9 +38,9 @@ export type ControllerMetaEditorAntd5Props = {
   lang?: string,
   locales?: ILocales,
   setters?: IComponents,
-  value: IControllerMeta,
-  onChange?: (value?: IControllerMeta) => void,
-  controllerMetas: IControllerMeta[],
+  value: ILogicFlowControllerMeta,
+  onChange?: (value?: ILogicFlowControllerMeta) => void,
+  controllerMetas: ILogicFlowControllerMeta[],
   materialCategories: ActivityMaterialCategory<ReactNode>[],
   eventMetas?: IEventMeta[],
   height?: number | string,
@@ -61,7 +61,7 @@ export const ControllerMetaEditorAntd5 = memo((
     setLocalsRegisterFlag(flag => flag + 1)
   }, [localesManger])
 
-  const handleMemberChange = useCallback((meta?: IControllerMeta) => {
+  const handleMemberChange = useCallback((meta?: ILogicFlowControllerMeta) => {
     onChange?.(meta)
     onChange?.(meta)
   }, [onChange])

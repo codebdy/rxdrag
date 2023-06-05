@@ -8,7 +8,7 @@ import { NameDialog } from "./NameDialog";
 import { VariableDialog } from "./VariableDialog";
 import { createUuid } from "@rxdrag/shared"
 import { useTranslate } from "@rxdrag/react-locales"
-import { IControllerMeta, IVariableDefineMeta, Reaction, ReadVariable } from "@rxdrag/minions-runtime-react";
+import { ILogicFlowControllerMeta, IVariableDefineMeta, Reaction, ReadVariable } from "@rxdrag/minions-runtime-react";
 import { ActivityMaterialCategory, IActivityMaterial, ILogicFlowDefinition } from "@rxdrag/minions-schema";
 import { IEventMeta } from "@rxdrag/minions-controller-editor";
 import { ListItemEvent } from "./ListItemEvent";
@@ -39,10 +39,10 @@ const ListItem = styled((props: any) => <Button type="text" {...props} />)`
 
 export const Members = memo((
   props: {
-    value: IControllerMeta,
+    value: ILogicFlowControllerMeta,
     selected?: string,
     onSelect?: (id: string) => void,
-    onChange?: (value?: IControllerMeta) => void,
+    onChange?: (value?: ILogicFlowControllerMeta) => void,
     eventMetas?: IEventMeta[],
     materialCategories: ActivityMaterialCategory<ReactNode>[],
   }

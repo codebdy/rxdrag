@@ -4,10 +4,10 @@ import { ReactComponent } from "@rxdrag/react-shared"
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { ControllersContext } from "../contexts"
 import { useControllers } from "../hooks/useControllers"
-import { Controllers, DefaultController, IController, IControllerMeta } from "@rxdrag/minions-runtime-react"
+import { Controllers, LogicFlowController, IController, ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
 import { LogicFlowContext, useLogicFlowContext } from "../hooks/useLogicFlowContext"
 
-export function withController(WrappedComponent: ReactComponent, meta?: IControllerMeta): ReactComponent {
+export function withController(WrappedComponent: ReactComponent, meta?: ILogicFlowControllerMeta): ReactComponent {
 
   if (!meta?.id) {
     return WrappedComponent
@@ -30,7 +30,7 @@ export function withController(WrappedComponent: ReactComponent, meta?: IControl
         let ctrl = controllers[meta.id]
         //如果controller没有被提前创建
         if (!ctrl) {
-          ctrl = new DefaultController<LogicFlowContext>(meta, logicFlowContext)
+          ctrl = new LogicFlowController<LogicFlowContext>(meta, logicFlowContext)
         }
 
         ctrl.init(controllers || {});

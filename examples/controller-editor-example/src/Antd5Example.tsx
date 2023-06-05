@@ -1,14 +1,14 @@
 import { ShellContainer } from "components/ShellContainer"
 import { memo, useCallback, useState } from "react"
 import { ControllerMetaEditorAntd5 } from "@rxdrag/controller-editor-antd5"
-import { IControllerMeta } from "@rxdrag/minions-runtime-react"
+import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
 import { activityMaterialLocales } from "@rxdrag/minions-react-materials"
 import { Fieldy } from "@rxdrag/react-fieldy"
 import { Form } from "antd"
 import { activityMaterialCategories } from "materials"
 
 export const Antd5Example = memo(() => {
-  const [inputValue, setInputValue] = useState<IControllerMeta>({
+  const [inputValue, setInputValue] = useState<ILogicFlowControllerMeta>({
     id: "test",
     enable: true,
     name: "测试",
@@ -17,7 +17,7 @@ export const Antd5Example = memo(() => {
     variables: [],
   })
 
-  const handleChange = useCallback((meta?: IControllerMeta) => {
+  const handleChange = useCallback((meta?: ILogicFlowControllerMeta) => {
     setInputValue(meta || inputValue)
   }, [inputValue]);
 
