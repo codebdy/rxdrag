@@ -1,7 +1,7 @@
 import React, { useMemo } from "react"
 import { Button, Form, Input, Modal, Radio, Switch } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
-import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core"
+import { useCurrentNode, useDesignerEngine, useToolsTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
 import { useParentControllerMetas } from "./hooks/useParentControllerMetas"
 import { ITreeNode } from "@rxdrag/core"
@@ -30,6 +30,13 @@ export const ControllerSetter = memo((props: {
   const globalControllers = useGlobalControllerMetas();
   const fillProps = useFillControllerProps();
   const minionOptions = useMinionOptions();
+  const eng = useDesignerEngine();
+  useEffect(() => {
+    const langMgr = eng?.getLoacalesManager()
+    for (const ctrlDef of minionOptions?.controllers || []) {
+      ctrlDef.locales && langMgr?.registerToolsLocales(ctrlDef.locales)
+    }
+  }, [eng, minionOptions?.controllers])
 
   const mergedControllers = useMemo(() => [
     fillProps(inputValue, node),
@@ -50,16 +57,6 @@ export const ControllerSetter = memo((props: {
     setIsModalOpen(false);
   }, []);
 
-  const handleEnableChange = useCallback((checked: boolean) => {
-    if (checked) {
-      const id = value?.id || createUuid()
-      onChange?.({ ...value, id: id, enable: true })
-    } else {
-      if (value) {
-        onChange?.({ ...value, enable: false })
-      }
-    }
-  }, [onChange, value]);
 
   const handleGlobalChange = useCallback((checked: boolean) => {
     if (checked) {
@@ -90,21 +87,43 @@ export const ControllerSetter = memo((props: {
     setIsModalOpen(false);
   }, [inputValue, onChange])
 
+  const trimLabel = useCallback((label?: string) => {
+    if (label?.startsWith("$")) {
+      return label.substring(1)
+    }
+    return label;
+  }, [])
+
+  const handleControllerTypeChange = useCallback((type: string) => {
+    if (value?.controllerType === type) {
+      onChange?.({ id: value?.id, enable: false, })
+    } else {
+      onChange?.({ id: value?.id || createUuid(), enable: true, controllerType: type })
+    }
+  }, [onChange, value?.controllerType, value?.id])
+
   return (
     <div>
       <Form.Item
         label={title}
       >
-        <Radio.Group>
-          <Radio.Button value="a" onClick={e => console.log(e)}>快捷</Radio.Button>
-          <Radio.Button value="b">编排</Radio.Button>
-          <Radio.Button value="c">脚本</Radio.Button>
+        <Radio.Group
+          value={value?.controllerType}
+        >
+          {
+            minionOptions?.controllers?.map(ctrlDef => {
+              return (
+                <Radio.Button
+                  key={ctrlDef.name}
+                  value={ctrlDef.name}
+                  onClick={() => handleControllerTypeChange(ctrlDef.name)}
+                >
+                  {t(trimLabel(ctrlDef.label) || "") || ctrlDef.name}
+                </Radio.Button>
+              )
+            })
+          }
         </Radio.Group>
-      </Form.Item>
-      <Form.Item
-        label={title}
-      >
-        <Switch checked={value?.enable} onChange={handleEnableChange} />
       </Form.Item>
       {
         value?.id && value?.enable &&

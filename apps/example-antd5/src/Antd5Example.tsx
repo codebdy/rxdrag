@@ -18,8 +18,9 @@ import { ResourceWidget } from "./ResourceWidget"
 import { SaveButton } from "./widgets/SaveButton"
 import { PagesWidget } from "./PagesWidget"
 import { pages } from "./data"
-import { minionsLocales } from "minions/locales"
-import { minionsMaterialCategories } from "minions/materials"
+import { minionsLocales } from "controller/locales"
+import { minionsMaterialCategories } from "controller/materials"
+import { controllerDefines } from "controller/defines"
 
 export enum LeftNavType {
   pages = "pages",
@@ -53,6 +54,7 @@ export const Antd5Example = memo(() => {
       minionOptions={{
         materials: minionsMaterialCategories,
         locales: minionsLocales,
+        controllers: controllerDefines,
       }}
       navPanel={
         <>
