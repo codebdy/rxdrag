@@ -514,7 +514,8 @@
                           },
                           {
                             "name": "每页条数",
-                            "id": "b07ca353-19ae-48de-9d2a-2c5fdedac10e"
+                            "id": "b07ca353-19ae-48de-9d2a-2c5fdedac10e",
+                            "defaultValue": "10"
                           }
                         ],
                         "reactions": [
@@ -758,6 +759,29 @@
                                   "width": 123,
                                   "height": 32
                                 }
+                              },
+                              {
+                                "id": "269f2b26-f2fa-47e0-860e-d5f7efb3c437",
+                                "label": "调试",
+                                "type": "Activity",
+                                "activityName": "system.debug",
+                                "inPorts": [
+                                  {
+                                    "id": "e7b0b8a2-6b49-4726-8de7-54a24cfd3afc",
+                                    "name": "input",
+                                    "label": ""
+                                  }
+                                ],
+                                "outPorts": [],
+                                "x6Node": {
+                                  "x": 680,
+                                  "y": 370,
+                                  "width": 88,
+                                  "height": 32
+                                },
+                                "config": {
+                                  "tip": "每页条数"
+                                }
                               }
                             ],
                             "lines": [
@@ -856,17 +880,50 @@
                                   "nodeId": "99f982fb-d0f7-4cef-9b6f-30cff017b58d",
                                   "portId": "c853e09f-7ef1-4f83-93b8-2b97df7fa295"
                                 }
+                              },
+                              {
+                                "id": "1d8788f7-4cf5-4b24-aad2-7fbf29da2091",
+                                "source": {
+                                  "nodeId": "2018c65b-f3ce-405c-9ef9-5e435ac091f8",
+                                  "portId": "a7fbad88-18ae-451c-8c36-e6500f9857cf"
+                                },
+                                "target": {
+                                  "nodeId": "269f2b26-f2fa-47e0-860e-d5f7efb3c437",
+                                  "portId": "e7b0b8a2-6b49-4726-8de7-54a24cfd3afc"
+                                }
                               }
                             ]
                           }
                         ]
+                      },
+                      "x-field": {
+                        "reactionMeta": {
+                          "display": {},
+                          "pattern": {},
+                          "hidden": {},
+                          "disabled": {},
+                          "readonly": {}
+                        }
                       },
                       "slots": {},
                       "children": [
                         {
                           "componentName": "TableColumn",
                           "props": {
-                            "title": "Column1"
+                            "title": "名称"
+                          },
+                          "x-field": {
+                            "name": "name",
+                            "params": {
+                              "withBind": true
+                            },
+                            "reactionMeta": {
+                              "display": {},
+                              "pattern": {},
+                              "hidden": {},
+                              "disabled": {},
+                              "readonly": {}
+                            }
                           },
                           "slots": {},
                           "children": []
@@ -874,7 +931,20 @@
                         {
                           "componentName": "TableColumn",
                           "props": {
-                            "title": "Column2"
+                            "title": "登录名称"
+                          },
+                          "x-field": {
+                            "name": "login_name",
+                            "params": {
+                              "withBind": true
+                            },
+                            "reactionMeta": {
+                              "display": {},
+                              "pattern": {},
+                              "hidden": {},
+                              "disabled": {},
+                              "readonly": {}
+                            }
                           },
                           "slots": {},
                           "children": []

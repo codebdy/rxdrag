@@ -1,14 +1,13 @@
 
 import { createUuid } from "@rxdrag/shared";
 import { debugSchema } from "./schema";
-import { ReactNode } from "react";
-import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
-import { INodeSchema } from "@rxdrag/schema";
-import { Debug } from "@rxdrag/minions-activities"
+import { ActivityType } from "@rxdrag/minions-schema";
+import { Debug, IDebugConfig } from "@rxdrag/minions-activities"
 import { debugIcon } from "../../icons";
 import { DEFAULT_INPUT_NAME } from "@rxdrag/minions-runtime";
+import { IRxDragActivityMaterial } from "../../interfaces";
 
-export const debugMaterial: IActivityMaterial<ReactNode, INodeSchema> = {
+export const debugMaterial: IRxDragActivityMaterial<IDebugConfig> = {
   activityName: Debug.NAME,
   icon: debugIcon,
   label: "$debug",
@@ -22,6 +21,9 @@ export const debugMaterial: IActivityMaterial<ReactNode, INodeSchema> = {
         label: "",
       },
     ],
+  },
+  subTitle: (config?: IDebugConfig) => {
+    return config?.tip
   },
   schema: debugSchema,
 }

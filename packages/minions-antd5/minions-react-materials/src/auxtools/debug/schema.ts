@@ -8,6 +8,23 @@ export const debugSchema: INodeSchema = {
     {
       componentName: "FormItem",
       props: {
+        label: "$tip",
+      },
+      children: [
+        {
+          componentName: "Input",
+          "x-field": {
+            name: "config.tip",
+            params: {
+              withBind: true,
+            }
+          },
+        }
+      ]
+    },    
+    {
+      componentName: "FormItem",
+      props: {
         label: "$close",
       },
       children: [
