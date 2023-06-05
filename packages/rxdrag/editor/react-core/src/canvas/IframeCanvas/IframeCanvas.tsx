@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useMemo, useRef } from "react"
 import { memo, useCallback } from "react"
 import { useDesignerEngine } from "../../hooks";
@@ -8,7 +8,7 @@ import { CanvasResizeDriver, CanvasScrollDriver, DragDropDriver, MouseClickDrive
 import { MouseOverOutDriver, DragOverDriver, MouseUpDriver } from "@rxdrag/core";
 import { useDocumentViewTypeState } from "../../hooks/useDocumentViewTypeState";
 import { CanvasShell } from "../CanvasShell";
-import { EVENT_IFRAME_READY } from "./consts";
+import { EVENT_DOC_CHANGE, EVENT_IFRAME_READY } from "./consts";
 
 export const IframeCanvas = memo((
   props: {
@@ -19,6 +19,7 @@ export const IframeCanvas = memo((
   const { doc, renderUrl } = props;
   const ref = useRef<HTMLIFrameElement>(null)
   const [viewType] = useDocumentViewTypeState(doc?.id)
+  const [loaded, setLoaded] = useState(false);
 
   console.log("IframeCanvas 刷新", doc.id)
 
@@ -30,7 +31,7 @@ export const IframeCanvas = memo((
       (ref.current.contentWindow as any)["engine"] = engine;
       (ref.current.contentWindow as any)["doc"] = doc;
       // 需要确认 iframe 加载完毕以后再渲染，实际顺序无法保证，所以通过 postMessage 来通知子窗口
-      ref.current.contentWindow.postMessage(EVENT_IFRAME_READY);
+      ref.current.contentWindow.postMessage({ name: EVENT_IFRAME_READY });
 
       shell?.removeCanvas(doc.id)
       const canvasImpl = new IFrameCanvasImpl(
@@ -50,15 +51,22 @@ export const IframeCanvas = memo((
       )
 
       shell?.addCanvas(canvasImpl)
+      setLoaded(true)
     }
   }, [doc, engine])
+
+  useEffect(() => {
+    if (loaded) {
+      ref.current?.contentWindow?.postMessage({ name: EVENT_DOC_CHANGE, payload: doc.id });
+    }
+  }, [doc.id, loaded])
 
   const key = useMemo(() => `canvas-${doc.id}`, [doc.id])
 
   return (
     <CanvasShell display={viewType === "design"} >
       <iframe
-        key={key}
+        // key={key}
         ref={ref}
         title={key}
         style={{ border: "0", width: "100%", height: "100%" }}

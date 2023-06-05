@@ -1,6 +1,6 @@
 import React from "react"
 import { IDesignerEngine, IDocument } from "@rxdrag/core"
-import { memo, useMemo } from "react"
+import { memo } from "react"
 import { DesignerEngineContext } from "../../contexts";
 import { ComponentTreeWidget } from "../../ComponentTreeWidget/ComponentTreeWidget";
 import { DesignRoot } from "../../DesignRoot";

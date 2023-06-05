@@ -31,7 +31,7 @@ export const PreviewRender = memo((
       setTree(doc?.getSchemaTree() || undefined)
     }
   }, [doc, viewType])
-
+  console.log("开始预览文档", doc?.id)
   return (
     <ThemeProvider theme={theme}>
       {
