@@ -32,6 +32,7 @@ export const RuntimeRoot = (props: {
     }
   }, [components, handleRegister, initalComponents])
 
+
   useEffect(() => {
     const defaultFactories = {
       [LOGICFLOW_TYPE_NAME]: LogicFlowControllerFactory,

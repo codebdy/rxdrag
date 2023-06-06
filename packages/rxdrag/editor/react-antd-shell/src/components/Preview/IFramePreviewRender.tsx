@@ -5,13 +5,15 @@ import { memo, useCallback, useEffect } from "react"
 import { PreviewRender } from "./PreviewRender";
 import { EVENT_IFRAME_READY, EVENT_DOC_CHANGE } from "@rxdrag/react-core/src/canvas/IframeCanvas/consts";
 import { useState } from "react";
+import { ControllerFactories } from "@rxdrag/react-runner/src/RuntimeRoot/RuntimeEngine";
 
 declare const window: Window & { engine?: IDesignerEngine, doc?: IDocument };
 
 export const IFramePreviewRender = memo((props: {
   components: IComponents,
+  controllerFactories?: ControllerFactories,
 }) => {
-  const { components } = props
+  const { components, controllerFactories } = props
   const [doc, setDoc] = useState<IDocument | null>();
   const [ready, setReady] = useState(false);
   const engine = window.engine
@@ -36,7 +38,7 @@ export const IFramePreviewRender = memo((props: {
       <DesignerEngineContext.Provider value={engine}>
         {
           doc ?
-            <PreviewRender key={doc.id} doc={doc} components={components} />
+            <PreviewRender key={doc.id} doc={doc} components={components} controllerFactories={controllerFactories} />
             : null
         }
       </DesignerEngineContext.Provider>

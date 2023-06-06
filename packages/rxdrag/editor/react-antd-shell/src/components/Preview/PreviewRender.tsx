@@ -1,9 +1,8 @@
 import { IDocument } from "@rxdrag/core"
-import { IFieldSchema } from "@rxdrag/fieldy"
-import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
 import { useDocumentViewTypeState } from "@rxdrag/react-core"
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy"
-import { ComponentRender, RuntimeRoot } from "@rxdrag/react-runner"
+import { ComponentRender, IComponentRenderSchema, RuntimeRoot } from "@rxdrag/react-runner"
+import { ControllerFactories } from "@rxdrag/react-runner/src/RuntimeRoot/RuntimeEngine"
 import { IComponents } from "@rxdrag/react-shared"
 import { INodeSchema } from "@rxdrag/schema"
 import { useToken } from "antd/es/theme/internal"
@@ -14,9 +13,10 @@ export const PreviewRender = memo((
   props: {
     components?: IComponents
     doc?: IDocument,
+    controllerFactories?: ControllerFactories,
   }
 ) => {
-  const { components, doc } = props
+  const { components, doc, controllerFactories } = props
   const [tree, setTree] = useState<INodeSchema>()
   const [viewType] = useDocumentViewTypeState(doc?.id)
   const [, token] = useToken()
@@ -38,7 +38,8 @@ export const PreviewRender = memo((
         tree && viewType === "preview" &&
         <RuntimeRoot
           components={components}
-          schema={doc?.getSchemaTree() as INodeSchema<IFieldSchema, ILogicFlowControllerMeta>}
+          schema={doc?.getSchemaTree() as IComponentRenderSchema}
+          controllerFactories = {controllerFactories}
         >
           <Fieldy>
             <VirtualForm>

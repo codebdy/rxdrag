@@ -59,7 +59,7 @@ export function withController(WrappedComponent: ReactComponent, meta: ILogicFlo
         ? <ControllersContext.Provider value={newControllers}>
           <WrappedComponent {...newProps} />
         </ControllersContext.Provider>
-        : <></>
+        : <WrappedComponent {...props} />
     )
   })
 }
