@@ -27,6 +27,7 @@
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
+    "@rxdrag/controller-editor-antd5": "workspace:*",
     "antd": "^5.1.2",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",

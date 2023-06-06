@@ -48,7 +48,7 @@ export function useFillControllerProps() {
       }
     }
   }, [])
-  const fill = useCallback((controllerMeta: ILogicFlowControllerMeta, node?: ITreeNode<INodeSchema, ILogicFlowControllerMeta>) => {
+  const fill = useCallback((controllerMeta: ILogicFlowControllerMeta | undefined, node?: ITreeNode<INodeSchema, ILogicFlowControllerMeta>) => {
     const props: string[] = []
     getSchemaFields(getPropsField(node?.propsSchema as INodeSchema<IFieldMeta>) as INodeSchema<IFieldMeta>, props)
     return { ...controllerMeta, props }

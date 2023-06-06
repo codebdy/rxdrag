@@ -62,6 +62,9 @@ importers:
       '@ant-design/icons':
         specifier: ^4.8.0
         version: registry.npmmirror.com/@ant-design/icons@4.8.0(react-dom@18.2.0)(react@18.2.0)
+      '@rxdrag/controller-editor-antd5':
+        specifier: workspace:*
+        version: link:../../packages/minions-antd5/controller-editor-antd5
       '@rxdrag/core':
         specifier: workspace:*
         version: link:../../packages/rxdrag/editor/core
