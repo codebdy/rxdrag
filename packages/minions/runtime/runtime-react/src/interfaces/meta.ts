@@ -9,7 +9,6 @@ export interface IVariableDefineMeta {
 export interface IControllerMeta {
   id: string;
   controllerType?: string;
-  //enable?: boolean;
   global?: boolean;
   name?: string;
   //属性表达式

@@ -17,7 +17,7 @@
       "x-field": {},
       "x-controller": {
         "id": "06c7b84e-662e-4161-998a-c95b8d9ec026",
-        "enable": true,
+        "controllerType": "logicFlow",
         "name": "游戏容器",
         "global": false,
         "events": [
@@ -665,7 +665,7 @@
                       "x-field": {},
                       "x-controller": {
                         "id": "5facb25f-9310-4441-97fa-b5c02c4a4246",
-                        "enable": true,
+                        "controllerType": "logicFlow",
                         "events": [
                           {
                             "id": "a79c2e57-1ef8-47de-8abd-a0088ecabca6",
@@ -1292,7 +1292,7 @@
                       "x-field": {},
                       "x-controller": {
                         "id": "5facb25f-9310-4441-97fa-b5c02c4a4246",
-                        "enable": true,
+                        "controllerType": "logicFlow",
                         "events": [
                           {
                             "id": "a79c2e57-1ef8-47de-8abd-a0088ecabca6",
@@ -1919,7 +1919,7 @@
                       "x-field": {},
                       "x-controller": {
                         "id": "5facb25f-9310-4441-97fa-b5c02c4a4246",
-                        "enable": true,
+                        "controllerType": "logicFlow",
                         "events": [
                           {
                             "id": "a79c2e57-1ef8-47de-8abd-a0088ecabca6",
@@ -2557,7 +2557,7 @@
                       "x-field": {},
                       "x-controller": {
                         "id": "5facb25f-9310-4441-97fa-b5c02c4a4246",
-                        "enable": true,
+                        "controllerType": "logicFlow",
                         "events": [
                           {
                             "id": "a79c2e57-1ef8-47de-8abd-a0088ecabca6",
@@ -3184,7 +3184,7 @@
                       "x-field": {},
                       "x-controller": {
                         "id": "5facb25f-9310-4441-97fa-b5c02c4a4246",
-                        "enable": true,
+                        "controllerType": "logicFlow",
                         "events": [
                           {
                             "id": "a79c2e57-1ef8-47de-8abd-a0088ecabca6",
@@ -3811,7 +3811,7 @@
                       "x-field": {},
                       "x-controller": {
                         "id": "5facb25f-9310-4441-97fa-b5c02c4a4246",
-                        "enable": true,
+                        "controllerType": "logicFlow",
                         "events": [
                           {
                             "id": "a79c2e57-1ef8-47de-8abd-a0088ecabca6",
@@ -4449,7 +4449,7 @@
                       "x-field": {},
                       "x-controller": {
                         "id": "5facb25f-9310-4441-97fa-b5c02c4a4246",
-                        "enable": true,
+                        "controllerType": "logicFlow",
                         "events": [
                           {
                             "id": "a79c2e57-1ef8-47de-8abd-a0088ecabca6",
@@ -5076,7 +5076,7 @@
                       "x-field": {},
                       "x-controller": {
                         "id": "5facb25f-9310-4441-97fa-b5c02c4a4246",
-                        "enable": true,
+                        "controllerType": "logicFlow",
                         "events": [
                           {
                             "id": "a79c2e57-1ef8-47de-8abd-a0088ecabca6",
@@ -5703,7 +5703,7 @@
                       "x-field": {},
                       "x-controller": {
                         "id": "5facb25f-9310-4441-97fa-b5c02c4a4246",
-                        "enable": true,
+                        "controllerType": "logicFlow",
                         "events": [
                           {
                             "id": "a79c2e57-1ef8-47de-8abd-a0088ecabca6",
@@ -6354,7 +6354,7 @@
                               "x-field": {},
                               "x-controller": {
                                 "id": "25c5ee3c-e0b5-4120-84dc-682fdc3540de",
-                                "enable": true,
+                                "controllerType": "logicFlow",
                                 "events": [
                                   {
                                     "id": "8af8ff2a-f4c8-4d23-aa7e-d581647e0941",
@@ -6472,7 +6472,7 @@
                       "x-field": {},
                       "x-controller": {
                         "id": "ada497c5-d0b6-45f9-aad8-70592570ec52",
-                        "enable": true,
+                        "controllerType": "logicFlow",
                         "events": [
                           {
                             "id": "718a5c8d-710a-40b2-b553-a50e4d7546a1",
@@ -6619,7 +6619,7 @@
                       "x-field": {},
                       "x-controller": {
                         "id": "59d6c605-769c-41e6-9f86-d729df9f7bae",
-                        "enable": true,
+                        "controllerType": "logicFlow",
                         "events": [
                           {
                             "id": "9232eba4-ce1a-4bbe-af7e-c35df693df87",

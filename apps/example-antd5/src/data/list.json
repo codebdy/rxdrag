@@ -116,7 +116,7 @@
                               },
                               "x-controller": {
                                 "id": "67ba7358-b919-4234-8ae9-b0a0d666d3c3",
-                                "enable": true,
+                                "controllerType": "logicFlow",
                                 "name": "查询输入",
                                 "global": true
                               },
@@ -140,7 +140,7 @@
                               },
                               "x-controller": {
                                 "id": "1d22cf82-414a-420f-8b67-587e473acdfb",
-                                "enable": true,
+                                "controllerType": "logicFlow",
                                 "name": "查询按钮",
                                 "events": [
                                   {
@@ -305,7 +305,7 @@
                       },
                       "x-controller": {
                         "id": "de0143a2-498e-4013-8416-5a5919ff4acb",
-                        "enable": true,
+                        "controllerType": "logicFlow",
                         "global": true,
                         "name": "表格",
                         "events": [

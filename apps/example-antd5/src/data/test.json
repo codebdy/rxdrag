@@ -67,7 +67,7 @@
               },
               "x-controller": {
                 "id": "4acd9cca-b662-4046-a19a-2a5a699679e2",
-                "enable": true,
+                "controllerType": "logicFlow",
                 "events": [
                   {
                     "id": "19670a9a-8c7e-488f-9fd8-ac769329c42e",
@@ -642,7 +642,7 @@
               },
               "x-controller": {
                 "id": "859cc0c8-2e51-43e2-9208-ea3f072fd6ac",
-                "enable": true,
+                "controllerType": "logicFlow",
                 "name": "按钮2",
                 "global": true
               },
@@ -657,7 +657,7 @@
               },
               "x-controller": {
                 "id": "f1969609-808e-4f3d-8c30-043bcc17742a",
-                "enable": true,
+                "controllerType": "logicFlow",
                 "global": true,
                 "name": "按钮3"
               },
@@ -672,7 +672,7 @@
               },
               "x-controller": {
                 "id": "41ca8109-0a80-4e25-aa65-fda37920637c",
-                "enable": true,
+                "controllerType": "logicFlow",
                 "global": true,
                 "name": "按钮4"
               },

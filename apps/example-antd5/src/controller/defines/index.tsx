@@ -1,6 +1,6 @@
 import { IControllerDefine } from "@rxdrag/react-antd-shell/src/types";
 import { ShortcutControllerFactory } from "../ShortcutController";
-import { LOGICFLOW_FACTORY_NAME, LogicFlowControllerFactory, SCRIPT_FACTORY_NAME, ScriptControllerFactory } from "@rxdrag/minions-runtime-react";
+import { LOGICFLOW_TYPE_NAME, LogicFlowControllerFactory, SCRIPT_TYPE_NAME, ScriptControllerFactory } from "@rxdrag/minions-runtime-react";
 import { shortcutLocales } from "./locales/shortcut";
 import { logicFlowLocales } from "./locales/logicflow";
 import { scriptLocales } from "./locales/script";
@@ -16,14 +16,14 @@ export const controllerDefines: IControllerDefine[] = [
     locales: shortcutLocales,
   },
   {
-    name: LOGICFLOW_FACTORY_NAME,
+    name: LOGICFLOW_TYPE_NAME,
     label: "$logicFlow",
     factory: LogicFlowControllerFactory,
     setter: LogicFlowControllerSetter,
     locales: logicFlowLocales,
   },
   {
-    name: SCRIPT_FACTORY_NAME,
+    name: SCRIPT_TYPE_NAME,
     label: "$script",
     factory: ScriptControllerFactory,
     setter: ScriptControllerSetter,

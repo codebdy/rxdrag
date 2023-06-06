@@ -7,7 +7,7 @@ import { ILocalesManager } from "@rxdrag/locales"
 import { ControllerFactories, RuntimeEngine } from "./RuntimeEngine"
 import { useLogicFlowContext } from "../hooks/useLogicFlowContext"
 import { IComponentRenderSchema } from "../ComponentView"
-import { LOGICFLOW_FACTORY_NAME, LogicFlowControllerFactory, SCRIPT_FACTORY_NAME, ScriptControllerFactory } from "@rxdrag/minions-runtime-react"
+import { LOGICFLOW_TYPE_NAME, LogicFlowControllerFactory, SCRIPT_TYPE_NAME, ScriptControllerFactory } from "@rxdrag/minions-runtime-react"
 
 export const RuntimeRoot = (props: {
   components?: IComponents,
@@ -34,8 +34,8 @@ export const RuntimeRoot = (props: {
 
   useEffect(() => {
     const defaultFactories = {
-      [LOGICFLOW_FACTORY_NAME]: LogicFlowControllerFactory,
-      [SCRIPT_FACTORY_NAME]: ScriptControllerFactory
+      [LOGICFLOW_TYPE_NAME]: LogicFlowControllerFactory,
+      [SCRIPT_TYPE_NAME]: ScriptControllerFactory
     }
     controllerFactories && setRuntimeEngine(new RuntimeEngine(schema, { ...defaultFactories, ...controllerFactories }, logicFlowContext))
   }, [controllerFactories, logicFlowContext, schema])

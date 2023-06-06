@@ -322,7 +322,7 @@
                           },
                           "x-controller": {
                             "id": "65f7a014-194b-466b-8f4d-e32fd78d946c",
-                            "enable": true,
+                            "controllerType": "logicFlow",
                             "events": [
                               {
                                 "id": "42b21034-d0d3-413b-b0d5-43d761955c28",
@@ -660,7 +660,7 @@
                           },
                           "x-controller": {
                             "id": "a7079965-8fac-4dd5-8232-5c6c168c1c93",
-                            "enable": true,
+                            "controllerType": "logicFlow",
                             "events": [
                               {
                                 "id": "2358fdcc-866a-45bd-a736-5293d6027fbf",

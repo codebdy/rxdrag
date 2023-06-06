@@ -1,2 +1,2 @@
-export const LOGICFLOW_FACTORY_NAME = "logicFlow"
-export const SCRIPT_FACTORY_NAME = "script"
+export const LOGICFLOW_TYPE_NAME = "logicFlow"
+export const SCRIPT_TYPE_NAME = "script"

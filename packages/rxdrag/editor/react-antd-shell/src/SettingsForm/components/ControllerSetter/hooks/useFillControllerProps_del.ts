@@ -4,6 +4,9 @@ import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
 import { INodeSchema } from "@rxdrag/schema";
 import { useCallback } from "react";
 
+
+//本代码废弃，择时删除
+
 //本钩子依赖schema格式，有可能会不准确
 export function useFillControllerProps() {
 

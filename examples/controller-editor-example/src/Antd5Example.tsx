@@ -10,7 +10,7 @@ import { activityMaterialCategories } from "materials"
 export const Antd5Example = memo(() => {
   const [inputValue, setInputValue] = useState<ILogicFlowControllerMeta>({
     id: "test",
-    enable: true,
+    "controllerType": "logicFlow",
     name: "测试",
     events: [],
     reactions: [],
