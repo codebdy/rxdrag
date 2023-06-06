@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react"
 import { ReactComponent } from "@rxdrag/react-shared"
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { ControllersContext } from "../contexts"
 import { useControllers } from "../hooks/useControllers"
-import { Controllers, LogicFlowController, IController, ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
-import { LogicFlowContext, useLogicFlowContext } from "../hooks/useLogicFlowContext"
+import { Controllers, IController, ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
+import { useLogicFlowContext } from "../hooks/useLogicFlowContext"
+import { useRuntimeEngine } from "../hooks/useRuntimeEngine"
 
-export function withController(WrappedComponent: ReactComponent, meta?: ILogicFlowControllerMeta): ReactComponent {
-
+export function withController(WrappedComponent: ReactComponent, meta: ILogicFlowControllerMeta | undefined, schemaId: string): ReactComponent {
   if (!meta?.id) {
     return WrappedComponent
   }
@@ -18,6 +17,7 @@ export function withController(WrappedComponent: ReactComponent, meta?: ILogicFl
     const [controller, setController] = useState<IController>()
     const controllers = useControllers()
     const logicFlowContext = useLogicFlowContext();
+    const runtimeEngine = useRuntimeEngine();
 
     const handlePropsChange = useCallback((name: string, value: any) => {
       setChangeProps((changedProps: any) => {
@@ -26,11 +26,11 @@ export function withController(WrappedComponent: ReactComponent, meta?: ILogicFl
     }, [])
 
     useEffect(() => {
-      if (meta) {
+      if (meta && runtimeEngine) {
         let ctrl = controllers[meta.id]
         //如果controller没有被提前创建
         if (!ctrl) {
-          ctrl = new LogicFlowController<LogicFlowContext>(meta, logicFlowContext)
+          ctrl = runtimeEngine.getOrCreateController(meta, schemaId)
         }
 
         ctrl.init(controllers || {});
@@ -44,7 +44,7 @@ export function withController(WrappedComponent: ReactComponent, meta?: ILogicFl
           unlistener?.()
         }
       }
-    }, [controllers, handlePropsChange, logicFlowContext])
+    }, [controllers, handlePropsChange, logicFlowContext, runtimeEngine])
 
     const newControllers: Controllers = useMemo(() => {
       return controller ? { ...controllers, [controller.id]: controller } : controllers

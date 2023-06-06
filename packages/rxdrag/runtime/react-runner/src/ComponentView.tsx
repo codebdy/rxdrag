@@ -29,7 +29,14 @@ export const ComponentView = memo((
   const com = usePreviewComponent(node.componentName)
 
   const Component = useMemo(() => {
-    return com && withBind(withController(com, node["x-controller"] as ILogicFlowControllerMeta), node?.["x-field"])
+    return com && withBind(
+      withController(
+        com,
+        node["x-controller"] as ILogicFlowControllerMeta,
+        node.id,
+      ),
+      node?.["x-field"],
+    )
   }, [com, node]);
 
   const slots = useMemo(() => {
