@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { PortsInput } from "./PortsInput"
 import { VirtualForm } from "@rxdrag/react-fieldy"
 import { useLocalesManager } from "@rxdrag/react-locales"
-import { ComponentRender, RuntimeRoot } from "@rxdrag/react-runner"
+import { ComponentRender } from "@rxdrag/react-runner"
 import { JSONInput, ValueInput } from "@rxdrag/react-antd-props-inputs"
 import { useSelectedNode, useGetMaterial, useDispatch, useBackup, useMarkChange, ActionType } from "@rxdrag/minions-logicflow-editor"
 import { INodeSchema } from "@rxdrag/schema"
@@ -48,36 +48,34 @@ export const PropertyBox = memo(() => {
     <>
       {
         node
-          ? <RuntimeRoot
-            components={{
-              Fragment: Fragment,
-              FormItem: Form.Item,
-              Input,
-              Select,
-              Switch,
-              Radio,
-              Slider,
-              InputNumber,
-              TextArea: Input.TextArea,
-              PortsInput,
-              ValueInput,
-              JSONInput,
-            }}
+          ?
+          <VirtualForm
+            //fieldSchemas={fieldSchemas}
+            initialValue={node}
+            onValueChange={handleNodeChange}
+            key={node.id}
           >
-            <VirtualForm
-              //fieldSchemas={fieldSchemas}
-              initialValue={node}
-              onValueChange={handleNodeChange}
-              key={node.id}
-            >
-              {
-                propsSchema &&
-                <ComponentRender
-                  root={propsSchema}
-                />
-              }
-            </VirtualForm>
-          </RuntimeRoot>
+            {
+              propsSchema &&
+              <ComponentRender
+                root={propsSchema}
+                components={{
+                  Fragment: Fragment,
+                  FormItem: Form.Item,
+                  Input,
+                  Select,
+                  Switch,
+                  Radio,
+                  Slider,
+                  InputNumber,
+                  TextArea: Input.TextArea,
+                  PortsInput,
+                  ValueInput,
+                  JSONInput,
+                }}
+              />
+            }
+          </VirtualForm>
           : <EmptyContainer>
             <Empty />
           </EmptyContainer>

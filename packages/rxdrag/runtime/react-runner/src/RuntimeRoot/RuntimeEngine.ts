@@ -20,28 +20,27 @@ export class RuntimeEngine {
   //全局控制器 id为controller id
   globalControllers: Controllers = {}
 
-  constructor(schema: IComponentRenderSchema | undefined,
+  constructor(schema: IComponentRenderSchema,
     protected controllerFactories: ControllerFactories,
     protected context: unknown,
   ) {
-    //第一步构建所有controller
-    const controllers = this.getSchemaControllers(schema, {}, {})
-    //初始化构建的controller
-    for (const id of Object.keys(controllers)) {
-      controllers[id]?.init(controllers);
-    }
-    this.controllers = controllers
-
+    //第一步构建所有全局controller
+    const glControllers = this.getSchemaControllers(schema, {}, {})
     //转换id以后，存入全局控制器
-    for (const schemaId of Object.keys(controllers)) {
-      const ctrl = controllers[schemaId]
+    for (const schemaId of Object.keys(glControllers)) {
+      const ctrl = glControllers[schemaId]
       if (ctrl) {
         this.globalControllers[ctrl.id] = ctrl;
       }
     }
+    this.controllers = glControllers
+    //初始化构建的controller
+    for (const id of Object.keys(this.globalControllers)) {
+      this.globalControllers[id]?.init(this.globalControllers);
+    }
   }
 
-  getSchemaControllers = (schema: IComponentRenderSchema | undefined, controllers: Controllers, passedByMetas: ControllerMetas) => {
+  getSchemaControllers = (schema: IComponentRenderSchema, controllers: Controllers, passedByMetas: ControllerMetas) => {
     const controllerMeta = schema?.["x-controller"];
     if (controllerMeta?.global) {
       const controller = this.makeController(controllerMeta);
@@ -71,7 +70,6 @@ export class RuntimeEngine {
       const child = schema?.slots?.[slotName]
       this.getSchemaControllers(child as IComponentRenderSchema, controllers, passedByMetas);
     }
-
     return controllers
   }
 

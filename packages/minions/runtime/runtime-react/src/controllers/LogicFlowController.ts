@@ -33,7 +33,7 @@ export class LogicFlowController<LogicFlowContext> implements IController {
     this.id = meta.id!
   }
 
-  //为了预构造全局，分两阶段初始化
+  //为了预构造全局，分两阶段初始化, controllers包括全局的
   init(relatedControllers: Controllers | undefined) {
     if (this.isInitialized) {
       return;

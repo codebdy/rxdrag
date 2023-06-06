@@ -41,94 +41,92 @@ export const SettingsForm = memo(() => {
   }, [changeMeta, currentNode])
 
   return (
-    <RuntimeRoot
-      components={{
-        Tabs,
-        TabPanel,
-        FormItem: Form.Item,
-        Input,
-        TextArea: Input.TextArea,
-        Select,
-        Switch,
-        SlotSwitch,
-        Fold,
-        FoldBase,
-        FoldExtra,
-        FoldExtraItem,
-        Radio,
-        Slider,
-        InputNumber,
-        ColorInput,
-        SizeInput,
-        FontSelect,
-        FontColorInput,
-        FontDecorationSelect,
-        FontSizeInput,
-        FontLineHeightInput,
-        FontStyleSelect,
-        FontWeightInput,
-        TextAlignSelect,
-        MarginStyleSetter,
-        PaddingStyleSetter,
-        BorderRadiusSetter,
-        BorderSetter,
-        DisplaySetter,
-        IconInput,
-        GutterInput,
-        "Radio.Group": Radio.Group,
-        "Checkbox.Group": Checkbox.Group,
-        Checkbox: Checkbox,
-        CheckboxGroup: CheckboxGroup,
-        ColInput,
-        BackgroundImageInput,
-        BackgroundSizeInput,
-        BackgroundRepeatInput,
-        BackgroundPositionInput,
-        ImageInput,
-        CollapsePanel,
-        EffectsInput,
-        ControllerSetter,
-        EventInput,
-        ValueInput,
-        JSONInput,
-        ExpressionInput,
-        Space,
-        ...tools,
-      }}
-      localesManager={engine?.getLoacalesManager()}
-    >
-      <Fieldy>
-        <div style={propertiesStyle}>
-          {
-            currentNode &&
-            <VirtualForm
-              initialValue={currentNode?.meta}
-              onValueChange={handleMetaChange}
-              key={currentNode.id}
+    <Fieldy>
+      <div style={propertiesStyle}>
+        {
+          currentNode &&
+          <VirtualForm
+            initialValue={currentNode?.meta}
+            onValueChange={handleMetaChange}
+            key={currentNode.id}
+          >
+            <Form
+              labelAlign="left"
+              colon={false}
+              labelCol={{ span: 7 }}
+              wrapperCol={{ span: 17 }}
+              autoComplete="off"
+              labelWrap={true}
+              style={{
+                flex: 1,
+                height: '100%',
+              }}
             >
-              <Form
-                labelAlign="left"
-                colon={false}
-                labelCol={{ span: 7 }}
-                wrapperCol={{ span: 17 }}
-                autoComplete="off"
-                labelWrap={true}
-                style={{
-                  flex: 1,
-                  height: '100%',
-                }}
-              >
-                {
-                  propsSchema &&
-                  <ComponentRender
-                    root={propsSchema}
-                  />
-                }
-              </Form>
-            </VirtualForm>
-          }
-        </div>
-      </Fieldy>
-    </RuntimeRoot>
+              {
+                propsSchema &&
+                <ComponentRender
+                  root={propsSchema}
+                  components={{
+                    Tabs,
+                    TabPanel,
+                    FormItem: Form.Item,
+                    Input,
+                    TextArea: Input.TextArea,
+                    Select,
+                    Switch,
+                    SlotSwitch,
+                    Fold,
+                    FoldBase,
+                    FoldExtra,
+                    FoldExtraItem,
+                    Radio,
+                    Slider,
+                    InputNumber,
+                    ColorInput,
+                    SizeInput,
+                    FontSelect,
+                    FontColorInput,
+                    FontDecorationSelect,
+                    FontSizeInput,
+                    FontLineHeightInput,
+                    FontStyleSelect,
+                    FontWeightInput,
+                    TextAlignSelect,
+                    MarginStyleSetter,
+                    PaddingStyleSetter,
+                    BorderRadiusSetter,
+                    BorderSetter,
+                    DisplaySetter,
+                    IconInput,
+                    GutterInput,
+                    "Radio.Group": Radio.Group,
+                    "Checkbox.Group": Checkbox.Group,
+                    Checkbox: Checkbox,
+                    CheckboxGroup: CheckboxGroup,
+                    ColInput,
+                    BackgroundImageInput,
+                    BackgroundSizeInput,
+                    BackgroundRepeatInput,
+                    BackgroundPositionInput,
+                    ImageInput,
+                    CollapsePanel,
+                    EffectsInput,
+                    ControllerSetter,
+                    EventInput,
+                    ValueInput,
+                    JSONInput,
+                    ExpressionInput,
+                    Space,
+                    ...tools,
+                  }}
+                  localesManager={engine?.getLoacalesManager()}
+                />
+              }
+            </Form>
+          </VirtualForm>
+        }
+      </div>
+    </Fieldy>
+
   )
 })

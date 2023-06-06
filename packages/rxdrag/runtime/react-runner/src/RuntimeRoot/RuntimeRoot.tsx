@@ -3,7 +3,6 @@ import React, { useEffect } from "react"
 import { useCallback, useMemo, useState } from "react"
 import { ControllersContext, PreviewComponentsContext, RuntimeEngineContext } from "../contexts"
 import { IComponentsParams } from "../interfaces"
-import { ILocalesManager } from "@rxdrag/locales"
 import { ControllerFactories, RuntimeEngine } from "./RuntimeEngine"
 import { useLogicFlowContext } from "../hooks/useLogicFlowContext"
 import { IComponentRenderSchema } from "../ComponentView"
@@ -12,8 +11,7 @@ import { LOGICFLOW_TYPE_NAME, LogicFlowControllerFactory, SCRIPT_TYPE_NAME, Scri
 export const RuntimeRoot = (props: {
   components?: IComponents,
   children: React.ReactNode,
-  schema?: IComponentRenderSchema,
-  localesManager?: ILocalesManager,
+  schema: IComponentRenderSchema,
   controllerFactories?: ControllerFactories,
 }) => {
   const { components: initalComponents, children, schema, controllerFactories } = props

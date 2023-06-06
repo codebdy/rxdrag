@@ -1,7 +1,7 @@
 import { IDocument } from "@rxdrag/core"
 import { useDocumentViewTypeState } from "@rxdrag/react-core"
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy"
-import { ComponentRender, IComponentRenderSchema, RuntimeRoot } from "@rxdrag/react-runner"
+import { ComponentRender, } from "@rxdrag/react-runner"
 import { ControllerFactories } from "@rxdrag/react-runner/src/RuntimeRoot/RuntimeEngine"
 import { IComponents } from "@rxdrag/react-shared"
 import { INodeSchema } from "@rxdrag/schema"
@@ -36,19 +36,15 @@ export const PreviewRender = memo((
     <ThemeProvider theme={theme}>
       {
         tree && viewType === "preview" &&
-        <RuntimeRoot
-          components={components}
-          schema={doc?.getSchemaTree() as IComponentRenderSchema}
-          controllerFactories = {controllerFactories}
-        >
-          <Fieldy>
-            <VirtualForm>
-              <ComponentRender
-                root={tree}
-              />
-            </VirtualForm>
-          </Fieldy>
-        </RuntimeRoot>
+        <Fieldy>
+          <VirtualForm>
+            <ComponentRender
+              root={tree}
+              components={components}
+              controllerFactories = {controllerFactories}
+            />
+          </VirtualForm>
+        </Fieldy>
       }
     </ThemeProvider>
   )
