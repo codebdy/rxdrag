@@ -30,7 +30,7 @@ export interface IDesignerEngine {
 	registerPlugin(pluginFactory: IPluginFactory): void
 	getPlugin(name: string): IPlugin | null
 
-	dispatch(action: IAction<any>): void
+	dispatch(action: IAction<unknown>): void
 	destory(): void
 
 	getNodeBehavior(nodeId: ID): NodeBehavior

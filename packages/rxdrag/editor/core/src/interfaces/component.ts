@@ -57,7 +57,7 @@ export interface IComponentConfig<ComponentType = unknown> {
     [name: string]: ComponentType | undefined
   },
   //可被编排的属性列表，用于逻辑编排属性板下拉提示
-  logicalProps?: string[] | { value: string, label?: string }[]
+  logicalProps?: string[] //| { value: string, label?: string }[]
 }
 
 //可独立注册的行为规则
@@ -70,7 +70,7 @@ export interface IBehavior {
 
 export interface IComponentManager {
   getNodeBehaviorRules(nodeId: ID): IBehaviorRule[]
-  getComponentDesigner(componentName: string): IComponentConfig | undefined
+  getComponentConfig(componentName: string): IComponentConfig | undefined
   registerComponents(...componentDesigners: IComponentConfig[]): void
   registerBehaviors(...behaviors: IBehavior[]): void
   removeBehaviors(...names: string[]): void

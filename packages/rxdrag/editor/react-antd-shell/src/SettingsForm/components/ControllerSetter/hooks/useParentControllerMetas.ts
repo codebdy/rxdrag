@@ -2,12 +2,15 @@ import { ITreeNode } from "@rxdrag/core"
 import { ILogicFlowControllerMeta, LOGICFLOW_TYPE_NAME } from "@rxdrag/minions-runtime-react"
 import { useGetNode, useCurrentNode, useTreeNode } from "@rxdrag/react-core"
 import { useCallback, useMemo } from "react"
+import { useFillControllerProps } from "./useFillControllerProps"
+import { INodeSchema } from "@rxdrag/schema"
 
 export function useParentControllerMetas() {
   const getNode = useGetNode()
   const currentNode = useCurrentNode()
   const latestNode = useTreeNode(currentNode?.id || "") as ITreeNode<unknown, ILogicFlowControllerMeta> | undefined
 
+  const fillProps = useFillControllerProps();
 
   const processNode = useCallback((node: ITreeNode<unknown, ILogicFlowControllerMeta>, nodes: ITreeNode<unknown, ILogicFlowControllerMeta>[]) => {
     if (node.meta?.["x-controller"]?.controllerType === LOGICFLOW_TYPE_NAME) {
@@ -30,12 +33,12 @@ export function useParentControllerMetas() {
       }
       return nodes.map(node => {
         const ctlMeta = { ...node.meta?.["x-controller"] || {}, name: node.meta?.["x-controller"]?.name || node.title } as ILogicFlowControllerMeta
-        return ctlMeta
+        return fillProps(ctlMeta, node as ITreeNode<INodeSchema, ILogicFlowControllerMeta>)
       })
     }
 
     return []
-  }, [getNode, latestNode, processNode])
+  }, [fillProps, getNode, latestNode, processNode])
 
   return controllerNodes
 }

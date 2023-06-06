@@ -19,7 +19,7 @@ export class ComponentManager implements IComponentManager {
   } = {}
 
   constructor(private engine: IDesignerEngine) { }
-  getComponentDesigner(componentName: string): IComponentConfig | undefined {
+  getComponentConfig(componentName: string): IComponentConfig | undefined {
     return this.components[componentName]
   }
   // getDesignerSchema(componentName: string): INodeSchema | undefined {

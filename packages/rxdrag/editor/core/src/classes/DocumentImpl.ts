@@ -83,11 +83,11 @@ export class DocumentImpl implements IDocument {
   addSlot(id: string, name: string): void {
     const node = this.getNode(id)
     if (node) {
-      const comdesigner = this.engine.getComponentManager().getComponentDesigner(node.meta.componentName)
+      const comdesigner = this.engine.getComponentManager().getComponentConfig(node.meta.componentName)
       const slotConfig = comdesigner?.slots?.[name]
       let element: INodeSchema = { componentName: "DefaultSlot" }
       if (isStr(slotConfig)) {
-        const slotElements = this.engine.getComponentManager().getComponentDesigner(slotConfig)?.resource?.elements
+        const slotElements = this.engine.getComponentManager().getComponentConfig(slotConfig)?.resource?.elements
         if (isArr(slotElements)) {
           element = slotElements[0]
         } else if (slotElements) {

@@ -8,7 +8,7 @@ export function parseNodeSchema(engine: IDesignerEngine, documentId: ID, schema:
   const rxId = makeRxId()
   const locales = engine.getLoacalesManager()
   const components = engine.getComponentManager()
-  const comDesigner = components.getComponentDesigner(metaData.componentName)
+  const comDesigner = components.getComponentConfig(metaData.componentName)
   const node: ITreeNode = {
     id: rxId,
     isSlot,

@@ -35,5 +35,11 @@ export const ButtonMaterial: IComponentMaterial = {
     droppable: false,
     noPlaceholder: true,
     lockable: true,
-  }
+  },
+  logicalProps:[
+    "danger",
+    "disable",
+    "title",
+    "type"
+  ]
 }

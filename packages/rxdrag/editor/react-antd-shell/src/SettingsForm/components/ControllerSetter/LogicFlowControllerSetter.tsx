@@ -12,6 +12,7 @@ import { activityMaterialCategories } from "./materials";
 import { IEventMeta } from "@rxdrag/minions-controller-editor";
 import { useMinionOptions } from "../../../hooks/useMinionOptions";
 import { createUuid } from "@rxdrag/shared";
+import { useFillControllerProps } from "./hooks/useFillControllerProps";
 
 export const LogicFlowControllerSetter = memo((
   props: {
@@ -33,15 +34,20 @@ export const LogicFlowControllerSetter = memo((
   const node = useCurrentNode() as ITreeNode<INodeSchema, ILogicFlowControllerMeta> | undefined
   const parentControllers = useParentControllerMetas()
   const globalControllers = useGlobalControllerMetas();
-  //const fillProps = useFillControllerProps();
+  const fillProps = useFillControllerProps();
   const minionOptions = useMinionOptions();
 
-  const mergedControllers = useMemo(() => [
-    //fillProps(inputValue, node),
-    ...parentControllers,
-    ...globalControllers.filter(controllerMeta => !parentControllers.find(ctrl => controllerMeta.id === ctrl.id) && inputValue?.id !== controllerMeta.id)
-  ],
-    [inputValue, parentControllers, globalControllers])
+  const mergedControllers = useMemo(() => {
+    if (!node?.meta["x-controller"]) {
+      return []
+    }
+    return [
+      fillProps(node?.meta["x-controller"], node as ITreeNode<INodeSchema, ILogicFlowControllerMeta>),
+      ...parentControllers,
+      ...globalControllers.filter(controllerMeta => !parentControllers.find(ctrl => controllerMeta.id === ctrl.id) && inputValue?.id !== controllerMeta.id)
+    ]
+  },
+    [node, fillProps, parentControllers, globalControllers, inputValue?.id])
 
   const handleGlobalChange = useCallback((checked: boolean) => {
     if (checked) {
