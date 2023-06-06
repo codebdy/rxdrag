@@ -34,9 +34,9 @@ export const ControllerSetter = memo((props: {
 
   const handleControllerTypeChange = useCallback((type: string) => {
     if (value?.controllerType === type) {
-      onChange?.({ ...value, id: value?.id, enable: false, })
+      onChange?.({ ...value, id: value?.id, controllerType: undefined })
     } else {
-      onChange?.({ ...value, id: value?.id || createUuid(), enable: true, controllerType: type })
+      onChange?.({ ...value, id: value?.id || createUuid(), controllerType: type })
     }
   }, [onChange, value])
 
@@ -45,7 +45,7 @@ export const ControllerSetter = memo((props: {
   }, [minionOptions?.controllers, value?.controllerType])
 
   return (
-    <div>
+    <>
       <Form.Item
         label={title}
       >
@@ -72,7 +72,6 @@ export const ControllerSetter = memo((props: {
         <selectedController.setter {...other} value={value} onChange={onChange} />
       }
 
-    </div>
-
+    </>
   )
 })

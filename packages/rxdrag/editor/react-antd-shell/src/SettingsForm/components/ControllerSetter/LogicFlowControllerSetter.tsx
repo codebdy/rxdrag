@@ -15,7 +15,7 @@ import { createUuid } from "@rxdrag/shared";
 
 export const LogicFlowControllerSetter = memo((
   props: {
-    value?: ILogicFlowControllerMeta,
+    value: ILogicFlowControllerMeta,
     onChange?: (value?: ILogicFlowControllerMeta) => void,
     events?: IEventMeta[]
   }
@@ -83,7 +83,7 @@ export const LogicFlowControllerSetter = memo((
   return (
     <>
       {
-        value?.id && value?.enable &&
+        value?.id &&
         <>
           <Form.Item
             label={t("controllerName")}

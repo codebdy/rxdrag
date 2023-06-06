@@ -1351,6 +1351,9 @@ importers:
       '@ant-design/icons':
         specifier: ^4.8.0
         version: registry.npmmirror.com/@ant-design/icons@4.8.0(react-dom@18.2.0)(react@18.2.0)
+      '@monaco-editor/react':
+        specifier: ^4.4.6
+        version: registry.npmmirror.com/@monaco-editor/react@4.4.6(monaco-editor@0.36.1)(react-dom@18.2.0)(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.3
         version: registry.npmmirror.com/@reduxjs/toolkit@1.9.3(react@18.2.0)
