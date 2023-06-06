@@ -1,7 +1,6 @@
 import { createContext } from "react";
 import { IComponentRenderSchema } from "./ComponentView";
 import { IComponentsParams } from "./interfaces";
-import { IComponents } from "@rxdrag/react-shared";
 import { Controllers } from "@rxdrag/minions-runtime-react";
 import { RuntimeEngine } from "./RuntimeRoot/RuntimeEngine";
 
@@ -13,7 +12,7 @@ export const RuntimeEngineContext = createContext<RuntimeEngine | undefined>(und
 
 export const initialParams: IComponentsParams = {
   components: {},
-  registerComponents: function (...components: IComponents[]): void {
+  registerComponents: function (): void {
     throw new Error("Function not implemented.");
   }
 }

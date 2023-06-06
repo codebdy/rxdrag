@@ -5,7 +5,7 @@ import { useDesignComponentsParams } from "./useDesignComponentsParams";
 import { useLocalesManager } from "./useLocalesManager";
 import { useResourceManager } from "./useResourceManager";
 import { isStr } from "@rxdrag/shared"
-import { usePreviewComponents } from "@rxdrag/react-runner";
+//import { usePreviewComponents } from "@rxdrag/react-runner";
 import { ReactComponent } from "@rxdrag/react-shared";
 import { IComponentConfig } from "@rxdrag/core";
 
@@ -14,11 +14,11 @@ export function useRegisterComponentMaterial() {
   const componentManager = useComponentManager()
   const localesManager = useLocalesManager()
   const { registerComponents: registerDesignComponents, registerTools } = useDesignComponentsParams()
-  const { registerComponents: registerPreviewComponents } = usePreviewComponents()
+  //const { registerComponents: registerPreviewComponents } = usePreviewComponents()
 
   const register = useCallback((meterial: IComponentMaterial, isSlot?: boolean) => {
     const designers = { [meterial.componentName]: meterial.designer }
-    const previews = { [meterial.componentName]: meterial.component }
+    //const previews = { [meterial.componentName]: meterial.component }
     const tools = meterial.tools
     componentManager?.registerComponents(meterial)
     if (meterial.designerLocales) {
@@ -41,7 +41,7 @@ export function useRegisterComponentMaterial() {
     }
 
     registerDesignComponents(designers)
-    registerPreviewComponents(previews)
+    //registerPreviewComponents(previews)
     tools && registerTools(tools)
 
     if (meterial.resource && !resourceManager?.getResourceByName(meterial.resource.name) && !isSlot) {
@@ -49,7 +49,7 @@ export function useRegisterComponentMaterial() {
       return (resources?.[0])
     }
     return undefined
-  }, [componentManager, localesManager, registerDesignComponents, registerPreviewComponents, registerTools, resourceManager])
+  }, [componentManager, localesManager, registerDesignComponents, registerTools, resourceManager])
 
   return register
 }

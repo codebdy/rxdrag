@@ -65,6 +65,19 @@ export class LogicFlow<LogicFlowContext = unknown> {
               handleName && activity.jointers.getInput(inputName)?.connect(handleWithThis)
             }
 
+            //处理动态端口
+            if (activityInfo.dynamicMethod) {
+              const handle = (activity as any)?.[activityInfo.dynamicMethod];
+              const handleWithThis = handle?.bind(activity);
+
+              for (const input of activity.jointers.inputs) {
+                const handeWraper = (inputValue: unknown) => {
+                  return handleWithThis?.(input.name, inputValue)
+                }
+                input.connect(handeWraper)
+              }
+            }
+
             this.activities.push(activity)
           }
           break;

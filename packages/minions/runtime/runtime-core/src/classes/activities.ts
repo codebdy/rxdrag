@@ -10,6 +10,7 @@ export type ActivityClass = { new(...args: any[]): IActivity }
 export interface IActivityInfo {
   target: ActivityClass,
   methodMap: { [inputName: string]: string },
+  dynamicMethod?: string;
 }
 
 export type ActivityInfos = {
@@ -40,7 +41,7 @@ export type InputHandler = (inputValue: any) => void
 // InputHandler一定要用箭头函数，来解决this问题
 export function Input(inputName: string = DEFAULT_INPUT_NAME): (target: any, propertyName: any, descriptor?: PropertyDescriptor) => void {
 
-  return function (target: any, propertyName: any, descriptor?: PropertyDescriptor) {
+  return function (target: any, propertyName: any) {
 
     let activityInfo = activityInfoArray.find(info => info.target === target?.constructor)
 
@@ -54,7 +55,14 @@ export function Input(inputName: string = DEFAULT_INPUT_NAME): (target: any, pro
 }
 
 //动态输入
-export function DynamicInput(target: undefined, context: any): void  {
-  //throw new Error("Function not implemented.")
+export function DynamicInput(target: any, propertyName: any): void  {
+  let activityInfo = activityInfoArray.find(info => info.target === target?.constructor)
+
+  if (!activityInfo) {
+    activityInfo = { target: target?.constructor, methodMap: {} }
+    activityInfoArray.push(activityInfo)
+  }
+
+  activityInfo.dynamicMethod = propertyName
 }
 

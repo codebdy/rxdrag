@@ -23,6 +23,7 @@ export const ComponentRender = memo((props: {
       setNode(undefined)
     }
   }, [root])
+  console.log("刷新 ComponentRender", node)
 
   return (
     node ? <RuntimeRoot

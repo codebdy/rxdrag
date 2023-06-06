@@ -61,7 +61,7 @@ export class LogicFlowController<LogicFlowContext> implements IController {
     for (const variable of this.meta.variables || []) {
       this.variables[variable.name] = variable.defaultValue
     }
-    this.isInitialized = true;
+    //this.isInitialized = true;
   }
 
   getVariable(name: string) {

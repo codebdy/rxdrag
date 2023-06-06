@@ -19,11 +19,11 @@ export class Signals extends AbstractActivity<IIntervalConfig> {
 
   @Input(Signals.INPUT_NAME_STARTUP)
   startUpHandler = (inputValue?: any) => {
-    console.log("启动定时器")
     this.stopHandler()
     this.inputValue = inputValue
     if (this.meta.config?.interval) {
       this.timer = setInterval(this.handleOutput, this.meta.config?.interval)
+      console.log("启动定时器", this.timer)
     }
   }
 

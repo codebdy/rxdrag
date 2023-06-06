@@ -24,20 +24,13 @@ export function withController(WrappedComponent: ReactComponent, meta: ILogicFlo
         return ({ ...changedProps, [name]: value })
       })
     }, [])
-
     useEffect(() => {
       if (meta && runtimeEngine) {
-        let ctrl = controllers[meta.id]
-        //如果controller没有被提前创建
-        if (!ctrl) {
-          ctrl = runtimeEngine.getOrCreateController(meta, schemaId)
-        }
-
-        ctrl.init(controllers || {});
+        const ctrl = runtimeEngine.getOrCreateController(meta, schemaId)
+        ctrl.init(controllers);
         const unlistener = ctrl?.subscribeToPropsChange(handlePropsChange)
         ctrl.initEvent?.()
         setController(ctrl)
-
         return () => {
           ctrl?.destoryEvent?.()
           ctrl?.destory()
@@ -45,7 +38,6 @@ export function withController(WrappedComponent: ReactComponent, meta: ILogicFlo
         }
       }
     }, [controllers, handlePropsChange, logicFlowContext, runtimeEngine])
-
     const newControllers: Controllers = useMemo(() => {
       return controller ? { ...controllers, [controller.id]: controller } : controllers
     }, [controller, controllers])
@@ -59,7 +51,7 @@ export function withController(WrappedComponent: ReactComponent, meta: ILogicFlo
         ? <ControllersContext.Provider value={newControllers}>
           <WrappedComponent {...newProps} />
         </ControllersContext.Provider>
-        : <WrappedComponent {...props} />
+        : <>Can not creat controller </>
     )
   })
 }

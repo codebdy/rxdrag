@@ -33,6 +33,7 @@ export const IFramePreviewRender = memo((props: {
     window.addEventListener('message', receiveMessageFromParent, false);
   }, [receiveMessageFromParent])
 
+  console.log("刷新 IFramePreviewRender", doc)
   return (
     ready ?
       <DesignerEngineContext.Provider value={engine}>

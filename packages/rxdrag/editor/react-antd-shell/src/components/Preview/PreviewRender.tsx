@@ -32,6 +32,8 @@ export const PreviewRender = memo((
     }
   }, [doc, viewType])
 
+  console.log("刷新 PreviewRender", tree)
+
   return (
     <ThemeProvider theme={theme}>
       {

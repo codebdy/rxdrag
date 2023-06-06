@@ -12,7 +12,7 @@ export interface IDesignerComponentsParams extends IComponentsParams {
 export const initialDesignerParams: IDesignerComponentsParams = {
   ...initialParams,
   tools: {},
-  registerTools: function (...components: IComponents[]): void {
+  registerTools: function (): void {
     throw new Error("Function not implemented.");
   }
 }

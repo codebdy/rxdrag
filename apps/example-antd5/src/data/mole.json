@@ -1261,7 +1261,7 @@
                             ]
                           }
                         ],
-                        "name": "按钮"
+                        "name": "按钮1"
                       },
                       "slots": {},
                       "children": []
@@ -1888,7 +1888,7 @@
                             ]
                           }
                         ],
-                        "name": "按钮"
+                        "name": "按钮2"
                       },
                       "slots": {},
                       "children": []
@@ -2515,7 +2515,7 @@
                             ]
                           }
                         ],
-                        "name": "按钮"
+                        "name": "按钮3"
                       },
                       "slots": {},
                       "children": []
@@ -3153,7 +3153,7 @@
                             ]
                           }
                         ],
-                        "name": "按钮"
+                        "name": "按钮4"
                       },
                       "slots": {},
                       "children": []
@@ -3780,7 +3780,7 @@
                             ]
                           }
                         ],
-                        "name": "按钮"
+                        "name": "按钮5"
                       },
                       "slots": {},
                       "children": []
@@ -4407,7 +4407,7 @@
                             ]
                           }
                         ],
-                        "name": "按钮"
+                        "name": "按钮6"
                       },
                       "slots": {},
                       "children": []
@@ -5045,7 +5045,7 @@
                             ]
                           }
                         ],
-                        "name": "按钮"
+                        "name": "按钮7"
                       },
                       "slots": {},
                       "children": []
@@ -5672,7 +5672,7 @@
                             ]
                           }
                         ],
-                        "name": "按钮"
+                        "name": "按钮8"
                       },
                       "slots": {},
                       "children": []
@@ -6299,7 +6299,7 @@
                             ]
                           }
                         ],
-                        "name": "按钮"
+                        "name": "按钮9"
                       },
                       "slots": {},
                       "children": []
@@ -6600,7 +6600,7 @@
                             ]
                           }
                         ],
-                        "name": "按钮",
+                        "name": "开始按钮",
                         "global": false
                       },
                       "slots": {},
@@ -6706,6 +6706,78 @@
                                 }
                               },
                               {
+                                "id": "29be5fdf-14e3-4055-be5d-e884df2394a8",
+                                "label": "设置属性",
+                                "type": "Activity",
+                                "activityName": "system-react.setProp",
+                                "inPorts": [
+                                  {
+                                    "id": "b5e14c0d-4b01-4bf9-a566-e2ff9777881d",
+                                    "name": "input",
+                                    "label": ""
+                                  }
+                                ],
+                                "outPorts": [],
+                                "x6Node": {
+                                  "x": 530,
+                                  "y": 130,
+                                  "width": 116,
+                                  "height": 32
+                                },
+                                "config": {
+                                  "param": {
+                                    "controllerId": "59d6c605-769c-41e6-9f86-d729df9f7bae",
+                                    "prop": "disabled"
+                                  }
+                                }
+                              },
+                              {
+                                "id": "06fccd9d-5744-407a-8ef8-65d5d4a3e382",
+                                "label": "调试",
+                                "type": "Activity",
+                                "activityName": "system.debug",
+                                "inPorts": [
+                                  {
+                                    "id": "dcebea21-72c6-4ace-8424-eecd880b45c9",
+                                    "name": "input",
+                                    "label": ""
+                                  }
+                                ],
+                                "outPorts": [],
+                                "x6Node": {
+                                  "x": 310,
+                                  "y": 230,
+                                  "width": 88,
+                                  "height": 32
+                                },
+                                "config": {
+                                  "tip": "结束按钮监听"
+                                }
+                              },
+                              {
+                                "id": "ae256691-69c9-4d7d-b295-371f4e81bce6",
+                                "label": "调试",
+                                "type": "Activity",
+                                "activityName": "system.debug",
+                                "inPorts": [
+                                  {
+                                    "id": "3997c941-16de-433e-b95a-2d109d5638a6",
+                                    "name": "input",
+                                    "label": ""
+                                  }
+                                ],
+                                "outPorts": [],
+                                "x6Node": {
+                                  "x": 550,
+                                  "y": 250,
+                                  "width": 88,
+                                  "height": 32
+                                },
+                                "config": {
+                                  "tip": "结束按钮监听2"
+                                }
+                              },
+                              {
                                 "id": "1b899cdd-f0d4-4f95-a3d2-cd4bd176e89d",
                                 "label": "JS代码",
                                 "type": "Activity",
@@ -6731,33 +6803,7 @@
                                   "height": 32
                                 },
                                 "config": {
-                                  "expression": "({ inputValue, outputs }) => {\n  const { output } = outputs;\n  output(!inputValue);\n}"
-                                }
-                              },
-                              {
-                                "id": "29be5fdf-14e3-4055-be5d-e884df2394a8",
-                                "label": "设置属性",
-                                "type": "Activity",
-                                "activityName": "system-react.setProp",
-                                "inPorts": [
-                                  {
-                                    "id": "b5e14c0d-4b01-4bf9-a566-e2ff9777881d",
-                                    "name": "input",
-                                    "label": ""
-                                  }
-                                ],
-                                "outPorts": [],
-                                "x6Node": {
-                                  "x": 530,
-                                  "y": 130,
-                                  "width": 116,
-                                  "height": 32
-                                },
-                                "config": {
-                                  "param": {
-                                    "controllerId": "59d6c605-769c-41e6-9f86-d729df9f7bae",
-                                    "prop": "disabled"
-                                  }
+                                  "expression": "({ inputs, outputs }) => {\nconst {input} = inputs  \nconst { output } = outputs;\n  output(!input);\n}"
                                 }
                               }
                             ],
@@ -6783,11 +6829,33 @@
                                   "nodeId": "29be5fdf-14e3-4055-be5d-e884df2394a8",
                                   "portId": "b5e14c0d-4b01-4bf9-a566-e2ff9777881d"
                                 }
+                              },
+                              {
+                                "id": "355fdb73-346d-4632-bf2d-e3acaccb1a81",
+                                "source": {
+                                  "nodeId": "3e1c0567-8475-4d68-82c1-fe3054057476",
+                                  "portId": "78e8e846-dc8f-42d1-80cf-12fbd1a00bb1"
+                                },
+                                "target": {
+                                  "nodeId": "06fccd9d-5744-407a-8ef8-65d5d4a3e382",
+                                  "portId": "dcebea21-72c6-4ace-8424-eecd880b45c9"
+                                }
+                              },
+                              {
+                                "id": "061b187a-8a30-47d3-b848-14795998dad0",
+                                "source": {
+                                  "nodeId": "1b899cdd-f0d4-4f95-a3d2-cd4bd176e89d",
+                                  "portId": "7a3d9f65-3111-425a-85d1-febd8f6c78a1"
+                                },
+                                "target": {
+                                  "nodeId": "ae256691-69c9-4d7d-b295-371f4e81bce6",
+                                  "portId": "3997c941-16de-433e-b95a-2d109d5638a6"
+                                }
                               }
                             ]
                           }
                         ],
-                        "name": "按钮",
+                        "name": "结束按钮",
                         "global": false
                       },
                       "slots": {},

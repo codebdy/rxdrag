@@ -1,5 +1,5 @@
 import { IComponents } from "@rxdrag/react-shared"
-import React, { useEffect } from "react"
+import React, { memo, useEffect } from "react"
 import { useCallback, useMemo, useState } from "react"
 import { ControllersContext, PreviewComponentsContext, RuntimeEngineContext } from "../contexts"
 import { IComponentsParams } from "../interfaces"
@@ -8,7 +8,7 @@ import { useLogicFlowContext } from "../hooks/useLogicFlowContext"
 import { IComponentRenderSchema } from "../ComponentView"
 import { LOGICFLOW_TYPE_NAME, LogicFlowControllerFactory, SCRIPT_TYPE_NAME, ScriptControllerFactory } from "@rxdrag/minions-runtime-react"
 
-export const RuntimeRoot = (props: {
+export const RuntimeRoot = memo((props: {
   components?: IComponents,
   children: React.ReactNode,
   schema: IComponentRenderSchema,
@@ -36,18 +36,25 @@ export const RuntimeRoot = (props: {
       [LOGICFLOW_TYPE_NAME]: LogicFlowControllerFactory,
       [SCRIPT_TYPE_NAME]: ScriptControllerFactory
     }
-    controllerFactories && setRuntimeEngine(new RuntimeEngine(schema, { ...defaultFactories, ...controllerFactories }, logicFlowContext))
+    const rtEngine = new RuntimeEngine(schema, { ...defaultFactories, ...controllerFactories }, logicFlowContext)
+    setRuntimeEngine(rtEngine)
+
+    return ()=>{
+      rtEngine.destory()
+    }
   }, [controllerFactories, logicFlowContext, schema])
 
   return (
-    <RuntimeEngineContext.Provider value={runtimeEngine}>
-      <ControllersContext.Provider value={runtimeEngine?.globalControllers || {}}>
-        <PreviewComponentsContext.Provider value={params}>
-          {
-            children
-          }
-        </PreviewComponentsContext.Provider>
-      </ControllersContext.Provider>
-    </RuntimeEngineContext.Provider>
+    runtimeEngine ?
+      <RuntimeEngineContext.Provider value={runtimeEngine}>
+        <ControllersContext.Provider value={runtimeEngine?.globalControllers || {}}>
+          <PreviewComponentsContext.Provider value={params}>
+            {
+              children
+            }
+          </PreviewComponentsContext.Provider>
+        </ControllersContext.Provider>
+      </RuntimeEngineContext.Provider>
+      : <>can not create run time engine</>
   )
-}
+})

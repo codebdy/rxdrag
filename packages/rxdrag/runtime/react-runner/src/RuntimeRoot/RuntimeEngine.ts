@@ -24,6 +24,7 @@ export class RuntimeEngine {
     protected controllerFactories: ControllerFactories,
     protected context: unknown,
   ) {
+    console.log("创建控制器引擎")
     //第一步构建所有全局controller
     const glControllers = this.getSchemaControllers(schema, {}, {})
     //转换id以后，存入全局控制器
@@ -79,6 +80,16 @@ export class RuntimeEngine {
     }
 
     return this.controllers[schemaId] as IController;
+  }
+
+  public destory(){
+    //销毁控制器引擎
+    console.log("销毁控制器引擎")
+    for(const ctrlKey of Object.keys(this.controllers)){
+      this.controllers[ctrlKey]?.destory()
+    }
+    this.controllers = {}
+    this.globalControllers = {}
   }
 
   private makeController(meta: IControllerMeta) {
