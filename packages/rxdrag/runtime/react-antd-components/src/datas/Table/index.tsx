@@ -132,6 +132,7 @@ export const Table = memo((
             : {
               position: pagination && [pagination],
               pageSize: pageSize,
+              total: dataSource?.total,
               onChange: handlePageChange
             }
         }
