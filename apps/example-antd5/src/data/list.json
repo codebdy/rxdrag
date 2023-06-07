@@ -1339,6 +1339,11 @@
                           "children": [
                             {
                               "componentName": "Dialog",
+                              "props": {},
+                              "x-controller": {
+                                "id": "c62dc46f-3820-40a5-afc9-00c5f87a0bfc",
+                                "controllerType": "logicFlow"
+                              },
                               "slots": {
                                 "content": {
                                   "componentName": "DialogContent",
@@ -1355,6 +1360,9 @@
                                   "props": {
                                     "title": "编辑",
                                     "type": "text"
+                                  },
+                                  "x-controller": {
+                                    "id": "052607c7-6a16-4175-a952-e0c2dc85c4e5"
                                   },
                                   "slots": {
                                     "icon": {

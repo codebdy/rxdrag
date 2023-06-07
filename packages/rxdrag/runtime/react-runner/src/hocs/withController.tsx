@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactComponent } from "@rxdrag/react-shared"
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
-import { ControllersContext } from "../contexts"
+import { ControllerContext, ControllersContext } from "../contexts"
 import { useControllers } from "../hooks/useControllers"
-import { Controllers, IController, ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
+import { Controllers, IController, ILogicFlowControllerMeta as IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { useLogicFlowContext } from "../hooks/useLogicFlowContext"
 import { useRuntimeEngine } from "../hooks/useRuntimeEngine"
+import { useControllerKey } from "../hooks/useControllerKey"
 
-export function withController(WrappedComponent: ReactComponent, meta: ILogicFlowControllerMeta | undefined, schemaId: string): ReactComponent {
-  if (!meta?.id) {
+export function withController(WrappedComponent: ReactComponent, meta: IControllerMeta | undefined, schemaId: string): ReactComponent {
+  if (!meta?.id || !meta?.controllerType) {
     return WrappedComponent
   }
 
@@ -18,6 +19,7 @@ export function withController(WrappedComponent: ReactComponent, meta: ILogicFlo
     const controllers = useControllers()
     const logicFlowContext = useLogicFlowContext();
     const runtimeEngine = useRuntimeEngine();
+    const controllerKey = useControllerKey(meta, schemaId)
 
     const handlePropsChange = useCallback((name: string, value: any) => {
       setChangeProps((changedProps: any) => {
@@ -25,8 +27,8 @@ export function withController(WrappedComponent: ReactComponent, meta: ILogicFlo
       })
     }, [])
     useEffect(() => {
-      if (meta && runtimeEngine) {
-        const ctrl = runtimeEngine.getOrCreateController(meta, schemaId)
+      if (meta?.controllerType && runtimeEngine && controllerKey) {
+        const ctrl = runtimeEngine.getOrCreateController(meta, controllerKey)
         ctrl.init(controllers);
         const unlistener = ctrl?.subscribeToPropsChange(handlePropsChange)
         ctrl.initEvent?.()
@@ -35,9 +37,10 @@ export function withController(WrappedComponent: ReactComponent, meta: ILogicFlo
           ctrl?.destoryEvent?.()
           ctrl?.destory()
           unlistener?.()
+          //runtimeEngine?.remove(controllerKey)
         }
       }
-    }, [controllers, handlePropsChange, logicFlowContext, runtimeEngine])
+    }, [controllerKey, controllers, handlePropsChange, logicFlowContext, runtimeEngine])
     const newControllers: Controllers = useMemo(() => {
       return controller ? { ...controllers, [controller.id]: controller } : controllers
     }, [controller, controllers])
@@ -49,7 +52,9 @@ export function withController(WrappedComponent: ReactComponent, meta: ILogicFlo
     return (
       controller
         ? <ControllersContext.Provider value={newControllers}>
-          <WrappedComponent {...newProps} />
+          <ControllerContext.Provider value={controller}>
+            <WrappedComponent {...newProps} />
+          </ControllerContext.Provider>
         </ControllersContext.Provider>
         : <>Can not creat controller </>
     )

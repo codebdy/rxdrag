@@ -14,7 +14,7 @@ type ControllerMetas = {
 }
 
 export class RuntimeEngine {
-  //所有控制器，注意id为schema id
+  //所有控制器，注意id为fieldpath + schema id
   controllers: Controllers = {}
 
   //全局控制器 id为controller id
@@ -74,25 +74,29 @@ export class RuntimeEngine {
     return controllers
   }
 
-  public getOrCreateController(meta: IControllerMeta, schemaId: string) {
-    if (!this.controllers[schemaId]) {
-      this.controllers[schemaId] = this.makeController(meta);
+  public getOrCreateController = (meta: IControllerMeta, controllerKey: string) => {
+    if (!this.controllers[controllerKey]) {
+      this.controllers[controllerKey] = this.makeController(meta);
     }
-
-    return this.controllers[schemaId] as IController;
+    return this.controllers[controllerKey] as IController;
   }
 
-  public destory(){
+  public remove(controllerKey: string) {
+    //const control = this.controllers[controllerKey]
+    delete this.controllers[controllerKey]
+  }
+
+  public destory = () => {
     //销毁控制器引擎
     console.log("销毁控制器引擎")
-    for(const ctrlKey of Object.keys(this.controllers)){
+    for (const ctrlKey of Object.keys(this.controllers)) {
       this.controllers[ctrlKey]?.destory()
     }
     this.controllers = {}
     this.globalControllers = {}
   }
 
-  private makeController(meta: IControllerMeta) {
+  private makeController = (meta: IControllerMeta) => {
     if (!meta.controllerType) {
       console.error("Not set controller type")
       return

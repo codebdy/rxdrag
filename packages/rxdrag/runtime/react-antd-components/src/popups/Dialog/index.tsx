@@ -1,7 +1,11 @@
+import { useController } from "@rxdrag/react-runner";
 import { Modal } from "antd";
-import React, { useEffect, useRef } from "react";
-import { CSSProperties, forwardRef, memo, useCallback, useState } from "react"
+import React, { useRef } from "react";
+import { CSSProperties, forwardRef, memo, useCallback } from "react"
 
+/**
+ * 本组件强依赖控制器
+ *  */
 export type DialogProps = {
   open?: boolean,
   title?: React.ReactElement,
@@ -34,20 +38,18 @@ export const Dialog = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) 
     style,
     ...other
   } = props;
-  const [visiable, setVisiable] = useState<boolean>();
   const realRef = useRef<HTMLElement | null>(null);
-
-  useEffect(()=>{
-    setVisiable(open)
-  }, [open])
+  //获取组件控制器
+  const controller = useController();
 
   const handleOpen = useCallback(() => {
-    setVisiable(true)
-  }, [])
+    controller?.setProp("open", true)
+  }, [controller])
 
   const handleClose = useCallback(() => {
-    setVisiable(false)
-  }, [])
+    controller?.setProp("open", false)
+  }, [controller])
+
   const handleRefChange = useCallback((node: HTMLDivElement | null) => {
     realRef.current = node;
     if (typeof ref === 'function') {
@@ -62,11 +64,10 @@ export const Dialog = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) 
       {actionComponent && React.cloneElement(actionComponent, { onClick: handleOpen })}
       <Modal
         title={title}
-        open={visiable}
+        open={open}
         footer={footer}
         onCancel={handleClose}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        getContainer={realRef.current ? () => realRef.current as any : undefined}
+        getContainer={realRef.current ? () => realRef.current as HTMLElement : undefined}
       >
         {content}
       </Modal>

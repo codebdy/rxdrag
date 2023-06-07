@@ -67,5 +67,6 @@ export const DialogMaterial: IComponentMaterial = {
   behaviorRule: {
     droppable: false,
     noPlaceholder: true,
-  }
+  },
+  logicalProps:["open"]
 }
