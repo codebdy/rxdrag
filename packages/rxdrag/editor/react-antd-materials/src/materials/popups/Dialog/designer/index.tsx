@@ -6,6 +6,7 @@ import { forwardRef, memo, useCallback, useRef, useState } from "react"
 import { CloseButton } from "../../CloseButton";
 import { PopupButton } from "../../PopupButton";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProps & { [RXID_ATTR_NAME]?: string }, ref) => {
   const {
     title,
@@ -34,7 +35,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
     setHover(false);
   }, []);
 
-  const refreshSelect = useCallback((time: number = 20) => {
+  const refreshSelect = useCallback((time = 20) => {
     if (doc && node) {
       setTimeout(() => {
         engine?.getActions().selectNodes([node.id], doc.id)
@@ -42,7 +43,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
     }
   }, [doc, engine, node])
 
-  const getModalEl = useCallback(()=>{
+  const getModalEl = useCallback(() => {
     return realRef.current?.getElementsByClassName("ant-modal-content")?.[0]
   }, [])
   const addRxdToPop = useCallback(() => {
@@ -63,7 +64,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
   const handleAfterClose = useCallback(() => {
     refreshSelect()
   }, [refreshSelect])
-  const handlePopRefChange = useCallback((popEl: HTMLElement | null) => {
+  const handlePopRefChange = useCallback(() => {
     popupRef.current = getModalEl() as HTMLDivElement
     addRxdToPop()
   }, [addRxdToPop, getModalEl])
@@ -83,11 +84,11 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProp
       <Modal
         title={title}
         open={open}
-        footer={footer}
+        footer={footer || false}
         closable={closable}
         onCancel={handleClose}
-        afterClose= {handleAfterClose}
-        getContainer={realRef.current ? () => realRef.current as any : undefined}
+        afterClose={handleAfterClose}
+        getContainer={realRef.current ? () => realRef.current as HTMLDivElement : undefined}
         {...other}>
         {content}
         {

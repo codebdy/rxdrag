@@ -35,7 +35,7 @@ export const DialogMaterial: IComponentMaterial = {
               {
                 componentName:"Text",
                 props: {
-                  content: name,
+                  value: name,
                 }
               }
             ]

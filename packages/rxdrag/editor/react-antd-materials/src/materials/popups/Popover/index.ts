@@ -29,7 +29,7 @@ export const PopoverMaterial: IComponentMaterial = {
           title: {
             componentName: "Text",
             props: {
-              content: "Popover Title",
+              value: "Popover Title",
             }
           },
           content: {

@@ -37,6 +37,7 @@ export function useRegisterComponentMaterial() {
       if (slotMaterial === true || slotMaterial === undefined || isStr(slotMaterial)) {
         continue
       }
+      console.log("哈哈", key, slotMaterial)
       register(slotMaterial as IComponentConfig<ReactComponent>, true)
     }
 

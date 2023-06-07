@@ -1347,7 +1347,7 @@
                                     {
                                       "componentName": "Text",
                                       "props": {
-                                        "content": "Dialog"
+                                        "value": "Dialog"
                                       },
                                       "slots": {},
                                       "children": []

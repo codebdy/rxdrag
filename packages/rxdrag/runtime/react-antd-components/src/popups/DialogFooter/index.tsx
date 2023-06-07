@@ -8,7 +8,7 @@ export type DialogFooterProps = {
 
 export const DialogFooter = memo(forwardRef<HTMLDivElement>((props: DialogFooterProps, ref) => {
   const { children, ...other } = props;
-  return <div className="rx-dialog-footer" {...other}>
+  return <div className="rx-dialog-footer" ref={ref} {...other}>
     {children}
   </div>
 }))

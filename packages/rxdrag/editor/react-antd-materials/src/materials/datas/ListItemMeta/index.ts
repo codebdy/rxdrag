@@ -30,13 +30,13 @@ export const ListItemMetaMaterial: IComponentMaterial = {
           title:{
             componentName:"Text",
             props:{
-              content:"Title"
+              value:"Title"
             }
           },
           description:{
             componentName:"Text",
             props:{
-              content:"Description"
+              value:"Description"
             }
           },
         }

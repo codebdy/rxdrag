@@ -2,14 +2,16 @@ export const locales = {
   "zh-CN": {
     title: "对话框",
     settings: {
-      footer:"Footer"
+      title:"标题",
+      footer:"页脚"
     }
 
   },
   'en-US': {
     title: "Dialog",
     settings: {
-      footer:"页脚"
+      title:"Title",
+      footer:"Footer"
     }
   }
 }

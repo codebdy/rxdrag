@@ -35,7 +35,7 @@ export const DrawerMaterial: IComponentMaterial = {
               {
                 componentName: "Text",
                 props: {
-                  content: name,
+                  value: name,
                 }
               }
             ]
