@@ -71,6 +71,7 @@ export const settingLocales = {
       init: "初始化",
       destory: "销毁",
       onClick: "点击",
+      onChange: "输入",
 
       boolean: "布尔",
       number: "数字",
@@ -173,7 +174,8 @@ export const settingLocales = {
       global: "Global",
       init: "Init",
       destory: "Destory",
-      onClick: "Click",
+      onClick: "Click",      
+      onChange: "On Change",
 
       boolean: "Boolean",
       number: "Number",

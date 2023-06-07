@@ -118,7 +118,65 @@
                                 "id": "67ba7358-b919-4234-8ae9-b0a0d666d3c3",
                                 "controllerType": "logicFlow",
                                 "name": "查询输入",
-                                "global": true
+                                "global": true,
+                                "events": [
+                                  {
+                                    "id": "1859bc5a-4331-4ab4-8591-4dc3b9e94365",
+                                    "name": "onChange",
+                                    "label": "输入",
+                                    "nodes": [
+                                      {
+                                        "id": "3b45d336-0d2a-4c23-8f01-abefc8de7aea",
+                                        "label": "输入",
+                                        "type": "Start",
+                                        "activityName": "start",
+                                        "inPorts": [],
+                                        "outPorts": [],
+                                        "x6Node": {
+                                          "x": 190,
+                                          "y": 160,
+                                          "width": 20,
+                                          "height": 20
+                                        }
+                                      },
+                                      {
+                                        "id": "8fe4a9c5-b87d-43e4-876b-7a9e330d2ab1",
+                                        "label": "调试",
+                                        "type": "Activity",
+                                        "activityName": "system.debug",
+                                        "inPorts": [
+                                          {
+                                            "id": "757c2b9b-6d67-4c3f-9304-09a42f26d37d",
+                                            "name": "input",
+                                            "label": ""
+                                          }
+                                        ],
+                                        "outPorts": [],
+                                        "x6Node": {
+                                          "x": 330,
+                                          "y": 240,
+                                          "width": 88,
+                                          "height": 32
+                                        },
+                                        "config": {
+                                          "tip": "查询输入"
+                                        }
+                                      }
+                                    ],
+                                    "lines": [
+                                      {
+                                        "id": "c2d6bebb-7f39-459b-8d75-e44650c17e66",
+                                        "source": {
+                                          "nodeId": "3b45d336-0d2a-4c23-8f01-abefc8de7aea"
+                                        },
+                                        "target": {
+                                          "nodeId": "8fe4a9c5-b87d-43e4-876b-7a9e330d2ab1",
+                                          "portId": "757c2b9b-6d67-4c3f-9304-09a42f26d37d"
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
                               },
                               "slots": {},
                               "children": []

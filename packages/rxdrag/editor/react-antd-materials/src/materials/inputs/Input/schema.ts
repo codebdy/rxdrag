@@ -104,7 +104,13 @@ const options: SchemaOptions = {
   slotsSchemas:inputSlots,
   fieldOptions: {
     canBindField: true,
-  }
+  },
+  events: [
+    {
+      name: "onChange",
+      label: "$onChange",
+    }
+  ],
 }
 export const inputSchema: INodeSchema = createSchema(options)
 
