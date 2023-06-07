@@ -1,6 +1,5 @@
 import Mock from "mockjs";
 import { customers, todoList } from "./data";
-import getQueryVariable from "./getVariable";
 import { users1, users2 } from "./data/user";
 
 Mock.mock("/api/todo-list", "get", () => {
@@ -11,12 +10,20 @@ Mock.mock("/api/customers", "get", () => {
   return customers
 })
 
-Mock.mock(RegExp("/api/users?.*"), "get", (request) => {
-  const page = getQueryVariable("page", request.url)
+let userSeed = 1;
+
+Mock.mock(RegExp("/api/users?.*"), "get", () => {
+  //const page = getQueryVariable("page", request.url)
+  
   //const pageSize = getQueryVariable("pageSize", request.url)
-  if (page) {
+  if(userSeed == 1){
+    userSeed = 2
+
+    return users1
+  }
+  if(userSeed == 2){
+    userSeed = 1
     return users2
   }
-
   return users1
 })
