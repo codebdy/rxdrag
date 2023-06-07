@@ -64,17 +64,19 @@ export type TableProps = {
   dataSource?: IDataSource,
   pagination?: false | 'topLeft' | 'topCenter' | 'topRight' | 'bottomLeft' | 'bottomCenter' | 'bottomRight',
   pageSize?: number,
+  currentPage?: number,
   rowKey?: string,
-  onPageChange?: (page: number, pageSize?: number) => void
+  onPageChange?: (currentPage: number, pageSize?: number) => void
 }
 
 // 本控件强依赖ComponentRender
 export const Table = memo((
   props: TableProps
 ) => {
-  const { header, footer, dataSource, pagination, summary, pageSize, rowKey = "id", onPageChange, ...other } = props
+  const { header, footer, dataSource, pagination, summary, pageSize, rowKey = "id", onPageChange, currentPage, ...other } = props
   const [id] = useState(createUuid())
   const nodeSchema = useComponentSchema()
+
   const columns = useMemo(() => {
     return nodeSchema?.children?.map(child => {
       return {
@@ -127,6 +129,7 @@ export const Table = memo((
           pagination === false
             ? pagination
             : {
+              current: currentPage,
               position: pagination && [pagination],
               pageSize: pageSize,
               total: dataSource?.total,
