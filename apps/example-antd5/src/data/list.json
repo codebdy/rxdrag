@@ -1333,10 +1333,61 @@
                         {
                           "componentName": "TableColumn",
                           "props": {
-                            "title": "Column3"
+                            "title": "操作"
                           },
                           "slots": {},
-                          "children": []
+                          "children": [
+                            {
+                              "componentName": "Dialog",
+                              "slots": {
+                                "title": {
+                                  "componentName": "DialogTitle",
+                                  "slots": {},
+                                  "children": [
+                                    {
+                                      "componentName": "Text",
+                                      "props": {
+                                        "content": "Dialog"
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                "content": {
+                                  "componentName": "DialogContent",
+                                  "slots": {},
+                                  "children": []
+                                },
+                                "footer": {
+                                  "componentName": "DialogFooter",
+                                  "slots": {},
+                                  "children": []
+                                },
+                                "actionComponent": {
+                                  "componentName": "Button",
+                                  "props": {
+                                    "title": "编辑",
+                                    "type": "text"
+                                  },
+                                  "slots": {
+                                    "icon": {
+                                      "componentName": "IconView",
+                                      "props": {
+                                        "icon": {
+                                          "iconKey": "FormOutlined"
+                                        }
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  },
+                                  "children": []
+                                }
+                              },
+                              "children": []
+                            }
+                          ]
                         }
                       ]
                     }
