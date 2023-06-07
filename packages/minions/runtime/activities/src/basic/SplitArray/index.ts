@@ -19,7 +19,7 @@ export class SplitArray extends AbstractActivity {
       return;
     }
 
-    this.meta.inPorts?.forEach((port, index) => {
+    this.meta.outPorts?.forEach((port, index) => {
       if (port.name) {
         const value = inputValue[index]
         this.next(value, port.name)

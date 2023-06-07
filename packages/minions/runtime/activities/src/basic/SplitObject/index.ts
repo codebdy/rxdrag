@@ -19,7 +19,7 @@ export class SplitObject extends AbstractActivity {
       return;
     }
 
-    this.meta.inPorts?.forEach((port) => {
+    this.meta.outPorts?.forEach((port) => {
       if (port.name) {
         const value = inputValue[port.name]
         this.next(value, port.name)

@@ -20,7 +20,7 @@
 // designer自带属性编辑组件
 
 import { memo, useCallback, useMemo, useState } from "react"
-import { Table as AntdTable } from "antd"
+import { Table as AntdTable, TablePaginationConfig } from "antd"
 import { IDataSource } from "../IDataSource"
 import { createUuid } from "@rxdrag/shared";
 import { ComponentView, IBindParams, useComponentSchema } from "@rxdrag/react-runner";
@@ -65,7 +65,7 @@ export type TableProps = {
   pagination?: false | 'topLeft' | 'topCenter' | 'topRight' | 'bottomLeft' | 'bottomCenter' | 'bottomRight',
   pageSize?: number,
   rowKey?: string,
-  onPageChange?: (page: number, pageSize: number) => void
+  onPageChange?: (page: number, pageSize?: number) => void
 }
 
 // 本控件强依赖ComponentRender
@@ -90,9 +90,6 @@ export const Table = memo((
     })
   }, [nodeSchema?.children])
 
-  const handleChange = useCallback(() => {
-    console.error("Not implement")
-  }, [])
   const TableRow: React.FC<RowProps> = useMemo(() => (props) => {
     const { index, ...other } = props
     const row = dataSource?.nodes?.[index]
@@ -106,8 +103,8 @@ export const Table = memo((
     );
   }, [dataSource?.nodes]);
 
-  const handlePageChange = useCallback((page: number, pageSize: number) => {
-    onPageChange?.(page, pageSize)
+  const handleChange = useCallback((pagination: TablePaginationConfig) => {
+    onPageChange?.(pagination.current || 0, pagination.pageSize)
   }, [onPageChange])
 
   return (
@@ -133,7 +130,6 @@ export const Table = memo((
               position: pagination && [pagination],
               pageSize: pageSize,
               total: dataSource?.total,
-              onChange: handlePageChange
             }
         }
         summary={() => {
