@@ -1361,11 +1361,34 @@
                                           "props": {
                                             "label": "登录名"
                                           },
-                                          "locked": true,
+                                          "locked": false,
+                                          "x-field": {
+                                            "name": "login_name",
+                                            "reactionMeta": {
+                                              "display": {},
+                                              "pattern": {},
+                                              "hidden": {},
+                                              "disabled": {},
+                                              "readonly": {}
+                                            }
+                                          },
                                           "slots": {},
                                           "children": [
                                             {
                                               "componentName": "Input",
+                                              "props": {},
+                                              "x-field": {
+                                                "params": {
+                                                  "withBind": true
+                                                },
+                                                "reactionMeta": {
+                                                  "display": {},
+                                                  "pattern": {},
+                                                  "hidden": {},
+                                                  "disabled": {},
+                                                  "readonly": {}
+                                                }
+                                              },
                                               "slots": {},
                                               "children": []
                                             }
@@ -1376,11 +1399,34 @@
                                           "props": {
                                             "label": "用户名"
                                           },
-                                          "locked": true,
+                                          "locked": false,
+                                          "x-field": {
+                                            "name": "name",
+                                            "reactionMeta": {
+                                              "display": {},
+                                              "pattern": {},
+                                              "hidden": {},
+                                              "disabled": {},
+                                              "readonly": {}
+                                            }
+                                          },
                                           "slots": {},
                                           "children": [
                                             {
                                               "componentName": "Input",
+                                              "props": {},
+                                              "x-field": {
+                                                "params": {
+                                                  "withBind": true
+                                                },
+                                                "reactionMeta": {
+                                                  "display": {},
+                                                  "pattern": {},
+                                                  "hidden": {},
+                                                  "disabled": {},
+                                                  "readonly": {}
+                                                }
+                                              },
                                               "slots": {},
                                               "children": []
                                             }
