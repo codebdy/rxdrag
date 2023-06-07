@@ -104,7 +104,6 @@ export class DocumentImpl implements IDocument {
           element = slotElement
         }
       }
-
       const nodes = paseNodes(this.engine, this.id, element);
       this.receiveNodes(nodes)
       const playload: AddNodesPayload = {

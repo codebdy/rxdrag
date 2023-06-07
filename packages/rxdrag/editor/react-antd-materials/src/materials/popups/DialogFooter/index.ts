@@ -14,6 +14,14 @@ export const DialogFooterMaterial: IComponentMaterial = {
     //readOnly: true,
   },
 
+  resource: {
+    name: name,
+    elements: [
+      {
+        componentName: name,
+      }
+    ],
+  },
   behaviorRule: {
     droppable: true,
   }

@@ -9,7 +9,6 @@ export interface ITextProps {
 }
 export const Text = memo(forwardRef<HTMLDivElement, ITypographyProps & ITextProps>((props, ref) => {
   const { value, textType = TypographyType.Text, formatMask, ...other } = props;
-  console.log("哈哈", props)
   const text = useFormat(value, textType, formatMask)
 
   return (<AntdTypography.Text ref={ref} {...other}>

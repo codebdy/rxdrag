@@ -1340,20 +1340,6 @@
                             {
                               "componentName": "Dialog",
                               "slots": {
-                                "title": {
-                                  "componentName": "DialogTitle",
-                                  "slots": {},
-                                  "children": [
-                                    {
-                                      "componentName": "Text",
-                                      "props": {
-                                        "value": "Dialog"
-                                      },
-                                      "slots": {},
-                                      "children": []
-                                    }
-                                  ]
-                                },
                                 "content": {
                                   "componentName": "DialogContent",
                                   "slots": {},
@@ -1383,6 +1369,20 @@
                                     }
                                   },
                                   "children": []
+                                },
+                                "title": {
+                                  "componentName": "DialogTitle",
+                                  "slots": {},
+                                  "children": [
+                                    {
+                                      "componentName": "Text",
+                                      "props": {
+                                        "value": "用户编辑"
+                                      },
+                                      "slots": {},
+                                      "children": []
+                                    }
+                                  ]
                                 }
                               },
                               "children": []

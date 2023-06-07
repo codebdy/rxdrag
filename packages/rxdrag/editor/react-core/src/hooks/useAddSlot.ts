@@ -7,8 +7,8 @@ export function useAddSlot(nodeId?: ID) {
 
   const addSlot = useCallback((name: string) => {
     if (nodeId) {
-      const document = engine?.getNodeDocument(nodeId || "")
-      document?.addSlot(nodeId, name)
+      const doc = engine?.getNodeDocument(nodeId || "")
+      doc?.addSlot(nodeId, name)
     }
   }, [engine, nodeId])
 

@@ -14,6 +14,23 @@ export const DialogTitleMaterial: IComponentMaterial = {
     //readOnly: true,
   },
 
+  resource: {
+    name: name,
+    elements: [
+      {
+        componentName: name,
+        children: [
+          {
+            componentName: "Text",
+            props: {
+              value: name,
+            }
+          }
+        ]
+      }
+    ],
+  },
+
   behaviorRule: {
     droppable: true,
   }
