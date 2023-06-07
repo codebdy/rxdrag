@@ -59,5 +59,6 @@ export const TableMaterial: IComponentMaterial = {
   behaviorRule: {
     droppable: true,
     noPlaceholder: true,
-  }
+  },
+  logicalProps:["dataSource"]
 }

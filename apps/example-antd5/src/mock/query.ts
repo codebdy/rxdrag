@@ -11,11 +11,10 @@ Mock.mock("/api/customers", "get", () => {
   return customers
 })
 
-
-Mock.mock("/api/users?.*", "get", (request) => {
+Mock.mock(RegExp("/api/users?.*"), "get", (request) => {
   const page = getQueryVariable("page", request.url)
   //const pageSize = getQueryVariable("pageSize", request.url)
-  if(page){
+  if (page) {
     return users2
   }
 

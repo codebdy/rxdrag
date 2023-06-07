@@ -15,7 +15,7 @@ export class ObjectToUrl extends AbstractActivity {
     const params: string[] = []
 
     for (const key of Object.keys(inputValue || {})) {
-      params.push(key + "=" + inputValue?.[key])
+      inputValue?.[key] && params.push(key + "=" + inputValue?.[key])
     }
     this.next(params.join("&"))
   }

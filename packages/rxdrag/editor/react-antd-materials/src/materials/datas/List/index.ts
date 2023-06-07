@@ -71,5 +71,6 @@ export const ListMaterial: IComponentMaterial = {
   behaviorRule: {
     droppable: false,
     noPlaceholder: false,
-  }
+  },
+  logicalProps:["dataSource"]
 }

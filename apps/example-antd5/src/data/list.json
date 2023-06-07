@@ -699,42 +699,6 @@
                                 }
                               },
                               {
-                                "id": "99f982fb-d0f7-4cef-9b6f-30cff017b58d",
-                                "label": "列表源",
-                                "type": "Activity",
-                                "activityName": "example.MultipleQuery",
-                                "inPorts": [
-                                  {
-                                    "id": "c853e09f-7ef1-4f83-93b8-2b97df7fa295",
-                                    "name": "input",
-                                    "label": ""
-                                  }
-                                ],
-                                "outPorts": [
-                                  {
-                                    "id": "f628416b-ba3f-4c03-8e14-0dae951ad5a2",
-                                    "name": "dataOut",
-                                    "label": "数据输出"
-                                  },
-                                  {
-                                    "id": "d85e79d2-25fa-4001-9ff7-e04c0123d250",
-                                    "name": "querying",
-                                    "label": "查询中"
-                                  },
-                                  {
-                                    "id": "44648f9a-097e-48e6-8e77-522a9062382f",
-                                    "name": "error",
-                                    "label": "错误"
-                                  }
-                                ],
-                                "x6Node": {
-                                  "x": 830,
-                                  "y": 270,
-                                  "width": 102,
-                                  "height": 48
-                                }
-                              },
-                              {
                                 "id": "118ee3ca-6c66-4fa0-bf16-cb8cfc81a420",
                                 "label": "转URL参数",
                                 "type": "Activity",
@@ -774,13 +738,75 @@
                                 ],
                                 "outPorts": [],
                                 "x6Node": {
-                                  "x": 680,
-                                  "y": 370,
+                                  "x": 910,
+                                  "y": 120,
+                                  "width": 115,
+                                  "height": 48
+                                },
+                                "config": {
+                                  "tip": "查询参数"
+                                }
+                              },
+                              {
+                                "id": "88bffa17-1b12-4a69-a376-279b4bf0d858",
+                                "label": "调试",
+                                "type": "Activity",
+                                "activityName": "system.debug",
+                                "inPorts": [
+                                  {
+                                    "id": "8b857d0f-aa6e-4132-ac50-b4513c559081",
+                                    "name": "input",
+                                    "label": ""
+                                  }
+                                ],
+                                "outPorts": [],
+                                "x6Node": {
+                                  "x": 1150,
+                                  "y": 190,
                                   "width": 88,
                                   "height": 32
                                 },
                                 "config": {
-                                  "tip": "每页条数"
+                                  "tip": "查询结果"
+                                }
+                              },
+                              {
+                                "id": "99f982fb-d0f7-4cef-9b6f-30cff017b58d",
+                                "label": "列表源",
+                                "type": "Activity",
+                                "activityName": "example.MultipleQuery",
+                                "inPorts": [
+                                  {
+                                    "id": "c853e09f-7ef1-4f83-93b8-2b97df7fa295",
+                                    "name": "input",
+                                    "label": ""
+                                  }
+                                ],
+                                "outPorts": [
+                                  {
+                                    "id": "f628416b-ba3f-4c03-8e14-0dae951ad5a2",
+                                    "name": "dataOut",
+                                    "label": "数据输出"
+                                  },
+                                  {
+                                    "id": "d85e79d2-25fa-4001-9ff7-e04c0123d250",
+                                    "name": "querying",
+                                    "label": "查询中"
+                                  },
+                                  {
+                                    "id": "44648f9a-097e-48e6-8e77-522a9062382f",
+                                    "name": "error",
+                                    "label": "错误"
+                                  }
+                                ],
+                                "x6Node": {
+                                  "x": 830,
+                                  "y": 270,
+                                  "width": 102,
+                                  "height": 48
+                                },
+                                "config": {
+                                  "rootUrl": "/api/users"
                                 }
                               }
                             ],
@@ -882,14 +908,25 @@
                                 }
                               },
                               {
-                                "id": "1d8788f7-4cf5-4b24-aad2-7fbf29da2091",
+                                "id": "1948019a-985d-4a2c-a628-a00a8d86e4ff",
                                 "source": {
-                                  "nodeId": "2018c65b-f3ce-405c-9ef9-5e435ac091f8",
-                                  "portId": "a7fbad88-18ae-451c-8c36-e6500f9857cf"
+                                  "nodeId": "118ee3ca-6c66-4fa0-bf16-cb8cfc81a420",
+                                  "portId": "4939b534-eaa6-4ada-b484-68f6218bf0cd"
                                 },
                                 "target": {
                                   "nodeId": "269f2b26-f2fa-47e0-860e-d5f7efb3c437",
                                   "portId": "e7b0b8a2-6b49-4726-8de7-54a24cfd3afc"
+                                }
+                              },
+                              {
+                                "id": "52511160-bcc5-4436-8148-e89be5fe6592",
+                                "source": {
+                                  "nodeId": "99f982fb-d0f7-4cef-9b6f-30cff017b58d",
+                                  "portId": "f628416b-ba3f-4c03-8e14-0dae951ad5a2"
+                                },
+                                "target": {
+                                  "nodeId": "88bffa17-1b12-4a69-a376-279b4bf0d858",
+                                  "portId": "8b857d0f-aa6e-4132-ac50-b4513c559081"
                                 }
                               }
                             ]
