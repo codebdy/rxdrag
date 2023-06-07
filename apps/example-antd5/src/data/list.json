@@ -1348,7 +1348,47 @@
                                 "content": {
                                   "componentName": "DialogContent",
                                   "slots": {},
-                                  "children": []
+                                  "children": [
+                                    {
+                                      "componentName": "Form",
+                                      "props": {
+                                        "colon": false
+                                      },
+                                      "slots": {},
+                                      "children": [
+                                        {
+                                          "componentName": "FormItem",
+                                          "props": {
+                                            "label": "登录名"
+                                          },
+                                          "locked": true,
+                                          "slots": {},
+                                          "children": [
+                                            {
+                                              "componentName": "Input",
+                                              "slots": {},
+                                              "children": []
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "componentName": "FormItem",
+                                          "props": {
+                                            "label": "用户名"
+                                          },
+                                          "locked": true,
+                                          "slots": {},
+                                          "children": [
+                                            {
+                                              "componentName": "Input",
+                                              "slots": {},
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
                                 },
                                 "footer": {
                                   "componentName": "DialogFooter",

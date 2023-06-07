@@ -22,7 +22,7 @@ export const FormItemMaterial: IComponentMaterial = {
         props: {
           label: "FormItem"
         },
-        locked: true,
+        locked: false,
       }
     ]
   },
