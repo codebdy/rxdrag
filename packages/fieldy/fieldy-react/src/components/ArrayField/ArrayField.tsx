@@ -6,13 +6,15 @@ import { Field } from "../Field"
 export const ArrayField = memo((
   props: {
     name: string,
-    value?: any[],
+    value?: unknown[],
+    initialValue?: unknown[],
+    defaultValue?: unknown[],
     children?: React.ReactNode
   }
 ) => {
-  const { name, value, children } = props
+  const { name, value, initialValue, defaultValue, children } = props
   return (
-    <Field name={name} value={value} type="array">
+    <Field name={name} value={value} initialValue={initialValue} defaultValue={defaultValue} type="array">
       {children}
     </Field>
   )

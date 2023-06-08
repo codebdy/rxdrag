@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-case-declarations */
 import { isStr } from "@rxdrag/shared";
-import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload, SetFormValuePayload, SET_FORM_FLAT_VALUE, SET_MULTI_FIELD_VALUES, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, FieldActionPayload } from "../../../actions";
+import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload, SetFormValuePayload, SET_FORM_FLAT_VALUE, SET_MULTI_FIELD_VALUES, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, FieldActionPayload, SET_FIELD_INITAL_VALUE } from "../../../actions";
 import { getChildFields, makePath } from "../../../funcs/path";
 import { FieldsState, FormValue, IAction, IFieldSchema } from "../../../interfaces";
 import { fieldReduce } from "./field";
@@ -40,6 +40,10 @@ export function fieldsReduer(state: FieldsState, action: IAction<unknown>): Fiel
       const flatInitialValues = patFlatValues((action.payload as SetFormValuePayload).value, state)
       return setInitialFlatValues(state, flatInitialValues)
     }
+    // case SET_FIELD_INITAL_VALUE:{
+    //   //@@ 未完成
+    //   return state;
+    // }
     case SET_FORM_VALUE: {
       const flatValues = patFlatValues((action.payload as SetFormValuePayload).value, state)
       return setFlatValues(state, flatValues)

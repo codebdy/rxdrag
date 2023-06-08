@@ -101,7 +101,7 @@ export type FormState = {
   modified?: boolean;
   fields: FieldsState;
   fieldSchemas: IFieldSchema[];
-  initialValue?: FormValue | undefined ;
+  initialValue?: FormValue | undefined;
   value?: unknown;
 }
 
@@ -116,6 +116,8 @@ export interface IFormNode {
   setValue(value: unknown): void
   setInitialValue(value: unknown): void
   inpuValue(value: unknown): void
+  mount(): void
+  unmount(): void
   validate(): void
 
   onInit(listener: Listener): Unsubscribe

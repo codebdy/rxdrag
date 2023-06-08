@@ -21,7 +21,6 @@ export function formsReduce(state: FormsState, action: IAction<FormActionPlayloa
         }
     }
     const formSate = state[action.payload.formName]
-    console.log("formsReduce", state, action)
     if (action.payload.formName && formSate) {
       const newState = {
         ...state,

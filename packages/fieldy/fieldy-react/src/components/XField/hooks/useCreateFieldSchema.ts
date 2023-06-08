@@ -1,7 +1,7 @@
 import { IFieldSchema } from "@rxdrag/fieldy"
-import { FieldType } from "@rxdrag/schema"
 import { useMemo, useRef } from "react"
 import { useFieldPath } from "../../../hooks/useFieldPath"
+import { FieldType } from "@rxdrag/fieldy-schema"
 
 export function useCreateFieldSchema(name: string, type?: FieldType) {
   const parentPath = useFieldPath() || ""

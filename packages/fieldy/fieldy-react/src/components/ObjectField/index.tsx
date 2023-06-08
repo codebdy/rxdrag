@@ -5,14 +5,16 @@ import { Field } from "../Field"
 export const ObjectField = memo((
   props: {
     name: string,
+    initialValue?: unknown,
     value?: unknown,
+    defaultValue?: unknown,
     children?: React.ReactNode
   }
 ) => {
-  const { name, value, children } = props
+  const { name, value, initialValue, defaultValue, children } = props
 
   return (
-    <Field name={name} value={value} type="object">
+    <Field name={name} value={value} initialValue={initialValue} defaultValue={defaultValue} type="object">
       {children}
     </Field>
   )

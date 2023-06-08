@@ -8,15 +8,17 @@ import { FieldType } from "@rxdrag/fieldy-schema"
 export const Field = memo((
   props: {
     name: string,
+    initialValue?: unknown,
     value?: unknown,
+    defaultValue?: unknown,
     children?: React.ReactNode,
     type?: FieldType,
   }
 ) => {
-  const { name, value, children, type } = props
+  const { name, value, initialValue, defaultValue, children, type } = props
   const fieldMeta = useCreateFieldSchema(name, type)
   return (
-    <XField fieldMeta={fieldMeta} initialValue={value}>
+    <XField fieldMeta={fieldMeta} initialValue={initialValue} value={value} defaultValue={defaultValue}>
       {children}
     </XField>
   )

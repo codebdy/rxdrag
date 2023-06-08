@@ -4,10 +4,9 @@ import { useFieldSchemas } from "./useFieldSchemas";
 import { useFieldPath, useForm } from "../../../hooks";
 import { IFieldMeta } from "@rxdrag/fieldy-schema";
 
-export function useRegisterField(fieldMeta: IFieldMeta, initialValue?: unknown) {
+export function useRegisterField(fieldMeta: IFieldMeta) {
   const [field, setField] = useState<IField>()
   const parentPath = useFieldPath() || ""
-
   const form = useForm()
 
   // 处理带点的name，比如：props.style.fontSize， 返回：props, props.style, props.style.fontSize三个Field meta
@@ -19,15 +18,7 @@ export function useRegisterField(fieldMeta: IFieldMeta, initialValue?: unknown) 
       for (let i = 0; i < fieldSchemas.length; i++) {
         const fieldSchema = fieldSchemas[i]
         const field = form.registerField(fieldSchema)
-        if(fieldMeta.type === "fragment"){
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          fieldSchema.name && field.setInitialValue((initialValue as any)?.[fieldSchema.name])
-        }
-        if (i === fieldSchemas.length - 1) {
-          field.setInitialValue(initialValue)
-          //返回最后一个field，比如props.style.fontSize
-          setField(field)
-        }
+        setField(field)
       }
       return () => {
         for(const fieldSchema of fieldSchemas){
@@ -35,7 +26,7 @@ export function useRegisterField(fieldMeta: IFieldMeta, initialValue?: unknown) 
         }
       }
     }
-  }, [fieldMeta, fieldSchemas, form, initialValue])
+  }, [fieldMeta, fieldSchemas, form])
 
   return field
 }
