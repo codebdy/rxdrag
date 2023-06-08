@@ -112,7 +112,7 @@ export interface FormValue {
 export interface IFormNode {
   fieldy: IFieldyEngine
   initialValue?: unknown
-  value?: unknown
+  getValue(): unknown
   setValue(value: unknown): void
   setInitialValue(value: unknown): void
   inpuValue(value: unknown): void

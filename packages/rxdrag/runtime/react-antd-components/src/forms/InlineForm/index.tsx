@@ -14,7 +14,7 @@ export const InlineForm = memo((
   const value = useFieldValue();
 
   return (
-    <Form value={value as object | undefined} {...other}>
+    <Form initialValue={value as object | undefined} {...other}>
       {children}
     </Form>
   )

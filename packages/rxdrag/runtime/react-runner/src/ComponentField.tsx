@@ -14,7 +14,7 @@ export const ComponentField = memo((
 
   const view = useMemo(() => {
     if (fieldMeta?.name || fieldMeta?.type === "fragment") {
-      const initialValue = parsePathValue(parentField?.value, fieldMeta.name)
+      const initialValue = parsePathValue(parentField?.initialValue, fieldMeta.name)
       return <XField fieldMeta={fieldMeta} initialValue={initialValue}>
         {children}
       </XField>

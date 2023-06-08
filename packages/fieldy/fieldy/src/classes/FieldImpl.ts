@@ -17,7 +17,7 @@ export class FieldImpl implements IField {
     }
   }
 
-  get value() {
+  getValue() {
     return this.fieldy.getFieldValue(this.form.name, this.fieldPath)
   }
 

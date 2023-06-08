@@ -4,10 +4,9 @@ import { useField } from "./useField";
 export function useFieldValue() {
   const [value, setValue] = useState<unknown>()
   const field = useField()
-
   useEffect(() => {
-    setValue(field?.value)
-  }, [field?.value])
+    setValue(field?.getValue())
+  }, [field])
 
   const handleValueChange = useCallback((val?: unknown) => {
     setValue(val)

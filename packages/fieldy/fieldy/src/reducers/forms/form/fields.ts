@@ -5,7 +5,7 @@ import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIE
 import { getChildFields, makePath } from "../../../funcs/path";
 import { FieldsState, FormValue, IAction, IFieldSchema } from "../../../interfaces";
 import { fieldReduce } from "./field";
-import { DisplayType, Expression, PatternType } from "@rxdrag/schema";
+import { DisplayType, Expression, PatternType } from "@rxdrag/fieldy-schema";
 
 let idSeed = 1
 function makeId() {

@@ -20,7 +20,7 @@ export class ReadFieldValue extends AbstractActivity<IFieldConfig, IFieldyLogicF
     if(path){
       const field = this.context?.form?.getField(path)
       if(field){
-        this.next(field.value)
+        this.next(field.getValue())
       }
     }
   }

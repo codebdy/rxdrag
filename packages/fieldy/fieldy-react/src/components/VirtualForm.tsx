@@ -14,7 +14,6 @@ export const VirtualForm = (props: {
   const { initialValue, defaultValue, value, children, onValueChange } = props
   const [form, setForm] = useState<IForm>()
   const fieldy = useFieldy()
-
   useEffect(() => {
     if (fieldy) {
       const form = fieldy.createForm()

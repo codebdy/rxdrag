@@ -33,9 +33,8 @@ export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMet
       return field?.onValueChange(handleValueChange)
     }, [field, handleValueChange])
 
-    //withBind判断不准时，这个代码会有奇怪的堆栈溢出bug,不要依赖field.value,只能依赖field用来取初始值
     useEffect(() => {
-      setValue(field?.value)
+      setValue(field?.getValue())
     }, [field])
     return <WrappedComponent {...props} {...{ [propName]: value, [trigger]: handleChange }} />
   })
