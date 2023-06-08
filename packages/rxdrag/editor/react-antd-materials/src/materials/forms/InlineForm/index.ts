@@ -1,22 +1,22 @@
-import { formIcon } from "./icon";
-import { formLocales, formResourceLocales } from "./locales";
+import { inlineFormIcon } from "./icon";
+import { inlineFormLocales, inlineFormResourceLocales } from "./locales";
 import { formSchema } from "./schema";
 import { Form as AntdForm } from "antd";
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { Form } from "@rxdrag/react-antd-components";
+import { InlineForm } from "@rxdrag/react-antd-components";
 
-const name = "Form"
-export const FormMaterial: IComponentMaterial = {
+const name = "InlineForm"
+export const InlineFormMaterial: IComponentMaterial = {
   componentName: name,
-  component: Form,
+  component: InlineForm,
   designer: AntdForm,
-  designerLocales: formLocales,
+  designerLocales: inlineFormLocales,
   propsSchema: formSchema,
   resource: {
     name: name,
-    icon: formIcon,
+    icon: inlineFormIcon,
     color: "#dfa324",
-    resourceLocales: formResourceLocales,
+    resourceLocales: inlineFormResourceLocales,
     elements: [
       {
         componentName: name,

@@ -1350,7 +1350,7 @@
                                   "slots": {},
                                   "children": [
                                     {
-                                      "componentName": "Form",
+                                      "componentName": "InlineForm",
                                       "props": {
                                         "colon": false
                                       },

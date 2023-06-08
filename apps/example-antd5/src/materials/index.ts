@@ -1,6 +1,6 @@
 import { IComponentMaterial } from "@rxdrag/react-core";
 import { IResource } from "@rxdrag/core";
-import { ButtonMaterial, InputMaterial, InputNumberMaterial, AutoCompleteMaterial, SelectMaterial, CheckboxMaterial, DatePickerMaterial, DateRangePickerMaterial, MentionsMaterial, RadioMaterial, SliderMaterial, SwitchMaterial, TimePickerMaterial, CascaderMaterial, TreeSelectMaterial, TitleMaterial, TextMaterial, LinkMaterial, ParagraphMaterial, IconViewMaterial, AvatarMaterial, BadgeMaterial, ImageViewMaterial, LoopPanelMaterial, TagMaterial, FormMaterial, FormItemMaterial, DropdownMaterial, DialogMaterial, DrawerMaterial, PopconfirmMaterial, PopoverMaterial, ListMaterial, ListItemMetaMaterial, TableMaterial, TableColumnMaterial, InputFieldResource, DefaultSlotMaterial, ActionSlotMaterial, ExtraSlotMaterial, StatisticMaterial, TooltipMaterial, TextAreaMaterial, RateMaterial, TransferMaterial, BoxMaterial, BreadcrumbMaterial, CardMaterial, ColMaterial, DividerMaterial, HCFLayoutMaterial, HeroMaterial, LogoMaterial, MenuMaterial, PaperMaterial, RowMaterial, SpaceMaterial, TwoColumnLayoutMaterial } from "@rxdrag/react-antd-materials";
+import { ButtonMaterial, InputMaterial, InputNumberMaterial, AutoCompleteMaterial, SelectMaterial, CheckboxMaterial, DatePickerMaterial, DateRangePickerMaterial, MentionsMaterial, RadioMaterial, SliderMaterial, SwitchMaterial, TimePickerMaterial, CascaderMaterial, TreeSelectMaterial, TitleMaterial, TextMaterial, LinkMaterial, ParagraphMaterial, IconViewMaterial, AvatarMaterial, BadgeMaterial, ImageViewMaterial, LoopPanelMaterial, TagMaterial, FormMaterial, FormItemMaterial, DropdownMaterial, DialogMaterial, DrawerMaterial, PopconfirmMaterial, PopoverMaterial, ListMaterial, ListItemMetaMaterial, TableMaterial, TableColumnMaterial, InputFieldResource, DefaultSlotMaterial, ActionSlotMaterial, ExtraSlotMaterial, StatisticMaterial, TooltipMaterial, TextAreaMaterial, RateMaterial, TransferMaterial, BoxMaterial, BreadcrumbMaterial, CardMaterial, ColMaterial, DividerMaterial, HCFLayoutMaterial, HeroMaterial, LogoMaterial, MenuMaterial, PaperMaterial, RowMaterial, SpaceMaterial, TwoColumnLayoutMaterial, InlineFormMaterial } from "@rxdrag/react-antd-materials";
 import { NewsMaterial } from "./business/News";
 import { NoticesMaterial } from "./business/Notices";
 import { RightAdMaterial } from "./business/RightAd";
@@ -54,6 +54,7 @@ export const materials: MaterialGroup[] = [
     titleKey: 'forms',
     items: [
       FormMaterial,
+      InlineFormMaterial,
       FormItemMaterial,
     ]
   },

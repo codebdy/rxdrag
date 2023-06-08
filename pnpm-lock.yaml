@@ -1587,6 +1587,9 @@ importers:
       dayjs:
         specifier: ^1.11.7
         version: registry.npmmirror.com/dayjs@1.11.7
+      lodash:
+        specifier: ^4.17.21
+        version: registry.npmmirror.com/lodash@4.17.21
       react:
         specifier: ^18.2.0
         version: registry.npmmirror.com/react@18.2.0
@@ -1606,6 +1609,9 @@ importers:
       '@rxdrag/tsconfig':
         specifier: workspace:*
         version: link:../../../tsconfig
+      '@types/lodash':
+        specifier: ^4.14.191
+        version: registry.npmmirror.com/@types/lodash@4.14.191
       typescript:
         specifier: ^4.9.4
         version: registry.npmmirror.com/typescript@4.9.4

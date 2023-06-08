@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { FormValue, IForm } from "@rxdrag/fieldy"
 import React, { useEffect, useState } from "react"
 import { FieldContext, FormContext } from "../contexts"
@@ -8,10 +7,11 @@ import { useFieldy } from "../hooks"
 export const VirtualForm = (props: {
   initialValue?: any,
   defaultValue?: any,
+  value?: any,
   onValueChange?: (value?: any) => void,
   children?: React.ReactNode
 }) => {
-  const { initialValue, defaultValue, children, onValueChange } = props
+  const { initialValue, defaultValue, value, children, onValueChange } = props
   const [form, setForm] = useState<IForm>()
   const fieldy = useFieldy()
 
@@ -30,6 +30,12 @@ export const VirtualForm = (props: {
       form.setInitialValue(initialValue || defaultValue)
     }
   }, [defaultValue, fieldy, form, initialValue])
+
+  useEffect(() => {
+    if (fieldy && form) {
+      form.setValue(value)
+    }
+  }, [fieldy, form, value])
 
   useEffect(() => {
     if (fieldy) {

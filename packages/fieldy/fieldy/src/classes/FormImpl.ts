@@ -53,8 +53,8 @@ export class FormImpl implements IForm {
     }
   }
 
-  setValue(_value: unknown): void {
-    throw new Error("Method not implemented.");
+  setValue(value: unknown): void {
+    this.fieldy.setFormValue(this.name, value as FormValue)
   }
   setInitialValue(value: unknown): void {
     this.fieldy.setFormInitialValue(this.name, value as FormValue)
