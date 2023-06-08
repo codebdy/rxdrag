@@ -9,7 +9,10 @@ export class FormImpl implements IForm {
 
   constructor(public fieldy: IFieldyEngine, public name: string) { }
 
-  initialValue?: unknown;
+  getInitialValue(){
+    return this.fieldy.getFormInitialValue(this.name)
+  }
+
   getValue() {
     return this.fieldy.getFormValue(this.name)
   }

@@ -194,7 +194,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
         }
       )
     } else if (fieldType === "fragment") {
-      for(const name of Object.keys(value||{})){
+      for (const name of Object.keys(value || {})) {
         const payload: SetFieldValuePayload = {
           formName,
           path: field?.basePath + "." + name,
@@ -211,7 +211,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
       //Fragment根节点值改变，来触发刷新
       const payload: SetFieldValuePayload = {
         formName,
-        path: field?.path||"",
+        path: field?.path || "",
         value: value,
       }
       this.dispatch(
@@ -291,9 +291,21 @@ export class FieldyEngineImpl implements IFieldyEngine {
     return this.getFormNormalValues(formName)
   }
 
+  getFormInitialValue(formName: string): FormValue | undefined {
+    return this.store.getState().forms[formName]?.initialValue
+  }
+
+
   getFieldState(formName: string, fieldPath: string): FieldState | undefined {
     const state = this.store.getState()
     return state.forms[formName]?.fields?.[fieldPath]
+  }
+
+  getFieldInitialValue(formName: string, fieldPath: string): unknown {
+    const state = this.store.getState()
+    const fieldState = state.forms[formName]?.fields?.[fieldPath]
+
+    return fieldState?.initialValue
   }
 
   getFieldValue(formName: string, fieldPath: string) {
@@ -332,16 +344,16 @@ export class FieldyEngineImpl implements IFieldyEngine {
           return value
         }
         return []
-      } else if (fieldState.meta?.type === "fragment"){
+      } else if (fieldState.meta?.type === "fragment") {
         const value = {} as any
-        for(const subfield of fieldState.meta.fragmentFields||[]){
-          if(subfield.name){
+        for (const subfield of fieldState.meta.fragmentFields || []) {
+          if (subfield.name) {
             value[subfield.name] = this.getFieldValue(formName, fieldState.basePath + "." + subfield.name)
           }
         }
 
         return value
-      }else {//undefined or "normal"
+      } else {//undefined or "normal"
         return fieldState.value
       }
     }

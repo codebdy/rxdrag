@@ -5,7 +5,7 @@ import { Field } from "../Field"
 export const ObjectField = memo((
   props: {
     name: string,
-    value?: any,
+    value?: unknown,
     children?: React.ReactNode
   }
 ) => {

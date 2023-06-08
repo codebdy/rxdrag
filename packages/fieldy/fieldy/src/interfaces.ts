@@ -101,7 +101,7 @@ export type FormState = {
   modified?: boolean;
   fields: FieldsState;
   fieldSchemas: IFieldSchema[];
-  initialValue?: unknown;
+  initialValue?: FormValue | undefined ;
   value?: unknown;
 }
 
@@ -111,7 +111,7 @@ export interface FormValue {
 
 export interface IFormNode {
   fieldy: IFieldyEngine
-  initialValue?: unknown
+  getInitialValue(): unknown
   getValue(): unknown
   setValue(value: unknown): void
   setInitialValue(value: unknown): void
@@ -174,8 +174,10 @@ export interface IFieldyEngine {
   getFormState(name: string): FormState | undefined
   getFieldState(formName: string, fieldPath: string): FieldState | undefined
   getFieldValue(formName: string, fieldPath: string): unknown
+  getFieldInitialValue(formName: string, fieldPath: string): unknown
   getFormValue(formName: string): FormValue
-  getFormFlatValues(formName: string): FormValue
+  getFormInitialValue(formName: string): FormValue | undefined
+  getFormFlatValues(formName: string): FormValue | undefined
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe
   subscribeToFormValuesChange(name: string, listener: FormValueChangeListener): Unsubscribe
   subscribeToFieldChange(formName: string, path: string, listener: FieldChangeListener): Unsubscribe
