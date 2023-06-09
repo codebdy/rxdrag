@@ -143,7 +143,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
     let previousState = this.store.getState().forms[name]?.value
     const handleChange = () => {
       const nextState = this.store.getState().forms[name]?.value
-      if (nextState === previousState || !nextState?.modified) {
+      if (nextState === previousState) {
         return
       }
       previousState = nextState
