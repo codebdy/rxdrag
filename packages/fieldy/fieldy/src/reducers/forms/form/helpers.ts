@@ -31,6 +31,9 @@ export function getValueByPath(formValue: FormValue | undefined, path: string): 
 }
 
 export function setValueByPath(formValue: FormValue | undefined, path: string, fieldValue: unknown): FormValue | undefined {
+  if (!path) {
+    return formValue;
+  }
   const pathArray = path.split(".")
   const [fieldName, ...other] = pathArray;
 
@@ -45,7 +48,10 @@ export function setValueByPath(formValue: FormValue | undefined, path: string, f
   return newValue
 }
 
-export function removeValueByPath(formValue: FormValue | undefined, path: string): FormValue | undefined {
+export function removeValueByPath(formValue: FormValue | undefined, path: string | undefined): FormValue | undefined {
+  if (!path) {
+    return formValue
+  }
   const pathArray = path.split(".")
   const [fieldName, ...other] = pathArray;
 
