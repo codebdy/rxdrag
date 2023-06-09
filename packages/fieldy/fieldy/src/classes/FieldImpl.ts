@@ -53,7 +53,11 @@ export class FieldImpl implements IField {
   }
 
   setInitialValue(value: unknown): void {
-    this.fieldy.setFieldIntialValue(this.form.name, this.path, value)
+    this.fieldy.setFieldInitialValue(this.form.name, this.path, value)
+  }
+
+  setDefaultValue(value: unknown): void {
+    this.fieldy.setFieldDefaultValue(this.form.name, this.path, value)
   }
 
   inpuValue(value: unknown): void {

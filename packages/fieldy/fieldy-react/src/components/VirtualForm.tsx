@@ -1,14 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FormValue, IForm } from "@rxdrag/fieldy"
 import React, { useEffect, useState } from "react"
 import { FieldContext, FormContext } from "../contexts"
 import { useFieldy } from "../hooks"
 
 export const VirtualForm = (props: {
-  initialValue?: any,
-  defaultValue?: any,
-  value?: any,
-  onValueChange?: (value?: any) => void,
+  initialValue?: FormValue | undefined,
+  defaultValue?: FormValue | undefined,
+  value?: FormValue | undefined,
+  onValueChange?: (value?: FormValue | undefined) => void,
   children?: React.ReactNode
 }) => {
   const { initialValue, defaultValue, value, children, onValueChange } = props
@@ -26,9 +25,15 @@ export const VirtualForm = (props: {
 
   useEffect(() => {
     if (fieldy && form) {
-      form.setInitialValue(initialValue || defaultValue)
+      form.setInitialValue(initialValue)
     }
-  }, [defaultValue, fieldy, form, initialValue])
+  }, [fieldy, form, initialValue])
+
+  useEffect(() => {
+    if (fieldy && form) {
+      form.setDefaultValue(defaultValue)
+    }
+  }, [defaultValue, fieldy, form])
 
   useEffect(() => {
     if (fieldy && form) {
@@ -38,7 +43,7 @@ export const VirtualForm = (props: {
 
   useEffect(() => {
     if (fieldy) {
-      const unsub = form?.onValueChange((value: FormValue) => {
+      const unsub = form?.onValueChange((value: FormValue | undefined) => {
         onValueChange?.(value)
       })
       return unsub;

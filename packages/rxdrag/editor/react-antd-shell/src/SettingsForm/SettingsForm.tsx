@@ -6,6 +6,7 @@ import { ComponentRender } from "@rxdrag/react-runner";
 import { INodeMeta } from "@rxdrag/schema";
 import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput, BorderRadiusSetter, BorderSetter, CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, ExpressionInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, SizeInput, SlotSwitch, TabPanel, Tabs, TextAlignSelect, ValueInput } from "@rxdrag/react-antd-props-inputs";
 import { ControllerSetter } from "./components";
+import { FormValue } from "@rxdrag/fieldy"
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -46,8 +47,8 @@ export const SettingsForm = memo(() => {
         {
           currentNode &&
           <VirtualForm
-            initialValue={currentNode?.meta}
-            onValueChange={handleMetaChange}
+            initialValue={currentNode?.meta as unknown as FormValue | undefined}
+            onValueChange={handleMetaChange as unknown as (value: FormValue | undefined) => void}
             key={currentNode.id}
           >
             <Form

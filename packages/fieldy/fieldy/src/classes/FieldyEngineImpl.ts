@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "@rxdrag/shared";
-import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_MODIFY, SET_FIELD_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SetFieldStatePayload, SET_FIELD_STATE, SET_FORM_INITIALZED_FLAG } from "../actions";
+import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_MODIFY, SET_FIELD_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SetFieldStatePayload, SET_FIELD_STATE, SET_FORM_INITIALZED_FLAG, SET_FORM_DEFAULT_VALUE, SET_FIELD_DEFAULT_VALUE } from "../actions";
 import { FieldChangeListener, FieldState, FieldValueChangeListener, FormChangeListener, FormState, FormValue, FormValueChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Unsubscribe } from "../interfaces";
 import { reduce, State } from "../reducers";
-import { getChildFields } from "../funcs/path";
 import { FormImpl } from "./FormImpl";
 import { getValueByPath } from "../reducers/forms/form/helpers";
 
@@ -71,7 +70,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
     })
   }
 
-  setFormInitialValue(name: string, value: FormValue): void {
+  setFormInitialValue(name: string, value: FormValue | undefined): void {
     this.store.dispatch({
       type: SET_FORM_INITIAL_VALUE,
       payload: {
@@ -89,7 +88,18 @@ export class FieldyEngineImpl implements IFieldyEngine {
     })
   }
 
-  setFormValue(name: string, value: FormValue): void {
+
+  setFormDefaultValue(name: string, value: FormValue | undefined): void {
+    this.store.dispatch({
+      type: SET_FORM_DEFAULT_VALUE,
+      payload: {
+        formName: name,
+        value: value,
+      }
+    })
+  }
+
+  setFormValue(name: string, value: FormValue | undefined): void {
     this.store.dispatch({
       type: SET_FORM_VALUE,
       payload: {
@@ -139,7 +149,21 @@ export class FieldyEngineImpl implements IFieldyEngine {
     return this.store.subscribe(handleChange)
   }
 
-  setFieldIntialValue(formName: string, fieldPath: string, value: unknown): void {
+  setFieldDefaultValue(formName: string, fieldPath: string, value: unknown): void {
+    const payload: SetFieldValuePayload = {
+      formName,
+      path: fieldPath,
+      value
+    }
+    this.dispatch(
+      {
+        type: SET_FIELD_DEFAULT_VALUE,
+        payload: payload,
+      }
+    )
+  }
+
+  setFieldInitialValue(formName: string, fieldPath: string, value: unknown): void {
     const payload: SetFieldValuePayload = {
       formName,
       path: fieldPath,
@@ -194,27 +218,6 @@ export class FieldyEngineImpl implements IFieldyEngine {
       }
     )
     this.setFieldValue(formName, fieldPath, value)
-  }
-
-  //递归找出改变的字段
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private getValue(formName: string, fieldPath: string, value: any, allValues: any) {
-    const fields = this.store.getState().forms[formName]?.fields
-    if (!fields) {
-      return
-    }
-    allValues[fieldPath] = value
-    const subFields = getChildFields(fields, fieldPath)
-    for (const field of subFields) {
-      if (field.name && Object.keys(value).find(key => key === field.name)) {
-        this.getValue(formName, field.path, value?.[field.name], allValues)
-      }
-    }
-  }
-
-  setFieldFragmentValue(formName: string, fieldPath: string, value: object): void {
-    const oldValue = this.getFieldValue(formName, fieldPath)
-    this.setFieldValue(formName, fieldPath, oldValue ? { ...oldValue, ...value } : value)
   }
 
 
