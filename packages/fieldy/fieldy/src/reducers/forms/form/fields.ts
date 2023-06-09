@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-case-declarations */
 import { isStr } from "@rxdrag/shared";
-import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload, SetFormValuePayload, SET_FORM_FLAT_VALUE, SET_MULTI_FIELD_VALUES, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, FieldActionPayload, SET_FIELD_INITAL_VALUE } from "../../../actions";
+import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload, SetFormValuePayload, SET_MULTI_FIELD_VALUES, SET_FORM_VALUE, FieldActionPayload } from "../../../actions";
 import { getChildFields, makePath } from "../../../funcs/path";
 import { FieldsState, FormValue, IAction, IFieldSchema } from "../../../interfaces";
 import { fieldReduce } from "./field";
@@ -30,16 +30,16 @@ export function fieldsReduer(state: FieldsState, action: IAction<unknown>): Fiel
         }
       }
       return leftFields
-    case SET_FORM_FLAT_VALUE: {
-      return setFlatValues(state, (action.payload as SetFormValuePayload).value)
-    }
+    // case SET_FORM_FLAT_VALUE: {
+    //   return setFlatValues(state, (action.payload as SetFormValuePayload).value)
+    // }
     case SET_MULTI_FIELD_VALUES: {
       return setFlatValues(state, (action.payload as SetFormValuePayload).value)
     }
-    case SET_FORM_INITIAL_VALUE: {
-      const flatInitialValues = patFlatValues((action.payload as SetFormValuePayload).value, state)
-      return setInitialFlatValues(state, flatInitialValues)
-    }
+    // case SET_FORM_INITIAL_VALUE: {
+    //   const flatInitialValues = patFlatValues((action.payload as SetFormValuePayload).value, state)
+    //   return setInitialFlatValues(state, flatInitialValues)
+    // }
     // case SET_FIELD_INITAL_VALUE:{
     //   //@@ 未完成
     //   return state;
@@ -139,21 +139,21 @@ function setFlatValues(state: FieldsState, flatValues: any = {}) {
   return Object.assign({}, state.fields, newFields)
 }
 
-function setInitialFlatValues(state: FieldsState, flatValues: any = {}): FieldsState {
-  const newFields = {} as FieldsState
-  for (const key of Object.keys(state?.fields || {})) {
-    const fieldState = state?.[key]
-    if (fieldState) {
-      newFields[key] = {
-        ...fieldState,
-        initialValue: flatValues[key],
-        value: flatValues[key]
-      }
-    }
+// function setInitialFlatValues(state: FieldsState, flatValues: any = {}): FieldsState {
+//   const newFields = {} as FieldsState
+//   for (const key of Object.keys(state?.fields || {})) {
+//     const fieldState = state?.[key]
+//     if (fieldState) {
+//       newFields[key] = {
+//         ...fieldState,
+//         initialValue: flatValues[key],
+//         value: flatValues[key]
+//       }
+//     }
 
-  }
-  return { ...state, ...newFields }
-}
+//   }
+//   return { ...state, ...newFields }
+// }
 
 function patFlatValues(value: FormValue | undefined, allFields: FieldsState, parentFieldPath?: string) {
   const prefix = parentFieldPath ? parentFieldPath + "." : ""

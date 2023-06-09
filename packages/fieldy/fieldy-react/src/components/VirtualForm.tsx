@@ -26,9 +26,7 @@ export const VirtualForm = (props: {
 
   useEffect(() => {
     if (fieldy && form) {
-      console.log("哈哈 setInitialValue", initialValue)
       form.setInitialValue(initialValue || defaultValue)
-      console.log("哈哈 after setInitialValue", form.getInitialValue())
     }
   }, [defaultValue, fieldy, form, initialValue])
 

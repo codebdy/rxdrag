@@ -77,7 +77,6 @@ export interface IFieldMeta<Params = unknown> {
   type?: FieldType;
   name?: string;
   label?: string;
-  //validateRule?: any
   defaultValue?: unknown;
   fragmentFields?: IFieldMeta[];
   //校验规则
@@ -86,5 +85,5 @@ export interface IFieldMeta<Params = unknown> {
   //联动配置
   reactionMeta?: IFieldReactionMeta;
   //下拉列表类组件的数据源
-  dataSource?: unknown | Expression;
+  //dataSource?: unknown | Expression;
 }

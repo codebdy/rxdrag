@@ -14,7 +14,6 @@ export const XField = memo((props: {
   const { fieldMeta, initialValue, value, defaultValue, children } = props
   const [hidden, setHidden] = useState(false);
   const field = useRegisterField(fieldMeta)
-  console.log("哈哈 XField initialValue", initialValue)
   const handleFieldChange = useCallback((fieldState: FieldState | undefined) => {
     setHidden(fieldState?.hidden || fieldState?.display === DisplayType.hidden || fieldState?.display === DisplayType.none)
   }, [])

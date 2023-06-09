@@ -78,9 +78,9 @@ export type FieldState = {
   validating?: boolean;
   modified?: boolean;
   required?: boolean;
-  value?: unknown;
-  defaultValue?: unknown;
-  initialValue?: unknown;
+  //value?: unknown;
+  //defaultValue?: unknown;
+  //initialValue?: unknown;
   errors?: IFieldFeedback[];
   validateStatus?: FieldValidateStatus;
   meta: IFieldMeta
@@ -91,8 +91,8 @@ export type FieldsState = {
 }
 
 export type FormState = {
-  mounted?: boolean; //字段是否已挂载
-  unmounted?: boolean; //字段是否已卸载
+  mounted?: boolean; //是否已挂载
+  unmounted?: boolean; //是否已卸载
   initialized?: boolean;
   display?: DisplayType;
   pattern?: PatternType;
@@ -101,8 +101,12 @@ export type FormState = {
   modified?: boolean;
   fields: FieldsState;
   fieldSchemas: IFieldSchema[];
+  //初始值
   initialValue?: FormValue | undefined;
-  value?: unknown;
+  //默认值
+  defaultValue?: FormValue | undefined;
+  //当前值
+  value?: FormValue | undefined;
 }
 
 export interface FormValue {
@@ -160,7 +164,7 @@ export interface IFieldyEngine {
   //不触发change事件
   setFormInitialValue(name: string, value: FormValue): void
   setFormValue(name: string, value: FormValue): void
-  setFormFlatValue(name: string, flatValues: FormValue): void
+  //setFormFlatValue(name: string, flatValues: FormValue): void
   addFields(name: string, ...fieldSchemas: IFieldSchema[]): void
   removeFields(formName: string, ...fieldPaths: string[]): void
 

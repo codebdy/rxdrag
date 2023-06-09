@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "@rxdrag/shared";
-import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_MODIFY, SET_FIELD_VALUE, SET_FORM_FLAT_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SET_MULTI_FIELD_VALUES, SetFieldStatePayload, SET_FIELD_STATE, SET_FORM_INITIALZED_FLAG } from "../actions";
+import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_MODIFY, SET_FIELD_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SET_MULTI_FIELD_VALUES, SetFieldStatePayload, SET_FIELD_STATE, SET_FORM_INITIALZED_FLAG } from "../actions";
 import { FieldChangeListener, FieldsState, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValueChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Listener, Unsubscribe } from "../interfaces";
 import { reduce, State } from "../reducers";
 import { getChildFields } from "../funcs/path";
@@ -99,18 +99,6 @@ export class FieldyEngineImpl implements IFieldyEngine {
     })
   }
 
-  setFormFlatValue(name: string, flatValues: FormValue): void {
-    const payload: SetFormValuePayload = {
-      formName: name,
-      value: flatValues
-    }
-    this.dispatch(
-      {
-        type: SET_FORM_FLAT_VALUE,
-        payload: payload,
-      }
-    )
-  }
 
   getForm(name: string): IForm | undefined {
     return this.forms[name]
