@@ -25,7 +25,7 @@ export function formReduce(state: FormState, action: IAction<unknown>): FormStat
     fields: fieldsReduer(state.fields, action),
     fieldSchemas: fieldSchemasReduer(state.fieldSchemas, action),
     initialValue: initialValueReduer(state.initialValue as FormValue | undefined, action),
-    defaultValue: defaultValueReduer(state.initialValue as FormValue | undefined, action),
+    defaultValue: defaultValueReduer(state.defaultValue as FormValue | undefined, action),
     value: valueReduer(state.value, action, state.fields),
   }
 }

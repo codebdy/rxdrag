@@ -39,7 +39,9 @@ export class FieldyEngineImpl implements IFieldyEngine {
       }
     })
 
-    return new FormImpl(this, name)
+    const form = new FormImpl(this, name)
+    this.forms[name] = form;
+    return form
   }
 
   removeForm(name: string): void {
@@ -49,6 +51,8 @@ export class FieldyEngineImpl implements IFieldyEngine {
         formName: name,
       }
     })
+
+    delete this.forms[name]
   }
 
   addFields(formName: string, ...fieldSchemas: IFieldSchema[]): void {
@@ -222,7 +226,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
 
 
   getFormValue(formName: string): FormValue | undefined {
-    return this.getForm(formName)?.getValue() as FormValue | undefined
+    return this.store.getState().forms[formName]?.value
   }
 
   getFormInitialValue(formName: string): FormValue | undefined {

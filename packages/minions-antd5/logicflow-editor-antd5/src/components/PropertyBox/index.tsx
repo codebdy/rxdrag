@@ -9,6 +9,7 @@ import { useSelectedNode, useGetMaterial, useDispatch, useBackup, useMarkChange,
 import { INodeSchema } from "@rxdrag/schema"
 import { IComponents } from "@rxdrag/react-shared"
 import { ComponentRender } from "@rxdrag/react-runner"
+import { FormValue } from "@rxdrag/fieldy"
 
 const EmptyContainer = styled.div`
   display: flex;
@@ -56,7 +57,7 @@ export const PropertyBox = memo((
         node
           ?
           <VirtualForm
-            initialValue={node}
+            initialValue={node as unknown as FormValue}
             onValueChange={handleNodeChange}
             key={node.id}
           >

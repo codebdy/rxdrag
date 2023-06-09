@@ -4,11 +4,12 @@ import { getValueByPath, mergeDefaultValueToValue, removeValueByPath, setValueBy
 
 export function valueReduer(state: FormValue | undefined, action: IAction<unknown>, fields: FieldsState) {
   const setFieldValuePayload = action.payload as SetFieldValuePayload
+  const setFormValuePayload = action.payload as SetFormValuePayload
   switch (action.type) {
     case SET_FORM_INITIAL_VALUE:
       return (action.payload as SetFormValuePayload).value
     case SET_FORM_VALUE: {
-      return (action.payload as SetFormValuePayload).value
+      return (setFormValuePayload)?.value === undefined ? state : (setFormValuePayload).value
     }
     case SET_FORM_DEFAULT_VALUE: {
       //合格并value

@@ -2,12 +2,13 @@ import { VirtualForm } from "@rxdrag/react-fieldy"
 import { memo } from "react"
 import { Form as AntdForm, FormProps } from "antd"
 import _ from "lodash"
+import { FormValue } from "@rxdrag/fieldy"
 
 export const Form = memo((
   props: {
-    initialValue?: object,
-    defaultValue?: object,
-    value?: object,
+    initialValue?: FormValue,
+    defaultValue?: FormValue,
+    value?: FormValue,
     children?: React.ReactNode,
   } & FormProps
 ) => {

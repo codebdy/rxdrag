@@ -12,7 +12,6 @@ export function mergeDefaultValueToValue(defaultValue: FormValue | undefined, va
       newValue = setValueByPath(newValue, fieldPath, fieldDefaultValue)
     }
   }
-
   return newValue
 }
 
@@ -43,8 +42,8 @@ export function setValueByPath(formValue: FormValue | undefined, path: string, f
   } else {
     newValue = formValue
   }
-  const value = other.length > 0 ? fieldValue : setValueByPath(newValue?.[fieldName] as FormValue | undefined, other.join("."), fieldValue)
-  newValue = { ...newValue, fieldName: value }
+  const value = other.length === 0 ? fieldValue : setValueByPath(newValue?.[fieldName] as FormValue | undefined, other.join("."), fieldValue)
+  newValue = { ...newValue, [fieldName]: value }
   return newValue
 }
 
@@ -61,8 +60,8 @@ export function removeValueByPath(formValue: FormValue | undefined, path: string
     let newValue = {
       ...formValue
     }
-    const value = other.length > 0 ? undefined : removeValueByPath(newValue?.[fieldName] as FormValue | undefined, other.join("."))
-    newValue = { ...newValue, fieldName: value }
+    const value = other.length === 0 ? undefined : removeValueByPath(newValue?.[fieldName] as FormValue | undefined, other.join("."))
+    newValue = { ...newValue, [fieldName]: value }
     if (other.length === 0) {
       delete newValue[fieldName]
     }

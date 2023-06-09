@@ -36,7 +36,7 @@ export const VirtualForm = (props: {
   }, [defaultValue, fieldy, form])
 
   useEffect(() => {
-    if (fieldy && form) {
+    if (fieldy && form && value !== undefined) {
       form.setValue(value)
     }
   }, [fieldy, form, value])

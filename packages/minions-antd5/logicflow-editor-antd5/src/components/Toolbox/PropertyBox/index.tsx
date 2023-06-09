@@ -8,6 +8,7 @@ import { ComponentRender } from "@rxdrag/react-runner"
 import { JSONInput, ValueInput } from "@rxdrag/react-antd-props-inputs"
 import { useSelectedNode, useGetMaterial, useDispatch, useBackup, useMarkChange, ActionType } from "@rxdrag/minions-logicflow-editor"
 import { INodeSchema } from "@rxdrag/schema"
+import { FormValue } from "@rxdrag/fieldy"
 
 const EmptyContainer = styled.div`
   display: flex;
@@ -51,7 +52,7 @@ export const PropertyBox = memo(() => {
           ?
           <VirtualForm
             //fieldSchemas={fieldSchemas}
-            initialValue={node}
+            initialValue={node as unknown as FormValue}
             onValueChange={handleNodeChange}
             key={node.id}
           >

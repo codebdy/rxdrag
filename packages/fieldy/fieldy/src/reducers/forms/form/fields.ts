@@ -16,6 +16,7 @@ export function fieldsReduer(state: FieldsState, action: IAction<unknown>): Fiel
   const setFieldValuePayload = action.payload as SetFieldValuePayload
   const field = state[setFieldValuePayload.path];
   switch (action.type) {
+    //暂时没有用
     case SET_FORM_FIELDS:
       const fields = makeFields((action.payload as SetFormFieldsPayload).fieldSchemas)
       return fields || {}

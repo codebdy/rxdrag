@@ -1551,6 +1551,9 @@ importers:
       '@ant-design/icons':
         specifier: ^4.8.0
         version: registry.npmmirror.com/@ant-design/icons@4.8.0(react-dom@18.2.0)(react@18.2.0)
+      '@rxdrag/fieldy':
+        specifier: workspace:*
+        version: link:../../../fieldy/fieldy
       '@rxdrag/fieldy-schema':
         specifier: workspace:*
         version: link:../../../fieldy/schema
