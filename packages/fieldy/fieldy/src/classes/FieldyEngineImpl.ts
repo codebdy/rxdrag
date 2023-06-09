@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "@rxdrag/shared";
-import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SetFormValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_MODIFY, SET_FIELD_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SET_MULTI_FIELD_VALUES, SetFieldStatePayload, SET_FIELD_STATE, SET_FORM_INITIALZED_FLAG } from "../actions";
-import { FieldChangeListener, FieldsState, FieldState, FieldValueChangeListener, FieldValuesChangeListener, FormChangeListener, FormState, FormValue, FormValueChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Listener, Unsubscribe } from "../interfaces";
+import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_MODIFY, SET_FIELD_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SetFieldStatePayload, SET_FIELD_STATE, SET_FORM_INITIALZED_FLAG } from "../actions";
+import { FieldChangeListener, FieldState, FieldValueChangeListener, FormChangeListener, FormState, FormValue, FormValueChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Unsubscribe } from "../interfaces";
 import { reduce, State } from "../reducers";
 import { getChildFields } from "../funcs/path";
 import { FormImpl } from "./FormImpl";
+import { getValueByPath } from "../reducers/forms/form/helpers";
 
 let idSeed = 0
 
@@ -126,24 +126,14 @@ export class FieldyEngineImpl implements IFieldyEngine {
   subscribeToFormValuesChange(name: string, listener: FormValueChangeListener): Unsubscribe {
     invariant(typeof listener === 'function', 'listener must be a function.')
 
-    let previousState = this.store.getState().forms[name]
+    let previousState = this.store.getState().forms[name]?.value
     const handleChange = () => {
-      let changed = false
-      const nextState = this.store.getState().forms[name]
+      const nextState = this.store.getState().forms[name]?.value
       if (nextState === previousState || !nextState?.modified) {
         return
       }
-      for (const key of Object.keys(nextState?.fields || {})) {
-        if (previousState?.fields[key]?.value !== nextState?.fields[key]?.value) {
-          changed = true
-        }
-      }
-      const normalValues = this.getFormNormalValues(name)
-
       previousState = nextState
-      if (changed) {
-        listener(normalValues)
-      }
+      listener(nextState)
     }
 
     return this.store.subscribe(handleChange)
@@ -164,65 +154,18 @@ export class FieldyEngineImpl implements IFieldyEngine {
   }
 
   setFieldValue(formName: string, fieldPath: string, value: unknown): void {
-    const field = this.getFieldState(formName, fieldPath)
-    const fieldType = field?.meta.type
-    //这段代码还有问题
-    if (fieldType === "object") {
-      const allValue: any = {}
-      this.getValue(formName, fieldPath, value, allValue)
-      const payload: SetFormValuePayload = {
-        formName,
-        value: allValue
-      }
-
-      this.dispatch(
-        {
-          type: SET_MULTI_FIELD_VALUES,
-          payload: payload,
-        }
-      )
-    } else if (fieldType === "fragment") {
-      for (const name of Object.keys(value || {})) {
-        const payload: SetFieldValuePayload = {
-          formName,
-          path: field?.basePath + "." + name,
-          value: (value as any)?.[name],
-        }
-        this.dispatch(
-          {
-            type: SET_FIELD_VALUE,
-            payload: payload,
-          }
-        )
-      }
-
-      //Fragment根节点值改变，来触发刷新
-      const payload: SetFieldValuePayload = {
-        formName,
-        path: field?.path || "",
-        value: value,
-      }
-      this.dispatch(
-        {
-          type: SET_FIELD_VALUE,
-          payload: payload,
-        }
-      )
-    } else {
-      const payload: SetFieldValuePayload = {
-        formName,
-        path: fieldPath,
-        value
-      }
-
-      this.dispatch(
-        {
-          type: SET_FIELD_VALUE,
-          payload: payload,
-        }
-      )
-
+    const payload: SetFieldValuePayload = {
+      formName,
+      path: fieldPath,
+      value
     }
+
+    this.dispatch(
+      {
+        type: SET_FIELD_VALUE,
+        payload: payload,
+      }
+    )
   }
 
   setFieldState(formName: string, fieldState: FieldState): void {
@@ -275,8 +218,8 @@ export class FieldyEngineImpl implements IFieldyEngine {
   }
 
 
-  getFormValue(formName: string): FormValue {
-    return this.getFormNormalValues(formName)
+  getFormValue(formName: string): FormValue | undefined {
+    return this.getForm(formName)?.getValue() as FormValue | undefined
   }
 
   getFormInitialValue(formName: string): FormValue | undefined {
@@ -290,62 +233,11 @@ export class FieldyEngineImpl implements IFieldyEngine {
   }
 
   getFieldInitialValue(formName: string, fieldPath: string): unknown {
-    const state = this.store.getState()
-    const fieldState = state.forms[formName]?.fields?.[fieldPath]
-
-    return fieldState?.initialValue
+    return getValueByPath(this.getForm(formName)?.getInitialValue() as FormValue | undefined, fieldPath)
   }
 
   getFieldValue(formName: string, fieldPath: string) {
-    const state = this.store.getState()
-    const fieldState = state.forms[formName]?.fields?.[fieldPath]
-    if (fieldState) {
-      if (fieldState.meta?.type === "object") {
-        const value = { ...fieldState.value as object } as any
-        const fields = this.getSubFields(formName, fieldPath)
-        for (const key of fields) {
-          const subValue = this.getFieldValue(formName, key)
-          if (subValue !== undefined) {
-            const subName = key.substring(fieldPath.length + 1)
-            value[subName] = subValue
-          }
-        }
-        if (Object.keys(value).length) {
-          return value
-        }
-        return undefined
-      } else if (fieldState.meta?.type === "array") {
-        const value: any[] = []
-        const fields = this.getSubFields(formName, fieldPath)
-        //子字段不存在，可能没渲染完，直接返回value。因为列表根据初值动态增加字段
-        //还有个问题，就是数组长度变化，这种情况要更新数组字段的全部值，后面数组编辑时，要留意数组值的整体更新
-        if (fields.length !== (fieldState.value as Array<unknown> | undefined)?.length) {
-          return fieldState.value
-        }
-        for (const key of fields) {
-          const subValue = this.getFieldValue(formName, key)
-          if (subValue !== undefined) {
-            value.push(subValue)
-          }
-        }
-        if (value.length) {
-          return value
-        }
-        return []
-      } else if (fieldState.meta?.type === "fragment") {
-        const value = {} as any
-        for (const subfield of fieldState.meta.fragmentFields || []) {
-          if (subfield.name) {
-            value[subfield.name] = this.getFieldValue(formName, fieldState.basePath + "." + subfield.name)
-          }
-        }
-
-        return value
-      } else {//undefined or "normal"
-        return fieldState.value
-      }
-    }
-    return undefined
+    return getValueByPath(this.getForm(formName)?.getValue() as FormValue | undefined, fieldPath)
   }
 
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe {
@@ -387,54 +279,18 @@ export class FieldyEngineImpl implements IFieldyEngine {
 
   subscribeToFieldValueChange(formName: string, fieldPath: string, listener: FieldValueChangeListener): Unsubscribe {
     invariant(typeof listener === 'function', 'listener must be a function.')
-    let previousValue: any = this.store.getState().forms[formName]?.fields?.[fieldPath]?.value
+    const previousFormValue: FormValue | undefined = this.store.getState().forms[formName]?.value
 
     const handleChange = () => {
-      const nextValue = this.store.getState().forms[formName]?.fields?.[fieldPath]?.value
-      if (nextValue === previousValue) {
+      const nextFormValue = this.store.getState().forms[formName]?.value
+      if (nextFormValue === previousFormValue) {
         return
       }
-      const prevValue = previousValue
-      previousValue = nextValue
-      listener(nextValue, prevValue)
-    }
-
-    return this.store.subscribe(handleChange)
-  }
-
-  subscribeToMultiFieldValueChange(formName: string, fields: string[], listener: FieldValuesChangeListener): Unsubscribe {
-    invariant(typeof listener === 'function', 'listener must be a function.')
-    let previousValues: any[] = []
-    let previousFormState = this.store.getState().forms[formName]
-
-
-    for (const fieldName of fields) {
-      previousValues.push(previousFormState?.fields[fieldName]?.value)
-    }
-
-    const handleChange = () => {
-      const nextFormState = this.store.getState().forms[formName]
-      if (nextFormState === previousFormState) {
-        return
+      const prevValue = getValueByPath(previousFormValue, fieldPath)
+      const value = getValueByPath(nextFormValue, fieldPath)
+      if (value !== prevValue) {
+        listener(value, prevValue)
       }
-      const nextValues = []
-      let changed = false
-      for (const fieldName of fields) {
-        nextValues.push(nextFormState?.fields[fieldName]?.value)
-      }
-      for (let i = 0; i < nextValues.length; i++) {
-        if (nextValues[i] !== previousValues[i]) {
-          changed = true
-          break
-        }
-      }
-      if (!changed) {
-        return
-      }
-      const prevValues = previousValues
-      previousFormState = nextFormState
-      previousValues = nextValues
-      listener(nextValues, prevValues)
     }
 
     return this.store.subscribe(handleChange)
@@ -457,73 +313,6 @@ export class FieldyEngineImpl implements IFieldyEngine {
     }
     return fieldPaths
   }
-
-  getFormNormalValues(name: string) {
-    const formState = this.store.getState().forms[name]
-    if (!formState) {
-      return {}
-    }
-    const flatValues = this.getFormFlatValues(name)
-    const normalValue = this.trasformFlatValuesToNormal(JSON.parse(JSON.stringify(formState.initialValue || {})), flatValues, formState.fields)
-    return normalValue
-  }
-
-  getFormFlatValues(name: string) {
-    const formState = this.store.getState().forms[name]
-    if (!formState) {
-      return {}
-    }
-    const flatValues: FormValue = {}
-    for (const key of Object.keys(formState?.fields || {})) {
-      flatValues[key] = formState?.fields[key]?.value
-    }
-
-    return flatValues
-  }
-
-  private trasformFlatValuesToNormal(originalValue: any = {}, flatValues: FormValue, allFields: FieldsState, basePath?: string) {
-    const value: FormValue = originalValue
-    const prefix = basePath ? basePath + "." : ""
-    const childFields = getChildFields(allFields, basePath)
-    for (const field of childFields) {
-      if (field.meta.type === "fragment") {
-        for (const fragField of field.meta.fragmentFields || []) {
-          if (fragField.name) {
-            const fieldPath = prefix + fragField.name
-            const subValue = flatValues[fieldPath]
-            if (subValue !== undefined) {
-              value[fragField.name] = subValue
-            }
-          } else {
-            console.error("No subfield name on fragment")
-          }
-        }
-        continue
-      }
-
-      if (!field.name) {
-        continue
-      }
-
-      const fieldPath = prefix + field.name
-      if (field.meta.type === "object") {
-        value[field.name] = this.trasformFlatValuesToNormal(value[field.name], flatValues, allFields, fieldPath)
-      } else if (field.meta.type === "array") {
-        const objectValue = this.trasformFlatValuesToNormal(value[field.name], flatValues, allFields, fieldPath)
-        const arrayValue = []
-        for (const key of Object.keys(objectValue)) {
-          arrayValue[parseInt(key)] = objectValue[key]
-        }
-        value[field.name] = arrayValue
-      } else {
-        const subValue = flatValues[fieldPath]
-        if (subValue !== undefined) {
-          value[field.name] = flatValues[fieldPath]
-        }
-      }
-    }
-    return value
-  }
 }
 
 function makeStoreInstance(debugMode: boolean): Store<State> {
@@ -531,6 +320,7 @@ function makeStoreInstance(debugMode: boolean): Store<State> {
   // we'll need to consider how to pull off dev-tooling
   const reduxDevTools =
     typeof window !== 'undefined' &&
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).__REDUX_DEVTOOLS_EXTENSION__
   return configureStore(
     {

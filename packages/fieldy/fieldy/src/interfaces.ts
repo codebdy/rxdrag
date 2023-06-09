@@ -181,14 +181,12 @@ export interface IFieldyEngine {
   getFieldState(formName: string, fieldPath: string): FieldState | undefined
   getFieldValue(formName: string, fieldPath: string): unknown
   getFieldInitialValue(formName: string, fieldPath: string): unknown
-  getFormValue(formName: string): FormValue
+  getFormValue(formName: string): FormValue|undefined
   getFormInitialValue(formName: string): FormValue | undefined
-  getFormFlatValues(formName: string): FormValue | undefined
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe
   subscribeToFormValuesChange(name: string, listener: FormValueChangeListener): Unsubscribe
   subscribeToFieldChange(formName: string, path: string, listener: FieldChangeListener): Unsubscribe
   subscribeToFieldValueChange(formName: string, fieldPath: string, listener: FieldValueChangeListener): Unsubscribe
-  subscribeToMultiFieldValueChange(formName: string, fieldPaths: string[], listener: FieldValuesChangeListener): Unsubscribe
   subscribeToFormInitialized(formName: string, listener: FormChangeListener): Unsubscribe
 
   dispatch(action: IAction<FormActionPlayload>): void

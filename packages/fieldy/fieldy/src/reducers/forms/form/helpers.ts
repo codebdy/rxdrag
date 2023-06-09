@@ -18,21 +18,49 @@ export function mergeDefaultValueToValue(defaultValue: FormValue | undefined, va
 
 export function getValueByPath(formValue: FormValue | undefined, path: string): unknown {
   const pathArray = path.split(".")
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let parentValue: any = formValue
+  let parentValue: FormValue | undefined = formValue
   let currentValue = undefined;
   for (const fieldName of pathArray) {
-    if(parentValue === undefined){
+    if (parentValue === undefined) {
       return undefined
     }
     currentValue = parentValue?.[fieldName]
-    parentValue = currentValue
+    parentValue = currentValue as FormValue | undefined
   }
   return currentValue
 }
 
 export function setValueByPath(formValue: FormValue | undefined, path: string, fieldValue: unknown): FormValue | undefined {
   const pathArray = path.split(".")
-  let newFormValue 
-  return formValue
+  const [fieldName, ...other] = pathArray;
+
+  let newValue: FormValue | undefined;
+  if (formValue === undefined) {
+    newValue = {}
+  } else {
+    newValue = formValue
+  }
+  const value = other.length > 0 ? fieldValue : setValueByPath(newValue?.[fieldName] as FormValue | undefined, other.join("."), fieldValue)
+  newValue = { ...newValue, fieldName: value }
+  return newValue
+}
+
+export function removeValueByPath(formValue: FormValue | undefined, path: string): FormValue | undefined {
+  const pathArray = path.split(".")
+  const [fieldName, ...other] = pathArray;
+
+  if (formValue === undefined) {
+    return formValue
+  } else {
+    let newValue = {
+      ...formValue
+    }
+    const value = other.length > 0 ? undefined : removeValueByPath(newValue?.[fieldName] as FormValue | undefined, other.join("."))
+    newValue = { ...newValue, fieldName: value }
+    if (other.length === 0) {
+      delete newValue[fieldName]
+    }
+
+    return newValue
+  }
 }
