@@ -1583,20 +1583,6 @@
                                                 "label": "点击",
                                                 "nodes": [
                                                   {
-                                                    "id": "4636a7ea-69a9-4352-bff1-01cea52ece28",
-                                                    "label": "输入",
-                                                    "type": "Start",
-                                                    "activityName": "start",
-                                                    "inPorts": [],
-                                                    "outPorts": [],
-                                                    "x6Node": {
-                                                      "x": 90,
-                                                      "y": 100,
-                                                      "width": 20,
-                                                      "height": 20
-                                                    }
-                                                  },
-                                                  {
                                                     "id": "a35d236d-1327-4890-8beb-d5175edc3192",
                                                     "label": "常量",
                                                     "type": "Activity",
@@ -1616,8 +1602,8 @@
                                                       }
                                                     ],
                                                     "x6Node": {
-                                                      "x": 390,
-                                                      "y": 120,
+                                                      "x": 450,
+                                                      "y": 150,
                                                       "width": 88,
                                                       "height": 32
                                                     },
@@ -1645,16 +1631,167 @@
                                                       }
                                                     ],
                                                     "x6Node": {
-                                                      "x": 570,
-                                                      "y": 130,
-                                                      "width": 116,
-                                                      "height": 32
+                                                      "x": 610,
+                                                      "y": 150,
+                                                      "width": 121,
+                                                      "height": 48
                                                     },
                                                     "config": {
                                                       "param": {
                                                         "controllerId": "c62dc46f-3820-40a5-afc9-00c5f87a0bfc",
                                                         "prop": "open"
                                                       }
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "a37a61ee-3d6a-49c8-878c-6ae55312b0d6",
+                                                    "label": "设置属性",
+                                                    "type": "Activity",
+                                                    "activityName": "system-react.setProp",
+                                                    "inPorts": [
+                                                      {
+                                                        "id": "fbc05e11-cbcd-4987-960d-babefd52d377",
+                                                        "name": "input",
+                                                        "label": ""
+                                                      }
+                                                    ],
+                                                    "outPorts": [
+                                                      {
+                                                        "id": "a766cfa3-0cd5-4c58-9e97-9e86ea9436e7",
+                                                        "name": "output",
+                                                        "label": ""
+                                                      }
+                                                    ],
+                                                    "x6Node": {
+                                                      "x": 570,
+                                                      "y": 280,
+                                                      "width": 126,
+                                                      "height": 48
+                                                    },
+                                                    "config": {
+                                                      "param": {
+                                                        "controllerId": "26cf7cca-c417-4e7f-bdaf-087d36fa4a20",
+                                                        "prop": "loading"
+                                                      }
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "87904397-2e4e-460e-99cb-d3d111110cb8",
+                                                    "label": "提示消息",
+                                                    "type": "Activity",
+                                                    "activityName": "system-react-antd5.message",
+                                                    "inPorts": [
+                                                      {
+                                                        "id": "4f69f0df-77d8-4430-99ab-004b721b1611",
+                                                        "name": "input",
+                                                        "label": ""
+                                                      }
+                                                    ],
+                                                    "outPorts": [],
+                                                    "x6Node": {
+                                                      "x": 510,
+                                                      "y": 370,
+                                                      "width": 116,
+                                                      "height": 32
+                                                    },
+                                                    "config": {
+                                                      "type": "error"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "99c9a053-1cfe-4aaf-aff9-1d18bf3a5bb2",
+                                                    "label": "读取表单",
+                                                    "type": "Activity",
+                                                    "activityName": "fieldy.readFieldValue",
+                                                    "inPorts": [
+                                                      {
+                                                        "id": "171b7c51-fe7c-4f05-b676-ac7706ecd13d",
+                                                        "name": "input",
+                                                        "label": ""
+                                                      }
+                                                    ],
+                                                    "outPorts": [
+                                                      {
+                                                        "id": "783973e2-4261-4dac-a03a-e2e44c2e0abe",
+                                                        "name": "output",
+                                                        "label": ""
+                                                      }
+                                                    ],
+                                                    "x6Node": {
+                                                      "x": 150,
+                                                      "y": 190,
+                                                      "width": 116,
+                                                      "height": 32
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "4636a7ea-69a9-4352-bff1-01cea52ece28",
+                                                    "label": "输入",
+                                                    "type": "Start",
+                                                    "activityName": "start",
+                                                    "inPorts": [],
+                                                    "outPorts": [],
+                                                    "x6Node": {
+                                                      "x": 50,
+                                                      "y": 130,
+                                                      "width": 20,
+                                                      "height": 20
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "3fe5f5c1-4e67-4a00-a591-e1be366d2a6c",
+                                                    "label": "提交数据",
+                                                    "type": "Activity",
+                                                    "activityName": "example.PostData",
+                                                    "inPorts": [
+                                                      {
+                                                        "id": "6a4b722c-9a0b-41f0-ab71-f281567568aa",
+                                                        "name": "input",
+                                                        "label": ""
+                                                      }
+                                                    ],
+                                                    "outPorts": [
+                                                      {
+                                                        "id": "678af113-c6d9-4989-8758-2cb3e1d509d8",
+                                                        "name": "dataOut",
+                                                        "label": "数据输出"
+                                                      },
+                                                      {
+                                                        "id": "5270faf2-7374-44c2-a9ee-b465579d9ab8",
+                                                        "name": "posting",
+                                                        "label": "提交中"
+                                                      },
+                                                      {
+                                                        "id": "91494e4d-8e6a-48b4-9eb4-1d116c04f6b0",
+                                                        "name": "error",
+                                                        "label": "错误"
+                                                      }
+                                                    ],
+                                                    "x6Node": {
+                                                      "x": 300,
+                                                      "y": 260,
+                                                      "width": 116,
+                                                      "height": 48
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "506e8d6a-747c-4a0f-9217-0845da7e6218",
+                                                    "label": "调试",
+                                                    "type": "Activity",
+                                                    "activityName": "system.debug",
+                                                    "inPorts": [
+                                                      {
+                                                        "id": "2af47583-5431-4299-bfec-67f950aec9b0",
+                                                        "name": "input",
+                                                        "label": ""
+                                                      }
+                                                    ],
+                                                    "outPorts": [],
+                                                    "x6Node": {
+                                                      "x": 310,
+                                                      "y": 130,
+                                                      "width": 88,
+                                                      "height": 32
                                                     }
                                                   }
                                                 ],
@@ -1671,13 +1808,68 @@
                                                     }
                                                   },
                                                   {
-                                                    "id": "92306c34-3ff0-4ff3-bb74-5f58d2279644",
+                                                    "id": "6957161a-5585-4fc5-88fc-a38ad3f001a7",
                                                     "source": {
                                                       "nodeId": "4636a7ea-69a9-4352-bff1-01cea52ece28"
                                                     },
                                                     "target": {
+                                                      "nodeId": "99c9a053-1cfe-4aaf-aff9-1d18bf3a5bb2",
+                                                      "portId": "171b7c51-fe7c-4f05-b676-ac7706ecd13d"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "0c1bb4df-0646-4666-a714-dd2449328e53",
+                                                    "source": {
+                                                      "nodeId": "99c9a053-1cfe-4aaf-aff9-1d18bf3a5bb2",
+                                                      "portId": "783973e2-4261-4dac-a03a-e2e44c2e0abe"
+                                                    },
+                                                    "target": {
+                                                      "nodeId": "3fe5f5c1-4e67-4a00-a591-e1be366d2a6c",
+                                                      "portId": "6a4b722c-9a0b-41f0-ab71-f281567568aa"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "8bd3608b-292c-4502-b210-2e07404265f4",
+                                                    "source": {
+                                                      "nodeId": "3fe5f5c1-4e67-4a00-a591-e1be366d2a6c",
+                                                      "portId": "678af113-c6d9-4989-8758-2cb3e1d509d8"
+                                                    },
+                                                    "target": {
                                                       "nodeId": "a35d236d-1327-4890-8beb-d5175edc3192",
                                                       "portId": "a82777df-7a10-43ed-85fc-b294e262548b"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "fc3ace2e-3f20-4771-af9f-0ee9ef4aadec",
+                                                    "source": {
+                                                      "nodeId": "3fe5f5c1-4e67-4a00-a591-e1be366d2a6c",
+                                                      "portId": "5270faf2-7374-44c2-a9ee-b465579d9ab8"
+                                                    },
+                                                    "target": {
+                                                      "nodeId": "a37a61ee-3d6a-49c8-878c-6ae55312b0d6",
+                                                      "portId": "fbc05e11-cbcd-4987-960d-babefd52d377"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "7ac49954-b5d5-4777-9c02-fa103f44e178",
+                                                    "source": {
+                                                      "nodeId": "3fe5f5c1-4e67-4a00-a591-e1be366d2a6c",
+                                                      "portId": "91494e4d-8e6a-48b4-9eb4-1d116c04f6b0"
+                                                    },
+                                                    "target": {
+                                                      "nodeId": "87904397-2e4e-460e-99cb-d3d111110cb8",
+                                                      "portId": "4f69f0df-77d8-4430-99ab-004b721b1611"
+                                                    }
+                                                  },
+                                                  {
+                                                    "id": "3b841821-0221-4f56-82a7-ca6604ce4ecf",
+                                                    "source": {
+                                                      "nodeId": "99c9a053-1cfe-4aaf-aff9-1d18bf3a5bb2",
+                                                      "portId": "783973e2-4261-4dac-a03a-e2e44c2e0abe"
+                                                    },
+                                                    "target": {
+                                                      "nodeId": "506e8d6a-747c-4a0f-9217-0845da7e6218",
+                                                      "portId": "2af47583-5431-4299-bfec-67f950aec9b0"
                                                     }
                                                   }
                                                 ]

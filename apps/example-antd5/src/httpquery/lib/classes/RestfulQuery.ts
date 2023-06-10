@@ -1,4 +1,4 @@
-import { IQueryParam, IReponseHandler, Unsubscribe } from "../interfaces"
+import { IPostParam, IQueryParam, IReponseHandler, Unsubscribe } from "../interfaces"
 import { QueryRecord, QueryStatus } from "./QueryRecord"
 
 export class Restful {
@@ -49,7 +49,7 @@ export class Restful {
 
     record.handlers = record.handlers.filter(hd => hd !== handler)
   }
-  save(): void {
+  save(param: IPostParam, handler: IReponseHandler): void {
     throw new Error("Method not implemented.")
   }
 }

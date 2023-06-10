@@ -9,6 +9,13 @@ export interface IQueryParam {
   idField?: string;
 }
 
+export interface IPostParam {
+  url?: string,
+  axiosConfig?: AxiosRequestConfig,
+  entity?: string;
+  data?: unknown;
+}
+
 export interface IReponseHandler {
   onError?(error?: Error): void,
   onData?(data?: unknown): void,
@@ -34,3 +41,9 @@ export interface IQueryConfig {
 }
 
 
+export interface IPostConfig{
+  rootUrl?: string;
+  entityName?: string;
+  requestInit?: RequestInit;
+  dataPath?: string;
+}

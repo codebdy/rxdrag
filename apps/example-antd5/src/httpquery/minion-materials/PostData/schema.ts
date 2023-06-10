@@ -56,22 +56,5 @@ export const postDataSchema: INodeSchema = {
         }
       ]
     },
-    {
-      componentName: "FormItem",
-      props: {
-        label: "$idName",
-      },
-      children: [
-        {
-          componentName: "Input",
-          "x-field": {
-            name: "config.idName",
-            params: {
-              withBind: true,
-            }
-          },
-        }
-      ]
-    },
   ],
 }

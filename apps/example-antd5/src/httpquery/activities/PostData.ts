@@ -1,34 +1,23 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
-import { QuerySession } from "httpquery/lib/classes/QuerySession"
-import { IQueryConfig, IQueryParam, IRestfulQuerySession } from "httpquery/lib/interfaces"
+import { GlobalQuery } from "httpquery/lib/classes/RestfulQuery"
+import { IPostConfig, IRestfulQuerySession } from "httpquery/lib/interfaces"
 
 @Activity(PostData.NAME)
-export class PostData extends AbstractActivity<IQueryConfig> {
+export class PostData extends AbstractActivity<IPostConfig> {
   public static NAME = "example.PostData"
   public static OUTPUT_NAME_DATA = "dataOut"
   public static OUTPUT_NAME_POSTING = "posting"
   public static OUTPUT_NAME_ERROR = "error"
   public querySession?: IRestfulQuerySession;
 
-  constructor(meta: IActivityDefine<IQueryConfig>) {
+  constructor(meta: IActivityDefine<IPostConfig>) {
     super(meta)
-    if (meta.config) {
-      const dataQuery = new QuerySession(meta.config)
-      if (!dataQuery) {
-        console.error("Create data source error!")
-        this.next(undefined);
-        return
-      }
-
-      this.querySession = dataQuery;
-    }
   }
 
   @Input()
-  inputHandler(params: IQueryParam): void {
-    //@@ 最好能添加防抖处理，把一段小段时间间隔内的请求，合并为一个请求，使用最后的参数查询
-    this?.querySession?.query(params, {
+  inputHandler(data: unknown): void {
+    GlobalQuery?.save({ ...this.config, data }, {
       onData: this.complateHandler,
       onError: this.errorHandler,
       onLoading: this.loadinghandler,
