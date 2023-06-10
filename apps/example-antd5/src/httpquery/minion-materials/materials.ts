@@ -3,12 +3,14 @@ import { ReactNode } from "react";
 import { multipleQueryMaterial } from "./MultipleQuery";
 import { singleQueryMaterial } from "./SingleQuery";
 import { objectToUrlMaterial } from "./ObjectToUrl";
+import { postDataMaterial } from "./PostData";
 
 export const httpQueryMaterialCategory: ActivityMaterialCategory<ReactNode>=   {
   name: '$dataSource',
   materials: [
     multipleQueryMaterial,
     singleQueryMaterial,
-    objectToUrlMaterial
+    objectToUrlMaterial,
+    postDataMaterial
   ],
 }
