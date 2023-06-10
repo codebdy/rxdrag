@@ -1,71 +1,134 @@
-import { FormValue, FieldsState } from "../../../interfaces";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { FormValue, FormState, FieldState } from "../../../interfaces";
 
-export function mergeDefaultValueToValue(defaultValue: FormValue | undefined, value: FormValue | undefined, fields: FieldsState): FormValue | undefined {
-  if (value === undefined) {
-    return defaultValue
-  }
-  let newValue: FormValue | undefined = value;
-  for (const fieldPath of Object.keys(fields)) {
-    const fieldValue = getValueByPath(newValue, fieldPath)
-    const fieldDefaultValue = getValueByPath(defaultValue, fieldPath)
-    if (fieldValue === undefined && fieldDefaultValue !== undefined) {
-      newValue = setValueByPath(newValue, fieldPath, fieldDefaultValue)
+export class FormHelper {
+  constructor(private formState: FormState) { }
+
+  mergeDefaultValueToValue(defaultValue: FormValue | undefined): FormValue | undefined {
+    const value = this.formState.value
+    if (value === undefined) {
+      return defaultValue
     }
-  }
-  return newValue
-}
-
-export function getValueByPath(formValue: FormValue | undefined, path: string): unknown {
-  const pathArray = path.split(".")
-  let parentValue: FormValue | undefined = formValue
-  let currentValue = undefined;
-  for (const fieldName of pathArray) {
-    if (parentValue === undefined) {
-      return undefined
+    let newValue: FormValue | undefined = value;
+    for (const fieldPath of Object.keys(this.formState.fields)) {
+      const fieldValue = this.doGetValueByPath(newValue, fieldPath)
+      const fieldDefaultValue = this.doGetValueByPath(defaultValue, fieldPath)
+      if (fieldValue === undefined && fieldDefaultValue !== undefined) {
+        newValue = this.setValueByPath(fieldPath, fieldDefaultValue)
+      }
     }
-    currentValue = parentValue?.[fieldName]
-    parentValue = currentValue as FormValue | undefined
-  }
-  return currentValue
-}
-
-export function setValueByPath(formValue: FormValue | undefined, path: string, fieldValue: unknown): FormValue | undefined {
-  if (!path) {
-    return formValue;
-  }
-  const pathArray = path.split(".")
-  const [fieldName, ...other] = pathArray;
-
-  let newValue: FormValue | undefined;
-  if (formValue === undefined) {
-    newValue = {}
-  } else {
-    newValue = formValue
-  }
-  const value = other.length === 0 ? fieldValue : setValueByPath(newValue?.[fieldName] as FormValue | undefined, other.join("."), fieldValue)
-  newValue = { ...newValue, [fieldName]: value }
-  return newValue
-}
-
-export function removeValueByPath(formValue: FormValue | undefined, path: string | undefined): FormValue | undefined {
-  if (!path) {
-    return formValue
-  }
-  const pathArray = path.split(".")
-  const [fieldName, ...other] = pathArray;
-
-  if (formValue === undefined) {
-    return formValue
-  } else {
-    let newValue = {
-      ...formValue
-    }
-    const value = other.length === 0 ? undefined : removeValueByPath(newValue?.[fieldName] as FormValue | undefined, other.join("."))
-    newValue = { ...newValue, [fieldName]: value }
-    if (other.length === 0) {
-      delete newValue[fieldName]
-    }
-
     return newValue
   }
+
+  getValueByPath(path: string): unknown {
+    return this.doGetValueByPath(this.formState.value, path);
+  }
+
+  getDefaultValueByPath(path: string): unknown {
+    return this.doGetValueByPath(this.formState.defaultValue, path);
+  }
+
+  getInitialValueByPath(path: string): unknown {
+    return this.doGetValueByPath(this.formState.initialValue, path);
+  }
+
+  doGetValueByPath(formValue: FormValue | undefined, path: string): unknown {
+    const fields = this.getPathFields(path)
+    if (fields.length == 0) {
+      console.warn("field path is emperty")
+      return undefined
+    }
+
+    let currentValue: any = formValue;
+    let parentField: FieldState | undefined = undefined
+    for (const field of fields) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const fieldValue = parentField?.meta.type === "array" ? currentValue?.[parseInt(field.name!)] : currentValue?.[field.name!]
+
+      currentValue = fieldValue
+      parentField = field
+    }
+
+    return currentValue
+  }
+
+  setValueByPath(path: string, fieldValue: unknown): FormValue | undefined {
+    return this.doSetValueByPath(this.formState.value, path, fieldValue);
+  }
+
+  doSetValueByPath(parentValue: FormValue | undefined, path: string, fieldValue: unknown): FormValue | undefined {
+    if (!path) {
+      return parentValue;
+    }
+    const pathArray = path.split(".")
+    const [fieldName, ...other] = pathArray;
+    const parentPath = pathArray.length > 1 ? pathArray.slice(0, pathArray.length - 2).join(".") : undefined
+    const parentField = parentPath ? this.formState.fields[parentPath] : undefined
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let newParentValue: any;
+    if (parentValue === undefined) {
+      newParentValue = parentField?.meta?.type === "array" ? [] : {}
+    } else {
+      newParentValue = parentValue
+    }
+    const value = other.length === 0 ? fieldValue : this.doSetValueByPath(newParentValue, other.join("."), fieldValue)
+    if (parentField?.meta?.type === "array") {
+      newParentValue = [...newParentValue];
+      (newParentValue as unknown[]).splice(parseInt(fieldName), 0, value)
+    } else {
+      newParentValue = { ...newParentValue, [fieldName]: value }
+    }
+
+    return newParentValue
+  }
+
+  removeValueByPath(path: string | undefined): FormValue | undefined {
+    return this.doRemoveValueByPath(this.formState.value, path);
+  }
+
+  doRemoveValueByPath(parentValue: any | undefined, path: string | undefined): FormValue | undefined {
+    if (!path) {
+      return parentValue
+    }
+    const pathArray = path.split(".")
+    const [fieldName, ...other] = pathArray;
+    const parentPath = pathArray.length > 1 ? pathArray.slice(0, pathArray.length - 2).join(".") : undefined
+    const parentField = parentPath ? this.formState.fields[parentPath] : undefined
+    if (parentValue === undefined) {
+      return parentValue
+    } else {
+      let newParentValue = parentField?.meta?.type === "array" ? [...parentValue] : { ...parentValue }
+      const value = other.length === 0 ? undefined : this.doRemoveValueByPath(newParentValue, other.join("."))
+      //newParentValue = { ...newParentValue, [fieldName]: value }
+      if (other.length === 0) {
+        if(parentField?.meta?.type === "array"){
+          newParentValue = [...newParentValue];
+          (newParentValue as unknown[]).splice(parseInt(fieldName), 1)
+        }else{
+          newParentValue = { ...newParentValue, [fieldName]: value }
+          delete newParentValue[fieldName]
+        }
+
+      }
+
+      return newParentValue
+    }
+  }
+
+  getPathFields(path?: string): FieldState[] {
+    if (!path) {
+      return []
+    }
+
+    const pathArray = path.split(".")
+    const fieldPaths: string[] = []
+    let parent = ""
+    for (const fieldName of pathArray) {
+      const fieldPath = parent ? (parent + "." + fieldName) : fieldName
+      fieldPaths.push(fieldPath)
+      parent = fieldPath
+    }
+    return fieldPaths.map((fpath) => this.formState.fields[fpath]).filter(field => !!field) as FieldState[]
+  }
 }
+

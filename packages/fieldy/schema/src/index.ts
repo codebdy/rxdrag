@@ -1,5 +1,4 @@
-export type FieldType = 'object' | 'array' | 'normal' | 'fragment';
-
+export type FieldType = 'object' | 'array' | 'normal' ;
 
 export enum PatternType {
   //可编辑

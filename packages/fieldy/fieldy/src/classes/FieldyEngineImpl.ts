@@ -5,7 +5,7 @@ import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_F
 import { FieldChangeListener, FieldState, FieldValueChangeListener, FormChangeListener, FormState, FormValue, FormValueChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Unsubscribe } from "../interfaces";
 import { reduce, State } from "../reducers";
 import { FormImpl } from "./FormImpl";
-import { getValueByPath } from "../reducers/forms/form/helpers";
+import { FormHelper } from "../reducers/forms/form/helpers";
 
 let idSeed = 0
 
@@ -240,11 +240,19 @@ export class FieldyEngineImpl implements IFieldyEngine {
   }
 
   getFieldInitialValue(formName: string, fieldPath: string): unknown {
-    return getValueByPath(this.getForm(formName)?.getInitialValue() as FormValue | undefined, fieldPath)
+    const formState = this.getFormState(formName)
+    if (formState) {
+      const formHelpr = new FormHelper(formState)
+      return formHelpr.getInitialValueByPath(fieldPath)
+    }
   }
 
   getFieldValue(formName: string, fieldPath: string) {
-    return getValueByPath(this.getForm(formName)?.getValue() as FormValue | undefined, fieldPath)
+    const formState = this.getFormState(formName)
+    if (formState) {
+      const formHelpr = new FormHelper(formState)
+      return formHelpr.getValueByPath(fieldPath)
+    }
   }
 
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe {
@@ -287,14 +295,16 @@ export class FieldyEngineImpl implements IFieldyEngine {
   subscribeToFieldValueChange(formName: string, fieldPath: string, listener: FieldValueChangeListener): Unsubscribe {
     invariant(typeof listener === 'function', 'listener must be a function.')
     const previousFormValue: FormValue | undefined = this.store.getState().forms[formName]?.value
+    const formState = this.getFormState(formName)
+    const formHelper = formState ? new FormHelper(formState) : undefined
 
     const handleChange = () => {
       const nextFormValue = this.store.getState().forms[formName]?.value
       if (nextFormValue === previousFormValue) {
         return
       }
-      const prevValue = getValueByPath(previousFormValue, fieldPath)
-      const value = getValueByPath(nextFormValue, fieldPath)
+      const prevValue = formHelper?.doGetValueByPath(previousFormValue, fieldPath)
+      const value = formHelper?.doGetValueByPath(nextFormValue, fieldPath)
       if (value !== prevValue) {
         listener(value, prevValue)
       }
