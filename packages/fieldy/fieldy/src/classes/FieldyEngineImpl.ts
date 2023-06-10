@@ -235,7 +235,9 @@ export class FieldyEngineImpl implements IFieldyEngine {
   getFormInitialValue(formName: string): FormValue | undefined {
     return this.store.getState().forms[formName]?.initialValue
   }
-
+  getFormDefaultValue(formName: string): FormValue | undefined {
+    return this.store.getState().forms[formName]?.defaultValue
+  }
 
   getFieldState(formName: string, fieldPath: string): FieldState | undefined {
     const state = this.store.getState()
@@ -249,6 +251,15 @@ export class FieldyEngineImpl implements IFieldyEngine {
       return formHelpr.getInitialValueByPath(fieldPath)
     }
   }
+
+  getFieldDefaultValue(formName: string, fieldPath: string): unknown {
+    const formState = this.getFormState(formName)
+    if (formState) {
+      const formHelpr = new FormHelper(formState)
+      return formHelpr.getDefaultValueByPath(fieldPath)
+    }
+  }
+
 
   getFieldValue(formName: string, fieldPath: string) {
     const formState = this.getFormState(formName)

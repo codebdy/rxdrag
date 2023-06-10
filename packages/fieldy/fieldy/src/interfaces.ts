@@ -115,6 +115,7 @@ export interface FormValue {
 
 export interface IFormNode<T> {
   fieldy: IFieldyEngine
+  getDefaultValue(): T
   getInitialValue(): T
   getValue(): T
   setValue(value: T): void
@@ -183,8 +184,10 @@ export interface IFieldyEngine {
   getFieldState(formName: string, fieldPath: string): FieldState | undefined
   getFieldValue(formName: string, fieldPath: string): unknown
   getFieldInitialValue(formName: string, fieldPath: string): unknown
+  getFieldDefaultValue(formName: string, fieldPath: string): unknown
   getFormValue(formName: string): FormValue | undefined
   getFormInitialValue(formName: string): FormValue | undefined
+  getFormDefaultValue(formName: string): FormValue | undefined
   subscribeToFormChange(name: string, listener: FormChangeListener): Unsubscribe
   subscribeToFormValuesChange(name: string, listener: FormValueChangeListener): Unsubscribe
   subscribeToFieldChange(formName: string, path: string, listener: FieldChangeListener): Unsubscribe

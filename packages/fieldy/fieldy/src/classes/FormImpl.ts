@@ -8,6 +8,8 @@ export class FormImpl implements IForm {
   } = {}
 
   constructor(public fieldy: IFieldyEngine, public name: string) { }
+
+
   unmount(): void {
     throw new Error("Method not implemented.");
   }
@@ -16,6 +18,9 @@ export class FormImpl implements IForm {
     throw new Error("Method not implemented.");
   }
 
+  getDefaultValue(): FormValue | undefined {
+    return this.fieldy.getFormDefaultValue(this.name)
+  }
   getInitialValue(){
     return this.fieldy.getFormInitialValue(this.name)
   }
