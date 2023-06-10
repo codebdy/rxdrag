@@ -7,7 +7,7 @@ import { FieldType } from "@rxdrag/fieldy-schema"
 //动态增加字段用这个，否则不要碰它
 export const Field = memo((
   props: {
-    name: string | number,
+    name: string,
     initialValue?: unknown,
     value?: unknown,
     defaultValue?: unknown,
