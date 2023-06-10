@@ -65,7 +65,7 @@ export class Restful {
       return
     }
     handler?.onLoading?.(true)
-    axios(param.url, _.merge(PREDEFINED_POST_HEADERS, param.axiosConfig)).then((res) => {
+    axios(param.url, { ..._.merge(PREDEFINED_POST_HEADERS, param.axiosConfig), data: param.data }).then((res) => {
       handler?.onData?.(res.data)
     }).catch(e => {
       console.error(e)
