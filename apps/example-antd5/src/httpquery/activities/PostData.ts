@@ -17,7 +17,7 @@ export class PostData extends AbstractActivity<IPostConfig> {
 
   @Input()
   inputHandler(data: unknown): void {
-    GlobalRestful?.save({ ...this.config, data }, {
+    GlobalRestful?.save({ ...this.config, url: this.config?.rootUrl, data }, {
       onData: this.complateHandler,
       onError: this.errorHandler,
       onLoading: this.loadinghandler,
