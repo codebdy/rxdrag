@@ -71,14 +71,14 @@ export class FormHelper {
     } else {
       newParentValue = parentValue
     }
-    const value = other.length === 0 ? fieldValue : this.doSetValueByPath(newParentValue, other.join("."), fieldValue)
+    const oldValue = newParentValue?.[parentField?.meta?.type === "array" ? parseInt(fieldName) : fieldName]
+    const value = other.length === 0 ? fieldValue : this.doSetValueByPath(oldValue, other.join("."), fieldValue)
     if (parentField?.meta?.type === "array") {
       newParentValue = [...newParentValue];
       (newParentValue as unknown[]).splice(parseInt(fieldName), 0, value)
     } else {
       newParentValue = { ...newParentValue, [fieldName]: value }
     }
-
     return newParentValue
   }
 
@@ -98,13 +98,14 @@ export class FormHelper {
       return parentValue
     } else {
       let newParentValue = parentField?.meta?.type === "array" ? [...parentValue] : { ...parentValue }
-      const value = other.length === 0 ? undefined : this.doRemoveValueByPath(newParentValue, other.join("."))
+      const oldValue = newParentValue?.[parentField?.meta?.type === "array" ? parseInt(fieldName) : fieldName]
+      const value = other.length === 0 ? undefined : this.doRemoveValueByPath(oldValue, other.join("."))
       //newParentValue = { ...newParentValue, [fieldName]: value }
       if (other.length === 0) {
-        if(parentField?.meta?.type === "array"){
+        if (parentField?.meta?.type === "array") {
           newParentValue = [...newParentValue];
           (newParentValue as unknown[]).splice(parseInt(fieldName), 1)
-        }else{
+        } else {
           newParentValue = { ...newParentValue, [fieldName]: value }
           delete newParentValue[fieldName]
         }
