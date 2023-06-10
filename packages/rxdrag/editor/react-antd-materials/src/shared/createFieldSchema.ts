@@ -297,10 +297,6 @@ export function createFieldSchema(fieldOptions?: FieldOptions) {
             value: 'array',
             label: 'Array',
           },
-          {
-            value: 'fragment',
-            label: 'Fragment',
-          },
         ]
       },
     },
@@ -316,13 +312,6 @@ export function createFieldSchema(fieldOptions?: FieldOptions) {
       "x-field": {
         name: "x-field.defaultValue",
         label: "$defaultValue",
-      },
-    },
-    {
-      componentName: "Input",
-      "x-field": {
-        name: "x-field.fragmentFields",
-        label: "$fragmentFields",
       },
     },
     {

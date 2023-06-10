@@ -16,15 +16,16 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
-    "@rxdrag/shared": "workspace:*",
     "@rxdrag/schema": "workspace:*",
+    "@rxdrag/shared": "workspace:*",
     "lodash": "^4.17.21",
-    "redux": "^4.2.1"
+    "redux": "^4.2.1",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@rxdrag/eslint-config-custom": "workspace:*",
-    "@rxdrag/tsconfig": "workspace:*",
-    "@rxdrag/fieldy-schema": "workspace:*"
+    "@rxdrag/fieldy-schema": "workspace:*",
+    "@rxdrag/tsconfig": "workspace:*"
   },
   "peerDependencies": {
     "@types/node": "*",

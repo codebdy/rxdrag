@@ -70,16 +70,30 @@ export type IFormMeta = {
   reactionMeta?: IFieldReactionMeta
 }
 
+// export enum ValidateRuleType{
+//   string = "string",
+//   number = "number",
+//   date = "date",
+//   boolean = "boolean",
+//   email = "email",
+//   tel = "tel",
+//   url = "url",
+// }
+
+export interface IValidateRule {
+  type: string;
+  config?: unknown;
+}
+
 //字段元数据
 export interface IFieldMeta<Params = unknown> {
-  //类型：对象、数组、常规、片段（name 为空）
+  //类型：对象、数组、常规
   type?: FieldType;
   name?: string;
   label?: string;
   defaultValue?: unknown;
-  fragmentFields?: IFieldMeta[];
   //校验规则
-  validateRules?: unknown;
+  validateRules?: IValidateRule;
   params?: Params;
   //联动配置
   reactionMeta?: IFieldReactionMeta;

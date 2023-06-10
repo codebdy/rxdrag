@@ -332,6 +332,9 @@ importers:
       vitest:
         specifier: '*'
         version: registry.npmmirror.com/vitest@0.25.8(jsdom@22.0.0)
+      yup:
+        specifier: ^1.2.0
+        version: registry.npmmirror.com/yup@1.2.0
     devDependencies:
       '@rxdrag/eslint-config-custom':
         specifier: workspace:*
@@ -8498,6 +8501,12 @@ packages:
       react-is: registry.npmmirror.com/react-is@16.13.1
     dev: false
 
+  registry.npmmirror.com/property-expr@2.0.5:
+    resolution: {integrity: sha512-IJUkICM5dP5znhCckHSv30Q4b5/JA5enCtkRHYaOVOAocnH/1BQEYTC5NMfT3AVl/iXKdr3aqQbQn9DxyWknwA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/property-expr/-/property-expr-2.0.5.tgz}
+    name: property-expr
+    version: 2.0.5
+    dev: false
+
   registry.npmmirror.com/proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz}
     name: proxy-from-env
@@ -9839,6 +9848,12 @@ packages:
     engines: {node: '>=12.22'}
     dev: false
 
+  registry.npmmirror.com/tiny-case@1.0.3:
+    resolution: {integrity: sha512-Eet/eeMhkO6TX8mnUteS9zgPbUMQa4I6Kkp5ORiBD5476/m+PIRiumP5tmh5ioJpH7k51Kehawy2UDfsnxxY8Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tiny-case/-/tiny-case-1.0.3.tgz}
+    name: tiny-case
+    version: 1.0.3
+    dev: false
+
   registry.npmmirror.com/tinybench@2.3.1:
     resolution: {integrity: sha512-hGYWYBMPr7p4g5IarQE7XhlyWveh1EKhy4wUBS1LrHXCKYgvz+4/jCqgmJqZxxldesn05vccrtME2RLLZNW7iA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tinybench/-/tinybench-2.3.1.tgz}
     name: tinybench
@@ -9883,6 +9898,12 @@ packages:
     resolution: {integrity: sha512-BiZS+C1OS8g/q2RRbJmy59xpyghNBqrr6k5L/uKBGRsTfxmu3ffiRnd8mlGPUVayg8pvfi5urfnu8TU7DVOkLQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/toggle-selection/-/toggle-selection-1.0.6.tgz}
     name: toggle-selection
     version: 1.0.6
+    dev: false
+
+  registry.npmmirror.com/toposort@2.0.2:
+    resolution: {integrity: sha512-0a5EOkAUp8D4moMi2W8ZF8jcga7BgZd91O/yabJCFY8az+XSzeGyTKs0Aoo897iV1Nj6guFq8orWDS96z91oGg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/toposort/-/toposort-2.0.2.tgz}
+    name: toposort
+    version: 2.0.2
     dev: false
 
   registry.npmmirror.com/tough-cookie@4.1.2:
@@ -10051,6 +10072,13 @@ packages:
     version: 0.8.1
     engines: {node: '>=8'}
     dev: true
+
+  registry.npmmirror.com/type-fest@2.19.0:
+    resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/type-fest/-/type-fest-2.19.0.tgz}
+    name: type-fest
+    version: 2.19.0
+    engines: {node: '>=12.20'}
+    dev: false
 
   registry.npmmirror.com/typescript@4.9.4:
     resolution: {integrity: sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/typescript/-/typescript-4.9.4.tgz}
@@ -10447,3 +10475,14 @@ packages:
     name: yocto-queue
     version: 0.1.0
     engines: {node: '>=10'}
+
+  registry.npmmirror.com/yup@1.2.0:
+    resolution: {integrity: sha512-PPqYKSAXjpRCgLgLKVGPA33v5c/WgEx3wi6NFjIiegz90zSwyMpvTFp/uGcVnnbx6to28pgnzp/q8ih3QRjLMQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/yup/-/yup-1.2.0.tgz}
+    name: yup
+    version: 1.2.0
+    dependencies:
+      property-expr: registry.npmmirror.com/property-expr@2.0.5
+      tiny-case: registry.npmmirror.com/tiny-case@1.0.3
+      toposort: registry.npmmirror.com/toposort@2.0.2
+      type-fest: registry.npmmirror.com/type-fest@2.19.0
+    dev: false
