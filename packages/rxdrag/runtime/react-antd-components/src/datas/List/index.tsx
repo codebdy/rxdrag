@@ -32,8 +32,8 @@ export const List = memo((props: ListProps<unknown> & ListAddonProps) => {
               onChange: handlePageChange
             }
         }
-        renderItem={(item, index) => (
-          <ObjectField name={index.toString()} value={item}>
+        renderItem={(_, index) => (
+          <ObjectField name={index.toString()}>
             {renderItem}
           </ObjectField>
         )}

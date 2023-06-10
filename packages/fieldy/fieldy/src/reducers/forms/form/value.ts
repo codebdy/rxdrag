@@ -1,4 +1,4 @@
-import { SetFormValuePayload, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SET_FORM_DEFAULT_VALUE, REMOVE_FORM_FIELDS, SetFieldValuePayload, SET_FIELD_VALUE, SET_FIELD_INITAL_VALUE, SET_FIELD_DEFAULT_VALUE } from "../../../actions";
+import { SetFormValuePayload, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SET_FORM_DEFAULT_VALUE, REMOVE_FORM_FIELDS, SetFieldValuePayload, SET_FIELD_VALUE, SET_FIELD_INITAL_VALUE, SET_FIELD_DEFAULT_VALUE, INPUT_FIELD_VALUE } from "../../../actions";
 import { FormState, FormValue, IAction } from "../../../interfaces";
 import { FormHelper } from "./helpers";
 
@@ -20,6 +20,7 @@ export function valueReduer(state: FormValue | undefined, action: IAction<unknow
       //删除相关value
       return formHelper.removeValueByPath(setFieldValuePayload.path);
     case SET_FIELD_VALUE:
+    case INPUT_FIELD_VALUE:
       return formHelper.setValueByPath(setFieldValuePayload.path, setFieldValuePayload.value);
     case SET_FIELD_INITAL_VALUE:
       return formHelper.setValueByPath(setFieldValuePayload.path, setFieldValuePayload.value);

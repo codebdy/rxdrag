@@ -1,19 +1,19 @@
-import { forwardRef, memo } from "react"
+import { memo } from "react"
 import { Field } from "@rxdrag/react-fieldy"
 
 export type LoopPanelProps = {
-  value?: any[],
+  value?: unknown[],
   children?: React.ReactNode,
 }
 
-export const LoopPanel = memo(forwardRef<HTMLDivElement, LoopPanelProps>((props, ref) => {
+export const LoopPanel = memo((props: LoopPanelProps) => {
   const { value, children } = props;
   return (
     <>
       {
-        value?.map((item, index) => {
+        value?.map((_, index) => {
           return (
-            <Field key={index} name={index.toString()} value={item}>
+            <Field key={index} name={index.toString()}>
               {
                 children
               }
@@ -23,4 +23,4 @@ export const LoopPanel = memo(forwardRef<HTMLDivElement, LoopPanelProps>((props,
       }
     </>
   )
-}))
+})

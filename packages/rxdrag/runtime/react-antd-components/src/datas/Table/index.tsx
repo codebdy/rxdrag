@@ -24,7 +24,7 @@ import { Table as AntdTable, TablePaginationConfig } from "antd"
 import { IDataSource } from "../IDataSource"
 import { createUuid } from "@rxdrag/shared";
 import { ComponentView, IBindParams, useComponentSchema } from "@rxdrag/react-runner";
-import { ArrayField, ObjectField, useFieldState } from "@rxdrag/react-fieldy";
+import { ArrayField, ObjectField, useFieldValue } from "@rxdrag/react-fieldy";
 import { IFieldMeta } from "@rxdrag/fieldy-schema";
 
 interface RowProps {
@@ -45,13 +45,13 @@ const TableCell: React.FC<TableCellProps> = ({
   children,
   ...restProps
 }) => {
-  const parentField = useFieldState()
+  const parentValue = useFieldValue()
 
   return <td {...restProps}>
     {
       fieldMeta?.name && fieldMeta.params?.withBind
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ? (parentField?.value as any)?.[fieldMeta.name]?.toString()
+        ? (parentValue as any)?.[fieldMeta.name]?.toString()
         : children
     }
   </td>;

@@ -6,7 +6,7 @@ import { FieldType } from "@rxdrag/fieldy-schema"
 export function useCreateFieldSchema(name: string, type?: FieldType) {
   const parentPath = useFieldPath() || ""
   const fieldPath = useMemo(() => {
-    return parentPath ? parentPath + "." + name : name
+    return parentPath ? parentPath + "." + name : name.toString()
   }, [name, parentPath])
 
   const fieldPathRef = useRef(fieldPath)

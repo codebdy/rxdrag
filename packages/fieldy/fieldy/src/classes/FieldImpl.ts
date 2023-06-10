@@ -16,13 +16,13 @@ export class FieldImpl implements IField {
       form.fieldy.subscribeToFormChange(form.name, this.handleFieldReaction)
     }
   }
-  unmount(): void {
-    throw new Error("Method not implemented.");
-  }
+  // unmount(): void {
+  //   ;
+  // }
 
-  mount(): void {
-    throw new Error("Method not implemented.");
-  }
+  // mount(): void {
+  //   throw new Error("Method not implemented.");
+  // }
 
   getInitialValue(): unknown {
     return this.fieldy.getFieldInitialValue(this.form.name, this.fieldPath)
@@ -60,7 +60,7 @@ export class FieldImpl implements IField {
     this.fieldy.setFieldDefaultValue(this.form.name, this.path, value)
   }
 
-  inpuValue(value: unknown): void {
+  inputValue(value: unknown): void {
     this.fieldy.inputFieldValue(this.form.name, this.path, value)
   }
 

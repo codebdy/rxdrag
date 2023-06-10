@@ -12,7 +12,7 @@ const getPath = (parentPath: string, name: string) => {
 }
 
 function parseSchemas(fieldMeta: IFieldMeta, parentPath: string) {
-  const arr = fieldMeta.name?.split(".") || []
+  const arr = (fieldMeta.name)?.split(".") || []
   let currentPath = parentPath
   const schemas: IFieldSchema[] = []
   for (let i = 0; i < arr.length; i++) {
@@ -40,7 +40,7 @@ function parseFragmentSchemas(fieldMeta: IFieldMeta, parentPath: string) {
   const schemas: IFieldSchema[] = []
   //必须要有名字，要不然检索不到fragment字段
   const name = fieldMeta.name || makeRxId()
-  for (const subMedia of fieldMeta.fragmentFields||[]){
+  for (const subMedia of fieldMeta.fragmentFields || []) {
     schemas.push({
       ...subMedia,
       path: parentPath + "." + subMedia.name,
@@ -60,12 +60,12 @@ export function useFieldSchemas(fieldMeta: IFieldMeta, parentPath: string) {
   const [fieldSchemas, setFieldSchemas] = useState<IFieldSchema[]>()
 
   useEffect(() => {
-    let schemas
-    if (fieldMeta.type === "fragment") {
-      schemas = parseFragmentSchemas(fieldMeta, parentPath)
-    } else {
-      schemas = parseSchemas(fieldMeta, parentPath)
-    }
+    //let schemas
+    // if (fieldMeta.type === "fragment") {
+    //   schemas = parseFragmentSchemas(fieldMeta, parentPath)
+    // } else {
+    const schemas = parseSchemas(fieldMeta, parentPath)
+    //}
     setFieldSchemas(schemas)
   }, [fieldMeta, fieldMeta.name, parentPath])
 

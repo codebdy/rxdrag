@@ -56,7 +56,7 @@ export type FieldChangeListener = (field: FieldState | undefined) => void
 export type FieldValueChangeListener = (value: unknown, previousValue: unknown) => void
 export type FieldValuesChangeListener = (values: unknown[], previousValues: unknown[]) => void
 export type FormChangeListener = (form: FormState) => void
-export type FormValueChangeListener = (value: FormValue|undefined) => void
+export type FormValueChangeListener = (value: FormValue | undefined) => void
 
 export type FieldState = {
   //自动生成id，用于组件key值
@@ -113,16 +113,16 @@ export interface FormValue {
   [key: string]: unknown
 }
 
-export interface IFormNode {
+export interface IFormNode<T> {
   fieldy: IFieldyEngine
-  getInitialValue(): unknown
-  getValue(): unknown
-  setValue(value: unknown): void
-  setInitialValue(value: FormValue | undefined): void
-  setDefaultValue(value: FormValue | undefined): void
-  inpuValue(value: unknown): void
-  mount(): void
-  unmount(): void
+  getInitialValue(): T
+  getValue(): T
+  setValue(value: T): void
+  setInitialValue(value: T): void
+  setDefaultValue(value: T): void
+  inputValue(value: T): void
+  // mount(): void
+  // unmount(): void
   validate(): void
 
   onInit(listener: Listener): Unsubscribe
@@ -136,7 +136,7 @@ export interface IFormNode {
   onValidateSuccess(listener: Listener): Unsubscribe
 }
 
-export interface IForm extends IFormNode {
+export interface IForm extends IFormNode<FormValue | undefined> {
   name: string
   getField(path: string): IField | undefined
   registerField(fieldSchema: IFieldSchema): IField
@@ -145,7 +145,7 @@ export interface IForm extends IFormNode {
   getFieldState(fieldPath: string): FieldState | undefined
 }
 
-export interface IField extends IFormNode {
+export interface IField extends IFormNode<unknown> {
   form: IForm
   //引用数量
   refCount: number;

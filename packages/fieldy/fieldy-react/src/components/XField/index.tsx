@@ -19,6 +19,18 @@ export const XField = memo((props: {
   }, [])
 
   useEffect(() => {
+    initialValue !== undefined && field?.setInitialValue(initialValue)
+  }, [field, initialValue])
+
+  useEffect(() => {
+    value !== undefined && field?.setValue(value)
+  }, [field, value])
+
+  useEffect(() => {
+    defaultValue !== undefined && field?.setDefaultValue(defaultValue)
+  }, [field, defaultValue])
+
+  useEffect(() => {
     setHidden(field?.form.getFieldState(field.path)?.hidden || false)
   }, [field?.form, field?.path])
 
@@ -26,13 +38,6 @@ export const XField = memo((props: {
     const unsub = field?.fieldy.subscribeToFieldChange(field.form.name, field.path, handleFieldChange)
     return unsub
   }, [field?.fieldy, field?.form.name, field?.path, handleFieldChange])
-
-  useEffect(()=>{
-    //field?.mount()
-    return ()=>{
-      //field?.unmount()
-    }
-  }, [field])
 
   return (
     <FieldContext.Provider value={field}>

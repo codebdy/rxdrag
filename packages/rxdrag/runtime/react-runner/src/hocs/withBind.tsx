@@ -23,7 +23,7 @@ export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMet
       if (newValue === undefined && !e?.target) {
         newValue = e
       }
-      field?.inpuValue(newValue)
+      field?.inputValue(newValue)
     }, [field])
 
     const handleValueChange = useCallback((value: unknown) => {

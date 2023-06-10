@@ -1,10 +1,12 @@
-import { SET_FIELD_VALUE } from "../../../actions";
+import { INPUT_FIELD_VALUE, SET_FORM_INITIAL_VALUE } from "../../../actions";
 import { IAction } from "../../../interfaces";
 
-export function modifiedReduer(state: boolean|undefined, action:IAction<unknown>){
+export function modifiedReduer(state: boolean | undefined, action: IAction<unknown>) {
   switch (action.type) {
-    case SET_FIELD_VALUE:
+    case INPUT_FIELD_VALUE:
       return true
+    case SET_FORM_INITIAL_VALUE:
+      return false
   }
   return state
 }

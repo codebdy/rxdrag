@@ -12,6 +12,7 @@ export const SET_FORM_INITIALZED_FLAG = "fieldy/SET_FORM_INITIALZED_FLAG"
 //Field actions
 export const SET_FIELD_INITAL_VALUE = "fieldy/SET_FIELD_INITAL_VALUE"
 export const SET_FIELD_VALUE = "fieldy/SET_FIELD_VALUE"
+export const INPUT_FIELD_VALUE = "fieldy/INPUT_FIELD_VALUE"
 export const SET_FIELD_DEFAULT_VALUE = "fieldy/SET_FIELD_DEFAULT_VALUE"
 export const SET_FIELD_STATE = "fieldy/SET_FIELD_STATE"
 
