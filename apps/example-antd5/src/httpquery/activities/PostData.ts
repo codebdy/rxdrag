@@ -1,6 +1,6 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
-import { GlobalQuery } from "httpquery/lib/classes/RestfulQuery"
+import { GlobalRestful } from "httpquery/lib/classes/Restful"
 import { IPostConfig, IRestfulQuerySession } from "httpquery/lib/interfaces"
 
 @Activity(PostData.NAME)
@@ -17,7 +17,7 @@ export class PostData extends AbstractActivity<IPostConfig> {
 
   @Input()
   inputHandler(data: unknown): void {
-    GlobalQuery?.save({ ...this.config, data }, {
+    GlobalRestful?.save({ ...this.config, data }, {
       onData: this.complateHandler,
       onError: this.errorHandler,
       onLoading: this.loadinghandler,

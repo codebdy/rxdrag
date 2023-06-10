@@ -1739,6 +1739,26 @@
                                                     }
                                                   },
                                                   {
+                                                    "id": "506e8d6a-747c-4a0f-9217-0845da7e6218",
+                                                    "label": "调试",
+                                                    "type": "Activity",
+                                                    "activityName": "system.debug",
+                                                    "inPorts": [
+                                                      {
+                                                        "id": "2af47583-5431-4299-bfec-67f950aec9b0",
+                                                        "name": "input",
+                                                        "label": ""
+                                                      }
+                                                    ],
+                                                    "outPorts": [],
+                                                    "x6Node": {
+                                                      "x": 310,
+                                                      "y": 130,
+                                                      "width": 88,
+                                                      "height": 32
+                                                    }
+                                                  },
+                                                  {
                                                     "id": "3fe5f5c1-4e67-4a00-a591-e1be366d2a6c",
                                                     "label": "提交数据",
                                                     "type": "Activity",
@@ -1772,26 +1792,10 @@
                                                       "y": 260,
                                                       "width": 116,
                                                       "height": 48
-                                                    }
-                                                  },
-                                                  {
-                                                    "id": "506e8d6a-747c-4a0f-9217-0845da7e6218",
-                                                    "label": "调试",
-                                                    "type": "Activity",
-                                                    "activityName": "system.debug",
-                                                    "inPorts": [
-                                                      {
-                                                        "id": "2af47583-5431-4299-bfec-67f950aec9b0",
-                                                        "name": "input",
-                                                        "label": ""
-                                                      }
-                                                    ],
-                                                    "outPorts": [],
-                                                    "x6Node": {
-                                                      "x": 310,
-                                                      "y": 130,
-                                                      "width": 88,
-                                                      "height": 32
+                                                    },
+                                                    "config": {
+                                                      "rootUrl": "/api/post-user",
+                                                      "entityName": "user"
                                                     }
                                                   }
                                                 ],

@@ -9,9 +9,11 @@ export enum QueryStatus {
   complated,
 }
 
-const PREDEFINED_HEADERS = {
-  "Accept": "application/json",
-  'Content-Type': 'application/json'
+export const PREDEFINED_HEADERS =  {
+  headers: {
+    "Accept": "application/json",
+    'Content-Type': 'application/json'
+  }
 }
 
 export class QueryRecord {

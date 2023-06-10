@@ -1,5 +1,15 @@
+import axios from "axios"
 import { IPostParam, IQueryParam, IReponseHandler, Unsubscribe } from "../interfaces"
 import { QueryRecord, QueryStatus } from "./QueryRecord"
+import _ from "lodash"
+
+export const PREDEFINED_POST_HEADERS = {
+  headers: {
+    "Accept": "application/json",
+    'Content-Type': 'application/json'
+  },
+  method: "post"
+}
 
 export class Restful {
   cache: {
@@ -50,8 +60,20 @@ export class Restful {
     record.handlers = record.handlers.filter(hd => hd !== handler)
   }
   save(param: IPostParam, handler: IReponseHandler): void {
-    throw new Error("Method not implemented.")
+    if (!param.url) {
+      console.error("Post url is emperty")
+      return
+    }
+    handler?.onLoading?.(true)
+    axios(param.url, _.merge(PREDEFINED_POST_HEADERS, param.axiosConfig)).then((res) => {
+      handler?.onData?.(res.data)
+    }).catch(e => {
+      console.error(e)
+      handler?.onError?.(e)
+    }).finally(() => {
+      handler?.onLoading?.(false)
+    })
   }
 }
 
-export const GlobalQuery = new Restful()
+export const GlobalRestful = new Restful()

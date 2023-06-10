@@ -1,5 +1,5 @@
 import { IQueryConfig, IQueryParam, IReponseHandler, IRestfulQuerySession, Unsubscribe } from "../interfaces";
-import { GlobalQuery } from "./RestfulQuery";
+import { GlobalRestful } from "./Restful";
 
 
 export class QuerySession implements IRestfulQuerySession {
@@ -19,7 +19,7 @@ export class QuerySession implements IRestfulQuerySession {
     this.responseHandlerFromParam = handler
     //重新订阅一次
     this.unsubscribe?.()
-    this.unsubscribe = GlobalQuery.subscribeQuery(this.mergeParam(param), this.responseHandler)
+    this.unsubscribe = GlobalRestful.subscribeQuery(this.mergeParam(param), this.responseHandler)
   }
   destory(): void {
     this.unsubscribe?.()
