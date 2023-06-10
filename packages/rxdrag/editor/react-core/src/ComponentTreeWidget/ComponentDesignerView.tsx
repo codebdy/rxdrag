@@ -22,7 +22,7 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
     }
   }, [locked, node?.rxProps])
 
-  const { style, ...other } = node?.meta.props || {}
+  const { style, ...other } = node?.meta?.props || {}
   const { dStyle, ...dOther } = node?.designerProps || {}
   const slots = useMemo(() => {
     const slts: { [key: string]: React.ReactElement } = {}

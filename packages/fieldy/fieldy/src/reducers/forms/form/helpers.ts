@@ -35,7 +35,6 @@ export class FormHelper {
   doGetValueByPath(formValue: FormValue | undefined, path: string): unknown {
     const fields = this.getPathFields(path)
     if (fields.length == 0) {
-      console.warn("field path is emperty")
       return undefined
     }
 
@@ -83,7 +82,8 @@ export class FormHelper {
   }
 
   removeValueByPath(path: string | undefined): FormValue | undefined {
-    return this.doRemoveValueByPath(this.formState.value, path);
+    const value = this.doRemoveValueByPath(this.formState.value, path);
+    return value
   }
 
   doRemoveValueByPath(parentValue: any | undefined, path: string | undefined): FormValue | undefined {

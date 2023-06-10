@@ -49,7 +49,7 @@ export const SettingsForm = memo(() => {
           <VirtualForm
             initialValue={currentNode?.meta as unknown as FormValue | undefined}
             onValueChange={handleMetaChange as unknown as (value: FormValue | undefined) => void}
-            key={currentNode.id}
+            //key={currentNode.id}
           >
             <Form
               labelAlign="left"
