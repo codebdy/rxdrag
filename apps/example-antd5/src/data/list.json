@@ -1702,7 +1702,7 @@
                                                     "id": "99c9a053-1cfe-4aaf-aff9-1d18bf3a5bb2",
                                                     "label": "读取表单",
                                                     "type": "Activity",
-                                                    "activityName": "fieldy.readFieldValue",
+                                                    "activityName": "fieldy.readFormValue",
                                                     "inPorts": [
                                                       {
                                                         "id": "171b7c51-fe7c-4f05-b676-ac7706ecd13d",
