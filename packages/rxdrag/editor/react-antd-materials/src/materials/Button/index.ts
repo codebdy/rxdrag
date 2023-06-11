@@ -21,7 +21,7 @@ export const ButtonMaterial: IComponentMaterial = {
       {
         componentName: name,
         props: {
-          type: "primary",
+          //type: "primary",
           title: name,
         }
       }

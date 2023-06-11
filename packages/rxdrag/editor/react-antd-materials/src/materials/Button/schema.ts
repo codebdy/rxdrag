@@ -17,6 +17,7 @@ const options: SchemaOptions<IFieldMeta<IBindParams>> = {
       "x-field": {
         name: "type",
         label: "$type",
+        defaultValue:"primary",
       },
       props: {
         options: [

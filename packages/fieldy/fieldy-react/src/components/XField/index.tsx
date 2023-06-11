@@ -40,10 +40,12 @@ export const XField = memo((props: {
   }, [field?.fieldy, field?.form.name, field?.path, handleFieldChange])
 
   return (
-    <FieldContext.Provider value={field}>
-      {
-        hidden === false && children
-      }
-    </FieldContext.Provider>
+    field ?
+      <FieldContext.Provider value={field}>
+        {
+          hidden === false && children
+        }
+      </FieldContext.Provider>
+      : <></>
   )
 })
