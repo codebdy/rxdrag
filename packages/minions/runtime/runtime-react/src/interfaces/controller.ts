@@ -29,7 +29,7 @@ export interface IController extends IVariableController, IPropController {
   id: string,
   name?: string,
   meta: ILogicFlowControllerMeta,
-  init: (controllers: Controllers) => void,
+  init: (controllers: Controllers, context: unknown) => void,
 
   events: EventFuncs,
   initEvent?: EventFunc,
@@ -43,4 +43,4 @@ export type Controllers = {
   [controllerId: string]: IController | undefined
 }
 
-export type ControllerFactory = (meta: IControllerMeta, controllerContext: unknown) => IController
+export type ControllerFactory = (meta: IControllerMeta) => IController

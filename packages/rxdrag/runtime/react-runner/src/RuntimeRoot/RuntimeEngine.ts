@@ -22,7 +22,6 @@ export class RuntimeEngine {
 
   constructor(schema: IComponentRenderSchema,
     protected controllerFactories: ControllerFactories,
-    protected context: unknown,
   ) {
     console.log("创建控制器引擎")
     //第一步构建所有全局controller
@@ -36,9 +35,9 @@ export class RuntimeEngine {
     }
     this.controllers = glControllers
     //初始化构建的controller
-    for (const id of Object.keys(this.globalControllers)) {
-      this.globalControllers[id]?.init(this.globalControllers);
-    }
+    // for (const id of Object.keys(this.globalControllers)) {
+    //   this.globalControllers[id]?.init(this.globalControllers);
+    // }
   }
 
   getSchemaControllers = (schema: IComponentRenderSchema, controllers: Controllers, passedByMetas: ControllerMetas) => {
@@ -108,7 +107,7 @@ export class RuntimeEngine {
       return
     }
 
-    return factory(meta, this.context)
+    return factory(meta)
   }
 
 }

@@ -7,7 +7,7 @@ import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
 export const INIT_EVENT_NAME = "init"
 export const DESTORY_EVENT_NAME = "destory"
 
-export class LogicFlowController<LogicFlowContext> implements IController {
+export class LogicFlowController implements IController {
   id: string;
   name?: string;
   protected isInitialized?: boolean;
@@ -28,18 +28,19 @@ export class LogicFlowController<LogicFlowContext> implements IController {
 
   private activites: IActivity[] = []
 
-  constructor(public meta: ILogicFlowControllerMeta, protected context?: LogicFlowContext) {
+  constructor(public meta: ILogicFlowControllerMeta) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     this.id = meta.id!
   }
 
   //为了预构造全局，分两阶段初始化, controllers包括全局的
-  init(relatedControllers: Controllers | undefined) {
+  init(relatedControllers: Controllers | undefined, context: unknown) {
     if (this.isInitialized) {
       return;
     }
+
     for (const eventMeta of this.meta.events || []) {
-      const reaction = this.makeReaction(eventMeta, { ...relatedControllers, [this.id]: this })
+      const reaction = this.makeReaction(eventMeta, { ...relatedControllers, [this.id]: this }, context)
       reaction && this.activites.push(reaction)
       if (!reaction) {
         continue
@@ -129,9 +130,9 @@ export class LogicFlowController<LogicFlowContext> implements IController {
     }
   }
 
-  private makeReaction = (reactionMeta: ILogicFlowDefinition, controllers: Controllers) => {
+  private makeReaction = (reactionMeta: ILogicFlowDefinition, controllers: Controllers, flowContext: unknown) => {
     const context = {
-      ...this.context,
+      ...flowContext as any,
       variableController: this,
       propsController: this,
       controllers,
@@ -140,6 +141,6 @@ export class LogicFlowController<LogicFlowContext> implements IController {
   }
 }
 
-export const LogicFlowControllerFactory: ControllerFactory = (meta: IControllerMeta, controllerContext: unknown) => {
-  return new LogicFlowController(meta, controllerContext)
+export const LogicFlowControllerFactory: ControllerFactory = (meta: IControllerMeta) => {
+  return new LogicFlowController(meta)
 }

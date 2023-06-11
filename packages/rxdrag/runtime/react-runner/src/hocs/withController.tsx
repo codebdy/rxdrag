@@ -29,7 +29,7 @@ export function withController(WrappedComponent: ReactComponent, meta: IControll
     useEffect(() => {
       if (meta?.controllerType && runtimeEngine && controllerKey) {
         const ctrl = runtimeEngine.getOrCreateController(meta, controllerKey)
-        ctrl.init(controllers);
+        ctrl.init(controllers, logicFlowContext);
         const unlistener = ctrl?.subscribeToPropsChange(handlePropsChange)
         ctrl.initEvent?.()
         setController(ctrl)
