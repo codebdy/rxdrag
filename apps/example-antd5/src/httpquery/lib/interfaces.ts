@@ -4,7 +4,7 @@ export interface IQueryParam {
   //参数转换成的字符串，作为请求url的一部分或者全部
   url?: string,
   axiosConfig?: AxiosRequestConfig,
-  entity?: string;
+  entityName?: string;
   dataPath?: string;
   idField?: string;
 }
@@ -12,7 +12,7 @@ export interface IQueryParam {
 export interface IPostParam {
   url?: string,
   axiosConfig?: AxiosRequestConfig,
-  entity?: string;
+  entityName?: string;
   data?: unknown;
 }
 
@@ -24,7 +24,7 @@ export interface IReponseHandler {
 }
 
 export interface IRestfulQuerySession {
-  query(param: IQueryParam, responseOptions: IReponseHandler): void;
+  query(param: string, responseOptions: IReponseHandler): void;
   destory(): void;
 }
 

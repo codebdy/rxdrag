@@ -16,11 +16,11 @@ export class Restful {
     [url: string]: QueryRecord | undefined
   } = {}
 
-  clearCache(): void {
+  clearCache = (): void => {
     this.cache = {}
   }
 
-  subscribeQuery(param: IQueryParam, responseHandler: IReponseHandler): Unsubscribe {
+  subscribeQuery = (param: IQueryParam, responseHandler: IReponseHandler): Unsubscribe => {
     if (param.url) {
       const record = this.cache[param.url]
       //如果存在，注册handler
@@ -50,7 +50,7 @@ export class Restful {
       param.url && this.unsubscribeQuery(param.url, responseHandler)
     }
   }
-  unsubscribeQuery(url: string, handler: IReponseHandler): void {
+  unsubscribeQuery = (url: string, handler: IReponseHandler): void => {
     const record = this.cache[url]
     if (!record) {
       console.warn("Can not find QueryRecord by url", url)
@@ -59,7 +59,7 @@ export class Restful {
 
     record.handlers = record.handlers.filter(hd => hd !== handler)
   }
-  save(param: IPostParam, handler: IReponseHandler): void {
+  save = (param: IPostParam, handler: IReponseHandler): void => {
     if (!param.url) {
       console.error("Post url is emperty")
       return
@@ -67,8 +67,8 @@ export class Restful {
     handler?.onLoading?.(true)
     axios(param.url, { ..._.merge(PREDEFINED_POST_HEADERS, param.axiosConfig), data: param.data }).then((res) => {
       const data = res.data;
-      if(param.entity){
-        this.onEntityPosted(param.entity, data)
+      if (param.entityName) {
+        this.onEntityPosted(param.entityName, data)
       }
       handler?.onData?.(data)
     }).catch(e => {
@@ -79,10 +79,10 @@ export class Restful {
     })
   }
 
-  onEntityPosted(entity:string, data:unknown){
-    for(const key of Object.keys(this.cache)){
+  onEntityPosted = (entity: string, data: unknown) => {
+    for (const key of Object.keys(this.cache)) {
       const queryRecord = this.cache[key]
-      if(queryRecord?.param.entity === entity){
+      if (queryRecord?.param.entityName === entity) {
         queryRecord.mutateData(data)
       }
     }

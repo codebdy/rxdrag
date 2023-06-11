@@ -19,7 +19,6 @@ export const PREDEFINED_HEADERS = {
 
 export class QueryRecord {
   status?: QueryStatus;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: any;
   constructor(public param: IQueryParam, public handlers: IReponseHandler[]) { }
 
@@ -27,7 +26,7 @@ export class QueryRecord {
     const idName = this.param?.idField || "id"
     const id = data?.[idName]
     if (this.data?.nodes?.find((item: any) => item?.[idName] === id)) {
-      this.data = { ...this.data, nodes: this.data?.nodes?.filter((item: any) => item?.[idName] === id ? {...data, ...item} : item) }
+      this.data = { ...this.data, nodes: this.data?.nodes?.map((item: any) => item?.[idName] === id ? {...item, ...data} : item) }
       this.emitData(this.data)
       this.revalidate()
     }

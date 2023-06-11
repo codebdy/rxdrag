@@ -1,4 +1,4 @@
-import { IQueryConfig, IQueryParam, IReponseHandler, IRestfulQuerySession, Unsubscribe } from "../interfaces";
+import { IQueryConfig, IReponseHandler, IRestfulQuerySession, Unsubscribe } from "../interfaces";
 import { GlobalRestful } from "./Restful";
 
 
@@ -15,7 +15,7 @@ export class QuerySession implements IRestfulQuerySession {
       onRevalidating: this.onRevalidating,
     }
   }
-  query(param: IQueryParam, handler?: IReponseHandler): void {
+  query(param: string, handler?: IReponseHandler): void {
     this.responseHandlerFromParam = handler
     //重新订阅一次
     this.unsubscribe?.()
@@ -40,7 +40,7 @@ export class QuerySession implements IRestfulQuerySession {
     this.responseHandlerFromParam?.onRevalidating?.(revalidating)
   }
 
-  mergeParam(param?: IQueryParam) {
-    return { ...param, url: (this.config?.rootUrl || "") + (param?.url || "") }
+  mergeParam(param?: string) {
+    return { ...this.config, url: (this.config?.rootUrl || "") + (param || "") }
   }
 }
