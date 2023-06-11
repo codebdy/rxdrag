@@ -66,13 +66,26 @@ export class Restful {
     }
     handler?.onLoading?.(true)
     axios(param.url, { ..._.merge(PREDEFINED_POST_HEADERS, param.axiosConfig), data: param.data }).then((res) => {
-      handler?.onData?.(res.data)
+      const data = res.data;
+      if(param.entity){
+        this.onEntityPosted(param.entity, data)
+      }
+      handler?.onData?.(data)
     }).catch(e => {
       console.error(e)
       handler?.onError?.(e)
     }).finally(() => {
       handler?.onLoading?.(false)
     })
+  }
+
+  onEntityPosted(entity:string, data:unknown){
+    for(const key of Object.keys(this.cache)){
+      const queryRecord = this.cache[key]
+      if(queryRecord?.param.entity === entity){
+        queryRecord.mutateData(data)
+      }
+    }
   }
 }
 

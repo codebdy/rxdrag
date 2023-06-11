@@ -1150,7 +1150,8 @@
                                   "height": 48
                                 },
                                 "config": {
-                                  "rootUrl": "/api/users"
+                                  "rootUrl": "/api/users",
+                                  "entityName": "User"
                                 }
                               }
                             ],
@@ -1286,6 +1287,7 @@
                           "readonly": {}
                         }
                       },
+                      "bordered": false,
                       "slots": {},
                       "children": [
                         {
@@ -1335,6 +1337,7 @@
                           "props": {
                             "title": "操作"
                           },
+                          "title": "操作",
                           "slots": {},
                           "children": [
                             {
@@ -1795,7 +1798,7 @@
                                                     },
                                                     "config": {
                                                       "rootUrl": "/api/post-user",
-                                                      "entityName": "user"
+                                                      "entityName": "User"
                                                     }
                                                   }
                                                 ],

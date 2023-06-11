@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IQueryParam, IReponseHandler } from "../interfaces";
 import _ from "lodash"
 import axios from 'axios';
@@ -9,7 +10,7 @@ export enum QueryStatus {
   complated,
 }
 
-export const PREDEFINED_HEADERS =  {
+export const PREDEFINED_HEADERS = {
   headers: {
     "Accept": "application/json",
     'Content-Type': 'application/json'
@@ -20,7 +21,17 @@ export class QueryRecord {
   status?: QueryStatus;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: any;
-  constructor(private param: IQueryParam, public handlers: IReponseHandler[]) { }
+  constructor(public param: IQueryParam, public handlers: IReponseHandler[]) { }
+
+  mutateData(data: any) {
+    const idName = this.param?.idField || "id"
+    const id = data?.[idName]
+    if (this.data?.nodes?.find((item: any) => item?.[idName] === id)) {
+      this.data = { ...this.data, nodes: this.data?.nodes?.filter((item: any) => item?.[idName] === id ? {...data, ...item} : item) }
+      this.emitData(this.data)
+      this.revalidate()
+    }
+  }
 
   revalidate() {
     if (this.param.url) {
