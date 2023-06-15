@@ -13,7 +13,7 @@ export function useEditEdge() {
   const graph = useGraph()
   const backup = useBackup()
   const markeChange = useMarkChange()
-  const handleNodeAdd = useCallback(({ isNew, edge }: { isNew: boolean, edge: Edge }) => {
+  const handleEdgeAdd = useCallback(({ isNew, edge }: { isNew: boolean, edge: Edge }) => {
     backup()
     const newData: ILineDefine = {
       id: edge.id,
@@ -35,10 +35,10 @@ export function useEditEdge() {
   }, [backup, dispatch, markeChange])
 
   useEffect(() => {
-    graph?.on('edge:connected', handleNodeAdd)
+    graph?.on('edge:connected', handleEdgeAdd)
 
     return () => {
-      graph?.off('edge:connected', handleNodeAdd)
+      graph?.off('edge:connected', handleEdgeAdd)
     }
-  }, [graph, handleNodeAdd])
+  }, [graph, handleEdgeAdd])
 }

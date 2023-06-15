@@ -10,7 +10,7 @@ import { usePortsConfig } from "./usePortsConfig"
 export function useGetLogicFlowNodeConfig(token: IThemeToken) {
 
   const transformPorts = useTransformPorts()
-  const portsGroup = usePortsConfig()
+  const portsGroup = usePortsConfig(token)
   const getNodeWidth = useGetNodeWidth()
   const getHeight = useGetNodeHeight()
   const getSubLabel = useGetSubLabel()

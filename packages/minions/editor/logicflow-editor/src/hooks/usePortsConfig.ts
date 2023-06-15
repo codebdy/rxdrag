@@ -1,8 +1,7 @@
-import { useToken } from "antd/es/theme/internal";
 import { useMemo } from "react";
+import { IThemeToken } from "../interfaces";
 
-export function usePortsConfig() {
-  const [, token] = useToken()
+export function usePortsConfig(token:IThemeToken) {
 
   const group = useMemo(() => ({
     in: {

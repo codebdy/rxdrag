@@ -11,7 +11,7 @@ import { IActivityMaterial } from "@rxdrag/minions-schema"
 export function useGetSingleNodeConfig() {
   const token = useThemeToken()
   const transformPorts = useTransformPorts()
-  const portsGroup = usePortsConfig()
+  const portsGroup = usePortsConfig(token)
   const getNodeWidth = useGetNodeWidth()
   const getSubLabel = useGetSubLabel()
   const getHeight = useGetNodeHeight()
