@@ -31,7 +31,7 @@ export const UnitField = (props: {
   value?: any;
   label: string | React.ReactNode;
   type: string;
-  size?: string;
+  size?: 'middle' | 'small';
   underline?: boolean;
   placeholder?: string;
   units?: Unit[];
@@ -109,7 +109,7 @@ export const UnitField = (props: {
         value={unit}
         defaultValue={defaultUnit}
         onChange={handleUnitChange}
-        style={{ width: 80 }}
+        style={{ width: 72 }}
       >
         {units.map(unit => (
           <Option key={unit.value || unit.label} value={unit.value}>

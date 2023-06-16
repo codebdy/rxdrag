@@ -1,14 +1,38 @@
-import { Select } from 'antd';
+import { useCallback, useState } from 'react';
+import { Select, InputNumber, Divider } from 'antd';
+import { isNil } from 'lodash';
 
 import { defaultOptions } from './consts';
 
-export const Header = props => {
+export type ValueType = string | number | null;
+export interface LayoutHeaderProps {
+  value: any;
+  onChange: (value: any) => void;
+}
+
+export const Header = (props: LayoutHeaderProps) => {
   const { onChange, value } = props;
+  const [inputValue, setInputValue] = useState<ValueType>();
 
   const handlePrevent = (evt: React.SyntheticEvent) => {
     evt.stopPropagation();
     return false;
   };
+
+  const handleChange = useCallback((value: any) => {
+    setInputValue(undefined);
+    onChange(value);
+  }, []);
+
+  // 自定义输入
+  const handleCustomInput = useCallback(
+    (value: ValueType) => {
+      setInputValue(value);
+      // 默认支持 px
+      onChange(isNil(value) ? undefined : `${value}px`);
+    },
+    [onChange]
+  );
 
   return (
     <Select
@@ -16,22 +40,17 @@ export const Header = props => {
       placeholder="默认"
       onClick={handlePrevent}
       value={value}
-      onChange={onChange}
+      onChange={handleChange}
       dropdownRender={menu => (
         <>
           {menu}
-          {/* <Divider style={{ d: '8px 0' }} />
-                  <Space style={{ padding: '0 8px 4px' }}>
-                    <Input
-                      placeholder="Please enter item"
-                      ref={inputRef}
-                      value={name}
-                      onChange={onNameChange}
-                    />
-                    <Button type="text" icon={<PlusOutlined />} onClick={addItem}>
-                      Add item
-                    </Button>
-                  </Space> */}
+          <Divider style={{ margin: '8px 0' }} />
+          <InputNumber
+            addonAfter="px"
+            value={inputValue}
+            onChange={handleCustomInput}
+            placeholder="请输入"
+          />
         </>
       )}
       options={defaultOptions.map(option => ({

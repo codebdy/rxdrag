@@ -1,5 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import { Row, Col, InputNumber, Select } from 'antd';
+import { isNil } from 'lodash';
+import { useToken } from 'antd/es/theme/internal';
 import type { Color } from 'antd/es/color-picker';
 import { FieldGroup, Field, RadioField, ColorField } from '../../components';
 import { Header } from './Header';
@@ -10,9 +12,12 @@ import {
   fontStyle,
   textDecoration
 } from './config';
+import { fontStyleProps } from '../../config';
+import { SetterProps } from '../..';
 
-export const FontSetter = props => {
+export const FontSetter = (props: SetterProps) => {
   const { onStyleChange, value } = props;
+  const [, token] = useToken();
 
   // 自定义文本属性
   const [fontGroupStyle, setFontGroupStyle] = useState<string | undefined>();
@@ -51,10 +56,23 @@ export const FontSetter = props => {
     return Number.isNaN(parsed) ? undefined : parsed;
   }, [value]);
 
+  const groupTitle = useMemo(() => {
+    let actived = false;
+    for (let key of fontStyleProps) {
+      if (!isNil(value?.[key])) {
+        actived = true;
+        break;
+      }
+    }
+    return (
+      <span style={actived ? { color: token.colorPrimary } : {}}>文字</span>
+    );
+  }, [value]);
+
   return (
     <div className="font-style-container" key={fontGroupStyle || 'fontStyle'}>
       <FieldGroup
-        title="文字"
+        title={groupTitle}
         extra={
           <Header
             value={value?.['__font__']}

@@ -1,17 +1,35 @@
 import { useMemo } from 'react';
 import { Collapse } from 'antd';
 import cx from 'classnames';
+import styled from 'styled-components';
 
 const { Panel } = Collapse;
+
+const StyledCollapse = styled(Collapse)`
+  .ant-collapse-header {
+    padding: 0 !important;
+    .anticon-caret-right {
+      transition: 0.1s ease;
+    }
+  }
+  .ant-collapse-content-box {
+    padding: 0 !important;
+  }
+  .rx-field-body {
+    margin: 0;
+    padding: 0 8px;
+    background-color: ${props => props.theme.token?.colorBgTextActive};
+  }
+`;
 
 export const Group = props => {
   const { children, title, className, onCollapseChange, activeKey } = props;
 
-  const klass = useMemo(() => cx('ts-accordion-field', className), [className]);
+  const klass = useMemo(() => cx('rx-accordion-field', className), [className]);
 
   return (
     <>
-      <Collapse
+      <StyledCollapse
         onChange={onCollapseChange}
         activeKey={activeKey}
         className={klass}
@@ -19,10 +37,10 @@ export const Group = props => {
         ghost
       >
         <Panel header={title} key="panel" style={{ padding: 0 }}>
-          <div className="ts-field-body">{children}</div>
+          <div className="rx-field-body">{children}</div>
         </Panel>
-      </Collapse>
-      <div className="ts-field-split-line"></div>
+      </StyledCollapse>
+      <div className="rx-field-split-line"></div>
     </>
   );
 };

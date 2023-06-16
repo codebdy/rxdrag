@@ -1,11 +1,57 @@
-import { useMemo } from 'react';
+import { useMemo, ReactNode, CSSProperties } from 'react';
 import cx from 'classnames';
+import styled from 'styled-components';
 
-export const Field = props => {
+const StyledField = styled.div`
+  .rx-field-head {
+    display: flex;
+    align-items: center;
+    .rx-field-title {
+      width: 24%;
+      margin-right: 10px;
+      color: ${props => props.theme.token?.colorText};
+    }
+    .rx-field-content {
+      flex: 1;
+      display: flex;
+    }
+  }
+  &.rx-field-middle {
+    .rx-field-head {
+      min-height: 44px;
+    }
+  }
+  &.active {
+    .rx-field-head {
+      .rx-field-title {
+        color: ${props => props.theme.token?.colorPrimary};
+      }
+    }
+  }
+`;
+
+const StyledSplitLine = styled.div`
+  height: 1px;
+  width: auto;
+  background-color: ${props => props.theme.token?.colorBorder};
+`;
+
+export const Field = (props: {
+  label: ReactNode;
+  extra?: ReactNode;
+  children?: ReactNode;
+  active?: boolean;
+  size?: 'small' | 'middle';
+  className?: string;
+  style?: CSSProperties;
+  contentStyle?: CSSProperties;
+  underline?: boolean;
+}) => {
   const {
     label,
     children,
     size = 'middle',
+    active = false,
     className,
     style,
     extra,
@@ -14,12 +60,15 @@ export const Field = props => {
   } = props;
 
   const klassName = useMemo(
-    () => cx(`rx-field rx-field-${size}`, className),
-    [size, className]
+    () =>
+      cx(`rx-field rx-field-${size}`, className, {
+        active: active === true
+      }),
+    [size, active, className]
   );
 
   return (
-    <div className={klassName} style={style}>
+    <StyledField className={klassName} style={style}>
       <div className="rx-field-head">
         <div className="rx-field-title">{label}</div>
         <div className="rx-field-content" style={contentStyle}>
@@ -27,7 +76,9 @@ export const Field = props => {
         </div>
       </div>
       <div className="rx-field-body">{children}</div>
-      {underline && <div className="rx-field-split-line"></div>}
-    </div>
+      {underline && (
+        <StyledSplitLine className="rx-field-split-line"></StyledSplitLine>
+      )}
+    </StyledField>
   );
 };

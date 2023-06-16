@@ -6,7 +6,6 @@ import {
   textAlignJustifyIcon,
   normalFontStyleIcon,
   italicFontStyleIcon,
-  textDecorationIcon,
   textUnderlineIcon,
   textLineThroughIcon
 } from './icons';

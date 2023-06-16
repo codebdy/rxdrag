@@ -2,7 +2,10 @@ import { LayoutBox } from '../../components';
 import { StyleChangeListener } from '../../types';
 import { Display } from './Display';
 
-export const LayoutSetter = props => {
+export const LayoutSetter = (props: {
+  onStyleChange?: StyleChangeListener;
+  value?: any;
+}) => {
   const { onStyleChange, value } = props;
 
   const onChange: StyleChangeListener = (styleKey, value) => {

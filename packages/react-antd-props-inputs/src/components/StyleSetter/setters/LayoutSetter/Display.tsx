@@ -1,11 +1,15 @@
 import { RadioField } from '../../components';
 import { layoutConfig } from './config';
+import { StyleChangeListener } from '../../types';
 
 // 布局配置信息
 const { display, flexDirection, justifyContent, alignItems, flexWrap } =
   layoutConfig;
 
-export const Display = props => {
+export const Display = (props: {
+  onChange?: StyleChangeListener;
+  value?: any;
+}) => {
   const { onChange, value } = props;
 
   return (
@@ -49,7 +53,7 @@ export const Display = props => {
           />
         </>
       )}
-      <div className="ts-field-split-line"></div>
+      <div className="rx-field-split-line"></div>
     </>
   );
 };
