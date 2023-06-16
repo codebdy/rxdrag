@@ -7,7 +7,7 @@ import { StyleChangeListener } from '../../types';
 
 const Option = Select.Option;
 
-const defaultUnits = [
+export const defaultUnits = [
   {
     label: 'px',
     value: 'px'

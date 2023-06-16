@@ -1,5 +1,5 @@
 import { useMemo, useCallback } from 'react';
-import { Input } from 'antd';
+import { Input, Button } from 'antd';
 import type { Color } from 'antd/es/color-picker';
 import {
   FieldGroup,
@@ -14,10 +14,14 @@ import {
   backgroundPositions,
   backgroundRepeats
 } from './config';
+import { cloudUploadIcon } from '../../../ImageInput';
+import { ImageSelect } from '../../../ImageSelect';
+import { SetterProps } from '../../types';
+import { StyledBackgroundContainer } from './components';
 
 type BackgroundType = 'color' | 'image';
 
-export const BackgroundSetter = props => {
+export const BackgroundSetter = (props: SetterProps) => {
   const { onStyleChange, value } = props;
 
   const handleChange = useCallback(
@@ -54,8 +58,15 @@ export const BackgroundSetter = props => {
     return handleChange('backgroundImage', backgroundImageUrl);
   };
 
+  const handleSelectChange = useCallback(
+    (imageUrl?: string) => {
+      handleChange?.('backgroundImage', `url(${imageUrl})`);
+    },
+    [handleChange]
+  );
+
   return (
-    <div className="background-style-container">
+    <StyledBackgroundContainer className="background-style-container">
       <FieldGroup title="背景">
         <RadioField
           options={backgroundTypes.options}
@@ -79,10 +90,17 @@ export const BackgroundSetter = props => {
               label=""
               underline={false}
               extra={
-                <Input
-                  placeholder="请输入图片 url"
-                  onChange={handleBackgroundImageChange}
-                />
+                <Input.Group compact>
+                  <Input
+                    style={{ width: 'calc(100% - 32px)' }}
+                    placeholder="请输入图片 url"
+                    value={value?.['backgroundImage']}
+                    onChange={handleBackgroundImageChange}
+                  />
+                  <ImageSelect onChange={handleSelectChange}>
+                    <Button icon={cloudUploadIcon}></Button>
+                  </ImageSelect>
+                </Input.Group>
               }
             />
             {value?.['backgroundImage'] && (
@@ -118,6 +136,6 @@ export const BackgroundSetter = props => {
           </>
         )}
       </FieldGroup>
-    </div>
+    </StyledBackgroundContainer>
   );
 };

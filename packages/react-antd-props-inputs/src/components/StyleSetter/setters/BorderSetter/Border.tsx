@@ -5,9 +5,12 @@ import cx from 'classnames';
 import { FoldIcon } from '../../../Fold';
 import { Field, UnitField, ColorField } from '../../components';
 import { borders, borderStyles } from './config';
-import { RadioItem, StyleChangeListener } from '../../types';
+import { RadioItem, StyleChangeListener, SetterProps } from '../../types';
 
-export const Border = props => {
+export const Border = (props: {
+  value: any;
+  onChange: (key: string, value: any) => any;
+}) => {
   const { value, onChange } = props;
 
   const [activeBorder, setActiveBorder] = useState('border');

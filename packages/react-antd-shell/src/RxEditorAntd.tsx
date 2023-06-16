@@ -152,7 +152,7 @@ export const RxEditorAntd = memo((props: Antd5EditorProps) => {
               />
               {children}
             </CenterContent>
-            <ToggleAblePane toggleType={ToggleType.right} width={360}>
+            <ToggleAblePane toggleType={ToggleType.right} width={380}>
               <SettingsForm />
             </ToggleAblePane>
           </Workbench>

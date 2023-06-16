@@ -13,7 +13,7 @@ import {
   textDecoration
 } from './config';
 import { fontStyleProps } from '../../config';
-import { SetterProps } from '../..';
+import { SetterProps } from '../../types';
 
 export const FontSetter = (props: SetterProps) => {
   const { onStyleChange, value } = props;

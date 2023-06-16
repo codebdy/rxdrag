@@ -18,11 +18,6 @@ import {
 } from './config';
 import { StyleChangeListener, StyleData } from './types';
 
-export type SetterProps = {
-  onStyleChange: StyleChangeListener;
-  value: any;
-};
-
 export const StyleSetter = memo(
   (props: { value?: any; onChange?: (value?: any) => void }) => {
     const { onChange, value } = props;
@@ -69,6 +64,38 @@ export const StyleSetter = memo(
           nextValue = {
             ...omit(value, fontStyleProps),
             ...(matched?.defaultValue || {}),
+            ...{ [styleKey]: styleData }
+          };
+        }
+        if (styleKey === 'backgroundPosition') {
+          nextValue = {
+            ...value,
+            backgroundPositionX: (styleData as string).split(',')[0],
+            backgroundPositionY: (styleData as string).split(',')[1]
+          };
+        }
+        if (styleKey === 'backgroundType') {
+          if (styleData === 'color') {
+            nextValue = {
+              ...pick(value, ['backgroundColor']),
+              ...{ [styleKey]: styleData }
+            };
+          } else if (styleData === 'image') {
+            nextValue = {
+              ...pick(value, backgroundStyleProps),
+              ...{ [styleKey]: styleData }
+            };
+          }
+        }
+        if (styleKey === 'borderRadiusType') {
+          nextValue = {
+            ...omit(value, borderRadiusStyleProps),
+            ...{ [styleKey]: styleData }
+          };
+        }
+        if (styleKey === 'borderType') {
+          nextValue = {
+            ...omit(value, borderStyleProps),
             ...{ [styleKey]: styleData }
           };
         }

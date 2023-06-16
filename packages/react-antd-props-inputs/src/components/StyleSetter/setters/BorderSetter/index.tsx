@@ -2,14 +2,24 @@ import { useCallback } from 'react';
 import { Row, Col, Tooltip } from 'antd';
 
 import { FoldIcon } from '../../../Fold';
-import { FieldGroup, Field, RadioField, UnitField } from '../../components';
+import {
+  FieldGroup,
+  Field,
+  RadioField,
+  UnitField,
+  defaultUnits
+} from '../../components';
 import { Border } from './Border';
 import { borderTypes, borderRadiusFragments } from './config';
-import { StyleData } from '../../types';
+import { StyleData, SetterProps } from '../../types';
+import { StyledContainer } from './components';
 
 export type BorderType = 'fixedBorder' | 'partBorder';
 
-export const BorderSetter = props => {
+// radius 只需要 px, %
+const units = defaultUnits.filter(d => d.value !== 'auto');
+
+export const BorderSetter = (props: SetterProps) => {
   const { onStyleChange, value } = props;
 
   const handleChange = useCallback(
@@ -34,7 +44,7 @@ export const BorderSetter = props => {
   );
 
   return (
-    <div className="border-style-container">
+    <StyledContainer className="border-style-container">
       <FieldGroup title="边框">
         <RadioField
           options={borderTypes.options}
@@ -48,9 +58,10 @@ export const BorderSetter = props => {
           <UnitField
             label=""
             value={value?.['borderRadius']}
+            units={units}
             type="borderRadius"
             onChange={handleRadiusChange}
-            style={{ width: '128px' }}
+            style={{ width: '160px' }}
           />
         )}
         {value?.['borderRadiusType'] === 'fragmentBorder' && (
@@ -68,6 +79,7 @@ export const BorderSetter = props => {
                   }
                   key={fragment.value}
                   value={value?.[fragment.value]}
+                  units={units}
                   type={fragment.value}
                   onChange={handleRadiusChange}
                   style={{ width: '128px' }}
@@ -78,9 +90,10 @@ export const BorderSetter = props => {
         )}
         <Field
           label="边框"
+          className="rx-border-field"
           extra={<Border value={value} onChange={handleChange} />}
         />
       </FieldGroup>
-    </div>
+    </StyledContainer>
   );
 };

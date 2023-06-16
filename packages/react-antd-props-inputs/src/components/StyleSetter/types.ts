@@ -11,3 +11,8 @@ export interface RadioItem {
 export type StyleChangeListener = {
   (styleKey: string, value: StyleData): void;
 };
+
+export type SetterProps = {
+  onStyleChange: StyleChangeListener;
+  value: any;
+};
