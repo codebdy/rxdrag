@@ -1,125 +1,158 @@
-import { INodeSchema } from "@rxdrag/schema";
-import { createControllerSchema } from "./createControllerSchema";
-import { displaySetter, backgroundSetter, fontStyleSetter, martinStyleSetter, paddingStyleSetter, borderRediusSetter, borderSetter } from "./schemas";
-import { createFieldSchema } from "./createFieldSchema";
-import { SchemaOptions } from "./SchemaOptions";
+import { INodeSchema } from '@rxdrag/schema';
+import { createControllerSchema } from './createControllerSchema';
+import {
+  displaySetter,
+  backgroundSetter,
+  fontStyleSetter,
+  martinStyleSetter,
+  paddingStyleSetter,
+  borderRediusSetter,
+  borderSetter
+} from './schemas';
+import { createFieldSchema } from './createFieldSchema';
+import { SchemaOptions } from './SchemaOptions';
 
 export type SlotsOption = {
-  name: string,
-  label: string,
-}
+  name: string;
+  label: string;
+};
 
 export function createSlotsSchema(...options: SlotsOption[]) {
-  return options.map((opt) => {
-    return ({
-      componentName: "SlotSwitch",
+  return options.map(opt => {
+    return {
+      componentName: 'SlotSwitch',
       props: {
         name: opt.name
       },
-      "x-field": {
-        label: opt.label,
+      'x-field': {
+        label: opt.label
       }
-    })
-  })
+    };
+  });
 }
 
 export function createSchema(options: SchemaOptions = {}): INodeSchema {
-  const { propsSchemas, slotsSchemas, fieldOptions: fieldOptions } = options
-  const propsTab = propsSchemas ? [{
-    componentName: "TabPanel",
-    "x-field": {
-      type: "object",
-      name: "props",
-    },
-    props: {
-      title: "$properties"
-    },
-    children: [
-      ...propsSchemas || []
-    ]
-  }] : [];
+  const { propsSchemas, slotsSchemas, fieldOptions: fieldOptions } = options;
+  const propsTab = propsSchemas
+    ? [
+        {
+          componentName: 'TabPanel',
+          'x-field': {
+            type: 'object',
+            name: 'props'
+          },
+          props: {
+            title: '$properties'
+          },
+          children: [...(propsSchemas || [])]
+        }
+      ]
+    : [];
 
-  const slotsTab = slotsSchemas ? [{
-    componentName: "TabPanel",
-    props: {
-      title: "$slots",
-      id: "slots",
-    },
-    children: slotsSchemas
-  }] : []
+  const slotsTab = slotsSchemas
+    ? [
+        {
+          componentName: 'TabPanel',
+          props: {
+            title: '$slots',
+            id: 'slots'
+          },
+          children: slotsSchemas
+        }
+      ]
+    : [];
   const dataTab = {
-    componentName: "TabPanel",
+    componentName: 'TabPanel',
     props: {
-      title: "$field",
-      id: "data",
+      title: '$field',
+      id: 'data',
       style: {
         padding: 0
-      },
+      }
     },
     children: createFieldSchema(fieldOptions)
-  }
+  };
   const controllerTab = {
-    componentName: "TabPanel",
+    componentName: 'TabPanel',
     props: {
-      title: "$logic",
-      id: "logic",
+      title: '$logic',
+      id: 'logic'
     },
     children: createControllerSchema()
-  }
+  };
   return {
-    componentName: "Tabs",
+    componentName: 'Tabs',
     props: {},
     children: [
       ...propsTab,
-      styleTab,
+      // styleTab,
+      styleTab2,
       ...slotsTab,
       dataTab,
-      controllerTab,
+      controllerTab
     ]
-  }
+  };
 }
 
-const styleTab = {
-  componentName: "TabPanel",
+const styleTab2 = {
+  componentName: 'TabPanel',
   props: {
-    title: "$style"
-  },
-  "x-field": {
-    type: "object",
-    name: "props.style"
+    title: '$style'
   },
   children: [
     {
-      componentName: "FormItem",
+      componentName: 'StyleSetter',
+      'x-field': {
+        name: 'props.style',
+        params: {
+          withBind: true
+        }
+      }
+    }
+  ]
+};
+
+const styleTab = {
+  componentName: 'TabPanel',
+  props: {
+    title: '$style'
+  },
+  'x-field': {
+    type: 'object',
+    name: 'props.style'
+  },
+  children: [
+    {
+      componentName: 'FormItem',
       props: {
-        label: "$width",
+        label: '$width'
       },
       children: [
         {
-          componentName: "SizeInput",
-          "x-field": {
-            name: "width",
+          componentName: 'SizeInput',
+          'x-field': {
+            name: 'width',
             params: {
-              withBind: true,
+              withBind: true
             }
-          },
+          }
         }
       ]
     },
     {
-      componentName: "FormItem",
+      componentName: 'FormItem',
       props: {
-        label: "$height",
+        label: '$height'
       },
       children: [
         {
-          componentName: "SizeInput",
-          "x-field": {
-            name: "height",
+          componentName: 'SizeInput',
+          'x-field': {
+            name: 'height',
             params: {
-              withBind: true,
+              withBind: true
             }
-          },
+          }
         }
       ]
     },
@@ -131,26 +164,26 @@ const styleTab = {
     borderRediusSetter,
     borderSetter,
     {
-      componentName: "FormItem",
+      componentName: 'FormItem',
       props: {
-        label: "$opacity",
+        label: '$opacity'
       },
       children: [
         {
-          componentName: "Slider",
-          "x-field": {
-            name: "opacity",
+          componentName: 'Slider',
+          'x-field': {
+            name: 'opacity',
             params: {
-              withBind: true,
+              withBind: true
             }
           },
           props: {
             max: 1,
             step: 0.1,
-            defaultValue: 1,
+            defaultValue: 1
           }
         }
       ]
-    },
+    }
   ]
-}
+};

@@ -1,44 +1,104 @@
-import { CSSProperties, memo, useCallback, useMemo } from "react"
-import { Checkbox, Form, Input, InputNumber, Radio, Select, Slider, Space, Switch } from 'antd';
-import { useDesignerEngine, useCurrentNode, useChangeNodeMeta, useLanguage, useDesignComponentsParams } from "@rxdrag/react-core";
-import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy";
-import { ComponentRender, PreviewRoot } from "@rxdrag/react-runner";
-import { INodeMeta } from "@rxdrag/schema";
-import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput, BorderRadiusSetter, BorderSetter, CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, ExpressionInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, SizeInput, SlotSwitch, TabPanel, Tabs, TextAlignSelect, ValueInput } from "@rxdrag/react-antd-props-inputs";
-import { ReactionsInput } from "./components";
+import { CSSProperties, memo, useCallback, useMemo } from 'react';
+import {
+  Checkbox,
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Select,
+  Slider,
+  Space,
+  Switch
+} from 'antd';
+import {
+  useDesignerEngine,
+  useCurrentNode,
+  useChangeNodeMeta,
+  useLanguage,
+  useDesignComponentsParams
+} from '@rxdrag/react-core';
+import { Fieldy, VirtualForm } from '@rxdrag/react-fieldy';
+import { ComponentRender, PreviewRoot } from '@rxdrag/react-runner';
+import { INodeMeta } from '@rxdrag/schema';
+import {
+  StyleSetter,
+  BackgroundImageInput,
+  BackgroundPositionInput,
+  BackgroundRepeatInput,
+  BackgroundSizeInput,
+  BorderRadiusSetter,
+  BorderSetter,
+  CheckboxGroup,
+  ColInput,
+  CollapsePanel,
+  ColorInput,
+  DisplaySetter,
+  EffectsInput,
+  EventInput,
+  ExpressionInput,
+  Fold,
+  FoldBase,
+  FoldExtra,
+  FoldExtraItem,
+  FontColorInput,
+  FontDecorationSelect,
+  FontLineHeightInput,
+  FontSelect,
+  FontSizeInput,
+  FontStyleSelect,
+  FontWeightInput,
+  GutterInput,
+  IconInput,
+  ImageInput,
+  JSONInput,
+  MarginStyleSetter,
+  PaddingStyleSetter,
+  SizeInput,
+  SlotSwitch,
+  TabPanel,
+  Tabs,
+  TextAlignSelect,
+  ValueInput
+} from '@rxdrag/react-antd-props-inputs';
+import { ReactionsInput } from './components';
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
   height: 0,
-  width: "100%",
-}
+  width: '100%'
+};
 
 export const SettingsForm = memo(() => {
-  const engine = useDesignerEngine()
-  const currentNode = useCurrentNode()
-  const changeMeta = useChangeNodeMeta()
-  const lang = useLanguage()
-  const { tools } = useDesignComponentsParams()
+  const engine = useDesignerEngine();
+  const currentNode = useCurrentNode();
+  const changeMeta = useChangeNodeMeta();
+  const lang = useLanguage();
+  const { tools } = useDesignComponentsParams();
 
   const propsSchema = useMemo(() => {
     if (currentNode && currentNode.propsSchema) {
       //翻译
-      return engine?.getLoacalesManager()
-        .translateDesignerSchema(currentNode?.meta.componentName,
+      return engine
+        ?.getLoacalesManager()
+        .translateDesignerSchema(
+          currentNode?.meta.componentName,
           JSON.parse(JSON.stringify(currentNode.propsSchema))
-        )
+        );
     } else {
-      return undefined
+      return undefined;
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentNode, engine, lang])
+  }, [currentNode, engine, lang]);
 
-  const handleMetaChange = useCallback((meta: INodeMeta) => {
-    if (currentNode) {
-      changeMeta(currentNode.id, meta)
-    }
-  }, [changeMeta, currentNode])
+  const handleMetaChange = useCallback(
+    (meta: INodeMeta) => {
+      if (currentNode) {
+        changeMeta(currentNode.id, meta);
+      }
+    },
+    [changeMeta, currentNode]
+  );
 
   return (
     <PreviewRoot
@@ -75,8 +135,8 @@ export const SettingsForm = memo(() => {
         DisplaySetter,
         IconInput,
         GutterInput,
-        "Radio.Group": Radio.Group,
-        "Checkbox.Group": Checkbox.Group,
+        'Radio.Group': Radio.Group,
+        'Checkbox.Group': Checkbox.Group,
         Checkbox: Checkbox,
         CheckboxGroup: CheckboxGroup,
         ColInput,
@@ -93,14 +153,14 @@ export const SettingsForm = memo(() => {
         JSONInput,
         ExpressionInput,
         Space,
-        ...tools,
+        StyleSetter,
+        ...tools
       }}
       localesManager={engine?.getLoacalesManager()}
     >
       <Fieldy>
         <div style={propertiesStyle}>
-          {
-            currentNode &&
+          {currentNode && (
             <VirtualForm
               initialValue={currentNode?.meta}
               onValueChange={handleMetaChange}
@@ -115,20 +175,15 @@ export const SettingsForm = memo(() => {
                 labelWrap={true}
                 style={{
                   flex: 1,
-                  height: '100%',
+                  height: '100%'
                 }}
               >
-                {
-                  propsSchema &&
-                  <ComponentRender
-                    root={propsSchema}
-                  />
-                }
+                {propsSchema && <ComponentRender root={propsSchema} />}
               </Form>
             </VirtualForm>
-          }
+          )}
         </div>
       </Fieldy>
     </PreviewRoot>
-  )
-})
+  );
+});
