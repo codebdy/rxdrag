@@ -18,7 +18,7 @@ export const StyledBackgroundContainer = styled.div`
     }
   }
   .positon-style-container-right {
-    .ts-field:not(:last-child) {
+    .rx-field:not(:last-child) {
       margin-bottom: 4px;
     }
   }

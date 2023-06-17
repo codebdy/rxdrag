@@ -17,23 +17,7 @@ export const Header = props => {
       onClick={handlePrevent}
       value={value}
       onChange={onChange}
-      dropdownRender={menu => (
-        <>
-          {menu}
-          {/* <Divider style={{ d: '8px 0' }} />
-                  <Space style={{ padding: '0 8px 4px' }}>
-                    <Input
-                      placeholder="Please enter item"
-                      ref={inputRef}
-                      value={name}
-                      onChange={onNameChange}
-                    />
-                    <Button type="text" icon={<PlusOutlined />} onClick={addItem}>
-                      Add item
-                    </Button>
-                  </Space> */}
-        </>
-      )}
+      dropdownRender={menu => <>{menu}</>}
       options={defaultOptions.map(option => ({
         label: option.label,
         value: option.value
