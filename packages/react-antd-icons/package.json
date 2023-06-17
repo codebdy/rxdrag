@@ -27,7 +27,7 @@
     "@rxdrag/shared": "workspace:*",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "antd": "5.1.2",
+    "antd": "^5.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.9"
