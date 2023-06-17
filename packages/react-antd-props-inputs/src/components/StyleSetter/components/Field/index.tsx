@@ -30,12 +30,6 @@ const StyledField = styled.div`
   }
 `;
 
-const StyledSplitLine = styled.div`
-  height: 1px;
-  width: auto;
-  background-color: ${props => props.theme.token?.colorBorder};
-`;
-
 export const Field = (props: {
   label: ReactNode;
   extra?: ReactNode;
@@ -76,9 +70,7 @@ export const Field = (props: {
         </div>
       </div>
       <div className="rx-field-body">{children}</div>
-      {underline && (
-        <StyledSplitLine className="rx-field-split-line"></StyledSplitLine>
-      )}
+      {underline && <div className="rx-field-split-line"></div>}
     </StyledField>
   );
 };

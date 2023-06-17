@@ -6,7 +6,8 @@ import {
   LayoutSetter,
   FontSetter,
   BackgroundSetter,
-  BorderSetter
+  BorderSetter,
+  OpacitySetter
 } from './setters';
 import { defaultOptions as fontOptions } from './setters/FontSetter/config';
 import {
@@ -121,6 +122,10 @@ export const StyleSetter = memo(
         <FontSetter onStyleChange={handleStyleChange} value={value} />
         <BackgroundSetter onStyleChange={handleStyleChange} value={value} />
         <BorderSetter onStyleChange={handleStyleChange} value={value} />
+        <OpacitySetter
+          onStyleChange={handleStyleChange}
+          value={value?.opacity}
+        />
       </div>
     );
   }
