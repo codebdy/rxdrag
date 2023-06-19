@@ -66,17 +66,14 @@ export const IframeCanvas = memo((
 
   return (
     <CanvasShell display={viewType === "design"} >
-      {
-        engine && <iframe
-          ref={ref}
-          title={key}
-          style={{ border: "0", width: "100%", height: "100%" }}
-          src={renderUrl}
-          onLoad={handleLoaded}
-        >
-        </iframe>
-      }
-
+      <iframe
+        ref={ref}
+        title={key}
+        style={{ border: "0", width: "100%", height: "100%" }}
+        src={engine ? renderUrl : undefined}
+        onLoad={handleLoaded}
+      >
+      </iframe>
     </CanvasShell>
   )
 })

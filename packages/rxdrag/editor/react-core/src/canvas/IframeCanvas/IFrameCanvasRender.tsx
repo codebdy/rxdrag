@@ -1,6 +1,6 @@
 import { IDesignerEngine, IDocument } from "@rxdrag/core";
 import { IComponents } from "@rxdrag/react-shared";
-import React, { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
 import { CanvasRender } from "../CanvasRender"
 import { EVENT_DOC_CHANGE, EVENT_IFRAME_READY } from "./consts";
@@ -27,8 +27,9 @@ export const IFrameCanvasRender = memo((props: {
     // 监听父窗口 ready 事件
     if (event.data?.name === EVENT_IFRAME_READY) {
       console.log('RXDrag: iframeReady');
+      //这个代码不能删，要不然windows下不能运行
       setReady(true);
-    } else if (event.data.name === EVENT_DOC_CHANGE) {
+    } else if (event.data.name === EVENT_DOC_CHANGE || event.data?.name === EVENT_IFRAME_READY) {
       const dc = engine?.getDocument(event.data.payload || "")
       setDoc(dc)
     }
@@ -40,7 +41,7 @@ export const IFrameCanvasRender = memo((props: {
 
 
   return (
-    doc && engine && !!ready && viewType === "design" ? 
+    doc && engine && viewType === "design" ? 
       <CanvasRender key={doc.id} engine={engine} doc={doc} components={designers} />
       : null
   )
