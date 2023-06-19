@@ -21,7 +21,7 @@ export const IFramePreviewRender = memo((props: {
   const receiveMessageFromParent = useCallback((event: MessageEvent<IFrameCanvasEvent>) => {
     // 监听父窗口 ready 事件
     if (event.data?.name === EVENT_IFRAME_READY) {
-      console.log('RXDrag: iframeReady');
+      console.log('RXDrag: Preview iframeReady');
       setReady(true);
     } else if (event.data.name === EVENT_DOC_CHANGE) {
       const dc = engine?.getDocument(event.data.payload || "")

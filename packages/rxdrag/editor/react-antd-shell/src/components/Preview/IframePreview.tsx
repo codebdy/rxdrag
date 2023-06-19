@@ -37,14 +37,18 @@ export const IframePreview = memo((
 
   return (
     <CanvasShell display={viewType === "preview"} >
-      <iframe
-        ref={ref}
-        onLoad={handleLoaded}
-        title={key}
-        style={{ border: "0", width: "100%", height: "100%" }}
-        src={renderUrl}
-      >
-      </iframe>
+      {
+        engine &&
+        <iframe
+          ref={ref}
+          onLoad={handleLoaded}
+          title={key}
+          style={{ border: "0", width: "100%", height: "100%" }}
+          src={renderUrl}
+        >
+        </iframe>
+      }
+
     </CanvasShell>
   )
 })
