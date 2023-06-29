@@ -1,30 +1,37 @@
-import { AbstractActivity, Activity, DynamicInput } from "@rxdrag/minions-runtime"
-import { IActivityDefine } from "@rxdrag/minions-schema"
+import {
+  AbstractActivity,
+  Activity,
+  DynamicInput
+} from '@rxdrag/minions-runtime';
+import { IActivityDefine } from '@rxdrag/minions-schema';
 
 export interface IMergeConfig {
-  fromInput?: boolean,
-  times?: number
+  fromInput?: boolean;
+  times?: number;
 }
 
 @Activity(Merge.NAME)
 export class Merge extends AbstractActivity<IMergeConfig> {
-  public static NAME = "system.merge";
-  private noPassInputs: string[] = []
-  private values: any = {}
+  public static NAME = 'system.merge';
+  private noPassInputs: string[] = [];
+  private inputCount = 0;
+  private values: any = {};
 
   constructor(meta: IActivityDefine<IMergeConfig>) {
-    super(meta)
+    super(meta);
     for (const input of meta.inPorts || []) {
-      this.noPassInputs.push(input.name)
+      this.noPassInputs.push(input.name);
     }
   }
 
   @DynamicInput
   inputHandler = (inputName: string, inputValue: unknown) => {
-    this.values[inputName] = inputValue
-    this.noPassInputs.splice(this.noPassInputs.indexOf(inputName), 1)
-    if (this.noPassInputs.length === 0) {
-      this.next(this.values)
+    this.values[inputName] = inputValue;
+    this.inputCount++;
+    if (this.noPassInputs.length === this.inputCount) {
+      this.next(this.values);
+      console.log('===this.values', this.values);
+      this.inputCount = 0;
     }
-  }
+  };
 }
