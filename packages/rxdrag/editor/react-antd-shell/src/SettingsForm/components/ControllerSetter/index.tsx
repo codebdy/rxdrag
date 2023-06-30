@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { useMemo, useState } from "react"
 import { Form, Radio } from "antd"
 import { memo, useCallback, useEffect } from "react"
 import { useDesignerEngine, useToolsTranslate } from "@rxdrag/react-core"
@@ -15,6 +15,7 @@ export const ControllerSetter = memo((props: {
 }) => {
   const { title, value, onChange, ...other } = props;
   const t = useToolsTranslate()
+  const [localesInited, setLocalesInited] = useState(false);
 
   const minionOptions = useMinionOptions();
   const eng = useDesignerEngine();
@@ -23,6 +24,7 @@ export const ControllerSetter = memo((props: {
     for (const ctrlDef of minionOptions?.controllers || []) {
       ctrlDef.locales && langMgr?.registerToolsLocales(ctrlDef.locales)
     }
+    setLocalesInited(true)
   }, [eng, minionOptions?.controllers])
 
   const trimLabel = useCallback((label?: string) => {
@@ -53,7 +55,7 @@ export const ControllerSetter = memo((props: {
           value={value?.controllerType}
         >
           {
-            minionOptions?.controllers?.map(ctrlDef => {
+            localesInited && minionOptions?.controllers?.map(ctrlDef => {
               return (
                 <Radio.Button
                   key={ctrlDef.name}
