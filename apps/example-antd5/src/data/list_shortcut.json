@@ -1278,7 +1278,8 @@
                           }
                         ],
                         "actionType": "list",
-                        "url": "/api/users"
+                        "url": "/api/users",
+                        "entityName": "User"
                       },
                       "x-field": {
                         "reactionMeta": {
