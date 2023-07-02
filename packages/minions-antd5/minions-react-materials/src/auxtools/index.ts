@@ -1,7 +1,7 @@
 import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { debugMaterial } from "./debug";
-import { ReactNode } from "react";
 
-export const auxActivities: IActivityMaterial<ReactNode>[] = [
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const auxActivities: IActivityMaterial<any, any, any, any>[] = [
   debugMaterial,
 ]

@@ -1,0 +1,705 @@
+{
+  "componentName": "Root",
+  "slots": {},
+  "children": [
+    {
+      "componentName": "TwoColumnLayout",
+      "props": {},
+      "slots": {
+        "header": {
+          "componentName": "Layout.Header",
+          "props": {
+            "style": {
+              "display": "flex",
+              "justifyContent": "space-between",
+              "alignItems": "center"
+            }
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Avatar",
+              "props": {},
+              "slots": {
+                "icon": {
+                  "componentName": "IconView",
+                  "props": {
+                    "icon": {
+                      "iconKey": "UserOutlined"
+                    },
+                    "style": {}
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              },
+              "children": []
+            }
+          ]
+        },
+        "sider": {
+          "componentName": "Layout.Sider",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Logo",
+              "slots": {},
+              "children": []
+            },
+            {
+              "componentName": "Menu",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        "content": {
+          "componentName": "Layout.Content",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Button",
+              "props": {
+                "type": "primary",
+                "title": "按钮1"
+              },
+              "x-controller": {
+                "id": "4acd9cca-b662-4046-a19a-2a5a699679e2",
+                "controllerType": "script",
+                "events": [
+                  {
+                    "id": "19670a9a-8c7e-488f-9fd8-ac769329c42e",
+                    "name": "onClick",
+                    "label": "点击",
+                    "nodes": [
+                      {
+                        "id": "ef63ed09-fa1a-4b69-8da3-10a62d0b21d7",
+                        "label": "常量",
+                        "type": "Activity",
+                        "activityName": "system.constValue",
+                        "inPorts": [
+                          {
+                            "id": "1cab1f4e-caaa-4aef-bd14-01810e883805",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [
+                          {
+                            "id": "0a803b68-d21d-4d2d-851d-3a4fccf2036e",
+                            "name": "output",
+                            "label": ""
+                          }
+                        ],
+                        "x6Node": {
+                          "x": 200,
+                          "y": 120,
+                          "width": 88,
+                          "height": 32
+                        },
+                        "config": {
+                          "value": "按钮一"
+                        }
+                      },
+                      {
+                        "id": "e1d59fbb-65cc-44e7-8b14-91121d70a560",
+                        "label": "输入",
+                        "type": "Start",
+                        "activityName": "start",
+                        "inPorts": [],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 70,
+                          "y": 110,
+                          "width": 20,
+                          "height": 20
+                        }
+                      },
+                      {
+                        "id": "d4ba0d10-e06d-4a4a-9bcd-b44337a50bef",
+                        "label": "常量",
+                        "type": "Activity",
+                        "activityName": "system.constValue",
+                        "inPorts": [
+                          {
+                            "id": "1cab1f4e-caaa-4aef-bd14-01810e883805",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [
+                          {
+                            "id": "0a803b68-d21d-4d2d-851d-3a4fccf2036e",
+                            "name": "output",
+                            "label": ""
+                          }
+                        ],
+                        "x6Node": {
+                          "x": 230,
+                          "y": 50,
+                          "width": 88,
+                          "height": 32
+                        },
+                        "config": {
+                          "value": "标题"
+                        }
+                      },
+                      {
+                        "id": "a31c96f6-de32-4de8-9210-65b662cd25d2",
+                        "label": "设置属性",
+                        "type": "Activity",
+                        "activityName": "system-react.setProp",
+                        "inPorts": [
+                          {
+                            "id": "b7f57d1c-c72c-4ad1-a869-82f4f4b330ea",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "config": {
+                          "reactionRef": "system-react.setProp",
+                          "param": {
+                            "controllerId": "859cc0c8-2e51-43e2-9208-ea3f072fd6ac",
+                            "prop": "title"
+                          }
+                        },
+                        "x6Node": {
+                          "x": 450,
+                          "y": 40,
+                          "width": 116,
+                          "height": 32
+                        }
+                      },
+                      {
+                        "id": "ad41c503-240b-4abe-90d1-0d2f54f1f609",
+                        "label": "设置属性",
+                        "type": "Activity",
+                        "activityName": "system-react.setProp",
+                        "inPorts": [
+                          {
+                            "id": "b7f57d1c-c72c-4ad1-a869-82f4f4b330ea",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "config": {
+                          "reactionRef": "system-react.setProp",
+                          "param": {
+                            "controllerId": "4acd9cca-b662-4046-a19a-2a5a699679e2",
+                            "prop": "title"
+                          }
+                        },
+                        "x6Node": {
+                          "x": 420,
+                          "y": 170,
+                          "width": 116,
+                          "height": 32
+                        }
+                      },
+                      {
+                        "id": "4c11fd24-71e5-4d73-8c11-f87fcb535985",
+                        "label": "设置属性",
+                        "type": "Activity",
+                        "activityName": "system-react.setProp",
+                        "inPorts": [
+                          {
+                            "id": "2667eac6-b561-443c-9439-f2d964ad9c0d",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 380,
+                          "y": 260,
+                          "width": 116,
+                          "height": 32
+                        },
+                        "config": {
+                          "param": {
+                            "controllerId": "859cc0c8-2e51-43e2-9208-ea3f072fd6ac",
+                            "prop": "danger"
+                          }
+                        }
+                      },
+                      {
+                        "id": "204bb2f3-e2e5-42ac-9b18-8d7f55d5caae",
+                        "label": "常量",
+                        "type": "Activity",
+                        "activityName": "system.constValue",
+                        "inPorts": [
+                          {
+                            "id": "a09db987-ff53-4082-9909-8d0a120d69d9",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [
+                          {
+                            "id": "84bae5dd-99a7-405d-890c-518952aaec7e",
+                            "name": "output",
+                            "label": ""
+                          }
+                        ],
+                        "x6Node": {
+                          "x": 210,
+                          "y": 200,
+                          "width": 88,
+                          "height": 32
+                        },
+                        "config": {
+                          "value": true
+                        }
+                      },
+                      {
+                        "id": "7ac7badb-7b91-49ba-b85a-0dca1a3fcb22",
+                        "label": "常量",
+                        "type": "Activity",
+                        "activityName": "system.constValue",
+                        "inPorts": [
+                          {
+                            "id": "1bfabf7a-6997-4bba-b2ce-7e9ab968628e",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [
+                          {
+                            "id": "5a003cd0-b5ca-4ac0-8a5c-bd90509a6f5f",
+                            "name": "output",
+                            "label": ""
+                          }
+                        ],
+                        "x6Node": {
+                          "x": 180,
+                          "y": 330,
+                          "width": 88,
+                          "height": 32
+                        },
+                        "config": {
+                          "value": "按钮三"
+                        }
+                      },
+                      {
+                        "id": "bafb0471-fb6a-48af-85ab-22664a1accad",
+                        "label": "变量赋值",
+                        "type": "Activity",
+                        "activityName": "system-react.setVariable",
+                        "inPorts": [
+                          {
+                            "id": "261ebeaa-9a22-4b94-a157-3dda8bd998a1",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 370,
+                          "y": 340,
+                          "width": 116,
+                          "height": 48
+                        },
+                        "config": {
+                          "param": {
+                            "controllerId": "4acd9cca-b662-4046-a19a-2a5a699679e2",
+                            "variable": "测试"
+                          }
+                        }
+                      },
+                      {
+                        "id": "a165d756-b167-42f7-9e0c-e83c8b1b3628",
+                        "label": "监听变量",
+                        "type": "Activity",
+                        "activityName": "system-react.listenVariable",
+                        "inPorts": [],
+                        "outPorts": [
+                          {
+                            "id": "2fd2e28b-e8b5-4fc6-b907-915d4eaab8a8",
+                            "name": "output",
+                            "label": ""
+                          }
+                        ],
+                        "x6Node": {
+                          "x": 120,
+                          "y": 440,
+                          "width": 116,
+                          "height": 32
+                        },
+                        "config": {
+                          "param": {
+                            "controllerId": "4acd9cca-b662-4046-a19a-2a5a699679e2",
+                            "variable": "测试"
+                          }
+                        }
+                      },
+                      {
+                        "id": "8c57113b-3b42-46ba-aa60-fe703fcd0a23",
+                        "label": "设置属性",
+                        "type": "Activity",
+                        "activityName": "system-react.setProp",
+                        "inPorts": [
+                          {
+                            "id": "28e363ba-6cfc-4c72-b003-4f182e6ae241",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 370,
+                          "y": 450,
+                          "width": 116,
+                          "height": 32
+                        },
+                        "config": {
+                          "param": {
+                            "controllerId": "f1969609-808e-4f3d-8c30-043bcc17742a",
+                            "prop": "title"
+                          }
+                        }
+                      },
+                      {
+                        "id": "6ab6d8f8-476d-413e-8ca7-090d59aa19d4",
+                        "label": "监听属性",
+                        "type": "Activity",
+                        "activityName": "system-react.listenProp",
+                        "inPorts": [],
+                        "outPorts": [
+                          {
+                            "id": "de14b7aa-cd05-4421-9cae-fc9d9d18112d",
+                            "name": "output",
+                            "label": ""
+                          }
+                        ],
+                        "x6Node": {
+                          "x": 110,
+                          "y": 540,
+                          "width": 116,
+                          "height": 32
+                        },
+                        "config": {
+                          "param": {
+                            "controllerId": "4acd9cca-b662-4046-a19a-2a5a699679e2",
+                            "prop": "title"
+                          }
+                        }
+                      },
+                      {
+                        "id": "d876a56f-3709-413c-96f7-e8d657da8a23",
+                        "label": "设置属性",
+                        "type": "Activity",
+                        "activityName": "system-react.setProp",
+                        "inPorts": [
+                          {
+                            "id": "28e363ba-6cfc-4c72-b003-4f182e6ae241",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 360,
+                          "y": 550,
+                          "width": 116,
+                          "height": 32
+                        },
+                        "config": {
+                          "param": {
+                            "controllerId": "41ca8109-0a80-4e25-aa65-fda37920637c",
+                            "prop": "title"
+                          }
+                        }
+                      },
+                      {
+                        "id": "f9a63c9e-ffce-45ae-b5c0-9ebe617ec344",
+                        "label": "监听属性",
+                        "type": "Activity",
+                        "activityName": "system-react.listenProp",
+                        "inPorts": [],
+                        "outPorts": [
+                          {
+                            "id": "de14b7aa-cd05-4421-9cae-fc9d9d18112d",
+                            "name": "output",
+                            "label": ""
+                          }
+                        ],
+                        "x6Node": {
+                          "x": 100,
+                          "y": 620,
+                          "width": 116,
+                          "height": 32
+                        },
+                        "config": {
+                          "param": {
+                            "controllerId": "859cc0c8-2e51-43e2-9208-ea3f072fd6ac",
+                            "prop": "danger"
+                          }
+                        }
+                      },
+                      {
+                        "id": "73103ee6-11f6-44e7-a0c6-e58d3e7d25c0",
+                        "label": "设置属性",
+                        "type": "Activity",
+                        "activityName": "system-react.setProp",
+                        "inPorts": [
+                          {
+                            "id": "28e363ba-6cfc-4c72-b003-4f182e6ae241",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 330,
+                          "y": 640,
+                          "width": 116,
+                          "height": 32
+                        },
+                        "config": {
+                          "param": {
+                            "controllerId": "41ca8109-0a80-4e25-aa65-fda37920637c",
+                            "prop": "danger"
+                          }
+                        }
+                      }
+                    ],
+                    "lines": [
+                      {
+                        "id": "7d05f4fc-dc1a-4b12-a3e5-7057f0da3e73",
+                        "source": {
+                          "nodeId": "e1d59fbb-65cc-44e7-8b14-91121d70a560"
+                        },
+                        "target": {
+                          "nodeId": "ef63ed09-fa1a-4b69-8da3-10a62d0b21d7",
+                          "portId": "1cab1f4e-caaa-4aef-bd14-01810e883805"
+                        }
+                      },
+                      {
+                        "id": "65d34b46-e969-4127-b734-4e91db927cab",
+                        "source": {
+                          "nodeId": "ef63ed09-fa1a-4b69-8da3-10a62d0b21d7",
+                          "portId": "0a803b68-d21d-4d2d-851d-3a4fccf2036e"
+                        },
+                        "target": {
+                          "nodeId": "ad41c503-240b-4abe-90d1-0d2f54f1f609",
+                          "portId": "b7f57d1c-c72c-4ad1-a869-82f4f4b330ea"
+                        }
+                      },
+                      {
+                        "id": "ab7317e7-b667-4697-8f2a-92329027f05a",
+                        "source": {
+                          "nodeId": "e1d59fbb-65cc-44e7-8b14-91121d70a560"
+                        },
+                        "target": {
+                          "nodeId": "d4ba0d10-e06d-4a4a-9bcd-b44337a50bef",
+                          "portId": "1cab1f4e-caaa-4aef-bd14-01810e883805"
+                        }
+                      },
+                      {
+                        "id": "67e6032f-0bf7-4459-a48c-42bb64464488",
+                        "source": {
+                          "nodeId": "d4ba0d10-e06d-4a4a-9bcd-b44337a50bef",
+                          "portId": "0a803b68-d21d-4d2d-851d-3a4fccf2036e"
+                        },
+                        "target": {
+                          "nodeId": "a31c96f6-de32-4de8-9210-65b662cd25d2",
+                          "portId": "b7f57d1c-c72c-4ad1-a869-82f4f4b330ea"
+                        }
+                      },
+                      {
+                        "id": "e21b5f74-f046-461d-afb9-815249fd44f2",
+                        "source": {
+                          "nodeId": "e1d59fbb-65cc-44e7-8b14-91121d70a560"
+                        },
+                        "target": {
+                          "nodeId": "204bb2f3-e2e5-42ac-9b18-8d7f55d5caae",
+                          "portId": "a09db987-ff53-4082-9909-8d0a120d69d9"
+                        }
+                      },
+                      {
+                        "id": "3d5cf7d9-5e89-41e1-af4a-69f888780d26",
+                        "source": {
+                          "nodeId": "204bb2f3-e2e5-42ac-9b18-8d7f55d5caae",
+                          "portId": "84bae5dd-99a7-405d-890c-518952aaec7e"
+                        },
+                        "target": {
+                          "nodeId": "4c11fd24-71e5-4d73-8c11-f87fcb535985",
+                          "portId": "2667eac6-b561-443c-9439-f2d964ad9c0d"
+                        }
+                      },
+                      {
+                        "id": "188aaef2-e4ba-4c9c-a6e2-b915b99abd71",
+                        "source": {
+                          "nodeId": "e1d59fbb-65cc-44e7-8b14-91121d70a560"
+                        },
+                        "target": {
+                          "nodeId": "7ac7badb-7b91-49ba-b85a-0dca1a3fcb22",
+                          "portId": "1bfabf7a-6997-4bba-b2ce-7e9ab968628e"
+                        }
+                      },
+                      {
+                        "id": "fd547c92-7882-46df-9159-6f1d9e4f196c",
+                        "source": {
+                          "nodeId": "7ac7badb-7b91-49ba-b85a-0dca1a3fcb22",
+                          "portId": "5a003cd0-b5ca-4ac0-8a5c-bd90509a6f5f"
+                        },
+                        "target": {
+                          "nodeId": "bafb0471-fb6a-48af-85ab-22664a1accad",
+                          "portId": "261ebeaa-9a22-4b94-a157-3dda8bd998a1"
+                        }
+                      },
+                      {
+                        "id": "01dac4ff-a0ec-49b5-8f64-994af9bba836",
+                        "source": {
+                          "nodeId": "a165d756-b167-42f7-9e0c-e83c8b1b3628",
+                          "portId": "2fd2e28b-e8b5-4fc6-b907-915d4eaab8a8"
+                        },
+                        "target": {
+                          "nodeId": "8c57113b-3b42-46ba-aa60-fe703fcd0a23",
+                          "portId": "28e363ba-6cfc-4c72-b003-4f182e6ae241"
+                        }
+                      },
+                      {
+                        "id": "be93db0c-e68e-4f89-b4d1-1d6caacbfce5",
+                        "source": {
+                          "nodeId": "6ab6d8f8-476d-413e-8ca7-090d59aa19d4",
+                          "portId": "de14b7aa-cd05-4421-9cae-fc9d9d18112d"
+                        },
+                        "target": {
+                          "nodeId": "d876a56f-3709-413c-96f7-e8d657da8a23",
+                          "portId": "28e363ba-6cfc-4c72-b003-4f182e6ae241"
+                        }
+                      },
+                      {
+                        "id": "b74fcf70-0652-415f-9c7b-b8c46a5f9a32",
+                        "source": {
+                          "nodeId": "f9a63c9e-ffce-45ae-b5c0-9ebe617ec344",
+                          "portId": "de14b7aa-cd05-4421-9cae-fc9d9d18112d"
+                        },
+                        "target": {
+                          "nodeId": "73103ee6-11f6-44e7-a0c6-e58d3e7d25c0",
+                          "portId": "28e363ba-6cfc-4c72-b003-4f182e6ae241"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "name": "按钮",
+                "variables": [
+                  {
+                    "name": "测试",
+                    "id": "f619fd78-d3c2-4003-9be0-f6b7fb1c1c7d"
+                  }
+                ],
+                "reactions": [
+                  {
+                    "id": "0159a2fb-987a-452b-98b7-9ae70ad2c93d",
+                    "label": "交互测试",
+                    "nodes": [
+                      {
+                        "id": "89ce1562-f975-40f4-a457-776069108bc8",
+                        "label": "输入",
+                        "type": "Start",
+                        "activityName": "start",
+                        "inPorts": [],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 70,
+                          "y": 120,
+                          "width": 20,
+                          "height": 20
+                        }
+                      },
+                      {
+                        "id": "a4533057-c629-496f-b115-923c55b3921d",
+                        "label": "输出",
+                        "type": "End",
+                        "activityName": "end",
+                        "inPorts": [],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 440,
+                          "y": 160,
+                          "width": 20,
+                          "height": 20
+                        }
+                      }
+                    ],
+                    "lines": []
+                  }
+                ],
+                "script": "$self.on(\"onClick\", ()=>{\r\n    $controllers.getCotroller(\"button2\").setProp(\"title\", \"Script1\");\r\n    $controllers.getCotroller(\"button3\").setProp(\"title\", \"Script2\");\r\n    $controllers.getCotroller(\"button4\").setProp(\"title\", \"Script3\");\r\n})"
+              },
+              "slots": {},
+              "children": []
+            },
+            {
+              "componentName": "Button",
+              "props": {
+                "type": "primary",
+                "title": "按钮2"
+              },
+              "x-controller": {
+                "id": "859cc0c8-2e51-43e2-9208-ea3f072fd6ac",
+                "controllerType": "logicFlow",
+                "name": "button2",
+                "global": true
+              },
+              "slots": {},
+              "children": []
+            },
+            {
+              "componentName": "Button",
+              "props": {
+                "type": "primary",
+                "title": "Button"
+              },
+              "x-controller": {
+                "id": "f1969609-808e-4f3d-8c30-043bcc17742a",
+                "controllerType": "logicFlow",
+                "global": true,
+                "name": "button3"
+              },
+              "slots": {},
+              "children": []
+            },
+            {
+              "componentName": "Button",
+              "props": {
+                "type": "primary",
+                "title": "Button"
+              },
+              "x-controller": {
+                "id": "41ca8109-0a80-4e25-aa65-fda37920637c",
+                "controllerType": "logicFlow",
+                "global": true,
+                "name": "button4"
+              },
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        "footer": {
+          "componentName": "Layout.Footer",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Text",
+              "props": {
+                "value": "Apper Copyright ©2023",
+                "style": {}
+              },
+              "slots": {},
+              "children": []
+            }
+          ]
+        }
+      },
+      "children": []
+    }
+  ]
+}

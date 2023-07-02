@@ -1,4 +1,4 @@
 export * from "./consts"
-export * from "./DefaultController"
+export * from "./AbstractController"
 export * from "./LogicFlowController"
 export * from "./ScriptController"

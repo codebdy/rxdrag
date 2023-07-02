@@ -18,5 +18,5 @@ export function transToRenderSchema(node: INodeSchema<IFieldMeta<IBindParams> | 
     ...node,
     children: node?.children?.map(child => transToRenderSchema(child as INodeSchema<IFieldMeta<IBindParams> | undefined>)),
     slots
-  }
+  } as IComponentRenderSchema
 }

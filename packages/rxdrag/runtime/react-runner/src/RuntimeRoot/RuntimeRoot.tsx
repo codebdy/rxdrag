@@ -36,7 +36,7 @@ export const RuntimeRoot = memo((props: {
       [LOGICFLOW_TYPE_NAME]: LogicFlowControllerFactory,
       [SCRIPT_TYPE_NAME]: ScriptControllerFactory
     }
-    const rtEngine = new RuntimeEngine(schema, { ...defaultFactories, ...controllerFactories }, logicFlowContext)
+    const rtEngine = new RuntimeEngine(schema, { ...defaultFactories, ...controllerFactories })
     setRuntimeEngine(rtEngine)
 
     return ()=>{

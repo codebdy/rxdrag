@@ -12,6 +12,8 @@ const treeData: DataNode[] = [
       { title: '工作台', key: 'dashboard', isLeaf: true },
       { title: '详情页', key: 'details', isLeaf: true },
       { title: '列表页', key: 'list', isLeaf: true },
+      { title: '列表页(快捷)', key: 'listShortcut', isLeaf: true },
+      { title: '脚本控制器', key: 'script', isLeaf: true },
       { title: '测试页', key: 'test', isLeaf: true },
       { title: '打地鼠', key: 'mole', isLeaf: true },
     ],
@@ -37,6 +39,7 @@ export const PagesWidget = memo((
 ) => {
   const { value, onSelect, display } = props
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: Key[],root:any) => {
     if(root.node.children) return 
     onSelect(keys?.[0].toString() || "")

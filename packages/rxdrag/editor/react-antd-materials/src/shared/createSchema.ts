@@ -71,13 +71,30 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
     props: {},
     children: [
       ...propsTab,
-      styleTab,
+      styleTab2,
       ...slotsTab,
       dataTab,
       controllerTab,
     ]
   }
 }
+const styleTab2 = {
+  componentName: 'TabPanel',
+  props: {
+    title: '$style'
+  },
+  children: [
+    {
+      componentName: 'StyleSetter',
+      'x-field': {
+        name: 'props.style',
+        params: {
+          withBind: true
+        }
+      }
+    }
+  ]
+};
 
 const styleTab = {
   componentName: "TabPanel",

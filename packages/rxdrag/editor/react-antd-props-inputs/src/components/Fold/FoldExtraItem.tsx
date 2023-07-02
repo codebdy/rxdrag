@@ -19,7 +19,8 @@ export type IconViewProps = {
   icon?: React.ReactNode | string
 }
 
-export const FoldIcon = memo(forwardRef<HTMLDivElement, IconViewProps>((props, ref) => {
+export const FoldIcon = memo(forwardRef<HTMLDivElement, IconViewProps & { onClick?: () => void }>((props, ref) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { icon, ...other } = props
   return (
     isStr(props.icon)

@@ -15,7 +15,10 @@
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "strict": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "target": "ES5",
+    "experimentalDecorators": true
   },
+  
   "exclude": ["node_modules"]
 }

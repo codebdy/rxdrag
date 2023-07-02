@@ -1,9 +1,9 @@
 import { Graph } from "@antv/x6";
-import { IActivityDefine, IConfigMeta, ILineDefine } from "@rxdrag/schema";
 import { Action } from "../actions";
+import { IActivityDefine, ILineDefine } from "@rxdrag/minions-schema";
 
 export interface ISnapshot  {
-  nodes: IActivityDefine<IConfigMeta>[];
+  nodes: IActivityDefine<unknown>[];
   lines: ILineDefine[];
   selected?: string,
 }
@@ -12,7 +12,7 @@ export interface IState {
   changeFlag: number,
   undoList: ISnapshot[],
   redoList: ISnapshot[],
-  nodes: IActivityDefine<IConfigMeta>[];
+  nodes: IActivityDefine<unknown>[];
   lines: ILineDefine[];
   selected?: string,
   zoom: number,
