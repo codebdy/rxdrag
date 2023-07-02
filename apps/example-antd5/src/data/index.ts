@@ -7,6 +7,7 @@ import stepForm from "./step-form.json"
 import advanceForm from "./advance-form.json"
 import test from "./test.json"
 import mole from "./mole.json"
+import script from "./script.json"
 
 export const pages = {
   "dashboard": dashboard,
@@ -15,6 +16,7 @@ export const pages = {
   "listShortcut": listShortcut,
   "test": test,
   "mole": mole,
+  "script": script,
 
   "basic-form": basicForm,
   "step-form": stepForm,
