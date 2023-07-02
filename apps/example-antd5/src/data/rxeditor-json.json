@@ -159,7 +159,7 @@
                       },
                       "x-controller": {
                         "id": "0eaa8c9d-3b7e-4ca2-b96e-4d2168752133",
-                        "enable": true,
+                        "controllerType": "logicFlow",
                         "events": [
                           {
                             "id": "8fb48133-0205-4492-b651-dd97037ab4f1",
@@ -180,7 +180,7 @@
                                 "id": "f26a1adb-b091-4cb1-84fb-89a1d59e2aa3",
                                 "label": "输入",
                                 "type": "Start",
-                                "materialName": "start",
+                                "activityName": "start",
                                 "name": "input",
                                 "x6Node": {
                                   "x": 190,
@@ -193,7 +193,7 @@
                                 "id": "6f432167-7e9a-41eb-b8a0-6f9eed2a186a",
                                 "label": "输入",
                                 "type": "SingleReaction",
-                                "materialName": "readFieldValue",
+                                "activityName": "readFieldValue",
                                 "inPorts": [
                                   {
                                     "id": "508eb93d-9683-4a1f-8a92-1eda1a1bba85",
@@ -222,7 +222,7 @@
                                 "id": "4346f004-4aa8-46fa-b793-fdbcffe9342f",
                                 "label": "调试",
                                 "type": "SingleReaction",
-                                "materialName": "debug",
+                                "activityName": "debug",
                                 "inPorts": [
                                   {
                                     "id": "5c6f67ae-b707-46ec-ba47-b0f92f88b2f9",

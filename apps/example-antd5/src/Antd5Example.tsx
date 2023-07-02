@@ -1,6 +1,6 @@
-import { FileOutlined, GithubFilled } from '@ant-design/icons';
-import { Button, Space } from 'antd';
-import { memo, useCallback, useMemo, useState, useEffect } from 'react';
+import { FileOutlined, GithubFilled } from "@ant-design/icons"
+import { Button, Space } from "antd"
+import { memo, useCallback, useMemo, useState } from "react"
 import {
   RxEditorAntd,
   HistoryWidget,
@@ -8,63 +8,61 @@ import {
   LeftNavWidget,
   Logo,
   OutlineWidget,
-  ThemeButton
-} from '@rxdrag/react-antd-shell';
-import { componentsIcon, outlineIcon, historyIcon } from '@rxdrag/react-shared';
-import { toolsLocales } from './locales';
-import { ResourceWidget } from './ResourceWidget';
-import { SaveButton } from './widgets/SaveButton';
-import { PagesWidget } from './PagesWidget';
-import { pages } from './data';
-import { getAllUsers, getUser, addUser, removeUser } from './apis/user';
+  ThemeButton,
+  componentsIcon,
+  historyIcon,
+  outlineIcon,
+} from "@rxdrag/react-antd-shell"
+import { toolsLocales } from "./locales"
+import { ResourceWidget } from "./ResourceWidget"
+import { SaveButton } from "./widgets/SaveButton"
+import { PagesWidget } from "./PagesWidget"
+import { pages } from "./data"
+import { minionsLocales } from "controller/locales"
+import { minionsMaterialCategories } from "controller/materials"
+import { controllerDefines } from "controller/defines"
 
 export enum LeftNavType {
-  pages = 'pages',
-  compoents = 'components',
-  outline = 'outline',
-  history = 'history'
+  pages = "pages",
+  compoents = "components",
+  outline = "outline",
+  history = "history",
 }
 
 export const Antd5Example = memo(() => {
-  const [pageId, setPageId] = useState('dashboard');
-  const [activedKey, setActivedKey] = useState<LeftNavType>(
-    LeftNavType.compoents
-  );
+  const [pageId, setPageId] = useState("dashboard")
+  const [activedKey, setActivedKey] = useState<LeftNavType>(LeftNavType.compoents)
   const handleActive = useCallback((key: string) => {
-    setActivedKey(key as LeftNavType);
-  }, []);
+    setActivedKey(key as LeftNavType)
+  }, [])
 
   const schemas = useMemo(() => {
-    return (pages as any)[pageId];
-  }, [pageId]);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return (pages as any)[pageId]
+  }, [pageId])
 
   const handleSelect = useCallback((id: string) => {
-    setPageId(id);
-  }, []);
-
-  useEffect(() => {
-    addUser('test').then(() => {
-      getAllUsers().then(res => console.log('users: ', res));
-    });
-  }, []);
+    setPageId(id)
+  }, [])
 
   return (
     <RxEditorAntd
       schemas={schemas}
       canvasUrl="/canvas-render"
       previewUrl="/preview-render"
-      themeMode="dark"
+      themeMode='dark'
+      minionOptions={{
+        materials: minionsMaterialCategories,
+        locales: minionsLocales,
+        controllers: controllerDefines,
+      }}
       navPanel={
         <>
           {
             //ResourceWidget 内部会注册组件，要防止多次渲染
             <ResourceWidget display={activedKey === LeftNavType.compoents} />
           }
-          <PagesWidget
-            display={activedKey === LeftNavType.pages}
-            value={pageId}
-            onSelect={handleSelect}
-          />
+          <PagesWidget display={activedKey === LeftNavType.pages} value={pageId} onSelect={handleSelect} />
           <HistoryWidget display={activedKey === LeftNavType.history} />
           <OutlineWidget display={activedKey === LeftNavType.outline} />
         </>
@@ -79,10 +77,7 @@ export const Antd5Example = memo(() => {
               href="https://github.com/rxdrag/rxeditor"
               target="_blank"
               icon={<GithubFilled />}
-            >
-              {' '}
-              Github
-            </Button>
+            > Github</Button>
             <SaveButton />
           </Space>
         </>
@@ -95,28 +90,29 @@ export const Antd5Example = memo(() => {
           items={[
             {
               key: LeftNavType.pages,
-              title: 'pages',
+              title: "pages",
               icon: <FileOutlined style={{ fontSize: 18 }} />
             },
             {
               key: LeftNavType.compoents,
-              title: 'components',
+              title: "components",
               icon: componentsIcon
             },
             {
               key: LeftNavType.outline,
-              title: 'outline',
+              title: "outline",
               icon: outlineIcon
             },
             {
               key: LeftNavType.history,
-              title: 'history',
+              title: "history",
               icon: historyIcon
-            }
+            },
           ]}
           onActive={handleActive}
         />
       }
-    ></RxEditorAntd>
-  );
-});
+    >
+    </RxEditorAntd>
+  )
+})

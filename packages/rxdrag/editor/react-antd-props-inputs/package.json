@@ -1,0 +1,46 @@
+{
+  "name": "@rxdrag/react-antd-props-inputs",
+  "version": "1.1.0",
+  "main": "index.ts",
+  "types": "./index.ts",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint \"**/*.ts\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "eslint": "^7.32.0",
+    "@rxdrag/eslint-config-custom": "workspace:*",
+    "@rxdrag/tsconfig": "workspace:*",
+    "@types/lodash": "^4.14.191",
+    "typescript": "^4.9.4"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.8.0",
+    "@monaco-editor/react": "^4.4.6",
+    "@rxdrag/react-antd-components": "workspace:^1.1.0",
+    "@rxdrag/react-antd-icons": "workspace:^1.1.0",
+    "@rxdrag/react-core": "workspace:*",
+    "@rxdrag/react-runner": "workspace:^1.1.0",
+    "@rxdrag/react-shared": "workspace:*",
+    "@rxdrag/schema": "workspace:^1.1.0",
+    "@rxdrag/shared": "workspace:*",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "antd": "^5.6.2",
+    "lodash": "^4.17.21",
+    "classnames": "^2.3.2",
+    "css-border-property": "^1.1.0",
+    "react": "^18.2.0",
+    "react-color": "^2.19.3",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.9"
+  }
+}

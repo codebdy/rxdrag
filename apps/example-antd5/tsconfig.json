@@ -16,7 +16,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "./src",
-    "types": ["node", "vite/client"]
+    //"target": "ES5",
+    "experimentalDecorators": true
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

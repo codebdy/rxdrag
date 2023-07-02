@@ -1,0 +1,31 @@
+{
+  "name": "@rxdrag/minions-runtime",
+  "version": "1.0.0",
+  "author": "Water.Li",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "files": [
+    "dist",
+    "src",
+    "test"
+  ],
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "test": "vitest"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@rxdrag/eslint-config-custom": "workspace:*",
+    "@rxdrag/tsconfig": "workspace:*",
+    "@rxdrag/minions-schema": "workspace:*"
+  },
+  "peerDependencies": {
+    "@types/node": "*",
+    "@vitejs/plugin-react-swc": "3.x",
+    "typescript": "4.x",
+    "vite": "4.x",
+    "vitest": "*"
+  }
+}

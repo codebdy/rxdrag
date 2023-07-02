@@ -1,6 +1,16 @@
 packages:
   # all packages in direct subdirs of packages/
   - 'packages/*'
+  - 'packages/locales/*'
+  - 'packages/rxdrag/*'
+  - 'packages/rxdrag/editor/*'
+  - 'packages/rxdrag/runtime/*'
+  - 'packages/fieldy/*'
+  - 'packages/fieldy-minions/*'
+  - 'packages/minions/*'
+  - 'packages/minions/editor/*'
+  - 'packages/minions/runtime/*'
+  - 'packages/minions-antd5/*'
   - 'apps/*'
   # exclude packages that are inside test directories
   - '!**/test/**'
