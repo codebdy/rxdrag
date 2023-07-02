@@ -9,13 +9,10 @@ export const INIT_EVENT_NAME = "init"
 export const DESTORY_EVENT_NAME = "destory"
 
 export class LogicFlowController extends AbstractController {
-  id: string;
   private activites: IActivity[] = []
 
   constructor(public meta: ILogicFlowControllerMeta) {
     super(meta)
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    this.id = meta.id!
   }
 
   //为了预构造全局，分两阶段初始化, controllers包括全局的
