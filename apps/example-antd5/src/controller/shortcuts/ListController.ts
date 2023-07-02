@@ -26,6 +26,7 @@ export class ListController extends AbstractController {
   onPageChange = (currentPage: number, pageSize?: number) => {
     this.setProp("currentPage", currentPage)
     this.setProp("pageSize", pageSize)
+    this.search()
   }
 
   search = () => {
