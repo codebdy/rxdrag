@@ -28,7 +28,7 @@
     "@rxdrag/shared": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
     "@rxdrag/controller-editor-antd5": "workspace:*",
-    "antd": "^5.1.2",
+    "antd": "^5.6.2",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
     "css-border-property": "^1.1.0",
