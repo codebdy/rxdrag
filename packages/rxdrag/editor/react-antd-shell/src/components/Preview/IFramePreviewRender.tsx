@@ -3,9 +3,9 @@ import { DesignerEngineContext, IFrameCanvasEvent } from "@rxdrag/react-core";
 import { IComponents } from "@rxdrag/react-shared";
 import { memo, useCallback, useEffect } from "react"
 import { PreviewRender } from "./PreviewRender";
-import { EVENT_IFRAME_READY, EVENT_DOC_CHANGE } from "@rxdrag/react-core/src/canvas/IframeCanvas/consts";
+import { EVENT_IFRAME_READY, EVENT_DOC_CHANGE } from "@rxdrag/react-core";
 import { useState } from "react";
-import { ControllerFactories } from "@rxdrag/react-runner/src/RuntimeRoot/RuntimeEngine";
+import { ControllerFactories } from "@rxdrag/react-runner";
 
 declare const window: Window & { engine?: IDesignerEngine, doc?: IDocument };
 

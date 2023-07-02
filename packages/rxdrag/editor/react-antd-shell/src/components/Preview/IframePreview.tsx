@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { memo } from "react"
 import { IDocument } from "@rxdrag/core";
 import { useDocumentViewTypeState, useDesignerEngine, CanvasShell } from "@rxdrag/react-core";
-import { EVENT_DOC_CHANGE, EVENT_IFRAME_READY } from "@rxdrag/react-core/src/canvas/IframeCanvas/consts";
+import { EVENT_DOC_CHANGE, EVENT_IFRAME_READY } from "@rxdrag/react-core";
 
 export const IframePreview = memo((
   props: {
