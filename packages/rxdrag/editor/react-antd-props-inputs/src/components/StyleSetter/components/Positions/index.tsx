@@ -12,7 +12,8 @@ const percentFormatter = (value: string | number | undefined) => {
   return `${String(value).replace('%', '')}%`;
 };
 
-export const Positions = props => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const Positions = (props:any) => {
   const { value, onChange, options } = props;
 
   const handleItemClick = useCallback(

@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useMemo } from 'react';
-import { Select, InputNumber } from 'antd';
+import { Select } from 'antd';
 import { isNil } from 'lodash';
 import { useToken } from 'antd/es/theme/internal';
 import { Field } from '../Field';
@@ -35,7 +36,7 @@ export const LayoutBox = (props: LayoutBoxProps) => {
         {type}
       </span>
     );
-  }, [value, type]);
+  }, [value, type, token.colorPrimary]);
 
   return (
     <FieldGroup

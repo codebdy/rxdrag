@@ -3,7 +3,8 @@ import { CaretRightFilled } from '@ant-design/icons';
 
 import { Field } from '../Field';
 
-export const Header = props => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const Header = (props:any) => {
   const { title, isActive, extra } = props;
 
   const Label = useMemo(() => {

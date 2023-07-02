@@ -22,7 +22,8 @@ const StyledCollapse = styled(Collapse)`
   }
 `;
 
-export const Group = props => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const Group = (props: any) => {
   const { children, title, className, onCollapseChange, activeKey } = props;
 
   const klass = useMemo(() => cx('rx-accordion-field', className), [className]);

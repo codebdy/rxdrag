@@ -2,7 +2,8 @@ import { useState, useCallback } from 'react';
 import { Group } from '../Group';
 import { Header } from './Header';
 
-export const FieldGroup = props => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const FieldGroup = (props: { title?: any; activeKey?: any; extra?: any; children?: any; className?: string }) => {
   const { title, activeKey, extra, children } = props;
 
   const [isActive, setIsActive] = useState(false);

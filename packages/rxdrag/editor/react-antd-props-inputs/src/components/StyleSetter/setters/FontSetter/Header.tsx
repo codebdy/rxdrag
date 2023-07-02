@@ -2,7 +2,8 @@ import { Select } from 'antd';
 
 import { defaultOptions } from './config';
 
-export const Header = props => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const Header = (props: { onChange: any; value: any; }) => {
   const { onChange, value } = props;
 
   const handlePrevent = (evt: React.SyntheticEvent) => {

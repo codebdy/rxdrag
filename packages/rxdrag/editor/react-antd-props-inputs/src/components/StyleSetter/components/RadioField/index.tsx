@@ -4,7 +4,8 @@ import type { RadioChangeEvent } from 'antd';
 import { Field } from '../Field';
 import { RadioItem } from '../../types';
 
-export const RadioField = props => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const RadioField = (props:any) => {
   const { styleKey, options, label, onChange, value, defaultValue, ...others } =
     props;
 

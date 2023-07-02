@@ -4,7 +4,8 @@ import { useToken } from 'antd/es/theme/internal';
 import type { Color } from 'antd/es/color-picker';
 import { Field } from '../Field';
 
-export const ColorField = props => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const ColorField = (props:any) => {
   const { label, value, type, onChange } = props;
   const [, token] = useToken();
 

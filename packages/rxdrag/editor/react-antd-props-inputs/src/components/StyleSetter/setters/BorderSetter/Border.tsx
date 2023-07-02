@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useCallback } from 'react';
 import { Row, Col, Tooltip, Select } from 'antd';
 import cx from 'classnames';
@@ -5,7 +6,7 @@ import cx from 'classnames';
 import { FoldIcon } from '../../../Fold';
 import { Field, UnitField, ColorField } from '../../components';
 import { borders, borderStyles } from './config';
-import { RadioItem, StyleChangeListener, SetterProps } from '../../types';
+import { RadioItem, StyleChangeListener } from '../../types';
 
 export const Border = (props: {
   value: any;
