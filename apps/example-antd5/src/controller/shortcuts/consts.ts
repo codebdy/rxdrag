@@ -1,0 +1,1 @@
+export const LIST_CONTROLLER_NAME = "shortcut_list"

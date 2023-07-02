@@ -1,5 +1,5 @@
 import { AbstractController, INIT_EVENT_NAME } from "@rxdrag/minions-runtime-react";
-import { IShortcutControllerMeta } from ".";
+import { IShortcutControllerMeta } from "./IShortcutControllerMeta";
 import { LIST_CONTROLLER_NAME } from "./consts";
 
 export class ListController extends AbstractController {
