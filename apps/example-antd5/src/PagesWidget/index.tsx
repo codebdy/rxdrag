@@ -12,6 +12,7 @@ const treeData: DataNode[] = [
       { title: '工作台', key: 'dashboard', isLeaf: true },
       { title: '详情页', key: 'details', isLeaf: true },
       { title: '列表页', key: 'list', isLeaf: true },
+      { title: '列表页(快捷)', key: 'listShortcut', isLeaf: true },
       { title: '测试页', key: 'test', isLeaf: true },
       { title: '打地鼠', key: 'mole', isLeaf: true },
     ],
