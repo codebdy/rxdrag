@@ -67,7 +67,7 @@
               },
               "x-controller": {
                 "id": "4acd9cca-b662-4046-a19a-2a5a699679e2",
-                "controllerType": "logicFlow",
+                "controllerType": "script",
                 "events": [
                   {
                     "id": "19670a9a-8c7e-488f-9fd8-ac769329c42e",
@@ -629,7 +629,8 @@
                     ],
                     "lines": []
                   }
-                ]
+                ],
+                "script": "$self.on(\"onClick\", ()=>{\r\n    $controllers.getCotroller(\"button1\").setProp(\"title\", \"Script1\");\r\n    $controllers.getCotroller(\"button2\").setProp(\"title\", \"Script2\");\r\n    $controllers.getCotroller(\"button3\").setProp(\"title\", \"Script3\");\r\n})"
               },
               "slots": {},
               "children": []
@@ -643,7 +644,7 @@
               "x-controller": {
                 "id": "859cc0c8-2e51-43e2-9208-ea3f072fd6ac",
                 "controllerType": "logicFlow",
-                "name": "按钮2",
+                "name": "button2",
                 "global": true
               },
               "slots": {},
@@ -659,7 +660,7 @@
                 "id": "f1969609-808e-4f3d-8c30-043bcc17742a",
                 "controllerType": "logicFlow",
                 "global": true,
-                "name": "按钮3"
+                "name": "button3"
               },
               "slots": {},
               "children": []
@@ -674,7 +675,7 @@
                 "id": "41ca8109-0a80-4e25-aa65-fda37920637c",
                 "controllerType": "logicFlow",
                 "global": true,
-                "name": "按钮4"
+                "name": "button4"
               },
               "slots": {},
               "children": []

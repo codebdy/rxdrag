@@ -1,6 +1,5 @@
 import { ControllerFactory, Controllers, IControllerMeta, IScriptControllerMeta } from "../interfaces";
 import { AbstractController } from "./AbstractController";
-import { INIT_EVENT_NAME } from "./LogicFlowController";
 
 export class ControllerManger {
   constructor(protected controllers?: Controllers) {
@@ -26,14 +25,14 @@ export class ScriptController extends AbstractController {
   init(relatedControllers: Controllers | undefined, context?: unknown) {
     this.context = context
     this.controllers = relatedControllers
-    this.events[INIT_EVENT_NAME] = this.initEvent
+    //this.events[INIT_EVENT_NAME] = this.initEvent
   }
 
   initEvent = () => {
     if (this.meta.script?.trim()) {
-      new Function("$self", "$controllers", ...Object.keys(this.context || {}).map(key => "$" + key), "return " + this.meta.script)(
+      new Function("$self", "$controllers", ...Object.keys(this.context || {}).map(key => "$" + key), this.meta.script)(
         this,
-        ControllerManger,
+        new ControllerManger(this.controllers),
         ...Object.values(this.context || {})
       )
     } else {
@@ -42,6 +41,10 @@ export class ScriptController extends AbstractController {
   }
   destory(): void {
     //throw new Error("Method not implemented.");
+  }
+
+  on = (name: string, callback: (...args: unknown[]) => void) => {
+    this.events[name] = callback
   }
 }
 

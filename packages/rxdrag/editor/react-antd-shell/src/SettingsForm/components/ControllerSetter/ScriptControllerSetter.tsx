@@ -16,6 +16,11 @@ export const ScriptControllerSetter = memo((
   const themeMode = useThemeMode();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  useEffect(() => {
+    setInputValue(value.script || "")
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value.id])
+
   const t = useToolsTranslate()
 
   const handleGlobalChange = useCallback((checked: boolean) => {
@@ -81,6 +86,7 @@ export const ScriptControllerSetter = memo((
       <Drawer
         title={t("configScript")}
         placement="right"
+        mask={false}
         bodyStyle={{ padding: 0 }}
         onClose={handleCancel}
         open={isModalOpen}
