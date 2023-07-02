@@ -630,7 +630,7 @@
                     "lines": []
                   }
                 ],
-                "script": "$self.on(\"onClick\", ()=>{\r\n    $controllers.getCotroller(\"button1\").setProp(\"title\", \"Script1\");\r\n    $controllers.getCotroller(\"button2\").setProp(\"title\", \"Script2\");\r\n    $controllers.getCotroller(\"button3\").setProp(\"title\", \"Script3\");\r\n})"
+                "script": "$self.on(\"onClick\", ()=>{\r\n    $controllers.getCotroller(\"button2\").setProp(\"title\", \"Script1\");\r\n    $controllers.getCotroller(\"button3\").setProp(\"title\", \"Script2\");\r\n    $controllers.getCotroller(\"button4\").setProp(\"title\", \"Script3\");\r\n})"
               },
               "slots": {},
               "children": []

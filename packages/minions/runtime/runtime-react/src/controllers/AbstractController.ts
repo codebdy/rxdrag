@@ -25,6 +25,7 @@ export abstract class AbstractController implements IController {
   constructor(public meta: ILogicFlowControllerMeta) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     this.id = meta.id!
+    this.name = meta.name
   }
 
   abstract init(controllers: Controllers, context: unknown):void 
