@@ -484,7 +484,7 @@
                       },
                       "x-controller": {
                         "id": "de0143a2-498e-4013-8416-5a5919ff4acb",
-                        "controllerType": "logicFlow",
+                        "controllerType": "shortcut",
                         "global": true,
                         "name": "表格",
                         "events": [
@@ -1276,7 +1276,9 @@
                               }
                             ]
                           }
-                        ]
+                        ],
+                        "actionType": "list",
+                        "url": "/api/users"
                       },
                       "x-field": {
                         "reactionMeta": {

@@ -9,5 +9,6 @@ export enum ActionType {
 
 export interface IShortcutControllerMeta extends IControllerMeta {
   actionType?: ActionType,
-  url?: string
+  url?: string,
+  entityName?: string,
 }

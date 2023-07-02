@@ -38,6 +38,7 @@ export const PagesWidget = memo((
 ) => {
   const { value, onSelect, display } = props
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: Key[],root:any) => {
     if(root.node.children) return 
     onSelect(keys?.[0].toString() || "")

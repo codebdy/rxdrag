@@ -18,6 +18,10 @@ export const ShortcutControllerSetter = memo((props: {
     value && onChange?.({ ...value, url: event.target.value?.trim() })
   }, [onChange, value])
 
+  const handleEntityNameChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    value && onChange?.({ ...value, entityName: event.target.value?.trim() })
+  }, [onChange, value])
+
   return (<>
     <Form.Item
       label={t("actionType")}
@@ -40,6 +44,14 @@ export const ShortcutControllerSetter = memo((props: {
         label={"Url"}
       >
         <Input value={value?.url} onChange={handleUrlChange} />
+      </Form.Item>
+    }
+    {
+      (value?.actionType === ActionType.list || value?.actionType === ActionType.submit) &&
+      <Form.Item
+        label={t("entityName")}
+      >
+        <Input value={value?.entityName} onChange={handleEntityNameChange} />
       </Form.Item>
     }
   </>)

@@ -5,7 +5,8 @@ export const shortcutLocales = {
     list: "列表",
     search: "搜索",
     submit: "提交",
-    removeRecord: "删除记录"
+    removeRecord: "删除记录",
+    entityName: "实体名"
   },
   'en-US': {
     shortcut: "Shortcut",
@@ -13,6 +14,7 @@ export const shortcutLocales = {
     list: "List",
     search: "Search",
     submit: "Submit",
-    removeRecord: "Remove record"
+    removeRecord: "Remove record",
+    entityName: "Entity Name"
   }
 }
