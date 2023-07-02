@@ -128,6 +128,9 @@ importers:
       css-border-property:
         specifier: ^1.1.0
         version: registry.npmmirror.com/css-border-property@1.1.0
+      lodash:
+        specifier: ^4.17.21
+        version: registry.npmmirror.com/lodash@4.17.21
       mockjs:
         specifier: ^1.1.0
         version: registry.npmmirror.com/mockjs@1.1.0
@@ -147,6 +150,9 @@ importers:
         specifier: ^3.3.0
         version: registry.npmmirror.com/web-vitals@3.3.0
     devDependencies:
+      '@types/lodash':
+        specifier: ^4.14.191
+        version: registry.npmmirror.com/@types/lodash@4.14.191
       '@types/mockjs':
         specifier: ^1.0.7
         version: registry.npmmirror.com/@types/mockjs@1.0.7
@@ -927,6 +933,12 @@ importers:
       redux:
         specifier: ^4.2.1
         version: registry.npmmirror.com/redux@4.2.1
+      styled-components:
+        specifier: ^5.3.9
+        version: registry.npmmirror.com/styled-components@5.3.9(react-dom@18.2.0)(react-is@17.0.2)(react@18.2.0)
+      uuid:
+        specifier: ^9.0.0
+        version: registry.npmmirror.com/uuid@9.0.0
     devDependencies:
       '@rxdrag/eslint-config-custom':
         specifier: workspace:*
@@ -943,6 +955,12 @@ importers:
       '@types/react-dom':
         specifier: ^18.0.11
         version: registry.npmmirror.com/@types/react-dom@18.0.11
+      '@types/styled-components':
+        specifier: ^5.1.26
+        version: registry.npmmirror.com/@types/styled-components@5.1.26
+      '@types/uuid':
+        specifier: ^9.0.1
+        version: registry.npmmirror.com/@types/uuid@9.0.1
       eslint:
         specifier: ^7.32.0
         version: registry.npmmirror.com/eslint@7.32.0
@@ -1320,6 +1338,9 @@ importers:
       css-border-property:
         specifier: ^1.1.0
         version: registry.npmmirror.com/css-border-property@1.1.0
+      lodash:
+        specifier: ^4.17.21
+        version: registry.npmmirror.com/lodash@4.17.21
       react:
         specifier: ^18.2.0
         version: registry.npmmirror.com/react@18.2.0
@@ -1342,6 +1363,9 @@ importers:
       '@rxdrag/tsconfig':
         specifier: workspace:*
         version: link:../../../tsconfig
+      '@types/lodash':
+        specifier: ^4.14.191
+        version: registry.npmmirror.com/@types/lodash@4.14.191
       eslint:
         specifier: ^7.32.0
         version: registry.npmmirror.com/eslint@7.32.0
@@ -1435,6 +1459,9 @@ importers:
       insert-css:
         specifier: ^2.0.0
         version: registry.npmmirror.com/insert-css@2.0.0
+      lodash:
+        specifier: ^4.17.21
+        version: registry.npmmirror.com/lodash@4.17.21
       react:
         specifier: ^18.2.0
         version: registry.npmmirror.com/react@18.2.0
@@ -1466,6 +1493,9 @@ importers:
       '@rxdrag/tsconfig':
         specifier: workspace:*
         version: link:../../../tsconfig
+      '@types/lodash':
+        specifier: ^4.14.191
+        version: registry.npmmirror.com/@types/lodash@4.14.191
       '@types/react':
         specifier: ^18.0.28
         version: registry.npmmirror.com/@types/react@18.0.28

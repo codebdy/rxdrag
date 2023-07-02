@@ -17,6 +17,7 @@
     "@rxdrag/eslint-config-custom": "workspace:*",
     "@rxdrag/fieldy-minions-materials": "workspace:*",
     "@rxdrag/tsconfig": "workspace:*",
+    "@types/lodash": "^4.14.191",
     "typescript": "^4.9.4"
   },
   "peerDependencies": {
@@ -49,7 +50,7 @@
     "@rxdrag/minions-controller-editor": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
-    
+    "lodash": "^4.17.21",
     "antd": "^5.6.2",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.7",

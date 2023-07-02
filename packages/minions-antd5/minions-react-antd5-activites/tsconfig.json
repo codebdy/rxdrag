@@ -4,6 +4,6 @@
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
     "target": "ES5",
-    //"experimentalDecorators": true
+    "experimentalDecorators": true
   }
 }

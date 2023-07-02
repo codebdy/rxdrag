@@ -7,7 +7,7 @@ import { EditableCell } from './EditableCell';
 import { EditableRow } from './EditableRow';
 import { createUuid } from '@rxdrag/shared';
 import { IPortDefine } from '@rxdrag/minions-schema';
-import { useTrans } from '../../../hooks/useTrans';
+import { useTrans } from '../../../../hooks';
 
 const Container = styled.div`
   width: 400px;

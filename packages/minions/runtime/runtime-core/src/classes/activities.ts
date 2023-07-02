@@ -21,8 +21,8 @@ const activityInfoArray: IActivityInfo[] = []
 
 export const activities: ActivityInfos = {}
 
-export function Activity(activityName: string): (target: ActivityClass, context: ClassDecoratorContext<ActivityClass>) => void {
-  return function (target: ActivityClass, context: ClassDecoratorContext<ActivityClass>) {
+export function Activity(activityName: string): (target: ActivityClass/*ClassDecoratorContext<ActivityClass>*/) => void {
+  return function (target: ActivityClass) {
     let activityInfo = activityInfoArray.find(info => info.target === target)
 
     if (!activityInfo) {
