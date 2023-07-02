@@ -104,7 +104,7 @@
                               "componentName": "Input",
                               "props": {},
                               "x-field": {
-                                "name": "",
+                                "name": "keywords",
                                 "params": {},
                                 "reactionMeta": {
                                   "display": {},
