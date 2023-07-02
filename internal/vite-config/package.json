@@ -1,0 +1,32 @@
+{
+  "name": "@rxdrag/vite-config",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "module": "index.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "dependencies": {
+    "vite": "^4.3.0"
+  },
+  "devDependencies": {
+    "@rxdrag/eslint-config-custom": "workspace:*",
+    "@rxdrag/tsconfig": "workspace:*",
+    "@types/fs-extra": "^11.0.1",
+    "@vitejs/plugin-react": "^4.0.0",
+    "antd": "^5.5.0",
+    "dayjs": "^1.11.7",
+    "dotenv": "^16.0.3",
+    "fs-extra": "^11.1.1",
+    "pkg-types": "^1.0.2",
+    "rollup-plugin-visualizer": "^5.9.0",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-dts": "^2.2.0",
+    "vite-plugin-html": "^3.2.0",
+    "vite-plugin-mock": "^2.9.6"
+  }
+}

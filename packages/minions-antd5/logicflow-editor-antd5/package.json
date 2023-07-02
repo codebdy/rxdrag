@@ -2,11 +2,19 @@
   "name": "@rxdrag/logicflow-editor-antd5",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
+  "module": "index.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "module": "dist/index.mjs",
+    "typings": "dist/index.d.ts",
+    "access": "public"
+  },
   "scripts": {
     "lint": "eslint \"**/*.ts\"",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-    "build": "tsc && vite build"
+    "build": "vite build"
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
