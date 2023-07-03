@@ -1,19 +1,27 @@
 {
   "name": "@rxdrag/react-antd-shell",
   "version": "1.1.0",
-  "main": "index.ts",
-  "types": "./index.ts",
-  "license": "MIT",
+  "module": "index.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "module": "dist/index.mjs",
+    "typings": "dist/index.d.ts",
+    "access": "public"
+  },
   "scripts": {
-    "build": "tsc && vite build",
     "lint": "eslint \"**/*.ts\"",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "build": "vite build"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-color": "^3.0.6",
     "@types/react-dom": "^18.0.11",
     "eslint": "^7.32.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "@rxdrag/eslint-config-custom": "workspace:*",
     "@rxdrag/fieldy-minions-materials": "workspace:*",
     "@rxdrag/tsconfig": "workspace:*",
@@ -55,9 +63,7 @@
     "classnames": "^2.3.2",
     "dayjs": "^1.11.7",
     "insert-css": "^2.0.0",
-    "react": "^18.2.0",
     "react-color": "^2.19.3",
-    "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "redux": "^4.2.1",
     "styled-components": "^5.3.9"

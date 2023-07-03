@@ -1,11 +1,20 @@
 {
   "name": "@rxdrag/react-fieldy",
   "version": "1.1.0",
-  "main": "index.ts",
-  "types": "./index.ts",
+  "type": "module",
+  "module": "index.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "module": "dist/index.mjs",
+    "typings": "dist/index.d.ts",
+    "access": "public"
+  },
   "license": "MIT",
   "scripts": {
     "lint": "eslint \"**/*.ts\"",
+    "build": "vite build",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
@@ -13,13 +22,13 @@
     "@types/react-dom": "^18.0.11",
     "eslint": "^7.32.0",
     "@rxdrag/eslint-config-custom": "workspace:*",
-    "@rxdrag/tsconfig": "workspace:*",
-    "typescript": "^4.9.4"
+    "@rxdrag/tsconfig": "workspace:*"
   },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.1"
+    "react-router-dom": "^6.8.1",
+    "typescript": "^4.9.4"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",

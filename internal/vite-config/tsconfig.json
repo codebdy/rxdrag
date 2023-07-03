@@ -1,0 +1,5 @@
+{
+  "extends": "@rxdrag/tsconfig/vite.json",
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
+}

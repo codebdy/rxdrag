@@ -1,12 +1,20 @@
 {
   "name": "@rxdrag/react-locales",
   "version": "1.1.0",
-  "main": "index.ts",
-  "types": "./index.ts",
-  "license": "MIT",
+  "type": "module",
+  "module": "index.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "module": "dist/index.mjs",
+    "typings": "dist/index.d.ts",
+    "access": "public"
+  },
   "scripts": {
     "lint": "eslint \"**/*.ts\"",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "build": "vite build"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
@@ -14,7 +22,8 @@
     "eslint": "^7.32.0",
     "@rxdrag/eslint-config-custom": "workspace:*",
     "@rxdrag/tsconfig": "workspace:*",
-    "typescript": "^4.9.4"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -25,8 +34,6 @@
     "@rxdrag/shared": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "lodash": "^4.17.21",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "redux": "^4.2.1",
     "styled-components": "^5.3.9"
   }

@@ -1,17 +1,26 @@
 {
   "name": "@rxdrag/react-antd-props-inputs",
   "version": "1.1.0",
-  "main": "index.ts",
-  "types": "./index.ts",
-  "license": "MIT",
+  "module": "index.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "module": "dist/index.mjs",
+    "typings": "dist/index.d.ts",
+    "access": "public"
+  },
   "scripts": {
     "lint": "eslint \"**/*.ts\"",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "build": "vite build"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "eslint": "^7.32.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "@rxdrag/eslint-config-custom": "workspace:*",
     "@rxdrag/tsconfig": "workspace:*",
     "@types/lodash": "^4.14.191",
@@ -32,15 +41,11 @@
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/schema": "workspace:^1.1.0",
     "@rxdrag/shared": "workspace:*",
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
     "antd": "^5.6.2",
     "lodash": "^4.17.21",
     "classnames": "^2.3.2",
     "css-border-property": "^1.1.0",
-    "react": "^18.2.0",
     "react-color": "^2.19.3",
-    "react-dom": "^18.2.0",
     "styled-components": "^5.3.9"
   }
 }
