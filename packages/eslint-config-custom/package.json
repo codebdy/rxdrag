@@ -15,5 +15,9 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-turbo": "latest",
     "eslint-plugin-cypress": "^2.12.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
