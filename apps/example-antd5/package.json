@@ -2,11 +2,11 @@
   "name": "example-antd5",
   "private": true,
   "version": "1.1.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf build"
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
