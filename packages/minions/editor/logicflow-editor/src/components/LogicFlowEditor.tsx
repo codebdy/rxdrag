@@ -12,6 +12,13 @@ import { Toolbox } from "./Toolbox";
 import { PropertyBox } from "./PropertyBox";
 import { IActivityMaterial, ILogicFlowDefinition } from "@rxdrag/minions-schema";
 
+const EditorShell = styled.div`
+  display: flex;
+  flex:1;
+  width: 100%;
+  height: 100%;
+`
+
 const CenterArea = styled.div`
   position: relative;
   flex:1;
@@ -109,32 +116,34 @@ export const LogicFlowEditor = memo((
           <CanBeReferencedLogicFlowMetasContext.Provider value={canBeReferencedLogflowMetas || []}>
             <GraphContext.Provider value={graph}>
               <LogicFlowEditorStoreContext.Provider value={store}>
-                <CenterArea>
-                  <Toolbar>
-                    {toolbar}
-                  </Toolbar>
-                  <OpeateArea>
-                    <Toolbox>
-                      {toolbox}
-                    </Toolbox>
-                    <CanvasArea>
-                      <CanvasContainer id="reactions-canvas-container" >
-                        <Logic onChange={handleChange} />
-                      </CanvasContainer>
-                      <MiniMapContainer
-                        id="reactions-minimap-container"
-                        style={{
-                          display: showMap ? "flex" : "none"
-                        }}
-                      />
-                    </CanvasArea>
-                  </OpeateArea>
-                </CenterArea>
-                <RightArea>
-                  <PropertyBox>
-                    {propertyBox}
-                  </PropertyBox>
-                </RightArea>
+                <EditorShell>
+                  <CenterArea>
+                    <Toolbar>
+                      {toolbar}
+                    </Toolbar>
+                    <OpeateArea>
+                      <Toolbox>
+                        {toolbox}
+                      </Toolbox>
+                      <CanvasArea>
+                        <CanvasContainer id="reactions-canvas-container" >
+                          <Logic onChange={handleChange} />
+                        </CanvasContainer>
+                        <MiniMapContainer
+                          id="reactions-minimap-container"
+                          style={{
+                            display: showMap ? "flex" : "none"
+                          }}
+                        />
+                      </CanvasArea>
+                    </OpeateArea>
+                  </CenterArea>
+                  <RightArea>
+                    <PropertyBox>
+                      {propertyBox}
+                    </PropertyBox>
+                  </RightArea>
+                </EditorShell>
               </LogicFlowEditorStoreContext.Provider>
             </GraphContext.Provider>
           </CanBeReferencedLogicFlowMetasContext.Provider>

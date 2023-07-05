@@ -35,6 +35,7 @@ export const Antd5Example = memo(() => {
           style={{
             flex: 1,
             height: '100%',
+            display: "flex",
           }}
         >
           <ControllerMetaEditorAntd5
