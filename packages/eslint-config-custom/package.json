@@ -2,6 +2,7 @@
   "name": "@rxdrag/eslint-config-custom",
   "author": "Water.Li",
   "version": "1.1.0",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"

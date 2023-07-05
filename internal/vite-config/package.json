@@ -4,6 +4,7 @@
   "license": "MIT",
   "type": "module",
   "module": "index.ts",
+  "private": true,
   "files": [
     "dist"
   ],
