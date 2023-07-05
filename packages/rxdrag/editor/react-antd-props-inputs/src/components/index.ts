@@ -1,5 +1,4 @@
 export * from "./BackgroundImageInput"
-export * from "./border"
 export * from "./CheckboxGroup"
 export * from "./ColInput"
 export * from "./CollapsePanel"

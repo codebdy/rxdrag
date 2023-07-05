@@ -125,9 +125,6 @@ importers:
       classnames:
         specifier: ^2.3.2
         version: 2.3.2
-      css-border-property:
-        specifier: ^1.1.0
-        version: 1.1.0
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -1250,22 +1247,22 @@ importers:
         specifier: ^4.4.6
         version: 4.5.1(monaco-editor@0.39.0)(react-dom@18.2.0)(react@18.2.0)
       '@rxdrag/react-antd-components':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../runtime/react-antd-components
       '@rxdrag/react-antd-icons':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../../react-antd-icons
       '@rxdrag/react-core':
         specifier: workspace:*
         version: link:../react-core
       '@rxdrag/react-runner':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../runtime/react-runner
       '@rxdrag/react-shared':
         specifier: workspace:*
         version: link:../../../react-shared
       '@rxdrag/schema':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../schema
       '@rxdrag/shared':
         specifier: workspace:*
@@ -1276,9 +1273,6 @@ importers:
       classnames:
         specifier: ^2.3.2
         version: 2.3.2
-      css-border-property:
-        specifier: ^1.1.0
-        version: 1.1.0
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -1474,7 +1468,7 @@ importers:
         specifier: workspace:*
         version: link:../../../locales/locales-react
       '@rxdrag/react-runner':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../runtime/react-runner
       '@rxdrag/react-shared':
         specifier: workspace:*
@@ -1617,7 +1611,7 @@ importers:
         specifier: workspace:*
         version: link:../../../fieldy/schema
       '@rxdrag/locales':
-        specifier: workspace:^1.1.0
+        specifier: workspace:*
         version: link:../../../locales/locales
       '@rxdrag/minions-runtime':
         specifier: workspace:*
@@ -4329,21 +4323,9 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  /css-border-property@1.1.0:
-    resolution: {integrity: sha512-sBpT80FFCDkTGLBl0xudyXv2VxnlTghviHNTg1f43ifH2QQ8xqBq8yK7f+IkaCC1xfjJtzND4giLk+b7A1k9nw==}
-    dependencies:
-      is-border-style: 0.1.0
-      is-color: 0.2.0
-      is-css-length: 0.1.0
-    dev: false
-
   /css-color-keywords@1.0.0:
     resolution: {integrity: sha1-/qJhbcZ2spYmhrOvjb2+GAskTgU=}
     engines: {node: '>=4'}
-    dev: false
-
-  /css-color-names@0.0.1:
-    resolution: {integrity: sha1-XQVI+iVkVu3kqaDCrHqxnT6xrYE=}
     dev: false
 
   /css-select@4.3.0:
@@ -5319,7 +5301,7 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       chardet: 0.7.0
-      iconv-lite: registry.npmmirror.com/iconv-lite@0.4.24
+      iconv-lite: 0.4.24
       tmp: 0.0.33
     dev: true
 
@@ -5505,7 +5487,7 @@ packages:
     dependencies:
       graceful-fs: registry.npmmirror.com/graceful-fs@4.2.11
       jsonfile: 4.0.0
-      universalify: registry.npmmirror.com/universalify@0.1.2
+      universalify: 0.1.2
     dev: true
 
   /fs-extra@8.1.0:
@@ -5762,10 +5744,6 @@ packages:
       tslib: 2.6.0
     dev: true
 
-  /hex-color-regex@1.1.0:
-    resolution: {integrity: sha1-TAb8y0YC/iYCs8k9+C1+fb8aio4=}
-    dev: false
-
   /hoist-non-react-statics@3.3.2:
     resolution: {integrity: sha1-7OCsr3HWLClpwuxZ/v9CpLGoW0U=}
     dependencies:
@@ -5781,14 +5759,6 @@ packages:
   /hosted-git-info@2.8.9:
     resolution: {integrity: sha1-3/wL+aIcAiCQkPKqaUKeFBTa8/k=}
     dev: true
-
-  /hsl-regex@1.0.0:
-    resolution: {integrity: sha1-1JMwx4ntgZ4nakwNJy3/owsY/m4=}
-    dev: false
-
-  /hsla-regex@1.0.0:
-    resolution: {integrity: sha1-wc56MWjIxmFAM6S194d/OyJfnDg=}
-    dev: false
 
   /html-encoding-sniffer@3.0.0:
     resolution: {integrity: sha512-oWv4T4yJ52iKrufjnyZPkrN0CH3QnrUqdB6In1g5Fe1mia8GmF36gnfNySxoZtxD5+NmYw1EElVXiBk93UeskA==}
@@ -5839,6 +5809,13 @@ packages:
   /human-signals@4.3.1:
     resolution: {integrity: sha512-nZXjEF2nbo7lIw3mgYjItAfgQXog3OjJogSbKa2CQIIvSGWcKgeJnQlNXip6NglNzYH45nSRiEVimMvYL8DDqQ==}
     engines: {node: '>=14.18.0'}
+    dev: true
+
+  /iconv-lite@0.4.24:
+    resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      safer-buffer: 2.1.2
     dev: true
 
   /iconv-lite@0.6.3:
@@ -5993,10 +5970,6 @@ packages:
       has-tostringtag: 1.0.0
     dev: true
 
-  /is-border-style@0.1.0:
-    resolution: {integrity: sha512-COesmTDmYNVfJmJa9n85jApsTBaEtpDyHHwaPQBsg2oK6MQG6HYv/QHZ1CgLTklDWLSu2XPDkXg1GpDMq3ZBaQ==}
-    dev: false
-
   /is-callable@1.2.7:
     resolution: {integrity: sha512-1BC0BVFhS/p0qtw6enp8e+8OD0UrK0oFLztSjNzhcKA3WDuJxxAPXzPuPtKkjEY9UUoEWlX/8fgKeu2S8i9JTA==}
     engines: {node: '>= 0.4'}
@@ -6009,26 +5982,11 @@ packages:
       ci-info: 3.8.0
     dev: true
 
-  /is-color@0.2.0:
-    resolution: {integrity: sha512-fFLHwdv4tpXN4eHzsqPnBauTkP9HRutdORVfWXz7EFVdWK3oXZqsKISxDUlLZbGo4K2y2CynZwD6tOcAWM3V0w==}
-    dependencies:
-      css-color-names: 0.0.1
-      hex-color-regex: 1.1.0
-      hsl-regex: 1.0.0
-      hsla-regex: 1.0.0
-      rgb-regex: 1.0.1
-      rgba-regex: 1.0.0
-    dev: false
-
   /is-core-module@2.12.1:
     resolution: {integrity: sha512-Q4ZuBAe2FUsKtyQJoQHlvP8OvBERxO3jEmy1I7hcRXcJBGGHFh/aJBswbXuS9sgrDH2QUO8ilkwNPHvHMd8clg==}
     dependencies:
       has: 1.0.3
     dev: true
-
-  /is-css-length@0.1.0:
-    resolution: {integrity: sha512-mvYc1SiEIoAL1pKgg8rN5dL7Lijy1wgrbXk2VwwS9u2XSppGf+IPloeAUvq/U5UPAgqIB+gDdjjwyQOvfGtJFQ==}
-    dev: false
 
   /is-date-object@1.0.5:
     resolution: {integrity: sha1-CEHVU25yTCVZe/bqYuG9OCmN8x8=}
@@ -8179,14 +8137,6 @@ packages:
     resolution: {integrity: sha1-0LfEQasnINBdxM8m4ByJYx2doIs=}
     dev: true
 
-  /rgb-regex@1.0.1:
-    resolution: {integrity: sha1-wODWiC3w4jviVKR16O3UGRX+rrE=}
-    dev: false
-
-  /rgba-regex@1.0.0:
-    resolution: {integrity: sha1-QzdOLiyglosO8VI0YLfXMP8i7rM=}
-    dev: false
-
   /rimraf@3.0.2:
     resolution: {integrity: sha1-8aVAK6YiCtUswSgrrBrjqkn9Bho=}
     hasBin: true
@@ -8427,7 +8377,7 @@ packages:
     dev: true
 
   /source-map@0.6.1:
-    resolution: {integrity: sha1-dHIq8y6WFOnCh6jQu95IteLxomM=}
+    resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
 
   /source-map@0.7.4:
@@ -9585,15 +9535,6 @@ packages:
     version: 4.2.11
     dev: true
 
-  registry.npmmirror.com/iconv-lite@0.4.24:
-    resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/iconv-lite/-/iconv-lite-0.4.24.tgz}
-    name: iconv-lite
-    version: 0.4.24
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      safer-buffer: 2.1.2
-    dev: true
-
   registry.npmmirror.com/ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/ms/-/ms-2.1.2.tgz}
     name: ms
@@ -9604,11 +9545,4 @@ packages:
     name: source-map
     version: 0.6.1
     engines: {node: '>=0.10.0'}
-    dev: true
-
-  registry.npmmirror.com/universalify@0.1.2:
-    resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/universalify/-/universalify-0.1.2.tgz}
-    name: universalify
-    version: 0.1.2
-    engines: {node: '>= 4.0.0'}
     dev: true
