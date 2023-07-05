@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/minions-react-antd5-activites",
-  "version": "1.0.0",
+  "version": "0.2.2",
   "module": "index.ts",
   "files": [
     "dist"

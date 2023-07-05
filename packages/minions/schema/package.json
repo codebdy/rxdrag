@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/minions-schema",
-  "version": "1.0.0",
+  "version": "0.2.2",
   "author": "Water.Li",
   "module": "index.ts",
   "files": [

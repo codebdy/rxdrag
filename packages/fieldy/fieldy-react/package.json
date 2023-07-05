@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/react-fieldy",
-  "version": "1.1.0",
+  "version": "0.2.2",
   "type": "module",
   "module": "index.ts",
   "files": [
