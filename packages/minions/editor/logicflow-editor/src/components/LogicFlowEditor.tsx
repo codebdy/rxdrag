@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { memo, useCallback, useEffect, useMemo } from "react"
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { ActionType, SetMetasAction } from "../actions";
 import { EditorStore } from "../classes/EditorStore";
 import { CanBeReferencedLogicFlowMetasContext, GraphContext, LogicFlowContext, LogicFlowEditorStoreContext, MaterialsContext, ThemeTokenContext } from "../contexts"
@@ -108,47 +108,55 @@ export const LogicFlowEditor = memo((
   const handleChange = useCallback((newMetas: ILogicMetas) => {
     onChange?.(newMetas)
   }, [onChange])
+  
+  const theme: { token: IThemeToken } = useMemo(() => {
+    return {
+      token
+    }
+  }, [token])
 
   return (
-    <LogicFlowContext.Provider value={logicFlowContext}>
-      <ThemeTokenContext.Provider value={token}>
-        <MaterialsContext.Provider value={materials}>
-          <CanBeReferencedLogicFlowMetasContext.Provider value={canBeReferencedLogflowMetas || []}>
-            <GraphContext.Provider value={graph}>
-              <LogicFlowEditorStoreContext.Provider value={store}>
-                <EditorShell>
-                  <CenterArea>
-                    <Toolbar>
-                      {toolbar}
-                    </Toolbar>
-                    <OpeateArea>
-                      <Toolbox>
-                        {toolbox}
-                      </Toolbox>
-                      <CanvasArea>
-                        <CanvasContainer id="reactions-canvas-container" >
-                          <Logic onChange={handleChange} />
-                        </CanvasContainer>
-                        <MiniMapContainer
-                          id="reactions-minimap-container"
-                          style={{
-                            display: showMap ? "flex" : "none"
-                          }}
-                        />
-                      </CanvasArea>
-                    </OpeateArea>
-                  </CenterArea>
-                  <RightArea>
-                    <PropertyBox>
-                      {propertyBox}
-                    </PropertyBox>
-                  </RightArea>
-                </EditorShell>
-              </LogicFlowEditorStoreContext.Provider>
-            </GraphContext.Provider>
-          </CanBeReferencedLogicFlowMetasContext.Provider>
-        </MaterialsContext.Provider>
-      </ThemeTokenContext.Provider>
-    </LogicFlowContext.Provider>
+    <ThemeProvider theme={theme}>
+      <LogicFlowContext.Provider value={logicFlowContext}>
+        <ThemeTokenContext.Provider value={token}>
+          <MaterialsContext.Provider value={materials}>
+            <CanBeReferencedLogicFlowMetasContext.Provider value={canBeReferencedLogflowMetas || []}>
+              <GraphContext.Provider value={graph}>
+                <LogicFlowEditorStoreContext.Provider value={store}>
+                  <EditorShell>
+                    <CenterArea>
+                      <Toolbar>
+                        {toolbar}
+                      </Toolbar>
+                      <OpeateArea>
+                        <Toolbox>
+                          {toolbox}
+                        </Toolbox>
+                        <CanvasArea>
+                          <CanvasContainer id="reactions-canvas-container" >
+                            <Logic onChange={handleChange} />
+                          </CanvasContainer>
+                          <MiniMapContainer
+                            id="reactions-minimap-container"
+                            style={{
+                              display: showMap ? "flex" : "none"
+                            }}
+                          />
+                        </CanvasArea>
+                      </OpeateArea>
+                    </CenterArea>
+                    <RightArea>
+                      <PropertyBox>
+                        {propertyBox}
+                      </PropertyBox>
+                    </RightArea>
+                  </EditorShell>
+                </LogicFlowEditorStoreContext.Provider>
+              </GraphContext.Provider>
+            </CanBeReferencedLogicFlowMetasContext.Provider>
+          </MaterialsContext.Provider>
+        </ThemeTokenContext.Provider>
+      </LogicFlowContext.Provider>
+    </ThemeProvider>
   )
 })

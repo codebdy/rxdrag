@@ -1884,7 +1884,7 @@ packages:
       '@babel/traverse': 7.22.5(supports-color@5.5.0)
       '@babel/types': 7.22.5
       convert-source-map: 1.9.0
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       gensync: 1.0.0-beta.2
       json5: 2.2.3
       semver: 6.3.0
@@ -2067,7 +2067,7 @@ packages:
       '@babel/helper-split-export-declaration': 7.22.5
       '@babel/parser': 7.22.5
       '@babel/types': 7.22.5
-      debug: registry.npmmirror.com/debug@4.3.4(supports-color@5.5.0)
+      debug: 4.3.4(supports-color@5.5.0)
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -2493,7 +2493,7 @@ packages:
     engines: {node: ^10.12.0 || >=12.0.0}
     dependencies:
       ajv: 6.12.6
-      debug: registry.npmmirror.com/debug@4.3.4(supports-color@5.5.0)
+      debug: registry.npmmirror.com/debug@4.3.4
       espree: 7.3.1
       globals: 13.20.0
       ignore: 4.0.6
@@ -2510,7 +2510,7 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
       ajv: 6.12.6
-      debug: registry.npmmirror.com/debug@4.3.4(supports-color@5.5.0)
+      debug: registry.npmmirror.com/debug@4.3.4
       espree: 9.6.0
       globals: 13.20.0
       ignore: 5.2.4
@@ -2532,7 +2532,7 @@ packages:
     engines: {node: '>=10.10.0'}
     dependencies:
       '@humanwhocodes/object-schema': 1.2.1
-      debug: registry.npmmirror.com/debug@4.3.4(supports-color@5.5.0)
+      debug: registry.npmmirror.com/debug@4.3.4
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
@@ -2543,7 +2543,7 @@ packages:
     engines: {node: '>=10.10.0'}
     dependencies:
       '@humanwhocodes/object-schema': 1.2.1
-      debug: registry.npmmirror.com/debug@4.3.4(supports-color@5.5.0)
+      debug: registry.npmmirror.com/debug@4.3.4
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
@@ -3309,7 +3309,7 @@ packages:
       '@typescript-eslint/scope-manager': 5.60.1
       '@typescript-eslint/type-utils': 5.60.1(eslint@8.44.0)(typescript@4.9.5)
       '@typescript-eslint/utils': 5.60.1(eslint@8.44.0)(typescript@4.9.5)
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       eslint: 8.44.0
       grapheme-splitter: 1.0.4
       ignore: 5.2.4
@@ -3334,7 +3334,7 @@ packages:
       '@typescript-eslint/scope-manager': 5.60.1
       '@typescript-eslint/types': 5.60.1
       '@typescript-eslint/typescript-estree': 5.60.1(typescript@4.9.5)
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       eslint: 8.44.0
       typescript: 4.9.5
     transitivePeerDependencies:
@@ -3361,7 +3361,7 @@ packages:
     dependencies:
       '@typescript-eslint/typescript-estree': 5.60.1(typescript@4.9.5)
       '@typescript-eslint/utils': 5.60.1(eslint@8.44.0)(typescript@4.9.5)
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       eslint: 8.44.0
       tsutils: 3.21.0(typescript@4.9.5)
       typescript: 4.9.5
@@ -3385,7 +3385,7 @@ packages:
     dependencies:
       '@typescript-eslint/types': 5.60.1
       '@typescript-eslint/visitor-keys': 5.60.1
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.5.3
@@ -3627,7 +3627,7 @@ packages:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4421,7 +4421,7 @@ packages:
       ms: 2.1.3
     optional: true
 
-  /debug@4.3.4:
+  /debug@4.3.4(supports-color@5.5.0):
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
     engines: {node: '>=6.0'}
     peerDependencies:
@@ -4431,6 +4431,7 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
+      supports-color: 5.5.0
 
   /decamelize-keys@1.1.1:
     resolution: {integrity: sha512-WiPxgEirIV0/eIOMcnFBA3/IJZAZqKnwAwWyvvdi4lsr1WCN22nhdf/3db3DoZcUjTV2SqfzIwNyp6y2xs3nmg==}
@@ -5112,7 +5113,7 @@ packages:
       ajv: 6.12.6
       chalk: 4.1.2
       cross-spawn: 7.0.3
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       doctrine: 3.0.0
       enquirer: 2.3.6
       escape-string-regexp: 4.0.0
@@ -5165,7 +5166,7 @@ packages:
       ajv: 6.12.6
       chalk: 4.1.2
       cross-spawn: 7.0.3
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       doctrine: 3.0.0
       escape-string-regexp: 4.0.0
       eslint-scope: 7.2.0
@@ -5787,7 +5788,7 @@ packages:
     dependencies:
       '@tootallnate/once': 2.0.0
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -5797,7 +5798,7 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6463,7 +6464,7 @@ packages:
       chalk: 5.2.0
       cli-truncate: 3.1.0
       commander: 10.0.1
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       execa: 7.1.1
       lilconfig: 2.1.0
       listr2: 5.0.8
@@ -9045,7 +9046,7 @@ packages:
       vite: '>=2.0.0'
     dependencies:
       chalk: 4.1.2
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       fs-extra: 10.1.0
       vite: 4.3.9(@types/node@18.16.19)(less@4.1.3)
     transitivePeerDependencies:
@@ -9062,7 +9063,7 @@ packages:
       '@microsoft/api-extractor': 7.36.0(@types/node@18.16.19)
       '@rollup/pluginutils': 5.0.2
       '@rushstack/node-core-library': 3.59.4(@types/node@18.16.19)
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       fast-glob: 3.3.0
       fs-extra: 10.1.0
       kolorist: 1.8.0
@@ -9106,7 +9107,7 @@ packages:
       chalk: 4.1.2
       chokidar: 3.5.3
       connect: 3.7.0
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       esbuild: 0.14.54
       fast-glob: 3.3.0
       mockjs: 1.1.0
@@ -9135,7 +9136,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       globrex: 0.1.2
       tsconfck: 2.1.1(typescript@4.9.5)
       vite: 4.3.9(@types/node@18.16.19)(less@4.1.3)
@@ -9205,7 +9206,7 @@ packages:
       acorn: 8.9.0
       acorn-walk: 8.2.0
       chai: 4.3.7
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@5.5.0)
       jsdom: 22.1.0
       local-pkg: 0.4.3
       source-map: 0.6.1
@@ -9514,9 +9515,8 @@ packages:
       commander: 9.5.0
     dev: true
 
-  registry.npmmirror.com/debug@4.3.4(supports-color@5.5.0):
+  registry.npmmirror.com/debug@4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/debug/-/debug-4.3.4.tgz}
-    id: registry.npmmirror.com/debug/4.3.4
     name: debug
     version: 4.3.4
     engines: {node: '>=6.0'}
@@ -9527,7 +9527,6 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
-      supports-color: 5.5.0
 
   registry.npmmirror.com/graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/graceful-fs/-/graceful-fs-4.2.11.tgz}

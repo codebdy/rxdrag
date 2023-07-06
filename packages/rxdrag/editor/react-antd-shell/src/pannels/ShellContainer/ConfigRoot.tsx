@@ -2,9 +2,9 @@ import { useThemeMode } from "@rxdrag/react-core"
 import { ConfigProvider, theme } from "antd"
 import { memo } from "react"
 
-export const ConfigRoot = memo((
-  props:{
-    children?:React.ReactNode
+export const ConfigRoot: React.FC<{ children?: React.ReactNode }> = memo((
+  props: {
+    children?: React.ReactNode
   }
 ) => {
   const themeMode = useThemeMode()

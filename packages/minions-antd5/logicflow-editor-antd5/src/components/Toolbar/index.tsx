@@ -11,7 +11,6 @@ const StyledToolbar = styled.div`
   height: 40px;
   align-items: center;
   width: 100%;
-  border-bottom: ${props => props.theme.token?.colorBorder} solid 1px;
 `
 
 const ToolbarButton = styled((props) => <Button type="text" size="small" {...props} />)`
@@ -58,7 +57,7 @@ export const Toolbar = memo((
   }, [setZoom])
 
   return (
-    <StyledToolbar>
+    <StyledToolbar className="logicflow-editor-antd5-toolbar">
       <Space>
         <ToolbarButton
           disabled={!undoList.length}
