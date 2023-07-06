@@ -1,14 +1,14 @@
 import { IActivity, IActivityJointers } from "../interfaces";
 import { ActivityJointers } from "./ActivityJointer";
 import { Jointer } from "./Jointer";
-import { ActivityType, ILogicFlowDefinition } from "@rxdrag/minions-schema"
+import { ActivityType, ILogicFlowDefine } from "@rxdrag/minions-schema"
 import { activities } from "./activities";
 
 export class LogicFlow<LogicFlowContext = unknown> {
   id: string;
   jointers: IActivityJointers = new ActivityJointers();
   activities: IActivity[] = [];
-  constructor(private flowMeta: ILogicFlowDefinition, private context: LogicFlowContext) {
+  constructor(private flowMeta: ILogicFlowDefine, private context: LogicFlowContext) {
 
     //注意这个id的处理
     this.id = flowMeta.id
@@ -60,6 +60,7 @@ export class LogicFlow<LogicFlowContext = unknown> {
             //把input端口跟处理函数相连
             for (const inputName of Object.keys(activityInfo.methodMap)) {
               const handleName = activityInfo.methodMap[inputName]
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const handle = (activity as any)?.[handleName];
               const handleWithThis = handle?.bind(activity);
               handleName && activity.jointers.getInput(inputName)?.connect(handleWithThis)
@@ -67,6 +68,7 @@ export class LogicFlow<LogicFlowContext = unknown> {
 
             //处理动态端口
             if (activityInfo.dynamicMethod) {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const handle = (activity as any)?.[activityInfo.dynamicMethod];
               const handleWithThis = handle?.bind(activity);
 

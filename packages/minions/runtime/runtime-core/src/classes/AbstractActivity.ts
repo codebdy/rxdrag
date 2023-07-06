@@ -12,9 +12,10 @@ export abstract class AbstractActivity<ConfigMeta = unknown, LogicFlowContext = 
     this.config = meta.config;
   }
   destory = () => {
+    //
   }
 
-  next = (inputValue: unknown, outputName: string = "output") => {
+  next = (inputValue: unknown, outputName = "output") => {
     this.jointers.getOutput(outputName)?.push(inputValue)
   }
 }

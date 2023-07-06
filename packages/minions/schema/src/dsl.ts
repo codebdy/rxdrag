@@ -39,7 +39,7 @@ export interface ILineDefine {
   target: IPortRefDefine;
 }
 
-export interface ILogicFlowDefinition {
+export interface ILogicFlowDefine {
   id: string;
   name?: string;
   label?: string;
