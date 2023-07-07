@@ -2,7 +2,7 @@ import { ReactNode, memo, useCallback, useMemo, useState } from "react"
 import { Toolbox, PropertyBox, Toolbar } from "./components"
 import { useTransMaterialCategorys } from "./hooks/useTransMaterialCategorys"
 import { ILogicMetas, IThemeToken, LogicFlowEditor } from "@rxdrag/minions-logicflow-editor"
-import { ActivityMaterialCategory, IActivityMaterial, ILogicFlowDefinition } from "@rxdrag/minions-schema"
+import { ActivityMaterialCategory, IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema"
 import { useToken } from "antd/es/theme/internal"
 import { IComponents } from "@rxdrag/react-shared"
 import { ThemeProvider } from "styled-components"
@@ -13,7 +13,7 @@ export type LogicFlowEditorAntd5InnerProps = {
   materialCategories: ActivityMaterialCategory<ReactNode>[],
   setters?: IComponents,
   logicFlowContext?: unknown,
-  canBeReferencedLogflowMetas?: ILogicFlowDefinition[],
+  canBeReferencedLogflowMetas?: ILogicFlowDefine[],
   token?: IThemeToken,
 }
 

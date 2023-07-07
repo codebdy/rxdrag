@@ -2,7 +2,7 @@
 import { Controllers, ControllerFactory } from "../interfaces/controller";
 import { IControllerMeta, ILogicFlowControllerMeta } from "../interfaces";
 import { IActivity, LogicFlow } from "@rxdrag/minions-runtime";
-import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
+import { ILogicFlowDefine } from "@rxdrag/minions-schema";
 import { AbstractController } from "./AbstractController";
 
 export const INIT_EVENT_NAME = "init"
@@ -54,7 +54,7 @@ export class LogicFlowController extends AbstractController {
     this.activites = []
     this.events = {}
   }
-  private makeReaction = (reactionMeta: ILogicFlowDefinition, controllers: Controllers, flowContext: unknown) => {
+  private makeReaction = (reactionMeta: ILogicFlowDefine, controllers: Controllers, flowContext: unknown) => {
     const context = {
       ...flowContext as any,
       variableController: this,

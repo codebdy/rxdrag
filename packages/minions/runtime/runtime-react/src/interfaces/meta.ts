@@ -1,4 +1,4 @@
-import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
+import { ILogicFlowDefine } from "@rxdrag/minions-schema";
 
 export interface IVariableDefineMeta {
   id: string;
@@ -19,8 +19,8 @@ export interface IControllerMeta {
 
 //逻辑编排控制器
 export interface ILogicFlowControllerMeta extends IControllerMeta {
-  events?: ILogicFlowDefinition[];
-  reactions?: ILogicFlowDefinition[];
+  events?: ILogicFlowDefine[];
+  reactions?: ILogicFlowDefine[];
   variables?: IVariableDefineMeta[];
   //需要配置
   props?: string[];

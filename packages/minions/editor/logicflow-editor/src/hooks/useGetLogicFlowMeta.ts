@@ -1,9 +1,9 @@
-import { ILogicFlowDefinition } from "@rxdrag/minions-schema";
+import { ILogicFlowDefine } from "@rxdrag/minions-schema";
 import { useCallback } from "react";
 import { useCanBeReferencedLogicFlowMetas } from "./useCanBeReferencedLogicFlowMetas";
 
 export function useGetLogicFlowMeta() {
-  const logicFlowMetas:ILogicFlowDefinition[] = useCanBeReferencedLogicFlowMetas();
+  const logicFlowMetas:ILogicFlowDefine[] = useCanBeReferencedLogicFlowMetas();
 
   const getLogicFlowMeta = useCallback((id: string) => {
     return logicFlowMetas.find(meta => meta.id === id)

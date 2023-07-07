@@ -10,7 +10,7 @@ import { ILogicMetas, IThemeToken } from "../interfaces";
 import { Toolbar } from "./Toolbar";
 import { Toolbox } from "./Toolbox";
 import { PropertyBox } from "./PropertyBox";
-import { IActivityMaterial, ILogicFlowDefinition } from "@rxdrag/minions-schema";
+import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
 
 const EditorShell = styled.div`
   display: flex;
@@ -87,7 +87,7 @@ export const LogicFlowEditor = memo((
     materials: IActivityMaterial<ReactNode>[],
     token: IThemeToken,
     logicFlowContext?: unknown,
-    canBeReferencedLogflowMetas?: ILogicFlowDefinition[]
+    canBeReferencedLogflowMetas?: ILogicFlowDefine[]
   }
 ) => {
   const { value, onChange, toolbox, toolbar, propertyBox, showMap, materials, token, logicFlowContext, canBeReferencedLogflowMetas } = props
