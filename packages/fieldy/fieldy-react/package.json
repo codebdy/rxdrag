@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "lint": "eslint \"**/*.ts\"",
+    "lint": "eslint . --ext .ts,.tsx",
     "build": "vite build",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
