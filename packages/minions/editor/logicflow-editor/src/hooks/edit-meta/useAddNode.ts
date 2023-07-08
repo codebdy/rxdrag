@@ -19,6 +19,7 @@ export function useAddNode() {
     const newData = {
       ...meta,
       id: node.id,
+      parentId: node.getParentId(),
       x6Node: {
         x: node.getPosition().x,
         y: node.getPosition().y,

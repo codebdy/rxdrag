@@ -25,6 +25,7 @@ export function useEditEdge() {
         nodeId: (edge.getTarget() as any).cell,
         portId: (edge.getTarget() as any).port,
       },
+      parentId: edge.getParentId()
     }
     //graph?.select(edge.id)
     dispatch?.({

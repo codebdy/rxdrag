@@ -41,6 +41,7 @@ export function useMovedNode() {
       payload: {
         ...meta,
         id: node.id,
+        parentId: node.getParentId(),
         x6Node: {
           x: node.getPosition().x,
           y: node.getPosition().y,
@@ -60,6 +61,7 @@ export function useMovedNode() {
           payload: {
             ...meta,
             id: child.id,
+            parentId: child.getParentId(),
             x6Node: {
               x: child.getPosition().x,
               y: child.getPosition().y,

@@ -28,6 +28,9 @@ export interface IActivityDefine<ConfigMeta = unknown> {
   config?: ConfigMeta;
   inPorts?: IPortDefine[];
   outPorts?: IPortDefine[];
+
+  //父节点，嵌入子编排用
+  parentId?: string;
 }
 
 export interface IPortRefDefine {
@@ -39,6 +42,8 @@ export interface ILineDefine {
   id: string;
   source: IPortRefDefine;
   target: IPortRefDefine;
+  //父节点，嵌入子编排用
+  parentId?: string;
 }
 
 export interface ILogicFlowMetas {
