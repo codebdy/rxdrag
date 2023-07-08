@@ -28,6 +28,36 @@ export function useCreateGraph(token: IThemeToken) {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       container: document.getElementById("reactions-canvas-container")!,
       ...config,
+      //子节点处理
+      embedding: {
+        enabled: true,
+        findParent({ node }) {
+          const bbox = node.getBBox()
+          return this.getNodes().filter((node) => {
+            const data = node.getData<{ parent: boolean }>()
+            if (data && data.parent) {
+              const targetBBox = node.getBBox()
+              return bbox.isIntersectWithRect(targetBBox)
+            }
+            return false
+          })
+        },
+      },
+      //限制嵌套节点的移动
+      translating: {
+        restrict(view) {
+          if (view) {
+            const cell = view.cell
+            if (cell.isNode()) {
+              const parent = cell.getParent()
+              if (parent) {
+                return parent.getBBox()
+              }
+            }
+          }
+          return null
+        },
+      },
       interacting: () => {
         return { nodeMovable: true, edgeLabelMovable: false };
       },

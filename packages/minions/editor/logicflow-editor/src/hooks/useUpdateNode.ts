@@ -18,15 +18,17 @@ export function useUpdateNode() {
       const subLabel = getSubLabel(nodeMeta)
       const height = getHeight(nodeMeta, !!subLabel)
       const ports = transPorts(nodeMeta)
-      graphNode.replaceData({ 
-        ...graphNode.data, 
-        meta: nodeMeta, 
-        subLabel, 
+      graphNode.replaceData({
+        ...graphNode.data,
+        meta: nodeMeta,
+        subLabel,
         height: height,
         inputCounts: nodeMeta.inPorts?.length || ports.filter(port => port.group === 'in').length,
         outputCounts: nodeMeta.outPorts?.length || ports.filter(port => port.group === 'out').length,
-       })
-      if (nodeMeta.type === ActivityType.Start || nodeMeta.type === ActivityType.End) {
+      })
+      if (nodeMeta.type === ActivityType.Start ||
+        nodeMeta.type === ActivityType.End ||
+        nodeMeta.type === ActivityType.EmbeddedFlow) {
         graphNode.attr("text/text", nodeMeta.label)
       } else {
         graphNode.setSize({ ...nodeMeta.x6Node, width: getNodeWidth(nodeMeta, subLabel), height: height });

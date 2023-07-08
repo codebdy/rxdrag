@@ -8,12 +8,14 @@ import { IActivityNode } from "../interfaces";
 import { ActivityType } from "@rxdrag/minions-schema";
 import { useThemeToken } from "./useThemeToken";
 import { useGetLogicFlowNodeConfig } from "./useGetLogicFlowNodeConfig";
+import { useGetGroupNodeConfig } from "./useGetGroupNodeConfig";
 
 export function useGetNodeConfig() {
   const getMaterial = useGetMaterial();
   const getSingleNodeConfig = useGetSingleNodeConfig()
   const token = useThemeToken()
   const getLogicFlowNodeConfig = useGetLogicFlowNodeConfig(token)
+  const getGroupNodeConfig = useGetGroupNodeConfig(token)
 
   const getConfig = useCallback((reactNodeMeta: IActivityNode): Node.Metadata => {
     switch (reactNodeMeta.type) {
@@ -25,6 +27,8 @@ export function useGetNodeConfig() {
         return getSingleNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.activityName))
       case ActivityType.LogicFlowActivity:
         return getLogicFlowNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.activityName))
+      case ActivityType.EmbeddedFlow:
+        return getGroupNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.activityName))
     }
 
     throw new Error("Can not find reaction node meta: " + reactNodeMeta.type)

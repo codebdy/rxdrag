@@ -15,6 +15,7 @@ export function useAddNode() {
   const backup = useBackup()
   const handleNodeAdd = useCallback(({ node }: { node: Node, index: number, options: unknown }) => {
     const { meta } = node.getData() as INodeData
+    console.log("哈哈", meta)
     backup()
     const newData = {
       ...meta,
