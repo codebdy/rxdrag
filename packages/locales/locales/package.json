@@ -13,7 +13,6 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "eslint \"**/*.ts\"",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "build": "vite build"
   },
