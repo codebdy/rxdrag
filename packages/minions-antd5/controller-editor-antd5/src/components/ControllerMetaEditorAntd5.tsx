@@ -30,6 +30,8 @@ import { IComponents } from '@rxdrag/react-shared';
 
 const SytledContent = styled.div`
   display: flex;
+  flex: 1;
+  width: 100%;
   border: ${props => props.theme.token?.colorBorder} solid 1px;
   .ant-drawer-header {
     padding: 0 16px;
@@ -89,7 +91,7 @@ export const ControllerMetaEditorAntd5 = memo(
         onChange?.(meta);
         onChange?.(meta);
       },
-      []
+      [onChange]
     );
 
     const logicFlowMeta = useMemo(() => {
@@ -116,7 +118,7 @@ export const ControllerMetaEditorAntd5 = memo(
         };
         onChange?.(newValue);
       },
-      [selected, value]
+      [onChange, selected, value]
     );
 
     //把最新的数据传入
