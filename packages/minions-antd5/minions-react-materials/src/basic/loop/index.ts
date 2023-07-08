@@ -16,7 +16,6 @@ export const loopMaterial: IRxDragActivityMaterial = {
         name: "input",
         label: "",
       },
-
     ],
     outPorts: [
       {

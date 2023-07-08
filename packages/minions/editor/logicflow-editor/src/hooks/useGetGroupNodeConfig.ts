@@ -1,8 +1,12 @@
 import { useCallback } from "react";
 import { IActivityNode, IThemeToken } from "../interfaces";
 import { IActivityMaterial } from "@rxdrag/minions-schema";
+import { useTransformPorts } from "./useTransformPorts";
+import { useGroupPortsConfig } from "./useGroupPortsConfig";
 
 export function useGetGroupNodeConfig(token: IThemeToken) {
+  const portsGroup = useGroupPortsConfig(token)
+  const transformPorts = useTransformPorts()
 
   const getGroup = useCallback((nodeMeta: IActivityNode, material: IActivityMaterial | undefined) => {
     return {
@@ -33,7 +37,11 @@ export function useGetGroupNodeConfig(token: IThemeToken) {
       },
       data: {
         meta: nodeMeta,
-      }
+      },
+      ports: {
+        groups: portsGroup,
+        items: transformPorts(nodeMeta)
+      },
     }
   }, [])
 
