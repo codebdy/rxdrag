@@ -14,15 +14,21 @@ export function useGetGroupNodeConfig(token: IThemeToken) {
       width: nodeMeta.x6Node?.width || 360,
       height: nodeMeta.x6Node?.height || 160,
       zIndex: 1,
-      label: nodeMeta.label||"Group",
+      label: nodeMeta.label || "Group",
       attrs: {
         body: {
           fill: token.colorBgContainer,//"#8297da",
           stroke: token.colorText,//stroke: '#5e76c3',
           strokeWidth: 1,
+          class: "group-node",
         },
         label: {
           fill: token.colorTextSecondary,
+          refX: 0.5,
+          refY: '100%',
+          refY2: -8,
+          textAnchor: 'middle',
+          textVerticalAnchor: 'bottom',
         },
       },
       data: {
