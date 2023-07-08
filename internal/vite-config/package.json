@@ -1,9 +1,10 @@
 {
   "name": "@rxdrag/vite-config",
-  "version": "0.0.0",
+  "version": "0.2.2",
   "license": "MIT",
   "type": "module",
   "module": "index.ts",
+  "private": true,
   "files": [
     "dist"
   ],

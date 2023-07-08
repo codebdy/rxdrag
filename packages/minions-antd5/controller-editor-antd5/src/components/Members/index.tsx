@@ -9,7 +9,7 @@ import { VariableDialog } from "./VariableDialog";
 import { createUuid } from "@rxdrag/shared"
 import { useTranslate } from "@rxdrag/react-locales"
 import { ILogicFlowControllerMeta, IVariableDefineMeta, Reaction, ReadVariable } from "@rxdrag/minions-runtime-react";
-import { ActivityMaterialCategory, IActivityMaterial, ILogicFlowDefinition } from "@rxdrag/minions-schema";
+import { ActivityMaterialCategory, IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
 import { IEventMeta } from "@rxdrag/minions-controller-editor";
 import { ListItemEvent } from "./ListItemEvent";
 
@@ -103,7 +103,7 @@ export const Members = memo((
 
   const handleAddReactionOk = useCallback((name?: string) => {
     if (name) {
-      const newReaction: ILogicFlowDefinition = {
+      const newReaction: ILogicFlowDefine = {
         id: createUuid(),
         label: name,
         nodes: [],

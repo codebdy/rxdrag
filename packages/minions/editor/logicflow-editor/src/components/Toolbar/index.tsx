@@ -18,7 +18,7 @@ export const Toolbar = memo((
   const { children } = props;
 
   return (
-    <StyledToolbar>
+    <StyledToolbar className="logicflow-editor-toobar">
       {children}
     </StyledToolbar>
   )

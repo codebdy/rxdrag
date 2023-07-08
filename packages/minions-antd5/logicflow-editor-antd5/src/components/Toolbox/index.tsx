@@ -1,5 +1,5 @@
-import { ReactNode, memo } from "react"
-import { Collapse as AntdCollapse } from "antd";
+import { ReactNode, memo, useMemo } from "react"
+import { Collapse as AntdCollapse, CollapseProps } from "antd";
 import styled from "styled-components";
 import { ActivityResource, ToolItem, ToolItemCategory } from "@rxdrag/minions-logicflow-editor";
 import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
@@ -10,43 +10,40 @@ const Collapse = styled(AntdCollapse)`
   overflow: auto;
 `
 
-const { Panel } = AntdCollapse;
-
 export const Toolbox = memo((props: {
-  materialCategories: ActivityMaterialCategory<ReactNode>[],
-  addons?: React.ReactNode,
+  materialCategories: ActivityMaterialCategory<ReactNode>[]
 }) => {
-  const { materialCategories, addons } = props;
-
-  return (
-    <Collapse defaultActiveKey={[materialCategories?.[0]?.name]} bordered={false} accordion expandIconPosition="end">
+  const { materialCategories } = props;
+  const items: CollapseProps['items'] = useMemo(() => materialCategories?.map(category => ({
+    key: category.name,
+    label: category.name,
+    children: <ToolItemCategory>
       {
-        materialCategories.map(category => {
-          return (
-            <Panel key={category.name} header={category.name}>
-              <ToolItemCategory>
-                {
-                  category.materials.map((materail, index) => {
-                    return <ActivityResource key={index + materail.activityName} material={materail}>
-                      {
-                        (onStartDrag) => {
-                          return <ToolItem
-                            icon={materail.icon}
-                            title={materail.label}
-                            color={materail.color}
-                            onMouseDown={onStartDrag}
-                          />
-                        }
-                      }
-                    </ActivityResource>
-                  })
-                }
-              </ToolItemCategory>
-            </Panel>
-          )
+        category.materials.map((materail, index) => {
+          return <ActivityResource key={index + materail.activityName} material={materail}>
+            {
+              (onStartDrag) => {
+                return <ToolItem
+                  icon={materail.icon}
+                  title={materail.label}
+                  color={materail.color}
+                  onMouseDown={onStartDrag}
+                />
+              }
+            }
+          </ActivityResource>
         })
       }
-      {addons}
+    </ToolItemCategory>
+  })), [])
+  return (
+    <Collapse
+      defaultActiveKey={[materialCategories?.[0]?.name]}
+      bordered={false}
+      accordion
+      expandIconPosition="end"
+      items = {items}
+    >
     </Collapse>
   )
 })

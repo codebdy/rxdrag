@@ -15,7 +15,7 @@ export class Debug extends AbstractActivity<IDebugConfig> {
   }
 
   @Input()
-  inputHandler(inputValue: any): void {
+  inputHandler(inputValue: unknown): void {
     if (!this.config?.closed) {
       console.log(`🪲${this.config?.tip || "Debug"}:`, inputValue)
     }
