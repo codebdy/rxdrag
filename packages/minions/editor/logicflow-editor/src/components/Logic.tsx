@@ -10,6 +10,7 @@ import { useChangeFlag } from "../hooks/useChangeFlag"
 import { useMetas } from "../hooks/useMetas"
 import { useSetZoom } from "../hooks/useSetZoom"
 import { ILogicMetas } from "../interfaces"
+import { useChildPositionChange } from "../hooks/edit-meta/useChildPositionChange"
 
 export const Logic = memo((
   props: {
@@ -30,6 +31,7 @@ export const Logic = memo((
   useMovedNode()
   useArrowhead()
   useSelection()
+  useChildPositionChange();
   useRemove()
   useSetZoom()
   useEffect(() => {

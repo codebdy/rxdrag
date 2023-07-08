@@ -43,7 +43,7 @@ export function useGetGroupNodeConfig(token: IThemeToken) {
         items: transformPorts(nodeMeta)
       },
     }
-  }, [])
+  }, [token, transformPorts])
 
   return getGroup
 }

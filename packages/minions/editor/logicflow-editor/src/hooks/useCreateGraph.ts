@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { config } from "./config";
 import { Selection } from '@antv/x6-plugin-selection'
 import { MiniMap } from "@antv/x6-plugin-minimap";
-import { INodeData } from "../interfaces/interfaces";
+import { IActivityNode, INodeData } from "../interfaces/interfaces";
 import { IThemeToken } from "../interfaces";
 import { ActivityType } from "@rxdrag/minions-schema";
 
@@ -33,9 +33,15 @@ export function useCreateGraph(token: IThemeToken) {
         enabled: true,
         findParent({ node }) {
           const bbox = node.getBBox()
+          const data = node.getData<{ meta: IActivityNode }>()
+          //不能递归嵌套
+          if(data.meta.type === ActivityType.EmbeddedFlow){
+            return []
+          }
+
           return this.getNodes().filter((node) => {
-            const data = node.getData<{ parent: boolean }>()
-            if (data && data.parent) {
+            const data = node.getData<{ meta: IActivityNode }>()
+            if (data && data.meta.type === ActivityType.EmbeddedFlow) {
               const targetBBox = node.getBBox()
               return bbox.isIntersectWithRect(targetBBox)
             }
@@ -44,20 +50,20 @@ export function useCreateGraph(token: IThemeToken) {
         },
       },
       //限制嵌套节点的移动
-      translating: {
-        restrict(view) {
-          if (view) {
-            const cell = view.cell
-            if (cell.isNode()) {
-              const parent = cell.getParent()
-              if (parent) {
-                return parent.getBBox()
-              }
-            }
-          }
-          return null
-        },
-      },
+      // translating: {
+      //   restrict(view) {
+      //     if (view) {
+      //       const cell = view.cell
+      //       if (cell.isNode()) {
+      //         const parent = cell.getParent()
+      //         if (parent) {
+      //           return parent.getBBox()
+      //         }
+      //       }
+      //     }
+      //     return null
+      //   },
+      // },
       interacting: () => {
         return { nodeMovable: true, edgeLabelMovable: false };
       },
