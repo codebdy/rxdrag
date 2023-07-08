@@ -6,7 +6,6 @@ import { useMarkChange } from "./useMarkChange";
 import { useDispatch } from "../useDispatch";
 import { useGraph } from "../useGraph";
 import { ActionType } from "../../actions";
-import { getParentSize } from "./getParentSize";
 
 export function useMovedNode() {
   const dispatch = useDispatch()
@@ -53,22 +52,23 @@ export function useMovedNode() {
 
     //子节点跟随移动
     const children = node.getChildren()
-    for (const child of children||[]){
-      const childNode = child as Node
-      const { meta } = child.getData() as INodeData
-      dispatch?.({
-        type: ActionType.CHANGE_NODE,
-        payload: {
-          ...meta,
-          id: childNode.id,
-          x6Node: {
-            x: childNode.getPosition().x,
-            y: childNode.getPosition().y,
-            width: childNode.getSize().width,
-            height: childNode.getSize().height,
+    for (const child of children || []) {
+      if (child.isNode()) {
+        const { meta } = child.getData() as INodeData
+        dispatch?.({
+          type: ActionType.CHANGE_NODE,
+          payload: {
+            ...meta,
+            id: child.id,
+            x6Node: {
+              x: child.getPosition().x,
+              y: child.getPosition().y,
+              width: child.getSize().width,
+              height: child.getSize().height,
+            }
           }
-        }
-      })
+        })
+      }
     }
 
     graph?.select(node.id)

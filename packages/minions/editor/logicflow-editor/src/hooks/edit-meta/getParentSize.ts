@@ -28,7 +28,7 @@ export function getParentSize(node: Node) {
 
     const children = parent.getChildren()
     if (children) {
-      children.forEach((child) => {
+      children.filter(child => child.isNode()).forEach((child) => {
         const bbox = child.getBBox().inflate(40, 20)
         const corner = bbox.getCorner()
 
