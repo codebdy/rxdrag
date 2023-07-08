@@ -8,11 +8,13 @@ export enum ActivityType {
   Start = 'Start',
   End = 'End',
   Activity = 'Activity',
-  LogicFlowActivity = "LogicFlowActivity"
+  LogicFlowActivity = "LogicFlowActivity",
+  //嵌入式子流程
+  EmbeddedFlow = "EmbeddedFlow"
 }
 
 export interface ILogicFlowConfig {
-  param?:{
+  param?: {
     logicFlowId: string
   }
 }
@@ -39,10 +41,13 @@ export interface ILineDefine {
   target: IPortRefDefine;
 }
 
-export interface ILogicFlowDefine {
+export interface ILogicFlowMetas {
+  nodes: IActivityDefine<unknown>[];
+  lines: ILineDefine[];
+}
+
+export interface ILogicFlowDefine extends ILogicFlowMetas {
   id: string;
   name?: string;
   label?: string;
-  nodes: IActivityDefine<unknown>[];
-  lines: ILineDefine[];
 }
