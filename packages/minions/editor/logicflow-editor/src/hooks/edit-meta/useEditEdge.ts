@@ -32,6 +32,11 @@ export function useEditEdge() {
       payload: newData
     })
     edge.setData({ meta: newData })
+    edge.setAttrs({
+      line: {
+        stroke: "#5e76c3"
+      }
+    })
     markeChange()
   }, [backup, dispatch, markeChange])
 

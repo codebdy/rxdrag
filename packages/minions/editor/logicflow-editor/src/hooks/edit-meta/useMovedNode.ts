@@ -60,6 +60,8 @@ export function useMovedNode() {
           payload: {
             ...meta,
             id: child.id,
+            //解决容器移动时，最新建的节点parentId消失的bug
+            parentId: node.id,
             x6Node: {
               x: child.getPosition().x,
               y: child.getPosition().y,

@@ -19,20 +19,21 @@ export function useNodeEmbedded() {
     backup()
     const data = node.getData() as INodeData
     const { meta } = data;
-    node.setData({ ...data, meta: { ...meta, parentId: node.getParentId() } })
+    const newMeta = {
+      ...meta,
+      id: node.id,
+      parentId: node.getParentId(),
+      x6Node: {
+        x: node.getPosition().x,
+        y: node.getPosition().y,
+        width: node.getSize().width,
+        height: node.getSize().height,
+      }
+    }
+    node.setData({ ...data, meta: newMeta })
     dispatch?.({
       type: ActionType.CHANGE_NODE,
-      payload: {
-        ...meta,
-        id: node.id,
-        parentId: node.getParentId(),
-        x6Node: {
-          x: node.getPosition().x,
-          y: node.getPosition().y,
-          width: node.getSize().width,
-          height: node.getSize().height,
-        }
-      }
+      payload: newMeta
     })
   }, [dispatch, backup])
 

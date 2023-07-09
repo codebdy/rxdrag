@@ -95,10 +95,12 @@ export const LogicFlowEditor = memo((
     nodes: [],
     lines: []
   }), [])
-  const graph = useCreateGraph(token)
+
   const store: EditorStore = useMemo(() => {
     return new EditorStore()
   }, [])
+
+  const graph = useCreateGraph(token, store)
 
   useEffect(() => {
     const action: SetMetasAction = { type: ActionType.SET_METAS, payload: { nodes: value?.nodes || [], lines: value?.lines || [] } }
