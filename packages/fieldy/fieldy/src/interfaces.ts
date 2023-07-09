@@ -115,6 +115,7 @@ export interface FormValue {
 
 export interface IFormNode<T> {
   fieldy: IFieldyEngine
+  getModified(): boolean
   getDefaultValue(): T
   getInitialValue(): T
   getValue(): T

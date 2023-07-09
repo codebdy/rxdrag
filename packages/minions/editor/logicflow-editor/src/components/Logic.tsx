@@ -11,6 +11,7 @@ import { useMetas } from "../hooks/useMetas"
 import { useSetZoom } from "../hooks/useSetZoom"
 import { ILogicMetas } from "../interfaces"
 import { useChildPositionChange } from "../hooks/edit-meta/useChildPositionChange"
+import { useNodeEmbedded } from "../hooks/edit-meta/useNodeEmbedded"
 
 export const Logic = memo((
   props: {
@@ -32,6 +33,7 @@ export const Logic = memo((
   useArrowhead()
   useSelection()
   useChildPositionChange();
+  useNodeEmbedded();
   useRemove()
   useSetZoom()
   useEffect(() => {

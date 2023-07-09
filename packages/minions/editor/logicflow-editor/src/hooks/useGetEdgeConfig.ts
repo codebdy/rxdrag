@@ -3,20 +3,22 @@ import { useCallback } from "react"
 
 export function useGetEdgeConfig() {
 
-  const getEdgeConfig = useCallback((invakeMeta: ILineDefine) => {
+  const getEdgeConfig = useCallback((lineMeta: ILineDefine) => {
 
     return {
-      id: invakeMeta.id,
+      id: lineMeta.id,
       shape: "reaction-edge",
       source: {
-        cell: invakeMeta.source.nodeId,
-        port: invakeMeta.source.portId,
+        cell: lineMeta.source.nodeId,
+        port: lineMeta.source.portId,
       },
       target: {
-        cell: invakeMeta.target.nodeId,
-        port: invakeMeta.target.portId,
+        cell: lineMeta.target.nodeId,
+        port: lineMeta.target.portId,
       },
-      zIndex: 0,
+      data:{
+        meta: lineMeta
+      },
     }
   }, [])
 

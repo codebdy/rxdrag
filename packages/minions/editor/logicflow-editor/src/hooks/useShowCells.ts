@@ -1,38 +1,46 @@
 import { useEffect } from "react";
-import { useGetNodeConfig } from "./useGetNodeConfig";
 import { useGetEdgeConfig } from "./useGetEdgeConfig";
 import { useGraph } from "./useGraph";
 import { useMetas } from "./useMetas";
-import { useUpdateNode } from "./useUpdateNode";
+import { useShowNode } from "./useShowNode";
 
 export function useShowCells() {
   const graph = useGraph()
-  const getNodeConfig = useGetNodeConfig()
   const getEdgeConfig = useGetEdgeConfig()
-  const updateNode = useUpdateNode()
+  const showNode = useShowNode()
 
   const { metas } = useMetas()
   useEffect(() => {
     if (graph) {
-      const oldNodes = graph.getNodes()
       const oldEdges = graph.getEdges()
       const oldCells = graph.getCells()
-      for (const reactionNode of metas?.nodes || []) {
-        const graphNode = oldNodes.find(node => node.id === reactionNode.id)
-        //更新
-        if (graphNode && reactionNode.x6Node) {
-          updateNode(graphNode, reactionNode)
-        } else {//新建
-          const nodeConfig = getNodeConfig(reactionNode)
-          const node = graph.createNode(nodeConfig)
-          graph.addNode(node)
+      //先显示顶级节点
+      for (const nodeMeta of metas?.nodes || []) {
+        if (!nodeMeta.parentId) {
+          showNode(nodeMeta)
         }
       }
 
-      for (const invoke of metas?.lines || []) {
-        const graphEdge = oldEdges.find(edge => edge.id === invoke.id)
+      //在显示嵌入节点
+      for (const nodeMeta of metas?.nodes || []) {
+        if (nodeMeta.parentId) {
+          showNode(nodeMeta)
+        }
+      }
+
+      //构建父子关系
+      const nodes = graph.getNodes()
+      for (const node of nodes) {
+        const parentId = node.getData()?.meta?.parentId
+        if (parentId && !node.parent) {
+          graph.getCellById(parentId).addChild(node)
+        }
+      }
+
+      for (const lineMeta of metas?.lines || []) {
+        const graphEdge = oldEdges.find(edge => edge.id === lineMeta.id)
         if (!graphEdge) {
-          const edge = graph.createEdge(getEdgeConfig(invoke))
+          const edge = graph.createEdge(getEdgeConfig(lineMeta))
           graph.addEdge(edge)
         }
       }
@@ -43,7 +51,6 @@ export function useShowCells() {
           cell.remove()
         }
       }
-
     }
-  }, [getEdgeConfig, getNodeConfig, graph, metas, metas?.lines, metas?.nodes, updateNode])
+  }, [getEdgeConfig, graph, metas, metas?.lines, metas?.nodes])
 }

@@ -15,7 +15,6 @@ export function useMovedNode() {
   const markeChange = useMarkChange()
   const handleNodeMoved = useCallback(({ node }: { x: number, y: number, node: Node, index: number, options: unknown }) => {
     backup()
-
     //父节点跟随移动
     const parent = node.getParent()
     if (parent && parent.isNode()) {
@@ -61,7 +60,6 @@ export function useMovedNode() {
           payload: {
             ...meta,
             id: child.id,
-            parentId: child.getParentId(),
             x6Node: {
               x: child.getPosition().x,
               y: child.getPosition().y,

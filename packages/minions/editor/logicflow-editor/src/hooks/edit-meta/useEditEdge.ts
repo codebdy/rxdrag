@@ -25,13 +25,13 @@ export function useEditEdge() {
         nodeId: (edge.getTarget() as any).cell,
         portId: (edge.getTarget() as any).port,
       },
-      parentId: edge.getParentId()
     }
     //graph?.select(edge.id)
     dispatch?.({
       type: isNew ? ActionType.ADD_EDGE : ActionType.CHANGE_EDGE,
       payload: newData
     })
+    edge.setData({ meta: newData })
     markeChange()
   }, [backup, dispatch, markeChange])
 

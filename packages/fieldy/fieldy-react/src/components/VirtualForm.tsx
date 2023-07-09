@@ -44,7 +44,9 @@ export const VirtualForm = (props: {
   useEffect(() => {
     if (fieldy) {
       const unsub = form?.onValueChange((value: FormValue | undefined) => {
-        onValueChange?.(value)
+        if (form.getModified()) {
+          onValueChange?.(value)
+        }
       })
       return unsub;
     }

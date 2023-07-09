@@ -42,8 +42,6 @@ export interface ILineDefine {
   id: string;
   source: IPortRefDefine;
   target: IPortRefDefine;
-  //父节点，嵌入子编排用
-  parentId?: string;
 }
 
 export interface ILogicFlowMetas {
