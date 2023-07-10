@@ -20,8 +20,8 @@ export function getParentSize(node: Node) {
       parent.prop('originPosition', originPosition)
     }
 
-    let x = originPosition.x
-    let y = originPosition.y
+    let x = originPosition.x + 10
+    let y = originPosition.y + 10
     let cornerX = originPosition.x + originSize.width
     let cornerY = originPosition.y + originSize.height
     let hasChange = false
@@ -29,7 +29,7 @@ export function getParentSize(node: Node) {
     const children = parent.getChildren()
     if (children) {
       children.filter(child => child.isNode()).forEach((child) => {
-        const bbox = child.getBBox().inflate(40, 20)
+        const bbox = child.getBBox().inflate(40)
         const corner = bbox.getCorner()
 
         if (bbox.x < x) {
@@ -55,7 +55,7 @@ export function getParentSize(node: Node) {
     }
 
     if (hasChange) {
-      return { position: { x, y }, size: { width: cornerX - x, height: cornerY - y } }
+      return { position: { x, y }, size: { width: cornerX - x + 30, height: cornerY - y } }
     }
   }
 }

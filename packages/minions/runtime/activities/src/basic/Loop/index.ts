@@ -32,9 +32,10 @@ export class Loop extends AbstractActivity<ILoopConfig> {
         this.output(i)
       }
     }
+    this.next(inputValue, Loop.PORT_FINISHED)
   }
 
   output = (value: unknown) => {
-    this.next(value)
+    this.next(value, Loop.PORT_OUTPUT)
   }
 }

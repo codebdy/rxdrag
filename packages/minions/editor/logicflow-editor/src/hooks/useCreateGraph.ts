@@ -7,7 +7,6 @@ import { MiniMap } from "@antv/x6-plugin-minimap";
 import { IActivityNode, INodeData } from "../interfaces/interfaces";
 import { IThemeToken } from "../interfaces";
 import { ActivityType } from "@rxdrag/minions-schema";
-import { useMetas } from "./useMetas";
 import { useGetNodeMeta } from "./useGetNodeMeta";
 import { EditorStore } from "../classes";
 
@@ -42,6 +41,11 @@ export function useCreateGraph(token: IThemeToken, store: EditorStore) {
           const data = node.getData<{ meta: IActivityNode }>()
           //不能递归嵌套
           if (data.meta.type === ActivityType.EmbeddedFlow) {
+            return []
+          }
+
+          //开始、结束节点不需要嵌入
+          if(data.meta.type === ActivityType.Start || data.meta.type === ActivityType.End){
             return []
           }
 

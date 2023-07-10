@@ -1,13 +1,12 @@
 import { ActivityType } from "@rxdrag/minions-schema";
-import { IInfoMessageConfig, InfoMessage } from "@rxdrag/minions-react-antd5-activites"
-import { addvanceLoopIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { CustomizedLoop } from "@rxdrag/minions-activities";
-import { createUuid } from "@rxdrag/shared";
+import { customizedLoopIcon } from "../../icons";
 import { customizedLoopSchema } from "./schema";
+import { createUuid } from "@rxdrag/shared";
 
-export const customizedLoopMaterial: IRxDragActivityMaterial<IInfoMessageConfig> = {
-  icon: addvanceLoopIcon,
+export const customizedLoopMaterial: IRxDragActivityMaterial = {
+  icon: customizedLoopIcon,
   label: "$customizedLoop",
   activityType: ActivityType.EmbeddedFlow,
   defaultPorts: {
@@ -32,10 +31,5 @@ export const customizedLoopMaterial: IRxDragActivityMaterial<IInfoMessageConfig>
     ],
   },
   schema: customizedLoopSchema,
-  activityName: CustomizedLoop.NAME,
-  subTitle: (config?: IInfoMessageConfig) => {
-    if (config?.type) {
-      return config?.type?.toString()
-    }
-  },
+  activityName: CustomizedLoop.NAME
 }
