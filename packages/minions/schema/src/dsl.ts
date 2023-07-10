@@ -32,7 +32,7 @@ export interface IActivityDefine<ConfigMeta = unknown> {
   //父节点，嵌入子编排用
   parentId?: string;
 
-  // 子节点，嵌入编排用,运行时引擎构建
+  // 子节点，嵌入编排用
   children?: ILogicFlowMetas
 }
 

@@ -5,7 +5,7 @@ import { useDispatch } from "../useDispatch"
 import { useGraph } from "../useGraph"
 import { useBackup } from "./useBackup"
 import { useMarkChange } from "./useMarkChange"
-import { ActionType } from "../../actions"
+import { ActionType, AddEdgeAction, ChangeEdgeAction } from "../../actions"
 import { ILineDefine } from "@rxdrag/minions-schema"
 
 export function useEditEdge() {
@@ -26,11 +26,13 @@ export function useEditEdge() {
         portId: (edge.getTarget() as any).port,
       },
     }
-    //graph?.select(edge.id)
-    dispatch?.({
+    const action: AddEdgeAction | ChangeEdgeAction = {
       type: isNew ? ActionType.ADD_EDGE : ActionType.CHANGE_EDGE,
+      parentId: edge.getParentId(),
       payload: newData
-    })
+    }
+    //graph?.select(edge.id)
+    dispatch?.(action)
     edge.setData({ meta: newData })
     edge.setAttrs({
       line: {

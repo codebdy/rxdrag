@@ -32,7 +32,7 @@ export function useNodeEmbedded() {
     }
     node.setData({ ...data, meta: newMeta })
     dispatch?.({
-      type: ActionType.CHANGE_NODE,
+      type: ActionType.EMBED_NODE,
       payload: newMeta
     })
   }, [dispatch, backup])

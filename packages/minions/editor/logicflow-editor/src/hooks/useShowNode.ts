@@ -18,10 +18,12 @@ export function useShowNode() {
     //更新
     if (graphNode && nodeMeta.x6Node) {
       updateNode(graphNode, nodeMeta)
+      return graphNode
     } else {//新建
       const nodeConfig = getNodeConfig(nodeMeta)
       const node = graph.createNode(nodeConfig)
       graph.addNode(node)
+      return node
     }
   }, [graph, updateNode, getNodeConfig])
 

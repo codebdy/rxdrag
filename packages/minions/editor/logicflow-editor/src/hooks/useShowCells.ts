@@ -3,54 +3,59 @@ import { useGetEdgeConfig } from "./useGetEdgeConfig";
 import { useGraph } from "./useGraph";
 import { useMetas } from "./useMetas";
 import { useShowNode } from "./useShowNode";
+import { ActivityType, ILineDefine } from "@rxdrag/minions-schema";
+import { useShowEdge } from "./useShowEdge";
+import { IActivityNode, ILogicMetas } from "../interfaces";
 
 export function useShowCells() {
   const graph = useGraph()
   const getEdgeConfig = useGetEdgeConfig()
   const showNode = useShowNode()
+  const showEdge = useShowEdge()
 
   const { metas } = useMetas()
   useEffect(() => {
     if (graph) {
-      const oldEdges = graph.getEdges()
       const oldCells = graph.getCells()
       //先显示顶级节点
       for (const nodeMeta of metas?.nodes || []) {
-        if (!nodeMeta.parentId) {
-          showNode(nodeMeta)
-        }
-      }
+        const node = showNode(nodeMeta)
+        if (nodeMeta.type === ActivityType.EmbeddedFlow) {
+          for (const childMeta of nodeMeta.children?.nodes || []) {
+            const child = showNode(childMeta)
+            child && node?.addChild(child)
+          }
 
-      //在显示嵌入节点
-      for (const nodeMeta of metas?.nodes || []) {
-        if (nodeMeta.parentId) {
-          showNode(nodeMeta)
-        }
-      }
-
-      //构建父子关系
-      const nodes = graph.getNodes()
-      for (const node of nodes) {
-        const parentId = node.getData()?.meta?.parentId
-        if (parentId && !node.parent) {
-          graph.getCellById(parentId).addChild(node)
+          for (const childLine of nodeMeta.children?.lines || []) {
+            showEdge(childLine)
+          }
         }
       }
 
       for (const lineMeta of metas?.lines || []) {
-        const graphEdge = oldEdges.find(edge => edge.id === lineMeta.id)
-        if (!graphEdge) {
-          const edge = graph.createEdge(getEdgeConfig(lineMeta))
-          graph.addEdge(edge)
-        }
+        showEdge(lineMeta)
       }
 
       //删除不存在的
       for (const cell of oldCells) {
-        if (![...metas?.nodes || [], ...metas?.lines || []].find(el => el.id === cell.id)) {
+        if (!getAllMetas(metas).find(el => el.id === cell.id)) {
           cell.remove()
         }
       }
     }
-  }, [getEdgeConfig, graph, metas, metas?.lines, metas?.nodes])
+  }, [getEdgeConfig, showEdge, showNode, graph, metas, metas?.lines, metas?.nodes])
+}
+
+function getAllMetas(logicMetas?: ILogicMetas) {
+  if (!logicMetas) {
+    return []
+  }
+  const metas: (ILineDefine | IActivityNode)[] = [...logicMetas.lines, ...logicMetas.nodes]
+  for (const nodeMeta of logicMetas.nodes) {
+    if (nodeMeta.type === ActivityType.EmbeddedFlow) {
+      metas.push(...nodeMeta.children?.nodes || [], ...nodeMeta.children?.lines || [])
+    }
+  }
+
+  return metas
 }

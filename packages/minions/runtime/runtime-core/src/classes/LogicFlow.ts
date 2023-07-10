@@ -19,7 +19,13 @@ export class LogicFlow<LogicFlowContext = unknown> {
     }
 
     for (const line of flowMeta.lines) {
-      if (!this.getNode(line.source.nodeId)?.parentId && this.getNode(line.target.nodeId)?.parentId) {
+      const sourceNode = this.getNode(line.source.nodeId)
+      const targetNode = this.getNode(line.target.nodeId)
+      if (!sourceNode?.parentId &&
+        !targetNode?.parentId &&
+        targetNode?.type !== ActivityType.EmbeddedFlow &&
+        sourceNode?.type !== ActivityType.EmbeddedFlow
+      ) {
         this.rootLines.push(line)
       }
     }
@@ -60,23 +66,25 @@ export class LogicFlow<LogicFlowContext = unknown> {
     }
 
     for (const line of this.flowMeta.lines) {
-      if (this.getNode(line.source.nodeId)?.parentId === id ||
+      //起点跟终点都是子节点
+      if (this.getNode(line.source.nodeId)?.parentId === id &&
         this.getNode(line.target.nodeId)?.parentId === id) {
         children.lines.push(line)
+        continue
       }
       let newLine = line
       //source为父节点input
       if (line.source.nodeId === id && line.source.portId) {
-        newLine = {...newLine,  source: { nodeId: line.source.portId }}
+        newLine = { ...newLine, source: { nodeId: line.source.portId } }
       }
 
       //target为父节点output
-      if (line.target.nodeId === id  && line.target.portId) {
-        newLine = {...newLine,  target: { nodeId: line.target.portId } }
+      if (line.target.nodeId === id && line.target.portId) {
+        newLine = { ...newLine, target: { nodeId: line.target.portId } }
       }
 
       //如果节点产生变化，意味着起点或终点连接到group的端口
-      if(newLine !== line){
+      if (newLine !== line) {
         children.lines.push(newLine)
       }
     }
@@ -164,7 +172,6 @@ export class LogicFlow<LogicFlowContext = unknown> {
       if (!sourceJointer && lineMeta.source.portId) {
         sourceJointer = this.activities.find(reaction => reaction.id === lineMeta.source.nodeId)?.jointers?.outputs.find(output => output.id === lineMeta.source.portId)
       }
-
       if (!sourceJointer) {
         throw new Error("Can find source jointer")
       }

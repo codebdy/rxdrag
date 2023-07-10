@@ -75,75 +75,82 @@
                     "id": "d7520a20-4abc-4e03-97a5-988ae7000e1d",
                     "name": "init",
                     "label": "初始化",
+                    "nodes": [],
+                    "lines": []
+                  },
+                  {
+                    "id": "72bacb71-51e5-488d-8305-ff21e1892f1b",
+                    "name": "onClick",
+                    "label": "点击",
                     "nodes": [
                       {
-                        "id": "6f1c61d1-a4b1-4185-af83-5712b304d8fc",
+                        "id": "1df659f5-1c5c-40c0-9033-722af66bd8b6",
                         "label": "自定义循环",
                         "type": "EmbeddedFlow",
                         "activityName": "system.customizedLoop",
                         "inPorts": [
                           {
-                            "id": "e93458b1-93f9-4d23-8c0f-6970de50b043",
+                            "id": "25bcb4de-e3f0-410e-b6b1-b01d36643dba",
                             "name": "input",
                             "label": ""
                           }
                         ],
                         "outPorts": [
                           {
-                            "id": "36e18655-59d7-4a34-b219-8e5ee20865e3",
+                            "id": "3d9dde96-4b20-442c-ada4-472f010adc97",
                             "name": "output",
                             "label": "单次输出"
                           },
                           {
-                            "id": "bb3fd876-239e-42a8-84e1-2c45440ac219",
+                            "id": "591a7c99-341a-4eae-a7c5-58eb658dbec8",
                             "name": "finished",
                             "label": "结束"
                           }
                         ],
                         "x6Node": {
-                          "x": 160,
-                          "y": 70,
-                          "width": 360,
-                          "height": 160
+                          "x": 70,
+                          "y": 80,
+                          "width": 410,
+                          "height": 180
                         },
-                        "config": {
-                          "times": 5
+                        "children": {
+                          "nodes": [],
+                          "lines": []
                         }
                       },
                       {
-                        "id": "d143cd40-5b5e-4782-9989-85268d9159b0",
-                        "label": "调试",
+                        "id": "d9bdba3b-ee76-4229-8a3f-4c2cfe45d10e",
+                        "label": "条件判断",
                         "type": "Activity",
-                        "activityName": "system.debug",
+                        "activityName": "system.condition",
                         "inPorts": [
                           {
-                            "id": "52b7f618-e02b-4023-b5c5-016e948367d0",
+                            "id": "9de6588e-e77b-4e08-893b-ef51a7976e49",
                             "name": "input",
                             "label": ""
                           }
                         ],
-                        "outPorts": [],
+                        "outPorts": [
+                          {
+                            "id": "9b19cb61-cfa3-40d9-a99e-240596771b3f",
+                            "name": "true",
+                            "label": "是"
+                          },
+                          {
+                            "id": "651a6a6a-55fa-4896-951f-472ee45a0e5d",
+                            "name": "false",
+                            "label": "否"
+                          }
+                        ],
                         "x6Node": {
-                          "x": 290,
-                          "y": 120,
-                          "width": 88,
+                          "x": 170,
+                          "y": 140,
+                          "width": 116,
                           "height": 32
                         }
                       }
                     ],
-                    "lines": [
-                      {
-                        "id": "35cf38a6-94d0-4ddc-8fd6-73e925c33f8d",
-                        "source": {
-                          "nodeId": "6f1c61d1-a4b1-4185-af83-5712b304d8fc",
-                          "portId": "e93458b1-93f9-4d23-8c0f-6970de50b043"
-                        },
-                        "target": {
-                          "nodeId": "d143cd40-5b5e-4782-9989-85268d9159b0",
-                          "portId": "52b7f618-e02b-4023-b5c5-016e948367d0"
-                        }
-                      }
-                    ]
+                    "lines": []
                   }
                 ]
               },
