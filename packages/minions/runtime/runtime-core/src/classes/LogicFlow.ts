@@ -97,11 +97,11 @@ export class LogicFlow<LogicFlowContext = unknown> {
     for (const activityMeta of this.rootNodes) {
       switch (activityMeta.type) {
         case ActivityType.Start:
-          //start只有一个端口，所以name可以跟meta name一样
+          //start只有一个端口，所以name可以跟meta name一样,此处的name可能没用
           this.jointers.inputs.push(new Jointer(activityMeta.id, activityMeta.activityName || "input"));
           break;
         case ActivityType.End:
-          //end 只有一个端口，所以name可以跟meta name一样
+          //end 只有一个端口，所以name可以跟meta name一样,此处的name可能没用
           this.jointers.outputs.push(new Jointer(activityMeta.id, activityMeta.activityName || "output"));
           break;
         case ActivityType.Activity:

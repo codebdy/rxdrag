@@ -75,8 +75,75 @@
                     "id": "d7520a20-4abc-4e03-97a5-988ae7000e1d",
                     "name": "init",
                     "label": "初始化",
-                    "nodes": [],
-                    "lines": []
+                    "nodes": [
+                      {
+                        "id": "6f1c61d1-a4b1-4185-af83-5712b304d8fc",
+                        "label": "自定义循环",
+                        "type": "EmbeddedFlow",
+                        "activityName": "system.customizedLoop",
+                        "inPorts": [
+                          {
+                            "id": "e93458b1-93f9-4d23-8c0f-6970de50b043",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [
+                          {
+                            "id": "36e18655-59d7-4a34-b219-8e5ee20865e3",
+                            "name": "output",
+                            "label": "单次输出"
+                          },
+                          {
+                            "id": "bb3fd876-239e-42a8-84e1-2c45440ac219",
+                            "name": "finished",
+                            "label": "结束"
+                          }
+                        ],
+                        "x6Node": {
+                          "x": 160,
+                          "y": 70,
+                          "width": 360,
+                          "height": 160
+                        },
+                        "config": {
+                          "times": 5
+                        }
+                      },
+                      {
+                        "id": "d143cd40-5b5e-4782-9989-85268d9159b0",
+                        "label": "调试",
+                        "type": "Activity",
+                        "activityName": "system.debug",
+                        "inPorts": [
+                          {
+                            "id": "52b7f618-e02b-4023-b5c5-016e948367d0",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 290,
+                          "y": 120,
+                          "width": 88,
+                          "height": 32
+                        }
+                      }
+                    ],
+                    "lines": [
+                      {
+                        "id": "35cf38a6-94d0-4ddc-8fd6-73e925c33f8d",
+                        "source": {
+                          "nodeId": "6f1c61d1-a4b1-4185-af83-5712b304d8fc",
+                          "portId": "e93458b1-93f9-4d23-8c0f-6970de50b043"
+                        },
+                        "target": {
+                          "nodeId": "d143cd40-5b5e-4782-9989-85268d9159b0",
+                          "portId": "52b7f618-e02b-4023-b5c5-016e948367d0"
+                        }
+                      }
+                    ]
                   }
                 ]
               },
