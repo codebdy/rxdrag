@@ -1,7 +1,7 @@
 import { IActivity, IActivityJointers } from "../interfaces";
 import { ActivityJointers } from "./ActivityJointer";
 import { Jointer } from "./Jointer";
-import { ActivityType, ILogicFlowDefine, ILogicFlowMetas } from "@rxdrag/minions-schema"
+import { ActivityType, IActivityDefine, ILogicFlowDefine, ILogicFlowMetas } from "@rxdrag/minions-schema"
 import { activities } from "./activities";
 
 export class LogicFlow<LogicFlowContext = unknown> {
@@ -51,7 +51,8 @@ export class LogicFlow<LogicFlowContext = unknown> {
             }
             let newMeta = activityMeta
             if (activityMeta.type === ActivityType.EmbeddedFlow) {
-              newMeta = { ...activityMeta, children: this.getNodeChildren(activityMeta.id) }
+              //重新构造子节点，主要目的：把父节点端口转换成子流程的开始节点跟结束节点
+              newMeta = this.refactorChildren(activityMeta)
             }
             const activity = new activityClass(newMeta, this.context);
 
@@ -122,36 +123,35 @@ export class LogicFlow<LogicFlowContext = unknown> {
   }
 
   //重新构造children，添加边界节点，修改连线
-  getNodeChildren = (id: string) => {
-    const groupNode = this.getNode(id)
+  refactorChildren = (parentNode: IActivityDefine) => {
     const children: ILogicFlowMetas = {
       lines: [],//连线重新整理
-      nodes: [...groupNode?.children?.nodes || []],//节点全部纳入
+      nodes: [...parentNode?.children?.nodes || []],//节点全部纳入
     }
 
     //父节点的input创建为start, portId=>start 节点 id
-    for (const input of groupNode?.inPorts || []) {
+    for (const input of parentNode?.inPorts || []) {
       children.nodes.push({ id: input.id, type: ActivityType.Start, activityName: "start", name: input.name })
     }
 
     //父节点的output创建为end, portId=>end 节点 id
-    for (const output of groupNode?.outPorts || []) {
+    for (const output of parentNode?.outPorts || []) {
       children.nodes.push({ id: output.id, type: ActivityType.End, activityName: "end", name: output.name })
     }
 
-    for (const line of groupNode?.children?.lines || []) {
+    for (const line of parentNode?.children?.lines || []) {
       let newLine = line
       //起点是父节点输入端口， 连接到新创建的开始节点
-      if (line.source.nodeId === id && line.source.portId) {
+      if (line.source.nodeId === parentNode.id && line.source.portId) {
         newLine = { ...line, source: { nodeId: line.source.portId } }
       }
       //终点是父节点输入端口, 连接到新创建的结束节点
-      if (line.target.nodeId === id && line.target.portId) {
+      if (line.target.nodeId === parentNode.id && line.target.portId) {
         newLine = { ...newLine, target: { nodeId: line.target.portId } }
       }
       children.lines.push(newLine)
     }
 
-    return children
+    return { ...parentNode, children }
   }
 }
