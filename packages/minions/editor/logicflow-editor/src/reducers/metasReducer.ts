@@ -1,5 +1,5 @@
 import { ActionType, SetMetasAction, AddNodeAction, ChangeNodeAction, AddEdgeAction, ChangeEdgeAction, RemoveNodeAction, Action, RemoveEdgeAction, EmbedNodeAction } from "../actions";
-import { ILogicMetas } from "../interfaces";
+import { IActivityNode, ILogicMetas } from "../interfaces";
 import { childrenReducer } from "./childrenReducer";
 
 export function metasReducer(state: ILogicMetas, action: Action): ILogicMetas {
@@ -33,15 +33,17 @@ export function metasReducer(state: ILogicMetas, action: Action): ILogicMetas {
     }
     case ActionType.REMOVE_NODE: {
       const removeNodeAction = action as RemoveNodeAction
-      if (removeNodeAction.parentId) {
-        return { ...state, nodes: state.nodes.map(node => node.id === removeNodeAction.parentId ? { ...node, children: childrenReducer(node.children, action) } : node) }
+      const parentId = getNodeParentId(removeNodeAction.payload, state.nodes)
+      if (parentId) {
+        return { ...state, nodes: state.nodes.map(node => node.id === parentId ? { ...node, children: childrenReducer(node.children, action) } : node) }
       }
       return { ...state, nodes: state.nodes.filter(nd => nd.id !== removeNodeAction.payload) }
     }
     case ActionType.REMOVE_EDGE: {
       const removeEdgeAction = action as RemoveEdgeAction
-      if (removeEdgeAction.parentId) {
-        return { ...state, nodes: state.nodes.map(node => node.id === removeEdgeAction.parentId ? { ...node, children: childrenReducer(node.children, action) } : node) }
+      const parentId = getLineParentId(removeEdgeAction.payload, state.nodes)
+      if (parentId) {
+        return { ...state, nodes: state.nodes.map(node => node.id === parentId ? { ...node, children: childrenReducer(node.children, action) } : node) }
       }
       return { ...state, lines: state.lines.filter(line => line.id !== removeEdgeAction.payload) }
     }
@@ -59,4 +61,22 @@ export function metasReducer(state: ILogicMetas, action: Action): ILogicMetas {
     }
   }
   return state
+}
+
+function getNodeParentId(nodeId: string, nodes: IActivityNode[]) {
+  for (const node of nodes) {
+    for (const child of node.children?.nodes || []) {
+      child.id === nodeId
+      return node.id
+    }
+  }
+}
+
+function getLineParentId(lineId: string, nodes: IActivityNode[]) {
+  for (const node of nodes) {
+    for (const child of node.children?.lines || []) {
+      child.id === lineId
+      return node.id
+    }
+  }
 }

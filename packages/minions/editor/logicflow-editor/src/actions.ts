@@ -34,7 +34,6 @@ export interface AddNodeAction extends Action {
 }
 
 export interface RemoveNodeAction extends Action {
-  parentId?: string,
   payload: string // node uuid
 }
 
@@ -58,7 +57,6 @@ export interface ChangeEdgeAction extends Action {
 }
 
 export interface RemoveEdgeAction extends Action {
-  parentId?: string,
   payload: string // Edge uuid
 }
 

@@ -2,7 +2,7 @@ import { memo, useCallback } from "react"
 import styled from "styled-components"
 import { Button, Divider, Space } from "antd"
 import { ZoomInOutlined, ZoomOutOutlined } from "@ant-design/icons"
-import { MAX_ZOOM, MIN_ZOOM, useBackup, useGraph, useMarkChange, useRedo, useRedoList, useSelected, useUndo, useUndoList, useZoom, useZoomIn, useZoomOut } from "@rxdrag/minions-logicflow-editor"
+import { MAX_ZOOM, MIN_ZOOM, useRedo, useRedoList, useRemoveSelected, useSelected, useUndo, useUndoList, useZoom, useZoomIn, useZoomOut } from "@rxdrag/minions-logicflow-editor"
 import { undoIcon, redoIcon, mapIcon, zoomResetIcon } from "./icons"
 
 const StyledToolbar = styled.div`
@@ -32,20 +32,9 @@ export const Toolbar = memo((
   const { showMap, toggleShowMap } = props
   const { zoom, setZoom } = useZoom()
   const { selected } = useSelected()
-  const graph = useGraph()
   const { redoList } = useRedoList()
   const { undoList } = useUndoList()
-
-  const backup = useBackup()
-  const markeChange = useMarkChange()
-  const handleRemove = useCallback(() => {
-    if (selected) {
-      backup()
-      graph?.getCellById(selected)?.remove()
-      markeChange()
-    }
-
-  }, [backup, graph, markeChange, selected])
+  const handleRemove = useRemoveSelected()
 
   const zoomIn = useZoomIn()
   const zoomOut = useZoomOut()

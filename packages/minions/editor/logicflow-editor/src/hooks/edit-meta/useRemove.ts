@@ -9,16 +9,15 @@ export function useRemove() {
   const graph = useGraph()
 
   const handleRemoved = useCallback(({ cell }: { cell: Cell }) => {
-    const parentId = graph?.getCellById(cell.id).getParentId()
     if (cell.isNode()) {
-      const action: RemoveNodeAction = { type: ActionType.REMOVE_NODE, payload: cell.id, parentId: parentId }
+      const action: RemoveNodeAction = { type: ActionType.REMOVE_NODE, payload: cell.id }
       dispatch?.(action)
     }
     if (cell.isEdge()) {
-      const action: RemoveEdgeAction = { type: ActionType.REMOVE_EDGE, payload: cell.id, parentId: parentId }
+      const action: RemoveEdgeAction = { type: ActionType.REMOVE_EDGE, payload: cell.id }
       dispatch?.(action)
     }
-  }, [dispatch])
+  }, [dispatch, graph])
 
   useEffect(() => {
     if (graph) {
