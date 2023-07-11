@@ -10,6 +10,7 @@ export interface IcustomizedLoopConifg {
 @Activity(CustomizedLoop.NAME)
 export class CustomizedLoop extends AbstractActivity<IcustomizedLoopConifg> {
   public static NAME = "system.customizedLoop"
+  public static PORT_INPUT = "input"
   public static PORT_OUTPUT = "output"
   public static PORT_FINISHED = "finished"
   
@@ -26,7 +27,7 @@ export class CustomizedLoop extends AbstractActivity<IcustomizedLoopConifg> {
       //把子编排的出口，挂接到本地处理函数
       const outputPortMeta = this.meta.outPorts?.find(port=>port.name === CustomizedLoop.PORT_OUTPUT)
       if(outputPortMeta?.id){
-        this.logicFlow?.jointers?.getOutput(outputPortMeta?.id)?.connect(this.oneOutputHandler)
+        this.logicFlow?.jointers?.getOutput(outputPortMeta?.name)?.connect(this.oneOutputHandler)
       }else{
         console.error("No output port in CustomizedLoop")
       }
@@ -70,7 +71,7 @@ export class CustomizedLoop extends AbstractActivity<IcustomizedLoopConifg> {
   }
 
   getInput(){
-    return this.logicFlow?.jointers?.getInput("input")
+    return this.logicFlow?.jointers?.getInput(CustomizedLoop.PORT_INPUT)
   }
 
   oneOutputHandler = (value: unknown)=>{

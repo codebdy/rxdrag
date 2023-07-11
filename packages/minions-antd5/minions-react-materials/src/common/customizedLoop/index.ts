@@ -13,19 +13,19 @@ export const customizedLoopMaterial: IRxDragActivityMaterial = {
     inPorts: [
       {
         id: createUuid(),
-        name: "input",
+        name: CustomizedLoop.PORT_INPUT,
         label: "",
       },
     ],
     outPorts: [
       {
         id: createUuid(),
-        name: "output",
+        name: CustomizedLoop.PORT_OUTPUT,
         label: "$oneOutput",
       },
       {
         id: createUuid(),
-        name: "finished",
+        name: CustomizedLoop.PORT_FINISHED,
         label: "$finished",
       },
     ],
