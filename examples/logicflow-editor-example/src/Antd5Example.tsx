@@ -25,38 +25,24 @@ export const Antd5Example = memo(() => {
       }}
     >
       <Fieldy>
-        <Form
-          labelAlign="left"
-          colon={false}
-          labelCol={{ span: 7 }}
-          wrapperCol={{ span: 17 }}
-          autoComplete="off"
-          labelWrap={true}
-          style={{
-            flex: 1,
-            height: '100%',
-            display: "flex",
-          }}
-        >
-          <ShellContainer>
-            <LogicFlowEditorAntd5
-              //value={inputValue}
-              //onChange={handleChange}
-              //controllerMetas={[inputValue]}
-              materialCategories={activityMaterialCategories}
-              locales={activityMaterialLocales}
-              value={{
-                nodes: [],
-                lines: []
-              }}
-            // setters={{
-            //   VariableSelect,
-            //   PropSelect,
-            //   ReactionSelect,
-            // }}
-            />
-          </ShellContainer>
-        </Form>
+        <ShellContainer>
+          <LogicFlowEditorAntd5
+            //value={inputValue}
+            //onChange={handleChange}
+            //controllerMetas={[inputValue]}
+            materialCategories={activityMaterialCategories}
+            locales={activityMaterialLocales}
+            value={{
+              nodes: [],
+              lines: []
+            }}
+          // setters={{
+          //   VariableSelect,
+          //   PropSelect,
+          //   ReactionSelect,
+          // }}
+          />
+        </ShellContainer>
       </Fieldy>
     </ConfigProvider>
   )

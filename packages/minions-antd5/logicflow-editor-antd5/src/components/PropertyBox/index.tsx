@@ -1,4 +1,4 @@
-import { Form, Input, InputNumber, Radio, Select, Slider, Switch } from "antd"
+import { Input, InputNumber, Radio, Select, Slider, Switch } from "antd"
 import React, { Fragment, memo, useCallback, useMemo } from "react"
 import styled from "styled-components"
 import { PortsInput } from "./PortsInput"
@@ -10,6 +10,7 @@ import { INodeSchema } from "@rxdrag/schema"
 import { IComponents } from "@rxdrag/react-shared"
 import { ComponentRender } from "@rxdrag/react-runner"
 import { FormValue } from "@rxdrag/fieldy"
+import { FormItem, FormLayout } from "@rxdrag/react-antd-components"
 
 const EmptyContainer = styled.div`
   display: flex;
@@ -52,7 +53,13 @@ export const PropertyBox = memo((
   }, [backup, dispatch, markeChange, node])
 
   return (
-    <>
+    <FormLayout
+      labelAlign="left"
+      colon={false}
+      labelCol={{ span: 7 }}
+      wrapperCol={{ span: 17 }}
+      labelWrap={true}
+    >
       {
         node
           ?
@@ -66,7 +73,7 @@ export const PropertyBox = memo((
               <ComponentRender
                 components={{
                   Fragment: Fragment,
-                  FormItem: Form.Item,
+                  FormItem: FormItem,
                   Input,
                   Select,
                   Switch,
@@ -87,6 +94,6 @@ export const PropertyBox = memo((
             {/* <Empty /> */}
           </EmptyContainer>
       }
-    </>
+    </FormLayout>
   )
 })
