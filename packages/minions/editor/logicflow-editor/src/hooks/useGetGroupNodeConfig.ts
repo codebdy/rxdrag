@@ -4,6 +4,11 @@ import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { useTransformPorts } from "./useTransformPorts";
 import { useGroupPortsConfig } from "./useGroupPortsConfig";
 
+export const GroupSize = {
+  width:360,
+  height:160,
+}
+
 export function useGetGroupNodeConfig(token: IThemeToken) {
   const portsGroup = useGroupPortsConfig(token)
   const transformPorts = useTransformPorts()
@@ -15,8 +20,8 @@ export function useGetGroupNodeConfig(token: IThemeToken) {
       x: nodeMeta.x6Node?.x || 340,
       y: nodeMeta.x6Node?.y || 240,
       stroke: token.colorBorder,
-      width: nodeMeta.x6Node?.width || 360,
-      height: nodeMeta.x6Node?.height || 160,
+      width: nodeMeta.x6Node?.width || GroupSize.width,
+      height: nodeMeta.x6Node?.height || GroupSize.height,
       zIndex: 1,
       label: nodeMeta.label || "Group",
       attrs: {

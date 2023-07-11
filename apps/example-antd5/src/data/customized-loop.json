@@ -84,6 +84,20 @@
                     "label": "点击",
                     "nodes": [
                       {
+                        "id": "b001f51d-4c4d-4bf3-b877-6d261f7a2cdd",
+                        "label": "输入",
+                        "type": "Start",
+                        "activityName": "start",
+                        "inPorts": [],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 40,
+                          "y": 100,
+                          "width": 20,
+                          "height": 20
+                        }
+                      },
+                      {
                         "id": "1df659f5-1c5c-40c0-9033-722af66bd8b6",
                         "label": "自定义循环",
                         "type": "EmbeddedFlow",
@@ -108,72 +122,29 @@
                           }
                         ],
                         "x6Node": {
-                          "x": 80,
+                          "x": 140,
                           "y": 90,
-                          "width": 628,
-                          "height": 172
+                          "width": 408,
+                          "height": 162
                         },
                         "children": {
                           "nodes": [
                             {
-                              "id": "fefd2727-b215-4769-bcd0-dc9544c76036",
-                              "label": "条件判断",
+                              "id": "35639d5e-1860-4baf-afee-f8591ee05eba",
+                              "label": "调试",
                               "type": "Activity",
-                              "activityName": "system.condition",
+                              "activityName": "system.debug",
                               "inPorts": [
                                 {
-                                  "id": "41f477fd-4c4b-4418-9929-82bcd8c205ad",
+                                  "id": "4fb9c755-1d8c-4baa-8234-8661044ba698",
                                   "name": "input",
                                   "label": ""
                                 }
                               ],
-                              "outPorts": [
-                                {
-                                  "id": "9e9a11a9-11d9-4b4a-992d-58681c19015c",
-                                  "name": "true",
-                                  "label": "是"
-                                },
-                                {
-                                  "id": "83fa493b-b423-4ff4-b3be-6efd64b46e41",
-                                  "name": "false",
-                                  "label": "否"
-                                }
-                              ],
+                              "outPorts": [],
                               "x6Node": {
-                                "x": 130,
+                                "x": 200,
                                 "y": 160,
-                                "width": 116,
-                                "height": 32
-                              },
-                              "parentId": "1df659f5-1c5c-40c0-9033-722af66bd8b6"
-                            },
-                            {
-                              "id": "35295e29-87fd-4cf7-a7af-414d458da358",
-                              "label": "循环",
-                              "type": "Activity",
-                              "activityName": "system.loop",
-                              "inPorts": [
-                                {
-                                  "id": "ee92b15c-e988-4386-8c45-0f13ada2b948",
-                                  "name": "input",
-                                  "label": ""
-                                }
-                              ],
-                              "outPorts": [
-                                {
-                                  "id": "86677847-b3cc-49f2-acc3-579aa2235c07",
-                                  "name": "output",
-                                  "label": "单次输出"
-                                },
-                                {
-                                  "id": "a6fd00e0-ef2d-4e86-ad8e-3b14a3c6d5bb",
-                                  "name": "finished",
-                                  "label": "结束"
-                                }
-                              ],
-                              "x6Node": {
-                                "x": 390,
-                                "y": 140,
                                 "width": 88,
                                 "height": 32
                               },
@@ -182,43 +153,35 @@
                           ],
                           "lines": [
                             {
-                              "id": "ab1879ad-6829-4f46-9eb5-158dfff28cef",
-                              "source": {
-                                "nodeId": "fefd2727-b215-4769-bcd0-dc9544c76036",
-                                "portId": "83fa493b-b423-4ff4-b3be-6efd64b46e41"
-                              },
-                              "target": {
-                                "nodeId": "1df659f5-1c5c-40c0-9033-722af66bd8b6",
-                                "portId": "591a7c99-341a-4eae-a7c5-58eb658dbec8"
-                              }
-                            },
-                            {
-                              "id": "7956075a-06f1-46b9-a3b5-37ff487fffcc",
+                              "id": "3f48aa56-dbbb-42c4-8802-cba8cf99e6ed",
                               "source": {
                                 "nodeId": "1df659f5-1c5c-40c0-9033-722af66bd8b6",
                                 "portId": "25bcb4de-e3f0-410e-b6b1-b01d36643dba"
                               },
                               "target": {
-                                "nodeId": "fefd2727-b215-4769-bcd0-dc9544c76036",
-                                "portId": "41f477fd-4c4b-4418-9929-82bcd8c205ad"
-                              }
-                            },
-                            {
-                              "id": "d6951c2f-585e-4be7-aede-a509f2b828a3",
-                              "source": {
-                                "nodeId": "35295e29-87fd-4cf7-a7af-414d458da358",
-                                "portId": "86677847-b3cc-49f2-acc3-579aa2235c07"
-                              },
-                              "target": {
-                                "nodeId": "1df659f5-1c5c-40c0-9033-722af66bd8b6",
-                                "portId": "3d9dde96-4b20-442c-ada4-472f010adc97"
+                                "nodeId": "35639d5e-1860-4baf-afee-f8591ee05eba",
+                                "portId": "4fb9c755-1d8c-4baa-8234-8661044ba698"
                               }
                             }
                           ]
+                        },
+                        "config": {
+                          "times": 5
                         }
                       }
                     ],
-                    "lines": []
+                    "lines": [
+                      {
+                        "id": "076008e5-1ced-4350-870e-efd41f835ad0",
+                        "source": {
+                          "nodeId": "b001f51d-4c4d-4bf3-b877-6d261f7a2cdd"
+                        },
+                        "target": {
+                          "nodeId": "1df659f5-1c5c-40c0-9033-722af66bd8b6",
+                          "portId": "25bcb4de-e3f0-410e-b6b1-b01d36643dba"
+                        }
+                      }
+                    ]
                   }
                 ]
               },

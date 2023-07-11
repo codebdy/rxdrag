@@ -1,4 +1,5 @@
 import { Node } from "@antv/x6"
+import { GroupSize } from "../useGetGroupNodeConfig"
 
 export function getParentSize(node: Node) {
   const children = node.getChildren()
@@ -11,7 +12,7 @@ export function getParentSize(node: Node) {
     let originSize = parent.prop('originSize')
     if (originSize == null) {
       originSize = parent.getSize()
-      parent.prop('originSize', originSize)
+      parent.prop('originSize', GroupSize)
     }
 
     let originPosition = parent.prop('originPosition')
