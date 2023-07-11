@@ -1,49 +1,61 @@
 import { useEffect } from "react";
-import { useGetNodeConfig } from "./useGetNodeConfig";
 import { useGetEdgeConfig } from "./useGetEdgeConfig";
 import { useGraph } from "./useGraph";
 import { useMetas } from "./useMetas";
-import { useUpdateNode } from "./useUpdateNode";
+import { useShowNode } from "./useShowNode";
+import { ActivityType, ILineDefine } from "@rxdrag/minions-schema";
+import { useShowEdge } from "./useShowEdge";
+import { IActivityNode, ILogicMetas } from "../interfaces";
 
 export function useShowCells() {
   const graph = useGraph()
-  const getNodeConfig = useGetNodeConfig()
   const getEdgeConfig = useGetEdgeConfig()
-  const updateNode = useUpdateNode()
+  const showNode = useShowNode()
+  const showEdge = useShowEdge()
 
   const { metas } = useMetas()
   useEffect(() => {
     if (graph) {
-      const oldNodes = graph.getNodes()
-      const oldEdges = graph.getEdges()
       const oldCells = graph.getCells()
-      for (const reactionNode of metas?.nodes || []) {
-        const graphNode = oldNodes.find(node => node.id === reactionNode.id)
-        //更新
-        if (graphNode && reactionNode.x6Node) {
-          updateNode(graphNode, reactionNode)
-        } else {//新建
-          const nodeConfig = getNodeConfig(reactionNode)
-          const node = graph.createNode(nodeConfig)
-          graph.addNode(node)
+      //先显示顶级节点
+      for (const nodeMeta of metas?.nodes || []) {
+        const node = showNode(nodeMeta)
+        if (nodeMeta.type === ActivityType.EmbeddedFlow) {
+          for (const childMeta of nodeMeta.children?.nodes || []) {
+            const child = showNode(childMeta)
+            child && node?.addChild(child)
+          }
+
+          for (const childLine of nodeMeta.children?.lines || []) {
+            showEdge(childLine)
+          }
         }
       }
 
-      for (const invoke of metas?.lines || []) {
-        const graphEdge = oldEdges.find(edge => edge.id === invoke.id)
-        if (!graphEdge) {
-          const edge = graph.createEdge(getEdgeConfig(invoke))
-          graph.addEdge(edge)
-        }
+      for (const lineMeta of metas?.lines || []) {
+        showEdge(lineMeta)
       }
 
       //删除不存在的
       for (const cell of oldCells) {
-        if (![...metas?.nodes || [], ...metas?.lines || []].find(el => el.id === cell.id)) {
+        if (!getAllMetas(metas).find(el => el.id === cell.id)) {
           cell.remove()
         }
       }
-
     }
-  }, [getEdgeConfig, getNodeConfig, graph, metas, metas?.lines, metas?.nodes, updateNode])
+  }, [getEdgeConfig, showEdge, showNode, graph, metas, metas?.lines, metas?.nodes])
+}
+
+function getAllMetas(logicMetas?: ILogicMetas) {
+  if (!logicMetas) {
+    return []
+  }
+  const metas: (ILineDefine | IActivityNode)[] = [...logicMetas.lines, ...logicMetas.nodes]
+  for (const nodeMeta of logicMetas.nodes) {
+    if (nodeMeta.type === ActivityType.EmbeddedFlow) {
+      metas.push(...nodeMeta.children?.nodes || [], ...nodeMeta.children?.lines || [])
+    }
+  }
+
+  return metas
 }

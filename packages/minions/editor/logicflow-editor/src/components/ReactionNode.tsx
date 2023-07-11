@@ -16,6 +16,11 @@ insertCss(`
   border-radius: 50%;
 }
 
+.x6-node-selected .group-node {
+  outline: solid rgba(24,144,255, 0.5) 4px;
+  border-radius: 6px;
+}
+
 .x6-edge:hover path:nth-child(2){
   stroke: #1890ff;
   stroke-width: 1px;

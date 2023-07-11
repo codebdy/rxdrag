@@ -113,3 +113,5 @@ storybook-static
 vite.config.js.timestamp-*.mjs
 
 apps/core/stats.*
+
+pnpm-lock.yaml

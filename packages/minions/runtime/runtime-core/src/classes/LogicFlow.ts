@@ -1,15 +1,15 @@
 import { IActivity, IActivityJointers } from "../interfaces";
 import { ActivityJointers } from "./ActivityJointer";
 import { Jointer } from "./Jointer";
-import { ActivityType, ILogicFlowDefine } from "@rxdrag/minions-schema"
+import { ActivityType, ILogicFlowDefine, ILogicFlowMetas } from "@rxdrag/minions-schema"
 import { activities } from "./activities";
 
 export class LogicFlow<LogicFlowContext = unknown> {
   id: string;
   jointers: IActivityJointers = new ActivityJointers();
   activities: IActivity[] = [];
-  constructor(private flowMeta: ILogicFlowDefine, private context: LogicFlowContext) {
 
+  constructor(private flowMeta: ILogicFlowDefine, private context: LogicFlowContext) {
     //注意这个id的处理
     this.id = flowMeta.id
 
@@ -19,6 +19,7 @@ export class LogicFlow<LogicFlowContext = unknown> {
     //第二步， 构建连接关系
     this.contructLines()
   }
+
   destory(): void {
     for (const activity of this.activities) {
       activity.destory()
@@ -29,17 +30,18 @@ export class LogicFlow<LogicFlowContext = unknown> {
 
   //构建一个图的所有节点
   private constructActivities() {
-    for (const activityMeta of this.flowMeta.nodes || []) {
+    for (const activityMeta of this.flowMeta.nodes) {
       switch (activityMeta.type) {
         case ActivityType.Start:
-          //start只有一个端口，所以name可以跟meta name一样
-          this.jointers.inputs.push(new Jointer(activityMeta.id, activityMeta.activityName || "input"));
+          //start只有一个端口，可能会变成其它流程的端口，所以name谨慎处理
+          this.jointers.inputs.push(new Jointer(activityMeta.id, activityMeta.name || "input"));
           break;
         case ActivityType.End:
-          //end 只有一个端口，所以name可以跟meta name一样
-          this.jointers.outputs.push(new Jointer(activityMeta.id, activityMeta.activityName || "output"));
+          //end 只有一个端口，可能会变成其它流程的端口，所以name谨慎处理
+          this.jointers.outputs.push(new Jointer(activityMeta.id, activityMeta.name || "output"));
           break;
         case ActivityType.Activity:
+        case ActivityType.EmbeddedFlow:
         case ActivityType.LogicFlowActivity:
           if (activityMeta.activityName) {
             const activityInfo = activities[activityMeta.activityName]
@@ -47,7 +49,11 @@ export class LogicFlow<LogicFlowContext = unknown> {
             if (!activityClass) {
               throw new Error("Can not find activity by name:" + activityMeta.activityName)
             }
-            const activity = new activityClass(activityMeta, this.context);
+            let newMeta = activityMeta
+            if (activityMeta.type === ActivityType.EmbeddedFlow) {
+              newMeta = { ...activityMeta, children: this.getNodeChildren(activityMeta.id) }
+            }
+            const activity = new activityClass(newMeta, this.context);
 
             //构造Jointers
             for (const out of activityMeta.outPorts || []) {
@@ -89,12 +95,11 @@ export class LogicFlow<LogicFlowContext = unknown> {
 
   //连接一个图的所有节点，把所有的jointer连起来
   private contructLines() {
-    for (const lineMeta of this.flowMeta.lines || []) {
+    for (const lineMeta of this.flowMeta.lines) {
       let sourceJointer = this.jointers.inputs.find(jointer => jointer.id === lineMeta.source.nodeId)
       if (!sourceJointer && lineMeta.source.portId) {
         sourceJointer = this.activities.find(reaction => reaction.id === lineMeta.source.nodeId)?.jointers?.outputs.find(output => output.id === lineMeta.source.portId)
       }
-
       if (!sourceJointer) {
         throw new Error("Can find source jointer")
       }
@@ -110,5 +115,43 @@ export class LogicFlow<LogicFlowContext = unknown> {
 
       sourceJointer.connect(targetJointer.push)
     }
+  }
+
+  getNode = (id: string) => {
+    return this.flowMeta?.nodes?.find(node => node.id === id)
+  }
+
+  //重新构造children，添加边界节点，修改连线
+  getNodeChildren = (id: string) => {
+    const groupNode = this.getNode(id)
+    const children: ILogicFlowMetas = {
+      lines: [],//连线重新整理
+      nodes: [...groupNode?.children?.nodes || []],//节点全部纳入
+    }
+
+    //父节点的input创建为start, portId=>start 节点 id
+    for (const input of groupNode?.inPorts || []) {
+      children.nodes.push({ id: input.id, type: ActivityType.Start, activityName: "start", name: input.name })
+    }
+
+    //父节点的output创建为end, portId=>end 节点 id
+    for (const output of groupNode?.outPorts || []) {
+      children.nodes.push({ id: output.id, type: ActivityType.End, activityName: "end", name: output.name })
+    }
+
+    for (const line of groupNode?.children?.lines || []) {
+      let newLine = line
+      //起点是父节点输入端口， 连接到新创建的开始节点
+      if (line.source.nodeId === id && line.source.portId) {
+        newLine = { ...line, source: { nodeId: line.source.portId } }
+      }
+      //终点是父节点输入端口, 连接到新创建的结束节点
+      if (line.target.nodeId === id && line.target.portId) {
+        newLine = { ...newLine, target: { nodeId: line.target.portId } }
+      }
+      children.lines.push(newLine)
+    }
+
+    return children
   }
 }

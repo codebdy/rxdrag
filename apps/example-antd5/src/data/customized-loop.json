@@ -1,0 +1,352 @@
+{
+  "componentName": "Root",
+  "slots": {},
+  "children": [
+    {
+      "componentName": "TwoColumnLayout",
+      "props": {},
+      "slots": {
+        "header": {
+          "componentName": "Layout.Header",
+          "props": {
+            "style": {
+              "display": "flex",
+              "justifyContent": "space-between",
+              "alignItems": "center"
+            }
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Avatar",
+              "props": {},
+              "slots": {
+                "icon": {
+                  "componentName": "IconView",
+                  "props": {
+                    "icon": {
+                      "iconKey": "UserOutlined"
+                    },
+                    "style": {}
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              },
+              "children": []
+            }
+          ]
+        },
+        "sider": {
+          "componentName": "Layout.Sider",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Logo",
+              "slots": {},
+              "children": []
+            },
+            {
+              "componentName": "Menu",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        "content": {
+          "componentName": "Layout.Content",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Button",
+              "props": {
+                "type": "primary",
+                "title": "Button"
+              },
+              "x-controller": {
+                "id": "41ca8109-0a80-4e25-aa65-fda37920637c",
+                "controllerType": "logicFlow",
+                "global": true,
+                "name": "按钮4",
+                "events": [
+                  {
+                    "id": "d7520a20-4abc-4e03-97a5-988ae7000e1d",
+                    "name": "init",
+                    "label": "初始化",
+                    "nodes": [],
+                    "lines": []
+                  },
+                  {
+                    "id": "72bacb71-51e5-488d-8305-ff21e1892f1b",
+                    "name": "onClick",
+                    "label": "点击",
+                    "nodes": [
+                      {
+                        "id": "b001f51d-4c4d-4bf3-b877-6d261f7a2cdd",
+                        "label": "输入",
+                        "type": "Start",
+                        "activityName": "start",
+                        "inPorts": [],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 40,
+                          "y": 100,
+                          "width": 20,
+                          "height": 20
+                        }
+                      },
+                      {
+                        "id": "71c2601f-7df6-4d51-895a-674930709e7a",
+                        "label": "调试",
+                        "type": "Activity",
+                        "activityName": "system.debug",
+                        "inPorts": [
+                          {
+                            "id": "d2f00992-8f55-45c3-a7e1-a73d1285e336",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 730,
+                          "y": 190,
+                          "width": 88,
+                          "height": 32
+                        },
+                        "config": {
+                          "tip": "单次输出"
+                        }
+                      },
+                      {
+                        "id": "442f0291-1448-40e4-b2c8-dde1dc3e711d",
+                        "label": "调试",
+                        "type": "Activity",
+                        "activityName": "system.debug",
+                        "inPorts": [
+                          {
+                            "id": "d2f00992-8f55-45c3-a7e1-a73d1285e336",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [],
+                        "x6Node": {
+                          "x": 760,
+                          "y": 310,
+                          "width": 88,
+                          "height": 32
+                        },
+                        "config": {
+                          "tip": "结束"
+                        }
+                      },
+                      {
+                        "id": "1df659f5-1c5c-40c0-9033-722af66bd8b6",
+                        "label": "自定义循环",
+                        "type": "EmbeddedFlow",
+                        "activityName": "system.customizedLoop",
+                        "inPorts": [
+                          {
+                            "id": "25bcb4de-e3f0-410e-b6b1-b01d36643dba",
+                            "name": "input",
+                            "label": ""
+                          }
+                        ],
+                        "outPorts": [
+                          {
+                            "id": "3d9dde96-4b20-442c-ada4-472f010adc97",
+                            "name": "output",
+                            "label": "单次输出"
+                          },
+                          {
+                            "id": "591a7c99-341a-4eae-a7c5-58eb658dbec8",
+                            "name": "finished",
+                            "label": "结束"
+                          }
+                        ],
+                        "x6Node": {
+                          "x": 220,
+                          "y": 80,
+                          "width": 388,
+                          "height": 258
+                        },
+                        "children": {
+                          "nodes": [
+                            {
+                              "id": "35639d5e-1860-4baf-afee-f8591ee05eba",
+                              "label": "调试",
+                              "type": "Activity",
+                              "activityName": "system.debug",
+                              "inPorts": [
+                                {
+                                  "id": "4fb9c755-1d8c-4baa-8234-8661044ba698",
+                                  "name": "input",
+                                  "label": ""
+                                }
+                              ],
+                              "outPorts": [],
+                              "x6Node": {
+                                "x": 450,
+                                "y": 250,
+                                "width": 88,
+                                "height": 48
+                              },
+                              "parentId": "1df659f5-1c5c-40c0-9033-722af66bd8b6",
+                              "config": {
+                                "tip": "表达式判断否"
+                              }
+                            },
+                            {
+                              "id": "1ceb1ee7-5fd6-43b0-9e30-d07352b5b8e5",
+                              "label": "条件判断",
+                              "type": "Activity",
+                              "activityName": "system.condition",
+                              "inPorts": [
+                                {
+                                  "id": "f7e1eb78-30c3-4025-80d9-ba8ed4365508",
+                                  "name": "input",
+                                  "label": ""
+                                }
+                              ],
+                              "outPorts": [
+                                {
+                                  "id": "a71f352d-d170-4027-b499-6de9ceb90c85",
+                                  "name": "true",
+                                  "label": "是"
+                                },
+                                {
+                                  "id": "c7b3751b-2d3b-462f-92b9-54ab8c1764af",
+                                  "name": "false",
+                                  "label": "否"
+                                }
+                              ],
+                              "x6Node": {
+                                "x": 270,
+                                "y": 120,
+                                "width": 116,
+                                "height": 32
+                              },
+                              "parentId": "1df659f5-1c5c-40c0-9033-722af66bd8b6",
+                              "config": {
+                                "trueExpression": "inputValue > 2"
+                              }
+                            }
+                          ],
+                          "lines": [
+                            {
+                              "id": "36736719-cfef-4a73-b3df-1968657cd655",
+                              "source": {
+                                "nodeId": "1df659f5-1c5c-40c0-9033-722af66bd8b6",
+                                "portId": "25bcb4de-e3f0-410e-b6b1-b01d36643dba"
+                              },
+                              "target": {
+                                "nodeId": "1ceb1ee7-5fd6-43b0-9e30-d07352b5b8e5",
+                                "portId": "f7e1eb78-30c3-4025-80d9-ba8ed4365508"
+                              }
+                            },
+                            {
+                              "id": "7076f153-50ef-4715-a2cf-b15e71b84b1e",
+                              "source": {
+                                "nodeId": "1ceb1ee7-5fd6-43b0-9e30-d07352b5b8e5",
+                                "portId": "a71f352d-d170-4027-b499-6de9ceb90c85"
+                              },
+                              "target": {
+                                "nodeId": "1df659f5-1c5c-40c0-9033-722af66bd8b6",
+                                "portId": "591a7c99-341a-4eae-a7c5-58eb658dbec8"
+                              }
+                            },
+                            {
+                              "id": "184192c0-1acd-402d-abb7-3a662f708732",
+                              "source": {
+                                "nodeId": "1ceb1ee7-5fd6-43b0-9e30-d07352b5b8e5",
+                                "portId": "c7b3751b-2d3b-462f-92b9-54ab8c1764af"
+                              },
+                              "target": {
+                                "nodeId": "35639d5e-1860-4baf-afee-f8591ee05eba",
+                                "portId": "4fb9c755-1d8c-4baa-8234-8661044ba698"
+                              }
+                            },
+                            {
+                              "id": "bb7ae3df-e2e4-4a62-88d4-ff1ebe69b797",
+                              "source": {
+                                "nodeId": "1ceb1ee7-5fd6-43b0-9e30-d07352b5b8e5",
+                                "portId": "c7b3751b-2d3b-462f-92b9-54ab8c1764af"
+                              },
+                              "target": {
+                                "nodeId": "1df659f5-1c5c-40c0-9033-722af66bd8b6",
+                                "portId": "3d9dde96-4b20-442c-ada4-472f010adc97"
+                              }
+                            }
+                          ]
+                        },
+                        "config": {
+                          "times": 5
+                        }
+                      }
+                    ],
+                    "lines": [
+                      {
+                        "id": "076008e5-1ced-4350-870e-efd41f835ad0",
+                        "source": {
+                          "nodeId": "b001f51d-4c4d-4bf3-b877-6d261f7a2cdd"
+                        },
+                        "target": {
+                          "nodeId": "1df659f5-1c5c-40c0-9033-722af66bd8b6",
+                          "portId": "25bcb4de-e3f0-410e-b6b1-b01d36643dba"
+                        }
+                      },
+                      {
+                        "id": "b9f82888-ce7b-4bdc-a849-40f9012cb0eb",
+                        "source": {
+                          "nodeId": "1df659f5-1c5c-40c0-9033-722af66bd8b6",
+                          "portId": "3d9dde96-4b20-442c-ada4-472f010adc97"
+                        },
+                        "target": {
+                          "nodeId": "71c2601f-7df6-4d51-895a-674930709e7a",
+                          "portId": "d2f00992-8f55-45c3-a7e1-a73d1285e336"
+                        }
+                      },
+                      {
+                        "id": "a92e7eb3-6ea9-4d95-bc52-7267845e5099",
+                        "source": {
+                          "nodeId": "1df659f5-1c5c-40c0-9033-722af66bd8b6",
+                          "portId": "591a7c99-341a-4eae-a7c5-58eb658dbec8"
+                        },
+                        "target": {
+                          "nodeId": "442f0291-1448-40e4-b2c8-dde1dc3e711d",
+                          "portId": "d2f00992-8f55-45c3-a7e1-a73d1285e336"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        "footer": {
+          "componentName": "Layout.Footer",
+          "props": {},
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Text",
+              "props": {
+                "value": "Apper Copyright ©2023",
+                "style": {}
+              },
+              "slots": {},
+              "children": []
+            }
+          ]
+        }
+      },
+      "children": []
+    }
+  ]
+}

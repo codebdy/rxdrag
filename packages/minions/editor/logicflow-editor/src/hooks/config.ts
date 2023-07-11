@@ -25,6 +25,25 @@ register({
   component: ReactionNode,
 })
 
+Graph.registerNode(
+  'group-node',
+  {
+    inherit: 'rect',
+    width: 80,
+    height: 40,
+    attrs: {
+      body: {
+        stroke: '#8f8f8f',
+        strokeWidth: 2,
+        fill: 'transparent',
+        rx: 6,
+        ry: 6,
+      },
+    },
+  },
+  true,
+)
+
 Graph.registerEdge(
   'reaction-edge',
   {

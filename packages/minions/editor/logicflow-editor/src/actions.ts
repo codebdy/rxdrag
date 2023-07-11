@@ -6,6 +6,7 @@ export enum ActionType {
   ADD_NODE = 'ReactionsEditor/ADD_NODE',
   REMOVE_NODE = 'ReactionsEditor/REMOVE_NODE',
   CHANGE_NODE = 'ReactionsEditor/CHANGE_NODE',
+  EMBED_NODE = 'ReactionsEditor/EMBED_NODE',
 
   ADD_EDGE = 'ReactionsEditor/ADD_EDGE',
   CHANGE_EDGE = 'ReactionsEditor/CHANGE_EDGE',
@@ -40,11 +41,18 @@ export interface ChangeNodeAction extends Action {
   payload: IActivityNode
 }
 
+export interface EmbedNodeAction extends Action {
+  parentId: string,
+  payload: IActivityNode
+}
+
 export interface AddEdgeAction extends Action {
+  parentId?: string,
   payload: ILineDefine
 }
 
 export interface ChangeEdgeAction extends Action {
+  parentId?: string,
   payload: ILineDefine
 }
 

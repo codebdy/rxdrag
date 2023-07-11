@@ -16,13 +16,17 @@ export const loopMaterial: IRxDragActivityMaterial = {
         name: "input",
         label: "",
       },
-
     ],
     outPorts: [
       {
         id: createUuid(),
-        name: "output",
-        label: "",
+        name: Loop.PORT_OUTPUT,
+        label: "$oneOutput",
+      },
+      {
+        id: createUuid(),
+        name: Loop.PORT_FINISHED,
+        label: "$finished",
       },
     ],
   },

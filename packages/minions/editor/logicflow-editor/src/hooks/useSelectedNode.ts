@@ -5,5 +5,16 @@ export function useSelectedNode() {
   const { selected } = useSelected()
   const { metas } = useMetas()
 
-  return metas?.nodes?.find(node => node.id === selected)
+  const nodeMeta = metas?.nodes?.find(node => node.id === selected)
+  if(nodeMeta){
+    return nodeMeta
+  }
+
+  for(const node of metas?.nodes||[]){
+    for(const child of node.children?.nodes||[]){
+      if(child.id === selected){
+        return child
+      }
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import { InputHandler, Activity, AbstractActivity, Input, DynamicInput } from "@rxdrag/minions-runtime"
+import { InputHandler, Activity, AbstractActivity, DynamicInput } from "@rxdrag/minions-runtime"
 import { IActivityDefine } from "@rxdrag/minions-schema"
 
 
@@ -10,6 +10,7 @@ export interface IJsCodeConfig {
 export class JsCode extends AbstractActivity<IJsCodeConfig> {
   public static NAME = "system.jsCode"
   private noPassInputs: string[] = []
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private inputs: any = {}
 
   constructor(meta: IActivityDefine<IJsCodeConfig>, options?: unknown) {
@@ -29,6 +30,7 @@ export class JsCode extends AbstractActivity<IJsCodeConfig> {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   outputHandler = (inputs: any) => {
     const expression = this.meta.config?.expression?.trim()
     if (expression) {

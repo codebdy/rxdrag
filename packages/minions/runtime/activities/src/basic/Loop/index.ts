@@ -10,13 +10,15 @@ export interface ILoopConfig {
 @Activity(Loop.NAME)
 export class Loop extends AbstractActivity<ILoopConfig> {
   public static NAME = "system.loop"
+  public static PORT_OUTPUT = "output"
+  public static PORT_FINISHED = "finished"
 
   constructor(meta: IActivityDefine<ILoopConfig>) {
     super(meta)
   }
 
   @Input()
-  inputHandler = (inputValue?: any) => {
+  inputHandler = (inputValue?: unknown) => {
     if (this.meta.config?.fromInput) {
       if (!_.isArray(inputValue)) {
         console.error("Loop input is not array")
@@ -30,9 +32,10 @@ export class Loop extends AbstractActivity<ILoopConfig> {
         this.output(i)
       }
     }
+    this.next(inputValue, Loop.PORT_FINISHED)
   }
 
-  output = (value: any) => {
-    this.next(value)
+  output = (value: unknown) => {
+    this.next(value, Loop.PORT_OUTPUT)
   }
 }

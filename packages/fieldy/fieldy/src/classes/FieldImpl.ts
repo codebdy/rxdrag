@@ -16,6 +16,9 @@ export class FieldImpl implements IField {
       form.fieldy.subscribeToFormChange(form.name, this.handleFieldReaction)
     }
   }
+  getModified(): boolean {
+    throw this.fieldy.getFieldState(this.form.name, this.fieldPath)?.modified;
+  }
 
   getDefaultValue(): unknown {
     return this.fieldy.getFieldDefaultValue(this.form.name, this.fieldPath)

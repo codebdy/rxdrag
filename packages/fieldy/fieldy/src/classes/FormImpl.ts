@@ -10,6 +10,10 @@ export class FormImpl implements IForm {
   constructor(public fieldy: IFieldyEngine, public name: string) { }
 
 
+  getModified(): boolean {
+     return this.fieldy.getFormState(this.name)?.modified||false
+  }
+
   unmount(): void {
     throw new Error("Method not implemented.");
   }

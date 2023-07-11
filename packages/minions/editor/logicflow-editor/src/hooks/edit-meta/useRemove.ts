@@ -2,7 +2,7 @@ import { Cell } from "@antv/x6";
 import { useCallback, useEffect } from "react";
 import { useDispatch } from "../useDispatch";
 import { useGraph } from "../useGraph";
-import { ActionType } from "../../actions";
+import { ActionType, RemoveEdgeAction, RemoveNodeAction } from "../../actions";
 
 export function useRemove() {
   const dispatch = useDispatch()
@@ -10,19 +10,20 @@ export function useRemove() {
 
   const handleRemoved = useCallback(({ cell }: { cell: Cell }) => {
     if (cell.isNode()) {
-      dispatch?.({ type: ActionType.REMOVE_NODE, payload: cell.id })
+      const action: RemoveNodeAction = { type: ActionType.REMOVE_NODE, payload: cell.id }
+      dispatch?.(action)
     }
     if (cell.isEdge()) {
-      dispatch?.({ type: ActionType.REMOVE_EDGE, payload: cell.id })
+      const action: RemoveEdgeAction = { type: ActionType.REMOVE_EDGE, payload: cell.id }
+      dispatch?.(action)
     }
-  }, [dispatch])
+  }, [dispatch, graph])
 
   useEffect(() => {
     if (graph) {
       graph.on("cell:removed", handleRemoved);
       return () => {
         graph.off("cell:removed", handleRemoved)
-
       }
     }
   }, [graph, handleRemoved])

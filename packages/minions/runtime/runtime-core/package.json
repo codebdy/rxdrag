@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/minions-runtime",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "author": "Water.Li",
   "module": "index.ts",
   "files": [
