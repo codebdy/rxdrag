@@ -35,7 +35,7 @@ export const Toolbox = memo((props: {
         })
       }
     </ToolItemCategory>
-  })), [])
+  })), [materialCategories])
   return (
     <Collapse
       defaultActiveKey={[materialCategories?.[0]?.name]}

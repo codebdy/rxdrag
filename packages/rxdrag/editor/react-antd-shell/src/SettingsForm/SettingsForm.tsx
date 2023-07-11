@@ -7,6 +7,7 @@ import { INodeMeta } from "@rxdrag/schema";
 import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput,  CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, ExpressionInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, SizeInput, SlotSwitch, StyleSetter, TabPanel, Tabs, TextAlignSelect, ValueInput } from "@rxdrag/react-antd-props-inputs";
 import { ControllerSetter } from "./components";
 import { FormValue } from "@rxdrag/fieldy"
+import { FormItem } from "@rxdrag/react-antd-components";
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -70,7 +71,7 @@ export const SettingsForm = memo(() => {
                   components={{
                     Tabs,
                     TabPanel,
-                    FormItem: Form.Item,
+                    FormItem: FormItem,
                     Input,
                     TextArea: Input.TextArea,
                     Select,

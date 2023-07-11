@@ -1,14 +1,14 @@
 import { formItemIcon } from "./icon";
 import { formItemLocales, formItemResourceLocales } from "./locales";
 import { formItemSchema } from "./schema";
-import { Form } from "antd";
 import { IComponentMaterial } from "@rxdrag/react-core";
+import { FormItem } from "@rxdrag/react-antd-components";
 
 const name = "FormItem"
 export const FormItemMaterial: IComponentMaterial = {
   componentName: name,
-  component: Form.Item,
-  designer: Form.Item,
+  component: FormItem,
+  designer: FormItem,
   designerLocales: formItemLocales,
   propsSchema: formItemSchema,
   resource: {
