@@ -21,7 +21,8 @@ export interface ILogicFlowConfig {
 
 export interface IActivityDefine<ConfigMeta = unknown> {
   id: string;
-  //name?: string;
+  //节点名称，一般用于开始结束、节点
+  name?: string;
   type: ActivityType;
   activityName: string;
   label?: string;
