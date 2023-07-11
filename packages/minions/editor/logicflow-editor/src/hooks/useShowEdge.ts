@@ -16,7 +16,9 @@ export function useShowEdge() {
     if (!graphEdge) {
       const edge = graph.createEdge(getEdgeConfig(lineMeta))
       graph.addEdge(edge)
+      return edge
     }
+    return graphEdge
   }, [graph, getEdgeConfig])
 
   return showEdge

@@ -9,12 +9,13 @@ export function useRemove() {
   const graph = useGraph()
 
   const handleRemoved = useCallback(({ cell }: { cell: Cell }) => {
+    const parentId = graph?.getCellById(cell.id).getParentId()
     if (cell.isNode()) {
-      const action: RemoveNodeAction = { type: ActionType.REMOVE_NODE, payload: cell.id, parentId: cell.getParentId() }
+      const action: RemoveNodeAction = { type: ActionType.REMOVE_NODE, payload: cell.id, parentId: parentId }
       dispatch?.(action)
     }
     if (cell.isEdge()) {
-      const action: RemoveEdgeAction = { type: ActionType.REMOVE_EDGE, payload: cell.id, parentId: cell.getParentId() }
+      const action: RemoveEdgeAction = { type: ActionType.REMOVE_EDGE, payload: cell.id, parentId: parentId }
       dispatch?.(action)
     }
   }, [dispatch])
@@ -24,7 +25,6 @@ export function useRemove() {
       graph.on("cell:removed", handleRemoved);
       return () => {
         graph.off("cell:removed", handleRemoved)
-
       }
     }
   }, [graph, handleRemoved])
