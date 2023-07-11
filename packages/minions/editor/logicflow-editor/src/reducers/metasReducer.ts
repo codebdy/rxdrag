@@ -48,9 +48,11 @@ export function metasReducer(state: ILogicMetas, action: Action): ILogicMetas {
 
     case ActionType.EMBED_NODE: {
       const embedNodeAction = action as EmbedNodeAction
-      const newNode = state.nodes.find(node => node.id === embedNodeAction.parentId)
-      if (newNode) {
-        return { ...state, nodes: [...state.nodes.filter(nd => nd.id !== embedNodeAction.parentId), { ...newNode, children: childrenReducer(newNode.children, action) }] }
+      const newParentNode = state.nodes.find(node => node.id === embedNodeAction.parentId)
+
+      if (newParentNode) {
+        const newNodes = [...state.nodes.filter(nd => nd.id !== embedNodeAction.payload.id && nd.id !== embedNodeAction.parentId), { ...newParentNode, children: childrenReducer(newParentNode.children, action) }]
+        return { ...state, nodes: newNodes }
       } else {
         console.error("Parent node not found when embed node")
       }

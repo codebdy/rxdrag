@@ -4,7 +4,8 @@ import { INodeData } from "../../interfaces";
 import { Node } from "@antv/x6";
 import { useBackup } from "./useBackup";
 import { useDispatch } from "../useDispatch";
-import { ActionType } from "../../actions";
+import { ActionType, EmbedNodeAction } from "../../actions";
+import { useMarkChange } from "./useMarkChange";
 
 /**
  * 本函数会导致一个拖入操作撤销两次，暂无解决办法
@@ -13,16 +14,18 @@ export function useNodeEmbedded() {
   const graph = useGraph()
   const backup = useBackup()
   const dispatch = useDispatch()
-
+  const markeChange = useMarkChange()
+  
   const handelEmbedded = useCallback((args: { node: Node }) => {
     const { node } = args
     backup()
     const data = node.getData() as INodeData
     const { meta } = data;
+    const parentId = node.getParentId()
     const newMeta = {
       ...meta,
       id: node.id,
-      parentId: node.getParentId(),
+      parentId,
       x6Node: {
         x: node.getPosition().x,
         y: node.getPosition().y,
@@ -31,11 +34,20 @@ export function useNodeEmbedded() {
       }
     }
     node.setData({ ...data, meta: newMeta })
-    dispatch?.({
-      type: ActionType.EMBED_NODE,
-      payload: newMeta
-    })
-  }, [dispatch, backup])
+
+    if(parentId){
+      const action:EmbedNodeAction = {
+        type: ActionType.EMBED_NODE,
+        parentId: parentId,
+        payload: newMeta
+      }
+      dispatch?.(action)
+      markeChange()
+    }else{
+      console.error("embed no parentId")
+    }
+
+  }, [dispatch, backup, markeChange])
 
   useEffect(() => {
     graph?.on('node:embedded', handelEmbedded)
