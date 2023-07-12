@@ -153,8 +153,8 @@ export function useCreateGraph(token: IThemeToken, store: EditorStore) {
                 return false
               }
 
-              //如果目标节点在容器内
-              if (targetMeta?.parentId === soureMeta.id) {
+              //如果目标节点在容器内，或者在其它容器内
+              if (targetMeta?.parentId) {
                 return false;
               }
             }
