@@ -26,6 +26,7 @@ export const PropertyBox = memo((
 ) => {
   const { setters } = props;
   const node = useSelectedNode()
+
   const getMaterial = useGetMaterial()
   const localesManager = useLocalesManager()
   const dispatch = useDispatch()
@@ -42,8 +43,8 @@ export const PropertyBox = memo((
       return undefined
     }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [localesManager, material?.schema])
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleNodeChange = useCallback((nodeData: any) => {
     backup()
