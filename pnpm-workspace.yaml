@@ -11,8 +11,8 @@ packages:
   - 'packages/minions/editor/*'
   - 'packages/minions/runtime/*'
   - 'packages/minions-antd5/*'
-  - 'apps/*'
-  #- 'examples/*'
+  #- 'apps/*'
+  - 'examples/*'
   - 'internal/vite-config'
   # exclude packages that are inside test directories
   - '!**/test/**'

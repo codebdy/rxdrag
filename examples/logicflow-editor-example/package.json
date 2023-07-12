@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
+    "@rxdrag/locales":"workspace:*",
     "@rxdrag/shared": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/minions-logicflow-editor": "workspace:*",

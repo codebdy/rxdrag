@@ -131,6 +131,7 @@ export function useCreateGraph(token: IThemeToken, store: EditorStore) {
           const soureMeta = getNodeMetaRef.current(sourceId || "")
           //数据从targetCell取，有个延时，新建节点时，拿不到parentId
           const targetMeta = getNodeMetaRef.current(targetId || "")
+
           //起点是嵌入容器的端口
           if (soureMeta?.type === ActivityType.EmbeddedFlow) {
             //是嵌入容器的input
