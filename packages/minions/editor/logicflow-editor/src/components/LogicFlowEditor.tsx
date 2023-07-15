@@ -110,7 +110,7 @@ export const LogicFlowEditor = memo((
   const handleChange = useCallback((newMetas: ILogicMetas) => {
     onChange?.(newMetas)
   }, [onChange])
-  
+
   const theme: { token: IThemeToken } = useMemo(() => {
     return {
       token
@@ -127,9 +127,13 @@ export const LogicFlowEditor = memo((
                 <LogicFlowEditorStoreContext.Provider value={store}>
                   <EditorShell>
                     <CenterArea>
-                      <Toolbar>
-                        {toolbar}
-                      </Toolbar>
+                      {
+                        toolbar &&
+                        <Toolbar>
+                          {toolbar}
+                        </Toolbar>
+                      }
+
                       <OpeateArea>
                         <Toolbox>
                           {toolbox}

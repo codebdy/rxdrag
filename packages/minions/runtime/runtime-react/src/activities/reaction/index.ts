@@ -24,7 +24,6 @@ export class Reaction implements IActivity {
     const defineMeta = context?.controllers?.[meta?.config?.param?.controllerId || ""]?.meta.reactions?.find(reactionMeta => reactionMeta.id === meta.config?.param?.logicFlowId)
     if (defineMeta) {
       this.logicFlow = new LogicFlow(defineMeta, context)
-      this
       this.jointers = this.logicFlow.jointers
     } else {
       throw new Error("No implement on Controller reaction meta")

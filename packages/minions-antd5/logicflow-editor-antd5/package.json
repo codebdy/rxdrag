@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/logicflow-editor-antd5",
-  "version": "0.2.16",
+  "version": "0.2.17",
   "module": "index.ts",
   "files": [
     "dist"
