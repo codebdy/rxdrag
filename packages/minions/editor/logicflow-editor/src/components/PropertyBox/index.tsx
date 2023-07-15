@@ -9,6 +9,7 @@ const Title = styled.div`
   align-items: center;
   border-bottom: ${props => props.theme.token?.colorBorder} solid 1px;
   padding: 0 16px;
+  color: ${props => props.theme.token?.colorText};
 `
 
 const Content = styled.div`
