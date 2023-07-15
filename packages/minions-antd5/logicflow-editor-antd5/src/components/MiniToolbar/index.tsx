@@ -9,7 +9,6 @@ import { useShowMap } from "@rxdrag/minions-logicflow-editor/src/hooks/useShowMa
 const Container = styled.div`
   position: absolute;
   width: 40px;
-  height: 160px;
   border: ${props => props.theme.token?.colorBorder} solid 1px;
   background-color: ${props => props.theme.token?.colorBgContainer};
   right: 8px;
@@ -19,7 +18,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 8px;
-  //padding-bottom: 8px;
+  padding-bottom: 8px;
 `
 const ToolbarButton = styled((props) => <Button type="text" {...props} />)`
 `
