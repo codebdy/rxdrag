@@ -87,18 +87,19 @@ export const LogicFlowEditor = memo((
     materials: IActivityMaterial<ReactNode>[],
     token: IThemeToken,
     logicFlowContext?: unknown,
-    canBeReferencedLogflowMetas?: ILogicFlowDefine[]
+    canBeReferencedLogflowMetas?: ILogicFlowDefine[],
+    editorStore?: EditorStore
   }
 ) => {
-  const { value, onChange, toolbox, toolbar, propertyBox, showMap, materials, token, logicFlowContext, canBeReferencedLogflowMetas } = props
+  const { value, onChange, toolbox, toolbar, propertyBox, showMap, materials, token, logicFlowContext, canBeReferencedLogflowMetas, editorStore } = props
   const emptyMetas = useMemo(() => ({
     nodes: [],
     lines: []
   }), [])
 
   const store: EditorStore = useMemo(() => {
-    return new EditorStore()
-  }, [])
+    return editorStore || new EditorStore()
+  }, [editorStore])
 
   const graph = useCreateGraph(token, store)
 

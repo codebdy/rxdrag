@@ -1,7 +1,7 @@
 import { ReactNode, memo, useCallback, useMemo, useState } from "react"
 import { Toolbox, PropertyBox, Toolbar } from "./components"
 import { useTransMaterialCategorys } from "./hooks/useTransMaterialCategorys"
-import { ILogicMetas, IThemeToken, LogicFlowEditor } from "@rxdrag/minions-logicflow-editor"
+import { EditorStore, ILogicMetas, IThemeToken, LogicFlowEditor } from "@rxdrag/minions-logicflow-editor"
 import { ActivityMaterialCategory, IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema"
 import { useToken } from "antd/es/theme/internal"
 import { IComponents } from "@rxdrag/react-shared"
@@ -15,13 +15,15 @@ export type LogicFlowEditorAntd5InnerProps = {
   logicFlowContext?: unknown,
   canBeReferencedLogflowMetas?: ILogicFlowDefine[],
   token?: IThemeToken,
-  toolbar?: false | React.ReactNode
+  toolbar?: false | React.ReactNode,
+  //不传该参数，会构造一个默认的
+  editorStore?: EditorStore
 }
 
 export const LogicMetaEditorAntd5Inner = memo((
   props: LogicFlowEditorAntd5InnerProps
 ) => {
-  const { value, onChange, materialCategories, setters, logicFlowContext, canBeReferencedLogflowMetas, token: propToken, toolbar } = props
+  const { value, onChange, materialCategories, setters, logicFlowContext, canBeReferencedLogflowMetas, token: propToken, toolbar, editorStore } = props
   const [showMap, setShowMap] = useState(false);
   const [, token] = useToken();
   const categories = useTransMaterialCategorys(materialCategories);
@@ -53,6 +55,7 @@ export const LogicMetaEditorAntd5Inner = memo((
         showMap={showMap}
         logicFlowContext={logicFlowContext}
         canBeReferencedLogflowMetas={canBeReferencedLogflowMetas}
+        editorStore = {editorStore}
       />
     </ThemeProvider>
   )
