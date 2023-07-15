@@ -4,11 +4,12 @@ import { changeFlagReducer } from "./changeFlagReducer";
 import { metasReducer } from "./metasReducer";
 import { redoListReducer } from "./redoListReducer";
 import { selectedReducer } from "./selectedReducer";
+import { showMapReducer } from "./showMapReducer";
 import { undoListReducer } from "./undoListReducer";
 import { zoomReducer } from "./zoomReducer";
 
 export const mainReducer = (
-  { changeFlag, redoList, undoList, nodes, lines, selected, zoom }: IState = initialState,
+  { changeFlag, redoList, undoList, nodes, lines, selected, zoom, showMap }: IState = initialState,
   action: Action
 ): IState => ({
   changeFlag: changeFlagReducer(changeFlag, action),
@@ -17,4 +18,5 @@ export const mainReducer = (
   ...metasReducer({ nodes, lines }, action),
   selected: selectedReducer(selected, action),
   zoom: zoomReducer(zoom, action),
+  showMap: showMapReducer(showMap, action),
 });

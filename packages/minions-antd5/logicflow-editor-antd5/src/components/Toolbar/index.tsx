@@ -1,9 +1,8 @@
-import { memo, useCallback } from "react"
+import { memo } from "react"
 import styled from "styled-components"
 import { Button, Divider, Space } from "antd"
-import { ZoomInOutlined, ZoomOutOutlined } from "@ant-design/icons"
-import { MAX_ZOOM, MIN_ZOOM, useRedo, useRedoList, useRemoveSelected, useSelected, useUndo, useUndoList, useZoom, useZoomIn, useZoomOut } from "@rxdrag/minions-logicflow-editor"
-import { undoIcon, redoIcon, mapIcon, zoomResetIcon } from "./icons"
+import { useRedo, useRedoList, useRemoveSelected, useSelected, useUndo, useUndoList } from "@rxdrag/minions-logicflow-editor"
+import { undoIcon, redoIcon } from "./icons"
 
 const StyledToolbar = styled.div`
   display: flex;
@@ -23,27 +22,15 @@ const ToobarCenter = styled.div`
   align-items: center;
 `
 
-export const Toolbar = memo((
-  props: {
-    showMap?: boolean,
-    toggleShowMap?: () => void
-  }
-) => {
-  const { showMap, toggleShowMap } = props
-  const { zoom, setZoom } = useZoom()
+export const Toolbar = memo(() => {
+
   const { selected } = useSelected()
   const { redoList } = useRedoList()
   const { undoList } = useUndoList()
   const handleRemove = useRemoveSelected()
 
-  const zoomIn = useZoomIn()
-  const zoomOut = useZoomOut()
   const undo = useUndo()
   const redo = useRedo()
-
-  const handleZoomReset = useCallback(() => {
-    setZoom(1)
-  }, [setZoom])
 
   return (
     <StyledToolbar className="logicflow-editor-antd5-toolbar">
@@ -69,30 +56,6 @@ export const Toolbar = memo((
       </Space>
       <ToobarCenter>
       </ToobarCenter>
-      <Space>
-        <ToolbarButton
-          icon={mapIcon}
-          type={showMap ? "default" : "text"}
-          onClick={toggleShowMap}
-        ></ToolbarButton>
-
-        <ToolbarButton
-          icon={zoomResetIcon}
-          disabled={zoom === 1}
-          onClick={handleZoomReset}
-        ></ToolbarButton>
-        <ToolbarButton
-          icon={<ZoomOutOutlined />}
-          disabled={zoom === MIN_ZOOM}
-          onClick={zoomOut}
-        ></ToolbarButton>
-        <ToolbarButton
-          icon={<ZoomInOutlined />}
-          disabled={zoom === MAX_ZOOM}
-          onClick={zoomIn}
-        ></ToolbarButton>
-
-      </Space>
     </StyledToolbar>
   )
 })

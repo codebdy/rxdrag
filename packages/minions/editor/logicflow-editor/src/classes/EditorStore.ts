@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Store } from "redux";
 import { Action } from "../actions";
 import { ISnapshot, IState } from "../interfaces/state";
-import { ChangeFlagChangeListener, MetasChangeListener, RedoListChangeListener, SelectedChangeListener, UndoListChangeListener, ZoomChangeListener } from "../interfaces/interfaces";
+import { ChangeFlagChangeListener, MetasChangeListener, RedoListChangeListener, SelectedChangeListener, ShowMapChangeListener, UndoListChangeListener, ZoomChangeListener } from "../interfaces/interfaces";
 import { mainReducer } from "../reducers/mainReducer";
 
 export class EditorStore {
@@ -29,6 +29,22 @@ export class EditorStore {
 
     return this.store.subscribe(handleChange)
   }
+
+  subscribeShowMapChange(listener: ShowMapChangeListener) {
+    let previousState: boolean | undefined = this.store.getState().showMap
+
+    const handleChange = () => {
+      const nextState = this.store.getState().showMap
+      if (nextState === previousState) {
+        return
+      }
+      previousState = nextState
+      listener(nextState)
+    }
+
+    return this.store.subscribe(handleChange)
+  }
+
 
   subscribeMetasChange(listener: MetasChangeListener) {
     let previousState: IState = this.store.getState()

@@ -5,7 +5,6 @@ import { ActionType } from "../actions";
 export function useZoom() {
   const [zoom, setZoom] = useState<number>(0)
   const store = useEditorStore()
-
   const handleZoomChange = useCallback((zm: number) => {
     setZoom(zm)
   }, [])

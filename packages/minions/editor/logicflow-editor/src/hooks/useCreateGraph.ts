@@ -21,7 +21,7 @@ const magnetAvailabilityHighlighter = {
   },
 };
 
-export function useCreateGraph(token: IThemeToken, store: EditorStore) {
+export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
   const [graph, setGraph] = useState<Graph>()
   const getNodeMeta = useGetNodeMeta(store)
   const getNodeMetaRef = useRef(getNodeMeta)
@@ -45,7 +45,7 @@ export function useCreateGraph(token: IThemeToken, store: EditorStore) {
           }
 
           //开始、结束节点不需要嵌入
-          if(data.meta.type === ActivityType.Start || data.meta.type === ActivityType.End){
+          if (data.meta.type === ActivityType.Start || data.meta.type === ActivityType.End) {
             return []
           }
 
@@ -159,25 +159,25 @@ export function useCreateGraph(token: IThemeToken, store: EditorStore) {
               }
             }
             //起始节点在容器内
-          } else if(soureMeta?.parentId){
+          } else if (soureMeta?.parentId) {
             //如果目标节点是容器的output
-            if(targetMeta?.id === soureMeta?.parentId){
-              if(targetMeta.outPorts?.find(port => port.id === targetPort)){
+            if (targetMeta?.id === soureMeta?.parentId) {
+              if (targetMeta.outPorts?.find(port => port.id === targetPort)) {
                 return true
               }
             }
-            if(targetMeta?.parentId !== soureMeta?.parentId){
+            if (targetMeta?.parentId !== soureMeta?.parentId) {
               return false
             }
             //起始节点在容器外
-          } else{
-            if(targetMeta?.parentId){
+          } else {
+            if (targetMeta?.parentId) {
               return false
             }
           }
 
           //其它连接自身的情况
-          if(targetMeta?.id === soureMeta?.id){
+          if (targetMeta?.id === soureMeta?.id) {
             return false
           }
 

@@ -15,6 +15,8 @@ export enum ActionType {
   SELECTION = 'ReactionsEditor/SELECTION',
   SET_ZOOM = 'ReactionsEditor/SET_ZOOM',
 
+  SHOW_MAP = 'ReactionsEditor/SHOW_MAP',
+
   BACKUP = 'ReactionsEditor/BACKUP',
   SET_REDOLIST = 'ReactionsEditor/SET_REDOLIST',
   SET_UNOLIST = 'ReactionsEditor/SET_UNOLIST',
@@ -26,7 +28,7 @@ export enum ActionType {
 
 export interface Action {
   type: ActionType,
-  payload?: IActivityNode | string | ILineDefine | number | ISnapshot | ISnapshot | ISnapshot[] | ILogicMetas
+  payload?: IActivityNode | string | ILineDefine | number | ISnapshot | ISnapshot | ISnapshot[] | ILogicMetas | boolean
 }
 
 export interface AddNodeAction extends Action {
@@ -67,6 +69,11 @@ export interface SelectionAction extends Action {
 export interface SetZoomAction extends Action {
   payload: number
 }
+
+export interface ShowMapAction extends Action {
+  payload: boolean
+}
+
 
 export interface BackupAction extends Action {
   payload: ISnapshot

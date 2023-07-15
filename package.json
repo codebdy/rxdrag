@@ -25,6 +25,7 @@
   "keywords": [],
   "author": "Aaron Agarunov",
   "dependencies": {
+    "@rxdrag/logicflow-editor-antd5": "^0.2.20",
     "@vitejs/plugin-react-swc": "^3.0.0",
     "vite": "^4.0.0"
   },

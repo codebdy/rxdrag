@@ -2,7 +2,7 @@ import { Graph } from "@antv/x6";
 import { Action } from "../actions";
 import { IActivityDefine, ILineDefine } from "@rxdrag/minions-schema";
 
-export interface ISnapshot  {
+export interface ISnapshot {
   nodes: IActivityDefine<unknown>[];
   lines: ILineDefine[];
   selected?: string,
@@ -16,6 +16,7 @@ export interface IState {
   lines: ILineDefine[];
   selected?: string,
   zoom: number,
+  showMap: boolean,
 }
 
 export interface IReactionsEditorParams extends IState {
@@ -28,8 +29,9 @@ export const initialState: IState = {
   undoList: [],
   redoList: [],
   nodes: [],
-  lines:[],
+  lines: [],
   selected: undefined,
   zoom: 1,
+  showMap: false,
 }
 

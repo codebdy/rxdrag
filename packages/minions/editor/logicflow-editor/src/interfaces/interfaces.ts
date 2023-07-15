@@ -26,6 +26,7 @@ export interface INodeData {
 }
 
 export type ZoomChangeListener = (zoom: number) => void
+export type ShowMapChangeListener = (showMap: boolean) => void
 export type MetasChangeListener = (metas: ILogicMetas) => void
 export type SelectedChangeListener = (selected?: string) => void
 export type UndoListChangeListener = (undos: ISnapshot[]) => void
