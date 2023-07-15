@@ -1,14 +1,11 @@
 import React, { useContext } from "react"
-import { Form } from "antd";
-import { forwardRef, memo } from "react";
+import { Form, FormItemProps } from "antd";
+import { memo } from "react";
 import { FormLayoutContext } from "../contexts";
 
-export const FormItem = memo(forwardRef<HTMLDivElement>((
-  props: {
-    children?: React.ReactNode
-  },
-  ref
-) => {
+export const FormItem: React.FC<{
+  children?: React.ReactNode
+} & FormItemProps> = memo((props) => {
   const { children, ...other } = props
 
   const formParams = useContext(FormLayoutContext);
@@ -21,4 +18,4 @@ export const FormItem = memo(forwardRef<HTMLDivElement>((
       {children}
     </Form.Item>
   )
-}))
+})
