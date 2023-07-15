@@ -1,4 +1,4 @@
-import { ReactNode, memo, useCallback, useMemo, useState } from "react"
+import { ReactNode, memo, useCallback, useEffect, useMemo, useState } from "react"
 import { Toolbox, PropertyBox, Toolbar } from "./components"
 import { useTransMaterialCategorys } from "./hooks/useTransMaterialCategorys"
 import { EditorStore, ILogicMetas, IThemeToken, LogicFlowEditor } from "@rxdrag/minions-logicflow-editor"
@@ -17,14 +17,15 @@ export type LogicFlowEditorAntd5InnerProps = {
   token?: IThemeToken,
   toolbar?: false | React.ReactNode,
   //不传该参数，会构造一个默认的
-  editorStore?: EditorStore
+  editorStore?: EditorStore,
+  showMap?: boolean
 }
 
 export const LogicMetaEditorAntd5Inner = memo((
   props: LogicFlowEditorAntd5InnerProps
 ) => {
-  const { value, onChange, materialCategories, setters, logicFlowContext, canBeReferencedLogflowMetas, token: propToken, toolbar, editorStore } = props
-  const [showMap, setShowMap] = useState(false);
+  const { value, onChange, materialCategories, setters, logicFlowContext, canBeReferencedLogflowMetas, token: propToken, toolbar, editorStore, showMap } = props
+  const [showMiniMap, setShowMiniMap] = useState(showMap);
   const [, token] = useToken();
   const categories = useTransMaterialCategorys(materialCategories);
   const materials = useMemo(() => {
@@ -33,8 +34,12 @@ export const LogicMetaEditorAntd5Inner = memo((
   }, [categories])
 
   const handleToggleShowMap = useCallback(() => {
-    setShowMap(show => !show)
+    setShowMiniMap(show => !show)
   }, [])
+
+  useEffect(()=>{
+    setShowMiniMap(showMap)
+  }, [showMap])
 
   const theme: { token: IThemeToken } = useMemo(() => {
     return {
@@ -47,15 +52,15 @@ export const LogicMetaEditorAntd5Inner = memo((
       <LogicFlowEditor
         value={value}
         onChange={onChange}
-        toolbar={toolbar === undefined ? <Toolbar showMap={showMap} toggleShowMap={handleToggleShowMap} /> : toolbar}
+        toolbar={toolbar === undefined ? <Toolbar showMap={showMiniMap} toggleShowMap={handleToggleShowMap} /> : toolbar}
         toolbox={<Toolbox materialCategories={categories} />}
         propertyBox={<PropertyBox setters={setters} />}
         token={propToken || token}
         materials={materials}
-        showMap={showMap}
+        showMap={showMiniMap}
         logicFlowContext={logicFlowContext}
         canBeReferencedLogflowMetas={canBeReferencedLogflowMetas}
-        editorStore = {editorStore}
+        editorStore={editorStore}
       />
     </ThemeProvider>
   )
