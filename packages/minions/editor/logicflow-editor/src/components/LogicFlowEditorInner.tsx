@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import { memo, useCallback, useEffect, useMemo } from "react"
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
 import { ActionType, SetMetasAction } from "../actions";
-import { CanBeReferencedLogicFlowMetasContext, GraphContext, LogicFlowContext, MaterialsContext, ThemeTokenContext } from "../contexts"
+import { CanBeReferencedLogicFlowMetasContext, GraphContext, LogicFlowContext, MaterialsContext } from "../contexts"
 import { useCreateGraph } from "../hooks/useCreateGraph";
 import { Logic } from "./Logic";
 import { ILogicMetas, IThemeToken } from "../interfaces";
@@ -10,9 +10,9 @@ import { Toolbar } from "./Toolbar";
 import { Toolbox } from "./Toolbox";
 import { PropertyBox } from "./PropertyBox";
 import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
-import { LogicFlowEditorScope } from "./LogicFlowEditorScope";
 import { useEditorStore } from "../hooks";
 import { useShowMap } from "../hooks/useShowMap";
+import { useThemeToken } from "../hooks/useThemeToken";
 
 const EditorShell = styled.div`
   display: flex;
@@ -41,12 +41,11 @@ const CanvasArea = styled.div`
   flex:1;
   display: flex;
   flex-flow: column;
+  background-color: ${props => props.theme.token?.colorBgContainer};
 `
-
 const CanvasContainer = styled.div`
   position: relative;
   flex: 1;
-  background-color: ${props => props.theme.token?.colorBgContainer};
 `
 const MiniMapContainer = styled.div`
   position: absolute;
@@ -94,13 +93,14 @@ export type LogicFlowEditorProps = {
 export const LogicFlowEditorInner = memo((
   props: LogicFlowEditorProps
 ) => {
-  const { value, onChange, toolbox, toolbar, propertyBox, materials, token, logicFlowContext, canBeReferencedLogflowMetas, children } = props
+  const { value, onChange, toolbox, toolbar, propertyBox, materials, logicFlowContext, canBeReferencedLogflowMetas, children } = props
   const emptyMetas = useMemo(() => ({
     nodes: [],
     lines: []
   }), [])
 
   const store = useEditorStore()
+  const token = useThemeToken()
 
   const graph = useCreateGraph(token, store)
   const { showMap } = useShowMap()
@@ -114,60 +114,48 @@ export const LogicFlowEditorInner = memo((
     onChange?.(newMetas)
   }, [onChange])
 
-  const theme: { token: IThemeToken } = useMemo(() => {
-    return {
-      token
-    }
-  }, [token])
 
   return (
-    <LogicFlowEditorScope>
-      <ThemeProvider theme={theme}>
-        <LogicFlowContext.Provider value={logicFlowContext}>
-          <ThemeTokenContext.Provider value={token}>
-            <MaterialsContext.Provider value={materials}>
-              <CanBeReferencedLogicFlowMetasContext.Provider value={canBeReferencedLogflowMetas || []}>
-                <GraphContext.Provider value={graph}>
+    <LogicFlowContext.Provider value={logicFlowContext}>
+      <MaterialsContext.Provider value={materials}>
+        <CanBeReferencedLogicFlowMetasContext.Provider value={canBeReferencedLogflowMetas || []}>
+          <GraphContext.Provider value={graph}>
+            <EditorShell>
+              <CenterArea>
+                {
+                  toolbar &&
+                  <Toolbar>
+                    {toolbar}
+                  </Toolbar>
+                }
 
-                  <EditorShell>
-                    <CenterArea>
-                      {
-                        toolbar &&
-                        <Toolbar>
-                          {toolbar}
-                        </Toolbar>
-                      }
-
-                      <OpeateArea>
-                        <Toolbox>
-                          {toolbox}
-                        </Toolbox>
-                        <CanvasArea>
-                          <CanvasContainer id="reactions-canvas-container" >
-                            <Logic onChange={handleChange} />
-                          </CanvasContainer>
-                          {children}
-                          <MiniMapContainer
-                            id="reactions-minimap-container"
-                            style={{
-                              display: showMap ? "flex" : "none"
-                            }}
-                          />
-                        </CanvasArea>
-                      </OpeateArea>
-                    </CenterArea>
-                    <RightArea>
-                      <PropertyBox>
-                        {propertyBox}
-                      </PropertyBox>
-                    </RightArea>
-                  </EditorShell>
-                </GraphContext.Provider>
-              </CanBeReferencedLogicFlowMetasContext.Provider>
-            </MaterialsContext.Provider>
-          </ThemeTokenContext.Provider>
-        </LogicFlowContext.Provider>
-      </ThemeProvider>
-    </LogicFlowEditorScope>
+                <OpeateArea>
+                  <Toolbox>
+                    {toolbox}
+                  </Toolbox>
+                  <CanvasArea>
+                    <CanvasContainer id="reactions-canvas-container" >
+                      <Logic onChange={handleChange} />
+                    </CanvasContainer>
+                    {children}
+                    <MiniMapContainer
+                      id="reactions-minimap-container"
+                      style={{
+                        display: showMap ? "flex" : "none"
+                      }}
+                    />
+                  </CanvasArea>
+                </OpeateArea>
+              </CenterArea>
+              <RightArea>
+                <PropertyBox>
+                  {propertyBox}
+                </PropertyBox>
+              </RightArea>
+            </EditorShell>
+          </GraphContext.Provider>
+        </CanBeReferencedLogicFlowMetasContext.Provider>
+      </MaterialsContext.Provider>
+    </LogicFlowContext.Provider>
   )
 })

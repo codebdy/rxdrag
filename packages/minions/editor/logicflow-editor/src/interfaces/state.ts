@@ -1,5 +1,3 @@
-import { Graph } from "@antv/x6";
-import { Action } from "../actions";
 import { IActivityDefine, ILineDefine } from "@rxdrag/minions-schema";
 
 export interface ISnapshot {
@@ -17,11 +15,6 @@ export interface IState {
   selected?: string,
   zoom: number,
   showMap: boolean,
-}
-
-export interface IReactionsEditorParams extends IState {
-  graph?: Graph
-  dispatch: React.Dispatch<Action>
 }
 
 export const initialState: IState = {

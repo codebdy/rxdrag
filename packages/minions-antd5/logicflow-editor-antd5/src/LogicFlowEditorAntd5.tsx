@@ -10,7 +10,9 @@ export const LogicFlowEditorAntd5 = memo((
   props: {
     lang?: string,
     locales?: ILocales,
-  } & LogicFlowEditorAntd5InnerProps
+  } & LogicFlowEditorAntd5InnerProps &{
+    token?: IThemeToken,
+  }
 ) => {
   const { lang = "zh-CN", locales, token: propToken, ...other } = props
   const [, token] = useToken();

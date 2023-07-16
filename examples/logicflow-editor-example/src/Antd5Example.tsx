@@ -1,13 +1,10 @@
-import { ShellContainer } from "components/ShellContainer"
 import { memo, useCallback, useState } from "react"
-import { Fieldy } from "@rxdrag/react-fieldy"
-import { activityMaterialCategories } from "materials"
-import { LogicFlowEditorAntd5 } from "@rxdrag/logicflow-editor-antd5"
-import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
+import { ILogicMetas, LogicFlowEditorScope } from "@rxdrag/minions-logicflow-editor"
 import { ConfigProvider, Form, theme } from "antd"
-import { activityMaterialLocales } from "minion-materials"
+import { ExampleInner } from "components/ExampleInner"
 
 export const Antd5Example = memo(() => {
+  const [themeMode, setThemeMode] = useState<"dark" | "light">("light")
   const [inputValue, setInputValue] = useState<ILogicMetas>({
     nodes: [],
     lines: []
@@ -17,33 +14,19 @@ export const Antd5Example = memo(() => {
     setInputValue(meta || inputValue)
   }, [inputValue]);
 
+  const handleToggleTheme = useCallback(() => {
+    setThemeMode(mode => mode === "light" ? "dark" : "light")
+  }, [])
 
   return (
     <ConfigProvider
       theme={{
-        algorithm: theme.darkAlgorithm
+        algorithm: themeMode === "dark" ? theme.darkAlgorithm : theme.defaultAlgorithm
       }}
     >
-      <Fieldy>
-        <ShellContainer>
-          <LogicFlowEditorAntd5
-            //value={inputValue}
-            //onChange={handleChange}
-            //controllerMetas={[inputValue]}
-            materialCategories={activityMaterialCategories}
-            locales={activityMaterialLocales}
-            value={{
-              nodes: [],
-              lines: []
-            }}
-          // setters={{
-          //   VariableSelect,
-          //   PropSelect,
-          //   ReactionSelect,
-          // }}
-          />
-        </ShellContainer>
-      </Fieldy>
+      <LogicFlowEditorScope>
+        <ExampleInner toggleTheme={handleToggleTheme} />
+      </LogicFlowEditorScope>
     </ConfigProvider>
   )
 })

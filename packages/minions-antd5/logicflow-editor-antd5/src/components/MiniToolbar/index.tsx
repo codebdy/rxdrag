@@ -1,10 +1,9 @@
 import { ZoomOutOutlined, ZoomInOutlined } from "@ant-design/icons"
-import { useZoom, useZoomIn, useZoomOut, MIN_ZOOM, MAX_ZOOM } from "@rxdrag/minions-logicflow-editor"
+import { useZoom, useZoomIn, useZoomOut, MIN_ZOOM, MAX_ZOOM, useShowMap } from "@rxdrag/minions-logicflow-editor"
 import { Button, Space } from "antd"
 import { memo, useCallback } from "react"
 import styled from "styled-components"
 import { mapIcon, zoomResetIcon } from "../Toolbar/icons"
-import { useShowMap } from "@rxdrag/minions-logicflow-editor/src/hooks/useShowMap"
 
 const Container = styled.div`
   position: absolute;

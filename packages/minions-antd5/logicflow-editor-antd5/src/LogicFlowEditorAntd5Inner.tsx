@@ -13,12 +13,13 @@ export type LogicFlowEditorAntd5InnerProps = {
   setters?: IComponents,
   logicFlowContext?: unknown,
   canBeReferencedLogflowMetas?: ILogicFlowDefine[],
-  token: IThemeToken,
   toolbar?: false | React.ReactNode,
 }
 
 export const LogicMetaEditorAntd5Inner = memo((
-  props: LogicFlowEditorAntd5InnerProps
+  props: LogicFlowEditorAntd5InnerProps&{
+    token: IThemeToken,
+  }
 ) => {
   const { value, onChange, materialCategories, setters, logicFlowContext, canBeReferencedLogflowMetas, token, toolbar } = props
   const categories = useTransMaterialCategorys(materialCategories);

@@ -6,14 +6,17 @@ import { useShowNode } from "./useShowNode";
 import { ActivityType, ILineDefine } from "@rxdrag/minions-schema";
 import { useShowEdge } from "./useShowEdge";
 import { IActivityNode, ILogicMetas } from "../interfaces";
+import { useThemeToken } from "./useThemeToken";
 
 export function useShowCells() {
   const graph = useGraph()
   const getEdgeConfig = useGetEdgeConfig()
   const showNode = useShowNode()
   const showEdge = useShowEdge()
+  const themeToken = useThemeToken()
 
   const { metas } = useMetas()
+
   useEffect(() => {
     if (graph) {
       const oldCells = graph.getCells()
@@ -43,7 +46,7 @@ export function useShowCells() {
         }
       }
     }
-  }, [getEdgeConfig, showEdge, showNode, graph, metas, metas?.lines, metas?.nodes])
+  }, [getEdgeConfig, showEdge, showNode, graph, metas, metas?.lines, metas?.nodes, themeToken])
 }
 
 function getAllMetas(logicMetas?: ILogicMetas) {

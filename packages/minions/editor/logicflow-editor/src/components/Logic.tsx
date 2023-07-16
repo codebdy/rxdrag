@@ -5,7 +5,6 @@ import { useMovedNode } from "../hooks/edit-meta/useMovedNode"
 import { useArrowhead } from "../hooks/useArrowhead"
 import { useShowCells } from "../hooks/useShowCells"
 import { useSelection } from "../hooks/useSelection"
-import { useRemove } from "../hooks/edit-meta/useRemove"
 import { useChangeFlag } from "../hooks/useChangeFlag"
 import { useMetas } from "../hooks/useMetas"
 import { useSetZoom } from "../hooks/useSetZoom"
@@ -34,7 +33,6 @@ export const Logic = memo((
   useSelection()
   useChildPositionChange();
   useNodeEmbedded();
-  useRemove()
   useSetZoom()
   useEffect(() => {
     if (changeFlag && metasRef.current) {
