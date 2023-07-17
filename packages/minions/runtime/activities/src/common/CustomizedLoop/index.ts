@@ -46,12 +46,14 @@ export class CustomizedLoop extends AbstractActivity<IcustomizedLoopConifg> {
 
   @Input()
   inputHandler = (inputValue?: unknown) => {
+    let count = 0
     if (this.meta.config?.fromInput) {
       if (!_.isArray(inputValue)) {
         console.error("Loop input is not array")
       } else {
         for (const one of inputValue) {
           this.getInput()?.push(one)
+          count++
           if(this.finished){
             break
           }
@@ -60,13 +62,14 @@ export class CustomizedLoop extends AbstractActivity<IcustomizedLoopConifg> {
     } else if (_.isNumber(this.meta.config?.times)) {
       for (let i = 0; i < (this.meta.config?.times || 0); i++) {
         this.getInput()?.push(i)
+        count++
         if(this.finished){
           break
         }
       }
     }
     if(!this.finished){
-      this.next(inputValue, CustomizedLoop.PORT_FINISHED)
+      this.next(count, CustomizedLoop.PORT_FINISHED)
     }
   }
 

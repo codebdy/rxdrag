@@ -11,6 +11,8 @@ import { INodeSchema } from "@rxdrag/schema";
 import { endIcon, startIcon } from "../icons";
 import { splitArrayMaterial } from "./SplitArray";
 import { splitObjectMaterial } from "./SplitObject";
+import { sumArrayMaterial } from "./sumArray";
+import { collectToArrayMaterial } from "./collectToArray";
 
 export const startEndSchema: INodeSchema = {
   componentName: "Fragment",
@@ -41,5 +43,7 @@ export const basicActivities: IActivityMaterial<any, any, any, any>[] = [
   signalsMaterial,
   constValueMaterial,
   splitArrayMaterial,
-  splitObjectMaterial
+  splitObjectMaterial,
+  collectToArrayMaterial,
+  sumArrayMaterial,
 ]

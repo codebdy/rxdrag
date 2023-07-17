@@ -75,6 +75,8 @@ export const activityMaterialLocales = {
     splitArray: "拆分数组",
     splitObject: "拆分对象",
     tip: "提示",
+    sumArray: "加和",
+    collectToArray:"收集数组"
   },
   'en-US': {
     basicReactions: "Basic Reactions",
@@ -152,6 +154,8 @@ export const activityMaterialLocales = {
     reaction: "Reaction",
     splitArray: "Split Array",
     splitObject: "Split Object",
-    tip: "Tip"
+    tip: "Tip",
+    sumArray:"Sum Array",
+    collectToArray:"Collect To Array"
   }
 }
