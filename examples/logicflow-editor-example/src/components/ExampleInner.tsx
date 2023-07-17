@@ -7,7 +7,6 @@ import { ILogicMetas, useRemoveSelected, useSelected } from "@rxdrag/minions-log
 import { activityMaterialLocales } from "minion-materials"
 import styled from "styled-components"
 import { Button, Space } from "antd"
-import { useToken } from "antd/es/theme/internal"
 
 const Toolbar = styled.div`
   height: 80px;
@@ -28,10 +27,8 @@ export const ExampleInner = memo((
     lines: []
   })
 
-  const [, token] = useToken()
   const { selected } = useSelected()
   const handleRemove = useRemoveSelected()
-
 
   return (
     <Fieldy>

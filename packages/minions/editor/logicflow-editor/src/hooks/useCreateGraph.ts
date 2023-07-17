@@ -113,10 +113,14 @@ export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
           const sourcePort = sourceMagnet?.getAttribute('port') || undefined;
 
           for (const edge of edges) {
-            if (targetId && targetPort && (edge.target as any).cell === targetId && (edge.target as any).port === targetPort) {
+            //同一个节点端口已经有了连接
+            if (targetId && targetPort &&
+              (edge.target as any).cell === targetId && (edge.target as any).port === targetPort &&
+              (edge.source as any).cell === sourceId && (edge.source as any).port === sourcePort) {
               isConnected = true
               break
             }
+
             //连接到结束点
             if (!targetPort && targetId) {
               if (targetId === (edge.target as any).cell
