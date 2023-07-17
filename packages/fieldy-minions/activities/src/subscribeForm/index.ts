@@ -1,5 +1,5 @@
 import { AbstractActivity, Activity } from "@rxdrag/minions-runtime";
-import { IActivityDefine } from "@rxdrag/minions-schema";
+import { INodeDefine } from "@rxdrag/minions-schema";
 import { IFieldyLogicFlowContext } from "../context"
 
 
@@ -7,7 +7,7 @@ import { IFieldyLogicFlowContext } from "../context"
 export class SubscribeForm extends AbstractActivity<unknown, IFieldyLogicFlowContext> {
   public static NAME = "fieldy.subscribeForm"
 
-  constructor(meta: IActivityDefine<unknown>, context?: IFieldyLogicFlowContext) {
+  constructor(meta: INodeDefine<unknown>, context?: IFieldyLogicFlowContext) {
     super(meta, context)
     context?.form?.onValueChange(this.handleValueChange);
   }

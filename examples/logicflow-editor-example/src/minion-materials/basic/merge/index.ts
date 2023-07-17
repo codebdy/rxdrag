@@ -1,13 +1,13 @@
 import { createUuid } from "@rxdrag/shared";
 import { mergeSchema } from "./schema";
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { mergeIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
 
 export const mergeMaterial: IRxDragActivityMaterial = {
   icon: mergeIcon,
   label: "$merge",
-  activityType: ActivityType.Activity,
+  activityType: NodeType.Activity,
   defaultPorts: {
     inPorts: [
       {

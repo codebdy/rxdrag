@@ -1,4 +1,4 @@
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { createUuid } from "@rxdrag/shared";
 import { formReadIcon } from "../icons";
 import { IFieldyActivityMaterial } from "../types";
@@ -9,7 +9,7 @@ export const readFormValueMaterial: IFieldyActivityMaterial = {
   activityName: ReadFormValue.NAME,
   icon: formReadIcon,
   label: "$readFormValue",
-  activityType: ActivityType.Activity,
+  activityType: NodeType.Activity,
   defaultPorts: {
     inPorts: [
       {

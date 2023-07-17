@@ -1,4 +1,4 @@
-import { IPortDefine, IActivityDefine, ActivityType, ILogicFlowConfig } from "@rxdrag/minions-schema";
+import { IPortDefine, INodeDefine, NodeType, ILogicFlowConfig } from "@rxdrag/minions-schema";
 import { useCallback } from "react";
 import { useThemeToken } from "./useThemeToken";
 import { useGetLogicFlowNodePorts } from "./useGetLogicFlowNodePorts";
@@ -42,10 +42,10 @@ export function useTransformPorts() {
     )
   }, [token.colorBgContainer, token.colorTextSecondary])
 
-  const transform = useCallback((meta: IActivityDefine) => {
-    if (meta.type === ActivityType.LogicFlowActivity) {
-      const ins = doTransform(getLogicFlowPorts(meta as IActivityDefine<ILogicFlowConfig>, 'in'), 'in') || []
-      const outs = doTransform(getLogicFlowPorts(meta as IActivityDefine<ILogicFlowConfig>, 'out'), 'out') || []
+  const transform = useCallback((meta: INodeDefine) => {
+    if (meta.type === NodeType.LogicFlowActivity) {
+      const ins = doTransform(getLogicFlowPorts(meta as INodeDefine<ILogicFlowConfig>, 'in'), 'in') || []
+      const outs = doTransform(getLogicFlowPorts(meta as INodeDefine<ILogicFlowConfig>, 'out'), 'out') || []
       return [...ins, ...outs]
     } else {
       const ins = doTransform(meta.inPorts, 'in') || []

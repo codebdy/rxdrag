@@ -3,7 +3,7 @@ import { Node } from "@antv/x6"
 import { useGetNodeWidth } from "./useGetNodeWidth";
 import { useGetNodeHeight } from "./useGetNodeHeight";
 import { IActivityNode } from "../interfaces";
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { useTransformPorts } from "./useTransformPorts";
 import { useGetSubLabel } from "./useGetSubLabel";
 
@@ -26,9 +26,9 @@ export function useUpdateNode() {
         inputCounts: nodeMeta.inPorts?.length || ports.filter(port => port.group === 'in').length,
         outputCounts: nodeMeta.outPorts?.length || ports.filter(port => port.group === 'out').length,
       })
-      if (nodeMeta.type === ActivityType.Start ||
-        nodeMeta.type === ActivityType.End ||
-        nodeMeta.type === ActivityType.EmbeddedFlow) {
+      if (nodeMeta.type === NodeType.Start ||
+        nodeMeta.type === NodeType.End ||
+        nodeMeta.type === NodeType.EmbeddedFlow) {
         graphNode.attr("text/text", nodeMeta.label)
       } else {
         graphNode.setSize({ ...nodeMeta.x6Node, width: getNodeWidth(nodeMeta, subLabel), height: height });

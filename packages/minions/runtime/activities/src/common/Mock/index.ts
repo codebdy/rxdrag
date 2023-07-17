@@ -1,5 +1,5 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
-import { IActivityDefine } from "@rxdrag/minions-schema"
+import { INodeDefine } from "@rxdrag/minions-schema"
 
 export interface IMockDataConfig {
   isError?: boolean,
@@ -11,7 +11,7 @@ export interface IMockDataConfig {
 export class Mock extends AbstractActivity<IMockDataConfig> {
   public static NAME = "system.mock"
 
-  constructor(meta: IActivityDefine<IMockDataConfig>) {
+  constructor(meta: INodeDefine<IMockDataConfig>) {
     super(meta)
   }
 

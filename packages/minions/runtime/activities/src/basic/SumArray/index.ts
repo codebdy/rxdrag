@@ -3,14 +3,14 @@ import {
   Activity,
   Input
 } from '@rxdrag/minions-runtime';
-import { IActivityDefine } from '@rxdrag/minions-schema';
+import { INodeDefine } from '@rxdrag/minions-schema';
 
 
 @Activity(SumArray.NAME)
 export class SumArray extends AbstractActivity {
   public static NAME = 'system.sumArray';
 
-  constructor(meta: IActivityDefine) {
+  constructor(meta: INodeDefine) {
     super(meta);
   }
 

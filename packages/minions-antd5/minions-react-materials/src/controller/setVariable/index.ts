@@ -1,6 +1,6 @@
 import { createUuid } from "@rxdrag/shared"
 import { variableSchema } from "./schema"
-import { ActivityType } from "@rxdrag/minions-schema"
+import { NodeType } from "@rxdrag/minions-schema"
 import { IVariableConfig, SetVariable } from "@rxdrag/minions-runtime-react"
 import { setVariableIcon } from "../../icons"
 import { IControllerEditorContextParam } from "@rxdrag/minions-controller-editor"
@@ -9,7 +9,7 @@ import { IRxDragActivityMaterial } from "../../interfaces"
 export const setVariableMaterial: IRxDragActivityMaterial<IVariableConfig, IControllerEditorContextParam> = {
   icon: setVariableIcon,
   label: "$setVariable",
-  activityType: ActivityType.Activity,
+  activityType: NodeType.Activity,
   defaultPorts: {
     inPorts: [
       {

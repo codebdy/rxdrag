@@ -1,5 +1,5 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
-import { IActivityDefine } from "@rxdrag/minions-schema"
+import { INodeDefine } from "@rxdrag/minions-schema"
 import { QuerySession } from "httpquery/lib/classes/QuerySession"
 import { IQueryConfig, IRestfulQuerySession } from "httpquery/lib/interfaces"
 
@@ -11,7 +11,7 @@ export class MultipleQuery extends AbstractActivity<IQueryConfig> {
   public static OUTPUT_NAME_ERROR = "error"
   public querySession?: IRestfulQuerySession;
 
-  constructor(meta: IActivityDefine<IQueryConfig>) {
+  constructor(meta: INodeDefine<IQueryConfig>) {
     super(meta)
     if (meta.config) {
       const dataQuery = new QuerySession(meta.config)

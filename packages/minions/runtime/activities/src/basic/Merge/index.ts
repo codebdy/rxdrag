@@ -3,7 +3,7 @@ import {
   Activity,
   DynamicInput
 } from '@rxdrag/minions-runtime';
-import { IActivityDefine } from '@rxdrag/minions-schema';
+import { INodeDefine } from '@rxdrag/minions-schema';
 
 export interface IMergeConfig {
   fromInput?: boolean;
@@ -17,7 +17,7 @@ export class Merge extends AbstractActivity<IMergeConfig> {
   private inputCount = 0;
   private values: any = {};
 
-  constructor(meta: IActivityDefine<IMergeConfig>) {
+  constructor(meta: INodeDefine<IMergeConfig>) {
     super(meta);
     for (const input of meta.inPorts || []) {
       this.noPassInputs.push(input.name);

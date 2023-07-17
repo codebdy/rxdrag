@@ -1,5 +1,5 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
-import { IActivityDefine } from "@rxdrag/minions-schema"
+import { INodeDefine } from "@rxdrag/minions-schema"
 
 export interface IConditionConfig {
   trueExpression?: string
@@ -9,7 +9,7 @@ export interface IConditionConfig {
 export class Condition extends AbstractActivity<IConditionConfig> {
   public static NAME = "system.condition"
 
-  constructor(meta: IActivityDefine<IConditionConfig>) {
+  constructor(meta: INodeDefine<IConditionConfig>) {
     super(meta)
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("Condition inputs count error")

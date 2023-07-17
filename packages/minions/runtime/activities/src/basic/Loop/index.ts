@@ -1,5 +1,5 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
-import { IActivityDefine } from "@rxdrag/minions-schema"
+import { INodeDefine } from "@rxdrag/minions-schema"
 import _ from "lodash"
 
 export interface ILoopConfig {
@@ -13,7 +13,7 @@ export class Loop extends AbstractActivity<ILoopConfig> {
   public static PORT_OUTPUT = "output"
   public static PORT_FINISHED = "finished"
 
-  constructor(meta: IActivityDefine<ILoopConfig>) {
+  constructor(meta: INodeDefine<ILoopConfig>) {
     super(meta)
   }
 

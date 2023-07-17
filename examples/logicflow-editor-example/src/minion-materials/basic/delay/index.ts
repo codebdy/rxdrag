@@ -1,6 +1,6 @@
 import { createUuid } from "@rxdrag/shared";
 import { delaySchema } from "./schema";
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { delayIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "minion-materials/consts";
@@ -12,7 +12,7 @@ export interface IDelayConfig {
 export const delayMaterial: IRxDragActivityMaterial<IDelayConfig> = {
   icon: delayIcon,
   label: "$delay",
-  activityType: ActivityType.Activity,
+  activityType: NodeType.Activity,
   defaultPorts: {
     inPorts: [
       {

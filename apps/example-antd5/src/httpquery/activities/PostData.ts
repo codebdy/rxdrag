@@ -1,5 +1,5 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
-import { IActivityDefine } from "@rxdrag/minions-schema"
+import { INodeDefine } from "@rxdrag/minions-schema"
 import { GlobalRestful } from "httpquery/lib/classes/Restful"
 import { IPostConfig, IRestfulQuerySession } from "httpquery/lib/interfaces"
 
@@ -11,7 +11,7 @@ export class PostData extends AbstractActivity<IPostConfig> {
   public static OUTPUT_NAME_ERROR = "error"
   public querySession?: IRestfulQuerySession;
 
-  constructor(meta: IActivityDefine<IPostConfig>) {
+  constructor(meta: INodeDefine<IPostConfig>) {
     super(meta)
   }
 

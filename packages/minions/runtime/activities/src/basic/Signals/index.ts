@@ -1,5 +1,5 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
-import { IActivityDefine } from "@rxdrag/minions-schema"
+import { INodeDefine } from "@rxdrag/minions-schema"
 
 export interface IIntervalConfig {
   interval?: number
@@ -13,7 +13,7 @@ export class Signals extends AbstractActivity<IIntervalConfig> {
 
   timer?: NodeJS.Timer
   inputValue?: any
-  constructor(meta: IActivityDefine<IIntervalConfig>) {
+  constructor(meta: INodeDefine<IIntervalConfig>) {
     super(meta)
   }
 

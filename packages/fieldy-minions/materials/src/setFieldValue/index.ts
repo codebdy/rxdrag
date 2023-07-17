@@ -1,4 +1,4 @@
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { createUuid } from "@rxdrag/shared";
 import { fieldIcon } from "../icons";
 import { IFieldConfig, SetFieldValue } from "@rxdrag/fieldy-minions-activities";
@@ -10,7 +10,7 @@ export const setFieldValueMaterial: IFieldyActivityMaterial<IFieldConfig> = {
     activityName: SetFieldValue.NAME,
     icon: fieldIcon,
     label: "$setFieldValue",
-    activityType: ActivityType.Activity,
+    activityType: NodeType.Activity,
     defaultPorts: {
       inPorts: [
         {

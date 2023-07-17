@@ -1,5 +1,5 @@
 import { IReactionConfig, Reaction } from "@rxdrag/minions-runtime-react";
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { methodIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { reactionSchema } from "./schema";
@@ -9,7 +9,7 @@ export const reactionMaterial: IRxDragActivityMaterial<IReactionConfig, IControl
   activityName: Reaction.NAME,
   icon: methodIcon,
   label: "$reaction",
-  activityType: ActivityType.LogicFlowActivity,
+  activityType: NodeType.LogicFlowActivity,
   defaultPorts: {
   },
   subTitle: (config?: IReactionConfig, context?: IControllerEditorContextParam) => {

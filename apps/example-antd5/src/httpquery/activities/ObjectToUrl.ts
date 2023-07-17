@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Activity, Input, AbstractActivity } from "@rxdrag/minions-runtime"
-import { IActivityDefine } from "@rxdrag/minions-schema"
+import { INodeDefine } from "@rxdrag/minions-schema"
 
 @Activity(ObjectToUrl.NAME)
 export class ObjectToUrl extends AbstractActivity {
   public static NAME = "system.objectUrl"
 
-  constructor(meta: IActivityDefine) {
+  constructor(meta: INodeDefine) {
     super(meta)
   }
 

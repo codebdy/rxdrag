@@ -1,5 +1,5 @@
 import { IVariableConfig, ListenVariable } from "@rxdrag/minions-runtime-react"
-import { ActivityType } from "@rxdrag/minions-schema"
+import { NodeType } from "@rxdrag/minions-schema"
 import { createUuid } from "@rxdrag/shared"
 import { listenVariableIcon } from "../../icons"
 import { variableSchema } from "../setVariable/schema"
@@ -9,7 +9,7 @@ import { IControllerEditorContextParam } from "@rxdrag/minions-controller-editor
 export const listenVariableMaterial: IRxDragActivityMaterial<IVariableConfig, IControllerEditorContextParam> = {
   icon: listenVariableIcon,
   label: "$listenVariable",
-  activityType: ActivityType.Activity,
+  activityType: NodeType.Activity,
   defaultPorts: {
     outPorts: [
       {

@@ -3,7 +3,7 @@ import {
   Activity,
   Input
 } from '@rxdrag/minions-runtime';
-import { IActivityDefine } from '@rxdrag/minions-schema';
+import { INodeDefine } from '@rxdrag/minions-schema';
 
 @Activity(CollectToArray.NAME)
 export class CollectToArray extends AbstractActivity {
@@ -12,7 +12,7 @@ export class CollectToArray extends AbstractActivity {
 
   private  values:unknown[] = []
 
-  constructor(meta: IActivityDefine) {
+  constructor(meta: INodeDefine) {
     super(meta);
   }
 

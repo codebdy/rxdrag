@@ -1,5 +1,5 @@
 import { Activity, Input, AbstractActivity } from "@rxdrag/minions-runtime"
-import { IActivityDefine } from "@rxdrag/minions-schema"
+import { INodeDefine } from "@rxdrag/minions-schema"
 import { IFieldyLogicFlowContext } from "../context"
 import { IFieldConfig } from "../readFieldValue"
 
@@ -9,7 +9,7 @@ export class ValidateField extends AbstractActivity<IFieldConfig, IFieldyLogicFl
   public static OUTPUT_NAME_FAILURE = "failure"
   public static OUTPUT_NAME_SUCCESS = "success"
 
-  constructor(meta: IActivityDefine<IFieldConfig>, context: IFieldyLogicFlowContext) {
+  constructor(meta: INodeDefine<IFieldConfig>, context: IFieldyLogicFlowContext) {
     super(meta, context)
   }
 

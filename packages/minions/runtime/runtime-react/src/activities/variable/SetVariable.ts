@@ -1,4 +1,4 @@
-import { IActivityDefine } from "@rxdrag/minions-schema";
+import { INodeDefine } from "@rxdrag/minions-schema";
 import { IController, IControllerContext } from "../../interfaces";
 import { AbstractControllerActivity, IControllerConfig, IControllerParam } from "../AbstractControllerActivity";
 import { Activity, Input } from "@rxdrag/minions-runtime";
@@ -16,7 +16,7 @@ export class SetVariable extends AbstractControllerActivity<IVariableConfig> {
   public static NAME = "system-react.setVariable"
 
   controller: IController
-  constructor(meta: IActivityDefine<IVariableConfig>, context?: IControllerContext) {
+  constructor(meta: INodeDefine<IVariableConfig>, context?: IControllerContext) {
     super(meta, context)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {

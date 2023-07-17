@@ -1,5 +1,5 @@
 import { Activity, AbstractActivity, Input } from "@rxdrag/minions-runtime"
-import { IActivityDefine } from "@rxdrag/minions-schema"
+import { INodeDefine } from "@rxdrag/minions-schema"
 import { IFieldyLogicFlowContext } from "../context"
 
 @Activity(ValidateForm.NAME)
@@ -8,7 +8,7 @@ export class ValidateForm extends AbstractActivity<unknown, IFieldyLogicFlowCont
   public static OUTPUT_NAME_FAILURE = "failure"
   public static OUTPUT_NAME_SUCCESS = "success"
   
-  constructor(meta: IActivityDefine<unknown>, context: IFieldyLogicFlowContext) {
+  constructor(meta: INodeDefine<unknown>, context: IFieldyLogicFlowContext) {
     super(meta, context)
   }
 

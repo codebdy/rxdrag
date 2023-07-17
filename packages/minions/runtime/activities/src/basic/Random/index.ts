@@ -1,5 +1,5 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
-import { IActivityDefine } from "@rxdrag/minions-schema"
+import { INodeDefine } from "@rxdrag/minions-schema"
 
 export interface IRandomConfig {
   maxValue?: number,
@@ -11,7 +11,7 @@ export class Random extends AbstractActivity<IRandomConfig> {
   public static NAME = "system.random"
   public static INPUT_NAME_STARTUP = "startUp"
 
-  constructor(meta: IActivityDefine<IRandomConfig>) {
+  constructor(meta: INodeDefine<IRandomConfig>) {
     super(meta)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {

@@ -1,4 +1,4 @@
-import { IActivityDefine } from "@rxdrag/minions-schema";
+import { INodeDefine } from "@rxdrag/minions-schema";
 import { IController, IControllerContext } from "../../interfaces";
 import { AbstractControllerActivity } from "../AbstractControllerActivity";
 import { IVariableConfig } from "./SetVariable";
@@ -9,7 +9,7 @@ export class ReadVariable extends AbstractControllerActivity<IVariableConfig> {
   public static NAME = "system-react.readVariable"
   
   controller: IController
-  constructor(meta: IActivityDefine<IVariableConfig>, context?: IControllerContext) {
+  constructor(meta: INodeDefine<IVariableConfig>, context?: IControllerContext) {
     super(meta, context)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {

@@ -1,5 +1,5 @@
 import { AbstractActivity, Activity, Input, LogicFlow } from "@rxdrag/minions-runtime";
-import { IActivityDefine } from "@rxdrag/minions-schema";
+import { INodeDefine } from "@rxdrag/minions-schema";
 import _ from "lodash"
 
 export interface IcustomizedLoopConifg {
@@ -18,7 +18,7 @@ export class CustomizedLoop extends AbstractActivity<IcustomizedLoopConifg> {
 
   logicFlow?: LogicFlow;
 
-  constructor(meta: IActivityDefine<IcustomizedLoopConifg>) {
+  constructor(meta: INodeDefine<IcustomizedLoopConifg>) {
     super(meta)
     if (meta.children) {
       //通过portId关联子流程的开始跟结束节点，端口号对应节点号
