@@ -7,6 +7,7 @@ import { ILogicMetas, useRemoveSelected, useSelected } from "@rxdrag/minions-log
 import { activityMaterialLocales } from "minion-materials"
 import styled from "styled-components"
 import { Button, Space } from "antd"
+import metas from "./meta.json"
 
 const Toolbar = styled.div`
   height: 80px;
@@ -22,10 +23,7 @@ export const ExampleInner = memo((
   }
 ) => {
   const { toggleTheme } = props
-  const [inputValue, setInputValue] = useState<ILogicMetas>({
-    nodes: [],
-    lines: []
-  })
+  const [inputValue, setInputValue] = useState<ILogicMetas>(metas as any)
 
   const { selected } = useSelected()
   const handleRemove = useRemoveSelected()

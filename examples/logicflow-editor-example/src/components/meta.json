@@ -1,0 +1,244 @@
+{
+  "lines": [
+    {
+      "id": "aae0386e-935a-4bcc-9499-2ff6b31c1811",
+      "source": {
+        "nodeId": "3d42ba18-0e89-4e9c-b41b-9a9f0c9bc96a"
+      },
+      "target": {
+        "nodeId": "82623a97-5541-49b9-a63b-b394585f267e",
+        "portId": "b788645d-d9b8-4f40-bedd-574a0eb2a643"
+      }
+    },
+    {
+      "id": "de7e68d7-c4a5-4478-853c-b2c92e9cdd4c",
+      "source": {
+        "nodeId": "82623a97-5541-49b9-a63b-b394585f267e",
+        "portId": "7f251218-708a-4a4d-821a-ba4ca99c0fec"
+      },
+      "target": {
+        "nodeId": "e5baa3ef-40cb-4544-8c61-26a2ca8a6384",
+        "portId": "06a7009c-b4cd-42b8-9092-f2349fdc091b"
+      }
+    },
+    {
+      "id": "5a0a6ce3-d942-421c-ba73-ba9dabc59151",
+      "source": {
+        "nodeId": "82623a97-5541-49b9-a63b-b394585f267e",
+        "portId": "15435643-2473-48be-9e77-403675a81f27"
+      },
+      "target": {
+        "nodeId": "30a0d04e-44ef-4ef6-bb5b-2430b5b2c256",
+        "portId": "06a7009c-b4cd-42b8-9092-f2349fdc091b"
+      }
+    },
+    {
+      "id": "dd18ca91-474a-40d0-a916-431393e13305",
+      "source": {
+        "nodeId": "82623a97-5541-49b9-a63b-b394585f267e",
+        "portId": "7f251218-708a-4a4d-821a-ba4ca99c0fec"
+      },
+      "target": {
+        "nodeId": "3861ce09-74a5-4097-b751-3ff702dbd294"
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "activityName": "debug",
+      "config": {
+        "tip": "结束"
+      },
+      "id": "e5baa3ef-40cb-4544-8c61-26a2ca8a6384",
+      "inPorts": [
+        {
+          "id": "06a7009c-b4cd-42b8-9092-f2349fdc091b",
+          "label": "",
+          "name": "input"
+        }
+      ],
+      "label": "调试",
+      "outPorts": [],
+      "type": "Activity",
+      "x6Node": {
+        "height": 32,
+        "width": 88,
+        "x": 740,
+        "y": 220
+      }
+    },
+    {
+      "activityName": "end",
+      "id": "3861ce09-74a5-4097-b751-3ff702dbd294",
+      "inPorts": [],
+      "label": "输出",
+      "outPorts": [],
+      "type": "End",
+      "x6Node": {
+        "height": 20,
+        "width": 20,
+        "x": 800,
+        "y": 160
+      }
+    },
+    {
+      "activityName": "debug",
+      "config": {
+        "tip": "单次"
+      },
+      "id": "30a0d04e-44ef-4ef6-bb5b-2430b5b2c256",
+      "inPorts": [
+        {
+          "id": "06a7009c-b4cd-42b8-9092-f2349fdc091b",
+          "label": "",
+          "name": "input"
+        }
+      ],
+      "label": "调试",
+      "outPorts": [],
+      "type": "Activity",
+      "x6Node": {
+        "height": 48,
+        "width": 88,
+        "x": 710,
+        "y": 40
+      }
+    },
+    {
+      "activityName": "start",
+      "id": "3d42ba18-0e89-4e9c-b41b-9a9f0c9bc96a",
+      "inPorts": [],
+      "label": "输入",
+      "outPorts": [],
+      "type": "Start",
+      "x6Node": {
+        "height": 20,
+        "width": 20,
+        "x": 40,
+        "y": 150
+      }
+    },
+    {
+      "activityName": "customizedLoop",
+      "children": {
+        "lines": [
+          {
+            "id": "a9341e77-091e-4485-8114-886e07137abf",
+            "source": {
+              "nodeId": "8b52cbf2-c50b-417e-a807-9a3124f7ce04",
+              "portId": "4dcc2198-c5ef-4d15-9703-55a9e1620d23"
+            },
+            "target": {
+              "nodeId": "82623a97-5541-49b9-a63b-b394585f267e",
+              "portId": "15435643-2473-48be-9e77-403675a81f27"
+            }
+          },
+          {
+            "id": "b48c35d8-5f8f-4e71-ae5d-e2c9f60eaa0e",
+            "source": {
+              "nodeId": "8b52cbf2-c50b-417e-a807-9a3124f7ce04",
+              "portId": "ed0c1e9f-ae65-485f-ba30-3e6a69582c4a"
+            },
+            "target": {
+              "nodeId": "82623a97-5541-49b9-a63b-b394585f267e",
+              "portId": "7f251218-708a-4a4d-821a-ba4ca99c0fec"
+            }
+          },
+
+
+          {
+            "id": "3bf8dd31-b123-4a5e-8bd5-2e2057c9e0b9",
+            "source": {
+              "nodeId": "82623a97-5541-49b9-a63b-b394585f267e",
+              "portId": "b788645d-d9b8-4f40-bedd-574a0eb2a643"
+            },
+            "target": {
+              "nodeId": "d2ef20d0-425b-4802-b4f9-afc8c10e9ef6",
+              "portId": "b22a2f20-632e-47f9-81da-05594a67961d"
+            }
+          }
+        ],
+        "nodes": [
+          {
+            "activityName": "subLogicFlow",
+            "config": {
+              "param": {
+                "logicFlowId": "4f183aa5-9506-455e-a6c4-a4e0f17fcb75"
+              }
+            },
+            "id": "8b52cbf2-c50b-417e-a807-9a3124f7ce04",
+            "inPorts": [],
+            "label": "子编排",
+            "outPorts": [],
+            "parentId": "82623a97-5541-49b9-a63b-b394585f267e",
+            "type": "LogicFlowActivity",
+            "x6Node": {
+              "height": 32,
+              "width": 102,
+              "x": 440,
+              "y": 140
+            }
+          },
+          {
+            "activityName": "constValue",
+            "id": "d2ef20d0-425b-4802-b4f9-afc8c10e9ef6",
+            "inPorts": [
+              {
+                "id": "b22a2f20-632e-47f9-81da-05594a67961d",
+                "label": "",
+                "name": "input"
+              }
+            ],
+            "label": "常量",
+            "outPorts": [
+              {
+                "id": "3a370feb-2377-4e50-a18c-2bc96a38232f",
+                "label": "",
+                "name": "output"
+              }
+            ],
+            "parentId": "82623a97-5541-49b9-a63b-b394585f267e",
+            "type": "Activity",
+            "x6Node": {
+              "height": 32,
+              "width": 88,
+              "x": 220,
+              "y": 220
+            }
+          }
+        ]
+      },
+      "config": {
+        "times": 5
+      },
+      "id": "82623a97-5541-49b9-a63b-b394585f267e",
+      "inPorts": [
+        {
+          "id": "b788645d-d9b8-4f40-bedd-574a0eb2a643",
+          "label": "",
+          "name": "input"
+        }
+      ],
+      "label": "自定义循环",
+      "outPorts": [
+        {
+          "id": "15435643-2473-48be-9e77-403675a81f27",
+          "label": "单次输出",
+          "name": "output"
+        },
+        {
+          "id": "7f251218-708a-4a4d-821a-ba4ca99c0fec",
+          "label": "结束",
+          "name": "finished"
+        }
+      ],
+      "type": "EmbeddedFlow",
+      "x6Node": {
+        "height": 192,
+        "width": 472,
+        "x": 140,
+        "y": 100
+      }
+    }
+  ]
+}
