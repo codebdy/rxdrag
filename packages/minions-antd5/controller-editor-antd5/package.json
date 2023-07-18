@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/controller-editor-antd5",
-  "version": "0.2.4",
+  "version": "0.2.7",
   "module": "index.ts",
   "files": [
     "dist"
