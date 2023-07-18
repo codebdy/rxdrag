@@ -1,4 +1,4 @@
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { CustomizedLoop } from "@rxdrag/minions-activities";
 import { customizedLoopIcon } from "../../icons";
@@ -8,7 +8,7 @@ import { createUuid } from "@rxdrag/shared";
 export const customizedLoopMaterial: IRxDragActivityMaterial = {
   icon: customizedLoopIcon,
   label: "$customizedLoop",
-  activityType: ActivityType.EmbeddedFlow,
+  activityType: NodeType.EmbeddedFlow,
   defaultPorts: {
     inPorts: [
       {

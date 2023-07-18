@@ -5,7 +5,7 @@ import { getEndNodeConfig } from "./getEndNodeConfig";
 import { useGetMaterial } from "./useGetMaterial";
 import { useGetSingleNodeConfig } from "./useGetSingleNodeConfig";
 import { IActivityNode } from "../interfaces";
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { useThemeToken } from "./useThemeToken";
 import { useGetLogicFlowNodeConfig } from "./useGetLogicFlowNodeConfig";
 import { useGetGroupNodeConfig } from "./useGetGroupNodeConfig";
@@ -19,15 +19,15 @@ export function useGetNodeConfig() {
 
   const getConfig = useCallback((reactNodeMeta: IActivityNode): Node.Metadata => {
     switch (reactNodeMeta.type) {
-      case ActivityType.Start:
+      case NodeType.Start:
         return getStartNodeConfig(reactNodeMeta, token)
-      case ActivityType.End:
+      case NodeType.End:
         return getEndNodeConfig(reactNodeMeta, token)
-      case ActivityType.Activity:
+      case NodeType.Activity:
         return getSingleNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.activityName))
-      case ActivityType.LogicFlowActivity:
+      case NodeType.LogicFlowActivity:
         return getLogicFlowNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.activityName))
-      case ActivityType.EmbeddedFlow:
+      case NodeType.EmbeddedFlow:
         return getGroupNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.activityName))
     }
 

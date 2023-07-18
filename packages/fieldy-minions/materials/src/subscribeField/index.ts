@@ -1,5 +1,5 @@
 import { createUuid } from "@rxdrag/shared";
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { subscribeIcon } from "../icons";
 import { SubscribeField } from "@rxdrag/fieldy-minions-activities";
 import { IFieldyActivityMaterial } from "../types";
@@ -10,7 +10,7 @@ export const subscribeFieldMaterial: IFieldyActivityMaterial = {
   activityName: SubscribeField.NAME,
   icon: subscribeIcon,
   label: "$subscribeField",
-  activityType: ActivityType.Activity,
+  activityType: NodeType.Activity,
   defaultPorts: {
     outPorts: [
       {

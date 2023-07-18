@@ -1,5 +1,5 @@
 import { Activity, AbstractActivity, Input } from "@rxdrag/minions-runtime"
-import { IActivityDefine } from "@rxdrag/minions-schema"
+import { INodeDefine } from "@rxdrag/minions-schema"
 
 export interface IRouteToConfig {
   url?: string,
@@ -14,7 +14,7 @@ export interface IRouteToContext {
 export class RouteTo extends AbstractActivity<IRouteToConfig, IRouteToContext> {
   public static NAME = "system-react.routeTo";
 
-  constructor(meta: IActivityDefine<IRouteToConfig>, context?: IRouteToContext) {
+  constructor(meta: INodeDefine<IRouteToConfig>, context?: IRouteToContext) {
     super(meta, context)
   }
 

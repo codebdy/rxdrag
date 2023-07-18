@@ -1,5 +1,5 @@
 import { Activity, AbstractActivity, Input } from "@rxdrag/minions-runtime";
-import { IActivityDefine } from "@rxdrag/minions-schema";
+import { INodeDefine } from "@rxdrag/minions-schema";
 import { message } from "antd";
 
 export enum MessageType {
@@ -18,7 +18,7 @@ export interface IInfoMessageConfig {
 @Activity(InfoMessage.NAME)
 export class InfoMessage extends AbstractActivity<IInfoMessageConfig> {
   public static NAME = "system-react-antd5.message";
-  constructor(meta: IActivityDefine<IInfoMessageConfig>) {
+  constructor(meta: INodeDefine<IInfoMessageConfig>) {
     super(meta)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {

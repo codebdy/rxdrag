@@ -1,5 +1,5 @@
 import { Activity, Input, AbstractActivity } from "@rxdrag/minions-runtime"
-import { IActivityDefine } from "@rxdrag/minions-schema"
+import { INodeDefine } from "@rxdrag/minions-schema"
 
 export interface IDebugConfig {
   tip?: string,
@@ -10,7 +10,7 @@ export interface IDebugConfig {
 export class Debug extends AbstractActivity<IDebugConfig> {
   public static NAME = "system.debug"
 
-  constructor(meta: IActivityDefine<IDebugConfig>) {
+  constructor(meta: INodeDefine<IDebugConfig>) {
     super(meta)
   }
 

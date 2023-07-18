@@ -1,7 +1,7 @@
 import { IActivity, IActivityJointers } from "../interfaces";
 import { ActivityJointers } from "./ActivityJointer";
 import { Jointer } from "./Jointer";
-import { ActivityType, IActivityDefine, ILogicFlowDefine, ILogicFlowMetas } from "@rxdrag/minions-schema"
+import { NodeType, INodeDefine, ILogicFlowDefine, ILogicFlowMetas } from "@rxdrag/minions-schema"
 import { activities } from "./activities";
 
 export class LogicFlow<LogicFlowContext = unknown> {
@@ -32,17 +32,17 @@ export class LogicFlow<LogicFlowContext = unknown> {
   private constructActivities() {
     for (const activityMeta of this.flowMeta.nodes) {
       switch (activityMeta.type) {
-        case ActivityType.Start:
+        case NodeType.Start:
           //start只有一个端口，可能会变成其它流程的端口，所以name谨慎处理
           this.jointers.inputs.push(new Jointer(activityMeta.id, activityMeta.name || "input"));
           break;
-        case ActivityType.End:
+        case NodeType.End:
           //end 只有一个端口，可能会变成其它流程的端口，所以name谨慎处理
           this.jointers.outputs.push(new Jointer(activityMeta.id, activityMeta.name || "output"));
           break;
-        case ActivityType.Activity:
-        case ActivityType.EmbeddedFlow:
-        case ActivityType.LogicFlowActivity:
+        case NodeType.Activity:
+        case NodeType.EmbeddedFlow:
+        case NodeType.LogicFlowActivity:
           if (activityMeta.activityName) {
             const activityInfo = activities[activityMeta.activityName]
             const activityClass = activityInfo?.target
@@ -50,7 +50,7 @@ export class LogicFlow<LogicFlowContext = unknown> {
               throw new Error("Can not find activity by name:" + activityMeta.activityName)
             }
             let newMeta = activityMeta
-            if (activityMeta.type === ActivityType.EmbeddedFlow) {
+            if (activityMeta.type === NodeType.EmbeddedFlow) {
               //重新构造子节点，主要目的：把父节点端口转换成子流程的开始节点跟结束节点
               newMeta = this.refactorChildren(activityMeta)
             }
@@ -123,7 +123,7 @@ export class LogicFlow<LogicFlowContext = unknown> {
   }
 
   //重新构造children，添加边界节点，修改连线
-  refactorChildren = (parentNode: IActivityDefine) => {
+  refactorChildren = (parentNode: INodeDefine) => {
     const children: ILogicFlowMetas = {
       lines: [],//连线重新整理
       nodes: [...parentNode?.children?.nodes || []],//节点全部纳入
@@ -131,12 +131,12 @@ export class LogicFlow<LogicFlowContext = unknown> {
 
     //父节点的input创建为start, portId=>start 节点 id
     for (const input of parentNode?.inPorts || []) {
-      children.nodes.push({ id: input.id, type: ActivityType.Start, activityName: "start", name: input.name })
+      children.nodes.push({ id: input.id, type: NodeType.Start, activityName: "start", name: input.name })
     }
 
     //父节点的output创建为end, portId=>end 节点 id
     for (const output of parentNode?.outPorts || []) {
-      children.nodes.push({ id: output.id, type: ActivityType.End, activityName: "end", name: output.name })
+      children.nodes.push({ id: output.id, type: NodeType.End, activityName: "end", name: output.name })
     }
 
     for (const line of parentNode?.children?.lines || []) {

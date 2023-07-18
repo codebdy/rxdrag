@@ -6,7 +6,7 @@ import { Selection } from '@antv/x6-plugin-selection'
 import { MiniMap } from "@antv/x6-plugin-minimap";
 import { IActivityNode, INodeData } from "../interfaces/interfaces";
 import { IThemeToken } from "../interfaces";
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { useGetNodeMeta } from "./useGetNodeMeta";
 import { EditorStore } from "../classes";
 
@@ -40,18 +40,18 @@ export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
           const bbox = node.getBBox()
           const data = node.getData<{ meta: IActivityNode }>()
           //不能递归嵌套
-          if (data.meta.type === ActivityType.EmbeddedFlow) {
+          if (data.meta.type === NodeType.EmbeddedFlow) {
             return []
           }
 
           //开始、结束节点不需要嵌入
-          if (data.meta.type === ActivityType.Start || data.meta.type === ActivityType.End) {
+          if (data.meta.type === NodeType.Start || data.meta.type === NodeType.End) {
             return []
           }
 
           return this.getNodes().filter((node) => {
             const data = node.getData<{ meta: IActivityNode }>()
-            if (data && data.meta.type === ActivityType.EmbeddedFlow) {
+            if (data && data.meta.type === NodeType.EmbeddedFlow) {
               const targetBBox = node.getBBox()
               return bbox.isIntersectWithRect(targetBBox)
             }
@@ -95,10 +95,10 @@ export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
           const portElement = magnet?.parentElement
           const { meta } = cell.getData<{ meta: IActivityNode | undefined }>()
           //子流程容器的端口是可以往外拉线的
-          if (meta?.type === ActivityType.EmbeddedFlow) {
+          if (meta?.type === NodeType.EmbeddedFlow) {
             return true
           }
-          return portElement?.getAttribute('port-group') !== 'in' && cell?.getData<INodeData>()?.meta?.type !== ActivityType.End
+          return portElement?.getAttribute('port-group') !== 'in' && cell?.getData<INodeData>()?.meta?.type !== NodeType.End
         },
 
         //判断能否连接目标端口
@@ -113,10 +113,14 @@ export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
           const sourcePort = sourceMagnet?.getAttribute('port') || undefined;
 
           for (const edge of edges) {
-            if (targetId && targetPort && (edge.target as any).cell === targetId && (edge.target as any).port === targetPort) {
+            //同一个节点端口已经有了连接
+            if (targetId && targetPort &&
+              (edge.target as any).cell === targetId && (edge.target as any).port === targetPort &&
+              (edge.source as any).cell === sourceId && (edge.source as any).port === sourcePort) {
               isConnected = true
               break
             }
+
             //连接到结束点
             if (!targetPort && targetId) {
               if (targetId === (edge.target as any).cell
@@ -133,7 +137,7 @@ export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
           const targetMeta = getNodeMetaRef.current(targetId || "")
 
           //起点是嵌入容器的端口
-          if (soureMeta?.type === ActivityType.EmbeddedFlow) {
+          if (soureMeta?.type === NodeType.EmbeddedFlow) {
             //是嵌入容器的input
             if (soureMeta.inPorts?.find(port => port.id === sourcePort)) {
               //如果目标节点是本节点的output
@@ -183,7 +187,7 @@ export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
 
           return !isConnected &&
             targetMagnet?.parentElement?.getAttribute('port-group') !== 'out' &&
-            targetCell?.getData<INodeData>()?.meta?.type !== ActivityType.Start
+            targetCell?.getData<INodeData>()?.meta?.type !== NodeType.Start
         },
         createEdge() {
           return gph?.createEdge({

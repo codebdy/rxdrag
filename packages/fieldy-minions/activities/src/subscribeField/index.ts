@@ -1,5 +1,5 @@
 import { AbstractActivity, Activity } from "@rxdrag/minions-runtime";
-import { IActivityDefine } from "@rxdrag/minions-schema";
+import { INodeDefine } from "@rxdrag/minions-schema";
 import { IFieldyLogicFlowContext } from "../context"
 
 export interface ISubscribeFieldConfig {
@@ -9,7 +9,7 @@ export interface ISubscribeFieldConfig {
 @Activity(SubscribeField.NAME)
 export class SubscribeField extends AbstractActivity<ISubscribeFieldConfig, IFieldyLogicFlowContext>  {
   public static NAME = "fieldy.subscribeField"
-  constructor(meta: IActivityDefine<ISubscribeFieldConfig>, context?: IFieldyLogicFlowContext) {
+  constructor(meta: INodeDefine<ISubscribeFieldConfig>, context?: IFieldyLogicFlowContext) {
     super(meta, context)
     const path = meta.config?.fieldPath
     if (path) {

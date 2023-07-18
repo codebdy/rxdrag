@@ -3,7 +3,7 @@ import { useGetEdgeConfig } from "./useGetEdgeConfig";
 import { useGraph } from "./useGraph";
 import { useMetas } from "./useMetas";
 import { useShowNode } from "./useShowNode";
-import { ActivityType, ILineDefine } from "@rxdrag/minions-schema";
+import { NodeType, ILineDefine } from "@rxdrag/minions-schema";
 import { useShowEdge } from "./useShowEdge";
 import { IActivityNode, ILogicMetas } from "../interfaces";
 import { useThemeToken } from "./useThemeToken";
@@ -23,7 +23,7 @@ export function useShowCells() {
       //先显示顶级节点
       for (const nodeMeta of metas?.nodes || []) {
         const node = showNode(nodeMeta)
-        if (nodeMeta.type === ActivityType.EmbeddedFlow) {
+        if (nodeMeta.type === NodeType.EmbeddedFlow) {
           for (const childMeta of nodeMeta.children?.nodes || []) {
             const child = showNode(childMeta)
             child && node?.addChild(child)
@@ -55,7 +55,7 @@ function getAllMetas(logicMetas?: ILogicMetas) {
   }
   const metas: (ILineDefine | IActivityNode)[] = [...logicMetas.lines, ...logicMetas.nodes]
   for (const nodeMeta of logicMetas.nodes) {
-    if (nodeMeta.type === ActivityType.EmbeddedFlow) {
+    if (nodeMeta.type === NodeType.EmbeddedFlow) {
       metas.push(...nodeMeta.children?.nodes || [], ...nodeMeta.children?.lines || [])
     }
   }

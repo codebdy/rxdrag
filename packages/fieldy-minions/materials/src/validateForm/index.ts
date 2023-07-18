@@ -1,4 +1,4 @@
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { createUuid } from "@rxdrag/shared";
 import { formValidateIcon } from "../icons";
 import { IFieldyActivityMaterial } from "../types";
@@ -10,7 +10,7 @@ export const validateFormMaterial: IFieldyActivityMaterial = {
   activityName: ValidateForm.NAME,
   icon: formValidateIcon,
   label: "$validateForm",
-  activityType: ActivityType.Activity,
+  activityType: NodeType.Activity,
   defaultPorts: {
     inPorts: [
       {

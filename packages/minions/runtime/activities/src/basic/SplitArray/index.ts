@@ -1,12 +1,12 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
-import { IActivityDefine } from "@rxdrag/minions-schema"
+import { INodeDefine } from "@rxdrag/minions-schema"
 
 
 @Activity(SplitArray.NAME)
 export class SplitArray extends AbstractActivity {
   public static NAME = "system.splitArray"
 
-  constructor(meta: IActivityDefine) {
+  constructor(meta: INodeDefine) {
     super(meta)
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("SplitArray inputs count error")

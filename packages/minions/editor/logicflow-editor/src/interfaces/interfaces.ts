@@ -1,4 +1,4 @@
-import { IActivityDefine, ILineDefine } from "@rxdrag/minions-schema";
+import { INodeDefine, ILineDefine } from "@rxdrag/minions-schema";
 import { ISnapshot } from "./state";
 
 export interface IX6NodeDefine {
@@ -12,7 +12,7 @@ export interface IX6NodeDefine {
   height: number;
 }
 
-export interface IActivityNode extends IActivityDefine {
+export interface IActivityNode extends INodeDefine {
   x6Node?: IX6NodeDefine
 }
 
@@ -22,7 +22,7 @@ export type ILogicMetas = {
 }
 
 export interface INodeData {
-  meta: IActivityDefine<undefined>
+  meta: INodeDefine<undefined>
 }
 
 export type ZoomChangeListener = (zoom: number) => void

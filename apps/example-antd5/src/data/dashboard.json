@@ -118,6 +118,317 @@
                             "value": "轻松创建、部署、管理您的Mes应用，提升开发效率，降低业务成本。 ",
                             "style": {}
                           },
+                          "x-controller": {
+                            "id": "e80ec79b-ebb2-4d1c-afdc-d5773d6528dd",
+                            "controllerType": "logicFlow",
+                            "events": [
+                              {
+                                "id": "f299fc88-c0d0-4237-9371-d337228f997d",
+                                "name": "init",
+                                "label": "初始化",
+                                "nodes": [
+                                  {
+                                    "id": "f066c45f-6586-4784-b76a-15efb418af9b",
+                                    "label": "拆分对象",
+                                    "type": "Activity",
+                                    "activityName": "system.splitObject",
+                                    "inPorts": [
+                                      {
+                                        "id": "3d33ad1e-35e7-45c5-aee7-8ba48424b98e",
+                                        "name": "input",
+                                        "label": ""
+                                      }
+                                    ],
+                                    "outPorts": [
+                                      {
+                                        "id": "8ad8135c-3330-487d-8cc8-64bf8d5e7eca",
+                                        "name": "output1",
+                                        "label": "数学",
+                                        "key": "8ad8135c-3330-487d-8cc8-64bf8d5e7eca"
+                                      },
+                                      {
+                                        "id": "fcf20b8e-9ec6-4cb1-9b16-df809e383256",
+                                        "name": "output2",
+                                        "label": "语文",
+                                        "key": "fcf20b8e-9ec6-4cb1-9b16-df809e383256"
+                                      },
+                                      {
+                                        "id": "7038d8dd-90b8-4f4c-8670-bc863a71fb5f",
+                                        "name": "input2",
+                                        "label": "物理",
+                                        "key": "7038d8dd-90b8-4f4c-8670-bc863a71fb5f"
+                                      },
+                                      {
+                                        "id": "41883793-34df-4b4e-b043-dbbb06adec13",
+                                        "name": "input3",
+                                        "label": "化学",
+                                        "key": "41883793-34df-4b4e-b043-dbbb06adec13"
+                                      },
+                                      {
+                                        "id": "12af2171-1b6e-4cf6-941e-9951a796afa2",
+                                        "name": "input4",
+                                        "label": "英语",
+                                        "key": "12af2171-1b6e-4cf6-941e-9951a796afa2"
+                                      },
+                                      {
+                                        "id": "d0d640b3-49e6-4c46-8f07-48ac23a6f80d",
+                                        "name": "input5",
+                                        "label": "体育",
+                                        "key": "d0d640b3-49e6-4c46-8f07-48ac23a6f80d"
+                                      },
+                                      {
+                                        "id": "180bb147-82b9-44d8-b6fe-f15b8f619dc5",
+                                        "name": "input6",
+                                        "label": "音乐",
+                                        "key": "180bb147-82b9-44d8-b6fe-f15b8f619dc5"
+                                      },
+                                      {
+                                        "id": "e37b79d6-3499-4d6f-836d-bbf934e9e590",
+                                        "name": "input7",
+                                        "label": "美术",
+                                        "key": "e37b79d6-3499-4d6f-836d-bbf934e9e590"
+                                      },
+                                      {
+                                        "id": "ba4e4f55-7afa-41d0-a2f4-9e7576c5afdc",
+                                        "name": "input8",
+                                        "label": "游戏",
+                                        "key": "ba4e4f55-7afa-41d0-a2f4-9e7576c5afdc"
+                                      }
+                                    ],
+                                    "x6Node": {
+                                      "x": 340,
+                                      "y": 70,
+                                      "width": 116,
+                                      "height": 32
+                                    }
+                                  },
+                                  {
+                                    "id": "e5edb547-bb14-45c6-9afc-0b90d75c1223",
+                                    "label": "收集数组",
+                                    "type": "Activity",
+                                    "activityName": "system.collectToArray",
+                                    "inPorts": [
+                                      {
+                                        "id": "e409d357-ff77-4b78-b967-b2e45006c047",
+                                        "name": "input",
+                                        "label": "input"
+                                      },
+                                      {
+                                        "id": "bfe462c8-58ab-4c15-b00d-b70ce31639f6",
+                                        "name": "finished",
+                                        "label": "finished"
+                                      }
+                                    ],
+                                    "outPorts": [
+                                      {
+                                        "id": "5844f137-c048-46a6-a387-ba6f087892bb",
+                                        "name": "output",
+                                        "label": ""
+                                      }
+                                    ],
+                                    "x6Node": {
+                                      "x": 570,
+                                      "y": 180,
+                                      "width": 116,
+                                      "height": 32
+                                    }
+                                  },
+                                  {
+                                    "id": "8777a4cb-af1a-4410-9a62-14ab1ea125a5",
+                                    "label": "加和",
+                                    "type": "Activity",
+                                    "activityName": "system.sumArray",
+                                    "inPorts": [
+                                      {
+                                        "id": "e61f6db7-f46b-46bd-88d0-a5e4e8dd662b",
+                                        "name": "input",
+                                        "label": ""
+                                      }
+                                    ],
+                                    "outPorts": [
+                                      {
+                                        "id": "c78fdf46-0876-4afe-92b9-836bdc27e8c3",
+                                        "name": "output",
+                                        "label": ""
+                                      }
+                                    ],
+                                    "x6Node": {
+                                      "x": 760,
+                                      "y": 260,
+                                      "width": 88,
+                                      "height": 32
+                                    }
+                                  },
+                                  {
+                                    "id": "363b03b8-2d95-4b19-811c-8e0636d1a66a",
+                                    "label": "循环",
+                                    "type": "Activity",
+                                    "activityName": "system.loop",
+                                    "inPorts": [
+                                      {
+                                        "id": "93b2921e-3058-4877-abbd-450999738409",
+                                        "name": "input",
+                                        "label": ""
+                                      }
+                                    ],
+                                    "outPorts": [
+                                      {
+                                        "id": "0b72e16a-2755-4ab0-a2e6-ef8c202b1230",
+                                        "name": "output",
+                                        "label": "单次输出"
+                                      },
+                                      {
+                                        "id": "5d626c5b-4dc1-4577-8a0f-f2ae81ced097",
+                                        "name": "finished",
+                                        "label": "结束"
+                                      }
+                                    ],
+                                    "x6Node": {
+                                      "x": 210,
+                                      "y": 250,
+                                      "width": 88,
+                                      "height": 32
+                                    }
+                                  }
+                                ],
+                                "lines": [
+                                  {
+                                    "id": "e3e4a48e-cbe0-4f54-a7f2-d549bd4baf4d",
+                                    "source": {
+                                      "nodeId": "363b03b8-2d95-4b19-811c-8e0636d1a66a",
+                                      "portId": "0b72e16a-2755-4ab0-a2e6-ef8c202b1230"
+                                    },
+                                    "target": {
+                                      "nodeId": "f066c45f-6586-4784-b76a-15efb418af9b",
+                                      "portId": "3d33ad1e-35e7-45c5-aee7-8ba48424b98e"
+                                    }
+                                  },
+                                  {
+                                    "id": "f07672f3-0b04-4833-9ffe-025acdbf86bf",
+                                    "source": {
+                                      "nodeId": "f066c45f-6586-4784-b76a-15efb418af9b",
+                                      "portId": "8ad8135c-3330-487d-8cc8-64bf8d5e7eca"
+                                    },
+                                    "target": {
+                                      "nodeId": "e5edb547-bb14-45c6-9afc-0b90d75c1223",
+                                      "portId": "e409d357-ff77-4b78-b967-b2e45006c047"
+                                    }
+                                  },
+                                  {
+                                    "id": "e08149ae-1e66-4589-b950-cc536b549021",
+                                    "source": {
+                                      "nodeId": "f066c45f-6586-4784-b76a-15efb418af9b",
+                                      "portId": "fcf20b8e-9ec6-4cb1-9b16-df809e383256"
+                                    },
+                                    "target": {
+                                      "nodeId": "e5edb547-bb14-45c6-9afc-0b90d75c1223",
+                                      "portId": "e409d357-ff77-4b78-b967-b2e45006c047"
+                                    }
+                                  },
+                                  {
+                                    "id": "ef6bc794-dbaf-4c5e-aa29-682e7ab5c7a5",
+                                    "source": {
+                                      "nodeId": "f066c45f-6586-4784-b76a-15efb418af9b",
+                                      "portId": "7038d8dd-90b8-4f4c-8670-bc863a71fb5f"
+                                    },
+                                    "target": {
+                                      "nodeId": "e5edb547-bb14-45c6-9afc-0b90d75c1223",
+                                      "portId": "e409d357-ff77-4b78-b967-b2e45006c047"
+                                    }
+                                  },
+                                  {
+                                    "id": "870ea6ce-5ade-417f-95f3-23a0598fb269",
+                                    "source": {
+                                      "nodeId": "f066c45f-6586-4784-b76a-15efb418af9b",
+                                      "portId": "41883793-34df-4b4e-b043-dbbb06adec13"
+                                    },
+                                    "target": {
+                                      "nodeId": "e5edb547-bb14-45c6-9afc-0b90d75c1223",
+                                      "portId": "e409d357-ff77-4b78-b967-b2e45006c047"
+                                    }
+                                  },
+                                  {
+                                    "id": "af0ac8eb-7b3c-474f-ba27-b7c15d67d4ba",
+                                    "source": {
+                                      "nodeId": "f066c45f-6586-4784-b76a-15efb418af9b",
+                                      "portId": "12af2171-1b6e-4cf6-941e-9951a796afa2"
+                                    },
+                                    "target": {
+                                      "nodeId": "e5edb547-bb14-45c6-9afc-0b90d75c1223",
+                                      "portId": "e409d357-ff77-4b78-b967-b2e45006c047"
+                                    }
+                                  },
+                                  {
+                                    "id": "6323f026-e4fb-4fed-9337-fd7ff70032c7",
+                                    "source": {
+                                      "nodeId": "f066c45f-6586-4784-b76a-15efb418af9b",
+                                      "portId": "d0d640b3-49e6-4c46-8f07-48ac23a6f80d"
+                                    },
+                                    "target": {
+                                      "nodeId": "e5edb547-bb14-45c6-9afc-0b90d75c1223",
+                                      "portId": "e409d357-ff77-4b78-b967-b2e45006c047"
+                                    }
+                                  },
+                                  {
+                                    "id": "ae678b3b-d8ae-40fe-acb4-3221aca75cc9",
+                                    "source": {
+                                      "nodeId": "f066c45f-6586-4784-b76a-15efb418af9b",
+                                      "portId": "180bb147-82b9-44d8-b6fe-f15b8f619dc5"
+                                    },
+                                    "target": {
+                                      "nodeId": "e5edb547-bb14-45c6-9afc-0b90d75c1223",
+                                      "portId": "e409d357-ff77-4b78-b967-b2e45006c047"
+                                    }
+                                  },
+                                  {
+                                    "id": "f1990355-f360-4f73-baed-277dc456a9c1",
+                                    "source": {
+                                      "nodeId": "f066c45f-6586-4784-b76a-15efb418af9b",
+                                      "portId": "e37b79d6-3499-4d6f-836d-bbf934e9e590"
+                                    },
+                                    "target": {
+                                      "nodeId": "e5edb547-bb14-45c6-9afc-0b90d75c1223",
+                                      "portId": "e409d357-ff77-4b78-b967-b2e45006c047"
+                                    }
+                                  },
+                                  {
+                                    "id": "c9124123-720e-49a0-b2a7-b5c9fed77efb",
+                                    "source": {
+                                      "nodeId": "f066c45f-6586-4784-b76a-15efb418af9b",
+                                      "portId": "ba4e4f55-7afa-41d0-a2f4-9e7576c5afdc"
+                                    },
+                                    "target": {
+                                      "nodeId": "e5edb547-bb14-45c6-9afc-0b90d75c1223",
+                                      "portId": "e409d357-ff77-4b78-b967-b2e45006c047"
+                                    }
+                                  },
+                                  {
+                                    "id": "38286e6d-4c07-4e34-9e6f-4900944aabc0",
+                                    "source": {
+                                      "nodeId": "e5edb547-bb14-45c6-9afc-0b90d75c1223",
+                                      "portId": "5844f137-c048-46a6-a387-ba6f087892bb"
+                                    },
+                                    "target": {
+                                      "nodeId": "8777a4cb-af1a-4410-9a62-14ab1ea125a5",
+                                      "portId": "e61f6db7-f46b-46bd-88d0-a5e4e8dd662b"
+                                    }
+                                  },
+                                  {
+                                    "id": "a837f6a1-fb5b-4eb9-b249-999fa5c1f78e",
+                                    "source": {
+                                      "nodeId": "363b03b8-2d95-4b19-811c-8e0636d1a66a",
+                                      "portId": "5d626c5b-4dc1-4577-8a0f-f2ae81ced097"
+                                    },
+                                    "target": {
+                                      "nodeId": "e5edb547-bb14-45c6-9afc-0b90d75c1223",
+                                      "portId": "bfe462c8-58ab-4c15-b00d-b70ce31639f6"
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "name": "文本"
+                          },
                           "slots": {},
                           "children": []
                         },

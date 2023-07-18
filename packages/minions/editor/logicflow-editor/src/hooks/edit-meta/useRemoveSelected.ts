@@ -6,6 +6,8 @@ import { useSelectedEdge } from "../useSelectedEdge";
 import { useDispatch } from "../useDispatch";
 import { ActionType, RemoveEdgeAction, RemoveNodeAction } from "../../actions";
 import { useMetas } from "../useMetas";
+import { ILogicMetas } from "../../interfaces";
+import { ILineDefine, NodeType } from "@rxdrag/minions-schema";
 
 export function useRemoveSelected() {
   const backup = useBackup()
@@ -18,14 +20,16 @@ export function useRemoveSelected() {
   const handleRemove = useCallback(() => {
     if (selectedNode) {
       backup()
-      const action: RemoveNodeAction = { type: ActionType.REMOVE_NODE, payload: selectedNode.id }
-      dispatch?.(action)
-      for(const line of metas?.lines||[]){
+      //先删除线
+      for(const line of getAllLines(metas)){
         if(line.source.nodeId === selectedNode.id || line.target.nodeId === selectedNode.id){
           const action: RemoveEdgeAction = { type: ActionType.REMOVE_EDGE, payload: line.id }
           dispatch?.(action)
         }
       }
+      //再删除节点
+      const action: RemoveNodeAction = { type: ActionType.REMOVE_NODE, payload: selectedNode.id }
+      dispatch?.(action)
       markeChange()
     } else if (selectedEdge) {
       backup()
@@ -35,7 +39,21 @@ export function useRemoveSelected() {
     }
 
 
-  }, [backup, dispatch, markeChange, metas?.lines, selectedEdge, selectedNode])
+  }, [backup, dispatch, markeChange, metas, selectedEdge, selectedNode])
 
   return handleRemove
+}
+
+function getAllLines(logicMetas?: ILogicMetas) {
+  if (!logicMetas) {
+    return []
+  }
+  const metas: ILineDefine[] = [...logicMetas.lines]
+  for (const nodeMeta of logicMetas.nodes) {
+    if (nodeMeta.type === NodeType.EmbeddedFlow) {
+      metas.push(...nodeMeta.children?.lines||[])
+    }
+  }
+
+  return metas
 }

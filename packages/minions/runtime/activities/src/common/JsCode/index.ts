@@ -1,5 +1,5 @@
 import { InputHandler, Activity, AbstractActivity, DynamicInput } from "@rxdrag/minions-runtime"
-import { IActivityDefine } from "@rxdrag/minions-schema"
+import { INodeDefine } from "@rxdrag/minions-schema"
 
 
 export interface IJsCodeConfig {
@@ -13,7 +13,7 @@ export class JsCode extends AbstractActivity<IJsCodeConfig> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private inputs: any = {}
 
-  constructor(meta: IActivityDefine<IJsCodeConfig>, options?: unknown) {
+  constructor(meta: INodeDefine<IJsCodeConfig>, options?: unknown) {
     super(meta, options)
 
     for (const input of meta.inPorts || []) {

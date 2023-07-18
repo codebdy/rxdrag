@@ -1,5 +1,5 @@
 import { IActivity, IActivityJointers, LogicFlow, Activity } from "@rxdrag/minions-runtime";
-import { IActivityDefine } from "@rxdrag/minions-schema";
+import { INodeDefine } from "@rxdrag/minions-schema";
 import { IControllerContext } from "../../interfaces";
 import { IControllerConfig, IControllerParam } from "../AbstractControllerActivity";
 
@@ -19,7 +19,7 @@ export class Reaction implements IActivity {
   config?: IReactionConfig;
   logicFlow?: LogicFlow;
 
-  constructor(meta: IActivityDefine<IReactionConfig>, context: IControllerContext) {
+  constructor(meta: INodeDefine<IReactionConfig>, context: IControllerContext) {
     this.id = meta.id
     const defineMeta = context?.controllers?.[meta?.config?.param?.controllerId || ""]?.meta.reactions?.find(reactionMeta => reactionMeta.id === meta.config?.param?.logicFlowId)
     if (defineMeta) {

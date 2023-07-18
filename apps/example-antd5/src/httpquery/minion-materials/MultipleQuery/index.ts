@@ -1,4 +1,4 @@
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { createUuid } from "@rxdrag/shared";
 import { DEFAULT_INPUT_NAME } from "@rxdrag/minions-runtime";
 import { IQueryActivityMaterial } from "../types";
@@ -10,7 +10,7 @@ export const multipleQueryMaterial: IQueryActivityMaterial = {
   activityName: MultipleQuery.NAME,
   icon: dataQueryIcon,
   label: "$multipleQuery",
-  activityType: ActivityType.Activity,
+  activityType: NodeType.Activity,
   defaultPorts: {
     inPorts: [
       {

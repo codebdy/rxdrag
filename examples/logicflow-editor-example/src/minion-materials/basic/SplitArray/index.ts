@@ -1,13 +1,13 @@
 import { createUuid } from "@rxdrag/shared";
 import { splitArraySchema } from "./schema";
 import { ReactNode } from "react";
-import { ActivityType, IActivityMaterial } from "@rxdrag/minions-schema";
+import { NodeType, IActivityMaterial } from "@rxdrag/minions-schema";
 import { splitArrayIcon } from "../../icons";
 
 export const splitArrayMaterial: IActivityMaterial<ReactNode> = {
   icon: splitArrayIcon,
   label: "$splitArray",
-  activityType: ActivityType.Activity,
+  activityType: NodeType.Activity,
   defaultPorts: {
     inPorts: [
       {

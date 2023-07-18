@@ -1,4 +1,4 @@
-import { IActivityDefine } from "@rxdrag/minions-schema";
+import { INodeDefine } from "@rxdrag/minions-schema";
 import { IController, IControllerContext } from "../../interfaces";
 import { AbstractControllerActivity } from "../AbstractControllerActivity";
 import { Activity } from "@rxdrag/minions-runtime";
@@ -9,7 +9,7 @@ export class ListenProp extends AbstractControllerActivity<IPropConfig> {
   public static NAME = "system-react.listenProp"
 
   controller: IController
-  constructor(meta: IActivityDefine<IPropConfig>, context?: IControllerContext) {
+  constructor(meta: INodeDefine<IPropConfig>, context?: IControllerContext) {
     super(meta, context)
 
     if (Object.keys(meta.outPorts || {}).length !== 1) {

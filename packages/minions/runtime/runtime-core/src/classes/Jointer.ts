@@ -1,23 +1,25 @@
 import { IJointer, InputHandler } from "../interfaces/activity"
 
 export class Jointer implements IJointer {
-  //出口
+  //下游Jonter的数据接收函数
   private outlets: InputHandler[] = []
 
   constructor(public id: string, public name: string) {
   }
 
-  //入口
-  push: InputHandler = (inputValue?: any) => {
+  //接收上游数据，并分发到下游
+  push: InputHandler = (inputValue?: unknown, context?:unknown) => {
     for (const jointerInput of this.outlets) {
-      jointerInput(inputValue)
+      jointerInput(inputValue, context)
     }
   }
 
-  connect = (jointer: InputHandler) => {
-    this.outlets.push(jointer)
+  //添加下游Joninter
+  connect = (inputHandler: InputHandler) => {
+    this.outlets.push(inputHandler)
   }
 
+  //删除下游Jointer
   disconnect = (jointer: InputHandler) => {
     this.outlets.splice(this.outlets.indexOf(jointer), 1)
   }

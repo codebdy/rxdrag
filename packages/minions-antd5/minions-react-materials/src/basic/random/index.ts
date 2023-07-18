@@ -2,15 +2,15 @@
 import { createUuid } from "@rxdrag/shared";
 import { randomSchema } from "./schema";
 import { IRandomConfig, Random } from "@rxdrag/minions-activities";
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { randomIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
-import { DEFAULT_INPUT_NAME } from "@rxdrag/minions-runtime";
+import { DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
 
 export const randomMaterial: IRxDragActivityMaterial<IRandomConfig> = {
   icon: randomIcon,
   label: "$random",
-  activityType: ActivityType.Activity,
+  activityType: NodeType.Activity,
   defaultPorts: {
     inPorts: [
       {
@@ -22,7 +22,7 @@ export const randomMaterial: IRxDragActivityMaterial<IRandomConfig> = {
     outPorts: [
       {
         id: createUuid(),
-        name: DEFAULT_INPUT_NAME,
+        name: DEFAULT_OUTPUT_NAME,
         label: "",
       },
     ],

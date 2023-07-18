@@ -1,4 +1,4 @@
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { createUuid } from "@rxdrag/shared";
 import { IFieldConfig, ValidateField } from "@rxdrag/fieldy-minions-activities";
 import { IFieldyActivityMaterial } from "../types";
@@ -10,7 +10,7 @@ export const validateFieldMaterial: IFieldyActivityMaterial<IFieldConfig> = {
   activityName: ValidateField.NAME,
   icon: fieldValidateIcon,
   label: "$validateField",
-  activityType: ActivityType.Activity,
+  activityType: NodeType.Activity,
   defaultPorts: {
     inPorts: [
       {

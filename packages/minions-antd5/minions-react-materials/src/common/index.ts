@@ -15,7 +15,7 @@ export const commonActivites: IActivityMaterial<any, any, any, any>[] = [
   //   name: "globalLoading",
   //   icon: loadingIcon,
   //   label: "$globalLoading",
-  //   activityType: ActivityType.SingleReaction,
+  //   activityType: NodeType.SingleReaction,
   //   meta: {
   //     inPorts: [
   //       {

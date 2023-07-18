@@ -1,4 +1,4 @@
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { propSchema } from "./schema"
 import { createUuid } from "@rxdrag/shared";
 import { IPropConfig, SetProp } from "@rxdrag/minions-runtime-react";
@@ -10,7 +10,7 @@ import { IControllerEditorContextParam } from "@rxdrag/minions-controller-editor
 export const setPropMaterial: IRxDragActivityMaterial<IPropConfig, IControllerEditorContextParam> = {
   icon: setPropIcon,
   label: "$setProp",
-  activityType: ActivityType.Activity,
+  activityType: NodeType.Activity,
   defaultPorts: {
     inPorts: [
       {

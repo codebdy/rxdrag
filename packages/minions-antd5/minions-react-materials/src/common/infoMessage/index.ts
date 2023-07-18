@@ -1,7 +1,7 @@
 
 import { createUuid } from "@rxdrag/shared";
 import { infoMessageSchema } from "./schema";
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { IInfoMessageConfig, InfoMessage } from "@rxdrag/minions-react-antd5-activites"
 import { infoIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
@@ -9,7 +9,7 @@ import { IRxDragActivityMaterial } from "../../interfaces";
 export const infoMessageMaterial: IRxDragActivityMaterial<IInfoMessageConfig> = {
   icon: infoIcon,
   label: "$infoMessage",
-  activityType: ActivityType.Activity,
+  activityType: NodeType.Activity,
   defaultPorts: {
     inPorts: [
       {

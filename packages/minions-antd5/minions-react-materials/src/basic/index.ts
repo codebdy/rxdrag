@@ -6,11 +6,13 @@ import { signalsMaterial } from "./signals";
 import { loopMaterial } from "./loop";
 import { mergeMaterial } from "./merge";
 import { randomMaterial } from "./random";
-import { IActivityMaterial, ActivityType } from "@rxdrag/minions-schema";
+import { IActivityMaterial, NodeType } from "@rxdrag/minions-schema";
 import { INodeSchema } from "@rxdrag/schema";
 import { endIcon, startIcon } from "../icons";
 import { splitArrayMaterial } from "./SplitArray";
 import { splitObjectMaterial } from "./SplitObject";
+import { sumArrayMaterial } from "./sumArray";
+import { collectToArrayMaterial } from "./collectToArray";
 
 export const startEndSchema: INodeSchema = {
   componentName: "Fragment",
@@ -23,14 +25,14 @@ export const basicActivities: IActivityMaterial<any, any, any, any>[] = [
     activityName: "start",
     icon: startIcon,
     label: "$input",
-    activityType: ActivityType.Start,
+    activityType: NodeType.Start,
     schema: startEndSchema,
   },
   {
     activityName: "end",
     icon: endIcon,
     label: "$output",
-    activityType: ActivityType.End,
+    activityType: NodeType.End,
     schema: startEndSchema,
   },
   conditionMaterial,
@@ -41,5 +43,7 @@ export const basicActivities: IActivityMaterial<any, any, any, any>[] = [
   signalsMaterial,
   constValueMaterial,
   splitArrayMaterial,
-  splitObjectMaterial
+  splitObjectMaterial,
+  collectToArrayMaterial,
+  sumArrayMaterial,
 ]

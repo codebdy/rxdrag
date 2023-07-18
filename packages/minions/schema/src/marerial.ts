@@ -1,4 +1,4 @@
-import { ActivityType, IPortDefine } from "./dsl";
+import { NodeType, IPortDefine } from "./dsl";
 
 export interface IPorts {
   inPorts?: IPortDefine[];
@@ -15,7 +15,7 @@ export interface IPorts {
  */
 export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown, Config = unknown, MaterialContext = unknown> {
   label: string;
-  activityType: ActivityType;
+  activityType: NodeType;
   icon?: ComponentNode;
   color?: string;
   //属性面板配置
