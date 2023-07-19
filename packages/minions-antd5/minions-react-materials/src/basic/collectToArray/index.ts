@@ -5,7 +5,7 @@ import { CollectToArray } from "@rxdrag/minions-activities";
 import { NodeType } from "@rxdrag/minions-schema";
 import { collectToArrayIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
-import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
+import { DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
 
 export const collectToArrayMaterial: IRxDragActivityMaterial = {
   icon: collectToArrayIcon,
@@ -15,13 +15,13 @@ export const collectToArrayMaterial: IRxDragActivityMaterial = {
     inPorts: [
       {
         id: createUuid(),
-        name: DEFAULT_INPUT_NAME,
-        label: "input",
+        name: "input0",
+        label: "input 0",
       },
       {
         id: createUuid(),
-        name: CollectToArray.PORT_FINISHED,
-        label: "finished",
+        name: "input1",
+        label: "input 1",
       },
     ],
     outPorts: [

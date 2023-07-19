@@ -1,7 +1,7 @@
 import {
   AbstractActivity,
   Activity,
-  Input
+  DynamicInput,
 } from '@rxdrag/minions-runtime';
 import { INodeDefine } from '@rxdrag/minions-schema';
 
@@ -9,20 +9,27 @@ import { INodeDefine } from '@rxdrag/minions-schema';
 export class CollectToArray extends AbstractActivity {
   public static NAME = 'system.collectToArray';
   public static PORT_FINISHED = "finished"
-
+  private noPassInputs: string[] = [];
   private  values:unknown[] = []
 
   constructor(meta: INodeDefine) {
     super(meta);
+    this.resetNoPassInputs();
   }
 
-  @Input()
-  inputHandler(inputValue?: unknown): void {
-    this.values.push(inputValue)
-  }
+  @DynamicInput
+  inputHandler = (inputName: string, inputValue: unknown) => {
+    this.values.push(inputValue);
+    this.noPassInputs = this.noPassInputs.filter(name=>name !== inputName)
+    if (this.noPassInputs.length === 0) {
+      this.next(this.values);
+      this.resetNoPassInputs();
+    }
+  };
 
-  @Input(CollectToArray.PORT_FINISHED)
-  finishedHandler(){
-    this.next(this.values)
+  resetNoPassInputs(){
+    for (const input of this.meta.inPorts || []) {
+      this.noPassInputs.push(input.name);
+    }
   }
 }
