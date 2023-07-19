@@ -114,9 +114,13 @@ export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
 
           for (const edge of edges) {
             //同一个节点端口已经有了连接
-            if (targetId && targetPort &&
-              (edge.target as any).cell === targetId && (edge.target as any).port === targetPort &&
-              (edge.source as any).cell === sourceId && (edge.source as any).port === sourcePort) {
+            // if (targetId && targetPort &&
+            //   (edge.target as any).cell === targetId && (edge.target as any).port === targetPort &&
+            //   (edge.source as any).cell === sourceId && (edge.source as any).port === sourcePort) {
+            //   isConnected = true
+            //   break
+            // }
+            if (targetId && targetPort && (edge.target as any).cell === targetId && (edge.target as any).port === targetPort) {
               isConnected = true
               break
             }
