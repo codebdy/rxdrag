@@ -1,7 +1,8 @@
 
 [实践，制作一个高扩展、可视化低代码前端，详实、完整（掘金）](https://juejin.cn/post/7205361008272326716)  
 [实践，制作一个高扩展、可视化低代码前端，详实、完整（知乎）](https://zhuanlan.zhihu.com/p/610182592)  
-
+[前、后端通用的可视化逻辑编排（知乎）](https://zhuanlan.zhihu.com/p/644873396)  
+[前、后端通用的可视化逻辑编排（掘金）](https://juejin.cn/post/7257814347463671863)  
 # Requirements
 
 Install [pnpm](https://pnpm.io/).
