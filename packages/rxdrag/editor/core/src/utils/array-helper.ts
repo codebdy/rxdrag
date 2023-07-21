@@ -14,7 +14,7 @@ export function before(refence: any, array?: any[]) {
   if (!array) {
     return undefined;
   }
-  for (var i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     if (array[i] === refence && i > 0) {
       return array[i - 1];
     }
@@ -22,7 +22,7 @@ export function before(refence: any, array?: any[]) {
 }
 
 export function after(refence: any, array: any[]) {
-  for (var i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     if (array[i] === refence && i < array.length) {
       return array[i + 1];
     }
@@ -30,7 +30,7 @@ export function after(refence: any, array: any[]) {
 }
 
 export function insertBefore(child: any, refence: any, array: any[]) {
-  for (var i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     if (array[i] === refence) {
       array.splice(i, 0, child);
       return;
@@ -41,7 +41,7 @@ export function insertBefore(child: any, refence: any, array: any[]) {
 }
 
 export function insertAfter(child: any, refence: any, array: any[]) {
-  for (var i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     if (array[i] === refence) {
       array.splice(i + 1, 0, child);
       return;
@@ -50,7 +50,7 @@ export function insertAfter(child: any, refence: any, array: any[]) {
 }
 
 export function remove(node: any, array: any[]) {
-  for (var i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     if (array[i] === node) {
       array.splice(i, 1);
       break;
@@ -61,7 +61,7 @@ export function remove(node: any, array: any[]) {
 }
 
 export function batchRemove(nodes: any[], array: any[]) {
-  for (var i = 0; i < nodes.length; i++) {
+  for (let i = 0; i < nodes.length; i++) {
     remove(nodes[i], array);
   }
 }
@@ -73,7 +73,7 @@ export function add(node: any, array: any[]) {
 }
 
 export function contains(node: any, array: any[]) {
-  for (var i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     if (array[i] === node) {
       return true;
     }
@@ -104,7 +104,7 @@ export function exchange(first: any, second: any, array: any[]) {
 }
 
 export function indexOf(node: any, array: any[]) {
-  for (var i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     if (array[i] === node) {
       return i;
     }
