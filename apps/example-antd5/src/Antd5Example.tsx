@@ -24,14 +24,14 @@ import { controllerDefines } from "controller/defines"
 
 export enum LeftNavType {
   pages = "pages",
-  compoents = "components",
+  components = "components",
   outline = "outline",
   history = "history",
 }
 
 export const Antd5Example = memo(() => {
   const [pageId, setPageId] = useState("dashboard")
-  const [activedKey, setActivedKey] = useState<LeftNavType>(LeftNavType.compoents)
+  const [activedKey, setActivedKey] = useState<LeftNavType>(LeftNavType.components)
   const handleActive = useCallback((key: string) => {
     setActivedKey(key as LeftNavType)
   }, [])
@@ -60,7 +60,7 @@ export const Antd5Example = memo(() => {
         <>
           {
             //ResourceWidget 内部会注册组件，要防止多次渲染
-            <ResourceWidget display={activedKey === LeftNavType.compoents} />
+            <ResourceWidget display={activedKey === LeftNavType.components} />
           }
           <PagesWidget display={activedKey === LeftNavType.pages} value={pageId} onSelect={handleSelect} />
           <HistoryWidget display={activedKey === LeftNavType.history} />
@@ -94,7 +94,7 @@ export const Antd5Example = memo(() => {
               icon: <FileOutlined style={{ fontSize: 18 }} />
             },
             {
-              key: LeftNavType.compoents,
+              key: LeftNavType.components,
               title: "components",
               icon: componentsIcon
             },
