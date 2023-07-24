@@ -1,0 +1,25 @@
+{
+  "name": "@rxdrag/fieldy-yup-validation",
+  "version": "0.2.0",
+  "author": "Water.Li",
+  "type": "module",
+  "module": "index.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "module": "dist/index.mjs",
+    "typings": "dist/index.d.ts",
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "build": "vite build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@rxdrag/tsconfig": "workspace:*",
+    "vite": "^4.2.0",
+    "@types/node": "*"
+  }
+}
