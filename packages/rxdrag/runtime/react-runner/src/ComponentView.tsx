@@ -2,7 +2,6 @@ import React from "react"
 import { memo, useMemo } from "react"
 import { ComponentField } from "./ComponentField"
 import { ComponentSchemaContext } from "./contexts"
-import { IBindParams } from "./interfaces"
 import { withController } from "./hocs/withController"
 import { withBind } from "./hocs/withBind"
 import { ID } from "@rxdrag/shared"
@@ -11,7 +10,7 @@ import { IControllerMeta, ILogicFlowControllerMeta } from "@rxdrag/minions-runti
 import { INodeSchema } from "@rxdrag/schema"
 import { IFieldMeta } from "@rxdrag/fieldy-schema"
 
-export interface IComponentRenderSchema extends INodeSchema<IFieldMeta<IBindParams>, IControllerMeta> {
+export interface IComponentRenderSchema extends INodeSchema<IFieldMeta, IControllerMeta> {
   id: ID,
   children?: IComponentRenderSchema[]
   slots?: {

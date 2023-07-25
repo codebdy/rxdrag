@@ -1,8 +1,11 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { createControllerSchema } from "./createControllerSchema";
-import { displaySetter, backgroundSetter, fontStyleSetter, martinStyleSetter, paddingStyleSetter, borderRediusSetter, borderSetter } from "./schemas";
 import { createFieldSchema } from "./createFieldSchema";
 import { SchemaOptions } from "./SchemaOptions";
+import { attachFormItem } from "./attachFormItem";
+import { IFieldMeta } from "@rxdrag/fieldy-schema";
+import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
+import { transPropSchemas } from "./transPropSchemas";
 
 export type SlotsOption = {
   name: string,
@@ -23,19 +26,15 @@ export function createSlotsSchema(...options: SlotsOption[]) {
   })
 }
 
-export function createSchema(options: SchemaOptions = {}): INodeSchema {
+export function createSchema(options: SchemaOptions<IFieldMeta, ILogicFlowControllerMeta> = {}): INodeSchema {
   const { propsSchemas, slotsSchemas, fieldOptions: fieldOptions, events } = options
   const propsTab = propsSchemas ? [{
     componentName: "TabPanel",
-    "x-field": {
-      type: "object",
-      name: "props",
-    },
     props: {
       title: "$properties"
     },
     children: [
-      ...propsSchemas || []
+      ...transPropSchemas<IFieldMeta, ILogicFlowControllerMeta>(propsSchemas) || []
     ]
   }] : [];
 
@@ -45,7 +44,7 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
       title: "$slots",
       id: "slots",
     },
-    children: slotsSchemas
+    children: attachFormItem(slotsSchemas)
   }] : []
   const dataTab = {
     componentName: "TabPanel",
@@ -71,14 +70,14 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
     props: {},
     children: [
       ...propsTab,
-      styleTab2,
+      styleTab,
       ...slotsTab,
       dataTab,
       controllerTab,
     ]
   }
 }
-const styleTab2 = {
+const styleTab = {
   componentName: 'TabPanel',
   props: {
     title: '$style'
@@ -88,86 +87,8 @@ const styleTab2 = {
       componentName: 'StyleSetter',
       'x-field': {
         name: 'props.style',
-        params: {
-          withBind: true
-        }
       }
     }
   ]
 };
 
-const styleTab = {
-  componentName: "TabPanel",
-  props: {
-    title: "$style"
-  },
-  "x-field": {
-    type: "object",
-    name: "props.style"
-  },
-  children: [
-    {
-      componentName: "FormItem",
-      props: {
-        label: "$width",
-      },
-      children: [
-        {
-          componentName: "SizeInput",
-          "x-field": {
-            name: "width",
-            params: {
-              withBind: true,
-            }
-          },
-        }
-      ]
-    },
-    {
-      componentName: "FormItem",
-      props: {
-        label: "$height",
-      },
-      children: [
-        {
-          componentName: "SizeInput",
-          "x-field": {
-            name: "height",
-            params: {
-              withBind: true,
-            }
-          },
-        }
-      ]
-    },
-    displaySetter,
-    backgroundSetter,
-    fontStyleSetter,
-    martinStyleSetter,
-    paddingStyleSetter,
-    borderRediusSetter,
-    borderSetter,
-    {
-      componentName: "FormItem",
-      props: {
-        label: "$opacity",
-      },
-      children: [
-        {
-          componentName: "Slider",
-          "x-field": {
-            name: "opacity",
-            params: {
-              withBind: true,
-            }
-          },
-          props: {
-            max: 1,
-            step: 0.1,
-            defaultValue: 1,
-          }
-        }
-      ]
-    },
-  ]
-}

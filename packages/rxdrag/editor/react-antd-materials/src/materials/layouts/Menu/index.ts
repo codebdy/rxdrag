@@ -2,7 +2,7 @@ import { Menu } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
 import { logoIcon } from "./icon";
 import { menuLocales, logoResourceLocales } from "./locales";
-import { logoSchema } from "./schema";
+import { menuSchema } from "./schema";
 
 const name = "Menu"
 export const MenuMaterial: IComponentMaterial = {
@@ -10,7 +10,7 @@ export const MenuMaterial: IComponentMaterial = {
   component: Menu,
   designer: Menu,
   designerLocales: menuLocales,
-  propsSchema: logoSchema,
+  propsSchema: menuSchema,
   resource: {
     name: name,
     icon: logoIcon,

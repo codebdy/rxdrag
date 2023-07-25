@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/react-antd-components",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "module": "index.ts",
   "files": [
     "dist"

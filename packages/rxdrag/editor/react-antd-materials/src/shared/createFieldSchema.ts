@@ -1,4 +1,3 @@
-import { IBindParams } from "@rxdrag/react-runner"
 import { INodeSchema} from "@rxdrag/schema"
 import { attachFormItem } from "./attachFormItem"
 import { IFieldMeta } from "@rxdrag/fieldy-schema"
@@ -11,7 +10,7 @@ export type FieldOptions = {
 export interface IExpressionField {
   label: string,
   name: string,
-  valueInputSchema: INodeSchema<IFieldMeta<IBindParams>, ILogicFlowControllerMeta>,
+  valueInputSchema: INodeSchema<IFieldMeta, ILogicFlowControllerMeta>,
 }
 
 export function transformExpresionField(expFields: IExpressionField[]) {
@@ -103,9 +102,6 @@ export function createFieldSchema(fieldOptions?: FieldOptions) {
         },
         "x-field": {
           name: "value",
-          params: {
-            withBind: true,
-          }
         },
       },
     },
@@ -143,9 +139,6 @@ export function createFieldSchema(fieldOptions?: FieldOptions) {
         },
         "x-field": {
           name: "value",
-          params: {
-            withBind: true,
-          }
         },
       },
     },
@@ -164,10 +157,6 @@ export function createFieldSchema(fieldOptions?: FieldOptions) {
             componentName: "Switch",
             "x-field": {
               name: "value",
-              params: {
-                valuePropName: "checked",
-                withBind: true,
-              }
             },
           }
         ]
@@ -212,10 +201,6 @@ export function createFieldSchema(fieldOptions?: FieldOptions) {
             componentName: "Switch",
             "x-field": {
               name: "value",
-              params: {
-                valuePropName: "checked",
-                withBind: true,
-              }
             },
           }
         ]

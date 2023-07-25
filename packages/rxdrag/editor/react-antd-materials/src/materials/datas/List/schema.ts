@@ -1,10 +1,9 @@
-import { IBindParams } from "@rxdrag/react-runner";
 import { INodeSchema } from "@rxdrag/schema";
-import { SchemaOptions, createSchema, withFormItem } from "../../../shared";
+import { SchemaOptions, createSchema } from "../../../shared";
 import { IFieldMeta } from "@rxdrag/fieldy-schema";
 import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
 
-const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> = {
+const options: SchemaOptions<IFieldMeta, ILogicFlowControllerMeta> = {
   propsSchemas: [
     {
       componentName: "Switch",
@@ -67,4 +66,4 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> 
   }
 }
 
-export const materialSchema: INodeSchema = createSchema(withFormItem(options))
+export const materialSchema: INodeSchema = createSchema(options)
