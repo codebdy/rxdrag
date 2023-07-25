@@ -6,36 +6,34 @@ import { transPropSchemas } from "./transPropSchemas";
 import { transSlotSchemas } from "./transSlotSchemas";
 
 export function createSchema(options: SchemaOptions = {}): INodeSchema {
-  const { propSchemas: props, slotSchemas: slots, fieldOptions: fieldOptions, events } = options
-  const propsTab = props ? [{
+  const { propSchemas, slotSchemas, fieldOptions: fieldOptions, events } = options
+  const propsTab = propSchemas ? [{
     componentName: "TabPanel",
     props: {
       title: "$properties"
     },
     children: [
-      ...transPropSchemas(props) || []
+      ...transPropSchemas(propSchemas) || []
     ]
   }] : [];
 
-  const slotsTab = slots ? [{
+  const slotsTab = slotSchemas ? [{
     componentName: "TabPanel",
     props: {
       title: "$slots",
       id: "slots",
     },
-    children: transSlotSchemas(slots)
+    children: transSlotSchemas(slotSchemas)
   }] : []
-  const dataTab = {
-    componentName: "TabPanel",
-    props: {
-      title: "$field",
-      id: "data",
-      style: {
-        padding: 0
+  const dataTab = fieldOptions?.canBindField ? [
+    {
+      componentName: "TabPanel",
+      props: {
+        title: "$field",
+        id: "data",
       },
-    },
-    children: createFieldSchema(fieldOptions)
-  }
+      children: createFieldSchema()
+    }] : []
   const controllerTab = {
     componentName: "TabPanel",
     props: {
@@ -51,7 +49,7 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
       ...propsTab,
       styleTab,
       ...slotsTab,
-      dataTab,
+      ...dataTab,
       controllerTab,
     ]
   }

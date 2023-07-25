@@ -4,24 +4,24 @@ import { SchemaOptions, createSchema } from "../../../shared";
 const options: SchemaOptions = {
   propSchemas: [
     {
-      name: "value",
-      label: "$content",
-      setter: {
-        componentName: "Input",
+      componentName: "Input",
+      "x-field": {
+        name: "value",
+        label: "$content",
       }
     },
     {
-      name: "closable",
-      label: "$closable",
-      setter: {
-        componentName: "Switch",
+      componentName: "Switch",
+      "x-field": {
+        name: "closable",
+        label: "$closable",
       }
     },
     {
-      name: "color",
-      label: "$color",
-      setter: {
-        componentName: "TagColorInput",
+      componentName: "TagColorInput",
+      "x-field": {
+        name: "color",
+        label: "$color",
       }
     },
   ],

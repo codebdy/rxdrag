@@ -5,24 +5,24 @@ import { typographySchema } from "../schema";
 const options: SchemaOptions = {
   propSchemas: [
     {
-      name: "value",
-      label: "$content",
-      setter: {
-        componentName: "Input",
+      componentName: "Input",
+      "x-field": {
+        name: "value",
+        label: "$content",
       }
     },
     {
-      name: "href",
-      label: "$href",
-      setter:{
-        componentName: "Input",
+      componentName: "Input",
+      "x-field": {
+        name: "href",
+        label: "$href",
       }
     },
     {
-      name: "target",
-      label: "$target",
-      setter:{
-        componentName: "Input",
+      componentName: "Input",
+      "x-field": {
+        name: "target",
+        label: "$target",
       }
     },
     ...typographySchema,

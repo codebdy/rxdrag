@@ -56,7 +56,7 @@ export function transformExpresionField(expFields: IExpressionField[]) {
   })
 }
 
-export function createFieldSchema(fieldOptions?: FieldOptions) {
+export function createFieldSchema() {
   const reactionFields: IExpressionField[] = [
     // 有可能会导致死循环，暂时不用value
     // {
@@ -223,40 +223,6 @@ export function createFieldSchema(fieldOptions?: FieldOptions) {
     children: transformExpresionField(reactionFields)
   }]
 
-  const bindFields = [
-    {
-      componentName: "Switch",
-      "x-field": {
-        name: "withBind",
-        label: "$withBind",
-        params: {
-          valuePropName: "checked",
-        }
-      },
-    },
-    {
-      componentName: "Input",
-      "x-field": {
-        name: "valuePropName",
-        label: "$valuePropName",
-      },
-    },
-  ]
-  const bindCollapse = fieldOptions?.canBindField
-    ? [
-      {
-        componentName: "CollapsePanel",
-        "x-field": {
-          type: "object",
-          name: "x-field.params",
-        },
-        props: {
-          title: "$fieldBind"
-        },
-        children: attachFormItem(bindFields)
-      },
-    ]
-    : []
   const fieldDefineFields = [
     {
       componentName: "Select",
@@ -315,7 +281,6 @@ export function createFieldSchema(fieldOptions?: FieldOptions) {
       },
       children: attachFormItem(fieldDefineFields)
     },
-    ...bindCollapse,
     ...reactionCollapse,
   ]
 }

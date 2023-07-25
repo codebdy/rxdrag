@@ -23,47 +23,47 @@ export enum DisplayType {
 //表达式代码，格式：{{...}}
 export type Expression = string;
 
-// export interface IFieldReactionMeta {
-//   //值
-//   value?: {
-//     value?: unknown,
-//     expression?: string,
-//   } | Expression,
-//   //字段显示类型
-//   display?: {
-//     value?: DisplayType,
-//     expression?: string,
-//   } | Expression,
-//   //交互模式
-//   pattern?: {
-//     value?: PatternType,
-//     expression?: string,
-//   } | Expression,
-//   //可见
-//   // visible?: {
-//   //   value?: boolean,
-//   //   expression?: Expression,
-//   // },
-//   //隐藏
-//   hidden?: {
-//     value?: boolean,
-//     expression?: string,
-//   } | Expression,
-//   //禁用
-//   disabled?: {
-//     value?: boolean,
-//     expression?: string,
-//   } | Expression,
-//   //只读
-//   readonly?: {
-//     value?: boolean,
-//     expression?: string,
-//   } | Expression,
-//   [key: string]: {
-//     value?: unknown,
-//     expression?: string,
-//   } | Expression | undefined,
-// }
+export interface IFieldReactionMeta {
+  //值
+  value?: {
+    value?: unknown,
+    expression?: string,
+  } | Expression,
+  //字段显示类型
+  display?: {
+    value?: DisplayType,
+    expression?: string,
+  } | Expression,
+  //交互模式
+  pattern?: {
+    value?: PatternType,
+    expression?: string,
+  } | Expression,
+  //可见
+  // visible?: {
+  //   value?: boolean,
+  //   expression?: Expression,
+  // },
+  //隐藏
+  hidden?: {
+    value?: boolean,
+    expression?: string,
+  } | Expression,
+  //禁用
+  disabled?: {
+    value?: boolean,
+    expression?: string,
+  } | Expression,
+  //只读
+  readonly?: {
+    value?: boolean,
+    expression?: string,
+  } | Expression,
+  [key: string]: {
+    value?: unknown,
+    expression?: string,
+  } | Expression | undefined,
+}
 
 //表单元数据
 // export type IFormMeta = {
@@ -80,7 +80,7 @@ export interface IFieldMeta<ValidateRules = unknown> {
   //校验规则
   validateRules?: ValidateRules;
   //联动配置
-  //reactionMeta?: IFieldReactionMeta;
+  reactionMeta?: IFieldReactionMeta;
   //下拉列表类组件的数据源
   //dataSource?: unknown | Expression;
 }
