@@ -1,5 +1,5 @@
-import { Collapse, Row } from "antd"
-import { useCallback, useEffect, useState } from "react"
+import { Collapse, CollapseProps, Row } from "antd"
+import { useCallback, useEffect, useMemo, useState } from "react"
 
 const key = "collapse-panel"
 export const ResourceCollapsePanel = (
@@ -18,6 +18,13 @@ export const ResourceCollapsePanel = (
     setExpanded(!!activedKey)
   }, [])
 
+  const items: CollapseProps['items'] = useMemo(() => ([{
+    key,
+    label: title,
+    children: <Row gutter={0}>
+      {children}
+    </Row>
+  }]), [title, children])
 
   return (
     <Collapse
@@ -26,13 +33,8 @@ export const ResourceCollapsePanel = (
       ghost
       //expandIconPosition="end"
       onChange={handleChange}
+      items={items}
       {...other}
-    >
-      <Collapse.Panel header={<div>{title}</div>} key={key}>
-        <Row gutter={0}>
-          {children}
-        </Row>
-      </Collapse.Panel>
-    </Collapse>
+    />
   )
 }
