@@ -2,7 +2,7 @@ import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema, withFormItem } from "../../../shared";
 
 const options: SchemaOptions = {
-  propsSchemas: [
+  props: [
     {
       componentName: "Select",
       "x-field": {

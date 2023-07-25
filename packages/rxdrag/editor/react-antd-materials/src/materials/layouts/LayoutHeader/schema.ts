@@ -4,7 +4,7 @@ import { SchemaOptions, createSchema } from "../../../shared";
 import { IFieldMeta } from "@rxdrag/fieldy-schema";
 
 const options: SchemaOptions<IFieldMeta<IBindParams>> = {
-  propsSchemas: [
+  props: [
     {
       componentName: "FormItem",
       props: {

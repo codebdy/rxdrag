@@ -42,7 +42,7 @@ const mentionsNumberPros = [
 ]
 
 const options: SchemaOptions = {
-  propsSchemas: mentionsNumberPros
+  props: mentionsNumberPros
 }
 
 export const inputNumberSchema: INodeSchema = createSchema(options)

@@ -1,38 +1,29 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { SchemaOptions, createSchema, withFormItem } from "../../../../shared";
+import { SchemaOptions, createSchema } from "../../../../shared";
 import { typographySchema } from "../schema";
 
 const options: SchemaOptions = {
-  propsSchemas: [
+  props: [
     {
-      componentName: "Input",
-      "x-field": {
-        name: "value",
-        label: "$content",
-        params: {
-          withBind: true,
-        }
-      },
+      name: "value",
+      label: "$content",
+      setter: {
+        componentName: "Input",
+      }
     },
     {
-      componentName: "Input",
-      "x-field": {
-        name: "href",
-        label: "$href",
-        params: {
-          withBind: true,
-        }
-      },
+      name: "href",
+      label: "$href",
+      setter:{
+        componentName: "Input",
+      }
     },
     {
-      componentName: "Input",
-      "x-field": {
-        name: "target",
-        label: "$target",
-        params: {
-          withBind: true,
-        }
-      },
+      name: "target",
+      label: "$target",
+      setter:{
+        componentName: "Input",
+      }
     },
     ...typographySchema,
   ],
@@ -41,4 +32,4 @@ const options: SchemaOptions = {
   }
 }
 
-export const schema: INodeSchema = createSchema(withFormItem(options))
+export const schema: INodeSchema = createSchema(options)

@@ -2,49 +2,28 @@ import { INodeSchema } from "@rxdrag/schema";
 import { createControllerSchema } from "./createControllerSchema";
 import { createFieldSchema } from "./createFieldSchema";
 import { SchemaOptions } from "./SchemaOptions";
-import { attachFormItem } from "./attachFormItem";
-import { IFieldMeta } from "@rxdrag/fieldy-schema";
-import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
 import { transPropSchemas } from "./transPropSchemas";
+import { transSlotSchemas } from "./transSlotSchemas";
 
-export type SlotsOption = {
-  name: string,
-  label: string,
-}
-
-export function createSlotsSchema(...options: SlotsOption[]) {
-  return options.map((opt) => {
-    return ({
-      componentName: "SlotSwitch",
-      props: {
-        name: opt.name
-      },
-      "x-field": {
-        label: opt.label,
-      }
-    })
-  })
-}
-
-export function createSchema(options: SchemaOptions<IFieldMeta, ILogicFlowControllerMeta> = {}): INodeSchema {
-  const { propsSchemas, slotsSchemas, fieldOptions: fieldOptions, events } = options
-  const propsTab = propsSchemas ? [{
+export function createSchema(options: SchemaOptions = {}): INodeSchema {
+  const { props, slots, fieldOptions: fieldOptions, events } = options
+  const propsTab = props ? [{
     componentName: "TabPanel",
     props: {
       title: "$properties"
     },
     children: [
-      ...transPropSchemas<IFieldMeta, ILogicFlowControllerMeta>(propsSchemas) || []
+      ...transPropSchemas(props) || []
     ]
   }] : [];
 
-  const slotsTab = slotsSchemas ? [{
+  const slotsTab = slots ? [{
     componentName: "TabPanel",
     props: {
       title: "$slots",
       id: "slots",
     },
-    children: attachFormItem(slotsSchemas)
+    children: transSlotSchemas(slots)
   }] : []
   const dataTab = {
     componentName: "TabPanel",

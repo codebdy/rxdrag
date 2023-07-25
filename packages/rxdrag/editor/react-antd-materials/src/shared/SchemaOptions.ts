@@ -1,11 +1,13 @@
-import { INodeSchema } from "@rxdrag/schema";
 import { FieldOptions } from "./createFieldSchema";
 import { IComponentEvent } from "./createControllerSchema";
-import { IPropSchema } from "./transPropSchemas";
+import { ISlotSchema } from "./transSlotSchemas";
+import { INodeSchema } from "@rxdrag/schema";
+import { IFieldMeta } from "@rxdrag/fieldy-schema";
+import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
 
-export type SchemaOptions<Field = unknown, ControllerMeta = unknown> = {
-  propsSchemas?: IPropSchema<Field, ControllerMeta>[];
-  slotsSchemas?: INodeSchema<Field, ControllerMeta>[];
+export type SchemaOptions = {
+  props?: INodeSchema<IFieldMeta, ILogicFlowControllerMeta>[];
+  slots?: ISlotSchema[];
   fieldOptions?: FieldOptions;
   events?: IComponentEvent[];
 };

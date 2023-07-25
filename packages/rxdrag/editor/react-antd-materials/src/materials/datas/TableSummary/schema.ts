@@ -5,7 +5,7 @@ import { IFieldMeta } from "@rxdrag/fieldy-schema";
 import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
 
 const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> = {
-  propsSchemas: [
+  props: [
     {
       componentName: "FormItem",
       props: {

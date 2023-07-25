@@ -1,24 +1,17 @@
-import { IBindParams } from "@rxdrag/react-runner";
 import { INodeSchema } from "@rxdrag/schema";
-import { createSchema, SchemaOptions, withFormItem } from "../../../shared";
-import { IFieldMeta } from "@rxdrag/fieldy-schema";
-import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
+import { createSchema, SchemaOptions } from "../../../shared";
 
-const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> = {
-  propsSchemas: [
+const options: SchemaOptions = {
+  props: [
     {
       componentName: "Input",
       "x-field": {
         name: "title",
         label: "$title",
-      },
+      }
     },
     {
       componentName: "Radio.Group",
-      "x-field": {
-        name: "align",
-        label: "$align",
-      },
       props: {
         optionType: "button",
         options: [
@@ -36,6 +29,10 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> 
           },
         ],
         defaultValue: "left",
+      },
+      "x-field": {
+        name: "align",
+        label: "$align",
       }
     },
     {
@@ -43,27 +40,17 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> 
       "x-field": {
         name: "ellipsis",
         label: "$ellipsis",
-        params: {
-          valuePropName: "checked",
-        }
-      },
+      }
     },
     {
       componentName: "Switch",
       "x-field": {
         name: "fixed",
         label: "$fixed",
-        params: {
-          valuePropName: "checked",
-        }
-      },
+      }
     },
     {
       componentName: "CheckboxGroup",
-      "x-field": {
-        name: "responsive",
-        label: "$responsiveBreakpoints",
-      },
       props: {
         options: [
           {
@@ -91,6 +78,10 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> 
             value: "xs"
           },
         ],
+      },
+      "x-field": {
+        name: "responsive",
+        label: "$responsiveBreakpoints",
       }
     },
     {
@@ -98,7 +89,7 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> 
       "x-field": {
         name: "width",
         label: "$width",
-      },
+      }
     },
   ],
   fieldOptions: {
@@ -106,4 +97,4 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> 
   }
 }
 
-export const materialSchema: INodeSchema = createSchema(withFormItem(options))
+export const materialSchema: INodeSchema = createSchema(options)

@@ -1,140 +1,138 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { SchemaOptions, createSchema, createSlotsSchema } from "../../shared";
-import { IFieldMeta } from "@rxdrag/fieldy-schema"
-import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
+import { SchemaOptions, createSchema } from "../../shared";
 
-const scehmaOptions: SchemaOptions<IFieldMeta, ILogicFlowControllerMeta> = {
-  propsSchemas: [
+const scehmaOptions: SchemaOptions = {
+  props: [
     {
-      label: "$title",
-      name: "title",
-      setter: {
-        componentName: "Input",
-      },
+      componentName: "Input",
+      "x-field": {
+        label: "$title",
+        name: "title",
+      }
     },
     {
-      label: "$type",
-      name: "type",
-      defaultValue: "primary",
-      setter: {
-        componentName: "Select",
-        props: {
-          options: [
-            {
-              value: 'primary',
-              label: 'Primary',
-            },
-            {
-              value: 'ghost',
-              label: 'Ghost',
-            },
-            {
-              value: 'dashed',
-              label: 'Dashed',
-            },
-            {
-              value: 'link',
-              label: 'Link',
-            },
-            {
-              value: 'text',
-              label: 'Text',
-            },
-            {
-              value: 'default',
-              label: 'Default',
-            },
-          ]
-        }
+      componentName: "Select",
+      props: {
+        options: [
+          {
+            value: 'primary',
+            label: 'Primary',
+          },
+          {
+            value: 'ghost',
+            label: 'Ghost',
+          },
+          {
+            value: 'dashed',
+            label: 'Dashed',
+          },
+          {
+            value: 'link',
+            label: 'Link',
+          },
+          {
+            value: 'text',
+            label: 'Text',
+          },
+          {
+            value: 'default',
+            label: 'Default',
+          },
+        ]
       },
+      "x-field": {
+        label: "$type",
+        name: "type",
+        defaultValue: "primary",
+      }
     },
     {
-      label: "$disabled",
-      name: "disabled",
-      setter: {
-        componentName: "Switch",
-      },
+      componentName: "Switch",
+      "x-field": {
+        label: "$disabled",
+        name: "disabled",
+      }
     },
     {
-      label: "$block",
-      name: "block",
-      setter: {
-        componentName: "Switch",
-      },
+      componentName: "Switch",
+      "x-field": {
+        label: "$block",
+        name: "block",
+      }
     },
     {
-      label: "$danger",
-      name: "danger",
-      setter: {
-        componentName: "Switch",
-      },
+      componentName: "Switch",
+      "x-field": {
+        label: "$danger",
+        name: "danger",
+      }
     },
     {
-      label: "$ghost",
-      name: "ghost",
-      setter: {
-        componentName: "Switch",
-      },
+      componentName: "Switch",
+      "x-field": {
+        label: "$ghost",
+        name: "ghost",
+      }
     },
     {
-      label: "$shape",
-      name: "shape",
-      setter: {
-        componentName: "Radio.Group",
-        props: {
-          optionType: "button",
-          size: "small",
-          options: [
-            {
-              label: "$default",
-              value: "default"
-            },
-            {
-              label: "$circle",
-              value: "circle"
-            },
-            {
-              label: "$round",
-              value: "round"
-            },
-          ],
-          defaultValue: "default",
-        }
+      componentName: "Radio.Group",
+      props: {
+        optionType: "button",
+        size: "small",
+        options: [
+          {
+            label: "$default",
+            value: "default"
+          },
+          {
+            label: "$circle",
+            value: "circle"
+          },
+          {
+            label: "$round",
+            value: "round"
+          },
+        ],
+        defaultValue: "default",
       },
+      "x-field": {
+        label: "$shape",
+        name: "shape",
+      }
     },
     {
-      label: "$size",
-      name: "size",
-      setter: {
-        componentName: "Radio.Group",
-        props: {
-          optionType: "button",
-          size: "small",
-          options: [
-            {
-              label: "$large",
-              value: "large"
-            },
-            {
-              label: "$middle",
-              value: "middle"
-            },
-            {
-              label: "$small",
-              value: "small"
-            },
-          ],
-          defaultValue: "middle",
-        }
+      componentName: "Radio.Group",
+      props: {
+        optionType: "button",
+        size: "small",
+        options: [
+          {
+            label: "$large",
+            value: "large"
+          },
+          {
+            label: "$middle",
+            value: "middle"
+          },
+          {
+            label: "$small",
+            value: "small"
+          },
+        ],
+        defaultValue: "middle",
       },
+      "x-field": {
+        label: "$size",
+        name: "size",
+      }
     },
   ],
-  slotsSchemas: createSlotsSchema(
+  slots: [
     {
       name: "icon",
       label: "$icon"
     }
-  ),
+  ],
   events: [
     {
       name: "onClick",

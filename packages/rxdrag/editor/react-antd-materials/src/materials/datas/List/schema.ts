@@ -1,26 +1,17 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
-import { IFieldMeta } from "@rxdrag/fieldy-schema";
-import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
 
-const options: SchemaOptions<IFieldMeta, ILogicFlowControllerMeta> = {
-  propsSchemas: [
+const options: SchemaOptions = {
+  props: [
     {
       componentName: "Switch",
       "x-field": {
         name: "bordered",
         label: "$bordered",
-        params: {
-          valuePropName: "checked",
-        }
-      },
+      }
     },
     {
       componentName: "Radio.Group",
-      "x-field": {
-        name: "size",
-        label: "$size",
-      },
       props: {
         optionType: "button",
         options: [
@@ -38,27 +29,21 @@ const options: SchemaOptions<IFieldMeta, ILogicFlowControllerMeta> = {
           },
         ],
         defaultValue: "middle",
+      },
+      "x-field": {
+        name: "size",
+        label: "$size",
       }
     },
   ],
-  slotsSchemas: [
+  slots: [
     {
-      componentName: "SlotSwitch",
-      props: {
-        name: "header"
-      },
-      "x-field": {
-        label: "$header",
-      }
+      name: "header",
+      label: "$header",
     },
     {
-      componentName: "SlotSwitch",
-      props: {
-        name: "footer"
-      },
-      "x-field": {
-        label: "$footer",
-      }
+      name: "footer",
+      label: "$footer",
     },
   ],
   fieldOptions: {

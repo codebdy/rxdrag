@@ -1,42 +1,39 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { SchemaOptions, createSlotsSchema, createSchema, withFormItem } from "../../../shared";
+import { SchemaOptions, createSchema } from "../../../shared";
 
 const options: SchemaOptions = {
-  propsSchemas: [
+  props: [
     {
-      componentName: "Input",
-      "x-field": {
-        name: "value",
-        label: "$content",
-      },
+      name: "value",
+      label: "$content",
+      setter: {
+        componentName: "Input",
+      }
     },
     {
-      componentName: "Switch",
-      "x-field": {
-        name: "closable",
-        label: "$closable",
-        params: {
-          valuePropName: "checked",
-        }
-      },
+      name: "closable",
+      label: "$closable",
+      setter: {
+        componentName: "Switch",
+      }
     },
     {
-      componentName: "TagColorInput",
-      "x-field": {
-        name: "color",
-        label: "$color",
-      },
+      name: "color",
+      label: "$color",
+      setter: {
+        componentName: "TagColorInput",
+      }
     },
   ],
-  slotsSchemas: createSlotsSchema(
+  slots: [
     {
       name: "icon",
       label: "$icon"
     }
-  ),
+  ],
   fieldOptions: {
     canBindField: true,
   }
 }
 
-export const schema: INodeSchema = createSchema(withFormItem(options))
+export const schema: INodeSchema = createSchema(options)

@@ -3,7 +3,7 @@ import { SchemaOptions, createSchema, withFormItem } from "../../../../shared";
 import { typographySchema } from "../schema";
 
 const options: SchemaOptions = {
-  propsSchemas: [
+  props: [
     {
       componentName: "Input",
       "x-field": {
