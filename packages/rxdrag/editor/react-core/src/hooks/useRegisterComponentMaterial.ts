@@ -16,24 +16,24 @@ export function useRegisterComponentMaterial() {
   const { registerComponents: registerDesignComponents, registerTools } = useDesignComponentsParams()
   //const { registerComponents: registerPreviewComponents } = usePreviewComponents()
 
-  const register = useCallback((meterial: IComponentMaterial, isSlot?: boolean) => {
-    const designers = { [meterial.componentName]: meterial.designer }
-    //const previews = { [meterial.componentName]: meterial.component }
-    const tools = meterial.tools
-    componentManager?.registerComponents(meterial)
-    if (meterial.designerLocales) {
-      localesManager?.registerComponentLocales(meterial.componentName, meterial.designerLocales)
+  const register = useCallback((material: IComponentMaterial, isSlot?: boolean) => {
+    const designers = { [material.componentName]: material.designer }
+    //const previews = { [material.componentName]: material.component }
+    const tools = material.tools
+    componentManager?.registerComponents(material)
+    if (material.designerLocales) {
+      localesManager?.registerComponentLocales(material.componentName, material.designerLocales)
     }
-    if (meterial.resource?.resourceLocales) {
-      localesManager?.registerResourceLocales(meterial.resource.resourceLocales)
-    }
-
-    if (meterial.toolsLocales) {
-      localesManager?.registerToolsLocales(meterial.toolsLocales)
+    if (material.resource?.resourceLocales) {
+      localesManager?.registerResourceLocales(material.resource.resourceLocales)
     }
 
-    for (const key of Object.keys(meterial.slots || {})) {
-      const slotMaterial = meterial.slots?.[key]
+    if (material.toolsLocales) {
+      localesManager?.registerToolsLocales(material.toolsLocales)
+    }
+
+    for (const key of Object.keys(material.slots || {})) {
+      const slotMaterial = material.slots?.[key]
       if (slotMaterial === true || slotMaterial === undefined || isStr(slotMaterial)) {
         continue
       }
@@ -44,8 +44,8 @@ export function useRegisterComponentMaterial() {
     //registerPreviewComponents(previews)
     tools && registerTools(tools)
 
-    if (meterial.resource && !resourceManager?.getResourceByName(meterial.resource.name) && !isSlot) {
-      const resources = resourceManager?.registerResources(meterial.resource)
+    if (material.resource && !resourceManager?.getResourceByName(material.resource.name) && !isSlot) {
+      const resources = resourceManager?.registerResources(material.resource)
       return (resources?.[0])
     }
     return undefined

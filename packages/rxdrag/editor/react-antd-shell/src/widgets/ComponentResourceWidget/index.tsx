@@ -6,25 +6,25 @@ import { memo, useEffect, useState } from "react"
 import "./style.less"
 
 export type ComponentResourceWidgetProps = {
-  meterial: IComponentMaterial
+  material: IComponentMaterial
 }
 export const ComponentResourceWidget = memo((props: ComponentResourceWidgetProps) => {
-  const { meterial } = props;
+  const { material } = props;
   const [resourceNode, setResourceNode] = useState<IResourceNode>()
   const registerMaterial = useRegisterComponentMaterial()
 
   useEffect(() => {
-    if (registerMaterial && meterial) {
-      setResourceNode(registerMaterial(meterial))
+    if (registerMaterial && material) {
+      setResourceNode(registerMaterial(material))
     }
-  }, [meterial, registerMaterial])
+  }, [material, registerMaterial])
   const [, token] = useToken()
 
   return (
     <Col span={8}>
       <div className="resource-widget" {...resourceNode?.rxProps}>
-        <div className="resource-icon" style={{ backgroundColor: token.colorBorderSecondary, color: meterial?.resource?.color }} >
-          {meterial.resource?.icon}
+        <div className="resource-icon" style={{ backgroundColor: token.colorBorderSecondary, color: material?.resource?.color }} >
+          {material.resource?.icon}
           {/* <div style={{ display: "none" }}>
             {
               //为了在画布里面拿到style，这里渲染一遍 
