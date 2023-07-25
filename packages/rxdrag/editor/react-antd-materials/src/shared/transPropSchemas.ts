@@ -14,7 +14,7 @@ export function transPropSchemas(schemas: INodeSchema<IFieldMeta, ILogicFlowCont
   return schemas.map(propSchema => ({
     componentName: "PropLayout",
     props: {
-      label: "$title",
+      label: propSchema["x-field"]?.label,
     },
     slots: {
       setter: {
@@ -22,6 +22,7 @@ export function transPropSchemas(schemas: INodeSchema<IFieldMeta, ILogicFlowCont
         "x-field": {
           name: "props." + propSchema["x-field"]?.name,
           defaultValue: propSchema["x-field"]?.defaultValue,
+          label: propSchema["x-field"]?.label,
         },
       },
       expressionSetter: {
