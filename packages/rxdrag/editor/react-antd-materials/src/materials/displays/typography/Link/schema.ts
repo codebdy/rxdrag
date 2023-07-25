@@ -3,7 +3,7 @@ import { SchemaOptions, createSchema } from "../../../../shared";
 import { typographySchema } from "../schema";
 
 const options: SchemaOptions = {
-  props: [
+  propSchemas: [
     {
       name: "value",
       label: "$content",

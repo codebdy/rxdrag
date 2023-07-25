@@ -2,7 +2,7 @@ import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
 
 export const formOptions: SchemaOptions = {
-  props: [
+  propSchemas: [
     {
       componentName: "FormItem",
       props: {

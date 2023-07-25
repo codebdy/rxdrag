@@ -102,8 +102,8 @@ const inputSlots = [
 
 
 const options: SchemaOptions = {
-  props:inputNumberPros,
-  slots:inputSlots,
+  propSchemas:inputNumberPros,
+  slotSchemas:inputSlots,
   fieldOptions: {
     canBindField: true,
   }

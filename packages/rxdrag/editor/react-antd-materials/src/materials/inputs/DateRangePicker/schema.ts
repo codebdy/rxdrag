@@ -3,7 +3,7 @@ import { SchemaOptions, createSchema } from "../../../shared";
 import { inputBaseSchemas } from "../schemas";
 
 const options: SchemaOptions = {
-  props: [
+  propSchemas: [
     ...inputBaseSchemas,
     {
       componentName: "FormItem",

@@ -2,8 +2,8 @@ import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
 
 const options: SchemaOptions = {
-  props: [],
-  slots: [
+  propSchemas: [],
+  slotSchemas: [
     {
       name: "title",
       label: "$title"

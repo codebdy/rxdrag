@@ -1,9 +1,9 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { SchemaOptions, createSchema, withFormItem } from "../../../../shared";
+import { SchemaOptions, createSchema } from "../../../../shared";
 import { typographySchema } from "../schema";
 
 const options: SchemaOptions = {
-  props: [
+  propSchemas: [
     {
       componentName: "Input",
       "x-field": {
@@ -18,4 +18,4 @@ const options: SchemaOptions = {
   }
 }
 
-export const schema: INodeSchema = createSchema(withFormItem(options))
+export const schema: INodeSchema = createSchema(options)

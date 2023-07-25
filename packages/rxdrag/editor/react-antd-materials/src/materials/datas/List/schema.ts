@@ -2,7 +2,7 @@ import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
 
 const options: SchemaOptions = {
-  props: [
+  propSchemas: [
     {
       componentName: "Switch",
       "x-field": {
@@ -36,7 +36,7 @@ const options: SchemaOptions = {
       }
     },
   ],
-  slots: [
+  slotSchemas: [
     {
       name: "header",
       label: "$header",

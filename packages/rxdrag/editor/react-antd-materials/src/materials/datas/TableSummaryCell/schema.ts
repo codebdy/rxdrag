@@ -1,111 +1,56 @@
-import { IBindParams } from "@rxdrag/react-runner";
 import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
-import { IFieldMeta } from "@rxdrag/fieldy-schema";
-import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
 
-const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> = {
-  props: [
+const options: SchemaOptions = {
+  propSchemas: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "bordered",
         label: "$bordered",
       },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "bordered",
-            params: {
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-        }
-      ],
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "split",
         label: "$split",
       },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "split",
-            params: {
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-        }
-      ],
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Radio.Group",
+      "x-field": {
+        name: "size",
         label: "$size",
       },
-      children: [
-        {
-          componentName: "Radio.Group",
-          "x-field": {
-            name: "size",
-            params: {
-              withBind: true,
-            }
+      props: {
+        optionType: "button",
+        options: [
+          {
+            label: "$large",
+            value: "large"
           },
-          props: {
-            optionType: "button",
-            options: [
-              {
-                label: "$large",
-                value: "large"
-              },
-              {
-                label: "$middle",
-                value: "middle"
-              },
-              {
-                label: "$small",
-                value: "small"
-              },
-            ],
-            defaultValue: "middle",
-          }
-        }
-      ]
+          {
+            label: "$middle",
+            value: "middle"
+          },
+          {
+            label: "$small",
+            value: "small"
+          },
+        ],
+        defaultValue: "middle",
+      }
     }
   ],
-  slotsSchemas: [
+  slotSchemas: [
     {
-      componentName: "FormItem",
-      props: {
-        label: "$header",
-      },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "header"
-          }
-        },
-      ]
+      name: "header",
+      label: "$header",
     },
     {
-      componentName: "FormItem",
-      props: {
-        label: "$footer",
-      },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "footer"
-          }
-        },
-      ]
+      name: "footer",
+      label: "$footer",
     },
   ],
   fieldOptions: {

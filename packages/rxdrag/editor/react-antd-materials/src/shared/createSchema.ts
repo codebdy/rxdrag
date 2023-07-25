@@ -6,7 +6,7 @@ import { transPropSchemas } from "./transPropSchemas";
 import { transSlotSchemas } from "./transSlotSchemas";
 
 export function createSchema(options: SchemaOptions = {}): INodeSchema {
-  const { props, slots, fieldOptions: fieldOptions, events } = options
+  const { propSchemas: props, slotSchemas: slots, fieldOptions: fieldOptions, events } = options
   const propsTab = props ? [{
     componentName: "TabPanel",
     props: {

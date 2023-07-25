@@ -2,7 +2,7 @@ import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
 
 const options: SchemaOptions = {
-  props: [
+  propSchemas: [
     {
       componentName: "FormItem",
       props: {
@@ -43,7 +43,7 @@ const options: SchemaOptions = {
       ]
     },
   ],
-  slots: [
+  slotSchemas: [
     {
       componentName: "FormItem",
       props: {

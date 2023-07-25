@@ -100,8 +100,8 @@ const inputSlots = [
   },
 ]
 const options: SchemaOptions = {
-  props:inputPros,
-  slots:inputSlots,
+  propSchemas:inputPros,
+  slotSchemas:inputSlots,
   fieldOptions: {
     canBindField: true,
   },
@@ -115,7 +115,7 @@ const options: SchemaOptions = {
 export const inputSchema: INodeSchema = createSchema(options)
 
 const textareaOptions: SchemaOptions = {
-  props: [...inputPros,
+  propSchemas: [...inputPros,
   {
     componentName: "FormItem",
     props: {
