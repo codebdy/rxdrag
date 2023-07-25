@@ -2,7 +2,7 @@ import { Collapse, Row } from "antd"
 import { useCallback, useEffect, useState } from "react"
 
 const key = "collapse-panel"
-export const ResourceCollapsePannel = (
+export const ResourceCollapsePanel = (
   props: {
     title: string,
     defaultExpand?: boolean,

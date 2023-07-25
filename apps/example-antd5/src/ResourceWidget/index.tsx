@@ -3,7 +3,7 @@ import { useToolsTranslate, useRegisterComponentMaterial } from "@rxdrag/react-c
 import { materials, fields } from "materials"
 import { memo, useEffect } from "react"
 import { FieldMaterial } from "@rxdrag/react-antd-materials"
-import { ResourceCollapsePannel } from "./ResourceCollapsePannel"
+import { ResourceCollapsePanel } from "./ResourceCollapsePanel"
 import { ResourcesTitle } from "./ResourcesTitle"
 
 export const ResourceWidget = memo((
@@ -20,25 +20,25 @@ export const ResourceWidget = memo((
   }, [registerMaterial])
 
   return (
-    <PaneContainer className="rx-resource-contianer" style={{ display: display ? undefined : "none" }}>
+    <PaneContainer className="rx-resource-container" style={{ display: display ? undefined : "none" }}>
       <ResourcesTitle />
       <div style={{ flex: 1, overflow: "auto" }}>
         {
           materials.map((group => {
             return (
-              <ResourceCollapsePannel key={group.titleKey} title={t(group.titleKey)} defaultExpand>
+              <ResourceCollapsePanel key={group.titleKey} title={t(group.titleKey)} defaultExpand>
                 {
                   group.items.map((material => {
                     return (
-                      <ComponentResourceWidget key={material.componentName} meterial={material} />
+                      <ComponentResourceWidget key={material.componentName} material={material} />
                     )
                   }))
                 }
-              </ResourceCollapsePannel>
+              </ResourceCollapsePanel>
             )
           }))
         }
-        <ResourceCollapsePannel title={t("fields")} defaultExpand>
+        <ResourceCollapsePanel title={t("fields")} defaultExpand>
           {
             fields.map(field => {
               return (
@@ -46,7 +46,7 @@ export const ResourceWidget = memo((
               )
             })
           }
-        </ResourceCollapsePannel>
+        </ResourceCollapsePanel>
       </div>
     </PaneContainer>
   )
