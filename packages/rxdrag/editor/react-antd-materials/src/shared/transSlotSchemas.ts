@@ -9,12 +9,17 @@ export interface ISlotSchema {
 
 export function transSlotSchemas(schemas: ISlotSchema[]): INodeSchema<IFieldMeta, ILogicFlowControllerMeta>[] {
   return schemas.map((schema) => ({
-    componentName: "SlotSwitch",
+    componentName: "FormItem",
     props: {
-      name: schema.name
+      label: schema?.label,
     },
-    "x-field": {
-      label: schema.label,
-    }
+    children: [
+      {
+        componentName: "SlotSwitch",
+        props: {
+          name: schema.name
+        },
+      }
+    ]
   }))
 }
