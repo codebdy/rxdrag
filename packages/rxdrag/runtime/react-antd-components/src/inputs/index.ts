@@ -1,5 +1,6 @@
 export * from "./Checkbox"
 export * from "./Radio"
 export * from "./Slider"
+export * from "./Switch"
 export * from "./TimePicker"
 export * from "./Transfer"
