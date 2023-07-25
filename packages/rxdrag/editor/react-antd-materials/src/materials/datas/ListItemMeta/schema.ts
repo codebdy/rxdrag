@@ -4,46 +4,16 @@ import { SchemaOptions, createSchema } from "../../../shared";
 const options: SchemaOptions = {
   slotSchemas: [
     {
-      componentName: "FormItem",
-      props: {
-        label: "$avatar",
-      },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "avatar"
-          }
-        }
-      ]
+      name: "avatar",
+      label: "$avatar",
     },
     {
-      componentName: "FormItem",
-      props: {
-        label: "$title",
-      },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "title"
-          }
-        }
-      ]
+      name: "title",
+      label: "$title",
     },
     {
-      componentName: "FormItem",
-      props: {
-        label: "$description",
-      },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "description"
-          }
-        }
-      ]
+      name: "description",
+      label: "$description",
     },
   ]
 }

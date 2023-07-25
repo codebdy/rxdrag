@@ -4,133 +4,77 @@ import { SchemaOptions, createSchema } from "../../../shared";
 export const formOptions: SchemaOptions = {
   propSchemas: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "colon",
         label: "$colon",
       },
-      children: [
-        {
-          "x-field": {
-            name: "colon",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-          componentName: "Switch",
-          props: {
-            defaultChecked: true,
-          }
-        }
-      ]
+      props: {
+        defaultChecked: true,
+      }
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Select",
+      "x-field": {
+        name: "layout",
         label: "$layout",
       },
-      children: [
-        {
-          componentName: "Select",
-          "x-field": {
-            name: "layout",
-            params: {
-              withBind: true,
-            }
+      props: {
+        options: [
+          {
+            label: "Horizontal",
+            value: "horizontal"
           },
-          props: {
-            options: [
-              {
-                label: "Horizontal",
-                value: "horizontal"
-              },
-              {
-                label: "Vertical",
-                value: "vertical"
-              },
-              {
-                label: "Inline",
-                value: "inline"
-              },
-            ],
-            defaultValue: "horizontal",
-          }
-        }
-      ]
+          {
+            label: "Vertical",
+            value: "vertical"
+          },
+          {
+            label: "Inline",
+            value: "inline"
+          },
+        ],
+        defaultValue: "horizontal",
+      }
     },
     {
-      componentName: "FormItem",
-      props: {
+      "x-field": {
+        name: "disabled",
         label: "$disabled",
       },
-      children: [
-        {
-          "x-field": {
-            name: "disabled",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-          componentName: "Switch"
-        }
-      ]
+      componentName: "Switch"
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Radio.Group",
+      "x-field": {
+        name: "labelAlign",
         label: "$labelAlign",
       },
-      children: [
-        {
-          "x-field": {
-            name: "labelAlign",
-            params: {
-              withBind: true,
-            }
+      props: {
+        optionType: "button",
+        options: [
+          {
+            label: "$right",
+            value: "right"
           },
-          componentName: "Radio.Group",
-          props: {
-            optionType: "button",
-            options: [
-              {
-                label: "$right",
-                value: "right"
-              },
-              {
-                label: "$left",
-                value: "left"
-              },
-            ],
-            defaultValue: "right",
-          }
-        }
-      ]
+          {
+            label: "$left",
+            value: "left"
+          },
+        ],
+        defaultValue: "right",
+      }
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "labelWrap",
         label: "$labelWrap",
       },
-      children: [
-        {
-          "x-field": {
-            name: "labelWrap",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-          componentName: "Switch"
-        }
-      ]
     },
     {
       "x-field": {
         name: "labelCol",
-        params: {
-          withBind: true,
-        }
       },
       componentName: "ColInput",
       props: {
@@ -148,9 +92,6 @@ export const formOptions: SchemaOptions = {
     {
       "x-field": {
         name: "wrapperCol",
-        params: {
-          withBind: true,
-        }
       },
       componentName: "ColInput",
       props: {
@@ -166,39 +107,29 @@ export const formOptions: SchemaOptions = {
       }
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Radio.Group",
+      "x-field": {
+        name: "size",
         label: "$size",
       },
-      children: [
-        {
-          componentName: "Radio.Group",
-          "x-field": {
-            name: "size",
-            params: {
-              withBind: true,
-            }
+      props: {
+        optionType: "button",
+        options: [
+          {
+            label: "$large",
+            value: "large"
           },
-          props: {
-            optionType: "button",
-            options: [
-              {
-                label: "$large",
-                value: "large"
-              },
-              {
-                label: "$middle",
-                value: "middle"
-              },
-              {
-                label: "$small",
-                value: "small"
-              },
-            ],
-            defaultValue: "middle",
-          }
-        }
-      ]
+          {
+            label: "$middle",
+            value: "middle"
+          },
+          {
+            label: "$small",
+            value: "small"
+          },
+        ],
+        defaultValue: "middle",
+      }
     }
   ]
 }

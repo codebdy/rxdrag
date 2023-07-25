@@ -4,68 +4,38 @@ import { SchemaOptions, createSchema } from "../../../shared";
 const options: SchemaOptions = {
   propSchemas: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Radio.Group",
+      "x-field": {
+        name: "shape",
         label: "$shape",
       },
-      children: [
-        {
-          componentName: "Radio.Group",
-          "x-field": {
-            name: "shape",
-            params: {
-              withBind: true,
-            }
+      props: {
+        optionType: "button",
+        options: [
+          {
+            label: "$circle",
+            value: "circle"
           },
-          props: {
-            optionType: "button",
-            options: [
-              {
-                label: "$circle",
-                value: "circle"
-              },
-              {
-                label: "$square",
-                value: "square"
-              },
-            ],
-            defaultValue: "circle",
-          }
-        }
-      ]
+          {
+            label: "$square",
+            value: "square"
+          },
+        ],
+        defaultValue: "circle",
+      }
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "InputNumber",
+      "x-field": {
+        name: "size",
         label: "$size",
       },
-      children: [
-        {
-          componentName: "InputNumber",
-          "x-field": {
-            name: "size",
-            params: {
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
   ],
   slotSchemas: [
     {
-      componentName: "FormItem",
-      props: {
-        label: "$icon",
-      },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "icon"
-          }
-        }
-      ]
+      name: "icon",
+      label: "$icon",
     },
   ]
 }

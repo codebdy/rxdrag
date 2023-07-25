@@ -6,204 +6,129 @@ const options: SchemaOptions = {
   propSchemas: [
     ...inputBaseSchemas,
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Select",
+      "x-field": {
+        name: "mode",
         label: "$mode",
       },
-
-      children: [
-        {
-          componentName: "Select",
-          "x-field": {
-            name: "mode",
-            params: {
-              withBind: true,
-            }
+      props: {
+        options: [
+          {
+            value: 'time',
+            label: 'Time',
           },
-          props: {
-            options: [
-              {
-                value: 'time',
-                label: 'Time',
-              },
-              {
-                value: 'date',
-                label: 'Date',
-              },
-              {
-                value: 'month',
-                label: 'Month',
-              },
-              {
-                value: 'year',
-                label: 'Year',
-              },
-              {
-                value: 'decade',
-                label: 'Decade',
-              },
-            ]
-          }
-        },
-      ]
+          {
+            value: 'date',
+            label: 'Date',
+          },
+          {
+            value: 'month',
+            label: 'Month',
+          },
+          {
+            value: 'year',
+            label: 'Year',
+          },
+          {
+            value: 'decade',
+            label: 'Decade',
+          },
+        ]
+      }
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Select",
+      "x-field": {
+        name: "picker",
         label: "$mode",
       },
-      children: [
-        {
-          componentName: "Select",
-          "x-field": {
-            name: "picker",
-            params: {
-              withBind: true,
-            }
+      props: {
+        defaultValue: "year",
+        options: [
+          {
+            value: 'date',
+            label: 'Date',
           },
-          props: {
-            defaultValue: "year",
-            options: [
-              {
-                value: 'date',
-                label: 'Date',
-              },
-              {
-                value: 'week',
-                label: 'Week',
-              },
-              {
-                value: 'month',
-                label: 'Month',
-              },
-              {
-                value: 'quarter',
-                label: 'Quarter',
-              },
-              {
-                value: 'year',
-                label: 'Year',
-              },
-            ]
-          }
-        },
-      ]
+          {
+            value: 'week',
+            label: 'Week',
+          },
+          {
+            value: 'month',
+            label: 'Month',
+          },
+          {
+            value: 'quarter',
+            label: 'Quarter',
+          },
+          {
+            value: 'year',
+            label: 'Year',
+          },
+        ]
+      }
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Select",
+      "x-field": {
+        name: "placement",
         label: "$mode",
       },
-      children: [
-        {
-          componentName: "Select",
-          "x-field": {
-            name: "placement",
-            params: {
-              withBind: true,
-            }
+      props: {
+        defaultValue: "bottomLeft",
+        options: [
+          {
+            value: 'bottomLeft',
+            label: 'BottomLeft',
           },
-          props: {
-            defaultValue: "bottomLeft",
-            options: [
-              {
-                value: 'bottomLeft',
-                label: 'BottomLeft',
-              },
-              {
-                value: 'bottomRight',
-                label: 'BottomRight',
-              },
-              {
-                value: 'topLeft',
-                label: 'TopLeft',
-              },
-              {
-                value: 'topRight',
-                label: 'TopRight',
-              },
-            ]
-          }
-        }
-      ]
+          {
+            value: 'bottomRight',
+            label: 'BottomRight',
+          },
+          {
+            value: 'topLeft',
+            label: 'TopLeft',
+          },
+          {
+            value: 'topRight',
+            label: 'TopRight',
+          },
+        ]
+      }
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Input",
+      "x-field": {
+        name: "format",
         label: "$format",
       },
-
-      children: [
-        {
-          componentName: "Input",
-          "x-field": {
-            name: "format",
-            params: {
-              withBind: true,
-            }
-          },
-          props: {
-            defaultValue: "YYYY-MM-DD"
-          }
-        }
-      ]
+      props: {
+        defaultValue: "YYYY-MM-DD"
+      }
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "showNow",
         label: "$showNow",
       },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "showNow",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "showTime",
         label: "$showTime",
       },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "showTime",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "showToday",
         label: "$showToday",
       },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "showToday",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-          props: {
-            defaultChecked: true,
-          }
-        }
-      ]
+      props: {
+        defaultChecked: true,
+      }
     },
   ]
 }

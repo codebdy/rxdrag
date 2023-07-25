@@ -10,85 +10,53 @@ export const menuSchema: INodeSchema = {
   },
   children: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Input",
+      "x-field": {
+        name: "title",
         label: "$title",
       },
-      children: [
-        {
-          componentName: "Input",
-          "x-field": {
-            name: "title",
-            params: {
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Select",
+      "x-field": {
+        name: "type",
         label: "$type",
       },
-
-      children: [
-        {
-          componentName: "Select",
-          "x-field": {
-            name: "type",
-            params: {
-              withBind: true,
-            }
+      props: {
+        options: [
+          {
+            value: 'primary',
+            label: 'Primary',
           },
-          props: {
-            options: [
-              {
-                value: 'primary',
-                label: 'Primary',
-              },
-              {
-                value: 'ghost',
-                label: 'Ghost',
-              },
-              {
-                value: 'dashed',
-                label: 'Dashed',
-              },
-              {
-                value: 'link',
-                label: 'Link',
-              },
-              {
-                value: 'text',
-                label: 'Text',
-              },
-              {
-                value: 'default',
-                label: 'Default',
-              },
-            ]
-          }
-        }
-      ]
+          {
+            value: 'ghost',
+            label: 'Ghost',
+          },
+          {
+            value: 'dashed',
+            label: 'Dashed',
+          },
+          {
+            value: 'link',
+            label: 'Link',
+          },
+          {
+            value: 'text',
+            label: 'Text',
+          },
+          {
+            value: 'default',
+            label: 'Default',
+          },
+        ]
+      }
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "disabled",
         label: "$disabled",
       },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "disabled",
-            params: {
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
   ]
 }

@@ -4,55 +4,25 @@ import { SchemaOptions, createSchema } from "../../../shared";
 const options: SchemaOptions = {
   propSchemas: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "InputNumber",
+      "x-field": {
+        name: "size",
         label: "$size",
       },
-      children: [
-        {
-          componentName: "InputNumber",
-          "x-field": {
-            name: "size",
-            params: {
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "ColorInput",
+      "x-field": {
+        name: "color",
         label: "$color",
       },
-      children: [
-        {
-          componentName: "ColorInput",
-          "x-field": {
-            name: "color",
-            params: {
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "IconInput",
+      "x-field": {
+        name: "icon",
         label: "$icon",
       },
-      children: [
-        {
-          componentName: "IconInput",
-          "x-field": {
-            name: "icon",
-            params: {
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
   ]
 }

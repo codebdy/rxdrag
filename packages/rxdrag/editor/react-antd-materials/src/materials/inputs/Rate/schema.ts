@@ -4,22 +4,11 @@ import { SchemaOptions, createSchema } from "../../../shared";
 const options: SchemaOptions = {
   propSchemas: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "disabled",
         label: "$disabled",
       },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "disabled",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
   ]
 }

@@ -4,79 +4,47 @@ import { SchemaOptions, createSchema } from "../../../shared";
 const options: SchemaOptions = {
   propSchemas: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Input",
+      "x-field": {
+        name: "label",
         label: "$label",
       },
-      children: [
-        {
-          componentName: "Input",
-          "x-field": {
-            name: "label",
-            params: {
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
     {
-      componentName: "FormItem",
+
+      componentName: "Radio.Group",
       props: {
+        optionType: "button",
+        options: [
+          {
+            label: "$right",
+            value: "right"
+          },
+          {
+            label: "$left",
+            value: "left"
+          },
+        ],
+        defaultValue: "right",
+      },
+      "x-field": {
+        name: "labelAlign",
         label: "$labelAlign",
       },
-      children: [
-        {
-          "x-field": {
-            name: "labelAlign",
-            params: {
-              withBind: true,
-            }
-          },
-          componentName: "Radio.Group",
-          props: {
-            optionType: "button",
-            options: [
-              {
-                label: "$right",
-                value: "right"
-              },
-              {
-                label: "$left",
-                value: "left"
-              },
-            ],
-            defaultValue: "right",
-          }
-        }
-      ]
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "labelWrap",
         label: "$labelWrap",
       },
-      children: [
-        {
-          "x-field": {
-            name: "labelWrap",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-          componentName: "Switch"
-        }
-      ]
     },
     {
+      componentName: "ColInput",
       "x-field": {
         name: "labelCol",
-        params: {
-          withBind: true,
-        }
       },
-      componentName: "ColInput",
+
       props: {
         title: "$labelCol",
         subTitles: {
@@ -92,9 +60,6 @@ const options: SchemaOptions = {
     {
       "x-field": {
         name: "wrapperCol",
-        params: {
-          withBind: true,
-        }
       },
       componentName: "ColInput",
       props: {
@@ -112,18 +77,8 @@ const options: SchemaOptions = {
   ],
   slotSchemas: [
     {
-      componentName: "FormItem",
-      props: {
-        label: "$input",
-      },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "input"
-          }
-        }
-      ]
+      name: "input",
+      label: "$input",
     },
   ]
 }
