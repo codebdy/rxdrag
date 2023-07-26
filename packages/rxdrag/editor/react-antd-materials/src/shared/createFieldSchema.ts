@@ -216,10 +216,6 @@ export function createFieldSchema() {
     children: [
       {
         componentName: "Input",
-        "x-field": {
-          name: "x-field.validateRules",
-          label: "$validateRules",
-        },
       }
     ]
   }]
@@ -231,7 +227,7 @@ export function createFieldSchema() {
       name: "x-field.reactionMeta",
     },
     props: {
-      title: "$fieldReaction"
+      title: "$fieldSettings"
     },
     children: transformExpresionField(reactionFields)
   }]
