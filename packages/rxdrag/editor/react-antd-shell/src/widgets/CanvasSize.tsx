@@ -3,7 +3,7 @@ import { memo, useCallback, useEffect, useState } from "react"
 import { SvgIcon } from "../layouts/CanvasToolbar/SvgIcon"
 import { SlScreenDesktop, SlScreenTablet } from "react-icons/sl";
 import { CanvasWidthLimits } from "@rxdrag/core";
-import { useCanvasWidthLimitsState, useToolsTranslate } from "@rxdrag/react-core";
+import { useCanvasWidthLimitsState, useSettersTranslate } from "@rxdrag/react-core";
 import { mobileIcon, responsiveIcon } from "../icons";
 
 
@@ -46,7 +46,7 @@ const ALL_LIMITS: {
 export const CanvasSize = memo(() => {
   const [screenType, setScreenType] = useState<ScreenType>(ScreenType.Desktop)
   const [, setLimits] = useCanvasWidthLimitsState()
-  const t = useToolsTranslate()
+  const t = useSettersTranslate()
 
   useEffect(() => {
     setLimits(ALL_LIMITS[screenType || ScreenType.Desktop] || null)

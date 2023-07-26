@@ -4,7 +4,7 @@ import { memo } from "react"
 import { useSaveJson } from "../hooks/useSaveJson"
 
 export const SaveButton = memo(() => {
-  const t = useTranslate("tools")
+  const t = useTranslate("setters")
   const save = useSaveJson();
   return (
     <Space>

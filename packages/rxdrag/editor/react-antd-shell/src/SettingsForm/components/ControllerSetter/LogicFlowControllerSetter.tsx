@@ -5,7 +5,7 @@ import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useParentControllerMetas } from "./hooks/useParentControllerMetas";
 import { ControllerMetaEditorAntd5 } from "@rxdrag/controller-editor-antd5";
 import { ITreeNode } from "@rxdrag/core";
-import { useCurrentNode, useToolsTranslate } from "@rxdrag/react-core";
+import { useCurrentNode, useSettersTranslate } from "@rxdrag/react-core";
 import { useGlobalControllerMetas } from "./hooks/useGlobalControllerMetas";
 import { controllerSetterLocales } from "./locales";
 import { activityMaterialCategories } from "./materials";
@@ -25,7 +25,7 @@ export const LogicFlowControllerSetter = memo((
   const [inputValue, setInputValue] = useState<ILogicFlowControllerMeta | undefined>(value)
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const t = useToolsTranslate()
+  const t = useSettersTranslate()
 
   useEffect(() => {
     setInputValue(value)

@@ -5,13 +5,13 @@ import { IComponentsParams, initialParams } from "@rxdrag/react-runner";
 
 
 export interface IDesignerComponentsParams extends IComponentsParams {
-  tools: IComponents,
+  setters: IComponents,
   registerTools: (...components: IComponents[]) => void
 }
 
 export const initialDesignerParams: IDesignerComponentsParams = {
   ...initialParams,
-  tools: {},
+  setters: {},
   registerTools: function (): void {
     throw new Error("Function not implemented.");
   }

@@ -19,7 +19,7 @@ export function useRegisterComponentMaterial() {
   const register = useCallback((meterial: IComponentMaterial, isSlot?: boolean) => {
     const designers = { [meterial.componentName]: meterial.designer }
     //const previews = { [meterial.componentName]: meterial.component }
-    const tools = meterial.tools
+    const setters = meterial.setters
     componentManager?.registerComponents(meterial)
     if (meterial.designerLocales) {
       localesManager?.registerComponentLocales(meterial.componentName, meterial.designerLocales)
@@ -29,7 +29,7 @@ export function useRegisterComponentMaterial() {
     }
 
     if (meterial.toolsLocales) {
-      localesManager?.registerToolsLocales(meterial.toolsLocales)
+      localesManager?.registerSetterLocales(meterial.toolsLocales)
     }
 
     for (const key of Object.keys(meterial.slots || {})) {
@@ -42,7 +42,7 @@ export function useRegisterComponentMaterial() {
 
     registerDesignComponents(designers)
     //registerPreviewComponents(previews)
-    tools && registerTools(tools)
+    setters && registerTools(setters)
 
     if (meterial.resource && !resourceManager?.getResourceByName(meterial.resource.name) && !isSlot) {
       const resources = resourceManager?.registerResources(meterial.resource)

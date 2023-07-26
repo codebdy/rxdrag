@@ -1,5 +1,5 @@
 import { ComponentResourceWidget, PaneContainer, TemplateResourceWidget } from "@rxdrag/react-antd-shell"
-import { useToolsTranslate, useRegisterComponentMaterial } from "@rxdrag/react-core"
+import { useSettersTranslate, useRegisterComponentMaterial } from "@rxdrag/react-core"
 import { materials, fields } from "materials"
 import { memo, useEffect } from "react"
 import { FieldMaterial } from "@rxdrag/react-antd-materials"
@@ -12,7 +12,7 @@ export const ResourceWidget = memo((
   }
 ) => {
   const { display } = props
-  const t = useToolsTranslate()
+  const t = useSettersTranslate()
   const registerMaterial = useRegisterComponentMaterial()
   //注册通用物料
   useEffect(() => {

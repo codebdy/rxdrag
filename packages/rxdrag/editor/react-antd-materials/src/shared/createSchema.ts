@@ -31,6 +31,9 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
       props: {
         title: "$field",
         id: "data",
+        style: {
+          padding: 0,
+        }
       },
       children: createFieldSchema()
     }] : []

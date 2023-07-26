@@ -41,6 +41,8 @@
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
+    "@rxdrag/fieldy-yup-validation": "workspace:*",
+    "@rxdrag/locales": "workspace:*",
     "antd": "^5.6.2",
     "lodash": "^4.17.21",
     "classnames": "^2.3.2",

@@ -86,5 +86,8 @@ export interface YupArray extends YupSchema {
   max?: IYupConfig<number | IRef>,
 }
 
-//字符串时，引用预定义的规则，比如email， url等
-export type ValidateRules = string | YupArray | YupDate | YupNumber | YupString
+export type YupValidateRules = {
+  //类型，引用预定义的规则，比如email， url等。
+  name: string | YupType,
+  config: YupArray | YupDate | YupNumber | YupString
+}

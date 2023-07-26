@@ -7,7 +7,7 @@ export const commmonLocales: ILocales = {
         title: "根组件"
       }
     },
-    tools: {
+    setters: {
       properties: "属性",
       style: "样式",
       slots: "卡槽",
@@ -42,7 +42,7 @@ export const commmonLocales: ILocales = {
         title: "Root"
       }
     },
-    tools: {
+    setters: {
       properties: "Properties",
       style: "Style",
       slots: "Slots",

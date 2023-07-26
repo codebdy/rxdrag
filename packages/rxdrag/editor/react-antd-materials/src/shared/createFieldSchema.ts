@@ -215,7 +215,10 @@ export function createFieldSchema() {
     },
     children: [
       {
-        componentName: "Input",
+        componentName: "YupRulesInput",
+        "x-field": {
+          name: "x-field.validateRules",
+        },
       }
     ]
   }]
@@ -280,6 +283,7 @@ export function createFieldSchema() {
       componentName: "CollapsePanel",
       props: {
         title: "$fieldDefine",
+        defaultExpand: true,
       },
       children: attachFormItem(fieldDefineFields)
     },

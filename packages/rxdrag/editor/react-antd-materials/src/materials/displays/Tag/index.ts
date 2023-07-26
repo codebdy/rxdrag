@@ -4,7 +4,7 @@ import { IconViewMaterial } from "../IconView";
 import { icon } from "./icon";
 import { locales, resourceLocales, toolsLocales } from "./locales";
 import { schema } from "./schema";
-import { TagColorInput } from "./tools/TagColorInput";
+import { TagColorInput } from "./setters/TagColorInput";
 
 const name = "Tag"
 export const TagMaterial: IComponentMaterial = {
@@ -31,7 +31,7 @@ export const TagMaterial: IComponentMaterial = {
     icon: IconViewMaterial,
   },
   toolsLocales: toolsLocales,
-  tools:{
+  setters:{
     TagColorInput,
   }
 }

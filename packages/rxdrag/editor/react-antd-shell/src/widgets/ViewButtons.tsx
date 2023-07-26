@@ -1,4 +1,4 @@
-import { useDocumentViewTypeState, useActivedDocumentIdState, useActions, useToolsTranslate } from "@rxdrag/react-core"
+import { useDocumentViewTypeState, useActivedDocumentIdState, useActions, useSettersTranslate } from "@rxdrag/react-core"
 import { Button, Space, Tooltip } from "antd"
 import { memo, useCallback, useEffect } from "react"
 import { SvgIcon } from "../layouts/CanvasToolbar/SvgIcon"
@@ -8,7 +8,7 @@ export const ViewButtons = memo(() => {
   const [viewType, setViewType] = useDocumentViewTypeState()
   const [activedDocumentId] = useActivedDocumentIdState()
   const actions = useActions()
-  const t = useToolsTranslate()
+  const t = useSettersTranslate()
 
   useEffect(() => {
     actions?.selectNodes([], activedDocumentId || "")

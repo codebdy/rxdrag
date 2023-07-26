@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react"
 import { Form, Radio } from "antd"
 import { memo, useCallback, useEffect } from "react"
-import { useDesignerEngine, useToolsTranslate } from "@rxdrag/react-core"
+import { useDesignerEngine, useSettersTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
 import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
 import { IEventMeta } from "@rxdrag/minions-controller-editor"
@@ -14,7 +14,7 @@ export const ControllerSetter = memo((props: {
   onChange?: (value?: ILogicFlowControllerMeta) => void,
 }) => {
   const { title, value, onChange, ...other } = props;
-  const t = useToolsTranslate()
+  const t = useSettersTranslate()
   const [localesInited, setLocalesInited] = useState(false);
 
   const minionOptions = useMinionOptions();
@@ -22,7 +22,7 @@ export const ControllerSetter = memo((props: {
   useEffect(() => {
     const langMgr = eng?.getLoacalesManager()
     for (const ctrlDef of minionOptions?.controllers || []) {
-      ctrlDef.locales && langMgr?.registerToolsLocales(ctrlDef.locales)
+      ctrlDef.locales && langMgr?.registerSetterLocales(ctrlDef.locales)
     }
     setLocalesInited(true)
   }, [eng, minionOptions?.controllers])

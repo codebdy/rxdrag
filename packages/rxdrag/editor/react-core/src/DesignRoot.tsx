@@ -5,12 +5,12 @@ import { IComponents } from "@rxdrag/react-shared"
 
 export const DesignRoot = (props: {
   components?: IComponents,
-  tools?: IComponents,
+  setters?: IComponents,
   children: React.ReactNode,
 }) => {
-  const { components: initialComponents, tools: initialTools, children } = props
+  const { components: initialComponents, setters: initialTools, children } = props
   const [components, setComponents] = useState<IComponents>({})
-  const [tools, setTools] = useState<IComponents>({})
+  const [setters, setTools] = useState<IComponents>({})
   const handleRegister = useCallback((...components: IComponents[]) => {
     for (const com of components) {
       setComponents(coms => ({ ...coms, ...com }))
@@ -25,11 +25,11 @@ export const DesignRoot = (props: {
   const params: IDesignerComponentsParams = useMemo(() => {
     return {
       components: { ...initialComponents, ...components },
-      tools: { ...initialTools, ...tools },
+      setters: { ...initialTools, ...setters },
       registerComponents: handleRegister,
       registerTools: handleRegisterTools,
     }
-  }, [components, handleRegister, handleRegisterTools, initialComponents, initialTools, tools])
+  }, [components, handleRegister, handleRegisterTools, initialComponents, initialTools, setters])
 
   return (
     <DesignComponentsContext.Provider value={params}>

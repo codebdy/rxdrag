@@ -1,6 +1,6 @@
 export const settingLocales = {
   "zh-CN": {
-    tools: {
+    setters: {
       edit: "编辑",
       delete: "删除",
       font: "字体",
@@ -106,7 +106,7 @@ export const settingLocales = {
     }
   },
   'en-US': {
-    tools: {
+    setters: {
       edit: "Edit",
       delete: "Delete",
       font: "Font",

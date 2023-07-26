@@ -21,7 +21,7 @@ export const NavButton = memo((props: NavButtonProps) => {
   const { showTitle, actived, item, onSelect } = props
   const { key, title, icon } = item;
   const [, token] = useToken();
-  const t = useTranslate("tools");
+  const t = useTranslate("setters");
   const handleClick = useCallback(() => {
     onSelect?.(key)
   }, [key, onSelect])

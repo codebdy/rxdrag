@@ -2,7 +2,7 @@ import { ILocales } from "@rxdrag/locales";
 
 export const toolsLocales: ILocales = {
   "zh-CN": {
-    tools: {
+    setters: {
       inputs: "输入控件",
       displays: "显示控件",
       forms: "表单控件",
@@ -16,7 +16,7 @@ export const toolsLocales: ILocales = {
 
   },
   'en-US': {
-    tools: {
+    setters: {
       inputs: "Inputs",
       displays: "Displays",
       forms: "Forms",

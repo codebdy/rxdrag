@@ -1,4 +1,4 @@
-import { useToolsTranslate } from "@rxdrag/react-core"
+import { useSettersTranslate } from "@rxdrag/react-core"
 import { Button } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
@@ -38,7 +38,7 @@ export const TagColorInput = memo((props: {
 }) => {
   const { value, onChange } = props
   const [colorType, setColorType] = useState<ColorType>()
-  const t = useToolsTranslate()
+  const t = useSettersTranslate()
   useEffect(() => {
     if (predefinedColors.find(color => color === value) || value === undefined) {
       setColorType(ColorType.Predefined)

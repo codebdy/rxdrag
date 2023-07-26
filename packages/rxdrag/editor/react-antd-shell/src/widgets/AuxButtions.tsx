@@ -1,4 +1,4 @@
-import { useDesignerEngine, useDocument, useToolsTranslate } from "@rxdrag/react-core"
+import { useDesignerEngine, useDocument, useSettersTranslate } from "@rxdrag/react-core"
 import { Button, Space, Tooltip } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import { LineDecorator, LINE_DECORTOR_NAME } from "../decorators/LineDecorator"
@@ -37,7 +37,7 @@ export const AuxButtionsButtions = memo(() => {
     }
   }, [documentId, engine, margin])
 
-  const t = useToolsTranslate()
+  const t = useSettersTranslate()
   return (
     <Space>
       <Tooltip title={t("auxLine")}>
