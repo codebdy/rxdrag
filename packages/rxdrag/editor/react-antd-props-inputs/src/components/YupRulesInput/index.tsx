@@ -25,7 +25,7 @@ export const YupRulesInput = memo((
   }, [onChange, value])
 
   const handleTypeChange = useCallback((typeValue: string) => {
-    onChange?.({ ...value, type: typeValue })
+    onChange?.({ ...value, type: { ...value?.type, value: typeValue } })
   }, [onChange, value])
 
   return (
@@ -42,7 +42,7 @@ export const YupRulesInput = memo((
       >
         <Select
           allowClear
-          value={value?.type}
+          value={value?.type?.value}
           onChange={handleTypeChange}
           options={[
             { value: 'email', label: t('email') },
@@ -58,27 +58,27 @@ export const YupRulesInput = memo((
         />
       </PropLayout>
       {
-        value?.type === YupType.array &&
+        value?.type?.value === YupType.array &&
         <ArrayRuleInput />
       }
       {
-        value?.type === YupType.boolean &&
+        value?.type?.value === YupType.boolean &&
         <BooleanRuleInput />
       }
       {
-        value?.type === YupType.date &&
+        value?.type?.value === YupType.date &&
         <DateRuleInput />
       }
       {
-        value?.type === YupType.number &&
+        value?.type?.value === YupType.number &&
         <NumberRuleInput />
       }
       {
-        value?.type === YupType.object &&
+        value?.type?.value === YupType.object &&
         <ObjectRuleInput />
       }
       {
-        value?.type === YupType.string &&
+        value?.type?.value === YupType.string &&
         <StringRuleInput />
       }
     </>

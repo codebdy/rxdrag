@@ -17,6 +17,8 @@ export const setterLocales: ILocales = {
     cancel: "取消",
     confirm: "确认",
     infoMessage: "提示消息",
+    matches: "正则匹配",
+    excludeEmptyString: "忽略空字符串",
   },
   'en-US': {
     validationType: "Validation Type",
@@ -34,5 +36,7 @@ export const setterLocales: ILocales = {
     cancel: "Cancel",
     confirm: "Confirm",
     inofMessage: "Info Message",
+    matches: "Matches",
+    excludeEmptyString: "Exclude Empty String",
   }
 }

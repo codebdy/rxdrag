@@ -1,6 +1,6 @@
 import { YupString } from "@rxdrag/fieldy-yup-validation";
 import { useSettersTranslate } from "@rxdrag/react-core";
-import { InputNumber } from "antd";
+import { Checkbox, Input, InputNumber, Space } from "antd";
 import { memo } from "react"
 import { PropLayout } from "../PropLayout";
 import { MessageInput } from "./MessageInput";
@@ -26,6 +26,15 @@ export const StringRuleInput = memo((
         expressionSetter={<MessageInput />}
       >
         <InputNumber />
+      </PropLayout>
+      <PropLayout
+        label={t('matches')}
+        expressionSetter={<MessageInput />}
+      >
+        <Space direction="vertical">
+          <Input.TextArea />
+          <Checkbox >{t("excludeEmptyString")}</Checkbox>
+        </Space>
       </PropLayout>
     </>
   )

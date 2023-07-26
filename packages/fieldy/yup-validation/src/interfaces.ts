@@ -59,10 +59,7 @@ export interface YupString extends YupSchema {
   min?: IYupConfig<number | IRef>,
   max?: IYupConfig<number | IRef>,
   matches?: IYupConfig<string> & {
-    options?: {
-      message: string,
-      excludeEmptyString: boolean,
-    }
+    excludeEmptyString: boolean,
   },
   email?: IYupConfig<boolean>,
   url?: IYupConfig<boolean>,
@@ -92,6 +89,9 @@ export interface YupArray extends YupSchema {
 
 export type YupValidateRules = {
   //类型，引用预定义的规则，比如email， url等。
-  type?: string | YupType,
+  type?: {
+    value: string | YupType,
+    message?: string,
+  },
   config?: YupSchema | YupArray | YupDate | YupNumber | YupString
 }
