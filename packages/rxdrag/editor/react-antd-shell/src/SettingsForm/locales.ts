@@ -52,6 +52,7 @@ export const settingLocales = {
 
       fieldType: "字段类型",
       fieldName: "字段名称",
+      validation: "字段校验",
       validateRules: "校验规则",
       defaultValue: "默认值",
       value: "值",
@@ -157,6 +158,7 @@ export const settingLocales = {
 
       fieldType: "Field Type",
       fieldName: "Field Name",
+      validation: "Validation",
       validateRules: "Rules",
       defaultValue: "Default",
       value: "Value",

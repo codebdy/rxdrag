@@ -1,4 +1,4 @@
-import { INodeSchema} from "@rxdrag/schema"
+import { INodeSchema } from "@rxdrag/schema"
 import { attachFormItem } from "./attachFormItem"
 import { IFieldMeta } from "@rxdrag/fieldy-schema"
 import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
@@ -207,15 +207,28 @@ export function createFieldSchema() {
       },
     },
   ]
+
+  const validationCollapse = [{
+    componentName: "CollapsePanel",
+    props: {
+      title: "$validation"
+    },
+    children: [
+      {
+        componentName: "Input",
+        "x-field": {
+          name: "x-field.validateRules",
+          label: "$validateRules",
+        },
+      }
+    ]
+  }]
+
   const reactionCollapse = [{
     componentName: "CollapsePanel",
     "x-field": {
       type: "object",
       name: "x-field.reactionMeta",
-      reactionMeta: {
-        //$name的使用方式还有问题
-        hidden: "{{!$form.getField('x-field.name')}}"
-      }
     },
     props: {
       title: "$fieldReaction"
@@ -259,19 +272,12 @@ export function createFieldSchema() {
       },
     },
     {
-      componentName: "Input",
+      componentName: "ValueInput",
       "x-field": {
         name: "x-field.defaultValue",
         label: "$defaultValue",
       },
     },
-    {
-      componentName: "Input",
-      "x-field": {
-        name: "x-field.validateRules",
-        label: "$validateRules",
-      },
-    }
   ]
   return [
     {
@@ -281,6 +287,7 @@ export function createFieldSchema() {
       },
       children: attachFormItem(fieldDefineFields)
     },
+    ...validationCollapse,
     ...reactionCollapse,
   ]
 }

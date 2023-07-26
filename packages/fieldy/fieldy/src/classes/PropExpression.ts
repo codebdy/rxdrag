@@ -19,6 +19,7 @@ export class PropExpression {
       if (!this.expression?.trim()) {
         return
       }
+      console.log("====>", this.expression)
       const value = new Function("$self", "$form", ...Object.keys(sbilings), "return " + this.expression)(
         $self,
         $form,
