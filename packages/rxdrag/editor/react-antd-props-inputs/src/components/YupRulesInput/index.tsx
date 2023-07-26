@@ -1,5 +1,5 @@
 import { Form, Select } from "antd"
-import { memo } from "react"
+import { memo, useCallback } from "react"
 import { YupValidateRules } from "@rxdrag/fieldy-yup-validation"
 import { useSettersTranslate } from "@rxdrag/react-core"
 
@@ -11,11 +11,18 @@ export const YupRulesInput = memo((
 ) => {
   const { value, onChange } = props;
   const t = useSettersTranslate()
+
+  const handleTypeChange = useCallback((typeValue: string) => {
+    onChange?.({...value, type:typeValue})
+  }, [onChange, value])
+
   return (
     <>
       <Form.Item label={t('validationType')}>
         <Select
           allowClear
+          value = {value?.type}
+          onChange={handleTypeChange}
           options={[
             { value: 'email', label: t('email') },
             { value: 'url', label: t('url') },

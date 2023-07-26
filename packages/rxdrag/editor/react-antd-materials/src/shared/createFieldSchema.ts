@@ -283,7 +283,7 @@ export function createFieldSchema() {
       componentName: "CollapsePanel",
       props: {
         title: "$fieldDefine",
-        defaultExpand: true,
+        //defaultExpand: true,
       },
       children: attachFormItem(fieldDefineFields)
     },

@@ -88,6 +88,6 @@ export interface YupArray extends YupSchema {
 
 export type YupValidateRules = {
   //类型，引用预定义的规则，比如email， url等。
-  name: string | YupType,
-  config: YupArray | YupDate | YupNumber | YupString
+  type?: string | YupType,
+  config?: YupArray | YupDate | YupNumber | YupString
 }
