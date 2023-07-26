@@ -29,7 +29,7 @@ export const ResourceCollapsePanel = (
   return (
     <Collapse
       accordion
-      activeKey={expanded ? key : ""}
+      defaultActiveKey={expanded ? key : ""}
       ghost
       //expandIconPosition="end"
       onChange={handleChange}
