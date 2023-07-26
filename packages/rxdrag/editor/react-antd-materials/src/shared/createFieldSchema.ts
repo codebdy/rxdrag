@@ -243,11 +243,8 @@ export function createFieldSchema() {
         label: "$fieldType",
       },
       props: {
+        allowClear: true,
         options: [
-          {
-            value: '',
-            label: '',
-          },
           {
             value: 'normal',
             label: 'Normal',

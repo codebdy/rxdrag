@@ -17,20 +17,22 @@ export function transPropSchemas(schemas: INodeSchema<IFieldMeta, ILogicFlowCont
       label: propSchema["x-field"]?.label,
     },
     slots: {
-      setter: {
-        ...propSchema,
-        "x-field": {
-          name: "props." + propSchema["x-field"]?.name,
-          defaultValue: propSchema["x-field"]?.defaultValue,
-          label: propSchema["x-field"]?.label,
-        },
-      },
       expressionSetter: {
         componentName: "ExpressionInput",
         "x-field": {
           name: "propExpressions." + propSchema["x-field"]?.name,
         },
       }
-    }
+    },
+    children: [
+      {
+        ...propSchema,
+        "x-field": {
+          name: "props." + propSchema["x-field"]?.name,
+          defaultValue: propSchema["x-field"]?.defaultValue,
+          label: propSchema["x-field"]?.label,
+        },
+      }
+    ]
   }))
 }

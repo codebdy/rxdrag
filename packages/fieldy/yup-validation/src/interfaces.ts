@@ -14,17 +14,16 @@ export enum YupType {
 export type FunctionStr = string;
 
 export interface YupSchema {
-  type: YupType,
   nullable?: boolean,//还不知道怎么用
   nonNullable?: boolean,//还不知道怎么用
-  required?: boolean | string | FunctionStr,
+  required?: boolean, //| string | FunctionStr,
   oneOf?: {
     arrayOfValues: Array<any>,
-    message: string | FunctionStr
+    message: string,
   },
   notOneOf?: {
     arrayOfValues: Array<any>,
-    message: string | FunctionStr
+    message: string,
   },
   when?: {
     deps: string | string[],
@@ -34,6 +33,10 @@ export interface YupSchema {
   } | {
     deps: string | string[],
     body?: FunctionStr,
+  },
+  test?: {
+    message?: string,
+    test?: FunctionStr,
   }
 }
 
@@ -46,12 +49,13 @@ export interface IRef {
 
 export interface IYupConfig<Type> {
   value: Type,
-  message?: string | FunctionStr,
+  message?: string,
 }
 
 export interface YupString extends YupSchema {
-  required?: boolean | string | FunctionStr,
-  length?: IYupConfig<number | IRef>,
+  required?: boolean, //| string | FunctionStr,
+  //先删掉，用最大长度跟最小长度结合使用
+  //length?: IYupConfig<number | IRef>,
   min?: IYupConfig<number | IRef>,
   max?: IYupConfig<number | IRef>,
   matches?: IYupConfig<string> & {
@@ -89,5 +93,5 @@ export interface YupArray extends YupSchema {
 export type YupValidateRules = {
   //类型，引用预定义的规则，比如email， url等。
   type?: string | YupType,
-  config?: YupArray | YupDate | YupNumber | YupString
+  config?: YupSchema | YupArray | YupDate | YupNumber | YupString
 }

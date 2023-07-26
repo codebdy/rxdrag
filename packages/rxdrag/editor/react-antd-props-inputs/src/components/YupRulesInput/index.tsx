@@ -1,4 +1,4 @@
-import { Form, Select } from "antd"
+import { Form, Select, Switch } from "antd"
 import { memo, useCallback } from "react"
 import { YupType, YupValidateRules } from "@rxdrag/fieldy-yup-validation"
 import { useSettersTranslate } from "@rxdrag/react-core"
@@ -8,6 +8,8 @@ import { BooleanRuleInput } from "./BooleanRuleInput"
 import { DateRuleInput } from "./DateRuleInput"
 import { StringRuleInput } from "./StringRuleInput"
 import { ObjectRuleInput } from "./ObjectRuleInput"
+import { PropLayout } from "../PropLayout"
+import { MessageInput } from "./MessageInput"
 
 export const YupRulesInput = memo((
   props: {
@@ -18,13 +20,26 @@ export const YupRulesInput = memo((
   const { value, onChange } = props;
   const t = useSettersTranslate()
 
+  const handleRequiredChange = useCallback((checked: boolean) => {
+    onChange?.({ ...value, config: { ...value?.config, required: checked } })
+  }, [onChange, value])
+
   const handleTypeChange = useCallback((typeValue: string) => {
     onChange?.({ ...value, type: typeValue })
   }, [onChange, value])
 
   return (
     <>
-      <Form.Item label={t('validationType')}>
+      <PropLayout
+        label={t('requried')}
+        expressionSetter={<MessageInput />}
+      >
+        <Switch checked={value?.config?.required} onChange={handleRequiredChange} />
+      </PropLayout>
+      <PropLayout
+        label={t('validationType')}
+        expressionSetter={<MessageInput />}
+      >
         <Select
           allowClear
           value={value?.type}
@@ -41,7 +56,7 @@ export const YupRulesInput = memo((
             { value: 'object', label: t('object') },
           ]}
         />
-      </Form.Item>
+      </PropLayout>
       {
         value?.type === YupType.array &&
         <ArrayRuleInput />

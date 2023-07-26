@@ -13,16 +13,16 @@ const Expression = styled.div`
 export const PropLayout = memo((
   props: {
     label?: string,
-    setter?: React.ReactElement,
+    children?: React.ReactNode,
     expressionSetter?: React.ReactElement,
   }
 ) => {
-  const { label, setter, expressionSetter } = props
+  const { label, children, expressionSetter } = props
 
   return (
     <Container className="prop-layout">
       <Form.Item label={label} className="prop-form-item" style={{ flex: 1 }}>
-        {setter}
+        {children}
       </Form.Item>
       <Expression className="prop-expression">
         {expressionSetter}
