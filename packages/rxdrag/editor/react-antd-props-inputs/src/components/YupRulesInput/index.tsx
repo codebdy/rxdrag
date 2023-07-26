@@ -1,7 +1,13 @@
 import { Form, Select } from "antd"
 import { memo, useCallback } from "react"
-import { YupValidateRules } from "@rxdrag/fieldy-yup-validation"
+import { YupType, YupValidateRules } from "@rxdrag/fieldy-yup-validation"
 import { useSettersTranslate } from "@rxdrag/react-core"
+import { NumberRuleInput } from "./NumberRuleInput"
+import { ArrayRuleInput } from "./ArrayRuleInput"
+import { BooleanRuleInput } from "./BooleanRuleInput"
+import { DateRuleInput } from "./DateRuleInput"
+import { StringRuleInput } from "./StringRuleInput"
+import { ObjectRuleInput } from "./ObjectRuleInput"
 
 export const YupRulesInput = memo((
   props: {
@@ -13,7 +19,7 @@ export const YupRulesInput = memo((
   const t = useSettersTranslate()
 
   const handleTypeChange = useCallback((typeValue: string) => {
-    onChange?.({...value, type:typeValue})
+    onChange?.({ ...value, type: typeValue })
   }, [onChange, value])
 
   return (
@@ -21,7 +27,7 @@ export const YupRulesInput = memo((
       <Form.Item label={t('validationType')}>
         <Select
           allowClear
-          value = {value?.type}
+          value={value?.type}
           onChange={handleTypeChange}
           options={[
             { value: 'email', label: t('email') },
@@ -36,6 +42,30 @@ export const YupRulesInput = memo((
           ]}
         />
       </Form.Item>
+      {
+        value?.type === YupType.array &&
+        <ArrayRuleInput />
+      }
+      {
+        value?.type === YupType.boolean &&
+        <BooleanRuleInput />
+      }
+      {
+        value?.type === YupType.date &&
+        <DateRuleInput />
+      }
+      {
+        value?.type === YupType.number &&
+        <NumberRuleInput />
+      }
+      {
+        value?.type === YupType.object &&
+        <ObjectRuleInput />
+      }
+      {
+        value?.type === YupType.string &&
+        <StringRuleInput />
+      }
     </>
   )
 })
