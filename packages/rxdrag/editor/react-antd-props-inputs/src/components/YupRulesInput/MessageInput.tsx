@@ -2,6 +2,17 @@ import { EllipsisOutlined } from "@ant-design/icons"
 import { useSettersTranslate } from "@rxdrag/react-core"
 import { Button, Input, Popover, Space } from "antd"
 import { memo, useCallback, useState } from "react"
+import styled from "styled-components"
+
+const Content = styled.div`
+  width: 280px;
+`
+
+const ContentFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+`
 
 export const MessageInput = memo(() => {
   const [open, setOpen] = useState(false)
@@ -23,18 +34,18 @@ export const MessageInput = memo(() => {
   return (<Popover
     open={open}
     content={
-      <div>
-        <Input.TextArea rows={6} allowClear />
-        <div style={{ display: 'flex', justifyContent: "flex-end", paddingTop: 16 }}>
+      <Content>
+        <Input.TextArea rows={4} allowClear />
+        <ContentFooter>
           <Space>
             <Button type="text" onClick={handleClose}>{t("cancel")}</Button>
             <Button type="primary" onClick={handleConfirm}>{t("confirm")}</Button>
           </Space>
-        </div>
-      </div>
+        </ContentFooter>
+      </Content>
     }
     placement="bottom"
-    title={t("errorMessage")}
+    title={t("infoMessage")}
     trigger="click"
     onOpenChange={handleOpenChange}
   >

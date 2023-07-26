@@ -16,7 +16,7 @@ export const setterLocales: ILocales = {
     minLength: "最小长度",
     cancel: "取消",
     confirm: "确认",
-    errorMessage: "错误消息",
+    infoMessage: "提示消息",
   },
   'en-US': {
     validationType: "Validation Type",
@@ -33,6 +33,6 @@ export const setterLocales: ILocales = {
     minLength: "Min Length",
     cancel: "Cancel",
     confirm: "Confirm",
-    errorMessage: "Error Message",
+    inofMessage: "Info Message",
   }
 }

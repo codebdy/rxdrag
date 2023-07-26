@@ -1,4 +1,4 @@
-import { Form, Select, Switch } from "antd"
+import { Select, Switch } from "antd"
 import { memo, useCallback } from "react"
 import { YupType, YupValidateRules } from "@rxdrag/fieldy-yup-validation"
 import { useSettersTranslate } from "@rxdrag/react-core"
