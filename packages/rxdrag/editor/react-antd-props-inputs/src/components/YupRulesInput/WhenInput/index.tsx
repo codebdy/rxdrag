@@ -27,8 +27,7 @@ const CodeContent = styled.div`
 `
 
 const codeTemplate =
-  `
-(#deps#, schema) => {
+  `(#deps#, schema) => {
   //add some code here
   return schema;
 }
@@ -95,15 +94,19 @@ export const WhenInput = memo((
         <CodeConfig>
           <CodeTitle>
             <span>{t("configCode")}</span>
-            <Popconfirm
-              placement="top"
-              title={t("replaceTip")}
-              onConfirm={handleRegenerateCode}
-              okText={t("yes")}
-              cancelText={t("no")}
-            >
-              <Button type="text" icon={<SyncOutlined />} />
-            </Popconfirm>
+            {
+              inputValue?.body
+                ? <Popconfirm
+                  placement="top"
+                  title={t("replaceTip")}
+                  onConfirm={handleRegenerateCode}
+                  okText={t("yes")}
+                  cancelText={t("no")}
+                >
+                  <Button type="text" icon={<SyncOutlined />} />
+                </Popconfirm>
+                : <Button type="text" icon={<SyncOutlined />} onClick={handleRegenerateCode} />
+            }
           </CodeTitle>
           <CodeContent>
             <Editor
