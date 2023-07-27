@@ -79,8 +79,9 @@ export const YupRulesInput = memo((
             { value: 'number', label: t('number') },
             { value: 'date', label: t('date') },
             { value: 'boolean', label: t('boolean') },
-            { value: 'array', label: t('array') },
-            { value: 'object', label: t('object') },
+            //暂时不支持数组跟对象
+            // { value: 'array', label: t('array') },
+            // { value: 'object', label: t('object') },
           ]}
         />
       </PropLayout>

@@ -3,7 +3,7 @@ import { memo } from "react"
 export const ArrayRuleInput = memo(()=>{
   return (
     <>
-    数组
+    暂时不支持数组校验
     </>
   )
 })
