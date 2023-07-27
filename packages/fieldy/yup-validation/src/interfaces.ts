@@ -21,7 +21,7 @@ export type WhenType = {
 export interface YupSchema {
   nullable?: boolean,//还不知道怎么用
   nonNullable?: boolean,//还不知道怎么用
-  required?: boolean, //| string | FunctionStr,
+  required?: IYupConfig<boolean | IRef>, //| string | FunctionStr,
   oneOf?: {
     arrayOfValues: Array<any>,
     message: string,
@@ -58,7 +58,7 @@ export interface IYupConfig<Type> {
 }
 
 export interface YupString extends YupSchema {
-  required?: boolean, //| string | FunctionStr,
+  required?: IYupConfig<boolean | IRef>, //| string | FunctionStr,
   //先删掉，用最大长度跟最小长度结合使用
   //length?: IYupConfig<number | IRef>,
   min?: IYupConfig<number | IRef>,
@@ -92,13 +92,10 @@ export interface YupArray extends YupSchema {
   max?: IYupConfig<number | IRef>,
 }
 
-export type YupConfig = YupSchema | YupArray | YupDate | YupNumber | YupString
+export type YupRules = YupSchema | YupArray | YupDate | YupNumber | YupString
 
 export type YupValidateRules = {
   //类型，引用预定义的规则，比如email， url等。
-  type?: {
-    value: string | YupType,
-    message?: string,
-  },
-  config?: YupConfig
+  type?: IYupConfig<string | YupType>,
+  rules?: YupRules
 }

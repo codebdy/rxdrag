@@ -1,6 +1,6 @@
 import { Select, Switch } from "antd"
 import { memo, useCallback } from "react"
-import { WhenType, YupConfig, YupString, YupType, YupValidateRules } from "@rxdrag/fieldy-yup-validation"
+import { IYupConfig, WhenType, YupRules, YupString, YupType, YupValidateRules } from "@rxdrag/fieldy-yup-validation"
 import { useSettersTranslate } from "@rxdrag/react-core"
 import { NumberRuleInput } from "./NumberRuleInput"
 import { ArrayRuleInput } from "./ArrayRuleInput"
@@ -21,7 +21,7 @@ export const YupRulesInput = memo((
   const t = useSettersTranslate()
 
   const handleRequiredChange = useCallback((checked: boolean) => {
-    onChange?.({ ...value, config: { ...value?.config, required: checked } })
+    onChange?.({ ...value, rules: { ...value?.rules, required: { ...value?.rules?.required, value: checked } } })
   }, [onChange, value])
 
   const handleTypeChange = useCallback((typeValue: string) => {
@@ -29,24 +29,43 @@ export const YupRulesInput = memo((
   }, [onChange, value])
 
   const handleWhenChange = useCallback((whenType?: WhenType) => {
-    onChange?.({ ...value, config: { ...value?.config, when: whenType } })
+    onChange?.({ ...value, rules: { ...value?.rules, when: whenType } })
   }, [onChange, value])
 
-  const handleConfigChange = useCallback((config?: YupConfig) => {
-    onChange?.({ ...value, config: config })
+  const handleRulesChange = useCallback((rules?: YupRules) => {
+    onChange?.({ ...value, rules: rules })
+  }, [onChange, value])
+
+  const handleRequiredConfigChange = useCallback((config?: IYupConfig<unknown>) => {
+    onChange?.({ ...value, rules: { ...value?.rules, required: config as IYupConfig<boolean> } })
+  }, [onChange, value])
+
+  const handleTypeConfigChange = useCallback((config?: IYupConfig<unknown>) => {
+    onChange?.({ ...value, type: config as IYupConfig<string | YupType> })
   }, [onChange, value])
 
   return (
     <>
       <PropLayout
         label={t('requried')}
-        expressionSetter={<MessageInput />}
+        expressionSetter={
+          <MessageInput
+            value={value?.rules?.required}
+            onChange={handleRequiredConfigChange}
+          />}
       >
-        <Switch checked={value?.config?.required} onChange={handleRequiredChange} />
+        <Switch
+          checked={value?.rules?.required?.value as boolean | undefined}
+          onChange={handleRequiredChange}
+        />
       </PropLayout>
       <PropLayout
         label={t('validationType')}
-        expressionSetter={<MessageInput />}
+        expressionSetter={
+          <MessageInput
+            value={value?.type}
+            onChange={handleTypeConfigChange}
+          />}
       >
         <Select
           allowClear
@@ -87,10 +106,10 @@ export const YupRulesInput = memo((
       }
       {
         value?.type?.value === YupType.string &&
-        <StringRuleInput value={value?.config as YupString | undefined} onChange={handleConfigChange} />
+        <StringRuleInput value={value?.rules as YupString | undefined} onChange={handleRulesChange} />
       }
       {
-        <WhenInput value={value?.config?.when} onChange={handleWhenChange} />
+        <WhenInput value={value?.rules?.when} onChange={handleWhenChange} />
       }
     </>
   )
