@@ -76,9 +76,9 @@ export interface YupNumber extends YupSchema {
   max?: IYupConfig<number | IRef>,
   lessThan?: IYupConfig<number | IRef>,
   moreThan?: IYupConfig<number | IRef>,
-  positive?: string | FunctionStr,
-  negative?: string | FunctionStr,
-  integer?: string | FunctionStr,
+  positive?: IYupConfig<boolean>,
+  negative?: IYupConfig<boolean>,
+  integer?: IYupConfig<boolean>,
 }
 
 export interface YupDate extends YupSchema {

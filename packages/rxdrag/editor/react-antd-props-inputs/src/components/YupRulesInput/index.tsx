@@ -1,6 +1,6 @@
 import { Select, Switch } from "antd"
 import { memo, useCallback } from "react"
-import { IYupConfig, WhenType, YupRules, YupString, YupType, YupValidateRules } from "@rxdrag/fieldy-yup-validation"
+import { IYupConfig, WhenType, YupNumber, YupRules, YupString, YupType, YupValidateRules } from "@rxdrag/fieldy-yup-validation"
 import { useSettersTranslate } from "@rxdrag/react-core"
 import { NumberRuleInput } from "./NumberRuleInput"
 import { ArrayRuleInput } from "./ArrayRuleInput"
@@ -98,7 +98,7 @@ export const YupRulesInput = memo((
       }
       {
         value?.type?.value === YupType.number &&
-        <NumberRuleInput />
+        <NumberRuleInput value={value?.rules as YupNumber | undefined} onChange={handleRulesChange} />
       }
       {
         value?.type?.value === YupType.object &&

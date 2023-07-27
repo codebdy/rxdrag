@@ -14,6 +14,13 @@ export const setterLocales: ILocales = {
     requried: "必须输入",
     maxLength: "最大长度",
     minLength: "最小长度",
+    max: "最大值",
+    min: "最小值",
+    lessThan: "小于",
+    moreThan: "大于",
+    positive: "正数",
+    negative: "负数",
+    integer: "整数",
     cancel: "取消",
     confirm: "确认",
     infoMessage: "提示消息",
@@ -23,10 +30,10 @@ export const setterLocales: ILocales = {
     configRules: "配置验证规则",
     configCode: "配置代码",
     devItems: "依赖项",
-    yes:"是",
-    no:"否",
-    regenerateCode:"重新生成代码",
-    replaceTip:"代码将被覆盖，您确定吗？"
+    yes: "是",
+    no: "否",
+    regenerateCode: "重新生成代码",
+    replaceTip: "代码将被覆盖，您确定吗？"
   },
   'en-US': {
     validationType: "Validation Type",
@@ -41,6 +48,13 @@ export const setterLocales: ILocales = {
     requried: "Required",
     maxLength: "Max Length",
     minLength: "Min Length",
+    max: "Max",
+    min: "Min",
+    lessThan: "Less Than",
+    moreThan: "More Than",
+    positive: "Positive",
+    negative: "Negative",
+    integer: "Integer",
     cancel: "Cancel",
     confirm: "Confirm",
     inofMessage: "Info Message",
@@ -50,9 +64,9 @@ export const setterLocales: ILocales = {
     configRules: "Config Rules",
     configCode: "Config code",
     devItems: "Dev Items",
-    yes:"Yes",
-    no:"No",
-    regenerateCode:"Regenerate Code",
-    replaceTip:"Code will be replaced, are you sure?"
+    yes: "Yes",
+    no: "No",
+    regenerateCode: "Regenerate Code",
+    replaceTip: "Code will be replaced, are you sure?"
   }
 }
