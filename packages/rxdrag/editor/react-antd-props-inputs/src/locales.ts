@@ -22,7 +22,11 @@ export const setterLocales: ILocales = {
     customized: "自定义",
     configRules: "配置验证规则",
     configCode: "配置代码",
-    devItems: "依赖项"
+    devItems: "依赖项",
+    yes:"是",
+    no:"否",
+    regenerateCode:"重新生成代码",
+    replaceTip:"代码将被覆盖，您确定吗？"
   },
   'en-US': {
     validationType: "Validation Type",
@@ -45,6 +49,10 @@ export const setterLocales: ILocales = {
     customized: "Customized",
     configRules: "Config Rules",
     configCode: "Config code",
-    devItems: "Dev Items"
+    devItems: "Dev Items",
+    yes:"Yes",
+    no:"No",
+    regenerateCode:"Regenerate Code",
+    replaceTip:"Code will be replaced, are you sure?"
   }
 }
