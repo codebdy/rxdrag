@@ -1,10 +1,9 @@
 import { Select, Switch } from "antd"
 import { memo, useCallback } from "react"
-import { WhenType, YupType, YupValidateRules } from "@rxdrag/fieldy-yup-validation"
+import { WhenType, YupConfig, YupString, YupType, YupValidateRules } from "@rxdrag/fieldy-yup-validation"
 import { useSettersTranslate } from "@rxdrag/react-core"
 import { NumberRuleInput } from "./NumberRuleInput"
 import { ArrayRuleInput } from "./ArrayRuleInput"
-import { BooleanRuleInput } from "./BooleanRuleInput"
 import { DateRuleInput } from "./DateRuleInput"
 import { StringRuleInput } from "./StringRuleInput"
 import { ObjectRuleInput } from "./ObjectRuleInput"
@@ -31,6 +30,10 @@ export const YupRulesInput = memo((
 
   const handleWhenChange = useCallback((whenType?: WhenType) => {
     onChange?.({ ...value, config: { ...value?.config, when: whenType } })
+  }, [onChange, value])
+
+  const handleConfigChange = useCallback((config?: YupConfig) => {
+    onChange?.({ ...value, config: config })
   }, [onChange, value])
 
   return (
@@ -67,8 +70,8 @@ export const YupRulesInput = memo((
         <ArrayRuleInput />
       }
       {
-        value?.type?.value === YupType.boolean &&
-        <BooleanRuleInput />
+        // value?.type?.value === YupType.boolean &&
+        // <BooleanRuleInput />
       }
       {
         value?.type?.value === YupType.date &&
@@ -84,7 +87,7 @@ export const YupRulesInput = memo((
       }
       {
         value?.type?.value === YupType.string &&
-        <StringRuleInput />
+        <StringRuleInput value={value?.config as YupString | undefined} onChange={handleConfigChange} />
       }
       {
         <WhenInput value={value?.config?.when} onChange={handleWhenChange} />

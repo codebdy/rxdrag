@@ -92,11 +92,13 @@ export interface YupArray extends YupSchema {
   max?: IYupConfig<number | IRef>,
 }
 
+export type YupConfig = YupSchema | YupArray | YupDate | YupNumber | YupString
+
 export type YupValidateRules = {
   //类型，引用预定义的规则，比如email， url等。
   type?: {
     value: string | YupType,
     message?: string,
   },
-  config?: YupSchema | YupArray | YupDate | YupNumber | YupString
+  config?: YupConfig
 }
