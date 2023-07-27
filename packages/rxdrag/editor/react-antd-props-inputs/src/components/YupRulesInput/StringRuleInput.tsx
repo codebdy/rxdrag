@@ -31,8 +31,8 @@ export const StringRuleInput = memo((
         label={t('matches')}
         expressionSetter={<MessageInput />}
       >
-        <Space direction="vertical">
-          <Input.TextArea />
+        <Space direction="vertical" style={{ width: "100%" }}>
+          <Input.TextArea  />
           <Checkbox >{t("excludeEmptyString")}</Checkbox>
         </Space>
       </PropLayout>

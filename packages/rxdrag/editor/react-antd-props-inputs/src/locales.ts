@@ -19,6 +19,8 @@ export const setterLocales: ILocales = {
     infoMessage: "提示消息",
     matches: "正则匹配",
     excludeEmptyString: "忽略空字符串",
+    customized:"自定义",
+    configRules:"配置验证规则"
   },
   'en-US': {
     validationType: "Validation Type",
@@ -38,5 +40,7 @@ export const setterLocales: ILocales = {
     inofMessage: "Info Message",
     matches: "Matches",
     excludeEmptyString: "Exclude Empty String",
+    customized: "Customized",
+    configRules: "Config Rules"
   }
 }

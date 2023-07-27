@@ -10,6 +10,7 @@ import { StringRuleInput } from "./StringRuleInput"
 import { ObjectRuleInput } from "./ObjectRuleInput"
 import { PropLayout } from "../PropLayout"
 import { MessageInput } from "./MessageInput"
+import { WhenInput } from "./WhenInput"
 
 export const YupRulesInput = memo((
   props: {
@@ -80,6 +81,9 @@ export const YupRulesInput = memo((
       {
         value?.type?.value === YupType.string &&
         <StringRuleInput />
+      }
+      {
+        <WhenInput />
       }
     </>
   )
