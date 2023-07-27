@@ -19,7 +19,7 @@ export const StringRuleInput = memo((
         label={t('maxLength')}
         expressionSetter={<MessageInput />}
       >
-        <InputNumber />
+        <InputNumber value = {value?.max?.value} />
       </PropLayout>
       <PropLayout
         label={t('minLength')}
