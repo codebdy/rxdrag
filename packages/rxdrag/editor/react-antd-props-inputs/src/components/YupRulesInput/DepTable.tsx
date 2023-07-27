@@ -4,6 +4,7 @@ import { Button, Form, Input, Popconfirm, Table } from 'antd';
 import type { FormInstance } from 'antd/es/form';
 import styled from 'styled-components';
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { useSettersTranslate } from '@rxdrag/react-core';
 
 const StyledTable = styled(Table)`
   .ant-table-container{
@@ -16,6 +17,7 @@ const Title = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-bottom: 8px;
+  color:${props => props.theme?.token?.colorTextSecondary};
 `
 
 const EditableContext = React.createContext<FormInstance<any> | null>(null);
@@ -123,7 +125,8 @@ interface DataType {
 
 type ColumnTypes = Exclude<EditableTableProps['columns'], undefined>;
 
-const DepTable: React.FC = () => {
+export const DepTable: React.FC = () => {
+  const t = useSettersTranslate()
   const [dataSource, setDataSource] = useState<DataType[]>([
     {
       key: '0',
@@ -141,7 +144,7 @@ const DepTable: React.FC = () => {
 
   const [count, setCount] = useState(2);
 
-  const handleDelete = (key: React.Key) => {
+  const handleDelete = (key?: React.Key) => {
     const newData = dataSource.filter((item) => item.key !== key);
     setDataSource(newData);
   };
@@ -157,10 +160,14 @@ const DepTable: React.FC = () => {
       width: '60px',
       align: 'center',
       dataIndex: 'operation',
-      render: (_, record: { key: React.Key }) =>
+      render: (_, record: { key?: React.Key }) =>
         dataSource.length >= 1 ? (
           <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
-            <Button icon={<DeleteOutlined />} type='text' />
+            <Button
+              icon={<DeleteOutlined />}
+              type='text'
+              size='small'
+            />
           </Popconfirm>
         ) : null,
     },
@@ -214,8 +221,12 @@ const DepTable: React.FC = () => {
   return (
     <div>
       <Title>
-        <span>依赖项</span>
-        <Button onClick={handleAdd} type="text" icon={<PlusOutlined />}>
+        <span>{t("devItems")}</span>
+        <Button
+          onClick={handleAdd}
+          type="text"
+          icon={<PlusOutlined />}
+        >
         </Button>
       </Title>
 
@@ -232,5 +243,3 @@ const DepTable: React.FC = () => {
     </div>
   );
 };
-
-export default DepTable;
