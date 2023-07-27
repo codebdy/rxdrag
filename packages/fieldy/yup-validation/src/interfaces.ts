@@ -53,7 +53,7 @@ export interface IRef {
 }
 
 export interface IYupConfig<Type> {
-  value: Type,
+  value?: Type,
   message?: string,
 }
 
@@ -61,9 +61,8 @@ export interface YupString extends YupSchema {
   required?: boolean, //| string | FunctionStr,
   //先删掉，用最大长度跟最小长度结合使用
   //length?: IYupConfig<number | IRef>,
-  //先去掉IRef，以后需要再加
-  min?: IYupConfig<number>,
-  max?: IYupConfig<number>,
+  min?: IYupConfig<number | IRef>,
+  max?: IYupConfig<number | IRef>,
   matches?: IYupConfig<string> & {
     excludeEmptyString: boolean,
   },
@@ -73,24 +72,24 @@ export interface YupString extends YupSchema {
 }
 
 export interface YupNumber extends YupSchema {
-  min?: IYupConfig<number>,
-  max?: IYupConfig<number>,
-  lessThan?: IYupConfig<number>,
-  moreThan?: IYupConfig<number>,
+  min?: IYupConfig<number | IRef>,
+  max?: IYupConfig<number | IRef>,
+  lessThan?: IYupConfig<number | IRef>,
+  moreThan?: IYupConfig<number | IRef>,
   positive?: string | FunctionStr,
   negative?: string | FunctionStr,
   integer?: string | FunctionStr,
 }
 
 export interface YupDate extends YupSchema {
-  min?: IYupConfig<string | Date>,
-  max?: IYupConfig<string | Date>,
+  min?: IYupConfig<string | Date | IRef>,
+  max?: IYupConfig<string | Date | IRef>,
 }
 
 export interface YupArray extends YupSchema {
-  length?: IYupConfig<number>,
-  min?: IYupConfig<number>,
-  max?: IYupConfig<number>,
+  length?: IYupConfig<number | IRef>,
+  min?: IYupConfig<number | IRef>,
+  max?: IYupConfig<number | IRef>,
 }
 
 export type YupConfig = YupSchema | YupArray | YupDate | YupNumber | YupString
