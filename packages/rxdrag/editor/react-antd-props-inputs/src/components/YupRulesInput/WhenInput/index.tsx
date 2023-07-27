@@ -26,10 +26,18 @@ const CodeContent = styled.div`
   border: ${props => props.theme?.token?.colorBorder} solid 1px;
 `
 
+const codeTemplate =
+  `
+(#deps#, schema) => {
+  //add some code here
+  return schema;
+}
+`
+
 export const WhenInput = memo((
   props: {
     value?: WhenType,
-    onChange?: (value: WhenType) => void
+    onChange?: (value?: WhenType) => void
   }
 ) => {
   const { value, onChange } = props;
@@ -47,8 +55,9 @@ export const WhenInput = memo((
   }, []);
 
   const handleOk = useCallback(() => {
+    onChange?.(inputValue)
     setIsModalOpen(false);
-  }, []);
+  }, [inputValue, onChange]);
 
   const handleCancel = useCallback(() => {
     setInputValue(value);
@@ -59,8 +68,8 @@ export const WhenInput = memo((
     setInputValue(value => ({ ...value, body: newValue }))
   }, [])
 
-  const handleConfirm = useCallback(() => {
-    //
+  const handleRegenerateCode = useCallback(() => {
+    setInputValue(value => ({ ...value, body: codeTemplate.replace("#deps#", value?.deps ? "[" + value?.deps?.join(", ") + "]" : "_") }))
   }, [])
 
   const handleDepsChange = useCallback((deps?: string[]) => {
@@ -89,7 +98,7 @@ export const WhenInput = memo((
             <Popconfirm
               placement="top"
               title={t("replaceTip")}
-              onConfirm={handleConfirm}
+              onConfirm={handleRegenerateCode}
               okText={t("yes")}
               cancelText={t("no")}
             >
