@@ -9,6 +9,12 @@ import { useSettersTranslate } from '@rxdrag/react-core';
 const StyledTable = styled(Table)`
   .ant-table-container{
     border-radius: 0;
+    .ant-table-placeholder{
+      height: 40px;
+      .ant-empty{
+        display: none;
+      }
+    }
   }
 `
 
