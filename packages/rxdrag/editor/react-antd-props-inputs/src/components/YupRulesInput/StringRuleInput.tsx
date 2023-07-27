@@ -4,6 +4,7 @@ import { Checkbox, Input, InputNumber, Space } from "antd";
 import { memo, useCallback } from "react"
 import { PropLayout } from "../PropLayout";
 import { MessageInput } from "./MessageInput";
+import { CheckboxChangeEvent } from "antd/es/checkbox";
 
 export const StringRuleInput = memo((
   props: {
@@ -24,6 +25,10 @@ export const StringRuleInput = memo((
 
   const handleConfigChange = useCallback((name: string, config?: IYupConfig<unknown>) => {
     onChange?.({ ...value, [name]: config })
+  }, [onChange, value])
+
+  const handleExcludeEmptyChange = useCallback((e?: CheckboxChangeEvent) => {
+    onChange?.({ ...value, matches: { ...value?.matches, excludeEmptyString: e?.target.checked } })
   }, [onChange, value])
 
   return (
@@ -61,7 +66,7 @@ export const StringRuleInput = memo((
       >
         <Space direction="vertical" style={{ width: "100%" }}>
           <Input.TextArea />
-          <Checkbox >{t("excludeEmptyString")}</Checkbox>
+          <Checkbox checked={value?.matches?.excludeEmptyString} onChange={handleExcludeEmptyChange} >{t("excludeEmptyString")}</Checkbox>
         </Space>
       </PropLayout>
     </>

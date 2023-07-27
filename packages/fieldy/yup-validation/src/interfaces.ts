@@ -64,7 +64,7 @@ export interface YupString extends YupSchema {
   min?: IYupConfig<number | IRef>,
   max?: IYupConfig<number | IRef>,
   matches?: IYupConfig<string> & {
-    excludeEmptyString: boolean,
+    excludeEmptyString?: boolean,
   },
   email?: IYupConfig<boolean>,
   url?: IYupConfig<boolean>,
