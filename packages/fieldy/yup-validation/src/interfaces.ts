@@ -10,8 +10,13 @@ export enum YupType {
   object = "object",
 }
 
-//内联代码，格式：{{...}}
+//内联代码
 export type FunctionStr = string;
+
+export type WhenType = {
+  deps?: string[],
+  body?: FunctionStr,
+}
 
 export interface YupSchema {
   nullable?: boolean,//还不知道怎么用
@@ -25,7 +30,7 @@ export interface YupSchema {
     arrayOfValues: Array<any>,
     message: string,
   },
-  when?: {
+  when?: WhenType/* {
     deps: string | string[],
     is: any | FunctionStr,
     then?: FunctionStr,
@@ -33,7 +38,7 @@ export interface YupSchema {
   } | {
     deps: string | string[],
     body?: FunctionStr,
-  },
+  }*/,
   test?: {
     message?: string,
     test?: FunctionStr,

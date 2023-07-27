@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { memo, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import type { InputRef } from 'antd';
-import { Button, Form, Input, Popconfirm, Table } from 'antd';
+import { Button, Form, Input, Table } from 'antd';
 import type { FormInstance } from 'antd/es/form';
 import styled from 'styled-components';
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
@@ -20,6 +20,7 @@ const Title = styled.div`
   color:${props => props.theme?.token?.colorTextSecondary};
 `
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const EditableContext = React.createContext<FormInstance<any> | null>(null);
 
 interface Item {
@@ -33,6 +34,7 @@ interface EditableRowProps {
   index: number;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const EditableRow: React.FC<EditableRowProps> = ({ index, ...props }) => {
   const [form] = Form.useForm();
   return (
@@ -64,11 +66,12 @@ const EditableCell: React.FC<EditableCellProps> = ({
 }) => {
   const [editing, setEditing] = useState(false);
   const inputRef = useRef<InputRef>(null);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const form = useContext(EditableContext)!;
 
   useEffect(() => {
     if (editing) {
-      inputRef.current!.focus();
+      inputRef.current?.focus();
     }
   }, [editing]);
 
@@ -119,37 +122,26 @@ type EditableTableProps = Parameters<typeof Table>[0];
 interface DataType {
   key: React.Key;
   name: string;
-  age: string;
-  address: string;
 }
 
 type ColumnTypes = Exclude<EditableTableProps['columns'], undefined>;
 
-export const DepTable: React.FC = () => {
+export const DepTable = memo((
+  props: {
+    value?: string[],
+    onChange?: (value?: string[]) => void
+  }
+) => {
+  const { value, onChange } = props;
   const t = useSettersTranslate()
-  const [dataSource, setDataSource] = useState<DataType[]>([
-    {
-      key: '0',
-      name: 'Edward King 0',
-      age: '32',
-      address: 'London, Park Lane no. 0',
-    },
-    {
-      key: '1',
-      name: 'Edward King 1',
-      age: '32',
-      address: 'London, Park Lane no. 1',
-    },
-  ]);
+  const dataSource = useMemo(() => value?.map((item, index) => ({ name: item, key: index })) || [], [value])
 
-  const [count, setCount] = useState(2);
+  const handleDelete = useCallback((key?: React.Key) => {
+    const newData = value?.filter((item, index) => index !== key);
+    onChange?.(newData);
+  }, [onChange, value]);
 
-  const handleDelete = (key?: React.Key) => {
-    const newData = dataSource.filter((item) => item.key !== key);
-    setDataSource(newData);
-  };
-
-  const defaultColumns: (ColumnTypes[number] & { editable?: boolean; dataIndex: string })[] = [
+  const defaultColumns: (ColumnTypes[number] & { editable?: boolean; dataIndex: string })[] = useMemo(() => [
     {
       title: 'name',
       dataIndex: 'name',
@@ -162,47 +154,35 @@ export const DepTable: React.FC = () => {
       dataIndex: 'operation',
       render: (_, record: { key?: React.Key }) =>
         dataSource.length >= 1 ? (
-          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
-            <Button
-              icon={<DeleteOutlined />}
-              type='text'
-              size='small'
-            />
-          </Popconfirm>
+          <Button
+            icon={<DeleteOutlined />}
+            type='text'
+            size='small'
+            onClick={() => handleDelete(record.key)}
+          />
         ) : null,
     },
-  ];
+  ], [dataSource.length, handleDelete]);
 
-  const handleAdd = () => {
-    const newData: DataType = {
-      key: count,
-      name: `Edward King ${count}`,
-      age: '32',
-      address: `London, Park Lane no. ${count}`,
-    };
-    setDataSource([...dataSource, newData]);
-    setCount(count + 1);
-  };
+  const handleAdd = useCallback(() => {
+    onChange?.([...value || [], `fieldName`]);
+  }, [onChange, value]);
 
-  const handleSave = (row: DataType) => {
-    const newData = [...dataSource];
-    const index = newData.findIndex((item) => row.key === item.key);
-    const item = newData[index];
-    newData.splice(index, 1, {
-      ...item,
-      ...row,
-    });
-    setDataSource(newData);
-  };
+  const handleSave = useCallback((row: DataType) => {
+    const newData = [...value || []];
+    const index = row.key as number;
+    newData.splice(index, 1, row.name);
+    onChange?.(newData);
+  }, [onChange, value]);
 
-  const components = {
+  const components = useMemo(() => ({
     body: {
       row: EditableRow,
       cell: EditableCell,
     },
-  };
+  }), []);
 
-  const columns = defaultColumns.map((col) => {
+  const columns = useMemo(() => defaultColumns.map((col) => {
     if (!col.editable) {
       return col;
     }
@@ -216,7 +196,7 @@ export const DepTable: React.FC = () => {
         handleSave,
       }),
     };
-  });
+  }), [defaultColumns, handleSave]);
 
   return (
     <div>
@@ -242,4 +222,4 @@ export const DepTable: React.FC = () => {
       />
     </div>
   );
-};
+});

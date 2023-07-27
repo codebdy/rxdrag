@@ -1,10 +1,11 @@
 import { useSettersTranslate, useThemeMode } from "@rxdrag/react-core"
 import { Button, Form, Modal, Popconfirm } from "antd"
-import { memo, useCallback, useState } from "react"
+import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
 import { DepTable } from "./DepTable"
 import Editor from "@monaco-editor/react"
 import { SyncOutlined } from "@ant-design/icons"
+import { WhenType } from "@rxdrag/fieldy-yup-validation"
 
 const CodeConfig = styled.div`
   display: flex;
@@ -25,8 +26,19 @@ const CodeContent = styled.div`
   border: ${props => props.theme?.token?.colorBorder} solid 1px;
 `
 
-export const WhenInput = memo(() => {
-  const [inputValue, setInputValue] = useState<string>();
+export const WhenInput = memo((
+  props: {
+    value?: WhenType,
+    onChange?: (value: WhenType) => void
+  }
+) => {
+  const { value, onChange } = props;
+  const [inputValue, setInputValue] = useState(value);
+
+  useEffect(() => {
+    setInputValue(value)
+  }, [value])
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const t = useSettersTranslate()
   const themeMode = useThemeMode();
@@ -39,15 +51,20 @@ export const WhenInput = memo(() => {
   }, []);
 
   const handleCancel = useCallback(() => {
+    setInputValue(value);
     setIsModalOpen(false);
-  }, []);
+  }, [value]);
 
   const handleChange = useCallback((newValue?: string) => {
-    setInputValue(newValue)
+    setInputValue(value => ({ ...value, body: newValue }))
   }, [])
 
   const handleConfirm = useCallback(() => {
     //
+  }, [])
+
+  const handleDepsChange = useCallback((deps?: string[]) => {
+    setInputValue(value => ({ ...value, deps }))
   }, [])
 
   return (
@@ -65,7 +82,7 @@ export const WhenInput = memo(() => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <DepTable />
+        <DepTable value={inputValue?.deps} onChange={handleDepsChange} />
         <CodeConfig>
           <CodeTitle>
             <span>{t("configCode")}</span>
@@ -84,7 +101,7 @@ export const WhenInput = memo(() => {
               height="100%"
               language="javascript"
               theme={themeMode === "dark" ? "vs-dark" : "vs-light"}
-              value={inputValue || ""}
+              value={inputValue?.body || ""}
               options={{ lineNumbers: "off", glyphMargin: false }}
               onChange={handleChange}
             /></CodeContent>
