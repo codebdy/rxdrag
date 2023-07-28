@@ -29,14 +29,13 @@ export interface IFormProps {
 
 
 //让path可以重复，避免fragment覆盖其他值
-export interface IFieldSchema extends IFieldMeta {
+export interface IFieldSchema<ValidateRules = unknown> extends IFieldMeta<ValidateRules> {
   path: string
 }
 
 export interface IAction<Payload> extends Action<string> {
   payload?: Payload
 }
-
 
 export type FieldValidateStatus = 'error' | 'warning' | 'success' | 'validating'
 export interface IFieldFeedback {
@@ -81,7 +80,7 @@ export type FieldState = {
   //value?: unknown;
   //defaultValue?: unknown;
   //initialValue?: unknown;
-  errors?: IFieldFeedback[];
+  errors?: string[];
   validateStatus?: FieldValidateStatus;
   meta: IFieldMeta
 }
