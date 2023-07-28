@@ -2,9 +2,9 @@
 /* eslint-disable no-case-declarations */
 import { isStr } from "@rxdrag/shared";
 import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload, FieldActionPayload, SetFieldValuePayload, SET_FORM_INITIAL_VALUE } from "../../../actions";
-import { FieldsState, IAction, IFieldSchema } from "../../../interfaces";
+import { FieldsState, IAction, IFieldSchema } from "../../../interfaces/fieldy";
 import { fieldReduce } from "./field";
-import { DisplayType, Expression, PatternType } from "@rxdrag/fieldy-schema";
+import { DisplayType, Expression, PatternType } from "../../../interfaces";
 
 let idSeed = 1
 function makeId() {

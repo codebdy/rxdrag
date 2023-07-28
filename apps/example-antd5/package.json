@@ -12,7 +12,7 @@
     "@ant-design/icons": "^4.8.0",
     "@rxdrag/core": "workspace:*",
     "@rxdrag/fieldy-minions-materials": "workspace:*",
-    "@rxdrag/fieldy-schema": "workspace:*",
+    "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/minions-react-materials": "workspace:*",
     "@rxdrag/minions-runtime": "workspace:*",

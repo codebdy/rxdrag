@@ -25,7 +25,7 @@ import { IDataSource } from "../IDataSource"
 import { createUuid } from "@rxdrag/shared";
 import { ComponentView, useComponentSchema } from "@rxdrag/react-runner";
 import { ArrayField, ObjectField, useFieldValue } from "@rxdrag/react-fieldy";
-import { IFieldMeta } from "@rxdrag/fieldy-schema";
+import { IFieldMeta } from "@rxdrag/fieldy";
 
 interface RowProps {
   index: number,

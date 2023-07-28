@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { IFieldSchema } from "@rxdrag/fieldy"
-import { IFieldMeta } from "@rxdrag/fieldy-schema";
+import { IFieldMeta } from "@rxdrag/fieldy";
 
 const getPath = (parentPath: string, name: string) => {
   if (parentPath) {

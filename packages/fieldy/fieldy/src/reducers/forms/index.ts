@@ -1,6 +1,6 @@
 import { FormActionPlayload, REMOVE_FORM, CREATE_FORM } from "../../actions";
 import { FormsState } from "..";
-import { IAction } from "../../interfaces";
+import { IAction } from "../../interfaces/fieldy";
 import { formReduce } from "./form";
 
 export function formsReduce(state: FormsState, action: IAction<FormActionPlayload>): FormsState {

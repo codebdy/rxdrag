@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FormValue, FormState, FieldState } from "../../../interfaces";
+import { FormValue, FormState, FieldState } from "../../../interfaces/fieldy";
 
 export class FormHelper {
   constructor(private formState: FormState) { }

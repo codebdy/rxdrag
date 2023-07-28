@@ -1,4 +1,4 @@
-import { IFieldMeta } from "@rxdrag/fieldy-schema";
+import { IFieldMeta } from "@rxdrag/fieldy";
 import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
 import { INodeSchema } from "@rxdrag/schema";
 

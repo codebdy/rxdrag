@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/react-runner",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "module": "index.ts",
   "files": [
     "dist"
@@ -37,7 +37,6 @@
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/minions-runtime": "workspace:*",
-    "@rxdrag/fieldy-schema": "workspace:*",
     "@rxdrag/react-fieldy": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
     "@rxdrag/fieldy-minions-activities": "workspace:*",

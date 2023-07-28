@@ -1,5 +1,5 @@
 
-import { FormState, FormValue, IAction } from "../../../interfaces";
+import { FormState, FormValue, IAction } from "../../../interfaces/fieldy";
 import { defaultValueReduer } from "./defaultValue";
 import { fieldsReduer } from "./fields";
 import { fieldSchemasReduer } from "./fieldSchemas";

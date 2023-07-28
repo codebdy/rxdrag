@@ -8,7 +8,7 @@ import { ID } from "@rxdrag/shared"
 import { usePreviewComponent } from "./hooks"
 import { IControllerMeta, ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
 import { INodeSchema } from "@rxdrag/schema"
-import { IFieldMeta } from "@rxdrag/fieldy-schema"
+import { IFieldMeta } from "@rxdrag/fieldy"
 
 export interface IComponentRenderSchema extends INodeSchema<IFieldMeta, IControllerMeta> {
   id: ID,

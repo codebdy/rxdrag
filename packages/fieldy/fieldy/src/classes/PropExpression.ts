@@ -1,5 +1,5 @@
 import { getChildFields } from "../funcs/path";
-import { IField } from "../interfaces";
+import { IField } from "../interfaces/fieldy";
 
 export class PropExpression {
   private previousValue: unknown

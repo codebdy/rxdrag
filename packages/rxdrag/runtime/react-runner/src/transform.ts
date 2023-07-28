@@ -1,7 +1,7 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { makeRxId } from "@rxdrag/shared";
 import { IComponentRenderSchema } from "./ComponentView";
-import { IFieldMeta } from "@rxdrag/fieldy-schema";
+import { IFieldMeta } from "@rxdrag/fieldy";
 
 export function transToRenderSchema(node: INodeSchema<IFieldMeta | undefined>): IComponentRenderSchema {
   const slots: { [name: string]: IComponentRenderSchema | undefined } = {}

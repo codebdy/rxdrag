@@ -1,6 +1,6 @@
 import { INodeSchema } from "@rxdrag/schema"
 import { attachFormItem } from "./attachFormItem"
-import { IFieldMeta } from "@rxdrag/fieldy-schema"
+import { IFieldMeta } from "@rxdrag/fieldy"
 import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
 
 export type FieldOptions = {

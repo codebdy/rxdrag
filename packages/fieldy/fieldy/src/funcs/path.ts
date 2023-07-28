@@ -1,4 +1,4 @@
-import { FieldsState, FieldState } from "../interfaces";
+import { FieldsState, FieldState } from "../interfaces/fieldy";
 
 export function makePath(basePath: string, name?: string) {
   if (!name) {

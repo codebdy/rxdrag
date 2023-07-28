@@ -1,4 +1,4 @@
-import {  FieldState, FormValue, IFieldSchema } from "../interfaces"
+import {  FieldState, FormValue, IFieldSchema } from "../interfaces/fieldy"
 export interface FormActionPlayload {
   formName: string,
   [key: string]: unknown,
