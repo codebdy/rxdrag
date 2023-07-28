@@ -1,6 +1,7 @@
 import { Action } from "redux"
 import { FormActionPlayload } from "../actions"
 import { DisplayType, IFieldMeta, PatternType } from "./field"
+import { IValidator } from "./validator"
 
 export type Errors = {
   message?: string
@@ -158,6 +159,7 @@ export interface IField extends IFormNode<unknown> {
 }
 
 export interface IFieldyEngine {
+  validator: IValidator | undefined
   //getField(formName: string, path: string): IField | undefined
   //动作
   createForm(options?: IFormProps): IForm

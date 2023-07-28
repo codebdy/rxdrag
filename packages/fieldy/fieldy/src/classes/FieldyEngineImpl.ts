@@ -6,6 +6,7 @@ import { FieldChangeListener, FieldState, FieldValueChangeListener, FormChangeLi
 import { reduce, State } from "../reducers";
 import { FormImpl } from "./FormImpl";
 import { FormHelper } from "../reducers/forms/form/helpers";
+import { IValidator } from "../interfaces";
 
 let idSeed = 0
 
@@ -25,7 +26,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
     [name: string]: IForm | undefined
   } = {}
 
-  constructor(debugMode?: boolean,) {
+  constructor(public validator: IValidator | undefined, debugMode?: boolean,) {
     this.store = makeStoreInstance(debugMode || false)
   }
 
