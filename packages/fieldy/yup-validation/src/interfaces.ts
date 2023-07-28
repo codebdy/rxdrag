@@ -18,6 +18,11 @@ export type WhenType = {
   body?: FunctionStr,
 }
 
+export type TestType = {
+  message?: string,
+  test?: FunctionStr,
+}
+
 export interface YupSchema {
   nullable?: boolean,//还不知道怎么用
   nonNullable?: boolean,//还不知道怎么用
@@ -39,10 +44,7 @@ export interface YupSchema {
     deps: string | string[],
     body?: FunctionStr,
   }*/,
-  test?: {
-    message?: string,
-    test?: FunctionStr,
-  }
+  test?: TestType
 }
 
 export interface IRef {

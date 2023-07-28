@@ -27,13 +27,16 @@ export const setterLocales: ILocales = {
     matches: "正则匹配",
     excludeEmptyString: "忽略空字符串",
     customized: "自定义",
-    configRules: "配置验证规则",
-    configCode: "配置代码",
+    configRules: "配置规则",
+    code: "代码",
+    validationDep: "校验依赖",
+    configDep: "配置依赖",
     devItems: "依赖项",
     yes: "是",
     no: "否",
     regenerateCode: "重新生成代码",
-    replaceTip: "代码将被覆盖，您确定吗？"
+    replaceTip: "代码将被覆盖，您确定吗？",
+    message: "消息"
   },
   'en-US': {
     validationType: "Validation Type",
@@ -62,11 +65,14 @@ export const setterLocales: ILocales = {
     excludeEmptyString: "Exclude Empty String",
     customized: "Customized",
     configRules: "Config Rules",
-    configCode: "Config code",
+    code: "Code",
+    validationDep: "Validation Dep",
+    configDep: "Config Dep",
     devItems: "Dev Items",
     yes: "Yes",
     no: "No",
     regenerateCode: "Regenerate Code",
-    replaceTip: "Code will be replaced, are you sure?"
+    replaceTip: "Code will be replaced, are you sure?",
+    message: "Message"
   }
 }

@@ -1,11 +1,10 @@
 import { useSettersTranslate, useThemeMode } from "@rxdrag/react-core"
-import { Button, Form, Modal, Popconfirm } from "antd"
+import { Button, Form, Input, Modal, Popconfirm } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
-import { DepTable } from "./DepTable"
 import Editor from "@monaco-editor/react"
+import { TestType } from "@rxdrag/fieldy-yup-validation"
 import { SyncOutlined } from "@ant-design/icons"
-import { WhenType } from "@rxdrag/fieldy-yup-validation"
 
 const CodeConfig = styled.div`
   display: flex;
@@ -22,21 +21,21 @@ const CodeTitle = styled.div`
 `
 
 const CodeContent = styled.div`
-  height: 200px;
+  height: 260px;
   border: ${props => props.theme?.token?.colorBorder} solid 1px;
 `
 
 const codeTemplate =
-  `(#deps#, schema) => {
+  `(value, context) => {
   //add some code here
-  return schema;
+  return value==="some code";
 }
 `
 
-export const WhenInput = memo((
+export const TestInput = memo((
   props: {
-    value?: WhenType,
-    onChange?: (value?: WhenType) => void
+    value?: TestType,
+    onChange?: (value?: TestType) => void
   }
 ) => {
   const { value, onChange } = props;
@@ -64,24 +63,24 @@ export const WhenInput = memo((
   }, [value]);
 
   const handleChange = useCallback((newValue?: string) => {
-    setInputValue(value => ({ ...value, body: newValue }))
+    setInputValue(value => ({ ...value, test: newValue }))
   }, [])
 
   const handleRegenerateCode = useCallback(() => {
-    setInputValue(value => ({ ...value, body: codeTemplate.replace("#deps#", value?.deps ? "[" + value?.deps?.join(", ") + "]" : "_") }))
+    setInputValue(value => ({ ...value, test: codeTemplate }))
   }, [])
 
-  const handleDepsChange = useCallback((deps?: string[]) => {
-    setInputValue(value => ({ ...value, deps }))
+  const handleMessageChange = useCallback((e?: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setInputValue(value => ({ ...value, message: e?.target.value }))
   }, [])
 
   return (
     <>
-      <Form.Item label={t("validationDep")}>
-        <Button onClick={handleShow}>{t("configDep")}</Button>
+      <Form.Item label={t("customized")}>
+        <Button onClick={handleShow}>{t("configRules")}</Button>
       </Form.Item>
       <Modal
-        title={t("configDep")}
+        title={t("configRules")}
         open={isModalOpen}
         okText={t("confirm")}
         cancelText={t("cancel")}
@@ -90,12 +89,15 @@ export const WhenInput = memo((
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <DepTable value={inputValue?.deps} onChange={handleDepsChange} />
+        <CodeTitle>
+          {t("message")}
+        </CodeTitle>
+        <Input.TextArea value={inputValue?.message} onChange={handleMessageChange} />
         <CodeConfig>
           <CodeTitle>
             <span>{t("code")}</span>
             {
-              inputValue?.body
+              inputValue?.test
                 ? <Popconfirm
                   placement="top"
                   title={t("replaceTip")}
@@ -113,7 +115,7 @@ export const WhenInput = memo((
               height="100%"
               language="javascript"
               theme={themeMode === "dark" ? "vs-dark" : "vs-light"}
-              value={inputValue?.body || ""}
+              value={inputValue?.test || ""}
               options={{ lineNumbers: "off", glyphMargin: false }}
               onChange={handleChange}
             /></CodeContent>
