@@ -129,21 +129,21 @@ export class FieldImpl implements IField {
     //   return
     // }
     const updatedValues: { [key: string]: unknown } = {}
-    if(this.initiateExpressionChange){
+    if (this.initiateExpressionChange) {
       this.initiateExpressionChange = false;
       return
     }
-    for(const expresion of this.expressions){
-      const {value, changed} = expresion.changedValue()
-      if(changed){
+    for (const expresion of this.expressions) {
+      const { value, changed } = expresion.changedValue() || {}
+      if (changed) {
         updatedValues[expresion.propName] = value
       }
     }
-    if(Object.keys(updatedValues).length > 0){
+    if (Object.keys(updatedValues).length > 0) {
       const oldFieldState = this.fieldy.getFieldState(this.form.name, this.fieldPath)
       console.assert(oldFieldState, "FieldState is undefined!")
       this.initiateExpressionChange = true;
-      oldFieldState && this.fieldy.setFieldState(this.form.name, {...oldFieldState, ...updatedValues})
+      oldFieldState && this.fieldy.setFieldState(this.form.name, { ...oldFieldState, ...updatedValues })
     }
   }
 }

@@ -8,6 +8,7 @@ export const SET_FORM_INITIAL_VALUE = "fieldy/SET_FORM_INITIAL_VALUE"
 export const SET_FORM_DEFAULT_VALUE = "fieldy/SET_FORM_DEFAULT_VALUE"
 export const SET_FORM_VALUE = "fieldy/SET_FORM_VALUE"
 export const SET_FORM_INITIALZED_FLAG = "fieldy/SET_FORM_INITIALZED_FLAG"
+export const SET_FORM_ERRORS = "fieldy/SET_FORM_ERRORS"
 
 //Field actions
 export const SET_FIELD_INITAL_VALUE = "fieldy/SET_FIELD_INITAL_VALUE"
@@ -15,5 +16,6 @@ export const SET_FIELD_VALUE = "fieldy/SET_FIELD_VALUE"
 export const INPUT_FIELD_VALUE = "fieldy/INPUT_FIELD_VALUE"
 export const SET_FIELD_DEFAULT_VALUE = "fieldy/SET_FIELD_DEFAULT_VALUE"
 export const SET_FIELD_STATE = "fieldy/SET_FIELD_STATE"
+export const SET_FIELD_ERRORS = "fieldy/SET_FIELD_ERRORS"
 
 //export const SET_MULTI_FIELD_VALUES = "fieldy/SET_MULTI_FIELD_VALUES"

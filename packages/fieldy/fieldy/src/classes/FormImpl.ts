@@ -81,9 +81,6 @@ export class FormImpl implements IForm {
   setDefaultValue(value: FormValue | undefined): void {
     this.fieldy.setFormDefaultValue(this.name, value)
   }
-  inputValue(_value: unknown): void {
-    throw new Error("Method not implemented.");
-  }
   validate(): void {
     throw new Error("Method not implemented.");
   }

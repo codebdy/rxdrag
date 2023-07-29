@@ -122,7 +122,6 @@ export interface IFormNode<T> {
   setValue(value: T): void
   setInitialValue(value: T): void
   setDefaultValue(value: T): void
-  inputValue(value: T): void
   // mount(): void
   // unmount(): void
   validate(): void
@@ -154,7 +153,7 @@ export interface IField extends IFormNode<unknown> {
   meta?: IFieldMeta
   basePath?: string
   path: string
-
+  inputValue(value: unknown): void
   destory(): void
 }
 
