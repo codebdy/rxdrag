@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ErrorListener, FieldState, FormValue, IField, IFieldSchema, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
 import { FieldImpl } from "./FieldImpl";
+import { ValidationSubscriber } from "./ValidationSubscriber";
 
 export class FormImpl implements IForm {
   fields: {
     [key: string]: IField | undefined
   } = {}
-
+  validationSubscriber : ValidationSubscriber = new ValidationSubscriber()
+  
   constructor(public fieldy: IFieldyEngine, public name: string) { }
 
 
@@ -102,17 +104,17 @@ export class FormImpl implements IForm {
   onInput(_listener: ValueChangeListener): Unsubscribe {
     throw new Error("Method not implemented.");
   }
-  onValidateStart(_listener: Listener): Unsubscribe {
-    throw new Error("Method not implemented.");
+  onValidateStart(listener: Listener): Unsubscribe {
+    return this.validationSubscriber.onValidateStart(listener)
   }
-  onValidateEnd(_listener: Listener): Unsubscribe {
-    throw new Error("Method not implemented.");
+  onValidateEnd(listener: Listener): Unsubscribe {
+    return this.validationSubscriber.onValidateEnd(listener)
   }
-  onValidateFailed(_listener: ErrorListener): Unsubscribe {
-    throw new Error("Method not implemented.");
+  onValidateFailed(listener: ErrorListener): Unsubscribe {
+    return this.validationSubscriber.onValidateFailed(listener)
   }
-  onValidateSuccess(_listener: Listener): Unsubscribe {
-    throw new Error("Method not implemented.");
+  onValidateSuccess(listener: Listener): Unsubscribe {
+    return this.validationSubscriber.onValidateSuccess(listener)
   }
 
 }

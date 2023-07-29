@@ -1,3 +1,3 @@
 export * from "./fieldy"
-export * from "./field"
+export * from "./meta"
 export * from "./validator"

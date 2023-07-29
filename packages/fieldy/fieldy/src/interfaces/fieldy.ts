@@ -1,6 +1,6 @@
 import { Action } from "redux"
 import { FormActionPlayload } from "../actions"
-import { DisplayType, IFieldMeta, PatternType } from "./field"
+import { DisplayType, IFieldMeta, PatternType } from "./meta"
 import { IValidator } from "./validator"
 
 export type Errors = {
@@ -113,7 +113,14 @@ export interface FormValue {
   [key: string]: unknown
 }
 
-export interface IFormNode<T> {
+export interface IValidationSubscriber {
+  onValidateStart(listener: Listener): Unsubscribe
+  onValidateEnd(listener: Listener): Unsubscribe
+  onValidateFailed(listener: ErrorListener): Unsubscribe
+  onValidateSuccess(listener: Listener): Unsubscribe
+}
+
+export interface IFormNode<T> extends IValidationSubscriber {
   fieldy: IFieldyEngine
   getModified(): boolean
   getDefaultValue(): T
@@ -131,10 +138,7 @@ export interface IFormNode<T> {
   onUnmount(listener: Listener): Unsubscribe
   onValueChange(listener: ValueChangeListener): Unsubscribe
   onInitialValueChange(): Unsubscribe
-  onValidateStart(listener: Listener): Unsubscribe
-  onValidateEnd(listener: Listener): Unsubscribe
-  onValidateFailed(listener: ErrorListener): Unsubscribe
-  onValidateSuccess(listener: Listener): Unsubscribe
+
 }
 
 export interface IForm extends IFormNode<FormValue | undefined> {

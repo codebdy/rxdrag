@@ -2,12 +2,15 @@
 import { isStr } from "@rxdrag/shared";
 import { ErrorListener, FormState, IField, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
 import { PropExpression } from "./PropExpression";
+import { ValidationSubscriber } from "./ValidationSubscriber";
 
 export class FieldImpl implements IField {
   refCount = 1;
   expressions: PropExpression[] = []
   //发起变化标号，防止无限递归
   initiateExpressionChange = false;
+  validationSubscriber : ValidationSubscriber = new ValidationSubscriber()
+
   constructor(public fieldy: IFieldyEngine, public form: IForm, private fieldPath: string) {
     if (this.meta?.reactionMeta) {
       this.makeExpressions();
@@ -87,19 +90,19 @@ export class FieldImpl implements IField {
     throw new Error("Method not implemented.");
   }
 
-  onValidateStart(_listener: Listener): Unsubscribe {
-    throw new Error("Method not implemented.");
+  onValidateStart(listener: Listener): Unsubscribe {
+    return this.validationSubscriber.onValidateStart(listener)
   }
-  onValidateEnd(_listener: Listener): Unsubscribe {
-    throw new Error("Method not implemented.");
+  onValidateEnd(listener: Listener): Unsubscribe {
+    return this.validationSubscriber.onValidateEnd(listener)
   }
-  onValidateFailed(_listener: ErrorListener): Unsubscribe {
-    throw new Error("Method not implemented.");
+  onValidateFailed(listener: ErrorListener): Unsubscribe {
+    return this.validationSubscriber.onValidateFailed(listener)
   }
-  onValidateSuccess(_listener: Listener): Unsubscribe {
-    throw new Error("Method not implemented.");
+  onValidateSuccess(listener: Listener): Unsubscribe {
+    return this.validationSubscriber.onValidateSuccess(listener)
   }
-
+  
   private makeExpressions() {
     if (this.meta?.reactionMeta) {
       for (const key of Object.keys(this.meta.reactionMeta)) {
