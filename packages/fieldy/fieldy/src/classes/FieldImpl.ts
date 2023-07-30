@@ -4,6 +4,11 @@ import { ErrorListener, FormState, IField, IFieldSchema, IFieldyEngine, IForm, L
 import { PropExpression } from "./PropExpression";
 import { ValidationSubscriber } from "./ValidationSubscriber";
 import { IValidationError } from "../interfaces";
+import { IFieldFeedback } from "../actions";
+
+export function transformErrorsToFeedbacks(errors: IValidationError[], schemas: IFieldSchema<unknown>[]): IFieldFeedback[] {
+  return []
+}
 
 export class FieldImpl implements IField {
   refCount = 1;
@@ -86,13 +91,18 @@ export class FieldImpl implements IField {
   validate(): void {
     if (this.fieldy.validator) {
       this.validationSubscriber.emitStart()
-      this.fieldy.validator.validateField(this.getValue(), this.getFieldSchema(), this.getSubFieldSchemas()).then((value: unknown) => {
+      const fieldSchema = this.getFieldSchema()
+      const subFields = this.getSubFieldSchemas()
+      this.fieldy.validator.validateField(this.getValue(), fieldSchema, subFields).then((value: unknown) => {
         this.validationSubscriber.emitSuccess(value)
       }).catch((errors: IValidationError[]) => {
+        this.fieldy.setValidationFeedbacks(this.form.name, transformErrorsToFeedbacks(errors, [fieldSchema, ...subFields || []]))
         this.validationSubscriber.emitFailed(errors)
       }).finally(() => {
         this.validationSubscriber.emitEnd()
       })
+    } else {
+      console.error("Not set validator")
     }
   }
 

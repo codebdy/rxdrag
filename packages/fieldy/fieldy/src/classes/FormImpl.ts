@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { IValidationError } from "../interfaces";
 import { ErrorListener, FieldState, FormValue, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SucessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
-import { FieldImpl } from "./FieldImpl";
+import { FieldImpl, transformErrorsToFeedbacks } from "./FieldImpl";
 import { ValidationSubscriber } from "./ValidationSubscriber";
 
 export class FormImpl implements IForm {
@@ -87,13 +87,17 @@ export class FormImpl implements IForm {
   validate(): void {
     if (this.fieldy.validator) {
       this.validationSubscriber.emitStart()
-      this.fieldy.validator.validateForm(this.getValue(), this.fieldy.getFormState(this.name)?.fieldSchemas || []).then((value: unknown) => {
+      const fieldsSchemas = this.fieldy.getFormState(this.name)?.fieldSchemas || []
+      this.fieldy.validator.validateForm(this.getValue(), fieldsSchemas).then((value: unknown) => {
         this.validationSubscriber.emitSuccess(value)
       }).catch((errors: IValidationError[]) => {
+        this.fieldy.setValidationFeedbacks(this.name, transformErrorsToFeedbacks(errors, fieldsSchemas))
         this.validationSubscriber.emitFailed(errors)
       }).finally(() => {
         this.validationSubscriber.emitEnd()
       })
+    } else {
+      console.error("Not set validator")
     }
   }
   onInit(_listener: Listener): Unsubscribe {

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-case-declarations */
 import { isStr } from "@rxdrag/shared";
-import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload, FieldActionPayload, SetFieldValuePayload, SET_FORM_INITIAL_VALUE } from "../../../actions";
+import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload, FieldActionPayload, SetFieldValuePayload, SET_FORM_INITIAL_VALUE, SET_FORM_FIELDS_FEEDBACKS, SetFormFeedbacksPayload } from "../../../actions";
 import { FieldsState, IAction, IFieldSchema } from "../../../interfaces/fieldy";
 import { fieldReduce } from "./field";
 import { DisplayType, Expression, PatternType } from "../../../interfaces";
@@ -36,6 +36,23 @@ export function fieldsReduer(state: FieldsState, action: IAction<unknown>): Fiel
       if (field) {
         return { ...state, [setFieldValuePayload.path]: { ...field, initialized: true } }
       }
+      return state;
+    case SET_FORM_FIELDS_FEEDBACKS:
+      const feedbacksPayload = action.payload as SetFormFeedbacksPayload
+      if (feedbacksPayload.feedbacks.length > 0) {
+        const newState = { ...state }
+        for (const feedback of feedbacksPayload.feedbacks) {
+          const path = feedback.path
+          const oldField = state[path]
+          if (oldField) {
+            newState[path] = { ...oldField, errors: feedback.type === "error" ? feedback.messages : undefined }
+          } else {
+            console.error("No field on path:", path)
+          }
+        }
+        return newState
+      }
+
       return state;
   }
 

@@ -1,5 +1,5 @@
 import { Action } from "redux"
-import { FormActionPlayload } from "../actions"
+import { FormActionPlayload, IFieldFeedback } from "../actions"
 import { DisplayType, IFieldMeta, PatternType } from "./meta"
 import { IValidationError, IValidator } from "./validator"
 
@@ -38,20 +38,6 @@ export interface IFieldSchema<ValidateRules = unknown> extends IFieldMeta<Valida
 export interface IAction<Payload> extends Action<string> {
   payload?: Payload
 }
-
-// export type FieldValidateStatus = 'error' | 'warning' | 'success' | 'validating'
-// export interface IFieldFeedback {
-//   path?: string
-//   name?: string
-//   triggerType?: 'onInput' | 'onFocus' | 'onBlur' //Verify the trigger type
-//   type?: 'error' | 'success' | 'warning' //feedback type
-//   code?: //Feedback code
-//   | 'ValidateError'
-//   | 'ValidateSuccess'
-//   | 'ValidateWarning'
-
-//   messages?: string[] //Feedback message
-// }
 
 export type FieldChangeListener = (field: FieldState | undefined) => void
 export type FieldValueChangeListener = (value: unknown, previousValue: unknown) => void
@@ -178,6 +164,7 @@ export interface IFieldyEngine {
   //setFormFlatValue(name: string, flatValues: FormValue): void
   addFields(name: string, ...fieldSchemas: IFieldSchema[]): void
   removeFields(formName: string, ...fieldPaths: string[]): void
+  setValidationFeedbacks(name: string, feedbacks: IFieldFeedback[]): void
 
   //field动作
   setFieldInitialValue(formName: string, fieldPath: string, value: unknown): void

@@ -1,5 +1,11 @@
-import { IValidationError } from "../interfaces"
 import {  FieldState, FormValue, IFieldSchema } from "../interfaces/fieldy"
+
+export interface IFieldFeedback {
+  path: string
+  type: 'error' | 'success'  //feedback type
+  messages?: string[] //Feedback message
+}
+
 export interface FormActionPlayload {
   formName: string,
   [key: string]: unknown,
@@ -21,8 +27,8 @@ export interface SetFormValuePayload extends FormActionPlayload {
   value: FormValue
 }
 
-export interface SetFormErrorsPayload  extends FormActionPlayload {
-  errors: IValidationError[]
+export interface SetFormFeedbacksPayload  extends FormActionPlayload {
+  feedbacks: IFieldFeedback[]
 }
 
 export interface SetFormInitializedFlagPayload extends FormActionPlayload {
@@ -37,7 +43,7 @@ export interface SetFieldStatePayload extends FieldActionPayload {
   fieldState: FieldState
 }
 
-export interface SetFeildErrorsPayload  extends FieldActionPayload {
-  errors: IValidationError[]
-}
+// export interface SetFeildErrorsPayload  extends FieldActionPayload {
+//   errors: IValidationError[]
+// }
 
