@@ -168,7 +168,7 @@
                     {
                       "componentName": "Button",
                       "props": {
-                        "title": "Button",
+                        "title": "提交",
                         "type": "primary"
                       },
                       "slots": {},

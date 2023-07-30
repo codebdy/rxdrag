@@ -4,6 +4,7 @@ import { FieldDesigner } from "./designer";
 import { fieldLocales } from "./locales";
 import { fieldSchema } from "./schema";
 
+// Field功能预计删除
 const name = "Field"
 export const FieldMaterial: IComponentMaterial = {
   componentName: name,

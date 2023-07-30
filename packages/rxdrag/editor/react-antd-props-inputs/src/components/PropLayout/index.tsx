@@ -21,9 +21,13 @@ export const PropLayout = memo((
 
   return (
     <Container className="prop-layout">
-      <Form.Item label={label} className="prop-form-item" style={{ flex: 1 }}>
-        {children}
-      </Form.Item>
+      {
+        label
+          ? <Form.Item label={label} className="prop-form-item" style={{ flex: 1 }}>
+            {children}
+          </Form.Item>
+          : children
+      }
       <Expression className="prop-expression">
         {expressionSetter}
       </Expression>
