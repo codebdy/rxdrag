@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ErrorListener, FieldState, FormValue, IField, IFieldSchema, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
+import { IValidationError } from "../interfaces";
+import { ErrorListener, FieldState, FormValue, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SucessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
 import { FieldImpl } from "./FieldImpl";
 import { ValidationSubscriber } from "./ValidationSubscriber";
 
@@ -7,13 +8,13 @@ export class FormImpl implements IForm {
   fields: {
     [key: string]: IField | undefined
   } = {}
-  validationSubscriber : ValidationSubscriber = new ValidationSubscriber()
-  
+  validationSubscriber: ValidationSubscriber = new ValidationSubscriber()
+
   constructor(public fieldy: IFieldyEngine, public name: string) { }
 
 
   getModified(): boolean {
-     return this.fieldy.getFormState(this.name)?.modified||false
+    return this.fieldy.getFormState(this.name)?.modified || false
   }
 
   unmount(): void {
@@ -27,7 +28,7 @@ export class FormImpl implements IForm {
   getDefaultValue(): FormValue | undefined {
     return this.fieldy.getFormDefaultValue(this.name)
   }
-  getInitialValue(){
+  getInitialValue() {
     return this.fieldy.getFormInitialValue(this.name)
   }
 
@@ -51,7 +52,7 @@ export class FormImpl implements IForm {
     } else {
       if (fieldSchema.name) {
         //这段代码可能需要重构未：如果已经存在Field定义，则合并
-        if(!this.fieldy.getFieldState(this.name, fieldSchema.path)){
+        if (!this.fieldy.getFieldState(this.name, fieldSchema.path)) {
           this.fieldy.addFields(this.name, fieldSchema)
         }
         const field = new FieldImpl(this.fieldy, this, fieldSchema.path)
@@ -74,17 +75,26 @@ export class FormImpl implements IForm {
     }
   }
 
-  setValue(value: FormValue|undefined): void {
+  setValue(value: FormValue | undefined): void {
     this.fieldy.setFormValue(this.name, value)
   }
-  setInitialValue(value: FormValue|undefined): void {
+  setInitialValue(value: FormValue | undefined): void {
     this.fieldy.setFormInitialValue(this.name, value)
   }
   setDefaultValue(value: FormValue | undefined): void {
     this.fieldy.setFormDefaultValue(this.name, value)
   }
   validate(): void {
-    throw new Error("Method not implemented.");
+    if (this.fieldy.validator) {
+      this.validationSubscriber.emitStart()
+      this.fieldy.validator.validateForm(this.getValue(), this.fieldy.getFormState(this.name)?.fieldSchemas || []).then((value: unknown) => {
+        this.validationSubscriber.emitSuccess(value)
+      }).catch((errors: IValidationError[]) => {
+        this.validationSubscriber.emitFailed(errors)
+      }).finally(() => {
+        this.validationSubscriber.emitEnd()
+      })
+    }
   }
   onInit(_listener: Listener): Unsubscribe {
     throw new Error("Method not implemented.");
@@ -113,7 +123,7 @@ export class FormImpl implements IForm {
   onValidateFailed(listener: ErrorListener): Unsubscribe {
     return this.validationSubscriber.onValidateFailed(listener)
   }
-  onValidateSuccess(listener: Listener): Unsubscribe {
+  onValidateSuccess(listener: SucessListener): Unsubscribe {
     return this.validationSubscriber.onValidateSuccess(listener)
   }
 

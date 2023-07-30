@@ -1,7 +1,7 @@
 import { Action } from "redux"
 import { FormActionPlayload } from "../actions"
 import { DisplayType, IFieldMeta, PatternType } from "./meta"
-import { IValidator } from "./validator"
+import { IValidationError, IValidator } from "./validator"
 
 export type Errors = {
   message?: string
@@ -10,7 +10,8 @@ export type Errors = {
 export type Listener = () => void
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ValueChangeListener = (value: any) => void
-export type ErrorListener = (errors: Errors) => void
+export type ErrorListener = (errors: IValidationError[]) => void
+export type SucessListener = (value: unknown) => void
 export type Unsubscribe = () => void
 
 export interface IFormProps {
@@ -38,19 +39,19 @@ export interface IAction<Payload> extends Action<string> {
   payload?: Payload
 }
 
-export type FieldValidateStatus = 'error' | 'warning' | 'success' | 'validating'
-export interface IFieldFeedback {
-  path?: string
-  name?: string
-  triggerType?: 'onInput' | 'onFocus' | 'onBlur' //Verify the trigger type
-  type?: 'error' | 'success' | 'warning' //feedback type
-  code?: //Feedback code
-  | 'ValidateError'
-  | 'ValidateSuccess'
-  | 'ValidateWarning'
+// export type FieldValidateStatus = 'error' | 'warning' | 'success' | 'validating'
+// export interface IFieldFeedback {
+//   path?: string
+//   name?: string
+//   triggerType?: 'onInput' | 'onFocus' | 'onBlur' //Verify the trigger type
+//   type?: 'error' | 'success' | 'warning' //feedback type
+//   code?: //Feedback code
+//   | 'ValidateError'
+//   | 'ValidateSuccess'
+//   | 'ValidateWarning'
 
-  messages?: string[] //Feedback message
-}
+//   messages?: string[] //Feedback message
+// }
 
 export type FieldChangeListener = (field: FieldState | undefined) => void
 export type FieldValueChangeListener = (value: unknown, previousValue: unknown) => void
@@ -82,7 +83,7 @@ export type FieldState = {
   //defaultValue?: unknown;
   //initialValue?: unknown;
   errors?: string[];
-  validateStatus?: FieldValidateStatus;
+  //validateStatus?: FieldValidateStatus;
   meta: IFieldMeta
 }
 
@@ -117,7 +118,7 @@ export interface IValidationSubscriber {
   onValidateStart(listener: Listener): Unsubscribe
   onValidateEnd(listener: Listener): Unsubscribe
   onValidateFailed(listener: ErrorListener): Unsubscribe
-  onValidateSuccess(listener: Listener): Unsubscribe
+  onValidateSuccess(listener: SucessListener): Unsubscribe
 }
 
 export interface IFormNode<T> extends IValidationSubscriber {
@@ -158,6 +159,8 @@ export interface IField extends IFormNode<unknown> {
   basePath?: string
   path: string
   inputValue(value: unknown): void
+  getFieldSchema(): IFieldSchema
+  getSubFieldSchemas(): IFieldSchema[] | undefined
   destory(): void
 }
 

@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { isStr } from "@rxdrag/shared";
-import { ErrorListener, FormState, IField, IFieldyEngine, IForm, Listener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
+import { ErrorListener, FormState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SucessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
 import { PropExpression } from "./PropExpression";
 import { ValidationSubscriber } from "./ValidationSubscriber";
+import { IValidationError } from "../interfaces";
 
 export class FieldImpl implements IField {
   refCount = 1;
   expressions: PropExpression[] = []
   //发起变化标号，防止无限递归
   initiateExpressionChange = false;
-  validationSubscriber : ValidationSubscriber = new ValidationSubscriber()
+  validationSubscriber: ValidationSubscriber = new ValidationSubscriber()
 
   constructor(public fieldy: IFieldyEngine, public form: IForm, private fieldPath: string) {
     if (this.meta?.reactionMeta) {
@@ -19,6 +20,21 @@ export class FieldImpl implements IField {
       form.fieldy.subscribeToFormChange(form.name, this.handleFieldReaction)
     }
   }
+
+  getSubFieldSchemas(): IFieldSchema<unknown>[] | undefined {
+    if (this.meta?.type === "object" || this.meta?.type === "array") {
+      return this.form.fieldy.getFormState(this.form.name)?.fieldSchemas?.filter(schema => {
+        return schema.path !== this.path && schema.path.startsWith(this.path)
+      })
+    }
+
+    return undefined
+  }
+
+  getFieldSchema(): IFieldSchema<unknown> {
+    return this.fieldy.getFormState(this.form.name)?.fieldSchemas.find(schema => schema.path === this.path) || { path: this.path, ...this.meta }
+  }
+
   getModified(): boolean {
     throw this.fieldy.getFieldState(this.form.name, this.fieldPath)?.modified;
   }
@@ -68,7 +84,16 @@ export class FieldImpl implements IField {
   }
 
   validate(): void {
-    throw new Error("Method not implemented.");
+    if (this.fieldy.validator) {
+      this.validationSubscriber.emitStart()
+      this.fieldy.validator.validateField(this.getValue(), this.getFieldSchema(), this.getSubFieldSchemas()).then((value: unknown) => {
+        this.validationSubscriber.emitSuccess(value)
+      }).catch((errors: IValidationError[]) => {
+        this.validationSubscriber.emitFailed(errors)
+      }).finally(() => {
+        this.validationSubscriber.emitEnd()
+      })
+    }
   }
 
   onInit(_listener: Listener): Unsubscribe {
@@ -99,10 +124,10 @@ export class FieldImpl implements IField {
   onValidateFailed(listener: ErrorListener): Unsubscribe {
     return this.validationSubscriber.onValidateFailed(listener)
   }
-  onValidateSuccess(listener: Listener): Unsubscribe {
+  onValidateSuccess(listener: SucessListener): Unsubscribe {
     return this.validationSubscriber.onValidateSuccess(listener)
   }
-  
+
   private makeExpressions() {
     if (this.meta?.reactionMeta) {
       for (const key of Object.keys(this.meta.reactionMeta)) {
