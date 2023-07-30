@@ -9,6 +9,7 @@ import test from "./test.json"
 import mole from "./mole.json"
 import script from "./script.json"
 import customizedLoop from "./customized-loop.json"
+import fromValidation from "./form-validation.json"
 
 export const pages = {
   "dashboard": dashboard,
@@ -18,9 +19,10 @@ export const pages = {
   "test": test,
   "mole": mole,
   "script": script,
-  "customizedLoop":customizedLoop,
+  "customizedLoop": customizedLoop,
 
   "basic-form": basicForm,
+  "form-validation": fromValidation,
   "step-form": stepForm,
   "advance-form": advanceForm,
 }
