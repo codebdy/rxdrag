@@ -182,13 +182,30 @@
                       "slots": {},
                       "children": [
                         {
-                          "componentName": "Button",
-                          "props": {
-                            "title": "提交",
-                            "type": "primary"
-                          },
+                          "componentName": "Space",
+                          "props": {},
+                          "selfRender": true,
                           "slots": {},
-                          "children": []
+                          "children": [
+                            {
+                              "componentName": "Button",
+                              "props": {
+                                "type": "default",
+                                "title": "取消"
+                              },
+                              "slots": {},
+                              "children": []
+                            },
+                            {
+                              "componentName": "Button",
+                              "props": {
+                                "type": "primary",
+                                "title": "提交"
+                              },
+                              "slots": {},
+                              "children": []
+                            }
+                          ]
                         }
                       ]
                     }
