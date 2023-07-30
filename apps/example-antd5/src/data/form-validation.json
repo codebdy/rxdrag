@@ -191,7 +191,7 @@
                               "componentName": "Button",
                               "props": {
                                 "type": "default",
-                                "title": "取消"
+                                "title": "重置"
                               },
                               "slots": {},
                               "children": []
