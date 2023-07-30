@@ -97,9 +97,7 @@ const options: SchemaOptions = {
       label: "$summary",
     },
   ],
-  fieldOptions: {
-    canBindField: false,
-  },
+  canBindField: false,
   events: [
     {
       name: "onPageChange",

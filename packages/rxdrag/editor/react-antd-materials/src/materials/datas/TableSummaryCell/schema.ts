@@ -53,9 +53,7 @@ const options: SchemaOptions = {
       label: "$footer",
     },
   ],
-  fieldOptions: {
-    canBindField: true,
-  }
+  canBindField: true,
 }
 
 export const materialSchema: INodeSchema = createSchema(options)

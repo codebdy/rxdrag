@@ -127,7 +127,11 @@
                     "layout": "horizontal",
                     "disabled": false,
                     "style": {},
-                    "labelAlign": "right"
+                    "labelAlign": "right",
+                    "labelCol": {
+                      "span": 6
+                    },
+                    "colon": true
                   },
                   "slots": {},
                   "children": [
@@ -166,13 +170,27 @@
                       ]
                     },
                     {
-                      "componentName": "Button",
+                      "componentName": "FormItem",
                       "props": {
-                        "title": "提交",
-                        "type": "primary"
+                        "label": "",
+                        "labelCol": {},
+                        "wrapperCol": {
+                          "offset": 6
+                        }
                       },
+                      "locked": false,
                       "slots": {},
-                      "children": []
+                      "children": [
+                        {
+                          "componentName": "Button",
+                          "props": {
+                            "title": "提交",
+                            "type": "primary"
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
                     }
                   ]
                 }

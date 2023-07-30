@@ -3,10 +3,6 @@ import { attachFormItem } from "./attachFormItem"
 import { IFieldMeta } from "@rxdrag/fieldy"
 import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
 
-export type FieldOptions = {
-  canBindField?: boolean,
-}
-
 export interface IExpressionField {
   label: string,
   name: string,
