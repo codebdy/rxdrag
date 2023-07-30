@@ -126,7 +126,8 @@
                   "props": {
                     "layout": "horizontal",
                     "disabled": false,
-                    "style": {}
+                    "style": {},
+                    "labelAlign": "right"
                   },
                   "slots": {},
                   "children": [
@@ -146,81 +147,34 @@
                           "children": []
                         }
                       ]
+                    },
+                    {
+                      "componentName": "FormItem",
+                      "props": {
+                        "label": "FormItem"
+                      },
+                      "slots": {},
+                      "children": [
+                        {
+                          "componentName": "Input",
+                          "props": {
+                            "placeholder": "输入框"
+                          },
+                          "slots": {},
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "componentName": "Button",
+                      "props": {
+                        "title": "Button",
+                        "type": "primary"
+                      },
+                      "slots": {},
+                      "children": []
                     }
                   ]
-                },
-                {
-                  "componentName": "Input",
-                  "props": {
-                    "placeholder": "输入框"
-                  },
-                  "slots": {
-                    "addonBefore": {
-                      "componentName": "DefaultSlot",
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "Text",
-                          "props": {
-                            "value": "http",
-                            "style": {}
-                          },
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
-                    },
-                    "addonAfter": {
-                      "componentName": "DefaultSlot",
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "IconView",
-                          "props": {
-                            "icon": {
-                              "iconKey": "DollarCircleOutlined"
-                            },
-                            "style": {}
-                          },
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
-                    },
-                    "prefix": {
-                      "componentName": "DefaultSlot",
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "Text",
-                          "props": {
-                            "value": "$",
-                            "style": {}
-                          },
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
-                    },
-                    "suffix": {
-                      "componentName": "DefaultSlot",
-                      "slots": {},
-                      "children": [
-                        {
-                          "componentName": "IconView",
-                          "props": {
-                            "icon": {
-                              "iconKey": "RocketOutlined"
-                            },
-                            "style": {}
-                          },
-                          "slots": {},
-                          "children": []
-                        }
-                      ]
-                    }
-                  },
-                  "children": []
                 }
               ]
             }
