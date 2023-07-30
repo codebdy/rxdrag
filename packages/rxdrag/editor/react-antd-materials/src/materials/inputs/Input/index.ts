@@ -1,4 +1,4 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IComponentMaterial, switchRef } from "@rxdrag/react-core";
 import { Input } from "antd";
 import { inputIcon } from "./icon";
 import { inputLocales, inputResourceLocales } from "./locales";
@@ -9,7 +9,10 @@ export * from "./textarea"
 export const InputMaterial: IComponentMaterial = {
   componentName: "Input",
   component: Input,
-  designer: Input,
+  designer: switchRef(Input, (element?: unknown) => {
+    const inputElement = (element as { input: HTMLElement | null })?.input
+    return inputElement?.parentElement?.parentElement
+  }),
   designerLocales: inputLocales,
   propsSchema: inputSchema,
   designerProps: {
