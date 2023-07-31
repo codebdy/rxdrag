@@ -35,6 +35,7 @@
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/shared": "workspace:*",
+    "@rxdrag/fieldy-yup-validation": "workspace:*",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "lodash": "^4.17.21",

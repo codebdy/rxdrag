@@ -16,7 +16,9 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "build": "vite build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@rxdrag/fieldy": "workspace:*"
+  },
   "devDependencies": {
     "@rxdrag/tsconfig": "workspace:*",
     "vite": "^4.2.0",

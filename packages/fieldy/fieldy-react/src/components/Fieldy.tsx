@@ -2,6 +2,7 @@ import React from "react"
 import { FieldyEngineImpl, IValidator } from "@rxdrag/fieldy"
 import { useMemo } from "react"
 import { FieldyContext } from "../contexts"
+import { YupValidator } from "@rxdrag/fieldy-yup-validation"
 
 export const Fieldy = (props: {
   validator?: IValidator,
@@ -9,7 +10,8 @@ export const Fieldy = (props: {
 }) => {
   const { validator, children } = props
   const fieldy = useMemo(() => {
-    return new FieldyEngineImpl(validator, false)
+    //如果没有传入validator，则创建一个默认的YupValidator
+    return new FieldyEngineImpl(validator || new YupValidator(), false)
   }, [validator])
 
   return fieldy && <FieldyContext.Provider value={fieldy}>

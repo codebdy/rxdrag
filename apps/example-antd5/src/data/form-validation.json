@@ -202,6 +202,77 @@
                                 "type": "primary",
                                 "title": "提交"
                               },
+                              "x-controller": {
+                                "id": "b365df2e-5cea-46c5-b843-fc2866a8df79",
+                                "controllerType": "logicFlow",
+                                "events": [
+                                  {
+                                    "id": "a167f185-7ab3-4197-b298-04743f187e8b",
+                                    "name": "onClick",
+                                    "label": "点击",
+                                    "nodes": [
+                                      {
+                                        "id": "dea93baa-06a4-4969-95a2-ecd9f603fc9a",
+                                        "label": "输入",
+                                        "type": "Start",
+                                        "activityName": "start",
+                                        "inPorts": [],
+                                        "outPorts": [],
+                                        "x6Node": {
+                                          "x": 150,
+                                          "y": 140,
+                                          "width": 20,
+                                          "height": 20
+                                        }
+                                      },
+                                      {
+                                        "id": "dc5aaf98-333f-4619-9c47-15fc4301ef9d",
+                                        "label": "校验表单",
+                                        "type": "Activity",
+                                        "activityName": "fieldy.validateFormValue",
+                                        "inPorts": [
+                                          {
+                                            "id": "9cae36b7-55fe-4bdf-afa9-7d3ffcfad27b",
+                                            "name": "input",
+                                            "label": ""
+                                          }
+                                        ],
+                                        "outPorts": [
+                                          {
+                                            "id": "99e65801-8191-46c6-a9fd-1013e1f201bd",
+                                            "name": "success",
+                                            "label": "成功"
+                                          },
+                                          {
+                                            "id": "e5b50e59-5b32-4d1e-8a23-dac41972d6f4",
+                                            "name": "failure",
+                                            "label": "失败"
+                                          }
+                                        ],
+                                        "x6Node": {
+                                          "x": 290,
+                                          "y": 180,
+                                          "width": 116,
+                                          "height": 32
+                                        }
+                                      }
+                                    ],
+                                    "lines": [
+                                      {
+                                        "id": "24a57330-671d-4fae-8cdb-06d58f9a8455",
+                                        "source": {
+                                          "nodeId": "dea93baa-06a4-4969-95a2-ecd9f603fc9a"
+                                        },
+                                        "target": {
+                                          "nodeId": "dc5aaf98-333f-4619-9c47-15fc4301ef9d",
+                                          "portId": "9cae36b7-55fe-4bdf-afa9-7d3ffcfad27b"
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "name": "按钮"
+                              },
                               "slots": {},
                               "children": []
                             }
