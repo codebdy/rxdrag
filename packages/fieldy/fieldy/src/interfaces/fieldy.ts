@@ -119,6 +119,7 @@ export interface IFormNode<T> extends IValidationSubscriber {
   // mount(): void
   // unmount(): void
   validate(): void
+  reset(): void
 
   onInit(listener: Listener): Unsubscribe
   onMount(listener: Listener): Unsubscribe

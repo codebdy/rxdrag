@@ -1,15 +1,29 @@
 export const labelSchema = {
-  componentName: "Input",
-  "x-field": {
-    name: "label",
+  componentName: "FormItem",
+  props:{
     label: "$label",
   },
+  "x-field": {
+    name: "label",
+  },
+  children: [
+    {
+      componentName: "Input",
+    }
+  ]
 }
 
 export const nameSchema = {
-  componentName: "Input",
-  "x-field": {
-    name: "name",
+  componentName: "FormItem",
+  props:{
     label: "$name",
   },
+  "x-field": {
+    name: "name",
+  },
+  children: [
+    {
+      componentName: "Input",
+    }
+  ]
 }

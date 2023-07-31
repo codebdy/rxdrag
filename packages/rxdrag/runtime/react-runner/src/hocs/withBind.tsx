@@ -7,7 +7,7 @@ import { IFieldMeta } from "@rxdrag/fieldy"
 export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMeta): ReactComponent {
 
   //数组跟对象类型不需要绑定
-  if (fieldMeta?.type === "object" || fieldMeta?.type === "array") {
+  if (fieldMeta?.type === "object" || fieldMeta?.type === "array" || !fieldMeta) {
     return WrappedComponent
   }
 

@@ -11,7 +11,8 @@ export class ResetFormActivity extends AbstractActivity<unknown, IFieldyLogicFlo
   }
 
   @Input()
-  inputHandler(): void {
-    this.next(this.context?.form?.getValue())
+  inputHandler(inputValue: unknown): void {
+    this.context?.form?.reset()
+    this.next(inputValue)
   }
 }

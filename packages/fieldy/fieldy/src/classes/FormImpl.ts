@@ -11,6 +11,10 @@ export class FormImpl implements IForm {
   validationSubscriber: ValidationSubscriber = new ValidationSubscriber()
 
   constructor(public fieldy: IFieldyEngine, public name: string) { }
+  
+  reset(): void {
+    throw new Error("Method not implemented.");
+  }
 
 
   getModified(): boolean {
