@@ -138,7 +138,11 @@
                     {
                       "componentName": "FormItem",
                       "props": {
-                        "label": "FormItem"
+                        "label": "年龄"
+                      },
+                      "x-field": {
+                        "type": "normal",
+                        "name": "age"
                       },
                       "slots": {},
                       "children": [
@@ -155,7 +159,11 @@
                     {
                       "componentName": "FormItem",
                       "props": {
-                        "label": "FormItem"
+                        "label": "姓名"
+                      },
+                      "x-field": {
+                        "type": "normal",
+                        "name": "name"
                       },
                       "slots": {},
                       "children": [
