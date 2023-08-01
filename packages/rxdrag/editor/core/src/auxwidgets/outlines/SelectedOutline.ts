@@ -3,7 +3,7 @@ import { IPlugin } from "../../interfaces/plugin";
 import { DraggingNodesState } from "../../reducers/draggingNodes";
 import { DraggingResourceState } from "../../reducers/draggingResource";
 import { CanvasScrollEvent } from "../../shell/events";
-import { AUX_BACKGROUND_COLOR } from "../consts";
+import { AUX_BACKGROUND_COLOR } from "../constants";
 import { numbToPx } from "../utils/numbToPx";
 import { getMaxZIndex } from "./getMaxZIndex";
 
@@ -15,7 +15,7 @@ export class SelectedOutlineImpl implements IPlugin {
     [id in ID]: HTMLElement
   } = {}
   private nodeChangeUnsubscribe: Unsubscribe;
-  private selecteNodes: ID[] | null = null
+  private selectedNodes: ID[] | null = null
   private refreshedFlag = false
   private unCanvasScroll: Unsubscribe
   private draggingNodesOff: Unsubscribe
@@ -43,7 +43,7 @@ export class SelectedOutlineImpl implements IPlugin {
 
   render = () => {
     this.clear()
-    for (const id of this.selecteNodes || []) {
+    for (const id of this.selectedNodes || []) {
       const element = this.engine.getShell().getElement(id)
       const canvas = this.engine.getShell().getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
       const containerRect = canvas?.getContainerRect()
@@ -69,7 +69,7 @@ export class SelectedOutlineImpl implements IPlugin {
 
   handleSelectChange = (selectedIds: ID[] | null) => {
     this.resizeObserver.disconnect()
-    this.selecteNodes = selectedIds
+    this.selectedNodes = selectedIds
     this.refresh()
     if (selectedIds?.length && !this.engine.getShell().getElement(selectedIds?.[0])) {
       setTimeout(() => {
@@ -112,7 +112,7 @@ export class SelectedOutlineImpl implements IPlugin {
     }, 20)
   }
 
-  destory(): void {
+  destroy(): void {
     this.clear()
     this.unsubscribe()
     this.nodeChangeUnsubscribe()

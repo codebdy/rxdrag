@@ -20,7 +20,7 @@ export class PostData extends AbstractActivity<IPostConfig> {
     GlobalRestful?.save({ ...this.config, url: this.config?.rootUrl, data }, {
       onData: this.complateHandler,
       onError: this.errorHandler,
-      onLoading: this.loadinghandler,
+      onLoading: this.loadingHandler,
     })
   }
 
@@ -32,11 +32,11 @@ export class PostData extends AbstractActivity<IPostConfig> {
     this.next(error, PostData.OUTPUT_NAME_ERROR)
   }
 
-  loadinghandler = (loading?: boolean) => {
+  loadingHandler = (loading?: boolean) => {
     this.next(loading, PostData.OUTPUT_NAME_POSTING)
   }
 
-  destory = () => {
-    this.querySession?.destory()
+  destroy = () => {
+    this.querySession?.destroy()
   }
 }

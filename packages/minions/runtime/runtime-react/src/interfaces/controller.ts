@@ -33,10 +33,10 @@ export interface IController extends IVariableController, IPropController {
 
   events: EventFuncs,
   initEvent?: EventFunc,
-  destoryEvent?: EventFunc,
+  destroyEvent?: EventFunc,
   subscribeToPropsChange(listener: PropsListener): UnListener
 
-  destory(): void,
+  destroy(): void,
 }
 
 export type Controllers = {

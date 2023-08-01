@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { MIN_ZOOM } from "./consts";
+import { MIN_ZOOM } from "./constants";
 import { useZoom } from "./useZoom";
 
 export function useZoomOut() {

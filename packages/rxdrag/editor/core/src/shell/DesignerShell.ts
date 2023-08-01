@@ -30,7 +30,7 @@ export class DesignerShell extends EventEngine implements IDesignerShell {
 
 	removeCanvas(documentId: string): void {
 		const canvas = this.canvases[documentId]
-		canvas?.destory()
+		canvas?.destroy()
 		delete this.canvases[documentId]
 	}
 
@@ -70,10 +70,10 @@ export class DesignerShell extends EventEngine implements IDesignerShell {
 		return null
 	}
 
-	public destory(): void {
-		this.container?.destory()
+	public destroy(): void {
+		this.container?.destroy()
 		for (const key of Object.keys(this.canvases)) {
-			this.canvases[key]?.destory()
+			this.canvases[key]?.destroy()
 		}
 	}
 }

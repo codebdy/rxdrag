@@ -136,28 +136,28 @@ export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
             }
           }
           //数据从sourceCell取，有个延时，新建节点时，拿不到parentId
-          const soureMeta = getNodeMetaRef.current(sourceId || "")
+          const sourceMeta = getNodeMetaRef.current(sourceId || "")
           //数据从targetCell取，有个延时，新建节点时，拿不到parentId
           const targetMeta = getNodeMetaRef.current(targetId || "")
 
           //起点是嵌入容器的端口
-          if (soureMeta?.type === NodeType.EmbeddedFlow) {
+          if (sourceMeta?.type === NodeType.EmbeddedFlow) {
             //是嵌入容器的input
-            if (soureMeta.inPorts?.find(port => port.id === sourcePort)) {
+            if (sourceMeta.inPorts?.find(port => port.id === sourcePort)) {
               //如果目标节点是本节点的output
-              if (soureMeta.id === targetMeta?.id) {
-                if (soureMeta.outPorts?.find(port => port.id === targetPort)) {
+              if (sourceMeta.id === targetMeta?.id) {
+                if (sourceMeta.outPorts?.find(port => port.id === targetPort)) {
                   return true
                 }
               }
               //如果目标节点不在容器内
-              if (targetMeta?.parentId !== soureMeta.id) {
+              if (targetMeta?.parentId !== sourceMeta.id) {
                 return false;
               }
               //是嵌入容器的output
             } else {
               //如果是连自身节点
-              if (soureMeta.id === targetMeta?.id) {
+              if (sourceMeta.id === targetMeta?.id) {
                 return false
               }
 
@@ -167,14 +167,14 @@ export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
               }
             }
             //起始节点在容器内
-          } else if (soureMeta?.parentId) {
+          } else if (sourceMeta?.parentId) {
             //如果目标节点是容器的output
-            if (targetMeta?.id === soureMeta?.parentId) {
+            if (targetMeta?.id === sourceMeta?.parentId) {
               if (targetMeta.outPorts?.find(port => port.id === targetPort)) {
                 return true
               }
             }
-            if (targetMeta?.parentId !== soureMeta?.parentId) {
+            if (targetMeta?.parentId !== sourceMeta?.parentId) {
               return false
             }
             //起始节点在容器外
@@ -185,7 +185,7 @@ export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
           }
 
           //其它连接自身的情况
-          if (targetMeta?.id === soureMeta?.id) {
+          if (targetMeta?.id === sourceMeta?.id) {
             return false
           }
 

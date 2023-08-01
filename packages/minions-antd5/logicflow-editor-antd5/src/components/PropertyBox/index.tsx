@@ -32,7 +32,7 @@ export const PropertyBox = memo((
   const dispatch = useDispatch()
   const material = useMemo(() => getMaterial(node?.activityName || ""), [getMaterial, node?.activityName])
   const backup = useBackup()
-  const markeChange = useMarkChange()
+  const markChange = useMarkChange()
   const propsSchema = useMemo(() => {
     if (material?.schema) {
       //翻译
@@ -50,8 +50,8 @@ export const PropertyBox = memo((
     backup()
     const newData = { ...node, ...nodeData }
     dispatch?.({ type: ActionType.CHANGE_NODE, payload: newData })
-    markeChange()
-  }, [backup, dispatch, markeChange, node])
+    markChange()
+  }, [backup, dispatch, markChange, node])
 
   return (
     <FormLayout

@@ -35,7 +35,7 @@ export enum PositionType {
   Right = "right"
 }
 
-export const CanvaseHandler = memo((
+export const CanvasHandler = memo((
   props: {
     position?: PositionType,
     onDistanceChange: (increase: number, totalDistance: number) => void,
@@ -80,7 +80,7 @@ export const CanvaseHandler = memo((
   const handleShellMouseMove = useCallback(
     (event: MouseMoveEvent) => {
       if (dragging) {
-        const x = event.orginalEvent.screenX || 0
+        const x = event.originalEvent.screenX || 0
         onDistanceChange(lastX - x, firstX - x)
         setLastX(x)
       }

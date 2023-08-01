@@ -13,7 +13,7 @@ import { LockButton } from "./controls/LockButton";
 import { getMaxZIndex } from "../outlines/getMaxZIndex";
 
 export class ToolbarImpl implements IPlugin, IAuxToolbar {
-  name: string = "default.toolbar";
+  name = "default.toolbar";
   resizeObserver: ResizeObserver
   private unsubscribe: Unsubscribe;
   private unsubscribeSelect: Unsubscribe;
@@ -177,7 +177,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     }, 20)
   }
 
-  destory(): void {
+  destroy(): void {
     this.clear()
     this.nodeChangeUnsubscribe()
     this.unsubscribe()

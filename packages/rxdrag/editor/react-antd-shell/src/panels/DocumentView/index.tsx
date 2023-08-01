@@ -15,7 +15,7 @@ export const DocumentView = memo((
   }
 ) => {
   const { doc, canvasUrl, previewUrl } = props
-
+  console.log(doc?.getSchemaTree(), 'doc1')
   return (
     doc ?
       <DocumentRoot doc={doc}>

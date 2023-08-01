@@ -17,12 +17,12 @@ export class LogicFlow<LogicFlowContext = unknown> {
     this.constructActivities()
 
     //第二步， 构建连接关系
-    this.contructLines()
+    this.contactLines()
   }
 
-  destory(): void {
+  destroy(): void {
     for (const activity of this.activities) {
-      activity.destory()
+      activity.destroy()
     }
     this.activities = []
     this.jointers = new ActivityJointers();
@@ -80,10 +80,10 @@ export class LogicFlow<LogicFlowContext = unknown> {
               const handleWithThis = handle?.bind(activity);
 
               for (const input of activity.jointers.inputs) {
-                const handeWraper = (inputValue: unknown) => {
+                const handleWrapper = (inputValue: unknown) => {
                   return handleWithThis?.(input.name, inputValue)
                 }
-                input.connect(handeWraper)
+                input.connect(handleWrapper)
               }
             }
 
@@ -95,7 +95,7 @@ export class LogicFlow<LogicFlowContext = unknown> {
   }
 
   //连接一个图的所有节点，把所有的jointer连起来
-  private contructLines() {
+  private contactLines() {
     for (const lineMeta of this.flowMeta.lines) {
       let sourceJointer = this.jointers.inputs.find(jointer => jointer.id === lineMeta.source.nodeId)
       if (!sourceJointer && lineMeta.source.portId) {

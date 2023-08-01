@@ -26,7 +26,7 @@ export const controllerEditorLocales = {
     cancel: "Cancel",
     addReaction: "Add Reaction",
     addVariable: "Add Variable",
-    editVariable: "Edit Varialbe",
+    editVariable: "Edit Variable",
     editReaction: "Edit Reaction",
     name: "Name",
     variables: "variables",

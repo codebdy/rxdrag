@@ -15,7 +15,7 @@ const StyledToolbar = styled.div`
 const ToolbarButton = styled((props) => <Button type="text" size="small" {...props} />)`
 `
 
-const ToobarCenter = styled.div`
+const ToolbarCenter = styled.div`
   flex:1;
   display: flex;
   justify-content: center;
@@ -54,8 +54,8 @@ export const Toolbar = memo(() => {
           onClick={handleRemove}
         ></ToolbarButton>
       </Space>
-      <ToobarCenter>
-      </ToobarCenter>
+      <ToolbarCenter>
+      </ToolbarCenter>
     </StyledToolbar>
   )
 })

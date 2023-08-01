@@ -1,11 +1,11 @@
-import { IQueryConfig, IReponseHandler, IRestfulQuerySession, Unsubscribe } from "../interfaces";
+import { IQueryConfig, IResponseHandler, IRestfulQuerySession, Unsubscribe } from "../interfaces";
 import { GlobalRestful } from "./Restful";
 
 
 export class QuerySession implements IRestfulQuerySession {
   // handler要中转，来确保引用对GlobalQuery 不变
-  private responseHandler: IReponseHandler;
-  private responseHandlerFromParam?: IReponseHandler;
+  private responseHandler: IResponseHandler;
+  private responseHandlerFromParam?: IResponseHandler;
   private unsubscribe?: Unsubscribe
   constructor(private config?: IQueryConfig) {
     this.responseHandler = {
@@ -15,13 +15,13 @@ export class QuerySession implements IRestfulQuerySession {
       onRevalidating: this.onRevalidating,
     }
   }
-  query(param: string, handler?: IReponseHandler): void {
+  query(param: string, handler?: IResponseHandler): void {
     this.responseHandlerFromParam = handler
     //重新订阅一次
     this.unsubscribe?.()
     this.unsubscribe = GlobalRestful.subscribeQuery(this.mergeParam(param), this.responseHandler)
   }
-  destory(): void {
+  destroy(): void {
     this.unsubscribe?.()
     this.unsubscribe = undefined
   }

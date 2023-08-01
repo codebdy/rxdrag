@@ -1,6 +1,6 @@
 import { ILocales } from "@rxdrag/locales";
 
-export const commmonLocales: ILocales = {
+export const commonLocales: ILocales = {
   "zh-CN": {
     components: {
       Root: {

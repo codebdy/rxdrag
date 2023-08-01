@@ -6,10 +6,10 @@ import { ILogicFlowDefine } from "@rxdrag/minions-schema";
 import { AbstractController } from "./AbstractController";
 
 export const INIT_EVENT_NAME = "init"
-export const DESTORY_EVENT_NAME = "destory"
+export const DESTROY_EVENT_NAME = "destroy"
 
 export class LogicFlowController extends AbstractController {
-  private activites: IActivity[] = []
+  private activities: IActivity[] = []
 
   constructor(public meta: ILogicFlowControllerMeta) {
     super(meta)
@@ -23,7 +23,7 @@ export class LogicFlowController extends AbstractController {
 
     for (const eventMeta of this.meta.events || []) {
       const reaction = this.makeReaction(eventMeta, { ...relatedControllers, [this.id]: this }, context)
-      reaction && this.activites.push(reaction)
+      reaction && this.activities.push(reaction)
       if (!reaction) {
         continue
       }
@@ -32,13 +32,13 @@ export class LogicFlowController extends AbstractController {
         continue
       }
       //事件参数转成数组传给编排节点
-      const enventHandler = (...args: unknown[]) => inputOne.push(args);
+      const eventHandler = (...args: unknown[]) => inputOne.push(args);
       if (eventMeta.name === INIT_EVENT_NAME) {
-        this.initEvent = enventHandler
-      } else if (eventMeta.name === DESTORY_EVENT_NAME) {
-        this.destoryEvent = enventHandler
+        this.initEvent = eventHandler
+      } else if (eventMeta.name === DESTROY_EVENT_NAME) {
+        this.destroyEvent = eventHandler
       } else if (eventMeta.name) {
-        this.events[eventMeta.name] = enventHandler
+        this.events[eventMeta.name] = eventHandler
       }
     }
     for (const variable of this.meta.variables || []) {
@@ -47,11 +47,11 @@ export class LogicFlowController extends AbstractController {
     //this.isInitialized = true;
   }
 
-  destory = () => {
-    for (const reaction of this.activites) {
-      reaction.destory()
+  destroy = () => {
+    for (const reaction of this.activities) {
+      reaction.destroy()
     }
-    this.activites = []
+    this.activities = []
     this.events = {}
   }
   private makeReaction = (reactionMeta: ILogicFlowDefine, controllers: Controllers, flowContext: unknown) => {

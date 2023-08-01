@@ -9,7 +9,7 @@ import { readPropMaterial } from "./readProp";
 import { reactionMaterial } from "./reaction";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const controllerActivites: IRxDragActivityMaterial<any, IControllerEditorContextParam>[] = [
+export const controllerActivities: IRxDragActivityMaterial<any, IControllerEditorContextParam>[] = [
   setPropMaterial,
   listenPropMaterial,
   readPropMaterial,

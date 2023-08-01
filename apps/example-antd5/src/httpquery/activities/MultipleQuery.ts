@@ -31,7 +31,7 @@ export class MultipleQuery extends AbstractActivity<IQueryConfig> {
     this?.querySession?.query(urlParam, {
       onData: this.complateHandler,
       onError: this.errorHandler,
-      onLoading: this.loadinghandler,
+      onLoading: this.loadingHandler,
     })
   }
 
@@ -43,11 +43,11 @@ export class MultipleQuery extends AbstractActivity<IQueryConfig> {
     this.next(error, MultipleQuery.OUTPUT_NAME_ERROR)
   }
 
-  loadinghandler = (loading?: boolean) => {
+  loadingHandler = (loading?: boolean) => {
     this.next(loading, MultipleQuery.OUTPUT_NAME_QUERYING)
   }
 
-  destory = () => {
-    this.querySession?.destory()
+  destroy = () => {
+    this.querySession?.destroy()
   }
 }

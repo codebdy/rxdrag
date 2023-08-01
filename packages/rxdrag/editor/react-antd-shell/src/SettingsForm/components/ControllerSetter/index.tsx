@@ -20,7 +20,7 @@ export const ControllerSetter = memo((props: {
   const minionOptions = useMinionOptions();
   const eng = useDesignerEngine();
   useEffect(() => {
-    const langMgr = eng?.getLoacalesManager()
+    const langMgr = eng?.getLocalesManager()
     for (const ctrlDef of minionOptions?.controllers || []) {
       ctrlDef.locales && langMgr?.registerSetterLocales(ctrlDef.locales)
     }

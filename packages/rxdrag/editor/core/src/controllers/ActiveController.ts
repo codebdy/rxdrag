@@ -4,7 +4,7 @@ import { MouseOutEvent } from "../shell/events/mouse/MouseOutEvent";
 import { MouseOverEvent } from "../shell/events/mouse/MouseOverEvent";
 
 export class ActiveControllerImpl implements IPlugin {
-  name: string = "default.active-controller";
+  name = "default.active-controller";
   private unover: Unsubscribe
   private unout: Unsubscribe
 
@@ -24,7 +24,7 @@ export class ActiveControllerImpl implements IPlugin {
     this.engine.getActions().activeNode(null)
   }
 
-  destory(): void {
+  destroy(): void {
     this.unover()
     this.unout()
   }

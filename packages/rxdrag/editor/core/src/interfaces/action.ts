@@ -31,7 +31,7 @@ export enum AcceptType {
 	Reject = "Reject"
 }
 
-export type DrageOverOptions = {
+export type DragOverOptions = {
 	type: AcceptType
 	targetId: ID;
 	position: RelativePosition | null;
@@ -39,10 +39,10 @@ export type DrageOverOptions = {
 
 export interface IActions {
 	//用来操作状态的动作
-	dragover(options: DrageOverOptions | null): void
-	startDragResource(opitons: StartDragResourceOptions): void
-	endDragResouce(): void
-	startDragNodes(opitons: StartDragNodesOptions): void
+	dragover(options: DragOverOptions | null): void
+	startDragResource(options: StartDragResourceOptions): void
+	endDragResource(): void
+	startDragNodes(options: StartDragNodesOptions): void
 	endDragNodes(): void
 	selectNodes(targets: ID[], documentId: ID): void
 	setSelectionMode(documentId: string, mode: DocumentSelectionMode): void

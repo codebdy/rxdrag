@@ -3,12 +3,12 @@ import { MouseClickEvent } from "../shell/events";
 import { IPlugin } from "../interfaces/plugin";
 
 export class SelectionControllerImpl implements IPlugin {
-  name: string = "default.selection-controller";
+  name = "default.selection-controller";
 
-  unsucribe: Unsubscribe
+  unsubscribe: Unsubscribe
   
   constructor(protected engine: IDesignerEngine) {
-    this.unsucribe = this.engine.getShell().subscribeTo(MouseClickEvent, this.handleNodeClick)
+    this.unsubscribe = this.engine.getShell().subscribeTo(MouseClickEvent, this.handleNodeClick)
   }
 
   handleNodeClick = (e: MouseClickEvent): void => {
@@ -27,8 +27,8 @@ export class SelectionControllerImpl implements IPlugin {
     }
   }
 
-  destory(): void {
-    this.unsucribe()
+  destroy(): void {
+    this.unsubscribe()
   }
 
 }

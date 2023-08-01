@@ -1,7 +1,7 @@
 import { IShellPane, ID, IDesignerEngine, IDriver, IDriverFactory, RXID_ATTR_NAME, IRect } from "../interfaces";
 
 export class IFrameCanvasImpl implements IShellPane {
-  private dirvers: IDriver[] = []
+  private drivers: IDriver[] = []
 
   constructor(
     engine: IDesignerEngine,
@@ -9,9 +9,9 @@ export class IFrameCanvasImpl implements IShellPane {
     public id: ID,
     private driverFactories: IDriverFactory[]
   ) {
-    for (const dirverFactory of this.driverFactories) {
+    for (const driverFactory of this.driverFactories) {
       if (this.iframe.contentWindow?.document) {
-        this.dirvers.push(dirverFactory(engine.getShell(), this.iframe.contentWindow?.document))
+        this.drivers.push(driverFactory(engine.getShell(), this.iframe.contentWindow?.document))
       }
     }
   }
@@ -48,11 +48,11 @@ export class IFrameCanvasImpl implements IShellPane {
     }
     return null
   }
-  destory(): void {
-    for (const driver of this.dirvers) {
+  destroy(): void {
+    for (const driver of this.drivers) {
       driver.teardown()
     }
-    this.dirvers = []
+    this.drivers = []
   }
 
   private get body() {

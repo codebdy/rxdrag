@@ -6,7 +6,7 @@ import { isArr } from "@rxdrag/shared";
 export function parseNodeSchema(engine: IDesignerEngine, documentId: ID, schema: INodeSchema, nodesById: NodesById, isSlot: boolean, parentId?: string): ITreeNode {
   const { children, slots = {}, ...metaData } = schema;
   const rxId = makeRxId()
-  const locales = engine.getLoacalesManager()
+  const locales = engine.getLocalesManager()
   const components = engine.getComponentManager()
   const comDesigner = components.getComponentConfig(metaData.componentName)
   const node: ITreeNode = {

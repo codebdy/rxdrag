@@ -37,7 +37,7 @@ export function useMutationObservable(targetEl, cb, options = DEFAULT_OPTIONS) {
   useEffect(() => {
     if (!cb || typeof cb !== "function") {
       console.warn(
-        `You must provide a valida callback function, instead you've provided ${cb}`
+        `You must provide a valid callback function, instead you've provided ${cb}`
       );
       return;
     }

@@ -35,7 +35,7 @@ export class ResourceManager implements IResourceManager {
       const node = {
         ...resource,
         id: rxId,
-        title: this.locales.getResouceMessage(resource.name || resource.name) || undefined,
+        title: this.locales.getResourceMessage(resource.name || resource.name) || undefined,
         rxProps: {
           [RXID_ATTR_NAME]: rxId,
           [RX_NODE_TYPE_ATTR_NAME]: NodeType.Resource

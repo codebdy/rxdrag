@@ -1,9 +1,9 @@
-import { AUX_BACKGROUND_COLOR, AUX_COLOR, TOOLBAR_HEIGHT } from "../../consts";
+import { AUX_BACKGROUND_COLOR, AUX_COLOR, TOOLBAR_HEIGHT } from "../../constants";
 import { ID, IDesignerEngine, ITreeNode } from "../../../interfaces";
 import { IAuxControl } from "../interfaces";
 
 export class ComponentSelector implements IAuxControl {
-  name: string = "default.component-selector";
+  name = "default.component-selector";
   private htmlElement: HTMLElement
   private menuDiv: HTMLElement
   private items = 0
@@ -43,7 +43,7 @@ export class ComponentSelector implements IAuxControl {
     this.htmlElement.appendChild(this.menuDiv)
     this.menuDiv.innerHTML = ""
     this.items = 0
-    node.parentId && this.creatParentItem(node.parentId)
+    node.parentId && this.createParentItem(node.parentId)
     return this.htmlElement
   }
 
@@ -62,7 +62,7 @@ export class ComponentSelector implements IAuxControl {
     }
   }
 
-  private creatParentItem(parentId: ID) {
+  private createParentItem(parentId: ID) {
     const parentNode = this.engine.getMonitor().getNode(parentId)
     this.items = this.items + 1
     const itemDiv = document.createElement('div')
@@ -86,6 +86,6 @@ export class ComponentSelector implements IAuxControl {
     })
     this.menuDiv.appendChild(itemDiv)
 
-    parentNode?.parentId && this.creatParentItem(parentNode.parentId)
+    parentNode?.parentId && this.createParentItem(parentNode.parentId)
   }
 }

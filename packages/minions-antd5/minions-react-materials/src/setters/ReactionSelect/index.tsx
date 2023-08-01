@@ -18,7 +18,7 @@ export const ReactionSelect = memo((
     return controllers?.find(meta => meta.id === value?.controllerId)
   }, [controllers, value?.controllerId])
 
-  const hanldeControllerChange = useCallback((controllerId: string) => {
+  const handleControllerChange = useCallback((controllerId: string) => {
     onChange?.({ controllerId: controllerId, logicFlowId: undefined })
   }, [onChange])
 
@@ -33,7 +33,7 @@ export const ReactionSelect = memo((
       <Select
         value={value?.controllerId}
         options={controllers?.map((controllerMeta) => ({ value: controllerMeta.id, label: controllerMeta.name }))}
-        onChange={hanldeControllerChange}
+        onChange={handleControllerChange}
       />
     </Form.Item>
     {

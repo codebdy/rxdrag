@@ -27,7 +27,7 @@ export function nodesById(
 		case CHANGE_NODE_META:
 			return changeNodeMeta(state, payload as ChangeMetaPayloads)
 		case RECOVER_SNAPSHOT:
-			return revoverSnapshot(state, action as IDocumentAction<RecoverSnapshotPayload>)
+			return recoverSnapshot(state, action as IDocumentAction<RecoverSnapshotPayload>)
 		case REMOVE_SLOT:
 			return removeSlot(state, action as IDocumentAction<RemoveSlotPayload>)
 
@@ -46,16 +46,16 @@ export function nodesById(
 function addNods(state: State = {},
 	action: IDocumentAction<DocumentActionPayload>) {
 	const { payload } = action
-	const addPlayload = payload as AddNodesPayload
-	const { pos, slot } = addPlayload
-	const newState = Object.assign({}, state, addPlayload.nodes.nodesById)
-	const sourceIds = addPlayload.nodes.rootNodes.map(node => node.id)
+	const addPayload = payload as AddNodesPayload
+	const { pos, slot } = addPayload
+	const newState = Object.assign({}, state, addPayload.nodes.nodesById)
+	const sourceIds = addPayload.nodes.rootNodes.map(node => node.id)
 	if (pos === NodeRelativePosition.InTop || pos === NodeRelativePosition.InBottom) {
-		return addIn(newState, sourceIds, addPlayload.targetId, pos)
+		return addIn(newState, sourceIds, addPayload.targetId, pos)
 	} else if (pos === NodeRelativePosition.Before || pos === NodeRelativePosition.After) {
-		return addSiblings(newState, sourceIds, addPlayload.targetId, pos)
+		return addSiblings(newState, sourceIds, addPayload.targetId, pos)
 	} else if (slot) {
-		return addSlot(newState, addPlayload.targetId, slot, sourceIds[0])
+		return addSlot(newState, addPayload.targetId, slot, sourceIds[0])
 	}
 	return newState
 }
@@ -63,10 +63,10 @@ function addNods(state: State = {},
 function moveNodes(state: State = {},
 	action: IDocumentAction<DocumentActionPayload>) {
 	const { payload } = action
-	const movePlayload = payload as MoveNodesPayload
-	const movePos = movePlayload.pos
+	const movePayload = payload as MoveNodesPayload
+	const movePos = movePayload.pos
 	const newState = Object.assign({}, state)
-	for (const targetId of movePlayload.sourceIds) {
+	for (const targetId of movePayload.sourceIds) {
 		const targetNode = state[targetId]
 		invariant(targetNode, "can not find target node")
 		const parentNode = state[targetNode.parentId || ""]
@@ -75,9 +75,9 @@ function moveNodes(state: State = {},
 
 		//再加入
 		if (movePos === NodeRelativePosition.InTop || movePos === NodeRelativePosition.InBottom) {
-			return addIn(newState, movePlayload.sourceIds, movePlayload.targetId, movePos)
+			return addIn(newState, movePayload.sourceIds, movePayload.targetId, movePos)
 		} else if (movePos === NodeRelativePosition.Before || movePos === NodeRelativePosition.After) {
-			return addSiblings(newState, movePlayload.sourceIds, movePlayload.targetId, movePos)
+			return addSiblings(newState, movePayload.sourceIds, movePayload.targetId, movePos)
 		}
 	}
 
@@ -111,13 +111,13 @@ function addSiblings(state: NodesById, sourceIds: ID[], targetId: ID, pos: NodeR
 	const parentNode = state[targetNode.parentId || ""]
 	invariant(parentNode, "can not find parent on target node")
 	const targetIndex = parentNode.children.indexOf(targetId) + (pos === NodeRelativePosition.After ? 1 : 0)
-	const newSibings = parentNode.children.slice(0, targetIndex)
+	const newSiblings = parentNode.children.slice(0, targetIndex)
 		.concat(sourceIds)
 		.concat(parentNode.children.slice(targetIndex))
 	let newState = Object.assign({}, state, {
 		[parentNode.id]: {
 			...parentNode,
-			children: newSibings
+			children: newSiblings
 		}
 	})
 
@@ -158,7 +158,7 @@ function changeNodeMeta(state: NodesById, payload: ChangeMetaPayloads): NodesByI
 	}
 }
 
-function revoverSnapshot(state: NodesById, action: IDocumentAction<RecoverSnapshotPayload>): NodesById {
+function recoverSnapshot(state: NodesById, action: IDocumentAction<RecoverSnapshotPayload>): NodesById {
 	const newState: NodesById = Object.assign({}, action.payload?.snapshot.nodes || {})
 	for (const key of Object.keys(state)) {
 		const node = state[key]

@@ -28,7 +28,7 @@ const CenterArea = styled.div`
   flex-flow: column;
   height: 100%;
 `
-const OpeateArea = styled.div`
+const OperateArea = styled.div`
   position: relative;
   flex:1;
   display: flex;
@@ -129,7 +129,7 @@ export const LogicFlowEditorInner = memo((
                   </Toolbar>
                 }
 
-                <OpeateArea>
+                <OperateArea>
                   <Toolbox>
                     {toolbox}
                   </Toolbox>
@@ -145,7 +145,7 @@ export const LogicFlowEditorInner = memo((
                       }}
                     />
                   </CanvasArea>
-                </OpeateArea>
+                </OperateArea>
               </CenterArea>
               <RightArea>
                 <PropertyBox>

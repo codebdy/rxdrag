@@ -7,7 +7,7 @@ import { draggingNodes, DraggingNodesState } from './draggingNodes'
 import { DragOverState } from './dragOver'
 import { reduce as dragOver } from './dragOver'
 import { draggingResource, DraggingResourceState } from "./draggingResource";
-import { DefualtLang, lang } from "./lang";
+import { DefaultLang, lang } from "./lang";
 import { nodesById } from "./nodesById";
 import { activedDocumentId } from "./activedDocumentId";
 import { themeMode } from "./themeMode";
@@ -27,7 +27,7 @@ export type State = {
 }
 
 const initialState: State = {
-	lang: DefualtLang,
+	lang: DefaultLang,
 	themeMode: "light",
 	activedDocumentId: null,
 	draggingNodes: null,

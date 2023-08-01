@@ -40,7 +40,7 @@ export const RuntimeRoot = memo((props: {
     setRuntimeEngine(rtEngine)
 
     return ()=>{
-      rtEngine.destory()
+      rtEngine.destroy()
     }
   }, [controllerFactories, logicFlowContext, schema])
 

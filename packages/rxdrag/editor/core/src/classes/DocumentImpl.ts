@@ -36,13 +36,13 @@ export class DocumentImpl implements IDocument {
     }
   }
   moveTo = (sourceId: string, targetId: string, pos: NodeRelativePosition): void => {
-    const playload: MoveNodesPayload = {
+    const payload: MoveNodesPayload = {
       documentId: this.id,
       sourceIds: [sourceId],
       targetId,
       pos
     }
-    this.dispatch(this.createAction(MOVE_NODES, playload))
+    this.dispatch(this.createAction(MOVE_NODES, payload))
   }
   multiMoveTo(sourceIds: string[], targetId: string, pos: NodeRelativePosition): void {
     throw new Error("Method not implemented.");
@@ -50,33 +50,33 @@ export class DocumentImpl implements IDocument {
   addNewNodes(elements: INodeSchema | INodeSchema[], targetId: string, pos: NodeRelativePosition): NodeChunk {
     const nodes = paseNodes(this.engine, this.id, elements);
     this.receiveNodes(nodes)
-    const playload: AddNodesPayload = {
+    const payload: AddNodesPayload = {
       documentId: this.id,
       nodes,
       targetId,
       pos
     }
-    this.dispatch(this.createAction(ADD_NODES, playload))
+    this.dispatch(this.createAction(ADD_NODES, payload))
 
     return nodes
   }
 
   remove = (sourceId: string): void => {
-    const playload: DeleteNodesPayload = {
+    const payload: DeleteNodesPayload = {
       documentId: this.id,
       sourceIds: [sourceId],
     }
-    this.dispatch(this.createAction(DELETE_NODES, playload))
+    this.dispatch(this.createAction(DELETE_NODES, payload))
     this.backup(HistoryableActionType.Remove)
   }
 
   removeSlot(id: string, name: string): void {
-    const playload: RemoveSlotPayload = {
+    const payload: RemoveSlotPayload = {
       documentId: this.id,
       nodeId: id,
       slotName: name,
     }
-    this.dispatch(this.createAction(REMOVE_SLOT, playload))
+    this.dispatch(this.createAction(REMOVE_SLOT, payload))
     this.backup(HistoryableActionType.RemoveSlot)
   }
 
@@ -106,13 +106,13 @@ export class DocumentImpl implements IDocument {
       }
       const nodes = paseNodes(this.engine, this.id, element);
       this.receiveNodes(nodes)
-      const playload: AddNodesPayload = {
+      const payload: AddNodesPayload = {
         documentId: this.id,
         nodes,
         targetId: node.id,
         slot: name,
       }
-      this.dispatch(this.createAction(ADD_NODES, playload))
+      this.dispatch(this.createAction(ADD_NODES, payload))
     } else {
       console.error("Can not find node by id", id)
     }
@@ -166,7 +166,7 @@ export class DocumentImpl implements IDocument {
       if (currentIndex > 0) {
         const snapshot = state.history[currentIndex - 1]
         if (snapshot) {
-          this.revoverSnapshot(snapshot)
+          this.recoverSnapshot(snapshot)
           this.dispatchGoto(currentIndex - 1)
         }
       }
@@ -186,7 +186,7 @@ export class DocumentImpl implements IDocument {
     const snapshot = state.history[currentIndex + 1]
     if (snapshot) {
       this.dispatchGoto(currentIndex + 1)
-      this.revoverSnapshot(snapshot)
+      this.recoverSnapshot(snapshot)
     }
   }
 
@@ -194,7 +194,7 @@ export class DocumentImpl implements IDocument {
     const state = this.getState()
     const snapshot = state?.history[index]
     if (snapshot) {
-      this.revoverSnapshot(snapshot)
+      this.recoverSnapshot(snapshot)
     }
     this.dispatchGoto(index)
   }
@@ -209,7 +209,7 @@ export class DocumentImpl implements IDocument {
     return state?.nodesById?.[id] || null
   }
 
-  destory(): void {
+  destroy(): void {
     this.dispatch(this.createAction(REMOVE_DOCUMENT, { }))
   }
 
@@ -285,7 +285,7 @@ export class DocumentImpl implements IDocument {
     return !(schema as INodeSchema).componentName
   }
 
-  private revoverSnapshot(snapshot: ISnapshot) {
+  private recoverSnapshot(snapshot: ISnapshot) {
     const payload: RecoverSnapshotPayload = {
       documentId: this.id,
       snapshot

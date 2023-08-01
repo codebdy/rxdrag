@@ -3,7 +3,7 @@ import { IComponents } from "@rxdrag/react-shared";
 import { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
 import { CanvasRender } from "../CanvasRender"
-import { EVENT_DOC_CHANGE, EVENT_IFRAME_READY } from "./consts";
+import { EVENT_DOC_CHANGE, EVENT_IFRAME_READY } from "./constants";
 import { ID } from "@rxdrag/shared";
 import { useDocumentViewTypeState } from "../../hooks";
 

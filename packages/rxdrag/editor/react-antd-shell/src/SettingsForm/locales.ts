@@ -71,7 +71,7 @@ export const settingLocales = {
       controllerName: "控制器名",
       global: "全局",
       init: "初始化",
-      destory: "销毁",
+      destroy: "销毁",
       onClick: "点击",
       onChange: "输入",
 
@@ -177,7 +177,7 @@ export const settingLocales = {
       controllerName: "Controller Name",
       global: "Global",
       init: "Init",
-      destory: "Destory",
+      destroy: "destroy",
       onClick: "Click",
       onChange: "On Change",
 

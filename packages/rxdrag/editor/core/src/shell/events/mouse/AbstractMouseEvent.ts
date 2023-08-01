@@ -32,7 +32,7 @@ export interface IMouseEventData extends IMouseEventOriginData {
 
 export class AbstractMouseEvent {
   data: IMouseEventData
-  orginalEvent: MouseEvent
+  originalEvent: MouseEvent
 
   constructor(data: IMouseEventOriginData, e:MouseEvent) {
     this.data = data || {
@@ -44,7 +44,7 @@ export class AbstractMouseEvent {
       view: e.view
     }
     
-    this.orginalEvent = e
+    this.originalEvent = e
     
     const rxTarget = getRecentRxElement(data.target as HTMLElement)
     this.data.targetRx = rxTarget && this.getRxProps(rxTarget)

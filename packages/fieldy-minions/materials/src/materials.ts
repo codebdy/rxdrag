@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
 import { setFieldValueMaterial } from "./setFieldValue";
 import { IFieldyActivityMaterial } from "./types";
-import { validateFieldMaterial } from "./validaeField";
+import { validateFieldMaterial } from "./validateField";
 import { setFormValueMaterial } from "./setFormValue";
 import { readFormValueMaterial } from "./readFormValue";
 import { subscribeFormMaterial } from "./subscribeForm";

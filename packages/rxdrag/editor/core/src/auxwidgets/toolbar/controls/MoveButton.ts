@@ -5,7 +5,7 @@ import { AbstractButton } from "./AbstractButton";
 
 export class MoveButton extends AbstractButton {
   private rxProps: RxProps
-  unsucribe?: Unsubscribe
+  unsubscribe?: Unsubscribe
   constructor(protected engine: IDesignerEngine) {
     super("default.move-button", engine)
     this.rxProps = createAuxProps()
@@ -15,8 +15,8 @@ export class MoveButton extends AbstractButton {
     if (e.data.targetRx?.nodeType === NodeType.AuxWidget && e.data.targetRx?.rxId === this.rxProps[RXID_ATTR_NAME]) {
       const nodeId = this.engine.getMonitor().getCurrentNode()?.id
       if (nodeId) {
-        const beheavior = this.engine.getNodeBehavior(nodeId)
-        if (beheavior.isDraggable()) {
+        const behavior = this.engine.getNodeBehavior(nodeId)
+        if (behavior.isDraggable()) {
           this.engine.getActions().startDragNodes({
             initialMousePosition: getPosition(e.data),
             offset: getOffset(e.data),
@@ -34,7 +34,7 @@ export class MoveButton extends AbstractButton {
       this.teardown()
       return null
     }
-    this.unsucribe = this.engine.getShell().subscribeTo(DragStartEvent, this.handleDragStart)
+    this.unsubscribe = this.engine.getShell().subscribeTo(DragStartEvent, this.handleDragStart)
     const htmlEl = this.createHtmlElement()
     htmlEl.innerHTML = `
     <svg style="width:16px;height:16px" viewBox="0 0 24 24">
@@ -50,7 +50,7 @@ export class MoveButton extends AbstractButton {
   }
 
   teardown(): void {
-    this.unsucribe?.()
+    this.unsubscribe?.()
     super.teardown()
   }
 }

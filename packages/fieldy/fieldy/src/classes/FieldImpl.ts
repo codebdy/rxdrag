@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { isStr } from "@rxdrag/shared";
-import { ErrorListener, FormState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SucessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
+import { ErrorListener, FormState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
 import { PropExpression } from "./PropExpression";
 import { ValidationSubscriber } from "./ValidationSubscriber";
 import { IValidationError } from "../interfaces";
@@ -68,7 +68,7 @@ export class FieldImpl implements IField {
     return this.fieldy.getFieldState(this.form.name, this.fieldPath)?.basePath
   }
 
-  destory(): void {
+  destroy(): void {
     throw new Error("Method not implemented.");
   }
 
@@ -139,7 +139,7 @@ export class FieldImpl implements IField {
   onValidateFailed(listener: ErrorListener): Unsubscribe {
     return this.validationSubscriber.onValidateFailed(listener)
   }
-  onValidateSuccess(listener: SucessListener): Unsubscribe {
+  onValidateSuccess(listener: SuccessListener): Unsubscribe {
     return this.validationSubscriber.onValidateSuccess(listener)
   }
 
@@ -176,10 +176,10 @@ export class FieldImpl implements IField {
       this.initiateExpressionChange = false;
       return
     }
-    for (const expresion of this.expressions) {
-      const { value, changed } = expresion.changedValue() || {}
+    for (const expression of this.expressions) {
+      const { value, changed } = expression.changedValue() || {}
       if (changed) {
-        updatedValues[expresion.propName] = value
+        updatedValues[expression.propName] = value
       }
     }
     if (Object.keys(updatedValues).length > 0) {

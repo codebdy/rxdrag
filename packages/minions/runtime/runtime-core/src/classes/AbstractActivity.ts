@@ -11,7 +11,7 @@ export abstract class AbstractActivity<ConfigMeta = unknown, LogicFlowContext = 
     this.jointers = new ActivityJointers()
     this.config = meta.config;
   }
-  destory = () => {
+  destroy = () => {
     //
   }
 

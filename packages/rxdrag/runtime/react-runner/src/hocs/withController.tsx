@@ -34,8 +34,8 @@ export function withController(WrappedComponent: ReactComponent, meta: IControll
         ctrl.initEvent?.()
         setController(ctrl)
         return () => {
-          ctrl?.destoryEvent?.()
-          ctrl?.destory()
+          ctrl?.destroyEvent?.()
+          ctrl?.destroy()
           unlistener?.()
           //runtimeEngine?.remove(controllerKey)
         }

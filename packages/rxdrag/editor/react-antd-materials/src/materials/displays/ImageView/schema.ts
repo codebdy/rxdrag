@@ -23,4 +23,4 @@ const options: SchemaOptions = {
   ]
 }
 
-export const maretialSchema: INodeSchema = createSchema(options)
+export const materialSchema: INodeSchema = createSchema(options)

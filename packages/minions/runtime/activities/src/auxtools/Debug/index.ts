@@ -11,7 +11,7 @@ export interface IDebugConfig {
 
 @Activity(DebugActivity.NAME)
 export class DebugActivity extends AbstractActivity<IDebugConfig> {
-  //对应INodeDeifne 跟IActivityMaterial的 activityName
+  //对应INodeDefine 跟IActivityMaterial的 activityName
   public static NAME = "system.debug"
 
   constructor(meta: INodeDefine<IDebugConfig>) {

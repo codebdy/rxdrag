@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { IValidationError } from "../interfaces";
-import { ErrorListener, FieldState, FormValue, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SucessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
+import { ErrorListener, FieldState, FormValue, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
 import { FieldImpl, transformErrorsToFeedbacks } from "./FieldImpl";
 import { ValidationSubscriber } from "./ValidationSubscriber";
 
@@ -131,7 +131,7 @@ export class FormImpl implements IForm {
   onValidateFailed(listener: ErrorListener): Unsubscribe {
     return this.validationSubscriber.onValidateFailed(listener)
   }
-  onValidateSuccess(listener: SucessListener): Unsubscribe {
+  onValidateSuccess(listener: SuccessListener): Unsubscribe {
     return this.validationSubscriber.onValidateSuccess(listener)
   }
 

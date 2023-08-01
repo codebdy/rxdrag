@@ -5,7 +5,7 @@ export class ControllerManger {
   constructor(protected controllers?: Controllers) {
   }
 
-  getCotroller(name?: string) {
+  getController(name?: string) {
     for (const ctrlId of Object.keys(this.controllers || {})) {
       const ctrl = this.controllers?.[ctrlId]
       if (ctrl?.name === name) {
@@ -39,7 +39,7 @@ export class ScriptController extends AbstractController {
       console.warn("Script controller has not set code")
     }
   }
-  destory(): void {
+  destroy(): void {
     //throw new Error("Method not implemented.");
   }
 

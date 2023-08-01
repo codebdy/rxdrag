@@ -10,10 +10,10 @@ export class SubmitController extends AbstractController {
   }
   init(/*relatedControllers: Controllers | undefined*/) {
     this.events[INIT_EVENT_NAME] = this.initEvent
-    this.destoryEvent = this.destory
+    this.destroyEvent = this.destroy
   }
 
-  destory(): void {
+  destroy(): void {
     throw new Error("Method not implemented.");
   }
 

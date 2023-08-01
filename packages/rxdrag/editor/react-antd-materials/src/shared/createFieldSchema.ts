@@ -9,7 +9,7 @@ export interface IExpressionField {
   valueInputSchema: INodeSchema<IFieldMeta, ILogicFlowControllerMeta>,
 }
 
-export function transformExpresionField(expFields: IExpressionField[]) {
+export function transformExpressionField(expFields: IExpressionField[]) {
   return expFields.map(expField => {
     return {
       componentName: "FormItem",
@@ -228,7 +228,7 @@ export function createFieldSchema() {
     props: {
       title: "$fieldSettings"
     },
-    children: transformExpresionField(reactionFields)
+    children: transformExpressionField(reactionFields)
   }]
 
   const fieldDefineFields = [

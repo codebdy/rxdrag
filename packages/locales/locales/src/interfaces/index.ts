@@ -25,7 +25,7 @@ export interface ILocalesManager {
   lang: string
   //setLanguage(lang: string): void
   getMessage(key: string): string | null
-  getResouceMessage(key: string): string | null
+  getResourceMessage(key: string): string | null
   getComponentMessage(componentName: string, key: string): string | null
   getToolsMessage(key: string): string | null
   registerLocales(...locales: ILocales[]): void
@@ -34,5 +34,5 @@ export interface ILocalesManager {
   registerComponentsLocales(...locales: ILocales[]): void
   registerSetterLocales(...locales: ILocales[]): void
 
-  translateDesignerSchema(compoentName: string, schema: INodeSchema): INodeSchema
+  translateDesignerSchema(componentName: string, schema: INodeSchema): INodeSchema
 }

@@ -102,7 +102,7 @@ export enum HistoryableActionType {
  */
 export interface IDocument {
   id: ID
-  destory(): void
+  destroy(): void
 
   initialize(rootSchema: INodeSchema, documentId: ID): void
   moveTo(sourceId: ID, targetId: ID, pos: NodeRelativePosition): void

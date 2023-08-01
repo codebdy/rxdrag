@@ -16,10 +16,10 @@ export class SearchController extends AbstractController {
     this.controllers = relatedControllers
     this.events[INIT_EVENT_NAME] = this.initEvent
     this.events["onClick"] = this.onClickEvent
-    this.destoryEvent = this.destory
+    this.destroyEvent = this.destroy
   }
 
-  destory(): void {
+  destroy(): void {
     //throw new Error("Method not implemented.");
   }
 

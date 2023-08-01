@@ -56,7 +56,7 @@ export const Designer = memo((props: DesignerProps) => {
     setEngine(eng)
     onReady && onReady(eng)
     return () => {
-      eng?.destory()
+      eng?.destroy()
     }
 
   }, [onReady])
@@ -77,7 +77,7 @@ export const Designer = memo((props: DesignerProps) => {
   const { designComponents } = useComponentsFromMaterials(components)
 
   return (
-    <LocalesContext.Provider value={engine?.getLoacalesManager()}>
+    <LocalesContext.Provider value={engine?.getLocalesManager()}>
       <DesignerEngineContext.Provider value={engine}>
         <DesignRoot components={designComponents}>
           {children}

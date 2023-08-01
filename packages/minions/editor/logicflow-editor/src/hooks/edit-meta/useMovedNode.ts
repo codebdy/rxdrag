@@ -12,7 +12,7 @@ export function useMovedNode() {
   const graph = useGraph()
 
   const backup = useBackup()
-  const markeChange = useMarkChange()
+  const markChange = useMarkChange()
   const handleNodeMoved = useCallback(({ node }: { x: number, y: number, node: Node, index: number, options: unknown }) => {
     backup()
     //父节点跟随移动
@@ -74,8 +74,8 @@ export function useMovedNode() {
     }
 
     graph?.select(node.id)
-    markeChange()
-  }, [backup, dispatch, graph, markeChange])
+    markChange()
+  }, [backup, dispatch, graph, markChange])
 
   useEffect(() => {
     graph?.on('node:moved', handleNodeMoved)

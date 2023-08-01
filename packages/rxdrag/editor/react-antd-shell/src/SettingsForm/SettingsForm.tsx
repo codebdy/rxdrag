@@ -23,13 +23,13 @@ export const SettingsForm = memo(() => {
   const lang = useLanguage()
   const { setters } = useDesignComponentsParams()
   useEffect(() => {
-    engine?.getLoacalesManager().registerSetterLocales(setterLocales)
+    engine?.getLocalesManager().registerSetterLocales(setterLocales)
   }, [engine])
 
   const propsSchema = useMemo(() => {
     if (currentNode && currentNode.propsSchema) {
       //翻译
-      return engine?.getLoacalesManager()
+      return engine?.getLocalesManager()
         .translateDesignerSchema(currentNode?.meta.componentName,
           JSON.parse(JSON.stringify(currentNode.propsSchema))
         )
@@ -126,7 +126,7 @@ export const SettingsForm = memo(() => {
                     YupRulesInput,
                     ...setters,
                   }}
-                  //localesManager={engine?.getLoacalesManager()}
+                  //localesManager={engine?.getLocalesManager()}
                 />
               }
             </Form>

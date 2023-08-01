@@ -34,7 +34,7 @@ export class Delay extends AbstractActivity<IDelayConfig> {
     }
   }
 
-  destory = () => {
+  destroy = () => {
     this.clear()
   }
 }

@@ -4,7 +4,7 @@ import { Badge, Button, Modal } from "antd";
 import React, {  useCallback, useEffect, useState } from "react";
 import { memo } from "react"
 import IconSelectForm, { IconType } from "./IconSelectForm";
-import {IIcon, isEmpertyIcon, IconView} from "@rxdrag/react-antd-icons"
+import {IIcon, isEmptyIcon, IconView} from "@rxdrag/react-antd-icons"
 import "./style.less"
 
 
@@ -42,7 +42,7 @@ export const IconInput = memo((
     setVisible(true);
   }, [])
 
-  const hancleClose = useCallback(() => {
+  const handleClose = useCallback(() => {
     setVisible(false);
     reset()
   }, [reset])
@@ -52,7 +52,7 @@ export const IconInput = memo((
       iconKey: iconType === IconType.Normal ? selectedIcon : undefined,
       svgString: iconType === IconType.Customized ? customizedIcon : undefined,
     }
-    newValue = isEmpertyIcon(newValue) ? undefined : newValue;
+    newValue = isEmptyIcon(newValue) ? undefined : newValue;
     setInputValue(newValue);
     onChange?.({ target: { value: newValue } });
     setVisible(false);
@@ -69,7 +69,7 @@ export const IconInput = memo((
         count={
           <Button
             style={{
-              display: isEmpertyIcon(inputValue) ? "none" : undefined
+              display: isEmptyIcon(inputValue) ? "none" : undefined
             }}
             icon={<CloseCircleFilled className="icon-remove-button-icon" />}
             type="text"
@@ -93,7 +93,7 @@ export const IconInput = memo((
         okText={t("confirm")}
         cancelText={t("cancel")}
         onOk={handleConfirm}
-        onCancel={hancleClose}
+        onCancel={handleClose}
         width={800}
       >
         <IconSelectForm

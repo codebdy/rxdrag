@@ -1,10 +1,10 @@
-import { ErrorListener, IValidationError, IValidationSubscriber, Listener, SucessListener, Unsubscribe } from "../interfaces";
+import { ErrorListener, IValidationError, IValidationSubscriber, Listener, SuccessListener, Unsubscribe } from "../interfaces";
 
 export class ValidationSubscriber implements IValidationSubscriber {
   private startListeners: Listener[] = []
   private endListeners: Listener[] = []
   private failedListeners: ErrorListener[] = []
-  private successListeners: SucessListener[] = []
+  private successListeners: SuccessListener[] = []
 
   emitStart() {
     for (const listener of this.startListeners) {
@@ -48,7 +48,7 @@ export class ValidationSubscriber implements IValidationSubscriber {
       this.failedListeners.splice(this.failedListeners.indexOf(listener), 1)
     }
   }
-  onValidateSuccess(listener: SucessListener): Unsubscribe {
+  onValidateSuccess(listener: SuccessListener): Unsubscribe {
     this.successListeners.push(listener)
     return () => {
       this.successListeners.splice(this.successListeners.indexOf(listener), 1)

@@ -8,7 +8,7 @@ import { IActions, IAction } from "../interfaces/action";
 import { Actions } from "../actions";
 import { ILocalesManager, LocalesManager } from "@rxdrag/locales";
 import { CHANGE_ACTIVED_DOCUMENT, SET_LANGUAGE } from "../actions/registry";
-import { DefualtLang } from "../reducers/lang";
+import { DefaultLang } from "../reducers/lang";
 import { ComponentManager } from "./ComponentManager";
 import { IPlugin, IPluginFactory } from "../interfaces/plugin";
 import { isFn } from "@rxdrag/shared";
@@ -34,7 +34,7 @@ export class DesignerEngine implements IDesignerEngine {
 		plugins: IPluginFactory[],
 		lang?: string
 	) {
-		this.localesManager = new LocalesManager(lang || DefualtLang)
+		this.localesManager = new LocalesManager(lang || DefaultLang)
 		this.resourceManager = new ResourceManager(this.localesManager)
 		this.decoratorManager = new DecoratorManager(this)
 		this.actions = new Actions(this)
@@ -50,14 +50,14 @@ export class DesignerEngine implements IDesignerEngine {
 	getComponentManager(): IComponentManager {
 		return this.componentManager
 	}
-	getLoacalesManager(): ILocalesManager {
+	getLocalesManager(): ILocalesManager {
 		return this.localesManager
 	}
 	getLanguage(): string {
 		return this.getMonitor().getState().lang
 	}
 	setLanguage(lang: string): void {
-		this.getLoacalesManager().lang = lang
+		this.getLocalesManager().lang = lang
 		this.dispatch({
 			type: SET_LANGUAGE,
 			payload: lang
@@ -114,11 +114,11 @@ export class DesignerEngine implements IDesignerEngine {
 		this.store.dispatch(action)
 	}
 
-	public destory(): void {
+	public destroy(): void {
 		for (const key of Object.keys(this.plugins)) {
-			this.plugins[key]?.destory()
+			this.plugins[key]?.destroy()
 		}
-		this.shell.destory()
+		this.shell.destroy()
 	}
 
 	getNodeBehavior(nodeId: ID): NodeBehavior {

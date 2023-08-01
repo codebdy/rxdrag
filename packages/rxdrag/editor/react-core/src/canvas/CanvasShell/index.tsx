@@ -1,7 +1,7 @@
 import React from "react"
 import { useCanvasWidthLimitsState,useCanvasWidthState } from "../../hooks"
 import { memo, useCallback, useEffect, useRef, useState } from "react"
-import { CanvaseHandler, PositionType } from "../CanvaseHandler"
+import { CanvasHandler, PositionType } from "../CanvasHandler"
 import "./style.less"
 
 export const CanvasShell = memo((
@@ -66,13 +66,13 @@ export const CanvasShell = memo((
       }}
     >
       {children}
-      <CanvaseHandler
+      <CanvasHandler
         position={PositionType.Left}
         onDistanceChange={handleLeftDistanceChange}
         onDragBegin={handleDragStart}
         onDragStop={handleDragStop}
       />
-      <CanvaseHandler
+      <CanvasHandler
         onDistanceChange={handleRightDistanceChange}
         onDragBegin={handleDragStart}
         onDragStop={handleDragStop}

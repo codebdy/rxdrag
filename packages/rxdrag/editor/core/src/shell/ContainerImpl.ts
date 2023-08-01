@@ -1,7 +1,7 @@
 import { IShellPane, ID, IDesignerEngine, IDriver, IDriverFactory, RXID_ATTR_NAME, IRect } from "../interfaces";
 
 export class ContainerImpl implements IShellPane {
-  private dirvers: IDriver[] = []
+  private drivers: IDriver[] = []
   
   constructor(
     engine: IDesignerEngine,
@@ -9,8 +9,8 @@ export class ContainerImpl implements IShellPane {
     public id: ID,
     private driverFactories: IDriverFactory[]
   ) {
-		for (const dirverFactory of this.driverFactories) {
-			this.dirvers.push(dirverFactory(engine.getShell(), roolElement))
+		for (const driverFactory of this.driverFactories) {
+			this.drivers.push(driverFactory(engine.getShell(), roolElement))
 		}
   }
   getContainerRect(): IRect | null {
@@ -36,10 +36,10 @@ export class ContainerImpl implements IShellPane {
     return this.getElement(nodeId)?.getBoundingClientRect() || null
   }
   
-  destory(): void {
-		for (const driver of this.dirvers) {
+  destroy(): void {
+		for (const driver of this.drivers) {
 			driver.teardown()
 		}
-		this.dirvers = []
+		this.drivers = []
   }
 }
