@@ -16,20 +16,20 @@ export function useRegisterComponentMaterial() {
   const { registerComponents: registerDesignComponents, registerTools } = useDesignComponentsParams()
   //const { registerComponents: registerPreviewComponents } = usePreviewComponents()
 
-  const register = useCallback((meterial: IComponentMaterial, isSlot?: boolean) => {
-    const designers = { [meterial.componentName]: meterial.designer }
-    //const previews = { [meterial.componentName]: meterial.component }
-    const setters = meterial.setters
-    componentManager?.registerComponents(meterial)
-    if (meterial.designerLocales) {
-      localesManager?.registerComponentLocales(meterial.componentName, meterial.designerLocales)
+  const register = useCallback((material: IComponentMaterial, isSlot?: boolean) => {
+    const designers = { [material.componentName]: material.designer }
+    //const previews = { [material.componentName]: material.component }
+    const setters = material.setters
+    componentManager?.registerComponents(material)
+    if (material.designerLocales) {
+      localesManager?.registerComponentLocales(material.componentName, material.designerLocales)
     }
     if (material.resource?.resourceLocales) {
       localesManager?.registerResourceLocales(material.resource.resourceLocales)
     }
 
-    if (meterial.toolsLocales) {
-      localesManager?.registerSetterLocales(meterial.toolsLocales)
+    if (material.toolsLocales) {
+      localesManager?.registerSetterLocales(material.toolsLocales)
     }
 
     for (const key of Object.keys(material.slots || {})) {
