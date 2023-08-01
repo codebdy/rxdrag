@@ -2,45 +2,22 @@ import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
 
 const options: SchemaOptions = {
-  propsSchemas: [
+  propSchemas: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Input",
+      "x-field": {
+        name: "label",
         label: "$label",
       },
-      children: [
-        {
-          componentName: "Input",
-          "x-field": {
-            name: "label",
-            params: {
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "disabled",
         label: "$disabled",
       },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "disabled",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
   ],
-  fieldOptions: {
-    canBindField: true,
-  }
+  canBindField: true,
 }
 export const radioSchema: INodeSchema = createSchema(options)

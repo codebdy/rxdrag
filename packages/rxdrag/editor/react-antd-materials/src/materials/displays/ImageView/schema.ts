@@ -2,43 +2,23 @@ import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
 
 const options: SchemaOptions = {
-  propsSchemas:  [
+  propSchemas:  [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "ImageInput",
+      "x-field": {
+        name: "value",
         label: "$value",
       },
-      children: [
-        {
-          componentName: "ImageInput",
-          "x-field": {
-            name: "value",
-            params: {
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "SizeInput",
+      "x-field": {
+        name: "height",
         label: "$height",
       },
-      children: [
-        {
-          componentName: "SizeInput",
-          "x-field": {
-            name: "height",
-            params: {
-              withBind: true,
-            }
-          },
-          props:{
-            exclude:["inherit", "auto"]
-          }
-        }
-      ]
+      props:{
+        exclude:["inherit", "auto"]
+      }
     },
   ]
 }

@@ -1,132 +1,65 @@
 export const inputBaseSchemas = [
   {
-    componentName: "FormItem",
-    props: {
+    componentName: "Input",
+    "x-field": {
+      name: "placeholder",
       label: "$placeholder",
     },
-
-    children: [
-      {
-        componentName: "Input",
-        "x-field": {
-          name: "placeholder",
-          params: {
-            withBind: true,
-          }
-        },
-      }
-    ]
   },
   {
-    componentName: "FormItem",
-    props: {
+    componentName: "Switch",
+    "x-field": {
+      name: "disabled",
       label: "$disabled",
     },
-    children: [
-      {
-        componentName: "Switch",
-        "x-field": {
-          name: "disabled",
-          params:{
-            valuePropName: "checked",
-            withBind: true,
-          }
-        },
-      }
-    ]
   },
   {
-    componentName: "FormItem",
-    props: {
+    componentName: "Switch",
+    "x-field": {
+      name: "autoFocus",
       label: "$autoFocus",
     },
-
-    children: [
-      {
-        componentName: "Switch",
-        "x-field": {
-          name: "autoFocus",
-          params:{
-            valuePropName: "checked",
-            withBind: true,
-          }
-        },
-      }
-    ]
   },
   {
-    componentName: "FormItem",
-    props: {
+    componentName: "Switch",
+    "x-field": {
+      name: "allowClear",
       label: "$allowClear",
     },
-
-    children: [
-      {
-        componentName: "Switch",
-        "x-field": {
-          name: "allowClear",
-          params:{
-            valuePropName: "checked",
-            withBind: true,
-          }
-        },
-      }
-    ]
   },
   {
-    componentName: "FormItem",
-    props: {
+    componentName: "Switch",
+    "x-field": {
+      name: "bordered",
       label: "$bordered",
     },
-    children: [
-      {
-        componentName: "Switch",
-        "x-field": {
-          name: "bordered",
-          params:{
-            valuePropName: "checked",
-            withBind: true,
-          }
-        },
-        props: {
-          defaultChecked: true,
-        }
-      }
-    ]
+    props: {
+      defaultChecked: true,
+    }
   },
   {
-    componentName: "FormItem",
-    props: {
+    componentName: "Radio.Group",
+    "x-field": {
+      name: "size",
       label: "$size",
     },
-    children: [
-      {
-        componentName: "Radio.Group",
-        "x-field": {
-          name: "size",
-          params: {
-            withBind: true,
-          }
+    props: {
+      optionType: "button",
+      options: [
+        {
+          label: "$large",
+          value: "large"
         },
-        props: {
-          optionType: "button",
-          options: [
-            {
-              label: "$large",
-              value: "large"
-            },
-            {
-              label: "$middle",
-              value: "middle"
-            },
-            {
-              label: "$small",
-              value: "small"
-            },
-          ],
-          defaultValue: "middle",
-        }
-      },
-    ]
+        {
+          label: "$middle",
+          value: "middle"
+        },
+        {
+          label: "$small",
+          value: "small"
+        },
+      ],
+      defaultValue: "middle",
+    }
   },
 ]

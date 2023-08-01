@@ -11,7 +11,7 @@ export interface ILangLocales {
       [key: string]: any
     }
   },
-  tools?: {
+  setters?: {
     [key: string]: any
   },
   [key: string]: any
@@ -32,7 +32,7 @@ export interface ILocalesManager {
   registerResourceLocales(...locales: ILocales[]): void
   registerComponentLocales(componentName: string, locales: ILocales): void
   registerComponentsLocales(...locales: ILocales[]): void
-  registerToolsLocales(...locales: ILocales[]): void
+  registerSetterLocales(...locales: ILocales[]): void
 
   translateDesignerSchema(compoentName: string, schema: INodeSchema): INodeSchema
 }

@@ -1,4 +1,4 @@
-import { useToolsTranslate } from "@rxdrag/react-core"
+import { useSettersTranslate } from "@rxdrag/react-core"
 import { Form, Input, Select } from "antd"
 import { ActionType, IShortcutControllerMeta } from "controller/shortcuts/IShortcutControllerMeta"
 import { memo, useCallback } from "react"
@@ -8,7 +8,7 @@ export const ShortcutControllerSetter = memo((props: {
   onChange?: (value?: IShortcutControllerMeta) => void,
 }) => {
   const { value, onChange } = props;
-  const t = useToolsTranslate()
+  const t = useSettersTranslate()
 
   const handleActionTypeChange = useCallback((actionType?: ActionType) => {
     value && onChange?.({ ...value, actionType, global: true })

@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/react-antd-shell",
-  "version": "0.2.4",
+  "version": "0.2.7",
   "module": "index.ts",
   "files": [
     "dist"
@@ -38,7 +38,6 @@
     "@reduxjs/toolkit": "^1.9.3",
     "@monaco-editor/react": "^4.4.6",
     "@rxdrag/core": "workspace:*",
-    "@rxdrag/fieldy-schema": "workspace:*",
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/minions-runtime": "workspace:*",

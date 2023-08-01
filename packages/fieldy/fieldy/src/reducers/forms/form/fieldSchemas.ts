@@ -1,6 +1,6 @@
 import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload } from "../../../actions";
-import { IFieldSchema } from "../../../interfaces";
-import { IAction } from "../../../interfaces";
+import { IFieldSchema } from "../../../interfaces/fieldy";
+import { IAction } from "../../../interfaces/fieldy";
 
 export function fieldSchemasReduer(state: IFieldSchema[], action: IAction<unknown>) {
   const addFieldValuePayload = action.payload as SetFormFieldsPayload

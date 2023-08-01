@@ -1,17 +1,12 @@
-import { IBindParams } from "@rxdrag/react-runner"
-import { INodeSchema} from "@rxdrag/schema"
+import { INodeSchema } from "@rxdrag/schema"
 import { attachFormItem } from "./attachFormItem"
-import { IFieldMeta } from "@rxdrag/fieldy-schema"
+import { IFieldMeta } from "@rxdrag/fieldy"
 import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
-
-export type FieldOptions = {
-  canBindField?: boolean,
-}
 
 export interface IExpressionField {
   label: string,
   name: string,
-  valueInputSchema: INodeSchema<IFieldMeta<IBindParams>, ILogicFlowControllerMeta>,
+  valueInputSchema: INodeSchema<IFieldMeta, ILogicFlowControllerMeta>,
 }
 
 export function transformExpresionField(expFields: IExpressionField[]) {
@@ -57,7 +52,7 @@ export function transformExpresionField(expFields: IExpressionField[]) {
   })
 }
 
-export function createFieldSchema(fieldOptions?: FieldOptions) {
+export function createFieldSchema() {
   const reactionFields: IExpressionField[] = [
     // 有可能会导致死循环，暂时不用value
     // {
@@ -103,9 +98,6 @@ export function createFieldSchema(fieldOptions?: FieldOptions) {
         },
         "x-field": {
           name: "value",
-          params: {
-            withBind: true,
-          }
         },
       },
     },
@@ -143,9 +135,6 @@ export function createFieldSchema(fieldOptions?: FieldOptions) {
         },
         "x-field": {
           name: "value",
-          params: {
-            withBind: true,
-          }
         },
       },
     },
@@ -164,10 +153,6 @@ export function createFieldSchema(fieldOptions?: FieldOptions) {
             componentName: "Switch",
             "x-field": {
               name: "value",
-              params: {
-                valuePropName: "checked",
-                withBind: true,
-              }
             },
           }
         ]
@@ -212,66 +197,40 @@ export function createFieldSchema(fieldOptions?: FieldOptions) {
             componentName: "Switch",
             "x-field": {
               name: "value",
-              params: {
-                valuePropName: "checked",
-                withBind: true,
-              }
             },
           }
         ]
       },
     },
   ]
+
+  const validationCollapse = [{
+    componentName: "CollapsePanel",
+    props: {
+      title: "$validation"
+    },
+    children: [
+      {
+        componentName: "YupRulesInput",
+        "x-field": {
+          name: "x-field.validateRules",
+        },
+      }
+    ]
+  }]
+
   const reactionCollapse = [{
     componentName: "CollapsePanel",
     "x-field": {
       type: "object",
       name: "x-field.reactionMeta",
-      reactionMeta: {
-        //$name的使用方式还有问题
-        hidden: "{{!$form.getField('x-field.name')}}"
-      }
     },
     props: {
-      title: "$fieldReaction"
+      title: "$fieldSettings"
     },
     children: transformExpresionField(reactionFields)
   }]
 
-  const bindFields = [
-    {
-      componentName: "Switch",
-      "x-field": {
-        name: "withBind",
-        label: "$withBind",
-        params: {
-          valuePropName: "checked",
-        }
-      },
-    },
-    {
-      componentName: "Input",
-      "x-field": {
-        name: "valuePropName",
-        label: "$valuePropName",
-      },
-    },
-  ]
-  const bindCollapse = fieldOptions?.canBindField
-    ? [
-      {
-        componentName: "CollapsePanel",
-        "x-field": {
-          type: "object",
-          name: "x-field.params",
-        },
-        props: {
-          title: "$fieldBind"
-        },
-        children: attachFormItem(bindFields)
-      },
-    ]
-    : []
   const fieldDefineFields = [
     {
       componentName: "Select",
@@ -280,11 +239,8 @@ export function createFieldSchema(fieldOptions?: FieldOptions) {
         label: "$fieldType",
       },
       props: {
+        allowClear: true,
         options: [
-          {
-            value: '',
-            label: '',
-          },
           {
             value: 'normal',
             label: 'Normal',
@@ -308,29 +264,23 @@ export function createFieldSchema(fieldOptions?: FieldOptions) {
       },
     },
     {
-      componentName: "Input",
+      componentName: "ValueInput",
       "x-field": {
         name: "x-field.defaultValue",
         label: "$defaultValue",
       },
     },
-    {
-      componentName: "Input",
-      "x-field": {
-        name: "x-field.validateRules",
-        label: "$validateRules",
-      },
-    }
   ]
   return [
     {
       componentName: "CollapsePanel",
       props: {
         title: "$fieldDefine",
+        //defaultExpand: true,
       },
       children: attachFormItem(fieldDefineFields)
     },
-    ...bindCollapse,
+    ...validationCollapse,
     ...reactionCollapse,
   ]
 }

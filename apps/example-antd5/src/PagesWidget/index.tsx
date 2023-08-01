@@ -24,6 +24,7 @@ const treeData: DataNode[] = [
     key: 'forms',
     children: [
       { title: '基础表单', key: 'basic-form', isLeaf: true },
+      { title: '表单验证', key: 'form-validation', isLeaf: true },
       { title: '分步表单', key: 'step-form', isLeaf: true },
       { title: '高级表单', key: 'advance-form', isLeaf: true },
     ],

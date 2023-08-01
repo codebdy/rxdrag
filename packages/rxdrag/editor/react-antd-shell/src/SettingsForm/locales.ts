@@ -1,6 +1,6 @@
 export const settingLocales = {
   "zh-CN": {
-    tools: {
+    setters: {
       edit: "编辑",
       delete: "删除",
       font: "字体",
@@ -52,12 +52,13 @@ export const settingLocales = {
 
       fieldType: "字段类型",
       fieldName: "字段名称",
+      validation: "字段校验",
       validateRules: "校验规则",
       defaultValue: "默认值",
       value: "值",
       fieldDefine: "字段定义",
       fieldBind: "字段绑定",
-      fieldReaction: "字段联动",
+      fieldSettings: "字段设置",
       valuePropName: "值属性",
       trigger: "触发属性",
       withBind: "绑定字段",
@@ -105,7 +106,7 @@ export const settingLocales = {
     }
   },
   'en-US': {
-    tools: {
+    setters: {
       edit: "Edit",
       delete: "Delete",
       font: "Font",
@@ -157,12 +158,13 @@ export const settingLocales = {
 
       fieldType: "Field Type",
       fieldName: "Field Name",
+      validation: "Validation",
       validateRules: "Rules",
       defaultValue: "Default",
       value: "Value",
       fieldDefine: "Field Define",
       fieldBind: "Field Bind",
-      fieldReaction: "Field Reaction",
+      fieldSettings: "Field Settings",
       valuePropName: "Value Prop",
       trigger: "Trigger",
       withBind: "With Bind",

@@ -2,23 +2,13 @@ import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
 
 const options: SchemaOptions = {
-  propsSchemas: [
+  propSchemas: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "InputNumber",
+      "x-field": {
+        name: "span",
         label: "$span",
       },
-      children: [
-        {
-          componentName: "InputNumber",
-          "x-field": {
-            name: "span",
-            params: {
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
   ]
 }

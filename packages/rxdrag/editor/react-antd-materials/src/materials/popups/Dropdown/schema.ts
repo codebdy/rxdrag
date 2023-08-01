@@ -2,59 +2,38 @@ import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
 
 const options: SchemaOptions = {
-  propsSchemas: [
+  propSchemas: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "arrow",
         label: "$arrow",
       },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "arrow",
-            params: {
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Radio.Group",
+      "x-field": {
+        name: "trigger",
         label: "$trigger",
       },
-      children: [
-        {
-          componentName: "Radio.Group",
-          "x-field": {
-            name: "trigger",
-            params: {
-              withBind: true,
-            }
+      props: {
+        optionType: "button",
+        options: [
+          {
+            label: "$click",
+            value: "click"
           },
-          props: {
-            optionType: "button",
-            options: [
-              {
-                label: "$click",
-                value: "click"
-              },
-              {
-                label: "$hover",
-                value: "hover"
-              },
-              {
-                label: "$contextMenu",
-                value: "contextMenu"
-              },
-            ],
-            defaultValue: "click",
-          }
-        }
-      ]
+          {
+            label: "$hover",
+            value: "hover"
+          },
+          {
+            label: "$contextMenu",
+            value: "contextMenu"
+          },
+        ],
+        defaultValue: "click",
+      }
     },
   ]
 }

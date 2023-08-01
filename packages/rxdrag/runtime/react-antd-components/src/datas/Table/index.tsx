@@ -23,9 +23,9 @@ import { memo, useCallback, useMemo, useState } from "react"
 import { Table as AntdTable, TablePaginationConfig } from "antd"
 import { IDataSource } from "../IDataSource"
 import { createUuid } from "@rxdrag/shared";
-import { ComponentView, IBindParams, useComponentSchema } from "@rxdrag/react-runner";
+import { ComponentView, useComponentSchema } from "@rxdrag/react-runner";
 import { ArrayField, ObjectField, useFieldValue } from "@rxdrag/react-fieldy";
-import { IFieldMeta } from "@rxdrag/fieldy-schema";
+import { IFieldMeta } from "@rxdrag/fieldy";
 
 interface RowProps {
   index: number,
@@ -35,7 +35,7 @@ interface TableCellProps {
   editable: boolean;
   children: React.ReactNode;
   record: unknown;
-  fieldMeta?: IFieldMeta<IBindParams>;
+  fieldMeta?: IFieldMeta;
 }
 
 const TableCell: React.FC<TableCellProps> = ({
@@ -49,7 +49,8 @@ const TableCell: React.FC<TableCellProps> = ({
 
   return <td {...restProps}>
     {
-      fieldMeta?.name && fieldMeta.params?.withBind
+      //@@ 2023-07-25删掉代码：fieldMeta?.name && fieldMeta.params?.withBind
+      fieldMeta?.name && fieldMeta.type !== "array" && fieldMeta.type !== "object"
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ? (parentValue as any)?.[fieldMeta.name]?.toString()
         : children

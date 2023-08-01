@@ -1,5 +1,5 @@
 import { getChildFields } from "../funcs/path";
-import { IField } from "../interfaces";
+import { IField } from "../interfaces/fieldy";
 
 export class PropExpression {
   private previousValue: unknown
@@ -15,8 +15,12 @@ export class PropExpression {
         sbilings["$" + sibling.name] = this.field.form.getField(sibling.path);
       }
     }
-    try{
-      const value = new Function("$self", "$form", ...Object.keys(sbilings) ,"return " + this.expression)(
+    try {
+      if (!this.expression?.trim()) {
+        return
+      }
+      console.log("====>", this.expression)
+      const value = new Function("$self", "$form", ...Object.keys(sbilings), "return " + this.expression)(
         $self,
         $form,
         ...Object.values(sbilings)
@@ -25,7 +29,7 @@ export class PropExpression {
         this.previousValue = value
         return { value, changed: true }
       }
-    }catch(e){
+    } catch (e) {
       console.error(e)
     }
 

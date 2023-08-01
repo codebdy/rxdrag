@@ -2,41 +2,31 @@ import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
 
 const options: SchemaOptions = {
-  propsSchemas: [
+  propSchemas: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Radio.Group",
+      "x-field": {
+        name: "themeMode",
         label: "$themeMode",
       },
-      children: [
-        {
-          componentName: "Radio.Group",
-          "x-field": {
-            name: "themeMode",
-            params: {
-              withBind: true,
-            }
+      props: {
+        optionType: "button",
+        options: [
+          {
+            label: "$inherit",
+            value: "inherit"
           },
-          props: {
-            optionType: "button",
-            options: [
-              {
-                label: "$inherit",
-                value: "inherit"
-              },
-              {
-                label: "$dark",
-                value: "dark"
-              },
-              {
-                label: "$light",
-                value: "light"
-              },
-            ],
-            defaultValue: "inherit",
-          }
-        }
-      ]
+          {
+            label: "$dark",
+            value: "dark"
+          },
+          {
+            label: "$light",
+            value: "light"
+          },
+        ],
+        defaultValue: "inherit",
+      }
     },
   ]
 }

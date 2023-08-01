@@ -1,4 +1,4 @@
-import { useToolsTranslate } from "@rxdrag/react-core"
+import { useSettersTranslate } from "@rxdrag/react-core"
 import { Col, Modal, Row } from "antd"
 import { useToken } from "antd/es/theme/internal"
 import React, { useCallback, useEffect } from "react"
@@ -31,7 +31,7 @@ export const ImageSelect = memo((
   const { children, value, onChange } = props
   const [open, setOpen] = useState(false)
   const [selected, setSelected] = useState<string>()
-  const t = useToolsTranslate()
+  const t = useSettersTranslate()
   const [, token] = useToken()
 
   useEffect(() => {

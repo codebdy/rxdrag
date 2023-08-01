@@ -1,6 +1,6 @@
 import { FunctionOutlined } from "@ant-design/icons"
 import Editor from "@monaco-editor/react";
-import { useThemeMode, useToolsTranslate } from "@rxdrag/react-core";
+import { useThemeMode, useSettersTranslate } from "@rxdrag/react-core";
 import { Button, Drawer, Space } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components";
@@ -18,7 +18,7 @@ export const ExpressionInput = memo((props: {
   const { value, onChange, ...other } = props;
   const [inputValue, setInputValue] = useState<string>();
   const [open, setOpen] = useState(false);
-  const t = useToolsTranslate()
+  const t = useSettersTranslate()
   const themeMode = useThemeMode();
 
   useEffect(() => {

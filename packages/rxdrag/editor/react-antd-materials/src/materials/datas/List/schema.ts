@@ -1,27 +1,17 @@
-import { IBindParams } from "@rxdrag/react-runner";
 import { INodeSchema } from "@rxdrag/schema";
-import { SchemaOptions, createSchema, withFormItem } from "../../../shared";
-import { IFieldMeta } from "@rxdrag/fieldy-schema";
-import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
+import { SchemaOptions, createSchema } from "../../../shared";
 
-const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> = {
-  propsSchemas: [
+const options: SchemaOptions = {
+  propSchemas: [
     {
       componentName: "Switch",
       "x-field": {
         name: "bordered",
         label: "$bordered",
-        params: {
-          valuePropName: "checked",
-        }
-      },
+      }
     },
     {
       componentName: "Radio.Group",
-      "x-field": {
-        name: "size",
-        label: "$size",
-      },
       props: {
         optionType: "button",
         options: [
@@ -39,32 +29,24 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> 
           },
         ],
         defaultValue: "middle",
+      },
+      "x-field": {
+        name: "size",
+        label: "$size",
       }
     },
   ],
-  slotsSchemas: [
+  slotSchemas: [
     {
-      componentName: "SlotSwitch",
-      props: {
-        name: "header"
-      },
-      "x-field": {
-        label: "$header",
-      }
+      name: "header",
+      label: "$header",
     },
     {
-      componentName: "SlotSwitch",
-      props: {
-        name: "footer"
-      },
-      "x-field": {
-        label: "$footer",
-      }
+      name: "footer",
+      label: "$footer",
     },
   ],
-  fieldOptions: {
-    canBindField: true,
-  }
+  canBindField: true,
 }
 
-export const materialSchema: INodeSchema = createSchema(withFormItem(options))
+export const materialSchema: INodeSchema = createSchema(options)

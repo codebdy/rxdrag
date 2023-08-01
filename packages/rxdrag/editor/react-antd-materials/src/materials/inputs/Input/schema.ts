@@ -5,106 +5,43 @@ import { inputBaseSchemas } from "../schemas";
 const inputPros = [
   ...inputBaseSchemas,
   {
-    componentName: "FormItem",
-    props: {
+    componentName: "Switch",
+    "x-field": {
+      name: "showCount",
       label: "$showCount",
     },
-    children: [
-      {
-        componentName: "Switch",
-        "x-field": {
-          name: "showCount",
-          params:{
-            valuePropName: "checked",
-            withBind: true,
-          }
-        },
-      }
-    ]
   },
   {
-    componentName: "FormItem",
-    props: {
+    componentName: "InputNumber",
+    "x-field": {
+      name: "maxLength",
       label: "$maxLength",
     },
-    children: [
-      {
-        componentName: "InputNumber",
-        "x-field": {
-          name: "maxLength",
-          params: {
-            withBind: true,
-          }
-        },
-      }
-    ]
   },
 ]
 
 const inputSlots = [
   {
-    componentName: "FormItem",
-    props: {
-      label: "$addonBefore",
-    },
-    children: [
-      {
-        componentName: "SlotSwitch",
-        props: {
-          name: "addonBefore"
-        }
-      }
-    ]
+    name: "addonBefore",
+    label: "$addonBefore",
   },
   {
-    componentName: "FormItem",
-    props: {
-      label: "$addonAfter",
-    },
-    children: [
-      {
-        componentName: "SlotSwitch",
-        props: {
-          name: "addonAfter"
-        }
-      }
-    ]
+    name: "addonAfter",
+    label: "$addonAfter",
   },
   {
-    componentName: "FormItem",
-    props: {
-      label: "$prefix",
-    },
-    children: [
-      {
-        componentName: "SlotSwitch",
-        props: {
-          name: "prefix"
-        }
-      }
-    ]
+    name: "prefix",
+    label: "$prefix",
   },
   {
-    componentName: "FormItem",
-    props: {
-      label: "$suffix",
-    },
-    children: [
-      {
-        componentName: "SlotSwitch",
-        props: {
-          name: "suffix"
-        }
-      }
-    ]
+    label: "$suffix",
+    name: "suffix"
   },
 ]
 const options: SchemaOptions = {
-  propsSchemas:inputPros,
-  slotsSchemas:inputSlots,
-  fieldOptions: {
-    canBindField: true,
-  },
+  propSchemas:inputPros,
+  slotSchemas:inputSlots,
+  canBindField: true,
   events: [
     {
       name: "onChange",
@@ -115,27 +52,15 @@ const options: SchemaOptions = {
 export const inputSchema: INodeSchema = createSchema(options)
 
 const textareaOptions: SchemaOptions = {
-  propsSchemas: [...inputPros,
+  propSchemas: [...inputPros,
   {
-    componentName: "FormItem",
-    props: {
+    componentName: "InputNumber",
+    "x-field": {
+      name: "rows",
       label: "$rows",
     },
-    children: [
-      {
-        componentName: "InputNumber",
-        "x-field": {
-          name: "rows",
-          params: {
-            withBind: true,
-          }
-        },
-      }
-    ]
   },
   ],
-  fieldOptions: {
-    canBindField: true,
-  }
+  canBindField: true,
 }
 export const textAreaSchema: INodeSchema = createSchema(textareaOptions)

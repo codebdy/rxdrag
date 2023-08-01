@@ -1,5 +1,5 @@
 import { CloseOutlined } from "@ant-design/icons"
-import { useToolsTranslate } from "@rxdrag/react-core"
+import { useSettersTranslate } from "@rxdrag/react-core"
 import { Button } from "antd"
 import { memo, useCallback } from "react"
 import { useStyles } from "../../../hooks"
@@ -18,7 +18,7 @@ export const PaneTitle = memo((
     borderColor: token.colorBorder,
     color: token.colorText,
   }))
-  const t = useToolsTranslate()
+  const t = useSettersTranslate()
 
   const handleCloseClick = useCallback(() => {
     setToggled(true)

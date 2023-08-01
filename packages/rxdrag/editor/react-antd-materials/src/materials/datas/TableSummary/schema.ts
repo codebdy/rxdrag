@@ -1,116 +1,59 @@
-import { IBindParams } from "@rxdrag/react-runner";
 import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
-import { IFieldMeta } from "@rxdrag/fieldy-schema";
-import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
 
-const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> = {
-  propsSchemas: [
+const options: SchemaOptions = {
+  propSchemas: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "bordered",
         label: "$bordered",
       },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "bordered",
-            params: {
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-        }
-      ],
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "split",
         label: "$split",
       },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "split",
-            params: {
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-        }
-      ],
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Radio.Group",
+      "x-field": {
+        name: "size",
         label: "$size",
       },
-      children: [
-        {
-          componentName: "Radio.Group",
-          "x-field": {
-            name: "size",
-            params: {
-              withBind: true,
-            }
+      props: {
+        optionType: "button",
+        options: [
+          {
+            label: "$large",
+            value: "large"
           },
-          props: {
-            optionType: "button",
-            options: [
-              {
-                label: "$large",
-                value: "large"
-              },
-              {
-                label: "$middle",
-                value: "middle"
-              },
-              {
-                label: "$small",
-                value: "small"
-              },
-            ],
-            defaultValue: "middle",
-          }
-        }
-      ]
-    }
-  ],
-  slotsSchemas: [
-    {
-      componentName: "FormItem",
-      props: {
-        label: "$header",
-      },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "header"
-          }
-        },
-      ]
-    },
-    {
-      componentName: "FormItem",
-      props: {
-        label: "$footer",
-      },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "footer"
-          }
-        },
-      ]
+          {
+            label: "$middle",
+            value: "middle"
+          },
+          {
+            label: "$small",
+            value: "small"
+          },
+        ],
+        defaultValue: "middle",
+      }
     },
   ],
-  fieldOptions: {
-    canBindField: true,
-  }
+  slotSchemas: [
+    {
+      label: "$header",
+      name: "header",
+    },
+    {
+      label: "$footer",
+      name: "footer",
+    },
+  ],
+  canBindField: true,
 }
 
 export const materialSchema: INodeSchema = createSchema(options)

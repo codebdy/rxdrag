@@ -2,75 +2,45 @@ import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
 
 const options: SchemaOptions = {
-  propsSchemas: [
+  propSchemas: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Radio.Group",
+      "x-field": {
+        name: "placement",
         label: "$placement",
       },
-      children: [
-        {
-          componentName: "Radio.Group",
-          "x-field": {
-            name: "placement",
-            params: {
-              withBind: true,
-            }
+      props: {
+        optionType: "button",
+        options: [
+          {
+            label: "$right",
+            value: "right"
           },
-          props: {
-            optionType: "button",
-            options: [
-              {
-                label: "$right",
-                value: "right"
-              },
-              {
-                label: "$left",
-                value: "left"
-              },
-              {
-                label: "$top",
-                value: "top"
-              },
-              {
-                label: "$bottom",
-                value: "bottom"
-              },
-            ],
-            defaultValue: "right",
-          }
-        }
-      ]
+          {
+            label: "$left",
+            value: "left"
+          },
+          {
+            label: "$top",
+            value: "top"
+          },
+          {
+            label: "$bottom",
+            value: "bottom"
+          },
+        ],
+        defaultValue: "right",
+      }
     },
   ],
-  slotsSchemas: [
+  slotSchemas: [
     {
-      componentName: "FormItem",
-      props: {
-        label: "$title",
-      },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "title"
-          }
-        }
-      ]
+      label: "$title",
+      name: "title"
     },
     {
-      componentName: "FormItem",
-      props: {
-        label: "$content",
-      },
-      children: [
-        {
-          componentName: "SlotSwitch",
-          props: {
-            name: "content"
-          }
-        }
-      ]
+      label: "$content",
+      name: "content"
     },
   ]
 }

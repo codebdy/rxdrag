@@ -1,34 +1,24 @@
-import { IBindParams } from "@rxdrag/react-runner";
 import { INodeSchema } from "@rxdrag/schema";
-import { SchemaOptions, createSchema, withFormItem } from "../../../shared";
-import { IFieldMeta } from "@rxdrag/fieldy-schema";
-import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
+import { SchemaOptions, createSchema } from "../../../shared";
 
-const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> = {
-  propsSchemas: [
+const options: SchemaOptions = {
+  propSchemas: [
     {
       componentName: "Input",
       "x-field": {
         name: "rowKey",
         label: "$rowKey",
-      },
+      }
     },
     {
       componentName: "Switch",
       "x-field": {
         name: "bordered",
         label: "$bordered",
-        params: {
-          valuePropName: "checked",
-        }
-      },
+      }
     },
     {
       componentName: "Radio.Group",
-      "x-field": {
-        name: "size",
-        label: "$size",
-      },
       props: {
         optionType: "button",
         options: [
@@ -46,14 +36,14 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> 
           },
         ],
         defaultValue: "large",
+      },
+      "x-field": {
+        name: "size",
+        label: "$size",
       }
     },
     {
       componentName: "Select",
-      "x-field": {
-        name: "pagination",
-        label: "$pagination",
-      },
       props: {
         options: [
           {
@@ -86,41 +76,28 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> 
           },
         ],
         defaultValue: "bottomRight",
+      },
+      "x-field": {
+        name: "pagination",
+        label: "$pagination",
       }
     },
   ],
-  slotsSchemas: [
+  slotSchemas: [
     {
-      componentName: "SlotSwitch",
-      props: {
-        name: "header",
-      },
-      "x-field": {
-        label: "$header",
-      },
+      name: "header",
+      label: "$header",
     },
     {
-      componentName: "SlotSwitch",
-      props: {
-        name: "footer",
-      },
-      "x-field": {
-        label: "$footer",
-      },
+      name: "footer",
+      label: "$footer",
     },
     {
-      componentName: "SlotSwitch",
-      props: {
-        name: "summary",
-      },
-      "x-field": {
-        label: "$summary",
-      },
+      name: "summary",
+      label: "$summary",
     },
   ],
-  fieldOptions: {
-    canBindField: false,
-  },
+  canBindField: false,
   events: [
     {
       name: "onPageChange",
@@ -129,4 +106,4 @@ const options: SchemaOptions<IFieldMeta<IBindParams>, ILogicFlowControllerMeta> 
   ],
 }
 
-export const materialSchema: INodeSchema = createSchema(withFormItem(options))
+export const materialSchema: INodeSchema = createSchema(options)

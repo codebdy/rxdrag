@@ -1,7 +1,7 @@
 import { IScriptControllerMeta } from "@rxdrag/minions-runtime-react"
 import Editor from "@monaco-editor/react";
 import { memo, useCallback, useEffect, useState } from "react"
-import { useThemeMode, useToolsTranslate } from "@rxdrag/react-core";
+import { useThemeMode, useSettersTranslate } from "@rxdrag/react-core";
 import { Button, Drawer, Form, Input, Switch } from "antd";
 import { createUuid } from "@rxdrag/shared";
 
@@ -21,7 +21,7 @@ export const ScriptControllerSetter = memo((
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value.id])
 
-  const t = useToolsTranslate()
+  const t = useSettersTranslate()
 
   const handleGlobalChange = useCallback((checked: boolean) => {
     if (checked) {

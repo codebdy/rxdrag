@@ -53,7 +53,7 @@ export interface IComponentConfig<ComponentType = unknown> {
   },
   //自定义属性面板用的多语言资源
   toolsLocales?: ILocales
-  tools?: {
+  setters?: {
     [name: string]: ComponentType | undefined
   },
   //可被编排的属性列表，用于逻辑编排属性板下拉提示

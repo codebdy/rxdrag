@@ -1,13 +1,14 @@
-import { CSSProperties, memo, useCallback, useMemo } from "react"
-import { Checkbox, Form, Input, InputNumber, Radio, Select, Slider, Space, Switch } from 'antd';
+import { CSSProperties, memo, useCallback, useEffect, useMemo } from "react"
+import { Checkbox, Form, Input, InputNumber, Radio, Select, Slider, Space } from 'antd';
 import { useDesignerEngine, useCurrentNode, useChangeNodeMeta, useLanguage, useDesignComponentsParams } from "@rxdrag/react-core";
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy";
 import { ComponentRender } from "@rxdrag/react-runner";
 import { INodeMeta } from "@rxdrag/schema";
-import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput,  CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, ExpressionInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, SizeInput, SlotSwitch, StyleSetter, TabPanel, Tabs, TextAlignSelect, ValueInput } from "@rxdrag/react-antd-props-inputs";
+import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput, CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, ExpressionInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, PropLayout, SizeInput, SlotSwitch, StyleSetter, TabPanel, Tabs, TextAlignSelect, ValueInput, YupRulesInput } from "@rxdrag/react-antd-props-inputs";
 import { ControllerSetter } from "./components";
 import { FormValue } from "@rxdrag/fieldy"
-import { FormItem } from "@rxdrag/react-antd-components";
+import { FormItem, Switch } from "@rxdrag/react-antd-components";
+import { setterLocales } from "@rxdrag/react-antd-props-inputs"
 
 const propertiesStyle: CSSProperties = {
   flex: 1,
@@ -20,7 +21,10 @@ export const SettingsForm = memo(() => {
   const currentNode = useCurrentNode()
   const changeMeta = useChangeNodeMeta()
   const lang = useLanguage()
-  const { tools } = useDesignComponentsParams()
+  const { setters } = useDesignComponentsParams()
+  useEffect(() => {
+    engine?.getLoacalesManager().registerSetterLocales(setterLocales)
+  }, [engine])
 
   const propsSchema = useMemo(() => {
     if (currentNode && currentNode.propsSchema) {
@@ -50,7 +54,7 @@ export const SettingsForm = memo(() => {
           <VirtualForm
             initialValue={currentNode?.meta as unknown as FormValue | undefined}
             onValueChange={handleMetaChange as unknown as (value: FormValue | undefined) => void}
-            //key={currentNode.id}
+          //key={currentNode.id}
           >
             <Form
               labelAlign="left"
@@ -118,9 +122,11 @@ export const SettingsForm = memo(() => {
                     ExpressionInput,
                     Space,
                     StyleSetter,
-                    ...tools,
+                    PropLayout,
+                    YupRulesInput,
+                    ...setters,
                   }}
-                  localesManager={engine?.getLoacalesManager()}
+                  //localesManager={engine?.getLoacalesManager()}
                 />
               }
             </Form>

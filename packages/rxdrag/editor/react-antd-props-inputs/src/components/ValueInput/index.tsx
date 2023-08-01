@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Button, Input, InputNumber, Switch } from "antd";
-import { useToolsTranslate } from "@rxdrag/react-core";
+import { useSettersTranslate } from "@rxdrag/react-core";
 import { isBool, isNum, isStr } from "@rxdrag/shared";
 import { memo, useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
@@ -62,7 +62,7 @@ export const ValueInput = memo((
 ) => {
   const { value, onChange } = props
   const [typeIndex, setTypeIndex] = useState(0)
-  const t = useToolsTranslate()
+  const t = useSettersTranslate()
 
   useEffect(() => {
     if (value === undefined) {

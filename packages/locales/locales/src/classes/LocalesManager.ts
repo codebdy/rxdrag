@@ -29,7 +29,7 @@ export class LocalesManager implements ILocalesManager {
   }
 
   getToolsMessage(key: string): string | null {
-    const currenLocales = this.locales?.[this.lang]?.tools
+    const currenLocales = this.locales?.[this.lang]?.setters
     return this.getValueByKey(currenLocales || {}, key)
   }
 
@@ -57,8 +57,8 @@ export class LocalesManager implements ILocalesManager {
     }
   }
 
-  registerToolsLocales(...locales: ILocales[]): void {
-    this.registerLocalesOnItem("tools", ...locales)
+  registerSetterLocales(...locales: ILocales[]): void {
+    this.registerLocalesOnItem("setters", ...locales)
   }
 
   translateDesignerSchema(componentName: string, schema: INodeSchema): INodeSchema {
@@ -103,7 +103,7 @@ export class LocalesManager implements ILocalesManager {
     return str
   }
 
-  private registerLocalesOnItem(item: "components" | "resources" | "tools", ...locales: ILocales[]): void {
+  private registerLocalesOnItem(item: "components" | "resources" | "setters", ...locales: ILocales[]): void {
     for (const locale of locales) {
       for (const lang of Object.keys(locale)) {
         if (!this.locales[lang]) {

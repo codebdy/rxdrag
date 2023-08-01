@@ -1,11 +1,12 @@
-import { INodeSchema } from "@rxdrag/schema";
-import { FieldOptions } from "./createFieldSchema";
 import { IComponentEvent } from "./createControllerSchema";
+import { ISlotSchema } from "./transSlotSchemas";
+import { INodeSchema } from "@rxdrag/schema";
+import { IFieldMeta } from "@rxdrag/fieldy";
+import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type SchemaOptions<IField = any, IReactions = any> = {
-  propsSchemas?: INodeSchema<IField, IReactions>[];
-  slotsSchemas?: INodeSchema<IField, IReactions>[];
-  fieldOptions?: FieldOptions;
+export type SchemaOptions = {
+  propSchemas?: INodeSchema<IFieldMeta, ILogicFlowControllerMeta>[];
+  slotSchemas?: ISlotSchema[];
+  canBindField?: boolean,
   events?: IComponentEvent[];
 };

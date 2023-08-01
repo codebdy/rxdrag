@@ -5,108 +5,45 @@ import { SchemaOptions, createSchema } from "../../../shared";
 const inputNumberPros = [
   ...inputBaseSchemas,
   {
-    componentName: "FormItem",
-    props: {
+    componentName: "Switch",
+    "x-field": {
+      name: "showCount",
       label: "$showCount",
     },
-    children: [
-      {
-        componentName: "Switch",
-        "x-field": {
-          name: "showCount",
-          params:{
-            valuePropName: "checked",
-            withBind: true,
-          }
-        },
-      }
-    ]
   },
   {
-    componentName: "FormItem",
-    props: {
+    componentName: "InputNumber",
+    "x-field": {
+      name: "maxLength",
       label: "$maxLength",
     },
-    children: [
-      {
-        componentName: "InputNumber",
-        "x-field": {
-          name: "maxLength",
-          params: {
-            withBind: true,
-          }
-        },
-      }
-    ]
   },
 ]
 
 const inputSlots = [
   {
-    componentName: "FormItem",
-    props: {
-      label: "$addonBefore",
-    },
-    children: [
-      {
-        componentName: "SlotSwitch",
-        props: {
-          name: "addonBefore"
-        }
-      }
-    ]
+    label: "$addonBefore",
+    name: "addonBefore",
   },
   {
-    componentName: "FormItem",
-    props: {
-      label: "$addonAfter",
-    },
-    children: [
-      {
-        componentName: "SlotSwitch",
-        props: {
-          name: "addonAfter"
-        }
-      }
-    ]
+    label: "$addonAfter",
+    name: "addonAfter",
   },
   {
-    componentName: "FormItem",
-    props: {
-      label: "$prefix",
-    },
-    children: [
-      {
-        componentName: "SlotSwitch",
-        props: {
-          name: "prefix"
-        }
-      }
-    ]
+    label: "$prefix",
+    name: "prefix",
   },
   {
-    componentName: "FormItem",
-    props: {
-      label: "$suffix",
-    },
-    children: [
-      {
-        componentName: "SlotSwitch",
-        props: {
-          name: "suffix"
-        }
-      }
-    ]
+    label: "$suffix",
+    name: "suffix",
   },
 ]
 
 
 const options: SchemaOptions = {
-  propsSchemas:inputNumberPros,
-  slotsSchemas:inputSlots,
-  fieldOptions: {
-    canBindField: true,
-  }
+  propSchemas: inputNumberPros,
+  slotSchemas: inputSlots,
+  canBindField: true,
 }
 export const inputNumberSchema: INodeSchema = createSchema(options)
 

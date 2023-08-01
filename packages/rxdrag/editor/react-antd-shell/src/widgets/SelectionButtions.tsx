@@ -1,5 +1,5 @@
 import { DocumentSelectionMode } from "@rxdrag/core"
-import { useSelectionModeState, useToolsTranslate } from "@rxdrag/react-core"
+import { useSelectionModeState, useSettersTranslate } from "@rxdrag/react-core"
 import { Button, Space, Tooltip } from "antd"
 import { memo, useCallback } from "react"
 import { SvgIcon } from "../layouts/CanvasToolbar/SvgIcon"
@@ -7,7 +7,7 @@ import { moveIcon, selectionIcon } from "../icons"
 
 export const SelectionButtions = memo(() => {
   const [selectionMode, setSelectionMode] = useSelectionModeState()
-  const t = useToolsTranslate()
+  const t = useSettersTranslate()
 
   const handlePointSelect = useCallback(() => {
     setSelectionMode(DocumentSelectionMode.Normal)

@@ -1,8 +1,8 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { SchemaOptions, createSchema, withFormItem } from "../../../shared";
+import { SchemaOptions, createSchema } from "../../../shared";
 
 const options: SchemaOptions = {
-  propsSchemas: [
+  propSchemas: [
     {
       componentName: "Select",
       "x-field": {
@@ -81,12 +81,9 @@ const options: SchemaOptions = {
       "x-field": {
         name: "wrap",
         label: "$wrap",
-        params: {
-          valuePropName: "checked",
-        }
       },
     },
   ],
 }
 
-export const schema: INodeSchema = createSchema(withFormItem(options))
+export const schema: INodeSchema = createSchema(options)

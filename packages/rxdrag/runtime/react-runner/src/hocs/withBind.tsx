@@ -2,22 +2,22 @@ import React from "react"
 import { useField } from "@rxdrag/react-fieldy"
 import { ReactComponent } from "@rxdrag/react-shared"
 import { memo, useCallback, useEffect, useState } from "react"
-import { IBindParams } from "../interfaces"
-import { IFieldMeta } from "@rxdrag/fieldy-schema"
+import { IFieldMeta } from "@rxdrag/fieldy"
 
-export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMeta<IBindParams>): ReactComponent {
+export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMeta): ReactComponent {
 
-  if (!fieldMeta?.params?.withBind) {
+  //数组跟对象类型不需要绑定
+  if (fieldMeta?.type === "object" || fieldMeta?.type === "array" || !fieldMeta) {
     return WrappedComponent
   }
 
-  const propName = fieldMeta.params?.valuePropName || "value"
+  const propName = /*fieldMeta.params?.valuePropName || */"value"
 
-  return memo((props: {value?:unknown}) => {
+  return memo((props: { value?: unknown }) => {
     const [value, setValue] = useState<unknown>(props?.value)
     const field = useField()
 
-    const trigger = fieldMeta.params?.trigger || "onChange"
+    const trigger = /*fieldMeta.params?.trigger || */"onChange"
     const handleChange = useCallback((e?: { target?: { value?: unknown, [key: string]: unknown } }) => {
       let newValue = e?.target?.[propName]
       if (newValue === undefined && !e?.target) {

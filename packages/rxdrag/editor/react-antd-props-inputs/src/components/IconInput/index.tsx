@@ -1,5 +1,5 @@
 import { CloseCircleFilled } from "@ant-design/icons";
-import { useToolsTranslate } from "@rxdrag/react-core";
+import { useSettersTranslate } from "@rxdrag/react-core";
 import { Badge, Button, Modal } from "antd";
 import React, {  useCallback, useEffect, useState } from "react";
 import { memo } from "react"
@@ -20,7 +20,7 @@ export const IconInput = memo((
   const [visible, setVisible] = useState(false);
   const [selectedIcon, setSelectedIcon] = useState<string>();
   const [customizedIcon, setCustomizedIcon] = useState<string>();
-  const t = useToolsTranslate()
+  const t = useSettersTranslate()
 
   const reset = useCallback(() => {
     setSelectedIcon(value?.iconKey)

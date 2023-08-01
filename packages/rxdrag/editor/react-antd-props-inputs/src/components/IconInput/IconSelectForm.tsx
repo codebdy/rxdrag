@@ -1,4 +1,4 @@
-import { useToolsTranslate } from '@rxdrag/react-core';
+import { useSettersTranslate } from '@rxdrag/react-core';
 import { Button, Input, Radio, RadioChangeEvent, Space, Tabs } from 'antd';
 import React, { memo, useCallback, useMemo, useState } from 'react';
 import { findIcons, iconCategories } from '@rxdrag/react-antd-icons';
@@ -21,7 +21,7 @@ const IconSelectForm = memo((
   const { iconType, selectedIcon, onSelected, customizedIcon, onChangeCustomizedIcon, onTypeChange } = props;
   const [keyword, setKeyWord] = useState("");
   const [categoryName, setCategoryName] = useState(iconCategories[0].name);
-  const t = useToolsTranslate();
+  const t = useSettersTranslate();
 
   const getCategory = useCallback((name: string) => {
     for (const category of iconCategories) {

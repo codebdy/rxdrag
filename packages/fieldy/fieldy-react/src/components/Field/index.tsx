@@ -2,7 +2,7 @@ import React from "react"
 import { memo } from "react"
 import { XField } from "../XField"
 import { useCreateFieldSchema } from "../XField/hooks/useCreateFieldSchema"
-import { FieldType } from "@rxdrag/fieldy-schema"
+import { FieldType } from "@rxdrag/fieldy"
 
 //动态增加字段用这个，否则不要碰它
 export const Field = memo((

@@ -1,24 +1,17 @@
-import { IBindParams } from "@rxdrag/react-runner";
 import { INodeSchema } from "@rxdrag/schema";
-import { SchemaOptions, createSchema, createSlotsSchema, withFormItem } from "../../shared";
-import { IFieldMeta } from "@rxdrag/fieldy-schema"
+import { SchemaOptions, createSchema } from "../../shared";
 
-const options: SchemaOptions<IFieldMeta<IBindParams>> = {
-  propsSchemas: [
+const scehmaOptions: SchemaOptions = {
+  propSchemas: [
     {
       componentName: "Input",
       "x-field": {
-        name: "title",
         label: "$title",
-      },
+        name: "title",
+      }
     },
     {
       componentName: "Select",
-      "x-field": {
-        name: "type",
-        label: "$type",
-        defaultValue:"primary",
-      },
       props: {
         options: [
           {
@@ -46,54 +39,43 @@ const options: SchemaOptions<IFieldMeta<IBindParams>> = {
             label: 'Default',
           },
         ]
+      },
+      "x-field": {
+        label: "$type",
+        name: "type",
+        defaultValue: "primary",
       }
     },
     {
       componentName: "Switch",
       "x-field": {
-        name: "disabled",
         label: "$disabled",
-        params: {
-          valuePropName: "checked",
-        }
-      },
+        name: "disabled",
+      }
     },
     {
       componentName: "Switch",
       "x-field": {
-        name: "block",
         label: "$block",
-        params: {
-          valuePropName: "checked",
-        }
-      },
+        name: "block",
+      }
     },
     {
       componentName: "Switch",
       "x-field": {
-        name: "danger",
         label: "$danger",
-        params: {
-          valuePropName: "checked",
-        }
-      },
+        name: "danger",
+      }
     },
     {
       componentName: "Switch",
       "x-field": {
-        name: "ghost",
         label: "$ghost",
-        params: {
-          valuePropName: "checked",
-        }
-      },
+        name: "ghost",
+      }
     },
     {
       componentName: "Radio.Group",
-      "x-field": {
-        name: "shape",
-        label: "$shape",
-      },
       props: {
         optionType: "button",
         size: "small",
@@ -112,14 +94,14 @@ const options: SchemaOptions<IFieldMeta<IBindParams>> = {
           },
         ],
         defaultValue: "default",
+      },
+      "x-field": {
+        label: "$shape",
+        name: "shape",
       }
     },
     {
       componentName: "Radio.Group",
-      "x-field": {
-        name: "size",
-        label: "$size",
-      },
       props: {
         optionType: "button",
         size: "small",
@@ -138,15 +120,19 @@ const options: SchemaOptions<IFieldMeta<IBindParams>> = {
           },
         ],
         defaultValue: "middle",
+      },
+      "x-field": {
+        label: "$size",
+        name: "size",
       }
     },
   ],
-  slotsSchemas: createSlotsSchema(
+  slotSchemas: [
     {
       name: "icon",
       label: "$icon"
     }
-  ),
+  ],
   events: [
     {
       name: "onClick",
@@ -155,4 +141,4 @@ const options: SchemaOptions<IFieldMeta<IBindParams>> = {
   ],
 }
 
-export const buttonSchema: INodeSchema = createSchema(withFormItem(options))
+export const buttonSchema: INodeSchema = createSchema(scehmaOptions)

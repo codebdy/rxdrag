@@ -2,8 +2,7 @@ import { INodeSchema } from "@rxdrag/schema"
 import { memo, useEffect, useState } from "react"
 import { ComponentView, IComponentRenderSchema } from "./ComponentView"
 import { transToRenderSchema } from "./transform"
-import { IFieldMeta } from "@rxdrag/fieldy-schema"
-import { IBindParams } from "./interfaces"
+import { IFieldMeta } from "@rxdrag/fieldy"
 import { IComponents } from "@rxdrag/react-shared"
 import { ControllerFactories, RuntimeRoot } from "./RuntimeRoot"
 import { ILocalesManager } from "@rxdrag/locales"
@@ -18,7 +17,7 @@ export const ComponentRender = memo((props: {
   const [node, setNode] = useState<IComponentRenderSchema>()
   useEffect(() => {
     if (root) {
-      setNode(transToRenderSchema(root as INodeSchema<IFieldMeta<IBindParams> | undefined>))
+      setNode(transToRenderSchema(root as INodeSchema<IFieldMeta | undefined>))
     } else {
       setNode(undefined)
     }

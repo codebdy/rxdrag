@@ -1,90 +1,56 @@
-import { IBindParams } from "@rxdrag/react-runner";
-import {  INodeSchema } from "@rxdrag/schema";
+import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
-import { IFieldMeta } from "@rxdrag/fieldy-schema";
 
-const options: SchemaOptions<IFieldMeta<IBindParams>> = {
-  propsSchemas: [
+const options: SchemaOptions = {
+  propSchemas: [
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Input",
+      "x-field": {
+        name: "title",
         label: "$title",
-      },
-      children: [
-        {
-          componentName: "Input",
-          "x-field": {
-            name: "title",
-            params: {
-              withBind: true,
-            }
-          },
-        }
-      ]
+      }
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Select",
+      "x-field": {
+        name: "type",
         label: "$type",
       },
-
-      children: [
-        {
-          componentName: "Select",
-          "x-field": {
-            name: "type",
-            params: {
-              withBind: true,
-            }
+      props: {
+        options: [
+          {
+            value: 'primary',
+            label: 'Primary',
           },
-          props: {
-            options: [
-              {
-                value: 'primary',
-                label: 'Primary',
-              },
-              {
-                value: 'ghost',
-                label: 'Ghost',
-              },
-              {
-                value: 'dashed',
-                label: 'Dashed',
-              },
-              {
-                value: 'link',
-                label: 'Link',
-              },
-              {
-                value: 'text',
-                label: 'Text',
-              },
-              {
-                value: 'default',
-                label: 'Default',
-              },
-            ]
-          }
-        }
-      ]
+          {
+            value: 'ghost',
+            label: 'Ghost',
+          },
+          {
+            value: 'dashed',
+            label: 'Dashed',
+          },
+          {
+            value: 'link',
+            label: 'Link',
+          },
+          {
+            value: 'text',
+            label: 'Text',
+          },
+          {
+            value: 'default',
+            label: 'Default',
+          },
+        ]
+      }
     },
     {
-      componentName: "FormItem",
-      props: {
+      componentName: "Switch",
+      "x-field": {
+        name: "disabled",
         label: "$disabled",
       },
-      children: [
-        {
-          componentName: "Switch",
-          "x-field": {
-            name: "disabled",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
-          },
-        }
-      ]
     },
   ]
 }

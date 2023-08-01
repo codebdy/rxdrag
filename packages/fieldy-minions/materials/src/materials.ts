@@ -9,6 +9,8 @@ import { setFormValueMaterial } from "./setFormValue";
 import { readFormValueMaterial } from "./readFormValue";
 import { subscribeFormMaterial } from "./subscribeForm";
 import { validateFormMaterial } from "./validateForm";
+import { resetFormMaterial } from "./resetForm";
+import { resetFieldMaterial } from "./resetField";
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -17,13 +19,15 @@ export const fieldyActivities: IFieldyActivityMaterial<any>[] = [
   readFormValueMaterial,
   subscribeFormMaterial,
   validateFormMaterial,
+  resetFormMaterial,
   setFieldValueMaterial,
   readFieldValueMaterial,
   subscribeFieldMaterial,
   validateFieldMaterial,
+  resetFieldMaterial,
 ]
 
-export const fieldyActivityMaterialCategory: ActivityMaterialCategory<ReactNode>=   {
+export const fieldyActivityMaterialCategory: ActivityMaterialCategory<ReactNode> = {
   name: '$dataModel',
   materials: fieldyActivities,
 }

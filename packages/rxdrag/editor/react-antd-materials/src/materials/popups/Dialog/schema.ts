@@ -1,9 +1,9 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { SchemaOptions, createSchema, createSlotsSchema, withFormItem } from "../../../shared";
+import { SchemaOptions, createSchema } from "../../../shared";
 
 const options: SchemaOptions = {
-  propsSchemas: [],
-  slotsSchemas: createSlotsSchema(
+  propSchemas: [],
+  slotSchemas: [
     {
       name: "title",
       label: "$title"
@@ -12,7 +12,7 @@ const options: SchemaOptions = {
       name: "footer",
       label: "$footer"
     },
-  ),
+  ],
 }
 
-export const materialSchema: INodeSchema = createSchema(withFormItem(options))
+export const materialSchema: INodeSchema = createSchema(options)
