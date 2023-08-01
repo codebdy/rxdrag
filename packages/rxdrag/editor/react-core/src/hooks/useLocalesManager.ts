@@ -5,5 +5,5 @@ import { DesignerEngineContext } from "../contexts";
 
 export function useLocalesManager(): ILocalesManager | undefined {
   const designer = useContext<IDesignerEngine | undefined>(DesignerEngineContext)
-  return designer?.getLoacalesManager();
+  return designer?.getLocalesManager();
 }

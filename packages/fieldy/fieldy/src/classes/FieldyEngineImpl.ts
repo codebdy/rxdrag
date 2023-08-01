@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "@rxdrag/shared";
-import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPlayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SET_FIELD_INITAL_VALUE, SET_FIELD_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SetFieldStatePayload, SET_FIELD_STATE, SET_FORM_INITIALZED_FLAG, SET_FORM_DEFAULT_VALUE, SET_FIELD_DEFAULT_VALUE, INPUT_FIELD_VALUE, SET_FORM_FIELDS_FEEDBACKS, SetFormFeedbacksPayload, IFieldFeedback } from "../actions";
+import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SET_FIELD_INITIAL_VALUE, SET_FIELD_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SetFieldStatePayload, SET_FIELD_STATE, SET_FORM_INITIALIZED_FLAG, SET_FORM_DEFAULT_VALUE, SET_FIELD_DEFAULT_VALUE, INPUT_FIELD_VALUE, SET_FORM_FIELDS_FEEDBACKS, SetFormFeedbacksPayload, IFieldFeedback } from "../actions";
 import { FieldChangeListener, FieldState, FieldValueChangeListener, FormChangeListener, FormState, FormValue, FormValueChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Unsubscribe } from "../interfaces/fieldy";
 import { reduce, State } from "../reducers";
 import { FormImpl } from "./FormImpl";
@@ -85,7 +85,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
     })
 
     this.store.dispatch({
-      type: SET_FORM_INITIALZED_FLAG,
+      type: SET_FORM_INITIALIZED_FLAG,
       payload: {
         formName: name,
         initialized: true,
@@ -187,7 +187,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
     }
     this.dispatch(
       {
-        type: SET_FIELD_INITAL_VALUE,
+        type: SET_FIELD_INITIAL_VALUE,
         payload: payload,
       }
     )
@@ -258,16 +258,16 @@ export class FieldyEngineImpl implements IFieldyEngine {
   getFieldInitialValue(formName: string, fieldPath: string): unknown {
     const formState = this.getFormState(formName)
     if (formState) {
-      const formHelpr = new FormHelper(formState)
-      return formHelpr.getInitialValueByPath(fieldPath)
+      const formHelper = new FormHelper(formState)
+      return formHelper.getInitialValueByPath(fieldPath)
     }
   }
 
   getFieldDefaultValue(formName: string, fieldPath: string): unknown {
     const formState = this.getFormState(formName)
     if (formState) {
-      const formHelpr = new FormHelper(formState)
-      return formHelpr.getDefaultValueByPath(fieldPath)
+      const formHelper = new FormHelper(formState)
+      return formHelper.getDefaultValueByPath(fieldPath)
     }
   }
 
@@ -275,8 +275,8 @@ export class FieldyEngineImpl implements IFieldyEngine {
   getFieldValue(formName: string, fieldPath: string) {
     const formState = this.getFormState(formName)
     if (formState) {
-      const formHelpr = new FormHelper(formState)
-      return formHelpr.getValueByPath(fieldPath)
+      const formHelper = new FormHelper(formState)
+      return formHelper.getValueByPath(fieldPath)
     }
   }
 
@@ -338,7 +338,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
     return this.store.subscribe(handleChange)
   }
 
-  dispatch(action: IAction<FormActionPlayload>): void {
+  dispatch(action: IAction<FormActionPayload>): void {
     this.store.dispatch(action)
   }
 

@@ -1,5 +1,5 @@
 import { IDesignerEngine, ITreeNode } from "../../../interfaces";
-import { AUX_BACKGROUND_COLOR, AUX_COLOR, TOOLBAR_HEIGHT } from "../../consts";
+import { AUX_BACKGROUND_COLOR, AUX_COLOR, TOOLBAR_HEIGHT } from "../../constants";
 import { IAuxControl } from "../interfaces";
 
 export abstract class AbstractButton implements IAuxControl{

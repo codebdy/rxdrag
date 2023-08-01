@@ -40,7 +40,7 @@ export class Signals extends AbstractActivity<IIntervalConfig> {
     this.next(this.inputValue)
   }
 
-  destory = () => {
+  destroy = () => {
     console.log("定时器销毁", this.timer)
     this.stopHandler()
   }

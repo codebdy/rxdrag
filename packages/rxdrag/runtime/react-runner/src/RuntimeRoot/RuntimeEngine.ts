@@ -85,11 +85,11 @@ export class RuntimeEngine {
     delete this.controllers[controllerKey]
   }
 
-  public destory = () => {
+  public destroy = () => {
     //销毁控制器引擎
     console.log("销毁控制器引擎")
     for (const ctrlKey of Object.keys(this.controllers)) {
-      this.controllers[ctrlKey]?.destory()
+      this.controllers[ctrlKey]?.destroy()
     }
     this.controllers = {}
     this.globalControllers = {}

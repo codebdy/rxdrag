@@ -24,7 +24,7 @@ export const Workbench = memo((props: WorkbenchProps) => {
 
   useEffect(() => {
     return () => {
-      shell?.destory()
+      shell?.destroy()
     }
   }, [shell])
   return (

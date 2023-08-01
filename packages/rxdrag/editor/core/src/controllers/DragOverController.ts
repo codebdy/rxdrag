@@ -1,5 +1,5 @@
 import { DragMoveEvent } from "../shell/events";
-import { AcceptType, DrageOverOptions } from "../interfaces/action";
+import { AcceptType, DragOverOptions } from "../interfaces/action";
 import { IPlugin } from "../interfaces/plugin";
 import { IDropPosition, PositionJudger, RelativePosition } from "../utils/coordinate";
 import { DragOverState } from "../reducers/dragOver";
@@ -7,14 +7,14 @@ import { isArr } from "@rxdrag/shared"
 import { ID, IDesignerEngine, Unsubscribe } from "../interfaces";
 
 export class DragOverControllerImpl implements IPlugin {
-  name: string = "default.drag-over-controller";
+  name = "default.drag-over-controller";
 
-  dragover: DrageOverOptions | null = null
-  unsucribe: Unsubscribe
-  unscribeNodeChange: Unsubscribe
+  dragover: DragOverOptions | null = null
+  unsubscribe: Unsubscribe
+  subscribeNodeChange: Unsubscribe
   constructor(protected engine: IDesignerEngine) {
-    this.unsucribe = engine.getShell().subscribeTo(DragMoveEvent, this.handleDragMove)
-    this.unscribeNodeChange = engine.getMonitor().subscribeToDragOver(this.handleDragoverChange)
+    this.unsubscribe = engine.getShell().subscribeTo(DragMoveEvent, this.handleDragMove)
+    this.subscribeNodeChange = engine.getMonitor().subscribeToDragOver(this.handleDragoverChange)
   }
 
   handleDragoverChange = (dragover: DragOverState | null) => {
@@ -96,9 +96,9 @@ export class DragOverControllerImpl implements IPlugin {
       return AcceptType.Reject
     }
     if (position.position === RelativePosition.In) {
-      const beheavior = this.engine.getNodeBehavior(position.targetId)
+      const behavior = this.engine.getNodeBehavior(position.targetId)
       const node = this.engine.getMonitor().getNode(position.targetId)
-      if (beheavior?.isDroppable() && !node?.meta.locked) {
+      if (behavior?.isDroppable() && !node?.meta.locked) {
         return AcceptType.Accept
       }
       if (isArr(resource.elements)) {
@@ -110,8 +110,8 @@ export class DragOverControllerImpl implements IPlugin {
     } else {
       const parentId = this.engine.getMonitor().getNode(position.targetId)?.parentId
       if (parentId) {
-        const beheavior = this.engine.getNodeBehavior(parentId)
-        if (beheavior?.isDroppable()) {
+        const behavior = this.engine.getNodeBehavior(parentId)
+        if (behavior?.isDroppable()) {
           return AcceptType.Accept
         }
       }
@@ -121,8 +121,8 @@ export class DragOverControllerImpl implements IPlugin {
   }
 
 
-  destory(): void {
-    this.unsucribe()
+  destroy(): void {
+    this.unsubscribe()
   }
 }
 

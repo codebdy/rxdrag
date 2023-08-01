@@ -28,7 +28,7 @@ export const setVariableMaterial: IRxDragActivityMaterial<IVariableConfig, ICont
   },
   schema: variableSchema,
   subTitle: (config?: IVariableConfig, context?: IControllerEditorContextParam) => {
-    const controllerName = context?.controllers?.find(controler => controler.id === config?.param?.controllerId)?.name
+    const controllerName = context?.controllers?.find(controller => controller.id === config?.param?.controllerId)?.name
     return controllerName ? (controllerName + "/" + (config?.param?.variable || "")) : ""
   },
   activityName: SetVariable.NAME,

@@ -6,7 +6,7 @@ import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { customizedLoopMaterial } from "./customizedLoop";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const commonActivites: IActivityMaterial<any, any, any, any>[] = [
+export const commonActivities: IActivityMaterial<any, any, any, any>[] = [
   customizedLoopMaterial,
   routeToMaterial,
   infoMessageMaterial,

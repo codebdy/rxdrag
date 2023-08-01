@@ -9,10 +9,10 @@ export class PropExpression {
     const $self = this.field;
     const $form = this.field.form;
     const siblingFields = getChildFields(this.field.fieldy.getFormState(this.field.form.name)?.fields || {}, this.field.basePath);
-    const sbilings: { [key: string]: IField | undefined } = {}
+    const siblings: { [key: string]: IField | undefined } = {}
     for (const sibling of siblingFields) {
       if (sibling.path !== this.field.path) {
-        sbilings["$" + sibling.name] = this.field.form.getField(sibling.path);
+        siblings["$" + sibling.name] = this.field.form.getField(sibling.path);
       }
     }
     try {
@@ -20,10 +20,10 @@ export class PropExpression {
         return
       }
       console.log("====>", this.expression)
-      const value = new Function("$self", "$form", ...Object.keys(sbilings), "return " + this.expression)(
+      const value = new Function("$self", "$form", ...Object.keys(siblings), "return " + this.expression)(
         $self,
         $form,
-        ...Object.values(sbilings)
+        ...Object.values(siblings)
       )
       if (value !== this.previousValue) {
         this.previousValue = value

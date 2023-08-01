@@ -24,7 +24,7 @@ export class AbstractKeyboardEvent {
     return this.originEvent.metaKey
   }
 
-  get altkey() {
+  get altKey() {
     return this.originEvent.altKey
   }
 

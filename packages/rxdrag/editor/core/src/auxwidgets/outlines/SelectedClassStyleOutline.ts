@@ -5,7 +5,7 @@ import { DraggingResourceState } from "../../reducers/draggingResource";
 import { CanvasResizeEvent, CanvasScrollEvent } from "../../shell/events";
 import { AddDecoratorEvent } from "../../shell/events/canvas/AddDecoratorEvent";
 import { RemoveDecoratorEvent } from "../../shell/events/canvas/RemoveDecoratorEvent";
-import { AUX_BACKGROUND_COLOR } from "../consts";
+import { AUX_BACKGROUND_COLOR } from "../constants";
 
 //这个不好用，有的地方会显示不全，废弃
 export class SelectedClassStyleOutlineImpl implements IPlugin {
@@ -13,7 +13,7 @@ export class SelectedClassStyleOutlineImpl implements IPlugin {
   htmlStyle: HTMLElement;
   private unsubscribe: Unsubscribe;
   private nodeChangeUnsubscribe: Unsubscribe;
-  private selecteNodes: ID[] | null = null
+  private selectedNodes: ID[] | null = null
   private refreshedFlag = false
   private unCanvasScroll: Unsubscribe
   private unCanvasResize: Unsubscribe
@@ -58,7 +58,7 @@ export class SelectedClassStyleOutlineImpl implements IPlugin {
         element.classList.add('rx-node-outline')
       }
     }
-    this.selecteNodes = selectedIds
+    this.selectedNodes = selectedIds
   }
 
   handleDraggingNodes = (dragging: DraggingNodesState | null) => {
@@ -71,12 +71,12 @@ export class SelectedClassStyleOutlineImpl implements IPlugin {
 
   private hideWhenDragging = (dragging: boolean) => {
     if (dragging) {
-      for (const id of this.selecteNodes || []) {
+      for (const id of this.selectedNodes || []) {
         const element = this.engine.getShell().getElement(id)
         element?.classList.remove("rx-node-outline")
       }
     } else {
-      for (const id of this.selecteNodes || []) {
+      for (const id of this.selectedNodes || []) {
         const element = this.engine.getShell().getElement(id)
         element?.classList.add("rx-node-outline")
       }
@@ -89,7 +89,7 @@ export class SelectedClassStyleOutlineImpl implements IPlugin {
 
   handleThemeChange = () => {
     setTimeout(() => {
-      this.listenSelectChange(this.selecteNodes)
+      this.listenSelectChange(this.selectedNodes)
     }, 200)
   }
 
@@ -97,13 +97,13 @@ export class SelectedClassStyleOutlineImpl implements IPlugin {
     this.refreshedFlag = true
     setTimeout(() => {
       if (this.refreshedFlag) {
-        this.listenSelectChange(this.selecteNodes)
+        this.listenSelectChange(this.selectedNodes)
         this.refreshedFlag = false
       }
     }, 20)
   }
 
-  destory(): void {
+  destroy(): void {
     this.clear()
     this.unsubscribe()
     this.nodeChangeUnsubscribe()
@@ -117,7 +117,7 @@ export class SelectedClassStyleOutlineImpl implements IPlugin {
   }
 
   private clear() {
-    for (const id of this.selecteNodes || []) {
+    for (const id of this.selectedNodes || []) {
       const element = this.engine.getShell().getElement(id)
       element?.classList.remove("rx-node-outline")
     }

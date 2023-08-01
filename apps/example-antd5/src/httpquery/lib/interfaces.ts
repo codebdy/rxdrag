@@ -16,7 +16,7 @@ export interface IPostParam {
   data?: unknown;
 }
 
-export interface IReponseHandler {
+export interface IResponseHandler {
   onError?(error?: Error): void,
   onData?(data?: unknown): void,
   onLoading?(loading?: boolean): void,
@@ -24,8 +24,8 @@ export interface IReponseHandler {
 }
 
 export interface IRestfulQuerySession {
-  query(param: string, responseOptions: IReponseHandler): void;
-  destory(): void;
+  query(param: string, responseOptions: IResponseHandler): void;
+  destroy(): void;
 }
 
 

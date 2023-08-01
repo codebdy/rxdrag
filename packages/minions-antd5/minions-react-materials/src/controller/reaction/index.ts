@@ -13,7 +13,7 @@ export const reactionMaterial: IRxDragActivityMaterial<IReactionConfig, IControl
   defaultPorts: {
   },
   subTitle: (config?: IReactionConfig, context?: IControllerEditorContextParam) => {
-    const controller = context?.controllers?.find(controler => controler.id === config?.param?.controllerId)
+    const controller = context?.controllers?.find(controller => controller.id === config?.param?.controllerId)
     const controllerName = controller?.name
     const reaction = controller?.reactions?.find(reaction => reaction.id === config?.param?.logicFlowId)
     return controllerName ? (controllerName + "/" + (reaction?.label || "")) : ""

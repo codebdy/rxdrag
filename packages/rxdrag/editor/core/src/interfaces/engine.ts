@@ -23,7 +23,7 @@ export interface IDesignerEngine {
 	getShell(): IDesignerShell
 	getComponentManager(): IComponentManager
 	getResourceManager(): IResourceManager
-	getLoacalesManager(): ILocalesManager
+	getLocalesManager(): ILocalesManager
 	getDecoratorManager(): IDecoratorManager
 	getActions(): IActions
 
@@ -31,7 +31,7 @@ export interface IDesignerEngine {
 	getPlugin(name: string): IPlugin | null
 
 	dispatch(action: IAction<unknown>): void
-	destory(): void
+	destroy(): void
 
 	getNodeBehavior(nodeId: ID): NodeBehavior
 }

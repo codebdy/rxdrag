@@ -9,7 +9,7 @@ export interface IShellPane {
 	appendChild(child: HTMLElement): void
 	contains(child: HTMLElement): boolean
 	removeChild(child: HTMLElement): void
-	destory(): void
+	destroy(): void
 }
 
 export interface IDriver {
@@ -36,7 +36,7 @@ export interface IDesignerShell extends ISubscribable, IDispatchable<ICustomEven
 
 	getElement(nodeId: ID): HTMLElement | null
 	getTopRect(nodeId: ID): IRect | null
-	destory(): void
+	destroy(): void
 }
 
 export type IDriverFactory = (

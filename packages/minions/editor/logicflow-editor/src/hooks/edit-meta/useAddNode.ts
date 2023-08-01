@@ -11,7 +11,7 @@ export function useAddNode() {
   const graph = useGraph()
   const dispatch = useDispatch()
 
-  const markeChange = useMarkChange()
+  const markChange = useMarkChange()
   const backup = useBackup()
   const handleNodeAdd = useCallback(({ node }: { node: Node, index: number, options: unknown }) => {
     const { meta } = node.getData() as INodeData
@@ -32,8 +32,8 @@ export function useAddNode() {
       type: ActionType.ADD_NODE,
       payload: newData
     })
-    markeChange()
-  }, [backup, dispatch, graph, markeChange])
+    markChange()
+  }, [backup, dispatch, graph, markChange])
 
   useEffect(() => {
     graph?.on('node:added', handleNodeAdd)

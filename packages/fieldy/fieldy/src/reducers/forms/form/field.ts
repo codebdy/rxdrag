@@ -1,4 +1,4 @@
-import { FieldActionPayload, INPUT_FIELD_VALUE, SET_FIELD_INITAL_VALUE, SET_FIELD_STATE, SetFieldStatePayload } from "../../../actions";
+import { FieldActionPayload, INPUT_FIELD_VALUE, SET_FIELD_INITIAL_VALUE, SET_FIELD_STATE, SetFieldStatePayload } from "../../../actions";
 import { FieldState, IAction } from "../../../interfaces/fieldy";
 
 export function fieldReduce(state: FieldState, action: IAction<FieldActionPayload>): FieldState {
@@ -13,7 +13,7 @@ export function fieldReduce(state: FieldState, action: IAction<FieldActionPayloa
         ...state,
         modified: true
       }
-    case SET_FIELD_INITAL_VALUE:{
+    case SET_FIELD_INITIAL_VALUE:{
       return {
         ...state,
         modified: false

@@ -3,7 +3,7 @@ import { ReactNode, useMemo } from "react";
 import { useTransMaterial } from "./useTransMaterial";
 import { useTrans } from "./useTrans";
 
-export function useTransMaterialCategorys(categories: ActivityMaterialCategory<ReactNode>[]) {
+export function useTransMaterialCategories(categories: ActivityMaterialCategory<ReactNode>[]) {
   const t = useTransMaterial();
   const tran = useTrans();
 

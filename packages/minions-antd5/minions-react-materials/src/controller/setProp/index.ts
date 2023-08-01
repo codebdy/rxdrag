@@ -29,7 +29,7 @@ export const setPropMaterial: IRxDragActivityMaterial<IPropConfig, IControllerEd
   },
   schema: propSchema,
   subTitle: (config?: IPropConfig, context?: IControllerEditorContextParam) => {
-    const controllerName = context?.controllers?.find(controler => controler.id === config?.param?.controllerId)?.name
+    const controllerName = context?.controllers?.find(controller => controller.id === config?.param?.controllerId)?.name
     return controllerName ? (controllerName + "/" + (config?.param?.prop || "")) : ""
   },
   activityName: SetProp.NAME,

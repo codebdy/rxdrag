@@ -15,7 +15,7 @@ export const useLanguage = () => {
   useEffect(() => {
     const monitor = engine?.getMonitor()
     if (monitor) {
-      const unsub = monitor.subscribeToLangeChange((lang) => {
+      const unsub = monitor.subscribeToLanguageChange((lang) => {
         setLang(lang)
       })
 

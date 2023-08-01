@@ -28,7 +28,7 @@ import {
 import { useExtractReferencedLogicFlowMetas } from '../hooks/useExtractReferencedLogicFlowMetas';
 import { IComponents } from '@rxdrag/react-shared';
 
-const SytledContent = styled.div`
+const StyledContent = styled.div`
   display: flex;
   flex: 1;
   width: 100%;
@@ -75,7 +75,7 @@ export const ControllerMetaEditorAntd5 = memo(
       setters,
       ...other
     } = props;
-    const [localsRegiterFlag, setLocalsRegisterFlag] = useState(0);
+    const [localsRegisterFlag, setLocalsRegisterFlag] = useState(0);
     const [selected, setSelected] = useState<string>();
     const extractLogicFlowMetas = useExtractReferencedLogicFlowMetas();
 
@@ -131,13 +131,13 @@ export const ControllerMetaEditorAntd5 = memo(
 
     return (
       <ControllerEditorContext.Provider value={editorContextParam}>
-        <SytledContent
+        <StyledContent
           id="reactions-editor-container"
           style={{ height: height || 'calc(100vh - 160px)' }}
         >
           <LeftArea>
             <Members
-              key={localsRegiterFlag}
+              key={localsRegisterFlag}
               value={value}
               selected={selected}
               eventMetas={eventMetas}
@@ -166,7 +166,7 @@ export const ControllerMetaEditorAntd5 = memo(
               {...other}
             />
           )}
-        </SytledContent>
+        </StyledContent>
       </ControllerEditorContext.Provider>
     );
   }

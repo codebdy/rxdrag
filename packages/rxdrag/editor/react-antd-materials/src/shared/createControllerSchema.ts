@@ -1,4 +1,4 @@
-import { DESTORY_EVENT_NAME, INIT_EVENT_NAME } from "@rxdrag/minions-runtime-react";
+import { DESTROY_EVENT_NAME, INIT_EVENT_NAME } from "@rxdrag/minions-runtime-react";
 
 export interface IComponentEvent {
   name: string,
@@ -23,8 +23,8 @@ export function createControllerSchema(events?: IComponentEvent[]) {
             label: "$init",
           },
           {
-            name: DESTORY_EVENT_NAME,
-            label: "$destory",
+            name: DESTROY_EVENT_NAME,
+            label: "$destroy",
           },
           ...events || [],
         ],

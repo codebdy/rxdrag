@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IQueryParam, IReponseHandler } from "../interfaces";
+import { IQueryParam, IResponseHandler } from "../interfaces";
 import _ from "lodash"
 import axios from 'axios';
 
@@ -20,7 +20,7 @@ export const PREDEFINED_HEADERS = {
 export class QueryRecord {
   status?: QueryStatus;
   data?: any;
-  constructor(public param: IQueryParam, public handlers: IReponseHandler[]) { }
+  constructor(public param: IQueryParam, public handlers: IResponseHandler[]) { }
 
   mutateData(data: any) {
     const idName = this.param?.idField || "id"

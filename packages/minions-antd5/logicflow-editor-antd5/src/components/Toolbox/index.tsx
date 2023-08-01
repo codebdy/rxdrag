@@ -19,14 +19,14 @@ export const Toolbox = memo((props: {
     label: category.name,
     children: <ToolItemCategory>
       {
-        category.materials.map((materail, index) => {
-          return <ActivityResource key={index + materail.activityName} material={materail}>
+        category.materials.map((material, index) => {
+          return <ActivityResource key={index + material.activityName} material={material}>
             {
               (onStartDrag) => {
                 return <ToolItem
-                  icon={materail.icon}
-                  title={materail.label}
-                  color={materail.color}
+                  icon={material.icon}
+                  title={material.label}
+                  color={material.color}
                   onMouseDown={onStartDrag}
                 />
               }

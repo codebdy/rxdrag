@@ -6,32 +6,32 @@ export interface IFieldFeedback {
   messages?: string[] //Feedback message
 }
 
-export interface FormActionPlayload {
+export interface FormActionPayload {
   formName: string,
   [key: string]: unknown,
 }
 
-export interface FieldActionPayload extends FormActionPlayload {
+export interface FieldActionPayload extends FormActionPayload {
   path: string
 }
 
-export interface SetFormFieldsPayload extends FormActionPlayload {
+export interface SetFormFieldsPayload extends FormActionPayload {
   fieldSchemas: IFieldSchema[]
 }
 
-export interface RemoveFormFieldsPayload extends FormActionPlayload {
+export interface RemoveFormFieldsPayload extends FormActionPayload {
   paths: string[]
 }
 
-export interface SetFormValuePayload extends FormActionPlayload {
+export interface SetFormValuePayload extends FormActionPayload {
   value: FormValue
 }
 
-export interface SetFormFeedbacksPayload  extends FormActionPlayload {
+export interface SetFormFeedbacksPayload  extends FormActionPayload {
   feedbacks: IFieldFeedback[]
 }
 
-export interface SetFormInitializedFlagPayload extends FormActionPlayload {
+export interface SetFormInitializedFlagPayload extends FormActionPayload {
   initialized: boolean
 }
 

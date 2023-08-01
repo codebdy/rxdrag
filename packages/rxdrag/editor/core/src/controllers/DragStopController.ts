@@ -1,7 +1,7 @@
 import { IDesignerEngine, NodeRelativePosition } from "../interfaces";
 import { DragStopEvent } from "../shell/events";
 import { HistoryableActionType, IDocument, Unsubscribe } from "../interfaces";
-import { AcceptType, DrageOverOptions } from "../interfaces/action";
+import { AcceptType, DragOverOptions } from "../interfaces/action";
 import { IPlugin } from "../interfaces/plugin";
 import { DraggingNodesState } from "../reducers/draggingNodes";
 import { DraggingResourceState } from "../reducers/draggingResource";
@@ -9,17 +9,17 @@ import { RelativePosition } from "../utils/coordinate";
 import { invariant } from "@rxdrag/shared";
 
 export class DragStopControllerImpl implements IPlugin {
-  name: string = "default.drag-stop-controller";
+  name = "default.drag-stop-controller";
 
-  unsucribe: Unsubscribe
+  unsubscribe: Unsubscribe
   constructor(protected engine: IDesignerEngine) {
-    this.unsucribe = engine.getShell().subscribeTo(DragStopEvent, this.handleDragStop)
+    this.unsubscribe = engine.getShell().subscribeTo(DragStopEvent, this.handleDragStop)
   }
 
   handleDragStop = (e: DragStopEvent) => {
     this.drop(e)
     if (this.engine.getMonitor().getState().draggingResource) {
-      this.engine.getActions().endDragResouce()
+      this.engine.getActions().endDragResource()
     } else if (this.engine.getMonitor().getState().draggingNodes) {
       this.engine.getActions().endDragNodes()
     }
@@ -28,7 +28,7 @@ export class DragStopControllerImpl implements IPlugin {
 
   drop(e: DragStopEvent): void {
     const monitor = this.engine.getMonitor()
-    const dragOver = monitor.getDrageOver()
+    const dragOver = monitor.getDragOver()
     if (dragOver) {
       const document = this.engine.getNodeDocument(dragOver.targetId)
       invariant(document, "can not find node document by id:" + dragOver.targetId)
@@ -47,7 +47,7 @@ export class DragStopControllerImpl implements IPlugin {
     }
   }
 
-  private dropResource = (draggingResource: DraggingResourceState, dragOver: DrageOverOptions, document: IDocument) => {
+  private dropResource = (draggingResource: DraggingResourceState, dragOver: DragOverOptions, document: IDocument) => {
     const resource = this.engine.getResourceManager().getResource(draggingResource?.resource || "");
     const pos = this.tranPosition(dragOver.position)
     if (resource && pos && dragOver.type === AcceptType.Accept) {
@@ -57,7 +57,7 @@ export class DragStopControllerImpl implements IPlugin {
     }
   }
 
-  private dropNodes(draggingNodes: DraggingNodesState, dragOver: DrageOverOptions, document: IDocument) {
+  private dropNodes(draggingNodes: DraggingNodesState, dragOver: DragOverOptions, document: IDocument) {
     if (!draggingNodes) {
       return
     }
@@ -91,8 +91,8 @@ export class DragStopControllerImpl implements IPlugin {
     return null
   }
 
-  destory(): void {
-    this.unsucribe()
+  destroy(): void {
+    this.unsubscribe()
   }
 }
 

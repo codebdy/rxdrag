@@ -3,6 +3,6 @@ export interface IIcon {
   svgString?: string;
 }
 
-export const isEmpertyIcon = (icon?: IIcon) => {
+export const isEmptyIcon = (icon?: IIcon) => {
   return !icon || (!icon.iconKey && !icon.svgString)
 }

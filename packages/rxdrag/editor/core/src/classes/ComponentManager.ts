@@ -33,7 +33,7 @@ export class ComponentManager implements IComponentManager {
         this.registerBehaviors(new ComponentBehavior(designer.componentName, designer.behaviorRule))
       }
       if (designer.designerLocales) {
-        this.engine.getLoacalesManager().registerComponentLocales(designer.componentName, designer.designerLocales)
+        this.engine.getLocalesManager().registerComponentLocales(designer.componentName, designer.designerLocales)
       }
     }
   }

@@ -4,14 +4,14 @@ import { IPlugin } from "../../interfaces/plugin";
 import { DraggingNodesState } from "../../reducers/draggingNodes";
 
 export class DraggedAttenuatorImpl implements IPlugin {
-  name: string = "default.dragged-attenuator";
+  name = "default.dragged-attenuator";
   htmlStyle?: HTMLElement;
   draggingNodesOff: Unsubscribe
-  weakedElements: HTMLElement[] = []
+  weakenElements: HTMLElement[] = []
   shell: IDesignerShell
   startEvent: DragStartEvent | null = null
-  title: string = "undefined"
-  mounted: boolean = false
+  title = "undefined"
+  mounted = false
 
   constructor(private engine: IDesignerEngine) {
     this.shell = engine.getShell()
@@ -38,23 +38,23 @@ export class DraggedAttenuatorImpl implements IPlugin {
             }
           }
           element.classList.add("rx-dragging")
-          this.weakedElements.push(element)
+          this.weakenElements.push(element)
         }
       }
     } else {
       if (this.htmlStyle) {
         this.htmlStyle.remove()
       }
-      for (const element of this.weakedElements) {
+      for (const element of this.weakenElements) {
         element.classList.remove("rx-dragging")
       }
-      this.weakedElements = []
+      this.weakenElements = []
       this.htmlStyle = undefined
     }
   }
 
 
-  destory(): void {
+  destroy(): void {
     this.draggingNodesOff?.()
   }
 }

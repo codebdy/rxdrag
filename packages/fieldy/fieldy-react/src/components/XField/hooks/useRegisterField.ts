@@ -10,7 +10,7 @@ export function useRegisterField(fieldMeta: IFieldMeta) {
   const form = useForm()
 
   // 处理带点的name，比如：props.style.fontSize， 返回：props, props.style, props.style.fontSize三个Field meta
-  // fragment的feid集合也同样处理
+  // fragment的field集合也同样处理
   const fieldSchemas = useFieldSchemas(fieldMeta, parentPath)
 
   useEffect(() => {

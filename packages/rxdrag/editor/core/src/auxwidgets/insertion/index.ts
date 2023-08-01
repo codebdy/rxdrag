@@ -7,7 +7,7 @@ import { addZIndex } from "../../utils/add-zindex";
 import { RelativePosition } from "../../utils/coordinate";
 
 export class InsertionCursorImpl implements IPlugin {
-  name: string = "default.insertion";
+  name = "default.insertion";
   htmlCoverNode: HTMLElement;
   htmlCursorNode: HTMLElement;
   detachDragover: Unsubscribe
@@ -47,7 +47,7 @@ export class InsertionCursorImpl implements IPlugin {
         if (!this.shell.getContainer()?.contains(this.htmlCursorNode)) {
           this.shell.getContainer()?.appendChild(this.htmlCursorNode)
         }
-        this.renderCusor(dragover)
+        this.renderCursor(dragover)
         this.htmlCoverNode.style.display = "none"
       }
     } else {
@@ -75,7 +75,7 @@ export class InsertionCursorImpl implements IPlugin {
     }
   }
 
-  private renderCusor = (dragover: DragOverState) => {
+  private renderCursor = (dragover: DragOverState) => {
     const htmlDiv = this.engine.getShell().getElement(dragover?.targetId || "")
     const rect = this.engine.getShell().getTopRect(dragover?.targetId || "")
     if (rect && htmlDiv && dragover) {
@@ -113,7 +113,7 @@ export class InsertionCursorImpl implements IPlugin {
     }
   }
 
-  destory(): void {
+  destroy(): void {
     this.detachDragover()
     this.htmlCoverNode.remove()
     this.htmlCursorNode.remove()

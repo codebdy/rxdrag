@@ -25,7 +25,7 @@ export abstract class AbstractControllerActivity<Config extends IControllerConfi
     this.controller = controller
   }
 
-  destory = () => {
+  destroy = () => {
     //throw new Error("Method not implemented.");
   }
 }

@@ -6,9 +6,9 @@ import { IPlugin } from "../interfaces/plugin";
 export class StartDragControllerImpl implements IPlugin {
   name = "default.start-drag-controller";
 
-  unsucribe: Unsubscribe
+  unsubscribe: Unsubscribe
   constructor(protected engine: IDesignerEngine) {
-    this.unsucribe = engine.getShell().subscribeTo(DragStartEvent, this.handleDragStart)
+    this.unsubscribe = engine.getShell().subscribeTo(DragStartEvent, this.handleDragStart)
   }
 
   handleDragStart = (e: DragStartEvent) => {
@@ -22,9 +22,9 @@ export class StartDragControllerImpl implements IPlugin {
     } else if (e.data.targetRx?.nodeType === NodeType.Node) {
       const nodeId = e.data.targetRx?.rxId
       if (nodeId) {
-        const beheavior = this.engine.getNodeBehavior(nodeId)
+        const behavior = this.engine.getNodeBehavior(nodeId)
         const node = this.engine.getMonitor().getNode(nodeId)
-        if (beheavior.isDraggable() && !node?.isSlot) {
+        if (behavior.isDraggable() && !node?.isSlot) {
           this.engine.getActions().startDragNodes({
             initialMousePosition: getPosition(e.data),
             offset: getOffset(e.data),
@@ -36,8 +36,8 @@ export class StartDragControllerImpl implements IPlugin {
     }
   }
 
-  destory(): void {
-    this.unsucribe()
+  destroy(): void {
+    this.unsubscribe()
   }
 
 }

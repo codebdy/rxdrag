@@ -2,7 +2,7 @@
 import { createUuid } from "@rxdrag/shared";
 import { infoMessageSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
-import { IInfoMessageConfig, InfoMessage } from "@rxdrag/minions-react-antd5-activites"
+import { IInfoMessageConfig, InfoMessage } from "@rxdrag/minions-react-antd5-activities"
 import { infoIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
 

@@ -1,5 +1,5 @@
 import { Action } from "redux"
-import { FormActionPlayload, IFieldFeedback } from "../actions"
+import { FormActionPayload, IFieldFeedback } from "../actions"
 import { DisplayType, IFieldMeta, PatternType } from "./meta"
 import { IValidationError, IValidator } from "./validator"
 
@@ -11,7 +11,7 @@ export type Listener = () => void
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ValueChangeListener = (value: any) => void
 export type ErrorListener = (errors: IValidationError[]) => void
-export type SucessListener = (value: unknown) => void
+export type SuccessListener = (value: unknown) => void
 export type Unsubscribe = () => void
 
 export interface IFormProps {
@@ -104,7 +104,7 @@ export interface IValidationSubscriber {
   onValidateStart(listener: Listener): Unsubscribe
   onValidateEnd(listener: Listener): Unsubscribe
   onValidateFailed(listener: ErrorListener): Unsubscribe
-  onValidateSuccess(listener: SucessListener): Unsubscribe
+  onValidateSuccess(listener: SuccessListener): Unsubscribe
 }
 
 export interface IFormNode<T> extends IValidationSubscriber {
@@ -148,7 +148,7 @@ export interface IField extends IFormNode<unknown> {
   inputValue(value: unknown): void
   getFieldSchema(): IFieldSchema
   getSubFieldSchemas(): IFieldSchema[] | undefined
-  destory(): void
+  destroy(): void
 }
 
 export interface IFieldyEngine {
@@ -190,5 +190,5 @@ export interface IFieldyEngine {
   subscribeToFieldValueChange(formName: string, fieldPath: string, listener: FieldValueChangeListener): Unsubscribe
   subscribeToFormInitialized(formName: string, listener: FormChangeListener): Unsubscribe
 
-  dispatch(action: IAction<FormActionPlayload>): void
+  dispatch(action: IAction<FormActionPayload>): void
 }

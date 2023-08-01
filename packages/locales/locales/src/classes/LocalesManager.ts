@@ -6,8 +6,8 @@ import { ILocales, ILocalesManager } from "../interfaces";
 export class LocalesManager implements ILocalesManager {
   locales: ILocales = {
   }
-  constructor(public lang: string = "zh-CN", loacales?: ILocales) {
-    loacales && this.registerLocales(loacales)
+  constructor(public lang: string = "zh-CN", locales?: ILocales) {
+    locales && this.registerLocales(locales)
   }
 
   // setLanguage(lang: string): void {
@@ -18,19 +18,19 @@ export class LocalesManager implements ILocalesManager {
     return this.getValueByKey(this.locales?.[this.lang], key)
   }
 
-  getResouceMessage(key: string): string | null {
-    const currenLocales = this.locales[this.lang]?.resources
-    return this.getValueByKey(currenLocales || {}, key)
+  getResourceMessage(key: string): string | null {
+    const currentLocales = this.locales[this.lang]?.resources
+    return this.getValueByKey(currentLocales || {}, key)
   }
 
   getComponentMessage(componentName: string, key: string): string | null {
-    const currenLocales = this.locales?.[this.lang]?.components
-    return this.getValueByKey(currenLocales?.[componentName] || {}, key)
+    const currentLocales = this.locales?.[this.lang]?.components
+    return this.getValueByKey(currentLocales?.[componentName] || {}, key)
   }
 
   getToolsMessage(key: string): string | null {
-    const currenLocales = this.locales?.[this.lang]?.setters
-    return this.getValueByKey(currenLocales || {}, key)
+    const currentLocales = this.locales?.[this.lang]?.setters
+    return this.getValueByKey(currentLocales || {}, key)
   }
 
   registerLocales(...locales: ILocales[]): void {

@@ -8,7 +8,7 @@ export abstract class AbstractController implements IController {
   name?: string;
   protected isInitialized?: boolean;
   initEvent?: EventFunc | undefined;
-  destoryEvent?: EventFunc | undefined;
+  destroyEvent?: EventFunc | undefined;
   events: EventFuncs = {};
   protected variables: any = {};
   protected props: any = {};
@@ -29,7 +29,7 @@ export abstract class AbstractController implements IController {
   }
 
   abstract init(controllers: Controllers, context: unknown):void 
-  abstract destory(): void
+  abstract destroy(): void
 
   getVariable(name: string) {
     return this.variables[name]

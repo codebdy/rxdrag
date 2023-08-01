@@ -1,4 +1,4 @@
-import { FormActionPlayload } from "../actions"
+import { FormActionPayload } from "../actions"
 import { FormState, IAction } from "../interfaces/fieldy"
 import { formsReduce } from "./forms"
 
@@ -14,7 +14,7 @@ const initialState: State = {
 	forms: {}
 }
 
-export function reduce(state: State = initialState, action: IAction<FormActionPlayload>): State {
+export function reduce(state: State = initialState, action: IAction<FormActionPayload>): State {
 	return {
 		forms: formsReduce(state.forms, action)
 	}

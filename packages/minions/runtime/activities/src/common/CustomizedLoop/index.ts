@@ -2,13 +2,13 @@ import { AbstractActivity, Activity, Input, LogicFlow } from "@rxdrag/minions-ru
 import { INodeDefine } from "@rxdrag/minions-schema";
 import _ from "lodash"
 
-export interface IcustomizedLoopConifg {
+export interface ICustomizedLoopConfig {
   fromInput?: boolean,
   times?: number
 }
 
 @Activity(CustomizedLoop.NAME)
-export class CustomizedLoop extends AbstractActivity<IcustomizedLoopConifg> {
+export class CustomizedLoop extends AbstractActivity<ICustomizedLoopConfig> {
   public static NAME = "system.customizedLoop"
   public static PORT_INPUT = "input"
   public static PORT_OUTPUT = "output"
@@ -18,7 +18,7 @@ export class CustomizedLoop extends AbstractActivity<IcustomizedLoopConifg> {
 
   logicFlow?: LogicFlow;
 
-  constructor(meta: INodeDefine<IcustomizedLoopConifg>) {
+  constructor(meta: INodeDefine<ICustomizedLoopConfig>) {
     super(meta)
     if (meta.children) {
       //通过portId关联子流程的开始跟结束节点，端口号对应节点号
@@ -34,7 +34,7 @@ export class CustomizedLoop extends AbstractActivity<IcustomizedLoopConifg> {
 
       const finishedPortMeta = this.meta.outPorts?.find(port=>port.name === CustomizedLoop.PORT_FINISHED)
       if(finishedPortMeta?.id){
-        this.logicFlow?.jointers?.getOutput(finishedPortMeta?.id)?.connect(this.finisedHandler)
+        this.logicFlow?.jointers?.getOutput(finishedPortMeta?.id)?.connect(this.finishedHandler)
       }else{
         console.error("No finished port in CustomizedLoop")
       }
@@ -82,7 +82,7 @@ export class CustomizedLoop extends AbstractActivity<IcustomizedLoopConifg> {
     this.output(value)
   }
 
-  finisedHandler = (value: unknown)=>{
+  finishedHandler = (value: unknown)=>{
     this.finished = true
     //输出到响应端口
     this.next(value, CustomizedLoop.PORT_FINISHED)

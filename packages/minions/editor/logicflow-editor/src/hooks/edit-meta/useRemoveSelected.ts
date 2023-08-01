@@ -11,7 +11,7 @@ import { ILineDefine, NodeType } from "@rxdrag/minions-schema";
 
 export function useRemoveSelected() {
   const backup = useBackup()
-  const markeChange = useMarkChange()
+  const markChange = useMarkChange()
   const dispatch = useDispatch()
   const selectedNode = useSelectedNode()
   const selectedEdge = useSelectedEdge()
@@ -30,16 +30,16 @@ export function useRemoveSelected() {
       //再删除节点
       const action: RemoveNodeAction = { type: ActionType.REMOVE_NODE, payload: selectedNode.id }
       dispatch?.(action)
-      markeChange()
+      markChange()
     } else if (selectedEdge) {
       backup()
       const action: RemoveEdgeAction = { type: ActionType.REMOVE_EDGE, payload: selectedEdge.id }
       dispatch?.(action)
-      markeChange()
+      markChange()
     }
 
 
-  }, [backup, dispatch, markeChange, metas, selectedEdge, selectedNode])
+  }, [backup, dispatch, markChange, metas, selectedEdge, selectedNode])
 
   return handleRemove
 }

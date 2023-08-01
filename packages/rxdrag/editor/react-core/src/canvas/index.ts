@@ -1,4 +1,4 @@
-export * from "./CanvaseHandler"
+export * from "./CanvasHandler"
 export * from "./CanvasRender"
 export * from "./CanvasShell"
 export * from "./IframeCanvas"

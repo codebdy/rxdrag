@@ -29,8 +29,8 @@ export class Reaction implements IActivity {
       throw new Error("No implement on Controller reaction meta")
     }
   }
-  destory(): void {
-    this.logicFlow?.destory();
+  destroy(): void {
+    this.logicFlow?.destroy();
     this.logicFlow = undefined;
   }
 }

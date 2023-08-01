@@ -16,7 +16,7 @@ export const fieldyActivityMaterialLocales = {
   'en-US': {
     dataModel: "Data Model",
     setFormValue: "Set Form Value",
-    subscribeForm: "Subsribe From",
+    subscribeForm: "Subscribe From",
     validateForm: "Validate Form",
     readFormValue: "Read Form Value",
     setFieldValue: "Set Field Value",

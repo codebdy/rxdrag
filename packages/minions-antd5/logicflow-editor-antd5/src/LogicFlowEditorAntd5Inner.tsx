@@ -1,6 +1,6 @@
 import { ReactNode, memo, useMemo } from "react"
 import { Toolbox, PropertyBox, Toolbar } from "./components"
-import { useTransMaterialCategorys } from "./hooks/useTransMaterialCategorys"
+import { useTransMaterialCategories } from "./hooks/useTransMaterialCategories"
 import { ILogicMetas, IThemeToken, LogicFlowEditor } from "@rxdrag/minions-logicflow-editor"
 import { ActivityMaterialCategory, IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema"
 import { IComponents } from "@rxdrag/react-shared"
@@ -22,7 +22,7 @@ export const LogicMetaEditorAntd5Inner = memo((
   }
 ) => {
   const { value, onChange, materialCategories, setters, logicFlowContext, canBeReferencedLogflowMetas, token, toolbar } = props
-  const categories = useTransMaterialCategorys(materialCategories);
+  const categories = useTransMaterialCategories(materialCategories);
   const materials = useMemo(() => {
     const materials: IActivityMaterial<ReactNode>[] = []
     return materials.concat(...categories.map(category => category.materials))

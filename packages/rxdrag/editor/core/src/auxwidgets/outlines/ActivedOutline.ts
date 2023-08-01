@@ -1,6 +1,6 @@
 import { CanvasScrollEvent } from "../../shell/events";
 import { IPlugin } from "../../interfaces/plugin";
-import { AUX_BACKGROUND_COLOR } from "../consts";
+import { AUX_BACKGROUND_COLOR } from "../constants";
 import { numbToPx } from "../utils/numbToPx";
 import { getMaxZIndex } from "./getMaxZIndex";
 import { ID, IDesignerEngine, Unsubscribe } from "../../interfaces";
@@ -51,7 +51,7 @@ export class ActivedOutlineImpl implements IPlugin {
     this.currentId = null
   }
 
-  destory(): void {
+  destroy(): void {
     this.clearLine()
     this.nodeChangeUnsubscribe()
     this.unActive()

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { IPostParam, IQueryParam, IReponseHandler, Unsubscribe } from "../interfaces"
+import { IPostParam, IQueryParam, IResponseHandler, Unsubscribe } from "../interfaces"
 import { QueryRecord, QueryStatus } from "./QueryRecord"
 import _ from "lodash"
 
@@ -20,7 +20,7 @@ export class Restful {
     this.cache = {}
   }
 
-  subscribeQuery = (param: IQueryParam, responseHandler: IReponseHandler): Unsubscribe => {
+  subscribeQuery = (param: IQueryParam, responseHandler: IResponseHandler): Unsubscribe => {
     if (param.url) {
       const record = this.cache[param.url]
       //如果存在，注册handler
@@ -50,7 +50,7 @@ export class Restful {
       param.url && this.unsubscribeQuery(param.url, responseHandler)
     }
   }
-  unsubscribeQuery = (url: string, handler: IReponseHandler): void => {
+  unsubscribeQuery = (url: string, handler: IResponseHandler): void => {
     const record = this.cache[url]
     if (!record) {
       console.warn("Can not find QueryRecord by url", url)
@@ -59,7 +59,7 @@ export class Restful {
 
     record.handlers = record.handlers.filter(hd => hd !== handler)
   }
-  save = (param: IPostParam, handler: IReponseHandler): void => {
+  save = (param: IPostParam, handler: IResponseHandler): void => {
     if (!param.url) {
       console.error("Post url is emperty")
       return

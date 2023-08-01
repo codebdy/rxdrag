@@ -14,7 +14,7 @@ export function useNodeEmbedded() {
   const graph = useGraph()
   const backup = useBackup()
   const dispatch = useDispatch()
-  const markeChange = useMarkChange()
+  const markChange = useMarkChange()
   
   const handelEmbedded = useCallback((args: { node: Node }) => {
     const { node } = args
@@ -42,12 +42,12 @@ export function useNodeEmbedded() {
         payload: newMeta
       }
       dispatch?.(action)
-      markeChange()
+      markChange()
     }else{
       console.error("embed no parentId")
     }
 
-  }, [dispatch, backup, markeChange])
+  }, [dispatch, backup, markChange])
 
   useEffect(() => {
     graph?.on('node:embedded', handelEmbedded)

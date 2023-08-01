@@ -32,5 +32,5 @@ export interface IActivity<ConfigMeta = unknown> {
   //元件节点配置，每个Activity的配置都不一样，故而用泛型
   config?: ConfigMeta;
   //销毁
-  destory(): void;
+  destroy(): void;
 }

@@ -2,7 +2,7 @@ import { ImageView } from "@rxdrag/react-antd-components";
 import { IComponentMaterial } from "@rxdrag/react-core";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
-import { maretialSchema } from "./schema";
+import { materialSchema } from "./schema";
 
 const name = "ImageView"
 export const ImageViewMaterial: IComponentMaterial = {
@@ -10,7 +10,7 @@ export const ImageViewMaterial: IComponentMaterial = {
   component: ImageView,
   designer: ImageView,
   designerLocales: locales,
-  propsSchema: maretialSchema,
+  propsSchema: materialSchema,
   resource: {
     name: name,
     icon: icon,

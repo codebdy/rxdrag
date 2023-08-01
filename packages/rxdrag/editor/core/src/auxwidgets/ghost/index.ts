@@ -6,7 +6,7 @@ import { DraggingResourceState } from "../../reducers/draggingResource";
 import { numbToPx } from "../utils/numbToPx";
 
 export class GhostWidgetImpl implements IPlugin {
-  name: string = "default.ghost";
+  name = "default.ghost";
   htmlNode: HTMLElement;
   draggingNodesOff: Unsubscribe
   draggingResourceOff: Unsubscribe
@@ -14,8 +14,8 @@ export class GhostWidgetImpl implements IPlugin {
   dragStopOff: Unsubscribe | null = null
   shell: IDesignerShell
   startEvent: DragStartEvent | null = null
-  title: string = "undefined"
-  mounted: boolean = false
+  title = "undefined"
+  mounted = false
 
   constructor(private engine: IDesignerEngine) {
     const htmlNode = document.createElement('div')
@@ -78,7 +78,7 @@ export class GhostWidgetImpl implements IPlugin {
     }
   }
 
-  destory(): void {
+  destroy(): void {
     this.unmount()
     this.dragOff?.()
     this.draggingNodesOff?.()

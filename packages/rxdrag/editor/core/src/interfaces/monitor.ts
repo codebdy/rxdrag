@@ -7,7 +7,6 @@ import { DocumentSelectionMode, ThemeMode } from "./types"
 
 import { Listener, ID, Unsubscribe } from "./types"
 
-
 export type DraggingNodesListener = (dragging: DraggingNodesState | null) => void
 export type DraggingResourceListener = (dragging: DraggingResourceState | null) => void
 export type SelectedChangeListener = (selectedIds: ID[] | null, documentId: ID) => void
@@ -35,7 +34,7 @@ export interface IMonitor {
 	subscribeToCurrentNodeChanged(listener: CurrentNodesChangeListener): Unsubscribe
 	subscribeToNodeChanged(nodeId: ID, listener: NodeListener): Unsubscribe
 	subscribeToHasNodeChanged(listener: Listener): Unsubscribe
-	subscribeToLangeChange(listener: LangListener): Unsubscribe
+	subscribeToLanguageChange(listener: LangListener): Unsubscribe
 	subscribeToThemeModeChange(listener: ThemeModeListener): Unsubscribe
 	subscribeToActiveDocumentChanged(listener: ActiveDocumentListener): Unsubscribe
 	subscribeToActiveChanged(listener: ActiveNodeListener): Unsubscribe
@@ -49,14 +48,14 @@ export interface IMonitor {
 	//onViewPortResizeOrScroll(listener: Listener): Unsubscribe
 	isDragging(): boolean
 	getCurrentSelectedIds(): ID[] | null
-	getDocumentSelectedIds(doumentId: ID): ID[] | null
+	getDocumentSelectedIds(documentId: ID): ID[] | null
 	getNode(nodeId: ID): ITreeNode | null
 	getNodeDocumentId(nodeId: ID): ID | undefined
-	getDocumentRootNode(doumentId: ID): ITreeNode | null
+	getDocumentRootNode(documentId: ID): ITreeNode | null
 	getCurrentNode(): ITreeNode | null
 	getCurrentTree(): ITreeNode | null
 	getAllNodes(): ITreeNode[]
-	getDrageOver(): DragOverState
+	getDragOver(): DragOverState
 	getState(): State
 	getSelectionMode(document: ID): DocumentSelectionMode
 	//getDragging(): Dragging|null

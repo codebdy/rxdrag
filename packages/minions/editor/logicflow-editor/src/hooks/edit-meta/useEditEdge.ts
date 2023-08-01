@@ -12,7 +12,7 @@ export function useEditEdge() {
   const dispatch = useDispatch()
   const graph = useGraph()
   const backup = useBackup()
-  const markeChange = useMarkChange()
+  const markChange = useMarkChange()
   const handleEdgeAdd = useCallback(({ isNew, edge }: { isNew: boolean, edge: Edge }) => {
     backup()
     const newData: ILineDefine = {
@@ -39,8 +39,8 @@ export function useEditEdge() {
         stroke: "#5e76c3"
       }
     })
-    markeChange()
-  }, [backup, dispatch, markeChange])
+    markChange()
+  }, [backup, dispatch, markChange])
 
   useEffect(() => {
     graph?.on('edge:connected', handleEdgeAdd)

@@ -65,11 +65,11 @@ export class NodeChangeHandler {
 
 export class Monitor implements IMonitor {
 	private store: Store<State>
-	private nodechnageHandler = new NodeChangeHandler()
+	private nodeChangeHandler = new NodeChangeHandler()
 
 	public constructor(store: Store<State>) {
 		this.store = store
-		this.doSubscribeToNodeChanged(this.nodechnageHandler.handleNodeChange)
+		this.doSubscribeToNodeChanged(this.nodeChangeHandler.handleNodeChange)
 	}
 	getAllNodes(): ITreeNode<unknown, unknown>[] {
 		const state = this.getState()
@@ -98,7 +98,7 @@ export class Monitor implements IMonitor {
 			return null
 		}
 
-		const currentId = this.getSeletedNodeId(state.documentsById[state.activedDocumentId]?.selectedIds || [])
+		const currentId = this.getSelectedNodeId(state.documentsById[state.activedDocumentId]?.selectedIds || [])
 		return this.getNode(currentId)
 	}
 
@@ -128,8 +128,8 @@ export class Monitor implements IMonitor {
 		return null
 	}
 
-	getDocumentRootNode(doumentId: ID): ITreeNode | null {
-		const doc = this.getState().documentsById[doumentId]
+	getDocumentRootNode(documentId: ID): ITreeNode | null {
+		const doc = this.getState().documentsById[documentId]
 		return doc?.rootId ? this.getNode(doc?.rootId) : null
 	}
 
@@ -195,7 +195,7 @@ export class Monitor implements IMonitor {
 	getDocumentSelectedIds(documentId: ID): ID[] | null {
 		return this.store.getState().documentsById[documentId]?.selectedIds || null
 	}
-	getDrageOver(): DragOverState {
+	getDragOver(): DragOverState {
 		return this.store.getState().dragOver || null
 	}
 
@@ -243,11 +243,11 @@ export class Monitor implements IMonitor {
 		invariant(typeof listener === 'function', 'listener must be a function.')
 		const activedDocumentId = this.getState().activedDocumentId
 		const documentState = this.getState().documentsById[activedDocumentId || ""]
-		let previousNodeId = this.getSeletedNodeId(documentState?.selectedIds || [])
+		let previousNodeId = this.getSelectedNodeId(documentState?.selectedIds || [])
 		const handleChange = () => {
 			const activedDocumentId = this.getState().activedDocumentId
 			const nextState = this.store.getState().documentsById[activedDocumentId || ""]
-			const nodeId = this.getSeletedNodeId(nextState?.selectedIds || [])
+			const nodeId = this.getSelectedNodeId(nextState?.selectedIds || [])
 			const node = this.getState().nodesById[nodeId] || null
 			if (previousNodeId !== node?.id) {
 				listener(node)
@@ -272,10 +272,10 @@ export class Monitor implements IMonitor {
 	//隔离NodesById的变化
 	subscribeToNodeChanged(id: ID, listener: NodeListener): Unsubscribe {
 		invariant(typeof listener === 'function', 'listener must be a function.')
-		return this.nodechnageHandler.subscribeToNodeChanged(id, listener)
+		return this.nodeChangeHandler.subscribeToNodeChanged(id, listener)
 	}
 
-	subscribeToLangeChange(listener: LangListener): Unsubscribe {
+	subscribeToLanguageChange(listener: LangListener): Unsubscribe {
 		invariant(typeof listener === 'function', 'listener must be a function.')
 
 		let previousState = this.store.getState().lang
@@ -445,7 +445,7 @@ export class Monitor implements IMonitor {
 		return !!state.draggingResource || !!state.draggingNodes
 	}
 
-	private getSeletedNodeId(selectedIds?: ID[]) {
+	private getSelectedNodeId(selectedIds?: ID[]) {
 		return selectedIds?.length === 1 ? (selectedIds?.[0] || "") : ""
 	}
 

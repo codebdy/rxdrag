@@ -1,11 +1,11 @@
 import { DRAG_HOVER } from "../actions/registry"
-import { DrageOverOptions, IAction } from "../interfaces/action"
+import { DragOverOptions, IAction } from "../interfaces/action"
 
-export type DragOverState = DrageOverOptions | null
+export type DragOverState = DragOverOptions | null
 
 export function reduce(
 	state: DragOverState = null,
-	action: IAction<DrageOverOptions>,
+	action: IAction<DragOverOptions>,
 ): DragOverState {
 	const { payload } = action
 	switch (action.type) {

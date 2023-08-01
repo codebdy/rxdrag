@@ -11,7 +11,7 @@ export function useRedo() {
   const { metas, setMetas } = useMetas()
   const { selected, setSelected } = useSelected()
 
-  const markeChange = useMarkChange()
+  const markChange = useMarkChange()
   const redo = useCallback(() => {
     const snapshot = redoList[redoList.length - 1]
     const { nodes, lines } = snapshot
@@ -19,8 +19,8 @@ export function useRedo() {
     setMetas({ nodes, lines })
     setUndoList([...undoList, { selected, ...metas|| { nodes: [], lines: [] } }] )
     setRedoList(redoList.slice(0, redoList.length - 1))
-    markeChange()
-  }, [markeChange, metas, redoList, selected, setMetas, setRedoList, setSelected, setUndoList, undoList])
+    markChange()
+  }, [markChange, metas, redoList, selected, setMetas, setRedoList, setSelected, setUndoList, undoList])
 
   return redo
 }

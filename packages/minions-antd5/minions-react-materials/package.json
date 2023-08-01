@@ -39,7 +39,7 @@
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "@rxdrag/minions-activities": "workspace:*",
-    "@rxdrag/minions-react-antd5-activites": "workspace:*",
+    "@rxdrag/minions-react-antd5-activities": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
     "@rxdrag/minions-runtime": "workspace:*",
     "@rxdrag/minions-logicflow-editor": "workspace:*",

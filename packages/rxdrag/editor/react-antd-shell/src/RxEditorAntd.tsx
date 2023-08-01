@@ -10,19 +10,19 @@ import { LeftNavWidget } from "./widgets/LeftNavWidget"
 import { CenterContent } from "./layouts/CenterContent"
 import { ToggleAblePane } from "./layouts/ToggleAblePane/ToggleAblePane"
 import { ToggleType } from "./layouts/ToggleAblePane/ToggleButton"
-import { commmonLocales } from "./locales"
-import { ShellContainer } from "./pannels/ShellContainer"
+import { commonLocales } from "./locales"
+import { ShellContainer } from "./panels/ShellContainer"
 import { LangButtons } from "./widgets/LangButtons"
 import { SaveActions } from "./widgets/SaveActions"
 import { ThemeButton } from "./widgets/ThemeButton"
-import { ConfigRoot } from "./pannels/ShellContainer/ConfigRoot"
-import { DocumentView } from "./pannels/DocumentView"
+import { ConfigRoot } from "./panels/ShellContainer/ConfigRoot"
+import { DocumentView } from "./panels/DocumentView"
 import { settingLocales } from "./SettingsForm/locales"
 import "./style.less"
 import { IDocument, IDesignerEngine } from "@rxdrag/core"
 import { Root, Designer } from "@rxdrag/react-core"
 import { INodeSchema } from "@rxdrag/schema"
-import { Workbench } from "./pannels"
+import { Workbench } from "./panels"
 import { ILocales } from "@rxdrag/locales"
 import { componentsIcon, outlineIcon, historyIcon } from "./icons"
 import { IMinionOptions, MinionOptionContext } from "./contexts"
@@ -51,7 +51,7 @@ export const RxEditorAntd = memo((props: Antd5EditorProps) => {
     if (engine) {
       console.log("创建 document")
       if (docRef.current) {
-        docRef.current.destory()
+        docRef.current.destroy()
         docRef.current = undefined
       }
       const document = engine.createDocument(schemas)
@@ -61,8 +61,8 @@ export const RxEditorAntd = memo((props: Antd5EditorProps) => {
   }, [engine, schemas])
 
   const handleReady = useCallback((eng: IDesignerEngine) => {
-    const langMgr = eng.getLoacalesManager()
-    langMgr.registerLocales(commmonLocales)
+    const langMgr = eng.getLocalesManager()
+    langMgr.registerLocales(commonLocales)
     langMgr.registerLocales(settingLocales)
     locales && langMgr.registerLocales(locales)
     //langMgr.registerResourceLocales(resourceLocales)

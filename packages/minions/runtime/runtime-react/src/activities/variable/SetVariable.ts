@@ -3,12 +3,12 @@ import { IController, IControllerContext } from "../../interfaces";
 import { AbstractControllerActivity, IControllerConfig, IControllerParam } from "../AbstractControllerActivity";
 import { Activity, Input } from "@rxdrag/minions-runtime";
 
-export interface IVirableParam extends IControllerParam {
+export interface IVariableParam extends IControllerParam {
   variable?: string
 }
 
 export interface IVariableConfig extends IControllerConfig {
-  param?: IVirableParam
+  param?: IVariableParam
 }
 
 @Activity(SetVariable.NAME)

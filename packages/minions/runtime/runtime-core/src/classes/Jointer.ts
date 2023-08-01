@@ -1,7 +1,7 @@
 import { IJointer, InputHandler } from "../interfaces/activity"
 
 export class Jointer implements IJointer {
-  //下游Jonter的数据接收函数
+  //下游Jointer的数据接收函数
   private outlets: InputHandler[] = []
 
   constructor(public id: string, public name: string) {
@@ -14,7 +14,7 @@ export class Jointer implements IJointer {
     }
   }
 
-  //添加下游Joninter
+  //添加下游Jointer
   connect = (inputHandler: InputHandler) => {
     this.outlets.push(inputHandler)
   }

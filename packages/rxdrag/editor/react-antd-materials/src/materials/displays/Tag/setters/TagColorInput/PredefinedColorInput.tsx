@@ -36,7 +36,7 @@ export const PredefinedColorInput: React.FC<IColorInputProps> = (props) => {
     setOpen(false)
   }, [onChange])
 
-  const hanldleOpenChange = useCallback((open: boolean) => {
+  const handleOpenChange = useCallback((open: boolean) => {
     setOpen(open)
   }, [])
 
@@ -54,7 +54,7 @@ export const PredefinedColorInput: React.FC<IColorInputProps> = (props) => {
             overlayInnerStyle={{ padding: 0 }}
             placement="bottom"
             open={open}
-            onOpenChange={hanldleOpenChange}
+            onOpenChange={handleOpenChange}
             content={
               <StyledSpace wrap align='center'>
                 {
