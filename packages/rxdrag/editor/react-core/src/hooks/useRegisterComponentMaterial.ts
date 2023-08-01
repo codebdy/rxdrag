@@ -24,16 +24,16 @@ export function useRegisterComponentMaterial() {
     if (meterial.designerLocales) {
       localesManager?.registerComponentLocales(meterial.componentName, meterial.designerLocales)
     }
-    if (meterial.resource?.resourceLocales) {
-      localesManager?.registerResourceLocales(meterial.resource.resourceLocales)
+    if (material.resource?.resourceLocales) {
+      localesManager?.registerResourceLocales(material.resource.resourceLocales)
     }
 
     if (meterial.toolsLocales) {
       localesManager?.registerSetterLocales(meterial.toolsLocales)
     }
 
-    for (const key of Object.keys(meterial.slots || {})) {
-      const slotMaterial = meterial.slots?.[key]
+    for (const key of Object.keys(material.slots || {})) {
+      const slotMaterial = material.slots?.[key]
       if (slotMaterial === true || slotMaterial === undefined || isStr(slotMaterial)) {
         continue
       }
@@ -44,8 +44,8 @@ export function useRegisterComponentMaterial() {
     //registerPreviewComponents(previews)
     setters && registerTools(setters)
 
-    if (meterial.resource && !resourceManager?.getResourceByName(meterial.resource.name) && !isSlot) {
-      const resources = resourceManager?.registerResources(meterial.resource)
+    if (material.resource && !resourceManager?.getResourceByName(material.resource.name) && !isSlot) {
+      const resources = resourceManager?.registerResources(material.resource)
       return (resources?.[0])
     }
     return undefined
