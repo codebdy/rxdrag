@@ -10,6 +10,7 @@ export abstract class AbstractController implements IController {
   initEvent?: EventFunc | undefined;
   destroyEvent?: EventFunc | undefined;
   events: EventFuncs = {};
+  runBackEvents: EventFuncs = {}
   protected variables: any = {};
   protected props: any = {};
   protected variableListeners: {

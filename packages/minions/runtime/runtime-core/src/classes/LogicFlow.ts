@@ -38,7 +38,14 @@ export class LogicFlow<LogicFlowContext = unknown> {
           break;
         case NodeType.End:
           //end 只有一个端口，可能会变成其它流程的端口，所以name谨慎处理
-          this.jointers.outputs.push(new Jointer(activityMeta.id, activityMeta.name || "output"));
+          const endJointer = new Jointer(activityMeta.id, activityMeta.name || "output");
+          // 最后一个输出节点，执行回调函数
+          endJointer.connect(function(inputValue?:string) {
+            if (endJointer['outlets']?.length === 1 && endJointer?.runContext?.__runback) {
+              endJointer?.runContext.__runback(undefined, inputValue)
+            }
+          })
+          this.jointers.outputs.push(endJointer);
           break;
         case NodeType.Activity:
         case NodeType.EmbeddedFlow:
@@ -113,8 +120,7 @@ export class LogicFlow<LogicFlowContext = unknown> {
       if (!targetJointer) {
         throw new Error("Can find target jointer")
       }
-
-      sourceJointer.connect(targetJointer.push)
+      sourceJointer.connect(targetJointer.push, targetJointer)
     }
   }
 
