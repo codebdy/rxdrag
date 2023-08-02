@@ -1,25 +1,22 @@
 import { IActivity } from "../interfaces";
-import _ from "lodash"
-
 export const DEFAULT_INPUT_NAME = "input"
 export const DEFAULT_OUTPUT_NAME = "output"
 export const EXCEPTION_OUTPUT_NAME = "exception"
 
-export type ActivityClass = { new(...args: any[]): IActivity }
-
+export type ActivityClass = { new(...args: any[]): IActivity };
 export interface IActivityInfo {
   target: ActivityClass,
   methodMap: { [inputName: string]: string },
   dynamicMethod?: string;
-}
+};
 
 export type ActivityInfos = {
   [activityName: string]: IActivityInfo | undefined
-}
+};
 
-const activityInfoArray: IActivityInfo[] = []
+const activityInfoArray: IActivityInfo[] = [];
 
-export const activities: ActivityInfos = {}
+export const activities: ActivityInfos = {};
 
 export function Activity(activityName: string): (target: ActivityClass/*ClassDecoratorContext<ActivityClass>*/) => void {
   return function (target: ActivityClass) {

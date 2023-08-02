@@ -32,24 +32,26 @@ export class LogicFlow<LogicFlowContext = unknown> {
   private constructActivities() {
     for (const activityMeta of this.flowMeta.nodes) {
       switch (activityMeta.type) {
-        case NodeType.Start:
+        case NodeType.Start: {
           //start只有一个端口，可能会变成其它流程的端口，所以name谨慎处理
           this.jointers.inputs.push(new Jointer(activityMeta.id, activityMeta.name || "input"));
           break;
-        case NodeType.End:
+        }
+        case NodeType.End:{
           //end 只有一个端口，可能会变成其它流程的端口，所以name谨慎处理
           const endJointer = new Jointer(activityMeta.id, activityMeta.name || "output");
           // 最后一个输出节点，执行回调函数
-          endJointer.connect(function(inputValue?:string) {
+          endJointer.connect((inputValue?:unknown)  => {
             if (endJointer['outlets']?.length === 1 && endJointer?.runContext?.__runback) {
               endJointer?.runContext.__runback(undefined, inputValue)
             }
           })
           this.jointers.outputs.push(endJointer);
           break;
+        }
         case NodeType.Activity:
         case NodeType.EmbeddedFlow:
-        case NodeType.LogicFlowActivity:
+        case NodeType.LogicFlowActivity:{
           if (activityMeta.activityName) {
             const activityInfo = activities[activityMeta.activityName]
             const activityClass = activityInfo?.target
@@ -97,6 +99,7 @@ export class LogicFlow<LogicFlowContext = unknown> {
             this.activities.push(activity)
           }
           break;
+        }
       }
     }
   }

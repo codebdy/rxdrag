@@ -8,7 +8,7 @@ export type PropListener = (value: unknown) => void
 export type PropsListener = (name: string, value: unknown) => void
 export type UnListener = () => void
 
-export type EventFunc = (...args: unknown[]) => void
+export type EventFunc = (arg: unknown, context?:  Record<string, unknown>, runback?: (error?: unknown, value?: unknown) => void) => void
 export type EventFuncs = {
   [name: string]: EventFunc | undefined
 }

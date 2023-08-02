@@ -101,11 +101,11 @@ export class DragOverControllerImpl implements IPlugin {
       if (behavior?.isDroppable() && !node?.meta.locked) {
         return AcceptType.Accept
       }
-      if (isArr(resource.elements)) {
-        for (const element of resource.elements) {
+      // if (isArr(resource.elements)) {
+      //   for (const element of resource.elements) {
 
-        }
-      }
+      //   }
+      // }
 
     } else {
       const parentId = this.engine.getMonitor().getNode(position.targetId)?.parentId

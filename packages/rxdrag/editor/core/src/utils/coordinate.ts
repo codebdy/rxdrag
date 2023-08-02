@@ -93,10 +93,10 @@ export class Rect {
       return null;
     }
 
-    let xRatio =
+    const xRatio =
       (event.clientX - this.rect.x) /
       (this.rect.x + this.rect.width - event.clientX);
-    let yRatio =
+    const yRatio =
       (event.clientY - this.rect.y) /
       (this.rect.y + this.rect.height - event.clientY);
 
@@ -120,7 +120,7 @@ export class PositionJudger {
   constructor(private node: ITreeNode, private engine: IDesignerEngine) { }
 
   get dropInMargin() {
-    let nodeName = this.node?.meta?.componentName;
+    const nodeName = this.node?.meta?.componentName;
     if (!nodeName) {
       return 0;
     }
@@ -156,11 +156,11 @@ export class PositionJudger {
   }
 
   firstChildAfterMouse(event: IMouseEventData, node?: ITreeNode) {
-    let theNode = node || this.node;
+    const theNode = node || this.node;
     if (!theNode) {
       return;
     }
-    for (let childId of theNode.children) {
+    for (const childId of theNode.children) {
       const child = this.engine.getMonitor().getNode(childId);
       if (child && this.isAfterMouse(event, child)) {
         return child;
@@ -171,14 +171,14 @@ export class PositionJudger {
   }
 
   isAfterMouse(event: IMouseEventData, node?: ITreeNode): boolean {
-    let theNode = node || this.node;
+    const theNode = node || this.node;
     if (!theNode) {
       return false;
     }
 
     const { clientX, clientY } = event;
 
-    let rect = this.engine.getShell().getElement(theNode.id)?.getBoundingClientRect();
+    const rect = this.engine.getShell().getElement(theNode.id)?.getBoundingClientRect();
     if (!rect) {
       return false;
     }
@@ -210,11 +210,11 @@ export class PositionJudger {
       const afterChild = this.firstChildAfterMouse(eventData);
 
       const parent = afterChild?.parentId ? this.engine.getMonitor().getNode(afterChild?.parentId) : undefined;
-      let beforeId = afterChild?.id
+      const beforeId = afterChild?.id
         ? before(afterChild.id, parent?.children)
         : this.node.children?.[this.node.children.length - 1];
 
-      let beforeChild = this.engine.getMonitor().getNode(beforeId);
+      const beforeChild = this.engine.getMonitor().getNode(beforeId);
 
       if (beforeChild && beforeChild.id !== this.node.id) {
         const element = this.engine.getShell().getElement(beforeChild.id)

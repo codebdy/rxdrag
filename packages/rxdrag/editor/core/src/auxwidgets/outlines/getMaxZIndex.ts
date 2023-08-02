@@ -1,4 +1,4 @@
-export function getMaxZIndex(el: Element, max: number = 0): number {
+export function getMaxZIndex(el: Element, max = 0): number {
   const zIndexStr = window.getComputedStyle(el).zIndex;
   let zIndex = max;
   if (zIndexStr !== "auto") {
