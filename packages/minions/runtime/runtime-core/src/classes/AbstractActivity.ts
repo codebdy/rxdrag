@@ -17,7 +17,7 @@ export abstract class AbstractActivity<ConfigMeta = unknown, LogicFlowContext = 
 
   next = (inputValue: unknown, outputName = "output") => {
     const input = this.jointers.inputs[0];
-    const runContext = input.runContext || {};
+    const runContext = input?.runContext || {};
     // 存在在多个输入时，合并上下文
     if (this.jointers.inputs.length > 1) {
       this.jointers.inputs.slice(1).forEach(item => {
