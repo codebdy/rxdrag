@@ -1,7 +1,7 @@
 import type { Jointer } from "../classes";
 
 //数据推送接口
-export type InputHandler = (inputValue?: unknown, runContext?: object) => void;
+export type InputHandler = (inputValue?: unknown, runContext?: IJointer["runContext"]) => void;
 
 export interface IJointer {
   //当key使用，不参与业务逻辑
@@ -10,7 +10,7 @@ export interface IJointer {
   //接收上一级Jointer推送来的数据
   push: InputHandler;
   //添加下游Jointer
-  connect: (jointerInput: InputHandler, parent?: IJointer) => void;
+  connect: (jointerInput: InputHandler, parent?: Jointer) => void;
   runContext?: Record<string, unknown> & {__runback?: (error?: unknown, value?: unknown) => void}
 }
 
