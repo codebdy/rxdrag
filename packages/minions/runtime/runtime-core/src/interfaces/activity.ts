@@ -1,3 +1,4 @@
+import type { Jointer } from "../classes";
 
 //数据推送接口
 export type InputHandler = (inputValue?: unknown, runContext?: object) => void;
@@ -10,19 +11,19 @@ export interface IJointer {
   push: InputHandler;
   //添加下游Jointer
   connect: (jointerInput: InputHandler, parent?: IJointer) => void;
-  runContext?: Record<string, unknown> & {__runback?: Function}
+  runContext?: Record<string, unknown> & {__runback?: (error?: unknown, value?: unknown) => void}
 }
 
 export interface IActivityJointers {
   //入端口对应的连接器
-  inputs: IJointer[];
+  inputs: Jointer[];
   //处端口对应的连接器
-  outputs: IJointer[];
+  outputs: Jointer[];
 
   //通过端口名获取出连接器
-  getOutput(name: string): IJointer | undefined
+  getOutput(name: string): Jointer | undefined
   //通过端口名获取入连接器
-  getInput(name: string): IJointer | undefined
+  getInput(name: string): Jointer | undefined
 }
 
 //活动接口，一个实例对应编排图一个元件节点，用于实现元件节点的业务逻辑

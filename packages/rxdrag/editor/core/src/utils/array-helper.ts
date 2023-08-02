@@ -95,9 +95,9 @@ export function clear(array: any[]) {
 }
 
 export function exchange(first: any, second: any, array: any[]) {
-  let rtArray = [...array];
-  let firstIndex = indexOf(first, array);
-  let secondIndex = indexOf(second, array);
+  const rtArray = [...array];
+  const firstIndex = indexOf(first, array);
+  const secondIndex = indexOf(second, array);
   rtArray[firstIndex] = second;
   rtArray[secondIndex] = first;
   return rtArray;

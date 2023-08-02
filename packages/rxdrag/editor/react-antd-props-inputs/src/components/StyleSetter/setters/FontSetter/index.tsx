@@ -58,7 +58,7 @@ export const FontSetter = (props: SetterProps) => {
 
   const groupTitle = useMemo(() => {
     let actived = false;
-    for (let key of fontStyleProps) {
+    for (const key of fontStyleProps) {
       if (!isNil(value?.[key])) {
         actived = true;
         break;

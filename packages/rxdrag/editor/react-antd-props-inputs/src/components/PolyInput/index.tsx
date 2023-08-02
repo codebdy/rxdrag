@@ -114,7 +114,7 @@ export const PolyInput = memo((
   const InputComponent = polyType?.component
 
   const handleInputChange = useCallback((e: any) => {
-    let newValue = getEventValue(e)
+    const newValue = getEventValue(e)
     if (newValue) {
       onChange?.(polyType?.toChangeValue?.(newValue))
     } else {

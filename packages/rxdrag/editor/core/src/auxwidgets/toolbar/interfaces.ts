@@ -5,9 +5,9 @@ export interface IAuxToolbar {
   replaceControl(control: IAuxControl): void
 }
 
-export interface IAuxToolbarView {
+// export interface IAuxToolbarView {
 
-}
+// }
 
 export interface IAuxControl {
   //唯一名，用于覆盖默认设置

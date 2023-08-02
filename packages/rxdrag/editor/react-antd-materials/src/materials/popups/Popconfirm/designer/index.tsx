@@ -28,7 +28,7 @@ export const PopconfirmDesigner = memo(forwardRef<HTMLDivElement, PopconfirmProp
   const popupRef = useRef<HTMLDivElement | null>(null);
   const engine = useDesignerEngine()
   const doc = useDocument()
-  const refreshSelect = useCallback((time: number = 20) => {
+  const refreshSelect = useCallback((time = 20) => {
     if (doc && node) {
       setTimeout(() => {
         engine?.getActions().selectNodes([node.id], doc.id)

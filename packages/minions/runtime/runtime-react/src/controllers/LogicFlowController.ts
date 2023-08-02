@@ -32,7 +32,7 @@ export class LogicFlowController extends AbstractController {
         continue
       }
       //事件参数转成数组传给编排节点
-      const enventHandler = (arg: unknown, context?: object, runback?: Function) => {
+      const eventHandler  = (arg: unknown, context?: Record<string, unknown>, runback?: (error?: unknown, value?: unknown) => void) => {
         const runContext = context || {};
         if (runback) {
           // 内置上下文，在输出元件上做处理
@@ -46,9 +46,9 @@ export class LogicFlowController extends AbstractController {
         this.destroyEvent = eventHandler
       } else if (eventMeta.name) {
         if (eventMeta.isRunBack) {
-          this.runBackEvents[eventMeta.name] = enventHandler
+          this.runBackEvents[eventMeta.name] = eventHandler
         } else {
-          this.events[eventMeta.name] = enventHandler
+          this.events[eventMeta.name] = eventHandler
         }
       }
     }

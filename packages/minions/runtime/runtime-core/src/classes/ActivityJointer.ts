@@ -1,8 +1,9 @@
-import { IActivityJointers, IJointer } from "../interfaces";
+import { IActivityJointers } from "../interfaces";
+import { Jointer } from "./Jointer";
 
 export class ActivityJointers implements IActivityJointers{
-  inputs: IJointer[] = [];
-  outputs: IJointer[] = [];
+  inputs: Jointer[] = [];
+  outputs: Jointer[] = [];
   
   getOutput(name: string) {
     return this.outputs.find(out => out.name === name && name)
