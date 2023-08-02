@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/schema",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "author": "Water.Li",
   "module": "index.ts",
   "files": [
