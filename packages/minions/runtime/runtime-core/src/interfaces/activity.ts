@@ -1,6 +1,6 @@
 
 //数据推送接口
-export type InputHandler = (inputValue: unknown, context?:unknown) => void;
+export type InputHandler = (inputValue?: unknown, runContext?: object) => void;
 
 export interface IJointer {
   //当key使用，不参与业务逻辑
@@ -9,7 +9,8 @@ export interface IJointer {
   //接收上一级Jointer推送来的数据
   push: InputHandler;
   //添加下游Jointer
-  connect: (jointerInput: InputHandler) => void;
+  connect: (jointerInput: InputHandler, parent?: IJointer) => void;
+  runContext?: Record<string, unknown> & {__runback?: Function}
 }
 
 export interface IActivityJointers {

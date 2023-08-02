@@ -32,6 +32,7 @@ export interface IController extends IVariableController, IPropController {
   init: (controllers: Controllers, context: unknown) => void,
 
   events: EventFuncs,
+  runBackEvents: EventFuncs
   initEvent?: EventFunc,
   destroyEvent?: EventFunc,
   subscribeToPropsChange(listener: PropsListener): UnListener
