@@ -1,6 +1,5 @@
 import { forwardRef, memo } from "react"
-import {Breadcrumb as AntdBreadcrumb} from "antd"
-import { HomeOutlined } from "@ant-design/icons"
+import { Breadcrumb as AntdBreadcrumb } from "antd"
 
 export type BreadcrumbProps = {
   children?: React.ReactNode
@@ -9,14 +8,21 @@ export type BreadcrumbProps = {
 export const Breadcrumb = memo(forwardRef<HTMLDivElement, BreadcrumbProps>((
   props, ref) => {
   return (
-    <AntdBreadcrumb {...props}>
-      <AntdBreadcrumb.Item>
-        <HomeOutlined />
-      </AntdBreadcrumb.Item>
-      <AntdBreadcrumb.Item>
-        <span>Application List</span>
-      </AntdBreadcrumb.Item>
-      <AntdBreadcrumb.Item>Application</AntdBreadcrumb.Item>
-    </AntdBreadcrumb>
+    <AntdBreadcrumb {...props}
+      items={[
+        {
+          title: 'Home',
+        },
+        {
+          title: <a href="">Application Center</a>,
+        },
+        {
+          title: <a href="">Application List</a>,
+        },
+        {
+          title: 'An Application',
+        },
+      ]}
+    />
   )
 }))
