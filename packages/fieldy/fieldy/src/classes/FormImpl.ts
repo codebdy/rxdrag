@@ -91,10 +91,10 @@ export class FormImpl implements IForm {
   validate(): void {
     if (this.fieldy.validator) {
       this.validationSubscriber.emitStart()
-      const fieldsSchemas = this.fieldy.getFormState(this.name)?.fieldSchemas || []
-      this.fieldy.validator.validateForm(this.getValue(), fieldsSchemas).then((value: unknown) => {
+      this.fieldy.validator.validateForm(this).then((value: unknown) => {
         this.validationSubscriber.emitSuccess(value)
       }).catch((errors: IValidationError[]) => {
+        const fieldsSchemas = this.getFieldSchemas()
         this.fieldy.setValidationFeedbacks(this.name, transformErrorsToFeedbacks(errors, fieldsSchemas))
         this.validationSubscriber.emitFailed(errors)
       }).finally(() => {
@@ -133,6 +133,10 @@ export class FormImpl implements IForm {
   }
   onValidateSuccess(listener: SuccessListener): Unsubscribe {
     return this.validationSubscriber.onValidateSuccess(listener)
+  }
+
+  getFieldSchemas(){
+    return this.fieldy.getFormState(this.name)?.fieldSchemas || []
   }
 
 }

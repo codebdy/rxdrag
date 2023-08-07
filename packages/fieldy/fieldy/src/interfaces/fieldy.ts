@@ -129,16 +129,18 @@ export interface IFormNode<T> extends IValidationSubscriber {
 
 }
 
-export interface IForm extends IFormNode<FormValue | undefined> {
+export interface IForm<ValidateRules = unknown> extends IFormNode<FormValue | undefined> {
   name: string
-  getField(path: string): IField | undefined
-  registerField(fieldSchema: IFieldSchema): IField
+  getField(path: string): IField<ValidateRules> | undefined
+  registerField(fieldSchema: IFieldSchema<ValidateRules>): IField
   unregisterField(path: string): void
 
   getFieldState(fieldPath: string): FieldState | undefined
+
+  getFieldSchemas(): IFieldSchema<ValidateRules>[]
 }
 
-export interface IField extends IFormNode<unknown> {
+export interface IField<ValidateRules = unknown> extends IFormNode<unknown> {
   form: IForm
   //引用数量
   refCount: number;
@@ -146,8 +148,8 @@ export interface IField extends IFormNode<unknown> {
   basePath?: string
   path: string
   inputValue(value: unknown): void
-  getFieldSchema(): IFieldSchema
-  getSubFieldSchemas(): IFieldSchema[] | undefined
+  getFieldSchema(): IFieldSchema<ValidateRules>
+  getSubFieldSchemas(): IFieldSchema<ValidateRules>[] | undefined
   destroy(): void
 }
 

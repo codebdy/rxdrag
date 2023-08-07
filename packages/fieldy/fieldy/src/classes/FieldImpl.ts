@@ -91,11 +91,11 @@ export class FieldImpl implements IField {
   validate(): void {
     if (this.fieldy.validator) {
       this.validationSubscriber.emitStart()
-      const fieldSchema = this.getFieldSchema()
-      const subFields = this.getSubFieldSchemas()
-      this.fieldy.validator.validateField(this.getValue(), fieldSchema, subFields).then((value: unknown) => {
+      this.fieldy.validator.validateField(this).then((value: unknown) => {
         this.validationSubscriber.emitSuccess(value)
       }).catch((errors: IValidationError[]) => {
+        const fieldSchema = this.getFieldSchema()
+        const subFields = this.getSubFieldSchemas()
         this.fieldy.setValidationFeedbacks(this.form.name, transformErrorsToFeedbacks(errors, [fieldSchema, ...subFields || []]))
         this.validationSubscriber.emitFailed(errors)
       }).finally(() => {
