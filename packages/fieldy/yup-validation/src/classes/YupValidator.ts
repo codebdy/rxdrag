@@ -1,6 +1,6 @@
 import { IField, IFieldSchema, IForm, IValidationError, IValidator } from "@rxdrag/fieldy";
 import { YupValidateRules } from "../interfaces";
-import { ref, object, string, boolean } from 'yup';
+import { object, string, boolean, number } from 'yup';
 
 
 export class YupValidator implements IValidator {
@@ -13,20 +13,28 @@ export class YupValidator implements IValidator {
       }
     }
     const rootSchemas = form.getRootFields()
-    this.validateOneObject(form.getValue(), rootSchemas)
-    throw new Error("Method not implemented.");
+    return this.validateOneObject(form.getValue(), rootSchemas)
   }
 
   validateField(field: IField<YupValidateRules>): Promise<unknown> {
     const children = field.getSubFieldSchemas() || []
-    this.validateOneObject(field.getValue(), children)
-    throw new Error("Method not implemented.");
+    return this.validateOneObject(field.getValue(), children)
   }
 
 
   //校验一个对象
-  private validateOneObject(value: unknown, fieldSchemas: IFieldSchema<YupValidateRules>[]) {
+  private async validateOneObject(value: unknown, fieldSchemas: IFieldSchema<YupValidateRules>[]) {
+    let schema = object({
+      isBig: boolean(),
+      count: number().when('isBig', {
+        is: true,
+        then: (schema) => schema.min(5),
+        otherwise: (schema) => schema.min(0),
+      }),
+    });
 
+    const result = await schema.validate({ value: { isBig: true } })
+    return result
   }
 
 }
