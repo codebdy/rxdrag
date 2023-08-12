@@ -139,4 +139,15 @@ export class FormImpl implements IForm {
     return this.fieldy.getFormState(this.name)?.fieldSchemas || []
   }
 
+  getRootFields() {
+    const fieldSchemas = this.fieldy.getFormState(this.name)?.fieldSchemas || []
+    const children: IFieldSchema[] = []
+    for (const child of fieldSchemas) {
+      if (child.path.indexOf(".") < 0) {
+        children.push(child)
+      }
+    }
+    return children
+  }
+
 }

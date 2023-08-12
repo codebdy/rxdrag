@@ -138,6 +138,7 @@ export interface IForm<ValidateRules = unknown> extends IFormNode<FormValue | un
   getFieldState(fieldPath: string): FieldState | undefined
 
   getFieldSchemas(): IFieldSchema<ValidateRules>[]
+  getRootFields(): IFieldSchema<ValidateRules>[]
 }
 
 export interface IField<ValidateRules = unknown> extends IFormNode<unknown> {
