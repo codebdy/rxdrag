@@ -1,6 +1,6 @@
 import { IField, IFieldSchema, IForm, IValidationError, IValidator } from "@rxdrag/fieldy";
 import { YupValidateRules } from "../interfaces";
-import { object, string, boolean, number } from 'yup';
+import { object, string, boolean, number, ValidationError } from 'yup';
 
 
 export class YupValidator implements IValidator {
@@ -24,17 +24,18 @@ export class YupValidator implements IValidator {
 
   //校验一个对象
   private async validateOneObject(value: unknown, fieldSchemas: IFieldSchema<YupValidateRules>[]) {
-    let schema = object({
-      isBig: boolean(),
-      count: number().when('isBig', {
-        is: true,
-        then: (schema) => schema.min(5),
-        otherwise: (schema) => schema.min(0),
-      }),
+
+    let schema = object().shape({
+      name: string().email(),
+      age: number().min(18),
     });
 
-    const result = await schema.validate({ value: { isBig: true } })
-    return result
+    try {
+      const result = await schema.validate({ name: "12", age: 11 }, { abortEarly: false });
+      return result;
+    } catch (err: any) {
+      console.log("===>validate inner", err.inner)
+      throw err.inner
+    }
   }
-
 }
