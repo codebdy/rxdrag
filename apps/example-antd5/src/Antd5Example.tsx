@@ -1,4 +1,4 @@
-import { FileOutlined, GithubFilled } from "@ant-design/icons"
+import { FileOutlined, GithubFilled, MenuOutlined } from "@ant-design/icons"
 import { Button, Space } from "antd"
 import { memo, useCallback, useMemo, useState } from "react"
 import {
@@ -69,7 +69,10 @@ export const Antd5Example = memo(() => {
       }
       topBar={
         <>
-          <Logo />
+          <Space>
+            <Logo />
+            <Button type="text" icon={<MenuOutlined />} />
+          </Space>
           <Space>
             <ThemeButton />
             <LangButtons />
