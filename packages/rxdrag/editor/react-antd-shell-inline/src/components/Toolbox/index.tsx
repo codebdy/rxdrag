@@ -1,6 +1,8 @@
 import { memo } from "react"
 import styled from "styled-components"
 import { boxShadow } from "../utils"
+import { CloseOutlined } from "@ant-design/icons"
+import { Button } from "antd"
 
 const Container = styled.div`
   position: fixed;
@@ -14,12 +16,27 @@ const Container = styled.div`
   background-color: ${props => props.theme?.token?.colorBgContainer};
   border-radius: 8px;
   display: flex;
+  flex-flow: column;
+`
+
+const Title = styled.div`
+  display: flex;
+  padding: 8px 16px;
+  padding-right: 8px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px ${props => props.theme?.token?.colorBorder};
 `
 
 export const Toolbox = memo(() => {
   return (
     <Container>
-      工具箱
+      <Title>
+        <span>
+          工具箱
+        </span>
+        <Button type="text" size="small" icon={<CloseOutlined />} />
+      </Title>
     </Container>
   )
 })
