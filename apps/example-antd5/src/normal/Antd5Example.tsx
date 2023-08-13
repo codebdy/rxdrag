@@ -13,14 +13,14 @@ import {
   historyIcon,
   outlineIcon,
 } from "@rxdrag/react-antd-shell"
-import { toolsLocales } from "./locales"
+import { toolsLocales } from "../locales"
 import { ResourceWidget } from "./ResourceWidget"
 import { SaveButton } from "./widgets/SaveButton"
 import { PagesWidget } from "./PagesWidget"
 import { pages } from "./data"
-import { minionsLocales } from "controller/locales"
-import { minionsMaterialCategories } from "controller/materials"
-import { controllerDefines } from "controller/defines"
+import { minionsLocales } from "normal/controller/locales"
+import { minionsMaterialCategories } from "normal/controller/materials"
+import { controllerDefines } from "normal/controller/defines"
 import { MenuButton } from "common/MenuButton"
 
 export enum LeftNavType {

@@ -1,11 +1,11 @@
-import { ShellContainer } from "components/ShellContainer"
+import { ShellContainer } from "normal/components/ShellContainer"
 import { memo, useCallback, useState } from "react"
 import { ControllerMetaEditorAntd5 } from "@rxdrag/controller-editor-antd5"
 import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
 import { activityMaterialLocales } from "@rxdrag/minions-react-materials"
 import { Fieldy } from "@rxdrag/react-fieldy"
 import { Form } from "antd"
-import { activityMaterialCategories } from "materials"
+import { activityMaterialCategories } from "normal/materials"
 
 export const Antd5Example = memo(() => {
   const [inputValue, setInputValue] = useState<ILogicFlowControllerMeta>({

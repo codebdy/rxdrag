@@ -1,14 +1,16 @@
 import { MenuOutlined } from "@ant-design/icons"
 import { Button, Dropdown, MenuProps } from "antd"
 import { memo } from "react"
+import { routes } from "./routes";
+
 
 const items: MenuProps['items'] = [
   {
-    label: <a href="#">常规编辑器</a>,
+    label: <a href={routes.index}>常规编辑器</a>,
     key: '0',
   },
   {
-    label: <a href="#">内联编辑器</a>,
+    label: <a href={routes.inline}>内联编辑器</a>,
     key: '1',
   },
   {
@@ -26,8 +28,8 @@ export const MenuButton = memo(() => {
     <Dropdown
       menu={{
         items,
-        selectable: true,
-        defaultSelectedKeys: ['0'],
+        //selectable: true,
+        //defaultSelectedKeys: ['0'],
       }}
       trigger={['click']}
     >

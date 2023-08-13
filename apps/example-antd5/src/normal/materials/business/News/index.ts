@@ -1,5 +1,5 @@
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { News } from "components/business/News";
+import { News } from "normal/components/business/News";
 import { newsIcon } from "./icon";
 import { newsLocales, newsResourceLocales } from "./locales";
 import { newsSchema } from "./schema";

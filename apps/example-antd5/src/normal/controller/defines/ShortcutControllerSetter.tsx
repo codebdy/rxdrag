@@ -1,6 +1,6 @@
 import { useSettersTranslate } from "@rxdrag/react-core"
 import { Form, Input, Select } from "antd"
-import { ActionType, IShortcutControllerMeta } from "controller/shortcuts/IShortcutControllerMeta"
+import { ActionType, IShortcutControllerMeta } from "normal/controller/shortcuts/IShortcutControllerMeta"
 import { memo, useCallback } from "react"
 
 export const ShortcutControllerSetter = memo((props: {

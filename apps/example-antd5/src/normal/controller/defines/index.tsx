@@ -4,8 +4,8 @@ import { logicFlowLocales } from "./locales/logicflow";
 import { scriptLocales } from "./locales/script";
 import { ShortcutControllerSetter } from "./ShortcutControllerSetter";
 import { LogicFlowControllerSetter, ScriptControllerSetter } from "@rxdrag/react-antd-shell";
-import { ShortcutControllerFactory } from "controller/shortcuts";
 import { IControllerDefine } from "@rxdrag/react-antd-shell";
+import { ShortcutControllerFactory } from "../shortcuts";
 
 export const controllerDefines: IControllerDefine[] = [
   {

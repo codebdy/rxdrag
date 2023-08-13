@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from "react"
 import { ILogicMetas, LogicFlowEditorScope } from "@rxdrag/minions-logicflow-editor"
 import { ConfigProvider, Form, theme } from "antd"
-import { ExampleInner } from "components/ExampleInner"
+import { ExampleInner } from "normal/components/ExampleInner"
 
 export const Antd5Example = memo(() => {
   const [themeMode, setThemeMode] = useState<"dark" | "light">("light")

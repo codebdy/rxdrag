@@ -1,5 +1,5 @@
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { RightAd } from "components/business/RightAd";
+import { RightAd } from "normal/components/business/RightAd";
 import { rightAdIcon } from "./icon";
 import { rightAdLocales, rightAdResourceLocales } from "./locales";
 import { rightAdSchema } from "./schema";

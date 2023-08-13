@@ -2,11 +2,13 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import { IFrameCanvasRender } from '@rxdrag/react-core';
 import { IFramePreviewRender } from "@rxdrag/react-antd-shell"
-import { usePredefinedComponents } from './hooks/usePredefinedComponents';
-import { Antd5Example } from './Antd5Example';
+import { Antd5Example } from './normal/Antd5Example';
 import { useMemo } from 'react';
-import { controllerDefines } from 'controller/defines';
 import { ControllerFactories } from '@rxdrag/react-runner';
+import { InlineExample } from 'inline';
+import { controllerDefines } from 'normal/controller/defines';
+import { usePredefinedComponents } from 'normal/hooks/usePredefinedComponents';
+import { routes } from 'common';
 
 function App() {
   const { designers, components } = usePredefinedComponents()
@@ -22,7 +24,9 @@ function App() {
 
   return (
     <Routes>
-      <Route path={'/'} element={<Antd5Example />}>
+      <Route path={routes.index} element={<Antd5Example />}>
+      </Route>
+      <Route path={routes.inline} element={<InlineExample />}>
       </Route>
       <Route path={'/canvas-render'} element={<IFrameCanvasRender designers={designers} />}>
       </Route>
