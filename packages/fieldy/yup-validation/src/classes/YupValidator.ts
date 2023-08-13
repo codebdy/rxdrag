@@ -1,6 +1,6 @@
 import { IField, IFieldSchema, IForm, IValidationError, IValidator } from "@rxdrag/fieldy";
 import { PredeinedValidators, YupType, YupValidateMeta } from "../interfaces";
-import { object, string, boolean, number, ValidationError, Schema } from 'yup';
+import { object, string, boolean, number, ValidationError, Schema, mixed } from 'yup';
 import { predifinedValidators } from "../predefineds";
 
 export class YupValidator implements IValidator {
@@ -56,28 +56,32 @@ export class YupValidator implements IValidator {
 
 
   private parseRules(meta: YupValidateMeta) {
+    let schema: Schema = mixed()
     if (meta.type?.value) {
       const predefinedValidtor = this.predefinedValidators[meta.type?.value]
-      let schema: Schema | undefined
       if (predefinedValidtor) {
         schema = predefinedValidtor(meta.type.message)
       } else if (meta.type?.value === YupType.string) {
-
+        throw new Error("未实现校验类型 string")
+      } else if (meta.type?.value === YupType.date) {
+        throw new Error("未实现校验类型 date")
+      } else if (meta.type?.value === YupType.boolean) {
+        throw new Error("未实现校验类型 boolean")
+      } else if (meta.type?.value === YupType.number) {
+        throw new Error("未实现校验类型 number")
       }
-
-      if (schema) {
-        if (meta.rules?.required) {
-          schema = schema.required()
-        }
-        if (meta.rules?.test) {
-          throw new Error("未实现校验规则 test")
-        }
-        if (meta.rules?.when) {
-          throw new Error("未实现校验规则 when")
-        }
-      }
-
-      return schema
     }
+
+    if (meta.rules?.required) {
+      schema = schema.required()
+    }
+    if (meta.rules?.test) {
+      throw new Error("未实现校验规则 test")
+    }
+    if (meta.rules?.when) {
+      throw new Error("未实现校验规则 when")
+    }
+
+    return schema
   }
 }
