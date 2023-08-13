@@ -13,6 +13,10 @@ import { MenuButton } from 'common';
 
 const { Header, Sider, Content } = Layout;
 
+const StyleLayout = styled(Layout)`
+  height: 100vh;
+`
+
 const LogoContainer = styled.div`
   display: flex;
   padding: 16px;
@@ -35,7 +39,7 @@ export const InlineExample: React.FC = () => {
   } = theme.useToken();
 
   return (
-    <Layout>
+    <StyleLayout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <LogoContainer>
           <Space>
@@ -95,6 +99,6 @@ export const InlineExample: React.FC = () => {
           Content
         </Content>
       </Layout>
-    </Layout>
+    </StyleLayout>
   );
 };

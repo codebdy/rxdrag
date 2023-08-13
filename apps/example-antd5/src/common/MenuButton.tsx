@@ -14,6 +14,10 @@ const items: MenuProps['items'] = [
     key: '1',
   },
   {
+    label: 'IFrame内联编辑器',
+    key: '2',
+  },
+  {
     label: '编排编辑器',
     key: '3',
   },
