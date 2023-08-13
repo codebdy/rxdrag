@@ -1,4 +1,4 @@
-import { FileOutlined, GithubFilled, MenuOutlined } from "@ant-design/icons"
+import { FileOutlined, GithubFilled } from "@ant-design/icons"
 import { Button, Space } from "antd"
 import { memo, useCallback, useMemo, useState } from "react"
 import {
@@ -21,6 +21,7 @@ import { pages } from "./data"
 import { minionsLocales } from "controller/locales"
 import { minionsMaterialCategories } from "controller/materials"
 import { controllerDefines } from "controller/defines"
+import { MenuButton } from "common/MenuButton"
 
 export enum LeftNavType {
   pages = "pages",
@@ -71,7 +72,7 @@ export const Antd5Example = memo(() => {
         <>
           <Space>
             <Logo />
-            <Button type="text" icon={<MenuOutlined />} />
+            <MenuButton />
           </Space>
           <Space>
             <ThemeButton />
