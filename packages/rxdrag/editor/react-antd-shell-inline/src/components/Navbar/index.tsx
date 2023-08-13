@@ -2,12 +2,14 @@ import { CSSProperties, memo, useMemo } from "react"
 import { Button, Space } from "antd"
 import { AppstoreOutlined, BgColorsOutlined } from "@ant-design/icons"
 import styled from "styled-components"
+import { boxShadow, defaultHorizontal, defaultVerticalMargin } from "../utils"
 
 const Container = styled.div`
   position: fixed;
+  bottom: ${defaultVerticalMargin}px;
 `
 const NavButton = styled(Button).attrs({ size: "large" })`
-  box-shadow: 3px 4px 5px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: ${boxShadow};
 `
 
 export enum NavPostion {
@@ -20,7 +22,7 @@ export enum NavPostion {
 }
 
 
-export const NavToolbar = memo((
+export const Navbar = memo((
   props: {
     position: NavPostion
   }
@@ -30,35 +32,35 @@ export const NavToolbar = memo((
   const positionStyle: CSSProperties = useMemo(() => {
     if (position === NavPostion.TopLeft) {
       return {
-        top: 16,
-        left: 32,
+        top: defaultVerticalMargin,
+        left: defaultHorizontal,
       }
     } else if (position === NavPostion.TopCenter) {
       return {
-        top: 16,
+        top: defaultVerticalMargin,
         left: "50%",
         transform: "translateX(-50%)",
       }
     } else if (position === NavPostion.TopRight) {
       return {
-        top: 16,
-        right: 32,
+        top: defaultVerticalMargin,
+        right: defaultHorizontal,
       }
     } else if (position === NavPostion.BottomLeft) {
       return {
-        bottom: 16,
-        left: 32,
+        bottom: defaultVerticalMargin,
+        left: defaultHorizontal,
       }
     } else if (position === NavPostion.BottomCenter) {
       return {
-        bottom: 16,
+        bottom: defaultVerticalMargin,
         left: "50%",
         transform: "translateX(-50%)",
       }
     } else if (position === NavPostion.BottomRight) {
       return {
-        bottom: 16,
-        right: 32,
+        bottom: defaultVerticalMargin,
+        right: defaultHorizontal,
       }
     }
 

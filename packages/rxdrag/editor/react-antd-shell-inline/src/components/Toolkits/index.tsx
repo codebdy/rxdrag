@@ -1,6 +1,7 @@
 import { memo } from "react"
 import styled from "styled-components"
-import { NavPostion, NavToolbar } from "../NavToolbar"
+import { NavPostion, Navbar } from "../Navbar"
+import { Toolbar } from "../Toolbar"
 
 const Container = styled.div`
   z-index: 100000;
@@ -10,7 +11,8 @@ export const Toolkits = memo(() => {
 
   return (
     <Container>
-      <NavToolbar position={NavPostion.BottomRight} />
+      <Toolbar />
+      <Navbar position={NavPostion.BottomRight} />
     </Container>
   )
 })
