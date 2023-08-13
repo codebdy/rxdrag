@@ -1,3 +1,4 @@
+import { Schema } from "yup";
 
 //对应yup类型
 export enum YupType {
@@ -96,8 +97,13 @@ export interface YupArray extends YupSchema {
 
 export type YupRules = YupSchema | YupArray | YupDate | YupNumber | YupString
 
-export type YupValidateRules = {
+export type YupValidateMeta = {
   //类型，引用预定义的规则，比如email， url等。
   type?: IYupConfig<string | YupType>,
   rules?: YupRules
 }
+
+
+export type PredeinedValidator = (message?: string) => Schema
+
+export type PredeinedValidators =  { [name: string]: PredeinedValidator | undefined }

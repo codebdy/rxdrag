@@ -142,7 +142,14 @@
                       },
                       "x-field": {
                         "type": "normal",
-                        "name": "age"
+                        "name": "age",
+                        "validateRules": {
+                          "rules": {
+                            "required": {
+                              "value": true
+                            }
+                          }
+                        }
                       },
                       "slots": {},
                       "children": [
@@ -163,7 +170,17 @@
                       },
                       "x-field": {
                         "type": "normal",
-                        "name": "name"
+                        "name": "name",
+                        "validateRules": {
+                          "rules": {
+                            "required": {
+                              "value": true
+                            }
+                          },
+                          "type": {
+                            "value": "email"
+                          }
+                        }
                       },
                       "slots": {},
                       "children": [

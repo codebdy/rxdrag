@@ -1,10 +1,6 @@
-import { YupType, YupString } from "../interfaces";
+import { string } from "yup";
+import { PredeinedValidator } from "../interfaces";
 
-export const email: YupString = {
-  type: YupType.string,
-
-  email: {
-    value: true,
-
-  },
+export const email: PredeinedValidator = (message?: string) => {
+  return string().email(message)
 }
