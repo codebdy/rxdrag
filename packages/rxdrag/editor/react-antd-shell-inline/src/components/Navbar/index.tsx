@@ -2,7 +2,7 @@ import { CSSProperties, memo, useMemo } from "react"
 import { Button, Space } from "antd"
 import { AppstoreOutlined, BgColorsOutlined } from "@ant-design/icons"
 import styled from "styled-components"
-import { boxShadow, defaultHorizontal, defaultVerticalMargin } from "../utils"
+import { boxShadow, defaultHorizontalMargin, defaultVerticalMargin } from "../utils"
 
 const Container = styled.div`
   position: fixed;
@@ -33,7 +33,7 @@ export const Navbar = memo((
     if (position === NavPostion.TopLeft) {
       return {
         top: defaultVerticalMargin,
-        left: defaultHorizontal,
+        left: defaultHorizontalMargin,
       }
     } else if (position === NavPostion.TopCenter) {
       return {
@@ -44,12 +44,12 @@ export const Navbar = memo((
     } else if (position === NavPostion.TopRight) {
       return {
         top: defaultVerticalMargin,
-        right: defaultHorizontal,
+        right: defaultHorizontalMargin,
       }
     } else if (position === NavPostion.BottomLeft) {
       return {
         bottom: defaultVerticalMargin,
-        left: defaultHorizontal,
+        left: defaultHorizontalMargin,
       }
     } else if (position === NavPostion.BottomCenter) {
       return {
@@ -60,7 +60,7 @@ export const Navbar = memo((
     } else if (position === NavPostion.BottomRight) {
       return {
         bottom: defaultVerticalMargin,
-        right: defaultHorizontal,
+        right: defaultHorizontalMargin,
       }
     }
 
