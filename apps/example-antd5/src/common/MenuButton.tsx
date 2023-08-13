@@ -37,7 +37,7 @@ export const MenuButton = memo(() => {
       }}
       trigger={['click']}
     >
-      <Button type="text" icon={<MenuOutlined />} />
+      <Button icon={<MenuOutlined />} />
     </Dropdown>
   )
 })

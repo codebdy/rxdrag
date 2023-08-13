@@ -1,1 +1,2 @@
-export const test = ""
+export * from "./components"
+export * from "./locales"

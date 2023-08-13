@@ -10,6 +10,7 @@ import { Layout, Menu, Button, theme, Space } from 'antd';
 import { Logo } from './Logo';
 import styled from 'styled-components';
 import { MenuButton } from 'common';
+import { Toolkits } from '@rxdrag/react-antd-shell-inline';
 
 const { Header, Sider, Content } = Layout;
 
@@ -97,6 +98,7 @@ export const InlineExample: React.FC = () => {
           }}
         >
           Content
+          <Toolkits />
         </Content>
       </Layout>
     </StyleLayout>

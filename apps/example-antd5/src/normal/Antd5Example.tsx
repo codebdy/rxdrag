@@ -72,7 +72,6 @@ export const Antd5Example = memo(() => {
         <>
           <Space>
             <Logo />
-            <MenuButton />
           </Space>
           <Space>
             <ThemeButton />
@@ -83,6 +82,7 @@ export const Antd5Example = memo(() => {
               icon={<GithubFilled />}
             > Github</Button>
             <SaveButton />
+            <MenuButton />
           </Space>
         </>
       }
