@@ -39,18 +39,20 @@ export class YupValidator implements IValidator {
 
     const schema = object().shape(schemaConfig);
 
-    // let schema = object().shape({
-    //   name: string().email(),
-    //   age: number().min(18),
-    // });
-
     try {
       const result = await schema.validate(value, { abortEarly: false });
-      //const result = await schema.validate({ name: "12", age: 11 }, { abortEarly: false });
       return result;
     } catch (err: any) {
-      console.log("===>validate inner", err.inner)
-      throw err.inner
+      const errors = err.inner as ValidationError[]
+      const returnErrors: IValidationError[] = errors.map(
+        oneErr => ({
+          path: fieldSchemas.find(field => field.name === oneErr.path)?.path || oneErr.path || "##no path##",
+          messages: oneErr.message,
+        })
+      )
+
+      console.log("===>validate inner", returnErrors)
+      throw returnErrors
     }
   }
 

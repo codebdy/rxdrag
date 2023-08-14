@@ -2,7 +2,7 @@ import { IField, IForm } from "./fieldy";
 
 export interface IValidationError {
   path: string,
-  messages?: string[]
+  message?: string
 }
 
 export interface IValidator{
