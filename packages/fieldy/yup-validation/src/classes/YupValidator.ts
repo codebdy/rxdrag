@@ -1,53 +1,89 @@
 import { IField, IFieldSchema, IForm, IValidationError, IValidator } from "@rxdrag/fieldy";
-import { YupValidateRules } from "../interfaces";
-
+import { PredeinedValidators, YupType, IYupValidateSchema } from "../interfaces";
+import { object, string, boolean, number, ValidationError, Schema, mixed } from 'yup';
+import { predifinedValidators } from "../predefineds";
 
 export class YupValidator implements IValidator {
-  validateForm(form: IForm<YupValidateRules>): Promise<unknown> {
+  predefinedValidators = predifinedValidators
+  constructor(validators?: PredeinedValidators) {
+    this.predefinedValidators = { ...this.predefinedValidators, ...validators }
+  }
+
+  validateForm(form: IForm<IYupValidateSchema>): Promise<unknown> {
     const schemas = form.getFieldSchemas()
     for (const fieldSchema of schemas) {
       if (fieldSchema.type === "object") {
         const field = form.getField(fieldSchema.path)
-        this.validateOneObject(field?.getValue(), field?.getSubFieldSchemas()||[])
+        this.validateOneObject(field?.getValue(), field?.getSubFieldSchemas() || [])
       }
     }
-    this.validateOneObject(form.getValue(), schemas)
-    throw new Error("Method not implemented.");
+    const rootSchemas = form.getRootFields()
+    return this.validateOneObject(form.getValue(), rootSchemas)
   }
 
-  validateField(field: IField<YupValidateRules>): Promise<unknown> {
-    const children =field.getSubFieldSchemas()||[]
-    this.validateOneObject(field.getValue(), children)
-    throw new Error("Method not implemented.");
-  }
-
-  private getRootFields(fieldSchemas: IFieldSchema<YupValidateRules>[]) {
-    const children: IFieldSchema<YupValidateRules>[] = []
-    for (const child of fieldSchemas) {
-      if (child.path.indexOf(".") < 0) {
-        children.push(child)
-      }
-    }
-
-    return children
-  }
-
-  private getFieldChildren(field: IFieldSchema<YupValidateRules>, fieldSchemas: IFieldSchema<YupValidateRules>[]) {
-    const children: IFieldSchema<YupValidateRules>[] = []
-    for (const child of fieldSchemas) {
-      if (field.path !== child.path &&
-        child.path.startsWith(field.path) &&
-        child.path.substring(field.path.length + 1).indexOf(".") > 0
-      ) {
-        children.push(child)
-      }
-    }
-    return children
+  validateField(field: IField<IYupValidateSchema>): Promise<unknown> {
+    const children = field.getSubFieldSchemas() || []
+    return this.validateOneObject(field.getValue(), children)
   }
 
   //校验一个对象
-  private validateOneObject(value: unknown, fieldSchemas: IFieldSchema<YupValidateRules>[]) {
-    throw new Error("Method not implemented.");
+  private async validateOneObject(value: unknown, fieldSchemas: IFieldSchema<IYupValidateSchema>[]) {
+
+    const schemaConfig = {} as any;
+
+    for (const field of fieldSchemas) {
+      if (field.name && field.validateRules) {
+        schemaConfig[field.name] = this.parseRules(field.validateRules)
+      }
+    }
+
+    const schema = object().shape(schemaConfig);
+
+    try {
+      const result = await schema.validate(value, { abortEarly: false });
+      return result;
+    } catch (err: any) {
+      const errors = err.inner as ValidationError[]
+      const returnErrors: IValidationError[] = errors.map(
+        oneErr => ({
+          path: fieldSchemas.find(field => field.name === oneErr.path)?.path || oneErr.path || "##no path##",
+          message: oneErr.message,
+        })
+      )
+
+      console.log("===>validate inner", returnErrors)
+      throw returnErrors
+    }
   }
 
+
+  private parseRules(meta: IYupValidateSchema) {
+    let schema: Schema = mixed()
+    if (meta.type?.value) {
+      const predefinedValidtor = this.predefinedValidators[meta.type?.value]
+      if (predefinedValidtor) {
+        schema = predefinedValidtor(meta.type.message)
+      } else if (meta.type?.value === YupType.string) {
+        throw new Error("未实现校验类型 string")
+      } else if (meta.type?.value === YupType.date) {
+        throw new Error("未实现校验类型 date")
+      } else if (meta.type?.value === YupType.boolean) {
+        throw new Error("未实现校验类型 boolean")
+      } else if (meta.type?.value === YupType.number) {
+        throw new Error("未实现校验类型 number")
+      }
+    }
+
+    if (meta.required) {
+      schema = schema.required()
+    }
+    if (meta.rules?.test) {
+      throw new Error("未实现校验规则 test")
+    }
+    if (meta.rules?.when) {
+      throw new Error("未实现校验规则 when")
+    }
+
+    return schema
+  }
 }
