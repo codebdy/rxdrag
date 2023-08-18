@@ -1,6 +1,6 @@
 import { Action } from "redux"
 import { FormActionPayload, IFieldFeedback } from "../actions"
-import { DisplayType, IFieldMeta, PatternType } from "./meta"
+import { DisplayType, IFieldMeta, IValidateSchema, PatternType } from "./meta"
 import { IValidationError, IValidator } from "./validator"
 
 export type Errors = {
@@ -31,7 +31,7 @@ export interface IFormProps {
 
 
 //让path可以重复，避免fragment覆盖其他值
-export interface IFieldSchema<ValidateRules = unknown> extends IFieldMeta<ValidateRules> {
+export interface IFieldSchema<ValidateRules extends IValidateSchema = IValidateSchema> extends IFieldMeta<ValidateRules> {
   path: string
 }
 
@@ -129,7 +129,7 @@ export interface IFormNode<T> extends IValidationSubscriber {
 
 }
 
-export interface IForm<ValidateRules = unknown> extends IFormNode<FormValue | undefined> {
+export interface IForm<ValidateRules extends IValidateSchema = IValidateSchema> extends IFormNode<FormValue | undefined> {
   name: string
   getField(path: string): IField<ValidateRules> | undefined
   registerField(fieldSchema: IFieldSchema<ValidateRules>): IField
@@ -141,7 +141,7 @@ export interface IForm<ValidateRules = unknown> extends IFormNode<FormValue | un
   getRootFields(): IFieldSchema<ValidateRules>[]
 }
 
-export interface IField<ValidateRules = unknown> extends IFormNode<unknown> {
+export interface IField<ValidateRules extends IValidateSchema = IValidateSchema> extends IFormNode<unknown> {
   form: IForm
   //引用数量
   refCount: number;
@@ -151,6 +151,7 @@ export interface IField<ValidateRules = unknown> extends IFormNode<unknown> {
   inputValue(value: unknown): void
   getFieldSchema(): IFieldSchema<ValidateRules>
   getSubFieldSchemas(): IFieldSchema<ValidateRules>[] | undefined
+  getState(): FieldState | undefined
   destroy(): void
 }
 

@@ -11,7 +11,7 @@ export class FormImpl implements IForm {
   validationSubscriber: ValidationSubscriber = new ValidationSubscriber()
 
   constructor(public fieldy: IFieldyEngine, public name: string) { }
-  
+
   reset(): void {
     throw new Error("Method not implemented.");
   }
@@ -59,7 +59,7 @@ export class FormImpl implements IForm {
         if (!this.fieldy.getFieldState(this.name, fieldSchema.path)) {
           this.fieldy.addFields(this.name, fieldSchema)
         }
-        const field = new FieldImpl(this.fieldy, this, fieldSchema.path)
+        const field = new FieldImpl(this.fieldy, this, fieldSchema.path) as IField
         this.fields[fieldSchema.path] = field
         return field
       }
@@ -135,7 +135,7 @@ export class FormImpl implements IForm {
     return this.validationSubscriber.onValidateSuccess(listener)
   }
 
-  getFieldSchemas(){
+  getFieldSchemas() {
     return this.fieldy.getFormState(this.name)?.fieldSchemas || []
   }
 

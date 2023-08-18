@@ -1,5 +1,5 @@
 import { IField, IFieldSchema, IForm, IValidationError, IValidator } from "@rxdrag/fieldy";
-import { PredeinedValidators, YupType, YupValidateMeta } from "../interfaces";
+import { PredeinedValidators, YupType, IYupValidateSchema } from "../interfaces";
 import { object, string, boolean, number, ValidationError, Schema, mixed } from 'yup';
 import { predifinedValidators } from "../predefineds";
 
@@ -9,7 +9,7 @@ export class YupValidator implements IValidator {
     this.predefinedValidators = { ...this.predefinedValidators, ...validators }
   }
 
-  validateForm(form: IForm<YupValidateMeta>): Promise<unknown> {
+  validateForm(form: IForm<IYupValidateSchema>): Promise<unknown> {
     const schemas = form.getFieldSchemas()
     for (const fieldSchema of schemas) {
       if (fieldSchema.type === "object") {
@@ -21,13 +21,13 @@ export class YupValidator implements IValidator {
     return this.validateOneObject(form.getValue(), rootSchemas)
   }
 
-  validateField(field: IField<YupValidateMeta>): Promise<unknown> {
+  validateField(field: IField<IYupValidateSchema>): Promise<unknown> {
     const children = field.getSubFieldSchemas() || []
     return this.validateOneObject(field.getValue(), children)
   }
 
   //校验一个对象
-  private async validateOneObject(value: unknown, fieldSchemas: IFieldSchema<YupValidateMeta>[]) {
+  private async validateOneObject(value: unknown, fieldSchemas: IFieldSchema<IYupValidateSchema>[]) {
 
     const schemaConfig = {} as any;
 
@@ -47,7 +47,7 @@ export class YupValidator implements IValidator {
       const returnErrors: IValidationError[] = errors.map(
         oneErr => ({
           path: fieldSchemas.find(field => field.name === oneErr.path)?.path || oneErr.path || "##no path##",
-          messages: oneErr.message,
+          message: oneErr.message,
         })
       )
 
@@ -57,7 +57,7 @@ export class YupValidator implements IValidator {
   }
 
 
-  private parseRules(meta: YupValidateMeta) {
+  private parseRules(meta: IYupValidateSchema) {
     let schema: Schema = mixed()
     if (meta.type?.value) {
       const predefinedValidtor = this.predefinedValidators[meta.type?.value]
@@ -74,7 +74,7 @@ export class YupValidator implements IValidator {
       }
     }
 
-    if (meta.rules?.required) {
+    if (meta.required) {
       schema = schema.required()
     }
     if (meta.rules?.test) {

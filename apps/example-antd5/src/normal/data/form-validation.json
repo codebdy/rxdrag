@@ -148,7 +148,8 @@
                             "required": {
                               "value": true
                             }
-                          }
+                          },
+                          "required": true
                         }
                       },
                       "slots": {},
@@ -179,7 +180,8 @@
                           },
                           "type": {
                             "value": "email"
-                          }
+                          },
+                          "required": true
                         }
                       },
                       "slots": {},

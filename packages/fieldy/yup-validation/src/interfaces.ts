@@ -1,3 +1,4 @@
+import { IValidateSchema } from "@rxdrag/fieldy";
 import { Schema } from "yup";
 
 //对应yup类型
@@ -27,7 +28,7 @@ export type TestType = {
 export interface YupSchema {
   nullable?: boolean,//还不知道怎么用
   nonNullable?: boolean,//还不知道怎么用
-  required?: IYupConfig<boolean | IRef>, //| string | FunctionStr,
+  //required?: IYupConfig<boolean | IRef>, //| string | FunctionStr,
   oneOf?: {
     arrayOfValues: Array<any>,
     message: string,
@@ -61,7 +62,7 @@ export interface IYupConfig<Type> {
 }
 
 export interface YupString extends YupSchema {
-  required?: IYupConfig<boolean | IRef>, //| string | FunctionStr,
+  //required?: IYupConfig<boolean | IRef>, //| string | FunctionStr,
   //先删掉，用最大长度跟最小长度结合使用
   //length?: IYupConfig<number | IRef>,
   min?: IYupConfig<number | IRef>,
@@ -97,7 +98,7 @@ export interface YupArray extends YupSchema {
 
 export type YupRules = YupSchema | YupArray | YupDate | YupNumber | YupString
 
-export type YupValidateMeta = {
+export interface IYupValidateSchema extends IValidateSchema {
   //类型，引用预定义的规则，比如email， url等。
   type?: IYupConfig<string | YupType>,
   rules?: YupRules
@@ -106,4 +107,4 @@ export type YupValidateMeta = {
 
 export type PredeinedValidator = (message?: string) => Schema
 
-export type PredeinedValidators =  { [name: string]: PredeinedValidator | undefined }
+export type PredeinedValidators = { [name: string]: PredeinedValidator | undefined }
