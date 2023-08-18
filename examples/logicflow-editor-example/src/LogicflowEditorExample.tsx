@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from "react"
 import { ILogicMetas, LogicFlowEditorScope } from "@rxdrag/minions-logicflow-editor"
-import { ConfigProvider, Form, theme } from "antd"
-import { ExampleInner } from "normal/components/ExampleInner"
+import { ConfigProvider, theme } from "antd"
+import { ExampleInner } from "./components/ExampleInner"
 
 export const LogicflowEditorExample = memo(() => {
   const [themeMode, setThemeMode] = useState<"dark" | "light">("light")
@@ -10,9 +10,9 @@ export const LogicflowEditorExample = memo(() => {
     lines: []
   })
 
-  const handleChange = useCallback((meta?: ILogicMetas) => {
-    setInputValue(meta || inputValue)
-  }, [inputValue]);
+  // const handleChange = useCallback((meta?: ILogicMetas) => {
+  //   setInputValue(meta || inputValue)
+  // }, [inputValue]);
 
   const handleToggleTheme = useCallback(() => {
     setThemeMode(mode => mode === "light" ? "dark" : "light")

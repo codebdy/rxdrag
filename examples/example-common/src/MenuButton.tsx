@@ -18,11 +18,11 @@ const items: MenuProps['items'] = [
     key: '2',
   },
   {
-    label: '编排编辑器',
+    label: <a href={routes.logicflow}>编排编辑器</a>,
     key: '3',
   },
   {
-    label: '控制器编辑器',
+    label: <a href={routes.controller}>控制器编辑器</a>,
     key: '4',
   },
 ];

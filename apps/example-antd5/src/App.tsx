@@ -9,6 +9,8 @@ import { controllerDefines } from 'normal/controller/defines';
 import { usePredefinedComponents } from 'normal/hooks/usePredefinedComponents';
 import { routes } from 'example-common';
 import { InlineEditorExample } from "inline-editor-example";
+import { LogicflowEditorExample } from "logicflow-editor-example";
+import { ControllerEditorExample } from "controller-editor-example";
 
 function App() {
   const { designers, components } = usePredefinedComponents()
@@ -28,13 +30,17 @@ function App() {
       </Route>
       <Route path={routes.inline} element={<InlineEditorExample />}>
       </Route>
+      <Route path={routes.controller} element={<ControllerEditorExample />}>
+      </Route>
+      <Route path={routes.logicflow} element={<LogicflowEditorExample />}>
+      </Route>
       <Route path={'/canvas-render'} element={<IFrameCanvasRender designers={designers} />}>
       </Route>
       <Route path={'/preview-render'} element={<IFramePreviewRender components={components} controllerFactories={controllerFactories} />}>
       </Route>
     </Routes>
 
-  );
+  );//
 }
 
 export default App;

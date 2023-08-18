@@ -1,11 +1,23 @@
-import { ShellContainer } from "normal/components/ShellContainer"
 import { memo, useCallback, useState } from "react"
 import { ControllerMetaEditorAntd5 } from "@rxdrag/controller-editor-antd5"
 import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
 import { activityMaterialLocales } from "@rxdrag/minions-react-materials"
 import { Fieldy } from "@rxdrag/react-fieldy"
-import { Form } from "antd"
-import { activityMaterialCategories } from "normal/materials"
+import { activityMaterialCategories } from "./materials"
+import { ShellContainer } from "./components/ShellContainer"
+import styled from "styled-components"
+import { MenuButton } from "example-common"
+
+const Toolbar = styled.div`
+  height: 48px;
+  border-bottom: solid 1px ${props => props.theme.token?.colorBorder};
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  flex-grow: 0;
+`
 
 export const ControllerEditorExample = memo(() => {
   const [inputValue, setInputValue] = useState<ILogicFlowControllerMeta>({
@@ -25,6 +37,10 @@ export const ControllerEditorExample = memo(() => {
   return (
     <Fieldy>
       <ShellContainer>
+        <Toolbar>
+          <div />
+          <MenuButton />
+        </Toolbar>
         <ControllerMetaEditorAntd5
           value={inputValue}
           onChange={handleChange}

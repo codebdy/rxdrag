@@ -1,4 +1,6 @@
 export const routes = {
   index: "/",
-  inline: "/inline"
+  inline: "/inline",
+  controller: "/conroller",
+  logicflow: "/logicflow",
 }
