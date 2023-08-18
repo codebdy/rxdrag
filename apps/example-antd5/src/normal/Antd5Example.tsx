@@ -21,7 +21,7 @@ import { pages } from "./data"
 import { minionsLocales } from "normal/controller/locales"
 import { minionsMaterialCategories } from "normal/controller/materials"
 import { controllerDefines } from "normal/controller/defines"
-import { MenuButton } from "common/MenuButton"
+import { MenuButton } from "example-common"
 
 export enum LeftNavType {
   pages = "pages",

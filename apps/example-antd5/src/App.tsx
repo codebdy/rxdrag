@@ -5,10 +5,10 @@ import { IFramePreviewRender } from "@rxdrag/react-antd-shell"
 import { Antd5Example } from './normal/Antd5Example';
 import { useMemo } from 'react';
 import { ControllerFactories } from '@rxdrag/react-runner';
-import { InlineExample } from 'inline';
 import { controllerDefines } from 'normal/controller/defines';
 import { usePredefinedComponents } from 'normal/hooks/usePredefinedComponents';
-import { routes } from 'common';
+import { routes } from 'example-common';
+import { InlineEditorExample } from "inline-editor-example";
 
 function App() {
   const { designers, components } = usePredefinedComponents()
@@ -26,7 +26,7 @@ function App() {
     <Routes>
       <Route path={routes.index} element={<Antd5Example />}>
       </Route>
-      <Route path={routes.inline} element={<InlineExample />}>
+      <Route path={routes.inline} element={<InlineEditorExample />}>
       </Route>
       <Route path={'/canvas-render'} element={<IFrameCanvasRender designers={designers} />}>
       </Route>
