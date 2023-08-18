@@ -24,6 +24,7 @@
     "eslint": "^7.32.0",
     "@rxdrag/eslint-config-custom": "workspace:*",
     "@rxdrag/tsconfig": "workspace:*",
+    "@types/styled-components": "^5.1.26",
     "example-common": "workspace:*"
   },
   "peerDependencies": {
@@ -36,6 +37,7 @@
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "@rxdrag/react-antd-shell-inline": "workspace:*",
-    "antd": "^5.6.2"
+    "antd": "^5.6.2",
+    "styled-components": "^5.3.9"
   }
 }

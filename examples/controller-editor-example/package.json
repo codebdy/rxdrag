@@ -24,6 +24,7 @@
     "eslint": "^7.32.0",
     "@rxdrag/eslint-config-custom": "workspace:*",
     "@rxdrag/tsconfig": "workspace:*",
+    "@types/styled-components": "^5.1.26",
     "vite-tsconfig-paths": "^4.0.7",
     "web-vitals": "^3.3.0"
   },
