@@ -35,7 +35,11 @@ const items: MenuProps['items'] = [
   },
   {
     label: <a href={"#"}>大屏</a>,
-    key: '6',
+    key: 'bigscreen',
+  },
+  {
+    label: <a href={"#"}>H5编辑器</a>,
+    key: 'h5',
   },
 ];
 
