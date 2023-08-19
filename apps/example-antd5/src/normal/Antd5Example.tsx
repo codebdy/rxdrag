@@ -6,7 +6,6 @@ import {
   HistoryWidget,
   LangButtons,
   LeftNavWidget,
-  Logo,
   OutlineWidget,
   ThemeButton,
   componentsIcon,
@@ -21,7 +20,7 @@ import { pages } from "./data"
 import { minionsLocales } from "normal/controller/locales"
 import { minionsMaterialCategories } from "normal/controller/materials"
 import { controllerDefines } from "normal/controller/defines"
-import { MenuButton } from "example-common"
+import { Logo, MenuButton } from "example-common"
 
 export enum LeftNavType {
   pages = "pages",
@@ -71,7 +70,7 @@ export const Antd5Example = memo(() => {
       topBar={
         <>
           <Space>
-            <Logo />
+            <Logo title="Normal" />
           </Space>
           <Space>
             <ThemeButton />

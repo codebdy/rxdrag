@@ -8,7 +8,7 @@ import { Button, Space } from "antd"
 import metas from "./meta.json"
 import { ShellContainer } from "./ShellContainer"
 import { activityMaterialLocales } from "../minion-materials"
-import { MenuButton } from "example-common"
+import { Logo, MenuButton } from "example-common"
 
 const Toolbar = styled.div`
   height: 48px;
@@ -37,6 +37,7 @@ export const ExampleInner = memo((
       <ShellContainer>
         <Toolbar>
           <Space>
+            <Logo title="逻辑编排" />
             <Button onClick={toggleTheme}>主题切换</Button>
             <Button disabled={!selected} onClick={handleRemove}>删除</Button>
           </Space>

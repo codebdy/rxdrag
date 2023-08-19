@@ -3,7 +3,6 @@ import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { SettingsForm } from "./SettingsForm"
 import { Button as AntdButton, Space } from "antd"
 import { LeftSidebar } from "./layouts/LeftSidebar"
-import { Logo } from "./widgets/Logo"
 import { GithubFilled } from "@ant-design/icons"
 import { Topbar } from "./layouts/Topbar"
 import { LeftNavWidget } from "./widgets/LeftNavWidget"
@@ -93,7 +92,6 @@ export const RxEditorAntd = memo((props: Antd5EditorProps) => {
             <Topbar >
               {
                 topBar || <>
-                  <Logo />
                   <Space>
                     <ThemeButton />
                     <LangButtons />

@@ -1,6 +1,6 @@
 import { CSSProperties, memo, useMemo } from "react"
 import { Button, Space } from "antd"
-import { AppstoreOutlined, BgColorsOutlined } from "@ant-design/icons"
+import { ApartmentOutlined, AppstoreOutlined, BgColorsOutlined, EllipsisOutlined } from "@ant-design/icons"
 import styled from "styled-components"
 import { boxShadow, defaultHorizontalMargin, defaultVerticalMargin } from "../utils"
 
@@ -75,6 +75,8 @@ export const Navbar = memo((
       <Space>
         <NavButton icon={<AppstoreOutlined />} />
         <NavButton icon={<BgColorsOutlined />} />
+        <NavButton icon={<ApartmentOutlined />} />
+        <NavButton icon={<EllipsisOutlined />} />
       </Space>
     </Container>
   )

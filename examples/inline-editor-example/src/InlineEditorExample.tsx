@@ -7,9 +7,8 @@ import {
   VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu, Button, theme, Space, ConfigProvider } from 'antd';
-import { Logo } from './Logo';
 import styled from 'styled-components';
-import { MenuButton } from 'example-common';
+import { Logo, MenuButton } from 'example-common';
 import { EditorScope, Toolkits } from '@rxdrag/react-antd-shell-inline';
 
 const { Header, Sider, Content } = Layout;
@@ -45,10 +44,7 @@ export const InlineEditorExample: React.FC = () => {
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <LogoContainer>
             <Space>
-              <Logo />
-              <span>
-                内联编辑器
-              </span>
+              <Logo title="Inline" style={{ color: "#fff" }} />
             </Space>
           </LogoContainer>
           <Menu

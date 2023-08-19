@@ -6,7 +6,7 @@ import { Fieldy } from "@rxdrag/react-fieldy"
 import { activityMaterialCategories } from "./materials"
 import { ShellContainer } from "./components/ShellContainer"
 import styled from "styled-components"
-import { MenuButton } from "example-common"
+import { Logo, MenuButton } from "example-common"
 
 const Toolbar = styled.div`
   height: 48px;
@@ -38,7 +38,7 @@ export const ControllerEditorExample = memo(() => {
     <Fieldy>
       <ShellContainer>
         <Toolbar>
-          <div />
+          <Logo title="控制器" />
           <MenuButton />
         </Toolbar>
         <ControllerMetaEditorAntd5

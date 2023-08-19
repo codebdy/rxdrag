@@ -7,23 +7,35 @@ import { routes } from "./routes";
 const items: MenuProps['items'] = [
   {
     label: <a href={routes.index}>常规编辑器</a>,
-    key: '0',
+    key: 'normal',
   },
   {
     label: <a href={routes.inline}>内联编辑器</a>,
-    key: '1',
+    key: 'inline',
   },
   {
     label: 'IFrame内联编辑器',
-    key: '2',
+    key: 'iframe',
+  },
+  {
+    label: '可缩放画布',
+    key: 'zoom',
   },
   {
     label: <a href={routes.logicflow}>编排编辑器</a>,
-    key: '3',
+    key: 'logicflow',
   },
   {
     label: <a href={routes.controller}>控制器编辑器</a>,
-    key: '4',
+    key: 'controller',
+  },
+  {
+    label: <a href={"#"}>工作流表单</a>,
+    key: 'workflow',
+  },
+  {
+    label: <a href={"#"}>大屏</a>,
+    key: '6',
   },
 ];
 
