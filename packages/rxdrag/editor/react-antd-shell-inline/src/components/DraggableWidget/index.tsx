@@ -17,9 +17,13 @@ export const DraggableWidget = memo((
     style?: CSSProperties,
     className?: string,
     resizable?: boolean,
+    maxWidth?: number,
+    maxHeight?: number,
+    minWidth?: number,
+    minHeight?: number,
   }
 ) => {
-  const { name, children, style, className, resizable, ...rest } = props;
+  const { name, children, style, className, resizable, maxWidth, maxHeight, minWidth, minHeight, ...rest } = props;
   const [layout, setLayout] = useState<IWidgetLayout>()
   const [mousePressedPoint, setMousePressedPoint] = useState<IPosition>()
   const [startLayout, setStartLayout] = useState<IWidgetLayout>()
@@ -112,6 +116,10 @@ export const DraggableWidget = memo((
         <ResizeHandlers
           widget={ref.current}
           layout={layout}
+          maxWidth={maxWidth}
+          maxHeight={maxHeight}
+          minWidth={minWidth}
+          minHeight={minHeight}
           onResize={handleResize}
         />}
     </Widget>

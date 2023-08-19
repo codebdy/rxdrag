@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { DraggableWidget } from "../DraggableWidget";
 import { boxShadow } from "../utils";
 
-export const Panel = styled(DraggableWidget).attrs({ resizable: true })`
+export const Panel = styled(DraggableWidget).attrs({ resizable: true, maxWidth: 600, minWidth: 100, minHeight: 100 })`
   position: fixed;
   height:calc(100vh - 120px);
   width: 200px;

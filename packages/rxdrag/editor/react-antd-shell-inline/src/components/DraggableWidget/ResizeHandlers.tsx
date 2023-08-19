@@ -82,9 +82,13 @@ export const ResizeHandlers = memo((
     layout: IWidgetLayout,
     onResize: (offset: IWidgetLayout) => void,
     widget: HTMLDivElement | null,
+    maxWidth?: number,
+    maxHeight?: number,
+    minWidth?: number,
+    minHeight?: number,
   }
 ) => {
-  const { layout, onResize, widget } = props;
+  const { layout, onResize, widget, maxWidth, maxHeight, minWidth, minHeight,} = props;
   const [dragType, setDragType] = useState<DragType>();
   const [mousePressedPoint, setMousePressedPoint] = useState<IPosition>()
   const [startLayout, setStartLayout] = useState<IWidgetLayout>()
@@ -159,9 +163,25 @@ export const ResizeHandlers = memo((
         break;
     }
 
+    if (maxWidth && (newLayout.width || 0) > maxWidth) {
+      newLayout.width = maxWidth
+    }
+
+    if (maxHeight && (newLayout.heiht || 0) > maxHeight) {
+      newLayout.heiht = maxHeight
+    }
+
+    if (minWidth && (newLayout.width || 0) < minWidth) {
+      newLayout.width = minWidth
+    }
+
+    if (minHeight && (newLayout.heiht || 0) < minHeight) {
+      newLayout.heiht = minHeight
+    }
+
     onResize?.(newLayout)
 
-  }, [dragType, mousePressedPoint, onResize, startLayout])
+  }, [dragType, maxHeight, maxWidth, minHeight, minWidth, mousePressedPoint, onResize, startLayout])
 
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
