@@ -45,6 +45,12 @@ export const DraggableWidget = memo((
   }, [layout])
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (e.clientX < 0 || e.clientY < 0) {
+      return
+    }
+    if (e.clientY > document.body.clientHeight || e.clientX > document.body.clientWidth) {
+      return
+    }
     if (mousePressedPoint) {
       const diff = {
         offsetX: e.clientX - mousePressedPoint.x,
