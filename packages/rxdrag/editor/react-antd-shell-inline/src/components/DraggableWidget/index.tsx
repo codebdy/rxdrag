@@ -35,6 +35,9 @@ export const DraggableWidget = memo((
   }, [globalLayout])
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if ((e.target as HTMLDivElement).id !== ref.current?.id) {
+      return
+    }
     setMousePressedPoint({
       x: e.clientX,
       y: e.clientY
@@ -80,6 +83,10 @@ export const DraggableWidget = memo((
     }
   }, [handleMouseMove, handleMouseUp])
 
+  const handleResize = useCallback((lyout: IWidgetLayout) => {
+    setLayout({ ...layout, ...lyout })
+  }, [layout])
+
   return (
     <Widget
       ref={ref}
@@ -96,7 +103,7 @@ export const DraggableWidget = memo((
       onMouseDown={handleMouseDown}
     >
       {children}
-      {resizable && <ResizeHandlers />}
+      {resizable && <ResizeHandlers onResize={handleResize} />}
     </Widget>
   )
 })

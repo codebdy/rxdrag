@@ -1,4 +1,4 @@
-import { memo } from "react"
+import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
 
 const thickness = 6;
@@ -64,17 +64,65 @@ const BottomHandler = styled(HorizontalHandler)`
   //偏移
   bottom: ${offset}px;  
 `
-export const ResizeHandlers = memo(() => {
+
+enum DragType {
+  Left = "left",
+  LeftTop = "leftTop",
+  Top = "top",
+  RightTop = "rightTop",
+  Right = "right",
+  RightBottom = "rightBottom",
+  Bottom = "bottom",
+  LeftBottom = "leftBottom"
+}
+
+export interface ResizeOffset {
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+}
+
+export const ResizeHandlers = memo((
+  props: {
+    onResize: (layout: ResizeOffset) => void
+  }
+) => {
+  const { onResize } = props;
+  const [dragType, setDragType] = useState<DragType>();
+
+  const handleLeftMouseDown = useCallback((e: React.MouseEvent, drgType: DragType) => {
+    e.stopPropagation()
+    setDragType(drgType)
+  }, [])
+
+
   return (
     <>
-      <LeftHandler />
-      <LeftTopHandler />
-      <TopHandler />
-      <RightTopHandler />
-      <RightHandler />
-      <RightBottomHandler />
-      <BottomHandler />
-      <LeftBottomHandler />
+      <LeftHandler
+        onMouseDown={e => handleLeftMouseDown(e, DragType.Left)}
+      />
+      <LeftTopHandler
+        onMouseDown={e => handleLeftMouseDown(e, DragType.LeftTop)}
+      />
+      <TopHandler
+        onMouseDown={e => handleLeftMouseDown(e, DragType.Top)}
+      />
+      <RightTopHandler
+        onMouseDown={e => handleLeftMouseDown(e, DragType.RightTop)}
+      />
+      <RightHandler
+        onMouseDown={e => handleLeftMouseDown(e, DragType.Right)}
+      />
+      <RightBottomHandler
+        onMouseDown={e => handleLeftMouseDown(e, DragType.RightBottom)}
+      />
+      <BottomHandler
+        onMouseDown={e => handleLeftMouseDown(e, DragType.Bottom)}
+      />
+      <LeftBottomHandler
+        onMouseDown={e => handleLeftMouseDown(e, DragType.LeftBottom)}
+      />
     </>
   )
 })
