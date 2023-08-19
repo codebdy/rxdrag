@@ -1,13 +1,10 @@
-import { CSSProperties, memo, useMemo } from "react"
+import { memo } from "react"
 import { Button, Space } from "antd"
 import { ApartmentOutlined, AppstoreOutlined, BgColorsOutlined, EllipsisOutlined } from "@ant-design/icons"
 import styled from "styled-components"
-import { boxShadow, defaultHorizontalMargin, defaultVerticalMargin } from "../utils"
+import { boxShadow } from "../utils"
+import { DraggableWidget } from "../DraggableWidget"
 
-const Container = styled.div`
-  position: fixed;
-  bottom: ${defaultVerticalMargin}px;
-`
 const NavButton = styled(Button).attrs({ size: "large" })`
   box-shadow: ${boxShadow};
 `
@@ -22,55 +19,16 @@ export enum NavPostion {
 }
 
 
-export const Navbar = memo((
-  props: {
-    position: NavPostion
-  }
-) => {
-  const { position } = props;
-
-  const positionStyle: CSSProperties = useMemo(() => {
-    if (position === NavPostion.TopLeft) {
-      return {
-        top: defaultVerticalMargin,
-        left: defaultHorizontalMargin,
-      }
-    } else if (position === NavPostion.TopCenter) {
-      return {
-        top: defaultVerticalMargin,
-        left: "50%",
-        transform: "translateX(-50%)",
-      }
-    } else if (position === NavPostion.TopRight) {
-      return {
-        top: defaultVerticalMargin,
-        right: defaultHorizontalMargin,
-      }
-    } else if (position === NavPostion.BottomLeft) {
-      return {
-        bottom: defaultVerticalMargin,
-        left: defaultHorizontalMargin,
-      }
-    } else if (position === NavPostion.BottomCenter) {
-      return {
-        bottom: defaultVerticalMargin,
-        left: "50%",
-        transform: "translateX(-50%)",
-      }
-    } else if (position === NavPostion.BottomRight) {
-      return {
-        bottom: defaultVerticalMargin,
-        right: defaultHorizontalMargin,
-      }
-    }
-
-    return {}
-  }, [position])
+export const Navbar = memo(() => {
 
   return (
-    <Container
-      className="rx-nav-toolbar"
-      style={positionStyle}
+    <DraggableWidget
+      className="rx-nav-toolbar" defaultPosition={
+        {
+          x: 100,
+          y: 100,
+        }
+      }
     >
       <Space>
         <NavButton icon={<AppstoreOutlined />} />
@@ -78,6 +36,6 @@ export const Navbar = memo((
         <NavButton icon={<ApartmentOutlined />} />
         <NavButton icon={<EllipsisOutlined />} />
       </Space>
-    </Container>
+    </DraggableWidget>
   )
 })
