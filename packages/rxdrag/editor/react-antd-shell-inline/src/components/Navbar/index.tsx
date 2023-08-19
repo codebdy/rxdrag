@@ -4,6 +4,7 @@ import { ApartmentOutlined, AppstoreOutlined, BgColorsOutlined, EllipsisOutlined
 import styled from "styled-components"
 import { boxShadow, defaultHorizontalMargin, defaultVerticalMargin } from "../utils"
 import { DraggableWidget } from "../DraggableWidget"
+import { WidgetNames } from "../../interfaces"
 
 const Container = styled(DraggableWidget)`
   bottom: ${defaultVerticalMargin}px;
@@ -27,6 +28,7 @@ export const Navbar = memo(() => {
   return (
     <Container
       className="rx-nav-toolbar"
+      name = {WidgetNames.navbar}
     >
       <Space>
         <NavButton icon={<AppstoreOutlined />} />

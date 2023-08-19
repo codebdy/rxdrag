@@ -1,6 +1,6 @@
 import { memo, useMemo } from "react"
 import styled, { ThemeProvider } from "styled-components"
-import { NavPostion, Navbar } from "../Navbar"
+import { Navbar } from "../Navbar"
 import { Toolbar } from "../Toolbar"
 import { Toolbox } from "../Toolbox"
 import { PropertyPanel } from "../PropertyPanel"
@@ -23,7 +23,7 @@ export const Toolkits = memo(() => {
         <Toolbox />
         <PropertyPanel />
         <Toolbar />
-        <Navbar position={NavPostion.BottomRight} />
+        <Navbar />
       </Container>
     </ThemeProvider>
   )

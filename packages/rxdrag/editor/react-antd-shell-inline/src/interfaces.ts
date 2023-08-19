@@ -1,7 +1,7 @@
 
 export interface IPosition {
-  x: number,
-  y: number,
+  x?: number,
+  y?: number,
 }
 
 export interface ISize {
@@ -11,11 +11,14 @@ export interface ISize {
 
 export interface IWidgetLayout extends IPosition, ISize {
   //是否显示
-  dispaly?: boolean;
+  display?: boolean;
 }
 
 //所有的部件名称
 export enum WidgetNames {
   navbar = "navbar",
   toolbar = "toolbar",
+  toolbox = "toolbox",
+  property = "property",
+  outline = "outline"
 }

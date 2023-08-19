@@ -88,7 +88,7 @@ export const ResizeHandlers = memo((
     minHeight?: number,
   }
 ) => {
-  const { layout, onResize, widget, maxWidth, maxHeight, minWidth, minHeight,} = props;
+  const { layout, onResize, widget, maxWidth, maxHeight, minWidth, minHeight, } = props;
   const [dragType, setDragType] = useState<DragType>();
   const [mousePressedPoint, setMousePressedPoint] = useState<IPosition>()
   const [startLayout, setStartLayout] = useState<IWidgetLayout>()
@@ -121,35 +121,35 @@ export const ResizeHandlers = memo((
     }
 
     const diff = {
-      offsetX: e.clientX - mousePressedPoint.x,
-      offsetY: e.clientY - mousePressedPoint.y,
+      offsetX: e.clientX - (mousePressedPoint.x || 0),
+      offsetY: e.clientY - (mousePressedPoint.y || 0),
     }
 
     const newLayout = { ...startLayout }
     switch (dragType) {
       case DragType.Left:
-        newLayout.x = startLayout.x + diff.offsetX;
+        newLayout.x = (startLayout.x || 0) + diff.offsetX;
         newLayout.width = (startLayout.width || 0) - (diff.offsetX);
         break;
       case DragType.Right:
         newLayout.width = (startLayout.width || 0) + (diff.offsetX);
         break;
       case DragType.Top:
-        newLayout.y = startLayout.y + diff.offsetY;
+        newLayout.y = (startLayout.y || 0) + diff.offsetY;
         newLayout.heiht = (startLayout.heiht || 0) - (diff.offsetY);
         break;
       case DragType.Bottom:
         newLayout.heiht = (startLayout.heiht || 0) + (diff.offsetY);
         break;
       case DragType.LeftTop:
-        newLayout.x = startLayout.x + diff.offsetX;
+        newLayout.x = (startLayout.x || 0) + diff.offsetX;
         newLayout.width = (startLayout.width || 0) - (diff.offsetX);
-        newLayout.y = startLayout.y + diff.offsetY;
+        newLayout.y = (startLayout.y || 0) + diff.offsetY;
         newLayout.heiht = (startLayout.heiht || 0) - (diff.offsetY);
         break;
       case DragType.RightTop:
         newLayout.width = (startLayout.width || 0) + (diff.offsetX);
-        newLayout.y = startLayout.y + diff.offsetY;
+        newLayout.y = (startLayout.y || 0) + diff.offsetY;
         newLayout.heiht = (startLayout.heiht || 0) - (diff.offsetY);
         break;
       case DragType.RightBottom:
@@ -157,7 +157,7 @@ export const ResizeHandlers = memo((
         newLayout.heiht = (startLayout.heiht || 0) + (diff.offsetY);
         break;
       case DragType.LeftBottom:
-        newLayout.x = startLayout.x + diff.offsetX;
+        newLayout.x = (startLayout.x || 0) + diff.offsetX;
         newLayout.width = (startLayout.width || 0) - (diff.offsetX);
         newLayout.heiht = (startLayout.heiht || 0) + (diff.offsetY);
         break;

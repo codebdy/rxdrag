@@ -21,14 +21,15 @@ export const DraggableWidget = memo((
     maxHeight?: number,
     minWidth?: number,
     minHeight?: number,
+    //默认关闭
+    defalutClosed?: boolean,
   }
 ) => {
-  const { name, children, style, className, resizable, maxWidth, maxHeight, minWidth, minHeight, ...rest } = props;
+  const { name, children, style, className, resizable, maxWidth, maxHeight, minWidth, minHeight, defalutClosed, ...rest } = props;
   const [layout, setLayout] = useState<IWidgetLayout>()
   const [mousePressedPoint, setMousePressedPoint] = useState<IPosition>()
   const [startLayout, setStartLayout] = useState<IWidgetLayout>()
   const ref = useRef<HTMLDivElement>(null)
-
   const globalLayout = useWidgetLayout(name)
   const setGlobalLayout = useSetWidgetLayout(name)
 
@@ -61,11 +62,11 @@ export const DraggableWidget = memo((
       return
     }
     const diff = {
-      offsetX: e.clientX - mousePressedPoint.x,
-      offsetY: e.clientY - mousePressedPoint.y,
+      offsetX: e.clientX - (mousePressedPoint.x || 0),
+      offsetY: e.clientY - (mousePressedPoint.y || 0),
     }
     if (startLayout) {
-      const newLayout = { ...layout, x: startLayout?.x + diff.offsetX, y: startLayout.y + diff.offsetY }
+      const newLayout = { ...layout, x: (startLayout?.x || 0) + diff.offsetX, y: (startLayout.y || 0) + diff.offsetY }
       setLayout(newLayout)
     }
   }, [layout, mousePressedPoint, startLayout])
@@ -96,6 +97,8 @@ export const DraggableWidget = memo((
     })
   }, [layout])
 
+  const display = globalLayout?.display === undefined ? !defalutClosed : globalLayout?.display
+
   return (
     <Widget
       ref={ref}
@@ -107,6 +110,7 @@ export const DraggableWidget = memo((
         width: layout?.width,
         height: layout?.heiht,
         transform: layout ? "none" : undefined,
+        display: display ? style?.display : "none",
       }}
       {...rest}
       onMouseDown={handleMouseDown}
