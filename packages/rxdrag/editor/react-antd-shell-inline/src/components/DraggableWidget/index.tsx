@@ -4,6 +4,7 @@ import { IPosition, IWidgetLayout } from "../../interfaces";
 import { useWidgetLayout } from "../../hooks/useWidgetLayout";
 import { useSetWidgetLayout } from "../../hooks/useSetWidgetLayout";
 import { ResizeHandlers } from "./ResizeHandlers";
+import classnames from "classnames";
 
 const Widget = styled.div`
   position: fixed;
@@ -98,7 +99,7 @@ export const DraggableWidget = memo((
   return (
     <Widget
       ref={ref}
-      className={"rx-draggable-widget " + (className || "")}
+      className={classnames("rx-draggable-widget", className)}
       style={{
         ...style,
         left: layout?.x,

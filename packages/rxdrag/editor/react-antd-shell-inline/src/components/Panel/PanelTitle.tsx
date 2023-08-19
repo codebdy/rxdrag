@@ -1,5 +1,6 @@
 import { CloseOutlined } from "@ant-design/icons";
 import { Button } from "antd";
+import classNames from "classnames";
 import { memo } from "react"
 import styled from "styled-components"
 
@@ -20,7 +21,7 @@ export const PanelTitle = memo((props: {
 }) => {
   const { className, children, onClose, ...rest } = props;
   return (
-    <Title className={"rx-widget-title " + (className || "")} {...rest}>
+    <Title className={classNames("rx-widget-title", className)} {...rest}>
       <span>{children}</span>
       <Button
         type="text"
