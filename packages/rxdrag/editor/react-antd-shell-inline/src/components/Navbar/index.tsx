@@ -5,6 +5,7 @@ import styled from "styled-components"
 import { boxShadow, defaultHorizontalMargin, defaultVerticalMargin } from "../utils"
 import { DraggableWidget } from "../DraggableWidget"
 import { WidgetNames } from "../../interfaces"
+import { useToggleDisplay } from "../../hooks/useToggleDisplay"
 
 const Container = styled(DraggableWidget)`
   bottom: ${defaultVerticalMargin}px;
@@ -25,14 +26,22 @@ export enum NavPostion {
 
 
 export const Navbar = memo(() => {
+  const toggle = useToggleDisplay()
+
   return (
     <Container
       className="rx-nav-toolbar"
-      name = {WidgetNames.navbar}
+      name={WidgetNames.navbar}
     >
       <Space>
-        <NavButton icon={<AppstoreOutlined />} />
-        <NavButton icon={<BgColorsOutlined />} />
+        <NavButton
+          icon={<AppstoreOutlined />}
+          onClick={() => toggle(WidgetNames.toolbox)}
+        />
+        <NavButton
+          icon={<BgColorsOutlined />}
+          onClick={() => toggle(WidgetNames.property)}
+        />
         <NavButton icon={<ApartmentOutlined />} />
         <NavButton icon={<EllipsisOutlined />} />
       </Space>

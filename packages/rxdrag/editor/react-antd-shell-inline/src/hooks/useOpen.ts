@@ -1,5 +1,5 @@
-import { useSetDisplay } from "./useSetDisplay";
+import { useSetClosed } from "./useSetClosed";
 
 export function useOpen(name?: string) {
-  return useSetDisplay(name, true)
+  return useSetClosed(name, false)
 }

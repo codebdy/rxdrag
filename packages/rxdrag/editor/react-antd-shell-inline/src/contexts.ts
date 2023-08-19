@@ -1,5 +1,5 @@
 import { createContext } from "react"
-import { IWidgetLayout } from "./interfaces"
+import { IWidgetLayout, WidgetNames } from "./interfaces"
 
 export interface IWidgetStates {
   name: string,
@@ -10,4 +10,16 @@ export interface IWidgetStates {
   updateWidget: (name: string, state?: IWidgetLayout) => void,
 }
 
-export const WidgetsContext = createContext<IWidgetStates | undefined>(undefined)
+export const defaultState: IWidgetStates = {
+  name: "",
+  widgets: {
+    [WidgetNames.outline]: {
+      closed: false,
+    }
+  },
+  updateWidget: function (): void {
+    throw new Error("Function not implemented.")
+  }
+}
+
+export const WidgetsContext = createContext<IWidgetStates>(defaultState)

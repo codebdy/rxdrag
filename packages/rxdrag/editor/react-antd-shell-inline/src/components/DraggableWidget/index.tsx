@@ -21,11 +21,9 @@ export const DraggableWidget = memo((
     maxHeight?: number,
     minWidth?: number,
     minHeight?: number,
-    //默认关闭
-    defalutClosed?: boolean,
   }
 ) => {
-  const { name, children, style, className, resizable, maxWidth, maxHeight, minWidth, minHeight, defalutClosed, ...rest } = props;
+  const { name, children, style, className, resizable, maxWidth, maxHeight, minWidth, minHeight, ...rest } = props;
   const [layout, setLayout] = useState<IWidgetLayout>()
   const [mousePressedPoint, setMousePressedPoint] = useState<IPosition>()
   const [startLayout, setStartLayout] = useState<IWidgetLayout>()
@@ -97,8 +95,6 @@ export const DraggableWidget = memo((
     })
   }, [layout])
 
-  const display = globalLayout?.display === undefined ? !defalutClosed : globalLayout?.display
-
   return (
     <Widget
       ref={ref}
@@ -109,8 +105,8 @@ export const DraggableWidget = memo((
         top: layout?.y,
         width: layout?.width,
         height: layout?.heiht,
-        transform: layout ? "none" : undefined,
-        display: display ? style?.display : "none",
+        transform: (layout?.x || layout?.y) ? "none" : undefined,
+        display: globalLayout?.closed ? "none" : style?.display,
       }}
       {...rest}
       onMouseDown={handleMouseDown}

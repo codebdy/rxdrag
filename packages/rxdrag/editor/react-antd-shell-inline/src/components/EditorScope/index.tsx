@@ -1,7 +1,7 @@
 import { GlobalToken, theme } from "antd"
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { ThemeProvider } from "styled-components";
-import { IWidgetStates, WidgetsContext } from "../../contexts";
+import { IWidgetStates, WidgetsContext, defaultState } from "../../contexts";
 import { IWidgetLayout } from "../../interfaces";
 
 export const EditorScope = memo((
@@ -12,7 +12,7 @@ export const EditorScope = memo((
   }
 ) => {
   const { name = "rx-inline-editor", children } = props;
-  const [widgetStates, setWidgetStates] = useState<IWidgetStates>()
+  const [widgetStates, setWidgetStates] = useState<IWidgetStates>(defaultState)
 
   useEffect(() => {
     //从localstorage里面取
@@ -25,9 +25,6 @@ export const EditorScope = memo((
 
   const handleUpdateWidget = useCallback((widgetName: string, state?: IWidgetLayout) => {
     setWidgetStates(states => {
-      if (!states) {
-        return undefined
-      }
       const newStates = { ...states, widgets: { ...states.widgets, [widgetName]: state } }
       //往localstorage里面写
       localStorage.setItem(name, JSON.stringify(newStates))
@@ -38,6 +35,7 @@ export const EditorScope = memo((
 
   useEffect(() => {
     setWidgetStates({
+      ...defaultState,
       name,
       widgets: {},
       updateWidget: handleUpdateWidget,

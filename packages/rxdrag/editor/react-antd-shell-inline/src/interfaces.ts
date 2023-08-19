@@ -11,7 +11,7 @@ export interface ISize {
 
 export interface IWidgetLayout extends IPosition, ISize {
   //是否显示
-  display?: boolean;
+  closed?: boolean;
 }
 
 //所有的部件名称
