@@ -137,6 +137,26 @@ export const ResizeHandlers = memo((
       case DragType.Bottom:
         newLayout.heiht = (startLayout.heiht || 0) + (diff.offsetY);
         break;
+      case DragType.LeftTop:
+        newLayout.x = startLayout.x + diff.offsetX;
+        newLayout.width = (startLayout.width || 0) - (diff.offsetX);
+        newLayout.y = startLayout.y + diff.offsetY;
+        newLayout.heiht = (startLayout.heiht || 0) - (diff.offsetY);
+        break;
+      case DragType.RightTop:
+        newLayout.width = (startLayout.width || 0) + (diff.offsetX);
+        newLayout.y = startLayout.y + diff.offsetY;
+        newLayout.heiht = (startLayout.heiht || 0) - (diff.offsetY);
+        break;
+      case DragType.RightBottom:
+        newLayout.width = (startLayout.width || 0) + (diff.offsetX);
+        newLayout.heiht = (startLayout.heiht || 0) + (diff.offsetY);
+        break;
+      case DragType.LeftBottom:
+        newLayout.x = startLayout.x + diff.offsetX;
+        newLayout.width = (startLayout.width || 0) - (diff.offsetX);
+        newLayout.heiht = (startLayout.heiht || 0) + (diff.offsetY);
+        break;
     }
 
     onResize?.(newLayout)
