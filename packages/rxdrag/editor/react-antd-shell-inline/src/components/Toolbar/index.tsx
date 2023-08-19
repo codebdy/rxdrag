@@ -4,8 +4,9 @@ import { boxShadow, defaultVerticalMargin } from "../utils"
 import { Button, Divider, Space } from "antd"
 import { undoIcon, redoIcon, lineIcon, marginIcon, moveIcon, designIcon, jsonIcon, playIcon } from "../../icons"
 import { EllipsisOutlined } from "@ant-design/icons"
+import { DraggableWidget } from "../DraggableWidget"
 
-const Container = styled.div`
+const Container = styled(DraggableWidget)`
   position: fixed;
   height:40px;
   min-width: 60px;

@@ -6,6 +6,7 @@ import { useSetWidgetLayout } from "../hooks/useSetWidgetLayout";
 
 const Widget = styled.div`
   position: fixed;
+  user-select: none;
 `
 export const DraggableWidget = memo((
   props: {
@@ -87,6 +88,7 @@ export const DraggableWidget = memo((
         top: layout?.y,
         width: layout?.width,
         height: layout?.heiht,
+        transform: layout ? "none" : undefined,
       }}
       {...rest}
       onMouseDown={handleMouseDown}
