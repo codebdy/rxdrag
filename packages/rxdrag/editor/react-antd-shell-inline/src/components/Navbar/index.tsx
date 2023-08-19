@@ -2,9 +2,13 @@ import { memo } from "react"
 import { Button, Space } from "antd"
 import { ApartmentOutlined, AppstoreOutlined, BgColorsOutlined, EllipsisOutlined } from "@ant-design/icons"
 import styled from "styled-components"
-import { boxShadow } from "../utils"
+import { boxShadow, defaultHorizontalMargin, defaultVerticalMargin } from "../utils"
 import { DraggableWidget } from "../DraggableWidget"
 
+const Container = styled(DraggableWidget)`
+  bottom: ${defaultVerticalMargin}px;
+  right: ${defaultHorizontalMargin}px;
+`
 const NavButton = styled(Button).attrs({ size: "large" })`
   box-shadow: ${boxShadow};
 `
@@ -20,15 +24,9 @@ export enum NavPostion {
 
 
 export const Navbar = memo(() => {
-
   return (
-    <DraggableWidget
-      className="rx-nav-toolbar" defaultPosition={
-        {
-          x: 100,
-          y: 100,
-        }
-      }
+    <Container
+      className="rx-nav-toolbar"
     >
       <Space>
         <NavButton icon={<AppstoreOutlined />} />
@@ -36,6 +34,6 @@ export const Navbar = memo(() => {
         <NavButton icon={<ApartmentOutlined />} />
         <NavButton icon={<EllipsisOutlined />} />
       </Space>
-    </DraggableWidget>
+    </Container>
   )
 })

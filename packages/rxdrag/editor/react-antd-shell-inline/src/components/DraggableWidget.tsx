@@ -1,6 +1,6 @@
-import { CSSProperties, memo, useCallback, useEffect, useState } from "react";
+import { CSSProperties, memo, useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { IPosition, ISize, IWidgetLayout } from "../interfaces";
+import { IPosition, IWidgetLayout } from "../interfaces";
 import { useWidgetLayout } from "../hooks/useWidgetLayout";
 import { useSetWidgetLayout } from "../hooks/useSetWidgetLayout";
 
@@ -12,23 +12,18 @@ export const DraggableWidget = memo((
     //用于保存位置信息的key，如果不赋值，则不保存
     name?: string,
     children?: React.ReactNode,
-    defaultPosition: IPosition,
-    defaultSize?: ISize,
     style?: CSSProperties,
     className?: string,
   }
 ) => {
-  const { name, defaultPosition, defaultSize, children, style, className, ...rest } = props;
-  const [layout, setLayout] = useState<IWidgetLayout>({ ...defaultPosition, ...defaultSize })
+  const { name, children, style, className, ...rest } = props;
+  const [layout, setLayout] = useState<IWidgetLayout>()
   const [mousePressedPoint, setMousePressedPoint] = useState<IPosition>()
   const [startLayout, setStartLayout] = useState<IWidgetLayout>()
+  const ref = useRef<HTMLDivElement>(null)
 
   const globalLayout = useWidgetLayout(name)
   const setGlobalLayout = useSetWidgetLayout(name)
-
-  useEffect(() => {
-    setLayout({ ...defaultPosition, ...defaultSize })
-  }, [defaultPosition, defaultSize])
 
   useEffect(() => {
     if (globalLayout) {
@@ -41,7 +36,11 @@ export const DraggableWidget = memo((
       x: e.clientX,
       y: e.clientY
     })
-    setStartLayout({ ...layout })
+    const rect = ref.current?.getBoundingClientRect()
+    if (rect) {
+      setStartLayout({ ...layout, x: rect.left, y: rect.top, width: rect.width, heiht: rect.height })
+    }
+
   }, [layout])
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
@@ -80,6 +79,7 @@ export const DraggableWidget = memo((
 
   return (
     <Widget
+      ref={ref}
       className={"rx-draggable-widget " + (className || "")}
       style={{
         ...style,
