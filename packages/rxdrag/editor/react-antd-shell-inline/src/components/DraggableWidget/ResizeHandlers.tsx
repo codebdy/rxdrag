@@ -1,5 +1,6 @@
-import { memo, useCallback, useState } from "react"
+import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
+import { IPosition, IWidgetLayout } from "../../interfaces";
 
 const thickness = 6;
 
@@ -76,25 +77,80 @@ enum DragType {
   LeftBottom = "leftBottom"
 }
 
-export interface ResizeOffset {
-  x: number,
-  y: number,
-  width: number,
-  height: number,
-}
-
 export const ResizeHandlers = memo((
   props: {
-    onResize: (layout: ResizeOffset) => void
+    layout: IWidgetLayout,
+    onResize: (offset: IWidgetLayout) => void,
+    widget: HTMLDivElement | null,
   }
 ) => {
-  const { onResize } = props;
+  const { layout, onResize, widget } = props;
   const [dragType, setDragType] = useState<DragType>();
+  const [mousePressedPoint, setMousePressedPoint] = useState<IPosition>()
+  const [startLayout, setStartLayout] = useState<IWidgetLayout>()
 
   const handleLeftMouseDown = useCallback((e: React.MouseEvent, drgType: DragType) => {
     e.stopPropagation()
     setDragType(drgType)
+    setMousePressedPoint({
+      x: e.clientX,
+      y: e.clientY
+    })
+    const rect = widget?.getBoundingClientRect()
+    if (rect) {
+      setStartLayout({ ...layout, x: rect.left, y: rect.top, width: rect.width, heiht: rect.height })
+    }
+  }, [layout, widget])
+
+  const handleMouseUp = useCallback(() => {
+    setMousePressedPoint(undefined);
+    setDragType(undefined);
+
   }, [])
+
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (e.clientX < 0 || e.clientY < 0 || !mousePressedPoint || !startLayout) {
+      return
+    }
+    if (e.clientY > document.body.clientHeight || e.clientX > document.body.clientWidth) {
+      return
+    }
+
+    const diff = {
+      offsetX: e.clientX - mousePressedPoint.x,
+      offsetY: e.clientY - mousePressedPoint.y,
+    }
+
+    const newLayout = { ...startLayout }
+    switch (dragType) {
+      case DragType.Left:
+        newLayout.x = startLayout.x + diff.offsetX;
+        newLayout.width = (startLayout.width || 0) - (diff.offsetX);
+        break;
+      case DragType.Right:
+        newLayout.width = (startLayout.width || 0) + (diff.offsetX);
+        break;
+      case DragType.Top:
+        newLayout.y = startLayout.y + diff.offsetY;
+        newLayout.heiht = (startLayout.heiht || 0) - (diff.offsetY);
+        break;
+      case DragType.Bottom:
+        newLayout.heiht = (startLayout.heiht || 0) + (diff.offsetY);
+        break;
+    }
+
+    onResize?.(newLayout)
+
+  }, [dragType, mousePressedPoint, onResize, startLayout])
+
+  useEffect(() => {
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    }
+  }, [handleMouseMove, handleMouseUp])
 
 
   return (

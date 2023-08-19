@@ -50,21 +50,19 @@ export const DraggableWidget = memo((
   }, [layout])
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    if (e.clientX < 0 || e.clientY < 0) {
+    if (e.clientX < 0 || e.clientY < 0 || !mousePressedPoint || !startLayout) {
       return
     }
     if (e.clientY > document.body.clientHeight || e.clientX > document.body.clientWidth) {
       return
     }
-    if (mousePressedPoint) {
-      const diff = {
-        offsetX: e.clientX - mousePressedPoint.x,
-        offsetY: e.clientY - mousePressedPoint.y,
-      }
-      if (startLayout) {
-        const newLayout = { ...layout, x: startLayout?.x + diff.offsetX, y: startLayout.y + diff.offsetY }
-        setLayout(newLayout)
-      }
+    const diff = {
+      offsetX: e.clientX - mousePressedPoint.x,
+      offsetY: e.clientY - mousePressedPoint.y,
+    }
+    if (startLayout) {
+      const newLayout = { ...layout, x: startLayout?.x + diff.offsetX, y: startLayout.y + diff.offsetY }
+      setLayout(newLayout)
     }
   }, [layout, mousePressedPoint, startLayout])
 
@@ -84,7 +82,14 @@ export const DraggableWidget = memo((
   }, [handleMouseMove, handleMouseUp])
 
   const handleResize = useCallback((lyout: IWidgetLayout) => {
-    setLayout({ ...layout, ...lyout })
+    const rect = ref.current?.getBoundingClientRect()
+    if (!rect) {
+      return
+    }
+    setLayout({
+      ...layout,
+      ...lyout,
+    })
   }, [layout])
 
   return (
@@ -103,7 +108,12 @@ export const DraggableWidget = memo((
       onMouseDown={handleMouseDown}
     >
       {children}
-      {resizable && <ResizeHandlers onResize={handleResize} />}
+      {resizable && layout &&
+        <ResizeHandlers
+          widget={ref.current}
+          layout={layout}
+          onResize={handleResize}
+        />}
     </Widget>
   )
 })
