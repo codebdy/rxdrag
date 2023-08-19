@@ -1,6 +1,6 @@
 import { memo } from "react"
 import styled from "styled-components"
-import { PanelTitle } from "../PanelTitle"
+import { PanelTitle } from "../Panel/PanelTitle"
 import { Panel } from "../Panel"
 
 const Container = styled(Panel)`

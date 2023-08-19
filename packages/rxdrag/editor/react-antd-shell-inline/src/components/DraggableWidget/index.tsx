@@ -1,8 +1,9 @@
 import { CSSProperties, memo, useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { IPosition, IWidgetLayout } from "../interfaces";
-import { useWidgetLayout } from "../hooks/useWidgetLayout";
-import { useSetWidgetLayout } from "../hooks/useSetWidgetLayout";
+import { IPosition, IWidgetLayout } from "../../interfaces";
+import { useWidgetLayout } from "../../hooks/useWidgetLayout";
+import { useSetWidgetLayout } from "../../hooks/useSetWidgetLayout";
+import { ResizeHandlers } from "./ResizeHandlers";
 
 const Widget = styled.div`
   position: fixed;
@@ -15,9 +16,10 @@ export const DraggableWidget = memo((
     children?: React.ReactNode,
     style?: CSSProperties,
     className?: string,
+    resizable?: boolean,
   }
 ) => {
-  const { name, children, style, className, ...rest } = props;
+  const { name, children, style, className, resizable, ...rest } = props;
   const [layout, setLayout] = useState<IWidgetLayout>()
   const [mousePressedPoint, setMousePressedPoint] = useState<IPosition>()
   const [startLayout, setStartLayout] = useState<IWidgetLayout>()
@@ -94,6 +96,7 @@ export const DraggableWidget = memo((
       onMouseDown={handleMouseDown}
     >
       {children}
+      {resizable && <ResizeHandlers />}
     </Widget>
   )
 })

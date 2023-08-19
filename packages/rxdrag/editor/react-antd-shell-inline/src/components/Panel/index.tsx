@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { DraggableWidget } from "./DraggableWidget";
-import { boxShadow } from "./utils";
+import { DraggableWidget } from "../DraggableWidget";
+import { boxShadow } from "../utils";
 
 export const Panel = styled(DraggableWidget)`
   position: fixed;
