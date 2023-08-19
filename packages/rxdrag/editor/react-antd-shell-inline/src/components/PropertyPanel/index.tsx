@@ -12,6 +12,7 @@ const Container = styled.div`
   right:8px;
   border: solid 1px ${props => props.theme?.token?.colorBorder};
   background-color: ${props => props.theme?.token?.colorBgContainer};
+  color: ${props => props.theme?.token?.colorText};
   border-radius: 8px;
   display: flex;
 `

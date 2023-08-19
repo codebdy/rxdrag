@@ -6,7 +6,7 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Layout, Menu, Button, theme, Space } from 'antd';
+import { Layout, Menu, Button, theme, Space, ConfigProvider } from 'antd';
 import { Logo } from './Logo';
 import styled from 'styled-components';
 import { MenuButton } from 'example-common';
@@ -99,7 +99,11 @@ export const InlineEditorExample: React.FC = () => {
             }}
           >
             Content
-            <Toolkits />
+            <ConfigProvider
+              theme={{ algorithm: theme.darkAlgorithm }}
+            >
+              <Toolkits />
+            </ConfigProvider>
           </Content>
         </Layout>
       </StyleLayout>

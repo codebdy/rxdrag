@@ -17,6 +17,7 @@ const Container = styled.div`
   border-radius: 8px;
   display: flex;
   flex-flow: column;
+  color: ${props => props.theme?.token?.colorText};
 `
 
 const Title = styled.div`
