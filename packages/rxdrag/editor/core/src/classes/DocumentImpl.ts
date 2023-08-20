@@ -13,7 +13,8 @@ import { INodeSchema, INodeMeta } from "@rxdrag/schema";
 export class DocumentImpl implements IDocument {
   id: string;
   constructor(schema: INodeSchema,
-    private engine: IDesignerEngine,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    private engine: IDesignerEngine<any, any>,
     private store: Store<State>
   ) {
     this.id = makeRxId()

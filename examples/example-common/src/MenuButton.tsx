@@ -30,16 +30,26 @@ const items: MenuProps['items'] = [
     key: 'controller',
   },
   {
-    label: <a href={"#"}>工作流表单</a>,
+    label: <a href={"#"}>工作流表单编辑器</a>,
     key: 'workflow',
   },
   {
-    label: <a href={"#"}>大屏</a>,
+    label: <a href={"#"}>大屏编辑</a>,
     key: 'bigscreen',
   },
   {
     label: <a href={"#"}>H5编辑器</a>,
     key: 'h5',
+  },
+  {
+    //引入外部包
+    label: <a href={"#"}>树形菜单编辑器</a>,
+    key: 'menuTree',
+  },
+  {
+    //引入外部包
+    label: <a href={"#"}>UML编辑器</a>,
+    key: 'uml',
   },
 ];
 

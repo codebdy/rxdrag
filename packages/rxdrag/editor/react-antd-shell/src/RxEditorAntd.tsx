@@ -1,5 +1,5 @@
 import React from "react"
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { memo, useCallback, useEffect, useRef, useState } from "react"
 import { SettingsForm } from "./SettingsForm"
 import { Button as AntdButton, Space } from "antd"
 import { LeftSidebar } from "./layouts/LeftSidebar"
@@ -19,7 +19,7 @@ import { DocumentView } from "./panels/DocumentView"
 import { settingLocales } from "./SettingsForm/locales"
 import "./style.less"
 import { IDocument, IDesignerEngine } from "@rxdrag/core"
-import { Root, Designer } from "@rxdrag/react-core"
+import { Designer, IComponentMaterial } from "@rxdrag/react-core"
 import { INodeSchema } from "@rxdrag/schema"
 import { Workbench } from "./panels"
 import { ILocales } from "@rxdrag/locales"
@@ -38,10 +38,11 @@ export type Antd5EditorProps = {
   previewUrl: string,
   //逻辑编排配置项
   minionOptions?: IMinionOptions,
+  materials?: IComponentMaterial[]
 }
 
 export const RxEditorAntd = memo((props: Antd5EditorProps) => {
-  const { leftNav, topBar, navPanel, locales, themeMode, schemas, children, canvasUrl, previewUrl, minionOptions } = props;
+  const { leftNav, topBar, navPanel, locales, themeMode, schemas, children, canvasUrl, previewUrl, minionOptions, materials } = props;
   const [doc, setDoc] = useState<IDocument>()
   const [engine, setEngine] = useState<IDesignerEngine>()
   const docRef = useRef<IDocument>()
@@ -69,24 +70,23 @@ export const RxEditorAntd = memo((props: Antd5EditorProps) => {
     setEngine(eng)
   }, [locales])
 
-  const initialComponents = useMemo(() => {
-    return [
-      {
-        componentName: "Root",
-        component: Root,
-        designer: Root,
-      }
-    ]
-  }, [])
+  // const initialComponents = useMemo(() => {
+  //   return [
+  //     {
+  //       componentName: "Root",
+  //       component: Root,
+  //       designer: Root,
+  //     }
+  //   ]
+  // }, [])
 
   return (
     <MinionOptionContext.Provider value={minionOptions}>
       <Designer
         onReady={handleReady}
         themeMode={themeMode}
-        components={initialComponents}
+        materials={materials}
       >
-
         <ConfigRoot>
           <ShellContainer>
             <Topbar >

@@ -10,23 +10,24 @@ export class ComponentBehavior implements IBehavior {
   }
 }
 
-export class ComponentManager implements IComponentManager {
+export class ComponentManager<ComponentType = unknown> implements IComponentManager<ComponentType> {
   private behaviors: {
     [name: string]: IBehavior
   } = {}
   private components: {
-    [name: string]: IComponentConfig
+    [name: string]: IComponentConfig<ComponentType>
   } = {}
 
-  constructor(private engine: IDesignerEngine) { }
-  getComponentConfig(componentName: string): IComponentConfig | undefined {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  constructor(private engine: IDesignerEngine<ComponentType, any>) { }
+  getComponentConfig(componentName: string): IComponentConfig<ComponentType> | undefined {
     return this.components[componentName]
   }
   // getDesignerSchema(componentName: string): INodeSchema | undefined {
   //   return this.components[componentName]?.propsSchema
   // }
 
-  registerComponents(...componentDesigners: IComponentConfig[]): void {
+  registerComponents(...componentDesigners: IComponentConfig<ComponentType>[]): void {
     for (const designer of componentDesigners) {
       this.components[designer.componentName] = designer
       if (designer.behaviorRule) {

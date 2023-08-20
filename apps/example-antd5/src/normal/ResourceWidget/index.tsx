@@ -1,6 +1,6 @@
 import { ComponentResourceWidget, PaneContainer, TemplateResourceWidget } from "@rxdrag/react-antd-shell"
-import { useSettersTranslate, useRegisterComponentMaterial } from "@rxdrag/react-core"
-import { materials, fields } from "normal/materials"
+import { useSettersTranslate, useRegisterComponentMaterials } from "@rxdrag/react-core"
+import { resources, fields } from "normal/materials"
 import { memo, useEffect } from "react"
 import { FieldMaterial } from "@rxdrag/react-antd-materials"
 import { ResourceCollapsePanel } from "./ResourceCollapsePanel"
@@ -13,7 +13,7 @@ export const ResourceWidget = memo((
 ) => {
   const { display } = props
   const t = useSettersTranslate()
-  const registerMaterial = useRegisterComponentMaterial()
+  const registerMaterial = useRegisterComponentMaterials()
   //注册通用物料
   useEffect(() => {
     registerMaterial(FieldMaterial)
@@ -24,13 +24,13 @@ export const ResourceWidget = memo((
       <ResourcesTitle />
       <div style={{ flex: 1, overflow: "auto" }}>
         {
-          materials.map((group => {
+          resources.map((group => {
             return (
               <ResourceCollapsePanel key={group.titleKey} title={t(group.titleKey)} defaultExpand>
                 {
-                  group.items.map((material => {
+                  group.items.map((name => {
                     return (
-                      <ComponentResourceWidget key={material.componentName} material={material} />
+                      <ComponentResourceWidget key={name} name={name} />
                     )
                   }))
                 }

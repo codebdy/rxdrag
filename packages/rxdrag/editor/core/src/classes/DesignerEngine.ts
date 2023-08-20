@@ -1,9 +1,9 @@
 import { State } from "../reducers";
-import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, NodeBehavior, AbleCheckFunction } from "../interfaces";
+import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, NodeBehavior, AbleCheckFunction, IComponentConfig } from "../interfaces";
 import { Store } from "redux";
 import { ResourceManager } from "./ResourceManager";
 import { DocumentImpl } from "../classes/DocumentImpl";
-import { invariant } from "@rxdrag/shared";
+import { invariant, isStr } from "@rxdrag/shared";
 import { IActions, IAction } from "../interfaces/action";
 import { Actions } from "../actions";
 import { ILocalesManager, LocalesManager } from "@rxdrag/locales";
@@ -15,16 +15,20 @@ import { isFn } from "@rxdrag/shared";
 import { IDecoratorManager } from "../interfaces/decorator";
 import { DecoratorManager } from "./DecoratorManager";
 import { INodeSchema } from "@rxdrag/schema";
+import { ISetterManager } from "../interfaces/setter";
+import { SetterManager } from "./SetterManager";
 
-export class DesignerEngine implements IDesignerEngine {
+export class DesignerEngine<ComponentType = unknown, IconType = unknown> implements IDesignerEngine<ComponentType, IconType> {
 	private documentsById: {
 		[id in ID]: IDocument
 	} = {}
-	private resourceManager: IResourceManager
+	private resourceManager: IResourceManager<IconType>
 	private localesManager: ILocalesManager
 	private actions: IActions
-	private componentManager: IComponentManager
+	private componentManager: IComponentManager<ComponentType>
 	private decoratorManager: IDecoratorManager
+	private setterManager: ISetterManager<ComponentType>
+
 	private plugins: {
 		[name: string]: IPlugin | undefined
 	} = {}
@@ -35,19 +39,24 @@ export class DesignerEngine implements IDesignerEngine {
 		lang?: string
 	) {
 		this.localesManager = new LocalesManager(lang || DefaultLang)
-		this.resourceManager = new ResourceManager(this.localesManager)
-		this.decoratorManager = new DecoratorManager(this)
+		this.resourceManager = new ResourceManager<IconType>(this.localesManager)
+		this.decoratorManager = new DecoratorManager(this as IDesignerEngine)
+		this.setterManager = new SetterManager<ComponentType>()
 		this.actions = new Actions(this)
-		this.componentManager = new ComponentManager(this)
+		this.componentManager = new ComponentManager<ComponentType>(this)
 		for (const pluginFactory of plugins) {
 			this.registerPlugin(pluginFactory)
 		}
 	}
+	getSetterManager(): ISetterManager<ComponentType> {
+		return this.setterManager
+	}
+
 	getDecoratorManager(): IDecoratorManager {
 		return this.decoratorManager
 	}
 
-	getComponentManager(): IComponentManager {
+	getComponentManager(): IComponentManager<ComponentType> {
 		return this.componentManager
 	}
 	getLocalesManager(): ILocalesManager {
@@ -94,7 +103,7 @@ export class DesignerEngine implements IDesignerEngine {
 		return this.documentsById[id]
 	}
 
-	getResourceManager(): IResourceManager {
+	getResourceManager(): IResourceManager<IconType> {
 		return this.resourceManager
 	}
 
@@ -110,6 +119,7 @@ export class DesignerEngine implements IDesignerEngine {
 		return this.actions
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	public dispatch(action: IAction<any>): void {
 		this.store.dispatch(action)
 	}
@@ -141,6 +151,40 @@ export class DesignerEngine implements IDesignerEngine {
 	}
 	getPlugin(name: string): IPlugin | null {
 		return this.plugins[name] || null
+	}
+
+	registerMaterials(materials: IComponentConfig<ComponentType, IconType>[]): void {
+		for (const material of materials) {
+			//const designers = { [material.componentName]: material.designer }
+			const setters = material.setters
+			this.componentManager?.registerComponents(material)
+			if (material.designerLocales) {
+				this.localesManager?.registerComponentLocales(material.componentName, material.designerLocales)
+			}
+			if (material.resource?.resourceLocales) {
+				this.localesManager?.registerResourceLocales(material.resource.resourceLocales)
+			}
+
+			if (material.toolsLocales) {
+				this.localesManager?.registerSetterLocales(material.toolsLocales)
+			}
+
+			for (const key of Object.keys(material.slots || {})) {
+				const slotMaterial = material.slots?.[key]
+				if (slotMaterial === true || slotMaterial === undefined || isStr(slotMaterial)) {
+					continue
+				}
+				this.registerMaterials([slotMaterial as IComponentConfig<ComponentType, IconType>])
+			}
+
+			//registerDesignComponents(designers)
+			//registerPreviewComponents(previews)
+			setters && this.setterManager.registerSetters(setters)
+
+			if (material.resource && !this.resourceManager?.getResourceByName(material.resource.name)) {
+				this.resourceManager?.registerResources(material.resource)
+			}
+		}
 	}
 }
 

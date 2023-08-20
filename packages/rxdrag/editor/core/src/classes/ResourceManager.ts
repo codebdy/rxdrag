@@ -3,16 +3,16 @@ import { ILocalesManager } from "@rxdrag/locales";
 import { makeRxId } from "@rxdrag/shared";
 import { IResource, IResourceManager, IResourceNode } from "../interfaces/resource";
 
-export class ResourceManager implements IResourceManager {
+export class ResourceManager<IconType = unknown> implements IResourceManager<IconType> {
 
   private resources: {
-    [name: string]: IResourceNode
+    [name: string]: IResourceNode<IconType>
   } = {}
   constructor(private locales: ILocalesManager) {
 
   }
 
-  getResource(id: ID): IResourceNode | null {
+  getResource(id: ID): IResourceNode<IconType> | null {
     //判断id
     for (const key of Object.keys(this.resources)) {
       if (this.resources[key].id === id) {
@@ -23,12 +23,12 @@ export class ResourceManager implements IResourceManager {
     return null
   }
 
-  getResourceByName(name: string): IResourceNode | null {
+  getResourceByName(name: string): IResourceNode<IconType> | null {
     return this.resources[name]
   }
 
-  registerResources(...resources: IResource[]): IResourceNode[] {
-    const convertedResources: IResourceNode[] = []
+  registerResources(...resources: IResource[]): IResourceNode<IconType>[] {
+    const convertedResources: IResourceNode<IconType>[] = []
     for (const resource of resources) {
 
       const rxId = makeRxId()
@@ -40,7 +40,7 @@ export class ResourceManager implements IResourceManager {
           [RXID_ATTR_NAME]: rxId,
           [RX_NODE_TYPE_ATTR_NAME]: NodeType.Resource
         },
-      }
+      } as IResourceNode<IconType>
       this.resources[resource.name] = node
       convertedResources.push(node)
     }

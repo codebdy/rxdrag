@@ -17,19 +17,17 @@ import {
 } from "@rxdrag/core";
 import { memo, useEffect, useRef, useState } from "react"
 import { DesignerEngineContext } from "./contexts";
-import { DesignRoot } from "./DesignRoot";
 import { IComponentMaterial } from "./interfaces";
-import { useComponentsFromMaterials } from "./hooks/useComponentsFromMaterials";
 import { LocalesContext } from "@rxdrag/react-locales";
 
 export interface DesignerProps {
-  components?: IComponentMaterial[]
+  materials?: IComponentMaterial[]
   onReady?: (engine: IDesignerEngine) => void,
   themeMode?: ThemeMode,
   children?: React.ReactNode
 }
 export const Designer = memo((props: DesignerProps) => {
-  const { themeMode = "light", components, children, onReady } = props
+  const { themeMode = "light", materials, children, onReady } = props
   const [engine, setEngine] = useState<IDesignerEngine>();
   const themeModeRef = useRef(themeMode)
   themeModeRef.current = themeMode
@@ -66,22 +64,19 @@ export const Designer = memo((props: DesignerProps) => {
       engine.getActions().setThemeMode(themeMode)
     }
   }, [engine, themeMode])
+  //const register = useRegisterComponentMaterial()
 
   useEffect(() => {
-    if (engine && components?.length) {
+    if (engine && materials?.length) {
       console.log("Designer 初始化时注册组件")
-      engine.getComponentManager().registerComponents(...components)
+      engine.registerMaterials(materials)
     }
-  }, [components, engine])
-
-  const { designComponents } = useComponentsFromMaterials(components)
+  }, [materials, engine])
 
   return (
     <LocalesContext.Provider value={engine?.getLocalesManager()}>
       <DesignerEngineContext.Provider value={engine}>
-        <DesignRoot components={designComponents}>
-          {children}
-        </DesignRoot >
+        {children}
       </DesignerEngineContext.Provider>
     </LocalesContext.Provider>
   )
