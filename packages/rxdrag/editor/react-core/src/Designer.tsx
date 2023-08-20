@@ -17,17 +17,15 @@ import {
 } from "@rxdrag/core";
 import { memo, useEffect, useRef, useState } from "react"
 import { DesignerEngineContext } from "./contexts";
-import { IComponentMaterial } from "./interfaces";
 import { LocalesContext } from "@rxdrag/react-locales";
 
 export interface DesignerProps {
-  materials?: IComponentMaterial[]
   onReady?: (engine: IDesignerEngine) => void,
   themeMode?: ThemeMode,
   children?: React.ReactNode
 }
 export const Designer = memo((props: DesignerProps) => {
-  const { themeMode = "light", materials, children, onReady } = props
+  const { themeMode = "light", children, onReady } = props
   const [engine, setEngine] = useState<IDesignerEngine>();
   const themeModeRef = useRef(themeMode)
   themeModeRef.current = themeMode
@@ -66,12 +64,6 @@ export const Designer = memo((props: DesignerProps) => {
   }, [engine, themeMode])
   //const register = useRegisterComponentMaterial()
 
-  useEffect(() => {
-    if (engine && materials?.length) {
-      console.log("Designer 初始化时注册组件")
-      engine.registerMaterials(materials)
-    }
-  }, [materials, engine])
 
   return (
     <LocalesContext.Provider value={engine?.getLocalesManager()}>

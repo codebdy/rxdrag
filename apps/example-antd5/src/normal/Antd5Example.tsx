@@ -21,6 +21,7 @@ import { minionsLocales } from "normal/controller/locales"
 import { minionsMaterialCategories } from "normal/controller/materials"
 import { controllerDefines } from "normal/controller/defines"
 import { Logo, MenuButton } from "example-common"
+import { materials } from "./materials"
 
 export enum LeftNavType {
   pages = "pages",
@@ -56,6 +57,7 @@ export const Antd5Example = memo(() => {
         locales: minionsLocales,
         controllers: controllerDefines,
       }}
+      materials={materials}
       navPanel={
         <>
           {
