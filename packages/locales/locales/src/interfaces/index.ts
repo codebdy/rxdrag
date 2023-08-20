@@ -1,4 +1,5 @@
 import { INodeSchema } from "@rxdrag/schema"
+import { ISubscribableRecord } from "@rxdrag/shared"
 
 export interface ILangLocales {
   resources?: {
@@ -21,7 +22,7 @@ export interface ILocales {
   [ISOCode: string]: ILangLocales
 }
 
-export interface ILocalesManager {
+export interface ILocalesManager extends ISubscribableRecord{
   lang: string
   //setLanguage(lang: string): void
   getMessage(key: string): string | null

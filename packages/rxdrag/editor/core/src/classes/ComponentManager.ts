@@ -1,5 +1,5 @@
 import { IBehavior, IBehaviorRule, IComponentConfig, IComponentManager, IDesignerEngine, ITreeNode, Selector } from "../interfaces";
-import { isFn } from "@rxdrag/shared";
+import { SubscribableRecord, isFn } from "@rxdrag/shared";
 
 export class ComponentBehavior implements IBehavior {
   selector: string | Selector;
@@ -10,18 +10,18 @@ export class ComponentBehavior implements IBehavior {
   }
 }
 
-export class ComponentManager<ComponentType = unknown> implements IComponentManager<ComponentType> {
+//先注册behavior，再注册components，只有components是可以订阅的
+export class ComponentManager<ComponentType = unknown> extends SubscribableRecord<IComponentConfig<ComponentType>> implements IComponentManager<ComponentType> {
   private behaviors: {
     [name: string]: IBehavior
   } = {}
-  private components: {
-    [name: string]: IComponentConfig<ComponentType>
-  } = {}
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(private engine: IDesignerEngine<ComponentType, any>) { }
+  constructor(private engine: IDesignerEngine<ComponentType, any>) { 
+    super()
+  }
   getComponentConfig(componentName: string): IComponentConfig<ComponentType> | undefined {
-    return this.components[componentName]
+    return this.record[componentName]
   }
   // getDesignerSchema(componentName: string): INodeSchema | undefined {
   //   return this.components[componentName]?.propsSchema
@@ -29,7 +29,7 @@ export class ComponentManager<ComponentType = unknown> implements IComponentMana
 
   registerComponents(...componentDesigners: IComponentConfig<ComponentType>[]): void {
     for (const designer of componentDesigners) {
-      this.components[designer.componentName] = designer
+      this.record[designer.componentName] = designer
       if (designer.behaviorRule) {
         this.registerBehaviors(new ComponentBehavior(designer.componentName, designer.behaviorRule))
       }
@@ -37,6 +37,7 @@ export class ComponentManager<ComponentType = unknown> implements IComponentMana
         this.engine.getLocalesManager().registerComponentLocales(designer.componentName, designer.designerLocales)
       }
     }
+    this.emitChange()
   }
 
   /**
@@ -84,5 +85,4 @@ export class ComponentManager<ComponentType = unknown> implements IComponentMana
 
     return false
   }
-
 }

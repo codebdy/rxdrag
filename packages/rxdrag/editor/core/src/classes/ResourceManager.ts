@@ -1,30 +1,26 @@
 import { ID, NodeType, RXID_ATTR_NAME, RX_NODE_TYPE_ATTR_NAME } from "../interfaces";
 import { ILocalesManager } from "@rxdrag/locales";
-import { makeRxId } from "@rxdrag/shared";
+import { SubscribableRecord, makeRxId } from "@rxdrag/shared";
 import { IResource, IResourceManager, IResourceNode } from "../interfaces/resource";
 
-export class ResourceManager<IconType = unknown> implements IResourceManager<IconType> {
+export class ResourceManager<IconType = unknown> extends SubscribableRecord<IResourceNode<IconType>> implements IResourceManager<IconType> {
 
-  private resources: {
-    [name: string]: IResourceNode<IconType>
-  } = {}
   constructor(private locales: ILocalesManager) {
-
+    super()
   }
 
-  getResource(id: ID): IResourceNode<IconType> | null {
+  getResource(id: ID): IResourceNode<IconType> | undefined {
     //判断id
-    for (const key of Object.keys(this.resources)) {
-      if (this.resources[key].id === id) {
-        return this.resources[key]
+    for (const key of Object.keys(this.record)) {
+      if (this.record[key]?.id === id) {
+        return this.record[key]
       }
     }
 
-    return null
   }
 
-  getResourceByName(name: string): IResourceNode<IconType> | null {
-    return this.resources[name]
+  getResourceByName(name: string): IResourceNode<IconType> | undefined {
+    return this.record[name]
   }
 
   registerResources(...resources: IResource[]): IResourceNode<IconType>[] {
@@ -41,13 +37,14 @@ export class ResourceManager<IconType = unknown> implements IResourceManager<Ico
           [RX_NODE_TYPE_ATTR_NAME]: NodeType.Resource
         },
       } as IResourceNode<IconType>
-      this.resources[resource.name] = node
+      this.record[resource.name] = node
       convertedResources.push(node)
     }
+    this.emitChange()
     return convertedResources
   }
   clear(): void {
-    this.resources = {}
+    this.record = {}
   }
 
 }

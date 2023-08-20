@@ -4,6 +4,7 @@ import { IDesignerProps, ITreeNode } from "./document"
 import { IDesignerEngine } from "./engine"
 import { IResource } from "./resource"
 import { ID } from "./types"
+import { ISubscribableRecord } from "@rxdrag/shared"
 
 export type Selector = (node: ITreeNode, engine?: IDesignerEngine) => boolean
 
@@ -68,7 +69,7 @@ export interface IBehavior {
   rule: IBehaviorRule
 }
 
-export interface IComponentManager<ComponentType = unknown> {
+export interface IComponentManager<ComponentType = unknown> extends ISubscribableRecord<IComponentConfig<ComponentType>> {
   getNodeBehaviorRules(nodeId: ID): IBehaviorRule[]
   getComponentConfig(componentName: string): IComponentConfig<ComponentType> | undefined
   registerComponents(...componentDesigners: IComponentConfig<ComponentType>[]): void
