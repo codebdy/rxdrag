@@ -11,7 +11,8 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const { nodeId } = props;
   const node = useTreeNode(nodeId);
   const Component = useDesignComponent(node?.meta?.componentName);
-  const behavior = useBehavior(node?.id)
+  //此处不能用node?.id，reduex可能会有滞后，导致传入undefined
+  const behavior = useBehavior(nodeId)
   const locked = useLocked();
 
   const handleRef = useCallback((element: HTMLElement | undefined) => {
@@ -62,7 +63,7 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
           </Locked>
         </Component >
       } else if (behavior?.isDroppable() && node.parentId) {
-        return <Component ref={!behavior?.isNoRef() ? handleRef : undefined} {...realProps}>
+        return <Component {...realProps}>
           {!behavior.isNoPlaceholder() && <PlaceHolder />}
         </Component>
       } else {

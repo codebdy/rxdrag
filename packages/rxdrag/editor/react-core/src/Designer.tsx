@@ -67,7 +67,6 @@ export const Designer = memo((props: DesignerProps) => {
   //const register = useRegisterComponentMaterial()
 
   useEffect(() => {
-    console.log("Designer 初始化时注册组件")
     engine?.registerMaterials(materials || [])
   }, [engine, materials])
 

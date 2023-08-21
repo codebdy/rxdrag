@@ -7,18 +7,23 @@ export function useBehavior(nodeId?: string) {
   const engine = useDesignerEngine()
 
   useEffect(() => {
-    setBehavior(engine?.getNodeBehavior(nodeId || ""))
+    if (nodeId) {
+      setBehavior(engine?.getNodeBehavior(nodeId))
+    }
+
   }, [engine, nodeId])
 
-  const handleBehaviorChange = useCallback(()=>{
-    setBehavior(engine?.getNodeBehavior(nodeId || ""))
+  const handleBehaviorChange = useCallback(() => {
+    if (nodeId) {
+      setBehavior(engine?.getNodeBehavior(nodeId))
+    }
   }, [engine, nodeId])
 
-  useEffect(()=>{
+  useEffect(() => {
     const unsub = engine?.getComponentManager().subscribeBehaviorsChange(handleBehaviorChange)
 
     return unsub
-  },[engine, handleBehaviorChange])
+  }, [engine, handleBehaviorChange])
 
   return behavior
 }

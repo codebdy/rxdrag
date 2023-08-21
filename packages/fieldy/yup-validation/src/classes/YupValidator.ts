@@ -51,7 +51,6 @@ export class YupValidator implements IValidator {
         })
       )
 
-      console.log("===>validate inner", returnErrors)
       throw returnErrors
     }
   }

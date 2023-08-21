@@ -30,13 +30,13 @@ export class ComponentManager<ComponentType = unknown> implements IComponentMana
 
   registerComponents(...componentDesigners: IComponentConfig<ComponentType>[]): void {
     for (const designer of componentDesigners) {
-      this.components.setValue({ ...this.components.getValue(), [designer.componentName]: designer })
       if (designer.behaviorRule) {
         this.registerBehaviors(new ComponentBehavior(designer.componentName, designer.behaviorRule))
       }
       if (designer.designerLocales) {
         this.engine.getLocalesManager().registerComponentLocales(designer.componentName, designer.designerLocales)
       }
+      this.components.setValue({ ...this.components.getValue(), [designer.componentName]: designer })
     }
   }
 

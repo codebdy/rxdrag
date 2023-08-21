@@ -22,7 +22,6 @@ export const IFrameCanvasRender = memo((props: {
   const [ready, setReady] = useState(false);
   const engine = window.engine
   const [viewType] = useDocumentViewTypeState(doc?.id)
-
   const receiveMessageFromParent = useCallback((event: MessageEvent<IFrameCanvasEvent>) => {
     // 监听父窗口 ready 事件
     if (event.data?.name === EVENT_IFRAME_READY) {
