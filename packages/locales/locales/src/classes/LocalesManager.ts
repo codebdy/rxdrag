@@ -122,12 +122,12 @@ export class LocalesManager extends SubscribableRecord<ILangLocales> implements 
     if (!others?.length) {
       return locales[subKey]
     } else {
-      const valueByMergedKey = locales[key]
+      const valueByMergedKey = locales?.[key]
       //处理这种情况：Layout.Header
       if (valueByMergedKey) {
         return valueByMergedKey
       }
-      return this.getValueByKey(locales[subKey] || {}, others.join("."))
+      return this.getValueByKey(locales?.[subKey] || {}, others.join("."))
     }
   }
 }

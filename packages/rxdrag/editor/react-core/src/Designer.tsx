@@ -22,14 +22,13 @@ import { IComponentMaterial } from "./interfaces";
 import { ReactComponent } from "@rxdrag/react-shared";
 
 export interface DesignerProps {
-  onReady?: (engine: IDesignerEngine) => void,
   themeMode?: ThemeMode,
   children?: React.ReactNode,
   //初始物料，其它地方还可以继续注册
   materials?: IComponentMaterial[]
 }
 export const Designer = memo((props: DesignerProps) => {
-  const { themeMode = "light", children, onReady, materials } = props
+  const { themeMode = "light", children, materials } = props
   const [engine, setEngine] = useState<IDesignerEngine>();
   const themeModeRef = useRef(themeMode)
   themeModeRef.current = themeMode
@@ -54,12 +53,11 @@ export const Designer = memo((props: DesignerProps) => {
       }
     )
     setEngine(eng)
-    onReady && onReady(eng)
     return () => {
       eng?.destroy()
     }
 
-  }, [onReady])
+  }, [])
 
   useEffect(() => {
     if (engine) {
@@ -68,7 +66,7 @@ export const Designer = memo((props: DesignerProps) => {
   }, [engine, themeMode])
   //const register = useRegisterComponentMaterial()
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log("Designer 初始化时注册组件")
     engine?.registerMaterials(materials || [])
   }, [engine, materials])
@@ -76,7 +74,7 @@ export const Designer = memo((props: DesignerProps) => {
   return (
     <LocalesContext.Provider value={engine?.getLocalesManager()}>
       <DesignerEngineContext.Provider value={engine}>
-        {children}
+        {engine && children}
       </DesignerEngineContext.Provider>
     </LocalesContext.Provider>
   )

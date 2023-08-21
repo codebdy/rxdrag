@@ -1,150 +1,28 @@
-import React from "react"
-import { memo, useCallback, useEffect, useRef, useState } from "react"
-import { SettingsForm } from "./SettingsForm"
-import { Button as AntdButton, Space } from "antd"
-import { LeftSidebar } from "./layouts/LeftSidebar"
-import { GithubFilled } from "@ant-design/icons"
-import { Topbar } from "./layouts/Topbar"
-import { LeftNavWidget } from "./widgets/LeftNavWidget"
-import { CenterContent } from "./layouts/CenterContent"
-import { ToggleAblePane } from "./layouts/ToggleAblePane/ToggleAblePane"
-import { ToggleType } from "./layouts/ToggleAblePane/ToggleButton"
-import { commonLocales } from "./locales"
-import { ShellContainer } from "./panels/ShellContainer"
-import { LangButtons } from "./widgets/LangButtons"
-import { SaveActions } from "./widgets/SaveActions"
-import { ThemeButton } from "./widgets/ThemeButton"
+import { memo } from "react"
 import { ConfigRoot } from "./panels/ShellContainer/ConfigRoot"
-import { DocumentView } from "./panels/DocumentView"
-import { settingLocales } from "./SettingsForm/locales"
 import "./style.less"
-import { IDocument, IDesignerEngine } from "@rxdrag/core"
 import { Designer, IComponentMaterial } from "@rxdrag/react-core"
-import { INodeSchema } from "@rxdrag/schema"
-import { Workbench } from "./panels"
-import { ILocales } from "@rxdrag/locales"
-import { componentsIcon, outlineIcon, historyIcon } from "./icons"
 import { IMinionOptions, MinionOptionContext } from "./contexts"
+import { Antd5EditorInnerProps, RxEditorAntdInner } from "./RxEditorAntdInner"
 
-export type Antd5EditorProps = {
-  leftNav?: React.ReactNode,
-  topBar?: React.ReactNode,
-  navPanel?: React.ReactNode,
+export type Antd5EditorProps = Antd5EditorInnerProps & {
   themeMode?: "dark" | "light",
-  children?: React.ReactNode,
-  locales?: ILocales,
-  schemas: INodeSchema,
-  canvasUrl: string,
-  previewUrl: string,
   //逻辑编排配置项
   minionOptions?: IMinionOptions,
-  materials?: IComponentMaterial[]
+  materials?: IComponentMaterial[],
 }
 
 export const RxEditorAntd = memo((props: Antd5EditorProps) => {
-  const { leftNav, topBar, navPanel, locales, themeMode, schemas, children, canvasUrl, previewUrl, minionOptions, materials } = props;
-  const [doc, setDoc] = useState<IDocument>()
-  const [engine, setEngine] = useState<IDesignerEngine>()
-  const docRef = useRef<IDocument>()
-  docRef.current = doc
-  useEffect(() => {
-    if (engine) {
-      console.log("创建 document")
-      if (docRef.current) {
-        docRef.current.destroy()
-        docRef.current = undefined
-      }
-      const document = engine.createDocument(schemas)
-      engine.getActions().changeActivedDocument(document.id)
-      setDoc(document)
-    }
-  }, [engine, schemas])
-
-  const handleReady = useCallback((eng: IDesignerEngine) => {
-    const langMgr = eng.getLocalesManager()
-    langMgr.registerLocales(commonLocales)
-    langMgr.registerLocales(settingLocales)
-    locales && langMgr.registerLocales(locales)
-    //langMgr.registerResourceLocales(resourceLocales)
-    //langMgr.registerComponentsLocales(componentLocales)
-    setEngine(eng)
-  }, [locales])
-
-  // const initialComponents = useMemo(() => {
-  //   return [
-  //     {
-  //       componentName: "Root",
-  //       component: Root,
-  //       designer: Root,
-  //     }
-  //   ]
-  // }, [])
+  const { themeMode, minionOptions, materials, ...rest } = props;
 
   return (
     <MinionOptionContext.Provider value={minionOptions}>
       <Designer
-        onReady={handleReady}
         themeMode={themeMode}
-        materials = {materials}
+        materials={materials}
       >
         <ConfigRoot>
-          <ShellContainer>
-            <Topbar >
-              {
-                topBar || <>
-                  <Space>
-                    <ThemeButton />
-                    <LangButtons />
-                    <AntdButton
-                      href="https://github.com/rxdrag/rxeditor"
-                      target="_blank"
-                      icon={<GithubFilled />}
-                    > Github</AntdButton>
-                    <SaveActions />
-                  </Space>
-                </>
-              }
-            </Topbar>
-            <Workbench>
-              <LeftSidebar>
-                {
-                  leftNav || <LeftNavWidget
-                    //showTitle
-                    defaultActivedKey="components"
-                    items={[
-                      {
-                        key: "components",
-                        title: "components",
-                        icon: componentsIcon
-                      },
-                      {
-                        key: "outline",
-                        title: "outline",
-                        icon: outlineIcon
-                      },
-                      {
-                        key: "history",
-                        title: "history",
-                        icon: historyIcon
-                      },
-                    ]}
-                  />
-                }
-              </LeftSidebar>
-              <ToggleAblePane>
-                {
-                  navPanel
-                }
-              </ToggleAblePane>
-              <CenterContent>
-                <DocumentView doc={doc} canvasUrl={canvasUrl} previewUrl={previewUrl} />
-                {children}
-              </CenterContent>
-              <ToggleAblePane toggleType={ToggleType.right} width={360}>
-                <SettingsForm />
-              </ToggleAblePane>
-            </Workbench>
-          </ShellContainer>
+          <RxEditorAntdInner {...rest} />
         </ConfigRoot>
       </Designer>
     </MinionOptionContext.Provider>
