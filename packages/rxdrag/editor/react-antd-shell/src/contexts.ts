@@ -1,13 +1,13 @@
 import { ILocales } from "@rxdrag/locales";
 import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
-import { IComponents } from "@rxdrag/react-shared";
+import { IReactComponents } from "@rxdrag/react-shared";
 import { ReactNode, createContext } from "react";
 import { IControllerDefine } from "./types";
 
 export interface IMinionOptions {
   materials?: ActivityMaterialCategory<ReactNode>[],
   locales?: ILocales,
-  propSetters?: IComponents,
+  propSetters?: IReactComponents,
   controllers?: IControllerDefine[]
 }
 

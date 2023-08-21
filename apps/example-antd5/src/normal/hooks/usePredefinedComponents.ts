@@ -1,5 +1,5 @@
 import { Root } from "@rxdrag/react-core";
-import { IComponents, ReactComponent } from "@rxdrag/react-shared";
+import { IReactComponents, ReactComponent } from "@rxdrag/react-shared";
 import { isStr } from "@rxdrag/shared";
 import { useMemo } from "react";
 import { Field } from "@rxdrag/react-antd-components";
@@ -7,11 +7,11 @@ import { materials, resources, slots } from "../materials";
 
 export function usePredefinedComponents() {
   const coms = useMemo(() => {
-    const designers: IComponents = {
+    const designers: IReactComponents = {
       Root: Root,
       Field: Field,
     }
-    const components: IComponents = {
+    const components: IReactComponents = {
       Root: Root,
       Field: Field,
     }

@@ -1,4 +1,4 @@
-import { IComponents } from "@rxdrag/react-shared"
+import { IReactComponents } from "@rxdrag/react-shared"
 import React, { memo, useEffect } from "react"
 import { useCallback, useMemo, useState } from "react"
 import { ControllersContext, PreviewComponentsContext, RuntimeEngineContext } from "../contexts"
@@ -9,16 +9,16 @@ import { IComponentRenderSchema } from "../ComponentView"
 import { LOGICFLOW_TYPE_NAME, LogicFlowControllerFactory, SCRIPT_TYPE_NAME, ScriptControllerFactory } from "@rxdrag/minions-runtime-react"
 
 export const RuntimeRoot = memo((props: {
-  components?: IComponents,
+  components?: IReactComponents,
   children: React.ReactNode,
   schema: IComponentRenderSchema,
   controllerFactories?: ControllerFactories,
 }) => {
   const { components: initalComponents, children, schema, controllerFactories } = props
   const [runtimeEngine, setRuntimeEngine] = useState<RuntimeEngine>()
-  const [components, setComponents] = useState<IComponents>({})
+  const [components, setComponents] = useState<IReactComponents>({})
   const logicFlowContext = useLogicFlowContext();
-  const handleRegister = useCallback((...components: IComponents[]) => {
+  const handleRegister = useCallback((...components: IReactComponents[]) => {
     for (const com of components) {
       setComponents(coms => ({ ...coms, ...com }))
     }

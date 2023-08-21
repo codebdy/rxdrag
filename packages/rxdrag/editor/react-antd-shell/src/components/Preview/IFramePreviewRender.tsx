@@ -1,6 +1,6 @@
 import { IDesignerEngine, IDocument } from "@rxdrag/core";
 import { DesignerEngineContext, IFrameCanvasEvent } from "@rxdrag/react-core";
-import { IComponents } from "@rxdrag/react-shared";
+import { IReactComponents } from "@rxdrag/react-shared";
 import { memo, useCallback, useEffect } from "react"
 import { PreviewRender } from "./PreviewRender";
 import { EVENT_IFRAME_READY, EVENT_DOC_CHANGE } from "@rxdrag/react-core";
@@ -10,7 +10,7 @@ import { ControllerFactories } from "@rxdrag/react-runner";
 declare const window: Window & { engine?: IDesignerEngine, doc?: IDocument };
 
 export const IFramePreviewRender = memo((props: {
-  components: IComponents,
+  components: IReactComponents,
   controllerFactories?: ControllerFactories,
 }) => {
   const { components, controllerFactories } = props

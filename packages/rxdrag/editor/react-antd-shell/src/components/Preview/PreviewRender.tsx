@@ -3,7 +3,7 @@ import { useDocumentViewTypeState } from "@rxdrag/react-core"
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy"
 import { ComponentRender, } from "@rxdrag/react-runner"
 import { ControllerFactories } from "@rxdrag/react-runner"
-import { IComponents } from "@rxdrag/react-shared"
+import { IReactComponents } from "@rxdrag/react-shared"
 import { INodeSchema } from "@rxdrag/schema"
 import { useToken } from "antd/es/theme/internal"
 import { memo, useEffect, useMemo, useState } from "react"
@@ -11,7 +11,7 @@ import { ThemeProvider } from "styled-components"
 
 export const PreviewRender = memo((
   props: {
-    components?: IComponents
+    components?: IReactComponents
     doc?: IDocument,
     controllerFactories?: ControllerFactories,
   }

@@ -3,6 +3,11 @@ import { ISetterComponents, ISetterManager } from "../interfaces/setter";
 
 export class SetterManager<ComponentType = unknown> implements ISetterManager<ComponentType>{
   private setters = new Subscriber<Record<string, ComponentType | undefined>>({})
+
+  getSetters = () => {
+    return this.setters.getValue()
+  };
+
   subscribeChange = (listener: Listener<Record<string, ComponentType | undefined>>) => {
     return this.setters.subscribeChange(listener)
   };

@@ -26,7 +26,7 @@ import {
   VariableSelect
 } from '@rxdrag/minions-react-materials';
 import { useExtractReferencedLogicFlowMetas } from '../hooks/useExtractReferencedLogicFlowMetas';
-import { IComponents } from '@rxdrag/react-shared';
+import { IReactComponents } from '@rxdrag/react-shared';
 
 const StyledContent = styled.div`
   display: flex;
@@ -54,7 +54,7 @@ const LeftArea = styled.div`
 export type ControllerMetaEditorAntd5Props = {
   lang?: string;
   locales?: ILocales;
-  setters?: IComponents;
+  setters?: IReactComponents;
   value: ILogicFlowControllerMeta;
   onChange?: (value?: ILogicFlowControllerMeta) => void;
   controllerMetas: ILogicFlowControllerMeta[];

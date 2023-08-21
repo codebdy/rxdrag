@@ -1,5 +1,5 @@
 import { IDesignerEngine, IDocument } from "@rxdrag/core";
-import { IComponents } from "@rxdrag/react-shared";
+import { IReactComponents } from "@rxdrag/react-shared";
 import { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
 import { CanvasRender } from "../CanvasRender"
@@ -15,7 +15,7 @@ export interface IFrameCanvasEvent {
 }
 
 export const IFrameCanvasRender = memo((props: {
-  designers: IComponents
+  designers: IReactComponents
 }) => {
   const { designers } = props
   const [doc, setDoc] = useState<IDocument | null>();

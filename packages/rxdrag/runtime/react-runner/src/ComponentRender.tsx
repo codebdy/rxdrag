@@ -3,13 +3,13 @@ import { memo, useEffect, useState } from "react"
 import { ComponentView, IComponentRenderSchema } from "./ComponentView"
 import { transToRenderSchema } from "./transform"
 import { IFieldMeta } from "@rxdrag/fieldy"
-import { IComponents } from "@rxdrag/react-shared"
+import { IReactComponents } from "@rxdrag/react-shared"
 import { ControllerFactories, RuntimeRoot } from "./RuntimeRoot"
 import { ILocalesManager } from "@rxdrag/locales"
 
 export const ComponentRender = memo((props: {
   root: INodeSchema,
-  components: IComponents | undefined
+  components: IReactComponents | undefined
   controllerFactories?: ControllerFactories,
   localesManager?: ILocalesManager,//@@ 暂时未用
 }) => {

@@ -1,11 +1,11 @@
 import React from "react"
 import { useMemo } from "react"
 import { DesignComponentsContext } from "./contexts"
-import { IComponents } from "@rxdrag/react-shared"
+import { IReactComponents } from "@rxdrag/react-shared"
 import { IComponentsParams } from "@rxdrag/react-runner"
 
 export const DesignRoot = (props: {
-  components?: IComponents,
+  components?: IReactComponents,
   children: React.ReactNode,
 }) => {
   const { components, children } = props

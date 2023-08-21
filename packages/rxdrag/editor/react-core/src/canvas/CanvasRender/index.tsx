@@ -3,14 +3,14 @@ import { IDesignerEngine, IDocument } from "@rxdrag/core"
 import { memo } from "react"
 import { DesignerEngineContext } from "../../contexts";
 import { ComponentTreeWidget } from "../../ComponentTreeWidget/ComponentTreeWidget";
-import { IComponents } from "@rxdrag/react-shared";
+import { IReactComponents } from "@rxdrag/react-shared";
 import { Scroller } from "./Scroller";
 import { DesignRoot } from "../../DesignRoot";
 
 export const CanvasRender = memo((props: {
   doc: IDocument,
   engine?: IDesignerEngine,
-  components?: IComponents
+  components?: IReactComponents
 }) => {
   const { doc, engine, components } = props;
 

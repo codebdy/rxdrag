@@ -7,7 +7,7 @@ import { useLocalesManager } from "@rxdrag/react-locales"
 import { JSONInput, ValueInput } from "@rxdrag/react-antd-props-inputs"
 import { useSelectedNode, useGetMaterial, useDispatch, useBackup, useMarkChange, ActionType } from "@rxdrag/minions-logicflow-editor"
 import { INodeSchema } from "@rxdrag/schema"
-import { IComponents } from "@rxdrag/react-shared"
+import { IReactComponents } from "@rxdrag/react-shared"
 import { ComponentRender } from "@rxdrag/react-runner"
 import { FormValue } from "@rxdrag/fieldy"
 import { FormItem, FormLayout, Switch } from "@rxdrag/react-antd-components"
@@ -21,7 +21,7 @@ const EmptyContainer = styled.div`
 
 export const PropertyBox = memo((
   props: {
-    setters?: IComponents
+    setters?: IReactComponents
   }
 ) => {
   const { setters } = props;
