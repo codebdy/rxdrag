@@ -1,6 +1,6 @@
 import { memo, useState, useEffect, useMemo } from "react"
 import { LogicFlowEditorAntd5InnerProps, LogicMetaEditorAntd5Inner } from "./LogicFlowEditorAntd5Inner"
-import { ILocales, LocalesManager } from "@rxdrag/locales"
+import { ILocales, RxDragLocalesManager } from "@rxdrag/locales"
 import { LocalesContext } from "@rxdrag/react-locales"
 import { ThemeProvider } from "styled-components"
 import { useToken } from "antd/es/theme/internal"
@@ -17,7 +17,7 @@ export const LogicFlowEditorAntd5 = memo((
   const { lang = "zh-CN", locales, token: propToken, ...other } = props
   const [, token] = useToken();
 
-  const [localesManager] = useState(new LocalesManager(lang, locales))
+  const [localesManager] = useState(new RxDragLocalesManager(lang, locales))
   useEffect(() => {
     locales && localesManager.registerLocales(locales)
   }, [localesManager, locales])

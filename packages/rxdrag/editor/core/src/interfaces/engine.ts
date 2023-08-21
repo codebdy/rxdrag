@@ -1,4 +1,4 @@
-import { ILocalesManager } from "@rxdrag/locales"
+import { IRxDragLocalesManager } from "@rxdrag/locales"
 import { INodeSchema } from "@rxdrag/schema"
 import { IDocument, NodeBehavior } from "./document"
 import { IDesignerShell } from "./shell"
@@ -26,7 +26,7 @@ export interface IDesignerEngine<ComponentType = any, IconType = any> {
 	getComponentManager(): IComponentManager<ComponentType>
 	getResourceManager(): IResourceManager<IconType>
 	getSetterManager(): ISetterManager<ComponentType>
-	getLocalesManager(): ILocalesManager
+	getLocalesManager(): IRxDragLocalesManager
 	getDecoratorManager(): IDecoratorManager
 	getActions(): IActions
 

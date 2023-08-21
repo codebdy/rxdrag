@@ -6,7 +6,7 @@ import { DocumentImpl } from "../classes/DocumentImpl";
 import { invariant, isStr } from "@rxdrag/shared";
 import { IActions, IAction } from "../interfaces/action";
 import { Actions } from "../actions";
-import { ILocalesManager, LocalesManager } from "@rxdrag/locales";
+import { IRxDragLocalesManager, RxDragLocalesManager } from "@rxdrag/locales";
 import { CHANGE_ACTIVED_DOCUMENT, SET_LANGUAGE } from "../actions/registry";
 import { DefaultLang } from "../reducers/lang";
 import { ComponentManager } from "./ComponentManager";
@@ -23,7 +23,7 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 		[id in ID]: IDocument
 	} = {}
 	private resourceManager: IResourceManager<IconType>
-	private localesManager: ILocalesManager
+	private localesManager: IRxDragLocalesManager
 	private actions: IActions
 	private componentManager: IComponentManager<ComponentType>
 	private decoratorManager: IDecoratorManager
@@ -38,7 +38,7 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 		plugins: IPluginFactory[],
 		lang?: string
 	) {
-		this.localesManager = new LocalesManager(lang || DefaultLang)
+		this.localesManager = new RxDragLocalesManager(lang || DefaultLang)
 		this.resourceManager = new ResourceManager<IconType>(this.localesManager)
 		this.decoratorManager = new DecoratorManager(this as IDesignerEngine)
 		this.setterManager = new SetterManager<ComponentType>()
@@ -59,14 +59,14 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 	getComponentManager(): IComponentManager<ComponentType> {
 		return this.componentManager
 	}
-	getLocalesManager(): ILocalesManager {
+	getLocalesManager(): IRxDragLocalesManager {
 		return this.localesManager
 	}
 	getLanguage(): string {
 		return this.getMonitor().getState().lang
 	}
 	setLanguage(lang: string): void {
-		this.getLocalesManager().lang = lang
+		this.getLocalesManager().setLang(lang)
 		this.dispatch({
 			type: SET_LANGUAGE,
 			payload: lang

@@ -1,13 +1,13 @@
 import { ID, NodeType, RXID_ATTR_NAME, RX_NODE_TYPE_ATTR_NAME } from "../interfaces";
-import { ILocalesManager } from "@rxdrag/locales";
+import { IRxDragLocalesManager } from "@rxdrag/locales";
 import { Listener, Subscriber, makeRxId } from "@rxdrag/shared";
 import { IResource, IResourceManager, IResourceNode } from "../interfaces/resource";
 
 export class ResourceManager<IconType = unknown> implements IResourceManager<IconType> {
   private resources = new Subscriber<Record<string, IResourceNode<IconType> | undefined>>({})
-  constructor(private locales: ILocalesManager) {
+  constructor(private locales: IRxDragLocalesManager) {
   }
-  
+
   subscribeChange = (listener: Listener<Record<string, IResourceNode<IconType> | undefined>>) => {
     return this.resources.subscribeChange(listener)
   };
