@@ -193,7 +193,6 @@ export const checkAbility = (
 	engine: IDesignerEngine
 ) => {
 	const nodeRules = engine.getComponentManager().getNodeBehaviorRules(nodeId)
-	console.log("哈哈 ", nodeRules)
 	for (const rule of nodeRules) {
 		const able = ableCheck(defaultValue, nodeId, rule[name], engine)
 		if (able !== defaultValue) {
