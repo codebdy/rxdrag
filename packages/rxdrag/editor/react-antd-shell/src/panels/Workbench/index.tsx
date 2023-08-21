@@ -1,7 +1,14 @@
 import { ContainerImpl, DragDropDriver, CanvasResizeDriver, MouseMoveDriver, KeyboardDriver } from "@rxdrag/core"
-import { useDesignerEngine, useShell } from "@rxdrag/react-core"
-import { memo, useCallback, useEffect } from "react"
-import "./style.less"
+import { useDesignerEngine } from "@rxdrag/react-core"
+import { memo, useCallback } from "react"
+import styled from "styled-components"
+
+const WorkbenchRoot = styled.div`
+  display: flex;
+  width: 100%;
+  flex: 1;
+  height: 0;
+`
 
 export interface WorkbenchProps {
   children?: React.ReactNode
@@ -9,26 +16,21 @@ export interface WorkbenchProps {
 
 export const Workbench = memo((props: WorkbenchProps) => {
   const engine = useDesignerEngine()
-  const shell = useShell()
   const handleRefChange = useCallback((el: HTMLDivElement) => {
     if (engine) {
+      //删掉旧的
+      engine.getShell().getContainer()?.destroy()
       const container = new ContainerImpl(engine, el, "$$container$$", [
         DragDropDriver,
         CanvasResizeDriver,
         MouseMoveDriver,
         KeyboardDriver
       ])
-      shell?.setContainer(container)
+      engine.getShell()?.setContainer(container)
     }
-  }, [engine, shell])
+  }, [engine])
 
-  useEffect(() => {
-    return () => {
-      shell?.destroy()
-    }
-  }, [shell])
   return (
-    <div ref={handleRefChange} className="rx-workbench" {...props}>
-    </div>
+    <WorkbenchRoot ref={handleRefChange} className="rx-workbench" {...props} />
   )
 })

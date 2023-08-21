@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DragStartEvent, DragStopEvent } from "../../shell/events/mouse"
 import { IDesignerShell, IDriver, IDriverFactory } from "../../interfaces"
 
@@ -135,7 +136,7 @@ export class DragDropDriverImpl implements IDriver {
     )
   }
 
-  private documentEl(){
+  private documentEl() {
     return this.htmlElement?.ownerDocument || this.htmlElement
   }
 }

@@ -1,6 +1,6 @@
 import { memo } from "react"
 import { ConfigRoot } from "./panels/ShellContainer/ConfigRoot"
-import "./style.less"
+import "./style.css"
 import { Designer, IComponentMaterial } from "@rxdrag/react-core"
 import { IMinionOptions, MinionOptionContext } from "./contexts"
 import { Antd5EditorInnerProps, RxEditorAntdInner } from "./RxEditorAntdInner"

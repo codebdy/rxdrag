@@ -34,7 +34,7 @@ export interface ILocalesManager extends ISubscribable<LocalesResources> {
   registerLocales(...locales: ILocales[]): void
 }
 
-export interface IRxDragLocalesManager {
+export interface IRxDragLocalesManager extends ILocalesManager {
   setLang(lang: string): void
   getResourceMessage(key: string): string | null
   getComponentMessage(componentName: string, key: string): string | null
