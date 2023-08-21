@@ -3,4 +3,4 @@ export * from './interfaces';
 export * from './types';
 export * from './util-invariant';
 export * from './make-rxId';
-export * from "./SubscribableRecord";
+export * from "./Subscriber";

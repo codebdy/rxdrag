@@ -1,10 +1,17 @@
-import { SubscribableRecord } from "@rxdrag/shared";
+import { Listener, Subscriber } from "@rxdrag/shared";
 import { ISetterComponents, ISetterManager } from "../interfaces/setter";
 
-export class SetterManager<ComponentType = unknown> extends SubscribableRecord<ComponentType> implements ISetterManager<ComponentType>{
+export class SetterManager<ComponentType = unknown> implements ISetterManager<ComponentType>{
+  private setters = new Subscriber<Record<string, ComponentType | undefined>>({})
+  subscribeChange = (listener: Listener<Record<string, ComponentType | undefined>>) => {
+    return this.setters.subscribeChange(listener)
+  };
+
   registerSetters = (...settersList: ISetterComponents<ComponentType>[]) => {
+    let news = { ...this.setters.getValue() }
     for (const setters of settersList) {
-      this.record = { ...this.record, ...setters }
+      news = { ...news, ...setters }
     }
+    this.setters.setValue(news)
   }
 }

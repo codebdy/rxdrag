@@ -1,7 +1,7 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { ILocales } from "@rxdrag/locales";
 import { ID, RxProps } from "./types";
-import { ISubscribableRecord } from "@rxdrag/shared";
+import { ISubscribable } from "@rxdrag/shared";
 
 export interface IResource<Icon = unknown> {
   //唯一名称，防止重复注册
@@ -19,9 +19,9 @@ export interface IResourceNode<IconType = unknown> extends IResource<IconType> {
   rxProps?: RxProps
 }
 
-export interface IResourceManager<IconType = unknown> extends ISubscribableRecord<IResourceNode<IconType>> {
+export interface IResourceManager<IconType = unknown> extends ISubscribable<Record<string, IResourceNode<IconType> | undefined>> {
   getResource(id: ID): IResourceNode<IconType> | undefined
   getResourceByName(name: string): IResourceNode<IconType> | undefined
-  registerResources(...resources: IResource[]): IResourceNode<IconType>[]
+  registerResources(...resources: IResource[]): void
   clear(): void
 }

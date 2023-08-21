@@ -4,7 +4,7 @@ import { IDesignerProps, ITreeNode } from "./document"
 import { IDesignerEngine } from "./engine"
 import { IResource } from "./resource"
 import { ID } from "./types"
-import { ISubscribableRecord } from "@rxdrag/shared"
+import { Listener, Unsubscribe } from "@rxdrag/shared"
 
 export type Selector = (node: ITreeNode, engine?: IDesignerEngine) => boolean
 
@@ -69,11 +69,13 @@ export interface IBehavior {
   rule: IBehaviorRule
 }
 
-export interface IComponentManager<ComponentType = unknown> extends ISubscribableRecord<IComponentConfig<ComponentType>> {
+export interface IComponentManager<ComponentType = unknown> {
   getNodeBehaviorRules(nodeId: ID): IBehaviorRule[]
   getComponentConfig(componentName: string): IComponentConfig<ComponentType> | undefined
   registerComponents(...componentDesigners: IComponentConfig<ComponentType>[]): void
   registerBehaviors(...behaviors: IBehavior[]): void
   removeBehaviors(...names: string[]): void
   setBehaviors(...behaviors: IBehavior[]): void
+  subscribeComponentsChange: (listener: Listener<Record<string, IComponentConfig<ComponentType> | undefined>>) => Unsubscribe
+  subscribeBehaviorsChange: (listener: Listener<Record<string, IBehavior | undefined>>) => Unsubscribe
 }

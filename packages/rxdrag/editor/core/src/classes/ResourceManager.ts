@@ -1,30 +1,35 @@
 import { ID, NodeType, RXID_ATTR_NAME, RX_NODE_TYPE_ATTR_NAME } from "../interfaces";
 import { ILocalesManager } from "@rxdrag/locales";
-import { SubscribableRecord, makeRxId } from "@rxdrag/shared";
+import { Listener, Subscriber, makeRxId } from "@rxdrag/shared";
 import { IResource, IResourceManager, IResourceNode } from "../interfaces/resource";
 
-export class ResourceManager<IconType = unknown> extends SubscribableRecord<IResourceNode<IconType>> implements IResourceManager<IconType> {
-
+export class ResourceManager<IconType = unknown> implements IResourceManager<IconType> {
+  private resources = new Subscriber<Record<string, IResourceNode<IconType> | undefined>>({})
   constructor(private locales: ILocalesManager) {
-    super()
   }
+  
+  subscribeChange = (listener: Listener<Record<string, IResourceNode<IconType> | undefined>>) => {
+    return this.resources.subscribeChange(listener)
+  };
 
   getResource(id: ID): IResourceNode<IconType> | undefined {
+    const record = this.resources.getValue()
     //判断id
-    for (const key of Object.keys(this.record)) {
-      if (this.record[key]?.id === id) {
-        return this.record[key]
+    for (const key of Object.keys(record)) {
+      if (record[key]?.id === id) {
+        return record[key]
       }
     }
 
   }
 
   getResourceByName(name: string): IResourceNode<IconType> | undefined {
-    return this.record[name]
+    const record = this.resources.getValue()
+    return record[name]
   }
 
-  registerResources(...resources: IResource[]): IResourceNode<IconType>[] {
-    const convertedResources: IResourceNode<IconType>[] = []
+  registerResources(...resources: IResource[]) {
+    const news: Record<string, IResourceNode<IconType> | undefined> = { ...this.resources.getValue() }
     for (const resource of resources) {
 
       const rxId = makeRxId()
@@ -37,14 +42,13 @@ export class ResourceManager<IconType = unknown> extends SubscribableRecord<IRes
           [RX_NODE_TYPE_ATTR_NAME]: NodeType.Resource
         },
       } as IResourceNode<IconType>
-      this.record[resource.name] = node
-      convertedResources.push(node)
+      news[resource.name] = node
+
     }
-    this.emitChange()
-    return convertedResources
+    this.resources.setValue(news)
   }
   clear(): void {
-    this.record = {}
+    this.resources.reset({})
   }
 
 }

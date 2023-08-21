@@ -22,13 +22,13 @@ export interface ILocales {
   [ISOCode: string]: ILangLocales
 }
 
-export interface ILocalesManager extends ISubscribableRecord{
-  lang: string
-  //setLanguage(lang: string): void
+export interface ILocalesManager {
+  getLang: () => string
+  setLang(lang: string): void
   getMessage(key: string): string | null
   getResourceMessage(key: string): string | null
   getComponentMessage(componentName: string, key: string): string | null
-  getToolsMessage(key: string): string | null
+  getSettersMessage(key: string): string | null
   registerLocales(...locales: ILocales[]): void
   registerResourceLocales(...locales: ILocales[]): void
   registerComponentLocales(componentName: string, locales: ILocales): void

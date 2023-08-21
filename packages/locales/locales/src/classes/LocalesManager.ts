@@ -3,11 +3,20 @@ import _ from "lodash"
 import { INodeSchema } from "@rxdrag/schema";
 import { ILangLocales, ILocales, ILocalesManager } from "../interfaces";
 
-export class LocalesManager extends SubscribableRecord<ILangLocales> implements ILocalesManager {
+export class LocalesManager implements ILocalesManager {
+  protected record: Record<string, ILangLocales> = {}
 
-  constructor(public lang: string = "zh-CN", locales?: ILocales) {
-    super()
+  constructor(protected lang: string = "zh-CN", locales?: ILocales) {
     locales && this.registerLocales(locales)
+  }
+
+  getLang = () => {
+    return this.lang
+  }
+
+  setLang(lang: string): void {
+    this.lang = lang;
+    this.emitChange();
   }
 
   getMessage(key: string): string | null {
@@ -24,7 +33,7 @@ export class LocalesManager extends SubscribableRecord<ILangLocales> implements 
     return this.getValueByKey(currentLocales?.[componentName] || {}, key)
   }
 
-  getToolsMessage(key: string): string | null {
+  getSettersMessage(key: string): string | null {
     const currentLocales = this.record?.[this.lang]?.setters
     return this.getValueByKey(currentLocales || {}, key)
   }
@@ -64,7 +73,6 @@ export class LocalesManager extends SubscribableRecord<ILangLocales> implements 
 
   translateDesignerSchema(componentName: string, schema: INodeSchema): INodeSchema {
     return this.translateObject(componentName, schema)
-    this.emitChange()
   }
 
   private translateObject(componentName: string, obj: any) {
@@ -99,7 +107,7 @@ export class LocalesManager extends SubscribableRecord<ILangLocales> implements 
     if (str.startsWith('$')) {
       const token = str.substring(1)
 
-      return this.getMessage(token) || this.getToolsMessage(token) || this.getComponentMessage(componentName, "settings." + token) || str
+      return this.getMessage(token) || this.getSettersMessage(token) || this.getComponentMessage(componentName, "settings." + token) || str
     }
 
     return str
