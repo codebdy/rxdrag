@@ -177,12 +177,9 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 				this.registerMaterials([slotMaterial as IComponentConfig<ComponentType, IconType>])
 			}
 
-			//registerDesignComponents(designers)
-			//registerPreviewComponents(previews)
 			setters && this.setterManager.registerSetters(setters)
 
 			if (material.resource && !this.resourceManager?.getResourceByName(material.resource.name)) {
-				console.log("注册Resource", material.resource)
 				this.resourceManager?.registerResources(material.resource)
 			}
 		}
