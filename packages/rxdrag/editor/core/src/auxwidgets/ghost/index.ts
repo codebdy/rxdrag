@@ -54,7 +54,7 @@ export class GhostWidgetImpl implements IPlugin {
     if (dragging) {
       const resource = this.engine.getResourceManager().getResource(dragging.resource)
       if (resource) {
-        this.title = resource.title || resource.id || "undefined"
+        this.title = this.engine.getLocalesManager().getResourceMessage(resource.title) || resource.id || "undefined"
         this.mount()
       }
     } else {
@@ -65,8 +65,8 @@ export class GhostWidgetImpl implements IPlugin {
   handleDrag = (e: MouseMoveEvent): void => {
     if (this.mounted && this.engine.getShell().dragging) {
       const container = this.engine.getShell().getContainer()
-      if(container && !container.contains(this.htmlNode)){
-        if(this.htmlNode.parentElement){
+      if (container && !container.contains(this.htmlNode)) {
+        if (this.htmlNode.parentElement) {
           this.htmlNode.remove()
         }
         container.appendChild(this.htmlNode)
