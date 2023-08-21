@@ -53,7 +53,7 @@ export interface IComponentConfig<ComponentType = unknown, IconType = unknown> {
     [name: string]: IComponentConfig | true | string | undefined
   },
   //自定义属性面板用的多语言资源
-  toolsLocales?: ILocales
+  setterLocales?: ILocales
   setters?: {
     [name: string]: ComponentType | undefined
   },

@@ -12,7 +12,7 @@ import {
   historyIcon,
   outlineIcon,
 } from "@rxdrag/react-antd-shell"
-import { toolsLocales } from "../locales"
+import { setterLocales } from "../locales"
 import { ResourceWidget } from "./ResourceWidget"
 import { SaveButton } from "./widgets/SaveButton"
 import { PagesWidget } from "./PagesWidget"
@@ -87,7 +87,7 @@ export const Antd5Example = memo(() => {
           </Space>
         </>
       }
-      locales={toolsLocales}
+      locales={setterLocales}
       leftNav={
         <LeftNavWidget
           //showTitle

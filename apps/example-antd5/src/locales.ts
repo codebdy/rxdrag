@@ -1,6 +1,6 @@
 import { ILocales } from "@rxdrag/locales";
 
-export const toolsLocales: ILocales = {
+export const setterLocales: ILocales = {
   "zh-CN": {
     setters: {
       inputs: "输入控件",

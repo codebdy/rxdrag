@@ -6,6 +6,7 @@ import { ISubscribable } from "@rxdrag/shared";
 export interface IResource<Icon = unknown> {
   //唯一名称，防止重复注册
   name: string
+  title?: string
   elements: INodeSchema[] | INodeSchema,
   icon?: Icon
   color?: string,
@@ -15,7 +16,7 @@ export interface IResource<Icon = unknown> {
 
 export interface IResourceNode<IconType = unknown> extends IResource<IconType> {
   id: ID
-  title?: string
+  title: string,
   rxProps?: RxProps
 }
 

@@ -31,7 +31,7 @@ export const resourceLocales = {
   }
 }
 
-export const toolsLocales = {
+export const setterLocales = {
   "zh-CN": {
     "predefined": "预定义",
     "customized": "自定义",

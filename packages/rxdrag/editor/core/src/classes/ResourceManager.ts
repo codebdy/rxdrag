@@ -36,7 +36,7 @@ export class ResourceManager<IconType = unknown> implements IResourceManager<Ico
       const node = {
         ...resource,
         id: rxId,
-        title: this.locales.getResourceMessage(resource.name || resource.name) || undefined,
+        title: resource.title || resource.name,
         rxProps: {
           [RXID_ATTR_NAME]: rxId,
           [RX_NODE_TYPE_ATTR_NAME]: NodeType.Resource

@@ -165,8 +165,8 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 				this.localesManager?.registerResourceLocales(material.resource.resourceLocales)
 			}
 
-			if (material.toolsLocales) {
-				this.localesManager?.registerSetterLocales(material.toolsLocales)
+			if (material.setterLocales) {
+				this.localesManager?.registerSetterLocales(material.setterLocales)
 			}
 
 			for (const key of Object.keys(material.slots || {})) {
