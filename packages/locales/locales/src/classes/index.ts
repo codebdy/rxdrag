@@ -1,2 +1,2 @@
 export * from "./LocalesManager"
-export * from "./RxDragLocalesManager2"
+export * from "./RxDragLocalesManager"
