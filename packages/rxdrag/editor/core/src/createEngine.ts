@@ -30,6 +30,7 @@ function makeStoreInstance(debugMode: boolean): Store<State> {
 	// we'll need to consider how to pull off dev-tooling
 	const reduxDevTools =
 		typeof window !== 'undefined' &&
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		(window as any).__REDUX_DEVTOOLS_EXTENSION__
 	return configureStore(
 		{

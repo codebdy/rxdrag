@@ -67,10 +67,8 @@ export const RxEditorAntd = memo((props: Antd5EditorProps) => {
     locales && langMgr.registerLocales(locales)
     //langMgr.registerResourceLocales(resourceLocales)
     //langMgr.registerComponentsLocales(componentLocales)
-    console.log("Designer 初始化时注册组件")
-    eng.registerMaterials(materials || [])
     setEngine(eng)
-  }, [locales, materials])
+  }, [locales])
 
   // const initialComponents = useMemo(() => {
   //   return [
@@ -87,6 +85,7 @@ export const RxEditorAntd = memo((props: Antd5EditorProps) => {
       <Designer
         onReady={handleReady}
         themeMode={themeMode}
+        materials = {materials}
       >
         <ConfigRoot>
           <ShellContainer>
