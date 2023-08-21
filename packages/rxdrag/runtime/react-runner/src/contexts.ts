@@ -13,9 +13,6 @@ export const RuntimeEngineContext = createContext<RuntimeEngine | undefined>(und
 
 export const initialParams: IComponentsParams = {
   components: {},
-  registerComponents: function (): void {
-    throw new Error("Function not implemented.");
-  }
 }
 
 export const PreviewComponentsContext = createContext<IComponentsParams>(initialParams)

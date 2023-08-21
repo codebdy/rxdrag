@@ -46,10 +46,10 @@ export class ComponentManager<ComponentType = unknown> implements IComponentMana
    */
   getNodeBehaviorRules(nodeId: string): IBehaviorRule[] {
     const rules: IBehaviorRule[] = []
-
     const node = this.engine.getMonitor().getNode(nodeId)
-    for (const key of Object.keys(this.behaviors)) {
-      const behavior = this.behaviors.getValue()[key]
+    const behaviors = this.behaviors.getValue()
+    for (const key of Object.keys(behaviors)) {
+      const behavior = behaviors[key]
       if (node && behavior?.rule && this.meetSelector(node, behavior.selector)) {
         rules.push(behavior.rule)
       }
