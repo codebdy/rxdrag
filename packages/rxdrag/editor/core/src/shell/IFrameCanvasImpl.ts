@@ -17,6 +17,11 @@ export class IFrameCanvasImpl implements IShellPane {
       }
     }
   }
+
+  getRootElement(): HTMLElement {
+    return this.iframe.contentWindow?.document.body || this.iframe;
+  }
+
   getContainerRect(): IRect | null {
     const rect = this.iframe.contentWindow?.document?.body?.getBoundingClientRect()
     if (!rect) {

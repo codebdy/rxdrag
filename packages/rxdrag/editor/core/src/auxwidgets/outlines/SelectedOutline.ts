@@ -7,6 +7,7 @@ import { AUX_BACKGROUND_COLOR } from "../constants";
 import { numbToPx } from "../utils/numbToPx";
 import { getMaxZIndex } from "./getMaxZIndex";
 
+//选中时的轮廓线
 export class SelectedOutlineImpl implements IPlugin {
   name = "default.selected-outline";
   resizeObserver: ResizeObserver

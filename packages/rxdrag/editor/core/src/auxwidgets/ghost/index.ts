@@ -5,6 +5,7 @@ import { DraggingNodesState } from "../../reducers/draggingNodes";
 import { DraggingResourceState } from "../../reducers/draggingResource";
 import { numbToPx } from "../utils/numbToPx";
 
+//跟随鼠标
 export class GhostWidgetImpl implements IPlugin {
   name = "default.ghost";
   htmlNode: HTMLElement;

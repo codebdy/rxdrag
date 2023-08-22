@@ -6,6 +6,7 @@ import { DragOverState } from "../../reducers/dragOver";
 import { addZIndex } from "../../utils/add-zindex";
 import { RelativePosition } from "../../utils/coordinate";
 
+//提示光标
 export class InsertionCursorImpl implements IPlugin {
   name = "default.insertion";
   htmlCoverNode: HTMLElement;

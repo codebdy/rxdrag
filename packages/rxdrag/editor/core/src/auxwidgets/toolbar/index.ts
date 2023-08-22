@@ -12,6 +12,7 @@ import { DraggingResourceState } from "../../reducers/draggingResource";
 import { LockButton } from "./controls/LockButton";
 import { getMaxZIndex } from "../outlines/getMaxZIndex";
 
+//工具栏
 export class ToolbarImpl implements IPlugin, IAuxToolbar {
   name = "default.toolbar";
   resizeObserver: ResizeObserver
@@ -190,14 +191,13 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   }
 
   private positionLimit(documentId: ID) {
-    const bodyRect = document.body.getBoundingClientRect()
     const rect = this.engine.getShell().getCanvas(documentId)?.getContainerRect()
     if (!rect) {
       return null
     }
     return {
-      right: bodyRect.width - rect.x - rect.width,
-      left: rect.x,
+      right: 0,
+      left: 0,
       top: rect.y,
       bottom: rect.y + rect.height
     }

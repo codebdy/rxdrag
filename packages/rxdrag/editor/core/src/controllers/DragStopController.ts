@@ -17,6 +17,19 @@ export class DragStopControllerImpl implements IPlugin {
   }
 
   handleDragStop = (e: DragStopEvent) => {
+    //放开user select
+    document.body.style.userSelect = ""
+    const canvases = this.engine.getShell()?.getAllCanvases()
+    for (const key of Object.keys(canvases)) {
+      const canvas = canvases[key]
+      if (canvas) {
+        const element = canvas.getRootElement()
+        if (element) {
+          element.style.userSelect = ""
+        }
+      }
+    }
+    
     this.drop(e)
     if (this.engine.getMonitor().getState().draggingResource) {
       this.engine.getActions().endDragResource()

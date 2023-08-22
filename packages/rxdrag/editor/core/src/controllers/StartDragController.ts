@@ -12,6 +12,19 @@ export class StartDragControllerImpl implements IPlugin {
   }
 
   handleDragStart = (e: DragStartEvent) => {
+    //禁止user select
+    document.body.style.userSelect = "none"
+    const canvases = this.engine.getShell()?.getAllCanvases()
+    for (const key of Object.keys(canvases)) {
+      const canvas = canvases[key]
+      if (canvas) {
+        const element = canvas.getRootElement()
+        if (element) {
+          element.style.userSelect = "none"
+        }
+      }
+    }
+
     if (e.data.targetRx?.nodeType === NodeType.Resource) {
       e.data.targetRx?.rxId && this.engine.getActions().startDragResource({
         initialMousePosition: getPosition(e.data),

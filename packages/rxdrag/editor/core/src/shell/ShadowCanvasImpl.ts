@@ -16,7 +16,10 @@ export class ShadowCanvasImpl implements IShellPane {
       this.drivers.push(driverFactory(engine.getShell(), roolElement))
     }
   }
-
+  getRootElement(): HTMLElement {
+    return this.roolElement;
+  }
+  
   appendChild(child: HTMLElement): void {
     this.shadow.append(child)
   }

@@ -3,6 +3,7 @@ import { ID, IRect } from "./types"
 
 export interface IShellPane {
 	id: ID
+	getRootElement(): HTMLElement
 	getElements(id: ID): HTMLElement[] | null
 	getContainerRect(): IRect | null
 	getTopRect(nodeId: ID): IRect | null

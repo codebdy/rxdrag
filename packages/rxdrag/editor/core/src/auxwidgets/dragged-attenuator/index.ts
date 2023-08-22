@@ -3,6 +3,7 @@ import { DragStartEvent } from "../../shell/events/mouse";
 import { IPlugin } from "../../interfaces/plugin";
 import { DraggingNodesState } from "../../reducers/draggingNodes";
 
+//让被拖动的对象变暗
 export class DraggedAttenuatorImpl implements IPlugin {
   name = "default.dragged-attenuator";
   htmlStyle?: HTMLElement;

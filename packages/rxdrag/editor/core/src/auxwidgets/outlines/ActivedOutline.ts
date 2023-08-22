@@ -5,6 +5,7 @@ import { numbToPx } from "../utils/numbToPx";
 import { getMaxZIndex } from "./getMaxZIndex";
 import { ID, IDesignerEngine, Unsubscribe } from "../../interfaces";
 
+//悬停轮廓线
 export class ActivedOutlineImpl implements IPlugin {
   name = "default.actived-outline";
   resizeObserver: ResizeObserver

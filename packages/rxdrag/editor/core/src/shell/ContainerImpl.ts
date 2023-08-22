@@ -15,6 +15,10 @@ export class ContainerImpl implements IShellPane {
       this.drivers.push(driverFactory(engine.getShell(), roolElement))
     }
   }
+  getRootElement(): HTMLElement {
+    return this.roolElement;
+  }
+
   getContainerRect(): IRect | null {
     return this.roolElement.getBoundingClientRect()
   }
