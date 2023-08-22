@@ -109,7 +109,8 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   private render() {
     const node = this.engine.getMonitor().getCurrentNode()
     const divEl = this.htmlElement
-    const canvas = this.engine.getShell().getCanvas(this.engine.getMonitor().getNodeDocumentId(node?.id || "") || "")
+    const shell = this.engine.getShell()
+    const canvas = shell.getCanvas(this.engine.getMonitor().getNodeDocumentId(node?.id || "") || "")
     divEl && canvas?.contains(divEl) && canvas?.removeChild(divEl)
     this.htmlElement = null
     if (!node) {
@@ -118,14 +119,13 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
       }
       return
     }
-    const element = node.id && this.engine.getShell().getElements(node.id)
+
+    const elements = node.id && shell.getElements(node.id)
     const positionLimit = this.positionLimit(node.documentId)
 
     const containerRect = canvas?.getContainerRect()
-
-    if (element && positionLimit && containerRect) {
-      const rect = element.getBoundingClientRect();
-
+    const rect = shell.getTopRect(node.id);
+    if (elements && positionLimit && containerRect && rect) {
       const htmlDiv = document.createElement('div')
       htmlDiv.style.display = "flex"
       htmlDiv.style.alignItems = "center"
@@ -150,7 +150,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
       htmlDiv.style.top = numbToPx(top - containerRect.y)
       htmlDiv.style.fontSize = "12px"
       htmlDiv.style.padding = "0px"
-      htmlDiv.style.zIndex = (getMaxZIndex(element) + 1).toString()
+      htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
       htmlDiv.style.userSelect = "none"
 
       canvas?.appendChild(htmlDiv)
@@ -162,7 +162,9 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
       }
 
       this.htmlElement = htmlDiv
-      this.resizeObserver.observe(element)
+      for (const element of elements) {
+        this.resizeObserver.observe(element)
+      }
     }
   }
 

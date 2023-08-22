@@ -1,12 +1,13 @@
 import { IRect } from "../interfaces";
 
 export function getMergedRect(rects: { x: number; y: number; height: number; width: number; }[]) {
-  const rtRect: IRect = {
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
-  };
+  if (!rects.length) {
+    return null
+  }
+  if (rects.length === 1) {
+    return rects[0]
+  }
+  const rtRect: IRect = rects[0];
 
   for (const rect of rects) {
     if (rect.x < rtRect.x) {

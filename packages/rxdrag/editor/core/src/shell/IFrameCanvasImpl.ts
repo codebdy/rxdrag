@@ -45,20 +45,20 @@ export class IFrameCanvasImpl implements IShellPane {
       return null
     }
 
-    const frameRect = this.iframe.getBoundingClientRect()
+    //const frameRect = this.iframe.getBoundingClientRect()
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const scale = frameRect.width / (this.iframe as any)['offsetWidth']
-    const newRects = rects.map((rect) => {
-      return (
-        {
-          x: rect.x * scale + frameRect.x,
-          y: rect.y * scale + frameRect.y,
-          height: rect.height * scale,
-          width: rect.width * scale,
-        }
-      )
-    })
-    return getMergedRect(newRects);
+    // const scale = frameRect.width / (this.iframe as any)['offsetWidth']
+    // const newRects = rects.map((rect) => {
+    //   return (
+    //     {
+    //       x: rect.x * scale + frameRect.x,
+    //       y: rect.y * scale + frameRect.y,
+    //       height: rect.height * scale,
+    //       width: rect.width * scale,
+    //     }
+    //   )
+    // })
+    return getMergedRect(rects);
   }
 
   destroy(): void {
