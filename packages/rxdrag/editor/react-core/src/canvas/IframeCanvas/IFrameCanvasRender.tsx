@@ -3,9 +3,9 @@ import { IReactComponents } from "@rxdrag/react-shared";
 import { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
 import { CanvasRender } from "../CanvasRender"
-import { EVENT_DOC_CHANGE, EVENT_IFRAME_READY } from "./constants";
 import { ID } from "@rxdrag/shared";
 import { useDocumentViewTypeState } from "../../hooks";
+import { EVENT_IFRAME_READY, EVENT_DOC_CHANGE } from "../IframeProxy/constants";
 
 declare const window: Window & { engine?: IDesignerEngine, doc?: IDocument };
 

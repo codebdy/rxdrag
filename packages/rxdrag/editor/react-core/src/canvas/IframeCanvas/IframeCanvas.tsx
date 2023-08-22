@@ -8,7 +8,7 @@ import { CanvasResizeDriver, CanvasScrollDriver, DragDropDriver, MouseClickDrive
 import { MouseOverOutDriver, DragOverDriver, MouseUpDriver } from "@rxdrag/core";
 import { useDocumentViewTypeState } from "../../hooks/useDocumentViewTypeState";
 import { CanvasShell } from "../CanvasShell";
-import { EVENT_DOC_CHANGE, EVENT_IFRAME_READY } from "./constants";
+import { EVENT_IFRAME_READY, EVENT_DOC_CHANGE } from "../IframeProxy/constants";
 
 export const IframeCanvas = memo((
   props: {
