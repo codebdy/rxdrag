@@ -14,11 +14,11 @@ export class InsertionCursorImpl implements IPlugin {
   shell: IDesignerShell
 
   constructor(private engine: IDesignerEngine) {
-    if (!engine.getShell().getContainer) {
+    this.shell = engine.getShell()
+    const container = this.shell.getContainer()
+    if (!container) {
       console.error("Html 5 driver rootElement is undefined")
     }
-    this.shell = engine.getShell()
-
     const htmlNode = document.createElement('div')
     htmlNode.style.position = "fixed"
     htmlNode.style.display = "none"
@@ -36,16 +36,17 @@ export class InsertionCursorImpl implements IPlugin {
   }
 
   handleDragOver = (dragover: DragOverState) => {
+    const canvas = this.shell.getCanvas(this.engine.getMonitor().getNodeDocumentId(dragover?.targetId || "") || "")
     if (dragover) {
       if (dragover?.position === "in") {
-        if (!this.shell.getContainer()?.contains(this.htmlCoverNode)) {
-          this.shell.getContainer()?.appendChild(this.htmlCoverNode)
+        if (!canvas?.contains(this.htmlCoverNode)) {
+          canvas?.appendChild(this.htmlCoverNode)
         }
         this.renderCover(dragover)
         this.htmlCursorNode.style.display = "none"
       } else {
-        if (!this.shell.getContainer()?.contains(this.htmlCursorNode)) {
-          this.shell.getContainer()?.appendChild(this.htmlCursorNode)
+        if (!canvas?.contains(this.htmlCursorNode)) {
+          canvas?.appendChild(this.htmlCursorNode)
         }
         this.renderCursor(dragover)
         this.htmlCoverNode.style.display = "none"
