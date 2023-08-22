@@ -4,7 +4,7 @@ import { memo } from "react"
 import { DesignerEngineContext } from "../../contexts";
 import { ComponentTreeWidget } from "../../ComponentTreeWidget/ComponentTreeWidget";
 import { IReactComponents } from "@rxdrag/react-shared";
-import { Scroller } from "./Scroller";
+import { Scroller } from "../IframeProxy/Scroller";
 import { DesignRoot } from "../../DesignRoot";
 
 export const CanvasRender = memo((props: {

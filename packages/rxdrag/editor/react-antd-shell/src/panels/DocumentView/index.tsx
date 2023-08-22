@@ -1,5 +1,5 @@
 import { IDocument } from "@rxdrag/core"
-import { DocumentRoot, JsonView, IframeCanvas } from "@rxdrag/react-core"
+import { CanvasShell, DocumentRoot, IFrame, JsonView, useDocumentViewTypeState } from "@rxdrag/react-core"
 import { Divider } from "antd"
 import { memo } from "react"
 import { IframePreview } from "../../components/Preview/IframePreview"
@@ -16,6 +16,8 @@ export const DocumentView = memo((
 ) => {
   const { doc, canvasUrl, previewUrl } = props
   console.log(doc?.getSchemaTree(), 'doc1')
+  const [viewType] = useDocumentViewTypeState(doc?.id)
+
   return (
     doc ?
       <DocumentRoot doc={doc}>
@@ -33,8 +35,15 @@ export const DocumentView = memo((
         </CanvasToolbar>
         <Viewport>
           <JsonView />
-          <IframeCanvas doc={doc} renderUrl={canvasUrl} />
-          <IframePreview doc={doc} renderUrl={previewUrl} />
+          <CanvasShell display={viewType === "design"} >
+            <IFrame
+              style={{ border: "0", width: "100%", height: "100%" }}
+              src={canvasUrl}
+            />
+          </CanvasShell>
+          <CanvasShell display={viewType === "preview"} >
+            <IframePreview doc={doc} renderUrl={previewUrl} />
+          </CanvasShell>
         </Viewport>
         <NavbarWidget />
       </DocumentRoot>

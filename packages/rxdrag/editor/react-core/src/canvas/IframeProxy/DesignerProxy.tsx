@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
 import { ID } from "@rxdrag/shared";
 import { EVENT_IFRAME_READY } from "./constants";
-import { DesignerEngineContext } from "../..";
+import { DesignerEngineContext, Scroller } from "../..";
 import { IReactComponents } from "@rxdrag/react-shared";
 import { DesignRoot } from "../../DesignRoot";
 
@@ -14,6 +14,7 @@ export interface IFrameCanvasEvent {
   payload?: ID,
 }
 
+//尽量放在Ifame的顶层
 export const DesignerProxy = memo((
   props: {
     components: IReactComponents
@@ -41,6 +42,7 @@ export const DesignerProxy = memo((
     <DesignerEngineContext.Provider value={engine}>
       <DesignRoot components={components}>
         {engine ? children : <></>}
+        <Scroller />
       </DesignRoot>
     </DesignerEngineContext.Provider>
   )
