@@ -129,7 +129,7 @@ export class PositionJudger {
 
   //在此区域内，算是拖入
   get dragInRect() {
-    const rect = this.engine.getShell().getElement(this.node.id)?.getBoundingClientRect();
+    const rect = this.engine.getShell().getElements(this.node.id)?.getBoundingClientRect();
     if (!rect) {
       return undefined;
     }
@@ -143,7 +143,7 @@ export class PositionJudger {
   }
 
   get rect() {
-    const rect = this.engine.getShell().getElement(this.node.id)?.getBoundingClientRect();
+    const rect = this.engine.getShell().getElements(this.node.id)?.getBoundingClientRect();
     if (!rect) {
       return undefined;
     }
@@ -178,7 +178,7 @@ export class PositionJudger {
 
     const { clientX, clientY } = event;
 
-    const rect = this.engine.getShell().getElement(theNode.id)?.getBoundingClientRect();
+    const rect = this.engine.getShell().getElements(theNode.id)?.getBoundingClientRect();
     if (!rect) {
       return false;
     }
@@ -217,7 +217,7 @@ export class PositionJudger {
       const beforeChild = this.engine.getMonitor().getNode(beforeId);
 
       if (beforeChild && beforeChild.id !== this.node.id) {
-        const element = this.engine.getShell().getElement(beforeChild.id)
+        const element = this.engine.getShell().getElements(beforeChild.id)
         if (element) {
           const layout = calcElementLayout(element)
           if (layout === "horizontal") {
@@ -235,7 +235,7 @@ export class PositionJudger {
           //console.error("can not find node element")
         }
       } else if (afterChild) {
-        const element = this.engine.getShell().getElement(afterChild.id)
+        const element = this.engine.getShell().getElements(afterChild.id)
         if (element) {
           const layout = calcElementLayout(element)
           if (layout === "horizontal") {
@@ -259,7 +259,7 @@ export class PositionJudger {
         //console.log('undefined1')
         return null;
       }
-      const element = this.engine.getShell().getElement(this.node.id)
+      const element = this.engine.getShell().getElements(this.node.id)
       if (element) {
         const layout = calcElementLayout(element)
         return {

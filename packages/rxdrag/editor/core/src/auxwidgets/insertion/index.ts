@@ -76,7 +76,7 @@ export class InsertionCursorImpl implements IPlugin {
   }
 
   private renderCursor = (dragover: DragOverState) => {
-    const htmlDiv = this.engine.getShell().getElement(dragover?.targetId || "")
+    const htmlDiv = this.engine.getShell().getElements(dragover?.targetId || "")
     const rect = this.engine.getShell().getTopRect(dragover?.targetId || "")
     if (rect && htmlDiv && dragover) {
       if (dragover.type === AcceptType.Accept) {

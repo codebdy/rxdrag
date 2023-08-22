@@ -22,7 +22,7 @@ export class DraggedAttenuatorImpl implements IPlugin {
     if (dragging) {
       let styleAdded = false
       for (const draggingId of dragging.nodeIds) {
-        const element = this.shell.getElement(draggingId)
+        const element = this.shell.getElements(draggingId)
         if (element) {
           if (!styleAdded) {
             const doc = element?.ownerDocument || document

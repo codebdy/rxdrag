@@ -3,7 +3,7 @@ import { ID, IRect } from "./types"
 
 export interface IShellPane {
 	id: ID
-	getElement(id: ID): HTMLElement | null
+	getElements(id: ID): HTMLElement[] | null
 	getContainerRect(): IRect | null
 	getTopRect(nodeId: ID): IRect | null
 	appendChild(child: HTMLElement): void
@@ -34,7 +34,8 @@ export interface IDesignerShell extends ISubscribable, IDispatchable<ICustomEven
 	addCanvas(canvas: IShellPane): void
 	removeCanvas(documentId: ID): void
 
-	getElement(nodeId: ID): HTMLElement | null
+	//一个组件可能会由多个Elements组成
+	getElements(nodeId: ID): HTMLElement[] | null
 	getTopRect(nodeId: ID): IRect | null
 	destroy(): void
 }

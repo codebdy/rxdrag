@@ -50,7 +50,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   //临时措施，跟踪popup变化
   handleSelectChange = (selectedIds: ID[] | null) => {
     this.refresh()
-    if (selectedIds?.length && !this.engine.getShell().getElement(selectedIds?.[0])) {
+    if (selectedIds?.length && !this.engine.getShell().getElements(selectedIds?.[0])) {
       setTimeout(() => {
         this.refresh()
       }, 100)
@@ -60,7 +60,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   currentNodeChanged = (node: ITreeNode) => {
     this.resizeObserver.disconnect()
     this.refresh()
-    if (node && !this.engine.getShell().getElement(node.id)) {
+    if (node && !this.engine.getShell().getElements(node.id)) {
       setTimeout(() => {
         this.refresh()
       }, 100)
@@ -118,7 +118,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
       }
       return
     }
-    const element = node.id && this.engine.getShell().getElement(node.id)
+    const element = node.id && this.engine.getShell().getElements(node.id)
     const positionLimit = this.positionLimit(node.documentId)
 
     const containerRect = canvas?.getContainerRect()

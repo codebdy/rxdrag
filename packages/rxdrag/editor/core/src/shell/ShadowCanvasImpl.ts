@@ -1,4 +1,6 @@
 import { IShellPane, ID, IDesignerEngine, IDriver, IDriverFactory, RXID_ATTR_NAME, IRect } from "../interfaces";
+import { extractElements } from "./extractElements";
+import { getMergedRect } from "./getMergedRect";
 
 export class ShadowCanvasImpl implements IShellPane {
   private drivers: IDriver[] = []
@@ -24,15 +26,20 @@ export class ShadowCanvasImpl implements IShellPane {
   removeChild(child: HTMLElement): void {
     this.shadow.removeChild(child)
   }
-  getElement(id: string): HTMLElement | null {
-    return this.shadow.querySelector(`[${RXID_ATTR_NAME}="${id}"]`)
+  getElements(id: string): HTMLElement[] | null {
+    const nodeLists = this.shadow.querySelectorAll(`[${RXID_ATTR_NAME}="${id}"]`)
+    return extractElements(nodeLists)
   }
 
   getTopRect(nodeId: string): IRect | null {
-    return this.getElement(nodeId)?.getBoundingClientRect() || null
+    const rects = this.getElements(nodeId)?.map(element => element.getBoundingClientRect());
+    if (!rects?.length) {
+      return null
+    }
+    return getMergedRect(rects);
   }
-  
-  getContainerRect(): IRect | null{
+
+  getContainerRect(): IRect | null {
     return this.roolElement.getBoundingClientRect()
   }
 

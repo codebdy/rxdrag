@@ -43,26 +43,29 @@ export class SelectedOutlineImpl implements IPlugin {
 
   render = () => {
     this.clear()
+    const shell = this.engine.getShell()
     for (const id of this.selectedNodes || []) {
-      const element = this.engine.getShell().getElement(id)
-      const canvas = this.engine.getShell().getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
+      const elements = shell.getElements(id)
+      const canvas = shell.getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
       const containerRect = canvas?.getContainerRect()
-      if (element && containerRect) {
-        const rect = element.getBoundingClientRect();
+      const rect = shell.getTopRect(id);
+      if (elements && containerRect && rect) {
         const htmlDiv = document.createElement('div')
         htmlDiv.style.backgroundColor = "transparent"
         htmlDiv.style.position = "fixed"
         htmlDiv.style.border = `solid 2px ${AUX_BACKGROUND_COLOR}`
         htmlDiv.style.pointerEvents = "none"
-        htmlDiv.style.left = numbToPx(rect.left - containerRect.x)
-        htmlDiv.style.top = numbToPx(rect.top - containerRect.y)
+        htmlDiv.style.left = numbToPx(rect.x - containerRect.x)
+        htmlDiv.style.top = numbToPx(rect.y - containerRect.y)
         htmlDiv.style.height = numbToPx(rect.height - 4)
         htmlDiv.style.width = numbToPx(rect.width - 4)
-        htmlDiv.style.zIndex = (getMaxZIndex(element) + 1).toString()
+        htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
         canvas?.appendChild(htmlDiv)
         this.htmls[id] = htmlDiv
 
-        this.resizeObserver.observe(element)
+        for (const element of elements) {
+          this.resizeObserver.observe(element)
+        }
       }
     }
   }
@@ -71,7 +74,7 @@ export class SelectedOutlineImpl implements IPlugin {
     this.resizeObserver.disconnect()
     this.selectedNodes = selectedIds
     this.refresh()
-    if (selectedIds?.length && !this.engine.getShell().getElement(selectedIds?.[0])) {
+    if (selectedIds?.length && !this.engine.getShell().getElements(selectedIds?.[0])) {
       setTimeout(() => {
         this.refresh()
       }, 100)

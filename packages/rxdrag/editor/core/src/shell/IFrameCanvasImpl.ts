@@ -1,4 +1,6 @@
 import { IShellPane, ID, IDesignerEngine, IDriver, IDriverFactory, RXID_ATTR_NAME, IRect } from "../interfaces";
+import { extractElements } from "./extractElements";
+import { getMergedRect } from "./getMergedRect";
 
 export class IFrameCanvasImpl implements IShellPane {
   private drivers: IDriver[] = []
@@ -32,22 +34,33 @@ export class IFrameCanvasImpl implements IShellPane {
   removeChild(child: HTMLElement): void {
     this.body?.removeChild(child)
   }
-  getElement(id: string): HTMLElement | null {
-    return this.body?.querySelector(`[${RXID_ATTR_NAME}="${id}"]`) || null
+  getElements(id: string): HTMLElement[] | null {
+    const nodeLists = this.body?.querySelectorAll(`[${RXID_ATTR_NAME}="${id}"]`)
+    return extractElements(nodeLists)
   }
-  getTopRect(nodeId: string): IRect | null {
-    const rect = this.getElement(nodeId)?.getBoundingClientRect();
-    if (rect) {
-      const frameRect = this.iframe.getBoundingClientRect()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const scale = frameRect.width / (this.iframe as any)['offsetWidth']
-      rect.x = rect.x * scale + frameRect.x
-      rect.y = rect.y * scale + frameRect.y
 
-      return rect
+  getTopRect(nodeId: string): IRect | null {
+    const rects = this.getElements(nodeId)?.map(element => element.getBoundingClientRect());
+    if (!rects?.length) {
+      return null
     }
-    return null
+
+    const frameRect = this.iframe.getBoundingClientRect()
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const scale = frameRect.width / (this.iframe as any)['offsetWidth']
+    const newRects = rects.map((rect) => {
+      return (
+        {
+          x: rect.x * scale + frameRect.x,
+          y: rect.y * scale + frameRect.y,
+          height: rect.height * scale,
+          width: rect.width * scale,
+        }
+      )
+    })
+    return getMergedRect(newRects);
   }
+
   destroy(): void {
     for (const driver of this.drivers) {
       driver.teardown()
@@ -59,3 +72,6 @@ export class IFrameCanvasImpl implements IShellPane {
     return this.iframe.contentWindow?.document.body
   }
 }
+
+
+

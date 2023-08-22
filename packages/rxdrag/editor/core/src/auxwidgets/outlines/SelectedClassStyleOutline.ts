@@ -48,7 +48,7 @@ export class SelectedClassStyleOutlineImpl implements IPlugin {
     this.clear()
 
     for (const id of selectedIds || []) {
-      const element = this.engine.getShell().getElement(id)
+      const element = this.engine.getShell().getElements(id)
       const canvas = this.engine.getShell().getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
       if (!canvas?.contains(this.htmlStyle)) {
         canvas?.appendChild(this.htmlStyle)
@@ -72,12 +72,12 @@ export class SelectedClassStyleOutlineImpl implements IPlugin {
   private hideWhenDragging = (dragging: boolean) => {
     if (dragging) {
       for (const id of this.selectedNodes || []) {
-        const element = this.engine.getShell().getElement(id)
+        const element = this.engine.getShell().getElements(id)
         element?.classList.remove("rx-node-outline")
       }
     } else {
       for (const id of this.selectedNodes || []) {
-        const element = this.engine.getShell().getElement(id)
+        const element = this.engine.getShell().getElements(id)
         element?.classList.add("rx-node-outline")
       }
     }
@@ -118,7 +118,7 @@ export class SelectedClassStyleOutlineImpl implements IPlugin {
 
   private clear() {
     for (const id of this.selectedNodes || []) {
-      const element = this.engine.getShell().getElement(id)
+      const element = this.engine.getShell().getElements(id)
       element?.classList.remove("rx-node-outline")
     }
   }

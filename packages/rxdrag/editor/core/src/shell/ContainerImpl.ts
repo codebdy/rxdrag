@@ -1,17 +1,19 @@
 import { IShellPane, ID, IDesignerEngine, IDriver, IDriverFactory, RXID_ATTR_NAME, IRect } from "../interfaces";
+import { extractElements } from "./extractElements";
+import { getMergedRect } from "./getMergedRect";
 
 export class ContainerImpl implements IShellPane {
   private drivers: IDriver[] = []
-  
+
   constructor(
     engine: IDesignerEngine,
     private roolElement: HTMLElement,
     public id: ID,
     private driverFactories: IDriverFactory[]
   ) {
-		for (const driverFactory of this.driverFactories) {
-			this.drivers.push(driverFactory(engine.getShell(), roolElement))
-		}
+    for (const driverFactory of this.driverFactories) {
+      this.drivers.push(driverFactory(engine.getShell(), roolElement))
+    }
   }
   getContainerRect(): IRect | null {
     return this.roolElement.getBoundingClientRect()
@@ -24,22 +26,27 @@ export class ContainerImpl implements IShellPane {
     return this.roolElement.contains(child)
   }
   removeChild(child: HTMLElement): void {
-    if(this.contains(child)){
-       this.roolElement.removeChild(child)
+    if (this.contains(child)) {
+      this.roolElement.removeChild(child)
     }
   }
-  getElement(id: string): HTMLElement | null {
-    return this.roolElement.querySelector(`[${RXID_ATTR_NAME}="${id}"]`)
+  getElements(id: string): HTMLElement[] | null {
+    const nodeLists = this.roolElement.querySelectorAll(`[${RXID_ATTR_NAME}="${id}"]`)
+    return extractElements(nodeLists)
   }
 
   getTopRect(nodeId: string): IRect | null {
-    return this.getElement(nodeId)?.getBoundingClientRect() || null
+    const rects = this.getElements(nodeId)?.map(element => element.getBoundingClientRect());
+    if (!rects?.length) {
+      return null
+    }
+    return getMergedRect(rects);
   }
-  
+
   destroy(): void {
-		for (const driver of this.drivers) {
-			driver.teardown()
-		}
-		this.drivers = []
+    for (const driver of this.drivers) {
+      driver.teardown()
+    }
+    this.drivers = []
   }
 }

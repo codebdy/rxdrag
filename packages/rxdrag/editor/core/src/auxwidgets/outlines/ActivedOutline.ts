@@ -60,24 +60,27 @@ export class ActivedOutlineImpl implements IPlugin {
 
   private renderLine(id: ID) {
     this.clearLine()
-    const element = this.engine.getShell().getElement(id)
-    const canvas = this.engine.getShell().getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
+    const shell = this.engine.getShell()
+    const elements = shell.getElements(id)
+    const canvas = shell.getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
     const containerRect = canvas?.getContainerRect()
-    if (element && containerRect) {
-      const rect = element.getBoundingClientRect();
+    const rect = shell.getTopRect(id)
+    if (elements && containerRect && rect) {
       const htmlDiv = document.createElement('div')
       htmlDiv.style.backgroundColor = "transparent"
       htmlDiv.style.position = "fixed"
       htmlDiv.style.border = `dashed 1px ${AUX_BACKGROUND_COLOR}`
       htmlDiv.style.pointerEvents = "none"
-      htmlDiv.style.left = numbToPx(rect.left - containerRect.x)
-      htmlDiv.style.top = numbToPx(rect.top - containerRect.y)
+      htmlDiv.style.left = numbToPx(rect.x - containerRect.x)
+      htmlDiv.style.top = numbToPx(rect.y - containerRect.y)
       htmlDiv.style.height = numbToPx(rect.height - 2)
       htmlDiv.style.width = numbToPx(rect.width - 2)
-      htmlDiv.style.zIndex = (getMaxZIndex(element) + 1).toString()
+      htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
       canvas?.appendChild(htmlDiv)
       this.outline = htmlDiv
-      this.resizeObserver.observe(element)
+      for (const element of elements) {
+        this.resizeObserver.observe(element)
+      }
     }
   }
 
