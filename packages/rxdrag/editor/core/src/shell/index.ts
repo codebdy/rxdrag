@@ -1,5 +1,6 @@
 export * from "./drivers"
 export * from "./events"
+export * from "./CanvasImpl"
 export * from "./ContainerImpl"
 export * from "./IFrameCanvasImpl"
 export * from "./ShadowCanvasImpl"

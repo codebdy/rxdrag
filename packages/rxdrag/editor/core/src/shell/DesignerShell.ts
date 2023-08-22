@@ -35,14 +35,14 @@ export class DesignerShell extends EventEngine implements IDesignerShell {
 	}
 
 	getTopRect(nodeId: string): IRect | null {
-		const rect = this.container?.getTopRect(nodeId)
+		const rect = this.container?.getNodeRect(nodeId)
 		if (rect) {
 			return rect
 		}
 
 		for (const key of Object.keys(this.canvases)) {
 			const canvas = this.canvases[key]
-			const rect = canvas?.getTopRect(nodeId)
+			const rect = canvas?.getNodeRect(nodeId)
 
 			if (rect) {
 				return rect

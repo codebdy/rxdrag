@@ -6,7 +6,7 @@ export interface IShellPane {
 	getRootElement(): HTMLElement
 	getElements(id: ID): HTMLElement[] | null
 	getContainerRect(): IRect | null
-	getTopRect(nodeId: ID): IRect | null
+	getNodeRect(nodeId: ID): IRect | null
 	appendChild(child: HTMLElement): void
 	contains(child: HTMLElement): boolean
 	removeChild(child: HTMLElement): void

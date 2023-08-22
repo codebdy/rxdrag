@@ -44,7 +44,7 @@ export class IFrameCanvasImpl implements IShellPane {
     return extractElements(nodeLists)
   }
 
-  getTopRect(nodeId: string): IRect | null {
+  getNodeRect(nodeId: string): IRect | null {
     const rects = this.getElements(nodeId)?.map(element => element.getBoundingClientRect());
     if (!rects?.length) {
       return null

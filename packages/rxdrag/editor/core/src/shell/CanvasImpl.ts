@@ -2,40 +2,45 @@ import { IShellPane, ID, IDesignerEngine, IDriver, IDriverFactory, RXID_ATTR_NAM
 import { extractElements } from "./extractElements";
 import { getMergedRect } from "./getMergedRect";
 
-export class ContainerImpl implements IShellPane {
+export class CanvasImpl implements IShellPane {
   private drivers: IDriver[] = []
 
   constructor(
-    engine: IDesignerEngine,
-    private roolElement: HTMLElement,
     public id: ID,
+    engine: IDesignerEngine,
+    //根节点Id
+    private rootNodeId: string,
     private driverFactories: IDriverFactory[]
   ) {
     for (const driverFactory of this.driverFactories) {
-      this.drivers.push(driverFactory(engine.getShell(), roolElement))
+      this.drivers.push(driverFactory(engine.getShell(), document))
     }
   }
+
   getRootElement(): HTMLElement {
-    return this.roolElement;
+    return document.body;
   }
 
   getContainerRect(): IRect | null {
-    return this.roolElement.getBoundingClientRect()
+    const containerElement = document.querySelector(`[${RXID_ATTR_NAME}="${this.rootNodeId}"]`)
+    const rect = containerElement?.getBoundingClientRect()
+    if (!rect) {
+      return null
+    }
+    return { width: rect.width, height: rect.height, x: 0, y: 0, }
   }
 
   appendChild(child: HTMLElement): void {
-    this.roolElement.append(child)
+    document.body?.append(child)
   }
   contains(child: HTMLElement): boolean {
-    return this.roolElement.contains(child)
+    return document.body?.contains(child) || false
   }
   removeChild(child: HTMLElement): void {
-    if (this.contains(child)) {
-      this.roolElement.removeChild(child)
-    }
+    document.body?.removeChild(child)
   }
   getElements(id: string): HTMLElement[] | null {
-    const nodeLists = this.roolElement.querySelectorAll(`[${RXID_ATTR_NAME}="${id}"]`)
+    const nodeLists = document.body?.querySelectorAll(`[${RXID_ATTR_NAME}="${id}"]`)
     return extractElements(nodeLists)
   }
 
@@ -54,3 +59,6 @@ export class ContainerImpl implements IShellPane {
     this.drivers = []
   }
 }
+
+
+
