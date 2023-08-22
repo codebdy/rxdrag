@@ -1,4 +1,4 @@
-import { CanvasScrollEvent } from "../../shell/events";
+import { CanvasScrollEvent, DragStartEvent, DragStopEvent } from "../../shell/events";
 import { IPlugin } from "../../interfaces/plugin";
 import { AUX_BACKGROUND_COLOR } from "../constants";
 import { numbToPx } from "../utils/numbToPx";
@@ -14,6 +14,9 @@ export class ActivedOutlineImpl implements IPlugin {
   private currentId: ID | null = null
   private unActive: Unsubscribe
   private unCanvasScroll: Unsubscribe
+  private starDragOff: Unsubscribe
+  private stopDragOff: Unsubscribe
+  private dragging = false;
 
   constructor(protected engine: IDesignerEngine) {
     if (!engine.getShell().getContainer) {
@@ -23,10 +26,21 @@ export class ActivedOutlineImpl implements IPlugin {
     this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
     this.unActive = engine.getMonitor().subscribeToActiveChanged(this.handleActivedChange)
     this.unCanvasScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
+    this.starDragOff = engine.getShell().subscribeTo(DragStartEvent, this.handleStartDrag)
+    this.stopDragOff = engine.getShell().subscribeTo(DragStopEvent, this.handleDragStop)
   }
 
   onResize = () => {
     this.refresh()
+  }
+
+  handleStartDrag = () => {
+    this.dragging = true;
+    this.clearLine()
+  }
+
+  handleDragStop = () => {
+    this.dragging = false;
   }
 
   handleActivedChange = (activedId: ID | undefined | null): void => {
@@ -34,7 +48,9 @@ export class ActivedOutlineImpl implements IPlugin {
     this.clearLine()
     if (activedId) {
       this.currentId = activedId
-      this.renderLine(activedId)
+      if (!this.dragging) {
+        this.renderLine(activedId)
+      }
     }
   }
   onViewportChange = () => {
@@ -57,6 +73,8 @@ export class ActivedOutlineImpl implements IPlugin {
     this.nodeChangeUnsubscribe()
     this.unActive()
     this.unCanvasScroll()
+    this.starDragOff()
+    this.stopDragOff()
   }
 
   private renderLine(id: ID) {
