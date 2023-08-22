@@ -18,6 +18,12 @@ export const TableDesigner = memo(forwardRef<HTMLDivElement>((
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-non-null-asserted-optional-chain
         return <ComponentDesignerView nodeId={child?.id!} />
       },
+      onCell:()=>{
+        return {
+          //将rx-id传入表头，tr/th组合成一列
+          "rx-id": child?.id,
+        }
+      },
       onHeaderCell: () => {
         return {
           //将rx-id传入表头，tr/th组合成一列
