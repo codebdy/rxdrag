@@ -1,25 +1,25 @@
-import { GlobalToken } from "antd/es/theme/interface";
-import React, { CSSProperties, memo } from "react"
-import { useStyles } from "../../hooks/useStyles";
-import "./style.less"
+import React, { memo } from "react"
+import styled from "styled-components";
 
-const sidebarStyles = (token: GlobalToken): CSSProperties => {
-  return {
-    borderRight: `solid 1px ${token.colorBorder}`,
-  }
-}
+const Container = styled.div`
+  width: 50px;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  overflow: auto;
+  border-right: ${props => props.theme?.token?.colorBorder};
+`
+
 
 export const LeftSidebar = memo((
   props: {
-    style?: CSSProperties,
     children?: React.ReactNode
   }
 ) => {
-  const { style, children, ...other } = props;
-  const styles = useStyles(sidebarStyles)
+  const { children, ...other } = props;
   return (
-    <div className="rx-left-sidebar" style={{ ...styles, ...style }} {...other}>
+    <Container className="rx-left-sidebar"  {...other}>
       {children}
-    </div>
+    </Container>
   )
 })
