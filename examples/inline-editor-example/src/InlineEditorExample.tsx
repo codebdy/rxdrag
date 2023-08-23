@@ -10,6 +10,7 @@ import { Layout, Menu, Button, theme, Space, ConfigProvider } from 'antd';
 import styled from 'styled-components';
 import { Logo, MenuButton } from 'example-common';
 import { EditorScope, Toolkits } from '@rxdrag/react-antd-shell-inline';
+import { Page } from './Page';
 
 const { Header, Sider, Content } = Layout;
 
@@ -94,7 +95,7 @@ export const InlineEditorExample: React.FC = () => {
               background: colorBgContainer,
             }}
           >
-            Content
+            <Page />
             <ConfigProvider
               theme={{ algorithm: theme.darkAlgorithm }}
             >
