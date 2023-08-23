@@ -16,10 +16,10 @@ export class InsertionCursorImpl implements IPlugin {
 
   constructor(private engine: IDesignerEngine) {
     this.shell = engine.getShell()
-    const container = this.shell.getContainer()
-    if (!container) {
-      console.error("Html 5 driver rootElement is undefined")
-    }
+    // const container = this.shell.getContainer()
+    // if (!container) {
+    //   console.error("Html 5 driver rootElement is undefined")
+    // }
     const htmlNode = document.createElement('div')
     htmlNode.style.position = "fixed"
     htmlNode.style.display = "none"

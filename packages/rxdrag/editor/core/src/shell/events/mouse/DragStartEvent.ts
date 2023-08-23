@@ -5,5 +5,6 @@ export class DragStartEvent
   extends AbstractMouseEvent
   implements ICustomEvent
 {
-  type = 'drag:start'
+  static Name = 'drag:start'
+  name = DragStartEvent.Name
 }

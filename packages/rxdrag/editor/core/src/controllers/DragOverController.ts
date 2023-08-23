@@ -12,7 +12,7 @@ export class DragOverControllerImpl implements IPlugin {
   unsubscribe: Unsubscribe
   subscribeNodeChange: Unsubscribe
   constructor(protected engine: IDesignerEngine) {
-    this.unsubscribe = engine.getShell().subscribeTo(DragMoveEvent, this.handleDragMove)
+    this.unsubscribe = engine.getShell().subscribeTo<DragMoveEvent>(DragMoveEvent.Name, this.handleDragMove)
     this.subscribeNodeChange = engine.getMonitor().subscribeToDragOver(this.handleDragoverChange)
   }
 

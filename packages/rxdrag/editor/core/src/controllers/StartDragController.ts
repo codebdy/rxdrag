@@ -8,7 +8,7 @@ export class StartDragControllerImpl implements IPlugin {
 
   unsubscribe: Unsubscribe
   constructor(protected engine: IDesignerEngine) {
-    this.unsubscribe = engine.getShell().subscribeTo(DragStartEvent, this.handleDragStart)
+    this.unsubscribe = engine.getShell().subscribeTo<DragStartEvent>(DragStartEvent.Name, this.handleDragStart)
   }
 
   handleDragStart = (e: DragStartEvent) => {

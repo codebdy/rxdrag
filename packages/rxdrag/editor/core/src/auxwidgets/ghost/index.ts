@@ -36,7 +36,7 @@ export class GhostWidgetImpl implements IPlugin {
     }
     this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
     this.draggingResourceOff = this.engine.getMonitor().subscribeToDraggingResource(this.handleDraggingResource)
-    this.dragOff = this.shell.subscribeTo(MouseMoveEvent, this.handleDrag)
+    this.dragOff = this.shell.subscribeTo<MouseMoveEvent>(MouseMoveEvent.Name, this.handleDrag)
   }
 
   handleDraggingNodes = (dragging: DraggingNodesState | null) => {

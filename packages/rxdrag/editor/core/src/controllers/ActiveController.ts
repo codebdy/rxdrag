@@ -9,8 +9,8 @@ export class ActiveControllerImpl implements IPlugin {
   private unout: Unsubscribe
 
   constructor(protected engine: IDesignerEngine) {
-    this.unover = engine.getShell().subscribeTo(MouseOverEvent, this.handleOverNode)
-    this.unout = engine.getShell().subscribeTo(MouseOutEvent, this.handleOutNode)
+    this.unover = engine.getShell().subscribeTo<MouseOverEvent>(MouseOverEvent.Name, this.handleOverNode)
+    this.unout = engine.getShell().subscribeTo<MouseOutEvent>(MouseOutEvent.Name, this.handleOutNode)
   }
 
   handleOverNode = (e: MouseOverEvent): void => {

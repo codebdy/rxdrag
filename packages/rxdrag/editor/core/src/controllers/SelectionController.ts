@@ -9,7 +9,7 @@ export class SelectionControllerImpl implements IPlugin {
   unsubscribe: Unsubscribe
   
   constructor(protected engine: IDesignerEngine) {
-    this.unsubscribe = this.engine.getShell().subscribeTo(MouseClickEvent, this.handleNodeClick)
+    this.unsubscribe = this.engine.getShell().subscribeTo<MouseClickEvent>(MouseClickEvent.Name, this.handleNodeClick)
   }
 
   handleNodeClick = (e: MouseClickEvent): void => {

@@ -13,7 +13,7 @@ export class DragStopControllerImpl implements IPlugin {
 
   unsubscribe: Unsubscribe
   constructor(protected engine: IDesignerEngine) {
-    this.unsubscribe = engine.getShell().subscribeTo(DragStopEvent, this.handleDragStop)
+    this.unsubscribe = engine.getShell().subscribeTo<DragStopEvent>(DragStopEvent.Name, this.handleDragStop)
   }
 
   handleDragStop = (e: DragStopEvent) => {
@@ -29,7 +29,7 @@ export class DragStopControllerImpl implements IPlugin {
         }
       }
     }
-    
+
     this.drop(e)
     if (this.engine.getMonitor().getState().draggingResource) {
       this.engine.getActions().endDragResource()
