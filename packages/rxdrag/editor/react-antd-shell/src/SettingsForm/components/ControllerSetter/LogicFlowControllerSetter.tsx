@@ -5,12 +5,11 @@ import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useParentControllerMetas } from "./hooks/useParentControllerMetas";
 import { ControllerMetaEditorAntd5 } from "@rxdrag/controller-editor-antd5";
 import { ITreeNode } from "@rxdrag/core";
-import { useCurrentNode, useSettersTranslate } from "@rxdrag/react-core";
+import { useCurrentNode, useMinionOptions, useSettersTranslate } from "@rxdrag/react-core";
 import { useGlobalControllerMetas } from "./hooks/useGlobalControllerMetas";
 import { controllerSetterLocales } from "./locales";
 import { activityMaterialCategories } from "./materials";
 import { IEventMeta } from "@rxdrag/minions-controller-editor";
-import { useMinionOptions } from "../../../hooks/useMinionOptions";
 import { createUuid } from "@rxdrag/shared";
 import { useFillControllerProps } from "./hooks/useFillControllerProps";
 

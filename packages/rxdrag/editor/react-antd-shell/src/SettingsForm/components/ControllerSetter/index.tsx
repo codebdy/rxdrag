@@ -1,11 +1,10 @@
 import { useMemo, useState } from "react"
 import { Form, Radio } from "antd"
 import { memo, useCallback, useEffect } from "react"
-import { useDesignerEngine, useSettersTranslate } from "@rxdrag/react-core"
+import { useDesignerEngine, useMinionOptions, useSettersTranslate } from "@rxdrag/react-core"
 import { createUuid } from "@rxdrag/shared"
 import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
 import { IEventMeta } from "@rxdrag/minions-controller-editor"
-import { useMinionOptions } from "../../../hooks/useMinionOptions"
 
 export const ControllerSetter = memo((props: {
   events?: IEventMeta[]

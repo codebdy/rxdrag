@@ -1,8 +1,7 @@
 import { memo } from "react"
 import { ConfigRoot } from "./panels/ShellContainer/ConfigRoot"
 import "./style.css"
-import { Designer, IComponentMaterial } from "@rxdrag/react-core"
-import { IMinionOptions, MinionOptionContext } from "./contexts"
+import { Designer, IComponentMaterial, IMinionOptions } from "@rxdrag/react-core"
 import { Antd5EditorInnerProps, RxEditorAntdInner } from "./RxEditorAntdInner"
 import { ReactComponent } from "@rxdrag/react-shared"
 import { ISetterComponents } from "@rxdrag/core/src/interfaces/setter"
@@ -23,71 +22,70 @@ export const RxEditorAntd = memo((props: Antd5EditorProps) => {
   const { themeMode, minionOptions, materials, setters, ...rest } = props;
 
   return (
-    <MinionOptionContext.Provider value={minionOptions}>
-      <Designer
-        themeMode={themeMode}
-        materials={materials}
-        setters={
-          {
-            Tabs,
-            TabPanel,
-            FormItem: FormItem,
-            Input,
-            TextArea: Input.TextArea,
-            Select,
-            Switch,
-            SlotSwitch,
-            Fold,
-            FoldBase,
-            FoldExtra,
-            FoldExtraItem,
-            Radio,
-            Slider,
-            InputNumber,
-            ColorInput,
-            SizeInput,
-            FontSelect,
-            FontColorInput,
-            FontDecorationSelect,
-            FontSizeInput,
-            FontLineHeightInput,
-            FontStyleSelect,
-            FontWeightInput,
-            TextAlignSelect,
-            MarginStyleSetter,
-            PaddingStyleSetter,
-            DisplaySetter,
-            IconInput,
-            GutterInput,
-            "Radio.Group": Radio.Group,
-            "Checkbox.Group": Checkbox.Group,
-            Checkbox: Checkbox,
-            CheckboxGroup: CheckboxGroup,
-            ColInput,
-            BackgroundImageInput,
-            BackgroundSizeInput,
-            BackgroundRepeatInput,
-            BackgroundPositionInput,
-            ImageInput,
-            CollapsePanel,
-            EffectsInput,
-            ControllerSetter,
-            EventInput,
-            ValueInput,
-            JSONInput,
-            ExpressionInput,
-            Space,
-            StyleSetter,
-            PropLayout,
-            YupRulesInput,
-            ...setters,
-          }
+    <Designer
+      minionOptions={minionOptions}
+      themeMode={themeMode}
+      materials={materials}
+      setters={
+        {
+          Tabs,
+          TabPanel,
+          FormItem: FormItem,
+          Input,
+          TextArea: Input.TextArea,
+          Select,
+          Switch,
+          SlotSwitch,
+          Fold,
+          FoldBase,
+          FoldExtra,
+          FoldExtraItem,
+          Radio,
+          Slider,
+          InputNumber,
+          ColorInput,
+          SizeInput,
+          FontSelect,
+          FontColorInput,
+          FontDecorationSelect,
+          FontSizeInput,
+          FontLineHeightInput,
+          FontStyleSelect,
+          FontWeightInput,
+          TextAlignSelect,
+          MarginStyleSetter,
+          PaddingStyleSetter,
+          DisplaySetter,
+          IconInput,
+          GutterInput,
+          "Radio.Group": Radio.Group,
+          "Checkbox.Group": Checkbox.Group,
+          Checkbox: Checkbox,
+          CheckboxGroup: CheckboxGroup,
+          ColInput,
+          BackgroundImageInput,
+          BackgroundSizeInput,
+          BackgroundRepeatInput,
+          BackgroundPositionInput,
+          ImageInput,
+          CollapsePanel,
+          EffectsInput,
+          ControllerSetter,
+          EventInput,
+          ValueInput,
+          JSONInput,
+          ExpressionInput,
+          Space,
+          StyleSetter,
+          PropLayout,
+          YupRulesInput,
+          ...setters,
         }
-      >
-        <ConfigRoot>
-          <RxEditorAntdInner {...rest} />
-        </ConfigRoot>
-      </Designer>
-    </MinionOptionContext.Provider>
+      }
+    >
+      <ConfigRoot>
+        <RxEditorAntdInner {...rest} />
+      </ConfigRoot>
+    </Designer>
   )
 })

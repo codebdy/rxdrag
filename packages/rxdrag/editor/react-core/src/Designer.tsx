@@ -16,13 +16,14 @@ import {
   DraggedAttenuator,
 } from "@rxdrag/core";
 import { memo, useEffect, useRef, useState } from "react"
-import { DesignerEngineContext } from "./contexts";
+import { DesignerEngineContext, IMinionOptions, MinionOptionContext } from "./contexts";
 import { LocalesContext } from "@rxdrag/react-locales";
 import { IComponentMaterial } from "./interfaces";
 import { ReactComponent } from "@rxdrag/react-shared";
 import { ISetterComponents } from "@rxdrag/core/src/interfaces/setter";
 
 export interface DesignerProps {
+  minionOptions?: IMinionOptions,
   themeMode?: ThemeMode,
   children?: React.ReactNode,
   //初始物料，其它地方还可以继续注册
@@ -30,7 +31,7 @@ export interface DesignerProps {
   setters?: ISetterComponents<ReactComponent>
 }
 export const Designer = memo((props: DesignerProps) => {
-  const { themeMode = "light", children, materials, setters } = props
+  const { minionOptions, themeMode = "light", children, materials, setters } = props
   const [engine, setEngine] = useState<IDesignerEngine>();
   const themeModeRef = useRef(themeMode)
   themeModeRef.current = themeMode
@@ -79,10 +80,12 @@ export const Designer = memo((props: DesignerProps) => {
   }, [engine, setters])
 
   return (
-    <LocalesContext.Provider value={engine?.getLocalesManager()}>
-      <DesignerEngineContext.Provider value={engine}>
-        {engine && children}
-      </DesignerEngineContext.Provider>
-    </LocalesContext.Provider>
+    <MinionOptionContext.Provider value={minionOptions}>
+      <LocalesContext.Provider value={engine?.getLocalesManager()}>
+        <DesignerEngineContext.Provider value={engine}>
+          {engine && children}
+        </DesignerEngineContext.Provider>
+      </LocalesContext.Provider>
+    </MinionOptionContext.Provider>
   )
 })
