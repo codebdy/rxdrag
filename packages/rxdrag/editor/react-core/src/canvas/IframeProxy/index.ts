@@ -1,4 +1,4 @@
 export * from "./constants"
-export * from "./DesignerProxy"
+export * from "./IFrameProxy"
 export * from "./IFrame"
 export * from "./Scroller"

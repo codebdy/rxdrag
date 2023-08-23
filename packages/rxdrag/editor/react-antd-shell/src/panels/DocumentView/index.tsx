@@ -2,7 +2,6 @@ import { IDocument } from "@rxdrag/core"
 import { CanvasShell, DocumentRoot, IFrame, JsonView, useDocumentViewTypeState } from "@rxdrag/react-core"
 import { Divider } from "antd"
 import { memo } from "react"
-import { IframePreview } from "../../components/Preview/IframePreview"
 import { CanvasToolbar } from "../../layouts"
 import { UndoRedoButtons, SelectionButtions, AuxButtionsButtions, CanvasSize, ViewButtons, NavbarWidget } from "../../widgets"
 import { Viewport } from "../Viewport"
@@ -42,7 +41,10 @@ export const DocumentView = memo((
             />
           </CanvasShell>
           <CanvasShell display={viewType === "preview"} >
-            <IframePreview doc={doc} renderUrl={previewUrl} />
+            <IFrame
+              style={{ border: "0", width: "100%", height: "100%" }}
+              src={previewUrl}
+            />
           </CanvasShell>
         </Viewport>
         <NavbarWidget />

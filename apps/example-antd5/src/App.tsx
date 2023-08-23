@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import { IFramePreviewRender } from "@rxdrag/react-antd-shell"
 import { Antd5Example } from './normal/Antd5Example';
 import { useMemo } from 'react';
 import { ControllerFactories } from '@rxdrag/react-runner';
@@ -11,6 +10,7 @@ import { InlineEditorExample } from "inline-editor-example";
 import { LogicflowEditorExample } from "logicflow-editor-example";
 import { ControllerEditorExample } from "controller-editor-example";
 import { IFrameCanvas } from 'IFrameCanvas';
+import { IFramePreview } from 'IFramePreview';
 
 function App() {
   const { designers, components } = usePredefinedComponents()
@@ -36,7 +36,7 @@ function App() {
       </Route>
       <Route path={'/canvas-render'} element={<IFrameCanvas designers={designers} />}>
       </Route>
-      <Route path={'/preview-render'} element={<IFramePreviewRender components={components} controllerFactories={controllerFactories} />}>
+      <Route path={'/preview-render'} element={<IFramePreview components={components} controllerFactories={controllerFactories} />}>
       </Route>
     </Routes>
 

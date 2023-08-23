@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { isHTMLElement } from "@rxdrag/shared";
 import React, { memo, useCallback, useMemo } from "react";
-import { useDesignComponent, useLocked, useTreeNode } from "../hooks";
+import { useComponent, useLocked, useTreeNode } from "../hooks";
 import { PlaceHolder } from "../PlaceHolder";
 import { NodeContext } from "../contexts";
 import { Locked } from "./Locked";
@@ -10,7 +10,7 @@ import { useBehavior } from "../hooks/useBehavior";
 export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const { nodeId } = props;
   const node = useTreeNode(nodeId);
-  const Component = useDesignComponent(node?.meta?.componentName);
+  const Component = useComponent(node?.meta?.componentName);
   //此处不能用node?.id，reduex可能会有滞后，导致传入undefined
   const behavior = useBehavior(nodeId)
   const locked = useLocked();
