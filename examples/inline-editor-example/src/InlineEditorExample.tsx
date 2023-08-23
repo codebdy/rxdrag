@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  EditOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   UploadOutlined,
@@ -84,6 +85,7 @@ export const InlineEditorExample: React.FC = () => {
               }}
             />
             <Space>
+              <Button type='text' icon={<EditOutlined />} />
               <MenuButton />
             </Space>
           </StyledHeader>
