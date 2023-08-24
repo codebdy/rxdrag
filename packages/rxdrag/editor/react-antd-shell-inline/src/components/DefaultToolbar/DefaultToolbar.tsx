@@ -1,14 +1,19 @@
-import { memo } from "react"
+import { ReactElement, memo, useMemo } from "react"
 import { Button, Divider, Space } from "antd"
-import { lineIcon, marginIcon, moveIcon, designIcon, jsonIcon, playIcon } from "../../icons"
 import { EllipsisOutlined } from "@ant-design/icons"
 import { UndoButton } from "./UndoButton"
 import { RedoButton } from "./RedoButton"
+import { MultiSelectionButton } from "./MultiSelectionButton"
+import { AuxLineButton } from "./AuxLineButton"
+import { AuxMarginButton } from "./AuxMarginButton"
+import { DesignButton } from "./DesignButton"
+import { JSONButton } from "./JSONButton"
+import { PreviewButton } from "./PreviewButton"
 
 export enum ToolbarButton {
   undo = "undo",
   redo = "redo",
-  multiSelect = "multiSelect",
+  multiSelection = "multiSelection",
   auxLine = "auxLine",
   auxMargin = "auxMargin",
   design = "design",
@@ -18,61 +23,32 @@ export enum ToolbarButton {
 
 export const DefaultToolbar = memo((
   props: {
-    buttons?: ToolbarButton[]
+    buttons?: (ToolbarButton | ReactElement)[]
   }
 ) => {
-  const { buttons = [ToolbarButton.undo, ToolbarButton.redo] } = props
+  const { buttons } = props
+  const defualtButtons = useMemo(() => <>
+    <UndoButton />
+    <RedoButton />
+    <Divider type="vertical" />
+    <MultiSelectionButton />
+    <AuxLineButton />
+    <AuxMarginButton />
+    <Divider type="vertical" />
+    <DesignButton />
+    <JSONButton />
+    <PreviewButton />
+    <Button
+      type={"text"}
+      size="large"
+      icon={<EllipsisOutlined />}
+    //onClick={handleRedo}
+    />
+  </>, [])
+
   return (
     <Space>
-      <UndoButton />
-      <RedoButton />
-      <Divider type="vertical" />
-      <Button
-        type={"text"}
-        size="large"
-        //disabled={redoList.length === 0}
-        icon={moveIcon}
-      //onClick={handleRedo}
-      />
-      <Button
-        type={"text"}
-        size="large"
-        //disabled={redoList.length === 0}
-        icon={lineIcon}
-      //onClick={handleRedo}
-      />
-      <Button
-        type={"text"}
-        size="large"
-        //disabled={redoList.length === 0}
-        icon={marginIcon}
-      //onClick={handleRedo}
-      />
-      <Divider type="vertical" />
-      <Button
-        type={"text"}
-        size="large"
-        icon={designIcon}
-      //onClick={handleRedo}
-      />
-      <Button
-        type={"text"}
-        size="large"
-        icon={jsonIcon}
-      //onClick={handleRedo}
-      />
-      <Button
-        type={"text"}
-        size="large"
-        icon={playIcon}
-      //onClick={handleRedo}
-      />
-      <Button
-        type={"text"}
-        size="large"
-        icon={<EllipsisOutlined />}
-      //onClick={handleRedo}
-      />
+      {!buttons && defualtButtons}
     </Space>
   )
 })
