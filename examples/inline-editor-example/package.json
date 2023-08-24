@@ -37,6 +37,10 @@
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "@rxdrag/react-antd-shell-inline": "workspace:*",
+    "@rxdrag/react-antd-shell": "workspace:*",
+    "@rxdrag/react-core": "workspace:*",
+    "@rxdrag/core": "workspace:*",
+    "@rxdrag/react-antd-materials": "workspace:*",
     "antd": "^5.6.2",
     "styled-components": "^5.3.9"
   }

@@ -13,6 +13,7 @@ import { Logo, MenuButton } from 'example-common';
 import { EditorScope } from '@rxdrag/react-antd-shell-inline';
 import { PageEditor } from './page';
 import { INodeSchema } from "@rxdrag/schema"
+import { ControllerSetter } from "@rxdrag/react-antd-shell"
 
 const { Header, Sider, Content } = Layout;
 
@@ -52,7 +53,15 @@ export const InlineEditorExample: React.FC = () => {
   }, [])
 
   return (
-    <EditorScope>
+    <EditorScope
+      minionOptions={{
+        materials: minionsMaterialCategories,
+        locales: minionsLocales,
+        controllers: controllerDefines,
+      }}
+      materials={materials}
+      setters={{ ControllerSetter }}
+    >
       <StyleLayout>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <LogoContainer>
