@@ -1,11 +1,11 @@
 import { IDocument } from "@rxdrag/core"
-import { useDocumentViewTypeState } from "@rxdrag/react-core"
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy"
 import { ComponentRender, } from "@rxdrag/react-runner"
 import { ControllerFactories } from "@rxdrag/react-runner"
 import { IReactComponents } from "@rxdrag/react-shared"
 import { INodeSchema } from "@rxdrag/schema"
 import { memo, useEffect, useState } from "react"
+import { useDocumentViewTypeState } from "./hooks"
 
 export const Preview = memo((
   props: {

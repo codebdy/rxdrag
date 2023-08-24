@@ -1,6 +1,6 @@
 import { memo } from "react"
 
-export const Page = memo((
+export const PageEditor = memo((
   props: {
     design?: boolean
   }
@@ -8,7 +8,7 @@ export const Page = memo((
   const { design } = props
   return (
     <>
-    Page 内容
+      Page 内容
     </>
   )
 })
