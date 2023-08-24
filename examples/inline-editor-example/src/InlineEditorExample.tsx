@@ -12,6 +12,7 @@ import styled from 'styled-components';
 import { Logo, MenuButton } from 'example-common';
 import { EditorScope } from '@rxdrag/react-antd-shell-inline';
 import { PageEditor } from './page';
+import { INodeSchema } from "@rxdrag/schema"
 
 const { Header, Sider, Content } = Layout;
 
@@ -43,6 +44,11 @@ export const InlineEditorExample: React.FC = () => {
 
   const handleToggleDesign = useCallback(() => {
     setDesign(design => !design)
+  }, [])
+
+  const handleFinished = useCallback((schema: INodeSchema) => {
+    console.log("====>finished", schema)
+    setDesign(false)
   }, [])
 
   return (
@@ -102,7 +108,7 @@ export const InlineEditorExample: React.FC = () => {
               background: colorBgContainer,
             }}
           >
-            <PageEditor design={design} />
+            <PageEditor design={design} onFinished={handleFinished} />
           </Content>
         </Layout>
       </StyleLayout>

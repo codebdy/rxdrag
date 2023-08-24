@@ -5,6 +5,7 @@ import { Toolbar } from "../Toolbar"
 import { Toolbox } from "../Toolbox"
 import { PropertyPanel } from "../PropertyPanel"
 import { GlobalToken, theme } from "antd"
+import { ToolketsScope } from "./ToolketsScope"
 
 const Container = styled.div`
   z-index: 100000;
@@ -13,8 +14,10 @@ const Container = styled.div`
 export const Toolkits = memo((props: {
   toolbox?: React.ReactNode,
   toolbar?: React.ReactNode | false,
+  //用于localestorage缓存数据
+  name?: string,
 }) => {
-  const { toolbox, toolbar } = props;
+  const { toolbox, toolbar, name } = props;
   const { token } = theme.useToken()
   const themeValue: { token: GlobalToken } = useMemo(() => {
     return {
@@ -22,24 +25,26 @@ export const Toolkits = memo((props: {
     }
   }, [token])
   return (
-    <ThemeProvider theme={themeValue}>
-      <Container>
-        {
-          toolbox !== false &&
-          <Toolbox>
-            {toolbox}
-          </Toolbox>
-        }
-        
-        <PropertyPanel />
-        {
-          toolbar !== false &&
-          <Toolbar>
-            {toolbar}
-          </Toolbar>
-        }
-        <Navbar />
-      </Container>
-    </ThemeProvider>
+    <ToolketsScope name={name}>
+      <ThemeProvider theme={themeValue}>
+        <Container>
+          {
+            toolbox !== false &&
+            <Toolbox>
+              {toolbox}
+            </Toolbox>
+          }
+
+          <PropertyPanel />
+          {
+            toolbar !== false &&
+            <Toolbar>
+              {toolbar}
+            </Toolbar>
+          }
+          <Navbar />
+        </Container>
+      </ThemeProvider>
+    </ToolketsScope>
   )
 })

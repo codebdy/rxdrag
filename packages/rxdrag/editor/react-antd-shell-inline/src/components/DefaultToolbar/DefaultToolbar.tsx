@@ -1,4 +1,4 @@
-import { ReactElement, memo, useMemo } from "react"
+import { ReactElement, memo, useCallback, useMemo } from "react"
 import { Button, Divider, Space } from "antd"
 import { EllipsisOutlined } from "@ant-design/icons"
 import { UndoButton } from "./UndoButton"
@@ -9,6 +9,7 @@ import { AuxMarginButton } from "./AuxMarginButton"
 import { DesignButton } from "./DesignButton"
 import { JSONButton } from "./JSONButton"
 import { PreviewButton } from "./PreviewButton"
+import { INodeSchema } from "@rxdrag/schema"
 
 export enum ToolbarButton {
   undo = "undo",
@@ -23,10 +24,18 @@ export enum ToolbarButton {
 
 export const DefaultToolbar = memo((
   props: {
-    buttons?: (ToolbarButton | ReactElement)[]
+    buttons?: (ToolbarButton | ReactElement)[],
+    ellipsisAt?: number,
+    onPreview?: (schema: INodeSchema) => void,
   }
 ) => {
-  const { buttons } = props
+  const { buttons, onPreview } = props
+  //const doc = useDocument()
+  const handlePreview = useCallback(()=>{
+    //    const json= doc?.getSchemaTree()
+    onPreview?.(undefined as any)
+  }, [onPreview])
+
   const defualtButtons = useMemo(() => <>
     <UndoButton />
     <RedoButton />
@@ -37,14 +46,14 @@ export const DefaultToolbar = memo((
     <Divider type="vertical" />
     <DesignButton />
     <JSONButton />
-    <PreviewButton />
+    <PreviewButton onClick={handlePreview} />
     <Button
       type={"text"}
       size="large"
       icon={<EllipsisOutlined />}
     //onClick={handleRedo}
     />
-  </>, [])
+  </>, [handlePreview])
 
   return (
     <Space>
