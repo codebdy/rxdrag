@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   EditOutlined,
   MenuFoldOutlined,
@@ -7,10 +7,10 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Layout, Menu, Button, theme, Space, ConfigProvider } from 'antd';
+import { Layout, Menu, Button, theme, Space } from 'antd';
 import styled from 'styled-components';
 import { Logo, MenuButton } from 'example-common';
-import { EditorScope, Toolkits } from '@rxdrag/react-antd-shell-inline';
+import { EditorScope } from '@rxdrag/react-antd-shell-inline';
 import { PageEditor } from './page';
 
 const { Header, Sider, Content } = Layout;
@@ -35,10 +35,15 @@ const StyledHeader = styled(Header)`
 `
 
 export const InlineEditorExample: React.FC = () => {
+  const [design, setDesign] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  const handleToggleDesign = useCallback(() => {
+    setDesign(design => !design)
+  }, [])
 
   return (
     <EditorScope>
@@ -85,7 +90,7 @@ export const InlineEditorExample: React.FC = () => {
               }}
             />
             <Space>
-              <Button type='text' icon={<EditOutlined />} />
+              <Button type='text' icon={<EditOutlined />} onClick={handleToggleDesign} />
               <MenuButton />
             </Space>
           </StyledHeader>
@@ -97,12 +102,7 @@ export const InlineEditorExample: React.FC = () => {
               background: colorBgContainer,
             }}
           >
-            <PageEditor />
-            <ConfigProvider
-              theme={{ algorithm: theme.darkAlgorithm }}
-            >
-              <Toolkits />
-            </ConfigProvider>
+            <PageEditor design={design} />
           </Content>
         </Layout>
       </StyleLayout>
