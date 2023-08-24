@@ -9,7 +9,7 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu, Button, theme, Space } from 'antd';
 import styled from 'styled-components';
-import { Logo, MenuButton } from 'example-common';
+import { Logo, MenuButton, controllerDefines, materials, minionsLocales, minionsMaterialCategories } from 'example-common';
 import { EditorScope } from '@rxdrag/react-antd-shell-inline';
 import { PageEditor } from './page';
 import { INodeSchema } from "@rxdrag/schema"
