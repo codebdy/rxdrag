@@ -1,7 +1,8 @@
-import { memo, useEffect } from "react"
+import { memo, useContext, useEffect } from "react"
 import { ComponentTreeWidget } from "../ComponentTreeWidget"
 import { CanvasImpl, CanvasResizeDriver, CanvasScrollDriver, DragDropDriver, DragOverDriver, IDocument, MouseClickDriver, MouseMoveDriver, MouseOverOutDriver, MouseUpDriver } from "@rxdrag/core"
 import { useDesignerEngine } from "../hooks"
+import { InIframeContext } from "../contexts"
 
 export const Canvas = memo((
   props: {
@@ -10,6 +11,7 @@ export const Canvas = memo((
 ) => {
   const { doc } = props
   const engine = useDesignerEngine()
+  const inFrame = useContext(InIframeContext)
   //创建Canvas
   useEffect(() => {
     const shell = engine?.getShell()
@@ -19,7 +21,7 @@ export const Canvas = memo((
         doc.id,
         engine,
         rootNode.id,
-        [
+        inFrame ? [
           DragDropDriver,
           DragOverDriver,
           MouseClickDriver,
@@ -28,7 +30,7 @@ export const Canvas = memo((
           CanvasResizeDriver,
           CanvasScrollDriver,
           MouseUpDriver
-        ]
+        ] : []
       )
       shell?.addCanvas(canvasImpl)
       return () => {
@@ -36,7 +38,7 @@ export const Canvas = memo((
       }
     }
 
-  }, [doc, engine])
+  }, [doc, engine, inFrame])
 
   return (
     <ComponentTreeWidget doc={doc} />

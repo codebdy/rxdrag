@@ -6,6 +6,7 @@ import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
 import { IControllerDefine } from "./types";
 
 export const DesignerEngineContext = createContext<IDesignerEngine | undefined>(undefined)
+export const InIframeContext = createContext<boolean | undefined>(undefined)
 //IFrame中的Component不能跟engine中一套，所以必须要单独处理
 export const ComponentsContext = createContext<IReactComponents>({})
 export const DocumentContext = createContext<IDocument | undefined>(undefined)

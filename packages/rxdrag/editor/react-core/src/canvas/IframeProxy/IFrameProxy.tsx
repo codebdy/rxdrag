@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
 import { ID } from "@rxdrag/shared";
 import { EVENT_IFRAME_READY } from "./constants";
-import { DesignerEngineContext, Scroller } from "../..";
+import { DesignerEngineContext, InIframeContext, Scroller } from "../..";
 import { IReactComponents } from "@rxdrag/react-shared";
 import { ComponentsRoot } from "../../ComponentsRoot";
 
@@ -39,11 +39,13 @@ export const IFrameProxy = memo((
   }, [receiveMessageFromParent])
 
   return (
-    <DesignerEngineContext.Provider value={engine}>
-      <ComponentsRoot components={components}>
-        {engine ? children : <></>}
-        <Scroller />
-      </ComponentsRoot>
-    </DesignerEngineContext.Provider>
+    <InIframeContext.Provider value={true}>
+      <DesignerEngineContext.Provider value={engine}>
+        <ComponentsRoot components={components}>
+          {engine ? children : <></>}
+          <Scroller />
+        </ComponentsRoot>
+      </DesignerEngineContext.Provider>
+    </InIframeContext.Provider>
   )
 })

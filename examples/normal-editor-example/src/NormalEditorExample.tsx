@@ -56,7 +56,6 @@ export const NormalEditorExample = memo(() => {
       navPanel={
         <>
           {
-            //ResourceWidget 内部会注册组件，要防止多次渲染
             <ResourceWidget display={activedKey === LeftNavType.components} />
           }
           <PagesWidget display={activedKey === LeftNavType.pages} value={pageId} onSelect={handleSelect} />

@@ -1,0 +1,46 @@
+import { ComponentResourceWidget, PaneContainer, TemplateResourceWidget } from "@rxdrag/react-antd-shell"
+import { useSettersTranslate, useRegisterComponentMaterials } from "@rxdrag/react-core"
+import { memo, useEffect } from "react"
+import { FieldMaterial } from "@rxdrag/react-antd-materials"
+import { ResourceCollapsePanel } from "./ResourceCollapsePanel"
+import { resources, fields } from "example-common"
+
+export const ResourceWidget = memo(() => {
+  const t = useSettersTranslate()
+  const registerMaterial = useRegisterComponentMaterials()
+  //注册通用物料
+  useEffect(() => {
+    registerMaterial(FieldMaterial)
+  }, [registerMaterial])
+
+  return (
+    <PaneContainer className="rx-resource-container">
+      <div style={{ flex: 1, overflow: "auto" }}>
+        {
+          resources.map((group => {
+            return (
+              <ResourceCollapsePanel key={group.titleKey} title={t(group.titleKey)} defaultExpand>
+                {
+                  group.items.map((name => {
+                    return (
+                      <ComponentResourceWidget key={name} name={name} />
+                    )
+                  }))
+                }
+              </ResourceCollapsePanel>
+            )
+          }))
+        }
+        <ResourceCollapsePanel title={t("fields")} defaultExpand>
+          {
+            fields.map(field => {
+              return (
+                <TemplateResourceWidget key={field.name} resource={field} />
+              )
+            })
+          }
+        </ResourceCollapsePanel>
+      </div>
+    </PaneContainer>
+  )
+})
