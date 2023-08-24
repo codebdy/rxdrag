@@ -1,5 +1,5 @@
 {
-  "name": "example-antd5",
+  "name": "rxdrag-demo",
   "private": true,
   "version": "0.2.3",
   "scripts": {
@@ -33,6 +33,7 @@
     "controller-editor-example": "workspace:*",
     "logicflow-editor-example": "workspace:*",
     "inline-editor-example": "workspace:*",
+    "normal-editor-example": "workspace:*",
     "antd": "^5.6.2",
     "axios": "^1.4.0",
     "styled-components": "^5.3.9",

@@ -1,10 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import { Antd5Example } from './normal/Antd5Example';
 import { useMemo } from 'react';
 import { ControllerFactories } from '@rxdrag/react-runner';
 import { controllerDefines } from 'normal/controller/defines';
-import { usePredefinedComponents } from 'normal/hooks/usePredefinedComponents';
 import { routes } from 'example-common';
 import { InlineEditorExample } from "inline-editor-example";
 import { LogicflowEditorExample } from "logicflow-editor-example";
@@ -26,7 +24,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path={routes.index} element={<Antd5Example />}>
+      <Route path={routes.index} element={<NormalEditorExample />}>
       </Route>
       <Route path={routes.inline} element={<InlineEditorExample />}>
       </Route>

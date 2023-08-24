@@ -1,5 +1,5 @@
 {
-  "name": "example-common",
+  "name": "normal-editor-example",
   "version": "0.3.0",
   "private": true,
   "module": "index.ts",
@@ -24,7 +24,8 @@
     "eslint": "^7.32.0",
     "@rxdrag/eslint-config-custom": "workspace:*",
     "@rxdrag/tsconfig": "workspace:*",
-    "@types/styled-components": "^5.1.26"
+    "@types/styled-components": "^5.1.26",
+    "example-common": "workspace:*"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -35,14 +36,12 @@
     "@ant-design/icons": "^4.8.0",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
+    "@rxdrag/react-antd-shell-inline": "workspace:*",
+    "@rxdrag/react-antd-shell": "workspace:*",
     "@rxdrag/react-core": "workspace:*",
-    "@rxdrag/react-shared": "workspace:*",
-    "@rxdrag/minions-schema": "workspace:*",
-    "@rxdrag/minions-react-materials": "workspace:*",
-    "@rxdrag/fieldy-minions-materials": "workspace:*",
-    "@rxdrag/minions-runtime": "workspace:*",
-    "@rxdrag/react-antd-components": "workspace:*",
-    "styled-components": "^5.3.9",
-    "antd": "^5.6.2"
+    "@rxdrag/core": "workspace:*",
+    "@rxdrag/react-antd-materials": "workspace:*",
+    "antd": "^5.6.2",
+    "styled-components": "^5.3.9"
   }
 }

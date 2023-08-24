@@ -30,7 +30,7 @@ export enum LeftNavType {
   history = "history",
 }
 
-export const Antd5Example = memo(() => {
+export const NormalEditorExample = memo(() => {
   const [pageId, setPageId] = useState("dashboard")
   const [activedKey, setActivedKey] = useState<LeftNavType>(LeftNavType.components)
   const handleActive = useCallback((key: string) => {
