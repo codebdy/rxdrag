@@ -11,7 +11,7 @@ import { Layout, Menu, Button, theme, Space, ConfigProvider } from 'antd';
 import styled from 'styled-components';
 import { Logo, MenuButton } from 'example-common';
 import { EditorScope, Toolkits } from '@rxdrag/react-antd-shell-inline';
-import { PageEditor } from './page2';
+import { PageEditor } from './page';
 
 const { Header, Sider, Content } = Layout;
 
