@@ -1,8 +1,8 @@
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { News } from "normal/components/business/News";
 import { newsIcon } from "./icon";
 import { newsLocales, newsResourceLocales } from "./locales";
 import { newsSchema } from "./schema";
+import { News } from "../../../components";
 
 const name = "News"
 export const NewsMaterial: IComponentMaterial = {

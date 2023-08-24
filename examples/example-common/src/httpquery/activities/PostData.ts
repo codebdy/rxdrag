@@ -1,7 +1,8 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { INodeDefine } from "@rxdrag/minions-schema"
-import { GlobalRestful } from "httpquery/lib/classes/Restful"
-import { IPostConfig, IRestfulQuerySession } from "httpquery/lib/interfaces"
+import { IPostConfig, IRestfulQuerySession } from "../lib"
+import { GlobalRestful } from "../lib/classes/Restful"
+
 
 @Activity(PostData.NAME)
 export class PostData extends AbstractActivity<IPostConfig> {

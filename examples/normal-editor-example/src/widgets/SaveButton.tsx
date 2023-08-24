@@ -1,7 +1,7 @@
 import { useTranslate } from "@rxdrag/react-locales"
 import { Button, Space } from "antd"
+import { useSaveJson } from "example-common"
 import { memo } from "react"
-import { useSaveJson } from "../hooks/useSaveJson"
 
 export const SaveButton = memo(() => {
   const t = useTranslate("setters")

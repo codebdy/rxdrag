@@ -4,7 +4,7 @@ import { DEFAULT_INPUT_NAME } from "@rxdrag/minions-runtime";
 import { IQueryActivityMaterial } from "../types";
 import { postDataIcon } from "../icons";
 import { postDataSchema } from "./schema";
-import { PostData } from "httpquery/activities";
+import { PostData } from "../../activities";
 
 export const postDataMaterial: IQueryActivityMaterial = {
   activityName: PostData.NAME,

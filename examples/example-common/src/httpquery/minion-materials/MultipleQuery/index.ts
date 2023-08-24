@@ -4,7 +4,7 @@ import { DEFAULT_INPUT_NAME } from "@rxdrag/minions-runtime";
 import { IQueryActivityMaterial } from "../types";
 import { dataQueryIcon } from "../icons";
 import { dataQuerySchema } from "./schema";
-import { MultipleQuery } from "httpquery/activities";
+import { MultipleQuery } from "../../activities";
 
 export const multipleQueryMaterial: IQueryActivityMaterial = {
   activityName: MultipleQuery.NAME,

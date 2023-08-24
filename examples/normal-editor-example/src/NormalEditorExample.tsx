@@ -12,16 +12,11 @@ import {
   historyIcon,
   outlineIcon,
 } from "@rxdrag/react-antd-shell"
-import { setterLocales } from "../locales"
-import { ResourceWidget } from "./ResourceWidget"
 import { SaveButton } from "./widgets/SaveButton"
 import { PagesWidget } from "./PagesWidget"
 import { pages } from "./data"
-import { minionsLocales } from "normal/controller/locales"
-import { minionsMaterialCategories } from "normal/controller/materials"
-import { controllerDefines } from "normal/controller/defines"
-import { Logo, MenuButton } from "example-common"
-import { materials } from "./materials"
+import { Logo, MenuButton, ResourceWidget, controllerDefines, materials, minionsLocales, minionsMaterialCategories } from "example-common"
+import { setterLocales } from "@rxdrag/react-antd-materials/src/materials/displays/Tag/locales"
 
 export enum LeftNavType {
   pages = "pages",

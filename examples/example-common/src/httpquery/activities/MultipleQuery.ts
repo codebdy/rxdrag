@@ -1,7 +1,8 @@
 import { AbstractActivity, Activity, Input } from "@rxdrag/minions-runtime"
 import { INodeDefine } from "@rxdrag/minions-schema"
-import { QuerySession } from "httpquery/lib/classes/QuerySession"
-import { IQueryConfig, IRestfulQuerySession } from "httpquery/lib/interfaces"
+import { IQueryConfig, IRestfulQuerySession } from "../lib"
+import { QuerySession } from "../lib/classes/QuerySession"
+
 
 @Activity(MultipleQuery.NAME)
 export class MultipleQuery extends AbstractActivity<IQueryConfig> {

@@ -2,13 +2,12 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import { useMemo } from 'react';
 import { ControllerFactories } from '@rxdrag/react-runner';
-import { controllerDefines } from 'normal/controller/defines';
-import { routes } from 'example-common';
+import { controllerDefines, routes } from 'example-common';
 import { InlineEditorExample } from "inline-editor-example";
 import { LogicflowEditorExample } from "logicflow-editor-example";
 import { ControllerEditorExample } from "controller-editor-example";
-import { IFrameCanvas } from 'IFrameCanvas';
-import { IFramePreview } from 'IFramePreview';
+import { usePredefinedComponents } from "example-common"
+import { IFrameCanvas, IFramePreview, NormalEditorExample } from "normal-editor-example"
 
 function App() {
   const { designers, components } = usePredefinedComponents()

@@ -1,10 +1,10 @@
 import { ComponentResourceWidget, PaneContainer, TemplateResourceWidget } from "@rxdrag/react-antd-shell"
 import { useSettersTranslate, useRegisterComponentMaterials } from "@rxdrag/react-core"
-import { resources, fields } from "normal/materials"
 import { memo, useEffect } from "react"
 import { FieldMaterial } from "@rxdrag/react-antd-materials"
 import { ResourceCollapsePanel } from "./ResourceCollapsePanel"
 import { ResourcesTitle } from "./ResourcesTitle"
+import { resources, fields } from "../materials"
 
 export const ResourceWidget = memo((
   props: {

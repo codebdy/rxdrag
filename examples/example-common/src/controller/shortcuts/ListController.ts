@@ -1,8 +1,8 @@
 import { AbstractController, EventFunc, INIT_EVENT_NAME } from "@rxdrag/minions-runtime-react";
 import { IShortcutControllerMeta } from "./IShortcutControllerMeta";
 import { LIST_CONTROLLER_NAME } from "./consts";
-import { QuerySession } from "httpquery/lib/classes/QuerySession";
 import { message } from "antd";
+import { QuerySession } from "../../httpquery/lib/classes/QuerySession";
 
 export class ListController extends AbstractController {
   constructor(public meta: IShortcutControllerMeta) {

@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 //引入mock
-import "./mock"
+//import "./mock"
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

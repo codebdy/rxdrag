@@ -1,8 +1,8 @@
 import { IComponentMaterial } from "@rxdrag/react-core";
-import { RightAd } from "normal/components/business/RightAd";
 import { rightAdIcon } from "./icon";
 import { rightAdLocales, rightAdResourceLocales } from "./locales";
 import { rightAdSchema } from "./schema";
+import { RightAd } from "../../../components";
 
 const name = "RightAd"
 export const RightAdMaterial: IComponentMaterial = {
