@@ -1,4 +1,4 @@
-import { Toolkits } from "@rxdrag/react-antd-shell-inline"
+import { DefaultToolbar, Toolkits } from "@rxdrag/react-antd-shell-inline"
 import { ConfigProvider, theme } from "antd"
 import { memo } from "react"
 
@@ -14,7 +14,9 @@ export const PageEditor = memo((
       {design && <ConfigProvider
         theme={{ algorithm: theme.darkAlgorithm }}
       >
-        <Toolkits />
+        <Toolkits
+          toolbar={<DefaultToolbar />}
+        />
       </ConfigProvider>
       }
     </>

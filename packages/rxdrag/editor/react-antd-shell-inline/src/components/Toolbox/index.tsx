@@ -8,14 +8,28 @@ import { useClose } from "../../hooks/useClose"
 const Container = styled(Panel).attrs({ name: WidgetNames.toolbox })`
   left:8px;
 `
+const PannelContent = styled.div`
+  flex:1;
+  display: flex;
+`
 
-export const Toolbox = memo(() => {
+export const Toolbox = memo((
+  props: {
+    children?: React.ReactNode
+  }
+) => {
+  const { children } = props;
   const close = useClose(WidgetNames.toolbox)
   return (
     <Container className="rx-widget-toolbox">
       <PanelTitle onClose={close}>
         工具箱
       </PanelTitle>
+      <PannelContent>
+        {
+          children
+        }
+      </PannelContent>
     </Container>
   )
 })

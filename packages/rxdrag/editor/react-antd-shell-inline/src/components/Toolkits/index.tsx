@@ -10,7 +10,11 @@ const Container = styled.div`
   z-index: 100000;
 `
 
-export const Toolkits = memo(() => {
+export const Toolkits = memo((props: {
+  toolbox?: React.ReactNode,
+  toolbar?: React.ReactNode | false,
+}) => {
+  const { toolbox, toolbar } = props;
   const { token } = theme.useToken()
   const themeValue: { token: GlobalToken } = useMemo(() => {
     return {
@@ -20,9 +24,20 @@ export const Toolkits = memo(() => {
   return (
     <ThemeProvider theme={themeValue}>
       <Container>
-        <Toolbox />
+        {
+          toolbox !== false &&
+          <Toolbox>
+            {toolbox}
+          </Toolbox>
+        }
+        
         <PropertyPanel />
-        <Toolbar />
+        {
+          toolbar !== false &&
+          <Toolbar>
+            {toolbar}
+          </Toolbar>
+        }
         <Navbar />
       </Container>
     </ThemeProvider>
