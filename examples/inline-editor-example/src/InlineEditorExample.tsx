@@ -54,6 +54,7 @@ export const InlineEditorExample: React.FC = () => {
 
   return (
     <EditorScope
+      themeMode='dark'
       minionOptions={{
         materials: minionsMaterialCategories,
         locales: minionsLocales,

@@ -9,7 +9,7 @@ import { LeftNavWidget } from "./widgets/LeftNavWidget"
 import { CenterContent } from "./layouts/CenterContent"
 import { ToggleAblePane } from "./layouts/ToggleAblePane/ToggleAblePane"
 import { ToggleType } from "./layouts/ToggleAblePane/ToggleButton"
-import { ShellContainer } from "./panels/ShellContainer"
+import { EditorContainer } from "./panels/EditorContainer"
 import { LangButtons } from "./widgets/LangButtons"
 import { SaveActions } from "./widgets/SaveActions"
 import { ThemeButton } from "./widgets/ThemeButton"
@@ -60,7 +60,7 @@ export const RxEditorAntdInner = memo((props: Antd5EditorInnerProps) => {
   }, [engine, locales])
 
   return (
-    <ShellContainer>
+    <EditorContainer>
       <Topbar >
         {
           topBar || <>
@@ -116,6 +116,6 @@ export const RxEditorAntdInner = memo((props: Antd5EditorInnerProps) => {
           <SettingsForm />
         </ToggleAblePane>
       </Workbench>
-    </ShellContainer>
+    </EditorContainer>
   )
 })

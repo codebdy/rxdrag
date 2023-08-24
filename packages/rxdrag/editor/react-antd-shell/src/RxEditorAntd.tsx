@@ -1,14 +1,14 @@
 import { memo } from "react"
-import { ConfigRoot } from "./panels/ShellContainer/ConfigRoot"
 import "./style.css"
 import { Designer, IComponentMaterial, IMinionOptions } from "@rxdrag/react-core"
 import { Antd5EditorInnerProps, RxEditorAntdInner } from "./RxEditorAntdInner"
 import { ReactComponent } from "@rxdrag/react-shared"
-import { ISetterComponents } from "@rxdrag/core/src/interfaces/setter"
 import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput, CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, ExpressionInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, PropLayout, SizeInput, SlotSwitch, StyleSetter, TabPanel, Tabs, TextAlignSelect, ValueInput, YupRulesInput } from "@rxdrag/react-antd-props-inputs";
 import { ControllerSetter } from "./SettingsForm"
 import { Checkbox, Input, InputNumber, Radio, Select, Slider, Space } from 'antd';
 import { FormItem, Switch } from "@rxdrag/react-antd-components";
+import { ISetterComponents } from "@rxdrag/core"
+import { ConfigRoot } from "./panels/EditorContainer/ConfigRoot"
 
 export type Antd5EditorProps = Antd5EditorInnerProps & {
   themeMode?: "dark" | "light",

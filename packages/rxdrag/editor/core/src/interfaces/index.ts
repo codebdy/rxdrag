@@ -11,5 +11,6 @@ export * from "./plugin"
 export * from "./resource"
 export * from "./shell"
 export * from "./types"
+export * from "./setter"
 
 

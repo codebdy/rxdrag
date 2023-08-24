@@ -1,4 +1,4 @@
 export * from "./DocumentView"
-export * from "./ShellContainer"
+export * from "./EditorContainer"
 export * from "./Workbench"
 export * from "./Viewport"

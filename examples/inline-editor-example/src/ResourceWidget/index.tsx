@@ -1,9 +1,17 @@
-import { ComponentResourceWidget, PaneContainer, TemplateResourceWidget } from "@rxdrag/react-antd-shell"
+import { ComponentResourceWidget } from "@rxdrag/react-antd-shell"
 import { useSettersTranslate, useRegisterComponentMaterials } from "@rxdrag/react-core"
 import { memo, useEffect } from "react"
 import { FieldMaterial } from "@rxdrag/react-antd-materials"
 import { ResourceCollapsePanel } from "./ResourceCollapsePanel"
-import { resources, fields } from "example-common"
+import { resources } from "example-common"
+import styled from "styled-components"
+
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+`
 
 export const ResourceWidget = memo(() => {
   const t = useSettersTranslate()
@@ -14,33 +22,22 @@ export const ResourceWidget = memo(() => {
   }, [registerMaterial])
 
   return (
-    <PaneContainer className="rx-resource-container">
-      <div style={{ flex: 1, overflow: "auto" }}>
-        {
-          resources.map((group => {
-            return (
-              <ResourceCollapsePanel key={group.titleKey} title={t(group.titleKey)} defaultExpand>
-                {
-                  group.items.map((name => {
-                    return (
-                      <ComponentResourceWidget key={name} name={name} />
-                    )
-                  }))
-                }
-              </ResourceCollapsePanel>
-            )
-          }))
-        }
-        <ResourceCollapsePanel title={t("fields")} defaultExpand>
-          {
-            fields.map(field => {
-              return (
-                <TemplateResourceWidget key={field.name} resource={field} />
-              )
-            })
-          }
-        </ResourceCollapsePanel>
-      </div>
-    </PaneContainer>
+    <Container>
+      {
+        resources.map((group => {
+          return (
+            <ResourceCollapsePanel key={group.titleKey} title={t(group.titleKey)} defaultExpand>
+              {
+                group.items.map((name => {
+                  return (
+                    <ComponentResourceWidget key={name} name={name} />
+                  )
+                }))
+              }
+            </ResourceCollapsePanel>
+          )
+        }))
+      }
+    </Container>
   )
 })

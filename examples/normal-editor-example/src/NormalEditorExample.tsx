@@ -15,8 +15,8 @@ import {
 import { SaveButton } from "./widgets/SaveButton"
 import { PagesWidget } from "./PagesWidget"
 import { pages } from "./data"
-import { Logo, MenuButton, ResourceWidget, controllerDefines, materials, minionsLocales, minionsMaterialCategories } from "example-common"
-import { setterLocales } from "@rxdrag/react-antd-materials/src/materials/displays/Tag/locales"
+import { Logo, MenuButton, ResourceWidget, controllerDefines, materials, minionsLocales, minionsMaterialCategories, setterLocales } from "example-common"
+
 
 export enum LeftNavType {
   pages = "pages",

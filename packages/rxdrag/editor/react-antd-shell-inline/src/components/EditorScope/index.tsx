@@ -8,6 +8,7 @@ import { FormItem, Switch } from "@rxdrag/react-antd-components";
 
 export const EditorScope = memo((
   props: {
+    themeMode?: 'light' | 'dark'
     //逻辑编排配置项
     minionOptions?: IMinionOptions,
     materials?: IComponentMaterial[],
@@ -15,12 +16,13 @@ export const EditorScope = memo((
     children?: React.ReactNode,
   }
 ) => {
-  const { minionOptions, materials, setters, children } = props;
+  const { themeMode, minionOptions, materials, setters, children } = props;
 
   return (
     <Designer
       minionOptions={minionOptions}
       materials={materials}
+      themeMode={themeMode}
       setters={
         {
           Tabs,

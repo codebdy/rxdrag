@@ -3,6 +3,7 @@ import React, { memo, useMemo } from "react"
 import styled, { ThemeProvider } from "styled-components"
 import { useThemeMode } from "@rxdrag/react-core"
 import { IThemeToken } from "@rxdrag/minions-logicflow-editor"
+import classNames from "classnames"
 
 const Container = styled.div`
   width: 100%;
@@ -12,7 +13,7 @@ const Container = styled.div`
   background-color: ${props => props.theme.token?.colorBgBase};
 `
 
-export const ShellContainer = memo((
+export const EditorContainer = memo((
   props: {
     children?: React.ReactNode
   }
@@ -27,7 +28,7 @@ export const ShellContainer = memo((
 
   return (
     <ThemeProvider theme={theme}>
-      <Container className={themeMode}>
+      <Container className={classNames(themeMode, "normal-editor")}>
         {props.children}
       </Container>
     </ThemeProvider>

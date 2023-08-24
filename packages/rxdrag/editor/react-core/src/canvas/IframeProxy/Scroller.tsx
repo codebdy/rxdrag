@@ -3,7 +3,6 @@ import { useLayoutEffect } from "react"
 
 export const Scroller = () => {
   const themeMode = useThemeMode()
-
   useLayoutEffect(() => {
     const styleNode = document.createElement("style")
     styleNode.innerHTML = `

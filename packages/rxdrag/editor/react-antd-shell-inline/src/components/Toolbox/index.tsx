@@ -11,6 +11,8 @@ const Container = styled(Panel).attrs({ name: WidgetNames.toolbox })`
 const PannelContent = styled.div`
   flex:1;
   display: flex;
+  height: 0;
+  overflow: auto;
 `
 
 export const Toolbox = memo((
