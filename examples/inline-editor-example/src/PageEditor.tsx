@@ -14,14 +14,11 @@ export const PageEditor = memo((
   return (
     <>
       Page 内容
-      {design && <ConfigProvider
-        theme={{ algorithm: theme.darkAlgorithm }}
-      >
+      {design &&
         <Toolkits
-          toolbox={<ResourceWidget/>}
+          toolbox={<ResourceWidget />}
           toolbar={<DefaultToolbar onPreview={onFinished} />}
         />
-      </ConfigProvider>
       }
     </>
   )
