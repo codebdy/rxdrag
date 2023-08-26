@@ -3,8 +3,9 @@ import { INodeSchema } from "@rxdrag/schema"
 import { memo, useMemo } from "react"
 import { ResourceWidget } from "./ResourceWidget"
 import { Canvas, DocumentScope, Preview } from "@rxdrag/react-core"
-import { controllerDefines, usePredefinedComponents } from "example-common"
+import { controllerDefines } from "example-common"
 import { ControllerFactories } from '@rxdrag/react-runner';
+import { usePredefinedComponents } from "./hooks/usePredefinedComponents"
 
 const defaultSchema: INodeSchema = {
   componentName: "Page"
@@ -29,7 +30,7 @@ export const PageEditor = memo((
     return factories
   }, [])
 
-
+  console.log("====>components", components )
   return (
     schema ?
       <DocumentScope schema={schema}>

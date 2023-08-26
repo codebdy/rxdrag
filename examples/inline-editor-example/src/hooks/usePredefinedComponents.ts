@@ -1,18 +1,18 @@
-import { Root } from "@rxdrag/react-core";
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared";
 import { isStr } from "@rxdrag/shared";
 import { useMemo } from "react";
 import { Field } from "@rxdrag/react-antd-components";
-import { materials, resources, slots } from "../materials";
+import { materials, slots } from "example-common";
+import { PageDesigner, PagePreview } from "../page";
 
 export function usePredefinedComponents() {
   const coms = useMemo(() => {
     const designers: IReactComponents = {
-      Root: Root,
+      Page: PageDesigner,
       Field: Field,
     }
     const components: IReactComponents = {
-      Root: Root,
+      Page: PagePreview,
       Field: Field,
     }
     for (const com of materials) {

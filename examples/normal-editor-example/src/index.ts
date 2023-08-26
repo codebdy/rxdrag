@@ -1,3 +1,4 @@
+export * from "./hooks"
 export * from "./IFrameCanvas"
 export * from "./IFramePreview"
 export * from "./PagesWidget"

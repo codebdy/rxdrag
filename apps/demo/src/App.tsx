@@ -6,8 +6,7 @@ import { controllerDefines, routes } from 'example-common';
 import { InlineEditorExample } from "inline-editor-example";
 import { LogicflowEditorExample } from "logicflow-editor-example";
 import { ControllerEditorExample } from "controller-editor-example";
-import { usePredefinedComponents } from "example-common"
-import { IFrameCanvas, IFramePreview, NormalEditorExample } from "normal-editor-example"
+import { IFrameCanvas, IFramePreview, NormalEditorExample, usePredefinedComponents } from "normal-editor-example"
 
 function App() {
   const { designers, components } = usePredefinedComponents()
