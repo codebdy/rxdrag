@@ -11,7 +11,7 @@ import { Layout, Menu, Button, theme, Space } from 'antd';
 import styled from 'styled-components';
 import { Logo, MenuButton, controllerDefines, materials, minionsLocales, minionsMaterialCategories } from 'example-common';
 import { EditorScope } from '@rxdrag/react-antd-shell-inline';
-import { PageEditor } from './page';
+import { PageEditor, pageMaterial } from './page';
 import { INodeSchema } from "@rxdrag/schema"
 import { ControllerSetter } from "@rxdrag/react-antd-shell"
 
@@ -35,6 +35,8 @@ const StyledHeader = styled(Header)`
   justify-content: space-between;
   align-items: center;
 `
+
+const exampleMaterials = [...materials, pageMaterial]
 
 export const InlineEditorExample: React.FC = () => {
   const [design, setDesign] = useState(false);
@@ -60,7 +62,7 @@ export const InlineEditorExample: React.FC = () => {
         locales: minionsLocales,
         controllers: controllerDefines,
       }}
-      materials={materials}
+      materials={exampleMaterials}
       setters={{ ControllerSetter }}
     >
       <StyleLayout>

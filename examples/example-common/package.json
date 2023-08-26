@@ -36,6 +36,7 @@
     "@ant-design/icons": "^4.8.0",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
+    "@rxdrag/core": "workspace:*",
     "@rxdrag/react-core": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/minions-schema": "workspace:*",
