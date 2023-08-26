@@ -9,6 +9,7 @@ export const Toolkits = memo((props: ToolkitsInnerProps & {
 }) => {
   const { toolbox, toolbar, name, themeMode = "dark" } = props;
 
+  
   return (
     <ConfigProvider
       theme={{ algorithm: themeMode === "dark" ? theme.darkAlgorithm : theme.defaultAlgorithm }}

@@ -5,6 +5,7 @@ import { useWidgetLayout } from "../../hooks/useWidgetLayout";
 import { useSetWidgetLayout } from "../../hooks/useSetWidgetLayout";
 import { ResizeHandlers } from "./ResizeHandlers";
 import classnames from "classnames";
+import { getRecentRxElement } from "@rxdrag/core";
 
 const Widget = styled.div`
   position: fixed;
@@ -42,6 +43,11 @@ export const DraggableWidget = memo((
     if ((e.target as HTMLDivElement).id !== ref.current?.id) {
       return
     }
+
+    if(getRecentRxElement(e.target as HTMLElement)){
+      return
+    }
+
     setMousePressedPoint({
       x: e.clientX,
       y: e.clientY
