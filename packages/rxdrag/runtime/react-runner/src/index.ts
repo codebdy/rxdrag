@@ -5,5 +5,6 @@ export * from "./ComponentField"
 export * from "./ComponentRender"
 export * from "./ComponentView"
 export * from "./contexts"
+export * from "./Render"
 export * from "./transform"
 

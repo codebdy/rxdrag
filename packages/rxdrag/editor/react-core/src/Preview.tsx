@@ -1,5 +1,4 @@
-import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy"
-import { ComponentRender, } from "@rxdrag/react-runner"
+import { Render, } from "@rxdrag/react-runner"
 import { ControllerFactories } from "@rxdrag/react-runner"
 import { IReactComponents } from "@rxdrag/react-shared"
 import { INodeSchema } from "@rxdrag/schema"
@@ -23,16 +22,10 @@ export const Preview = memo((
   console.log("刷新 PreviewRender", tree)
 
   return (
-    <Fieldy>
-      <VirtualForm>
-        {
-          tree && <ComponentRender
-            root={tree}
-            components={components}
-            controllerFactories={controllerFactories}
-          />
-        }
-      </VirtualForm>
-    </Fieldy>
+    <Render
+      components={components}
+      controllerFactories={controllerFactories}
+      schema={tree}
+    />
   )
 })
