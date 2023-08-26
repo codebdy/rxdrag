@@ -5,7 +5,7 @@ import { memo } from "react"
 import { ControllerFactories } from "./RuntimeRoot"
 import { ComponentRender } from "./ComponentRender"
 
-export const Render = memo((
+export const RuntimeRender = memo((
   props: {
     components: IReactComponents
     controllerFactories: ControllerFactories,
