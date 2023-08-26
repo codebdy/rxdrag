@@ -21,16 +21,25 @@ export const Canvas = memo((
         doc.id,
         engine,
         rootNode.id,
-        inFrame ? [
-          DragDropDriver,
-          DragOverDriver,
-          MouseClickDriver,
-          MouseMoveDriver,
-          MouseOverOutDriver,
-          CanvasResizeDriver,
-          CanvasScrollDriver,
-          MouseUpDriver
-        ] : []
+        //防止重复处理事件
+        inFrame
+          ? [
+            DragDropDriver,
+            DragOverDriver,
+            MouseClickDriver,
+            MouseMoveDriver,
+            MouseOverOutDriver,
+            CanvasResizeDriver,
+            CanvasScrollDriver,
+            MouseUpDriver
+          ]
+          : [
+            DragOverDriver,
+            MouseClickDriver,
+            MouseOverOutDriver,
+            CanvasScrollDriver,
+            MouseUpDriver
+          ]
       )
       shell?.addCanvas(canvasImpl)
       return () => {

@@ -5,7 +5,7 @@ import { Toolbox } from "../Toolbox"
 import { PropertyPanel } from "../PropertyPanel"
 import { GlobalToken, theme } from "antd"
 import styled, { ThemeProvider } from "styled-components"
-import classNames from "classNames"
+import classNames from "classnames"
 import { ContainerImpl, DragDropDriver, CanvasResizeDriver, MouseMoveDriver, KeyboardDriver } from "@rxdrag/core"
 import { useDesignerEngine } from "@rxdrag/react-core"
 
