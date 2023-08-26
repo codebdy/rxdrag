@@ -1,8 +1,14 @@
 import { DefaultToolbar, Toolkits } from "@rxdrag/react-antd-shell-inline"
 import { INodeSchema } from "@rxdrag/schema"
-import { memo } from "react"
+import { memo, useMemo } from "react"
 import { ResourceWidget } from "./ResourceWidget"
-import { DocumentScope } from "@rxdrag/react-core"
+import { Canvas, DocumentScope, Preview } from "@rxdrag/react-core"
+import { controllerDefines, usePredefinedComponents } from "example-common"
+import { ControllerFactories } from '@rxdrag/react-runner';
+
+const defaultSchema: INodeSchema = {
+  componentName: "Page"
+}
 
 export const PageEditor = memo((
   props: {
@@ -12,11 +18,29 @@ export const PageEditor = memo((
 
   }
 ) => {
-  const { design, onFinished, schema } = props
+  const { design, onFinished, schema = defaultSchema } = props
+  const { components } = usePredefinedComponents()
+  //需要的控制器
+  const controllerFactories = useMemo(() => {
+    const factories: ControllerFactories = {}
+    for (const ctrlDef of controllerDefines) {
+      factories[ctrlDef.name] = ctrlDef.factory
+    }
+    return factories
+  }, [])
+
+
   return (
     schema ?
       <DocumentScope schema={schema}>
-        Page 内容
+        {
+          design
+            ? <Canvas />
+            : <Preview
+              components={components}
+              controllerFactories={controllerFactories}
+            />
+        }
         {design &&
           <Toolkits
             toolbox={<ResourceWidget />}
