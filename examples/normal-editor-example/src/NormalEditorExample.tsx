@@ -17,7 +17,6 @@ import { PagesWidget } from "./PagesWidget"
 import { pages } from "./data"
 import { Logo, MenuButton, ResourceWidget, controllerDefines, materials, minionsLocales, minionsMaterialCategories, setterLocales } from "example-common"
 
-
 export enum LeftNavType {
   pages = "pages",
   components = "components",
