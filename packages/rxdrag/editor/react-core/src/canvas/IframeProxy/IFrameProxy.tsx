@@ -6,6 +6,7 @@ import { EVENT_IFRAME_READY } from "./constants";
 import { DesignerEngineContext, InIframeContext, Scroller } from "../..";
 import { IReactComponents } from "@rxdrag/react-shared";
 import { ComponentsRoot } from "../../ComponentsRoot";
+import { Fieldy } from "@rxdrag/react-fieldy";
 
 declare const window: Window & { engine?: IDesignerEngine, doc?: IDocument };
 
@@ -39,13 +40,15 @@ export const IFrameProxy = memo((
   }, [receiveMessageFromParent])
 
   return (
-    <InIframeContext.Provider value={true}>
-      <DesignerEngineContext.Provider value={engine}>
-        <ComponentsRoot components={components}>
-          {engine ? children : <></>}
-          <Scroller />
-        </ComponentsRoot>
-      </DesignerEngineContext.Provider>
-    </InIframeContext.Provider>
+    <Fieldy>
+      <InIframeContext.Provider value={true}>
+        <DesignerEngineContext.Provider value={engine}>
+          <ComponentsRoot components={components}>
+            {engine ? children : <></>}
+            <Scroller />
+          </ComponentsRoot>
+        </DesignerEngineContext.Provider>
+      </InIframeContext.Provider>
+    </Fieldy>
   )
 })

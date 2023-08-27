@@ -1,9 +1,10 @@
-import { RuntimeRender, } from "@rxdrag/react-runner"
+import { ComponentRender, } from "@rxdrag/react-runner"
 import { ControllerFactories } from "@rxdrag/react-runner"
 import { IReactComponents } from "@rxdrag/react-shared"
 import { INodeSchema } from "@rxdrag/schema"
 import { memo, useEffect, useState } from "react"
 import { useDocument, useDocumentViewTypeState } from "./hooks"
+import { VirtualForm } from "@rxdrag/react-fieldy"
 
 export const Preview = memo((
   props: {
@@ -22,10 +23,16 @@ export const Preview = memo((
   console.log("刷新 PreviewRender", tree)
 
   return (
-    <RuntimeRender
-      components={components}
-      controllerFactories={controllerFactories}
-      schema={tree}
-    />
+    <VirtualForm>
+      {
+        tree
+          ? <ComponentRender
+            components={components}
+            controllerFactories={controllerFactories}
+            schema={tree}
+          />
+          : <></>
+      }
+    </VirtualForm>
   )
 })

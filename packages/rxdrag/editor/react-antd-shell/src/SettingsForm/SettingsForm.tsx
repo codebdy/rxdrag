@@ -1,7 +1,7 @@
 import { CSSProperties, memo, useCallback, useEffect, useMemo } from "react"
 import { Form } from 'antd';
 import { useDesignerEngine, useCurrentNode, useChangeNodeMeta, useLanguage, useSetters } from "@rxdrag/react-core";
-import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy";
+import { VirtualForm } from "@rxdrag/react-fieldy";
 import { ComponentRender } from "@rxdrag/react-runner";
 import { INodeMeta } from "@rxdrag/schema";
 import { FormValue } from "@rxdrag/fieldy"
@@ -44,40 +44,37 @@ export const SettingsForm = memo(() => {
   }, [changeMeta, currentNode])
 
   return (
-    <Fieldy>
-      <div style={propertiesStyle}>
-        {
-          currentNode &&
-          <VirtualForm
-            initialValue={currentNode?.meta as unknown as FormValue | undefined}
-            onValueChange={handleMetaChange as unknown as (value: FormValue | undefined) => void}
-          //key={currentNode.id}
+    <div style={propertiesStyle}>
+      {
+        currentNode &&
+        <VirtualForm
+          initialValue={currentNode?.meta as unknown as FormValue | undefined}
+          onValueChange={handleMetaChange as unknown as (value: FormValue | undefined) => void}
+        //key={currentNode.id}
+        >
+          <Form
+            labelAlign="left"
+            colon={false}
+            labelCol={{ span: 7 }}
+            wrapperCol={{ span: 17 }}
+            autoComplete="off"
+            labelWrap={true}
+            style={{
+              flex: 1,
+              height: '100%',
+            }}
           >
-            <Form
-              labelAlign="left"
-              colon={false}
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 17 }}
-              autoComplete="off"
-              labelWrap={true}
-              style={{
-                flex: 1,
-                height: '100%',
-              }}
-            >
-              {
-                propsSchema &&
-                <ComponentRender
-                  root={propsSchema}
-                  components={setters}
-                //localesManager={engine?.getLocalesManager()}
-                />
-              }
-            </Form>
-          </VirtualForm>
-        }
-      </div>
-    </Fieldy>
-
+            {
+              propsSchema &&
+              <ComponentRender
+                schema={propsSchema}
+                components={setters}
+              //localesManager={engine?.getLocalesManager()}
+              />
+            }
+          </Form>
+        </VirtualForm>
+      }
+    </div>
   )
 })

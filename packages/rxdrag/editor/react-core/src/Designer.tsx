@@ -21,6 +21,7 @@ import { LocalesContext } from "@rxdrag/react-locales";
 import { IComponentMaterial } from "./interfaces";
 import { ReactComponent } from "@rxdrag/react-shared";
 import { ISetterComponents } from "@rxdrag/core/src/interfaces/setter";
+import { Fieldy } from "@rxdrag/react-fieldy";
 
 export interface DesignerProps {
   minionOptions?: IMinionOptions,
@@ -80,12 +81,14 @@ export const Designer = memo((props: DesignerProps) => {
   }, [engine, setters])
 
   return (
-    <MinionOptionContext.Provider value={minionOptions}>
-      <LocalesContext.Provider value={engine?.getLocalesManager()}>
-        <DesignerEngineContext.Provider value={engine}>
-          {engine && children}
-        </DesignerEngineContext.Provider>
-      </LocalesContext.Provider>
-    </MinionOptionContext.Provider>
+    <Fieldy>
+      <MinionOptionContext.Provider value={minionOptions}>
+        <LocalesContext.Provider value={engine?.getLocalesManager()}>
+          <DesignerEngineContext.Provider value={engine}>
+            {engine && children}
+          </DesignerEngineContext.Provider>
+        </LocalesContext.Provider>
+      </MinionOptionContext.Provider>
+    </Fieldy>
   )
 })

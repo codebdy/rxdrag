@@ -8,20 +8,20 @@ import { ControllerFactories, RuntimeRoot } from "./RuntimeRoot"
 import { ILocalesManager } from "@rxdrag/locales"
 
 export const ComponentRender = memo((props: {
-  root: INodeSchema,
+  schema: INodeSchema,
   components: IReactComponents | undefined
   controllerFactories?: ControllerFactories,
   localesManager?: ILocalesManager,//@@ 暂时未用
 }) => {
-  const { root, components, controllerFactories } = props
+  const { schema, components, controllerFactories } = props
   const [node, setNode] = useState<IComponentRenderSchema>()
   useEffect(() => {
-    if (root) {
-      setNode(transToRenderSchema(root as INodeSchema<IFieldMeta | undefined>))
+    if (schema) {
+      setNode(transToRenderSchema(schema as INodeSchema<IFieldMeta | undefined>))
     } else {
       setNode(undefined)
     }
-  }, [root])
+  }, [schema])
 
   return (
     node ? <RuntimeRoot
