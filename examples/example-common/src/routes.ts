@@ -3,4 +3,5 @@ export const routes = {
   inline: "/inline",
   controller: "/conroller",
   logicflow: "/logicflow",
+  runtime: "runtime",
 }

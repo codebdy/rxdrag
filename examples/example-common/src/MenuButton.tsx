@@ -13,10 +13,10 @@ const items: MenuProps['items'] = [
     label: <a href={routes.inline}>内联编辑器</a>,
     key: 'inline',
   },
-  {
-    label: 'IFrame内联编辑器',
-    key: 'iframe',
-  },
+  // {
+  //   label: 'IFrame内联编辑器',
+  //   key: 'iframe',
+  // },
   {
     label: '可缩放画布',
     key: 'zoom',
@@ -40,6 +40,10 @@ const items: MenuProps['items'] = [
   {
     label: <a href={"#"}>H5编辑器</a>,
     key: 'h5',
+  },
+  {
+    label: <a href={routes.runtime} target="_blank">运行时示例</a>,
+    key: 'runtime',
   },
   {
     //引入外部包
