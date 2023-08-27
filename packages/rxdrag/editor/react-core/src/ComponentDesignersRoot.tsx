@@ -1,9 +1,9 @@
 import React from "react"
 import { useMemo } from "react"
-import { ComponentsContext } from "./contexts"
+import { ComponentDesignersContext } from "./contexts"
 import { IReactComponents } from "@rxdrag/react-shared"
 
-export const ComponentsRoot = (props: {
+export const ComponentDesignersRoot = (props: {
   components?: IReactComponents,
   children: React.ReactNode,
 }) => {
@@ -13,10 +13,10 @@ export const ComponentsRoot = (props: {
   }, [components])
 
   return (
-    <ComponentsContext.Provider value={value}>
+    <ComponentDesignersContext.Provider value={value}>
       {
         children
       }
-    </ComponentsContext.Provider>
+    </ComponentDesignersContext.Provider>
   )
 }

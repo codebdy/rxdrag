@@ -1,5 +1,5 @@
-import { DocumentRoot, Preview, useActivedDocument, useComponents } from "@rxdrag/react-core"
-import { ControllerFactories } from "@rxdrag/react-runner"
+import { DocumentRoot, Preview, useActivedDocument } from "@rxdrag/react-core"
+import { ControllerFactories, usePreviewComponents } from "@rxdrag/react-runner"
 import { memo } from "react"
 
 export const IFramePreviewInner = memo((
@@ -9,7 +9,7 @@ export const IFramePreviewInner = memo((
 ) => {
   const { controllerFactories = {} } = props;
   const doc = useActivedDocument()
-  const components = useComponents()
+  const components = usePreviewComponents()
   return (
     doc
       ? <DocumentRoot doc={doc}>

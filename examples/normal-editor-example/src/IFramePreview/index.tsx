@@ -1,7 +1,7 @@
 import { IReactComponents } from "@rxdrag/react-shared"
 import { memo } from "react"
 import { IFramePreviewInner } from "./IFramePreviewInner"
-import { IFrameProxy } from "@rxdrag/react-core"
+import { IPreviewProxy } from "@rxdrag/react-core"
 import { ControllerFactories } from "@rxdrag/react-runner"
 
 export const IFramePreview = memo((
@@ -12,8 +12,8 @@ export const IFramePreview = memo((
 ) => {
   const { components, controllerFactories } = props
   return (
-    <IFrameProxy components={components}>
+    <IPreviewProxy components={components}>
       <IFramePreviewInner controllerFactories={controllerFactories} />
-    </IFrameProxy>
+    </IPreviewProxy>
   )
 })
