@@ -33,7 +33,10 @@ export const DocumentView = memo((
           <ViewButtons />
         </CanvasToolbar>
         <Viewport>
-          <JsonView />
+          {
+            viewType === "json" && <JsonView />
+          }
+
           <CanvasShell display={viewType === "design"} >
             <IFrame
               style={{ border: "0", width: "100%", height: "100%" }}

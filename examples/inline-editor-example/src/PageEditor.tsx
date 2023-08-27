@@ -30,7 +30,6 @@ export const PageEditor = memo((
     return factories
   }, [])
 
-  console.log("====>components", components )
   return (
     schema ?
       <DocumentScope schema={schema}>
