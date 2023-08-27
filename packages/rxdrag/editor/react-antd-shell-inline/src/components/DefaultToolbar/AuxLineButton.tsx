@@ -1,15 +1,35 @@
 import { Button } from "antd"
-import { memo } from "react"
+import { memo, useCallback, useEffect, useState } from "react"
 import { lineIcon } from "../../icons"
+import { useDesignerEngine, useDocument } from "@rxdrag/react-core";
+import { LINE_DECORTOR_NAME, LineDecorator } from "@rxdrag/core";
 
 export const AuxLineButton = memo(() => {
+  const [line, setLine] = useState(false);
+
+  const engine = useDesignerEngine();
+  const documentId = useDocument()?.id || "";
+
+  useEffect(() => {
+    setLine(!!engine?.getDecoratorManager().getDecorator(LINE_DECORTOR_NAME, documentId))
+  }, [documentId, engine])
+
+  const handleLineClick = useCallback(() => {
+    if (line) {
+      engine?.getDecoratorManager().removeDecorator(LINE_DECORTOR_NAME, documentId)
+      setLine(false)
+    } else {
+      engine?.getDecoratorManager().addDecorator(new LineDecorator(), documentId)
+      setLine(true)
+    }
+  }, [documentId, engine, line])
+
   return (
     <Button
-      type={"text"}
+      type={line ? "default" : "text"}
       size="large"
-      //disabled={redoList.length === 0}
       icon={lineIcon}
-    //onClick={handleRedo}
+      onClick={handleLineClick}
     />
   )
 })

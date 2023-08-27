@@ -2,8 +2,8 @@ import { ITreeNode } from "./document";
 
 export interface IDecorator {
   name: string
-  decorate(el: HTMLElement, node: ITreeNode): void;
-  unDecorate(el: HTMLElement): void;
+  decorate(el: HTMLElement[], node: ITreeNode): void;
+  unDecorate(el: HTMLElement[]): void;
 }
 
 export interface IDecoratorManager {
