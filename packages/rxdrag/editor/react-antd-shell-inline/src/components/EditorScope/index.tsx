@@ -5,6 +5,7 @@ import { ReactComponent } from "@rxdrag/react-shared"
 import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput, CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, ExpressionInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, PropLayout, SizeInput, SlotSwitch, StyleSetter, TabPanel, Tabs, TextAlignSelect, ValueInput, YupRulesInput } from "@rxdrag/react-antd-props-inputs";
 import { Checkbox, Input, InputNumber, Radio, Select, Slider, Space } from 'antd';
 import { FormItem, Switch } from "@rxdrag/react-antd-components";
+import { ILocales } from "@rxdrag/locales";
 
 export const EditorScope = memo((
   props: {
@@ -13,16 +14,18 @@ export const EditorScope = memo((
     minionOptions?: IMinionOptions,
     materials?: IComponentMaterial[],
     setters?: ISetterComponents<ReactComponent>
+    locales?: ILocales,
     children?: React.ReactNode,
   }
 ) => {
-  const { themeMode, minionOptions, materials, setters, children } = props;
+  const { themeMode, minionOptions, materials, setters, locales, children } = props;
 
   return (
     <Designer
       minionOptions={minionOptions}
       materials={materials}
       themeMode={themeMode}
+      locales = {locales}
       setters={
         {
           Tabs,

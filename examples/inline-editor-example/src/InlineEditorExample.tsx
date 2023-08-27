@@ -9,7 +9,7 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu, Button, theme, Space } from 'antd';
 import styled from 'styled-components';
-import { Logo, MenuButton, controllerDefines, materials, minionsLocales, minionsMaterialCategories } from 'example-common';
+import { Logo, MenuButton, controllerDefines, materials, minionsLocales, minionsMaterialCategories, setterLocales } from 'example-common';
 import { EditorScope } from '@rxdrag/react-antd-shell-inline';
 import { PageEditor, pageMaterial } from './page';
 import { INodeSchema } from "@rxdrag/schema"
@@ -64,6 +64,7 @@ export const InlineEditorExample: React.FC = () => {
       }}
       materials={exampleMaterials}
       setters={{ ControllerSetter }}
+      locales = {setterLocales}
     >
       <StyleLayout>
         <Sider trigger={null} collapsible collapsed={collapsed}>

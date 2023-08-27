@@ -23,6 +23,7 @@ import { IReactComponents, ReactComponent } from "@rxdrag/react-shared";
 import { ISetterComponents } from "@rxdrag/core/src/interfaces/setter";
 import { Fieldy } from "@rxdrag/react-fieldy";
 import { ComponentsRoot } from "./ComponentsRoot";
+import { ILocales } from "@rxdrag/locales";
 
 export interface DesignerProps {
   minionOptions?: IMinionOptions,
@@ -31,9 +32,10 @@ export interface DesignerProps {
   //初始物料，其它地方还可以继续注册
   materials?: IComponentMaterial[]
   setters?: ISetterComponents<ReactComponent>
+  locales?: ILocales,
 }
 export const Designer = memo((props: DesignerProps) => {
-  const { minionOptions, themeMode = "light", children, materials, setters } = props
+  const { minionOptions, themeMode = "light", children, materials, setters, locales } = props
   const [components, setComponents] = useState<IReactComponents>({})
   const [engine, setEngine] = useState<IDesignerEngine>();
   const themeModeRef = useRef(themeMode)
@@ -75,6 +77,11 @@ export const Designer = memo((props: DesignerProps) => {
   useEffect(() => {
     engine?.registerMaterials(materials || [])
   }, [engine, materials])
+
+  useEffect(()=>{
+    const langMgr = engine?.getLocalesManager()
+    locales && langMgr?.registerLocales(locales)
+  }, [engine, locales])
 
   useEffect(() => {
     if (setters) {
