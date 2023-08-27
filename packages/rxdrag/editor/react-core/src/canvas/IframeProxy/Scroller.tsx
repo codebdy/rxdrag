@@ -1,5 +1,6 @@
 import { useThemeMode } from "../../hooks/useThemeMode"
 import { useLayoutEffect } from "react"
+import "./scroller.css"
 
 export const Scroller = () => {
   const themeMode = useThemeMode()
