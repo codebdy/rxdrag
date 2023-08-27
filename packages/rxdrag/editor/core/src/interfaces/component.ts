@@ -72,6 +72,7 @@ export interface IBehavior {
 export interface IComponentManager<ComponentType = unknown> {
   getNodeBehaviorRules(nodeId: ID): IBehaviorRule[]
   getComponentConfig(componentName: string): IComponentConfig<ComponentType> | undefined
+  getAllComponentConfigs(): Record<string, IComponentConfig<ComponentType> | undefined> | undefined
   registerComponents(...componentDesigners: IComponentConfig<ComponentType>[]): void
   registerBehaviors(...behaviors: IBehavior[]): void
   removeBehaviors(...names: string[]): void

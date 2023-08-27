@@ -19,6 +19,10 @@ export class ComponentManager<ComponentType = unknown> implements IComponentMana
   constructor(private engine: IDesignerEngine<ComponentType, any>) {
   }
 
+  getAllComponentConfigs(): Record<string, IComponentConfig<ComponentType, unknown> | undefined> | undefined {
+    return this.components.getValue()
+  }
+
   subscribeChange = (listener: Listener<Record<string, IComponentConfig<ComponentType, unknown> | undefined>>) => {
     return this.components.subscribeChange(listener)
   };
