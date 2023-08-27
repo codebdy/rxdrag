@@ -1,22 +1,15 @@
 import { IDesignerEngine, IDocument } from "@rxdrag/core";
 import { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
-import { ID } from "@rxdrag/shared";
-import { EVENT_IFRAME_READY } from "./constants";
-import { DesignerEngineContext, InIframeContext, Scroller } from "../..";
+import { DesignerEngineContext, EVENT_IFRAME_READY, IFrameCanvasEvent, InIframeContext, Scroller } from "..";
 import { IReactComponents } from "@rxdrag/react-shared";
-import { ComponentsRoot } from "../../ComponentsRoot";
 import { Fieldy } from "@rxdrag/react-fieldy";
+import { PreviewComponentsContext } from "@rxdrag/react-runner";
 
 declare const window: Window & { engine?: IDesignerEngine, doc?: IDocument };
 
-export interface IFrameCanvasEvent {
-  name: string,
-  payload?: ID,
-}
-
 //尽量放在Ifame的顶层
-export const IFrameProxy = memo((
+export const IPreviewProxy = memo((
   props: {
     components: IReactComponents
     children?: React.ReactNode,
@@ -43,10 +36,10 @@ export const IFrameProxy = memo((
     <Fieldy>
       <InIframeContext.Provider value={true}>
         <DesignerEngineContext.Provider value={engine}>
-          <ComponentsRoot components={components}>
+          <PreviewComponentsContext.Provider value={components}>
             {engine ? children : <></>}
             <Scroller />
-          </ComponentsRoot>
+          </PreviewComponentsContext.Provider>
         </DesignerEngineContext.Provider>
       </InIframeContext.Provider>
     </Fieldy>

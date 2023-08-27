@@ -8,7 +8,9 @@ const name = "DatePicker"
 export const DatePickerMaterial: IComponentMaterial = {
   componentName: name,
   component: DatePicker,
-  designer: forwardRefById(DatePicker, element => element?.parentElement?.parentElement),
+  designer: forwardRefById(DatePicker, element => {
+    return (element as HTMLElement | null)?.parentElement?.parentElement
+  }),
   designerLocales: datePickerLocales,
   propsSchema: datePickerSchema,
   designerProps: {

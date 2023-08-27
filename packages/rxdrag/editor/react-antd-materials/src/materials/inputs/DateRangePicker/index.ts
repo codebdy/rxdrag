@@ -8,7 +8,9 @@ const name = "DateRangePicker"
 export const DateRangePickerMaterial: IComponentMaterial = {
   componentName: name,
   component: DatePicker.RangePicker,
-  designer: forwardRefById(DatePicker.RangePicker, element => element?.parentElement?.parentElement),
+  designer: forwardRefById(DatePicker.RangePicker, element => {
+    return (element as HTMLElement | null)?.parentElement?.parentElement
+  }),
   designerLocales: dateRangePickerLocales,
   propsSchema: dateRangePickerSchema,
   designerProps: {

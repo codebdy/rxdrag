@@ -22,8 +22,9 @@ import { IComponentMaterial } from "./interfaces";
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared";
 import { ISetterComponents } from "@rxdrag/core";
 import { Fieldy } from "@rxdrag/react-fieldy";
-import { ComponentsRoot } from "./ComponentsRoot";
+import { ComponentDesignersRoot } from "./ComponentDesignersRoot";
 import { ILocales } from "@rxdrag/locales";
+import { PreviewComponentsContext } from "@rxdrag/react-runner";
 
 export interface DesignerProps {
   minionOptions?: IMinionOptions,
@@ -37,6 +38,7 @@ export interface DesignerProps {
 export const Designer = memo((props: DesignerProps) => {
   const { minionOptions, themeMode = "light", children, materials, setters, locales } = props
   const [components, setComponents] = useState<IReactComponents>({})
+  const [designers, setDesigners] = useState<IReactComponents>({})
   const [engine, setEngine] = useState<IDesignerEngine>();
   const themeModeRef = useRef(themeMode)
   themeModeRef.current = themeMode
@@ -78,7 +80,7 @@ export const Designer = memo((props: DesignerProps) => {
     engine?.registerMaterials(materials || [])
   }, [engine, materials])
 
-  useEffect(()=>{
+  useEffect(() => {
     const langMgr = engine?.getLocalesManager()
     locales && langMgr?.registerLocales(locales)
   }, [engine, locales])
@@ -93,10 +95,13 @@ export const Designer = memo((props: DesignerProps) => {
     const materials = engine?.getComponentManager().getAllComponentConfigs()
     if (materials) {
       const coms: IReactComponents = {}
+      const desns: IReactComponents = {}
       for (const key of Object.keys(materials)) {
         coms[key] = materials[key]?.component
+        desns[key] = materials[key]?.designer
       }
       setComponents(coms)
+      setDesigners(desns)
     }
   }, [engine])
 
@@ -114,12 +119,14 @@ export const Designer = memo((props: DesignerProps) => {
       <MinionOptionContext.Provider value={minionOptions}>
         <LocalesContext.Provider value={engine?.getLocalesManager()}>
           <DesignerEngineContext.Provider value={engine}>
-            {
-              //Preivew的时候用的组件，主要针对无Iframe画布
-              <ComponentsRoot components={components}>
-                {engine && children}
-              </ComponentsRoot>
-            }
+            <ComponentDesignersRoot components={designers}>
+              {
+                //Preivew的时候用的组件，主要针对无Iframe画布
+                <PreviewComponentsContext.Provider value={components}>
+                  {engine && children}
+                </PreviewComponentsContext.Provider>
+              }
+            </ComponentDesignersRoot>
           </DesignerEngineContext.Provider>
         </LocalesContext.Provider>
       </MinionOptionContext.Provider>

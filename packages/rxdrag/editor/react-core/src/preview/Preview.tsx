@@ -3,7 +3,7 @@ import { ControllerFactories } from "@rxdrag/react-runner"
 import { IReactComponents } from "@rxdrag/react-shared"
 import { INodeSchema } from "@rxdrag/schema"
 import { memo, useEffect, useState } from "react"
-import { useDocument, useDocumentViewTypeState } from "./hooks"
+import { useDocument, useDocumentViewTypeState } from "../hooks"
 import { VirtualForm } from "@rxdrag/react-fieldy"
 
 export const Preview = memo((
