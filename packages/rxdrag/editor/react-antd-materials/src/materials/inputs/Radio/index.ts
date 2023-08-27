@@ -24,5 +24,5 @@ export const RadioMaterial: IComponentMaterial = {
         componentName: name,
       }
     ]
-  },
+  }
 }

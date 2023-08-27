@@ -27,8 +27,8 @@ export interface IBehaviorRule {
   draggable?: boolean | AbleCheckFunction //是否可拖拽，默认为true
   deletable?: boolean | AbleCheckFunction //是否可删除，默认为true
   cloneable?: boolean | AbleCheckFunction //是否可拷贝，默认为true
-  resizable?: IResizable | ((engine?: IDesignerEngine) => IResizable)
-  moveable?: IMoveable | ((engine?: IDesignerEngine) => IMoveable)  // 可用于自由布局
+  //resizable?: IResizable | ((engine?: IDesignerEngine) => IResizable)
+  //moveable?: IMoveable | ((engine?: IDesignerEngine) => IMoveable)  // 可用于自由布局
   allowChild?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
   allowAppendTo?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
   allowSiblingsTo?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
@@ -36,6 +36,16 @@ export interface IBehaviorRule {
   noRef?: boolean,
   lockable?: boolean,
 }
+
+export enum LayoutType {
+  //流式
+  liqiud = "liqiud",
+  //自由布局容器
+  freeContainer = "freeContainer",
+  //自由布局子节点
+  freeChild = "freeChild"
+}
+//自由布局考虑用百分比来实现？？？？
 
 export interface IComponentConfig<ComponentType = unknown, IconType = unknown> {
   package?: string //npm包名 生成代码用
