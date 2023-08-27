@@ -48,7 +48,7 @@ export class SelectedOutlineImpl implements IPlugin {
     for (const id of this.selectedNodes || []) {
       const elements = shell.getElements(id)
       const canvas = shell.getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
-      const containerRect = canvas?.getContainerRect()
+      const containerRect = canvas?.getDocumentBodyRect()
       const rect = shell.getTopRect(id);
       if (elements && containerRect && rect) {
         const htmlDiv = document.createElement('div')

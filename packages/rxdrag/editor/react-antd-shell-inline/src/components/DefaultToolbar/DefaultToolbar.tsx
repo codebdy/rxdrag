@@ -6,7 +6,6 @@ import { RedoButton } from "./RedoButton"
 import { MultiSelectionButton } from "./MultiSelectionButton"
 import { AuxLineButton } from "./AuxLineButton"
 import { AuxMarginButton } from "./AuxMarginButton"
-import { DesignButton } from "./DesignButton"
 import { JSONButton } from "./JSONButton"
 import { PreviewButton } from "./PreviewButton"
 import { INodeSchema } from "@rxdrag/schema"
@@ -44,7 +43,6 @@ export const DefaultToolbar = memo((
     <AuxLineButton />
     <AuxMarginButton />
     <Divider type="vertical" />
-    <DesignButton />
     <JSONButton />
     <PreviewButton onClick={handlePreview} />
     <Button

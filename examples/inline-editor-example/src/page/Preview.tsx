@@ -16,6 +16,5 @@ export const PagePreview = memo(forwardRef<HTMLDivElement, PageProps>((props, re
     {
       children
     }
-    页面
   </PageContainer>)
 }))

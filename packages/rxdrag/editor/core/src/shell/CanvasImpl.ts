@@ -21,13 +21,15 @@ export class CanvasImpl implements IShellPane {
     return document.body;
   }
 
-  getContainerRect(): IRect | null {
-    const containerElement = document.querySelector(`[${RXID_ATTR_NAME}="${this.rootNodeId}"]`)
-    const rect = containerElement?.getBoundingClientRect()
-    if (!rect) {
-      return null
-    }
-    return { width: rect.width, height: rect.height, x: 0, y: 0, }
+  getDocumentBodyRect(): IRect | null {
+    // const containerElement = document.querySelector(`[${RXID_ATTR_NAME}="${this.rootNodeId}"]`)
+    // const rect = containerElement?.getBoundingClientRect()
+    // if (!rect) {
+    //   return null
+    // }
+    // return { width: rect.width, height: rect.height, x: 0, y: 0, }
+
+    return document.body.getBoundingClientRect()
   }
 
   appendChild(child: HTMLElement): void {

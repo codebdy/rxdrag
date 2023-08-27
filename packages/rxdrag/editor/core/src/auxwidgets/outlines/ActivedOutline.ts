@@ -82,7 +82,7 @@ export class ActivedOutlineImpl implements IPlugin {
     const shell = this.engine.getShell()
     const elements = shell.getElements(id)
     const canvas = shell.getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
-    const containerRect = canvas?.getContainerRect()
+    const containerRect = canvas?.getDocumentBodyRect()
     const rect = shell.getTopRect(id)
     if (elements && containerRect && rect) {
       const htmlDiv = document.createElement('div')

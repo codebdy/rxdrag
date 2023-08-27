@@ -124,7 +124,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     const elements = node.id && shell.getElements(node.id)
     const positionLimit = this.positionLimit(node.documentId)
 
-    const containerRect = canvas?.getContainerRect()
+    const containerRect = canvas?.getDocumentBodyRect()
     const rect = shell.getTopRect(node.id);
     if (elements && positionLimit && containerRect && rect) {
       const htmlDiv = document.createElement('div')
@@ -191,7 +191,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   }
 
   private positionLimit(documentId: ID) {
-    const rect = this.engine.getShell().getCanvas(documentId)?.getContainerRect()
+    const rect = this.engine.getShell().getCanvas(documentId)?.getDocumentBodyRect()
     if (!rect) {
       return null
     }

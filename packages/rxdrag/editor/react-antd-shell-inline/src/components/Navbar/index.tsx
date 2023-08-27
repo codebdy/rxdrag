@@ -1,6 +1,6 @@
 import { memo } from "react"
 import { Button, Space } from "antd"
-import { ApartmentOutlined, AppstoreOutlined, BgColorsOutlined, EllipsisOutlined } from "@ant-design/icons"
+import { ApartmentOutlined, AppstoreOutlined, BgColorsOutlined } from "@ant-design/icons"
 import styled from "styled-components"
 import { boxShadow, defaultHorizontalMargin, defaultVerticalMargin } from "../utils"
 import { DraggableWidget } from "../DraggableWidget"
@@ -43,7 +43,7 @@ export const Navbar = memo(() => {
           onClick={() => toggle(WidgetNames.property)}
         />
         <NavButton icon={<ApartmentOutlined />} />
-        <NavButton icon={<EllipsisOutlined />} />
+        {/* <NavButton icon={<EllipsisOutlined />} /> */}
       </Space>
     </Container>
   )

@@ -19,7 +19,7 @@ export class ContainerImpl implements IShellPane {
     return this.roolElement;
   }
 
-  getContainerRect(): IRect | null {
+  getDocumentBodyRect(): IRect | null {
     return this.roolElement.getBoundingClientRect()
   }
 

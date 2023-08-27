@@ -5,7 +5,8 @@ export interface IShellPane {
 	id: ID
 	getRootElement(): HTMLElement
 	getElements(id: ID): HTMLElement[] | null
-	getContainerRect(): IRect | null
+	//顶层容器的区域，主要为了iframe换算坐标
+	getDocumentBodyRect(): IRect | null
 	getNodeRect(nodeId: ID): IRect | null
 	appendChild(child: HTMLElement): void
 	contains(child: HTMLElement): boolean
