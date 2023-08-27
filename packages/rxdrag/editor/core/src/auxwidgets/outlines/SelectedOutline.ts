@@ -61,7 +61,7 @@ export class SelectedOutlineImpl implements IPlugin {
         htmlDiv.style.height = numbToPx(rect.height - 4)
         htmlDiv.style.width = numbToPx(rect.width - 4)
         htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
-        canvas?.appendChild(htmlDiv)
+        canvas?.appendAux(htmlDiv)
         this.htmls[id] = htmlDiv
 
         for (const element of elements) {

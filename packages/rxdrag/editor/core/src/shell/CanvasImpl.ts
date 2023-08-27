@@ -32,15 +32,18 @@ export class CanvasImpl implements IShellPane {
     return document.body.getBoundingClientRect()
   }
 
-  appendChild(child: HTMLElement): void {
-    document.body?.append(child)
+  appendAux(child: HTMLElement): void {
+    const auxContainer = document.getElementById(`aux-${this.id}`)
+    if (auxContainer) {
+      auxContainer.append(child)
+    } else {
+      document.body?.append(child)
+    }
   }
   contains(child: HTMLElement): boolean {
     return document.body?.contains(child) || false
   }
-  removeChild(child: HTMLElement): void {
-    document.body?.removeChild(child)
-  }
+
   getElements(id: string): HTMLElement[] | null {
     const nodeLists = document.body?.querySelectorAll(`[${RXID_ATTR_NAME}="${id}"]`)
     return extractElements(nodeLists)

@@ -28,7 +28,7 @@ export class GhostWidgetImpl implements IPlugin {
     htmlNode.style.padding = "4px 8px"
     htmlNode.style.pointerEvents = "none"
     htmlNode.style.whiteSpace = "nowrap"
-    htmlNode.style.zIndex = "10000"
+    htmlNode.style.zIndex = "100000"
     this.htmlNode = htmlNode
     this.shell = engine.getShell()
     if (!engine.getShell().getContainer) {
@@ -70,7 +70,7 @@ export class GhostWidgetImpl implements IPlugin {
         if (this.htmlNode.parentElement) {
           this.htmlNode.remove()
         }
-        container.appendChild(this.htmlNode)
+        container.appendAux(this.htmlNode)
       }
       this.htmlNode.style.display = "block"
       this.htmlNode.innerHTML = this.title

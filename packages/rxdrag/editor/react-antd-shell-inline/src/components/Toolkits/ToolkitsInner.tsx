@@ -10,7 +10,8 @@ import { ContainerImpl, DragDropDriver, CanvasResizeDriver, MouseMoveDriver, Key
 import { useDesignerEngine } from "@rxdrag/react-core"
 
 const Container = styled.div`
-  z-index: 100000;
+  position: fixed;
+  z-index: 1000;
 `
 
 export type ToolkitsInnerProps = {

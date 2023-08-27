@@ -95,7 +95,7 @@ export class ActivedOutlineImpl implements IPlugin {
       htmlDiv.style.height = numbToPx(rect.height - 2)
       htmlDiv.style.width = numbToPx(rect.width - 2)
       htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
-      canvas?.appendChild(htmlDiv)
+      canvas?.appendAux(htmlDiv)
       this.outline = htmlDiv
       for (const element of elements) {
         this.resizeObserver.observe(element)

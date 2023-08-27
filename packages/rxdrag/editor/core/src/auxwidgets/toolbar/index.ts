@@ -112,7 +112,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     const divEl = this.htmlElement
     const shell = this.engine.getShell()
     const canvas = shell.getCanvas(this.engine.getMonitor().getNodeDocumentId(node?.id || "") || "")
-    divEl && canvas?.contains(divEl) && canvas?.removeChild(divEl)
+    divEl && divEl.remove()
     this.htmlElement = null
     if (!node) {
       if (divEl) {
@@ -154,7 +154,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
       htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
       htmlDiv.style.userSelect = "none"
 
-      canvas?.appendChild(htmlDiv)
+      canvas?.appendAux(htmlDiv)
 
       const divRect = htmlDiv.getBoundingClientRect()
       if ((rect.x + rect.width - divRect.width) < positionLimit.left) {

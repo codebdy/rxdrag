@@ -46,6 +46,12 @@ export const Canvas = memo(() => {
   }, [doc, engine, inFrame])
 
   return (
-    doc ? <ComponentTreeWidget doc={doc} /> : <></>
+    doc
+      ? <>
+        <ComponentTreeWidget doc={doc} />
+        {/* 辅助部件容器 */}
+        <div id={`aux-${doc.id}`} />
+      </>
+      : <></>
   )
 })

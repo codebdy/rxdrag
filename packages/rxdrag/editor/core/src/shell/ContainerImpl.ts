@@ -23,17 +23,13 @@ export class ContainerImpl implements IShellPane {
     return this.roolElement.getBoundingClientRect()
   }
 
-  appendChild(child: HTMLElement): void {
+  appendAux(child: HTMLElement): void {
     this.roolElement.append(child)
   }
   contains(child: HTMLElement): boolean {
     return this.roolElement.contains(child)
   }
-  removeChild(child: HTMLElement): void {
-    if (this.contains(child)) {
-      this.roolElement.removeChild(child)
-    }
-  }
+
   getElements(id: string): HTMLElement[] | null {
     const nodeLists = this.roolElement.querySelectorAll(`[${RXID_ATTR_NAME}="${id}"]`)
     return extractElements(nodeLists)

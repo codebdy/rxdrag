@@ -41,13 +41,13 @@ export class InsertionCursorImpl implements IPlugin {
     if (dragover) {
       if (dragover?.position === "in") {
         if (!canvas?.contains(this.htmlCoverNode)) {
-          canvas?.appendChild(this.htmlCoverNode)
+          canvas?.appendAux(this.htmlCoverNode)
         }
         this.renderCover(dragover)
         this.htmlCursorNode.style.display = "none"
       } else {
         if (!canvas?.contains(this.htmlCursorNode)) {
-          canvas?.appendChild(this.htmlCursorNode)
+          canvas?.appendAux(this.htmlCursorNode)
         }
         this.renderCursor(dragover)
         this.htmlCoverNode.style.display = "none"
