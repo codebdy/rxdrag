@@ -2,7 +2,7 @@ import { Button, Modal } from "antd"
 import { memo, useCallback, useState } from "react"
 import { jsonIcon } from "../../icons"
 import styled from "styled-components"
-import { JsonView } from "@rxdrag/react-core"
+import { JsonView, useSettersTranslate } from "@rxdrag/react-core"
 
 const ContentContainter = styled.div`
   height: calc(100vh - 200px);
@@ -10,6 +10,7 @@ const ContentContainter = styled.div`
 
 export const JSONButton = memo(() => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const t = useSettersTranslate()
 
   const handleShow = useCallback(() => {
     setIsModalOpen(true);
@@ -30,7 +31,7 @@ export const JSONButton = memo(() => {
       <Modal
         width={1000}
         centered
-        title={"View Json"}
+        title={t("jsonCode")}
         open={isModalOpen}
         footer={false}
         onCancel={handleCancel}

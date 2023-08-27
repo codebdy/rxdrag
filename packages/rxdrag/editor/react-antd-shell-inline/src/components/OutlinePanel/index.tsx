@@ -4,17 +4,20 @@ import { PanelTitle } from "../Panel/PanelTitle"
 import { Panel } from "../Panel"
 import { WidgetNames } from "../../interfaces"
 import { useClose } from "../../hooks/useClose"
+import { useSettersTranslate } from "@rxdrag/react-core"
 
 const Container = styled(Panel).attrs({ name: WidgetNames.outline })`
   left:${8 + 260}px;
 `
 
 export const OutlinePanel = memo(() => {
+  const t = useSettersTranslate()
+
   const close = useClose(WidgetNames.outline)
   return (
     <Container className="rx-property-panel">
       <PanelTitle onClose={close}>
-        大纲
+        {t("outline")}
       </PanelTitle>
     </Container>
   )

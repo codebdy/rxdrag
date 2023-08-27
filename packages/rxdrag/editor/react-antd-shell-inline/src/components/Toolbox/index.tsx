@@ -4,6 +4,7 @@ import { PanelTitle } from "../Panel/PanelTitle"
 import { Panel } from "../Panel"
 import { WidgetNames } from "../../interfaces"
 import { useClose } from "../../hooks/useClose"
+import { useSettersTranslate } from "@rxdrag/react-core"
 
 const Container = styled(Panel).attrs({ name: WidgetNames.toolbox })`
   left:8px;
@@ -21,11 +22,12 @@ export const Toolbox = memo((
   }
 ) => {
   const { children } = props;
+  const t = useSettersTranslate()
   const close = useClose(WidgetNames.toolbox)
   return (
     <Container className="rx-widget-toolbox">
       <PanelTitle onClose={close}>
-        工具箱
+        {t("components")}
       </PanelTitle>
       <PannelContent>
         {

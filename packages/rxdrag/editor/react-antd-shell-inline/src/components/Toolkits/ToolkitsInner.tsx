@@ -9,6 +9,7 @@ import classNames from "classnames"
 import { ContainerImpl, DragDropDriver, CanvasResizeDriver, MouseMoveDriver, KeyboardDriver } from "@rxdrag/core"
 import { useDesignerEngine } from "@rxdrag/react-core"
 import { OutlinePanel } from "../OutlinePanel"
+import { commonLocales } from "../../locales"
 
 const Container = styled.div`
   position: fixed;
@@ -45,6 +46,11 @@ export const ToolkitsInner = memo((props: ToolkitsInnerProps) => {
         engine.getShell().getContainer()?.destroy()
       }
     }
+  }, [engine])
+
+  useEffect(() => {
+    const langMgr = engine?.getLocalesManager()
+    langMgr?.registerLocales(commonLocales)
   }, [engine])
 
   return (
