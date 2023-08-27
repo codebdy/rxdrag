@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useCallback } from "react"
 import {
   GhostWidget,
   InsertionCursor,
@@ -16,25 +16,32 @@ import {
   DraggedAttenuator,
 } from "@rxdrag/core";
 import { memo, useEffect, useRef, useState } from "react"
-import { DesignerEngineContext } from "./contexts";
-import { DesignRoot } from "./DesignRoot";
-import { IComponentMaterial } from "./interfaces";
-import { useComponentsFromMaterials } from "./hooks/useComponentsFromMaterials";
+import { DesignerEngineContext, IMinionOptions, MinionOptionContext } from "./contexts";
 import { LocalesContext } from "@rxdrag/react-locales";
+import { IComponentMaterial } from "./interfaces";
+import { IReactComponents, ReactComponent } from "@rxdrag/react-shared";
+import { ISetterComponents } from "@rxdrag/core";
+import { Fieldy } from "@rxdrag/react-fieldy";
+import { ComponentsRoot } from "./ComponentsRoot";
+import { ILocales } from "@rxdrag/locales";
 
 export interface DesignerProps {
-  components?: IComponentMaterial[]
-  onReady?: (engine: IDesignerEngine) => void,
+  minionOptions?: IMinionOptions,
   themeMode?: ThemeMode,
-  children?: React.ReactNode
+  children?: React.ReactNode,
+  //初始物料，其它地方还可以继续注册
+  materials?: IComponentMaterial[]
+  setters?: ISetterComponents<ReactComponent>
+  locales?: ILocales,
 }
 export const Designer = memo((props: DesignerProps) => {
-  const { themeMode = "light", components, children, onReady } = props
+  const { minionOptions, themeMode = "light", children, materials, setters, locales } = props
+  const [components, setComponents] = useState<IReactComponents>({})
   const [engine, setEngine] = useState<IDesignerEngine>();
   const themeModeRef = useRef(themeMode)
   themeModeRef.current = themeMode
   useEffect(() => {
-    let eng: IDesignerEngine | undefined = undefined
+    let eng: IDesignerEngine<ReactComponent, React.ReactNode> | undefined = undefined
     eng = createEngine(
       [
         StartDragController,
@@ -54,35 +61,68 @@ export const Designer = memo((props: DesignerProps) => {
       }
     )
     setEngine(eng)
-    onReady && onReady(eng)
     return () => {
       eng?.destroy()
     }
 
-  }, [onReady])
+  }, [])
 
   useEffect(() => {
     if (engine) {
       engine.getActions().setThemeMode(themeMode)
     }
   }, [engine, themeMode])
+  //const register = useRegisterComponentMaterial()
 
   useEffect(() => {
-    if (engine && components?.length) {
-      console.log("Designer 初始化时注册组件")
-      engine.getComponentManager().registerComponents(...components)
-    }
-  }, [components, engine])
+    engine?.registerMaterials(materials || [])
+  }, [engine, materials])
 
-  const { designComponents } = useComponentsFromMaterials(components)
+  useEffect(()=>{
+    const langMgr = engine?.getLocalesManager()
+    locales && langMgr?.registerLocales(locales)
+  }, [engine, locales])
+
+  useEffect(() => {
+    if (setters) {
+      engine?.getSetterManager().registerSetters(setters)
+    }
+  }, [engine, setters])
+
+  const pullComponents = useCallback(() => {
+    const materials = engine?.getComponentManager().getAllComponentConfigs()
+    if (materials) {
+      const coms: IReactComponents = {}
+      for (const key of Object.keys(materials)) {
+        coms[key] = materials[key]?.component
+      }
+      setComponents(coms)
+    }
+  }, [engine])
+
+  useEffect(() => {
+    pullComponents()
+  }, [pullComponents])
+
+  useEffect(() => {
+    const unsub = engine?.getComponentManager().subscribeComponentsChange(pullComponents)
+    return unsub
+  }, [engine, pullComponents])
 
   return (
-    <LocalesContext.Provider value={engine?.getLocalesManager()}>
-      <DesignerEngineContext.Provider value={engine}>
-        <DesignRoot components={designComponents}>
-          {children}
-        </DesignRoot >
-      </DesignerEngineContext.Provider>
-    </LocalesContext.Provider>
+    <Fieldy>
+      <MinionOptionContext.Provider value={minionOptions}>
+        <LocalesContext.Provider value={engine?.getLocalesManager()}>
+          <DesignerEngineContext.Provider value={engine}>
+            {
+              //Preivew的时候用的组件，主要针对无Iframe画布
+              <ComponentsRoot components={components}>
+                {engine && children}
+              </ComponentsRoot>
+            }
+          </DesignerEngineContext.Provider>
+        </LocalesContext.Provider>
+      </MinionOptionContext.Provider>
+    </Fieldy>
   )
 })

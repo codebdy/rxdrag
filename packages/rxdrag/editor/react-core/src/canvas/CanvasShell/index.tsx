@@ -1,8 +1,22 @@
 import React from "react"
-import { useCanvasWidthLimitsState,useCanvasWidthState } from "../../hooks"
+import { useCanvasWidthLimitsState, useCanvasWidthState } from "../../hooks"
 import { memo, useCallback, useEffect, useRef, useState } from "react"
 import { CanvasHandler, PositionType } from "../CanvasHandler"
-import "./style.less"
+import styled from "styled-components"
+
+const Shell = styled.div`
+  position: relative;
+  height: 0;
+  flex: 1;
+  width: 400px;
+  transform: scale3d(1, 1, 1);
+
+  display: flex;
+  flex-flow: column;
+  &.transition{
+    transition: width 0.3s
+  }
+`
 
 export const CanvasShell = memo((
   props: {
@@ -15,7 +29,7 @@ export const CanvasShell = memo((
   const [startWidth, setStartWidth] = useState(0)
   const [realWidth, setRealWidth] = useCanvasWidthState()
   const [canvasLimits] = useCanvasWidthLimitsState()
-  
+
   useEffect(() => {
     if (canvasLimits) {
       setRealWidth(canvasLimits.maxWidth)
@@ -57,7 +71,7 @@ export const CanvasShell = memo((
   }, [])
 
   return (
-    <div
+    <Shell
       ref={ref}
       className="rx-canvas-shell"
       style={{
@@ -77,6 +91,6 @@ export const CanvasShell = memo((
         onDragBegin={handleDragStart}
         onDragStop={handleDragStop}
       />
-    </div>
+    </Shell>
   )
 })

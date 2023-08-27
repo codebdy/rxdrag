@@ -1,4 +1,5 @@
 import { INodeSchema } from "@rxdrag/schema"
+import { ISubscribable } from "@rxdrag/shared"
 
 export interface ILangLocales {
   resources?: {
@@ -21,18 +22,27 @@ export interface ILocales {
   [ISOCode: string]: ILangLocales
 }
 
-export interface ILocalesManager {
-  lang: string
-  //setLanguage(lang: string): void
+export type LocalesResources = {
+  lang: string,
+  locales: Record<string, ILangLocales>
+}
+
+export interface ILocalesManager extends ISubscribable<LocalesResources> {
+  getLang: () => string
+  setLang(lang: string): void
   getMessage(key: string): string | null
+  registerLocales(...locales: ILocales[]): void
+}
+
+export interface IRxDragLocalesManager extends ILocalesManager {
+  setLang(lang: string): void
   getResourceMessage(key: string): string | null
   getComponentMessage(componentName: string, key: string): string | null
-  getToolsMessage(key: string): string | null
-  registerLocales(...locales: ILocales[]): void
+  getSettersMessage(key: string): string | null
+
   registerResourceLocales(...locales: ILocales[]): void
   registerComponentLocales(componentName: string, locales: ILocales): void
   registerComponentsLocales(...locales: ILocales[]): void
   registerSetterLocales(...locales: ILocales[]): void
-
   translateDesignerSchema(componentName: string, schema: INodeSchema): INodeSchema
 }

@@ -7,6 +7,7 @@ import { AUX_BACKGROUND_COLOR } from "../constants";
 import { numbToPx } from "../utils/numbToPx";
 import { getMaxZIndex } from "./getMaxZIndex";
 
+//选中时的轮廓线
 export class SelectedOutlineImpl implements IPlugin {
   name = "default.selected-outline";
   resizeObserver: ResizeObserver
@@ -28,7 +29,7 @@ export class SelectedOutlineImpl implements IPlugin {
     this.resizeObserver = new ResizeObserver(this.onResize)
     this.unsubscribe = engine.getMonitor().subscribeToSelectChange(this.handleSelectChange)
     this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
-    this.unCanvasScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
+    this.unCanvasScroll = this.engine.getShell().subscribeTo<CanvasScrollEvent>(CanvasScrollEvent.Name, this.refresh)
     this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
     this.draggingResourceOff = this.engine.getMonitor().subscribeToDraggingResource(this.handleDraggingResource)
   }
@@ -43,26 +44,29 @@ export class SelectedOutlineImpl implements IPlugin {
 
   render = () => {
     this.clear()
+    const shell = this.engine.getShell()
     for (const id of this.selectedNodes || []) {
-      const element = this.engine.getShell().getElement(id)
-      const canvas = this.engine.getShell().getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
-      const containerRect = canvas?.getContainerRect()
-      if (element && containerRect) {
-        const rect = element.getBoundingClientRect();
+      const elements = shell.getElements(id)
+      const canvas = shell.getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
+      const containerRect = canvas?.getDocumentBodyRect()
+      const rect = shell.getTopRect(id);
+      if (elements && containerRect && rect) {
         const htmlDiv = document.createElement('div')
         htmlDiv.style.backgroundColor = "transparent"
         htmlDiv.style.position = "fixed"
         htmlDiv.style.border = `solid 2px ${AUX_BACKGROUND_COLOR}`
         htmlDiv.style.pointerEvents = "none"
-        htmlDiv.style.left = numbToPx(rect.left - containerRect.x)
-        htmlDiv.style.top = numbToPx(rect.top - containerRect.y)
+        htmlDiv.style.left = numbToPx(rect.x - containerRect.x)
+        htmlDiv.style.top = numbToPx(rect.y - containerRect.y)
         htmlDiv.style.height = numbToPx(rect.height - 4)
         htmlDiv.style.width = numbToPx(rect.width - 4)
-        htmlDiv.style.zIndex = (getMaxZIndex(element) + 1).toString()
-        canvas?.appendChild(htmlDiv)
+        htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
+        canvas?.appendAux(htmlDiv)
         this.htmls[id] = htmlDiv
 
-        this.resizeObserver.observe(element)
+        for (const element of elements) {
+          this.resizeObserver.observe(element)
+        }
       }
     }
   }
@@ -71,7 +75,7 @@ export class SelectedOutlineImpl implements IPlugin {
     this.resizeObserver.disconnect()
     this.selectedNodes = selectedIds
     this.refresh()
-    if (selectedIds?.length && !this.engine.getShell().getElement(selectedIds?.[0])) {
+    if (selectedIds?.length && !this.engine.getShell().getElements(selectedIds?.[0])) {
       setTimeout(() => {
         this.refresh()
       }, 100)

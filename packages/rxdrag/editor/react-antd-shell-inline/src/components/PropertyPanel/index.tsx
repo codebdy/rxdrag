@@ -1,25 +1,27 @@
 import { memo } from "react"
 import styled from "styled-components"
-import { boxShadow } from "../utils"
+import { PanelTitle } from "../Panel/PanelTitle"
+import { Panel } from "../Panel"
+import { WidgetNames } from "../../interfaces"
+import { useClose } from "../../hooks/useClose"
+import { useSettersTranslate } from "@rxdrag/react-core"
+import { SettingsForm } from "@rxdrag/react-antd-shell"
 
-const Container = styled.div`
-  position: fixed;
-  height:calc(100vh - 120px);
-  width: 200px;
-  box-shadow: ${boxShadow};
-  top: 50%;
-  transform: translateY(-50%);
+const Container = styled(Panel).attrs({ name: WidgetNames.property })`
   right:8px;
-  border: solid 1px ${props => props.theme?.token?.colorBorder};
-  background-color: ${props => props.theme?.token?.colorBgContainer};
-  border-radius: 8px;
-  display: flex;
+  width: 320px;
 `
 
 export const PropertyPanel = memo(() => {
+  const close = useClose(WidgetNames.property)
+  const t = useSettersTranslate()
+
   return (
-    <Container>
-      属性面板
+    <Container className="rx-property-panel">
+      <PanelTitle onClose={close}>
+        {t("properties")}
+      </PanelTitle>
+      <SettingsForm />
     </Container>
   )
 })

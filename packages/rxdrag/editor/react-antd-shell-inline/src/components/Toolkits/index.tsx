@@ -1,22 +1,22 @@
 import { memo } from "react"
-import styled from "styled-components"
-import { NavPostion, Navbar } from "../Navbar"
-import { Toolbar } from "../Toolbar"
-import { Toolbox } from "../Toolbox"
-import { PropertyPanel } from "../PropertyPanel"
+import { ToolketsScope } from "./ToolketsScope"
+import { ToolkitsInner, ToolkitsInnerProps } from "./ToolkitsInner"
+import { ConfigProvider, theme } from "antd";
+import "./style.css"
 
-const Container = styled.div`
-  z-index: 100000;
-`
+export const Toolkits = memo((props: ToolkitsInnerProps & {
+  name?: string,
+}) => {
+  const { toolbox, toolbar, name, themeMode = "dark" } = props;
 
-export const Toolkits = memo(() => {
-
+  
   return (
-    <Container>
-      <Toolbox />
-      <PropertyPanel />
-      <Toolbar />
-      <Navbar position={NavPostion.BottomRight} />
-    </Container>
+    <ConfigProvider
+      theme={{ algorithm: themeMode === "dark" ? theme.darkAlgorithm : theme.defaultAlgorithm }}
+    >
+      <ToolketsScope name={name}>
+        <ToolkitsInner toolbox={toolbox} toolbar={toolbar} themeMode={themeMode} />
+      </ToolketsScope>
+    </ConfigProvider>
   )
 })

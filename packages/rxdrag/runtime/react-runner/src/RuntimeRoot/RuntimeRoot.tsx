@@ -1,35 +1,21 @@
-import { IComponents } from "@rxdrag/react-shared"
+import { IReactComponents } from "@rxdrag/react-shared"
 import React, { memo, useEffect } from "react"
-import { useCallback, useMemo, useState } from "react"
-import { ControllersContext, PreviewComponentsContext, RuntimeEngineContext } from "../contexts"
-import { IComponentsParams } from "../interfaces"
+import { useState } from "react"
+import { PreviewComponentsContext, ControllersContext, RuntimeEngineContext } from "../contexts"
 import { ControllerFactories, RuntimeEngine } from "./RuntimeEngine"
 import { useLogicFlowContext } from "../hooks/useLogicFlowContext"
 import { IComponentRenderSchema } from "../ComponentView"
 import { LOGICFLOW_TYPE_NAME, LogicFlowControllerFactory, SCRIPT_TYPE_NAME, ScriptControllerFactory } from "@rxdrag/minions-runtime-react"
 
 export const RuntimeRoot = memo((props: {
-  components?: IComponents,
+  components?: IReactComponents,
   children: React.ReactNode,
   schema: IComponentRenderSchema,
   controllerFactories?: ControllerFactories,
 }) => {
-  const { components: initalComponents, children, schema, controllerFactories } = props
+  const { components = {}, children, schema, controllerFactories } = props
   const [runtimeEngine, setRuntimeEngine] = useState<RuntimeEngine>()
-  const [components, setComponents] = useState<IComponents>({})
   const logicFlowContext = useLogicFlowContext();
-  const handleRegister = useCallback((...components: IComponents[]) => {
-    for (const com of components) {
-      setComponents(coms => ({ ...coms, ...com }))
-    }
-  }, [])
-  const params: IComponentsParams = useMemo(() => {
-    return {
-      components: { ...initalComponents, ...components },
-      registerComponents: handleRegister
-    }
-  }, [components, handleRegister, initalComponents])
-
 
   useEffect(() => {
     const defaultFactories = {
@@ -39,7 +25,7 @@ export const RuntimeRoot = memo((props: {
     const rtEngine = new RuntimeEngine(schema, { ...defaultFactories, ...controllerFactories })
     setRuntimeEngine(rtEngine)
 
-    return ()=>{
+    return () => {
       rtEngine.destroy()
     }
   }, [controllerFactories, logicFlowContext, schema])
@@ -48,7 +34,7 @@ export const RuntimeRoot = memo((props: {
     runtimeEngine ?
       <RuntimeEngineContext.Provider value={runtimeEngine}>
         <ControllersContext.Provider value={runtimeEngine?.globalControllers || {}}>
-          <PreviewComponentsContext.Provider value={params}>
+          <PreviewComponentsContext.Provider value={components}>
             {
               children
             }

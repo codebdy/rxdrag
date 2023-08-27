@@ -1,7 +1,14 @@
 import React, { CSSProperties, memo } from "react"
 import { useStyles } from "../../hooks/useStyles";
 import cls from "classnames"
-import "./style.less"
+import styled from "styled-components";
+
+const Container = styled.div`
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+`
 
 export const CanvasToolbar = memo((
   props: {
@@ -16,8 +23,8 @@ export const CanvasToolbar = memo((
   }))
 
   return (
-    <div className={cls("rx-canvas-toolbar", className)} style={{ ...styles, ...style }} {...other}>
+    <Container className={cls("rx-canvas-toolbar", className)} style={{ ...styles, ...style }} {...other}>
       {children}
-    </div>
+    </Container>
   )
 })

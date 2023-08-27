@@ -31,7 +31,7 @@ export enum NodeType {
 	AuxWidget = "aux-widget"
 }
 
-//===========================================>>>
+//===============================================
 // HTML Dom 附加属性，驱动模块根据该属性识别节点
 export const RXID_ATTR_NAME = "rx-id"
 export const RX_NODE_TYPE_ATTR_NAME = "rx-node-type" //对应枚举NodeType

@@ -56,6 +56,7 @@
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/minions-logicflow-editor": "workspace:*",
     "@rxdrag/minions-controller-editor": "workspace:*",
+    "@rxdrag/react-antd-shell": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "lodash": "^4.17.21",

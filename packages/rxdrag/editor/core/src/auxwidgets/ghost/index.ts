@@ -5,6 +5,7 @@ import { DraggingNodesState } from "../../reducers/draggingNodes";
 import { DraggingResourceState } from "../../reducers/draggingResource";
 import { numbToPx } from "../utils/numbToPx";
 
+//跟随鼠标
 export class GhostWidgetImpl implements IPlugin {
   name = "default.ghost";
   htmlNode: HTMLElement;
@@ -27,7 +28,7 @@ export class GhostWidgetImpl implements IPlugin {
     htmlNode.style.padding = "4px 8px"
     htmlNode.style.pointerEvents = "none"
     htmlNode.style.whiteSpace = "nowrap"
-    htmlNode.style.zIndex = "10000"
+    htmlNode.style.zIndex = "100000"
     this.htmlNode = htmlNode
     this.shell = engine.getShell()
     if (!engine.getShell().getContainer) {
@@ -35,7 +36,7 @@ export class GhostWidgetImpl implements IPlugin {
     }
     this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
     this.draggingResourceOff = this.engine.getMonitor().subscribeToDraggingResource(this.handleDraggingResource)
-    this.dragOff = this.shell.subscribeTo(MouseMoveEvent, this.handleDrag)
+    this.dragOff = this.shell.subscribeTo<MouseMoveEvent>(MouseMoveEvent.Name, this.handleDrag)
   }
 
   handleDraggingNodes = (dragging: DraggingNodesState | null) => {
@@ -54,7 +55,7 @@ export class GhostWidgetImpl implements IPlugin {
     if (dragging) {
       const resource = this.engine.getResourceManager().getResource(dragging.resource)
       if (resource) {
-        this.title = resource.title || resource.id || "undefined"
+        this.title = this.engine.getLocalesManager().getResourceMessage(resource.title) || resource.id || "undefined"
         this.mount()
       }
     } else {
@@ -65,11 +66,11 @@ export class GhostWidgetImpl implements IPlugin {
   handleDrag = (e: MouseMoveEvent): void => {
     if (this.mounted && this.engine.getShell().dragging) {
       const container = this.engine.getShell().getContainer()
-      if(container && !container.contains(this.htmlNode)){
-        if(this.htmlNode.parentElement){
+      if (container && !container.contains(this.htmlNode)) {
+        if (this.htmlNode.parentElement) {
           this.htmlNode.remove()
         }
-        container.appendChild(this.htmlNode)
+        container.appendAux(this.htmlNode)
       }
       this.htmlNode.style.display = "block"
       this.htmlNode.innerHTML = this.title

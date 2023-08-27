@@ -1,7 +1,14 @@
 import React, { CSSProperties, memo } from "react"
 import cls from "classnames"
-import "./style.less"
 import { useStyles } from "../../hooks"
+import styled from "styled-components"
+
+const Container = styled.div`
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+`
 
 export const CenterContent = memo((
   props: {
@@ -16,8 +23,8 @@ export const CenterContent = memo((
   }))
 
   return (
-    <div className={cls(className, "rx-center-content")} style={{ ...styles, ...style }} {...other}>
+    <Container className={cls(className, "rx-center-content")} style={{ ...styles, ...style }} {...other}>
       {children}
-    </div>
+    </Container>
   )
 })

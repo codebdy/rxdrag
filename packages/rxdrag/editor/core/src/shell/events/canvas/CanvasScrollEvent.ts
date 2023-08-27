@@ -3,7 +3,7 @@ import { AbstractCanvasEvent } from './AbstractCanvasEvent'
 
 export class CanvasScrollEvent
   extends AbstractCanvasEvent
-  implements ICustomEvent
-{
-  type = 'canvas:scroll'
+  implements ICustomEvent {
+  static Name = 'canvas:scroll'
+  name = CanvasScrollEvent.Name
 }

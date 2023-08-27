@@ -129,7 +129,7 @@ export class PositionJudger {
 
   //在此区域内，算是拖入
   get dragInRect() {
-    const rect = this.engine.getShell().getElement(this.node.id)?.getBoundingClientRect();
+    const rect = this.engine.getShell().getTopRect(this.node.id);
     if (!rect) {
       return undefined;
     }
@@ -137,13 +137,13 @@ export class PositionJudger {
       ...rect,
       x: rect.x + this.dropInMargin,
       width: rect.width - this.dropInMargin * 2,
-      y: rect.top + this.dropInMargin,
+      y: rect.y + this.dropInMargin,
       height: rect.height - this.dropInMargin * 2,
     });
   }
 
   get rect() {
-    const rect = this.engine.getShell().getElement(this.node.id)?.getBoundingClientRect();
+    const rect = this.engine.getShell().getTopRect(this.node.id);
     if (!rect) {
       return undefined;
     }
@@ -178,16 +178,16 @@ export class PositionJudger {
 
     const { clientX, clientY } = event;
 
-    const rect = this.engine.getShell().getElement(theNode.id)?.getBoundingClientRect();
+    const rect = this.engine.getShell().getTopRect(theNode.id);
     if (!rect) {
       return false;
     }
 
-    if (rect.left >= clientX) {
+    if (rect.x >= clientX) {
       return true;
     }
 
-    if (rect.top >= clientY) {
+    if (rect.y >= clientY) {
       return true;
     }
 
@@ -217,9 +217,9 @@ export class PositionJudger {
       const beforeChild = this.engine.getMonitor().getNode(beforeId);
 
       if (beforeChild && beforeChild.id !== this.node.id) {
-        const element = this.engine.getShell().getElement(beforeChild.id)
-        if (element) {
-          const layout = calcElementLayout(element)
+        const elements = this.engine.getShell().getElements(beforeChild.id)
+        if (elements?.length) {
+          const layout = elements.length === 1 ? calcElementLayout(elements[0]) : "horizontal"
           if (layout === "horizontal") {
             return {
               targetId: beforeChild.id,
@@ -235,9 +235,9 @@ export class PositionJudger {
           //console.error("can not find node element")
         }
       } else if (afterChild) {
-        const element = this.engine.getShell().getElement(afterChild.id)
-        if (element) {
-          const layout = calcElementLayout(element)
+        const elements = this.engine.getShell().getElements(afterChild.id)
+        if (elements) {
+          const layout = elements.length === 1 ? calcElementLayout(elements[0]) : "horizontal"
           if (layout === "horizontal") {
             return {
               targetId: afterChild.id,
@@ -259,9 +259,9 @@ export class PositionJudger {
         //console.log('undefined1')
         return null;
       }
-      const element = this.engine.getShell().getElement(this.node.id)
-      if (element) {
-        const layout = calcElementLayout(element)
+      const elements = this.engine.getShell().getElements(this.node.id)
+      if (elements) {
+        const layout = elements.length === 1 ? calcElementLayout(elements[0]) : "horizontal"
         return {
           targetId: this.node.id,
           position: this.rect?.atOutPosition(eventData, layout || "vertical") || null,

@@ -1,10 +1,16 @@
-import React from "react"
 import { IDocument } from "@rxdrag/core"
 import { memo } from "react"
 import { DocumentContext } from "../contexts"
 import { ComponentDesignerView } from "./ComponentDesignerView"
+import styled from "styled-components"
 
-import "./style.less"
+const ComponentTree = styled.div`
+  min-height: 100%;
+  min-width: 100%;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+`
 
 export type ComponentTreeWidgetProps = {
   doc: IDocument
@@ -19,12 +25,12 @@ export const ComponentTreeWidget = memo((
 
   return (
     <DocumentContext.Provider value={doc}>
-      <div className="rx-component-tree">
+      <ComponentTree className="rx-component-tree">
         {
           rootNode?.id &&
           <ComponentDesignerView nodeId={rootNode?.id} />
         }
-      </div>
+      </ComponentTree>
     </DocumentContext.Provider>
   )
 })

@@ -1,42 +1,39 @@
 import { memo } from "react"
 import styled from "styled-components"
-import { boxShadow } from "../utils"
-import { CloseOutlined } from "@ant-design/icons"
-import { Button } from "antd"
+import { PanelTitle } from "../Panel/PanelTitle"
+import { Panel } from "../Panel"
+import { WidgetNames } from "../../interfaces"
+import { useClose } from "../../hooks/useClose"
+import { useSettersTranslate } from "@rxdrag/react-core"
 
-const Container = styled.div`
-  position: fixed;
-  height:calc(100vh - 120px);
-  width: 200px;
-  box-shadow: ${boxShadow};
-  top: 50%;
-  transform: translateY(-50%);
+const Container = styled(Panel).attrs({ name: WidgetNames.toolbox })`
   left:8px;
-  border: solid 1px ${props => props.theme?.token?.colorBorder};
-  background-color: ${props => props.theme?.token?.colorBgContainer};
-  border-radius: 8px;
+`
+const PannelContent = styled.div`
+  flex:1;
   display: flex;
-  flex-flow: column;
+  height: 0;
+  overflow: auto;
 `
 
-const Title = styled.div`
-  display: flex;
-  padding: 8px 16px;
-  padding-right: 8px;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: solid 1px ${props => props.theme?.token?.colorBorder};
-`
-
-export const Toolbox = memo(() => {
+export const Toolbox = memo((
+  props: {
+    children?: React.ReactNode
+  }
+) => {
+  const { children } = props;
+  const t = useSettersTranslate()
+  const close = useClose(WidgetNames.toolbox)
   return (
-    <Container>
-      <Title>
-        <span>
-          工具箱
-        </span>
-        <Button type="text" size="small" icon={<CloseOutlined />} />
-      </Title>
+    <Container className="rx-widget-toolbox">
+      <PanelTitle onClose={close}>
+        {t("components")}
+      </PanelTitle>
+      <PannelContent>
+        {
+          children
+        }
+      </PannelContent>
     </Container>
   )
 })

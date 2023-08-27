@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
+  EditOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   UploadOutlined,
@@ -7,10 +8,12 @@ import {
   VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu, Button, theme, Space } from 'antd';
-import { Logo } from './Logo';
 import styled from 'styled-components';
-import { MenuButton } from 'example-common';
-import { EditorScope, Toolkits } from '@rxdrag/react-antd-shell-inline';
+import { Logo, MenuButton, controllerDefines, materials, minionsLocales, minionsMaterialCategories, setterLocales } from 'example-common';
+import { EditorScope } from '@rxdrag/react-antd-shell-inline';
+import { PageEditor, pageMaterial } from './page';
+import { INodeSchema } from "@rxdrag/schema"
+import { ControllerSetter } from "@rxdrag/react-antd-shell"
 
 const { Header, Sider, Content } = Layout;
 
@@ -33,22 +36,41 @@ const StyledHeader = styled(Header)`
   align-items: center;
 `
 
+const exampleMaterials = [...materials, pageMaterial]
+
 export const InlineEditorExample: React.FC = () => {
+  const [design, setDesign] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
+  const handleToggleDesign = useCallback(() => {
+    setDesign(design => !design)
+  }, [])
+
+  const handleFinished = useCallback((schema: INodeSchema) => {
+    console.log("====>finished", schema)
+    setDesign(false)
+  }, [])
+
   return (
-    <EditorScope>
+    <EditorScope
+      themeMode='dark'
+      minionOptions={{
+        materials: minionsMaterialCategories,
+        locales: minionsLocales,
+        controllers: controllerDefines,
+      }}
+      materials={exampleMaterials}
+      setters={{ ControllerSetter }}
+      locales = {setterLocales}
+    >
       <StyleLayout>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <LogoContainer>
             <Space>
-              <Logo />
-              <span>
-                内联编辑器
-              </span>
+              <Logo title="Inline" style={{ color: "#fff" }} />
             </Space>
           </LogoContainer>
           <Menu
@@ -87,6 +109,7 @@ export const InlineEditorExample: React.FC = () => {
               }}
             />
             <Space>
+              <Button type='text' icon={<EditOutlined />} onClick={handleToggleDesign} />
               <MenuButton />
             </Space>
           </StyledHeader>
@@ -98,8 +121,7 @@ export const InlineEditorExample: React.FC = () => {
               background: colorBgContainer,
             }}
           >
-            Content
-            <Toolkits />
+            <PageEditor design={design} onFinished={handleFinished} />
           </Content>
         </Layout>
       </StyleLayout>

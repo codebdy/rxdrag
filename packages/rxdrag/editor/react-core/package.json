@@ -42,6 +42,9 @@
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
+    "@rxdrag/react-fieldy": "workspace:*",
+    "@rxdrag/minions-schema": "workspace:*",
+    "@rxdrag/minions-runtime-react": "workspace:*",
     "lodash": "^4.17.21",
     "styled-components": "^5.3.9"
   }

@@ -1,131 +1,59 @@
-import { isArr, isObj, isStr } from "@rxdrag/shared";
+import { Listener, Subscriber } from "@rxdrag/shared";
 import _ from "lodash"
-import { INodeSchema } from "@rxdrag/schema";
-import { ILocales, ILocalesManager } from "../interfaces";
+import { ILocales, ILocalesManager, LocalesResources } from "../interfaces";
 
 export class LocalesManager implements ILocalesManager {
-  locales: ILocales = {
-  }
-  constructor(public lang: string = "zh-CN", locales?: ILocales) {
-    locales && this.registerLocales(locales)
+  protected resources: Subscriber<LocalesResources>
+
+  constructor(lang: string = "zh-CN", locales?: ILocales) {
+    this.resources = new Subscriber<LocalesResources>({
+      lang,
+      locales: locales || {}
+    })
   }
 
-  // setLanguage(lang: string): void {
-  //   this.lang = lang
-  // }
+  subscribeChange = (listener: Listener<LocalesResources>) => {
+    return this.resources.subscribeChange(listener)
+  };
+
+  get lang() {
+    return this.getLang()
+  }
+
+  get locales() {
+    return this.resources.getValue().locales
+  }
+
+  getLang = () => {
+    return this.resources.getValue().lang
+  }
+
+  setLang(lang: string): void {
+    this.resources.setValue({ ...this.resources.getValue(), lang })
+  }
 
   getMessage(key: string): string | null {
     return this.getValueByKey(this.locales?.[this.lang], key)
   }
 
-  getResourceMessage(key: string): string | null {
-    const currentLocales = this.locales[this.lang]?.resources
-    return this.getValueByKey(currentLocales || {}, key)
-  }
-
-  getComponentMessage(componentName: string, key: string): string | null {
-    const currentLocales = this.locales?.[this.lang]?.components
-    return this.getValueByKey(currentLocales?.[componentName] || {}, key)
-  }
-
-  getToolsMessage(key: string): string | null {
-    const currentLocales = this.locales?.[this.lang]?.setters
-    return this.getValueByKey(currentLocales || {}, key)
-  }
-
   registerLocales(...locales: ILocales[]): void {
-    this.locales = _.merge(this.locales, ...locales)
-  }
-  registerResourceLocales(...locales: ILocales[]): void {
-    this.registerLocalesOnItem("resources", ...locales)
-  }
-
-  registerComponentsLocales(...locales: ILocales[]): void {
-    this.registerLocalesOnItem("components", ...locales)
+    let newLocales = { ...this.locales }
+    newLocales = _.merge(newLocales, ...locales)
+    this.resources.setValue({ ...this.resources.getValue(), locales: newLocales })
   }
 
-  registerComponentLocales(componentName: string, locales: ILocales): void {
-    for (const lang of Object.keys(locales)) {
-      if (!this.locales[lang]) {
-        this.locales[lang] = {}
-      }
-      const currentlangLocales = this.locales[lang]
-      if (!currentlangLocales.components) {
-        currentlangLocales.components = {}
-      }
-      currentlangLocales.components[componentName] = locales[lang]
-    }
-  }
-
-  registerSetterLocales(...locales: ILocales[]): void {
-    this.registerLocalesOnItem("setters", ...locales)
-  }
-
-  translateDesignerSchema(componentName: string, schema: INodeSchema): INodeSchema {
-    return this.translateObject(componentName, schema)
-  }
-
-  private translateObject(componentName: string, obj: any) {
-    for (const key of Object.keys(obj)) {
-      if (isStr(obj[key])) {
-        obj[key] = this.translateString(componentName, obj[key])
-      } else if (isObj(obj[key])) {
-        obj[key] = this.translateObject(componentName, obj[key])
-      } else if (isArr(obj[key])) {
-        obj[key] = this.translateArray(componentName, obj[key])
-      }
-    }
-
-    return obj
-  }
-
-  private translateArray(componentName: string, arr: any[]) {
-    arr.forEach((item, index) => {
-      if (isStr(item)) {
-        arr[index] = this.translateString(componentName, item)
-      } else if (isObj(item)) {
-        arr[index] = this.translateObject(componentName, item)
-      } else if (isArr(item)) {
-        arr[index] = this.translateArray(componentName, item)
-      }
-    })
-
-    return arr
-  }
-
-  private translateString(componentName: string, str: string) {
-    if (str.startsWith('$')) {
-      const token = str.substring(1)
-
-      return this.getMessage(token) || this.getToolsMessage(token) || this.getComponentMessage(componentName, "settings." + token) || str
-    }
-
-    return str
-  }
-
-  private registerLocalesOnItem(item: "components" | "resources" | "setters", ...locales: ILocales[]): void {
-    for (const locale of locales) {
-      for (const lang of Object.keys(locale)) {
-        if (!this.locales[lang]) {
-          this.locales[lang] = {}
-        }
-        this.locales[lang][item] = _.merge(this.locales[lang]?.[item] || {}, locale[lang])
-      }
-    }
-  }
-
-  private getValueByKey(locales: any, key: string): string | null {
+  protected getValueByKey(locales: any, key: string): string | null {
     const [subKey, ...others] = key.split(".")
 
     if (!others?.length) {
       return locales[subKey]
     } else {
-      const valueByMergedKey = locales[key]
+      const valueByMergedKey = locales?.[key]
       //处理这种情况：Layout.Header
       if (valueByMergedKey) {
         return valueByMergedKey
       }
-      return this.getValueByKey(locales[subKey] || {}, others.join("."))
+      return this.getValueByKey(locales?.[subKey] || {}, others.join("."))
     }
   }
 }

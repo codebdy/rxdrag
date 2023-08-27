@@ -1,154 +1,91 @@
-import React from "react"
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { SettingsForm } from "./SettingsForm"
-import { Button as AntdButton, Space } from "antd"
-import { LeftSidebar } from "./layouts/LeftSidebar"
-import { Logo } from "./widgets/Logo"
-import { GithubFilled } from "@ant-design/icons"
-import { Topbar } from "./layouts/Topbar"
-import { LeftNavWidget } from "./widgets/LeftNavWidget"
-import { CenterContent } from "./layouts/CenterContent"
-import { ToggleAblePane } from "./layouts/ToggleAblePane/ToggleAblePane"
-import { ToggleType } from "./layouts/ToggleAblePane/ToggleButton"
-import { commonLocales } from "./locales"
-import { ShellContainer } from "./panels/ShellContainer"
-import { LangButtons } from "./widgets/LangButtons"
-import { SaveActions } from "./widgets/SaveActions"
-import { ThemeButton } from "./widgets/ThemeButton"
-import { ConfigRoot } from "./panels/ShellContainer/ConfigRoot"
-import { DocumentView } from "./panels/DocumentView"
-import { settingLocales } from "./SettingsForm/locales"
-import "./style.less"
-import { IDocument, IDesignerEngine } from "@rxdrag/core"
-import { Root, Designer } from "@rxdrag/react-core"
-import { INodeSchema } from "@rxdrag/schema"
-import { Workbench } from "./panels"
-import { ILocales } from "@rxdrag/locales"
-import { componentsIcon, outlineIcon, historyIcon } from "./icons"
-import { IMinionOptions, MinionOptionContext } from "./contexts"
+import { memo } from "react"
+import "./style.css"
+import { Designer, IComponentMaterial, IMinionOptions } from "@rxdrag/react-core"
+import { Antd5EditorInnerProps, RxEditorAntdInner } from "./RxEditorAntdInner"
+import { ReactComponent } from "@rxdrag/react-shared"
+import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput, CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, ExpressionInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, PropLayout, SizeInput, SlotSwitch, StyleSetter, TabPanel, Tabs, TextAlignSelect, ValueInput, YupRulesInput } from "@rxdrag/react-antd-props-inputs";
+import { ControllerSetter } from "./SettingsForm"
+import { Checkbox, Input, InputNumber, Radio, Select, Slider, Space } from 'antd';
+import { FormItem, Switch } from "@rxdrag/react-antd-components";
+import { ISetterComponents } from "@rxdrag/core"
+import { ConfigRoot } from "./panels/EditorContainer/ConfigRoot"
 
-export type Antd5EditorProps = {
-  leftNav?: React.ReactNode,
-  topBar?: React.ReactNode,
-  navPanel?: React.ReactNode,
+export type Antd5EditorProps = Antd5EditorInnerProps & {
   themeMode?: "dark" | "light",
-  children?: React.ReactNode,
-  locales?: ILocales,
-  schemas: INodeSchema,
-  canvasUrl: string,
-  previewUrl: string,
   //逻辑编排配置项
   minionOptions?: IMinionOptions,
+  materials?: IComponentMaterial[],
+  setters?: ISetterComponents<ReactComponent>
 }
 
 export const RxEditorAntd = memo((props: Antd5EditorProps) => {
-  const { leftNav, topBar, navPanel, locales, themeMode, schemas, children, canvasUrl, previewUrl, minionOptions } = props;
-  const [doc, setDoc] = useState<IDocument>()
-  const [engine, setEngine] = useState<IDesignerEngine>()
-  const docRef = useRef<IDocument>()
-  docRef.current = doc
-  useEffect(() => {
-    if (engine) {
-      console.log("创建 document")
-      if (docRef.current) {
-        docRef.current.destroy()
-        docRef.current = undefined
-      }
-      const document = engine.createDocument(schemas)
-      engine.getActions().changeActivedDocument(document.id)
-      setDoc(document)
-    }
-  }, [engine, schemas])
-
-  const handleReady = useCallback((eng: IDesignerEngine) => {
-    const langMgr = eng.getLocalesManager()
-    langMgr.registerLocales(commonLocales)
-    langMgr.registerLocales(settingLocales)
-    locales && langMgr.registerLocales(locales)
-    //langMgr.registerResourceLocales(resourceLocales)
-    //langMgr.registerComponentsLocales(componentLocales)
-    setEngine(eng)
-  }, [locales])
-
-  const initialComponents = useMemo(() => {
-    return [
-      {
-        componentName: "Root",
-        component: Root,
-        designer: Root,
-      }
-    ]
-  }, [])
+  const { themeMode, minionOptions, materials, setters, ...rest } = props;
 
   return (
-    <MinionOptionContext.Provider value={minionOptions}>
-      <Designer
-        onReady={handleReady}
-        themeMode={themeMode}
-        components={initialComponents}
-      >
-
-        <ConfigRoot>
-          <ShellContainer>
-            <Topbar >
-              {
-                topBar || <>
-                  <Logo />
-                  <Space>
-                    <ThemeButton />
-                    <LangButtons />
-                    <AntdButton
-                      href="https://github.com/rxdrag/rxeditor"
-                      target="_blank"
-                      icon={<GithubFilled />}
-                    > Github</AntdButton>
-                    <SaveActions />
-                  </Space>
-                </>
-              }
-            </Topbar>
-            <Workbench>
-              <LeftSidebar>
-                {
-                  leftNav || <LeftNavWidget
-                    //showTitle
-                    defaultActivedKey="components"
-                    items={[
-                      {
-                        key: "components",
-                        title: "components",
-                        icon: componentsIcon
-                      },
-                      {
-                        key: "outline",
-                        title: "outline",
-                        icon: outlineIcon
-                      },
-                      {
-                        key: "history",
-                        title: "history",
-                        icon: historyIcon
-                      },
-                    ]}
-                  />
-                }
-              </LeftSidebar>
-              <ToggleAblePane>
-                {
-                  navPanel
-                }
-              </ToggleAblePane>
-              <CenterContent>
-                <DocumentView doc={doc} canvasUrl={canvasUrl} previewUrl={previewUrl} />
-                {children}
-              </CenterContent>
-              <ToggleAblePane toggleType={ToggleType.right} width={360}>
-                <SettingsForm />
-              </ToggleAblePane>
-            </Workbench>
-          </ShellContainer>
-        </ConfigRoot>
-      </Designer>
-    </MinionOptionContext.Provider>
+    <Designer
+      minionOptions={minionOptions}
+      themeMode={themeMode}
+      materials={materials}
+      setters={
+        {
+          Tabs,
+          TabPanel,
+          FormItem: FormItem,
+          Input,
+          TextArea: Input.TextArea,
+          Select,
+          Switch,
+          SlotSwitch,
+          Fold,
+          FoldBase,
+          FoldExtra,
+          FoldExtraItem,
+          Radio,
+          Slider,
+          InputNumber,
+          ColorInput,
+          SizeInput,
+          FontSelect,
+          FontColorInput,
+          FontDecorationSelect,
+          FontSizeInput,
+          FontLineHeightInput,
+          FontStyleSelect,
+          FontWeightInput,
+          TextAlignSelect,
+          MarginStyleSetter,
+          PaddingStyleSetter,
+          DisplaySetter,
+          IconInput,
+          GutterInput,
+          "Radio.Group": Radio.Group,
+          "Checkbox.Group": Checkbox.Group,
+          Checkbox: Checkbox,
+          CheckboxGroup: CheckboxGroup,
+          ColInput,
+          BackgroundImageInput,
+          BackgroundSizeInput,
+          BackgroundRepeatInput,
+          BackgroundPositionInput,
+          ImageInput,
+          CollapsePanel,
+          EffectsInput,
+          ControllerSetter,
+          EventInput,
+          ValueInput,
+          JSONInput,
+          ExpressionInput,
+          Space,
+          StyleSetter,
+          PropLayout,
+          YupRulesInput,
+          ...setters,
+        }
+      }
+    >
+      <ConfigRoot>
+        <RxEditorAntdInner {...rest} />
+      </ConfigRoot>
+    </Designer>
   )
 })

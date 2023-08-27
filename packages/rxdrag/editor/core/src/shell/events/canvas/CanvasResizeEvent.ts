@@ -5,5 +5,6 @@ export class CanvasResizeEvent
   extends AbstractCanvasEvent
   implements ICustomEvent
 {
-  type = 'canvas:resize'
+  static Name = 'canvas:resize'
+  name = CanvasResizeEvent.Name
 }

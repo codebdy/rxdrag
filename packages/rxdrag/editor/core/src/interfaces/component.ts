@@ -4,6 +4,7 @@ import { IDesignerProps, ITreeNode } from "./document"
 import { IDesignerEngine } from "./engine"
 import { IResource } from "./resource"
 import { ID } from "./types"
+import { Listener, Unsubscribe } from "@rxdrag/shared"
 
 export type Selector = (node: ITreeNode, engine?: IDesignerEngine) => boolean
 
@@ -36,7 +37,7 @@ export interface IBehaviorRule {
   lockable?: boolean,
 }
 
-export interface IComponentConfig<ComponentType = unknown> {
+export interface IComponentConfig<ComponentType = unknown, IconType = unknown> {
   package?: string //npm包名 生成代码用
   version?: string // npm包版本 生成代码用
   componentName: string
@@ -46,13 +47,13 @@ export interface IComponentConfig<ComponentType = unknown> {
   propsSchema?: INodeSchema
   designerLocales?: ILocales
   designerProps?: IDesignerProps
-  resource?: IResource
+  resource?: IResource<IconType>
   //slots用到的组件，值为true时，用缺省组件DefaultSlot, string时，存的是已经注册过的component resource名字
   slots?: {
     [name: string]: IComponentConfig | true | string | undefined
   },
   //自定义属性面板用的多语言资源
-  toolsLocales?: ILocales
+  setterLocales?: ILocales
   setters?: {
     [name: string]: ComponentType | undefined
   },
@@ -68,11 +69,14 @@ export interface IBehavior {
   rule: IBehaviorRule
 }
 
-export interface IComponentManager {
+export interface IComponentManager<ComponentType = unknown> {
   getNodeBehaviorRules(nodeId: ID): IBehaviorRule[]
-  getComponentConfig(componentName: string): IComponentConfig | undefined
-  registerComponents(...componentDesigners: IComponentConfig[]): void
+  getComponentConfig(componentName: string): IComponentConfig<ComponentType> | undefined
+  getAllComponentConfigs(): Record<string, IComponentConfig<ComponentType> | undefined> | undefined
+  registerComponents(...componentDesigners: IComponentConfig<ComponentType>[]): void
   registerBehaviors(...behaviors: IBehavior[]): void
   removeBehaviors(...names: string[]): void
   setBehaviors(...behaviors: IBehavior[]): void
+  subscribeComponentsChange: (listener: Listener<Record<string, IComponentConfig<ComponentType> | undefined>>) => Unsubscribe
+  subscribeBehaviorsChange: (listener: Listener<Record<string, IBehavior | undefined>>) => Unsubscribe
 }

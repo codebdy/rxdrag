@@ -3,14 +3,14 @@ import { Toolbox, PropertyBox, Toolbar } from "./components"
 import { useTransMaterialCategories } from "./hooks/useTransMaterialCategories"
 import { ILogicMetas, IThemeToken, LogicFlowEditor } from "@rxdrag/minions-logicflow-editor"
 import { ActivityMaterialCategory, IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema"
-import { IComponents } from "@rxdrag/react-shared"
+import { IReactComponents } from "@rxdrag/react-shared"
 import { MiniToolbar } from "./components/MiniToolbar"
 
 export type LogicFlowEditorAntd5InnerProps = {
   value: ILogicMetas,
   onChange?: (value: ILogicMetas) => void,
   materialCategories: ActivityMaterialCategory<ReactNode>[],
-  setters?: IComponents,
+  setters?: IReactComponents,
   logicFlowContext?: unknown,
   canBeReferencedLogflowMetas?: ILogicFlowDefine[],
   toolbar?: false | React.ReactNode,

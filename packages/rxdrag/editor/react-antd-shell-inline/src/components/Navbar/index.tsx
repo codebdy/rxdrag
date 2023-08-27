@@ -1,12 +1,15 @@
-import { CSSProperties, memo, useMemo } from "react"
+import { memo } from "react"
 import { Button, Space } from "antd"
-import { AppstoreOutlined, BgColorsOutlined } from "@ant-design/icons"
+import { ApartmentOutlined, AppstoreOutlined, BgColorsOutlined } from "@ant-design/icons"
 import styled from "styled-components"
 import { boxShadow, defaultHorizontalMargin, defaultVerticalMargin } from "../utils"
+import { DraggableWidget } from "../DraggableWidget"
+import { WidgetNames } from "../../interfaces"
+import { useToggleDisplay } from "../../hooks/useToggleDisplay"
 
-const Container = styled.div`
-  position: fixed;
+const Container = styled(DraggableWidget)`
   bottom: ${defaultVerticalMargin}px;
+  right: ${defaultHorizontalMargin}px;
 `
 const NavButton = styled(Button).attrs({ size: "large" })`
   box-shadow: ${boxShadow};
@@ -22,59 +25,28 @@ export enum NavPostion {
 }
 
 
-export const Navbar = memo((
-  props: {
-    position: NavPostion
-  }
-) => {
-  const { position } = props;
-
-  const positionStyle: CSSProperties = useMemo(() => {
-    if (position === NavPostion.TopLeft) {
-      return {
-        top: defaultVerticalMargin,
-        left: defaultHorizontalMargin,
-      }
-    } else if (position === NavPostion.TopCenter) {
-      return {
-        top: defaultVerticalMargin,
-        left: "50%",
-        transform: "translateX(-50%)",
-      }
-    } else if (position === NavPostion.TopRight) {
-      return {
-        top: defaultVerticalMargin,
-        right: defaultHorizontalMargin,
-      }
-    } else if (position === NavPostion.BottomLeft) {
-      return {
-        bottom: defaultVerticalMargin,
-        left: defaultHorizontalMargin,
-      }
-    } else if (position === NavPostion.BottomCenter) {
-      return {
-        bottom: defaultVerticalMargin,
-        left: "50%",
-        transform: "translateX(-50%)",
-      }
-    } else if (position === NavPostion.BottomRight) {
-      return {
-        bottom: defaultVerticalMargin,
-        right: defaultHorizontalMargin,
-      }
-    }
-
-    return {}
-  }, [position])
+export const Navbar = memo(() => {
+  const toggle = useToggleDisplay()
 
   return (
     <Container
       className="rx-nav-toolbar"
-      style={positionStyle}
+      name={WidgetNames.navbar}
     >
       <Space>
-        <NavButton icon={<AppstoreOutlined />} />
-        <NavButton icon={<BgColorsOutlined />} />
+        <NavButton
+          icon={<AppstoreOutlined />}
+          onClick={() => toggle(WidgetNames.toolbox)}
+        />
+        <NavButton
+          icon={<BgColorsOutlined />}
+          onClick={() => toggle(WidgetNames.property)}
+        />
+        <NavButton
+          icon={<ApartmentOutlined />}
+          onClick={() => toggle(WidgetNames.outline)}
+        />
+        {/* <NavButton icon={<EllipsisOutlined />} /> */}
       </Space>
     </Container>
   )

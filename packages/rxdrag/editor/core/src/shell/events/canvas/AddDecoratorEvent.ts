@@ -4,5 +4,6 @@ import { AbstractCanvasEvent } from './AbstractCanvasEvent'
 export class AddDecoratorEvent
   extends AbstractCanvasEvent
   implements ICustomEvent {
-  type = 'canvas:add-decorator'
+  static Name = 'canvas:add-decorator'
+  name = AddDecoratorEvent.Name
 }

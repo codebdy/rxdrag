@@ -1,10 +1,11 @@
-import { CanvasScrollEvent } from "../../shell/events";
+import { CanvasScrollEvent, DragStartEvent, DragStopEvent } from "../../shell/events";
 import { IPlugin } from "../../interfaces/plugin";
 import { AUX_BACKGROUND_COLOR } from "../constants";
 import { numbToPx } from "../utils/numbToPx";
 import { getMaxZIndex } from "./getMaxZIndex";
 import { ID, IDesignerEngine, Unsubscribe } from "../../interfaces";
 
+//悬停轮廓线
 export class ActivedOutlineImpl implements IPlugin {
   name = "default.actived-outline";
   resizeObserver: ResizeObserver
@@ -13,6 +14,9 @@ export class ActivedOutlineImpl implements IPlugin {
   private currentId: ID | null = null
   private unActive: Unsubscribe
   private unCanvasScroll: Unsubscribe
+  private starDragOff: Unsubscribe
+  private stopDragOff: Unsubscribe
+  private dragging = false;
 
   constructor(protected engine: IDesignerEngine) {
     if (!engine.getShell().getContainer) {
@@ -21,11 +25,22 @@ export class ActivedOutlineImpl implements IPlugin {
     this.resizeObserver = new ResizeObserver(this.onResize)
     this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
     this.unActive = engine.getMonitor().subscribeToActiveChanged(this.handleActivedChange)
-    this.unCanvasScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
+    this.unCanvasScroll = this.engine.getShell().subscribeTo<CanvasScrollEvent>(CanvasScrollEvent.Name, this.refresh)
+    this.starDragOff = engine.getShell().subscribeTo<DragStartEvent>(DragStartEvent.Name, this.handleStartDrag)
+    this.stopDragOff = engine.getShell().subscribeTo<DragStopEvent>(DragStopEvent.Name, this.handleDragStop)
   }
 
   onResize = () => {
     this.refresh()
+  }
+
+  handleStartDrag = () => {
+    this.dragging = true;
+    this.clearLine()
+  }
+
+  handleDragStop = () => {
+    this.dragging = false;
   }
 
   handleActivedChange = (activedId: ID | undefined | null): void => {
@@ -33,7 +48,9 @@ export class ActivedOutlineImpl implements IPlugin {
     this.clearLine()
     if (activedId) {
       this.currentId = activedId
-      this.renderLine(activedId)
+      if (!this.dragging) {
+        this.renderLine(activedId)
+      }
     }
   }
   onViewportChange = () => {
@@ -56,28 +73,33 @@ export class ActivedOutlineImpl implements IPlugin {
     this.nodeChangeUnsubscribe()
     this.unActive()
     this.unCanvasScroll()
+    this.starDragOff()
+    this.stopDragOff()
   }
 
   private renderLine(id: ID) {
     this.clearLine()
-    const element = this.engine.getShell().getElement(id)
-    const canvas = this.engine.getShell().getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
-    const containerRect = canvas?.getContainerRect()
-    if (element && containerRect) {
-      const rect = element.getBoundingClientRect();
+    const shell = this.engine.getShell()
+    const elements = shell.getElements(id)
+    const canvas = shell.getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
+    const containerRect = canvas?.getDocumentBodyRect()
+    const rect = shell.getTopRect(id)
+    if (elements && containerRect && rect) {
       const htmlDiv = document.createElement('div')
       htmlDiv.style.backgroundColor = "transparent"
       htmlDiv.style.position = "fixed"
       htmlDiv.style.border = `dashed 1px ${AUX_BACKGROUND_COLOR}`
       htmlDiv.style.pointerEvents = "none"
-      htmlDiv.style.left = numbToPx(rect.left - containerRect.x)
-      htmlDiv.style.top = numbToPx(rect.top - containerRect.y)
+      htmlDiv.style.left = numbToPx(rect.x - containerRect.x)
+      htmlDiv.style.top = numbToPx(rect.y - containerRect.y)
       htmlDiv.style.height = numbToPx(rect.height - 2)
       htmlDiv.style.width = numbToPx(rect.width - 2)
-      htmlDiv.style.zIndex = (getMaxZIndex(element) + 1).toString()
-      canvas?.appendChild(htmlDiv)
+      htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
+      canvas?.appendAux(htmlDiv)
       this.outline = htmlDiv
-      this.resizeObserver.observe(element)
+      for (const element of elements) {
+        this.resizeObserver.observe(element)
+      }
     }
   }
 
