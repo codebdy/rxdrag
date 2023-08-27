@@ -34,7 +34,7 @@ export class DesignerShell extends EventEngine implements IDesignerShell {
 		delete this.canvases[documentId]
 	}
 
-	getTopRect(nodeId: string): IRect | null {
+	getNodeRect(nodeId: string): IRect | null {
 		const rect = this.container?.getNodeRect(nodeId)
 		if (rect) {
 			return rect

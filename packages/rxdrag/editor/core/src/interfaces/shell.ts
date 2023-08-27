@@ -37,7 +37,7 @@ export interface IDesignerShell extends ISubscribable, IDispatchable<ICustomEven
 
 	//一个组件可能会由多个Elements组成
 	getElements(nodeId: ID): HTMLElement[] | null
-	getTopRect(nodeId: ID): IRect | null
+	getNodeRect(nodeId: ID): IRect | null
 	destroy(): void
 }
 

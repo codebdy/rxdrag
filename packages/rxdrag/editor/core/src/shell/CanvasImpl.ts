@@ -50,7 +50,16 @@ export class CanvasImpl implements IShellPane {
   }
 
   getNodeRect(nodeId: string): IRect | null {
-    const rects = this.getElements(nodeId)?.map(element => element.getBoundingClientRect());
+    const rects = this.getElements(nodeId)?.map(element => {
+      const rect = element.getBoundingClientRect()
+      return {
+        ...rect,
+        x: rect.left - window.scrollX,
+        y: rect.top - window.scrollY,
+        height: rect.height,
+        width: rect.width
+      }
+    });
     if (!rects?.length) {
       return null
     }

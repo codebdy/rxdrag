@@ -125,7 +125,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     const positionLimit = this.positionLimit(node.documentId)
 
     const containerRect = canvas?.getDocumentBodyRect()
-    const rect = shell.getTopRect(node.id);
+    const rect = shell.getNodeRect(node.id);
     if (elements && positionLimit && containerRect && rect) {
       const htmlDiv = document.createElement('div')
       htmlDiv.style.display = "flex"
