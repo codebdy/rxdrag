@@ -5,9 +5,11 @@ import { Panel } from "../Panel"
 import { WidgetNames } from "../../interfaces"
 import { useClose } from "../../hooks/useClose"
 import { useSettersTranslate } from "@rxdrag/react-core"
+import { SettingsForm } from "@rxdrag/react-antd-shell"
 
 const Container = styled(Panel).attrs({ name: WidgetNames.property })`
   right:8px;
+  width: 320px;
 `
 
 export const PropertyPanel = memo(() => {
@@ -19,6 +21,7 @@ export const PropertyPanel = memo(() => {
       <PanelTitle onClose={close}>
         {t("properties")}
       </PanelTitle>
+      <SettingsForm />
     </Container>
   )
 })
