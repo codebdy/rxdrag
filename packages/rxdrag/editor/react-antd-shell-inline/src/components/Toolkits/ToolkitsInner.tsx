@@ -8,6 +8,7 @@ import styled, { ThemeProvider } from "styled-components"
 import classNames from "classnames"
 import { ContainerImpl, DragDropDriver, CanvasResizeDriver, MouseMoveDriver, KeyboardDriver } from "@rxdrag/core"
 import { useDesignerEngine } from "@rxdrag/react-core"
+import { OutlinePanel } from "../OutlinePanel"
 
 const Container = styled.div`
   position: fixed;
@@ -57,6 +58,7 @@ export const ToolkitsInner = memo((props: ToolkitsInnerProps) => {
         }
 
         <PropertyPanel />
+        <OutlinePanel />
         {
           toolbar !== false &&
           <Toolbar>

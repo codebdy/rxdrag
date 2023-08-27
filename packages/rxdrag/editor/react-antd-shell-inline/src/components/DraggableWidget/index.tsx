@@ -44,7 +44,7 @@ export const DraggableWidget = memo((
       return
     }
 
-    if(getRecentRxElement(e.target as HTMLElement)){
+    if (getRecentRxElement(e.target as HTMLElement)) {
       return
     }
 

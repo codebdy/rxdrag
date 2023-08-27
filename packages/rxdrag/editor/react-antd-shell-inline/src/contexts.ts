@@ -14,7 +14,7 @@ export const defaultState: IWidgetStates = {
   name: "",
   widgets: {
     [WidgetNames.outline]: {
-      closed: false,
+      closed: true,
     }
   },
   updateWidget: function (): void {

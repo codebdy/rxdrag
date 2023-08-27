@@ -35,12 +35,9 @@ export const ToolketsScope = memo((
     setWidgetStates({
       ...defaultState,
       name,
-      widgets: {},
       updateWidget: handleUpdateWidget,
     })
   }, [handleUpdateWidget, name])
-
-
 
   return (
     <WidgetsContext.Provider value={widgetStates}>

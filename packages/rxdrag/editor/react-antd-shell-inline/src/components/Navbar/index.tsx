@@ -42,7 +42,10 @@ export const Navbar = memo(() => {
           icon={<BgColorsOutlined />}
           onClick={() => toggle(WidgetNames.property)}
         />
-        <NavButton icon={<ApartmentOutlined />} />
+        <NavButton
+          icon={<ApartmentOutlined />}
+          onClick={() => toggle(WidgetNames.outline)}
+        />
         {/* <NavButton icon={<EllipsisOutlined />} /> */}
       </Space>
     </Container>
