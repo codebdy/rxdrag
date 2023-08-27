@@ -83,7 +83,7 @@ export class ActivedOutlineImpl implements IPlugin {
     const elements = shell.getElements(id)
     const canvas = shell.getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
     const containerRect = canvas?.getDocumentBodyRect()
-    const rect = shell.getTopRect(id)
+    const rect = shell.getNodeRect(id)
     if (elements && containerRect && rect) {
       const htmlDiv = document.createElement('div')
       htmlDiv.style.backgroundColor = "transparent"

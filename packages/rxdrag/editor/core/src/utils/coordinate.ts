@@ -129,7 +129,7 @@ export class PositionJudger {
 
   //在此区域内，算是拖入
   get dragInRect() {
-    const rect = this.engine.getShell().getTopRect(this.node.id);
+    const rect = this.engine.getShell().getNodeRect(this.node.id);
     if (!rect) {
       return undefined;
     }
@@ -143,7 +143,7 @@ export class PositionJudger {
   }
 
   get rect() {
-    const rect = this.engine.getShell().getTopRect(this.node.id);
+    const rect = this.engine.getShell().getNodeRect(this.node.id);
     if (!rect) {
       return undefined;
     }
@@ -178,7 +178,7 @@ export class PositionJudger {
 
     const { clientX, clientY } = event;
 
-    const rect = this.engine.getShell().getTopRect(theNode.id);
+    const rect = this.engine.getShell().getNodeRect(theNode.id);
     if (!rect) {
       return false;
     }

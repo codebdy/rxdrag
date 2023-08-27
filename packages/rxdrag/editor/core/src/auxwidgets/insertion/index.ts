@@ -59,7 +59,7 @@ export class InsertionCursorImpl implements IPlugin {
   }
 
   private renderCover = (dragover: DragOverState) => {
-    const rect = this.engine.getShell().getTopRect(dragover?.targetId || "")
+    const rect = this.engine.getShell().getNodeRect(dragover?.targetId || "")
 
     if (rect) {
       if (dragover?.type === AcceptType.Reject) {
@@ -79,7 +79,7 @@ export class InsertionCursorImpl implements IPlugin {
 
   private renderCursor = (dragover: DragOverState) => {
     const htmlDiv = this.engine.getShell().getElements(dragover?.targetId || "")
-    const rect = this.engine.getShell().getTopRect(dragover?.targetId || "")
+    const rect = this.engine.getShell().getNodeRect(dragover?.targetId || "")
     if (rect && htmlDiv && dragover) {
       if (dragover.type === AcceptType.Accept) {
         this.htmlCursorNode.style.backgroundColor = "blue"
