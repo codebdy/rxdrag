@@ -1,6 +1,5 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IComponentMaterial, forwardRefById } from "@rxdrag/react-core";
 import { Rate } from "antd";
-import { RateDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
@@ -9,11 +8,11 @@ const name = "Rate"
 export const RateMaterial: IComponentMaterial = {
   componentName: name,
   component: Rate,
-  designer: RateDesigner,
+  designer: forwardRefById(Rate),
   designerLocales: locales,
   propsSchema: materialSchema,
   designerProps: {
-    //readOnly: true,
+    value: 0,
   },
   resource: {
     name: name,
