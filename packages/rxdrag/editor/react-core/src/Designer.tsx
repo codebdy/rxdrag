@@ -20,7 +20,7 @@ import { DesignerEngineContext, IMinionOptions, MinionOptionContext } from "./co
 import { LocalesContext } from "@rxdrag/react-locales";
 import { IComponentMaterial } from "./interfaces";
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared";
-import { ISetterComponents } from "@rxdrag/core/src/interfaces/setter";
+import { ISetterComponents } from "@rxdrag/core";
 import { Fieldy } from "@rxdrag/react-fieldy";
 import { ComponentsRoot } from "./ComponentsRoot";
 import { ILocales } from "@rxdrag/locales";

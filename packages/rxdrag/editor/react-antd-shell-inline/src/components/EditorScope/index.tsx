@@ -1,6 +1,6 @@
 import { memo } from "react"
 import { Designer, IComponentMaterial, IMinionOptions } from "@rxdrag/react-core"
-import { ISetterComponents } from "@rxdrag/core/src/interfaces/setter"
+import { ISetterComponents } from "@rxdrag/core"
 import { ReactComponent } from "@rxdrag/react-shared"
 import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, BackgroundSizeInput, CheckboxGroup, ColInput, CollapsePanel, ColorInput, DisplaySetter, EffectsInput, EventInput, ExpressionInput, Fold, FoldBase, FoldExtra, FoldExtraItem, FontColorInput, FontDecorationSelect, FontLineHeightInput, FontSelect, FontSizeInput, FontStyleSelect, FontWeightInput, GutterInput, IconInput, ImageInput, JSONInput, MarginStyleSetter, PaddingStyleSetter, PropLayout, SizeInput, SlotSwitch, StyleSetter, TabPanel, Tabs, TextAlignSelect, ValueInput, YupRulesInput } from "@rxdrag/react-antd-props-inputs";
 import { Checkbox, Input, InputNumber, Radio, Select, Slider, Space } from 'antd';
