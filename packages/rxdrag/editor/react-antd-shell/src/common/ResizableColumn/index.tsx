@@ -2,14 +2,22 @@ import React, { CSSProperties, memo, useCallback, useEffect, useRef, useState } 
 import { isNumber } from "lodash";
 import "./style.css";
 import { theme } from "antd";
+import styled from "styled-components";
+import classNames from "classnames";
 
 const handlerWidth = 5;
+
+const Container = styled.div`
+  display: flex;
+  align-items:stretch;
+  position:relative;
+`
 
 export const ResizableColumn = memo(
   (props: {
     width?: number | string;
-    maxWidth: number;
-    minWidth: number;
+    maxWidth?: number;
+    minWidth?: number;
     children?: React.ReactNode;
     style?: CSSProperties;
     onWidthChange?: (width: number) => void;
@@ -21,8 +29,8 @@ export const ResizableColumn = memo(
       width = 260,
       children,
       style,
-      maxWidth,
-      minWidth,
+      maxWidth = 0,
+      minWidth = 0,
       onWidthChange,
       right,
       hidden,
@@ -55,7 +63,7 @@ export const ResizableColumn = memo(
           const newWidth = right
             ? (oldWidth as number) - (event.clientX - firstX)
             : (oldWidth as number) + (event.clientX - firstX);
-          if (newWidth >= minWidth && newWidth <= maxWidth) {
+          if ((!minWidth || newWidth >= minWidth) && (!maxWidth || newWidth <= maxWidth)) {
             //setLastX(event.x);
             setRealWidth(newWidth);
             onWidthChange && onWidthChange(newWidth);
@@ -80,16 +88,13 @@ export const ResizableColumn = memo(
     }, [handleMouseMove, handleMouseup]);
 
     return (
-      <div
+      <Container
         ref={ref}
-        className={className}
+        className={classNames(className, "resizeable-column")}
         style={{
           //height: "100%",
           width: hidden ? 0 : realWidth,
-          boxSizing: "border-box",
-          display: "flex",
-          alignItems: "stretch",
-          position: "relative",
+          //boxSizing: "border-box",
           transition: draging ? undefined : "width 0.3s",
           ...style,
         }}
@@ -125,7 +130,7 @@ export const ResizableColumn = memo(
           }}
           onMouseDown={handleMouseDown}
         ></div>
-      </div>
+      </Container>
     );
   }
 );

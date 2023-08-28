@@ -3,8 +3,9 @@ import { CanvasShell, DocumentRoot, IFrame, JsonView, useDocumentViewTypeState }
 import { Divider } from "antd"
 import { memo } from "react"
 import { CanvasToolbar } from "../../layouts"
-import { UndoRedoButtons, SelectionButtions, AuxButtionsButtions, CanvasSize, ViewButtons, NavbarWidget } from "../../widgets"
+import { UndoRedoButtons, SelectionButtions, AuxButtionsButtions, CanvasSize, ViewButtons } from "../../widgets"
 import { Viewport } from "../Viewport"
+import { NavbarWidget } from "../../../common/NavbarWidget"
 
 export const DocumentView = memo((
   props: {

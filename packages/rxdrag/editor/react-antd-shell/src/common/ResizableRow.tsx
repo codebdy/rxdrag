@@ -3,8 +3,17 @@ import "./ResizableColumn/style.css"
 
 import { isNumber } from "lodash";
 import { theme } from "antd";
+import styled from "styled-components";
+import classNames from "classnames";
 
 const handlerHeight = 5;
+
+const Container = styled.div`
+  width:100%;
+  display: flex;
+  align-items:stretch;
+  position:relative;
+`
 
 export function ResizableRow(props: {
   height?: number | string;
@@ -28,7 +37,7 @@ export function ResizableRow(props: {
   const [oldHeight, setOldHeight] = useState(height);
   const [draging, setDraging] = useState(false);
   const [firstY, setFirstY] = useState(0);
-  const {token} = theme.useToken();
+  const { token } = theme.useToken();
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -76,15 +85,11 @@ export function ResizableRow(props: {
   }, [handleMouseMove, handleMouseup]);
 
   return (
-    <div
+    <Container
       ref={ref}
-      className={className}
+      className={classNames(className, "resizable-row")}
       style={{
-        width: "100%",
         height: realHeight,
-        display: "flex",
-        alignItems: "stretch",
-        position: "relative",
         transition: draging ? undefined : "width 0.3s",
       }}
     >
@@ -117,6 +122,6 @@ export function ResizableRow(props: {
         }}
         onMouseDown={handleMouseDown}
       ></div>
-    </div>
+    </Container>
   );
 }

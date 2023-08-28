@@ -2,10 +2,9 @@ import { memo } from "react"
 import styled from "styled-components"
 import { Toolbar } from "../Toolbar/Toolbar"
 import { DefaultTopbar } from "../../common/DefaultTopbar"
-import { Statusbar } from "../Statusbar"
 import { LeftSide } from "../LeftSide"
-import { ResizableRow } from "../../common"
 import { PropertyPanel } from "../PropertyPanel"
+import { BottomArea } from "../BottomArea"
 
 const Container = styled.div`
   width: 100%;
@@ -13,6 +12,8 @@ const Container = styled.div`
   display: flex;
   flex-flow: column;
   box-sizing: border-box;
+  background-color: ${props => props.theme.token?.colorBgContainer};
+  color: ${props => props.theme.token?.colorText};
 `
 
 const Workspace = styled.div`
@@ -21,16 +22,13 @@ const Workspace = styled.div`
   width: 100%;
   padding: 0;
   box-sizing: border-box;
-`
-
-const WorkSpaceCenter = styled.div`
-  flex:1;
-  display: flex;
   flex-flow: column;
 `
 
 const CanvasSchell = styled.div`
+  padding: 100px;
   flex: 1;
+  background-color: ${props => props.theme.token?.colorBorderSecondary};
 `
 
 export type ZoomableEditorInnerProps = {
@@ -48,15 +46,10 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
       </Toolbar>
       <Workspace>
         <LeftSide />
-        <WorkSpaceCenter>
-          <CanvasSchell>画布</CanvasSchell>
-          <ResizableRow maxHeight={1000} minHeight={40}>
-            控制器
-          </ResizableRow>
-        </WorkSpaceCenter>
+        <CanvasSchell>画布</CanvasSchell>
+        <BottomArea />
         <PropertyPanel />
       </Workspace>
-      <Statusbar />
     </Container>
   )
 })

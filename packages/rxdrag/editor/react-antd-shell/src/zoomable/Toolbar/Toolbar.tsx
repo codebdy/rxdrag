@@ -11,7 +11,6 @@ const ToolbarShell = styled.div`
   box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.05);
   z-index: 1;
   background-color: ${props => props.theme.token?.colorBgBase};
-  border-bottom: solid 1px ${props => props.theme.token?.colorBorder};
 `
 export const Toolbar = memo((
   props: {

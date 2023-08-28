@@ -3,19 +3,23 @@ import styled from "styled-components"
 
 const Container = styled.div`
   width: 56px;
-  height: 100%;
+  max-height: calc(100% - 100px);
+  position: fixed;
+  top: 64px;
+  left: 16px;
   display: flex;
   flex-flow: column;
   align-items: center;
-  border-right: solid 1px ${props => props.theme.token?.colorBorder};
+  border-radius: 8px;
+  background-color: ${props => props.theme.token?.colorBgBase};
+  color: ${props => props.theme.token?.colorText};
+  box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.05);
 `
-export const LeftSide = memo(()=>{
-  return(
+export const LeftSide = memo(() => {
+  return (
     <Container>
       页面 <br />
       菜单 <br />
-      模型 <br />
-      设备 <br />
     </Container>
   )
 })

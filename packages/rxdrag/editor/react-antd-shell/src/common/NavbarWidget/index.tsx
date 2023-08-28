@@ -21,8 +21,8 @@ const Container = styled.div`
       padding-right: 7px;
     }
   }
-  border-top: ${props => props.theme?.token.colorBorder} solid 1px;
-  color: ${props => props.theme?.token.colorText};
+  border-top: ${props => props.theme?.token?.colorBorder} solid 1px;
+  color: ${props => props.theme?.token?.colorText};
 `
 
 export const NavbarWidget = memo((
