@@ -1,5 +1,6 @@
 import { memo } from "react"
 import styled from "styled-components"
+import { floatShadow } from "../utils"
 
 const ToolbarShell = styled.div`
   height: 48px;
@@ -8,7 +9,7 @@ const ToolbarShell = styled.div`
   justify-content: space-between;
   box-sizing: border-box;
   padding: 8px 16px;
-  box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: ${floatShadow};
   z-index: 1;
   background-color: ${props => props.theme.token?.colorBgBase};
 `

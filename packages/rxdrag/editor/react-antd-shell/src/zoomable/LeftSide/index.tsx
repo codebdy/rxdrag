@@ -1,5 +1,6 @@
 import { memo } from "react"
 import styled from "styled-components"
+import { floatShadow } from "../utils"
 
 const Container = styled.div`
   width: 56px;
@@ -13,7 +14,7 @@ const Container = styled.div`
   border-radius: 8px;
   background-color: ${props => props.theme.token?.colorBgBase};
   color: ${props => props.theme.token?.colorText};
-  box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: ${floatShadow};
 `
 export const LeftSide = memo(() => {
   return (

@@ -2,6 +2,7 @@ import { memo } from "react"
 import styled from "styled-components"
 import { ResizableRow } from "../../common"
 import { usePropertyWidthState } from "../contexts"
+import { floatShadow } from "../utils"
 
 const BottomShell = styled(ResizableRow)`
   position: fixed;
@@ -9,6 +10,7 @@ const BottomShell = styled(ResizableRow)`
   bottom: 16px;
   border-radius: 8px;
   background-color: ${props => props.theme.token?.colorBgBase};
+  box-shadow: ${floatShadow};
 `
 
 const ComponentNav = styled.div`

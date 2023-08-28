@@ -2,6 +2,7 @@ import { memo } from "react"
 import styled from "styled-components"
 import { ResizableColumn } from "../../common"
 import { usePropertyWidthState } from "../contexts"
+import { floatShadow } from "../utils"
 
 const PanelShell = styled(ResizableColumn)`
   position: fixed;
@@ -9,7 +10,8 @@ const PanelShell = styled(ResizableColumn)`
   right: 16px;
   border-radius: 8px;
   height: calc(100% - 80px);
- background-color: ${props => props.theme.token?.colorBgBase};
+  background-color: ${props => props.theme.token?.colorBgBase};
+  box-shadow: ${floatShadow};
 `
 
 export const PropertyPanel = memo(() => {
