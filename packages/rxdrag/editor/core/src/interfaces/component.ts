@@ -44,7 +44,9 @@ export enum LayoutType {
   freeContainer = "freeContainer",
   //自由布局容器，百分比模式
   freeContainerPercent = "freeContainerPercent",
-  //自由布局子节点
+  //网格布局容器
+  freeGridContainer = "freeGridContainer",
+  //自由布局子节点(含网格节点)
   freeChild = "freeChild"
 }
 //自由布局考虑用百分比来实现？？？？

@@ -3,5 +3,6 @@ export const routes = {
   inline: "/inline",
   controller: "/conroller",
   logicflow: "/logicflow",
-  runtime: "runtime",
+  runtime: "/runtime",
+  largeScreen: "/large-screen",
 }
