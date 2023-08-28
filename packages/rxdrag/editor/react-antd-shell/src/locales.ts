@@ -5,6 +5,9 @@ export const commonLocales: ILocales = {
     components: {
       Root: {
         title: "根组件"
+      },
+      Page: {
+        title: "页面"
       }
     },
     setters: {

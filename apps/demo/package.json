@@ -28,7 +28,6 @@
     "@rxdrag/shared": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
     "@rxdrag/controller-editor-antd5": "workspace:*",
-    "@rxdrag/react-antd-shell-inline": "workspace:*",
     "example-common": "workspace:*",
     "controller-editor-example": "workspace:*",
     "logicflow-editor-example": "workspace:*",

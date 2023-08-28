@@ -42,6 +42,8 @@ export enum LayoutType {
   liqiud = "liqiud",
   //自由布局容器
   freeContainer = "freeContainer",
+  //自由布局容器，百分比模式
+  freeContainerPercent = "freeContainerPercent",
   //自由布局子节点
   freeChild = "freeChild"
 }
@@ -50,6 +52,7 @@ export enum LayoutType {
 export interface IComponentConfig<ComponentType = unknown, IconType = unknown> {
   package?: string //npm包名 生成代码用
   version?: string // npm包版本 生成代码用
+  layoutType?: LayoutType //布局类型
   componentName: string
   component: ComponentType,
   designer: ComponentType,
