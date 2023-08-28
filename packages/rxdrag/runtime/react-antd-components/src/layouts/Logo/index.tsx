@@ -1,10 +1,18 @@
 import { forwardRef, memo } from "react"
-import "./style.less"
+import styled from "styled-components"
 
-export const Logo = memo(forwardRef<HTMLDivElement, any>((props, ref) => {
+const Container = styled.div`
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 16px;
+  width: 100%;
+`
 
-  return (<div ref={ref} className="rx-logo" style={{ color: '#efefef', fontSize: 20, fontWeight: "bold" }}>
+export const Logo = memo(forwardRef<HTMLDivElement>((props, ref) => {
+  return (<Container ref={ref} className="rx-logo" style={{ color: '#efefef', fontSize: 20, fontWeight: "bold" }}>
     <img alt="Logo" width={40} height={40} style={{ marginRight: 24 }} src="/logo.png" />
     APPER
-  </div>)
+  </Container>)
 }))

@@ -1,4 +1,4 @@
-import { DefaultToolbar, Toolkits } from "@rxdrag/react-antd-shell-inline"
+import { DefaultToolbar, Toolkits } from "@rxdrag/react-antd-shell"
 import { INodeSchema } from "@rxdrag/schema"
 import { memo, useMemo } from "react"
 import { ResourceWidget } from "./ResourceWidget"

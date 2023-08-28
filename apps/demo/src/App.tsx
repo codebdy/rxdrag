@@ -8,6 +8,7 @@ import { LogicflowEditorExample } from "logicflow-editor-example";
 import { ControllerEditorExample } from "controller-editor-example";
 import { IFrameCanvas, IFramePreview, NormalEditorExample, usePredefinedComponents } from "normal-editor-example"
 import { RuntimeExample } from "runtime-example"
+import { LargeScreenExample } from "large-screen-example"
 
 function App() {
   const { designers, components } = usePredefinedComponents()
@@ -36,6 +37,8 @@ function App() {
       <Route path={'/preview-render'} element={<IFramePreview components={components} controllerFactories={controllerFactories} />}>
       </Route>
       <Route path={routes.runtime} element={<RuntimeExample />}>
+      </Route>
+      <Route path={routes.largeScreen} element={<LargeScreenExample />}>
       </Route>
     </Routes>
 
