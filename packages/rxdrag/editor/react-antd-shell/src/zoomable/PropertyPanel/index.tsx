@@ -1,6 +1,7 @@
 import { memo } from "react"
 import styled from "styled-components"
 import { ResizableColumn } from "../../common"
+import { usePropertyWidthState } from "../contexts"
 
 const PanelShell = styled(ResizableColumn)`
   position: fixed;
@@ -12,8 +13,16 @@ const PanelShell = styled(ResizableColumn)`
 `
 
 export const PropertyPanel = memo(() => {
+  const [propertyWidth, setPropertyWidth] = usePropertyWidthState()
+
   return (
-    <PanelShell maxWidth={1000} minWidth={280} width={300} right>
+    <PanelShell
+      right
+      maxWidth={1000}
+      minWidth={280}
+      width={propertyWidth}
+      onWidthChange={setPropertyWidth}
+    >
       dd
     </PanelShell>
   )

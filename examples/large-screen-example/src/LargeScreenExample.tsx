@@ -12,6 +12,9 @@ export const LargeScreenExample = memo(() => {
         <>
           <Space>
             <Logo title="大屏" />
+            设备 
+            模型
+            编排
           </Space>
           <Space>
             <ThemeButton />

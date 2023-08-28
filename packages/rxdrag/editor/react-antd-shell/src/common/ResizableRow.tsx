@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { CSSProperties, useCallback, useEffect, useRef, useState } from "react";
 import "./ResizableColumn/style.css"
 
 import { isNumber } from "lodash";
@@ -23,6 +23,7 @@ export function ResizableRow(props: {
   onHeightChange?: (width: number) => void;
   top?: boolean;
   className?: string;
+  style?: CSSProperties
 }) {
   const {
     height = 200,
@@ -31,7 +32,8 @@ export function ResizableRow(props: {
     minHeight,
     onHeightChange,
     top,
-    className
+    className,
+    style
   } = props;
   const [realHeight, setRealHeight] = useState(height);
   const [oldHeight, setOldHeight] = useState(height);
@@ -91,6 +93,7 @@ export function ResizableRow(props: {
       style={{
         height: realHeight,
         transition: draging ? undefined : "width 0.3s",
+        ...style
       }}
     >
       <div

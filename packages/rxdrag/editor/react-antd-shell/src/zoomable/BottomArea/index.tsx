@@ -1,12 +1,12 @@
 import { memo } from "react"
 import styled from "styled-components"
-import { NavbarWidget, ResizableRow } from "../../common"
+import { ResizableRow } from "../../common"
+import { usePropertyWidthState } from "../contexts"
 
 const BottomShell = styled(ResizableRow)`
   position: fixed;
   left:80px;
   bottom: 16px;
-  width: calc(100% - 400px);
   border-radius: 8px;
   background-color: ${props => props.theme.token?.colorBgBase};
 `
@@ -15,15 +15,24 @@ const ComponentNav = styled.div`
   position: absolute;
   top:-32px;
   left:0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 `
 
 export const BottomArea = memo(() => {
+  const [propertyWidth] = usePropertyWidthState()
   return (
-    <BottomShell maxHeight={1000} minHeight={40}>
+    <BottomShell
+      maxHeight={1000}
+      minHeight={40}
+      style={{ width: `calc(100% - ${propertyWidth + 104}px)` }}
+    >
       控制器
       <ComponentNav>
-      此处会显示导航
-        <NavbarWidget />
+        <div>导航</div>
+        {/* <NavbarWidget /> */}
       </ComponentNav>
     </BottomShell>
   )

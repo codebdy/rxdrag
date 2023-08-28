@@ -10,6 +10,7 @@ import { ControllerSetter } from "../../common";
 import { EditorTheme } from "../../common/EditorTheme";
 import "./style.css"
 import { ConfigRoot } from "../../common/EditorTheme/ConfigRoot";
+import { ZoomableRoot } from "../ZoomableRoot";
 
 export type ZoomableEditorProps = ZoomableEditorInnerProps & {
   themeMode?: "dark" | "light",
@@ -86,7 +87,9 @@ export const ZoomableEditor = memo((props: ZoomableEditorProps) => {
     >
       <ConfigRoot>
         <EditorTheme>
-          <ZoomableEditorInner {...rest} />
+          <ZoomableRoot>
+            <ZoomableEditorInner {...rest} />
+          </ZoomableRoot>
         </EditorTheme>
       </ConfigRoot>
     </Designer>
