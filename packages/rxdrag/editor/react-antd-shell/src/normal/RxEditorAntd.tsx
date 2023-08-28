@@ -1,5 +1,4 @@
 import { memo } from "react"
-import "./style.css"
 import { Designer, IComponentMaterial, IMinionOptions } from "@rxdrag/react-core"
 import { Antd5EditorInnerProps, RxEditorAntdInner } from "./RxEditorAntdInner"
 import { ReactComponent } from "@rxdrag/react-shared"
@@ -7,8 +6,9 @@ import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, B
 import { Checkbox, Input, InputNumber, Radio, Select, Slider, Space } from 'antd';
 import { FormItem, Switch } from "@rxdrag/react-antd-components";
 import { ISetterComponents } from "@rxdrag/core"
-import { ControllerSetter } from "../common"
+import { ControllerSetter, EditorTheme } from "../common"
 import { ConfigRoot } from "../common/EditorTheme/ConfigRoot"
+import "./style.css"
 
 export type Antd5EditorProps = Antd5EditorInnerProps & {
   themeMode?: "dark" | "light",
@@ -84,7 +84,9 @@ export const RxEditorAntd = memo((props: Antd5EditorProps) => {
       }
     >
       <ConfigRoot>
-        <RxEditorAntdInner {...rest} />
+        <EditorTheme>
+          <RxEditorAntdInner {...rest} />
+        </EditorTheme>
       </ConfigRoot>
     </Designer>
   )
