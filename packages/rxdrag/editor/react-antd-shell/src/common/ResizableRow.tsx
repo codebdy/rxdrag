@@ -13,12 +13,13 @@ const Container = styled.div`
   display: flex;
   align-items:stretch;
   position:relative;
+  padding: 0;
 `
 
 export function ResizableRow(props: {
   height?: number | string;
-  maxHeight: number;
-  minHeight: number;
+  maxHeight?: number | string;
+  minHeight?: number | string;
   children?: React.ReactNode;
   onHeightChange?: (width: number) => void;
   top?: boolean;
@@ -63,19 +64,23 @@ export function ResizableRow(props: {
         const newHeight = top
           ? oldHeight + (event.clientY - firstY)
           : oldHeight - (event.clientY - firstY);
-        if (newHeight >= minHeight && newHeight <= maxHeight) {
-          setRealHeight(newHeight);
-          onHeightChange && onHeightChange(newHeight);
-        }
+        setRealHeight(newHeight);
+        onHeightChange && onHeightChange(newHeight);
+
       }
     },
-    [draging, firstY, maxHeight, minHeight, oldHeight, onHeightChange, top]
+    [draging, firstY, oldHeight, onHeightChange, top]
   );
 
   const handleMouseup = useCallback(() => {
     document.body.classList.remove("drawer-resizing");
+    const realHeight = ref.current?.getBoundingClientRect().height
+    if (realHeight) {
+      setRealHeight(realHeight);
+      onHeightChange && onHeightChange(realHeight);
+    }
     setDraging(false);
-  }, []);
+  }, [onHeightChange]);
 
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
@@ -92,6 +97,8 @@ export function ResizableRow(props: {
       className={classNames(className, "resizable-row")}
       style={{
         height: realHeight,
+        minHeight: minHeight,
+        maxHeight: maxHeight,
         transition: draging ? undefined : "width 0.3s",
         ...style
       }}

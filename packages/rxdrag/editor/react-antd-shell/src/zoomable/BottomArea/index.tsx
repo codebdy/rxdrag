@@ -25,7 +25,7 @@ export const BottomArea = memo(() => {
   const [propertyWidth] = usePropertyWidthState()
   return (
     <BottomShell
-      maxHeight={1000}
+      maxHeight={"calc(100vh - 100px)"}
       minHeight={40}
       style={{ width: `calc(100% - ${propertyWidth + 104}px)` }}
     >

@@ -11,13 +11,14 @@ const Container = styled.div`
   display: flex;
   align-items:stretch;
   position:relative;
+  padding: 0;
 `
 
 export const ResizableColumn = memo(
   (props: {
     width?: number | string;
-    maxWidth?: number;
-    minWidth?: number;
+    maxWidth?: number | string;
+    minWidth?: number | string;
     children?: React.ReactNode;
     style?: CSSProperties;
     onWidthChange?: (width: number) => void;
@@ -63,20 +64,23 @@ export const ResizableColumn = memo(
           const newWidth = right
             ? (oldWidth as number) - (event.clientX - firstX)
             : (oldWidth as number) + (event.clientX - firstX);
-          if ((!minWidth || newWidth >= minWidth) && (!maxWidth || newWidth <= maxWidth)) {
-            //setLastX(event.x);
-            setRealWidth(newWidth);
-            onWidthChange && onWidthChange(newWidth);
-          }
+          setRealWidth(newWidth);
+          onWidthChange && onWidthChange(newWidth);
+
         }
       },
-      [draging, firstX, maxWidth, minWidth, oldWidth, onWidthChange, right]
+      [draging, firstX, oldWidth, onWidthChange, right]
     );
 
     const handleMouseup = useCallback(() => {
       document.body.classList.remove("drawer-resizing");
+      const realWidth = ref.current?.getBoundingClientRect().width
+      if (realWidth) {
+        setRealWidth(realWidth);
+        onWidthChange && onWidthChange(realWidth);
+      }
       setDraging(false);
-    }, []);
+    }, [onWidthChange]);
 
     useEffect(() => {
       document.addEventListener("mousemove", handleMouseMove);
@@ -94,7 +98,8 @@ export const ResizableColumn = memo(
         style={{
           //height: "100%",
           width: hidden ? 0 : realWidth,
-          //boxSizing: "border-box",
+          maxWidth: maxWidth,
+          minWidth: minWidth,
           transition: draging ? undefined : "width 0.3s",
           ...style,
         }}
