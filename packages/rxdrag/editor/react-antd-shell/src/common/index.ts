@@ -1,3 +1,5 @@
 export * from "./OutlineTree"
+export * from "./ResizableColumn"
 export * from "./SettingsForm"
+export * from "./ResizableRow"
 export * from "./Spring"

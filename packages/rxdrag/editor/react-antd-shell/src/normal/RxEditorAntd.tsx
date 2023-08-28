@@ -7,8 +7,8 @@ import { BackgroundImageInput, BackgroundPositionInput, BackgroundRepeatInput, B
 import { Checkbox, Input, InputNumber, Radio, Select, Slider, Space } from 'antd';
 import { FormItem, Switch } from "@rxdrag/react-antd-components";
 import { ISetterComponents } from "@rxdrag/core"
-import { ConfigRoot } from "./panels/EditorContainer/ConfigRoot"
 import { ControllerSetter } from "../common"
+import { ConfigRoot } from "../common/EditorContainer/ConfigRoot"
 
 export type Antd5EditorProps = Antd5EditorInnerProps & {
   themeMode?: "dark" | "light",

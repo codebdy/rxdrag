@@ -8,7 +8,6 @@ import { LeftNavWidget } from "./widgets/LeftNavWidget"
 import { CenterContent } from "./layouts/CenterContent"
 import { ToggleAblePane } from "./layouts/ToggleAblePane/ToggleAblePane"
 import { ToggleType } from "./layouts/ToggleAblePane/ToggleButton"
-import { EditorContainer } from "./panels/EditorContainer"
 import { LangButtons } from "./widgets/LangButtons"
 import { SaveActions } from "./widgets/SaveActions"
 import { ThemeButton } from "./widgets/ThemeButton"
@@ -17,10 +16,20 @@ import { IDocument } from "@rxdrag/core"
 import { INodeSchema } from "@rxdrag/schema"
 import { Workbench } from "./panels"
 import { ILocales } from "@rxdrag/locales"
-import { useDesignerEngine } from "@rxdrag/react-core"
+import { useDesignerEngine, useThemeMode } from "@rxdrag/react-core"
 import { componentsIcon, outlineIcon, historyIcon } from "../icons"
 import { commonLocales } from "../locales"
 import { settingLocales, SettingsForm } from "../common"
+import styled from "styled-components"
+import classNames from "classnames"
+
+const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  background-color: ${props => props.theme.token?.colorBgBase};
+`
 
 export type Antd5EditorInnerProps = {
   leftNav?: React.ReactNode,
@@ -36,6 +45,7 @@ export type Antd5EditorInnerProps = {
 export const RxEditorAntdInner = memo((props: Antd5EditorInnerProps) => {
   const { leftNav, topBar, navPanel, locales, schemas, children, canvasUrl, previewUrl } = props;
   const [doc, setDoc] = useState<IDocument>()
+  const themeMode = useThemeMode()
   const engine = useDesignerEngine()
   const docRef = useRef<IDocument>()
   docRef.current = doc
@@ -60,7 +70,7 @@ export const RxEditorAntdInner = memo((props: Antd5EditorInnerProps) => {
   }, [engine, locales])
 
   return (
-    <EditorContainer>
+    <Container className={classNames(themeMode, "rx-editor")}>
       <Topbar >
         {
           topBar || <>
@@ -116,6 +126,6 @@ export const RxEditorAntdInner = memo((props: Antd5EditorInnerProps) => {
           <SettingsForm />
         </ToggleAblePane>
       </Workbench>
-    </EditorContainer>
+    </Container>
   )
 })
