@@ -1,7 +1,7 @@
 import React, { CSSProperties, memo, useCallback, useEffect, useRef, useState } from "react";
 import { isNumber } from "lodash";
 import "./style.css";
-import { useToken } from "antd/es/theme/internal";
+import { theme } from "antd";
 
 const handlerWidth = 5;
 
@@ -15,6 +15,7 @@ export const ResizableColumn = memo(
     onWidthChange?: (width: number) => void;
     right?: boolean;
     hidden?: boolean;
+    className?: string;
   }) => {
     const {
       width = 260,
@@ -25,12 +26,13 @@ export const ResizableColumn = memo(
       onWidthChange,
       right,
       hidden,
+      className,
     } = props;
     const [realWidth, setRealWidth] = useState(width);
     const [oldWidth, setOldWidth] = useState(width);
     const [draging, setDraging] = useState(false);
     const [firstX, setFirstX] = useState(0);
-    const [, token] = useToken();
+    const { token } = theme.useToken();
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -80,6 +82,7 @@ export const ResizableColumn = memo(
     return (
       <div
         ref={ref}
+        className={className}
         style={{
           //height: "100%",
           width: hidden ? 0 : realWidth,

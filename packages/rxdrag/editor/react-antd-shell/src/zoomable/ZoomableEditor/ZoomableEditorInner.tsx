@@ -4,7 +4,8 @@ import { Toolbar } from "../Toolbar/Toolbar"
 import { DefaultTopbar } from "../../common/DefaultTopbar"
 import { Statusbar } from "../Statusbar"
 import { LeftSide } from "../LeftSide"
-import { ResizableColumn, ResizableRow } from "../../common"
+import { ResizableRow } from "../../common"
+import { PropertyPanel } from "../PropertyPanel"
 
 const Container = styled.div`
   width: 100%;
@@ -53,9 +54,7 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
             控制器
           </ResizableRow>
         </WorkSpaceCenter>
-        <ResizableColumn maxWidth={1000} minWidth={300} right>
-          属性
-        </ResizableColumn>
+        <PropertyPanel />
       </Workspace>
       <Statusbar />
     </Container>

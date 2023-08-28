@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import "./ResizableColumn/style.css"
 
 import { isNumber } from "lodash";
-import { useToken } from "antd/es/theme/internal";
+import { theme } from "antd";
 
 const handlerHeight = 5;
 
@@ -12,6 +13,7 @@ export function ResizableRow(props: {
   children?: React.ReactNode;
   onHeightChange?: (width: number) => void;
   top?: boolean;
+  className?: string;
 }) {
   const {
     height = 200,
@@ -20,12 +22,13 @@ export function ResizableRow(props: {
     minHeight,
     onHeightChange,
     top,
+    className
   } = props;
   const [realHeight, setRealHeight] = useState(height);
   const [oldHeight, setOldHeight] = useState(height);
   const [draging, setDraging] = useState(false);
   const [firstY, setFirstY] = useState(0);
-  const [, token] = useToken();
+  const {token} = theme.useToken();
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -75,6 +78,7 @@ export function ResizableRow(props: {
   return (
     <div
       ref={ref}
+      className={className}
       style={{
         width: "100%",
         height: realHeight,
