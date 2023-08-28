@@ -1,7 +1,6 @@
 import { memo } from "react"
 import styled from "styled-components"
-import { ResizableRow } from "../../common"
-import { NavbarWidget } from "../../normal/widgets/NavbarWidget"
+import { NavbarWidget, ResizableRow } from "../../common"
 
 const BottomShell = styled(ResizableRow)`
   position: fixed;
