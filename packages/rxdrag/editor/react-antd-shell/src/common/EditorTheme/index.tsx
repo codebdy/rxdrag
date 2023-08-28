@@ -1,17 +1,16 @@
-import { useToken } from "antd/es/theme/internal"
 import React, { memo, useMemo } from "react"
 import { ThemeProvider } from "styled-components"
 import { useThemeMode } from "@rxdrag/react-core"
-import { IThemeToken } from "@rxdrag/minions-logicflow-editor"
+import { GlobalToken, theme } from "antd"
 
 export const EditorTheme = memo((
   props: {
     children?: React.ReactNode
   }
 ) => {
-  const [, token] = useToken()
+  const { token } = theme.useToken()
   const themeMode = useThemeMode()
-  const theme: { token: IThemeToken } = useMemo(() => {
+  const themeValue: { token?: GlobalToken, mode?: "dark" | "light" } = useMemo(() => {
     return {
       token,
       mode: themeMode,
@@ -19,7 +18,7 @@ export const EditorTheme = memo((
   }, [themeMode, token])
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeValue}>
       {props.children}
     </ThemeProvider>
   )

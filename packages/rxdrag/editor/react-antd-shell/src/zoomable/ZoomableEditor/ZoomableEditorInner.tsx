@@ -53,7 +53,7 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
             控制器
           </ResizableRow>
         </WorkSpaceCenter>
-        <ResizableColumn maxWidth={800} minWidth={300}>
+        <ResizableColumn maxWidth={1000} minWidth={300} right>
           属性
         </ResizableColumn>
       </Workspace>

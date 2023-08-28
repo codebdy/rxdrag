@@ -7,7 +7,7 @@ const Container = styled.div`
   padding: 0 16px;
   align-items: center;
   font-size: 13px;
-  border-top: solid 1px;
+  border-top: solid 1px ${props => props.theme.token?.colorBorder};
 `
 
 export const Statusbar = memo(() => {
