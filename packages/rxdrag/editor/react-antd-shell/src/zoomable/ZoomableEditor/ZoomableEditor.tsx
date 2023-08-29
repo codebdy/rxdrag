@@ -11,6 +11,7 @@ import { EditorTheme } from "../../common/EditorTheme";
 import "./style.css"
 import { ConfigRoot } from "../../common/EditorTheme/ConfigRoot";
 import { ZoomableRoot } from "../ZoomableRoot";
+import { ILocales } from "@rxdrag/locales";
 
 export type ZoomableEditorProps = ZoomableEditorInnerProps & {
   themeMode?: "dark" | "light",
@@ -18,11 +19,11 @@ export type ZoomableEditorProps = ZoomableEditorInnerProps & {
   minionOptions?: IMinionOptions,
   materials?: IComponentMaterial[],
   setters?: ISetterComponents<ReactComponent>
+  locales?: ILocales,
 }
 
 export const ZoomableEditor = memo((props: ZoomableEditorProps) => {
   const { themeMode, minionOptions, materials, setters, ...rest } = props;
-
   return (
     <Designer
       minionOptions={minionOptions}

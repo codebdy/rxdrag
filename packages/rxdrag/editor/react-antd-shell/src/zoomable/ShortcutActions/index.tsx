@@ -13,7 +13,6 @@ const Container = styled.div`
   display: flex;
   flex-flow: column;
   transition: all 0.3s;
-  z-index: 1;
 `
 
 const FloatButton = styled(Button).attrs({ size: "large" })`

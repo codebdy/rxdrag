@@ -1,8 +1,9 @@
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons"
-import { Button } from "antd"
+import { Button, Tooltip } from "antd"
 import { memo, useCallback } from "react"
 import styled from "styled-components"
 import { floatShadow } from "../utils"
+import { useSettersTranslate } from "@rxdrag/react-core"
 
 const Container = styled.div`
   display: flex;
@@ -15,11 +16,12 @@ const Container = styled.div`
   overflow: hidden;
 `
 
-const PercentLabel = styled.div`
+const PercentLabel = styled(Button).attrs({ type: "text", block: true })`
   font-size: 12px;
   user-select: none;
   cursor: pointer;
   padding: 8px 0;
+  border-radius: 0;
 `
 
 const ZoomButton = styled(Button).attrs({ type: "text", block: true })`
@@ -34,6 +36,7 @@ export const ZoomButtons = memo((
   }
 ) => {
   const { zoom, onZoomChange } = props
+  const t = useSettersTranslate()
 
   const handleZoomIn = useCallback(() => {
     const newzoom = zoom + 0.1
@@ -51,13 +54,23 @@ export const ZoomButtons = memo((
     onZoomChange(newzoom)
   }, [onZoomChange, zoom])
 
+  const handleReset = useCallback(() => {
+    onZoomChange(1)
+  }, [onZoomChange])
+
   return (
     <Container className="rx-zoom-buttons">
       <ZoomButton
         icon={<PlusOutlined />}
         onClick={handleZoomIn}
       />
-      <PercentLabel>{Math.round(zoom * 100)}%</PercentLabel>
+      <Tooltip title={t("reset")}  placement="right">
+        <PercentLabel
+          onClick={handleReset}
+        >
+          {Math.round(zoom * 100)}%
+        </PercentLabel>
+      </Tooltip>
       <ZoomButton
         icon={<MinusOutlined />}
         onClick={handleZoomOut}

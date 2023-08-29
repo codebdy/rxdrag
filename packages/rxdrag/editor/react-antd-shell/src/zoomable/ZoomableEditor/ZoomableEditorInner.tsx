@@ -1,4 +1,4 @@
-import { memo } from "react"
+import { memo, useEffect } from "react"
 import styled from "styled-components"
 import { Toolbar } from "../Toolbar/Toolbar"
 import { DefaultTopbar } from "../../common/DefaultTopbar"
@@ -6,6 +6,10 @@ import { LeftSide } from "../LeftSide"
 import { PropertyPanel } from "../PropertyPanel"
 import { BottomArea } from "../BottomArea"
 import { ZoomableCanvas } from "../ZoomableCanvas"
+import { useDesignerEngine } from "@rxdrag/react-core"
+import { ILocales } from "@rxdrag/locales"
+import { settingLocales } from "../../common"
+import { commonLocales } from "../../locales"
 
 const Container = styled.div`
   width: 100%;
@@ -30,10 +34,19 @@ const Workspace = styled.div`
 
 export type ZoomableEditorInnerProps = {
   topBar?: React.ReactNode,
+  locales?: ILocales,
 }
 
 export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
-  const { topBar } = props
+  const { topBar, locales } = props
+  const engine = useDesignerEngine()
+
+  useEffect(() => {
+    const langMgr = engine?.getLocalesManager()
+    langMgr?.registerLocales(commonLocales)
+    langMgr?.registerLocales(settingLocales)
+    locales && langMgr?.registerLocales(locales)
+  }, [engine, locales])
 
   return (
     <Container className="zoomable-editor">

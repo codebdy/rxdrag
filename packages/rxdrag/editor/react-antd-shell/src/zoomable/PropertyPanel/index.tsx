@@ -7,6 +7,7 @@ import { Button, Space } from "antd"
 import { MinusOutlined } from "@ant-design/icons"
 import { MINI_PRO_WIDTH } from "../consts"
 import { propertyIcon } from "../../icons"
+import { useSettersTranslate } from "@rxdrag/react-core"
 
 const PanelShell = styled(ResizableColumn)`
   position: fixed;
@@ -32,6 +33,7 @@ export const PropertyPanel = memo(() => {
   const [collapsed, setCollapsed] = useState(false)
   const [propertyWidth, setPropertyWidth] = usePropertyWidthState()
   const [oldeWidth, setOldWidth] = useState(propertyWidth)
+  const t = useSettersTranslate()
 
   const handleCollapse = useCallback(() => {
     setCollapsed(true)
@@ -71,7 +73,7 @@ export const PropertyPanel = memo(() => {
                 {propertyIcon}
               </span>
               <span>
-                属性
+                {t("properties")}
               </span>
             </Space>
             <Button

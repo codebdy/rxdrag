@@ -2,7 +2,7 @@ import { memo } from "react"
 import { ThemeButton, ZoomableEditor } from "@rxdrag/react-antd-shell"
 import { ApiOutlined, CodeSandboxOutlined, GithubFilled, NodeIndexOutlined, SettingOutlined } from "@ant-design/icons"
 import { Space, Button, Select } from "antd"
-import { Logo, MenuButton } from "example-common"
+import { Logo, MenuButton, setterLocales } from "example-common"
 import styled from "styled-components"
 
 const ProjectTitle = styled.span`
@@ -39,6 +39,7 @@ export const LargeScreenExample = memo(() => {
           </Space>
         </>
       }
+      locales = {setterLocales}
     />
   )
 })

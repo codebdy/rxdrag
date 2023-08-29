@@ -37,6 +37,7 @@ export const commonLocales: ILocales = {
       preview: "预览",
       pointSelection: "点选",
       boxSelection: "框选",
+      reset: "重置",
     }
   },
   'en-US': {
@@ -72,6 +73,7 @@ export const commonLocales: ILocales = {
       preview: "Preview",
       pointSelection: "Point selection",
       boxSelection: "Box selection",
+      reset: "Reset",
     }
   }
 }
