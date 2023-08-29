@@ -40,11 +40,12 @@ export const AuxButtionsButtions = memo(() => {
   return (
     <Space>
       <Tooltip title={t("auxLine")}>
-        <Button type={line ? "default" : "text"} size="small" icon={
-          <SvgIcon>
-            {lineIcon}
-          </SvgIcon>
-        }
+        <Button type={line ? "default" : "text"} size="small"
+          icon={
+            <SvgIcon>
+              {lineIcon}
+            </SvgIcon>
+          }
           onClick={handleLineClick}
         />
       </Tooltip>
