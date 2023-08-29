@@ -1,7 +1,7 @@
 import { memo } from "react"
 import styled from "styled-components"
 import { floatShadow } from "../utils"
-import { Button, Space } from "antd"
+import { Button } from "antd"
 import { AppstoreOutlined, CompassOutlined, DeploymentUnitOutlined, SnippetsOutlined } from "@ant-design/icons"
 
 const Container = styled.div`
@@ -17,18 +17,32 @@ const Container = styled.div`
   background-color: ${props => props.theme.token?.colorBgBase};
   color: ${props => props.theme.token?.colorText};
   box-shadow: ${floatShadow};
-  padding: 8px 0px;
+  padding: 0px;
   box-sizing: border-box;
 `
+
+const ButtonMask = styled.div`
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+`
+
+export const LeftNavButton = styled(Button).attrs({ block: true, })`
+  border-radius: 0;
+  height: 40px;
+`
+
 export const LeftSide = memo(() => {
   return (
     <Container>
-      <Space direction="vertical">
-        <Button type="text" icon={<SnippetsOutlined />} />
-        <Button type="text" icon={<AppstoreOutlined />} />
-        <Button type="text" icon={<CompassOutlined />} />
-        <Button type="text" icon={<DeploymentUnitOutlined />} />
-      </Space>
+      <ButtonMask>
+        <LeftNavButton icon={<SnippetsOutlined />} type="primary" />
+        <LeftNavButton icon={<AppstoreOutlined />} type="text" />
+        <LeftNavButton icon={<CompassOutlined />} type="text" />
+        <LeftNavButton icon={<DeploymentUnitOutlined />} type="text" />
+      </ButtonMask>
     </Container>
   )
 })
