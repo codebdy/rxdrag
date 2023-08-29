@@ -75,12 +75,12 @@ export function ResizableRow(props: {
   const handleMouseup = useCallback(() => {
     document.body.classList.remove("drawer-resizing");
     const realHeight = ref.current?.getBoundingClientRect().height
-    if (realHeight) {
+    if (realHeight && draging) {
       setRealHeight(realHeight);
       onHeightChange && onHeightChange(realHeight);
     }
     setDraging(false);
-  }, [onHeightChange]);
+  }, [draging, onHeightChange]);
 
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
@@ -99,7 +99,7 @@ export function ResizableRow(props: {
         height: realHeight,
         minHeight: minHeight,
         maxHeight: maxHeight,
-        transition: draging ? undefined : "width 0.3s",
+        transition: draging ? undefined : "height 0.3s",
         ...style
       }}
     >
