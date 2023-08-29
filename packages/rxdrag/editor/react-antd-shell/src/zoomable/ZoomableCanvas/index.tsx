@@ -1,10 +1,11 @@
 import { memo, useState } from "react"
 import styled from "styled-components"
 import { ZoombaleCanvasShell } from "./ZoombaleCanvasShell"
+import { CanvasView } from "./CanvasView"
 
 const CanvasContainer = styled.div`
   padding: 400px;
-  padding-top: 40px;
+  padding-top: 16px;
   min-width: 1200px;
   min-height: 1200px;
   cursor: grab;
@@ -38,9 +39,7 @@ export const ZoomableCanvas = memo((
           }}
           draggable={false}
         >
-          <div style={{ width: 500, height: 500, background: 'black' }}>
-
-          </div>
+          <CanvasView />
         </CanvasInner>
       </CanvasContainer>
     </ZoombaleCanvasShell>
