@@ -34,6 +34,7 @@ export const ZoomableCanvas = memo((
         }}
       >
         <CanvasInner
+          className="zoomable-canvas-inner"
           style={{
             transform: `scale(${zoom})`,
           }}
