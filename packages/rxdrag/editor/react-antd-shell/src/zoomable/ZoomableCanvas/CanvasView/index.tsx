@@ -1,8 +1,10 @@
 import { Space, Button, Divider } from "antd"
 import { memo } from "react"
 import styled from "styled-components"
-import { PlayCircleOutlined, RedoOutlined, UndoOutlined } from "@ant-design/icons"
+import { CodeOutlined, FormOutlined, PlayCircleOutlined, RedoOutlined, UndoOutlined } from "@ant-design/icons"
 import { Spring } from "../../../common"
+import { SvgIcon } from "../../../common/SvgIcon"
+import { jsonIcon } from "../../../icons"
 
 const CanvasViewContainer = styled.div`
   width: 500px;
@@ -47,7 +49,14 @@ export const CanvasView = memo((
           <Divider type="vertical" />
         </Space>
         <Spring />
-        <CanvasButton type="text" icon={<PlayCircleOutlined />} />
+        <Space>
+          <CanvasButton type="text" icon={<FormOutlined />} />
+          <CanvasButton type="text"
+            icon={<SvgIcon>{jsonIcon}</SvgIcon>
+            }
+          />
+          <CanvasButton type="text" icon={<PlayCircleOutlined />} />
+        </Space>
       </CanvasToolbar>
       <CanvasContent />
     </CanvasViewContainer>

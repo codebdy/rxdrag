@@ -7,8 +7,8 @@ export const SvgIcon = (
   }
 ) => {
   return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, ...props.style }}>
+    <span className="anticon" style={props.style}>
       {props.children}
-    </div>
+    </span>
   )
 }
