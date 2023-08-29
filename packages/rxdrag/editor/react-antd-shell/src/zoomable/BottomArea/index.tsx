@@ -35,7 +35,7 @@ const PinButton = styled(Button).attrs({ shape: "circle", size: "small", })`
   right: 0;
   top: 50%;
   transform: translate(50%, -50%);
-  box-shadow: ${floatShadow};
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, ${props => props.theme?.mode === "light" ? 0.05 : 0.25});
   //border: 0;
   color: ${props => props.theme.token?.colorTextSecondary};
 `
