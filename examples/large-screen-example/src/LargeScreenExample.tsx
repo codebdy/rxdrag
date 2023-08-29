@@ -1,6 +1,6 @@
 import { memo } from "react"
 import { ThemeButton, ZoomableEditor } from "@rxdrag/react-antd-shell"
-import { CodeSandboxOutlined, GithubFilled, NodeIndexOutlined, SettingOutlined } from "@ant-design/icons"
+import { ApiOutlined, CodeSandboxOutlined, GithubFilled, NodeIndexOutlined, SettingOutlined } from "@ant-design/icons"
 import { Space, Button, Select } from "antd"
 import { Logo, MenuButton } from "example-common"
 
@@ -13,7 +13,8 @@ export const LargeScreenExample = memo(() => {
             <Logo title="大屏" mini />
             <Space>
               <Button type="text" icon={<CodeSandboxOutlined />}>模型</Button>
-              <Button type="text" icon={<NodeIndexOutlined />}>行为流</Button>
+              <Button type="text" icon={<ApiOutlined />}>接口</Button>
+              <Button type="text" icon={<NodeIndexOutlined />}>工作流</Button>
               <Button type="text" icon={<SettingOutlined />}>设置</Button>
               <Select value="大屏" open={false} />
             </Space>

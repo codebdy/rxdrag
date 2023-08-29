@@ -5,7 +5,7 @@ import { Button, Space } from "antd"
 import { AppstoreOutlined, CompassOutlined, SnippetsOutlined } from "@ant-design/icons"
 
 const Container = styled.div`
-  width: 48px;
+  width: 40px;
   max-height: calc(100% - 100px);
   position: fixed;
   top: 64px;
