@@ -2,7 +2,7 @@ import { DocumentSelectionMode } from "@rxdrag/core"
 import { useSelectionModeState, useSettersTranslate } from "@rxdrag/react-core"
 import { Button, Space, Tooltip } from "antd"
 import { memo, useCallback } from "react"
-import { SvgIcon } from "../layouts/CanvasToolbar/SvgIcon"
+import { SvgIcon } from "../../common/SvgIcon"
 import { moveIcon, selectionIcon } from "../../icons"
 
 export const SelectionButtions = memo(() => {

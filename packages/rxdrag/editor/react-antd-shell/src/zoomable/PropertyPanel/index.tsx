@@ -3,9 +3,10 @@ import styled from "styled-components"
 import { ResizableColumn } from "../../common"
 import { usePropertyWidthState } from "../contexts"
 import { floatShadow } from "../utils"
-import { Button } from "antd"
-import { BorderOutlined, MinusOutlined } from "@ant-design/icons"
+import { Button, Space } from "antd"
+import { MinusOutlined } from "@ant-design/icons"
 import { MINI_PRO_WIDTH } from "../consts"
+import { propertyIcon } from "../../icons"
 
 const PanelShell = styled(ResizableColumn)`
   position: fixed;
@@ -21,9 +22,10 @@ const Title = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 16px;
-  padding-right: 8px;
+  padding: 0px 16px;
+  height: 40px;
   color: ${props => props.theme.token?.colorText};
+  border-bottom: solid 1px ${props => props.theme.token?.colorBorder};
 `
 
 export const PropertyPanel = memo(() => {
@@ -50,21 +52,28 @@ export const PropertyPanel = memo(() => {
       width={propertyWidth}
       onWidthChange={setPropertyWidth}
       style={{
-        height: collapsed ? 32 : undefined,
-        width: collapsed ? 32 : undefined,
-        minWidth: collapsed ? 32 : undefined,
+        height: collapsed ? 40 : undefined,
+        width: collapsed ? 40 : undefined,
+        minWidth: collapsed ? 40 : undefined,
       }}
     >
       {
         collapsed
           ? <Button
-            icon={<BorderOutlined />}
+            type="text"
+            size="large"
+            icon={propertyIcon}
             onClick={handleOpen}
           />
           : <Title>
-            <span>
-              属性
-            </span>
+            <Space>
+              <span style={{ fontSize: 14 }}>
+                {propertyIcon}
+              </span>
+              <span>
+                属性
+              </span>
+            </Space>
             <Button
               size="small"
               type="text"

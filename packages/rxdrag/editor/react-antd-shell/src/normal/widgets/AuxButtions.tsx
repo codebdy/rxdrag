@@ -1,7 +1,7 @@
 import { useDesignerEngine, useDocument, useSettersTranslate } from "@rxdrag/react-core"
 import { Button, Space, Tooltip } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
-import { SvgIcon } from "../layouts/CanvasToolbar/SvgIcon"
+import { SvgIcon } from "../../common/SvgIcon"
 import { lineIcon, marginIcon } from "../../icons"
 import { MARGIN_DECORATOR_NAME, LINE_DECORTOR_NAME, LineDecorator, MarginDecorator } from "@rxdrag/core"
 

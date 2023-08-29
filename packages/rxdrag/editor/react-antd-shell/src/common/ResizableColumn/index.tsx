@@ -75,12 +75,12 @@ export const ResizableColumn = memo(
     const handleMouseup = useCallback(() => {
       document.body.classList.remove("drawer-resizing");
       const realWidth = ref.current?.getBoundingClientRect().width
-      if (realWidth) {
+      if (realWidth && draging) {
         setRealWidth(realWidth);
         onWidthChange && onWidthChange(realWidth);
       }
       setDraging(false);
-    }, [onWidthChange]);
+    }, [draging, onWidthChange]);
 
     useEffect(() => {
       document.addEventListener("mousemove", handleMouseMove);
