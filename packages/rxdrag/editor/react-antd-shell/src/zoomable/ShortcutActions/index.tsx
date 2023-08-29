@@ -13,6 +13,7 @@ const Container = styled.div`
   display: flex;
   flex-flow: column;
   transition: all 0.3s;
+  z-index: 1;
 `
 
 const FloatButton = styled(Button).attrs({ size: "large" })`
@@ -20,7 +21,15 @@ const FloatButton = styled(Button).attrs({ size: "large" })`
   border: 0;
 `
 
-export const ShortcutActions = memo(() => {
+export const ShortcutActions = memo((
+  props: {
+    scrolled?: boolean,
+    zoom: number,
+    onZoomChange: (zoom: number) => void
+    onResetScroll: () => void,
+  }
+) => {
+  const { scrolled, zoom, onZoomChange, onResetScroll } = props
   const [propertyWidth] = usePropertyWidthState()
 
   return (
@@ -32,8 +41,8 @@ export const ShortcutActions = memo(() => {
     >
       <Space direction="vertical">
         <FloatButton icon={<PlayCircleOutlined />} />
-        <ZoomButtons />
-        <FloatButton icon={<AimOutlined />} />
+        <ZoomButtons zoom={zoom} onZoomChange={onZoomChange} />
+        <FloatButton disabled={!scrolled} icon={<AimOutlined />} onClick={onResetScroll} />
       </Space>
     </Container>
   )

@@ -1,6 +1,6 @@
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons"
 import { Button } from "antd"
-import { memo } from "react"
+import { memo, useCallback } from "react"
 import styled from "styled-components"
 import { floatShadow } from "../utils"
 
@@ -27,12 +27,41 @@ const ZoomButton = styled(Button).attrs({ type: "text", block: true })`
 `
 
 
-export const ZoomButtons = memo(() => {
+export const ZoomButtons = memo((
+  props: {
+    zoom: number,
+    onZoomChange: (zoom: number) => void
+  }
+) => {
+  const { zoom, onZoomChange } = props
+
+  const handleZoomIn = useCallback(() => {
+    const newzoom = zoom + 0.1
+    if (newzoom > 3) {
+      return
+    }
+    onZoomChange(newzoom)
+  }, [onZoomChange, zoom])
+
+  const handleZoomOut = useCallback(() => {
+    const newzoom = zoom - 0.1
+    if (newzoom < 0.1) {
+      return
+    }
+    onZoomChange(newzoom)
+  }, [onZoomChange, zoom])
+
   return (
     <Container className="rx-zoom-buttons">
-      <ZoomButton icon={<PlusOutlined />} />
-      <PercentLabel>100%</PercentLabel>
-      <ZoomButton icon={<MinusOutlined />} />
+      <ZoomButton
+        icon={<PlusOutlined />}
+        onClick={handleZoomIn}
+      />
+      <PercentLabel>{Math.round(zoom * 100)}%</PercentLabel>
+      <ZoomButton
+        icon={<MinusOutlined />}
+        onClick={handleZoomOut}
+      />
     </Container>
   )
 })

@@ -1,5 +1,6 @@
 import { memo, useCallback, useEffect, useRef, useState } from "react"
 import styled from "styled-components"
+import { ShortcutActions } from "../ShortcutActions"
 
 const CanvasSchellContainer = styled.div`
   flex: 1;
@@ -18,21 +19,17 @@ interface IPosition {
 
 export const ZoombaleCanvasShell = memo((
   props: {
+    zoom: number,
+    onZoomChange: (zoom: number) => void
     onGrabbing?: (grabbing: boolean) => void
     children?: React.ReactNode,
   }
 ) => {
-  const { onGrabbing, children } = props
+  const { zoom, onZoomChange, onGrabbing, children } = props
+  const [scrolled, setScrolled] = useState(false)
+
   const [mousePressedPoint, setMousePressedPoint] = useState<IPosition>()
   const canvasRef = useRef<HTMLDivElement>(null)
-
-  // const haneldZoomIn = useCallback(() => {
-  //   setZoom(zoom => toDecimal(zoom < 3 ? (zoom + 0.1) : zoom))
-  // }, [])
-
-  // const haneldZoomOut = useCallback(() => {
-  //   setZoom(zoom => toDecimal(zoom > 0.1 ? (zoom - 0.1) : zoom))
-  // }, [])
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     if (canvasRef.current) {
@@ -77,13 +74,36 @@ export const ZoombaleCanvasShell = memo((
     }
   }, [handleMouseMove, handleMouseUp])
 
+  const handleScroll = useCallback((e: React.UIEvent<HTMLElement>) => {
+    if (e.currentTarget.scrollTop > 60 || e.currentTarget.scrollLeft > 60) {
+      setScrolled(true)
+    } else {
+      setScrolled(false)
+    }
+  }, [])
+
+  const handleResetScroll = useCallback(() => {
+    if (canvasRef.current) {
+      canvasRef.current.scrollLeft = 0;
+      canvasRef.current.scrollTop = 0;
+    }
+
+  }, [])
+
   return (
     <CanvasSchellContainer
       ref={canvasRef}
       draggable={false}
       onMouseDown={handleMouseDown}
+      onScroll={handleScroll}
     >
       {children}
+      <ShortcutActions
+        zoom={zoom}
+        onZoomChange={onZoomChange}
+        scrolled={scrolled}
+        onResetScroll={handleResetScroll}
+      />
     </CanvasSchellContainer>
   )
 })

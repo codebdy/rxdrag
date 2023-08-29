@@ -5,7 +5,6 @@ import { DefaultTopbar } from "../../common/DefaultTopbar"
 import { LeftSide } from "../LeftSide"
 import { PropertyPanel } from "../PropertyPanel"
 import { BottomArea } from "../BottomArea"
-import { ShortcutActions } from "../ShortcutActions"
 import { ZoomableCanvas } from "../ZoomableCanvas"
 
 const Container = styled.div`
@@ -35,6 +34,7 @@ export type ZoomableEditorInnerProps = {
 
 export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
   const { topBar } = props
+
   return (
     <Container className="zoomable-editor">
       <Toolbar>
@@ -45,7 +45,6 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
       <Workspace>
         <ZoomableCanvas />
         <BottomArea />
-        <ShortcutActions />
         <PropertyPanel />
         <LeftSide />
       </Workspace>
