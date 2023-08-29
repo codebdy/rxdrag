@@ -5,4 +5,4 @@ export const floatShadow = (props: {
     mode?: "dark" | "light",
     token?: GlobalToken
   }
-}) => `0 2px 5px 1px rgba(0, 0, 0, ${props.theme?.mode === "light" ? 0.05 : 0.25})`
+}) => `0px 0px 8px 2px rgba(0, 0, 0, ${props.theme?.mode === "light" ? 0.1 : 0.25})`

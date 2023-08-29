@@ -4,7 +4,7 @@ import { ResizableRow } from "../../common"
 import { usePropertyWidthState } from "../contexts"
 import { floatShadow } from "../utils"
 import { Button, Space, Tabs } from "antd"
-import { BorderOutlined, MinusOutlined, SettingOutlined } from "@ant-design/icons"
+import { BorderOutlined, LeftOutlined, MinusOutlined, RightOutlined, SettingOutlined } from "@ant-design/icons"
 import { MINI_PRO_WIDTH } from "../consts"
 
 const BottomShell = styled(ResizableRow)`
@@ -30,10 +30,21 @@ const ComponentNav = styled.div`
   align-items: center;
 `
 
+const PinButton = styled(Button).attrs({ shape: "circle", size: "small", })`
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%);
+  box-shadow: ${floatShadow};
+  //border: 0;
+  color: ${props => props.theme.token?.colorTextSecondary};
+`
+
 const minHeight = 40
 
 export const BottomArea = memo(() => {
   const [collapsed, setCollapsed] = useState(false)
+  const [pinned, setPinned] = useState(false)
   const [height, setHeight] = useState(200)
   const [propertyWidth] = usePropertyWidthState()
 
@@ -69,12 +80,18 @@ export const BottomArea = memo(() => {
     setCollapsed(!collapsed)
   }, [collapsed])
 
+  const handleTogglePin = useCallback(() => {
+    setPinned(pinned => !pinned)
+  }, [])
+
+  const propertyMini = useMemo(() => propertyWidth <= MINI_PRO_WIDTH, [propertyWidth])
+
   const rightSpace = useMemo(() => {
-    if (propertyWidth <= MINI_PRO_WIDTH) {
+    if (propertyMini || pinned) {
       return 32
     }
     return propertyWidth + 48
-  }, [propertyWidth])
+  }, [pinned, propertyMini, propertyWidth])
 
   return (
     <BottomShell
@@ -83,6 +100,7 @@ export const BottomArea = memo(() => {
       minHeight={minHeight}
       style={{
         width: `calc(100% - ${rightSpace}px)`,
+        zIndex: pinned ? 1 : undefined,
       }}
       onHeightChange={setHeight}
     >
@@ -113,6 +131,17 @@ export const BottomArea = memo(() => {
         <div>导航</div>
         {/* <NavbarWidget /> */}
       </ComponentNav>
+      {
+        !propertyMini && !collapsed &&
+        <PinButton
+          icon={
+            pinned
+              ? <LeftOutlined />
+              : <RightOutlined />
+          }
+          onClick={handleTogglePin}
+        />
+      }
     </BottomShell>
   )
 })

@@ -30,6 +30,7 @@ const CanvasSchell = styled.div`
   padding: 100px;
   flex: 1;
   background-color: ${props => props.theme.token?.colorBorderSecondary};
+  cursor: grab;
 `
 
 export type ZoomableEditorInnerProps = {
