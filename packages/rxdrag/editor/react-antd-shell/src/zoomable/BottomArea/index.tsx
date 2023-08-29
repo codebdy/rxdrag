@@ -6,7 +6,7 @@ import { floatShadow } from "../utils"
 
 const BottomShell = styled(ResizableRow)`
   position: fixed;
-  left:80px;
+  left:16px;
   bottom: 16px;
   border-radius: 8px;
   background-color: ${props => props.theme.token?.colorBgBase};
@@ -29,7 +29,7 @@ export const BottomArea = memo(() => {
     <BottomShell
       maxHeight={"calc(100vh - 100px)"}
       minHeight={40}
-      style={{ width: `calc(100% - ${propertyWidth + 104}px)` }}
+      style={{ width: `calc(100% - ${propertyWidth + 48}px)` }}
     >
       控制器
       <ComponentNav>

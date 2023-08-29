@@ -1,8 +1,7 @@
 import { memo } from "react"
-import { LangButtons, ThemeButton, ZoomableEditor } from "@rxdrag/react-antd-shell"
-import { GithubFilled } from "@ant-design/icons"
-import { Space, Button } from "antd"
-import { SaveButton } from "./SaveButton"
+import { ThemeButton, ZoomableEditor } from "@rxdrag/react-antd-shell"
+import { CodeSandboxOutlined, GithubFilled, NodeIndexOutlined, SettingOutlined } from "@ant-design/icons"
+import { Space, Button, Select } from "antd"
 import { Logo, MenuButton } from "example-common"
 
 export const LargeScreenExample = memo(() => {
@@ -11,20 +10,22 @@ export const LargeScreenExample = memo(() => {
       topBar={
         <>
           <Space>
-            <Logo title="大屏" />
-            设备 
-            模型
-            编排
+            <Logo title="大屏" mini />
+            <Space>
+              <Button type="text" icon={<CodeSandboxOutlined />}>模型</Button>
+              <Button type="text" icon={<NodeIndexOutlined />}>行为流</Button>
+              <Button type="text" icon={<SettingOutlined />}>设置</Button>
+              <Select value="大屏" open={false} />
+            </Space>
           </Space>
           <Space>
-            <ThemeButton />
-            <LangButtons />
+            <ThemeButton flat />
             <Button
+              type="text"
               href="https://github.com/rxdrag/rxeditor"
               target="_blank"
               icon={<GithubFilled />}
-            > Github</Button>
-            <SaveButton />
+            />
             <MenuButton />
           </Space>
         </>

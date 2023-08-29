@@ -1,9 +1,11 @@
 import { memo } from "react"
 import styled from "styled-components"
 import { floatShadow } from "../utils"
+import { Button, Space } from "antd"
+import { AppstoreOutlined, CompassOutlined, SnippetsOutlined } from "@ant-design/icons"
 
 const Container = styled.div`
-  width: 56px;
+  width: 48px;
   max-height: calc(100% - 100px);
   position: fixed;
   top: 64px;
@@ -15,12 +17,17 @@ const Container = styled.div`
   background-color: ${props => props.theme.token?.colorBgBase};
   color: ${props => props.theme.token?.colorText};
   box-shadow: ${floatShadow};
+  padding: 8px 0px;
+  box-sizing: border-box;
 `
 export const LeftSide = memo(() => {
   return (
     <Container>
-      页面 <br />
-      菜单 <br />
+      <Space direction="vertical">
+        <Button type="text" icon={<SnippetsOutlined />} />
+        <Button type="text" icon={<AppstoreOutlined />} />
+        <Button type="text" icon={<CompassOutlined />} />
+      </Space>
     </Container>
   )
 })
