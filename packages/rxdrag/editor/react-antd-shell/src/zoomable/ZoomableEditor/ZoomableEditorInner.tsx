@@ -5,6 +5,7 @@ import { DefaultTopbar } from "../../common/DefaultTopbar"
 import { LeftSide } from "../LeftSide"
 import { PropertyPanel } from "../PropertyPanel"
 import { BottomArea } from "../BottomArea"
+import { ShortcutActions } from "../ShortcutActions"
 
 const Container = styled.div`
   width: 100%;
@@ -47,6 +48,7 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
       <Workspace>
         <LeftSide />
         <CanvasSchell>画布</CanvasSchell>
+        <ShortcutActions />
         <BottomArea />
         <PropertyPanel />
       </Workspace>
