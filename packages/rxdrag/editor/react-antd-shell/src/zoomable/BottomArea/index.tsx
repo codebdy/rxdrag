@@ -5,6 +5,7 @@ import { usePropertyWidthState } from "../contexts"
 import { floatShadow } from "../utils"
 import { Button, Space, Tabs } from "antd"
 import { BorderOutlined, MinusOutlined, SettingOutlined } from "@ant-design/icons"
+import { MINI_PRO_WIDTH } from "../consts"
 
 const BottomShell = styled(ResizableRow)`
   position: fixed;
@@ -32,7 +33,7 @@ const ComponentNav = styled.div`
 const minHeight = 40
 
 export const BottomArea = memo(() => {
-  const [collapsed, setCollapse] = useState(false)
+  const [collapsed, setCollapsed] = useState(false)
   const [height, setHeight] = useState(200)
   const [propertyWidth] = usePropertyWidthState()
 
@@ -58,15 +59,22 @@ export const BottomArea = memo(() => {
 
   useEffect(() => {
     if (height <= (minHeight + 5)) {
-      setCollapse(true)
+      setCollapsed(true)
     } else {
-      setCollapse(false)
+      setCollapsed(false)
     }
   }, [height])
 
   const handleToggleHeight = useCallback(() => {
-    setCollapse(!collapsed)
+    setCollapsed(!collapsed)
   }, [collapsed])
+
+  const rightSpace = useMemo(() => {
+    if (propertyWidth <= MINI_PRO_WIDTH) {
+      return 32
+    }
+    return propertyWidth + 48
+  }, [propertyWidth])
 
   return (
     <BottomShell
@@ -74,7 +82,7 @@ export const BottomArea = memo(() => {
       height={collapsed ? minHeight : height}
       minHeight={minHeight}
       style={{
-        width: `calc(100% - ${propertyWidth + 48}px)`,
+        width: `calc(100% - ${rightSpace}px)`,
       }}
       onHeightChange={setHeight}
     >

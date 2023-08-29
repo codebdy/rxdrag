@@ -1,10 +1,11 @@
-import { memo } from "react"
+import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
 import { ResizableColumn } from "../../common"
 import { usePropertyWidthState } from "../contexts"
 import { floatShadow } from "../utils"
 import { Button } from "antd"
-import { MinusOutlined } from "@ant-design/icons"
+import { BorderOutlined, MinusOutlined } from "@ant-design/icons"
+import { MINI_PRO_WIDTH } from "../consts"
 
 const PanelShell = styled(ResizableColumn)`
   position: fixed;
@@ -21,11 +22,25 @@ const Title = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 8px 16px;
+  padding-right: 8px;
   color: ${props => props.theme.token?.colorText};
 `
 
 export const PropertyPanel = memo(() => {
+  const [collapsed, setCollapsed] = useState(false)
   const [propertyWidth, setPropertyWidth] = usePropertyWidthState()
+  const [oldeWidth, setOldWidth] = useState(propertyWidth)
+
+  const handleCollapse = useCallback(() => {
+    setCollapsed(true)
+    setOldWidth(propertyWidth)
+    setPropertyWidth(MINI_PRO_WIDTH)
+  }, [propertyWidth, setPropertyWidth])
+
+  const handleOpen = useCallback(() => {
+    setCollapsed(false)
+    setPropertyWidth(oldeWidth)
+  }, [oldeWidth, setPropertyWidth])
 
   return (
     <PanelShell
@@ -34,13 +49,31 @@ export const PropertyPanel = memo(() => {
       minWidth={280}
       width={propertyWidth}
       onWidthChange={setPropertyWidth}
+      style={{
+        height: collapsed ? 32 : undefined,
+        width: collapsed ? 32 : undefined,
+        minWidth: collapsed ? 32 : undefined,
+      }}
     >
-      <Title>
-        <span>
-          属性
-        </span>
-        <Button size="small" type="text" icon={<MinusOutlined />} />
-      </Title>
+      {
+        collapsed
+          ? <Button
+            icon={<BorderOutlined />}
+            onClick={handleOpen}
+          />
+          : <Title>
+            <span>
+              属性
+            </span>
+            <Button
+              size="small"
+              type="text"
+              icon={<MinusOutlined />}
+              onClick={handleCollapse}
+            />
+          </Title>
+      }
+
     </PanelShell>
   )
 })
