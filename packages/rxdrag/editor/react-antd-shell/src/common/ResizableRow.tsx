@@ -39,8 +39,10 @@ export function ResizableRow(props: {
   const [realHeight, setRealHeight] = useState(height);
   const [oldHeight, setOldHeight] = useState(height);
   const [draging, setDraging] = useState(false);
-  const [firstY, setFirstY] = useState(0);
+  const [firstY, setFirstY] = useState<number>();
   const { token } = theme.useToken();
+  const dragingRef = useRef(draging)
+  dragingRef.current = draging
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -51,7 +53,7 @@ export function ResizableRow(props: {
   const handleMouseDown = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
       document.body.classList.add("drawer-resizing");
-      setDraging(true);
+      //setDraging(true);
       setFirstY(event.clientY);
       setOldHeight(realHeight);
     },
@@ -60,16 +62,19 @@ export function ResizableRow(props: {
 
   const handleMouseMove = useCallback(
     (event: MouseEvent) => {
-      if (draging && isNumber(oldHeight)) {
+      if (!dragingRef.current && firstY !== undefined && Math.abs(event.clientY - firstY) > 5) {
+        setDraging(true);
+        return
+      }
+      if (dragingRef.current && isNumber(oldHeight) && firstY !== undefined) {
         const newHeight = top
           ? oldHeight + (event.clientY - firstY)
           : oldHeight - (event.clientY - firstY);
         setRealHeight(newHeight);
         onHeightChange && onHeightChange(newHeight);
-
       }
     },
-    [draging, firstY, oldHeight, onHeightChange, top]
+    [firstY, oldHeight, onHeightChange, top]
   );
 
   const handleMouseup = useCallback(() => {
@@ -80,6 +85,7 @@ export function ResizableRow(props: {
       onHeightChange && onHeightChange(realHeight);
     }
     setDraging(false);
+    setFirstY(undefined)
   }, [draging, onHeightChange]);
 
   useEffect(() => {
