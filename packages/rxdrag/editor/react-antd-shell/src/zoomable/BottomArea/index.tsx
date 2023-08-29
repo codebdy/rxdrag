@@ -17,6 +17,7 @@ const BottomShell = styled(ResizableRow)`
   .ant-tabs-nav{
     padding: 0 16px;
     margin: 0;
+    user-select: none;
   }
 `
 

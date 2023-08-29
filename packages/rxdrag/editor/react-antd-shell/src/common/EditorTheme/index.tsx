@@ -10,7 +10,7 @@ export const EditorTheme = memo((
 ) => {
   const { token } = theme.useToken()
   const themeMode = useThemeMode()
-  const themeValue: { token?: GlobalToken, mode?: "dark" | "light" } = useMemo(() => {
+  const themeValue: { token: GlobalToken, mode?: "dark" | "light" } = useMemo(() => {
     return {
       token,
       mode: themeMode,

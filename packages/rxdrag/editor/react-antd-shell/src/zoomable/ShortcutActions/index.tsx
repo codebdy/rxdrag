@@ -2,7 +2,7 @@ import { Button, Space } from "antd"
 import { memo } from "react"
 import styled from "styled-components"
 import { floatShadow } from "../utils"
-import { PlayCircleOutlined } from "@ant-design/icons"
+import { AimOutlined, PlayCircleOutlined } from "@ant-design/icons"
 import { usePropertyWidthState } from "../contexts"
 import { ZoomButtons } from "./ZoomButtons"
 
@@ -33,6 +33,7 @@ export const ShortcutActions = memo(() => {
       <Space direction="vertical">
         <FloatButton icon={<PlayCircleOutlined />} />
         <ZoomButtons />
+        <FloatButton icon={<AimOutlined />} />
       </Space>
     </Container>
   )

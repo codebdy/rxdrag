@@ -28,15 +28,6 @@ const Workspace = styled.div`
   height: 0;
 `
 
-const CanvasSchell = styled.div`
-  padding: 400px;
-  padding-top: 40px;
-  flex: 1;
-  background-color: ${props => props.theme.token?.colorBorderSecondary};
-  height: 0;
-  overflow: auto;
-  user-select: none;
-`
 
 export type ZoomableEditorInnerProps = {
   topBar?: React.ReactNode,
@@ -52,9 +43,7 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
         }
       </Toolbar>
       <Workspace>
-        <CanvasSchell>
-          <ZoomableCanvas />
-        </CanvasSchell>
+        <ZoomableCanvas />
         <BottomArea />
         <ShortcutActions />
         <PropertyPanel />
