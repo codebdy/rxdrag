@@ -87,11 +87,11 @@ export const BottomArea = memo(() => {
   const propertyMini = useMemo(() => propertyWidth <= MINI_PRO_WIDTH, [propertyWidth])
 
   const rightSpace = useMemo(() => {
-    if (propertyMini || pinned) {
+    if (propertyMini || (pinned && !collapsed)) {
       return 32
     }
     return propertyWidth + 48
-  }, [pinned, propertyMini, propertyWidth])
+  }, [collapsed, pinned, propertyMini, propertyWidth])
 
   return (
     <BottomShell
