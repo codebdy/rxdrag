@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { floatShadow } from "../utils"
 
 const ToolbarShell = styled.div`
+  width: 100%;
   height: 48px;
   display: flex;
   align-items: center;

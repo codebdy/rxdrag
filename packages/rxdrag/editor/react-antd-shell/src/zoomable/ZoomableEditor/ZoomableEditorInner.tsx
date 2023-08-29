@@ -6,6 +6,7 @@ import { LeftSide } from "../LeftSide"
 import { PropertyPanel } from "../PropertyPanel"
 import { BottomArea } from "../BottomArea"
 import { ShortcutActions } from "../ShortcutActions"
+import { ZoomableCanvas } from "../ZoomableCanvas"
 
 const Container = styled.div`
   width: 100%;
@@ -24,13 +25,17 @@ const Workspace = styled.div`
   padding: 0;
   box-sizing: border-box;
   flex-flow: column;
+  height: 0;
 `
 
 const CanvasSchell = styled.div`
-  padding: 100px;
+  padding: 400px;
+  padding-top: 40px;
   flex: 1;
   background-color: ${props => props.theme.token?.colorBorderSecondary};
-  cursor: grab;
+  height: 0;
+  overflow: auto;
+  user-select: none;
 `
 
 export type ZoomableEditorInnerProps = {
@@ -47,7 +52,9 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
         }
       </Toolbar>
       <Workspace>
-        <CanvasSchell>画布</CanvasSchell>
+        <CanvasSchell>
+          <ZoomableCanvas />
+        </CanvasSchell>
         <BottomArea />
         <ShortcutActions />
         <PropertyPanel />
