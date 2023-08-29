@@ -2,7 +2,7 @@ import { memo } from "react"
 import styled from "styled-components"
 import { floatShadow } from "../utils"
 import { Button, Space } from "antd"
-import { AppstoreOutlined, CompassOutlined, SnippetsOutlined } from "@ant-design/icons"
+import { AppstoreOutlined, CompassOutlined, DeploymentUnitOutlined, SnippetsOutlined } from "@ant-design/icons"
 
 const Container = styled.div`
   width: 40px;
@@ -27,6 +27,7 @@ export const LeftSide = memo(() => {
         <Button type="text" icon={<SnippetsOutlined />} />
         <Button type="text" icon={<AppstoreOutlined />} />
         <Button type="text" icon={<CompassOutlined />} />
+        <Button type="text" icon={<DeploymentUnitOutlined />} />
       </Space>
     </Container>
   )

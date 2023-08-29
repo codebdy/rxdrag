@@ -46,11 +46,11 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
         }
       </Toolbar>
       <Workspace>
-        <LeftSide />
         <CanvasSchell>画布</CanvasSchell>
-        <ShortcutActions />
         <BottomArea />
+        <ShortcutActions />
         <PropertyPanel />
+        <LeftSide />
       </Workspace>
     </Container>
   )
