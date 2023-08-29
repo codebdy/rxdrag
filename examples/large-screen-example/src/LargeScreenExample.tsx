@@ -3,6 +3,13 @@ import { ThemeButton, ZoomableEditor } from "@rxdrag/react-antd-shell"
 import { ApiOutlined, CodeSandboxOutlined, GithubFilled, NodeIndexOutlined, SettingOutlined } from "@ant-design/icons"
 import { Space, Button, Select } from "antd"
 import { Logo, MenuButton } from "example-common"
+import styled from "styled-components"
+
+const ProjectTitle = styled.span`
+  margin-left: 16px;
+  color: ${porps => porps.theme.token?.colorTextSecondary};
+  font-size: 14px;
+`
 
 export const LargeScreenExample = memo(() => {
   return (
@@ -18,6 +25,7 @@ export const LargeScreenExample = memo(() => {
               <Button type="text" icon={<SettingOutlined />}>设置</Button>
               <Select value="大屏" open={false} />
             </Space>
+            <ProjectTitle>火星监测项目</ProjectTitle>
           </Space>
           <Space>
             <ThemeButton flat />
