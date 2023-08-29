@@ -101,7 +101,7 @@ export const BottomArea = memo(() => {
       minHeight={minHeight}
       style={{
         width: `calc(100% - ${rightSpace}px)`,
-        zIndex: pinned ? 1 : undefined,
+        zIndex: 1,
       }}
       onHeightChange={setHeight}
     >

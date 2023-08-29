@@ -17,8 +17,8 @@ const Container = styled.div`
 export const ResizableColumn = memo(
   (props: {
     width?: number | string;
-    maxWidth?: number | string;
-    minWidth?: number | string;
+    maxWidth?: number;
+    minWidth?: number;
     children?: React.ReactNode;
     style?: CSSProperties;
     onWidthChange?: (width: number) => void;
@@ -64,12 +64,14 @@ export const ResizableColumn = memo(
           const newWidth = right
             ? (oldWidth as number) - (event.clientX - firstX)
             : (oldWidth as number) + (event.clientX - firstX);
+          if (newWidth > maxWidth || newWidth < minWidth) {
+            return
+          }
           setRealWidth(newWidth);
           onWidthChange && onWidthChange(newWidth);
-
         }
       },
-      [draging, firstX, oldWidth, onWidthChange, right]
+      [draging, firstX, maxWidth, minWidth, oldWidth, onWidthChange, right]
     );
 
     const handleMouseup = useCallback(() => {
