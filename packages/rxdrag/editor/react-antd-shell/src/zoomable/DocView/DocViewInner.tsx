@@ -7,7 +7,7 @@ import { IFrame, useDocument } from "@rxdrag/react-core"
 
 const DocViewContainer = styled.div`
   position: relative;
-  width: 1200px;
+  width: 800px;
   .actions{
     display: none;
   }
@@ -33,7 +33,7 @@ const CanvasToolbar = styled.div`
 `
 
 const CanvasContent = styled.div`
-  width: 1200px;
+  width: 100%;
   height: 600px;
   background-color: white;
 `
@@ -46,6 +46,7 @@ const CanvasTitle = styled.span`
 export const DocViewInner = memo(() => {
   const doc = useDocument()
   const canvasUrl = useCanvasUrl()
+  console.log("===>DocViewInner", doc)
   return (
     <DocViewContainer>
       <CanvasToolbar>

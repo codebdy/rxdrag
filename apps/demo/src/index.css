@@ -13,6 +13,15 @@ code {
     monospace;
 }
 
-h1, h2, h3, h4 {
+html,
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+h1,
+h2,
+h3,
+h4 {
   margin-top: auto;
 }

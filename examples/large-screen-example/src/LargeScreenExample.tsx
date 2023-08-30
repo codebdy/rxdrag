@@ -9,11 +9,14 @@ export const LargeScreenExample = memo((
     previewUrl: string,
   }
 ) => {
+  const { canvasUrl, previewUrl } = props
   return (
     <EditorScope
       locales={setterLocales}
+      canvasUrl={canvasUrl}
+      previewUrl={previewUrl}
     >
-      <LargeScreenExampleInner {...props}/>
+      <LargeScreenExampleInner />
     </EditorScope>
   )
 })

@@ -32,19 +32,12 @@ const schemas: IDocumentSchema[] = [
 ]
 
 
-export const LargeScreenExampleInner = memo((
-  props: {
-    canvasUrl: string,
-    previewUrl: string,
-  }
-) => {
-  const { canvasUrl, previewUrl } = props;
+export const LargeScreenExampleInner = memo(() => {
+
   return (
     <Container className="zoomable-editor">
       <Toolbar />
       <ZoomableEditor
-        canvasUrl={canvasUrl}
-        previewUrl={previewUrl}
         schemas={schemas}
       />
       <LeftSide />
