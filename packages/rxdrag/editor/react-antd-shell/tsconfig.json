@@ -1,5 +1,5 @@
 {
   "extends": "@rxdrag/tsconfig/react-library.json",
-  "include": ["."],
+  "include": [".", "../../../../examples/large-screen-example/src/Toolbar/index.ts"],
   "exclude": ["dist", "build", "node_modules"]
 }

@@ -1,7 +1,5 @@
 import { memo, useEffect } from "react"
 import styled from "styled-components"
-import { Toolbar } from "../Toolbar/Toolbar"
-import { DefaultTopbar } from "../../common/DefaultTopbar"
 import { LeftSide } from "../LeftSide"
 import { PropertyPanel } from "../PropertyPanel"
 import { BottomArea } from "../BottomArea"
@@ -13,15 +11,6 @@ import { commonLocales } from "../../locales"
 import { LeftSideSecondary } from "../LeftSideSecondary"
 import { IDocumentSchema } from "@rxdrag/schema"
 
-const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-flow: column;
-  box-sizing: border-box;
-  background-color: ${props => props.theme.token?.colorBgContainer};
-  color: ${props => props.theme.token?.colorText};
-`
 
 const Workspace = styled.div`
   flex:1;
@@ -35,13 +24,12 @@ const Workspace = styled.div`
 
 
 export type ZoomableEditorInnerProps = {
-  topBar?: React.ReactNode,
   locales?: ILocales,
   schemas?: IDocumentSchema[],
 }
 
 export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
-  const { topBar, locales } = props
+  const { locales } = props
   const engine = useDesignerEngine()
 
   useEffect(() => {
@@ -52,19 +40,12 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
   }, [engine, locales])
 
   return (
-    <Container className="zoomable-editor">
-      <Toolbar>
-        {
-          topBar || <DefaultTopbar />
-        }
-      </Toolbar>
-      <Workspace>
-        <ZoomableCanvas />
-        <BottomArea />
-        <PropertyPanel />
-        <LeftSide />
-        <LeftSideSecondary />
-      </Workspace>
-    </Container>
+    <Workspace>
+      <ZoomableCanvas />
+      <BottomArea />
+      <PropertyPanel />
+      <LeftSide />
+      <LeftSideSecondary />
+    </Workspace>
   )
 })
