@@ -23,7 +23,9 @@ const Workspace = styled.div`
 
 export type ZoomableEditorInnerProps = {
   locales?: ILocales,
-  schemas?: IDocumentSchema[],
+  schemas: IDocumentSchema[],
+  canvasUrl: string,
+  previewUrl: string,
 }
 
 export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {

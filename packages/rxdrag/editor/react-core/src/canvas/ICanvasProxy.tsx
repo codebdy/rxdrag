@@ -3,11 +3,10 @@ import { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
 import { ID } from "@rxdrag/shared";
 import { EVENT_IFRAME_READY } from "./IframeProxy/constants";
-import { DesignerEngineContext, InIframeContext, Scroller } from "..";
+import { DesignerEngineContext, DocumentRoot, InIframeContext, Scroller } from "..";
 import { IReactComponents } from "@rxdrag/react-shared";
 import { ComponentDesignersRoot } from "../ComponentDesignersRoot";
 import { Fieldy } from "@rxdrag/react-fieldy";
-
 declare const window: Window & { engine?: IDesignerEngine, doc?: IDocument };
 
 export interface IFrameCanvasEvent {
@@ -24,11 +23,13 @@ export const ICanvasProxy = memo((
 ) => {
   const { components, children } = props;
   const [engine, setEngine] = useState<IDesignerEngine>()
+  const [doc, setDoc] = useState<IDocument>()
   const receiveMessageFromParent = useCallback((event: MessageEvent<IFrameCanvasEvent>) => {
     // 监听父窗口 ready 事件
     if (event.data?.name === EVENT_IFRAME_READY) {
       console.log('RXDrag: iframeReady');
       setEngine(window.engine);
+      setDoc(window.doc)
     }
   }, [])
 
@@ -40,15 +41,19 @@ export const ICanvasProxy = memo((
   }, [receiveMessageFromParent])
 
   return (
-    <Fieldy>
-      <InIframeContext.Provider value={true}>
-        <DesignerEngineContext.Provider value={engine}>
-          <ComponentDesignersRoot components={components}>
-            {engine ? children : <></>}
-            <Scroller />
-          </ComponentDesignersRoot>
-        </DesignerEngineContext.Provider>
-      </InIframeContext.Provider>
-    </Fieldy>
+    doc
+      ? <Fieldy>
+        <InIframeContext.Provider value={true}>
+          <DesignerEngineContext.Provider value={engine}>
+            <ComponentDesignersRoot components={components}>
+              <DocumentRoot doc={doc}>
+                {engine ? children : <></>}
+                <Scroller />
+              </DocumentRoot>
+            </ComponentDesignersRoot>
+          </DesignerEngineContext.Provider>
+        </InIframeContext.Provider>
+      </Fieldy>
+      : <></>
   )
 })

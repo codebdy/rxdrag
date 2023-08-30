@@ -1,7 +1,6 @@
-import { ICanvasProxy } from "@rxdrag/react-core"
+import { Canvas, ICanvasProxy } from "@rxdrag/react-core"
 import { IReactComponents } from "@rxdrag/react-shared"
 import { memo } from "react"
-import { IFrameCanvasInner } from "./IFrameCanvasInner"
 import { INodeSchema } from "@rxdrag/schema"
 
 export const IFrameCanvas = memo((
@@ -14,7 +13,7 @@ export const IFrameCanvas = memo((
   const { designers } = props
   return (
     <ICanvasProxy components={designers}>
-      <IFrameCanvasInner />
+      <Canvas />
     </ICanvasProxy>
   )
 })

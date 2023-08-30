@@ -33,13 +33,20 @@ function App() {
       </Route>
       <Route path={routes.logicflow} element={<LogicflowEditorExample />}>
       </Route>
-      <Route path={'/canvas-render/:id?'} element={<IFrameCanvas designers={designers} />}>
+      <Route path={'/canvas-render'} element={<IFrameCanvas designers={designers} />}>
       </Route>
-      <Route path={'/preview-render/:id?'} element={<IFramePreview components={components} controllerFactories={controllerFactories} />}>
+      <Route path={'/preview-render'} element={<IFramePreview components={components} controllerFactories={controllerFactories} />}>
       </Route>
       <Route path={routes.runtime} element={<RuntimeExample />}>
       </Route>
-      <Route path={routes.largeScreen} element={<LargeScreenExample />}>
+      <Route
+        path={routes.largeScreen}
+        element={
+          <LargeScreenExample
+            canvasUrl="/canvas-render"
+            previewUrl="/preview-render"
+          />}
+      >
       </Route>
     </Routes>
 

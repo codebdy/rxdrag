@@ -41,12 +41,14 @@ export const DocumentView = memo((
           <CanvasShell display={viewType === "design"} >
             <IFrame
               style={{ border: "0", width: "100%", height: "100%" }}
+              doc={doc}
               src={canvasUrl}
             />
           </CanvasShell>
           <CanvasShell display={viewType === "preview"} >
             <IFrame
               style={{ border: "0", width: "100%", height: "100%" }}
+              doc={doc}
               src={previewUrl}
             />
           </CanvasShell>

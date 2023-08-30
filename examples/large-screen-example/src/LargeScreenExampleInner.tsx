@@ -15,11 +15,21 @@ const Container = styled.div`
   color: ${props => props.theme.token?.colorText};
 `
 
-export const LargeScreenExampleInner = memo(() => {
+export const LargeScreenExampleInner = memo((
+  props: {
+    canvasUrl: string,
+    previewUrl: string,
+  }
+) => {
+  const { canvasUrl, previewUrl } = props;
   return (
     <Container className="zoomable-editor">
       <Toolbar />
-      <ZoomableEditor />
+      <ZoomableEditor
+        canvasUrl={canvasUrl}
+        previewUrl={previewUrl}
+        schemas={[]}
+      />
       <LeftSide />
       <LeftSideSecondary />
     </Container>
