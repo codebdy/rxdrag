@@ -16,6 +16,7 @@ interface IPosition {
   scrollTop: number
 }
 
+const defaultScrollLeft = 300;
 
 export const ZoombaleCanvasShell = memo((
   props: {
@@ -33,7 +34,7 @@ export const ZoombaleCanvasShell = memo((
 
   useEffect(() => {
     if (canvasRef.current) {
-      canvasRef.current.scrollLeft = 300;
+      canvasRef.current.scrollLeft = defaultScrollLeft;
     }
   }, [])
 
@@ -81,7 +82,7 @@ export const ZoombaleCanvasShell = memo((
   }, [handleMouseMove, handleMouseUp])
 
   const handleScroll = useCallback((e: React.UIEvent<HTMLElement>) => {
-    if (e.currentTarget.scrollTop > 60 || e.currentTarget.scrollLeft > 60) {
+    if (e.currentTarget.scrollTop > 60 || (e.currentTarget.scrollLeft > defaultScrollLeft + 60) || e.currentTarget.scrollLeft < (defaultScrollLeft - 60)) {
       setScrolled(true)
     } else {
       setScrolled(false)
@@ -90,7 +91,7 @@ export const ZoombaleCanvasShell = memo((
 
   const handleResetScroll = useCallback(() => {
     if (canvasRef.current) {
-      canvasRef.current.scrollLeft = 0;
+      canvasRef.current.scrollLeft = defaultScrollLeft;
       canvasRef.current.scrollTop = 0;
     }
   }, [])
