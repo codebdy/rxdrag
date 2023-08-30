@@ -1,6 +1,5 @@
 import { memo, useEffect } from "react"
 import styled from "styled-components"
-import { LeftSide } from "../LeftSide"
 import { PropertyPanel } from "../PropertyPanel"
 import { BottomArea } from "../BottomArea"
 import { ZoomableCanvas } from "../ZoomableCanvas"
@@ -8,7 +7,6 @@ import { useDesignerEngine } from "@rxdrag/react-core"
 import { ILocales } from "@rxdrag/locales"
 import { settingLocales } from "../../common"
 import { commonLocales } from "../../locales"
-import { LeftSideSecondary } from "../LeftSideSecondary"
 import { IDocumentSchema } from "@rxdrag/schema"
 
 
@@ -44,8 +42,6 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
       <ZoomableCanvas />
       <BottomArea />
       <PropertyPanel />
-      <LeftSide />
-      <LeftSideSecondary />
     </Workspace>
   )
 })

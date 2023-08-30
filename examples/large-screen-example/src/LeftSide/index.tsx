@@ -1,9 +1,9 @@
 import { memo } from "react"
 import styled from "styled-components"
-import { floatShadow } from "../utils"
 import { CompassOutlined, DeploymentUnitOutlined, LayoutOutlined, SnippetsOutlined } from "@ant-design/icons"
-import { LeftNavButton } from "../common/LeftNavButton"
 import { ScreenDialog } from "./ScreenDialog"
+import { floatShadow } from "@rxdrag/react-antd-shell"
+import { LeftNavButton } from "./LeftNavButton"
 
 const Container = styled.div`
   width: 40px;

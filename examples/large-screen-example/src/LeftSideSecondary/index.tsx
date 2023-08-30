@@ -1,7 +1,7 @@
 import { UnorderedListOutlined } from "@ant-design/icons"
+import { CanvasFloatButton } from "@rxdrag/react-antd-shell"
 import { memo } from "react"
 import styled from "styled-components"
-import { CanvasFloatButton } from "../common"
 
 const Container = styled.div`
   position: fixed;

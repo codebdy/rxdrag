@@ -2,6 +2,8 @@ import { memo } from "react"
 import { Toolbar } from "./Toolbar"
 import { ZoomableEditor } from "@rxdrag/react-antd-shell"
 import styled from "styled-components"
+import { LeftSide } from "./LeftSide"
+import { LeftSideSecondary } from "./LeftSideSecondary"
 
 const Container = styled.div`
   width: 100%;
@@ -18,6 +20,8 @@ export const LargeScreenExampleInner = memo(() => {
     <Container className="zoomable-editor">
       <Toolbar />
       <ZoomableEditor />
+      <LeftSide />
+      <LeftSideSecondary />
     </Container>
   )
 })

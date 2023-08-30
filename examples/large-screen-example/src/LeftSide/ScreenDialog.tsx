@@ -1,8 +1,8 @@
 import { SettingOutlined } from "@ant-design/icons"
 import { memo, useCallback, useState } from "react"
-import { LeftNavButton } from "../common/LeftNavButton"
 import { Form, InputNumber, Modal } from "antd";
 import styled from "styled-components";
+import { LeftNavButton } from "./LeftNavButton";
 
 const SizeInput = styled(InputNumber)`
   width: 120px;
