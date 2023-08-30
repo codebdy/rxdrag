@@ -24,6 +24,7 @@ import {
 	SnapshotIndexListener,
 	ThemeModeListener,
 	Unsubscribe,
+	DocumentTitleListener,
 } from '../interfaces/index'
 import type { State } from '../reducers/index'
 import { DragOverState } from '../reducers/dragOver'
@@ -71,6 +72,7 @@ export class Monitor implements IMonitor {
 		this.store = store
 		this.doSubscribeToNodeChanged(this.nodeChangeHandler.handleNodeChange)
 	}
+
 	getAllNodes(): ITreeNode<unknown, unknown>[] {
 		const state = this.getState()
 		if (!state.activedDocumentId) {
@@ -413,6 +415,22 @@ export class Monitor implements IMonitor {
 		let previousState = this.store.getState().documentsById[documentId]?.viewType
 		const handleChange = () => {
 			const nextState = this.store.getState().documentsById[documentId]?.viewType
+			if (nextState === previousState) {
+				return
+			}
+
+			previousState = nextState
+			listener(nextState || DefulstViewType)
+		}
+		return this.store.subscribe(handleChange)
+	}
+
+	subscribeToDocumentTitle(documentId: string, listener: DocumentTitleListener): Unsubscribe {
+		invariant(typeof listener === 'function', 'listener must be a function.')
+
+		let previousState = this.store.getState().documentsById[documentId]?.title
+		const handleChange = () => {
+			const nextState = this.store.getState().documentsById[documentId]?.title
 			if (nextState === previousState) {
 				return
 			}

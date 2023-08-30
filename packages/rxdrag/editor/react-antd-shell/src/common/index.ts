@@ -1,4 +1,6 @@
 export * from "./EditorTheme"
+export * from "./IFrameCanvas"
+export * from "./IFramePreview"
 export * from "./NavbarWidget"
 export * from "./OutlineTree"
 export * from "./ResizableColumn"

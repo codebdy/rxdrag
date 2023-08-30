@@ -8,8 +8,10 @@ import { snapShotIndex } from "./snapShotIndex";
 import { canvasWidth } from "./canvasWidth";
 import { canvasWidthLimits } from "./canvasWidthLimits";
 import { viewType } from "./viewType";
+import { documentTitle } from "./documentTitle";
 
 export type DocumentState = {
+	title?: string,
 	selectionMode: DocumentSelectionMode
 	changed: boolean
 	selectedIds: ID[] | null
@@ -34,10 +36,12 @@ const initialState: DocumentState = {
 
 export function documentReduce(
 	state: DocumentState = initialState,
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	action: IDocumentAction<any>,
 ): DocumentState {
 	return {
 		...state,
+		title: documentTitle(state.title, action),
 		selectionMode: selectionMode(state.selectionMode, action),
 		rootId: rootId(state.rootId, action),
 		selectedIds: selectedIds(state.selectedIds, action),

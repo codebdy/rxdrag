@@ -14,7 +14,7 @@ import { IPlugin, IPluginFactory } from "../interfaces/plugin";
 import { isFn } from "@rxdrag/shared";
 import { IDecoratorManager } from "../interfaces/decorator";
 import { DecoratorManager } from "./DecoratorManager";
-import { INodeSchema } from "@rxdrag/schema";
+import { IDocumentSchema } from "@rxdrag/schema";
 import { ISetterManager } from "../interfaces/setter";
 import { SetterManager } from "./SetterManager";
 
@@ -90,8 +90,9 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 	setSelectionMode(mode: SelectionMode): void {
 		throw new Error("Method not implemented.");
 	}
-	createDocument(schema: INodeSchema): IDocument {
-		const doc = new DocumentImpl(schema, this, this.store)
+	
+	createDocument(documentSchema: IDocumentSchema): IDocument {
+		const doc = new DocumentImpl(documentSchema, this, this.store)
 		this.documentsById[doc.id] = doc
 		this.dispatch({
 			type: CHANGE_ACTIVED_DOCUMENT,

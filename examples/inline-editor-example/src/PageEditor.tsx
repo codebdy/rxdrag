@@ -32,7 +32,7 @@ export const PageEditor = memo((
 
   return (
     schema ?
-      <DocumentScope schema={schema}>
+      <DocumentScope schema={{ schema }}>
         {
           design
             ? <Canvas />

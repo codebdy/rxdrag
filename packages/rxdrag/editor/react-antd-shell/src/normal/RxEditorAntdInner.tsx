@@ -56,7 +56,7 @@ export const RxEditorAntdInner = memo((props: Antd5EditorInnerProps) => {
         docRef.current.destroy()
         docRef.current = undefined
       }
-      const document = engine.createDocument(schema)
+      const document = engine.createDocument({ schema })
       engine.getActions().changeActivedDocument(document.id)
       setDoc(document)
     }

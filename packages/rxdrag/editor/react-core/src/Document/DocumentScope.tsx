@@ -1,13 +1,13 @@
 import { memo, useEffect, useRef, useState } from "react"
 import { DocumentRoot } from ".";
-import { INodeSchema } from "@rxdrag/schema";
+import { IDocumentSchema } from "@rxdrag/schema";
 import { ILocales } from "@rxdrag/locales";
 import { IDocument } from "@rxdrag/core";
 import { useDesignerEngine } from "../hooks";
 
 export const DocumentScope = memo((
   props: {
-    schema: INodeSchema,
+    schema: IDocumentSchema,
     children?: React.ReactNode,
     locales?: ILocales,
   }

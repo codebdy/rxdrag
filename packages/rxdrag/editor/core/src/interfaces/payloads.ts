@@ -25,6 +25,7 @@ export type DocumentInitPayload = DocumentActionPayload & {
     [id in ID]: ITreeNode;
   };
   rootId?: ID;
+  title?: string;
 };
 
 export type CanvasWidthPayload = DocumentActionPayload & {
@@ -39,10 +40,14 @@ export type ViewTypePayload = DocumentActionPayload & {
   viewType: ViewType;
 };
 
+export type ChangeDocumentTitlePayload = DocumentActionPayload & {
+  title?: string;
+};
+
+
 export type SelectionModePayload = DocumentActionPayload & {
   mode: DocumentSelectionMode;
 };
-
 
 export type AddNodesPayload = DocumentActionPayload & {
   targetId: ID;

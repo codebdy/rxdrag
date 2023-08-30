@@ -29,3 +29,9 @@ export interface INodeSchema<Field = unknown, NodeController = unknown>
     [name: string]: INodeSchema | undefined;
   };
 }
+
+export interface IDocumentSchema<Field = unknown, NodeController = unknown> {
+  schema: INodeSchema<Field, NodeController>,
+  id?: string,
+  title?: string,
+}

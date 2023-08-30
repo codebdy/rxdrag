@@ -8,33 +8,34 @@ import { Store } from "redux";
 import { ADD_NODES, BACKUP, CHANGE_NODE_META, DELETE_NODES, GOTO, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_DOCUMENT, REMOVE_SLOT } from "../actions/registry";
 import { DocumentState } from "../reducers/documentsById/document";
 import { isArr, isStr } from "@rxdrag/shared";
-import { INodeSchema, INodeMeta } from "@rxdrag/schema";
+import { INodeSchema, INodeMeta, IDocumentSchema } from "@rxdrag/schema";
 
 export class DocumentImpl implements IDocument {
   id: string;
-  constructor(schema: INodeSchema,
+  constructor(
+    meta: IDocumentSchema,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private engine: IDesignerEngine<any, any>,
-    private store: Store<State>
+    private store: Store<State>,
   ) {
-    this.id = makeRxId()
-    this.initialize(schema, this.id)
+    this.id = meta.id || makeRxId()
+    this.initialize(meta)
   }
 
-  initialize(rootSchema: INodeSchema, documentId: string): void {
+  initialize(meta: IDocumentSchema): void {
     const nodesById: NodesById = {}
-    if (!this.isBlocksSchema(rootSchema)) {
-      const root = parseNodeSchema(this.engine, documentId, rootSchema as INodeSchema, nodesById, false)
-      this.dispatch({
-        type: INITIALIZE,
-        payload: {
-          documentId: documentId,
-          nodesById,
-          rootId: root.id,
-        },
-      })
-      this.backup(HistoryableActionType.Default)
-    }
+    const root = parseNodeSchema(this.engine, this.id, meta.schema as INodeSchema, nodesById, false)
+    this.dispatch({
+      type: INITIALIZE,
+      payload: {
+        documentId: this.id,
+        nodesById,
+        title: meta.title,
+        rootId: root.id,
+      },
+    })
+    this.backup(HistoryableActionType.Default)
+
   }
   moveTo = (sourceId: string, targetId: string, pos: NodeRelativePosition): void => {
     const payload: MoveNodesPayload = {
@@ -211,11 +212,15 @@ export class DocumentImpl implements IDocument {
   }
 
   destroy(): void {
-    this.dispatch(this.createAction(REMOVE_DOCUMENT, { }))
+    this.dispatch(this.createAction(REMOVE_DOCUMENT, {}))
   }
 
   getSchemaTree(): INodeSchema | null {
     return this.getNodeSchema(this.getState()?.rootId || "")
+  }
+
+  getTitle(): string | undefined {
+    return this.getState()?.title
   }
 
   dispatch(action: IDocumentAction<any>): void {
@@ -282,9 +287,6 @@ export class DocumentImpl implements IDocument {
     return this.store.getState().documentsById[this.id]
   }
 
-  private isBlocksSchema(schema: INodeSchema): boolean {
-    return !(schema as INodeSchema).componentName
-  }
 
   private recoverSnapshot(snapshot: ISnapshot) {
     const payload: RecoverSnapshotPayload = {

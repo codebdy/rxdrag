@@ -22,6 +22,7 @@ export type CanvasWidthListener = (index: number | null) => void
 export type CanvasWidthLimitsListener = (limits: CanvasWidthLimits | null) => void
 export type DocumentViewListener = (viewType: ViewType) => void
 export type SelectionModeListener = (mode: DocumentSelectionMode) => void
+export type DocumentTitleListener = (title: string | undefined) => void
 
 export interface IMonitor {
 	subscribeToStateChange(
@@ -44,6 +45,7 @@ export interface IMonitor {
 	subscribeToCanvasWidthLimitsChange(documentId: ID, listener: CanvasWidthLimitsListener): Unsubscribe
 	subscribeToDocumentViewChange(documentId: ID, listener: DocumentViewListener): Unsubscribe
 	subscribeToSelectionMode(documentId: ID, listener: SelectionModeListener): Unsubscribe
+	subscribeToDocumentTitle(documentId: ID, listener: DocumentTitleListener): Unsubscribe
 
 	//onViewPortResizeOrScroll(listener: Listener): Unsubscribe
 	isDragging(): boolean
