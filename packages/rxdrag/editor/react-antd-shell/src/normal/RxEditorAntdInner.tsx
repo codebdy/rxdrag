@@ -38,12 +38,10 @@ export type Antd5EditorInnerProps = {
   children?: React.ReactNode,
   locales?: ILocales,
   schema: INodeSchema,
-  canvasUrl: string,
-  previewUrl: string,
 }
 
 export const RxEditorAntdInner = memo((props: Antd5EditorInnerProps) => {
-  const { leftNav, topBar, navPanel, locales, schema, children, canvasUrl, previewUrl } = props;
+  const { leftNav, topBar, navPanel, locales, schema, children } = props;
   const [doc, setDoc] = useState<IDocument>()
   const themeMode = useThemeMode()
   const engine = useDesignerEngine()
@@ -119,7 +117,7 @@ export const RxEditorAntdInner = memo((props: Antd5EditorInnerProps) => {
           }
         </ToggleAblePane>
         <CenterContent>
-          <DocumentView doc={doc} canvasUrl={canvasUrl} previewUrl={previewUrl} />
+          <DocumentView doc={doc} />
           {children}
         </CenterContent>
         <ToggleAblePane toggleType={ToggleType.right} width={360}>

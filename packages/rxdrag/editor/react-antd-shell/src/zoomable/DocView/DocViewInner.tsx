@@ -2,8 +2,8 @@ import { memo } from "react"
 import styled from "styled-components"
 import { DeleteOutlined } from "@ant-design/icons"
 import { Button, Space } from "antd"
-import { Spring } from "../../common"
-import { useDocument } from "@rxdrag/react-core"
+import { Spring, useCanvasUrl } from "../../common"
+import { IFrame, useDocument } from "@rxdrag/react-core"
 
 const DocViewContainer = styled.div`
   position: relative;
@@ -45,6 +45,7 @@ const CanvasTitle = styled.span`
 
 export const DocViewInner = memo(() => {
   const doc = useDocument()
+  const canvasUrl = useCanvasUrl()
   return (
     <DocViewContainer>
       <CanvasToolbar>
@@ -56,7 +57,9 @@ export const DocViewInner = memo(() => {
           <Button type="text" size="small" shape="circle" icon={<DeleteOutlined />} />
         </Space>
       </CanvasToolbar>
-      <CanvasContent className="canvas-content" />
+      <CanvasContent className="document-content" >
+        {doc && <IFrame doc={doc} src={canvasUrl} />}
+      </CanvasContent>
     </DocViewContainer>
   )
 })

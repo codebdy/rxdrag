@@ -2,13 +2,13 @@ import { memo, useState } from "react"
 import styled from "styled-components"
 import { ZoomableViewportShell } from "./ZoomableViewportShell"
 
-const CanvasContainer = styled.div`
+const ViewPort = styled.div`
   padding: 400px;
   padding-top: 16px;
-  min-width: 1200px;
+  min-width: 5200px;
   min-height: 1200px;
   cursor: grab;
-  display: flex;
+  display: block;
 `
 const ViewportInner = styled.div`
   flex: 1;
@@ -30,7 +30,8 @@ export const ZoomableViewport = memo((
       zoom={zoom}
       onZoomChange={setZoom}
     >
-      <CanvasContainer
+      <ViewPort
+        className="zoomable-viewport"
         style={{
           cursor: grabbing ? "grabbing" : "grab"
         }}
@@ -44,7 +45,7 @@ export const ZoomableViewport = memo((
         >
           {children}
         </ViewportInner>
-      </CanvasContainer>
+      </ViewPort>
     </ZoomableViewportShell>
   )
 })

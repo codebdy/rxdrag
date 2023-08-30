@@ -6,17 +6,19 @@ import { CanvasToolbar } from "../../layouts"
 import { UndoRedoButtons, SelectionButtions, AuxButtionsButtions, CanvasSize, ViewButtons } from "../../widgets"
 import { Viewport } from "../Viewport"
 import { NavbarWidget } from "../../../common/NavbarWidget"
+import { useCanvasUrl, usePreviewUrl } from "../../../common"
 
 export const DocumentView = memo((
   props: {
     doc?: IDocument,
-    canvasUrl: string,
-    previewUrl: string,
   }
 ) => {
-  const { doc, canvasUrl, previewUrl } = props
+  const { doc } = props
   console.log(doc?.getSchemaTree(), 'doc1')
   const [viewType] = useDocumentViewTypeState(doc?.id)
+
+  const canvasUrl = useCanvasUrl()
+  const previewUrl = usePreviewUrl()
 
   return (
     doc ?
@@ -40,14 +42,12 @@ export const DocumentView = memo((
 
           <CanvasShell display={viewType === "design"} >
             <IFrame
-              style={{ border: "0", width: "100%", height: "100%" }}
               doc={doc}
               src={canvasUrl}
             />
           </CanvasShell>
           <CanvasShell display={viewType === "preview"} >
             <IFrame
-              style={{ border: "0", width: "100%", height: "100%" }}
               doc={doc}
               src={previewUrl}
             />

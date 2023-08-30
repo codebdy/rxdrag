@@ -101,6 +101,7 @@ export const ZoomableViewportShell = memo((
 
   return (
     <ViewportSchellContainer
+      className="viewport-shell-container"
       ref={canvasRef}
       draggable={false}
       onMouseDown={handleMouseDown}

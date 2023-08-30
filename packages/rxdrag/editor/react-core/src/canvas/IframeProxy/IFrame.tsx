@@ -10,7 +10,7 @@ export const IFrame = memo((
     doc: IDocument,
   }
 ) => {
-  const { doc, src, ...rest } = props;
+  const { doc, src, style, ...rest } = props;
   const ref = useRef<HTMLIFrameElement>(null)
   const engine = useDesignerEngine()
 
@@ -29,6 +29,7 @@ export const IFrame = memo((
     <iframe
       ref={ref}
       src={engine ? src : undefined}
+      style={{ border: "0", width: "100%", height: "100%", ...style }}
       onLoad={handleLoaded}
       {...rest}
     >

@@ -12,11 +12,13 @@ export type Antd5EditorProps = Antd5EditorInnerProps & {
   //逻辑编排配置项
   minionOptions?: IMinionOptions,
   materials?: IComponentMaterial[],
-  setters?: ISetterComponents<ReactComponent>
+  setters?: ISetterComponents<ReactComponent>,
+  canvasUrl: string,
+  previewUrl: string,
 }
 
 export const RxEditorAntd = memo((props: Antd5EditorProps) => {
-  const { themeMode, minionOptions, materials, setters, ...rest } = props;
+  const { themeMode, minionOptions, materials, setters, canvasUrl,  previewUrl, ...rest } = props;
 
   return (
     <DesignerScope
@@ -24,6 +26,8 @@ export const RxEditorAntd = memo((props: Antd5EditorProps) => {
       themeMode={themeMode}
       materials={materials}
       setters={setters}
+      canvasUrl = {canvasUrl}
+      previewUrl = {previewUrl}
     >
       <ConfigRoot>
         <EditorTheme>

@@ -11,5 +11,7 @@ export type EditorScropProps = {
   materials?: IComponentMaterial[];
   setters?: ISetterComponents<ReactComponent>;
   locales?: ILocales;
+  canvasUrl?: string,
+  previewUrl?: string,
   children?: React.ReactNode;
 };

@@ -1,5 +1,6 @@
 export * from "./EditorScope"
 export * from "./EditorTheme"
+export * from "./hooks"
 export * from "./IFrameCanvas"
 export * from "./IFramePreview"
 export * from "./NavbarWidget"
