@@ -63,7 +63,7 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
           {
             docs.map(doc => {
               return (
-                <DocView key={doc.id} />
+                <DocView key={doc.id} doc={doc} />
               )
             })
           }

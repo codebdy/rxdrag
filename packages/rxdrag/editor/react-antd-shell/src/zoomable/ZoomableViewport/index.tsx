@@ -1,6 +1,6 @@
 import { memo, useState } from "react"
 import styled from "styled-components"
-import { ZoomableViewportShell } from "./ZoomableViewport"
+import { ZoomableViewportShell } from "./ZoomableViewportShell"
 
 const CanvasContainer = styled.div`
   padding: 400px;

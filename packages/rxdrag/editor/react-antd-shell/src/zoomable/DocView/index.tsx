@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { DeleteOutlined } from "@ant-design/icons"
 import { Button, Space } from "antd"
 import { Spring } from "../../common"
+import { IDocument } from "@rxdrag/core"
 
 const DocViewContainer = styled.div`
   position: relative;
@@ -43,13 +44,16 @@ const CanvasTitle = styled.span`
 `
 
 export const DocView = memo((
-
+  props: {
+    doc: IDocument
+  }
 ) => {
+  const { doc } = props
   return (
     <DocViewContainer>
       <CanvasToolbar>
         <CanvasTitle>
-          首页 - <em>大屏</em>
+          {doc.getTitle()} - <em>大屏</em>
         </CanvasTitle>
         <Spring />
         <Space className="actions">
