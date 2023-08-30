@@ -31,6 +31,12 @@ export const ZoombaleCanvasShell = memo((
   const [mousePressedPoint, setMousePressedPoint] = useState<IPosition>()
   const canvasRef = useRef<HTMLDivElement>(null)
 
+  useEffect(() => {
+    if (canvasRef.current) {
+      canvasRef.current.scrollLeft = 300;
+    }
+  }, [])
+
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     if (canvasRef.current) {
       setMousePressedPoint({
@@ -87,7 +93,6 @@ export const ZoombaleCanvasShell = memo((
       canvasRef.current.scrollLeft = 0;
       canvasRef.current.scrollTop = 0;
     }
-
   }, [])
 
   return (

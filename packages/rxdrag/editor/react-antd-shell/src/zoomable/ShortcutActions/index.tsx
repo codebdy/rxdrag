@@ -2,7 +2,7 @@ import { Button, Space } from "antd"
 import { memo } from "react"
 import styled from "styled-components"
 import { floatShadow } from "../utils"
-import { AimOutlined, EllipsisOutlined, PlayCircleOutlined } from "@ant-design/icons"
+import { AimOutlined, AppstoreOutlined, HistoryOutlined, PlayCircleOutlined } from "@ant-design/icons"
 import { usePropertyWidthState } from "../contexts"
 import { ZoomButtons } from "./ZoomButtons"
 
@@ -40,9 +40,10 @@ export const ShortcutActions = memo((
     >
       <Space direction="vertical">
         <FloatButton icon={<PlayCircleOutlined />} />
+        <FloatButton icon={<AppstoreOutlined />} />
         <ZoomButtons zoom={zoom} onZoomChange={onZoomChange} />
+        <FloatButton icon={<HistoryOutlined />}/>
         <FloatButton disabled={!scrolled} icon={<AimOutlined />} onClick={onResetScroll} />
-        <FloatButton icon={<EllipsisOutlined />} />
       </Space>
     </Container>
   )
