@@ -11,7 +11,7 @@ import { ILocales } from "@rxdrag/locales"
 import { settingLocales } from "../../common"
 import { commonLocales } from "../../locales"
 import { LeftSideSecondary } from "../LeftSideSecondary"
-import { IDocumentMeta } from "@rxdrag/schema"
+import { IDocumentSchema } from "@rxdrag/schema"
 
 const Container = styled.div`
   width: 100%;
@@ -37,7 +37,7 @@ const Workspace = styled.div`
 export type ZoomableEditorInnerProps = {
   topBar?: React.ReactNode,
   locales?: ILocales,
-  metas?: IDocumentMeta[],
+  schemas?: IDocumentSchema[],
 }
 
 export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {

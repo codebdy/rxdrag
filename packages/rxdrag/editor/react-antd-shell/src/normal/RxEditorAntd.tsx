@@ -3,7 +3,7 @@ import { IComponentMaterial, IMinionOptions } from "@rxdrag/react-core"
 import { Antd5EditorInnerProps, RxEditorAntdInner } from "./RxEditorAntdInner"
 import { ReactComponent } from "@rxdrag/react-shared"
 import { ISetterComponents } from "@rxdrag/core"
-import { EditorScope, EditorTheme } from "../common"
+import { DesignerScope, EditorTheme } from "../common"
 import { ConfigRoot } from "../common/EditorTheme/ConfigRoot"
 import "./style.css"
 
@@ -19,7 +19,7 @@ export const RxEditorAntd = memo((props: Antd5EditorProps) => {
   const { themeMode, minionOptions, materials, setters, ...rest } = props;
 
   return (
-    <EditorScope
+    <DesignerScope
       minionOptions={minionOptions}
       themeMode={themeMode}
       materials={materials}
@@ -30,6 +30,6 @@ export const RxEditorAntd = memo((props: Antd5EditorProps) => {
           <RxEditorAntdInner {...rest} />
         </EditorTheme>
       </ConfigRoot>
-    </EditorScope>
+    </DesignerScope>
   )
 })

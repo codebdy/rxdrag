@@ -10,7 +10,7 @@ import {
 import { Layout, Menu, Button, theme, Space } from 'antd';
 import styled from 'styled-components';
 import { Logo, MenuButton, controllerDefines, materials, minionsLocales, minionsMaterialCategories, setterLocales } from 'example-common';
-import { EditorScope } from '@rxdrag/react-antd-shell';
+import { DesignerScope } from '@rxdrag/react-antd-shell';
 import { PageEditor, pageMaterial } from './page';
 import { INodeSchema } from "@rxdrag/schema"
 import { ControllerSetter } from "@rxdrag/react-antd-shell"
@@ -55,7 +55,7 @@ export const InlineEditorExample: React.FC = () => {
   }, [])
 
   return (
-    <EditorScope
+    <DesignerScope
       themeMode='dark'
       minionOptions={{
         materials: minionsMaterialCategories,
@@ -125,6 +125,6 @@ export const InlineEditorExample: React.FC = () => {
           </Content>
         </Layout>
       </StyleLayout>
-    </EditorScope>
+    </DesignerScope>
   );
 };
