@@ -31,7 +31,7 @@ export const NormalEditorExample = memo(() => {
     setActivedKey(key as LeftNavType)
   }, [])
 
-  const schemas = useMemo(() => {
+  const schema = useMemo(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (pages as any)[pageId]
   }, [pageId])
@@ -42,7 +42,7 @@ export const NormalEditorExample = memo(() => {
 
   return (
     <RxEditorAntd
-      schemas={schemas}
+      schema={schema}
       canvasUrl="/canvas-render"
       previewUrl="/preview-render"
       themeMode='dark'

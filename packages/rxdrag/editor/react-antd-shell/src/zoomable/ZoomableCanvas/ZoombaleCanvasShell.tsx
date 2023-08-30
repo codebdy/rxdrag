@@ -1,6 +1,7 @@
 import { memo, useCallback, useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import { ShortcutActions } from "../ShortcutActions"
+import "./style.css"
 
 const CanvasSchellContainer = styled.div`
   flex: 1;
@@ -40,6 +41,7 @@ export const ZoombaleCanvasShell = memo((
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     if (canvasRef.current) {
+      document.body.classList.add("canvas-moving");
       setMousePressedPoint({
         x: e.clientX,
         y: e.clientY,
@@ -51,6 +53,7 @@ export const ZoombaleCanvasShell = memo((
   }, [onGrabbing])
 
   const handleMouseUp = useCallback(() => {
+    document.body.classList.remove("canvas-moving");
     setMousePressedPoint(undefined)
     onGrabbing?.(false)
   }, [onGrabbing])

@@ -37,13 +37,13 @@ export type Antd5EditorInnerProps = {
   navPanel?: React.ReactNode,
   children?: React.ReactNode,
   locales?: ILocales,
-  schemas: INodeSchema,
+  schema: INodeSchema,
   canvasUrl: string,
   previewUrl: string,
 }
 
 export const RxEditorAntdInner = memo((props: Antd5EditorInnerProps) => {
-  const { leftNav, topBar, navPanel, locales, schemas, children, canvasUrl, previewUrl } = props;
+  const { leftNav, topBar, navPanel, locales, schema, children, canvasUrl, previewUrl } = props;
   const [doc, setDoc] = useState<IDocument>()
   const themeMode = useThemeMode()
   const engine = useDesignerEngine()
@@ -56,11 +56,11 @@ export const RxEditorAntdInner = memo((props: Antd5EditorInnerProps) => {
         docRef.current.destroy()
         docRef.current = undefined
       }
-      const document = engine.createDocument(schemas)
+      const document = engine.createDocument(schema)
       engine.getActions().changeActivedDocument(document.id)
       setDoc(document)
     }
-  }, [engine, schemas])
+  }, [engine, schema])
 
   useEffect(() => {
     const langMgr = engine?.getLocalesManager()

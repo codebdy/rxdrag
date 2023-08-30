@@ -17,11 +17,10 @@ const BottomShell = styled(ResizableRow)`
   .ant-tabs-nav{
     padding: 0 16px;
     margin: 0;
-    user-select: none;
   }
 `
 
-const ComponentNav = styled.div`
+const BottomBar = styled.div`
   position: absolute;
   top:-32px;
   left:0;
@@ -143,10 +142,10 @@ export const BottomArea = memo(() => {
         }
         items={items}
       />
-      <ComponentNav>
+      <BottomBar>
         <div>导航</div>
         {/* <NavbarWidget /> */}
-      </ComponentNav>
+      </BottomBar>
       {
         !propertyMini && !collapsed &&
         <PinButton
