@@ -4,6 +4,7 @@ import { ButtonMaterial, InputMaterial, InputNumberMaterial, AutoCompleteMateria
 import { NewsMaterial } from "./business/News";
 import { NoticesMaterial } from "./business/Notices";
 import { RightAdMaterial } from "./business/RightAd";
+import { PageMaterial } from "./page";
 
 export type ResourceGroup = {
   titleKey: string,
@@ -16,6 +17,7 @@ export const materials: IComponentMaterial[] = [
     component: Root,
     designer: Root,
   },
+  PageMaterial,
   ButtonMaterial,
   InputMaterial,
   TextAreaMaterial,

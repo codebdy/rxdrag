@@ -4,7 +4,7 @@ import { PagePreview } from "./Preview";
 import { pageLocales } from "./locales";
 import { paeSchema } from "./schema";
 
-export const pageMaterial: IComponentMaterial = {
+export const PageMaterial: IComponentMaterial = {
   componentName: "Page",
   component: PagePreview,
   designer: PageDesigner,

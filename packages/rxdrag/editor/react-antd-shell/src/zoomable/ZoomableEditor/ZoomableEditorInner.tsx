@@ -12,7 +12,6 @@ import { Space } from "antd"
 import { DocView } from "../DocView"
 import { ZoomableViewport } from "../ZoomableViewport"
 
-
 const Workspace = styled.div`
   flex:1;
   display: flex;
@@ -22,7 +21,6 @@ const Workspace = styled.div`
   flex-flow: column;
   height: 0;
 `
-
 
 export type ZoomableEditorInnerProps = {
   locales?: ILocales,
@@ -62,11 +60,13 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
     <Workspace>
       <ZoomableViewport>
         <Space size={"large"}>
-          {docs.map(doc => {
-            return (
-              <DocView key={doc.id} />
-            )
-          })}
+          {
+            docs.map(doc => {
+              return (
+                <DocView key={doc.id} />
+              )
+            })
+          }
         </Space>
       </ZoomableViewport>
       <BottomArea />
