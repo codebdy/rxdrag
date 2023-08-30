@@ -10,6 +10,7 @@ import { useDesignerEngine } from "@rxdrag/react-core"
 import { ILocales } from "@rxdrag/locales"
 import { settingLocales } from "../../common"
 import { commonLocales } from "../../locales"
+import { LeftSideSecondary } from "../LeftSideSecondary"
 
 const Container = styled.div`
   width: 100%;
@@ -60,6 +61,7 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
         <BottomArea />
         <PropertyPanel />
         <LeftSide />
+        <LeftSideSecondary />
       </Workspace>
     </Container>
   )

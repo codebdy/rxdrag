@@ -1,10 +1,10 @@
-import { Button, Space } from "antd"
+import { Space } from "antd"
 import { memo } from "react"
 import styled from "styled-components"
-import { floatShadow } from "../utils"
-import { AimOutlined, AppstoreOutlined, HistoryOutlined, PlayCircleOutlined } from "@ant-design/icons"
+import { AimOutlined, AppstoreOutlined, PlayCircleOutlined } from "@ant-design/icons"
 import { usePropertyWidthState } from "../contexts"
 import { ZoomButtons } from "./ZoomButtons"
+import { CanvasFloatButton } from "../common/FloatButton"
 
 const Container = styled.div`
   position: fixed;
@@ -13,11 +13,6 @@ const Container = styled.div`
   display: flex;
   flex-flow: column;
   transition: all 0.3s;
-`
-
-const FloatButton = styled(Button).attrs({ size: "large" })`
-  box-shadow: ${floatShadow};
-  border: 0;
 `
 
 export const ShortcutActions = memo((
@@ -35,15 +30,15 @@ export const ShortcutActions = memo((
     <Container
       className="rx-shortcut-actions"
       style={{
-        right: propertyWidth + 32
+        right: propertyWidth + 24
       }}
     >
       <Space direction="vertical">
-        <FloatButton icon={<PlayCircleOutlined />} />
-        <FloatButton icon={<AppstoreOutlined />} />
+        <CanvasFloatButton icon={<PlayCircleOutlined />} />
+        <CanvasFloatButton icon={<AppstoreOutlined />} />
         <ZoomButtons zoom={zoom} onZoomChange={onZoomChange} />
-        <FloatButton icon={<HistoryOutlined />}/>
-        <FloatButton disabled={!scrolled} icon={<AimOutlined />} onClick={onResetScroll} />
+        {/* <FloatButton icon={<HistoryOutlined />}/> */}
+        <CanvasFloatButton disabled={!scrolled} icon={<AimOutlined />} onClick={onResetScroll} />
       </Space>
     </Container>
   )

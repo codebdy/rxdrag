@@ -47,7 +47,7 @@ export const CanvasView = memo((
     <CanvasViewContainer>
       <CanvasToolbar>
         <CanvasTitle>
-          主场景 - <em>大屏排版布局</em>
+          首页 - <em>大屏</em>
         </CanvasTitle>
         <Spring />
 

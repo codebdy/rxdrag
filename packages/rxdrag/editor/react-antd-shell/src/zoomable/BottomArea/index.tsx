@@ -66,6 +66,21 @@ export const BottomArea = memo(() => {
         key: "shortcurt",
         Children: collapsed ? <></> : "快捷控制器"
       },
+      {
+        label: "大纲",
+        key: "outline",
+        Children: collapsed ? <></> : "快捷控制器"
+      },
+      {
+        label: "历史",
+        key: "history",
+        Children: collapsed ? <></> : "快捷控制器"
+      },
+      {
+        label: "控制台",
+        key: "console",
+        Children: collapsed ? <></> : "快捷控制器"
+      },
     ]
   }, [collapsed])
 

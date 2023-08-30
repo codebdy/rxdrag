@@ -1,8 +1,9 @@
 import { memo } from "react"
 import styled from "styled-components"
 import { floatShadow } from "../utils"
-import { Button } from "antd"
-import { CompassOutlined, DeploymentUnitOutlined, SettingOutlined, SnippetsOutlined } from "@ant-design/icons"
+import { CompassOutlined, DeploymentUnitOutlined, LayoutOutlined, SnippetsOutlined } from "@ant-design/icons"
+import { LeftNavButton } from "../common/LeftNavButton"
+import { ScreenDialog } from "./ScreenDialog"
 
 const Container = styled.div`
   width: 40px;
@@ -28,20 +29,15 @@ const ButtonMask = styled.div`
   flex-flow: column;
   width: 100%;
 `
-
-export const LeftNavButton = styled(Button).attrs({ block: true, })`
-  border-radius: 0;
-  height: 40px;
-`
-
 export const LeftSide = memo(() => {
   return (
-    <Container>
+    <Container className="rx-left-side">
       <ButtonMask>
         <LeftNavButton icon={<SnippetsOutlined />} type="primary" />
+        <LeftNavButton icon={<LayoutOutlined />} type="text" />
         <LeftNavButton icon={<CompassOutlined />} type="text" />
         <LeftNavButton icon={<DeploymentUnitOutlined />} type="text" />
-        <LeftNavButton icon={<SettingOutlined />} type="text" />
+        <ScreenDialog />
       </ButtonMask>
     </Container>
   )

@@ -54,16 +54,16 @@ export const PropertyPanel = memo(() => {
       width={propertyWidth}
       onWidthChange={setPropertyWidth}
       style={{
-        height: collapsed ? 40 : undefined,
-        width: collapsed ? 40 : undefined,
-        minWidth: collapsed ? 40 : undefined,
+        height: collapsed ? 32 : undefined,
+        width: collapsed ? 32 : undefined,
+        minWidth: collapsed ? 32 : undefined,
       }}
     >
       {
         collapsed
           ? <Button
             type="text"
-            size="large"
+            
             icon={propertyIcon}
             onClick={handleOpen}
           />

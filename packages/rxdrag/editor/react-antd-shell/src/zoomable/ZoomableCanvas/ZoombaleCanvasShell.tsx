@@ -16,7 +16,7 @@ interface IPosition {
   scrollTop: number
 }
 
-const defaultScrollLeft = 300;
+const defaultScrollLeft = 264;
 
 export const ZoombaleCanvasShell = memo((
   props: {

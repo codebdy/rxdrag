@@ -12,12 +12,12 @@ const Container = styled.div`
   border-radius: 8px;
   background-color: ${props => props.theme.token?.colorBgBase};
   box-shadow: ${floatShadow};
-  width: 40px;
+  width: 32px;
   overflow: hidden;
 `
 
 const PercentLabel = styled(Button).attrs({ type: "text", block: true })`
-  font-size: 12px;
+  font-size: 11px;
   user-select: none;
   cursor: pointer;
   padding: 8px 0;
