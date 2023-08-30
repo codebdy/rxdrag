@@ -4,6 +4,7 @@ import { ApiOutlined, CodeSandboxOutlined, GithubFilled, NodeIndexOutlined, Sett
 import { Space, Button, Select } from "antd"
 import { Logo, MenuButton, setterLocales } from "example-common"
 import styled from "styled-components"
+import { SaveButton } from "./SaveButton"
 
 const ProjectTitle = styled.span`
   margin-left: 16px;
@@ -35,6 +36,7 @@ export const LargeScreenExample = memo(() => {
               target="_blank"
               icon={<GithubFilled />}
             />
+            <SaveButton />
             <MenuButton />
           </Space>
         </>

@@ -1,3 +1,4 @@
+export * from "./EditorScope"
 export * from "./EditorTheme"
 export * from "./IFrameCanvas"
 export * from "./IFramePreview"

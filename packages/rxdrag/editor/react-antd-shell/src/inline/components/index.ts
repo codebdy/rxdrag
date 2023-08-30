@@ -1,5 +1,5 @@
 export * from "./DefaultToolbar"
 export * from "./DraggableWidget"
-export * from "./EditorScope"
+export * from "../../common"
 export * from "./Panel"
 export * from "./Toolkits"
