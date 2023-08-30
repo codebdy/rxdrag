@@ -1,8 +1,10 @@
 import { memo } from "react"
 import styled from "styled-components"
-import { Spring } from "../../../common"
+import { DeleteOutlined } from "@ant-design/icons"
+import { Button, Space } from "antd"
+import { Spring } from "../../common"
 
-const CanvasViewContainer = styled.div`
+const DocViewContainer = styled.div`
   position: relative;
   width: 1200px;
   .actions{
@@ -40,19 +42,21 @@ const CanvasTitle = styled.span`
   font-size: 13px;
 `
 
-export const CanvasView = memo((
+export const DocView = memo((
 
 ) => {
   return (
-    <CanvasViewContainer>
+    <DocViewContainer>
       <CanvasToolbar>
         <CanvasTitle>
           首页 - <em>大屏</em>
         </CanvasTitle>
         <Spring />
-
+        <Space className="actions">
+          <Button type="text" size="small" shape="circle" icon={<DeleteOutlined />} />
+        </Space>
       </CanvasToolbar>
       <CanvasContent className="canvas-content" />
-    </CanvasViewContainer>
+    </DocViewContainer>
   )
 })

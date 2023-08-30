@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { ShortcutActions } from "../ShortcutActions"
 import "./style.css"
 
-const CanvasSchellContainer = styled.div`
+const ViewportSchellContainer = styled.div`
   flex: 1;
   background-color: ${props => props.theme.token?.colorBorderSecondary};
   height: 0;
@@ -19,7 +19,7 @@ interface IPosition {
 
 const defaultScrollLeft = 264;
 
-export const ZoombaleCanvasShell = memo((
+export const ZoomableViewportShell = memo((
   props: {
     zoom: number,
     onZoomChange: (zoom: number) => void
@@ -100,7 +100,7 @@ export const ZoombaleCanvasShell = memo((
   }, [])
 
   return (
-    <CanvasSchellContainer
+    <ViewportSchellContainer
       ref={canvasRef}
       draggable={false}
       onMouseDown={handleMouseDown}
@@ -113,6 +113,6 @@ export const ZoombaleCanvasShell = memo((
         scrolled={scrolled}
         onResetScroll={handleResetScroll}
       />
-    </CanvasSchellContainer>
+    </ViewportSchellContainer>
   )
 })

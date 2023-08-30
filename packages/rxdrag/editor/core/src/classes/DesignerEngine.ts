@@ -48,6 +48,17 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 			this.registerPlugin(pluginFactory)
 		}
 	}
+	clearDocuments(): void {
+		for (const id of Object.keys(this.documentsById)) {
+			this.getDocument(id)?.destroy()
+		}
+		this.documentsById = {}
+	}
+	removeDocument(id: string): void {
+		this.getDocument(id)?.destroy()
+		delete this.documentsById[id]
+	}
+
 	getSetterManager(): ISetterManager<ComponentType> {
 		return this.setterManager
 	}
@@ -90,7 +101,7 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 	setSelectionMode(mode: SelectionMode): void {
 		throw new Error("Method not implemented.");
 	}
-	
+
 	createDocument(documentSchema: IDocumentSchema): IDocument {
 		const doc = new DocumentImpl(documentSchema, this, this.store)
 		this.documentsById[doc.id] = doc

@@ -20,6 +20,8 @@ export interface IDesignerEngine<ComponentType = any, IconType = any> {
 	getDocument(id: ID): IDocument | null,
 	getNodeDocument(nodeId: ID): IDocument | null,
 	getAllDocuments(): IDocument[] | null
+	clearDocuments(): void
+	removeDocument(id: ID): void
 
 	getMonitor(): IMonitor
 	getShell(): IDesignerShell

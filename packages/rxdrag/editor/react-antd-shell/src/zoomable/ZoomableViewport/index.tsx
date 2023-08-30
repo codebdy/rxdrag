@@ -1,7 +1,6 @@
 import { memo, useState } from "react"
 import styled from "styled-components"
-import { ZoombaleCanvasShell } from "./ZoombaleCanvasShell"
-import { CanvasView } from "./CanvasView"
+import { ZoomableViewportShell } from "./ZoomableViewport"
 
 const CanvasContainer = styled.div`
   padding: 400px;
@@ -11,19 +10,22 @@ const CanvasContainer = styled.div`
   cursor: grab;
   display: flex;
 `
-const CanvasInner = styled.div`
+const ViewportInner = styled.div`
   flex: 1;
   transform-origin: 0px 0px;
 `
 
-export const ZoomableCanvas = memo((
-
+export const ZoomableViewport = memo((
+  props: {
+    children?: React.ReactNode,
+  }
 ) => {
+  const { children } = props;
   const [zoom, setZoom] = useState(1)
   const [grabbing, setGrabbing] = useState(false);
 
   return (
-    <ZoombaleCanvasShell
+    <ZoomableViewportShell
       onGrabbing={setGrabbing}
       zoom={zoom}
       onZoomChange={setZoom}
@@ -33,16 +35,16 @@ export const ZoomableCanvas = memo((
           cursor: grabbing ? "grabbing" : "grab"
         }}
       >
-        <CanvasInner
+        <ViewportInner
           className="zoomable-canvas-inner"
           style={{
             transform: `scale(${zoom})`,
           }}
           draggable={false}
         >
-          <CanvasView />
-        </CanvasInner>
+          {children}
+        </ViewportInner>
       </CanvasContainer>
-    </ZoombaleCanvasShell>
+    </ZoomableViewportShell>
   )
 })
