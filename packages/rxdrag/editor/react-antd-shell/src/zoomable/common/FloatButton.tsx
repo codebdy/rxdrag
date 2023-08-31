@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import styled from "styled-components";
-import { floatShadow } from "../../utils";
+import { floatShadow, floatSmallShadow } from "../../utils";
 
 export const CanvasFloatLargeButton = styled(Button).attrs({ size: "large" })`
   box-shadow: ${floatShadow};
@@ -13,6 +13,6 @@ export const CanvasFloatButton = styled(Button)`
 `;
 
 export const CanvasFloatSmallButton = styled(Button).attrs({ size: "small" })`
-  box-shadow: ${floatShadow};
+  box-shadow: ${floatSmallShadow};
   border: 0;
 `;
