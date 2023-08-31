@@ -51,6 +51,13 @@ export class Actions implements IActions {
 
 	selectNodes(targetIds: string[]): void {
 		this.engine.dispatch({ type: SELECT_NODES, payload: { targetIds } })
+		if (targetIds.length) {
+			//激活选中元素的文档
+			const documentId = this.engine.getMonitor().getNodeDocumentId(targetIds[0])
+			if (this.engine.getMonitor().getState().activedDocumentId !== documentId) {
+				this.changeActivedDocument(documentId || null)
+			}
+		}
 	}
 
 	setSelectionMode(documentId: string, mode: DocumentSelectionMode): void {
