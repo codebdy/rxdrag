@@ -17,6 +17,7 @@ const Container = styled(DraggableWidget)`
   flex-flow: column;
   z-index: 10;
   border-radius: 8px;
+  padding-bottom: 16px;
 `
 const PannelContent = styled.div`
   flex:1;
@@ -56,7 +57,7 @@ export const Toolbox = memo((
         title={t("工具箱")}
         onClose={handleCollapse}
       />
-      <PannelContent>
+      <PannelContent className="toolbox-content">
         {
           children
         }
