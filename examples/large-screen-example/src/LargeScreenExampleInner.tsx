@@ -2,8 +2,6 @@ import { memo } from "react"
 import { Toolbar } from "./Toolbar"
 import { ZoomableEditor } from "@rxdrag/react-antd-shell"
 import styled from "styled-components"
-import { LeftSide } from "./LeftSide"
-import { LeftSideSecondary } from "./LeftSideSecondary"
 import { INodeSchema, IDocumentSchema } from "@rxdrag/schema"
 
 const Container = styled.div`
@@ -25,10 +23,6 @@ const schemas: IDocumentSchema[] = [
     title: "首页",
     schema: rootNodeSchema,
   },
-  {
-    title: "详情",
-    schema: rootNodeSchema,
-  }
 ]
 
 
@@ -40,8 +34,6 @@ export const LargeScreenExampleInner = memo(() => {
       <ZoomableEditor
         schemas={schemas}
       />
-      <LeftSide />
-      <LeftSideSecondary />
     </Container>
   )
 })
