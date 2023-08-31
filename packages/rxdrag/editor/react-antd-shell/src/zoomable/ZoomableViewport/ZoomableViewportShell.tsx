@@ -2,6 +2,8 @@ import { memo, useCallback, useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import { ShortcutActions } from "../ShortcutActions"
 import "./style.css"
+import { MouseMoveEvent, MouseUpEvent } from "@rxdrag/core"
+import { useDesignerEngine } from "@rxdrag/react-core"
 
 const ViewportSchellContainer = styled.div`
   flex: 1;
@@ -29,7 +31,7 @@ export const ZoomableViewportShell = memo((
 ) => {
   const { zoom, onZoomChange, onGrabbing, children } = props
   const [scrolled, setScrolled] = useState(false)
-
+  const engine = useDesignerEngine()
   const [mousePressedPoint, setMousePressedPoint] = useState<IPosition>()
   const canvasRef = useRef<HTMLDivElement>(null)
 
@@ -75,14 +77,39 @@ export const ZoomableViewportShell = memo((
 
   }, [mousePressedPoint])
 
+  //这个要转换坐标
+  const handleShellMouseMove = useCallback(
+    (e: MouseMoveEvent) => {
+      if (!mousePressedPoint) {
+        return
+      }
+
+      const dragMoveDiff = {
+        x: mousePressedPoint.x - e.originalEvent.clientX,
+        y: mousePressedPoint.y - e.originalEvent.clientY
+      }
+
+      if (canvasRef.current) {
+        canvasRef.current.scrollLeft = mousePressedPoint.scrollLeft + dragMoveDiff.x;
+        canvasRef.current.scrollTop = mousePressedPoint.scrollTop + dragMoveDiff.y;
+      }
+    },
+    [mousePressedPoint]
+  );
+
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove)
     document.addEventListener("mouseup", handleMouseUp)
+    const unsubMouseMove = engine?.getShell().subscribeTo(MouseMoveEvent.Name, handleShellMouseMove)
+    const unsubMouseUp = engine?.getShell().subscribeTo(MouseUpEvent.Name, handleMouseUp)
     return () => {
       document.removeEventListener("mousemove", handleMouseMove)
       document.removeEventListener("mouseup", handleMouseUp)
+      unsubMouseMove?.()
+      unsubMouseUp?.()
     }
-  }, [handleMouseMove, handleMouseUp])
+  }, [engine, handleMouseMove, handleMouseUp, handleShellMouseMove])
+
 
   const handleScroll = useCallback((e: React.UIEvent<HTMLElement>) => {
     if (e.currentTarget.scrollTop > 60 || (e.currentTarget.scrollLeft > defaultScrollLeft + 60) || e.currentTarget.scrollLeft < (defaultScrollLeft - 60)) {
@@ -98,6 +125,7 @@ export const ZoomableViewportShell = memo((
       canvasRef.current.scrollTop = 0;
     }
   }, [])
+
 
   return (
     <ViewportSchellContainer

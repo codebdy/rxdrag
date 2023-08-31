@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components"
-import { ResizableRow } from "../../common"
+import { NavbarWidget, ResizableRow } from "../../common"
 import { usePropertyWidthState } from "../contexts"
 import { floatShadow } from "../utils"
 import { Button, Space, Tabs } from "antd"
@@ -143,8 +143,7 @@ export const BottomArea = memo(() => {
         items={items}
       />
       <BottomBar>
-        <div>导航</div>
-        {/* <NavbarWidget /> */}
+        <NavbarWidget />
       </BottomBar>
       {
         !propertyMini && !collapsed &&

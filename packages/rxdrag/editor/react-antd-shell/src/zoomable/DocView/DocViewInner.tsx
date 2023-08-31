@@ -46,7 +46,6 @@ const CanvasTitle = styled.span`
 export const DocViewInner = memo(() => {
   const doc = useDocument()
   const canvasUrl = useCanvasUrl()
-  console.log("===>DocViewInner", doc)
   return (
     <DocViewContainer>
       <CanvasToolbar>

@@ -17,7 +17,7 @@ const Container = styled.div`
 `
 
 export function ResizableRow(props: {
-  height?: number | string;
+  height?: number;
   maxHeight?: number | string;
   minHeight?: number | string;
   children?: React.ReactNode;
@@ -43,6 +43,10 @@ export function ResizableRow(props: {
   const { token } = theme.useToken();
   const dragingRef = useRef(draging)
   dragingRef.current = draging
+  const oldHeightRef = useRef(oldHeight)
+  oldHeightRef.current = oldHeight
+  const firstYRef = useRef(firstY)
+  firstYRef.current = firstY
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -62,10 +66,12 @@ export function ResizableRow(props: {
 
   const handleMouseMove = useCallback(
     (event: MouseEvent) => {
+      const firstY = firstYRef.current
       if (!dragingRef.current && firstY !== undefined && Math.abs(event.clientY - firstY) > 5) {
         setDraging(true);
         return
       }
+      const oldHeight = oldHeightRef.current;
       if (dragingRef.current && isNumber(oldHeight) && firstY !== undefined) {
         const newHeight = top
           ? oldHeight + (event.clientY - firstY)
@@ -74,7 +80,7 @@ export function ResizableRow(props: {
         onHeightChange && onHeightChange(newHeight);
       }
     },
-    [firstY, oldHeight, onHeightChange, top]
+    [onHeightChange, top]
   );
 
   const handleMouseup = useCallback(() => {

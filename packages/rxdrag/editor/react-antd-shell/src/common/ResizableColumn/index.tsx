@@ -43,6 +43,12 @@ export const ResizableColumn = memo(
     const [firstX, setFirstX] = useState(0);
     const { token } = theme.useToken();
     const ref = useRef<HTMLDivElement>(null);
+    const firstXRef = useRef(firstX)
+    firstXRef.current = firstX
+    const dragingRef = useRef(draging)
+    dragingRef.current = draging
+    const oldWidthRef = useRef(oldWidth)
+    oldWidthRef.current = oldWidth
 
     useEffect(() => {
       setRealWidth(width);
@@ -60,6 +66,9 @@ export const ResizableColumn = memo(
 
     const handleMouseMove = useCallback(
       (event: MouseEvent) => {
+        const draging = dragingRef.current
+        const firstX = firstXRef.current
+        const oldWidth = oldWidthRef.current
         if (draging && isNumber(oldWidth)) {
           const newWidth = right
             ? (oldWidth as number) - (event.clientX - firstX)
@@ -71,7 +80,7 @@ export const ResizableColumn = memo(
           onWidthChange && onWidthChange(newWidth);
         }
       },
-      [draging, firstX, maxWidth, minWidth, oldWidth, onWidthChange, right]
+      [maxWidth, minWidth, onWidthChange, right]
     );
 
     const handleMouseup = useCallback(() => {

@@ -17,7 +17,7 @@ export function nodesById(
 	const newState: State = {}
 	switch (action.type) {
 		case INITIALIZE:
-			return (payload as DocumentInitPayload)?.nodesById || {}
+			return { ...state, ...(payload as DocumentInitPayload)?.nodesById || {} }
 		case ADD_NODES:
 			return addNods(state, action as IDocumentAction<DocumentActionPayload>)
 		case MOVE_NODES:

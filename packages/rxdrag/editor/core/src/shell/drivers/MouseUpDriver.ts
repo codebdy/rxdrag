@@ -11,8 +11,8 @@ export class MouseUpDriverImpl implements IDriver {
   onMouseUp = (e: MouseEvent) => {
     this.dispatcher.dispatch(
       new MouseUpEvent({
-        offsetX:e.offsetX,
-        offsetY:e.offsetY,
+        offsetX: e.offsetX,
+        offsetY: e.offsetY,
         clientX: e.clientX,
         clientY: e.clientY,
         pageX: e.pageX,
@@ -27,10 +27,10 @@ export class MouseUpDriverImpl implements IDriver {
   }
 
   attach() {
-     this.element?.addEventListener('mouseup', this.onMouseUp as EventListener)
+    this.element?.addEventListener('mouseup', this.onMouseUp as EventListener)
   }
   teardown(): void {
-     this.element?.removeEventListener('mouseup', this.onMouseUp as EventListener)
+    this.element?.removeEventListener('mouseup', this.onMouseUp as EventListener)
   }
 }
 
