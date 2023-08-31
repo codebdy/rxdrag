@@ -1,8 +1,8 @@
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
-import { ResizableColumn } from "../../common"
+import { ResizableColumn, SettingsForm } from "../../common"
 import { usePropertyWidthState } from "../contexts"
-import { floatShadow } from "../utils"
+import { floatShadow } from "../../utils"
 import { Button, Space } from "antd"
 import { MinusOutlined } from "@ant-design/icons"
 import { MINI_PRO_WIDTH } from "../consts"
@@ -64,26 +64,29 @@ export const PropertyPanel = memo(() => {
         collapsed
           ? <Button
             type="text"
-            
+
             icon={propertyIcon}
             onClick={handleOpen}
           />
-          : <Title>
-            <Space>
-              <span style={{ fontSize: 14 }}>
-                {propertyIcon}
-              </span>
-              <span>
-                {t("properties")}
-              </span>
-            </Space>
-            <Button
-              size="small"
-              type="text"
-              icon={<MinusOutlined />}
-              onClick={handleCollapse}
-            />
-          </Title>
+          : <>
+            <Title>
+              <Space>
+                <span style={{ fontSize: 14 }}>
+                  {propertyIcon}
+                </span>
+                <span>
+                  {t("properties")}
+                </span>
+              </Space>
+              <Button
+                size="small"
+                type="text"
+                icon={<MinusOutlined />}
+                onClick={handleCollapse}
+              />
+            </Title>
+            <SettingsForm />
+          </>
       }
 
     </PanelShell>

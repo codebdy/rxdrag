@@ -1,7 +1,6 @@
 import { memo } from "react"
 import styled from "styled-components"
-import { DeleteOutlined } from "@ant-design/icons"
-import { Button, Space } from "antd"
+import { Space } from "antd"
 import { Spring, useCanvasUrl } from "../../common"
 import { IFrame, useDocument } from "@rxdrag/react-core"
 
@@ -54,7 +53,7 @@ export const DocViewInner = memo(() => {
         </CanvasTitle>
         <Spring />
         <Space className="actions">
-          <Button type="text" size="small" shape="circle" icon={<DeleteOutlined />} />
+          {/* <Button type="text" size="small" shape="circle" icon={<DeleteOutlined />} /> */}
         </Space>
       </CanvasToolbar>
       <CanvasContent className="document-content" >

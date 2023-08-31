@@ -2,10 +2,13 @@ import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components"
 import { NavbarWidget, ResizableRow } from "../../common"
 import { usePropertyWidthState } from "../contexts"
-import { floatShadow } from "../utils"
-import { Button, Space, Tabs } from "antd"
+import { floatShadow } from "../../utils"
+import { Button, Divider, Space, Tabs } from "antd"
 import { BorderOutlined, LeftOutlined, MinusOutlined, RightOutlined, SettingOutlined } from "@ant-design/icons"
 import { MINI_PRO_WIDTH } from "../consts"
+import { ReundoIcons } from "./ReundoIcons"
+import { useActivedDocument } from "@rxdrag/react-core"
+import { AuxButtions } from "./AuxButtions"
 
 const BottomShell = styled(ResizableRow)`
   position: fixed;
@@ -26,9 +29,14 @@ const BottomBar = styled.div`
   top:-32px;
   left:0;
   display: flex;
-  width: 100%;
+  width: calc(100% - 16px);
+  padding: 0 8px;
   justify-content: space-between;
   align-items: center;
+`
+
+const BottomActions = styled.div`
+
 `
 
 const PinButton = styled(Button).attrs({ shape: "circle", size: "small", })`
@@ -48,6 +56,7 @@ export const BottomArea = memo(() => {
   const [pinned, setPinned] = useState(false)
   const [height, setHeight] = useState(200)
   const [propertyWidth] = usePropertyWidthState()
+  const activedDocument = useActivedDocument()
 
   const items = useMemo(() => {
     return [
@@ -145,6 +154,13 @@ export const BottomArea = memo(() => {
       />
       <BottomBar>
         <NavbarWidget />
+        {
+          activedDocument && <BottomActions>
+            <ReundoIcons />
+            <Divider type="vertical" />
+            <AuxButtions />
+          </BottomActions>
+        }
       </BottomBar>
       {
         !propertyMini && !collapsed &&

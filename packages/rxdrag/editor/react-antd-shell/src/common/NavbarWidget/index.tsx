@@ -24,7 +24,7 @@ const Container = styled.div`
   border-top: ${props => props.theme?.token?.colorBorder} solid 1px;
   color: ${props => props.theme?.token?.colorText};
 `
-
+//用div旋转重做该组件
 export const NavbarWidget = memo((
   props: {
     className?: string,

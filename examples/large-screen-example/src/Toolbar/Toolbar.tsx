@@ -28,7 +28,7 @@ export const Toolbar = memo(() => {
   return (
     <ToolbarShell className="zoomable-toobar">
       <Space>
-        <Logo title="大屏"  />
+        <Logo title="大屏" />
         <ProjectTitle>大屏演示项目</ProjectTitle>
       </Space>
       <Space>

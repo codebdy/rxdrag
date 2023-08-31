@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import styled from "styled-components";
-import { floatShadow } from "../utils";
+import { floatShadow } from "../../utils";
 
 export const CanvasFloatLargeButton = styled(Button).attrs({ size: "large" })`
   box-shadow: ${floatShadow};

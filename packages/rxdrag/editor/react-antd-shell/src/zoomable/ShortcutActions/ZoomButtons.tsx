@@ -2,7 +2,7 @@ import { MinusOutlined, PlusOutlined } from "@ant-design/icons"
 import { Button, Tooltip } from "antd"
 import { memo, useCallback } from "react"
 import styled from "styled-components"
-import { floatShadow } from "../utils"
+import { floatShadow } from "../../utils"
 import { useSettersTranslate } from "@rxdrag/react-core"
 
 const Container = styled.div`

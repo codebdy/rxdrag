@@ -3,7 +3,7 @@ import { CanvasShell, DocumentRoot, IFrame, JsonView, useDocumentViewTypeState }
 import { Divider } from "antd"
 import { memo } from "react"
 import { CanvasToolbar } from "../../layouts"
-import { UndoRedoButtons, SelectionButtions, AuxButtionsButtions, CanvasSize, ViewButtons } from "../../widgets"
+import { UndoRedoButtons, SelectionButtions, AuxButtions, CanvasSize, ViewButtons } from "../../widgets"
 import { Viewport } from "../Viewport"
 import { NavbarWidget } from "../../../common/NavbarWidget"
 import { useCanvasUrl, usePreviewUrl } from "../../../common"
@@ -28,7 +28,7 @@ export const DocumentView = memo((
           <Divider type="vertical" style={{ height: 16 }} />
           <SelectionButtions />
           <Divider type="vertical" style={{ height: 16 }} />
-          <AuxButtionsButtions />
+          <AuxButtions />
           <Divider type="vertical" style={{ height: 16 }} />
           <CanvasSize />
           <div style={{ flex: 1 }}></div>

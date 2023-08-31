@@ -59,7 +59,7 @@ export const NodeTag = memo((props: {
         onClick = {handleClick}
       >
         <div className="node-label">{node?.title || node?.meta.componentName}</div>
-        <svg data-icon="BreadcrumbPartLeft" aria-hidden="true" focusable="false" width="7" height="28" viewBox="0 0 7 28"><path fill={nextBgColor || token.colorBorderSecondary} d="M.5 0l6 14-6 14H7V0z"></path><path fill={token.colorBorder} d="M1 0H0l6 14-6 14h1l6-14z"></path></svg>
+        <svg aria-hidden="true" focusable="false" width="7" height="28" viewBox="0 0 7 28"><path fill={nextBgColor || token.colorBorderSecondary} d="M.5 0l6 14-6 14H7V0z"></path><path fill={token.colorBorder} d="M1 0H0l6 14-6 14h1l6-14z"></path></svg>
       </div>
     </>
   )
