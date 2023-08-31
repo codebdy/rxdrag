@@ -5,6 +5,8 @@ import { isNumber } from "lodash";
 import { theme } from "antd";
 import styled from "styled-components";
 import classNames from "classnames";
+import { useDesignerEngine } from "@rxdrag/react-core";
+import { MouseMoveEvent, MouseUpEvent } from "@rxdrag/core";
 
 const handlerHeight = 5;
 
@@ -41,6 +43,7 @@ export function ResizableRow(props: {
   const [draging, setDraging] = useState(false);
   const [firstY, setFirstY] = useState<number>();
   const { token } = theme.useToken();
+  const engine = useDesignerEngine()
   const dragingRef = useRef(draging)
   dragingRef.current = draging
   const oldHeightRef = useRef(oldHeight)
@@ -58,7 +61,7 @@ export function ResizableRow(props: {
     (event: React.MouseEvent<HTMLElement>) => {
       document.body.classList.add("drawer-resizing");
       //setDraging(true);
-      setFirstY(event.clientY);
+      setFirstY(event.screenY);
       setOldHeight(realHeight);
     },
     [realHeight]
@@ -67,15 +70,15 @@ export function ResizableRow(props: {
   const handleMouseMove = useCallback(
     (event: MouseEvent) => {
       const firstY = firstYRef.current
-      if (!dragingRef.current && firstY !== undefined && Math.abs(event.clientY - firstY) > 5) {
+      if (!dragingRef.current && firstY !== undefined && Math.abs(event.screenY - firstY) > 5) {
         setDraging(true);
         return
       }
       const oldHeight = oldHeightRef.current;
       if (dragingRef.current && isNumber(oldHeight) && firstY !== undefined) {
         const newHeight = top
-          ? oldHeight + (event.clientY - firstY)
-          : oldHeight - (event.clientY - firstY);
+          ? oldHeight + (event.screenY - firstY)
+          : oldHeight - (event.screenY - firstY);
         setRealHeight(newHeight);
         onHeightChange && onHeightChange(newHeight);
       }
@@ -94,14 +97,26 @@ export function ResizableRow(props: {
     setFirstY(undefined)
   }, [draging, onHeightChange]);
 
+  const handleShellMouseMove = useCallback(
+    (e: MouseMoveEvent) => {
+      handleMouseMove(e.originalEvent)
+    },
+    [handleMouseMove]
+  );
+
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseup);
+    const unsubMouseMove = engine?.getShell().subscribeTo(MouseMoveEvent.Name, handleShellMouseMove)
+    const unsubMouseUp = engine?.getShell().subscribeTo(MouseUpEvent.Name, handleMouseup)
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseup);
+      unsubMouseMove?.()
+      unsubMouseUp?.()
     };
-  }, [handleMouseMove, handleMouseup]);
+  }, [engine, handleMouseMove, handleMouseup, handleShellMouseMove]);
+
 
   return (
     <Container

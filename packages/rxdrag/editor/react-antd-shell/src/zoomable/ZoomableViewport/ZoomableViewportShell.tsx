@@ -45,8 +45,8 @@ export const ZoomableViewportShell = memo((
     if (canvasRef.current) {
       document.body.classList.add("canvas-moving");
       setMousePressedPoint({
-        x: e.clientX,
-        y: e.clientY,
+        x: e.screenX,
+        y: e.screenY,
         scrollLeft: canvasRef.current.scrollLeft,
         scrollTop: canvasRef.current.scrollTop
       })
@@ -66,8 +66,8 @@ export const ZoomableViewportShell = memo((
     }
 
     const dragMoveDiff = {
-      x: mousePressedPoint.x - e.clientX,
-      y: mousePressedPoint.y - e.clientY
+      x: mousePressedPoint.x - e.screenX,
+      y: mousePressedPoint.y - e.screenY
     }
 
     if (canvasRef.current) {
@@ -77,24 +77,11 @@ export const ZoomableViewportShell = memo((
 
   }, [mousePressedPoint])
 
-  //这个要转换坐标
   const handleShellMouseMove = useCallback(
     (e: MouseMoveEvent) => {
-      if (!mousePressedPoint) {
-        return
-      }
-
-      const dragMoveDiff = {
-        x: mousePressedPoint.x - e.originalEvent.clientX,
-        y: mousePressedPoint.y - e.originalEvent.clientY
-      }
-
-      if (canvasRef.current) {
-        canvasRef.current.scrollLeft = mousePressedPoint.scrollLeft + dragMoveDiff.x;
-        canvasRef.current.scrollTop = mousePressedPoint.scrollTop + dragMoveDiff.y;
-      }
+      handleMouseMove(e.originalEvent)
     },
-    [mousePressedPoint]
+    [handleMouseMove]
   );
 
   useEffect(() => {

@@ -4,6 +4,8 @@ import "./style.css";
 import { theme } from "antd";
 import styled from "styled-components";
 import classNames from "classnames";
+import { useDesignerEngine } from "@rxdrag/react-core";
+import { MouseMoveEvent, MouseUpEvent } from "@rxdrag/core";
 
 const handlerWidth = 5;
 
@@ -43,6 +45,7 @@ export const ResizableColumn = memo(
     const [firstX, setFirstX] = useState(0);
     const { token } = theme.useToken();
     const ref = useRef<HTMLDivElement>(null);
+    const engine = useDesignerEngine()
     const firstXRef = useRef(firstX)
     firstXRef.current = firstX
     const dragingRef = useRef(draging)
@@ -58,7 +61,7 @@ export const ResizableColumn = memo(
       (event: React.MouseEvent<HTMLElement>) => {
         document.body.classList.add("drawer-resizing");
         setDraging(true);
-        setFirstX(event.clientX);
+        setFirstX(event.screenX);
         setOldWidth(realWidth);
       },
       [realWidth]
@@ -71,8 +74,8 @@ export const ResizableColumn = memo(
         const oldWidth = oldWidthRef.current
         if (draging && isNumber(oldWidth)) {
           const newWidth = right
-            ? (oldWidth as number) - (event.clientX - firstX)
-            : (oldWidth as number) + (event.clientX - firstX);
+            ? (oldWidth as number) - (event.screenX - firstX)
+            : (oldWidth as number) + (event.screenX - firstX);
           if (newWidth > maxWidth || newWidth < minWidth) {
             return
           }
@@ -93,14 +96,26 @@ export const ResizableColumn = memo(
       setDraging(false);
     }, [draging, onWidthChange]);
 
+
+    const handleShellMouseMove = useCallback(
+      (e: MouseMoveEvent) => {
+        handleMouseMove(e.originalEvent)
+      },
+      [handleMouseMove]
+    );
+
     useEffect(() => {
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseup", handleMouseup);
+      const unsubMouseMove = engine?.getShell().subscribeTo(MouseMoveEvent.Name, handleShellMouseMove)
+      const unsubMouseUp = engine?.getShell().subscribeTo(MouseUpEvent.Name, handleMouseup)
       return () => {
         document.removeEventListener("mousemove", handleMouseMove);
         document.removeEventListener("mouseup", handleMouseup);
+        unsubMouseMove?.()
+        unsubMouseUp?.()
       };
-    }, [handleMouseMove, handleMouseup]);
+    }, [engine, handleMouseMove, handleMouseup, handleShellMouseMove]);
 
     return (
       <Container
