@@ -1,7 +1,7 @@
 import { IDesignerEngine, IDocument } from "@rxdrag/core";
 import { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
-import { DesignerEngineContext, EVENT_IFRAME_READY, IFrameCanvasEvent, InIframeContext, Scroller } from "..";
+import { DesignerEngineContext, DocumentRoot, EVENT_IFRAME_READY, IFrameCanvasEvent, InIframeContext, Scroller } from "..";
 import { IReactComponents } from "@rxdrag/react-shared";
 import { Fieldy } from "@rxdrag/react-fieldy";
 import { PreviewComponentsContext } from "@rxdrag/react-runner";
@@ -16,12 +16,14 @@ export const IPreviewProxy = memo((
   }
 ) => {
   const { components, children } = props;
+  const [doc, setDoc] = useState<IDocument>()
   const [engine, setEngine] = useState<IDesignerEngine>()
   const receiveMessageFromParent = useCallback((event: MessageEvent<IFrameCanvasEvent>) => {
     // 监听父窗口 ready 事件
     if (event.data?.name === EVENT_IFRAME_READY) {
       console.log('RXDrag: iframeReady');
       setEngine(window.engine);
+      setDoc(window.doc)
     }
   }, [])
 
@@ -33,15 +35,19 @@ export const IPreviewProxy = memo((
   }, [receiveMessageFromParent])
 
   return (
-    <Fieldy>
-      <InIframeContext.Provider value={true}>
-        <DesignerEngineContext.Provider value={engine}>
-          <PreviewComponentsContext.Provider value={components}>
-            {engine ? children : <></>}
-            <Scroller />
-          </PreviewComponentsContext.Provider>
-        </DesignerEngineContext.Provider>
-      </InIframeContext.Provider>
-    </Fieldy>
+    doc
+      ? <Fieldy>
+        <InIframeContext.Provider value={true}>
+          <DesignerEngineContext.Provider value={engine}>
+            <PreviewComponentsContext.Provider value={components}>
+              <DocumentRoot doc={doc}>
+                {engine ? children : <></>}
+                <Scroller />
+              </DocumentRoot>
+            </PreviewComponentsContext.Provider>
+          </DesignerEngineContext.Provider>
+        </InIframeContext.Provider>
+      </Fieldy>
+      : <></>
   )
 })
