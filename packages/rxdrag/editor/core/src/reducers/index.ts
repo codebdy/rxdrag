@@ -12,6 +12,7 @@ import { nodesById } from "./nodesById";
 import { activedDocumentId } from "./activedDocumentId";
 import { themeMode } from "./themeMode";
 import { activedNodeId } from "./activedNodeId";
+import { selectedIds } from "./selectedIds";
 
 export type State = {
 	lang: string,
@@ -20,6 +21,7 @@ export type State = {
 	documentsById: DocumentByIdState
 	activedDocumentId: ID | null
 	activedNodeId?: ID | null
+	selectedIds: ID[] | null
 	nodesById: NodesById
 	draggingNodes: DraggingNodesState
 	draggingResource: DraggingResourceState
@@ -32,6 +34,7 @@ const initialState: State = {
 	activedDocumentId: null,
 	draggingNodes: null,
 	draggingResource: null,
+	selectedIds: null,
 	dragOver: null,
 	//viewportRect: null,
 	documentsById: {},
@@ -39,6 +42,7 @@ const initialState: State = {
 	nodesById: {}
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function reduce(state: State = initialState, action: IAction<any>): State {
 	return {
 		lang: lang(state.lang, action),
@@ -46,10 +50,12 @@ export function reduce(state: State = initialState, action: IAction<any>): State
 		documentsById: documentsById(state.documentsById, action),
 		activedDocumentId: activedDocumentId(state.activedDocumentId, action),
 		activedNodeId: activedNodeId(state.activedNodeId, action),
+		selectedIds: selectedIds(state.selectedIds, action),
 		stateId: stateId(state.stateId),
 		draggingNodes: draggingNodes(state.draggingNodes, action),
 		draggingResource: draggingResource(state.draggingResource, action),
 		dragOver: dragOver(state.dragOver, action),
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		nodesById: nodesById(state.nodesById, action as any),
 	}
 }

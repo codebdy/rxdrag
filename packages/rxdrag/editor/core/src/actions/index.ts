@@ -49,8 +49,8 @@ export class Actions implements IActions {
 		this.engine.dispatch({ type: END_DRAG_NODES })
 	}
 
-	selectNodes(targetIds: string[], documentId: string): void {
-		this.engine.dispatch({ type: SELECT_NODES, payload: { documentId, targetIds } })
+	selectNodes(targetIds: string[]): void {
+		this.engine.dispatch({ type: SELECT_NODES, payload: { targetIds } })
 	}
 
 	setSelectionMode(documentId: string, mode: DocumentSelectionMode): void {

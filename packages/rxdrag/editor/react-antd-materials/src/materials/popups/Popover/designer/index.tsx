@@ -29,7 +29,7 @@ export const PopoverDesigner = memo(forwardRef<HTMLDivElement, PopoverProps & Po
   const refreshSelect = useCallback((time = 20) => {
     if (doc && node) {
       setTimeout(() => {
-        engine?.getActions().selectNodes([node.id], doc.id)
+        engine?.getActions().selectNodes([node.id])
       }, time)
     }
   }, [doc, engine, node])

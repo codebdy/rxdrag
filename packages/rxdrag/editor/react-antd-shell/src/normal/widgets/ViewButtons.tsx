@@ -11,7 +11,7 @@ export const ViewButtons = memo(() => {
   const t = useSettersTranslate()
 
   useEffect(() => {
-    actions?.selectNodes([], activedDocumentId || "")
+    actions?.selectNodes([])
   }, [actions, activedDocumentId, viewType])
 
   const handleDesign = useCallback(() => {

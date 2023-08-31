@@ -27,7 +27,7 @@ export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProp
   const refreshSelect = useCallback((time = 20) => {
     if (doc && node) {
       setTimeout(() => {
-        engine?.getActions().selectNodes([node.id], doc.id)
+        engine?.getActions().selectNodes([node.id])
       }, time)
     }
   }, [doc, engine, node])

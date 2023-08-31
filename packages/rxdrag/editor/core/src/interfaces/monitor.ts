@@ -9,7 +9,7 @@ import { Listener, ID, Unsubscribe } from "./types"
 
 export type DraggingNodesListener = (dragging: DraggingNodesState | null) => void
 export type DraggingResourceListener = (dragging: DraggingResourceState | null) => void
-export type SelectedChangeListener = (selectedIds: ID[] | null, documentId: ID) => void
+export type SelectedChangeListener = (selectedIds: ID[] | null) => void
 export type CurrentNodesChangeListener = (node: ITreeNode) => void
 export type DragOverListener = (dragover: DragOverState | null) => void
 export type LangListener = (lang: string) => void

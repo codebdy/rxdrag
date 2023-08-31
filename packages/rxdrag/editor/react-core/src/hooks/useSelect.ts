@@ -5,7 +5,7 @@ import { useDesignerEngine } from "./useDesignerEngine";
 export function useSelect() {
   const engine = useDesignerEngine()
   const select = useCallback((node: ITreeNode) => {
-    engine?.getActions().selectNodes([node.id], node.documentId)
+    engine?.getActions().selectNodes([node.id])
   }, [engine])
   return select
 }

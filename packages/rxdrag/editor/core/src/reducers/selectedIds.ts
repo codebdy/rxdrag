@@ -1,11 +1,11 @@
-import { RECOVER_SNAPSHOT, SELECT_NODES } from "../../../actions/registry"
-import { ID, IDocumentAction, RecoverSnapshotPayload, SelectNodesPayload } from "../../../interfaces"
+import { RECOVER_SNAPSHOT, SELECT_NODES } from "../actions/registry"
+import { IAction, ID, RecoverSnapshotPayload, SelectNodesPayload } from "../interfaces"
 
 export type State = ID[] | null
 
 export function selectedIds(
 	state: State = null,
-	action: IDocumentAction<SelectNodesPayload | RecoverSnapshotPayload>,
+	action: IAction<SelectNodesPayload | RecoverSnapshotPayload>,
 ): State {
 	const { payload } = action
 	switch (action.type) {

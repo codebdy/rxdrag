@@ -66,7 +66,7 @@ export class DragStopControllerImpl implements IPlugin {
     if (resource && pos && dragOver.type === AcceptType.Accept) {
       const nodes = document.addNewNodes(resource.elements, dragOver.targetId, pos);
       document.backup(HistoryableActionType.Add)
-      this.engine.getActions().selectNodes(nodes.rootNodes.map(node => node.id), document.id);
+      this.engine.getActions().selectNodes(nodes.rootNodes.map(node => node.id));
     }
   }
 
@@ -86,7 +86,7 @@ export class DragStopControllerImpl implements IPlugin {
         //document.getActions().addNodeFormOutside()
       }
     }
-    this.engine.getActions().selectNodes(draggingNodes.nodeIds, document.id);
+    this.engine.getActions().selectNodes(draggingNodes.nodeIds);
 
   }
 

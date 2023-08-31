@@ -1,7 +1,6 @@
 import { ID, DocumentSelectionMode } from "../../../interfaces";
 import { CanvasWidthLimits, IDocumentAction, ISnapshot, ViewType, } from "../../../interfaces/document";
 import { rootId } from "./rootId";
-import { selectedIds } from "./selectedIds";
 import { selectionMode } from "./selectionMode";
 import { history } from "./history"
 import { snapShotIndex } from "./snapShotIndex";
@@ -14,7 +13,6 @@ export type DocumentState = {
 	title?: string,
 	selectionMode: DocumentSelectionMode
 	changed: boolean
-	selectedIds: ID[] | null
 	history: ISnapshot[]
 	rootId?: ID
 	snapshotIndex: number,
@@ -27,7 +25,6 @@ const initialState: DocumentState = {
 	selectionMode: DocumentSelectionMode.Normal,
 	changed: false,
 	history: [],
-	selectedIds: null,
 	snapshotIndex: 0,
 	canvasWidth: null,
 	canvasWidthLimits: null,
@@ -44,7 +41,6 @@ export function documentReduce(
 		title: documentTitle(state.title, action),
 		selectionMode: selectionMode(state.selectionMode, action),
 		rootId: rootId(state.rootId, action),
-		selectedIds: selectedIds(state.selectedIds, action),
 		history: history(state.history, action),
 		snapshotIndex: snapShotIndex(state.snapshotIndex, action),
 		canvasWidth: canvasWidth(state.canvasWidth, action),

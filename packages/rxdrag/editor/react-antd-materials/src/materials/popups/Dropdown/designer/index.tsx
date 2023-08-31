@@ -25,7 +25,7 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: Dropdown
   const handleClose = useCallback(() => {
     setVisiable(false);
     if (doc && node) {
-      engine?.getActions().selectNodes([node.id], doc.id)
+      engine?.getActions().selectNodes([node.id])
     }
     setTimeout(()=>{
       //engine?.getShell().dispatch(new NodeMountedEvent())
@@ -97,7 +97,7 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: Dropdown
     setPlacementStyle(getPlacementStyle())
     setVisiable(true);
     if (doc && node) {
-      engine?.getActions().selectNodes([node.id], doc.id)
+      engine?.getActions().selectNodes([node.id])
     }
 
     // setTimeout(()=>{
@@ -117,7 +117,7 @@ export const DropdownDesigner = memo(forwardRef<HTMLDivElement>((props: Dropdown
   }, [getPlacementStyle])
 
   useEffect(() => {
-    const unsub = engine?.getShell().subscribeTo(CanvasScrollEvent, handleScroll)
+    const unsub = engine?.getShell().subscribeTo(CanvasScrollEvent.Name, handleScroll)
     return () => {
       unsub?.()
     }

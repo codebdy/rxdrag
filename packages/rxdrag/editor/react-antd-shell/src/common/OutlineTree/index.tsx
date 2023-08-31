@@ -52,7 +52,7 @@ export const OutlineTree = memo(() => {
 
   const onSelect: TreeProps['onSelect'] = useCallback((selectedKeys: Key[]) => {
     if (currentTree) {
-      actions?.selectNodes(selectedKeys as any, currentTree?.documentId)
+      actions?.selectNodes(selectedKeys as any)
     }
   }, [actions, currentTree]);
 

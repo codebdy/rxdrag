@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { makeRxId } from "@rxdrag/shared";
 import { HistoryableActionType, IDocument, IDocumentAction, ISnapshot, ITreeNode, NodeChunk, NodeRelativePosition, NodesById } from "../interfaces/document";
 import { AddNodesPayload, BackupPayload, ChangeMetaPayloads, DeleteNodesPayload, DocumentActionPayload, GotoPayload, MoveNodesPayload, RecoverSnapshotPayload, RemoveSlotPayload } from "../interfaces/payloads";
@@ -125,7 +126,7 @@ export class DocumentImpl implements IDocument {
     if (sourceSchema) {
       const nodes = this.addNewNodes(sourceSchema, sourceId, NodeRelativePosition.After);
       for (const node of nodes.rootNodes) {
-        this.engine.getActions().selectNodes([node.id], this.id)
+        this.engine.getActions().selectNodes([node.id])
       }
       this.backup(HistoryableActionType.Clone)
     }
@@ -145,7 +146,7 @@ export class DocumentImpl implements IDocument {
     const payload: BackupPayload = {
       documentId: this.id,
       nodes: this.engine.getMonitor().getState().nodesById,
-      selectedIds: this.getState()?.selectedIds || [],
+      selectedIds: this.store.getState()?.selectedIds || [],
       actionType: actionType
     }
 
@@ -212,6 +213,10 @@ export class DocumentImpl implements IDocument {
   }
 
   destroy(): void {
+    const ids = this.engine.getMonitor().getDocumentSelectedIds(this.id)
+    if(ids?.length){
+      this.engine.getActions().selectNodes([])
+    }
     this.dispatch(this.createAction(REMOVE_DOCUMENT, {}))
   }
 

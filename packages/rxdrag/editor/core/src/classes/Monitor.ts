@@ -82,7 +82,7 @@ export class Monitor implements IMonitor {
 
 		for (const key of Object.keys(state.nodesById)) {
 			const node = state.nodesById[key]
-			if(node.documentId === state.activedDocumentId){
+			if (node.documentId === state.activedDocumentId) {
 				nodes.push(node)
 			}
 		}
@@ -100,7 +100,7 @@ export class Monitor implements IMonitor {
 			return null
 		}
 
-		const currentId = this.getSelectedNodeId(state.documentsById[state.activedDocumentId]?.selectedIds || [])
+		const currentId = this.getSelectedNodeId(state?.selectedIds || [])
 		return this.getNode(currentId)
 	}
 
@@ -195,7 +195,9 @@ export class Monitor implements IMonitor {
 	}
 
 	getDocumentSelectedIds(documentId: ID): ID[] | null {
-		return this.store.getState().documentsById[documentId]?.selectedIds || null
+		const selectedIds = this.store.getState().selectedIds
+		const nodes = this.store.getState().nodesById
+		return selectedIds?.filter(id => nodes[id]?.documentId === documentId) || null
 	}
 	getDragOver(): DragOverState {
 		return this.store.getState().dragOver || null
@@ -227,14 +229,11 @@ export class Monitor implements IMonitor {
 
 	subscribeToSelectChange(listener: SelectedChangeListener): Unsubscribe {
 		invariant(typeof listener === 'function', 'listener must be a function.')
-		let previousState = this.store.getState().documentsById
+		let previousState = this.store.getState().selectedIds
 		const handleChange = () => {
-			const nextState = this.store.getState().documentsById
-			for (const key of Object.keys(nextState)) {
-				if (nextState[key]?.selectedIds === previousState[key]?.selectedIds) {
-					continue
-				}
-				listener(nextState[key]?.selectedIds || null, key)
+			const nextState = this.store.getState().selectedIds
+			if (nextState !== previousState) {
+				listener(nextState)
 			}
 			previousState = nextState
 		}
@@ -243,12 +242,10 @@ export class Monitor implements IMonitor {
 
 	subscribeToCurrentNodeChanged(listener: CurrentNodesChangeListener): Unsubscribe {
 		invariant(typeof listener === 'function', 'listener must be a function.')
-		const activedDocumentId = this.getState().activedDocumentId
-		const documentState = this.getState().documentsById[activedDocumentId || ""]
-		let previousNodeId = this.getSelectedNodeId(documentState?.selectedIds || [])
+		const state = this.getState()
+		let previousNodeId = this.getSelectedNodeId(state?.selectedIds || [])
 		const handleChange = () => {
-			const activedDocumentId = this.getState().activedDocumentId
-			const nextState = this.store.getState().documentsById[activedDocumentId || ""]
+			const nextState = this.store.getState()
 			const nodeId = this.getSelectedNodeId(nextState?.selectedIds || [])
 			const node = this.getState().nodesById[nodeId] || null
 			if (previousNodeId !== node?.id) {

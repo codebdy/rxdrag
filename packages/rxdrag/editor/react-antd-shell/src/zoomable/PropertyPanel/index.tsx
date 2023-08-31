@@ -27,6 +27,7 @@ const Title = styled.div`
   height: 40px;
   color: ${props => props.theme.token?.colorText};
   border-bottom: solid 1px ${props => props.theme.token?.colorBorder};
+  user-select: none;
 `
 
 export const PropertyPanel = memo(() => {

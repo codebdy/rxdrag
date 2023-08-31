@@ -44,7 +44,7 @@ export interface IActions {
 	endDragResource(): void
 	startDragNodes(options: StartDragNodesOptions): void
 	endDragNodes(): void
-	selectNodes(targets: ID[], documentId: ID): void
+	selectNodes(targets: ID[]): void
 	setSelectionMode(documentId: string, mode: DocumentSelectionMode): void
 	changeActivedDocument(documentId: ID | null): void
 	setThemeMode(mode: ThemeMode): void

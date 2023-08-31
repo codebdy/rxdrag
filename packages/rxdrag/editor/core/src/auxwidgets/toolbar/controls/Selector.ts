@@ -82,7 +82,7 @@ export class ComponentSelector implements IAuxControl {
     itemDiv.style.whiteSpace = "nowrap"
     itemDiv.addEventListener("click", ()=>{
       this.menuDiv.style.height = "0"
-      parentNode && this.engine.getActions().selectNodes([parentId], parentNode?.documentId)
+      parentNode && this.engine.getActions().selectNodes([parentId])
     })
     this.menuDiv.appendChild(itemDiv)
 

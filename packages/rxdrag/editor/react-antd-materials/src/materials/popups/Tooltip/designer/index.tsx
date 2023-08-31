@@ -28,7 +28,7 @@ export const TooltipDesigner = memo(forwardRef<HTMLDivElement, TooltipProps & To
   const refreshSelect = useCallback((time = 20) => {
     if (doc && node) {
       setTimeout(() => {
-        engine?.getActions().selectNodes([node.id], doc.id)
+        engine?.getActions().selectNodes([node.id])
       }, time)
     }
   }, [doc, engine, node])
