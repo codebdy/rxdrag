@@ -2,8 +2,9 @@ import { CSSProperties, memo, useCallback, useEffect, useRef, useState } from "r
 import styled from "styled-components";
 import { ResizeHandlers } from "./ResizeHandlers";
 import classnames from "classnames";
-import { getRecentRxElement } from "@rxdrag/core";
+import { MouseMoveEvent, MouseUpEvent, getRecentRxElement } from "@rxdrag/core";
 import { IPosition, IWidgetLayout } from "./interfaces";
+import { useDesignerEngine } from "@rxdrag/react-core";
 
 const Widget = styled.div`
   position: fixed;
@@ -16,7 +17,6 @@ export const DraggableWidget = memo((
     children?: React.ReactNode,
     style?: CSSProperties,
     className?: string,
-    resizable?: boolean,
     maxWidth?: number,
     maxHeight?: number,
     minWidth?: number,
@@ -24,11 +24,12 @@ export const DraggableWidget = memo((
     closed?: boolean,
   }
 ) => {
-  const { children, style, className, resizable, maxWidth, maxHeight, minWidth, minHeight, closed, ...rest } = props;
+  const { children, style, className, maxWidth, maxHeight, minWidth, minHeight, closed, ...rest } = props;
   const [layout, setLayout] = useState<IWidgetLayout>()
   const [mousePressedPoint, setMousePressedPoint] = useState<IPosition>()
   const [startLayout, setStartLayout] = useState<IWidgetLayout>()
   const ref = useRef<HTMLDivElement>(null)
+  const engine = useDesignerEngine()
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     if ((e.target as HTMLDivElement).id !== ref.current?.id) {
@@ -40,8 +41,8 @@ export const DraggableWidget = memo((
     }
 
     setMousePressedPoint({
-      x: e.clientX,
-      y: e.clientY
+      x: e.screenX,
+      y: e.screenY
     })
     const rect = ref.current?.getBoundingClientRect()
     if (rect) {
@@ -51,15 +52,15 @@ export const DraggableWidget = memo((
   }, [layout])
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    if (e.clientX < 0 || e.clientY < 0 || !mousePressedPoint || !startLayout) {
+    if (e.screenX < 0 || e.screenY < 0 || !mousePressedPoint || !startLayout) {
       return
     }
-    if (e.clientY > document.body.clientHeight || e.clientX > document.body.clientWidth) {
+    if (e.screenY > document.body.clientHeight || e.screenX > document.body.clientWidth) {
       return
     }
     const diff = {
-      offsetX: e.clientX - (mousePressedPoint.x || 0),
-      offsetY: e.clientY - (mousePressedPoint.y || 0),
+      offsetX: e.screenX - (mousePressedPoint.x || 0),
+      offsetY: e.screenY - (mousePressedPoint.y || 0),
     }
     if (startLayout) {
       const newLayout = { ...layout, x: (startLayout?.x || 0) + diff.offsetX, y: (startLayout.y || 0) + diff.offsetY }
@@ -72,14 +73,26 @@ export const DraggableWidget = memo((
     setStartLayout(undefined);
   }, [])
 
+  const handleShellMouseMove = useCallback(
+    (e: MouseMoveEvent) => {
+      handleMouseMove(e.originalEvent)
+    },
+    [handleMouseMove]
+  );
+
+
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
+    const unsubMouseMove = engine?.getShell().subscribeTo(MouseMoveEvent.Name, handleShellMouseMove)
+    const unsubMouseUp = engine?.getShell().subscribeTo(MouseUpEvent.Name, handleMouseUp)
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
+      unsubMouseMove?.()
+      unsubMouseUp?.()
     }
-  }, [handleMouseMove, handleMouseUp])
+  }, [engine, handleMouseMove, handleMouseUp, handleShellMouseMove])
 
   const handleResize = useCallback((lyout: IWidgetLayout) => {
     const rect = ref.current?.getBoundingClientRect()
@@ -109,16 +122,15 @@ export const DraggableWidget = memo((
       onMouseDown={handleMouseDown}
     >
       {children}
-      {resizable && layout &&
-        <ResizeHandlers
-          widget={ref.current}
-          layout={layout}
-          maxWidth={maxWidth}
-          maxHeight={maxHeight}
-          minWidth={minWidth}
-          minHeight={minHeight}
-          onResize={handleResize}
-        />}
+      <ResizeHandlers
+        widget={ref.current}
+        layout={layout}
+        maxWidth={maxWidth}
+        maxHeight={maxHeight}
+        minWidth={minWidth}
+        minHeight={minHeight}
+        onResize={handleResize}
+      />
     </Widget>
   )
 })

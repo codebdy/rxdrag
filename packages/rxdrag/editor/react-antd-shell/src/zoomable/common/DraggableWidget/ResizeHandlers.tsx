@@ -1,6 +1,8 @@
 import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
-import { IPosition, IWidgetLayout } from "../../interfaces";
+import { IPosition, IWidgetLayout } from "./interfaces";
+import { useDesignerEngine } from "@rxdrag/react-core";
+import { MouseMoveEvent, MouseUpEvent } from "@rxdrag/core";
 
 const thickness = 6;
 
@@ -79,7 +81,7 @@ enum DragType {
 
 export const ResizeHandlers = memo((
   props: {
-    layout: IWidgetLayout,
+    layout?: IWidgetLayout,
     onResize: (offset: IWidgetLayout) => void,
     widget: HTMLDivElement | null,
     maxWidth?: number,
@@ -92,13 +94,14 @@ export const ResizeHandlers = memo((
   const [dragType, setDragType] = useState<DragType>();
   const [mousePressedPoint, setMousePressedPoint] = useState<IPosition>()
   const [startLayout, setStartLayout] = useState<IWidgetLayout>()
-
+  const engine = useDesignerEngine()
+  
   const handleLeftMouseDown = useCallback((e: React.MouseEvent, drgType: DragType) => {
     e.stopPropagation()
     setDragType(drgType)
     setMousePressedPoint({
-      x: e.clientX,
-      y: e.clientY
+      x: e.screenX,
+      y: e.screenY
     })
     const rect = widget?.getBoundingClientRect()
     if (rect) {
@@ -113,16 +116,16 @@ export const ResizeHandlers = memo((
   }, [])
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    if (e.clientX < 0 || e.clientY < 0 || !mousePressedPoint || !startLayout) {
+    if (e.screenX < 0 || e.screenY < 0 || !mousePressedPoint || !startLayout) {
       return
     }
-    if (e.clientY > document.body.clientHeight || e.clientX > document.body.clientWidth) {
+    if (e.screenY > document.body.clientHeight || e.screenX > document.body.clientWidth) {
       return
     }
 
     const diff = {
-      offsetX: e.clientX - (mousePressedPoint.x || 0),
-      offsetY: e.clientY - (mousePressedPoint.y || 0),
+      offsetX: e.screenX - (mousePressedPoint.x || 0),
+      offsetY: e.screenY - (mousePressedPoint.y || 0),
     }
 
     const newLayout = { ...startLayout }
@@ -183,14 +186,25 @@ export const ResizeHandlers = memo((
 
   }, [dragType, maxHeight, maxWidth, minHeight, minWidth, mousePressedPoint, onResize, startLayout])
 
+  const handleShellMouseMove = useCallback(
+    (e: MouseMoveEvent) => {
+      handleMouseMove(e.originalEvent)
+    },
+    [handleMouseMove]
+  );
+  
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
+    const unsubMouseMove = engine?.getShell().subscribeTo(MouseMoveEvent.Name, handleShellMouseMove)
+    const unsubMouseUp = engine?.getShell().subscribeTo(MouseUpEvent.Name, handleMouseUp)
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
+      unsubMouseMove?.()
+      unsubMouseUp?.()
     }
-  }, [handleMouseMove, handleMouseUp])
+  }, [engine, handleMouseMove, handleMouseUp, handleShellMouseMove])
 
 
   return (

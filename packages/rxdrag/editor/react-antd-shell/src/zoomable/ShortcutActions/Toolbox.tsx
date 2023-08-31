@@ -56,6 +56,7 @@ export const Toolbox = memo((
   return (
     <Container className="rx-widget-toolbox" closed={closed}>
       <Title
+        className="toolbox-title"
         title={t("工具箱")}
         onClose={handleCollapse}
       />

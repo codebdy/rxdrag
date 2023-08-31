@@ -16,6 +16,10 @@ const Container = styled.div`
   transition: all 0.3s;
 `
 
+const StyledButton = styled(CanvasFloatButton)`
+  background-color: ${props => props.theme.token?.colorBgBase};
+`
+
 export const ShortcutActions = memo((
   props: {
     scrolled?: boolean,
@@ -47,7 +51,8 @@ export const ShortcutActions = memo((
       >
         <Space direction="vertical">
           <CanvasFloatButton icon={<PlayCircleOutlined />} />
-          <CanvasFloatButton
+          <StyledButton
+            type={toolboxOpen ? "link" : undefined}
             icon={<AppstoreOutlined />}
             onClick={handleOpen}
           />
