@@ -10,6 +10,7 @@ import { NormalEditorExample, usePredefinedComponents } from "normal-editor-exam
 import { RuntimeExample } from "runtime-example"
 import { LargeScreenExample } from "large-screen-example"
 import { IFrameCanvas, IFramePreview } from '@rxdrag/react-antd-shell';
+import {AppDesignerExample} from "app-designer-example"
 
 function App() {
   const { designers, components } = usePredefinedComponents()
@@ -43,6 +44,15 @@ function App() {
         path={routes.largeScreen}
         element={
           <LargeScreenExample
+            canvasUrl="/canvas-render"
+            previewUrl="/preview-render"
+          />}
+      >
+      </Route>      
+      <Route
+        path={routes.appDesigner}
+        element={
+          <AppDesignerExample
             canvasUrl="/canvas-render"
             previewUrl="/preview-render"
           />}

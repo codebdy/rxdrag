@@ -55,6 +55,11 @@ const items: MenuProps['items'] = [
     label: <a href={"#"}>UML编辑器</a>,
     key: 'uml',
   },
+  {
+    //引入外部包
+    label: <a href={routes.appDesigner}>低码APP设计器</a>,
+    key: routes.appDesigner,
+  },
 ];
 
 export const MenuButton = memo(() => {
