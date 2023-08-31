@@ -7,7 +7,7 @@ import { ILocales } from "@rxdrag/locales"
 import { settingLocales } from "../../common"
 import { commonLocales } from "../../locales"
 import { IDocumentSchema } from "@rxdrag/schema"
-import { IDocument } from "@rxdrag/core"
+import { CanvasResizeDriver, ContainerImpl, DragDropDriver, IDocument, KeyboardDriver, MouseMoveDriver } from "@rxdrag/core"
 import { Space } from "antd"
 import { DocView } from "../DocView"
 import { ZoomableViewport } from "../ZoomableViewport"
@@ -25,12 +25,29 @@ const Workspace = styled.div`
 export type ZoomableEditorInnerProps = {
   locales?: ILocales,
   schemas: IDocumentSchema[],
+  toolbox?: React.ReactNode,
 }
 
 export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
-  const { schemas, locales } = props
+  const { schemas, locales, toolbox } = props
   const [docs, setDocs] = useState<IDocument[]>([])
   const engine = useDesignerEngine()
+
+  useEffect(() => {
+    if (engine) {
+      const container = new ContainerImpl(engine, document.body, "$$container$$", [
+        DragDropDriver,
+        CanvasResizeDriver,
+        MouseMoveDriver,
+        KeyboardDriver
+      ])
+      engine.getShell()?.setContainer(container)
+
+      return () => {
+        engine.getShell().getContainer()?.destroy()
+      }
+    }
+  }, [engine])
 
   useEffect(() => {
     const langMgr = engine?.getLocalesManager()
@@ -56,7 +73,9 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
 
   return (
     <Workspace>
-      <ZoomableViewport>
+      <ZoomableViewport
+        toolbox={toolbox}
+      >
         <Space size={"large"}>
           {
             docs.map(doc => {

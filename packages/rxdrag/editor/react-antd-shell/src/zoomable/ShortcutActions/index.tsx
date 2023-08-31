@@ -33,8 +33,8 @@ export const ShortcutActions = memo((
   const [toolboxOpen, setToolboxOpen] = useState<boolean>()
   const [propertyWidth] = usePropertyWidthState()
 
-  const handleOpen = useCallback(() => {
-    setToolboxOpen(true)
+  const handleToggleOpen = useCallback(() => {
+    setToolboxOpen(open => !open)
   }, [])
 
   const handleOpenChange = useCallback((open?: boolean) => {
@@ -54,7 +54,7 @@ export const ShortcutActions = memo((
           <StyledButton
             type={toolboxOpen ? "link" : undefined}
             icon={<AppstoreOutlined />}
-            onClick={handleOpen}
+            onClick={handleToggleOpen}
           />
           <ZoomButtons zoom={zoom} onZoomChange={onZoomChange} />
           {/* <FloatButton icon={<HistoryOutlined />}/> */}

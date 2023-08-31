@@ -49,10 +49,6 @@ export const Toolbox = memo((
     onOpenChange?.(false)
   }, [onOpenChange])
 
-  const handelBlockMouseEvent = useCallback((e: React.MouseEvent) => {
-    e.stopPropagation()
-  }, [])
-
   return (
     <Container className="rx-widget-toolbox" closed={closed}>
       <Title
@@ -60,9 +56,7 @@ export const Toolbox = memo((
         title={t("工具箱")}
         onClose={handleCollapse}
       />
-      <PannelContent
-        onMouseDown={handelBlockMouseEvent}
-      >
+      <PannelContent>
         {
           children
         }

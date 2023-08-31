@@ -26,10 +26,11 @@ export const ZoomableViewportShell = memo((
     zoom: number,
     onZoomChange: (zoom: number) => void
     onGrabbing?: (grabbing: boolean) => void
+    toolbox?: React.ReactNode,
     children?: React.ReactNode,
   }
 ) => {
-  const { zoom, onZoomChange, onGrabbing, children } = props
+  const { zoom, onZoomChange, onGrabbing, toolbox, children } = props
   const [scrolled, setScrolled] = useState(false)
   const engine = useDesignerEngine()
   const [mousePressedPoint, setMousePressedPoint] = useState<IPosition>()
@@ -126,6 +127,7 @@ export const ZoomableViewportShell = memo((
         {children}
       </ViewportSchellContainer>
       <ShortcutActions
+        toolbox={toolbox}
         zoom={zoom}
         onZoomChange={onZoomChange}
         scrolled={scrolled}

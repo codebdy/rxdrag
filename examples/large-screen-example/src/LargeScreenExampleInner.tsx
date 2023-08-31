@@ -4,6 +4,7 @@ import { ZoomableEditor } from "@rxdrag/react-antd-shell"
 import styled from "styled-components"
 import { INodeSchema, IDocumentSchema } from "@rxdrag/schema"
 import { LeftSide } from "./LeftSide"
+import { ResourceWidget } from "./ResourceWidget"
 
 const Container = styled.div`
   width: 100%;
@@ -33,6 +34,7 @@ export const LargeScreenExampleInner = memo(() => {
     <Container className="zoomable-editor">
       <Toolbar />
       <ZoomableEditor
+        toolbox={<ResourceWidget />}
         schemas={schemas}
       />
       <LeftSide />

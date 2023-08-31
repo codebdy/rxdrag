@@ -18,9 +18,10 @@ const ViewportInner = styled.div`
 export const ZoomableViewport = memo((
   props: {
     children?: React.ReactNode,
+    toolbox?: React.ReactNode,
   }
 ) => {
-  const { children } = props;
+  const { toolbox, children } = props;
   const [zoom, setZoom] = useState(1)
   const [grabbing, setGrabbing] = useState(false);
 
@@ -29,6 +30,7 @@ export const ZoomableViewport = memo((
       onGrabbing={setGrabbing}
       zoom={zoom}
       onZoomChange={setZoom}
+      toolbox = {toolbox}
     >
       <ViewPort
         className="zoomable-viewport"
