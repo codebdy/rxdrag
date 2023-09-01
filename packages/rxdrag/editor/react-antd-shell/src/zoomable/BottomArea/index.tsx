@@ -29,8 +29,7 @@ const BottomBar = styled.div`
   top:-32px;
   left:0;
   display: flex;
-  width: calc(100% - 16px);
-  padding: 0 8px;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
 `
