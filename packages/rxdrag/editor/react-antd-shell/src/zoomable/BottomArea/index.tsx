@@ -1,9 +1,9 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components"
-import { FloatNodeNav, ResizableRow } from "../../common"
+import { FloatNodeNav, OperationHistory, OutlineTree, ResizableRow } from "../../common"
 import { usePropertyWidthState } from "../contexts"
 import { floatShadow } from "../../utils"
-import { Button, Divider, Space, Tabs } from "antd"
+import { Button, Divider, Space, Tabs, TabsProps } from "antd"
 import { BorderOutlined, LeftOutlined, MinusOutlined, RightOutlined, SettingOutlined } from "@ant-design/icons"
 import { MINI_PRO_WIDTH } from "../consts"
 import { ReundoIcons } from "./ReundoIcons"
@@ -17,6 +17,18 @@ const BottomShell = styled(ResizableRow)`
   border-radius: 8px;
   background-color: ${props => props.theme.token?.colorBgBase};
   box-shadow: ${floatShadow};
+  .ant-tabs{
+    flex:1;
+    height: 0;
+    display: flex;
+    flex-flow: column;
+    .ant-tabs-content-holder{
+      flex:1;
+      height: 0;
+      overflow: auto;
+    }
+    padding-bottom: 8px;
+  }
   .ant-tabs-nav{
     padding: 0 16px;
     margin: 0;
@@ -38,6 +50,7 @@ const BottomActions = styled.div`
 
 `
 
+
 const PinButton = styled(Button).attrs({ shape: "circle", size: "small", })`
   position: absolute;
   right: 0;
@@ -57,37 +70,37 @@ export const BottomArea = memo(() => {
   const [propertyWidth] = usePropertyWidthState()
   const activedDocument = useActivedDocument()
 
-  const items = useMemo(() => {
+  const items: TabsProps['items'] = useMemo(() => {
     return [
       {
         label: "行为流",
         key: "logicflow",
-        Children: collapsed ? <></> : "逻辑编排"
+        children: "逻辑编排"
       },
       {
         label: "脚本",
         key: "script",
-        Children: collapsed ? <></> : "脚本控制器"
+        children: "脚本控制器"
       },
       {
         label: "快捷",
         key: "shortcurt",
-        Children: collapsed ? <></> : "快捷控制器"
+        children: "快捷控制器"
       },
       {
         label: "大纲",
         key: "outline",
-        Children: collapsed ? <></> : "快捷控制器"
+        children: <OutlineTree />
       },
       {
         label: "历史",
         key: "history",
-        Children: collapsed ? <></> : "快捷控制器"
+        children: collapsed ? <></> : <OperationHistory />
       },
       {
         label: "控制台",
         key: "console",
-        Children: collapsed ? <></> : "快捷控制器"
+        children: collapsed ? <></> : "快捷控制器"
       },
     ]
   }, [collapsed])
@@ -128,6 +141,16 @@ export const BottomArea = memo(() => {
       }}
       onHeightChange={setHeight}
     >
+      <BottomBar>
+        <FloatNodeNav />
+        {
+          activedDocument && <BottomActions>
+            <ReundoIcons />
+            <Divider type="vertical" />
+            <AuxButtions />
+          </BottomActions>
+        }
+      </BottomBar>
       <Tabs
         size="small"
         tabBarExtraContent={
@@ -151,16 +174,7 @@ export const BottomArea = memo(() => {
         }
         items={items}
       />
-      <BottomBar>
-        <FloatNodeNav />
-        {
-          activedDocument && <BottomActions>
-            <ReundoIcons />
-            <Divider type="vertical" />
-            <AuxButtions />
-          </BottomActions>
-        }
-      </BottomBar>
+
       {
         !propertyMini && !collapsed &&
         <PinButton
