@@ -12,6 +12,7 @@ export const commonLocales: ILocales = {
     },
     setters: {
       properties: "属性",
+      toolbox: "工具箱",
       style: "样式",
       slots: "卡槽",
       field: "字段",
@@ -48,6 +49,7 @@ export const commonLocales: ILocales = {
     },
     setters: {
       properties: "Properties",
+      toolbox: "Toolbox",
       style: "Style",
       slots: "Slots",
       field: "Field",

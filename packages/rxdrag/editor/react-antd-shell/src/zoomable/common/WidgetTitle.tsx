@@ -12,6 +12,7 @@ const Title = styled.div`
   color: ${props => props.theme.token?.colorText};
   border-bottom: solid 1px ${props => props.theme.token?.colorBorder};
   user-select: none;
+  font-size: 14px;
 `
 
 export const WidgetTitle = memo((
@@ -27,7 +28,7 @@ export const WidgetTitle = memo((
   return (
     <Title {...rest}>
       <Space>
-        <span style={{ fontSize: 14 }}>
+        <span style={{ fontSize: 13 }}>
           {icon}
         </span>
         <span>
