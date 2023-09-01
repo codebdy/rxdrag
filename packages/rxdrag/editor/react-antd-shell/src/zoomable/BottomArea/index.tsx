@@ -115,7 +115,7 @@ export const BottomArea = memo(() => {
     if (propertyMini || (pinned && !collapsed)) {
       return 32
     }
-    return propertyWidth + 48
+    return propertyWidth + 40
   }, [collapsed, pinned, propertyMini, propertyWidth])
 
   return (

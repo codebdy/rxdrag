@@ -1,8 +1,8 @@
 import React, { CSSProperties, memo } from "react"
 import cls from "classnames"
 import { NodeTag } from "./NodeTag";
+import { useCurrentNode, useDocument, useDocumentViewTypeState } from "@rxdrag/react-core";
 import styled from "styled-components";
-import { useNodesOnPath } from "./useNodesOnPath";
 
 const Container = styled.div`
   display: flex;
@@ -24,7 +24,8 @@ const Container = styled.div`
   border-top: ${props => props.theme?.token?.colorBorder} solid 1px;
   color: ${props => props.theme?.token?.colorText};
 `
-export const NavbarWidget = memo((
+//用div旋转重做该组件
+export const NavbarWidget_Old = memo((
   props: {
     className?: string,
     style?: CSSProperties,
@@ -32,15 +33,16 @@ export const NavbarWidget = memo((
   }
 ) => {
   const { className, ...other } = props;
-  const nodes = useNodesOnPath()
-
+  const currentNode = useCurrentNode()
+  const doc = useDocument()
+  const [viewType] = useDocumentViewTypeState(doc?.id)
   return (
-    <Container className={cls("rx-editor-navbar", className)} {...other}>
-      {
-        nodes.map(node => {
-          return <NodeTag key={node.id} node={node} />
-        })
-      }
-    </Container>
+    viewType === "design" ?
+      <Container className={cls("rx-editor-navbar", className)} {...other}>
+        {
+          currentNode && <NodeTag nodeId={currentNode.id} />
+        }
+      </Container>
+      : <></>
   )
 })
