@@ -9,7 +9,7 @@ import { Toolbox } from "./Toolbox"
 
 const Container = styled.div`
   position: fixed;
-  top: 64px;
+  top: 56px;
   right: 400px;
   display: flex;
   flex-flow: column;
@@ -46,7 +46,7 @@ export const ShortcutActions = memo((
       <Container
         className="rx-shortcut-actions"
         style={{
-          right: propertyWidth + 24
+          right: propertyWidth + 16
         }}
       >
         <Space direction="vertical">

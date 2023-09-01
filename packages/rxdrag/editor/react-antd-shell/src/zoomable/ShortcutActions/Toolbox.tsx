@@ -4,7 +4,6 @@ import styled from "styled-components"
 import { floatBigShadow } from "../../utils"
 import { WidgetTitle } from "../common/WidgetTitle"
 import { DraggableWidget } from "../common/DraggableWidget"
-import { AppstoreOutlined } from "@ant-design/icons"
 
 const Container = styled(DraggableWidget)`
   display: flex;
@@ -55,8 +54,7 @@ export const Toolbox = memo((
     <Container className="rx-widget-toolbox" closed={closed}>
       <Title
         className="toolbox-title"
-        title={t("toolbox")}
-        icon={<AppstoreOutlined />}
+        title={t("components")}
         onClose={handleCollapse}
       />
       <PannelContent className="toolbox-content">

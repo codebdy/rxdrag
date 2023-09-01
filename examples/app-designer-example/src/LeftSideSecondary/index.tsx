@@ -5,8 +5,8 @@ import styled from "styled-components"
 
 const Container = styled.div`
   position: fixed;
-  top: 64px;
-  left: 64px;
+  top: 56px;
+  left: 56px;
 `
 
 export const LeftSideSecondary = memo(() => {

@@ -13,8 +13,8 @@ import { historyIcon, outlineIcon } from "../../icons"
 
 const BottomShell = styled(ResizableRow)`
   position: fixed;
-  left:16px;
-  bottom: 16px;
+  left:8px;
+  bottom: 8px;
   border-radius: 8px;
   background-color: ${props => props.theme.token?.colorBgBase};
   box-shadow: ${floatShadow};
@@ -54,7 +54,6 @@ const Label = styled.div`
 `
 
 const BottomActions = styled.div`
-
 `
 
 const PinButton = styled(Button).attrs({ shape: "circle", size: "small", })`
@@ -127,9 +126,9 @@ export const BottomArea = memo(() => {
 
   const rightSpace = useMemo(() => {
     if (propertyMini || (pinned && !collapsed)) {
-      return 32
+      return 16
     }
-    return propertyWidth + 40
+    return propertyWidth + 24
   }, [collapsed, pinned, propertyMini, propertyWidth])
 
   return (

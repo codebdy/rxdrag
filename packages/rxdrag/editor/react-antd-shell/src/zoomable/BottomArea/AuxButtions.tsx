@@ -4,7 +4,7 @@ import { memo, useCallback, useEffect, useState } from "react"
 import { SvgIcon } from "../../common/SvgIcon"
 import { lineIcon, marginIcon } from "../../icons"
 import { MARGIN_DECORATOR_NAME, LINE_DECORTOR_NAME, LineDecorator, MarginDecorator } from "@rxdrag/core"
-import { CanvasFloatSmallButton } from "../common"
+import { CanvasButton } from "./CanvasButton"
 
 export const AuxButtions = memo(() => {
   const [margin, setMarin] = useState(false);
@@ -41,7 +41,8 @@ export const AuxButtions = memo(() => {
   return (
     <Space size={4}>
       <Tooltip title={t("auxLine")}>
-        <CanvasFloatSmallButton type={line ? "default" : "text"} size="small"
+        <CanvasButton type={line ? "default" : "text"}
+          size="small"
           icon={
             <SvgIcon>
               {lineIcon}
@@ -51,7 +52,7 @@ export const AuxButtions = memo(() => {
         />
       </Tooltip>
       <Tooltip title={t("auxMargin")}>
-        <CanvasFloatSmallButton
+        <CanvasButton
           type={margin ? "default" : "text"}
           size="small"
           icon={

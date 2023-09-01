@@ -9,8 +9,8 @@ const Container = styled.div`
   width: 40px;
   max-height: calc(100% - 100px);
   position: fixed;
-  top: 64px;
-  left: 16px;
+  top: 56px;
+  left: 8px;
   display: flex;
   flex-flow: column;
   align-items: center;

@@ -1,8 +1,8 @@
 import { Space, Tooltip } from "antd"
 import { memo } from "react"
 import { SvgIcon } from "../../common"
-import { CanvasFloatButton } from "../common"
 import { useUndo, useRedo, useSettersTranslate } from "@rxdrag/react-core"
+import { CanvasButton } from "./CanvasButton"
 
 export const ReundoIcons = memo(() => {
   const [canUndo, undo] = useUndo()
@@ -11,7 +11,7 @@ export const ReundoIcons = memo(() => {
 
   return (<Space size={4}>
     <Tooltip title={t("undo")}>
-      <CanvasFloatButton
+      <CanvasButton
         size="small"
         type={canUndo ? "text" : undefined}
         icon={
@@ -24,7 +24,7 @@ export const ReundoIcons = memo(() => {
       />
     </Tooltip>
     <Tooltip title={t("redo")}>
-      <CanvasFloatButton
+      <CanvasButton
         size="small"
         type={canRedo ? "text" : undefined}
         icon={
