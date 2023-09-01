@@ -8,7 +8,7 @@ import { DraggableWidget } from "../common/DraggableWidget"
 const Container = styled(DraggableWidget)`
   display: flex;
   right: 364px;
-  top: 64px;
+  top: 56px;
   flex: 1;
   box-shadow: ${floatBigShadow};
   background-color: ${props => props.theme.token?.colorBgBase};

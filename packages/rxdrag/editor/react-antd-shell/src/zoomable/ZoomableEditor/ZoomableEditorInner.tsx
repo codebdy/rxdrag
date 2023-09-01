@@ -13,15 +13,15 @@ import { DocView } from "../DocView"
 import { ZoomableViewport } from "../ZoomableViewport"
 
 const Workspace = styled.div`
+  position: relative;
   flex:1;
   display: flex;
-  width: 100%;
+  height: 100%;
   padding: 0;
   box-sizing: border-box;
   flex-flow: column;
-  height: 0;
+  width: 0;
 `
-
 export type ZoomableEditorInnerProps = {
   locales?: ILocales,
   schemas: IDocumentSchema[],
@@ -72,7 +72,7 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
   }, [engine, schemas])
 
   return (
-    <Workspace>
+    <Workspace className="zoomable-workspace">
       <ZoomableViewport
         toolbox={toolbox}
       >

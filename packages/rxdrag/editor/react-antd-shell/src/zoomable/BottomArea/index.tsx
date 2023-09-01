@@ -12,9 +12,9 @@ import { AuxButtions } from "./AuxButtions"
 import { historyIcon, outlineIcon } from "../../icons"
 
 const BottomShell = styled(ResizableRow)`
-  position: fixed;
-  left:8px;
-  bottom: 8px;
+  position: absolute;
+  left:16px;
+  bottom: 16px;
   border-radius: 8px;
   background-color: ${props => props.theme.token?.colorBgBase};
   box-shadow: ${floatShadow};
@@ -126,9 +126,9 @@ export const BottomArea = memo(() => {
 
   const rightSpace = useMemo(() => {
     if (propertyMini || (pinned && !collapsed)) {
-      return 16
+      return 32
     }
-    return propertyWidth + 24
+    return propertyWidth + 48
   }, [collapsed, pinned, propertyMini, propertyWidth])
 
   return (

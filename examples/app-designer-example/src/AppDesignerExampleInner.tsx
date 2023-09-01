@@ -3,7 +3,6 @@ import { Toolbar } from "./Toolbar"
 import { ZoomableEditor } from "@rxdrag/react-antd-shell"
 import styled from "styled-components"
 import { LeftSide } from "./LeftSide"
-import { LeftSideSecondary } from "./LeftSideSecondary"
 import { INodeSchema, IDocumentSchema } from "@rxdrag/schema"
 
 const Container = styled.div`
@@ -14,6 +13,13 @@ const Container = styled.div`
   box-sizing: border-box;
   background-color: ${props => props.theme.token?.colorBgContainer};
   color: ${props => props.theme.token?.colorText};
+`
+
+//设备端的编辑区
+const AppDeviceArea = styled.div`
+  flex:1;
+  display: flex;
+  height: 0;
 `
 
 const rootNodeSchema: INodeSchema = {
@@ -37,11 +43,12 @@ export const AppDesignerExampleInner = memo(() => {
   return (
     <Container className="zoomable-editor">
       <Toolbar />
-      <ZoomableEditor
-        schemas={schemas}
-      />
-      <LeftSide />
-      <LeftSideSecondary />
+      <AppDeviceArea>
+        <LeftSide />
+        <ZoomableEditor
+          schemas={schemas}
+        />
+      </AppDeviceArea>
     </Container>
   )
 })

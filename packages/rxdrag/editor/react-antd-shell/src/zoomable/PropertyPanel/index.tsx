@@ -11,10 +11,10 @@ import { WidgetTitle } from "../common/WidgetTitle"
 
 const PanelShell = styled(ResizableColumn)`
   position: fixed;
-  top: 56px;
-  right: 8px;
+  top: 64px;
+  right: 16px;
   border-radius: 8px;
-  height: calc(100% - 64px);
+  height: calc(100% - 80px);
   background-color: ${props => props.theme.token?.colorBgBase};
   box-shadow: ${floatShadow};
 `

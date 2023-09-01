@@ -7,8 +7,6 @@ import { LeftNavButton } from "./LeftNavButton"
 
 const Container = styled.div`
   width: 40px;
-  max-height: calc(100% - 100px);
-  position: fixed;
   top: 56px;
   left: 8px;
   display: flex;
@@ -20,10 +18,11 @@ const Container = styled.div`
   box-shadow: ${floatShadow};
   padding: 0px;
   box-sizing: border-box;
+  height: 100%;
 `
 
 const ButtonMask = styled.div`
-  border-radius: 8px;
+  border-radius: 0px;
   overflow: hidden;
   display: flex;
   flex-flow: column;

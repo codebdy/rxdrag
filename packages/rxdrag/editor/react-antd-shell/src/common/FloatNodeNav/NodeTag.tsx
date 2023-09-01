@@ -21,6 +21,11 @@ const TagContainer = styled.div`
     &::after{
       border-radius: 8px 0 0 8px;
     }
+    &.last{
+        &::after{
+        border-radius: 8px;
+      }
+    }
   }
   .node-label{
     display: flex;

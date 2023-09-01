@@ -6,6 +6,7 @@ import { MouseMoveEvent, MouseUpEvent } from "@rxdrag/core"
 import { useDesignerEngine } from "@rxdrag/react-core"
 
 const ViewportSchellContainer = styled.div`
+  position: relative;
   flex: 1;
   background-color: ${props => props.theme.token?.colorBorderSecondary};
   height: 0;
