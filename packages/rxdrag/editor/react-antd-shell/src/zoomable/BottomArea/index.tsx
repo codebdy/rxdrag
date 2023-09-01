@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components"
-import { NavbarWidget, ResizableRow } from "../../common"
+import { FloatNodeNav, ResizableRow } from "../../common"
 import { usePropertyWidthState } from "../contexts"
 import { floatShadow } from "../../utils"
 import { Button, Divider, Space, Tabs } from "antd"
@@ -153,7 +153,7 @@ export const BottomArea = memo(() => {
         items={items}
       />
       <BottomBar>
-        <NavbarWidget />
+        <FloatNodeNav />
         {
           activedDocument && <BottomActions>
             <ReundoIcons />

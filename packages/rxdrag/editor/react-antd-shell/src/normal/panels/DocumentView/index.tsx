@@ -5,7 +5,7 @@ import { memo } from "react"
 import { CanvasToolbar } from "../../layouts"
 import { UndoRedoButtons, SelectionButtions, AuxButtions, CanvasSize, ViewButtons } from "../../widgets"
 import { Viewport } from "../Viewport"
-import { NavbarWidget } from "../../../common/NavbarWidget"
+import { NavbarWidget } from "../../../common"
 import { useCanvasUrl, usePreviewUrl } from "../../../common"
 
 export const DocumentView = memo((
