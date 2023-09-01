@@ -15,8 +15,12 @@ const TagContainer = styled.div`
   align-items: center;
   box-shadow: ${floatShadow};
   border: solid 1px ${props => props.theme.token?.colorBorder};
+  border-radius: 8px;
   &.first{
     padding-left: 8px;
+    &::after{
+      border-radius: 8px 0 0 8px;
+    }
   }
   .node-label{
     display: flex;
@@ -37,10 +41,12 @@ const TagContainer = styled.div`
       content: "";
       width: 24px;
       height: 24px;
-      left: -9px;
+      top: -0px;
+      left: -10px;
       background-color: ${props => props.theme.token?.colorBorderSecondary};
       transform: rotate(45deg);
       border: solid 1px ${props => props.theme.token?.colorBorder};
+      border-radius: 3px;
     }
   }
 
@@ -64,6 +70,7 @@ const TagContainer = styled.div`
     }
     &::after{
       background-color: ${props => props.theme.token?.colorPrimary};
+      border-radius: 0px 8px 8px 0px;
     }
   }
   &.actived{
