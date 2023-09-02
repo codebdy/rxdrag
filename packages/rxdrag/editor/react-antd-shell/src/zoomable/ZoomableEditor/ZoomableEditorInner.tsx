@@ -11,6 +11,7 @@ import { CanvasResizeDriver, ContainerImpl, DragDropDriver, IDocument, KeyboardD
 import { Space } from "antd"
 import { DocView } from "../DocView"
 import { ZoomableViewport } from "../ZoomableViewport"
+import { Toolbox } from "../Toolbox"
 
 const Workspace = styled.div`
   position: relative;
@@ -73,9 +74,7 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
 
   return (
     <Workspace className="zoomable-workspace">
-      <ZoomableViewport
-        toolbox={toolbox}
-      >
+      <ZoomableViewport>
         <Space size={"large"}>
           {
             docs.map(doc => {
@@ -87,6 +86,9 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
         </Space>
       </ZoomableViewport>
       <BottomArea />
+      <Toolbox>
+        {toolbox}
+      </Toolbox>
       <PropertyPanel />
     </Workspace>
   )

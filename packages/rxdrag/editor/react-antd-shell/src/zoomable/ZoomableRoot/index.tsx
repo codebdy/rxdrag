@@ -1,15 +1,18 @@
 import { memo, useState } from "react"
-import { PropertyWidthContext, defaultPropertyState } from "../contexts"
+import { PropertyWidthContext, ToolboxWidthContext, defaultWidgetState } from "../contexts"
 
 export const ZoomableRoot = memo((props: {
   children?: React.ReactNode
 }) => {
   const { children } = props;
-  const propState = useState<number>(defaultPropertyState[0])
+  const propState = useState<number>(defaultWidgetState[0])
+  const toolboxState = useState<number>(defaultWidgetState[0])
 
   return (
     <PropertyWidthContext.Provider value={propState}>
-      {children}
+      <ToolboxWidthContext.Provider value={toolboxState}>
+        {children}
+      </ToolboxWidthContext.Provider>
     </PropertyWidthContext.Provider>
   )
 })

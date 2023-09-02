@@ -1,15 +1,17 @@
 import { Space } from "antd"
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
-import { AimOutlined, AppstoreOutlined, PlayCircleOutlined } from "@ant-design/icons"
+import { AimOutlined, HistoryOutlined, PlayCircleOutlined } from "@ant-design/icons"
 import { usePropertyWidthState } from "../contexts"
 import { ZoomButtons } from "./ZoomButtons"
 import { CanvasFloatButton } from "../common/FloatButton"
-import { Toolbox } from "./Toolbox"
+import { SvgIcon } from "../../common"
+import { outlineIcon } from "../../icons"
+import { DEFAULT_MARGIN } from "../consts"
 
 const Container = styled.div`
-  position: fixed;
-  top: 64px;
+  position: absolute;
+  top: ${DEFAULT_MARGIN}px;
   right: 400px;
   display: flex;
   flex-flow: column;
@@ -26,19 +28,21 @@ export const ShortcutActions = memo((
     zoom: number,
     onZoomChange: (zoom: number) => void
     onResetScroll: () => void,
-    toolbox?: React.ReactNode,
   }
 ) => {
-  const { scrolled, zoom, onZoomChange, onResetScroll, toolbox } = props
-  const [toolboxOpen, setToolboxOpen] = useState<boolean>()
+  const { scrolled, zoom, onZoomChange, onResetScroll } = props
+  const [outlineOpen, setOutlineOpen] = useState<boolean>()
+  const [historyOpen, setHistoryOpen] = useState<boolean>()
   const [propertyWidth] = usePropertyWidthState()
 
-  const handleToggleOpen = useCallback(() => {
-    setToolboxOpen(open => !open)
+  const handleToggleOutlineOpen = useCallback(() => {
+    setHistoryOpen(false)
+    setOutlineOpen(open => !open)
   }, [])
 
-  const handleOpenChange = useCallback((open?: boolean) => {
-    setToolboxOpen(open)
+  const handleToggleHistoryOpen = useCallback(() => {
+    setOutlineOpen(false)
+    setHistoryOpen(open => !open)
   }, [])
 
   return (
@@ -51,22 +55,22 @@ export const ShortcutActions = memo((
       >
         <Space direction="vertical">
           <CanvasFloatButton icon={<PlayCircleOutlined />} />
-          <StyledButton
-            type={toolboxOpen ? "link" : undefined}
-            icon={<AppstoreOutlined />}
-            onClick={handleToggleOpen}
-          />
           <ZoomButtons zoom={zoom} onZoomChange={onZoomChange} />
-          {/* <FloatButton icon={<HistoryOutlined />}/> */}
+          <StyledButton
+            type={outlineOpen ? "link" : undefined}
+            icon={<SvgIcon>
+              {outlineIcon}
+            </SvgIcon>}
+            onClick={handleToggleOutlineOpen}
+          />
+          <StyledButton
+            type={historyOpen ? "link" : undefined}
+            icon={<HistoryOutlined />}
+            onClick={handleToggleHistoryOpen}
+          />
           <CanvasFloatButton disabled={!scrolled} icon={<AimOutlined />} onClick={onResetScroll} />
         </Space>
       </Container>
-      <Toolbox
-        open={toolboxOpen}
-        onOpenChange={handleOpenChange}
-      >
-        {toolbox ? toolbox : "please add toolbox"}
-      </Toolbox>
     </>
   )
 })

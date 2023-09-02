@@ -5,7 +5,7 @@ import { usePropertyWidthState } from "../contexts"
 import { floatShadow } from "../../utils"
 import { Button, Divider, Space, Tabs, TabsProps } from "antd"
 import { BorderOutlined, LeftOutlined, MinusOutlined, RightOutlined, SettingOutlined } from "@ant-design/icons"
-import { MINI_PRO_WIDTH } from "../consts"
+import { DEFAULT_MARGIN, MINI_PRO_WIDTH } from "../consts"
 import { ReundoIcons } from "./ReundoIcons"
 import { useActivedDocument, useSettersTranslate } from "@rxdrag/react-core"
 import { AuxButtions } from "./AuxButtions"
@@ -13,8 +13,8 @@ import { historyIcon, outlineIcon } from "../../icons"
 
 const BottomShell = styled(ResizableRow)`
   position: absolute;
-  left:16px;
-  bottom: 16px;
+  left:${DEFAULT_MARGIN}px;
+  bottom: ${DEFAULT_MARGIN}px;
   border-radius: 8px;
   background-color: ${props => props.theme.token?.colorBgBase};
   box-shadow: ${floatShadow};
