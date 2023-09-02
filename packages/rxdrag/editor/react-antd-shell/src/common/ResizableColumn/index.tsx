@@ -126,7 +126,7 @@ export const ResizableColumn = memo(
           width: hidden ? 0 : realWidth,
           maxWidth: maxWidth,
           minWidth: minWidth,
-          transition: draging ? undefined : "height 0.1s, width 0.3s",
+          transition: draging ? undefined : "all 0.3s",
           ...style,
         }}
       >

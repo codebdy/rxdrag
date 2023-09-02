@@ -50,7 +50,6 @@ const BottomBar = styled.div`
 const Label = styled.div`
   display: flex;
   align-items: center;
-  font-size: 13px;
 `
 
 const BottomActions = styled.div`

@@ -1,5 +1,5 @@
 import { Space } from "antd"
-import { memo, useCallback, useState } from "react"
+import { memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
 import { AimOutlined, HistoryOutlined, PlayCircleOutlined } from "@ant-design/icons"
 import { usePropertyWidthState } from "../contexts"
@@ -42,10 +42,12 @@ export const ShortcutActions = memo((
   }
 ) => {
   const { scrolled, zoom, onZoomChange, onResetScroll } = props
+
   const [outlineOpen, setOutlineOpen] = useState<boolean>()
   const [historyOpen, setHistoryOpen] = useState<boolean>()
   const [propertyWidth] = usePropertyWidthState()
   const t = useSettersTranslate()
+  const collapsed = useMemo(() => !outlineOpen && !historyOpen, [historyOpen, outlineOpen])
 
   const handleToggleOutlineOpen = useCallback(() => {
     setHistoryOpen(false)
@@ -57,8 +59,9 @@ export const ShortcutActions = memo((
     setHistoryOpen(open => !open)
   }, [])
 
-  const handleToggleExpand = useCallback(() => {
-    //
+  const handleCloseExpand = useCallback(() => {
+    setOutlineOpen(false)
+    setHistoryOpen(false)
   }, [])
 
   return (
@@ -69,10 +72,10 @@ export const ShortcutActions = memo((
       }}
     >
       <RelativeInner>
-        <ExpandPanel>
+        <ExpandPanel collapsed={collapsed}>
           <WidgetTitle
             title={t("outline")}
-            onClose={handleToggleExpand}
+            onClose={handleCloseExpand}
           />
           <OutlineTree />
         </ExpandPanel>

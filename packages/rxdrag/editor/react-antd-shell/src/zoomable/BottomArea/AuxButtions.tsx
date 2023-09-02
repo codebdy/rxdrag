@@ -41,27 +41,32 @@ export const AuxButtions = memo(() => {
   return (
     <Space size={4}>
       <Tooltip title={t("auxLine")}>
-        <CanvasButton type={line ? "default" : "text"}
-          size="small"
-          icon={
-            <SvgIcon>
-              {lineIcon}
-            </SvgIcon>
-          }
-          onClick={handleLineClick}
-        />
+        {/* This seems like a problem with Ant Design components. For instance, using the plain DOM <input> doesn't cause this error. */}
+        <div>
+          <CanvasButton type={line ? "default" : "text"}
+            size="small"
+            icon={
+              <SvgIcon>
+                {lineIcon}
+              </SvgIcon>
+            }
+            onClick={handleLineClick}
+          />
+        </div>
       </Tooltip>
       <Tooltip title={t("auxMargin")}>
-        <CanvasButton
-          type={margin ? "default" : "text"}
-          size="small"
-          icon={
-            <SvgIcon>
-              {marginIcon}
-            </SvgIcon>
-          }
-          onClick={handleMarginClick}
-        />
+        <div>
+          <CanvasButton
+            type={margin ? "default" : "text"}
+            size="small"
+            icon={
+              <SvgIcon>
+                {marginIcon}
+              </SvgIcon>
+            }
+            onClick={handleMarginClick}
+          />
+        </div>
       </Tooltip>
     </Space>
   )
