@@ -20,6 +20,7 @@ const Container = styled.div`
   flex-flow: column;
   transition: all 0.3s;
   height: calc(100% - ${2 * DEFAULT_MARGIN}px);
+  pointer-events: none;
 `
 
 const RelativeInner = styled.div`
@@ -37,6 +38,10 @@ const Content = styled.div`
 
 const StyledButton = styled(CanvasFloatButton)`
   background-color: ${props => props.theme.token?.colorBgBase};
+`
+
+const StyleSpace = styled(Space)`
+  pointer-events: all;
 `
 
 export const ShortcutActions = memo((
@@ -104,7 +109,7 @@ export const ShortcutActions = memo((
           }
 
         </ExpandPanel>
-        <Space direction="vertical">
+        <StyleSpace direction="vertical">
           <CanvasFloatButton icon={<PlayCircleOutlined />} />
           <ZoomButtons zoom={zoom} onZoomChange={onZoomChange} />
           <StyledButton
@@ -120,7 +125,7 @@ export const ShortcutActions = memo((
             onClick={handleToggleHistoryOpen}
           />
           <CanvasFloatButton disabled={!scrolled} icon={<AimOutlined />} onClick={onResetScroll} />
-        </Space>
+        </StyleSpace>
       </RelativeInner>
     </Container>
   )

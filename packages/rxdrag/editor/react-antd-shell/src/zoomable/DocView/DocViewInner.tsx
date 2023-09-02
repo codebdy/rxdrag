@@ -49,7 +49,7 @@ export const DocViewInner = memo(() => {
     <DocViewContainer>
       <CanvasToolbar>
         <CanvasTitle>
-          {doc?.getTitle()} - <em>大屏</em>
+          {doc?.getTitle()}
         </CanvasTitle>
         <Spring />
         <Space className="actions">

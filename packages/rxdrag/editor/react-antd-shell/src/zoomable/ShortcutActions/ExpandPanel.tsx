@@ -13,6 +13,7 @@ const PanelShell = styled(ResizableColumn)`
   background-color: ${props => props.theme.token?.colorBgBase};
   box-shadow: ${floatShadow};
   padding-bottom: 8px;
+  pointer-events: all;
   &.collapsed{
     pointer-events: none;
     box-shadow: none;

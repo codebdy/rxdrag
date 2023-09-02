@@ -87,7 +87,7 @@ export const BottomArea = memo(() => {
   const items: TabsProps['items'] = useMemo(() => {
     return [
       {
-        label: <Label>行为流</Label>,
+        label: <Label>编排</Label>,
         key: "logicflow",
         children: ""
       },
