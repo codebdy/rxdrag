@@ -5,7 +5,7 @@ import { AimOutlined, HistoryOutlined, PlayCircleOutlined } from "@ant-design/ic
 import { usePropertyWidthState } from "../contexts"
 import { ZoomButtons } from "./ZoomButtons"
 import { CanvasFloatButton } from "../common/FloatButton"
-import { OutlineTree, SvgIcon } from "../../common"
+import { OperationHistory, OutlineTree, SvgIcon } from "../../common"
 import { outlineIcon } from "../../icons"
 import { DEFAULT_MARGIN } from "../consts"
 import { ExpandPanel } from "./ExpandPanel"
@@ -73,11 +73,26 @@ export const ShortcutActions = memo((
     >
       <RelativeInner>
         <ExpandPanel collapsed={collapsed}>
-          <WidgetTitle
-            title={t("outline")}
-            onClose={handleCloseExpand}
-          />
-          <OutlineTree />
+          {outlineOpen &&
+            <>
+              <WidgetTitle
+                title={t("outline")}
+                onClose={handleCloseExpand}
+              />
+              <OutlineTree />
+            </>
+          }
+
+          {
+            historyOpen && <>
+              <WidgetTitle
+                title={t("history")}
+                onClose={handleCloseExpand}
+              />
+              <OperationHistory />
+            </>
+          }
+
         </ExpandPanel>
         <Space direction="vertical">
           <CanvasFloatButton icon={<PlayCircleOutlined />} />
