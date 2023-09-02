@@ -1,15 +1,14 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components"
-import { FloatNodeNav, OperationHistory, OutlineTree, ResizableRow, SvgIcon } from "../../common"
+import { FloatNodeNav, ResizableRow } from "../../common"
 import { usePropertyWidthState, useToolboxWidthState } from "../contexts"
 import { floatShadow } from "../../utils"
 import { Button, Divider, Space, Tabs, TabsProps } from "antd"
 import { BorderOutlined, LeftOutlined, MinusOutlined, RightOutlined, SettingOutlined } from "@ant-design/icons"
 import { DEFAULT_MARGIN, MINI_WIDGET_WIDTH } from "../consts"
 import { ReundoIcons } from "./ReundoIcons"
-import { useActivedDocument, useSettersTranslate } from "@rxdrag/react-core"
+import { useActivedDocument } from "@rxdrag/react-core"
 import { AuxButtions } from "./AuxButtions"
-import { historyIcon, outlineIcon } from "../../icons"
 
 const BottomShell = styled(ResizableRow)`
   position: absolute;
@@ -45,6 +44,7 @@ const BottomBar = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  pointer-events: none;
 `
 
 const Label = styled.div`
@@ -54,6 +54,7 @@ const Label = styled.div`
 `
 
 const BottomActions = styled.div`
+  pointer-events: all;
 `
 
 const PinButton = styled(Button).attrs({ shape: "circle", size: "small", })`
@@ -82,7 +83,7 @@ export const BottomArea = memo(() => {
   const [propertyWidth] = usePropertyWidthState()
   const [toolboxWidth] = useToolboxWidthState()
   const activedDocument = useActivedDocument()
-  const t = useSettersTranslate()
+  //const t = useSettersTranslate()
 
   const items: TabsProps['items'] = useMemo(() => {
     return [
@@ -101,18 +102,8 @@ export const BottomArea = memo(() => {
         key: "shortcurt",
         children: "快捷控制器"
       },
-      {
-        label: <Label><SvgIcon>{outlineIcon}</SvgIcon> {t("outline")}</Label>,
-        key: "outline",
-        children: <OutlineTree />
-      },
-      {
-        label: <Label><SvgIcon>{historyIcon}</SvgIcon> {t("history")}</Label>,
-        key: "history",
-        children: collapsed ? <></> : <OperationHistory />
-      },
     ]
-  }, [collapsed, t])
+  }, [])
 
   useEffect(() => {
     if (height <= (minHeight + 5)) {

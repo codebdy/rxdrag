@@ -5,9 +5,12 @@ import { AimOutlined, HistoryOutlined, PlayCircleOutlined } from "@ant-design/ic
 import { usePropertyWidthState } from "../contexts"
 import { ZoomButtons } from "./ZoomButtons"
 import { CanvasFloatButton } from "../common/FloatButton"
-import { SvgIcon } from "../../common"
+import { OutlineTree, SvgIcon } from "../../common"
 import { outlineIcon } from "../../icons"
 import { DEFAULT_MARGIN } from "../consts"
+import { ExpandPanel } from "./ExpandPanel"
+import { useSettersTranslate } from "@rxdrag/react-core"
+import { WidgetTitle } from "../common/WidgetTitle"
 
 const Container = styled.div`
   position: absolute;
@@ -16,6 +19,14 @@ const Container = styled.div`
   display: flex;
   flex-flow: column;
   transition: all 0.3s;
+  height: calc(100% - ${2 * DEFAULT_MARGIN}px);
+`
+
+const RelativeInner = styled.div`
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
 `
 
 const StyledButton = styled(CanvasFloatButton)`
@@ -34,6 +45,7 @@ export const ShortcutActions = memo((
   const [outlineOpen, setOutlineOpen] = useState<boolean>()
   const [historyOpen, setHistoryOpen] = useState<boolean>()
   const [propertyWidth] = usePropertyWidthState()
+  const t = useSettersTranslate()
 
   const handleToggleOutlineOpen = useCallback(() => {
     setHistoryOpen(false)
@@ -45,14 +57,25 @@ export const ShortcutActions = memo((
     setHistoryOpen(open => !open)
   }, [])
 
+  const handleToggleExpand = useCallback(() => {
+    //
+  }, [])
+
   return (
-    <>
-      <Container
-        className="rx-shortcut-actions"
-        style={{
-          right: propertyWidth + 24
-        }}
-      >
+    <Container
+      className="rx-shortcut-actions"
+      style={{
+        right: propertyWidth + 24
+      }}
+    >
+      <RelativeInner>
+        <ExpandPanel>
+          <WidgetTitle
+            title={t("outline")}
+            onClose={handleToggleExpand}
+          />
+          <OutlineTree />
+        </ExpandPanel>
         <Space direction="vertical">
           <CanvasFloatButton icon={<PlayCircleOutlined />} />
           <ZoomButtons zoom={zoom} onZoomChange={onZoomChange} />
@@ -70,7 +93,7 @@ export const ShortcutActions = memo((
           />
           <CanvasFloatButton disabled={!scrolled} icon={<AimOutlined />} onClick={onResetScroll} />
         </Space>
-      </Container>
-    </>
+      </RelativeInner>
+    </Container>
   )
 })

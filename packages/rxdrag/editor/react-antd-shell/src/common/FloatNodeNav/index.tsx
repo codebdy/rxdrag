@@ -12,6 +12,7 @@ const Container = styled.div`
   font-size: 13px;
   color: ${props => props.theme?.token?.colorText};
   padding-right: 24px;
+  pointer-events: all;
 `
 export const FloatNodeNav = memo((
   props: {

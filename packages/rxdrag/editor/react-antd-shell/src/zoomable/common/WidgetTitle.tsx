@@ -28,9 +28,11 @@ export const WidgetTitle = memo((
   return (
     <Title {...rest}>
       <Space>
-        <span style={{ fontSize: 13 }}>
-          {icon}
-        </span>
+        {
+          icon && <span style={{ fontSize: 13 }}>
+            {icon}
+          </span>
+        }
         <span>
           {title}
         </span>
