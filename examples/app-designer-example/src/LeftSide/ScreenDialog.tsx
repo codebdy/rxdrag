@@ -1,8 +1,7 @@
 import { SettingOutlined } from "@ant-design/icons"
 import { memo, useCallback, useState } from "react"
-import { Form, InputNumber, Modal } from "antd";
+import { Button, Form, InputNumber, Modal } from "antd";
 import styled from "styled-components";
-import { LeftNavButton } from "./LeftNavButton";
 
 const SizeInput = styled(InputNumber)`
   width: 120px;
@@ -25,7 +24,7 @@ export const ScreenDialog = memo(() => {
 
   return (
     <>
-      <LeftNavButton
+      <Button
         icon={<SettingOutlined />}
         type="text"
         onClick={handleOpen}

@@ -2,42 +2,35 @@ import { memo } from "react"
 import styled from "styled-components"
 import { CompassOutlined, DeploymentUnitOutlined, LayoutOutlined, SnippetsOutlined } from "@ant-design/icons"
 import { ScreenDialog } from "./ScreenDialog"
-import { floatShadow } from "@rxdrag/react-antd-shell"
-import { LeftNavButton } from "./LeftNavButton"
+import { Spring, floatShadow } from "@rxdrag/react-antd-shell"
+import { NavButton } from "./NavButton"
 
 const Container = styled.div`
-  width: 40px;
+  width: 48px;
   top: 56px;
-  left: 8px;
+  padding: 0;
+  padding-bottom: 8px;
   display: flex;
   flex-flow: column;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 0;
   background-color: ${props => props.theme.token?.colorBgBase};
   color: ${props => props.theme.token?.colorText};
   box-shadow: ${floatShadow};
-  padding: 0px;
-  box-sizing: border-box;
   height: 100%;
+  box-sizing: border-box;
+  z-index: 1;
 `
 
-const ButtonMask = styled.div`
-  border-radius: 0px;
-  overflow: hidden;
-  display: flex;
-  flex-flow: column;
-  width: 100%;
-`
 export const LeftSide = memo(() => {
   return (
     <Container className="rx-left-side">
-      <ButtonMask>
-        <LeftNavButton icon={<SnippetsOutlined />} type="primary" />
-        <LeftNavButton icon={<LayoutOutlined />} type="text" />
-        <LeftNavButton icon={<CompassOutlined />} type="text" />
-        <LeftNavButton icon={<DeploymentUnitOutlined />} type="text" />
-        <ScreenDialog />
-      </ButtonMask>
+      <NavButton icon={<SnippetsOutlined />} intermediate />
+      <NavButton icon={<LayoutOutlined />} />
+      <NavButton icon={<CompassOutlined />} selected />
+      <NavButton icon={<DeploymentUnitOutlined />} />
+      <Spring />
+      <ScreenDialog />
     </Container>
   )
 })
