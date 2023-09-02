@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useState } from "react"
+import { memo, useCallback, useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import { ResizableColumn, SettingsForm } from "../../common"
 import { usePropertyWidthState } from "../contexts"
@@ -47,16 +47,20 @@ export const PropertyPanel = memo(() => {
   const [propertyWidth, setPropertyWidth] = usePropertyWidthState()
   const [oldeWidth, setOldWidth] = useState(propertyWidth)
   const currentNode = useCurrentNode()
+  const oldeWidthRef = useRef(oldeWidth)
+  oldeWidthRef.current = oldeWidth
+  const setPropertyWidthRef = useRef(setPropertyWidth)
+  setPropertyWidthRef.current = setPropertyWidth
 
   useEffect(() => {
     if (!currentNode) {
       setCollapsed(true)
-      setPropertyWidth(MINI_WIDGET_WIDTH)
+      setPropertyWidthRef.current(MINI_WIDGET_WIDTH)
     } else {
       setCollapsed(false)
-      setPropertyWidth(oldeWidth)
+      setPropertyWidthRef.current(oldeWidthRef.current)
     }
-  }, [currentNode, oldeWidth, setPropertyWidth])
+  }, [currentNode])
 
   const handleCollapse = useCallback(() => {
     setCollapsed(true)
@@ -86,7 +90,7 @@ export const PropertyPanel = memo(() => {
         collapsed
           ? <Button
             type="text"
-
+            disabled={!currentNode}
             icon={propertyIcon}
             onClick={handleOpen}
           />
