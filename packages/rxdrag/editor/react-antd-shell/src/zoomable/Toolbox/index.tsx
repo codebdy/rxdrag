@@ -33,6 +33,23 @@ const Container = styled.div`
   .collapsed{
     opacity: 0;
   }
+  .ant-tabs{
+    flex:1;
+    height: 0;
+    display: flex;
+    flex-flow: column;
+    .ant-tabs-content-holder{
+      flex:1;
+      height: 0;
+      overflow: auto;
+    }
+    padding-bottom: 8px;
+  }
+  .ant-tabs-nav{
+    padding: 0 16px;
+    margin: 0;
+    user-select: none;
+  }
 `
 
 export const Toolbox = memo((
