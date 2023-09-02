@@ -126,7 +126,7 @@ export function ResizableRow(props: {
         height: realHeight,
         minHeight: minHeight,
         maxHeight: maxHeight,
-        transition: draging ? undefined : "height 0.3s, width 0.3s",
+        transition: draging ? undefined : "all 0.3s",
         ...style
       }}
     >

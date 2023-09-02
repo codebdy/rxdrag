@@ -4,7 +4,7 @@ import { ResizableColumn, SettingsForm } from "../../common"
 import { usePropertyWidthState } from "../contexts"
 import { floatShadow } from "../../utils"
 import { Button } from "antd"
-import { DEFAULT_MARGIN, MINI_PRO_WIDTH } from "../consts"
+import { DEFAULT_MARGIN, MINI_WIDGET_WIDTH } from "../consts"
 import { propertyIcon } from "../../icons"
 import { useSettersTranslate } from "@rxdrag/react-core"
 import { WidgetTitle } from "../common/WidgetTitle"
@@ -28,7 +28,7 @@ export const PropertyPanel = memo(() => {
   const handleCollapse = useCallback(() => {
     setCollapsed(true)
     setOldWidth(propertyWidth)
-    setPropertyWidth(MINI_PRO_WIDTH)
+    setPropertyWidth(MINI_WIDGET_WIDTH)
   }, [propertyWidth, setPropertyWidth])
 
   const handleOpen = useCallback(() => {

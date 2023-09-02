@@ -4,7 +4,7 @@ import { ResizableColumn } from "../../common"
 import { useToolboxWidthState } from "../contexts"
 import { floatShadow } from "../../utils"
 import { Button } from "antd"
-import { DEFAULT_MARGIN, MINI_PRO_WIDTH } from "../consts"
+import { DEFAULT_MARGIN, MINI_WIDGET_WIDTH } from "../consts"
 import { useSettersTranslate } from "@rxdrag/react-core"
 import { WidgetTitle } from "../common/WidgetTitle"
 import { AppstoreOutlined } from "@ant-design/icons"
@@ -33,7 +33,7 @@ export const Toolbox = memo((
   const handleCollapse = useCallback(() => {
     setCollapsed(true)
     setOldWidth(toolboxWidth)
-    setToolboxWidth(MINI_PRO_WIDTH)
+    setToolboxWidth(MINI_WIDGET_WIDTH)
   }, [toolboxWidth, setToolboxWidth])
 
   const handleOpen = useCallback(() => {
@@ -43,7 +43,6 @@ export const Toolbox = memo((
 
   return (
     <ToolboxShell
-      right
       maxWidth={1000}
       minWidth={280}
       width={toolboxWidth}

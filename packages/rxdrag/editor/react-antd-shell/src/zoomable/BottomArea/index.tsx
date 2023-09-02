@@ -1,11 +1,11 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components"
 import { FloatNodeNav, OperationHistory, OutlineTree, ResizableRow, SvgIcon } from "../../common"
-import { usePropertyWidthState } from "../contexts"
+import { usePropertyWidthState, useToolboxWidthState } from "../contexts"
 import { floatShadow } from "../../utils"
 import { Button, Divider, Space, Tabs, TabsProps } from "antd"
 import { BorderOutlined, LeftOutlined, MinusOutlined, RightOutlined, SettingOutlined } from "@ant-design/icons"
-import { DEFAULT_MARGIN, MINI_PRO_WIDTH } from "../consts"
+import { DEFAULT_MARGIN, MINI_WIDGET_WIDTH } from "../consts"
 import { ReundoIcons } from "./ReundoIcons"
 import { useActivedDocument, useSettersTranslate } from "@rxdrag/react-core"
 import { AuxButtions } from "./AuxButtions"
@@ -66,13 +66,20 @@ const PinButton = styled(Button).attrs({ shape: "circle", size: "small", })`
   color: ${props => props.theme.token?.colorTextSecondary};
 `
 
+const LeftPinButton = styled(PinButton)`
+  right: auto;
+  left:0;
+`
+
 const minHeight = 40
 
 export const BottomArea = memo(() => {
   const [collapsed, setCollapsed] = useState(false)
-  const [pinned, setPinned] = useState(false)
+  const [rightPinned, setRightPinned] = useState(false)
+  const [leftPinned, setLeftPinned] = useState(false)
   const [height, setHeight] = useState(200)
   const [propertyWidth] = usePropertyWidthState()
+  const [toolboxWidth] = useToolboxWidthState()
   const activedDocument = useActivedDocument()
   const t = useSettersTranslate()
 
@@ -118,18 +125,31 @@ export const BottomArea = memo(() => {
     setCollapsed(!collapsed)
   }, [collapsed])
 
-  const handleTogglePin = useCallback(() => {
-    setPinned(pinned => !pinned)
+  const handleToggleRightPin = useCallback(() => {
+    setRightPinned(pinned => !pinned)
   }, [])
 
-  const propertyMini = useMemo(() => propertyWidth <= MINI_PRO_WIDTH, [propertyWidth])
+  const handleToggleLeftPin = useCallback(() => {
+    setLeftPinned(pinned => !pinned)
+  }, [])
+
+  const propertyMini = useMemo(() => propertyWidth <= MINI_WIDGET_WIDTH, [propertyWidth])
+  const toolboxMini = useMemo(() => toolboxWidth <= MINI_WIDGET_WIDTH, [toolboxWidth])
 
   const rightSpace = useMemo(() => {
-    if (propertyMini || (pinned && !collapsed)) {
-      return 32
+    if (propertyMini || (rightPinned && !collapsed)) {
+      return DEFAULT_MARGIN
     }
-    return propertyWidth + 48
-  }, [collapsed, pinned, propertyMini, propertyWidth])
+    return propertyWidth + DEFAULT_MARGIN * 2
+  }, [collapsed, rightPinned, propertyMini, propertyWidth])
+
+  const leftSpace = useMemo(() => {
+    if (toolboxMini || (leftPinned && !collapsed)) {
+      return DEFAULT_MARGIN
+    }
+    return toolboxWidth + DEFAULT_MARGIN * 2
+  }, [collapsed, leftPinned, toolboxMini, toolboxWidth])
+
 
   return (
     <BottomShell
@@ -137,8 +157,9 @@ export const BottomArea = memo(() => {
       height={collapsed ? minHeight : height}
       minHeight={minHeight}
       style={{
-        width: `calc(100% - ${rightSpace}px)`,
+        width: `calc(100% - ${rightSpace + leftSpace}px)`,
         zIndex: 1,
+        left: leftSpace,
       }}
       onHeightChange={setHeight}
     >
@@ -180,11 +201,23 @@ export const BottomArea = memo(() => {
         !propertyMini && !collapsed &&
         <PinButton
           icon={
-            pinned
+            rightPinned
               ? <LeftOutlined />
               : <RightOutlined />
           }
-          onClick={handleTogglePin}
+          onClick={handleToggleRightPin}
+        />
+      }
+
+      {
+        !toolboxMini && !collapsed &&
+        <LeftPinButton
+          icon={
+            leftPinned
+              ? <RightOutlined />
+              : <LeftOutlined />
+          }
+          onClick={handleToggleLeftPin}
         />
       }
     </BottomShell>
