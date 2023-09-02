@@ -5,9 +5,11 @@ import { useToolboxWidthState } from "../contexts"
 import { floatShadow } from "../../utils"
 import { Button } from "antd"
 import { DEFAULT_MARGIN, MINI_WIDGET_WIDTH } from "../consts"
-import { useSettersTranslate } from "@rxdrag/react-core"
-import { WidgetTitle } from "../common/WidgetTitle"
 import { AppstoreOutlined } from "@ant-design/icons"
+import { CloseButton } from "../PropertyPanel"
+
+const maxWidth = 1000
+const minWidth = 300
 
 const ToolboxShell = styled(ResizableColumn)`
   position: absolute;
@@ -19,6 +21,20 @@ const ToolboxShell = styled(ResizableColumn)`
   box-shadow: ${floatShadow};
 `
 
+const Container = styled.div`
+  flex:1;
+  height: 0;
+  display: flex;
+  flex-flow: column;
+  transition: opacity 0.3s;
+  min-width: ${minWidth}px;
+  min-height: calc(100% - ${DEFAULT_MARGIN * 2}px);
+  transition: opacity 0.3s;
+  .collapsed{
+    opacity: 0;
+  }
+`
+
 export const Toolbox = memo((
   props: {
     children?: React.ReactNode,
@@ -28,7 +44,6 @@ export const Toolbox = memo((
   const [collapsed, setCollapsed] = useState(false)
   const [toolboxWidth, setToolboxWidth] = useToolboxWidthState()
   const [oldeWidth, setOldWidth] = useState(toolboxWidth)
-  const t = useSettersTranslate()
 
   const handleCollapse = useCallback(() => {
     setCollapsed(true)
@@ -43,13 +58,12 @@ export const Toolbox = memo((
 
   return (
     <ToolboxShell
-      maxWidth={1000}
-      minWidth={280}
+      maxWidth={maxWidth}
+      minWidth={minWidth}
       width={toolboxWidth}
       onWidthChange={setToolboxWidth}
       style={{
         height: collapsed ? 32 : undefined,
-        width: collapsed ? 32 : undefined,
         minWidth: collapsed ? 32 : undefined,
       }}
     >
@@ -61,14 +75,10 @@ export const Toolbox = memo((
             icon={<AppstoreOutlined />}
             onClick={handleOpen}
           />
-          : <>
-            <WidgetTitle
-              icon={<AppstoreOutlined />}
-              title={t("properties")}
-              onClose={handleCollapse}
-            />
+          : <Container className={collapsed ? "collapsed" : undefined}>
             {children}
-          </>
+            <CloseButton onClick={handleCollapse} />
+          </Container>
       }
 
     </ToolboxShell>

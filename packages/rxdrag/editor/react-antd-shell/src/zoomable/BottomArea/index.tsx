@@ -89,7 +89,7 @@ export const BottomArea = memo(() => {
       {
         label: <Label>行为流</Label>,
         key: "logicflow",
-        children: "逻辑编排"
+        children: ""
       },
       {
         label: <Label>脚本</Label>,

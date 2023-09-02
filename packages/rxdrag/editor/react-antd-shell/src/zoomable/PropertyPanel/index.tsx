@@ -79,7 +79,6 @@ export const PropertyPanel = memo(() => {
       className={collapsed ? "collapsed" : undefined}
       style={{
         height: collapsed ? 32 : undefined,
-        width: collapsed ? 32 : undefined,
         minWidth: collapsed ? 32 : undefined,
       }}
     >
