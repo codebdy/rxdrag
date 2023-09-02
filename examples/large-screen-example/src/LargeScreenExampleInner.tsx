@@ -42,12 +42,17 @@ export const LargeScreenExampleInner = memo(() => {
     return [
       {
         label: "组件",
-        key: "logicflow",
+        key: "components",
         children: <ResourceWidget />
       },
       {
+        label: "素材",
+        key: "materials",
+        children: "素材列表"
+      },
+      {
         label: "模板",
-        key: "script",
+        key: "templates",
         children: "模板列表"
       },
     ]

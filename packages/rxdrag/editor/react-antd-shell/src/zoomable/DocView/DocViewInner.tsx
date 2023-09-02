@@ -2,11 +2,21 @@ import { memo } from "react"
 import styled from "styled-components"
 import { Space } from "antd"
 import { Spring, useCanvasUrl } from "../../common"
-import { IFrame, useDocument } from "@rxdrag/react-core"
+import { IFrame, useActivedDocument, useDocument } from "@rxdrag/react-core"
+import classNames from "classnames"
 
 const DocViewContainer = styled.div`
   position: relative;
   width: 800px;
+  &.activied{
+    .canvas-title{
+      color: ${props => props.theme.token?.colorPrimary};
+    }
+    .document-content{
+      outline: solid 4px ${props => props.theme.mode === "dark" ? "rgba(0,0,255, 0.3)" : "rgba(0,0,255, 0.05)"} ;
+    }
+  }
+
   .actions{
     display: none;
   }
@@ -45,11 +55,12 @@ const CanvasTitle = styled.span`
 export const DocViewInner = memo(() => {
   const doc = useDocument()
   const canvasUrl = useCanvasUrl()
+  const activedDoc = useActivedDocument()
   return (
-    <DocViewContainer>
+    <DocViewContainer className={classNames({ activied: activedDoc?.id === doc?.id })}>
       <CanvasToolbar>
-        <CanvasTitle>
-          {doc?.getTitle()}
+        <CanvasTitle className="canvas-title">
+          {doc?.getTitle()} - <em>大屏</em>
         </CanvasTitle>
         <Spring />
         <Space className="actions">

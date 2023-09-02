@@ -11,11 +11,15 @@ export type Selector = (node: ITreeNode, engine?: IDesignerEngine) => boolean
 export type IResizable = {
   width?: boolean
   height?: boolean
+  //百分比计算大小
+  percent?: boolean
 }
 
 export type IMoveable = {
   x?: boolean
   y?: boolean
+  //百分比计算位置
+  percent?: boolean
 }
 
 export type AbleCheckFunction = ((nodeId: ID, engine?: IDesignerEngine) => boolean)
@@ -27,8 +31,9 @@ export interface IBehaviorRule {
   draggable?: boolean | AbleCheckFunction //是否可拖拽，默认为true
   deletable?: boolean | AbleCheckFunction //是否可删除，默认为true
   cloneable?: boolean | AbleCheckFunction //是否可拷贝，默认为true
-  //resizable?: IResizable | ((engine?: IDesignerEngine) => IResizable)
-  //moveable?: IMoveable | ((engine?: IDesignerEngine) => IMoveable)  // 可用于自由布局
+  resizable?: IResizable | ((engine?: IDesignerEngine) => IResizable)//可调整大小
+  moveable?: IMoveable | ((engine?: IDesignerEngine) => IMoveable)  // 可移动，可用于自由布局
+  equalRatio?: boolean | AbleCheckFunction //是否等比，用于自由布局
   allowChild?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
   allowAppendTo?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
   allowSiblingsTo?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
@@ -37,24 +42,10 @@ export interface IBehaviorRule {
   lockable?: boolean,
 }
 
-export enum LayoutType {
-  //流式
-  liqiud = "liqiud",
-  //自由布局容器
-  freeContainer = "freeContainer",
-  //自由布局容器，百分比模式
-  freeContainerPercent = "freeContainerPercent",
-  //网格布局容器
-  freeGridContainer = "freeGridContainer",
-  //自由布局子节点(含网格节点)
-  freeChild = "freeChild"
-}
-//自由布局考虑用百分比来实现？？？？
-
 export interface IComponentConfig<ComponentType = unknown, IconType = unknown> {
   package?: string //npm包名 生成代码用
   version?: string // npm包版本 生成代码用
-  layoutType?: LayoutType //布局类型
+  freedomContainer?: boolean //自由布局容器
   componentName: string
   component: ComponentType,
   designer: ComponentType,
