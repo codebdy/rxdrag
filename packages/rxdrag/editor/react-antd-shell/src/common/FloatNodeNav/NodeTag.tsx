@@ -14,7 +14,7 @@ const TagContainer = styled.div`
   display: flex;
   align-items: center;
   box-shadow: ${floatShadow};
-  border: solid 1px ${props => props.theme.token?.colorBorder};
+  //border: solid 1px ${props => props.theme.token?.colorBorder};
   border-radius: 8px 0 0 8px;
   &.first{
     padding-left: 8px;

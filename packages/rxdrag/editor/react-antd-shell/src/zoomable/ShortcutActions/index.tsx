@@ -27,6 +27,12 @@ const RelativeInner = styled.div`
   display: flex;
   flex-flow: column;
   width: 100%;
+  height: 0;
+`
+
+const Content = styled.div`
+  flex: 1;
+  overflow: auto;
 `
 
 const StyledButton = styled(CanvasFloatButton)`
@@ -79,7 +85,9 @@ export const ShortcutActions = memo((
                 title={t("outline")}
                 onClose={handleCloseExpand}
               />
-              <OutlineTree />
+              <Content>
+                <OutlineTree />
+              </Content>
             </>
           }
 
@@ -89,7 +97,9 @@ export const ShortcutActions = memo((
                 title={t("history")}
                 onClose={handleCloseExpand}
               />
-              <OperationHistory />
+              <Content>
+                <OperationHistory />
+              </Content>
             </>
           }
 

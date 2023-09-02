@@ -48,7 +48,7 @@ export const LargeScreenExampleInner = memo(() => {
       {
         label: "模板",
         key: "script",
-        children: "脚本控制器"
+        children: "模板列表"
       },
     ]
   }, [])
