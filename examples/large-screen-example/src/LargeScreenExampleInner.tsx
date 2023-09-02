@@ -16,6 +16,12 @@ const Container = styled.div`
   color: ${props => props.theme.token?.colorText};
 `
 
+//设备端的编辑区
+const AppDeviceArea = styled.div`
+  flex:1;
+  display: flex;
+  height: 0;
+`
 const rootNodeSchema: INodeSchema = {
   componentName: "Page"
 }
@@ -33,11 +39,13 @@ export const LargeScreenExampleInner = memo(() => {
   return (
     <Container className="zoomable-editor">
       <Toolbar />
-      <ZoomableEditor
-        toolbox={<ResourceWidget />}
-        schemas={schemas}
-      />
-      <LeftSide />
+      <AppDeviceArea>
+        <LeftSide />
+        <ZoomableEditor
+          toolbox={<ResourceWidget />}
+          schemas={schemas}
+        />
+      </AppDeviceArea>
     </Container>
   )
 })

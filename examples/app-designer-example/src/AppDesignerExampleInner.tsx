@@ -15,12 +15,12 @@ const Container = styled.div`
   color: ${props => props.theme.token?.colorText};
 `
 
-//设备端的编辑区
-const AppDeviceArea = styled.div`
-  flex:1;
-  display: flex;
-  height: 0;
-`
+  //设备端的编辑区
+  const AppDeviceArea = styled.div`
+    flex:1;
+    display: flex;
+    height: 0;
+  `
 
 const rootNodeSchema: INodeSchema = {
   componentName: "Page"
