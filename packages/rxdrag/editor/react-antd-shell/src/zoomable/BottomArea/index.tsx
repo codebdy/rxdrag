@@ -69,6 +69,7 @@ const PinButton = styled(Button).attrs({ shape: "circle", size: "small", })`
 const LeftPinButton = styled(PinButton)`
   right: auto;
   left:0;
+  transform: translate(-50%, -50%);
 `
 
 const minHeight = 40
