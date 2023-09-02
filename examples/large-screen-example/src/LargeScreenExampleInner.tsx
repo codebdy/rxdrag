@@ -53,7 +53,7 @@ export const LargeScreenExampleInner = memo(() => {
       {
         label: "模板",
         key: "templates",
-        children: "模板列表"
+        children: "方案/布局/组件"
       },
     ]
   }, [])
