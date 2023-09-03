@@ -21,17 +21,24 @@ export interface INodeMeta<
 
 export interface INodeSchema<Field = unknown, NodeController = unknown>
   extends INodeMeta<Field, NodeController> {
-  //name?: string,
-  //引用一段schema，ref赋值name，用于框架等分块编辑
-  //ref?: string,
   children?: INodeSchema[];
   slots?: {
     [name: string]: INodeSchema | undefined;
   };
 }
 
+export enum SceneType {
+  Main = "main",
+  Drawer = "drawwer",
+  Dialog = "dialog",
+  RoutePage = "route-page",
+}
+
+//一个document schema对应一个场景
 export interface IDocumentSchema<Field = unknown, NodeController = unknown> {
   schema: INodeSchema<Field, NodeController>,
   id?: string,
   title?: string,
+  //场景类型，用于同一画布编辑多个document
+  sceneType?: SceneType,
 }

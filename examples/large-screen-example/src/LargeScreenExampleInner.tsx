@@ -24,7 +24,7 @@ const AppDeviceArea = styled.div`
   height: 0;
 `
 const rootNodeSchema: INodeSchema = {
-  componentName: "Page"
+  componentName: "RootBoard"
 }
 
 const schemas: IDocumentSchema[] = [

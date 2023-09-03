@@ -1,7 +1,8 @@
 import { memo } from "react"
 import { ControllerSetter, EditorScope } from "@rxdrag/react-antd-shell"
-import { controllerDefines, materials, minionsLocales, minionsMaterialCategories, setterLocales } from "example-common"
+import { controllerDefines, minionsLocales, minionsMaterialCategories, setterLocales } from "example-common"
 import { LargeScreenExampleInner } from "./LargeScreenExampleInner"
+import { largeScreenMaterials } from "./marerials/materials"
 
 export const LargeScreenExample = memo((
   props: {
@@ -20,7 +21,7 @@ export const LargeScreenExample = memo((
         locales: minionsLocales,
         controllers: controllerDefines,
       }}
-      materials={materials}
+      materials={largeScreenMaterials}
       setters={{ ControllerSetter }}
     >
       <LargeScreenExampleInner />
