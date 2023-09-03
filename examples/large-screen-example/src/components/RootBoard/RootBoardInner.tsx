@@ -14,7 +14,6 @@ const Container = styled.div`
 `
 
 export type RootBoardInnerProps = {
-  backgroundColor?: string,
   backgroundImage?: string,
   className?: string,
   children?: React.ReactNode,
@@ -22,14 +21,13 @@ export type RootBoardInnerProps = {
 }
 
 export const RootBoardInner = memo(forwardRef<HTMLDivElement, RootBoardInnerProps>((props, ref) => {
-  const { backgroundImage, backgroundColor, style, className, children, ...rest } = props
+  const { backgroundImage, style, className, children, ...rest } = props
   return (
     <Container
       ref={ref}
       className={classNames("main-board", className)}
       style={{
         backgroundImage: backgroundImage,
-        backgroundColor: backgroundColor,
         ...style
       }}
       {...rest}

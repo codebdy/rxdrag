@@ -2,6 +2,7 @@ import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../shared";
 
 const scehmaOptions: SchemaOptions = {
+  noStyle: true,
   propSchemas: [
     {
       componentName: "Radio.Group",
@@ -20,7 +21,7 @@ const scehmaOptions: SchemaOptions = {
         ],
         defaultValue: "dark",
       },
-      
+
       "x-field": {
         label: "$themeMode",
         name: "themeMode",
@@ -57,64 +58,15 @@ const scehmaOptions: SchemaOptions = {
         ]
       },
       "x-field": {
-        label: "$type",
-        name: "type",
-        defaultValue: "primary",
+        label: "$themeColor",
+        name: "themeColor",
       }
     },
     {
       componentName: "Switch",
       "x-field": {
-        label: "$disabled",
-        name: "disabled",
-      }
-    },
-    {
-      componentName: "Switch",
-      "x-field": {
-        label: "$block",
-        name: "block",
-      }
-    },
-    {
-      componentName: "Switch",
-      "x-field": {
-        label: "$danger",
-        name: "danger",
-      }
-    },
-    {
-      componentName: "Switch",
-      "x-field": {
-        label: "$ghost",
-        name: "ghost",
-      }
-    },
-
-    {
-      componentName: "Radio.Group",
-      props: {
-        optionType: "button",
-        size: "small",
-        options: [
-          {
-            label: "$large",
-            value: "large"
-          },
-          {
-            label: "$middle",
-            value: "middle"
-          },
-          {
-            label: "$small",
-            value: "small"
-          },
-        ],
-        defaultValue: "middle",
-      },
-      "x-field": {
-        label: "$size",
-        name: "size",
+        label: "$backgroundImage",
+        name: "backgroundImage",
       }
     },
   ],

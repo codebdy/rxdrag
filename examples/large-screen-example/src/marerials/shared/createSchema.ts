@@ -36,29 +36,30 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
       },
       children: createFieldSchema()
     }] : []
+  const styleTab = options.noStyle ? [] : [{
+    componentName: 'TabPanel',
+    props: {
+      title: '$style'
+    },
+    children: [
+      {
+        componentName: 'StyleSetter',
+        'x-field': {
+          name: 'props.style',
+        }
+      }
+    ]
+  }];
+
   return {
     componentName: "Tabs",
     props: {},
     children: [
       ...propsTab,
-      styleTab,
+      ...styleTab,
       ...slotsTab,
       ...fieldTab,
     ]
   }
 }
-const styleTab = {
-  componentName: 'TabPanel',
-  props: {
-    title: '$style'
-  },
-  children: [
-    {
-      componentName: 'StyleSetter',
-      'x-field': {
-        name: 'props.style',
-      }
-    }
-  ]
-};
 

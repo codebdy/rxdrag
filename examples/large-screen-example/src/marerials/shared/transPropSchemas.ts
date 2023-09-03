@@ -12,17 +12,9 @@ export interface IPropSchema {
 
 export function transPropSchemas(schemas: INodeSchema<IFieldMeta, ILogicFlowControllerMeta>[]): INodeSchema<IFieldMeta, ILogicFlowControllerMeta>[] {
   return schemas.map(propSchema => ({
-    componentName: "PropLayout",
+    componentName: "FormItem",
     props: {
       label: propSchema["x-field"]?.label,
-    },
-    slots: {
-      expressionSetter: {
-        componentName: "ExpressionInput",
-        "x-field": {
-          name: "propExpressions." + propSchema["x-field"]?.name,
-        },
-      }
     },
     children: [
       {

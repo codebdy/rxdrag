@@ -7,4 +7,5 @@ export type SchemaOptions = {
   propSchemas?: INodeSchema<IFieldMeta, ILogicFlowControllerMeta>[];
   slotSchemas?: ISlotSchema[];
   canBindField?: boolean,
+  noStyle?: boolean,
 };
