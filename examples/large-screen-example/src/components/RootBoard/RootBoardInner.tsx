@@ -11,6 +11,7 @@ const Container = styled.div`
   min-width: 100%;
   background-color: ${props => props.theme?.token?.colorBgBase};
   color: ${props => props.theme?.token?.colorText};
+  background-size: 100% 100%;
 `
 
 export type RootBoardInnerProps = {
@@ -22,12 +23,13 @@ export type RootBoardInnerProps = {
 
 export const RootBoardInner = memo(forwardRef<HTMLDivElement, RootBoardInnerProps>((props, ref) => {
   const { backgroundImage, style, className, children, ...rest } = props
+  console.log("哈哈", backgroundImage)
   return (
     <Container
       ref={ref}
       className={classNames("main-board", className)}
       style={{
-        backgroundImage: backgroundImage,
+        backgroundImage: `url(${backgroundImage})`,
         ...style
       }}
       {...rest}

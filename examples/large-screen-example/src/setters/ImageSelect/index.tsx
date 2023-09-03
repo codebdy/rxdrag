@@ -8,12 +8,15 @@ import classNames from "classnames"
 
 const SelectedImageView = styled.div`
   width: 100px;
-  height: 70px;
-  border: solid 1px ${props => props.theme?.token?.colorBorder};
   img{
     width: 100%;
+    border: solid 1px ${props => props.theme?.token?.colorBorder};
   }
   overflow: hidden;
+  &.emperty{
+    height: 70px;
+    border: solid 1px ${props => props.theme?.token?.colorBorder};
+  }
 `
 
 const ImageContainer = styled.div`
@@ -28,8 +31,9 @@ const ImageContainer = styled.div`
 `
 
 const images = [
-  "/imgs/hero.png",
-  "/imgs/ad.jpg",
+  "/imgs/bg/bg1.png",
+  "/imgs/bg/bg2.jpg",
+  "/imgs/bg/bg3.png",
 ]
 
 export const ImageSelect = memo((
@@ -62,8 +66,8 @@ export const ImageSelect = memo((
 
   return (
     <>
-      <SelectedImageView onClick={handleClick}>
-        <img src={value} />
+      <SelectedImageView className={!value ? "emperty" : undefined} onClick={handleClick}>
+        {value && <img src={value} />}
       </SelectedImageView>
       <Modal
         title={t('selectImage') + " - 本组件演示用，实际项目请更换"}
