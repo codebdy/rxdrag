@@ -20,12 +20,12 @@ export const LSTextMaterial: IComponentMaterial = {
       {
         componentName: name,
         props: {
-          value: name,
+          value: "Text",
         }
       }
     ]
   },
   behaviorRule: {
-    droppable: true,
+    droppable: false,
   },
 }

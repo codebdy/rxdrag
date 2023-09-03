@@ -63,7 +63,7 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
           </Locked>
         </Component >
       } else if (behavior?.isDroppable() && node.parentId) {
-        return <Component {...realProps}>
+        return <Component ref={!behavior?.isNoRef() ? handleRef : undefined} {...realProps}>
           {!behavior.isNoPlaceholder() && <PlaceHolder />}
         </Component>
       } else {

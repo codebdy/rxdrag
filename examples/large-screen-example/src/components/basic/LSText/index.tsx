@@ -10,6 +10,7 @@ const PlaceHolder = styled.div`
   height: 20px;
   width: 50px;
   color: ${props => props.theme.token?.colorTextSecondary};
+  white-space: nowrap;
 `
 
 export type LSTextProps = {
