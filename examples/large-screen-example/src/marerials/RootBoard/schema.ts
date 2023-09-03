@@ -28,38 +28,12 @@ const scehmaOptions: SchemaOptions = {
       }
     },
     {
-      componentName: "Select",
+      componentName: "ThemeTokenSetter",
       props: {
-        options: [
-          {
-            value: 'primary',
-            label: 'Primary',
-          },
-          {
-            value: 'ghost',
-            label: 'Ghost',
-          },
-          {
-            value: 'dashed',
-            label: 'Dashed',
-          },
-          {
-            value: 'link',
-            label: 'Link',
-          },
-          {
-            value: 'text',
-            label: 'Text',
-          },
-          {
-            value: 'default',
-            label: 'Default',
-          },
-        ]
       },
       "x-field": {
         label: "$themeColor",
-        name: "themeColor",
+        name: "token",
       }
     },
     {
