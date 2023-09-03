@@ -1,30 +1,16 @@
-import { CSSProperties, forwardRef, memo } from "react"
-import styled from "styled-components"
-import classNames from "classnames"
+import { forwardRef, memo } from "react"
 import { ConfigProvider, GlobalToken, theme } from "antd"
+import { RootBoardInner, RootBoardInnerProps } from "./RootBoardInner"
+import { ThemeMode, ThemeRoot } from "./ThemeRoot"
 
-const Container = styled.div`
-  //这行一定要加，其它自由布局容器要参照
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  min-width: 100%;
-`
-
-export interface IRootBoardProps {
-  themeMode?: "dark" | "light",
-  backgroundColor?: string,
-  backgroundImage?: string,
-  className?: string,
-  children?: React.ReactNode,
-  style?: CSSProperties,
+export type RootBoardProps = {
+  themeMode?: ThemeMode,
   //主题自定义信息token，做一个编辑setter
   token?: GlobalToken,
-}
+} & RootBoardInnerProps
 
-export const RootBoard = memo(forwardRef<HTMLDivElement, IRootBoardProps>((props, ref) => {
-  const { themeMode = "dark", backgroundImage, backgroundColor, style, className, children, token, ...rest } = props
+export const RootBoard = memo(forwardRef<HTMLDivElement, RootBoardProps>((props, ref) => {
+  const { themeMode = "dark", children, token, ...rest } = props
   return (
     <ConfigProvider
       theme={{
@@ -32,18 +18,15 @@ export const RootBoard = memo(forwardRef<HTMLDivElement, IRootBoardProps>((props
         token
       }}
     >
-      <Container
-        ref={ref}
-        className={classNames("main-board", className)}
-        style={{
-          backgroundImage: backgroundImage,
-          backgroundColor: backgroundColor,
-          ...style
-        }}
-        {...rest}
-      >
-        {children}
-      </Container >
+      <ThemeRoot>
+        <RootBoardInner
+          ref={ref}
+
+          {...rest}
+        >
+          {children}
+        </RootBoardInner >
+      </ThemeRoot>
     </ConfigProvider>
   )
 }))

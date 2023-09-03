@@ -45,6 +45,7 @@
     "@rxdrag/react-locales": "workspace:*",
     "@rxdrag/react-core": "workspace:*",
     "@rxdrag/react-antd-materials": "workspace:*",
+    "@rxdrag/fieldy": "workspace:*",
     "antd": "^5.6.2",
     "classnames": "^2.3.2",
     "styled-components": "^5.3.9"
