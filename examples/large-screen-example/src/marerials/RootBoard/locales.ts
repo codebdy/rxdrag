@@ -7,7 +7,8 @@ export const locales = {
       light: "亮色",
       themeColor: "配色",
       backgroundImage: "背景图",
-    }
+
+    },
   },
   'en-US': {
     title: "Page",
@@ -17,7 +18,17 @@ export const locales = {
       light: "Light",
       themeColor: "Theme Color",
       backgroundImage: "Background Image",
-    }
+      primaryColor: "Primary"
+    },
+  }
+}
+
+export const setterLocales = {
+  "zh-CN": {
+    primaryColor: "主色"
+  },
+  'en-US': {
+    primaryColor: "Primary Color"
   }
 }
 

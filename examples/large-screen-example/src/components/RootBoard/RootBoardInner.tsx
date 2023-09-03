@@ -23,7 +23,6 @@ export type RootBoardInnerProps = {
 
 export const RootBoardInner = memo(forwardRef<HTMLDivElement, RootBoardInnerProps>((props, ref) => {
   const { backgroundImage, style, className, children, ...rest } = props
-  console.log("哈哈", backgroundImage)
   return (
     <Container
       ref={ref}
