@@ -63,7 +63,7 @@ const scehmaOptions: SchemaOptions = {
       }
     },
     {
-      componentName: "Switch",
+      componentName: "ImageSelect",
       "x-field": {
         label: "$backgroundImage",
         name: "backgroundImage",
