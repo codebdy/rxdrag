@@ -11,7 +11,7 @@ export function switchRef(WrappedComponent: ReactComponent, callback: Callback =
     const handleRefChange = useCallback((element: HTMLElement | null) => {
       if (isFn(ref)) {
         ref(callback(element) as any || null)
-      }
+      } 
     }, [ref])
 
     return <WrappedComponent ref={handleRefChange} {...props} />

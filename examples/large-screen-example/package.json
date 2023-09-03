@@ -47,7 +47,9 @@
     "@rxdrag/react-antd-materials": "workspace:*",
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/react-antd-props-inputs": "workspace:*",
+    "@rxdrag/locales": "workspace:*",
     "antd": "^5.6.2",
+    "dayjs": "^1.11.7",
     "classnames": "^2.3.2",
     "styled-components": "^5.3.9"
   }

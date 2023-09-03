@@ -3,8 +3,8 @@ import { useSettersTranslate, useRegisterComponentMaterials } from "@rxdrag/reac
 import { memo, useEffect } from "react"
 import { FieldMaterial } from "@rxdrag/react-antd-materials"
 import { ResourceCollapsePanel } from "./ResourceCollapsePanel"
-import { resources } from "example-common"
 import styled from "styled-components"
+import { largeScreenResources } from "../marerials/resources"
 
 const Container = styled.div`
   width: 100%;
@@ -24,7 +24,7 @@ export const ResourceWidget = memo(() => {
   return (
     <Container>
       {
-        resources.map((group => {
+        largeScreenResources.map((group => {
           return (
             <ResourceCollapsePanel key={group.titleKey} title={t(group.titleKey)} defaultExpand>
               {

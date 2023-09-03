@@ -1,9 +1,10 @@
 import { memo } from "react"
 import { EditorScope } from "@rxdrag/react-antd-shell"
-import { controllerDefines, minionsLocales, minionsMaterialCategories, setterLocales } from "example-common"
+import { controllerDefines, minionsLocales, minionsMaterialCategories } from "example-common"
 import { LargeScreenExampleInner } from "./LargeScreenExampleInner"
 import { largeScreenMaterials } from "./marerials/materials"
 import { largeScreenSetters } from "./setters/setters"
+import { resourceCategoryLocales } from "./marerials/locales"
 
 export const LargeScreenExample = memo((
   props: {
@@ -14,7 +15,8 @@ export const LargeScreenExample = memo((
   const { canvasUrl, previewUrl } = props
   return (
     <EditorScope
-      locales={setterLocales}
+      themeMode="dark"
+      locales={resourceCategoryLocales}
       canvasUrl={canvasUrl}
       previewUrl={previewUrl}
       minionOptions={{
