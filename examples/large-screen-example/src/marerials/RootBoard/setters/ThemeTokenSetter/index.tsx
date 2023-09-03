@@ -54,7 +54,13 @@ export const ThemeTokenSetter = memo((props: {
 
       </Title>
       <Content className={expand ? "expand" : undefined}>
-        <TokenItemInput name="primaryColor" value={value} onChange={handleChange} />
+        <TokenItemInput name="colorPrimary" value={value} onChange={handleChange} />
+        <TokenItemInput name="colorBgBase" value={value} onChange={handleChange} />
+        <TokenItemInput name="colorBgContainer" value={value} onChange={handleChange} />
+        <TokenItemInput name="colorText" value={value} onChange={handleChange} />
+        <TokenItemInput name="colorTextSecondary" value={value} onChange={handleChange} />
+        <TokenItemInput name="colorBorder" value={value} onChange={handleChange} />
+        <TokenItemInput name="colorBorderSecondary" value={value} onChange={handleChange} />
       </Content>
     </ColorList>
   )

@@ -18,17 +18,28 @@ export const locales = {
       light: "Light",
       themeColor: "Theme Color",
       backgroundImage: "Background Image",
-      primaryColor: "Primary"
     },
   }
 }
 
 export const setterLocales = {
   "zh-CN": {
-    primaryColor: "主色"
+    colorPrimary: "主色",
+    colorBgBase: "背景",
+    colorBgContainer: "背景容器",
+    colorText: "文本",
+    colorTextSecondary: "副文本",
+    colorBorder: "线条",
+    colorBorderSecondary: "副线条",
   },
   'en-US': {
-    primaryColor: "Primary Color"
+    colorPrimary: "Primary",
+    colorBgBase: "Backgournd ",
+    colorBgContainer: "Backgournd Container",
+    colorText: "Text",
+    colorTextSecondary: "Text Secondary",
+    colorBorder: "Border",
+    colorBorderSecondary: "Border Secondary",
   }
 }
 
