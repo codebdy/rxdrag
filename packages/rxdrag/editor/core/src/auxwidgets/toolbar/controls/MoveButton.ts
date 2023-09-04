@@ -15,7 +15,7 @@ export class MoveButton extends AbstractButton {
     if (e.data.targetRx?.nodeType === NodeType.AuxWidget && e.data.targetRx?.rxId === this.rxProps[RXID_ATTR_NAME]) {
       const nodeId = this.engine.getMonitor().getCurrentNode()?.id
       if (nodeId) {
-        const behavior = this.engine.getNodeBehavior(nodeId)
+        const behavior = this.engine.getBehaviorManager().getNodeBehavior(nodeId)
         if (behavior.isDraggable()) {
           this.engine.getActions().startDragNodes({
             initialMousePosition: getPosition(e.data),
@@ -29,12 +29,12 @@ export class MoveButton extends AbstractButton {
   }
   
   onRender(node: ITreeNode): HTMLElement | null {
-    const behavior = this.engine.getNodeBehavior(node.id)
+    const behavior = this.engine.getBehaviorManager().getNodeBehavior(node.id)
     if (!behavior.isDraggable() || node.isSlot) {
       this.teardown()
       return null
     }
-    this.unsubscribe = this.engine.getShell().subscribeTo(DragStartEvent, this.handleDragStart)
+    this.unsubscribe = this.engine.getShell().subscribeTo(DragStartEvent.Name, this.handleDragStart)
     const htmlEl = this.createHtmlElement()
     htmlEl.innerHTML = `
     <svg style="width:16px;height:16px" viewBox="0 0 24 24">

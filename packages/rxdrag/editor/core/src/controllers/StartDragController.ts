@@ -35,7 +35,7 @@ export class StartDragControllerImpl implements IPlugin {
     } else if (e.data.targetRx?.nodeType === NodeType.Node) {
       const nodeId = e.data.targetRx?.rxId
       if (nodeId) {
-        const behavior = this.engine.getNodeBehavior(nodeId)
+        const behavior = this.engine.getBehaviorManager().getNodeBehavior(nodeId)
         const node = this.engine.getMonitor().getNode(nodeId)
         if (behavior.isDraggable() && !node?.isSlot) {
           this.engine.getActions().startDragNodes({

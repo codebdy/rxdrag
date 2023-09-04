@@ -69,14 +69,14 @@ export class DragOverControllerImpl implements IPlugin {
     for (const sourceId of sourceIds) {
       const node = this.engine.getMonitor().getNode(sourceId)
       if (position.position === RelativePosition.In && node) {
-        const beheavior = this.engine.getNodeBehavior(position.targetId)
+        const beheavior = this.engine.getBehaviorManager().getNodeBehavior(position.targetId)
         if (beheavior?.isDroppable() && !node.meta.locked) {
           return AcceptType.Accept
         }
       } else {
         const parentId = this.engine.getMonitor().getNode(position.targetId)?.parentId
         if (parentId) {
-          const beheavior = this.engine.getNodeBehavior(parentId)
+          const beheavior = this.engine.getBehaviorManager().getNodeBehavior(parentId)
           if (beheavior?.isDroppable()) {
             return AcceptType.Accept
           }
@@ -95,7 +95,7 @@ export class DragOverControllerImpl implements IPlugin {
       return AcceptType.Reject
     }
     if (position.position === RelativePosition.In) {
-      const behavior = this.engine.getNodeBehavior(position.targetId)
+      const behavior = this.engine.getBehaviorManager().getNodeBehavior(position.targetId)
       const node = this.engine.getMonitor().getNode(position.targetId)
       if (behavior?.isDroppable() && !node?.meta.locked) {
         return AcceptType.Accept
@@ -109,7 +109,7 @@ export class DragOverControllerImpl implements IPlugin {
     } else {
       const parentId = this.engine.getMonitor().getNode(position.targetId)?.parentId
       if (parentId) {
-        const behavior = this.engine.getNodeBehavior(parentId)
+        const behavior = this.engine.getBehaviorManager().getNodeBehavior(parentId)
         if (behavior?.isDroppable()) {
           return AcceptType.Accept
         }

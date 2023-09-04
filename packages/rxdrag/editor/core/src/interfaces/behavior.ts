@@ -1,4 +1,4 @@
-import { Listener, Unsubscribe } from "@rxdrag/shared"
+import { ID, Listener, Unsubscribe } from "@rxdrag/shared"
 import { ITreeNode } from "./document"
 import { IDesignerEngine } from "./engine"
 import { IResource } from "./resource"
@@ -66,4 +66,21 @@ export interface IBehaviorManager {
   registerBehaviors(...behaviors: IBehavior[]): void
   removeBehaviors(...names: string[]): void
   subscribeBehaviorsChange: (listener: Listener<Record<string, IBehavior | undefined>>) => Unsubscribe
+  getNodeBehavior(nodeId: ID): INodeBehavior
+}
+
+export interface INodeBehavior {
+  isDisabled: () => boolean
+  isSelectable: () => boolean
+  isDroppable: () => boolean
+  isDraggable: () => boolean
+  isDeletable: () => boolean
+  isCloneable: () => boolean
+  isNoPlaceholder: () => boolean
+  isNoRef: () => boolean
+  isLockable: () => boolean
+  isEqualRatio: () => boolean
+  resizable: () => IResizable | undefined
+  moveable: () => IMoveable | undefined
+  rotatable: () => boolean
 }

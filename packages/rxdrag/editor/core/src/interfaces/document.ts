@@ -1,5 +1,4 @@
 import { IAction } from "./action";
-import { IResizable, IMoveable } from "./behavior";
 import { DocumentActionPayload } from "./payloads";
 import { ID, RxProps } from "./types";
 import { IDocumentSchema, INodeMeta, INodeSchema } from "@rxdrag/schema"
@@ -66,21 +65,7 @@ export interface ITreeNode<IField = unknown, INodeController = unknown> {
   propsSchema?: INodeSchema
 }
 
-export interface NodeBehavior {
-  isDisabled: () => boolean
-  isSelectable: () => boolean
-  isDroppable: () => boolean
-  isDraggable: () => boolean
-  isDeletable: () => boolean
-  isCloneable: () => boolean
-  isNoPlaceholder: () => boolean
-  isNoRef: () => boolean
-  isLockable: () => boolean
-  isEqualRatio: () => boolean
-  resizable: () => IResizable | undefined
-  moveable: () => IMoveable | undefined
-  rotatable: () => boolean
-}
+
 
 // export interface IBlocksSchema {
 //   [bolckName: string]: INodeSchema

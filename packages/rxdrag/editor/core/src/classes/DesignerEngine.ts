@@ -1,5 +1,5 @@
 import { State } from "../reducers";
-import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, NodeBehavior, AbleCallback, IComponentConfig, IResizable, IMoveable, IBehaviorManager } from "../interfaces";
+import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, INodeBehavior, AbleCallback, IComponentConfig, IResizable, IMoveable, IBehaviorManager } from "../interfaces";
 import { Store } from "redux";
 import { ResourceManager } from "./ResourceManager";
 import { DocumentImpl } from "../classes/DocumentImpl";
@@ -117,6 +117,7 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 		})
 		return doc
 	}
+
 	getDocument(id: string): IDocument | null {
 		return this.documentsById[id]
 	}
@@ -147,24 +148,6 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 			this.plugins[key]?.destroy()
 		}
 		this.shell.destroy()
-	}
-
-	getNodeBehavior(nodeId: ID): NodeBehavior {
-		return {
-			isDisabled: () => checkAbility("disabled", false, nodeId, this) as boolean,
-			isSelectable: () => checkAbility("selectable", true, nodeId, this) as boolean,
-			isDroppable: () => checkAbility("droppable", false, nodeId, this) as boolean,
-			isDraggable: () => checkAbility("draggable", true, nodeId, this) as boolean,
-			isDeletable: () => checkAbility("deletable", true, nodeId, this) as boolean,
-			isCloneable: () => checkAbility("cloneable", true, nodeId, this) as boolean,
-			isNoPlaceholder: () => checkAbility("noPlaceholder", false, nodeId, this) as boolean,
-			isNoRef: () => checkAbility("noRef", false, nodeId, this) as boolean,
-			isLockable: () => checkAbility("lockable", false, nodeId, this) as boolean,
-			isEqualRatio: () => checkAbility("equalRatio", false, nodeId, this) as boolean,
-			resizable: () => checkAbility("resizable", false, nodeId, this) as IResizable | undefined,
-			moveable: () => checkAbility("moveable", false, nodeId, this) as IMoveable | undefined,
-			rotatable: () => checkAbility("rotatable", false, nodeId, this) as boolean,
-		}
 	}
 
 	registerPlugin(pluginFactory: IPluginFactory): void {
@@ -206,33 +189,4 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 			}
 		}
 	}
-}
-
-
-export const checkAbility = (
-	name: "disabled" | "selectable" | "droppable" | "draggable" | "deletable" | "cloneable" | "noPlaceholder" | "noRef" | "lockable" | "resizable" | "moveable" | "equalRatio" | "rotatable",
-	defaultValue: any,
-	nodeId: ID,
-	engine: IDesignerEngine
-) => {
-	const nodeRules = engine.getBehaviorManager().getNodeBehaviorRules(nodeId)
-	for (const rule of nodeRules) {
-		const able = ableCheck(defaultValue, nodeId, rule[name], engine)
-		if (able !== defaultValue) {
-			return able
-		}
-	}
-
-	return defaultValue
-}
-
-
-const ableCheck = (defaultValue: any, nodeId: ID, able: any | AbleCallback, engine: IDesignerEngine): any => {
-	if (able === undefined) {
-		return defaultValue
-	}
-	if (isFn(able)) {
-		return able(nodeId, engine)
-	}
-	return able || false
 }
