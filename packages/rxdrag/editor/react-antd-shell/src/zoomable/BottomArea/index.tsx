@@ -87,9 +87,9 @@ export const BottomArea = memo(() => {
   const items: TabsProps['items'] = useMemo(() => {
     return [
       {
-        label: <Label>编排</Label>,
+        label: <Label>行为流</Label>,
         key: "logicflow",
-        children: ""
+        children: "应用级/设备级/模块级/场景级/循环级"
       },
       {
         label: <Label>脚本</Label>,
@@ -97,10 +97,16 @@ export const BottomArea = memo(() => {
         children: "脚本控制器"
       },
       {
-        label: <Label>快捷</Label>,
-        key: "shortcurt",
-        children: "快捷控制器"
+        label: <Label>日志</Label>,
+        key: "log",
+        children: "日志"
       },
+      //把快捷控制器附加到物料上，放在属性面板配置
+      // {
+      //   label: <Label>快捷</Label>,
+      //   key: "shortcurt",
+      //   children: "快捷控制器"
+      // },
     ]
   }, [])
 
