@@ -1,16 +1,6 @@
 import { Listener, Subscriber, isFn } from "@rxdrag/shared";
 import { IBehavior, IBehaviorManager, IBehaviorRule, IDesignerEngine, ITreeNode, Selector } from "../interfaces";
 
-export class ComponentBehavior implements IBehavior {
-  selector: string | Selector;
-  rule: IBehaviorRule;
-  constructor(public name: string, rule: IBehaviorRule) {
-    this.selector = name
-    this.rule = rule
-  }
-}
-
-
 export class BehaviorManager implements IBehaviorManager {
   private behaviors = new Subscriber<Record<string, IBehavior | undefined>>({})
 

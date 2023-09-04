@@ -1,6 +1,5 @@
 import { IComponentConfig, IComponentManager, IDesignerEngine } from "../interfaces";
 import { Listener, Subscriber } from "@rxdrag/shared";
-import { ComponentBehavior } from "./BehaviorManager";
 
 //先注册behavior，再注册components，只有components是可以订阅的
 export class ComponentManager<ComponentType = unknown> implements IComponentManager<ComponentType> {
@@ -26,7 +25,12 @@ export class ComponentManager<ComponentType = unknown> implements IComponentMana
   registerComponents(...componentDesigners: IComponentConfig<ComponentType>[]): void {
     for (const designer of componentDesigners) {
       if (designer.behaviorRule) {
-        this.engine.getBehaviorManager().registerBehaviors(new ComponentBehavior(designer.componentName, designer.behaviorRule))
+        this.engine.getBehaviorManager().registerBehaviors({
+          name: designer.componentName,
+          selector: designer.componentName,
+          rule: designer.behaviorRule
+        }
+        )
       }
       if (designer.designerLocales) {
         this.engine.getLocalesManager().registerComponentLocales(designer.componentName, designer.designerLocales)

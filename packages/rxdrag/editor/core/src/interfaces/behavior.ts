@@ -45,8 +45,13 @@ export interface IBehaviorRule {
 export interface IBehavior {
   //唯一名称防止重复注册
   name: string
+  //选择器， string表示ComponentName
   selector: string | Selector
+  //规则
   rule: IBehaviorRule
+  //优先级，default 是0，值越大优先级越高，有限级大的会覆盖优先级低的，
+  //单项覆盖，而不是整体覆盖
+  priority?: number
 }
 
 export interface IBehaviorManager {

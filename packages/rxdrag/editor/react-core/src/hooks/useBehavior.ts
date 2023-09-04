@@ -20,7 +20,7 @@ export function useBehavior(nodeId?: string) {
   }, [engine, nodeId])
 
   useEffect(() => {
-    const unsub = engine?.getComponentManager().subscribeBehaviorsChange(handleBehaviorChange)
+    const unsub = engine?.getBehaviorManager().subscribeBehaviorsChange(handleBehaviorChange)
 
     return unsub
   }, [engine, handleBehaviorChange])
