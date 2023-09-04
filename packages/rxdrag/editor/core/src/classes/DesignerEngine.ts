@@ -1,5 +1,5 @@
 import { State } from "../reducers";
-import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, NodeBehavior, AbleCheckFunction, IComponentConfig, IResizable, IMoveable, RuleValue, IBehaviorManager } from "../interfaces";
+import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, NodeBehavior, AbleCallback, IComponentConfig, IResizable, IMoveable, IBehaviorManager } from "../interfaces";
 import { Store } from "redux";
 import { ResourceManager } from "./ResourceManager";
 import { DocumentImpl } from "../classes/DocumentImpl";
@@ -27,7 +27,7 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 	private localesManager: IRxDragLocalesManager
 	private actions: IActions
 	private componentManager: IComponentManager<ComponentType>
-	private behaviorManager:IBehaviorManager
+	private behaviorManager: IBehaviorManager
 	private decoratorManager: IDecoratorManager
 	private setterManager: ISetterManager<ComponentType>
 
@@ -211,7 +211,7 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 
 export const checkAbility = (
 	name: "disabled" | "selectable" | "droppable" | "draggable" | "deletable" | "cloneable" | "noPlaceholder" | "noRef" | "lockable" | "resizable" | "moveable" | "equalRatio" | "rotatable",
-	defaultValue: RuleValue,
+	defaultValue: any,
 	nodeId: ID,
 	engine: IDesignerEngine
 ) => {
@@ -227,7 +227,7 @@ export const checkAbility = (
 }
 
 
-const ableCheck = (defaultValue: RuleValue, nodeId: ID, able: RuleValue | AbleCheckFunction, engine: IDesignerEngine): RuleValue => {
+const ableCheck = (defaultValue: any, nodeId: ID, able: any | AbleCallback, engine: IDesignerEngine): any => {
 	if (able === undefined) {
 		return defaultValue
 	}

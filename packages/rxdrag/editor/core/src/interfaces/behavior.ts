@@ -1,8 +1,9 @@
-import { ID, Listener, Unsubscribe } from "@rxdrag/shared"
+import { Listener, Unsubscribe } from "@rxdrag/shared"
 import { ITreeNode } from "./document"
 import { IDesignerEngine } from "./engine"
+import { IResource } from "./resource"
 
-export type Selector = (node: ITreeNode, engine?: IDesignerEngine) => boolean
+export type Selector = (node: ITreeNode | undefined, engine?: IDesignerEngine) => boolean
 
 export type IResizable = {
   width?: boolean
@@ -17,29 +18,34 @@ export type IMoveable = {
   //百分比计算位置
   percent?: boolean
 }
-export type RuleValue = boolean | undefined | IResizable | IMoveable;
 
-export type AbleCheckFunction = ((nodeId: ID, engine?: IDesignerEngine) => RuleValue)
-
-export interface IBehaviorRule {
-  disabled?: boolean | AbleCheckFunction //默认false
-  selectable?: boolean | AbleCheckFunction //是否可选中，默认为true
-  droppable?: boolean | AbleCheckFunction//是否可作为拖拽容器，默认为false
-  draggable?: boolean | AbleCheckFunction //是否可拖拽，默认为true
-  deletable?: boolean | AbleCheckFunction //是否可删除，默认为true
-  cloneable?: boolean | AbleCheckFunction //是否可拷贝，默认为true
-  resizable?: IResizable | AbleCheckFunction//可调整大小
-  moveable?: IMoveable | AbleCheckFunction // 可移动，可用于自由布局
-  equalRatio?: boolean | AbleCheckFunction //是否等比，用于自由布局
-  rotatable?: boolean | AbleCheckFunction //是否可旋转，用于自由布局
-  allowChild?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
-  allowAppendTo?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
-  allowSiblingsTo?: (target: ITreeNode, engine?: IDesignerEngine,) => boolean
-  noPlaceholder?: boolean,
-  noRef?: boolean,
-  lockable?: boolean,
+export type CheckOptions = {
+  node?: ITreeNode,
+  resource?: IResource,
+  //类似allowPpendTo用
+  target?: ITreeNode,
 }
 
+export type AbleCallback<T = boolean> = T | ((options: CheckOptions, engine?: IDesignerEngine) => T)
+
+export interface IBehaviorRule {
+  disabled?: AbleCallback //默认false
+  selectable?: AbleCallback //是否可选中，默认为true
+  droppable?: AbleCallback//是否可作为拖拽容器，默认为false
+  draggable?: AbleCallback //是否可拖拽，默认为true
+  deletable?: AbleCallback //是否可删除，默认为true
+  cloneable?: AbleCallback //是否可拷贝，默认为true
+  resizable?: AbleCallback<IResizable>//可调整大小
+  moveable?: AbleCallback<IMoveable> // 可移动，可用于自由布局
+  equalRatio?: AbleCallback //是否等比，用于自由布局
+  rotatable?: AbleCallback //是否可旋转，用于自由布局
+  allowChild?: AbleCallback
+  allowAppendTo?: AbleCallback
+  allowSiblingsTo?: AbleCallback
+  noPlaceholder?: AbleCallback,
+  noRef?: AbleCallback,
+  lockable?: AbleCallback,
+}
 
 //可独立注册的行为规则
 export interface IBehavior {
