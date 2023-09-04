@@ -28,7 +28,7 @@ export class LockButton extends AbstractButton {
 
   onRender(node: ITreeNode): HTMLElement | null {
     const behavior = this.engine.getBehaviorManager().getNodeBehavior(node.id)
-    if (!behavior.isLockable()) {
+    if (!behavior.lockable()) {
       this.teardown()
       return null
     }

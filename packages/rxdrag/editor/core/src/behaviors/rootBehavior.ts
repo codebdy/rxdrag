@@ -1,6 +1,6 @@
-import { IBehavior, ITreeNode } from "../interfaces";
+import { IBehaviorSchema, ITreeNode } from "../interfaces";
 
-export const rootBehavior: IBehavior = {
+export const rootBehavior: IBehaviorSchema = {
   name: "default.root",
   selector: function (node?: ITreeNode): boolean {
     return !node?.parentId

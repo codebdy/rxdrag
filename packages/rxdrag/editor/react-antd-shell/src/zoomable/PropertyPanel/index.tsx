@@ -6,7 +6,7 @@ import { floatShadow } from "../../utils"
 import { Button } from "antd"
 import { DEFAULT_MARGIN, MINI_WIDGET_WIDTH } from "../consts"
 import { propertyIcon } from "../../icons"
-import { MinusOutlined } from "@ant-design/icons"
+import { MinusOutlined, PushpinOutlined } from "@ant-design/icons"
 import { useCurrentNode } from "@rxdrag/react-core"
 
 const maxWidth = 1000
@@ -42,8 +42,15 @@ export const CloseButton = styled(Button).attrs({ icon: <MinusOutlined />, size:
   right:8px;
 `
 
+export const PinButton = styled(Button).attrs({ icon: <PushpinOutlined />, size: "small" })`
+  position: absolute;
+  top:8px;
+  right:40px;
+`
+
 export const PropertyPanel = memo(() => {
   const [collapsed, setCollapsed] = useState(false)
+  const [pinned, setPinned] = useState(false);
   const [propertyWidth, setPropertyWidth] = usePropertyWidthState()
   const [oldeWidth, setOldWidth] = useState(propertyWidth)
   const currentNode = useCurrentNode()
@@ -53,6 +60,9 @@ export const PropertyPanel = memo(() => {
   setPropertyWidthRef.current = setPropertyWidth
 
   useEffect(() => {
+    if (pinned) {
+      return
+    }
     if (!currentNode) {
       setCollapsed(true)
       setPropertyWidthRef.current(MINI_WIDGET_WIDTH)
@@ -60,7 +70,7 @@ export const PropertyPanel = memo(() => {
       setCollapsed(false)
       setPropertyWidthRef.current(oldeWidthRef.current)
     }
-  }, [currentNode])
+  }, [currentNode, pinned])
 
   const handleCollapse = useCallback(() => {
     setCollapsed(true)
@@ -72,6 +82,10 @@ export const PropertyPanel = memo(() => {
     setCollapsed(false)
     setPropertyWidth(oldeWidth)
   }, [oldeWidth, setPropertyWidth])
+
+  const handleTogglePin = useCallback(() => {
+    setPinned(pinned => !pinned)
+  }, [])
 
   return (
     <PanelShell
@@ -97,6 +111,7 @@ export const PropertyPanel = memo(() => {
           : <Container className={collapsed ? "collapsed" : undefined}>
             <SettingsForm />
             <CloseButton onClick={handleCollapse} />
+            <PinButton type={pinned ? "default" : "text"} onClick={handleTogglePin} />
           </Container>
       }
     </PanelShell>

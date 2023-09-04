@@ -18,7 +18,7 @@ export class CloneButton extends AbstractButton {
 
   onRender(node: ITreeNode): HTMLElement | null {
     const behavior = this.engine.getBehaviorManager().getNodeBehavior(node.id)
-    if (!behavior.isCloneable() || node.isSlot) {
+    if (!behavior.cloneable() || node.isSlot) {
       this.teardown()
       return null
     }

@@ -37,7 +37,7 @@ export class StartDragControllerImpl implements IPlugin {
       if (nodeId) {
         const behavior = this.engine.getBehaviorManager().getNodeBehavior(nodeId)
         const node = this.engine.getMonitor().getNode(nodeId)
-        if (behavior.isDraggable() && !node?.isSlot) {
+        if (behavior.draggable() && !node?.isSlot) {
           this.engine.getActions().startDragNodes({
             initialMousePosition: getPosition(e.data),
             offset: getOffset(e.data),

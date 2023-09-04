@@ -1,5 +1,5 @@
 import { State } from "../reducers";
-import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, INodeBehavior, AbleCallback, IComponentConfig, IResizable, IMoveable, IBehaviorManager } from "../interfaces";
+import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, INodeBehavior, AbleType, IComponentConfig, IResizable, IMoveable, IBehaviorManager } from "../interfaces";
 import { Store } from "redux";
 import { ResourceManager } from "./ResourceManager";
 import { DocumentImpl } from "../classes/DocumentImpl";

@@ -16,7 +16,7 @@ export class MoveButton extends AbstractButton {
       const nodeId = this.engine.getMonitor().getCurrentNode()?.id
       if (nodeId) {
         const behavior = this.engine.getBehaviorManager().getNodeBehavior(nodeId)
-        if (behavior.isDraggable()) {
+        if (behavior.draggable()) {
           this.engine.getActions().startDragNodes({
             initialMousePosition: getPosition(e.data),
             offset: getOffset(e.data),
@@ -30,7 +30,7 @@ export class MoveButton extends AbstractButton {
   
   onRender(node: ITreeNode): HTMLElement | null {
     const behavior = this.engine.getBehaviorManager().getNodeBehavior(node.id)
-    if (!behavior.isDraggable() || node.isSlot) {
+    if (!behavior.draggable() || node.isSlot) {
       this.teardown()
       return null
     }

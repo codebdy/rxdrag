@@ -18,7 +18,7 @@ export class DeleteButton extends AbstractButton {
 
   onRender(node: ITreeNode): HTMLElement | null {
     const behavior = this.engine.getBehaviorManager().getNodeBehavior(node.id)
-    if (!behavior.isDeletable() || node.isSlot) {
+    if (!behavior.deletable() || node.isSlot) {
       this.teardown()
       return null
     }

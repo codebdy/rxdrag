@@ -1,8 +1,9 @@
 import { ID, Listener, Subscriber, isFn } from "@rxdrag/shared";
-import { AbleCallback, IBehavior, IBehaviorManager, IBehaviorRule, IDesignerEngine, IMoveable, INodeBehavior, IResizable, ITreeNode, Selector } from "../interfaces";
+import { AbleType, IBehaviorSchema, IBehaviorManager, IDesignerEngine, IResource, ITreeNode, Selector, IBehavior } from "../interfaces";
+import { Behavior } from "./Behavior";
 
 export class BehaviorManager implements IBehaviorManager {
-  private behaviors = new Subscriber<Record<string, IBehavior | undefined>>({})
+  private behaviors = new Subscriber<Record<string, IBehaviorSchema | undefined>>({})
 
   constructor(private engine: IDesignerEngine) { }
 
@@ -10,21 +11,21 @@ export class BehaviorManager implements IBehaviorManager {
    * 把多个符合条件的behavior合并成一个Rule
    * @param nodeId 
    */
-  getNodeBehaviorRules(nodeId: string): IBehaviorRule[] {
-    const rules: IBehaviorRule[] = []
+  getNodeBehaviorSchemas(nodeId: string): IBehaviorSchema[] {
+    const behaviorMetas: IBehaviorSchema[] = []
     const node = this.engine.getMonitor().getNode(nodeId)
     const behaviors = this.behaviors.getValue()
     for (const key of Object.keys(behaviors)) {
       const behavior = behaviors[key]
       if (node && behavior?.rule && this.meetSelector(node, behavior.selector)) {
-        rules.push(behavior.rule)
+        behaviorMetas.push(behavior)
       }
     }
-    return rules
+    return behaviorMetas
   }
 
-  registerBehaviors(...behaviors: IBehavior[]): void {
-    const behaviorsMap: Record<string, IBehavior | undefined> = {}
+  registerBehaviors(...behaviors: IBehaviorSchema[]): void {
+    const behaviorsMap: Record<string, IBehaviorSchema | undefined> = {}
     for (const behavior of behaviors) {
       behaviorsMap[behavior.name] = behavior
     }
@@ -41,44 +42,35 @@ export class BehaviorManager implements IBehaviorManager {
     this.behaviors.setValue({ ...this.behaviors.getValue(), ...behaviors })
   }
 
-  setBehaviors(...behaviors: IBehavior[]): void {
+  setBehaviors(...behaviors: IBehaviorSchema[]): void {
     this.behaviors.reset({})
     this.registerBehaviors(...behaviors)
   }
 
-  subscribeBehaviorsChange = (listener: Listener<Record<string, IBehavior | undefined>>) => {
+  subscribeBehaviorsChange = (listener: Listener<Record<string, IBehaviorSchema | undefined>>) => {
     return this.behaviors.subscribeChange(listener)
   };
 
-  getNodeBehavior(nodeId: ID): INodeBehavior {
-    return {
-      isDisabled: () => checkAbility("disabled", false, nodeId, this.engine) as boolean,
-      isSelectable: () => checkAbility("selectable", true, nodeId, this.engine) as boolean,
-      isDroppable: () => checkAbility("droppable", false, nodeId, this.engine) as boolean,
-      isDraggable: () => checkAbility("draggable", true, nodeId, this.engine) as boolean,
-      isDeletable: () => checkAbility("deletable", true, nodeId, this.engine) as boolean,
-      isCloneable: () => checkAbility("cloneable", true, nodeId, this.engine) as boolean,
-      isNoPlaceholder: () => checkAbility("noPlaceholder", false, nodeId, this.engine) as boolean,
-      isNoRef: () => checkAbility("noRef", false, nodeId, this.engine) as boolean,
-      isLockable: () => checkAbility("lockable", false, nodeId, this.engine) as boolean,
-      isEqualRatio: () => checkAbility("equalRatio", false, nodeId, this.engine) as boolean,
-      resizable: () => checkAbility("resizable", false, nodeId, this.engine) as IResizable | undefined,
-      moveable: () => checkAbility("moveable", false, nodeId, this.engine) as IMoveable | undefined,
-      rotatable: () => checkAbility("rotatable", false, nodeId, this.engine) as boolean,
-    }
+  getNodeBehavior(nodeId: ID): IBehavior {
+    return new Behavior(this.getNodeBehaviorSchemas(nodeId), this.engine)
+  }
+  getComponentBehavior(componentName: string): IBehavior {
+    throw new Error("Method not implemented.");
+  }
+  getResourceBehavior(reource: IResource<unknown>): IBehavior {
+    throw new Error("Method not implemented.");
   }
 
   private meetSelector(node: ITreeNode, selector: string | Selector) {
     if (node.meta.componentName === selector) {
       return true
     } else if (isFn(selector)) {
-      return selector(node)
+      return selector({ node }, this.engine)
     }
 
     return false
   }
 }
-
 
 
 export const checkAbility = (
@@ -99,7 +91,7 @@ export const checkAbility = (
 }
 
 
-const ableCheck = (defaultValue: any, nodeId: ID, able: any | AbleCallback, engine: IDesignerEngine): any => {
+const ableCheck = (defaultValue: any, nodeId: ID, able: any | AbleType, engine: IDesignerEngine): any => {
   if (able === undefined) {
     return defaultValue
   }

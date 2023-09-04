@@ -3,7 +3,13 @@ import { ITreeNode } from "./document"
 import { IDesignerEngine } from "./engine"
 import { IResource } from "./resource"
 
-export type Selector = (node: ITreeNode | undefined, engine?: IDesignerEngine) => boolean
+export type SelectorSource = {
+  node?: ITreeNode,
+  resource?: IResource,
+  componentName?: string,
+}
+
+export type Selector = (source: SelectorSource, engine?: IDesignerEngine) => boolean
 
 export type IResizable = {
   width?: boolean
@@ -20,35 +26,65 @@ export type IMoveable = {
 }
 
 export type CheckOptions = {
+  //当前节点
   node?: ITreeNode,
-  resource?: IResource,
+  componentName?: string,
   //类似allowPpendTo用
   target?: ITreeNode,
 }
 
-export type AbleCallback<T = boolean> = T | ((options: CheckOptions, engine?: IDesignerEngine) => T)
+export type AbleCallback<Options = unknown, T = boolean> = ((source: Options | undefined, engine?: IDesignerEngine) => T | undefined)
+export type AbleType<Options = unknown, T = boolean> = T | AbleCallback<Options, T>
 
+export type CompareSource = {
+  node?: ITreeNode,
+  targetNode?: ITreeNode,
+  targetResource?: IResource,
+  targetComponent?: string,
+}
+
+//resouce跟node都可以有behavior
 export interface IBehaviorRule {
-  disabled?: AbleCallback //默认false
-  selectable?: AbleCallback //是否可选中，默认为true
-  droppable?: AbleCallback//是否可作为拖拽容器，默认为false
-  draggable?: AbleCallback //是否可拖拽，默认为true
-  deletable?: AbleCallback //是否可删除，默认为true
-  cloneable?: AbleCallback //是否可拷贝，默认为true
-  resizable?: AbleCallback<IResizable>//可调整大小
-  moveable?: AbleCallback<IMoveable> // 可移动，可用于自由布局
-  equalRatio?: AbleCallback //是否等比，用于自由布局
-  rotatable?: AbleCallback //是否可旋转，用于自由布局
-  allowChild?: AbleCallback
-  allowAppendTo?: AbleCallback
-  allowSiblingsTo?: AbleCallback
-  noPlaceholder?: AbleCallback,
-  noRef?: AbleCallback,
-  lockable?: AbleCallback,
+  disabled?: AbleType<ITreeNode> //默认false
+  selectable?: AbleType<ITreeNode>  //是否可选中，默认为true
+  droppable?: AbleType<ITreeNode> //是否可作为拖拽容器，默认为false
+  draggable?: AbleType<ITreeNode>  //是否可拖拽，默认为true
+  deletable?: AbleType<ITreeNode>  //是否可删除，默认为true
+  cloneable?: AbleType<ITreeNode>  //是否可拷贝，默认为true
+  resizable?: AbleType<ITreeNode, IResizable>//可调整大小
+  moveable?: AbleType<ITreeNode, IMoveable> // 可移动，可用于自由布局
+  equalRatio?: AbleType<ITreeNode>  //是否等比，用于自由布局
+  rotatable?: AbleType<ITreeNode>  //是否可旋转，用于自由布局
+  allowChild?: AbleType<CompareSource>
+  allowAppendTo?: AbleType<CompareSource>
+  allowSiblingsTo?: AbleType<CompareSource>
+  noPlaceholder?: AbleType<ITreeNode>,
+  noRef?: AbleType<ITreeNode>,
+  lockable?: AbleType<ITreeNode>,
+}
+
+
+export interface IBehavior {
+  disabled: () => boolean //默认false
+  selectable: () => boolean  //是否可选中，默认为true
+  droppable: () => boolean //是否可作为拖拽容器，默认为false
+  draggable: () => boolean  //是否可拖拽，默认为true
+  deletable: () => boolean  //是否可删除，默认为true
+  cloneable: () => boolean //是否可拷贝，默认为true
+  resizable: () => IResizable | undefined//可调整大小
+  moveable: () => IMoveable | undefined // 可移动，可用于自由布局
+  equalRatio: () => boolean //是否等比，用于自由布局
+  rotatable: () => boolean //是否可旋转，用于自由布局
+  allowChild: (options?: CompareSource) => boolean
+  allowAppendTo: (options?: CompareSource) => boolean
+  allowSiblingsTo: (options?: CompareSource) => boolean
+  noPlaceholder: () => boolean
+  noRef: () => boolean
+  lockable: () => boolean
 }
 
 //可独立注册的行为规则
-export interface IBehavior {
+export interface IBehaviorSchema {
   //唯一名称防止重复注册
   name: string
   //选择器， string表示ComponentName
@@ -61,26 +97,15 @@ export interface IBehavior {
 }
 
 export interface IBehaviorManager {
-  getNodeBehaviorRules(nodeId: string): IBehaviorRule[]
-  setBehaviors(...behaviors: IBehavior[]): void
-  registerBehaviors(...behaviors: IBehavior[]): void
+  setBehaviors(...behaviors: IBehaviorSchema[]): void
+  registerBehaviors(...behaviors: IBehaviorSchema[]): void
   removeBehaviors(...names: string[]): void
-  subscribeBehaviorsChange: (listener: Listener<Record<string, IBehavior | undefined>>) => Unsubscribe
-  getNodeBehavior(nodeId: ID): INodeBehavior
+  subscribeBehaviorsChange: (listener: Listener<Record<string, IBehaviorSchema | undefined>>) => Unsubscribe
+  //返回根据优先级合并后的Behavior rule
+  getNodeBehavior(nodeId: ID): IBehavior
+  //返回根据优先级合并后的Behavior rule
+  getComponentBehavior(componentName: string): IBehavior
+  //返回根据优先级合并后的Behavior rule，可用于toolbox的动作
+  getResourceBehavior(reource: IResource): IBehavior
 }
 
-export interface INodeBehavior {
-  isDisabled: () => boolean
-  isSelectable: () => boolean
-  isDroppable: () => boolean
-  isDraggable: () => boolean
-  isDeletable: () => boolean
-  isCloneable: () => boolean
-  isNoPlaceholder: () => boolean
-  isNoRef: () => boolean
-  isLockable: () => boolean
-  isEqualRatio: () => boolean
-  resizable: () => IResizable | undefined
-  moveable: () => IMoveable | undefined
-  rotatable: () => boolean
-}
