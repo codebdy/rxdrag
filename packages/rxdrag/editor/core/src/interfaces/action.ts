@@ -7,7 +7,7 @@ export interface IAction<Payload> extends Action<Identifier> {
 	payload?: Payload
 }
 
-export type ActionCreator<Payload> = (args: any[]) => IAction<Payload>
+export type ActionCreator<Payload> = (args: unknown[]) => IAction<Payload>
 
 export interface SentinelAction {
 	type: Identifier

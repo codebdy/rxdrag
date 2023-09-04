@@ -26,6 +26,7 @@ export const LSTextMaterial: IComponentMaterial = {
     ]
   },
   behaviorRule: {
-    droppable: false,
+    resizable: { width: true, height: true },
+    moveable: { top: true, left: true },
   },
 }

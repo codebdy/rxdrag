@@ -1,4 +1,5 @@
 import { IAction } from "./action";
+import { IResizable, IMoveable } from "./behavior";
 import { DocumentActionPayload } from "./payloads";
 import { ID, RxProps } from "./types";
 import { IDocumentSchema, INodeMeta, INodeSchema } from "@rxdrag/schema"
@@ -75,6 +76,10 @@ export interface NodeBehavior {
   isNoPlaceholder: () => boolean
   isNoRef: () => boolean
   isLockable: () => boolean
+  isEqualRatio: () => boolean
+  resizable: () => IResizable | undefined
+  moveable: () => IMoveable | undefined
+  rotatable: () => boolean
 }
 
 // export interface IBlocksSchema {

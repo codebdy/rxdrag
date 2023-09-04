@@ -1,5 +1,5 @@
 import { State } from "../reducers";
-import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, NodeBehavior, AbleCheckFunction, IComponentConfig } from "../interfaces";
+import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, NodeBehavior, AbleCheckFunction, IComponentConfig, IResizable, IMoveable, RuleValue, IBehaviorManager } from "../interfaces";
 import { Store } from "redux";
 import { ResourceManager } from "./ResourceManager";
 import { DocumentImpl } from "../classes/DocumentImpl";
@@ -17,6 +17,7 @@ import { DecoratorManager } from "./DecoratorManager";
 import { IDocumentSchema } from "@rxdrag/schema";
 import { ISetterManager } from "../interfaces/setter";
 import { SetterManager } from "./SetterManager";
+import { BehaviorManager } from "./BehaviorManager";
 
 export class DesignerEngine<ComponentType = unknown, IconType = unknown> implements IDesignerEngine<ComponentType, IconType> {
 	private documentsById: {
@@ -26,6 +27,7 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 	private localesManager: IRxDragLocalesManager
 	private actions: IActions
 	private componentManager: IComponentManager<ComponentType>
+	private behaviorManager:IBehaviorManager
 	private decoratorManager: IDecoratorManager
 	private setterManager: ISetterManager<ComponentType>
 
@@ -44,9 +46,13 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 		this.setterManager = new SetterManager<ComponentType>()
 		this.actions = new Actions(this)
 		this.componentManager = new ComponentManager<ComponentType>(this)
+		this.behaviorManager = new BehaviorManager(this)
 		for (const pluginFactory of plugins) {
 			this.registerPlugin(pluginFactory)
 		}
+	}
+	getBehaviorManager(): IBehaviorManager {
+		return this.behaviorManager;
 	}
 	clearDocuments(): void {
 		for (const id of Object.keys(this.documentsById)) {
@@ -145,15 +151,19 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 
 	getNodeBehavior(nodeId: ID): NodeBehavior {
 		return {
-			isDisabled: () => checkAbility("disabled", false, nodeId, this),
-			isSelectable: () => checkAbility("selectable", true, nodeId, this),
-			isDroppable: () => checkAbility("droppable", false, nodeId, this),
-			isDraggable: () => checkAbility("draggable", true, nodeId, this),
-			isDeletable: () => checkAbility("deletable", true, nodeId, this),
-			isCloneable: () => checkAbility("cloneable", true, nodeId, this),
-			isNoPlaceholder: () => checkAbility("noPlaceholder", false, nodeId, this),
-			isNoRef: () => checkAbility("noRef", false, nodeId, this),
-			isLockable: () => checkAbility("lockable", false, nodeId, this),
+			isDisabled: () => checkAbility("disabled", false, nodeId, this) as boolean,
+			isSelectable: () => checkAbility("selectable", true, nodeId, this) as boolean,
+			isDroppable: () => checkAbility("droppable", false, nodeId, this) as boolean,
+			isDraggable: () => checkAbility("draggable", true, nodeId, this) as boolean,
+			isDeletable: () => checkAbility("deletable", true, nodeId, this) as boolean,
+			isCloneable: () => checkAbility("cloneable", true, nodeId, this) as boolean,
+			isNoPlaceholder: () => checkAbility("noPlaceholder", false, nodeId, this) as boolean,
+			isNoRef: () => checkAbility("noRef", false, nodeId, this) as boolean,
+			isLockable: () => checkAbility("lockable", false, nodeId, this) as boolean,
+			isEqualRatio: () => checkAbility("equalRatio", false, nodeId, this) as boolean,
+			resizable: () => checkAbility("resizable", false, nodeId, this) as IResizable | undefined,
+			moveable: () => checkAbility("moveable", false, nodeId, this) as IMoveable | undefined,
+			rotatable: () => checkAbility("rotatable", false, nodeId, this) as boolean,
 		}
 	}
 
@@ -198,13 +208,14 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 	}
 }
 
+
 export const checkAbility = (
-	name: "disabled" | "selectable" | "droppable" | "draggable" | "deletable" | "cloneable" | "noPlaceholder" | "noRef" | "lockable",
-	defaultValue: boolean,
+	name: "disabled" | "selectable" | "droppable" | "draggable" | "deletable" | "cloneable" | "noPlaceholder" | "noRef" | "lockable" | "resizable" | "moveable" | "equalRatio" | "rotatable",
+	defaultValue: RuleValue,
 	nodeId: ID,
 	engine: IDesignerEngine
 ) => {
-	const nodeRules = engine.getComponentManager().getNodeBehaviorRules(nodeId)
+	const nodeRules = engine.getBehaviorManager().getNodeBehaviorRules(nodeId)
 	for (const rule of nodeRules) {
 		const able = ableCheck(defaultValue, nodeId, rule[name], engine)
 		if (able !== defaultValue) {
@@ -216,7 +227,7 @@ export const checkAbility = (
 }
 
 
-const ableCheck = (defaultValue: boolean, nodeId: ID, able: boolean | AbleCheckFunction | undefined, engine: IDesignerEngine): boolean => {
+const ableCheck = (defaultValue: RuleValue, nodeId: ID, able: RuleValue | AbleCheckFunction, engine: IDesignerEngine): RuleValue => {
 	if (able === undefined) {
 		return defaultValue
 	}

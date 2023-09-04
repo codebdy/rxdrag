@@ -1,4 +1,5 @@
 export * from "./action"
+export * from "./behavior"
 export * from "./component"
 export * from "./decorator"
 export * from "./document"

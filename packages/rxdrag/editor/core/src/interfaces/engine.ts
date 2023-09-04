@@ -10,6 +10,7 @@ import { IComponentConfig, IComponentManager } from "./component"
 import { IPlugin, IPluginFactory } from "./plugin"
 import { IDecoratorManager } from "./decorator"
 import { ISetterManager } from "./setter"
+import { IBehaviorManager } from "./behavior"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface IDesignerEngine<ComponentType = any, IconType = any> {
@@ -26,6 +27,7 @@ export interface IDesignerEngine<ComponentType = any, IconType = any> {
 	getMonitor(): IMonitor
 	getShell(): IDesignerShell
 	getComponentManager(): IComponentManager<ComponentType>
+	getBehaviorManager(): IBehaviorManager
 	getResourceManager(): IResourceManager<IconType>
 	getSetterManager(): ISetterManager<ComponentType>
 	getLocalesManager(): IRxDragLocalesManager
