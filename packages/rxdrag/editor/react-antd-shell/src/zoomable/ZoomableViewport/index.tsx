@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { ZoomableViewportShell } from "./ZoomableViewportShell"
 
 const ViewPort = styled.div`
-  padding: 400px;
+  padding: 800px;
   padding-top: 16px;
   min-width: 5200px;
   min-height: 1200px;

@@ -41,6 +41,12 @@ export class DragStopControllerImpl implements IPlugin {
 
   drop(e: DragStopEvent): void {
     const monitor = this.engine.getMonitor()
+    const { rxId } = e.data.targetRx || {}
+    if (!rxId || !monitor.getNode(rxId)) {
+      console.log("元素置于画布外")
+      return
+    }
+    
     const dragOver = monitor.getDragOver()
     if (dragOver) {
       const document = this.engine.getNodeDocument(dragOver.targetId)
@@ -63,10 +69,8 @@ export class DragStopControllerImpl implements IPlugin {
   private dropResource = (draggingResource: DraggingResourceState, dragOver: DragOverOptions, document: IDocument, e: DragStopEvent) => {
     const resource = this.engine.getResourceManager().getResource(draggingResource?.resource || "");
     const pos = this.tranPosition(dragOver.position)
-    console.log("====>哈哈", pos)
     if (resource && pos && dragOver.type === AcceptType.Accept) {
       let mousePostion: IXYCoord | undefined = undefined
-      console.log("哈哈")
       if (pos === NodeRelativePosition.Absolute) {
         mousePostion = {
           x: e.originalEvent.clientX,

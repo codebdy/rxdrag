@@ -20,7 +20,7 @@ interface IPosition {
   scrollTop: number
 }
 
-const defaultScrollLeft = 264;
+const defaultScrollLeft = 460;
 
 export const ZoomableViewportShell = memo((
   props: {
