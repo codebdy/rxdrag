@@ -109,5 +109,10 @@ export interface IBehaviorManager {
   getComponentBehavior(componentName: string): IBehavior
   //返回根据优先级合并后的Behavior rule，可用于toolbox的动作
   getResourceBehavior(reource: IResource): IBehavior
+
+  //判断一组节点是否是可以移动的
+  isMoveable(nodeIds: string[]): boolean
+  //判断一组节点是否可以调整大小
+  isResizable(nodeIds: string[]): boolean
 }
 

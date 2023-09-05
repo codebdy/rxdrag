@@ -39,9 +39,9 @@ export class GhostWidgetImpl implements IPlugin {
     this.dragOff = this.shell.subscribeTo<MouseMoveEvent>(MouseMoveEvent.Name, this.handleDrag)
   }
 
-  handleDraggingNodes = (dragging: DraggingNodesState | null) => {
-    if (dragging) {
-      const node = this.engine.getMonitor().getNode(dragging.nodeIds[0])
+  handleDraggingNodes = (draggingState: DraggingNodesState | null) => {
+    if (draggingState) {
+      const node = this.engine.getMonitor().getNode(draggingState.nodeIds[0])
       if (node) {
         this.title = node.title || node.meta.componentName
         this.mounted = true

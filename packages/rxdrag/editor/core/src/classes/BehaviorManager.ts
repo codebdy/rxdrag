@@ -87,6 +87,32 @@ export class BehaviorManager implements IBehaviorManager {
     return new Behavior(this.getResourceBehaviorSchemas(reource), this.engine)
   }
 
+  isMoveable(nodeIds: string[]): boolean {
+    let canMove = false
+    for (const nodeId of nodeIds) {
+      const behavior = this.engine.getBehaviorManager().getNodeBehavior(nodeId)
+      const moveable = behavior.moveable()
+      if (moveable?.left || moveable?.top) {
+        canMove = true
+      }
+    }
+
+    return canMove
+  }
+
+  isResizable(nodeIds: string[]): boolean {
+    let canResize = false
+    for (const nodeId of nodeIds) {
+      const behavior = this.engine.getBehaviorManager().getNodeBehavior(nodeId)
+      const resizable = behavior.resizable()
+      if (resizable?.height || resizable?.width) {
+        canResize = true
+      }
+    }
+
+    return canResize
+  }
+
   private meetSelector(selectorSource: SelectorSource, selector: string | Selector) {
     if (!selector) {
       return false

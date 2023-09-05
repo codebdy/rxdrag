@@ -42,26 +42,10 @@ export class DragOverControllerImpl implements IPlugin {
 
   private handleDragOver(targetId: ID, e: DragMoveEvent) {
     //先处理自由移动
-    const draggingResourceState = this.engine.getMonitor().getDraggingResouce()
-    if (draggingResourceState) {
-      const resource = this.engine.getResourceManager().getResource(draggingResourceState.resource)
-      if (resource) {
-        const resourceBehavior = this.engine.getBehaviorManager().getResourceBehavior(resource)
-        const moveable = resourceBehavior.moveable()
-        if (moveable?.left || moveable?.top) {
-          const container = this.getFreedomContainer(targetId)
-          if (container) {
-            this.dragover = {
-              type: AcceptType.Accept,
-              position: RelativePosition.AbsoluteIn,
-              targetId: container.id
-            }
-            this.engine.getActions().dragover(this.dragover)
-            return
-          }
-        }
-      }
+    if (this.freedomResourceDragover(targetId) || this.freedomNodesDragover(targetId)) {
+      return
     }
+
     const node = this.engine.getMonitor().getNode(targetId)
     if (node) {
       const judger = new PositionJudger(node, this.engine)
@@ -79,6 +63,51 @@ export class DragOverControllerImpl implements IPlugin {
     } else {
       this.dragover = null
     }
+  }
+
+  private freedomNodesDragover(targetId: ID) {
+    const draggingNodesState = this.engine.getMonitor().getDraggingNodes()
+    if (draggingNodesState) {
+      const moveable = this.engine.getBehaviorManager().isMoveable(draggingNodesState.nodeIds)
+      if (moveable) {
+        const container = this.getFreedomContainer(targetId)
+        if (container) {
+          this.dragover = {
+            type: AcceptType.Accept,
+            position: RelativePosition.AbsoluteIn,
+            targetId: container.id
+          }
+          this.engine.getActions().dragover(this.dragover)
+          return true
+        }
+      }
+    }
+
+    return false
+  }
+
+  private freedomResourceDragover(targetId: ID) {
+    const draggingResourceState = this.engine.getMonitor().getDraggingResouce()
+    if (draggingResourceState) {
+      const resource = this.engine.getResourceManager().getResource(draggingResourceState.resource)
+      if (resource) {
+        const resourceBehavior = this.engine.getBehaviorManager().getResourceBehavior(resource)
+        const moveable = resourceBehavior.moveable()
+        if (moveable?.left || moveable?.top) {
+          const container = this.getFreedomContainer(targetId)
+          if (container) {
+            this.dragover = {
+              type: AcceptType.Accept,
+              position: RelativePosition.AbsoluteIn,
+              targetId: container.id
+            }
+            this.engine.getActions().dragover(this.dragover)
+            return true
+          }
+        }
+      }
+    }
+    return false
   }
 
   private canAccept(position: IDropPosition): AcceptType {
