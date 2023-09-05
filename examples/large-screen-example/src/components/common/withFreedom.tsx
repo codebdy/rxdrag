@@ -6,7 +6,6 @@ import { CSSProperties, forwardRef, useMemo } from "react";
 export function withFreedom<T = unknown>(WrappedComponent: ReactComponent) {
   return forwardRef<HTMLElement, IChildProps & { style?: CSSProperties } & T>((props, ref) => {
     const { width, height, x, y, style, ...rest } = props
-
     const newStyle: CSSProperties = useMemo(() => {
       return {
         position: "absolute",

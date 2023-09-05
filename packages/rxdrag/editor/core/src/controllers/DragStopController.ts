@@ -46,7 +46,7 @@ export class DragStopControllerImpl implements IPlugin {
       console.log("元素置于画布外")
       return
     }
-    
+
     const dragOver = monitor.getDragOver()
     if (dragOver) {
       const document = this.engine.getNodeDocument(dragOver.targetId)
@@ -54,13 +54,13 @@ export class DragStopControllerImpl implements IPlugin {
       if (!document?.id) {
         return
       }
-      const draggingResource = monitor.getState().draggingResource
+      const draggingResource = monitor.getDraggingResouce()
       if (draggingResource) {
         this.dropResource(draggingResource, dragOver, document, e);
       } else {
-        const draggingNodes = monitor.getState().draggingNodes
+        const draggingNodes = monitor.getDraggingNodes()
         if (draggingNodes) {
-          this.dropNodes(draggingNodes, dragOver, document);
+          this.dropNodes(draggingNodes, dragOver, document, e);
         }
       }
     }
@@ -83,10 +83,34 @@ export class DragStopControllerImpl implements IPlugin {
     }
   }
 
-  private dropNodes(draggingNodes: DraggingNodesState, dragOver: DragOverOptions, document: IDocument) {
+  private dropNodes(draggingNodes: DraggingNodesState, dragOver: DragOverOptions, document: IDocument, e: DragStopEvent) {
     if (!draggingNodes) {
       return
     }
+    this.engine.getActions().selectNodes(draggingNodes.nodeIds);
+
+    //如果是自由布局
+    if (dragOver.position === RelativePosition.AbsoluteIn) {
+      document.backup(HistoryableActionType.Move)
+      for (const nodeId of draggingNodes.nodeIds) {
+        const node = this.engine.getMonitor().getNode(nodeId)
+        const meta = node?.meta
+        if (meta) {
+          const newMeta = {
+            ...meta,
+            props: {
+              ...meta.props,
+              x: ((meta?.props?.x as number | undefined) || 0) + (e.originalEvent.clientX - draggingNodes.initialMousePosition.x),
+              y: ((meta?.props?.y as number | undefined) || 0) + (e.originalEvent.clientY - draggingNodes.initialMousePosition.y),
+            }
+          }
+          document.changeNodeMeta(nodeId, newMeta)
+        }
+      }
+
+      return
+    }
+
     for (const nodeId of draggingNodes.nodeIds || []) {
       const nodDocument = this.engine.getNodeDocument(dragOver.targetId)
       const pos = this.tranPosition(dragOver.position)
@@ -99,8 +123,6 @@ export class DragStopControllerImpl implements IPlugin {
         //document.getActions().addNodeFormOutside()
       }
     }
-    this.engine.getActions().selectNodes(draggingNodes.nodeIds);
-
   }
 
   private tranPosition(curPos: RelativePosition | null): NodeRelativePosition | null {

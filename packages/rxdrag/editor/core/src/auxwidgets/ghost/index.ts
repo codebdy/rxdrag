@@ -41,10 +41,14 @@ export class GhostWidgetImpl implements IPlugin {
 
   handleDraggingNodes = (draggingState: DraggingNodesState | null) => {
     if (draggingState) {
+      //如果是自由布局
+      if (this.engine.getBehaviorManager().isMoveable(draggingState.nodeIds)) {
+        return
+      }
       const node = this.engine.getMonitor().getNode(draggingState.nodeIds[0])
       if (node) {
         this.title = node.title || node.meta.componentName
-        this.mounted = true
+        this.mount()
       }
     } else {
       this.unmount()
