@@ -118,7 +118,7 @@ export const PropertyPanel = memo(() => {
           : <Container className={collapsed ? "collapsed" : undefined}>
             <SettingsForm />
             <CloseButton onClick={handleCollapse} />
-            <PinButton type={pinned ? "default" : "text"} onClick={handleTogglePin} />
+            <PinButton type={pinned ? "link" : "text"} onClick={handleTogglePin} />
           </Container>
       }
     </PanelShell>
