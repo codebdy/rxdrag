@@ -17,7 +17,7 @@ export class DragOverDriverImpl implements IDriver {
       return
     }
 
-    if(!this.shell.dragging){
+    if(!this.shell.dragStartEvent){
       return
     }
     

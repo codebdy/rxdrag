@@ -14,6 +14,7 @@ import {
   createEngine,
   ThemeMode,
   DraggedAttenuator,
+  MoveableFollowerWidget,
 } from "@rxdrag/core";
 import { memo, useEffect, useRef, useState } from "react"
 import { DesignerEngineContext, IMinionOptions, MinionOptionContext } from "./contexts";
@@ -54,6 +55,7 @@ export const Designer = memo((props: DesignerProps) => {
         ActivedOutline,
         SelectedOutline,
         GhostWidget,
+        MoveableFollowerWidget,
         DraggedAttenuator,
         InsertionCursor,
         Toolbar,

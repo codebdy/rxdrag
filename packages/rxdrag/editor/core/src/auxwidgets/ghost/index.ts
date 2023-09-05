@@ -68,7 +68,7 @@ export class GhostWidgetImpl implements IPlugin {
   }
 
   handleDrag = (e: MouseMoveEvent): void => {
-    if (this.mounted && this.engine.getShell().dragging) {
+    if (this.mounted && this.engine.getShell().dragStartEvent) {
       const container = this.engine.getShell().getContainer()
       if (container && !container.contains(this.htmlNode)) {
         if (this.htmlNode.parentElement) {
