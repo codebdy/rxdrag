@@ -1,5 +1,5 @@
-import { ID, Listener, Subscriber, isFn } from "@rxdrag/shared";
-import { AbleType, IBehaviorSchema, IBehaviorManager, IDesignerEngine, IResource, ITreeNode, Selector, IBehavior } from "../interfaces";
+import { ID, Listener, Subscriber, isArr, isFn } from "@rxdrag/shared";
+import { IBehaviorSchema, IBehaviorManager, IDesignerEngine, IResource, Selector, IBehavior, SelectorSource, ITreeNode } from "../interfaces";
 import { Behavior } from "./Behavior";
 
 export class BehaviorManager implements IBehaviorManager {
@@ -11,18 +11,42 @@ export class BehaviorManager implements IBehaviorManager {
    * 把多个符合条件的behavior合并成一个Rule
    * @param nodeId 
    */
-  getNodeBehaviorSchemas(nodeId: string): IBehaviorSchema[] {
+  getNodeBehaviorSchemas(node?: ITreeNode): IBehaviorSchema[] {
     const behaviorMetas: IBehaviorSchema[] = []
-    const node = this.engine.getMonitor().getNode(nodeId)
     const behaviors = this.behaviors.getValue()
     for (const key of Object.keys(behaviors)) {
       const behavior = behaviors[key]
-      if (node && behavior?.rule && this.meetSelector(node, behavior.selector)) {
+      if (node && behavior?.rule && this.meetSelector({ node }, behavior.selector)) {
         behaviorMetas.push(behavior)
       }
     }
     return behaviorMetas
   }
+
+  getResourceBehaviorSchemas(resource: IResource): IBehaviorSchema[] {
+    const behaviorMetas: IBehaviorSchema[] = []
+    const behaviors = this.behaviors.getValue()
+    for (const key of Object.keys(behaviors)) {
+      const behavior = behaviors[key]
+      if (behavior?.rule && this.meetSelector({ resource }, behavior.selector)) {
+        behaviorMetas.push(behavior)
+      }
+    }
+    return behaviorMetas
+  }
+
+  getComponentBehaviorSchemas(componentName: string): IBehaviorSchema[] {
+    const behaviorMetas: IBehaviorSchema[] = []
+    const behaviors = this.behaviors.getValue()
+    for (const key of Object.keys(behaviors)) {
+      const behavior = behaviors[key]
+      if (behavior?.rule && this.meetSelector({ componentName }, behavior.selector)) {
+        behaviorMetas.push(behavior)
+      }
+    }
+    return behaviorMetas
+  }
+
 
   registerBehaviors(...behaviors: IBehaviorSchema[]): void {
     const behaviorsMap: Record<string, IBehaviorSchema | undefined> = {}
@@ -52,51 +76,44 @@ export class BehaviorManager implements IBehaviorManager {
   };
 
   getNodeBehavior(nodeId: ID): IBehavior {
-    return new Behavior(this.getNodeBehaviorSchemas(nodeId), this.engine)
-  }
-  getComponentBehavior(componentName: string): IBehavior {
-    throw new Error("Method not implemented.");
-  }
-  getResourceBehavior(reource: IResource<unknown>): IBehavior {
-    throw new Error("Method not implemented.");
+    const node = this.engine.getMonitor().getNode(nodeId)
+    return new Behavior(this.getNodeBehaviorSchemas(node || undefined), this.engine)
   }
 
-  private meetSelector(node: ITreeNode, selector: string | Selector) {
-    if (node.meta.componentName === selector) {
+  getComponentBehavior(componentName: string): IBehavior {
+    return new Behavior(this.getComponentBehaviorSchemas(componentName), this.engine)
+  }
+  getResourceBehavior(reource: IResource<unknown>): IBehavior {
+    return new Behavior(this.getResourceBehaviorSchemas(reource), this.engine)
+  }
+
+  private meetSelector(selectorSource: SelectorSource, selector: string | Selector) {
+    if (!selector) {
+      return false
+    }
+
+    if (selectorSource.node?.meta.componentName === selector || selectorSource.componentName === selector) {
       return true
-    } else if (isFn(selector)) {
-      return selector({ node }, this.engine)
+    }
+
+    if (isArr(selectorSource.resource?.elements)) {
+      for (const element of selectorSource.resource?.elements || []) {
+        if (element.componentName === selector) {
+          return true
+        }
+      }
+    } else if (selectorSource.resource?.elements.componentName === selector) {
+      return true
+    }
+
+    if (selectorSource.componentName === selector) {
+      return true
+    }
+
+    if (isFn(selector)) {
+      return selector(selectorSource, this.engine)
     }
 
     return false
   }
-}
-
-
-export const checkAbility = (
-  name: "disabled" | "selectable" | "droppable" | "draggable" | "deletable" | "cloneable" | "noPlaceholder" | "noRef" | "lockable" | "resizable" | "moveable" | "equalRatio" | "rotatable",
-  defaultValue: any,
-  nodeId: ID,
-  engine: IDesignerEngine
-) => {
-  const nodeRules = engine.getBehaviorManager().getNodeBehaviorRules(nodeId)
-  for (const rule of nodeRules) {
-    const able = ableCheck(defaultValue, nodeId, rule[name], engine)
-    if (able !== defaultValue) {
-      return able
-    }
-  }
-
-  return defaultValue
-}
-
-
-const ableCheck = (defaultValue: any, nodeId: ID, able: any | AbleType, engine: IDesignerEngine): any => {
-  if (able === undefined) {
-    return defaultValue
-  }
-  if (isFn(able)) {
-    return able(nodeId, engine)
-  }
-  return able || false
 }

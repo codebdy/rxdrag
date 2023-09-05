@@ -33,7 +33,7 @@ export type CheckOptions = {
   target?: ITreeNode,
 }
 
-export type AbleCallback<Options = unknown, T = boolean> = ((source: Options | undefined, engine?: IDesignerEngine) => T | undefined)
+export type AbleCallback<Options = unknown, T = boolean> = ((source: Options | undefined, engine?: IDesignerEngine) => T)
 export type AbleType<Options = unknown, T = boolean> = T | AbleCallback<Options, T>
 
 export type CompareSource = {
