@@ -12,6 +12,7 @@ export const RootBoardMaterial: IComponentMaterial = {
   designerLocales: locales,
   behaviorRule: {
     droppable: true,
+    freedomContainer: true,
   },
   setters: {
     ThemeTokenSetter

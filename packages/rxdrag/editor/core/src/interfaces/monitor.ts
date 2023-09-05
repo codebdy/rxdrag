@@ -48,7 +48,8 @@ export interface IMonitor {
 	subscribeToDocumentTitle(documentId: ID, listener: DocumentTitleListener): Unsubscribe
 
 	//onViewPortResizeOrScroll(listener: Listener): Unsubscribe
-	isDragging(): boolean
+	getDraggingResouce(): DraggingResourceState | undefined
+	getDraggingNodes(): DraggingNodesState | undefined
 	getCurrentSelectedIds(): ID[] | null
 	getDocumentSelectedIds(documentId: ID): ID[] | null
 	getNode(nodeId: ID): ITreeNode | null

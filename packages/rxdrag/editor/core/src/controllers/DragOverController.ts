@@ -3,7 +3,7 @@ import { AcceptType, DragOverOptions } from "../interfaces/action";
 import { IPlugin } from "../interfaces/plugin";
 import { IDropPosition, PositionJudger, RelativePosition } from "../utils/coordinate";
 import { DragOverState } from "../reducers/dragOver";
-import { ID, IDesignerEngine, Unsubscribe } from "../interfaces";
+import { ID, IDesignerEngine, ITreeNode, Unsubscribe } from "../interfaces";
 
 export class DragOverControllerImpl implements IPlugin {
   name = "default.drag-over-controller";
@@ -25,7 +25,7 @@ export class DragOverControllerImpl implements IPlugin {
   handleDragMove = (e: DragMoveEvent) => {
     const { rxId } = e.data.targetRx || {}
     if (rxId) {
-      if (this.engine.getMonitor().isDragging()) {
+      if (this.isDragging()) {
         this.handleDragOver(rxId, e)
       }
     } else if (this.dragover) {
@@ -34,7 +34,34 @@ export class DragOverControllerImpl implements IPlugin {
     }
   }
 
+  private isDragging() {
+    const monitor = this.engine.getMonitor()
+
+    return !!monitor.getDraggingResouce() || !!monitor.getDraggingNodes()
+  }
+
   private handleDragOver(targetId: ID, e: DragMoveEvent) {
+    //先处理自由移动
+    const draggingResourceState = this.engine.getMonitor().getDraggingResouce()
+    if (draggingResourceState) {
+      const resource = this.engine.getResourceManager().getResource(draggingResourceState.resource)
+      if (resource) {
+        const resourceBehavior = this.engine.getBehaviorManager().getResourceBehavior(resource)
+        const moveable = resourceBehavior.moveable()
+        if (moveable?.left || moveable?.top) {
+          const container = this.getFreedomContainer(targetId)
+          if (container) {
+            this.dragover = {
+              type: AcceptType.Accept,
+              position: RelativePosition.AbsoluteIn,
+              targetId: container.id
+            }
+            this.engine.getActions().dragover(this.dragover)
+            return
+          }
+        }
+      }
+    }
     const node = this.engine.getMonitor().getNode(targetId)
     if (node) {
       const judger = new PositionJudger(node, this.engine)
@@ -119,10 +146,22 @@ export class DragOverControllerImpl implements IPlugin {
     return AcceptType.Reject
   }
 
-
   destroy(): void {
     this.unsubscribe()
   }
+
+  private getFreedomContainer(id: string): ITreeNode | undefined {
+    const node = this.engine.getMonitor().getNode(id)
+    const nodeBehavior = this.engine.getBehaviorManager().getNodeBehavior(id)
+    if (nodeBehavior?.freedomContainer()) {
+      return node || undefined
+    }
+    if (node?.parentId) {
+      return this.getFreedomContainer(node?.parentId)
+    }
+    return undefined
+  }
+
 }
 
 export const DragOverController = (engine: IDesignerEngine) => {

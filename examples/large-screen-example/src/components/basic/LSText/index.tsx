@@ -1,5 +1,5 @@
 import { forwardRef, memo } from "react"
-import { withFeedom } from "../../common";
+import { withFreedom } from "../../common";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -17,7 +17,7 @@ export type LSTextProps = {
   value?: string
 }
 
-export const LSText = memo(withFeedom<LSTextProps>(forwardRef<HTMLDivElement, LSTextProps>((props, ref) => {
+export const LSText = memo(withFreedom<LSTextProps>(forwardRef<HTMLDivElement, LSTextProps>((props, ref) => {
   const { value, ...rest } = props;
   return (
     <Container ref={ref} {...rest}>

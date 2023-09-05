@@ -28,6 +28,8 @@ import {
 } from '../interfaces/index'
 import type { State } from '../reducers/index'
 import { DragOverState } from '../reducers/dragOver'
+import { DraggingResourceState } from '../reducers/draggingResource'
+import { DraggingNodesState } from '../reducers/draggingNodes'
 
 /**
  * 为优化性能而生
@@ -454,11 +456,17 @@ export class Monitor implements IMonitor {
 		return this.store.subscribe(handleChange)
 	}
 
-	isDragging(): boolean {
+	getDraggingResouce(): DraggingResourceState | undefined {
 		const state = this.store.getState()
-
-		return !!state.draggingResource || !!state.draggingNodes
+		return state.draggingResource
 	}
+
+	
+	getDraggingNodes(): DraggingNodesState | undefined {
+		const state = this.store.getState()
+		return state.draggingNodes
+	}
+
 
 	private getSelectedNodeId(selectedIds?: ID[]) {
 		return selectedIds?.length === 1 ? (selectedIds?.[0] || "") : ""

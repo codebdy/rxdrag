@@ -14,6 +14,16 @@ export class Behavior implements IBehavior {
     }
   }
 
+  freedomContainer() {
+    if (isFn(this.rule.freedomContainer)) {
+      return this.rule.freedomContainer(this.node, this.engine)
+    }
+    if (this.rule.freedomContainer !== undefined) {
+      return this.rule.freedomContainer
+    }
+    return false
+  }
+  
   disabled() {
     if (isFn(this.rule.disabled)) {
       return this.rule.disabled(this.node, this.engine)

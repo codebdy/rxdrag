@@ -1,6 +1,7 @@
+import { IDropPosition } from "../utils/coordinate";
 import { IAction } from "./action";
 import { DocumentActionPayload } from "./payloads";
-import { ID, RxProps } from "./types";
+import { ID, IXYCoord, RxProps } from "./types";
 import { IDocumentSchema, INodeMeta, INodeSchema } from "@rxdrag/schema"
 
 export type NodesById = {
@@ -28,7 +29,8 @@ export enum NodeRelativePosition {
   InTop = 1,
   InBottom,
   Before,
-  After
+  After,
+  Absolute,
 }
 export type NodeListener = (node: ITreeNode) => void
 
@@ -97,7 +99,7 @@ export interface IDocument {
   initialize(meta: IDocumentSchema): void
   moveTo(sourceId: ID, targetId: ID, pos: NodeRelativePosition): void
   multiMoveTo(sourceIds: ID[], targetId: ID, pos: NodeRelativePosition): void
-  addNewNodes(elements: INodeSchema | INodeSchema[], targetId: ID, pos: NodeRelativePosition): NodeChunk
+  addNewNodes(elements: INodeSchema | INodeSchema[], targetId: ID, pos: NodeRelativePosition, absolutePosition?:IXYCoord): NodeChunk
   remove(sourceId: ID): void
   clone(sourceId: ID): void
   changeNodeMeta(id: ID, newMeta: INodeMeta): void

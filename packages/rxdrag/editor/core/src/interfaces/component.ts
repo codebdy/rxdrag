@@ -8,7 +8,6 @@ import { IBehaviorRule } from "./behavior"
 export interface IComponentConfig<ComponentType = unknown, IconType = unknown> {
   package?: string //npm包名 生成代码用
   version?: string // npm包版本 生成代码用
-  freedomContainer?: boolean //自由布局容器
   componentName: string
   component: ComponentType,
   designer: ComponentType,

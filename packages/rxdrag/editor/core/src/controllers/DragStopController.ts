@@ -1,4 +1,4 @@
-import { IDesignerEngine, NodeRelativePosition } from "../interfaces";
+import { IDesignerEngine, IXYCoord, NodeRelativePosition } from "../interfaces";
 import { DragStopEvent } from "../shell/events";
 import { HistoryableActionType, IDocument, Unsubscribe } from "../interfaces";
 import { AcceptType, DragOverOptions } from "../interfaces/action";
@@ -50,7 +50,7 @@ export class DragStopControllerImpl implements IPlugin {
       }
       const draggingResource = monitor.getState().draggingResource
       if (draggingResource) {
-        this.dropResource(draggingResource, dragOver, document);
+        this.dropResource(draggingResource, dragOver, document, e);
       } else {
         const draggingNodes = monitor.getState().draggingNodes
         if (draggingNodes) {
@@ -60,11 +60,20 @@ export class DragStopControllerImpl implements IPlugin {
     }
   }
 
-  private dropResource = (draggingResource: DraggingResourceState, dragOver: DragOverOptions, document: IDocument) => {
+  private dropResource = (draggingResource: DraggingResourceState, dragOver: DragOverOptions, document: IDocument, e: DragStopEvent) => {
     const resource = this.engine.getResourceManager().getResource(draggingResource?.resource || "");
     const pos = this.tranPosition(dragOver.position)
+    console.log("====>哈哈", pos)
     if (resource && pos && dragOver.type === AcceptType.Accept) {
-      const nodes = document.addNewNodes(resource.elements, dragOver.targetId, pos);
+      let mousePostion: IXYCoord | undefined = undefined
+      console.log("哈哈")
+      if (pos === NodeRelativePosition.Absolute) {
+        mousePostion = {
+          x: e.originalEvent.clientX,
+          y: e.originalEvent.clientY,
+        }
+      }
+      const nodes = document.addNewNodes(resource.elements, dragOver.targetId, pos, mousePostion);
       document.backup(HistoryableActionType.Add)
       this.engine.getActions().selectNodes(nodes.rootNodes.map(node => node.id));
     }
@@ -100,6 +109,8 @@ export class DragStopControllerImpl implements IPlugin {
       case RelativePosition.Right:
       case RelativePosition.Bottom:
         return NodeRelativePosition.After
+      case RelativePosition.AbsoluteIn:
+        return NodeRelativePosition.Absolute
     }
     return null
   }

@@ -2,7 +2,7 @@
 import { makeRxId } from "@rxdrag/shared";
 import { HistoryableActionType, IDocument, IDocumentAction, ISnapshot, ITreeNode, NodeChunk, NodeRelativePosition, NodesById } from "../interfaces/document";
 import { AddNodesPayload, BackupPayload, ChangeMetaPayloads, DeleteNodesPayload, DocumentActionPayload, GotoPayload, MoveNodesPayload, RecoverSnapshotPayload, RemoveSlotPayload } from "../interfaces/payloads";
-import { ID, IDesignerEngine } from "../interfaces";
+import { ID, IDesignerEngine, IMoveable, IXYCoord } from "../interfaces";
 import { State } from "../reducers";
 import { parseNodeSchema, paseNodes } from "../funcs/parseNodeSchema";
 import { Store } from "redux";
@@ -50,18 +50,31 @@ export class DocumentImpl implements IDocument {
   multiMoveTo(sourceIds: string[], targetId: string, pos: NodeRelativePosition): void {
     throw new Error("Method not implemented.");
   }
-  addNewNodes(elements: INodeSchema | INodeSchema[], targetId: string, pos: NodeRelativePosition): NodeChunk {
-    const nodes = paseNodes(this.engine, this.id, elements);
-    this.receiveNodes(nodes)
+  addNewNodes(elements: INodeSchema | INodeSchema[], targetId: string, pos: NodeRelativePosition, absolutePosition?: IXYCoord): NodeChunk {
+    const nodesChunk = paseNodes(this.engine, this.id, elements);
+    const nodes = nodesChunk.nodesById
+    if (pos === NodeRelativePosition.Absolute) {
+      for (const key of Object.keys(nodes)) {
+        const node = nodes[key]
+        if (node) {
+          node.meta.props = {
+            ...node.meta.props,
+            ...absolutePosition,
+          }
+        }
+      }
+    }
+
+    this.receiveNodes(nodesChunk)
     const payload: AddNodesPayload = {
       documentId: this.id,
-      nodes,
+      nodes: nodesChunk,
       targetId,
       pos
     }
     this.dispatch(this.createAction(ADD_NODES, payload))
 
-    return nodes
+    return nodesChunk
   }
 
   remove = (sourceId: string): void => {
@@ -214,7 +227,7 @@ export class DocumentImpl implements IDocument {
 
   destroy(): void {
     const ids = this.engine.getMonitor().getDocumentSelectedIds(this.id)
-    if(ids?.length){
+    if (ids?.length) {
       this.engine.getActions().selectNodes([])
     }
     this.dispatch(this.createAction(REMOVE_DOCUMENT, {}))

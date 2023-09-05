@@ -1,2 +1,2 @@
 export * from "./interfaces"
-export * from "./withFeedom"
+export * from "./withFreedom"

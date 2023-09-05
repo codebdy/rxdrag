@@ -11,6 +11,7 @@ export enum RelativePosition {
   Top = "top",
   Right = "right",
   Bottom = "bottom",
+  AbsoluteIn = "absoluteIn"
 }
 
 export interface IDropPosition {

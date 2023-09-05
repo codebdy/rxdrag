@@ -34,6 +34,9 @@ const BottomShell = styled(ResizableRow)`
     padding: 0 16px;
     margin: 0;
     user-select: none;
+    &::before{
+      border: 0;
+    }
   }
 `
 
