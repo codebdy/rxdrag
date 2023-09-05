@@ -87,7 +87,7 @@ export class DragStopControllerImpl implements IPlugin {
     if (!draggingNodes) {
       return
     }
-    this.engine.getActions().selectNodes(draggingNodes.nodeIds);
+
 
     //如果是自由布局
     if (dragOver.position === RelativePosition.AbsoluteIn) {
@@ -107,7 +107,7 @@ export class DragStopControllerImpl implements IPlugin {
           document.changeNodeMeta(nodeId, newMeta)
         }
       }
-
+      this.engine.getActions().selectNodes(draggingNodes.nodeIds);
       return
     }
 
@@ -123,6 +123,7 @@ export class DragStopControllerImpl implements IPlugin {
         //document.getActions().addNodeFormOutside()
       }
     }
+    this.engine.getActions().selectNodes(draggingNodes.nodeIds);
   }
 
   private tranPosition(curPos: RelativePosition | null): NodeRelativePosition | null {
