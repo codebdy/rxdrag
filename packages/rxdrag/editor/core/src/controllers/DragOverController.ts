@@ -42,7 +42,7 @@ export class DragOverControllerImpl implements IPlugin {
 
   private handleDragOver(targetId: ID, e: DragMoveEvent) {
     //先处理自由移动
-    if (this.freedomResourceDragover(targetId) || this.freedomNodesDragover(targetId)) {
+    if (this.moveableResourceDragover(targetId) || this.moveableNodesDragover(targetId)) {
       return
     }
 
@@ -65,7 +65,7 @@ export class DragOverControllerImpl implements IPlugin {
     }
   }
 
-  private freedomNodesDragover(targetId: ID) {
+  private moveableNodesDragover(targetId: ID) {
     const draggingNodesState = this.engine.getMonitor().getDraggingNodes()
     if (draggingNodesState) {
       const moveable = this.engine.getBehaviorManager().isMoveable(draggingNodesState.nodeIds)
@@ -86,7 +86,7 @@ export class DragOverControllerImpl implements IPlugin {
     return false
   }
 
-  private freedomResourceDragover(targetId: ID) {
+  private moveableResourceDragover(targetId: ID) {
     const draggingResourceState = this.engine.getMonitor().getDraggingResouce()
     if (draggingResourceState) {
       const resource = this.engine.getResourceManager().getResource(draggingResourceState.resource)
