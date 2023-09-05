@@ -12,29 +12,31 @@ export class MouseClickDriverImpl implements IDriver {
   onMouseDown = (e: MouseEvent) => {
     this.mouedownPoint = e
   }
-  onMouseUp = () => {
-    this.mouedownPoint = undefined
-  }
+
   onMouseClick = (e: MouseEvent) => {
     //如果是拖动，不触发Click事件
-    if (Math.abs(e.clientX - (this.mouedownPoint?.clientX || 0)) < 5 &&
-      Math.abs(e.clientY - (this.mouedownPoint?.clientY || 0)) < 5) {
-      this.dispatcher.dispatch(
-        new MouseClickEvent({
-          offsetX: e.offsetX,
-          offsetY: e.offsetY,
-          clientX: e.clientX,
-          clientY: e.clientY,
-          pageX: e.pageX,
-          pageY: e.pageY,
-          target: e.target,
-          view: e.view,
-          altKey: e.altKey,
-          ctrlKey: e.ctrlKey,
-          shiftKey: e.shiftKey,
-        }, e)
-      )
+    if (Math.abs(e.screenX - (this.mouedownPoint?.screenX || 0)) > 5 ||
+      Math.abs(e.screenY - (this.mouedownPoint?.screenY || 0)) > 5) {
+      this.mouedownPoint = undefined
+      return
     }
+
+    this.dispatcher.dispatch(
+      new MouseClickEvent({
+        offsetX: e.offsetX,
+        offsetY: e.offsetY,
+        clientX: e.clientX,
+        clientY: e.clientY,
+        pageX: e.pageX,
+        pageY: e.pageY,
+        target: e.target,
+        view: e.view,
+        altKey: e.altKey,
+        ctrlKey: e.ctrlKey,
+        shiftKey: e.shiftKey,
+      }, e)
+    )
+    this.mouedownPoint = undefined
   }
 
   onMouseDoubleClick = (e: MouseEvent) => {
@@ -59,14 +61,12 @@ export class MouseClickDriverImpl implements IDriver {
     this.element?.addEventListener('click', this.onMouseClick as EventListener)
     this.element?.addEventListener('dblclick', this.onMouseDoubleClick as EventListener)
     this.element?.addEventListener('mousedown', this.onMouseDown as EventListener)
-    this.element?.addEventListener('mouseup', this.onMouseUp)
   }
 
   teardown(): void {
     this.element?.removeEventListener('click', this.onMouseClick as EventListener)
     this.element?.removeEventListener('dblclick', this.onMouseDoubleClick as EventListener)
     this.element?.removeEventListener('mousedown', this.onMouseDown as EventListener)
-    this.element?.removeEventListener('mouseup', this.onMouseUp)
   }
 
 }

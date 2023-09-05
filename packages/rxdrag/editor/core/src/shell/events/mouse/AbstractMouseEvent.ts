@@ -8,7 +8,7 @@ export interface NodeRxInfo {
   nodeStatus?: NodeStatus
 }
 
-export interface IMouseEventOriginData extends IEventData{
+export interface IMouseEventOriginData extends IEventData {
   offsetX: number,
   offsetY: number,
   clientX: number
@@ -34,7 +34,7 @@ export class AbstractMouseEvent {
   data: IMouseEventData
   originalEvent: MouseEvent
 
-  constructor(data: IMouseEventOriginData, e:MouseEvent) {
+  constructor(data: IMouseEventOriginData, e: MouseEvent) {
     this.data = data || {
       clientX: 0,
       clientY: 0,
@@ -43,9 +43,9 @@ export class AbstractMouseEvent {
       target: null,
       view: e.view
     }
-    
+
     this.originalEvent = e
-    
+
     const rxTarget = getRecentRxElement(data.target as HTMLElement)
     this.data.targetRx = rxTarget && this.getRxProps(rxTarget)
     this.transformCoordinates()
@@ -69,6 +69,7 @@ export class AbstractMouseEvent {
     const { frameElement } = this.data?.view || {}
     if (frameElement) {
       const frameRect = frameElement.getBoundingClientRect()
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const scale = frameRect.width / (frameElement as any)['offsetWidth']
       this.data.topClientX = this.data.clientX * scale + frameRect.x
       this.data.topClientY = this.data.clientY * scale + frameRect.y
@@ -81,6 +82,7 @@ export class AbstractMouseEvent {
         this.data.topClientY
       )
       if (topElement !== frameElement) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         this.data.target = topElement as any
       }
     } else {
