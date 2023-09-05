@@ -11,6 +11,7 @@ const Container = styled.div`
   align-items: center;
   border-radius: 8px;
   background-color: ${props => props.theme.token?.colorBgBase};
+  border: solid 1px ${props => props.theme.token?.colorBorderSecondary};
   box-shadow: ${floatShadow};
   width: 32px;
   overflow: hidden;

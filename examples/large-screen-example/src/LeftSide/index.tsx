@@ -16,6 +16,7 @@ const Container = styled.div`
   box-shadow: ${floatShadow};
   height: 100%;
   box-sizing: border-box;
+  border-right: solid 1px ${props => props.theme.token?.colorBorderSecondary};
   z-index: 1;
 `
 

@@ -9,7 +9,7 @@ export const CanvasFloatLargeButton = styled(Button).attrs({ size: "large" })`
 
 export const CanvasFloatButton = styled(Button)`
   box-shadow: ${floatShadow};
-  border: 0;
+  border: solid 1px ${props => props.theme.token?.colorBorderSecondary};
 `;
 
 export const CanvasFloatSmallButton = styled(Button).attrs({ size: "small" })`
