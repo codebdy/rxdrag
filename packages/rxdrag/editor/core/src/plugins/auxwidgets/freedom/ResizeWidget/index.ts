@@ -7,6 +7,10 @@ import { getMaxZIndex } from "../../common/ActiviedOutline/getMaxZIndex";
 import { numbToPx } from "../../utils";
 import { AUX_BACKGROUND_COLOR } from "../../utils/constants";
 
+const HandlerWidth = "8px"
+const HandlerHeight = "8px"
+const RotateLineLength = "20px"
+
 //选中时的轮廓线
 export class ResizeWidgetImpl implements IPlugin {
   name = "default.freedom.resize-widget";
@@ -70,16 +74,76 @@ export class ResizeWidgetImpl implements IPlugin {
         inner.style.position = "relative"
         htmlDiv.appendChild(inner)
 
-        const corner = document.createElement('div')
+        //左上角
+        let corner = document.createElement('div')
         corner.style.position = "absolute"
         corner.style.left = "0"
         corner.style.top = "0"
-        corner.style.height = "8px"
-        corner.style.width = "8px"
+        corner.style.height = HandlerHeight
+        corner.style.width = HandlerWidth
         corner.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
         corner.style.backgroundColor = "white"
         corner.style.transform = "translate(-50%, -50%)"
         inner.appendChild(corner)
+
+        //右上角
+        corner = document.createElement('div')
+        corner.style.position = "absolute"
+        corner.style.right = "0"
+        corner.style.top = "0"
+        corner.style.height = HandlerHeight
+        corner.style.width = HandlerWidth
+        corner.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
+        corner.style.backgroundColor = "white"
+        corner.style.transform = "translate(50%, -50%)"
+        inner.appendChild(corner)
+
+        //右下角
+        corner = document.createElement('div')
+        corner.style.position = "absolute"
+        corner.style.right = "0"
+        corner.style.bottom = "0"
+        corner.style.height = HandlerHeight
+        corner.style.width = HandlerWidth
+        corner.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
+        corner.style.backgroundColor = "white"
+        corner.style.transform = "translate(50%, 50%)"
+        inner.appendChild(corner)
+
+        //左上角
+        corner = document.createElement('div')
+        corner.style.position = "absolute"
+        corner.style.left = "0"
+        corner.style.bottom = "0"
+        corner.style.height = HandlerHeight
+        corner.style.width = HandlerWidth
+        corner.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
+        corner.style.backgroundColor = "white"
+        corner.style.transform = "translate(-50%, 50%)"
+        inner.appendChild(corner)
+
+        //旋转支撑线
+        const line =  document.createElement('div')
+        line.style.position = "absolute"
+        line.style.left = "50%"
+        line.style.bottom = "2px"
+        line.style.height = RotateLineLength
+        line.style.width = "0"
+        line.style.borderLeft = `solid 1px ${AUX_BACKGROUND_COLOR}`
+        line.style.transform = "translate(0, -100%)"
+        inner.appendChild(line)
+        //旋转把手
+        const rotateHandler = document.createElement('div')
+        rotateHandler.style.position = "absolute"
+        rotateHandler.style.borderRadius = "50%"
+        rotateHandler.style.left = "50%"
+        rotateHandler.style.top = "-" + RotateLineLength
+        rotateHandler.style.height = HandlerHeight
+        rotateHandler.style.width = HandlerWidth
+        rotateHandler.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
+        rotateHandler.style.backgroundColor = "white"
+        rotateHandler.style.transform = "translate(-50%, -100%)"
+        inner.appendChild(rotateHandler)
 
         for (const element of elements) {
           this.resizeObserver.observe(element)
