@@ -27,6 +27,36 @@ import { ComponentDesignersRoot } from "./ComponentDesignersRoot";
 import { ILocales } from "@rxdrag/locales";
 import { PreviewComponentsContext } from "@rxdrag/react-runner";
 
+export enum LayoutType {
+  Liquid = "liquid",
+  Freedom = "freedom"
+}
+
+const LiquidPlugins = [
+  StartDragController,
+  SelectionController,
+  DragStopController,
+  DragOverController,
+  ActiveController,
+  ActivedOutline,
+  SelectedOutline,
+  GhostWidget,
+  DraggedAttenuator,
+  InsertionCursor,
+  Toolbar,
+]
+const FreedomPlugins = [
+  StartDragController,
+  SelectionController,
+  DragStopController,
+  DragOverController,
+  ActiveController,
+  ActivedOutline,
+  GhostWidget,
+  MoveableFollowerWidget,
+  DraggedAttenuator,
+]
+
 export interface DesignerProps {
   minionOptions?: IMinionOptions,
   themeMode?: ThemeMode,
@@ -35,9 +65,10 @@ export interface DesignerProps {
   materials?: IComponentMaterial[]
   setters?: ISetterComponents<ReactComponent>
   locales?: ILocales,
+  layoutType?: LayoutType,
 }
 export const Designer = memo((props: DesignerProps) => {
-  const { minionOptions, themeMode = "light", children, materials, setters, locales } = props
+  const { minionOptions, themeMode = "light", children, materials, setters, locales, layoutType = LayoutType.Liquid } = props
   const [components, setComponents] = useState<IReactComponents>({})
   const [designers, setDesigners] = useState<IReactComponents>({})
   const [engine, setEngine] = useState<IDesignerEngine>();
@@ -46,20 +77,7 @@ export const Designer = memo((props: DesignerProps) => {
   useEffect(() => {
     let eng: IDesignerEngine<ReactComponent, React.ReactNode> | undefined = undefined
     eng = createEngine(
-      [
-        StartDragController,
-        SelectionController,
-        DragStopController,
-        DragOverController,
-        ActiveController,
-        ActivedOutline,
-        SelectedOutline,
-        GhostWidget,
-        MoveableFollowerWidget,
-        DraggedAttenuator,
-        InsertionCursor,
-        Toolbar,
-      ],
+      layoutType === LayoutType.Liquid ? LiquidPlugins : FreedomPlugins,
       {
         debugMode: false
       }
@@ -69,7 +87,7 @@ export const Designer = memo((props: DesignerProps) => {
       eng?.destroy()
     }
 
-  }, [])
+  }, [layoutType])
 
   useEffect(() => {
     if (engine) {

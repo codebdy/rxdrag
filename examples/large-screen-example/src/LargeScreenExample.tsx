@@ -5,6 +5,7 @@ import { LargeScreenExampleInner } from "./LargeScreenExampleInner"
 import { largeScreenMaterials } from "./marerials/materials"
 import { largeScreenSetters } from "./setters/setters"
 import { resourceCategoryLocales } from "./marerials/locales"
+import { LayoutType } from "@rxdrag/react-core"
 
 export const LargeScreenExample = memo((
   props: {
@@ -16,6 +17,8 @@ export const LargeScreenExample = memo((
   return (
     <EditorScope
       themeMode="dark"
+      //自由布局
+      layoutType={LayoutType.Freedom}
       locales={resourceCategoryLocales}
       canvasUrl={canvasUrl}
       previewUrl={previewUrl}

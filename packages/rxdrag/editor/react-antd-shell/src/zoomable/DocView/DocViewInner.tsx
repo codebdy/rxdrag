@@ -13,7 +13,7 @@ const DocViewContainer = styled.div`
       color: ${props => props.theme.token?.colorPrimary};
     }
     .document-content{
-      outline: solid 4px ${props => props.theme.mode === "dark" ? "rgba(0,0,255, 0.3)" : "rgba(0,0,255, 0.05)"} ;
+      outline: solid 4px ${props => props.theme.mode === "dark" ? "rgba(0,0,255, 0.1)" : "rgba(0,0,255, 0.05)"} ;
     }
   }
 

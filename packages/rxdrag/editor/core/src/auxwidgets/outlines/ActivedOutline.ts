@@ -80,11 +80,12 @@ export class ActivedOutlineImpl implements IPlugin {
   private renderLine(id: ID) {
     this.clearLine()
     const shell = this.engine.getShell()
+    const node = this.engine.getMonitor().getNode(id)
     const elements = shell.getElements(id)
     const canvas = shell.getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
     const containerRect = canvas?.getDocumentBodyRect()
     const rect = shell.getNodeRect(id)
-    if (elements && containerRect && rect) {
+    if (node?.parentId && elements && containerRect && rect) {
       const htmlDiv = document.createElement('div')
       htmlDiv.style.backgroundColor = "transparent"
       htmlDiv.style.position = "fixed"

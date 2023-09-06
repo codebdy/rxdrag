@@ -9,17 +9,13 @@ import { UrlsContext } from "../contexts";
 export const DesignerScope = memo((
   props: EditorScropProps
 ) => {
-  const { themeMode, minionOptions, materials, setters, locales, canvasUrl, previewUrl, children } = props;
+  const { setters, canvasUrl, previewUrl, children, ...rest } = props;
 
   const urls = useMemo(() => ({ canvasUrl, previewUrl }), [canvasUrl, previewUrl])
 
   return (
     <UrlsContext.Provider value={urls}>
       <Designer
-        minionOptions={minionOptions}
-        materials={materials}
-        themeMode={themeMode}
-        locales={locales}
         setters={
           {
             Tabs,
@@ -75,6 +71,7 @@ export const DesignerScope = memo((
             ...setters,
           }
         }
+        {...rest}
       >
         {children}
       </Designer>
