@@ -1,11 +1,11 @@
-import { IDesignerEngine, ID, Unsubscribe } from "../../interfaces";
-import { IPlugin } from "../../interfaces/plugin";
-import { DraggingNodesState } from "../../reducers/draggingNodes";
-import { DraggingResourceState } from "../../reducers/draggingResource";
-import { CanvasScrollEvent } from "../../shell/events";
-import { AUX_BACKGROUND_COLOR } from "../constants";
-import { getMaxZIndex } from "../outlines";
-import { numbToPx } from "../utils/numbToPx";
+import { ID } from "@rxdrag/shared";
+import { IPlugin, IDesignerEngine, Unsubscribe } from "../../../../interfaces";
+import { DraggingNodesState } from "../../../../reducers/draggingNodes";
+import { DraggingResourceState } from "../../../../reducers/draggingResource";
+import { CanvasScrollEvent } from "../../../../shell";
+import { getMaxZIndex } from "../../common/ActiviedOutline/getMaxZIndex";
+import { numbToPx } from "../../utils";
+import { AUX_BACKGROUND_COLOR } from "../../utils/constants";
 
 //选中时的轮廓线
 export class ResizeWidgetImpl implements IPlugin {

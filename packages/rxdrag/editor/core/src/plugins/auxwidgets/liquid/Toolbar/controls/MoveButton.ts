@@ -1,6 +1,6 @@
-import { createAuxProps, IDesignerEngine, ITreeNode, NodeType, RXID_ATTR_NAME, RxProps, Unsubscribe } from "../../../interfaces";
-import { DragStartEvent } from "../../../shell/events";
-import { getOffset, getPosition } from "../../../shell/utils/xycoord";
+import { RxProps, IDesignerEngine, createAuxProps, NodeType, RXID_ATTR_NAME, ITreeNode, Unsubscribe } from "../../../../../interfaces";
+import { DragStartEvent } from "../../../../../shell";
+import { getPosition, getOffset } from "../../../../../shell/utils/xycoord";
 import { AbstractButton } from "./AbstractButton";
 
 export class MoveButton extends AbstractButton {
@@ -43,6 +43,7 @@ export class MoveButton extends AbstractButton {
     `
     htmlEl.style.cursor = "move"
     for (const key of Object.keys(this.rxProps)) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       htmlEl.setAttribute(key, (this.rxProps as any)[key])
     }
 

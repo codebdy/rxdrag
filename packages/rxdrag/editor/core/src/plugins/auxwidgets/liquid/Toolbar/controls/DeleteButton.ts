@@ -1,4 +1,4 @@
-import { IDesignerEngine, ITreeNode } from "../../../interfaces";
+import { IDesignerEngine, ITreeNode } from "../../../../../interfaces";
 import { AbstractButton } from "./AbstractButton";
 
 export class DeleteButton extends AbstractButton {

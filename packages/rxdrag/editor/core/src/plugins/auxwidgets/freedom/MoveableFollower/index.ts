@@ -1,7 +1,6 @@
-import { IDesignerEngine, IDesignerShell, Unsubscribe } from "../../interfaces";
-import { DragStartEvent, MouseMoveEvent } from "../../shell/events/mouse";
-import { IPlugin } from "../../interfaces/plugin";
-import { DraggingNodesState } from "../../reducers/draggingNodes";
+import { IPlugin, IDesignerShell, IDesignerEngine, Unsubscribe } from "../../../../interfaces";
+import { DraggingNodesState } from "../../../../reducers/draggingNodes";
+import { DragStartEvent, MouseMoveEvent } from "../../../../shell";
 
 export type FollowerElement = {
   startPosition: {
@@ -35,31 +34,28 @@ export class MoveableFollowerWidgetImpl implements IPlugin {
   handleDraggingNodes = (draggingState: DraggingNodesState | null) => {
     this.unmount()
     if (draggingState) {
-      //如果是自由布局
-      if (this.engine.getBehaviorManager().isMoveable(draggingState.nodeIds)) {
-        const shell = this.engine.getShell()
-        for (const nodeId of draggingState.nodeIds) {
-          const elements = shell.getElements(nodeId)
-          for (const element of elements || []) {
-            const newElement = element.cloneNode(true) as HTMLElement
-            newElement.style.zIndex = "1"
-            newElement.removeAttribute("rx-id")
-            const rect = element.getBoundingClientRect()
-            newElement.style.width = Math.round(rect.width) + "px"
-            newElement.style.height = Math.round(rect.height) + "px"
-            this.follwers.push({
-              startPosition: {
-                x: rect.left,
-                y: rect.top,
-              },
-              htmlNode: newElement,
-            })
-            element.parentElement?.appendChild(newElement)
-          }
+      const shell = this.engine.getShell()
+      for (const nodeId of draggingState.nodeIds) {
+        const elements = shell.getElements(nodeId)
+        for (const element of elements || []) {
+          const newElement = element.cloneNode(true) as HTMLElement
+          newElement.style.zIndex = "1"
+          newElement.removeAttribute("rx-id")
+          const rect = element.getBoundingClientRect()
+          newElement.style.width = Math.round(rect.width) + "px"
+          newElement.style.height = Math.round(rect.height) + "px"
+          this.follwers.push({
+            startPosition: {
+              x: rect.left,
+              y: rect.top,
+            },
+            htmlNode: newElement,
+          })
+          element.parentElement?.appendChild(newElement)
         }
-        this.mounted = true
-        return
       }
+      this.mounted = true
+      return
     }
   }
 

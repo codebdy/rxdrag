@@ -1,20 +1,10 @@
 import React, { useCallback } from "react"
 import {
-  GhostWidget,
-  InsertionCursor,
-  ActivedOutline,
-  SelectedOutline,
-  Toolbar,
   IDesignerEngine,
-  ActiveController,
-  DragOverController,
-  DragStopController,
-  SelectionController,
-  StartDragController,
   createEngine,
   ThemeMode,
-  DraggedAttenuator,
-  MoveableFollowerWidget,
+  liquidPlugins,
+  freedomPlugins,
 } from "@rxdrag/core";
 import { memo, useEffect, useRef, useState } from "react"
 import { DesignerEngineContext, IMinionOptions, MinionOptionContext } from "./contexts";
@@ -32,30 +22,7 @@ export enum LayoutType {
   Freedom = "freedom"
 }
 
-const LiquidPlugins = [
-  StartDragController,
-  SelectionController,
-  DragStopController,
-  DragOverController,
-  ActiveController,
-  ActivedOutline,
-  SelectedOutline,
-  GhostWidget,
-  DraggedAttenuator,
-  InsertionCursor,
-  Toolbar,
-]
-const FreedomPlugins = [
-  StartDragController,
-  SelectionController,
-  DragStopController,
-  DragOverController,
-  ActiveController,
-  ActivedOutline,
-  GhostWidget,
-  MoveableFollowerWidget,
-  DraggedAttenuator,
-]
+
 
 export interface DesignerProps {
   minionOptions?: IMinionOptions,
@@ -77,7 +44,7 @@ export const Designer = memo((props: DesignerProps) => {
   useEffect(() => {
     let eng: IDesignerEngine<ReactComponent, React.ReactNode> | undefined = undefined
     eng = createEngine(
-      layoutType === LayoutType.Liquid ? LiquidPlugins : FreedomPlugins,
+      layoutType === LayoutType.Liquid ? liquidPlugins : freedomPlugins,
       {
         debugMode: false
       }

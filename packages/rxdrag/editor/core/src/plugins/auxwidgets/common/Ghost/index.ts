@@ -1,9 +1,9 @@
-import { IDesignerEngine, IDesignerShell, Unsubscribe } from "../../interfaces";
-import { DragStartEvent, MouseMoveEvent } from "../../shell/events/mouse";
-import { IPlugin } from "../../interfaces/plugin";
-import { DraggingNodesState } from "../../reducers/draggingNodes";
-import { DraggingResourceState } from "../../reducers/draggingResource";
-import { numbToPx } from "../utils/numbToPx";
+import { IPlugin, IDesignerShell, IDesignerEngine, Unsubscribe } from "../../../../interfaces";
+import { DraggingNodesState } from "../../../../reducers/draggingNodes";
+import { DraggingResourceState } from "../../../../reducers/draggingResource";
+import { DragStartEvent, MouseMoveEvent } from "../../../../shell";
+import { numbToPx } from "../../utils";
+
 
 //跟随鼠标
 export class GhostWidgetImpl implements IPlugin {
@@ -42,9 +42,9 @@ export class GhostWidgetImpl implements IPlugin {
   handleDraggingNodes = (draggingState: DraggingNodesState | null) => {
     if (draggingState) {
       //如果是自由布局
-      if (this.engine.getBehaviorManager().isMoveable(draggingState.nodeIds)) {
-        return
-      }
+      // if (this.engine.getBehaviorManager().isMoveable(draggingState.nodeIds)) {
+      //   return
+      // }
       const node = this.engine.getMonitor().getNode(draggingState.nodeIds[0])
       if (node) {
         this.title = node.title || node.meta.componentName

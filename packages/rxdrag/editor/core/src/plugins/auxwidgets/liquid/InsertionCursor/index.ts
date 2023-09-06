@@ -1,10 +1,8 @@
-import { numbToPx } from "../utils/numbToPx";
-import { IDesignerEngine, IDesignerShell, Unsubscribe } from "../../interfaces";
-import { AcceptType } from "../../interfaces/action";
-import { IPlugin } from "../../interfaces/plugin";
-import { DragOverState } from "../../reducers/dragOver";
-import { addZIndex } from "../../utils/add-zindex";
-import { RelativePosition } from "../../utils/coordinate";
+import { IPlugin, IDesignerShell, IDesignerEngine, AcceptType, Unsubscribe } from "../../../../interfaces";
+import { DragOverState } from "../../../../reducers/dragOver";
+import { addZIndex } from "../../../../utils/add-zindex";
+import { RelativePosition } from "../../../../utils/coordinate";
+import { numbToPx } from "../../utils";
 
 //提示光标
 export class InsertionCursorImpl implements IPlugin {

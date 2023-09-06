@@ -1,9 +1,9 @@
 import { CanvasScrollEvent, DragStartEvent, DragStopEvent } from "../../../../shell/events";
 import { IPlugin } from "../../../../interfaces/plugin";
-import { AUX_BACKGROUND_COLOR } from "../constants";
-import { numbToPx } from "../utils/numbToPx";
 import { getMaxZIndex } from "./getMaxZIndex";
 import { ID, IDesignerEngine, Unsubscribe } from "../../../../interfaces";
+import { numbToPx } from "../../utils";
+import { AUX_BACKGROUND_COLOR } from "../../utils/constants";
 
 //悬停轮廓线
 export class ActivedOutlineImpl implements IPlugin {

@@ -1,16 +1,15 @@
-import { IDesignerEngine, ID, Unsubscribe, ITreeNode } from "../../interfaces";
-import { CanvasScrollEvent } from "../../shell/events";
-import { IPlugin } from "../../interfaces/plugin";
-import { numbToPx } from "../utils/numbToPx";
 import { CloneButton } from "./controls/CloneButton";
 import { DeleteButton } from "./controls/DeleteButton";
 import { ComponentSelector } from "./controls/Selector";
 import { IAuxControl, IAuxToolbar } from "./interfaces";
 import { MoveButton } from "./controls/MoveButton";
-import { DraggingNodesState } from "../../reducers/draggingNodes";
-import { DraggingResourceState } from "../../reducers/draggingResource";
 import { LockButton } from "./controls/LockButton";
-import { getMaxZIndex } from "../../plugins/auxwidgets/common/ActiviedOutline/getMaxZIndex";
+import { ID, IDesignerEngine, IPlugin, ITreeNode, Unsubscribe } from "../../../../interfaces";
+import { DraggingNodesState } from "../../../../reducers/draggingNodes";
+import { DraggingResourceState } from "../../../../reducers/draggingResource";
+import { CanvasScrollEvent } from "../../../../shell";
+import { getMaxZIndex } from "../../common/ActiviedOutline/getMaxZIndex";
+import { numbToPx } from "../../utils";
 
 //工具栏
 export class ToolbarImpl implements IPlugin, IAuxToolbar {

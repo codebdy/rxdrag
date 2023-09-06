@@ -1,4 +1,4 @@
-import { IDesignerEngine, IXYCoord, NodeRelativePosition } from "../../../interfaces";
+import { IDesignerEngine, NodeRelativePosition } from "../../../interfaces";
 import { DragStopEvent } from "../../../shell/events";
 import { HistoryableActionType, IDocument, Unsubscribe } from "../../../interfaces";
 import { AcceptType, DragOverOptions } from "../../../interfaces/action";
@@ -56,7 +56,7 @@ export class DragStopControllerImpl implements IPlugin {
       }
       const draggingResource = monitor.getDraggingResouce()
       if (draggingResource) {
-        this.dropResource(draggingResource, dragOver, document, e);
+        this.dropResource(draggingResource, dragOver, document);
       } else {
         const draggingNodes = monitor.getDraggingNodes()
         if (draggingNodes) {
@@ -66,18 +66,18 @@ export class DragStopControllerImpl implements IPlugin {
     }
   }
 
-  private dropResource = (draggingResource: DraggingResourceState, dragOver: DragOverOptions, document: IDocument, e: DragStopEvent) => {
+  private dropResource = (draggingResource: DraggingResourceState, dragOver: DragOverOptions, document: IDocument) => {
     const resource = this.engine.getResourceManager().getResource(draggingResource?.resource || "");
     const pos = this.tranPosition(dragOver.position)
     if (resource && pos && dragOver.type === AcceptType.Accept) {
-      let mousePostion: IXYCoord | undefined = undefined
-      if (pos === NodeRelativePosition.Absolute) {
-        mousePostion = {
-          x: e.originalEvent.clientX,
-          y: e.originalEvent.clientY,
-        }
-      }
-      const nodes = document.addNewNodes(resource.elements, dragOver.targetId, pos, mousePostion);
+      // let mousePostion: IXYCoord | undefined = undefined
+      // if (pos === NodeRelativePosition.Absolute) {
+      //   mousePostion = {
+      //     x: e.originalEvent.clientX,
+      //     y: e.originalEvent.clientY,
+      //   }
+      // }
+      const nodes = document.addNewNodes(resource.elements, dragOver.targetId, pos);
       document.backup(HistoryableActionType.Add)
       this.engine.getActions().selectNodes(nodes.rootNodes.map(node => node.id));
     }
@@ -90,26 +90,26 @@ export class DragStopControllerImpl implements IPlugin {
 
 
     //如果是自由布局
-    if (dragOver.position === RelativePosition.AbsoluteIn) {
-      document.backup(HistoryableActionType.Move)
-      for (const nodeId of draggingNodes.nodeIds) {
-        const node = this.engine.getMonitor().getNode(nodeId)
-        const meta = node?.meta
-        if (meta) {
-          const newMeta = {
-            ...meta,
-            props: {
-              ...meta.props,
-              left: ((meta?.props?.left as number | undefined) || 0) + (e.originalEvent.clientX - draggingNodes.initialMousePosition.x),
-              top: ((meta?.props?.top as number | undefined) || 0) + (e.originalEvent.clientY - draggingNodes.initialMousePosition.y),
-            }
-          }
-          document.changeNodeMeta(nodeId, newMeta)
-        }
-      }
-      this.engine.getActions().selectNodes(draggingNodes.nodeIds);
-      return
-    }
+    // if (dragOver.position === RelativePosition.AbsoluteIn) {
+    //   document.backup(HistoryableActionType.Move)
+    //   for (const nodeId of draggingNodes.nodeIds) {
+    //     const node = this.engine.getMonitor().getNode(nodeId)
+    //     const meta = node?.meta
+    //     if (meta) {
+    //       const newMeta = {
+    //         ...meta,
+    //         props: {
+    //           ...meta.props,
+    //           left: ((meta?.props?.left as number | undefined) || 0) + (e.originalEvent.clientX - draggingNodes.initialMousePosition.x),
+    //           top: ((meta?.props?.top as number | undefined) || 0) + (e.originalEvent.clientY - draggingNodes.initialMousePosition.y),
+    //         }
+    //       }
+    //       document.changeNodeMeta(nodeId, newMeta)
+    //     }
+    //   }
+    //   this.engine.getActions().selectNodes(draggingNodes.nodeIds);
+    //   return
+    // }
 
     for (const nodeId of draggingNodes.nodeIds || []) {
       const nodDocument = this.engine.getNodeDocument(dragOver.targetId)
@@ -136,8 +136,8 @@ export class DragStopControllerImpl implements IPlugin {
       case RelativePosition.Right:
       case RelativePosition.Bottom:
         return NodeRelativePosition.After
-      case RelativePosition.AbsoluteIn:
-        return NodeRelativePosition.Absolute
+      // case RelativePosition.AbsoluteIn:
+      //   return NodeRelativePosition.Absolute
     }
     return null
   }

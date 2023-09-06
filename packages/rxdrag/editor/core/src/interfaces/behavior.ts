@@ -111,8 +111,8 @@ export interface IBehaviorManager {
   getResourceBehavior(reource: IResource): IBehavior
 
   //判断一组节点是否是可以移动的
-  isMoveable(nodeIds: string[]): boolean
-  //判断一组节点是否可以调整大小
-  isResizable(nodeIds: string[]): boolean
+  // isMoveable(nodeIds: string[]): boolean
+  // //判断一组节点是否可以调整大小
+  // isResizable(nodeIds: string[]): boolean
 }
 

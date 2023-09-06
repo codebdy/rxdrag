@@ -3,7 +3,7 @@ import { AcceptType, DragOverOptions } from "../../../interfaces/action";
 import { IPlugin } from "../../../interfaces/plugin";
 import { IDropPosition, PositionJudger, RelativePosition } from "../../../utils/coordinate";
 import { DragOverState } from "../../../reducers/dragOver";
-import { ID, IDesignerEngine, ITreeNode, Unsubscribe } from "../../../interfaces";
+import { ID, IDesignerEngine, Unsubscribe } from "../../../interfaces";
 
 export class DragOverControllerImpl implements IPlugin {
   name = "default.drag-over-controller";
@@ -42,9 +42,9 @@ export class DragOverControllerImpl implements IPlugin {
 
   private handleDragOver(targetId: ID, e: DragMoveEvent) {
     //先处理自由移动
-    if (this.moveableResourceDragover(targetId) || this.moveableNodesDragover(targetId)) {
-      return
-    }
+    // if (this.moveableResourceDragover(targetId) || this.moveableNodesDragover(targetId)) {
+    //   return
+    // }
 
     const node = this.engine.getMonitor().getNode(targetId)
     if (node) {
@@ -65,50 +65,50 @@ export class DragOverControllerImpl implements IPlugin {
     }
   }
 
-  private moveableNodesDragover(targetId: ID) {
-    const draggingNodesState = this.engine.getMonitor().getDraggingNodes()
-    if (draggingNodesState) {
-      const moveable = this.engine.getBehaviorManager().isMoveable(draggingNodesState.nodeIds)
-      if (moveable) {
-        const container = this.getFreedomContainer(targetId)
-        if (container) {
-          this.dragover = {
-            type: AcceptType.Accept,
-            position: RelativePosition.AbsoluteIn,
-            targetId: container.id
-          }
-          this.engine.getActions().dragover(this.dragover)
-          return true
-        }
-      }
-    }
+  // private moveableNodesDragover(targetId: ID) {
+  //   const draggingNodesState = this.engine.getMonitor().getDraggingNodes()
+  //   if (draggingNodesState) {
+  //     const moveable = this.engine.getBehaviorManager().isMoveable(draggingNodesState.nodeIds)
+  //     if (moveable) {
+  //       const container = this.getFreedomContainer(targetId)
+  //       if (container) {
+  //         this.dragover = {
+  //           type: AcceptType.Accept,
+  //           position: RelativePosition.AbsoluteIn,
+  //           targetId: container.id
+  //         }
+  //         this.engine.getActions().dragover(this.dragover)
+  //         return true
+  //       }
+  //     }
+  //   }
 
-    return false
-  }
+  //   return false
+  // }
 
-  private moveableResourceDragover(targetId: ID) {
-    const draggingResourceState = this.engine.getMonitor().getDraggingResouce()
-    if (draggingResourceState) {
-      const resource = this.engine.getResourceManager().getResource(draggingResourceState.resource)
-      if (resource) {
-        const resourceBehavior = this.engine.getBehaviorManager().getResourceBehavior(resource)
-        const moveable = resourceBehavior.moveable()
-        if (moveable?.left || moveable?.top) {
-          const container = this.getFreedomContainer(targetId)
-          if (container) {
-            this.dragover = {
-              type: AcceptType.Accept,
-              position: RelativePosition.AbsoluteIn,
-              targetId: container.id
-            }
-            this.engine.getActions().dragover(this.dragover)
-            return true
-          }
-        }
-      }
-    }
-    return false
-  }
+  // private moveableResourceDragover(targetId: ID) {
+  //   const draggingResourceState = this.engine.getMonitor().getDraggingResouce()
+  //   if (draggingResourceState) {
+  //     const resource = this.engine.getResourceManager().getResource(draggingResourceState.resource)
+  //     if (resource) {
+  //       const resourceBehavior = this.engine.getBehaviorManager().getResourceBehavior(resource)
+  //       const moveable = resourceBehavior.moveable()
+  //       if (moveable?.left || moveable?.top) {
+  //         const container = this.getFreedomContainer(targetId)
+  //         if (container) {
+  //           this.dragover = {
+  //             type: AcceptType.Accept,
+  //             position: RelativePosition.AbsoluteIn,
+  //             targetId: container.id
+  //           }
+  //           this.engine.getActions().dragover(this.dragover)
+  //           return true
+  //         }
+  //       }
+  //     }
+  //   }
+  //   return false
+  // }
 
   private canAccept(position: IDropPosition): AcceptType {
     if (this.engine.getMonitor().getState().draggingNodes) {
@@ -179,17 +179,17 @@ export class DragOverControllerImpl implements IPlugin {
     this.unsubscribe()
   }
 
-  private getFreedomContainer(id: string): ITreeNode | undefined {
-    const node = this.engine.getMonitor().getNode(id)
-    const nodeBehavior = this.engine.getBehaviorManager().getNodeBehavior(id)
-    if (nodeBehavior?.freedomContainer()) {
-      return node || undefined
-    }
-    if (node?.parentId) {
-      return this.getFreedomContainer(node?.parentId)
-    }
-    return undefined
-  }
+  //   private getFreedomContainer(id: string): ITreeNode | undefined {
+  //     const node = this.engine.getMonitor().getNode(id)
+  //     const nodeBehavior = this.engine.getBehaviorManager().getNodeBehavior(id)
+  //     if (nodeBehavior?.freedomContainer()) {
+  //       return node || undefined
+  //     }
+  //     if (node?.parentId) {
+  //       return this.getFreedomContainer(node?.parentId)
+  //     }
+  //     return undefined
+  //   }
 
 }
 

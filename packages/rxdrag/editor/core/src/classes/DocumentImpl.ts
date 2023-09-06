@@ -2,7 +2,7 @@
 import { makeRxId } from "@rxdrag/shared";
 import { HistoryableActionType, IDocument, IDocumentAction, ISnapshot, ITreeNode, NodeChunk, NodeRelativePosition, NodesById } from "../interfaces/document";
 import { AddNodesPayload, BackupPayload, ChangeMetaPayloads, DeleteNodesPayload, DocumentActionPayload, GotoPayload, MoveNodesPayload, RecoverSnapshotPayload, RemoveSlotPayload } from "../interfaces/payloads";
-import { ID, IDesignerEngine, IMoveable, IXYCoord } from "../interfaces";
+import { ID, IDesignerEngine } from "../interfaces";
 import { State } from "../reducers";
 import { parseNodeSchema, paseNodes } from "../funcs/parseNodeSchema";
 import { Store } from "redux";
@@ -50,21 +50,21 @@ export class DocumentImpl implements IDocument {
   multiMoveTo(sourceIds: string[], targetId: string, pos: NodeRelativePosition): void {
     throw new Error("Method not implemented.");
   }
-  addNewNodes(elements: INodeSchema | INodeSchema[], targetId: string, pos: NodeRelativePosition, absolutePosition?: IXYCoord): NodeChunk {
+  addNewNodes(elements: INodeSchema | INodeSchema[], targetId: string, pos: NodeRelativePosition): NodeChunk {
     const nodesChunk = paseNodes(this.engine, this.id, elements);
     const nodes = nodesChunk.nodesById
-    if (pos === NodeRelativePosition.Absolute) {
-      for (const key of Object.keys(nodes)) {
-        const node = nodes[key]
-        if (node) {
-          node.meta.props = {
-            ...node.meta.props,
-            left: absolutePosition?.x,
-            top: absolutePosition?.y,
-          }
-        }
-      }
-    }
+    // if (pos === NodeRelativePosition.Absolute) {
+    //   for (const key of Object.keys(nodes)) {
+    //     const node = nodes[key]
+    //     if (node) {
+    //       node.meta.props = {
+    //         ...node.meta.props,
+    //         left: absolutePosition?.x,
+    //         top: absolutePosition?.y,
+    //       }
+    //     }
+    //   }
+    // }
 
     this.receiveNodes(nodesChunk)
     const payload: AddNodesPayload = {

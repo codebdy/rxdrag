@@ -1,5 +1,6 @@
-import { AUX_BACKGROUND_COLOR, AUX_COLOR, TOOLBAR_HEIGHT } from "../../constants";
-import { ID, IDesignerEngine, ITreeNode } from "../../../interfaces";
+import { ID } from "@rxdrag/shared";
+import { IDesignerEngine, ITreeNode } from "../../../../../interfaces";
+import { AUX_BACKGROUND_COLOR, AUX_COLOR, TOOLBAR_HEIGHT } from "../../../utils/constants";
 import { IAuxControl } from "../interfaces";
 
 export class ComponentSelector implements IAuxControl {

@@ -1,7 +1,7 @@
-export *from "./actions"
-export * from "./auxwidgets"
+export * from "./actions"
 export * from "./interfaces"
-export * from "./controllers"
+export * from "./plugins"
 export * from "./decorators"
 export * from "./shell"
+
 export { createEngine } from "./createEngine"

@@ -1,4 +1,3 @@
-import { IDropPosition } from "../utils/coordinate";
 import { IAction } from "./action";
 import { DocumentActionPayload } from "./payloads";
 import { ID, IXYCoord, RxProps } from "./types";
@@ -30,7 +29,7 @@ export enum NodeRelativePosition {
   InBottom,
   Before,
   After,
-  Absolute,
+  // Absolute,
 }
 export type NodeListener = (node: ITreeNode) => void
 

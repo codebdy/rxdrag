@@ -1,7 +1,7 @@
-import { IDesignerEngine, IDesignerShell, Unsubscribe } from "../../interfaces";
-import { DragStartEvent } from "../../shell/events/mouse";
-import { IPlugin } from "../../interfaces/plugin";
-import { DraggingNodesState } from "../../reducers/draggingNodes";
+import { IPlugin, IDesignerShell, IDesignerEngine, Unsubscribe } from "../../../../interfaces";
+import { DraggingNodesState } from "../../../../reducers/draggingNodes";
+import { DragStartEvent } from "../../../../shell";
+
 
 //让被拖动的对象变暗
 export class DraggedAttenuatorImpl implements IPlugin {
