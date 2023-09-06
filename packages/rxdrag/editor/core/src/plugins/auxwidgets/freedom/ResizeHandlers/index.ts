@@ -9,7 +9,7 @@ import { AUX_BACKGROUND_COLOR } from "../../utils/constants";
 
 //选中时的轮廓线
 export class ResizeWidgetImpl implements IPlugin {
-  name = "default.resize-widget";
+  name = "default.freedom.resize-widget";
   resizeObserver: ResizeObserver
   private unsubscribe: Unsubscribe;
   private htmls: {

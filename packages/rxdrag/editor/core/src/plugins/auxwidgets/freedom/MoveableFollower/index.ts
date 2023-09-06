@@ -12,7 +12,7 @@ export type FollowerElement = {
 
 //自由移动跟随鼠标
 export class MoveableFollowerWidgetImpl implements IPlugin {
-  name = "default.moveable-follower";
+  name = "default.freedom.moveable-follower";
   follwers: FollowerElement[] = [];
   draggingNodesOff: Unsubscribe
   dragOff: Unsubscribe | null = null

@@ -5,7 +5,7 @@ import { numbToPx } from "../../utils";
 
 //跟随鼠标
 export class FreedomGhostImpl implements IPlugin {
-  name = "default.ghost";
+  name = "default.freedom.ghost";
   htmlNode: HTMLElement;
   draggingResourceOff: Unsubscribe
   dragOff: Unsubscribe | null = null
