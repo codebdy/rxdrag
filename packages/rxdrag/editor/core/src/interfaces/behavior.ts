@@ -45,15 +45,15 @@ export type CompareSource = {
 
 //resouce跟node都可以有behavior
 export interface IBehaviorRule {
-  freedomContainer?: AbleType<ITreeNode>  //自由布局容器
+  // freedomContainer?: AbleType<ITreeNode>  //自由布局容器
   disabled?: AbleType<ITreeNode> //默认false
   selectable?: AbleType<ITreeNode>  //是否可选中，默认为true
   droppable?: AbleType<ITreeNode> //是否可作为拖拽容器，默认为false
   draggable?: AbleType<ITreeNode>  //是否可拖拽，默认为true
   deletable?: AbleType<ITreeNode>  //是否可删除，默认为true
   cloneable?: AbleType<ITreeNode>  //是否可拷贝，默认为true
-  resizable?: AbleType<ITreeNode, IResizable>//可调整大小
-  moveable?: AbleType<ITreeNode, IMoveable> // 可移动，可用于自由布局
+  // resizable?: AbleType<ITreeNode, IResizable>//可调整大小
+  // moveable?: AbleType<ITreeNode, IMoveable> // 可移动，可用于自由布局
   equalRatio?: AbleType<ITreeNode>  //是否等比，用于自由布局
   rotatable?: AbleType<ITreeNode>  //是否可旋转，用于自由布局
   allowChild?: AbleType<CompareSource>
@@ -66,15 +66,15 @@ export interface IBehaviorRule {
 
 
 export interface IBehavior {
-  freedomContainer: () => boolean //自由拖放容器， 默认false
+  // freedomContainer: () => boolean //自由拖放容器， 默认false
   disabled: () => boolean //默认false
   selectable: () => boolean  //是否可选中，默认为true
   droppable: () => boolean //是否可作为拖拽容器，默认为false
   draggable: () => boolean  //是否可拖拽，默认为true
   deletable: () => boolean  //是否可删除，默认为true
   cloneable: () => boolean //是否可拷贝，默认为true
-  resizable: () => IResizable | undefined//可调整大小
-  moveable: () => IMoveable | undefined // 可移动，可用于自由布局
+  // resizable: () => IResizable | undefined//可调整大小
+  // moveable: () => IMoveable | undefined // 可移动，可用于自由布局
   equalRatio: () => boolean //是否等比，用于自由布局
   rotatable: () => boolean //是否可旋转，用于自由布局
   allowChild: (options?: CompareSource) => boolean

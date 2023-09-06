@@ -14,15 +14,15 @@ export class Behavior implements IBehavior {
     }
   }
 
-  freedomContainer() {
-    if (isFn(this.rule.freedomContainer)) {
-      return this.rule.freedomContainer(this.node, this.engine)
-    }
-    if (this.rule.freedomContainer !== undefined) {
-      return this.rule.freedomContainer
-    }
-    return false
-  }
+  // freedomContainer() {
+  //   if (isFn(this.rule.freedomContainer)) {
+  //     return this.rule.freedomContainer(this.node, this.engine)
+  //   }
+  //   if (this.rule.freedomContainer !== undefined) {
+  //     return this.rule.freedomContainer
+  //   }
+  //   return false
+  // }
   
   disabled() {
     if (isFn(this.rule.disabled)) {
@@ -86,19 +86,19 @@ export class Behavior implements IBehavior {
     return true
   }
 
-  resizable() {
-    if (isFn(this.rule.resizable)) {
-      return this.rule.resizable(this.node, this.engine)
-    }
-    return this.rule.resizable
-  }
+  // resizable() {
+  //   if (isFn(this.rule.resizable)) {
+  //     return this.rule.resizable(this.node, this.engine)
+  //   }
+  //   return this.rule.resizable
+  // }
 
-  moveable() {
-    if (isFn(this.rule.moveable)) {
-      return this.rule.moveable(this.node, this.engine)
-    }
-    return this.rule.moveable
-  }
+  // moveable() {
+  //   if (isFn(this.rule.moveable)) {
+  //     return this.rule.moveable(this.node, this.engine)
+  //   }
+  //   return this.rule.moveable
+  // }
 
   equalRatio() {
     if (isFn(this.rule.equalRatio)) {
