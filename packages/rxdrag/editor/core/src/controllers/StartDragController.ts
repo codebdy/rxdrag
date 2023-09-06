@@ -14,6 +14,8 @@ export class StartDragControllerImpl implements IPlugin {
   handleDragStart = (e: DragStartEvent) => {
     //禁止user select
     document.body.style.userSelect = "none"
+    //清空选中
+    document.getSelection()?.empty()
     const canvases = this.engine.getShell()?.getAllCanvases()
     for (const key of Object.keys(canvases)) {
       const canvas = canvases[key]
@@ -21,6 +23,8 @@ export class StartDragControllerImpl implements IPlugin {
         const element = canvas.getRootElement()
         if (element) {
           element.style.userSelect = "none"
+          //清空选中
+          element.ownerDocument.getSelection()?.empty()
         }
       }
     }
