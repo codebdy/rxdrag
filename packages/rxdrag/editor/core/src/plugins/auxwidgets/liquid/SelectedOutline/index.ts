@@ -58,8 +58,8 @@ export class SelectedOutlineImpl implements IPlugin {
         htmlDiv.style.pointerEvents = "none"
         htmlDiv.style.left = numbToPx(rect.x - containerRect.x)
         htmlDiv.style.top = numbToPx(rect.y - containerRect.y)
-        htmlDiv.style.height = numbToPx(rect.height - 4)
-        htmlDiv.style.width = numbToPx(rect.width - 4)
+        htmlDiv.style.height = numbToPx(rect.height - 2)
+        htmlDiv.style.width = numbToPx(rect.width - 2)
         htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
         canvas?.appendAux(htmlDiv)
         this.htmls[id] = htmlDiv

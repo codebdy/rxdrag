@@ -54,15 +54,32 @@ export class ResizeWidgetImpl implements IPlugin {
         const htmlDiv = document.createElement('div')
         htmlDiv.style.backgroundColor = "transparent"
         htmlDiv.style.position = "fixed"
-        htmlDiv.style.border = `solid 2px ${AUX_BACKGROUND_COLOR}`
+        htmlDiv.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
         htmlDiv.style.pointerEvents = "none"
         htmlDiv.style.left = numbToPx(rect.x - containerRect.x)
         htmlDiv.style.top = numbToPx(rect.y - containerRect.y)
-        htmlDiv.style.height = numbToPx(rect.height - 4)
-        htmlDiv.style.width = numbToPx(rect.width - 4)
+        htmlDiv.style.height = numbToPx(rect.height - 1)
+        htmlDiv.style.width = numbToPx(rect.width - 1)
         htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
         canvas?.appendAux(htmlDiv)
         this.htmls[id] = htmlDiv
+
+        const inner = document.createElement('div')
+        inner.style.height = "100%"
+        inner.style.width = "100%"
+        inner.style.position = "relative"
+        htmlDiv.appendChild(inner)
+
+        const corner = document.createElement('div')
+        corner.style.position = "absolute"
+        corner.style.left = "0"
+        corner.style.top = "0"
+        corner.style.height = "8px"
+        corner.style.width = "8px"
+        corner.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
+        corner.style.backgroundColor = "white"
+        corner.style.transform = "translate(-50%, -50%)"
+        inner.appendChild(corner)
 
         for (const element of elements) {
           this.resizeObserver.observe(element)

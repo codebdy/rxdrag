@@ -46,7 +46,8 @@ export class ActivedOutlineImpl implements IPlugin {
   handleActivedChange = (activedId: ID | undefined | null): void => {
     this.resizeObserver.disconnect()
     this.clearLine()
-    if (activedId) {
+    const selectedIds = this.engine.getMonitor().getState().selectedIds
+    if (!selectedIds?.find(id => id === activedId) && activedId) {
       this.currentId = activedId
       if (!this.dragging) {
         this.renderLine(activedId)
@@ -93,8 +94,8 @@ export class ActivedOutlineImpl implements IPlugin {
       htmlDiv.style.pointerEvents = "none"
       htmlDiv.style.left = numbToPx(rect.x - containerRect.x)
       htmlDiv.style.top = numbToPx(rect.y - containerRect.y)
-      htmlDiv.style.height = numbToPx(rect.height - 2)
-      htmlDiv.style.width = numbToPx(rect.width - 2)
+      htmlDiv.style.height = numbToPx(rect.height - 1)
+      htmlDiv.style.width = numbToPx(rect.width - 1)
       htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
       canvas?.appendAux(htmlDiv)
       this.outline = htmlDiv
