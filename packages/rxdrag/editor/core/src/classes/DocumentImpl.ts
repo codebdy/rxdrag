@@ -59,7 +59,8 @@ export class DocumentImpl implements IDocument {
         if (node) {
           node.meta.props = {
             ...node.meta.props,
-            ...absolutePosition,
+            left: absolutePosition?.x,
+            top: absolutePosition?.y,
           }
         }
       }

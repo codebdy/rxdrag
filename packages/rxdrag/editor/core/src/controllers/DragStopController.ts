@@ -100,8 +100,8 @@ export class DragStopControllerImpl implements IPlugin {
             ...meta,
             props: {
               ...meta.props,
-              x: ((meta?.props?.x as number | undefined) || 0) + (e.originalEvent.clientX - draggingNodes.initialMousePosition.x),
-              y: ((meta?.props?.y as number | undefined) || 0) + (e.originalEvent.clientY - draggingNodes.initialMousePosition.y),
+              left: ((meta?.props?.left as number | undefined) || 0) + (e.originalEvent.clientX - draggingNodes.initialMousePosition.x),
+              top: ((meta?.props?.top as number | undefined) || 0) + (e.originalEvent.clientY - draggingNodes.initialMousePosition.y),
             }
           }
           document.changeNodeMeta(nodeId, newMeta)
