@@ -1,5 +1,5 @@
-import { ActivedOutline, GhostWidget, DraggedAttenuator } from "./auxwidgets";
-import { MoveableFollowerWidget } from "./auxwidgets/freedom";
+import { ActivedOutline, DraggedAttenuator } from "./auxwidgets";
+import { FreedomGhost, MoveableFollowerWidget } from "./auxwidgets/freedom";
 import { ActiveController, DragOverController, DragStopController, SelectionController, StartDragController } from "./controllers";
 
 export const freedomPlugins = [
@@ -9,7 +9,7 @@ export const freedomPlugins = [
   DragOverController,
   ActiveController,
   ActivedOutline,
-  GhostWidget,
+  FreedomGhost,
   MoveableFollowerWidget,
   DraggedAttenuator,
 ]
