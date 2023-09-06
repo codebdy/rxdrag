@@ -58,7 +58,7 @@ export class FreedomDragStopControllerImpl implements IPlugin {
       } else {
         const draggingNodes = monitor.getDraggingNodes()
         if (draggingNodes) {
-          this.dropNodes(draggingNodes, targetNode, document, e);
+          this.dropNodes(draggingNodes, document, e);
         }
       }
     }
@@ -81,47 +81,30 @@ export class FreedomDragStopControllerImpl implements IPlugin {
     }
   }
 
-  private dropNodes(draggingNodes: DraggingNodesState, targetNode: ITreeNode, document: IDocument, e: DragStopEvent) {
+  private dropNodes(draggingNodes: DraggingNodesState, document: IDocument, e: DragStopEvent) {
     if (!draggingNodes) {
       return
     }
 
-
     //如果是自由布局
-    // if (dragOver.position === RelativePosition.AbsoluteIn) {
-    //   document.backup(HistoryableActionType.Move)
-    //   for (const nodeId of draggingNodes.nodeIds) {
-    //     const node = this.engine.getMonitor().getNode(nodeId)
-    //     const meta = node?.meta
-    //     if (meta) {
-    //       const newMeta = {
-    //         ...meta,
-    //         props: {
-    //           ...meta.props,
-    //           left: ((meta?.props?.left as number | undefined) || 0) + (e.originalEvent.clientX - draggingNodes.initialMousePosition.x),
-    //           top: ((meta?.props?.top as number | undefined) || 0) + (e.originalEvent.clientY - draggingNodes.initialMousePosition.y),
-    //         }
-    //       }
-    //       document.changeNodeMeta(nodeId, newMeta)
-    //     }
-    //   }
-    //   this.engine.getActions().selectNodes(draggingNodes.nodeIds);
-    //   return
-    // }
-
-    // for (const nodeId of draggingNodes.nodeIds || []) {
-    //   const nodDocument = this.engine.getNodeDocument(dragOver.targetId)
-    //   const pos = this.tranPosition(dragOver.position)
-    //   if (nodDocument?.id === document.id && pos && dragOver.type === AcceptType.Accept) {
-    //     document.moveTo(nodeId, dragOver.targetId, pos)
-    //     document.backup(HistoryableActionType.Move)
-    //   } else {
-    //     //预留实现
-    //     //nodDocument?.getActions().remove(nodeId)
-    //     //document.getActions().addNodeFormOutside()
-    //   }
-    // }
+    document.backup(HistoryableActionType.Move)
+    for (const nodeId of draggingNodes.nodeIds) {
+      const node = this.engine.getMonitor().getNode(nodeId)
+      const meta = node?.meta
+      if (meta) {
+        const newMeta = {
+          ...meta,
+          props: {
+            ...meta.props,
+            left: ((meta?.props?.left as number | undefined) || 0) + (e.originalEvent.clientX - draggingNodes.initialMousePosition.x),
+            top: ((meta?.props?.top as number | undefined) || 0) + (e.originalEvent.clientY - draggingNodes.initialMousePosition.y),
+          }
+        }
+        document.changeNodeMeta(nodeId, newMeta)
+      }
+    }
     this.engine.getActions().selectNodes(draggingNodes.nodeIds);
+    return
   }
 
   destroy(): void {
