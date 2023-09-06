@@ -1,11 +1,9 @@
-import { IDesignerEngine, NodeRelativePosition } from "../../../interfaces";
+import { IDesignerEngine, ITreeNode } from "../../../interfaces";
 import { DragStopEvent } from "../../../shell/events";
 import { HistoryableActionType, IDocument, Unsubscribe } from "../../../interfaces";
-import { AcceptType, DragOverOptions } from "../../../interfaces/action";
 import { IPlugin } from "../../../interfaces/plugin";
 import { DraggingNodesState } from "../../../reducers/draggingNodes";
 import { DraggingResourceState } from "../../../reducers/draggingResource";
-import { RelativePosition } from "../../../utils/coordinate";
 import { invariant } from "@rxdrag/shared";
 
 export class FreedomDragStopControllerImpl implements IPlugin {
@@ -42,48 +40,48 @@ export class FreedomDragStopControllerImpl implements IPlugin {
   drop(e: DragStopEvent): void {
     const monitor = this.engine.getMonitor()
     const { rxId } = e.data.targetRx || {}
-    if (!rxId || !monitor.getNode(rxId)) {
+    const targetNode = monitor.getNode(rxId || "")
+    if (!rxId || !targetNode) {
       console.log("元素置于画布外")
       return
     }
 
-    const dragOver = monitor.getDragOver()
-    if (dragOver) {
-      const document = this.engine.getNodeDocument(dragOver.targetId)
-      invariant(document, "can not find node document by id:" + dragOver.targetId)
+    if (targetNode) {
+      const document = this.engine.getNodeDocument(targetNode.id)
+      invariant(document, "can not find node document by id:" + targetNode.id)
       if (!document?.id) {
         return
       }
       const draggingResource = monitor.getDraggingResouce()
       if (draggingResource) {
-        this.dropResource(draggingResource, dragOver, document);
+        this.dropResource(draggingResource, targetNode, document, e);
       } else {
         const draggingNodes = monitor.getDraggingNodes()
         if (draggingNodes) {
-          this.dropNodes(draggingNodes, dragOver, document, e);
+          this.dropNodes(draggingNodes, targetNode, document, e);
         }
       }
     }
   }
 
-  private dropResource = (draggingResource: DraggingResourceState, dragOver: DragOverOptions, document: IDocument) => {
+  private dropResource = (draggingResource: DraggingResourceState, targetNode: ITreeNode, document: IDocument, e: DragStopEvent) => {
     const resource = this.engine.getResourceManager().getResource(draggingResource?.resource || "");
-    const pos = this.tranPosition(dragOver.position)
-    if (resource && pos && dragOver.type === AcceptType.Accept) {
-      // let mousePostion: IXYCoord | undefined = undefined
-      // if (pos === NodeRelativePosition.Absolute) {
-      //   mousePostion = {
-      //     x: e.originalEvent.clientX,
-      //     y: e.originalEvent.clientY,
-      //   }
-      // }
-      const nodes = document.addNewNodes(resource.elements, dragOver.targetId, pos);
+    const freedomContainer = this.getFreedomContainer(targetNode.id)
+    //const pos = this.tranPosition(dragOver.position)
+    if (freedomContainer && resource) {
+      const mousePostion = {
+        x: e.originalEvent.clientX,
+        y: e.originalEvent.clientY,
+      }
+      const nodes = document.addNewFreedomNodes(resource.elements, freedomContainer.id, mousePostion);
       document.backup(HistoryableActionType.Add)
       this.engine.getActions().selectNodes(nodes.rootNodes.map(node => node.id));
+    } else {
+      console.error("not drop in freedom container or resource is emperty")
     }
   }
 
-  private dropNodes(draggingNodes: DraggingNodesState, dragOver: DragOverOptions, document: IDocument, e: DragStopEvent) {
+  private dropNodes(draggingNodes: DraggingNodesState, targetNode: ITreeNode, document: IDocument, e: DragStopEvent) {
     if (!draggingNodes) {
       return
     }
@@ -111,39 +109,35 @@ export class FreedomDragStopControllerImpl implements IPlugin {
     //   return
     // }
 
-    for (const nodeId of draggingNodes.nodeIds || []) {
-      const nodDocument = this.engine.getNodeDocument(dragOver.targetId)
-      const pos = this.tranPosition(dragOver.position)
-      if (nodDocument?.id === document.id && pos && dragOver.type === AcceptType.Accept) {
-        document.moveTo(nodeId, dragOver.targetId, pos)
-        document.backup(HistoryableActionType.Move)
-      } else {
-        //预留实现
-        //nodDocument?.getActions().remove(nodeId)
-        //document.getActions().addNodeFormOutside()
-      }
-    }
+    // for (const nodeId of draggingNodes.nodeIds || []) {
+    //   const nodDocument = this.engine.getNodeDocument(dragOver.targetId)
+    //   const pos = this.tranPosition(dragOver.position)
+    //   if (nodDocument?.id === document.id && pos && dragOver.type === AcceptType.Accept) {
+    //     document.moveTo(nodeId, dragOver.targetId, pos)
+    //     document.backup(HistoryableActionType.Move)
+    //   } else {
+    //     //预留实现
+    //     //nodDocument?.getActions().remove(nodeId)
+    //     //document.getActions().addNodeFormOutside()
+    //   }
+    // }
     this.engine.getActions().selectNodes(draggingNodes.nodeIds);
-  }
-
-  private tranPosition(curPos: RelativePosition | null): NodeRelativePosition | null {
-    switch (curPos) {
-      case RelativePosition.In:
-        return NodeRelativePosition.InBottom
-      case RelativePosition.Left:
-      case RelativePosition.Top:
-        return NodeRelativePosition.Before
-      case RelativePosition.Right:
-      case RelativePosition.Bottom:
-        return NodeRelativePosition.After
-      // case RelativePosition.AbsoluteIn:
-      //   return NodeRelativePosition.Absolute
-    }
-    return null
   }
 
   destroy(): void {
     this.unsubscribe()
+  }
+
+  private getFreedomContainer(id: string): ITreeNode | undefined {
+    const node = this.engine.getMonitor().getNode(id)
+    const nodeBehavior = this.engine.getBehaviorManager().getNodeBehavior(id)
+    if (nodeBehavior?.freedomContainer()) {
+      return node || undefined
+    }
+    if (node?.parentId) {
+      return this.getFreedomContainer(node?.parentId)
+    }
+    return undefined
   }
 }
 

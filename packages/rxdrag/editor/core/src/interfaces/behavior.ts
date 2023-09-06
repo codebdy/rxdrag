@@ -45,7 +45,7 @@ export type CompareSource = {
 
 //resouce跟node都可以有behavior
 export interface IBehaviorRule {
-  // freedomContainer?: AbleType<ITreeNode>  //自由布局容器
+  freedomContainer?: AbleType<ITreeNode>  //自由布局容器
   disabled?: AbleType<ITreeNode> //默认false
   selectable?: AbleType<ITreeNode>  //是否可选中，默认为true
   droppable?: AbleType<ITreeNode> //是否可作为拖拽容器，默认为false
@@ -66,7 +66,7 @@ export interface IBehaviorRule {
 
 
 export interface IBehavior {
-  // freedomContainer: () => boolean //自由拖放容器， 默认false
+  freedomContainer: () => boolean //自由拖放容器， 默认false
   disabled: () => boolean //默认false
   selectable: () => boolean  //是否可选中，默认为true
   droppable: () => boolean //是否可作为拖拽容器，默认为false

@@ -2,7 +2,7 @@
 import { makeRxId } from "@rxdrag/shared";
 import { HistoryableActionType, IDocument, IDocumentAction, ISnapshot, ITreeNode, NodeChunk, NodeRelativePosition, NodesById } from "../interfaces/document";
 import { AddNodesPayload, BackupPayload, ChangeMetaPayloads, DeleteNodesPayload, DocumentActionPayload, GotoPayload, MoveNodesPayload, RecoverSnapshotPayload, RemoveSlotPayload } from "../interfaces/payloads";
-import { ID, IDesignerEngine } from "../interfaces";
+import { ID, IDesignerEngine, IXYCoord } from "../interfaces";
 import { State } from "../reducers";
 import { parseNodeSchema, paseNodes } from "../funcs/parseNodeSchema";
 import { Store } from "redux";
@@ -52,26 +52,40 @@ export class DocumentImpl implements IDocument {
   }
   addNewNodes(elements: INodeSchema | INodeSchema[], targetId: string, pos: NodeRelativePosition): NodeChunk {
     const nodesChunk = paseNodes(this.engine, this.id, elements);
-    const nodes = nodesChunk.nodesById
-    // if (pos === NodeRelativePosition.Absolute) {
-    //   for (const key of Object.keys(nodes)) {
-    //     const node = nodes[key]
-    //     if (node) {
-    //       node.meta.props = {
-    //         ...node.meta.props,
-    //         left: absolutePosition?.x,
-    //         top: absolutePosition?.y,
-    //       }
-    //     }
-    //   }
-    // }
-
     this.receiveNodes(nodesChunk)
     const payload: AddNodesPayload = {
       documentId: this.id,
       nodes: nodesChunk,
       targetId,
       pos
+    }
+    this.dispatch(this.createAction(ADD_NODES, payload))
+
+    return nodesChunk
+  }
+
+  addNewFreedomNodes(elements: INodeSchema<unknown, unknown> | INodeSchema<unknown, unknown>[], targetId: string, absolutePosition: IXYCoord): NodeChunk {
+    const nodesChunk = paseNodes(this.engine, this.id, elements);
+    const nodes = nodesChunk.nodesById
+    if (absolutePosition) {
+      for (const key of Object.keys(nodes)) {
+        const node = nodes[key]
+        if (node) {
+          node.meta.props = {
+            ...node.meta.props,
+            left: absolutePosition?.x,
+            top: absolutePosition?.y,
+          }
+        }
+      }
+    }
+
+    this.receiveNodes(nodesChunk)
+    const payload: AddNodesPayload = {
+      documentId: this.id,
+      nodes: nodesChunk,
+      targetId,
+      pos: NodeRelativePosition.InBottom
     }
     this.dispatch(this.createAction(ADD_NODES, payload))
 

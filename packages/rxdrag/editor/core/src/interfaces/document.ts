@@ -29,7 +29,6 @@ export enum NodeRelativePosition {
   InBottom,
   Before,
   After,
-  // Absolute,
 }
 export type NodeListener = (node: ITreeNode) => void
 
@@ -67,15 +66,6 @@ export interface ITreeNode<IField = unknown, INodeController = unknown> {
 }
 
 
-
-// export interface IBlocksSchema {
-//   [bolckName: string]: INodeSchema
-// }
-
-// export interface IBlocksTreeNode {
-//   [bolckName: string]: ITreeNode
-// }
-
 export enum HistoryableActionType {
   Default = "Default",
   Add = "Add",
@@ -98,7 +88,8 @@ export interface IDocument {
   initialize(meta: IDocumentSchema): void
   moveTo(sourceId: ID, targetId: ID, pos: NodeRelativePosition): void
   multiMoveTo(sourceIds: ID[], targetId: ID, pos: NodeRelativePosition): void
-  addNewNodes(elements: INodeSchema | INodeSchema[], targetId: ID, pos: NodeRelativePosition, absolutePosition?:IXYCoord): NodeChunk
+  addNewNodes(elements: INodeSchema | INodeSchema[], targetId: ID, pos: NodeRelativePosition): NodeChunk
+  addNewFreedomNodes(elements: INodeSchema | INodeSchema[], targetId: ID, absolutePosition: IXYCoord): NodeChunk
   remove(sourceId: ID): void
   clone(sourceId: ID): void
   changeNodeMeta(id: ID, newMeta: INodeMeta): void
