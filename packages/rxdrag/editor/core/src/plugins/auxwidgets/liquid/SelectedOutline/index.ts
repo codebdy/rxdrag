@@ -1,11 +1,11 @@
-import { IDesignerEngine, ID, Unsubscribe } from "../../interfaces";
-import { IPlugin } from "../../interfaces/plugin";
-import { DraggingNodesState } from "../../reducers/draggingNodes";
-import { DraggingResourceState } from "../../reducers/draggingResource";
-import { CanvasScrollEvent } from "../../shell/events";
-import { AUX_BACKGROUND_COLOR } from "../constants";
+import { IDesignerEngine, ID, Unsubscribe } from "../../../../interfaces";
+import { IPlugin } from "../../../../interfaces/plugin";
+import { DraggingNodesState } from "../../../../reducers/draggingNodes";
+import { DraggingResourceState } from "../../../../reducers/draggingResource";
+import { CanvasScrollEvent } from "../../../../shell/events";
+import { AUX_BACKGROUND_COLOR } from "../../common/constants";
 import { numbToPx } from "../utils/numbToPx";
-import { getMaxZIndex } from "./getMaxZIndex";
+import { getMaxZIndex } from "../../common/ActiviedOutline/getMaxZIndex";
 
 //选中时的轮廓线
 export class SelectedOutlineImpl implements IPlugin {

@@ -1,11 +1,11 @@
-import { IDesignerEngine, IXYCoord, NodeRelativePosition } from "../interfaces";
-import { DragStopEvent } from "../shell/events";
-import { HistoryableActionType, IDocument, Unsubscribe } from "../interfaces";
-import { AcceptType, DragOverOptions } from "../interfaces/action";
-import { IPlugin } from "../interfaces/plugin";
-import { DraggingNodesState } from "../reducers/draggingNodes";
-import { DraggingResourceState } from "../reducers/draggingResource";
-import { RelativePosition } from "../utils/coordinate";
+import { IDesignerEngine, IXYCoord, NodeRelativePosition } from "../../../interfaces";
+import { DragStopEvent } from "../../../shell/events";
+import { HistoryableActionType, IDocument, Unsubscribe } from "../../../interfaces";
+import { AcceptType, DragOverOptions } from "../../../interfaces/action";
+import { IPlugin } from "../../../interfaces/plugin";
+import { DraggingNodesState } from "../../../reducers/draggingNodes";
+import { DraggingResourceState } from "../../../reducers/draggingResource";
+import { RelativePosition } from "../../../utils/coordinate";
 import { invariant } from "@rxdrag/shared";
 
 export class DragStopControllerImpl implements IPlugin {

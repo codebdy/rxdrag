@@ -1,6 +1,6 @@
-import { IDesignerEngine, NodeType, Unsubscribe } from "../interfaces";
-import { MouseClickEvent } from "../shell/events";
-import { IPlugin } from "../interfaces/plugin";
+import { IDesignerEngine, NodeType, Unsubscribe } from "../../../interfaces";
+import { MouseClickEvent } from "../../../shell/events";
+import { IPlugin } from "../../../interfaces/plugin";
 
 //处理选中
 export class SelectionControllerImpl implements IPlugin {

@@ -10,7 +10,7 @@ import { MoveButton } from "./controls/MoveButton";
 import { DraggingNodesState } from "../../reducers/draggingNodes";
 import { DraggingResourceState } from "../../reducers/draggingResource";
 import { LockButton } from "./controls/LockButton";
-import { getMaxZIndex } from "../outlines/getMaxZIndex";
+import { getMaxZIndex } from "../../plugins/auxwidgets/common/ActiviedOutline/getMaxZIndex";
 
 //工具栏
 export class ToolbarImpl implements IPlugin, IAuxToolbar {

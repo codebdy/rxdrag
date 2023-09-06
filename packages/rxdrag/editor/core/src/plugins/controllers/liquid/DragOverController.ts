@@ -1,9 +1,9 @@
-import { DragMoveEvent } from "../shell/events";
-import { AcceptType, DragOverOptions } from "../interfaces/action";
-import { IPlugin } from "../interfaces/plugin";
-import { IDropPosition, PositionJudger, RelativePosition } from "../utils/coordinate";
-import { DragOverState } from "../reducers/dragOver";
-import { ID, IDesignerEngine, ITreeNode, Unsubscribe } from "../interfaces";
+import { DragMoveEvent } from "../../../shell/events";
+import { AcceptType, DragOverOptions } from "../../../interfaces/action";
+import { IPlugin } from "../../../interfaces/plugin";
+import { IDropPosition, PositionJudger, RelativePosition } from "../../../utils/coordinate";
+import { DragOverState } from "../../../reducers/dragOver";
+import { ID, IDesignerEngine, ITreeNode, Unsubscribe } from "../../../interfaces";
 
 export class DragOverControllerImpl implements IPlugin {
   name = "default.drag-over-controller";
