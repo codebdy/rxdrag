@@ -1,6 +1,6 @@
 import { IDesignerEngine } from "../../../../interfaces"
 import { AUX_BACKGROUND_COLOR } from "../../utils"
-import { HandlerSize } from "./consts"
+import { HandlerSize } from "./utils"
 
 export class CornerHandler {
   protected htmlElement: HTMLElement
