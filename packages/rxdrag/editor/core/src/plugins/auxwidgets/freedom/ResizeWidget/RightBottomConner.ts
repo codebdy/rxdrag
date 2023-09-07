@@ -1,4 +1,4 @@
-import { HistoryableActionType, IDesignerEngine, IRect, ITreeNode } from "../../../../interfaces";
+import { HistoryableActionType, IDesignerEngine, IRect, ISize, ITreeNode } from "../../../../interfaces";
 import { CornerHandler, Offset } from "./CornerHandler";
 import { rightBottomCursor } from "./cursors";
 import { HandlerSize, leftTopBottomRightCursor, svgCursor } from "./utils";
@@ -40,16 +40,24 @@ export class RightBottomConner extends CornerHandler {
         this.container.parentElement.style.height = Math.round(this.rect.height + offset.y) + "px"
       }
 
-      // const newMeta = {
-      //   ...this.node.meta,
-      //   props: {
-      //     ...this.node.meta.props,
-      //     with: this.startNodeRect.width + offset.x,
-      //     height: this.startNodeRect.height + offset.y,
+      //这个代码不行，跟下面的drop冲突，需要备份原始尺寸
+      //   const doc = this.engine.getNodeDocument(this.nodes?.[0]?.id || "")
+      //   if (doc) {
+      //     const canvas = this.engine.getShell().getCanvas(doc.id)
+
+      //     for (const node of this.nodes) {
+      //       if (!node) {
+      //         continue
+      //       }
+      //       const elements = canvas?.getElements(node.id)
+      //       for (const el of elements || []) {
+      //         const rect = el.getBoundingClientRect()
+      //         const newSize = this.getNewSize(rect, offset)
+      //         el.style.width = newSize.width + "px"
+      //         el.style.height = newSize.height + "px"
+      //       }
+      //     }
       //   }
-      // }
-      // console.log("===>onDragging", newMeta.props)
-      // this.engine.getNodeDocument(this.node.id)?.changeNodeMeta(this.node.id, newMeta)
     }
   }
 
@@ -59,9 +67,6 @@ export class RightBottomConner extends CornerHandler {
       const doc = this.engine.getNodeDocument(this.nodes?.[0]?.id || "")
       if (doc) {
         const canvas = this.engine.getShell().getCanvas(doc.id)
-
-        const widthScale = (this.rect.width + offset.x) / this.rect.width
-        const heightScale = (this.rect.height + offset.y) / this.rect.height
 
         for (const node of this.nodes) {
           if (!node) {
@@ -73,8 +78,7 @@ export class RightBottomConner extends CornerHandler {
               ...node.meta,
               props: {
                 ...node.meta.props,
-                width: Math.round(nodeRect.width * widthScale),
-                height: Math.round(nodeRect.height * heightScale),
+                ...this.getNewSize(nodeRect, offset)
               }
             }
             doc.changeNodeMeta(node.id, newMeta)
@@ -83,6 +87,18 @@ export class RightBottomConner extends CornerHandler {
         doc.backup(HistoryableActionType.Resize)
       }
 
+    }
+  }
+
+  protected getNewSize(old: ISize, offset: Offset): ISize {
+    const newWidth = this.rect.width + offset.x
+    const newHeight = this.rect.height + offset.y
+
+    const widthScale = (newWidth < 0 ? 1 : newWidth) / this.rect.width
+    const heightScale = (newHeight < 0 ? 1 : newHeight) / this.rect.height
+    return {
+      width: Math.round(old.width * widthScale),
+      height: Math.round(old.height * heightScale),
     }
   }
 }
