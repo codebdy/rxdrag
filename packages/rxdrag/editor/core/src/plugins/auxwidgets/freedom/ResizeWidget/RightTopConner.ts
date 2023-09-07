@@ -1,11 +1,11 @@
-import { HistoryableActionType, IDesignerEngine, IRect, ISize, ITreeNode } from "../../../../interfaces";
-import { CornerHandler, Offset } from "./CornerHandler";
+import { IDesignerEngine, IRect, ISize, IXYCoord } from "../../../../interfaces";
+import { CornerHandler, INodeInfo, Offset } from "./CornerHandler";
 import { rigtTopCursor } from "./cursors";
 import { HandlerSize, leftBottomTopRightCursor, svgCursor } from "./utils";
 
 export class RightTopConner extends CornerHandler {
-  constructor(protected nodes: (ITreeNode | undefined)[], protected rect: IRect, container: HTMLDivElement, protected engine: IDesignerEngine) {
-    super(nodes, rect, container, engine)
+  constructor(protected nodeInfos: (INodeInfo | undefined)[], protected rect: IRect, container: HTMLDivElement, protected engine: IDesignerEngine) {
+    super(nodeInfos, rect, container, engine)
     this.htmlElement.style.transform = "translate(50%, -50%)"
     this.htmlElement.style.cursor = svgCursor(leftBottomTopRightCursor, "ne-resize")
     this.htmlElement.style.right = "0"
@@ -33,43 +33,6 @@ export class RightTopConner extends CornerHandler {
     this.hemlElementInner.appendChild(rightRotate)
   }
 
-  protected onDragging(offset: Offset): void {
-    if (!this.rotating && this.rect) {
-      if (this.container.parentElement) {
-        this.container.parentElement.style.width = Math.round(this.rect.width + offset.x) + "px"
-        this.container.parentElement.style.height = Math.round(this.rect.height - offset.y) + "px"
-        this.container.parentElement.style.top = Math.round(this.rect.y + offset.y) + "px"
-      }
-    }
-  }
-
-  protected onDrop(offset: Offset): void {
-    if (!this.rotating && this.rect) {
-      const doc = this.engine.getNodeDocument(this.nodes?.[0]?.id || "")
-      if (doc) {
-        const canvas = this.engine.getShell().getCanvas(doc.id)
-
-        for (const node of this.nodes) {
-          if (!node) {
-            continue
-          }
-          const nodeRect = canvas?.getNodeRect(node.id)
-          if (nodeRect) {
-            const newMeta = {
-              ...node.meta,
-              props: {
-                ...node.meta.props,
-                ...this.getNewSize(nodeRect, offset),
-                top: node.meta.props?.top as number + offset.y
-              }
-            }
-            doc.changeNodeMeta(node.id, newMeta)
-          }
-        }
-        doc.backup(HistoryableActionType.Resize)
-      }
-    }
-  }
 
   protected getNewSize(old: ISize, offset: Offset): ISize {
     const newWidth = this.rect.width + offset.x
@@ -80,6 +43,13 @@ export class RightTopConner extends CornerHandler {
     return {
       width: Math.round(old.width * widthScale),
       height: Math.round(old.height * heightScale),
+    }
+  }
+
+  protected getNewPostition(old: IXYCoord, offset: Offset): IXYCoord {
+    return {
+      ...old,
+      y: old.y + + offset.y
     }
   }
 }

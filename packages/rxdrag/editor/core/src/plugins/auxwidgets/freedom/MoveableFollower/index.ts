@@ -1,6 +1,7 @@
 import { IPlugin, IDesignerShell, IDesignerEngine, Unsubscribe } from "../../../../interfaces";
 import { DraggingNodesState } from "../../../../reducers/draggingNodes";
 import { DragStartEvent, MouseMoveEvent } from "../../../../shell";
+import { AUX_BACKGROUND_COLOR } from "../../utils";
 
 export type FollowerElement = {
   startPosition: {
@@ -44,6 +45,8 @@ export class MoveableFollowerWidgetImpl implements IPlugin {
           const rect = element.getBoundingClientRect()
           newElement.style.width = Math.round(rect.width) + "px"
           newElement.style.height = Math.round(rect.height) + "px"
+          newElement.style.outline = `solid 1px ${AUX_BACKGROUND_COLOR}`
+          newElement.style.opacity = "0.5"
           this.follwers.push({
             startPosition: {
               x: rect.left,

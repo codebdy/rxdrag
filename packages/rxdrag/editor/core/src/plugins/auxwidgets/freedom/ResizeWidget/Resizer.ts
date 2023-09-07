@@ -1,5 +1,6 @@
-import { IDesignerEngine, ITreeNode } from "../../../../interfaces";
+import { IDesignerEngine, IRect, ITreeNode } from "../../../../interfaces";
 import { AUX_BACKGROUND_COLOR, numbToPx } from "../../utils";
+import { INodeInfo } from "./CornerHandler";
 import { LeftBottomConner } from "./LeftBottomConner";
 import { LeftTopConner } from "./LeftTopConner";
 import { RightBottomConner } from "./RightBottomConner";
@@ -20,9 +21,15 @@ export class Resizer {
       const rect = canvas.getNodesRect(ids);
       console.log("创建 Resizer")
       //判断根组件，多选不让选根组件，这里就无需判断
-      const nodes = ids.map(id => this.engine.getMonitor().getNode(id)).filter(node => !!node) as ITreeNode[]
+      const nodes: INodeInfo[] = ids.map(id => this.engine.getMonitor().getNode(id)).filter(node => !!node).map(node => {
+        return {
+          node: node as ITreeNode,
+          rect: canvas.getNodeRect((node as ITreeNode).id) as IRect,
+          isGroup: false,
+        }
+      })
 
-      const parentId = nodes[0]?.parentId
+      const parentId = nodes[0]?.node?.parentId
       if (parentId && containerRect && rect && nodes.length) {
         const htmlDiv = document.createElement('div')
         htmlDiv.style.backgroundColor = "transparent"
