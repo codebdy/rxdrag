@@ -3,21 +3,14 @@ import { IPlugin, IDesignerEngine, Unsubscribe } from "../../../../interfaces";
 import { DraggingNodesState } from "../../../../reducers/draggingNodes";
 import { DraggingResourceState } from "../../../../reducers/draggingResource";
 import { CanvasScrollEvent } from "../../../../shell";
-import { getMaxZIndex } from "../../common/ActiviedOutline/getMaxZIndex";
-import { numbToPx } from "../../utils";
-import { AUX_BACKGROUND_COLOR } from "../../utils/constants";
+import { Resizer } from "./Resizer";
 
-const HandlerWidth = "8px"
-const HandlerHeight = "8px"
-const RotateLineLength = "20px"
-
-//选中时的轮廓线
 export class ResizeWidgetImpl implements IPlugin {
   name = "default.freedom.resize-widget";
   resizeObserver: ResizeObserver
   private unsubscribe: Unsubscribe;
-  private htmls: {
-    [id in ID]: HTMLElement
+  private resizers: {
+    [id in ID]: Resizer
   } = {}
   private nodeChangeUnsubscribe: Unsubscribe;
   private selectedNodes: ID[] | null = null
@@ -52,102 +45,10 @@ export class ResizeWidgetImpl implements IPlugin {
     for (const id of this.selectedNodes || []) {
       const elements = shell.getElements(id)
       const canvas = shell.getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
-      const containerRect = canvas?.getDocumentBodyRect()
-      const rect = shell.getNodeRect(id);
-      if (elements && containerRect && rect) {
-        const htmlDiv = document.createElement('div')
-        htmlDiv.style.backgroundColor = "transparent"
-        htmlDiv.style.position = "fixed"
-        htmlDiv.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
-        htmlDiv.style.pointerEvents = "none"
-        htmlDiv.style.left = numbToPx(rect.x - containerRect.x)
-        htmlDiv.style.top = numbToPx(rect.y - containerRect.y)
-        htmlDiv.style.height = numbToPx(rect.height - 1)
-        htmlDiv.style.width = numbToPx(rect.width - 1)
-        htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
-        canvas?.appendAux(htmlDiv)
-        this.htmls[id] = htmlDiv
 
-        const inner = document.createElement('div')
-        inner.style.height = "100%"
-        inner.style.width = "100%"
-        inner.style.position = "relative"
-        htmlDiv.appendChild(inner)
-
-        //左上角
-        let corner = document.createElement('div')
-        corner.style.position = "absolute"
-        corner.style.left = "0"
-        corner.style.top = "0"
-        corner.style.height = HandlerHeight
-        corner.style.width = HandlerWidth
-        corner.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
-        corner.style.backgroundColor = "white"
-        corner.style.transform = "translate(-50%, -50%)"
-        inner.appendChild(corner)
-
-        //右上角
-        corner = document.createElement('div')
-        corner.style.position = "absolute"
-        corner.style.right = "0"
-        corner.style.top = "0"
-        corner.style.height = HandlerHeight
-        corner.style.width = HandlerWidth
-        corner.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
-        corner.style.backgroundColor = "white"
-        corner.style.transform = "translate(50%, -50%)"
-        inner.appendChild(corner)
-
-        //右下角
-        corner = document.createElement('div')
-        corner.style.position = "absolute"
-        corner.style.right = "0"
-        corner.style.bottom = "0"
-        corner.style.height = HandlerHeight
-        corner.style.width = HandlerWidth
-        corner.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
-        corner.style.backgroundColor = "white"
-        corner.style.transform = "translate(50%, 50%)"
-        inner.appendChild(corner)
-
-        //左上角
-        corner = document.createElement('div')
-        corner.style.position = "absolute"
-        corner.style.left = "0"
-        corner.style.bottom = "0"
-        corner.style.height = HandlerHeight
-        corner.style.width = HandlerWidth
-        corner.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
-        corner.style.backgroundColor = "white"
-        corner.style.transform = "translate(-50%, 50%)"
-        inner.appendChild(corner)
-
-        //旋转支撑线
-        const line =  document.createElement('div')
-        line.style.position = "absolute"
-        line.style.left = "50%"
-        line.style.bottom = "2px"
-        line.style.height = RotateLineLength
-        line.style.width = "0"
-        line.style.borderLeft = `solid 1px ${AUX_BACKGROUND_COLOR}`
-        line.style.transform = "translate(0, -100%)"
-        inner.appendChild(line)
-        //旋转把手
-        const rotateHandler = document.createElement('div')
-        rotateHandler.style.position = "absolute"
-        rotateHandler.style.borderRadius = "50%"
-        rotateHandler.style.left = "50%"
-        rotateHandler.style.top = "-" + RotateLineLength
-        rotateHandler.style.height = HandlerHeight
-        rotateHandler.style.width = HandlerWidth
-        rotateHandler.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
-        rotateHandler.style.backgroundColor = "white"
-        rotateHandler.style.transform = "translate(-50%, -100%)"
-        inner.appendChild(rotateHandler)
-
-        for (const element of elements) {
-          this.resizeObserver.observe(element)
-        }
+      if (elements?.length && canvas) {
+        const resizer = new Resizer(id, canvas, elements, this.engine)
+        this.resizers[id] = resizer
       }
     }
   }
@@ -172,15 +73,15 @@ export class ResizeWidgetImpl implements IPlugin {
   }
 
   private hideWhenDragging = (dragging: boolean) => {
-    if (dragging) {
-      for (const key of Object.keys(this.htmls)) {
-        this.htmls[key].style.display = "none"
-      }
-    } else {
-      for (const key of Object.keys(this.htmls)) {
-        this.htmls[key].style.display = ""
-      }
-    }
+    // if (dragging) {
+    //   for (const key of Object.keys(this.resizers)) {
+    //     this.resizers[key].style.display = "none"
+    //   }
+    // } else {
+    //   for (const key of Object.keys(this.resizers)) {
+    //     this.resizers[key].style.display = ""
+    //   }
+    // }
   }
 
   onViewportChange = () => {
@@ -207,10 +108,10 @@ export class ResizeWidgetImpl implements IPlugin {
   }
 
   private clear() {
-    for (const id of Object.keys(this.htmls)) {
-      this.htmls[id].remove()
+    for (const id of Object.keys(this.resizers)) {
+      this.resizers[id].destory()
     }
-    this.htmls = {}
+    this.resizers = {}
   }
 }
 
