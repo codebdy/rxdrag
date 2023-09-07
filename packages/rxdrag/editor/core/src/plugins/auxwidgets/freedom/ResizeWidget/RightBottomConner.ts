@@ -35,6 +35,11 @@ export class RightBottomConner extends CornerHandler {
 
   protected onDragging(offset: Offset): void {
     if (!this.rotating && this.rect) {
+      if (this.container.parentElement) {
+        this.container.parentElement.style.width = Math.round(this.rect.width + offset.x) + "px"
+        this.container.parentElement.style.height = Math.round(this.rect.height + offset.y) + "px"
+      }
+
       // const newMeta = {
       //   ...this.node.meta,
       //   props: {
