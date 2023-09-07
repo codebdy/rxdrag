@@ -35,10 +35,6 @@ export class ResizeWidgetImpl implements IPlugin {
     this.refresh()
   }
 
-  onMutation = () => {
-    this.refresh()
-  }
-
   render = () => {
     this.clear()
     const shell = this.engine.getShell()

@@ -1,11 +1,21 @@
-import { IDesignerEngine } from "../../../../interfaces"
+import { IDesignerEngine, IRect, ITreeNode } from "../../../../interfaces"
 import { AUX_BACKGROUND_COLOR } from "../../utils"
 import { HandlerSize } from "./utils"
 
-export class CornerHandler {
+export type Offset = {
+  x: number,
+  y: number,
+}
+
+export abstract class CornerHandler {
   protected htmlElement: HTMLElement
   protected hemlElementInner: HTMLElement
-  constructor(protected container: HTMLDivElement, protected engine: IDesignerEngine) {
+  protected startDrageEvent?: MouseEvent
+  //开始拖动时节点rect
+  protected startNodeRect?: IRect
+  protected rotating?: boolean
+
+  constructor(protected node: ITreeNode, protected container: HTMLDivElement, protected engine: IDesignerEngine) {
     this.htmlElement = document.createElement('div')
     this.htmlElement.style.pointerEvents = "all"
     this.htmlElement.style.position = "absolute"
@@ -21,10 +31,73 @@ export class CornerHandler {
     this.hemlElementInner.style.width = '100%'
 
     this.htmlElement.appendChild(this.hemlElementInner)
+    this.htmlElement.addEventListener("mousedown", this.handleMouseDown)
+    this.container.ownerDocument.addEventListener("mouseup", this.handleMousUp)
+    this.container.ownerDocument.addEventListener("mousemove", this.handleMousMove)
   }
 
+  protected abstract onDragging(offset: Offset): void
+  protected abstract onDrop(offset: Offset): void
 
   destory() {
+    this.htmlElement.removeEventListener("mousedown", this.handleMouseDown)
+    this.container.ownerDocument.removeEventListener("mouseup", this.handleMousUp)
+    this.container.ownerDocument.removeEventListener("mousemove", this.handleMousMove)
     this.htmlElement.remove()
+  }
+
+  protected handleMouseDown = (e: MouseEvent) => {
+    const nodeRect = this.getNodeRect()
+    if (nodeRect) {
+      this.startDrageEvent = e
+      this.startNodeRect = {
+        x: (this.node.meta.props?.left as number | undefined) || nodeRect?.x,
+        y: (this.node.meta.props?.top as number | undefined) || nodeRect?.y,
+        height: (this.node.meta.props?.height as number | undefined) || nodeRect?.height,
+        width: (this.node.meta.props?.width as number | undefined) || nodeRect?.width,
+      }
+    }
+
+    this.container.ownerDocument.body.style.userSelect = "none"
+  }
+
+  protected handleMousUp = (e: MouseEvent) => {
+    console.log("====>handleMousUp", e)
+    if (this.startDrageEvent) {
+      this.onDrop(this.getOffset(e))
+    }
+    this.container.ownerDocument.body.style.userSelect = ""
+    this.startDrageEvent = undefined
+  }
+
+  protected handleMousMove = (e: MouseEvent) => {
+    //如果鼠标左键不再被按下
+    if (e.buttons === 0 && this.startDrageEvent) {
+      this.handleMousUp(e)
+      return
+    }
+
+    if (this.startDrageEvent) {
+      this.onDragging(this.getOffset(e))
+    }
+  }
+
+  protected handleBlockMouseDown(e: MouseEvent) {
+    e.stopPropagation()
+  }
+
+  protected getOffset(e: MouseEvent): Offset {
+    if (this.startDrageEvent) {
+      return {
+        x: e.screenX - this.startDrageEvent.screenX,
+        y: e.screenY - this.startDrageEvent.screenY,
+      }
+    }
+    return { x: 0, y: 0 }
+
+  }
+
+  protected getNodeRect() {
+    return this.engine.getShell().getCanvas(this.engine.getNodeDocument(this.node.id)?.id || "")?.getNodeRect(this.node.id) || undefined
   }
 }

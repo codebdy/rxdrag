@@ -1,11 +1,11 @@
-import { IDesignerEngine } from "../../../../interfaces";
-import { CornerHandler } from "./CornerHandler";
+import { IDesignerEngine, ITreeNode } from "../../../../interfaces";
+import { CornerHandler, Offset } from "./CornerHandler";
 import { leftTopCursor } from "./cursors";
 import { HandlerSize, leftTopBottomRightCursor, svgCursor } from "./utils";
 
 export class LeftTopConner extends CornerHandler {
-  constructor(container: HTMLDivElement, protected engine: IDesignerEngine) {
-    super(container, engine)
+  constructor(protected node: ITreeNode, container: HTMLDivElement, protected engine: IDesignerEngine) {
+    super(node, container, engine)
     this.htmlElement.style.transform = "translate(-50%, -50%)"
     this.htmlElement.style.cursor = svgCursor(leftTopBottomRightCursor, "nw-resize")
     this.htmlElement.style.left = "0"
@@ -32,4 +32,13 @@ export class LeftTopConner extends CornerHandler {
     rightRotate.style.transform = "translate(0, -100%)"
     this.hemlElementInner.appendChild(rightRotate)
   }
+
+  protected onDragging(offset: Offset): void {
+    throw new Error("Method not implemented.");
+  }
+
+  protected onDrop(offset: Offset): void {
+    throw new Error("Method not implemented.");
+  }
+
 }

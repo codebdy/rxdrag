@@ -12,12 +12,14 @@ export class Resizer {
   private rightTop?: RightTopConner;
   private rightBottom?: RightBottomConner;
   private leftBottom?: LeftBottomConner;
-  
+
   constructor(id: string, canvas: IShellPane, elements: HTMLElement[] | null, protected engine: IDesignerEngine) {
     const containerRect = canvas.getDocumentBodyRect()
     const rect = canvas.getNodeRect(id);
+    console.log("创建 Resizer")
     //判断根组件
-    const parentId = this.engine.getMonitor().getNode(id)?.parentId
+    const node = this.engine.getMonitor().getNode(id)
+    const parentId = node?.parentId
     if (parentId && containerRect && rect && elements?.length) {
       const htmlDiv = document.createElement('div')
       htmlDiv.style.backgroundColor = "transparent"
@@ -38,10 +40,10 @@ export class Resizer {
       htmlDiv.appendChild(inner)
       this.htmlDiv = htmlDiv
 
-      this.leftTop = new LeftTopConner(inner, engine)
-      this.rightTop = new RightTopConner(inner, engine)
-      this.rightBottom = new RightBottomConner(inner, engine)
-      this.leftBottom = new LeftBottomConner(inner, engine)
+      this.leftTop = new LeftTopConner(node, inner, engine)
+      this.rightTop = new RightTopConner(node, inner, engine)
+      this.rightBottom = new RightBottomConner(node, inner, engine)
+      this.leftBottom = new LeftBottomConner(node, inner, engine)
     }
 
   }
@@ -51,5 +53,9 @@ export class Resizer {
     this.rightBottom?.destory()
     this.leftBottom?.destory()
     this.htmlDiv?.remove()
+  }
+
+  refresh(){
+    
   }
 }
