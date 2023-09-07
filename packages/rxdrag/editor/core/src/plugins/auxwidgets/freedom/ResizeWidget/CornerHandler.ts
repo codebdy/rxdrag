@@ -11,11 +11,9 @@ export abstract class CornerHandler {
   protected htmlElement: HTMLElement
   protected hemlElementInner: HTMLElement
   protected startDrageEvent?: MouseEvent
-  //开始拖动时节点rect
-  protected startNodeRect?: IRect
   protected rotating?: boolean
 
-  constructor(protected node: ITreeNode, protected container: HTMLDivElement, protected engine: IDesignerEngine) {
+  constructor(protected nodes: (ITreeNode | undefined)[], protected rect: IRect, protected container: HTMLDivElement, protected engine: IDesignerEngine) {
     this.htmlElement = document.createElement('div')
     this.htmlElement.style.pointerEvents = "all"
     this.htmlElement.style.position = "absolute"
@@ -47,17 +45,7 @@ export abstract class CornerHandler {
   }
 
   protected handleMouseDown = (e: MouseEvent) => {
-    const nodeRect = this.getNodeRect()
-    if (nodeRect) {
-      this.startDrageEvent = e
-      this.startNodeRect = {
-        x: (this.node.meta.props?.left as number | undefined) || nodeRect?.x,
-        y: (this.node.meta.props?.top as number | undefined) || nodeRect?.y,
-        height: (this.node.meta.props?.height as number | undefined) || nodeRect?.height,
-        width: (this.node.meta.props?.width as number | undefined) || nodeRect?.width,
-      }
-    }
-
+    this.startDrageEvent = e
     this.container.ownerDocument.body.style.userSelect = "none"
   }
 
@@ -97,7 +85,7 @@ export abstract class CornerHandler {
 
   }
 
-  protected getNodeRect() {
-    return this.engine.getShell().getCanvas(this.engine.getNodeDocument(this.node.id)?.id || "")?.getNodeRect(this.node.id) || undefined
-  }
+  // protected getNodeRect() {
+  //   return this.engine.getShell().getCanvas(this.engine.getNodeDocument(this.node.id)?.id || "")?.getNodeRect(this.node.id) || undefined
+  // }
 }

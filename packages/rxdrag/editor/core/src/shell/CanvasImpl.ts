@@ -17,6 +17,7 @@ export class CanvasImpl implements IShellPane {
     }
   }
 
+
   getRootElement(): HTMLElement {
     return document.body;
   }
@@ -63,6 +64,11 @@ export class CanvasImpl implements IShellPane {
     if (!rects?.length) {
       return null
     }
+    return getMergedRect(rects);
+  }
+
+  getNodesRect(nodeIds: string[]): IRect | null {
+    const rects = nodeIds.map(id => this.getNodeRect(id)).filter(rect => !!rect) as IRect[]
     return getMergedRect(rects);
   }
 

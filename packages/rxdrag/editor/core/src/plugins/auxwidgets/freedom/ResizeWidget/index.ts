@@ -1,7 +1,5 @@
 import { ID } from "@rxdrag/shared";
 import { IPlugin, IDesignerEngine, Unsubscribe } from "../../../../interfaces";
-import { DraggingNodesState } from "../../../../reducers/draggingNodes";
-import { DraggingResourceState } from "../../../../reducers/draggingResource";
 import { CanvasScrollEvent } from "../../../../shell";
 import { Resizer } from "./Resizer";
 
@@ -9,15 +7,13 @@ export class ResizeWidgetImpl implements IPlugin {
   name = "default.freedom.resize-widget";
   resizeObserver: ResizeObserver
   private unsubscribe: Unsubscribe;
-  private resizers: {
-    [id in ID]: Resizer
-  } = {}
+  private resizer: Resizer | undefined
   private nodeChangeUnsubscribe: Unsubscribe;
   private selectedNodes: ID[] | null = null
   private refreshedFlag = false
   private unCanvasScroll: Unsubscribe
-  private draggingNodesOff: Unsubscribe
-  private draggingResourceOff: Unsubscribe
+  //private draggingNodesOff: Unsubscribe
+  //private draggingResourceOff: Unsubscribe
 
   constructor(protected engine: IDesignerEngine) {
     if (!engine.getShell().getContainer) {
@@ -27,8 +23,8 @@ export class ResizeWidgetImpl implements IPlugin {
     this.unsubscribe = engine.getMonitor().subscribeToSelectChange(this.handleSelectChange)
     this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
     this.unCanvasScroll = this.engine.getShell().subscribeTo<CanvasScrollEvent>(CanvasScrollEvent.Name, this.refresh)
-    this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
-    this.draggingResourceOff = this.engine.getMonitor().subscribeToDraggingResource(this.handleDraggingResource)
+    //this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
+    //this.draggingResourceOff = this.engine.getMonitor().subscribeToDraggingResource(this.handleDraggingResource)
   }
 
   onResize = () => {
@@ -37,15 +33,9 @@ export class ResizeWidgetImpl implements IPlugin {
 
   render = () => {
     this.clear()
-    const shell = this.engine.getShell()
-    for (const id of this.selectedNodes || []) {
-      const elements = shell.getElements(id)
-      const canvas = shell.getCanvas(this.engine.getMonitor().getNodeDocumentId(id) || "")
-
-      if (elements?.length && canvas) {
-        const resizer = new Resizer(id, canvas, elements, this.engine)
-        this.resizers[id] = resizer
-      }
+    if (this.selectedNodes?.length) {
+      const resizer = new Resizer(this.selectedNodes, this.engine)
+      this.resizer = resizer
     }
   }
 
@@ -60,25 +50,25 @@ export class ResizeWidgetImpl implements IPlugin {
     }
   }
 
-  handleDraggingNodes = (dragging: DraggingNodesState | null) => {
-    this.hideWhenDragging(!!dragging)
-  }
+  // handleDraggingNodes = (dragging: DraggingNodesState | null) => {
+  //   this.hideWhenDragging(!!dragging)
+  // }
 
-  handleDraggingResource = (dragging: DraggingResourceState | null) => {
-    this.hideWhenDragging(!!dragging)
-  }
+  // handleDraggingResource = (dragging: DraggingResourceState | null) => {
+  //   this.hideWhenDragging(!!dragging)
+  // }
 
-  private hideWhenDragging = (dragging: boolean) => {
-    // if (dragging) {
-    //   for (const key of Object.keys(this.resizers)) {
-    //     this.resizers[key].style.display = "none"
-    //   }
-    // } else {
-    //   for (const key of Object.keys(this.resizers)) {
-    //     this.resizers[key].style.display = ""
-    //   }
-    // }
-  }
+  // private hideWhenDragging = (dragging: boolean) => {
+  //   // if (dragging) {
+  //   //   for (const key of Object.keys(this.resizers)) {
+  //   //     this.resizers[key].style.display = "none"
+  //   //   }
+  //   // } else {
+  //   //   for (const key of Object.keys(this.resizers)) {
+  //   //     this.resizers[key].style.display = ""
+  //   //   }
+  //   // }
+  // }
 
   onViewportChange = () => {
     this.refresh()
@@ -99,15 +89,13 @@ export class ResizeWidgetImpl implements IPlugin {
     this.unsubscribe()
     this.nodeChangeUnsubscribe()
     this.unCanvasScroll()
-    this.draggingNodesOff?.()
-    this.draggingResourceOff?.()
+    //this.draggingNodesOff?.()
+    //this.draggingResourceOff?.()
   }
 
   private clear() {
-    for (const id of Object.keys(this.resizers)) {
-      this.resizers[id].destory()
-    }
-    this.resizers = {}
+    this.resizer?.destory()
+    this.resizer = undefined
   }
 }
 

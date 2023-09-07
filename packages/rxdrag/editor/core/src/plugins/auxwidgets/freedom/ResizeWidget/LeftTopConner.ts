@@ -1,11 +1,11 @@
-import { IDesignerEngine, ITreeNode } from "../../../../interfaces";
+import { IDesignerEngine, IRect, ITreeNode } from "../../../../interfaces";
 import { CornerHandler, Offset } from "./CornerHandler";
 import { leftTopCursor } from "./cursors";
 import { HandlerSize, leftTopBottomRightCursor, svgCursor } from "./utils";
 
 export class LeftTopConner extends CornerHandler {
-  constructor(protected node: ITreeNode, container: HTMLDivElement, protected engine: IDesignerEngine) {
-    super(node, container, engine)
+  constructor(protected nodes: (ITreeNode | undefined)[], protected rect: IRect, container: HTMLDivElement, protected engine: IDesignerEngine) {
+    super(nodes, rect, container, engine)
     this.htmlElement.style.transform = "translate(-50%, -50%)"
     this.htmlElement.style.cursor = svgCursor(leftTopBottomRightCursor, "nw-resize")
     this.htmlElement.style.left = "0"

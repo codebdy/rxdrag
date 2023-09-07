@@ -1,8 +1,7 @@
 export interface IChildProps {
-  //string 用于百分比
-  width?: number | string,
-  height?: number | string,
-  left?: number | string,
-  top?: number | string,
+  width?: number,
+  height?: number,
+  left?: number,
+  top?: number,
   zIndex?: number,
 }

@@ -1,5 +1,4 @@
-import { IDesignerEngine, IShellPane } from "../../../../interfaces";
-import { getMaxZIndex } from "../../common/ActiviedOutline/getMaxZIndex";
+import { IDesignerEngine, ITreeNode } from "../../../../interfaces";
 import { AUX_BACKGROUND_COLOR, numbToPx } from "../../utils";
 import { LeftBottomConner } from "./LeftBottomConner";
 import { LeftTopConner } from "./LeftTopConner";
@@ -13,39 +12,43 @@ export class Resizer {
   private rightBottom?: RightBottomConner;
   private leftBottom?: LeftBottomConner;
 
-  constructor(id: string, canvas: IShellPane, elements: HTMLElement[] | null, protected engine: IDesignerEngine) {
-    const containerRect = canvas.getDocumentBodyRect()
-    const rect = canvas.getNodeRect(id);
-    console.log("创建 Resizer")
-    //判断根组件
-    const node = this.engine.getMonitor().getNode(id)
-    const parentId = node?.parentId
-    if (parentId && containerRect && rect && elements?.length) {
-      const htmlDiv = document.createElement('div')
-      htmlDiv.style.backgroundColor = "transparent"
-      htmlDiv.style.position = "fixed"
-      htmlDiv.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
-      htmlDiv.style.pointerEvents = "none"
-      htmlDiv.style.left = numbToPx(rect.x - containerRect.x)
-      htmlDiv.style.top = numbToPx(rect.y - containerRect.y)
-      htmlDiv.style.height = numbToPx(rect.height - 1)
-      htmlDiv.style.width = numbToPx(rect.width - 1)
-      htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
-      canvas?.appendAux(htmlDiv)
+  constructor(ids: string[], protected engine: IDesignerEngine) {
+    const shell = engine.getShell()
+    const canvas = shell.getCanvas(engine.getMonitor().getNodeDocumentId(ids[0]) || "")
+    if (canvas) {
+      const containerRect = canvas.getDocumentBodyRect()
+      const rect = canvas.getNodesRect(ids);
+      console.log("创建 Resizer")
+      //判断根组件，多选不让选根组件，这里就无需判断
+      const nodes = ids.map(id => this.engine.getMonitor().getNode(id)).filter(node => !!node) as ITreeNode[]
 
-      const inner = document.createElement('div')
-      inner.style.height = "100%"
-      inner.style.width = "100%"
-      inner.style.position = "relative"
-      htmlDiv.appendChild(inner)
-      this.htmlDiv = htmlDiv
+      const parentId = nodes[0]?.parentId
+      if (parentId && containerRect && rect && nodes.length) {
+        const htmlDiv = document.createElement('div')
+        htmlDiv.style.backgroundColor = "transparent"
+        htmlDiv.style.position = "fixed"
+        htmlDiv.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
+        htmlDiv.style.pointerEvents = "none"
+        htmlDiv.style.left = numbToPx(rect.x - containerRect.x)
+        htmlDiv.style.top = numbToPx(rect.y - containerRect.y)
+        htmlDiv.style.height = numbToPx(rect.height - 1)
+        htmlDiv.style.width = numbToPx(rect.width - 1)
+        htmlDiv.style.zIndex = "100000"
+        canvas?.appendAux(htmlDiv)
 
-      this.leftTop = new LeftTopConner(node, inner, engine)
-      this.rightTop = new RightTopConner(node, inner, engine)
-      this.rightBottom = new RightBottomConner(node, inner, engine)
-      this.leftBottom = new LeftBottomConner(node, inner, engine)
+        const inner = document.createElement('div')
+        inner.style.height = "100%"
+        inner.style.width = "100%"
+        inner.style.position = "relative"
+        htmlDiv.appendChild(inner)
+        this.htmlDiv = htmlDiv
+
+        this.leftTop = new LeftTopConner(nodes, rect, inner, engine)
+        this.rightTop = new RightTopConner(nodes, rect, inner, engine)
+        this.rightBottom = new RightBottomConner(nodes, rect, inner, engine)
+        this.leftBottom = new LeftBottomConner(nodes, rect, inner, engine)
+      }
     }
-
   }
   destory() {
     this.leftTop?.destory()
@@ -55,7 +58,4 @@ export class Resizer {
     this.htmlDiv?.remove()
   }
 
-  refresh(){
-    
-  }
 }

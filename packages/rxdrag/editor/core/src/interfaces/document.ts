@@ -75,7 +75,8 @@ export enum HistoryableActionType {
   Clone = "Clone",
   Change = "Change",
   RemoveSlot = "RemoveSlot",
-  AddSlot = "AddSlot"
+  AddSlot = "AddSlot",
+  Resize = "Resize"
 }
 
 /**

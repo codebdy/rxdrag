@@ -8,6 +8,7 @@ export interface IShellPane {
 	//顶层容器的区域，主要为了iframe换算坐标
 	getDocumentBodyRect(): IRect | null
 	getNodeRect(nodeId: ID): IRect | null
+	getNodesRect(nodeIds: ID[]): IRect | null
 	appendAux(child: HTMLElement): void
 	contains(child: HTMLElement): boolean
 	destroy(): void

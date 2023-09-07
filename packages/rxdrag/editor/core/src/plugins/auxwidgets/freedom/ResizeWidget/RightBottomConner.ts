@@ -1,11 +1,11 @@
-import { IDesignerEngine, ITreeNode } from "../../../../interfaces";
+import { HistoryableActionType, IDesignerEngine, IRect, ITreeNode } from "../../../../interfaces";
 import { CornerHandler, Offset } from "./CornerHandler";
 import { rightBottomCursor } from "./cursors";
 import { HandlerSize, leftTopBottomRightCursor, svgCursor } from "./utils";
 
 export class RightBottomConner extends CornerHandler {
-  constructor(protected node: ITreeNode, container: HTMLDivElement, protected engine: IDesignerEngine) {
-    super(node, container, engine)
+  constructor(protected nodes: (ITreeNode | undefined)[], protected rect: IRect, container: HTMLDivElement, protected engine: IDesignerEngine) {
+    super(nodes, rect, container, engine)
     this.htmlElement.style.transform = "translate(50%, 50%)"
     this.htmlElement.style.cursor = svgCursor(leftTopBottomRightCursor, "nw-resize")
     this.htmlElement.style.right = "0"
@@ -34,22 +34,50 @@ export class RightBottomConner extends CornerHandler {
   }
 
   protected onDragging(offset: Offset): void {
-    if (!this.rotating && this.startNodeRect) {
-      const newMeta = {
-        ...this.node.meta,
-        props: {
-          ...this.node.meta.props,
-          with: this.startNodeRect.width + offset.x,
-          height: this.startNodeRect.height + offset.y,
-        }
-      }
-      console.log("===>onDragging", newMeta.props)
-      this.engine.getNodeDocument(this.node.id)?.changeNodeMeta(this.node.id, newMeta)
+    if (!this.rotating && this.rect) {
+      // const newMeta = {
+      //   ...this.node.meta,
+      //   props: {
+      //     ...this.node.meta.props,
+      //     with: this.startNodeRect.width + offset.x,
+      //     height: this.startNodeRect.height + offset.y,
+      //   }
+      // }
+      // console.log("===>onDragging", newMeta.props)
+      // this.engine.getNodeDocument(this.node.id)?.changeNodeMeta(this.node.id, newMeta)
     }
   }
 
   protected onDrop(offset: Offset): void {
-    //throw new Error("Method not implemented.");
-  }
+    if (!this.rotating && this.rect) {
 
+      const doc = this.engine.getNodeDocument(this.nodes?.[0]?.id || "")
+      if (doc) {
+        const canvas = this.engine.getShell().getCanvas(doc.id)
+
+        const widthScale = (this.rect.width + offset.x) / this.rect.width
+        const heightScale = (this.rect.height + offset.y) / this.rect.height
+
+        for (const node of this.nodes) {
+          if (!node) {
+            continue
+          }
+          const nodeRect = canvas?.getNodeRect(node.id)
+          if (nodeRect) {
+            const newMeta = {
+              ...node.meta,
+              props: {
+                ...node.meta.props,
+                width: Math.round(nodeRect.width * widthScale),
+                height: Math.round(nodeRect.height * heightScale),
+              }
+            }
+            doc.changeNodeMeta(node.id, newMeta)
+          }
+        }
+        doc.backup(HistoryableActionType.Resize)
+      }
+
+    }
+  }
 }
