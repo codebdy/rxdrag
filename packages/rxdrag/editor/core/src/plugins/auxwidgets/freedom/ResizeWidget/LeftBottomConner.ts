@@ -11,26 +11,20 @@ export class LeftBottomConner extends CornerHandler {
     this.htmlElement.style.left = "0"
     this.htmlElement.style.bottom = "0"
 
-    let rightRotate = document.createElement('div')
-    rightRotate.style.position = "absolute"
-    rightRotate.style.cursor = svgCursor(leftBottomCursor, "default")
-    rightRotate.style.width = HandlerSize * 2 + 'px'
-    rightRotate.style.height = HandlerSize * 3 + 'px'
-    rightRotate.style.left = "-1px"
-    rightRotate.style.top = "0"
-    rightRotate.style.transform = "translate(-100%, 0)"
 
-    this.hemlElementInner.appendChild(rightRotate)
+    this.htmlRotate1.style.cursor = svgCursor(leftBottomCursor, "default")
+    this.htmlRotate1.style.width = HandlerSize * 2 + 'px'
+    this.htmlRotate1.style.height = HandlerSize * 3 + 'px'
+    this.htmlRotate1.style.left = "-6px"
+    this.htmlRotate1.style.top = "0"
+    this.htmlRotate1.style.transform = "translate(-100%, 0)"
 
-    rightRotate = document.createElement('div')
-    rightRotate.style.position = "absolute"
-    rightRotate.style.cursor = svgCursor(leftBottomCursor, "default")
-    rightRotate.style.width = HandlerSize * 3 + 'px'
-    rightRotate.style.height = HandlerSize * 2 + 'px'
-    rightRotate.style.right = "0"
-    rightRotate.style.bottom = "-1px"
-    rightRotate.style.transform = "translate(0, 100%)"
-    this.hemlElementInner.appendChild(rightRotate)
+    this.htmlRotate2.style.cursor = svgCursor(leftBottomCursor, "default")
+    this.htmlRotate2.style.width = HandlerSize * 3 + 'px'
+    this.htmlRotate2.style.height = HandlerSize * 2 + 'px'
+    this.htmlRotate2.style.right = "0"
+    this.htmlRotate2.style.bottom = "-6px"
+    this.htmlRotate2.style.transform = "translate(0, 100%)"
   }
 
   protected getNewSize(old: ISize, offset: Offset): ISize {

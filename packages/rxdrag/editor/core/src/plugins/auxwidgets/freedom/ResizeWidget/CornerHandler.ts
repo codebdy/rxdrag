@@ -21,8 +21,10 @@ export interface INodeInfo {
 
 export abstract class CornerHandler {
   protected htmlElement: HTMLElement
-  protected hemlElementInner: HTMLElement
+  protected htmlElementInner: HTMLElement
   protected startDrageEvent?: MouseEvent
+  protected htmlRotate1: HTMLElement
+  protected htmlRotate2: HTMLElement
   protected rotating?: boolean
 
   constructor(protected nodeInfos: (INodeInfo | undefined)[], protected rect: IRect, protected container: HTMLDivElement, protected engine: IDesignerEngine) {
@@ -36,15 +38,24 @@ export abstract class CornerHandler {
     this.htmlElement.style.backgroundColor = "white"
     container.appendChild(this.htmlElement)
 
-    this.hemlElementInner = document.createElement('div')
-    this.hemlElementInner.style.position = "relative"
-    this.hemlElementInner.style.height = '100%'
-    this.hemlElementInner.style.width = '100%'
+    this.htmlElementInner = document.createElement('div')
+    this.htmlElementInner.style.position = "relative"
+    this.htmlElementInner.style.height = '100%'
+    this.htmlElementInner.style.width = '100%'
 
-    this.htmlElement.appendChild(this.hemlElementInner)
+    this.htmlElement.appendChild(this.htmlElementInner)
     this.htmlElement.addEventListener("mousedown", this.handleMouseDown)
     this.container.ownerDocument.addEventListener("mouseup", this.handleMousUp)
     this.container.ownerDocument.addEventListener("mousemove", this.handleMousMove)
+
+    let rotate = document.createElement('div')
+    rotate.style.position = "absolute"
+    this.htmlRotate1 = rotate
+    this.htmlElementInner.appendChild(rotate)
+
+    rotate = document.createElement('div')
+    rotate.style.position = "absolute"
+    this.htmlRotate2 = rotate
   }
   protected abstract getNewSize(old: ISize, offset: Offset): ISize
   protected abstract getNewPostition(old: IXYCoord, offset: Offset): IXYCoord
