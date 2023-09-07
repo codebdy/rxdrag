@@ -88,15 +88,17 @@ export class ActivedOutlineImpl implements IPlugin {
     const rect = shell.getNodeRect(id)
     if (node?.parentId && elements && containerRect && rect) {
       const htmlDiv = document.createElement('div')
+      htmlDiv.style.boxSizing = "border-box"
       htmlDiv.style.backgroundColor = "transparent"
       htmlDiv.style.position = "fixed"
-      htmlDiv.style.border = `dashed 1px ${AUX_BACKGROUND_COLOR}`
+      htmlDiv.style.border = `solid 1px ${AUX_BACKGROUND_COLOR}`
       htmlDiv.style.pointerEvents = "none"
       htmlDiv.style.left = numbToPx(rect.x - containerRect.x)
       htmlDiv.style.top = numbToPx(rect.y - containerRect.y)
-      htmlDiv.style.height = numbToPx(rect.height - 1)
-      htmlDiv.style.width = numbToPx(rect.width - 1)
+      htmlDiv.style.height = numbToPx(rect.height)
+      htmlDiv.style.width = numbToPx(rect.width)
       htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
+      htmlDiv.style.opacity = "0.6"
       canvas?.appendAux(htmlDiv)
       this.outline = htmlDiv
       for (const element of elements) {

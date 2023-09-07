@@ -53,13 +53,14 @@ export class SelectedOutlineImpl implements IPlugin {
       if (elements && containerRect && rect) {
         const htmlDiv = document.createElement('div')
         htmlDiv.style.backgroundColor = "transparent"
+        htmlDiv.style.boxSizing = "border-box"
         htmlDiv.style.position = "fixed"
         htmlDiv.style.border = `solid 2px ${AUX_BACKGROUND_COLOR}`
         htmlDiv.style.pointerEvents = "none"
         htmlDiv.style.left = numbToPx(rect.x - containerRect.x)
         htmlDiv.style.top = numbToPx(rect.y - containerRect.y)
-        htmlDiv.style.height = numbToPx(rect.height - 2)
-        htmlDiv.style.width = numbToPx(rect.width - 2)
+        htmlDiv.style.height = numbToPx(rect.height)
+        htmlDiv.style.width = numbToPx(rect.width)
         htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
         canvas?.appendAux(htmlDiv)
         this.htmls[id] = htmlDiv
