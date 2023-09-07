@@ -8,5 +8,6 @@ export class RightBottomConner extends CornerHandler {
     this.htmlElement.style.cursor = "nw-resize"
     this.htmlElement.style.right = "0"
     this.htmlElement.style.bottom = "0"
+    
   }
 }
