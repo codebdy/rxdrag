@@ -7,11 +7,16 @@ export type Offset = {
   y: number,
 }
 
+export interface IElementInfo {
+  element: HTMLElement,
+  rect: IRect,
+}
+
 export interface INodeInfo {
   node: ITreeNode,
-  //是否组节点
-  isGroup?: boolean,
   rect: IRect,
+  elementInfos: IElementInfo[],
+  children?: INodeInfo[]
 }
 
 export abstract class CornerHandler {
@@ -22,6 +27,7 @@ export abstract class CornerHandler {
 
   constructor(protected nodeInfos: (INodeInfo | undefined)[], protected rect: IRect, protected container: HTMLDivElement, protected engine: IDesignerEngine) {
     this.htmlElement = document.createElement('div')
+    this.htmlElement.style.boxSizing = "border-box"
     this.htmlElement.style.pointerEvents = "all"
     this.htmlElement.style.position = "absolute"
     this.htmlElement.style.height = HandlerSize + "px"
@@ -55,11 +61,31 @@ export abstract class CornerHandler {
       if (this.container.parentElement) {
         const newSize = this.getNewSize(this.rect, offset)
         const newPos = this.getNewPostition(this.rect, offset)
-        this.container.parentElement.style.width = newSize.width + "px"
-        this.container.parentElement.style.height = newSize.height + "px"
+        this.container.parentElement.style.width = (newSize.width) + "px"
+        this.container.parentElement.style.height = (newSize.height) + "px"
         this.container.parentElement.style.top = newPos.y + "px"
         this.container.parentElement.style.left = newPos.x + "px"
       }
+
+      for (const nodeInfo of this.nodeInfos) {
+        if (nodeInfo) {
+          this.draggingOne(nodeInfo, offset)
+        }
+      }
+    }
+  }
+
+  private draggingOne(nodeInfo: INodeInfo, offset: Offset) {
+    for (const eleInfo of nodeInfo.elementInfos) {
+      const newSize = this.getNewSize(eleInfo.rect, offset)
+      const newPos = this.getNewPostition(eleInfo.rect, offset)
+      eleInfo.element.style.left = newPos.x + "px"
+      eleInfo.element.style.top = newPos.y + "px"
+      eleInfo.element.style.width = newSize.width + "px"
+      eleInfo.element.style.height = newSize.height + "px"
+    }
+    for (const child of nodeInfo.children || []) {
+      this.draggingOne(child, offset)
     }
   }
 
@@ -67,14 +93,12 @@ export abstract class CornerHandler {
     if (!this.rotating && this.rect) {
       const doc = this.getDocument()
       if (doc) {
-        const canvas = this.engine.getShell().getCanvas(doc.id)
-
         for (const nodeInfo of this.nodeInfos) {
           const node = nodeInfo?.node
           if (!node) {
             continue
           }
-          const nodeRect = canvas?.getNodeRect(node.id)
+          const nodeRect = nodeInfo.rect
           if (nodeRect) {
             const newPos = this.getNewPostition(nodeRect, offset)
             const newMeta = {
@@ -100,7 +124,6 @@ export abstract class CornerHandler {
   }
 
   protected handleMousUp = (e: MouseEvent) => {
-    console.log("====>handleMousUp", e)
     if (this.startDrageEvent) {
       this.onDrop(this.getOffset(e))
     }
@@ -137,9 +160,5 @@ export abstract class CornerHandler {
 
   protected getDocument() {
     return this.engine.getNodeDocument(this.nodeInfos?.[0]?.node.id || "")
-  }
-
-  protected getNodeRect(id: string) {
-    return this.nodeInfos.find(info => info?.node.id === id)?.rect
   }
 }
