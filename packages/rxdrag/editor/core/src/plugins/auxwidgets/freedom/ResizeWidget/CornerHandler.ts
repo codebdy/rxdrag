@@ -56,6 +56,9 @@ export abstract class CornerHandler {
     rotate = document.createElement('div')
     rotate.style.position = "absolute"
     this.htmlRotate2 = rotate
+
+    this.htmlRotate1.addEventListener("mousedown", this.handleStartRotating)
+    this.htmlRotate1.addEventListener("mousedown", this.handleStartRotating)
   }
   protected abstract getNewSize(old: ISize, offset: Offset): ISize
   protected abstract getNewPostition(old: IXYCoord, offset: Offset): IXYCoord
@@ -64,6 +67,8 @@ export abstract class CornerHandler {
     this.htmlElement.removeEventListener("mousedown", this.handleMouseDown)
     this.container.ownerDocument.removeEventListener("mouseup", this.handleMousUp)
     this.container.ownerDocument.removeEventListener("mousemove", this.handleMousMove)
+    this.htmlRotate1.removeEventListener("mousedown", this.handleStartRotating)
+    this.htmlRotate1.removeEventListener("mousedown", this.handleStartRotating)
     this.htmlElement.remove()
   }
 
@@ -129,6 +134,10 @@ export abstract class CornerHandler {
     }
   }
 
+  protected handleStartRotating = () => {
+    this.rotating = true
+  }
+
   protected handleMouseDown = (e: MouseEvent) => {
     this.startDrageEvent = e
     this.container.ownerDocument.body.style.userSelect = "none"
@@ -140,6 +149,7 @@ export abstract class CornerHandler {
     }
     this.container.ownerDocument.body.style.userSelect = ""
     this.startDrageEvent = undefined
+    this.rotating = false
   }
 
   protected handleMousMove = (e: MouseEvent) => {
