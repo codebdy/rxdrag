@@ -12,6 +12,7 @@ export const Scroller = () => {
       background: ${themeMode === "dark" ? "rgba(255, 255, 255, 0.3)" : "rgba(0, 0, 0, 0.3)"};
       transition: all .2s;
     }
+    ::-webkit-scrollbar-corner { background: transparent; }
     `
     document.getElementsByTagName('head')[0]?.appendChild(styleNode)
     return () => {
