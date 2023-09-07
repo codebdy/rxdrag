@@ -26,6 +26,11 @@ export abstract class CornerHandler {
   protected htmlRotate1: HTMLElement
   protected htmlRotate2: HTMLElement
   protected rotating?: boolean
+  //中心点坐标
+  protected centerPoint?: IXYCoord
+
+  private prevAngle = 0
+  private currentAgle = 0
 
   constructor(protected nodeInfos: (INodeInfo | undefined)[], protected rect: IRect, protected container: HTMLDivElement, protected engine: IDesignerEngine) {
     this.htmlElement = document.createElement('div')
@@ -72,7 +77,7 @@ export abstract class CornerHandler {
     this.htmlElement.remove()
   }
 
-  protected onDragging(offset: Offset) {
+  protected onDragging(offset: Offset, deg?: number) {
     if (!this.rotating && this.rect) {
       if (this.container.parentElement) {
         const newSize = this.getNewSize(this.rect, offset)
@@ -81,17 +86,18 @@ export abstract class CornerHandler {
         this.container.parentElement.style.height = (newSize.height) + "px"
         this.container.parentElement.style.top = newPos.y + "px"
         this.container.parentElement.style.left = newPos.x + "px"
+        //this.container.parentElement.style.transform = `rotate(${deg})deg`
       }
 
       for (const nodeInfo of this.nodeInfos) {
         if (nodeInfo) {
-          this.draggingOne(nodeInfo, offset)
+          this.draggingOne(nodeInfo, offset, deg)
         }
       }
     }
   }
 
-  private draggingOne(nodeInfo: INodeInfo, offset: Offset) {
+  private draggingOne(nodeInfo: INodeInfo, offset: Offset, deg?: number) {
     for (const eleInfo of nodeInfo.elementInfos) {
       const newSize = this.getNewSize(eleInfo.rect, offset)
       const newPos = this.getNewPostition(eleInfo.rect, offset)
@@ -99,13 +105,16 @@ export abstract class CornerHandler {
       eleInfo.element.style.top = newPos.y + "px"
       eleInfo.element.style.width = newSize.width + "px"
       eleInfo.element.style.height = newSize.height + "px"
+      if (deg) {
+        eleInfo.element.style.transform = `rotate(${deg})deg`
+      }
     }
     for (const child of nodeInfo.children || []) {
       this.draggingOne(child, offset)
     }
   }
 
-  protected onDrop(offset: Offset) {
+  protected onDrop(offset: Offset, deg?: number) {
     if (!this.rotating && this.rect) {
       const doc = this.getDocument()
       if (doc) {
@@ -124,6 +133,7 @@ export abstract class CornerHandler {
                 ...this.getNewSize(nodeRect, offset),
                 top: newPos.y,
                 left: newPos.x,
+                rotateDeg: deg,
               }
             }
             doc.changeNodeMeta(node.id, newMeta)
@@ -136,6 +146,13 @@ export abstract class CornerHandler {
 
   protected handleStartRotating = () => {
     this.rotating = true
+    //中心点
+    if (this.rect) {
+      this.centerPoint = {
+        x: this.rect.x + this.rect.width / 2,
+        y: this.rect.y + this.rect.height / 2,
+      }
+    }
   }
 
   protected handleMouseDown = (e: MouseEvent) => {
@@ -145,7 +162,7 @@ export abstract class CornerHandler {
 
   protected handleMousUp = (e: MouseEvent) => {
     if (this.startDrageEvent) {
-      this.onDrop(this.getOffset(e))
+      this.onDrop(this.getOffset(e), this.getRotateDeg(e))
     }
     this.container.ownerDocument.body.style.userSelect = ""
     this.startDrageEvent = undefined
@@ -160,7 +177,7 @@ export abstract class CornerHandler {
     }
 
     if (this.startDrageEvent) {
-      this.onDragging(this.getOffset(e))
+      this.onDragging(this.getOffset(e), this.getRotateDeg(e))
     }
   }
 
@@ -182,4 +199,27 @@ export abstract class CornerHandler {
   protected getDocument() {
     return this.engine.getNodeDocument(this.nodeInfos?.[0]?.node.id || "")
   }
+
+  private getRotateDeg(e: MouseEvent) {
+    if (!this.centerPoint || !this.startDrageEvent) {
+      return 0
+    }
+
+    const angleCurrent = this.computedAngle(this.centerPoint, { x: e.clientX, y: e.clientY });
+    const angleStart = this.computedAngle(this.centerPoint, { x: this.startDrageEvent.clientX, y: this.startDrageEvent.clientY });
+    let angle = angleCurrent - angleStart;
+    const realAngle = angle += this.prevAngle;
+    console.log("角度", realAngle)
+    this.currentAgle = realAngle
+    //target.style.transform = `rotate(${realAngle}deg)`;
+    return realAngle
+  }
+
+  private computedAngle(a: IXYCoord, b: IXYCoord) {
+    const x = a.x - b.x
+    const y = a.y - b.y;
+    const result = 180 * Math.atan2(y, x) / Math.PI;
+    return result;
+  }
 }
+

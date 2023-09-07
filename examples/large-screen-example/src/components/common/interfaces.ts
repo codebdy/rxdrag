@@ -4,4 +4,5 @@ export interface IChildProps {
   left?: number,
   top?: number,
   zIndex?: number,
+  rotateDeg?: number,
 }
