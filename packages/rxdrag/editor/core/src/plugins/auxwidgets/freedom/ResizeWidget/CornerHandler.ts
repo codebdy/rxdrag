@@ -78,7 +78,10 @@ export abstract class CornerHandler {
   }
 
   protected onDragging(offset: Offset, deg?: number) {
-    if (!this.rotating && this.rect) {
+    if (!this.rect) {
+      return
+    }
+    if (!this.rotating) {
       if (this.container.parentElement) {
         const newSize = this.getNewSize(this.rect, offset)
         const newPos = this.getNewPostition(this.rect, offset)
@@ -86,18 +89,26 @@ export abstract class CornerHandler {
         this.container.parentElement.style.height = (newSize.height) + "px"
         this.container.parentElement.style.top = newPos.y + "px"
         this.container.parentElement.style.left = newPos.x + "px"
-        //this.container.parentElement.style.transform = `rotate(${deg})deg`
       }
 
       for (const nodeInfo of this.nodeInfos) {
         if (nodeInfo) {
-          this.draggingOne(nodeInfo, offset, deg)
+          this.draggingOne(nodeInfo, offset)
+        }
+      }
+    } else {
+      if (this.container.parentElement) {
+        this.container.parentElement.style.transform = `rotate(${deg}deg)`
+      }
+      for (const nodeInfo of this.nodeInfos) {
+        if (nodeInfo) {
+          this.rotatingOne(nodeInfo, deg)
         }
       }
     }
   }
 
-  private draggingOne(nodeInfo: INodeInfo, offset: Offset, deg?: number) {
+  private draggingOne(nodeInfo: INodeInfo, offset: Offset) {
     for (const eleInfo of nodeInfo.elementInfos) {
       const newSize = this.getNewSize(eleInfo.rect, offset)
       const newPos = this.getNewPostition(eleInfo.rect, offset)
@@ -105,12 +116,18 @@ export abstract class CornerHandler {
       eleInfo.element.style.top = newPos.y + "px"
       eleInfo.element.style.width = newSize.width + "px"
       eleInfo.element.style.height = newSize.height + "px"
-      if (deg) {
-        eleInfo.element.style.transform = `rotate(${deg})deg`
-      }
     }
     for (const child of nodeInfo.children || []) {
       this.draggingOne(child, offset)
+    }
+  }
+
+  private rotatingOne(nodeInfo: INodeInfo, deg?: number) {
+    if (deg) {
+      for (const eleInfo of nodeInfo.elementInfos) {
+        console.log("===>draggingOne", deg)
+        eleInfo.element.style.transform = `rotate(${deg}deg)`
+      }
     }
   }
 
