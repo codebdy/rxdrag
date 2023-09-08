@@ -48,6 +48,7 @@ const Content = styled.div`
   padding: 8px;
   .ant-tree{
     background-color: transparent;
+    min-width: 200px;
   }
 `
 
@@ -75,12 +76,13 @@ const treeData: DataNode[] = [
 export const LeftDrawer = memo((
   props: {
     selected?: string,
+    onSelect?: (selected?: string) => void,
     title?: React.ReactNode,
     open?: boolean,
     onOpenChange?: (open?: boolean) => void
   }
 ) => {
-  const { selected, title, open, onOpenChange } = props
+  const { selected, onSelect, title, open, onOpenChange } = props
   const [width, setWidth] = useState(320)
 
   const realWidth = useMemo(() => {
@@ -91,10 +93,11 @@ export const LeftDrawer = memo((
     onOpenChange?.(false)
   }, [onOpenChange])
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: Key[], root: any) => {
     if (root.node.children) return
-    //onSelect(keys?.[0].toString() || "")
-  }, []);
+    onSelect?.(keys?.[0].toString() || "")
+  }, [onSelect]);
 
   return (
     <DrawerShell

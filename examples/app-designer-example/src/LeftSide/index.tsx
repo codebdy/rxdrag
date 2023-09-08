@@ -28,7 +28,7 @@ const AddButton = styled(Button)`
   margin-right: 8px;
 `
 
-const enum NavType {
+export const enum NavType {
   moudules = "modules",
   frame = "frame",
   menu = "menu",
@@ -37,26 +37,30 @@ const enum NavType {
 
 
 
-export const LeftSide = memo(() => {
+export const LeftSide = memo((
+  props: {
+    navKey: NavType,
+    onNavKeyChange?: (navaKey: NavType) => void
+  }
+) => {
+  const { navKey, onNavKeyChange } = props
   const [openModules, setOpenModules] = useState<boolean>()
-  const [navKey, setNavKey] = useState<NavType>(NavType.moudules)
-
 
   const handleModulesClick = useCallback(() => {
     setOpenModules(!openModules)
-    setNavKey(NavType.moudules)
-  }, [openModules])
+    onNavKeyChange?.(NavType.moudules)
+  }, [onNavKeyChange, openModules])
 
   const handleFrameClick = useCallback(() => {
     setOpenModules(false)
-    setNavKey(NavType.frame)
-  }, [])
+    onNavKeyChange?.(NavType.frame)
+  }, [onNavKeyChange])
 
 
   const handleMenuClick = useCallback(() => {
     setOpenModules(false)
-    setNavKey(NavType.menu)
-  }, [])
+    onNavKeyChange?.(NavType.menu)
+  }, [onNavKeyChange])
   return (
     <Container className="rx-left-side">
       <NavButton

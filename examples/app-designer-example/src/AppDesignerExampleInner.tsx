@@ -1,12 +1,8 @@
-import { memo, useMemo, useState } from "react"
+import { memo, useState } from "react"
 import { Toolbar } from "./Toolbar"
-import { ZoomableEditor } from "@rxdrag/react-antd-shell"
 import styled from "styled-components"
-import { LeftSide } from "./LeftSide"
-import { INodeSchema, IDocumentSchema } from "@rxdrag/schema"
-import { Tabs, TabsProps } from "antd"
-import { ResourceWidget } from "./ResourceWidget"
 import { DeviceType } from "./interfaces"
+import { UiDesigner } from "./UiDesigner"
 
 const Container = styled.div`
   width: 100%;
@@ -18,60 +14,13 @@ const Container = styled.div`
   color: ${props => props.theme.token?.colorText};
 `
 
-//设备端的编辑区
-const AppDeviceArea = styled.div`
-    flex:1;
-    display: flex;
-    height: 0;
-  `
-
-const rootNodeSchema: INodeSchema = {
-  componentName: "Page"
-}
-
-const schemas: IDocumentSchema[] = [
-  {
-    title: "首页",
-    schema: rootNodeSchema,
-  },
-  {
-    title: "详情",
-    schema: rootNodeSchema,
-  }
-]
-
-
 export const AppDesignerExampleInner = memo(() => {
   const [device, setDevice] = useState<DeviceType>(DeviceType.admin)
-  const items: TabsProps['items'] = useMemo(() => {
-    return [
-      {
-        label: "组件",
-        key: "components",
-        children: <ResourceWidget />
-      },
-      {
-        label: "模板",
-        key: "templates",
-        children: "方案/布局/组件"
-      },
-    ]
-  }, [])
 
   return (
     <Container className="zoomable-editor">
       <Toolbar device={device} onDeviceChange={setDevice} />
-      <AppDeviceArea>
-        <LeftSide />
-        <ZoomableEditor
-          toolbox={
-            <Tabs
-              items={items}
-            />
-          }
-          schemas={schemas}
-        />
-      </AppDeviceArea>
+      <UiDesigner device={device} />
     </Container>
   )
 })
