@@ -2,6 +2,10 @@ import { memo } from "react"
 import { EditorScope } from "@rxdrag/react-antd-shell"
 import { controllerDefines, materials, minionsLocales, minionsMaterialCategories, setterLocales } from "example-common"
 import { AppDesignerExampleInner } from "./AppDesignerExampleInner"
+import { useQueryApp } from "./hooks/useQueryApp"
+import { AppContext } from "./contexts"
+import { appDesignerLocales } from "./locales"
+import _ from "lodash"
 
 export const AppDesignerExample = memo((
   props: {
@@ -10,21 +14,25 @@ export const AppDesignerExample = memo((
   }
 ) => {
   const { canvasUrl, previewUrl } = props
-  return (
-    <EditorScope
-      locales={setterLocales}
-      canvasUrl={canvasUrl}
-      previewUrl={previewUrl}
-      themeMode="dark"
-      minionOptions={{
-        materials: minionsMaterialCategories,
-        locales: minionsLocales,
-        controllers: controllerDefines,
-      }}
+  const { app } = useQueryApp("app1")
 
-      materials={materials}
-    >
-      <AppDesignerExampleInner />
-    </EditorScope>
+  return (
+    <AppContext.Provider value={app}>
+      <EditorScope
+        locales={{ ..._.merge(setterLocales, appDesignerLocales) }}
+        canvasUrl={canvasUrl}
+        previewUrl={previewUrl}
+        themeMode="dark"
+        minionOptions={{
+          materials: minionsMaterialCategories,
+          locales: minionsLocales,
+          controllers: controllerDefines,
+        }}
+
+        materials={materials}
+      >
+        <AppDesignerExampleInner />
+      </EditorScope>
+    </AppContext.Provider>
   )
 })

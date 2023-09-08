@@ -6,6 +6,9 @@ import { memo } from "react"
 import styled from "styled-components"
 import { SaveButton } from "../SaveButton"
 import { SvgIcon } from "@rxdrag/react-antd-shell"
+import { DeviceType } from "../interfaces"
+import { useApp } from "../hooks/useApp"
+import { useAppTranslate } from "../hooks/useAppTranslate"
 
 const ToolbarShell = styled.div`
   width: 100%;
@@ -26,11 +29,19 @@ const ProjectTitle = styled.span`
   font-size: 14px;
 `
 
-export const Toolbar = memo(() => {
+export const Toolbar = memo((
+  props: {
+    device: DeviceType,
+    onDeviceChange?: (device: DeviceType) => void
+  }
+) => {
+  const { device, onDeviceChange } = props;
+  const app = useApp()
+  const t = useAppTranslate()
   return (
     <ToolbarShell className="zoomable-toobar">
       <Space>
-        <Logo title="大屏" mini />
+        <Logo mini />
         <Space>
           <Button type="text" icon={<CodeSandboxOutlined />}>模型</Button>
           <Button type="text" icon={<ApiOutlined />}>接口</Button>
@@ -43,9 +54,19 @@ export const Toolbar = memo(() => {
             }
           >插件</Button>
           <Button type="text" icon={<SettingOutlined />}>设置</Button>
-          <Select value="大屏"  />
+          <Select
+            value={device}
+            style={{ minWidth: 100 }}
+            options={[
+              { value: DeviceType.admin, label: t(DeviceType.admin) },
+              { value: DeviceType.h5, label: t(DeviceType.h5) },
+              { value: DeviceType.website, label: t(DeviceType.website) },
+              { value: DeviceType.largeScreen, label: t(DeviceType.largeScreen) },
+            ]}
+            onChange={onDeviceChange}
+          />
         </Space>
-        <ProjectTitle>火星监测项目</ProjectTitle>
+        <ProjectTitle>{app?.title}</ProjectTitle>
       </Space>
       <Space>
         <ThemeButton flat />
