@@ -1,9 +1,11 @@
-import { memo } from "react"
+import { memo, useMemo } from "react"
 import { Toolbar } from "./Toolbar"
 import { ZoomableEditor } from "@rxdrag/react-antd-shell"
 import styled from "styled-components"
 import { LeftSide } from "./LeftSide"
 import { INodeSchema, IDocumentSchema } from "@rxdrag/schema"
+import { Tabs, TabsProps } from "antd"
+import { ResourceWidget } from "./ResourceWidget"
 
 const Container = styled.div`
   width: 100%;
@@ -15,8 +17,8 @@ const Container = styled.div`
   color: ${props => props.theme.token?.colorText};
 `
 
-  //设备端的编辑区
-  const AppDeviceArea = styled.div`
+//设备端的编辑区
+const AppDeviceArea = styled.div`
     flex:1;
     display: flex;
     height: 0;
@@ -39,6 +41,25 @@ const schemas: IDocumentSchema[] = [
 
 
 export const AppDesignerExampleInner = memo(() => {
+  const items: TabsProps['items'] = useMemo(() => {
+    return [
+      {
+        label: "组件",
+        key: "components",
+        children: <ResourceWidget />
+      },
+      {
+        label: "素材",
+        key: "materials",
+        children: "素材列表"
+      },
+      {
+        label: "模板",
+        key: "templates",
+        children: "方案/布局/组件"
+      },
+    ]
+  }, [])
 
   return (
     <Container className="zoomable-editor">
@@ -46,6 +67,11 @@ export const AppDesignerExampleInner = memo(() => {
       <AppDeviceArea>
         <LeftSide />
         <ZoomableEditor
+          toolbox={
+            <Tabs
+              items={items}
+            />
+          }
           schemas={schemas}
         />
       </AppDeviceArea>

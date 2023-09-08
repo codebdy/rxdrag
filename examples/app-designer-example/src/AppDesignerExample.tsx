@@ -1,6 +1,6 @@
 import { memo } from "react"
 import { EditorScope } from "@rxdrag/react-antd-shell"
-import { setterLocales } from "example-common"
+import { controllerDefines, materials, minionsLocales, minionsMaterialCategories, setterLocales } from "example-common"
 import { AppDesignerExampleInner } from "./AppDesignerExampleInner"
 
 export const AppDesignerExample = memo((
@@ -15,6 +15,14 @@ export const AppDesignerExample = memo((
       locales={setterLocales}
       canvasUrl={canvasUrl}
       previewUrl={previewUrl}
+      themeMode="dark"
+      minionOptions={{
+        materials: minionsMaterialCategories,
+        locales: minionsLocales,
+        controllers: controllerDefines,
+      }}
+
+      materials={materials}
     >
       <AppDesignerExampleInner />
     </EditorScope>
