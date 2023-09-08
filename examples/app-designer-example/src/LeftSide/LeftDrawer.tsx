@@ -1,5 +1,5 @@
 import { MinusOutlined } from "@ant-design/icons"
-import { ResizableColumn, floatBigShadow } from "@rxdrag/react-antd-shell"
+import { ResizableColumn, floatShadow } from "@rxdrag/react-antd-shell"
 import { Button } from "antd"
 import { memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
@@ -14,7 +14,7 @@ const DrawerShell = styled(ResizableColumn)`
   height:100%;
   border-radius: 0px;
   background-color: ${props => props.theme.token?.colorBgBase};
-  box-shadow: ${floatBigShadow};
+  box-shadow: ${floatShadow};
   border: solid 1px ${props => props.theme.token?.colorBorderSecondary};
   .ant-tabs-nav{
     user-select: none;
