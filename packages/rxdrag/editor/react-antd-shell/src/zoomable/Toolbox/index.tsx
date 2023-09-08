@@ -7,6 +7,7 @@ import { Button } from "antd"
 import { DEFAULT_MARGIN, MINI_WIDGET_WIDTH } from "../consts"
 import { AppstoreOutlined } from "@ant-design/icons"
 import { CloseButton } from "../PropertyPanel"
+import { CanvasFloatButton } from "../common"
 
 const maxWidth = 1000
 const minWidth = 300
@@ -36,9 +37,10 @@ const MiniShell = styled.div`
   position: absolute;
   top: ${DEFAULT_MARGIN}px;
   left: ${DEFAULT_MARGIN}px;
-  background-color: ${props => props.theme.token?.colorBgBase};
-  box-shadow: ${floatShadow};
-  border-radius: 6px;
+  &.hidden{
+    opacity: 0;
+    pointer-events: none;
+  }
 `
 
 const Container = styled.div`
@@ -93,9 +95,8 @@ export const Toolbox = memo((
 
   return (
     <>
-      <MiniShell>
-        <Button
-          type="text"
+      <MiniShell className={collapsed ? undefined : "hidden"}>
+        <CanvasFloatButton
           icon={<AppstoreOutlined />}
           onClick={handleOpen}
         />

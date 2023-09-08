@@ -8,6 +8,7 @@ import { DEFAULT_MARGIN, MINI_WIDGET_WIDTH } from "../consts"
 import { propertyIcon } from "../../icons"
 import { MinusOutlined, PushpinOutlined } from "@ant-design/icons"
 import { useCurrentNode } from "@rxdrag/react-core"
+import { CanvasFloatButton } from "../common"
 
 const maxWidth = 1000
 const minWidth = 300
@@ -36,9 +37,11 @@ const MiniShell = styled.div`
   position: absolute;
   top: ${DEFAULT_MARGIN}px;
   right: ${DEFAULT_MARGIN}px;
-  background-color: ${props => props.theme.token?.colorBgBase};
-  box-shadow: ${floatShadow};
-  border-radius: 6px;
+  transition: all 0.3s;
+  &.hidden{
+    opacity: 0;
+    pointer-events: none;
+  }
 `
 
 const Container = styled.div`
@@ -106,9 +109,9 @@ export const PropertyPanel = memo(() => {
 
   return (
     <>
-      <MiniShell>
-        <Button
-          type="text"
+      <MiniShell className={collapsed ? undefined : "hidden"}>
+        <CanvasFloatButton
+          type="default"
           disabled={!currentNode}
           icon={propertyIcon}
           onClick={handleOpen}
