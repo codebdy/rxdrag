@@ -24,7 +24,15 @@ export class SelectionControllerImpl implements IPlugin {
       if (selectedNodes && selectedNodes.length === 1 && selectedNodes[0] === rxId) {
         return
       }
-      this.engine.getActions().selectNodes([rxId])
+      //用于判断是否点中画布
+      const node = this.engine.getMonitor().getNode(rxId)
+      if (e.originalEvent.ctrlKey && node?.parentId) {
+        const oldSelects = this.engine.getMonitor().getCurrentSelectedIds()
+        const newSelects = oldSelects?.find(id => id === rxId) ? oldSelects.filter(id => id !== rxId) : [...oldSelects || [], rxId]
+        this.engine.getActions().selectNodes(newSelects)
+      } else {
+        this.engine.getActions().selectNodes([rxId])
+      }
     }
   }
 

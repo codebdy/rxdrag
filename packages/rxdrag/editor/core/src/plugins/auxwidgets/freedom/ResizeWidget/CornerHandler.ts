@@ -29,7 +29,6 @@ export abstract class CornerHandler {
   //中心点坐标
   protected centerPoint?: IXYCoord
   private prevAngle = 0
-  private currentAgle = 0
 
   constructor(protected nodeInfos: (INodeInfo | undefined)[], protected rect: IRect, protected container: HTMLDivElement, protected engine: IDesignerEngine) {
     this.htmlElement = document.createElement('div')
@@ -129,7 +128,7 @@ export abstract class CornerHandler {
   private rotatingOne(nodeInfo: INodeInfo, deg?: number) {
     if (deg) {
       for (const eleInfo of nodeInfo.elementInfos) {
-        eleInfo.element.style.transform = `rotate(${deg}deg)`
+        eleInfo.element.style.transform = `rotate(${this.getOldDeg() + deg}deg)`
       }
     }
   }
@@ -178,7 +177,7 @@ export abstract class CornerHandler {
               ...node.meta,
               props: {
                 ...node.meta.props,
-                rotateDeg: deg,
+                rotateDeg: this.getNodeDeg(node) + deg,
               }
             }
             doc.changeNodeMeta(node.id, newMeta)
@@ -252,21 +251,28 @@ export abstract class CornerHandler {
 
   //如果只有一个元素返回角度
   protected getOldDeg() {
-    if (this.nodeInfos.length === 1)
-      return this.nodeInfos[0]?.node.meta.props?.rotateDeg
+    if (this.nodeInfos.length === 1) {
+      return (this.nodeInfos[0]?.node.meta.props?.rotateDeg as number | undefined) || 0
+    }
+
+    return 0
+  }
+
+  protected getNodeDeg(node: ITreeNode) {
+    return (node.meta.props?.rotateDeg as number | undefined) || 0
   }
 
   private getRotateDeg(e: MouseEvent) {
     if (!this.centerPoint || !this.startDrageEvent) {
       return 0
     }
-
+    
     const angleCurrent = this.computedAngle(this.centerPoint, { x: e.clientX, y: e.clientY });
     const angleStart = this.computedAngle(this.centerPoint, { x: this.startDrageEvent.clientX, y: this.startDrageEvent.clientY });
     let angle = angleCurrent - angleStart;
     const realAngle = angle += this.prevAngle;
     console.log("角度", realAngle)
-    this.currentAgle = realAngle
+    //this.currentAgle = realAngle
     //target.style.transform = `rotate(${realAngle}deg)`;
     return realAngle
   }
