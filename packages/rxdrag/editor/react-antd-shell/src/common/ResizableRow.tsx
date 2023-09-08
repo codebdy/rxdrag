@@ -16,6 +16,7 @@ const Container = styled.div`
   align-items:stretch;
   position:relative;
   padding: 0;
+  box-sizing: border-box;
 `
 
 export function ResizableRow(props: {

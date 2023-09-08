@@ -14,6 +14,7 @@ const Container = styled.div`
   align-items:stretch;
   position:relative;
   padding: 0;
+  box-sizing: border-box;
 `
 
 export const ResizableColumn = memo(
