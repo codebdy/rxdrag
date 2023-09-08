@@ -42,6 +42,9 @@ const MiniShell = styled.div`
     opacity: 0;
     pointer-events: none;
   }
+  .ant-btn{
+    background-color: ${props => props.theme.token?.colorBgBase};
+  }
 `
 
 const Container = styled.div`

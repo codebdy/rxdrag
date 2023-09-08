@@ -48,6 +48,7 @@
     "@rxdrag/locales": "workspace:*",
     "antd": "^5.6.2",
     "classnames": "^2.3.2",
+    "react-icons": "^4.7.1",
     "styled-components": "^5.3.9"
   }
 }

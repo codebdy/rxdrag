@@ -171,6 +171,10 @@ export const BottomArea = memo(() => {
             <ReundoIcons />
             <Divider type="vertical" />
             <AuxButtions />
+            {/* <Divider type="vertical" /> */}
+            {/* <div>
+              <CanvasButton icon={<PlayCircleOutlined />} />
+            </div> */}
           </BottomActions>
         }
       </BottomBar>

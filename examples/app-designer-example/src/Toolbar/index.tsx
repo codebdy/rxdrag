@@ -1,14 +1,14 @@
 import { CodeSandboxOutlined, ApiOutlined, NodeIndexOutlined, SettingOutlined, GithubFilled } from "@ant-design/icons"
-import { ThemeButton, floatShadow } from "@rxdrag/react-antd-shell"
+import { floatShadow } from "@rxdrag/react-antd-shell"
 import { Space, Button, Select } from "antd"
 import { Logo, MenuButton } from "example-common"
 import { memo } from "react"
 import styled from "styled-components"
-import { SaveButton } from "../SaveButton"
 import { SvgIcon } from "@rxdrag/react-antd-shell"
-import { DeviceType } from "../interfaces"
+import { DeviceType, ThemeMode } from "../interfaces"
 import { useApp } from "../hooks/useApp"
 import { useAppTranslate } from "../hooks/useAppTranslate"
+import { ThemeButton } from "../components"
 
 const ToolbarShell = styled.div`
   width: 100%;
@@ -32,10 +32,12 @@ const ProjectTitle = styled.span`
 export const Toolbar = memo((
   props: {
     device: DeviceType,
-    onDeviceChange?: (device: DeviceType) => void
+    onDeviceChange?: (device: DeviceType) => void,
+    themeMode?: ThemeMode,
+    onThemeModeChange?: (themeMode: ThemeMode) => void,
   }
 ) => {
-  const { device, onDeviceChange } = props;
+  const { device, onDeviceChange, themeMode, onThemeModeChange } = props;
   const app = useApp()
   const t = useAppTranslate()
   return (
@@ -69,14 +71,14 @@ export const Toolbar = memo((
         <ProjectTitle>{app?.title}</ProjectTitle>
       </Space>
       <Space>
-        <ThemeButton flat />
+        <ThemeButton flat themeMode={themeMode} onThemeModeChange={onThemeModeChange} />
         <Button
           type="text"
           href="https://github.com/rxdrag/rxeditor"
           target="_blank"
           icon={<GithubFilled />}
         />
-        <SaveButton />
+        {/* <SaveButton /> */}
         <MenuButton />
       </Space>
     </ToolbarShell>

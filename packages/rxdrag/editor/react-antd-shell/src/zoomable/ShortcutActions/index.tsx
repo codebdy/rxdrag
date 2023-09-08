@@ -1,7 +1,7 @@
-import { Space } from "antd"
+import { Button, Space } from "antd"
 import { memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
-import { AimOutlined, HistoryOutlined, PlayCircleOutlined } from "@ant-design/icons"
+import { AimOutlined, FileAddOutlined, HistoryOutlined, SaveOutlined } from "@ant-design/icons"
 import { usePropertyWidthState } from "../contexts"
 import { ZoomButtons } from "./ZoomButtons"
 import { CanvasFloatButton } from "../common/FloatButton"
@@ -51,6 +51,10 @@ const ButtonContainer = styled.div`
     background-color: ${props => props.theme.token?.colorBgBase};
   }
 `
+export const SaveButton = styled(Button)`
+  box-shadow: ${props => props.theme.mode === "dark" ? "2px 2px 8px 4px #13386c" : "1px 1px 6px 1px #6e95cc"};
+  border: solid 1px ${props => props.theme.token?.colorPrimary};
+`;
 
 export const ShortcutActions = memo((
   props: {
@@ -118,7 +122,8 @@ export const ShortcutActions = memo((
 
         </ExpandPanel>
         <StyleSpace direction="vertical">
-          <CanvasFloatButton icon={<PlayCircleOutlined />} />
+          <SaveButton type="primary" icon={<SaveOutlined />} />
+          <CanvasFloatButton icon={<FileAddOutlined />} />
           <ZoomButtons zoom={zoom} onZoomChange={onZoomChange} />
           <StyledButton
             type={outlineOpen ? "link" : undefined}

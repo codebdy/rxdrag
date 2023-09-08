@@ -1,38 +1,56 @@
-import { memo } from "react"
-import { EditorScope } from "@rxdrag/react-antd-shell"
-import { controllerDefines, materials, minionsLocales, minionsMaterialCategories, setterLocales } from "example-common"
-import { AppDesignerExampleInner } from "./AppDesignerExampleInner"
-import { useQueryApp } from "./hooks/useQueryApp"
+import { ConfigProvider, theme } from "antd"
+import { memo, useState } from "react"
+import { Toolbar } from "./Toolbar"
+import { UiDesigner } from "./UiDesigner"
 import { AppContext } from "./contexts"
-import { appDesignerLocales } from "./locales"
-import _ from "lodash"
+import { useQueryApp } from "./hooks/useQueryApp"
+import { ThemeRoot } from "./ThemeRoot"
+import { DeviceType } from "./interfaces"
+import styled from "styled-components"
 
-export const AppDesignerExample = memo((
-  props: {
-    canvasUrl: string,
-    previewUrl: string,
-  }
-) => {
+const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  box-sizing: border-box;
+  background-color: ${props => props.theme.token?.colorBgContainer};
+  color: ${props => props.theme.token?.colorText};
+`
+
+export const AppDesignerExample = memo((props: {
+  canvasUrl: string,
+  previewUrl: string,
+}) => {
   const { canvasUrl, previewUrl } = props
+  const [themeMode, setThemeMode] = useState<"dark" | "light">("dark")
   const { app } = useQueryApp("app1")
+  const [device, setDevice] = useState<DeviceType>(DeviceType.admin)
 
   return (
-    <AppContext.Provider value={app}>
-      <EditorScope
-        locales={{ ..._.merge(setterLocales, appDesignerLocales) }}
-        canvasUrl={canvasUrl}
-        previewUrl={previewUrl}
-        themeMode="dark"
-        minionOptions={{
-          materials: minionsMaterialCategories,
-          locales: minionsLocales,
-          controllers: controllerDefines,
-        }}
-
-        materials={materials}
-      >
-        <AppDesignerExampleInner />
-      </EditorScope>
-    </AppContext.Provider>
+    <ConfigProvider
+      theme={{
+        algorithm: themeMode === "dark" ? theme.darkAlgorithm : theme.defaultAlgorithm
+      }}
+    >
+      <ThemeRoot mode={themeMode}>
+        <AppContext.Provider value={app}>
+          <Container className="zoomable-editor">
+            <Toolbar
+              device={device}
+              onDeviceChange={setDevice}
+              themeMode={themeMode}
+              onThemeModeChange={setThemeMode}
+            />
+            <UiDesigner
+              device={device}
+              canvasUrl={canvasUrl}
+              previewUrl={previewUrl}
+              themeMode={themeMode}
+            />
+          </Container>
+        </AppContext.Provider>
+      </ThemeRoot>
+    </ConfigProvider>
   )
 })
