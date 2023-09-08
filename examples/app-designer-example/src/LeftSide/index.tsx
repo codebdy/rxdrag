@@ -23,23 +23,58 @@ const Container = styled.div`
   z-index: 1;
 `
 
+const enum NavType {
+  moudules = "modules",
+  frame = "frame",
+  menu = "menu",
+  code = "code"
+}
+
 export const LeftSide = memo(() => {
   const [openModules, setOpenModules] = useState<boolean>()
+  const [navKey, setNavKey] = useState<NavType>()
+
 
   const handleModulesClick = useCallback(() => {
     setOpenModules(true)
+    setNavKey(NavType.moudules)
+  }, [])
+
+  const handleFrameClick = useCallback(() => {
+    setOpenModules(false)
+    setNavKey(NavType.frame)
+  }, [])
+
+
+  const handleMenuClick = useCallback(() => {
+    setOpenModules(false)
+    setNavKey(NavType.menu)
   }, [])
   return (
     <Container className="rx-left-side">
       <NavButton
         title="模块"
         icon={<SnippetsOutlined />}
-        intermediate
+        intermediate={navKey === NavType.moudules && !openModules}
+        selected={openModules}
         onClick={handleModulesClick}
       />
-      <NavButton title="模板" icon={<LayoutOutlined />} />
-      <NavButton title="菜单" icon={<CompassOutlined />} selected />
-      <NavButton title="出码" icon={<DeploymentUnitOutlined />} />
+      <NavButton
+        title="UI框架"
+        selected={navKey === NavType.frame}
+        icon={<LayoutOutlined />}
+        onClick={handleFrameClick}
+      />
+      <NavButton
+        title="菜单"
+        icon={<CompassOutlined />}
+        selected={navKey === NavType.menu}
+        onClick={handleMenuClick}
+      />
+      <NavButton
+        title="出码"
+        icon={<DeploymentUnitOutlined />}
+      />
       <Spring />
       <ScreenDialog />
       <LeftDrawer open={openModules} onOpenChange={setOpenModules} />

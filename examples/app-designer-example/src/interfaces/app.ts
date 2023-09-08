@@ -11,7 +11,7 @@ export interface IApp {
 export interface IAppDeviceSide {
   app?: IApp,
   devideType: DeviceType,
-  templateSchema?: INodeSchema,
+  frameSchema?: INodeSchema,
   canvasConfig?: ICanvasConfig,
   menu?: any,
 }
