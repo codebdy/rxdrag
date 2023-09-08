@@ -44,6 +44,14 @@ const StyleSpace = styled(Space)`
   pointer-events: all;
 `
 
+const ButtonContainer = styled.div`
+  box-sizing: border-box;
+  padding: 0;
+  .ant-btn{
+    background-color: ${props => props.theme.token?.colorBgBase};
+  }
+`
+
 export const ShortcutActions = memo((
   props: {
     scrolled?: boolean,
@@ -124,7 +132,9 @@ export const ShortcutActions = memo((
             icon={<HistoryOutlined />}
             onClick={handleToggleHistoryOpen}
           />
-          <CanvasFloatButton disabled={!scrolled} icon={<AimOutlined />} onClick={onResetScroll} />
+          <ButtonContainer>
+            <CanvasFloatButton disabled={!scrolled} icon={<AimOutlined />} onClick={onResetScroll} />
+          </ButtonContainer>
         </StyleSpace>
       </RelativeInner>
     </Container>
