@@ -35,9 +35,11 @@ const enum NavType {
   code = "code"
 }
 
+
+
 export const LeftSide = memo(() => {
   const [openModules, setOpenModules] = useState<boolean>()
-  const [navKey, setNavKey] = useState<NavType>()
+  const [navKey, setNavKey] = useState<NavType>(NavType.moudules)
 
 
   const handleModulesClick = useCallback(() => {

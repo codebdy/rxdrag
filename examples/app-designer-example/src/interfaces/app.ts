@@ -7,6 +7,10 @@ export interface IApp {
   title: string,
 }
 
+export interface IAppInput{
+  id?: string,
+  title?: string,
+}
 
 export interface IAppDeviceSide {
   app?: IApp,

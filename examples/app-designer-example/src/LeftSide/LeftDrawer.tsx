@@ -1,7 +1,8 @@
 import { CloseOutlined } from "@ant-design/icons"
 import { ResizableColumn, floatShadow } from "@rxdrag/react-antd-shell"
-import { Button } from "antd"
-import { memo, useCallback, useMemo, useState } from "react"
+import { Button, Tree } from "antd"
+import { DataNode, DirectoryTreeProps } from "antd/es/tree"
+import { Key, memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
 
 const maxWidth = 1000
@@ -43,25 +44,57 @@ const TitleContent = styled.div`
   align-items: center;
 `
 
+const Content = styled.div`
+  padding: 8px;
+  .ant-tree{
+    background-color: transparent;
+  }
+`
+
+const { DirectoryTree } = Tree;
+
+const treeData: DataNode[] = [
+  {
+    title: '基础模块',
+    key: 'displays',
+    children: [
+      { title: '用户管理', key: 'users', isLeaf: true },
+    ],
+  },
+  {
+    title: '客户管理',
+    key: 'forms',
+    children: [
+      { title: '供应商', key: 'supplier', isLeaf: true },
+      { title: '客户', key: 'customer', isLeaf: true },
+    ],
+  },
+];
+
+
 export const LeftDrawer = memo((
   props: {
+    selected?: string,
     title?: React.ReactNode,
     open?: boolean,
     onOpenChange?: (open?: boolean) => void
   }
 ) => {
-  const { title, open, onOpenChange } = props
+  const { selected, title, open, onOpenChange } = props
   const [width, setWidth] = useState(320)
 
   const realWidth = useMemo(() => {
     return open ? width : 0
   }, [open, width])
 
-  console.log("===>a", realWidth, open)
-
   const handleClose = useCallback(() => {
     onOpenChange?.(false)
   }, [onOpenChange])
+
+  const handleSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: Key[], root: any) => {
+    if (root.node.children) return
+    //onSelect(keys?.[0].toString() || "")
+  }, []);
 
   return (
     <DrawerShell
@@ -82,6 +115,15 @@ export const LeftDrawer = memo((
           onClick={handleClose}
         />
       </Title>
+      <Content>
+        <DirectoryTree
+          selectedKeys={[selected || ""]}
+          multiple={false}
+          defaultExpandAll
+          onSelect={handleSelect}
+          treeData={treeData}
+        />
+      </Content>
     </DrawerShell>
   )
 })
