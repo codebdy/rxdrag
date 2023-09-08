@@ -26,6 +26,19 @@ const ToolboxShell = styled(ResizableColumn)`
       border: 0;
     }
   }
+  &.collapsed{
+    opacity: 0;
+    pointer-events: none;
+  }
+`
+
+const MiniShell = styled.div`
+  position: absolute;
+  top: ${DEFAULT_MARGIN}px;
+  left: ${DEFAULT_MARGIN}px;
+  background-color: ${props => props.theme.token?.colorBgBase};
+  box-shadow: ${floatShadow};
+  border-radius: 6px;
 `
 
 const Container = styled.div`
@@ -37,9 +50,7 @@ const Container = styled.div`
   min-width: ${minWidth}px;
   min-height: calc(100% - ${DEFAULT_MARGIN * 2}px);
   transition: opacity 0.3s;
-  .collapsed{
-    opacity: 0;
-  }
+
   .ant-tabs{
     flex:1;
     height: 0;
@@ -81,30 +92,30 @@ export const Toolbox = memo((
   }, [oldeWidth, setToolboxWidth])
 
   return (
-    <ToolboxShell
-      maxWidth={maxWidth}
-      minWidth={minWidth}
-      width={toolboxWidth}
-      onWidthChange={setToolboxWidth}
-      style={{
-        height: collapsed ? 32 : undefined,
-        minWidth: collapsed ? 32 : undefined,
-      }}
-    >
-      {
-        collapsed
-          ? <Button
-            type="text"
-
-            icon={<AppstoreOutlined />}
-            onClick={handleOpen}
-          />
-          : <Container className={collapsed ? "collapsed" : undefined}>
-            {children}
-            <CloseButton onClick={handleCollapse} />
-          </Container>
-      }
-
-    </ToolboxShell>
+    <>
+      <MiniShell>
+        <Button
+          type="text"
+          icon={<AppstoreOutlined />}
+          onClick={handleOpen}
+        />
+      </MiniShell>
+      <ToolboxShell
+        maxWidth={maxWidth}
+        minWidth={minWidth}
+        width={toolboxWidth}
+        onWidthChange={setToolboxWidth}
+        style={{
+          height: collapsed ? 32 : undefined,
+          minWidth: collapsed ? 32 : undefined,
+        }}
+        className={collapsed ? "collapsed" : undefined}
+      >
+        <Container>
+          {children}
+          <CloseButton onClick={handleCollapse} />
+        </Container>
+      </ToolboxShell>
+    </>
   )
 })
