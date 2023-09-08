@@ -27,6 +27,18 @@ const PanelShell = styled(ResizableColumn)`
       border: 0;
     }
   }
+  &.collapsed{
+    opacity: 0;
+    pointer-events: none;
+  }
+`
+const MiniShell = styled.div`
+  position: absolute;
+  top: ${DEFAULT_MARGIN}px;
+  right: ${DEFAULT_MARGIN}px;
+  background-color: ${props => props.theme.token?.colorBgBase};
+  box-shadow: ${floatShadow};
+  border-radius: 6px;
 `
 
 const Container = styled.div`
@@ -38,9 +50,7 @@ const Container = styled.div`
   min-width: ${minWidth}px;
   min-height: calc(100% - ${DEFAULT_MARGIN * 2}px);
   transition: opacity 0.3s;
-  .collapsed{
-    opacity: 0;
-  }
+
 `
 
 export const CloseButton = styled(Button).attrs({ icon: <MinusOutlined />, size: "small", type: "text" })`
@@ -95,32 +105,33 @@ export const PropertyPanel = memo(() => {
   }, [])
 
   return (
-    <PanelShell
-      right
-      maxWidth={maxWidth}
-      minWidth={minWidth}
-      width={propertyWidth}
-      onWidthChange={setPropertyWidth}
-      className={collapsed ? "collapsed" : undefined}
-      style={{
-        height: collapsed ? 32 : undefined,
-        minWidth: collapsed ? 32 : undefined,
-      }}
-    >
-      {
-        collapsed
-          ? <Button
-            type="text"
-            disabled={!currentNode}
-            icon={propertyIcon}
-            onClick={handleOpen}
-          />
-          : <Container className={collapsed ? "collapsed" : undefined}>
-            <SettingsForm />
-            <CloseButton onClick={handleCollapse} />
-            <PinButton type={pinned ? "link" : "text"} onClick={handleTogglePin} />
-          </Container>
-      }
-    </PanelShell>
+    <>
+      <MiniShell>
+        <Button
+          type="text"
+          disabled={!currentNode}
+          icon={propertyIcon}
+          onClick={handleOpen}
+        />
+      </MiniShell>
+      <PanelShell
+        right
+        maxWidth={maxWidth}
+        minWidth={minWidth}
+        width={propertyWidth}
+        onWidthChange={setPropertyWidth}
+        className={collapsed ? "collapsed" : undefined}
+        style={{
+          height: collapsed ? 32 : undefined,
+          minWidth: collapsed ? 32 : undefined,
+        }}
+      >
+        <Container>
+          <SettingsForm />
+          <CloseButton onClick={handleCollapse} />
+          <PinButton type={pinned ? "link" : "text"} onClick={handleTogglePin} />
+        </Container>
+      </PanelShell>
+    </>
   )
 })
