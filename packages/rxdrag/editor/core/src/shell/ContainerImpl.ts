@@ -15,6 +15,9 @@ export class ContainerImpl implements IShellPane {
       this.drivers.push(driverFactory(engine.getShell(), roolElement))
     }
   }
+  getNodesRect(nodeIds: string[]): IRect | null {
+    throw new Error("Method not implemented.");
+  }
   getRootElement(): HTMLElement {
     return this.roolElement;
   }

@@ -20,7 +20,7 @@ const Container = styled.div`
   box-shadow: ${floatShadow};
   height: 100%;
   box-sizing: border-box;
-  z-index: 1;
+  z-index: 10;
 `
 
 const enum NavType {
