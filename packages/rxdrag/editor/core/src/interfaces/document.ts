@@ -76,7 +76,8 @@ export enum HistoryableActionType {
   Change = "Change",
   RemoveSlot = "RemoveSlot",
   AddSlot = "AddSlot",
-  Resize = "Resize"
+  Resize = "Resize",
+  Rotate = "Rotate"
 }
 
 /**

@@ -28,7 +28,6 @@ export abstract class CornerHandler {
   protected rotating?: boolean
   //中心点坐标
   protected centerPoint?: IXYCoord
-
   private prevAngle = 0
   private currentAgle = 0
 
@@ -64,6 +63,11 @@ export abstract class CornerHandler {
 
     this.htmlRotate1.addEventListener("mousedown", this.handleStartRotating)
     this.htmlRotate1.addEventListener("mousedown", this.handleStartRotating)
+    const oldDeg = this.getOldDeg()
+
+    if (oldDeg && this.container.parentElement) {
+      this.container.parentElement.style.transform = `rotate(${oldDeg}deg)`
+    }
   }
   protected abstract getNewSize(old: ISize, offset: Offset): ISize
   protected abstract getNewPostition(old: IXYCoord, offset: Offset): IXYCoord
@@ -97,7 +101,7 @@ export abstract class CornerHandler {
         }
       }
     } else {
-      if (this.container.parentElement) {
+      if (this.container.parentElement && this.nodeInfos?.length === 1) {
         this.container.parentElement.style.transform = `rotate(${deg}deg)`
       }
       for (const nodeInfo of this.nodeInfos) {
@@ -125,13 +129,12 @@ export abstract class CornerHandler {
   private rotatingOne(nodeInfo: INodeInfo, deg?: number) {
     if (deg) {
       for (const eleInfo of nodeInfo.elementInfos) {
-        console.log("===>draggingOne", deg)
         eleInfo.element.style.transform = `rotate(${deg}deg)`
       }
     }
   }
 
-  protected onDrop(offset: Offset, deg?: number) {
+  protected onDropResize(offset: Offset) {
     if (!this.rotating && this.rect) {
       const doc = this.getDocument()
       if (doc) {
@@ -150,6 +153,31 @@ export abstract class CornerHandler {
                 ...this.getNewSize(nodeRect, offset),
                 top: newPos.y,
                 left: newPos.x,
+              }
+            }
+            doc.changeNodeMeta(node.id, newMeta)
+          }
+        }
+        doc.backup(HistoryableActionType.Resize)
+      }
+    }
+  }
+
+  protected onDropRotate(deg: number) {
+    if (this.rotating && this.rect) {
+      const doc = this.getDocument()
+      if (doc) {
+        for (const nodeInfo of this.nodeInfos) {
+          const node = nodeInfo?.node
+          if (!node) {
+            continue
+          }
+          const nodeRect = nodeInfo.rect
+          if (nodeRect) {
+            const newMeta = {
+              ...node.meta,
+              props: {
+                ...node.meta.props,
                 rotateDeg: deg,
               }
             }
@@ -160,6 +188,7 @@ export abstract class CornerHandler {
       }
     }
   }
+
 
   protected handleStartRotating = () => {
     this.rotating = true
@@ -179,7 +208,11 @@ export abstract class CornerHandler {
 
   protected handleMousUp = (e: MouseEvent) => {
     if (this.startDrageEvent) {
-      this.onDrop(this.getOffset(e), this.getRotateDeg(e))
+      if (this.rotating) {
+        this.onDropRotate(this.getRotateDeg(e))
+      } else {
+        this.onDropResize(this.getOffset(e))
+      }
     }
     this.container.ownerDocument.body.style.userSelect = ""
     this.startDrageEvent = undefined
@@ -215,6 +248,12 @@ export abstract class CornerHandler {
 
   protected getDocument() {
     return this.engine.getNodeDocument(this.nodeInfos?.[0]?.node.id || "")
+  }
+
+  //如果只有一个元素返回角度
+  protected getOldDeg() {
+    if (this.nodeInfos.length === 1)
+      return this.nodeInfos[0]?.node.meta.props?.rotateDeg
   }
 
   private getRotateDeg(e: MouseEvent) {

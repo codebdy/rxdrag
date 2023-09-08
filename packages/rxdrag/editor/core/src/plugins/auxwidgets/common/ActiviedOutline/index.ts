@@ -99,6 +99,10 @@ export class ActivedOutlineImpl implements IPlugin {
       htmlDiv.style.width = numbToPx(rect.width)
       htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
       htmlDiv.style.opacity = "0.6"
+      //针对自由布局设置旋转角度
+      if(node.meta?.props?.rotateDeg){
+        htmlDiv.style.transform = `rotate(${node.meta?.props?.rotateDeg}deg)`
+      }
       canvas?.appendAux(htmlDiv)
       this.outline = htmlDiv
       for (const element of elements) {
