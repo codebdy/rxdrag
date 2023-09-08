@@ -25,10 +25,10 @@ const Container = styled.div`
 export const LeftSide = memo(() => {
   return (
     <Container className="rx-left-side">
-      <NavButton icon={<SnippetsOutlined />} intermediate />
-      <NavButton icon={<LayoutOutlined />} />
-      <NavButton icon={<CompassOutlined />} selected />
-      <NavButton icon={<DeploymentUnitOutlined />} />
+      <NavButton title="模块" icon={<SnippetsOutlined />} intermediate />
+      <NavButton title="模板" icon={<LayoutOutlined />} />
+      <NavButton title="菜单" icon={<CompassOutlined />} selected />
+      <NavButton title="出码" icon={<DeploymentUnitOutlined />} />
       <Spring />
       <ScreenDialog />
     </Container>

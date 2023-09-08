@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from "antd"
+import { Button, ButtonProps, Tooltip } from "antd"
 import { memo, useMemo } from "react"
 import styled from "styled-components"
 import classNames from "classnames"
@@ -10,15 +10,16 @@ const StyledButton = styled(Button)`
   border-left: solid 3px transparent;
   border-right: solid 3px transparent;
   &.intermediate{
-    border-left-color: ${props=>props.theme?.token?.colorPrimary};
+    border-left-color: ${props => props.theme?.token?.colorPrimary};
   }
 `
 
 export const NavButton = memo((props: ButtonProps & {
-  intermediate?:boolean,
+  title?: string,
+  intermediate?: boolean,
   selected?: boolean,
 }) => {
-  const { intermediate, selected, className, ...rest } = props
+  const { title, intermediate, selected, className, ...rest } = props
   const newType = useMemo(() => {
     if (selected) {
       return "primary"
@@ -28,6 +29,8 @@ export const NavButton = memo((props: ButtonProps & {
     return "text"
   }, [intermediate, selected])
   return (
-    <StyledButton className={classNames(className, {intermediate})} block type={newType} {...rest} />
+    <Tooltip title={title} placement="right">
+      <StyledButton className={classNames(className, { intermediate })} block type={newType} {...rest} />
+    </Tooltip>
   )
 })
