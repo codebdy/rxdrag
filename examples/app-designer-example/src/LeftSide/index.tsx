@@ -1,10 +1,11 @@
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
-import { CompassOutlined, DeploymentUnitOutlined, LayoutOutlined, SnippetsOutlined } from "@ant-design/icons"
+import { CompassOutlined, DeploymentUnitOutlined, LayoutOutlined, PlusOutlined, SnippetsOutlined } from "@ant-design/icons"
 import { ScreenDialog } from "./ScreenDialog"
 import { Spring, floatShadow } from "@rxdrag/react-antd-shell"
 import { NavButton } from "./NavButton"
 import { LeftDrawer } from "./LeftDrawer"
+import { Button } from "antd"
 
 const Container = styled.div`
   position: relative;
@@ -23,6 +24,10 @@ const Container = styled.div`
   z-index: 10;
 `
 
+const AddButton = styled(Button)`
+  margin-right: 8px;
+`
+
 const enum NavType {
   moudules = "modules",
   frame = "frame",
@@ -36,9 +41,9 @@ export const LeftSide = memo(() => {
 
 
   const handleModulesClick = useCallback(() => {
-    setOpenModules(true)
+    setOpenModules(!openModules)
     setNavKey(NavType.moudules)
-  }, [])
+  }, [openModules])
 
   const handleFrameClick = useCallback(() => {
     setOpenModules(false)
@@ -77,7 +82,15 @@ export const LeftSide = memo(() => {
       />
       <Spring />
       <ScreenDialog />
-      <LeftDrawer open={openModules} onOpenChange={setOpenModules} />
+      <LeftDrawer
+        open={openModules}
+        onOpenChange={setOpenModules}
+        title={<>
+          功能
+          <Spring />
+          <AddButton size="small" type="text" icon={<PlusOutlined />} />
+        </>}
+      />
     </Container>
   )
 })

@@ -1,4 +1,4 @@
-import { MinusOutlined } from "@ant-design/icons"
+import { CloseOutlined } from "@ant-design/icons"
 import { ResizableColumn, floatShadow } from "@rxdrag/react-antd-shell"
 import { Button } from "antd"
 import { memo, useCallback, useMemo, useState } from "react"
@@ -32,6 +32,9 @@ const Title = styled.div`
   align-items: center;
   height: 40px;
   padding: 0 16px;
+  padding-right: 8px;
+  border-bottom: solid 1px ${props => props.theme.token?.colorBorder};
+  font-size: 14px;
 `
 
 const TitleContent = styled.div`
@@ -42,7 +45,7 @@ const TitleContent = styled.div`
 
 export const LeftDrawer = memo((
   props: {
-    title?: string,
+    title?: React.ReactNode,
     open?: boolean,
     onOpenChange?: (open?: boolean) => void
   }
@@ -75,7 +78,7 @@ export const LeftDrawer = memo((
         <Button
           size="small"
           type="text"
-          icon={<MinusOutlined />}
+          icon={<CloseOutlined />}
           onClick={handleClose}
         />
       </Title>

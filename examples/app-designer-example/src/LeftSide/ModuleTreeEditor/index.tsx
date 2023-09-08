@@ -2,11 +2,9 @@ import type { Key } from "react";
 import { memo, useCallback, useMemo, useState } from "react"
 import { Spin, Tree } from 'antd';
 import type { DataNode, DirectoryTreeProps } from "antd/es/tree";
-
 import { ItemLabel } from "./ItemLabel";
 import { EditButton } from "./EditButton";
 import { FolderOpenOutlined, FolderOutlined } from "@ant-design/icons";
-import "../../../../global.less";
 import styled from "styled-components";
 
 const { DirectoryTree } = Tree;
@@ -111,18 +109,16 @@ export const defaultFieldNames = {
   count: "count"
 }
 
-export type TreeEditorProps<T = any> = {
+export type ModuleTreeEditorProps = {
   title: string;
-  entityConfig: IEntityConfig<any>;
-  treeFieldNames?: FieldNames | undefined;
-  onSelect?: ((node?: T | undefined) => void) | undefined;
+  onSelect?: (id?: string) => void;
   readOnly?: boolean | undefined;
 }
 
-export const TreeEditor = memo(<T = any>(
-  props: TreeEditorProps<T>
+export const ModuleTreeEditor = memo((
+  props: ModuleTreeEditorProps
 ) => {
-  const { title, entityConfig, treeFieldNames = defaultFieldNames, onSelect, readOnly } = props;
+  const { title, onSelect, readOnly } = props;
   const [selected, setSelected] = useState<string>();
   const [expands, setExpands] = useState<string[]>();
   const { loading, data } = useQuery<unknown[] | undefined>({
@@ -148,7 +144,7 @@ export const TreeEditor = memo(<T = any>(
         }
       }
     }
-  }, [treeFieldNames.children, treeFieldNames.key])
+  }, [])
 
   const handleSelect = useCallback((selectedKeys: Key[]) => {
     const key = selectedKeys?.[0] as string | undefined
@@ -162,7 +158,7 @@ export const TreeEditor = memo(<T = any>(
         }
       }
     }
-  }, [getNodeById, onSelect, tree, treeFieldNames.children]);
+  }, [getNodeById, onSelect, tree]);
 
   const handleExpand: DirectoryTreeProps['onExpand'] = useCallback((keys: any) => {
     setExpands(keys)
@@ -191,7 +187,7 @@ export const TreeEditor = memo(<T = any>(
     }
 
     return nodes.length > 0 ? nodes : undefined
-  }, [entityConfig, expands, readOnly, treeFieldNames])
+  }, [expands, readOnly])
 
   const treeData = useMemo(() => {
     return getNodes(tree)
@@ -225,4 +221,4 @@ export const TreeEditor = memo(<T = any>(
       }
     </TreeEditorShell>
   )
-}) as <T = any>(props: TreeEditorProps<T>) => JSX.Element
+}) 
