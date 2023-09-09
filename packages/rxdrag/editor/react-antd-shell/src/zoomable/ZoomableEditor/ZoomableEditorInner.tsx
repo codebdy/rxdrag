@@ -25,7 +25,7 @@ const Workspace = styled.div`
 `
 export type ZoomableEditorInnerProps = {
   locales?: ILocales,
-  schemas: IDocumentSchema[],
+  schemas?: IDocumentSchema[],
   toolbox?: React.ReactNode,
 }
 
@@ -63,7 +63,7 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
       engine.clearDocuments()
       console.log("创建 所有documents")
       const dcs: IDocument[] = []
-      for (const schema of schemas) {
+      for (const schema of schemas || []) {
         const doc = engine.createDocument(schema)
         engine.getActions().changeActivedDocument(doc.id)
         dcs.push(doc)

@@ -1,12 +1,31 @@
+import { INodeSchema } from "@rxdrag/schema";
 import { IModule } from "../interfaces/module";
+
+const rootNodeSchema: INodeSchema = {
+  componentName: "Page"
+}
 
 export const modules: IModule[] = [
   {
-    id: "module-1",
-    title: "基础模块",
+    id: "users",
+    title: "用户管理",
+    scenes: [
+      {
+        title: "首页",
+        schema: rootNodeSchema,
+      },
+      {
+        title: "详情",
+        schema: rootNodeSchema,
+      }
+    ]
   },
   {
-    id: "module-2",
-    title: "用户管理"
+    id: "suppliers",
+    title: "供应商"
   },
+  {
+    id: "customers",
+    title: "客户"
+  }
 ]

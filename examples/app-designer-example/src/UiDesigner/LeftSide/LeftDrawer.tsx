@@ -58,17 +58,17 @@ const { DirectoryTree } = Tree;
 const treeData: DataNode[] = [
   {
     title: '基础模块',
-    key: 'displays',
+    key: 'basics',
     children: [
       { title: '用户管理', key: 'users', isLeaf: true },
     ],
   },
   {
     title: '客户管理',
-    key: 'forms',
+    key: 'crm',
     children: [
-      { title: '供应商', key: 'supplier', isLeaf: true },
-      { title: '客户', key: 'customer', isLeaf: true },
+      { title: '供应商', key: 'suppliers', isLeaf: true },
+      { title: '客户', key: 'customers', isLeaf: true },
     ],
   },
 ];

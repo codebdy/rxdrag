@@ -2,28 +2,16 @@ import { ZoomableEditor } from "@rxdrag/react-antd-shell"
 import { Tabs, TabsProps } from "antd"
 import { memo, useMemo } from "react"
 import { ResourceWidget } from "../../ResourceWidget"
-import { IDocumentSchema, INodeSchema } from "@rxdrag/schema"
 import { useParams } from "react-router-dom"
+import { useQueryModule } from "../../hooks/useQueryModule"
 
-const rootNodeSchema: INodeSchema = {
-  componentName: "Page"
-}
-
-const schemas: IDocumentSchema[] = [
-  {
-    title: "首页",
-    schema: rootNodeSchema,
-  },
-  {
-    title: "详情",
-    schema: rootNodeSchema,
-  }
-]
 
 
 export const ModuleUiDesignerInner = memo(() => {
   const { moduleId } = useParams()
-  console.log("====>moduleId", moduleId)
+
+  const { module } = useQueryModule(moduleId || "")
+
   const items: TabsProps['items'] = useMemo(() => {
     return [
       {
@@ -45,7 +33,7 @@ export const ModuleUiDesignerInner = memo(() => {
           items={items}
         />
       }
-      schemas={schemas}
+      schemas={module?.scenes }
     />
   )
 })

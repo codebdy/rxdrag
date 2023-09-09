@@ -31,7 +31,7 @@ const AddButton = styled(Button)`
 `
 
 export const enum NavType {
-  moudules = "modules",
+  modules = "modules",
   frame = "frame",
   menu = "menu",
   code = "code"
@@ -46,7 +46,7 @@ export const LeftSide = memo(() => {
   const modulesPath = useMemo(() => "/" + (moduleId || ""), [moduleId])
   const handleModulesClick = useCallback(() => {
     setOpenModules(!openModules)
-    navigate(NavType.moudules + modulesPath)
+    navigate(NavType.modules + modulesPath)
   }, [modulesPath, navigate, openModules])
 
   const handleFrameClick = useCallback(() => {

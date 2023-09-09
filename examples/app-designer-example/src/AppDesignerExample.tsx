@@ -19,8 +19,8 @@ export const AppDesignerExample = memo((props: {
       <Route path={""} element={<AppDesigner />}>
         <Route index element={<Navigate to={"ui-designer/" + DeviceType.admin} replace />} />
         <Route path={"/ui-designer/:device"} element={<UiDesigner />}>
-          <Route index element={<Navigate to={NavType.moudules} replace />} />
-          <Route path={NavType.moudules + "/:moduleId?"} element={<ModuleUiDesigner
+          <Route index element={<Navigate to={NavType.modules} replace />} />
+          <Route path={NavType.modules + "/:moduleId?"} element={<ModuleUiDesigner
             canvasUrl={canvasUrl}
             previewUrl={previewUrl}
           //themeMode={themeMode}
