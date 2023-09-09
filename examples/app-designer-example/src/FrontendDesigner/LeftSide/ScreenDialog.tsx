@@ -1,5 +1,5 @@
 import { SettingOutlined } from "@ant-design/icons"
-import { memo, useCallback, useState } from "react"
+import { memo, useCallback, useEffect, useState } from "react"
 import { Button, Form, InputNumber, Modal } from "antd";
 import styled from "styled-components";
 import { useAppFrontend } from "../../hooks/useAppFrontend";
@@ -25,6 +25,12 @@ export const ScreenDialog = memo(() => {
     setOpen(false);
   }, []);
 
+  const [form]  = Form.useForm()
+
+  useEffect(()=>{
+    form.setFieldsValue(frontend?.canvasConfig)
+  },[form, frontend?.canvasConfig])
+
   return (
     <>
       <Button
@@ -48,6 +54,7 @@ export const ScreenDialog = memo(() => {
           wrapperCol={{ span: 16 }}
           initialValues={frontend?.canvasConfig}
           autoComplete="off"
+          form = {form}
         >
           <Form.Item
             label="实际屏宽"

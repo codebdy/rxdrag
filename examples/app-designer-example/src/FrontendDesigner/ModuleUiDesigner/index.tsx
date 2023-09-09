@@ -3,6 +3,7 @@ import { memo } from "react"
 import { ModuleUiDesignerInner } from "./ModuleUiDesignerInner"
 import { setterLocales, minionsMaterialCategories, minionsLocales, controllerDefines, materials } from "example-common"
 import { useAppThemeMode } from "../../hooks/useAppThemeMode"
+import { useAppFrontend } from "../../hooks/useAppFrontend"
 
 export const ModuleUiDesigner = memo((
   props: {
@@ -12,7 +13,7 @@ export const ModuleUiDesigner = memo((
 ) => {
   const { canvasUrl, previewUrl } = props;
   const themeMode = useAppThemeMode()
-
+  const frontend = useAppFrontend()
   return (
     <EditorScope
       locales={setterLocales}
@@ -26,6 +27,7 @@ export const ModuleUiDesigner = memo((
       }}
 
       materials={materials}
+      canvasConifg={frontend?.canvasConfig}
     >
       <ModuleUiDesignerInner />
     </EditorScope>

@@ -5,8 +5,6 @@ import { ResourceWidget } from "../../ResourceWidget"
 import { useParams } from "react-router-dom"
 import { useQueryModule } from "../../hooks/useQueryModule"
 
-
-
 export const ModuleUiDesignerInner = memo(() => {
   const { moduleId } = useParams()
 
@@ -27,13 +25,15 @@ export const ModuleUiDesignerInner = memo(() => {
     ]
   }, [])
   return (
-    <ZoomableEditor
-      toolbox={
-        <Tabs
-          items={items}
-        />
-      }
-      schemas={module?.scenes }
-    />
+    module
+      ? <ZoomableEditor
+        toolbox={
+          <Tabs
+            items={items}
+          />
+        }
+        schemas={module?.scenes}
+      />
+      : <></>
   )
 })
