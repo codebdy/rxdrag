@@ -1,6 +1,7 @@
-import { memo, useState } from "react"
+import { memo, useEffect, useState } from "react"
 import styled from "styled-components"
 import { ZoomableViewportShell } from "./ZoomableViewportShell"
+import { useCanvasConfig } from "@rxdrag/react-core"
 
 const ViewPort = styled.div`
   padding: 800px;
@@ -23,6 +24,11 @@ export const ZoomableViewport = memo((
   const { children } = props;
   const [zoom, setZoom] = useState(1)
   const [grabbing, setGrabbing] = useState(false);
+  const canvasConfig = useCanvasConfig()
+
+  useEffect(() => {
+    setZoom((canvasConfig?.canvasWidth && canvasConfig.screenWidth) ? canvasConfig?.canvasWidth / canvasConfig.screenWidth : 1)
+  }, [canvasConfig?.canvasWidth, canvasConfig?.screenWidth])
 
   return (
     <ZoomableViewportShell

@@ -23,7 +23,7 @@ export const appFronts: IAppFrontend[] = [
       //画布宽度
       canvasWidth: 800,
       //画布高度
-      canvasHeight: 600,
+      canvasHeight: 800,
       //实际屏宽，用于设置iframe的scale
       screenWidth: 1280,
     },

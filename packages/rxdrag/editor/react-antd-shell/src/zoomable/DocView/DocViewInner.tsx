@@ -58,8 +58,16 @@ export const DocViewInner = memo(() => {
   const activedDoc = useActivedDocument()
   const canvasConfig = useCanvasConfig()
 
+  //const screenWidth = canvasConfig?.screenWidth || 800
+  //const canvasScale = canvasConfig?.canvasWidth ? canvasConfig?.canvasWidth / screenWidth : 1
   return (
-    <DocViewContainer className={classNames({ activied: activedDoc?.id === doc?.id })}>
+    <DocViewContainer
+      className={classNames({ activied: activedDoc?.id === doc?.id })}
+      style={{
+        width: canvasConfig?.canvasWidth,
+        //transform: `scale(${canvasScale})`
+      }}
+    >
       <CanvasToolbar>
         <CanvasTitle className="canvas-title">
           {doc?.getTitle()} - <em>{canvasConfig?.deviceName}</em>
@@ -69,7 +77,12 @@ export const DocViewInner = memo(() => {
           {/* <Button type="text" size="small" shape="circle" icon={<DeleteOutlined />} /> */}
         </Space>
       </CanvasToolbar>
-      <CanvasContent className="document-content" >
+      <CanvasContent
+        className="document-content"
+        style={{
+          height: (canvasConfig?.canvasHeight || 800),
+        }}
+      >
         {doc &&
           <IFrame
             doc={doc}
