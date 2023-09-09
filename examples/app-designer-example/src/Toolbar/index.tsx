@@ -9,6 +9,7 @@ import { DeviceType, ThemeMode } from "../interfaces"
 import { useApp } from "../hooks/useApp"
 import { useAppTranslate } from "../hooks/useAppTranslate"
 import { ThemeButton } from "../components"
+import { useParams } from "react-router-dom"
 
 const ToolbarShell = styled.div`
   width: 100%;
@@ -31,15 +32,14 @@ const ProjectTitle = styled.span`
 
 export const Toolbar = memo((
   props: {
-    device: DeviceType,
-    onDeviceChange?: (device: DeviceType) => void,
     themeMode?: ThemeMode,
     onThemeModeChange?: (themeMode: ThemeMode) => void,
   }
 ) => {
-  const { device, onDeviceChange, themeMode, onThemeModeChange } = props;
+  const { themeMode, onThemeModeChange } = props;
   const app = useApp()
   const t = useAppTranslate()
+  const { device } = useParams();
   return (
     <ToolbarShell className="zoomable-toobar">
       <Space>
@@ -72,7 +72,7 @@ export const Toolbar = memo((
               { value: DeviceType.website, label: t(DeviceType.website) },
               { value: DeviceType.largeScreen, label: t(DeviceType.largeScreen) },
             ]}
-            onChange={onDeviceChange}
+          // onChange={onDeviceChange}
           />
         </Space>
         <ProjectTitle>{app?.title}</ProjectTitle>

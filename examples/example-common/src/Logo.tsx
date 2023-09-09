@@ -23,7 +23,7 @@ export const Logo = memo((
   const { title, mini, ...other } = props
   return (
     <LogoContainer {...other}>
-      <img alt="rxeditor" height={32} width={32} src="logo.png" />
+      <img alt="rxeditor" height={32} width={32} src="/logo.png" />
       {!mini && `rx.${title || "___"}`}
     </LogoContainer>
   )

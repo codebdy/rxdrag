@@ -54,7 +54,7 @@ function App() {
       >
       </Route>
       <Route
-        path={routes.appDesigner}
+        path={routes.appDesigner + "/*"}
         element={
           <AppDesignerExample
             canvasUrl="/canvas-render"

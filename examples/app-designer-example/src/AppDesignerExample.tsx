@@ -1,67 +1,38 @@
-import { ConfigProvider, theme } from "antd"
-import { memo, useEffect, useMemo, useState } from "react"
-import { Toolbar } from "./Toolbar"
+import { memo } from "react"
 import { UiDesigner } from "./UiDesigner"
-import { AppContext } from "./contexts"
-import { useQueryApp } from "./hooks/useQueryApp"
-import { ThemeRoot } from "./ThemeRoot"
 import { DeviceType } from "./interfaces"
-import styled from "styled-components"
-import { LocalesContext } from "@rxdrag/react-locales"
-import { LocalesManager } from "@rxdrag/locales"
-import { appDesignerLocales } from "./locales"
-
-const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-flow: column;
-  box-sizing: border-box;
-  background-color: ${props => props.theme.token?.colorBgContainer};
-  color: ${props => props.theme.token?.colorText};
-`
+import { Navigate, Route, Routes } from "react-router-dom"
+import { ModuleUiDesigner } from "./UiDesigner/ModuleUiDesigner"
+import { NavType } from "./UiDesigner/LeftSide"
+import { FrameUiDesigner } from "./UiDesigner/FrameUiDesigner"
+import { MenuDesigner } from "./UiDesigner/MenuDesigner"
+import { AppDesigner } from "./AppDesigner"
 
 export const AppDesignerExample = memo((props: {
   canvasUrl: string,
   previewUrl: string,
 }) => {
   const { canvasUrl, previewUrl } = props
-  const [themeMode, setThemeMode] = useState<"dark" | "light">("dark")
-  const { app } = useQueryApp("app1")
-  const [device, setDevice] = useState<DeviceType>(DeviceType.admin)
-
-  const localesManger = useMemo(() => new LocalesManager(), [])
-
-  useEffect(() => {
-    localesManger.registerLocales(appDesignerLocales)
-  }, [localesManger])
 
   return (
-    <ConfigProvider
-      theme={{
-        algorithm: themeMode === "dark" ? theme.darkAlgorithm : theme.defaultAlgorithm
-      }}
-    >
-      <LocalesContext.Provider value={localesManger}>
-        <ThemeRoot mode={themeMode}>
-          <AppContext.Provider value={app}>
-            <Container className="zoomable-editor">
-              <Toolbar
-                device={device}
-                onDeviceChange={setDevice}
-                themeMode={themeMode}
-                onThemeModeChange={setThemeMode}
-              />
-              <UiDesigner
-                device={device}
-                canvasUrl={canvasUrl}
-                previewUrl={previewUrl}
-                themeMode={themeMode}
-              />
-            </Container>
-          </AppContext.Provider>
-        </ThemeRoot>
-      </LocalesContext.Provider>
-    </ConfigProvider>
+    <Routes>
+      <Route path={""} element={<AppDesigner />}>
+        <Route index element={<Navigate to={"ui-designer/" + DeviceType.admin} replace />} />
+        <Route path={"/ui-designer/:device"} element={<UiDesigner />}>
+          <Route index element={<Navigate to={NavType.moudules} replace />} />
+          <Route path={NavType.moudules} element={<ModuleUiDesigner
+            canvasUrl={canvasUrl}
+            previewUrl={previewUrl}
+          //themeMode={themeMode}
+          />}></Route>
+          <Route path={NavType.frame} element={<FrameUiDesigner
+            canvasUrl={canvasUrl}
+            previewUrl={previewUrl}
+          //themeMode={themeMode}
+          />}></Route>
+          <Route path={NavType.menu} element={<MenuDesigner />}></Route>
+        </Route>
+      </Route>
+    </Routes>
   )
 })

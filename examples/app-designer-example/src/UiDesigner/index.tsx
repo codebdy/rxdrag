@@ -1,9 +1,9 @@
-import { memo, useState } from "react"
+import { memo } from "react"
 import styled from "styled-components"
-import { DeviceType, ThemeMode } from "../interfaces"
-import { ModuleUiDesigner } from "./ModuleUiDesigner"
-import { FrameUiDesigner } from "./FrameUiDesigner"
-import { NavType, LeftSide } from "./LeftSide"
+import { LeftSide } from "./LeftSide"
+import { Outlet, useParams } from "react-router-dom"
+import { DeviceContext } from "../contexts"
+import { DeviceType } from "../interfaces"
 
 //设备端的编辑区
 const AppDeviceArea = styled.div`
@@ -12,40 +12,14 @@ const AppDeviceArea = styled.div`
     height: 0;
   `
 
-export const UiDesigner = memo((
-  props: {
-    device: DeviceType,
-    canvasUrl: string,
-    previewUrl: string,
-    themeMode?: ThemeMode,
-  }
-) => {
-  const { device, canvasUrl, previewUrl, themeMode } = props;
-  const [navKey, setNavKey] = useState<NavType>(NavType.moudules)
-
+export const UiDesigner = memo(() => {
+  const { device } = useParams();
   return (
-    <AppDeviceArea>
-      <LeftSide
-        navKey={navKey}
-        onNavKeyChange={setNavKey}
-      />
-      {
-        navKey === NavType.moudules && <ModuleUiDesigner
-          device={device}
-          canvasUrl={canvasUrl}
-          previewUrl={previewUrl}
-          themeMode={themeMode}
-        />
-      }
-      {
-        navKey === NavType.frame && <FrameUiDesigner
-          device={device}
-          canvasUrl={canvasUrl}
-          previewUrl={previewUrl}
-          themeMode={themeMode}
-        />
-      }
-
-    </AppDeviceArea>
+    <DeviceContext.Provider value={device as DeviceType | undefined}>
+      <AppDeviceArea>
+        <LeftSide />
+        <Outlet />
+      </AppDeviceArea>
+    </DeviceContext.Provider>
   )
 })

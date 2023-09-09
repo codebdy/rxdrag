@@ -1,12 +1,13 @@
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
-import { CompassOutlined, DeploymentUnitOutlined, LayoutOutlined, PlusOutlined, SnippetsOutlined } from "@ant-design/icons"
+import { LayoutOutlined, PlusOutlined, SnippetsOutlined } from "@ant-design/icons"
 import { ScreenDialog } from "./ScreenDialog"
 import { Spring, SvgIcon, floatShadow } from "@rxdrag/react-antd-shell"
 import { NavButton } from "./NavButton"
 import { LeftDrawer } from "./LeftDrawer"
 import { Button } from "antd"
 import { codeIcon, menuIcon } from "./icons"
+import { useLocation, useNavigate } from "react-router-dom"
 
 const Container = styled.div`
   position: relative;
@@ -38,42 +39,37 @@ export const enum NavType {
 
 
 
-export const LeftSide = memo((
-  props: {
-    navKey: NavType,
-    onNavKeyChange?: (navaKey: NavType) => void
-  }
-) => {
-  const { navKey, onNavKeyChange } = props
+export const LeftSide = memo(() => {
   const [openModules, setOpenModules] = useState<boolean>()
-
+  const navigate = useNavigate()
+  const location = useLocation();
   const handleModulesClick = useCallback(() => {
     setOpenModules(!openModules)
-    onNavKeyChange?.(NavType.moudules)
-  }, [onNavKeyChange, openModules])
+    navigate(NavType.moudules)
+  }, [navigate, openModules])
 
   const handleFrameClick = useCallback(() => {
     setOpenModules(false)
-    onNavKeyChange?.(NavType.frame)
-  }, [onNavKeyChange])
+    navigate(NavType.frame)
+  }, [navigate])
 
 
   const handleMenuClick = useCallback(() => {
     setOpenModules(false)
-    onNavKeyChange?.(NavType.menu)
-  }, [onNavKeyChange])
+    navigate(NavType.menu)
+  }, [navigate])
   return (
     <Container className="rx-left-side">
       <NavButton
         title="模块"
         icon={<SnippetsOutlined />}
-        intermediate={navKey === NavType.moudules && !openModules}
+        intermediate={location.pathname.endsWith(NavType.moudules) && !openModules}
         selected={openModules}
         onClick={handleModulesClick}
       />
       <NavButton
         title="UI框架"
-        selected={navKey === NavType.frame}
+        selected={location.pathname.endsWith(NavType.frame)}
         icon={<LayoutOutlined />}
         onClick={handleFrameClick}
       />
@@ -82,7 +78,7 @@ export const LeftSide = memo((
         icon={<SvgIcon>
           {menuIcon}
         </SvgIcon>}
-        selected={navKey === NavType.menu}
+        selected={location.pathname.endsWith(NavType.menu)}
         onClick={handleMenuClick}
       />
       <NavButton

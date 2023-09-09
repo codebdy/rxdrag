@@ -2,6 +2,7 @@ import { theme, GlobalToken } from "antd"
 import { memo, useMemo } from "react"
 import { ThemeProvider } from "styled-components"
 import { ThemeMode } from "./interfaces"
+import { AppThemeModeContext } from "./contexts"
 
 export const ThemeRoot = memo((
   props: {
@@ -20,8 +21,10 @@ export const ThemeRoot = memo((
   }, [mode, token])
 
   return (
-    <ThemeProvider theme={themeValue}>
-      {children}
-    </ThemeProvider>
+    <AppThemeModeContext.Provider value={mode}>
+      <ThemeProvider theme={themeValue}>
+        {children}
+      </ThemeProvider>
+    </AppThemeModeContext.Provider>
   )
 })
