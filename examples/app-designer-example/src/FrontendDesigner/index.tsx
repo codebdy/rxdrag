@@ -12,7 +12,7 @@ const AppDeviceArea = styled.div`
     height: 0;
   `
 
-export const UiDesigner = memo(() => {
+export const FrontendDesigner = memo(() => {
   const { device } = useParams();
   return (
     <DeviceContext.Provider value={device as DeviceType | undefined}>

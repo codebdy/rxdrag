@@ -1,10 +1,10 @@
 import { EditorScope } from "@rxdrag/react-antd-shell"
 import { memo } from "react"
-import { FrameUiDesignerInner } from "./FrameUiDesignerInner"
+import { UiFrameDesignerInner } from "./UiFrameDesignerInner"
 import { setterLocales, minionsMaterialCategories, minionsLocales, controllerDefines, materials } from "example-common"
 import { useAppThemeMode } from "../../hooks/useAppThemeMode"
 
-export const FrameUiDesigner = memo((
+export const UiFrameDesigner = memo((
   props: {
     canvasUrl: string,
     previewUrl: string,
@@ -26,7 +26,7 @@ export const FrameUiDesigner = memo((
 
       materials={materials}
     >
-      <FrameUiDesignerInner />
+      <UiFrameDesignerInner />
     </EditorScope>
   )
 })

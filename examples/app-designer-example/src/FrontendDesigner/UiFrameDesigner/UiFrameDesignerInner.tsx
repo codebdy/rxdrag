@@ -16,7 +16,7 @@ const schemas: IDocumentSchema[] = [
 ]
 
 
-export const FrameUiDesignerInner = memo(() => {
+export const UiFrameDesignerInner = memo(() => {
   const items: TabsProps['items'] = useMemo(() => {
     return [
       {

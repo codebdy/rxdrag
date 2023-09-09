@@ -4,7 +4,7 @@ import { ICanvasConfig } from "@rxdrag/react-core";
 
 export interface IApp {
   id: string,
-  title: string,
+  title?: string,
 }
 
 export interface IAppInput{
@@ -12,9 +12,9 @@ export interface IAppInput{
   title?: string,
 }
 
-export interface IAppDeviceSide {
+export interface IAppFrontend {
   app?: IApp,
-  devideType: DeviceType,
+  deviceType: DeviceType,
   frameSchema?: INodeSchema,
   canvasConfig?: ICanvasConfig,
   menu?: any,

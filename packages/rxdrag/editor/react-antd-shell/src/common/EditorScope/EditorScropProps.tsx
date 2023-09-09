@@ -1,4 +1,4 @@
-import { IComponentMaterial, IMinionOptions, LayoutType } from "@rxdrag/react-core";
+import { ICanvasConfig, IComponentMaterial, IMinionOptions, LayoutType } from "@rxdrag/react-core";
 import { ISetterComponents } from "@rxdrag/core";
 import { ReactComponent } from "@rxdrag/react-shared";
 import { ILocales } from "@rxdrag/locales";
@@ -11,8 +11,9 @@ export type EditorScropProps = {
   materials?: IComponentMaterial[];
   setters?: ISetterComponents<ReactComponent>;
   locales?: ILocales;
-  canvasUrl?: string,
-  previewUrl?: string,
-  layoutType?: LayoutType,
+  canvasUrl?: string;
+  previewUrl?: string;
+  layoutType?: LayoutType;
   children?: React.ReactNode;
+  canvasConifg?: ICanvasConfig;
 };
