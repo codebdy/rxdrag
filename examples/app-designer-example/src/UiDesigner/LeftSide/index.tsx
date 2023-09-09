@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from "react"
+import { memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
 import { LayoutOutlined, PlusOutlined, SnippetsOutlined } from "@ant-design/icons"
 import { ScreenDialog } from "./ScreenDialog"
@@ -7,7 +7,7 @@ import { NavButton } from "./NavButton"
 import { LeftDrawer } from "./LeftDrawer"
 import { Button } from "antd"
 import { codeIcon, menuIcon } from "./icons"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 
 const Container = styled.div`
   position: relative;
@@ -37,16 +37,17 @@ export const enum NavType {
   code = "code"
 }
 
-
-
 export const LeftSide = memo(() => {
   const [openModules, setOpenModules] = useState<boolean>()
   const navigate = useNavigate()
   const location = useLocation();
+  const { moduleId } = useParams()
+
+  const modulesPath = useMemo(() => "/" + (moduleId || ""), [moduleId])
   const handleModulesClick = useCallback(() => {
     setOpenModules(!openModules)
-    navigate(NavType.moudules)
-  }, [navigate, openModules])
+    navigate(NavType.moudules + modulesPath)
+  }, [modulesPath, navigate, openModules])
 
   const handleFrameClick = useCallback(() => {
     setOpenModules(false)
@@ -63,7 +64,7 @@ export const LeftSide = memo(() => {
       <NavButton
         title="模块"
         icon={<SnippetsOutlined />}
-        intermediate={location.pathname.endsWith(NavType.moudules) && !openModules}
+        intermediate={!!location.pathname.indexOf(modulesPath) && !openModules}
         selected={openModules}
         onClick={handleModulesClick}
       />

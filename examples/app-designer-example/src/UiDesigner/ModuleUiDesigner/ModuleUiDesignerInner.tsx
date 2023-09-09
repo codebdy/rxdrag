@@ -3,6 +3,7 @@ import { Tabs, TabsProps } from "antd"
 import { memo, useMemo } from "react"
 import { ResourceWidget } from "../../ResourceWidget"
 import { IDocumentSchema, INodeSchema } from "@rxdrag/schema"
+import { useParams } from "react-router-dom"
 
 const rootNodeSchema: INodeSchema = {
   componentName: "Page"
@@ -21,6 +22,8 @@ const schemas: IDocumentSchema[] = [
 
 
 export const ModuleUiDesignerInner = memo(() => {
+  const { moduleId } = useParams()
+  console.log("====>moduleId", moduleId)
   const items: TabsProps['items'] = useMemo(() => {
     return [
       {

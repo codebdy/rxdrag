@@ -3,6 +3,7 @@ import { ResizableColumn, floatShadow } from "@rxdrag/react-antd-shell"
 import { Button, Tree } from "antd"
 import { DataNode, DirectoryTreeProps } from "antd/es/tree"
 import { Key, memo, useCallback, useMemo, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
 import styled from "styled-components"
 
 const maxWidth = 1000
@@ -75,16 +76,16 @@ const treeData: DataNode[] = [
 
 export const LeftDrawer = memo((
   props: {
-    selected?: string,
-    onSelect?: (selected?: string) => void,
+    onSelectChange?: (selected?: string) => void,
     title?: React.ReactNode,
     open?: boolean,
     onOpenChange?: (open?: boolean) => void
   }
 ) => {
-  const { selected, onSelect, title, open, onOpenChange } = props
+  const { onSelectChange, title, open, onOpenChange } = props
   const [width, setWidth] = useState(320)
-
+  const { moduleId } = useParams()
+  const navigate = useNavigate()
   const realWidth = useMemo(() => {
     return open ? width : 0
   }, [open, width])
@@ -95,9 +96,13 @@ export const LeftDrawer = memo((
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: Key[], root: any) => {
-    if (root.node.children) return
-    onSelect?.(keys?.[0].toString() || "")
-  }, [onSelect]);
+    if (root.node.children) {
+      return
+    }
+    const id = keys?.[0].toString() || ""
+    navigate("modules/" + id)
+    onSelectChange?.(id)
+  }, [navigate, onSelectChange]);
 
   return (
     <DrawerShell
@@ -120,7 +125,7 @@ export const LeftDrawer = memo((
       </Title>
       <Content>
         <DirectoryTree
-          selectedKeys={[selected || ""]}
+          selectedKeys={[moduleId || ""]}
           multiple={false}
           defaultExpandAll
           onSelect={handleSelect}
