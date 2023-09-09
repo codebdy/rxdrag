@@ -2,7 +2,7 @@ import { memo } from "react"
 import styled from "styled-components"
 import { Space } from "antd"
 import { Spring, useCanvasUrl } from "../../common"
-import { IFrame, useActivedDocument, useDocument } from "@rxdrag/react-core"
+import { IFrame, useActivedDocument, useCanvasConfig, useDocument } from "@rxdrag/react-core"
 import classNames from "classnames"
 
 const DocViewContainer = styled.div`
@@ -56,11 +56,13 @@ export const DocViewInner = memo(() => {
   const doc = useDocument()
   const canvasUrl = useCanvasUrl()
   const activedDoc = useActivedDocument()
+  const canvasConfig = useCanvasConfig()
+
   return (
     <DocViewContainer className={classNames({ activied: activedDoc?.id === doc?.id })}>
       <CanvasToolbar>
         <CanvasTitle className="canvas-title">
-          {doc?.getTitle()} - <em>大屏</em>
+          {doc?.getTitle()} - <em>{canvasConfig?.deviceName}</em>
         </CanvasTitle>
         <Spring />
         <Space className="actions">
@@ -68,7 +70,12 @@ export const DocViewInner = memo(() => {
         </Space>
       </CanvasToolbar>
       <CanvasContent className="document-content" >
-        {doc && <IFrame doc={doc} src={canvasUrl} />}
+        {doc &&
+          <IFrame
+            doc={doc}
+            src={canvasUrl}
+          />
+        }
       </CanvasContent>
     </DocViewContainer>
   )

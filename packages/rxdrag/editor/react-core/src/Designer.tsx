@@ -22,8 +22,6 @@ export enum LayoutType {
   Freedom = "freedom"
 }
 
-
-
 export interface DesignerProps {
   minionOptions?: IMinionOptions,
   themeMode?: ThemeMode,

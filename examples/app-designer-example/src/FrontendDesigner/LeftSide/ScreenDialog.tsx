@@ -44,6 +44,7 @@ export const ScreenDialog = memo(() => {
         open={open}
         okText="确定"
         cancelText="取消"
+        forceRender
         onOk={handleOk}
         onCancel={handleCancel}
       >

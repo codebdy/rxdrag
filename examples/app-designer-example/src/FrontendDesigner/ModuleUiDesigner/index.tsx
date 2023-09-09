@@ -27,7 +27,7 @@ export const ModuleUiDesigner = memo((
       }}
 
       materials={materials}
-      canvasConifg={frontend?.canvasConfig}
+      canvasConfig={frontend?.canvasConfig}
     >
       <ModuleUiDesignerInner />
     </EditorScope>

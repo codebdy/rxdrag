@@ -15,5 +15,5 @@ export type EditorScropProps = {
   previewUrl?: string;
   layoutType?: LayoutType;
   children?: React.ReactNode;
-  canvasConifg?: ICanvasConfig;
+  canvasConfig?: ICanvasConfig;
 };

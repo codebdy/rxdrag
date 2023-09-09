@@ -27,7 +27,7 @@ export const UiFrameDesigner = memo((
       }}
 
       materials={materials}
-      canvasConifg={frontend?.canvasConfig}
+      canvasConfig={frontend?.canvasConfig}
     >
       <UiFrameDesignerInner />
     </EditorScope>

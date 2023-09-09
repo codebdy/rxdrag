@@ -78,4 +78,4 @@ export const appFronts: IAppFrontend[] = [
   },
 ]
 
-//canvasConifg
+//canvasConfig
