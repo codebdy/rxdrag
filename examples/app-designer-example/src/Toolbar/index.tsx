@@ -2,14 +2,14 @@ import { ApiOutlined, NodeIndexOutlined, SettingOutlined, GithubFilled } from "@
 import { floatShadow } from "@rxdrag/react-antd-shell"
 import { Space, Button, Select } from "antd"
 import { Logo, MenuButton } from "example-common"
-import { memo } from "react"
+import { memo, useCallback } from "react"
 import styled from "styled-components"
 import { SvgIcon } from "@rxdrag/react-antd-shell"
 import { DeviceType, ThemeMode } from "../interfaces"
 import { useApp } from "../hooks/useApp"
 import { useAppTranslate } from "../hooks/useAppTranslate"
 import { ThemeButton } from "../components"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 const ToolbarShell = styled.div`
   width: 100%;
@@ -40,6 +40,10 @@ export const Toolbar = memo((
   const app = useApp()
   const t = useAppTranslate()
   const { device } = useParams();
+  const navigate = useNavigate()
+  const handleDeviceChange = useCallback((value: string) => {
+    navigate("ui-designer/" + value)
+  }, [navigate])
   return (
     <ToolbarShell className="zoomable-toobar">
       <Space>
@@ -72,7 +76,7 @@ export const Toolbar = memo((
               { value: DeviceType.website, label: t(DeviceType.website) },
               { value: DeviceType.largeScreen, label: t(DeviceType.largeScreen) },
             ]}
-          // onChange={onDeviceChange}
+            onChange={handleDeviceChange}
           />
         </Space>
         <ProjectTitle>{app?.title}</ProjectTitle>
