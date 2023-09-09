@@ -2,14 +2,17 @@ import { SettingOutlined } from "@ant-design/icons"
 import { memo, useCallback, useState } from "react"
 import { Button, Form, InputNumber, Modal } from "antd";
 import styled from "styled-components";
+import { useAppFrontend } from "../../hooks/useAppFrontend";
 
 const SizeInput = styled(InputNumber)`
   width: 120px;
 `
 
+
+//本代码未加保存功能
 export const ScreenDialog = memo(() => {
   const [open, setOpen] = useState(false);
-
+  const frontend = useAppFrontend()
   const handleOpen = useCallback(() => {
     setOpen(true);
   }, []);
@@ -43,7 +46,7 @@ export const ScreenDialog = memo(() => {
           labelAlign="left"
           labelCol={{ span: 8}}
           wrapperCol={{ span: 16 }}
-          initialValues={{}}
+          initialValues={frontend?.canvasConfig}
           autoComplete="off"
         >
           <Form.Item
