@@ -88,20 +88,24 @@ export const BottomArea = memo(() => {
   const activedDocument = useActivedDocument()
   //const t = useSettersTranslate()
 
+  const handleTabClick = useCallback(() => {
+    setCollapsed(false)
+  }, [])
+
   const items: TabsProps['items'] = useMemo(() => {
     return [
       {
-        label: <Label>行为流</Label>,
+        label: <Label onClick={handleTabClick}>行为流</Label>,
         key: "logicflow",
         children: "应用级/设备端级别/模块级/场景级/循环级"
       },
       {
-        label: <Label>脚本</Label>,
+        label: <Label onClick={handleTabClick}>脚本</Label>,
         key: "script",
         children: "脚本控制器"
       },
       {
-        label: <Label>日志</Label>,
+        label: <Label onClick={handleTabClick}>日志</Label>,
         key: "log",
         children: "日志"
       },
@@ -112,7 +116,7 @@ export const BottomArea = memo(() => {
       //   children: "快捷控制器"
       // },
     ]
-  }, [])
+  }, [handleTabClick])
 
   useEffect(() => {
     if (height <= (minHeight + 5)) {

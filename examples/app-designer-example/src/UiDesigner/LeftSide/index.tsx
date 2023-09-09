@@ -2,10 +2,11 @@ import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
 import { CompassOutlined, DeploymentUnitOutlined, LayoutOutlined, PlusOutlined, SnippetsOutlined } from "@ant-design/icons"
 import { ScreenDialog } from "./ScreenDialog"
-import { Spring, floatShadow } from "@rxdrag/react-antd-shell"
+import { Spring, SvgIcon, floatShadow } from "@rxdrag/react-antd-shell"
 import { NavButton } from "./NavButton"
 import { LeftDrawer } from "./LeftDrawer"
 import { Button } from "antd"
+import { codeIcon, menuIcon } from "./icons"
 
 const Container = styled.div`
   position: relative;
@@ -78,13 +79,15 @@ export const LeftSide = memo((
       />
       <NavButton
         title="菜单"
-        icon={<CompassOutlined />}
+        icon={<SvgIcon>
+          {menuIcon}
+        </SvgIcon>}
         selected={navKey === NavType.menu}
         onClick={handleMenuClick}
       />
       <NavButton
         title="出码"
-        icon={<DeploymentUnitOutlined />}
+        icon={<SvgIcon>{codeIcon}</SvgIcon>}
       />
       <Spring />
       <ScreenDialog />

@@ -1,8 +1,9 @@
 import { memo, useState } from "react"
 import styled from "styled-components"
-import { NavType, LeftSide } from "../LeftSide"
 import { DeviceType, ThemeMode } from "../interfaces"
 import { ModuleUiDesigner } from "./ModuleUiDesigner"
+import { FrameUiDesigner } from "./FrameUiDesigner"
+import { NavType, LeftSide } from "./LeftSide"
 
 //设备端的编辑区
 const AppDeviceArea = styled.div`
@@ -28,12 +29,23 @@ export const UiDesigner = memo((
         navKey={navKey}
         onNavKeyChange={setNavKey}
       />
-      <ModuleUiDesigner
-        device={device}
-        canvasUrl={canvasUrl}
-        previewUrl={previewUrl}
-        themeMode={themeMode}
-      />
+      {
+        navKey === NavType.moudules && <ModuleUiDesigner
+          device={device}
+          canvasUrl={canvasUrl}
+          previewUrl={previewUrl}
+          themeMode={themeMode}
+        />
+      }
+      {
+        navKey === NavType.frame && <FrameUiDesigner
+          device={device}
+          canvasUrl={canvasUrl}
+          previewUrl={previewUrl}
+          themeMode={themeMode}
+        />
+      }
+
     </AppDeviceArea>
   )
 })
