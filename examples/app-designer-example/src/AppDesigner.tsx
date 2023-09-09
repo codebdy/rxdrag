@@ -10,6 +10,7 @@ import styled from "styled-components"
 import { LocalesContext } from "@rxdrag/react-locales"
 import { appDesignerLocales } from "./locales"
 import { LocalesManager } from "@rxdrag/locales"
+import classNames from "classnames"
 
 const Container = styled.div`
   width: 100%;
@@ -38,13 +39,12 @@ export const AppDesigner = memo(() => {
       <LocalesContext.Provider value={localesManger}>
         <ThemeRoot mode={themeMode}>
           <AppContext.Provider value={app}>
-            <Container className="zoomable-editor">
+            <Container className={classNames("zoomable-editor", themeMode)}>
               <Toolbar
                 themeMode={themeMode}
                 onThemeModeChange={setThemeMode}
               />
               <Outlet />
-
             </Container>
           </AppContext.Provider>
         </ThemeRoot>

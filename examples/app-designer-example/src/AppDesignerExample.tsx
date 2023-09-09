@@ -7,6 +7,7 @@ import { NavType } from "./FrontendDesigner/LeftSide"
 import { UiFrameDesigner } from "./FrontendDesigner/UiFrameDesigner"
 import { MenuDesigner } from "./FrontendDesigner/MenuDesigner"
 import { AppDesigner } from "./AppDesigner"
+import "./style.css"
 
 export const AppDesignerExample = memo((props: {
   canvasUrl: string,
