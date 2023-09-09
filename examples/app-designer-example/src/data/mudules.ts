@@ -11,11 +11,11 @@ export const modules: IModule[] = [
     title: "用户管理",
     scenes: [
       {
-        title: "首页",
+        title: "入口页",
         schema: rootNodeSchema,
       },
       {
-        title: "详情",
+        title: "编辑对话框",
         schema: rootNodeSchema,
       }
     ]

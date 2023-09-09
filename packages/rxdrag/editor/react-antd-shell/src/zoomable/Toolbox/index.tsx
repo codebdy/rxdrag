@@ -3,9 +3,7 @@ import styled from "styled-components"
 import { ResizableColumn, SvgIcon } from "../../common"
 import { useToolboxWidthState } from "../contexts"
 import { floatShadow } from "../../utils"
-import { Button } from "antd"
 import { DEFAULT_MARGIN, MINI_WIDGET_WIDTH } from "../consts"
-import { AppstoreOutlined } from "@ant-design/icons"
 import { CloseButton } from "../PropertyPanel"
 import { CanvasFloatButton } from "../common"
 
@@ -52,7 +50,8 @@ const Container = styled.div`
   min-width: ${minWidth}px;
   min-height: calc(100% - ${DEFAULT_MARGIN * 2}px);
   transition: opacity 0.3s;
-
+  padding-right: 4px;
+  box-sizing: border-box;
   .ant-tabs{
     flex:1;
     height: 0;

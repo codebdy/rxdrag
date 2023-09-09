@@ -56,7 +56,8 @@ const Container = styled.div`
   min-width: ${minWidth}px;
   min-height: calc(100% - ${DEFAULT_MARGIN * 2}px);
   transition: opacity 0.3s;
-
+  padding-right: 4px;
+  box-sizing: border-box;
 `
 
 export const CloseButton = styled(Button).attrs({ icon: <MinusOutlined />, size: "small", type: "text" })`
