@@ -43,7 +43,7 @@ export const LeftSide = memo(() => {
   const location = useLocation();
   const { moduleId } = useParams()
 
-  const modulesPath = useMemo(() => moduleId ? `/${NavType.modules}/${moduleId || ""}` : `/${NavType.modules}`, [moduleId])
+  const modulesPath = useMemo(() => moduleId ? `${NavType.modules}/${moduleId || ""}` : `${NavType.modules}`, [moduleId])
   const handleModulesClick = useCallback(() => {
     setOpenModules(!openModules)
     navigate(modulesPath)
@@ -58,12 +58,13 @@ export const LeftSide = memo(() => {
     setOpenModules(false)
     navigate(NavType.menu)
   }, [navigate])
+
   return (
     <Container className="rx-left-side">
       <NavButton
         title="模块"
         icon={<SnippetsOutlined />}
-        intermediate={!!location.pathname.indexOf(modulesPath) && !openModules}
+        intermediate={location.pathname.indexOf("/" + modulesPath) > -1 && !openModules}
         selected={openModules}
         onClick={handleModulesClick}
       />
