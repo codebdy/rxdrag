@@ -43,7 +43,7 @@ export const LeftSide = memo(() => {
   const location = useLocation();
   const { moduleId } = useParams()
 
-  const modulesPath = useMemo(() => moduleId ? `/${NavType.modules}/${moduleId || ""}` : `/${NavType.modules}`, [moduleId])
+  const modulesPath = useMemo(() => moduleId ? `/${moduleId || ""}` : ``, [moduleId])
   const handleModulesClick = useCallback(() => {
     setOpenModules(!openModules)
     navigate(NavType.modules + modulesPath)
