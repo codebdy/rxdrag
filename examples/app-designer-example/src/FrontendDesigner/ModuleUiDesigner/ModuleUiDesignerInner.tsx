@@ -4,11 +4,12 @@ import { memo, useMemo } from "react"
 import { ResourceWidget } from "../../ResourceWidget"
 import { useParams } from "react-router-dom"
 import { useQueryModule } from "../../hooks/useQueryModule"
+import { useAppFrontend } from "../../hooks/useAppFrontend"
 
 export const ModuleUiDesignerInner = memo(() => {
   const { moduleId } = useParams()
-
-  const { module } = useQueryModule(moduleId || "")
+  const device = useAppFrontend()
+  const { module } = useQueryModule(device?.deviceType, moduleId || "")
 
   const items: TabsProps['items'] = useMemo(() => {
     return [
