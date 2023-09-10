@@ -38,7 +38,7 @@ export const enum NavType {
 }
 
 export const LeftSide = memo(() => {
-  const [openModules, setOpenModules] = useState<boolean>()
+  const [openModules, setOpenModules] = useState<boolean | undefined>(true)
   const navigate = useNavigate()
   const location = useLocation();
   const { moduleId } = useParams()

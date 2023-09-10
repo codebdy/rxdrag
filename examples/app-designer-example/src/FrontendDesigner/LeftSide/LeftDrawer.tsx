@@ -131,13 +131,12 @@ const treeData: { [device: string]: DataNode[] } = {
 
 export const LeftDrawer = memo((
   props: {
-    onSelectChange?: (selected?: string) => void,
     title?: React.ReactNode,
     open?: boolean,
     onOpenChange?: (open?: boolean) => void
   }
 ) => {
-  const { onSelectChange, title, open, onOpenChange } = props
+  const { title, open, onOpenChange } = props
   const [width, setWidth] = useState(320)
   const { moduleId } = useParams()
   const device = useAppFrontend()?.deviceType
@@ -157,8 +156,8 @@ export const LeftDrawer = memo((
     }
     const id = keys?.[0].toString() || ""
     navigate("modules/" + id)
-    onSelectChange?.(id)
-  }, [navigate, onSelectChange]);
+    onOpenChange?.(false)
+  }, [navigate, onOpenChange]);
 
   return (
     <DrawerShell

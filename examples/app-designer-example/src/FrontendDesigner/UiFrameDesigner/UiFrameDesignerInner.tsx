@@ -2,19 +2,8 @@ import { ZoomableEditor } from "@rxdrag/react-antd-shell"
 import { Tabs, TabsProps } from "antd"
 import { memo, useMemo } from "react"
 import { ResourceWidget } from "../../ResourceWidget"
-import { IDocumentSchema, INodeSchema } from "@rxdrag/schema"
-
-const rootNodeSchema: INodeSchema = {
-  componentName: "Page"
-}
-
-const schemas: IDocumentSchema[] = [
-  {
-    title: "页面框架",
-    schema: rootNodeSchema,
-  },
-]
-
+import { IDocumentSchema } from "@rxdrag/schema"
+import { useAppFrontend } from "../../hooks/useAppFrontend"
 
 export const UiFrameDesignerInner = memo(() => {
   const items: TabsProps['items'] = useMemo(() => {
@@ -31,6 +20,15 @@ export const UiFrameDesignerInner = memo(() => {
       },
     ]
   }, [])
+  const appFront = useAppFrontend()
+
+  const schemas: (IDocumentSchema[]) | undefined = useMemo(() => appFront?.frameSchema ? [
+    {
+      title: "页面框架",
+      schema: appFront.frameSchema,
+    },
+  ] : undefined, [appFront?.frameSchema])
+
   return (
     <ZoomableEditor
       toolbox={
