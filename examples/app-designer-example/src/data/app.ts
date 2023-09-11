@@ -7,9 +7,8 @@ export const app: IApp = {
 }
 
 const rootNodeSchema: INodeSchema = {
-  componentName: "Root"
+  componentName: "App"
 }
-
 
 export const appFronts: IAppFrontend[] = [
   {
