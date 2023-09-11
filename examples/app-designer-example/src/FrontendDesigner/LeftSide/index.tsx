@@ -44,10 +44,16 @@ export const LeftSide = memo(() => {
   const { moduleId } = useParams()
 
   const modulesPath = useMemo(() => moduleId ? `${NavType.modules}/${moduleId || ""}` : `${NavType.modules}`, [moduleId])
+  const modulesSelected = useMemo(() => location.pathname.indexOf("/" + modulesPath) > -1, [location.pathname, modulesPath])
+
   const handleModulesClick = useCallback(() => {
-    setOpenModules(!openModules)
+    if (modulesSelected) {
+      setOpenModules(!openModules)
+    } else {
+      setOpenModules(true)
+    }
     navigate(modulesPath)
-  }, [modulesPath, navigate, openModules])
+  }, [modulesPath, modulesSelected, navigate, openModules])
 
   const handleFrameClick = useCallback(() => {
     setOpenModules(false)
@@ -59,13 +65,15 @@ export const LeftSide = memo(() => {
     navigate(NavType.menu)
   }, [navigate])
 
+
+
   return (
     <Container className="rx-left-side">
       <NavButton
         title="模块"
         icon={<SnippetsOutlined />}
-        intermediate={location.pathname.indexOf("/" + modulesPath) > -1 && !openModules}
-        selected={openModules}
+        intermediate={modulesSelected && !openModules}
+        selected={openModules && modulesSelected}
         onClick={handleModulesClick}
       />
       <NavButton
@@ -89,7 +97,7 @@ export const LeftSide = memo(() => {
       <Spring />
       <ScreenDialog />
       <LeftDrawer
-        open={openModules}
+        open={openModules && modulesSelected}
         onOpenChange={setOpenModules}
         title={<>
           功能

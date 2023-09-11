@@ -15,7 +15,7 @@ export const AdminFrameToolbox = memo(() => {
       {
         label: "模板",
         key: "templates",
-        children: "方案/布局/组件"
+        children: "2方案/布局/组件"
       },
     ]
   }, [])
