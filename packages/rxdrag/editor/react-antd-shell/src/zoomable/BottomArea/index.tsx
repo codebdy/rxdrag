@@ -9,6 +9,7 @@ import { DEFAULT_MARGIN, MINI_WIDGET_WIDTH } from "../consts"
 import { ReundoIcons } from "./ReundoIcons"
 import { useActivedDocument } from "@rxdrag/react-core"
 import { AuxButtions } from "./AuxButtions"
+import { ViewButtons } from "./ViewButtons"
 
 const BottomShell = styled(ResizableRow)`
   position: absolute;
@@ -40,17 +41,20 @@ const BottomShell = styled(ResizableRow)`
   }
 `
 
-const BottomBar = styled.div`
+const NavBar = styled.div`
   position: absolute;
   top:-32px;
   left:0;
   display: flex;
-  width: 100%;
-  justify-content: space-between;
   align-items: center;
-  pointer-events: none;
 `
-
+const Toolbar = styled.div`
+  position: absolute;
+  top:-32px;
+  right:0;
+  display: flex;
+  align-items: center;
+`
 const Label = styled.div`
   display: flex;
   align-items: center;
@@ -168,20 +172,20 @@ export const BottomArea = memo(() => {
       }}
       onHeightChange={setHeight}
     >
-      <BottomBar>
+      <NavBar>
         <FloatNodeNav />
+      </NavBar>
+      <Toolbar>
         {
           activedDocument && <BottomActions>
             <ReundoIcons />
             <Divider type="vertical" />
             <AuxButtions />
-            {/* <Divider type="vertical" /> */}
-            {/* <div>
-              <CanvasButton icon={<PlayCircleOutlined />} />
-            </div> */}
+            <Divider type="vertical" /> 
+            <ViewButtons />
           </BottomActions>
         }
-      </BottomBar>
+      </Toolbar>
       <Tabs
         size="small"
         tabBarExtraContent={
