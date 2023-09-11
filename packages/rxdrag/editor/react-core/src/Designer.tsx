@@ -79,7 +79,6 @@ export const Designer = memo((props: DesignerProps) => {
 
   const pullComponents = useCallback(() => {
     const materials = engine?.getComponentManager().getAllComponentConfigs()
-    console.log("===>materials", materials)
     if (materials) {
       const coms: IReactComponents = {}
       const desns: IReactComponents = {}

@@ -34,14 +34,7 @@ const scehmaOptions: SchemaOptions = {
         label: "$themeColor",
         name: "token",
       }
-    },
-    {
-      componentName: "ImageSelect",
-      "x-field": {
-        label: "$backgroundImage",
-        name: "backgroundImage",
-      }
-    },
+    }
   ],
 }
 
