@@ -1,10 +1,9 @@
 import { useDesignerEngine, useDocument, useSettersTranslate } from "@rxdrag/react-core"
-import { Space, Tooltip } from "antd"
+import { Button, Space, Tooltip } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import { SvgIcon } from "../../common/SvgIcon"
 import { lineIcon, marginIcon } from "../../icons"
 import { MARGIN_DECORATOR_NAME, LINE_DECORTOR_NAME, LineDecorator, MarginDecorator } from "@rxdrag/core"
-import { CanvasButton } from "./CanvasButton"
 
 export const AuxButtions = memo(() => {
   const [margin, setMarin] = useState(false);
@@ -43,7 +42,7 @@ export const AuxButtions = memo(() => {
       <Tooltip title={t("auxLine")}>
         {/* This seems like a problem with Ant Design components. For instance, using the plain DOM <input> doesn't cause this error. */}
         <div>
-          <CanvasButton type={line ? "default" : "text"}
+          <Button type={line ? "default" : "text"}
             size="small"
             icon={
               <SvgIcon>
@@ -56,7 +55,7 @@ export const AuxButtions = memo(() => {
       </Tooltip>
       <Tooltip title={t("auxMargin")}>
         <div>
-          <CanvasButton
+          <Button
             type={margin ? "default" : "text"}
             size="small"
             icon={

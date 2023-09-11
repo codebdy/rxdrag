@@ -1,7 +1,6 @@
 import { useSettersTranslate } from "@rxdrag/react-core"
-import { Space, Tooltip } from "antd"
+import { Button, Space, Tooltip } from "antd"
 import { memo, useCallback } from "react"
-import { CanvasButton } from "./CanvasButton"
 import { SvgIcon } from "../../common"
 import { designIcon } from "../../icons"
 import { PlayCircleOutlined } from "@ant-design/icons"
@@ -16,7 +15,7 @@ export const ViewButtons = memo(() => {
     <Space>
       <Tooltip title={t("design")}>
         <div>
-          <CanvasButton
+          <Button
             type={"text"}
             size="small"
             disabled
@@ -32,7 +31,7 @@ export const ViewButtons = memo(() => {
       <JsonCodeDialog />
       <Tooltip title={t("preview")}>
         <div>
-          <CanvasButton
+          <Button
             type={"text"}
             size="small"
             icon={

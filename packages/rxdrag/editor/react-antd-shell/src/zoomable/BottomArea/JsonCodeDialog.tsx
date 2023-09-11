@@ -1,15 +1,14 @@
-import { Modal, Tooltip } from "antd";
+import { Button, Modal, Tooltip } from "antd";
 import { memo, useCallback, useState } from "react"
 import { SvgIcon } from "../../common";
 import { jsonIcon } from "../../icons";
-import { CanvasButton } from "./CanvasButton";
-import { useDocument, useSettersTranslate, useThemeMode } from "@rxdrag/react-core";
+import { useActivedDocument, useSettersTranslate, useThemeMode } from "@rxdrag/react-core";
 import Editor from '@monaco-editor/react';
 
 export const JsonCodeDialog = memo(() => {
   const [open, setOpen] = useState(false);
   const t = useSettersTranslate()
-  const doc = useDocument()
+  const doc = useActivedDocument()
   const themeMode = useThemeMode()
   const jsonStr = JSON.stringify(doc?.getSchemaTree() || {}, null, 2)
 
@@ -25,7 +24,7 @@ export const JsonCodeDialog = memo(() => {
     <>
       <Tooltip title={t("jsonCode")}>
         <div>
-          <CanvasButton
+          <Button
             type={"text"}
             size="small"
             icon={
@@ -38,7 +37,7 @@ export const JsonCodeDialog = memo(() => {
         </div>
       </Tooltip>
       <Modal
-        title={t("jsonCode")}
+        title={doc?.getTitle() + " - " + t("jsonCode")}
         open={open}
         footer={false}
         onCancel={handleClose}

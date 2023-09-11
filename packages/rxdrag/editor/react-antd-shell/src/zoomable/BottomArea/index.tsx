@@ -43,17 +43,22 @@ const BottomShell = styled(ResizableRow)`
 
 const NavBar = styled.div`
   position: absolute;
-  top:-32px;
+  top:-30px;
   left:0;
   display: flex;
   align-items: center;
 `
 const Toolbar = styled.div`
   position: absolute;
-  top:-32px;
+  top:-34px;
   right:0;
   display: flex;
   align-items: center;
+  background-color: ${props=>props.theme.token.colorBgContainer};
+  border-radius: 8px;
+  box-shadow: ${floatShadow};
+  height: 32px;
+  padding: 0 4px;
 `
 const Label = styled.div`
   display: flex;
