@@ -64,7 +64,7 @@ export const DocViewInner = memo(() => {
     <DocViewContainer
       className={classNames({ activied: activedDoc?.id === doc?.id })}
       style={{
-        width: canvasConfig?.canvasWidth,
+        width: canvasConfig?.screenWidth,
         //transform: `scale(${canvasScale})`
       }}
     >
