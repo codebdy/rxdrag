@@ -1,37 +1,20 @@
 import { ZoomableEditor } from "@rxdrag/react-antd-shell"
-import { Tabs, TabsProps } from "antd"
-import { memo, useMemo } from "react"
-import { ResourceWidget } from "../../ResourceWidget"
+import { memo } from "react"
 import { useParams } from "react-router-dom"
 import { useQueryModule } from "../../hooks/useQueryModule"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
+import { uiToolboxes } from "../config"
 
 export const ModuleUiDesignerInner = memo(() => {
   const { moduleId } = useParams()
-  const device = useAppFrontend()
-  const { module } = useQueryModule(device?.deviceType, moduleId || "")
-
-  const items: TabsProps['items'] = useMemo(() => {
-    return [
-      {
-        label: "组件",
-        key: "components",
-        children: <ResourceWidget />
-      },
-      {
-        label: "模板",
-        key: "templates",
-        children: "方案/布局/组件"
-      },
-    ]
-  }, [])
+  const device = useAppFrontend()?.deviceType
+  const { module } = useQueryModule(device, moduleId || "")
+  const Toolbox = uiToolboxes[device || ""]
   return (
     module
       ? <ZoomableEditor
         toolbox={
-          <Tabs
-            items={items}
-          />
+          Toolbox && <Toolbox />
         }
         schemas={module?.scenes}
       />
