@@ -1,6 +1,7 @@
 import { Tabs, TabsProps } from "antd"
 import { memo, useMemo } from "react"
 import { ResourceWidget } from "../../../ResourceWidget"
+import { resources } from "example-common"
 
 export const AdminUiToolbox = memo(() => {
 
@@ -9,7 +10,7 @@ export const AdminUiToolbox = memo(() => {
       {
         label: "组件",
         key: "components",
-        children: <ResourceWidget />
+        children: <ResourceWidget resources = {resources}/>
       },
       {
         label: "模板",

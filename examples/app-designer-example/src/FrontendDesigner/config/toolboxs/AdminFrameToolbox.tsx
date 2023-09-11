@@ -1,15 +1,16 @@
 import { Tabs, TabsProps } from "antd"
 import { memo, useMemo } from "react"
 import { ResourceWidget } from "../../../ResourceWidget"
+import { resources } from "example-common"
 
-export const AdminFrameToolbox = memo(()=>{
-  
+export const AdminFrameToolbox = memo(() => {
+
   const items: TabsProps['items'] = useMemo(() => {
     return [
       {
         label: "组件",
         key: "components",
-        children: <ResourceWidget />
+        children: <ResourceWidget resources={resources} />
       },
       {
         label: "模板",
@@ -18,7 +19,7 @@ export const AdminFrameToolbox = memo(()=>{
       },
     ]
   }, [])
-  return(
+  return (
     <Tabs items={items} />
   )
 })
