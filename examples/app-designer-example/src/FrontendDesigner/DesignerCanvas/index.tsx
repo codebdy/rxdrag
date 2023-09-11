@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom"
 import { LayoutPart } from "../../interfaces"
 import { frameMaterilas } from "../UiFrameDesigner/materials"
 import { pageMaterials } from "../ModuleUiDesigner/materials"
-import { IReactComponents } from "@rxdrag/react-shared"
+import { IReactComponents, ReactComponent } from "@rxdrag/react-shared"
+import { isStr } from "@rxdrag/shared"
 
 export const DesignerCanvas = memo(() => {
   const { device = "", layoutPart } = useParams()
@@ -13,6 +14,13 @@ export const DesignerCanvas = memo(() => {
     const coms: IReactComponents = {}
     for (const material of materials || []) {
       coms[material.componentName] = material.designer
+      for (const slotName of Object.keys(material.slots || {})) {
+        const slot = material.slots?.[slotName]
+        if (slot === true || slot === undefined || isStr(slot)) {
+          continue
+        }
+        coms[slot.componentName] = slot.designer as ReactComponent
+      }
     }
     return coms
   }, [device, layoutPart])

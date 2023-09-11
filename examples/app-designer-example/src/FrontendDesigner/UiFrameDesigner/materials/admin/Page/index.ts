@@ -24,5 +24,7 @@ export const PageMaterial: IComponentMaterial = {
   behaviorRule: {
     droppable: false,
     noPlaceholder: true,
+    cloneable: false,
+    draggable: false,
   }
 }
