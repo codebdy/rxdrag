@@ -2,7 +2,7 @@ import { ZoomableEditor } from "@rxdrag/react-antd-shell"
 import { memo, useMemo } from "react"
 import { IDocumentSchema } from "@rxdrag/schema"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
-import { frameToolboxes } from "../config"
+import { frameToolboxes } from "./config"
 
 export const UiFrameDesignerInner = memo(() => {
   const appFront = useAppFrontend()

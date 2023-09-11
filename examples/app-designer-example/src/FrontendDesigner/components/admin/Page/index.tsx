@@ -14,7 +14,7 @@ export type PageProps = {
   className?: string
 }
 
-export const PagePreview = memo(forwardRef<HTMLDivElement, PageProps>((props, ref) => {
+export const Page = memo(forwardRef<HTMLDivElement, PageProps>((props, ref) => {
   const { children, ...rest } = props;
   return (<PageContainer ref={ref} {...rest}>
     {

@@ -1,6 +1,6 @@
 import { Tabs, TabsProps } from "antd"
 import { memo, useMemo } from "react"
-import { ResourceWidget } from "../../../ResourceWidget"
+import { ResourceWidget } from "../../../../ResourceWidget"
 import { ResourceGroup } from "example-common"
 import { ButtonMaterial, InputMaterial, TextAreaMaterial, InputNumberMaterial, AutoCompleteMaterial, SelectMaterial, CheckboxMaterial, DatePickerMaterial, DateRangePickerMaterial, MentionsMaterial, RadioMaterial, RateMaterial, SliderMaterial, SwitchMaterial, TimePickerMaterial, CascaderMaterial, TransferMaterial, TreeSelectMaterial, TitleMaterial, TextMaterial, LinkMaterial, IconViewMaterial, AvatarMaterial, BadgeMaterial, ImageViewMaterial, DropdownMaterial, DialogMaterial, DrawerMaterial, PopconfirmMaterial, PopoverMaterial, TooltipMaterial, HCFLayoutMaterial, TwoColumnLayoutMaterial, LogoMaterial, MenuMaterial, BoxMaterial, DividerMaterial, SpaceMaterial } from "@rxdrag/react-antd-materials"
 
