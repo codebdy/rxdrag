@@ -2,7 +2,7 @@ import { IReactComponents, ReactComponent } from "@rxdrag/react-shared";
 import { isStr } from "@rxdrag/shared";
 import { useMemo } from "react";
 import { Field } from "@rxdrag/react-antd-components";
-import { materials, slots } from "example-common";
+import { materials } from "example-common";
 import styled from "styled-components";
 
 const RootComponent = styled.div`
@@ -13,7 +13,7 @@ const RootComponent = styled.div`
   flex-flow: column;
 `
 
-
+//冗余代码，需要想办法删掉
 export function usePredefinedComponents() {
   const coms = useMemo(() => {
     const components: IReactComponents = {
@@ -31,10 +31,6 @@ export function usePredefinedComponents() {
           components[slot.componentName] = slot.component as ReactComponent
         }
       }
-    }
-
-    for (const com of slots) {
-      components[com.componentName] = com.component
     }
 
     return components

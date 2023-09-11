@@ -76,6 +76,10 @@ export const materials: IComponentMaterial[] = [
   RightAdMaterial,
   NewsMaterial,
   NoticesMaterial,
+  //slots
+  DefaultSlotMaterial,
+  ActionSlotMaterial,
+  ExtraSlotMaterial
 ]
 
 export const resources: ResourceGroup[] = [
@@ -178,8 +182,3 @@ export const fields: IResource[] = [
   InputFieldResource,
 ]
 
-export const slots: IComponentMaterial[] = [
-  DefaultSlotMaterial,
-  ActionSlotMaterial,
-  ExtraSlotMaterial
-]
