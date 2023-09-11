@@ -3,6 +3,7 @@ import { memo, useMemo } from "react"
 import { ResourceWidget } from "../../../../ResourceWidget"
 import { ResourceGroup } from "example-common"
 import { ButtonMaterial, InputMaterial, TextAreaMaterial, InputNumberMaterial, AutoCompleteMaterial, SelectMaterial, CheckboxMaterial, DatePickerMaterial, DateRangePickerMaterial, MentionsMaterial, RadioMaterial, RateMaterial, SliderMaterial, SwitchMaterial, TimePickerMaterial, CascaderMaterial, TransferMaterial, TreeSelectMaterial, TitleMaterial, TextMaterial, LinkMaterial, IconViewMaterial, AvatarMaterial, BadgeMaterial, ImageViewMaterial, DropdownMaterial, DialogMaterial, DrawerMaterial, PopconfirmMaterial, PopoverMaterial, TooltipMaterial, HCFLayoutMaterial, TwoColumnLayoutMaterial, LogoMaterial, MenuMaterial, BoxMaterial, DividerMaterial, SpaceMaterial } from "@rxdrag/react-antd-materials"
+import { PageMaterial } from "../../materials/admin/Page"
 
 export const resources: ResourceGroup[] = [
   {
@@ -15,6 +16,7 @@ export const resources: ResourceGroup[] = [
       BoxMaterial.componentName,
       DividerMaterial.componentName,
       SpaceMaterial.componentName,
+      PageMaterial.componentName,
     ]
   },
   {

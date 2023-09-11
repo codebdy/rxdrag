@@ -3,7 +3,7 @@ import { memo } from "react"
 import { useParams } from "react-router-dom"
 import { useQueryModule } from "../../hooks/useQueryModule"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
-import { uiToolboxes } from "../config"
+import { uiToolboxes } from "./config"
 
 export const ModuleUiDesignerInner = memo(() => {
   const { moduleId } = useParams()

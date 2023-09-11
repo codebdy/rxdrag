@@ -1,7 +1,7 @@
 import { Tabs, TabsProps } from "antd"
 import { memo, useMemo } from "react"
-import { ResourceWidget } from "../../../ResourceWidget"
 import { resources } from "example-common"
+import { ResourceWidget } from "../../../../ResourceWidget"
 
 export const AdminUiToolbox = memo(() => {
 

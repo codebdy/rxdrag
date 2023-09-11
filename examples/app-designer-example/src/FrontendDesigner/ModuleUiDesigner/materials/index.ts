@@ -1,9 +1,9 @@
 import { IComponentMaterial } from "@rxdrag/react-core"
 import { DeviceType } from "../../../interfaces"
-import { adminFrameMaterials } from "./admin"
+import { adminPageMaterials } from "./admin/adminPageMaterials"
 
-export const frameMaterilas: {
+export const pageMaterials: {
   [device: string]: IComponentMaterial[]|undefined
 } = {
-  [DeviceType.admin]: adminFrameMaterials
+  [DeviceType.admin]: adminPageMaterials
 }

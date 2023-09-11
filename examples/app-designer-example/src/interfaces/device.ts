@@ -8,3 +8,8 @@ export enum DeviceType {
   //大屏
   largeScreen = "largeScreen"
 }
+
+export enum LayoutPart {
+  page = "page",
+  frame = "frame"
+}

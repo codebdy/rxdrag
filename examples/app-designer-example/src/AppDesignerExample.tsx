@@ -8,12 +8,11 @@ import { UiFrameDesigner } from "./FrontendDesigner/UiFrameDesigner"
 import { MenuDesigner } from "./FrontendDesigner/MenuDesigner"
 import { AppDesigner } from "./AppDesigner"
 import "./style.css"
+import { DesignerCanvas } from "./FrontendDesigner/DesignerCanvas"
+import { DesignerPreview } from "./FrontendDesigner/DesignerPreview"
+import { CANVAS_URL_PREFIX, PREVIEW_URL_PREFIX } from "./FrontendDesigner/consts"
 
-export const AppDesignerExample = memo((props: {
-  canvasUrl: string,
-  previewUrl: string,
-}) => {
-  const { canvasUrl, previewUrl } = props
+export const AppDesignerExample = memo(() => {
 
   return (
     <Routes>
@@ -21,18 +20,14 @@ export const AppDesignerExample = memo((props: {
         <Route index element={<Navigate to={"ui-designer/" + DeviceType.admin} replace />} />
         <Route path={"/ui-designer/:device"} element={<FrontendDesigner />}>
           <Route index element={<Navigate to={NavType.modules} replace />} />
-          <Route path={NavType.modules + "/:moduleId?"} element={<ModuleUiDesigner
-            canvasUrl={canvasUrl}
-            previewUrl={previewUrl}
-          //themeMode={themeMode}
-          />}></Route>
-          <Route path={NavType.frame} element={<UiFrameDesigner
-            canvasUrl={canvasUrl}
-            previewUrl={previewUrl}
-          //themeMode={themeMode}
-          />}></Route>
+          <Route path={NavType.modules + "/:moduleId?"} element={<ModuleUiDesigner />}></Route>
+          <Route path={NavType.frame} element={<UiFrameDesigner />}></Route>
           <Route path={NavType.menu} element={<MenuDesigner />}></Route>
         </Route>
+      </Route>
+      <Route path={CANVAS_URL_PREFIX + ':device/:layoutPart'} element={<DesignerCanvas />}>
+      </Route>
+      <Route path={PREVIEW_URL_PREFIX + ':device/:layoutPart'} element={<DesignerPreview />}>
       </Route>
     </Routes>
   )
