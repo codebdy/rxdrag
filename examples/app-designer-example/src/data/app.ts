@@ -1,5 +1,6 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { DeviceType, IApp, IAppFrontend } from "../interfaces";
+import adminFrame from "./adminFrame.json"
 
 export const app: IApp = {
   id: "app1",
@@ -16,7 +17,7 @@ export const appFronts: IAppFrontend[] = [
       id: "app1"
     },
     deviceType: DeviceType.admin,
-    frameSchema: rootNodeSchema,
+    frameSchema: adminFrame,
     canvasConfig: {
       deviceName: "管理端",
       //画布宽度
