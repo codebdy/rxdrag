@@ -1,7 +1,71 @@
 import { Tabs, TabsProps } from "antd"
 import { memo, useMemo } from "react"
 import { ResourceWidget } from "../../../ResourceWidget"
-import { resources } from "example-common"
+import { ResourceGroup } from "example-common"
+import { ButtonMaterial, InputMaterial, TextAreaMaterial, InputNumberMaterial, AutoCompleteMaterial, SelectMaterial, CheckboxMaterial, DatePickerMaterial, DateRangePickerMaterial, MentionsMaterial, RadioMaterial, RateMaterial, SliderMaterial, SwitchMaterial, TimePickerMaterial, CascaderMaterial, TransferMaterial, TreeSelectMaterial, TitleMaterial, TextMaterial, LinkMaterial, IconViewMaterial, AvatarMaterial, BadgeMaterial, ImageViewMaterial, DropdownMaterial, DialogMaterial, DrawerMaterial, PopconfirmMaterial, PopoverMaterial, TooltipMaterial, HCFLayoutMaterial, TwoColumnLayoutMaterial, LogoMaterial, MenuMaterial, BoxMaterial, DividerMaterial, SpaceMaterial } from "@rxdrag/react-antd-materials"
+
+export const resources: ResourceGroup[] = [
+  {
+    titleKey: 'layouts',
+    items: [
+      TwoColumnLayoutMaterial.componentName,
+      HCFLayoutMaterial.componentName,
+      LogoMaterial.componentName,
+      MenuMaterial.componentName,
+      BoxMaterial.componentName,
+      DividerMaterial.componentName,
+      SpaceMaterial.componentName,
+    ]
+  },
+  {
+    titleKey: 'inputs',
+    items: [
+      ButtonMaterial.componentName,
+      InputMaterial.componentName,
+      TextAreaMaterial.componentName,
+      InputNumberMaterial.componentName,
+      AutoCompleteMaterial.componentName,
+      SelectMaterial.componentName,
+      CheckboxMaterial.componentName,
+      DatePickerMaterial.componentName,
+      DateRangePickerMaterial.componentName,
+      MentionsMaterial.componentName,
+      RadioMaterial.componentName,
+      RateMaterial.componentName,
+      SliderMaterial.componentName,
+      SwitchMaterial.componentName,
+      TimePickerMaterial.componentName,
+      CascaderMaterial.componentName,
+      TransferMaterial.componentName,
+      TreeSelectMaterial.componentName,
+    ]
+  },
+  {
+    titleKey: 'displays',
+    items: [
+      TitleMaterial.componentName,
+      TextMaterial.componentName,
+      LinkMaterial.componentName,
+      IconViewMaterial.componentName,
+      AvatarMaterial.componentName,
+      BadgeMaterial.componentName,
+      ImageViewMaterial.componentName,
+    ]
+  },
+  {
+    titleKey: 'popups',
+    items: [
+      DropdownMaterial.componentName,
+      DialogMaterial.componentName,
+      DrawerMaterial.componentName,
+      PopconfirmMaterial.componentName,
+      PopoverMaterial.componentName,
+      TooltipMaterial.componentName,
+    ]
+  },
+
+
+]
 
 export const AdminFrameToolbox = memo(() => {
 
