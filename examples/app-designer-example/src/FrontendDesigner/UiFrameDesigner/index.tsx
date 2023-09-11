@@ -1,7 +1,7 @@
 import { EditorScope } from "@rxdrag/react-antd-shell"
 import { memo } from "react"
 import { UiFrameDesignerInner } from "./UiFrameDesignerInner"
-import { setterLocales, minionsMaterialCategories, minionsLocales, controllerDefines } from "example-common"
+import { setterLocales, minionsMaterialCategories, minionsLocales, controllerDefines, routes } from "example-common"
 import { useAppThemeMode } from "../../hooks/useAppThemeMode"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
 import { frameMaterilas } from "./materials"
@@ -16,8 +16,8 @@ export const UiFrameDesigner = memo(() => {
   return (
     <EditorScope
       locales={setterLocales}
-      canvasUrl={`${CANVAS_URL_PREFIX}${device}/${LayoutPart.frame}`}
-      previewUrl={`${PREVIEW_URL_PREFIX}${device}/${LayoutPart.frame}`}
+      canvasUrl={`${routes.appDesigner}/${CANVAS_URL_PREFIX}/${device}/${LayoutPart.frame}`}
+      previewUrl={`${routes.appDesigner}/${PREVIEW_URL_PREFIX}/${device}/${LayoutPart.frame}`}
       themeMode={themeMode}
       minionOptions={{
         materials: minionsMaterialCategories,

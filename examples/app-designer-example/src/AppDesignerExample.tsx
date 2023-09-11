@@ -25,9 +25,9 @@ export const AppDesignerExample = memo(() => {
           <Route path={NavType.menu} element={<MenuDesigner />}></Route>
         </Route>
       </Route>
-      <Route path={CANVAS_URL_PREFIX + ':device/:layoutPart'} element={<DesignerCanvas />}>
+      <Route path={CANVAS_URL_PREFIX + '/:device/:layoutPart'} element={<DesignerCanvas />}>
       </Route>
-      <Route path={PREVIEW_URL_PREFIX + ':device/:layoutPart'} element={<DesignerPreview />}>
+      <Route path={PREVIEW_URL_PREFIX + '/:device/:layoutPart'} element={<DesignerPreview />}>
       </Route>
     </Routes>
   )

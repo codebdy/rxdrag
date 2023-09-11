@@ -1,7 +1,7 @@
 import { EditorScope } from "@rxdrag/react-antd-shell"
 import { memo } from "react"
 import { ModuleUiDesignerInner } from "./ModuleUiDesignerInner"
-import { setterLocales, minionsMaterialCategories, minionsLocales, controllerDefines, materials } from "example-common"
+import { setterLocales, minionsMaterialCategories, minionsLocales, controllerDefines, materials, routes } from "example-common"
 import { useAppThemeMode } from "../../hooks/useAppThemeMode"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
 import { CANVAS_URL_PREFIX, PREVIEW_URL_PREFIX } from "../consts"
@@ -15,8 +15,8 @@ export const ModuleUiDesigner = memo(() => {
   return (
     <EditorScope
       locales={setterLocales}
-      canvasUrl={`${CANVAS_URL_PREFIX}${device}/${LayoutPart.page}`}
-      previewUrl={`${PREVIEW_URL_PREFIX}${device}/${LayoutPart.page}`}
+      canvasUrl={`${routes.appDesigner}/${CANVAS_URL_PREFIX}/${device}/${LayoutPart.page}`}
+      previewUrl={`${routes.appDesigner}/${PREVIEW_URL_PREFIX}/${device}/${LayoutPart.page}`}
       themeMode={themeMode}
       minionOptions={{
         materials: minionsMaterialCategories,
