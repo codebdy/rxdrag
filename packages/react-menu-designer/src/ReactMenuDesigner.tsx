@@ -1,22 +1,38 @@
 import React, { memo } from 'react';
 
 import { SortableTree } from './SortableTree';
+import styled from 'styled-components';
 
-const Wrapper = ({ children }: { children: React.ReactNode }) => (
-  <div
-    style={{
-      maxWidth: 600,
-      padding: 10,
-      margin: '0 auto',
-      marginTop: '16px',
-    }}
-  >
-    {children}
-  </div>
-);
+const Shell = styled.div`
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  background-color: ${props => props.theme.token?.colorBorderSecondary};
+`
+
+const ScrollContainer = styled.div`
+  flex: 1;
+  overflow: auto;
+  user-select: none;
+  padding: 16px;
+`
+
+const Canvas = styled.div`
+  max-width: 600px;
+  padding: 8px;
+  margin: 0 auto;
+  background-color: ${props => props.theme.token?.colorBgContainer};
+  border-radius: 5px;
+  min-height: calc(100% - 40px);
+`
 
 export const ReactMenuDesigner = memo(() => (
-  <Wrapper>
-    <SortableTree collapsible indicator removable />
-  </Wrapper>
+  <Shell>
+    <ScrollContainer>
+      <Canvas>
+        <SortableTree collapsible indicator removable />
+      </Canvas>
+    </ScrollContainer>
+  </Shell>
 ));
