@@ -4,8 +4,8 @@ import { SortableTree } from './components/SortableTree';
 import styled from 'styled-components';
 import { Toolbox } from './components/Toolbox';
 import { PropertyPanel } from './components/PropertyPanel';
-import { Button, Space } from 'antd';
-import { DeleteOutlined, RedoOutlined, UndoOutlined } from '@ant-design/icons';
+import { Button, Divider, Space } from 'antd';
+import { DeleteOutlined, RedoOutlined, SaveOutlined, UndoOutlined } from '@ant-design/icons';
 
 const Shell = styled.div`
   position: relative;
@@ -58,8 +58,10 @@ export const ReactMenuDesigner = memo(() => (
         <Space>
           <Button type="text" icon={<UndoOutlined />} />
           <Button type="text" icon={<RedoOutlined />} />
+          <Divider type='vertical' />
+          <Button type="text" icon={<DeleteOutlined />} />
         </Space>
-        <Button type="text" icon={<DeleteOutlined />} />
+        <Button type="primary" >保存</Button>
       </Toolbar>
       <Canvas>
         <SortableTree collapsible indicator removable />
