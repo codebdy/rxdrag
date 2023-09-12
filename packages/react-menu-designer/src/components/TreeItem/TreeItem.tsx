@@ -4,13 +4,7 @@ import './style.css';
 import { Handle } from '../Handle';
 import styled from 'styled-components';
 import { Button } from 'antd';
-import { CloseOutlined, DownOutlined, RightOutlined } from '@ant-design/icons';
-import { floatShadow } from '../../utilities';
-
-const RemoveButton = styled(Button)`
-  box-shadow: ${floatShadow};
-  transform: scale(0.8);
-`
+import { DownOutlined, RightOutlined } from '@ant-design/icons';
 
 export interface Props extends Omit<HTMLAttributes<HTMLLIElement>, 'id'> {
   childCount?: number;
@@ -108,7 +102,7 @@ export const TreeItem = forwardRef<HTMLDivElement, Props>(
               icon={collapseIcon}
             />
           )}
-          {!clone && onRemove &&
+          {/* {!clone && onRemove &&
             <RemoveContainer className='remove'>
               <RemoveButton
                 shape='circle'
@@ -116,7 +110,7 @@ export const TreeItem = forwardRef<HTMLDivElement, Props>(
                 onClick={onRemove}
               />
             </RemoveContainer>
-          }
+          } */}
           {clone && childCount && childCount > 1 ? (
             <span className={'Count'}>{childCount}</span>
           ) : null}
