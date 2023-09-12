@@ -1,7 +1,9 @@
 import React, { memo } from 'react';
 
-import { SortableTree } from './SortableTree';
+import { SortableTree } from './components/SortableTree';
 import styled from 'styled-components';
+import { Toolbox } from './components/Toolbox';
+import { PropertyPanel } from './components/PropertyPanel';
 
 const Shell = styled.div`
   position: relative;
@@ -24,15 +26,17 @@ const Canvas = styled.div`
   margin: 0 auto;
   background-color: ${props => props.theme.token?.colorBgContainer};
   border-radius: 5px;
-  min-height: calc(100% - 40px);
+  min-height: calc(100% - 16px);
 `
 
 export const ReactMenuDesigner = memo(() => (
   <Shell>
     <ScrollContainer>
+      <Toolbox ></Toolbox>
       <Canvas>
         <SortableTree collapsible indicator removable />
       </Canvas>
+      <PropertyPanel></PropertyPanel>
     </ScrollContainer>
   </Shell>
 ));

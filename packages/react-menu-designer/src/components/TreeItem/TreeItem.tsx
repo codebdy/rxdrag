@@ -1,10 +1,10 @@
 import React, { forwardRef, HTMLAttributes } from 'react';
 import classNames from 'classnames';
-
 import './style.css';
 import { Handle } from '../Handle';
 import { Action } from '../Action';
 import { Remove } from '../Remove';
+import styled from 'styled-components';
 
 export interface Props extends Omit<HTMLAttributes<HTMLLIElement>, 'id'> {
   childCount?: number;
@@ -22,6 +22,12 @@ export interface Props extends Omit<HTMLAttributes<HTMLLIElement>, 'id'> {
   onRemove?(): void;
   wrapperRef?(node: HTMLLIElement): void;
 }
+
+const StyledItem = styled.div`
+  background-color: ${props => props.theme.token.colorBgContainer};
+  border: 1px solid ${props => props.theme.token.colorBorder};
+  color: ${props => props.theme.token.colorText};
+`
 
 export const TreeItem = forwardRef<HTMLDivElement, Props>(
   (
@@ -63,7 +69,7 @@ export const TreeItem = forwardRef<HTMLDivElement, Props>(
         }
         {...props}
       >
-        <div className={'TreeItem'} ref={ref} style={style}>
+        <StyledItem className={'TreeItem'} ref={ref} style={style}>
           <Handle {...handleProps} />
           {onCollapse && (
             <Action
@@ -81,7 +87,7 @@ export const TreeItem = forwardRef<HTMLDivElement, Props>(
           {clone && childCount && childCount > 1 ? (
             <span className={'Count'}>{childCount}</span>
           ) : null}
-        </div>
+        </StyledItem>
       </li>
     );
   }

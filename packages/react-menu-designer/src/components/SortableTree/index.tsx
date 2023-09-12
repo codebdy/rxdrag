@@ -33,10 +33,10 @@ import {
   removeItem,
   removeChildrenOf,
   setProperty,
-} from './utilities';
-import type {FlattenedItem, SensorContext, TreeItems} from './types';
-import {sortableTreeKeyboardCoordinates} from './keyboardCoordinates';
-import {SortableTreeItem} from './components';
+} from '../../utilities';
+import type {FlattenedItem, SensorContext, TreeItems} from '../../types';
+import {sortableTreeKeyboardCoordinates} from '../../keyboardCoordinates';
+import {SortableTreeItem} from '..';
 import {CSS} from '@dnd-kit/utilities';
 
 const initialItems: TreeItems = [
