@@ -2,9 +2,15 @@ import React, { forwardRef, HTMLAttributes } from 'react';
 import classNames from 'classnames';
 import './style.css';
 import { Handle } from '../Handle';
-import { Action } from '../Action';
-import { Remove } from '../Remove';
 import styled from 'styled-components';
+import { Button } from 'antd';
+import { CloseOutlined, DownOutlined, RightOutlined } from '@ant-design/icons';
+import { floatShadow } from '../../utilities';
+
+const RemoveButton = styled(Button)`
+  box-shadow: ${floatShadow};
+  transform: scale(0.8);
+`
 
 export interface Props extends Omit<HTMLAttributes<HTMLLIElement>, 'id'> {
   childCount?: number;
@@ -14,6 +20,7 @@ export interface Props extends Omit<HTMLAttributes<HTMLLIElement>, 'id'> {
   disableInteraction?: boolean;
   disableSelection?: boolean;
   ghost?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handleProps?: any;
   indicator?: boolean;
   indentationWidth: number;
@@ -24,9 +31,30 @@ export interface Props extends Omit<HTMLAttributes<HTMLLIElement>, 'id'> {
 }
 
 const StyledItem = styled.div`
+  position: relative;
   background-color: ${props => props.theme.token.colorBgContainer};
   border: 1px solid ${props => props.theme.token.colorBorder};
   color: ${props => props.theme.token.colorText};
+  .remove{
+    position: absolute;
+    right: 0;
+    transform: translateX(100%);
+    display: none;
+  }
+  &:hover{
+    .remove{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+`
+
+const RemoveContainer = styled.div`
+  height: 100%;
+  width: 40px;
+  position: absolute;
+  right: -8px;
 `
 
 export const TreeItem = forwardRef<HTMLDivElement, Props>(
@@ -51,6 +79,7 @@ export const TreeItem = forwardRef<HTMLDivElement, Props>(
     },
     ref
   ) => {
+    const collapseIcon = collapsed ? <RightOutlined style={{ fontSize: 12 }} /> : <DownOutlined style={{ fontSize: 12 }} />
     return (
       <li
         className={classNames(
@@ -71,19 +100,23 @@ export const TreeItem = forwardRef<HTMLDivElement, Props>(
       >
         <StyledItem className={'TreeItem'} ref={ref} style={style}>
           <Handle {...handleProps} />
-          {onCollapse && (
-            <Action
-              onClick={onCollapse}
-              className={classNames(
-                'Collapse',
-                collapsed && 'collapsed'
-              )}
-            >
-              {collapseIcon}
-            </Action>
-          )}
           <span className={'Text'}>{value}</span>
-          {!clone && onRemove && <Remove onClick={onRemove} />}
+          {onCollapse && (
+            <Button
+              type="text"
+              onClick={onCollapse}
+              icon={collapseIcon}
+            />
+          )}
+          {!clone && onRemove &&
+            <RemoveContainer className='remove'>
+              <RemoveButton
+                shape='circle'
+                icon={<CloseOutlined  />}
+                onClick={onRemove}
+              />
+            </RemoveContainer>
+          }
           {clone && childCount && childCount > 1 ? (
             <span className={'Count'}>{childCount}</span>
           ) : null}
@@ -91,10 +124,4 @@ export const TreeItem = forwardRef<HTMLDivElement, Props>(
       </li>
     );
   }
-);
-
-const collapseIcon = (
-  <svg width="10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 41">
-    <path d="M30.76 39.2402C31.885 40.3638 33.41 40.995 35 40.995C36.59 40.995 38.115 40.3638 39.24 39.2402L68.24 10.2402C69.2998 9.10284 69.8768 7.59846 69.8494 6.04406C69.822 4.48965 69.1923 3.00657 68.093 1.90726C66.9937 0.807959 65.5106 0.178263 63.9562 0.150837C62.4018 0.123411 60.8974 0.700397 59.76 1.76024L35 26.5102L10.24 1.76024C9.10259 0.700397 7.59822 0.123411 6.04381 0.150837C4.4894 0.178263 3.00632 0.807959 1.90702 1.90726C0.807714 3.00657 0.178019 4.48965 0.150593 6.04406C0.123167 7.59846 0.700153 9.10284 1.75999 10.2402L30.76 39.2402Z" />
-  </svg>
 );

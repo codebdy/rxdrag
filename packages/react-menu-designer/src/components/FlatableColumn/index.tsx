@@ -21,7 +21,7 @@ z-index: 1;
 `
 
 export const ColumnTitle = styled.div`
-  height: 40px;
+  height: 48px;
   display: flex;
   align-items: center;
   border-bottom: solid 1px ${props => props.theme.token?.colorBorderSecondary};
