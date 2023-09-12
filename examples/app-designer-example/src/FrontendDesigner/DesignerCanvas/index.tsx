@@ -6,8 +6,10 @@ import { frameMaterilas } from "../UiFrameDesigner/materials"
 import { pageMaterials } from "../ModuleUiDesigner/materials"
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared"
 import { isStr } from "@rxdrag/shared"
+import { useAppFrontend } from "../../hooks/useAppFrontend"
 
 export const DesignerCanvas = memo(() => {
+  const appFront = useAppFrontend()
   const { device = "", layoutPart } = useParams()
   const designers = useMemo(() => {
     const materials = layoutPart === LayoutPart.frame ? frameMaterilas[device] : pageMaterials[device]
@@ -24,7 +26,8 @@ export const DesignerCanvas = memo(() => {
     }
     return coms
   }, [device, layoutPart])
+
   return (
-    <IFrameCanvas designers={designers} />
+    <IFrameCanvas designers={designers} frameSchema={appFront?.frameSchema} />
   )
 })

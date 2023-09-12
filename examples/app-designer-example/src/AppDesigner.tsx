@@ -1,11 +1,8 @@
 import { Toolbar } from "./Toolbar"
-import { AppContext } from "./contexts"
 import { Outlet } from "react-router-dom"
 import { ConfigProvider, theme } from "antd"
 import { memo, useEffect, useMemo, useState } from "react"
-import { useQueryApp } from "./hooks/useQueryApp"
 import { ThemeRoot } from "./ThemeRoot"
-
 import styled from "styled-components"
 import { LocalesContext } from "@rxdrag/react-locales"
 import { appDesignerLocales } from "./locales"
@@ -29,7 +26,6 @@ export const AppDesigner = memo(() => {
   }, [localesManger])
 
   const [themeMode, setThemeMode] = useState<"dark" | "light">("dark")
-  const { app } = useQueryApp("app1")
   return (
     <ConfigProvider
       theme={{
@@ -38,15 +34,14 @@ export const AppDesigner = memo(() => {
     >
       <LocalesContext.Provider value={localesManger}>
         <ThemeRoot mode={themeMode}>
-          <AppContext.Provider value={app}>
-            <Container className={classNames("zoomable-editor", themeMode)}>
-              <Toolbar
-                themeMode={themeMode}
-                onThemeModeChange={setThemeMode}
-              />
-              <Outlet />
-            </Container>
-          </AppContext.Provider>
+
+          <Container className={classNames("zoomable-editor", themeMode)}>
+            <Toolbar
+              themeMode={themeMode}
+              onThemeModeChange={setThemeMode}
+            />
+            <Outlet />
+          </Container>
         </ThemeRoot>
       </LocalesContext.Provider>
     </ConfigProvider>
