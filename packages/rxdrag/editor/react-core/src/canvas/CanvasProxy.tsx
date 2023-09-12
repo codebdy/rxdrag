@@ -15,7 +15,7 @@ export interface IFrameCanvasEvent {
 }
 
 //尽量放在Ifame的顶层
-export const ICanvasProxy = memo((
+export const CanvasProxy = memo((
   props: {
     components: IReactComponents
     children?: React.ReactNode,
