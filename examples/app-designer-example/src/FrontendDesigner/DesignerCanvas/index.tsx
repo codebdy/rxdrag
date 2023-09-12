@@ -7,8 +7,7 @@ import { IReactComponents, ReactComponent } from "@rxdrag/react-shared"
 import { isStr } from "@rxdrag/shared"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
 import { Canvas, CanvasProxy } from "@rxdrag/react-core"
-import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy"
-import { ComponentRender } from "@rxdrag/react-runner"
+import { ModuleCanvas } from "./ModuleCanvas"
 
 export const DesignerCanvas = memo(() => {
   const appFront = useAppFrontend()
@@ -29,35 +28,12 @@ export const DesignerCanvas = memo(() => {
     return coms
   }, [device, layoutPart])
 
-  const frameComponents = useMemo(() => {
-    const materials = frameMaterilas[device]
-    const coms: IReactComponents = {}
-    for (const material of materials || []) {
-      coms[material.componentName] = material.designer
-      for (const slotName of Object.keys(material.slots || {})) {
-        const slot = material.slots?.[slotName]
-        if (slot === true || slot === undefined || isStr(slot)) {
-          continue
-        }
-        coms[slot.componentName] = slot.component as ReactComponent
-      }
-    }
-    return coms
-  }, [device])
 
   return (
     <CanvasProxy components={designers}>
       {
         appFront?.frameSchema && layoutPart === LayoutPart.page
-          ? <Fieldy>
-            <VirtualForm>
-              <ComponentRender
-                components={frameComponents}
-                //controllerFactories={controllerFactories}
-                schema={appFront?.frameSchema}
-              />
-            </VirtualForm>
-          </Fieldy>
+          ? <ModuleCanvas frameSchema={appFront?.frameSchema} />
           : <Canvas />
       }
     </CanvasProxy>
