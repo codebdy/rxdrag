@@ -29,6 +29,8 @@ const StyledItem = styled.div`
   background-color: ${props => props.theme.token.colorBgContainer};
   border: 1px solid ${props => props.theme.token.colorBorder};
   color: ${props => props.theme.token.colorText};
+  border-radius: 8px;
+  margin: 8px;
   .remove{
     position: absolute;
     right: 0;

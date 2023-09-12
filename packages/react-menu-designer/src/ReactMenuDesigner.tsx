@@ -35,7 +35,6 @@ const CanvasContainer = styled.div`
 
 const Canvas = styled.div`
   width: 100%;
-  padding: 8px;
   overflow: auto;
   box-sizing: border-box;
 `
