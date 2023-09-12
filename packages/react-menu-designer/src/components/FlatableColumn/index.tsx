@@ -19,3 +19,11 @@ z-index: 1;
   }
 }
 `
+
+export const ColumnTitle = styled.div`
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px ${props => props.theme.token?.colorBorderSecondary};
+  padding: 0 16px;
+`

@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { DEFAULT_MARGIN } from "../../utilities";
 import styled from 'styled-components';
-import { FlatableColumn } from "../FlatableColumn";
+import { ColumnTitle, FlatableColumn } from "../FlatableColumn";
 
 const maxWidth = 1000
 const minWidth = 300
@@ -17,7 +17,9 @@ export const Toolbox = memo(() => {
       minWidth={minWidth}
       width={300}
     >
-      哈哈
+      <ColumnTitle>
+        菜单源
+      </ColumnTitle>
     </ToolboxShell>
   )
 })
