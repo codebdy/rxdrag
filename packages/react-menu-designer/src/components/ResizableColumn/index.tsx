@@ -124,7 +124,7 @@ export const ResizableColumn = memo(
             height: "100%",
             display: "flex",
             flexFlow: "column",
-            overflowX: "hidden",
+            //overflowX: "hidden",
             transition: draging ? undefined : "all 0.3s",
           }}
         >
