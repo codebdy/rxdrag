@@ -32,6 +32,8 @@ import { PropertyPanel } from './components/PropertyPanel';
 import { Button, Divider, Space } from 'antd';
 import { DeleteOutlined, RedoOutlined, UndoOutlined } from '@ant-design/icons';
 import { SortableTree } from './components/SortableTree';
+import { MaterialsContext } from './contexts';
+import { menuMaterials } from './materials';
 
 const Shell = styled.div`
   position: relative;
@@ -194,36 +196,38 @@ export const ReactMenuDesigner = memo(({
   // };
 
   return (
-    <DndContext
-      //accessibility={{ announcements }}
-      sensors={sensors}
-      collisionDetection={closestCenter}
-      measuring={measuring}
-      onDragStart={handleDragStart}
-      onDragMove={handleDragMove}
-      onDragOver={handleDragOver}
-      onDragEnd={handleDragEnd}
-      onDragCancel={handleDragCancel}
-    >
-      <Shell>
-        <Toolbox ></Toolbox>
-        <CanvasContainer>
-          <Toolbar>
-            <Space>
-              <Button type="text" icon={<UndoOutlined />} />
-              <Button type="text" icon={<RedoOutlined />} />
-              <Divider type='vertical' />
-              <Button type="text" icon={<DeleteOutlined />} />
-            </Space>
-            <Button type="primary" >保存</Button>
-          </Toolbar>
-          <Canvas>
-            <SortableTree />
-          </Canvas>
-        </CanvasContainer>
-        <PropertyPanel></PropertyPanel>
-      </Shell>
-    </DndContext>
+    <MaterialsContext.Provider value={menuMaterials}>
+      <DndContext
+        //accessibility={{ announcements }}
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        measuring={measuring}
+        onDragStart={handleDragStart}
+        onDragMove={handleDragMove}
+        onDragOver={handleDragOver}
+        onDragEnd={handleDragEnd}
+        onDragCancel={handleDragCancel}
+      >
+        <Shell>
+          <Toolbox ></Toolbox>
+          <CanvasContainer>
+            <Toolbar>
+              <Space>
+                <Button type="text" icon={<UndoOutlined />} />
+                <Button type="text" icon={<RedoOutlined />} />
+                <Divider type='vertical' />
+                <Button type="text" icon={<DeleteOutlined />} />
+              </Space>
+              <Button type="primary" >保存</Button>
+            </Toolbar>
+            <Canvas>
+              <SortableTree />
+            </Canvas>
+          </CanvasContainer>
+          <PropertyPanel></PropertyPanel>
+        </Shell>
+      </DndContext>
+    </MaterialsContext.Provider>
   );
 
   function handleDragStart({ active: { id: activeId } }: DragStartEvent) {
