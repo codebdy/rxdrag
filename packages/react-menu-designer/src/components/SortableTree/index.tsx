@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import {
   DragOverlay,
@@ -20,39 +20,13 @@ import {
   removeChildrenOf,
   setProperty,
 } from '../../utilities';
-import type { SensorContext, TreeItems } from '../../types';
+import type { SensorContext } from '../../types';
 import { SortableTreeItem } from '..';
 import { CSS } from '@dnd-kit/utilities';
 import { useActiveIdState } from '../../hooks/useActiveIdState';
 import { useOverIdState } from '../../hooks/useOverIdState';
 import { useOffsetLeftState } from '../../hooks/useOffsetLeftState';
-
-const initialItems: TreeItems = [
-  {
-    id: 'Home',
-    children: [],
-  },
-  {
-    id: 'Collections',
-    children: [
-      { id: 'Spring', children: [] },
-      { id: 'Summer', children: [] },
-      { id: 'Fall', children: [] },
-      { id: 'Winter', children: [] },
-    ],
-  },
-  {
-    id: 'About Us',
-    children: [],
-  },
-  {
-    id: 'My Account',
-    children: [
-      { id: 'Addresses', children: [] },
-      { id: 'Order History', children: [] },
-    ],
-  },
-];
+import { useItemsState } from '../../hooks/useItemsState';
 
 
 const dropAnimationConfig: DropAnimation = {
@@ -79,17 +53,15 @@ const dropAnimationConfig: DropAnimation = {
 };
 
 interface Props {
-  defaultItems?: TreeItems;
   indentationWidth?: number;
   indicator?: boolean;
 }
 
 export function SortableTree({
-  defaultItems = initialItems,
   indicator = true,
   indentationWidth = 50,
 }: Props) {
-  const [items, setItems] = useState(() => defaultItems);
+  const [items, setItems] = useItemsState();
   const [activeId] = useActiveIdState();
   const [overId] = useOverIdState();
   const [offsetLeft] = useOffsetLeftState();
@@ -125,6 +97,7 @@ export function SortableTree({
   const sortedIds = useMemo(() => flattenedItems.map(({ id }) => id), [
     flattenedItems,
   ]);
+
   const activeItem = activeId
     ? flattenedItems.find(({ id }) => id === activeId)
     : null;

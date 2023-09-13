@@ -1,6 +1,5 @@
 import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import {
-  Announcements,
   DndContext,
   closestCenter,
   KeyboardSensor,
@@ -37,6 +36,7 @@ import { menuMaterials } from './materials';
 import { useActiveIdState } from './hooks/useActiveIdState';
 import { useOverIdState } from './hooks/useOverIdState';
 import { useOffsetLeftState } from './hooks/useOffsetLeftState';
+import { useItemsState } from './hooks/useItemsState';
 
 const Shell = styled.div`
   position: relative;
@@ -81,32 +81,7 @@ const Toolbar = styled.div`
   background-color: ${props => props.theme.token?.colorBgBase};
 `
 
-const initialItems: TreeItems = [
-  {
-    id: 'Home',
-    children: [],
-  },
-  {
-    id: 'Collections',
-    children: [
-      { id: 'Spring', children: [] },
-      { id: 'Summer', children: [] },
-      { id: 'Fall', children: [] },
-      { id: 'Winter', children: [] },
-    ],
-  },
-  {
-    id: 'About Us',
-    children: [],
-  },
-  {
-    id: 'My Account',
-    children: [
-      { id: 'Addresses', children: [] },
-      { id: 'Order History', children: [] },
-    ],
-  },
-];
+
 
 const measuring = {
   droppable: {
@@ -122,11 +97,10 @@ interface Props {
 }
 
 export const ReactMenuDesignerInner = memo(({
-  defaultItems = initialItems,
   indicator = true,
   indentationWidth = 50,
 }: Props) => {
-  const [items, setItems] = useState(() => defaultItems);
+  const [items, setItems] = useItemsState();
   const [activeId, setActiveId] = useActiveIdState();
   const [overId, setOverId] = useOverIdState();
   const [offsetLeft, setOffsetLeft] = useOffsetLeftState();
