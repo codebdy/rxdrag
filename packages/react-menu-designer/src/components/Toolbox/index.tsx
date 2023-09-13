@@ -10,6 +10,14 @@ import type { CollapseProps } from 'antd';
 const maxWidth = 1000
 const minWidth = 200
 
+const StyledCollapse = styled(Collapse)`
+  border-radius: 0;
+  border: 0;
+  .ant-collapse-item{
+    border-radius: 0 !important;
+  }
+`
+
 const ToolboxShell = styled(FlatableColumn)`
   left: ${DEFAULT_MARGIN}px;
 `
@@ -39,7 +47,7 @@ export const Toolbox = memo(() => {
       <ColumnTitle>
         菜单源
       </ColumnTitle>
-      <Collapse accordion items={items} ghost/>
+      <StyledCollapse accordion items={items}/>
     </ToolboxShell>
   )
 })
