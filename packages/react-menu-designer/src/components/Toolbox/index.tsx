@@ -14,7 +14,8 @@ const StyledCollapse = styled(Collapse)`
   border-radius: 0;
   border: 0;
   .ant-collapse-content-box{
-    padding: 0 8px;
+    padding: 0 16px !important;
+    margin: 0;
   }
   .ant-collapse-item{
     border-radius: 0 !important;
@@ -54,7 +55,7 @@ export const Toolbox = memo(() => {
       <ColumnTitle>
         菜单源
       </ColumnTitle>
-      <StyledCollapse accordion items={items}/>
+      <StyledCollapse size="small" accordion items={items} ghost/>
     </ToolboxShell>
   )
 })
