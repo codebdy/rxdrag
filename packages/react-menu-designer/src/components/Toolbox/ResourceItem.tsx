@@ -8,8 +8,8 @@ const Container = styled.div`
   position: relative;
   height: 48px;
   box-sizing: border-box;
-  width: calc(100% - 16px);
-  margin: 8px;
+  width: 100%;
+  margin-bottom: 8px;
 `
 
 const Item = styled.div`
