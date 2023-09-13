@@ -4,7 +4,7 @@ import { debugSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
 import { debugIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
-import { DEFAULT_INPUT_NAME } from "minion-materials/consts";
+import { DEFAULT_INPUT_NAME } from "../../consts";
 
 export interface IDebugConfig {
   tip?: string,

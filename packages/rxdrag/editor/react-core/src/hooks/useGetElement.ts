@@ -5,7 +5,7 @@ export function useGetElement(){
 
   const engine = useDesignerEngine()
   const getElement = useCallback((rxId?:string)=>{
-    return rxId && engine?.getShell()?.getElement(rxId)
+    return rxId && engine?.getShell()?.getElements(rxId)
   }, [engine])
 
   return getElement

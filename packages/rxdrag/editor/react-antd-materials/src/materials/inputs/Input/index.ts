@@ -11,7 +11,14 @@ export const InputMaterial: IComponentMaterial = {
   component: Input,
   designer: switchRef(Input, (element?: unknown) => {
     const inputElement = (element as { input: HTMLElement | null })?.input
-    return inputElement?.parentElement?.parentElement
+    // if(inputElement?.parentElement?.classList.contains("ant-input-affix-wrapper")){
+    //   if(inputElement?.parentElement.parentElement?.classList.contains("ant-input-wrapper")){
+    //     return inputElement?.parentElement.parentElement
+    //   }
+    //   return inputElement.parentElement
+    // }
+    return inputElement
+    //return inputElement?.parentElement?.parentElement
   }),
   designerLocales: inputLocales,
   propsSchema: inputSchema,

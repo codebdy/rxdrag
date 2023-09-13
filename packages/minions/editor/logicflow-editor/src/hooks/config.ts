@@ -4,6 +4,8 @@ import { Options } from "@antv/x6/lib/graph/options";
 import { ReactionNode } from "../components/ReactionNode";
 
 export const config: Partial<Options.Manual> = {
+  //是否监听容器大小改变，并自动更新画布大小。
+  autoResize: true,
   panning: {
     enabled: true,
     eventTypes: ['leftMouseDown', 'mouseWheel'],

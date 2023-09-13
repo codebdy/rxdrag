@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { isHTMLElement } from "@rxdrag/shared";
 import React, { memo, useCallback, useMemo } from "react";
-import { useDesignComponent, useDesignerEngine, useLocked, useTreeNode} from "../hooks";
+import { useComponentDesigner, useLocked, useTreeNode } from "../hooks";
 import { PlaceHolder } from "../PlaceHolder";
 import { NodeContext } from "../contexts";
 import { Locked } from "./Locked";
+import { useBehavior } from "../hooks/useBehavior";
 
 export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const { nodeId } = props;
   const node = useTreeNode(nodeId);
-  const Component = useDesignComponent(node?.meta?.componentName);
-  const engine = useDesignerEngine()
-  const behavior = useMemo(() => engine?.getNodeBehavior(node?.id || ""), [engine, node?.id])
+  const Component = useComponentDesigner(node?.meta?.componentName);
+  //此处不能用node?.id，reduex可能会有滞后，导致传入undefined
+  const behavior = useBehavior(nodeId)
   const locked = useLocked();
 
   const handleRef = useCallback((element: HTMLElement | undefined) => {
@@ -39,7 +40,7 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const realProps = useMemo(() => {
     const rxProps = !locked ? (node?.rxProps) : {}
     return {
-      style: { ...style||{}, ...dStyle||{} },
+      style: { ...style || {}, ...dStyle || {} },
       ...other,
       ...rxProps,
       ...dOther,
@@ -62,7 +63,7 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
           </Locked>
         </Component >
       } else if (behavior?.isDroppable() && node.parentId) {
-        return <Component ref={!behavior?.isNoRef() ? handleRef : undefined} {...realProps}>
+        return <Component {...realProps}>
           {!behavior.isNoPlaceholder() && <PlaceHolder />}
         </Component>
       } else {

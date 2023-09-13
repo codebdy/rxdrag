@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/fieldy-yup-validation",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Water.Li",
   "type": "module",
   "module": "index.ts",
@@ -17,11 +17,12 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@rxdrag/fieldy": "workspace:*"
+    "@rxdrag/fieldy": "workspace:*",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@rxdrag/tsconfig": "workspace:*",
-    "vite": "^4.2.0",
-    "@types/node": "*"
+    "@types/node": "*",
+    "vite": "^4.2.0"
   }
 }

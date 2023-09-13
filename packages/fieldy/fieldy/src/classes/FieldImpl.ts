@@ -1,13 +1,22 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { isStr } from "@rxdrag/shared";
-import { ErrorListener, FormState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
+import { ErrorListener, FieldState, FormState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
 import { PropExpression } from "./PropExpression";
 import { ValidationSubscriber } from "./ValidationSubscriber";
 import { IValidationError } from "../interfaces";
 import { IFieldFeedback } from "../actions";
 
-export function transformErrorsToFeedbacks(errors: IValidationError[], schemas: IFieldSchema<unknown>[]): IFieldFeedback[] {
-  return []
+export function transformErrorsToFeedbacks(errors: IValidationError[], schemas: IFieldSchema[]): IFieldFeedback[] {
+  const feedbacks: IFieldFeedback[] = []
+  for (const schema of schemas) {
+    const error = errors.find(err => err.path === schema.path)
+    if (error) {
+      feedbacks.push({ path: schema.path, type: "error", messages: [error.message || "no error message"] })
+    } else {
+      feedbacks.push({ path: schema.path, type: "success" })
+    }
+  }
+  return feedbacks
 }
 
 export class FieldImpl implements IField {
@@ -26,7 +35,7 @@ export class FieldImpl implements IField {
     }
   }
 
-  getSubFieldSchemas(): IFieldSchema<unknown>[] | undefined {
+  getSubFieldSchemas(): IFieldSchema[] | undefined {
     if (this.meta?.type === "object" || this.meta?.type === "array") {
       return this.form.fieldy.getFormState(this.form.name)?.fieldSchemas?.filter(schema => {
         return schema.path !== this.path && schema.path.startsWith(this.path)
@@ -36,7 +45,7 @@ export class FieldImpl implements IField {
     return undefined
   }
 
-  getFieldSchema(): IFieldSchema<unknown> {
+  getFieldSchema(): IFieldSchema {
     return this.fieldy.getFormState(this.form.name)?.fieldSchemas.find(schema => schema.path === this.path) || { path: this.path, ...this.meta }
   }
 
@@ -52,6 +61,9 @@ export class FieldImpl implements IField {
     return this.fieldy.getFieldInitialValue(this.form.name, this.fieldPath)
   }
 
+  getState(): FieldState | undefined{
+    return this.fieldy.getFieldState(this.form.name, this.fieldPath)
+  }
   getValue() {
     return this.fieldy.getFieldValue(this.form.name, this.fieldPath)
   }
@@ -91,11 +103,11 @@ export class FieldImpl implements IField {
   validate(): void {
     if (this.fieldy.validator) {
       this.validationSubscriber.emitStart()
-      const fieldSchema = this.getFieldSchema()
-      const subFields = this.getSubFieldSchemas()
-      this.fieldy.validator.validateField(this.getValue(), fieldSchema, subFields).then((value: unknown) => {
+      this.fieldy.validator.validateField(this).then((value: unknown) => {
         this.validationSubscriber.emitSuccess(value)
       }).catch((errors: IValidationError[]) => {
+        const fieldSchema = this.getFieldSchema()
+        const subFields = this.getSubFieldSchemas()
         this.fieldy.setValidationFeedbacks(this.form.name, transformErrorsToFeedbacks(errors, [fieldSchema, ...subFields || []]))
         this.validationSubscriber.emitFailed(errors)
       }).finally(() => {

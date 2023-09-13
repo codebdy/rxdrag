@@ -13,10 +13,23 @@ export class DragStopControllerImpl implements IPlugin {
 
   unsubscribe: Unsubscribe
   constructor(protected engine: IDesignerEngine) {
-    this.unsubscribe = engine.getShell().subscribeTo(DragStopEvent, this.handleDragStop)
+    this.unsubscribe = engine.getShell().subscribeTo<DragStopEvent>(DragStopEvent.Name, this.handleDragStop)
   }
 
   handleDragStop = (e: DragStopEvent) => {
+    //放开user select
+    document.body.style.userSelect = ""
+    const canvases = this.engine.getShell()?.getAllCanvases()
+    for (const key of Object.keys(canvases)) {
+      const canvas = canvases[key]
+      if (canvas) {
+        const element = canvas.getRootElement()
+        if (element) {
+          element.style.userSelect = ""
+        }
+      }
+    }
+
     this.drop(e)
     if (this.engine.getMonitor().getState().draggingResource) {
       this.engine.getActions().endDragResource()

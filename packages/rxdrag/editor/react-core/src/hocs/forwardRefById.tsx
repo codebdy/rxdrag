@@ -7,12 +7,13 @@ import { isFn } from "@rxdrag/shared"
 
 export function forwardRefById(WrappedComponent: ReactComponent, callback: Callback = defaultCallback): ReactComponent {
 
-  return memo(forwardRef<HTMLElement>((props: any, ref) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return memo(forwardRef<HTMLElement | unknown, any>((props, ref) => {
     const node = useNode()
     useLayoutEffect(() => {
       const element = node?.id ? document.getElementById(node?.id) : null
       if (isFn(ref)) {
-        ref(callback(element)||null)
+        ref(callback(element) || null)
       }
 
     }, [node?.id, ref])

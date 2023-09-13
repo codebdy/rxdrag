@@ -3,7 +3,7 @@ import { constValueSchema } from "./schema";
 import { ReactNode } from "react";
 import { NodeType, IActivityMaterial } from "@rxdrag/minions-schema";
 import { fixedValueIcon } from "../../icons";
-import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "minion-materials/consts";
+import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "../../consts";
 
 export const constValueMaterial: IActivityMaterial<ReactNode> = {
   activityName: "constValue",

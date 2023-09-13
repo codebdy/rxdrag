@@ -5,6 +5,7 @@ import { AbstractCanvasEvent } from './AbstractCanvasEvent'
 export class RemoveDecoratorEvent
   extends AbstractCanvasEvent
   implements ICustomEvent {
-  type = 'canvas:remove-decorator'
+  static Name = 'canvas:remove-decorator'
+  name = RemoveDecoratorEvent.Name
   nodeId?: ID
 }

@@ -3,6 +3,7 @@ import { DragStartEvent } from "../../shell/events/mouse";
 import { IPlugin } from "../../interfaces/plugin";
 import { DraggingNodesState } from "../../reducers/draggingNodes";
 
+//让被拖动的对象变暗
 export class DraggedAttenuatorImpl implements IPlugin {
   name = "default.dragged-attenuator";
   htmlStyle?: HTMLElement;
@@ -22,8 +23,8 @@ export class DraggedAttenuatorImpl implements IPlugin {
     if (dragging) {
       let styleAdded = false
       for (const draggingId of dragging.nodeIds) {
-        const element = this.shell.getElement(draggingId)
-        if (element) {
+        const elements = this.shell.getElements(draggingId)
+        for (const element of elements || []) {
           if (!styleAdded) {
             const doc = element?.ownerDocument || document
 
@@ -33,7 +34,7 @@ export class DraggedAttenuatorImpl implements IPlugin {
             const node = this.engine.getMonitor().getNode(draggingId)
             if (node) {
               const canvas = this.shell.getCanvas(node?.documentId)
-              canvas?.appendChild(this.htmlStyle)
+              canvas?.appendAux(this.htmlStyle)
               styleAdded = true
             }
           }

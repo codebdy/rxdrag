@@ -1,4 +1,4 @@
-import { ILocalesManager } from "@rxdrag/locales"
+import { IRxDragLocalesManager } from "@rxdrag/locales"
 import { INodeSchema } from "@rxdrag/schema"
 import { IDocument, NodeBehavior } from "./document"
 import { IDesignerShell } from "./shell"
@@ -6,11 +6,13 @@ import { IMonitor } from "./monitor"
 import { IResourceManager } from "./resource"
 import { ID } from "./types"
 import { IAction, IActions } from "./action"
-import { IComponentManager } from "./component"
+import { IComponentConfig, IComponentManager } from "./component"
 import { IPlugin, IPluginFactory } from "./plugin"
 import { IDecoratorManager } from "./decorator"
+import { ISetterManager } from "./setter"
 
-export interface IDesignerEngine {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export interface IDesignerEngine<ComponentType = any, IconType = any> {
 	getLanguage(): string
 	setLanguage(lang: string): void
 	setSelectionMode(mode: SelectionMode): void
@@ -21,9 +23,10 @@ export interface IDesignerEngine {
 
 	getMonitor(): IMonitor
 	getShell(): IDesignerShell
-	getComponentManager(): IComponentManager
-	getResourceManager(): IResourceManager
-	getLocalesManager(): ILocalesManager
+	getComponentManager(): IComponentManager<ComponentType>
+	getResourceManager(): IResourceManager<IconType>
+	getSetterManager(): ISetterManager<ComponentType>
+	getLocalesManager(): IRxDragLocalesManager
 	getDecoratorManager(): IDecoratorManager
 	getActions(): IActions
 
@@ -34,4 +37,6 @@ export interface IDesignerEngine {
 	destroy(): void
 
 	getNodeBehavior(nodeId: ID): NodeBehavior
+
+	registerMaterials(materials: IComponentConfig<ComponentType, IconType>[]): void,
 }

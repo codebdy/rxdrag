@@ -45,7 +45,7 @@ export class DecoratorManager implements IDecoratorManager {
       return
     }
 
-    const el = this.engine.getShell().getElement(nodeId)
+    const el = this.engine.getShell().getElements(nodeId)
     if (!el) {
       //console.error("No Element")
       return
@@ -71,7 +71,7 @@ export class DecoratorManager implements IDecoratorManager {
     for (const id of Object.keys(nodes)) {
       const node = nodes[id]
       if (node.documentId === documentId) {
-        const el = shell.getElement(id)
+        const el = shell.getElements(id)
         if (el) {
           decorator.decorate(el, node)
         }
@@ -85,7 +85,7 @@ export class DecoratorManager implements IDecoratorManager {
     for (const id of Object.keys(nodes)) {
       const node = nodes[id]
       if (node.documentId === documentId) {
-        const el = shell.getElement(id)
+        const el = shell.getElements(id)
         if (el) {
           decorator.unDecorate(el)
         }

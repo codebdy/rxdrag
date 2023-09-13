@@ -1,24 +1,24 @@
+import { ILocales } from "@rxdrag/locales";
 import { IDesignerEngine, IDocument, ITreeNode } from "@rxdrag/core";
-import { createContext } from "react";
-import { IComponents } from "@rxdrag/react-shared";
-import { IComponentsParams, initialParams } from "@rxdrag/react-runner";
-
-
-export interface IDesignerComponentsParams extends IComponentsParams {
-  setters: IComponents,
-  registerTools: (...components: IComponents[]) => void
-}
-
-export const initialDesignerParams: IDesignerComponentsParams = {
-  ...initialParams,
-  setters: {},
-  registerTools: function (): void {
-    throw new Error("Function not implemented.");
-  }
-}
+import { ReactNode, createContext } from "react";
+import { IReactComponents } from "@rxdrag/react-shared";
+import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
+import { IControllerDefine } from "./types";
 
 export const DesignerEngineContext = createContext<IDesignerEngine | undefined>(undefined)
-export const DesignComponentsContext = createContext<IDesignerComponentsParams>(initialDesignerParams)
+export const InIframeContext = createContext<boolean | undefined>(undefined)
+//IFrame中的Component不能跟engine中一套，所以必须要单独处理
+export const ComponentDesignersContext = createContext<IReactComponents>({})
 export const DocumentContext = createContext<IDocument | undefined>(undefined)
 export const NodeContext = createContext<ITreeNode | undefined>(undefined)
 export const LockContext = createContext<boolean | undefined>(undefined)
+
+
+export interface IMinionOptions {
+  materials?: ActivityMaterialCategory<ReactNode>[],
+  locales?: ILocales,
+  propSetters?: IReactComponents,
+  controllers?: IControllerDefine[]
+}
+
+export const MinionOptionContext = createContext<IMinionOptions | undefined>(undefined)

@@ -1,20 +1,24 @@
-import { ShellContainer } from "components/ShellContainer"
 import { memo, useState } from "react"
 import { Fieldy } from "@rxdrag/react-fieldy"
-import { activityMaterialCategories } from "materials"
+import { activityMaterialCategories } from "../materials"
 import { LogicFlowEditorAntd5 } from "@rxdrag/logicflow-editor-antd5"
 import { ILogicMetas, useRemoveSelected, useSelected } from "@rxdrag/minions-logicflow-editor"
-import { activityMaterialLocales } from "minion-materials"
 import styled from "styled-components"
 import { Button, Space } from "antd"
 import metas from "./meta.json"
+import { ShellContainer } from "./ShellContainer"
+import { activityMaterialLocales } from "../minion-materials"
+import { Logo, MenuButton } from "example-common"
 
 const Toolbar = styled.div`
-  height: 80px;
+  height: 48px;
   border-bottom: solid 1px ${props => props.theme.token?.colorBorder};
   display: flex;
   align-items: center;
   padding: 8px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  flex-grow: 0;
 `
 
 export const ExampleInner = memo((
@@ -33,9 +37,11 @@ export const ExampleInner = memo((
       <ShellContainer>
         <Toolbar>
           <Space>
+            <Logo title="逻辑编排" />
             <Button onClick={toggleTheme}>主题切换</Button>
             <Button disabled={!selected} onClick={handleRemove}>删除</Button>
           </Space>
+          <MenuButton />
         </Toolbar>
         <LogicFlowEditorAntd5
           value={inputValue}

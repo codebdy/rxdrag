@@ -4,7 +4,7 @@ import { CanvasScrollEvent } from '../events'
 
 export class CanvasScrollDriverImpl implements IDriver {
 
-  constructor(private dispatcher: IDispatchable<ICustomEvent<any>>, private element: Element | Node | HTMLElement) {
+  constructor(private dispatcher: IDispatchable<ICustomEvent<unknown>>, private element: Element | Node | HTMLElement) {
     this.attach()
   }
 
@@ -29,7 +29,7 @@ export class CanvasScrollDriverImpl implements IDriver {
 }
 
 export const CanvasScrollDriver: IDriverFactory = (
-  dispatcher: IDispatchable<ICustomEvent<any>>,
+  dispatcher: IDispatchable<ICustomEvent<unknown>>,
   element: Element | Node | HTMLElement,
 ) => {
   return new CanvasScrollDriverImpl(

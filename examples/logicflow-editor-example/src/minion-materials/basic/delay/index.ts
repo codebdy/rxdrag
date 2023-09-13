@@ -3,7 +3,7 @@ import { delaySchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
 import { delayIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
-import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "minion-materials/consts";
+import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "../../consts";
 
 export interface IDelayConfig {
   time?: number

@@ -1,6 +1,6 @@
 import { Select, Switch } from "antd"
 import { memo, useCallback } from "react"
-import { IYupConfig, TestType, WhenType, YupNumber, YupRules, YupString, YupType, YupValidateRules } from "@rxdrag/fieldy-yup-validation"
+import { IYupConfig, TestType, WhenType, YupNumber, YupRules, YupString, YupType, IYupValidateSchema } from "@rxdrag/fieldy-yup-validation"
 import { useSettersTranslate } from "@rxdrag/react-core"
 import { NumberRuleInput } from "./NumberRuleInput"
 import { ArrayRuleInput } from "./ArrayRuleInput"
@@ -14,15 +14,15 @@ import { TestInput } from "./TestInput"
 
 export const YupRulesInput = memo((
   props: {
-    value?: YupValidateRules,
-    onChange?: (value?: YupValidateRules) => void
+    value?: IYupValidateSchema,
+    onChange?: (value?: IYupValidateSchema) => void
   }
 ) => {
   const { value, onChange } = props;
   const t = useSettersTranslate()
 
   const handleRequiredChange = useCallback((checked: boolean) => {
-    onChange?.({ ...value, rules: { ...value?.rules, required: { ...value?.rules?.required, value: checked } } })
+    onChange?.({ ...value, required: checked })
   }, [onChange, value])
 
   const handleTypeChange = useCallback((typeValue: string) => {
@@ -41,9 +41,6 @@ export const YupRulesInput = memo((
     onChange?.({ ...value, rules: rules })
   }, [onChange, value])
 
-  const handleRequiredConfigChange = useCallback((config?: IYupConfig<unknown>) => {
-    onChange?.({ ...value, rules: { ...value?.rules, required: config as IYupConfig<boolean> } })
-  }, [onChange, value])
 
   const handleTypeConfigChange = useCallback((config?: IYupConfig<unknown>) => {
     onChange?.({ ...value, type: config as IYupConfig<string | YupType> })
@@ -53,14 +50,9 @@ export const YupRulesInput = memo((
     <>
       <PropLayout
         label={t('requried')}
-        expressionSetter={
-          <MessageInput
-            value={value?.rules?.required}
-            onChange={handleRequiredConfigChange}
-          />}
       >
         <Switch
-          checked={value?.rules?.required?.value as boolean | undefined}
+          checked={value?.required}
           onChange={handleRequiredChange}
         />
       </PropLayout>

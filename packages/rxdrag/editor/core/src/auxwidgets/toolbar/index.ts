@@ -12,6 +12,7 @@ import { DraggingResourceState } from "../../reducers/draggingResource";
 import { LockButton } from "./controls/LockButton";
 import { getMaxZIndex } from "../outlines/getMaxZIndex";
 
+//工具栏
 export class ToolbarImpl implements IPlugin, IAuxToolbar {
   name = "default.toolbar";
   resizeObserver: ResizeObserver
@@ -38,7 +39,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
     this.unsubscribe = engine.getMonitor().subscribeToCurrentNodeChanged(this.currentNodeChanged)
     this.unsubscribeSelect = engine.getMonitor().subscribeToSelectChange(this.handleSelectChange)
     this.nodeChangeUnsubscribe = engine.getMonitor().subscribeToHasNodeChanged(this.refresh)
-    this.unCanvasScroll = this.engine.getShell().subscribeTo(CanvasScrollEvent, this.refresh)
+    this.unCanvasScroll = this.engine.getShell().subscribeTo<CanvasScrollEvent>(CanvasScrollEvent.Name, this.refresh)
     this.draggingNodesOff = this.engine.getMonitor().subscribeToDraggingNodes(this.handleDraggingNodes)
     this.draggingResourceOff = this.engine.getMonitor().subscribeToDraggingResource(this.handleDraggingResource)
   }
@@ -50,7 +51,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   //临时措施，跟踪popup变化
   handleSelectChange = (selectedIds: ID[] | null) => {
     this.refresh()
-    if (selectedIds?.length && !this.engine.getShell().getElement(selectedIds?.[0])) {
+    if (selectedIds?.length && !this.engine.getShell().getElements(selectedIds?.[0])) {
       setTimeout(() => {
         this.refresh()
       }, 100)
@@ -60,7 +61,7 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   currentNodeChanged = (node: ITreeNode) => {
     this.resizeObserver.disconnect()
     this.refresh()
-    if (node && !this.engine.getShell().getElement(node.id)) {
+    if (node && !this.engine.getShell().getElements(node.id)) {
       setTimeout(() => {
         this.refresh()
       }, 100)
@@ -109,8 +110,9 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   private render() {
     const node = this.engine.getMonitor().getCurrentNode()
     const divEl = this.htmlElement
-    const canvas = this.engine.getShell().getCanvas(this.engine.getMonitor().getNodeDocumentId(node?.id || "") || "")
-    divEl && canvas?.contains(divEl) && canvas?.removeChild(divEl)
+    const shell = this.engine.getShell()
+    const canvas = shell.getCanvas(this.engine.getMonitor().getNodeDocumentId(node?.id || "") || "")
+    divEl && divEl.remove()
     this.htmlElement = null
     if (!node) {
       if (divEl) {
@@ -118,14 +120,13 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
       }
       return
     }
-    const element = node.id && this.engine.getShell().getElement(node.id)
+
+    const elements = node.id && shell.getElements(node.id)
     const positionLimit = this.positionLimit(node.documentId)
 
-    const containerRect = canvas?.getContainerRect()
-
-    if (element && positionLimit && containerRect) {
-      const rect = element.getBoundingClientRect();
-
+    const containerRect = canvas?.getDocumentBodyRect()
+    const rect = shell.getNodeRect(node.id);
+    if (elements && positionLimit && containerRect && rect) {
       const htmlDiv = document.createElement('div')
       htmlDiv.style.display = "flex"
       htmlDiv.style.alignItems = "center"
@@ -150,10 +151,10 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
       htmlDiv.style.top = numbToPx(top - containerRect.y)
       htmlDiv.style.fontSize = "12px"
       htmlDiv.style.padding = "0px"
-      htmlDiv.style.zIndex = (getMaxZIndex(element) + 1).toString()
+      htmlDiv.style.zIndex = (getMaxZIndex(elements?.[elements.length - 1]) + 1).toString()
       htmlDiv.style.userSelect = "none"
 
-      canvas?.appendChild(htmlDiv)
+      canvas?.appendAux(htmlDiv)
 
       const divRect = htmlDiv.getBoundingClientRect()
       if ((rect.x + rect.width - divRect.width) < positionLimit.left) {
@@ -162,7 +163,9 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
       }
 
       this.htmlElement = htmlDiv
-      this.resizeObserver.observe(element)
+      for (const element of elements) {
+        this.resizeObserver.observe(element)
+      }
     }
   }
 
@@ -188,14 +191,13 @@ export class ToolbarImpl implements IPlugin, IAuxToolbar {
   }
 
   private positionLimit(documentId: ID) {
-    const bodyRect = document.body.getBoundingClientRect()
-    const rect = this.engine.getShell().getCanvas(documentId)?.getContainerRect()
+    const rect = this.engine.getShell().getCanvas(documentId)?.getDocumentBodyRect()
     if (!rect) {
       return null
     }
     return {
-      right: bodyRect.width - rect.x - rect.width,
-      left: rect.x,
+      right: 0,
+      left: 0,
       top: rect.y,
       bottom: rect.y + rect.height
     }

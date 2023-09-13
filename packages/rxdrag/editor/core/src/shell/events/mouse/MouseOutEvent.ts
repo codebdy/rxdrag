@@ -3,7 +3,7 @@ import { AbstractMouseEvent } from './AbstractMouseEvent'
 
 export class MouseOutEvent
   extends AbstractMouseEvent
-  implements ICustomEvent
-{
-  type = 'mouse:out'
+  implements ICustomEvent {
+  static Name = 'mouse:out'
+  name = MouseOutEvent.Name
 }

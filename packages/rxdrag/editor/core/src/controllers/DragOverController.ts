@@ -3,7 +3,6 @@ import { AcceptType, DragOverOptions } from "../interfaces/action";
 import { IPlugin } from "../interfaces/plugin";
 import { IDropPosition, PositionJudger, RelativePosition } from "../utils/coordinate";
 import { DragOverState } from "../reducers/dragOver";
-import { isArr } from "@rxdrag/shared"
 import { ID, IDesignerEngine, Unsubscribe } from "../interfaces";
 
 export class DragOverControllerImpl implements IPlugin {
@@ -13,7 +12,7 @@ export class DragOverControllerImpl implements IPlugin {
   unsubscribe: Unsubscribe
   subscribeNodeChange: Unsubscribe
   constructor(protected engine: IDesignerEngine) {
-    this.unsubscribe = engine.getShell().subscribeTo(DragMoveEvent, this.handleDragMove)
+    this.unsubscribe = engine.getShell().subscribeTo<DragMoveEvent>(DragMoveEvent.Name, this.handleDragMove)
     this.subscribeNodeChange = engine.getMonitor().subscribeToDragOver(this.handleDragoverChange)
   }
 

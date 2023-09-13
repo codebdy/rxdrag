@@ -1,0 +1,2 @@
+app设计器，可缩放shell，大屏，h5都可以通过这个完成
+基于shell的zoomable

@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/react-antd-props-inputs",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "module": "index.ts",
   "files": [
     "dist"

@@ -2,13 +2,14 @@ import { IDesignerEngine, NodeType, Unsubscribe } from "../interfaces";
 import { MouseClickEvent } from "../shell/events";
 import { IPlugin } from "../interfaces/plugin";
 
+//处理选中
 export class SelectionControllerImpl implements IPlugin {
   name = "default.selection-controller";
 
   unsubscribe: Unsubscribe
   
   constructor(protected engine: IDesignerEngine) {
-    this.unsubscribe = this.engine.getShell().subscribeTo(MouseClickEvent, this.handleNodeClick)
+    this.unsubscribe = this.engine.getShell().subscribeTo<MouseClickEvent>(MouseClickEvent.Name, this.handleNodeClick)
   }
 
   handleNodeClick = (e: MouseClickEvent): void => {

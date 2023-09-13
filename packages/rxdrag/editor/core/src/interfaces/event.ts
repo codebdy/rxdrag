@@ -3,16 +3,16 @@ import _ from "lodash"
 import { isFn } from "@rxdrag/shared"
 import { Unsubscribe } from "./types"
 
-export interface ICustomEvent<EventData = any> {
-  type: string
+export interface ICustomEvent<EventData = unknown> {
+  name: string
   data?: EventData
 }
-export interface CustomEventClass {
-  new(...args: any[]): any
-}
+// export interface CustomEventClass {
+//   new(...args: any[]): any
+// }
 
-export interface ISubscriber<EventType = any> {
-  (payload: EventType): void | boolean
+export interface IListener<EventType = unknown> {
+  (event: EventType): void | boolean
 }
 
 export interface IDispatchable<T> {
@@ -20,42 +20,38 @@ export interface IDispatchable<T> {
 }
 
 export interface ISubscribable {
-  subscribeTo<T extends CustomEventClass>(
-    type: T,
-    subscriber: ISubscriber<InstanceType<T>>
+  subscribeTo<EventType extends ICustomEvent = ICustomEvent>(
+    type: string,
+    subscriber: IListener<EventType>
   ): Unsubscribe,
 }
 
-export abstract class EventEngine<EventType extends CustomEventClass = any> implements IDispatchable<EventType>, ISubscribable {
+export abstract class EventEngine<EventType extends ICustomEvent = ICustomEvent> implements IDispatchable<EventType>, ISubscribable {
   private subscribers: {
-    [key: string]: ISubscriber
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: IListener<any>
   } = {}
 
-  dispatch<T extends EventType = any>(event: T, context?: any) {
-    let interrupted = false;
+  dispatch(event: EventType) {
     for (const key in this.subscribers) {
       if (isFn(this.subscribers[key])) {
-        if (this.subscribers[key](event) === false) {
-          interrupted = true
-        }
+        this.subscribers[key](event)
       }
     }
-
-    return interrupted ? false : true
   }
 
-  subscribeTo<T extends CustomEventClass>(
-    type: T,
-    subscriber: ISubscriber<InstanceType<T>>
+  subscribeTo<T extends ICustomEvent = EventType>(
+    name: string,
+    subscriber: IListener<T>
   ) {
-    return this.subscribe((event) => {
-      if (type && event instanceof type) {
+    return this.subscribe<T>((event: T) => {
+      if (name && event.name === name) {
         return subscriber(event)
       }
     })
   }
 
-  private subscribe(subscriber: ISubscriber) {
+  private subscribe<T>(subscriber: IListener<T>) {
     const id = _.uniqueId()
     if (isFn(subscriber)) {
       this.subscribers[id] = subscriber

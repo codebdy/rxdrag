@@ -3,7 +3,8 @@ import { DragOverOptions, IActions, StartDragNodesOptions, StartDragResourceOpti
 import { ACTIVE_NODE, CHANGE_ACTIVED_DOCUMENT, CHANGE_CANVAS_WIDTH, CHANGE_CANVAS_WIDTH_LIMITS, CHANGE_DOCUMENT_VIEW_TYPE, DRAG_HOVER, END_DRAG_NODES, END_DRAG_RESOURCE, SELECT_NODES, SET_SELECTION_MODE, SET_THEME_MODE, START_DRAG_NODES, START_DRAG_RESOURCE } from "./registry";
 
 export class Actions implements IActions {
-	constructor(private engine: IDesignerEngine) { }
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	constructor(private engine: IDesignerEngine<any, any>) { }
 
 	setThemeMode(mode: ThemeMode): void {
 		this.engine.dispatch({

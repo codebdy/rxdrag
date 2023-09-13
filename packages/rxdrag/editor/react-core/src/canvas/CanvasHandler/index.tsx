@@ -4,7 +4,7 @@ import { memo, useCallback, useEffect, useState } from "react"
 import { AUX_BACKGROUND_COLOR, MouseMoveEvent, MouseUpEvent } from "@rxdrag/core"
 
 import styled from "styled-components"
-import "./style.less"
+import "./style.css"
 
 const Container = styled.div`
   position: absolute;
