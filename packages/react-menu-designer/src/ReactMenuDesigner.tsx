@@ -125,10 +125,10 @@ export const ReactMenuDesigner = memo(({
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
   const [overId, setOverId] = useState<UniqueIdentifier | null>(null);
   const [offsetLeft, setOffsetLeft] = useState(0);
-  const [currentPosition, setCurrentPosition] = useState<{
-    parentId: UniqueIdentifier | null;
-    overId: UniqueIdentifier;
-  } | null>(null);
+  // const [currentPosition, setCurrentPosition] = useState<{
+  //   parentId: UniqueIdentifier | null;
+  //   overId: UniqueIdentifier;
+  // } | null>(null);
 
   const flattenedItems = useMemo(() => {
     const flattenedTree = flattenTree(items);
@@ -175,27 +175,27 @@ export const ReactMenuDesigner = memo(({
     };
   }, [flattenedItems, offsetLeft]);
 
-  const announcements: Announcements = {
-    onDragStart({ active }) {
-      return `Picked up ${active.id}.`;
-    },
-    onDragMove({ active, over }) {
-      return getMovementAnnouncement('onDragMove', active.id, over?.id);
-    },
-    onDragOver({ active, over }) {
-      return getMovementAnnouncement('onDragOver', active.id, over?.id);
-    },
-    onDragEnd({ active, over }) {
-      return getMovementAnnouncement('onDragEnd', active.id, over?.id);
-    },
-    onDragCancel({ active }) {
-      return `Moving was cancelled. ${active.id} was dropped in its original position.`;
-    },
-  };
+  // const announcements: Announcements = {
+  //   onDragStart({ active }) {
+  //     return `Picked up ${active.id}.`;
+  //   },
+  //   onDragMove({ active, over }) {
+  //     return getMovementAnnouncement('onDragMove', active.id, over?.id);
+  //   },
+  //   onDragOver({ active, over }) {
+  //     return getMovementAnnouncement('onDragOver', active.id, over?.id);
+  //   },
+  //   onDragEnd({ active, over }) {
+  //     return getMovementAnnouncement('onDragEnd', active.id, over?.id);
+  //   },
+  //   onDragCancel({ active }) {
+  //     return `Moving was cancelled. ${active.id} was dropped in its original position.`;
+  //   },
+  // };
 
   return (
     <DndContext
-      accessibility={{ announcements }}
+      //accessibility={{ announcements }}
       sensors={sensors}
       collisionDetection={closestCenter}
       measuring={measuring}
@@ -230,29 +230,33 @@ export const ReactMenuDesigner = memo(({
     setActiveId(activeId);
     setOverId(activeId);
 
-    const activeItem = flattenedItems.find(({ id }) => id === activeId);
+    //const activeItem = flattenedItems.find(({ id }) => id === activeId);
 
-    if (activeItem) {
-      setCurrentPosition({
-        parentId: activeItem.parentId,
-        overId: activeId,
-      });
-    }
+    // if (activeItem) {
+    //   setCurrentPosition({
+    //     parentId: activeItem.parentId,
+    //     overId: activeId,
+    //   });
+    // }
 
     document.body.style.setProperty('cursor', 'grabbing');
   }
 
   function handleDragMove({ delta }: DragMoveEvent) {
+    console.log("===>handleDragMove", delta)
     setOffsetLeft(delta.x);
   }
 
-  function handleDragOver({ over }: DragOverEvent) {
+  function handleDragOver(e: DragOverEvent) {
+    console.log("===>handleDragOver", e)
+    const { over } = e
     setOverId(over?.id ?? null);
   }
 
-  function handleDragEnd({ active, over }: DragEndEvent) {
+  function handleDragEnd(e: DragEndEvent) {
+    const { active, over } = e
     resetState();
-
+    console.log("===>handleDragEnd", e)
     if (projected && over) {
       const { depth, parentId } = projected;
       const clonedItems: FlattenedItem[] = JSON.parse(
@@ -279,68 +283,68 @@ export const ReactMenuDesigner = memo(({
     setOverId(null);
     setActiveId(null);
     setOffsetLeft(0);
-    setCurrentPosition(null);
+    //setCurrentPosition(null);
 
     document.body.style.setProperty('cursor', '');
   }
 
-  function getMovementAnnouncement(
-    eventName: string,
-    activeId: UniqueIdentifier,
-    overId?: UniqueIdentifier
-  ) {
-    if (overId && projected) {
-      if (eventName !== 'onDragEnd') {
-        if (
-          currentPosition &&
-          projected.parentId === currentPosition.parentId &&
-          overId === currentPosition.overId
-        ) {
-          return;
-        } else {
-          setCurrentPosition({
-            parentId: projected.parentId,
-            overId,
-          });
-        }
-      }
+  // function getMovementAnnouncement(
+  //   eventName: string,
+  //   activeId: UniqueIdentifier,
+  //   overId?: UniqueIdentifier
+  // ) {
+  //   if (overId && projected) {
+  //     if (eventName !== 'onDragEnd') {
+  //       if (
+  //         currentPosition &&
+  //         projected.parentId === currentPosition.parentId &&
+  //         overId === currentPosition.overId
+  //       ) {
+  //         return;
+  //       } else {
+  //         setCurrentPosition({
+  //           parentId: projected.parentId,
+  //           overId,
+  //         });
+  //       }
+  //     }
 
-      const clonedItems: FlattenedItem[] = JSON.parse(
-        JSON.stringify(flattenTree(items))
-      );
-      const overIndex = clonedItems.findIndex(({ id }) => id === overId);
-      const activeIndex = clonedItems.findIndex(({ id }) => id === activeId);
-      const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
+  //     const clonedItems: FlattenedItem[] = JSON.parse(
+  //       JSON.stringify(flattenTree(items))
+  //     );
+  //     const overIndex = clonedItems.findIndex(({ id }) => id === overId);
+  //     const activeIndex = clonedItems.findIndex(({ id }) => id === activeId);
+  //     const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
 
-      const previousItem = sortedItems[overIndex - 1];
+  //     const previousItem = sortedItems[overIndex - 1];
 
-      let announcement;
-      const movedVerb = eventName === 'onDragEnd' ? 'dropped' : 'moved';
-      const nestedVerb = eventName === 'onDragEnd' ? 'dropped' : 'nested';
+  //     let announcement;
+  //     const movedVerb = eventName === 'onDragEnd' ? 'dropped' : 'moved';
+  //     const nestedVerb = eventName === 'onDragEnd' ? 'dropped' : 'nested';
 
-      if (!previousItem) {
-        const nextItem = sortedItems[overIndex + 1];
-        announcement = `${activeId} was ${movedVerb} before ${nextItem.id}.`;
-      } else {
-        if (projected.depth > previousItem.depth) {
-          announcement = `${activeId} was ${nestedVerb} under ${previousItem.id}.`;
-        } else {
-          let previousSibling: FlattenedItem | undefined = previousItem;
-          while (previousSibling && projected.depth < previousSibling.depth) {
-            const parentId: UniqueIdentifier | null = previousSibling.parentId;
-            previousSibling = sortedItems.find(({ id }) => id === parentId);
-          }
+  //     if (!previousItem) {
+  //       const nextItem = sortedItems[overIndex + 1];
+  //       announcement = `${activeId} was ${movedVerb} before ${nextItem.id}.`;
+  //     } else {
+  //       if (projected.depth > previousItem.depth) {
+  //         announcement = `${activeId} was ${nestedVerb} under ${previousItem.id}.`;
+  //       } else {
+  //         let previousSibling: FlattenedItem | undefined = previousItem;
+  //         while (previousSibling && projected.depth < previousSibling.depth) {
+  //           const parentId: UniqueIdentifier | null = previousSibling.parentId;
+  //           previousSibling = sortedItems.find(({ id }) => id === parentId);
+  //         }
 
-          if (previousSibling) {
-            announcement = `${activeId} was ${movedVerb} after ${previousSibling.id}.`;
-          }
-        }
-      }
+  //         if (previousSibling) {
+  //           announcement = `${activeId} was ${movedVerb} after ${previousSibling.id}.`;
+  //         }
+  //       }
+  //     }
 
-      return announcement;
-    }
+  //     return announcement;
+  //   }
 
-    return;
-  }
+  //   return;
+  // }
 })
 

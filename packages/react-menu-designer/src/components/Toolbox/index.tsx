@@ -14,6 +14,9 @@ const ToolboxShell = styled(FlatableColumn)`
 export const Toolbox = memo(() => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: 'draggable',
+    data: {
+      xxx: "xx"
+    }
   });
   const style = transform ? {
     transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
@@ -28,6 +31,9 @@ export const Toolbox = memo(() => {
       <ColumnTitle>
         菜单源
       </ColumnTitle>
+      <button>
+        拖动测试
+      </button>
       <button ref={setNodeRef} style={style} {...listeners} {...attributes}>
         拖动测试
       </button>
