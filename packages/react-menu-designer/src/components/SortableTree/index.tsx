@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
   DragOverlay,
-  MeasuringStrategy,
   DropAnimation,
   Modifier,
   defaultDropAnimation,
@@ -24,6 +23,9 @@ import {
 import type { SensorContext, TreeItems } from '../../types';
 import { SortableTreeItem } from '..';
 import { CSS } from '@dnd-kit/utilities';
+import { useActiveIdState } from '../../hooks/useActiveIdState';
+import { useOverIdState } from '../../hooks/useOverIdState';
+import { useOffsetLeftState } from '../../hooks/useOffsetLeftState';
 
 const initialItems: TreeItems = [
   {
@@ -88,9 +90,9 @@ export function SortableTree({
   indentationWidth = 50,
 }: Props) {
   const [items, setItems] = useState(() => defaultItems);
-  const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
-  const [overId, setOverId] = useState<UniqueIdentifier | null>(null);
-  const [offsetLeft, setOffsetLeft] = useState(0);
+  const [activeId] = useActiveIdState();
+  const [overId] = useOverIdState();
+  const [offsetLeft] = useOffsetLeftState();
 
   const flattenedItems = useMemo(() => {
     const flattenedTree = flattenTree(items);
@@ -136,7 +138,6 @@ export function SortableTree({
 
 
   return (
-
     <SortableContext items={sortedIds} strategy={verticalListSortingStrategy}>
       {flattenedItems.map(({ id, children, collapsed, depth }) => (
         <SortableTreeItem

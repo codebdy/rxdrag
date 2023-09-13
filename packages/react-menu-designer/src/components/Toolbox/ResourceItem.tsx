@@ -16,19 +16,23 @@ const Item = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  background-color: ${props => props.theme.token?.colorBgContainer};
   align-items: center;
   padding: 0 16px;
   box-sizing: border-box;
   border-radius: 8px;
   border: solid 1px ${props => props.theme.token?.colorBorder};
+  user-select: none;
 `
 
 const DragableItem = styled(Item)`
   position: absolute;
   left: 0;
   top: 0;
+  opacity: 0;
+  cursor: move;
   &.dragging{
+    opacity: 1;
+    background-color: ${props => props.theme.token?.colorBgContainer};
     box-shadow: ${floatShadow};
     z-index: 1;
   }
