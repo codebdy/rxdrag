@@ -48,7 +48,7 @@ export const ResourceItem = memo((
   const { attributes, listeners, isDragging, setNodeRef, transform } = useDraggable({
     id: name,
     data: {
-      xxx: "xx"
+      material
     }
   });
 

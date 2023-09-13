@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import {
   DndContext,
   closestCenter,
@@ -112,6 +112,7 @@ export const ReactMenuDesignerInner = memo(({
       activeId ? [activeId, ...collapsedItems] : collapsedItems
     );
   }, [activeId, items]);
+
   const projected =
     activeId && overId
       ? getProjection(
@@ -122,6 +123,60 @@ export const ReactMenuDesignerInner = memo(({
         indentationWidth
       )
       : null;
+
+  const handleDragStart = (e: DragStartEvent) => {
+    const { active } = e
+    console.log("===>handleDragStart", active.data?.current?.material)
+    setActiveId(active.id);
+    setOverId(active.id);
+    document.body.style.setProperty('cursor', 'grabbing');
+  }
+
+  const handleDragMove = useCallback(({ delta }: DragMoveEvent) => {
+    //console.log("===>handleDragMove", delta)
+    setOffsetLeft(delta.x);
+  }, [setOffsetLeft])
+
+  const handleDragOver = useCallback((e: DragOverEvent) => {
+    //console.log("===>handleDragOver", e)
+    const { over } = e
+    setOverId(over?.id ?? null);
+  }, [setOverId])
+
+  const resetState = useCallback(() => {
+    setOverId(null);
+    setActiveId(null);
+    setOffsetLeft(0);
+
+    document.body.style.setProperty('cursor', '');
+  }, [setActiveId, setOffsetLeft, setOverId])
+
+  const handleDragEnd = useCallback((e: DragEndEvent) => {
+    const { active, over } = e
+    resetState();
+    //console.log("===>handleDragEnd", e)
+    if (projected && over) {
+      const { depth, parentId } = projected;
+      const clonedItems: FlattenedItem[] = JSON.parse(
+        JSON.stringify(flattenTree(items))
+      );
+      const overIndex = clonedItems.findIndex(({ id }) => id === over.id);
+      const activeIndex = clonedItems.findIndex(({ id }) => id === active.id);
+      const activeTreeItem = clonedItems[activeIndex];
+
+      clonedItems[activeIndex] = { ...activeTreeItem, depth, parentId };
+
+      const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
+      const newItems = buildTree(sortedItems);
+
+      setItems(newItems);
+    }
+  }, [items, projected, resetState, setItems])
+
+  const handleDragCancel = useCallback(() => {
+    resetState();
+  }, [resetState])
+
 
   return (
     <MaterialsContext.Provider value={menuMaterials}>
@@ -154,58 +209,6 @@ export const ReactMenuDesignerInner = memo(({
         </Shell>
       </DndContext>
     </MaterialsContext.Provider>
-  );
-
-  function handleDragStart({ active: { id: activeId } }: DragStartEvent) {
-    setActiveId(activeId);
-    setOverId(activeId);
-    document.body.style.setProperty('cursor', 'grabbing');
-  }
-
-  function handleDragMove({ delta }: DragMoveEvent) {
-    console.log("===>handleDragMove", delta)
-    setOffsetLeft(delta.x);
-  }
-
-  function handleDragOver(e: DragOverEvent) {
-    console.log("===>handleDragOver", e)
-    const { over } = e
-    setOverId(over?.id ?? null);
-  }
-
-  function handleDragEnd(e: DragEndEvent) {
-    const { active, over } = e
-    resetState();
-    console.log("===>handleDragEnd", e)
-    if (projected && over) {
-      const { depth, parentId } = projected;
-      const clonedItems: FlattenedItem[] = JSON.parse(
-        JSON.stringify(flattenTree(items))
-      );
-      const overIndex = clonedItems.findIndex(({ id }) => id === over.id);
-      const activeIndex = clonedItems.findIndex(({ id }) => id === active.id);
-      const activeTreeItem = clonedItems[activeIndex];
-
-      clonedItems[activeIndex] = { ...activeTreeItem, depth, parentId };
-
-      const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
-      const newItems = buildTree(sortedItems);
-
-      setItems(newItems);
-    }
-  }
-
-  function handleDragCancel() {
-    resetState();
-  }
-
-  function resetState() {
-    setOverId(null);
-    setActiveId(null);
-    setOffsetLeft(0);
-
-    document.body.style.setProperty('cursor', '');
-  }
-
+  )
 })
 
