@@ -30,6 +30,7 @@ const DragableItem = styled(Item)`
   top: 0;
   &.dragging{
     box-shadow: ${floatShadow};
+    z-index: 1;
   }
 `
 
