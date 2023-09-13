@@ -13,8 +13,14 @@ const minWidth = 200
 const StyledCollapse = styled(Collapse)`
   border-radius: 0;
   border: 0;
+  .ant-collapse-content-box{
+    padding: 0 8px;
+  }
   .ant-collapse-item{
     border-radius: 0 !important;
+  }
+  .ant-collapse-content{
+    background-color: transparent;
   }
 `
 
@@ -28,6 +34,7 @@ export const Toolbox = memo(() => {
       key: '1',
       label: '基础',
       children: <>
+        <ResourceItem name={MenuItemType.group} />
         <ResourceItem name={MenuItemType.group} />
       </>,
     },

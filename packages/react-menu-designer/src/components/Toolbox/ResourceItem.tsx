@@ -9,7 +9,7 @@ const Container = styled.div`
   height: 48px;
   box-sizing: border-box;
   width: 100%;
-  margin-bottom: 8px;
+  margin: 8px 0;
 `
 
 const Item = styled.div`
