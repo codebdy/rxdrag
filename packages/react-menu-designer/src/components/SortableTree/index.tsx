@@ -2,9 +2,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import {
   DragOverlay,
-  DropAnimation,
   Modifier,
-  defaultDropAnimation,
   UniqueIdentifier,
 } from '@dnd-kit/core';
 import {
@@ -22,35 +20,12 @@ import {
 } from '../../utilities';
 import type { SensorContext } from '../../types';
 import { SortableTreeItem } from '..';
-import { CSS } from '@dnd-kit/utilities';
 import { useActiveIdState } from '../../hooks/useActiveIdState';
 import { useOverIdState } from '../../hooks/useOverIdState';
 import { useOffsetLeftState } from '../../hooks/useOffsetLeftState';
 import { useItemsState } from '../../hooks/useItemsState';
+import { dropAnimationConfig } from './dropAnimationConfig';
 
-
-const dropAnimationConfig: DropAnimation = {
-  keyframes({ transform }) {
-    return [
-      { opacity: 1, transform: CSS.Transform.toString(transform.initial) },
-      {
-        opacity: 0,
-        transform: CSS.Transform.toString({
-          ...transform.final,
-          x: transform.final.x + 5,
-          y: transform.final.y + 5,
-        }),
-      },
-    ];
-  },
-  easing: 'ease-out',
-  sideEffects({ active }) {
-    active.node.animate([{ opacity: 0 }, { opacity: 1 }], {
-      duration: defaultDropAnimation.duration,
-      easing: defaultDropAnimation.easing,
-    });
-  },
-};
 
 interface Props {
   indentationWidth?: number;
