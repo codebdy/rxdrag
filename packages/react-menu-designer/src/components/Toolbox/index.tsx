@@ -2,7 +2,8 @@ import { memo } from "react";
 import { DEFAULT_MARGIN } from "../../utilities";
 import styled from 'styled-components';
 import { ColumnTitle, FlatableColumn } from "../FlatableColumn";
-import { useDraggable } from "@dnd-kit/core";
+import { MenuItemType } from "../../interfaces";
+import { ResourceItem } from "./ResourceItem";
 
 const maxWidth = 1000
 const minWidth = 200
@@ -10,17 +11,7 @@ const minWidth = 200
 const ToolboxShell = styled(FlatableColumn)`
   left: ${DEFAULT_MARGIN}px;
 `
-
 export const Toolbox = memo(() => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: 'draggable',
-    data: {
-      xxx: "xx"
-    }
-  });
-  const style = transform ? {
-    transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-  } : undefined;
 
   return (
     <ToolboxShell
@@ -31,12 +22,7 @@ export const Toolbox = memo(() => {
       <ColumnTitle>
         菜单源
       </ColumnTitle>
-      <button>
-        拖动测试
-      </button>
-      <button ref={setNodeRef} style={style} {...listeners} {...attributes}>
-        拖动测试
-      </button>
+      <ResourceItem name={MenuItemType.group} />
     </ToolboxShell>
   )
 })

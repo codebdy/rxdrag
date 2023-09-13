@@ -11,6 +11,7 @@ border-radius: 8px;
 background-color: ${props => props.theme.token?.colorBgBase};
 box-shadow: ${floatShadow};
 border: solid 1px ${props => props.theme.token?.colorBorderSecondary};
+box-sizing: border-box;
 z-index: 1;
 .ant-tabs-nav{
   user-select: none;

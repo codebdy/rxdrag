@@ -15,6 +15,15 @@ const Container = styled.div`
   box-sizing: border-box;
 `
 
+const Content = styled.div`
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  box-sizing: border-box;
+  padding-right: 2px;
+`
+
 export const ResizableColumn = memo(
   (props: {
     width?: number | string;
@@ -116,20 +125,15 @@ export const ResizableColumn = memo(
           ...style,
         }}
       >
-        <div
+        <Content
           style={{
-            flex: 1,
             minWidth: hidden ? 0 : realWidth,
             width: hidden ? 0 : realWidth,
-            height: "100%",
-            display: "flex",
-            flexFlow: "column",
-            //overflowX: "hidden",
             transition: draging ? undefined : "all 0.3s",
           }}
         >
           {children}
-        </div>
+        </Content>
         <div
           style={{
             position: "absolute",
