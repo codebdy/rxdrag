@@ -43,10 +43,3 @@ export const OverIdContext = createContext<IdState>([null, notMethod])
 
 export type OffsetState = [number, React.Dispatch<React.SetStateAction<number>>]
 export const OffsetLeftContext = createContext<OffsetState>([0, notMethod])
-
-export type PositionType = {
-  parentId: UniqueIdentifier | null;
-  overId: UniqueIdentifier;
-}
-export type PositionState = [PositionType | null, React.Dispatch<React.SetStateAction<PositionType | null>>]
-export const CurrentPositionContext = createContext<PositionState>([null, notMethod])

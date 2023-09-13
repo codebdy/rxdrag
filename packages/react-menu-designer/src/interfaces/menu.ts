@@ -1,5 +1,5 @@
 export enum MenuItemType {
-  group = "group",
+  text = "text",
   route = "route",
   link = "link",
   divider = "divider",
