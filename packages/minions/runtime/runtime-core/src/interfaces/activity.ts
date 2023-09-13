@@ -11,7 +11,7 @@ export interface IJointer {
   push: InputHandler;
   //添加下游Jointer
   connect: (jointerInput: InputHandler, parent?: Jointer) => void;
-  runContext?: Record<string, unknown> & { __runback?: (error?: unknown, value?: unknown) => void }
+  runContext?: Record<string, unknown> & {__runback?: (error?: unknown, value?: unknown) => void}
 }
 
 export interface IActivityJointers {

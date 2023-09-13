@@ -8,7 +8,7 @@ export class Jointer implements IJointer {
   }
   runContext?: IJointer["runContext"]
   //接收上游数据，并分发到下游
-  push: InputHandler = (inputValue?: any, runContext?: IJointer["runContext"]) => {
+  push: InputHandler = (inputValue?: unknown, runContext?: IJointer["runContext"]) => {
     for (const jointerInput of this.outlets) {
       if (jointerInput[1]) {
         jointerInput[1].runContext = runContext;
