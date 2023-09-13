@@ -36,7 +36,7 @@ export const Toolbox = memo(() => {
       label: '基础',
       children: <>
         <ResourceItem name={MenuItemType.group} />
-        <ResourceItem name={MenuItemType.group} />
+        <ResourceItem name={MenuItemType.link} />
       </>,
     },
     {

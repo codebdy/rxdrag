@@ -5,5 +5,10 @@ export const menuMaterials: MenuItemMaterials = {
     type: MenuItemType.group,
     group: true,
     title: "分组",
+  },
+  [MenuItemType.link]: {
+    type: MenuItemType.link,
+    group: false,
+    title: "链接",
   }
 }
