@@ -1,8 +1,11 @@
 import { memo, useRef } from "react"
 import styled from 'styled-components';
 import { useMaterial } from "../../hooks/useMaterial";
-import { useDraggable } from "@dnd-kit/core";
-import { floatShadow } from "../../utilities";
+import { DragOverlay, useDraggable } from "@dnd-kit/core";
+import { floatShadow, getChildCount } from "../../utilities";
+import { createPortal } from "react-dom";
+import { dropAnimationConfig } from "../SortableTree/dropAnimationConfig";
+import { SortableTreeItem } from "../TreeItem";
 
 const Container = styled.div`
   position: relative;
@@ -22,20 +25,13 @@ const Item = styled.div`
   border-radius: 8px;
   border: solid 1px ${props => props.theme.token?.colorBorder};
   user-select: none;
-`
-
-const DragableItem = styled(Item)`
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  cursor: move;
   &.dragging{
-    opacity: 1;
+    opacity: 0.6;
     background-color: ${props => props.theme.token?.colorBgContainer};
     box-shadow: ${floatShadow};
     z-index: 1;
     pointer-events: none;
+    color:${props => props.theme.token?.colorText};
   }
 `
 
@@ -46,35 +42,41 @@ export const ResourceItem = memo((
   const ref = useRef<HTMLDivElement>(null)
   const material = useMaterial(name)
 
-  const { attributes, listeners, isDragging, setNodeRef, transform } = useDraggable({
+  const { attributes, listeners, isDragging, setNodeRef } = useDraggable({
     id: name,
     data: {
       material
     }
   });
 
-  const style = transform ? {
-    transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-  } : undefined;
 
   return (
     <Container ref={ref}>
-      <Item>
-        {
-          material?.title
-        }
-      </Item>
-      <DragableItem
+      <Item
         ref={setNodeRef}
         className={isDragging ? "dragging" : undefined}
-        style={style}
         {...listeners}
         {...attributes}
       >
         {
           material?.title
         }
-      </DragableItem>
+      </Item>
+      {
+        isDragging && createPortal(//如果是新增项目，不显示鼠标跟随
+          <DragOverlay
+            dropAnimation={dropAnimationConfig}
+          >
+            <Item
+              className={"dragging"}
+            >
+              {
+                material?.title
+              }
+            </Item>
+          </DragOverlay>,
+          document.body
+        )}
     </Container>
   )
 })

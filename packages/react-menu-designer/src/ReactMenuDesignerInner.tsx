@@ -135,6 +135,7 @@ export const ReactMenuDesignerInner = memo(({
   //处理新拖入
   useEffect(() => {
     if (newItem && overOnCanvas && projected) {
+      console.log("===>useEffect projected", projected)
       if (!flattenedItemsRef.current.find(item => item.id === newItem.id)) {
         const { depth, parentId } = projected;
         const clonedItems: FlattenedItem[] = JSON.parse(

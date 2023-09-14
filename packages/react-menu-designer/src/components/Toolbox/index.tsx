@@ -41,7 +41,7 @@ export const Toolbox = memo(() => {
     },
     {
       key: '2',
-      label: '功能',
+      label: '视图',
 
     },
   ], []);
@@ -55,7 +55,7 @@ export const Toolbox = memo(() => {
       <ColumnTitle>
         菜单源
       </ColumnTitle>
-      <StyledCollapse size="small" accordion items={items} ghost/>
+      <StyledCollapse size="small" accordion items={items} ghost />
     </ToolboxShell>
   )
 })
