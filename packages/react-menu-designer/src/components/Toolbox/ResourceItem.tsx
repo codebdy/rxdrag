@@ -35,6 +35,7 @@ const DragableItem = styled(Item)`
     background-color: ${props => props.theme.token?.colorBgContainer};
     box-shadow: ${floatShadow};
     z-index: 1;
+    pointer-events: none;
   }
 `
 

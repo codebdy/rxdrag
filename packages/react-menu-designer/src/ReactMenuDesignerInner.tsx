@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   DndContext,
   closestCenter,
@@ -19,7 +19,7 @@ import {
   getProjection,
   removeChildrenOf,
 } from './utilities';
-import type { FlattenedItem, TreeItems } from './types';
+import type { FlattenedItem, TreeItem, TreeItems } from './types';
 import styled from 'styled-components';
 import { Toolbox } from './components/Toolbox';
 import { PropertyPanel } from './components/PropertyPanel';
@@ -32,6 +32,8 @@ import { useActiveIdState } from './hooks/useActiveIdState';
 import { useOverIdState } from './hooks/useOverIdState';
 import { useOffsetLeftState } from './hooks/useOffsetLeftState';
 import { useItemsState } from './hooks/useItemsState';
+import { IMenuItemMaterial } from './interfaces';
+import { createId } from "@rxdrag/shared"
 
 const Shell = styled.div`
   position: relative;
@@ -75,15 +77,11 @@ const Toolbar = styled.div`
   justify-content: space-between;
   background-color: ${props => props.theme.token?.colorBgBase};
 `
-
-
-
 const measuring = {
   droppable: {
     strategy: MeasuringStrategy.Always,
   },
 };
-
 
 interface Props {
   defaultItems?: TreeItems;
@@ -94,10 +92,12 @@ interface Props {
 export const ReactMenuDesignerInner = memo(({
   indentationWidth = 50,
 }: Props) => {
+  const [newItem, setNewItem] = useState<TreeItem>()
   const [items, setItems] = useItemsState();
   const [activeId, setActiveId] = useActiveIdState();
   const [overId, setOverId] = useOverIdState();
   const [offsetLeft, setOffsetLeft] = useOffsetLeftState();
+  const canvasRef = useRef<HTMLDivElement>(null)
 
   const flattenedItems = useMemo(() => {
     const flattenedTree = flattenTree(items);
@@ -126,19 +126,57 @@ export const ReactMenuDesignerInner = memo(({
 
   const handleDragStart = (e: DragStartEvent) => {
     const { active } = e
-    console.log("===>handleDragStart", active.data?.current?.material)
+    const material = active.data?.current?.material as IMenuItemMaterial | undefined
+    console.log("===>handleDragStart",)
+    if (material) {
+      setNewItem({
+        id: createId(),
+        //title: material.resource?.title
+        children: []
+      })
+    }
     setActiveId(active.id);
     setOverId(active.id);
     document.body.style.setProperty('cursor', 'grabbing');
   }
 
-  const handleDragMove = useCallback(({ delta }: DragMoveEvent) => {
-    //console.log("===>handleDragMove", delta)
+  const handleDragMove = useCallback((e: DragMoveEvent) => {
+    const { delta } = e
+    //console.log("===>handleDragMove", e)
     setOffsetLeft(delta.x);
   }, [setOffsetLeft])
 
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (!activeId) {
+      return
+    }
+    const mouseEvent = e
+    const rect = canvasRef.current?.getBoundingClientRect()
+    //console.log("===>handleDragMove", mouseEvent.clientX, rect?.left,)
+    if (rect) {
+      if (mouseEvent.clientX < rect.left) {
+        return
+      }
+      if (mouseEvent.clientX > (rect.left + rect.width)) {
+        return
+      }
+      if (mouseEvent.clientY < rect.top) {
+        return
+      }
+      if (mouseEvent.clientY > (rect.top + rect.height)) {
+        return
+      }
+
+      console.log("击中")
+    }
+  }, [activeId])
+
+  useEffect(() => {
+    document.addEventListener("mousemove", handleMouseMove)
+    return () => document.removeEventListener("mousemove", handleMouseMove)
+  }, [handleMouseMove])
+
   const handleDragOver = useCallback((e: DragOverEvent) => {
-    //console.log("===>handleDragOver", e)
     const { over } = e
     setOverId(over?.id ?? null);
   }, [setOverId])
@@ -147,7 +185,7 @@ export const ReactMenuDesignerInner = memo(({
     setOverId(null);
     setActiveId(null);
     setOffsetLeft(0);
-
+    setNewItem(undefined)
     document.body.style.setProperty('cursor', '');
   }, [setActiveId, setOffsetLeft, setOverId])
 
@@ -177,6 +215,7 @@ export const ReactMenuDesignerInner = memo(({
     resetState();
   }, [resetState])
 
+  console.log("====>newItem", newItem)
 
   return (
     <MaterialsContext.Provider value={menuMaterials}>
@@ -201,7 +240,7 @@ export const ReactMenuDesignerInner = memo(({
               </Space>
               <Button type="primary" >保存</Button>
             </Toolbar>
-            <Canvas>
+            <Canvas ref={canvasRef}>
               <SortableTree />
             </Canvas>
           </CanvasContainer>

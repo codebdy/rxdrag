@@ -17,14 +17,15 @@
     "build": "vite build"
   },
   "devDependencies": {
-    "@types/node": "*",
-    "@types/lodash": "^4.14.191",
-    "@types/uuid": "^9.0.1",
     "@rxdrag/eslint-config-custom": "workspace:*",
-    "@rxdrag/tsconfig": "workspace:*"
+    "@rxdrag/tsconfig": "workspace:*",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "*",
+    "@types/uuid": "^9.0.1"
   },
   "dependencies": {
     "lodash": "^4.17.21",
+    "nanoid": "^5.0.1",
     "uuid": "^9.0.0"
   }
 }
