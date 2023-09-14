@@ -93,6 +93,7 @@ export const ReactMenuDesignerInner = memo(({
   indentationWidth = 50,
 }: Props) => {
   const [newItem, setNewItem] = useState<TreeItem>()
+  const [overOnCanvas, setOverOnCanvas] = useState<boolean>()
   const [items, setItems] = useItemsState();
   const [activeId, setActiveId] = useActiveIdState();
   const [overId, setOverId] = useOverIdState();
@@ -113,8 +114,13 @@ export const ReactMenuDesignerInner = memo(({
     );
   }, [activeId, items]);
 
-  const projected =
-    activeId && overId
+  const flattenedItemsRef = useRef(flattenedItems);
+  flattenedItemsRef.current = flattenedItems;
+  const itemsRef = useRef(items);
+  itemsRef.current = items
+
+  const projected = useMemo(
+    () => activeId && overId
       ? getProjection(
         flattenedItems,
         activeId,
@@ -122,27 +128,52 @@ export const ReactMenuDesignerInner = memo(({
         offsetLeft,
         indentationWidth
       )
-      : null;
+      : null,
+    [activeId, flattenedItems, indentationWidth, offsetLeft, overId]
+  );
+
+  //处理新拖入
+  useEffect(() => {
+    if (newItem && overOnCanvas && projected) {
+      if (!flattenedItemsRef.current.find(item => item.id === newItem.id)) {
+        const { depth, parentId } = projected;
+        const clonedItems: FlattenedItem[] = JSON.parse(
+          JSON.stringify(flattenTree(itemsRef.current))
+        );
+        const overIndex = clonedItems.findIndex(({ id }) => id === overId);
+
+        clonedItems.splice(overIndex, 0, { ...newItem, index: overIndex, depth, parentId });
+
+        const newItems = buildTree(clonedItems);
+
+        //setItems(newItems);
+        console.log("===>handleDragOver", overId, projected)
+      }
+    }
+  }, [newItem, overId, overOnCanvas, projected, setItems])
 
   const handleDragStart = (e: DragStartEvent) => {
     const { active } = e
     const material = active.data?.current?.material as IMenuItemMaterial | undefined
     console.log("===>handleDragStart",)
     if (material) {
+      const id = createId()
       setNewItem({
-        id: createId(),
+        id: id,
         //title: material.resource?.title
         children: []
       })
+      setActiveId(id);
+      setOverId(id);
+    } else {
+      setActiveId(active.id);
+      setOverId(active.id);
     }
-    setActiveId(active.id);
-    setOverId(active.id);
     document.body.style.setProperty('cursor', 'grabbing');
   }
 
   const handleDragMove = useCallback((e: DragMoveEvent) => {
     const { delta } = e
-    //console.log("===>handleDragMove", e)
     setOffsetLeft(delta.x);
   }, [setOffsetLeft])
 
@@ -154,21 +185,14 @@ export const ReactMenuDesignerInner = memo(({
     const rect = canvasRef.current?.getBoundingClientRect()
     //console.log("===>handleDragMove", mouseEvent.clientX, rect?.left,)
     if (rect) {
-      if (mouseEvent.clientX < rect.left) {
+      if (mouseEvent.clientX > rect.left && mouseEvent.clientX < (rect.left + rect.width) &&
+        mouseEvent.clientY > rect.top && mouseEvent.clientY < (rect.top + rect.height)
+      ) {
+        setOverOnCanvas(true)
         return
       }
-      if (mouseEvent.clientX > (rect.left + rect.width)) {
-        return
-      }
-      if (mouseEvent.clientY < rect.top) {
-        return
-      }
-      if (mouseEvent.clientY > (rect.top + rect.height)) {
-        return
-      }
-
-      console.log("击中")
     }
+    setOverOnCanvas(false)
   }, [activeId])
 
   useEffect(() => {
@@ -186,6 +210,7 @@ export const ReactMenuDesignerInner = memo(({
     setActiveId(null);
     setOffsetLeft(0);
     setNewItem(undefined)
+    setOverOnCanvas(false)
     document.body.style.setProperty('cursor', '');
   }, [setActiveId, setOffsetLeft, setOverId])
 
@@ -214,8 +239,6 @@ export const ReactMenuDesignerInner = memo(({
   const handleDragCancel = useCallback(() => {
     resetState();
   }, [resetState])
-
-  console.log("====>newItem", newItem)
 
   return (
     <MaterialsContext.Provider value={menuMaterials}>
