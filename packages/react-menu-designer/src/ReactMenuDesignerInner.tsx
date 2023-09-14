@@ -264,7 +264,7 @@ export const ReactMenuDesignerInner = memo(({
               <Button type="primary" >保存</Button>
             </Toolbar>
             <Canvas ref={canvasRef}>
-              <SortableTree />
+              <SortableTree isNewing={!!newItem?.id} />
             </Canvas>
           </CanvasContainer>
           <PropertyPanel></PropertyPanel>

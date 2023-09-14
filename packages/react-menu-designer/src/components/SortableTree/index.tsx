@@ -27,15 +27,17 @@ import { useItemsState } from '../../hooks/useItemsState';
 import { dropAnimationConfig } from './dropAnimationConfig';
 
 
-interface Props {
+export type SortableTreeProps = {
   indentationWidth?: number;
   indicator?: boolean;
+  isNewing?: boolean
 }
 
 export function SortableTree({
   indicator = true,
   indentationWidth = 50,
-}: Props) {
+  isNewing
+}: SortableTreeProps) {
   const [items, setItems] = useItemsState();
   const [activeId] = useActiveIdState();
   const [overId] = useOverIdState();
@@ -104,7 +106,7 @@ export function SortableTree({
           onRemove={() => handleRemove(id)}
         />
       ))}
-      {createPortal(
+      {!isNewing && createPortal(//如果是新增项目，不显示鼠标跟随
         <DragOverlay
           dropAnimation={dropAnimationConfig}
           modifiers={indicator ? [adjustTranslate] : undefined}
