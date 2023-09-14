@@ -11,7 +11,7 @@ export const modules: { [device: string]: IModule[] | undefined } = {
     {
       id: "users",
       title: "用户管理",
-      scenes: [
+      views: [
         {
           title: "入口页",
           schema: rootNodeSchema,
@@ -35,7 +35,7 @@ export const modules: { [device: string]: IModule[] | undefined } = {
     {
       id: "users",
       title: "用户管理(h5)",
-      scenes: [
+      views: [
         {
           title: "入口页(h5)",
           schema: rootNodeSchema,
@@ -59,7 +59,7 @@ export const modules: { [device: string]: IModule[] | undefined } = {
     {
       id: "users",
       title: "用户管理(门户)",
-      scenes: [
+      views: [
         {
           title: "入口页(门户)",
           schema: rootNodeSchema,
@@ -83,7 +83,7 @@ export const modules: { [device: string]: IModule[] | undefined } = {
     {
       id: "users",
       title: "用户管理(大屏)",
-      scenes: [
+      views: [
         {
           title: "入口页(大屏)",
           schema: rootNodeSchema,

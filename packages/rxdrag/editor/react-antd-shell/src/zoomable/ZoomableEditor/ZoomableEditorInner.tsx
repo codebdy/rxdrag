@@ -6,7 +6,7 @@ import { useDesignerEngine } from "@rxdrag/react-core"
 import { ILocales } from "@rxdrag/locales"
 import { settingLocales } from "../../common"
 import { commonLocales } from "../../locales"
-import { IDocumentSchema } from "@rxdrag/schema"
+import { IViewSchema } from "@rxdrag/schema"
 import { CanvasResizeDriver, ContainerImpl, DragDropDriver, IDocument, KeyboardDriver, MouseMoveDriver } from "@rxdrag/core"
 import { Space } from "antd"
 import { DocView } from "../DocView"
@@ -25,7 +25,7 @@ const Workspace = styled.div`
 `
 export type ZoomableEditorInnerProps = {
   locales?: ILocales,
-  schemas?: IDocumentSchema[],
+  schemas?: IViewSchema[],
   toolbox?: React.ReactNode,
 }
 

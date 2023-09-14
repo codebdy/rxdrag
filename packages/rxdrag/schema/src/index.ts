@@ -28,7 +28,7 @@ export interface INodeSchema<Field = unknown, NodeController = unknown>
   };
 }
 
-export enum SceneType {
+export enum ViewType {
   Main = "main",
   Drawer = "drawwer",
   Dialog = "dialog",
@@ -36,10 +36,10 @@ export enum SceneType {
 }
 
 //一个document schema对应一个场景
-export interface IDocumentSchema<Field = unknown, NodeController = unknown> {
+export interface IViewSchema<Field = unknown, NodeController = unknown> {
   schema: INodeSchema<Field, NodeController>,
   id?: string,
   title?: string,
-  //场景类型，用于同一画布编辑多个document
-  sceneType?: SceneType,
+  //视图类型，用于同一画布编辑多个document
+  viewType?: ViewType,
 }

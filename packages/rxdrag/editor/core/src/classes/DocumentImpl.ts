@@ -9,12 +9,12 @@ import { Store } from "redux";
 import { ADD_NODES, BACKUP, CHANGE_NODE_META, DELETE_NODES, GOTO, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_DOCUMENT, REMOVE_SLOT } from "../actions/registry";
 import { DocumentState } from "../reducers/documentsById/document";
 import { isArr, isStr } from "@rxdrag/shared";
-import { INodeSchema, INodeMeta, IDocumentSchema } from "@rxdrag/schema";
+import { INodeSchema, INodeMeta, IViewSchema } from "@rxdrag/schema";
 
 export class DocumentImpl implements IDocument {
   id: string;
   constructor(
-    meta: IDocumentSchema,
+    meta: IViewSchema,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private engine: IDesignerEngine<any, any>,
     private store: Store<State>,
@@ -23,7 +23,7 @@ export class DocumentImpl implements IDocument {
     this.initialize(meta)
   }
 
-  initialize(meta: IDocumentSchema): void {
+  initialize(meta: IViewSchema): void {
     const nodesById: NodesById = {}
     const root = parseNodeSchema(this.engine, this.id, meta.schema as INodeSchema, nodesById, false)
     this.dispatch({

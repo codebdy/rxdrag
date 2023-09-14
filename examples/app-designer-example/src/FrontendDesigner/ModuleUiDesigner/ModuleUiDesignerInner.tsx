@@ -16,7 +16,7 @@ export const ModuleUiDesignerInner = memo(() => {
         toolbox={
           Toolbox && <Toolbox />
         }
-        schemas={module?.scenes}
+        schemas={module?.views}
       />
       : <></>
   )

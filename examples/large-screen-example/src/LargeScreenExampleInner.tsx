@@ -2,7 +2,7 @@ import { memo, useMemo } from "react"
 import { Toolbar } from "./Toolbar"
 import { ZoomableEditor } from "@rxdrag/react-antd-shell"
 import styled from "styled-components"
-import { INodeSchema, IDocumentSchema } from "@rxdrag/schema"
+import { INodeSchema, IViewSchema } from "@rxdrag/schema"
 import { LeftSide } from "./LeftSide"
 import { ResourceWidget } from "./ResourceWidget"
 import { Tabs, TabsProps } from "antd"
@@ -27,7 +27,7 @@ const rootNodeSchema: INodeSchema = {
   componentName: "RootBoard"
 }
 
-const schemas: IDocumentSchema[] = [
+const schemas: IViewSchema[] = [
   {
     title: "首页",
     schema: rootNodeSchema,

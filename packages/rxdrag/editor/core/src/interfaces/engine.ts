@@ -1,5 +1,5 @@
 import { IRxDragLocalesManager } from "@rxdrag/locales"
-import { IDocumentSchema } from "@rxdrag/schema"
+import { IViewSchema } from "@rxdrag/schema"
 import { IDocument } from "./document"
 import { IDesignerShell } from "./shell"
 import { IMonitor } from "./monitor"
@@ -17,7 +17,7 @@ export interface IDesignerEngine<ComponentType = any, IconType = any> {
 	getLanguage(): string
 	setLanguage(lang: string): void
 	setSelectionMode(mode: SelectionMode): void
-	createDocument(schema: IDocumentSchema): IDocument,
+	createDocument(schema: IViewSchema): IDocument,
 	getDocument(id: ID): IDocument | null,
 	getNodeDocument(nodeId: ID): IDocument | null,
 	getAllDocuments(): IDocument[] | null

@@ -1,5 +1,4 @@
 import { memo, useRef } from 'react';
-import type { TreeItems } from './types';
 import styled from 'styled-components';
 import { Toolbox } from './components/Toolbox';
 import { PropertyPanel } from './components/PropertyPanel';
@@ -7,6 +6,7 @@ import { Button, Divider, Space } from 'antd';
 import { DeleteOutlined, RedoOutlined, UndoOutlined } from '@ant-design/icons';
 import { MaterialsContext } from './contexts';
 import { menuMaterials } from './materials';
+import { Droppable } from 'react-beautiful-dnd';
 
 const Shell = styled.div`
   position: relative;
@@ -51,15 +51,7 @@ const Toolbar = styled.div`
   background-color: ${props => props.theme.token?.colorBgBase};
 `
 
-interface Props {
-  defaultItems?: TreeItems;
-  indentationWidth?: number;
-  indicator?: boolean;
-}
-
-export const ReactMenuDesignerInner = memo(({
-  indentationWidth = 50,
-}: Props) => {
+export const ReactMenuDesignerInner = memo(() => {
   const canvasRef = useRef<HTMLDivElement>(null)
 
   return (
@@ -76,9 +68,23 @@ export const ReactMenuDesignerInner = memo(({
             </Space>
             <Button type="primary" >保存</Button>
           </Toolbar>
-          <Canvas ref={canvasRef}>
+          <Droppable droppableId={'menu-canvas'}>
+            {
+              (provided, snapshot) => {
+                console.log("哈哈", snapshot.isDraggingOver)
+                return (
+                  <Canvas
+                    ref={provided.innerRef}
+                  >
+                    哈哈
+                  </Canvas>
+                )
+              }
+            }
+          </Droppable>
+          {/* <Canvas ref={canvasRef}>
             哈哈
-          </Canvas>
+          </Canvas> */}
         </CanvasContainer>
         <PropertyPanel></PropertyPanel>
       </Shell>

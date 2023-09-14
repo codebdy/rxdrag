@@ -1,7 +1,7 @@
 import { IAction } from "./action";
 import { DocumentActionPayload } from "./payloads";
 import { ID, IXYCoord, RxProps } from "./types";
-import { IDocumentSchema, INodeMeta, INodeSchema } from "@rxdrag/schema"
+import { IViewSchema, INodeMeta, INodeSchema } from "@rxdrag/schema"
 
 export type NodesById = {
   [id in ID]: ITreeNode
@@ -87,7 +87,7 @@ export interface IDocument {
   id: ID
   destroy(): void
 
-  initialize(meta: IDocumentSchema): void
+  initialize(meta: IViewSchema): void
   moveTo(sourceId: ID, targetId: ID, pos: NodeRelativePosition): void
   multiMoveTo(sourceIds: ID[], targetId: ID, pos: NodeRelativePosition): void
   addNewNodes(elements: INodeSchema | INodeSchema[], targetId: ID, pos: NodeRelativePosition): NodeChunk
