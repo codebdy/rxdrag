@@ -35,6 +35,7 @@ import { useOffsetLeftState } from './hooks/useOffsetLeftState';
 import { useItemsState } from './hooks/useItemsState';
 import { IMenuItemMaterial } from './interfaces';
 import { createId } from "@rxdrag/shared"
+import { Test } from './components/Test';
 
 const Shell = styled.div`
   position: relative;
@@ -140,26 +141,8 @@ export const ReactMenuDesignerInner = memo(({
     [activeId, flattenedItems, indentationWidth, offsetLeft, overId]
   );
 
-  //处理新拖入
-  useEffect(() => {
-    if (newItem && overOnCanvas && projected) {
-      console.log("===>useEffect projected", projected)
-      if (!flattenedItemsRef.current.find(item => item.id === newItem.id)) {
-        const { depth, parentId } = projected;
-        const clonedItems: FlattenedItem[] = JSON.parse(
-          JSON.stringify(flattenTree(itemsRef.current))
-        );
-        const overIndex = clonedItems.findIndex(({ id }) => id === overId);
-
-        clonedItems.splice(overIndex, 0, { ...newItem, index: overIndex, depth, parentId });
-
-        const newItems = buildTree(clonedItems);
-
-        setItems(newItems);
-        console.log("===>handleDragOver", overId, projected)
-      }
-    }
-  }, [newItem, overId, overOnCanvas, projected, setItems])
+  const projectedRef = useRef(projected)
+  projectedRef.current = projected
 
   const handleDragStart = (e: DragStartEvent) => {
     const { active } = e
@@ -184,7 +167,26 @@ export const ReactMenuDesignerInner = memo(({
   const handleDragMove = useCallback((e: DragMoveEvent) => {
     const { delta } = e
     setOffsetLeft(delta.x);
-  }, [setOffsetLeft])
+    if (newItem && overOnCanvas) {
+      setOffsetLeft(0)
+      console.log("===>useEffect projected", overId)
+      if (newItem.id === overId || !overId) {
+        console.log("over在新建节点上")
+        return
+      }
+      //const { depth, parentId } = projected;
+      let clonedItems: FlattenedItem[] = JSON.parse(
+        JSON.stringify(flattenTree(itemsRef.current))
+      );
+      clonedItems = clonedItems.filter(item => item.id !== newItem.id)
+      const overIndex = clonedItems.findIndex(({ id }) => id === overId);
+      clonedItems.splice(overIndex, 0, { ...newItem, index: overIndex, depth: 0, parentId: null });
+
+      const newItems = buildTree(clonedItems);
+
+      setItems(newItems);
+    }
+  }, [newItem, overId, overOnCanvas, setItems, setOffsetLeft])
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!activeId) {
@@ -251,7 +253,7 @@ export const ReactMenuDesignerInner = memo(({
 
   return (
     <MaterialsContext.Provider value={menuMaterials}>
-      <DndContext
+      {/* <DndContext
         collisionDetection={closestCenter}
         measuring={measuring}
         onDragStart={handleDragStart}
@@ -259,28 +261,29 @@ export const ReactMenuDesignerInner = memo(({
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
         onDragCancel={handleDragCancel}
-      >
-        <Shell>
-          <Toolbox ></Toolbox>
-          <CanvasContainer>
-            <Toolbar>
-              <Space>
-                <Button type="text" icon={<UndoOutlined />} />
-                <Button type="text" icon={<RedoOutlined />} />
-                <Divider type='vertical' />
-                <Button type="text" icon={<DeleteOutlined />} />
-              </Space>
-              <Button type="primary" >保存</Button>
-            </Toolbar>
-            <Canvas ref={canvasRef}>
-              <DropContainer ref={setNodeRef}>
+      > */}
+      <Shell>
+        <Toolbox ></Toolbox>
+        <CanvasContainer>
+          <Toolbar>
+            <Space>
+              <Button type="text" icon={<UndoOutlined />} />
+              <Button type="text" icon={<RedoOutlined />} />
+              <Divider type='vertical' />
+              <Button type="text" icon={<DeleteOutlined />} />
+            </Space>
+            <Button type="primary" >保存</Button>
+          </Toolbar>
+          <Canvas ref={canvasRef}>
+            {/* <DropContainer ref={setNodeRef}>
                 <SortableTree isNewing={!!newItem?.id} />
-              </DropContainer>
-            </Canvas>
-          </CanvasContainer>
-          <PropertyPanel></PropertyPanel>
-        </Shell>
-      </DndContext>
+              </DropContainer> */}
+            <Test />
+          </Canvas>
+        </CanvasContainer>
+        <PropertyPanel></PropertyPanel>
+      </Shell>
+      {/* </DndContext> */}
     </MaterialsContext.Provider>
   )
 })
