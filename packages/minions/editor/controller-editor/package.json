@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/minions-controller-editor",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "type": "module",
   "module": "index.ts",
   "files": [
