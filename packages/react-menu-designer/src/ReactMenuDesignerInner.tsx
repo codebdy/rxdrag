@@ -8,6 +8,7 @@ import {
   DragOverEvent,
   MeasuringStrategy,
   UniqueIdentifier,
+  useDroppable,
 } from '@dnd-kit/core';
 import {
   arrayMove,
@@ -67,6 +68,11 @@ const Canvas = styled.div`
   box-sizing: border-box;
 `
 
+const DropContainer = styled.div`
+  width: 100%;
+  min-height: 100%;
+`
+
 const Toolbar = styled.div`
   height: 48px;
   display: flex;
@@ -99,7 +105,9 @@ export const ReactMenuDesignerInner = memo(({
   const [overId, setOverId] = useOverIdState();
   const [offsetLeft, setOffsetLeft] = useOffsetLeftState();
   const canvasRef = useRef<HTMLDivElement>(null)
-
+  const { setNodeRef } = useDroppable({
+    id: "canvas"
+  });
   const flattenedItems = useMemo(() => {
     const flattenedTree = flattenTree(items);
     const collapsedItems = flattenedTree.reduce<UniqueIdentifier[]>(
@@ -265,7 +273,9 @@ export const ReactMenuDesignerInner = memo(({
               <Button type="primary" >保存</Button>
             </Toolbar>
             <Canvas ref={canvasRef}>
-              <SortableTree isNewing={!!newItem?.id} />
+              <DropContainer ref={setNodeRef}>
+                <SortableTree isNewing={!!newItem?.id} />
+              </DropContainer>
             </Canvas>
           </CanvasContainer>
           <PropertyPanel></PropertyPanel>
