@@ -35,8 +35,8 @@ export const initialItems: TreeItems = [
   },
 ];
 
-export type ItemsState = [TreeItems, React.Dispatch<React.SetStateAction<TreeItems>>]
-export const ItemsContext = createContext<ItemsState>([initialItems, notMethod])
+export type ItemsState = [IFlattenedItem[], React.Dispatch<React.SetStateAction<IFlattenedItem[]>>]
+export const ItemsContext = createContext<ItemsState>([[], notMethod])
 
 export type IdState = [UniqueIdentifier | null, React.Dispatch<React.SetStateAction<UniqueIdentifier | null>>]
 export const ActiveIdContext = createContext<IdState>([null, notMethod])

@@ -1,7 +1,8 @@
 import { UniqueIdentifier } from "@dnd-kit/core";
-import { memo, useEffect, useState } from "react"
-import { ActiveIdContext, HistoryContext, HistoryRedords, ItemsContext, OffsetLeftContext, OverIdContext, defautHistory, initialItems } from "./contexts";
+import { memo, useCallback, useEffect, useState } from "react"
+import { ActiveIdContext, HistoryContext, HistoryRedords, ItemsContext, OffsetLeftContext, OverIdContext, defautHistory } from "./contexts";
 import { IMenuItem } from "./interfaces";
+import { IFlattenedItem } from "./interfaces/flattened";
 
 export const DesignerRoot = memo((props: {
   defaultValue?: IMenuItem[],
@@ -9,20 +10,41 @@ export const DesignerRoot = memo((props: {
   children?: React.ReactNode,
 }) => {
   const { defaultValue, value, children } = props;
-  const itemsState = useState(() => initialItems);
+  const itemsState = useState<IFlattenedItem[]>([]);
   const activeIdState = useState<UniqueIdentifier | null>(null);
   const overIdState = useState<UniqueIdentifier | null>(null);
   const offsetLeftState = useState(0);
   const historyState = useState<HistoryRedords>(defautHistory)
+  const [, setHistoryState] = historyState
+  const [, setItems] = itemsState
+
+  const flatten = useCallback((
+    items: IMenuItem[],
+    parentId: UniqueIdentifier | null = null,
+    depth = 0
+  ): IFlattenedItem[] => {
+    return items.reduce<IFlattenedItem[]>((acc, item) => {
+      return [
+        ...acc,
+        { id: item.id, parentId, depth, menuItem: item },
+        ...flatten(item.children || [], item.id, depth + 1),
+      ];
+    }, []);
+  }, [])
 
   useEffect(() => {
-    //
-  }, [defaultValue])
+    setHistoryState({
+      undoList: [],
+      redoList: [],
+      changed: false,
+    })
 
-  
+    setItems(flatten(defaultValue || []))
+  }, [defaultValue, flatten, setHistoryState, setItems])
+
   useEffect(() => {
-    //
-  }, [value])
+    setItems(flatten(value || []))
+  }, [flatten, setItems, value])
 
   return (
     <ItemsContext.Provider value={itemsState}>
