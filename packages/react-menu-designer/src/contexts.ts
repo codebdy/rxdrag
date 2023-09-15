@@ -1,10 +1,10 @@
 import { createContext } from "react";
-import { MenuItemMaterials } from "./interfaces";
+import { MenuItemResources } from "./interfaces";
 import { UniqueIdentifier } from "@dnd-kit/core";
 import { TreeItems } from "./types";
 import { IFlattenedItem } from "./interfaces/flattened";
 
-export const MaterialsContext = createContext<MenuItemMaterials>({})
+export const ResourcesContext = createContext<MenuItemResources>({})
 
 export const notMethod = () => { throw new Error("Not implement method") }
 
@@ -37,6 +37,7 @@ export const initialItems: TreeItems = [
 
 export type ItemsState = [IFlattenedItem[], React.Dispatch<React.SetStateAction<IFlattenedItem[]>>]
 export const ItemsContext = createContext<ItemsState>([[], notMethod])
+export const ResourceItemsContext = createContext<ItemsState>([[], notMethod])
 
 export type IdState = [UniqueIdentifier | null, React.Dispatch<React.SetStateAction<UniqueIdentifier | null>>]
 export const ActiveIdContext = createContext<IdState>([null, notMethod])

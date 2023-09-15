@@ -1,11 +1,12 @@
 import { memo, useRef } from "react"
 import styled from 'styled-components';
-import { useMaterial } from "../../hooks/useMaterial";
+import { useResource } from "../../hooks/useResource";
 import { DragOverlay, useDraggable } from "@dnd-kit/core";
 import { floatShadow, getChildCount } from "../../utilities";
 import { createPortal } from "react-dom";
 import { dropAnimationConfig } from "../SortableTree/dropAnimationConfig";
 import { SortableTreeItem } from "../TreeItem";
+
 
 const Container = styled.div`
   position: relative;
@@ -40,12 +41,12 @@ export const ResourceItem = memo((
 ) => {
   const { name } = props
   const ref = useRef<HTMLDivElement>(null)
-  const material = useMaterial(name)
+  const resource = useResource(name)
 
   const { attributes, listeners, isDragging, setNodeRef } = useDraggable({
     id: name,
     data: {
-      material
+      resource
     }
   });
 
@@ -59,7 +60,7 @@ export const ResourceItem = memo((
         {...attributes}
       >
         {
-          material?.title
+          resource?.title
         }
       </Item>
       {
@@ -71,7 +72,7 @@ export const ResourceItem = memo((
               className={"dragging"}
             >
               {
-                material?.title
+                resource?.title
               }
             </Item>
           </DragOverlay>,

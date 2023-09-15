@@ -25,6 +25,7 @@ import { useOverIdState } from '../../hooks/useOverIdState';
 import { useOffsetLeftState } from '../../hooks/useOffsetLeftState';
 import { useItemsState } from '../../hooks/useItemsState';
 import { dropAnimationConfig } from './dropAnimationConfig';
+import { SortableItem } from './SortableItem';
 
 
 export type SortableTreeProps = {
@@ -36,77 +37,23 @@ export type SortableTreeProps = {
 export function SortableTree({
   indicator = true,
   indentationWidth = 50,
-  isNewing
 }: SortableTreeProps) {
-  const [items, setItems] = useItemsState();
+  const [items] = useItemsState();
   const [activeId] = useActiveIdState();
   const [overId] = useOverIdState();
   const [offsetLeft] = useOffsetLeftState();
 
-  const flattenedItems = useMemo(() => {
-    const flattenedTree = flattenTree(items);
-    const collapsedItems = flattenedTree.reduce<UniqueIdentifier[]>(
-      (acc, { children, collapsed, id }) =>
-        collapsed && children.length ? [...acc, id] : acc,
-      []
-    );
-
-    return removeChildrenOf(
-      flattenedTree,
-      activeId ? [activeId, ...collapsedItems] : collapsedItems
-    );
-  }, [activeId, items]);
-  const projected =
-    activeId && overId
-      ? getProjection(
-        flattenedItems,
-        activeId,
-        overId,
-        offsetLeft,
-        indentationWidth
-      )
-      : null;
-  const sensorContext: SensorContext = useRef({
-    items: flattenedItems,
-    offset: offsetLeft,
-  });
-
-  const sortedIds = useMemo(() => flattenedItems.map(({ id }) => id), [
-    flattenedItems,
-  ]);
-
-  const activeItem = activeId
-    ? flattenedItems.find(({ id }) => id === activeId)
-    : null;
-
-  useEffect(() => {
-    sensorContext.current = {
-      items: flattenedItems,
-      offset: offsetLeft,
-    };
-  }, [flattenedItems, offsetLeft]);
-
+  const sortedIds = useMemo(() => items.map(item => item.id), [items])
 
   return (
     <SortableContext items={sortedIds} strategy={verticalListSortingStrategy}>
-      {flattenedItems.map(({ id, children, collapsed, depth }) => (
-        <SortableTreeItem
-          key={id}
-          id={id}
-          value={id as string}
-          depth={id === activeId && projected ? projected.depth : depth}
-          indentationWidth={indentationWidth}
-          indicator={indicator}
-          collapsed={Boolean(collapsed && children.length)}
-          onCollapse={
-            children.length
-              ? () => handleCollapse(id)
-              : undefined
-          }
-          onRemove={() => handleRemove(id)}
-        />
-      ))}
-      {!isNewing && createPortal(//如果是新增项目，不显示鼠标跟随
+      {
+        items.map((item) => {
+          return (<SortableItem key={item.id} item={item} />)
+        })
+
+      }
+      {/* {!isNewing && createPortal(//如果是新增项目，不显示鼠标跟随
         <DragOverlay
           dropAnimation={dropAnimationConfig}
           modifiers={indicator ? [adjustTranslate] : undefined}
@@ -123,21 +70,11 @@ export function SortableTree({
           ) : null}
         </DragOverlay>,
         document.body
-      )}
+      )} */}
     </SortableContext>
   );
 
-  function handleRemove(id: UniqueIdentifier) {
-    setItems((items) => removeItem(items, id));
-  }
 
-  function handleCollapse(id: UniqueIdentifier) {
-    setItems((items) =>
-      setProperty(items, id, 'collapsed', (value) => {
-        return !value;
-      })
-    );
-  }
 
 }
 

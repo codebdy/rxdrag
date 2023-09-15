@@ -10,31 +10,26 @@ import {
   UniqueIdentifier,
   useDroppable,
 } from '@dnd-kit/core';
-import {
-  arrayMove,
-} from '@dnd-kit/sortable';
 
 import {
-  buildTree,
   flattenTree,
   getProjection,
   removeChildrenOf,
 } from './utilities';
-import type { FlattenedItem, } from './types';
 import styled from 'styled-components';
 import { Toolbox } from './components/Toolbox';
 import { PropertyPanel } from './components/PropertyPanel';
 import { Button, Divider, Space } from 'antd';
 import { DeleteOutlined, RedoOutlined, UndoOutlined } from '@ant-design/icons';
 import { SortableTree } from './components/SortableTree';
-import { MaterialsContext } from './contexts';
-import { menuMaterials } from './materials';
+import { ResourcesContext } from './contexts';
 import { useActiveIdState } from './hooks/useActiveIdState';
 import { useOverIdState } from './hooks/useOverIdState';
 import { useOffsetLeftState } from './hooks/useOffsetLeftState';
 import { useItemsState } from './hooks/useItemsState';
-import { IMenuItem, IMenuItemMaterial } from './interfaces';
-import { createId } from "@rxdrag/shared"
+import { IMenuItem, IMenuItemResource } from './interfaces';
+import { IFlattenedItem } from './interfaces/flattened';
+import { menuResources } from './resources';
 
 const Shell = styled.div`
   position: relative;
@@ -98,7 +93,8 @@ export type ReactMenuDesignerInnerProps = {
 export const ReactMenuDesignerInner = memo(({
   indentationWidth = 50,
 }: ReactMenuDesignerInnerProps) => {
-  const [newItem, setNewItem] = useState<IMenuItem>()
+  //const [newItem, setNewItem] = useState<IMenuItem>()
+  const [draggingResource, setDraggingResoucre] = useState<IMenuItemResource>()
   const [overOnCanvas, setOverOnCanvas] = useState<boolean>()
   const [items, setItems] = useItemsState();
   const [activeId, setActiveId] = useActiveIdState();
@@ -108,50 +104,50 @@ export const ReactMenuDesignerInner = memo(({
   const { setNodeRef } = useDroppable({
     id: "canvas"
   });
-  const flattenedItems = useMemo(() => {
-    const flattenedTree = flattenTree(items);
-    const collapsedItems = flattenedTree.reduce<UniqueIdentifier[]>(
-      (acc, { children, collapsed, id }) =>
-        collapsed && children.length ? [...acc, id] : acc,
-      []
-    );
+  // const flattenedItems = useMemo(() => {
+  //   const flattenedTree = flattenTree(items);
+  //   const collapsedItems = flattenedTree.reduce<UniqueIdentifier[]>(
+  //     (acc, { children, collapsed, id }) =>
+  //       collapsed && children.length ? [...acc, id] : acc,
+  //     []
+  //   );
 
-    return removeChildrenOf(
-      flattenedTree,
-      activeId ? [activeId, ...collapsedItems] : collapsedItems
-    );
-  }, [activeId, items]);
+  //   return removeChildrenOf(
+  //     flattenedTree,
+  //     activeId ? [activeId, ...collapsedItems] : collapsedItems
+  //   );
+  // }, [activeId, items]);
 
-  const flattenedItemsRef = useRef(flattenedItems);
-  flattenedItemsRef.current = flattenedItems;
-  const itemsRef = useRef(items);
-  itemsRef.current = items
+  // const flattenedItemsRef = useRef(flattenedItems);
+  // flattenedItemsRef.current = flattenedItems;
+  // const itemsRef = useRef(items);
+  // itemsRef.current = items
 
-  const projected = useMemo(
-    () => activeId && overId
-      ? getProjection(
-        flattenedItems,
-        activeId,
-        overId,
-        offsetLeft,
-        indentationWidth
-      )
-      : null,
-    [activeId, flattenedItems, indentationWidth, offsetLeft, overId]
-  );
+  // const projected = useMemo(
+  //   () => activeId && overId
+  //     ? getProjection(
+  //       flattenedItems,
+  //       activeId,
+  //       overId,
+  //       offsetLeft,
+  //       indentationWidth
+  //     )
+  //     : null,
+  //   [activeId, flattenedItems, indentationWidth, offsetLeft, overId]
+  // );
 
-  const projectedRef = useRef(projected)
-  projectedRef.current = projected
+  // const projectedRef = useRef(projected)
+  // projectedRef.current = projected
 
   const handleDragStart = (e: DragStartEvent) => {
     const { active } = e
-    const material = active.data?.current?.material as IMenuItemMaterial | undefined
+    const resource = active.data?.current?.resource as IMenuItemResource | undefined
     console.log("===>handleDragStart",)
-    if (material) {
-      const id = createId()
-      setNewItem({ id: material.type } as any)
-      setActiveId(material.type);
-      setOverId(material.type);
+    if (resource) {
+      //const id = createId()
+      setDraggingResoucre(resource)
+      setActiveId(resource.type);
+      setOverId(resource.type);
     } else {
       setActiveId(active.id);
       setOverId(active.id);
@@ -162,26 +158,38 @@ export const ReactMenuDesignerInner = memo(({
   const handleDragMove = useCallback((e: DragMoveEvent) => {
     const { delta } = e
     setOffsetLeft(delta.x);
-    if (newItem && overOnCanvas) {
-      setOffsetLeft(0)
-      console.log("===>useEffect projected", overId)
-      if (newItem.id === overId || !overId) {
-        console.log("over在新建节点上")
-        return
+    if (draggingResource) {
+      const tempNode: IFlattenedItem = {
+        id: draggingResource.type,
+        parentId: null,
+        depth: 0,
+        //resource: draggingResource,
       }
-      //const { depth, parentId } = projected;
-      let clonedItems: FlattenedItem[] = JSON.parse(
-        JSON.stringify(flattenTree(itemsRef.current))
-      );
-      clonedItems = clonedItems.filter(item => item.id !== newItem.id)
-      const overIndex = clonedItems.findIndex(({ id }) => id === overId);
-      clonedItems.splice(overIndex, 0, { ...newItem, index: overIndex, depth: 0, parentId: null });
 
-      const newItems = buildTree(clonedItems);
-
-      setItems(newItems);
+      if (!items.find(item => item.id === tempNode.id)) {
+        setItems([...items, tempNode])
+      }
     }
-  }, [newItem, overId, overOnCanvas, setItems, setOffsetLeft])
+    // if (newItem && overOnCanvas) {
+    //   setOffsetLeft(0)
+    //   console.log("===>useEffect projected", overId)
+    //   if (newItem.id === overId || !overId) {
+    //     console.log("over在新建节点上")
+    //     return
+    //   }
+    //   //const { depth, parentId } = projected;
+    //   let clonedItems: FlattenedItem[] = JSON.parse(
+    //     JSON.stringify(flattenTree(itemsRef.current))
+    //   );
+    //   clonedItems = clonedItems.filter(item => item.id !== newItem.id)
+    //   const overIndex = clonedItems.findIndex(({ id }) => id === overId);
+    //   clonedItems.splice(overIndex, 0, { ...newItem, index: overIndex, depth: 0, parentId: null });
+
+    //   const newItems = buildTree(clonedItems);
+
+    //   setItems(newItems);
+    // }
+  }, [draggingResource, items, setItems, setOffsetLeft])
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!activeId) {
@@ -215,7 +223,7 @@ export const ReactMenuDesignerInner = memo(({
     setOverId(null);
     setActiveId(null);
     setOffsetLeft(0);
-    setNewItem(undefined)
+    setDraggingResoucre(undefined)
     setOverOnCanvas(false)
     document.body.style.setProperty('cursor', '');
   }, [setActiveId, setOffsetLeft, setOverId])
@@ -223,31 +231,47 @@ export const ReactMenuDesignerInner = memo(({
   const handleDragEnd = useCallback((e: DragEndEvent) => {
     const { active, over } = e
     resetState();
+    const newItems = items.map(item => {
+      if (item.resource) {
+        const menuItem = item.resource.createMenuItem()
+        return {
+          id: menuItem.id,
+          menuItem: menuItem,
+          depth: 0,
+          parentId: null,
+        }
+      }
+      return item
+    })
+    setItems(newItems)
     //console.log("===>handleDragEnd", e)
-    if (projected && over) {
-      const { depth, parentId } = projected;
-      const clonedItems: FlattenedItem[] = JSON.parse(
-        JSON.stringify(flattenTree(items))
-      );
-      const overIndex = clonedItems.findIndex(({ id }) => id === over.id);
-      const activeIndex = clonedItems.findIndex(({ id }) => id === active.id);
-      const activeTreeItem = clonedItems[activeIndex];
+    // if (projected && over) {
+    //   const { depth, parentId } = projected;
+    //   const clonedItems: FlattenedItem[] = JSON.parse(
+    //     JSON.stringify(flattenTree(items))
+    //   );
+    //   const overIndex = clonedItems.findIndex(({ id }) => id === over.id);
+    //   const activeIndex = clonedItems.findIndex(({ id }) => id === active.id);
+    //   const activeTreeItem = clonedItems[activeIndex];
 
-      clonedItems[activeIndex] = { ...activeTreeItem, depth, parentId };
+    //   clonedItems[activeIndex] = { ...activeTreeItem, depth, parentId };
 
-      const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
-      const newItems = buildTree(sortedItems);
+    //   const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
+    //   const newItems = buildTree(sortedItems);
 
-      setItems(newItems);
-    }
-  }, [items, projected, resetState, setItems])
+    //   setItems(newItems);
+    // }
+
+  }, [items, resetState, setItems])
 
   const handleDragCancel = useCallback(() => {
+    const newItems = items.filter(item => item.resource)
+    setItems(newItems)
     resetState();
-  }, [resetState])
+  }, [items, resetState, setItems])
 
   return (
-    <MaterialsContext.Provider value={menuMaterials}>
+    <ResourcesContext.Provider value={menuResources}>
       <DndContext
         collisionDetection={closestCenter}
         measuring={measuring}
@@ -271,7 +295,7 @@ export const ReactMenuDesignerInner = memo(({
             </Toolbar>
             <Canvas ref={canvasRef}>
               <DropContainer ref={setNodeRef}>
-                <SortableTree isNewing={!!newItem?.id} />
+                <SortableTree />
               </DropContainer>
               {/* <Test /> */}
             </Canvas>
@@ -279,7 +303,7 @@ export const ReactMenuDesignerInner = memo(({
           <PropertyPanel></PropertyPanel>
         </Shell>
       </DndContext>
-    </MaterialsContext.Provider>
+    </ResourcesContext.Provider>
   )
 })
 

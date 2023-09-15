@@ -1,5 +1,4 @@
 import { UniqueIdentifier } from "@dnd-kit/core";
-import { IMenuItemMaterial } from "./material";
 import { IMenuItem } from "./menu";
 
 export interface IFlattenedItem {
@@ -7,7 +6,11 @@ export interface IFlattenedItem {
   parentId: UniqueIdentifier | null;
   depth: number;
   menuItem?: IMenuItem;
-  //新增时使用，id必须跟toolbox里面的id一致，要不然不显示拖放动画
-  material?: IMenuItemMaterial;
   collapsed?: boolean;
 }
+
+//   //工具箱里的项目，要管理id，drop后要重新生成一个新的
+// export interface IResourceItem{
+//   id: UniqueIdentifier;
+//   resource?: IMenuItemResource;
+// }

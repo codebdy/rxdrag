@@ -5,6 +5,7 @@ export enum MenuItemType {
   route = "route",
   link = "link",
   divider = "divider",
+  page = "page"
 }
 export interface IMenuItem<Config = unknown> {
   id: UniqueIdentifier,
