@@ -156,11 +156,8 @@ export const ReactMenuDesignerInner = memo(({
     const { delta } = e
     setOffsetLeft(delta.x);
     const resourceItem = getResourceItem(activeId)
-    const resource = getResource(activeId)
-    if (resourceItem && resource) {
-      const newResourceItem: IFlattenedItem = { ...resource.createMenuItem(), children: undefined }
-      setResourceItems(items => items.map(item => item.id === activeId ? newResourceItem : item))
-      setItems(items=>[...items, resourceItem])
+    if (resourceItem) {
+      setItems(items => !items.find(item => item.id === resourceItem.id) ? [...items, resourceItem] : items)
     }
 
     // if (draggingResource) {
@@ -194,7 +191,7 @@ export const ReactMenuDesignerInner = memo(({
 
     //   setItems(newItems);
     // }
-  }, [activeId, getResourceItem, setOffsetLeft])
+  }, [activeId, getResourceItem, setItems, setOffsetLeft])
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!activeId) {
@@ -235,6 +232,13 @@ export const ReactMenuDesignerInner = memo(({
 
   const handleDragEnd = useCallback((e: DragEndEvent) => {
     const { active, over } = e
+    const resourceItem = getResourceItem(active.id)
+    const resource = getResource(resourceItem)
+    if (resource) {
+      const newResourceItem: IFlattenedItem = { ...resource.createMenuItem(), children: undefined }
+      setResourceItems(items => items.map(item => item.id === activeId ? newResourceItem : item))
+    }
+
     resetState();
     // const newItems = items.map(item => {
     //   if (item.resource) {
@@ -267,48 +271,47 @@ export const ReactMenuDesignerInner = memo(({
     //   setItems(newItems);
     // }
 
-  }, [resetState])
+  }, [activeId, getResource, getResourceItem, resetState, setResourceItems])
 
   const handleDragCancel = useCallback(() => {
-    const newItems = items.filter(item => item.resource)
-    setItems(newItems)
+    // const newItems = items.filter(item => item.resource)
+    // setItems(newItems)
     resetState();
-  }, [items, resetState, setItems])
+  }, [resetState])
 
   return (
-    <ResourcesContext.Provider value={menuResources}>
-      <DndContext
-        collisionDetection={closestCenter}
-        measuring={measuring}
-        onDragStart={handleDragStart}
-        onDragMove={handleDragMove}
-        onDragOver={handleDragOver}
-        onDragEnd={handleDragEnd}
-        onDragCancel={handleDragCancel}
-      >
-        <Shell>
-          <Toolbox ></Toolbox>
-          <CanvasContainer>
-            <Toolbar>
-              <Space>
-                <Button type="text" icon={<UndoOutlined />} />
-                <Button type="text" icon={<RedoOutlined />} />
-                <Divider type='vertical' />
-                <Button type="text" icon={<DeleteOutlined />} />
-              </Space>
-              <Button type="primary" >保存</Button>
-            </Toolbar>
-            <Canvas ref={canvasRef}>
-              <DropContainer ref={setNodeRef}>
-                <SortableTree />
-              </DropContainer>
-              {/* <Test /> */}
-            </Canvas>
-          </CanvasContainer>
-          <PropertyPanel></PropertyPanel>
-        </Shell>
-      </DndContext>
-    </ResourcesContext.Provider>
+
+    <DndContext
+      collisionDetection={closestCenter}
+      measuring={measuring}
+      onDragStart={handleDragStart}
+      onDragMove={handleDragMove}
+      onDragOver={handleDragOver}
+      onDragEnd={handleDragEnd}
+      onDragCancel={handleDragCancel}
+    >
+      <Shell>
+        <Toolbox ></Toolbox>
+        <CanvasContainer>
+          <Toolbar>
+            <Space>
+              <Button type="text" icon={<UndoOutlined />} />
+              <Button type="text" icon={<RedoOutlined />} />
+              <Divider type='vertical' />
+              <Button type="text" icon={<DeleteOutlined />} />
+            </Space>
+            <Button type="primary" >保存</Button>
+          </Toolbar>
+          <Canvas ref={canvasRef}>
+            <DropContainer ref={setNodeRef}>
+              <SortableTree />
+            </DropContainer>
+            {/* <Test /> */}
+          </Canvas>
+        </CanvasContainer>
+        <PropertyPanel></PropertyPanel>
+      </Shell>
+    </DndContext>
   )
 })
 

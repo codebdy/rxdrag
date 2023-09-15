@@ -17,7 +17,7 @@ export const SortableItem = memo((
     transform,
     transition
   } = useSortable({ id: item.id });
-  console.log("==>SortableItem", item)
+
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,

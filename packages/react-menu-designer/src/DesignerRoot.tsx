@@ -1,6 +1,6 @@
 import { UniqueIdentifier } from "@dnd-kit/core";
 import { memo, useCallback, useEffect, useState } from "react"
-import { ActiveIdContext, ResourceItemsContext, HistoryContext, HistoryRedords, ItemsContext, OffsetLeftContext, OverIdContext, defautHistory } from "./contexts";
+import { ActiveIdContext, ResourceItemsContext, HistoryContext, HistoryRedords, ItemsContext, OffsetLeftContext, OverIdContext, defautHistory, ResourcesContext } from "./contexts";
 import { IMenuItem } from "./interfaces";
 import { IFlattenedItem } from "./interfaces/flattened";
 import { menuResources } from "./resources";
@@ -54,18 +54,20 @@ export const DesignerRoot = memo((props: {
   }, [flatten, setResourceItems])
 
   return (
-    <ResourceItemsContext.Provider value={resourceItemsState}>
-      <ItemsContext.Provider value={itemsState}>
-        <ActiveIdContext.Provider value={activeIdState}>
-          <OverIdContext.Provider value={overIdState}>
-            <OffsetLeftContext.Provider value={offsetLeftState}>
-              <HistoryContext.Provider value={historyState}>
-                {children}
-              </HistoryContext.Provider>
-            </OffsetLeftContext.Provider>
-          </OverIdContext.Provider>
-        </ActiveIdContext.Provider>
-      </ItemsContext.Provider>
-    </ResourceItemsContext.Provider>
+    <ResourcesContext.Provider value={menuResources}>
+      <ResourceItemsContext.Provider value={resourceItemsState}>
+        <ItemsContext.Provider value={itemsState}>
+          <ActiveIdContext.Provider value={activeIdState}>
+            <OverIdContext.Provider value={overIdState}>
+              <OffsetLeftContext.Provider value={offsetLeftState}>
+                <HistoryContext.Provider value={historyState}>
+                  {children}
+                </HistoryContext.Provider>
+              </OffsetLeftContext.Provider>
+            </OverIdContext.Provider>
+          </ActiveIdContext.Provider>
+        </ItemsContext.Provider>
+      </ResourceItemsContext.Provider>
+    </ResourcesContext.Provider>
   )
 })
