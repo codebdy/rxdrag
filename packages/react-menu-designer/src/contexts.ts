@@ -1,10 +1,10 @@
 import { createContext } from "react";
-import { MenuItemResources } from "./interfaces";
+import { IMenuItemResource } from "./interfaces";
 import { UniqueIdentifier } from "@dnd-kit/core";
 import { TreeItems } from "./types";
 import { IFlattenedItem } from "./interfaces/flattened";
 
-export const ResourcesContext = createContext<MenuItemResources>({})
+export const ResourcesContext = createContext<IMenuItemResource[]>([])
 
 export const notMethod = () => { throw new Error("Not implement method") }
 

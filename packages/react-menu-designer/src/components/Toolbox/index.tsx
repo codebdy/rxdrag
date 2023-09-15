@@ -2,10 +2,10 @@ import { memo, useMemo } from "react";
 import { DEFAULT_MARGIN } from "../../utilities";
 import styled from 'styled-components';
 import { ColumnTitle, FlatableColumn } from "../FlatableColumn";
-import { MenuItemType } from "../../interfaces";
-import { ResourceItem } from "./ResourceItem";
 import { Collapse } from 'antd';
 import type { CollapseProps } from 'antd';
+import { useResourceItemsState } from "../../hooks/useResourceItemsState";
+import { ResourceItem } from "./ResourceItem";
 
 const maxWidth = 1000
 const minWidth = 200
@@ -29,14 +29,16 @@ const ToolboxShell = styled(FlatableColumn)`
   left: ${DEFAULT_MARGIN}px;
 `
 export const Toolbox = memo(() => {
+  const [resourceItems] = useResourceItemsState()
 
   const items: CollapseProps['items'] = useMemo(() => [
     {
       key: '1',
       label: '基础',
       children: <>
-        <ResourceItem name={MenuItemType.text} />
-        <ResourceItem name={MenuItemType.link} />
+        {
+          resourceItems.map(item => (<ResourceItem item={item} />))
+        }
       </>,
     },
     {
@@ -44,7 +46,7 @@ export const Toolbox = memo(() => {
       label: '视图',
 
     },
-  ], []);
+  ], [resourceItems]);
 
   return (
     <ToolboxShell

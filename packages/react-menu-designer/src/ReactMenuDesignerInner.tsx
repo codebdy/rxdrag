@@ -30,6 +30,9 @@ import { useItemsState } from './hooks/useItemsState';
 import { IMenuItem, IMenuItemResource } from './interfaces';
 import { IFlattenedItem } from './interfaces/flattened';
 import { menuResources } from './resources';
+import { useResourceItemsState } from './hooks/useResourceItemsState';
+import { useGetResourceItem } from './hooks/useGetResourceItem';
+import { useGetResource } from './hooks/useGetResource';
 
 const Shell = styled.div`
   position: relative;
@@ -94,9 +97,9 @@ export const ReactMenuDesignerInner = memo(({
   indentationWidth = 50,
 }: ReactMenuDesignerInnerProps) => {
   //const [newItem, setNewItem] = useState<IMenuItem>()
-  const [draggingResource, setDraggingResoucre] = useState<IMenuItemResource>()
   const [overOnCanvas, setOverOnCanvas] = useState<boolean>()
   const [items, setItems] = useItemsState();
+  const [resourceItems, setResourceItems] = useResourceItemsState();
   const [activeId, setActiveId] = useActiveIdState();
   const [overId, setOverId] = useOverIdState();
   const [offsetLeft, setOffsetLeft] = useOffsetLeftState();
@@ -104,6 +107,9 @@ export const ReactMenuDesignerInner = memo(({
   const { setNodeRef } = useDroppable({
     id: "canvas"
   });
+
+  const getResourceItem = useGetResourceItem();
+  const getResource = useGetResource()
   // const flattenedItems = useMemo(() => {
   //   const flattenedTree = flattenTree(items);
   //   const collapsedItems = flattenedTree.reduce<UniqueIdentifier[]>(
@@ -141,35 +147,34 @@ export const ReactMenuDesignerInner = memo(({
 
   const handleDragStart = (e: DragStartEvent) => {
     const { active } = e
-    const resource = active.data?.current?.resource as IMenuItemResource | undefined
-    console.log("===>handleDragStart",)
-    if (resource) {
-      //const id = createId()
-      setDraggingResoucre(resource)
-      setActiveId(resource.type);
-      setOverId(resource.type);
-    } else {
-      setActiveId(active.id);
-      setOverId(active.id);
-    }
+    setActiveId(active.id);
+    setOverId(active.id);
     document.body.style.setProperty('cursor', 'grabbing');
   }
 
   const handleDragMove = useCallback((e: DragMoveEvent) => {
     const { delta } = e
     setOffsetLeft(delta.x);
-    if (draggingResource) {
-      const tempNode: IFlattenedItem = {
-        id: draggingResource.type,
-        parentId: null,
-        depth: 0,
-        //resource: draggingResource,
-      }
-
-      if (!items.find(item => item.id === tempNode.id)) {
-        setItems([...items, tempNode])
-      }
+    const resourceItem = getResourceItem(activeId)
+    const resource = getResource(activeId)
+    if (resourceItem && resource) {
+      const newResourceItem: IFlattenedItem = { ...resource.createMenuItem(), children: undefined }
+      setResourceItems(items => items.map(item => item.id === activeId ? newResourceItem : item))
+      setItems(items=>[...items, resourceItem])
     }
+
+    // if (draggingResource) {
+    //   const tempNode: IFlattenedItem = {
+    //     id: draggingResource.type,
+    //     parentId: null,
+    //     depth: 0,
+    //     //resource: draggingResource,
+    //   }
+
+    //   if (!items.find(item => item.id === tempNode.id)) {
+    //     setItems([...items, tempNode])
+    //   }
+    // }
     // if (newItem && overOnCanvas) {
     //   setOffsetLeft(0)
     //   console.log("===>useEffect projected", overId)
@@ -189,7 +194,7 @@ export const ReactMenuDesignerInner = memo(({
 
     //   setItems(newItems);
     // }
-  }, [draggingResource, items, setItems, setOffsetLeft])
+  }, [activeId, getResourceItem, setOffsetLeft])
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!activeId) {
@@ -223,7 +228,7 @@ export const ReactMenuDesignerInner = memo(({
     setOverId(null);
     setActiveId(null);
     setOffsetLeft(0);
-    setDraggingResoucre(undefined)
+    //setDraggingResoucre(undefined)
     setOverOnCanvas(false)
     document.body.style.setProperty('cursor', '');
   }, [setActiveId, setOffsetLeft, setOverId])
@@ -231,19 +236,19 @@ export const ReactMenuDesignerInner = memo(({
   const handleDragEnd = useCallback((e: DragEndEvent) => {
     const { active, over } = e
     resetState();
-    const newItems = items.map(item => {
-      if (item.resource) {
-        const menuItem = item.resource.createMenuItem()
-        return {
-          id: menuItem.id,
-          menuItem: menuItem,
-          depth: 0,
-          parentId: null,
-        }
-      }
-      return item
-    })
-    setItems(newItems)
+    // const newItems = items.map(item => {
+    //   if (item.resource) {
+    //     const menuItem = item.resource.createMenuItem()
+    //     return {
+    //       id: menuItem.id,
+    //       menuItem: menuItem,
+    //       depth: 0,
+    //       parentId: null,
+    //     }
+    //   }
+    //   return item
+    // })
+    // setItems(newItems)
     //console.log("===>handleDragEnd", e)
     // if (projected && over) {
     //   const { depth, parentId } = projected;
@@ -262,7 +267,7 @@ export const ReactMenuDesignerInner = memo(({
     //   setItems(newItems);
     // }
 
-  }, [items, resetState, setItems])
+  }, [resetState])
 
   const handleDragCancel = useCallback(() => {
     const newItems = items.filter(item => item.resource)

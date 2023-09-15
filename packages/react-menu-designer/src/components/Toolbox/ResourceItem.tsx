@@ -6,6 +6,7 @@ import { floatShadow, getChildCount } from "../../utilities";
 import { createPortal } from "react-dom";
 import { dropAnimationConfig } from "../SortableTree/dropAnimationConfig";
 import { SortableTreeItem } from "../TreeItem";
+import { IFlattenedItem } from "../../interfaces/flattened";
 
 
 const Container = styled.div`
@@ -37,17 +38,13 @@ const Item = styled.div`
 `
 
 export const ResourceItem = memo((
-  props: { name: string }
+  props: { item: IFlattenedItem }
 ) => {
-  const { name } = props
+  const { item } = props
   const ref = useRef<HTMLDivElement>(null)
-  const resource = useResource(name)
 
   const { attributes, listeners, isDragging, setNodeRef } = useDraggable({
-    id: name,
-    data: {
-      resource
-    }
+    id: item.id,
   });
 
 
@@ -60,7 +57,7 @@ export const ResourceItem = memo((
         {...attributes}
       >
         {
-          resource?.title
+          item?.title
         }
       </Item>
       {
@@ -72,7 +69,7 @@ export const ResourceItem = memo((
               className={"dragging"}
             >
               {
-                resource?.title
+                item?.title
               }
             </Item>
           </DragOverlay>,

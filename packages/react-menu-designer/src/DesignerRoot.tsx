@@ -3,6 +3,7 @@ import { memo, useCallback, useEffect, useState } from "react"
 import { ActiveIdContext, ResourceItemsContext, HistoryContext, HistoryRedords, ItemsContext, OffsetLeftContext, OverIdContext, defautHistory } from "./contexts";
 import { IMenuItem } from "./interfaces";
 import { IFlattenedItem } from "./interfaces/flattened";
+import { menuResources } from "./resources";
 
 export const DesignerRoot = memo((props: {
   defaultValue?: IMenuItem[],
@@ -18,6 +19,7 @@ export const DesignerRoot = memo((props: {
   const historyState = useState<HistoryRedords>(defautHistory)
   const [, setHistoryState] = historyState
   const [, setItems] = itemsState
+  const [, setResourceItems] = resourceItemsState
 
   const flatten = useCallback((
     items: IMenuItem[],
@@ -27,7 +29,7 @@ export const DesignerRoot = memo((props: {
     return items.reduce<IFlattenedItem[]>((acc, item) => {
       return [
         ...acc,
-        { id: item.id, parentId, depth, menuItem: item },
+        { ...item, parentId, depth, children: undefined },
         ...flatten(item.children || [], item.id, depth + 1),
       ];
     }, []);
@@ -46,6 +48,10 @@ export const DesignerRoot = memo((props: {
   useEffect(() => {
     setItems(flatten(value || []))
   }, [flatten, setItems, value])
+
+  useEffect(() => {
+    setResourceItems(flatten(menuResources.map((resource) => resource.createMenuItem())))
+  }, [flatten, setResourceItems])
 
   return (
     <ResourceItemsContext.Provider value={resourceItemsState}>
