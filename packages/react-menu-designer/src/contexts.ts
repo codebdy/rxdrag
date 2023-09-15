@@ -2,6 +2,7 @@ import { createContext } from "react";
 import { MenuItemMaterials } from "./interfaces";
 import { UniqueIdentifier } from "@dnd-kit/core";
 import { TreeItems } from "./types";
+import { IFlattenedItem } from "./interfaces/flattened";
 
 export const MaterialsContext = createContext<MenuItemMaterials>({})
 
@@ -43,3 +44,16 @@ export const OverIdContext = createContext<IdState>([null, notMethod])
 
 export type OffsetState = [number, React.Dispatch<React.SetStateAction<number>>]
 export const OffsetLeftContext = createContext<OffsetState>([0, notMethod])
+
+export type FlattenedItems = IFlattenedItem[]
+
+export type HistoryRedords = {
+  undoList: FlattenedItems[],
+  redoList: FlattenedItems[],
+  changed?: boolean,
+}
+
+export const defautHistory = { undoList: [], redoList: [] }
+
+export type HistoryState = [HistoryRedords, React.Dispatch<React.SetStateAction<HistoryRedords>>]
+export const HistoryContext = createContext<HistoryState>([defautHistory, notMethod])

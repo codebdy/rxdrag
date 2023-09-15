@@ -1,12 +1,20 @@
 import { memo } from 'react';
-import { ReactMenuDesignerInner } from './ReactMenuDesignerInner';
+import { ReactMenuDesignerInner, ReactMenuDesignerInnerProps } from './ReactMenuDesignerInner';
 import { DesignerRoot } from './DesignerRoot';
+import { IMenuItem } from './interfaces';
 
-export const ReactMenuDesigner = memo(() => {
+export type ReactMenuDesignerProps = ReactMenuDesignerInnerProps & {
+  defaultValue?: IMenuItem[],
+  value?: IMenuItem[],
+}
 
+export const ReactMenuDesigner = memo((
+  props: ReactMenuDesignerProps
+) => {
+  const { defaultValue, value, ...rest } = props
   return (
-    <DesignerRoot>
-      <ReactMenuDesignerInner />
+    <DesignerRoot defaultValue={defaultValue} value={value}>
+      <ReactMenuDesignerInner {...rest} />
     </DesignerRoot>
   )
 })

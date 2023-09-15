@@ -20,7 +20,7 @@ import {
   getProjection,
   removeChildrenOf,
 } from './utilities';
-import type { FlattenedItem, TreeItem, TreeItems } from './types';
+import type { FlattenedItem, } from './types';
 import styled from 'styled-components';
 import { Toolbox } from './components/Toolbox';
 import { PropertyPanel } from './components/PropertyPanel';
@@ -33,9 +33,8 @@ import { useActiveIdState } from './hooks/useActiveIdState';
 import { useOverIdState } from './hooks/useOverIdState';
 import { useOffsetLeftState } from './hooks/useOffsetLeftState';
 import { useItemsState } from './hooks/useItemsState';
-import { IMenuItemMaterial } from './interfaces';
+import { IMenuItem, IMenuItemMaterial } from './interfaces';
 import { createId } from "@rxdrag/shared"
-import { Test } from './components/Test';
 
 const Shell = styled.div`
   position: relative;
@@ -90,16 +89,16 @@ const measuring = {
   },
 };
 
-interface Props {
-  defaultItems?: TreeItems;
+
+export type ReactMenuDesignerInnerProps = {
   indentationWidth?: number;
   indicator?: boolean;
 }
 
 export const ReactMenuDesignerInner = memo(({
   indentationWidth = 50,
-}: Props) => {
-  const [newItem, setNewItem] = useState<TreeItem>()
+}: ReactMenuDesignerInnerProps) => {
+  const [newItem, setNewItem] = useState<IMenuItem>()
   const [overOnCanvas, setOverOnCanvas] = useState<boolean>()
   const [items, setItems] = useItemsState();
   const [activeId, setActiveId] = useActiveIdState();
@@ -150,13 +149,9 @@ export const ReactMenuDesignerInner = memo(({
     console.log("===>handleDragStart",)
     if (material) {
       const id = createId()
-      setNewItem({
-        id: id,
-        //title: material.resource?.title
-        children: []
-      })
-      setActiveId(id);
-      setOverId(id);
+      setNewItem({ id: material.type } as any)
+      setActiveId(material.type);
+      setOverId(material.type);
     } else {
       setActiveId(active.id);
       setOverId(active.id);
@@ -253,7 +248,7 @@ export const ReactMenuDesignerInner = memo(({
 
   return (
     <MaterialsContext.Provider value={menuMaterials}>
-      {/* <DndContext
+      <DndContext
         collisionDetection={closestCenter}
         measuring={measuring}
         onDragStart={handleDragStart}
@@ -261,29 +256,29 @@ export const ReactMenuDesignerInner = memo(({
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
         onDragCancel={handleDragCancel}
-      > */}
-      <Shell>
-        <Toolbox ></Toolbox>
-        <CanvasContainer>
-          <Toolbar>
-            <Space>
-              <Button type="text" icon={<UndoOutlined />} />
-              <Button type="text" icon={<RedoOutlined />} />
-              <Divider type='vertical' />
-              <Button type="text" icon={<DeleteOutlined />} />
-            </Space>
-            <Button type="primary" >保存</Button>
-          </Toolbar>
-          <Canvas ref={canvasRef}>
-            {/* <DropContainer ref={setNodeRef}>
+      >
+        <Shell>
+          <Toolbox ></Toolbox>
+          <CanvasContainer>
+            <Toolbar>
+              <Space>
+                <Button type="text" icon={<UndoOutlined />} />
+                <Button type="text" icon={<RedoOutlined />} />
+                <Divider type='vertical' />
+                <Button type="text" icon={<DeleteOutlined />} />
+              </Space>
+              <Button type="primary" >保存</Button>
+            </Toolbar>
+            <Canvas ref={canvasRef}>
+              <DropContainer ref={setNodeRef}>
                 <SortableTree isNewing={!!newItem?.id} />
-              </DropContainer> */}
-            <Test />
-          </Canvas>
-        </CanvasContainer>
-        <PropertyPanel></PropertyPanel>
-      </Shell>
-      {/* </DndContext> */}
+              </DropContainer>
+              {/* <Test /> */}
+            </Canvas>
+          </CanvasContainer>
+          <PropertyPanel></PropertyPanel>
+        </Shell>
+      </DndContext>
     </MaterialsContext.Provider>
   )
 })

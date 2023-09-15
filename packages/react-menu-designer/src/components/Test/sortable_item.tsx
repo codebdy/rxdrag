@@ -2,12 +2,12 @@ import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-export function Item(props) {
+export function Item(props: any) {
   const { id } = props;
 
   const style = {
     width: "100%",
-    height: 50,
+    height: props.actived ? 20 : 50,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -19,7 +19,7 @@ export function Item(props) {
   return <div style={style}>{id}</div>;
 }
 
-export default function SortableItem(props) {
+export default function SortableItem(props: any) {
   const {
     attributes,
     listeners,
@@ -30,12 +30,12 @@ export default function SortableItem(props) {
 
   const style = {
     transform: CSS.Transform.toString(transform),
-    transition
+    transition,
   };
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <Item id={props.id} />
+      <Item id={props.id} actived={props.actived} />
     </div>
   )
 }

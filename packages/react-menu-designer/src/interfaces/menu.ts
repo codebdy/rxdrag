@@ -1,3 +1,5 @@
+import { UniqueIdentifier } from "@dnd-kit/core"
+
 export enum MenuItemType {
   text = "text",
   route = "route",
@@ -5,7 +7,7 @@ export enum MenuItemType {
   divider = "divider",
 }
 export interface IMenuItem<Config = unknown> {
-  id: string,
+  id: UniqueIdentifier,
   //string类型用于扩展
   type: MenuItemType | string
   title?: string,

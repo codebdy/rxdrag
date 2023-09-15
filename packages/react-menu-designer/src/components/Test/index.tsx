@@ -6,23 +6,28 @@ import {
   KeyboardSensor,
   PointerSensor,
   useSensor,
-  useSensors
+  useSensors,
+  DragStartEvent,
+  DragOverEvent,
+  DragEndEvent
 } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 
 import Container from "./container";
 import { Item } from "./sortable_item";
+import { Container1 } from "./container1";
 
 const wrapperStyle = {
   display: "flex",
-  flexDirection: "row"
+  flexDirection: "row",
+  color: "black"
 };
 
 const defaultAnnouncements = {
-  onDragStart(id) {
+  onDragStart(id: string) {
     console.log(`Picked up draggable item ${id}.`);
   },
-  onDragOver(id, overId) {
+  onDragOver(id: string, overId: string) {
     if (overId) {
       console.log(
         `Draggable item ${id} was moved over droppable area ${overId}.`
@@ -32,7 +37,7 @@ const defaultAnnouncements = {
 
     console.log(`Draggable item ${id} is no longer over a droppable area.`);
   },
-  onDragEnd(id, overId) {
+  onDragEnd(id: string, overId: string) {
     if (overId) {
       console.log(
         `Draggable item ${id} was dropped over droppable area ${overId}`
@@ -42,7 +47,7 @@ const defaultAnnouncements = {
 
     console.log(`Draggable item ${id} was dropped.`);
   },
-  onDragCancel(id) {
+  onDragCancel(id: string) {
     console.log(`Dragging was cancelled. Draggable item ${id} was dropped.`);
   }
 };
@@ -54,7 +59,7 @@ export function Test() {
     container2: ["7", "8", "9"],
     container3: []
   });
-  const [activeId, setActiveId] = useState();
+  const [activeId, setActiveId] = useState<string | null>();
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -73,16 +78,14 @@ export function Test() {
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
       >
-        <Container id="root" items={items.root} />
-        <Container id="container1" items={items.container1} />
-        <Container id="container2" items={items.container2} />
-        <Container id="container3" items={items.container3} />
+        <Container1 id="root" activeId={activeId} items={items.root} />
+        <Container id="container1" activeId={activeId} items={items.container1} />
         <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay>
       </DndContext>
     </div>
   );
 
-  function findContainer(id) {
+  function findContainer(id: string) {
     if (id in items) {
       return id;
     }
@@ -90,17 +93,19 @@ export function Test() {
     return Object.keys(items).find((key) => items[key].includes(id));
   }
 
-  function handleDragStart(event) {
+  function handleDragStart(event: DragStartEvent) {
     const { active } = event;
     const { id } = active;
 
     setActiveId(id);
   }
 
-  function handleDragOver(event) {
-    const { active, over, draggingRect } = event;
+  function handleDragOver(event: DragOverEvent) {
+    const { active, over } = event;
+    const { rect } = active
+
     const { id } = active;
-    const { id: overId } = over;
+    const overId = over?.id
 
     // Find the containers
     const activeContainer = findContainer(id);
@@ -130,7 +135,7 @@ export function Test() {
         const isBelowLastItem =
           over &&
           overIndex === overItems.length - 1 &&
-          draggingRect?.offsetTop > over.rect?.offsetTop + over.rect.height;
+          rect?.offsetTop > over.rect?.offsetTop + over.rect.height;
 
         const modifier = isBelowLastItem ? 1 : 0;
 
@@ -139,9 +144,9 @@ export function Test() {
 
       return {
         ...prev,
-        [activeContainer]: [
-          ...prev[activeContainer].filter((item) => item !== active.id)
-        ],
+        // [activeContainer]: [
+        //   ...prev[activeContainer].filter((item) => item !== active.id)
+        // ],
         [overContainer]: [
           ...prev[overContainer].slice(0, newIndex),
           items[activeContainer][activeIndex],
@@ -151,7 +156,7 @@ export function Test() {
     });
   }
 
-  function handleDragEnd(event) {
+  function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
     const { id } = active;
     const { id: overId } = over;
