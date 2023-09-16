@@ -13,8 +13,6 @@ export type DraggableProps = {
   draggableId: Identifier;
   index?: number;
   clonable?: boolean;
-  //目标位置的占位符
-  renderPlaceholder?: React.ReactNode;
   //鼠标跟随物
   mouseFollower?: React.ReactNode;
   children?: DraggableChildrenFn;

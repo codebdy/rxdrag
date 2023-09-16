@@ -1,5 +1,5 @@
 import { memo, useCallback, useMemo, useState } from "react"
-import { DroppableChildrenFn, IDroppableStateSnapshot, Identifier } from "./types"
+import { DraggableChildrenFn, DroppableChildrenFn, IDroppableStateSnapshot, Identifier } from "./types"
 import { DroppableContext, DroppableParams, defualtDroppableParams } from "../contexts";
 import { DROPPABLE_ATTR_ID_NAME } from "./consts";
 
@@ -10,11 +10,13 @@ export type DroppableProps = {
   droppableId: Identifier
   dropDisabled?: boolean,
   direction?: Direction,
-  children?: DroppableChildrenFn
+  children?: DroppableChildrenFn,
+  //目标位置的占位符
+  renderPlaceholder?: DraggableChildrenFn
 }
 
 export const Droppable = memo((props: DroppableProps) => {
-  const { droppableId, children } = props
+  const { droppableId, children, renderPlaceholder } = props
   const droppableState = useState<DroppableParams>(defualtDroppableParams)
 
   const handleRefChange = useCallback((element?: HTMLElement | null) => {
