@@ -42,7 +42,7 @@ export const DndContext = memo((
         setDragging(true)
         const offset = { x: 0, y: 0 }
         offset.x = e.clientX - startEvent.clientX
-        offset.y = e.clientY - startEvent.clientX
+        offset.y = e.clientY - startEvent.clientY
         setDraggingOffset(offset)
         //setMouseMoveEvent(e);
       }
