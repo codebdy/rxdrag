@@ -101,6 +101,7 @@ export function Test() {
   }
 
   function handleDragOver(event: DragOverEvent) {
+    console.log("===> Test handleDragOver", event)
     const { active, over } = event;
     const { rect } = active
 

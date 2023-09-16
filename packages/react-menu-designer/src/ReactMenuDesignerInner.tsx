@@ -33,6 +33,7 @@ import { menuResources } from './resources';
 import { useResourceItemsState } from './hooks/useResourceItemsState';
 import { useGetResourceItem } from './hooks/useGetResourceItem';
 import { useGetResource } from './hooks/useGetResource';
+import { Test } from './components/Test';
 
 const Shell = styled.div`
   position: relative;
@@ -62,13 +63,18 @@ const CanvasContainer = styled.div`
 
 const Canvas = styled.div`
   width: 100%;
+  flex: 1;
   overflow: auto;
   box-sizing: border-box;
 `
 
 const DropContainer = styled.div`
-  width: 100%;
   min-height: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-flow: column;
+  padding: 4px 8px;
+  user-select: none;
 `
 
 const Toolbar = styled.div`
@@ -93,6 +99,34 @@ export type ReactMenuDesignerInnerProps = {
   indicator?: boolean;
 }
 
+const defaultAnnouncements = {
+  onDragStart(id: string) {
+    console.log(`Picked up draggable item ${id}.`);
+  },
+  onDragOver(id: string, overId: string) {
+    if (overId) {
+      console.log(
+        `Draggable item ${id} was moved over droppable area ${overId}.`
+      );
+      return;
+    }
+
+    console.log(`Draggable item ${id} is no longer over a droppable area.`);
+  },
+  onDragEnd(id: string, overId: string) {
+    if (overId) {
+      console.log(
+        `Draggable item ${id} was dropped over droppable area ${overId}`
+      );
+      return;
+    }
+
+    console.log(`Draggable item ${id} was dropped.`);
+  },
+  onDragCancel(id: string) {
+    console.log(`Dragging was cancelled. Draggable item ${id} was dropped.`);
+  }
+};
 export const ReactMenuDesignerInner = memo(({
   indentationWidth = 50,
 }: ReactMenuDesignerInnerProps) => {
@@ -155,10 +189,6 @@ export const ReactMenuDesignerInner = memo(({
   const handleDragMove = useCallback((e: DragMoveEvent) => {
     const { delta } = e
     setOffsetLeft(delta.x);
-    const resourceItem = getResourceItem(activeId)
-    if (resourceItem) {
-      setItems(items => !items.find(item => item.id === resourceItem.id) ? [...items, resourceItem] : items)
-    }
 
     // if (draggingResource) {
     //   const tempNode: IFlattenedItem = {
@@ -191,7 +221,7 @@ export const ReactMenuDesignerInner = memo(({
 
     //   setItems(newItems);
     // }
-  }, [activeId, getResourceItem, setItems, setOffsetLeft])
+  }, [setOffsetLeft])
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!activeId) {
@@ -217,9 +247,14 @@ export const ReactMenuDesignerInner = memo(({
   }, [handleMouseMove])
 
   const handleDragOver = useCallback((e: DragOverEvent) => {
-    const { over } = e
+    const { active, over } = e
     setOverId(over?.id ?? null);
-  }, [setOverId])
+    const resourceItem = getResourceItem(active.id)
+    console.log("===>handleDragOver", e, resourceItem)
+    if (resourceItem) {
+      setItems(items => !items.find(item => item.id === resourceItem.id) ? [...items, resourceItem] : items)
+    }
+  }, [getResourceItem, setItems, setOverId])
 
   const resetState = useCallback(() => {
     setOverId(null);
@@ -282,6 +317,7 @@ export const ReactMenuDesignerInner = memo(({
   return (
 
     <DndContext
+      announcements={defaultAnnouncements}
       collisionDetection={closestCenter}
       measuring={measuring}
       onDragStart={handleDragStart}
@@ -302,11 +338,11 @@ export const ReactMenuDesignerInner = memo(({
             </Space>
             <Button type="primary" >保存</Button>
           </Toolbar>
-          <Canvas ref={canvasRef}>
-            <DropContainer ref={setNodeRef}>
+          <Canvas ref={canvasRef} className='menu-canvas'>
+            <DropContainer ref={setNodeRef} className='menu-drop-container'>
               <SortableTree />
             </DropContainer>
-            {/* <Test /> */}
+            {/* { <Test />} */}
           </Canvas>
         </CanvasContainer>
         <PropertyPanel></PropertyPanel>

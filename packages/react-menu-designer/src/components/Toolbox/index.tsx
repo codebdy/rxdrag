@@ -6,9 +6,14 @@ import { Collapse } from 'antd';
 import type { CollapseProps } from 'antd';
 import { useResourceItemsState } from "../../hooks/useResourceItemsState";
 import { ResourceItem } from "./ResourceItem";
+import { useDroppable } from "@dnd-kit/core";
 
 const maxWidth = 1000
 const minWidth = 200
+
+const Content = styled.div`
+  flex:1;
+`
 
 const StyledCollapse = styled(Collapse)`
   border-radius: 0;
@@ -30,6 +35,9 @@ const ToolboxShell = styled(FlatableColumn)`
 `
 export const Toolbox = memo(() => {
   const [resourceItems] = useResourceItemsState()
+  const { setNodeRef } = useDroppable({
+    id: "toolbox"
+  });
 
   const items: CollapseProps['items'] = useMemo(() => [
     {
@@ -37,7 +45,7 @@ export const Toolbox = memo(() => {
       label: '基础',
       children: <>
         {
-          resourceItems.map(item => (<ResourceItem item={item} />))
+          resourceItems.map(item => (<ResourceItem key={item.id} item={item} />))
         }
       </>,
     },
@@ -57,7 +65,13 @@ export const Toolbox = memo(() => {
       <ColumnTitle>
         菜单源
       </ColumnTitle>
-      <StyledCollapse size="small" accordion items={items} ghost />
+      <Content ref={setNodeRef}>
+        <StyledCollapse
+          size="small"
+          accordion
+          items={items}
+          ghost />
+      </Content>
     </ToolboxShell>
   )
 })
