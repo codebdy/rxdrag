@@ -1,5 +1,7 @@
-import { memo, useCallback, useMemo } from "react"
+import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { DraggableChildrenFn, IDraggableStateSnapshot, Identifier } from "./types";
+import { DRAGGABLE_ATTR_ID_NAME } from "./consts";
+import { useDndSnapshot } from "./hooks/useDndSnapshot";
 
 export type DraggableProps = {
   draggableId: Identifier;
@@ -15,16 +17,26 @@ export type DraggableProps = {
 export const Draggable = memo((
   props: DraggableProps
 ) => {
-  const { children } = props
+  const { draggableId, children } = props
+  const [ref, setRef] = useState<HTMLElement>()
+  const dndSnapshot = useDndSnapshot()
+
   const handleRefChange = useCallback((element?: HTMLElement | null) => {
-    //
-  }, [])
+    element?.setAttribute(DRAGGABLE_ATTR_ID_NAME, draggableId.toString())
+    setRef(element || undefined)
+  }, [draggableId])
 
   const snapshot: IDraggableStateSnapshot = useMemo(() => {
     return {
       isDragging: false,
     }
   }, [])
+
+  useEffect(() => {
+    if (dndSnapshot.draggingId === draggableId && draggableId && dndSnapshot.draggingOffset) {
+      ref?.style.setProperty("transform", `translate(${dndSnapshot.draggingOffset.x}px,${dndSnapshot.draggingOffset.y}px)`)
+    }
+  }, [dndSnapshot.draggingOffset, dndSnapshot.draggingId, draggableId, ref?.style])
 
   return (
     <>

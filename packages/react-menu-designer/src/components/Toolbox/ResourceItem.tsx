@@ -1,9 +1,8 @@
-import { memo, useRef } from "react"
+import { memo } from "react"
 import styled from 'styled-components';
 import { floatShadow, } from "../../utilities";
-import { createPortal } from "react-dom";
 import { IFlattenedItem } from "../../interfaces/flattened";
-
+import { Draggable } from "../../dnd";
 
 const Container = styled.div`
   position: relative;
@@ -12,7 +11,6 @@ const Container = styled.div`
   width: 100%;
   margin: 8px 0;
 `
-
 const Item = styled.div`
   display: flex;
   width: 100%;
@@ -34,44 +32,26 @@ const Item = styled.div`
 `
 
 export const ResourceItem = memo((
-  props: { item: IFlattenedItem }
+  props: { item: IFlattenedItem, index: number }
 ) => {
-  const { item } = props
-  const ref = useRef<HTMLDivElement>(null)
-
-  // const {
-  //   attributes,
-  //   listeners,
-  //   setNodeRef,
-  //   transform,
-  //   isDragging,
-  //   transition
-  // } = useSortable({ id: item.id });
+  const { index, item } = props
 
   return (
-    <Container ref={ref}>
-      <Item
-      >
-        {
-          item?.title
+    <Draggable
+      draggableId={item.id}
+      index={index}
+    >
+      {
+        (innerRef) => {
+          return <Container ref={innerRef}><Item>
+            {
+              item?.title
+            }
+            ({item.id})
+          </Item>
+          </Container>
         }
-        ({item.id})
-      </Item>
-      {/* {
-        isDragging && createPortal(//如果是新增项目，不显示鼠标跟随
-          <DragOverlay
-            dropAnimation={dropAnimationConfig}
-          >
-            <Item
-              className={"dragging"}
-            >
-              {
-                item?.title
-              }
-            </Item>
-          </DragOverlay>,
-          document.body
-        )} */}
-    </Container>
+      }
+    </Draggable>
   )
 })

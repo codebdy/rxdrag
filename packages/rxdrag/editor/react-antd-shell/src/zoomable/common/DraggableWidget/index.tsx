@@ -2,9 +2,10 @@ import { CSSProperties, memo, useCallback, useEffect, useRef, useState } from "r
 import styled from "styled-components";
 import { ResizeHandlers } from "./ResizeHandlers";
 import classnames from "classnames";
-import { MouseMoveEvent, MouseUpEvent, getRecentRxElement } from "@rxdrag/core";
+import { MouseMoveEvent, MouseUpEvent, RXID_ATTR_NAME } from "@rxdrag/core";
 import { IPosition, IWidgetLayout } from "./interfaces";
 import { useDesignerEngine } from "@rxdrag/react-core";
+import { getRecentRxElement } from "@rxdrag/shared";
 
 const Widget = styled.div`
   position: fixed;
@@ -36,7 +37,7 @@ export const DraggableWidget = memo((
       return
     }
 
-    if (getRecentRxElement(e.target as HTMLElement)) {
+    if (getRecentRxElement(e.target as HTMLElement, RXID_ATTR_NAME)) {
       return
     }
 

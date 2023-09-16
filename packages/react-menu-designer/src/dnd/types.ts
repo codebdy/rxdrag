@@ -1,4 +1,4 @@
-export type Identifier = string | number;
+export type Identifier = string;
 
 export type OverInfo = {
   item: Identifier,
@@ -18,6 +18,14 @@ export type OverOffset = {
 }
 
 export type DragStartEvent = DragEvent
+
+// export type DragMoveEvent = DragEvent & {
+//   //
+// }
+
+// export type DragOverEvent = DragEvent & {
+//   //
+// }
 
 export type DropEvent = DragEvent & {
   droppableId: Identifier,
@@ -74,3 +82,16 @@ export type DroppableChildrenFn = (
   innerRef: (element?: HTMLElement | null) => void,
   snapshot: IDroppableStateSnapshot,
 ) => React.ReactNode;
+
+export type Offset = {
+  x: number,
+  y: number,
+}
+
+export interface IDndSnapshot {
+  startMouseEvent?: MouseEvent
+  draggingOffset?: Offset
+  draggingId?: Identifier
+  overDraggableId?: Identifier,
+  overDroppableId?: Identifier,
+}

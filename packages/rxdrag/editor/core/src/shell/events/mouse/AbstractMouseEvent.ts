@@ -1,6 +1,6 @@
+import { getRecentRxElement } from "@rxdrag/shared"
 import { ID, NodeType, NodeStatus, RXID_ATTR_NAME, RX_NODE_TYPE_ATTR_NAME, RX_STATUS_ATTR_NAME } from "../../../interfaces"
 import { IEventData } from "../eventdata"
-import { getRecentRxElement } from "../../utils/getRecentRxElement"
 
 export interface NodeRxInfo {
   rxId?: ID,
@@ -46,7 +46,7 @@ export class AbstractMouseEvent {
 
     this.originalEvent = e
 
-    const rxTarget = getRecentRxElement(data.target as HTMLElement)
+    const rxTarget = getRecentRxElement(data.target as HTMLElement, RXID_ATTR_NAME)
     this.data.targetRx = rxTarget && this.getRxProps(rxTarget)
     this.transformCoordinates()
   }

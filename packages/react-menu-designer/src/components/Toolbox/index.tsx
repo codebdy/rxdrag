@@ -45,7 +45,7 @@ export const Toolbox = memo(() => {
       label: '基础',
       children: <>
         {
-          resourceItems.map(item => (<ResourceItem key={item.id} item={item} />))
+          resourceItems.map((item, index) => (<ResourceItem key={item.id} item={item} index={index} />))
         }
       </>,
     },

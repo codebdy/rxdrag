@@ -1,6 +1,5 @@
-import { RXID_ATTR_NAME } from "../../interfaces"
 
-export function getRecentRxElement(el: HTMLElement, attrName: string = RXID_ATTR_NAME): HTMLElement | undefined {
+export function getRecentRxElement(el: HTMLElement, attrName: string): HTMLElement | undefined {
   if (el?.getAttribute(attrName)) {
     return el
   } else {
