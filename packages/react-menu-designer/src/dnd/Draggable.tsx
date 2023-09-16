@@ -33,8 +33,12 @@ export const Draggable = memo((
   }, [])
 
   useEffect(() => {
-    if (dndSnapshot.draggingId === draggableId && draggableId && dndSnapshot.draggingOffset) {
-      ref?.style.setProperty("transform", `translate(${dndSnapshot.draggingOffset.x}px,${dndSnapshot.draggingOffset.y}px)`)
+    if (dndSnapshot.draggingId === draggableId && draggableId) {
+      if (dndSnapshot.draggingOffset) {
+        ref?.style.setProperty("transform", `translate(${dndSnapshot.draggingOffset.x}px,${dndSnapshot.draggingOffset.y}px)`)
+      }
+    } else {
+      ref?.style.setProperty("transform", `translate(0px,0px)`)
     }
   }, [dndSnapshot.draggingOffset, dndSnapshot.draggingId, draggableId, ref?.style])
 
