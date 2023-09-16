@@ -6,7 +6,6 @@ import { Collapse } from 'antd';
 import type { CollapseProps } from 'antd';
 import { useResourceItemsState } from "../../hooks/useResourceItemsState";
 import { ResourceItem } from "./ResourceItem";
-import { TOOLBOX_ID } from "../../consts";
 
 const maxWidth = 1000
 const minWidth = 200

@@ -21,6 +21,7 @@ const Item = styled.div`
   border-radius: 8px;
   border: solid 1px ${props => props.theme.token?.colorBorder};
   user-select: none;
+  background-color: ${props => props.theme.token?.colorBgBase};
   &.dragging{
     opacity: 0.6;
     background-color: ${props => props.theme.token?.colorBgContainer};
@@ -42,13 +43,18 @@ export const ResourceItem = memo((
       index={index}
     >
       {
-        (innerRef) => {
-          return <Container ref={innerRef}><Item>
-            {
-              item?.title
-            }
-            ({item.id})
-          </Item>
+        (innerRef, snapshot) => {
+          return <Container
+            ref={innerRef}
+            // style={{
+            //   zIndex: snapshot.isDragging ? 1 : undefined
+            // }}
+          ><Item>
+              {
+                item?.title
+              }
+              ({item.id})
+            </Item>
           </Container>
         }
       }

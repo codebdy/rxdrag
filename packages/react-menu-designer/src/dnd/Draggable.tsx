@@ -28,17 +28,21 @@ export const Draggable = memo((
 
   const snapshot: IDraggableStateSnapshot = useMemo(() => {
     return {
-      isDragging: false,
+      isDragging: dndSnapshot.draggingId === draggableId,
     }
-  }, [])
+  }, [dndSnapshot.draggingId, draggableId])
 
   useEffect(() => {
     if (dndSnapshot.draggingId === draggableId && draggableId) {
       if (dndSnapshot.draggingOffset) {
         ref?.style.setProperty("transform", `translate(${dndSnapshot.draggingOffset.x}px,${dndSnapshot.draggingOffset.y}px)`)
+        if (!ref?.style.getPropertyValue('z-index')) {
+          ref?.style.setProperty("z-index", "1")
+        }
       }
     } else {
       ref?.style.setProperty("transform", `translate(0px,0px)`)
+      ref?.style.removeProperty("z-index")
     }
   }, [dndSnapshot.draggingOffset, dndSnapshot.draggingId, draggableId, ref?.style])
 
