@@ -1,8 +1,8 @@
 import type {MutableRefObject} from 'react';
-import type {UniqueIdentifier} from '@dnd-kit/core';
+import { Identifier } from './dnd/types';
 
 export interface TreeItem {
-  id: UniqueIdentifier;
+  id: Identifier;
   children: TreeItem[];
   collapsed?: boolean;
 }
@@ -10,7 +10,7 @@ export interface TreeItem {
 export type TreeItems = TreeItem[];
 
 export interface FlattenedItem extends TreeItem {
-  parentId: UniqueIdentifier | null;
+  parentId: Identifier | null;
   depth: number;
   index: number;
 }

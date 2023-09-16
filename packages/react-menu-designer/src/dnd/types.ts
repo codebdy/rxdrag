@@ -20,7 +20,8 @@ export type OverOffset = {
 export type DragStartEvent = DragEvent
 
 export type DropEvent = DragEvent & {
-  over: OverInfo,
+  droppableId: Identifier,
+  index: number,
   offset?: OverOffset,
 }
 
@@ -56,4 +57,20 @@ export interface IDraggableStateSnapshot {
 export type DraggableChildrenFn = (
   innerRef: (element?: HTMLElement | null) => void,
   snapshot: IDraggableStateSnapshot,
+) => React.ReactNode;
+
+
+export interface DroppableProvided {
+  innerRef: (element: HTMLElement | null) => void;
+  placeholder?: React.ReactElement<HTMLElement> | null | undefined;
+}
+
+export interface IDroppableStateSnapshot {
+  isDraggingOver: boolean;
+  draggingOverWith?: Identifier | undefined;
+}
+
+export type DroppableChildrenFn = (
+  innerRef: (element?: HTMLElement | null) => void,
+  snapshot: IDroppableStateSnapshot,
 ) => React.ReactNode;

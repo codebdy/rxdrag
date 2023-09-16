@@ -1,8 +1,8 @@
 import { createContext } from "react";
 import { IMenuItemResource } from "./interfaces";
-import { UniqueIdentifier } from "@dnd-kit/core";
 import { TreeItems } from "./types";
 import { IFlattenedItem } from "./interfaces/flattened";
+import { Identifier } from "./dnd/types";
 
 export const ResourcesContext = createContext<IMenuItemResource[]>([])
 
@@ -39,7 +39,7 @@ export type ItemsState = [IFlattenedItem[], React.Dispatch<React.SetStateAction<
 export const ItemsContext = createContext<ItemsState>([[], notMethod])
 export const ResourceItemsContext = createContext<ItemsState>([[], notMethod])
 
-export type IdState = [UniqueIdentifier | null, React.Dispatch<React.SetStateAction<UniqueIdentifier | null>>]
+export type IdState = [Identifier | null, React.Dispatch<React.SetStateAction<Identifier | null>>]
 export const ActiveIdContext = createContext<IdState>([null, notMethod])
 export const OverIdContext = createContext<IdState>([null, notMethod])
 
@@ -58,3 +58,14 @@ export const defautHistory = { undoList: [], redoList: [] }
 
 export type HistoryState = [HistoryRedords, React.Dispatch<React.SetStateAction<HistoryRedords>>]
 export const HistoryContext = createContext<HistoryState>([defautHistory, notMethod])
+
+export type DroppableParams = {
+  itemIds: Identifier[],
+  over?: boolean,
+}
+
+export const defualtDroppableParams = {
+  itemIds: []
+}
+export type DroppableState = [DroppableParams, React.Dispatch<React.SetStateAction<DroppableParams>>]
+export const DroppableContext = createContext<DroppableState>([defualtDroppableParams, notMethod])
