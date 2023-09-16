@@ -35,7 +35,7 @@ const CanvasContainer = styled.div`
   height: 0;
   display: flex;
   flex-flow: column;
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
 `
 

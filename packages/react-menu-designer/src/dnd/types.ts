@@ -1,12 +1,12 @@
 export type Identifier = string | number;
 
-export type ItemInfo = {
-  id: Identifier,
-  data?: unknown,
+export type OverInfo = {
+  item: Identifier,
+  container?: unknown,
 }
 
 export type DragEvent = {
-  active: ItemInfo,
+  active: OverInfo,
   originalEvent: MouseEvent,
 }
 
@@ -19,18 +19,41 @@ export type OverOffset = {
 
 export type DragStartEvent = DragEvent
 
-export type DragMoveEvent = DragEvent & {
-  over: ItemInfo,
-}
-
-export type DragOverEvent = DragEvent & {
-  over: ItemInfo,
-  offset?: OverOffset,
-}
-
-export type DragEndEvent = DragEvent & {
-  over: ItemInfo,
+export type DropEvent = DragEvent & {
+  over: OverInfo,
   offset?: OverOffset,
 }
 
 export type DragCancelEvent = DragEvent
+
+export interface Position {
+  x: number;
+  y: number;
+}
+
+
+// export interface DropAnimation {
+//   duration: number;
+//   curve: string;
+//   moveTo: Position;
+//   opacity?: number | undefined;
+//   scale?: number | undefined;
+// }
+
+export type DraggingOver = {
+  overId: Identifier,
+  offset: OverOffset,
+  originalEvent?: MouseEvent,
+}
+
+export interface IDraggableStateSnapshot {
+  isDragging: boolean;
+  //isDropAnimating: boolean;
+  //dropAnimation?: DropAnimation | undefined;
+  draggingOver?: DraggingOver;
+}
+
+export type DraggableChildrenFn = (
+  innerRef: (element?: HTMLElement | null) => void,
+  snapshot: IDraggableStateSnapshot,
+) => React.ReactNode;

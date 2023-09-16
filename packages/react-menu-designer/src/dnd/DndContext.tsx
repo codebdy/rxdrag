@@ -1,11 +1,11 @@
 import { memo } from "react"
-import { DragCancelEvent, DragEndEvent, DragMoveEvent, DragOverEvent, DragStartEvent } from "./types";
+import { DragCancelEvent, DropEvent, DragStartEvent } from "./types";
 
 export type DndContextProps = {
   onDragStart?: (e: DragStartEvent) => void,
-  onDragMove?: (e: DragMoveEvent) => void,
-  onDragOver?: (e: DragOverEvent) => void,
-  onDragEnd?: (e: DragEndEvent) => void,
+  //onDragMove?: (e: DragMoveEvent) => void,
+  // onDragOver?: (e: DragOverEvent) => void,
+  onDragEnd?: (e: DropEvent) => void,
   onDragCancel?: (e: DragCancelEvent) => void,
   children?: React.ReactNode
 }
