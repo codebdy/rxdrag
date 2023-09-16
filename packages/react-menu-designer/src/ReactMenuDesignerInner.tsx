@@ -1,19 +1,17 @@
-import { memo, useCallback, useEffect, useRef, useState } from 'react';
+import { memo, useCallback, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Toolbox } from './components/Toolbox';
 import { PropertyPanel } from './components/PropertyPanel';
 import { Button, Divider, Space } from 'antd';
 import { DeleteOutlined, RedoOutlined, UndoOutlined } from '@ant-design/icons';
-import { SortableTree } from './components/SortableTree';
 import { useActiveIdState } from './hooks/useActiveIdState';
 import { useOverIdState } from './hooks/useOverIdState';
 import { useOffsetLeftState } from './hooks/useOffsetLeftState';
 import { useItemsState } from './hooks/useItemsState';
-import { IFlattenedItem } from './interfaces/flattened';
 import { useResourceItemsState } from './hooks/useResourceItemsState';
 import { useGetResourceItem } from './hooks/useGetResourceItem';
 import { useGetResource } from './hooks/useGetResource';
-import { CANVS_ID, TOOLBOX_ID } from './consts';
+import { DndContext } from './dnd/DndContext';
 
 const Shell = styled.div`
   position: relative;
@@ -55,6 +53,7 @@ const DropContainer = styled.div`
   flex-flow: column;
   padding: 4px 8px;
   user-select: none;
+  box-sizing: border-box;
 `
 
 const Toolbar = styled.div`
@@ -112,9 +111,9 @@ export const ReactMenuDesignerInner = memo(({
   const [overId, setOverId] = useOverIdState();
   const [offsetLeft, setOffsetLeft] = useOffsetLeftState();
   const canvasRef = useRef<HTMLDivElement>(null)
-  const { setNodeRef } = useDroppable({
-    id: CANVS_ID
-  });
+  // const { setNodeRef } = useDroppable({
+  //   id: CANVS_ID
+  // });
 
   const getResourceItem = useGetResourceItem();
   const getResource = useGetResource()
@@ -171,10 +170,10 @@ export const ReactMenuDesignerInner = memo(({
   return (
 
     <DndContext
-      onDragStart={handleDragStart}
-      onDragMove={handleDragMove}
-      onDragOver={handleDragOver}
-      onDragEnd={handleDragEnd}
+      // onDragStart={handleDragStart}
+      // onDragMove={handleDragMove}
+      // onDragOver={handleDragOver}
+      // onDragEnd={handleDragEnd}
       onDragCancel={handleDragCancel}
     >
       <Shell>
@@ -190,8 +189,8 @@ export const ReactMenuDesignerInner = memo(({
             <Button type="primary" >保存</Button>
           </Toolbar>
           <Canvas ref={canvasRef} className='menu-canvas'>
-            <DropContainer ref={setNodeRef} className='menu-drop-container'>
-              <SortableTree />
+            <DropContainer className='menu-drop-container'>
+              
             </DropContainer>
           </Canvas>
         </CanvasContainer>

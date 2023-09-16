@@ -35,9 +35,9 @@ const ToolboxShell = styled(FlatableColumn)`
 `
 export const Toolbox = memo(() => {
   const [resourceItems] = useResourceItemsState()
-  const { setNodeRef } = useDroppable({
-    id: TOOLBOX_ID
-  });
+  // const { setNodeRef } = useDroppable({
+  //   id: TOOLBOX_ID
+  // });
 
   const items: CollapseProps['items'] = useMemo(() => [
     {
@@ -65,7 +65,7 @@ export const Toolbox = memo(() => {
       <ColumnTitle>
         菜单源
       </ColumnTitle>
-      <Content ref={setNodeRef}>
+      <Content >
         <StyledCollapse
           size="small"
           accordion
