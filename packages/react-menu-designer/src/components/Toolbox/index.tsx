@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { ColumnTitle, FlatableColumn } from "../FlatableColumn";
 import { Collapse } from 'antd';
 import type { CollapseProps } from 'antd';
-import { useResourceItemsState } from "../../hooks/useResourceItemsState";
 import { ResourceItem } from "./ResourceItem";
+import { MenuItemType } from "../../interfaces";
 
 const maxWidth = 1000
 const minWidth = 200
@@ -33,7 +33,7 @@ const ToolboxShell = styled(FlatableColumn)`
   left: ${DEFAULT_MARGIN}px;
 `
 export const Toolbox = memo(() => {
-  const [resourceItems] = useResourceItemsState()
+
   // const { setNodeRef } = useDroppable({
   //   id: TOOLBOX_ID
   // });
@@ -43,9 +43,8 @@ export const Toolbox = memo(() => {
       key: '1',
       label: '基础',
       children: <>
-        {
-          resourceItems.map((item, index) => (<ResourceItem key={item.id} item={item} index={index} />))
-        }
+        <ResourceItem name={MenuItemType.text} />
+        <ResourceItem name={MenuItemType.link} />
       </>,
     },
     {
@@ -53,7 +52,7 @@ export const Toolbox = memo(() => {
       label: '视图',
 
     },
-  ], [resourceItems]);
+  ], []);
 
   return (
     <ToolboxShell

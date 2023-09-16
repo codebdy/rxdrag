@@ -1,8 +1,8 @@
 import { memo } from "react"
 import styled from 'styled-components';
 import { floatShadow, } from "../../utilities";
-import { IFlattenedItem } from "../../interfaces/flattened";
 import { Draggable } from "../../dnd";
+import { useResource } from "../../hooks/useResource";
 
 const Container = styled.div`
   position: relative;
@@ -33,27 +33,23 @@ const Item = styled.div`
 `
 
 export const ResourceItem = memo((
-  props: { item: IFlattenedItem, index: number }
+  props: { name: string }
 ) => {
-  const { index, item } = props
-
+  const { name } = props
+  const resource = useResource(name)
+  console.log("哈哈哈", resource)
   return (
     <Draggable
-      draggableId={item.id}
-      index={index}
+      draggableId={name}
     >
       {
         (innerRef, snapshot) => {
           return <Container
             ref={innerRef}
-            // style={{
-            //   zIndex: snapshot.isDragging ? 1 : undefined
-            // }}
           ><Item>
               {
-                item?.title
+                resource?.title
               }
-              ({item.id})
             </Item>
           </Container>
         }

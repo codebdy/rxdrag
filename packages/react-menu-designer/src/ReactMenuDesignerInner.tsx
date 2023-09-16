@@ -8,8 +8,6 @@ import { useActiveIdState } from './hooks/useActiveIdState';
 import { useOverIdState } from './hooks/useOverIdState';
 import { useOffsetLeftState } from './hooks/useOffsetLeftState';
 import { useItemsState } from './hooks/useItemsState';
-import { useResourceItemsState } from './hooks/useResourceItemsState';
-import { useGetResourceItem } from './hooks/useGetResourceItem';
 import { useGetResource } from './hooks/useGetResource';
 import { DndContext } from './dnd/DndContext';
 
@@ -106,7 +104,6 @@ export const ReactMenuDesignerInner = memo(({
   //const [newItem, setNewItem] = useState<IMenuItem>()
   const [overOnCanvas, setOverOnCanvas] = useState<boolean>()
   const [items, setItems] = useItemsState();
-  const [resourceItems, setResourceItems] = useResourceItemsState();
   const [activeId, setActiveId] = useActiveIdState();
   const [overId, setOverId] = useOverIdState();
   const [offsetLeft, setOffsetLeft] = useOffsetLeftState();
@@ -115,7 +112,6 @@ export const ReactMenuDesignerInner = memo(({
   //   id: CANVS_ID
   // });
 
-  const getResourceItem = useGetResourceItem();
   const getResource = useGetResource()
   // const flattenedItems = useMemo(() => {
   //   const flattenedTree = flattenTree(items);
@@ -190,7 +186,7 @@ export const ReactMenuDesignerInner = memo(({
           </Toolbar>
           <Canvas ref={canvasRef} className='menu-canvas'>
             <DropContainer className='menu-drop-container'>
-              
+
             </DropContainer>
           </Canvas>
         </CanvasContainer>

@@ -1,9 +1,9 @@
-import { UniqueIdentifier } from "@dnd-kit/core";
 import { memo, useCallback, useEffect, useState } from "react"
-import { ActiveIdContext, ResourceItemsContext, HistoryContext, HistoryRedords, ItemsContext, OffsetLeftContext, OverIdContext, defautHistory, ResourcesContext } from "./contexts";
+import { ActiveIdContext, HistoryContext, HistoryRedords, ItemsContext, OffsetLeftContext, OverIdContext, defautHistory, ResourcesContext } from "./contexts";
 import { IMenuItem } from "./interfaces";
 import { IFlattenedItem } from "./interfaces/flattened";
 import { menuResources } from "./resources";
+import { Identifier } from "./dnd/types";
 
 export const DesignerRoot = memo((props: {
   defaultValue?: IMenuItem[],
@@ -12,18 +12,16 @@ export const DesignerRoot = memo((props: {
 }) => {
   const { defaultValue, value, children } = props;
   const itemsState = useState<IFlattenedItem[]>([]);
-  const resourceItemsState = useState<IFlattenedItem[]>([]);
-  const activeIdState = useState<UniqueIdentifier | null>(null);
-  const overIdState = useState<UniqueIdentifier | null>(null);
+  const activeIdState = useState<Identifier | null>(null);
+  const overIdState = useState<Identifier | null>(null);
   const offsetLeftState = useState(0);
   const historyState = useState<HistoryRedords>(defautHistory)
   const [, setHistoryState] = historyState
   const [, setItems] = itemsState
-  const [, setResourceItems] = resourceItemsState
 
   const flatten = useCallback((
     items: IMenuItem[],
-    parentId: UniqueIdentifier | null = null,
+    parentId: Identifier | null = null,
     depth = 0
   ): IFlattenedItem[] => {
     return items.reduce<IFlattenedItem[]>((acc, item) => {
@@ -49,25 +47,19 @@ export const DesignerRoot = memo((props: {
     setItems(flatten(value || []))
   }, [flatten, setItems, value])
 
-  useEffect(() => {
-    setResourceItems(flatten(menuResources.map((resource) => resource.createMenuItem())))
-  }, [flatten, setResourceItems])
-
   return (
     <ResourcesContext.Provider value={menuResources}>
-      <ResourceItemsContext.Provider value={resourceItemsState}>
-        <ItemsContext.Provider value={itemsState}>
-          <ActiveIdContext.Provider value={activeIdState}>
-            <OverIdContext.Provider value={overIdState}>
-              <OffsetLeftContext.Provider value={offsetLeftState}>
-                <HistoryContext.Provider value={historyState}>
-                  {children}
-                </HistoryContext.Provider>
-              </OffsetLeftContext.Provider>
-            </OverIdContext.Provider>
-          </ActiveIdContext.Provider>
-        </ItemsContext.Provider>
-      </ResourceItemsContext.Provider>
+      <ItemsContext.Provider value={itemsState}>
+        <ActiveIdContext.Provider value={activeIdState}>
+          <OverIdContext.Provider value={overIdState}>
+            <OffsetLeftContext.Provider value={offsetLeftState}>
+              <HistoryContext.Provider value={historyState}>
+                {children}
+              </HistoryContext.Provider>
+            </OffsetLeftContext.Provider>
+          </OverIdContext.Provider>
+        </ActiveIdContext.Provider>
+      </ItemsContext.Provider>
     </ResourcesContext.Provider>
   )
 })

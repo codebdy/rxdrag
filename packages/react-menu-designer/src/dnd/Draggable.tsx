@@ -5,7 +5,7 @@ import { useDndSnapshot } from "./hooks/useDndSnapshot";
 
 export type DraggableProps = {
   draggableId: Identifier;
-  index: number;
+  index?: number;
   clonable?: boolean;
   //目标位置的占位符
   renderPlaceholder?: DraggableChildrenFn;

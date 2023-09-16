@@ -1,8 +1,10 @@
 import { createId } from "@rxdrag/shared";
-import { IMenuItem, IMenuItemResource, MenuItemType } from "../interfaces";
+import { IMenuItemResource, MenuItemType } from "../interfaces";
 
 export const menuResources: IMenuItemResource[] = [
   {
+    name: MenuItemType.text,
+    title: "文本",
     createMenuItem: () => {
       return {
         id: createId(),
@@ -10,11 +12,10 @@ export const menuResources: IMenuItemResource[] = [
         title: "文本"
       }
     },
-    isSameSoure: (menuItem: IMenuItem) => {
-      return menuItem.type === MenuItemType.text
-    }
   },
   {
+    name: MenuItemType.link,
+    title: "链接",
     createMenuItem: () => {
       return {
         id: createId(),
@@ -22,8 +23,5 @@ export const menuResources: IMenuItemResource[] = [
         title: "链接"
       }
     },
-    isSameSoure: (menuItem: IMenuItem) => {
-      return menuItem.type === MenuItemType.link
-    }
   }
 ]
