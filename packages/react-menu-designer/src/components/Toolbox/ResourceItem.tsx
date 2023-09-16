@@ -10,7 +10,15 @@ const Container = styled.div`
   box-sizing: border-box;
   width: 100%;
   margin: 8px 0;
+  &.dragging{
+    opacity: 0.6;
+  }
 `
+
+const MouseFollower = styled(Container)`
+  opacity: 0.6;
+`
+
 const Item = styled.div`
   display: flex;
   width: 100%;
@@ -37,14 +45,21 @@ export const ResourceItem = memo((
 ) => {
   const { name } = props
   const resource = useResource(name)
-  console.log("哈哈哈", resource)
   return (
     <Draggable
       draggableId={name}
+      mouseFollower={<MouseFollower>
+        <Item>
+          {
+            resource?.title
+          }
+        </Item>
+      </MouseFollower>}
     >
       {
         (innerRef, snapshot) => {
           return <Container
+            className={snapshot.isDragging ? "dragging" : undefined}
             ref={innerRef}
           ><Item>
               {
