@@ -6,7 +6,7 @@ import { Collapse } from 'antd';
 import type { CollapseProps } from 'antd';
 import { useResourceItemsState } from "../../hooks/useResourceItemsState";
 import { ResourceItem } from "./ResourceItem";
-import { useDroppable } from "@dnd-kit/core";
+import { TOOLBOX_ID } from "../../consts";
 
 const maxWidth = 1000
 const minWidth = 200
@@ -36,7 +36,7 @@ const ToolboxShell = styled(FlatableColumn)`
 export const Toolbox = memo(() => {
   const [resourceItems] = useResourceItemsState()
   const { setNodeRef } = useDroppable({
-    id: "toolbox"
+    id: TOOLBOX_ID
   });
 
   const items: CollapseProps['items'] = useMemo(() => [

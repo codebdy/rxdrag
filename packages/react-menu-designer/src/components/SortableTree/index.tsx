@@ -1,31 +1,10 @@
-import { useEffect, useMemo, useRef } from 'react';
-import { createPortal } from 'react-dom';
-import {
-  DragOverlay,
-  Modifier,
-  UniqueIdentifier,
-} from '@dnd-kit/core';
-import {
-  SortableContext,
-  verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
-
-import {
-  flattenTree,
-  getProjection,
-  getChildCount,
-  removeItem,
-  removeChildrenOf,
-  setProperty,
-} from '../../utilities';
-import type { SensorContext } from '../../types';
-import { SortableTreeItem } from '..';
+import { useMemo } from 'react';
 import { useActiveIdState } from '../../hooks/useActiveIdState';
 import { useOverIdState } from '../../hooks/useOverIdState';
 import { useOffsetLeftState } from '../../hooks/useOffsetLeftState';
 import { useItemsState } from '../../hooks/useItemsState';
-import { dropAnimationConfig } from './dropAnimationConfig';
 import { SortableItem } from './SortableItem';
+import { CANVS_ID } from '../../consts';
 
 
 export type SortableTreeProps = {
@@ -46,7 +25,7 @@ export function SortableTree({
   const sortedIds = useMemo(() => items.map(item => item.id), [items])
 
   return (
-    <SortableContext items={sortedIds} strategy={verticalListSortingStrategy}>
+    <SortableContext id={CANVS_ID} items={sortedIds} strategy={verticalListSortingStrategy}>
       {
         items.map((item) => {
           return (<SortableItem key={item.id} item={item} />)
@@ -74,13 +53,4 @@ export function SortableTree({
     </SortableContext>
   );
 
-
-
 }
-
-const adjustTranslate: Modifier = ({ transform }) => {
-  return {
-    ...transform,
-    y: transform.y - 25,
-  };
-};

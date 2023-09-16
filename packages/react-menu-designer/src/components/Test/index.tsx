@@ -78,8 +78,8 @@ export function Test() {
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
       >
-        <Container1 id="root" activeId={activeId} items={items.root} />
-        <Container id="container1" activeId={activeId} items={items.container1} />
+        <Container id="root" items={items.root} />
+        <Container id="container3" items={items.container3} />
         <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay>
       </DndContext>
     </div>
@@ -111,7 +111,7 @@ export function Test() {
     // Find the containers
     const activeContainer = findContainer(id);
     const overContainer = findContainer(overId);
-
+    console.log("===>handleDragOver", id, overId, event)
     if (
       !activeContainer ||
       !overContainer ||

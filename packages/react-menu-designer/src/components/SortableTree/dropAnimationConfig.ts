@@ -1,7 +1,5 @@
-import { DropAnimation, defaultDropAnimation } from '@dnd-kit/core';
-import { CSS } from '@dnd-kit/utilities';
 
-export const dropAnimationConfig: DropAnimation = {
+export const dropAnimationConfig: any = {
   keyframes({ transform }) {
     return [
       { opacity: 1, transform: CSS.Transform.toString(transform.initial) },
