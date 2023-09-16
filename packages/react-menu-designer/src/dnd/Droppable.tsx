@@ -2,6 +2,7 @@ import { memo, useCallback, useMemo, useState } from "react"
 import { DraggableChildrenFn, DroppableChildrenFn, IDroppableStateSnapshot, Identifier } from "./types"
 import { DroppableContext, DroppableParams, defualtDroppableParams } from "../contexts";
 import { DROPPABLE_ATTR_ID_NAME } from "./consts";
+import { useDndSnapshot } from "./hooks/useDndSnapshot";
 
 
 export type Direction = 'horizontal' | 'vertical';
@@ -17,10 +18,13 @@ export type DroppableProps = {
 
 export const Droppable = memo((props: DroppableProps) => {
   const { droppableId, children, renderPlaceholder } = props
+  const [element, setElement] = useState<HTMLElement>()
   const droppableState = useState<DroppableParams>(defualtDroppableParams)
+  const dndSnapshot = useDndSnapshot()
 
   const handleRefChange = useCallback((element?: HTMLElement | null) => {
     element?.setAttribute(DROPPABLE_ATTR_ID_NAME, droppableId.toString())
+    setElement(element || undefined)
   }, [droppableId])
 
   const snapshot: IDroppableStateSnapshot = useMemo(() => {

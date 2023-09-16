@@ -22,15 +22,15 @@ export const Draggable = memo((
   props: DraggableProps
 ) => {
   const { draggableId, clonable, mouseFollower, children } = props
-  const [ref, setRef] = useState<HTMLElement>()
+  const [element, setElement] = useState<HTMLElement>()
   const mouseFollowerRef = useRef<HTMLDivElement>(null)
   const dndSnapshot = useDndSnapshot()
 
-  const follerRef = mouseFollower ? mouseFollowerRef.current : ref
+  const follerRef = mouseFollower ? mouseFollowerRef.current : element
 
   const handleRefChange = useCallback((element?: HTMLElement | null) => {
     element?.setAttribute(DRAGGABLE_ATTR_ID_NAME, draggableId.toString())
-    setRef(element || undefined)
+    setElement(element || undefined)
   }, [draggableId])
 
   const snapshot: IDraggableStateSnapshot = useMemo(() => {
@@ -62,10 +62,10 @@ export const Draggable = memo((
         snapshot.isDragging && mouseFollower && <MouseFollower
           ref={mouseFollowerRef}
           style={{
-            left: ref?.getBoundingClientRect().left,
-            top: ref?.getBoundingClientRect().top,
-            width: ref?.getBoundingClientRect().width,
-            height: ref?.getBoundingClientRect().height,
+            left: element?.getBoundingClientRect().left,
+            top: element?.getBoundingClientRect().top,
+            width: element?.getBoundingClientRect().width,
+            height: element?.getBoundingClientRect().height,
           }}
         >
           {

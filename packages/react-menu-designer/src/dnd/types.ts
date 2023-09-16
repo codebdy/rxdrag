@@ -1,12 +1,8 @@
 export type Identifier = string;
 
-export type OverInfo = {
-  item: Identifier,
-  container?: unknown,
-}
 
 export type DragEvent = {
-  active: OverInfo,
+  activeId: Identifier,
   originalEvent: MouseEvent,
 }
 
@@ -88,10 +84,15 @@ export type Offset = {
   y: number,
 }
 
+export type OverInfo = {
+  overId?: Identifier,
+  offset?: OverOffset,
+}
+
 export interface IDndSnapshot {
   startMouseEvent?: MouseEvent
   draggingOffset?: Offset
   draggingId?: Identifier
-  overDraggableId?: Identifier,
-  overDroppableId?: Identifier,
+  overDraggable?: OverInfo,
+  overDroppable?: OverInfo,
 }
