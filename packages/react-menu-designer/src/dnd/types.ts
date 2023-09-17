@@ -71,12 +71,12 @@ export interface DroppableProvided {
 
 export interface IDroppableStateSnapshot {
   isDraggingOver: boolean;
-  draggingOverWith?: Identifier | undefined;
+  over?: OverInfo;
 }
 
 export type DroppableChildrenFn = (
   innerRef: (element?: HTMLElement | null) => void,
-  snapshot: IDroppableStateSnapshot,
+  snapshot?: IDroppableStateSnapshot,
 ) => React.ReactNode;
 
 export type Offset = {
@@ -84,9 +84,8 @@ export type Offset = {
   y: number,
 }
 
-export type OverInfo = {
-  overId?: Identifier,
-  offset?: OverOffset,
+export type OverInfo = OverOffset & {
+  id?: Identifier,
 }
 
 export interface IDndSnapshot {

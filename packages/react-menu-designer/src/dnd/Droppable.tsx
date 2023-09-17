@@ -18,20 +18,19 @@ export type DroppableProps = {
 
 export const Droppable = memo((props: DroppableProps) => {
   const { droppableId, children, renderPlaceholder } = props
-  const [element, setElement] = useState<HTMLElement>()
   const droppableState = useState<DroppableParams>(defualtDroppableParams)
   const dndSnapshot = useDndSnapshot()
 
   const handleRefChange = useCallback((element?: HTMLElement | null) => {
-    element?.setAttribute(DROPPABLE_ATTR_ID_NAME, droppableId.toString())
-    setElement(element || undefined)
+    element?.setAttribute(DROPPABLE_ATTR_ID_NAME, droppableId)
   }, [droppableId])
 
   const snapshot: IDroppableStateSnapshot = useMemo(() => {
     return {
-      isDraggingOver: false,
+      isDraggingOver: dndSnapshot.overDroppable?.id === droppableId,
+      over: dndSnapshot.overDroppable
     }
-  }, [])
+  }, [dndSnapshot.overDroppable, droppableId])
 
   return (
     <DroppableContext.Provider value={droppableState}>

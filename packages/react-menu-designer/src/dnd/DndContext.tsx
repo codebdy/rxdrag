@@ -1,7 +1,7 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { DragCancelEvent, DropEvent, DragStartEvent, IDndSnapshot, Identifier, Offset } from "./types";
+import { DragCancelEvent, DropEvent, DragStartEvent, IDndSnapshot, Identifier, Offset, OverInfo } from "./types";
 import { getRecentRxElement } from "@rxdrag/shared";
-import { DRAGGABLE_ATTR_ID_NAME } from "./consts";
+import { DRAGGABLE_ATTR_ID_NAME, DROPPABLE_ATTR_ID_NAME } from "./consts";
 import { DndSnapshotContext } from "./contexts";
 
 export type DndContextProps = {
@@ -21,6 +21,9 @@ export const DndContext = memo((
   const [activeId, setActiveId] = useState<Identifier>();
   const [dragging, setDragging] = useState<boolean>()
   const [draggingOffset, setDraggingOffset] = useState<Offset>()
+  const [overDraggable, setOverDraggable] = useState<OverInfo>()
+  const [overDroppable, setOverDroppable] = useState<OverInfo>()
+
   const mouseDownEventRef = useRef(mouseDownEvent)
   mouseDownEventRef.current = mouseDownEvent
 
@@ -34,9 +37,30 @@ export const DndContext = memo((
     }
   }, [])
 
+  const getOverInfo = useCallback((attrName: string, e: MouseEvent) => {
+    const recentElement = getRecentRxElement(e.target as HTMLElement, attrName)
+    if (recentElement) {
+      const draggableRect = recentElement.getBoundingClientRect()
+      const offsetX = e.clientX - draggableRect.left
+      const offsetY = e.clientY - draggableRect.top
+      const over: OverInfo = {
+        id: recentElement.getAttribute(attrName) || undefined,
+        offsetX: offsetX,
+        offsetY: offsetY,
+        offsetXPercent: offsetX / draggableRect.width,
+        offsetYPercent: offsetY / draggableRect.height,
+      }
+      return over
+    }
+  }, [])
+
   const handleMouseMove = useCallback((e: MouseEvent) => {
     const startEvent = mouseDownEventRef.current
     if (startEvent) {
+      const draggableOver = getOverInfo(DRAGGABLE_ATTR_ID_NAME, e)
+      setOverDraggable(draggableOver)
+      const droppableOver = getOverInfo(DROPPABLE_ATTR_ID_NAME, e)
+      setOverDroppable(droppableOver)
       if (Math.abs(e.screenX - startEvent.screenX) > 5 ||
         Math.abs(e.screenY - startEvent.screenY) > 5) {
         setDragging(true)
@@ -44,12 +68,13 @@ export const DndContext = memo((
         offset.x = e.clientX - startEvent.clientX
         offset.y = e.clientY - startEvent.clientY
         setDraggingOffset(offset)
-        //setMouseMoveEvent(e);
       }
     }
-  }, [])
+  }, [getOverInfo])
 
   const handleMouseUp = useCallback((e: MouseEvent) => {
+    setOverDraggable(undefined)
+    setOverDroppable(undefined)
     setDragging(false)
     setDraggingOffset(undefined)
     setMouseDownEvent(undefined)
@@ -72,8 +97,10 @@ export const DndContext = memo((
       startMouseEvent: mouseDownEvent,
       draggingId: dragging ? activeId : undefined,
       draggingOffset,
+      overDraggable,
+      overDroppable,
     }
-  }, [activeId, dragging, draggingOffset, mouseDownEvent])
+  }, [activeId, dragging, draggingOffset, mouseDownEvent, overDraggable, overDroppable])
 
   return (
     <DndSnapshotContext.Provider value={snapshot}>

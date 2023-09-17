@@ -10,6 +10,9 @@ import { useOffsetLeftState } from './hooks/useOffsetLeftState';
 import { useItemsState } from './hooks/useItemsState';
 import { useGetResource } from './hooks/useGetResource';
 import { DndContext } from './dnd/DndContext';
+import { Droppable } from './dnd';
+import { CANVS_ID } from './consts';
+import classNames from 'classnames';
 
 const Shell = styled.div`
   position: relative;
@@ -52,6 +55,9 @@ const DropContainer = styled.div`
   padding: 4px 8px;
   user-select: none;
   box-sizing: border-box;
+  &.over{
+    background-color: red;
+  }
 `
 
 const Toolbar = styled.div`
@@ -185,9 +191,17 @@ export const ReactMenuDesignerInner = memo(({
             <Button type="primary" >保存</Button>
           </Toolbar>
           <Canvas ref={canvasRef} className='menu-canvas'>
-            <DropContainer className='menu-drop-container'>
+            <Droppable droppableId={CANVS_ID}>
+              {
+                (innerRef, snapshot) => {
+                  return (
+                    <DropContainer ref={innerRef} className={classNames('menu-drop-container', { over: snapshot?.isDraggingOver })}>
+                    </DropContainer>
+                  )
+                }
+              }
+            </Droppable>
 
-            </DropContainer>
           </Canvas>
         </CanvasContainer>
         <PropertyPanel></PropertyPanel>

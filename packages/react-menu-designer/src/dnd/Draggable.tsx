@@ -58,12 +58,18 @@ export const Draggable = memo((
   useEffect(() => {
     if (dndSnapshot.draggingId === draggableId) {
       setRect(element?.getBoundingClientRect())
+      element?.style.setProperty("pointer-events", "none")
       if (!clonable) {
         const display = element?.style.getPropertyValue("display")
         element?.style.setProperty("display", "none")
         return () => {
           element?.style.setProperty("display", display || "")
+          element?.style.setProperty("pointer-events", "all")
         }
+      }
+
+      return () => {
+        element?.style.setProperty("pointer-events", "all")
       }
     }
   }, [clonable, dndSnapshot.draggingId, draggableId, element])
