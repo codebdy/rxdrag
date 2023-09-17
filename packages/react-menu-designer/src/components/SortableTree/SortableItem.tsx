@@ -1,6 +1,7 @@
 import { memo } from "react"
 import { IFlattenedItem } from "../../interfaces/flattened"
 import styled from "styled-components"
+import { Draggable } from "../../dnd"
 
 const Container = styled.div`
   height: 48px;
@@ -19,10 +20,19 @@ export const SortableItem = memo((
 ) => {
   const { item } = props
   return (
-    <Container>
+    <Draggable
+      draggableId={item.id}
+    >
       {
-        item.title
+        (innerRef) => {
+          return <Container ref={innerRef}>
+            {
+              item.title
+            }
+          </Container>
+        }
       }
-    </Container>
+
+    </Draggable>
   )
 })
