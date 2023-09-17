@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { DragCancelEvent, DropEvent, DragStartEvent, IDndSnapshot, Identifier, Offset, OverInfo } from "./types";
+import { DragCancelEvent, DropEvent, DragStartEvent, IDndSnapshot, Identifier, Offset, OverInfo, OverDroppableInfo } from "./types";
 import { getRecentRxElement } from "@rxdrag/shared";
 import { DRAGGABLE_ATTR_ID_NAME, DROPPABLE_ATTR_ID_NAME } from "./consts";
 import { DndSnapshotContext } from "./contexts";
@@ -22,7 +22,7 @@ export const DndContext = memo((
   const [dragging, setDragging] = useState<boolean>()
   const [draggingOffset, setDraggingOffset] = useState<Offset>()
   const [overDraggable, setOverDraggable] = useState<OverInfo>()
-  const [overDroppable, setOverDroppable] = useState<OverInfo>()
+  const [overDroppable, setOverDroppable] = useState<OverDroppableInfo>()
 
   const mouseDownEventRef = useRef(mouseDownEvent)
   mouseDownEventRef.current = mouseDownEvent
@@ -59,7 +59,7 @@ export const DndContext = memo((
     if (startEvent) {
       const draggableOver = getOverInfo(DRAGGABLE_ATTR_ID_NAME, e)
       setOverDraggable(draggableOver)
-      const droppableOver = getOverInfo(DROPPABLE_ATTR_ID_NAME, e)
+      const droppableOver: OverDroppableInfo | undefined = getOverInfo(DROPPABLE_ATTR_ID_NAME, e)
       setOverDroppable(droppableOver)
       if (Math.abs(e.screenX - startEvent.screenX) > 5 ||
         Math.abs(e.screenY - startEvent.screenY) > 5) {

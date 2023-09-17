@@ -63,6 +63,10 @@ export type DraggableChildrenFn = (
   snapshot: IDraggableStateSnapshot,
 ) => React.ReactNode;
 
+export type DroppableGhostFn = (
+  innerRef: (element?: HTMLElement | null) => void,
+  draggingId?: string,
+) => React.ReactNode;
 
 export interface DroppableProvided {
   innerRef: (element: HTMLElement | null) => void;
@@ -71,7 +75,7 @@ export interface DroppableProvided {
 
 export interface IDroppableStateSnapshot {
   isDraggingOver: boolean;
-  over?: OverInfo;
+  over?: OverDroppableInfo;
 }
 
 export type DroppableChildrenFn = (
@@ -88,10 +92,14 @@ export type OverInfo = OverOffset & {
   id?: Identifier,
 }
 
+export type OverDroppableInfo = OverInfo & {
+  targetIndex?: number,
+}
+
 export interface IDndSnapshot {
   startMouseEvent?: MouseEvent
   draggingOffset?: Offset
   draggingId?: Identifier
   overDraggable?: OverInfo,
-  overDroppable?: OverInfo,
+  overDroppable?: OverDroppableInfo,
 }
