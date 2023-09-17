@@ -13,7 +13,7 @@ export type OverOffset = {
   offsetYPercent?: number,
 }
 
-export type DragStartEvent = DragEvent
+//export type DragStartEvent = DragEvent
 
 // export type DragMoveEvent = DragEvent & {
 //   //
@@ -25,11 +25,11 @@ export type DragStartEvent = DragEvent
 
 export type DropEvent = DragEvent & {
   droppableId: Identifier,
-  index: number,
+  targetIndex: number,
   offset?: OverOffset,
 }
 
-export type DragCancelEvent = DragEvent
+// export type DragCancelEvent = DragEvent
 
 export interface Position {
   x: number;
@@ -93,7 +93,7 @@ export type OverInfo = OverOffset & {
 }
 
 export type OverDroppableInfo = OverInfo & {
-  targetIndex?: number,
+  //targetIndex?: number,
 }
 
 export interface IDndSnapshot {

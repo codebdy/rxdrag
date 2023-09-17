@@ -173,7 +173,7 @@ export const ReactMenuDesignerInner = memo(({
       // onDragMove={handleDragMove}
       // onDragOver={handleDragOver}
       // onDragEnd={handleDragEnd}
-      onDragCancel={handleDragCancel}
+      onDragEnd={handleDragCancel}
     >
       <Shell>
         <Toolbox ></Toolbox>

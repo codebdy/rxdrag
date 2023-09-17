@@ -1,30 +1,32 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { DragCancelEvent, DropEvent, DragStartEvent, IDndSnapshot, Identifier, Offset, OverInfo, OverDroppableInfo } from "./types";
+import { DropEvent, IDndSnapshot, Identifier, Offset, OverInfo, OverDroppableInfo } from "./types";
 import { getRecentRxElement } from "@rxdrag/shared";
 import { DRAGGABLE_ATTR_ID_NAME, DROPPABLE_ATTR_ID_NAME } from "./consts";
 import { DndSnapshotContext, TargetIndexContext } from "./contexts";
 import { useTargetIndexState } from "./hooks/useTargetIndexState";
 
 export type DndContextProps = {
-  onDragStart?: (e: DragStartEvent) => void,
+  //onDragStart?: (e: DragStartEvent) => void,
   // onDragMove?: (e: DragMoveEvent) => void,
   // onDragOver?: (e: DragOverEvent) => void,
   onDrop?: (e: DropEvent) => void,
-  onDragCancel?: (e: DragCancelEvent) => void,
+  onDragEnd?: () => void,
+  onDragCancel?: () => void,
   children?: React.ReactNode
 }
 
 export const DndContext = memo((
   props: DndContextProps
 ) => {
-  const { children } = props;
+  const { onDrop, onDragEnd, onDragCancel, children } = props;
   const [mouseDownEvent, setMouseDownEvent] = useState<MouseEvent>();
   const [activeId, setActiveId] = useState<Identifier>();
   const [dragging, setDragging] = useState<boolean>()
   const [draggingOffset, setDraggingOffset] = useState<Offset>()
   const [overDraggable, setOverDraggable] = useState<OverInfo>()
   const [overDroppable, setOverDroppable] = useState<OverDroppableInfo>()
-  const targetIndexState = useTargetIndexState()
+  const targetIndexState = useState<number>()
+  const [targetIndex] = targetIndexState
 
   const mouseDownEventRef = useRef(mouseDownEvent)
   mouseDownEventRef.current = mouseDownEvent
@@ -74,7 +76,7 @@ export const DndContext = memo((
     }
   }, [getOverInfo])
 
-  const handleMouseUp = useCallback((e: MouseEvent) => {
+  const resetState = useCallback(() => {
     setOverDraggable(undefined)
     setOverDroppable(undefined)
     setDragging(false)
@@ -82,6 +84,21 @@ export const DndContext = memo((
     setMouseDownEvent(undefined)
     setActiveId(undefined)
   }, [])
+
+  const handleMouseUp = useCallback((e: MouseEvent) => {
+    if (overDroppable?.id && activeId && targetIndex !== undefined) {
+      onDrop?.({
+        activeId: activeId,
+        originalEvent: e,
+        droppableId: overDroppable.id,
+        targetIndex: targetIndex
+      })
+    } else {
+      onDragCancel?.()
+    }
+    resetState()
+    onDragEnd?.()
+  }, [activeId, onDragCancel, onDragEnd, onDrop, overDroppable?.id, resetState, targetIndex])
 
   useEffect(() => {
     document.addEventListener("mousedown", handleMouseDown);

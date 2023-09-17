@@ -11,25 +11,34 @@ const PlaceHolder = styled.div`
   position: fixed;
 `
 
-export type Direction = 'horizontal' | 'vertical';
+//export type Direction = 'horizontal' | 'vertical';
+
+export type CheckOptions = {
+  droppableId: Identifier,
+  targetIndex: number,
+  draggingId: Identifier,
+}
 
 export type DroppableProps = {
   droppableId: Identifier,
   dropDisabled?: boolean,
-  direction?: Direction,
+  //direction?: Direction,
   children?: DroppableChildrenFn,
   //目标位置的占位符
   renderGhost?: DroppableGhostFn
+  //检查某个位置是否可以被插入
+  canDrop?: (options: CheckOptions) => boolean
 }
 
 export const Droppable = memo((props: DroppableProps) => {
-  const { droppableId, children, renderGhost: renderPlaceholder } = props
+  const { droppableId, children, renderGhost: renderPlaceholder, canDrop } = props
   const childItemsState = useState<ChildItem[]>([])
   const droppableState = useState<DroppableParams>(defualtDroppableParams)
   const dndSnapshot = useDndSnapshot()
   const [ghostElement, getGhostElement] = useState<HTMLElement>()
   const [element, setElement] = useState<HTMLElement>()
-  const [, setTargetIndex] = useTargetIndexState()
+  const [targetIndex, setTargetIndex] = useTargetIndexState() || []
+  const [items] = childItemsState;
 
   const handleRefChange = useCallback((element?: HTMLElement | null) => {
     element?.setAttribute(DROPPABLE_ATTR_ID_NAME, droppableId)
@@ -42,17 +51,43 @@ export const Droppable = memo((props: DroppableProps) => {
     getGhostElement(element || undefined)
   }, [])
 
+  const isDraggingOver = useMemo(() => dndSnapshot.overDroppable?.id === droppableId, [dndSnapshot.overDroppable?.id, droppableId])
+
   const snapshot: IDroppableStateSnapshot = useMemo(() => {
     return {
-      isDraggingOver: dndSnapshot.overDroppable?.id === droppableId,
+      isDraggingOver: isDraggingOver,
       over: {
         ...dndSnapshot.overDroppable,
-        targetIndex: 0,
+        targetIndex: targetIndex,
       }
     }
-  }, [dndSnapshot.overDroppable, droppableId])
+  }, [dndSnapshot.overDroppable, isDraggingOver, targetIndex])
 
-  //控制Ghost位置
+  //鼠标移开，清空targetIndex
+  useEffect(() => {
+    if (!isDraggingOver) {
+      setTargetIndex?.(-1)
+    }
+  }, [isDraggingOver, setTargetIndex])
+
+  //计算插入的位置
+  useEffect(() => {
+    if (isDraggingOver) {
+      let index = 0
+      //如果悬停在一个子元素
+      const item = items.find(item => item.id === dndSnapshot.overDraggable?.id)
+      if (dndSnapshot.overDraggable && item) {
+        if ((dndSnapshot.overDraggable.offsetYPercent || 0) <= 0.5) {
+          index = item.index
+        } else {
+          index = item.index + 1
+        }
+      }
+      setTargetIndex?.(index)
+    }
+  }, [dndSnapshot.overDraggable, isDraggingOver, items, setTargetIndex])
+
+  //控制Ghost初始位置
   useEffect(() => {
     if (ghostElement) {
       if (snapshot.isDraggingOver) {
