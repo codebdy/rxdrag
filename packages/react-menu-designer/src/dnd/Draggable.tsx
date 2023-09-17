@@ -7,6 +7,8 @@ import styled from "styled-components";
 const MouseFollower = styled.div`
   position: fixed;
   z-index: 1;
+  pointer-events: none;
+  opacity: 0;
 `
 
 export type DraggableProps = {
@@ -23,10 +25,10 @@ export const Draggable = memo((
 ) => {
   const { draggableId, clonable, mouseFollower, children } = props
   const [element, setElement] = useState<HTMLElement>()
-  const mouseFollowerRef = useRef<HTMLDivElement>(null)
+  const followerRef = useRef<HTMLDivElement>(null)
   const dndSnapshot = useDndSnapshot()
 
-  const follerRef = mouseFollower ? mouseFollowerRef.current : element
+  //const follerRef = mouseFollower ? mouseFollowerRef.current : element
 
   const handleRefChange = useCallback((element?: HTMLElement | null) => {
     element?.setAttribute(DRAGGABLE_ATTR_ID_NAME, draggableId.toString())
@@ -40,39 +42,47 @@ export const Draggable = memo((
   }, [dndSnapshot.draggingId, draggableId])
 
   useEffect(() => {
+    const followerElement = followerRef.current
     if (dndSnapshot.draggingId === draggableId && draggableId) {
+      followerElement?.style.setProperty("opacity", "1");
       if (dndSnapshot.draggingOffset) {
-        follerRef?.style.setProperty("transform", `translate(${dndSnapshot.draggingOffset.x}px,${dndSnapshot.draggingOffset.y}px)`)
-        if (!follerRef?.style.getPropertyValue('z-index')) {
-          follerRef?.style.setProperty("z-index", "1")
-        }
+        followerElement?.style.setProperty("transform", `translate(${dndSnapshot.draggingOffset.x}px,${dndSnapshot.draggingOffset.y}px)`)
       }
     } else {
-      follerRef?.style.setProperty("transform", `translate(0px,0px)`)
-      follerRef?.style.removeProperty("z-index")
+      followerElement?.style.removeProperty("opacity")
+      followerElement?.style.removeProperty("transform")
     }
-  }, [dndSnapshot.draggingOffset, dndSnapshot.draggingId, draggableId, follerRef?.style])
+  }, [dndSnapshot.draggingOffset, dndSnapshot.draggingId, draggableId])
+
+  useEffect(() => {
+    const newElement = element?.cloneNode(true)
+    const followerElement = followerRef.current
+    if (followerElement && newElement && !mouseFollower) {
+      followerElement.appendChild(newElement)
+      return () => {
+        followerElement.removeChild(newElement)
+      }
+    }
+  }, [clonable, element, mouseFollower])
 
   return (
     <>
       {
         children && children(handleRefChange, snapshot)
       }
-      {
-        snapshot.isDragging && mouseFollower && <MouseFollower
-          ref={mouseFollowerRef}
-          style={{
-            left: element?.getBoundingClientRect().left,
-            top: element?.getBoundingClientRect().top,
-            width: element?.getBoundingClientRect().width,
-            height: element?.getBoundingClientRect().height,
-          }}
-        >
-          {
-            mouseFollower
-          }
-        </MouseFollower>
-      }
+      <MouseFollower
+        ref={followerRef}
+        style={{
+          left: element?.getBoundingClientRect().left,
+          top: element?.getBoundingClientRect().top,
+          width: element?.getBoundingClientRect().width,
+          height: element?.getBoundingClientRect().height,
+        }}
+      >
+        {
+          mouseFollower
+        }
+      </MouseFollower>
     </>
   )
 })

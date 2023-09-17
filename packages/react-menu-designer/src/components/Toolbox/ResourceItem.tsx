@@ -48,13 +48,13 @@ export const ResourceItem = memo((
   return (
     <Draggable
       draggableId={name}
-      mouseFollower={<MouseFollower>
-        <Item>
-          {
-            resource?.title
-          }
-        </Item>
-      </MouseFollower>}
+      // mouseFollower={<MouseFollower>
+      //   <Item>
+      //     {
+      //       resource?.title
+      //     }
+      //   </Item>
+      // </MouseFollower>}
     >
       {
         (innerRef, snapshot) => {
