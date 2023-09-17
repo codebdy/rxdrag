@@ -1,16 +1,15 @@
 import { memo } from "react"
 import { IFlattenedItem } from "../../interfaces/flattened"
-import styled from "styled-components";
+import styled from "styled-components"
 
-const ItemContainer = styled.div`
+const Container = styled.div`
   height: 48px;
-  border: solid 1px ${props => props.theme.token.colorBorder};
-  background-color: ${props => props.theme.token.colorBgContainer};
+  border: solid 1px ${props => props.theme.token?.colorBorder};
+  border-radius: 8px;
+  margin: 4px 0;
   display: flex;
   align-items: center;
   padding: 0 16px;
-  border-radius: 8px;
-  margin: 4px 0;
 `
 
 export const SortableItem = memo((
@@ -19,12 +18,11 @@ export const SortableItem = memo((
   }
 ) => {
   const { item } = props
-
-
   return (
-    <ItemContainer >
-      {item.title}
-      ({item.id})
-    </ItemContainer>
+    <Container>
+      {
+        item.title
+      }
+    </Container>
   )
 })

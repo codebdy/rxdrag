@@ -10,9 +10,11 @@ import { useOffsetLeftState } from './hooks/useOffsetLeftState';
 import { useItemsState } from './hooks/useItemsState';
 import { useGetResource } from './hooks/useGetResource';
 import { DndContext } from './dnd/DndContext';
-import { Droppable } from './dnd';
+import { DropEvent, Droppable } from './dnd';
 import { CANVS_ID } from './consts';
 import classNames from 'classnames';
+import { SortableTree } from './components/SortableTree';
+import { IFlattenedItem } from './interfaces/flattened';
 
 const Shell = styled.div`
   position: relative;
@@ -46,45 +48,6 @@ const Canvas = styled.div`
   overflow: auto;
   box-sizing: border-box;
 `
-
-const DropContainer = styled.div`
-  min-height: 100%;
-  overflow-x: hidden;
-  display: flex;
-  flex-flow: column;
-  padding: 4px 8px;
-  user-select: none;
-  box-sizing: border-box;
-  &.over{
-    background-color: ${props => props.theme.token?.colorBgElevated};
-  }
-`
-
-const Ghost = styled.div`
-  display: flex;
-  padding: 8px 2px;
-  box-sizing: border-box;
-`
-
-const GhostInner = styled.div`
-  position: relative;
-  flex: 1;
-  height: 1px;
-  border-top: solid 2px ${props => props.theme.token?.colorPrimary};
-  box-sizing: border-box;
-  &::after{
-    content: "";
-    position: absolute;
-    left: 0px;
-    top: -6.5px;
-    height: 8px;
-    width: 8px;
-    border-radius: 50%;
-    border: solid 2px ${props => props.theme.token?.colorPrimary};
-    background-color: ${props => props.theme.token?.colorBgBase};
-  }
-`
-
 const Toolbar = styled.div`
   height: 48px;
   display: flex;
@@ -166,9 +129,24 @@ export const ReactMenuDesignerInner = memo(({
     resetState();
   }, [resetState])
 
+  const handleDrop = useCallback((e: DropEvent) => {
+    if (e.activeId && e.droppableId === CANVS_ID) {
+      const resouce = getResource(e.activeId)
+      if (resouce) {
+        const newItem = resouce.createMenuItem()
+        setItems((items) => {
+          const newItems: IFlattenedItem[] = [...items]
+          newItems.splice(e.targetIndex, 0, { ...newItem, children: undefined })
+          return newItems
+        })
+      }
+    }
+  }, [getResource, setItems])
+
   return (
 
     <DndContext
+      onDrop={handleDrop}
       // onDragStart={handleDragStart}
       // onDragMove={handleDragMove}
       // onDragOver={handleDragOver}
@@ -188,26 +166,7 @@ export const ReactMenuDesignerInner = memo(({
             <Button type="primary" >保存</Button>
           </Toolbar>
           <Canvas ref={canvasRef} className='menu-canvas'>
-            <Droppable
-              droppableId={CANVS_ID}
-              renderGhost={
-                (innerRef) => {
-                  return (
-                    <Ghost ref={innerRef}><GhostInner /></Ghost>
-                  )
-                }
-              }
-            >
-              {
-                (innerRef, snapshot) => {
-                  return (
-                    <DropContainer ref={innerRef} className={classNames('menu-drop-container', { over: snapshot?.isDraggingOver })}>
-                    </DropContainer>
-                  )
-                }
-              }
-            </Droppable>
-
+            <SortableTree items={items} />
           </Canvas>
         </CanvasContainer>
         <PropertyPanel></PropertyPanel>

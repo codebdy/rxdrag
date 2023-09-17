@@ -1,8 +1,8 @@
-import { UniqueIdentifier } from "@dnd-kit/core";
+import { Identifier } from "../dnd";
 import { IMenuItem } from "./menu";
 
 export interface IFlattenedItem<Config = unknown> extends IMenuItem<Config> {
-  parentId?: UniqueIdentifier | null;
+  parentId?: Identifier | null;
   depth?: number;
   collapsed?: boolean;
   //拍平后不需要children

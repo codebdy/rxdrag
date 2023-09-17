@@ -1,56 +1,80 @@
-import { useMemo } from 'react';
-import { useActiveIdState } from '../../hooks/useActiveIdState';
-import { useOverIdState } from '../../hooks/useOverIdState';
-import { useOffsetLeftState } from '../../hooks/useOffsetLeftState';
-import { useItemsState } from '../../hooks/useItemsState';
-import { SortableItem } from './SortableItem';
-import { CANVS_ID } from '../../consts';
+import classNames from "classnames"
+import { memo } from "react"
+import styled from "styled-components"
+import { CANVS_ID } from "../../consts"
+import { Droppable } from "../../dnd"
+import { IFlattenedItem } from "../../interfaces/flattened"
+import { SortableItem } from "./SortableItem"
 
+const DropContainer = styled.div`
+  min-height: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-flow: column;
+  padding: 4px 8px;
+  user-select: none;
+  box-sizing: border-box;
+  &.over{
+    background-color: ${props => props.theme.token?.colorBgElevated};
+  }
+`
 
-export type SortableTreeProps = {
-  indentationWidth?: number;
-  indicator?: boolean;
-  isNewing?: boolean
-}
+const Ghost = styled.div`
+  display: flex;
+  padding: 8px 2px;
+  box-sizing: border-box;
+`
 
-export function SortableTree({
-  indicator = true,
-  indentationWidth = 50,
-}: SortableTreeProps) {
-  const [items] = useItemsState();
-  const [activeId] = useActiveIdState();
-  const [overId] = useOverIdState();
-  const [offsetLeft] = useOffsetLeftState();
+const GhostInner = styled.div`
+  position: relative;
+  flex: 1;
+  height: 1px;
+  border-top: solid 2px ${props => props.theme.token?.colorPrimary};
+  box-sizing: border-box;
+  &::after{
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: -6.5px;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    border: solid 2px ${props => props.theme.token?.colorPrimary};
+    background-color: ${props => props.theme.token?.colorBgBase};
+  }
+`
 
-  const sortedIds = useMemo(() => items.map(item => item.id), [items])
-
+export const SortableTree = memo((
+  props: {
+    items?: IFlattenedItem[]
+  }
+) => {
+  const { items } = props;
   return (
-    <SortableContext id={CANVS_ID} items={sortedIds} strategy={verticalListSortingStrategy}>
-      {
-        items.map((item) => {
-          return (<SortableItem key={item.id} item={item} />)
-        })
-
+    <Droppable
+      droppableId={CANVS_ID}
+      renderGhost={
+        (innerRef) => {
+          return (
+            <Ghost ref={innerRef}><GhostInner /></Ghost>
+          )
+        }
       }
-      {/* {!isNewing && createPortal(//如果是新增项目，不显示鼠标跟随
-        <DragOverlay
-          dropAnimation={dropAnimationConfig}
-          modifiers={indicator ? [adjustTranslate] : undefined}
-        >
-          {activeId && activeItem ? (
-            <SortableTreeItem
-              id={activeId}
-              depth={activeItem.depth}
-              clone
-              childCount={getChildCount(items, activeId) + 1}
-              value={activeId.toString()}
-              indentationWidth={indentationWidth}
-            />
-          ) : null}
-        </DragOverlay>,
-        document.body
-      )} */}
-    </SortableContext>
-  );
+    >
+      {
+        (innerRef, snapshot) => {
+          return (
+            <DropContainer ref={innerRef} className={classNames('menu-drop-container', { over: snapshot?.isDraggingOver })}>
+              {
+                items?.map(item => {
+                  return (<SortableItem key={item.id} item={item} />)
+                })
+              }
+            </DropContainer>
+          )
+        }
+      }
+    </Droppable>
 
-}
+  )
+})

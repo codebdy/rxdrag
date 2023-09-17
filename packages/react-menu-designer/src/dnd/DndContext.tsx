@@ -3,7 +3,6 @@ import { DropEvent, IDndSnapshot, Identifier, Offset, OverInfo, OverDroppableInf
 import { getRecentRxElement } from "@rxdrag/shared";
 import { DRAGGABLE_ATTR_ID_NAME, DROPPABLE_ATTR_ID_NAME } from "./consts";
 import { DndSnapshotContext, TargetIndexContext } from "./contexts";
-import { useTargetIndexState } from "./hooks/useTargetIndexState";
 
 export type DndContextProps = {
   //onDragStart?: (e: DragStartEvent) => void,
@@ -91,14 +90,15 @@ export const DndContext = memo((
         activeId: activeId,
         originalEvent: e,
         droppableId: overDroppable.id,
-        targetIndex: targetIndex
+        targetIndex: targetIndex,
+        offset: overDroppable,
       })
     } else {
       onDragCancel?.()
     }
     resetState()
     onDragEnd?.()
-  }, [activeId, onDragCancel, onDragEnd, onDrop, overDroppable?.id, resetState, targetIndex])
+  }, [activeId, onDragCancel, onDragEnd, onDrop, overDroppable, resetState, targetIndex])
 
   useEffect(() => {
     document.addEventListener("mousedown", handleMouseDown);
