@@ -15,10 +15,6 @@ const Container = styled.div`
   }
 `
 
-const MouseFollower = styled(Container)`
-  opacity: 0.6;
-`
-
 const Item = styled.div`
   display: flex;
   width: 100%;

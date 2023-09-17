@@ -56,12 +56,14 @@ export const Draggable = memo((
   }, [dndSnapshot.draggingOffset, dndSnapshot.draggingId, draggableId])
 
   useEffect(() => {
-    if (dndSnapshot.draggingId === draggableId && !clonable) {
+    if (dndSnapshot.draggingId === draggableId) {
       setRect(element?.getBoundingClientRect())
-      const display = element?.style.getPropertyValue("display")
-      element?.style.setProperty("display", "none")
-      return () => {
-        element?.style.setProperty("display", display || "")
+      if (!clonable) {
+        const display = element?.style.getPropertyValue("display")
+        element?.style.setProperty("display", "none")
+        return () => {
+          element?.style.setProperty("display", display || "")
+        }
       }
     }
   }, [clonable, dndSnapshot.draggingId, draggableId, element])
