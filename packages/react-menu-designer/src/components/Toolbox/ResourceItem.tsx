@@ -15,6 +15,10 @@ const Container = styled.div`
   }
 `
 
+const MouseFollower = styled(Container)`
+  opacity: 0.6;
+`
+
 const Item = styled.div`
   display: flex;
   width: 100%;
@@ -45,13 +49,13 @@ export const ResourceItem = memo((
     <Draggable
       draggableId={name}
       clonable
-      // mouseFollower={<MouseFollower>
-      //   <Item>
-      //     {
-      //       resource?.title
-      //     }
-      //   </Item>
-      // </MouseFollower>}
+      mouseFollower={<MouseFollower>
+        <Item>
+          {
+            resource?.title
+          }
+        </Item>
+      </MouseFollower>}
     >
       {
         (innerRef, snapshot) => {
