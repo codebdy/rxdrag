@@ -48,6 +48,7 @@ export const ResourceItem = memo((
   return (
     <Draggable
       draggableId={name}
+      clonable
       // mouseFollower={<MouseFollower>
       //   <Item>
       //     {

@@ -25,6 +25,7 @@ export const Draggable = memo((
 ) => {
   const { draggableId, clonable, mouseFollower, children } = props
   const [element, setElement] = useState<HTMLElement>()
+  const [rect, setRect] = useState<DOMRect>()
   const followerRef = useRef<HTMLDivElement>(null)
   const dndSnapshot = useDndSnapshot()
 
@@ -55,6 +56,17 @@ export const Draggable = memo((
   }, [dndSnapshot.draggingOffset, dndSnapshot.draggingId, draggableId])
 
   useEffect(() => {
+    if (dndSnapshot.draggingId === draggableId && !clonable) {
+      setRect(element?.getBoundingClientRect())
+      const display = element?.style.getPropertyValue("display")
+      element?.style.setProperty("display", "none")
+      return () => {
+        element?.style.setProperty("display", display || "")
+      }
+    }
+  }, [clonable, dndSnapshot.draggingId, draggableId, element])
+
+  useEffect(() => {
     const newElement = element?.cloneNode(true)
     const followerElement = followerRef.current
     if (followerElement && newElement && !mouseFollower) {
@@ -63,7 +75,7 @@ export const Draggable = memo((
         followerElement.removeChild(newElement)
       }
     }
-  }, [clonable, element, mouseFollower])
+  }, [element, mouseFollower])
 
   return (
     <>
@@ -73,10 +85,10 @@ export const Draggable = memo((
       <MouseFollower
         ref={followerRef}
         style={{
-          left: element?.getBoundingClientRect().left,
-          top: element?.getBoundingClientRect().top,
-          width: element?.getBoundingClientRect().width,
-          height: element?.getBoundingClientRect().height,
+          left: rect?.left,
+          top: rect?.top,
+          width: rect?.width,
+          height: rect?.height,
         }}
       >
         {
