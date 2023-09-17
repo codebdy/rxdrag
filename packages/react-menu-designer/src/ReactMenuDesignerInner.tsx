@@ -76,7 +76,7 @@ const GhostInner = styled.div`
     content: "";
     position: absolute;
     left: 0px;
-    top: -7px;
+    top: -6.5px;
     height: 8px;
     width: 8px;
     border-radius: 50%;
