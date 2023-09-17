@@ -1,7 +1,7 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { DroppableGhostFn, DroppableChildrenFn, IDroppableStateSnapshot, Identifier, ChildItem } from "./types"
 import { DroppableContext, DroppableParams, defualtDroppableParams } from "../contexts";
-import { DROPPABLE_ATTR_ID_NAME } from "./consts";
+import { DRAGGABLE_ATTR_ID_NAME, DROPPABLE_ATTR_ID_NAME } from "./consts";
 import { useDndSnapshot } from "./hooks/useDndSnapshot";
 import styled from "styled-components";
 import { useTargetIndexState } from "./hooks/useTargetIndexState";
@@ -38,7 +38,10 @@ export const Droppable = memo((props: DroppableProps) => {
   const [ghostElement, getGhostElement] = useState<HTMLElement>()
   const [element, setElement] = useState<HTMLElement>()
   const [targetIndex, setTargetIndex] = useTargetIndexState() || []
+  const [afterId, setAfterId] = useState<Identifier>()
   const [items] = childItemsState;
+  //所有显示的条目，不包含被拖动的条目
+  const showingItems = useMemo(() => items.filter(item => item.id !== dndSnapshot.draggingId), [dndSnapshot.draggingId, items]);
 
   const handleRefChange = useCallback((element?: HTMLElement | null) => {
     element?.setAttribute(DROPPABLE_ATTR_ID_NAME, droppableId)
@@ -75,29 +78,46 @@ export const Droppable = memo((props: DroppableProps) => {
     if (isDraggingOver) {
       let index = 0
       //如果悬停在一个子元素
-      const item = items.find(item => item.id === dndSnapshot.overDraggable?.id)
-      if (dndSnapshot.overDraggable && item) {
-        if ((dndSnapshot.overDraggable.offsetYPercent || 0) <= 0.5) {
-          index = item.index
-        } else {
-          index = item.index + 1
+      for (let i = 0; i < showingItems.length; i++) {
+        const item = showingItems[i]
+        if (dndSnapshot.overDraggable && item.id === dndSnapshot.overDraggable?.id) {
+          if ((dndSnapshot.overDraggable.offsetYPercent || 0) <= 0.5) {
+            index = i
+            if (i > 0) {
+              setAfterId(showingItems[i - 1].id)
+            } else {
+              setAfterId(undefined)
+            }
+          } else {
+            setAfterId(item.id)
+            index = i + 1
+          }
         }
       }
+
       setTargetIndex?.(index)
     }
-  }, [dndSnapshot.overDraggable, isDraggingOver, items, setTargetIndex])
+  }, [dndSnapshot.draggingId, dndSnapshot.overDraggable, isDraggingOver, setTargetIndex, showingItems])
 
-  //控制Ghost初始位置
+  //控制Ghost位置
   useEffect(() => {
     if (ghostElement) {
       if (snapshot.isDraggingOver) {
         const rect = element?.getBoundingClientRect()
-        ghostElement.style.setProperty("top", rect?.top + "px")
-        ghostElement.style.setProperty("left", rect?.left + "px")
         ghostElement.style.setProperty("width", rect?.width + "px")
+        ghostElement.style.setProperty("left", rect?.left + "px")
+
+        console.log("===>afterId", afterId)
+        if (afterId) {
+          const topRect = document.body.querySelector(`[${DRAGGABLE_ATTR_ID_NAME}="${afterId}"]`)?.getBoundingClientRect()
+          ghostElement.style.setProperty("top", ((topRect?.top || 0) + (topRect?.height || 0)) + "px")
+        } else {
+          ghostElement.style.setProperty("top", rect?.top + "px")
+
+        }
       }
     }
-  }, [element, ghostElement, snapshot.isDraggingOver])
+  }, [afterId, element, ghostElement, items, snapshot.isDraggingOver, targetIndex])
 
   //控制Ghost的显示跟隐藏
   useEffect(() => {

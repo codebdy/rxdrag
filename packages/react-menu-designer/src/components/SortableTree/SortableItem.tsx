@@ -15,13 +15,15 @@ const Container = styled.div`
 
 export const SortableItem = memo((
   props: {
-    item: IFlattenedItem
+    item: IFlattenedItem,
+    index: number
   }
 ) => {
-  const { item } = props
+  const { item, index } = props
   return (
     <Draggable
       draggableId={item.id}
+      index={index}
     >
       {
         (innerRef) => {
@@ -29,6 +31,7 @@ export const SortableItem = memo((
             {
               item.title
             }
+            ({item.id})
           </Container>
         }
       }

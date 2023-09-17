@@ -41,7 +41,7 @@ export const Draggable = memo((
       const newItems = items.filter(item => item.id !== draggableId)
       const realIndex = index === undefined ? newItems.length : index
       newItems.push({ id: draggableId, index: realIndex })
-      newItems.sort((a, b) => b.index - a.index)
+      newItems.sort((a, b) => a.index - b.index)
       return newItems
     })
 

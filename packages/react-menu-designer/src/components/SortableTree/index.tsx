@@ -50,6 +50,7 @@ export const SortableTree = memo((
   }
 ) => {
   const { items } = props;
+
   return (
     <Droppable
       droppableId={CANVS_ID}
@@ -66,8 +67,8 @@ export const SortableTree = memo((
           return (
             <DropContainer ref={innerRef} className={classNames('menu-drop-container', { over: snapshot?.isDraggingOver })}>
               {
-                items?.map(item => {
-                  return (<SortableItem key={item.id} item={item} />)
+                items?.map((item, index) => {
+                  return (<SortableItem key={item.id} item={item} index={index} />)
                 })
               }
             </DropContainer>
