@@ -60,6 +60,31 @@ const DropContainer = styled.div`
   }
 `
 
+const Ghost = styled.div`
+  display: flex;
+  padding: 8px 2px;
+  box-sizing: border-box;
+`
+
+const GhostInner = styled.div`
+  position: relative;
+  flex: 1;
+  height: 1px;
+  border-top: solid 2px ${props => props.theme.token?.colorPrimary};
+  box-sizing: border-box;
+  &::after{
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: -7px;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    border: solid 2px ${props => props.theme.token?.colorPrimary};
+    background-color: ${props => props.theme.token?.colorBgBase};
+  }
+`
+
 const Toolbar = styled.div`
   height: 48px;
   display: flex;
@@ -168,7 +193,7 @@ export const ReactMenuDesignerInner = memo(({
               renderGhost={
                 (innerRef) => {
                   return (
-                    <div ref={innerRef}> 哈哈</div>
+                    <Ghost ref={innerRef}><GhostInner /></Ghost>
                   )
                 }
               }
