@@ -103,3 +103,9 @@ export interface IDndSnapshot {
   overDraggable?: OverInfo,
   overDroppable?: OverDroppableInfo,
 }
+
+
+export type ChildItem = {
+  id: Identifier,
+  index: number,
+}

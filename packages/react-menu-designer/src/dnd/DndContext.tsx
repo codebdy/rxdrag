@@ -2,7 +2,8 @@ import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { DragCancelEvent, DropEvent, DragStartEvent, IDndSnapshot, Identifier, Offset, OverInfo, OverDroppableInfo } from "./types";
 import { getRecentRxElement } from "@rxdrag/shared";
 import { DRAGGABLE_ATTR_ID_NAME, DROPPABLE_ATTR_ID_NAME } from "./consts";
-import { DndSnapshotContext } from "./contexts";
+import { DndSnapshotContext, TargetIndexContext } from "./contexts";
+import { useTargetIndexState } from "./hooks/useTargetIndexState";
 
 export type DndContextProps = {
   onDragStart?: (e: DragStartEvent) => void,
@@ -23,6 +24,7 @@ export const DndContext = memo((
   const [draggingOffset, setDraggingOffset] = useState<Offset>()
   const [overDraggable, setOverDraggable] = useState<OverInfo>()
   const [overDroppable, setOverDroppable] = useState<OverDroppableInfo>()
+  const targetIndexState = useTargetIndexState()
 
   const mouseDownEventRef = useRef(mouseDownEvent)
   mouseDownEventRef.current = mouseDownEvent
@@ -104,9 +106,11 @@ export const DndContext = memo((
 
   return (
     <DndSnapshotContext.Provider value={snapshot}>
-      {
-        children
-      }
+      <TargetIndexContext.Provider value={targetIndexState}>
+        {
+          children
+        }
+      </TargetIndexContext.Provider>
     </DndSnapshotContext.Provider>
   )
 })

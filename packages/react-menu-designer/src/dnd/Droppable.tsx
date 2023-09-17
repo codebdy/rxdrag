@@ -1,9 +1,11 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
-import { DroppableGhostFn, DroppableChildrenFn, IDroppableStateSnapshot, Identifier } from "./types"
+import { DroppableGhostFn, DroppableChildrenFn, IDroppableStateSnapshot, Identifier, ChildItem } from "./types"
 import { DroppableContext, DroppableParams, defualtDroppableParams } from "../contexts";
 import { DROPPABLE_ATTR_ID_NAME } from "./consts";
 import { useDndSnapshot } from "./hooks/useDndSnapshot";
 import styled from "styled-components";
+import { useTargetIndexState } from "./hooks/useTargetIndexState";
+import { ChildItemsContext } from "./contexts";
 
 const PlaceHolder = styled.div`
   position: fixed;
@@ -12,7 +14,7 @@ const PlaceHolder = styled.div`
 export type Direction = 'horizontal' | 'vertical';
 
 export type DroppableProps = {
-  droppableId: Identifier
+  droppableId: Identifier,
   dropDisabled?: boolean,
   direction?: Direction,
   children?: DroppableChildrenFn,
@@ -22,10 +24,12 @@ export type DroppableProps = {
 
 export const Droppable = memo((props: DroppableProps) => {
   const { droppableId, children, renderGhost: renderPlaceholder } = props
+  const childItemsState = useState<ChildItem[]>([])
   const droppableState = useState<DroppableParams>(defualtDroppableParams)
   const dndSnapshot = useDndSnapshot()
   const [ghostElement, getGhostElement] = useState<HTMLElement>()
   const [element, setElement] = useState<HTMLElement>()
+  const [, setTargetIndex] = useTargetIndexState()
 
   const handleRefChange = useCallback((element?: HTMLElement | null) => {
     element?.setAttribute(DROPPABLE_ATTR_ID_NAME, droppableId)
@@ -47,7 +51,6 @@ export const Droppable = memo((props: DroppableProps) => {
       }
     }
   }, [dndSnapshot.overDroppable, droppableId])
-
 
   //控制Ghost位置
   useEffect(() => {
@@ -78,10 +81,12 @@ export const Droppable = memo((props: DroppableProps) => {
 
   return (
     <DroppableContext.Provider value={droppableState}>
-      {children && children(handleRefChange, snapshot)}
-      <PlaceHolder>
-        {renderPlaceholder && renderPlaceholder(handleGhostRefChange, dndSnapshot.draggingId)}
-      </PlaceHolder>
+      <ChildItemsContext.Provider value={childItemsState}>
+        {children && children(handleRefChange, snapshot)}
+        <PlaceHolder>
+          {renderPlaceholder && renderPlaceholder(handleGhostRefChange, dndSnapshot.draggingId)}
+        </PlaceHolder>
+      </ChildItemsContext.Provider>
     </DroppableContext.Provider>
   )
 })

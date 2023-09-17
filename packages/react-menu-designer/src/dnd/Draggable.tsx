@@ -3,6 +3,7 @@ import { DraggableChildrenFn, IDraggableStateSnapshot, Identifier } from "./type
 import { DRAGGABLE_ATTR_ID_NAME } from "./consts";
 import { useDndSnapshot } from "./hooks/useDndSnapshot";
 import styled from "styled-components";
+import { useChildItemsState } from "./hooks/useChildItemsState";
 
 const MouseFollower = styled.div`
   position: fixed;
@@ -23,11 +24,33 @@ export type DraggableProps = {
 export const Draggable = memo((
   props: DraggableProps
 ) => {
-  const { draggableId, clonable, mouseFollower, children } = props
+  const { draggableId, index, clonable, mouseFollower, children } = props
   const [element, setElement] = useState<HTMLElement>()
   const [rect, setRect] = useState<DOMRect>()
   const followerRef = useRef<HTMLDivElement>(null)
   const dndSnapshot = useDndSnapshot()
+  const [, setItems] = useChildItemsState() || []
+
+  //向容器注册组件
+  useEffect(() => {
+    if (!setItems) {
+      return
+    }
+
+    setItems((items) => {
+      const newItems = items.filter(item => item.id !== draggableId)
+      const realIndex = index === undefined ? newItems.length : index
+      newItems.push({ id: draggableId, index: realIndex })
+      newItems.sort((a, b) => b.index - a.index)
+      return newItems
+    })
+
+    return () => {
+      setItems((items) => {
+        return items.filter(item => item.id !== draggableId)
+      })
+    }
+  }, [draggableId, index, setItems])
 
   //const follerRef = mouseFollower ? mouseFollowerRef.current : element
 
