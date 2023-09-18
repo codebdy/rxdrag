@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 import { Identifier } from "../dnd";
-import { useGetItem } from "./useGetItem";
+import { useGetFlattenItem } from "./useGetFlattenItem";
 
 export function useIsChildOf() {
-  const getItem = useGetItem()
+  const getItem = useGetFlattenItem()
   const isChildOf = useCallback((childId: Identifier, parentId: Identifier) => {
     const child = getItem(childId)
     if (child) {

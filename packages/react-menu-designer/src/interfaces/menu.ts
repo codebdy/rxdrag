@@ -1,4 +1,4 @@
-import { UniqueIdentifier } from "@dnd-kit/core"
+import { Identifier } from "../dnd"
 
 export enum MenuItemType {
   text = "text",
@@ -8,7 +8,7 @@ export enum MenuItemType {
   page = "page"
 }
 export interface IMenuItem<Config = unknown> {
-  id: UniqueIdentifier,
+  id: Identifier,
   //string类型用于扩展
   type: MenuItemType | string
   title?: string,
@@ -18,4 +18,9 @@ export interface IMenuItem<Config = unknown> {
 
 export interface IMenu {
   items: IMenuItem[]
+}
+
+//设计器用的Schema
+export interface IMenuItemSchema<Config = unknown> extends IMenuItem<Config> {
+  collapsed?: boolean,
 }

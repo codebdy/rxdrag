@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import { useActiveIdState } from "./useActiveIdState";
-import { useItemsState } from "./useItemsState";
 import { useIsChildOf } from "./useIsChildOf";
+import { useFlattenItems } from "./useFlattenItems";
 
 export function useNotActiviedItems() {
   const [activeId] = useActiveIdState()
-  const [items] = useItemsState()
+  const items = useFlattenItems()
   const isChildOf = useIsChildOf()
 
   const notActivitiedItems = useMemo(() => {

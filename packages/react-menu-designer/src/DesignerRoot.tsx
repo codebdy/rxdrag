@@ -1,6 +1,6 @@
 import { memo, useEffect, useState } from "react"
 import { ActiveIdContext, HistoryContext, HistoryRedords, ItemsContext, defautHistory, ResourcesContext } from "./contexts";
-import { IMenuItem } from "./interfaces";
+import { IMenuItem, IMenuItemSchema } from "./interfaces";
 import { menuResources } from "./resources";
 import { Identifier } from "./dnd/types";
 
@@ -10,7 +10,7 @@ export const DesignerRoot = memo((props: {
   children?: React.ReactNode,
 }) => {
   const { defaultValue, value, children } = props;
-  const itemsState = useState<IMenuItem[]>(defaultValue || []);
+  const itemsState = useState<IMenuItemSchema[]>([]);
   const activeIdState = useState<Identifier | null>(null);
   const historyState = useState<HistoryRedords>(defautHistory)
   const [, setHistoryState] = historyState
@@ -23,13 +23,13 @@ export const DesignerRoot = memo((props: {
         redoList: [],
         changed: false,
       })
-      setItems(defaultValue)
+      setItems(defaultValue ?? JSON.parse(JSON.stringify(defaultValue)))
     }
   }, [defaultValue, setHistoryState, setItems])
 
   useEffect(() => {
     if (value !== undefined) {
-      setItems(value)
+      setItems(value ?? JSON.parse(JSON.stringify(value)))
     }
   }, [value, setItems])
 

@@ -10,11 +10,10 @@ import { DndContext } from './dnd/DndContext';
 import { DropEvent, Identifier } from './dnd';
 import { CANVS_ID } from './consts';
 import { SortableTree } from './components/SortableTree';
-import { IFlattenedItem } from './interfaces/flattened';
-import { useGetItem } from './hooks/useGetItem';
 import { useGetDepth } from './hooks/useGetDepth';
 import { useActiveIdState } from './hooks/useActiveIdState';
 import { useGetParent } from './hooks/useGetParent';
+import { useGetItem } from './hooks/useGetItem';
 
 const Shell = styled.div`
   position: relative;
@@ -61,7 +60,7 @@ export const ReactMenuDesignerInner = memo(({
   indentationWidth = 50,
 }: ReactMenuDesignerInnerProps) => {
   //const [newItem, setNewItem] = useState<IMenuItem>()
-  const [items, setItems] = useItemsState();
+  const [, setItems] = useItemsState();
   const [, setActiveId] = useActiveIdState()
   const getDepth = useGetDepth()
   const getParent = useGetParent()
@@ -125,16 +124,19 @@ export const ReactMenuDesignerInner = memo(({
       if (!activeItem) {
         return
       }
-      setItems((items) => {
-        const newItems: IFlattenedItem[] = items.filter(item => item.id !== e.activeId);
-        const index = e.belowAtId ? newItems.findIndex(item => item.id === e.belowAtId) + 1 : 0;
-        const depth = getDepth(e.belowAtId, e.delta, indentationWidth)
-        const parent = e.belowAtId ? getParent(e.belowAtId, depth) : undefined
-        newItems.splice(index, 0, { ...activeItem, children: undefined, depth, parentId: parent?.id })
-        return newItems
-      })
+      const depth = getDepth(e.belowAtId, e.delta, indentationWidth)
+      const parent = e.belowAtId ? getParent(e.belowAtId, depth) : undefined
+      
+      // setItems((items) => {
+      //   const newItems: IFlattenedItem[] = items.filter(item => item.id !== e.activeId);
+      //   const index = e.belowAtId ? newItems.findIndex(item => item.id === e.belowAtId) + 1 : 0;
+      //   const depth = getDepth(e.belowAtId, e.delta, indentationWidth)
+      //   const parent = e.belowAtId ? getParent(e.belowAtId, depth) : undefined
+      //   newItems.splice(index, 0, { ...activeItem, children: undefined, depth, parentId: parent?.id })
+      //   return newItems
+      // })
     }
-  }, [getDepth, getItem, getParent, getResource, indentationWidth, setItems])
+  }, [getDepth, getItem, getParent, getResource, indentationWidth])
 
   return (
 

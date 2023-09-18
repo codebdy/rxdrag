@@ -1,9 +1,10 @@
 import { useCallback } from "react";
 import { Identifier } from "../dnd";
-import { useGetItem } from "./useGetItem";
+import { useGetFlattenItem } from "./useGetFlattenItem";
 
+//获取activid item 的parent
 export function useGetParent() {
-  const getItem = useGetItem()
+  const getItem = useGetFlattenItem()
   const getParent = useCallback((belowAtId: Identifier, depth: number) => {
     const belowAtItem = getItem(belowAtId)
     if (belowAtItem && (belowAtItem.depth === depth - 1)) {

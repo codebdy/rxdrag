@@ -1,11 +1,11 @@
 import { useCallback } from "react";
 import { Identifier } from "../dnd";
-import { useGetItem } from "./useGetItem";
+import { useGetFlattenItem } from "./useGetFlattenItem";
 import { useGetChildren } from "./useGetChildren";
 import { useGetBelowBrother } from "./useGetBelowBrother";
 
 export function useGetDepthLimits() {
-  const getItem = useGetItem()
+  const getItem = useGetFlattenItem()
   const getChildren = useGetChildren()
   const getBelowBrother = useGetBelowBrother()
 
