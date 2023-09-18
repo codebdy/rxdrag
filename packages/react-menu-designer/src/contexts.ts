@@ -1,7 +1,6 @@
 import { createContext } from "react";
-import { IMenuItemResource } from "./interfaces";
+import { IMenuItem, IMenuItemResource } from "./interfaces";
 import { TreeItems } from "./types";
-import { IFlattenedItem } from "./interfaces/flattened";
 import { Identifier } from "./dnd/types";
 
 export const ResourcesContext = createContext<IMenuItemResource[]>([])
@@ -35,17 +34,17 @@ export const initialItems: TreeItems = [
   },
 ];
 
-export type ItemsState = [IFlattenedItem[], React.Dispatch<React.SetStateAction<IFlattenedItem[]>>]
+export type ItemsState = [IMenuItem[], React.Dispatch<React.SetStateAction<IMenuItem[]>>]
 export const ItemsContext = createContext<ItemsState>([[], notMethod])
 
 export type IdState = [Identifier | null, React.Dispatch<React.SetStateAction<Identifier | null>>]
 export const ActiveIdContext = createContext<IdState>([null, notMethod])
 
-export type FlattenedItems = IFlattenedItem[]
+export type MenuItems = IMenuItem[]
 
 export type HistoryRedords = {
-  undoList: FlattenedItems[],
-  redoList: FlattenedItems[],
+  undoList: MenuItems[],
+  redoList: MenuItems[],
   changed?: boolean,
 }
 

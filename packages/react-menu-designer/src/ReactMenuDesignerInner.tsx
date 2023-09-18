@@ -108,7 +108,7 @@ export const ReactMenuDesignerInner = memo(({
     document.body.style.setProperty('cursor', '');
   }, [setActiveId])
 
-  const handleDragCancel = useCallback(() => {
+  const handleDragEnd = useCallback(() => {
     // const newItems = items.filter(item => item.resource)
     // setItems(newItems)
     resetState();
@@ -141,10 +141,7 @@ export const ReactMenuDesignerInner = memo(({
     <DndContext
       onDrop={handleDrop}
       onDragStart={handleDragStart}
-      // onDragMove={handleDragMove}
-      // onDragOver={handleDragOver}
-      // onDragEnd={handleDragEnd}
-      onDragEnd={handleDragCancel}
+      onDragEnd={handleDragEnd}
     >
       <Shell>
         <Toolbox ></Toolbox>
