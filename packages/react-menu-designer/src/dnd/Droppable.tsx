@@ -141,8 +141,30 @@ export const Droppable = memo((props: DroppableProps) => {
 
   //处理偏移
   useEffect(() => {
+    if (isDraggingOver) {
+      let beginOffset = !afterId;
+      for (let i = 0; i < showingItems.length; i++) {
+        const item = showingItems[i]
+        if (beginOffset) {
+          const itemElement = getItemElement(item.id)
+          itemElement?.style.setProperty("transform", `translateY(${20}px)`)
+          itemElement?.style.setProperty("transition", `transform 0.2s`)
+        }
 
-  }, [])
+        if (item.id === afterId) {
+          beginOffset = true
+        }
+      }
+
+      return () => {
+        for (let i = 0; i < showingItems.length; i++) {
+          const item = showingItems[i]
+          const itemElement = getItemElement(item.id)
+          itemElement?.style.removeProperty("transform")
+        }
+      }
+    }
+  }, [afterId, getItemElement, isDraggingOver, showingItems])
 
   return (
     <DroppableContext.Provider value={droppableState}>
