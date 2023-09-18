@@ -9,8 +9,6 @@ export type DragEvent = {
 export type OverOffset = {
   offsetX?: number,
   offsetY?: number,
-  offsetXPercent?: number,
-  offsetYPercent?: number,
 }
 
 //export type DragStartEvent = DragEvent
@@ -26,7 +24,7 @@ export type OverOffset = {
 export type DropEvent = DragEvent & {
   droppableId: Identifier,
   afterId?: string,
-  offset?: OverOffset,
+  draggingOffset?: Offset,
 }
 
 // export type DragCancelEvent = DragEvent
@@ -47,8 +45,9 @@ export interface Position {
 
 export type DraggingOver = {
   overId: Identifier,
-  offset: OverOffset,
+  //offset: OverOffset,
   originalEvent?: MouseEvent,
+  draggingOffset?: Offset,
 }
 
 export interface IDraggableStateSnapshot {
@@ -77,7 +76,8 @@ export interface IDroppableStateSnapshot {
   isDraggingOver: boolean;
   afterId?: string,
   cannotDrop?: boolean,
-  originalEvent?: MouseEvent
+  originalEvent?: MouseEvent,
+  draggingOffset?: Offset,
 }
 
 export type DroppableChildrenFn = (
@@ -92,7 +92,7 @@ export type Offset = {
 
 export type OverInfo = OverOffset & {
   id?: Identifier,
-  originalEvent: MouseEvent
+  originalEvent: MouseEvent,
 }
 
 export interface IDndSnapshot {

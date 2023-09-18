@@ -47,8 +47,6 @@ export const DndContext = memo((
         id: recentElement.getAttribute(attrName) || undefined,
         offsetX: offsetX,
         offsetY: offsetY,
-        offsetXPercent: offsetX / draggableRect.width,
-        offsetYPercent: offsetY / draggableRect.height,
         originalEvent: e,
       }
       return over
@@ -90,14 +88,14 @@ export const DndContext = memo((
         originalEvent: e,
         droppableId: overDroppable.id,
         afterId: dropIndicator.afterId,
-        offset: overDroppable,
+        draggingOffset: draggingOffset,
       })
     } else {
       onDragCancel?.()
     }
     resetState()
     onDragEnd?.()
-  }, [activeId, dropIndicator, onDragCancel, onDragEnd, onDrop, overDroppable, resetState])
+  }, [activeId, draggingOffset, dropIndicator, onDragCancel, onDragEnd, onDrop, overDroppable?.id, resetState])
 
   useEffect(() => {
     document.addEventListener("mousedown", handleMouseDown);

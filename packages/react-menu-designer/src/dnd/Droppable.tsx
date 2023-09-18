@@ -71,8 +71,9 @@ export const Droppable = memo((props: DroppableProps) => {
       originalEvent: dndSnapshot.overDroppable?.originalEvent,
       afterId: dropIndicator?.afterId,
       cannotDrop: dropIndicator?.cannotDrop,
+      draggingOffset: dndSnapshot.draggingOffset,
     }
-  }, [dndSnapshot.overDroppable?.originalEvent, dropIndicator?.afterId, dropIndicator?.cannotDrop, isDraggingOver])
+  }, [dndSnapshot.draggingOffset, dndSnapshot.overDroppable?.originalEvent, dropIndicator?.afterId, dropIndicator?.cannotDrop, isDraggingOver])
 
   //鼠标移开，清空drop指示
   useEffect(() => {

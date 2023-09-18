@@ -152,7 +152,7 @@ export const ReactMenuDesignerInner = memo(({
             <Button type="primary" >保存</Button>
           </Toolbar>
 
-          <SortableTree items={items} />
+          <SortableTree items={items} indentationWidth={indentationWidth} />
 
         </CanvasContainer>
         <PropertyPanel></PropertyPanel>

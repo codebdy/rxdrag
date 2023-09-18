@@ -64,8 +64,9 @@ export const Draggable = memo((
   const snapshot: IDraggableStateSnapshot = useMemo(() => {
     return {
       isDragging: dndSnapshot.draggingId === draggableId,
+      draggingOffset: dndSnapshot.draggingOffset,
     }
-  }, [dndSnapshot.draggingId, draggableId])
+  }, [dndSnapshot.draggingId, dndSnapshot.draggingOffset, draggableId])
 
   useEffect(() => {
     const followerElement = followerRef.current

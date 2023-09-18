@@ -6,8 +6,8 @@ import { Draggable } from "../../dnd"
 const Container = styled.div`
   height: 48px;
   border: solid 1px ${props => props.theme.token?.colorBorder};
-  border-radius: 8px;
-  margin: 4px 0;
+  //border-radius: 8px;
+  margin: 0px 0;
   display: flex;
   align-items: center;
   padding: 0 16px;
