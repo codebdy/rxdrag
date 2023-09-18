@@ -75,7 +75,8 @@ export interface DroppableProvided {
 
 export interface IDroppableStateSnapshot {
   isDraggingOver: boolean;
-  over?: OverDroppableInfo;
+  afterId?: string,
+  originalEvent?: MouseEvent
 }
 
 export type DroppableChildrenFn = (
@@ -90,10 +91,7 @@ export type Offset = {
 
 export type OverInfo = OverOffset & {
   id?: Identifier,
-}
-
-export type OverDroppableInfo = OverInfo & {
-  //targetIndex?: number,
+  originalEvent: MouseEvent
 }
 
 export interface IDndSnapshot {
@@ -101,7 +99,7 @@ export interface IDndSnapshot {
   draggingOffset?: Offset
   draggingId?: Identifier
   overDraggable?: OverInfo,
-  overDroppable?: OverDroppableInfo,
+  overDroppable?: OverInfo,
 }
 
 

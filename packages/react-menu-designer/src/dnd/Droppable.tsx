@@ -1,11 +1,13 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { DroppableGhostFn, DroppableChildrenFn, IDroppableStateSnapshot, Identifier, ChildItem } from "./types"
 import { DroppableContext, DroppableParams, defualtDroppableParams } from "../contexts";
-import { DRAGGABLE_ATTR_ID_NAME, DROPPABLE_ATTR_ID_NAME } from "./consts";
+import { DROPPABLE_ATTR_ID_NAME } from "./consts";
 import { useDndSnapshot } from "./hooks/useDndSnapshot";
 import styled from "styled-components";
 import { useTargetIndexState } from "./hooks/useTargetIndexState";
 import { ChildItemsContext } from "./contexts";
+import { useGetItemElement } from "./hooks/useGetItemElement";
+import { useGetItemCenterPoint } from "./hooks/getItemElement";
 
 const PlaceHolder = styled.div`
   position: fixed;
@@ -40,6 +42,10 @@ export const Droppable = memo((props: DroppableProps) => {
   const [targetIndex, setTargetIndex] = useTargetIndexState() || []
   const [afterId, setAfterId] = useState<Identifier>()
   const [items] = childItemsState;
+
+  const getItemElement = useGetItemElement(element)
+  const getCenrerPoint = useGetItemCenterPoint(element)
+
   //所有显示的条目，不包含被拖动的条目
   const showingItems = useMemo(() => items.filter(item => item.id !== dndSnapshot.draggingId), [dndSnapshot.draggingId, items]);
 
@@ -59,12 +65,10 @@ export const Droppable = memo((props: DroppableProps) => {
   const snapshot: IDroppableStateSnapshot = useMemo(() => {
     return {
       isDraggingOver: isDraggingOver,
-      over: {
-        ...dndSnapshot.overDroppable,
-        targetIndex: targetIndex,
-      }
+      originalEvent: dndSnapshot.overDroppable?.originalEvent,
+      afterId: afterId,
     }
-  }, [dndSnapshot.overDroppable, isDraggingOver, targetIndex])
+  }, [afterId, dndSnapshot.overDroppable?.originalEvent, isDraggingOver])
 
   //鼠标移开，清空targetIndex
   useEffect(() => {
@@ -75,29 +79,31 @@ export const Droppable = memo((props: DroppableProps) => {
 
   //计算插入的位置
   useEffect(() => {
-    if (isDraggingOver) {
-      let index = 0
-      //如果悬停在一个子元素
+    if (dndSnapshot.overDroppable) {
+      //let index = 0
+      let afterId: string | undefined = undefined
       for (let i = 0; i < showingItems.length; i++) {
         const item = showingItems[i]
-        if (dndSnapshot.overDraggable && item.id === dndSnapshot.overDraggable?.id) {
-          if ((dndSnapshot.overDraggable.offsetYPercent || 0) <= 0.5) {
-            index = i
+        const centerPoint = getCenrerPoint(item.id)
+        if (centerPoint) {
+          if (centerPoint.y >= dndSnapshot.overDroppable.originalEvent.clientY) {
             if (i > 0) {
-              setAfterId(showingItems[i - 1].id)
-            } else {
-              setAfterId(undefined)
+              afterId = showingItems[i - 1].id
             }
-          } else {
-            setAfterId(item.id)
-            index = i + 1
+            break;
           }
         }
       }
-
-      setTargetIndex?.(index)
+      if (!afterId && showingItems.length > 0) {
+        const lastItem = showingItems[showingItems.length - 1]
+        const lastCenterPoint = getCenrerPoint(lastItem.id)
+        if (lastCenterPoint && dndSnapshot.overDroppable.originalEvent.clientY > lastCenterPoint?.y) {
+          afterId = lastItem.id
+        }
+      }
+      setAfterId(afterId)
     }
-  }, [dndSnapshot.draggingId, dndSnapshot.overDraggable, isDraggingOver, setTargetIndex, showingItems])
+  }, [dndSnapshot.overDroppable, getCenrerPoint, showingItems])
 
   //控制Ghost位置
   useEffect(() => {
@@ -107,9 +113,8 @@ export const Droppable = memo((props: DroppableProps) => {
         ghostElement.style.setProperty("width", rect?.width + "px")
         ghostElement.style.setProperty("left", rect?.left + "px")
 
-        console.log("===>afterId", afterId)
         if (afterId) {
-          const topRect = document.body.querySelector(`[${DRAGGABLE_ATTR_ID_NAME}="${afterId}"]`)?.getBoundingClientRect()
+          const topRect = getItemElement(afterId)?.getBoundingClientRect()
           ghostElement.style.setProperty("top", ((topRect?.top || 0) + (topRect?.height || 0)) + "px")
         } else {
           ghostElement.style.setProperty("top", rect?.top + "px")
@@ -117,7 +122,7 @@ export const Droppable = memo((props: DroppableProps) => {
         }
       }
     }
-  }, [afterId, element, ghostElement, items, snapshot.isDraggingOver, targetIndex])
+  }, [afterId, element, getItemElement, ghostElement, items, snapshot.isDraggingOver])
 
   //控制Ghost的显示跟隐藏
   useEffect(() => {
@@ -133,6 +138,11 @@ export const Droppable = memo((props: DroppableProps) => {
       }
     }
   }, [ghostElement, snapshot.isDraggingOver])
+
+  //处理偏移
+  useEffect(() => {
+
+  }, [])
 
   return (
     <DroppableContext.Provider value={droppableState}>
