@@ -7,6 +7,10 @@ import { IFlattenedItem } from "../../interfaces/flattened"
 import { SortableItem } from "./SortableItem"
 
 const DropContainer = styled.div`
+  width: 100%;
+  flex: 1;
+  overflow: auto;
+  box-sizing: border-box;
   min-height: 100%;
   overflow-x: hidden;
   display: flex;
@@ -54,6 +58,7 @@ export const SortableTree = memo((
   return (
     <Droppable
       droppableId={CANVS_ID}
+      placeholderOffset={10}
       renderGhost={
         (innerRef) => {
           return (

@@ -12,6 +12,7 @@ import { DropEvent } from './dnd';
 import { CANVS_ID } from './consts';
 import { SortableTree } from './components/SortableTree';
 import { IFlattenedItem } from './interfaces/flattened';
+import { useGetItem } from './hooks/useGetItem';
 
 const Shell = styled.div`
   position: relative;
@@ -37,13 +38,6 @@ const CanvasContainer = styled.div`
   flex-flow: column;
   border-radius: 4px;
   overflow: hidden;
-`
-
-const Canvas = styled.div`
-  width: 100%;
-  flex: 1;
-  overflow: auto;
-  box-sizing: border-box;
 `
 const Toolbar = styled.div`
   height: 48px;
@@ -72,6 +66,7 @@ export const ReactMenuDesignerInner = memo(({
   // });
 
   const getResource = useGetResource()
+  const getItem = useGetItem()
   // const flattenedItems = useMemo(() => {
   //   const flattenedTree = flattenTree(items);
   //   const collapsedItems = flattenedTree.reduce<UniqueIdentifier[]>(
@@ -121,17 +116,18 @@ export const ReactMenuDesignerInner = memo(({
   const handleDrop = useCallback((e: DropEvent) => {
     if (e.activeId && e.droppableId === CANVS_ID) {
       const resouce = getResource(e.activeId)
-      if (resouce) {
-        const newItem = resouce.createMenuItem()
-        setItems((items) => {
-          const newItems: IFlattenedItem[] = items.filter(item => item.id !== e.activeId);
-          const index = e.afterId ? newItems.findIndex(item => item.id === e.afterId) + 1 : 0;
-          newItems.splice(index, 0, { ...newItem, children: undefined })
-          return newItems
-        })
+      const activeItem = resouce ? resouce.createMenuItem() : getItem(e.activeId)
+      if (!activeItem) {
+        return
       }
+      setItems((items) => {
+        const newItems: IFlattenedItem[] = items.filter(item => item.id !== e.activeId);
+        const index = e.afterId ? newItems.findIndex(item => item.id === e.afterId) + 1 : 0;
+        newItems.splice(index, 0, { ...activeItem, children: undefined })
+        return newItems
+      })
     }
-  }, [getResource, setItems])
+  }, [getItem, getResource, setItems])
 
   return (
 
@@ -155,9 +151,9 @@ export const ReactMenuDesignerInner = memo(({
             </Space>
             <Button type="primary" >保存</Button>
           </Toolbar>
-          <Canvas className='menu-canvas'>
-            <SortableTree items={items} />
-          </Canvas>
+
+          <SortableTree items={items} />
+
         </CanvasContainer>
         <PropertyPanel></PropertyPanel>
       </Shell>

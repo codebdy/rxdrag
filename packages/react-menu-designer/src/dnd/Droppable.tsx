@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useMemo, useState } from "react"
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { DroppableGhostFn, DroppableChildrenFn, IDroppableStateSnapshot, Identifier, ChildItem } from "./types"
 import { DroppableContext, DroppableParams, defualtDroppableParams } from "../contexts";
 import { DROPPABLE_ATTR_ID_NAME } from "./consts";
@@ -38,6 +38,7 @@ export const Droppable = memo((props: DroppableProps) => {
   const [element, setElement] = useState<HTMLElement>()
   const [dropIndicator, setDropIndicator] = useDrapIndicatorState() || []
   const [items] = childItemsState;
+  const renderGhostRef = useRef<() => void>()
 
   const getItemElement = useGetItemElement(element)
   const getCenrerPoint = useGetItemCenterPoint(element)
@@ -45,10 +46,15 @@ export const Droppable = memo((props: DroppableProps) => {
   //所有显示的条目，不包含被拖动的条目
   const showingItems = useMemo(() => items.filter(item => item.id !== dndSnapshot.draggingId), [dndSnapshot.draggingId, items]);
 
+  const handleScroll = useCallback(() => {
+    renderGhostRef.current?.()
+  }, [])
+
   const handleRefChange = useCallback((element?: HTMLElement | null) => {
     element?.setAttribute(DROPPABLE_ATTR_ID_NAME, droppableId)
     setElement(element || undefined)
-  }, [droppableId])
+    element?.addEventListener("scroll", handleScroll)
+  }, [droppableId, handleScroll])
 
   const handleGhostRefChange = useCallback((element?: HTMLElement | null) => {
     element?.style.setProperty("pointer-events", "none");
@@ -112,40 +118,39 @@ export const Droppable = memo((props: DroppableProps) => {
     }
   }, [canDrop, dndSnapshot.draggingId, dndSnapshot.overDroppable, droppableId, getCenrerPoint, setDropIndicator, showingItems])
 
+  const renderGhost = useCallback(() => {
+    const rect = element?.getBoundingClientRect()
+    ghostElement?.style.setProperty("width", rect?.width + "px")
+    ghostElement?.style.setProperty("left", rect?.left + "px")
+
+    if (dropIndicator?.afterId) {
+      const itemElement = getItemElement(dropIndicator.afterId)
+      const topRect = itemElement?.getBoundingClientRect()
+      if (itemElement) {
+        const style = window.getComputedStyle(itemElement)
+        const offset = style.transform === "none" ? 0 : -placeholderOffset
+        ghostElement?.style.setProperty("top", ((topRect?.top || 0) + offset + (topRect?.height || 0)) + "px")
+      }
+    } else {
+      ghostElement?.style.setProperty("top", rect?.top + "px")
+    }
+  }, [dropIndicator?.afterId, element, getItemElement, ghostElement?.style, placeholderOffset])
+
+  renderGhostRef.current = renderGhost
+
   //控制Ghost位置
   useEffect(() => {
-    if (ghostElement) {
-      if (snapshot.isDraggingOver) {
-        const rect = element?.getBoundingClientRect()
-        ghostElement.style.setProperty("width", rect?.width + "px")
-        ghostElement.style.setProperty("left", rect?.left + "px")
-
-        if (dropIndicator?.afterId) {
-          const topRect = getItemElement(dropIndicator.afterId)?.getBoundingClientRect()
-          ghostElement.style.setProperty("top", ((topRect?.top || 0) + (topRect?.height || 0)) + "px")
-        } else {
-          ghostElement.style.setProperty("top", rect?.top + "px")
-        }
-      }
+    if (snapshot.isDraggingOver) {
+      renderGhost()
     }
-  }, [dropIndicator?.afterId, element, getItemElement, ghostElement, items, snapshot.isDraggingOver])
+  }, [renderGhost, snapshot.isDraggingOver])
 
-  //控制Ghost的显示跟隐藏
-  useEffect(() => {
-    if (ghostElement && !isDraggingOver && (!dropIndicator || dropIndicator?.cannotDrop)) {
-      //隐藏
-      const display = ghostElement.style.getPropertyValue("display")
-      ghostElement.style.setProperty("display", "none")
-      return () => {
-        //显示
-        if (display) {
-          ghostElement.style.setProperty("display", display)
-        } else {
-          ghostElement.style.removeProperty("display")
-        }
-      }
+  const ghostDisplay = useMemo(() => {
+    if (isDraggingOver && dropIndicator && !dropIndicator.cannotDrop) {
+      return true
     }
-  }, [dropIndicator, dropIndicator?.cannotDrop, ghostElement, isDraggingOver, snapshot.isDraggingOver])
+    return false
+  }, [dropIndicator, isDraggingOver])
 
   //处理偏移
   useEffect(() => {
@@ -178,7 +183,7 @@ export const Droppable = memo((props: DroppableProps) => {
     <DroppableContext.Provider value={droppableState}>
       <ChildItemsContext.Provider value={childItemsState}>
         {children && children(handleRefChange, snapshot)}
-        {renderPlaceholder && renderPlaceholder(handleGhostRefChange, dndSnapshot.draggingId)}
+        {ghostDisplay && renderPlaceholder && renderPlaceholder(handleGhostRefChange, dndSnapshot.draggingId)}
       </ChildItemsContext.Provider>
     </DroppableContext.Provider>
   )
