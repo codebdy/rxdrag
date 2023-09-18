@@ -70,7 +70,10 @@ export type DraggableChildrenFn = (
 
 export type DroppableGhostFn = (
   innerRef: (element?: HTMLElement | null) => void,
-  draggingId?: string,
+  snapshot?: {
+    draggingId?: string,
+    delta?: Offset,
+  }
 ) => React.ReactNode;
 
 export interface DroppableProvided {

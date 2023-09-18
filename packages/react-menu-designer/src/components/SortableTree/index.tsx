@@ -1,8 +1,8 @@
 import classNames from "classnames"
-import { memo, useMemo, useState } from "react"
+import { memo } from "react"
 import styled from "styled-components"
 import { CANVS_ID } from "../../consts"
-import { Droppable, Offset } from "../../dnd"
+import { Droppable } from "../../dnd"
 import { IFlattenedItem } from "../../interfaces/flattened"
 import { SortableItem } from "./SortableItem"
 
@@ -27,6 +27,7 @@ const Ghost = styled.div`
   display: flex;
   padding: 6px 8px;
   box-sizing: border-box;
+  transition: all 0.2s;
 `
 
 const GhostInner = styled.div`
@@ -56,24 +57,18 @@ export const SortableTree = memo((
   }
 ) => {
   const { items, indentationWidth } = props;
-  const [draggingOffset, setDraggigOffset] = useState<Offset>()
-
-  const indentation = useMemo(() => {
-    if (draggingOffset?.x && draggingOffset.x > 0) {
-      const ind = (Math.trunc(draggingOffset.x / indentationWidth)) * indentationWidth
-      return ind
-    }
-
-    return 0
-  }, [draggingOffset?.x, indentationWidth])
 
   return (
     <Droppable
       droppableId={CANVS_ID}
       placeholderOffset={20}
-      onDeltaChange={setDraggigOffset}
       renderGhost={
-        (innerRef) => {
+        (innerRef, snapshot) => {
+          let indentation = 0
+          if (snapshot?.delta) {
+            indentation = (Math.trunc(snapshot.delta.x / indentationWidth)) * indentationWidth
+          }
+
           return (
             <Ghost ref={innerRef} style={{ paddingLeft: indentation + 8 }}><GhostInner /></Ghost>
           )
