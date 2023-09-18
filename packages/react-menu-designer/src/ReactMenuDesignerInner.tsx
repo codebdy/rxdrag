@@ -125,7 +125,7 @@ export const ReactMenuDesignerInner = memo(({
         const newItem = resouce.createMenuItem()
         setItems((items) => {
           const newItems: IFlattenedItem[] = items.filter(item => item.id !== e.activeId);
-          const index = e.afterId ? newItems.findIndex(item => item.id === e.afterId) : 0;
+          const index = e.afterId ? newItems.findIndex(item => item.id === e.afterId) + 1 : 0;
           newItems.splice(index, 0, { ...newItem, children: undefined })
           return newItems
         })
