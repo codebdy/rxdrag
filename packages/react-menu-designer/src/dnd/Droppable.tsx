@@ -13,7 +13,7 @@ import { useGetItemCenterPoint } from "./hooks/getItemElement";
 export type CheckOptions = {
   droppableId: Identifier,
   //undfined标识插入开始位置
-  afterId?: Identifier,
+  belowAtId?: Identifier,
   draggingId: Identifier,
 }
 
@@ -72,11 +72,11 @@ export const Droppable = memo((props: DroppableProps) => {
     return {
       isDraggingOver: isDraggingOver,
       originalEvent: dndSnapshot.overDroppable?.originalEvent,
-      afterId: dropIndicator?.afterId,
+      belowAtId: dropIndicator?.belowAtId,
       cannotDrop: dropIndicator?.cannotDrop,
       delta: dropIndicator?.delta,
     }
-  }, [dndSnapshot.overDroppable?.originalEvent, dropIndicator?.afterId, dropIndicator?.cannotDrop, dropIndicator?.delta, isDraggingOver])
+  }, [dndSnapshot.overDroppable?.originalEvent, dropIndicator?.belowAtId, dropIndicator?.cannotDrop, dropIndicator?.delta, isDraggingOver])
 
   //鼠标移开，清空drop指示
   useEffect(() => {
@@ -89,33 +89,33 @@ export const Droppable = memo((props: DroppableProps) => {
   useEffect(() => {
     if (dndSnapshot.overDroppable && dndSnapshot.draggingId) {
       //let index = 0
-      let afterId: string | undefined = undefined
+      let belowAtId: string | undefined = undefined
       for (let i = 0; i < showingItems.length; i++) {
         const item = showingItems[i]
         const centerPoint = getCenrerPoint(item.id)
         if (centerPoint) {
           if (centerPoint.y >= dndSnapshot.overDroppable.originalEvent.clientY) {
             if (i > 0) {
-              afterId = showingItems[i - 1].id
+              belowAtId = showingItems[i - 1].id
             }
             break;
           }
         }
       }
-      if (!afterId && showingItems.length > 0) {
+      if (!belowAtId && showingItems.length > 0) {
         const lastItem = showingItems[showingItems.length - 1]
         const lastCenterPoint = getCenrerPoint(lastItem.id)
         if (lastCenterPoint && dndSnapshot.overDroppable.originalEvent.clientY > lastCenterPoint?.y) {
-          afterId = lastItem.id
+          belowAtId = lastItem.id
         }
       }
       setDropIndicator?.(
         {
-          afterId,
+          belowAtId,
           cannotDrop: canDrop && !canDrop?.({
             droppableId,
             draggingId: dndSnapshot.draggingId,
-            afterId,
+            belowAtId,
           }),
           delta: {
             x: dndSnapshot.overDroppable.offsetX || 0,
@@ -131,8 +131,8 @@ export const Droppable = memo((props: DroppableProps) => {
     ghostElement?.style.setProperty("width", rect?.width + "px")
     ghostElement?.style.setProperty("left", rect?.left + "px")
 
-    if (dropIndicator?.afterId) {
-      const itemElement = getItemElement(dropIndicator.afterId)
+    if (dropIndicator?.belowAtId) {
+      const itemElement = getItemElement(dropIndicator.belowAtId)
       const topRect = itemElement?.getBoundingClientRect()
       if (itemElement) {
         const style = window.getComputedStyle(itemElement)
@@ -142,7 +142,7 @@ export const Droppable = memo((props: DroppableProps) => {
     } else {
       ghostElement?.style.setProperty("top", rect?.top + "px")
     }
-  }, [dropIndicator?.afterId, element, getItemElement, ghostElement?.style, placeholderOffset])
+  }, [dropIndicator?.belowAtId, element, getItemElement, ghostElement?.style, placeholderOffset])
 
   renderGhostRef.current = doRenderGhost
 
@@ -163,7 +163,7 @@ export const Droppable = memo((props: DroppableProps) => {
   //处理偏移
   useEffect(() => {
     if (isDraggingOver) {
-      let beginOffset = !dropIndicator?.afterId;
+      let beginOffset = !dropIndicator?.belowAtId;
       for (let i = 0; i < showingItems.length; i++) {
         const item = showingItems[i]
         if (beginOffset) {
@@ -172,7 +172,7 @@ export const Droppable = memo((props: DroppableProps) => {
           itemElement?.style.setProperty("transition", `transform 0.2s`)
         }
 
-        if (item.id === dropIndicator?.afterId) {
+        if (item.id === dropIndicator?.belowAtId) {
           beginOffset = true
         }
       }
@@ -185,15 +185,15 @@ export const Droppable = memo((props: DroppableProps) => {
         }
       }
     }
-  }, [dropIndicator?.afterId, getItemElement, isDraggingOver, placeholderOffset, showingItems])
+  }, [dropIndicator?.belowAtId, getItemElement, isDraggingOver, placeholderOffset, showingItems])
 
   const ghostSnapshot = useMemo(() => {
     return {
       draggingId: dndSnapshot.draggingId,
       delta: snapshot.delta,
-      afterId: snapshot?.afterId,
+      belowAtId: snapshot?.belowAtId,
     }
-  }, [dndSnapshot.draggingId, snapshot?.afterId, snapshot.delta])
+  }, [dndSnapshot.draggingId, snapshot?.belowAtId, snapshot.delta])
 
   return (
     <DroppableContext.Provider value={droppableState}>

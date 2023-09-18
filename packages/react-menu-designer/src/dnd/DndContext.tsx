@@ -5,6 +5,7 @@ import { DRAGGABLE_ATTR_ID_NAME, DRAGGABLE_HNADLER_ATTR_ID_NAME, DROPPABLE_ATTR_
 import { DndSnapshotContext, DropIndicatorContext } from "./contexts";
 
 export type DndContextProps = {
+  onDragStart?: (id: Identifier) => void,
   onDrop?: (e: DropEvent) => void,
   onDragEnd?: () => void,
   onDragCancel?: () => void,
@@ -14,7 +15,7 @@ export type DndContextProps = {
 export const DndContext = memo((
   props: DndContextProps
 ) => {
-  const { onDrop, onDragEnd, onDragCancel, children } = props;
+  const { onDragStart, onDrop, onDragEnd, onDragCancel, children } = props;
   const [mouseDownEvent, setMouseDownEvent] = useState<MouseEvent>();
   const [activeId, setActiveId] = useState<Identifier>();
   const [dragging, setDragging] = useState<boolean>()
@@ -63,13 +64,14 @@ export const DndContext = memo((
       if (Math.abs(e.screenX - startEvent.screenX) > 5 ||
         Math.abs(e.screenY - startEvent.screenY) > 5) {
         setDragging(true)
+        activeId && onDragStart?.(activeId)
         const offset = { x: 0, y: 0 }
         offset.x = e.clientX - startEvent.clientX
         offset.y = e.clientY - startEvent.clientY
         setDraggingOffset(offset)
       }
     }
-  }, [getOverInfo])
+  }, [activeId, getOverInfo, onDragStart])
 
   const resetState = useCallback(() => {
     setOverDraggable(undefined)
@@ -87,7 +89,7 @@ export const DndContext = memo((
         activeId: activeId,
         originalEvent: e,
         droppableId: overDroppable.id,
-        afterId: dropIndicator.afterId,
+        belowAtId: dropIndicator.belowAtId,
         delta: { x: overDroppable.offsetX || 0, y: overDroppable.offsetY || 0 },
       })
     } else {

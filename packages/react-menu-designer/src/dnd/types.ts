@@ -23,7 +23,7 @@ export type OverOffset = {
 
 export type DropEvent = DragEvent & {
   droppableId: Identifier,
-  afterId?: string,
+  belowAtId?: string,
   //在容器内部拖拽的距离
   delta?: Offset,
 }
@@ -73,7 +73,7 @@ export type DroppableGhostFn = (
   snapshot?: {
     draggingId?: Identifier,
     delta?: Offset,
-    afterId?: Identifier
+    belowAtId?: Identifier
   }
 ) => React.ReactNode;
 
@@ -84,7 +84,7 @@ export interface DroppableProvided {
 
 export interface IDroppableStateSnapshot {
   isDraggingOver: boolean;
-  afterId?: string,
+  belowAtId?: string,
   cannotDrop?: boolean,
   originalEvent?: MouseEvent,
   delta?: Offset,
@@ -120,7 +120,7 @@ export type ChildItem = {
 }
 
 export type DropIndicator = {
-  afterId?: string,
+  belowAtId?: string,
   cannotDrop?: boolean,
   delta?: Offset,
 }

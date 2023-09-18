@@ -66,7 +66,7 @@ export const SortableTree = memo((
       placeholderOffset={20}
       renderGhost={
         (innerRef, snapshot) => {
-          const depth = getDepth(snapshot?.afterId, snapshot?.delta, indentationWidth)
+          const depth = getDepth(snapshot?.belowAtId, snapshot?.delta, indentationWidth)
           const indentation = depth * indentationWidth
           return (
             <Ghost ref={innerRef} style={{ paddingLeft: indentation + 8 }}><GhostInner /></Ghost>

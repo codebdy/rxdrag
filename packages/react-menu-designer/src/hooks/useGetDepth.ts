@@ -4,8 +4,8 @@ import { useGetDepthLimits } from "./useGetDepthLimits";
 
 export function useGetDepth() {
   const getDepthLimits = useGetDepthLimits()
-  const getDepth = useCallback((afterId: Identifier | undefined, delta: Offset | undefined, indentationWidth: number) => {
-    const limits = getDepthLimits(afterId)
+  const getDepth = useCallback((belowAtId: Identifier | undefined, delta: Offset | undefined, indentationWidth: number) => {
+    const limits = getDepthLimits(belowAtId)
     if (delta) {
       let depth = Math.trunc(delta.x / indentationWidth)
       if (depth < limits.min) {

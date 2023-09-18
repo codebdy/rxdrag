@@ -8,12 +8,13 @@ import { useOffsetLeftState } from './hooks/useOffsetLeftState';
 import { useItemsState } from './hooks/useItemsState';
 import { useGetResource } from './hooks/useGetResource';
 import { DndContext } from './dnd/DndContext';
-import { DropEvent } from './dnd';
+import { DropEvent, Identifier } from './dnd';
 import { CANVS_ID } from './consts';
 import { SortableTree } from './components/SortableTree';
 import { IFlattenedItem } from './interfaces/flattened';
 import { useGetItem } from './hooks/useGetItem';
 import { useGetDepth } from './hooks/useGetDepth';
+import { useActiveIdState } from './hooks/useActiveIdState';
 
 const Shell = styled.div`
   position: relative;
@@ -61,6 +62,7 @@ export const ReactMenuDesignerInner = memo(({
 }: ReactMenuDesignerInnerProps) => {
   //const [newItem, setNewItem] = useState<IMenuItem>()
   const [items, setItems] = useItemsState();
+  const [, setActiveId] = useActiveIdState()
   const getDepth = useGetDepth()
 
   const getResource = useGetResource()
@@ -101,14 +103,19 @@ export const ReactMenuDesignerInner = memo(({
   // projectedRef.current = projected
 
   const resetState = useCallback(() => {
+    setActiveId(null)
     document.body.style.setProperty('cursor', '');
-  }, [])
+  }, [setActiveId])
 
   const handleDragCancel = useCallback(() => {
     // const newItems = items.filter(item => item.resource)
     // setItems(newItems)
     resetState();
   }, [resetState])
+
+  const handleDragStart = useCallback((id: Identifier) => {
+    setActiveId(id)
+  }, [setActiveId])
 
   const handleDrop = useCallback((e: DropEvent) => {
     if (e.activeId && e.droppableId === CANVS_ID) {
@@ -119,8 +126,8 @@ export const ReactMenuDesignerInner = memo(({
       }
       setItems((items) => {
         const newItems: IFlattenedItem[] = items.filter(item => item.id !== e.activeId);
-        const index = e.afterId ? newItems.findIndex(item => item.id === e.afterId) + 1 : 0;
-        const depth = getDepth(e.afterId, e.delta, indentationWidth)
+        const index = e.belowAtId ? newItems.findIndex(item => item.id === e.belowAtId) + 1 : 0;
+        const depth = getDepth(e.belowAtId, e.delta, indentationWidth)
         newItems.splice(index, 0, { ...activeItem, children: undefined, depth })
         return newItems
       })
@@ -131,7 +138,7 @@ export const ReactMenuDesignerInner = memo(({
 
     <DndContext
       onDrop={handleDrop}
-      // onDragStart={handleDragStart}
+      onDragStart={handleDragStart}
       // onDragMove={handleDragMove}
       // onDragOver={handleDragOver}
       // onDragEnd={handleDragEnd}
