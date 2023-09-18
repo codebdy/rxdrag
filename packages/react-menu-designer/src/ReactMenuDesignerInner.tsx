@@ -126,6 +126,8 @@ export const ReactMenuDesignerInner = memo(({
       }
       const depth = getDepth(e.belowAtId, e.delta, indentationWidth)
       const parent = e.belowAtId ? getParent(e.belowAtId, depth) : undefined
+
+     //判断 插入位置：insertChild, insertAfter，重新展开，操作扁平结构，带children
       
       // setItems((items) => {
       //   const newItems: IFlattenedItem[] = items.filter(item => item.id !== e.activeId);

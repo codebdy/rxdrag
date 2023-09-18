@@ -1,8 +1,9 @@
 import { memo, useEffect, useState } from "react"
 import { ActiveIdContext, HistoryContext, HistoryRedords, ItemsContext, defautHistory, ResourcesContext } from "./contexts";
-import { IMenuItem, IMenuItemSchema } from "./interfaces";
+import { IMenuItem } from "./interfaces";
 import { menuResources } from "./resources";
 import { Identifier } from "./dnd/types";
+import { IFlattenedItem } from "./interfaces/flattened";
 
 export const DesignerRoot = memo((props: {
   defaultValue?: IMenuItem[],
@@ -10,7 +11,7 @@ export const DesignerRoot = memo((props: {
   children?: React.ReactNode,
 }) => {
   const { defaultValue, value, children } = props;
-  const itemsState = useState<IMenuItemSchema[]>([]);
+  const itemsState = useState<IFlattenedItem[]>([]);
   const activeIdState = useState<Identifier | null>(null);
   const historyState = useState<HistoryRedords>(defautHistory)
   const [, setHistoryState] = historyState
