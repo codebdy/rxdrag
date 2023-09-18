@@ -6,6 +6,7 @@ export function useGetDepthLimits() {
   const getItem = useGetItem()
   const getDepthLimits = useCallback((afterId: Identifier | undefined) => {
     const afterItem = getItem(afterId)
+
     if (!afterItem) {
       return {
         max: 0,

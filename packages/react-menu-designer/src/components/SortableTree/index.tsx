@@ -5,7 +5,7 @@ import { CANVS_ID } from "../../consts"
 import { Droppable } from "../../dnd"
 import { IFlattenedItem } from "../../interfaces/flattened"
 import { SortableItem } from "./SortableItem"
-import { useGetDepthLimits } from "../../hooks/useGetDepthLimits"
+import { useGetDepth } from "../../hooks/useGetDepth"
 
 const DropContainer = styled.div`
   width: 100%;
@@ -58,7 +58,7 @@ export const SortableTree = memo((
   }
 ) => {
   const { items, indentationWidth } = props;
-  const getDepthLimits = useGetDepthLimits()
+  const getDepth = useGetDepth()
 
   return (
     <Droppable
@@ -66,18 +66,8 @@ export const SortableTree = memo((
       placeholderOffset={20}
       renderGhost={
         (innerRef, snapshot) => {
-          let indentation = 0
-          const limits = getDepthLimits(snapshot?.afterId)
-          if (snapshot?.delta) {
-            let depth = Math.trunc(snapshot.delta.x / indentationWidth)
-            if (depth < limits.min) {
-              depth = limits.min
-            } else if (depth > limits.max) {
-              depth = limits.max
-            }
-            indentation = depth * indentationWidth
-          }
-
+          const depth = getDepth(snapshot?.afterId, snapshot?.delta, indentationWidth)
+          const indentation = depth * indentationWidth
           return (
             <Ghost ref={innerRef} style={{ paddingLeft: indentation + 8 }}><GhostInner /></Ghost>
           )
@@ -90,7 +80,12 @@ export const SortableTree = memo((
             <DropContainer ref={innerRef} className={classNames('menu-drop-container', { over: snapshot?.isDraggingOver })}>
               {
                 items?.map((item, index) => {
-                  return (<SortableItem key={item.id} item={item} index={index} />)
+                  return (<SortableItem
+                    key={item.id}
+                    item={item}
+                    index={index}
+                    indentationWidth={indentationWidth}
+                  />)
                 })
               }
             </DropContainer>

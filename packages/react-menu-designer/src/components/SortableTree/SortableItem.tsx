@@ -31,10 +31,11 @@ const Handler = styled(Button)`
 export const SortableItem = memo((
   props: {
     item: IFlattenedItem,
-    index: number
+    index: number,
+    indentationWidth: number,
   }
 ) => {
-  const { item, index } = props
+  const { item, index, indentationWidth } = props
   return (
     <Draggable
       hasHandler
@@ -55,7 +56,10 @@ export const SortableItem = memo((
     >
       {
         (provider) => {
-          return <Container ref={provider.innerRef}>
+          return <Container
+            ref={provider.innerRef}
+            style={{ marginLeft: indentationWidth * item.depth }}
+          >
             <Handler
               ref={provider.handlerRef}
               type="text"

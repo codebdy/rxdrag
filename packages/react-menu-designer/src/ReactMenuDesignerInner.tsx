@@ -13,6 +13,7 @@ import { CANVS_ID } from './consts';
 import { SortableTree } from './components/SortableTree';
 import { IFlattenedItem } from './interfaces/flattened';
 import { useGetItem } from './hooks/useGetItem';
+import { useGetDepth } from './hooks/useGetDepth';
 
 const Shell = styled.div`
   position: relative;
@@ -60,10 +61,7 @@ export const ReactMenuDesignerInner = memo(({
 }: ReactMenuDesignerInnerProps) => {
   //const [newItem, setNewItem] = useState<IMenuItem>()
   const [items, setItems] = useItemsState();
-  const [offsetLeft, setOffsetLeft] = useOffsetLeftState();
-  // const { setNodeRef } = useDroppable({
-  //   id: CANVS_ID
-  // });
+  const getDepth = useGetDepth()
 
   const getResource = useGetResource()
   const getItem = useGetItem()
@@ -103,9 +101,8 @@ export const ReactMenuDesignerInner = memo(({
   // projectedRef.current = projected
 
   const resetState = useCallback(() => {
-    setOffsetLeft(0);
     document.body.style.setProperty('cursor', '');
-  }, [setOffsetLeft])
+  }, [])
 
   const handleDragCancel = useCallback(() => {
     // const newItems = items.filter(item => item.resource)
@@ -123,11 +120,12 @@ export const ReactMenuDesignerInner = memo(({
       setItems((items) => {
         const newItems: IFlattenedItem[] = items.filter(item => item.id !== e.activeId);
         const index = e.afterId ? newItems.findIndex(item => item.id === e.afterId) + 1 : 0;
-        newItems.splice(index, 0, { ...activeItem, children: undefined })
+        const depth = getDepth(e.afterId, e.delta, indentationWidth)
+        newItems.splice(index, 0, { ...activeItem, children: undefined, depth })
         return newItems
       })
     }
-  }, [getItem, getResource, setItems])
+  }, [getDepth, getItem, getResource, indentationWidth, setItems])
 
   return (
 
