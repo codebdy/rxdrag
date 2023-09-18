@@ -21,6 +21,7 @@ const Container = styled.div`
 const MouseFollowerContainer = styled(Container)`
   box-shadow: ${floatShadow};
   border-radius: 8px;
+  opacity: 0.8;
 `
 
 const Handler = styled(Button)`

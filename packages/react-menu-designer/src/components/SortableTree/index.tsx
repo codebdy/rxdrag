@@ -5,6 +5,7 @@ import { CANVS_ID } from "../../consts"
 import { Droppable } from "../../dnd"
 import { IFlattenedItem } from "../../interfaces/flattened"
 import { SortableItem } from "./SortableItem"
+import { useGetDepthLimits } from "../../hooks/useGetDepthLimits"
 
 const DropContainer = styled.div`
   width: 100%;
@@ -57,6 +58,7 @@ export const SortableTree = memo((
   }
 ) => {
   const { items, indentationWidth } = props;
+  const getDepthLimits = useGetDepthLimits()
 
   return (
     <Droppable
@@ -65,8 +67,15 @@ export const SortableTree = memo((
       renderGhost={
         (innerRef, snapshot) => {
           let indentation = 0
+          const limits = getDepthLimits(snapshot?.afterId)
           if (snapshot?.delta) {
-            indentation = (Math.trunc(snapshot.delta.x / indentationWidth)) * indentationWidth
+            let depth = Math.trunc(snapshot.delta.x / indentationWidth)
+            if (depth < limits.min) {
+              depth = limits.min
+            } else if (depth > limits.max) {
+              depth = limits.max
+            }
+            indentation = depth * indentationWidth
           }
 
           return (

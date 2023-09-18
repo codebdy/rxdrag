@@ -3,7 +3,7 @@ import { IMenuItem } from "./menu";
 
 export interface IFlattenedItem<Config = unknown> extends IMenuItem<Config> {
   parentId?: Identifier | null;
-  depth?: number;
+  depth: number;
   collapsed?: boolean;
   //拍平后不需要children
   children: undefined;

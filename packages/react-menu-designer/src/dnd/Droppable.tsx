@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { DroppableGhostFn, DroppableChildrenFn, IDroppableStateSnapshot, Identifier, ChildItem, Offset } from "./types"
+import { DroppableGhostFn, DroppableChildrenFn, IDroppableStateSnapshot, Identifier, ChildItem } from "./types"
 import { DroppableContext, DroppableParams, defualtDroppableParams } from "../contexts";
 import { DROPPABLE_ATTR_ID_NAME } from "./consts";
 import { useDndSnapshot } from "./hooks/useDndSnapshot";
@@ -191,8 +191,9 @@ export const Droppable = memo((props: DroppableProps) => {
     return {
       draggingId: dndSnapshot.draggingId,
       delta: snapshot.delta,
+      afterId: snapshot?.afterId,
     }
-  }, [dndSnapshot.draggingId, snapshot.delta])
+  }, [dndSnapshot.draggingId, snapshot?.afterId, snapshot.delta])
 
   return (
     <DroppableContext.Provider value={droppableState}>
