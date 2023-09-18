@@ -13,6 +13,8 @@ const MouseFollower = styled.div`
 `
 
 export type DraggableProps = {
+  //鼠标跟随跟条目等宽
+  //keepMouseFollowerWidth?: boolean,
   draggableId: Identifier;
   index?: number;
   clonable?: boolean;

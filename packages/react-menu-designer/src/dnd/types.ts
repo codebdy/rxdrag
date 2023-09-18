@@ -25,7 +25,7 @@ export type OverOffset = {
 
 export type DropEvent = DragEvent & {
   droppableId: Identifier,
-  targetIndex: number,
+  afterId?: string,
   offset?: OverOffset,
 }
 
@@ -76,6 +76,7 @@ export interface DroppableProvided {
 export interface IDroppableStateSnapshot {
   isDraggingOver: boolean;
   afterId?: string,
+  cannotDrop?: boolean,
   originalEvent?: MouseEvent
 }
 
@@ -106,4 +107,9 @@ export interface IDndSnapshot {
 export type ChildItem = {
   id: Identifier,
   index: number,
+}
+
+export type DropIndicator = {
+  afterId?: string,
+  cannotDrop?: boolean,
 }

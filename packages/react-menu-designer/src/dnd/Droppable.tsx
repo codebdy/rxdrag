@@ -3,21 +3,17 @@ import { DroppableGhostFn, DroppableChildrenFn, IDroppableStateSnapshot, Identif
 import { DroppableContext, DroppableParams, defualtDroppableParams } from "../contexts";
 import { DROPPABLE_ATTR_ID_NAME } from "./consts";
 import { useDndSnapshot } from "./hooks/useDndSnapshot";
-import styled from "styled-components";
-import { useTargetIndexState } from "./hooks/useTargetIndexState";
+import { useDrapIndicatorState } from "./hooks/useDrapIndicatorState";
 import { ChildItemsContext } from "./contexts";
 import { useGetItemElement } from "./hooks/useGetItemElement";
 import { useGetItemCenterPoint } from "./hooks/getItemElement";
-
-const PlaceHolder = styled.div`
-  position: fixed;
-`
 
 //export type Direction = 'horizontal' | 'vertical';
 
 export type CheckOptions = {
   droppableId: Identifier,
-  targetIndex: number,
+  //undfined标识插入开始位置
+  afterId?: Identifier,
   draggingId: Identifier,
 }
 
@@ -29,18 +25,18 @@ export type DroppableProps = {
   //目标位置的占位符
   renderGhost?: DroppableGhostFn
   //检查某个位置是否可以被插入
-  canDrop?: (options: CheckOptions) => boolean
+  canDrop?: (options: CheckOptions) => boolean,
+  placeholderOffset?: number,
 }
 
 export const Droppable = memo((props: DroppableProps) => {
-  const { droppableId, children, renderGhost: renderPlaceholder, canDrop } = props
+  const { droppableId, children, renderGhost: renderPlaceholder, canDrop, placeholderOffset = 20 } = props
   const childItemsState = useState<ChildItem[]>([])
   const droppableState = useState<DroppableParams>(defualtDroppableParams)
   const dndSnapshot = useDndSnapshot()
   const [ghostElement, getGhostElement] = useState<HTMLElement>()
   const [element, setElement] = useState<HTMLElement>()
-  const [targetIndex, setTargetIndex] = useTargetIndexState() || []
-  const [afterId, setAfterId] = useState<Identifier>()
+  const [dropIndicator, setDropIndicator] = useDrapIndicatorState() || []
   const [items] = childItemsState;
 
   const getItemElement = useGetItemElement(element)
@@ -57,6 +53,7 @@ export const Droppable = memo((props: DroppableProps) => {
   const handleGhostRefChange = useCallback((element?: HTMLElement | null) => {
     element?.style.setProperty("pointer-events", "none");
     element?.style.setProperty("position", "fixed");
+    element?.style.setProperty("transition", `all 0.2s`)
     getGhostElement(element || undefined)
   }, [])
 
@@ -66,20 +63,21 @@ export const Droppable = memo((props: DroppableProps) => {
     return {
       isDraggingOver: isDraggingOver,
       originalEvent: dndSnapshot.overDroppable?.originalEvent,
-      afterId: afterId,
+      afterId: dropIndicator?.afterId,
+      cannotDrop: dropIndicator?.cannotDrop,
     }
-  }, [afterId, dndSnapshot.overDroppable?.originalEvent, isDraggingOver])
+  }, [dndSnapshot.overDroppable?.originalEvent, dropIndicator?.afterId, dropIndicator?.cannotDrop, isDraggingOver])
 
-  //鼠标移开，清空targetIndex
+  //鼠标移开，清空drop指示
   useEffect(() => {
     if (!isDraggingOver) {
-      setTargetIndex?.(-1)
+      setDropIndicator?.(undefined)
     }
-  }, [isDraggingOver, setTargetIndex])
+  }, [isDraggingOver, setDropIndicator])
 
   //计算插入的位置
   useEffect(() => {
-    if (dndSnapshot.overDroppable) {
+    if (dndSnapshot.overDroppable && dndSnapshot.draggingId) {
       //let index = 0
       let afterId: string | undefined = undefined
       for (let i = 0; i < showingItems.length; i++) {
@@ -101,9 +99,18 @@ export const Droppable = memo((props: DroppableProps) => {
           afterId = lastItem.id
         }
       }
-      setAfterId(afterId)
+      setDropIndicator?.(
+        {
+          afterId,
+          cannotDrop: canDrop && !canDrop?.({
+            droppableId,
+            draggingId: dndSnapshot.draggingId,
+            afterId,
+          })
+        }
+      )
     }
-  }, [dndSnapshot.overDroppable, getCenrerPoint, showingItems])
+  }, [canDrop, dndSnapshot.draggingId, dndSnapshot.overDroppable, droppableId, getCenrerPoint, setDropIndicator, showingItems])
 
   //控制Ghost位置
   useEffect(() => {
@@ -113,23 +120,24 @@ export const Droppable = memo((props: DroppableProps) => {
         ghostElement.style.setProperty("width", rect?.width + "px")
         ghostElement.style.setProperty("left", rect?.left + "px")
 
-        if (afterId) {
-          const topRect = getItemElement(afterId)?.getBoundingClientRect()
+        if (dropIndicator?.afterId) {
+          const topRect = getItemElement(dropIndicator.afterId)?.getBoundingClientRect()
           ghostElement.style.setProperty("top", ((topRect?.top || 0) + (topRect?.height || 0)) + "px")
         } else {
           ghostElement.style.setProperty("top", rect?.top + "px")
-
         }
       }
     }
-  }, [afterId, element, getItemElement, ghostElement, items, snapshot.isDraggingOver])
+  }, [dropIndicator?.afterId, element, getItemElement, ghostElement, items, snapshot.isDraggingOver])
 
   //控制Ghost的显示跟隐藏
   useEffect(() => {
-    if (ghostElement && !snapshot.isDraggingOver) {
+    if (ghostElement && !isDraggingOver && (!dropIndicator || dropIndicator?.cannotDrop)) {
+      //隐藏
       const display = ghostElement.style.getPropertyValue("display")
       ghostElement.style.setProperty("display", "none")
       return () => {
+        //显示
         if (display) {
           ghostElement.style.setProperty("display", display)
         } else {
@@ -137,21 +145,21 @@ export const Droppable = memo((props: DroppableProps) => {
         }
       }
     }
-  }, [ghostElement, snapshot.isDraggingOver])
+  }, [dropIndicator, dropIndicator?.cannotDrop, ghostElement, isDraggingOver, snapshot.isDraggingOver])
 
   //处理偏移
   useEffect(() => {
     if (isDraggingOver) {
-      let beginOffset = !afterId;
+      let beginOffset = !dropIndicator?.afterId;
       for (let i = 0; i < showingItems.length; i++) {
         const item = showingItems[i]
         if (beginOffset) {
           const itemElement = getItemElement(item.id)
-          itemElement?.style.setProperty("transform", `translateY(${20}px)`)
+          itemElement?.style.setProperty("transform", `translateY(${placeholderOffset}px)`)
           itemElement?.style.setProperty("transition", `transform 0.2s`)
         }
 
-        if (item.id === afterId) {
+        if (item.id === dropIndicator?.afterId) {
           beginOffset = true
         }
       }
@@ -164,15 +172,13 @@ export const Droppable = memo((props: DroppableProps) => {
         }
       }
     }
-  }, [afterId, getItemElement, isDraggingOver, showingItems])
+  }, [dropIndicator?.afterId, getItemElement, isDraggingOver, placeholderOffset, showingItems])
 
   return (
     <DroppableContext.Provider value={droppableState}>
       <ChildItemsContext.Provider value={childItemsState}>
         {children && children(handleRefChange, snapshot)}
-        <PlaceHolder>
-          {renderPlaceholder && renderPlaceholder(handleGhostRefChange, dndSnapshot.draggingId)}
-        </PlaceHolder>
+        {renderPlaceholder && renderPlaceholder(handleGhostRefChange, dndSnapshot.draggingId)}
       </ChildItemsContext.Provider>
     </DroppableContext.Provider>
   )

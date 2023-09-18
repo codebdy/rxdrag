@@ -11,6 +11,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   padding: 0 16px;
+  background-color: ${props => props.theme.token?.colorBgContainer};
 `
 
 export const SortableItem = memo((

@@ -1,18 +1,15 @@
-import { memo, useCallback, useRef, useState } from 'react';
+import { memo, useCallback } from 'react';
 import styled from 'styled-components';
 import { Toolbox } from './components/Toolbox';
 import { PropertyPanel } from './components/PropertyPanel';
 import { Button, Divider, Space } from 'antd';
 import { DeleteOutlined, RedoOutlined, UndoOutlined } from '@ant-design/icons';
-import { useActiveIdState } from './hooks/useActiveIdState';
-import { useOverIdState } from './hooks/useOverIdState';
 import { useOffsetLeftState } from './hooks/useOffsetLeftState';
 import { useItemsState } from './hooks/useItemsState';
 import { useGetResource } from './hooks/useGetResource';
 import { DndContext } from './dnd/DndContext';
-import { DropEvent, Droppable } from './dnd';
+import { DropEvent } from './dnd';
 import { CANVS_ID } from './consts';
-import classNames from 'classnames';
 import { SortableTree } from './components/SortableTree';
 import { IFlattenedItem } from './interfaces/flattened';
 
@@ -68,12 +65,8 @@ export const ReactMenuDesignerInner = memo(({
   indentationWidth = 50,
 }: ReactMenuDesignerInnerProps) => {
   //const [newItem, setNewItem] = useState<IMenuItem>()
-  const [overOnCanvas, setOverOnCanvas] = useState<boolean>()
   const [items, setItems] = useItemsState();
-  const [activeId, setActiveId] = useActiveIdState();
-  const [overId, setOverId] = useOverIdState();
   const [offsetLeft, setOffsetLeft] = useOffsetLeftState();
-  const canvasRef = useRef<HTMLDivElement>(null)
   // const { setNodeRef } = useDroppable({
   //   id: CANVS_ID
   // });
@@ -115,13 +108,9 @@ export const ReactMenuDesignerInner = memo(({
   // projectedRef.current = projected
 
   const resetState = useCallback(() => {
-    setOverId(null);
-    setActiveId(null);
     setOffsetLeft(0);
-    //setDraggingResoucre(undefined)
-    setOverOnCanvas(false)
     document.body.style.setProperty('cursor', '');
-  }, [setActiveId, setOffsetLeft, setOverId])
+  }, [setOffsetLeft])
 
   const handleDragCancel = useCallback(() => {
     // const newItems = items.filter(item => item.resource)
@@ -135,8 +124,9 @@ export const ReactMenuDesignerInner = memo(({
       if (resouce) {
         const newItem = resouce.createMenuItem()
         setItems((items) => {
-          const newItems: IFlattenedItem[] = [...items]
-          newItems.splice(e.targetIndex, 0, { ...newItem, children: undefined })
+          const newItems: IFlattenedItem[] = items.filter(item => item.id !== e.activeId);
+          const index = e.afterId ? newItems.findIndex(item => item.id === e.afterId) : 0;
+          newItems.splice(index, 0, { ...newItem, children: undefined })
           return newItems
         })
       }
@@ -165,7 +155,7 @@ export const ReactMenuDesignerInner = memo(({
             </Space>
             <Button type="primary" >保存</Button>
           </Toolbar>
-          <Canvas ref={canvasRef} className='menu-canvas'>
+          <Canvas className='menu-canvas'>
             <SortableTree items={items} />
           </Canvas>
         </CanvasContainer>
