@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { Draggable } from "../../dnd"
 import { Button } from "antd"
 import { HolderOutlined } from "@ant-design/icons"
+import { floatShadow } from "../../utilities"
 
 const Container = styled.div`
   height: 48px;
@@ -15,6 +16,11 @@ const Container = styled.div`
   padding: 0 8px;
   background-color: ${props => props.theme.token?.colorBgContainer};
   flex-shrink: 0;
+`
+
+const MouseFollowerContainer = styled(Container)`
+  box-shadow: ${floatShadow};
+  border-radius: 8px;
 `
 
 const Handler = styled(Button)`
@@ -33,6 +39,18 @@ export const SortableItem = memo((
       hasHandler
       draggableId={item.id}
       index={index}
+      mouseFollower={
+        <MouseFollowerContainer>
+          <Handler
+            type="text"
+            icon={<HolderOutlined />}
+          />
+          {
+            item.title
+          }
+          ({item.id})
+        </MouseFollowerContainer>
+      }
     >
       {
         (provider) => {

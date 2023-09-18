@@ -10,6 +10,7 @@ const MouseFollower = styled.div`
   z-index: 1;
   pointer-events: none;
   opacity: 0;
+  display: flex;
 `
 
 export type DraggableProps = {
