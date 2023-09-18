@@ -32,7 +32,6 @@ export type DroppableProps = {
 
 export const Droppable = memo((props: DroppableProps) => {
   const { droppableId, children, renderGhost: renderPlaceholder, canDrop, placeholderOffset = 20, onDeltaChange } = props
-  const [moveInEvent, setMoveInEvent] = useState<MouseEvent>()
   const childItemsState = useState<ChildItem[]>([])
   const droppableState = useState<DroppableParams>(defualtDroppableParams)
   const dndSnapshot = useDndSnapshot()
@@ -48,20 +47,20 @@ export const Droppable = memo((props: DroppableProps) => {
   //所有显示的条目，不包含被拖动的条目
   const showingItems = useMemo(() => items.filter(item => item.id !== dndSnapshot.draggingId), [dndSnapshot.draggingId, items]);
 
-  const handleScroll = useCallback(() => {
-    renderGhostRef.current?.()
-  }, [])
+  const isDraggingOver = useMemo(() => dndSnapshot.overDroppable?.id === droppableId, [dndSnapshot.overDroppable?.id, droppableId])
 
-  const hanleMouseEnter = useCallback((e: MouseEvent) => {
-    setMoveInEvent(e)
-  }, [])
+  const handleScroll = useCallback(() => {
+    if (isDraggingOver) {
+      renderGhostRef.current?.()
+    }
+  }, [isDraggingOver])
+
 
   const handleRefChange = useCallback((element?: HTMLElement | null) => {
     element?.setAttribute(DROPPABLE_ATTR_ID_NAME, droppableId)
     setElement(element || undefined)
     element?.addEventListener("scroll", handleScroll)
-    element?.addEventListener("mouseenter", hanleMouseEnter)
-  }, [droppableId, handleScroll, hanleMouseEnter])
+  }, [droppableId, handleScroll])
 
   const handleGhostRefChange = useCallback((element?: HTMLElement | null) => {
     element?.style.setProperty("pointer-events", "none");
@@ -70,7 +69,6 @@ export const Droppable = memo((props: DroppableProps) => {
     getGhostElement(element || undefined)
   }, [])
 
-  const isDraggingOver = useMemo(() => dndSnapshot.overDroppable?.id === droppableId, [dndSnapshot.overDroppable?.id, droppableId])
 
   const snapshot: IDroppableStateSnapshot = useMemo(() => {
     return {
@@ -126,13 +124,13 @@ export const Droppable = memo((props: DroppableProps) => {
             afterId,
           }),
           delta: {
-            x: dndSnapshot.overDroppable.originalEvent.x - (moveInEvent?.clientX || 0),
-            y: dndSnapshot.overDroppable.originalEvent.y - (moveInEvent?.clientY || 0),
+            x: dndSnapshot.overDroppable.offsetX || 0,
+            y: dndSnapshot.overDroppable.offsetY || 0,
           }
         }
       )
     }
-  }, [canDrop, dndSnapshot.draggingId, dndSnapshot.overDroppable, droppableId, getCenrerPoint, moveInEvent?.clientX, moveInEvent?.clientY, setDropIndicator, showingItems])
+  }, [canDrop, dndSnapshot.draggingId, dndSnapshot.overDroppable, droppableId, getCenrerPoint, setDropIndicator, showingItems])
 
   const renderGhost = useCallback(() => {
     const rect = element?.getBoundingClientRect()

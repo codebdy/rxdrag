@@ -59,9 +59,8 @@ export const SortableTree = memo((
   const [draggingOffset, setDraggigOffset] = useState<Offset>()
 
   const indentation = useMemo(() => {
-    if (draggingOffset?.x) {
-      //加一个1.2的放大乘数
-      const ind = (Math.trunc(draggingOffset.x / (indentationWidth * 2))) * indentationWidth
+    if (draggingOffset?.x && draggingOffset.x > 0) {
+      const ind = (Math.trunc(draggingOffset.x / indentationWidth)) * indentationWidth
       return ind
     }
 

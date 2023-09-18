@@ -1,7 +1,7 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { DropEvent, DropIndicator, IDndSnapshot, Identifier, Offset, OverInfo } from "./types";
 import { getRecentRxElement } from "@rxdrag/shared";
-import { DRAGGABLE_ATTR_ID_NAME, DROPPABLE_ATTR_ID_NAME } from "./consts";
+import { DRAGGABLE_ATTR_ID_NAME, DRAGGABLE_HNADLER_ATTR_ID_NAME, DROPPABLE_ATTR_ID_NAME } from "./consts";
 import { DndSnapshotContext, DropIndicatorContext } from "./contexts";
 
 export type DndContextProps = {
@@ -19,7 +19,6 @@ export const DndContext = memo((
   const [activeId, setActiveId] = useState<Identifier>();
   const [dragging, setDragging] = useState<boolean>()
   const [draggingOffset, setDraggingOffset] = useState<Offset>()
-  const [draggingOffsetInDroppable, setDraggingOffsetInDroppable] = useState<Offset>()
   const [overDraggable, setOverDraggable] = useState<OverInfo>()
   const [overDroppable, setOverDroppable] = useState<OverInfo>()
   const dropIndicatorState = useState<DropIndicator>()
@@ -30,10 +29,10 @@ export const DndContext = memo((
 
   const handleMouseDown = useCallback((e: MouseEvent) => {
     if (e.target) {
-      const draggedElement = getRecentRxElement(e.target as HTMLElement, DRAGGABLE_ATTR_ID_NAME)
+      const draggedElement = getRecentRxElement(e.target as HTMLElement, DRAGGABLE_HNADLER_ATTR_ID_NAME)
       if (draggedElement) {
         setMouseDownEvent(e)
-        setActiveId(draggedElement.getAttribute(DRAGGABLE_ATTR_ID_NAME) || undefined)
+        setActiveId(draggedElement.getAttribute(DRAGGABLE_HNADLER_ATTR_ID_NAME) || undefined)
       }
     }
   }, [])
@@ -89,14 +88,14 @@ export const DndContext = memo((
         originalEvent: e,
         droppableId: overDroppable.id,
         afterId: dropIndicator.afterId,
-        draggingOffsetInDroppable: draggingOffsetInDroppable,
+        delta: { x: overDroppable.offsetX || 0, y: overDroppable.offsetY || 0 },
       })
     } else {
       onDragCancel?.()
     }
     resetState()
     onDragEnd?.()
-  }, [activeId, draggingOffsetInDroppable, dropIndicator, onDragCancel, onDragEnd, onDrop, overDroppable?.id, resetState])
+  }, [activeId, dropIndicator, onDragCancel, onDragEnd, onDrop, overDroppable?.id, overDroppable?.offsetX, overDroppable?.offsetY, resetState])
 
   useEffect(() => {
     document.addEventListener("mousedown", handleMouseDown);
@@ -114,11 +113,10 @@ export const DndContext = memo((
       startMouseEvent: mouseDownEvent,
       draggingId: dragging ? activeId : undefined,
       draggingOffset,
-      draggingOffsetInDroppable,
       overDraggable,
       overDroppable,
     }
-  }, [activeId, dragging, draggingOffset, draggingOffsetInDroppable, mouseDownEvent, overDraggable, overDroppable])
+  }, [activeId, dragging, draggingOffset, mouseDownEvent, overDraggable, overDroppable])
 
   return (
     <DndSnapshotContext.Provider value={snapshot}>

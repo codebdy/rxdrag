@@ -2,6 +2,8 @@ import { memo } from "react"
 import { IFlattenedItem } from "../../interfaces/flattened"
 import styled from "styled-components"
 import { Draggable } from "../../dnd"
+import { Button } from "antd"
+import { HolderOutlined } from "@ant-design/icons"
 
 const Container = styled.div`
   height: 48px;
@@ -10,9 +12,13 @@ const Container = styled.div`
   margin: 0px 0;
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding: 0 8px;
   background-color: ${props => props.theme.token?.colorBgContainer};
   flex-shrink: 0;
+`
+
+const Handler = styled(Button)`
+  margin-right: 8px;
 `
 
 export const SortableItem = memo((
@@ -24,12 +30,18 @@ export const SortableItem = memo((
   const { item, index } = props
   return (
     <Draggable
+      hasHandler
       draggableId={item.id}
       index={index}
     >
       {
-        (innerRef) => {
-          return <Container ref={innerRef}>
+        (provider) => {
+          return <Container ref={provider.innerRef}>
+            <Handler
+              ref={provider.handlerRef}
+              type="text"
+              icon={<HolderOutlined />}
+            />
             {
               item.title
             }

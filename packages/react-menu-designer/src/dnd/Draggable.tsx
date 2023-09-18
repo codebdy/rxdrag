@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { DraggableChildrenFn, IDraggableStateSnapshot, Identifier } from "./types";
-import { DRAGGABLE_ATTR_ID_NAME } from "./consts";
+import { DraggableChildrenFn, DraggleProvider, IDraggableStateSnapshot, Identifier } from "./types";
+import { DRAGGABLE_ATTR_ID_NAME, DRAGGABLE_HNADLER_ATTR_ID_NAME } from "./consts";
 import { useDndSnapshot } from "./hooks/useDndSnapshot";
 import styled from "styled-components";
 import { useChildItemsState } from "./hooks/useChildItemsState";
@@ -21,12 +21,13 @@ export type DraggableProps = {
   //鼠标跟随物
   mouseFollower?: React.ReactNode;
   children?: DraggableChildrenFn;
+  hasHandler?: boolean;
 }
 
 export const Draggable = memo((
   props: DraggableProps
 ) => {
-  const { draggableId, index, clonable, mouseFollower, children } = props
+  const { draggableId, index, clonable, mouseFollower, children, hasHandler } = props
   const [element, setElement] = useState<HTMLElement>()
   const [rect, setRect] = useState<DOMRect>()
   const followerRef = useRef<HTMLDivElement>(null)
@@ -58,7 +59,14 @@ export const Draggable = memo((
 
   const handleRefChange = useCallback((element?: HTMLElement | null) => {
     element?.setAttribute(DRAGGABLE_ATTR_ID_NAME, draggableId.toString())
+    if (!hasHandler) {
+      element?.setAttribute(DRAGGABLE_HNADLER_ATTR_ID_NAME, draggableId.toString())
+    }
     setElement(element || undefined)
+  }, [draggableId, hasHandler])
+
+  const handleHanderRefChange = useCallback((element?: HTMLElement | null) => {
+    element?.setAttribute(DRAGGABLE_HNADLER_ATTR_ID_NAME, draggableId.toString())
   }, [draggableId])
 
   const snapshot: IDraggableStateSnapshot = useMemo(() => {
@@ -111,10 +119,17 @@ export const Draggable = memo((
     }
   }, [element, mouseFollower])
 
+  const provider: DraggleProvider = useMemo(() => {
+    return {
+      innerRef: handleRefChange,
+      handlerRef: handleHanderRefChange,
+    }
+  }, [handleHanderRefChange, handleRefChange])
+
   return (
     <>
       {
-        children && children(handleRefChange, snapshot)
+        children && children(provider, snapshot)
       }
       <MouseFollower
         ref={followerRef}

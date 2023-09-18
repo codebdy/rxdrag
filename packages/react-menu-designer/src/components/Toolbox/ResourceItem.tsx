@@ -58,10 +58,10 @@ export const ResourceItem = memo((
       </MouseFollower>}
     >
       {
-        (innerRef, snapshot) => {
+        (provider, snapshot) => {
           return <Container
             className={snapshot.isDragging ? "dragging" : undefined}
-            ref={innerRef}
+            ref={provider.innerRef}
           ><Item>
               {
                 resource?.title

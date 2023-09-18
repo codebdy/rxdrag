@@ -25,7 +25,7 @@ export type DropEvent = DragEvent & {
   droppableId: Identifier,
   afterId?: string,
   //在容器内部拖拽的距离
-  draggingOffsetInDroppable?: Offset,
+  delta?: Offset,
 }
 
 // export type DragCancelEvent = DragEvent
@@ -58,8 +58,13 @@ export interface IDraggableStateSnapshot {
   draggingOver?: DraggingOver;
 }
 
-export type DraggableChildrenFn = (
+export type DraggleProvider = {
   innerRef: (element?: HTMLElement | null) => void,
+  handlerRef?: (element?: HTMLElement | null) => void,
+}
+
+export type DraggableChildrenFn = (
+  provider: DraggleProvider,
   snapshot: IDraggableStateSnapshot,
 ) => React.ReactNode;
 
@@ -99,7 +104,6 @@ export type OverInfo = OverOffset & {
 export interface IDndSnapshot {
   startMouseEvent?: MouseEvent,
   draggingOffset?: Offset,
-  draggingOffsetInDroppable?: Offset,
   draggingId?: Identifier,
   overDraggable?: OverInfo,
   overDroppable?: OverInfo,
