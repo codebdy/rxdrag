@@ -1,5 +1,5 @@
 import classNames from "classnames"
-import { memo, useState } from "react"
+import { memo, useMemo, useState } from "react"
 import styled from "styled-components"
 import { CANVS_ID } from "../../consts"
 import { Droppable, Offset } from "../../dnd"
@@ -58,21 +58,31 @@ export const SortableTree = memo((
   const { items, indentationWidth } = props;
   const [draggingOffset, setDraggigOffset] = useState<Offset>()
 
+  const indentation = useMemo(() => {
+    if (draggingOffset?.x) {
+      //加一个1.2的放大乘数
+      const ind = (Math.trunc(draggingOffset.x / (indentationWidth * 2))) * indentationWidth
+      return ind
+    }
+
+    return 0
+  }, [draggingOffset?.x, indentationWidth])
+
   return (
     <Droppable
       droppableId={CANVS_ID}
       placeholderOffset={20}
+      onDeltaChange={setDraggigOffset}
       renderGhost={
         (innerRef) => {
           return (
-            <Ghost ref={innerRef}><GhostInner /></Ghost>
+            <Ghost ref={innerRef} style={{ paddingLeft: indentation + 8 }}><GhostInner /></Ghost>
           )
         }
       }
     >
       {
         (innerRef, snapshot) => {
-          setDraggigOffset(snapshot?.draggingOffset)
           return (
             <DropContainer ref={innerRef} className={classNames('menu-drop-container', { over: snapshot?.isDraggingOver })}>
               {

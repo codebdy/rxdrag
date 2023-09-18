@@ -17,6 +17,7 @@ const Content = styled.div`
 const StyledCollapse = styled(Collapse)`
   border-radius: 0;
   border: 0;
+  user-select: none;
   .ant-collapse-content-box{
     padding: 0 16px !important;
     margin: 0;

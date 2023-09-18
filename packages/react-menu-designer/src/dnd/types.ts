@@ -24,7 +24,8 @@ export type OverOffset = {
 export type DropEvent = DragEvent & {
   droppableId: Identifier,
   afterId?: string,
-  draggingOffset?: Offset,
+  //在容器内部拖拽的距离
+  draggingOffsetInDroppable?: Offset,
 }
 
 // export type DragCancelEvent = DragEvent
@@ -77,7 +78,7 @@ export interface IDroppableStateSnapshot {
   afterId?: string,
   cannotDrop?: boolean,
   originalEvent?: MouseEvent,
-  draggingOffset?: Offset,
+  delta?: Offset,
 }
 
 export type DroppableChildrenFn = (
@@ -96,9 +97,10 @@ export type OverInfo = OverOffset & {
 }
 
 export interface IDndSnapshot {
-  startMouseEvent?: MouseEvent
-  draggingOffset?: Offset
-  draggingId?: Identifier
+  startMouseEvent?: MouseEvent,
+  draggingOffset?: Offset,
+  draggingOffsetInDroppable?: Offset,
+  draggingId?: Identifier,
   overDraggable?: OverInfo,
   overDroppable?: OverInfo,
 }
@@ -112,4 +114,5 @@ export type ChildItem = {
 export type DropIndicator = {
   afterId?: string,
   cannotDrop?: boolean,
+  delta?: Offset,
 }
