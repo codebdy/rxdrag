@@ -1,9 +1,9 @@
 import { useCallback } from "react"
 import { Identifier } from "../dnd"
-import { useShowingItems } from "./useShowingItems"
+import { useNotActiviedItems } from "./useNotActiviedItems"
 
 export function useGetChildren() {
-  const items = useShowingItems()
+  const items = useNotActiviedItems()
   const getChildItems = useCallback((id?: Identifier) => {
     return items.filter(item => item.parentId === id && id)
   }, [items])

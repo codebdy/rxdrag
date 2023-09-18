@@ -3,7 +3,7 @@ import { useActiveIdState } from "./useActiveIdState";
 import { useItemsState } from "./useItemsState";
 import { useIsChildOf } from "./useIsChildOf";
 
-export function useShowingItems() {
+export function useNotActiviedItems() {
   const [activeId] = useActiveIdState()
   const [items] = useItemsState()
   const isChildOf = useIsChildOf()
@@ -12,7 +12,7 @@ export function useShowingItems() {
     if (!activeId) {
       return items
     }
-    return items.filter(item => !isChildOf(item.id, activeId))
+    return items.filter(item => item.id !== activeId && !isChildOf(item.id, activeId))
   }, [activeId, isChildOf, items])
 
   return notActivitiedItems

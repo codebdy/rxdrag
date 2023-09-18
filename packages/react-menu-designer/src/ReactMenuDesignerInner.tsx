@@ -4,7 +4,6 @@ import { Toolbox } from './components/Toolbox';
 import { PropertyPanel } from './components/PropertyPanel';
 import { Button, Divider, Space } from 'antd';
 import { DeleteOutlined, RedoOutlined, UndoOutlined } from '@ant-design/icons';
-import { useOffsetLeftState } from './hooks/useOffsetLeftState';
 import { useItemsState } from './hooks/useItemsState';
 import { useGetResource } from './hooks/useGetResource';
 import { DndContext } from './dnd/DndContext';
@@ -15,6 +14,7 @@ import { IFlattenedItem } from './interfaces/flattened';
 import { useGetItem } from './hooks/useGetItem';
 import { useGetDepth } from './hooks/useGetDepth';
 import { useActiveIdState } from './hooks/useActiveIdState';
+import { useGetParent } from './hooks/useGetParent';
 
 const Shell = styled.div`
   position: relative;
@@ -64,6 +64,7 @@ export const ReactMenuDesignerInner = memo(({
   const [items, setItems] = useItemsState();
   const [, setActiveId] = useActiveIdState()
   const getDepth = useGetDepth()
+  const getParent = useGetParent()
 
   const getResource = useGetResource()
   const getItem = useGetItem()
@@ -128,11 +129,12 @@ export const ReactMenuDesignerInner = memo(({
         const newItems: IFlattenedItem[] = items.filter(item => item.id !== e.activeId);
         const index = e.belowAtId ? newItems.findIndex(item => item.id === e.belowAtId) + 1 : 0;
         const depth = getDepth(e.belowAtId, e.delta, indentationWidth)
-        newItems.splice(index, 0, { ...activeItem, children: undefined, depth })
+        const parent = e.belowAtId ? getParent(e.belowAtId, depth) : undefined
+        newItems.splice(index, 0, { ...activeItem, children: undefined, depth, parentId: parent?.id })
         return newItems
       })
     }
-  }, [getDepth, getItem, getResource, indentationWidth, setItems])
+  }, [getDepth, getItem, getParent, getResource, indentationWidth, setItems])
 
   return (
 
@@ -157,7 +159,7 @@ export const ReactMenuDesignerInner = memo(({
             <Button type="primary" >保存</Button>
           </Toolbar>
 
-          <SortableTree items={items} indentationWidth={indentationWidth} />
+          <SortableTree indentationWidth={indentationWidth} />
 
         </CanvasContainer>
         <PropertyPanel></PropertyPanel>

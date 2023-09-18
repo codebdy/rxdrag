@@ -1,10 +1,10 @@
 import { useCallback } from "react";
 import { useGetItem } from "./useGetItem";
 import { Identifier } from "../dnd";
-import { useShowingItems } from "./useShowingItems";
+import { useNotActiviedItems } from "./useNotActiviedItems";
 
 export function useGetBelowBrother() {
-  const items = useShowingItems()
+  const items = useNotActiviedItems()
   const getItem = useGetItem()
   const getBelowBrother = useCallback((id: Identifier) => {
     const item = getItem(id)

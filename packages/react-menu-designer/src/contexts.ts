@@ -40,10 +40,6 @@ export const ItemsContext = createContext<ItemsState>([[], notMethod])
 
 export type IdState = [Identifier | null, React.Dispatch<React.SetStateAction<Identifier | null>>]
 export const ActiveIdContext = createContext<IdState>([null, notMethod])
-export const OverIdContext = createContext<IdState>([null, notMethod])
-
-export type OffsetState = [number, React.Dispatch<React.SetStateAction<number>>]
-export const OffsetLeftContext = createContext<OffsetState>([0, notMethod])
 
 export type FlattenedItems = IFlattenedItem[]
 

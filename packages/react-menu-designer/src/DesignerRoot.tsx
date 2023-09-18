@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useState } from "react"
-import { ActiveIdContext, HistoryContext, HistoryRedords, ItemsContext, OffsetLeftContext, OverIdContext, defautHistory, ResourcesContext } from "./contexts";
+import { ActiveIdContext, HistoryContext, HistoryRedords, ItemsContext, defautHistory, ResourcesContext } from "./contexts";
 import { IMenuItem } from "./interfaces";
 import { IFlattenedItem } from "./interfaces/flattened";
 import { menuResources } from "./resources";
@@ -13,8 +13,6 @@ export const DesignerRoot = memo((props: {
   const { defaultValue, value, children } = props;
   const itemsState = useState<IFlattenedItem[]>([]);
   const activeIdState = useState<Identifier | null>(null);
-  const overIdState = useState<Identifier | null>(null);
-  const offsetLeftState = useState(0);
   const historyState = useState<HistoryRedords>(defautHistory)
   const [, setHistoryState] = historyState
   const [, setItems] = itemsState
@@ -51,13 +49,9 @@ export const DesignerRoot = memo((props: {
     <ResourcesContext.Provider value={menuResources}>
       <ItemsContext.Provider value={itemsState}>
         <ActiveIdContext.Provider value={activeIdState}>
-          <OverIdContext.Provider value={overIdState}>
-            <OffsetLeftContext.Provider value={offsetLeftState}>
-              <HistoryContext.Provider value={historyState}>
-                {children}
-              </HistoryContext.Provider>
-            </OffsetLeftContext.Provider>
-          </OverIdContext.Provider>
+          <HistoryContext.Provider value={historyState}>
+            {children}
+          </HistoryContext.Provider>
         </ActiveIdContext.Provider>
       </ItemsContext.Provider>
     </ResourcesContext.Provider>

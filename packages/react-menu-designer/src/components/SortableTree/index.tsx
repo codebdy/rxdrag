@@ -6,6 +6,7 @@ import { Droppable } from "../../dnd"
 import { IFlattenedItem } from "../../interfaces/flattened"
 import { SortableItem } from "./SortableItem"
 import { useGetDepth } from "../../hooks/useGetDepth"
+import { useShowingItems } from "../../hooks/useShowingItems"
 
 const DropContainer = styled.div`
   width: 100%;
@@ -53,11 +54,11 @@ const GhostInner = styled.div`
 
 export const SortableTree = memo((
   props: {
-    items?: IFlattenedItem[],
     indentationWidth: number,
   }
 ) => {
-  const { items, indentationWidth } = props;
+  const { indentationWidth } = props;
+  const items = useShowingItems()
   const getDepth = useGetDepth()
 
   return (
