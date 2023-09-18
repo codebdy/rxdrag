@@ -10,7 +10,7 @@ export function useIsChildOf() {
       if (child.parentId === parentId) {
         return true
       } else if (child.parentId) {
-        return isChildOf(parentId, child.parentId)
+        return isChildOf(child.parentId, parentId)
       }
     }
 

@@ -8,12 +8,12 @@ export function useShowingItems() {
   const [items] = useItemsState()
   const isChildOf = useIsChildOf()
 
-  const notActivitiedItems = useMemo(() => {
+  const showingItems = useMemo(() => {
     if (!activeId) {
       return items
     }
     return items.filter(item => !isChildOf(item.id, activeId))
   }, [activeId, isChildOf, items])
 
-  return notActivitiedItems
+  return showingItems
 }
