@@ -39,20 +39,8 @@ export const SortableItem = memo((
   return (
     <Draggable
       hasHandler
-      draggableId={item.id}
+      draggableId={item.meta.id}
       index={index}
-      mouseFollower={
-        <MouseFollowerContainer>
-          <Handler
-            type="text"
-            icon={<HolderOutlined />}
-          />
-          {
-            item.title
-          }
-          ({item.id})
-        </MouseFollowerContainer>
-      }
     >
       {
         (provider) => {
@@ -66,9 +54,9 @@ export const SortableItem = memo((
               icon={<HolderOutlined />}
             />
             {
-              item.title
+              item.meta.title
             }
-            ({item.id})
+            ({item.meta.id})
           </Container>
         }
       }

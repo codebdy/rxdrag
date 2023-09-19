@@ -41,14 +41,14 @@ export const Draggable = memo((
   }, [draggableId, index, setItems])
 
   const handleRefChange = useCallback((element?: HTMLElement | null) => {
-    element?.setAttribute(DRAGGABLE_ATTR_ID_NAME, draggableId.toString())
+    element?.setAttribute(DRAGGABLE_ATTR_ID_NAME, draggableId)
     if (!hasHandler) {
-      element?.setAttribute(DRAGGABLE_HNADLER_ATTR_ID_NAME, draggableId.toString())
+      element?.setAttribute(DRAGGABLE_HNADLER_ATTR_ID_NAME, draggableId)
     }
   }, [draggableId, hasHandler])
 
   const handleHanderRefChange = useCallback((element?: HTMLElement | null) => {
-    element?.setAttribute(DRAGGABLE_HNADLER_ATTR_ID_NAME, draggableId.toString())
+    element?.setAttribute(DRAGGABLE_HNADLER_ATTR_ID_NAME, draggableId)
   }, [draggableId])
 
   const snapshot: IDraggableSnapshot = useMemo(() => {

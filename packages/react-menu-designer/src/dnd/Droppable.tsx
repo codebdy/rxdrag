@@ -1,11 +1,10 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { DroppableGhostFn, DroppableChildrenFn, IDroppableStateSnapshot, Identifier, ChildItem } from "./types"
+import { DroppableChildrenFn, IDroppableStateSnapshot, Identifier, ChildItem } from "./types"
 import { DroppableContext, DroppableParams, defualtDroppableParams } from "../contexts";
 import { DROPPABLE_ATTR_ID_NAME } from "./consts";
 import { useDndSnapshot } from "./hooks/useDndSnapshot";
 import { useDropIndicatorState } from "./hooks/useDropIndicatorState";
 import { ChildItemsContext } from "./contexts";
-import { useGetItemElement } from "./hooks/useGetItemElement";
 import { useGetItemCenterPoint } from "./hooks/getItemElement";
 
 //export type Direction = 'horizontal' | 'vertical';
@@ -29,17 +28,15 @@ export const Droppable = memo((props: DroppableProps) => {
   const childItemsState = useState<ChildItem[]>([])
   const droppableState = useState<DroppableParams>(defualtDroppableParams)
   const dndSnapshot = useDndSnapshot()
-  const [ghostElement, getGhostElement] = useState<HTMLElement>()
   const [element, setElement] = useState<HTMLElement>()
   const [dropIndicator, setDropIndicator] = useDropIndicatorState() || []
   const [items] = childItemsState;
   const renderGhostRef = useRef<() => void>()
 
-  const getItemElement = useGetItemElement(element)
   const getCenrerPoint = useGetItemCenterPoint(element)
 
   //所有显示的条目，不包含被拖动的条目
-  //const showingItems = useMemo(() => items.filter(item => item.id !== dndSnapshot.draggingId), [dndSnapshot.draggingId, items]);
+  const showingItems = useMemo(() => items.filter(item => item.id !== dndSnapshot.draggingId), [dndSnapshot.draggingId, items]);
 
   const isDraggingOver = useMemo(() => dndSnapshot.overDroppable?.id === droppableId, [dndSnapshot.overDroppable?.id, droppableId])
 
@@ -68,10 +65,9 @@ export const Droppable = memo((props: DroppableProps) => {
       isDraggingOver: isDraggingOver,
       originalEvent: dndSnapshot.overDroppable?.originalEvent,
       belowAtId: dropIndicator?.belowAtId,
-      cannotDrop: dropIndicator?.cannotDrop,
       delta: dropIndicator?.delta,
     }
-  }, [dndSnapshot.overDroppable?.originalEvent, dropIndicator?.belowAtId, dropIndicator?.cannotDrop, dropIndicator?.delta, isDraggingOver])
+  }, [dndSnapshot.overDroppable?.originalEvent, dropIndicator?.belowAtId, dropIndicator?.delta, isDraggingOver])
 
   //鼠标移开，清空drop指示
   // useEffect(() => {
@@ -80,46 +76,41 @@ export const Droppable = memo((props: DroppableProps) => {
   //   }
   // }, [isDraggingOver, setDropIndicator])
 
-  // //计算插入的位置
-  // useEffect(() => {
-  //   if (dndSnapshot.overDroppable && dndSnapshot.draggingId) {
-  //     //let index = 0
-  //     let belowAtId: string | undefined = undefined
-  //     for (let i = 0; i < showingItems.length; i++) {
-  //       const item = showingItems[i]
-  //       const centerPoint = getCenrerPoint(item.id)
-  //       if (centerPoint) {
-  //         if (centerPoint.y >= dndSnapshot.overDroppable.originalEvent.clientY) {
-  //           if (i > 0) {
-  //             belowAtId = showingItems[i - 1].id
-  //           }
-  //           break;
-  //         }
-  //       }
-  //     }
-  //     if (!belowAtId && showingItems.length > 0) {
-  //       const lastItem = showingItems[showingItems.length - 1]
-  //       const lastCenterPoint = getCenrerPoint(lastItem.id)
-  //       if (lastCenterPoint && dndSnapshot.overDroppable.originalEvent.clientY > lastCenterPoint?.y) {
-  //         belowAtId = lastItem.id
-  //       }
-  //     }
-  //     setDropIndicator?.(
-  //       {
-  //         belowAtId,
-  //         cannotDrop: canDrop && !canDrop?.({
-  //           droppableId,
-  //           draggingId: dndSnapshot.draggingId,
-  //           belowAtId,
-  //         }),
-  //         delta: {
-  //           x: dndSnapshot.overDroppable.offsetX || 0,
-  //           y: dndSnapshot.overDroppable.offsetY || 0,
-  //         }
-  //       }
-  //     )
-  //   }
-  // }, [canDrop, dndSnapshot.draggingId, dndSnapshot.overDroppable, droppableId, getCenrerPoint, setDropIndicator, showingItems])
+  //计算插入的位置
+  useEffect(() => {
+    if (dndSnapshot.overDroppable && dndSnapshot.draggingId) {
+      //let index = 0
+      let belowAtId: string | undefined = undefined
+      for (let i = 0; i < showingItems.length; i++) {
+        const item = showingItems[i]
+        const centerPoint = getCenrerPoint(item.id)
+        if (centerPoint) {
+          if (centerPoint.y >= dndSnapshot.overDroppable.originalEvent.clientY) {
+            if (i > 0) {
+              belowAtId = showingItems[i - 1].id
+            }
+            break;
+          }
+        }
+      }
+      if (!belowAtId && showingItems.length > 0) {
+        const lastItem = showingItems[showingItems.length - 1]
+        const lastCenterPoint = getCenrerPoint(lastItem.id)
+        if (lastCenterPoint && dndSnapshot.overDroppable.originalEvent.clientY > lastCenterPoint?.y) {
+          belowAtId = lastItem.id
+        }
+      }
+      setDropIndicator?.(
+        {
+          belowAtId,
+          delta: {
+            x: dndSnapshot.overDroppable.offsetX || 0,
+            y: dndSnapshot.overDroppable.offsetY || 0,
+          }
+        }
+      )
+    }
+  }, [dndSnapshot.draggingId, dndSnapshot.overDroppable, droppableId, getCenrerPoint, setDropIndicator, showingItems])
 
   // const doRenderGhost = useCallback(() => {
   //   const rect = element?.getBoundingClientRect()

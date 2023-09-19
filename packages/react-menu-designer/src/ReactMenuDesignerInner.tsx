@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Toolbox } from './components/Toolbox';
 import { PropertyPanel } from './components/PropertyPanel';
@@ -14,7 +14,13 @@ import { IMenuItem } from './interfaces';
 import { useBuildMenuSchema } from './hooks/useBuildMenuSchema';
 import { useHistoryState } from './hooks/useHistoryState';
 import { useMenuSchemaState } from './hooks/useMenuSchemaState';
-import { IMenuSchema } from './interfaces/schema';
+import { IMenuItemSchema, IMenuSchema } from './interfaces/schema';
+import { useReplaceActiveId } from './dnd/hooks';
+import { useGetItemPosition } from './hooks/useGetItemPosition';
+import { DropTarget } from './types';
+import { useGetDropTarget } from './hooks/useGetDropTarget';
+import { useMoveItem } from './hooks/useMoveItem';
+import { useRemoveItem } from './hooks/useRemoveItem';
 
 const Shell = styled.div`
   position: relative;
@@ -64,6 +70,13 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   const [, setHistory] = useHistoryState()
   const [menuSchema, setMenuSchema] = useMenuSchemaState()
   const [oldSchema, setOldSchema] = useState<IMenuSchema>()
+  const [tempItem, setTempItem] = useState<IMenuItemSchema>()
+
+  const replaceActiveId = useReplaceActiveId()
+  const getItemPosition = useGetItemPosition()
+  const getTargetPosition = useGetDropTarget(indentationWidth)
+  const moveItem = useMoveItem()
+  const remove = useRemoveItem()
 
   // const getDepth = useGetDepth()
   // const getParent = useGetParent()
@@ -141,8 +154,32 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   }, [menuSchema])
 
   const handleDragOver = useCallback((e: DragOverEvent) => {
-    console.log("哈哈", e)
-  }, [])
+    const resouce = getResource(e.activeId)
+    let tmpItem = tempItem
+    if (e.droppableOver?.id === CANVS_ID) {
+      if (resouce && !tempItem) {
+        const newItemSchema: IMenuItemSchema = {
+          meta: resouce.createMenuItem()
+        }
+        setTempItem(newItemSchema)
+        tmpItem = newItemSchema
+      }
+      const activeItem = resouce ? tmpItem : getItem(e.activeId)
+
+      if (activeItem) {
+        const oldPostion = getItemPosition(activeItem.meta.id)
+        const newPosition = getTargetPosition(e.indicator)
+        if (newPosition && (newPosition?.position !== oldPostion?.position || newPosition?.targetId !== oldPostion?.targetId)) {
+          moveItem(activeItem, newPosition)
+        }
+      }
+    } else {
+      if (resouce) {
+        remove(tmpItem?.meta.id)
+      }
+    }
+
+  }, [getItem, getItemPosition, getResource, getTargetPosition, moveItem, remove, tempItem])
 
   const handleDragCancel = useCallback(() => {
     if (oldSchema) {

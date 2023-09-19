@@ -3,9 +3,9 @@ import { useMenuSchemaState } from "./useMenuSchemaState";
 import { useCallback } from "react";
 
 export function useGetItem() {
-  const [items] = useMenuSchemaState()
+  const [menuSchema] = useMenuSchemaState()
   const getItem = useCallback((id?: Identifier | null) => {
-    return items.find(item => item.id === id)
-  }, [items])
+    return menuSchema.items.find(item => item.meta.id === id)
+  }, [menuSchema.items])
   return getItem
 }
