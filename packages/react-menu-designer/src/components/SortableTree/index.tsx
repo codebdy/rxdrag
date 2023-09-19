@@ -23,33 +23,6 @@ const DropContainer = styled.div`
   }
 `
 
-const Ghost = styled.div`
-  display: flex;
-  padding: 6px 8px;
-  box-sizing: border-box;
-  transition: all 0.2s;
-`
-
-const GhostInner = styled.div`
-  position: relative;
-  flex: 1;
-  height: 8px;
-  background-color: ${props => props.theme.token?.colorPrimary};
-  box-sizing: border-box;
-  border-radius: 4px 0 0 4px;
-  &::after{
-    content: "";
-    position: absolute;
-    left: 0px;
-    top: -4px;
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
-    border: solid 2px ${props => props.theme.token?.colorPrimary};
-    background-color: ${props => props.theme.token?.colorBgBase};
-  }
-`
-
 export const SortableTree = memo((
   props: {
     indentationWidth: number,
@@ -81,6 +54,5 @@ export const SortableTree = memo((
         }
       }
     </Droppable>
-
   )
 })

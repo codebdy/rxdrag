@@ -17,7 +17,6 @@ import { useMenuSchemaState } from './hooks/useMenuSchemaState';
 import { IMenuItemSchema, IMenuSchema } from './interfaces/schema';
 import { useReplaceActiveId } from './dnd/hooks';
 import { useGetItemPosition } from './hooks/useGetItemPosition';
-import { DropTarget } from './types';
 import { useGetDropTarget } from './hooks/useGetDropTarget';
 import { useMoveItem } from './hooks/useMoveItem';
 import { useRemoveItem } from './hooks/useRemoveItem';

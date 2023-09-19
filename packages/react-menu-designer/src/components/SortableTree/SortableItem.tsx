@@ -4,7 +4,6 @@ import styled from "styled-components"
 import { Draggable } from "../../dnd"
 import { Button } from "antd"
 import { HolderOutlined } from "@ant-design/icons"
-import { floatShadow } from "../../utilities"
 
 const Container = styled.div`
   height: 48px;
@@ -16,12 +15,35 @@ const Container = styled.div`
   padding: 0 8px;
   background-color: ${props => props.theme.token?.colorBgContainer};
   flex-shrink: 0;
+  &.dragging{
+    background-color:transparent;
+    border: 0;
+    height: 24px;
+    padding: 0px;
+    display: flex;
+    box-sizing: border-box;
+    transition: all 0.2s;
+  }
 `
 
-const MouseFollowerContainer = styled(Container)`
-  box-shadow: ${floatShadow};
-  border-radius: 8px;
-  opacity: 0.8;
+const GhostInner = styled.div`
+  position: relative;
+  flex: 1;
+  height: 8px;
+  background-color: ${props => props.theme.token?.colorPrimary};
+  box-sizing: border-box;
+  border-radius: 4px 0 0 4px;
+  &::after{
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: -4px;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    border: solid 2px ${props => props.theme.token?.colorPrimary};
+    background-color: ${props => props.theme.token?.colorBgBase};
+  }
 `
 
 const Handler = styled(Button)`
@@ -43,20 +65,28 @@ export const SortableItem = memo((
       index={index}
     >
       {
-        (provider) => {
+        (provider, snapshot) => {
           return <Container
             ref={provider.innerRef}
             style={{ marginLeft: indentationWidth * item.depth }}
+            className={snapshot.isDragging ? "dragging" : undefined}
           >
-            <Handler
-              ref={provider.handlerRef}
-              type="text"
-              icon={<HolderOutlined />}
-            />
             {
-              item.meta.title
+              !snapshot.isDragging
+                ? <>
+                  <Handler
+                    ref={provider.handlerRef}
+                    type="text"
+                    icon={<HolderOutlined />}
+                  />
+                  {
+                    item.meta.title
+                  }
+                  ({item.meta.id})
+                </>
+                : <GhostInner />
             }
-            ({item.meta.id})
+
           </Container>
         }
       }
