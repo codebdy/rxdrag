@@ -2,7 +2,7 @@ import classNames from "classnames"
 import { memo } from "react"
 import styled from "styled-components"
 import { CANVS_ID } from "../../consts"
-import { Droppable } from "../../dnd"
+import { Droppable, Identifier } from "../../dnd"
 import { SortableItem } from "./SortableItem"
 import { useFlattenItems } from "../../hooks/useFlattenItems"
 
@@ -26,9 +26,10 @@ const DropContainer = styled.div`
 export const SortableTree = memo((
   props: {
     indentationWidth: number,
+    tempId?: Identifier,
   }
 ) => {
-  const { indentationWidth } = props;
+  const { tempId, indentationWidth } = props;
   const items = useFlattenItems()
 
   return (
@@ -45,6 +46,7 @@ export const SortableTree = memo((
                     key={item.meta.id}
                     item={item}
                     index={index}
+                    tempId = {tempId}
                     indentationWidth={indentationWidth}
                   />)
                 })

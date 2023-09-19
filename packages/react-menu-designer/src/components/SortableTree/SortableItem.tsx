@@ -1,7 +1,7 @@
 import { memo } from "react"
 import { IFlattenedItem } from "../../interfaces/flattened"
 import styled from "styled-components"
-import { Draggable } from "../../dnd"
+import { Draggable, Identifier } from "../../dnd"
 import { Button } from "antd"
 import { HolderOutlined } from "@ant-design/icons"
 
@@ -55,9 +55,11 @@ export const SortableItem = memo((
     item: IFlattenedItem,
     index: number,
     indentationWidth: number,
+    tempId?: Identifier,
   }
 ) => {
-  const { item, index, indentationWidth } = props
+  const { item, index, tempId, indentationWidth } = props
+  const isAdding = tempId === item.meta.id
   return (
     <Draggable
       hasHandler
@@ -69,10 +71,10 @@ export const SortableItem = memo((
           return <Container
             ref={provider.innerRef}
             style={{ marginLeft: indentationWidth * item.depth }}
-            className={snapshot.isDragging ? "dragging" : undefined}
+            className={snapshot.isDragging || isAdding ? "dragging" : undefined}
           >
             {
-              !snapshot.isDragging
+              !snapshot.isDragging && !isAdding
                 ? <>
                   <Handler
                     ref={provider.handlerRef}

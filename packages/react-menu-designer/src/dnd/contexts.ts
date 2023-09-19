@@ -13,5 +13,3 @@ export const ChildItemsContext = createContext<ChildItemsState | undefined>(unde
 export const DraggableContext = createContext<Identifier | undefined>(undefined)
 
 export type IdState = [Identifier | undefined, React.Dispatch<React.SetStateAction<Identifier | undefined>>]
-export const notMethod = () => { throw new Error("Not implement method") }
-export const ActiveIdContext = createContext<IdState>([undefined, notMethod])

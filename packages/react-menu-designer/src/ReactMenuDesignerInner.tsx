@@ -15,7 +15,6 @@ import { useBuildMenuSchema } from './hooks/useBuildMenuSchema';
 import { useHistoryState } from './hooks/useHistoryState';
 import { useMenuSchemaState } from './hooks/useMenuSchemaState';
 import { IMenuItemSchema, IMenuSchema } from './interfaces/schema';
-import { useReplaceActiveId } from './dnd/hooks';
 import { useGetItemPosition } from './hooks/useGetItemPosition';
 import { useGetDropTarget } from './hooks/useGetDropTarget';
 import { useMoveItem } from './hooks/useMoveItem';
@@ -71,7 +70,6 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   const [oldSchema, setOldSchema] = useState<IMenuSchema>()
   const [tempItem, setTempItem] = useState<IMenuItemSchema>()
 
-  const replaceActiveId = useReplaceActiveId()
   const getItemPosition = useGetItemPosition()
   const getTargetPosition = useGetDropTarget(indentationWidth)
   const moveItem = useMoveItem()
@@ -232,7 +230,10 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
             <Button type="primary" >保存</Button>
           </Toolbar>
 
-          <SortableTree indentationWidth={indentationWidth} />
+          <SortableTree
+            indentationWidth={indentationWidth}
+            tempId={tempItem?.meta.id}
+          />
 
         </CanvasContainer>
         <PropertyPanel></PropertyPanel>
