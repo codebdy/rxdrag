@@ -4,7 +4,7 @@ import { Identifier } from "../dnd";
 import { useMenuSchemaState } from "./useMenuSchemaState";
 import { useGetMenuItemSchema } from "./useGetMenuItemSchema";
 
-export function useFlattenItems() {
+export function useFlattenItems(draggingId?: Identifier) {
   const [menuSchema] = useMenuSchemaState();
   const getItem = useGetMenuItemSchema();
 
@@ -20,17 +20,18 @@ export function useFlattenItems() {
           depth,
           meta: item.meta,
         }
+        const children = draggingId !== item.meta.id ? flatten(item?.children || [], depth + 1) : []
         return [
           ...acc,
           flattenedItem,
-          ...flatten(item?.children || [], depth + 1),
+          ...children,
         ];
       } else {
         console.error("Can find item:", id)
         return acc
       }
     }, []);
-  }, [getItem])
+  }, [draggingId, getItem])
 
   const flattenItems = useMemo(() => {
     return flatten(menuSchema.rootIds)

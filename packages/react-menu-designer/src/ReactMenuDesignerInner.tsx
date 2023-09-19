@@ -6,7 +6,7 @@ import { Button, Divider, Space } from 'antd';
 import { DeleteOutlined, RedoOutlined, UndoOutlined } from '@ant-design/icons';
 import { useGetResource } from './hooks/useGetResource';
 import { DndContext } from './dnd/DndContext';
-import { DragOverEvent, DropEvent } from './dnd';
+import { DragOverEvent, DropEvent, Identifier } from './dnd';
 import { CANVS_ID } from './consts';
 import { SortableTree } from './components/SortableTree';
 import { useGetItem } from './hooks/useGetItem';
@@ -67,8 +67,9 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   const buildSchema = useBuildMenuSchema()
   const [, setHistory] = useHistoryState()
   const [menuSchema, setMenuSchema] = useMenuSchemaState()
-  const [oldSchema, setOldSchema] = useState<IMenuSchema>()
-  const [tempItem, setTempItem] = useState<IMenuItemSchema>()
+  const [oldSchema, setOldSchema] = useState<IMenuSchema | null>(null)
+  const [tempItem, setTempItem] = useState<IMenuItemSchema | null>(null)
+  const [draggingId, setDraggingId] = useState<Identifier | null>(null)
 
   const getItemPosition = useGetItemPosition()
   const getTargetPosition = useGetDropTarget(indentationWidth)
@@ -96,8 +97,9 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   }, [buildSchema, value])
 
   const resetState = useCallback(() => {
-    setOldSchema(undefined)
-    setTempItem(undefined)
+    setOldSchema(null)
+    setTempItem(null)
+    setDraggingId(null)
 
     document.body.style.setProperty('cursor', '');
   }, [])
@@ -106,8 +108,9 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
     resetState();
   }, [resetState])
 
-  const handleDragStart = useCallback(() => {
+  const handleDragStart = useCallback((id: Identifier) => {
     setOldSchema(menuSchema)
+    setDraggingId(id)
   }, [menuSchema])
 
   const handleDragOver = useCallback((e: DragOverEvent) => {
@@ -179,6 +182,7 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
           <SortableTree
             indentationWidth={indentationWidth}
             tempId={tempItem?.meta.id}
+            draggingId={draggingId || undefined}
           />
         </CanvasContainer>
         <PropertyPanel></PropertyPanel>

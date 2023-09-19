@@ -1,12 +1,12 @@
 import { useCallback } from "react";
-import { DropIndicator } from "../dnd"
+import { DropIndicator, Identifier } from "../dnd"
 import { DropTarget, PostionType } from "../types";
 import { useGetItem } from "./useGetItem";
 import { useGetFlattenItem } from "./useGetFlattenItem";
 
-export function useGetDropTarget(indentationWidth: number) {
+export function useGetDropTarget(indentationWidth: number, draggingId?:Identifier) {
   const getItem = useGetItem()
-  const getFlattenItem = useGetFlattenItem()
+  const getFlattenItem = useGetFlattenItem(draggingId)
 
   const getDropTarget = useCallback((indicator?: DropIndicator) => {
     const target: DropTarget = {
