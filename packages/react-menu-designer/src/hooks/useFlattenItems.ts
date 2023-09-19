@@ -1,28 +1,43 @@
 import { useCallback, useMemo } from "react";
-import { IMenuItem } from "../interfaces";
 import { IFlattenedItem } from "../interfaces/flattened";
 import { Identifier } from "../dnd";
 import { useMenuSchemaState } from "./useMenuSchemaState";
+import { useGetMenuItemSchema } from "./useGetMenuItemSchema";
+import { useActiveIdState } from "./useActiveIdState";
 
 export function useFlattenItems() {
-  const [items] = useMenuSchemaState()
+  const [menuSchema] = useMenuSchemaState();
+  const getItem = useGetMenuItemSchema();
+  const [activeId] = useActiveIdState()
+
   const flatten = useCallback((
-    items: IMenuItem[],
-    parentId: Identifier | null = null,
+    itemIds: Identifier[],
     depth = 0
   ): IFlattenedItem[] => {
-    return items.reduce<IFlattenedItem[]>((acc, item) => {
-      return [
-        ...acc,
-        { ...item, parentId, depth, children: undefined },
-        ...flatten(item.children || [], item.id, depth + 1),
-      ];
+
+    return itemIds.reduce<IFlattenedItem[]>((acc, id) => {
+      const item = getItem(id)
+      if (item) {
+        const flattenedItem: IFlattenedItem = {
+          depth,
+          meta: item.meta,
+          activied: activeId === id,
+        }
+        return [
+          ...acc,
+          flattenedItem,
+          ...flatten(item?.children || [], depth + 1),
+        ];
+      } else {
+        console.error("Can find item:", id)
+        return acc
+      }
     }, []);
-  }, [])
+  }, [activeId, getItem])
 
   const flattenItems = useMemo(() => {
-    return flatten(items)
-  }, [flatten, items])
+    return flatten(menuSchema.rootIds)
+  }, [flatten, menuSchema])
 
   return flattenItems
 }
