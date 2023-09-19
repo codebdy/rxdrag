@@ -6,7 +6,7 @@ import { Button, Divider, Space } from 'antd';
 import { DeleteOutlined, RedoOutlined, UndoOutlined } from '@ant-design/icons';
 import { useGetResource } from './hooks/useGetResource';
 import { DndContext } from './dnd/DndContext';
-import { DragOverEvent, DropEvent, Identifier } from './dnd';
+import { DragOverEvent, DropEvent } from './dnd';
 import { CANVS_ID } from './consts';
 import { SortableTree } from './components/SortableTree';
 import { useGetItem } from './hooks/useGetItem';
@@ -151,19 +151,6 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
       if (!activeItem) {
         return
       }
-      //const depth = getDepth(e.belowAtId, e.delta, indentationWidth)
-      //const parent = e.belowAtId ? getParent(e.belowAtId, depth) : undefined
-
-      //判断 插入位置：insertChild, insertAfter，重新展开，操作扁平结构，带children
-
-      // setItems((items) => {
-      //   const newItems: IFlattenedItem[] = items.filter(item => item.id !== e.activeId);
-      //   const index = e.belowAtId ? newItems.findIndex(item => item.id === e.belowAtId) + 1 : 0;
-      //   const depth = getDepth(e.belowAtId, e.delta, indentationWidth)
-      //   const parent = e.belowAtId ? getParent(e.belowAtId, depth) : undefined
-      //   newItems.splice(index, 0, { ...activeItem, children: undefined, depth, parentId: parent?.id })
-      //   return newItems
-      // })
     }
   }, [getItem, getResource])
 

@@ -23,17 +23,17 @@ export function useMoveItem() {
       newSchema.items.push(newItem)
       setMenuSchema(newSchema)
     } else if (target.targetId) {
-      //开始定位位置
+      //插入子元素
       if (target.position === PostionType.in) {
         //附加父元素
         const newItem: IMenuItemSchema = { ...itemSchema, parentId: target.targetId }
         newSchema.items.push(newItem)
         newSchema.items = newSchema.items.map(item => item.meta.id === target.targetId ? { ...item, children: [itemId, ...item.children || []] } : item)
         setMenuSchema(newSchema)
-      } else {
+      } else {//插入兄弟元素后面
         const item = getItem(target.targetId)
         const parent = getItem(item?.parentId)
-        //没有父节点
+        //没有父节点，插入根目录
         if (!parent) {
           //删除父元素
           const newItem: IMenuItemSchema = { ...itemSchema, parentId: null }
@@ -45,7 +45,8 @@ export function useMoveItem() {
           //附加父元素
           const newItem: IMenuItemSchema = { ...itemSchema, parentId: parent.meta.id }
           newSchema.items.push(newItem)
-          const newIds = [...parent.children || []]
+          //先删除，不知道为什么之前清理干净
+          const newIds = parent.children?.filter(child => child !== itemId) || []
           newIds.splice(newIds.indexOf(target.targetId) + 1, 0, itemId)
           newSchema.items = newSchema.items.map(item => item.meta.id === parent.meta.id ? { ...item, children: newIds } : item)
         }
