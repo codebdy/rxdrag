@@ -19,8 +19,10 @@ export function useFlattenItems(draggingId?: Identifier) {
         const flattenedItem: IFlattenedItem = {
           depth,
           meta: item.meta,
+          collapsable: !!item.children?.length,
+          collapsed: item.collapsed,
         }
-        const children = draggingId !== item.meta.id ? flatten(item?.children || [], depth + 1) : []
+        const children = (draggingId !== item.meta.id && !item.collapsed) ? flatten(item?.children || [], depth + 1) : []
         return [
           ...acc,
           flattenedItem,

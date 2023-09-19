@@ -1,11 +1,12 @@
-import { memo } from "react"
+import { memo, useCallback } from "react"
 import { IFlattenedItem } from "../../interfaces/flattened"
 import styled from "styled-components"
 import { Draggable, Identifier } from "../../dnd"
 import { Button } from "antd"
-import { HolderOutlined } from "@ant-design/icons"
+import { DownOutlined, HolderOutlined, RightOutlined } from "@ant-design/icons"
 import { DragOverlay } from "../../dnd/DragOverlay"
 import { floatShadow } from "../../utilities"
+import { useToggleCollapse } from "../../hooks/useToggleCollapse"
 
 const Container = styled.div`
   height: 48px;
@@ -32,6 +33,10 @@ const Container = styled.div`
     z-index: 1;
     color:${props => props.theme.token?.colorText};
   }
+`
+
+const Content = styled.div`
+  flex: 1;
 `
 
 const GhostInner = styled.div`
@@ -67,6 +72,12 @@ export const SortableItem = memo((
 ) => {
   const { item, tempId, indentationWidth } = props
   const isAdding = tempId === item.meta.id
+  const toggleCollapse = useToggleCollapse()
+
+  const handleCollapse = useCallback(() => {
+    toggleCollapse(item.meta.id)
+  }, [item.meta.id, toggleCollapse])
+
   return (
     <Draggable
       hasHandler
@@ -88,10 +99,25 @@ export const SortableItem = memo((
                       type="text"
                       icon={<HolderOutlined />}
                     />
+                    <Content>
+                      {
+                        item.meta.title
+                      }
+                      ({item.meta.id})
+                    </Content>
                     {
-                      item.meta.title
+                      item.collapsable &&
+                      <Button
+                        type="text"
+                        size="small"
+                        icon={
+                          item.collapsed
+                            ? <RightOutlined />
+                            : <DownOutlined />
+                        }
+                        onClick={handleCollapse}
+                      />
                     }
-                    ({item.meta.id})
                   </>
                   : <GhostInner />
               }
