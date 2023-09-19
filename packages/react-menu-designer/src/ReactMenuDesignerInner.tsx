@@ -138,6 +138,7 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
 
   const resetState = useCallback(() => {
     setOldSchema(undefined)
+    setTempItem(undefined)
     //setActiveId(null)
     document.body.style.setProperty('cursor', '');
   }, [])
