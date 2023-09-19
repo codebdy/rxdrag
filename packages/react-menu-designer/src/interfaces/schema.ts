@@ -6,7 +6,7 @@ export interface IMenuItemSchema<Config = unknown> {
   meta: IMenuItemMeta<Config>,
   collapsed?: boolean,
   children?: Identifier[],
-  parentId?: Identifier,
+  parentId?: Identifier | null,
 }
 
 export interface IMenuSchema {

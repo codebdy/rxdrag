@@ -1,5 +1,5 @@
 import classNames from "classnames"
-import { memo } from "react"
+import { memo, useMemo } from "react"
 import styled from "styled-components"
 import { CANVS_ID } from "../../consts"
 import { Droppable, Identifier } from "../../dnd"
@@ -32,21 +32,23 @@ export const SortableTree = memo((
   const { tempId, indentationWidth } = props;
   const items = useFlattenItems()
 
+  const childIds = useMemo(() => items.filter(item => item.meta.id !== tempId).map(item => item.meta.id), [items, tempId])
+
   return (
     <Droppable
       droppableId={CANVS_ID}
+      items={childIds}
     >
       {
         (innerRef, snapshot) => {
           return (
             <DropContainer ref={innerRef} className={classNames('menu-drop-container', { over: snapshot?.isDraggingOver })}>
               {
-                items?.map((item, index) => {
+                items?.map((item) => {
                   return (<SortableItem
                     key={item.meta.id}
                     item={item}
-                    index={index}
-                    tempId = {tempId}
+                    tempId={tempId}
                     indentationWidth={indentationWidth}
                   />)
                 })

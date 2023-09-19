@@ -61,18 +61,16 @@ const Handler = styled(Button)`
 export const SortableItem = memo((
   props: {
     item: IFlattenedItem,
-    index: number,
     indentationWidth: number,
     tempId?: Identifier,
   }
 ) => {
-  const { item, index, tempId, indentationWidth } = props
+  const { item, tempId, indentationWidth } = props
   const isAdding = tempId === item.meta.id
   return (
     <Draggable
       hasHandler
       draggableId={item.meta.id}
-      index={index}
     >
       {
         (provider, snapshot) => {

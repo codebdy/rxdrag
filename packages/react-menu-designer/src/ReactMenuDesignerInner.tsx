@@ -123,7 +123,7 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
       }
       const activeItem = resouce ? tmpItem : getItem(e.activeId)
 
-      if (activeItem) {
+      if (activeItem && e.indicator) {
         const oldPostion = getItemPosition(activeItem.meta.id)
         const newPosition = getTargetPosition(e.indicator)
         if (newPosition && (newPosition?.position !== oldPostion?.position || newPosition?.targetId !== oldPostion?.targetId)) {
