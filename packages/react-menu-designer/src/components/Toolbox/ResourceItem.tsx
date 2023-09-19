@@ -28,11 +28,10 @@ const Item = styled.div`
   user-select: none;
   background-color: ${props => props.theme.token?.colorBgBase};
   &.dragging{
-    opacity: 0.6;
+    opacity: 0.8;
     background-color: ${props => props.theme.token?.colorBgContainer};
     box-shadow: ${floatShadow};
     z-index: 1;
-    pointer-events: none;
     color:${props => props.theme.token?.colorText};
   }
 `

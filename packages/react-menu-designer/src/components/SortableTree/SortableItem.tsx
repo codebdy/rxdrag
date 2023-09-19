@@ -4,6 +4,8 @@ import styled from "styled-components"
 import { Draggable, Identifier } from "../../dnd"
 import { Button } from "antd"
 import { HolderOutlined } from "@ant-design/icons"
+import { DragOverlay } from "../../dnd/DragOverlay"
+import { floatShadow } from "../../utilities"
 
 const Container = styled.div`
   height: 48px;
@@ -15,7 +17,7 @@ const Container = styled.div`
   padding: 0 8px;
   background-color: ${props => props.theme.token?.colorBgContainer};
   flex-shrink: 0;
-  &.dragging{
+  &.ghost{
     background-color:transparent;
     border: 0;
     height: 24px;
@@ -23,6 +25,12 @@ const Container = styled.div`
     display: flex;
     box-sizing: border-box;
     transition: all 0.2s;
+  }
+  &.dragging{
+    opacity: 0.8;
+    box-shadow: ${floatShadow};
+    z-index: 1;
+    color:${props => props.theme.token?.colorText};
   }
 `
 
@@ -68,28 +76,37 @@ export const SortableItem = memo((
     >
       {
         (provider, snapshot) => {
-          return <Container
-            ref={provider.innerRef}
-            style={{ marginLeft: indentationWidth * item.depth }}
-            className={snapshot.isDragging || isAdding ? "dragging" : undefined}
-          >
-            {
-              !snapshot.isDragging && !isAdding
-                ? <>
-                  <Handler
-                    ref={provider.handlerRef}
-                    type="text"
-                    icon={<HolderOutlined />}
-                  />
-                  {
-                    item.meta.title
-                  }
-                  ({item.meta.id})
-                </>
-                : <GhostInner />
-            }
+          return <>
+            <Container
+              ref={provider.innerRef}
+              style={{ marginLeft: indentationWidth * item.depth }}
+              className={snapshot.isDragging || isAdding ? "ghost" : undefined}
+            >
+              {
+                !snapshot.isDragging && !isAdding
+                  ? <>
+                    <Handler
+                      ref={provider.handlerRef}
+                      type="text"
+                      icon={<HolderOutlined />}
+                    />
+                    {
+                      item.meta.title
+                    }
+                    ({item.meta.id})
+                  </>
+                  : <GhostInner />
+              }
 
-          </Container>
+            </Container>
+            <DragOverlay>
+              <Container className="dragging">
+                {
+                  item.meta.title
+                }
+              </Container>
+            </DragOverlay>
+          </>
         }
       }
 

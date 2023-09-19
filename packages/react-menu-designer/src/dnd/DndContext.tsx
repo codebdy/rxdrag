@@ -1,7 +1,7 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { DropEvent, DropIndicator, IDndSnapshot, Identifier, Offset, DroppableOverInfo, DragOverEvent } from "./types";
 import { getRecentRxElement } from "@rxdrag/shared";
-import { DRAGGABLE_HNADLER_ATTR_ID_NAME, DROPPABLE_ATTR_ID_NAME } from "./consts";
+import { DRAGGABLE_ATTR_ID_NAME, DRAGGABLE_HNADLER_ATTR_ID_NAME, DROPPABLE_ATTR_ID_NAME } from "./consts";
 import { DndSnapshotContext, DropIndicatorContext } from "./contexts";
 
 export type DndContextProps = {
@@ -32,10 +32,11 @@ export const DndContext = memo((
   const handleMouseDown = useCallback((e: MouseEvent) => {
     if (e.target) {
       const draggedElement = getRecentRxElement(e.target as HTMLElement, DRAGGABLE_HNADLER_ATTR_ID_NAME)
+      const realElement = getRecentRxElement(e.target as HTMLElement, DRAGGABLE_ATTR_ID_NAME)
       if (draggedElement) {
         setMouseDownEvent(e)
         setActiveId(draggedElement.getAttribute(DRAGGABLE_HNADLER_ATTR_ID_NAME) || undefined)
-        setStartRect(draggedElement.getBoundingClientRect())
+        setStartRect(realElement?.getBoundingClientRect())
       }
     }
   }, [])

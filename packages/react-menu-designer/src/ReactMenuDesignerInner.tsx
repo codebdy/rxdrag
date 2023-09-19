@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Toolbox } from './components/Toolbox';
 import { PropertyPanel } from './components/PropertyPanel';
@@ -75,9 +75,6 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   const moveItem = useMoveItem()
   const remove = useRemoveItem()
 
-  // const getDepth = useGetDepth()
-  // const getParent = useGetParent()
-
   const getResource = useGetResource()
   const getItem = useGetItem()
 
@@ -98,56 +95,18 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
     }
   }, [buildSchema, value])
 
-  // const flattenedItems = useMemo(() => {
-  //   const flattenedTree = flattenTree(items);
-  //   const collapsedItems = flattenedTree.reduce<UniqueIdentifier[]>(
-  //     (acc, { children, collapsed, id }) =>
-  //       collapsed && children.length ? [...acc, id] : acc,
-  //     []
-  //   );
-
-  //   return removeChildrenOf(
-  //     flattenedTree,
-  //     activeId ? [activeId, ...collapsedItems] : collapsedItems
-  //   );
-  // }, [activeId, items]);
-
-  // const flattenedItemsRef = useRef(flattenedItems);
-  // flattenedItemsRef.current = flattenedItems;
-  // const itemsRef = useRef(items);
-  // itemsRef.current = items
-
-  // const projected = useMemo(
-  //   () => activeId && overId
-  //     ? getProjection(
-  //       flattenedItems,
-  //       activeId,
-  //       overId,
-  //       offsetLeft,
-  //       indentationWidth
-  //     )
-  //     : null,
-  //   [activeId, flattenedItems, indentationWidth, offsetLeft, overId]
-  // );
-
-  // const projectedRef = useRef(projected)
-  // projectedRef.current = projected
-
   const resetState = useCallback(() => {
     setOldSchema(undefined)
     setTempItem(undefined)
-    //setActiveId(null)
+
     document.body.style.setProperty('cursor', '');
   }, [])
 
   const handleDragEnd = useCallback(() => {
-    // const newItems = items.filter(item => item.resource)
-    // setItems(newItems)
     resetState();
   }, [resetState])
 
-  const handleDragStart = useCallback((id: Identifier) => {
-    //setActiveId(id)
+  const handleDragStart = useCallback(() => {
     setOldSchema(menuSchema)
   }, [menuSchema])
 
@@ -234,7 +193,6 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
             indentationWidth={indentationWidth}
             tempId={tempItem?.meta.id}
           />
-
         </CanvasContainer>
         <PropertyPanel></PropertyPanel>
       </Shell>
