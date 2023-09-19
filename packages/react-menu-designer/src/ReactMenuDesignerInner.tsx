@@ -29,6 +29,7 @@ const Shell = styled.div`
   align-items: center;
   box-sizing: border-box;
   padding: 16px;
+  height: 100%;
 `
 
 const CanvasContainer = styled.div`
@@ -54,6 +55,12 @@ const Toolbar = styled.div`
   padding: 0 16px;
   justify-content: space-between;
   background-color: ${props => props.theme.token?.colorBgBase};
+`
+
+const Canvas = styled.div`
+  flex: 1;
+  height: 0;
+  overflow: auto;
 `
 
 export type ReactMenuDesignerInnerProps = {
@@ -165,7 +172,7 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
       onDragEnd={handleDragEnd}
       onDragCancel={handleDragCancel}
     >
-      <Shell>
+      <Shell className='menu-designer-shell'>
         <Toolbox ></Toolbox>
         <CanvasContainer>
           <Toolbar>
@@ -177,12 +184,13 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
             </Space>
             <Button type="primary" >保存</Button>
           </Toolbar>
-
-          <SortableTree
-            indentationWidth={indentationWidth}
-            tempId={tempItem?.meta.id}
-            draggingId={draggingId || undefined}
-          />
+          <Canvas>
+            <SortableTree
+              indentationWidth={indentationWidth}
+              tempId={tempItem?.meta.id}
+              draggingId={draggingId || undefined}
+            />
+          </Canvas>
         </CanvasContainer>
         <PropertyPanel></PropertyPanel>
       </Shell>

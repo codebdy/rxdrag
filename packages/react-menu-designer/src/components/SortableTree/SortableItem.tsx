@@ -16,7 +16,7 @@ const Container = styled.div`
   align-items: center;
   padding: 0 8px;
   background-color: ${props => props.theme.token?.colorBgContainer};
-  flex-shrink: 0;
+  //flex-shrink: 0;
   &.ghost{
     background-color:transparent;
     border: 0;

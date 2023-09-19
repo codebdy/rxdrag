@@ -8,8 +8,6 @@ import { useFlattenItems } from "../../hooks/useFlattenItems"
 
 const DropContainer = styled.div`
   width: 100%;
-  flex: 1;
-  overflow: auto;
   box-sizing: border-box;
   min-height: 100%;
   overflow-x: hidden;
