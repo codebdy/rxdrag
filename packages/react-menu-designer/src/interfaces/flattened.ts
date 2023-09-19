@@ -1,12 +1,10 @@
-import { Identifier } from "../dnd";
 import { IMenuItemMeta } from "./menu";
 
-export interface IFlattenedItem<Config = unknown> extends IMenuItemMeta<Config> {
-  id: Identifier;
-  parentId?: Identifier;
+//纯展示用模型
+export interface IFlattenedItem<Config = unknown> {
   depth: number;
-  collapsed?: boolean;
-  children?: Identifier[];
+  meta: IMenuItemMeta<Config>;
+  activied?: boolean;
 }
 
 //   //工具箱里的项目，要管理id，drop后要重新生成一个新的

@@ -1,10 +1,9 @@
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import { Toolbox } from './components/Toolbox';
 import { PropertyPanel } from './components/PropertyPanel';
 import { Button, Divider, Space } from 'antd';
 import { DeleteOutlined, RedoOutlined, UndoOutlined } from '@ant-design/icons';
-import { useItemsState } from './hooks/useItemsState';
 import { useGetResource } from './hooks/useGetResource';
 import { DndContext } from './dnd/DndContext';
 import { DropEvent, Identifier } from './dnd';
@@ -14,6 +13,9 @@ import { useGetDepth } from './hooks/useGetDepth';
 import { useActiveIdState } from './hooks/useActiveIdState';
 import { useGetParent } from './hooks/useGetParent';
 import { useGetItem } from './hooks/useGetItem';
+import { IMenuItem } from './interfaces';
+import { useBuildMenuSchema } from './hooks/useBuildMenuSchema';
+import { useHistoryState } from './hooks/useHistoryState';
 
 const Shell = styled.div`
   position: relative;
@@ -52,21 +54,40 @@ const Toolbar = styled.div`
 `
 
 export type ReactMenuDesignerInnerProps = {
+  defaultValue?: IMenuItem[],
+  value?: IMenuItem[],
   indentationWidth?: number;
-  indicator?: boolean;
 }
 
-export const ReactMenuDesignerInner = memo(({
-  indentationWidth = 50,
-}: ReactMenuDesignerInnerProps) => {
-  //const [newItem, setNewItem] = useState<IMenuItem>()
-  const [, setItems] = useItemsState();
+export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) => {
+  const { defaultValue, value, indentationWidth = 50 } = props;
+  const buildSchema = useBuildMenuSchema()
   const [, setActiveId] = useActiveIdState()
+  const [, setHistory] = useHistoryState()
+
   const getDepth = useGetDepth()
   const getParent = useGetParent()
 
   const getResource = useGetResource()
   const getItem = useGetItem()
+
+  useEffect(() => {
+    if (defaultValue) {
+      buildSchema(defaultValue)
+      setHistory({
+        changed: false,
+        undoList: [],
+        redoList: [],
+      })
+    }
+  }, [buildSchema, defaultValue, setHistory])
+
+  useEffect(() => {
+    if (value) {
+      buildSchema(value)
+    }
+  }, [buildSchema, value])
+
   // const flattenedItems = useMemo(() => {
   //   const flattenedTree = flattenTree(items);
   //   const collapsedItems = flattenedTree.reduce<UniqueIdentifier[]>(
@@ -124,11 +145,11 @@ export const ReactMenuDesignerInner = memo(({
       if (!activeItem) {
         return
       }
-      const depth = getDepth(e.belowAtId, e.delta, indentationWidth)
-      const parent = e.belowAtId ? getParent(e.belowAtId, depth) : undefined
+      //const depth = getDepth(e.belowAtId, e.delta, indentationWidth)
+      //const parent = e.belowAtId ? getParent(e.belowAtId, depth) : undefined
 
-     //判断 插入位置：insertChild, insertAfter，重新展开，操作扁平结构，带children
-      
+      //判断 插入位置：insertChild, insertAfter，重新展开，操作扁平结构，带children
+
       // setItems((items) => {
       //   const newItems: IFlattenedItem[] = items.filter(item => item.id !== e.activeId);
       //   const index = e.belowAtId ? newItems.findIndex(item => item.id === e.belowAtId) + 1 : 0;
@@ -138,7 +159,7 @@ export const ReactMenuDesignerInner = memo(({
       //   return newItems
       // })
     }
-  }, [getDepth, getItem, getParent, getResource, indentationWidth])
+  }, [getItem, getResource])
 
   return (
 

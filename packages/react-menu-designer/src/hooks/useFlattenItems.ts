@@ -2,10 +2,10 @@ import { useCallback, useMemo } from "react";
 import { IMenuItem } from "../interfaces";
 import { IFlattenedItem } from "../interfaces/flattened";
 import { Identifier } from "../dnd";
-import { useItemsState } from "./useItemsState";
+import { useMenuSchemaState } from "./useMenuSchemaState";
 
 export function useFlattenItems() {
-  const [items] = useItemsState()
+  const [items] = useMenuSchemaState()
   const flatten = useCallback((
     items: IMenuItem[],
     parentId: Identifier | null = null,

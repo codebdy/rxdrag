@@ -1,7 +1,7 @@
 import { Identifier } from "../dnd/types";
-import { useItemsState } from "./useItemsState";
+import { useMenuSchemaState } from "./useMenuSchemaState";
 
 export function useItem(id?: Identifier | null) {
-  const [items] = useItemsState()
+  const [items] = useMenuSchemaState()
   return items.find(item => item.id === id)
 }

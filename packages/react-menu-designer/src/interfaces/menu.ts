@@ -23,8 +23,3 @@ export interface IMenuItem<Config = unknown> extends IMenuItemMeta<Config> {
 export interface IMenu {
   items: IMenuItem[]
 }
-
-//设计器用的Schema
-export interface IMenuItemSchema<Config = unknown> extends IMenuItem<Config> {
-  collapsed?: boolean,
-}

@@ -1,8 +1,8 @@
 import { createContext } from "react";
-import { IMenuItemResource, IMenuItemSchema } from "./interfaces";
+import { IMenuItemResource } from "./interfaces";
 import { TreeItems } from "./types";
 import { Identifier } from "./dnd/types";
-import { IFlattenedItem } from "./interfaces/flattened";
+import { IMenuSchema } from "./interfaces/schema";
 
 export const ResourcesContext = createContext<IMenuItemResource[]>([])
 
@@ -35,17 +35,18 @@ export const initialItems: TreeItems = [
   },
 ];
 
-export type ItemsState = [IFlattenedItem[], React.Dispatch<React.SetStateAction<IFlattenedItem[]>>]
-export const ItemsContext = createContext<ItemsState>([[], notMethod])
+export type MenuSchemaState = [IMenuSchema, React.Dispatch<React.SetStateAction<IMenuSchema>>]
+export const MenuSchemaContext = createContext<MenuSchemaState>([{ rootIds: [], items: [] }, notMethod])
+//export const ItemsContext = createContext<IFlattenedItem[]>([])
 
 export type IdState = [Identifier | null, React.Dispatch<React.SetStateAction<Identifier | null>>]
 export const ActiveIdContext = createContext<IdState>([null, notMethod])
 
-export type MenuItems = IFlattenedItem[]
+//export type MenuItems = IFlattenedItem[]
 
 export type HistoryRedords = {
-  undoList: MenuItems[],
-  redoList: MenuItems[],
+  undoList: IMenuSchema[],
+  redoList: IMenuSchema[],
   changed?: boolean,
 }
 

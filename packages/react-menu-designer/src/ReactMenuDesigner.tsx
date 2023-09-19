@@ -11,10 +11,9 @@ export type ReactMenuDesignerProps = ReactMenuDesignerInnerProps & {
 export const ReactMenuDesigner = memo((
   props: ReactMenuDesignerProps
 ) => {
-  const { defaultValue, value, ...rest } = props
   return (
-    <DesignerRoot defaultValue={defaultValue} value={value}>
-      <ReactMenuDesignerInner {...rest} />
+    <DesignerRoot>
+      <ReactMenuDesignerInner {...props} />
     </DesignerRoot>
   )
 })
