@@ -3,10 +3,12 @@ import { DropIndicator, Identifier } from "../dnd"
 import { DropTarget, PostionType } from "../types";
 import { useGetItem } from "./useGetItem";
 import { useGetFlattenItem } from "./useGetFlattenItem";
+import { useGetParentByDepth } from "./useGetParentByDepth";
 
-export function useGetDropTarget(indentationWidth: number, draggingId?:Identifier) {
+export function useGetDropTarget(indentationWidth: number, draggingId?: Identifier) {
   const getItem = useGetItem()
   const getFlattenItem = useGetFlattenItem(draggingId)
+  const getParentByDepth = useGetParentByDepth()
 
   const getDropTarget = useCallback((indicator?: DropIndicator) => {
     const target: DropTarget = {
@@ -20,24 +22,31 @@ export function useGetDropTarget(indentationWidth: number, draggingId?:Identifie
 
     const belowAtItem = getItem(indicator.belowAtId)
     const belowAtFlattenItem = getFlattenItem(indicator.belowAtId)
+    const deltaDepth = Math.ceil((indicator.delta?.x || 0) / indentationWidth)
 
     if (belowAtItem && belowAtFlattenItem) {
       //作为子元素
-      if ((belowAtFlattenItem.depth + 1) * indentationWidth < (indicator.delta?.x || 0)) {
+      if ((belowAtFlattenItem.depth + 1) < deltaDepth) {
         target.targetId = belowAtItem.meta.id;
         target.position = PostionType.in
         return target
-      } else if ((belowAtFlattenItem.depth) * indentationWidth < (indicator.delta?.x || 0)) {
+        //作为兄弟元素
+      } else if (belowAtFlattenItem.depth < deltaDepth) {
         target.targetId = belowAtItem.meta.id;
         target.position = PostionType.after
         return target
-        //后面判断
-      } else{
-        //
+        //父祖辈的兄弟判断
+      } else {
+        const parentId = getParentByDepth(indicator.belowAtId, deltaDepth - 1)
+        if (parentId) {
+          target.targetId = parentId;
+          target.position = PostionType.after
+          return target
+        }
       }
     }
 
-  }, [getFlattenItem, getItem, indentationWidth])
+  }, [getFlattenItem, getItem, getParentByDepth, indentationWidth])
 
   return getDropTarget
 }
