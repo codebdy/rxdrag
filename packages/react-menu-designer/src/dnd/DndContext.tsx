@@ -17,6 +17,7 @@ export const DndContext = memo((
 ) => {
   const { onDragStart, onDrop, onDragEnd, onDragCancel, children } = props;
   const [mouseDownEvent, setMouseDownEvent] = useState<MouseEvent>();
+  const [startRect, setStartRect] = useState<DOMRect>();
   const [activeId, setActiveId] = useState<Identifier>();
   const [dragging, setDragging] = useState<boolean>()
   const [draggingOffset, setDraggingOffset] = useState<Offset>()
@@ -34,6 +35,7 @@ export const DndContext = memo((
       if (draggedElement) {
         setMouseDownEvent(e)
         setActiveId(draggedElement.getAttribute(DRAGGABLE_HNADLER_ATTR_ID_NAME) || undefined)
+        setStartRect(draggedElement.getBoundingClientRect())
       }
     }
   }, [])
@@ -79,6 +81,7 @@ export const DndContext = memo((
     setDragging(false)
     setDraggingOffset(undefined)
     setMouseDownEvent(undefined)
+    setStartRect(undefined)
     setActiveId(undefined)
     setDropIndeicator(undefined)
   }, [setDropIndeicator])
@@ -114,11 +117,12 @@ export const DndContext = memo((
     return {
       startMouseEvent: mouseDownEvent,
       draggingId: dragging ? activeId : undefined,
+      startRect,
       draggingOffset,
       overDraggable,
       overDroppable,
     }
-  }, [activeId, dragging, draggingOffset, mouseDownEvent, overDraggable, overDroppable])
+  }, [activeId, dragging, draggingOffset, mouseDownEvent, overDraggable, overDroppable, startRect])
 
   return (
     <DndSnapshotContext.Provider value={snapshot}>

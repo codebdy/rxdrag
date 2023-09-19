@@ -19,7 +19,6 @@ export type DraggableProps = {
   //keepMouseFollowerWidth?: boolean,
   draggableId: Identifier;
   index?: number;
-  clonable?: boolean;
   //鼠标跟随物
   //mouseFollower?: React.ReactNode;
   children?: DraggableChildrenFn;
@@ -29,7 +28,7 @@ export type DraggableProps = {
 export const Draggable = memo((
   props: DraggableProps
 ) => {
-  const { draggableId, index, clonable, children, hasHandler } = props
+  const { draggableId, index, children, hasHandler } = props
   const [element, setElement] = useState<HTMLElement>()
   //const [rect, setRect] = useState<DOMRect>()
   const followerRef = useRef<HTMLDivElement>(null)

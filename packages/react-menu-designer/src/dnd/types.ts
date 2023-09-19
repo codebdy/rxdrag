@@ -108,6 +108,7 @@ export type OverInfo = OverOffset & {
 
 export interface IDndSnapshot {
   startMouseEvent?: MouseEvent,
+  startRect?: DOMRect,
   draggingOffset?: Offset,
   draggingId?: Identifier,
   overDraggable?: OverInfo,

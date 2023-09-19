@@ -46,13 +46,11 @@ export const ResourceItem = memo((
     <>
       <Draggable
         draggableId={name}
-        clonable
       >
         {
-          (provider, snapshot) => {
+          (provider) => {
             return <>
               <Container
-                className={snapshot.isDragging ? "dragging" : undefined}
                 ref={provider.innerRef}
               >
                 <Item>
@@ -62,7 +60,7 @@ export const ResourceItem = memo((
                 </Item>
               </Container>
               <DragOverlay>
-                <Item>
+                <Item className="dragging">
                   {
                     resource?.title
                   }
