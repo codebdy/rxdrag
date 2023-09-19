@@ -3,10 +3,8 @@ import { memo } from "react"
 import styled from "styled-components"
 import { CANVS_ID } from "../../consts"
 import { Droppable } from "../../dnd"
-import { IFlattenedItem } from "../../interfaces/flattened"
 import { SortableItem } from "./SortableItem"
-import { useGetDepth } from "../../hooks/useGetDepth"
-import { useShowingItems } from "../../hooks/useShowingItems"
+import { useFlattenItems } from "../../hooks/useFlattenItems"
 
 const DropContainer = styled.div`
   width: 100%;
@@ -58,22 +56,11 @@ export const SortableTree = memo((
   }
 ) => {
   const { indentationWidth } = props;
-  const items = useShowingItems()
-  const getDepth = useGetDepth()
+  const items = useFlattenItems()
 
   return (
     <Droppable
       droppableId={CANVS_ID}
-      placeholderOffset={20}
-      renderGhost={
-        (innerRef, snapshot) => {
-          const depth = getDepth(snapshot?.belowAtId, snapshot?.delta, indentationWidth)
-          const indentation = depth * indentationWidth
-          return (
-            <Ghost ref={innerRef} style={{ paddingLeft: indentation + 8 }}><GhostInner /></Ghost>
-          )
-        }
-      }
     >
       {
         (innerRef, snapshot) => {
@@ -82,7 +69,7 @@ export const SortableTree = memo((
               {
                 items?.map((item, index) => {
                   return (<SortableItem
-                    key={item.id}
+                    key={item.meta.id}
                     item={item}
                     index={index}
                     indentationWidth={indentationWidth}

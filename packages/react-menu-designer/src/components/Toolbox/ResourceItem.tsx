@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { floatShadow, } from "../../utilities";
 import { Draggable } from "../../dnd";
 import { useResource } from "../../hooks/useResource";
+import { DragOverlay } from "../../dnd/DragOverlay";
 
 const Container = styled.div`
   position: relative;
@@ -13,10 +14,6 @@ const Container = styled.div`
   &.dragging{
     opacity: 0.6;
   }
-`
-
-const MouseFollower = styled(Container)`
-  opacity: 0.6;
 `
 
 const Item = styled.div`
@@ -46,30 +43,35 @@ export const ResourceItem = memo((
   const { name } = props
   const resource = useResource(name)
   return (
-    <Draggable
-      draggableId={name}
-      clonable
-      mouseFollower={<MouseFollower>
-        <Item>
-          {
-            resource?.title
+    <>
+      <Draggable
+        draggableId={name}
+        clonable
+      >
+        {
+          (provider, snapshot) => {
+            return <>
+              <Container
+                className={snapshot.isDragging ? "dragging" : undefined}
+                ref={provider.innerRef}
+              >
+                <Item>
+                  {
+                    resource?.title
+                  }
+                </Item>
+              </Container>
+              <DragOverlay>
+                <Item>
+                  {
+                    resource?.title
+                  }
+                </Item>
+              </DragOverlay>
+            </>
           }
-        </Item>
-      </MouseFollower>}
-    >
-      {
-        (provider, snapshot) => {
-          return <Container
-            className={snapshot.isDragging ? "dragging" : undefined}
-            ref={provider.innerRef}
-          ><Item>
-              {
-                resource?.title
-              }
-            </Item>
-          </Container>
         }
-      }
-    </Draggable>
+      </Draggable>
+    </>
   )
 })

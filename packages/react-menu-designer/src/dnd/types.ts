@@ -51,8 +51,9 @@ export type DraggingOver = {
   draggingOffset?: Offset,
 }
 
-export interface IDraggableStateSnapshot {
+export interface IDraggableSnapshot {
   isDragging: boolean;
+  draggingOffset?: Offset;
   //isDropAnimating: boolean;
   //dropAnimation?: DropAnimation | undefined;
   draggingOver?: DraggingOver;
@@ -65,7 +66,7 @@ export type DraggleProvider = {
 
 export type DraggableChildrenFn = (
   provider: DraggleProvider,
-  snapshot: IDraggableStateSnapshot,
+  snapshot: IDraggableSnapshot,
 ) => React.ReactNode;
 
 export type DroppableGhostFn = (

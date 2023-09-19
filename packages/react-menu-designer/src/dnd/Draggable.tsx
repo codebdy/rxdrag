@@ -1,9 +1,10 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { DraggableChildrenFn, DraggleProvider, IDraggableStateSnapshot, Identifier } from "./types";
+import { DraggableChildrenFn, DraggleProvider, IDraggableSnapshot, Identifier } from "./types";
 import { DRAGGABLE_ATTR_ID_NAME, DRAGGABLE_HNADLER_ATTR_ID_NAME } from "./consts";
 import { useDndSnapshot } from "./hooks/useDndSnapshot";
 import styled from "styled-components";
 import { useChildItemsState } from "./hooks/useChildItemsState";
+import { DraggableContext } from "./contexts";
 
 const MouseFollower = styled.div`
   position: fixed;
@@ -20,7 +21,7 @@ export type DraggableProps = {
   index?: number;
   clonable?: boolean;
   //鼠标跟随物
-  mouseFollower?: React.ReactNode;
+  //mouseFollower?: React.ReactNode;
   children?: DraggableChildrenFn;
   hasHandler?: boolean;
 }
@@ -28,9 +29,9 @@ export type DraggableProps = {
 export const Draggable = memo((
   props: DraggableProps
 ) => {
-  const { draggableId, index, clonable, mouseFollower, children, hasHandler } = props
+  const { draggableId, index, clonable, children, hasHandler } = props
   const [element, setElement] = useState<HTMLElement>()
-  const [rect, setRect] = useState<DOMRect>()
+  //const [rect, setRect] = useState<DOMRect>()
   const followerRef = useRef<HTMLDivElement>(null)
   const dndSnapshot = useDndSnapshot()
   const [, setItems] = useChildItemsState() || []
@@ -70,7 +71,7 @@ export const Draggable = memo((
     element?.setAttribute(DRAGGABLE_HNADLER_ATTR_ID_NAME, draggableId.toString())
   }, [draggableId])
 
-  const snapshot: IDraggableStateSnapshot = useMemo(() => {
+  const snapshot: IDraggableSnapshot = useMemo(() => {
     return {
       isDragging: dndSnapshot.draggingId === draggableId,
       draggingOffset: dndSnapshot.draggingOffset,
@@ -90,35 +91,35 @@ export const Draggable = memo((
     }
   }, [dndSnapshot.draggingOffset, dndSnapshot.draggingId, draggableId])
 
-  useEffect(() => {
-    if (dndSnapshot.draggingId === draggableId) {
-      setRect(element?.getBoundingClientRect())
-      element?.style.setProperty("pointer-events", "none")
-      if (!clonable) {
-        const display = element?.style.getPropertyValue("display")
-        element?.style.setProperty("display", "none")
-        return () => {
-          element?.style.setProperty("display", display || "")
-          element?.style.setProperty("pointer-events", "all")
-        }
-      }
+  // useEffect(() => {
+  //   if (dndSnapshot.draggingId === draggableId) {
+  //     setRect(element?.getBoundingClientRect())
+  //     element?.style.setProperty("pointer-events", "none")
+  //     if (!clonable) {
+  //       const display = element?.style.getPropertyValue("display")
+  //       element?.style.setProperty("display", "none")
+  //       return () => {
+  //         element?.style.setProperty("display", display || "")
+  //         element?.style.setProperty("pointer-events", "all")
+  //       }
+  //     }
 
-      return () => {
-        element?.style.setProperty("pointer-events", "all")
-      }
-    }
-  }, [clonable, dndSnapshot.draggingId, draggableId, element])
+  //     return () => {
+  //       element?.style.setProperty("pointer-events", "all")
+  //     }
+  //   }
+  // }, [clonable, dndSnapshot.draggingId, draggableId, element])
 
-  useEffect(() => {
-    const newElement = element?.cloneNode(true)
-    const followerElement = followerRef.current
-    if (followerElement && newElement && !mouseFollower) {
-      followerElement.appendChild(newElement)
-      return () => {
-        followerElement.removeChild(newElement)
-      }
-    }
-  }, [element, mouseFollower])
+  // useEffect(() => {
+  //   const newElement = element?.cloneNode(true)
+  //   const followerElement = followerRef.current
+  //   if (followerElement && newElement && !mouseFollower) {
+  //     followerElement.appendChild(newElement)
+  //     return () => {
+  //       followerElement.removeChild(newElement)
+  //     }
+  //   }
+  // }, [element, mouseFollower])
 
   const provider: DraggleProvider = useMemo(() => {
     return {
@@ -128,11 +129,11 @@ export const Draggable = memo((
   }, [handleHanderRefChange, handleRefChange])
 
   return (
-    <>
+    <DraggableContext.Provider value={draggableId}>
       {
         children && children(provider, snapshot)
       }
-      <MouseFollower
+      {/* <MouseFollower
         ref={followerRef}
         style={{
           left: rect?.left,
@@ -144,7 +145,7 @@ export const Draggable = memo((
         {
           mouseFollower
         }
-      </MouseFollower>
-    </>
+      </MouseFollower> */}
+    </DraggableContext.Provider>
   )
 })

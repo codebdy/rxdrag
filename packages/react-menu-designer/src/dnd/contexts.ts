@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { ChildItem, DropIndicator, IDndSnapshot } from "./types";
+import { ChildItem, DropIndicator, IDndSnapshot, Identifier } from "./types";
 import React from "react";
 
 export const DndSnapshotContext = createContext<IDndSnapshot>({})
@@ -9,3 +9,5 @@ export const DropIndicatorContext = createContext<DropIndicatorState | undefined
 
 export type ChildItemsState = [ChildItem[], React.Dispatch<React.SetStateAction<ChildItem[]>>]
 export const ChildItemsContext = createContext<ChildItemsState | undefined>(undefined)
+
+export const DraggableContext = createContext<Identifier | undefined>(undefined)
