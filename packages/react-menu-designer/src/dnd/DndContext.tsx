@@ -2,7 +2,7 @@ import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { DropEvent, DropIndicator, IDndSnapshot, Identifier, Offset, DroppableOverInfo, DragOverEvent } from "./types";
 import { getRecentRxElement } from "@rxdrag/shared";
 import { DRAGGABLE_HNADLER_ATTR_ID_NAME, DROPPABLE_ATTR_ID_NAME } from "./consts";
-import { DndSnapshotContext, DropIndicatorContext } from "./contexts";
+import { ActiveIdContext, DndSnapshotContext, DropIndicatorContext } from "./contexts";
 
 export type DndContextProps = {
   onDragStart?: (id: Identifier) => void,
@@ -19,12 +19,13 @@ export const DndContext = memo((
   const { onDragStart, onDragOver, onDrop, onDragEnd, onDragCancel, children } = props;
   const [mouseDownEvent, setMouseDownEvent] = useState<MouseEvent>();
   const [startRect, setStartRect] = useState<DOMRect>();
-  const [activeId, setActiveId] = useState<Identifier>();
+  const activeIdState = useState<Identifier>();
   const [dragging, setDragging] = useState<boolean>()
   const [draggingOffset, setDraggingOffset] = useState<Offset>()
   const [overDroppable, setOverDroppable] = useState<DroppableOverInfo>()
   const dropIndicatorState = useState<DropIndicator>()
   const [dropIndicator, setDropIndeicator] = dropIndicatorState
+  const [activeId, setActiveId] = activeIdState
 
   const mouseDownEventRef = useRef(mouseDownEvent)
   mouseDownEventRef.current = mouseDownEvent
@@ -129,9 +130,11 @@ export const DndContext = memo((
   return (
     <DndSnapshotContext.Provider value={snapshot}>
       <DropIndicatorContext.Provider value={dropIndicatorState}>
-        {
-          children
-        }
+        <ActiveIdContext.Provider value={activeIdState}>
+          {
+            children
+          }
+        </ActiveIdContext.Provider>
       </DropIndicatorContext.Provider>
     </DndSnapshotContext.Provider>
   )

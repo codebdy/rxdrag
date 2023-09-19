@@ -3,12 +3,10 @@ import { IFlattenedItem } from "../interfaces/flattened";
 import { Identifier } from "../dnd";
 import { useMenuSchemaState } from "./useMenuSchemaState";
 import { useGetMenuItemSchema } from "./useGetMenuItemSchema";
-import { useActiveIdState } from "./useActiveIdState";
 
 export function useFlattenItems() {
   const [menuSchema] = useMenuSchemaState();
   const getItem = useGetMenuItemSchema();
-  const [activeId] = useActiveIdState()
 
   const flatten = useCallback((
     itemIds: Identifier[],
@@ -21,7 +19,6 @@ export function useFlattenItems() {
         const flattenedItem: IFlattenedItem = {
           depth,
           meta: item.meta,
-          activied: activeId === id,
         }
         return [
           ...acc,
@@ -33,7 +30,7 @@ export function useFlattenItems() {
         return acc
       }
     }, []);
-  }, [activeId, getItem])
+  }, [getItem])
 
   const flattenItems = useMemo(() => {
     return flatten(menuSchema.rootIds)

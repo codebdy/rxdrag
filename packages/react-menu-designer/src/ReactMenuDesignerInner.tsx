@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Toolbox } from './components/Toolbox';
 import { PropertyPanel } from './components/PropertyPanel';
@@ -6,16 +6,15 @@ import { Button, Divider, Space } from 'antd';
 import { DeleteOutlined, RedoOutlined, UndoOutlined } from '@ant-design/icons';
 import { useGetResource } from './hooks/useGetResource';
 import { DndContext } from './dnd/DndContext';
-import { DropEvent, Identifier } from './dnd';
+import { DragOverEvent, DropEvent, Identifier } from './dnd';
 import { CANVS_ID } from './consts';
 import { SortableTree } from './components/SortableTree';
-import { useGetDepth } from './hooks/useGetDepth';
-import { useActiveIdState } from './hooks/useActiveIdState';
-import { useGetParent } from './hooks/useGetParent';
 import { useGetItem } from './hooks/useGetItem';
 import { IMenuItem } from './interfaces';
 import { useBuildMenuSchema } from './hooks/useBuildMenuSchema';
 import { useHistoryState } from './hooks/useHistoryState';
+import { useMenuSchemaState } from './hooks/useMenuSchemaState';
+import { IMenuSchema } from './interfaces/schema';
 
 const Shell = styled.div`
   position: relative;
@@ -62,11 +61,12 @@ export type ReactMenuDesignerInnerProps = {
 export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) => {
   const { defaultValue, value, indentationWidth = 50 } = props;
   const buildSchema = useBuildMenuSchema()
-  const [, setActiveId] = useActiveIdState()
   const [, setHistory] = useHistoryState()
+  const [menuSchema, setMenuSchema] = useMenuSchemaState()
+  const [oldSchema, setOldSchema] = useState<IMenuSchema>()
 
-  const getDepth = useGetDepth()
-  const getParent = useGetParent()
+  // const getDepth = useGetDepth()
+  // const getParent = useGetParent()
 
   const getResource = useGetResource()
   const getItem = useGetItem()
@@ -124,9 +124,10 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   // projectedRef.current = projected
 
   const resetState = useCallback(() => {
-    setActiveId(null)
+    setOldSchema(undefined)
+    //setActiveId(null)
     document.body.style.setProperty('cursor', '');
-  }, [setActiveId])
+  }, [])
 
   const handleDragEnd = useCallback(() => {
     // const newItems = items.filter(item => item.resource)
@@ -135,8 +136,19 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   }, [resetState])
 
   const handleDragStart = useCallback((id: Identifier) => {
-    setActiveId(id)
-  }, [setActiveId])
+    //setActiveId(id)
+    setOldSchema(menuSchema)
+  }, [menuSchema])
+
+  const handleDragOver = useCallback((e: DragOverEvent) => {
+    console.log("哈哈", e)
+  }, [])
+
+  const handleDragCancel = useCallback(() => {
+    if (oldSchema) {
+      setMenuSchema(oldSchema)
+    }
+  }, [oldSchema, setMenuSchema])
 
   const handleDrop = useCallback((e: DropEvent) => {
     if (e.activeId && e.droppableId === CANVS_ID) {
@@ -166,7 +178,9 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
     <DndContext
       onDrop={handleDrop}
       onDragStart={handleDragStart}
+      onDragOver={handleDragOver}
       onDragEnd={handleDragEnd}
+      onDragCancel={handleDragCancel}
     >
       <Shell>
         <Toolbox ></Toolbox>

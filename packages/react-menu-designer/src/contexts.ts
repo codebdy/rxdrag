@@ -39,9 +39,6 @@ export type MenuSchemaState = [IMenuSchema, React.Dispatch<React.SetStateAction<
 export const MenuSchemaContext = createContext<MenuSchemaState>([{ rootIds: [], items: [] }, notMethod])
 //export const ItemsContext = createContext<IFlattenedItem[]>([])
 
-export type IdState = [Identifier | null, React.Dispatch<React.SetStateAction<Identifier | null>>]
-export const ActiveIdContext = createContext<IdState>([null, notMethod])
-
 //export type MenuItems = IFlattenedItem[]
 
 export type HistoryRedords = {
