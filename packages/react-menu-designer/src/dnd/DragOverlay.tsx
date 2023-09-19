@@ -31,11 +31,11 @@ export const DragOverlay = memo((
           {...rest}
           style={
             {
+              width: snapshot.startRect?.width,
+              height: snapshot.startRect?.height,
               ...style,
               left: snapshot.startRect?.left,
               top: snapshot.startRect?.top,
-              width: snapshot.startRect?.width,
-              height: snapshot.startRect?.height,
               transform: `translate(${snapshot.draggingOffset?.x || 0}px, ${snapshot.draggingOffset?.y || 0}px)`
             }
           }

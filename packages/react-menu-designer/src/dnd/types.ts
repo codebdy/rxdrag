@@ -20,12 +20,19 @@ export type OverOffset = {
 // export type DragOverEvent = DragEvent & {
 //   //
 // }
+export type DropIndicator = {
+  belowAtId?: string,
+  delta?: Offset,
+}
+
+export type DragOverEvent = DragEvent & {
+  indicator?: DropIndicator,
+  droppableOver?: DroppableOverInfo,
+}
 
 export type DropEvent = DragEvent & {
   droppableId: Identifier,
-  belowAtId?: string,
-  //在容器内部拖拽的距离
-  delta?: Offset,
+  indicator?: DropIndicator,
 }
 
 // export type DragCancelEvent = DragEvent
@@ -46,7 +53,6 @@ export interface Position {
 
 export type DraggingOver = {
   overId: Identifier,
-  //offset: OverOffset,
   originalEvent?: MouseEvent,
   draggingOffset?: Offset,
 }
@@ -54,8 +60,6 @@ export type DraggingOver = {
 export interface IDraggableSnapshot {
   isDragging: boolean;
   draggingOffset?: Offset;
-  //isDropAnimating: boolean;
-  //dropAnimation?: DropAnimation | undefined;
   draggingOver?: DraggingOver;
 }
 
@@ -101,7 +105,7 @@ export type Offset = {
   y: number,
 }
 
-export type OverInfo = OverOffset & {
+export type DroppableOverInfo = OverOffset & {
   id?: Identifier,
   originalEvent: MouseEvent,
 }
@@ -109,20 +113,14 @@ export type OverInfo = OverOffset & {
 export interface IDndSnapshot {
   startMouseEvent?: MouseEvent,
   startRect?: DOMRect,
+  //拖动偏移量，从数量落下开始计算
   draggingOffset?: Offset,
   draggingId?: Identifier,
-  overDraggable?: OverInfo,
-  overDroppable?: OverInfo,
+  overDroppable?: DroppableOverInfo,
 }
-
 
 export type ChildItem = {
   id: Identifier,
   index: number,
 }
 
-export type DropIndicator = {
-  belowAtId?: string,
-  cannotDrop?: boolean,
-  delta?: Offset,
-}
