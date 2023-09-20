@@ -8,6 +8,7 @@ import { DragOverlay } from "../../dnd/DragOverlay"
 import { floatShadow } from "../../utilities"
 import { useToggleCollapse } from "../../hooks/useToggleCollapse"
 import classNames from "classnames"
+import { useResource } from "../../hooks/useResource"
 
 const Container = styled.div`
   height: 48px;
@@ -84,6 +85,7 @@ export const SortableItem = memo((
   const isAdding = tempId === item.meta.id
   const toggleCollapse = useToggleCollapse()
   const { token } = theme.useToken()
+  const resource = useResource(item.meta.type)
 
   const handleCollapse = useCallback(() => {
     toggleCollapse(item.meta.id)
@@ -117,7 +119,9 @@ export const SortableItem = memo((
                     />
                     <Content>
                       {
-                        item.meta.title
+                        resource?.render
+                          ? resource?.render(item.meta)
+                          : item.meta.title
                       }
                     </Content>
                     {

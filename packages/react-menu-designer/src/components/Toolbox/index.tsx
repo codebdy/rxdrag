@@ -44,6 +44,7 @@ export const Toolbox = memo(() => {
       children: <>
         <ResourceItem name={MenuItemType.text} />
         <ResourceItem name={MenuItemType.link} />
+        <ResourceItem name={MenuItemType.divider} />
       </>,
     },
     {

@@ -1,5 +1,6 @@
 import { createId } from "@rxdrag/shared";
 import { IMenuItemResource, MenuItemType } from "../interfaces";
+import { Divider } from "antd";
 
 export const menuResources: IMenuItemResource[] = [
   {
@@ -9,7 +10,7 @@ export const menuResources: IMenuItemResource[] = [
       return {
         id: createId(),
         type: MenuItemType.text,
-        title: "文本"
+        title: "新建文本"
       }
     },
   },
@@ -20,7 +21,21 @@ export const menuResources: IMenuItemResource[] = [
       return {
         id: createId(),
         type: MenuItemType.link,
-        title: "链接"
+        title: "新建链接"
+      }
+    },
+  },
+  {
+    name: MenuItemType.divider,
+    title: "分隔符",
+    render: () => {
+      return <Divider />
+    },
+    createMenuItem: () => {
+      return {
+        id: createId(),
+        type: MenuItemType.divider,
+        title: "分隔符"
       }
     },
   }

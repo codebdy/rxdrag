@@ -5,7 +5,7 @@ export interface IMenuItemResource<Config = unknown> {
   name: string,
   title?: string,
   configSetter?: ReactComponent,
-  render?: () => React.ReactNode,
+  render?: (item?: IMenuItem<Config>) => React.ReactNode,
   createMenuItem: () => IMenuItem<Config>,
 }
 
