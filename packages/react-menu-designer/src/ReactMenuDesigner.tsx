@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { ReactMenuDesignerInner, ReactMenuDesignerInnerProps } from './ReactMenuDesignerInner';
 import { DesignerRoot } from './DesignerRoot';
-import { IMenuItem } from './interfaces';
+import { IMenuItem, IMenuItemResource } from './interfaces';
 import { ILocales } from '@rxdrag/locales';
 
 export type ReactMenuDesignerProps = ReactMenuDesignerInnerProps & {
@@ -11,14 +11,19 @@ export type ReactMenuDesignerProps = ReactMenuDesignerInnerProps & {
   locales?: ILocales,
   defaultValue?: IMenuItem[],
   value?: IMenuItem[],
+  resource?: IMenuItemResource[],
 }
 
 export const ReactMenuDesigner = memo((
   props: ReactMenuDesignerProps
 ) => {
-  const { lang, locales, ...rest } = props
+  const { lang, locales, resource, ...rest } = props
   return (
-    <DesignerRoot lang={lang} locales={locales}>
+    <DesignerRoot
+      lang={lang}
+      locales={locales}
+      resource={resource}
+    >
       <ReactMenuDesignerInner {...rest} />
     </DesignerRoot>
   )

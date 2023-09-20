@@ -1,11 +1,14 @@
 import { createId } from "@rxdrag/shared";
 import { IMenuItemResource, MenuItemType } from "../interfaces";
 import { Divider } from "antd";
+import { TextSetter } from "./TextSetter";
 
-export const menuResources: IMenuItemResource[] = [
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const defaultMenuResources: IMenuItemResource<any>[] = [
   {
     name: MenuItemType.text,
     title: "文本",
+    configSetter: TextSetter,
     createMenuItem: () => {
       return {
         id: createId(),

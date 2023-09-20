@@ -10,8 +10,11 @@ const minWidth = 200
 
 const PropertyPanelShell = styled(FlatableColumn)`
   right: ${DEFAULT_MARGIN}px;
-
 `
+const Content = styled.div`
+  padding: 16px;
+`
+
 export const PropertyPanel = memo(() => {
   const t = useTranslate()
   return (
@@ -24,6 +27,9 @@ export const PropertyPanel = memo(() => {
       <ColumnTitle>
         {t("properties")}
       </ColumnTitle>
+      <Content>
+
+      </Content>
     </PropertyPanelShell>
   )
 })
