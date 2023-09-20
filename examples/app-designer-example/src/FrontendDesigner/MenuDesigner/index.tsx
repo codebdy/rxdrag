@@ -27,6 +27,7 @@ export function createModuleResoure(module: IModule): IMenuItemResource<IModuleI
       }
     },
     selector: (item?: SelectorOption<IModuleItemConfig>) => {
+
       return item?.type === moduleResouceType && item.config?.moduleId === module.id
     }
   }

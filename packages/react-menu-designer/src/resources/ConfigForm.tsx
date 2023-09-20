@@ -18,8 +18,8 @@ export const ConfigForm = memo((
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleValuesChange = useCallback((changeValue: any, values: any) => {
-    onChange?.(values)
-  }, [onChange])
+    onChange?.({ ...value, ...values })
+  }, [onChange, value])
 
   return (
     <Form
