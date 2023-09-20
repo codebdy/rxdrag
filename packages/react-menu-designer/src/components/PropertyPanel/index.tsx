@@ -8,6 +8,9 @@ import { Identifier } from "../../dnd";
 import { useResource } from "../../hooks/useResource";
 import { useItem } from "../../hooks/useItem";
 import { IConfig } from "../../interfaces";
+import { useUpdateConfig } from "../../hooks/useUpdateConfig";
+import { useMenuSchemaState } from "../../hooks/useMenuSchemaState";
+import { useBackup } from "../../hooks/useBackup";
 
 const maxWidth = 1000
 const minWidth = 200
@@ -26,9 +29,14 @@ export const PropertyPanel = memo((props: {
   const t = useTranslate()
   const item = useItem(selectedId)
   const resource = useResource(item?.meta.type)
-  const handleChange = useCallback((config?: IConfig) => {
-    //
-  }, [])
+  const updateConfig = useUpdateConfig(selectedId)
+  const [menuSchema] = useMenuSchemaState()
+  const backup = useBackup()
+
+  const handleChange = useCallback((config: IConfig) => {
+    backup(menuSchema)
+    updateConfig(config)
+  }, [backup, menuSchema, updateConfig])
 
   return (
     <PropertyPanelShell

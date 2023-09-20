@@ -4,14 +4,14 @@ import { useMenuSchemaState } from "./useMenuSchemaState";
 import { IMenuSchema } from "../interfaces/schema";
 
 export function useUndo() {
-  const [menuSchema, setMuenuSchema] = useMenuSchemaState()
+  const [menuSchema, setMenuSchema] = useMenuSchemaState()
   const [history, setHistory] = useHistoryState()
   const undo = useCallback(() => {
     const newUndoList: IMenuSchema[] = [...history.undoList]
     const undoSnap = newUndoList.pop()
     const newRedoList = [...history.redoList, menuSchema]
     if (undoSnap) {
-      setMuenuSchema(undoSnap)
+      setMenuSchema(undoSnap)
     }
 
     setHistory({
@@ -21,7 +21,7 @@ export function useUndo() {
       redoList: newRedoList,
     })
 
-  }, [history, menuSchema, setHistory, setMuenuSchema])
+  }, [history, menuSchema, setHistory, setMenuSchema])
 
   return undo
 }

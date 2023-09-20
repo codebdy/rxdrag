@@ -2,7 +2,7 @@ import { IConfig, IMenuItem } from "./menu";
 
 export type ConfigSetterProps<Config extends IConfig = IConfig> = {
   value?: Config,
-  onChange?: (value?: Config) => void
+  onChange?: (value: Config) => void
 }
 
 export interface IMenuItemResource<Config extends IConfig = IConfig> {
