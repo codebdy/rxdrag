@@ -1,7 +1,7 @@
 import { IMenuItemResource, ReactMenuDesigner, SelectorOption } from "@rxdrag/react-menu-designer"
 import { memo, useMemo } from "react"
 import { Toolbox } from "./Toolbox"
-import { menuDesgnerLocales } from "./localse"
+import { menuDesgnerLocales } from "./locales"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
 import { baseMenuResources } from "./resrouces"
 import { IModule } from "../../interfaces/module"
