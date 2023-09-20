@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { DEFAULT_MARGIN } from "../../utilities";
 
 import styled from 'styled-components';
@@ -7,6 +7,7 @@ import { useTranslate } from "@rxdrag/react-locales";
 import { Identifier } from "../../dnd";
 import { useResource } from "../../hooks/useResource";
 import { useItem } from "../../hooks/useItem";
+import { IConfig } from "../../interfaces";
 
 const maxWidth = 1000
 const minWidth = 200
@@ -25,6 +26,9 @@ export const PropertyPanel = memo((props: {
   const t = useTranslate()
   const item = useItem(selectedId)
   const resource = useResource(item?.meta.type)
+  const handleChange = useCallback((config?: IConfig) => {
+    //
+  }, [])
 
   return (
     <PropertyPanelShell
@@ -37,7 +41,12 @@ export const PropertyPanel = memo((props: {
         {t("properties")}
       </ColumnTitle>
       <Content>
-        {resource?.configSetter && <resource.configSetter />}
+        {resource?.configSetter &&
+          <resource.configSetter
+            value={item?.meta.config as IConfig | undefined}
+            onChange={handleChange}
+          />
+        }
       </Content>
     </PropertyPanelShell>
   )

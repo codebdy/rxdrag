@@ -1,8 +1,8 @@
 import { Identifier } from "../dnd";
-import { IMenuItemMeta } from "./menu";
+import { IConfig, IMenuItemMeta } from "./menu";
 
 //纯展示用模型
-export interface IFlattenedItem<Config = unknown> {
+export interface IFlattenedItem<Config extends IConfig = IConfig> {
   depth: number;
   meta: IMenuItemMeta<Config>;
   collapsed?: boolean;

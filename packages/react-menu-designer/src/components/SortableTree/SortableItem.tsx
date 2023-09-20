@@ -121,7 +121,7 @@ export const SortableItem = memo((
                       {
                         resource?.render
                           ? resource?.render(item.meta)
-                          : item.meta.title
+                          : (item.meta.config?.title || item.meta.id)
                       }
                     </Content>
                     {
@@ -152,9 +152,13 @@ export const SortableItem = memo((
                     type="text"
                     icon={<HolderOutlined />}
                   />
-                  {
-                    item.meta.title
-                  }
+                  <Content>
+                    {
+                      resource?.render
+                        ? resource?.render(item.meta)
+                        : (item.meta.config?.title || item.meta.id)
+                    }
+                  </Content>
                 </Container>
               </Badge>
             </DragOverlay>

@@ -8,15 +8,18 @@ export enum MenuItemType {
   page = "page"
 }
 
-export interface IMenuItemMeta<Config = unknown> {
+export interface IConfig {
+  title?: string
+}
+
+export interface IMenuItemMeta<Config extends IConfig = IConfig> {
   id: Identifier,
   //string类型用于扩展
   type: MenuItemType | string
-  title?: string,
   config?: Config,
 }
 
-export interface IMenuItem<Config = unknown> extends IMenuItemMeta<Config> {
+export interface IMenuItem<Config extends IConfig = IConfig> extends IMenuItemMeta<Config> {
   children?: IMenuItem[],
 }
 

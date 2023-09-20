@@ -13,7 +13,9 @@ export const defaultMenuResources: IMenuItemResource<any>[] = [
       return {
         id: createId(),
         type: MenuItemType.text,
-        title: "新建文本"
+        config: {
+          title: "新建文本",
+        }
       }
     },
   },
@@ -24,7 +26,9 @@ export const defaultMenuResources: IMenuItemResource<any>[] = [
       return {
         id: createId(),
         type: MenuItemType.link,
-        title: "新建链接"
+        config: {
+          title: "新建链接",
+        }
       }
     },
   },
@@ -33,13 +37,12 @@ export const defaultMenuResources: IMenuItemResource<any>[] = [
     title: "分隔符",
     childless: true,
     render: () => {
-      return <Divider />
+      return <Divider style={{ minWidth: 100 }} />
     },
     createMenuItem: () => {
       return {
         id: createId(),
         type: MenuItemType.divider,
-        title: "分隔符"
       }
     },
   }
