@@ -65,7 +65,9 @@ export const DndContext = memo((
       if (Math.abs(e.screenX - startEvent.screenX) > 5 ||
         Math.abs(e.screenY - startEvent.screenY) > 5) {
         setDragging(true)
-        activeId && onDragStart?.(activeId)
+        if (!dragging && activeId) {
+          onDragStart?.(activeId)
+        }
         const offset = { x: 0, y: 0 }
         offset.x = e.clientX - startEvent.clientX
         offset.y = e.clientY - startEvent.clientY
@@ -79,7 +81,7 @@ export const DndContext = memo((
         indicator: dropIndicator,
       })
     }
-  }, [activeId, dropIndicator, getOverInfo, onDragOver, onDragStart])
+  }, [activeId, dragging, dropIndicator, getOverInfo, onDragOver, onDragStart])
 
   const resetState = useCallback(() => {
     setOverDroppable(undefined)

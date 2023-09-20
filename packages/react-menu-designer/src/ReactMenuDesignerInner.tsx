@@ -19,6 +19,9 @@ import { useGetItemPosition } from './hooks/useGetItemPosition';
 import { useGetDropTarget } from './hooks/useGetDropTarget';
 import { useMoveItem } from './hooks/useMoveItem';
 import { useRemoveItem } from './hooks/useRemoveItem';
+import { useBackup } from './hooks/useBackup';
+import { useUndo } from './hooks/useUndo';
+import { useRedo } from './hooks/useRedo';
 
 const Shell = styled.div`
   position: relative;
@@ -67,12 +70,13 @@ export type ReactMenuDesignerInnerProps = {
   defaultValue?: IMenuItem[],
   value?: IMenuItem[],
   indentationWidth?: number;
+  onSave?: (value: IMenuItem[]) => boolean | Promise<boolean> | void
 }
 
 export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) => {
   const { defaultValue, value, indentationWidth = 50 } = props;
   const buildSchema = useBuildMenuSchema()
-  const [, setHistory] = useHistoryState()
+  const [history, setHistory] = useHistoryState()
   const [menuSchema, setMenuSchema] = useMenuSchemaState()
   const [oldSchema, setOldSchema] = useState<IMenuSchema | null>(null)
   const [tempItem, setTempItem] = useState<IMenuItemSchema | null>(null)
@@ -83,6 +87,9 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   const getTargetPosition = useGetDropTarget(indentationWidth)
   const moveItem = useMoveItem()
   const remove = useRemoveItem()
+  const backup = useBackup()
+  const undo = useUndo()
+  const redo = useRedo()
 
   const getResource = useGetResource()
   const getItem = useGetItem()
@@ -122,6 +129,8 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
     const item = getItem(id)
     if (item) {
       setSelectedId(id)
+    } else {
+      setSelectedId(undefined)
     }
   }, [getItem, menuSchema])
 
@@ -164,9 +173,12 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
       if (!activeItem) {
         return
       }
+      if (oldSchema) {
+        backup(oldSchema)
+      }
       setSelectedId(activeItem.meta.id)
     }
-  }, [getItem, tempItem])
+  }, [backup, getItem, oldSchema, tempItem])
 
   const handleSelect = useCallback((id?: Identifier) => {
     setSelectedId(id)
@@ -176,6 +188,16 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
     remove(selectedId)
     setSelectedId(undefined)
   }, [remove, selectedId])
+
+  const handleUndo = useCallback(() => {
+    undo()
+    setSelectedId(undefined)
+  }, [undo])
+
+  const handleRedo = useCallback(() => {
+    redo()
+    setSelectedId(undefined)
+  }, [redo])
 
   return (
 
@@ -191,8 +213,18 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
         <CanvasContainer>
           <Toolbar>
             <Space>
-              <Button type="text" icon={<UndoOutlined />} />
-              <Button type="text" icon={<RedoOutlined />} />
+              <Button
+                type="text"
+                icon={<UndoOutlined />}
+                disabled={!history.undoList.length}
+                onClick={handleUndo}
+              />
+              <Button
+                type="text"
+                icon={<RedoOutlined />}
+                disabled={!history.redoList.length}
+                onClick={handleRedo}
+              />
               <Divider type='vertical' />
               <Button
                 type="text"
@@ -201,7 +233,10 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
                 onClick={handleRemove}
               />
             </Space>
-            <Button type="primary" >保存</Button>
+            <Button
+              type="primary"
+              disabled={!history.changed}
+            >保存</Button>
           </Toolbar>
           <Canvas>
             <SortableTree
