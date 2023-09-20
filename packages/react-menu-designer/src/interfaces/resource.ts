@@ -7,6 +7,8 @@ export interface IMenuItemResource<Config = unknown> {
   configSetter?: ReactComponent,
   render?: (item?: IMenuItem<Config>) => React.ReactNode,
   createMenuItem: () => IMenuItem<Config>,
+  //无子元素
+  childless?: boolean,
 }
 
 // export type MenuItemResources = { [name: string]: IMenuItemResource | undefined }

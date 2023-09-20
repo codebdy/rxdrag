@@ -28,6 +28,7 @@ export const menuResources: IMenuItemResource[] = [
   {
     name: MenuItemType.divider,
     title: "分隔符",
+    childless: true,
     render: () => {
       return <Divider />
     },

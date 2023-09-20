@@ -4,11 +4,13 @@ import { DropTarget, PostionType } from "../types";
 import { useGetItem } from "./useGetItem";
 import { useGetFlattenItem } from "./useGetFlattenItem";
 import { useGetParentByDepth } from "./useGetParentByDepth";
+import { useGetResource } from "./useGetResource";
 
 export function useGetDropTarget(indentationWidth: number, draggingId?: Identifier) {
   const getItem = useGetItem()
   const getFlattenItem = useGetFlattenItem(draggingId)
   const getParentByDepth = useGetParentByDepth()
+  const getResource = useGetResource()
 
   const getDropTarget = useCallback((indicator?: DropIndicator) => {
     const target: DropTarget = {
@@ -25,8 +27,9 @@ export function useGetDropTarget(indentationWidth: number, draggingId?: Identifi
     const deltaDepth = Math.ceil((indicator.delta?.x || 0) / indentationWidth)
 
     if (belowAtItem && belowAtFlattenItem) {
+      const resource = getResource(belowAtItem.meta.type)
       //作为子元素
-      if ((belowAtFlattenItem.depth + 1) < deltaDepth) {
+      if ((belowAtFlattenItem.depth + 1) < deltaDepth && !resource?.childless) {
         target.targetId = belowAtItem.meta.id;
         target.position = PostionType.in
         return target
@@ -46,7 +49,7 @@ export function useGetDropTarget(indentationWidth: number, draggingId?: Identifi
       }
     }
 
-  }, [getFlattenItem, getItem, getParentByDepth, indentationWidth])
+  }, [getFlattenItem, getItem, getParentByDepth, getResource, indentationWidth])
 
   return getDropTarget
 }
