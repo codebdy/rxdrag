@@ -28,7 +28,7 @@ export const AppDesignerExample = memo(() => {
                 <Route index element={<Navigate to={NavType.modules} replace />} />
                 <Route path={NavType.modules + "/:moduleId?"} element={<ModuleUiDesigner />}></Route>
                 <Route path={NavType.frame} element={<UiFrameDesigner />}></Route>
-                <Route path={NavType.menu} element={<MenuDesigner />}></Route>
+                <Route path={NavType.menu + "/:menuId?"} element={<MenuDesigner />}></Route>
               </Route>
             </Route>
             <Route path={CANVAS_URL_PREFIX + '/:device/:layoutPart'} element={<DesignerCanvas />}>

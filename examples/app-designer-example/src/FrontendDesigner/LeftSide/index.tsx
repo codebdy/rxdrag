@@ -4,10 +4,11 @@ import { LayoutOutlined, PlusOutlined, SnippetsOutlined } from "@ant-design/icon
 import { ScreenDialog } from "./ScreenDialog"
 import { Spring, SvgIcon, floatShadow } from "@rxdrag/react-antd-shell"
 import { NavButton } from "./NavButton"
-import { LeftDrawer } from "./LeftDrawer"
+import { ModulesDrawer } from "./ModulesDrawer"
 import { Button } from "antd"
 import { codeIcon, menuIcon } from "./icons"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
+import { MenusDrawer } from "./MenusDrawer"
 
 const Container = styled.div`
   position: relative;
@@ -39,12 +40,17 @@ export const enum NavType {
 
 export const LeftSide = memo(() => {
   const [openModules, setOpenModules] = useState<boolean | undefined>(true)
+  const [openNavs, setOpenNavs] = useState<boolean | undefined>(true)
   const navigate = useNavigate()
   const location = useLocation();
   const { moduleId } = useParams()
+  const { menuId } = useParams()
 
   const modulesPath = useMemo(() => moduleId ? `${NavType.modules}/${moduleId || ""}` : `${NavType.modules}`, [moduleId])
   const modulesSelected = useMemo(() => location.pathname.indexOf("/" + modulesPath) > -1, [location.pathname, modulesPath])
+
+  const navsPath = useMemo(() => menuId ? `${NavType.menu}/${menuId || ""}` : `${NavType.menu}`, [menuId])
+  const navsSelected = useMemo(() => location.pathname.indexOf("/" + navsPath) > -1, [location.pathname, navsPath])
 
   const handleModulesClick = useCallback(() => {
     if (modulesSelected) {
@@ -52,18 +58,25 @@ export const LeftSide = memo(() => {
     } else {
       setOpenModules(true)
     }
+    setOpenNavs(false)
     navigate(modulesPath)
   }, [modulesPath, modulesSelected, navigate, openModules])
 
   const handleFrameClick = useCallback(() => {
     setOpenModules(false)
+    setOpenNavs(false)
     navigate(NavType.frame)
   }, [navigate])
 
   const handleMenuClick = useCallback(() => {
+    if (navsSelected) {
+      setOpenNavs(!openNavs)
+    } else {
+      setOpenNavs(true)
+    }
     setOpenModules(false)
-    navigate(NavType.menu)
-  }, [navigate])
+    navigate(navsPath)
+  }, [navigate, navsPath, navsSelected, openNavs])
 
 
 
@@ -96,11 +109,19 @@ export const LeftSide = memo(() => {
       />
       <Spring />
       <ScreenDialog />
-      <LeftDrawer
+      <ModulesDrawer
         open={openModules && modulesSelected}
         onOpenChange={setOpenModules}
         title={<>
           功能
+          <Spring />
+          <AddButton size="small" type="text" icon={<PlusOutlined />} />
+        </>}
+      />
+      <MenusDrawer open={openNavs && navsSelected}
+        onOpenChange={setOpenNavs}
+        title={<>
+          导航
           <Spring />
           <AddButton size="small" type="text" icon={<PlusOutlined />} />
         </>}
