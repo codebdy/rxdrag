@@ -22,7 +22,14 @@ export function useFlattenItems(draggingId?: Identifier) {
           children: item.children,
           collapsed: item.collapsed,
         }
-        const children = (draggingId !== item.meta.id && !item.collapsed) ? flatten(item?.children || [], depth + 1) : []
+        let children: IFlattenedItem[] = []
+        if (draggingId !== item.meta.id) {
+          if (!item.collapsed) {
+            children = flatten(item?.children || [], depth + 1)
+          } else {
+            children = flatten(item?.children?.filter(child => child === draggingId) || [], depth + 1)
+          }
+        }
         return [
           ...acc,
           flattenedItem,
