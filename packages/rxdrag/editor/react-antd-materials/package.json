@@ -30,7 +30,7 @@
     "react-router-dom": "^6.8.1"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.8.0",
+    "@ant-design/icons": "^5.2.6",
     "@rxdrag/core": "workspace:*",
     "@rxdrag/minions-runtime": "workspace:*",
     "@rxdrag/react-antd-components": "workspace:*",
@@ -43,7 +43,7 @@
     "@rxdrag/minions-runtime-react": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
-    "antd": "^5.6.2",
+    "antd": "^5.9.2",
     "classnames": "^2.3.2",
     "styled-components": "^5.3.9"
   }

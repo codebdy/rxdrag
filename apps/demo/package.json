@@ -9,7 +9,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf build"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.8.0",
+    "@ant-design/icons": "^5.2.6",
     "@rxdrag/core": "workspace:*",
     "@rxdrag/fieldy-minions-materials": "workspace:*",
     "@rxdrag/fieldy": "workspace:*",
@@ -36,7 +36,7 @@
     "runtime-example": "workspace:*",
     "large-screen-example": "workspace:*",
     "app-designer-example": "workspace:*",
-    "antd": "^5.6.2",
+    "antd": "^5.9.2",
     "axios": "^1.4.0",
     "styled-components": "^5.3.9",
     "classnames": "^2.3.2",

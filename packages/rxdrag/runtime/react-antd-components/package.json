@@ -32,7 +32,7 @@
     "react-router-dom": "^6.8.1"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.8.0",
+    "@ant-design/icons": "^5.2.6",
     "@rxdrag/react-antd-icons": "workspace:*",
     "@rxdrag/react-core": "workspace:*",
     "@rxdrag/react-fieldy": "workspace:*",
@@ -44,7 +44,7 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "lodash": "^4.17.21",
-    "antd": "^5.6.2",
+    "antd": "^5.9.2",
     "dayjs": "^1.11.7",
     "styled-components": "^5.3.9"
   }
