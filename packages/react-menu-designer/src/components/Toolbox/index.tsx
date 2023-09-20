@@ -1,7 +1,7 @@
 import { memo, useMemo } from "react";
 import { DEFAULT_MARGIN } from "../../utilities";
 import styled from 'styled-components';
-import { ColumnTitle, FlatableColumn } from "../FlatableColumn";
+import { ColumnTitle, FloatableColumn } from "../FloatableColumn";
 import { Collapse } from 'antd';
 import type { CollapseProps } from 'antd';
 import { ResourceItem } from "./ResourceItem";
@@ -31,7 +31,7 @@ const StyledCollapse = styled(Collapse)`
   }
 `
 
-const ToolboxShell = styled(FlatableColumn)`
+const ToolboxShell = styled(FloatableColumn)`
   left: ${DEFAULT_MARGIN}px;
 `
 export const Toolbox = memo(() => {

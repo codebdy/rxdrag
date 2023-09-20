@@ -22,6 +22,7 @@ import { useRemoveItem } from './hooks/useRemoveItem';
 import { useBackup } from './hooks/useBackup';
 import { useUndo } from './hooks/useUndo';
 import { useRedo } from './hooks/useRedo';
+import { useTranslate } from '@rxdrag/react-locales';
 
 const Shell = styled.div`
   position: relative;
@@ -82,6 +83,7 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   const [tempItem, setTempItem] = useState<IMenuItemSchema | null>(null)
   const [draggingId, setDraggingId] = useState<Identifier | null>(null)
   const [selectedId, setSelectedId] = useState<Identifier>()
+  const t = useTranslate()
 
   const getItemPosition = useGetItemPosition()
   const getTargetPosition = useGetDropTarget(indentationWidth)
@@ -236,7 +238,7 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
             <Button
               type="primary"
               disabled={!history.changed}
-            >保存</Button>
+            >{t("save")}</Button>
           </Toolbar>
           <Canvas>
             <SortableTree
@@ -248,7 +250,9 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
             />
           </Canvas>
         </CanvasContainer>
-        <PropertyPanel></PropertyPanel>
+        <PropertyPanel
+          selectedId={selectedId}
+        ></PropertyPanel>
       </Shell>
     </DndContext>
   )
