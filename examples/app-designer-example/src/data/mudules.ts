@@ -119,15 +119,15 @@ export const defaultModuleCategories: { [device: string]: IModuleCategory[] | un
     },
     {
       id: 'crm',
-      title: '客户管理',
+      title: '客户关系CRM',
       modules: [
         {
           id: "suppliers",
-          title: "用户管理",
+          title: "供应商",
         },
         {
           id: "customers",
-          title: "用户管理",
+          title: "客户",
         },
       ]
     },
@@ -149,11 +149,11 @@ export const defaultModuleCategories: { [device: string]: IModuleCategory[] | un
       modules: [
         {
           id: "suppliers",
-          title: "用户管理",
+          title: "供应商",
         },
         {
           id: "customers",
-          title: "用户管理",
+          title: "客户",
         },
       ]
     },
@@ -175,11 +175,11 @@ export const defaultModuleCategories: { [device: string]: IModuleCategory[] | un
       modules: [
         {
           id: "suppliers",
-          title: "用户管理",
+          title: "供应商",
         },
         {
           id: "customers",
-          title: "用户管理",
+          title: "客户",
         },
       ]
     },
@@ -202,11 +202,11 @@ export const defaultModuleCategories: { [device: string]: IModuleCategory[] | un
       modules: [
         {
           id: "suppliers",
-          title: "用户管理",
+          title: "供应商",
         },
         {
           id: "customers",
-          title: "用户管理",
+          title: "客户",
         },
       ]
     },

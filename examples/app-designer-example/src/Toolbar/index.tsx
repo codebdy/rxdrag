@@ -89,7 +89,8 @@ export const Toolbar = memo((
           target="_blank"
           icon={<GithubFilled />}
         />
-        {/* <SaveButton /> */}
+        <Button>预览</Button>
+        <Button type="primary">发布</Button>
         <MenuButton />
       </Space>
     </ToolbarShell>
