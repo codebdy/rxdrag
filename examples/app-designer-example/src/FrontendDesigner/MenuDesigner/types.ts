@@ -6,11 +6,8 @@ export interface IModuleItemConfig extends IConfig {
   moduleId: string
 }
 
-export interface ITextConfig {
-  title?: string,
-}
+export type ITextConfig = IConfig
 
-export interface ILinkConfig {
-  title?: string,
+export interface ILinkConfig extends IConfig {
   url?: string,
 }

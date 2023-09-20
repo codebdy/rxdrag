@@ -7,12 +7,15 @@ import { baseMenuResources } from "./resrouces"
 import { IModule } from "../../interfaces/module"
 import { createId } from "@rxdrag/shared"
 import { IModuleItemConfig, moduleResouceType } from "./types"
+import { ModuleSetter } from "./setters/ModuleSetter"
 
 
 export function createModuleResoure(module: IModule): IMenuItemResource<IModuleItemConfig> {
   return {
     id: createId(),
     title: module.title,
+    childless: true,
+    configSetter: ModuleSetter,
     createMenuItem: () => {
       return {
         id: createId(),

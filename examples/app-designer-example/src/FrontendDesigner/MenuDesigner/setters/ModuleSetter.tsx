@@ -2,9 +2,10 @@ import { Form, Input } from "antd"
 import { memo } from "react"
 import { useTranslate } from "@rxdrag/react-locales";
 import { ConfigForm, ConfigSetterProps } from "@rxdrag/react-menu-designer";
+import { IModuleItemConfig } from "../types";
 
-export const TextSetter = memo((
-  props: ConfigSetterProps
+export const ModuleSetter = memo((
+  props: ConfigSetterProps<IModuleItemConfig>
 ) => {
   const { value, onChange } = props;
 
@@ -13,7 +14,8 @@ export const TextSetter = memo((
   return (
     <ConfigForm
       value={value}
-      onChange={onChange}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      onChange={onChange as any}
     >
       <Form.Item label={t("title")} name="title">
         <Input />
