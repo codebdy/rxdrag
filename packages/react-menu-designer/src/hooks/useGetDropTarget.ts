@@ -27,7 +27,7 @@ export function useGetDropTarget(indentationWidth: number, draggingId?: Identifi
     const deltaDepth = Math.ceil((indicator.delta?.x || 0) / indentationWidth)
 
     if (belowAtItem && belowAtFlattenItem) {
-      const resource = getResource(belowAtItem.meta.type)
+      const resource = getResource(belowAtItem.meta)
       //作为子元素
       if ((belowAtFlattenItem.depth + 1) < deltaDepth && !resource?.childless) {
         target.targetId = belowAtItem.meta.id;
