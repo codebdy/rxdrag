@@ -119,7 +119,11 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   const handleDragStart = useCallback((id: Identifier) => {
     setOldSchema(menuSchema)
     setDraggingId(id)
-  }, [menuSchema])
+    const item = getItem(id)
+    if (item) {
+      setSelectedId(id)
+    }
+  }, [getItem, menuSchema])
 
   const handleDragOver = useCallback((e: DragOverEvent) => {
     const resouce = getResource(e.activeId)
@@ -168,6 +172,11 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
     setSelectedId(id)
   }, [])
 
+  const handleRemove = useCallback(() => {
+    remove(selectedId)
+    setSelectedId(undefined)
+  }, [remove, selectedId])
+
   return (
 
     <DndContext
@@ -185,7 +194,12 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
               <Button type="text" icon={<UndoOutlined />} />
               <Button type="text" icon={<RedoOutlined />} />
               <Divider type='vertical' />
-              <Button type="text" icon={<DeleteOutlined />} />
+              <Button
+                type="text"
+                disabled={!selectedId}
+                icon={<DeleteOutlined />}
+                onClick={handleRemove}
+              />
             </Space>
             <Button type="primary" >保存</Button>
           </Toolbar>
