@@ -100,7 +100,8 @@ export const LeftSide = memo(() => {
         icon={<SvgIcon>
           {menuIcon}
         </SvgIcon>}
-        selected={location.pathname.endsWith(NavType.menu)}
+        intermediate={navsSelected && !openNavs}
+        selected={openNavs && navsSelected}
         onClick={handleMenuClick}
       />
       <NavButton
