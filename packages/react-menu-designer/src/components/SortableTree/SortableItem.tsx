@@ -2,7 +2,7 @@ import { memo, useCallback } from "react"
 import { IFlattenedItem } from "../../interfaces/flattened"
 import styled from "styled-components"
 import { Draggable, Identifier } from "../../dnd"
-import { Button } from "antd"
+import { Badge, Button, theme } from "antd"
 import { DownOutlined, HolderOutlined, RightOutlined } from "@ant-design/icons"
 import { DragOverlay } from "../../dnd/DragOverlay"
 import { floatShadow } from "../../utilities"
@@ -32,6 +32,7 @@ const Container = styled.div`
     box-shadow: ${floatShadow};
     z-index: 1;
     color:${props => props.theme.token?.colorText};
+    padding-right: 16px;
   }
 `
 
@@ -73,6 +74,7 @@ export const SortableItem = memo((
   const { item, tempId, indentationWidth } = props
   const isAdding = tempId === item.meta.id
   const toggleCollapse = useToggleCollapse()
+  const { token } = theme.useToken()
 
   const handleCollapse = useCallback(() => {
     toggleCollapse(item.meta.id)
@@ -106,7 +108,7 @@ export const SortableItem = memo((
                       ({item.meta.id})
                     </Content>
                     {
-                      item.collapsable &&
+                      !!item.children?.length &&
                       <Button
                         type="text"
                         size="small"
@@ -123,12 +125,21 @@ export const SortableItem = memo((
               }
 
             </Container>
-            <DragOverlay>
-              <Container className="dragging">
-                {
-                  item.meta.title
-                }
-              </Container>
+            <DragOverlay style={{ display: "flex" }}>
+              <Badge
+                count={item.children?.length}
+                style={{ color: "white", backgroundColor: token.colorPrimary }}
+              >
+                <Container className="dragging">
+                  <Handler
+                    type="text"
+                    icon={<HolderOutlined />}
+                  />
+                  {
+                    item.meta.title
+                  }
+                </Container>
+              </Badge>
             </DragOverlay>
           </>
         }
