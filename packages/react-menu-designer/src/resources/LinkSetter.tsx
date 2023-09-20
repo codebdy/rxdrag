@@ -5,7 +5,7 @@ import { ITextConfig } from "./types";
 import { useTranslate } from "@rxdrag/react-locales";
 import { ConfigForm } from "./ConfigForm";
 
-export const TextSetter = memo((
+export const LinkSetter = memo((
   props: ConfigSetterProps<ITextConfig>
 ) => {
   const { value, onChange } = props;
@@ -19,6 +19,9 @@ export const TextSetter = memo((
     >
       <Form.Item label={t("title")} name="title">
         <Input />
+      </Form.Item>
+      <Form.Item label={t("link")} name="link">
+        <Input.TextArea />
       </Form.Item>
     </ConfigForm>
   )

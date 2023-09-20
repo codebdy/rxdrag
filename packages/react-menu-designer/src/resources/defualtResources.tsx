@@ -2,6 +2,7 @@ import { createId } from "@rxdrag/shared";
 import { IMenuItemResource, MenuItemType } from "../interfaces";
 import { Divider } from "antd";
 import { TextSetter } from "./TextSetter";
+import { LinkSetter } from "./LinkSetter";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const defaultMenuResources: IMenuItemResource<any>[] = [
@@ -22,6 +23,7 @@ export const defaultMenuResources: IMenuItemResource<any>[] = [
   {
     name: MenuItemType.link,
     title: "链接",
+    configSetter: LinkSetter,
     createMenuItem: () => {
       return {
         id: createId(),
