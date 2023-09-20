@@ -12,10 +12,10 @@ export const DesignerRoot = memo((props: {
   lang?: string,
   //多语言资源
   locales?: ILocales,
-  resource?: IMenuItemResource[],
+  resources?: IMenuItemResource[],
   children?: React.ReactNode,
 }) => {
-  const { lang, locales, resource, children } = props;
+  const { lang, locales, resources, children } = props;
   const menuSchemaState = useState<IMenuSchema>({ rootIds: [], items: [] })
   const historyState = useState<HistoryRedords>(defautHistory)
   const [localesManager] = useState(new LocalesManager(lang, defalutLocales))
@@ -32,7 +32,7 @@ export const DesignerRoot = memo((props: {
 
   return (
     <LocalesContext.Provider value={localesManager}>
-      <ResourcesContext.Provider value={resource || defaultMenuResources}>
+      <ResourcesContext.Provider value={resources || []}>
         <MenuSchemaContext.Provider value={menuSchemaState}>
           <HistoryContext.Provider value={historyState}>
             {children}

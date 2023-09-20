@@ -11,18 +11,18 @@ export type ReactMenuDesignerProps = ReactMenuDesignerInnerProps & {
   locales?: ILocales,
   defaultValue?: IMenuItem[],
   value?: IMenuItem[],
-  resource?: IMenuItemResource[],
+  resources?: IMenuItemResource[],
 }
 
 export const ReactMenuDesigner = memo((
   props: ReactMenuDesignerProps
 ) => {
-  const { lang, locales, resource, ...rest } = props
+  const { lang, locales, resources, ...rest } = props
   return (
     <DesignerRoot
       lang={lang}
       locales={locales}
-      resource={resource}
+      resources={resources}
     >
       <ReactMenuDesignerInner {...rest} />
     </DesignerRoot>

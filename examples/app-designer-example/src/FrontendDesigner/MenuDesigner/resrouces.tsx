@@ -1,13 +1,15 @@
-import { IMenuItemResource, MenuItemType, IMenuItem } from "@rxdrag/react-menu-designer"
+import { IMenuItemResource, MenuItemType, SelectorOption } from "@rxdrag/react-menu-designer"
 import { createId } from "@rxdrag/shared"
 import { Divider } from "antd"
+import { TextSetter } from "./setters/TextSetter"
+import { LinkSetter } from "./setters/LinkSetter"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const defaultMenuResources: IMenuItemResource<any>[] = [
+export const baseMenuResources: IMenuItemResource<any>[] = [
   {
     id: createId(),
     title: "文本",
-    //configSetter: TextSetter,
+    configSetter: TextSetter,
     createMenuItem: () => {
       return {
         id: createId(),
@@ -17,14 +19,14 @@ export const defaultMenuResources: IMenuItemResource<any>[] = [
         }
       }
     },
-    selector: (item?: IMenuItem) => {
-      return item?.type === MenuItemType.text
+    selector: (option?: SelectorOption) => {
+      return option?.type === MenuItemType.text
     }
   },
   {
     id: createId(),
     title: "链接",
-    //configSetter: LinkSetter,
+    configSetter: LinkSetter,
     createMenuItem: () => {
       return {
         id: createId(),
@@ -34,8 +36,8 @@ export const defaultMenuResources: IMenuItemResource<any>[] = [
         }
       }
     },
-    selector: (item?: IMenuItem) => {
-      return item?.type === MenuItemType.link
+    selector: (option?: SelectorOption) => {
+      return option?.type === MenuItemType.link
     }
   },
   {
@@ -51,8 +53,8 @@ export const defaultMenuResources: IMenuItemResource<any>[] = [
         type: MenuItemType.divider,
       }
     },
-    selector: (item?: IMenuItem) => {
-      return item?.type === MenuItemType.divider
+    selector: (option?: SelectorOption) => {
+      return option?.type === MenuItemType.divider
     }
   }
 ]

@@ -1,5 +1,5 @@
 import { createId } from "@rxdrag/shared";
-import { IMenuItem, IMenuItemResource, MenuItemType } from "../interfaces";
+import { IMenuItemResource, MenuItemType, SelectorOption } from "../interfaces";
 import { Divider } from "antd";
 import { TextSetter } from "./TextSetter";
 import { LinkSetter } from "./LinkSetter";
@@ -19,8 +19,8 @@ export const defaultMenuResources: IMenuItemResource<any>[] = [
         }
       }
     },
-    selector: (item?: IMenuItem) => {
-      return item?.type === MenuItemType.text
+    selector: (option?: SelectorOption) => {
+      return option?.type === MenuItemType.text
     }
   },
   {
@@ -36,8 +36,8 @@ export const defaultMenuResources: IMenuItemResource<any>[] = [
         }
       }
     },
-    selector: (item?: IMenuItem) => {
-      return item?.type === MenuItemType.link
+    selector: (option?: SelectorOption) => {
+      return option?.type === MenuItemType.link
     }
   },
   {
@@ -53,8 +53,8 @@ export const defaultMenuResources: IMenuItemResource<any>[] = [
         type: MenuItemType.divider,
       }
     },
-    selector: (item?: IMenuItem) => {
-      return item?.type === MenuItemType.divider
+    selector: (option?: SelectorOption) => {
+      return option?.type === MenuItemType.divider
     }
   }
 ]

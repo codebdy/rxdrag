@@ -1,9 +1,14 @@
 import { Identifier } from "../dnd";
-import { IConfig, IMenuItemMeta } from "./menu";
+import { IConfig, IMenuItemMeta, MenuItemType } from "./menu";
 
 export type ConfigSetterProps<Config extends IConfig = IConfig> = {
   value?: Config,
   onChange?: (value: Config) => void
+}
+
+export type SelectorOption<Config extends IConfig = IConfig> = {
+  type: MenuItemType | string
+  config?: Config,
 }
 
 export interface IMenuItemResource<Config extends IConfig = IConfig> {
@@ -14,7 +19,7 @@ export interface IMenuItemResource<Config extends IConfig = IConfig> {
   createMenuItem: () => IMenuItemMeta<Config>,
   //无子元素
   childless?: boolean,
-  selector?: (item?: IMenuItemMeta<Config>) => boolean
+  selector?: (options?: SelectorOption<Config>) => boolean
 }
 
 // export type MenuItemResources = { [name: string]: IMenuItemResource | undefined }

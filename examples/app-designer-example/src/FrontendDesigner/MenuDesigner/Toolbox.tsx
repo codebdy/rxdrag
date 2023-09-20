@@ -1,10 +1,12 @@
 import { useTranslate } from "@rxdrag/react-locales"
-import { ResourceItem, defaultMenuResources } from "@rxdrag/react-menu-designer"
+import { IMenuItemResource, ResourceItem } from "@rxdrag/react-menu-designer"
 import { Collapse, CollapseProps, Tree } from "antd"
 import { memo, useMemo } from "react"
 import styled from "styled-components"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
 import { DataNode } from "antd/es/tree"
+import { baseMenuResources } from "./resrouces"
+import { IModuleItemConfig, moduleResouceType } from "./types"
 
 const { DirectoryTree } = Tree;
 
@@ -57,6 +59,10 @@ const StyledCollapse = styled(Collapse)`
       .ant-tree-indent-unit{
         width: 16px;
       }
+      .ant-tree-node-content-wrapper {
+        height: 40px;
+        align-items: center;
+      }
       .ant-tree-title{
         flex:1;
       }
@@ -69,7 +75,21 @@ const StyledCollapse = styled(Collapse)`
   }
 `
 
-export const Toolbox = memo(() => {
+const ModuleResource = styled(ResourceItem)`
+  border: none !important;
+  color:${props => props.theme.token?.colorText};
+  &.dragging{
+    background-color: ${props => props.theme.token?.colorBgContainer};
+    border: solid 1px ${props => props.theme.token?.colorBorder} !important;
+  }
+`
+
+export const Toolbox = memo((
+  props: {
+    resources: IMenuItemResource[]
+  }
+) => {
+  const { resources } = props
   const t = useTranslate()
   const appFront = useAppFrontend()
 
@@ -79,25 +99,32 @@ export const Toolbox = memo(() => {
         key: category.id,
         title: category.title,
         children: category.modules?.map(module => {
+          const resource = resources.find
+            (res => res.selector?.(
+              {
+                config: { moduleId: module.id, } as IModuleItemConfig,
+                type: moduleResouceType
+              }
+            ))
           return {
             key: module.id,
-            title: <ModuleItemCOntainer>
-              {module.title}
-            </ModuleItemCOntainer>,
+            title: resource ? <ModuleItemCOntainer>
+              <ModuleResource id={resource.id} />
+            </ModuleItemCOntainer> : "not found resource",
             isLeaf: true,
           }
         })
       }
     }) || []
-  }, [appFront?.moduleCategories])
+  }, [appFront?.moduleCategories, resources])
 
   const items: CollapseProps['items'] = useMemo(() => [
     {
       key: 'base',
       label: t("base"),
-      children: defaultMenuResources.map((resrouce) => {
-        return (<ItemContainer key={resrouce.id}>
-          <ResourceItem id={resrouce.id} />
+      children: baseMenuResources.map((resource) => {
+        return (<ItemContainer key={resource.id}>
+          <ResourceItem id={resource.id} />
         </ItemContainer>)
       }),
     },

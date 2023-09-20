@@ -1,9 +1,8 @@
 import { Form, Input } from "antd"
 import { memo } from "react"
-import { ConfigSetterProps } from "../interfaces"
-import { ILinkConfig } from "./types";
 import { useTranslate } from "@rxdrag/react-locales";
-import { ConfigForm } from "./ConfigForm";
+import { ConfigForm, ConfigSetterProps } from "@rxdrag/react-menu-designer";
+import { ILinkConfig } from "../types";
 
 export const LinkSetter = memo((
   props: ConfigSetterProps<ILinkConfig>

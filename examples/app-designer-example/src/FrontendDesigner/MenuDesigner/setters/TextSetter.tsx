@@ -1,12 +1,11 @@
 import { Form, Input } from "antd"
 import { memo } from "react"
-import { ConfigSetterProps } from "../interfaces"
-import { ILinkConfig } from "./types";
 import { useTranslate } from "@rxdrag/react-locales";
-import { ConfigForm } from "./ConfigForm";
+import { ConfigForm, ConfigSetterProps } from "@rxdrag/react-menu-designer";
+import { ITextConfig } from "../types";
 
-export const LinkSetter = memo((
-  props: ConfigSetterProps<ILinkConfig>
+export const TextSetter = memo((
+  props: ConfigSetterProps<ITextConfig>
 ) => {
   const { value, onChange } = props;
 
@@ -19,9 +18,6 @@ export const LinkSetter = memo((
     >
       <Form.Item label={t("title")} name="title">
         <Input />
-      </Form.Item>
-      <Form.Item label={t("link")} name="link">
-        <Input.TextArea />
       </Form.Item>
     </ConfigForm>
   )
