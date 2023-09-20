@@ -1,13 +1,15 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { DeviceType } from "./device";
 import { ICanvasConfig } from "@rxdrag/react-core";
+import { IModuleCategory } from "./module";
+import { IMenu } from "./menu";
 
 export interface IApp {
   id: string,
   title?: string,
 }
 
-export interface IAppInput{
+export interface IAppInput {
   id?: string,
   title?: string,
 }
@@ -17,5 +19,6 @@ export interface IAppFrontend {
   deviceType: DeviceType,
   frameSchema?: INodeSchema,
   canvasConfig?: ICanvasConfig,
-  menu?: any,
+  menus?: IMenu[],
+  moduleCategories?: IModuleCategory[],
 }

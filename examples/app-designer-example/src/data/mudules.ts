@@ -1,12 +1,12 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { IModule } from "../interfaces/module";
+import { IModule, IModuleCategory } from "../interfaces/module";
 import { DeviceType } from "../interfaces";
 
 const rootNodeSchema: INodeSchema = {
   componentName: "Page"
 }
 
-export const modules: { [device: string]: IModule[] | undefined } = {
+export const defaultModules: { [device: string]: IModule[] | undefined } = {
   [DeviceType.admin]: [
     {
       id: "users",
@@ -104,3 +104,112 @@ export const modules: { [device: string]: IModule[] | undefined } = {
     }
   ],
 }
+
+export const defaultModuleCategories: { [device: string]: IModuleCategory[] | undefined } = {
+  [DeviceType.admin]: [
+    {
+      id: 'basics',
+      title: '基础模块',
+      modules: [
+        {
+          id: "users",
+          title: "用户管理",
+        },
+      ]
+    },
+    {
+      id: 'crm',
+      title: '客户管理',
+      modules: [
+        {
+          id: "suppliers",
+          title: "用户管理",
+        },
+        {
+          id: "customers",
+          title: "用户管理",
+        },
+      ]
+    },
+  ],
+  [DeviceType.h5]: [
+    {
+      id: 'basics',
+      title: '基础模块(H5)',
+      modules: [
+        {
+          id: "users",
+          title: "用户管理",
+        },
+      ]
+    },
+    {
+      id: 'crm',
+      title: '客户管理(H5)',
+      modules: [
+        {
+          id: "suppliers",
+          title: "用户管理",
+        },
+        {
+          id: "customers",
+          title: "用户管理",
+        },
+      ]
+    },
+  ],
+  [DeviceType.website]: [
+    {
+      id: 'basics',
+      title: '基础模块(门户)',
+      modules: [
+        {
+          id: "users",
+          title: "用户管理",
+        },
+      ]
+    },
+    {
+      id: 'crm',
+      title: '客户管理(门户)',
+      modules: [
+        {
+          id: "suppliers",
+          title: "用户管理",
+        },
+        {
+          id: "customers",
+          title: "用户管理",
+        },
+      ]
+    },
+  ],
+  [DeviceType.largeScreen]: [
+    {
+      id: 'basics',
+      title: '基础模块(大屏)',
+      modules: [
+        {
+          id: "users",
+          title: "用户管理",
+        },
+      ]
+
+    },
+    {
+      id: 'crm',
+      title: '客户管理(大屏)',
+      modules: [
+        {
+          id: "suppliers",
+          title: "用户管理",
+        },
+        {
+          id: "customers",
+          title: "用户管理",
+        },
+      ]
+    },
+  ],
+}
+

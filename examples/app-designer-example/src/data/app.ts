@@ -1,6 +1,8 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { DeviceType, IApp, IAppFrontend } from "../interfaces";
 import adminFrame from "./adminFrame.json"
+import { defaultMenus } from "./menu";
+import { defaultModuleCategories } from "./mudules";
 
 export const app: IApp = {
   id: "app1",
@@ -18,6 +20,8 @@ export const appFronts: IAppFrontend[] = [
     },
     deviceType: DeviceType.admin,
     frameSchema: adminFrame,
+    menus: defaultMenus[DeviceType.admin],
+    moduleCategories: defaultModuleCategories[DeviceType.admin],
     canvasConfig: {
       deviceName: "管理端",
       //画布宽度
@@ -34,6 +38,8 @@ export const appFronts: IAppFrontend[] = [
     },
     deviceType: DeviceType.h5,
     frameSchema: rootNodeSchema,
+    menus: defaultMenus[DeviceType.h5],
+    moduleCategories: defaultModuleCategories[DeviceType.h5],
     canvasConfig: {
       deviceName: "H5",
       //画布宽度
@@ -50,6 +56,8 @@ export const appFronts: IAppFrontend[] = [
     },
     deviceType: DeviceType.website,
     frameSchema: rootNodeSchema,
+    menus: defaultMenus[DeviceType.website],
+    moduleCategories: defaultModuleCategories[DeviceType.website],
     canvasConfig: {
       deviceName: "门户网站",
       //画布宽度
@@ -66,6 +74,8 @@ export const appFronts: IAppFrontend[] = [
     },
     deviceType: DeviceType.largeScreen,
     frameSchema: rootNodeSchema,
+    menus: defaultMenus[DeviceType.largeScreen],
+    moduleCategories: defaultModuleCategories[DeviceType.largeScreen],
     canvasConfig: {
       deviceName: "大屏",
       //画布宽度

@@ -1,5 +1,11 @@
 import { IViewSchema } from "@rxdrag/schema";
 
+export interface IModuleCategory {
+  id: string,
+  title?: string,
+  modules?: IModule[],
+}
+
 export interface IModule {
   id: string,
   title?: string,
