@@ -3,6 +3,7 @@ import { DEFAULT_MARGIN } from "../../utilities";
 
 import styled from 'styled-components';
 import { ColumnTitle, FlatableColumn } from "../FlatableColumn";
+import { useTranslate } from "@rxdrag/react-locales";
 
 const maxWidth = 1000
 const minWidth = 200
@@ -12,6 +13,7 @@ const PropertyPanelShell = styled(FlatableColumn)`
 
 `
 export const PropertyPanel = memo(() => {
+  const t = useTranslate()
   return (
     <PropertyPanelShell
       right
@@ -20,7 +22,7 @@ export const PropertyPanel = memo(() => {
       width={320}
     >
       <ColumnTitle>
-        属性
+        {t("properties")}
       </ColumnTitle>
     </PropertyPanelShell>
   )

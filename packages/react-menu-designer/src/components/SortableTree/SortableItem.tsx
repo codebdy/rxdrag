@@ -119,7 +119,6 @@ export const SortableItem = memo((
                       {
                         item.meta.title
                       }
-                      ({item.meta.id})
                     </Content>
                     {
                       !!item.children?.length &&

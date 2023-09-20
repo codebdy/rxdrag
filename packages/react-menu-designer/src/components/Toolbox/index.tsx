@@ -6,6 +6,7 @@ import { Collapse } from 'antd';
 import type { CollapseProps } from 'antd';
 import { ResourceItem } from "./ResourceItem";
 import { MenuItemType } from "../../interfaces";
+import { useTranslate } from "@rxdrag/react-locales";
 
 const maxWidth = 1000
 const minWidth = 200
@@ -34,10 +35,7 @@ const ToolboxShell = styled(FlatableColumn)`
   left: ${DEFAULT_MARGIN}px;
 `
 export const Toolbox = memo(() => {
-
-  // const { setNodeRef } = useDroppable({
-  //   id: TOOLBOX_ID
-  // });
+  const t = useTranslate()
 
   const items: CollapseProps['items'] = useMemo(() => [
     {
@@ -62,7 +60,7 @@ export const Toolbox = memo(() => {
       width={320}
     >
       <ColumnTitle>
-        菜单源
+        {t("menuSource")}
       </ColumnTitle>
       <Content >
         <StyledCollapse
