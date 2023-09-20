@@ -85,7 +85,7 @@ export const SortableItem = memo((
   const isAdding = tempId === item.meta.id
   const toggleCollapse = useToggleCollapse()
   const { token } = theme.useToken()
-  const resource = useResource(item.meta.type)
+  const resource = useResource(item.meta)
 
   const handleCollapse = useCallback(() => {
     toggleCollapse(item.meta.id)

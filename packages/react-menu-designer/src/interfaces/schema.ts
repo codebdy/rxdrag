@@ -1,8 +1,8 @@
 import { Identifier } from "../dnd";
-import { IMenuItemMeta } from "./menu";
+import { IConfig, IMenuItemMeta } from "./menu";
 
 //设计器用的Schema
-export interface IMenuItemSchema<Config = unknown> {
+export interface IMenuItemSchema<Config extends IConfig = IConfig> {
   meta: IMenuItemMeta<Config>,
   collapsed?: boolean,
   children?: Identifier[],

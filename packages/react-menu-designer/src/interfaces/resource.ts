@@ -1,4 +1,5 @@
-import { IConfig, IMenuItem } from "./menu";
+import { Identifier } from "../dnd";
+import { IConfig, IMenuItemMeta } from "./menu";
 
 export type ConfigSetterProps<Config extends IConfig = IConfig> = {
   value?: Config,
@@ -6,13 +7,14 @@ export type ConfigSetterProps<Config extends IConfig = IConfig> = {
 }
 
 export interface IMenuItemResource<Config extends IConfig = IConfig> {
-  name: string,
+  id: Identifier,
   title?: string,
   configSetter?: React.FC<ConfigSetterProps<Config>>,
-  render?: (item?: IMenuItem<Config>) => React.ReactNode,
-  createMenuItem: () => IMenuItem<Config>,
+  render?: (item?: IMenuItemMeta<Config>) => React.ReactNode,
+  createMenuItem: () => IMenuItemMeta<Config>,
   //无子元素
   childless?: boolean,
+  selector?: (item?: IMenuItemMeta<Config>) => boolean
 }
 
 // export type MenuItemResources = { [name: string]: IMenuItemResource | undefined }

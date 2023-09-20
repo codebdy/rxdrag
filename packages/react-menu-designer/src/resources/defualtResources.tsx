@@ -1,5 +1,5 @@
 import { createId } from "@rxdrag/shared";
-import { IMenuItemResource, MenuItemType } from "../interfaces";
+import { IMenuItem, IMenuItemResource, MenuItemType } from "../interfaces";
 import { Divider } from "antd";
 import { TextSetter } from "./TextSetter";
 import { LinkSetter } from "./LinkSetter";
@@ -7,7 +7,7 @@ import { LinkSetter } from "./LinkSetter";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const defaultMenuResources: IMenuItemResource<any>[] = [
   {
-    name: MenuItemType.text,
+    id: createId(),
     title: "文本",
     configSetter: TextSetter,
     createMenuItem: () => {
@@ -19,9 +19,12 @@ export const defaultMenuResources: IMenuItemResource<any>[] = [
         }
       }
     },
+    selector: (item?: IMenuItem) => {
+      return item?.type === MenuItemType.text
+    }
   },
   {
-    name: MenuItemType.link,
+    id: createId(),
     title: "链接",
     configSetter: LinkSetter,
     createMenuItem: () => {
@@ -33,9 +36,12 @@ export const defaultMenuResources: IMenuItemResource<any>[] = [
         }
       }
     },
+    selector: (item?: IMenuItem) => {
+      return item?.type === MenuItemType.link
+    }
   },
   {
-    name: MenuItemType.divider,
+    id: createId(),
     title: "分隔符",
     childless: true,
     render: () => {
@@ -47,5 +53,8 @@ export const defaultMenuResources: IMenuItemResource<any>[] = [
         type: MenuItemType.divider,
       }
     },
+    selector: (item?: IMenuItem) => {
+      return item?.type === MenuItemType.divider
+    }
   }
 ]

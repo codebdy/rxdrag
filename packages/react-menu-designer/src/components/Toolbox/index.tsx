@@ -5,8 +5,8 @@ import { ColumnTitle, FloatableColumn } from "../FloatableColumn";
 import { Collapse } from 'antd';
 import type { CollapseProps } from 'antd';
 import { ResourceItem } from "./ResourceItem";
-import { MenuItemType } from "../../interfaces";
 import { useTranslate } from "@rxdrag/react-locales";
+import { defaultMenuResources } from "../../resources";
 
 const maxWidth = 1000
 const minWidth = 200
@@ -46,11 +46,9 @@ export const Toolbox = memo((
     {
       key: '1',
       label: t("base"),
-      children: <>
-        <ResourceItem name={MenuItemType.text} />
-        <ResourceItem name={MenuItemType.link} />
-        <ResourceItem name={MenuItemType.divider} />
-      </>,
+      children: defaultMenuResources.map((resrouce) => {
+        return (<ResourceItem id={resrouce.id} />)
+      }),
     },
     {
       key: '2',

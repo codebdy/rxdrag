@@ -1,4 +1,4 @@
-import { memo } from "react"
+import { CSSProperties, memo } from "react"
 import styled from 'styled-components';
 import { floatShadow, } from "../../utilities";
 import { Draggable } from "../../dnd";
@@ -38,20 +38,25 @@ const Item = styled.div`
 `
 
 export const ResourceItem = memo((
-  props: { name: string }
+  props: {
+    id: string,
+    className?: string,
+    style?: CSSProperties,
+  }
 ) => {
-  const { name } = props
-  const resource = useResource(name)
+  const { id, ...rest } = props
+  const resource = useResource(id)
   return (
     <>
       <Draggable
-        draggableId={name}
+        draggableId={id}
       >
         {
           (provider) => {
             return <>
               <Container
                 ref={provider.innerRef}
+                {...rest}
               >
                 <Item>
                   {
