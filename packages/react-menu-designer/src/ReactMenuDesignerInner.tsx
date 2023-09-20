@@ -23,6 +23,7 @@ import { useBackup } from './hooks/useBackup';
 import { useUndo } from './hooks/useUndo';
 import { useRedo } from './hooks/useRedo';
 import { useTranslate } from '@rxdrag/react-locales';
+import { useExtractMenuItems } from './hooks/useExtractMenuItems';
 
 const Shell = styled.div`
   position: relative;
@@ -70,12 +71,13 @@ const Canvas = styled.div`
 export type ReactMenuDesignerInnerProps = {
   defaultValue?: IMenuItem[],
   value?: IMenuItem[],
-  indentationWidth?: number;
+  indentationWidth?: number,
+  toolbox: React.ReactNode,
   onSave?: (value: IMenuItem[]) => boolean | Promise<boolean> | void
 }
 
 export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) => {
-  const { defaultValue, value, indentationWidth = 50 } = props;
+  const { defaultValue, value, indentationWidth = 50, toolbox, onSave } = props;
   const buildSchema = useBuildMenuSchema()
   const [history, setHistory] = useHistoryState()
   const [menuSchema, setMenuSchema] = useMenuSchemaState()
@@ -92,6 +94,7 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   const backup = useBackup()
   const undo = useUndo()
   const redo = useRedo()
+  const extractMenuItems = useExtractMenuItems()
 
   const getResource = useGetResource()
   const getItem = useGetItem()
@@ -201,6 +204,20 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
     setSelectedId(undefined)
   }, [redo])
 
+  const handleSave = useCallback(() => {
+    const menuItems = extractMenuItems()
+    const result = onSave?.(menuItems)
+    if (isPromise(result)) {
+      (result as Promise<boolean>).then((val) => {
+        if (val) {
+          setHistory((history) => ({ ...history, changed: false }))
+        }
+      })
+    } else if (result) {
+      setHistory((history) => ({ ...history, changed: false }))
+    }
+  }, [extractMenuItems, onSave, setHistory])
+
   return (
 
     <DndContext
@@ -211,7 +228,7 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
       onDragCancel={handleDragCancel}
     >
       <Shell className='menu-designer-shell'>
-        <Toolbox ></Toolbox>
+        <Toolbox >{toolbox}</Toolbox>
         <CanvasContainer>
           <Toolbar>
             <Space>
@@ -238,7 +255,10 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
             <Button
               type="primary"
               disabled={!history.changed}
-            >{t("save")}</Button>
+              onClick={handleSave}
+            >
+              {t("save")}
+            </Button>
           </Toolbar>
           <Canvas>
             <SortableTree
@@ -258,3 +278,10 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   )
 })
 
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function isPromise(obj: any) {
+  return !!obj
+    && (typeof obj === 'object' || typeof obj === 'function')
+    && typeof obj.then === 'function';
+}

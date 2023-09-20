@@ -34,13 +34,18 @@ const StyledCollapse = styled(Collapse)`
 const ToolboxShell = styled(FloatableColumn)`
   left: ${DEFAULT_MARGIN}px;
 `
-export const Toolbox = memo(() => {
+export const Toolbox = memo((
+  props: {
+    children?: React.ReactNode
+  }
+) => {
+  const { children } = props;
   const t = useTranslate()
 
   const items: CollapseProps['items'] = useMemo(() => [
     {
       key: '1',
-      label: '基础',
+      label: t("base"),
       children: <>
         <ResourceItem name={MenuItemType.text} />
         <ResourceItem name={MenuItemType.link} />
@@ -49,10 +54,9 @@ export const Toolbox = memo(() => {
     },
     {
       key: '2',
-      label: '视图',
-
+      label: t("others"),
     },
-  ], []);
+  ], [t]);
 
   return (
     <ToolboxShell
@@ -64,11 +68,13 @@ export const Toolbox = memo(() => {
         {t("menuSource")}
       </ColumnTitle>
       <Content >
-        <StyledCollapse
-          size="small"
-          accordion
-          items={items}
-          ghost />
+        {
+          children || <StyledCollapse
+            size="small"
+            accordion
+            items={items}
+            ghost />
+        }
       </Content>
     </ToolboxShell>
   )

@@ -6,13 +6,17 @@ export const defalutLocales: ILocales = {
     properties: "属性",
     save: "保存",
     title: "标题",
-    link: "链接"
+    link: "链接",
+    base: "基础",
+    others: "其它"
   },
   'en-US': {
     menuSource: "Menu source",
     properties: "Properties",
     save: "Save",
     title: "Title",
-    link: "Link"
+    link: "Link",
+    base: "Base",
+    others: "Others"
   }
 }
