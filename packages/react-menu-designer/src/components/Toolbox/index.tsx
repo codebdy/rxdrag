@@ -14,6 +14,16 @@ const minWidth = 200
 const Content = styled.div`
   flex:1;
 `
+const ItemContainer = styled.div`
+  position: relative;
+  height: 48px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 8px 0;
+  &.dragging{
+    opacity: 0.6;
+  }
+`
 
 const StyledCollapse = styled(Collapse)`
   border-radius: 0;
@@ -47,7 +57,9 @@ export const Toolbox = memo((
       key: '1',
       label: t("base"),
       children: defaultMenuResources.map((resrouce) => {
-        return (<ResourceItem id={resrouce.id} />)
+        return (<ItemContainer key={resrouce.id}>
+          <ResourceItem id={resrouce.id} />
+        </ItemContainer>)
       }),
     },
     {

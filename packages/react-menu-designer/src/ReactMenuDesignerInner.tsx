@@ -72,7 +72,7 @@ export type ReactMenuDesignerInnerProps = {
   defaultValue?: IMenuItem[],
   value?: IMenuItem[],
   indentationWidth?: number,
-  toolbox: React.ReactNode,
+  toolbox?: React.ReactNode,
   onSave?: (value: IMenuItem[]) => boolean | Promise<boolean> | void
 }
 

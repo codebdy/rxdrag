@@ -5,17 +5,6 @@ import { Draggable } from "../../dnd";
 import { useResource } from "../../hooks/useResource";
 import { DragOverlay } from "../../dnd/DragOverlay";
 
-const Container = styled.div`
-  position: relative;
-  height: 48px;
-  box-sizing: border-box;
-  width: 100%;
-  margin: 8px 0;
-  &.dragging{
-    opacity: 0.6;
-  }
-`
-
 const Item = styled.div`
   display: flex;
   width: 100%;
@@ -47,34 +36,27 @@ export const ResourceItem = memo((
   const { id, ...rest } = props
   const resource = useResource(id)
   return (
-    <>
-      <Draggable
-        draggableId={id}
-      >
-        {
-          (provider) => {
-            return <>
-              <Container
-                ref={provider.innerRef}
-                {...rest}
-              >
-                <Item>
-                  {
-                    resource?.title
-                  }
-                </Item>
-              </Container>
-              <DragOverlay>
-                <Item className="dragging">
-                  {
-                    resource?.title
-                  }
-                </Item>
-              </DragOverlay>
-            </>
-          }
+    <Draggable
+      draggableId={id}
+    >
+      {
+        (provider) => {
+          return <>
+            <Item ref={provider.innerRef} {...rest}>
+              {
+                resource?.title
+              }
+            </Item>
+            <DragOverlay>
+              <Item className="dragging" {...rest}>
+                {
+                  resource?.title
+                }
+              </Item>
+            </DragOverlay>
+          </>
         }
-      </Draggable>
-    </>
+      }
+    </Draggable>
   )
 })
