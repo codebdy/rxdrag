@@ -16,7 +16,7 @@ export function useRemoveItem() {
       return {
         rootIds: schema.rootIds.filter(rootId => rootId != id),
         items: schema.items.filter(item => item.meta.id !== id)
-          .map(itm => itm.parentId === item.parentId ? { ...itm, children: itm.children?.filter(child => child !== id) } : itm)
+          .map(itm => itm.children?.find(child => child === id) ? { ...itm, children: itm.children?.filter(child => child !== id) } : itm)
       }
     })
   }, [getItem, setMeunSchema])

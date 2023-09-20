@@ -43,7 +43,8 @@ export function useFlattenItems(draggingId?: Identifier) {
   }, [draggingId, getItem])
 
   const flattenItems = useMemo(() => {
-    return flatten(menuSchema.rootIds)
+    const items = flatten(menuSchema.rootIds)
+    return items
   }, [flatten, menuSchema])
 
   return flattenItems
