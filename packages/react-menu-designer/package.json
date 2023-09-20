@@ -20,8 +20,8 @@
     "@rxdrag/eslint-config-custom": "workspace:*",
     "@rxdrag/tsconfig": "workspace:*",
     "@types/lodash": "^4.14.191",
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.26",
     "eslint": "^7.32.0",
     "react": "^18.2.0",
@@ -33,10 +33,10 @@
     "react-router-dom": "^6.8.1"
   },
   "dependencies": {
-    "@ant-design/icons": "^5.2.6",
-    "@rxdrag/react-shared": "workspace:*",
+    "@ant-design/icons": "^5.1.0",
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/react-locales": "workspace:*",
+    "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "antd": "^5.9.2",
     "classnames": "^2.3.2",

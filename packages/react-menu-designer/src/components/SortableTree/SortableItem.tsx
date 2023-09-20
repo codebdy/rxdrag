@@ -28,7 +28,7 @@ const Container = styled.div`
     padding: 0px;
     display: flex;
     box-sizing: border-box;
-    transition: all 0.2s;
+    //transition: all 0.1s;
     border: none !important;
   }
   &.dragging{
