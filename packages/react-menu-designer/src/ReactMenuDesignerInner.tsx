@@ -77,6 +77,7 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   const [oldSchema, setOldSchema] = useState<IMenuSchema | null>(null)
   const [tempItem, setTempItem] = useState<IMenuItemSchema | null>(null)
   const [draggingId, setDraggingId] = useState<Identifier | null>(null)
+  const [selectedId, setSelectedId] = useState<Identifier>()
 
   const getItemPosition = useGetItemPosition()
   const getTargetPosition = useGetDropTarget(indentationWidth)
@@ -155,13 +156,17 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
 
   const handleDrop = useCallback((e: DropEvent) => {
     if (e.activeId && e.droppableId === CANVS_ID) {
-      const resouce = getResource(e.activeId)
-      const activeItem = resouce ? resouce.createMenuItem() : getItem(e.activeId)
+      const activeItem = tempItem || getItem(e.activeId)
       if (!activeItem) {
         return
       }
+      setSelectedId(activeItem.meta.id)
     }
-  }, [getItem, getResource])
+  }, [getItem, tempItem])
+
+  const handleSelect = useCallback((id?: Identifier) => {
+    setSelectedId(id)
+  }, [])
 
   return (
 
@@ -189,6 +194,8 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
               indentationWidth={indentationWidth}
               tempId={tempItem?.meta.id}
               draggingId={draggingId || undefined}
+              selectedId={selectedId}
+              onSelect={handleSelect}
             />
           </Canvas>
         </CanvasContainer>

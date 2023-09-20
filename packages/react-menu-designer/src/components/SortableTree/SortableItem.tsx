@@ -7,6 +7,7 @@ import { DownOutlined, HolderOutlined, RightOutlined } from "@ant-design/icons"
 import { DragOverlay } from "../../dnd/DragOverlay"
 import { floatShadow } from "../../utilities"
 import { useToggleCollapse } from "../../hooks/useToggleCollapse"
+import classNames from "classnames"
 
 const Container = styled.div`
   height: 48px;
@@ -17,6 +18,7 @@ const Container = styled.div`
   align-items: center;
   padding: 0 8px;
   background-color: ${props => props.theme.token?.colorBgContainer};
+  outline: none;
   //flex-shrink: 0;
   &.ghost{
     background-color:transparent;
@@ -26,6 +28,7 @@ const Container = styled.div`
     display: flex;
     box-sizing: border-box;
     transition: all 0.2s;
+    border: none !important;
   }
   &.dragging{
     opacity: 0.8;
@@ -33,6 +36,9 @@ const Container = styled.div`
     z-index: 1;
     color:${props => props.theme.token?.colorText};
     padding-right: 16px;
+  }
+  &.selected{
+    border: solid 1px ${props => props.theme.token?.colorPrimary};
   }
 `
 
@@ -62,6 +68,7 @@ const GhostInner = styled.div`
 
 const Handler = styled(Button)`
   margin-right: 8px;
+  cursor: move;
 `
 
 export const SortableItem = memo((
@@ -69,9 +76,11 @@ export const SortableItem = memo((
     item: IFlattenedItem,
     indentationWidth: number,
     tempId?: Identifier,
+    selectedId?: Identifier,
+    onSelect?: (id?: Identifier) => void,
   }
 ) => {
-  const { item, tempId, indentationWidth } = props
+  const { item, tempId, indentationWidth, selectedId, onSelect } = props
   const isAdding = tempId === item.meta.id
   const toggleCollapse = useToggleCollapse()
   const { token } = theme.useToken()
@@ -79,6 +88,10 @@ export const SortableItem = memo((
   const handleCollapse = useCallback(() => {
     toggleCollapse(item.meta.id)
   }, [item.meta.id, toggleCollapse])
+
+  const handleClick = useCallback(() => {
+    onSelect?.(item.meta.id)
+  }, [item.meta.id, onSelect])
 
   return (
     <Draggable
@@ -91,7 +104,8 @@ export const SortableItem = memo((
             <Container
               ref={provider.innerRef}
               style={{ marginLeft: indentationWidth * item.depth }}
-              className={snapshot.isDragging || isAdding ? "ghost" : undefined}
+              className={classNames({ ghost: snapshot.isDragging || isAdding, selected: selectedId === item.meta.id })}
+              onClick={handleClick}
             >
               {
                 !snapshot.isDragging && !isAdding

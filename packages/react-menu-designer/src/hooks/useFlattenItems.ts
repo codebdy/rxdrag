@@ -36,7 +36,7 @@ export function useFlattenItems(draggingId?: Identifier) {
           ...children,
         ];
       } else {
-        console.error("Can find item:", id)
+        //console.error("Can find item:", id)
         return acc
       }
     }, []);

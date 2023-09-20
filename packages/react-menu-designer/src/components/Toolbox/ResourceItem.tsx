@@ -27,6 +27,7 @@ const Item = styled.div`
   border: solid 1px ${props => props.theme.token?.colorBorder};
   user-select: none;
   background-color: ${props => props.theme.token?.colorBgBase};
+  cursor: move;
   &.dragging{
     opacity: 0.8;
     background-color: ${props => props.theme.token?.colorBgContainer};

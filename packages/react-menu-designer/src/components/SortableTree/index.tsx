@@ -25,10 +25,12 @@ export const SortableTree = memo((
   props: {
     indentationWidth: number,
     tempId?: Identifier,
-    draggingId?: Identifier
+    draggingId?: Identifier,
+    selectedId?: Identifier,
+    onSelect?: (id?: Identifier) => void,
   }
 ) => {
-  const { tempId, indentationWidth, draggingId } = props;
+  const { tempId, indentationWidth, draggingId, selectedId, onSelect } = props;
   const items = useFlattenItems(draggingId)
 
   const childIds = useMemo(() => items.filter(item => item.meta.id !== tempId).map(item => item.meta.id), [items, tempId])
@@ -49,6 +51,8 @@ export const SortableTree = memo((
                     item={item}
                     tempId={tempId}
                     indentationWidth={indentationWidth}
+                    selectedId = {selectedId}
+                    onSelect = {onSelect}
                   />)
                 })
               }
