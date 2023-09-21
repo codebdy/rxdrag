@@ -11,6 +11,7 @@ import {
   componentsIcon,
   historyIcon,
   outlineIcon,
+  ControllerSetter,
 } from "@rxdrag/react-antd-shell"
 import { SaveButton } from "./widgets/SaveButton"
 import { PagesWidget } from "./PagesWidget"
@@ -110,6 +111,7 @@ export const NormalEditorExample = memo(() => {
           onActive={handleActive}
         />
       }
+      setters={{ ControllerSetter }}
     >
     </RxEditorAntd>
   )
