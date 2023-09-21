@@ -1,8 +1,24 @@
-import { DirectoryTreeProps } from "antd/es/tree"
-import { Key, memo, useCallback } from "react"
+import { memo, useCallback } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
 import { LeftDrawer } from "./LeftDrawer"
+import { List } from "antd"
+import styled from "styled-components"
+
+const ListItem = styled(List.Item)`
+  cursor: pointer;
+  padding: 0 16px !important;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  &:hover{
+    background-color: ${props => props.theme?.token?.colorBorderSecondary};
+  }
+
+  &.selected{
+    background-color: ${props => props.theme?.token?.colorInfoBgHover};
+  }
+`
 
 export const MenusDrawer = memo((
   props: {
@@ -12,17 +28,12 @@ export const MenusDrawer = memo((
   }
 ) => {
   const { title, open, onOpenChange } = props
-  const { moduleId } = useParams()
-  const device = useAppFrontend()?.deviceType
+  const { menuId } = useParams()
+  const appFront = useAppFrontend()
   const navigate = useNavigate()
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: Key[], root: any) => {
-    if (root.node.children) {
-      return
-    }
-    const id = keys?.[0].toString() || ""
-    navigate("modules/" + id)
+  const handleSelect = useCallback((id: string) => {
+    navigate("menu/" + id)
     onOpenChange?.(false)
   }, [navigate, onOpenChange]);
 
@@ -32,7 +43,18 @@ export const MenusDrawer = memo((
       open={open}
       onOpenChange={onOpenChange}
     >
-      哈哈 MenusDrawer
+      <List
+        bordered={false}
+        dataSource={appFront?.menus || []}
+        renderItem={(item) => (
+          <ListItem
+            className={menuId === item.id ? "selected" : "undefined"}
+            onClick={() => handleSelect(item.id)}
+          >
+            {item.title}
+          </ListItem>
+        )}
+      />
     </LeftDrawer>
   )
 })
