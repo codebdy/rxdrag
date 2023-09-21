@@ -3,7 +3,7 @@ import { memo, useMemo } from "react"
 import { Toolbox } from "./Toolbox"
 import { menuDesgnerLocales } from "./locales"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
-import { baseMenuResources } from "./resrouces"
+import { baseMenuResources, iconableRender } from "./resrouces"
 import { IModule } from "../../interfaces/module"
 import { createId } from "@rxdrag/shared"
 import { IModuleItemConfig, moduleResouceType } from "./types"
@@ -16,6 +16,7 @@ export function createModuleResoure(module: IModule): IMenuItemResource<IModuleI
     title: module.title,
     childless: true,
     configSetter: ModuleSetter,
+    render: iconableRender,
     createMenuItem: () => {
       return {
         id: createId(),
@@ -27,7 +28,6 @@ export function createModuleResoure(module: IModule): IMenuItemResource<IModuleI
       }
     },
     selector: (item?: SelectorOption<IModuleItemConfig>) => {
-
       return item?.type === moduleResouceType && item.config?.moduleId === module.id
     }
   }

@@ -6,6 +6,7 @@ import { IModuleItemConfig } from "../types";
 import { ModuleSelect } from "./ModuleSelect";
 import { useAppFrontend } from "../../../hooks/useAppFrontend";
 import { ID } from "@rxdrag/shared";
+import { IconInput } from "@rxdrag/react-antd-props-inputs";
 
 export const ModuleSetter = memo((
   props: ConfigSetterProps<IModuleItemConfig>
@@ -43,6 +44,9 @@ export const ModuleSetter = memo((
     >
       <Form.Item label={t("title")} name="title">
         <Input />
+      </Form.Item>
+      <Form.Item label={t("icon")} name="icon">
+        <IconInput />
       </Form.Item>
       <Form.Item label={t("module")} name="moduleId">
         <ModuleSelect />

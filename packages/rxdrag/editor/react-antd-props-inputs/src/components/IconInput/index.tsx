@@ -1,12 +1,39 @@
 import { CloseCircleFilled } from "@ant-design/icons";
 import { useSettersTranslate } from "@rxdrag/react-core";
 import { Badge, Button, Modal } from "antd";
-import React, {  useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { memo } from "react"
 import IconSelectForm, { IconType } from "./IconSelectForm";
-import {IIcon, isEmptyIcon, IconView} from "@rxdrag/react-antd-icons"
-import "./style.less"
+import { IIcon, isEmptyIcon, IconView } from "@rxdrag/react-antd-icons"
+import styled from "styled-components";
 
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  .icon-remove-button-icon{
+    color: grey;
+  }
+
+  .icon-remove-button-icon:hover{
+    color:#5d78ff;
+  }
+`
+
+const StyledModel = styled(Modal)`
+  .ant-modal-body{
+    padding-top: 0 !important;
+  }
+
+  .icon-pannel{
+    height: 320px;
+    overflow: auto;
+    display: flex;
+    flex-flow: column;
+    .icon-lib-actions{
+      display: flex;
+    }
+  }
+`
 
 export const IconInput = memo((
   props: {
@@ -59,12 +86,7 @@ export const IconInput = memo((
   }, [customizedIcon, iconType, onChange, selectedIcon])
 
   return (
-    <div
-      className="icon-input"
-      style={{
-        display: "flex",
-        alignItems: "center"
-      }}>
+    <Container className="icon-input"      >
       <Badge
         count={
           <Button
@@ -85,7 +107,7 @@ export const IconInput = memo((
           onClick={handleShow}
         />
       </Badge>
-      <Modal
+      <StyledModel
         className="icon-select-model"
         title={t("IconInput.DialogTitle")}
         centered
@@ -104,7 +126,7 @@ export const IconInput = memo((
           customizedIcon={customizedIcon}
           onChangeCustomizedIcon={setCustomizedIcon}
         />
-      </Modal>
-    </div>
+      </StyledModel>
+    </Container>
   )
 })
