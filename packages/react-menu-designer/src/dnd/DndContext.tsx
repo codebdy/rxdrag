@@ -1,11 +1,11 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { DropEvent, DropIndicator, IDndSnapshot, Identifier, Offset, DroppableOverInfo, DragOverEvent } from "./types";
-import { getRecentRxElement } from "@rxdrag/shared";
+import { DropEvent, DropIndicator, IDndSnapshot, Offset, DroppableOverInfo, DragOverEvent } from "./types";
+import { ID, getRecentRxElement } from "@rxdrag/shared";
 import { DRAGGABLE_ATTR_ID_NAME, DRAGGABLE_HNADLER_ATTR_ID_NAME, DROPPABLE_ATTR_ID_NAME } from "./consts";
 import { DndSnapshotContext, DropIndicatorContext } from "./contexts";
 
 export type DndContextProps = {
-  onDragStart?: (id: Identifier) => void,
+  onDragStart?: (id: ID) => void,
   onDragOver?: (e: DragOverEvent) => void,
   onDrop?: (e: DropEvent) => void,
   onDragEnd?: () => void,
@@ -19,7 +19,7 @@ export const DndContext = memo((
   const { onDragStart, onDragOver, onDrop, onDragEnd, onDragCancel, children } = props;
   const [mouseDownEvent, setMouseDownEvent] = useState<MouseEvent>();
   const [startRect, setStartRect] = useState<DOMRect>();
-  const [activeId, setActiveId] = useState<Identifier>();
+  const [activeId, setActiveId] = useState<ID>();
   const [dragging, setDragging] = useState<boolean>()
   const [draggingOffset, setDraggingOffset] = useState<Offset>()
   const [overDroppable, setOverDroppable] = useState<DroppableOverInfo>()

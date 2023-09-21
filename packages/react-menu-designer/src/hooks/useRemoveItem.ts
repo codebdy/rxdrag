@@ -1,12 +1,12 @@
 import { useCallback } from "react";
 import { useMenuSchemaState } from "./useMenuSchemaState";
-import { Identifier } from "../dnd";
+import { ID } from "@rxdrag/shared";
 import { useGetItem } from "./useGetItem";
 
 export function useRemoveItem() {
   const [, setMeunSchema] = useMenuSchemaState()
   const getItem = useGetItem()
-  const remove = useCallback((id?: Identifier) => {
+  const remove = useCallback((id?: ID) => {
     const item = getItem(id)
     if (!item) {
       return

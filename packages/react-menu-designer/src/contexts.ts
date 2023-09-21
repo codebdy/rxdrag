@@ -1,8 +1,8 @@
 import { createContext } from "react";
 import { IMenuItemResource } from "./interfaces";
 import { TreeItems } from "./types";
-import { Identifier } from "./dnd/types";
 import { IMenuSchema } from "./interfaces/schema";
+import { ID } from "@rxdrag/shared";
 
 export const ResourcesContext = createContext<IMenuItemResource[]>([])
 
@@ -53,7 +53,7 @@ export type HistoryState = [HistoryRedords, React.Dispatch<React.SetStateAction<
 export const HistoryContext = createContext<HistoryState>([defautHistory, notMethod])
 
 export type DroppableParams = {
-  itemIds: Identifier[],
+  itemIds: ID[],
   over?: boolean,
 }
 

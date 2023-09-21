@@ -1,11 +1,12 @@
 import { memo, useCallback, useMemo } from "react"
-import { DraggableChildrenFn, DraggleProvider, IDraggableSnapshot, Identifier } from "./types";
+import { DraggableChildrenFn, DraggleProvider, IDraggableSnapshot } from "./types";
 import { DRAGGABLE_ATTR_ID_NAME, DRAGGABLE_HNADLER_ATTR_ID_NAME } from "./consts";
 import { useDndSnapshot } from "./hooks/useDndSnapshot";
 import { DraggableContext } from "./contexts";
+import { ID } from "@rxdrag/shared";
 
 export type DraggableProps = {
-  draggableId: Identifier;
+  draggableId: ID;
   children?: DraggableChildrenFn;
   hasHandler?: boolean;
 }

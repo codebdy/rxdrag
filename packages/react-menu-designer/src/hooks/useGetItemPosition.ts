@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { Identifier } from "../dnd";
+import { ID } from "@rxdrag/shared";
 import { DropTarget, PostionType } from "../types";
 import { useGetItem } from "./useGetItem";
 import { useGetBeforeBrother } from "./useGetBeforeBrother";
@@ -8,7 +8,7 @@ export function useGetItemPosition() {
   const getItem = useGetItem()
   const getBeforeBrother = useGetBeforeBrother()
 
-  const getItemPosition = useCallback((id: Identifier) => {
+  const getItemPosition = useCallback((id: ID) => {
     const target: DropTarget = {
       targetId: null,
       position: PostionType.in

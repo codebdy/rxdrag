@@ -9,6 +9,6 @@ export const menuDesgnerLocales: ILocales = {
   'en-US': {
     modules: "Modules",
     icon: "Icon",
-    module: "模块",
+    module: "Module",
   }
 }

@@ -4,7 +4,7 @@ import { DEFAULT_MARGIN } from "../../utilities";
 import styled from 'styled-components';
 import { ColumnTitle, FloatableColumn } from "../FloatableColumn";
 import { useTranslate } from "@rxdrag/react-locales";
-import { Identifier } from "../../dnd";
+import { ID } from "@rxdrag/shared";
 import { useResource } from "../../hooks/useResource";
 import { useItem } from "../../hooks/useItem";
 import { IConfig } from "../../interfaces";
@@ -23,7 +23,7 @@ const Content = styled.div`
 `
 
 export const PropertyPanel = memo((props: {
-  selectedId?: Identifier,
+  selectedId?: ID,
 }) => {
   const { selectedId } = props
   const t = useTranslate()

@@ -1,4 +1,4 @@
-import { Identifier } from "../dnd"
+import { ID } from "@rxdrag/shared";
 
 export enum MenuItemType {
   text = "text",
@@ -13,7 +13,7 @@ export interface IConfig {
 }
 
 export interface IMenuItemMeta<Config extends IConfig = IConfig> {
-  id: Identifier,
+  id: ID,
   //string类型用于扩展
   type: MenuItemType | string
   config?: Config,

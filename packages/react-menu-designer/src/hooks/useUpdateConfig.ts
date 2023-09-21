@@ -1,9 +1,9 @@
 import { useCallback } from "react";
-import { Identifier } from "../dnd";
+import { ID } from "@rxdrag/shared";
 import { IConfig } from "../interfaces";
 import { useMenuSchemaState } from "./useMenuSchemaState";
 
-export function useUpdateConfig(id?: Identifier) {
+export function useUpdateConfig(id?: ID) {
   const [, setMenuSchema] = useMenuSchemaState()
   const update = useCallback((config: IConfig) => {
     setMenuSchema(schema => {

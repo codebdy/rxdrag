@@ -1,4 +1,4 @@
-import { Identifier } from "../dnd";
+import { ID } from "@rxdrag/shared";
 import { IConfig, IMenuItemMeta, MenuItemType } from "./menu";
 
 export type ConfigSetterProps<Config extends IConfig = IConfig> = {
@@ -12,7 +12,7 @@ export type SelectorOption<Config extends IConfig = IConfig> = {
 }
 
 export interface IMenuItemResource<Config extends IConfig = IConfig> {
-  id: Identifier,
+  id: ID,
   title?: string,
   configSetter?: React.FC<ConfigSetterProps<Config>>,
   render?: (item?: IMenuItemMeta<Config>) => React.ReactNode,

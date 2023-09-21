@@ -1,12 +1,12 @@
 import { useCallback } from "react";
 import { IMenuSchema, IMenuItemSchema } from "../interfaces/schema";
 import { IMenuItem } from "../interfaces";
-import { Identifier } from "../dnd";
 import { useMenuSchemaState } from "./useMenuSchemaState";
+import { ID } from "@rxdrag/shared";
 
 export function useBuildMenuSchema() {
   const [, setMenuSchema] = useMenuSchemaState()
-  const processOne = useCallback((item: IMenuItem, menuSchema: IMenuSchema, parentId?: Identifier) => {
+  const processOne = useCallback((item: IMenuItem, menuSchema: IMenuSchema, parentId?: ID) => {
     menuSchema.rootIds.push(item.id)
     const meta: IMenuItem = JSON.parse(JSON.stringify(item))
     delete (meta.children)

@@ -1,28 +1,28 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { DroppableChildrenFn, IDroppableStateSnapshot, Identifier } from "./types"
+import { DroppableChildrenFn, IDroppableStateSnapshot } from "./types"
 import { DroppableContext, DroppableParams, defualtDroppableParams } from "../contexts";
 import { DROPPABLE_ATTR_ID_NAME } from "./consts";
 import { useDndSnapshot } from "./hooks/useDndSnapshot";
 import { useDropIndicatorState } from "./hooks/useDropIndicatorState";
-
 import { useGetItemCenterPoint } from "./hooks/getItemElement";
+import { ID } from "@rxdrag/shared";
 
 //export type Direction = 'horizontal' | 'vertical';
 
 export type CheckOptions = {
-  droppableId: Identifier,
+  droppableId: ID,
   //undfined标识插入开始位置
-  belowAtId?: Identifier,
-  draggingId: Identifier,
+  belowAtId?: ID,
+  draggingId: ID,
 }
 
 export type DroppableProps = {
-  droppableId: Identifier,
+  droppableId: ID,
   dropDisabled?: boolean,
   //direction?: Direction,
   children?: DroppableChildrenFn,
   //参与位置计算的条目
-  items: Identifier[]
+  items: ID[]
 }
 
 export const Droppable = memo((props: DroppableProps) => {

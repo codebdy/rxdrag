@@ -1,15 +1,15 @@
 import { useCallback, useMemo } from "react";
 import { IFlattenedItem } from "../interfaces/flattened";
-import { Identifier } from "../dnd";
 import { useMenuSchemaState } from "./useMenuSchemaState";
 import { useGetMenuItemSchema } from "./useGetMenuItemSchema";
+import { ID } from "@rxdrag/shared";
 
-export function useFlattenItems(draggingId?: Identifier) {
+export function useFlattenItems(draggingId?: ID) {
   const [menuSchema] = useMenuSchemaState();
   const getItem = useGetMenuItemSchema();
 
   const flatten = useCallback((
-    itemIds: Identifier[],
+    itemIds: ID[],
     depth = 0
   ): IFlattenedItem[] => {
 

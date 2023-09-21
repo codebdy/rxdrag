@@ -1,10 +1,10 @@
 import { useCallback } from "react";
-import { Identifier } from "../dnd";
+import { ID } from "@rxdrag/shared";
 import { useMenuSchemaState } from "./useMenuSchemaState";
 
 export function useToggleCollapse() {
   const [, setMenuSchema] = useMenuSchemaState()
-  const toggle = useCallback((id: Identifier) => {
+  const toggle = useCallback((id: ID) => {
     setMenuSchema(schema => {
       return {
         rootIds: schema.rootIds,

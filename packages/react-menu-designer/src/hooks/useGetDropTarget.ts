@@ -1,12 +1,13 @@
 import { useCallback } from "react";
-import { DropIndicator, Identifier } from "../dnd"
+import { DropIndicator } from "../dnd"
 import { DropTarget, PostionType } from "../types";
 import { useGetItem } from "./useGetItem";
 import { useGetFlattenItem } from "./useGetFlattenItem";
 import { useGetParentByDepth } from "./useGetParentByDepth";
 import { useGetResource } from "./useGetResource";
+import { ID } from "@rxdrag/shared";
 
-export function useGetDropTarget(indentationWidth: number, draggingId?: Identifier) {
+export function useGetDropTarget(indentationWidth: number, draggingId?: ID) {
   const getItem = useGetItem()
   const getFlattenItem = useGetFlattenItem(draggingId)
   const getParentByDepth = useGetParentByDepth()

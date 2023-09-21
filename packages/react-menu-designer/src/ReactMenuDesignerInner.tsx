@@ -6,7 +6,7 @@ import { Button, Divider, Space } from 'antd';
 import { DeleteOutlined, RedoOutlined, UndoOutlined } from '@ant-design/icons';
 import { useGetResource } from './hooks/useGetResource';
 import { DndContext } from './dnd/DndContext';
-import { DragOverEvent, DropEvent, Identifier } from './dnd';
+import { DragOverEvent, DropEvent } from './dnd';
 import { CANVS_ID } from './consts';
 import { SortableTree } from './components/SortableTree';
 import { useGetItem } from './hooks/useGetItem';
@@ -24,6 +24,7 @@ import { useUndo } from './hooks/useUndo';
 import { useRedo } from './hooks/useRedo';
 import { useTranslate } from '@rxdrag/react-locales';
 import { useExtractMenuItems } from './hooks/useExtractMenuItems';
+import { ID } from '@rxdrag/shared';
 
 const Shell = styled.div`
   position: relative;
@@ -83,8 +84,8 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   const [menuSchema, setMenuSchema] = useMenuSchemaState()
   const [oldSchema, setOldSchema] = useState<IMenuSchema | null>(null)
   const [tempItem, setTempItem] = useState<IMenuItemSchema | null>(null)
-  const [draggingId, setDraggingId] = useState<Identifier | null>(null)
-  const [selectedId, setSelectedId] = useState<Identifier>()
+  const [draggingId, setDraggingId] = useState<ID | null>(null)
+  const [selectedId, setSelectedId] = useState<ID>()
   const t = useTranslate()
 
   const getItemPosition = useGetItemPosition()
@@ -128,7 +129,7 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
     resetState();
   }, [resetState])
 
-  const handleDragStart = useCallback((id: Identifier) => {
+  const handleDragStart = useCallback((id: ID) => {
     setOldSchema(menuSchema)
     setDraggingId(id)
     const item = getItem(id)
@@ -185,7 +186,7 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
     }
   }, [backup, getItem, oldSchema, tempItem])
 
-  const handleSelect = useCallback((id?: Identifier) => {
+  const handleSelect = useCallback((id?: ID) => {
     setSelectedId(id)
   }, [])
 

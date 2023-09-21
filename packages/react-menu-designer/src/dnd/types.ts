@@ -1,8 +1,7 @@
-export type Identifier = string;
-
+import { ID } from "@rxdrag/shared"
 
 export type DragEvent = {
-  activeId: Identifier,
+  activeId: ID,
   originalEvent: MouseEvent,
 }
 
@@ -31,7 +30,7 @@ export type DragOverEvent = DragEvent & {
 }
 
 export type DropEvent = DragEvent & {
-  droppableId: Identifier,
+  droppableId: ID,
   indicator?: DropIndicator,
 }
 
@@ -52,7 +51,7 @@ export interface Position {
 // }
 
 export type DraggingOver = {
-  overId: Identifier,
+  overId: ID,
   originalEvent?: MouseEvent,
   draggingOffset?: Offset,
 }
@@ -97,7 +96,7 @@ export type Offset = {
 }
 
 export type DroppableOverInfo = OverOffset & {
-  id?: Identifier,
+  id?: ID,
   originalEvent: MouseEvent,
 }
 
@@ -106,6 +105,6 @@ export interface IDndSnapshot {
   startRect?: DOMRect,
   //拖动偏移量，从数量落下开始计算
   draggingOffset?: Offset,
-  draggingId?: Identifier,
+  draggingId?: ID,
   overDroppable?: DroppableOverInfo,
 }

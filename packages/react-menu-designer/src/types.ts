@@ -1,8 +1,8 @@
+import { ID } from '@rxdrag/shared';
 import type { MutableRefObject } from 'react';
-import { Identifier } from './dnd/types';
 
 export interface TreeItem {
-  id: Identifier;
+  id: ID;
   children: TreeItem[];
   collapsed?: boolean;
 }
@@ -10,7 +10,7 @@ export interface TreeItem {
 export type TreeItems = TreeItem[];
 
 export interface FlattenedItem extends TreeItem {
-  parentId: Identifier | null;
+  parentId: ID | null;
   depth: number;
   index: number;
 }

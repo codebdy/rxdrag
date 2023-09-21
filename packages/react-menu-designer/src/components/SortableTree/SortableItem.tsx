@@ -1,7 +1,7 @@
 import { memo, useCallback } from "react"
 import { IFlattenedItem } from "../../interfaces/flattened"
 import styled from "styled-components"
-import { Draggable, Identifier } from "../../dnd"
+import { Draggable } from "../../dnd"
 import { Badge, Button, theme } from "antd"
 import { DownOutlined, HolderOutlined, RightOutlined } from "@ant-design/icons"
 import { DragOverlay } from "../../dnd/DragOverlay"
@@ -9,6 +9,7 @@ import { floatShadow } from "../../utilities"
 import { useToggleCollapse } from "../../hooks/useToggleCollapse"
 import classNames from "classnames"
 import { useResource } from "../../hooks/useResource"
+import { ID } from "@rxdrag/shared"
 
 const Container = styled.div`
   height: 48px;
@@ -76,9 +77,9 @@ export const SortableItem = memo((
   props: {
     item: IFlattenedItem,
     indentationWidth: number,
-    tempId?: Identifier,
-    selectedId?: Identifier,
-    onSelect?: (id?: Identifier) => void,
+    tempId?: ID,
+    selectedId?: ID,
+    onSelect?: (id?: ID) => void,
   }
 ) => {
   const { item, tempId, indentationWidth, selectedId, onSelect } = props

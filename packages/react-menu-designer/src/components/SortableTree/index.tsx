@@ -2,9 +2,10 @@ import classNames from "classnames"
 import { memo, useMemo } from "react"
 import styled from "styled-components"
 import { CANVS_ID } from "../../consts"
-import { Droppable, Identifier } from "../../dnd"
+import { Droppable } from "../../dnd"
 import { SortableItem } from "./SortableItem"
 import { useFlattenItems } from "../../hooks/useFlattenItems"
+import { ID } from "@rxdrag/shared"
 
 const DropContainer = styled.div`
   width: 100%;
@@ -24,10 +25,10 @@ const DropContainer = styled.div`
 export const SortableTree = memo((
   props: {
     indentationWidth: number,
-    tempId?: Identifier,
-    draggingId?: Identifier,
-    selectedId?: Identifier,
-    onSelect?: (id?: Identifier) => void,
+    tempId?: ID,
+    draggingId?: ID,
+    selectedId?: ID,
+    onSelect?: (id?: ID) => void,
   }
 ) => {
   const { tempId, indentationWidth, draggingId, selectedId, onSelect } = props;
