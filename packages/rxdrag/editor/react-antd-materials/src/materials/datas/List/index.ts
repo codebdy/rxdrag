@@ -15,7 +15,7 @@ export const ListMaterial: IComponentMaterial = {
   designerLocales: locales,
   propsSchema: materialSchema,
   designerProps: {
-    dataSource: { nodes: [{}] }
+    dataSource: { nodes: [{ id: "temp" }] }
   },
   resource: {
     name: name,
@@ -73,5 +73,5 @@ export const ListMaterial: IComponentMaterial = {
     noPlaceholder: false,
     noRef: true,
   },
-  logicalProps:["dataSource"]
+  logicalProps: ["dataSource"]
 }

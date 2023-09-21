@@ -13,9 +13,14 @@ export const ArrayField = memo((
   }
 ) => {
   const { name, value, initialValue, defaultValue, children } = props
+  console.log("====>ArrayField", props, children)
   return (
-    <Field name={name} value={value} initialValue={initialValue} defaultValue={defaultValue} type="array">
-      {children}
-    </Field>
+    <>
+      hhhhhhh
+      <Field name={name} value={value} initialValue={initialValue} defaultValue={defaultValue} type="array">
+        呵呵呵
+        {children}
+      </Field>
+    </>
   )
 })
