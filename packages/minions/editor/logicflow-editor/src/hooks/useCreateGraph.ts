@@ -20,7 +20,7 @@ const magnetAvailabilityHighlighter = {
     },
   },
 };
-
+let inter:any;
 export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
   const [graph, setGraph] = useState<Graph>()
   const getNodeMeta = useGetNodeMeta(store)
@@ -215,16 +215,19 @@ export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
       movable: true,
       //showNodeSelectionBox: true,
     }))
-
-    gph.use(
-      new MiniMap({
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        container: document.getElementById("reactions-minimap-container")!,
-        width: 200,
-        height: 160,
-        padding: 10,
-      })
-    );
+    // 修复在部分浏览器上， dom还没挂载，导致小地图报错
+    clearTimeout(inter);
+    inter = setTimeout(() => {
+      gph.use(
+        new MiniMap({
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          container: document.getElementById("reactions-minimap-container")!,
+          width: 200,
+          height: 160,
+          padding: 10,
+        })
+      );
+    }, 100)
 
     setGraph(gph)
 
