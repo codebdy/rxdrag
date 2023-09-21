@@ -8,7 +8,7 @@ import { IModule } from "../../interfaces/module"
 import { createId } from "@rxdrag/shared"
 import { IModuleItemConfig, moduleResouceType } from "./types"
 import { ModuleSetter } from "./setters/ModuleSetter"
-
+import { useMenu } from "../../hooks/useMenu"
 
 export function createModuleResoure(module: IModule): IMenuItemResource<IModuleItemConfig> {
   return {
@@ -35,6 +35,7 @@ export function createModuleResoure(module: IModule): IMenuItemResource<IModuleI
 
 export const MenuDesigner = memo(() => {
   const appFront = useAppFrontend()
+  const menu = useMenu()
   const resources: IMenuItemResource[] = useMemo(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const reses: IMenuItemResource<any>[] = [...baseMenuResources]
@@ -47,10 +48,13 @@ export const MenuDesigner = memo(() => {
   }, [appFront?.moduleCategories])
 
   return (
-    <ReactMenuDesigner
-      toolbox={<Toolbox resources={resources} />}
-      locales={menuDesgnerLocales}
-      resources={resources}
-    />
+    menu
+      ? <ReactMenuDesigner
+        toolbox={<Toolbox resources={resources} />}
+        locales={menuDesgnerLocales}
+        resources={resources}
+        value={menu.items}
+      />
+      : <></>
   )
 })
