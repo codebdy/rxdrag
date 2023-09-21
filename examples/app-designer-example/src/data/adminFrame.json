@@ -25,6 +25,9 @@
             {
               "componentName": "Menu",
               "slots": {},
+              "props": {
+                "menuId": "menu1-admin"
+              },
               "children": []
             }
           ]
