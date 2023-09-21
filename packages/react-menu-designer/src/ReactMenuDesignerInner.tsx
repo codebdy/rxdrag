@@ -117,9 +117,7 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
   }, [buildSchema, defaultValue, setHistory])
 
   useEffect(() => {
-    if (value) {
-      buildSchema(value)
-    }
+    buildSchema(value || [])
   }, [buildSchema, value])
 
   const resetState = useCallback(() => {

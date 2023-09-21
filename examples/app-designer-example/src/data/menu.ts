@@ -8,8 +8,11 @@ export const defaultMenus: { [device: string]: IMenu[] | undefined } = {
       title: "默认菜单",
       items: [
         {
-          id: "item1",
-          type: "text",
+          id: "group1",
+          type: "group",
+          config: {
+            title: "测试"
+          }
         }
       ]
     },

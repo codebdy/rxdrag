@@ -23,8 +23,7 @@ export function useBuildMenuSchema() {
       processOne(child, menuSchema, item.id)
     }
 
-    setMenuSchema(menuSchema)
-  }, [setMenuSchema])
+  }, [])
 
   const build = useCallback((items: IMenuItem[]) => {
     const menuSchema: IMenuSchema = {
@@ -36,8 +35,8 @@ export function useBuildMenuSchema() {
       processOne(item, menuSchema)
     }
 
-    return menuSchema
-  }, [processOne])
+    setMenuSchema(menuSchema)
+  }, [processOne, setMenuSchema])
 
   return build
 }

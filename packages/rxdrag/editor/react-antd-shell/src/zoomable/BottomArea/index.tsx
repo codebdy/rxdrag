@@ -106,7 +106,7 @@ export const BottomArea = memo(() => {
       {
         label: <Label onClick={handleTabClick}>行为流</Label>,
         key: "logicflow",
-        children: "应用级/设备端级别/模块级/场景级/循环级"
+        children: "应用级/设备端级别/模块级/视图级/循环级"
       },
       {
         label: <Label onClick={handleTabClick}>脚本</Label>,

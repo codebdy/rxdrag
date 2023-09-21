@@ -1,5 +1,5 @@
-import { IMenuItemResource, ReactMenuDesigner, SelectorOption } from "@rxdrag/react-menu-designer"
-import { memo, useMemo } from "react"
+import { IMenuItem, IMenuItemResource, ReactMenuDesigner, SelectorOption } from "@rxdrag/react-menu-designer"
+import { memo, useCallback, useMemo } from "react"
 import { Toolbox } from "./Toolbox"
 import { menuDesgnerLocales } from "./locales"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
@@ -47,6 +47,10 @@ export const MenuDesigner = memo(() => {
     return reses
   }, [appFront?.moduleCategories])
 
+  const handleSave = useCallback((value: IMenuItem[]) => {
+    console.log("===>handleSave", value)
+  }, [])
+
   return (
     menu
       ? <ReactMenuDesigner
@@ -55,6 +59,7 @@ export const MenuDesigner = memo(() => {
         resources={resources}
         value={menu.items}
         name={menu.title}
+        onSave={handleSave}
       />
       : <></>
   )
