@@ -1,28 +1,7 @@
 import { ID } from "@rxdrag/shared";
 import { TreeSelect } from "antd";
-import { memo, useCallback, useState } from "react"
-
-const treeData = [
-  {
-    title: 'Node1',
-    value: '0-0',
-    selectable: false,
-    children: [
-      {
-        title: 'Child Node1',
-        value: '0-0-1',
-      },
-      {
-        title: 'Child Node2',
-        value: '0-0-2',
-      },
-    ],
-  },
-  {
-    title: 'Node2',
-    value: '0-1',
-  },
-];
+import { memo, useCallback, useMemo } from "react"
+import { useAppFrontend } from "../../../hooks/useAppFrontend";
 
 export const ModuleSelect = memo((
   props: {
@@ -30,12 +9,29 @@ export const ModuleSelect = memo((
     onChange?: (value: ID) => void,
   }
 ) => {
-  const [value, setValue] = useState<string>();
+  const { value, onChange } = props;
+  const appFront = useAppFrontend()
+
+  const treeData = useMemo(() => {
+    return appFront?.moduleCategories?.map(category => {
+      return {
+        value: category.id,
+        title: category.title,
+        selectable: false,
+        children: category.modules?.map(module => {
+          return {
+            value: module.id,
+            title: module.title,
+            isLeaf: true,
+          }
+        })
+      }
+    }) || []
+  }, [appFront?.moduleCategories])
 
   const hancleChange = useCallback((newValue: string) => {
-    console.log(newValue);
-    setValue(newValue);
-  }, []);
+    onChange?.(newValue);
+  }, [onChange]);
 
   return (
     <TreeSelect
