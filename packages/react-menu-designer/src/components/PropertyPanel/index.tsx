@@ -47,6 +47,13 @@ export const PropertyPanel = memo((props: {
     >
       <ColumnTitle>
         {t("properties")}
+        {
+          item?.meta.type && <>
+            [
+            {t(item?.meta.type)}
+            ]
+          </>
+        }
       </ColumnTitle>
       <Content>
         {resource?.configSetter &&

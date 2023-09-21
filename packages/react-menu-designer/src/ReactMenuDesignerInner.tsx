@@ -69,16 +69,21 @@ const Canvas = styled.div`
   overflow: auto;
 `
 
+const Title = styled.span`
+  color: ${props => props.theme.token?.colorTextSecondary};
+`
+
 export type ReactMenuDesignerInnerProps = {
   defaultValue?: IMenuItem[],
   value?: IMenuItem[],
   indentationWidth?: number,
   toolbox?: React.ReactNode,
+  name?: string,
   onSave?: (value: IMenuItem[]) => boolean | Promise<boolean> | void
 }
 
 export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) => {
-  const { defaultValue, value, indentationWidth = 50, toolbox, onSave } = props;
+  const { defaultValue, value, indentationWidth = 50, toolbox, name, onSave } = props;
   const buildSchema = useBuildMenuSchema()
   const [history, setHistory] = useHistoryState()
   const [menuSchema, setMenuSchema] = useMenuSchemaState()
@@ -253,6 +258,7 @@ export const ReactMenuDesignerInner = memo((props: ReactMenuDesignerInnerProps) 
                 onClick={handleRemove}
               />
             </Space>
+            <Title>{name}</Title>
             <Button
               type="primary"
               disabled={!history.changed}

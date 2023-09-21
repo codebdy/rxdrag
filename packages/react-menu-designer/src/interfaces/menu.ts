@@ -2,6 +2,7 @@ import { ID } from "@rxdrag/shared";
 
 export enum MenuItemType {
   text = "text",
+  group = "group",
   route = "route",
   link = "link",
   divider = "divider",

@@ -54,6 +54,7 @@ export const MenuDesigner = memo(() => {
         locales={menuDesgnerLocales}
         resources={resources}
         value={menu.items}
+        name={menu.title}
       />
       : <></>
   )

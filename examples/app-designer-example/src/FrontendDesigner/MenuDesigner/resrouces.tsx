@@ -27,25 +27,26 @@ export const iconableRender = (item?: IMenuItemMeta<IIconableConfig>) => {
 export const baseMenuResources: IMenuItemResource<any>[] = [
   {
     id: createId(),
-    title: "折叠组",
+    //自动被翻译
+    title: MenuItemType.group,
     configSetter: GroupSetter,
     render: iconableRender,
     createMenuItem: () => {
       return {
         id: createId(),
-        type: MenuItemType.text,
+        type: MenuItemType.group,
         config: {
           title: "新建组",
         }
       }
     },
     selector: (option?: SelectorOption) => {
-      return option?.type === MenuItemType.text
+      return option?.type === MenuItemType.group
     }
   },
   {
     id: createId(),
-    title: "链接",
+    title: MenuItemType.link,
     configSetter: LinkSetter,
     render: iconableRender,
     createMenuItem: () => {
@@ -63,7 +64,7 @@ export const baseMenuResources: IMenuItemResource<any>[] = [
   },
   {
     id: createId(),
-    title: "分隔符",
+    title: MenuItemType.divider,
     childless: true,
     render: () => {
       return <Divider style={{ minWidth: 100 }} />

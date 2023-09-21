@@ -8,7 +8,7 @@ import { LinkSetter } from "./LinkSetter";
 export const defaultMenuResources: IMenuItemResource<any>[] = [
   {
     id: createId(),
-    title: "文本",
+    title: MenuItemType.text,
     configSetter: TextSetter,
     createMenuItem: () => {
       return {
@@ -25,7 +25,7 @@ export const defaultMenuResources: IMenuItemResource<any>[] = [
   },
   {
     id: createId(),
-    title: "链接",
+    title: MenuItemType.link,
     configSetter: LinkSetter,
     createMenuItem: () => {
       return {
@@ -42,7 +42,7 @@ export const defaultMenuResources: IMenuItemResource<any>[] = [
   },
   {
     id: createId(),
-    title: "分隔符",
+    title: MenuItemType.divider,
     childless: true,
     render: () => {
       return <Divider style={{ minWidth: 100 }} />

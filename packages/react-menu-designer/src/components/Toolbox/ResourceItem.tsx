@@ -5,6 +5,7 @@ import { Draggable } from "../../dnd";
 import { useResource } from "../../hooks/useResource";
 import { DragOverlay } from "../../dnd/DragOverlay";
 import classNames from "classnames";
+import { useTranslate } from "@rxdrag/react-locales";
 
 const Item = styled.div`
   display: flex;
@@ -35,6 +36,7 @@ export const ResourceItem = memo((
 ) => {
   const { id, className, ...rest } = props
   const resource = useResource(id)
+  const t = useTranslate()
   return (
     <Draggable
       draggableId={id}
@@ -44,13 +46,13 @@ export const ResourceItem = memo((
           return <>
             <Item ref={provider.innerRef} className={className} {...rest}>
               {
-                resource?.title
+                t(resource?.title || "")
               }
             </Item>
             <DragOverlay>
               <Item className={classNames(className, "dragging")} {...rest}>
                 {
-                  resource?.title
+                  t(resource?.title || "")
                 }
               </Item>
             </DragOverlay>
