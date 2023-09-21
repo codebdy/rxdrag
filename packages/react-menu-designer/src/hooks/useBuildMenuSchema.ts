@@ -7,7 +7,6 @@ import { ID } from "@rxdrag/shared";
 export function useBuildMenuSchema() {
   const [, setMenuSchema] = useMenuSchemaState()
   const processOne = useCallback((item: IMenuItem, menuSchema: IMenuSchema, parentId?: ID) => {
-    menuSchema.rootIds.push(item.id)
     const meta: IMenuItem = JSON.parse(JSON.stringify(item))
     delete (meta.children)
     const menuItemSchema: IMenuItemSchema = {
@@ -32,9 +31,9 @@ export function useBuildMenuSchema() {
     }
 
     for (const item of items) {
+      menuSchema.rootIds.push(item.id)
       processOne(item, menuSchema)
     }
-
     setMenuSchema(menuSchema)
   }, [processOne, setMenuSchema])
 

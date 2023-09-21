@@ -8,11 +8,50 @@ export const defaultMenus: { [device: string]: IMenu[] | undefined } = {
       title: "默认菜单",
       items: [
         {
-          id: "group1",
-          type: "group",
-          config: {
-            title: "测试"
-          }
+          "id": "group1",
+          "type": "group",
+          "config": {
+            "title": "测试"
+          },
+          "children": []
+        },
+        {
+          "id": "y_FPgPlR",
+          "type": "link",
+          "config": {
+            "title": "新建链接"
+          },
+          "children": []
+        },
+        {
+          "id": "msImUKp4",
+          "type": "group",
+          "config": {
+            "title": "新建组"
+          },
+          "children": [
+            {
+              "id": "yIlMl53J",
+              "type": "module",
+              "config": {
+                "title": "用户管理",
+                "moduleId": "users",
+                "icon": {
+                  "iconKey": "PlusCircleOutlined"
+                }
+              },
+              "children": []
+            },
+            {
+              "id": "LnzFwF5k",
+              "type": "module",
+              "config": {
+                "title": "客户",
+                "moduleId": "customers"
+              },
+              "children": []
+            }
+          ]
         }
       ]
     },

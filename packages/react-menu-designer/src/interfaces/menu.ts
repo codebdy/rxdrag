@@ -21,7 +21,8 @@ export interface IMenuItemMeta<Config extends IConfig = IConfig> {
 }
 
 export interface IMenuItem<Config extends IConfig = IConfig> extends IMenuItemMeta<Config> {
-  children?: IMenuItem[],
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  children?: IMenuItem<any>[],
 }
 
 export interface IMenu {
