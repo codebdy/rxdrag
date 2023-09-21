@@ -96,7 +96,7 @@ export const LeftSide = memo(() => {
         onClick={handleFrameClick}
       />
       <NavButton
-        title="菜单"
+        title="导航"
         icon={<SvgIcon>
           {menuIcon}
         </SvgIcon>}

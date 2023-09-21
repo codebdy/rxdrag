@@ -5,7 +5,7 @@ import { Navigate, Route, Routes } from "react-router-dom"
 import { ModuleUiDesigner } from "./FrontendDesigner/ModuleUiDesigner"
 import { NavType } from "./FrontendDesigner/LeftSide"
 import { UiFrameDesigner } from "./FrontendDesigner/UiFrameDesigner"
-import { MenuDesigner } from "./FrontendDesigner/MenuDesigner"
+import { NavigationDesigner } from "./FrontendDesigner/NavigationDesigner"
 import { AppDesigner } from "./AppDesigner"
 import "./style.css"
 import { DesignerCanvas } from "./FrontendDesigner/DesignerCanvas"
@@ -28,7 +28,7 @@ export const AppDesignerExample = memo(() => {
                 <Route index element={<Navigate to={NavType.modules} replace />} />
                 <Route path={NavType.modules + "/:moduleId?"} element={<ModuleUiDesigner />}></Route>
                 <Route path={NavType.frame} element={<UiFrameDesigner />}></Route>
-                <Route path={NavType.menu + "/:menuId?"} element={<MenuDesigner />}></Route>
+                <Route path={NavType.menu + "/:menuId?"} element={<NavigationDesigner />}></Route>
               </Route>
             </Route>
             <Route path={CANVAS_URL_PREFIX + '/:device/:layoutPart'} element={<DesignerCanvas />}>

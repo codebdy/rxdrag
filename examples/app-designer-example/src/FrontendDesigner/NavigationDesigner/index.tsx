@@ -9,6 +9,7 @@ import { createId } from "@rxdrag/shared"
 import { IModuleItemConfig, moduleResouceType } from "./types"
 import { ModuleSetter } from "./setters/ModuleSetter"
 import { useMenu } from "../../hooks/useMenu"
+import { useParams } from "react-router-dom"
 
 export function createModuleResoure(module: IModule): IMenuItemResource<IModuleItemConfig> {
   return {
@@ -33,9 +34,10 @@ export function createModuleResoure(module: IModule): IMenuItemResource<IModuleI
   }
 }
 
-export const MenuDesigner = memo(() => {
+export const NavigationDesigner = memo(() => {
   const appFront = useAppFrontend()
-  const menu = useMenu()
+  const { menuId } = useParams()
+  const menu = useMenu(menuId)
   const resources: IMenuItemResource[] = useMemo(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const reses: IMenuItemResource<any>[] = [...baseMenuResources]
