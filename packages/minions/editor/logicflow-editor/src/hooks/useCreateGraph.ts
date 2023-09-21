@@ -232,6 +232,7 @@ export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
     setGraph(gph)
 
     return () => {
+      clearTimeout(inter);
       gph?.dispose()
     }
   }, [token.colorPrimary, token.colorTextSecondary])
