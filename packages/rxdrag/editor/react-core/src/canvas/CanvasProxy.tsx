@@ -2,7 +2,7 @@ import { IDesignerEngine, IDocument } from "@rxdrag/core";
 import { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
 import { ID } from "@rxdrag/shared";
-import { EVENT_IFRAME_READY } from "./IframeProxy/constants";
+import { EVENT_DOC_CHANGE, EVENT_IFRAME_READY } from "./IframeProxy/constants";
 import { DesignerEngineContext, DocumentRoot, InIframeContext, Scroller } from "..";
 import { IReactComponents } from "@rxdrag/react-shared";
 import { ComponentDesignersRoot } from "../ComponentDesignersRoot";
@@ -29,6 +29,8 @@ export const CanvasProxy = memo((
     if (event.data?.name === EVENT_IFRAME_READY) {
       console.log('RXDrag: iframeReady');
       setEngine(window.engine);
+    }
+    if (event.data?.name === EVENT_DOC_CHANGE) {
       setDoc(window.doc)
     }
   }, [])

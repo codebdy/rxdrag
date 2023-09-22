@@ -29,7 +29,8 @@ export class FieldImpl implements IField {
   constructor(public fieldy: IFieldyEngine, public form: IForm, private fieldPath: string) {
     if (this.meta?.reactionMeta) {
       this.makeExpressions();
-      //初始化完成时，计算一次联动
+      //计算一次联动
+      this.handleFieldReaction()
       //form.fieldy.subscribeToFormInitialized(form.name, this.handleFieldReaction)
       form.fieldy.subscribeToFormChange(form.name, this.handleFieldReaction)
     }
@@ -179,7 +180,7 @@ export class FieldImpl implements IField {
    * 表单变化响应函数：处理联动
    * @param form 
    */
-  private handleFieldReaction = (form: FormState) => {
+  private handleFieldReaction = () => {
     // if(!form.initialized){
     //   return
     // }
