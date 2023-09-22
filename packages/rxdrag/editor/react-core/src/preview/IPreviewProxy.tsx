@@ -1,7 +1,7 @@
 import { IDesignerEngine, IDocument } from "@rxdrag/core";
 import { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
-import { DesignerEngineContext, DocumentRoot, EVENT_IFRAME_READY, IFrameCanvasEvent, InIframeContext, Scroller } from "..";
+import { DesignerEngineContext, DocumentRoot, EVENT_DOC_CHANGE, EVENT_IFRAME_READY, IFrameCanvasEvent, InIframeContext, Scroller } from "..";
 import { IReactComponents } from "@rxdrag/react-shared";
 import { Fieldy } from "@rxdrag/react-fieldy";
 import { PreviewComponentsContext } from "@rxdrag/react-runner";
@@ -21,8 +21,10 @@ export const IPreviewProxy = memo((
   const receiveMessageFromParent = useCallback((event: MessageEvent<IFrameCanvasEvent>) => {
     // 监听父窗口 ready 事件
     if (event.data?.name === EVENT_IFRAME_READY) {
-      console.log('RXDrag: iframeReady');
+      console.log('RXDrag: preview iframeReady');
       setEngine(window.engine);
+    }
+    if (event.data?.name === EVENT_DOC_CHANGE) {
       setDoc(window.doc)
     }
   }, [])
