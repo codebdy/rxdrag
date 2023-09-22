@@ -19,31 +19,27 @@ export const List = memo((props: ListProps<unknown> & ListAddonProps) => {
     onPageChange?.(page, pageSize)
   }, [onPageChange])
 
-  console.log("====>List", other, dataSource)
   return (
-    <>
-     
-      <ArrayField name={id} value={dataSource?.nodes}>
+    <ArrayField name={id} value={dataSource?.nodes}>
 
-        <AntdList
-          dataSource={dataSource?.nodes}
-          pagination={
-            pagination === false
-              ? pagination
-              : {
-                pageSize: pageSize,
-                total: dataSource?.total,
-                onChange: handlePageChange
-              }
-          }
-          renderItem={(_, index) => (
-            <ObjectField name={index.toString()}>
-              {renderItem}
-            </ObjectField>
-          )}
-          {...other}
-        />
-      </ArrayField>
-    </>
+      <AntdList
+        dataSource={dataSource?.nodes}
+        pagination={
+          pagination === false
+            ? pagination
+            : {
+              pageSize: pageSize,
+              total: dataSource?.total,
+              onChange: handlePageChange
+            }
+        }
+        renderItem={(_, index) => (
+          <ObjectField name={index.toString()}>
+            {renderItem}
+          </ObjectField>
+        )}
+        {...other}
+      />
+    </ArrayField>
   )
 })

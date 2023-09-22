@@ -38,14 +38,12 @@ export const XField = memo((props: {
     const unsub = field?.fieldy.subscribeToFieldChange(field.form.name, field.path, handleFieldChange)
     return unsub
   }, [field?.fieldy, field?.form.name, field?.path, handleFieldChange])
-  fieldMeta.type==="array" && console.log("====>XField", field)
+
   return (
-    field ?
-      <FieldContext.Provider value={field}>
-        {
-          hidden === false && children
-        }
-      </FieldContext.Provider>
-      : <></>
+    <FieldContext.Provider value={field}>
+      {
+        hidden === false && children
+      }
+    </FieldContext.Provider>
   )
 })
