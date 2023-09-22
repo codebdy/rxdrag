@@ -5,8 +5,8 @@ import { IDesignerEngine } from './interfaces'
 import { Monitor } from './classes/Monitor'
 import { DesignerEngine } from './classes/DesignerEngine'
 import { DesignerShell } from './shell/DesignerShell'
-import { rootBehavior } from './behaviors/rootBehavior'
 import { IPluginFactory } from './interfaces/plugin'
+import { rootBehavior } from './behaviors/rootBehavior'
 
 export function createEngine(
 	plugins: IPluginFactory[],
@@ -21,7 +21,7 @@ export function createEngine(
 	const monitor = new Monitor(store)
 	const shell = new DesignerShell()
 	const engine = new DesignerEngine(store, shell, monitor, plugins)
-	engine.getComponentManager().registerBehaviors(rootBehavior)
+	engine.getBehaviorManager().registerBehaviors(rootBehavior)
 	return engine
 }
 

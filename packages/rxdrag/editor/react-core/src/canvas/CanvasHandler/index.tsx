@@ -91,8 +91,8 @@ export const CanvasHandler = memo((
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseup);
-    const unsubMouseMove = engine?.getShell().subscribeTo(MouseMoveEvent, handleShellMouseMove)
-    const unsubMouseUp = engine?.getShell().subscribeTo(MouseUpEvent, handleMouseup)
+    const unsubMouseMove = engine?.getShell().subscribeTo(MouseMoveEvent.Name, handleShellMouseMove)
+    const unsubMouseUp = engine?.getShell().subscribeTo(MouseUpEvent.Name, handleMouseup)
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseup);

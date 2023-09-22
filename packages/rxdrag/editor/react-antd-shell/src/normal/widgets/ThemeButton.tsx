@@ -3,7 +3,12 @@ import { Button } from "antd"
 import { memo, useCallback } from "react"
 import { BsMoonStarsFill, BsSunFill } from "react-icons/bs"
 
-export const ThemeButton = memo(() => {
+export const ThemeButton = memo((
+  props: {
+    flat?: boolean
+  }
+) => {
+  const { flat } = props
   const themeMode = useThemeMode()
   const engine = useDesignerEngine()
   const handleTriggerThemMode = useCallback(() => {
@@ -12,6 +17,7 @@ export const ThemeButton = memo(() => {
 
   return (
     <Button
+      type={flat ? "text" : undefined}
       icon={
         themeMode === "dark"
           ? <BsSunFill size={16} style={{ marginTop: 3 }} />

@@ -25,13 +25,13 @@ export class DragDropDriverImpl implements IDriver {
     }
     if ((e.target as any)?.['closest']?.('.monaco-editor')) return
     this.startEvent = e
-    this.shell.dragging = false
+    this.shell.dragStartEvent = undefined
     this.onMouseDownAt = Date.now()
     this.attachEvent('mousemove', this.onDistanceChange)
   }
 
   onMouseUp = (e: MouseEvent) => {
-    if (this.shell.dragging) {
+    if (this.shell.dragStartEvent) {
       this.shell.dispatch(
         new DragStopEvent({
           offsetX: e.offsetX,
@@ -49,7 +49,7 @@ export class DragDropDriverImpl implements IDriver {
       )
     }
     this.detachEvent('mousemove', this.onDistanceChange)
-    this.shell.dragging = false
+    this.shell.dragStartEvent = undefined
   }
 
   onContextMenuWhileDragging = (e: MouseEvent) => {
@@ -57,7 +57,7 @@ export class DragDropDriverImpl implements IDriver {
   }
 
   onStartDrag = (e: MouseEvent | DragEvent) => {
-    if (this.shell.dragging) return
+    if (this.shell.dragStartEvent) return
 
     this.startEvent = this.startEvent || e
 
@@ -81,7 +81,7 @@ export class DragDropDriverImpl implements IDriver {
         shiftKey: this.startEvent.shiftKey,
       }, e)
     )
-    this.shell.dragging = true
+    this.shell.dragStartEvent = this.startEvent
   }
 
   onDistanceChange = (e: MouseEvent) => {

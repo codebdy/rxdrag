@@ -1,7 +1,6 @@
 export * from "./ComponentResourceWidget"
 export * from "./HistoryWidget"
 export * from "./LeftNavWidget"
-export * from "./NavbarWidget"
 export * from "./OutlineWidget"
 export * from "./TemplateResourceWidget"
 export * from "./AuxButtions"

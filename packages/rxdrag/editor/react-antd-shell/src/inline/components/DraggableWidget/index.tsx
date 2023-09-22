@@ -5,7 +5,9 @@ import { useWidgetLayout } from "../../hooks/useWidgetLayout";
 import { useSetWidgetLayout } from "../../hooks/useSetWidgetLayout";
 import { ResizeHandlers } from "./ResizeHandlers";
 import classnames from "classnames";
-import { getRecentRxElement } from "@rxdrag/core";
+import { getRecentRxElement } from "@rxdrag/shared";
+import { RXID_ATTR_NAME } from "@rxdrag/core";
+
 
 const Widget = styled.div`
   position: fixed;
@@ -44,7 +46,7 @@ export const DraggableWidget = memo((
       return
     }
 
-    if (getRecentRxElement(e.target as HTMLElement)) {
+    if (getRecentRxElement(e.target as HTMLElement, RXID_ATTR_NAME)) {
       return
     }
 

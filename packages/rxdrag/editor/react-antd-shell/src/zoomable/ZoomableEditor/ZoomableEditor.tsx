@@ -1,11 +1,14 @@
 import { memo } from "react"
 import { ZoomableEditorInner, ZoomableEditorInnerProps } from "./ZoomableEditorInner"
+import "./style.css"
+import { ZoomableRoot } from "../ZoomableRoot";
 
-export const ZoomableEditor = memo((props: ZoomableEditorInnerProps) => {
-  const { ...other } = props
+export type ZoomableEditorProps = ZoomableEditorInnerProps
+
+export const ZoomableEditor = memo((props: ZoomableEditorProps) => {
   return (
-    <>
-      <ZoomableEditorInner {...other} />
-    </>
+    <ZoomableRoot>
+      <ZoomableEditorInner {...props} />
+    </ZoomableRoot>
   )
 })

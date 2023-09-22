@@ -2,17 +2,14 @@ import { IReactComponents, ReactComponent } from "@rxdrag/react-shared";
 import { isStr } from "@rxdrag/shared";
 import { useMemo } from "react";
 import { Field } from "@rxdrag/react-antd-components";
-import { materials, slots } from "example-common";
-import { PageDesigner, PagePreview } from "../page";
+import { materials } from "example-common";
 
 export function usePredefinedComponents() {
   const coms = useMemo(() => {
     const designers: IReactComponents = {
-      Page: PageDesigner,
       Field: Field,
     }
     const components: IReactComponents = {
-      Page: PagePreview,
       Field: Field,
     }
     for (const com of materials) {
@@ -28,11 +25,6 @@ export function usePredefinedComponents() {
           components[slot.componentName] = slot.component as ReactComponent
         }
       }
-    }
-
-    for (const com of slots) {
-      designers[com.componentName] = com.designer
-      components[com.componentName] = com.component
     }
 
     return { designers, components }

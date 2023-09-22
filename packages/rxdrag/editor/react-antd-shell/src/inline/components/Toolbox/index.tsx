@@ -9,6 +9,7 @@ import { useSettersTranslate } from "@rxdrag/react-core"
 const Container = styled(Panel).attrs({ name: WidgetNames.toolbox })`
   left:8px;
 `
+
 const PannelContent = styled.div`
   flex:1;
   display: flex;

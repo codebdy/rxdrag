@@ -2,6 +2,7 @@ export interface INodeMeta<
   Field = unknown,
   NodeController = unknown
 > {
+  //特殊类型节点通过这个字段区别，比如Fragment，FreedomGroup
   componentName: string;
   props?: {
     [key: string]: unknown;
@@ -21,11 +22,24 @@ export interface INodeMeta<
 
 export interface INodeSchema<Field = unknown, NodeController = unknown>
   extends INodeMeta<Field, NodeController> {
-  //name?: string,
-  //引用一段schema，ref赋值name，用于框架等分块编辑
-  //ref?: string,
   children?: INodeSchema[];
   slots?: {
     [name: string]: INodeSchema | undefined;
   };
+}
+
+export enum ViewType {
+  Main = "main",
+  Drawer = "drawwer",
+  Dialog = "dialog",
+  RoutePage = "route-page",
+}
+
+//一个document schema对应一个场景
+export interface IViewSchema<Field = unknown, NodeController = unknown> {
+  schema: INodeSchema<Field, NodeController>,
+  id?: string,
+  title?: string,
+  //视图类型，用于同一画布编辑多个document
+  viewType?: ViewType,
 }

@@ -1,6 +1,6 @@
 import { Button, Space, Tooltip } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
-import { SvgIcon } from "../layouts/CanvasToolbar/SvgIcon"
+import { SvgIcon } from "../../common/SvgIcon"
 import { SlScreenDesktop, SlScreenTablet } from "react-icons/sl";
 import { CanvasWidthLimits } from "@rxdrag/core";
 import { useCanvasWidthLimitsState, useSettersTranslate } from "@rxdrag/react-core";

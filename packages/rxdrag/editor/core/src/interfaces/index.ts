@@ -1,5 +1,6 @@
 export * from "./action"
-export * from "./component"
+export * from "./behavior"
+export * from "./material"
 export * from "./decorator"
 export * from "./document"
 export * from "./engine"

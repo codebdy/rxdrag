@@ -1,30 +1,26 @@
 import React, { useCallback } from "react"
 import {
-  GhostWidget,
-  InsertionCursor,
-  ActivedOutline,
-  SelectedOutline,
-  Toolbar,
   IDesignerEngine,
-  ActiveController,
-  DragOverController,
-  DragStopController,
-  SelectionController,
-  StartDragController,
   createEngine,
   ThemeMode,
-  DraggedAttenuator,
+  liquidPlugins,
+  freedomPlugins,
 } from "@rxdrag/core";
 import { memo, useEffect, useRef, useState } from "react"
-import { DesignerEngineContext, IMinionOptions, MinionOptionContext } from "./contexts";
+import { CanvasConfigContext, DesignerEngineContext, IMinionOptions, MinionOptionContext } from "./contexts";
 import { LocalesContext } from "@rxdrag/react-locales";
-import { IComponentMaterial } from "./interfaces";
+import { ICanvasConfig, IComponentMaterial } from "./interfaces";
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared";
 import { ISetterComponents } from "@rxdrag/core";
 import { Fieldy } from "@rxdrag/react-fieldy";
 import { ComponentDesignersRoot } from "./ComponentDesignersRoot";
 import { ILocales } from "@rxdrag/locales";
 import { PreviewComponentsContext } from "@rxdrag/react-runner";
+
+export enum LayoutType {
+  Liquid = "liquid",
+  Freedom = "freedom"
+}
 
 export interface DesignerProps {
   minionOptions?: IMinionOptions,
@@ -34,9 +30,11 @@ export interface DesignerProps {
   materials?: IComponentMaterial[]
   setters?: ISetterComponents<ReactComponent>
   locales?: ILocales,
+  layoutType?: LayoutType,
+  canvasConfig?: ICanvasConfig,
 }
 export const Designer = memo((props: DesignerProps) => {
-  const { minionOptions, themeMode = "light", children, materials, setters, locales } = props
+  const { minionOptions, themeMode = "light", children, materials, setters, locales, layoutType = LayoutType.Liquid, canvasConfig } = props
   const [components, setComponents] = useState<IReactComponents>({})
   const [designers, setDesigners] = useState<IReactComponents>({})
   const [engine, setEngine] = useState<IDesignerEngine>();
@@ -45,19 +43,7 @@ export const Designer = memo((props: DesignerProps) => {
   useEffect(() => {
     let eng: IDesignerEngine<ReactComponent, React.ReactNode> | undefined = undefined
     eng = createEngine(
-      [
-        StartDragController,
-        SelectionController,
-        DragStopController,
-        DragOverController,
-        ActiveController,
-        ActivedOutline,
-        SelectedOutline,
-        GhostWidget,
-        DraggedAttenuator,
-        InsertionCursor,
-        Toolbar,
-      ],
+      layoutType === LayoutType.Liquid ? liquidPlugins : freedomPlugins,
       {
         debugMode: false
       }
@@ -67,7 +53,7 @@ export const Designer = memo((props: DesignerProps) => {
       eng?.destroy()
     }
 
-  }, [])
+  }, [layoutType])
 
   useEffect(() => {
     if (engine) {
@@ -116,20 +102,22 @@ export const Designer = memo((props: DesignerProps) => {
 
   return (
     <Fieldy>
-      <MinionOptionContext.Provider value={minionOptions}>
-        <LocalesContext.Provider value={engine?.getLocalesManager()}>
-          <DesignerEngineContext.Provider value={engine}>
-            <ComponentDesignersRoot components={designers}>
-              {
-                //Preivew的时候用的组件，主要针对无Iframe画布
-                <PreviewComponentsContext.Provider value={components}>
-                  {engine && children}
-                </PreviewComponentsContext.Provider>
-              }
-            </ComponentDesignersRoot>
-          </DesignerEngineContext.Provider>
-        </LocalesContext.Provider>
-      </MinionOptionContext.Provider>
+      <CanvasConfigContext.Provider value = {canvasConfig}>
+        <MinionOptionContext.Provider value={minionOptions}>
+          <LocalesContext.Provider value={engine?.getLocalesManager()}>
+            <DesignerEngineContext.Provider value={engine}>
+              <ComponentDesignersRoot components={designers}>
+                {
+                  //Preivew的时候用的组件，主要针对无Iframe画布
+                  <PreviewComponentsContext.Provider value={components}>
+                    {engine && children}
+                  </PreviewComponentsContext.Provider>
+                }
+              </ComponentDesignersRoot>
+            </DesignerEngineContext.Provider>
+          </LocalesContext.Provider>
+        </MinionOptionContext.Provider>
+      </CanvasConfigContext.Provider>
     </Fieldy>
   )
 })

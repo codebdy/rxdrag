@@ -54,6 +54,7 @@ export const TwoColumnLayoutMaterial: IComponentMaterial = {
 
   behaviorRule: {
     droppable: false,
+    cloneable: false,
   },
   slots: {
     header: LayoutHeaderMaterial,

@@ -9,7 +9,7 @@ import { Listener, ID, Unsubscribe } from "./types"
 
 export type DraggingNodesListener = (dragging: DraggingNodesState | null) => void
 export type DraggingResourceListener = (dragging: DraggingResourceState | null) => void
-export type SelectedChangeListener = (selectedIds: ID[] | null, documentId: ID) => void
+export type SelectedChangeListener = (selectedIds: ID[] | null) => void
 export type CurrentNodesChangeListener = (node: ITreeNode) => void
 export type DragOverListener = (dragover: DragOverState | null) => void
 export type LangListener = (lang: string) => void
@@ -22,6 +22,7 @@ export type CanvasWidthListener = (index: number | null) => void
 export type CanvasWidthLimitsListener = (limits: CanvasWidthLimits | null) => void
 export type DocumentViewListener = (viewType: ViewType) => void
 export type SelectionModeListener = (mode: DocumentSelectionMode) => void
+export type DocumentTitleListener = (title: string | undefined) => void
 
 export interface IMonitor {
 	subscribeToStateChange(
@@ -44,9 +45,11 @@ export interface IMonitor {
 	subscribeToCanvasWidthLimitsChange(documentId: ID, listener: CanvasWidthLimitsListener): Unsubscribe
 	subscribeToDocumentViewChange(documentId: ID, listener: DocumentViewListener): Unsubscribe
 	subscribeToSelectionMode(documentId: ID, listener: SelectionModeListener): Unsubscribe
+	subscribeToDocumentTitle(documentId: ID, listener: DocumentTitleListener): Unsubscribe
 
 	//onViewPortResizeOrScroll(listener: Listener): Unsubscribe
-	isDragging(): boolean
+	getDraggingResouce(): DraggingResourceState | undefined
+	getDraggingNodes(): DraggingNodesState | undefined
 	getCurrentSelectedIds(): ID[] | null
 	getDocumentSelectedIds(documentId: ID): ID[] | null
 	getNode(nodeId: ID): ITreeNode | null

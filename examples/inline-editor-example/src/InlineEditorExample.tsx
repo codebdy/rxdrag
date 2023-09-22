@@ -10,10 +10,10 @@ import {
 import { Layout, Menu, Button, theme, Space } from 'antd';
 import styled from 'styled-components';
 import { Logo, MenuButton, controllerDefines, materials, minionsLocales, minionsMaterialCategories, setterLocales } from 'example-common';
-import { EditorScope } from '@rxdrag/react-antd-shell';
-import { PageEditor, pageMaterial } from './page';
+import { DesignerScope } from '@rxdrag/react-antd-shell';
 import { INodeSchema } from "@rxdrag/schema"
 import { ControllerSetter } from "@rxdrag/react-antd-shell"
+import { PageEditor } from './PageEditor';
 
 const { Header, Sider, Content } = Layout;
 
@@ -36,8 +36,6 @@ const StyledHeader = styled(Header)`
   align-items: center;
 `
 
-const exampleMaterials = [...materials, pageMaterial]
-
 export const InlineEditorExample: React.FC = () => {
   const [design, setDesign] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
@@ -55,16 +53,16 @@ export const InlineEditorExample: React.FC = () => {
   }, [])
 
   return (
-    <EditorScope
+    <DesignerScope
       themeMode='dark'
       minionOptions={{
         materials: minionsMaterialCategories,
         locales: minionsLocales,
         controllers: controllerDefines,
       }}
-      materials={exampleMaterials}
+      materials={materials}
       setters={{ ControllerSetter }}
-      locales = {setterLocales}
+      locales={setterLocales}
     >
       <StyleLayout>
         <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -125,6 +123,6 @@ export const InlineEditorExample: React.FC = () => {
           </Content>
         </Layout>
       </StyleLayout>
-    </EditorScope>
+    </DesignerScope>
   );
 };

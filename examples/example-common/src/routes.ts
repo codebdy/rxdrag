@@ -5,4 +5,5 @@ export const routes = {
   logicflow: "/logicflow",
   runtime: "/runtime",
   largeScreen: "/large-screen",
+  appDesigner: "/app-designer"
 }

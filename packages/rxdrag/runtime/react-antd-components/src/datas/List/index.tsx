@@ -21,6 +21,7 @@ export const List = memo((props: ListProps<unknown> & ListAddonProps) => {
 
   return (
     <ArrayField name={id} value={dataSource?.nodes}>
+
       <AntdList
         dataSource={dataSource?.nodes}
         pagination={

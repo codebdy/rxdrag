@@ -53,7 +53,7 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
   const render = useCallback(() => {
     if (Component && node) {
       if (hasChildren) {
-        return <Component ref={!behavior?.isNoRef() ? handleRef : undefined} {...realProps} >
+        return <Component ref={!behavior?.noRef() ? handleRef : undefined} {...realProps} >
           <Locked node={node}>
             {
               !node.meta?.selfRender && node.children?.map((childId: string) => {
@@ -62,12 +62,12 @@ export const ComponentDesignerView = memo((props: { nodeId: string }) => {
             }
           </Locked>
         </Component >
-      } else if (behavior?.isDroppable() && node.parentId) {
-        return <Component {...realProps}>
-          {!behavior.isNoPlaceholder() && <PlaceHolder />}
+      } else if (behavior?.droppable() && node.parentId) {
+        return <Component ref={!behavior?.noRef() ? handleRef : undefined} {...realProps}>
+          {!behavior.noPlaceholder() && <PlaceHolder />}
         </Component>
       } else {
-        return <Component ref={!behavior?.isNoRef() ? handleRef : undefined} {...realProps} />
+        return <Component ref={!behavior?.noRef() ? handleRef : undefined} {...realProps} />
       }
     }
     return <></>

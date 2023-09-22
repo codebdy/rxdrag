@@ -17,8 +17,8 @@
     "build": "vite build"
   },
   "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "eslint": "^7.32.0",
@@ -33,7 +33,7 @@
     "react-router-dom": "^6.8.1"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.8.0",
+    "@ant-design/icons": "^5.1.0",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "@rxdrag/react-antd-shell": "workspace:*",
@@ -43,7 +43,7 @@
     "@rxdrag/react-runner": "workspace:*",
     "@rxdrag/react-antd-components": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
-    "antd": "^5.6.2",
+    "antd": "^5.9.2",
     "styled-components": "^5.3.9"
   }
 }

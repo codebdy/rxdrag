@@ -30,6 +30,7 @@ export const ColorInput: React.FC<IColorInputProps> = (props) => {
           props.onChange?.(e.target.value)
         }}
         placeholder="Color"
+        allowClear
         prefix={
           <Popover
             autoAdjustOverflow

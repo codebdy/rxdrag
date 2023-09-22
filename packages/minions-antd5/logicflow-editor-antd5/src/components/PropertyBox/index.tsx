@@ -3,7 +3,7 @@ import React, { Fragment, memo, useCallback, useMemo } from "react"
 import styled from "styled-components"
 import { PortsInput } from "./PortsInput"
 import { VirtualForm } from "@rxdrag/react-fieldy"
-import { useLocalesManager } from "@rxdrag/react-locales"
+import { useRxDragLocalesManager } from "@rxdrag/react-locales"
 import { JSONInput, ValueInput } from "@rxdrag/react-antd-props-inputs"
 import { useSelectedNode, useGetMaterial, useDispatch, useBackup, useMarkChange, ActionType } from "@rxdrag/minions-logicflow-editor"
 import { INodeSchema } from "@rxdrag/schema"
@@ -28,7 +28,7 @@ export const PropertyBox = memo((
   const node = useSelectedNode()
 
   const getMaterial = useGetMaterial()
-  const localesManager = useLocalesManager()
+  const localesManager = useRxDragLocalesManager()
   const dispatch = useDispatch()
   const material = useMemo(() => getMaterial(node?.activityName || ""), [getMaterial, node?.activityName])
   const backup = useBackup()
@@ -87,7 +87,7 @@ export const PropertyBox = memo((
                   JSONInput,
                   ...setters || {}
                 }}
-                root={propsSchema}
+                schema={propsSchema}
               />
             }
           </VirtualForm>

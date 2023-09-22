@@ -4,8 +4,10 @@ import { ReactNode, createContext } from "react";
 import { IReactComponents } from "@rxdrag/react-shared";
 import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
 import { IControllerDefine } from "./types";
+import { ICanvasConfig } from "./interfaces";
 
 export const DesignerEngineContext = createContext<IDesignerEngine | undefined>(undefined)
+export const CanvasConfigContext = createContext<ICanvasConfig | undefined>(undefined)
 export const InIframeContext = createContext<boolean | undefined>(undefined)
 //IFrame中的Component不能跟engine中一套，所以必须要单独处理
 export const ComponentDesignersContext = createContext<IReactComponents>({})

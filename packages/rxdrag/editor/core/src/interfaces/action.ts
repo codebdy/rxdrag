@@ -7,7 +7,7 @@ export interface IAction<Payload> extends Action<Identifier> {
 	payload?: Payload
 }
 
-export type ActionCreator<Payload> = (args: any[]) => IAction<Payload>
+export type ActionCreator<Payload> = (args: unknown[]) => IAction<Payload>
 
 export interface SentinelAction {
 	type: Identifier
@@ -44,7 +44,7 @@ export interface IActions {
 	endDragResource(): void
 	startDragNodes(options: StartDragNodesOptions): void
 	endDragNodes(): void
-	selectNodes(targets: ID[], documentId: ID): void
+	selectNodes(targets: ID[]): void
 	setSelectionMode(documentId: string, mode: DocumentSelectionMode): void
 	changeActivedDocument(documentId: ID | null): void
 	setThemeMode(mode: ThemeMode): void

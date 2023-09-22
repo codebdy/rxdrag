@@ -17,7 +17,7 @@ export function nodesById(
 	const newState: State = {}
 	switch (action.type) {
 		case INITIALIZE:
-			return (payload as DocumentInitPayload)?.nodesById || {}
+			return { ...state, ...(payload as DocumentInitPayload)?.nodesById || {} }
 		case ADD_NODES:
 			return addNods(state, action as IDocumentAction<DocumentActionPayload>)
 		case MOVE_NODES:
@@ -50,7 +50,7 @@ function addNods(state: State = {},
 	const { pos, slot } = addPayload
 	const newState = Object.assign({}, state, addPayload.nodes.nodesById)
 	const sourceIds = addPayload.nodes.rootNodes.map(node => node.id)
-	if (pos === NodeRelativePosition.InTop || pos === NodeRelativePosition.InBottom) {
+	if (pos === NodeRelativePosition.InTop || pos === NodeRelativePosition.InBottom || pos === NodeRelativePosition.Absolute) {
 		return addIn(newState, sourceIds, addPayload.targetId, pos)
 	} else if (pos === NodeRelativePosition.Before || pos === NodeRelativePosition.After) {
 		return addSiblings(newState, sourceIds, addPayload.targetId, pos)

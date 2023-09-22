@@ -20,6 +20,11 @@ export interface IRect {
 	height: number,
 }
 
+export interface ISize{
+	width: number,
+	height: number,
+}
+
 export enum NodeStatus {
 	Normal = "normal",
 	Disabled = "disabled"

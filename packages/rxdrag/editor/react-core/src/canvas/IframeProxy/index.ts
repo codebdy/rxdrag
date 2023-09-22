@@ -1,4 +1,4 @@
 export * from "./constants"
-export * from "../ICanvasProxy"
+export * from "../CanvasProxy"
 export * from "./IFrame"
 export * from "./Scroller"

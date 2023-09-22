@@ -17,13 +17,14 @@ export const Logo = memo((
     className?: string,
     style?: CSSProperties,
     title?: string,
+    mini?: boolean,
   }
 ) => {
-  const { title, ...other } = props
+  const { title, mini, ...other } = props
   return (
     <LogoContainer {...other}>
-      <img alt="rxeditor" height={32} width={32} src="logo.png" />
-      rx.{title || "___"}
+      <img alt="rxeditor" height={32} width={32} src="/logo.png" />
+      {!mini && `rx.${title || "___"}`}
     </LogoContainer>
   )
 })

@@ -1,5 +1,5 @@
 import { State } from "../reducers";
-import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, NodeBehavior, AbleCheckFunction, IComponentConfig } from "../interfaces";
+import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, INodeBehavior, AbleType, IComponentConfig, IResizable, IMoveable, IBehaviorManager } from "../interfaces";
 import { Store } from "redux";
 import { ResourceManager } from "./ResourceManager";
 import { DocumentImpl } from "../classes/DocumentImpl";
@@ -14,9 +14,10 @@ import { IPlugin, IPluginFactory } from "../interfaces/plugin";
 import { isFn } from "@rxdrag/shared";
 import { IDecoratorManager } from "../interfaces/decorator";
 import { DecoratorManager } from "./DecoratorManager";
-import { INodeSchema } from "@rxdrag/schema";
+import { IViewSchema } from "@rxdrag/schema";
 import { ISetterManager } from "../interfaces/setter";
 import { SetterManager } from "./SetterManager";
+import { BehaviorManager } from "./BehaviorManager";
 
 export class DesignerEngine<ComponentType = unknown, IconType = unknown> implements IDesignerEngine<ComponentType, IconType> {
 	private documentsById: {
@@ -26,6 +27,7 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 	private localesManager: IRxDragLocalesManager
 	private actions: IActions
 	private componentManager: IComponentManager<ComponentType>
+	private behaviorManager: IBehaviorManager
 	private decoratorManager: IDecoratorManager
 	private setterManager: ISetterManager<ComponentType>
 
@@ -44,10 +46,25 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 		this.setterManager = new SetterManager<ComponentType>()
 		this.actions = new Actions(this)
 		this.componentManager = new ComponentManager<ComponentType>(this)
+		this.behaviorManager = new BehaviorManager(this)
 		for (const pluginFactory of plugins) {
 			this.registerPlugin(pluginFactory)
 		}
 	}
+	getBehaviorManager(): IBehaviorManager {
+		return this.behaviorManager;
+	}
+	clearDocuments(): void {
+		for (const id of Object.keys(this.documentsById)) {
+			this.getDocument(id)?.destroy()
+		}
+		this.documentsById = {}
+	}
+	removeDocument(id: string): void {
+		this.getDocument(id)?.destroy()
+		delete this.documentsById[id]
+	}
+
 	getSetterManager(): ISetterManager<ComponentType> {
 		return this.setterManager
 	}
@@ -90,8 +107,9 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 	setSelectionMode(mode: SelectionMode): void {
 		throw new Error("Method not implemented.");
 	}
-	createDocument(schema: INodeSchema): IDocument {
-		const doc = new DocumentImpl(schema, this, this.store)
+
+	createDocument(documentSchema: IViewSchema): IDocument {
+		const doc = new DocumentImpl(documentSchema, this, this.store)
 		this.documentsById[doc.id] = doc
 		this.dispatch({
 			type: CHANGE_ACTIVED_DOCUMENT,
@@ -99,6 +117,7 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 		})
 		return doc
 	}
+
 	getDocument(id: string): IDocument | null {
 		return this.documentsById[id]
 	}
@@ -129,20 +148,6 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 			this.plugins[key]?.destroy()
 		}
 		this.shell.destroy()
-	}
-
-	getNodeBehavior(nodeId: ID): NodeBehavior {
-		return {
-			isDisabled: () => checkAbility("disabled", false, nodeId, this),
-			isSelectable: () => checkAbility("selectable", true, nodeId, this),
-			isDroppable: () => checkAbility("droppable", false, nodeId, this),
-			isDraggable: () => checkAbility("draggable", true, nodeId, this),
-			isDeletable: () => checkAbility("deletable", true, nodeId, this),
-			isCloneable: () => checkAbility("cloneable", true, nodeId, this),
-			isNoPlaceholder: () => checkAbility("noPlaceholder", false, nodeId, this),
-			isNoRef: () => checkAbility("noRef", false, nodeId, this),
-			isLockable: () => checkAbility("lockable", false, nodeId, this),
-		}
 	}
 
 	registerPlugin(pluginFactory: IPluginFactory): void {
@@ -184,32 +189,4 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 			}
 		}
 	}
-}
-
-export const checkAbility = (
-	name: "disabled" | "selectable" | "droppable" | "draggable" | "deletable" | "cloneable" | "noPlaceholder" | "noRef" | "lockable",
-	defaultValue: boolean,
-	nodeId: ID,
-	engine: IDesignerEngine
-) => {
-	const nodeRules = engine.getComponentManager().getNodeBehaviorRules(nodeId)
-	for (const rule of nodeRules) {
-		const able = ableCheck(defaultValue, nodeId, rule[name], engine)
-		if (able !== defaultValue) {
-			return able
-		}
-	}
-
-	return defaultValue
-}
-
-
-const ableCheck = (defaultValue: boolean, nodeId: ID, able: boolean | AbleCheckFunction | undefined, engine: IDesignerEngine): boolean => {
-	if (able === undefined) {
-		return defaultValue
-	}
-	if (isFn(able)) {
-		return able(nodeId, engine)
-	}
-	return able || false
 }

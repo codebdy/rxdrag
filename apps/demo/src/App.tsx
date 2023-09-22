@@ -6,9 +6,11 @@ import { controllerDefines, routes } from 'example-common';
 import { InlineEditorExample } from "inline-editor-example";
 import { LogicflowEditorExample } from "logicflow-editor-example";
 import { ControllerEditorExample } from "controller-editor-example";
-import { IFrameCanvas, IFramePreview, NormalEditorExample, usePredefinedComponents } from "normal-editor-example"
+import { NormalEditorExample, usePredefinedComponents } from "normal-editor-example"
 import { RuntimeExample } from "runtime-example"
-import { LargeScreenExample } from "large-screen-example"
+import { LargeScreenExample, largeScreenComponents, largeScreenDesigners } from "large-screen-example"
+import { IFrameCanvas, IFramePreview } from '@rxdrag/react-antd-shell';
+import { AppDesignerExample } from "app-designer-example"
 
 function App() {
   const { designers, components } = usePredefinedComponents()
@@ -38,7 +40,24 @@ function App() {
       </Route>
       <Route path={routes.runtime} element={<RuntimeExample />}>
       </Route>
-      <Route path={routes.largeScreen} element={<LargeScreenExample />}>
+      <Route path={'/large-screen-canvas-render'} element={<IFrameCanvas designers={largeScreenDesigners} />}>
+      </Route>
+      <Route path={'/large-screen-/preview-render'} element={<IFramePreview components={largeScreenComponents} controllerFactories={controllerFactories} />}>
+      </Route>
+      <Route
+        path={routes.largeScreen}
+        element={
+          <LargeScreenExample
+            canvasUrl="/large-screen-canvas-render"
+            previewUrl="/large-screen-/preview-render"
+          />}
+      >
+      </Route>
+      <Route
+        path={routes.appDesigner + "/*"}
+        element={
+          <AppDesignerExample/>}
+      >
       </Route>
     </Routes>
 

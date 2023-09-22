@@ -1,9 +1,7 @@
 import { useMemo } from 'react';
-import { Collapse } from 'antd';
+import { Collapse, CollapseProps } from 'antd';
 import cx from 'classnames';
 import styled from 'styled-components';
-
-const { Panel } = Collapse;
 
 const StyledCollapse = styled(Collapse)`
   .ant-collapse-header {
@@ -27,6 +25,13 @@ export const Group = (props: any) => {
   const { children, title, className, onCollapseChange, activeKey } = props;
 
   const klass = useMemo(() => cx('rx-accordion-field', className), [className]);
+  const items: CollapseProps['items'] = [
+    {
+      key: 'panel',
+      label: title,
+      children: <div className="rx-field-body">{children}</div>,
+    },
+  ];
 
   return (
     <>
@@ -36,10 +41,8 @@ export const Group = (props: any) => {
         className={klass}
         expandIcon={() => null}
         ghost
+        items={items}
       >
-        <Panel header={title} key="panel" style={{ padding: 0 }}>
-          <div className="rx-field-body">{children}</div>
-        </Panel>
       </StyledCollapse>
       <div className="rx-field-split-line"></div>
     </>

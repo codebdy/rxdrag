@@ -11,6 +11,7 @@ import {
   componentsIcon,
   historyIcon,
   outlineIcon,
+  ControllerSetter,
 } from "@rxdrag/react-antd-shell"
 import { SaveButton } from "./widgets/SaveButton"
 import { PagesWidget } from "./PagesWidget"
@@ -31,7 +32,7 @@ export const NormalEditorExample = memo(() => {
     setActivedKey(key as LeftNavType)
   }, [])
 
-  const schemas = useMemo(() => {
+  const schema = useMemo(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (pages as any)[pageId]
   }, [pageId])
@@ -42,7 +43,7 @@ export const NormalEditorExample = memo(() => {
 
   return (
     <RxEditorAntd
-      schemas={schemas}
+      schema={schema}
       canvasUrl="/canvas-render"
       previewUrl="/preview-render"
       themeMode='dark'
@@ -110,6 +111,7 @@ export const NormalEditorExample = memo(() => {
           onActive={handleActive}
         />
       }
+      setters={{ ControllerSetter }}
     >
     </RxEditorAntd>
   )

@@ -1,40 +1,42 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { makeRxId } from "@rxdrag/shared";
 import { HistoryableActionType, IDocument, IDocumentAction, ISnapshot, ITreeNode, NodeChunk, NodeRelativePosition, NodesById } from "../interfaces/document";
 import { AddNodesPayload, BackupPayload, ChangeMetaPayloads, DeleteNodesPayload, DocumentActionPayload, GotoPayload, MoveNodesPayload, RecoverSnapshotPayload, RemoveSlotPayload } from "../interfaces/payloads";
-import { ID, IDesignerEngine } from "../interfaces";
+import { ID, IDesignerEngine, IXYCoord } from "../interfaces";
 import { State } from "../reducers";
 import { parseNodeSchema, paseNodes } from "../funcs/parseNodeSchema";
 import { Store } from "redux";
 import { ADD_NODES, BACKUP, CHANGE_NODE_META, DELETE_NODES, GOTO, INITIALIZE, MOVE_NODES, RECOVER_SNAPSHOT, REMOVE_DOCUMENT, REMOVE_SLOT } from "../actions/registry";
 import { DocumentState } from "../reducers/documentsById/document";
 import { isArr, isStr } from "@rxdrag/shared";
-import { INodeSchema, INodeMeta } from "@rxdrag/schema";
+import { INodeSchema, INodeMeta, IViewSchema } from "@rxdrag/schema";
 
 export class DocumentImpl implements IDocument {
   id: string;
-  constructor(schema: INodeSchema,
+  constructor(
+    meta: IViewSchema,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private engine: IDesignerEngine<any, any>,
-    private store: Store<State>
+    private store: Store<State>,
   ) {
-    this.id = makeRxId()
-    this.initialize(schema, this.id)
+    this.id = meta.id || makeRxId()
+    this.initialize(meta)
   }
 
-  initialize(rootSchema: INodeSchema, documentId: string): void {
+  initialize(meta: IViewSchema): void {
     const nodesById: NodesById = {}
-    if (!this.isBlocksSchema(rootSchema)) {
-      const root = parseNodeSchema(this.engine, documentId, rootSchema as INodeSchema, nodesById, false)
-      this.dispatch({
-        type: INITIALIZE,
-        payload: {
-          documentId: documentId,
-          nodesById,
-          rootId: root.id,
-        },
-      })
-      this.backup(HistoryableActionType.Default)
-    }
+    const root = parseNodeSchema(this.engine, this.id, meta.schema as INodeSchema, nodesById, false)
+    this.dispatch({
+      type: INITIALIZE,
+      payload: {
+        documentId: this.id,
+        nodesById,
+        title: meta.title,
+        rootId: root.id,
+      },
+    })
+    this.backup(HistoryableActionType.Default)
+
   }
   moveTo = (sourceId: string, targetId: string, pos: NodeRelativePosition): void => {
     const payload: MoveNodesPayload = {
@@ -49,17 +51,45 @@ export class DocumentImpl implements IDocument {
     throw new Error("Method not implemented.");
   }
   addNewNodes(elements: INodeSchema | INodeSchema[], targetId: string, pos: NodeRelativePosition): NodeChunk {
-    const nodes = paseNodes(this.engine, this.id, elements);
-    this.receiveNodes(nodes)
+    const nodesChunk = paseNodes(this.engine, this.id, elements);
+    this.receiveNodes(nodesChunk)
     const payload: AddNodesPayload = {
       documentId: this.id,
-      nodes,
+      nodes: nodesChunk,
       targetId,
       pos
     }
     this.dispatch(this.createAction(ADD_NODES, payload))
 
-    return nodes
+    return nodesChunk
+  }
+
+  addNewFreedomNodes(elements: INodeSchema<unknown, unknown> | INodeSchema<unknown, unknown>[], targetId: string, absolutePosition: IXYCoord): NodeChunk {
+    const nodesChunk = paseNodes(this.engine, this.id, elements);
+    const nodes = nodesChunk.nodesById
+    if (absolutePosition) {
+      for (const key of Object.keys(nodes)) {
+        const node = nodes[key]
+        if (node) {
+          node.meta.props = {
+            ...node.meta.props,
+            left: absolutePosition?.x,
+            top: absolutePosition?.y,
+          }
+        }
+      }
+    }
+
+    this.receiveNodes(nodesChunk)
+    const payload: AddNodesPayload = {
+      documentId: this.id,
+      nodes: nodesChunk,
+      targetId,
+      pos: NodeRelativePosition.InBottom
+    }
+    this.dispatch(this.createAction(ADD_NODES, payload))
+
+    return nodesChunk
   }
 
   remove = (sourceId: string): void => {
@@ -124,7 +154,7 @@ export class DocumentImpl implements IDocument {
     if (sourceSchema) {
       const nodes = this.addNewNodes(sourceSchema, sourceId, NodeRelativePosition.After);
       for (const node of nodes.rootNodes) {
-        this.engine.getActions().selectNodes([node.id], this.id)
+        this.engine.getActions().selectNodes([node.id])
       }
       this.backup(HistoryableActionType.Clone)
     }
@@ -144,7 +174,7 @@ export class DocumentImpl implements IDocument {
     const payload: BackupPayload = {
       documentId: this.id,
       nodes: this.engine.getMonitor().getState().nodesById,
-      selectedIds: this.getState()?.selectedIds || [],
+      selectedIds: this.store.getState()?.selectedIds || [],
       actionType: actionType
     }
 
@@ -211,11 +241,19 @@ export class DocumentImpl implements IDocument {
   }
 
   destroy(): void {
-    this.dispatch(this.createAction(REMOVE_DOCUMENT, { }))
+    const ids = this.engine.getMonitor().getDocumentSelectedIds(this.id)
+    if (ids?.length) {
+      this.engine.getActions().selectNodes([])
+    }
+    this.dispatch(this.createAction(REMOVE_DOCUMENT, {}))
   }
 
   getSchemaTree(): INodeSchema | null {
     return this.getNodeSchema(this.getState()?.rootId || "")
+  }
+
+  getTitle(): string | undefined {
+    return this.getState()?.title
   }
 
   dispatch(action: IDocumentAction<any>): void {
@@ -282,9 +320,6 @@ export class DocumentImpl implements IDocument {
     return this.store.getState().documentsById[this.id]
   }
 
-  private isBlocksSchema(schema: INodeSchema): boolean {
-    return !(schema as INodeSchema).componentName
-  }
 
   private recoverSnapshot(snapshot: ISnapshot) {
     const payload: RecoverSnapshotPayload = {

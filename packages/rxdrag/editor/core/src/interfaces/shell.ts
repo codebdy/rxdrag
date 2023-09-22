@@ -8,6 +8,7 @@ export interface IShellPane {
 	//顶层容器的区域，主要为了iframe换算坐标
 	getDocumentBodyRect(): IRect | null
 	getNodeRect(nodeId: ID): IRect | null
+	getNodesRect(nodeIds: ID[]): IRect | null
 	appendAux(child: HTMLElement): void
 	contains(child: HTMLElement): boolean
 	destroy(): void
@@ -24,8 +25,8 @@ export type Canvases = {
 
 //处理鼠标键盘事件，将其转换为 Engine 事件。
 export interface IDesignerShell extends ISubscribable, IDispatchable<ICustomEvent<unknown>> {
-	//状态
-	dragging: boolean
+	//开始拖拽的鼠标事件
+	dragStartEvent: MouseEvent | undefined
 
 	getContainer(): IShellPane | undefined
 	setContainer(container: IShellPane): void

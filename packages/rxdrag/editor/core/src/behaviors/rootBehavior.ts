@@ -1,10 +1,12 @@
-import { IBehavior, ITreeNode } from "../interfaces";
+import { IBehaviorSchema, IDesignerEngine, SelectorSource } from "../interfaces";
 
-export const rootBehavior: IBehavior = {
+export const rootBehavior: IBehaviorSchema = {
   name: "default.root",
-  selector: function (node: ITreeNode): boolean {
-    return !node.parentId
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  selector: function (source: SelectorSource, _?: IDesignerEngine): boolean {
+    return !source?.node?.parentId
   },
+  priority: 10,
   rule: {
     draggable: false,
     droppable: true,

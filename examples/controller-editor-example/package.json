@@ -17,8 +17,8 @@
     "build": "vite build"
   },
   "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "eslint": "^7.32.0",
@@ -34,7 +34,7 @@
     "react-router-dom": "^6.8.1"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.8.0",
+    "@ant-design/icons": "^5.1.0",
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/minions-controller-editor": "workspace:*",
     "@rxdrag/minions-logicflow-editor": "workspace:*",
@@ -44,7 +44,7 @@
     "@rxdrag/minions-schema": "workspace:*",
     "@rxdrag/react-fieldy": "workspace:*",
     "example-common": "workspace:*",
-    "antd": "^5.6.2",
+    "antd": "^5.9.2",
     "classnames": "^2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

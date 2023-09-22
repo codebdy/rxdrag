@@ -31,7 +31,6 @@ export const ExampleInner = memo((
 
   const { selected } = useSelected()
   const handleRemove = useRemoveSelected()
-
   return (
     <Fieldy>
       <ShellContainer>

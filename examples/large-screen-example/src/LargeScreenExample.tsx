@@ -1,31 +1,36 @@
 import { memo } from "react"
-import { LangButtons, ThemeButton, ZoomableEditor } from "@rxdrag/react-antd-shell"
-import { GithubFilled } from "@ant-design/icons"
-import { Space, Button } from "antd"
-import { SaveButton } from "./SaveButton"
-import { Logo, MenuButton } from "example-common"
+import { EditorScope } from "@rxdrag/react-antd-shell"
+import { controllerDefines, minionsLocales, minionsMaterialCategories } from "example-common"
+import { LargeScreenExampleInner } from "./LargeScreenExampleInner"
+import { largeScreenMaterials } from "./marerials/materials"
+import { largeScreenSetters } from "./setters/setters"
+import { resourceCategoryLocales } from "./marerials/locales"
+import { LayoutType } from "@rxdrag/react-core"
 
-export const LargeScreenExample = memo(() => {
+export const LargeScreenExample = memo((
+  props: {
+    canvasUrl: string,
+    previewUrl: string,
+  }
+) => {
+  const { canvasUrl, previewUrl } = props
   return (
-    <ZoomableEditor
-      topBar={
-        <>
-          <Space>
-            <Logo title="大屏" />
-          </Space>
-          <Space>
-            <ThemeButton />
-            <LangButtons />
-            <Button
-              href="https://github.com/rxdrag/rxeditor"
-              target="_blank"
-              icon={<GithubFilled />}
-            > Github</Button>
-            <SaveButton />
-            <MenuButton />
-          </Space>
-        </>
-      }
-    />
+    <EditorScope
+      themeMode="dark"
+      //自由布局
+      layoutType={LayoutType.Freedom}
+      locales={resourceCategoryLocales}
+      canvasUrl={canvasUrl}
+      previewUrl={previewUrl}
+      minionOptions={{
+        materials: minionsMaterialCategories,
+        locales: minionsLocales,
+        controllers: controllerDefines,
+      }}
+      materials={largeScreenMaterials}
+      setters={largeScreenSetters}
+    >
+      <LargeScreenExampleInner />
+    </EditorScope>
   )
 })

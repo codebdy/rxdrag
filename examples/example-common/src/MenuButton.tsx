@@ -29,31 +29,36 @@ const items: MenuProps['items'] = [
     label: <a href={routes.controller}>控制器编辑器</a>,
     key: routes.controller,
   },
-  {
-    label: <a href={"#"}>工作流表单编辑器</a>,
-    key: 'workflow',
-  },
+  // {
+  //   label: <a href={"#"}>工作流表单编辑器</a>,
+  //   key: 'workflow',
+  // },
   {
     label: <a href={routes.largeScreen}>大屏编辑</a>,
     key: routes.largeScreen,
   },
-  {
-    label: <a href={"#"}>H5编辑器</a>,
-    key: 'h5',
-  },
+  // {
+  //   label: <a href={"#"}>H5编辑器</a>,
+  //   key: 'h5',
+  // },
   {
     label: <a href={routes.runtime} target="_blank">运行时示例</a>,
     key: routes.runtime,
   },
+  // {
+  //   //引入外部包
+  //   label: <a href={"#"}>树形菜单编辑器</a>,
+  //   key: 'menuTree',
+  // },
+  // {
+  //   //引入外部包
+  //   label: <a href={"#"}>UML编辑器</a>,
+  //   key: 'uml',
+  // },
   {
     //引入外部包
-    label: <a href={"#"}>树形菜单编辑器</a>,
-    key: 'menuTree',
-  },
-  {
-    //引入外部包
-    label: <a href={"#"}>UML编辑器</a>,
-    key: 'uml',
+    label: <a href={routes.appDesigner}>低码APP设计器</a>,
+    key: routes.appDesigner,
   },
 ];
 

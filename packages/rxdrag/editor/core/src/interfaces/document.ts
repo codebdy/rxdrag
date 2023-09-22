@@ -1,7 +1,7 @@
 import { IAction } from "./action";
 import { DocumentActionPayload } from "./payloads";
-import { ID, RxProps } from "./types";
-import { INodeMeta, INodeSchema } from "@rxdrag/schema"
+import { ID, IXYCoord, RxProps } from "./types";
+import { IViewSchema, INodeMeta, INodeSchema } from "@rxdrag/schema"
 
 export type NodesById = {
   [id in ID]: ITreeNode
@@ -28,7 +28,7 @@ export enum NodeRelativePosition {
   InTop = 1,
   InBottom,
   Before,
-  After
+  After,
 }
 export type NodeListener = (node: ITreeNode) => void
 
@@ -65,25 +65,6 @@ export interface ITreeNode<IField = unknown, INodeController = unknown> {
   propsSchema?: INodeSchema
 }
 
-export interface NodeBehavior {
-  isDisabled: () => boolean
-  isSelectable: () => boolean
-  isDroppable: () => boolean
-  isDraggable: () => boolean
-  isDeletable: () => boolean
-  isCloneable: () => boolean
-  isNoPlaceholder: () => boolean
-  isNoRef: () => boolean
-  isLockable: () => boolean
-}
-
-// export interface IBlocksSchema {
-//   [bolckName: string]: INodeSchema
-// }
-
-// export interface IBlocksTreeNode {
-//   [bolckName: string]: ITreeNode
-// }
 
 export enum HistoryableActionType {
   Default = "Default",
@@ -94,7 +75,9 @@ export enum HistoryableActionType {
   Clone = "Clone",
   Change = "Change",
   RemoveSlot = "RemoveSlot",
-  AddSlot = "AddSlot"
+  AddSlot = "AddSlot",
+  Resize = "Resize",
+  Rotate = "Rotate"
 }
 
 /**
@@ -104,10 +87,11 @@ export interface IDocument {
   id: ID
   destroy(): void
 
-  initialize(rootSchema: INodeSchema, documentId: ID): void
+  initialize(meta: IViewSchema): void
   moveTo(sourceId: ID, targetId: ID, pos: NodeRelativePosition): void
   multiMoveTo(sourceIds: ID[], targetId: ID, pos: NodeRelativePosition): void
   addNewNodes(elements: INodeSchema | INodeSchema[], targetId: ID, pos: NodeRelativePosition): NodeChunk
+  addNewFreedomNodes(elements: INodeSchema | INodeSchema[], targetId: ID, absolutePosition: IXYCoord): NodeChunk
   remove(sourceId: ID): void
   clone(sourceId: ID): void
   changeNodeMeta(id: ID, newMeta: INodeMeta): void
@@ -124,4 +108,6 @@ export interface IDocument {
   getNode(id: ID): ITreeNode | null
 
   getSchemaTree(): INodeSchema | null
+
+  getTitle(): string | undefined
 }

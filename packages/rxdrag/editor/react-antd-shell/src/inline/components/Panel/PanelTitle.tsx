@@ -11,7 +11,7 @@ const Title = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: solid 1px ${props => props.theme?.token?.colorBorder};
-  color: ${props => props.theme?.token?.colorSecondary};
+  color: ${props => props.theme?.token?.colorTextSecondary};
 `
 
 export const PanelTitle = memo((props: {
