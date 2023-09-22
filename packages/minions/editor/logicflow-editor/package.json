@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/minions-logicflow-editor",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "module": "index.ts",
   "files": [
     "dist"
