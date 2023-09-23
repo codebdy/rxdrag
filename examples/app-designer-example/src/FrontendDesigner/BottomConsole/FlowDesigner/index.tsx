@@ -5,6 +5,7 @@ import { AppstoreOutlined, FunctionOutlined, UnorderedListOutlined } from "@ant-
 import { ResizableColumn } from "@rxdrag/react-antd-shell"
 import { FXes } from "./FXes"
 import { Flows } from "./Flows"
+import { PropertyPanel } from "./PropertyPanel"
 
 const Container = styled.div`
   display: flex;
@@ -29,20 +30,20 @@ const Content = styled.div`
   flex: 1;
 `
 
-const PropertyBox = styled(ResizableColumn)`
-    border-left: solid 1px ${props => props.theme.token?.colorBorderSecondary};
-`
-
-
-
 enum NavType {
   toolbox = "toolbox",
   flows = "flows",
   fxes = "fxes",
 }
 
-export const FlowDesigner = memo(() => {
+export const FlowDesigner = memo((
+  props: {
+    showPropertyPanel?: boolean,
+  }
+) => {
+  const { showPropertyPanel } = props;
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
+
 
   const handleToggleToolbox = useCallback(() => {
     setNavType(type => type === NavType.toolbox ? null : NavType.toolbox)
@@ -77,29 +78,27 @@ export const FlowDesigner = memo(() => {
           />
         </Space>
       </LeftNav>
-      <LeftColumn
-        width={200}
-        maxWidth={500}
-        minWidth={160}
-      >
-        {
-          navType === NavType.flows &&
-          <Flows />
-        }
-        {
-          navType === NavType.fxes &&
-          <FXes />
-        }
-      </LeftColumn>
+      {
+        navType && <LeftColumn
+          width={200}
+          maxWidth={500}
+          minWidth={160}
+        >
+          {
+            navType === NavType.flows &&
+            <Flows />
+          }
+          {
+            navType === NavType.fxes &&
+            <FXes />
+          }
+        </LeftColumn>
+      }
       <Content />
-      <PropertyBox
-        right
-        width={260}
-        maxWidth={500}
-        minWidth={160}
-      >
+      {
+        showPropertyPanel && <PropertyPanel />
+      }
 
-      </PropertyBox>
     </Container>
   )
 })

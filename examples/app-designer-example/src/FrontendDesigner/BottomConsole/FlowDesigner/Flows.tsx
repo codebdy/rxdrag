@@ -7,7 +7,7 @@ const { DirectoryTree } = Tree;
 
 const treeData: DataNode[] = [
   {
-    title: '逻辑编排',
+    title: '编排',
     key: '0-0',
     children: [
       {

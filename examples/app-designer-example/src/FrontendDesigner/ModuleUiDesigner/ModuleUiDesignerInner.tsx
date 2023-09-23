@@ -1,5 +1,5 @@
 import { ZoomableEditor, propertyIcon } from "@rxdrag/react-antd-shell"
-import { memo, useMemo } from "react"
+import { memo, useCallback, useMemo, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useQueryModule } from "../../hooks/useQueryModule"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
@@ -21,6 +21,7 @@ const Label = styled.div`
 `
 
 export const ModuleUiDesignerInner = memo(() => {
+  const [showProperties, setShowProperties] = useState<boolean>(true)
   const { moduleId } = useParams()
   const device = useAppFrontend()?.deviceType
   const { module } = useQueryModule(device, moduleId || "")
@@ -32,7 +33,7 @@ export const ModuleUiDesignerInner = memo(() => {
           行为流
         </Label>,
         key: "logicflow",
-        children: <FlowDesigner />
+        children: <FlowDesigner showPropertyPanel={showProperties} />
       },
       {
         label: <Label >
@@ -48,6 +49,10 @@ export const ModuleUiDesignerInner = memo(() => {
       //   children: "快捷控制器"
       // },
     ]
+  }, [showProperties])
+
+  const handleToggleProperty = useCallback(() => {
+    setShowProperties(prop => !prop)
   }, [])
 
   return (
@@ -60,9 +65,10 @@ export const ModuleUiDesignerInner = memo(() => {
         bottomConsole={{
           items,
           extra: <Button
-            type="text"
+            type={showProperties ? "link" : "text"}
             size="small"
             icon={<span style={{ fontSize: 12 }}>{propertyIcon}</span>}
+            onClick={handleToggleProperty}
           />
         }}
       />

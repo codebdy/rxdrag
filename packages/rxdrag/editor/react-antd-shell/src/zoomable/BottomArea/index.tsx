@@ -35,14 +35,14 @@ const BottomShell = styled(ResizableRow)`
         height: 100%;
       }
     }
-    padding-bottom: 8px;
+    padding-bottom: 4px;
   }
   .ant-tabs-nav{
     padding: 0 16px;
     margin: 0;
     user-select: none;
     &::before{
-      border: 0;
+      //border: 0;
     }
   }
 `
