@@ -22,6 +22,7 @@ const Workspace = styled.div`
   box-sizing: border-box;
   flex-flow: column;
   width: 0;
+  overflow: hidden;
 `
 export type ZoomableEditorInnerProps = {
   locales?: ILocales,

@@ -22,6 +22,15 @@ const LeftNav = styled.div`
 const LeftColumn = styled(ResizableColumn)`
   border-right: solid 1px ${props => props.theme.token?.colorBorderSecondary};
 `
+
+const Content = styled.div`
+  flex: 1;
+`
+
+const PropertyBox = styled(ResizableColumn)`
+    border-left: solid 1px ${props => props.theme.token?.colorBorderSecondary};
+`
+
 const text = `
   A dog is a typ
 `;
@@ -44,6 +53,7 @@ const items: CollapseProps['items'] = [
   },
 ];
 
+
 export const SubFlows = memo(() => {
   const onChange = (key: string | string[]) => {
     console.log(key);
@@ -65,6 +75,15 @@ export const SubFlows = memo(() => {
       >
         <Collapse ghost items={items} defaultActiveKey={['1']} onChange={onChange} />
       </LeftColumn>
+      <Content />
+      <PropertyBox
+        right
+        width={260}
+        maxWidth={500}
+        minWidth={160}
+      >
+
+      </PropertyBox>
     </Container>
   )
 })

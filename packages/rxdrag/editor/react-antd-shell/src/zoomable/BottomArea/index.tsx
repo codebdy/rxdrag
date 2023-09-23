@@ -65,6 +65,7 @@ const Toolbar = styled.div`
   box-shadow: ${floatShadow};
   height: 32px;
   padding: 0 4px;
+  //transform: translateX(-50%);
 `
 
 const BottomActions = styled.div`
@@ -135,7 +136,7 @@ export const BottomArea = memo((
 
   const rightSpace = useMemo(() => {
     if (propertyMini || (rightPinned && !collapsed)) {
-      return DEFAULT_MARGIN
+      return DEFAULT_MARGIN 
     }
     return propertyWidth + DEFAULT_MARGIN * 2
   }, [collapsed, rightPinned, propertyMini, propertyWidth])
