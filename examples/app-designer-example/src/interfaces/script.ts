@@ -1,5 +1,6 @@
-export interface IScriptDefine {
+export interface IScopedScript {
   id: string,
   title?: string,
   code?: string,
+  scope?: string,
 }

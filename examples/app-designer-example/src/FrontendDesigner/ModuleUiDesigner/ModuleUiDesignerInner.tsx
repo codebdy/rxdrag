@@ -5,8 +5,9 @@ import { useQueryModule } from "../../hooks/useQueryModule"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
 import { uiToolboxes } from "./config"
 import { Button, TabsProps } from "antd"
-import { SubFlows } from "../BottomConsole/SubFlows"
 import styled from "styled-components"
+import { FlowDesigner } from "../BottomConsole/FlowDesigner"
+import { ScriptDesigner } from "../BottomConsole/ScriptDesigner"
 
 const Label = styled.div`
   display: flex;
@@ -31,14 +32,14 @@ export const ModuleUiDesignerInner = memo(() => {
           行为流
         </Label>,
         key: "logicflow",
-        children: <SubFlows />
+        children: <FlowDesigner />
       },
       {
         label: <Label >
           脚本
         </Label>,
         key: "script",
-        children: "脚本控制器"
+        children: <ScriptDesigner />
       },
       //把快捷控制器附加到物料上，放在属性面板配置
       // {

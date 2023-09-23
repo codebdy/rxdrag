@@ -1,4 +1,4 @@
-import { memo } from "react"
+import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
 import { Button, Collapse, CollapseProps, Space } from "antd"
 import { AppstoreOutlined, FunctionOutlined, PlusOutlined, UnorderedListOutlined } from "@ant-design/icons"
@@ -48,7 +48,17 @@ const items: CollapseProps['items'] = [
       <span>用户管理</span>
       <Button size="small" type="text" icon={<PlusOutlined />} />
     </HeaderLabel>,
-    children: <p>{text}</p>,
+    children: <Space direction="vertical">
+      <Button type="default">
+        添加用户
+      </Button>
+      <Button type="text">
+        编辑用户
+      </Button>
+      <Button type="text">
+        删除用户
+      </Button>
+    </Space>,
   },
   {
     key: '2',
@@ -62,19 +72,49 @@ const items: CollapseProps['items'] = [
   },
 ];
 
+enum NavType {
+  toolbox = "toolbox",
+  flows = "flows",
+  fxes = "fxes",
+}
 
-export const SubFlows = memo(() => {
+export const FlowDesigner = memo(() => {
+  const [navType, setNavType] = useState<NavType | null>(NavType.flows)
   const onChange = (key: string | string[]) => {
     console.log(key);
   };
+
+  const handleToggleToolbox = useCallback(() => {
+    setNavType(type => type === NavType.toolbox ? null : NavType.toolbox)
+  }, [])
+
+  const handleToggleFlows = useCallback(() => {
+    setNavType(type => type === NavType.flows ? null : NavType.flows)
+  }, [])
+
+  const handleToggleFxes = useCallback(() => {
+    setNavType(type => type === NavType.fxes ? null : NavType.fxes)
+  }, [])
 
   return (
     <Container>
       <LeftNav>
         <Space direction="vertical">
-          <Button type="text" icon={<AppstoreOutlined />} />
-          <Button type="link" icon={<UnorderedListOutlined />} />
-          <Button type="text" icon={<FunctionOutlined />} />
+          <Button
+            type={navType === NavType.toolbox ? "link" : "text"}
+            icon={<AppstoreOutlined />}
+            onClick={handleToggleToolbox}
+          />
+          <Button
+            type={navType === NavType.flows ? "link" : "text"}
+            icon={<UnorderedListOutlined />}
+            onClick={handleToggleFlows}
+          />
+          <Button
+            type={navType === NavType.fxes ? "link" : "text"}
+            icon={<FunctionOutlined />}
+            onClick={handleToggleFxes}
+          />
         </Space>
       </LeftNav>
       <LeftColumn

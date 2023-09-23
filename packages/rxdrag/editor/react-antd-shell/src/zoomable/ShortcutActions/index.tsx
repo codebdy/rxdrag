@@ -100,23 +100,21 @@ export const ShortcutActions = memo((
         }
 
       </ExpandPanel>
-      <StyleSpace direction="vertical">
-        <Button type="text" icon={<FileAddOutlined />} />
-        <ZoomButtons zoom={zoom} onZoomChange={onZoomChange} />
-        <Button type="text" disabled={!scrolled} icon={<AimOutlined />} onClick={onResetScroll} />
-        <Button
-          type={outlineOpen ? "link" : "text"}
-          icon={<SvgIcon>
-            {outlineIcon}
-          </SvgIcon>}
-          onClick={handleToggleOutlineOpen}
-        />
-        <Button
-          type={historyOpen ? "link" : "text"}
-          icon={<HistoryOutlined />}
-          onClick={handleToggleHistoryOpen}
-        />
-      </StyleSpace>
+      <Button type="text" icon={<FileAddOutlined />} />
+      <ZoomButtons zoom={zoom} onZoomChange={onZoomChange} />
+      <Button type="text" disabled={!scrolled} icon={<AimOutlined />} onClick={onResetScroll} />
+      <Button
+        type={outlineOpen ? "link" : "text"}
+        icon={<SvgIcon>
+          {outlineIcon}
+        </SvgIcon>}
+        onClick={handleToggleOutlineOpen}
+      />
+      <Button
+        type={historyOpen ? "link" : "text"}
+        icon={<HistoryOutlined />}
+        onClick={handleToggleHistoryOpen}
+      />
     </Container>
   )
 })
