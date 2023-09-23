@@ -83,5 +83,4 @@ export interface ILogicFlowDefine extends ILogicFlowMetas {
   name?: string;
   //显示文本
   label?: string;
-  isRunBack?:boolean
 }

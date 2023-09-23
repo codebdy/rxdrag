@@ -122,7 +122,7 @@ export const ShortcutActions = memo((
 
         </ExpandPanel>
         <StyleSpace direction="vertical">
-          <SaveButton type="primary" icon={<SaveOutlined />} />
+          {/* <SaveButton type="primary" icon={<SaveOutlined />} /> */}
           <CanvasFloatButton icon={<FileAddOutlined />} />
           <ZoomButtons zoom={zoom} onZoomChange={onZoomChange} />
           <StyledButton

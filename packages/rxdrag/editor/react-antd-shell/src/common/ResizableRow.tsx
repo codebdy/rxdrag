@@ -1,4 +1,4 @@
-import React, { CSSProperties, useCallback, useEffect, useRef, useState } from "react";
+import React, { CSSProperties, forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import "./ResizableColumn/style.css"
 
 import { isNumber } from "lodash";
@@ -19,7 +19,7 @@ const Container = styled.div`
   box-sizing: border-box;
 `
 
-export function ResizableRow(props: {
+export type ResizableRowProps = {
   height?: number;
   maxHeight?: number | string;
   minHeight?: number | string;
@@ -28,7 +28,9 @@ export function ResizableRow(props: {
   top?: boolean;
   className?: string;
   style?: CSSProperties
-}) {
+}
+
+export const ResizableRow = forwardRef<HTMLDivElement, ResizableRowProps>((props, ref) => {
   const {
     height = 200,
     children,
@@ -52,7 +54,7 @@ export function ResizableRow(props: {
   const firstYRef = useRef(firstY)
   firstYRef.current = firstY
 
-  const ref = useRef<HTMLDivElement>(null);
+  const shellRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setRealHeight(height);
@@ -89,7 +91,7 @@ export function ResizableRow(props: {
 
   const handleMouseup = useCallback(() => {
     document.body.classList.remove("drawer-resizing");
-    const realHeight = ref.current?.getBoundingClientRect().height
+    const realHeight = shellRef.current?.getBoundingClientRect().height
     if (realHeight && draging) {
       setRealHeight(realHeight);
       onHeightChange && onHeightChange(realHeight);
@@ -121,7 +123,7 @@ export function ResizableRow(props: {
 
   return (
     <Container
-      ref={ref}
+      ref={shellRef}
       className={classNames(className, "resizable-row")}
       style={{
         height: realHeight,
@@ -132,6 +134,7 @@ export function ResizableRow(props: {
       }}
     >
       <div
+        ref={ref}
         style={{
           flex: 1,
           minHeight: realHeight,
@@ -162,4 +165,4 @@ export function ResizableRow(props: {
       ></div>
     </Container>
   );
-}
+})
