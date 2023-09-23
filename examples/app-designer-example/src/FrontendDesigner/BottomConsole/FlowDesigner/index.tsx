@@ -1,8 +1,10 @@
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
-import { Button, Collapse, CollapseProps, Space } from "antd"
-import { AppstoreOutlined, FunctionOutlined, PlusOutlined, UnorderedListOutlined } from "@ant-design/icons"
+import { Button, Space } from "antd"
+import { AppstoreOutlined, FunctionOutlined, UnorderedListOutlined } from "@ant-design/icons"
 import { ResizableColumn } from "@rxdrag/react-antd-shell"
+import { FXes } from "./FXes"
+import { Flows } from "./Flows"
 
 const Container = styled.div`
   display: flex;
@@ -31,46 +33,7 @@ const PropertyBox = styled(ResizableColumn)`
     border-left: solid 1px ${props => props.theme.token?.colorBorderSecondary};
 `
 
-const HeaderLabel = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`
 
-const text = `
-  A dog is a typ
-`;
-
-const items: CollapseProps['items'] = [
-  {
-    key: '1',
-    label: <HeaderLabel>
-      <span>用户管理</span>
-      <Button size="small" type="text" icon={<PlusOutlined />} />
-    </HeaderLabel>,
-    children: <Space direction="vertical">
-      <Button type="default">
-        添加用户
-      </Button>
-      <Button type="text">
-        编辑用户
-      </Button>
-      <Button type="text">
-        删除用户
-      </Button>
-    </Space>,
-  },
-  {
-    key: '2',
-    label: '设备端级',
-    children: <p>{text}</p>,
-  },
-  {
-    key: '3',
-    label: '应用级',
-    children: <p>{text}</p>,
-  },
-];
 
 enum NavType {
   toolbox = "toolbox",
@@ -80,9 +43,6 @@ enum NavType {
 
 export const FlowDesigner = memo(() => {
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
-  const onChange = (key: string | string[]) => {
-    console.log(key);
-  };
 
   const handleToggleToolbox = useCallback(() => {
     setNavType(type => type === NavType.toolbox ? null : NavType.toolbox)
@@ -122,7 +82,14 @@ export const FlowDesigner = memo(() => {
         maxWidth={500}
         minWidth={160}
       >
-        <Collapse ghost items={items} defaultActiveKey={['1']} onChange={onChange} />
+        {
+          navType === NavType.flows &&
+          <Flows />
+        }
+        {
+          navType === NavType.fxes &&
+          <FXes />
+        }
       </LeftColumn>
       <Content />
       <PropertyBox
