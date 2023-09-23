@@ -30,7 +30,7 @@ const treeData: DataNode[] = [
   },
 ];
 
-export const FXes = memo(() => {
+export const Funcs = memo(() => {
   const onSelect: DirectoryTreeProps['onSelect'] = (keys, info) => {
     console.log('Trigger Select', keys, info);
   };

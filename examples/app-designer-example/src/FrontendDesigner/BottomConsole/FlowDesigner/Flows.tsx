@@ -1,7 +1,7 @@
 import { Tree } from "antd";
 import { DataNode, DirectoryTreeProps } from "antd/es/tree";
 import { memo } from "react"
-import { TreeContainer } from "./TreeContainer";
+import { TreeContainer } from "../common/TreeContainer";
 
 const { DirectoryTree } = Tree;
 

@@ -2,35 +2,33 @@ import { Tree } from "antd";
 import { DataNode, DirectoryTreeProps } from "antd/es/tree";
 import { memo } from "react"
 import { TreeContainer } from "../common/TreeContainer";
-import { FunctionOutlined } from "@ant-design/icons";
+import { CodeOutlined } from "@ant-design/icons";
 
 const { DirectoryTree } = Tree;
 
 const treeData: DataNode[] = [
   {
-    title: '当前模块',
+    title: '执行脚本',
     key: '0-0',
     children: [
-
       {
-        title: '查询用户列表',
-        key: '0-0-0', isLeaf: true,
-        icon: <FunctionOutlined />
+        title: '列表',
+        key: '0-1',
+        children: [
+          { title: 'leaf 1-0', key: '0-1-0', isLeaf: true, icon: <CodeOutlined /> },
+          { title: 'leaf 1-1', key: '0-1-1', isLeaf: true, icon: <CodeOutlined /> },
+        ],
       },
+      { title: '添加用户', key: '0-0-0', isLeaf: true, icon: <CodeOutlined /> },
+      { title: '编辑用户', key: '0-0-1', isLeaf: true, icon: <CodeOutlined /> },
+      { title: '删除用户', key: '0-0-2', isLeaf: true, icon: <CodeOutlined /> },
+    ],
+  },
 
-    ],
-  },
-  {
-    title: '全局',
-    key: '0-1',
-    children: [
-      { title: '子编排1', key: '0-1-0', icon: <FunctionOutlined />, isLeaf: true },
-      { title: '子编排2', key: '0-1-1', icon: <FunctionOutlined />, isLeaf: true },
-    ],
-  },
 ];
 
-export const FXes = memo(() => {
+
+export const Scripts = memo(() => {
   const onSelect: DirectoryTreeProps['onSelect'] = (keys, info) => {
     console.log('Trigger Select', keys, info);
   };

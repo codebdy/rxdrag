@@ -1,30 +1,13 @@
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
 import { Button, Space, Tooltip } from "antd"
-import { AppstoreOutlined, FunctionOutlined, UnorderedListOutlined } from "@ant-design/icons"
-import { ResizableColumn } from "@rxdrag/react-antd-shell"
+import { AppstoreOutlined, FunctionOutlined, ControlOutlined } from "@ant-design/icons"
 import { FXes } from "./FXes"
 import { Flows } from "./Flows"
 import { PropertyPanel } from "./PropertyPanel"
-
-const Container = styled.div`
-  display: flex;
-  height: 100%;
-  width: 100%;
-`
-
-const LeftNav = styled.div`
-  display: flex;
-  flex-flow: column;
-  width: 32px;
-  padding: 8px;
-  align-items: center;
-  border-right: solid 1px ${props => props.theme.token?.colorBorderSecondary};
-`
-
-const LeftColumn = styled(ResizableColumn)`
-  border-right: solid 1px ${props => props.theme.token?.colorBorderSecondary};
-`
+import { LeftNav } from "../common/LeftNav"
+import { LeftColumn } from "../common/LeftColumn"
+import { Container } from "../common/Container"
 
 const Content = styled.div`
   flex: 1;
@@ -61,7 +44,7 @@ export const FlowDesigner = memo((
     <Container>
       <LeftNav>
         <Space direction="vertical">
-          <Tooltip title="元件" placement="right">
+          <Tooltip title="元件箱" placement="right">
             <Button
               type={navType === NavType.toolbox ? "link" : "text"}
               icon={<AppstoreOutlined />}
@@ -71,7 +54,7 @@ export const FlowDesigner = memo((
           <Tooltip title="编排" placement="right">
             <Button
               type={navType === NavType.flows ? "link" : "text"}
-              icon={<UnorderedListOutlined />}
+              icon={<ControlOutlined />}
               onClick={handleToggleFlows}
             />
           </Tooltip>
