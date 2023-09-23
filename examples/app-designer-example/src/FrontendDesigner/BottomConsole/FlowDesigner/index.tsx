@@ -1,6 +1,6 @@
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
-import { Button, Space } from "antd"
+import { Button, Space, Tooltip } from "antd"
 import { AppstoreOutlined, FunctionOutlined, UnorderedListOutlined } from "@ant-design/icons"
 import { ResizableColumn } from "@rxdrag/react-antd-shell"
 import { FXes } from "./FXes"
@@ -61,21 +61,27 @@ export const FlowDesigner = memo((
     <Container>
       <LeftNav>
         <Space direction="vertical">
-          <Button
-            type={navType === NavType.toolbox ? "link" : "text"}
-            icon={<AppstoreOutlined />}
-            onClick={handleToggleToolbox}
-          />
-          <Button
-            type={navType === NavType.flows ? "link" : "text"}
-            icon={<UnorderedListOutlined />}
-            onClick={handleToggleFlows}
-          />
-          <Button
-            type={navType === NavType.fxes ? "link" : "text"}
-            icon={<FunctionOutlined />}
-            onClick={handleToggleFxes}
-          />
+          <Tooltip title="元件" placement="right">
+            <Button
+              type={navType === NavType.toolbox ? "link" : "text"}
+              icon={<AppstoreOutlined />}
+              onClick={handleToggleToolbox}
+            />
+          </Tooltip>
+          <Tooltip title="编排" placement="right">
+            <Button
+              type={navType === NavType.flows ? "link" : "text"}
+              icon={<UnorderedListOutlined />}
+              onClick={handleToggleFlows}
+            />
+          </Tooltip>
+          <Tooltip title="子编排" placement="right">
+            <Button
+              type={navType === NavType.fxes ? "link" : "text"}
+              icon={<FunctionOutlined />}
+              onClick={handleToggleFxes}
+            />
+          </Tooltip>
         </Space>
       </LeftNav>
       {

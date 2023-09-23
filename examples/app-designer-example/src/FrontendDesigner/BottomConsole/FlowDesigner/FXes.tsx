@@ -8,7 +8,7 @@ const { DirectoryTree } = Tree;
 
 const treeData: DataNode[] = [
   {
-    title: '子编排',
+    title: '当前模块',
     key: '0-0',
     children: [
 
