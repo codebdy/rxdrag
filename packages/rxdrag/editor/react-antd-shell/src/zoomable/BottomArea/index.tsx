@@ -136,7 +136,7 @@ export const BottomArea = memo((
 
   const rightSpace = useMemo(() => {
     if (propertyMini || (rightPinned && !collapsed)) {
-      return DEFAULT_MARGIN 
+      return DEFAULT_MARGIN
     }
     return propertyWidth + DEFAULT_MARGIN * 2
   }, [collapsed, rightPinned, propertyMini, propertyWidth])
@@ -175,27 +175,29 @@ export const BottomArea = memo((
           </BottomActions>
         }
       </Toolbar>
-      <Tabs
-        size="small"
-        onTabClick={handleTabClick}
-        tabBarExtraContent={
-          <Space>
-            {extra}
-            <Button
-              type="text"
-              size="small"
-              icon={
-                collapsed
-                  ? <BorderOutlined />
-                  : <MinusOutlined />
-              }
-              onClick={handleToggleHeight}
-            />
-          </Space>
-        }
-        items={items}
-      />
-
+      {
+        !!items?.length &&
+        <Tabs
+          size="small"
+          onTabClick={handleTabClick}
+          tabBarExtraContent={
+            <Space>
+              {extra}
+              <Button
+                type="text"
+                size="small"
+                icon={
+                  collapsed
+                    ? <BorderOutlined />
+                    : <MinusOutlined />
+                }
+                onClick={handleToggleHeight}
+              />
+            </Space>
+          }
+          items={items}
+        />
+      }
       {
         !propertyMini && !collapsed &&
         <PinButton
