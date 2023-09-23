@@ -1,7 +1,7 @@
 import { memo } from "react"
 import styled from "styled-components"
 import { Button, Collapse, CollapseProps, Space } from "antd"
-import { AppstoreOutlined, FunctionOutlined, UnorderedListOutlined } from "@ant-design/icons"
+import { AppstoreOutlined, FunctionOutlined, PlusOutlined, UnorderedListOutlined } from "@ant-design/icons"
 import { ResizableColumn } from "@rxdrag/react-antd-shell"
 
 const Container = styled.div`
@@ -31,6 +31,12 @@ const PropertyBox = styled(ResizableColumn)`
     border-left: solid 1px ${props => props.theme.token?.colorBorderSecondary};
 `
 
+const HeaderLabel = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
 const text = `
   A dog is a typ
 `;
@@ -38,7 +44,10 @@ const text = `
 const items: CollapseProps['items'] = [
   {
     key: '1',
-    label: '用户管理',
+    label: <HeaderLabel>
+      <span>用户管理</span>
+      <Button size="small" type="text" icon={<PlusOutlined />} />
+    </HeaderLabel>,
     children: <p>{text}</p>,
   },
   {
@@ -69,7 +78,7 @@ export const SubFlows = memo(() => {
         </Space>
       </LeftNav>
       <LeftColumn
-        width={260}
+        width={200}
         maxWidth={500}
         minWidth={160}
       >
