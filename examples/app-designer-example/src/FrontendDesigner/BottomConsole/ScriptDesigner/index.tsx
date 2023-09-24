@@ -1,13 +1,13 @@
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
 import { Button, Space, Tooltip } from "antd"
-import { CodeOutlined, FunctionOutlined } from "@ant-design/icons"
+import { CloseOutlined, CodeOutlined, FunctionOutlined } from "@ant-design/icons"
 import { Funcs } from "./Funcs"
 import { Scripts } from "./Scripts"
-
 import { LeftNav } from "../common/LeftNav"
 import { LeftColumn } from "../common/LeftColumn"
 import { Container } from "../common/Container"
+import { Title } from "../common/Title"
 
 const Content = styled.div`
   flex: 1;
@@ -28,6 +28,10 @@ export const ScriptDesigner = memo(() => {
 
   const handleToggleFxes = useCallback(() => {
     setNavType(type => type === NavType.fxes ? null : NavType.fxes)
+  }, [])
+
+  const handleCloseLeft = useCallback(() => {
+    setNavType(null)
   }, [])
 
   return (
@@ -56,6 +60,26 @@ export const ScriptDesigner = memo(() => {
           maxWidth={500}
           minWidth={160}
         >
+          <Title>
+            {
+              NavType.flows === navType &&
+              <span>
+                执行脚本
+              </span>
+            }
+            {
+              NavType.fxes === navType &&
+              <span>
+                通用代码
+              </span>
+            }
+            <Button
+              type="text"
+              size="small"
+              icon={<CloseOutlined />}
+              onClick={handleCloseLeft}
+            />
+          </Title>
           {
             navType === NavType.flows &&
             <Scripts />

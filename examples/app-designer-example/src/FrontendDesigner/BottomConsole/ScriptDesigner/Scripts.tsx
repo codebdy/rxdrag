@@ -8,7 +8,7 @@ const { DirectoryTree } = Tree;
 
 const treeData: DataNode[] = [
   {
-    title: '执行脚本',
+    title: '根目录',
     key: '0-0',
     children: [
       {
