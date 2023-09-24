@@ -22,13 +22,7 @@ enum NavType {
   fxes = "fxes",
 }
 
-export const FlowDesigner = memo((
-  props: {
-    showPropertyPanel?: boolean,
-    onClosePropery?: () => void,
-  }
-) => {
-  const { showPropertyPanel, onClosePropery } = props;
+export const FlowDesigner = memo(() => {
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
 
   const handleToggleFlows = useCallback(() => {
