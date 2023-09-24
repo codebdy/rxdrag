@@ -1,14 +1,14 @@
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
 import { Button, Space, Tooltip } from "antd"
-import { FunctionOutlined, ControlOutlined, CloseOutlined } from "@ant-design/icons"
+import { FunctionOutlined, ControlOutlined, CloseOutlined, AppstoreOutlined } from "@ant-design/icons"
 import { FXes } from "./FXes"
 import { Flows } from "./Flows"
 import { LeftNav } from "../common/LeftNav"
 import { LeftColumn } from "../common/LeftColumn"
 import { Container } from "../common/Container"
 import { Title } from "../common/Title"
-import { LogicFlowEditorAntd5 } from "@rxdrag/logicflow-editor-antd5"
+import { FlowToolbar, LogicFlowEditorAntd5, Toolbox } from "@rxdrag/logicflow-editor-antd5"
 import { activityMaterialCategories, activityMaterialLocales } from "../minion-materials"
 import { LogicFlowEditorScope } from "@rxdrag/minions-logicflow-editor"
 
@@ -19,6 +19,7 @@ const Content = styled.div`
 
 
 enum NavType {
+  toolbox = "toolbox",
   flows = "flows",
   fxes = "fxes",
 }
@@ -30,6 +31,10 @@ const test = {
 
 export const FlowDesigner = memo(() => {
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
+
+  const handleToggleToolbox = useCallback(() => {
+    setNavType(type => type === NavType.toolbox ? null : NavType.toolbox)
+  }, [])
 
   const handleToggleFlows = useCallback(() => {
     setNavType(type => type === NavType.flows ? null : NavType.flows)
@@ -49,6 +54,13 @@ export const FlowDesigner = memo(() => {
       <Container>
         <LeftNav>
           <Space direction="vertical">
+            <Tooltip title="元件箱" placement="right">
+              <Button
+                type={navType === NavType.toolbox ? "link" : "text"}
+                icon={<AppstoreOutlined />}
+                onClick={handleToggleToolbox}
+              />
+            </Tooltip>
             <Tooltip title="编排" placement="right">
               <Button
                 type={navType === NavType.flows ? "link" : "text"}
@@ -73,6 +85,12 @@ export const FlowDesigner = memo(() => {
           >
             <Title>
               {
+                NavType.toolbox === navType &&
+                <span>
+                  元件
+                </span>
+              }
+              {
                 NavType.flows === navType &&
                 <span>
                   逻辑编排
@@ -92,6 +110,10 @@ export const FlowDesigner = memo(() => {
               />
             </Title>
             {
+              navType === NavType.toolbox &&
+              <Toolbox materialCategories={activityMaterialCategories} />
+            }
+            {
               navType === NavType.flows &&
               <Flows />
             }
@@ -106,6 +128,16 @@ export const FlowDesigner = memo(() => {
             materialCategories={activityMaterialCategories}
             locales={activityMaterialLocales}
             value={test}
+            toolbox={false}
+            toolbar={
+              <FlowToolbar
+                right={
+                  <Button type="primary">保存</Button>
+                }
+              >
+                添加用户
+              </FlowToolbar>
+            }
           />
         </Content>
       </Container>

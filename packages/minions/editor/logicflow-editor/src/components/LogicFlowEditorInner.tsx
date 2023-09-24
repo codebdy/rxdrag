@@ -8,13 +8,13 @@ import { Logic } from "./Logic";
 import { ILogicMetas, IThemeToken } from "../interfaces";
 import { Toolbar } from "./Toolbar";
 import { Toolbox } from "./Toolbox";
-import { Button, PropertyBox, Title } from "./PropertyBox";
+import { Button, PropertyBox } from "./PropertyBox";
 import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
 import { useEditorStore } from "../hooks";
 import { useShowMap } from "../hooks/useShowMap";
 import { useThemeToken } from "../hooks/useThemeToken";
 import { ResizableColumn } from "./ResizableColumn";
-import { closeIcon, propertyIcon, toolboxIcon } from "../icons";
+import { propertyIcon } from "../icons";
 
 const EditorShell = styled.div`
   display: flex;
@@ -105,7 +105,6 @@ export const LogicFlowEditorInner = memo((
 ) => {
   const { value, onChange, toolbox, toolbar, propertyBox, materials, logicFlowContext, canBeReferencedLogflowMetas, children } = props
   const [closeProperty, setCloseProperty] = useState<boolean>()
-  const [closeToolbox, setCloseToolbox] = useState<boolean>()
   const emptyMetas = useMemo(() => ({
     nodes: [],
     lines: []
@@ -134,13 +133,6 @@ export const LogicFlowEditorInner = memo((
     setCloseProperty(false)
   }, [])
 
-  const handleCloseToolbox = useCallback(() => {
-    setCloseToolbox(true)
-  }, [])
-
-  const handleOpenToolbox = useCallback(() => {
-    setCloseToolbox(false)
-  }, [])
 
 
   return (
@@ -149,37 +141,14 @@ export const LogicFlowEditorInner = memo((
         <CanBeReferencedLogicFlowMetasContext.Provider value={canBeReferencedLogflowMetas || []}>
           <GraphContext.Provider value={graph}>
             <EditorShell>
-              {
-                toolbox && !closeToolbox && <Toolbox
-                  minWidth={100}
-                  maxWidth={500}
-                >
-                  <Title>
-                    编排元件
-                    <Button
-                      onClick={handleCloseToolbox}
-                    >
-                      {closeIcon}
-                    </Button>
-                  </Title>
-                  {toolbox}
-                </Toolbox>
-              }
-
               <CenterArea>
                 {
                   toolbar &&
                   <Toolbar>
-                    {
-                      closeToolbox && <Button
-                        onClick={handleOpenToolbox}
-                      >
-                        {toolboxIcon}
-                      </Button>
-                    }
                     {toolbar}
                     {
                       closeProperty && <Button
+                        style={{ marginLeft: 8 }}
                         onClick={handleOpenProperty}
                       >
                         {propertyIcon}
@@ -188,6 +157,14 @@ export const LogicFlowEditorInner = memo((
                   </Toolbar>
                 }
                 <OperateArea>
+                  {
+                    toolbox && <Toolbox
+                      minWidth={100}
+                      maxWidth={500}
+                    >
+                      {toolbox}
+                    </Toolbox>
+                  }
                   <CanvasArea>
                     <CanvasContainer id="reactions-canvas-container" >
                       <Logic onChange={handleChange} />

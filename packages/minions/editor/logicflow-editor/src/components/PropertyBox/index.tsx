@@ -30,9 +30,18 @@ const EmptyContainer = styled.div`
 `
 
 export const Button = styled.div`
-  padding: 6px;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  align-items: center;
   cursor: pointer;
   font-size: 16px;
+  color:  ${props => props.theme.token?.colorTextSecondary};
+  &.selected{
+    border: solid 1px ${props => props.theme.token?.colorBorder};
+  }
 `
 
 export const PropertyBox = memo((props: {

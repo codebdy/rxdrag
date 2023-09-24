@@ -1,5 +1,5 @@
 import { ReactNode, memo, useMemo } from "react"
-import { Toolbox, PropertyBox, Toolbar } from "./components"
+import { Toolbox, PropertyBox, FlowToolbar } from "./components"
 import { useTransMaterialCategories } from "./hooks/useTransMaterialCategories"
 import { ILogicMetas, IThemeToken, LogicFlowEditor } from "@rxdrag/minions-logicflow-editor"
 import { ActivityMaterialCategory, IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema"
@@ -14,7 +14,7 @@ export type LogicFlowEditorAntd5InnerProps = {
   logicFlowContext?: unknown,
   canBeReferencedLogflowMetas?: ILogicFlowDefine[],
   toolbar?: false | React.ReactNode,
-  toolbox?: React.ReactNode,
+  toolbox?: React.ReactNode | false,
 }
 
 export const LogicMetaEditorAntd5Inner = memo((
@@ -33,8 +33,8 @@ export const LogicMetaEditorAntd5Inner = memo((
     <LogicFlowEditor
       value={value}
       onChange={onChange}
-      toolbar={toolbar === undefined ? <Toolbar /> : toolbar}
-      toolbox={toolbox || <Toolbox materialCategories={categories} />}
+      toolbar={toolbar === undefined ? <FlowToolbar /> : toolbar}
+      toolbox={toolbox !== false && (toolbox || <Toolbox materialCategories={categories} />)}
       propertyBox={<PropertyBox setters={setters} />}
       token={token}
       materials={materials}

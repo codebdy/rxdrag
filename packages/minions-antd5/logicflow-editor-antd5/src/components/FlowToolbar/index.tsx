@@ -6,7 +6,7 @@ import { undoIcon, redoIcon } from "./icons"
 
 const StyledToolbar = styled.div`
   display: flex;
-  padding: 0 16px;
+  padding: 0 0px;
   height: 40px;
   align-items: center;
   width: 100%;
@@ -22,8 +22,13 @@ const ToolbarCenter = styled.div`
   align-items: center;
 `
 
-export const Toolbar = memo(() => {
-
+export const FlowToolbar = memo((
+  props: {
+    right?: React.ReactNode,
+    children?: React.ReactNode,
+  }
+) => {
+  const { right, children } = props;
   const { selected } = useSelected()
   const { redoList } = useRedoList()
   const { undoList } = useUndoList()
@@ -55,7 +60,13 @@ export const Toolbar = memo(() => {
         ></ToolbarButton>
       </Space>
       <ToolbarCenter>
+        {
+          children
+        }
       </ToolbarCenter>
+      {
+        right
+      }
     </StyledToolbar>
   )
 })

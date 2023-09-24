@@ -1,3 +1,3 @@
 export * from "./PropertyBox"
-export * from "./Toolbar"
+export * from "./FlowToolbar"
 export * from "./Toolbox"

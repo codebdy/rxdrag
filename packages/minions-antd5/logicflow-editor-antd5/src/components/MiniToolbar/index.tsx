@@ -3,7 +3,8 @@ import { useZoom, useZoomIn, useZoomOut, MIN_ZOOM, MAX_ZOOM, useShowMap } from "
 import { Button, Space } from "antd"
 import { memo, useCallback } from "react"
 import styled from "styled-components"
-import { mapIcon, zoomResetIcon } from "../Toolbar/icons"
+import { zoomResetIcon, mapIcon } from "../FlowToolbar/icons"
+
 
 const Container = styled.div`
   position: absolute;
