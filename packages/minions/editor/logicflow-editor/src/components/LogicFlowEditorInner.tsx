@@ -13,6 +13,7 @@ import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
 import { useEditorStore } from "../hooks";
 import { useShowMap } from "../hooks/useShowMap";
 import { useThemeToken } from "../hooks/useThemeToken";
+import { ResizableColumn } from "./ResizableColumn";
 
 const EditorShell = styled.div`
   display: flex;
@@ -70,7 +71,7 @@ const MiniMapContainer = styled.div`
   }
 `
 
-const RightArea = styled.div`
+const RightArea = styled(ResizableColumn)`
   width: 280px;
   border-left: ${props => props.theme.token?.colorBorder}  solid 1px;
   display: flex;
@@ -130,7 +131,10 @@ export const LogicFlowEditorInner = memo((
                 }
 
                 <OperateArea>
-                  <Toolbox>
+                  <Toolbox
+                    minWidth={100}
+                    maxWidth={500}
+                  >
                     {toolbox}
                   </Toolbox>
                   <CanvasArea>
@@ -147,7 +151,11 @@ export const LogicFlowEditorInner = memo((
                   </CanvasArea>
                 </OperateArea>
               </CenterArea>
-              <RightArea>
+              <RightArea
+                right
+                maxWidth={500}
+                minWidth={200}
+              >
                 <PropertyBox>
                   {propertyBox}
                 </PropertyBox>

@@ -1,4 +1,5 @@
 export * from "./PropertyBox"
+export * from "./ResizableColumn"
 export * from "./Toolbar"
 export * from "./Toolbox"
 export * from "./Logic"

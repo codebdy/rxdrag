@@ -1,10 +1,9 @@
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
 import { Button, Space, Tooltip } from "antd"
-import { AppstoreOutlined, FunctionOutlined, ControlOutlined, CloseOutlined } from "@ant-design/icons"
+import { FunctionOutlined, ControlOutlined, CloseOutlined } from "@ant-design/icons"
 import { FXes } from "./FXes"
 import { Flows } from "./Flows"
-import { PropertyPanel } from "./PropertyPanel"
 import { LeftNav } from "../common/LeftNav"
 import { LeftColumn } from "../common/LeftColumn"
 import { Container } from "../common/Container"
@@ -14,11 +13,11 @@ import { activityMaterialCategories, activityMaterialLocales } from "../minion-m
 
 const Content = styled.div`
   flex: 1;
+  position: relative;
 `
 
 
 enum NavType {
-  toolbox = "toolbox",
   flows = "flows",
   fxes = "fxes",
 }
@@ -31,10 +30,6 @@ export const FlowDesigner = memo((
 ) => {
   const { showPropertyPanel, onClosePropery } = props;
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
-
-  const handleToggleToolbox = useCallback(() => {
-    setNavType(type => type === NavType.toolbox ? null : NavType.toolbox)
-  }, [])
 
   const handleToggleFlows = useCallback(() => {
     setNavType(type => type === NavType.flows ? null : NavType.flows)
@@ -53,13 +48,6 @@ export const FlowDesigner = memo((
     <Container>
       <LeftNav>
         <Space direction="vertical">
-          <Tooltip title="元件箱" placement="right">
-            <Button
-              type={navType === NavType.toolbox ? "link" : "text"}
-              icon={<AppstoreOutlined />}
-              onClick={handleToggleToolbox}
-            />
-          </Tooltip>
           <Tooltip title="编排" placement="right">
             <Button
               type={navType === NavType.flows ? "link" : "text"}
@@ -93,12 +81,6 @@ export const FlowDesigner = memo((
               NavType.fxes === navType &&
               <span>
                 子编排
-              </span>
-            }
-            {
-              NavType.toolbox === navType &&
-              <span>
-                元件
               </span>
             }
             <Button

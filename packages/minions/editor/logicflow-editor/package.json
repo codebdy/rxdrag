@@ -40,6 +40,7 @@
     "@rxdrag/shared": "workspace:*",
     "insert-css": "^2.0.0",
     "redux": "^4.2.1",
+    "classnames": "^2.3.2",
     "styled-components": "^5.3.9"
   }
 }
