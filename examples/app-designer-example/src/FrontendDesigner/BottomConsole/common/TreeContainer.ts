@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const TreeContainer = styled.div`
-margin-top: 8px;
-.ant-tree{
-  background-color: transparent;
-  .ant-tree-list{
+  flex:1;
+  margin-top: 8px;
+  height: 0;
+  overflow: auto;
+  .ant-tree{
     background-color: transparent;
+    .ant-tree-list{
+      background-color: transparent;
+    }
   }
-}
 
 `

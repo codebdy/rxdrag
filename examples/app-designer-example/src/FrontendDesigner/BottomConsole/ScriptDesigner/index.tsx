@@ -56,7 +56,7 @@ export const ScriptDesigner = memo(() => {
       </LeftNav>
       {
         navType && <LeftColumn
-          width={200}
+          width={260}
           maxWidth={500}
           minWidth={160}
         >
