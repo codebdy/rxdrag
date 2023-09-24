@@ -11,20 +11,5 @@ export const commonActivities: IActivityMaterial<any, any, any, any>[] = [
   routeToMaterial,
   infoMessageMaterial,
   mockMaterial,
-  // {
-  //   name: "globalLoading",
-  //   icon: loadingIcon,
-  //   label: "$globalLoading",
-  //   activityType: NodeType.SingleReaction,
-  //   meta: {
-  //     inPorts: [
-  //       {
-  //         id: createUuid(),
-  //         name: "input",
-  //         label: "",
-  //       },
-  //     ],
-  //   }
-  // },
   jsCodeMaterial,
 ]

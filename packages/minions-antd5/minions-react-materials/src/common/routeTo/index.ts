@@ -1,4 +1,4 @@
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { routeToSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
 import { routeIcon } from "../../icons";
@@ -12,7 +12,7 @@ export const routeToMaterial: IRxDragActivityMaterial = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "input",
         label: "",
       },

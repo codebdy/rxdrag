@@ -22,7 +22,7 @@
 import { memo, useCallback, useMemo, useState } from "react"
 import { Table as AntdTable, TablePaginationConfig } from "antd"
 import { IDataSource } from "../IDataSource"
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { ComponentView, useComponentSchema } from "@rxdrag/react-runner";
 import { ArrayField, ObjectField, useFieldValue } from "@rxdrag/react-fieldy";
 import { IFieldMeta } from "@rxdrag/fieldy";
@@ -75,7 +75,7 @@ export const Table = memo((
   props: TableProps
 ) => {
   const { header, footer, dataSource, pagination, summary, pageSize, rowKey = "id", onPageChange, currentPage, ...other } = props
-  const [id] = useState(createUuid())
+  const [id] = useState(createId())
   const nodeSchema = useComponentSchema()
 
   const columns = useMemo(() => {

@@ -3,7 +3,7 @@ import Editor from "@monaco-editor/react";
 import { memo, useCallback, useEffect, useState } from "react"
 import { useThemeMode, useSettersTranslate } from "@rxdrag/react-core";
 import { Button, Drawer, Form, Input, Switch } from "antd";
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 
 export const ScriptControllerSetter = memo((
   props: {
@@ -25,7 +25,7 @@ export const ScriptControllerSetter = memo((
 
   const handleGlobalChange = useCallback((checked: boolean) => {
     if (checked) {
-      const id = value?.id || createUuid()
+      const id = value?.id || createId()
       onChange?.({ ...value, id: id, global: true })
     } else {
       if (value) {

@@ -2,12 +2,8 @@ import React, { ReactNode } from "react"
 import { memo, useCallback } from "react"
 import { useGraph, useDnd, useGetNodeConfig } from "../../hooks";
 import { IActivityMaterial } from "@rxdrag/minions-schema";
-import { v4 as uuidv4 } from 'uuid';
 import { IActivityNode } from "../../interfaces";
-
-export const createUuid = () => {
-  return uuidv4();
-};
+import { createId } from "@rxdrag/shared";
 
 export type ActivityResourceProps = {
   children?: (onMouseDown: ((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void)) => ReactNode,
@@ -25,7 +21,7 @@ export const ActivityResource = memo((props: ActivityResourceProps) => {
       return;
     }
     const nodeMeta: IActivityNode = {
-      id: createUuid(),
+      id: createId(),
       label: material.label,
       type: material.activityType,
       activityName: material.activityName,

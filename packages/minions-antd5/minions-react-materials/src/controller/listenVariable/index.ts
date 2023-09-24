@@ -1,6 +1,6 @@
 import { IVariableConfig, ListenVariable } from "@rxdrag/minions-runtime-react"
 import { NodeType } from "@rxdrag/minions-schema"
-import { createUuid } from "@rxdrag/shared"
+import { createId } from "@rxdrag/shared"
 import { listenVariableIcon } from "../../icons"
 import { variableSchema } from "../setVariable/schema"
 import { IRxDragActivityMaterial } from "../../interfaces"
@@ -13,7 +13,7 @@ export const listenVariableMaterial: IRxDragActivityMaterial<IVariableConfig, IC
   defaultPorts: {
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "output",
         label: "",
       },

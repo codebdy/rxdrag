@@ -1,5 +1,5 @@
 
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { infoMessageSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
 import { IInfoMessageConfig, InfoMessage } from "@rxdrag/minions-react-antd5-activities"
@@ -13,7 +13,7 @@ export const infoMessageMaterial: IRxDragActivityMaterial<IInfoMessageConfig> = 
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "input",
         label: "",
       },

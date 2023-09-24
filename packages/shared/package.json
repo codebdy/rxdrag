@@ -20,12 +20,10 @@
     "@rxdrag/eslint-config-custom": "workspace:*",
     "@rxdrag/tsconfig": "workspace:*",
     "@types/lodash": "^4.14.191",
-    "@types/node": "*",
-    "@types/uuid": "^9.0.1"
+    "@types/node": "*"
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "nanoid": "^5.0.1",
-    "uuid": "^9.0.0"
+    "nanoid": "^5.0.1"
   }
 }

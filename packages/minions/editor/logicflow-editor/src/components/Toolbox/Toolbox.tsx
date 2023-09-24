@@ -1,7 +1,6 @@
-import { memo, ReactNode } from "react";
 import styled from "styled-components";
 
-const StyledToolbox = styled.div`
+export const Toolbox = styled.div`
   user-select: none;
   width: 180px;
   border-right: ${props => props.theme.token?.colorBorder} solid 1px;
@@ -9,16 +8,3 @@ const StyledToolbox = styled.div`
   display: flex;
   flex-flow: column;
 `
-
-
-export const Toolbox = memo((props: {
-  children?: ReactNode
-}) => {
-  const { children } = props
-
-  return (
-    <StyledToolbox>
-      {children}
-    </StyledToolbox >
-  )
-})

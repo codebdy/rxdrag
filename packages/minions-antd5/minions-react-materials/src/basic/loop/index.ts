@@ -1,4 +1,4 @@
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { loopSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
 import { loopIcon } from "../../icons";
@@ -12,19 +12,19 @@ export const loopMaterial: IRxDragActivityMaterial = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "input",
         label: "",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: Loop.PORT_OUTPUT,
         label: "$oneOutput",
       },
       {
-        id: createUuid(),
+        id: createId(),
         name: Loop.PORT_FINISHED,
         label: "$finished",
       },

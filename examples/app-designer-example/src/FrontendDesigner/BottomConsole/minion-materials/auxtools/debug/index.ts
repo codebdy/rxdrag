@@ -1,5 +1,5 @@
 
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { debugSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
 import { debugIcon } from "../../icons";
@@ -19,7 +19,7 @@ export const debugMaterial: IRxDragActivityMaterial<IDebugConfig> = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: DEFAULT_INPUT_NAME,
         label: "",
       },

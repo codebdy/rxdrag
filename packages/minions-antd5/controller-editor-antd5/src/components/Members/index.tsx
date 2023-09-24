@@ -6,7 +6,7 @@ import { ListItemReaction } from "./ListItemReaction";
 import { ListItemVariable } from "./ListItemVariable";
 import { NameDialog } from "./NameDialog";
 import { VariableDialog } from "./VariableDialog";
-import { createUuid } from "@rxdrag/shared"
+import { createId } from "@rxdrag/shared"
 import { useTranslate } from "@rxdrag/react-locales"
 import { ILogicFlowControllerMeta, IVariableDefineMeta, Reaction, ReadVariable } from "@rxdrag/minions-runtime-react";
 import { ActivityMaterialCategory, IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
@@ -58,7 +58,7 @@ export const Members = memo((
 
   const handleAddEvent = useCallback((event: IEventMeta) => {
     const ev = {
-      id: createUuid(),
+      id: createId(),
       name: event.name,
       label: event.label,
       nodes: [],
@@ -104,7 +104,7 @@ export const Members = memo((
   const handleAddReactionOk = useCallback((name?: string) => {
     if (name) {
       const newReaction: ILogicFlowDefine = {
-        id: createUuid(),
+        id: createId(),
         label: name,
         nodes: [],
         lines: [],
@@ -124,7 +124,7 @@ export const Members = memo((
     if (meta) {
       const newVariable: IVariableDefineMeta = {
         ...meta,
-        id: createUuid(),
+        id: createId(),
       }
 
       onChange?.({ ...value, variables: [...value?.variables || [], newVariable] })

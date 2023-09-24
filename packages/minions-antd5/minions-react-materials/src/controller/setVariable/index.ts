@@ -1,4 +1,4 @@
-import { createUuid } from "@rxdrag/shared"
+import { createId } from "@rxdrag/shared"
 import { variableSchema } from "./schema"
 import { NodeType } from "@rxdrag/minions-schema"
 import { IVariableConfig, SetVariable } from "@rxdrag/minions-runtime-react"
@@ -13,14 +13,14 @@ export const setVariableMaterial: IRxDragActivityMaterial<IVariableConfig, ICont
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "input",
         label: "",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "output",
         label: "",
       },

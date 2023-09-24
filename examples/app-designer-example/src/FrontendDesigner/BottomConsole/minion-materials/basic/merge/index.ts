@@ -1,4 +1,4 @@
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { mergeSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
 import { mergeIcon } from "../../icons";
@@ -11,19 +11,19 @@ export const mergeMaterial: IRxDragActivityMaterial = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "input0",
         label: "input 0",
       },
       {
-        id: createUuid(),
+        id: createId(),
         name: "input1",
         label: "input 1",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "output",
         label: "",//"$output",
       },

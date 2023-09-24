@@ -1,6 +1,6 @@
 import { NodeType } from "@rxdrag/minions-schema";
 import { propSchema } from "./schema"
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { IPropConfig, SetProp } from "@rxdrag/minions-runtime-react";
 import { setPropIcon } from "../../icons";
 
@@ -14,14 +14,14 @@ export const setPropMaterial: IRxDragActivityMaterial<IPropConfig, IControllerEd
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "input",
         label: "",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "output",
         label: "",
       },

@@ -5,4 +5,5 @@ export interface IThemeToken {
   colorTextSecondary?: string;
   colorBgBase?: string;
   colorPrimary?: string;
+  colorBorderSecondary?: string;
 }
