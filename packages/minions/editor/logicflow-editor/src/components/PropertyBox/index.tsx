@@ -2,8 +2,9 @@ import React, { memo, useMemo } from "react"
 import styled from "styled-components"
 import { useGetMaterial } from "../../hooks/useGetMaterial"
 import { useSelectedNode } from "../../hooks/useSelectedNode"
+import { closeIcon } from "../../icons"
 
-const Title = styled.div`
+export const Title = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
@@ -53,7 +54,7 @@ export const PropertyBox = memo((props: {
         <Button
           onClick={onClose}
         >
-          <svg viewBox="0 0 1024 1024" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M801.645714 170.666667l51.833905 51.590095L565.150476 511.951238l288.353524 289.670095-51.833905 51.614477-288.109714-289.450667L225.426286 853.23581 173.592381 801.621333l288.329143-289.670095L173.592381 222.256762 225.426286 170.666667l288.109714 289.426285L801.645714 170.666667z"></path></svg>
+          {closeIcon}
         </Button>
       </Title>
       <Content>

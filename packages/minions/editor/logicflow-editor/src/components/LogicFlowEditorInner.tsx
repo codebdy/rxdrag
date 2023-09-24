@@ -8,12 +8,13 @@ import { Logic } from "./Logic";
 import { ILogicMetas, IThemeToken } from "../interfaces";
 import { Toolbar } from "./Toolbar";
 import { Toolbox } from "./Toolbox";
-import { Button, PropertyBox } from "./PropertyBox";
+import { Button, PropertyBox, Title } from "./PropertyBox";
 import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
 import { useEditorStore } from "../hooks";
 import { useShowMap } from "../hooks/useShowMap";
 import { useThemeToken } from "../hooks/useThemeToken";
 import { ResizableColumn } from "./ResizableColumn";
+import { closeIcon, propertyIcon, toolboxIcon } from "../icons";
 
 const EditorShell = styled.div`
   display: flex;
@@ -104,6 +105,7 @@ export const LogicFlowEditorInner = memo((
 ) => {
   const { value, onChange, toolbox, toolbar, propertyBox, materials, logicFlowContext, canBeReferencedLogflowMetas, children } = props
   const [closeProperty, setCloseProperty] = useState<boolean>()
+  const [closeToolbox, setCloseToolbox] = useState<boolean>()
   const emptyMetas = useMemo(() => ({
     nodes: [],
     lines: []
@@ -132,36 +134,60 @@ export const LogicFlowEditorInner = memo((
     setCloseProperty(false)
   }, [])
 
+  const handleCloseToolbox = useCallback(() => {
+    setCloseToolbox(true)
+  }, [])
+
+  const handleOpenToolbox = useCallback(() => {
+    setCloseToolbox(false)
+  }, [])
+
+
   return (
     <LogicFlowContext.Provider value={logicFlowContext}>
       <MaterialsContext.Provider value={materials}>
         <CanBeReferencedLogicFlowMetasContext.Provider value={canBeReferencedLogflowMetas || []}>
           <GraphContext.Provider value={graph}>
             <EditorShell>
+              {
+                toolbox && !closeToolbox && <Toolbox
+                  minWidth={100}
+                  maxWidth={500}
+                >
+                  <Title>
+                    编排元件
+                    <Button
+                      onClick={handleCloseToolbox}
+                    >
+                      {closeIcon}
+                    </Button>
+                  </Title>
+                  {toolbox}
+                </Toolbox>
+              }
+
               <CenterArea>
                 {
                   toolbar &&
                   <Toolbar>
+                    {
+                      closeToolbox && <Button
+                        onClick={handleOpenToolbox}
+                      >
+                        {toolboxIcon}
+                      </Button>
+                    }
                     {toolbar}
                     {
                       closeProperty && <Button
                         onClick={handleOpenProperty}
                       >
-                        <svg height="0.7em" width="0.7em" fill="currentColor" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4757"><path d="M334.06 618.68c-80.24 5.16-153.06 35.72-194.38 144.6-4.7 12.42-16 19.96-29.18 19.96-22.22 0-90.92-55.34-110.5-68.7C0.02 879.24 75.88 1024 256.02 1024c151.72 0 256-87.54 256-240.38 0-6.22-1.3-12.16-1.94-18.26l-176.02-146.68zM915.8 0c-30.32 0-58.74 13.42-80.42 32.9C426.56 398.1 384.02 406.68 384.02 514.18c0 27.4 6.5 53.52 17.46 77.4l127.64 106.36c14.42 3.6 29.28 6.06 44.78 6.06 124.22 0 196.22-90.94 422.32-512.92 14.76-28.7 27.8-59.7 27.8-91.98C1024.02 41.28 972.02 0 915.8 0z"></path></svg>
+                        {propertyIcon}
                       </Button>
                     }
                   </Toolbar>
                 }
                 <OperateArea>
-                  {
-                    toolbox && <Toolbox
-                      minWidth={100}
-                      maxWidth={500}
-                    >
-                      {toolbox}
-                    </Toolbox>
-                  }
-
                   <CanvasArea>
                     <CanvasContainer id="reactions-canvas-container" >
                       <Logic onChange={handleChange} />
