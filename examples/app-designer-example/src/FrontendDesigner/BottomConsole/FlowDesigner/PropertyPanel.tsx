@@ -1,17 +1,12 @@
 import { ResizableColumn } from "@rxdrag/react-antd-shell"
 import { memo } from "react"
 import styled from "styled-components"
+import { Title } from "../common/Title"
+import { CloseOutlined } from "@ant-design/icons"
+import { Button } from "antd"
 
 const StyledColumn = styled(ResizableColumn)`
   border-left: solid 1px ${props => props.theme.token?.colorBorderSecondary};
-`
-
-const Title = styled.div`
-  display: flex;
-  height: 40px;
-  border-bottom: solid 1px ${props => props.theme.token?.colorBorderSecondary};
-  align-items: center;
-  padding: 0 16px;
 `
 
 export const PropertyPanel = memo(() => {
@@ -24,6 +19,7 @@ export const PropertyPanel = memo(() => {
     >
       <Title>
         属性
+        <Button type="text" size="small" icon={<CloseOutlined />} />
       </Title>
     </StyledColumn>
   )

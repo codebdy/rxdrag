@@ -1,17 +1,19 @@
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
 import { Button, Space, Tooltip } from "antd"
-import { AppstoreOutlined, FunctionOutlined, ControlOutlined } from "@ant-design/icons"
+import { AppstoreOutlined, FunctionOutlined, ControlOutlined, CloseOutlined } from "@ant-design/icons"
 import { FXes } from "./FXes"
 import { Flows } from "./Flows"
 import { PropertyPanel } from "./PropertyPanel"
 import { LeftNav } from "../common/LeftNav"
 import { LeftColumn } from "../common/LeftColumn"
 import { Container } from "../common/Container"
+import { Title } from "../common/Title"
 
 const Content = styled.div`
   flex: 1;
 `
+
 
 enum NavType {
   toolbox = "toolbox",
@@ -38,6 +40,10 @@ export const FlowDesigner = memo((
 
   const handleToggleFxes = useCallback(() => {
     setNavType(type => type === NavType.fxes ? null : NavType.fxes)
+  }, [])
+
+  const handleCloseLeft = useCallback(() => {
+    setNavType(null)
   }, [])
 
   return (
@@ -73,6 +79,32 @@ export const FlowDesigner = memo((
           maxWidth={500}
           minWidth={160}
         >
+          <Title>
+            {
+              NavType.flows === navType &&
+              <span>
+                逻辑编排
+              </span>
+            }
+            {
+              NavType.fxes === navType &&
+              <span>
+                子编排
+              </span>
+            }
+            {
+              NavType.toolbox === navType &&
+              <span>
+                元件
+              </span>
+            }
+            <Button
+              type="text"
+              size="small"
+              icon={<CloseOutlined />}
+              onClick={handleCloseLeft}
+            />
+          </Title>
           {
             navType === NavType.flows &&
             <Flows />
