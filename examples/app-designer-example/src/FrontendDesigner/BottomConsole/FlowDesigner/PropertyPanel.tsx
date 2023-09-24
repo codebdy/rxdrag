@@ -9,7 +9,12 @@ const StyledColumn = styled(ResizableColumn)`
   border-left: solid 1px ${props => props.theme.token?.colorBorderSecondary};
 `
 
-export const PropertyPanel = memo(() => {
+export const PropertyPanel = memo((
+  props: {
+    onClose?: () => void
+  }
+) => {
+  const { onClose } = props;
   return (
     <StyledColumn
       right
@@ -19,7 +24,12 @@ export const PropertyPanel = memo(() => {
     >
       <Title>
         属性
-        <Button type="text" size="small" icon={<CloseOutlined />} />
+        <Button
+          type="text"
+          size="small"
+          icon={<CloseOutlined />}
+          onClick={onClose}
+        />
       </Title>
     </StyledColumn>
   )

@@ -24,9 +24,10 @@ enum NavType {
 export const FlowDesigner = memo((
   props: {
     showPropertyPanel?: boolean,
+    onClosePropery?: () => void,
   }
 ) => {
-  const { showPropertyPanel } = props;
+  const { showPropertyPanel, onClosePropery } = props;
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
 
 
@@ -45,6 +46,7 @@ export const FlowDesigner = memo((
   const handleCloseLeft = useCallback(() => {
     setNavType(null)
   }, [])
+
 
   return (
     <Container>
@@ -117,7 +119,7 @@ export const FlowDesigner = memo((
       }
       <Content />
       {
-        showPropertyPanel && <PropertyPanel />
+        showPropertyPanel && <PropertyPanel onClose={onClosePropery} />
       }
 
     </Container>

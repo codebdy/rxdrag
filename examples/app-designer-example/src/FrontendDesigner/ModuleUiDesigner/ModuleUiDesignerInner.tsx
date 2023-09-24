@@ -26,6 +26,11 @@ export const ModuleUiDesignerInner = memo(() => {
   const device = useAppFrontend()?.deviceType
   const { module } = useQueryModule(device, moduleId || "")
   const Toolbox = uiToolboxes[device || ""]
+
+  const hanleCloseProperty = useCallback(() => {
+    setShowProperties(false)
+  }, [])
+
   const items: TabsProps['items'] = useMemo(() => {
     return [
       {
@@ -33,7 +38,7 @@ export const ModuleUiDesignerInner = memo(() => {
           行为流
         </Label>,
         key: "logicflow",
-        children: <FlowDesigner showPropertyPanel={showProperties} />
+        children: <FlowDesigner showPropertyPanel={showProperties} onClosePropery={hanleCloseProperty} />
       },
       {
         label: <Label >
@@ -49,7 +54,7 @@ export const ModuleUiDesignerInner = memo(() => {
       //   children: "快捷控制器"
       // },
     ]
-  }, [showProperties])
+  }, [hanleCloseProperty, showProperties])
 
   const handleToggleProperty = useCallback(() => {
     setShowProperties(prop => !prop)
