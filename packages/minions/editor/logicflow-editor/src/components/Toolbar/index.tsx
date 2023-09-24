@@ -5,5 +5,5 @@ export const Toolbar = styled.div`
   padding: 0 16px;
   height: 40px;
   align-items: center;
-  border-bottom: ${props => props.theme.token?.colorBorder} solid 1px;
+  border-bottom: ${props => props.theme.token?.colorBorderSecondary} solid 1px;
 `
