@@ -50,6 +50,7 @@
     "@rxdrag/react-menu-designer": "workspace:*",
     "@rxdrag/react-antd-icons": "workspace:*",
     "@rxdrag/minions-schema": "workspace:*",
+    "@rxdrag/minions-logicflow-editor": "workspace:*",
     "@rxdrag/logicflow-editor-antd5": "workspace:*",
     "antd": "^5.9.2",
     "classnames": "^2.3.2",

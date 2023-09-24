@@ -29,7 +29,7 @@ const EmptyContainer = styled.div`
 `
 
 export const Button = styled.div`
-  padding: 4px;
+  padding: 6px;
   cursor: pointer;
   font-size: 16px;
 `

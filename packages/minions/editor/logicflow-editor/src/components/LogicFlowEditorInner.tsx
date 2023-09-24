@@ -10,7 +10,7 @@ import { Toolbar } from "./Toolbar";
 import { Toolbox } from "./Toolbox";
 import { Button, PropertyBox } from "./PropertyBox";
 import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
-import { useEditorStore, useSelectedNode } from "../hooks";
+import { useEditorStore } from "../hooks";
 import { useShowMap } from "../hooks/useShowMap";
 import { useThemeToken } from "../hooks/useThemeToken";
 import { ResizableColumn } from "./ResizableColumn";
@@ -111,7 +111,6 @@ export const LogicFlowEditorInner = memo((
 
   const store = useEditorStore()
   const token = useThemeToken()
-  const node = useSelectedNode()
   const graph = useCreateGraph(token, store)
   const { showMap } = useShowMap()
 
@@ -154,12 +153,15 @@ export const LogicFlowEditorInner = memo((
                   </Toolbar>
                 }
                 <OperateArea>
-                  <Toolbox
-                    minWidth={100}
-                    maxWidth={500}
-                  >
-                    {toolbox}
-                  </Toolbox>
+                  {
+                    toolbox && <Toolbox
+                      minWidth={100}
+                      maxWidth={500}
+                    >
+                      {toolbox}
+                    </Toolbox>
+                  }
+
                   <CanvasArea>
                     <CanvasContainer id="reactions-canvas-container" >
                       <Logic onChange={handleChange} />
