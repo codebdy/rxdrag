@@ -9,6 +9,8 @@ import { LeftNav } from "../common/LeftNav"
 import { LeftColumn } from "../common/LeftColumn"
 import { Container } from "../common/Container"
 import { Title } from "../common/Title"
+import { LogicFlowEditorAntd5 } from "@rxdrag/logicflow-editor-antd5"
+import { activityMaterialCategories, activityMaterialLocales } from "../minion-materials"
 
 const Content = styled.div`
   flex: 1;
@@ -29,7 +31,6 @@ export const FlowDesigner = memo((
 ) => {
   const { showPropertyPanel, onClosePropery } = props;
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
-
 
   const handleToggleToolbox = useCallback(() => {
     setNavType(type => type === NavType.toolbox ? null : NavType.toolbox)
@@ -117,11 +118,16 @@ export const FlowDesigner = memo((
           }
         </LeftColumn>
       }
-      <Content />
-      {
-        showPropertyPanel && <PropertyPanel onClose={onClosePropery} />
-      }
-
+      <Content>
+        <LogicFlowEditorAntd5
+          materialCategories={activityMaterialCategories}
+          locales={activityMaterialLocales}
+          value={{
+            nodes: [],
+            lines: []
+          }}
+        />
+      </Content>
     </Container>
   )
 })
