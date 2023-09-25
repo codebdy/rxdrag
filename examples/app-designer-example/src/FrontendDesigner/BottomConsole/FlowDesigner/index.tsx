@@ -1,6 +1,6 @@
-import { memo, useCallback, useState } from "react"
+import { ReactNode, memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
-import { Button, Space, Tooltip } from "antd"
+import { Button, Space, Tooltip, theme } from "antd"
 import { FunctionOutlined, ControlOutlined, CloseOutlined, AppstoreOutlined } from "@ant-design/icons"
 import { FXes } from "./FXes"
 import { Flows } from "./Flows"
@@ -8,9 +8,9 @@ import { LeftNav } from "../common/LeftNav"
 import { LeftColumn } from "../common/LeftColumn"
 import { Container } from "../common/Container"
 import { Title } from "../common/Title"
-import { FlowToolbar, LogicFlowEditorAntd5, Toolbox } from "@rxdrag/logicflow-editor-antd5"
+import { FlowToolbar, LogicMetaEditorAntd5Inner, LogicFlowEditorAntd5Scope, Toolbox } from "@rxdrag/logicflow-editor-antd5"
 import { activityMaterialCategories, activityMaterialLocales } from "../minion-materials"
-import { LogicFlowEditorScope } from "@rxdrag/minions-logicflow-editor"
+import { IActivityMaterial } from "@rxdrag/minions-schema"
 
 const Content = styled.div`
   flex: 1;
@@ -31,6 +31,12 @@ const test = {
 
 export const FlowDesigner = memo(() => {
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
+  const { token } = theme.useToken()
+
+  const materials = useMemo(() => {
+    const materials: IActivityMaterial<ReactNode>[] = []
+    return materials.concat(...activityMaterialCategories.map(category => category.materials))
+  }, [])
 
   const handleToggleToolbox = useCallback(() => {
     setNavType(type => type === NavType.toolbox ? null : NavType.toolbox)
@@ -50,7 +56,11 @@ export const FlowDesigner = memo(() => {
 
 
   return (
-    <LogicFlowEditorScope>
+    <LogicFlowEditorAntd5Scope
+      token={token}
+      materials={materials}
+      locales={activityMaterialLocales}
+    >
       <Container>
         <LeftNav>
           <Space direction="vertical">
@@ -124,23 +134,18 @@ export const FlowDesigner = memo(() => {
           </LeftColumn>
         }
         <Content>
-          <LogicFlowEditorAntd5
+          <LogicMetaEditorAntd5Inner
             materialCategories={activityMaterialCategories}
-            locales={activityMaterialLocales}
             value={test}
             toolbox={false}
-            toolbar={
-              <FlowToolbar
-                right={
-                  <Button type="primary">保存</Button>
-                }
-              >
-                添加用户
-              </FlowToolbar>
-            }
+            toolbar={<FlowToolbar
+              right={<Button type="primary">保存</Button>}
+            >
+              添加用户
+            </FlowToolbar>}
           />
         </Content>
       </Container>
-    </LogicFlowEditorScope>
+    </LogicFlowEditorAntd5Scope>
   )
 })

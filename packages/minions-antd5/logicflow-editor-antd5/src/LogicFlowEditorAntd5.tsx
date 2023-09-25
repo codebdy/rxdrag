@@ -1,38 +1,30 @@
-import { memo, useState, useEffect, useMemo } from "react"
+import { memo, ReactNode } from "react"
 import { LogicFlowEditorAntd5InnerProps, LogicMetaEditorAntd5Inner } from "./LogicFlowEditorAntd5Inner"
-import { ILocales, RxDragLocalesManager } from "@rxdrag/locales"
-import { LocalesContext } from "@rxdrag/react-locales"
-import { ThemeProvider } from "styled-components"
+import { ILocales } from "@rxdrag/locales"
 import { useToken } from "antd/es/theme/internal"
 import { IThemeToken } from "@rxdrag/minions-logicflow-editor"
+import { LogicFlowEditorAntd5Scope } from "./LogicFlowEditorAntd5Scope"
+import { IActivityMaterial } from "@rxdrag/minions-schema"
 
 export const LogicFlowEditorAntd5 = memo((
   props: {
     lang?: string,
     locales?: ILocales,
-  } & LogicFlowEditorAntd5InnerProps &{
+    materials: IActivityMaterial<ReactNode>[],
+  } & LogicFlowEditorAntd5InnerProps & {
     token?: IThemeToken,
   }
 ) => {
-  const { lang = "zh-CN", locales, token: propToken, ...other } = props
+  const { lang = "zh-CN", locales, materials, ...other } = props
   const [, token] = useToken();
-
-  const [localesManager] = useState(new RxDragLocalesManager(lang, locales))
-  useEffect(() => {
-    locales && localesManager.registerLocales(locales)
-  }, [localesManager, locales])
-
-  const theme: { token: IThemeToken } = useMemo(() => {
-    return {
-      token: propToken || token
-    }
-  }, [propToken, token])
-
   return (
-    <LocalesContext.Provider value={localesManager}>
-      <ThemeProvider theme={theme}>
-        <LogicMetaEditorAntd5Inner token={propToken||token } {...other} />
-      </ThemeProvider>
-    </LocalesContext.Provider>
+    <LogicFlowEditorAntd5Scope
+      lang={lang}
+      locales={locales}
+      token={token}
+      materials={materials}
+    >
+      <LogicMetaEditorAntd5Inner  {...other} />
+    </LogicFlowEditorAntd5Scope>
   )
 })

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const Toolbar = styled.div`
+export const FlowToolbar = styled.div`
   display: flex;
   padding: 0 8px;
   height: 40px;

@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef } from "react"
+import { memo, useEffect, useMemo, useRef } from "react"
 import { useEditEdge } from "../hooks/edit-meta/useEditEdge"
 import { useAddNode } from "../hooks/edit-meta/useAddNode"
 import { useMovedNode } from "../hooks/edit-meta/useMovedNode"
@@ -11,13 +11,16 @@ import { useSetZoom } from "../hooks/useSetZoom"
 import { ILogicMetas } from "../interfaces"
 import { useChildPositionChange } from "../hooks/edit-meta/useChildPositionChange"
 import { useNodeEmbedded } from "../hooks/edit-meta/useNodeEmbedded"
+import { useEditorStore } from "../hooks"
+import { SetMetasAction, ActionType } from "../actions"
 
 export const Logic = memo((
   props: {
-    onChange: (metas: ILogicMetas) => void,
+    value?: ILogicMetas,
+    onChange?: (metas: ILogicMetas) => void,
   }
 ) => {
-  const { onChange } = props;
+  const { value, onChange } = props;
   const { changeFlag } = useChangeFlag()
   const { metas } = useMetas()
   const metasRef = useRef(metas)
@@ -36,9 +39,21 @@ export const Logic = memo((
   useSetZoom()
   useEffect(() => {
     if (changeFlag && metasRef.current) {
-      onChangeRef.current(metasRef.current)
+      onChangeRef.current?.(metasRef.current)
     }
   }, [changeFlag])
+
+  const emptyMetas = useMemo(() => ({
+    nodes: [],
+    lines: []
+  }), [])
+
+  const store = useEditorStore()
+
+  useEffect(() => {
+    const action: SetMetasAction = { type: ActionType.SET_METAS, payload: { nodes: value?.nodes || [], lines: value?.lines || [] } }
+    store?.dispatch(action)
+  }, [emptyMetas, value, store])
 
   return null
 })

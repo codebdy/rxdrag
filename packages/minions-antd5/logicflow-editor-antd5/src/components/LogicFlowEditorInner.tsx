@@ -1,12 +1,8 @@
 import React from "react";
 import { memo } from "react"
 import styled from "styled-components";
-import { ILogicMetas } from "../interfaces";
-import { FlowToolbar } from "./FlowToolbar";
-import { FlowToolbox } from "./FlowToolbox";
-import { FlowPropertyBox } from "./FlowPropertyBox";
-import { ResizableColumn } from "./ResizableColumn";
-import { FlowCanvas } from "./FlowCanvas";
+import { ResizableColumn, ILogicMetas, FlowToolbar, FlowCanvas, FlowPropertyBox, FlowToolbox } from "@rxdrag/minions-logicflow-editor";
+
 
 const EditorShell = styled.div`
   display: flex;
@@ -74,7 +70,7 @@ export const LogicFlowEditorInner = memo((
             </FlowToolbox>
           }
           <FlowCanvas
-            value = {value}
+            value={value}
             onChange={onChange}
           >
             {children}

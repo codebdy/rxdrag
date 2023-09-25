@@ -2,7 +2,6 @@ import React, { memo, useMemo } from "react"
 import styled from "styled-components"
 import { useGetMaterial } from "../../hooks/useGetMaterial"
 import { useSelectedNode } from "../../hooks/useSelectedNode"
-import { closeIcon } from "../../icons"
 
 export const Title = styled.div`
   height: 40px;
@@ -29,26 +28,10 @@ const EmptyContainer = styled.div`
   flex: 1;
 `
 
-export const Button = styled.div`
-  height: 24px;
-  width: 24px;
-  display: flex;
-  justify-content: center;
-  border-radius: 4px;
-  align-items: center;
-  cursor: pointer;
-  font-size: 16px;
-  color:  ${props => props.theme.token?.colorTextSecondary};
-  &.selected{
-    border: solid 1px ${props => props.theme.token?.colorBorder};
-  }
-`
-
-export const PropertyBox = memo((props: {
-  onClose?: () => void,
+export const FlowPropertyBox = memo((props: {
   children?: React.ReactNode
 }) => {
-  const { onClose, children } = props;
+  const { children } = props;
   const node = useSelectedNode()
   const getMaterial = useGetMaterial()
   const material = useMemo(() => getMaterial(node?.activityName || ""), [getMaterial, node?.activityName])
@@ -60,11 +43,6 @@ export const PropertyBox = memo((props: {
           {material?.icon}
           <span style={{ marginLeft: 8 }}>{node?.label}</span>
         </span>
-        <Button
-          onClick={onClose}
-        >
-          {closeIcon}
-        </Button>
       </Title>
       <Content>
         {
