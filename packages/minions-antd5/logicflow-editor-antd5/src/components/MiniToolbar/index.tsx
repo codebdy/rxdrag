@@ -16,7 +16,7 @@ export const floatShadow = (props: {
 const Container = styled.div`
   position: absolute;
   width: 40px;
-  border: ${props => props.theme.token?.colorBorder} solid 1px;
+  border: ${props => props.theme.token?.colorBorderSecondary} solid 1px;
   background-color: ${props => props.theme.token?.colorBgContainer};
   right: 16px;
   top: 16px;
