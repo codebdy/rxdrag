@@ -1,4 +1,4 @@
-import { IControllerMeta } from "@rxdrag/minions-runtime-react";
+import { IOldControllerMeta } from "@rxdrag/minions-runtime-react";
 
 export enum ActionType {
   list = "list",
@@ -7,7 +7,7 @@ export enum ActionType {
   search = "search"
 }
 
-export interface IShortcutControllerMeta extends IControllerMeta {
+export interface IShortcutControllerMeta extends IOldControllerMeta {
   actionType?: ActionType,
   url?: string,
   entityName?: string,

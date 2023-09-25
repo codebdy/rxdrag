@@ -1,4 +1,4 @@
-import { IControllerMeta, ILogicFlowControllerMeta } from "./meta"
+import { IOldControllerMeta, ILogicFlowControllerMeta } from "./meta"
 
 export type Unsubscribe = () => void
 
@@ -44,4 +44,4 @@ export type Controllers = {
   [controllerId: string]: IController | undefined
 }
 
-export type ControllerFactory = (meta: IControllerMeta) => IController
+export type ControllerFactory = (meta: IOldControllerMeta) => IController

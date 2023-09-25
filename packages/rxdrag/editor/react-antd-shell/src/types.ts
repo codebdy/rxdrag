@@ -1,9 +1,9 @@
 import { ILocales } from "@rxdrag/locales";
-import { ControllerFactory, IControllerMeta } from "@rxdrag/minions-runtime-react";
+import { ControllerFactory, IOldControllerMeta } from "@rxdrag/minions-runtime-react";
 
 export interface ISetterProps {
-  value: IControllerMeta,
-  onChange?: (value?: IControllerMeta) => void
+  value: IOldControllerMeta,
+  onChange?: (value?: IOldControllerMeta) => void
 }
 
 export interface IControllerDefine {

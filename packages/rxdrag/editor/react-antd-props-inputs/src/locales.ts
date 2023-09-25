@@ -36,7 +36,9 @@ export const setterLocales: ILocales = {
     no: "否",
     regenerateCode: "重新生成代码",
     replaceTip: "代码将被覆盖，您确定吗？",
-    message: "消息"
+    message: "消息",
+    joinFlow: "参与编排",
+    name: "名称"
   },
   'en-US': {
     validationType: "Validation Type",
@@ -73,6 +75,8 @@ export const setterLocales: ILocales = {
     no: "No",
     regenerateCode: "Regenerate Code",
     replaceTip: "Code will be replaced, are you sure?",
-    message: "Message"
+    message: "Message",
+    joinFlow: "Join Flow",
+    name: "Name"
   }
 }

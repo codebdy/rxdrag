@@ -12,7 +12,6 @@ import styled from 'styled-components';
 import { Logo, MenuButton, controllerDefines, materials, minionsLocales, minionsMaterialCategories, setterLocales } from 'example-common';
 import { DesignerScope } from '@rxdrag/react-antd-shell';
 import { INodeSchema } from "@rxdrag/schema"
-import { ControllerSetter } from "@rxdrag/react-antd-shell"
 import { PageEditor } from './PageEditor';
 
 const { Header, Sider, Content } = Layout;
@@ -61,7 +60,6 @@ export const InlineEditorExample: React.FC = () => {
         controllers: controllerDefines,
       }}
       materials={materials}
-      setters={{ ControllerSetter }}
       locales={setterLocales}
     >
       <StyleLayout>

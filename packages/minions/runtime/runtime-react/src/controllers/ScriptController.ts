@@ -1,4 +1,4 @@
-import { ControllerFactory, Controllers, IControllerMeta, IScriptControllerMeta } from "../interfaces";
+import { ControllerFactory, Controllers, IOldControllerMeta, IScriptControllerMeta } from "../interfaces";
 import { AbstractController } from "./AbstractController";
 
 export class ControllerManger {
@@ -48,6 +48,6 @@ export class ScriptController extends AbstractController {
   }
 }
 
-export const ScriptControllerFactory: ControllerFactory = (meta: IControllerMeta) => {
+export const ScriptControllerFactory: ControllerFactory = (meta: IOldControllerMeta) => {
   return new ScriptController(meta)
 }
