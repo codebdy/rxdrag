@@ -11,12 +11,15 @@ import { zoomReducer } from "./zoomReducer";
 export const mainReducer = (
   { changeFlag, redoList, undoList, nodes, lines, selected, zoom, showMap }: IState = initialState,
   action: Action
-): IState => ({
-  changeFlag: changeFlagReducer(changeFlag, action),
-  redoList: redoListReducer(redoList, action),
-  undoList: undoListReducer(undoList, action),
-  ...metasReducer({ nodes, lines }, action),
-  selected: selectedReducer(selected, action),
-  zoom: zoomReducer(zoom, action),
-  showMap: showMapReducer(showMap, action),
-});
+): IState => {
+  const newState = {
+    changeFlag: changeFlagReducer(changeFlag, action),
+    redoList: redoListReducer(redoList, action),
+    undoList: undoListReducer(undoList, action),
+    ...metasReducer({ nodes, lines }, action),
+    selected: selectedReducer(selected, action),
+    zoom: zoomReducer(zoom, action),
+    showMap: showMapReducer(showMap, action),
+  }
+  return newState
+};

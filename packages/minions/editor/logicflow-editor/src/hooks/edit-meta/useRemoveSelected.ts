@@ -20,9 +20,9 @@ export function useRemoveSelected() {
   const handleRemove = useCallback(() => {
     if (selectedNode) {
       backup()
-      //先删除线
-      for(const line of getAllLines(metas)){
-        if(line.source.nodeId === selectedNode.id || line.target.nodeId === selectedNode.id){
+      //删除相关连线
+      for (const line of getAllLines(metas)) {
+        if (line.source.nodeId === selectedNode.id || line.target.nodeId === selectedNode.id) {
           const action: RemoveEdgeAction = { type: ActionType.REMOVE_EDGE, payload: line.id }
           dispatch?.(action)
         }
@@ -51,7 +51,7 @@ function getAllLines(logicMetas?: ILogicMetas) {
   const metas: ILineDefine[] = [...logicMetas.lines]
   for (const nodeMeta of logicMetas.nodes) {
     if (nodeMeta.type === NodeType.EmbeddedFlow) {
-      metas.push(...nodeMeta.children?.lines||[])
+      metas.push(...nodeMeta.children?.lines || [])
     }
   }
 
