@@ -46,7 +46,7 @@ export function childrenReducer(state: ILogicFlowMetas | undefined, action: Acti
     case ActionType.EMBED_NODE: {
       const embedNodeAction = action as EmbedNodeAction
       return {
-        nodes: [...state?.nodes || [], embedNodeAction.payload],
+        nodes: [...state?.nodes?.filter(node=>node.id !== embedNodeAction.payload.id) || [], embedNodeAction.payload],
         lines: state?.lines || [],
       }
     }

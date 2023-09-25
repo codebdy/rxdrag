@@ -16,7 +16,6 @@ export function useShowCells() {
   const themeToken = useThemeToken()
 
   const { metas } = useMetas()
-
   useEffect(() => {
     if (graph) {
       const oldCells = graph.getCells()

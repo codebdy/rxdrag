@@ -6,7 +6,7 @@ import { getParentSize } from "./getParentSize";
 export function useChildPositionChange() {
   const graph = useGraph()
 
-  const handlePositionChange = useCallback(({ node, options }: { node: Node, options: any }) => {
+  const handlePositionChange = useCallback(({ node }: { node: Node }) => {
     const pos = getParentSize(node)
 
     const parent = node.getParent()
@@ -22,5 +22,5 @@ export function useChildPositionChange() {
     return () => {
       graph?.off('node:change:position', handlePositionChange)
     }
-  }, [graph])
+  }, [graph, handlePositionChange])
 }

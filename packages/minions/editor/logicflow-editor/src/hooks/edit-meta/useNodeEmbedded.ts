@@ -15,7 +15,7 @@ export function useNodeEmbedded() {
   const backup = useBackup()
   const dispatch = useDispatch()
   const markChange = useMarkChange()
-  
+
   const handelEmbedded = useCallback((args: { node: Node }) => {
     const { node } = args
     backup()
@@ -35,15 +35,15 @@ export function useNodeEmbedded() {
     }
     node.setData({ ...data, meta: newMeta })
 
-    if(parentId){
-      const action:EmbedNodeAction = {
+    if (parentId) {
+      const action: EmbedNodeAction = {
         type: ActionType.EMBED_NODE,
         parentId: parentId,
         payload: newMeta
       }
       dispatch?.(action)
       markChange()
-    }else{
+    } else {
       console.error("embed no parentId")
     }
 

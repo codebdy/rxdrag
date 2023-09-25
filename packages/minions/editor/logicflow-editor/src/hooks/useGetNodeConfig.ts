@@ -28,11 +28,10 @@ export function useGetNodeConfig() {
       case NodeType.LogicFlowActivity:
         return getLogicFlowNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.activityName))
       case NodeType.EmbeddedFlow:
-        return getGroupNodeConfig(reactNodeMeta, getMaterial(reactNodeMeta.activityName))
+        return getGroupNodeConfig(reactNodeMeta)
     }
 
-    throw new Error("Can not find reaction node meta: " + reactNodeMeta.type)
-  }, [getMaterial, getLogicFlowNodeConfig, getSingleNodeConfig, token])
+  }, [token, getSingleNodeConfig, getMaterial, getLogicFlowNodeConfig, getGroupNodeConfig])
 
 
   return getConfig
