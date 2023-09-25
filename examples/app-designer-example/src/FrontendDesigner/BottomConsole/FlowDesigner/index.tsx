@@ -8,15 +8,19 @@ import { LeftNav } from "../common/LeftNav"
 import { LeftColumn } from "../common/LeftColumn"
 import { Container } from "../common/Container"
 import { Title } from "../common/Title"
-import { FlowToolbar, LogicMetaEditorAntd5Inner, LogicFlowEditorAntd5Scope, Toolbox } from "@rxdrag/logicflow-editor-antd5"
+import { LogicMetaEditorAntd5Inner, LogicFlowEditorAntd5Scope, Toolbox } from "@rxdrag/logicflow-editor-antd5"
 import { activityMaterialCategories, activityMaterialLocales } from "../minion-materials"
 import { IActivityMaterial } from "@rxdrag/minions-schema"
+import { Toolbar } from "./Toolbar"
 
 const Content = styled.div`
   flex: 1;
   position: relative;
 `
 
+const SaveButton = styled(Button)`
+  margin-left: 32px;
+`
 
 enum NavType {
   toolbox = "toolbox",
@@ -138,11 +142,11 @@ export const FlowDesigner = memo(() => {
             materialCategories={activityMaterialCategories}
             value={test}
             toolbox={false}
-            toolbar={<FlowToolbar
-              right={<Button type="primary">保存</Button>}
+            toolbar={<Toolbar
+              title="添加用户"
             >
-              添加用户
-            </FlowToolbar>}
+              <SaveButton type="primary">保存</SaveButton>
+            </Toolbar>}
           />
         </Content>
       </Container>
