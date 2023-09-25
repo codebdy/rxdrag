@@ -1,6 +1,5 @@
 import { useCallback } from "react";
 import { IActivityNode, IThemeToken } from "../interfaces";
-import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { useTransformPorts } from "./useTransformPorts";
 import { useGroupPortsConfig } from "./useGroupPortsConfig";
 
@@ -13,7 +12,7 @@ export function useGetGroupNodeConfig(token: IThemeToken) {
   const portsGroup = useGroupPortsConfig(token)
   const transformPorts = useTransformPorts()
 
-  const getGroup = useCallback((nodeMeta: IActivityNode, material: IActivityMaterial | undefined) => {
+  const getGroup = useCallback((nodeMeta: IActivityNode) => {
     return {
       id: nodeMeta.id,
       shape: 'group-node',
@@ -22,11 +21,10 @@ export function useGetGroupNodeConfig(token: IThemeToken) {
       stroke: token.colorBorder,
       width: nodeMeta.x6Node?.width || GroupSize.width,
       height: nodeMeta.x6Node?.height || GroupSize.height,
-      zIndex: 1,
       label: nodeMeta.label || "Group",
       attrs: {
         body: {
-          fill: token.colorBgContainer,//"#8297da",
+          //fill: token.colorBgContainer,//"#8297da",
           stroke: token.colorText,//stroke: '#5e76c3',
           strokeWidth: 1,
           class: "group-node",
@@ -48,7 +46,7 @@ export function useGetGroupNodeConfig(token: IThemeToken) {
         items: transformPorts(nodeMeta)
       },
     }
-  }, [token, transformPorts])
+  }, [portsGroup, token.colorBorder, token.colorText, token.colorTextSecondary, transformPorts])
 
   return getGroup
 }

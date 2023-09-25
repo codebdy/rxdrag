@@ -1,10 +1,10 @@
-import { memo, useCallback, useEffect, useMemo, useState } from "react"
+import React, { memo, useCallback, useEffect, useMemo, useState } from "react"
 import styled from "styled-components"
 import { FloatNodeNav, ResizableRow } from "../../common"
 import { usePropertyWidthState, useToolboxWidthState } from "../contexts"
 import { floatShadow } from "../../utils"
 import { Button, Divider, Space, Tabs, TabsProps } from "antd"
-import { BorderOutlined, LeftOutlined, MinusOutlined, RightOutlined, SettingOutlined } from "@ant-design/icons"
+import { BorderOutlined, LeftOutlined, MinusOutlined, RightOutlined } from "@ant-design/icons"
 import { DEFAULT_MARGIN, MINI_WIDGET_WIDTH } from "../consts"
 import { ReundoIcons } from "./ReundoIcons"
 import { useActivedDocument } from "@rxdrag/react-core"
@@ -29,14 +29,20 @@ const BottomShell = styled(ResizableRow)`
       height: 0;
       overflow: auto;
     }
-    padding-bottom: 8px;
+    .ant-tabs-content{
+      height: 100%;
+      .ant-tabs-tabpane{
+        height: 100%;
+      }
+    }
+    padding-bottom: 4px;
   }
   .ant-tabs-nav{
     padding: 0 16px;
     margin: 0;
     user-select: none;
     &::before{
-      border: 0;
+      //border: 0;
     }
   }
 `
@@ -54,15 +60,12 @@ const Toolbar = styled.div`
   right:0;
   display: flex;
   align-items: center;
-  background-color: ${props=>props.theme.token.colorBgContainer};
+  background-color: ${props => props.theme.token.colorBgContainer};
   border-radius: 8px;
   box-shadow: ${floatShadow};
   height: 32px;
   padding: 0 4px;
-`
-const Label = styled.div`
-  display: flex;
-  align-items: center;
+  //transform: translateX(-50%);
 `
 
 const BottomActions = styled.div`
@@ -87,7 +90,13 @@ const LeftPinButton = styled(PinButton)`
 
 const minHeight = 40
 
-export const BottomArea = memo(() => {
+export const BottomArea = memo((
+  props: {
+    items?: TabsProps['items'],
+    extra?: React.ReactNode,
+  }
+) => {
+  const { items, extra } = props;
   const [collapsed, setCollapsed] = useState(false)
   const [rightPinned, setRightPinned] = useState(false)
   const [leftPinned, setLeftPinned] = useState(false)
@@ -101,31 +110,6 @@ export const BottomArea = memo(() => {
     setCollapsed(false)
   }, [])
 
-  const items: TabsProps['items'] = useMemo(() => {
-    return [
-      {
-        label: <Label onClick={handleTabClick}>行为流</Label>,
-        key: "logicflow",
-        children: "应用级/设备端级别/模块级/视图级/循环级"
-      },
-      {
-        label: <Label onClick={handleTabClick}>脚本</Label>,
-        key: "script",
-        children: "脚本控制器"
-      },
-      {
-        label: <Label onClick={handleTabClick}>日志</Label>,
-        key: "log",
-        children: "日志"
-      },
-      //把快捷控制器附加到物料上，放在属性面板配置
-      // {
-      //   label: <Label>快捷</Label>,
-      //   key: "shortcurt",
-      //   children: "快捷控制器"
-      // },
-    ]
-  }, [handleTabClick])
 
   useEffect(() => {
     if (height <= (minHeight + 5)) {
@@ -186,35 +170,34 @@ export const BottomArea = memo(() => {
             <ReundoIcons />
             <Divider type="vertical" />
             <AuxButtions />
-            <Divider type="vertical" /> 
+            <Divider type="vertical" />
             <ViewButtons />
           </BottomActions>
         }
       </Toolbar>
-      <Tabs
-        size="small"
-        tabBarExtraContent={
-          <Space>
-            <Button
-              type="text"
-              size="small"
-              icon={<SettingOutlined />}
-            />
-            <Button
-              type="text"
-              size="small"
-              icon={
-                collapsed
-                  ? <BorderOutlined />
-                  : <MinusOutlined />
-              }
-              onClick={handleToggleHeight}
-            />
-          </Space>
-        }
-        items={items}
-      />
-
+      {
+        !!items?.length &&
+        <Tabs
+          size="small"
+          onTabClick={handleTabClick}
+          tabBarExtraContent={
+            <Space>
+              {extra}
+              <Button
+                type="text"
+                size="small"
+                icon={
+                  collapsed
+                    ? <BorderOutlined />
+                    : <MinusOutlined />
+                }
+                onClick={handleToggleHeight}
+              />
+            </Space>
+          }
+          items={items}
+        />
+      }
       {
         !propertyMini && !collapsed &&
         <PinButton

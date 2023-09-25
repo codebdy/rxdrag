@@ -1,6 +1,6 @@
 {
   "name": "app-designer-example",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "module": "index.ts",
   "files": [
@@ -49,6 +49,9 @@
     "@rxdrag/react-antd-props-inputs": "workspace:*",
     "@rxdrag/react-menu-designer": "workspace:*",
     "@rxdrag/react-antd-icons": "workspace:*",
+    "@rxdrag/minions-schema": "workspace:*",
+    "@rxdrag/minions-logicflow-editor": "workspace:*",
+    "@rxdrag/logicflow-editor-antd5": "workspace:*",
     "antd": "^5.9.2",
     "classnames": "^2.3.2",
     "react-router-dom": "^6.9.0",

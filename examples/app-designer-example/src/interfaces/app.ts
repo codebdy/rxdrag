@@ -3,6 +3,8 @@ import { DeviceType } from "./device";
 import { ICanvasConfig } from "@rxdrag/react-core";
 import { IModuleCategory } from "./module";
 import { IMenu } from "./menu";
+import { IScopedScript } from "./script";
+import { IScopedILogicFlow } from "./flow";
 
 export interface IApp {
   id: string,
@@ -12,6 +14,8 @@ export interface IApp {
 export interface IAppInput {
   id?: string,
   title?: string,
+  fxFlows?: IScopedILogicFlow[],
+  fxScripts?: IScopedScript[],
 }
 
 export interface IAppFrontend {
@@ -21,4 +25,6 @@ export interface IAppFrontend {
   canvasConfig?: ICanvasConfig,
   menus?: IMenu[],
   moduleCategories?: IModuleCategory[],
+  fxFlows?: IScopedILogicFlow[],
+  fxScripts?: IScopedScript[],
 }

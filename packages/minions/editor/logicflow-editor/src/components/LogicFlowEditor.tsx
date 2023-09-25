@@ -1,27 +1,31 @@
-import { memo, useMemo } from "react"
+import { ReactNode, memo } from "react"
 import { LogicFlowEditorScope } from "./LogicFlowEditorScope";
-import { LogicFlowEditorInner, LogicFlowEditorProps } from "./LogicFlowEditorInner";
-import { ThemeProvider } from "styled-components";
+import { LogicFlowEditorInner, LogicFlowEditorInnerProps } from "./LogicFlowEditorInner";
 import { IThemeToken } from "../interfaces";
-import { ThemeTokenContext } from "../contexts";
+import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
+
+export type LogicFlowEditorProps = LogicFlowEditorInnerProps & {
+  themMode?: "dark" | "light",
+  token: IThemeToken,
+  materials: IActivityMaterial<ReactNode>[],
+  logicFlowContext?: unknown,
+  canBeReferencedLogflowMetas?: ILogicFlowDefine[],
+}
 
 export const LogicFlowEditor = memo((
   props: LogicFlowEditorProps
 ) => {
-  const { token } = props
-  const theme: { token: IThemeToken } = useMemo(() => {
-    return {
-      token
-    }
-  }, [token])
+  const { themMode, token, materials, logicFlowContext, canBeReferencedLogflowMetas, ...rest } = props
 
   return (
-    <LogicFlowEditorScope>
-      <ThemeProvider theme={theme}>
-        <ThemeTokenContext.Provider value={token}>
-          <LogicFlowEditorInner {...props} />
-        </ThemeTokenContext.Provider>
-      </ThemeProvider>
+    <LogicFlowEditorScope
+      themMode={themMode}
+      token={token}
+      materials={materials}
+      logicFlowContext={logicFlowContext}
+      canBeReferencedLogflowMetas={canBeReferencedLogflowMetas}
+    >
+      <LogicFlowEditorInner {...rest} />
     </LogicFlowEditorScope>
   )
 })

@@ -1,19 +1,27 @@
 import { ZoomOutOutlined, ZoomInOutlined } from "@ant-design/icons"
 import { useZoom, useZoomIn, useZoomOut, MIN_ZOOM, MAX_ZOOM, useShowMap } from "@rxdrag/minions-logicflow-editor"
-import { Button, Space } from "antd"
+import { Button, GlobalToken, Space } from "antd"
 import { memo, useCallback } from "react"
 import styled from "styled-components"
-import { mapIcon, zoomResetIcon } from "../Toolbar/icons"
+import { zoomResetIcon, mapIcon } from "../FlowToolbar/icons"
+
+export const floatShadow = (props: {
+  theme: {
+    mode?: "dark" | "light",
+    token?: GlobalToken
+  }
+}) => `1px 1px 8px 4px rgba(0, 0, 0, ${props.theme?.mode === "light" ? 0.05 : 0.25})`
+
 
 const Container = styled.div`
   position: absolute;
   width: 40px;
-  border: ${props => props.theme.token?.colorBorder} solid 1px;
+  border: ${props => props.theme.token?.colorBorderSecondary} solid 1px;
   background-color: ${props => props.theme.token?.colorBgContainer};
-  right: 8px;
-  top: 8px;
+  right: 16px;
+  top: 16px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.06);
+  box-shadow: ${floatShadow};
   display: flex;
   justify-content: center;
   padding-top: 8px;

@@ -8,7 +8,7 @@ import { settingLocales } from "../../common"
 import { commonLocales } from "../../locales"
 import { IViewSchema } from "@rxdrag/schema"
 import { CanvasResizeDriver, ContainerImpl, DragDropDriver, IDocument, KeyboardDriver, MouseMoveDriver } from "@rxdrag/core"
-import { Space } from "antd"
+import { Space, TabsProps } from "antd"
 import { DocView } from "../DocView"
 import { ZoomableViewport } from "../ZoomableViewport"
 import { Toolbox } from "../Toolbox"
@@ -22,15 +22,20 @@ const Workspace = styled.div`
   box-sizing: border-box;
   flex-flow: column;
   width: 0;
+  overflow: hidden;
 `
 export type ZoomableEditorInnerProps = {
   locales?: ILocales,
   schemas?: IViewSchema[],
   toolbox?: React.ReactNode,
+  bottomConsole?: {
+    items?: TabsProps['items'],
+    extra?: React.ReactNode,
+  },
 }
 
 export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
-  const { schemas, locales, toolbox } = props
+  const { schemas, locales, toolbox, bottomConsole } = props
   const [docs, setDocs] = useState<IDocument[]>([])
   const engine = useDesignerEngine()
 
@@ -85,7 +90,7 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
           }
         </Space>
       </ZoomableViewport>
-      <BottomArea />
+      <BottomArea {...bottomConsole} />
       <Toolbox>
         {toolbox}
       </Toolbox>

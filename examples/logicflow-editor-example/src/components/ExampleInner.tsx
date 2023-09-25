@@ -2,7 +2,7 @@ import { memo, useState } from "react"
 import { Fieldy } from "@rxdrag/react-fieldy"
 import { activityMaterialCategories } from "../materials"
 import { LogicFlowEditorAntd5 } from "@rxdrag/logicflow-editor-antd5"
-import { ILogicMetas, useRemoveSelected, useSelected } from "@rxdrag/minions-logicflow-editor"
+import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
 import styled from "styled-components"
 import { Button, Space } from "antd"
 import metas from "./meta.json"
@@ -29,8 +29,6 @@ export const ExampleInner = memo((
   const { toggleTheme } = props
   const [inputValue, setInputValue] = useState<ILogicMetas>(metas as any)
 
-  const { selected } = useSelected()
-  const handleRemove = useRemoveSelected()
   return (
     <Fieldy>
       <ShellContainer>
@@ -38,7 +36,6 @@ export const ExampleInner = memo((
           <Space>
             <Logo title="逻辑编排" />
             <Button onClick={toggleTheme}>主题切换</Button>
-            <Button disabled={!selected} onClick={handleRemove}>删除</Button>
           </Space>
           <MenuButton />
         </Toolbar>

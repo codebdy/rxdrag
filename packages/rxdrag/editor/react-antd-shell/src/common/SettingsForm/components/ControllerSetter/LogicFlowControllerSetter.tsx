@@ -10,7 +10,7 @@ import { useGlobalControllerMetas } from "./hooks/useGlobalControllerMetas";
 import { controllerSetterLocales } from "./locales";
 import { activityMaterialCategories } from "./materials";
 import { IEventMeta } from "@rxdrag/minions-controller-editor";
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { useFillControllerProps } from "./hooks/useFillControllerProps";
 
 export const LogicFlowControllerSetter = memo((
@@ -50,7 +50,7 @@ export const LogicFlowControllerSetter = memo((
 
   const handleGlobalChange = useCallback((checked: boolean) => {
     if (checked) {
-      const id = value?.id || createUuid()
+      const id = value?.id || createId()
       onChange?.({ ...value, id: id, global: true })
     } else {
       if (value) {

@@ -1,10 +1,10 @@
-import { ReactNode, memo, useMemo } from "react"
-import { Toolbox, PropertyBox, Toolbar } from "./components"
-import { useTransMaterialCategories } from "./hooks/useTransMaterialCategories"
-import { ILogicMetas, IThemeToken, LogicFlowEditor } from "@rxdrag/minions-logicflow-editor"
-import { ActivityMaterialCategory, IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema"
+import { ReactNode, memo } from "react"
+import { Toolbox, PropertyBox, FlowToolbar } from "./components"
+import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
+import { ActivityMaterialCategory, ILogicFlowDefine } from "@rxdrag/minions-schema"
 import { IReactComponents } from "@rxdrag/react-shared"
 import { MiniToolbar } from "./components/MiniToolbar"
+import { LogicFlowEditorInner } from "./components/LogicFlowEditorInner"
 
 export type LogicFlowEditorAntd5InnerProps = {
   value: ILogicMetas,
@@ -14,33 +14,22 @@ export type LogicFlowEditorAntd5InnerProps = {
   logicFlowContext?: unknown,
   canBeReferencedLogflowMetas?: ILogicFlowDefine[],
   toolbar?: false | React.ReactNode,
+  toolbox?: React.ReactNode | false,
 }
 
 export const LogicMetaEditorAntd5Inner = memo((
-  props: LogicFlowEditorAntd5InnerProps&{
-    token: IThemeToken,
-  }
+  props: LogicFlowEditorAntd5InnerProps
 ) => {
-  const { value, onChange, materialCategories, setters, logicFlowContext, canBeReferencedLogflowMetas, token, toolbar } = props
-  const categories = useTransMaterialCategories(materialCategories);
-  const materials = useMemo(() => {
-    const materials: IActivityMaterial<ReactNode>[] = []
-    return materials.concat(...categories.map(category => category.materials))
-  }, [categories])
-
+  const { value, onChange, materialCategories, setters, toolbar, toolbox } = props
   return (
-    <LogicFlowEditor
+    <LogicFlowEditorInner
       value={value}
       onChange={onChange}
-      toolbar={toolbar === undefined ? <Toolbar /> : toolbar}
-      toolbox={<Toolbox materialCategories={categories} />}
+      toolbar={toolbar === undefined ? <FlowToolbar /> : toolbar}
+      toolbox={toolbox !== false && (toolbox || <Toolbox materialCategories={materialCategories} />)}
       propertyBox={<PropertyBox setters={setters} />}
-      token={token}
-      materials={materials}
-      logicFlowContext={logicFlowContext}
-      canBeReferencedLogflowMetas={canBeReferencedLogflowMetas}
     >
       <MiniToolbar />
-    </LogicFlowEditor>
+    </LogicFlowEditorInner>
   )
 })

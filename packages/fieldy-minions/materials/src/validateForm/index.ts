@@ -1,5 +1,5 @@
 import { NodeType } from "@rxdrag/minions-schema";
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { formValidateIcon } from "../icons";
 import { IFieldyActivityMaterial } from "../types";
 import { ValidateForm } from "@rxdrag/fieldy-minions-activities";
@@ -14,19 +14,19 @@ export const validateFormMaterial: IFieldyActivityMaterial = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: DEFAULT_INPUT_NAME,
         label: "",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: ValidateForm.OUTPUT_NAME_SUCCESS,
         label: "$success",
       },
       {
-        id: createUuid(),
+        id: createId(),
         name: ValidateForm.OUTPUT_NAME_FAILURE,
         label: "$failure",
       },

@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useState } from "react"
 import { List as AntdList, ListProps } from "antd"
 import { IDataSource } from "../IDataSource"
-import { createUuid } from "@rxdrag/shared"
+import { createId } from "@rxdrag/shared"
 import { ArrayField, ObjectField } from "@rxdrag/react-fieldy"
 
 export type ListAddonProps = {
@@ -13,7 +13,7 @@ export type ListAddonProps = {
 
 export const List = memo((props: ListProps<unknown> & ListAddonProps) => {
   const { renderItem, dataSource, pageSize, pagination, onPageChange, ...other } = props
-  const [id] = useState(createUuid())
+  const [id] = useState(createId())
 
   const handlePageChange = useCallback((page: number, pageSize: number) => {
     onPageChange?.(page, pageSize)

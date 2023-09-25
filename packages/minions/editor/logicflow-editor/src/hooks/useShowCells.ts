@@ -16,7 +16,6 @@ export function useShowCells() {
   const themeToken = useThemeToken()
 
   const { metas } = useMetas()
-
   useEffect(() => {
     if (graph) {
       const oldCells = graph.getCells()
@@ -24,8 +23,10 @@ export function useShowCells() {
       for (const nodeMeta of metas?.nodes || []) {
         const node = showNode(nodeMeta)
         if (nodeMeta.type === NodeType.EmbeddedFlow) {
+          node?.toBack()
           for (const childMeta of nodeMeta.children?.nodes || []) {
             const child = showNode(childMeta)
+            child?.toFront()
             child && node?.addChild(child)
           }
 

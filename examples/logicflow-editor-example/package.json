@@ -1,6 +1,6 @@
 {
   "name": "logicflow-editor-example",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "module": "index.ts",
   "files": [

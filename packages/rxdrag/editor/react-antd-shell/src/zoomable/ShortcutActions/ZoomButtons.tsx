@@ -2,17 +2,13 @@ import { MinusOutlined, PlusOutlined } from "@ant-design/icons"
 import { Button, Tooltip } from "antd"
 import { memo, useCallback } from "react"
 import styled from "styled-components"
-import { floatShadow } from "../../utils"
 import { useSettersTranslate } from "@rxdrag/react-core"
 
 const Container = styled.div`
   display: flex;
   flex-flow: column;
   align-items: center;
-  border-radius: 8px;
   background-color: ${props => props.theme.token?.colorBgBase};
-  border: solid 1px ${props => props.theme.token?.colorBorderSecondary};
-  box-shadow: ${floatShadow};
   width: 32px;
   overflow: hidden;
 `

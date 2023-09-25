@@ -1,4 +1,4 @@
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { constValueSchema } from "./schema";
 import { ReactNode } from "react";
 import { NodeType, IActivityMaterial } from "@rxdrag/minions-schema";
@@ -15,14 +15,14 @@ export const constValueMaterial: IActivityMaterial<ReactNode> = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: DEFAULT_INPUT_NAME,
         label: "",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: DEFAULT_OUTPUT_NAME,
         label: "",
       },

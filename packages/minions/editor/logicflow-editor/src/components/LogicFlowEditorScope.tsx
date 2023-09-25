@@ -1,40 +1,53 @@
-import { memo, useMemo } from "react"
-import { LogicFlowEditorStoreContext } from "../contexts";
+import { ReactNode, memo, useMemo } from "react"
+import { CanBeReferencedLogicFlowMetasContext, GraphContext, LogicFlowContext, LogicFlowEditorStoreContext, MaterialsContext, ThemeTokenContext } from "../contexts";
 import { EditorStore } from "../classes";
-import { useEditorStore } from "../hooks";
+import { ThemeProvider } from "styled-components";
+import { IThemeToken } from "../interfaces";
+import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
+import { useCreateGraph } from "../hooks";
 
-//用于创建全局EditorStore，并通过Context下发
-const ScopeInner = memo((props: {
+export type LogicFlowEditorScopeProps = {
+  themMode?: "dark" | "light",
+  token: IThemeToken,
+  materials: IActivityMaterial<ReactNode>[],
+  logicFlowContext?: unknown,
+  canBeReferencedLogflowMetas?: ILogicFlowDefine[],
   children?: React.ReactNode
-}) => {
-  const { children } = props;
+}
+
+//编辑器Scope定义
+export const LogicFlowEditorScope = memo((
+  props: LogicFlowEditorScopeProps,
+) => {
+  const { themMode, token, materials, logicFlowContext, canBeReferencedLogflowMetas, children } = props;
+  const theme: { token: IThemeToken } = useMemo(() => {
+    return {
+      mode: themMode,
+      token
+    }
+  }, [themMode, token])
+
   const store: EditorStore = useMemo(() => {
     return new EditorStore()
   }, [])
 
+  const graph = useCreateGraph(token, store)
+
   return (
     <LogicFlowEditorStoreContext.Provider value={store}>
-        {children}
+      <ThemeProvider theme={theme}>
+        <ThemeTokenContext.Provider value={token}>
+          <LogicFlowContext.Provider value={logicFlowContext}>
+            <MaterialsContext.Provider value={materials}>
+              <CanBeReferencedLogicFlowMetasContext.Provider value={canBeReferencedLogflowMetas || []}>
+                <GraphContext.Provider value={graph}>
+                  {children}
+                </GraphContext.Provider>
+              </CanBeReferencedLogicFlowMetasContext.Provider>
+            </MaterialsContext.Provider>
+          </LogicFlowContext.Provider>
+        </ThemeTokenContext.Provider>
+      </ThemeProvider>
     </LogicFlowEditorStoreContext.Provider>
-  )
-})
-
-//编辑器Scope定义
-export const LogicFlowEditorScope = memo((
-  props: {
-    children?: React.ReactNode
-  }
-) => {
-  const { children } = props;
-  const parentStore = useEditorStore()
-
-  return (
-    //如果外层已经创建Scope，那么直接用外层的，反之新建一个
-    parentStore ?
-      <>{children}</>
-      :
-      <ScopeInner>
-        {children}
-      </ScopeInner>
   )
 })

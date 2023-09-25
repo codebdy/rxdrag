@@ -1,5 +1,5 @@
 import { NodeType } from "@rxdrag/minions-schema";
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
 import { IQueryActivityMaterial } from "../types";
 import { objectToUrlIcon } from "../icons";
@@ -14,14 +14,14 @@ export const objectToUrlMaterial: IQueryActivityMaterial = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: DEFAULT_INPUT_NAME,
         label: "",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: DEFAULT_OUTPUT_NAME,
         label: "",
       },

@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/shared",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "Water.Li",
   "module": "index.ts",
   "files": [
@@ -20,12 +20,10 @@
     "@rxdrag/eslint-config-custom": "workspace:*",
     "@rxdrag/tsconfig": "workspace:*",
     "@types/lodash": "^4.14.191",
-    "@types/node": "*",
-    "@types/uuid": "^9.0.1"
+    "@types/node": "*"
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "nanoid": "^5.0.1",
-    "uuid": "^9.0.0"
+    "nanoid": "^5.0.1"
   }
 }

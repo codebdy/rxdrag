@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import { EditableCell } from './EditableCell';
 import { EditableRow } from './EditableRow';
-import { createUuid } from '@rxdrag/shared';
+import { createId } from '@rxdrag/shared';
 import { IPortDefine } from '@rxdrag/minions-schema';
 import { useTrans } from '../../../hooks/useTrans';
 
@@ -104,7 +104,7 @@ export const PortsTable = memo((
 
   const handleAdd = useCallback(() => {
     const newData: IPortDefine = {
-      id: createUuid(),
+      id: createId(),
       name: `input${count}`,
       label: `${t("$"+type)} ${count}`,
     };

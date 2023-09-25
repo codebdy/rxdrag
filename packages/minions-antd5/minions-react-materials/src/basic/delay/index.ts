@@ -1,4 +1,4 @@
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { delaySchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
 import { Delay, IDelayConfig } from "@rxdrag/minions-activities";
@@ -13,14 +13,14 @@ export const delayMaterial: IRxDragActivityMaterial<IDelayConfig> = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: DEFAULT_INPUT_NAME,
         label: "",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: DEFAULT_OUTPUT_NAME,
         label: "",
       },

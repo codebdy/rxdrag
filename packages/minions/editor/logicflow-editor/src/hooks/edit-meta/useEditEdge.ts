@@ -7,6 +7,7 @@ import { useBackup } from "./useBackup"
 import { useMarkChange } from "./useMarkChange"
 import { ActionType, AddEdgeAction, ChangeEdgeAction } from "../../actions"
 import { ILineDefine } from "@rxdrag/minions-schema"
+import { createId } from "@rxdrag/shared"
 
 export function useEditEdge() {
   const dispatch = useDispatch()
@@ -16,7 +17,7 @@ export function useEditEdge() {
   const handleEdgeAdd = useCallback(({ isNew, edge }: { isNew: boolean, edge: Edge }) => {
     backup()
     const newData: ILineDefine = {
-      id: edge.id,
+      id: isNew ? createId() : edge.id,
       source: {
         nodeId: (edge.getSource() as any).cell,
         portId: (edge.getSource() as any).port,

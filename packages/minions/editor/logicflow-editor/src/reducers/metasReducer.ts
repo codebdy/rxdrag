@@ -66,8 +66,9 @@ export function metasReducer(state: ILogicMetas, action: Action): ILogicMetas {
 function getNodeParentId(nodeId: string, nodes: IActivityNode[]) {
   for (const node of nodes) {
     for (const child of node.children?.nodes || []) {
-      child.id === nodeId
-      return node.id
+      if (child.id === nodeId) {
+        return node.id
+      }
     }
   }
 }
@@ -75,8 +76,9 @@ function getNodeParentId(nodeId: string, nodes: IActivityNode[]) {
 function getLineParentId(lineId: string, nodes: IActivityNode[]) {
   for (const node of nodes) {
     for (const child of node.children?.lines || []) {
-      child.id === lineId
-      return node.id
+      if (child.id === lineId) {
+        return node.id
+      }
     }
   }
 }

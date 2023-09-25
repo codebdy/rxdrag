@@ -1,4 +1,4 @@
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { mockSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
 import { simulateIcon } from "../../icons";
@@ -12,24 +12,24 @@ export const mockMaterial: IRxDragActivityMaterial = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "input",
         label: "",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: "success",
         label: "$success",
       },
       {
-        id: createUuid(),
+        id: createId(),
         name: "error",
         label: "$error",
       },
       {
-        id: createUuid(),
+        id: createId(),
         name: "loading",
         label: "$loading",
       },

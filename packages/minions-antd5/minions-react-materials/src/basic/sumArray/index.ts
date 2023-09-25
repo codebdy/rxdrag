@@ -1,5 +1,5 @@
 
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { sumArraySchema } from "./schema";
 import { SumArray } from "@rxdrag/minions-activities";
 import { NodeType } from "@rxdrag/minions-schema";
@@ -14,14 +14,14 @@ export const sumArrayMaterial: IRxDragActivityMaterial = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: DEFAULT_INPUT_NAME,
         label: "",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: DEFAULT_OUTPUT_NAME,
         label: "",
       },

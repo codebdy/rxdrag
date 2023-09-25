@@ -3,7 +3,7 @@ import { IRxDragActivityMaterial } from "../../interfaces";
 import { CustomizedLoop } from "@rxdrag/minions-activities";
 import { customizedLoopIcon } from "../../icons";
 import { customizedLoopSchema } from "./schema";
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 
 export const customizedLoopMaterial: IRxDragActivityMaterial = {
   icon: customizedLoopIcon,
@@ -12,19 +12,19 @@ export const customizedLoopMaterial: IRxDragActivityMaterial = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: CustomizedLoop.PORT_INPUT,
         label: "",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: CustomizedLoop.PORT_OUTPUT,
         label: "$oneOutput",
       },
       {
-        id: createUuid(),
+        id: createId(),
         name: CustomizedLoop.PORT_FINISHED,
         label: "$finished",
       },

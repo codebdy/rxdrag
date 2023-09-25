@@ -1,4 +1,4 @@
-import { createUuid } from "@rxdrag/shared";
+import { createId } from "@rxdrag/shared";
 import { intervalSchema } from "./schema";
 import { IIntervalConfig, Signals } from "@rxdrag/minions-activities";
 import { NodeType } from "@rxdrag/minions-schema";
@@ -13,19 +13,19 @@ export const signalsMaterial: IRxDragActivityMaterial<IIntervalConfig> = {
   defaultPorts: {
     inPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: Signals.INPUT_NAME_STARTUP,
         label: "$startUp",
       },
       {
-        id: createUuid(),
+        id: createId(),
         name: Signals.INPUT_NAME_STOP,
         label: "$stop",
       },
     ],
     outPorts: [
       {
-        id: createUuid(),
+        id: createId(),
         name: DEFAULT_OUTPUT_NAME,
         label: "",
       },
