@@ -1,7 +1,7 @@
 import { ReactNode, memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
 import { Button, Space, Tooltip, theme } from "antd"
-import { FunctionOutlined, ControlOutlined, CloseOutlined, AppstoreOutlined } from "@ant-design/icons"
+import { FunctionOutlined, ControlOutlined, CloseOutlined, PartitionOutlined, NodeIndexOutlined } from "@ant-design/icons"
 import { FXes } from "./FXes"
 import { Flows } from "./Flows"
 import { LeftNav } from "../common/LeftNav"
@@ -13,6 +13,7 @@ import { activityMaterialCategories, activityMaterialLocales } from "../minion-m
 import { IActivityMaterial } from "@rxdrag/minions-schema"
 import { Toolbar } from "./Toolbar"
 import { useThemeMode } from "@rxdrag/react-core"
+import { ComponentTree } from "./ComponentTree"
 
 const Content = styled.div`
   flex: 1;
@@ -24,6 +25,7 @@ const SaveButton = styled(Button)`
 `
 
 enum NavType {
+  componentTree = "componentTree",
   toolbox = "toolbox",
   flows = "flows",
   fxes = "fxes",
@@ -41,6 +43,10 @@ export const FlowDesigner = memo(() => {
   const materials = useMemo(() => {
     const materials: IActivityMaterial<ReactNode>[] = []
     return materials.concat(...activityMaterialCategories.map(category => category.materials))
+  }, [])
+
+  const handleToggleComponents = useCallback(() => {
+    setNavType(type => type === NavType.componentTree ? null : NavType.componentTree)
   }, [])
 
   const handleToggleToolbox = useCallback(() => {
@@ -73,8 +79,15 @@ export const FlowDesigner = memo(() => {
             <Tooltip title="元件箱" placement="right">
               <Button
                 type={navType === NavType.toolbox ? "link" : "text"}
-                icon={<AppstoreOutlined />}
+                icon={<NodeIndexOutlined />}
                 onClick={handleToggleToolbox}
+              />
+            </Tooltip>
+            <Tooltip title="组件树" placement="right">
+              <Button
+                type={navType === NavType.componentTree ? "link" : "text"}
+                icon={<PartitionOutlined />}
+                onClick={handleToggleComponents}
               />
             </Tooltip>
             <Tooltip title="编排" placement="right">
@@ -84,6 +97,7 @@ export const FlowDesigner = memo(() => {
                 onClick={handleToggleFlows}
               />
             </Tooltip>
+
             <Tooltip title="子编排" placement="right">
               <Button
                 type={navType === NavType.fxes ? "link" : "text"}
@@ -101,9 +115,15 @@ export const FlowDesigner = memo(() => {
           >
             <Title>
               {
+                NavType.componentTree === navType &&
+                <span>
+                  组件树
+                </span>
+              }
+              {
                 NavType.toolbox === navType &&
                 <span>
-                  元件
+                  元件箱
                 </span>
               }
               {
@@ -125,6 +145,10 @@ export const FlowDesigner = memo(() => {
                 onClick={handleCloseLeft}
               />
             </Title>
+            {
+              navType === NavType.componentTree &&
+              <ComponentTree />
+            }
             {
               navType === NavType.toolbox &&
               <Toolbox materialCategories={activityMaterialCategories} />
