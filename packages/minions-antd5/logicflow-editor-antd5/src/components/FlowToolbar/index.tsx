@@ -18,7 +18,6 @@ const ToolbarButton = styled((props) => <Button type="text" size="small" {...pro
 const ToolbarCenter = styled.div`
   flex:1;
   display: flex;
-  justify-content: center;
   align-items: center;
 `
 
@@ -39,6 +38,11 @@ export const FlowToolbar = memo((
 
   return (
     <StyledToolbar className="logicflow-editor-antd5-toolbar">
+      <ToolbarCenter>
+        {
+          children
+        }
+      </ToolbarCenter>
       <Space>
         <ToolbarButton
           disabled={!undoList.length}
@@ -58,15 +62,14 @@ export const FlowToolbar = memo((
           </svg></span>}
           onClick={handleRemove}
         ></ToolbarButton>
-      </Space>
-      <ToolbarCenter>
         {
-          children
+          right && <Divider type="vertical" />
         }
-      </ToolbarCenter>
-      {
-        right
-      }
+        {
+          right
+        }
+      </Space>
+
     </StyledToolbar>
   )
 })
