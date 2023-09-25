@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { memo } from "react"
 import styled from "styled-components";
 import { ResizableColumn, ILogicMetas, FlowToolbar, FlowCanvas, FlowPropertyBox, FlowToolbox } from "@rxdrag/minions-logicflow-editor";
+import { ToggleButton } from "./ToggleButton";
 
 
 const EditorShell = styled.div`
@@ -50,6 +51,11 @@ export const LogicFlowEditorInner = memo((
   props: LogicFlowEditorInnerProps
 ) => {
   const { value, onChange, toolbox, toolbar, propertyBox, children } = props
+  const [collapsed, setCollpased] = useState<boolean>()
+
+  const handleToggle = useCallback(() => {
+    setCollpased(collapsed => !collapsed)
+  }, [])
 
   return (
     <EditorShell>
@@ -78,11 +84,16 @@ export const LogicFlowEditorInner = memo((
           <RightArea
             right
             maxWidth={500}
-            minWidth={200}
+            minWidth={collapsed ? 0 : 200}
+            width={collapsed ? 0 : undefined}
           >
             <FlowPropertyBox>
               {propertyBox}
             </FlowPropertyBox>
+            <ToggleButton
+              toggled={collapsed}
+              onClick={handleToggle}
+            />
           </RightArea>
         </OperateArea>
       </CenterArea>

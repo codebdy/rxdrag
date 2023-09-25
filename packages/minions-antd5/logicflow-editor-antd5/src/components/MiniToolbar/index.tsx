@@ -11,8 +11,8 @@ const Container = styled.div`
   width: 40px;
   border: ${props => props.theme.token?.colorBorder} solid 1px;
   background-color: ${props => props.theme.token?.colorBgContainer};
-  right: 8px;
-  top: 8px;
+  right: 16px;
+  top: 16px;
   border-radius: 8px;
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.06);
   display: flex;
