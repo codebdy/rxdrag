@@ -163,8 +163,7 @@ export const ControllerMetaEditorAntd5 = memo(
               canBeReferencedLogflowMetas={extractLogicFlowMetas(
                 controllerMetas
               )}
-              {...other}
-            />
+              {...other}            />
           )}
         </StyledContent>
       </ControllerEditorContext.Provider>
