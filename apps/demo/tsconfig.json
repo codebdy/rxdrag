@@ -19,6 +19,6 @@
     //"target": "ES5",
     "experimentalDecorators": true
   },
-  "include": ["src", "../../examples/example-common/src/index.ts"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
