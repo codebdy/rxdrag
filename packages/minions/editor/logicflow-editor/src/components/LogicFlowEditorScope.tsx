@@ -7,6 +7,7 @@ import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
 import { useCreateGraph } from "../hooks";
 
 export type LogicFlowEditorScopeProps = {
+  themMode?: "dark" | "light",
   token: IThemeToken,
   materials: IActivityMaterial<ReactNode>[],
   logicFlowContext?: unknown,
@@ -16,14 +17,15 @@ export type LogicFlowEditorScopeProps = {
 
 //编辑器Scope定义
 export const LogicFlowEditorScope = memo((
-  props: LogicFlowEditorScopeProps
+  props: LogicFlowEditorScopeProps,
 ) => {
-  const { token, materials, logicFlowContext, canBeReferencedLogflowMetas, children } = props;
+  const { themMode, token, materials, logicFlowContext, canBeReferencedLogflowMetas, children } = props;
   const theme: { token: IThemeToken } = useMemo(() => {
     return {
+      mode: themMode,
       token
     }
-  }, [token])
+  }, [themMode, token])
 
   const store: EditorStore = useMemo(() => {
     return new EditorStore()

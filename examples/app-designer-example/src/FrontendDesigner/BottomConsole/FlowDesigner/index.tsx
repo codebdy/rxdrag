@@ -12,6 +12,7 @@ import { LogicMetaEditorAntd5Inner, LogicFlowEditorAntd5Scope, Toolbox } from "@
 import { activityMaterialCategories, activityMaterialLocales } from "../minion-materials"
 import { IActivityMaterial } from "@rxdrag/minions-schema"
 import { Toolbar } from "./Toolbar"
+import { useThemeMode } from "@rxdrag/react-core"
 
 const Content = styled.div`
   flex: 1;
@@ -36,7 +37,7 @@ const test = {
 export const FlowDesigner = memo(() => {
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
   const { token } = theme.useToken()
-
+  const themMode = useThemeMode()
   const materials = useMemo(() => {
     const materials: IActivityMaterial<ReactNode>[] = []
     return materials.concat(...activityMaterialCategories.map(category => category.materials))
@@ -61,6 +62,7 @@ export const FlowDesigner = memo(() => {
 
   return (
     <LogicFlowEditorAntd5Scope
+      themMode={themMode}
       token={token}
       materials={materials}
       locales={activityMaterialLocales}

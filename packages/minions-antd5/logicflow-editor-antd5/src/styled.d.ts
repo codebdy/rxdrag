@@ -6,7 +6,7 @@ import { IThemeToken } from './theme';
 // and extend them!
 declare module 'styled-components' {
   export interface DefaultTheme {
-    mode?: "dark" | "light"
+    themeMode?: "dark" | "light"
     token?: IThemeToken
   }
 }

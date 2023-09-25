@@ -5,6 +5,7 @@ import { IThemeToken } from "../interfaces";
 import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
 
 export type LogicFlowEditorProps = LogicFlowEditorInnerProps & {
+  themMode?: "dark" | "light",
   token: IThemeToken,
   materials: IActivityMaterial<ReactNode>[],
   logicFlowContext?: unknown,
@@ -14,14 +15,15 @@ export type LogicFlowEditorProps = LogicFlowEditorInnerProps & {
 export const LogicFlowEditor = memo((
   props: LogicFlowEditorProps
 ) => {
-  const { token, materials, logicFlowContext, canBeReferencedLogflowMetas, ...rest } = props
+  const { themMode, token, materials, logicFlowContext, canBeReferencedLogflowMetas, ...rest } = props
 
   return (
     <LogicFlowEditorScope
+      themMode={themMode}
       token={token}
-      materials = {materials}
-      logicFlowContext = {logicFlowContext}
-      canBeReferencedLogflowMetas = {canBeReferencedLogflowMetas}
+      materials={materials}
+      logicFlowContext={logicFlowContext}
+      canBeReferencedLogflowMetas={canBeReferencedLogflowMetas}
     >
       <LogicFlowEditorInner {...rest} />
     </LogicFlowEditorScope>
