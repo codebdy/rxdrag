@@ -1,30 +1,60 @@
 import { INodeSchema } from "@rxdrag/schema";
-import { createControllerSchema } from "./createControllerSchema";
 import { createFieldSchema } from "./createFieldSchema";
 import { SchemaOptions } from "./SchemaOptions";
 import { transPropSchemas } from "./transPropSchemas";
 import { transSlotSchemas } from "./transSlotSchemas";
 
 export function createSchema(options: SchemaOptions = {}): INodeSchema {
-  const { propSchemas, slotSchemas, canBindField, events } = options
-  const propsTab = propSchemas ? [{
-    componentName: "TabPanel",
+  const { propSchemas, slotSchemas, canBindField } = options
+
+  const propsCollapse = propSchemas ? [{
+    componentName: "CollapsePanel",
     props: {
-      title: "$properties"
+      title: "$basic",
+      defaultExpand: true,
     },
     children: [
       ...transPropSchemas(propSchemas) || []
     ]
-  }] : [];
+  }] : []
 
-  const slotsTab = slotSchemas ? [{
-    componentName: "TabPanel",
+  const slotCollapse = slotSchemas ? [{
+    componentName: "CollapsePanel",
     props: {
       title: "$slots",
-      id: "slots",
     },
-    children: transSlotSchemas(slotSchemas)
+    children: [
+      ...transSlotSchemas(slotSchemas) || []
+    ]
   }] : []
+
+  const controllerCollapse = {
+    componentName: "CollapsePanel",
+    props: {
+      title: "$reaction",
+    },
+    children: [
+      {
+        componentName: "ControllerSetter",
+        "x-field": {
+          name: "x-controller",
+        },
+      }
+    ]
+  }
+
+  const propsTab = propSchemas ? [{
+    componentName: "TabPanel",
+    props: {
+      title: "$properties",
+      style: {
+        padding: 0,
+      }
+    },
+    children: [...propsCollapse, ...slotCollapse, controllerCollapse]
+  }] : [];
+
+
   const fieldTab = canBindField ? [
     {
       componentName: "TabPanel",
@@ -37,23 +67,14 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
       },
       children: createFieldSchema()
     }] : []
-  const controllerTab = {
-    componentName: "TabPanel",
-    props: {
-      title: "$logic",
-      id: "logic",
-    },
-    children: createControllerSchema(events)
-  }
+
   return {
     componentName: "Tabs",
     props: {},
     children: [
       ...propsTab,
       styleTab,
-      ...slotsTab,
       ...fieldTab,
-      controllerTab,
     ]
   }
 }

@@ -11,9 +11,6 @@ export function createControllerSchema(events?: IComponentEvent[]) {
       componentName: "ControllerSetter",
       "x-field": {
         name: "x-controller",
-        params: {
-          withBind: true,
-        }
       },
       props: {
         title: "$controller",
