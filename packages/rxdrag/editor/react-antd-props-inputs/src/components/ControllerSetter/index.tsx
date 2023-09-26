@@ -42,7 +42,10 @@ export const ControllerSetter = memo((
         <Form.Item
           label={t("name")}
         >
-          <Input onChange={handleNameChange} />
+          <Input
+            value={value.name || ""}
+            onChange={handleNameChange}
+          />
         </Form.Item>
       }
     </>
