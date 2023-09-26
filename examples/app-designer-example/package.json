@@ -43,6 +43,7 @@
     "@rxdrag/react-fieldy": "workspace:*",
     "@rxdrag/react-antd-shell": "workspace:*",
     "@rxdrag/react-locales": "workspace:*",
+    "@rxdrag/core": "workspace:*",
     "@rxdrag/react-core": "workspace:*",
     "@rxdrag/react-antd-materials": "workspace:*",
     "@rxdrag/locales": "workspace:*",

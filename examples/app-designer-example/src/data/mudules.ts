@@ -6,6 +6,80 @@ const rootNodeSchema: INodeSchema = {
   componentName: "Page"
 }
 
+const userList = {
+  "componentName": "Page",
+  "slots": {},
+  "children": [
+    {
+      "componentName": "Form",
+      "props": {
+        "colon": false
+      },
+      "x-controller": {
+        "id": "LlRDj22u",
+        "name": "查询表单"
+      },
+      "slots": {},
+      "children": [
+        {
+          "componentName": "Input",
+          "x-controller": {
+            "id": "Ddl53loc",
+            "name": "字段1"
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "Input",
+          "x-controller": {
+            "id": "ndwJ5LwA",
+            "name": "字段2"
+          },
+          "slots": {},
+          "children": []
+        }
+      ]
+    },
+    {
+      "componentName": "Table",
+      "selfRender": true,
+      "x-controller": {
+        "id": "JClydKG7",
+        "name": "用户列表",
+        "isArray": true,
+      },
+      "slots": {},
+      "children": [
+        {
+          "componentName": "TableColumn",
+          "props": {
+            "title": "Column1"
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "TableColumn",
+          "props": {
+            "title": "Column2"
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "TableColumn",
+          "props": {
+            "title": "Column3"
+          },
+          "slots": {},
+          "children": []
+        }
+      ]
+    }
+  ]
+}
+
 export const defaultModules: { [device: string]: IModule[] | undefined } = {
   [DeviceType.admin]: [
     {
@@ -13,10 +87,12 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
       title: "用户管理",
       views: [
         {
+          id: "user-index",
           title: "入口页",
-          schema: rootNodeSchema,
+          schema: userList,
         },
         {
+          id: "user-edit",
           title: "编辑对话框",
           schema: rootNodeSchema,
         }
@@ -37,10 +113,12 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
       title: "用户管理(h5)",
       views: [
         {
+          id: "h5-user-index",
           title: "入口页(h5)",
           schema: rootNodeSchema,
         },
         {
+          id: "h5-user-eidit",
           title: "编辑对话框",
           schema: rootNodeSchema,
         }
@@ -61,10 +139,12 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
       title: "用户管理(门户)",
       views: [
         {
+          id: "website-user-index",
           title: "入口页(门户)",
           schema: rootNodeSchema,
         },
         {
+          id: "weibsite-user-edit",
           title: "编辑对话框",
           schema: rootNodeSchema,
         }
@@ -85,10 +165,12 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
       title: "用户管理(大屏)",
       views: [
         {
+          id: "lg-user-index",
           title: "入口页(大屏)",
           schema: rootNodeSchema,
         },
         {
+          id: "lg-user-edit",
           title: "编辑对话框",
           schema: rootNodeSchema,
         }

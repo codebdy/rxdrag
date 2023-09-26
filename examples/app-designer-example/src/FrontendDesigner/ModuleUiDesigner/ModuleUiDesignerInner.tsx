@@ -8,6 +8,7 @@ import { TabsProps } from "antd"
 import styled from "styled-components"
 import { FlowDesigner } from "../BottomConsole/FlowDesigner"
 import { ScriptDesigner } from "../BottomConsole/ScriptDesigner"
+import { ModuleContext } from "../contexts"
 
 const Label = styled.div`
   display: flex;
@@ -52,16 +53,20 @@ export const ModuleUiDesignerInner = memo(() => {
   }, [])
 
   return (
-    module
-      ? <ZoomableEditor
-        toolbox={
-          Toolbox && <Toolbox />
-        }
-        schemas={module?.views}
-        bottomConsole={{
-          items
-        }}
-      />
-      : <></>
+    <ModuleContext.Provider value={module}>
+      {
+        module
+          ? <ZoomableEditor
+            toolbox={
+              Toolbox && <Toolbox />
+            }
+            schemas={module?.views}
+            bottomConsole={{
+              items
+            }}
+          />
+          : <></>
+      }
+    </ModuleContext.Provider>
   )
 })

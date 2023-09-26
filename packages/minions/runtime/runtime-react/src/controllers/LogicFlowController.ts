@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Controllers, ControllerFactory } from "../interfaces/controller";
-import { IControllerMeta, ILogicFlowControllerMeta } from "../interfaces";
+import { IOldControllerMeta, ILogicFlowControllerMeta } from "../interfaces";
 import { IActivity, LogicFlow } from "@rxdrag/minions-runtime";
 import { ILogicFlowDefine } from "@rxdrag/minions-schema";
 import { AbstractController } from "./AbstractController";
@@ -76,6 +76,6 @@ export class LogicFlowController extends AbstractController {
   }
 }
 
-export const LogicFlowControllerFactory: ControllerFactory = (meta: IControllerMeta) => {
+export const LogicFlowControllerFactory: ControllerFactory = (meta: IOldControllerMeta) => {
   return new LogicFlowController(meta)
 }

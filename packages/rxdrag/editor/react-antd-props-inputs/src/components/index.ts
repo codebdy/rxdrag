@@ -1,6 +1,7 @@
 export * from "./BackgroundImageInput"
 export * from "./CheckboxGroup"
 export * from "./ColInput"
+export * from "./ControllerSetter"
 export * from "./CollapsePanel"
 export * from "./ColorInput"
 export * from "./ColInput"

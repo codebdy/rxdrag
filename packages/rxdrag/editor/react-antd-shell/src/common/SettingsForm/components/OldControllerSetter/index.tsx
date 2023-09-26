@@ -6,7 +6,7 @@ import { createId } from "@rxdrag/shared"
 import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
 import { IEventMeta } from "@rxdrag/minions-controller-editor"
 
-export const ControllerSetter = memo((props: {
+export const OldControllerSetter = memo((props: {
   events?: IEventMeta[]
   title: string,
   value: ILogicFlowControllerMeta,

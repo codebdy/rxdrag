@@ -1,6 +1,6 @@
 
 
-import { ControllerFactory, Controllers, IController, IControllerMeta } from "@rxdrag/minions-runtime-react"
+import { ControllerFactory, Controllers, IController, IOldControllerMeta } from "@rxdrag/minions-runtime-react"
 import { IComponentRenderSchema } from "../ComponentView"
 
 //1、以schemaId为key的控制器管理引擎，一个页面一份，防止重复渲染导致的重复数据库访问
@@ -10,7 +10,7 @@ export type ControllerFactories = {
 }
 
 type ControllerMetas = {
-  [id: string]: IControllerMeta | undefined
+  [id: string]: IOldControllerMeta | undefined
 }
 
 export class RuntimeEngine {
@@ -73,7 +73,7 @@ export class RuntimeEngine {
     return controllers
   }
 
-  public getOrCreateController = (meta: IControllerMeta, controllerKey: string) => {
+  public getOrCreateController = (meta: IOldControllerMeta, controllerKey: string) => {
     if (!this.controllers[controllerKey]) {
       this.controllers[controllerKey] = this.makeController(meta);
     }
@@ -95,7 +95,7 @@ export class RuntimeEngine {
     this.globalControllers = {}
   }
 
-  private makeController = (meta: IControllerMeta) => {
+  private makeController = (meta: IOldControllerMeta) => {
     if (!meta.controllerType) {
       console.error("Not set controller type")
       return

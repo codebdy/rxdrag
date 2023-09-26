@@ -11,7 +11,7 @@ export interface IVariableDefineMeta {
 }
 
 //控制器元数据定义，相当于控制器配置的DSL
-export interface IControllerMeta {
+export interface IOldControllerMeta {
   //控制器标识
   id: string;
   //控制器类型，因为控制器可以注入很多种，类型不固定，这里不能用枚举，只能用字符串
@@ -20,14 +20,10 @@ export interface IControllerMeta {
   global?: boolean;
   //控制器名称
   name?: string;
-  //属性表达式，尚未使用
-  propExpressions?: {
-    [prop: string]: string | undefined
-  }
 }
 
 //逻辑编排控制器
-export interface ILogicFlowControllerMeta extends IControllerMeta {
+export interface ILogicFlowControllerMeta extends IOldControllerMeta {
   //组件事件对应的逻辑编排，通过name与组件的事件建立联系
   events?: ILogicFlowDefine[];
   //控制器的交互，相当于子编排，可以被其他编排调用
@@ -39,7 +35,18 @@ export interface ILogicFlowControllerMeta extends IControllerMeta {
 }
 
 //脚本控制器
-export interface IScriptControllerMeta extends IControllerMeta {
+export interface IScriptControllerMeta extends IOldControllerMeta {
   //脚本代码
   script?: string
+}
+
+//新版控制器DSL，为了兼容已有代码，新建一个接口
+//过一段时间，把其它控制器删掉
+export interface IControllerMeta {
+  //控制器标识
+  id: string;
+  //控制器名称
+  name?: string;
+  //是否是循环类型
+  isArray?: boolean;
 }
