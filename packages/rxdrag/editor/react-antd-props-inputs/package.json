@@ -42,6 +42,7 @@
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "@rxdrag/fieldy-yup-validation": "workspace:*",
+    "@rxdrag/minions-runtime-react": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "antd": "^5.9.2",
     "lodash": "^4.17.21",
