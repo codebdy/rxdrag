@@ -38,7 +38,7 @@ export enum ViewType {
 //一个document schema对应一个场景
 export interface IViewSchema<Field = unknown, NodeController = unknown> {
   schema: INodeSchema<Field, NodeController>,
-  id?: string,
+  id: string,
   title?: string,
   //视图类型，用于同一画布编辑多个document
   viewType?: ViewType,

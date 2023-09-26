@@ -87,10 +87,12 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
       title: "用户管理",
       views: [
         {
+          id: "user-index",
           title: "入口页",
           schema: userList,
         },
         {
+          id: "user-edit",
           title: "编辑对话框",
           schema: rootNodeSchema,
         }
@@ -111,10 +113,12 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
       title: "用户管理(h5)",
       views: [
         {
+          id: "h5-user-index",
           title: "入口页(h5)",
           schema: rootNodeSchema,
         },
         {
+          id: "h5-user-eidit",
           title: "编辑对话框",
           schema: rootNodeSchema,
         }
@@ -135,10 +139,12 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
       title: "用户管理(门户)",
       views: [
         {
+          id: "website-user-index",
           title: "入口页(门户)",
           schema: rootNodeSchema,
         },
         {
+          id: "weibsite-user-edit",
           title: "编辑对话框",
           schema: rootNodeSchema,
         }
@@ -159,10 +165,12 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
       title: "用户管理(大屏)",
       views: [
         {
+          id: "lg-user-index",
           title: "入口页(大屏)",
           schema: rootNodeSchema,
         },
         {
+          id: "lg-user-edit",
           title: "编辑对话框",
           schema: rootNodeSchema,
         }
