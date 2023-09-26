@@ -1,37 +1,54 @@
-import { Tree } from "antd";
+import { Button, Tree } from "antd";
 import { DataNode, DirectoryTreeProps } from "antd/es/tree";
-import { memo } from "react"
+import { memo, useCallback, useMemo, useState } from "react"
 import { TreeContainer } from "../common/TreeContainer";
+import TreeNodeLabel from "../common/TreeNodeLabel";
+import { PlusOutlined } from "@ant-design/icons";
+import { VariablePopover } from "../common/VariablePopover";
 
 const { DirectoryTree } = Tree;
 
-const treeData: DataNode[] = [
-  {
-    title: '编排',
-    key: '0-0',
-    children: [
-      {
-        title: '列表',
-        key: '0-1',
-        children: [
-          { title: 'leaf 1-0', key: '0-1-0', isLeaf: true },
-          { title: 'leaf 1-1', key: '0-1-1', isLeaf: true },
-        ],
-      },
-      { title: '添加用户', key: '0-0-0', isLeaf: true },
-      { title: '编辑用户', key: '0-0-1', isLeaf: true },
-      { title: '删除用户', key: '0-0-2', isLeaf: true },
-    ],
-  },
-  {
-    title: '变量',
-    key: 'vars',
-  }
-
-];
-
-
 export const Flows = memo(() => {
+  const [addVariableOpen, setAddVariableOpen] = useState<boolean>()
+
+  const handleOpenAddVar = useCallback(() => {
+    setAddVariableOpen(true)
+  }, [])
+
+  const treeData: DataNode[] = useMemo(() => [
+    {
+      title: <TreeNodeLabel
+        action={
+          <Button
+            size="small"
+            type="text"
+            icon={<PlusOutlined />}
+          />
+        }
+      >
+        编排
+      </TreeNodeLabel>,
+      key: 'flows',
+      selectable: false,
+    },
+    {
+      title: <TreeNodeLabel
+        fixedAction={addVariableOpen}
+        action={
+          <VariablePopover
+            open={addVariableOpen}
+            onOpenChange={setAddVariableOpen}
+          />
+        }
+      >
+        变量
+      </TreeNodeLabel>,
+      key: 'vars',
+      selectable: false,
+    }
+  ], [addVariableOpen]);
+
+
   const onSelect: DirectoryTreeProps['onSelect'] = (keys, info) => {
     console.log('Trigger Select', keys, info);
   };
@@ -40,12 +57,14 @@ export const Flows = memo(() => {
     console.log('Trigger Expand', keys, info);
   };
   return (
-    <TreeContainer>
-      <DirectoryTree
-        onSelect={onSelect}
-        onExpand={onExpand}
-        treeData={treeData}
-      />
-    </TreeContainer>
+    <>
+      <TreeContainer>
+        <DirectoryTree
+          onSelect={onSelect}
+          onExpand={onExpand}
+          treeData={treeData}
+        />
+      </TreeContainer>
+    </>
   )
 })

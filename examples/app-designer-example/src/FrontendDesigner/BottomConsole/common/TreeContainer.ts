@@ -10,6 +10,11 @@ export const TreeContainer = styled.div`
     .ant-tree-list{
       background-color: transparent;
     }
+    .ant-tree-node-content-wrapper{
+      display: flex;
+      .ant-tree-title{
+        flex:1;
+      }
+    }
   }
-
 `
