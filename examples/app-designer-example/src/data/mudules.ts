@@ -6,6 +6,80 @@ const rootNodeSchema: INodeSchema = {
   componentName: "Page"
 }
 
+const userList = {
+  "componentName": "Page",
+  "slots": {},
+  "children": [
+    {
+      "componentName": "Form",
+      "props": {
+        "colon": false
+      },
+      "x-controller": {
+        "id": "LlRDj22u",
+        "name": "查询表单"
+      },
+      "slots": {},
+      "children": [
+        {
+          "componentName": "Input",
+          "x-controller": {
+            "id": "Ddl53loc",
+            "name": "字段1"
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "Input",
+          "x-controller": {
+            "id": "ndwJ5LwA",
+            "name": "字段2"
+          },
+          "slots": {},
+          "children": []
+        }
+      ]
+    },
+    {
+      "componentName": "Table",
+      "selfRender": true,
+      "x-controller": {
+        "id": "JClydKG7",
+        "name": "用户列表",
+        "isArray": true,
+      },
+      "slots": {},
+      "children": [
+        {
+          "componentName": "TableColumn",
+          "props": {
+            "title": "Column1"
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "TableColumn",
+          "props": {
+            "title": "Column2"
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "TableColumn",
+          "props": {
+            "title": "Column3"
+          },
+          "slots": {},
+          "children": []
+        }
+      ]
+    }
+  ]
+}
+
 export const defaultModules: { [device: string]: IModule[] | undefined } = {
   [DeviceType.admin]: [
     {
@@ -14,7 +88,7 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
       views: [
         {
           title: "入口页",
-          schema: rootNodeSchema,
+          schema: userList,
         },
         {
           title: "编辑对话框",

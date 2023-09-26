@@ -47,4 +47,6 @@ export interface IControllerMeta {
   id: string;
   //控制器名称
   name?: string;
+  //是否是循环类型
+  isArray?: boolean;
 }

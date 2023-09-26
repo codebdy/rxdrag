@@ -36,6 +36,9 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
     children: [
       {
         componentName: "ControllerSetter",
+        props: {
+          isArray: options.isArray,
+        },
         "x-field": {
           name: "x-controller",
         },
@@ -43,7 +46,7 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
     ]
   }
 
-  const propsTab = propSchemas ? [{
+  const propsTab = [{
     componentName: "TabPanel",
     props: {
       title: "$properties",
@@ -52,7 +55,7 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
       }
     },
     children: [...propsCollapse, ...slotCollapse, controllerCollapse]
-  }] : [];
+  }];
 
 
   const fieldTab = canBindField ? [
