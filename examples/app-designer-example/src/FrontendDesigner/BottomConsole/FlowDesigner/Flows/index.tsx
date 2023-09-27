@@ -1,12 +1,12 @@
-import { Button, Tree } from "antd";
+import { Tree } from "antd";
 import { DataNode, DirectoryTreeProps } from "antd/es/tree";
 import { memo, useMemo } from "react"
 import { TreeContainer } from "../../common/TreeContainer";
-import TreeNodeLabel from "../../common/TreeNodeLabel";
-import { PlusOutlined } from "@ant-design/icons";
 import { RootVarsLabel } from "./RootVarsLabel";
 import { useModule } from "../../../hooks/useModule";
 import { setPropIcon, listenPropIcon, variableIcon } from "../../icons";
+import { RootFlowsLabel } from "./RootFlowsLabel";
+import { NodeIndexOutlined } from "@ant-design/icons";
 
 const { DirectoryTree } = Tree;
 
@@ -14,19 +14,16 @@ export const Flows = memo(() => {
   const module = useModule()
   const treeData: DataNode[] = useMemo(() => [
     {
-      title: <TreeNodeLabel
-        action={
-          <Button
-            size="small"
-            type="text"
-            icon={<PlusOutlined />}
-          />
-        }
-      >
-        行为流
-      </TreeNodeLabel>,
+      title: <RootFlowsLabel />,
       key: 'flows',
       selectable: false,
+      children: module?.flows?.map(flow => {
+        return {
+          key: flow.id,
+          title: flow.name,
+          icon: <NodeIndexOutlined />,
+        }
+      })
     },
     {
       title: <RootVarsLabel />,
@@ -57,7 +54,7 @@ export const Flows = memo(() => {
         }
       })
     }
-  ], [module?.variables]);
+  ], [module?.flows, module?.variables]);
 
 
   const onSelect: DirectoryTreeProps['onSelect'] = (keys, info) => {

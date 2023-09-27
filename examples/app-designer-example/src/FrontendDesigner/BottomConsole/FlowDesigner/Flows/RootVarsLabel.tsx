@@ -1,14 +1,10 @@
-import { memo, useCallback, useState } from "react"
+import { memo, useState } from "react"
 import TreeNodeLabel from "../../common/TreeNodeLabel"
 import { VariablePopover } from "./VariablePopover"
 
 export const RootVarsLabel = memo(() => {
   const [open, setOpen] = useState<boolean>()
 
-  const handleOpenAddVar = useCallback(() => {
-    setOpen(true)
-  }, [])
-  
   return (
     <TreeNodeLabel
       fixedAction={open}

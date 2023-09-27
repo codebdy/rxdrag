@@ -1,21 +1,21 @@
 import { PlusOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Popover, Space } from "antd";
 import { memo, useCallback } from "react"
-import { IVariable } from "../../../../../interfaces/flow";
+import { IScopedILogicFlow } from "../../../../../interfaces/flow";
 import { useSaveModule } from "../../../../../hooks/useSaveModule";
 import { useModule } from "../../../../hooks/useModule";
 import { IModule } from "../../../../../interfaces/module";
 import { createId } from "@rxdrag/shared";
 import { PopoverFooter } from "../../../common/PopoverFooter";
 
-export const VariablePopover = memo((
+export const FlowPopover = memo((
   props: {
     open?: boolean,
     onOpenChange?: (open?: boolean) => void,
-    variable?: IVariable,
+    flow?: IScopedILogicFlow,
   }
 ) => {
-  const { open, onOpenChange, variable } = props;
+  const { open, onOpenChange, flow } = props;
   const [form] = Form.useForm()
   const module = useModule()
   const [saveModule, { loading }] = useSaveModule({
@@ -34,23 +34,23 @@ export const VariablePopover = memo((
 
   const handleConfirm = useCallback(() => {
     if (module) {
-      if (!variable) {
+      if (!flow) {
         form.validateFields().then(() => {
-          const newModule: IModule = { ...module, variables: [...module?.variables || [], { id: createId(), name: form.getFieldValue('name') }] }
+          const newModule: IModule = { ...module, flows: [...module?.flows || [], { id: createId(), name: form.getFieldValue('name'), nodes: [], lines: [] }] }
           saveModule(newModule)
         })
       }
     }
-  }, [form, module, saveModule, variable])
+  }, [form, module, saveModule, flow])
 
   return (
     <Popover
       open={open}
-      title={variable ? "编辑变量" : "添加变量"}
+      title={flow ? "编辑行为流" : "添加行为流"}
       content={
         <>
           <Form
-            name="varialble"
+            name="flow"
             labelAlign="left"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
@@ -61,7 +61,7 @@ export const VariablePopover = memo((
             <Form.Item
               label="名称"
               name="name"
-              rules={[{ required: true, message: '必须输入变量名' }]}
+              rules={[{ required: true, message: '必须输入名称' }]}
             >
               <Input />
             </Form.Item>
