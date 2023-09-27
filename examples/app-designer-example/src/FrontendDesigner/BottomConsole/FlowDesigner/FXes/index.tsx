@@ -28,12 +28,13 @@ export const FXes = memo((
 
   const treeData: DataNode[] = useMemo(() => [
     {
+      key: 'module',
+      selectable: false,
       title: <RootLabel
         title="模块"
         scope={FxScope.module}
         ownerId={module?.id}
       />,
-      key: 'module',
       children: moduleFxes?.map(fx => {
         return ({
           key: fx.id,
@@ -43,12 +44,13 @@ export const FXes = memo((
       }),
     },
     {
+      key: 'device',
+      selectable: false,
       title: <RootLabel
         title="设备端"
         scope={FxScope.device}
         ownerId={frontend?.app?.id}
       />,
-      key: 'device',
       children: deviceFxes?.map(fx => {
         return ({
           key: fx.id,
@@ -58,12 +60,13 @@ export const FXes = memo((
       }),
     },
     {
+      key: 'app',
+      selectable: false,
       title: <RootLabel
         title="应用"
         scope={FxScope.app}
         ownerId={frontend?.app?.id}
       />,
-      key: 'app',
       children: appFxes?.map(fx => {
         return ({
           key: fx.id,

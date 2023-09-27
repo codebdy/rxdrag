@@ -1,6 +1,6 @@
 import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
-import { Button, Space, Tooltip } from "antd"
+import { Button, Tooltip } from "antd"
 import { CloseOutlined, CodeOutlined, FunctionOutlined } from "@ant-design/icons"
 import { Scripts } from "./Scripts"
 import { LeftNav } from "../common/LeftNav"
@@ -12,6 +12,7 @@ import { ToolbarTitle } from "../common/ToolbarTitle"
 import { ID } from "@rxdrag/shared"
 import Editor from '@monaco-editor/react';
 import { useThemeMode } from "@rxdrag/react-core"
+import { NavButton } from "../common/NavButton"
 
 const Content = styled.div`
   display: flex;
@@ -72,30 +73,30 @@ export const ScriptDesigner = memo(() => {
   return (
     <Container>
       <LeftNav>
-        <Space direction="vertical">
-          <Tooltip title="执行脚本" placement="right">
-            <Button
-              type={
-                navType === NavType.flows
-                  ? "primary"
-                  : (selectedScript ? "link" : "text")
-              }
-              icon={<CodeOutlined />}
-              onClick={handleToggleFlows}
-            />
-          </Tooltip>
-          <Tooltip title="通用代码" placement="right">
-            <Button
-              type={
-                navType === NavType.fxes
-                  ? "primary"
-                  : (selectedFx ? "link" : "text")
-              }
-              icon={<FunctionOutlined />}
-              onClick={handleToggleFxes}
-            />
-          </Tooltip>
-        </Space>
+        <Tooltip title="执行脚本" placement="right">
+          <NavButton
+            type={
+              navType === NavType.flows
+                ? "primary"
+                : (selectedScript ? "link" : "text")
+            }
+            className={selectedScript ? "intermediate" : undefined}
+            icon={<CodeOutlined />}
+            onClick={handleToggleFlows}
+          />
+        </Tooltip>
+        <Tooltip title="通用代码" placement="right">
+          <NavButton
+            type={
+              navType === NavType.fxes
+                ? "primary"
+                : (selectedFx ? "link" : "text")
+            }
+            className={selectedFx ? "intermediate" : undefined}
+            icon={<FunctionOutlined />}
+            onClick={handleToggleFxes}
+          />
+        </Tooltip>
       </LeftNav>
       {
         navType && <LeftColumn

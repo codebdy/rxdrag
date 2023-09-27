@@ -1,6 +1,6 @@
 import { ReactNode, memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
-import { Button, Space, Tooltip, theme } from "antd"
+import { Button, Tooltip, theme } from "antd"
 import { FunctionOutlined, ControlOutlined, CloseOutlined, PartitionOutlined, NodeIndexOutlined } from "@ant-design/icons"
 import { FXes } from "./FXes"
 import { Flows } from "./Flows"
@@ -15,6 +15,7 @@ import { Toolbar } from "./Toolbar"
 import { useThemeMode } from "@rxdrag/react-core"
 import { ComponentTree } from "./ComponentTree"
 import { ID } from "@rxdrag/shared"
+import { NavButton } from "../common/NavButton"
 
 const Content = styled.div`
   flex: 1;
@@ -89,45 +90,45 @@ export const FlowDesigner = memo(() => {
     >
       <Container>
         <LeftNav>
-          <Space direction="vertical">
-            <Tooltip title="元件箱" placement="right">
-              <Button
-                type={navType === NavType.toolbox ? "primary" : "text"}
-                icon={<ControlOutlined />}
-                onClick={handleToggleToolbox}
-              />
-            </Tooltip>
-            <Tooltip title="组件树" placement="right">
-              <Button
-                type={navType === NavType.componentTree ? "primary" : "text"}
-                icon={<PartitionOutlined />}
-                onClick={handleToggleComponents}
-              />
-            </Tooltip>
-            <Tooltip title="行为流" placement="right">
-              <Button
-                type={
-                  navType === NavType.flows
-                    ? "primary"
-                    : (selectedFlow ? "link" : "text")
-                }
-                icon={<NodeIndexOutlined />}
-                onClick={handleToggleFlows}
-              />
-            </Tooltip>
+          <Tooltip title="元件箱" placement="right">
+            <NavButton
+              type={navType === NavType.toolbox ? "primary" : "text"}
+              icon={<ControlOutlined />}
+              onClick={handleToggleToolbox}
+            />
+          </Tooltip>
+          <Tooltip title="组件树" placement="right">
+            <NavButton
+              type={navType === NavType.componentTree ? "primary" : "text"}
+              icon={<PartitionOutlined />}
+              onClick={handleToggleComponents}
+            />
+          </Tooltip>
+          <Tooltip title="行为流" placement="right">
+            <NavButton
+              type={
+                navType === NavType.flows
+                  ? "primary"
+                  : (selectedFlow ? "link" : "text")
+              }
+              className={selectedFlow ? "intermediate" : undefined}
+              icon={<NodeIndexOutlined />}
+              onClick={handleToggleFlows}
+            />
+          </Tooltip>
 
-            <Tooltip title="子流" placement="right">
-              <Button
-                type={
-                  navType === NavType.fxes
-                    ? "primary"
-                    : (selectedFx ? "link" : "text")
-                }
-                icon={<FunctionOutlined />}
-                onClick={handleToggleFxes}
-              />
-            </Tooltip>
-          </Space>
+          <Tooltip title="子流" placement="right">
+            <NavButton
+              type={
+                navType === NavType.fxes
+                  ? "primary"
+                  : (selectedFx ? "link" : "text")
+              }
+              className={selectedFx ? "intermediate" : undefined}
+              icon={<FunctionOutlined />}
+              onClick={handleToggleFxes}
+            />
+          </Tooltip>
         </LeftNav>
         {
           navType && <LeftColumn
