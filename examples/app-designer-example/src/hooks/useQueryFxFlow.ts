@@ -1,32 +1,29 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useCallback, useEffect, useState } from "react";
-import { defaultApp } from "../data";
-import { IApp } from "../interfaces";
-import { on, EVENT_DATA_CHANGED, off } from "./events";
-import { Entities } from "./events/entityName";
+import { useCallback, useEffect, useState } from "react"
+import { IFxFlow } from "../interfaces/fx"
+import { on, EVENT_DATA_CHANGED, off } from "./events"
+import { Entities } from "./events/entityName"
+import { ID } from "@rxdrag/shared"
+import { allFxFlows } from "../data/logic"
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function useQueryApp(id?: string): {
-  app?: IApp,
-  loading?: boolean,
-} {
+export function useQueryFxFlow(id: ID) {
   const [loading, setLoading] = useState<boolean>()
-  const [app, setApp] = useState<IApp>()
+  const [fxFlow, setFxFlow] = useState<IFxFlow>()
 
   const fillData = useCallback(() => {
     setLoading(true)
     setTimeout(() => {
-      setApp({ ...defaultApp })
+      setFxFlow(allFxFlows.find(fx => fx.id === id))
       setLoading(false)
     }, 300)
-  }, [])
+  }, [id])
 
   useEffect(() => {
     fillData()
   }, [fillData])
 
   const handleDataEvent = useCallback((event: CustomEvent) => {
-    if (event.detail === Entities.App) {
+    if (event.detail === Entities.FxFlow) {
       fillData()
     }
   }, [fillData])
@@ -38,8 +35,5 @@ export function useQueryApp(id?: string): {
     }
   }, [handleDataEvent])
 
-  return {
-    app,
-    loading,
-  }
+  return { fxFlow, loading }
 }

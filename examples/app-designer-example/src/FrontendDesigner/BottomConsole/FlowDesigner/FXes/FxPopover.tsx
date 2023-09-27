@@ -1,24 +1,24 @@
 import { EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Popover, Space } from "antd";
 import { memo, useCallback, useEffect } from "react"
-import { IScopedILogicFlow } from "../../../../../interfaces/flow";
-import { createId } from "@rxdrag/shared";
-import { PopoverFooter } from "../../../common/PopoverFooter";
-import { useAppFrontend } from "../../../../../hooks/useAppFrontend";
-import { useSaveFrontend } from "../../../../../hooks/useSaveFrontend";
-import { IAppFrontend } from "../../../../../interfaces";
+import { ID, createId } from "@rxdrag/shared";
+import { PopoverFooter } from "../../common/PopoverFooter";
+import { FxScope, IFxFlow } from "../../../../interfaces/fx";
+import { useSaveFxFlow } from "../../../../hooks/useSaveFxFlow";
 
-export const AppFxPopover = memo((
+export const FxPopover = memo((
   props: {
+    scope: FxScope,
+    ownerId?: ID,
     open?: boolean,
     onOpenChange?: (open?: boolean) => void,
-    fx?: IScopedILogicFlow,
+    fx?: IFxFlow,
   }
 ) => {
-  const { open, onOpenChange, fx } = props;
+  const { scope, ownerId, open, onOpenChange, fx } = props;
   const [form] = Form.useForm()
-  const front = useAppFrontend()
-  const [saveFront, { loading }] = useSaveFrontend({
+
+  const [saveFx, { loading }] = useSaveFxFlow({
     onComplate: () => {
       onOpenChange?.(false)
     }
@@ -39,15 +39,13 @@ export const AppFxPopover = memo((
   }, [onOpenChange])
 
   const handleConfirm = useCallback(() => {
-    if (front) {
-      form.validateFields().then((value) => {
-        const newFront: IAppFrontend = !fx
-          ? { ...front, fxFlows: [...front?.fxFlows || [], { id: createId(), ...value }] }
-          : { ...front, fxFlows: front.fxFlows?.map(vr => vr.id === fx.id ? { ...vr, ...value } : vr) }
-        saveFront(newFront)
-      })
-    }
-  }, [front, form, fx, saveFront])
+    form.validateFields().then((value) => {
+      const newFx: IFxFlow = !fx
+        ? { id: createId(), ...value, scope, ownerId }
+        : { ...fx, ...value }
+      saveFx(newFx)
+    })
+  }, [form, fx, ownerId, saveFx, scope])
 
   return (
     <Popover
@@ -67,7 +65,7 @@ export const AppFxPopover = memo((
             <Form.Item
               label="名称"
               name="name"
-              rules={[{ required: true, message: '必须输入变量名' }]}
+              rules={[{ required: true, message: '必须输入名称' }]}
             >
               <Input />
             </Form.Item>

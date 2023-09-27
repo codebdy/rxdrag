@@ -1,7 +1,7 @@
 import { EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Popover, Space } from "antd";
 import { memo, useCallback, useEffect } from "react"
-import { IScopedILogicFlow } from "../../../../../interfaces/flow";
+import { IFlow } from "../../../../../interfaces/flow";
 import { useSaveModule } from "../../../../../hooks/useSaveModule";
 import { useModule } from "../../../../hooks/useModule";
 import { IModule } from "../../../../../interfaces/module";
@@ -12,7 +12,7 @@ export const FlowPopover = memo((
   props: {
     open?: boolean,
     onOpenChange?: (open?: boolean) => void,
-    flow?: IScopedILogicFlow,
+    flow?: IFlow,
   }
 ) => {
   const { open, onOpenChange, flow } = props;

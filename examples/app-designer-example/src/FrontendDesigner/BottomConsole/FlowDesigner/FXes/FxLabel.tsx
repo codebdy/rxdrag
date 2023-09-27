@@ -1,39 +1,30 @@
 import { memo, useCallback, useState } from "react"
 import TreeNodeLabel from "../../common/TreeNodeLabel"
-import { IScopedILogicFlow } from "../../../../interfaces/flow"
 import { Button, Space } from "antd"
 import { DeleteOutlined } from "@ant-design/icons"
-import { FrontFxPopover } from "./FrontFxPopover"
-import { useSaveFrontend } from "../../../../hooks/useSaveFrontend"
-import { useAppFrontend } from "../../../../hooks/useAppFrontend"
-import { IAppFrontend } from "../../../../interfaces"
+import { useRemoveFxFlow } from "../../../../hooks/useRemoveFxFlow"
+import { FxPopover } from "./FxPopover"
+import { IFxFlow } from "../../../../interfaces/fx"
 
-export const FrontFxLabel = memo((props: {
-  fx: IScopedILogicFlow,
+export const FxLabel = memo((props: {
+  fx: IFxFlow,
 }) => {
   const { fx } = props;
   const [open, setOpen] = useState<boolean>()
-  const front = useAppFrontend()
-
-  const [saveFront, { loading }] = useSaveFrontend({
-    onComplate: () => {
-      setOpen(false)
-    }
-  })
+  const [remove, { loading }] = useRemoveFxFlow()
 
   const handleRemove = useCallback(() => {
-    if (front) {
-      const newFront: IAppFrontend = { ...front, fxFlows: front.fxFlows?.filter(fxFlow => fxFlow.id !== fx.id) }
-      saveFront(newFront)
-    }
-  }, [front, saveFront, fx.id])
+    remove(fx.id)
+  }, [remove, fx.id])
 
   return (
     <TreeNodeLabel
       fixedAction={open}
       action={
         <Space>
-          <FrontFxPopover
+          <FxPopover
+            scope={fx.scope}
+            ownerId={fx.ownerId}
             open={open}
             fx={fx}
             onOpenChange={setOpen}

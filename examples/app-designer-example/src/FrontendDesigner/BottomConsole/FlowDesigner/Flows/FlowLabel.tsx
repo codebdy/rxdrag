@@ -1,6 +1,6 @@
 import { memo, useCallback, useState } from "react"
 import TreeNodeLabel from "../../common/TreeNodeLabel"
-import { IScopedILogicFlow } from "../../../../interfaces/flow"
+import { IFlow } from "../../../../interfaces/flow"
 import { Button, Space } from "antd"
 import { DeleteOutlined } from "@ant-design/icons"
 import { useSaveModule } from "../../../../hooks/useSaveModule"
@@ -8,7 +8,7 @@ import { useModule } from "../../../hooks/useModule"
 import { FlowPopover } from "./FlowPopover"
 
 export const FlowLabel = memo((props: {
-  flow: IScopedILogicFlow,
+  flow: IFlow,
 }) => {
   const { flow } = props;
   const [open, setOpen] = useState<boolean>()

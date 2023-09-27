@@ -1,6 +1,9 @@
-export interface IScopedScript {
+import { ID } from "@rxdrag/shared";
+
+export interface IScript {
   id: string,
   title?: string,
   code?: string,
-  scope?: string,
+  //控制器的id
+  scopedIn?: ID,
 }

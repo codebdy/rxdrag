@@ -6,7 +6,7 @@ export interface IVariable {
   name?: string,
 }
 
-export interface IScopedILogicFlow extends ILogicFlowDefine {
+export interface IFlow extends ILogicFlowDefine {
   //对应控制器Id
-  scopeId?: string;
+  scopedIn?: ID;
 }

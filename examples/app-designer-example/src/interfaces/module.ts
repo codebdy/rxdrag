@@ -1,7 +1,7 @@
 import { ILogicFlowDefine } from "@rxdrag/minions-schema";
 import { IViewSchema } from "@rxdrag/schema";
-import { IScopedScript } from "./script";
-import { IScopedILogicFlow, IVariable } from "./flow";
+import { IScript } from "./script";
+import { IFlow, IVariable } from "./flow";
 
 export interface IModuleCategory {
   id: string,
@@ -13,7 +13,7 @@ export interface ILogicFlow extends ILogicFlowDefine {
   scope?: string,
 }
 
-export interface IScript extends IScopedScript {
+export interface IScript extends IScript {
   scope?: string,
 }
 
@@ -22,9 +22,9 @@ export interface IModule {
   title?: string,
   //场景 schema，一个功能由多个场景组成，比如：列表、对话框等
   views?: IViewSchema[],
-  fxFlows?: IScopedILogicFlow[],
-  fxScripts?: IScopedScript[],
-  flows?: IScopedILogicFlow[],
+  fxFlows?: IFlow[],
+  fxScripts?: IScript[],
+  flows?: IFlow[],
   variables?: IVariable[]
   scripts?: IScript[],
 }
