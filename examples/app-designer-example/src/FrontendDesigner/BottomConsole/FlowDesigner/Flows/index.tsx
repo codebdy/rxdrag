@@ -9,10 +9,16 @@ import { RootFlowsLabel } from "./RootFlowsLabel";
 import { NodeIndexOutlined } from "@ant-design/icons";
 import { VariableLabel } from "./VariableLabel";
 import { FlowLabel } from "./FlowLabel";
+import { ID } from "@rxdrag/shared";
 
 const { DirectoryTree } = Tree;
 
-export const Flows = memo(() => {
+export const Flows = memo((
+  props: {
+    onSelect: (id: ID) => void,
+  }
+) => {
+  const { onSelect } = props;
   const module = useModule()
   const treeData: DataNode[] = useMemo(() => [
     {
@@ -59,15 +65,15 @@ export const Flows = memo(() => {
   ], [module?.flows, module?.variables]);
 
 
-  const onSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: React.Key[]) => {
-    console.log('Trigger Select', keys);
-  }, []);
+  const handleSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: React.Key[]) => {
+    onSelect?.((keys?.[0] as ID | undefined) || "")
+  }, [onSelect]);
 
   return (
     <>
       <TreeContainer>
         <DirectoryTree
-          onSelect={onSelect}
+          onSelect={handleSelect}
           treeData={treeData}
         />
       </TreeContainer>

@@ -1,6 +1,6 @@
 import { Tree } from "antd";
 import { DataNode, DirectoryTreeProps } from "antd/es/tree";
-import { memo, useMemo } from "react"
+import { memo, useCallback, useMemo } from "react"
 import { TreeContainer } from "../../common/TreeContainer";
 import { FunctionOutlined } from "@ant-design/icons";
 import { RootLabel } from "./RootLabel";
@@ -9,15 +9,18 @@ import { useQueryFxFlows } from "../../../../hooks/useQueryFxFlows";
 import { FxScope } from "../../../../interfaces/fx";
 import { useModule } from "../../../hooks/useModule";
 import { FxLabel } from "./FxLabel";
+import { ID } from "@rxdrag/shared";
 
 const { DirectoryTree } = Tree;
 
-export const FXes = memo(() => {
+export const FXes = memo((
+  props: {
+    onSelect: (id: ID) => void,
+  }
+) => {
+  const { onSelect } = props;
   const frontend = useAppFrontend()
   const module = useModule()
-  const onSelect: DirectoryTreeProps['onSelect'] = (keys, info) => {
-    console.log('Trigger Select', keys, info);
-  };
 
   const { fxFlows: moduleFxes } = useQueryFxFlows(FxScope.module, module?.id)
   const { fxFlows: deviceFxes } = useQueryFxFlows(FxScope.device, frontend?.app?.id)
@@ -71,10 +74,14 @@ export const FXes = memo(() => {
     },
   ], [appFxes, deviceFxes, frontend?.app?.id, module?.id, moduleFxes]);
 
+  const handleSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: React.Key[]) => {
+    onSelect?.((keys?.[0] as ID | undefined) || "")
+  }, [onSelect]);
+
   return (
     <TreeContainer>
       <DirectoryTree
-        onSelect={onSelect}
+        onSelect={handleSelect}
         treeData={treeData}
       />
     </TreeContainer>

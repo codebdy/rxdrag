@@ -14,6 +14,7 @@ import { IActivityMaterial } from "@rxdrag/minions-schema"
 import { Toolbar } from "./Toolbar"
 import { useThemeMode } from "@rxdrag/react-core"
 import { ComponentTree } from "./ComponentTree"
+import { ID } from "@rxdrag/shared"
 
 const Content = styled.div`
   flex: 1;
@@ -38,6 +39,9 @@ const test = {
 
 export const FlowDesigner = memo(() => {
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
+  const [selectedFlow, setSelectedFolw] = useState<ID>()
+  const [selectedFx, setSelectedFx] = useState<ID>()
+
   const { token } = theme.useToken()
   const themMode = useThemeMode()
   const materials = useMemo(() => {
@@ -65,6 +69,16 @@ export const FlowDesigner = memo(() => {
     setNavType(null)
   }, [])
 
+  const handleSelectFlow = useCallback((id: ID) => {
+    setSelectedFolw(id)
+    setSelectedFx(undefined)
+  }, [])
+
+
+  const handleSelectFx = useCallback((id: ID) => {
+    setSelectedFolw(undefined)
+    setSelectedFx(id)
+  }, [])
 
   return (
     <LogicFlowEditorAntd5Scope
@@ -78,21 +92,25 @@ export const FlowDesigner = memo(() => {
           <Space direction="vertical">
             <Tooltip title="元件箱" placement="right">
               <Button
-                type={navType === NavType.toolbox ? "link" : "text"}
+                type={navType === NavType.toolbox ? "primary" : "text"}
                 icon={<ControlOutlined />}
                 onClick={handleToggleToolbox}
               />
             </Tooltip>
             <Tooltip title="组件树" placement="right">
               <Button
-                type={navType === NavType.componentTree ? "link" : "text"}
+                type={navType === NavType.componentTree ? "primary" : "text"}
                 icon={<PartitionOutlined />}
                 onClick={handleToggleComponents}
               />
             </Tooltip>
             <Tooltip title="行为流" placement="right">
               <Button
-                type={navType === NavType.flows ? "link" : "text"}
+                type={
+                  navType === NavType.flows
+                    ? "primary"
+                    : (selectedFlow ? "link" : "text")
+                }
                 icon={<NodeIndexOutlined />}
                 onClick={handleToggleFlows}
               />
@@ -100,7 +118,11 @@ export const FlowDesigner = memo(() => {
 
             <Tooltip title="子流" placement="right">
               <Button
-                type={navType === NavType.fxes ? "link" : "text"}
+                type={
+                  navType === NavType.fxes
+                    ? "primary"
+                    : (selectedFx ? "link" : "text")
+                }
                 icon={<FunctionOutlined />}
                 onClick={handleToggleFxes}
               />
@@ -155,11 +177,15 @@ export const FlowDesigner = memo(() => {
             }
             {
               navType === NavType.flows &&
-              <Flows />
+              <Flows
+                onSelect={handleSelectFlow}
+              />
             }
             {
               navType === NavType.fxes &&
-              <FXes />
+              <FXes
+                onSelect={handleSelectFx}
+              />
             }
           </LeftColumn>
         }
