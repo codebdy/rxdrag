@@ -16,6 +16,7 @@ const Title = styled.div`
   flex:1;
   display: flex;
   align-items: center;
+  color: ${props => props.theme?.token?.colorTextSecondary}
 `
 
 export const Toolbar = memo((

@@ -195,7 +195,7 @@ export const FlowDesigner = memo(() => {
             value={test}
             toolbox={false}
             toolbar={<Toolbar
-              title="添加用户"
+              title="添加用户 - 行为流"
             >
               <SaveButton type="primary">保存</SaveButton>
             </Toolbar>}
