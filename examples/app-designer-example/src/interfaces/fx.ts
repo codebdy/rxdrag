@@ -9,7 +9,6 @@ export enum FxScope {
 
 export interface IFxFlow extends ILogicFlowDefine {
   id: string,
-  title?: string,
   scope: FxScope,
   //app, appFront, or Module
   ownerId: ID,
@@ -17,7 +16,7 @@ export interface IFxFlow extends ILogicFlowDefine {
 
 export interface IFxScript {
   id: string,
-  title?: string,
+  name?: string,
   code?: string,
   scope: FxScope,
   ownerId: ID,

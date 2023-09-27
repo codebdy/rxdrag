@@ -2,12 +2,12 @@ import { memo, useCallback, useState } from "react"
 import styled from "styled-components"
 import { Button, Space, Tooltip } from "antd"
 import { CloseOutlined, CodeOutlined, FunctionOutlined } from "@ant-design/icons"
-import { Funcs } from "./Funcs"
 import { Scripts } from "./Scripts"
 import { LeftNav } from "../common/LeftNav"
 import { LeftColumn } from "../common/LeftColumn"
 import { Container } from "../common/Container"
 import { Title } from "../common/Title"
+import { FXes } from "./FXes"
 
 const Content = styled.div`
   flex: 1;
@@ -86,7 +86,7 @@ export const ScriptDesigner = memo(() => {
           }
           {
             navType === NavType.fxes &&
-            <Funcs />
+            <FXes />
           }
         </LeftColumn>
       }
