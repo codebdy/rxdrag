@@ -10,11 +10,18 @@ import { PanelTitle } from "../common/PanelTitle"
 import { FXes } from "./FXes"
 import { ToolbarTitle } from "../common/ToolbarTitle"
 import { ID } from "@rxdrag/shared"
+import Editor from '@monaco-editor/react';
+import { useThemeMode } from "@rxdrag/react-core"
 
 const Content = styled.div`
   display: flex;
   flex: 1;
   flex-flow: column;
+`
+
+const EditorContainer = styled.div`
+  flex:1;
+  width: 800px;
 `
 
 const Toolbar = styled.div`
@@ -37,7 +44,7 @@ export const ScriptDesigner = memo(() => {
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
   const [selectedScript, setSelectedScript] = useState<ID>()
   const [selectedFx, setSelectedFx] = useState<ID>()
-
+  const themeMode = useThemeMode()
   const handleToggleFlows = useCallback(() => {
     setNavType(type => type === NavType.flows ? null : NavType.flows)
   }, [])
@@ -92,6 +99,7 @@ export const ScriptDesigner = memo(() => {
       </LeftNav>
       {
         navType && <LeftColumn
+          //className="fixed"
           width={260}
           maxWidth={500}
           minWidth={160}
@@ -137,6 +145,19 @@ export const ScriptDesigner = memo(() => {
           </ToolbarTitle>
           <Button type="primary">保存</Button>
         </Toolbar>
+        <EditorContainer>
+          <Editor
+            height="100%"
+            defaultLanguage="javascript"
+            defaultValue="// some comment"
+            options={{
+              theme: themeMode === "dark" ? "vs-dark" : "light",
+              //不起作用，有空解决
+              //automaticLayout: true,
+            }}
+          //onChange={handleEditorChange}
+          />
+        </EditorContainer>
       </Content>
     </Container>
   )
