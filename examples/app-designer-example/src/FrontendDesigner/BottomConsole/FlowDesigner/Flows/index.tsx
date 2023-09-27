@@ -1,12 +1,13 @@
 import { Tree } from "antd";
 import { DataNode, DirectoryTreeProps } from "antd/es/tree";
-import { memo, useMemo } from "react"
+import { memo, useCallback, useMemo } from "react"
 import { TreeContainer } from "../../common/TreeContainer";
 import { RootVarsLabel } from "./RootVarsLabel";
 import { useModule } from "../../../hooks/useModule";
 import { setPropIcon, listenPropIcon, variableIcon } from "../../icons";
 import { RootFlowsLabel } from "./RootFlowsLabel";
 import { NodeIndexOutlined } from "@ant-design/icons";
+import { VariableLabel } from "./VariableLabel";
 
 const { DirectoryTree } = Tree;
 
@@ -32,7 +33,7 @@ export const Flows = memo(() => {
       children: module?.variables?.map(variable => {
         return {
           key: variable.id,
-          title: variable.name,
+          title: <VariableLabel variable={variable} />,
           selectable: false,
           icon: variableIcon,
           children: [
@@ -57,19 +58,15 @@ export const Flows = memo(() => {
   ], [module?.flows, module?.variables]);
 
 
-  const onSelect: DirectoryTreeProps['onSelect'] = (keys, info) => {
-    console.log('Trigger Select', keys, info);
-  };
+  const onSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: React.Key[]) => {
+    console.log('Trigger Select', keys);
+  }, []);
 
-  const onExpand: DirectoryTreeProps['onExpand'] = (keys, info) => {
-    console.log('Trigger Expand', keys, info);
-  };
   return (
     <>
       <TreeContainer>
         <DirectoryTree
           onSelect={onSelect}
-          onExpand={onExpand}
           treeData={treeData}
         />
       </TreeContainer>

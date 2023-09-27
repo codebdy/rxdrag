@@ -31,7 +31,7 @@ export const ModuleUiDesignerInner = memo(() => {
     return [
       {
         label: <Label >
-          编排
+          行为流
         </Label>,
         key: "logicflow",
         children: <FlowDesigner />

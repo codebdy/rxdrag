@@ -1,6 +1,6 @@
-import { PlusOutlined } from "@ant-design/icons";
+import { EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Popover, Space } from "antd";
-import { memo, useCallback } from "react"
+import { memo, useCallback, useEffect } from "react"
 import { IVariable } from "../../../../../interfaces/flow";
 import { useSaveModule } from "../../../../../hooks/useSaveModule";
 import { useModule } from "../../../../hooks/useModule";
@@ -24,6 +24,12 @@ export const VariablePopover = memo((
     }
   })
 
+  useEffect(() => {
+    if (open) {
+      form.setFieldsValue(variable || { name: "" })
+    }
+  }, [form, open, variable])
+
   const handleOpen = useCallback(() => {
     onOpenChange?.(true)
   }, [onOpenChange])
@@ -34,12 +40,12 @@ export const VariablePopover = memo((
 
   const handleConfirm = useCallback(() => {
     if (module) {
-      if (!variable) {
-        form.validateFields().then(() => {
-          const newModule: IModule = { ...module, variables: [...module?.variables || [], { id: createId(), name: form.getFieldValue('name') }] }
-          saveModule(newModule)
-        })
-      }
+      form.validateFields().then((value) => {
+        const newModule: IModule = !variable
+          ? { ...module, variables: [...module?.variables || [], { id: createId(), ...value }] }
+          : { ...module, variables: module.variables?.map(vr => vr.id === variable.id ? { ...vr, ...value } : vr) }
+        saveModule(newModule)
+      })
     }
   }, [form, module, saveModule, variable])
 
@@ -86,7 +92,7 @@ export const VariablePopover = memo((
       <Button
         size="small"
         type="text"
-        icon={<PlusOutlined />}
+        icon={variable ? <EditOutlined /> : <PlusOutlined />}
         onClick={handleOpen}
       />
     </Popover>
