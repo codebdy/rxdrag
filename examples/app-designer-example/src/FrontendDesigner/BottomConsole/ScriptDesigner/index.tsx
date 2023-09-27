@@ -6,11 +6,26 @@ import { Scripts } from "./Scripts"
 import { LeftNav } from "../common/LeftNav"
 import { LeftColumn } from "../common/LeftColumn"
 import { Container } from "../common/Container"
-import { Title } from "../common/Title"
+import { PanelTitle } from "../common/PanelTitle"
 import { FXes } from "./FXes"
+import { ToolbarTitle } from "../common/ToolbarTitle"
+import { ID } from "@rxdrag/shared"
 
 const Content = styled.div`
+  display: flex;
   flex: 1;
+  flex-flow: column;
+`
+
+const Toolbar = styled.div`
+  display: flex;
+  height: 40px;
+  padding: 0 16px;
+  padding-right: 8px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: solid 1px ${props => props.theme?.token?.colorBorderSecondary};
 `
 
 enum NavType {
@@ -20,7 +35,8 @@ enum NavType {
 
 export const ScriptDesigner = memo(() => {
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
-
+  const [selectedScript, setSelectedScript] = useState<ID>()
+  const [selectedFx, setSelectedFx] = useState<ID>()
 
   const handleToggleFlows = useCallback(() => {
     setNavType(type => type === NavType.flows ? null : NavType.flows)
@@ -34,20 +50,40 @@ export const ScriptDesigner = memo(() => {
     setNavType(null)
   }, [])
 
+  const handleSelectScript = useCallback((id: ID) => {
+    setSelectedScript(id)
+    setSelectedFx(undefined)
+  }, [])
+
+
+  const handleSelectFx = useCallback((id: ID) => {
+    setSelectedScript(undefined)
+    setSelectedFx(id)
+  }, [])
+
+
   return (
     <Container>
       <LeftNav>
         <Space direction="vertical">
           <Tooltip title="执行脚本" placement="right">
             <Button
-              type={navType === NavType.flows ? "link" : "text"}
+              type={
+                navType === NavType.flows
+                  ? "primary"
+                  : (selectedScript ? "link" : "text")
+              }
               icon={<CodeOutlined />}
               onClick={handleToggleFlows}
             />
           </Tooltip>
           <Tooltip title="通用代码" placement="right">
             <Button
-              type={navType === NavType.fxes ? "link" : "text"}
+              type={
+                navType === NavType.fxes
+                  ? "primary"
+                  : (selectedFx ? "link" : "text")
+              }
               icon={<FunctionOutlined />}
               onClick={handleToggleFxes}
             />
@@ -60,7 +96,7 @@ export const ScriptDesigner = memo(() => {
           maxWidth={500}
           minWidth={160}
         >
-          <Title>
+          <PanelTitle>
             {
               NavType.flows === navType &&
               <span>
@@ -79,18 +115,29 @@ export const ScriptDesigner = memo(() => {
               icon={<CloseOutlined />}
               onClick={handleCloseLeft}
             />
-          </Title>
+          </PanelTitle>
           {
             navType === NavType.flows &&
-            <Scripts />
+            <Scripts
+              onSelect={handleSelectScript}
+            />
           }
           {
             navType === NavType.fxes &&
-            <FXes />
+            <FXes
+              onSelect={handleSelectFx}
+            />
           }
         </LeftColumn>
       }
-      <Content />
+      <Content>
+        <Toolbar>
+          <ToolbarTitle>
+            编辑用户
+          </ToolbarTitle>
+          <Button type="primary">保存</Button>
+        </Toolbar>
+      </Content>
     </Container>
   )
 })

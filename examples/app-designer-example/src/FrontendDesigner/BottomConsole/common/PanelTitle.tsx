@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Title = styled.div`
+export const PanelTitle = styled.div`
   height: 40px;
   display: flex;
   justify-content: space-between;

@@ -6,10 +6,16 @@ import { useModule } from "../../../hooks/useModule";
 import { RootLabel } from "./RootLabel";
 import { NodeIndexOutlined } from "@ant-design/icons";
 import { ScriptLabel } from "./ScriptLabel";
+import { ID } from "@rxdrag/shared";
 
 const { DirectoryTree } = Tree;
 
-export const Scripts = memo(() => {
+export const Scripts = memo((
+  props: {
+    onSelect: (id: ID) => void,
+  }
+) => {
+  const { onSelect } = props;
   const module = useModule()
   const treeData: DataNode[] = useMemo(() => [
     {
@@ -21,21 +27,22 @@ export const Scripts = memo(() => {
           key: script.id,
           title: <ScriptLabel script={script} />,
           icon: <NodeIndexOutlined />,
+          isLeaf: true,
         }
       })
     },
   ], [module?.scripts]);
 
 
-  const onSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: React.Key[]) => {
-    console.log('Trigger Select', keys);
-  }, []);
+  const handleSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: React.Key[]) => {
+    onSelect?.((keys?.[0] as ID | undefined) || "")
+  }, [onSelect]);
 
   return (
     <>
       <TreeContainer>
         <DirectoryTree
-          onSelect={onSelect}
+          onSelect={handleSelect}
           treeData={treeData}
         />
       </TreeContainer>

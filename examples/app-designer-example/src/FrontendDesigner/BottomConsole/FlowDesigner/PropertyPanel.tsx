@@ -1,7 +1,7 @@
 import { ResizableColumn } from "@rxdrag/react-antd-shell"
 import { memo } from "react"
 import styled from "styled-components"
-import { Title } from "../common/Title"
+import { PanelTitle } from "../common/PanelTitle"
 import { CloseOutlined } from "@ant-design/icons"
 import { Button } from "antd"
 
@@ -22,7 +22,7 @@ export const PropertyPanel = memo((
       maxWidth={500}
       minWidth={160}
     >
-      <Title>
+      <PanelTitle>
         属性
         <Button
           type="text"
@@ -30,7 +30,7 @@ export const PropertyPanel = memo((
           icon={<CloseOutlined />}
           onClick={onClose}
         />
-      </Title>
+      </PanelTitle>
     </StyledColumn>
   )
 })

@@ -7,7 +7,7 @@ import { Flows } from "./Flows"
 import { LeftNav } from "../common/LeftNav"
 import { LeftColumn } from "../common/LeftColumn"
 import { Container } from "../common/Container"
-import { Title } from "../common/Title"
+import { PanelTitle } from "../common/PanelTitle"
 import { LogicMetaEditorAntd5Inner, LogicFlowEditorAntd5Scope, Toolbox } from "@rxdrag/logicflow-editor-antd5"
 import { activityMaterialCategories, activityMaterialLocales } from "../minion-materials"
 import { IActivityMaterial } from "@rxdrag/minions-schema"
@@ -135,7 +135,7 @@ export const FlowDesigner = memo(() => {
             maxWidth={500}
             minWidth={160}
           >
-            <Title>
+            <PanelTitle>
               {
                 NavType.componentTree === navType &&
                 <span>
@@ -166,7 +166,7 @@ export const FlowDesigner = memo(() => {
                 icon={<CloseOutlined />}
                 onClick={handleCloseLeft}
               />
-            </Title>
+            </PanelTitle>
             {
               navType === NavType.componentTree &&
               <ComponentTree />
