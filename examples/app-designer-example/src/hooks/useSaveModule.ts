@@ -22,7 +22,7 @@ export function useSaveModule(options: {
       setLoading(false)
       setModuel(module)
       options?.onComplate?.()
-    }, 500)
+    }, 300)
 
   }, [options])
 

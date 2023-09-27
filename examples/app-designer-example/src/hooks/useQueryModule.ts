@@ -15,7 +15,7 @@ export function useQueryModule(device: DeviceType | undefined, moduleId: string)
     setTimeout(() => {
       setModule(!device ? undefined : defaultModules[device]?.find(mod => mod.id === moduleId))
       setLoading(false)
-    }, 500)
+    }, 300)
   }, [device, moduleId])
 
   useEffect(() => {

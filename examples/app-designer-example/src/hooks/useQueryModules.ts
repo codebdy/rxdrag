@@ -15,7 +15,7 @@ export function useQueryModules(device: DeviceType | undefined) {
     setTimeout(() => {
       setModules(!device ? undefined : defaultModules[device])
       setLoading(false)
-    }, 500)
+    }, 300)
   }, [device])
 
   useEffect(() => {
