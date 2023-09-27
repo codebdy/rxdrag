@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/minions-runtime-react",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "module": "index.ts",
   "files": [
     "dist"

@@ -1,20 +1,14 @@
 import { Button, Tree } from "antd";
 import { DataNode, DirectoryTreeProps } from "antd/es/tree";
-import { memo, useCallback, useMemo, useState } from "react"
-import { TreeContainer } from "../common/TreeContainer";
-import TreeNodeLabel from "../common/TreeNodeLabel";
+import { memo, useMemo } from "react"
+import { TreeContainer } from "../../common/TreeContainer";
+import TreeNodeLabel from "../../common/TreeNodeLabel";
 import { PlusOutlined } from "@ant-design/icons";
-import { VariablePopover } from "../common/VariablePopover";
+import { RootVarsLabel } from "./RootVarsLabel";
 
 const { DirectoryTree } = Tree;
 
 export const Flows = memo(() => {
-  const [addVariableOpen, setAddVariableOpen] = useState<boolean>()
-
-  const handleOpenAddVar = useCallback(() => {
-    setAddVariableOpen(true)
-  }, [])
-
   const treeData: DataNode[] = useMemo(() => [
     {
       title: <TreeNodeLabel
@@ -32,21 +26,11 @@ export const Flows = memo(() => {
       selectable: false,
     },
     {
-      title: <TreeNodeLabel
-        fixedAction={addVariableOpen}
-        action={
-          <VariablePopover
-            open={addVariableOpen}
-            onOpenChange={setAddVariableOpen}
-          />
-        }
-      >
-        变量
-      </TreeNodeLabel>,
+      title: <RootVarsLabel />,
       key: 'vars',
       selectable: false,
     }
-  ], [addVariableOpen]);
+  ], []);
 
 
   const onSelect: DirectoryTreeProps['onSelect'] = (keys, info) => {

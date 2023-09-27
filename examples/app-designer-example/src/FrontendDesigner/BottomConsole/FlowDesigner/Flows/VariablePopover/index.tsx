@@ -1,9 +1,9 @@
 import { PlusOutlined } from "@ant-design/icons";
 import { Button, Popover, Space } from "antd";
 import { memo, useCallback } from "react"
-import { IVariable } from "../../../../interfaces/flow";
 import { VariableForm } from "./VariableForm";
 import styled from "styled-components";
+import { IVariable } from "../../../../../interfaces/flow";
 
 const Footer = styled.div`
   display: flex;
