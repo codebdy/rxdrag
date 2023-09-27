@@ -8,6 +8,7 @@ import { setPropIcon, listenPropIcon, variableIcon } from "../../icons";
 import { RootFlowsLabel } from "./RootFlowsLabel";
 import { NodeIndexOutlined } from "@ant-design/icons";
 import { VariableLabel } from "./VariableLabel";
+import { FlowLabel } from "./FlowLabel";
 
 const { DirectoryTree } = Tree;
 
@@ -21,7 +22,7 @@ export const Flows = memo(() => {
       children: module?.flows?.map(flow => {
         return {
           key: flow.id,
-          title: flow.name,
+          title: <FlowLabel flow={flow} />,
           icon: <NodeIndexOutlined />,
         }
       })

@@ -1,6 +1,6 @@
-import { PlusOutlined } from "@ant-design/icons";
+import { EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Popover, Space } from "antd";
-import { memo, useCallback } from "react"
+import { memo, useCallback, useEffect } from "react"
 import { IScopedILogicFlow } from "../../../../../interfaces/flow";
 import { useSaveModule } from "../../../../../hooks/useSaveModule";
 import { useModule } from "../../../../hooks/useModule";
@@ -24,6 +24,12 @@ export const FlowPopover = memo((
     }
   })
 
+  useEffect(() => {
+    if (open) {
+      form.setFieldsValue(flow || { name: "" })
+    }
+  }, [form, open, flow])
+
   const handleOpen = useCallback(() => {
     onOpenChange?.(true)
   }, [onOpenChange])
@@ -34,12 +40,12 @@ export const FlowPopover = memo((
 
   const handleConfirm = useCallback(() => {
     if (module) {
-      if (!flow) {
-        form.validateFields().then(() => {
-          const newModule: IModule = { ...module, flows: [...module?.flows || [], { id: createId(), name: form.getFieldValue('name'), nodes: [], lines: [] }] }
-          saveModule(newModule)
-        })
-      }
+      form.validateFields().then((value) => {
+        const newModule: IModule = !flow
+          ? { ...module, flows: [...module?.flows || [], { id: createId(), name: value?.name, nodes: [], lines: [] }] }
+          : { ...module, flows: module.flows?.map(fl => fl.id === flow.id ? { ...fl, ...value } : fl) }
+        saveModule(newModule)
+      })
     }
   }, [form, module, saveModule, flow])
 
@@ -86,7 +92,7 @@ export const FlowPopover = memo((
       <Button
         size="small"
         type="text"
-        icon={<PlusOutlined />}
+        icon={flow ? <EditOutlined /> : <PlusOutlined />}
         onClick={handleOpen}
       />
     </Popover>
