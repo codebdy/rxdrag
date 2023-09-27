@@ -4,11 +4,13 @@ import { EVENT_DATA_CHANGED, trigger } from "./events";
 import { Entities } from "./events/entityName";
 import { defaultModules } from "../data/mudules";
 
-export function useSaveModule() {
+export function useSaveModule(options: {
+  onComplate?: () => void
+}): [(module: IModule) => void, { loading?: boolean, module?: IModule }] {
   const [module, setModuel] = useState<IModule>()
-  const [posting, setPosting] = useState<boolean>()
+  const [loading, setLoading] = useState<boolean>()
   const save = useCallback((module: IModule) => {
-    setPosting(true)
+    setLoading(true)
     setTimeout(() => {
       for (const key of Object.keys(defaultModules)) {
         if (defaultModules[key]?.find(md => md.id === module.id)) {
@@ -17,11 +19,12 @@ export function useSaveModule() {
       }
 
       trigger(EVENT_DATA_CHANGED, Entities.Module)
-      setPosting(false)
+      setLoading(false)
       setModuel(module)
+      options?.onComplate?.()
     }, 500)
 
-  }, [])
+  }, [options])
 
-  return [save, { module, posting }]
+  return [save, { module, loading }]
 }

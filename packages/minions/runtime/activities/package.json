@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/minions-activities",
-  "version": "0.4.2",
+  "version": "0.4.4",
   "author": "Water.Li",
   "module": "index.ts",
   "files": [

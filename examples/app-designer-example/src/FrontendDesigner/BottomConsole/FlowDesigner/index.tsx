@@ -79,7 +79,7 @@ export const FlowDesigner = memo(() => {
             <Tooltip title="元件箱" placement="right">
               <Button
                 type={navType === NavType.toolbox ? "link" : "text"}
-                icon={<NodeIndexOutlined />}
+                icon={<ControlOutlined />}
                 onClick={handleToggleToolbox}
               />
             </Tooltip>
@@ -90,15 +90,15 @@ export const FlowDesigner = memo(() => {
                 onClick={handleToggleComponents}
               />
             </Tooltip>
-            <Tooltip title="编排" placement="right">
+            <Tooltip title="行为流" placement="right">
               <Button
                 type={navType === NavType.flows ? "link" : "text"}
-                icon={<ControlOutlined />}
+                icon={<NodeIndexOutlined />}
                 onClick={handleToggleFlows}
               />
             </Tooltip>
 
-            <Tooltip title="子编排" placement="right">
+            <Tooltip title="子流" placement="right">
               <Button
                 type={navType === NavType.fxes ? "link" : "text"}
                 icon={<FunctionOutlined />}
