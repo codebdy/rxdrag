@@ -4,8 +4,12 @@ import { EditorStore } from "./classes/EditorStore";
 import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
 import { IThemeToken } from "./interfaces";
 
+export const notMethod = () => { throw new Error("Not implement method") }
 export const LogicFlowEditorStoreContext = createContext<EditorStore | undefined>(undefined)
-export const GraphContext = createContext<Graph | undefined>(undefined)
+
+export type GraphState = [Graph | undefined, React.Dispatch<React.SetStateAction<Graph | undefined>>]
+
+export const GraphContext = createContext<GraphState>([undefined, notMethod])
 export const MaterialsContext = createContext<IActivityMaterial<ReactNode>[]>([])
 export const ThemeTokenContext = createContext<IThemeToken>({})
 

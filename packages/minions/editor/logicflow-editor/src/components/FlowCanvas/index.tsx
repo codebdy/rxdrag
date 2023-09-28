@@ -1,8 +1,9 @@
 import { memo } from "react"
-import { useShowMap } from "../../hooks";
+import { useCreateGraph, useEditorStore, useShowMap } from "../../hooks";
 import { ILogicMetas } from "../../interfaces";
 import styled from "styled-components";
 import { Logic } from "../Logic";
+import { useThemeToken } from "../../hooks/useThemeToken";
 
 const CanvasArea = styled.div`
   position: relative;
@@ -51,7 +52,9 @@ export const FlowCanvas = memo((
 ) => {
   const { value, onChange, children } = props;
   const { showMap } = useShowMap()
-
+  const store = useEditorStore()
+  const token = useThemeToken()
+  useCreateGraph(token, store)
   return (
     <CanvasArea>
       <CanvasContainer id="reactions-canvas-container" >

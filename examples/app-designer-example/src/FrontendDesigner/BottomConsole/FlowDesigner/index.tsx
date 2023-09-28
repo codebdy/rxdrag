@@ -8,34 +8,27 @@ import { LeftNav } from "../common/LeftNav"
 import { LeftColumn } from "../common/LeftColumn"
 import { Container } from "../common/Container"
 import { PanelTitle } from "../common/PanelTitle"
-import { LogicMetaEditorAntd5Inner, LogicFlowEditorAntd5Scope, Toolbox } from "@rxdrag/logicflow-editor-antd5"
+import { LogicFlowEditorAntd5Scope, Toolbox } from "@rxdrag/logicflow-editor-antd5"
 import { activityMaterialCategories, activityMaterialLocales } from "../minion-materials"
 import { IActivityMaterial } from "@rxdrag/minions-schema"
-import { Toolbar } from "./Toolbar"
 import { useThemeMode } from "@rxdrag/react-core"
 import { ComponentTree } from "./ComponentTree"
 import { ID } from "@rxdrag/shared"
 import { NavButton } from "../common/NavButton"
+import { FlowEditor } from "./FlowEditor"
+import { FxEditor } from "./FxEditor"
 
 const Content = styled.div`
   flex: 1;
   position: relative;
 `
 
-const SaveButton = styled(Button)`
-  margin-left: 32px;
-`
 
 enum NavType {
   componentTree = "componentTree",
   toolbox = "toolbox",
   flows = "flows",
   fxes = "fxes",
-}
-
-const test = {
-  nodes: [],
-  lines: []
 }
 
 export const FlowDesigner = memo(() => {
@@ -74,7 +67,6 @@ export const FlowDesigner = memo(() => {
     setSelectedFolw(id)
     setSelectedFx(undefined)
   }, [])
-
 
   const handleSelectFx = useCallback((id: ID) => {
     setSelectedFolw(undefined)
@@ -187,16 +179,12 @@ export const FlowDesigner = memo(() => {
           />
         </LeftColumn>
         <Content>
-          <LogicMetaEditorAntd5Inner
-            materialCategories={activityMaterialCategories}
-            value={test}
-            toolbox={false}
-            toolbar={<Toolbar
-              title="添加用户 - 行为流"
-            >
-              <SaveButton type="primary">保存</SaveButton>
-            </Toolbar>}
-          />
+          {
+            selectedFlow && <FlowEditor flowId={selectedFlow} />
+          }
+          {
+            selectedFx && <FxEditor fxId={selectedFx} />
+          }
         </Content>
       </Container>
     </LogicFlowEditorAntd5Scope>

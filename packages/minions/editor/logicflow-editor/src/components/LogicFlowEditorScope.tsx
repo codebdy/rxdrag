@@ -1,10 +1,10 @@
-import { ReactNode, memo, useMemo } from "react"
+import { ReactNode, memo, useMemo, useState } from "react"
 import { CanBeReferencedLogicFlowMetasContext, GraphContext, LogicFlowContext, LogicFlowEditorStoreContext, MaterialsContext, ThemeTokenContext } from "../contexts";
 import { EditorStore } from "../classes";
 import { ThemeProvider } from "styled-components";
 import { IThemeToken } from "../interfaces";
 import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
-import { useCreateGraph } from "../hooks";
+import { Graph } from "@antv/x6";
 
 export type LogicFlowEditorScopeProps = {
   themMode?: "dark" | "light",
@@ -20,6 +20,7 @@ export const LogicFlowEditorScope = memo((
   props: LogicFlowEditorScopeProps,
 ) => {
   const { themMode, token, materials, logicFlowContext, canBeReferencedLogflowMetas, children } = props;
+  const graphState = useState<Graph>()
   const theme: { token: IThemeToken } = useMemo(() => {
     return {
       mode: themMode,
@@ -31,8 +32,6 @@ export const LogicFlowEditorScope = memo((
     return new EditorStore()
   }, [])
 
-  const graph = useCreateGraph(token, store)
-
   return (
     <LogicFlowEditorStoreContext.Provider value={store}>
       <ThemeProvider theme={theme}>
@@ -40,7 +39,7 @@ export const LogicFlowEditorScope = memo((
           <LogicFlowContext.Provider value={logicFlowContext}>
             <MaterialsContext.Provider value={materials}>
               <CanBeReferencedLogicFlowMetasContext.Provider value={canBeReferencedLogflowMetas || []}>
-                <GraphContext.Provider value={graph}>
+                <GraphContext.Provider value={graphState}>
                   {children}
                 </GraphContext.Provider>
               </CanBeReferencedLogicFlowMetasContext.Provider>

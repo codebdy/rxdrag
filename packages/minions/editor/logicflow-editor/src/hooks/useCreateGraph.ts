@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Graph } from "@antv/x6";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { config } from "./config";
 import { Selection } from '@antv/x6-plugin-selection'
 import { MiniMap } from "@antv/x6-plugin-minimap";
@@ -9,6 +9,7 @@ import { IThemeToken } from "../interfaces";
 import { NodeType } from "@rxdrag/minions-schema";
 import { useGetNodeMeta } from "./useGetNodeMeta";
 import { EditorStore } from "../classes";
+import { useGraphState } from "./useGraphState";
 
 const magnetAvailabilityHighlighter = {
   name: "stroke",
@@ -20,9 +21,9 @@ const magnetAvailabilityHighlighter = {
     },
   },
 };
-let inter:any;
+let inter: any;
 export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
-  const [graph, setGraph] = useState<Graph>()
+  const [, setGraph] = useGraphState()
   const getNodeMeta = useGetNodeMeta(store)
   const getNodeMetaRef = useRef(getNodeMeta)
   getNodeMetaRef.current = getNodeMeta
@@ -235,7 +236,6 @@ export function useCreateGraph(token: IThemeToken, store?: EditorStore) {
       clearTimeout(inter);
       gph?.dispose()
     }
-  }, [token.colorPrimary, token.colorTextSecondary])
+  }, [setGraph, token.colorPrimary, token.colorTextSecondary])
 
-  return graph
 }
