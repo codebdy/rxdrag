@@ -1,4 +1,4 @@
-import { IFxFlow, IFxScript } from "../interfaces/fx";
+import { IFlow, IScript } from "../interfaces/flow";
 
-export const allFxFlows: IFxFlow[] = []
-export const allFxScripts: IFxScript[] = []
+export const allFlows: IFlow[] = []
+export const allScripts: IScript[] = []

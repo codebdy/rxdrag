@@ -1,12 +1,11 @@
 import { LogicMetaEditorAntd5Inner } from "@rxdrag/logicflow-editor-antd5"
 import { memo } from "react"
 import { activityMaterialCategories } from "../minion-materials"
-import { Button } from "antd"
+import { Button, Spin } from "antd"
 import styled from "styled-components"
 import { Toolbar } from "./Toolbar"
 import { ID } from "@rxdrag/shared"
-import { useModuleFlow } from "../../hooks/useModuleFlow"
-
+import { useQueryFlow } from "../../../hooks/useQueryFlow"
 
 const SaveButton = styled(Button)`
   margin-left: 32px;
@@ -19,23 +18,26 @@ const test = {
 
 export const FlowEditor = memo((
   props: {
-    flowId: ID
+    flowId: ID,
+    titleSuffix: string
   }
 ) => {
-  const { flowId } = props
+  const { flowId, titleSuffix } = props
 
-  const flow = useModuleFlow(flowId)
+  const { flow, loading } = useQueryFlow(flowId)
 
   return (
-    <LogicMetaEditorAntd5Inner
-      materialCategories={activityMaterialCategories}
-      value={test}
-      toolbox={false}
-      toolbar={<Toolbar
-        title={`${flow?.name} [流程]`}
-      >
-        <SaveButton type="primary">保存</SaveButton>
-      </Toolbar>}
-    />
+    flow
+      ? <LogicMetaEditorAntd5Inner
+        materialCategories={activityMaterialCategories}
+        value={test}
+        toolbox={false}
+        toolbar={<Toolbar
+          title={`${flow?.name} [${titleSuffix}]`}
+        >
+          <SaveButton type="primary">保存</SaveButton>
+        </Toolbar>}
+      />
+      : <Spin spinning={loading} />
   )
 })

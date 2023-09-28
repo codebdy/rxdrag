@@ -10,6 +10,8 @@ import { NodeIndexOutlined } from "@ant-design/icons";
 import { VariableLabel } from "./VariableLabel";
 import { FlowLabel } from "./FlowLabel";
 import { ID } from "@rxdrag/shared";
+import { useQueryFlows } from "../../../../hooks/useQueryFlows";
+import { LogicType } from "../../../../interfaces/flow";
 
 const { DirectoryTree } = Tree;
 
@@ -22,12 +24,15 @@ export const Flows = memo((
 ) => {
   const { selected, onSelect, display } = props;
   const module = useModule()
+
+  const { flows } = useQueryFlows(module?.id, LogicType.normal)
+
   const treeData: DataNode[] = useMemo(() => [
     {
       title: <RootFlowsLabel />,
       key: 'flows',
       selectable: false,
-      children: module?.flows?.map(flow => {
+      children: flows?.map(flow => {
         return {
           key: flow.id,
           title: <FlowLabel flow={flow} />,
@@ -64,7 +69,7 @@ export const Flows = memo((
         }
       })
     }
-  ], [module?.flows, module?.variables]);
+  ], [flows, module?.variables]);
 
 
   const handleSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: React.Key[]) => {

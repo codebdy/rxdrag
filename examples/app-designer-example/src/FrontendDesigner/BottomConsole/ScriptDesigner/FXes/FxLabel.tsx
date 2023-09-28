@@ -2,16 +2,16 @@ import { memo, useCallback, useState } from "react"
 import TreeNodeLabel from "../../common/TreeNodeLabel"
 import { Button, Space } from "antd"
 import { DeleteOutlined } from "@ant-design/icons"
-import { FxPopover } from "./FxPopover"
-import { IFxScript } from "../../../../interfaces/fx"
-import { useRemoveFxScript } from "../../../../hooks/useRemoveFxScript"
+import { ScriptPopover } from "../ScriptPopover"
+import { IScript } from "../../../../interfaces/flow"
+import { useRemoveScript } from "../../../../hooks/useRemoveScript"
 
 export const FxLabel = memo((props: {
-  fx: IFxScript,
+  fx: IScript,
 }) => {
   const { fx } = props;
   const [open, setOpen] = useState<boolean>()
-  const [remove, { loading }] = useRemoveFxScript()
+  const [remove, { loading }] = useRemoveScript()
 
   const handleRemove = useCallback(() => {
     remove(fx.id)
@@ -22,11 +22,11 @@ export const FxLabel = memo((props: {
       fixedAction={open}
       action={
         <Space>
-          <FxPopover
+          <ScriptPopover
             scope={fx.scope}
             ownerId={fx.ownerId}
             open={open}
-            fx={fx}
+            script={fx}
             onOpenChange={setOpen}
           />
           <Button

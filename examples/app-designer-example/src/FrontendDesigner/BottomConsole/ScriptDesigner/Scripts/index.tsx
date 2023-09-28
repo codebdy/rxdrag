@@ -7,6 +7,8 @@ import { RootLabel } from "./RootLabel";
 import { NodeIndexOutlined } from "@ant-design/icons";
 import { ScriptLabel } from "./ScriptLabel";
 import { ID } from "@rxdrag/shared";
+import { useQueryScripts } from "../../../../hooks/useQueryScripts";
+import { LogicType } from "../../../../interfaces/flow";
 
 const { DirectoryTree } = Tree;
 
@@ -18,12 +20,13 @@ export const Scripts = memo((
 ) => {
   const { display, onSelect } = props;
   const module = useModule()
+  const { scripts } = useQueryScripts(module?.id, LogicType.normal)
   const treeData: DataNode[] = useMemo(() => [
     {
       title: <RootLabel />,
       key: 'scripts',
       selectable: false,
-      children: module?.scripts?.map(script => {
+      children: scripts?.map(script => {
         return {
           key: script.id,
           title: <ScriptLabel script={script} />,
@@ -32,7 +35,7 @@ export const Scripts = memo((
         }
       })
     },
-  ], [module?.scripts]);
+  ], [scripts]);
 
 
   const handleSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: React.Key[]) => {

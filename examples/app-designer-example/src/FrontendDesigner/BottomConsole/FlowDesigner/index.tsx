@@ -16,7 +16,6 @@ import { ComponentTree } from "./ComponentTree"
 import { ID } from "@rxdrag/shared"
 import { NavButton } from "../common/NavButton"
 import { FlowEditor } from "./FlowEditor"
-import { FxEditor } from "./FxEditor"
 
 const Content = styled.div`
   flex: 1;
@@ -180,10 +179,11 @@ export const FlowDesigner = memo(() => {
         </LeftColumn>
         <Content>
           {
-            selectedFlow && <FlowEditor flowId={selectedFlow} />
-          }
-          {
-            selectedFx && <FxEditor fxId={selectedFx} />
+            (selectedFlow || selectedFx) &&
+            <FlowEditor
+              flowId={selectedFlow || selectedFx || ""}
+              titleSuffix={selectedFx ? "子流" : "行为流"}
+            />
           }
         </Content>
       </Container>

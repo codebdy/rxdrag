@@ -13,6 +13,7 @@ import { ID } from "@rxdrag/shared"
 import Editor from 'react-monaco-editor';
 import { useThemeMode } from "@rxdrag/react-core"
 import { NavButton } from "../common/NavButton"
+import { useQueryScript } from "../../../hooks/useQueryScript"
 
 const Content = styled.div`
   display: flex;
@@ -46,6 +47,7 @@ export const ScriptDesigner = memo(() => {
   const [selectedScript, setSelectedScript] = useState<ID>()
   const [selectedFx, setSelectedFx] = useState<ID>()
   const themeMode = useThemeMode()
+  const { script } = useQueryScript(selectedScript || selectedFx || "")
   const handleToggleFlows = useCallback(() => {
     setNavType(type => type === NavType.flows ? null : NavType.flows)
   }, [])
@@ -138,7 +140,7 @@ export const ScriptDesigner = memo(() => {
       <Content>
         <Toolbar>
           <ToolbarTitle>
-            编辑用户
+            {`${script?.name} [${selectedFx ? "子脚本" : "脚本"}]`}
           </ToolbarTitle>
           <Button type="primary">保存</Button>
         </Toolbar>

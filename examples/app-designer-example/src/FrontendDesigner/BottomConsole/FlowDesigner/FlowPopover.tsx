@@ -2,23 +2,25 @@ import { EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Popover, Space } from "antd";
 import { memo, useCallback, useEffect } from "react"
 import { ID, createId } from "@rxdrag/shared";
-import { PopoverFooter } from "../../common/PopoverFooter";
-import { FxScope, IFxFlow } from "../../../../interfaces/fx";
-import { useSaveFxFlow } from "../../../../hooks/useSaveFxFlow";
+import { PopoverFooter } from "../common/PopoverFooter";
+import { FxScope, IFlow, LogicType } from "../../../interfaces/flow";
+import { useSaveFlow } from "../../../hooks/useSaveFlow";
 
-export const FxPopover = memo((
+export const FlowPopover = memo((
   props: {
-    scope: FxScope,
+    scope?: FxScope,
     ownerId?: ID,
     open?: boolean,
     onOpenChange?: (open?: boolean) => void,
-    fx?: IFxFlow,
+    flow?: IFlow,
+    title: string,
+    type?: LogicType,
   }
 ) => {
-  const { scope, ownerId, open, onOpenChange, fx } = props;
+  const { scope, ownerId, open, onOpenChange, flow, title, type } = props;
   const [form] = Form.useForm()
 
-  const [saveFx, { loading }] = useSaveFxFlow({
+  const [save, { loading }] = useSaveFlow({
     onComplate: () => {
       onOpenChange?.(false)
     }
@@ -26,9 +28,9 @@ export const FxPopover = memo((
 
   useEffect(() => {
     if (open) {
-      form.setFieldsValue(fx || { name: "" })
+      form.setFieldsValue(flow || { name: "" })
     }
-  }, [form, open, fx])
+  }, [form, open, flow])
 
   const handleOpen = useCallback(() => {
     onOpenChange?.(true)
@@ -40,21 +42,21 @@ export const FxPopover = memo((
 
   const handleConfirm = useCallback(() => {
     form.validateFields().then((value) => {
-      const newFx: IFxFlow = !fx
-        ? { id: createId(), ...value, scope, ownerId }
-        : { ...fx, ...value }
-      saveFx(newFx)
+      const newFx: IFlow = !flow
+        ? { id: createId(), ...value, scope, ownerId, type }
+        : { ...flow, ...value }
+      save(newFx)
     })
-  }, [form, fx, ownerId, saveFx, scope])
+  }, [form, flow, scope, ownerId, type, save])
 
   return (
     <Popover
       open={open}
-      title={fx ? "编辑子流" : "添加子流"}
+      title={title}
       content={
         <>
           <Form
-            name="fx"
+            name="flow"
             labelAlign="left"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
@@ -90,7 +92,7 @@ export const FxPopover = memo((
       <Button
         size="small"
         type="text"
-        icon={fx ? <EditOutlined /> : <PlusOutlined />}
+        icon={flow ? <EditOutlined /> : <PlusOutlined />}
         onClick={handleOpen}
       />
     </Popover>

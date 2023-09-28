@@ -2,31 +2,21 @@ import { memo, useCallback, useState } from "react"
 import TreeNodeLabel from "../../common/TreeNodeLabel"
 import { Button, Space } from "antd"
 import { DeleteOutlined } from "@ant-design/icons"
-import { useSaveModule } from "../../../../hooks/useSaveModule"
-import { useModule } from "../../../hooks/useModule"
-import { ScriptPopover } from "./ScriptPopover"
-import { IScript } from "../../../../interfaces/script"
-import { IModule } from "../../../../interfaces/module"
+import { IScript, LogicType } from "../../../../interfaces/flow"
+import { useRemoveScript } from "../../../../hooks/useRemoveScript"
+import { ScriptPopover } from "../ScriptPopover"
 
 export const ScriptLabel = memo((props: {
   script: IScript,
 }) => {
   const { script } = props;
   const [open, setOpen] = useState<boolean>()
-  const module = useModule()
 
-  const [saveModule, { loading }] = useSaveModule({
-    onComplate: () => {
-      setOpen(false)
-    }
-  })
+  const [remove, { loading }] = useRemoveScript()
 
   const handleRemove = useCallback(() => {
-    if (module) {
-      const newModule: IModule = { ...module, scripts: module.scripts?.filter(vr => vr.id !== script.id) }
-      saveModule(newModule)
-    }
-  }, [module, saveModule, script.id])
+    remove(script.id)
+  }, [remove, script.id])
 
   return (
     <TreeNodeLabel
@@ -34,6 +24,8 @@ export const ScriptLabel = memo((props: {
       action={
         <Space>
           <ScriptPopover
+            title="编辑子脚本"
+            type={LogicType.fx}
             open={open}
             script={script}
             onOpenChange={setOpen}

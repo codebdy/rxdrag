@@ -1,29 +1,29 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useState } from "react"
-import { FxScope, IFxFlow } from "../interfaces/fx"
+import {  IScript } from "../interfaces/flow"
 import { on, EVENT_DATA_CHANGED, off } from "./events"
 import { Entities } from "./events/entityName"
 import { ID } from "@rxdrag/shared"
-import { allFxFlows } from "../data/logic"
+import { allScripts } from "../data/logic"
 
-export function useQueryFxFlows(scope: FxScope, ownerId?: ID) {
+export function useQueryScript(id: ID) {
   const [loading, setLoading] = useState<boolean>()
-  const [fxFlows, setFxFlows] = useState<IFxFlow[]>()
+  const [script, setScript] = useState<IScript>()
 
   const fillData = useCallback(() => {
     setLoading(true)
     setTimeout(() => {
-      setFxFlows(allFxFlows.filter(fx => fx.ownerId === ownerId && fx.scope === scope))
+      setScript(allScripts.find(fx => fx.id === id))
       setLoading(false)
     }, 300)
-  }, [ownerId, scope])
+  }, [id])
 
   useEffect(() => {
     fillData()
   }, [fillData])
 
   const handleDataEvent = useCallback((event: CustomEvent) => {
-    if (event.detail === Entities.FxFlow) {
+    if (event.detail === Entities.Script) {
       fillData()
     }
   }, [fillData])
@@ -35,5 +35,5 @@ export function useQueryFxFlows(scope: FxScope, ownerId?: ID) {
     }
   }, [handleDataEvent])
 
-  return { fxFlows, loading }
+  return { script, loading }
 }

@@ -5,10 +5,10 @@ import { TreeContainer } from "../../common/TreeContainer";
 import { FunctionOutlined } from "@ant-design/icons";
 import { RootLabel } from "./RootLabel";
 import { useAppFrontend } from "../../../../hooks/useAppFrontend";
-import { FxScope } from "../../../../interfaces/fx";
+import { FxScope, LogicType } from "../../../../interfaces/flow";
 import { useModule } from "../../../hooks/useModule";
 import { FxLabel } from "./FxLabel";
-import { useQueryFxScripts } from "../../../../hooks/useQueryFxScripts";
+import { useQueryScripts } from "../../../../hooks/useQueryScripts";
 import { ID } from "@rxdrag/shared";
 
 const { DirectoryTree } = Tree;
@@ -23,9 +23,9 @@ export const FXes = memo((
   const frontend = useAppFrontend()
   const module = useModule()
 
-  const { fxScripts: moduleFxes } = useQueryFxScripts(FxScope.module, module?.id)
-  const { fxScripts: deviceFxes } = useQueryFxScripts(FxScope.device, frontend?.app?.id)
-  const { fxScripts: appFxes } = useQueryFxScripts(FxScope.app, frontend?.app?.id)
+  const { scripts: moduleFxes } = useQueryScripts(module?.id, LogicType.fx, FxScope.module)
+  const { scripts: deviceFxes } = useQueryScripts(frontend?.app?.id, LogicType.fx, FxScope.device)
+  const { scripts: appFxes } = useQueryScripts(frontend?.app?.id, LogicType.fx, FxScope.app)
 
   const treeData: DataNode[] = useMemo(() => [
     {

@@ -3,29 +3,24 @@ import TreeNodeLabel from "../../common/TreeNodeLabel"
 import { IFlow } from "../../../../interfaces/flow"
 import { Button, Space } from "antd"
 import { DeleteOutlined } from "@ant-design/icons"
-import { useSaveModule } from "../../../../hooks/useSaveModule"
-import { useModule } from "../../../hooks/useModule"
-import { FlowPopover } from "./FlowPopover"
+import { FlowPopover } from "../FlowPopover"
+import { useRemoveFlow } from "../../../../hooks/useRemoveFlow"
 
 export const FlowLabel = memo((props: {
   flow: IFlow,
 }) => {
   const { flow } = props;
   const [open, setOpen] = useState<boolean>()
-  const module = useModule()
 
-  const [saveModule, { loading }] = useSaveModule({
+  const [remove, { loading }] = useRemoveFlow({
     onComplate: () => {
       setOpen(false)
     }
   })
 
   const handleRemove = useCallback(() => {
-    if (module) {
-      const newModule = { ...module, flows: module.flows?.filter(vr => vr.id !== flow.id) }
-      saveModule(newModule)
-    }
-  }, [module, saveModule, flow.id])
+    remove(flow.id)
+  }, [remove, flow.id])
 
   return (
     <TreeNodeLabel
@@ -33,6 +28,8 @@ export const FlowLabel = memo((props: {
       action={
         <Space>
           <FlowPopover
+            title="编辑行为流"
+            ownerId={flow.ownerId}
             open={open}
             flow={flow}
             onOpenChange={setOpen}

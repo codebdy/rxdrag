@@ -2,23 +2,25 @@ import { EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Popover, Space } from "antd";
 import { memo, useCallback, useEffect } from "react"
 import { ID, createId } from "@rxdrag/shared";
-import { PopoverFooter } from "../../common/PopoverFooter";
-import { FxScope, IFxScript } from "../../../../interfaces/fx";
-import { useSaveFxScript } from "../../../../hooks/useSaveFxScript";
+import { PopoverFooter } from "../common/PopoverFooter";
+import { FxScope, IScript, LogicType } from "../../../interfaces/flow";
+import { useSaveScript } from "../../../hooks/useSaveScript";
 
-export const FxPopover = memo((
+export const ScriptPopover = memo((
   props: {
-    scope: FxScope,
+    title: string,
+    scope?: FxScope,
+    type: LogicType,
     ownerId?: ID,
     open?: boolean,
     onOpenChange?: (open?: boolean) => void,
-    fx?: IFxScript,
+    script?: IScript,
   }
 ) => {
-  const { scope, ownerId, open, onOpenChange, fx } = props;
+  const { title, scope, type, ownerId, open, onOpenChange, script } = props;
   const [form] = Form.useForm()
 
-  const [saveFx, { loading }] = useSaveFxScript({
+  const [saveFx, { loading }] = useSaveScript({
     onComplate: () => {
       onOpenChange?.(false)
     }
@@ -26,9 +28,9 @@ export const FxPopover = memo((
 
   useEffect(() => {
     if (open) {
-      form.setFieldsValue(fx || { name: "" })
+      form.setFieldsValue(script || { name: "" })
     }
-  }, [form, open, fx])
+  }, [form, open, script])
 
   const handleOpen = useCallback(() => {
     onOpenChange?.(true)
@@ -40,17 +42,17 @@ export const FxPopover = memo((
 
   const handleConfirm = useCallback(() => {
     form.validateFields().then((value) => {
-      const newFx: IFxScript = !fx
-        ? { id: createId(), ...value, scope, ownerId }
-        : { ...fx, ...value }
+      const newFx: IScript = !script
+        ? { id: createId(), ...value, scope, ownerId, type }
+        : { ...script, ...value }
       saveFx(newFx)
     })
-  }, [form, fx, ownerId, saveFx, scope])
+  }, [form, script, ownerId, saveFx, scope, type])
 
   return (
     <Popover
       open={open}
-      title={fx ? "编辑子流" : "添加子流"}
+      title={title}
       content={
         <>
           <Form
@@ -90,7 +92,7 @@ export const FxPopover = memo((
       <Button
         size="small"
         type="text"
-        icon={fx ? <EditOutlined /> : <PlusOutlined />}
+        icon={script ? <EditOutlined /> : <PlusOutlined />}
         onClick={handleOpen}
       />
     </Popover>

@@ -5,6 +5,7 @@ export const PanelTitle = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: solid 1px ${props => props.theme.token?.colorBorderSecondary};
+  color: ${props => props.theme?.token?.colorTextSecondary};
   align-items: center;
   padding: 0 16px;
   padding-right: 8px;

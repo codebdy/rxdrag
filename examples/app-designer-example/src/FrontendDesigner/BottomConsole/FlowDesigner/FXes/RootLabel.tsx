@@ -1,7 +1,7 @@
 import { memo, useState } from "react"
 import TreeNodeLabel from "../../common/TreeNodeLabel"
-import { FxPopover } from "./FxPopover"
-import { FxScope } from "../../../../interfaces/fx";
+import { FlowPopover } from "../FlowPopover"
+import { FxScope, LogicType } from "../../../../interfaces/flow";
 import { ID } from "@rxdrag/shared";
 
 export const RootLabel = memo((
@@ -18,8 +18,10 @@ export const RootLabel = memo((
     <TreeNodeLabel
       fixedAction={open}
       action={
-        <FxPopover
+        <FlowPopover
+          title="添加子流"
           scope={scope}
+          type={LogicType.fx}
           ownerId={ownerId}
           open={open}
           onOpenChange={setOpen}

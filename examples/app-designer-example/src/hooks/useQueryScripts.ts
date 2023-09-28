@@ -1,29 +1,29 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useState } from "react"
-import {  IFxScript } from "../interfaces/fx"
+import { FxScope, IScript, LogicType } from "../interfaces/flow"
 import { on, EVENT_DATA_CHANGED, off } from "./events"
 import { Entities } from "./events/entityName"
 import { ID } from "@rxdrag/shared"
-import { allFxScripts } from "../data/logic"
+import { allScripts } from "../data/logic"
 
-export function useQueryFxScript(id: ID) {
+export function useQueryScripts(ownerId: ID | undefined, type: LogicType, scope?: FxScope) {
   const [loading, setLoading] = useState<boolean>()
-  const [fxScript, setFxScript] = useState<IFxScript>()
+  const [scripts, setScripts] = useState<IScript[]>()
 
   const fillData = useCallback(() => {
     setLoading(true)
     setTimeout(() => {
-      setFxScript(allFxScripts.find(fx => fx.id === id))
+      setScripts(allScripts.filter(script => script.ownerId === ownerId && script.scope === scope && script.type === type))
       setLoading(false)
     }, 300)
-  }, [id])
+  }, [ownerId, scope, type])
 
   useEffect(() => {
     fillData()
   }, [fillData])
 
   const handleDataEvent = useCallback((event: CustomEvent) => {
-    if (event.detail === Entities.FxScript) {
+    if (event.detail === Entities.Script) {
       fillData()
     }
   }, [fillData])
@@ -35,5 +35,5 @@ export function useQueryFxScript(id: ID) {
     }
   }, [handleDataEvent])
 
-  return { fxScript, loading }
+  return { scripts, loading }
 }

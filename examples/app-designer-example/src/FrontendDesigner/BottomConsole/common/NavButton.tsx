@@ -10,4 +10,5 @@ export const NavButton = styled(Button).attrs({ block: true })`
   &.intermediate{
     border-left-color: ${props => props.theme?.token?.colorPrimary};
   }
+  margin-bottom: 2px;
 `;
