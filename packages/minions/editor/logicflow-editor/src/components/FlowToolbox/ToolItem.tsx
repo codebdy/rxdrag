@@ -2,41 +2,37 @@ import React, { memo } from "react"
 import styled from "styled-components"
 
 const Icon = styled.div`
-  width: 100%;
-  font-size: 28px;
-  height: 54px;
+  width: 32px;
+  height: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  border-radius: 8px;
-  background-color: ${props => props.theme.token?.colorBorderSecondary};
+  margin-right: 0px;
+  font-size: 18px;
 `
 
 const Shell = styled((props) => <div {...props} />)`
   width: calc(50% - 8px);
   margin: 4px;
   display: flex;
-  flex-flow: column;
   align-items: center;
   user-select: none;
   cursor: move;
+  border-radius: 4px;
+  background-color: ${props => props.theme.token?.colorBorderSecondary};
   color: ${props => props.theme.token?.colorTextSecondary};
   &:hover {
     color: ${props => props.theme.token?.colorText};
   };
-  &:hover ${Icon}{
+  &:hover {
     background-color: ${props => props.theme.token?.colorBorder};
   };
   box-sizing: border-box;
-  margin-top: 8px;
   margin-bottom: 8px;
 `
-
-
 const Title = styled.div`
-  margin-top: 8px;
-  font-size: 12px;
+
 `
 
 export const ToolItem = memo((

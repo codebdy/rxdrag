@@ -3,7 +3,7 @@ import TreeNodeLabel from "../../common/TreeNodeLabel"
 import { Button, Space } from "antd"
 import { DeleteOutlined } from "@ant-design/icons"
 import { ScriptPopover } from "../ScriptPopover"
-import { IScript } from "../../../../interfaces/flow"
+import { IScript, LogicType } from "../../../../interfaces/flow"
 import { useRemoveScript } from "../../../../hooks/useRemoveScript"
 
 export const FxLabel = memo((props: {
@@ -23,6 +23,8 @@ export const FxLabel = memo((props: {
       action={
         <Space>
           <ScriptPopover
+            title="编辑脚本"
+            type={LogicType.normal}
             scope={fx.scope}
             ownerId={fx.ownerId}
             open={open}

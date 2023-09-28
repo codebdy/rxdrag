@@ -144,7 +144,8 @@ export const ScriptDesigner = memo(() => {
       >
         <Toolbar>
           <ToolbarTitle>
-            {`${script?.name} [${selectedFx ? "子脚本" : "脚本"}]`}
+            {selectedFx ? <FunctionOutlined /> : <CodeOutlined />}
+            <span className="text">{script?.name}</span>
           </ToolbarTitle>
           <Button type="primary">保存</Button>
         </Toolbar>

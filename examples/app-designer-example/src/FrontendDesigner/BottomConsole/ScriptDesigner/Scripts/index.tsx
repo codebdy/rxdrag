@@ -4,7 +4,7 @@ import { memo, useCallback, useMemo } from "react"
 import { TreeContainer } from "../../common/TreeContainer";
 import { useModule } from "../../../hooks/useModule";
 import { RootLabel } from "./RootLabel";
-import { NodeIndexOutlined } from "@ant-design/icons";
+import { CodeOutlined } from "@ant-design/icons";
 import { ScriptLabel } from "./ScriptLabel";
 import { ID } from "@rxdrag/shared";
 import { useQueryScripts } from "../../../../hooks/useQueryScripts";
@@ -30,7 +30,7 @@ export const Scripts = memo((
         return {
           key: script.id,
           title: <ScriptLabel script={script} />,
-          icon: <NodeIndexOutlined />,
+          icon: <CodeOutlined />,
           isLeaf: true,
         }
       })

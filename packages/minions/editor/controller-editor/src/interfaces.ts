@@ -1,5 +1,3 @@
-import { IController } from "@rxdrag/minions-runtime-react"
-
 export interface IEventMeta {
   name: string,
   label: string,
@@ -20,12 +18,13 @@ export interface IPropsMeta {
 export interface IReactionMeta {
   name: string,
   label?: string,
-  action: (options: { input: unknown, context: unknown, controller: IController }) => void
+  //这个不能放在设计器部分，需要放在运行时
+  //action: (options: { input: unknown, context: unknown, controller: IController }) => void
 }
 
 //控制器物料定义
 export interface IControllerMaterial {
   props?: IPropsMeta[],
-  events?: IEventMeta[],
+  events?: (IEventMeta | "onClick" | "onInit" | "onDestory")[],
   reactions?: IReactionMeta[]
 }

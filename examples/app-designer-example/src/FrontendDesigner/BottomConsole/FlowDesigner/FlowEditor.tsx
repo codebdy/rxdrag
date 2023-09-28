@@ -1,5 +1,5 @@
 import { LogicMetaEditorAntd5Inner } from "@rxdrag/logicflow-editor-antd5"
-import { memo } from "react"
+import { ReactNode, memo } from "react"
 import { activityMaterialCategories } from "../minion-materials"
 import { Button, Spin } from "antd"
 import styled from "styled-components"
@@ -19,10 +19,10 @@ const test = {
 export const FlowEditor = memo((
   props: {
     flowId: ID,
-    titleSuffix: string
+    icon: ReactNode
   }
 ) => {
-  const { flowId, titleSuffix } = props
+  const { flowId, icon } = props
 
   const { flow, loading } = useQueryFlow(flowId)
 
@@ -33,7 +33,12 @@ export const FlowEditor = memo((
         value={test}
         toolbox={false}
         toolbar={<Toolbar
-          title={`${flow?.name} [${titleSuffix}]`}
+          title={
+            <>
+              {icon}
+              <span className="text">{flow?.name}</span>
+            </>
+          }
         >
           <SaveButton type="primary">保存</SaveButton>
         </Toolbar>}

@@ -182,7 +182,7 @@ export const FlowDesigner = memo(() => {
             (selectedFlow || selectedFx) &&
             <FlowEditor
               flowId={selectedFlow || selectedFx || ""}
-              titleSuffix={selectedFx ? "子流" : "行为流"}
+              icon={selectedFx ? <FunctionOutlined /> : <NodeIndexOutlined />}
             />
           }
         </Content>
