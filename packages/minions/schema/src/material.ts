@@ -31,6 +31,8 @@ export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown
   //默认端口，元件节点的端口设置的默认值，大部分节点端口跟默认值是一样的，
   //部分动态配置端口，会根据配置有所变化
   defaultPorts?: IPorts;
+  //默认配置
+  defaultConfig?: Config;
   //画布中元件节点显示的子标题 
   subTitle?: (config?: Config, context?: MaterialContext) => string | undefined;
   //对应解析引擎里的Activity名称，根据这个名字实例化相应的节点业务逻辑对象

@@ -60,5 +60,25 @@ export const TableMaterial: IMaterial = {
     droppable: true,
     noPlaceholder: true,
   },
-  logicalProps:["dataSource"]
+  controller: {
+    props: [
+      {
+        name: "dataSource",
+        label: "$dataSource"
+      },
+    ],
+    events: [
+      "onInit",
+      {
+        name: "onPageChange",
+        label: "$onPageChange",
+      }
+    ],
+    reactions: [
+      {
+        name: "setDataSource",
+        label: "$setDataSource",
+      }
+    ]
+  }
 }

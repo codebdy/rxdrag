@@ -52,3 +52,16 @@ export const resourceLocales = {
     "Table": "Table",
   }
 }
+
+export const controllerLocales = {
+  "zh-CN": {
+    "dataSource": "数据源",
+    "onPageChange": "分页变化",
+    "setDataSource": "设置数据源",
+  },
+  'en-US': {
+    "dataSource": "Datasource",
+    "onPageChange": "onPageChange",
+    "setDataSource": "setDataSource",
+  }
+}
