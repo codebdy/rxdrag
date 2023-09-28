@@ -22,6 +22,7 @@ const Content = styled.div`
 
 const EditorContainer = styled.div`
   flex:1;
+  width: 800px;
 `
 
 const Toolbar = styled.div`
