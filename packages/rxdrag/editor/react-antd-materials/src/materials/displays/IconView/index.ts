@@ -1,11 +1,11 @@
 import { IconView } from "@rxdrag/react-antd-icons";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { iconViewIcon } from "./icon";
 import { iconViewLocales, iconViewResourceLocales } from "./locales";
 import { iconViewSchema } from "./schema";
 
 const name = "IconView"
-export const IconViewMaterial: IComponentMaterial = {
+export const IconViewMaterial: IMaterial = {
   componentName: name,
   component: IconView,
   designer: IconView,

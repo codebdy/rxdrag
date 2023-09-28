@@ -1,11 +1,11 @@
 import { Menu } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { logoIcon } from "./icon";
 import { menuLocales, logoResourceLocales } from "./locales";
 import { menuSchema } from "./schema";
 
 const name = "Menu"
-export const MenuMaterial: IComponentMaterial = {
+export const MenuMaterial: IMaterial = {
   componentName: name,
   component: Menu,
   designer: Menu,

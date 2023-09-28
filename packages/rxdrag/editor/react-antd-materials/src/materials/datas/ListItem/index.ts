@@ -1,12 +1,12 @@
 import { ListItem } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { ActionSlotMaterial } from "../../slots/ActionSlot";
 import { ExtraSlotMaterial } from "../../slots/ExtraSlot";
 import { locales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "ListItem"
-export const ListItemMaterial: IComponentMaterial = {
+export const ListItemMaterial: IMaterial = {
   componentName: name,
   component: ListItem,
   designer: ListItem,

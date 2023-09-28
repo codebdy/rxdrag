@@ -6,7 +6,7 @@ import { IMonitor } from "./monitor"
 import { IResourceManager } from "./resource"
 import { ID } from "./types"
 import { IAction, IActions } from "./action"
-import { IComponentConfig, IComponentManager } from "./material"
+import { IComponentMaterial, IComponentManager } from "./material"
 import { IPlugin, IPluginFactory } from "./plugin"
 import { IDecoratorManager } from "./decorator"
 import { ISetterManager } from "./setter"
@@ -40,5 +40,5 @@ export interface IDesignerEngine<ComponentType = any, IconType = any> {
 	dispatch(action: IAction<unknown>): void
 	destroy(): void
 
-	registerMaterials(materials: IComponentConfig<ComponentType, IconType>[]): void,
+	registerMaterials(materials: IComponentMaterial<ComponentType, IconType>[]): void,
 }

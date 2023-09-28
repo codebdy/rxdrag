@@ -1,5 +1,5 @@
 import { memo } from "react"
-import { IComponentMaterial, IMinionOptions } from "@rxdrag/react-core"
+import { IMaterial, IMinionOptions } from "@rxdrag/react-core"
 import { Antd5EditorInnerProps, RxEditorAntdInner } from "./RxEditorAntdInner"
 import { ReactComponent } from "@rxdrag/react-shared"
 import { ISetterComponents } from "@rxdrag/core"
@@ -11,7 +11,7 @@ export type Antd5EditorProps = Antd5EditorInnerProps & {
   themeMode?: "dark" | "light",
   //逻辑编排配置项
   minionOptions?: IMinionOptions,
-  materials?: IComponentMaterial[],
+  materials?: IMaterial[],
   setters?: ISetterComponents<ReactComponent>,
   canvasUrl: string,
   previewUrl: string,

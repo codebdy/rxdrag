@@ -1,11 +1,11 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { Switch } from "antd";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "Switch"
-export const SwitchMaterial: IComponentMaterial = {
+export const SwitchMaterial: IMaterial = {
   componentName: name,
   component: Switch,
   designer: Switch,

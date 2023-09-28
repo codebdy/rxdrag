@@ -1,10 +1,10 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { Row as AntdRow } from "antd";
 import { rowIcon } from "./icon";
 import { rowLocales, rowResourceLocales } from "./locales";
 import { rowSchema } from "./schema";
 
-export const RowMaterial: IComponentMaterial = {
+export const RowMaterial: IMaterial = {
   componentName: "Row",
   component: AntdRow,
   designer: AntdRow,

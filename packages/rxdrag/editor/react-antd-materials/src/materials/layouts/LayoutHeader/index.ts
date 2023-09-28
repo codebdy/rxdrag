@@ -1,9 +1,9 @@
 import { Header } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { headerLocales } from "./locales";
 import { headerSchema } from "./schema";
 
-export const LayoutHeaderMaterial: IComponentMaterial = {
+export const LayoutHeaderMaterial: IMaterial = {
   componentName: "Layout.Header",
   component: Header,
   designer: Header,

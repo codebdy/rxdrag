@@ -1,11 +1,11 @@
 import { Slider } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "Slider"
-export const SliderMaterial: IComponentMaterial = {
+export const SliderMaterial: IMaterial = {
   componentName: name,
   component: Slider,
   designer: Slider,

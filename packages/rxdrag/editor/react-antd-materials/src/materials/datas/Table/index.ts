@@ -1,5 +1,5 @@
 import { Table } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { FooterMaterial } from "../../common/Footer";
 import { HeaderMaterial } from "../../common/Header";
 import { TableSummaryMaterial } from "../TableSummary";
@@ -9,7 +9,7 @@ import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "Table"
-export const TableMaterial: IComponentMaterial = {
+export const TableMaterial: IMaterial = {
   componentName: name,
   component: Table,
   designer: TableDesigner,

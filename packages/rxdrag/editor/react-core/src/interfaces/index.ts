@@ -1,10 +1,9 @@
-import { IComponentConfig } from "@rxdrag/core";
+import { IComponentMaterial } from "@rxdrag/core";
+import { IControllerMaterial } from "@rxdrag/minions-controller-editor";
 import { ReactComponent } from "@rxdrag/react-shared";
 import { ReactNode } from "react";
 
-//export type ReactComponent = React.FC<any> | React.ComponentClass<any>
-
-export type IComponentMaterial = IComponentConfig<ReactComponent, ReactNode>
+export type IMaterial = IComponentMaterial<ReactComponent, ReactNode, IControllerMaterial>
 
 export interface ICanvasConfig {
   //设备端名称

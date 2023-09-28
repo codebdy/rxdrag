@@ -1,11 +1,11 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";
 import { LSText } from "../../../components/basic";
 import { icon } from "./icon";
 
 const name = "LSText"
-export const LSTextMaterial: IComponentMaterial = {
+export const LSTextMaterial: IMaterial = {
   componentName: "LSText",
   component: LSText,
   designer: LSText,

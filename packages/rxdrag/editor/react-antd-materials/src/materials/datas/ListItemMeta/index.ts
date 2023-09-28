@@ -1,4 +1,4 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { List } from "antd";
 import { AvatarMaterial } from "../../displays/Avatar";
 import { TextMaterial } from "../../displays/typography/Text";
@@ -7,7 +7,7 @@ import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "ListItemMeta"
-export const ListItemMetaMaterial: IComponentMaterial = {
+export const ListItemMetaMaterial: IMaterial = {
   componentName: name,
   component: List.Item.Meta,
   designer: List.Item.Meta,

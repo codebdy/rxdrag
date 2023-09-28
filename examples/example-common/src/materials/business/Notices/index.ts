@@ -1,11 +1,11 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { noticesIcon } from "./icon";
 import { noticesLocales, noticesResourceLocales } from "./locales";
 import { noticesSchema } from "./schema";
 import { Notices } from "../../../components";
 
 const name = "Notices"
-export const NoticesMaterial: IComponentMaterial = {
+export const NoticesMaterial: IMaterial = {
   componentName: name,
   component: Notices,
   designer: Notices,

@@ -2,11 +2,11 @@ import { formIcon } from "./icon";
 import { formLocales, formResourceLocales } from "./locales";
 import { formSchema } from "./schema";
 import { Form as AntdForm } from "antd";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { Form } from "@rxdrag/react-antd-components";
 
 const name = "Form"
-export const FormMaterial: IComponentMaterial = {
+export const FormMaterial: IMaterial = {
   componentName: name,
   component: Form,
   designer: AntdForm,

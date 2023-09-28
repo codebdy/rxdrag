@@ -1,11 +1,11 @@
 import { Checkbox } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { checkboxIcon } from "./icon";
 import { checkboxLocales, checkBoxResourceLocales } from "./locales";
 import { selectSchema } from "./schema";
 
 const name = "Checkbox"
-export const CheckboxMaterial: IComponentMaterial = {
+export const CheckboxMaterial: IMaterial = {
   componentName: name,
   component: Checkbox,
   designer: Checkbox,

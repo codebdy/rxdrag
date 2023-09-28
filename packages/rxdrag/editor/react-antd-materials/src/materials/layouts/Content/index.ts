@@ -1,9 +1,9 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { Layout } from "antd";
 import { contentLocales } from "./locales";
 import { contentSchema } from "./schema";
 
-export const ContentMaterial: IComponentMaterial = {
+export const ContentMaterial: IMaterial = {
   componentName: "Layout.Content",
   component: Layout.Content,
   designer: Layout.Content,

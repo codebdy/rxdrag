@@ -9,7 +9,7 @@ import {
 import { memo, useEffect, useRef, useState } from "react"
 import { CanvasConfigContext, DesignerEngineContext, IMinionOptions, MinionOptionContext } from "./contexts";
 import { LocalesContext } from "@rxdrag/react-locales";
-import { ICanvasConfig, IComponentMaterial } from "./interfaces";
+import { ICanvasConfig, IMaterial } from "./interfaces";
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared";
 import { ISetterComponents } from "@rxdrag/core";
 import { Fieldy } from "@rxdrag/react-fieldy";
@@ -27,7 +27,7 @@ export interface DesignerProps {
   themeMode?: ThemeMode,
   children?: React.ReactNode,
   //初始物料，其它地方还可以继续注册
-  materials?: IComponentMaterial[]
+  materials?: IMaterial[]
   setters?: ISetterComponents<ReactComponent>
   locales?: ILocales,
   layoutType?: LayoutType,

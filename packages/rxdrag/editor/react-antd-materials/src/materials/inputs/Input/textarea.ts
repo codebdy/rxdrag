@@ -1,10 +1,10 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { Input } from "antd";
 import { textareaIcon } from "./icon";
 import { inputLocales, textareaResourceLocales } from "./locales";
 import { textAreaSchema } from "./schema";
 
-export const TextAreaMaterial: IComponentMaterial = {
+export const TextAreaMaterial: IMaterial = {
   componentName: "TextArea",
   component: Input.TextArea,
   designer: Input.TextArea,

@@ -1,9 +1,9 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { Layout } from "antd";
 import { footerLocales } from "./locales";
 import { footerSchema } from "./schema";
 
-export const LayoutFooterMaterial: IComponentMaterial = {
+export const LayoutFooterMaterial: IMaterial = {
   componentName: "Layout.Footer",
   component: Layout.Footer,
   designer: Layout.Footer,

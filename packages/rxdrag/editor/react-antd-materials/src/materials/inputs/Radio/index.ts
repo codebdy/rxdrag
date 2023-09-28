@@ -1,11 +1,11 @@
 import { Radio } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { radioIcon } from "./icon";
 import { radioLocales, radioResourceLocales } from "./locales";
 import { radioSchema } from "./schema";
 
 const name = "Radio"
-export const RadioMaterial: IComponentMaterial = {
+export const RadioMaterial: IMaterial = {
   componentName: name,
   component: Radio,
   designer: Radio,

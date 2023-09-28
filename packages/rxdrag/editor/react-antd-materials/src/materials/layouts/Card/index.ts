@@ -1,11 +1,11 @@
 import { Card } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { colIcon } from "./icon";
 import { cardLocales, cardResourceLocales } from "./locales";
 import { cardSchema } from "./schema";
 
 const name = "Card"
-export const CardMaterial: IComponentMaterial = {
+export const CardMaterial: IMaterial = {
   componentName: name,
   component: Card,
   designer: Card,

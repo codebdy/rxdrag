@@ -1,11 +1,11 @@
 import { Statistic } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { statisticIcon } from "./icon";
 import { statisticLocales, statisticResourceLocales } from "./locales";
 import { staticSchema } from "./schema";
 
 const name = "Statistic"
-export const StatisticMaterial: IComponentMaterial = {
+export const StatisticMaterial: IMaterial = {
   componentName: name,
   component: Statistic,
   designer: Statistic,

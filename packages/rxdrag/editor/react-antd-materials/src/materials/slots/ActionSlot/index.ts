@@ -1,9 +1,9 @@
-import { IComponentMaterial, DefaultSlot } from "@rxdrag/react-core";
+import { IMaterial, DefaultSlot } from "@rxdrag/react-core";
 import { locales } from "./locales";
 import { slotSchema } from "./schema";
 
 const name = "ActionSlot"
-export const ActionSlotMaterial: IComponentMaterial = {
+export const ActionSlotMaterial: IMaterial = {
   componentName: name,
   component: DefaultSlot,
   designer: DefaultSlot,

@@ -1,5 +1,5 @@
 import { State } from "../reducers";
-import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, IComponentConfig, IBehaviorManager } from "../interfaces";
+import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, IComponentMaterial, IBehaviorManager } from "../interfaces";
 import { Store } from "redux";
 import { ResourceManager } from "./ResourceManager";
 import { DocumentImpl } from "../classes/DocumentImpl";
@@ -157,7 +157,7 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 		return this.plugins[name] || null
 	}
 
-	registerMaterials(materials: IComponentConfig<ComponentType, IconType>[]): void {
+	registerMaterials(materials: IComponentMaterial<ComponentType, IconType>[]): void {
 		for (const material of materials) {
 			//const designers = { [material.componentName]: material.designer }
 			const setters = material.setters
@@ -178,7 +178,7 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 				if (slotMaterial === true || slotMaterial === undefined || isStr(slotMaterial)) {
 					continue
 				}
-				this.registerMaterials([slotMaterial as IComponentConfig<ComponentType, IconType>])
+				this.registerMaterials([slotMaterial as IComponentMaterial<ComponentType, IconType>])
 			}
 
 			setters && this.setterManager.registerSetters(setters)

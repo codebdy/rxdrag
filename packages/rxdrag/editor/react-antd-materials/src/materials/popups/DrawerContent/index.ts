@@ -1,10 +1,10 @@
 import { DrawerContent } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { locales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "DrawerContent"
-export const DrawerContentMaterial: IComponentMaterial = {
+export const DrawerContentMaterial: IMaterial = {
   componentName: name,
   component: DrawerContent,
   designer: DrawerContent,

@@ -1,12 +1,12 @@
 import { Button } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { IconViewMaterial } from "../displays/IconView";
 import { buttonIcon } from "./icon";
 import { buttonLocales, buttonResourceLocales } from "./locales";
 import { buttonSchema } from "./schema";
 
 const name = "Button"
-export const ButtonMaterial: IComponentMaterial = {
+export const ButtonMaterial: IMaterial = {
   componentName: name,
   component: Button,
   designer: Button,

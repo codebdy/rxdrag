@@ -1,12 +1,12 @@
 import { Space } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { SpaceDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";
 
 const name = "Space"
-export const SpaceMaterial: IComponentMaterial = {
+export const SpaceMaterial: IMaterial = {
   componentName: name,
   component: Space,
   designer: SpaceDesigner,

@@ -1,4 +1,4 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { Popconfirm } from "antd";
 import { ButtonMaterial } from "../../Button";
 import { IconViewMaterial } from "../../displays/IconView";
@@ -9,7 +9,7 @@ import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "Popconfirm"
-export const PopconfirmMaterial: IComponentMaterial = {
+export const PopconfirmMaterial: IMaterial = {
   componentName: name,
   component: Popconfirm,
   designer: PopconfirmDesigner,

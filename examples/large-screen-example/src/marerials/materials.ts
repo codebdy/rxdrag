@@ -1,8 +1,8 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { RootBoardMaterial } from "./RootBoard";
 import { LSTextMaterial } from "./basic";
 
-export const largeScreenMaterials: IComponentMaterial[] = [
+export const largeScreenMaterials: IMaterial[] = [
   RootBoardMaterial,
   LSTextMaterial,
 ]

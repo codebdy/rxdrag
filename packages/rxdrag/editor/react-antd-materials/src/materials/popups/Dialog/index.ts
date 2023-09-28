@@ -1,5 +1,5 @@
 import { Dialog } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { ButtonMaterial } from "../../Button";
 import { IconViewMaterial } from "../../displays/IconView";
 import { DialogContentMaterial } from "../DialogContent";
@@ -11,7 +11,7 @@ import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "Dialog"
-export const DialogMaterial: IComponentMaterial = {
+export const DialogMaterial: IMaterial = {
   componentName: name,
   component: Dialog,
   designer: DialogDesigner,

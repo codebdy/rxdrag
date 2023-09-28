@@ -1,5 +1,5 @@
 import { List } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { FooterMaterial } from "../../common/Footer";
 import { HeaderMaterial } from "../../common/Header";
 import { ListItemMaterial } from "../ListItem";
@@ -8,7 +8,7 @@ import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "List"
-export const ListMaterial: IComponentMaterial = {
+export const ListMaterial: IMaterial = {
   componentName: name,
   component: List,
   designer: List,

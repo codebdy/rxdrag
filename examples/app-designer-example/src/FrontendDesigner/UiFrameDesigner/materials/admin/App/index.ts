@@ -1,10 +1,10 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { locales, setterLocales } from "./locales";
 import { schema } from "./schema";
 import { ThemeTokenSetter } from "./setters";
 import { App } from "../../../../components/admin";
 
-export const AppMaterial: IComponentMaterial = {
+export const AppMaterial: IMaterial = {
   componentName: "App",
   component: App,
   designer: App,

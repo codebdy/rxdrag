@@ -1,11 +1,11 @@
 import { Hero } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "Hero"
-export const HeroMaterial: IComponentMaterial = {
+export const HeroMaterial: IMaterial = {
   componentName: name,
   component: Hero,
   designer: Hero,

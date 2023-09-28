@@ -1,4 +1,4 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { Table } from "antd";
 import { FooterMaterial } from "../../common/Footer";
 import { HeaderMaterial } from "../../common/Header";
@@ -7,7 +7,7 @@ import { locales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "TableSummaryCell"
-export const TableSummaryCellMaterial: IComponentMaterial = {
+export const TableSummaryCellMaterial: IMaterial = {
   componentName: name,
   component: Table.Summary.Cell,
   designer: Table.Summary.Cell,
