@@ -5,6 +5,7 @@ import { Button } from "antd"
 import styled from "styled-components"
 import { Toolbar } from "./Toolbar"
 import { ID } from "@rxdrag/shared"
+import { useModuleFlow } from "../../hooks/useModuleFlow"
 
 
 const SaveButton = styled(Button)`
@@ -22,13 +23,16 @@ export const FlowEditor = memo((
   }
 ) => {
   const { flowId } = props
+
+  const flow = useModuleFlow(flowId)
+
   return (
     <LogicMetaEditorAntd5Inner
       materialCategories={activityMaterialCategories}
       value={test}
       toolbox={false}
       toolbar={<Toolbar
-        title={`${"ddd"} [流程]`}
+        title={`${flow?.name} [流程]`}
       >
         <SaveButton type="primary">保存</SaveButton>
       </Toolbar>}

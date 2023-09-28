@@ -1,10 +1,11 @@
 import { LogicMetaEditorAntd5Inner } from "@rxdrag/logicflow-editor-antd5"
 import { memo } from "react"
 import { activityMaterialCategories } from "../minion-materials"
-import { Button } from "antd"
+import { Button, Spin } from "antd"
 import styled from "styled-components"
 import { Toolbar } from "./Toolbar"
 import { ID } from "@rxdrag/shared"
+import { useQueryFxFlow } from "../../../hooks/useQueryFxFlow"
 
 
 const SaveButton = styled(Button)`
@@ -23,16 +24,20 @@ export const FxEditor = memo((
 ) => {
   const { fxId } = props;
 
+  const { fxFlow, loading } = useQueryFxFlow(fxId)
+
   return (
-    <LogicMetaEditorAntd5Inner
-      materialCategories={activityMaterialCategories}
-      value={test}
-      toolbox={false}
-      toolbar={<Toolbar
-        title={`${"xxx"} [子流程]`}
-      >
-        <SaveButton type="primary">保存</SaveButton>
-      </Toolbar>}
-    />
+    fxFlow
+      ? <LogicMetaEditorAntd5Inner
+        materialCategories={activityMaterialCategories}
+        value={test}
+        toolbox={false}
+        toolbar={<Toolbar
+          title={`${fxFlow?.name} [子流程]`}
+        >
+          <SaveButton type="primary">保存</SaveButton>
+        </Toolbar>}
+      />
+      : <Spin spinning={loading} />
   )
 })
