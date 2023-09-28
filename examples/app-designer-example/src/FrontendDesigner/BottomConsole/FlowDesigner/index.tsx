@@ -130,66 +130,62 @@ export const FlowDesigner = memo(() => {
             />
           </Tooltip>
         </LeftNav>
-        {
-          navType && <LeftColumn
-            width={260}
-            maxWidth={500}
-            minWidth={160}
-          >
-            <PanelTitle>
-              {
-                NavType.componentTree === navType &&
-                <span>
-                  组件树
-                </span>
-              }
-              {
-                NavType.toolbox === navType &&
-                <span>
-                  元件箱
-                </span>
-              }
-              {
-                NavType.flows === navType &&
-                <span>
-                  逻辑编排
-                </span>
-              }
-              {
-                NavType.fxes === navType &&
-                <span>
-                  子编排
-                </span>
-              }
-              <Button
-                type="text"
-                size="small"
-                icon={<CloseOutlined />}
-                onClick={handleCloseLeft}
-              />
-            </PanelTitle>
+        <LeftColumn
+          width={260}
+          maxWidth={500}
+          minWidth={160}
+          className={!navType ? "hidden" : undefined}
+        >
+          <PanelTitle>
             {
-              navType === NavType.componentTree &&
-              <ComponentTree />
+              NavType.componentTree === navType &&
+              <span>
+                组件树
+              </span>
             }
             {
-              navType === NavType.toolbox &&
-              <Toolbox materialCategories={activityMaterialCategories} />
+              NavType.toolbox === navType &&
+              <span>
+                元件箱
+              </span>
             }
             {
-              navType === NavType.flows &&
-              <Flows
-                onSelect={handleSelectFlow}
-              />
+              NavType.flows === navType &&
+              <span>
+                逻辑编排
+              </span>
             }
             {
-              navType === NavType.fxes &&
-              <FXes
-                onSelect={handleSelectFx}
-              />
+              NavType.fxes === navType &&
+              <span>
+                子编排
+              </span>
             }
-          </LeftColumn>
-        }
+            <Button
+              type="text"
+              size="small"
+              icon={<CloseOutlined />}
+              onClick={handleCloseLeft}
+            />
+          </PanelTitle>
+          {
+            navType === NavType.toolbox &&
+            <Toolbox materialCategories={activityMaterialCategories} />
+          }
+          <ComponentTree
+            display={navType === NavType.componentTree}
+          />
+          <Flows
+            display={navType === NavType.flows}
+            selected={selectedFlow}
+            onSelect={handleSelectFlow}
+          />
+          <FXes
+            display={navType === NavType.fxes}
+            selected={selectedFx}
+            onSelect={handleSelectFx}
+          />
+        </LeftColumn>
         <Content>
           <LogicMetaEditorAntd5Inner
             materialCategories={activityMaterialCategories}

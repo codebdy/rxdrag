@@ -97,47 +97,44 @@ export const ScriptDesigner = memo(() => {
           />
         </Tooltip>
       </LeftNav>
-      {
-        navType && <LeftColumn
-          //className="fixed"
-          width={260}
-          maxWidth={500}
-          minWidth={160}
-        >
-          <PanelTitle>
-            {
-              NavType.flows === navType &&
-              <span>
-                执行脚本
-              </span>
-            }
-            {
-              NavType.fxes === navType &&
-              <span>
-                通用代码
-              </span>
-            }
-            <Button
-              type="text"
-              size="small"
-              icon={<CloseOutlined />}
-              onClick={handleCloseLeft}
-            />
-          </PanelTitle>
+
+      <LeftColumn
+        className={!navType ? "hidden" : undefined}
+        //className="fixed"
+        width={260}
+        maxWidth={500}
+        minWidth={160}
+      >
+        <PanelTitle>
           {
-            navType === NavType.flows &&
-            <Scripts
-              onSelect={handleSelectScript}
-            />
+            NavType.flows === navType &&
+            <span>
+              执行脚本
+            </span>
           }
           {
-            navType === NavType.fxes &&
-            <FXes
-              onSelect={handleSelectFx}
-            />
+            NavType.fxes === navType &&
+            <span>
+              通用代码
+            </span>
           }
-        </LeftColumn>
-      }
+          <Button
+            type="text"
+            size="small"
+            icon={<CloseOutlined />}
+            onClick={handleCloseLeft}
+          />
+        </PanelTitle>
+        <Scripts
+          display={navType === NavType.flows}
+          onSelect={handleSelectScript}
+        />
+        <FXes
+          display={navType === NavType.fxes}
+          onSelect={handleSelectFx}
+        />
+      </LeftColumn>
+
       <Content>
         <Toolbar>
           <ToolbarTitle>

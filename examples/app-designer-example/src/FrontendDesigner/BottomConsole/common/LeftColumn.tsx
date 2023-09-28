@@ -12,4 +12,8 @@ export const LeftColumn = styled(ResizableColumn)`
     left:49px;
     box-shadow: ${floatShadow};
   }
+
+  &.hidden{
+    display: none;
+  }
 `;

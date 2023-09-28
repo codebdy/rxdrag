@@ -15,10 +15,12 @@ const { DirectoryTree } = Tree;
 
 export const Flows = memo((
   props: {
+    selected?: ID,
     onSelect: (id: ID) => void,
+    display?: boolean,
   }
 ) => {
-  const { onSelect } = props;
+  const { selected, onSelect, display } = props;
   const module = useModule()
   const treeData: DataNode[] = useMemo(() => [
     {
@@ -71,8 +73,11 @@ export const Flows = memo((
 
   return (
     <>
-      <TreeContainer>
+      <TreeContainer
+        className={!display ? "hidden" : undefined}
+      >
         <DirectoryTree
+          selectedKeys={[selected || ""]}
           onSelect={handleSelect}
           treeData={treeData}
         />

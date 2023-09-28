@@ -15,10 +15,11 @@ const { DirectoryTree } = Tree;
 
 export const FXes = memo((
   props: {
+    display?: boolean,
     onSelect: (id: ID) => void,
   }
 ) => {
-  const { onSelect } = props;
+  const { display, onSelect } = props;
   const frontend = useAppFrontend()
   const module = useModule()
 
@@ -82,7 +83,9 @@ export const FXes = memo((
   }, [onSelect]);
 
   return (
-    <TreeContainer>
+    <TreeContainer
+      className={!display ? "hidden" : undefined}
+    >
       <DirectoryTree
         onSelect={handleSelect}
         treeData={treeData}

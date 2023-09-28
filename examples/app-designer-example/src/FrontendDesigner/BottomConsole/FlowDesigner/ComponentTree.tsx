@@ -16,7 +16,12 @@ export type ReactionableNode = {
   children?: ReactionableNode[]
 }
 
-export const ComponentTree = memo(() => {
+export const ComponentTree = memo((
+  props: {
+    display?: boolean,
+  }
+) => {
+  const { display } = props;
   const module = useModule()
   const engine = useDesignerEngine()
   const docs = engine?.getAllDocuments()
@@ -98,7 +103,9 @@ export const ComponentTree = memo(() => {
   }, [getOneNode, getSchemaTreeOfView, module?.views])
 
   return (
-    <TreeContainer>
+    <TreeContainer
+      className={!display ? "hidden" : undefined}
+    >
       <DirectoryTree
         selectable={false}
         treeData={treeData}
