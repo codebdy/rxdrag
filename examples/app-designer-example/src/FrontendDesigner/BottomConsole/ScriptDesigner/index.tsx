@@ -19,6 +19,9 @@ const Content = styled.div`
   display: flex;
   flex: 1;
   flex-flow: column;
+  &.hidden{
+    display: none;
+  }
 `
 
 const EditorContainer = styled.div`
@@ -136,8 +139,9 @@ export const ScriptDesigner = memo(() => {
           onSelect={handleSelectFx}
         />
       </LeftColumn>
-
-      <Content>
+      <Content
+        className={!script ? "hidden" : undefined}
+      >
         <Toolbar>
           <ToolbarTitle>
             {`${script?.name} [${selectedFx ? "子脚本" : "脚本"}]`}
