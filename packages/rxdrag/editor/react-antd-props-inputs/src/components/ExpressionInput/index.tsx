@@ -1,5 +1,5 @@
 import { FunctionOutlined } from "@ant-design/icons"
-import Editor from '@monaco-editor/react';
+import Editor from 'react-monaco-editor';
 import { useThemeMode, useSettersTranslate } from "@rxdrag/react-core";
 import { Button, Drawer, Space } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"

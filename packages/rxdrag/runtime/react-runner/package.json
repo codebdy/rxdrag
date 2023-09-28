@@ -32,7 +32,6 @@
     "react-router-dom": "^6.8.1"
   },
   "dependencies": {
-    "@monaco-editor/react": "^4.4.6",
     "@reduxjs/toolkit": "^1.9.3",
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/locales": "workspace:*",
@@ -46,6 +45,7 @@
     "@rxdrag/fieldy-yup-validation": "workspace:*",
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",
+    "react-monaco-editor": "^0.54.0",
     "lodash": "^4.17.21",
     "redux": "^4.2.1",
     "styled-components": "^5.3.9"

@@ -3,7 +3,7 @@ import { memo, useCallback, useState } from "react"
 import { SvgIcon } from "../../common";
 import { jsonIcon } from "../../icons";
 import { useActivedDocument, useSettersTranslate, useThemeMode } from "@rxdrag/react-core";
-import Editor from '@monaco-editor/react';
+import Editor from 'react-monaco-editor';
 
 export const JsonCodeDialog = memo(() => {
   const [open, setOpen] = useState(false);

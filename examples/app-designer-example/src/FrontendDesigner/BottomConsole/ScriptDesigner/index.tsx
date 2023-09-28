@@ -10,7 +10,7 @@ import { PanelTitle } from "../common/PanelTitle"
 import { FXes } from "./FXes"
 import { ToolbarTitle } from "../common/ToolbarTitle"
 import { ID } from "@rxdrag/shared"
-import Editor from '@monaco-editor/react';
+import Editor from 'react-monaco-editor';
 import { useThemeMode } from "@rxdrag/react-core"
 import { NavButton } from "../common/NavButton"
 
@@ -22,7 +22,6 @@ const Content = styled.div`
 
 const EditorContainer = styled.div`
   flex:1;
-  width: 800px;
 `
 
 const Toolbar = styled.div`
@@ -68,7 +67,6 @@ export const ScriptDesigner = memo(() => {
     setSelectedScript(undefined)
     setSelectedFx(id)
   }, [])
-
 
   return (
     <Container>
@@ -149,12 +147,12 @@ export const ScriptDesigner = memo(() => {
         <EditorContainer>
           <Editor
             height="100%"
-            defaultLanguage="javascript"
+            language="javascript"
             defaultValue="// some comment"
             options={{
               theme: themeMode === "dark" ? "vs-dark" : "light",
               //不起作用，有空解决
-              //automaticLayout: true,
+              automaticLayout: true,
             }}
           //onChange={handleEditorChange}
           />

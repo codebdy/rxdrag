@@ -21,7 +21,6 @@ export const ComponentTree = memo(() => {
   const engine = useDesignerEngine()
   const docs = engine?.getAllDocuments()
   const getNode = useGetNode()
-  console.log("===>ComponentTree", module, docs)
 
   const getReactionableSchemas = useCallback((node: ITreeNode<unknown, IControllerMeta>) => {
     const nodes: ReactionableNode[] = []

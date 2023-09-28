@@ -2,7 +2,7 @@ import { useSettersTranslate, useThemeMode } from "@rxdrag/react-core"
 import { Button, Form, Input, Modal, Popconfirm } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
-import Editor from "@monaco-editor/react"
+import Editor from "react-monaco-editor"
 import { TestType } from "@rxdrag/fieldy-yup-validation"
 import { SyncOutlined } from "@ant-design/icons"
 

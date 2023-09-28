@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.1.0",
-    "@monaco-editor/react": "^4.4.6",
     "@rxdrag/react-antd-components": "workspace:*",
     "@rxdrag/react-antd-icons": "workspace:*",
     "@rxdrag/react-core": "workspace:*",
@@ -48,6 +47,7 @@
     "lodash": "^4.17.21",
     "classnames": "^2.3.2",
     "react-color": "^2.19.3",
+    "react-monaco-editor": "^0.54.0",
     "styled-components": "^5.3.9"
   }
 }

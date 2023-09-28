@@ -1,5 +1,5 @@
 import { IScriptControllerMeta } from "@rxdrag/minions-runtime-react"
-import Editor from "@monaco-editor/react";
+import Editor from "react-monaco-editor";
 import { memo, useCallback, useEffect, useState } from "react"
 import { useThemeMode, useSettersTranslate } from "@rxdrag/react-core";
 import { Button, Drawer, Form, Input, Switch } from "antd";

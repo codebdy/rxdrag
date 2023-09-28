@@ -36,7 +36,6 @@
   "dependencies": {
     "@ant-design/icons": "^5.1.0",
     "@reduxjs/toolkit": "^1.9.3",
-    "@monaco-editor/react": "^4.4.6",
     "@rxdrag/core": "workspace:*",
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/locales": "workspace:*",
@@ -64,6 +63,7 @@
     "insert-css": "^2.0.0",
     "react-color": "^2.19.3",
     "react-icons": "^4.7.1",
+    "react-monaco-editor": "^0.54.0",
     "redux": "^4.2.1",
     "styled-components": "^5.3.9"
   }
