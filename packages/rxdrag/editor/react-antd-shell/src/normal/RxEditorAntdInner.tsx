@@ -22,6 +22,7 @@ import { commonLocales } from "../locales"
 import { settingLocales, SettingsForm } from "../common"
 import styled from "styled-components"
 import classNames from "classnames"
+import { createId } from "@rxdrag/shared"
 
 const Container = styled.div`
   width: 100%;
@@ -54,7 +55,10 @@ export const RxEditorAntdInner = memo((props: Antd5EditorInnerProps) => {
         docRef.current.destroy()
         docRef.current = undefined
       }
-      const document = engine.createDocument({ schema })
+      const document = engine.createDocument({
+        schema,
+        id: createId(),
+      })
       engine.getActions().changeActivedDocument(document.id)
       setDoc(document)
     }

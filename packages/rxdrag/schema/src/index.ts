@@ -30,7 +30,7 @@ export interface INodeSchema<Field = unknown, NodeController = unknown>
 
 export enum ViewType {
   Main = "main",
-  Drawer = "drawwer",
+  Drawer = "drawer",
   Dialog = "dialog",
   RoutePage = "route-page",
 }

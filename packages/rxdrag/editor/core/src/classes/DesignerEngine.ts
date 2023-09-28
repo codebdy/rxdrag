@@ -1,5 +1,5 @@
 import { State } from "../reducers";
-import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, INodeBehavior, AbleType, IComponentConfig, IResizable, IMoveable, IBehaviorManager } from "../interfaces";
+import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, IComponentConfig, IBehaviorManager } from "../interfaces";
 import { Store } from "redux";
 import { ResourceManager } from "./ResourceManager";
 import { DocumentImpl } from "../classes/DocumentImpl";
@@ -11,7 +11,6 @@ import { CHANGE_ACTIVED_DOCUMENT, SET_LANGUAGE } from "../actions/registry";
 import { DefaultLang } from "../reducers/lang";
 import { ComponentManager } from "./ComponentManager";
 import { IPlugin, IPluginFactory } from "../interfaces/plugin";
-import { isFn } from "@rxdrag/shared";
 import { IDecoratorManager } from "../interfaces/decorator";
 import { DecoratorManager } from "./DecoratorManager";
 import { IViewSchema } from "@rxdrag/schema";

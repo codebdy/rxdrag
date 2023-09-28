@@ -10,7 +10,7 @@ import { IComponentConfig, IComponentManager } from "./material"
 import { IPlugin, IPluginFactory } from "./plugin"
 import { IDecoratorManager } from "./decorator"
 import { ISetterManager } from "./setter"
-import { IBehaviorManager, INodeBehavior } from "./behavior"
+import { IBehaviorManager } from "./behavior"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface IDesignerEngine<ComponentType = any, IconType = any> {

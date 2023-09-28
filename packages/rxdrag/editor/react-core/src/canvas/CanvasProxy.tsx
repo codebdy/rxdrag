@@ -31,8 +31,15 @@ export const CanvasProxy = memo((
       setEngine(window.engine);
     }
     if (event.data?.name === EVENT_DOC_CHANGE) {
+      console.log('RXDrag: document change');
       setDoc(window.doc)
     }
+  }, [])
+
+  //预防消息还没订阅，父窗口就已将把消息发了，先把已经传来的数据拿过来
+  useEffect(() => {
+    setEngine(window.engine);
+    setDoc(window.doc)
   }, [])
 
   useEffect(() => {
