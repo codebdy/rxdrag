@@ -2,10 +2,10 @@ import { NodeType } from "@rxdrag/minions-schema";
 import { propSchema } from "./schema"
 import { createId } from "@rxdrag/shared";
 import { IPropConfig, SetProp } from "@rxdrag/minions-runtime-react";
-import { setPropIcon } from "../../icons";
 
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { IControllerEditorContextParam } from "@rxdrag/minions-controller-editor";
+import { setPropIcon } from "../../../icons";
 
 export const setPropMaterial: IRxDragActivityMaterial<IPropConfig, IControllerEditorContextParam> = {
   icon: setPropIcon,

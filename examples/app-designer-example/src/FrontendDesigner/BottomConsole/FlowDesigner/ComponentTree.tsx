@@ -8,8 +8,17 @@ import { ITreeNode } from "@rxdrag/core"
 import { IControllerMeta } from "@rxdrag/minions-runtime-react";
 import { ThunderboltOutlined } from "@ant-design/icons";
 import { puzzleIcon, setPropIcon, listenPropIcon } from "../icons";
+import { setPropMaterial } from "../minion-materials/controller/setProp";
+import { ActivityResource } from "@rxdrag/minions-logicflow-editor"
+import { IActivityMaterial } from "@rxdrag/minions-schema";
+import styled from "styled-components";
+import { listenPropMaterial } from "../minion-materials/controller/listenProp";
 
 const { DirectoryTree } = Tree;
+
+const DraggableText = styled.div`
+  cursor: move;
+`
 
 export type ReactionableNode = {
   node: ITreeNode<unknown, IControllerMeta>,
@@ -60,6 +69,13 @@ export const ComponentTree = memo((
 
   const getOneNode = useCallback((rNode: ReactionableNode): DataNode => {
     const children = rNode.children?.map(child => getOneNode(child))
+    // const componentMaterial = engine?.getComponentManager().getComponentConfig(rNode.node.meta.componentName) as IMaterial | undefined
+    // const controllerMaterial = rNode.node.meta["x-controller"]
+    // const setPropsMaterial = createSetPropMaterial(controllerMaterial, componentMaterial?.controller as IControllerMaterial | undefined, rNode.node, componentMaterial)
+    //registerMaterial(setPropsMaterial as IActivityMaterial)
+    // const listenPropsMaterial = createListenPropMaterial(controllerMaterial, componentMaterial?.controller as IControllerMaterial | undefined)
+    //registerMaterial(listenPropsMaterial as IActivityMaterial)
+
     return {
       key: rNode.node.id,
       icon: puzzleIcon,
@@ -68,13 +84,37 @@ export const ComponentTree = memo((
         ...children || [],
         {
           key: rNode.node.id + "setprops",
-          title: "设置属性",
+          title: <ActivityResource
+            material={setPropMaterial as IActivityMaterial<React.ReactNode>}
+          // createNode = {()=>{
+          //   return{
+          //     id: createId(),
+          //     //type
+          //   }
+          // }}
+          >
+            {
+              (onStartDrag) => {
+                return <DraggableText onMouseDown={onStartDrag}>
+                  设置属性
+                </DraggableText>
+              }
+            }
+          </ActivityResource>,
           isLeaf: true,
           icon: setPropIcon,
         },
         {
           key: rNode.node.id + "listenprops",
-          title: "监听属性",
+          title: <ActivityResource material={listenPropMaterial as IActivityMaterial<React.ReactNode>}>
+            {
+              (onStartDrag) => {
+                return <DraggableText onMouseDown={onStartDrag}>
+                  监听属性
+                </DraggableText>
+              }
+            }
+          </ActivityResource>,
           isLeaf: true,
           icon: listenPropIcon
         },

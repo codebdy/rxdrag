@@ -1,4 +1,4 @@
-import { ReactNode, memo, useMemo, useState } from "react"
+import { ReactNode, memo, useEffect, useMemo, useState } from "react"
 import { CanBeReferencedLogicFlowMetasContext, GraphContext, LogicFlowContext, LogicFlowEditorStoreContext, MaterialsContext, ThemeTokenContext } from "../contexts";
 import { EditorStore } from "../classes";
 import { ThemeProvider } from "styled-components";
@@ -21,6 +21,8 @@ export const LogicFlowEditorScope = memo((
 ) => {
   const { themMode, token, materials, logicFlowContext, canBeReferencedLogflowMetas, children } = props;
   const graphState = useState<Graph>()
+  const materialsState = useState<IActivityMaterial[]>([])
+  const [, setMaterials] = materialsState
   const theme: { token: IThemeToken } = useMemo(() => {
     return {
       mode: themMode,
@@ -28,16 +30,24 @@ export const LogicFlowEditorScope = memo((
     }
   }, [themMode, token])
 
+
   const store: EditorStore = useMemo(() => {
     return new EditorStore()
   }, [])
+
+  useEffect(() => {
+    setMaterials(mats => {
+      materials
+      return [...mats.filter(mat => !materials.find(m => m.activityName === mat.activityName)), ...materials]
+    })
+  }, [materials, setMaterials])
 
   return (
     <LogicFlowEditorStoreContext.Provider value={store}>
       <ThemeProvider theme={theme}>
         <ThemeTokenContext.Provider value={token}>
           <LogicFlowContext.Provider value={logicFlowContext}>
-            <MaterialsContext.Provider value={materials}>
+            <MaterialsContext.Provider value={materialsState}>
               <CanBeReferencedLogicFlowMetasContext.Provider value={canBeReferencedLogflowMetas || []}>
                 <GraphContext.Provider value={graphState}>
                   {children}
