@@ -11,18 +11,18 @@ import { PanelTitle } from "../common/PanelTitle"
 import { LogicFlowEditorAntd5Scope, Toolbox } from "@rxdrag/logicflow-editor-antd5"
 import { activityMaterialCategories, activityMaterialLocales } from "../minion-materials"
 import { IActivityMaterial } from "@rxdrag/minions-schema"
-import { useThemeMode } from "@rxdrag/react-core"
+import { useDesignerEngine, useThemeMode } from "@rxdrag/react-core"
 import { ComponentTree } from "./ComponentTree"
 import { ID } from "@rxdrag/shared"
 import { NavButton } from "../common/NavButton"
 import { FlowEditor } from "./FlowEditor"
 import { controllerActivities } from "../minion-materials/controller"
+import { LogicflowContextParam } from "../types"
 
 const Content = styled.div`
   flex: 1;
   position: relative;
 `
-
 
 enum NavType {
   componentTree = "componentTree",
@@ -36,6 +36,7 @@ export const FlowDesigner = memo(() => {
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
   const [selectedFlow, setSelectedFolw] = useState<ID>()
   const [selectedFx, setSelectedFx] = useState<ID>()
+  const engine = useDesignerEngine()
 
   const { token } = theme.useToken()
   const themMode = useThemeMode()
@@ -80,12 +81,17 @@ export const FlowDesigner = memo(() => {
     setSelectedFx(id)
   }, [])
 
+  const logicFlowContextParam: LogicflowContextParam = useMemo(() => ({
+    engine
+  }), [engine])
+
   return (
     <LogicFlowEditorAntd5Scope
       themMode={themMode}
       token={token}
       materials={materials}
       locales={activityMaterialLocales}
+      logicFlowContext={logicFlowContextParam}
     >
       <Container>
         <LeftNav>

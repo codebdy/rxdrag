@@ -6,11 +6,11 @@ import { IThemeToken } from "../interfaces";
 import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
 import { Graph } from "@antv/x6";
 
-export type LogicFlowEditorScopeProps = {
+export type LogicFlowEditorScopeProps<T = unknown> = {
   themMode?: "dark" | "light",
   token: IThemeToken,
   materials: IActivityMaterial<ReactNode>[],
-  logicFlowContext?: unknown,
+  logicFlowContext?: T,
   canBeReferencedLogflowMetas?: ILogicFlowDefine[],
   children?: React.ReactNode
 }

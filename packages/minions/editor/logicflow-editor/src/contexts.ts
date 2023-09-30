@@ -1,5 +1,5 @@
 import { Graph } from "@antv/x6";
-import { ReactNode, createContext } from "react";
+import { createContext } from "react";
 import { EditorStore } from "./classes/EditorStore";
 import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
 import { IThemeToken } from "./interfaces";

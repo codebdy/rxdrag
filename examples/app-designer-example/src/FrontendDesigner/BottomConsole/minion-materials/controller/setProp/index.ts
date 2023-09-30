@@ -1,13 +1,14 @@
 import { NodeType } from "@rxdrag/minions-schema";
 import { propSchema } from "./schema"
 import { createId } from "@rxdrag/shared";
-import { IPropConfig, SetProp } from "@rxdrag/minions-runtime-react";
+import { IControllerMeta, IPropConfig, SetProp } from "@rxdrag/minions-runtime-react";
 
 import { IRxDragActivityMaterial } from "../../interfaces";
-import { IControllerEditorContextParam } from "@rxdrag/minions-controller-editor";
 import { setPropIcon } from "../../../icons";
+import { LogicflowContextParam } from "../../../types";
+import { getControllerComponentInfo } from "../utils";
 
-export const setPropMaterial: IRxDragActivityMaterial<IPropConfig, IControllerEditorContextParam> = {
+export const setPropMaterial: IRxDragActivityMaterial<IPropConfig, LogicflowContextParam> = {
   icon: setPropIcon,
   label: "$setProp",
   activityType: NodeType.Activity,
@@ -28,13 +29,17 @@ export const setPropMaterial: IRxDragActivityMaterial<IPropConfig, IControllerEd
     ],
   },
   schema: propSchema,
-  title: (config?: IPropConfig, context?: IControllerEditorContextParam) => {
-    const ctrl = context?.controllers?.find(controller => controller.id === config?.param?.controllerId)
-    return ctrl?.name || ctrl?.id
+  title: (config?: IPropConfig, context?: LogicflowContextParam) => {
+    const { node, material } = getControllerComponentInfo(config, context)
+    const ctrl = node?.meta["x-controller"] as IControllerMeta | undefined
+    return ctrl?.name || material?.resource?.title || ctrl?.id
   },
-  subTitle: (config?: IPropConfig, context?: IControllerEditorContextParam) => {
-    const controllerName = context?.controllers?.find(controller => controller.id === config?.param?.controllerId)?.name
-    return controllerName ? (controllerName + "/" + (config?.param?.prop || "")) : ""
+  subTitle: (config?: IPropConfig, context?: LogicflowContextParam) => {
+    const { node, material } = getControllerComponentInfo(config, context)
+    const ctrl = node?.meta["x-controller"] as IControllerMeta | undefined
+    return ctrl?.name || material?.resource?.title || ctrl?.id
+    // const controllerName = context?.controllers?.find(controller => controller.id === config?.param?.controllerId)?.name
+    // return controllerName ? (controllerName + "/" + (config?.param?.prop || "")) : ""
   },
   activityName: SetProp.NAME,
 }

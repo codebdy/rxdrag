@@ -47,6 +47,7 @@
     "@rxdrag/minions-runtime-react": "workspace:*",
     "@rxdrag/react-antd-shell": "workspace:*",
     "@rxdrag/react-antd-materials": "workspace:*",
+    "@rxdrag/react-runner": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "styled-components": "^5.3.9",
     "antd": "^5.9.2",
