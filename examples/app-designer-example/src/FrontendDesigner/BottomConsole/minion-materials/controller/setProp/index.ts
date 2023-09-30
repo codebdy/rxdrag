@@ -28,7 +28,7 @@ export const setPropMaterial: IRxDragActivityMaterial<IPropConfig, LogicflowCont
     ],
   },
   schema: propSchema,
-  
+
   icon: (config?: IPropConfig, context?: LogicflowContextParam) => {
     const { material } = getControllerComponentInfo(config, context)
     return material?.resource?.icon || setPropIcon

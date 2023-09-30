@@ -7,13 +7,14 @@ import { useDesignerEngine, useGetNode } from "@rxdrag/react-core";
 import { ITreeNode } from "@rxdrag/core"
 import { IControllerMeta, IPropConfig } from "@rxdrag/minions-runtime-react";
 import { ThunderboltOutlined } from "@ant-design/icons";
-import { puzzleIcon, setPropIcon } from "../icons";
+import { puzzleIcon } from "../icons";
 import { setPropMaterial } from "../minion-materials/controller/setProp";
 import { ActivityResource, IActivityNode } from "@rxdrag/minions-logicflow-editor"
 import { IActivityMaterial } from "@rxdrag/minions-schema";
 import styled from "styled-components";
 import { listenPropMaterial } from "../minion-materials/controller/listenProp";
 import { createId } from "@rxdrag/shared";
+import { methodIcon } from "../minion-materials/icons";
 
 const { DirectoryTree } = Tree;
 
@@ -128,7 +129,7 @@ export const ComponentTree = memo((
             }
           </ActivityResource>,
           isLeaf: true,
-          icon: setPropIcon,
+          icon: methodIcon,
         },
         {
           key: rNode.node.id + "listenprops",
@@ -147,6 +148,11 @@ export const ComponentTree = memo((
                     label: "$propsChange",
                   },
                 ],
+                config: {
+                  param: {
+                    controllerId: ctrlMeta?.id
+                  }
+                }
               }
             }}
           >
