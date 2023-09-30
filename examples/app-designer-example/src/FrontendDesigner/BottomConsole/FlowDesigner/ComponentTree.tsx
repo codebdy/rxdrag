@@ -11,19 +11,15 @@ import { puzzleIcon } from "../icons";
 import { setPropMaterial } from "../minion-materials/controller/setProp";
 import { ActivityResource, IActivityNode } from "@rxdrag/minions-logicflow-editor"
 import { IActivityMaterial } from "@rxdrag/minions-schema";
-import styled from "styled-components";
 import { listenPropMaterial } from "../minion-materials/controller/listenProp";
 import { createId } from "@rxdrag/shared";
 import { methodIcon } from "../minion-materials/icons";
 import { SvgIcon } from "@rxdrag/react-antd-shell";
 import { eventMaterial } from "../minion-materials/controller/event";
 import { reactionMaterial } from "../minion-materials/controller/reaction";
+import { DraggableText } from "./DraggableText";
 
 const { DirectoryTree } = Tree;
-
-const DraggableText = styled.div`
-  cursor: move;
-`
 
 export type ReactionableNode = {
   node: ITreeNode<unknown, IControllerMeta>,

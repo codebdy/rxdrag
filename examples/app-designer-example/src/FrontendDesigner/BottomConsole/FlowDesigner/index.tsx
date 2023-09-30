@@ -20,6 +20,8 @@ import { controllerActivities } from "../minion-materials/controller"
 import { LogicflowContextParam } from "../types"
 import { variableIcon } from "../icons"
 import { Variables } from "./Variables"
+import { variableActivities } from "../minion-materials/variable"
+import { useModule } from "../../hooks/useModule"
 
 const Content = styled.div`
   flex: 1;
@@ -43,9 +45,11 @@ export const FlowDesigner = memo(() => {
 
   const { token } = theme.useToken()
   const themMode = useThemeMode()
+  const module = useModule()
+
   const materials = useMemo(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const materials: IActivityMaterial<ReactNode>[] = [...(controllerActivities as any)]
+    const materials: IActivityMaterial<ReactNode>[] = [...(controllerActivities as any), ...variableActivities]
     return materials.concat(...activityMaterialCategories.map(category => category.materials))
   }, [])
 
@@ -89,8 +93,9 @@ export const FlowDesigner = memo(() => {
   }, [])
 
   const logicFlowContextParam: LogicflowContextParam = useMemo(() => ({
-    engine
-  }), [engine])
+    engine,
+    variables: module?.variables
+  }), [engine, module?.variables])
 
   return (
     <LogicFlowEditorAntd5Scope

@@ -5,7 +5,12 @@ import { useModule } from "../../../hooks/useModule";
 import { TreeContainer } from "../../common/TreeContainer";
 import { variableIcon, setPropIcon, listenPropIcon } from "../../icons";
 import { RootVarsLabel } from "./RootVarsLabel";
-import { VariableLabel } from "../Flows/VariableLabel";
+import { VariableLabel } from "./VariableLabel";
+import { ActivityResource } from "@rxdrag/minions-logicflow-editor";
+import { setVariableMaterial } from "../../minion-materials/variable/setVariable";
+import { IActivityMaterial } from "@rxdrag/minions-schema";
+import { createId } from "@rxdrag/shared";
+import { DraggableText } from "../DraggableText";
 
 
 const { DirectoryTree } = Tree;
@@ -32,18 +37,83 @@ export const Variables = memo((
           icon: variableIcon,
           children: [
             {
-              key: variable.name + "set",
-              title: "设置",
+              key: variable.id + "setVariable",
+              title: <ActivityResource
+                material={setVariableMaterial as IActivityMaterial<React.ReactNode>}
+                createNode={() => {
+                  return {
+                    id: createId(),
+                    label: variable.name || variable.id,
+                    type: setVariableMaterial.activityType,
+                    activityName: setVariableMaterial.activityName,
+                    inPorts: [
+                      {
+                        id: createId(),
+                        name: "input",
+                        label: "$setValue",
+                      },
+                    ],
+                    outPorts: [
+                      {
+                        id: createId(),
+                        name: "output",
+                        label: "",
+                      },
+                    ],
+                    config: {
+                      param: {
+                        variable: variable.id
+                      }
+                    }
+                  }
+                }}
+              >
+                {
+                  (onStartDrag) => {
+                    return <DraggableText onMouseDown={onStartDrag}>
+                      赋值
+                    </DraggableText>
+                  }
+                }
+              </ActivityResource>,
               isLeaf: true,
-              icon: setPropIcon,
-              selectable: false,
+              icon: setPropIcon
             },
             {
-              key: variable.name + "listen",
-              title: "监听",
+              key: variable.id + "listenVariable",
+              title: <ActivityResource
+                material={setVariableMaterial as IActivityMaterial<React.ReactNode>}
+                createNode={() => {
+                  return {
+                    id: createId(),
+                    label: variable.name || variable.id,
+                    type: setVariableMaterial.activityType,
+                    activityName: setVariableMaterial.activityName,
+                    outPorts: [
+                      {
+                        id: createId(),
+                        name: "output",
+                        label: "$valueChange",
+                      },
+                    ],
+                    config: {
+                      param: {
+                        variable: variable.id
+                      }
+                    }
+                  }
+                }}
+              >
+                {
+                  (onStartDrag) => {
+                    return <DraggableText onMouseDown={onStartDrag}>
+                      监听
+                    </DraggableText>
+                  }
+                }
+              </ActivityResource>,
               isLeaf: true,
-              icon: listenPropIcon,
-              selectable: false,
+              icon: listenPropIcon
             },
           ]
         }

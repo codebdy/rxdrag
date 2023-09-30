@@ -1,5 +1,4 @@
 import { setPropMaterial } from "./setProp";
-import { setVariableMaterial } from "./setVariable";
 import { IRxDragActivityMaterial } from "../interfaces";
 import { listenPropMaterial } from "./listenProp";
 import { reactionMaterial } from "./reaction";
@@ -10,6 +9,5 @@ export const controllerActivities: IRxDragActivityMaterial<any, any>[] = [
   setPropMaterial,
   listenPropMaterial,
   eventMaterial,
-  setVariableMaterial,
   reactionMaterial,
 ]
