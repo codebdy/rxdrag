@@ -46,7 +46,7 @@ export const FlowPropertyBox = memo((props: {
         {isFunction(material?.icon) ? material?.icon(node?.config, logicContext) : material?.icon}
         <span style={{ marginLeft: 8 }}>
           {
-            isFunction(material?.title) ? material?.title?.(node?.config, logicContext) : material?.label
+            isFunction(material?.title) ? material?.title?.(node?.config, logicContext) : node?.label
           }
         </span>
       </Title>
