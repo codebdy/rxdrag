@@ -25,6 +25,6 @@ export interface IReactionMeta {
 //控制器物料定义
 export interface IControllerMaterial {
   props?: IPropsMeta[],
-  events?: (IEventMeta | "onClick" | "onInit" | "onDestory")[],
+  events?: (IEventMeta)[],
   reactions?: IReactionMeta[]
 }

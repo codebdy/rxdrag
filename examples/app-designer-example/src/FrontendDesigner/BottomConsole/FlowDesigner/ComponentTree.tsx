@@ -3,7 +3,7 @@ import { DataNode } from "antd/es/tree";
 import { memo, useCallback, useMemo } from "react"
 import { TreeContainer } from "../common/TreeContainer";
 import { useModule } from "../../hooks/useModule";
-import { useDesignerEngine, useGetNode } from "@rxdrag/react-core";
+import { IMaterial, useDesignerEngine, useGetNode } from "@rxdrag/react-core";
 import { ITreeNode } from "@rxdrag/core"
 import { IControllerMeta, IPropConfig } from "@rxdrag/minions-runtime-react";
 import { ThunderboltOutlined } from "@ant-design/icons";
@@ -16,6 +16,7 @@ import { listenPropMaterial } from "../minion-materials/controller/listenProp";
 import { createId } from "@rxdrag/shared";
 import { methodIcon } from "../minion-materials/icons";
 import { SvgIcon } from "@rxdrag/react-antd-shell";
+import { eventMaterial } from "../minion-materials/controller/event";
 
 const { DirectoryTree } = Tree;
 
@@ -80,6 +81,8 @@ export const ComponentTree = memo((
     // const listenPropsMaterial = createListenPropMaterial(controllerMaterial, componentMaterial?.controller as IControllerMaterial | undefined)
     //registerMaterial(listenPropsMaterial as IActivityMaterial)
     const title = ctrlMeta?.name || rNode.node.title;
+    const comMaterial = engine?.getComponentManager().getComponentConfig(rNode.node.meta.componentName || "") as IMaterial | undefined
+
     return {
       key: rNode.node.id,
       icon: <SvgIcon>
@@ -172,18 +175,49 @@ export const ComponentTree = memo((
           isLeaf: true,
           icon: <ThunderboltOutlined />
         },
-        {
-          key: rNode.node.id + "init",
-          title: "初始化",
-          icon: <ThunderboltOutlined />,
-          isLeaf: true,
-        },
-        {
-          key: rNode.node.id + "onClick",
-          title: "点击",
-          icon: <ThunderboltOutlined />,
-          isLeaf: true,
-        },
+        ...comMaterial?.controller?.events?.map(e => {
+          const label = e.label.startsWith("$")
+            ? engine?.getLocalesManager().getComponentSettingsMessage(comMaterial.componentName, e.label.substring(1))
+            : e.label;
+          return {
+            key: rNode.node.id + e.name,
+            title: <ActivityResource
+              material={eventMaterial as IActivityMaterial<React.ReactNode>}
+              createNode={() => {
+                const node: IActivityNode<IPropConfig> = {
+                  id: createId(),
+                  //label: title,
+                  type: eventMaterial.activityType,
+                  activityName: eventMaterial.activityName,
+                  outPorts: [
+                    {
+                      id: createId(),
+                      name: e.name,
+                      label: label || "",
+                    },
+                  ],
+                  config: {
+                    param: {
+                      controllerId: ctrlMeta?.id
+                    }
+                  }
+                }
+
+                return node
+              }}
+            >
+              {
+                (onStartDrag) => {
+                  return <DraggableText onMouseDown={onStartDrag}>
+                    {label}
+                  </DraggableText>
+                }
+              }
+            </ActivityResource>,
+            isLeaf: true,
+            icon: <ThunderboltOutlined />,
+          }
+        }) || []
       ]
     }
   }, [engine])

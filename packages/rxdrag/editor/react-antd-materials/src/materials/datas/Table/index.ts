@@ -68,7 +68,10 @@ export const TableMaterial: IMaterial = {
       },
     ],
     events: [
-      "onInit",
+      {
+        name: "onInit",
+        label: "$onInit",
+      },
       {
         name: "onPageChange",
         label: "$onPageChange",

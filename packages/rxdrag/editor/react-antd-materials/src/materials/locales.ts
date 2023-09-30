@@ -12,3 +12,16 @@ export const sizeLocales = {
     small: "Small",
   }
 }
+
+export const eventsLocales = {
+  "zh-CN": {
+    onInit: "初始化",
+    onClick: "点击",
+    onDestory: "销毁",
+  },
+  'en-US': {
+    onInit: "onInit",
+    onClick: "onClick",
+    onDestory: "onDestory",
+  }
+}
