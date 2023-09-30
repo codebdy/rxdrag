@@ -19,6 +19,9 @@ export const locales = {
       rowKey: "行主键",
       paginationChange: "分页",
       ...sizeLocales["zh-CN"],
+      dataSource: "数据源",
+      onPageChange: "分页变化",
+      setDataSource: "设置数据源",
     }
 
   },
@@ -40,6 +43,9 @@ export const locales = {
       rowKey: "Row Key",
       paginationChange: "Pagination Change",
       ...sizeLocales["en-US"],
+      dataSource: "Dtata source",
+      onPageChange: "onPageChange",
+      setDataSource: "setDataSource"
     }
   }
 }

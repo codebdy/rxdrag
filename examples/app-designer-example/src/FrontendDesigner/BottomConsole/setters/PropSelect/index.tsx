@@ -1,8 +1,9 @@
-import { useAllControllerMetas } from "@rxdrag/minions-controller-editor";
 import { IPropParam } from "@rxdrag/minions-runtime-react";
+import { useDesignerEngine } from "@rxdrag/react-core";
 import { useTranslate } from "@rxdrag/react-locales"
-import { AutoComplete, Form, Select } from "antd"
+import { AutoComplete, Form } from "antd"
 import { memo, useCallback, useMemo } from "react"
+import { getControllerComponentInfo } from "../../minion-materials/controller/utils";
 
 //本控件强依赖rxdrag editor
 export const PropSelect = memo((
@@ -12,30 +13,15 @@ export const PropSelect = memo((
   }
 ) => {
   const { value, onChange } = props;
-  const controllers = useAllControllerMetas();
   const t = useTranslate()
-  const controller = useMemo(() => {
-    return controllers?.find(meta => meta.id === value?.controllerId)
-  }, [controllers, value?.controllerId])
-
-  const handleControllerChange = useCallback((controllerId: string) => {
-    onChange?.({ controllerId: controllerId, prop: undefined })
-  }, [onChange])
-
-  const handlePropChange =  useCallback((prop: string) => {
+  const engine = useDesignerEngine()
+  const handlePropChange = useCallback((prop: string) => {
     onChange?.({ ...value, prop })
   }, [onChange, value])
 
+  const { material } = useMemo(() => getControllerComponentInfo(value, engine), [engine, value])
+  
   return (<>
-    <Form.Item
-      label={t("component")}
-    >
-      <Select
-        value={value?.controllerId}
-        options={controllers?.map((controllerMeta) => ({ value: controllerMeta.id, label: controllerMeta.name }))}
-        onChange={handleControllerChange}
-      />
-    </Form.Item>
     {
       value?.controllerId &&
       <Form.Item
@@ -44,11 +30,15 @@ export const PropSelect = memo((
         <AutoComplete
           allowClear
           value={value?.prop}
-          options={controller?.props?.map(prop => ({ value: prop }))}
+          options={material?.controller?.props?.map(prop => ({
+            value: prop.name,
+            label: prop.label?.startsWith("$")
+              ? engine?.getLocalesManager().getComponentSettingsMessage(material.componentName, prop.label.substring(1))
+              : prop.label
+          }))}
           onChange={handlePropChange}
         />
       </Form.Item>
     }
-
   </>)
 })

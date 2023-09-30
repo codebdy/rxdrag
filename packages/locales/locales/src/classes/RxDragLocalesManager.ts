@@ -20,6 +20,10 @@ export class RxDragLocalesManager extends LocalesManager {
     return this.getValueByKey(currentLocales?.[componentName] || {}, key)
   }
 
+  getComponentSettingsMessage(componentName: string, key: string): string | null {
+    return this.getComponentMessage(componentName, "settings." + key)
+  }
+
   getSettersMessage(key: string): string | null {
     const currentLocales = this.locales?.[this.lang]?.setters
     return this.getValueByKey(currentLocales || {}, key)

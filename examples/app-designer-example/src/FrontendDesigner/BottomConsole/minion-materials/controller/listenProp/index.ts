@@ -21,24 +21,28 @@ export const listenPropMaterial: IRxDragActivityMaterial<IPropConfig, LogicflowC
   },
   schema: propSchema,
   icon: (config?: IPropConfig, context?: LogicflowContextParam) => {
-    const { material } = getControllerComponentInfo(config, context)
+    const { material } = getControllerComponentInfo(config?.param, context?.engine)
     return material?.resource?.icon || listenPropIcon
   },
 
   color: (config?: IPropConfig, context?: LogicflowContextParam) => {
-    const { material } = getControllerComponentInfo(config, context)
+    const { material } = getControllerComponentInfo(config?.param, context?.engine)
     return material?.resource?.color
   },
 
   title: (config?: IPropConfig, context?: LogicflowContextParam) => {
-    const { node, material } = getControllerComponentInfo(config, context)
+    const { node, material } = getControllerComponentInfo(config?.param, context?.engine)
     const ctrl = node?.meta["x-controller"] as IControllerMeta | undefined
     return ctrl?.name || material?.resource?.title || ctrl?.id
   },
   subTitle: (config?: IPropConfig, context?: LogicflowContextParam) => {
-    const { material } = getControllerComponentInfo(config, context)
+    const { material } = getControllerComponentInfo(config?.param, context?.engine)
     const prop = config?.param?.prop
-    return material?.controller?.props?.find(pro => pro.name === prop)?.label || prop
+    const label = material?.controller?.props?.find(pro => pro.name === prop)?.label
+    const transedLabel = label?.startsWith("$")
+              ? context?.engine?.getLocalesManager().getComponentSettingsMessage(material?.componentName||"", label.substring(1))
+              : label
+    return transedLabel || prop
   },
   activityName: ListenProp.NAME,
 }
