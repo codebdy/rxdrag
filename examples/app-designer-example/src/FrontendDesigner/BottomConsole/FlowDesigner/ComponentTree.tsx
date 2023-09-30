@@ -17,6 +17,7 @@ import { createId } from "@rxdrag/shared";
 import { methodIcon } from "../minion-materials/icons";
 import { SvgIcon } from "@rxdrag/react-antd-shell";
 import { eventMaterial } from "../minion-materials/controller/event";
+import { reactionMaterial } from "../minion-materials/controller/reaction";
 
 const { DirectoryTree } = Tree;
 
@@ -139,6 +140,56 @@ export const ComponentTree = memo((
           isLeaf: true,
           icon: methodIcon,
         },
+        ...comMaterial?.controller?.reactions?.map(reaction => {
+          const label = reaction.label?.startsWith("$")
+            ? engine?.getLocalesManager().getComponentSettingsMessage(comMaterial.componentName, reaction.label.substring(1))
+            : reaction.label;
+          return {
+            key: rNode.node.id + reaction.name,
+            title: <ActivityResource
+              material={reactionMaterial as IActivityMaterial<React.ReactNode>}
+              createNode={() => {
+                const node: IActivityNode<IPropConfig> = {
+                  id: createId(),
+                  //label: title,
+                  type: reactionMaterial.activityType,
+                  activityName: reactionMaterial.activityName,
+                  inPorts: [
+                    {
+                      id: createId(),
+                      name: reaction.name,
+                      label: label || "",
+                    },
+                  ],
+                  outPorts: [
+                    {
+                      id: createId(),
+                      name: "output",
+                      label: "",
+                    },
+                  ],
+                  config: {
+                    param: {
+                      controllerId: ctrlMeta?.id
+                    }
+                  }
+                }
+
+                return node
+              }}
+            >
+              {
+                (onStartDrag) => {
+                  return <DraggableText onMouseDown={onStartDrag}>
+                    {label}
+                  </DraggableText>
+                }
+              }
+            </ActivityResource>,
+            isLeaf: true,
+            icon: methodIcon,
+          }
+        }) || [],
         {
           key: rNode.node.id + "listenProps",
           title: <ActivityResource

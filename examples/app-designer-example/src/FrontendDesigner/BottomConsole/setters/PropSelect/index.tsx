@@ -15,12 +15,12 @@ export const PropSelect = memo((
   const { value, onChange } = props;
   const t = useTranslate()
   const engine = useDesignerEngine()
+  const { material } = useMemo(() => getControllerComponentInfo(value, engine), [engine, value])
+
   const handlePropChange = useCallback((prop: string) => {
     onChange?.({ ...value, prop })
   }, [onChange, value])
 
-  const { material } = useMemo(() => getControllerComponentInfo(value, engine), [engine, value])
-  
   return (<>
     {
       value?.controllerId &&

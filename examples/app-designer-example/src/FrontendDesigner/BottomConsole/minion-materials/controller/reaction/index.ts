@@ -1,22 +1,31 @@
-import { IEventConfig, Reaction } from "@rxdrag/minions-runtime-react";
+import { IControllerMeta, IEventConfig, IReactionConfig, Reaction } from "@rxdrag/minions-runtime-react";
 import { NodeType } from "@rxdrag/minions-schema";
 import { methodIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
-import { reactionSchema } from "./schema";
-import { IControllerEditorContextParam } from "@rxdrag/minions-controller-editor";
+import { LogicflowContextParam } from "../../../types";
+import { getControllerComponentInfo } from "../utils";
 
-export const reactionMaterial: IRxDragActivityMaterial<IEventConfig, IControllerEditorContextParam> = {
+export const reactionMaterial: IRxDragActivityMaterial<IEventConfig, LogicflowContextParam> = {
   activityName: Reaction.NAME,
-  icon: methodIcon,
   label: "$reaction",
-  activityType: NodeType.LogicFlowActivity,
+  activityType: NodeType.Activity,
   defaultPorts: {
   },
-  subTitle: (config?: IEventConfig, context?: IControllerEditorContextParam) => {
-    const controller = context?.controllers?.find(controller => controller.id === config?.param?.controllerId)
-    const controllerName = controller?.name
-    const reaction = controller?.reactions?.find(reaction => reaction.id === config?.param?.logicFlowId)
-    return controllerName ? (controllerName + "/" + (reaction?.label || "")) : ""
+
+  icon: (config?: IReactionConfig, context?: LogicflowContextParam) => {
+    const { material } = getControllerComponentInfo(config?.param, context?.engine)
+    return material?.resource?.icon || methodIcon
   },
-  schema: reactionSchema,
+
+  color: (config?: IReactionConfig, context?: LogicflowContextParam) => {
+    const { material } = getControllerComponentInfo(config?.param, context?.engine)
+    return material?.resource?.color
+  },
+
+  title: (config?: IReactionConfig, context?: LogicflowContextParam) => {
+    const { node, material } = getControllerComponentInfo(config?.param, context?.engine)
+    const ctrl = node?.meta["x-controller"] as IControllerMeta | undefined
+    return ctrl?.name || material?.resource?.title || ctrl?.id
+  },
+
 }
