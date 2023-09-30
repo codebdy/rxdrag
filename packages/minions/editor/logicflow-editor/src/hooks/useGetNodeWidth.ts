@@ -15,8 +15,8 @@ function lengthOf(str: string) {
 }
 
 export function useGetNodeWidth() {
-  const getNodeWidth = useCallback((nodeMeta: IActivityNode, subLabel?: string) => {
-    const labeWidth = (lengthOf(nodeMeta.label || "")) * 7
+  const getNodeWidth = useCallback((nodeMeta: IActivityNode, title?: string, subLabel?: string) => {
+    const labeWidth = (lengthOf(title || nodeMeta.label || "")) * 7
     const subLabelWidth = Math.round(lengthOf(subLabel || "") * 5.5)
     return Math.max(labeWidth, subLabelWidth) + 60
   }, [])

@@ -5,7 +5,6 @@ import { IMaterial } from "@rxdrag/react-core";
 
 export function getControllerComponentInfo(config?: IPropConfig, context?: LogicflowContextParam) {
   const engine = context?.engine
-
   const nodes = engine?.getMonitor().getState().nodesById
   let node: ITreeNode | undefined = undefined
   for (const key of Object.keys(nodes || {})) {

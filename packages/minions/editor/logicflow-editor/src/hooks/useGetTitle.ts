@@ -7,11 +7,11 @@ export function useGetTitle() {
   const getMaterial = useGetMaterial()
   const logicContext = useLogicFlowContext();
 
-  const getLabel = useCallback((nodeMeta: INodeDefine<unknown>) => {
+  const getTitle = useCallback((nodeMeta: INodeDefine<unknown>) => {
     const material = getMaterial(nodeMeta.activityName)
     const title = material?.title?.(nodeMeta.config, logicContext)
     return title
   }, [getMaterial, logicContext])
 
-  return getLabel
+  return getTitle
 }

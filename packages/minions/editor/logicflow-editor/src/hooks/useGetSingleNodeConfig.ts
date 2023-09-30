@@ -8,9 +8,12 @@ import { useThemeToken } from "./useThemeToken"
 import { IActivityNode } from "../interfaces"
 import { IActivityMaterial } from "@rxdrag/minions-schema"
 import { useGetTitle } from "./useGetTitle"
+import { isFunction } from "lodash"
+import { useLogicFlowContext } from "./useLogicFlowContext"
 
 export function useGetSingleNodeConfig() {
   const token = useThemeToken()
+  const logicContext = useLogicFlowContext();
   const transformPorts = useTransformPorts()
   const portsGroup = usePortsConfig(token)
   const getNodeWidth = useGetNodeWidth()
@@ -21,7 +24,7 @@ export function useGetSingleNodeConfig() {
     const subLabel = getSubLabel(nodeMeta)
     const title = getTitle(nodeMeta)
     const height = getHeight(nodeMeta, !!subLabel)
-    const width = getNodeWidth(nodeMeta)
+    const width = getNodeWidth(nodeMeta, title, subLabel)
     const config = {
       id: nodeMeta.id,
       shape: "reaction-node",
@@ -33,8 +36,8 @@ export function useGetSingleNodeConfig() {
         meta: nodeMeta,
         backgroundColor: token.colorBgContainer,
         color: token.colorTextSecondary,
-        icon: material?.icon,
-        iconColor: material?.color,
+        icon: isFunction(material?.icon) ? material?.icon(nodeMeta, logicContext) : material?.icon,
+        iconColor: isFunction(material?.color) ? material?.color(nodeMeta, logicContext) : material?.color,
         token,
         width: width,
         height: height,
@@ -49,7 +52,7 @@ export function useGetSingleNodeConfig() {
       },
     }
     return config
-  }, [getHeight, getNodeWidth, getSubLabel, getTitle, portsGroup, token, transformPorts])
+  }, [getHeight, getNodeWidth, getSubLabel, getTitle, logicContext, portsGroup, token, transformPorts])
 
   return getSingleNodeConfig
 }

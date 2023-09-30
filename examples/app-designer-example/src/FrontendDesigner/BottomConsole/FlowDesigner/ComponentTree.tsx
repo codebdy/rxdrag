@@ -5,11 +5,11 @@ import { TreeContainer } from "../common/TreeContainer";
 import { useModule } from "../../hooks/useModule";
 import { useDesignerEngine, useGetNode } from "@rxdrag/react-core";
 import { ITreeNode } from "@rxdrag/core"
-import { IControllerMeta } from "@rxdrag/minions-runtime-react";
+import { IControllerMeta, IPropConfig } from "@rxdrag/minions-runtime-react";
 import { ThunderboltOutlined } from "@ant-design/icons";
-import { puzzleIcon, setPropIcon, listenPropIcon } from "../icons";
+import { puzzleIcon, setPropIcon } from "../icons";
 import { setPropMaterial } from "../minion-materials/controller/setProp";
-import { ActivityResource } from "@rxdrag/minions-logicflow-editor"
+import { ActivityResource, IActivityNode } from "@rxdrag/minions-logicflow-editor"
 import { IActivityMaterial } from "@rxdrag/minions-schema";
 import styled from "styled-components";
 import { listenPropMaterial } from "../minion-materials/controller/listenProp";
@@ -70,16 +70,18 @@ export const ComponentTree = memo((
 
   const getOneNode = useCallback((rNode: ReactionableNode): DataNode => {
     const children = rNode.children?.map(child => getOneNode(child))
+    const ctrlMeta = rNode.node.meta?.["x-controller"]
     // const componentMaterial = engine?.getComponentManager().getComponentConfig(rNode.node.meta.componentName) as IMaterial | undefined
     // const controllerMaterial = rNode.node.meta["x-controller"]
     // const setPropsMaterial = createSetPropMaterial(controllerMaterial, componentMaterial?.controller as IControllerMaterial | undefined, rNode.node, componentMaterial)
     //registerMaterial(setPropsMaterial as IActivityMaterial)
     // const listenPropsMaterial = createListenPropMaterial(controllerMaterial, componentMaterial?.controller as IControllerMaterial | undefined)
     //registerMaterial(listenPropsMaterial as IActivityMaterial)
-    const title = rNode.node.meta?.["x-controller"]?.name || rNode.node.title;
+    const title = ctrlMeta?.name || rNode.node.title;
     return {
       key: rNode.node.id,
-      icon: puzzleIcon,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      icon: engine?.getComponentManager().getComponentConfig(rNode.node.meta.componentName)?.resource?.icon as any || puzzleIcon,
       title: title,
       children: [
         ...children || [],
@@ -88,7 +90,7 @@ export const ComponentTree = memo((
           title: <ActivityResource
             material={setPropMaterial as IActivityMaterial<React.ReactNode>}
             createNode={() => {
-              return {
+              const node: IActivityNode<IPropConfig> = {
                 id: createId(),
                 //label: title,
                 type: setPropMaterial.activityType,
@@ -107,7 +109,14 @@ export const ComponentTree = memo((
                     label: "",
                   },
                 ],
+                config: {
+                  param: {
+                    controllerId: ctrlMeta?.id
+                  }
+                }
               }
+
+              return node
             }}
           >
             {
@@ -144,13 +153,13 @@ export const ComponentTree = memo((
             {
               (onStartDrag) => {
                 return <DraggableText onMouseDown={onStartDrag}>
-                  监听属性
+                  属性变化
                 </DraggableText>
               }
             }
           </ActivityResource>,
           isLeaf: true,
-          icon: listenPropIcon
+          icon: <ThunderboltOutlined />
         },
         {
           key: rNode.node.id + "init",
@@ -166,7 +175,7 @@ export const ComponentTree = memo((
         },
       ]
     }
-  }, [])
+  }, [engine])
 
   const treeData: DataNode[] = useMemo(() => {
     return module?.views?.map(view => ({

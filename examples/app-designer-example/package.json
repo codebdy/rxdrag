@@ -40,6 +40,7 @@
     "@rxdrag/minions-logicflow-editor": "workspace:*",
     "@rxdrag/minions-controller-editor": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
+    "@rxdrag/minions-runtime": "workspace:*",
     "@rxdrag/minions-schema": "workspace:*",
     "@rxdrag/react-antd-components": "workspace:*",
     "@rxdrag/react-antd-icons": "workspace:*",

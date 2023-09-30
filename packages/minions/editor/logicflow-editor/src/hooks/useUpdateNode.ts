@@ -6,8 +6,10 @@ import { IActivityNode } from "../interfaces";
 import { NodeType } from "@rxdrag/minions-schema";
 import { useTransformPorts } from "./useTransformPorts";
 import { useGetSubLabel } from "./useGetSubLabel";
+import { useGetTitle } from "./useGetTitle";
 
 export function useUpdateNode() {
+  const getTitle = useGetTitle()
   const getNodeWidth = useGetNodeWidth()
   const getHeight = useGetNodeHeight()
   const transPorts = useTransformPorts()
@@ -15,12 +17,14 @@ export function useUpdateNode() {
   const update = useCallback((graphNode: Node<Node.Properties>, nodeMeta: IActivityNode) => {
     if (nodeMeta.x6Node) {
       graphNode.setPosition(nodeMeta.x6Node);
+      const title = getTitle(nodeMeta)
       const subLabel = getSubLabel(nodeMeta)
       const height = getHeight(nodeMeta, !!subLabel)
       const ports = transPorts(nodeMeta)
       graphNode.replaceData({
         ...graphNode.data,
         meta: nodeMeta,
+        title,
         subLabel,
         height: height,
         inputCounts: nodeMeta.inPorts?.length || ports.filter(port => port.group === 'in').length,
@@ -31,7 +35,7 @@ export function useUpdateNode() {
         nodeMeta.type === NodeType.EmbeddedFlow) {
         graphNode.attr("text/text", nodeMeta.label)
       } else {
-        graphNode.setSize({ ...nodeMeta.x6Node, width: getNodeWidth(nodeMeta, subLabel), height: height });
+        graphNode.setSize({ ...nodeMeta.x6Node, width: getNodeWidth(nodeMeta, title, subLabel), height: height });
         const oldPorts = graphNode.getPorts()
         //const ports = transPorts(nodeMeta)
         for (const port of ports || []) {
@@ -49,7 +53,7 @@ export function useUpdateNode() {
         }
       }
     }
-  }, [getHeight, getNodeWidth, getSubLabel, transPorts])
+  }, [getHeight, getNodeWidth, getSubLabel, getTitle, transPorts])
 
   return update
 }

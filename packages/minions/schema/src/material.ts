@@ -25,7 +25,7 @@ export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown
   //图标代码，react的话，相当于React.ReactNode
   icon?: ComponentNode | ((config?: Config, context?: MaterialContext) => ComponentNode);
   //图标颜色
-  color?: string;
+  color?: string | ((config?: Config, context?: MaterialContext) => string | undefined);
   //属性面板配置，可以适配不同的低代码Schema，使用RxDrag的话，这可以是INodeSchema类型
   schema?: NodeSchema;
   //默认端口，元件节点的端口设置的默认值，大部分节点端口跟默认值是一样的，

@@ -12,7 +12,7 @@ export interface IX6NodeDefine {
   height: number;
 }
 
-export interface IActivityNode extends INodeDefine {
+export interface IActivityNode<Config = unknown> extends INodeDefine<Config> {
   x6Node?: IX6NodeDefine
 }
 
