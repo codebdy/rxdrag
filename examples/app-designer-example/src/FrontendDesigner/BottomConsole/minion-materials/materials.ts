@@ -19,6 +19,7 @@ export const auxActivityCategory: ActivityMaterialCategory<ReactNode> = {
   materials: auxActivities,
 }
 
+
 export const activityMaterialCategories: ActivityMaterialCategory<ReactNode>[] = [
   basicActivityCategory,
   advancedActivityCategory,

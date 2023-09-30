@@ -2,9 +2,9 @@ import { createId } from "@rxdrag/shared"
 import { variableSchema } from "./schema"
 import { NodeType } from "@rxdrag/minions-schema"
 import { IVariableConfig, SetVariable } from "@rxdrag/minions-runtime-react"
-import { setVariableIcon } from "../../icons"
 import { IControllerEditorContextParam } from "@rxdrag/minions-controller-editor"
 import { IRxDragActivityMaterial } from "../../interfaces"
+import { setVariableIcon } from "../../icons"
 
 export const setVariableMaterial: IRxDragActivityMaterial<IVariableConfig, IControllerEditorContextParam> = {
   icon: setVariableIcon,

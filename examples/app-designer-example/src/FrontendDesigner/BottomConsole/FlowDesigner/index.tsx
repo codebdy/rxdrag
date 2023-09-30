@@ -16,6 +16,7 @@ import { ComponentTree } from "./ComponentTree"
 import { ID } from "@rxdrag/shared"
 import { NavButton } from "../common/NavButton"
 import { FlowEditor } from "./FlowEditor"
+import { controllerActivities } from "../minion-materials/controller"
 
 const Content = styled.div`
   flex: 1;
@@ -39,7 +40,8 @@ export const FlowDesigner = memo(() => {
   const { token } = theme.useToken()
   const themMode = useThemeMode()
   const materials = useMemo(() => {
-    const materials: IActivityMaterial<ReactNode>[] = []
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const materials: IActivityMaterial<ReactNode>[] = [...(controllerActivities as any)]
     return materials.concat(...activityMaterialCategories.map(category => category.materials))
   }, [])
 

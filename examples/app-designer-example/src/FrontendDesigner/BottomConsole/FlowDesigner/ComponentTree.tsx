@@ -13,6 +13,7 @@ import { ActivityResource } from "@rxdrag/minions-logicflow-editor"
 import { IActivityMaterial } from "@rxdrag/minions-schema";
 import styled from "styled-components";
 import { listenPropMaterial } from "../minion-materials/controller/listenProp";
+import { createId } from "@rxdrag/shared";
 
 const { DirectoryTree } = Tree;
 
@@ -75,23 +76,39 @@ export const ComponentTree = memo((
     //registerMaterial(setPropsMaterial as IActivityMaterial)
     // const listenPropsMaterial = createListenPropMaterial(controllerMaterial, componentMaterial?.controller as IControllerMaterial | undefined)
     //registerMaterial(listenPropsMaterial as IActivityMaterial)
-
+    const title = rNode.node.meta?.["x-controller"]?.name || rNode.node.title;
     return {
       key: rNode.node.id,
       icon: puzzleIcon,
-      title: rNode.node.meta?.["x-controller"]?.name || rNode.node.title,
+      title: title,
       children: [
         ...children || [],
         {
           key: rNode.node.id + "setprops",
           title: <ActivityResource
             material={setPropMaterial as IActivityMaterial<React.ReactNode>}
-          // createNode = {()=>{
-          //   return{
-          //     id: createId(),
-          //     //type
-          //   }
-          // }}
+            createNode={() => {
+              return {
+                id: createId(),
+                //label: title,
+                type: setPropMaterial.activityType,
+                activityName: setPropMaterial.activityName,
+                inPorts: [
+                  {
+                    id: createId(),
+                    name: "input",
+                    label: "$props",
+                  },
+                ],
+                outPorts: [
+                  {
+                    id: createId(),
+                    name: "output",
+                    label: "",
+                  },
+                ],
+              }
+            }}
           >
             {
               (onStartDrag) => {
@@ -106,7 +123,24 @@ export const ComponentTree = memo((
         },
         {
           key: rNode.node.id + "listenprops",
-          title: <ActivityResource material={listenPropMaterial as IActivityMaterial<React.ReactNode>}>
+          title: <ActivityResource
+            material={listenPropMaterial as IActivityMaterial<React.ReactNode>}
+            createNode={() => {
+              return {
+                id: createId(),
+                label: title,
+                type: listenPropMaterial.activityType,
+                activityName: listenPropMaterial.activityName,
+                outPorts: [
+                  {
+                    id: createId(),
+                    name: "output",
+                    label: "$propsChange",
+                  },
+                ],
+              }
+            }}
+          >
             {
               (onStartDrag) => {
                 return <DraggableText onMouseDown={onStartDrag}>

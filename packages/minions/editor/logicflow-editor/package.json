@@ -39,6 +39,7 @@
     "@rxdrag/minions-activities": "workspace:*",
     "@rxdrag/minions-schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
+    "@rxdrag/react-locales": "workspace:*",
     "insert-css": "^2.0.0",
     "lodash": "^4.17.21",
     "redux": "^4.2.1",

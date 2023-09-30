@@ -80,6 +80,7 @@ export interface NodeViewParams extends INodeData {
   token: IThemeToken,
   width: number,
   height: number,
+  title?: string,
   subLabel?: string,
   inputCounts?: number,
   outputCounts?: number,
@@ -88,7 +89,7 @@ export interface NodeViewParams extends INodeData {
 export const ReactionNode = (props: { node?: Node }) => {
   const { node } = props
   const data = node?.getData() as NodeViewParams
-  const { token, subLabel } = data
+  const { token, title, subLabel } = data
   const { label } = data.meta
 
   const inputPortCount = data.meta.inPorts?.length || data.inputCounts
@@ -110,7 +111,7 @@ export const ReactionNode = (props: { node?: Node }) => {
         <Icon style={{ color: data?.iconColor }}>
           {data?.icon as ReactNode | undefined}
         </Icon>
-        <Label>{label}</Label>
+        <Label>{title || label}</Label>
       </ReactionName>
       {
         subLabel &&

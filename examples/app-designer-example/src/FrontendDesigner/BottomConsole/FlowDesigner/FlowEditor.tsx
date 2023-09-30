@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { Toolbar } from "./Toolbar"
 import { ID } from "@rxdrag/shared"
 import { useQueryFlow } from "../../../hooks/useQueryFlow"
+import { PropSelect } from "../setters"
 
 const SaveButton = styled(Button)`
   margin-left: 32px;
@@ -32,6 +33,7 @@ export const FlowEditor = memo((
         materialCategories={activityMaterialCategories}
         value={test}
         toolbox={false}
+        setters={{ PropSelect }}
         toolbar={<Toolbar
           title={
             <>

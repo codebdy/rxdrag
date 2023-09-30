@@ -2,9 +2,11 @@ import { IPortDefine, INodeDefine, NodeType, ILogicFlowConfig } from "@rxdrag/mi
 import { useCallback } from "react";
 import { useThemeToken } from "./useThemeToken";
 import { useGetLogicFlowNodePorts } from "./useGetLogicFlowNodePorts";
+import { useTranslate } from "@rxdrag/react-locales";
 
 export function useTransformPorts() {
   const token = useThemeToken()
+  const t = useTranslate()
   const getLogicFlowPorts = useGetLogicFlowNodePorts();
   const doTransform = useCallback((ports: IPortDefine[] | undefined, group: 'in' | 'out') => {
     return ports?.map(
@@ -18,19 +20,20 @@ export function useTransformPorts() {
         group: group,
         attrs: {
           text: {
-            text: port.label,
+            text: port.label?.startsWith("$") ? t(port.label.substring(1)) : port.label,
             fill: token.colorTextSecondary,
             fontSize: 12,
           },
-          bg: {
-            ref: "text",
-            refWidth: "100%",
-            refHeight: "100%",
-            refX: group === 'out' ? 15 : -50,
-            //refX2: group === 'out' ? 28 : -12,
-            refY: -6,
-            fill: token.colorBgContainer,
-          }
+          //标签背景，位置对不好，暂时注掉
+          //bg: {
+          //  ref: "text",
+          //  refWidth: "100%",
+          //  refHeight: "100%",
+          //  refX: group === 'out' ? 15 : -50,
+          //refX2: group === 'out' ? 28 : -12,
+          //  refY: -6,
+          //fill: token.colorBgContainer,
+          //}
         },
         label: {
           position: {
@@ -40,7 +43,7 @@ export function useTransformPorts() {
         }
       })
     )
-  }, [token.colorBgContainer, token.colorTextSecondary])
+  }, [t, token.colorTextSecondary])
 
   const transform = useCallback((meta: INodeDefine) => {
     if (meta.type === NodeType.LogicFlowActivity) {

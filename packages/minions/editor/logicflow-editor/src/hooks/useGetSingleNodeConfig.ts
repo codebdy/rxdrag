@@ -7,6 +7,7 @@ import { useGetSubLabel } from "./useGetSubLabel"
 import { useThemeToken } from "./useThemeToken"
 import { IActivityNode } from "../interfaces"
 import { IActivityMaterial } from "@rxdrag/minions-schema"
+import { useGetTitle } from "./useGetTitle"
 
 export function useGetSingleNodeConfig() {
   const token = useThemeToken()
@@ -14,9 +15,11 @@ export function useGetSingleNodeConfig() {
   const portsGroup = usePortsConfig(token)
   const getNodeWidth = useGetNodeWidth()
   const getSubLabel = useGetSubLabel()
+  const getTitle = useGetTitle()
   const getHeight = useGetNodeHeight()
   const getSingleNodeConfig = useCallback((nodeMeta: IActivityNode, material: IActivityMaterial | undefined) => {
     const subLabel = getSubLabel(nodeMeta)
+    const title = getTitle(nodeMeta)
     const height = getHeight(nodeMeta, !!subLabel)
     const width = getNodeWidth(nodeMeta)
     const config = {
@@ -35,6 +38,7 @@ export function useGetSingleNodeConfig() {
         token,
         width: width,
         height: height,
+        title: title,
         subLabel,
         inputCounts: nodeMeta.inPorts?.length,
         outputCounts: nodeMeta.outPorts?.length,
@@ -45,7 +49,7 @@ export function useGetSingleNodeConfig() {
       },
     }
     return config
-  }, [getHeight, getNodeWidth, getSubLabel, portsGroup, token, transformPorts])
+  }, [getHeight, getNodeWidth, getSubLabel, getTitle, portsGroup, token, transformPorts])
 
   return getSingleNodeConfig
 }

@@ -23,7 +23,7 @@ export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown
   //节点类型，NodeType在DLS中定义，这里根据activityType决定画上的图形样式
   activityType: NodeType;
   //图标代码，react的话，相当于React.ReactNode
-  icon?: ComponentNode;
+  icon?: ComponentNode | ((config?: Config, context?: MaterialContext) => ComponentNode);
   //图标颜色
   color?: string;
   //属性面板配置，可以适配不同的低代码Schema，使用RxDrag的话，这可以是INodeSchema类型
@@ -33,6 +33,8 @@ export interface IActivityMaterial<ComponentNode = unknown, NodeSchema = unknown
   defaultPorts?: IPorts;
   //默认配置
   defaultConfig?: Config;
+  //画布中元件节点显示的标题，跟label并存时，该函数优先级高 
+  title?: (config?: Config, context?: MaterialContext) => string | undefined;
   //画布中元件节点显示的子标题 
   subTitle?: (config?: Config, context?: MaterialContext) => string | undefined;
   //对应解析引擎里的Activity名称，根据这个名字实例化相应的节点业务逻辑对象
