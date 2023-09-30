@@ -1,5 +1,5 @@
 import { useAllControllerMetas } from "@rxdrag/minions-controller-editor";
-import { IReactionParam } from "@rxdrag/minions-runtime-react";
+import { IEventParam } from "@rxdrag/minions-runtime-react";
 import { useTranslate } from "@rxdrag/react-locales"
 import { Form, Select } from "antd"
 import { memo, useCallback, useMemo } from "react"
@@ -7,8 +7,8 @@ import { memo, useCallback, useMemo } from "react"
 //本控件强依赖rxdrag editor
 export const ReactionSelect = memo((
   props: {
-    value?: IReactionParam,
-    onChange?: (value?: IReactionParam) => void,
+    value?: IEventParam,
+    onChange?: (value?: IEventParam) => void,
   }
 ) => {
   const { value, onChange } = props;

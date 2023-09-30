@@ -137,7 +137,7 @@ export const ComponentTree = memo((
           icon: methodIcon,
         },
         {
-          key: rNode.node.id + "listenprops",
+          key: rNode.node.id + "listenProps",
           title: <ActivityResource
             material={listenPropMaterial as IActivityMaterial<React.ReactNode>}
             createNode={() => {

@@ -1,3 +1,4 @@
+export * from "./event"
 export * from "./prop"
 export * from "./reaction"
 export * from "./routeTo"
