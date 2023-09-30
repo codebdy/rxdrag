@@ -18,6 +18,8 @@ import { NavButton } from "../common/NavButton"
 import { FlowEditor } from "./FlowEditor"
 import { controllerActivities } from "../minion-materials/controller"
 import { LogicflowContextParam } from "../types"
+import { variableIcon } from "../icons"
+import { Variables } from "./Variables"
 
 const Content = styled.div`
   flex: 1;
@@ -30,6 +32,7 @@ enum NavType {
   flows = "flows",
   fxes = "fxes",
   model = "model",
+  variables = "variables"
 }
 
 export const FlowDesigner = memo(() => {
@@ -57,6 +60,10 @@ export const FlowDesigner = memo(() => {
 
   const handleToggleToolbox = useCallback(() => {
     setNavType(type => type === NavType.toolbox ? null : NavType.toolbox)
+  }, [])
+
+  const handleToggleVariables = useCallback(() => {
+    setNavType(type => type === NavType.variables ? null : NavType.variables)
   }, [])
 
   const handleToggleFlows = useCallback(() => {
@@ -116,6 +123,13 @@ export const FlowDesigner = memo(() => {
               onClick={handleToggleModel}
             />
           </Tooltip>
+          <Tooltip title="变量" placement="right">
+            <NavButton
+              type={navType === NavType.variables ? "primary" : "text"}
+              icon={variableIcon}
+              onClick={handleToggleVariables}
+            />
+          </Tooltip>
           <Tooltip title="行为流" placement="right">
             <NavButton
               type={
@@ -128,7 +142,6 @@ export const FlowDesigner = memo(() => {
               onClick={handleToggleFlows}
             />
           </Tooltip>
-
           <Tooltip title="子流" placement="right">
             <NavButton
               type={
@@ -162,6 +175,18 @@ export const FlowDesigner = memo(() => {
               </span>
             }
             {
+              NavType.model === navType &&
+              <span>
+                数据模型
+              </span>
+            }
+            {
+              NavType.variables === navType &&
+              <span>
+                变量
+              </span>
+            }
+            {
               NavType.flows === navType &&
               <span>
                 逻辑编排
@@ -191,6 +216,9 @@ export const FlowDesigner = memo(() => {
             display={navType === NavType.flows}
             selected={selectedFlow}
             onSelect={handleSelectFlow}
+          />
+          <Variables
+            display={navType === NavType.variables}
           />
           <FXes
             display={navType === NavType.fxes}
