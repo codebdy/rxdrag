@@ -1,5 +1,5 @@
 import { LogicMetaEditorAntd5Inner } from "@rxdrag/logicflow-editor-antd5"
-import { ReactNode, memo } from "react"
+import { ReactNode, memo, useState } from "react"
 import { activityMaterialCategories } from "../minion-materials"
 import { Button, Spin } from "antd"
 import styled from "styled-components"
@@ -24,6 +24,7 @@ export const FlowEditor = memo((
   }
 ) => {
   const { flowId, icon } = props
+  const [inputValue, setInputValue] = useState(test)
 
   const { flow, loading } = useQueryFlow(flowId)
 
@@ -31,7 +32,7 @@ export const FlowEditor = memo((
     flow
       ? <LogicMetaEditorAntd5Inner
         materialCategories={activityMaterialCategories}
-        value={test}
+        value={inputValue}
         toolbox={false}
         setters={{ PropSelect }}
         toolbar={<Toolbar
