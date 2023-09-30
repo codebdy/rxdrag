@@ -17,7 +17,8 @@ const userList = {
       },
       "x-controller": {
         "id": "LlRDj22u",
-        "name": "查询表单"
+        "name": "查询表单",
+        enable: true,
       },
       "slots": {},
       "children": [
@@ -25,7 +26,8 @@ const userList = {
           "componentName": "Input",
           "x-controller": {
             "id": "Ddl53loc",
-            "name": "字段1"
+            "name": "字段1",
+            enable: true,
           },
           "slots": {},
           "children": []
@@ -34,7 +36,8 @@ const userList = {
           "componentName": "Input",
           "x-controller": {
             "id": "ndwJ5LwA",
-            "name": "字段2"
+            "name": "字段2",
+            enable: true,
           },
           "slots": {},
           "children": []
@@ -48,6 +51,7 @@ const userList = {
         "id": "JClydKG7",
         "name": "用户列表",
         "isArray": true,
+        enable: true,
       },
       "slots": {},
       "children": [

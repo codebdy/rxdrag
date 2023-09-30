@@ -16,9 +16,11 @@ export const ControllerSetter = memo((
 
   const handleSwitch = useCallback((checked: boolean) => {
     if (checked) {
-      onChange?.({ ...value, id: createId(), isArray })
+      onChange?.({ ...value, id: value?.id ? value.id : createId(), isArray })
     } else {
-      onChange?.(null)
+      if (value) {
+        onChange?.({ ...value, enable: false })
+      }
     }
   }, [isArray, onChange, value])
 
@@ -34,7 +36,7 @@ export const ControllerSetter = memo((
         label={t("joinFlow")}
       >
         <Switch
-          checked={!!value?.id}
+          checked={value?.enable}
           onChange={handleSwitch}
         />
       </Form.Item>

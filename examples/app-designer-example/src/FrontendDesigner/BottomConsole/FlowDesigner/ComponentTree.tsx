@@ -40,7 +40,7 @@ export const ComponentTree = memo((
   const getReactionableSchemas = useCallback((node: ITreeNode<unknown, IControllerMeta>) => {
     const nodes: ReactionableNode[] = []
     let activeNodes = nodes
-    if (node.meta["x-controller"]?.id) {
+    if (node.meta["x-controller"]?.enable) {
       const rNode: ReactionableNode = {
         node: node,
         children: []
