@@ -15,6 +15,7 @@ import styled from "styled-components";
 import { listenPropMaterial } from "../minion-materials/controller/listenProp";
 import { createId } from "@rxdrag/shared";
 import { methodIcon } from "../minion-materials/icons";
+import { SvgIcon } from "@rxdrag/react-antd-shell";
 
 const { DirectoryTree } = Tree;
 
@@ -81,8 +82,12 @@ export const ComponentTree = memo((
     const title = ctrlMeta?.name || rNode.node.title;
     return {
       key: rNode.node.id,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      icon: engine?.getComponentManager().getComponentConfig(rNode.node.meta.componentName)?.resource?.icon as any || puzzleIcon,
+      icon: <SvgIcon>
+        {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          engine?.getComponentManager().getComponentConfig(rNode.node.meta.componentName)?.resource?.icon as any || puzzleIcon
+        }
+      </SvgIcon>,
       title: title,
       children: [
         ...children || [],
