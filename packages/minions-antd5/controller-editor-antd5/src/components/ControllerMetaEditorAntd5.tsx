@@ -89,7 +89,7 @@ export const ControllerMetaEditorAntd5 = memo(
     const handleMemberChange = useCallback(
       (meta?: ILogicFlowControllerMeta) => {
         onChange?.(meta);
-        onChange?.(meta);
+        //onChange?.(meta);
       },
       [onChange]
     );

@@ -1,5 +1,5 @@
 import { LogicMetaEditorAntd5Inner } from "@rxdrag/logicflow-editor-antd5"
-import { ReactNode, memo, useState } from "react"
+import { ReactNode, memo, useCallback, useEffect, useState } from "react"
 import { activityMaterialCategories } from "../minion-materials"
 import { Button, Spin } from "antd"
 import styled from "styled-components"
@@ -7,12 +7,14 @@ import { Toolbar } from "./Toolbar"
 import { ID } from "@rxdrag/shared"
 import { useQueryFlow } from "../../../hooks/useQueryFlow"
 import { PropSelect } from "../setters"
+import { ILogicMetas, useChangeFlag } from "@rxdrag/minions-logicflow-editor"
+import { useSaveFlow } from "../../../hooks/useSaveFlow"
 
 const SaveButton = styled(Button)`
   margin-left: 32px;
 `
 
-const test = {
+const emptyValue = {
   nodes: [],
   lines: []
 }
@@ -24,9 +26,21 @@ export const FlowEditor = memo((
   }
 ) => {
   const { flowId, icon } = props
-  const [inputValue, setInputValue] = useState(test)
-
+  const [inputValue, setInputValue] = useState<ILogicMetas>(emptyValue)
   const { flow, loading } = useQueryFlow(flowId)
+
+  useEffect(() => {
+    setInputValue(flow?.metas || emptyValue)
+  }, [flow?.metas,])
+
+  const { changeFlag } = useChangeFlag()
+  const [save, { loading: saving }] = useSaveFlow()
+
+  const handleSave = useCallback(() => {
+    if (flow) {
+      save({ ...flow, metas: inputValue })
+    }
+  }, [flow, inputValue, save])
 
   return (
     flow
@@ -43,8 +57,15 @@ export const FlowEditor = memo((
             </>
           }
         >
-          <SaveButton type="primary">保存</SaveButton>
+          <SaveButton
+            type="primary"
+            disabled={!changeFlag}
+            loading={saving}
+            onClick={handleSave}
+          >保存</SaveButton>
         </Toolbar>}
+
+        onChange={setInputValue}
       />
       : <Spin spinning={loading} />
   )

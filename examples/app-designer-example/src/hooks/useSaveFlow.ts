@@ -4,7 +4,7 @@ import { Entities } from "./events/entityName";
 import { IFlow } from "../interfaces/flow";
 import { allFlows } from "../data/logic";
 
-export function useSaveFlow(options: {
+export function useSaveFlow(options?: {
   onComplate?: () => void
 }): [(flow: IFlow) => void, { loading?: boolean, flow?: IFlow }] {
   const [flow, setFlow] = useState<IFlow>()

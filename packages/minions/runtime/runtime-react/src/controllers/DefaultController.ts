@@ -1,6 +1,7 @@
 import { PropsListener, UnListener, VariableListener, PropListener } from "../interfaces";
 import { IComponentController } from "../interfaces/component-contoller";
 
+//构造函数传入当前form跟当前field
 export class DefaultController implements IComponentController{
   
   subscribeToPropsChange(listener: PropsListener): UnListener {
