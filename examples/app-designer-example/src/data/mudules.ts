@@ -112,7 +112,7 @@ const moleSetting = {
         {
           componentName: "Text",
           props: {
-            value: name,
+            value: "游戏设置",
           }
         }
       ]

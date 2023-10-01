@@ -9,20 +9,16 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: ModalProps
     [RXID_ATTR_NAME]: rxId,
     ...other
   } = props;
-  const realRef = useRef<HTMLDivElement | null>(null);
   const popupRef = useRef<HTMLDivElement | null>(null);
 
-  const getModalEl = useCallback(() => {
-    return realRef.current?.getElementsByClassName("ant-modal-content")?.[0]
-  }, [])
   const addRxdToPop = useCallback(() => {
     popupRef.current?.setAttribute(RXID_ATTR_NAME, rxId || "")
   }, [rxId])
 
-  const handlePopRefChange = useCallback(() => {
-    popupRef.current = getModalEl() as HTMLDivElement
+  const handlePopRefChange = useCallback((ele: HTMLDivElement) => {
+    popupRef.current = ele?.parentElement?.parentElement as HTMLDivElement
     addRxdToPop()
-  }, [addRxdToPop, getModalEl])
+  }, [addRxdToPop])
 
   return (
     <Modal {...other}>
