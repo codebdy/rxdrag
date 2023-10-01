@@ -99,6 +99,10 @@ const userList = {
   ]
 }
 
+const mole = {
+  "componentName": "Page",
+}
+
 export const defaultModules: { [device: string]: IModule[] | undefined } = {
   [DeviceType.admin]: [
     {
@@ -113,6 +117,22 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
         {
           id: "user-edit",
           title: "编辑对话框",
+          schema: rootNodeSchema,
+        }
+      ]
+    },
+    {
+      id: "mole",
+      title: "打地鼠",
+      views: [
+        {
+          id: "main-page",
+          title: "主页面",
+          schema: mole,
+        },
+        {
+          id: "settings-diaglog",
+          title: "设置对话框",
           schema: rootNodeSchema,
         }
       ]
@@ -215,6 +235,10 @@ export const defaultModuleCategories: { [device: string]: IModuleCategory[] | un
         {
           id: "users",
           title: "用户管理",
+        },
+        {
+          id: "mole",
+          title: "打地鼠",
         },
       ]
     },

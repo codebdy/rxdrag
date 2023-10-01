@@ -18,6 +18,7 @@ import { SvgIcon } from "@rxdrag/react-antd-shell";
 import { eventMaterial } from "../minion-materials/controller/event";
 import { reactionMaterial } from "../minion-materials/controller/reaction";
 import { DraggableText } from "./DraggableText";
+import { useAllDocuments } from "./useAllDocuments";
 
 const { DirectoryTree } = Tree;
 
@@ -34,7 +35,7 @@ export const ComponentTree = memo((
   const { display } = props;
   const module = useModule()
   const engine = useDesignerEngine()
-  const docs = engine?.getAllDocuments()
+  const docs = useAllDocuments()
   const getNode = useGetNode()
 
   const getReactionableSchemas = useCallback((node: ITreeNode<unknown, IControllerMeta>) => {
