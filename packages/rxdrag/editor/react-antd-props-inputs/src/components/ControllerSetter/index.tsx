@@ -27,6 +27,7 @@ export const ControllerSetter = memo((
         id: value?.id ? value.id : createId(),
         isArray,
         controllerClass: material?.controller?.controllerClass,
+        enable: true,
       })
     } else {
       if (value) {

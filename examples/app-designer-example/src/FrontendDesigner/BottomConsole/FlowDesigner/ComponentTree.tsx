@@ -49,11 +49,22 @@ export const ComponentTree = memo((
       activeNodes = rNode.children || []
     }
 
+    //处理children
     for (const childId of node.children) {
       const child = getNode(childId)
       if (child) {
         const children = getReactionableSchemas(child as ITreeNode<unknown, IControllerMeta>)
         activeNodes.push(...children)
+      }
+    }
+
+    //处理卡槽
+    for (const key of Object.keys(node.slots || {})) {
+      const slotId = node.slots?.[key]
+      const child = getNode(slotId)
+      if (child) {
+        const children = getReactionableSchemas(child as ITreeNode<unknown, IControllerMeta>)
+        activeNodes?.push(...children)
       }
     }
     return nodes
@@ -71,12 +82,6 @@ export const ComponentTree = memo((
   const getOneNode = useCallback((rNode: ReactionableNode): DataNode => {
     const children = rNode.children?.map(child => getOneNode(child))
     const ctrlMeta = rNode.node.meta?.["x-controller"]
-    // const componentMaterial = engine?.getComponentManager().getComponentConfig(rNode.node.meta.componentName) as IMaterial | undefined
-    // const controllerMaterial = rNode.node.meta["x-controller"]
-    // const setPropsMaterial = createSetPropMaterial(controllerMaterial, componentMaterial?.controller as IControllerMaterial | undefined, rNode.node, componentMaterial)
-    //registerMaterial(setPropsMaterial as IActivityMaterial)
-    // const listenPropsMaterial = createListenPropMaterial(controllerMaterial, componentMaterial?.controller as IControllerMaterial | undefined)
-    //registerMaterial(listenPropsMaterial as IActivityMaterial)
     const title = ctrlMeta?.name || rNode.node.title;
     const comMaterial = engine?.getComponentManager().getComponentConfig(rNode.node.meta.componentName || "") as IMaterial | undefined
 

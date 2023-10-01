@@ -36,10 +36,30 @@ export const ButtonMaterial: IMaterial = {
     noPlaceholder: true,
     lockable: true,
   },
-  logicalProps:[
-    "danger",
-    "disable",
-    "title",
-    "type"
-  ]
+  controller: {
+    props: [
+      {
+        name: "danger",
+        label: "$danger",
+      },
+      {
+        name: "disable",
+        label: "$disable",
+      },
+      {
+        name: "title",
+        label: "$title",
+      },
+      {
+        name: "type",
+        label: "$type",
+      },
+    ],
+    events: [
+      {
+        name: "onClick",
+        label: "$onClick",
+      }
+    ]
+  }
 }

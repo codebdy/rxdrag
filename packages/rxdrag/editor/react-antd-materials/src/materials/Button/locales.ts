@@ -16,7 +16,8 @@ export const buttonLocales = {
       default: "默认",
       circle: "圆形",
       round: "圆角",
-      ...sizeLocales["zh-CN"]
+      ...sizeLocales["zh-CN"],
+      onClick: "点击",
     }
 
   },
@@ -34,7 +35,8 @@ export const buttonLocales = {
       default: "Default",
       circle: "Circle",
       round: "Round",
-      ...sizeLocales["en-US"]
+      ...sizeLocales["en-US"],
+      onClick: "On Click",
     }
   }
 }
