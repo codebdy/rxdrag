@@ -50,7 +50,7 @@ function addNods(state: State = {},
 	const { pos, slot } = addPayload
 	const newState = Object.assign({}, state, addPayload.nodes.nodesById)
 	const sourceIds = addPayload.nodes.rootNodes.map(node => node.id)
-	if (pos === NodeRelativePosition.InTop || pos === NodeRelativePosition.InBottom || pos === NodeRelativePosition.Absolute) {
+	if (pos === NodeRelativePosition.InTop || pos === NodeRelativePosition.InBottom) {
 		return addIn(newState, sourceIds, addPayload.targetId, pos)
 	} else if (pos === NodeRelativePosition.Before || pos === NodeRelativePosition.After) {
 		return addSiblings(newState, sourceIds, addPayload.targetId, pos)

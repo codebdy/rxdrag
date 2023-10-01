@@ -5,12 +5,12 @@ import { DialogDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
-import { Modal } from "antd";
+import { Dialog } from "@rxdrag/react-antd-components";
 
 const name = "Dialog"
 export const DialogMaterial: IMaterial = {
   componentName: name,
-  component: Modal,
+  component: Dialog,
   designer: DialogDesigner,
   designerLocales: locales,
   propsSchema: materialSchema,

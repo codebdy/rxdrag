@@ -5,6 +5,7 @@ import { forwardRef, memo, useCallback, useRef } from "react"
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: ModalProps & { [RXID_ATTR_NAME]?: string }, ref) => {
   const {
+    footer,
     children,
     [RXID_ATTR_NAME]: rxId,
     ...other
@@ -21,7 +22,7 @@ export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: ModalProps
   }, [addRxdToPop])
 
   return (
-    <Modal {...other}>
+    <Modal footer={footer || false} {...other}>
       {children}
       <div ref={handlePopRefChange}></div>
     </Modal>
