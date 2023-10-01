@@ -31,7 +31,7 @@ export const FlowEditor = memo((
 
   useEffect(() => {
     setInputValue(flow?.metas || emptyValue)
-  }, [flow?.metas,])
+  }, [flow?.metas, flow?.id])
 
   const { changeFlag, setChangeFlag } = useChangeFlag()
   const [save, { loading: saving }] = useSaveFlow({
