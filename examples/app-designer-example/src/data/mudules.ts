@@ -103,6 +103,26 @@ const mole = {
   "componentName": "Page",
 }
 
+const moleSetting = {
+  componentName: "Dialog",
+  slots: {
+    title: {
+      componentName: "DialogTitle",
+      children: [
+        {
+          componentName: "Text",
+          props: {
+            value: name,
+          }
+        }
+      ]
+    },
+    footer: {
+      componentName: "DialogFooter",
+    },
+  }
+}
+
 export const defaultModules: { [device: string]: IModule[] | undefined } = {
   [DeviceType.admin]: [
     {
@@ -132,8 +152,8 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
         },
         {
           id: "settings-diaglog",
-          title: "设置对话框",
-          schema: rootNodeSchema,
+          title: "游戏设置",
+          schema: moleSetting,
         }
       ]
     },

@@ -1,3 +1,4 @@
+export * from "./Dialog"
 export * from "./DialogGroup"
 export * from "./DialogContent"
 export * from "./DialogFooter"

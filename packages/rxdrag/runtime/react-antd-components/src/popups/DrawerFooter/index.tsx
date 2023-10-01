@@ -7,7 +7,7 @@ export type DrawerFooterProps = {
 }
 
 export const DrawerFooter = memo(forwardRef<HTMLDivElement>((props: DrawerFooterProps, ref) => {
-  const { children, style, ...other } = props;
+  const { children, ...other } = props;
 
   return <div  ref={ref}
     {...other}

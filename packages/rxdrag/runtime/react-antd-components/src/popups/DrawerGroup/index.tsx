@@ -74,6 +74,7 @@ export const DrawerGroup = memo(forwardRef<HTMLDivElement>((props: DrawerGroupPr
         open={visiable}
         footer={footer}
         extra={extra}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         getContainer={realRef.current ? () => realRef.current as any : undefined}
         onClose={hancleClose}
       >
