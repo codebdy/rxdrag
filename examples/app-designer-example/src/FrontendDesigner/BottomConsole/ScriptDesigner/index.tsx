@@ -48,8 +48,8 @@ enum NavType {
 
 export const ScriptDesigner = memo(() => {
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
-  const [selectedScript, setSelectedScript] = useState<ID>()
-  const [selectedFx, setSelectedFx] = useState<ID>()
+  const [selectedScript, setSelectedScript] = useState<ID | null>(null)
+  const [selectedFx, setSelectedFx] = useState<ID | null>(null)
   const [inputValue, setInputValue] = useState<string>("")
   const themeMode = useThemeMode()
   const { script } = useQueryScript(selectedScript || selectedFx || "")
@@ -73,12 +73,12 @@ export const ScriptDesigner = memo(() => {
 
   const handleSelectScript = useCallback((id: ID) => {
     setSelectedScript(id)
-    setSelectedFx(undefined)
+    setSelectedFx(null)
   }, [])
 
 
   const handleSelectFx = useCallback((id: ID) => {
-    setSelectedScript(undefined)
+    setSelectedScript(null)
     setSelectedFx(id)
   }, [])
 
@@ -150,9 +150,11 @@ export const ScriptDesigner = memo(() => {
         </PanelTitle>
         <Scripts
           display={navType === NavType.flows}
+          selected={selectedScript}
           onSelect={handleSelectScript}
         />
         <FXes
+          selected={selectedFx}
           display={navType === NavType.fxes}
           onSelect={handleSelectFx}
         />

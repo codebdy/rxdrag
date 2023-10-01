@@ -14,11 +14,12 @@ const { DirectoryTree } = Tree;
 
 export const Scripts = memo((
   props: {
+    selected?: ID | null,
     display?: boolean,
     onSelect: (id: ID) => void,
   }
 ) => {
-  const { display, onSelect } = props;
+  const { selected, display, onSelect } = props;
   const module = useModule()
   const { scripts } = useQueryScripts(module?.id, LogicType.normal)
   const treeData: DataNode[] = useMemo(() => [
@@ -48,6 +49,7 @@ export const Scripts = memo((
         className={!display ? "hidden" : undefined}
       >
         <DirectoryTree
+          selectedKeys={[selected || ""]}
           onSelect={handleSelect}
           treeData={treeData}
         />

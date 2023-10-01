@@ -15,14 +15,15 @@ const { DirectoryTree } = Tree;
 
 export const FXes = memo((
   props: {
+    selected?: ID | null,
     display?: boolean,
     onSelect: (id: ID) => void,
   }
 ) => {
-  const { display, onSelect } = props;
+  const { selected, display, onSelect } = props;
   const frontend = useAppFrontend()
   const module = useModule()
-
+  console.log("===>FXes", selected)
   const { scripts: moduleFxes } = useQueryScripts(module?.id, LogicType.fx, FxScope.module)
   const { scripts: deviceFxes } = useQueryScripts(frontend?.app?.id, LogicType.fx, FxScope.device)
   const { scripts: appFxes } = useQueryScripts(frontend?.app?.id, LogicType.fx, FxScope.app)
@@ -87,6 +88,7 @@ export const FXes = memo((
       className={!display ? "hidden" : undefined}
     >
       <DirectoryTree
+        selectedKeys={[selected || ""]}
         onSelect={handleSelect}
         treeData={treeData}
       />
