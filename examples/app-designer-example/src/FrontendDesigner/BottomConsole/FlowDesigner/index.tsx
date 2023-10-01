@@ -176,7 +176,7 @@ export const FlowDesigner = memo(() => {
             {
               NavType.flows === navType &&
               <span>
-                逻辑编排
+                行为流
               </span>
             }
             {

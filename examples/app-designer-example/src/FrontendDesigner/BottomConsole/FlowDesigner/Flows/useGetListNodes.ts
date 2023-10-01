@@ -1,0 +1,54 @@
+import { ITreeNode } from "@rxdrag/core";
+import { IControllerMeta } from "@rxdrag/minions-runtime-react";
+import { useDesignerEngine, useGetNode } from "@rxdrag/react-core";
+import { useCallback } from "react";
+import { ListNode } from "./ListNode";
+
+export function useGetListNodes(){
+  const engine = useDesignerEngine()
+  const docs = engine?.getAllDocuments()
+  const getNode = useGetNode()
+  const getReactionableSchemas = useCallback((node: ITreeNode<unknown, IControllerMeta>) => {
+    const nodes: ListNode[] = []
+    let activeNodes = nodes
+    if (node.meta["x-controller"]?.enable && node.meta["x-controller"]?.isArray) {
+      const rNode: ListNode = {
+        node: node,
+        children: []
+      }
+      nodes.push(rNode)
+      activeNodes = rNode.children || []
+    }
+
+    //处理children
+    for (const childId of node.children) {
+      const child = getNode(childId)
+      if (child) {
+        const children = getReactionableSchemas(child as ITreeNode<unknown, IControllerMeta>)
+        activeNodes.push(...children)
+      }
+    }
+
+    //处理卡槽
+    for (const key of Object.keys(node.slots || {})) {
+      const slotId = node.slots?.[key]
+      const child = getNode(slotId)
+      if (child) {
+        const children = getReactionableSchemas(child as ITreeNode<unknown, IControllerMeta>)
+        activeNodes?.push(...children)
+      }
+    }
+    return nodes
+  }, [getNode])
+
+  const getSchemaTreeOfView = useCallback((id: string) => {
+    const doc = docs?.find(doc => doc.id === id)
+    const rootNode = doc?.getRootNode()
+    if (rootNode) {
+      return getReactionableSchemas(rootNode as ITreeNode<unknown, IControllerMeta>)
+    }
+
+  }, [docs, getReactionableSchemas])
+
+  return getSchemaTreeOfView
+}

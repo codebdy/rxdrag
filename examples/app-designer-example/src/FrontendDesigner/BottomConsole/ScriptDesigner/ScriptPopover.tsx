@@ -12,12 +12,13 @@ export const ScriptPopover = memo((
     scope?: FxScope,
     type: LogicType,
     ownerId?: ID,
+    moduleId?: ID,
     open?: boolean,
     onOpenChange?: (open?: boolean) => void,
     script?: IScript,
   }
 ) => {
-  const { title, scope, type, ownerId, open, onOpenChange, script } = props;
+  const { title, scope, type, ownerId, moduleId, open, onOpenChange, script } = props;
   const [form] = Form.useForm()
 
   const [saveFx, { loading }] = useSaveScript({
@@ -43,11 +44,11 @@ export const ScriptPopover = memo((
   const handleConfirm = useCallback(() => {
     form.validateFields().then((value) => {
       const newFx: IScript = !script
-        ? { id: createId(), ...value, scope, ownerId, type }
+        ? { id: createId(), ...value, scope, ownerId, moduleId, type }
         : { ...script, ...value }
       saveFx(newFx)
     })
-  }, [form, script, ownerId, saveFx, scope, type])
+  }, [form, script, scope, ownerId, moduleId, type, saveFx])
 
   return (
     <Popover

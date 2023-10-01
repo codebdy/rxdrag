@@ -14,6 +14,7 @@ export const RootLabel = memo(() => {
         <ScriptPopover
           title="添加脚本"
           ownerId={module?.id}
+          moduleId={module?.id}
           type={LogicType.normal}
           open={open}
           onOpenChange={setOpen}

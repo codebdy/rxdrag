@@ -10,6 +10,7 @@ export const FlowPopover = memo((
   props: {
     scope?: FxScope,
     ownerId?: ID,
+    moduleId?: ID,
     open?: boolean,
     onOpenChange?: (open?: boolean) => void,
     flow?: IFlow,
@@ -17,7 +18,7 @@ export const FlowPopover = memo((
     type?: LogicType,
   }
 ) => {
-  const { scope, ownerId, open, onOpenChange, flow, title, type } = props;
+  const { scope, ownerId, moduleId, open, onOpenChange, flow, title, type } = props;
   const [form] = Form.useForm()
 
   const [save, { loading }] = useSaveFlow({
@@ -43,11 +44,11 @@ export const FlowPopover = memo((
   const handleConfirm = useCallback(() => {
     form.validateFields().then((value) => {
       const newFx: IFlow = !flow
-        ? { id: createId(), ...value, scope, ownerId, type }
+        ? { id: createId(), ...value, scope, ownerId, moduleId, type }
         : { ...flow, ...value }
       save(newFx)
     })
-  }, [form, flow, scope, ownerId, type, save])
+  }, [form, flow, scope, ownerId, moduleId, type, save])
 
   return (
     <Popover

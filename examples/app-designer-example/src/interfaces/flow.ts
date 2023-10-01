@@ -27,6 +27,7 @@ export interface IFlow {
   ownerId: ID,
   type: LogicType,
   metas?: ILogicFlowMetas,
+  moduleId?: ID,
 }
 
 export interface IScript {
@@ -36,4 +37,5 @@ export interface IScript {
   scope: FxScope,
   ownerId: ID,
   type: LogicType,
+  moduleId?: ID,
 }
