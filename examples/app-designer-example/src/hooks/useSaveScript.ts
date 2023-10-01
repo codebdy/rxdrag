@@ -4,7 +4,7 @@ import { Entities } from "./events/entityName";
 import { IScript } from "../interfaces/flow";
 import { allScripts } from "../data/logic";
 
-export function useSaveScript(options: {
+export function useSaveScript(options?: {
   onComplate?: () => void
 }): [(script: IScript) => void, { loading?: boolean, script?: IScript }] {
   const [script, setScript] = useState<IScript>()

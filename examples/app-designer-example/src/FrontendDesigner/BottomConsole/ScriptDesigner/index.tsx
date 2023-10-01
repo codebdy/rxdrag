@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from "react"
+import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
 import { Button, Tooltip } from "antd"
 import { CloseOutlined, CodeOutlined, FunctionOutlined } from "@ant-design/icons"
@@ -14,6 +14,7 @@ import Editor from 'react-monaco-editor';
 import { useThemeMode } from "@rxdrag/react-core"
 import { NavButton } from "../common/NavButton"
 import { useQueryScript } from "../../../hooks/useQueryScript"
+import { useSaveScript } from "../../../hooks/useSaveScript"
 
 const Content = styled.div`
   display: flex;
@@ -49,8 +50,15 @@ export const ScriptDesigner = memo(() => {
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
   const [selectedScript, setSelectedScript] = useState<ID>()
   const [selectedFx, setSelectedFx] = useState<ID>()
+  const [inputValue, setInputValue] = useState<string>("")
   const themeMode = useThemeMode()
   const { script } = useQueryScript(selectedScript || selectedFx || "")
+  const [save, { loading: saving }] = useSaveScript()
+
+  useEffect(() => {
+    setInputValue(script?.code || "")
+  }, [script])
+
   const handleToggleFlows = useCallback(() => {
     setNavType(type => type === NavType.flows ? null : NavType.flows)
   }, [])
@@ -73,6 +81,16 @@ export const ScriptDesigner = memo(() => {
     setSelectedScript(undefined)
     setSelectedFx(id)
   }, [])
+
+  const handleEditorChange = useCallback((value: string) => {
+    setInputValue(value)
+  }, [])
+
+  const handleSave = useCallback(() => {
+    if (script) {
+      save({ ...script, code: inputValue })
+    }
+  }, [inputValue, save, script])
 
   return (
     <Container>
@@ -147,19 +165,26 @@ export const ScriptDesigner = memo(() => {
             {selectedFx ? <FunctionOutlined /> : <CodeOutlined />}
             <span className="text">{script?.name}</span>
           </ToolbarTitle>
-          <Button type="primary">保存</Button>
+          <Button
+            type="primary"
+            loading={saving}
+            disabled={script?.code === inputValue}
+            onClick={handleSave}
+          >
+            保存
+          </Button>
         </Toolbar>
         <EditorContainer>
           <Editor
             height="100%"
             language="javascript"
-            defaultValue="// some comment"
+            value={inputValue}
             options={{
               theme: themeMode === "dark" ? "vs-dark" : "light",
               //不起作用，有空解决
               automaticLayout: true,
             }}
-          //onChange={handleEditorChange}
+            onChange={handleEditorChange}
           />
         </EditorContainer>
       </Content>
