@@ -3,9 +3,9 @@ import { PopupButton } from "../../PopupButton";
 import { Drawer as AntdDrawer } from "antd"
 import { RXID_ATTR_NAME } from "@rxdrag/core";
 import { useNode, useCurrentNode, useDesignerEngine, useDocument } from "@rxdrag/react-core";
-import { DrawerProps } from "@rxdrag/react-antd-components";
+import { DrawerGroupProps } from "@rxdrag/react-antd-components";
 
-export const DrawerDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerProps & { [RXID_ATTR_NAME]?: string }, ref) => {
+export const DrawerGroupDesigner = memo(forwardRef<HTMLDivElement>((props: DrawerGroupProps & { [RXID_ATTR_NAME]?: string }, ref) => {
   const {
     title,
     content,

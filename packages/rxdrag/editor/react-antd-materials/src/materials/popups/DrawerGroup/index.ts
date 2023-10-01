@@ -1,20 +1,20 @@
-import { Dialog } from "@rxdrag/react-antd-components";
+import { DrawerGroup } from "@rxdrag/react-antd-components";
 import { IMaterial } from "@rxdrag/react-core";
 import { ButtonMaterial } from "../../Button";
-import { IconViewMaterial } from "../../displays/IconView";
-import { DialogContentMaterial } from "../DialogContent";
-import { DialogFooterMaterial } from "../DialogFooter";
-import { DialogTitleMaterial } from "../DialogTitle";
-import { DialogDesigner } from "./designer";
+import { DrawerContentMaterial } from "../DrawerContent";
+import { DrawerExtraMaterial } from "../DrawerExtra";
+import { DrawerFooterMaterial } from "../DrawerFooter";
+import { DrawerTitleMaterial } from "../DrawerTitle";
+import { DrawerGroupDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
-const name = "Dialog"
-export const DialogMaterial: IMaterial = {
+const name = "DrawerGroup"
+export const DrawerGroupMaterial: IMaterial = {
   componentName: name,
-  component: Dialog,
-  designer: DialogDesigner,
+  component: DrawerGroup,
+  designer: DrawerGroupDesigner,
   designerLocales: locales,
   propsSchema: materialSchema,
   designerProps: {
@@ -30,43 +30,44 @@ export const DialogMaterial: IMaterial = {
         componentName: name,
         slots: {
           title: {
-            componentName: "DialogTitle",
-            children:[
+            componentName: "DrawerTitle",
+            children: [
               {
-                componentName:"Text",
+                componentName: "Text",
                 props: {
                   value: name,
                 }
               }
             ]
           },
+          extra: {
+            componentName: "DrawerExtra",
+          },
           content: {
-            componentName: "DialogContent",
+            componentName: "DrawerContent",
           },
           footer: {
-            componentName: "DialogFooter",
+            componentName: "DrawerFooter",
           },
           actionComponent: {
             componentName: "Button",
             props: {
               title: name,
             },
-          },
-          
+          }
         },
       }
     ]
   },
   slots: {
-    title: DialogTitleMaterial,
-    content: DialogContentMaterial,
-    footer: DialogFooterMaterial,
+    title: DrawerTitleMaterial,
+    extra: DrawerExtraMaterial,
+    content: DrawerContentMaterial,
+    footer: DrawerFooterMaterial,
     actionComponent: ButtonMaterial,
-    icon: IconViewMaterial,
   },
   behaviorRule: {
     droppable: false,
     noPlaceholder: true,
-  },
-  logicalProps:["open"]
+  }
 }

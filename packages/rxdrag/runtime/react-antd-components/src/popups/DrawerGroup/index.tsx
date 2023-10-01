@@ -2,7 +2,7 @@ import { Drawer as AntdDrawer } from "antd";
 import React, { useEffect, useRef } from "react";
 import { CSSProperties, forwardRef, memo, useCallback, useState } from "react"
 
-export type DrawerProps = {
+export type DrawerGroupProps = {
   open?: boolean,
   autoFocus?: boolean,
   bodyStyle?: CSSProperties,
@@ -32,7 +32,7 @@ export type DrawerProps = {
   actionComponent?: React.ReactElement,
 }
 
-export const Drawer = memo(forwardRef<HTMLDivElement>((props: DrawerProps, ref) => {
+export const DrawerGroup = memo(forwardRef<HTMLDivElement>((props: DrawerGroupProps, ref) => {
   const {
     open,
     title,

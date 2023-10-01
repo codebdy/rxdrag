@@ -6,7 +6,7 @@ import { CSSProperties, forwardRef, memo, useCallback } from "react"
 /**
  * 本组件强依赖控制器
  *  */
-export type DialogProps = {
+export type DialogGroupProps = {
   open?: boolean,
   title?: React.ReactElement,
   style?: CSSProperties,
@@ -28,7 +28,7 @@ export type DialogProps = {
   actionComponent?: React.ReactElement,
 }
 
-export const Dialog = memo(forwardRef<HTMLDivElement>((props: DialogProps, ref) => {
+export const DialogGroup = memo(forwardRef<HTMLDivElement>((props: DialogGroupProps, ref) => {
   const {
     open,
     title,

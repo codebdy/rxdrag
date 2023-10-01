@@ -1,5 +1,5 @@
 import { RXID_ATTR_NAME } from "@rxdrag/core";
-import { DialogProps } from "@rxdrag/react-antd-components";
+import { DialogGroupProps } from "@rxdrag/react-antd-components";
 import { useNode, useCurrentNode, useDesignerEngine, useDocument } from "@rxdrag/react-core";
 import { Modal } from "antd";
 import { forwardRef, memo, useCallback, useRef, useState } from "react"
@@ -7,7 +7,7 @@ import { CloseButton } from "../../CloseButton";
 import { PopupButton } from "../../PopupButton";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const DialogDesigner = memo(forwardRef<HTMLDivElement>((props: DialogProps & { [RXID_ATTR_NAME]?: string }, ref) => {
+export const DialogGroupDesigner = memo(forwardRef<HTMLDivElement>((props: DialogGroupProps & { [RXID_ATTR_NAME]?: string }, ref) => {
   const {
     title,
     content,
