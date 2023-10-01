@@ -53,6 +53,7 @@ export const Logic = memo((
   useEffect(() => {
     const action: SetMetasAction = { type: ActionType.SET_METAS, payload: { nodes: value?.nodes || [], lines: value?.lines || [] } }
     store?.dispatch(action)
+
   }, [emptyMetas, value, store])
 
   return null

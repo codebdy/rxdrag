@@ -33,8 +33,12 @@ export const FlowEditor = memo((
     setInputValue(flow?.metas || emptyValue)
   }, [flow?.metas,])
 
-  const { changeFlag } = useChangeFlag()
-  const [save, { loading: saving }] = useSaveFlow()
+  const { changeFlag, setChangeFlag } = useChangeFlag()
+  const [save, { loading: saving }] = useSaveFlow({
+    onComplate: () => {
+      setChangeFlag(0)
+    }
+  })
 
   const handleSave = useCallback(() => {
     if (flow) {
