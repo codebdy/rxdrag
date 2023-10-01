@@ -43,10 +43,10 @@ export const ScriptPopover = memo((
 
   const handleConfirm = useCallback(() => {
     form.validateFields().then((value) => {
-      const newFx: IScript = !script
+      const newScript: IScript = !script
         ? { id: createId(), ...value, scope, ownerId, moduleId, type }
         : { ...script, ...value }
-      saveFx(newFx)
+      saveFx(newScript)
     })
   }, [form, script, scope, ownerId, moduleId, type, saveFx])
 

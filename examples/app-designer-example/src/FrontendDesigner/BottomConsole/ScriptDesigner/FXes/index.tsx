@@ -23,7 +23,6 @@ export const FXes = memo((
   const { selected, display, onSelect } = props;
   const frontend = useAppFrontend()
   const module = useModule()
-  console.log("===>FXes", selected)
   const { scripts: moduleFxes } = useQueryScripts(module?.id, LogicType.fx, FxScope.module)
   const { scripts: deviceFxes } = useQueryScripts(frontend?.app?.id, LogicType.fx, FxScope.device)
   const { scripts: appFxes } = useQueryScripts(frontend?.app?.id, LogicType.fx, FxScope.app)
