@@ -13,6 +13,7 @@ export const AppMaterial: IMaterial = {
   behaviorRule: {
     droppable: true,
     freedomContainer: true,
+    noPlaceholder: true,
   },
   setters: {
     ThemeTokenSetter

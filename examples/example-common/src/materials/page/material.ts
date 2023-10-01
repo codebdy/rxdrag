@@ -12,5 +12,6 @@ export const PageMaterial: IMaterial = {
   designerLocales: pageLocales,
   behaviorRule: {
     droppable: true,
+    noPlaceholder: true,
   }
 }
