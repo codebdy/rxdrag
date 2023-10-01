@@ -1,5 +1,9 @@
 import { forwardRef, memo } from "react";
-import "./style.less"
+import styled from "styled-components";
+
+const TitleContainer = styled.div`
+    flex: 1;
+`
 
 export type DrawerTitleProps = {
   className?: string,
@@ -8,7 +12,7 @@ export type DrawerTitleProps = {
 
 export const DrawerTitle = memo(forwardRef<HTMLDivElement>((props: DrawerTitleProps, ref) => {
   const { children, ...other } = props;
-  return <div className="drawer-title" ref={ref} {...other}>
+  return <TitleContainer className="drawer-title" ref={ref} {...other}>
     {children}
-  </div>
+  </TitleContainer>
 }))

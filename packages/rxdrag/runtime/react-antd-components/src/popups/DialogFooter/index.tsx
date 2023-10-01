@@ -1,5 +1,11 @@
 import React, { forwardRef, memo } from "react"
-import "./style.less"
+import styled from "styled-components"
+
+const Footer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`
 
 export type DialogFooterProps = {
   className?: string,
@@ -8,7 +14,7 @@ export type DialogFooterProps = {
 
 export const DialogFooter = memo(forwardRef<HTMLDivElement>((props: DialogFooterProps, ref) => {
   const { children, ...other } = props;
-  return <div className="rx-dialog-footer" ref={ref} {...other}>
+  return <Footer className="rx-dialog-footer" ref={ref} {...other}>
     {children}
-  </div>
+  </Footer>
 }))
