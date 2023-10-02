@@ -38,8 +38,8 @@ export const ComponentTree = memo((
   const getOneNode = useCallback((rNode: ReactionableNode): DataNode => {
     const isArray = rNode.node.meta?.["x-field"]?.type === "array"
     const ctrlMeta = rNode.node.meta?.["x-controller"]
-    const isInArray = !(isArray && flow?.ownerId !== ctrlMeta?.id)
-    const children = !isInArray ? [] : rNode.children?.map(child => getOneNode(child))
+    const isInArray = isArray && flow?.ownerId === ctrlMeta?.id && !!ctrlMeta?.id
+    const children = (isInArray || !isArray) ? rNode.children?.map(child => getOneNode(child)) : []
     const title = ctrlMeta?.name || rNode.node.title;
     const comMaterial = engine?.getComponentManager().getComponentConfig(rNode.node.meta.componentName || "") as IMaterial | undefined
 
