@@ -2,7 +2,6 @@ import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
 
 const options: SchemaOptions = {
-  isArray: true,
   propSchemas: [
     {
       componentName: "Switch",

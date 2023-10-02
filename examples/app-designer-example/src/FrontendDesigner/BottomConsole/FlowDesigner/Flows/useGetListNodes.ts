@@ -3,15 +3,16 @@ import { IControllerMeta } from "@rxdrag/minions-runtime-react";
 import { useDesignerEngine, useGetNode } from "@rxdrag/react-core";
 import { useCallback } from "react";
 import { ListNode } from "./ListNode";
+import { IFieldMeta } from "@rxdrag/fieldy";
 
-export function useGetListNodes(){
+export function useGetListNodes() {
   const engine = useDesignerEngine()
   const docs = engine?.getAllDocuments()
   const getNode = useGetNode()
-  const getReactionableSchemas = useCallback((node: ITreeNode<unknown, IControllerMeta>) => {
+  const getReactionableSchemas = useCallback((node: ITreeNode<IFieldMeta, IControllerMeta>) => {
     const nodes: ListNode[] = []
     let activeNodes = nodes
-    if (node.meta["x-controller"]?.enable && node.meta["x-controller"]?.isArray) {
+    if (node.meta["x-controller"]?.enable && (node.meta["x-field"])?.type === "array") {
       const rNode: ListNode = {
         node: node,
         children: []
@@ -24,7 +25,7 @@ export function useGetListNodes(){
     for (const childId of node.children) {
       const child = getNode(childId)
       if (child) {
-        const children = getReactionableSchemas(child as ITreeNode<unknown, IControllerMeta>)
+        const children = getReactionableSchemas(child as ITreeNode<IFieldMeta, IControllerMeta>)
         activeNodes.push(...children)
       }
     }
@@ -34,7 +35,7 @@ export function useGetListNodes(){
       const slotId = node.slots?.[key]
       const child = getNode(slotId)
       if (child) {
-        const children = getReactionableSchemas(child as ITreeNode<unknown, IControllerMeta>)
+        const children = getReactionableSchemas(child as ITreeNode<IFieldMeta, IControllerMeta>)
         activeNodes?.push(...children)
       }
     }
@@ -45,7 +46,7 @@ export function useGetListNodes(){
     const doc = docs?.find(doc => doc.id === id)
     const rootNode = doc?.getRootNode()
     if (rootNode) {
-      return getReactionableSchemas(rootNode as ITreeNode<unknown, IControllerMeta>)
+      return getReactionableSchemas(rootNode as ITreeNode<IFieldMeta, IControllerMeta>)
     }
 
   }, [docs, getReactionableSchemas])

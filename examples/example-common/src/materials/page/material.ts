@@ -13,5 +13,13 @@ export const PageMaterial: IMaterial = {
   behaviorRule: {
     droppable: true,
     noPlaceholder: true,
+  },
+  controller: {
+    events: [
+      {
+        name: "onInit",
+        label: "$onInit",
+      }
+    ]
   }
 }

@@ -50,7 +50,6 @@ const userList = {
       "x-controller": {
         "id": "JClydKG7",
         "name": "用户列表",
-        "isArray": true,
         "enable": true
       },
       "slots": {},
@@ -101,6 +100,60 @@ const userList = {
 
 const mole = {
   "componentName": "Page",
+  "x-controller": {
+    "id": "PAG2t2Ur",
+    "enable": true,
+    "name": "页面"
+  },
+  "slots": {},
+  "children": [
+    {
+      "componentName": "Row",
+      "props": {},
+      "slots": {},
+      "children": [
+        {
+          "componentName": "ArrayPanel",
+          "x-field": {
+            "type": "array"
+          },
+          "x-controller": {
+            "id": "KiE-KrsA",
+            "enable": true,
+            "name": "数组容器"
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Col",
+              "props": {
+                "span": 4
+              },
+              "slots": {},
+              "children": [
+                {
+                  "componentName": "Button",
+                  "props": {
+                    "type": "primary",
+                    "title": "地鼠",
+                    "shape": "circle",
+                    "size": "large"
+                  },
+                  "x-controller": {
+                    "id": "NpLxKVZs",
+                    "enable": true,
+                    "name": "地鼠"
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 
 const moleSetting = {

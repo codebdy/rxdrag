@@ -7,7 +7,6 @@ import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
 export type SchemaOptions = {
   propSchemas?: INodeSchema<IFieldMeta, ILogicFlowControllerMeta>[];
   slotSchemas?: ISlotSchema[];
-  isArray?: boolean;
   canBindField?: boolean;
   //后面要删除
   events?: IComponentEvent[];

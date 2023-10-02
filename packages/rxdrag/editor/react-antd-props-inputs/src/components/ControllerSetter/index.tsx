@@ -8,10 +8,9 @@ export const ControllerSetter = memo((
   props: {
     value?: IControllerMeta | null,
     onChange?: (value?: IControllerMeta | null) => void,
-    isArray?: boolean
   }
 ) => {
-  const { value, onChange, isArray } = props;
+  const { value, onChange } = props;
   const t = useSettersTranslate()
   const engine = useDesignerEngine()
   const node = useCurrentNode()
@@ -25,7 +24,6 @@ export const ControllerSetter = memo((
       onChange?.({
         ...value,
         id: value?.id ? value.id : createId(),
-        isArray,
         controllerClass: material?.controller?.controllerClass,
         enable: true,
       })
@@ -34,13 +32,13 @@ export const ControllerSetter = memo((
         onChange?.({ ...value, enable: false })
       }
     }
-  }, [isArray, material?.controller?.controllerClass, onChange, value])
+  }, [material?.controller?.controllerClass, onChange, value])
 
   const handleNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (value) {
-      onChange?.({ ...value, name: e.target.value, isArray })
+      onChange?.({ ...value, name: e.target.value })
     }
-  }, [isArray, onChange, value])
+  }, [onChange, value])
 
   return (
     <>

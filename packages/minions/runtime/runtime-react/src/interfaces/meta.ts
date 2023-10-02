@@ -47,8 +47,6 @@ export interface IControllerMeta {
   id: string;
   //控制器名称
   name?: string;
-  //是否是循环类型
-  isArray?: boolean;
   //是否启用，加这个的目的，是为了禁用再启用后，保证id不变
   enable?: boolean;
   //控制器类名
