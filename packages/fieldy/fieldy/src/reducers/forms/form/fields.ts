@@ -78,7 +78,7 @@ function makeFields(fieldSchemas: IFieldSchema[]) {
         ...flatFields[schema.path],
         id: makeId(),
         ...schema,
-        basePath: schema.path.substring(0, schema.path.length - (schema.name?.length || 0) - 1),
+        basePath: schema.path.substring(0, schema.path.length - (schema.name?.toString().length || 0) - 1),
         mounted: true,
         meta: schema,
         display: extractValue(schema?.reactionMeta?.display) as DisplayType | undefined,

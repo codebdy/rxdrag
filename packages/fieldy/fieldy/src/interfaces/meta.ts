@@ -79,7 +79,8 @@ export interface IValidateSchema {
 export interface IFieldMeta<ValidateRules extends IValidateSchema = IValidateSchema> {
   //类型：对象、数组、常规
   type?: FieldType;
-  name?: string;
+  //数组行数据是数字
+  name?: string | number;
   label?: string;
   defaultValue?: unknown;
   //校验规则

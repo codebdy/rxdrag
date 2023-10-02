@@ -86,7 +86,9 @@ export const activityMaterialLocales = {
     contextRead: "读上下文",
     httpRequest: "HTTP请求",
     graphqlRequest: "GraphQL",
-    entifyRequest: "模型操作"
+    entifyRequest: "模型操作",
+    readCurrentIndex: "读取当前索引",
+    readCurrentRow: "读取当前行",
   },
   'en-US': {
     basicAcitivites: "Basic Reactions",
@@ -176,6 +178,8 @@ export const activityMaterialLocales = {
     contextRead: "Context Read",
     httpRequest: "HTTP Req",
     graphqlRequest: "GraphQL Req",
-    entifyRequest: "Model Operate"
+    entifyRequest: "Model Operate",
+    readCurrentIndex: "Read current index",
+    readCurrentRow: "Read current row",
   }
 }

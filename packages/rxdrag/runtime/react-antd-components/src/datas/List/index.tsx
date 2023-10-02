@@ -2,7 +2,7 @@ import React, { memo, useCallback, useState } from "react"
 import { List as AntdList, ListProps } from "antd"
 import { IDataSource } from "../IDataSource"
 import { createId } from "@rxdrag/shared"
-import { ArrayField, Field, ObjectField } from "@rxdrag/react-fieldy"
+import { ArrayField, ObjectField } from "@rxdrag/react-fieldy"
 
 export type ListAddonProps = {
   renderItem?: React.ReactElement,
@@ -21,7 +21,6 @@ export const List = memo((props: ListProps<unknown> & ListAddonProps) => {
 
   return (
     <ArrayField name={id} value={dataSource?.nodes}>
-
       <AntdList
         dataSource={dataSource?.nodes}
         pagination={
@@ -35,7 +34,6 @@ export const List = memo((props: ListProps<unknown> & ListAddonProps) => {
         }
         renderItem={(_, index) => (
           <ObjectField name={index.toString()}>
-            <Field name="index" value={index} />
             {renderItem}
           </ObjectField>
         )}

@@ -48,7 +48,8 @@ export type FormValueChangeListener = (value: FormValue | undefined) => void
 export type FieldState = {
   //自动生成id，用于组件key值
   id: string;
-  name?: string;
+  //数组行数据是数字
+  name?: string | number;
   basePath?: string;
   path: string;
   initialized?: boolean;//字段是否已被初始化

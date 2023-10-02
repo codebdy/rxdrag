@@ -24,7 +24,7 @@ import { Table as AntdTable, TablePaginationConfig } from "antd"
 import { IDataSource } from "../IDataSource"
 import { createId } from "@rxdrag/shared";
 import { ComponentView, useComponentSchema } from "@rxdrag/react-runner";
-import { ArrayField, Field, ObjectField, useFieldValue } from "@rxdrag/react-fieldy";
+import { ArrayField, ObjectField, useFieldValue } from "@rxdrag/react-fieldy";
 import { IFieldMeta } from "@rxdrag/fieldy";
 
 interface RowProps {
@@ -100,7 +100,6 @@ export const Table = memo((
     return (
       index !== undefined
         ? <ObjectField name={index?.toString() || ""} value={row}>
-          <Field name="index" value={index} />
           <tr {...other} />
         </ObjectField>
         : <tr {...other} />

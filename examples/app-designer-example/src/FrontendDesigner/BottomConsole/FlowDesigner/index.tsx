@@ -1,6 +1,6 @@
 import { ReactNode, memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
-import { Button, Tooltip, theme } from "antd"
+import { Button, Spin, Tooltip, theme } from "antd"
 import { FunctionOutlined, ControlOutlined, CloseOutlined, PartitionOutlined, NodeIndexOutlined } from "@ant-design/icons"
 import { FXes } from "./FXes"
 import { Flows } from "./Flows"
@@ -22,6 +22,7 @@ import { variableIcon } from "../icons"
 import { Variables } from "./Variables"
 import { variableActivities } from "../minion-materials/variable"
 import { useModule } from "../../hooks/useModule"
+import { useQueryFlow } from "../../../hooks/useQueryFlow"
 
 const Content = styled.div`
   flex: 1;
@@ -42,7 +43,7 @@ export const FlowDesigner = memo(() => {
   const [selectedFlow, setSelectedFolw] = useState<ID>()
   const [selectedFx, setSelectedFx] = useState<ID>()
   const engine = useDesignerEngine()
-
+  const { flow, loading } = useQueryFlow(selectedFlow || selectedFx || "")
   const { token } = theme.useToken()
   const themMode = useThemeMode()
   const module = useModule()
@@ -197,6 +198,7 @@ export const FlowDesigner = memo(() => {
             <Toolbox materialCategories={activityMaterialCategories} />
           }
           <ComponentTree
+            flow={flow}
             display={navType === NavType.componentTree}
           />
           <Flows
@@ -217,9 +219,12 @@ export const FlowDesigner = memo(() => {
           {
             (selectedFlow || selectedFx) &&
             <FlowEditor
-              flowId={selectedFlow || selectedFx || ""}
+              flow={flow}
               icon={selectedFx ? <FunctionOutlined /> : <NodeIndexOutlined />}
             />
+          }
+          {
+            loading && <Spin spinning={loading} />
           }
         </Content>
       </Container>
