@@ -23,6 +23,7 @@ import { Variables } from "./Variables"
 import { variableActivities } from "../minion-materials/variable"
 import { useModule } from "../../hooks/useModule"
 import { useQueryFlow } from "../../../hooks/useQueryFlow"
+import { arrayActivities } from "../minion-materials/array"
 
 const Content = styled.div`
   flex: 1;
@@ -50,7 +51,7 @@ export const FlowDesigner = memo(() => {
 
   const materials = useMemo(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const materials: IActivityMaterial<ReactNode>[] = [...(controllerActivities as any), ...variableActivities]
+    const materials: IActivityMaterial<ReactNode>[] = [...(controllerActivities as any), ...arrayActivities, ...variableActivities]
     return materials.concat(...activityMaterialCategories.map(category => category.materials))
   }, [])
 

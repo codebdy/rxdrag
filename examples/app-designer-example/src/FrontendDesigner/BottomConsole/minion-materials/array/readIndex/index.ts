@@ -4,10 +4,11 @@ import { IControllerConfig, IControllerMeta, ReadIndex } from "@rxdrag/minions-r
 import { IRxDragActivityMaterial } from "../../interfaces"
 import { LogicflowContextParam } from "../../../types"
 import { getControllerComponentInfo } from "../../controller/utils"
-import { methodIcon } from "../../icons"
+import { numIcon } from "../../icons"
 
 export const readIndexMaterial: IRxDragActivityMaterial<IControllerConfig, LogicflowContextParam> = {
   label: "$readCurrentIndex",
+  icon: numIcon,
   activityType: NodeType.Activity,
   activityName: ReadIndex.NAME,
   defaultPorts: {
@@ -15,20 +16,16 @@ export const readIndexMaterial: IRxDragActivityMaterial<IControllerConfig, Logic
       {
         id: createId(),
         name: "input",
-        label: "$readCurrentIndex",
+        label: "",
       },
     ],
     outPorts: [
       {
         id: createId(),
         name: "output",
-        label: "$index",
+        label: "",
       },
     ],
-  },
-  icon: (config?: IControllerConfig, context?: LogicflowContextParam) => {
-    const { material } = getControllerComponentInfo(config?.param, context?.engine)
-    return material?.resource?.icon || methodIcon
   },
 
   color: (config?: IControllerConfig, context?: LogicflowContextParam) => {

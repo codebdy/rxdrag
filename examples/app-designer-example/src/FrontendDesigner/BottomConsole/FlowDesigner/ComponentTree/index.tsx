@@ -15,7 +15,7 @@ import { getSetPropsNode } from "./getSetPropsNode";
 import { getListenPropNode } from "./getListenPropNode";
 import { getEventNodes } from "./getEventNodes";
 import { getReactionNodes } from "./getReactionNodes";
-import { getArrayNodes } from "./getArrayNodes";
+import { useGetArrayNodes } from "./getArrayNodes";
 
 const { DirectoryTree } = Tree;
 
@@ -34,6 +34,7 @@ export const ComponentTree = memo((
   const module = useModule()
   const engine = useDesignerEngine()
   const getSchemaTreeOfView = useGetSchemaTreeOfView()
+  const getArrayNodes = useGetArrayNodes()
 
   const getOneNode = useCallback((rNode: ReactionableNode): DataNode => {
     const isArray = rNode.node.meta?.["x-field"]?.type === "array"
@@ -61,7 +62,7 @@ export const ComponentTree = memo((
         ...getEventNodes(rNode, engine, comMaterial),
       ]
     }
-  }, [engine, flow?.ownerId])
+  }, [engine, flow?.ownerId, getArrayNodes])
 
   const treeData: DataNode[] = useMemo(() => {
     return module?.views?.map(view => ({

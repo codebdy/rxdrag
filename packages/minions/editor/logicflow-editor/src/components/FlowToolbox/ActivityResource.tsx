@@ -8,11 +8,13 @@ import { createId } from "@rxdrag/shared";
 export type ActivityResourceProps = {
   children?: (onMouseDown: ((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void)) => ReactNode,
   material: IActivityMaterial<React.ReactNode>,
-  createNode?: () => IActivityNode
+  createNode?: () => IActivityNode,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  config?: any,
 }
 
 export const ActivityResource = memo((props: ActivityResourceProps) => {
-  const { children, material, createNode } = props
+  const { children, material, createNode, config } = props
   const graph = useGraph()
   const dnd = useDnd()
   const getNodeConfig = useGetNodeConfig()
@@ -27,12 +29,12 @@ export const ActivityResource = memo((props: ActivityResourceProps) => {
       type: material.activityType,
       activityName: material.activityName,
       ...material.defaultPorts,
-      config: material.defaultConfig,
+      config: { ...material.defaultConfig || {}, ...config },
     }
     const node = graph.createNode(getNodeConfig(nodeMeta));
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dnd?.start(node, e.nativeEvent as any);
-  }, [createNode, dnd, getNodeConfig, graph, material])
+  }, [config, createNode, dnd, getNodeConfig, graph, material.activityName, material.activityType, material.defaultConfig, material.defaultPorts, material.label])
 
   return <>
     {children?.(handleDrag)}
