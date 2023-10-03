@@ -4,7 +4,7 @@ import { memo } from "react"
 
 
 //对iframe的封装，附加engine
-export const IPreviewFrame = memo((
+export const PreviewIFrame = memo((
   props: IframeHTMLAttributes<HTMLIFrameElement> 
 ) => {
   const { src, style, ...rest } = props;

@@ -1,4 +1,4 @@
-import { IFramePreview } from "@rxdrag/react-antd-shell"
+import { IFrameZoomablePreview } from "@rxdrag/react-antd-shell"
 import { ControllerFactories } from "@rxdrag/react-runner"
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared"
 import { controllerDefines } from "example-common"
@@ -36,6 +36,6 @@ export const DesignerPreview = memo(() => {
     return coms
   }, [device, layoutPart])
   return (
-    <IFramePreview components={components} controllerFactories={controllerFactories} />
+    <IFrameZoomablePreview components={components} controllerFactories={controllerFactories} />
   )
 })

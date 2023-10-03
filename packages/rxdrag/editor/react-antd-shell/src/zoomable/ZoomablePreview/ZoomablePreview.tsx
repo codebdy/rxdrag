@@ -1,10 +1,10 @@
 import { memo } from "react"
-import { IPreviewFrame } from "./IPreviewFrame"
+import { PreviewIFrame } from "./PreviewIFrame"
 import styled from "styled-components"
 import { useCanvasConfig } from "@rxdrag/react-core"
 import { usePreviewUrl } from "../../common"
 
-const DocViewContainer = styled.div`
+const ViewContainer = styled.div`
   position: relative;
   width: 800px;
   &.hidden{
@@ -22,14 +22,14 @@ export const ZoomablePreview = memo((
   const previewUrl = usePreviewUrl()
 
   return (
-    <DocViewContainer
+    <ViewContainer
       className={display ? undefined : "hidden"}
       style={{
         width: canvasConfig?.screenWidth,
         height: (canvasConfig?.canvasHeight || 800),
       }}
     >
-      <IPreviewFrame src={previewUrl} />
-    </DocViewContainer>
+      <PreviewIFrame src={previewUrl} />
+    </ViewContainer>
   )
 })
