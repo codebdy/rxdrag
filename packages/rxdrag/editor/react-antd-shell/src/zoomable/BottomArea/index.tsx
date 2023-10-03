@@ -47,6 +47,12 @@ const BottomShell = styled(ResizableRow)`
   }
 `
 
+const MiniShell = styled.div`
+  position: absolute;
+  left:${DEFAULT_MARGIN}px;
+  bottom: ${DEFAULT_MARGIN}px;
+`
+
 const NavBar = styled.div`
   position: absolute;
   top:-30px;
@@ -150,77 +156,100 @@ export const BottomArea = memo((
 
 
   return (
-    <BottomShell
-      maxHeight={"calc(100vh - 100px)"}
-      height={collapsed ? minHeight : height}
-      minHeight={minHeight}
-      style={{
-        width: `calc(100% - ${rightSpace + leftSpace}px)`,
-        zIndex: 1,
-        left: leftSpace,
-      }}
-      onHeightChange={setHeight}
-    >
-      <NavBar>
-        <FloatNodeNav />
-      </NavBar>
-      <Toolbar>
+    items?.length
+      ? <BottomShell
+        maxHeight={"calc(100vh - 100px)"}
+        height={collapsed ? minHeight : height}
+        minHeight={minHeight}
+        style={{
+          width: `calc(100% - ${rightSpace + leftSpace}px)`,
+          zIndex: 1,
+          left: leftSpace,
+        }}
+        onHeightChange={setHeight}
+      >
+        <NavBar>
+          <FloatNodeNav />
+        </NavBar>
+        <Toolbar>
+          {
+            activedDocument && <BottomActions>
+              <ReundoIcons />
+              <Divider type="vertical" />
+              <AuxButtions />
+              <Divider type="vertical" />
+              <ViewButtons />
+            </BottomActions>
+          }
+        </Toolbar>
         {
-          activedDocument && <BottomActions>
-            <ReundoIcons />
-            <Divider type="vertical" />
-            <AuxButtions />
-            <Divider type="vertical" />
-            <ViewButtons />
-          </BottomActions>
+          !!items?.length &&
+          <Tabs
+            size="small"
+            onTabClick={handleTabClick}
+            tabBarExtraContent={
+              <Space>
+                {extra}
+                <Button
+                  type="text"
+                  size="small"
+                  icon={
+                    collapsed
+                      ? <BorderOutlined />
+                      : <MinusOutlined />
+                  }
+                  onClick={handleToggleHeight}
+                />
+              </Space>
+            }
+            items={items}
+          />
         }
-      </Toolbar>
-      {
-        !!items?.length &&
-        <Tabs
-          size="small"
-          onTabClick={handleTabClick}
-          tabBarExtraContent={
-            <Space>
-              {extra}
-              <Button
-                type="text"
-                size="small"
-                icon={
-                  collapsed
-                    ? <BorderOutlined />
-                    : <MinusOutlined />
-                }
-                onClick={handleToggleHeight}
-              />
-            </Space>
-          }
-          items={items}
-        />
-      }
-      {
-        !propertyMini && !collapsed &&
-        <PinButton
-          icon={
-            rightPinned
-              ? <LeftOutlined />
-              : <RightOutlined />
-          }
-          onClick={handleToggleRightPin}
-        />
-      }
+        {
+          !propertyMini && !collapsed &&
+          <PinButton
+            icon={
+              rightPinned
+                ? <LeftOutlined />
+                : <RightOutlined />
+            }
+            onClick={handleToggleRightPin}
+          />
+        }
 
-      {
-        !toolboxMini && !collapsed &&
-        <LeftPinButton
-          icon={
-            leftPinned
-              ? <RightOutlined />
-              : <LeftOutlined />
+        {
+          !toolboxMini && !collapsed &&
+          <LeftPinButton
+            icon={
+              leftPinned
+                ? <RightOutlined />
+                : <LeftOutlined />
+            }
+            onClick={handleToggleLeftPin}
+          />
+        }
+      </BottomShell>
+      : <MiniShell
+        style={{
+          width: `calc(100% - ${rightSpace + leftSpace}px)`,
+          zIndex: 1,
+          left: leftSpace,
+        }}
+      >
+        <NavBar>
+          <FloatNodeNav />
+        </NavBar>
+        <Toolbar>
+          {
+            activedDocument && <BottomActions>
+              <ReundoIcons />
+              <Divider type="vertical" />
+              <AuxButtions />
+              <Divider type="vertical" />
+              <ViewButtons />
+            </BottomActions>
           }
-          onClick={handleToggleLeftPin}
-        />
-      }
-    </BottomShell>
+        </Toolbar>
+      </MiniShell>
   )
 })
