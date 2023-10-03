@@ -1,9 +1,10 @@
 import { memo } from "react"
 import styled from "styled-components"
-import { Space } from "antd"
+import { Button, Space } from "antd"
 import { Spring, useCanvasUrl } from "../../common"
 import { IFrame, useActivedDocument, useCanvasConfig, useDocument } from "@rxdrag/react-core"
 import classNames from "classnames"
+import { DeleteOutlined } from "@ant-design/icons"
 
 const DocViewContainer = styled.div`
   position: relative;
@@ -74,7 +75,7 @@ export const DocViewInner = memo(() => {
         </CanvasTitle>
         <Spring />
         <Space className="actions">
-          {/* <Button type="text" size="small" shape="circle" icon={<DeleteOutlined />} /> */}
+          <Button type="text" size="small" shape="circle" icon={<DeleteOutlined />} /> 
         </Space>
       </CanvasToolbar>
       <CanvasContent

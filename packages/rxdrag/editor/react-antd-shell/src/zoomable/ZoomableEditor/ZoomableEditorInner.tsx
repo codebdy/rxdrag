@@ -13,6 +13,7 @@ import { DocView } from "../DocView"
 import { ZoomableViewport } from "../ZoomableViewport"
 import { Toolbox } from "../Toolbox"
 import { usePreviewState } from "../contexts"
+import { ZoomablePreview } from "../ZoomablePreview"
 
 const Workspace = styled.div`
   position: relative;
@@ -83,7 +84,7 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
     <Workspace className="zoomable-workspace">
       <ZoomableViewport>
         {
-          <Space size={"large"}>
+          <Space size={"large"} style={{ display: preview ? "none" : undefined }}>
             {
               docs.map(doc => {
                 return (
@@ -93,7 +94,11 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
             }
           </Space>
         }
-
+        {
+          <ZoomablePreview
+            display={preview}
+          />
+        }
       </ZoomableViewport>
       <BottomArea {...bottomConsole} />
       <Toolbox>
