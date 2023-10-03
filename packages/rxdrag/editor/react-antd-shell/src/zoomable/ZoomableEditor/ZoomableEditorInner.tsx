@@ -12,6 +12,7 @@ import { Space, TabsProps } from "antd"
 import { DocView } from "../DocView"
 import { ZoomableViewport } from "../ZoomableViewport"
 import { Toolbox } from "../Toolbox"
+import { usePreviewState } from "../contexts"
 
 const Workspace = styled.div`
   position: relative;
@@ -38,6 +39,7 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
   const { schemas, locales, toolbox, bottomConsole } = props
   const [docs, setDocs] = useState<IDocument[]>([])
   const engine = useDesignerEngine()
+  const [preview] = usePreviewState()
 
   useEffect(() => {
     if (engine) {
@@ -80,15 +82,18 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
   return (
     <Workspace className="zoomable-workspace">
       <ZoomableViewport>
-        <Space size={"large"}>
-          {
-            docs.map(doc => {
-              return (
-                <DocView key={doc.id} doc={doc} />
-              )
-            })
-          }
-        </Space>
+        {
+          <Space size={"large"}>
+            {
+              docs.map(doc => {
+                return (
+                  <DocView key={doc.id} doc={doc} />
+                )
+              })
+            }
+          </Space>
+        }
+
       </ZoomableViewport>
       <BottomArea {...bottomConsole} />
       <Toolbox>
