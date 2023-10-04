@@ -12,7 +12,7 @@ const ViewContainer = styled.div`
   }
   background-color: white;
 `
-export const ZoomablePreview = memo((
+export const ZoomablePreviewPanel = memo((
   props: {
     display?: boolean,
   }

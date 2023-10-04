@@ -1,2 +1,2 @@
 export * from "./PreviewIFrameProxy"
-export * from "./ZoomablePreview"
+export * from "./ZoomablePreviewPanel"

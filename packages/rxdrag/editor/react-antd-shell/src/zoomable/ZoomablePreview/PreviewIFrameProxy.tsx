@@ -32,6 +32,10 @@ export const PreviewIFrameProxy = memo((
     }
   }, [receiveMessageFromParent])
 
+  useEffect(() => {
+    setEngine(window.engine)
+  }, [])
+
   return (
     <Fieldy>
       <InIframeContext.Provider value={true}>

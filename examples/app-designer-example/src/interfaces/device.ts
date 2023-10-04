@@ -10,6 +10,6 @@ export enum DeviceType {
 }
 
 export enum LayoutPart {
-  page = "page",
+  module = "module",
   frame = "frame"
 }

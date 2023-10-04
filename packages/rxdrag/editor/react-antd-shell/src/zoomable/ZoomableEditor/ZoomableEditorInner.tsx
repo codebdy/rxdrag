@@ -13,7 +13,7 @@ import { DocView } from "../DocView"
 import { ZoomableViewport } from "../ZoomableViewport"
 import { Toolbox } from "../Toolbox"
 import { usePreviewState } from "../contexts"
-import { ZoomablePreview } from "../ZoomablePreview"
+import { ZoomablePreviewPanel } from "../ZoomablePreview"
 
 const Workspace = styled.div`
   position: relative;
@@ -95,7 +95,7 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
           </Space>
         }
         {
-          <ZoomablePreview
+          <ZoomablePreviewPanel
             display={preview}
           />
         }

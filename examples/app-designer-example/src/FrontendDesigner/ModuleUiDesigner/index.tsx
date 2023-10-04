@@ -15,8 +15,8 @@ export const ModuleUiDesigner = memo(() => {
   return (
     <EditorScope
       locales={setterLocales}
-      canvasUrl={`${routes.appDesigner}/${CANVAS_URL_PREFIX}/${device}/${LayoutPart.page}`}
-      previewUrl={`${routes.appDesigner}/${PREVIEW_URL_PREFIX}/${device}/${LayoutPart.page}`}
+      canvasUrl={`${routes.appDesigner}/${CANVAS_URL_PREFIX}/${device}/${LayoutPart.module}`}
+      previewUrl={`${routes.appDesigner}/${PREVIEW_URL_PREFIX}/${device}/${LayoutPart.module}`}
       themeMode={themeMode}
       minionOptions={{
         materials: minionsMaterialCategories,
