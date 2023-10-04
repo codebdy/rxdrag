@@ -1,19 +1,19 @@
 import { IReactComponents } from "@rxdrag/react-shared"
 import { memo } from "react"
 import { IFrameZoomablePreviewInner } from "./IFrameZoomablePreviewInner"
-import { ControllerFactories } from "@rxdrag/react-runner"
 import { PreviewIFrameProxy } from "./PreviewIFrameProxy"
+import { ControllerFactory } from "@rxdrag/minions-runtime-react"
 
 export const IFrameZoomablePreview = memo((
   props: {
     components: IReactComponents,
-    controllerFactories?: ControllerFactories,
+    controllers?: ControllerFactory,
   }
 ) => {
-  const { components, controllerFactories } = props
+  const { components, controllers } = props
   return (
     <PreviewIFrameProxy components={components}>
-      <IFrameZoomablePreviewInner controllerFactories={controllerFactories} />
+      <IFrameZoomablePreviewInner controllers={controllers} />
     </PreviewIFrameProxy>
   )
 })

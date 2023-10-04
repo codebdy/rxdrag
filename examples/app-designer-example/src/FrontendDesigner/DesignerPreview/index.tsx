@@ -1,7 +1,5 @@
 import { IFrameZoomablePreview } from "@rxdrag/react-antd-shell"
-import { ControllerFactories } from "@rxdrag/react-runner"
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared"
-import { controllerDefines } from "example-common"
 import { memo, useMemo } from "react"
 import { useParams } from "react-router-dom"
 import { LayoutPart } from "../../interfaces"
@@ -11,14 +9,6 @@ import { isStr } from "@rxdrag/shared"
 
 export const DesignerPreview = memo(() => {
   const { device = "", layoutPart } = useParams()
-
-  const controllerFactories = useMemo(() => {
-    const factories: ControllerFactories = {}
-    for (const ctrlDef of controllerDefines) {
-      factories[ctrlDef.name] = ctrlDef.factory
-    }
-    return factories
-  }, [])
 
   const components = useMemo(() => {
     const materials = layoutPart === LayoutPart.frame ? frameMaterilas[device] : pageMaterials[device]
@@ -36,6 +26,6 @@ export const DesignerPreview = memo(() => {
     return coms
   }, [device, layoutPart])
   return (
-    <IFrameZoomablePreview components={components} controllerFactories={controllerFactories} />
+    <IFrameZoomablePreview components={components} />
   )
 })

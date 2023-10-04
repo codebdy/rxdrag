@@ -9,10 +9,6 @@ const items: MenuProps['items'] = [
     label: <a href={routes.index}>常规编辑器</a>,
     key: routes.index,
   },
-  {
-    label: <a href={routes.inline}>内联编辑器</a>,
-    key: routes.inline,
-  },
   // {
   //   label: 'IFrame内联编辑器',
   //   key: 'iframe',

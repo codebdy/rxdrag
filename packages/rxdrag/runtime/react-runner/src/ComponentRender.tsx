@@ -4,16 +4,16 @@ import { ComponentView, IComponentRenderSchema } from "./ComponentView"
 import { transToRenderSchema } from "./transform"
 import { IFieldMeta } from "@rxdrag/fieldy"
 import { IReactComponents } from "@rxdrag/react-shared"
-import { ControllerFactories, RuntimeRoot } from "./RuntimeRoot"
+import { RuntimeRoot } from "./RuntimeRoot"
 import { ILocalesManager } from "@rxdrag/locales"
 
 export const ComponentRender = memo((props: {
   schema: INodeSchema,
   components: IReactComponents | undefined
-  controllerFactories?: ControllerFactories,
+  //controllerFactories?: ControllerFactories,
   localesManager?: ILocalesManager,//@@ 暂时未用
 }) => {
-  const { schema, components, controllerFactories } = props
+  const { schema, components } = props
   const [node, setNode] = useState<IComponentRenderSchema>()
   useEffect(() => {
     if (schema) {
@@ -27,7 +27,7 @@ export const ComponentRender = memo((props: {
     node ? <RuntimeRoot
       components={components}
       schema={node}
-      controllerFactories={controllerFactories}
+      //controllerFactories={controllerFactories}
     >
       {node && <ComponentView node={node} />}
     </RuntimeRoot>

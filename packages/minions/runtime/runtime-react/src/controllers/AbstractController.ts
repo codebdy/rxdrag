@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IController, EventFunc, EventFuncs, VariableListener, PropsListener, UnListener, PropListener, Controllers } from "../interfaces/controller";
-import { ILogicFlowControllerMeta } from "../interfaces";
 
 
 export abstract class AbstractController implements IController {
@@ -23,11 +22,11 @@ export abstract class AbstractController implements IController {
 
   protected propsListeners: PropsListener[] = []
 
-  constructor(public meta: ILogicFlowControllerMeta) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    this.id = meta.id!
-    this.name = meta.name
-  }
+  // constructor(public meta: ILogicFlowControllerMeta) {
+  //   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  //   this.id = meta.id!
+  //   this.name = meta.name
+  // }
 
   abstract init(controllers: Controllers, context: unknown):void 
   abstract destroy(): void

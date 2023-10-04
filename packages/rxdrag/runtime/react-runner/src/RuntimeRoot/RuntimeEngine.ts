@@ -1,17 +1,17 @@
 
 
-import { ControllerFactory, Controllers, IController, IOldControllerMeta } from "@rxdrag/minions-runtime-react"
+import { Controllers, IController } from "@rxdrag/minions-runtime-react"
 import { IComponentRenderSchema } from "../ComponentView"
 
 //1、以schemaId为key的控制器管理引擎，一个页面一份，防止重复渲染导致的重复数据库访问
 
-export type ControllerFactories = {
-  [type: string]: ControllerFactory | undefined
-}
+// export type ControllerFactories = {
+//   [type: string]: OldControllerFactory | undefined
+// }
 
-type ControllerMetas = {
-  [id: string]: IOldControllerMeta | undefined
-}
+// type ControllerMetas = {
+//   [id: string]: IOldControllerMeta | undefined
+// }
 
 export class RuntimeEngine {
   //所有控制器，注意id为fieldpath + schema id

@@ -3,13 +3,13 @@ import { ReactComponent } from "@rxdrag/react-shared"
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { ControllerContext, ControllersContext } from "../contexts"
 import { useControllers } from "../hooks/useControllers"
-import { Controllers, IController, ILogicFlowControllerMeta as IControllerMeta } from "@rxdrag/minions-runtime-react"
+import { Controllers, IController, IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { useLogicFlowContext } from "../hooks/useLogicFlowContext"
 import { useRuntimeEngine } from "../hooks/useRuntimeEngine"
 import { useControllerKey } from "../hooks/useControllerKey"
 
 export function withController(WrappedComponent: ReactComponent, meta: IControllerMeta | undefined, schemaId: string): ReactComponent {
-  if (!meta?.id || !meta?.controllerType) {
+  if (!meta?.id || !meta?.controllerName) {
     return WrappedComponent
   }
 

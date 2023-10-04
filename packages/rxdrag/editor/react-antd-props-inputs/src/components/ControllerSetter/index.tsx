@@ -24,7 +24,7 @@ export const ControllerSetter = memo((
       onChange?.({
         ...value,
         id: value?.id ? value.id : createId(),
-        controllerClass: material?.controller?.controllerClass,
+        controllerName: material?.controller?.controllerClass,
         enable: true,
       })
     } else {

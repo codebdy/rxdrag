@@ -1,15 +1,16 @@
-import { Preview } from "@rxdrag/react-core"
-import { ControllerFactories, usePreviewComponents } from "@rxdrag/react-runner"
+import { ControllerFactory } from "@rxdrag/minions-runtime-react";
+import { usePreviewComponents } from "@rxdrag/react-runner"
 import { memo } from "react"
+import { ZoomablePreview } from "./ZoomablePreview";
 
 export const IFrameZoomablePreviewInner = memo((
   props: {
-    controllerFactories?: ControllerFactories,
+    controllers?: ControllerFactory,
   }
 ) => {
-  const { controllerFactories = {} } = props;
+  const { controllers } = props;
   const components = usePreviewComponents()
   return (
-    <Preview components={components} controllerFactories={controllerFactories} />
+    <ZoomablePreview components={components} controllers={controllers} />
   )
 })

@@ -1,5 +1,4 @@
 export * from "./components"
-export * from "./controller"
 export * from "./hooks"
 export * from "./httpquery"
 export * from "./materials"

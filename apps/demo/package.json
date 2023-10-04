@@ -31,7 +31,6 @@
     "example-common": "workspace:*",
     "controller-editor-example": "workspace:*",
     "logicflow-editor-example": "workspace:*",
-    "inline-editor-example": "workspace:*",
     "normal-editor-example": "workspace:*",
     "runtime-example": "workspace:*",
     "large-screen-example": "workspace:*",
