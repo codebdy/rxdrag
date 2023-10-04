@@ -15,6 +15,7 @@ export type SuccessListener = (value: unknown) => void
 export type Unsubscribe = () => void
 
 export interface IFormProps {
+  name?: string,
   value?: object,	//表单值	Object	{}
   initialValue?: object, 	//表单默认值	Object	{}
   pattern?: PatternType, //	表单交互模式	

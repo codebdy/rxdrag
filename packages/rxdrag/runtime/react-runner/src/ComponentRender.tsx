@@ -23,6 +23,8 @@ export const ComponentRender = memo((props: {
     }
   }, [schema])
 
+  console.log("====>ComponentRender", node, schema)
+
   return (
     node ? <RuntimeRoot
       components={components}

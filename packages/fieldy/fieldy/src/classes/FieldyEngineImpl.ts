@@ -32,7 +32,7 @@ export class FieldyEngineImpl implements IFieldyEngine {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   createForm(_options?: IFormProps): IForm {
-    const name = makeId()
+    const name = _options?.name || makeId()
     this.dispatch({
       type: CREATE_FORM,
       payload: {

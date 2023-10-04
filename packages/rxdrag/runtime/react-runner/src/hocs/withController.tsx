@@ -43,12 +43,12 @@ export function withController(WrappedComponent: ReactComponent, meta: IControll
     }, [controllerKey, controllers, handlePropsChange, logicFlowContext, runtimeEngine])
     const newControllers: Controllers = useMemo(() => {
       return controller ? { ...controllers, [controller.id]: controller } : controllers
-    }, [controller, controllers])
+    }, [controller, controllers]);
 
     const newProps = useMemo(() => {
       return { ...props, ...controller?.events, ...changedProps }
-    }, [changedProps, controller?.events, props])
-
+    }, [changedProps, controller?.events, props]);
+    controller.log("===>withController", controller);
     return (
       controller
         ? <ControllersContext.Provider value={newControllers}>

@@ -1,9 +1,7 @@
 import { IDesignerEngine } from "@rxdrag/core";
 import { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
-import { IReactComponents } from "@rxdrag/react-shared";
-import { Fieldy } from "@rxdrag/react-fieldy";
-import { PreviewComponentsContext } from "@rxdrag/react-runner";
+import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy";
 import { IFrameCanvasEvent, EVENT_IFRAME_READY, InIframeContext, DesignerEngineContext, Scroller } from "@rxdrag/react-core";
 
 declare const window: Window & { engine?: IDesignerEngine };
@@ -11,11 +9,10 @@ declare const window: Window & { engine?: IDesignerEngine };
 //尽量放在Ifame的顶层
 export const PreviewIFrameProxy = memo((
   props: {
-    components: IReactComponents
     children?: React.ReactNode,
   }
 ) => {
-  const { components, children } = props;
+  const { children } = props;
   const [engine, setEngine] = useState<IDesignerEngine>()
   const receiveMessageFromParent = useCallback((event: MessageEvent<IFrameCanvasEvent>) => {
     // 监听父窗口 ready 事件
@@ -38,14 +35,14 @@ export const PreviewIFrameProxy = memo((
 
   return (
     <Fieldy>
-      <InIframeContext.Provider value={true}>
-        <DesignerEngineContext.Provider value={engine}>
-          <PreviewComponentsContext.Provider value={components}>
+      <VirtualForm name="root">
+        <InIframeContext.Provider value={true}>
+          <DesignerEngineContext.Provider value={engine}>
             {engine ? children : <></>}
             <Scroller />
-          </PreviewComponentsContext.Provider>
-        </DesignerEngineContext.Provider>
-      </InIframeContext.Provider>
+          </DesignerEngineContext.Provider>
+        </InIframeContext.Provider>
+      </VirtualForm>
     </Fieldy>
   )
 })

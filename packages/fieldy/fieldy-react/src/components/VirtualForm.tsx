@@ -4,24 +4,25 @@ import { FieldContext, FormContext } from "../contexts"
 import { useFieldy } from "../hooks"
 
 export const VirtualForm = (props: {
+  name?: string,
   initialValue?: FormValue | undefined,
   defaultValue?: FormValue | undefined,
   value?: FormValue | undefined,
   onValueChange?: (value?: FormValue | undefined) => void,
   children?: React.ReactNode
 }) => {
-  const { initialValue, defaultValue, value, children, onValueChange } = props
+  const { name, initialValue, defaultValue, value, children, onValueChange } = props
   const [form, setForm] = useState<IForm>()
   const fieldy = useFieldy()
   useEffect(() => {
     if (fieldy) {
-      const form = fieldy.createForm()
+      const form = fieldy.createForm({ name })
       setForm(form)
       return () => {
         fieldy.removeForm(form.name)
       }
     }
-  }, [fieldy])
+  }, [fieldy, name])
 
   useEffect(() => {
     if (fieldy && form) {
