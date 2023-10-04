@@ -44,7 +44,7 @@
     "@rxdrag/react-fieldy": "workspace:*",
     "@rxdrag/minions-schema": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
-    "@rxdrag/minions-controller-editor": "workspace:*",
+    "@rxdrag/minions-logicflow-editor": "workspace:*",
     "react-monaco-editor": "^0.54.0",
     "lodash": "^4.17.21",
     "styled-components": "^5.3.9"

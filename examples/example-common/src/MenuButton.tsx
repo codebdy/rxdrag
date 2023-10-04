@@ -21,10 +21,6 @@ const items: MenuProps['items'] = [
     label: <a href={routes.logicflow}>编排编辑器</a>,
     key: routes.logicflow,
   },
-  {
-    label: <a href={routes.controller}>控制器编辑器</a>,
-    key: routes.controller,
-  },
   // {
   //   label: <a href={"#"}>工作流表单编辑器</a>,
   //   key: 'workflow',

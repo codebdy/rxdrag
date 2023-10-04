@@ -8,7 +8,6 @@ packages:
   - 'packages/fieldy/*'
   - 'packages/fieldy-minions/*'
   - 'packages/minions/*'
-  - 'packages/minions/editor/*'
   - 'packages/minions/runtime/*'
   - 'packages/minions-antd5/*'
   - 'apps/*'

@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import { routes } from 'example-common';
 import { LogicflowEditorExample } from "logicflow-editor-example";
-import { ControllerEditorExample } from "controller-editor-example";
 import { NormalEditorExample, usePredefinedComponents } from "normal-editor-example"
 import { RuntimeExample } from "runtime-example"
 import { LargeScreenExample, largeScreenComponents, largeScreenDesigners } from "large-screen-example"
@@ -15,8 +14,6 @@ function App() {
   return (
     <Routes>
       <Route path={routes.index} element={<NormalEditorExample />}>
-      </Route>
-      <Route path={routes.controller} element={<ControllerEditorExample />}>
       </Route>
       <Route path={routes.logicflow} element={<LogicflowEditorExample />}>
       </Route>
