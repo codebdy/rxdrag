@@ -1,7 +1,7 @@
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared";
 import { INodeSchema } from "@rxdrag/schema";
 import { isStr } from "@rxdrag/shared";
-import { memo, useMemo } from "react"
+import { Fragment, memo, useMemo } from "react"
 import { frameMaterilas } from "../../UiFrameDesigner/materials";
 import { ComponentRender } from "@rxdrag/react-runner";
 import { PagePreview } from "./PagePreview";
@@ -9,7 +9,6 @@ import { useParams } from "react-router-dom";
 
 export const ModulePreview = memo((
   props: {
-    components: IReactComponents
     frameSchema: INodeSchema,
   }
 ) => {
@@ -29,6 +28,7 @@ export const ModulePreview = memo((
         coms[slot.componentName] = slot.component as ReactComponent
       }
       coms["Page"] = PagePreview
+      coms["Fragment"] = Fragment
     }
     return coms
   }, [device])
