@@ -176,6 +176,81 @@ const mole ={
           ]
         }
       ]
+    },
+    {
+      "componentName": "Row",
+      "props": {
+        "style": {
+          "marginLeft": "16px",
+          "marginRight": "16px",
+          "paddingRight": "16px",
+          "paddingLeft": "16px"
+        }
+      },
+      "slots": {},
+      "children": [
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Button",
+              "props": {
+                "type": "primary",
+                "title": "开始"
+              },
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Input",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "componentName": "Col",
+          "props": {
+            "span": 6
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Button",
+              "props": {
+                "type": "primary",
+                "title": "设置"
+              },
+              "slots": {
+                "icon": {
+                  "componentName": "IconView",
+                  "props": {
+                    "icon": {
+                      "iconKey": "SettingOutlined"
+                    }
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
     }
   ]
 }
