@@ -98,7 +98,7 @@ const userList = {
   ]
 }
 
-const mole ={
+const mole = {
   "componentName": "Page",
   "x-controller": {
     "id": "PAG2t2Ur",
@@ -200,7 +200,8 @@ const mole ={
               "componentName": "Button",
               "props": {
                 "type": "primary",
-                "title": "开始"
+                "title": "开始",
+                "size": "large"
               },
               "slots": {},
               "children": []
@@ -232,7 +233,8 @@ const mole ={
               "componentName": "Button",
               "props": {
                 "type": "primary",
-                "title": "设置"
+                "title": "设置",
+                "size": "large"
               },
               "slots": {
                 "icon": {

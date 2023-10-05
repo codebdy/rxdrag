@@ -5,9 +5,9 @@ import { ActivityResource, IActivityNode } from "@rxdrag/minions-logicflow-edito
 import { IPropConfig } from "@rxdrag/minions-runtime-react";
 import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { createId } from "@rxdrag/shared";
-import { eventMaterial } from "../../minion-materials/controller/event";
 import { DraggableText } from "../DraggableText";
 import { IDesignerEngine } from "@rxdrag/core";
+import { eventMaterial } from "@rxdrag/minions-react-materials";
 
 export function getEventNodes(rNode: ReactionableNode, engine:IDesignerEngine|undefined, comMaterial?: IMaterial) {
   const ctrlMeta = rNode.node.meta?.["x-controller"]

@@ -1,6 +1,5 @@
 import { LogicMetaEditorAntd5Inner } from "@rxdrag/logicflow-editor-antd5"
 import { ReactNode, memo, useCallback, useEffect, useState } from "react"
-import { activityMaterialCategories } from "../minion-materials"
 import { Button } from "antd"
 import styled from "styled-components"
 import { Toolbar } from "./Toolbar"
@@ -8,6 +7,7 @@ import { PropSelect } from "../setters"
 import { ILogicMetas, useChangeFlag } from "@rxdrag/minions-logicflow-editor"
 import { useSaveFlow } from "../../../hooks/useSaveFlow"
 import { IFlow } from "../../../interfaces/flow"
+import { activityMaterialCategories } from "@rxdrag/minions-react-materials"
 
 const SaveButton = styled(Button)`
   margin-left: 32px;

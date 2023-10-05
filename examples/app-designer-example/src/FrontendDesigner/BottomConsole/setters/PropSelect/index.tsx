@@ -1,9 +1,9 @@
+import { getControllerComponentInfo } from "@rxdrag/minions-react-materials";
 import { IPropParam } from "@rxdrag/minions-runtime-react";
 import { useDesignerEngine } from "@rxdrag/react-core";
 import { useTranslate } from "@rxdrag/react-locales"
 import { AutoComplete, Form } from "antd"
 import { memo, useCallback, useMemo } from "react"
-import { getControllerComponentInfo } from "../../minion-materials/controller/utils";
 
 //本控件强依赖rxdrag editor
 export const PropSelect = memo((

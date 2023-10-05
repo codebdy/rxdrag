@@ -1,11 +1,6 @@
 import { ILogicFlowMetas } from "@rxdrag/minions-schema";
 import { ID } from "@rxdrag/shared";
 
-export interface IVariable {
-  id: ID,
-  name?: string,
-}
-
 export enum FxScope {
   module = "module",
   device = "device",

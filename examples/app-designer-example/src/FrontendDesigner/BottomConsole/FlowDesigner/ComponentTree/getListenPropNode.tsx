@@ -4,7 +4,7 @@ import { createId } from "@rxdrag/shared"
 import { ReactionableNode } from "."
 import { DraggableText } from "../DraggableText"
 import { ThunderboltOutlined } from "@ant-design/icons"
-import { listenPropMaterial } from "../../minion-materials/controller/listenProp"
+import { listenPropMaterial } from "@rxdrag/minions-react-materials"
 
 export function getListenPropNode(rNode: ReactionableNode) {
   const ctrlMeta = rNode.node.meta?.["x-controller"]

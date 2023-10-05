@@ -43,6 +43,8 @@
     "@rxdrag/minions-runtime-react": "workspace:*",
     "@rxdrag/minions-runtime": "workspace:*",
     "@rxdrag/minions-logicflow-editor": "workspace:*",
+    "@rxdrag/react-core": "workspace:*",
+    "@rxdrag/core": "workspace:*",
     "antd": "^5.9.2"
   }
 }

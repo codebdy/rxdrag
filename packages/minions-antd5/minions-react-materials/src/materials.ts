@@ -5,12 +5,12 @@ import { auxActivities } from "./auxtools";
 import { commonActivities } from "./common";
 
 export const basicActivityCategory: ActivityMaterialCategory<ReactNode> = {
-  name: '$basicReactions',
+  name: '$basicAcitivites',
   materials: basicActivities,
 }
 
 export const commonActivityCategory: ActivityMaterialCategory<ReactNode> = {
-  name: '$commonReactions',
+  name: '$advancedAcitivites',
   materials: commonActivities,
 }
 
@@ -18,3 +18,9 @@ export const auxActivityCategory: ActivityMaterialCategory<ReactNode> = {
   name: "$auxTools",
   materials: auxActivities,
 }
+
+export const activityMaterialCategories: ActivityMaterialCategory<ReactNode>[] = [
+  basicActivityCategory,
+  commonActivityCategory,
+  auxActivityCategory
+]

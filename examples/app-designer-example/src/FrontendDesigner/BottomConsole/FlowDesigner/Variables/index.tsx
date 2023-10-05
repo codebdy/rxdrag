@@ -7,10 +7,10 @@ import { variableIcon, setPropIcon, listenPropIcon } from "../../icons";
 import { RootVarsLabel } from "./RootVarsLabel";
 import { VariableLabel } from "./VariableLabel";
 import { ActivityResource } from "@rxdrag/minions-logicflow-editor";
-import { setVariableMaterial } from "../../minion-materials/variable/setVariable";
 import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { createId } from "@rxdrag/shared";
 import { DraggableText } from "../DraggableText";
+import { setVariableMaterial } from "@rxdrag/minions-react-materials";
 
 
 const { DirectoryTree } = Tree;

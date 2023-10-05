@@ -6,8 +6,7 @@ import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { createId } from "@rxdrag/shared";
 import { DraggableText } from "../DraggableText";
 import { IDesignerEngine } from "@rxdrag/core";
-import { reactionMaterial } from "../../minion-materials/controller/reaction";
-import { methodIcon } from "../../minion-materials/icons";
+import { reactionMaterial, methodIcon } from "@rxdrag/minions-react-materials";
 
 export function getReactionNodes(rNode: ReactionableNode, engine:IDesignerEngine|undefined, comMaterial?: IMaterial) {
   const ctrlMeta = rNode.node.meta?.["x-controller"]

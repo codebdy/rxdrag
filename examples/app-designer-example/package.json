@@ -52,6 +52,7 @@
     "@rxdrag/react-menu-designer": "workspace:*",
     "@rxdrag/react-runner": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
+    "@rxdrag/minions-react-materials": "workspace:*",
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",

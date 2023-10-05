@@ -1,11 +1,9 @@
 import { ReactionableNode } from ".";
 import { ActivityResource } from "@rxdrag/minions-logicflow-editor";
 import { IActivityMaterial } from "@rxdrag/minions-schema";
-import { methodIcon } from "../../minion-materials/icons";
 import { DraggableText } from "../DraggableText";
-import { readIndexMaterial } from "../../minion-materials/array/readIndex";
-import { readRowMaterial } from "../../minion-materials/array/readRow";
 import { useTransMaterial } from "@rxdrag/logicflow-editor-antd5";
+import { readIndexMaterial, methodIcon, readRowMaterial } from "@rxdrag/minions-react-materials";
 
 export function useGetArrayNodes() {
   const t = useTransMaterial()
