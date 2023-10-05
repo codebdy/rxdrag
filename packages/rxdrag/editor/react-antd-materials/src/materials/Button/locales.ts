@@ -18,6 +18,8 @@ export const buttonLocales = {
       round: "圆角",
       ...sizeLocales["zh-CN"],
       onClick: "点击",
+      enable: "有效",
+      disable: "无效",
     }
 
   },
@@ -37,6 +39,8 @@ export const buttonLocales = {
       round: "Round",
       ...sizeLocales["en-US"],
       onClick: "On Click",
+      enable:"Enable",
+      disable: "Disable",
     }
   }
 }

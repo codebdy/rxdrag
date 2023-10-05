@@ -13,6 +13,9 @@ export class Random extends AbstractActivity<IRandomConfig> {
   public static INPUT_NAME_MAX_VALUE = "maxValue"
   public static INPUT_NAME_MIN_VALUE = "minValue"
 
+  private minValue?: number;
+  private maxValue?: number;
+
   constructor(meta: INodeDefine<IRandomConfig>) {
     super(meta)
 
@@ -23,10 +26,21 @@ export class Random extends AbstractActivity<IRandomConfig> {
 
   @Input(Random.INPUT_NAME_STARTUP)
   inputHandler = () => {
-    const min = this.meta.config?.minValue || 0
-    const max = (this.meta.config?.maxValue || 1) + 1
+    const min = this.minValue || this.meta.config?.minValue || 0
+    const max = this.maxValue || (this.meta.config?.maxValue || 1) + 1
     this.next(this.getRandomInteger(min, max))
   }
+
+  @Input(Random.INPUT_NAME_MIN_VALUE)
+  minHandler = (inputValue?: number) => {
+    this.minValue = inputValue
+  }
+
+  @Input(Random.INPUT_NAME_MAX_VALUE)
+  maxHandler = (inputValue?: number) => {
+    this.maxValue = inputValue
+  }
+
   private getRandomInteger = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min)) + min;
   }

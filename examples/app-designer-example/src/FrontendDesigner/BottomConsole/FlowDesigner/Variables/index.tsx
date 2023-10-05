@@ -50,7 +50,7 @@ export const Variables = memo((
                       {
                         id: createId(),
                         name: "input",
-                        label: "$setValue",
+                        label: "$read",
                       },
                     ],
                     outPorts: [

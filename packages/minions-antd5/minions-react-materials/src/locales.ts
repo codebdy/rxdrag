@@ -27,6 +27,7 @@ export const activityMaterialLocales = {
     setVariable: "变量赋值",
     listenVariable: "监听变量",
     readVariable: "读取变量",
+    read: "读取",
     pleaseInputName: "请输入名称",
     setProp: "设置属性",
     props: "属性",
@@ -90,7 +91,10 @@ export const activityMaterialLocales = {
     readCurrentIndex: "读取当前索引",
     readCurrentRow: "读取当前行",
     collectToArray: "收集到数组",
-    sumArray:"加和数组",
+    sumArray: "加和数组",
+    equal: "相等",
+    increase: "递增",
+    step: "步长",
   },
   'en-US': {
     basicAcitivites: "Basic Reactions",
@@ -119,6 +123,7 @@ export const activityMaterialLocales = {
     setVariable: "Set Variable",
     listenVariable: "Listen Variable",
     readVariable: "Read Variable",
+    read: "Read",
     pleaseInputName: "Please input name!",
     setProp: "Set prop",
     props: "props",
@@ -184,6 +189,9 @@ export const activityMaterialLocales = {
     readCurrentIndex: "Read current index",
     readCurrentRow: "Read current row",
     collectToArray: "Collect to array",
-    sumArray:"Sum array",
+    sumArray: "Sum array",
+    equal: "Equal",
+    increase: "Increase",
+    step: "Step",
   }
 }

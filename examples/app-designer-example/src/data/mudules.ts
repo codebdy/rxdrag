@@ -349,9 +349,20 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
         }
       ],
       variables: [
-        { id: '2AHnQ-ne', name: '活跃地鼠' },
-        { id: '_G4SZqNV', name: '成绩' },
-        { id: '_-uxpUk0', name: '地鼠数量', defaultValue: 9 },
+        {
+          "id": "2AHnQ-ne",
+          "name": "活跃地鼠",
+          "defaultValue": -1
+        },
+        {
+          "id": "_G4SZqNV",
+          "name": "成绩"
+        },
+        {
+          "id": "_-uxpUk0",
+          "name": "地鼠数量",
+          "defaultValue": 9
+        }
       ]
     },
     {

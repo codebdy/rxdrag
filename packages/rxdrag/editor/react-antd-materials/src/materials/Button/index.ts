@@ -60,6 +60,16 @@ export const ButtonMaterial: IMaterial = {
         name: "onClick",
         label: "$onClick",
       }
+    ],
+    reactions:[
+      {
+        name:"enable",
+        label:"$enable"
+      },
+      {
+        name:"disable",
+        label:"$disable"
+      }
     ]
   }
 }

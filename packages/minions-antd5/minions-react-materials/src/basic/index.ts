@@ -13,6 +13,8 @@ import { splitArrayMaterial } from "./SplitArray";
 import { splitObjectMaterial } from "./SplitObject";
 import { sumArrayMaterial } from "./sumArray";
 import { collectToArrayMaterial } from "./collectToArray";
+import { equalMaterial } from "./equal";
+import { increaseMaterial } from "./increase";
 
 export const startEndSchema: INodeSchema = {
   componentName: "Fragment",
@@ -35,6 +37,8 @@ export const basicActivities: IActivityMaterial<any, any, any, any>[] = [
     activityType: NodeType.End,
     schema: startEndSchema,
   },
+  increaseMaterial,
+  equalMaterial,
   conditionMaterial,
   loopMaterial,
   mergeMaterial,

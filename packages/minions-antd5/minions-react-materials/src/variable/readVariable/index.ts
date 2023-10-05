@@ -13,7 +13,7 @@ export const readVariableMaterial: IRxDragActivityMaterial<IVariableConfig, Logi
       {
         id: createId(),
         name: "input",
-        label: "",
+        label: "$read",
       },
     ],
     outPorts: [
