@@ -1,18 +1,19 @@
 import { ComponentRender, } from "@rxdrag/react-runner"
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared"
 import { INodeSchema } from "@rxdrag/schema"
-import { Fragment, memo, useEffect, useMemo, useState } from "react"
+import { Fragment, memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useDesignerEngine } from "@rxdrag/react-core"
 import { useParams } from "react-router-dom"
 import { pageMaterials } from "../../ModuleUiDesigner/materials"
 import { isStr } from "@rxdrag/shared"
 
+//每次修改，本组件都会刷新，后面要优化
 export const PagePreview = memo(() => {
 
   const [tree, setTree] = useState<INodeSchema>()
   const engine = useDesignerEngine()
   const { device = "" } = useParams()
-  
+
   const components = useMemo(() => {
     const materials = pageMaterials[device]
     const coms: IReactComponents = {}
@@ -30,8 +31,7 @@ export const PagePreview = memo(() => {
     return coms
   }, [device])
 
-  // 把各场景组合在一起渲染
-  useEffect(() => {
+  const makeTree = useCallback(() => {
     const docs = engine?.getAllDocuments()
     const tr: INodeSchema = {
       componentName: "Fragment",
@@ -46,7 +46,22 @@ export const PagePreview = memo(() => {
     setTree(tr)
   }, [engine])
 
-  console.log("刷新 PreviewRender", tree)
+  // 把各场景组合在一起渲染
+  useEffect(() => {
+    makeTree()
+  }, [makeTree])
+
+  const handleChange = useCallback(() => {
+    makeTree()
+  }, [makeTree])
+
+  useEffect(() => {
+    const unsub = engine?.getMonitor().subscribeToHasNodeChanged(handleChange)
+
+    return () => {
+      unsub?.()
+    }
+  }, [engine, handleChange])
 
   return (
     tree

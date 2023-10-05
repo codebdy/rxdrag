@@ -3,9 +3,13 @@ import { PreviewIFrameProxy } from "@rxdrag/react-antd-shell/src/zoomable/Zoomab
 import { ModulePreview } from "./ModulePreview"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
 import { PagePreview } from "./ModulePreview/PagePreview"
+import { usePreviewState } from "@rxdrag/react-antd-shell"
 
 export const DesignerPreview = memo(() => {
   const appFront = useAppFrontend()
+  const [preview] = usePreviewState()
+
+  console.log("===>preview", preview)
 
   return (
     <PreviewIFrameProxy>

@@ -3,7 +3,13 @@ import { SchemaOptions, createSchema } from "../../../shared";
 
 const options: SchemaOptions = {
   propSchemas: [
-
+    {
+      componentName: "InputNumber",
+      "x-field": {
+        label: "$staticCount",
+        name: "dataSource",
+      }
+    },
   ],
 
   canBindField: true,

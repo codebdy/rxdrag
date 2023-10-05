@@ -98,7 +98,7 @@ const userList = {
   ]
 }
 
-const mole = {
+const mole ={
   "componentName": "Page",
   "x-controller": {
     "id": "PAG2t2Ur",
@@ -115,12 +115,16 @@ const mole = {
         {
           "componentName": "ArrayPanel",
           "x-field": {
-            "type": "array"
+            "type": "array",
+            "name": "container"
           },
           "x-controller": {
             "id": "KiE-KrsA",
             "enable": true,
             "name": "数组容器"
+          },
+          "props": {
+            "dataSource": 9
           },
           "slots": {},
           "children": [
@@ -155,7 +159,6 @@ const mole = {
     }
   ]
 }
-
 const moleSetting = {
   componentName: "Dialog",
   slots: {

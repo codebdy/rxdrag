@@ -94,11 +94,9 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
             }
           </Space>
         }
-        {
-          <ZoomablePreviewPanel
-            display={preview}
-          />
-        }
+        <ZoomablePreviewPanel
+          display={preview}
+        />
       </ZoomableViewport>
       <BottomArea {...bottomConsole} />
       <Toolbox>
