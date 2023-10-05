@@ -109,7 +109,19 @@ const mole ={
   "children": [
     {
       "componentName": "Row",
-      "props": {},
+      "props": {
+        "gutter": 6,
+        "style": {
+          "marginTop": "16px",
+          "marginRight": "16px",
+          "marginBottom": "16px",
+          "marginLeft": "16px",
+          "paddingTop": "16px",
+          "paddingRight": "16px",
+          "paddingBottom": "16px",
+          "paddingLeft": "16px"
+        }
+      },
       "slots": {},
       "children": [
         {
@@ -124,14 +136,18 @@ const mole ={
             "name": "数组容器"
           },
           "props": {
-            "dataSource": 9
+            "dataSource": 18
           },
           "slots": {},
           "children": [
             {
               "componentName": "Col",
               "props": {
-                "span": 4
+                "span": 4,
+                "style": {
+                  "paddingTop": "16px",
+                  "paddingBottom": "16px"
+                }
               },
               "slots": {},
               "children": [
@@ -141,7 +157,11 @@ const mole ={
                     "type": "primary",
                     "title": "地鼠",
                     "shape": "circle",
-                    "size": "large"
+                    "size": "large",
+                    "style": {
+                      "width": "80px",
+                      "height": "80px"
+                    }
                   },
                   "x-controller": {
                     "id": "NpLxKVZs",
@@ -159,6 +179,7 @@ const mole ={
     }
   ]
 }
+
 const moleSetting = {
   componentName: "Dialog",
   slots: {
