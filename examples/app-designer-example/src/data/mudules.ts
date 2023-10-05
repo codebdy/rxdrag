@@ -197,19 +197,42 @@ const mole = {
           "slots": {},
           "children": [
             {
-              "componentName": "Button",
-              "props": {
-                "type": "primary",
-                "title": "开始",
-                "size": "large"
-              },
-              "x-controller": {
-                "id": "uQPenUqJ",
-                "enable": true,
-                "name": "开始按钮"
-              },
+              "componentName": "Space",
+              "props": {},
+              "selfRender": true,
               "slots": {},
-              "children": []
+              "children": [
+                {
+                  "componentName": "Button",
+                  "props": {
+                    "type": "primary",
+                    "title": "开始",
+                    "size": "large"
+                  },
+                  "x-controller": {
+                    "id": "uQPenUqJ",
+                    "enable": true,
+                    "name": "开始按钮"
+                  },
+                  "slots": {},
+                  "children": []
+                },
+                {
+                  "componentName": "Button",
+                  "props": {
+                    "type": "default",
+                    "title": "结束",
+                    "size": "large"
+                  },
+                  "x-controller": {
+                    "id": "-V60Mne6",
+                    "enable": true,
+                    "name": "结束按钮"
+                  },
+                  "slots": {},
+                  "children": []
+                }
+              ]
             }
           ]
         },

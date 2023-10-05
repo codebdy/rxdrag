@@ -16,7 +16,17 @@ export const randomMaterial: IRxDragActivityMaterial<IRandomConfig> = {
       {
         id: createId(),
         name: Random.INPUT_NAME_STARTUP,
-        label: "",
+        label: "$startUp",
+      },
+      {
+        id: createId(),
+        name: Random.INPUT_NAME_MIN_VALUE,
+        label: "$minValue",
+      },
+      {
+        id: createId(),
+        name: Random.INPUT_NAME_MAX_VALUE,
+        label: "$maxValue",
       },
     ],
     outPorts: [

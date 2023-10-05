@@ -1,12 +1,12 @@
 import { createId } from "@rxdrag/shared"
 import { NodeType } from "@rxdrag/minions-schema"
-import { IVariableConfig, SetVariable } from "@rxdrag/minions-runtime-react"
+import { IVariableConfig, ReadVariable } from "@rxdrag/minions-runtime-react"
 import { IRxDragActivityMaterial, LogicflowContextParam } from "../../interfaces"
 import { variableIcon } from "../../icons"
 
-export const setVariableMaterial: IRxDragActivityMaterial<IVariableConfig, LogicflowContextParam> = {
+export const readVariableMaterial: IRxDragActivityMaterial<IVariableConfig, LogicflowContextParam> = {
   icon: variableIcon,
-  label: "$setVariable",
+  label: "$readVariable",
   activityType: NodeType.Activity,
   defaultPorts: {
     inPorts: [
@@ -24,7 +24,7 @@ export const setVariableMaterial: IRxDragActivityMaterial<IVariableConfig, Logic
       },
     ],
   },
-  activityName: SetVariable.NAME,
+  activityName: ReadVariable.NAME,
 
   title: (config?: IVariableConfig, context?: LogicflowContextParam) => {
     return context?.variables?.find(v => v.id === config?.param?.variable)?.name || config?.param?.variable

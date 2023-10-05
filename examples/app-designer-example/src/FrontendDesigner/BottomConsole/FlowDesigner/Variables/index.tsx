@@ -10,7 +10,7 @@ import { ActivityResource } from "@rxdrag/minions-logicflow-editor";
 import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { createId } from "@rxdrag/shared";
 import { DraggableText } from "../DraggableText";
-import { setVariableMaterial } from "@rxdrag/minions-react-materials";
+import { readPropIcon, readVariableMaterial, setVariableMaterial } from "@rxdrag/minions-react-materials";
 
 
 const { DirectoryTree } = Tree;
@@ -36,6 +36,49 @@ export const Variables = memo((
           selectable: false,
           icon: variableIcon,
           children: [
+            {
+              key: variable.id + "readVariable",
+              title: <ActivityResource
+                material={readVariableMaterial as IActivityMaterial<React.ReactNode>}
+                createNode={() => {
+                  return {
+                    id: createId(),
+                    label: variable.name || variable.id,
+                    type: readVariableMaterial.activityType,
+                    activityName: readVariableMaterial.activityName,
+                    inPorts: [
+                      {
+                        id: createId(),
+                        name: "input",
+                        label: "$setValue",
+                      },
+                    ],
+                    outPorts: [
+                      {
+                        id: createId(),
+                        name: "output",
+                        label: "",
+                      },
+                    ],
+                    config: {
+                      param: {
+                        variable: variable.id
+                      }
+                    }
+                  }
+                }}
+              >
+                {
+                  (onStartDrag) => {
+                    return <DraggableText onMouseDown={onStartDrag}>
+                      读取
+                    </DraggableText>
+                  }
+                }
+              </ActivityResource>,
+              isLeaf: true,
+              icon: readPropIcon
+            },
             {
               key: variable.id + "setVariable",
               title: <ActivityResource

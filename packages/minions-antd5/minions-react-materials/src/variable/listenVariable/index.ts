@@ -2,8 +2,7 @@ import { IVariableConfig, ListenVariable } from "@rxdrag/minions-runtime-react"
 import { NodeType } from "@rxdrag/minions-schema"
 import { createId } from "@rxdrag/shared"
 import { variableIcon } from "../../icons"
-import { IRxDragActivityMaterial } from "../../interfaces"
-import { LogicflowContextParam } from "../../../types"
+import { IRxDragActivityMaterial, LogicflowContextParam } from "../../interfaces"
 
 export const listenVariableMaterial: IRxDragActivityMaterial<IVariableConfig, LogicflowContextParam> = {
   icon: variableIcon,

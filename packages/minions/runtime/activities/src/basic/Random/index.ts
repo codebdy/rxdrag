@@ -10,6 +10,8 @@ export interface IRandomConfig {
 export class Random extends AbstractActivity<IRandomConfig> {
   public static NAME = "system.random"
   public static INPUT_NAME_STARTUP = "startUp"
+  public static INPUT_NAME_MAX_VALUE = "maxValue"
+  public static INPUT_NAME_MIN_VALUE = "minValue"
 
   constructor(meta: INodeDefine<IRandomConfig>) {
     super(meta)

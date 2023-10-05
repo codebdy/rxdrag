@@ -17,7 +17,7 @@ export interface IFlow {
   name?: string,
   //显示文本
   label?: string;
-  scope: FxScope,
+  scope?: FxScope,
   //app, appFront,  Module or 循环组件
   ownerId: ID,
   type: LogicType,
