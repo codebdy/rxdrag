@@ -1,5 +1,5 @@
+import { IVariable } from "@rxdrag/minions-schema";
 import { IViewSchema } from "@rxdrag/schema";
-import { IVariable } from "./flow";
 
 export interface IModuleCategory {
   id: string,

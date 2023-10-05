@@ -1,12 +1,13 @@
 import { EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Popover, Space } from "antd";
 import { memo, useCallback, useEffect } from "react"
-import { IVariable } from "../../../../../interfaces/flow";
 import { useSaveModule } from "../../../../../hooks/useSaveModule";
 import { useModule } from "../../../../hooks/useModule";
 import { IModule } from "../../../../../interfaces/module";
 import { createId } from "@rxdrag/shared";
 import { PopoverFooter } from "../../../common/PopoverFooter";
+import { ValueInput } from "@rxdrag/react-antd-props-inputs";
+import { IVariable } from "@rxdrag/minions-schema";
 
 export const VariablePopover = memo((
   props: {
@@ -26,7 +27,7 @@ export const VariablePopover = memo((
 
   useEffect(() => {
     if (open) {
-      form.setFieldsValue(variable || { name: "" })
+      form.setFieldsValue(variable || { name: "", defaultValue: null })
     }
   }, [form, open, variable])
 
@@ -70,6 +71,12 @@ export const VariablePopover = memo((
               rules={[{ required: true, message: '必须输入变量名' }]}
             >
               <Input />
+            </Form.Item>
+            <Form.Item
+              label="默认值"
+              name="defaultValue"
+            >
+              <ValueInput />
             </Form.Item>
           </Form>
           <PopoverFooter>

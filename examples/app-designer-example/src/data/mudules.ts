@@ -203,6 +203,11 @@ const mole = {
                 "title": "开始",
                 "size": "large"
               },
+              "x-controller": {
+                "id": "uQPenUqJ",
+                "enable": true,
+                "name": "开始按钮"
+              },
               "slots": {},
               "children": []
             }
@@ -217,6 +222,11 @@ const mole = {
           "children": [
             {
               "componentName": "Input",
+              "x-controller": {
+                "id": "tENE3RFA",
+                "enable": true,
+                "name": "记分器"
+              },
               "slots": {},
               "children": []
             }
@@ -235,6 +245,11 @@ const mole = {
                 "type": "primary",
                 "title": "设置",
                 "size": "large"
+              },
+              "x-controller": {
+                "id": "FfF5nHpb",
+                "enable": true,
+                "name": "设置按钮"
               },
               "slots": {
                 "icon": {
@@ -293,7 +308,7 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
           title: "编辑对话框",
           schema: rootNodeSchema,
         }
-      ]
+      ],
     },
     {
       id: "mole",
@@ -309,6 +324,11 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
           title: "游戏设置",
           schema: moleSetting,
         }
+      ],
+      variables: [
+        { id: '2AHnQ-ne', name: '活跃地鼠' },
+        { id: '_G4SZqNV', name: '成绩' },
+        { id: '_-uxpUk0', name: '地鼠数量', defaultValue: 9 },
       ]
     },
     {

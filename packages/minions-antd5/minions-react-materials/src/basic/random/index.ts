@@ -30,8 +30,8 @@ export const randomMaterial: IRxDragActivityMaterial<IRandomConfig> = {
   schema: randomSchema,
   activityName: Random.NAME,
   subTitle: (config?: IRandomConfig) => {
-    if (config?.maxValue || config?.minValue) {
-      return `${config.minValue || ""} ~ ${config.maxValue || ""}`
+    if (config?.maxValue !== undefined || config?.minValue !== undefined) {
+      return `${config.minValue === undefined ? "" : config.minValue} ~ ${config.maxValue === undefined ? "" : config.maxValue}`
     }
   },
 }

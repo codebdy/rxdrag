@@ -47,6 +47,8 @@ export const FlowDesigner = memo(() => {
   const themMode = useThemeMode()
   const module = useModule()
 
+  console.log("===>module", module)
+
   const materials = useMemo(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const materials: IActivityMaterial<ReactNode>[] = [...(controllerActivities as any), ...arrayActivities, ...variableActivities]
