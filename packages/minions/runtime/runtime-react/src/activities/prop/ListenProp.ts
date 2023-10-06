@@ -1,5 +1,5 @@
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IController, IControllerContext } from "../../interfaces";
+import { IController } from "../../interfaces";
 import { AbstractControllerActivity } from "../AbstractControllerActivity";
 import { Activity } from "@rxdrag/minions-runtime";
 import { IPropConfig } from "./SetProp";
@@ -8,25 +8,11 @@ import { IPropConfig } from "./SetProp";
 export class ListenProp extends AbstractControllerActivity<IPropConfig> {
   public static NAME = "system-react.listenProp"
 
-  controller: IController
-  constructor(meta: INodeDefine<IPropConfig>, context?: IControllerContext) {
-    super(meta, context)
-
-    if (Object.keys(meta.outPorts || {}).length !== 1) {
-      throw new Error("ListenProp outputs count error")
-    }
-
-    if (!meta.config?.param?.controllerId) {
-      throw new Error("ListenProp not set controller id")
-    }
-    const controller = context?.controllers?.[meta.config?.param?.controllerId]
-    if (!controller) {
-      throw new Error("Can not find controller")
-    }
-    this.controller = controller
+  constructor(meta: INodeDefine<IPropConfig>, controller: IController) {
+    super(meta, controller)
 
     if (meta.config?.param?.prop) {
-      this.controller?.subscribeToPropChange(meta.config?.param.prop, this.valueHandler)
+      controller?.subscribeToPropChange(meta.config?.param.prop, this.valueHandler)
     } else {
       console.error("Not set Prop to ListenPropReaction")
     }

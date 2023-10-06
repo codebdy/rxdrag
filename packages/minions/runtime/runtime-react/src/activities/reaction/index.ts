@@ -1,10 +1,11 @@
-import { IActivity, IActivityJointers, LogicFlow, Activity } from "@rxdrag/minions-runtime";
+import { Activity, DynamicInput } from "@rxdrag/minions-runtime";
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IControllerContext } from "../../interfaces";
-import { IControllerConfig, IControllerParam } from "../AbstractControllerActivity";
+import { IController } from "../../interfaces";
+import { AbstractControllerActivity, IControllerConfig, IControllerParam } from "../AbstractControllerActivity";
+import { isFn } from "@rxdrag/shared";
 
 export interface IReactionParam extends IControllerParam {
-  logicFlowId?: string
+  name?: string
 }
 
 export interface IReactionConfig extends IControllerConfig {
@@ -12,25 +13,23 @@ export interface IReactionConfig extends IControllerConfig {
 }
 
 @Activity(Reaction.NAME)
-export class Reaction implements IActivity {
+export class Reaction extends AbstractControllerActivity<IReactionConfig> {
   public static NAME = "system-react.reaction"
-  id: string;
-  jointers: IActivityJointers;
-  config?: IReactionConfig;
-  logicFlow?: LogicFlow;
 
-  constructor(meta: INodeDefine<IReactionConfig>, context: IControllerContext) {
-    this.id = meta.id
-    const defineMeta = context?.controllers?.[meta?.config?.param?.controllerId || ""]?.meta.reactions?.find(reactionMeta => reactionMeta.id === meta.config?.param?.logicFlowId)
-    if (defineMeta) {
-      this.logicFlow = new LogicFlow(defineMeta, context)
-      this.jointers = this.logicFlow.jointers
+  constructor(meta: INodeDefine<IReactionConfig>, controller: IController) {
+    super(meta, controller)
+  }
+
+  @DynamicInput
+  inputHandler = (inputName: string, inputValue: unknown) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const reaction = (this.controller as any)?.[inputName]
+    if (isFn(reaction)) {
+      reaction(inputValue)
     } else {
-      throw new Error("No implement on Controller reaction meta")
+      console.error("controller reaction is error:", inputName)
     }
-  }
-  destroy(): void {
-    this.logicFlow?.destroy();
-    this.logicFlow = undefined;
-  }
+    this.next(inputValue);
+  };
+
 }

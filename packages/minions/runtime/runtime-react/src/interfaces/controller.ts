@@ -1,16 +1,19 @@
 import { IControllerMeta } from "./meta"
 
-export type Unsubscribe = () => void
+export const CONTROLLER_EVENT_INIT = "onInit";
+export const CONTROLLER_EVENT_DESTORY = "onDestory"
 
+export type Unsubscribe = () => void
 
 export type VariableListener = (value: unknown) => void
 export type PropListener = (value: unknown) => void
 export type PropsListener = (name: string, value: unknown) => void
+export type EventListener = (args: unknown[]) => void
 export type UnListener = () => void
 
-export type EventFunc = (arg: unknown, context?:  Record<string, unknown>, runback?: (error?: unknown, value?: unknown) => void) => void
-export type EventFuncs = {
-  [name: string]: EventFunc | undefined
+export type EventHandler = (args: unknown[]) => void
+export type EventHandlers = {
+  [name: string]: EventHandler | undefined
 }
 
 export interface IVariableController {
@@ -25,23 +28,20 @@ export interface IPropController {
   subscribeToPropChange(name: string, listener: PropListener): UnListener
 }
 
+
 export interface IController extends IPropController {
   id: string,
   name?: string,
-  //meta: ILogicFlowControllerMeta,
-  init: (controllers: Controllers, context: unknown) => void,
 
-  events: EventFuncs,
-  runBackEvents: EventFuncs
-  initEvent?: EventFunc,
-  destroyEvent?: EventFunc,
-  subscribeToPropsChange(listener: PropsListener): UnListener
-
-  destroy(): void,
+  events: EventHandlers,
+  initEvent: EventHandler,
+  destroyEvent: EventHandler,
+  subscribeToPropsChange(listener: PropsListener): UnListener,
+  subscribeToEvent(name: string, listener: EventListener): UnListener,
 }
 
 export type Controllers = {
   [controllerId: string]: IController | undefined
 }
 
-export type ControllerFactory =  (meta: IControllerMeta) => IController
+export type ControllerFactory = (meta: IControllerMeta) => IController

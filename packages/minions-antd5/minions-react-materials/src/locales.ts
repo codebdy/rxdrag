@@ -34,7 +34,7 @@ export const activityMaterialLocales = {
     listenProp: "监听属性",
     propsChange: "属性变化",
     setValue: "赋值",
-    valueChange: "值变化",
+    valueChange: "值",
     readProp: "读取属性",
     routeTo: "路由跳转",
     infoMessage: "提示消息",
