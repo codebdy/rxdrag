@@ -6,20 +6,22 @@ export function useAllDocuments() {
   const [docs, setDocs] = useState<IDocument[]>()
   const engine = useDesignerEngine()
 
-  const updateDocs = useCallback(()=>{
+  const updateDocs = useCallback(() => {
     setDocs(engine?.getAllDocuments() || undefined)
-  },[engine])
+  }, [engine])
 
   useEffect(() => {
     updateDocs()
   }, [engine, updateDocs])
 
-  useEffect(()=>{
+  useEffect(() => {
     const unsub = engine?.getMonitor().subscribeToHasNodeChanged(updateDocs)
-    return ()=>{
+    const unsubDocsChange = engine?.getMonitor().subscribeToDocumentsChange(updateDocs)
+    return () => {
       unsub?.()
+      unsubDocsChange?.()
     }
-  },[engine, updateDocs])
+  }, [engine, updateDocs])
 
   return docs
 }

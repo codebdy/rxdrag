@@ -17,10 +17,11 @@ export function documentsById(
           [action.payload?.documentId]: undefined
         }
       }
-      return {
+      const newState = {
         ...state,
         [action.payload?.documentId]: documentReduce(state[action.payload?.documentId], action)
       }
+      return newState
     }
   }
   return state

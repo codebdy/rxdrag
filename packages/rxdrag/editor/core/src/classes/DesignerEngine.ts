@@ -108,8 +108,9 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 	}
 
 	createDocument(documentSchema: IViewSchema): IDocument {
-		const doc = new DocumentImpl(documentSchema, this, this.store)
+		const doc = new DocumentImpl(documentSchema.id, this, this.store)
 		this.documentsById[doc.id] = doc
+		doc.initialize(documentSchema)
 		this.dispatch({
 			type: CHANGE_ACTIVED_DOCUMENT,
 			payload: doc.id

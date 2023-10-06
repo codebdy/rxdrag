@@ -296,23 +296,34 @@ const mole = {
 }
 
 const moleSetting = {
-  componentName: "Dialog",
-  slots: {
-    title: {
-      componentName: "DialogTitle",
-      children: [
+  "componentName": "Dialog",
+  "x-controller": {
+    "id": "eu2MFGfi",
+    "enable": true,
+    "name": "设置对话框"
+  },
+  "slots": {
+    "title": {
+      "componentName": "DialogTitle",
+      "slots": {},
+      "children": [
         {
-          componentName: "Text",
-          props: {
-            value: "游戏设置",
-          }
+          "componentName": "Text",
+          "props": {
+            "value": "游戏设置"
+          },
+          "slots": {},
+          "children": []
         }
       ]
     },
-    footer: {
-      componentName: "DialogFooter",
-    },
-  }
+    "footer": {
+      "componentName": "DialogFooter",
+      "slots": {},
+      "children": []
+    }
+  },
+  "children": []
 }
 
 export const defaultModules: { [device: string]: IModule[] | undefined } = {

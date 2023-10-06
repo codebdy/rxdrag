@@ -14,13 +14,13 @@ import { INodeSchema, INodeMeta, IViewSchema } from "@rxdrag/schema";
 export class DocumentImpl implements IDocument {
   id: string;
   constructor(
-    meta: IViewSchema,
+    id: string | undefined,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private engine: IDesignerEngine<any, any>,
     private store: Store<State>,
   ) {
-    this.id = meta.id || makeRxId()
-    this.initialize(meta)
+    this.id = id || makeRxId()
+    //this.initialize(meta)
   }
 
   initialize(meta: IViewSchema): void {
@@ -36,8 +36,8 @@ export class DocumentImpl implements IDocument {
       },
     })
     this.backup(HistoryableActionType.Default)
-
   }
+
   moveTo = (sourceId: string, targetId: string, pos: NodeRelativePosition): void => {
     const payload: MoveNodesPayload = {
       documentId: this.id,
