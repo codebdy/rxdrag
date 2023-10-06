@@ -3,7 +3,11 @@ export const locales = {
     title: "对话框",
     settings: {
       title: "标题",
-      footer: "页脚"
+      footer: "页脚",
+      onOpen: "打开事件",
+      onClose: "关闭事件",
+      open: "打开",
+      close: "关闭",
     }
 
   },
@@ -11,7 +15,11 @@ export const locales = {
     title: "Dialog",
     settings: {
       title: "Title",
-      footer: "Footer"
+      footer: "Footer",
+      onOpen: "Onopen",
+      onClose: "OnClose",
+      open: "Open",
+      close: "Close",
     }
   }
 }

@@ -61,8 +61,22 @@ export const DialogMaterial: IMaterial = {
     ],
     events: [
       {
-        name: "onOpenChange",
-        label: "$onOpenChange",
+        name: "onOpen",
+        label: "$onOpen",
+      },
+      {
+        name: "onClose",
+        label: "$onClose",
+      },
+    ],
+    reactions:[
+      {
+        name: "open",
+        label: "$open",
+      },
+      {
+        name: "close",
+        label: "$close",
       }
     ]
   }
