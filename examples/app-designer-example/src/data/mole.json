@@ -98,9 +98,7 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "uQPenUqJ"
-            }
+            "controllerId": "uQPenUqJ"
           },
           "x6Node": {
             "x": 70,
@@ -163,9 +161,7 @@
             }
           ],
           "config": {
-            "param": {
-              "variable": "2AHnQ-ne"
-            }
+            "variable": "2AHnQ-ne"
           },
           "x6Node": {
             "x": 720,
@@ -223,9 +219,7 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "-V60Mne6"
-            }
+            "controllerId": "-V60Mne6"
           },
           "x6Node": {
             "x": 60,
@@ -247,9 +241,7 @@
             }
           ],
           "config": {
-            "param": {
-              "variable": "_-uxpUk0"
-            }
+            "variable": "_-uxpUk0"
           },
           "x6Node": {
             "x": 380,
@@ -278,9 +270,7 @@
             }
           ],
           "config": {
-            "param": {
-              "variable": "_G4SZqNV"
-            }
+            "variable": "_G4SZqNV"
           },
           "x6Node": {
             "x": 510,
@@ -487,9 +477,7 @@
             }
           ],
           "config": {
-            "param": {
-              "variable": "2AHnQ-ne"
-            }
+            "variable": "2AHnQ-ne"
           },
           "x6Node": {
             "x": 30,
@@ -555,9 +543,7 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "KiE-KrsA"
-            }
+            "controllerId": "KiE-KrsA"
           },
           "x6Node": {
             "x": 220,
@@ -585,9 +571,7 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "NpLxKVZs"
-            }
+            "controllerId": "NpLxKVZs"
           },
           "x6Node": {
             "x": 680,
@@ -615,9 +599,7 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "NpLxKVZs"
-            }
+            "controllerId": "NpLxKVZs"
           },
           "x6Node": {
             "x": 680,
@@ -638,9 +620,7 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "NpLxKVZs"
-            }
+            "controllerId": "NpLxKVZs"
           },
           "x6Node": {
             "x": 30,
@@ -669,9 +649,7 @@
             }
           ],
           "config": {
-            "param": {
-              "variable": "_G4SZqNV"
-            }
+            "variable": "_G4SZqNV"
           },
           "x6Node": {
             "x": 190,
@@ -786,10 +764,8 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "NpLxKVZs",
-              "prop": "danger"
-            }
+            "controllerId": "NpLxKVZs",
+            "prop": "danger"
           },
           "x6Node": {
             "x": 870,
@@ -817,10 +793,8 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "NpLxKVZs",
-              "prop": "danger"
-            }
+            "controllerId": "NpLxKVZs",
+            "prop": "danger"
           },
           "x6Node": {
             "x": 720,
@@ -878,9 +852,7 @@
             }
           ],
           "config": {
-            "param": {
-              "variable": "_G4SZqNV"
-            }
+            "variable": "_G4SZqNV"
           },
           "x6Node": {
             "x": 460,
@@ -925,9 +897,7 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "FfF5nHpb"
-            }
+            "controllerId": "FfF5nHpb"
           },
           "x6Node": {
             "x": 80,
@@ -955,9 +925,7 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "eu2MFGfi"
-            }
+            "controllerId": "eu2MFGfi"
           },
           "x6Node": {
             "x": 340,
@@ -1035,9 +1003,7 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "uQPenUqJ"
-            }
+            "controllerId": "uQPenUqJ"
           },
           "x6Node": {
             "x": 140,
@@ -1065,9 +1031,7 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "uQPenUqJ"
-            }
+            "controllerId": "uQPenUqJ"
           },
           "x6Node": {
             "x": 380,
@@ -1095,9 +1059,7 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "-V60Mne6"
-            }
+            "controllerId": "-V60Mne6"
           },
           "x6Node": {
             "x": 390,
@@ -1118,9 +1080,7 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "-V60Mne6"
-            }
+            "controllerId": "-V60Mne6"
           },
           "x6Node": {
             "x": 120,
@@ -1148,9 +1108,7 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "uQPenUqJ"
-            }
+            "controllerId": "uQPenUqJ"
           },
           "x6Node": {
             "x": 380,
@@ -1178,9 +1136,7 @@
             }
           ],
           "config": {
-            "param": {
-              "controllerId": "-V60Mne6"
-            }
+            "controllerId": "-V60Mne6"
           },
           "x6Node": {
             "x": 380,
