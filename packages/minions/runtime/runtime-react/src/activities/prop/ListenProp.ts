@@ -1,25 +1,25 @@
 import { INodeDefine } from "@rxdrag/minions-schema";
 import { IControllerContext } from "../../interfaces";
-import { AbstractControllerActivity } from "../AbstractControllerActivity";
+import { ControllerActivity } from "../ControllerActivity";
 import { Activity } from "@rxdrag/minions-runtime";
 import { IPropConfig } from "./SetProp";
 
 @Activity(ListenProp.NAME)
-export class ListenProp extends AbstractControllerActivity<IPropConfig> {
+export class ListenProp extends ControllerActivity<IPropConfig> {
   public static NAME = "system-react.listenProp"
 
   constructor(meta: INodeDefine<IPropConfig>, context: IControllerContext) {
     super(meta, context)
 
-    if (meta.config?.param?.prop) {
-      this.controller?.subscribeToPropChange(meta.config?.param.prop, this.valueHandler)
+    if (meta.config?.prop) {
+      this.controller?.subscribeToPropChange(meta.config?.prop, this.valueHandler)
     } else {
       console.error("Not set Prop to ListenPropReaction")
     }
   }
 
   valueHandler = (inputValue: unknown) => {
-    if (this.meta.config?.param?.prop) {
+    if (this.meta.config?.prop) {
       this.next(inputValue)
     }
   }

@@ -19,6 +19,6 @@ export const listenVariableMaterial: IRxDragActivityMaterial<IVariableConfig, Lo
   },
   activityName: ListenVariable.NAME,
   title: (config?: IVariableConfig, context?: LogicflowContextParam) => {
-    return context?.variables?.find(v => v.id === config?.param?.variable)?.name || config?.param?.variable
+    return context?.variables?.find(v => v.id === config?.variable)?.name || config?.variable
   },
 }

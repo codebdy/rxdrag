@@ -2,18 +2,14 @@
 import { Activity, Input } from "@rxdrag/minions-runtime";
 import { INodeDefine } from "@rxdrag/minions-schema";
 import { IControllerContext } from "../../interfaces";
-import { AbstractControllerActivity, IControllerConfig, IControllerParam } from "../AbstractControllerActivity";
+import { ControllerActivity, IControllerConfig } from "../ControllerActivity";
 
-export interface IPropParam extends IControllerParam {
+export interface IPropConfig extends IControllerConfig {
   prop?: string
 }
 
-export interface IPropConfig extends IControllerConfig {
-  param?: IPropParam
-}
-
 @Activity(SetProp.NAME)
-export class SetProp extends AbstractControllerActivity<IPropConfig> {
+export class SetProp extends ControllerActivity<IPropConfig> {
   public static NAME = "system-react.setProp"
   constructor(meta: INodeDefine<IPropConfig>, context: IControllerContext) {
     super(meta, context)
@@ -24,8 +20,8 @@ export class SetProp extends AbstractControllerActivity<IPropConfig> {
 
   @Input()
   inputHandler = (inputValue: string) => {
-    if (this.meta.config?.param?.prop) {
-      this.controller?.setProp(this.meta.config?.param.prop, inputValue)
+    if (this.meta.config?.prop) {
+      this.controller?.setProp(this.meta.config?.prop, inputValue)
     }
     this.next(inputValue);
   }

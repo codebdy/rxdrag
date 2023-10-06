@@ -1,11 +1,11 @@
 import { INodeDefine } from "@rxdrag/minions-schema";
 import { IControllerContext } from "../../interfaces";
-import { AbstractControllerActivity } from "../AbstractControllerActivity";
+import { ControllerActivity } from "../ControllerActivity";
 import { Activity, Input } from "@rxdrag/minions-runtime";
 import { IPropConfig } from "./SetProp";
 
 @Activity(ReadProp.NAME)
-export class ReadProp extends AbstractControllerActivity<IPropConfig> {
+export class ReadProp extends ControllerActivity<IPropConfig> {
   public static NAME = "system-react.readProp"
 
   constructor(meta: INodeDefine<IPropConfig>, context: IControllerContext) {
@@ -14,15 +14,15 @@ export class ReadProp extends AbstractControllerActivity<IPropConfig> {
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("ReadProp inputs count error")
     }
-    if (!meta.config?.param?.controllerId) {
+    if (!meta.config?.controllerId) {
       throw new Error("ReadProp not set controller id")
     }
   }
 
   @Input()
   inputHandler = () => {
-    if (this.meta.config?.param?.prop) {
-      this.next(this.controller.getProp(this.meta.config?.param.prop))
+    if (this.meta.config?.prop) {
+      this.next(this.controller.getProp(this.meta.config?.prop))
     }
   }
 }

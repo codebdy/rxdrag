@@ -9,7 +9,7 @@ import { listenPropMaterial } from "@rxdrag/minions-react-materials"
 export function getListenPropNode(rNode: ReactionableNode) {
   const ctrlMeta = rNode.node.meta?.["x-controller"]
   const title = ctrlMeta?.name || rNode.node.title;
-  
+
   return {
     key: rNode.node.id + "listenProps",
     title: <ActivityResource
@@ -28,9 +28,7 @@ export function getListenPropNode(rNode: ReactionableNode) {
             },
           ],
           config: {
-            param: {
-              controllerId: ctrlMeta?.id
-            }
+            controllerId: ctrlMeta?.id
           }
         }
       }}

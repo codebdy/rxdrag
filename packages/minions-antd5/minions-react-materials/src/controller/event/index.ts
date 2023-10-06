@@ -11,17 +11,17 @@ export const eventMaterial: IRxDragActivityMaterial<IEventConfig, LogicflowConte
   },
 
   icon: (config?: IEventConfig, context?: LogicflowContextParam) => {
-    const { material } = getControllerComponentInfo(config?.param, context?.engine)
+    const { material } = getControllerComponentInfo(config, context?.engine)
     return material?.resource?.icon
   },
 
   color: (config?: IEventConfig, context?: LogicflowContextParam) => {
-    const { material } = getControllerComponentInfo(config?.param, context?.engine)
+    const { material } = getControllerComponentInfo(config, context?.engine)
     return material?.resource?.color
   },
 
   title: (config?: IEventConfig, context?: LogicflowContextParam) => {
-    const { node, material } = getControllerComponentInfo(config?.param, context?.engine)
+    const { node, material } = getControllerComponentInfo(config, context?.engine)
     const ctrl = node?.meta["x-controller"] as IControllerMeta | undefined
     return ctrl?.name || material?.resource?.title || ctrl?.id
   },

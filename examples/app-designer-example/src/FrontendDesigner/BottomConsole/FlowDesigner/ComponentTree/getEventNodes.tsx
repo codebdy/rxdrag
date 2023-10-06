@@ -33,10 +33,8 @@ export function getEventNodes(rNode: ReactionableNode, engine: IDesignerEngine |
               },
             ],
             config: {
-              param: {
-                controllerId: ctrlMeta?.id,
-                name: event.name,
-              }
+              controllerId: ctrlMeta?.id,
+              name: event.name,
             }
           }
 

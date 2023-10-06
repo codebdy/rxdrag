@@ -8,7 +8,7 @@ import { DraggableText } from "../DraggableText";
 import { IDesignerEngine } from "@rxdrag/core";
 import { reactionMaterial, methodIcon } from "@rxdrag/minions-react-materials";
 
-export function getReactionNodes(rNode: ReactionableNode, engine:IDesignerEngine|undefined, comMaterial?: IMaterial) {
+export function getReactionNodes(rNode: ReactionableNode, engine: IDesignerEngine | undefined, comMaterial?: IMaterial) {
   const ctrlMeta = rNode.node.meta?.["x-controller"]
   return comMaterial?.controller?.reactions?.map(reaction => {
     const label = reaction.label?.startsWith("$")
@@ -39,9 +39,7 @@ export function getReactionNodes(rNode: ReactionableNode, engine:IDesignerEngine
               },
             ],
             config: {
-              param: {
-                controllerId: ctrlMeta?.id
-              }
+              controllerId: ctrlMeta?.id
             }
           }
 

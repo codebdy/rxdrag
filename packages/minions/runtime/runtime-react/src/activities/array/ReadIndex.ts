@@ -1,11 +1,11 @@
 import { INodeDefine } from "@rxdrag/minions-schema";
 import { IController, IControllerContext } from "../../interfaces";
-import { AbstractControllerActivity, IControllerConfig } from "../AbstractControllerActivity";
+import { ControllerActivity, IControllerConfig } from "../ControllerActivity";
 import { Activity, Input } from "@rxdrag/minions-runtime";
 
 //未实现
 @Activity(ReadIndex.NAME)
-export class ReadIndex extends AbstractControllerActivity<IControllerConfig> {
+export class ReadIndex extends ControllerActivity<IControllerConfig> {
   public static NAME = "system-react.readArrayIndex"
 
   controller: IController

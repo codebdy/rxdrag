@@ -1,26 +1,22 @@
 import { Activity } from "@rxdrag/minions-runtime";
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IController, IControllerContext, UnListener } from "../../interfaces";
-import { AbstractControllerActivity, IControllerConfig, IControllerParam } from "../AbstractControllerActivity";
+import { IControllerContext, UnListener } from "../../interfaces";
+import { ControllerActivity, IControllerConfig } from "../ControllerActivity";
 
-export interface IEventParam extends IControllerParam {
+export interface IEventConfig extends IControllerConfig {
   name?: string
 }
 
-export interface IEventConfig extends IControllerConfig {
-  param?: IEventParam
-}
-
 @Activity(EventActivity.NAME)
-export class EventActivity extends AbstractControllerActivity<IEventConfig> {
+export class EventActivity extends ControllerActivity<IEventConfig> {
   public static NAME = "system-react.event"
   config?: IEventConfig;
   unsub?: UnListener
 
   constructor(meta: INodeDefine<IEventConfig>, context: IControllerContext) {
     super(meta, context)
-    if (meta.config?.param?.name) {
-      this.unsub = this.controller.subscribeToEvent(meta.config?.param?.name, this.handleEvent)
+    if (meta.config?.name) {
+      this.unsub = this.controller.subscribeToEvent(meta.config?.name, this.handleEvent)
     }
   }
 

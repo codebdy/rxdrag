@@ -6,9 +6,9 @@ import { ReactionableNode } from "."
 import { DraggableText } from "../DraggableText"
 import { setPropMaterial, methodIcon } from "@rxdrag/minions-react-materials"
 
-export function getSetPropsNode(rNode: ReactionableNode){
+export function getSetPropsNode(rNode: ReactionableNode) {
   const ctrlMeta = rNode.node.meta?.["x-controller"]
-  
+
   return {
     key: rNode.node.id + "setprops",
     title: <ActivityResource
@@ -34,9 +34,7 @@ export function getSetPropsNode(rNode: ReactionableNode){
             },
           ],
           config: {
-            param: {
-              controllerId: ctrlMeta?.id
-            }
+            controllerId: ctrlMeta?.id
           }
         }
 
