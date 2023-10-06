@@ -1,5 +1,5 @@
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IController } from "../../interfaces";
+import { IControllerContext } from "../../interfaces";
 import { AbstractControllerActivity } from "../AbstractControllerActivity";
 import { Activity, Input } from "@rxdrag/minions-runtime";
 import { IPropConfig } from "./SetProp";
@@ -8,8 +8,8 @@ import { IPropConfig } from "./SetProp";
 export class ReadProp extends AbstractControllerActivity<IPropConfig> {
   public static NAME = "system-react.readProp"
 
-  constructor(meta: INodeDefine<IPropConfig>, controller: IController) {
-    super(meta, controller)
+  constructor(meta: INodeDefine<IPropConfig>, context: IControllerContext) {
+    super(meta, context)
 
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("ReadProp inputs count error")

@@ -1,6 +1,6 @@
 import { Activity, DynamicInput } from "@rxdrag/minions-runtime";
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IController } from "../../interfaces";
+import { IControllerContext } from "../../interfaces";
 import { AbstractControllerActivity, IControllerConfig, IControllerParam } from "../AbstractControllerActivity";
 import { isFn } from "@rxdrag/shared";
 
@@ -16,8 +16,8 @@ export interface IReactionConfig extends IControllerConfig {
 export class Reaction extends AbstractControllerActivity<IReactionConfig> {
   public static NAME = "system-react.reaction"
 
-  constructor(meta: INodeDefine<IReactionConfig>, controller: IController) {
-    super(meta, controller)
+  constructor(meta: INodeDefine<IReactionConfig>, context: IControllerContext) {
+    super(meta, context)
   }
 
   @DynamicInput

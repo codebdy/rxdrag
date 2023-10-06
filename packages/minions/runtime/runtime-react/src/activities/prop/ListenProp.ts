@@ -1,5 +1,5 @@
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IController } from "../../interfaces";
+import { IControllerContext } from "../../interfaces";
 import { AbstractControllerActivity } from "../AbstractControllerActivity";
 import { Activity } from "@rxdrag/minions-runtime";
 import { IPropConfig } from "./SetProp";
@@ -8,11 +8,11 @@ import { IPropConfig } from "./SetProp";
 export class ListenProp extends AbstractControllerActivity<IPropConfig> {
   public static NAME = "system-react.listenProp"
 
-  constructor(meta: INodeDefine<IPropConfig>, controller: IController) {
-    super(meta, controller)
+  constructor(meta: INodeDefine<IPropConfig>, context: IControllerContext) {
+    super(meta, context)
 
     if (meta.config?.param?.prop) {
-      controller?.subscribeToPropChange(meta.config?.param.prop, this.valueHandler)
+      this.controller?.subscribeToPropChange(meta.config?.param.prop, this.valueHandler)
     } else {
       console.error("Not set Prop to ListenPropReaction")
     }
