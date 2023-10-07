@@ -4,7 +4,7 @@ import { ComponentView, IComponentRenderSchema } from "./ComponentView"
 import { transToRenderSchema } from "./transform"
 import { IFieldMeta } from "@rxdrag/fieldy"
 import { IReactComponents } from "@rxdrag/react-shared"
-import { RuntimeRoot } from "./RuntimeRoot"
+import { LogicflowRuntime } from "./RuntimeRoot"
 import { ILocalesManager } from "@rxdrag/locales"
 
 export const ComponentRender = memo((props: {
@@ -24,13 +24,13 @@ export const ComponentRender = memo((props: {
   }, [schema])
 
   return (
-    node ? <RuntimeRoot
+    node ? <LogicflowRuntime
       components={components}
       schema={node}
       //controllerFactories={controllerFactories}
     >
       {node && <ComponentView node={node} />}
-    </RuntimeRoot>
+    </LogicflowRuntime>
       : <></>
   )
 })

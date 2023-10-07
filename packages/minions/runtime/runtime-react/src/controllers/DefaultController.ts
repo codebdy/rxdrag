@@ -2,6 +2,8 @@
 import { IControllerMeta } from "../interfaces";
 import { IController, EventHandlers, PropsListener, UnListener, PropListener, EventListener, CONTROLLER_EVENT_INIT, CONTROLLER_EVENT_DESTORY } from "../interfaces/controller";
 
+export const DefaultControllerName = "DefaultController"
+
 export class DefaultController implements IController {
   id: string;
   name?: string;
@@ -78,5 +80,9 @@ export class DefaultController implements IController {
     return () => {
       this.eventListeners[name].splice(this.eventListeners[name].indexOf(listener), 1)
     }
+  }
+
+  destroy(): void {
+    //throw new Error("Method not implemented.");
   }
 }

@@ -38,10 +38,9 @@ export interface IController extends IPropController {
   destroyEvent: EventHandler,
   subscribeToPropsChange(listener: PropsListener): UnListener,
   subscribeToEvent(name: string, listener: EventListener): UnListener,
-}
 
-export type Controllers = {
-  [controllerId: string]: IController | undefined
+  destroy(): void,
 }
 
 export type ControllerFactory = (meta: IControllerMeta) => IController
+
