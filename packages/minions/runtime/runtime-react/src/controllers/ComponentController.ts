@@ -8,13 +8,8 @@ export class ComponentController implements IController {
   events: EventHandlers = {};
   protected props: any = {};
 
-  protected propListeners: {
-    [name: string]: PropListener[]
-  } = {}
-
-  protected eventListeners: {
-    [name: string]: EventListener[]
-  } = {}
+  protected propListeners: Record<string, PropListener[]> = {}
+  protected eventListeners: Record<string, EventListener[]> = {}
 
   protected propsListeners: PropsListener[] = []
 
@@ -24,13 +19,13 @@ export class ComponentController implements IController {
   }
 
   initEvent = (args?: unknown[]) => {
-    for (const eventHandler of this.eventListeners?.[CONTROLLER_EVENT_INIT]) {
+    for (const eventHandler of this.eventListeners?.[CONTROLLER_EVENT_INIT] || []) {
       eventHandler(args)
     }
   }
 
   destroyEvent = (args?: unknown[]) => {
-    for (const eventHandler of this.eventListeners?.[CONTROLLER_EVENT_DESTORY]) {
+    for (const eventHandler of this.eventListeners?.[CONTROLLER_EVENT_DESTORY] || []) {
       eventHandler(args)
     }
   }

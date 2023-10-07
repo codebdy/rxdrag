@@ -33,8 +33,8 @@ export class ControllerEngine {
     const fieldMeta = schema?.["x-field"]
     if (controllerMeta?.enable) {
       const controller = new ComponentController(controllerMeta);
-      if (controller && schema?.id) {
-        controllers[schema?.id] = controller
+      if (controller) {
+        controllers[controllerMeta.id] = controller
       }
     }
 
