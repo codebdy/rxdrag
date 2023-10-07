@@ -18,5 +18,5 @@ export const ThemeTokenContext = createContext<IThemeToken>({})
 //全局上下文，主要用于getSubTitle
 export const LogicFlowContext = createContext<unknown>(undefined)
 //所有可以被引用的编排
-export const CanBeReferencedLogicFlowMetasContext = createContext<ILogicFlowDefine[]>([])
+export const FxFlowMetasContext = createContext<ILogicFlowDefine[]>([])
 

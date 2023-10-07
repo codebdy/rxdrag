@@ -1,13 +1,14 @@
 import { IFieldyLogicFlowContext } from "@rxdrag/fieldy-minions-activities";
-import { ControllerReaction, IReactContext, IVariableContext, predefinedReactions } from "@rxdrag/minions-runtime-react";
+import { IReactContext, IVariableContext, predefinedReactions } from "@rxdrag/minions-runtime-react";
 import { useForm } from "@rxdrag/react-fieldy";
 import { useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ControllerEngine } from "../RuntimeRoot";
+import { IFxContext } from "@rxdrag/minions-runtime";
+import { ControllerEngine } from "../LogicflowRuntime/ControllerEngine";
 
-export type MergedLogicFlowContext = IFieldyLogicFlowContext & IReactContext & IVariableContext
+export type MergedLogicFlowContext = IFieldyLogicFlowContext & IReactContext & IVariableContext & IFxContext
 
-export function useLogicFlowContext(engine?: ControllerEngine, reactions?: Record<string, ControllerReaction>) {
+export function useLogicFlowContext(engine?: ControllerEngine) {
   const navigate = useNavigate()
   const form = useForm()
   const urlParams = useParams()
@@ -16,9 +17,10 @@ export function useLogicFlowContext(engine?: ControllerEngine, reactions?: Recor
     navigate,
     form,
     urlParams,
-    reactions: { ...predefinedReactions, ...reactions },
+    reactions: { ...predefinedReactions, ...engine?.reactions },
     variableController: engine?.variableController,
-  }), [engine, form, navigate, reactions, urlParams])
+    fxFlows: engine?.fxFlows,
+  }), [engine, form, navigate, urlParams])
 
   return logicFlowContext
 }

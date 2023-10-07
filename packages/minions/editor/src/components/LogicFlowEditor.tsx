@@ -9,13 +9,13 @@ export type LogicFlowEditorProps = LogicFlowEditorInnerProps & {
   token: IThemeToken,
   materials: IActivityMaterial<ReactNode>[],
   logicFlowContext?: unknown,
-  canBeReferencedLogflowMetas?: ILogicFlowDefine[],
+  fxFlowMetas?: ILogicFlowDefine[],
 }
 
 export const LogicFlowEditor = memo((
   props: LogicFlowEditorProps
 ) => {
-  const { themMode, token, materials, logicFlowContext, canBeReferencedLogflowMetas, ...rest } = props
+  const { themMode, token, materials, logicFlowContext, fxFlowMetas, ...rest } = props
 
   return (
     <LogicFlowEditorScope
@@ -23,7 +23,7 @@ export const LogicFlowEditor = memo((
       token={token}
       materials={materials}
       logicFlowContext={logicFlowContext}
-      canBeReferencedLogflowMetas={canBeReferencedLogflowMetas}
+      fxFlowMetas={fxFlowMetas}
     >
       <LogicFlowEditorInner {...rest} />
     </LogicFlowEditorScope>

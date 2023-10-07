@@ -6,7 +6,8 @@ import { IFieldMeta } from "@rxdrag/fieldy"
 import { IReactComponents } from "@rxdrag/react-shared"
 import { ILocalesManager } from "@rxdrag/locales"
 import { PreviewComponentsContext } from "./contexts"
-import { LogicFlowOptions, LogicflowRuntime } from "./RuntimeRoot"
+import { LogicFlowOptions, LogicflowRuntime } from "./LogicflowRuntime"
+
 
 export const ComponentRender = memo((props: {
   schema: INodeSchema,

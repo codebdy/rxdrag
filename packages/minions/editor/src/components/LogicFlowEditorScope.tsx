@@ -1,5 +1,5 @@
 import { ReactNode, memo, useEffect, useMemo, useState } from "react"
-import { CanBeReferencedLogicFlowMetasContext, GraphContext, LogicFlowContext, LogicFlowEditorStoreContext, MaterialsContext, ThemeTokenContext } from "../contexts";
+import { FxFlowMetasContext, GraphContext, LogicFlowContext, LogicFlowEditorStoreContext, MaterialsContext, ThemeTokenContext } from "../contexts";
 import { EditorStore } from "../classes";
 import { ThemeProvider } from "styled-components";
 import { IThemeToken } from "../interfaces";
@@ -11,7 +11,7 @@ export type LogicFlowEditorScopeProps<T = unknown> = {
   token: IThemeToken,
   materials: IActivityMaterial<ReactNode>[],
   logicFlowContext?: T,
-  canBeReferencedLogflowMetas?: ILogicFlowDefine[],
+  fxFlowMetas?: ILogicFlowDefine[],
   children?: React.ReactNode
 }
 
@@ -19,7 +19,7 @@ export type LogicFlowEditorScopeProps<T = unknown> = {
 export const LogicFlowEditorScope = memo((
   props: LogicFlowEditorScopeProps,
 ) => {
-  const { themMode, token, materials, logicFlowContext, canBeReferencedLogflowMetas, children } = props;
+  const { themMode, token, materials, logicFlowContext, fxFlowMetas, children } = props;
   const graphState = useState<Graph>()
   const materialsState = useState<IActivityMaterial[]>([])
   const [, setMaterials] = materialsState
@@ -48,11 +48,11 @@ export const LogicFlowEditorScope = memo((
         <ThemeTokenContext.Provider value={token}>
           <LogicFlowContext.Provider value={logicFlowContext}>
             <MaterialsContext.Provider value={materialsState}>
-              <CanBeReferencedLogicFlowMetasContext.Provider value={canBeReferencedLogflowMetas || []}>
+              <FxFlowMetasContext.Provider value={fxFlowMetas || []}>
                 <GraphContext.Provider value={graphState}>
                   {children}
                 </GraphContext.Provider>
-              </CanBeReferencedLogicFlowMetasContext.Provider>
+              </FxFlowMetasContext.Provider>
             </MaterialsContext.Provider>
           </LogicFlowContext.Provider>
         </ThemeTokenContext.Provider>
