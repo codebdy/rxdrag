@@ -25,7 +25,7 @@ export function withController(WrappedComponent: ReactComponent, meta: IControll
       if (meta?.enable && controllerEngine) {
         const ctrl = controllerEngine.getController(meta.id)
         const unlistener = ctrl?.subscribeToPropsChange(handlePropsChange)
-        ctrl.initEvent?.()
+        ctrl?.initEvent?.()
         setController(ctrl)
         return () => {
           ctrl?.destroyEvent?.()
@@ -39,12 +39,14 @@ export function withController(WrappedComponent: ReactComponent, meta: IControll
       return { ...props, ...controller?.events, ...changedProps }
     }, [changedProps, controller?.events, props]);
 
+    if (!controller) {
+      console.error("Can not get controller", meta);
+    }
+
     return (
-      controller
-        ? <ControllerContext.Provider value={controller}>
-          <WrappedComponent {...newProps} />
-        </ControllerContext.Provider>
-        : <>Can not creat controller </>
+      <ControllerContext.Provider value={controller}>
+        <WrappedComponent {...newProps} />
+      </ControllerContext.Provider>
     )
   })
 }
