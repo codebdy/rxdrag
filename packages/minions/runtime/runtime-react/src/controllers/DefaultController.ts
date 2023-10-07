@@ -25,13 +25,13 @@ export class DefaultController implements IController {
     this.name = meta.name
   }
 
-  initEvent = (args: unknown[]) => {
+  initEvent = (args?: unknown[]) => {
     for (const eventHandler of this.eventListeners?.[CONTROLLER_EVENT_INIT]) {
       eventHandler(args)
     }
   }
 
-  destroyEvent = (args: unknown[]) => {
+  destroyEvent = (args?: unknown[]) => {
     for (const eventHandler of this.eventListeners?.[CONTROLLER_EVENT_DESTORY]) {
       eventHandler(args)
     }

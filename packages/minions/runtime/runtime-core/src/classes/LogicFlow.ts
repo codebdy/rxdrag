@@ -9,9 +9,9 @@ export class LogicFlow<LogicFlowContext = unknown> {
   jointers: IActivityJointers = new ActivityJointers();
   activities: IActivity[] = [];
 
-  constructor(private flowMeta: ILogicFlowDefine, private context: LogicFlowContext) {
+  constructor(private flowDefine: ILogicFlowDefine, private context: LogicFlowContext) {
     //注意这个id的处理
-    this.id = flowMeta.id
+    this.id = flowDefine.id
 
     //第一步，解析节点
     this.constructActivities()
@@ -30,18 +30,18 @@ export class LogicFlow<LogicFlowContext = unknown> {
 
   //构建一个图的所有节点
   private constructActivities() {
-    for (const activityMeta of this.flowMeta.nodes) {
+    for (const activityMeta of this.flowDefine.metas?.nodes || []) {
       switch (activityMeta.type) {
         case NodeType.Start: {
           //start只有一个端口，可能会变成其它流程的端口，所以name谨慎处理
           this.jointers.inputs.push(new Jointer(activityMeta.id, activityMeta.name || "input"));
           break;
         }
-        case NodeType.End:{
+        case NodeType.End: {
           //end 只有一个端口，可能会变成其它流程的端口，所以name谨慎处理
           const endJointer = new Jointer(activityMeta.id, activityMeta.name || "output");
           // 最后一个输出节点，执行回调函数
-          endJointer.connect((inputValue?:unknown)  => {
+          endJointer.connect((inputValue?: unknown) => {
             if (endJointer['outlets']?.length === 1 && endJointer?.runContext?.__runback) {
               endJointer?.runContext.__runback(undefined, inputValue)
             }
@@ -51,7 +51,7 @@ export class LogicFlow<LogicFlowContext = unknown> {
         }
         case NodeType.Activity:
         case NodeType.EmbeddedFlow:
-        case NodeType.LogicFlowActivity:{
+        case NodeType.LogicFlowActivity: {
           if (activityMeta.activityName) {
             const activityInfo = activities[activityMeta.activityName]
             const activityClass = activityInfo?.target
@@ -106,7 +106,7 @@ export class LogicFlow<LogicFlowContext = unknown> {
 
   //连接一个图的所有节点，把所有的jointer连起来
   private contactLines() {
-    for (const lineMeta of this.flowMeta.lines) {
+    for (const lineMeta of this.flowDefine.metas?.lines || []) {
       let sourceJointer = this.jointers.inputs.find(jointer => jointer.id === lineMeta.source.nodeId)
       if (!sourceJointer && lineMeta.source.portId) {
         sourceJointer = this.activities.find(reaction => reaction.id === lineMeta.source.nodeId)?.jointers?.outputs.find(output => output.id === lineMeta.source.portId)
@@ -128,7 +128,7 @@ export class LogicFlow<LogicFlowContext = unknown> {
   }
 
   getNode = (id: string) => {
-    return this.flowMeta?.nodes?.find(node => node.id === id)
+    return this.flowDefine?.metas?.nodes?.find(node => node.id === id)
   }
 
   //重新构造children，添加边界节点，修改连线

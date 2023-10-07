@@ -1,4 +1,4 @@
-import { ILogicFlowMetas } from "@rxdrag/minions-schema";
+import { ILogicFlowDefine, IScriptDefine } from "@rxdrag/minions-schema";
 import { ID } from "@rxdrag/shared";
 
 export enum FxScope {
@@ -12,23 +12,15 @@ export enum LogicType {
   fx = "fx"
 }
 
-export interface IFlow {
-  id: string,
-  name?: string,
-  //显示文本
-  label?: string;
+export interface IFlow extends ILogicFlowDefine {
   scope?: FxScope,
   //app, appFront,  Module or 循环组件
   ownerId: ID,
   type: LogicType,
-  metas?: ILogicFlowMetas,
   moduleId?: ID,
 }
 
-export interface IScript {
-  id: string,
-  name?: string,
-  code?: string,
+export interface IScript extends IScriptDefine {
   scope: FxScope,
   ownerId: ID,
   type: LogicType,

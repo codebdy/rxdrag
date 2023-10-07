@@ -8,7 +8,7 @@ export type Unsubscribe = () => void
 export type VariableListener = (value: unknown) => void
 export type PropListener = (value: unknown) => void
 export type PropsListener = (name: string, value: unknown) => void
-export type EventListener = (args: unknown[]) => void
+export type EventListener = (args?: unknown[]) => void
 export type UnListener = () => void
 
 export type EventHandler = (args?: unknown[]) => void

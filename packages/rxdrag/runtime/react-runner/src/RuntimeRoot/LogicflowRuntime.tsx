@@ -4,27 +4,33 @@ import { ControllerEngineContext } from "../contexts"
 import { ControllerEngine } from "./ControllerEngine"
 import { useLogicFlowContext } from "../hooks/useLogicFlowContext"
 import { IComponentRenderSchema } from "../ComponentView"
-import { ControllerFactory } from "@rxdrag/minions-runtime-react"
+import { ControllerFactory, predefinedControllerFactories } from "@rxdrag/minions-runtime-react"
 import { useControllers } from "../hooks"
+import { ILogicFlowDefine, IScriptDefine } from "@rxdrag/minions-schema"
 
 export const LogicflowRuntime = memo((props: {
-  ownerId: string,
   children: React.ReactNode,
   schema: IComponentRenderSchema,
   controllerFactories?: Record<string, ControllerFactory>,
+  flows?: ILogicFlowDefine[],
+  fxFlows?: ILogicFlowDefine[],
+  scripts?: IScriptDefine[],
+  fxScripts?: IScriptDefine[],
 }) => {
-  const { children, schema } = props
+  const { children, schema, controllerFactories } = props
   const [controllerEngine, setControllerEngine] = useState<ControllerEngine>()
   const logicFlowContext = useLogicFlowContext();
   const parentControllers = useControllers()
 
   useEffect(() => {
-    const rtEngine = new ControllerEngine(schema, {}, parentControllers)
+    const rtEngine = new ControllerEngine(
+      schema, { ...predefinedControllerFactories, ...controllerFactories },
+      parentControllers)
     setControllerEngine(rtEngine)
     return () => {
       rtEngine.destroy()
     }
-  }, [parentControllers, schema])
+  }, [controllerFactories, parentControllers, schema])
 
   return (
     controllerEngine ?

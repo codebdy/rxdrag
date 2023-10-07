@@ -3,7 +3,7 @@ import { INodeSchema } from "@rxdrag/schema";
 import { isStr } from "@rxdrag/shared";
 import { Fragment, memo, useMemo } from "react"
 import { frameMaterilas } from "../../UiFrameDesigner/materials";
-import { ComponentRender } from "@rxdrag/react-runner";
+import { ComponentRender, LogicflowRuntime } from "@rxdrag/react-runner";
 import { PagePreview } from "./PagePreview";
 import { useParams } from "react-router-dom";
 
@@ -33,10 +33,15 @@ export const ModulePreview = memo((
     return coms
   }, [device])
   return (
-    <ComponentRender
-      components={frameComponents}
-      //controllerFactories={controllerFactories}
-      schema={frameSchema}
-    />
+    <LogicflowRuntime
+      ownerId={""}
+      schema={undefined}
+    >
+      <ComponentRender
+        components={frameComponents}
+        //controllerFactories={controllerFactories}
+        schema={frameSchema}
+      />
+    </LogicflowRuntime>
   )
 })

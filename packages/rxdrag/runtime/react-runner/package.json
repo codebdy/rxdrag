@@ -36,6 +36,7 @@
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/minions-runtime": "workspace:*",
+    "@rxdrag/minions-schema": "workspace:*",
     "@rxdrag/react-fieldy": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
     "@rxdrag/fieldy-minions-activities": "workspace:*",
