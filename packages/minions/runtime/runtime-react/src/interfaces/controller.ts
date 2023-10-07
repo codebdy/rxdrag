@@ -11,7 +11,7 @@ export type PropsListener = (name: string, value: unknown) => void
 export type EventListener = (args: unknown[]) => void
 export type UnListener = () => void
 
-export type EventHandler = (args: unknown[]) => void
+export type EventHandler = (args?: unknown[]) => void
 export type EventHandlers = {
   [name: string]: EventHandler | undefined
 }

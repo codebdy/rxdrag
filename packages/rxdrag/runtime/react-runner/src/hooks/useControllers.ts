@@ -1,8 +1,10 @@
 import { useContext } from "react";
-import { EmpertyControllers, ControllersContext } from "../contexts";
-import { IController } from "@rxdrag/minions-runtime-react";
+import { ControllerEngineContext } from "../contexts";
+import { ControllerEngine } from "../RuntimeRoot";
+
+const EmpertyControllers = {}
 
 export function useControllers() {
-  const schema = useContext<Record<string, IController>>(ControllersContext) || EmpertyControllers
-  return schema;
+  const controllers = useContext<ControllerEngine | undefined>(ControllerEngineContext)?.controllers || EmpertyControllers
+  return controllers;
 }

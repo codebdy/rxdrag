@@ -24,7 +24,7 @@ export const ControllerSetter = memo((
       onChange?.({
         ...value,
         id: value?.id ? value.id : createId(),
-        controllerName: material?.controller?.controllerClass,
+        controllerName: material?.controller?.controllerFactory,
         enable: true,
       })
     } else {
@@ -32,7 +32,7 @@ export const ControllerSetter = memo((
         onChange?.({ ...value, enable: false })
       }
     }
-  }, [material?.controller?.controllerClass, onChange, value])
+  }, [material?.controller?.controllerFactory, onChange, value])
 
   const handleNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (value) {

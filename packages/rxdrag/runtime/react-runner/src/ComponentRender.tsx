@@ -4,8 +4,8 @@ import { ComponentView, IComponentRenderSchema } from "./ComponentView"
 import { transToRenderSchema } from "./transform"
 import { IFieldMeta } from "@rxdrag/fieldy"
 import { IReactComponents } from "@rxdrag/react-shared"
-import { LogicflowRuntime } from "./RuntimeRoot"
 import { ILocalesManager } from "@rxdrag/locales"
+import { PreviewComponentsContext } from "./contexts"
 
 export const ComponentRender = memo((props: {
   schema: INodeSchema,
@@ -24,13 +24,11 @@ export const ComponentRender = memo((props: {
   }, [schema])
 
   return (
-    node ? <LogicflowRuntime
-      components={components}
-      schema={node}
-      //controllerFactories={controllerFactories}
+    node ? <PreviewComponentsContext.Provider
+      value={components || {}}
     >
       {node && <ComponentView node={node} />}
-    </LogicflowRuntime>
+    </PreviewComponentsContext.Provider>
       : <></>
   )
 })

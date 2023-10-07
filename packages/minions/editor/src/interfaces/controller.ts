@@ -27,5 +27,5 @@ export interface IControllerMaterial {
   props?: IPropsMeta[],
   events?: (IEventMeta)[],
   reactions?: IReactionMeta[],
-  controllerClass?: string,
+  controllerFactory?: string,
 }
