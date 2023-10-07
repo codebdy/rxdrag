@@ -1,5 +1,4 @@
 import { IVariable } from "@rxdrag/minions-schema";
-import { IControllerMeta } from "./meta"
 
 export const CONTROLLER_EVENT_INIT = "onInit";
 export const CONTROLLER_EVENT_DESTORY = "onDestory"
@@ -44,5 +43,6 @@ export interface IController extends IPropController {
   destroy(): void,
 }
 
-export type ControllerFactory = (meta: IControllerMeta) => IController
+export type ControllerReaction = (controller: IController, inputValue?: unknown) => void
+
 

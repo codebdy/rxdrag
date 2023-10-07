@@ -1,6 +1,6 @@
 
 
-import { ControllerFactory, DefaultControllerName, IController, IControllerMeta, IVariableController, VariableController } from "@rxdrag/minions-runtime-react"
+import { ComponentController, IController, IVariableController, VariableController } from "@rxdrag/minions-runtime-react"
 import { IComponentRenderSchema } from "../ComponentView"
 import { IVariable } from "@rxdrag/minions-schema"
 
@@ -14,7 +14,6 @@ export class ControllerEngine {
   variableController: IVariableController
 
   constructor(schema: IComponentRenderSchema,
-    protected controllerFactories: Record<string, ControllerFactory>,
     options?: ControllerOptions,
   ) {
     console.log("创建控制器引擎")
@@ -27,7 +26,7 @@ export class ControllerEngine {
     const controllerMeta = schema?.["x-controller"];
     const fieldMeta = schema?.["x-field"]
     if (controllerMeta?.enable) {
-      const controller = this.makeController(controllerMeta);
+      const controller = new ComponentController(controllerMeta);
       if (controller && schema?.id) {
         controllers[schema?.id] = controller
       }
@@ -72,14 +71,4 @@ export class ControllerEngine {
     this.controllers = {}
   }
 
-  private makeController = (meta: IControllerMeta) => {
-    const factory = this.controllerFactories[meta.controllerName || DefaultControllerName]
-
-    if (!factory) {
-      console.error("Can not find controller factory:" + meta.controllerName || DefaultControllerName)
-      return
-    }
-
-    return factory(meta)
-  }
 }

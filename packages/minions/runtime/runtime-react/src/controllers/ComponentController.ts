@@ -2,9 +2,7 @@
 import { IControllerMeta } from "../interfaces";
 import { IController, EventHandlers, PropsListener, UnListener, PropListener, EventListener, CONTROLLER_EVENT_INIT, CONTROLLER_EVENT_DESTORY } from "../interfaces/controller";
 
-export const DefaultControllerName = "DefaultController"
-
-export class DefaultController implements IController {
+export class ComponentController implements IController {
   id: string;
   name?: string;
   events: EventHandlers = {};

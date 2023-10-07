@@ -35,7 +35,6 @@ export const ModulePreview = memo((
   return (
     <ComponentRender
       components={frameComponents}
-      //controllerFactories={controllerFactories}
       schema={frameSchema}
     />
   )

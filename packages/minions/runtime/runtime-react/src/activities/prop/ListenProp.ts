@@ -1,5 +1,5 @@
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IControllerContext } from "../../interfaces";
+import { IReactContext } from "../../interfaces";
 import { ControllerActivity } from "../ControllerActivity";
 import { Activity } from "@rxdrag/minions-runtime";
 import { IPropConfig } from "./SetProp";
@@ -8,7 +8,7 @@ import { IPropConfig } from "./SetProp";
 export class ListenProp extends ControllerActivity<IPropConfig> {
   public static NAME = "system-react.listenProp"
 
-  constructor(meta: INodeDefine<IPropConfig>, context: IControllerContext) {
+  constructor(meta: INodeDefine<IPropConfig>, context: IReactContext) {
     super(meta, context)
 
     if (meta.config?.prop) {

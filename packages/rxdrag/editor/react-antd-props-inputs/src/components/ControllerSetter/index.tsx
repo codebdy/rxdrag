@@ -1,8 +1,8 @@
 import { IControllerMeta } from "@rxdrag/minions-runtime-react"
-import { IMaterial, useCurrentNode, useDesignerEngine, useSettersTranslate } from "@rxdrag/react-core"
+import { useSettersTranslate } from "@rxdrag/react-core"
 import { createId } from "@rxdrag/shared"
 import { Form, Input, Switch } from "antd"
-import { memo, useCallback, useMemo } from "react"
+import { memo, useCallback } from "react"
 
 export const ControllerSetter = memo((
   props: {
@@ -12,19 +12,12 @@ export const ControllerSetter = memo((
 ) => {
   const { value, onChange } = props;
   const t = useSettersTranslate()
-  const engine = useDesignerEngine()
-  const node = useCurrentNode()
-
-  const material = useMemo(() => {
-    return engine?.getComponentManager().getComponentConfig(node?.meta.componentName || "") as IMaterial | undefined
-  }, [engine, node?.meta.componentName])
 
   const handleSwitch = useCallback((checked: boolean) => {
     if (checked) {
       onChange?.({
         ...value,
         id: value?.id ? value.id : createId(),
-        controllerName: material?.controller?.controllerFactory,
         enable: true,
       })
     } else {
@@ -32,7 +25,7 @@ export const ControllerSetter = memo((
         onChange?.({ ...value, enable: false })
       }
     }
-  }, [material?.controller?.controllerFactory, onChange, value])
+  }, [onChange, value])
 
   const handleNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (value) {
