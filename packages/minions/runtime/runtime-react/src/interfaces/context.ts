@@ -1,9 +1,5 @@
-import { Controllers, IVariableController } from "./controller"
-
-export interface IControllerContext {
-  controllers: Controllers,
-}
+import { IVariableController } from "./controller"
 
 export interface IVariableContext {
-  variableController: IVariableController
+  variableController?: IVariableController
 }

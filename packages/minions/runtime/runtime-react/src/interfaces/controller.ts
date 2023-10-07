@@ -1,3 +1,4 @@
+import { IVariable } from "@rxdrag/minions-schema";
 import { IControllerMeta } from "./meta"
 
 export const CONTROLLER_EVENT_INIT = "onInit";
@@ -17,6 +18,7 @@ export type EventHandlers = {
 }
 
 export interface IVariableController {
+  setMetas(variableMetas?: IVariable[]): void,
   setVariable(name: string, value: unknown): void,
   getVariable(name: string): unknown,
   subscribeToVariableChange(name: string, listener: VariableListener): UnListener

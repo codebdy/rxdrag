@@ -1,4 +1,4 @@
-import { ILogicFlowDefine, IScriptDefine } from "@rxdrag/minions-schema";
+import { IOwnedFlow, IOwnedScript } from "@rxdrag/minions-runtime-react";
 import { ID } from "@rxdrag/shared";
 
 export enum FxScope {
@@ -12,17 +12,16 @@ export enum LogicType {
   fx = "fx"
 }
 
-export interface IFlow extends ILogicFlowDefine {
+export interface IFlow extends IOwnedFlow {
   scope?: FxScope,
   //app, appFront,  Module or 循环组件
-  ownerId: ID,
+  //ownerId: ID,
   type: LogicType,
   moduleId?: ID,
 }
 
-export interface IScript extends IScriptDefine {
+export interface IScript extends IOwnedScript {
   scope: FxScope,
-  ownerId: ID,
   type: LogicType,
   moduleId?: ID,
 }

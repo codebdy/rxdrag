@@ -85,6 +85,7 @@ export interface ILogicFlowDefine {
   label?: string;
 
   metas?: ILogicFlowMetas,
+
 }
 
 //脚本定义
@@ -92,4 +93,5 @@ export interface IScriptDefine {
   id: string,
   name?: string,
   code?: string,
+
 }

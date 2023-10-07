@@ -3,7 +3,7 @@ import { ReactComponent } from "@rxdrag/react-shared"
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { ControllerContext } from "../contexts"
 import { IController, IControllerMeta } from "@rxdrag/minions-runtime-react"
-import { useControllerEngine } from "../hooks/useRuntimeEngine"
+import { useControllerEngine } from "../hooks/useControllerEngine"
 
 export function withController(WrappedComponent: ReactComponent, meta: IControllerMeta | undefined): ReactComponent {
   if (!meta?.id || !meta?.enable) {

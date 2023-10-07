@@ -6,13 +6,15 @@ import { useDesignerEngine } from "@rxdrag/react-core"
 import { useParams } from "react-router-dom"
 import { pageMaterials } from "../../ModuleUiDesigner/materials"
 import { isStr } from "@rxdrag/shared"
+import { useModule } from "../../hooks/useModule"
 
-//每次修改，本组件都会刷新，后面要优化
+//每次设计器画布修改，本预览组件都会刷新，后面要优化
 export const PagePreview = memo(() => {
-
   const [tree, setTree] = useState<INodeSchema>()
   const engine = useDesignerEngine()
   const { device = "" } = useParams()
+
+  const module = useModule()
 
   const components = useMemo(() => {
     const materials = pageMaterials[device]
@@ -67,8 +69,12 @@ export const PagePreview = memo(() => {
     tree
       ? <ComponentRender
         components={components}
-        //controllerFactories={controllerFactories}
         schema={tree}
+        logicflowOptions={
+          {
+            variables: module?.variables,
+          }
+        }
       />
       : <></>
   )

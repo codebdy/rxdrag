@@ -1,17 +1,26 @@
 
 
-import { ControllerFactory, DefaultControllerName, IController, IControllerMeta } from "@rxdrag/minions-runtime-react"
+import { ControllerFactory, DefaultControllerName, IController, IControllerMeta, IVariableController, VariableController } from "@rxdrag/minions-runtime-react"
 import { IComponentRenderSchema } from "../ComponentView"
+import { IVariable } from "@rxdrag/minions-schema"
+
+export type ControllerOptions = {
+  variableMetas?: IVariable[],
+  parent?: ControllerEngine,
+}
 
 export class ControllerEngine {
   controllers: Record<string, IController>
+  variableController: IVariableController
 
   constructor(schema: IComponentRenderSchema,
     protected controllerFactories: Record<string, ControllerFactory>,
-    parentControllers?: Record<string, IController>,
+    options?: ControllerOptions,
   ) {
     console.log("创建控制器引擎")
-    this.controllers = this.getSchemaControllers(schema, { ...parentControllers },)
+    this.variableController = options?.parent?.variableController || new VariableController()
+    this.variableController.setMetas(options?.variableMetas)
+    this.controllers = this.getSchemaControllers(schema, { ...options?.parent?.controllers },)
   }
 
   getSchemaControllers = (schema: IComponentRenderSchema, controllers: Record<string, IController>) => {

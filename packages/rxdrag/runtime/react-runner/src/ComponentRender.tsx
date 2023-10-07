@@ -6,14 +6,16 @@ import { IFieldMeta } from "@rxdrag/fieldy"
 import { IReactComponents } from "@rxdrag/react-shared"
 import { ILocalesManager } from "@rxdrag/locales"
 import { PreviewComponentsContext } from "./contexts"
+import { LogicFlowOptions, LogicflowRuntime } from "./RuntimeRoot"
 
 export const ComponentRender = memo((props: {
   schema: INodeSchema,
   components: IReactComponents | undefined
   //controllerFactories?: ControllerFactories,
   localesManager?: ILocalesManager,//@@ 暂时未用
+  logicflowOptions?: LogicFlowOptions,
 }) => {
-  const { schema, components } = props
+  const { schema, components, logicflowOptions } = props
   const [node, setNode] = useState<IComponentRenderSchema>()
   useEffect(() => {
     if (schema) {
@@ -24,11 +26,17 @@ export const ComponentRender = memo((props: {
   }, [schema])
 
   return (
-    node ? <PreviewComponentsContext.Provider
-      value={components || {}}
-    >
-      {node && <ComponentView node={node} />}
-    </PreviewComponentsContext.Provider>
+    node
+      ? <LogicflowRuntime
+        schema={node}
+        {...logicflowOptions}
+      >
+        <PreviewComponentsContext.Provider
+          value={components || {}}
+        >
+          {node && <ComponentView node={node} />}
+        </PreviewComponentsContext.Provider>
+      </LogicflowRuntime>
       : <></>
   )
 })
