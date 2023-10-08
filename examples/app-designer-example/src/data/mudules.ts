@@ -135,9 +135,6 @@ const mole = {
             "enable": true,
             "name": "数组容器"
           },
-          "props": {
-            "dataSource": 18
-          },
           "slots": {},
           "children": [
             {

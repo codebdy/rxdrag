@@ -21,6 +21,12 @@ export class ListenVariable extends VirableActivity {
     }
   }
 
+  init = () => {
+    if (this.meta.config?.variable) {
+      this.next(this.variableController.getVariable(this?.meta.config.variable), {})
+    }
+  }
+
   valueHandler = (inputValue: unknown) => {
     if (this.meta.config?.variable) {
       this.next(inputValue, {})

@@ -61,7 +61,7 @@ export const Variables = memo((
                       },
                     ],
                     config: {
-                      variable: variable.id
+                      variable: variable.name
                     }
                   }
                 }}
@@ -102,7 +102,7 @@ export const Variables = memo((
                       },
                     ],
                     config: {
-                      variable: variable.id
+                      variable: variable.name
                     }
                   }
                 }}
@@ -136,7 +136,7 @@ export const Variables = memo((
                       },
                     ],
                     config: {
-                      variable: variable.id
+                      variable: variable.name
                     }
                   }
                 }}

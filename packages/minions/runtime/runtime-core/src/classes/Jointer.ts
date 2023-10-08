@@ -1,9 +1,8 @@
-import { ConnectListener, IJointer, InputHandler } from "../interfaces/activity"
+import { IJointer, InputHandler } from "../interfaces/activity"
 
 export class Jointer implements IJointer {
   //下游Jointer的数据接收函数
   private outlets: InputHandler[] = []
-  private connectListeners: ConnectListener[] = []
 
   constructor(public id: string, public name: string) {
   }
@@ -17,9 +16,6 @@ export class Jointer implements IJointer {
   //添加下游Jointer
   connect = (inputHandler: InputHandler) => {
     this.outlets.push(inputHandler)
-    for (const listener of this.connectListeners) {
-      listener(inputHandler)
-    }
   }
 
   disconnect = (jointer: InputHandler) => {
@@ -29,11 +25,4 @@ export class Jointer implements IJointer {
     }
   }
 
-  onConnect = (listener: ConnectListener) => {
-    this.connectListeners.push(listener)
-
-    return () => {
-      this.connectListeners.splice(this.connectListeners.indexOf(listener), 1)
-    }
-  }
 }

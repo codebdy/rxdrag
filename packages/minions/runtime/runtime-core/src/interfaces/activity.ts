@@ -12,7 +12,6 @@ export interface IJointer {
   push: InputHandler;
   //添加下游Jointer
   connect: (jointerInput: InputHandler, parent?: Jointer) => void;
-  onConnect: (listener: ConnectListener) => void;
 }
 
 export interface IActivityJointers {
@@ -42,6 +41,8 @@ export interface IActivity<ConfigMeta = unknown> {
   jointers: IActivityJointers,
   //元件节点配置，每个Activity的配置都不一样，故而用泛型
   config?: ConfigMeta;
+  //初始化，主要用于输出初始值
+  init?(): void;
   //销毁
   destroy(): void;
 }

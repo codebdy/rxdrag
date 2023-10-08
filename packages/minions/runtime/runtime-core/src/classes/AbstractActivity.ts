@@ -1,6 +1,6 @@
 import { INodeDefine } from "@rxdrag/minions-schema";
 import { IActivity, IActivityJointers } from "../interfaces/activity";
-import { ActivityJointers } from "./ActivityJointer";
+import { ActivityJointers } from "./ActivityJointers";
 
 export abstract class AbstractActivity<ConfigMeta = unknown, LogicFlowContext = unknown> implements IActivity {
   id: string;

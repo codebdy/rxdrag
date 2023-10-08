@@ -2,7 +2,6 @@ import { IActivityJointers } from "../interfaces";
 import { Jointer } from "./Jointer";
 
 export class ActivityJointers implements IActivityJointers {
-
   private inputs: Jointer[] = [];
   private outputs: Jointer[] = [];
 
@@ -12,6 +11,7 @@ export class ActivityJointers implements IActivityJointers {
   addOutput(output: Jointer): void {
     this.outputs.push(output)
   }
+
   removeInput(input: Jointer): void {
     this.inputs.splice(this.inputs.indexOf(input), 1)
   }

@@ -1,5 +1,5 @@
 import { IActivity, IActivityJointers } from "../interfaces";
-import { ActivityJointers } from "./ActivityJointer";
+import { ActivityJointers } from "./ActivityJointers";
 import { Jointer } from "./Jointer";
 import { NodeType, INodeDefine, ILogicFlowDefine, ILogicFlowMetas } from "@rxdrag/minions-schema"
 import { activities } from "./activities";
@@ -18,6 +18,11 @@ export class LogicFlow<LogicFlowContext = unknown> {
 
     //第二步， 构建连接关系
     this.contactLines()
+
+    //第三步，初始化需要初始化的节点
+    for (const activity of this.activities) {
+      activity?.init?.()
+    }
   }
 
   destroy(): void {
