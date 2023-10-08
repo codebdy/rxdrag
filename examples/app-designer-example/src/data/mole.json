@@ -8,39 +8,6 @@
     "metas": {
       "lines": [
         {
-          "id": "-v00jBGR",
-          "source": {
-            "nodeId": "8678623f-32ed-43a0-ba44-83a842aaa725",
-            "portId": "SwZM1_RN"
-          },
-          "target": {
-            "nodeId": "e0d4c491-c80e-4169-a54a-336f29ada597",
-            "portId": "no7ZNze6"
-          }
-        },
-        {
-          "id": "rPPUZHXW",
-          "source": {
-            "nodeId": "64241bdd-be57-4e04-81d5-f9eb73ec5d84",
-            "portId": "XP2sTYBg"
-          },
-          "target": {
-            "nodeId": "e0d4c491-c80e-4169-a54a-336f29ada597",
-            "portId": "6JGk2cb0"
-          }
-        },
-        {
-          "id": "XCBT_EyK",
-          "source": {
-            "nodeId": "e0d4c491-c80e-4169-a54a-336f29ada597",
-            "portId": "3rNhIWkA"
-          },
-          "target": {
-            "nodeId": "64aa1596-bfce-4e29-b924-f5c3f5e7358b",
-            "portId": "39gmGTNW"
-          }
-        },
-        {
           "id": "rFn-IqP6",
           "source": {
             "nodeId": "8678623f-32ed-43a0-ba44-83a842aaa725",
@@ -83,6 +50,50 @@
             "nodeId": "64aa1596-bfce-4e29-b924-f5c3f5e7358b",
             "portId": "2yGRi_65"
           }
+        },
+        {
+          "id": "-v00jBGR",
+          "source": {
+            "nodeId": "8678623f-32ed-43a0-ba44-83a842aaa725",
+            "portId": "SwZM1_RN"
+          },
+          "target": {
+            "nodeId": "afa1cc57-e624-4c80-b432-85906c8cc76e",
+            "portId": "e4RSkSW7"
+          }
+        },
+        {
+          "id": "rPPUZHXW",
+          "source": {
+            "nodeId": "64241bdd-be57-4e04-81d5-f9eb73ec5d84",
+            "portId": "XP2sTYBg"
+          },
+          "target": {
+            "nodeId": "afa1cc57-e624-4c80-b432-85906c8cc76e",
+            "portId": "ON_9QZxS"
+          }
+        },
+        {
+          "id": "RCP6Ficp",
+          "source": {
+            "nodeId": "afa1cc57-e624-4c80-b432-85906c8cc76e",
+            "portId": "_TdVMvHS"
+          },
+          "target": {
+            "nodeId": "64aa1596-bfce-4e29-b924-f5c3f5e7358b",
+            "portId": "39gmGTNW"
+          }
+        },
+        {
+          "id": "12GkqVTW",
+          "source": {
+            "nodeId": "356b7d05-4a42-4b14-b431-bd218bdf7a8e",
+            "portId": "ULIsGpJn"
+          },
+          "target": {
+            "nodeId": "afa1cc57-e624-4c80-b432-85906c8cc76e",
+            "portId": "yC_kXYcZ"
+          }
         }
       ],
       "nodes": [
@@ -105,40 +116,6 @@
             "x": 70,
             "y": 180,
             "width": 116,
-            "height": 32
-          }
-        },
-        {
-          "id": "e0d4c491-c80e-4169-a54a-336f29ada597",
-          "label": "信号发生器",
-          "type": "Activity",
-          "activityName": "system.signals",
-          "inPorts": [
-            {
-              "id": "no7ZNze6",
-              "name": "startUp",
-              "label": "启动"
-            },
-            {
-              "id": "6JGk2cb0",
-              "name": "stop",
-              "label": "停止"
-            }
-          ],
-          "outPorts": [
-            {
-              "id": "3rNhIWkA",
-              "name": "output",
-              "label": ""
-            }
-          ],
-          "config": {
-            "interval": 1000
-          },
-          "x6Node": {
-            "x": 290,
-            "y": 230,
-            "width": 130,
             "height": 32
           }
         },
@@ -306,6 +283,67 @@
           "x6Node": {
             "x": 340,
             "y": 340,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "afa1cc57-e624-4c80-b432-85906c8cc76e",
+          "label": "信号发生器",
+          "type": "Activity",
+          "activityName": "system.signals",
+          "inPorts": [
+            {
+              "id": "e4RSkSW7",
+              "name": "startUp",
+              "label": "启动"
+            },
+            {
+              "id": "ON_9QZxS",
+              "name": "stop",
+              "label": "停止"
+            },
+            {
+              "id": "yC_kXYcZ",
+              "name": "interval",
+              "label": "间隔"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "_TdVMvHS",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "interval": 1000
+          },
+          "x6Node": {
+            "x": 320,
+            "y": 240,
+            "width": 130,
+            "height": 48
+          }
+        },
+        {
+          "id": "356b7d05-4a42-4b14-b431-bd218bdf7a8e",
+          "label": "时间间隔",
+          "type": "Activity",
+          "activityName": "system-react.listenVariable",
+          "outPorts": [
+            {
+              "id": "ULIsGpJn",
+              "name": "output",
+              "label": "$valueChange"
+            }
+          ],
+          "config": {
+            "variable": "tAE2cmwc"
+          },
+          "x6Node": {
+            "x": 100,
+            "y": 350,
             "width": 116,
             "height": 32
           }

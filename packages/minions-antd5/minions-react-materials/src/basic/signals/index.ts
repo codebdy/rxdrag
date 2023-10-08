@@ -22,6 +22,11 @@ export const signalsMaterial: IRxDragActivityMaterial<IIntervalConfig> = {
         name: Signals.INPUT_NAME_STOP,
         label: "$stop",
       },
+      {
+        id: createId(),
+        name: Signals.INPUT_NAME_INTERVAL,
+        label: "$interval",
+      },
     ],
     outPorts: [
       {

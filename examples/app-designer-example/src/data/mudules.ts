@@ -367,12 +367,18 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
         },
         {
           "id": "_G4SZqNV",
-          "name": "成绩"
+          "name": "成绩",
+          "defaultValue": 0
         },
         {
           "id": "_-uxpUk0",
           "name": "地鼠数量",
           "defaultValue": 9
+        },
+        {
+          "id": "tAE2cmwc",
+          "name": "时间间隔",
+          "defaultValue": 1000
         }
       ]
     },
