@@ -503,10 +503,21 @@
           }
         },
         {
-          "id": "4Q1lfNBk",
+          "id": "ZKT2isg5",
           "source": {
             "nodeId": "0635aa47-bf77-47b4-b388-f90465d33c48",
             "portId": "m15zbwnd"
+          },
+          "target": {
+            "nodeId": "b71c53f5-7d6c-4121-beea-1431d50e36c3",
+            "portId": "TB_TCjgA"
+          }
+        },
+        {
+          "id": "WlFr5uU4",
+          "source": {
+            "nodeId": "b71c53f5-7d6c-4121-beea-1431d50e36c3",
+            "portId": "JM5hf19k"
           },
           "target": {
             "nodeId": "7982429f-868b-4e28-9fa9-54a23d1abf19",
@@ -958,10 +969,37 @@
             "prop": "disabled"
           },
           "x6Node": {
-            "x": 250,
-            "y": -10,
+            "x": 320,
+            "y": 0,
             "width": 88,
             "height": 48
+          }
+        },
+        {
+          "id": "b71c53f5-7d6c-4121-beea-1431d50e36c3",
+          "label": "逻辑非",
+          "type": "Activity",
+          "activityName": "system.negation",
+          "inPorts": [
+            {
+              "id": "TB_TCjgA",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "JM5hf19k",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {},
+          "x6Node": {
+            "x": 140,
+            "y": 0,
+            "width": 102,
+            "height": 32
           }
         }
       ]

@@ -1,7 +1,8 @@
 import type { Jointer } from "../classes";
 
 //数据推送接口
-export type InputHandler = (inputValue?: unknown, runContext?: IJointer["runContext"]) => void;
+export type InputHandler = (inputValue?: unknown, context?: object) => void;
+export type ConnectListener = (handler: InputHandler) => void
 
 export interface IJointer {
   //当key使用，不参与业务逻辑
@@ -11,14 +12,22 @@ export interface IJointer {
   push: InputHandler;
   //添加下游Jointer
   connect: (jointerInput: InputHandler, parent?: Jointer) => void;
-  runContext?: Record<string, unknown> & {__runback?: (error?: unknown, value?: unknown) => void}
+  onConnect: (listener: ConnectListener) => void;
 }
 
 export interface IActivityJointers {
   //入端口对应的连接器
-  inputs: Jointer[];
+  //inputs: Jointer[];
   //处端口对应的连接器
-  outputs: Jointer[];
+  //outputs: Jointer[];
+
+  addInput(input: Jointer): void;
+  addOutput(output: Jointer): void;
+  removeInput(input: Jointer): void;
+  removeOutput(output: Jointer): void;
+
+  getInputs(): Jointer[];
+  getOutputs(): Jointer[];
 
   //通过端口名获取出连接器
   getOutput(name: string): Jointer | undefined
