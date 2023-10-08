@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef } from "react"
+import React, { memo, useEffect, useMemo, useRef } from "react"
 import { useState } from "react"
 import { ControllerEngineContext } from "../contexts"
 import { ControllerEngine } from "./ControllerEngine"
@@ -7,7 +7,7 @@ import { IComponentRenderSchema } from "../ComponentView"
 import { IVariable } from "@rxdrag/minions-schema"
 import { useControllerEngine } from "../hooks/useControllerEngine"
 import { ControllerReaction, useLogicDefines } from "@rxdrag/minions-runtime-react"
-import { LogicFlow } from "@rxdrag/minions-runtime"
+import { ILoopScope, ILoopScopeContext, LogicFlow } from "@rxdrag/minions-runtime"
 
 export type LogicFlowOptions = {
   ownerId?: string,
@@ -18,10 +18,17 @@ export type LogicFlowOptions = {
 export const LogicflowRuntime = memo((props: {
   children: React.ReactNode,
   schema: IComponentRenderSchema,
+  loopRow?: unknown,
+  loopIndex?: number,
 } & LogicFlowOptions) => {
-  const { children, schema, ownerId, reactions, variables } = props
+  const { children, schema, ownerId, reactions, variables, loopRow, loopIndex } = props
   const { flows, fxFlows, scripts, fxScripts, } = useLogicDefines() || {}
-
+  const loopScope: ILoopScope = useMemo(() => {
+    return {
+      value: loopRow,
+      index: loopIndex,
+    }
+  }, [loopIndex, loopRow])
   const [controllerEngine, setControllerEngine] = useState<ControllerEngine | null>(null)
   const engineRef = useRef(controllerEngine)
   engineRef.current = controllerEngine
@@ -35,12 +42,13 @@ export const LogicflowRuntime = memo((props: {
         parent,
         variableMetas: variables,
         reactions: { ...parent?.reactions, ...reactions },
-        fxFlows
+        fxFlows,
+        loopScope
       }
     )
     engineRef.current?.destroy()
     setControllerEngine(rtEngine)
-  }, [fxFlows, parent, reactions, schema, variables])
+  }, [fxFlows, loopScope, parent, reactions, schema, variables])
 
   useEffect(() => {
     return () => {
