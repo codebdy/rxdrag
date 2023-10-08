@@ -1,4 +1,4 @@
-import { ComponentRender, } from "@rxdrag/react-runner"
+import { ComponentRender, LogicflowRoot, } from "@rxdrag/react-runner"
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared"
 import { INodeSchema } from "@rxdrag/schema"
 import { Fragment, memo, useCallback, useEffect, useMemo, useState } from "react"
@@ -10,7 +10,7 @@ import { useQueryModuleFlows } from "../../../hooks/useQueryModuleFlows"
 import { useAppFrontend } from "../../../hooks/useAppFrontend"
 import { FxScope, LogicType } from "../../../interfaces/flow"
 import { useQueryFlows } from "../../../hooks/useQueryFlows"
-import { LogicDefines, LogicDefinesContext } from "@rxdrag/minions-runtime-react"
+import { LogicDefines } from "@rxdrag/minions-runtime-react"
 import { useQueryModuleScripts } from "../../../hooks/useQueryModuleScripts"
 import { useQueryScripts } from "../../../hooks/useQueryScripts"
 import { useQueryModule } from "../../../hooks/useQueryModule"
@@ -35,16 +35,7 @@ export const PagePreview = memo(() => {
   const { scripts: deviceScriptFxes } = useQueryScripts(frontend?.app?.id, LogicType.fx, FxScope.device)
   const { scripts: appScriptFxes } = useQueryScripts(frontend?.app?.id, LogicType.fx, FxScope.app)
 
-  const moduleFlows = useMemo(() => {
-    return flows?.filter(flow => flow.ownerId === moduleId)
-  }, [flows, moduleId])
-
   const fxFlows = useMemo(() => [...moduleFxes || [], ...deviceFxes || [], ...appFxes || []], [appFxes, deviceFxes, moduleFxes])
-
-  const moduleScripts = useMemo(() => {
-    return scripts?.filter(script => script.ownerId === moduleId)
-  }, [scripts, moduleId])
-
   const fxScripts = useMemo(() => [...moduleScriptFxes || [], ...deviceScriptFxes || [], ...appScriptFxes || []], [appScriptFxes, deviceScriptFxes, moduleScriptFxes])
 
   const defines: LogicDefines = useMemo(() => ({
@@ -104,7 +95,7 @@ export const PagePreview = memo(() => {
   }, [engine, handleChange])
 
   return (
-    <LogicDefinesContext.Provider value={defines}>
+    <LogicflowRoot defines={defines}>
       {
         tree
           ? <ComponentRender
@@ -113,15 +104,12 @@ export const PagePreview = memo(() => {
             logicflowOptions={
               {
                 variables: module?.variables,
-                flows: moduleFlows,
-                fxFlows: fxFlows,
-                scripts: moduleScripts,
-                fxScripts: fxScripts,
+                ownerId: module?.id,
               }
             }
           />
           : <></>
       }
-    </LogicDefinesContext.Provider>
+    </LogicflowRoot>
   )
 })

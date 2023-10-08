@@ -4,17 +4,14 @@ import { ControllerEngineContext } from "../contexts"
 import { ControllerEngine } from "./ControllerEngine"
 import { useLogicFlowContext } from "../hooks/useLogicFlowContext"
 import { IComponentRenderSchema } from "../ComponentView"
-import { ILogicFlowDefine, IScriptDefine, IVariable } from "@rxdrag/minions-schema"
+import { IVariable } from "@rxdrag/minions-schema"
 import { useControllerEngine } from "../hooks/useControllerEngine"
-import { ControllerReaction } from "@rxdrag/minions-runtime-react"
+import { ControllerReaction, useLogicDefines } from "@rxdrag/minions-runtime-react"
 import { LogicFlow } from "@rxdrag/minions-runtime"
 
 export type LogicFlowOptions = {
+  ownerId?: string,
   reactions?: Record<string, ControllerReaction>,
-  flows?: ILogicFlowDefine[],
-  fxFlows?: ILogicFlowDefine[],
-  scripts?: IScriptDefine[],
-  fxScripts?: IScriptDefine[],
   variables?: IVariable[],
 }
 
@@ -22,7 +19,9 @@ export const LogicflowRuntime = memo((props: {
   children: React.ReactNode,
   schema: IComponentRenderSchema,
 } & LogicFlowOptions) => {
-  const { children, schema, reactions, flows, fxFlows, scripts, fxScripts, variables } = props
+  const { children, schema, ownerId, reactions, variables } = props
+  const { flows, fxFlows, scripts, fxScripts, } = useLogicDefines() || {}
+
   const [controllerEngine, setControllerEngine] = useState<ControllerEngine>()
 
   const parent = useControllerEngine()
@@ -45,14 +44,14 @@ export const LogicflowRuntime = memo((props: {
   const logicFlowContext = useLogicFlowContext(controllerEngine);
 
   useEffect(() => {
-    const flowRuntimes = flows?.map(flowMeta => {
+    const flowRuntimes = flows?.filter(flow => flow.ownerId === ownerId)?.map(flowMeta => {
       return new LogicFlow(flowMeta, logicFlowContext)
     })
 
     return () => {
       flowRuntimes?.forEach(flow => flow.destroy())
     }
-  }, [flows, logicFlowContext])
+  }, [flows, logicFlowContext, ownerId])
 
   return (
     controllerEngine ?
