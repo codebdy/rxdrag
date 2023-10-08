@@ -1,7 +1,5 @@
 import { ZoomableEditor } from "@rxdrag/react-antd-shell"
 import { memo, useMemo } from "react"
-import { useParams } from "react-router-dom"
-import { useQueryModule } from "../../hooks/useQueryModule"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
 import { uiToolboxes } from "./config"
 import { TabsProps } from "antd"
@@ -9,6 +7,7 @@ import styled from "styled-components"
 import { FlowDesigner } from "../BottomConsole/FlowDesigner"
 import { ScriptDesigner } from "../BottomConsole/ScriptDesigner"
 import { ModuleContext } from "../contexts"
+import { IModule } from "../../interfaces/module"
 
 const Label = styled.div`
   display: flex;
@@ -20,10 +19,13 @@ const Label = styled.div`
   }
 `
 
-export const ModuleUiDesignerInner = memo(() => {
-  const { moduleId } = useParams()
+export const ModuleUiDesignerInner = memo((
+  props: {
+    module?: IModule
+  }
+) => {
+  const { module } = props
   const device = useAppFrontend()?.deviceType
-  const { module } = useQueryModule(device, moduleId || "")
   const Toolbox = uiToolboxes[device || ""]
 
 

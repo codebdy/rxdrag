@@ -7,7 +7,7 @@ export interface IFxFlowConfig {
 
 @Activity(FxFlow.NAME)
 export class FxFlow implements IActivity {
-  public static NAME = "system-react.reaction"
+  public static NAME = "system-react.fxflow"
   id: string;
   jointers: IActivityJointers;
   config?: IFxFlowConfig;

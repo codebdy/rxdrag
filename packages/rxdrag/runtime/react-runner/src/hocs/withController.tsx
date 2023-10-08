@@ -38,7 +38,7 @@ export function withController(WrappedComponent: ReactComponent, meta: IControll
     const newProps = useMemo(() => {
       return { ...props, ...controller?.events, ...changedProps }
     }, [changedProps, controller?.events, props]);
-
+    console.log("====>controller events", controller?.events)
     return (
       <ControllerContext.Provider value={controller}>
         <WrappedComponent {...newProps} />

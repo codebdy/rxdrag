@@ -70,7 +70,9 @@ export class ComponentController implements IController {
       this.eventListeners[name] = []
     }
     this.eventListeners[name].push(listener)
+    console.log("===>订阅事件", name)
     return () => {
+      console.log("===>注销事件", name)
       this.eventListeners[name].splice(this.eventListeners[name].indexOf(listener), 1)
     }
   }

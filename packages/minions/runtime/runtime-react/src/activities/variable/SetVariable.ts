@@ -10,7 +10,6 @@ export class SetVariable extends VirableActivity {
 
   constructor(meta: INodeDefine<IVariableConfig>, context?: IVariableContext) {
     super(meta, context)
-
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("SetVariable inputs count error")
     }

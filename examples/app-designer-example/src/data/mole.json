@@ -41,28 +41,6 @@
           }
         },
         {
-          "id": "EpKBN6oO",
-          "source": {
-            "nodeId": "d4f095cc-e0a6-4744-849a-36e94e0f3dc9",
-            "portId": "fJC9H3Wk"
-          },
-          "target": {
-            "nodeId": "64aa1596-bfce-4e29-b924-f5c3f5e7358b",
-            "portId": "2yGRi_65"
-          }
-        },
-        {
-          "id": "Tg8h_KCx",
-          "source": {
-            "nodeId": "64aa1596-bfce-4e29-b924-f5c3f5e7358b",
-            "portId": "0-0B6jEY"
-          },
-          "target": {
-            "nodeId": "b77648e6-97bd-4468-b43b-f8c1819249a4",
-            "portId": "eOc1fUzn"
-          }
-        },
-        {
           "id": "rFn-IqP6",
           "source": {
             "nodeId": "8678623f-32ed-43a0-ba44-83a842aaa725",
@@ -82,6 +60,28 @@
           "target": {
             "nodeId": "15eb624f-843b-428c-aa04-5cf4ec0abf62",
             "portId": "fRehak0w"
+          }
+        },
+        {
+          "id": "O-6uq9lV",
+          "source": {
+            "nodeId": "64aa1596-bfce-4e29-b924-f5c3f5e7358b",
+            "portId": "0-0B6jEY"
+          },
+          "target": {
+            "nodeId": "60ed7f7a-29a6-4576-a27f-47d6291d22bf",
+            "portId": "4uuhUFGg"
+          }
+        },
+        {
+          "id": "bsbuWtlt",
+          "source": {
+            "nodeId": "eba7354c-9b95-4d8d-a651-08c103c14689",
+            "portId": "RS0q-f5U"
+          },
+          "target": {
+            "nodeId": "64aa1596-bfce-4e29-b924-f5c3f5e7358b",
+            "portId": "2yGRi_65"
           }
         }
       ],
@@ -138,35 +138,6 @@
             "x": 290,
             "y": 230,
             "width": 130,
-            "height": 32
-          }
-        },
-        {
-          "id": "b77648e6-97bd-4468-b43b-f8c1819249a4",
-          "label": "活跃地鼠",
-          "type": "Activity",
-          "activityName": "system-react.setVariable",
-          "inPorts": [
-            {
-              "id": "eOc1fUzn",
-              "name": "input",
-              "label": "$setValue"
-            }
-          ],
-          "outPorts": [
-            {
-              "id": "3efAh5Qu",
-              "name": "output",
-              "label": ""
-            }
-          ],
-          "config": {
-            "variable": "2AHnQ-ne"
-          },
-          "x6Node": {
-            "x": 720,
-            "y": 240,
-            "width": 116,
             "height": 32
           }
         },
@@ -229,28 +200,6 @@
           }
         },
         {
-          "id": "d4f095cc-e0a6-4744-849a-36e94e0f3dc9",
-          "label": "地鼠数量",
-          "type": "Activity",
-          "activityName": "system-react.setVariable",
-          "outPorts": [
-            {
-              "id": "fJC9H3Wk",
-              "name": "output",
-              "label": "$valueChange"
-            }
-          ],
-          "config": {
-            "variable": "_-uxpUk0"
-          },
-          "x6Node": {
-            "x": 380,
-            "y": 360,
-            "width": 116,
-            "height": 32
-          }
-        },
-        {
           "id": "15eb624f-843b-428c-aa04-5cf4ec0abf62",
           "label": "成绩",
           "type": "Activity",
@@ -307,6 +256,57 @@
             "width": 88,
             "height": 32
           }
+        },
+        {
+          "id": "60ed7f7a-29a6-4576-a27f-47d6291d22bf",
+          "label": "活跃地鼠",
+          "type": "Activity",
+          "activityName": "system-react.setVariable",
+          "inPorts": [
+            {
+              "id": "4uuhUFGg",
+              "name": "input",
+              "label": "$setValue"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "QoqYhKIY",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "variable": "2AHnQ-ne"
+          },
+          "x6Node": {
+            "x": 750,
+            "y": 230,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "eba7354c-9b95-4d8d-a651-08c103c14689",
+          "label": "地鼠数量",
+          "type": "Activity",
+          "activityName": "system-react.listenVariable",
+          "outPorts": [
+            {
+              "id": "RS0q-f5U",
+              "name": "output",
+              "label": "$valueChange"
+            }
+          ],
+          "config": {
+            "variable": "_-uxpUk0"
+          },
+          "x6Node": {
+            "x": 340,
+            "y": 340,
+            "width": 116,
+            "height": 32
+          }
         }
       ]
     }
@@ -320,17 +320,6 @@
     "metas": {
       "lines": [
         {
-          "id": "W7wFzBCw",
-          "source": {
-            "nodeId": "cbfd6ec2-fec0-40a8-bc01-a70e173ab8e4",
-            "portId": "OAGW7k8o"
-          },
-          "target": {
-            "nodeId": "96faabcc-cce5-4c79-999e-c3cde2ac46e4",
-            "portId": "3OySi0VZ"
-          }
-        },
-        {
           "id": "PdjqGYvL",
           "source": {
             "nodeId": "4df3a6e4-affd-4ef2-b6e0-d2328a1a6467",
@@ -339,17 +328,6 @@
           "target": {
             "nodeId": "96faabcc-cce5-4c79-999e-c3cde2ac46e4",
             "portId": "hl-QMnwk"
-          }
-        },
-        {
-          "id": "jLP60ihm",
-          "source": {
-            "nodeId": "cbfd6ec2-fec0-40a8-bc01-a70e173ab8e4",
-            "portId": "OAGW7k8o"
-          },
-          "target": {
-            "nodeId": "4df3a6e4-affd-4ef2-b6e0-d2328a1a6467",
-            "portId": "JLUTlow_"
           }
         },
         {
@@ -461,31 +439,31 @@
             "nodeId": "6a67f403-503c-4804-b9c5-04371db63c75",
             "portId": "9FpaUfaD"
           }
+        },
+        {
+          "id": "C_giRNpM",
+          "source": {
+            "nodeId": "1e7eb63f-a274-4545-98e2-0ad7d1087142",
+            "portId": "DvkNKqxb"
+          },
+          "target": {
+            "nodeId": "96faabcc-cce5-4c79-999e-c3cde2ac46e4",
+            "portId": "3OySi0VZ"
+          }
+        },
+        {
+          "id": "jWanB5LK",
+          "source": {
+            "nodeId": "1e7eb63f-a274-4545-98e2-0ad7d1087142",
+            "portId": "DvkNKqxb"
+          },
+          "target": {
+            "nodeId": "4df3a6e4-affd-4ef2-b6e0-d2328a1a6467",
+            "portId": "JLUTlow_"
+          }
         }
       ],
       "nodes": [
-        {
-          "id": "cbfd6ec2-fec0-40a8-bc01-a70e173ab8e4",
-          "label": "活跃地鼠",
-          "type": "Activity",
-          "activityName": "system-react.setVariable",
-          "outPorts": [
-            {
-              "id": "OAGW7k8o",
-              "name": "output",
-              "label": "$valueChange"
-            }
-          ],
-          "config": {
-            "variable": "2AHnQ-ne"
-          },
-          "x6Node": {
-            "x": 30,
-            "y": 160,
-            "width": 116,
-            "height": 32
-          }
-        },
         {
           "id": "96faabcc-cce5-4c79-999e-c3cde2ac46e4",
           "label": "相等",
@@ -858,6 +836,28 @@
             "x": 460,
             "y": 500,
             "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "1e7eb63f-a274-4545-98e2-0ad7d1087142",
+          "label": "地鼠数量",
+          "type": "Activity",
+          "activityName": "system-react.listenVariable",
+          "outPorts": [
+            {
+              "id": "DvkNKqxb",
+              "name": "output",
+              "label": "$valueChange"
+            }
+          ],
+          "config": {
+            "variable": "_-uxpUk0"
+          },
+          "x6Node": {
+            "x": -10,
+            "y": 140,
+            "width": 116,
             "height": 32
           }
         }

@@ -18,10 +18,6 @@ export class Random extends AbstractActivity<IRandomConfig> {
 
   constructor(meta: INodeDefine<IRandomConfig>) {
     super(meta)
-
-    if (Object.keys(meta.inPorts || {}).length !== 1) {
-      throw new Error("Condition inputs count error")
-    }
   }
 
   @Input(Random.INPUT_NAME_STARTUP)

@@ -6,7 +6,6 @@ import { useDesignerEngine } from "@rxdrag/react-core"
 import { useParams } from "react-router-dom"
 import { pageMaterials } from "../../ModuleUiDesigner/materials"
 import { isStr } from "@rxdrag/shared"
-import { useModule } from "../../hooks/useModule"
 import { useQueryModuleFlows } from "../../../hooks/useQueryModuleFlows"
 import { useAppFrontend } from "../../../hooks/useAppFrontend"
 import { FxScope, LogicType } from "../../../interfaces/flow"
@@ -14,6 +13,8 @@ import { useQueryFlows } from "../../../hooks/useQueryFlows"
 import { LogicDefines, LogicDefinesContext } from "@rxdrag/minions-runtime-react"
 import { useQueryModuleScripts } from "../../../hooks/useQueryModuleScripts"
 import { useQueryScripts } from "../../../hooks/useQueryScripts"
+import { useQueryModule } from "../../../hooks/useQueryModule"
+import { DeviceType } from "../../../interfaces"
 
 //每次设计器画布修改，本预览组件都会刷新，后面要优化
 export const PagePreview = memo(() => {
@@ -21,27 +22,28 @@ export const PagePreview = memo(() => {
   const engine = useDesignerEngine()
   const { device = "" } = useParams()
   const frontend = useAppFrontend()
-  const module = useModule()
-  const { flows } = useQueryModuleFlows(module?.id)
-  const { scripts } = useQueryModuleScripts(module?.id)
+  const { moduleId } = useParams()
+  const { module } = useQueryModule(device as DeviceType, moduleId || "")
+  const { flows } = useQueryModuleFlows(moduleId)
+  const { scripts } = useQueryModuleScripts(moduleId)
 
-  const { flows: moduleFxes } = useQueryFlows(module?.id, LogicType.fx, FxScope.module)
+  const { flows: moduleFxes } = useQueryFlows(moduleId, LogicType.fx, FxScope.module)
   const { flows: deviceFxes } = useQueryFlows(frontend?.app?.id, LogicType.fx, FxScope.device)
   const { flows: appFxes } = useQueryFlows(frontend?.app?.id, LogicType.fx, FxScope.app)
 
-  const { scripts: moduleScriptFxes } = useQueryScripts(module?.id, LogicType.fx, FxScope.module)
+  const { scripts: moduleScriptFxes } = useQueryScripts(moduleId, LogicType.fx, FxScope.module)
   const { scripts: deviceScriptFxes } = useQueryScripts(frontend?.app?.id, LogicType.fx, FxScope.device)
   const { scripts: appScriptFxes } = useQueryScripts(frontend?.app?.id, LogicType.fx, FxScope.app)
 
   const moduleFlows = useMemo(() => {
-    return flows?.filter(flow => flow.ownerId === module?.id)
-  }, [flows, module?.id])
+    return flows?.filter(flow => flow.ownerId === moduleId)
+  }, [flows, moduleId])
 
   const fxFlows = useMemo(() => [...moduleFxes || [], ...deviceFxes || [], ...appFxes || []], [appFxes, deviceFxes, moduleFxes])
 
   const moduleScripts = useMemo(() => {
-    return scripts?.filter(script => script.ownerId === module?.id)
-  }, [scripts, module?.id])
+    return scripts?.filter(script => script.ownerId === moduleId)
+  }, [scripts, moduleId])
 
   const fxScripts = useMemo(() => [...moduleScriptFxes || [], ...deviceScriptFxes || [], ...appScriptFxes || []], [appScriptFxes, deviceScriptFxes, moduleScriptFxes])
 

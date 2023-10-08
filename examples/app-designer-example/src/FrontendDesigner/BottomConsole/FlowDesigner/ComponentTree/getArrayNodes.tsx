@@ -39,9 +39,7 @@ export function useGetArrayNodes() {
             material={t(readRowMaterial as IActivityMaterial<React.ReactNode>)}
             config={
               {
-                param: {
-                  controllerId: ctrlMeta?.id
-                }
+                controllerId: ctrlMeta?.id
               }
             }
           >

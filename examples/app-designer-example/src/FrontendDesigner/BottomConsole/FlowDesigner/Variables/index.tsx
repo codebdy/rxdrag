@@ -10,7 +10,7 @@ import { ActivityResource } from "@rxdrag/minions-logicflow-editor";
 import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { createId } from "@rxdrag/shared";
 import { DraggableText } from "../DraggableText";
-import { readPropIcon, readVariableMaterial, setVariableMaterial } from "@rxdrag/minions-react-materials";
+import { listenVariableMaterial, readPropIcon, readVariableMaterial, setVariableMaterial } from "@rxdrag/minions-react-materials";
 
 
 const { DirectoryTree } = Tree;
@@ -61,9 +61,7 @@ export const Variables = memo((
                       },
                     ],
                     config: {
-                      param: {
-                        variable: variable.id
-                      }
+                      variable: variable.id
                     }
                   }
                 }}
@@ -104,9 +102,7 @@ export const Variables = memo((
                       },
                     ],
                     config: {
-                      param: {
-                        variable: variable.id
-                      }
+                      variable: variable.id
                     }
                   }
                 }}
@@ -125,13 +121,13 @@ export const Variables = memo((
             {
               key: variable.id + "listenVariable",
               title: <ActivityResource
-                material={setVariableMaterial as IActivityMaterial<React.ReactNode>}
+                material={listenVariableMaterial as IActivityMaterial<React.ReactNode>}
                 createNode={() => {
                   return {
                     id: createId(),
                     label: variable.name || variable.id,
-                    type: setVariableMaterial.activityType,
-                    activityName: setVariableMaterial.activityName,
+                    type: listenVariableMaterial.activityType,
+                    activityName: listenVariableMaterial.activityName,
                     outPorts: [
                       {
                         id: createId(),
@@ -140,9 +136,7 @@ export const Variables = memo((
                       },
                     ],
                     config: {
-                      param: {
-                        variable: variable.id
-                      }
+                      variable: variable.id
                     }
                   }
                 }}
