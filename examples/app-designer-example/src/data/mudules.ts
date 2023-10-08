@@ -379,6 +379,11 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
           "id": "tAE2cmwc",
           "name": "时间间隔",
           "defaultValue": 1000
+        },
+        {
+          "id": "UBbpfK7M",
+          "name": "运行",
+          "defaultValue": false
         }
       ]
     },
