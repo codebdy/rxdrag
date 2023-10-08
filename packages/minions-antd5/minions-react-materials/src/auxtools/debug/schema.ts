@@ -15,9 +15,6 @@ export const debugSchema: INodeSchema = {
           componentName: "Input",
           "x-field": {
             name: "config.tip",
-            params: {
-              withBind: true,
-            }
           },
         }
       ]
@@ -32,10 +29,6 @@ export const debugSchema: INodeSchema = {
           componentName: "Switch",
           "x-field": {
             name: `config.closed`,
-            params: {
-              valuePropName: "checked",
-              withBind: true,
-            }
           },
         }
       ]

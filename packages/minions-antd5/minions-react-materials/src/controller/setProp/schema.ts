@@ -6,10 +6,7 @@ export const propSchema: INodeSchema = {
     {
       componentName: "PropSelect",
       "x-field": {
-        name: "config.param",
-        params: {
-          withBind: true,
-        }
+        name: "config",
       },
     },
   ],

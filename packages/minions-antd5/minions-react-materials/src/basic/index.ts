@@ -15,6 +15,7 @@ import { sumArrayMaterial } from "./sumArray";
 import { collectToArrayMaterial } from "./collectToArray";
 import { equalMaterial } from "./equal";
 import { increaseMaterial } from "./increase";
+import { negationMaterial } from "./negation";
 
 export const startEndSchema: INodeSchema = {
   componentName: "Fragment",
@@ -37,6 +38,7 @@ export const basicActivities: IActivityMaterial<any, any, any, any>[] = [
     activityType: NodeType.End,
     schema: startEndSchema,
   },
+  negationMaterial,
   increaseMaterial,
   equalMaterial,
   conditionMaterial,

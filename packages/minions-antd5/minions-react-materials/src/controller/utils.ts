@@ -1,8 +1,8 @@
-import { IControllerMeta, IPropParam } from "@rxdrag/minions-runtime-react";
+import { IControllerMeta, IPropConfig } from "@rxdrag/minions-runtime-react";
 import { IDesignerEngine, ITreeNode } from "@rxdrag/core";
 import { IMaterial } from "@rxdrag/react-core";
 
-export function getControllerComponentInfo(param?: IPropParam, engine?: IDesignerEngine) {
+export function getControllerComponentInfo(param?: IPropConfig, engine?: IDesignerEngine) {
   const nodes = engine?.getMonitor().getState().nodesById
   let node: ITreeNode | undefined = undefined
   for (const key of Object.keys(nodes || {})) {

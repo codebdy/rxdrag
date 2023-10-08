@@ -43,8 +43,8 @@ export const ButtonMaterial: IMaterial = {
         label: "$danger",
       },
       {
-        name: "disable",
-        label: "$disable",
+        name: "disabled",
+        label: "$disabled",
       },
       {
         name: "title",
@@ -61,14 +61,14 @@ export const ButtonMaterial: IMaterial = {
         label: "$onClick",
       }
     ],
-    reactions:[
+    reactions: [
       {
-        name:"enable",
-        label:"$enable"
+        name: "enable",
+        label: "$enable"
       },
       {
-        name:"disable",
-        label:"$disable"
+        name: "disable",
+        label: "$disable"
       }
     ]
   }

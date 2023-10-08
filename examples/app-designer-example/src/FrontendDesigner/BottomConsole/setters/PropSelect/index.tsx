@@ -1,5 +1,5 @@
 import { getControllerComponentInfo } from "@rxdrag/minions-react-materials";
-import { IPropParam } from "@rxdrag/minions-runtime-react";
+import { IPropConfig } from "@rxdrag/minions-runtime-react";
 import { useDesignerEngine } from "@rxdrag/react-core";
 import { useTranslate } from "@rxdrag/react-locales"
 import { AutoComplete, Form } from "antd"
@@ -8,8 +8,8 @@ import { memo, useCallback, useMemo } from "react"
 //本控件强依赖rxdrag editor
 export const PropSelect = memo((
   props: {
-    value?: IPropParam,
-    onChange?: (value?: IPropParam) => void,
+    value?: IPropConfig,
+    onChange?: (value?: IPropConfig) => void,
   }
 ) => {
   const { value, onChange } = props;

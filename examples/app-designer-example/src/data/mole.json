@@ -503,25 +503,14 @@
           }
         },
         {
-          "id": "Tq7rci28",
+          "id": "4Q1lfNBk",
           "source": {
             "nodeId": "0635aa47-bf77-47b4-b388-f90465d33c48",
             "portId": "m15zbwnd"
           },
           "target": {
-            "nodeId": "94a28520-2db9-4339-bad5-be783f7e1a95",
-            "portId": "cttTB2JS"
-          }
-        },
-        {
-          "id": "MfXF5q5z",
-          "source": {
-            "nodeId": "94a28520-2db9-4339-bad5-be783f7e1a95",
-            "portId": "jFjJbCua"
-          },
-          "target": {
-            "nodeId": "52ad7a84-bd0b-42db-94e7-5aec699b3e33",
-            "portId": "6VGlEuWq"
+            "nodeId": "7982429f-868b-4e28-9fa9-54a23d1abf19",
+            "portId": "NZWh7a8w"
           }
         }
       ],
@@ -947,60 +936,32 @@
           }
         },
         {
-          "id": "94a28520-2db9-4339-bad5-be783f7e1a95",
-          "label": "常量",
+          "id": "7982429f-868b-4e28-9fa9-54a23d1abf19",
           "type": "Activity",
-          "activityName": "system.constValue",
+          "activityName": "system-react.setProp",
           "inPorts": [
             {
-              "id": "cttTB2JS",
+              "id": "NZWh7a8w",
               "name": "input",
-              "label": ""
+              "label": "$props"
             }
           ],
           "outPorts": [
             {
-              "id": "jFjJbCua",
+              "id": "MvRIlhzU",
               "name": "output",
               "label": ""
             }
           ],
           "config": {
-            "value": false
+            "controllerId": "NpLxKVZs",
+            "prop": "disabled"
           },
           "x6Node": {
-            "x": 150,
-            "y": -30,
+            "x": 250,
+            "y": -10,
             "width": 88,
-            "height": 32
-          }
-        },
-        {
-          "id": "52ad7a84-bd0b-42db-94e7-5aec699b3e33",
-          "type": "Activity",
-          "activityName": "system-react.reaction",
-          "inPorts": [
-            {
-              "id": "6VGlEuWq",
-              "name": "disable",
-              "label": "无效"
-            }
-          ],
-          "outPorts": [
-            {
-              "id": "c3DNIK33",
-              "name": "output",
-              "label": ""
-            }
-          ],
-          "config": {
-            "controllerId": "NpLxKVZs"
-          },
-          "x6Node": {
-            "x": 300,
-            "y": -30,
-            "width": 88,
-            "height": 32
+            "height": 48
           }
         }
       ]
