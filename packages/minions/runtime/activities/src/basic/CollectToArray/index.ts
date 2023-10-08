@@ -18,11 +18,11 @@ export class CollectToArray extends AbstractActivity {
   }
 
   @DynamicInput
-  inputHandler = (inputName: string, inputValue: unknown) => {
+  inputHandler = (inputName: string, inputValue: unknown, runContext?: object) => {
     this.values.push(inputValue);
     this.noPassInputs = this.noPassInputs.filter(name=>name !== inputName)
     if (this.noPassInputs.length === 0) {
-      this.next(this.values);
+      this.next(this.values, runContext);
       this.resetNoPassInputs();
     }
   };

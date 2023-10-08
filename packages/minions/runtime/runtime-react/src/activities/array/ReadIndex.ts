@@ -17,7 +17,7 @@ export class ReadIndex extends AbstractActivity<unknown, ILoopScopeContext> {
   }
 
   @Input()
-  inputHandler = () => {
-    this.next(this.context?.loopScope?.index)
+  inputHandler = (_: unknown, runContext?: object) => {
+    this.next(this.context?.loopScope?.index, runContext)
   }
 }

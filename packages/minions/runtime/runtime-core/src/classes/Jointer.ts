@@ -9,9 +9,9 @@ export class Jointer implements IJointer {
   }
 
   //接收上游数据，并分发到下游
-  push: InputHandler = (inputValue?: unknown, context?: object) => {
+  push: InputHandler = (inputValue?: unknown, runContext?: object) => {
     for (const jointerInput of this.outlets) {
-      jointerInput(inputValue, context)
+      jointerInput(inputValue, runContext)
     }
   }
   //添加下游Jointer

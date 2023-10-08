@@ -15,7 +15,7 @@ export abstract class AbstractActivity<ConfigMeta = unknown, LogicFlowContext = 
     //
   }
 
-  next = (inputValue: unknown, context: object, outputName = "output") => {
-    this.jointers.getOutput(outputName)?.push(inputValue, context)
+  next = (inputValue: unknown, runContext?: object, outputName = "output") => {
+    this.jointers.getOutput(outputName)?.push(inputValue, runContext)
   }
 }

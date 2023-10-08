@@ -17,7 +17,7 @@ export class Condition extends AbstractActivity<IConditionConfig> {
   }
 
   @Input()
-  inputHandler(inputValue: any): void {
+  inputHandler(inputValue: unknown, runContext?: object): void {
     let result = inputValue
     if (this.meta.config?.trueExpression) {
       // eslint-disable-next-line no-new-func
@@ -26,6 +26,6 @@ export class Condition extends AbstractActivity<IConditionConfig> {
     }
 
     const flowTo = result ? "true" : "false";
-    this.next(inputValue, flowTo)
+    this.next(inputValue, runContext, flowTo)
   }
 }

@@ -12,12 +12,12 @@ export class ResetFieldActivity extends AbstractActivity<IFieldConfig, IFieldyLo
   }
 
   @Input()
-  inputHandler(inputValue: unknown): void {
+  inputHandler(inputValue: unknown, runContext?: object): void {
     const path = this.meta.config?.fieldPath 
     if(path){
       const field = this.context?.form?.getField(path)
       field?.reset()
     }
-    this.next(inputValue)
+    this.next(inputValue, runContext)
   }
 }

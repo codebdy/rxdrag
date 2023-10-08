@@ -14,9 +14,9 @@ export class Increase extends AbstractActivity<IIncreaseConfig> {
   }
 
   @Input()
-  inputHandler = (inputValue?: number) => {
+  inputHandler = (inputValue?: number, runContext?: object) => {
     if (this.meta.config?.step !== undefined && inputValue !== undefined) {
-      this.next(inputValue + this.meta.config?.step)
+      this.next(inputValue + this.meta.config?.step, runContext)
     }
   }
 }

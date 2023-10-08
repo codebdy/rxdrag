@@ -10,17 +10,17 @@ export interface IFieldConfig {
 export class ReadFieldValue extends AbstractActivity<IFieldConfig, IFieldyLogicFlowContext> {
   public static NAME = "fieldy.readFieldValue"
 
-  constructor(meta: INodeDefine<IFieldConfig>, context:IFieldyLogicFlowContext) {
+  constructor(meta: INodeDefine<IFieldConfig>, context: IFieldyLogicFlowContext) {
     super(meta, context)
   }
 
   @Input()
-  inputHandler(): void {
-    const path = this.meta.config?.fieldPath 
-    if(path){
+  inputHandler(value?: unknown, runContext?: object): void {
+    const path = this.meta.config?.fieldPath
+    if (path) {
       const field = this.context?.form?.getField(path)
-      if(field){
-        this.next(field.getValue())
+      if (field) {
+        this.next(field.getValue(), runContext)
       }
     }
   }

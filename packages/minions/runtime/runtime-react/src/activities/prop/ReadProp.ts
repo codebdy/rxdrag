@@ -20,9 +20,9 @@ export class ReadProp extends ControllerActivity<IPropConfig> {
   }
 
   @Input()
-  inputHandler = () => {
+  inputHandler = (_: unknown, runContext?: object) => {
     if (this.meta.config?.prop) {
-      this.next(this.controller.getProp(this.meta.config?.prop))
+      this.next(this.controller.getProp(this.meta.config?.prop), runContext)
     }
   }
 }

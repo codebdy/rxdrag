@@ -1,7 +1,7 @@
 import type { Jointer } from "../classes";
 
 //数据推送接口
-export type InputHandler = (inputValue?: unknown, context?: object) => void;
+export type InputHandler = (inputValue?: unknown, runContext?: object) => void;
 export type ConnectListener = (handler: InputHandler) => void
 
 export interface IJointer {

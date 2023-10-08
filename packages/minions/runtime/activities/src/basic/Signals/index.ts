@@ -20,11 +20,11 @@ export class Signals extends AbstractActivity<IIntervalConfig> {
   }
 
   @Input(Signals.INPUT_NAME_STARTUP)
-  startUpHandler = (inputValue?: unknown) => {
+  startUpHandler = (inputValue?: unknown, runContext?: object) => {
     this.stopHandler()
     this.inputValue = inputValue
     if (this.meta.config?.interval) {
-      this.timer = setInterval(this.handleOutput, this.interval || this.meta.config?.interval)
+      this.timer = setInterval(() => this.handleOutput(runContext), this.interval || this.meta.config?.interval)
       console.log("启动定时器", this.timer)
     }
   }
@@ -44,8 +44,8 @@ export class Signals extends AbstractActivity<IIntervalConfig> {
     this.interval = interval
   }
 
-  handleOutput = () => {
-    this.next(this.inputValue)
+  handleOutput = (runContext?: object) => {
+    this.next(this.inputValue, runContext)
   }
 
   destroy = () => {

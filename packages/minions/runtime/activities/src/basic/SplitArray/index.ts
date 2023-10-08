@@ -14,7 +14,7 @@ export class SplitArray extends AbstractActivity {
   }
 
   @Input()
-  inputHandler(inputValue?: any[]): void {
+  inputHandler(inputValue?: unknown[], runContext?: object): void {
     if (!inputValue) {
       return;
     }
@@ -22,7 +22,7 @@ export class SplitArray extends AbstractActivity {
     this.meta.outPorts?.forEach((port, index) => {
       if (port.name) {
         const value = inputValue[index]
-        this.next(value, port.name)
+        this.next(value, runContext, port.name)
       }
     })
   }

@@ -11,7 +11,7 @@ export class ReadFormValue extends AbstractActivity<unknown, IFieldyLogicFlowCon
   }
 
   @Input()
-  inputHandler(): void {
-    this.next(this.context?.form?.getValue())
+  inputHandler(inputValue?: unknown, runContext?: object): void {
+    this.next(this.context?.form?.getValue(), runContext)
   }
 }

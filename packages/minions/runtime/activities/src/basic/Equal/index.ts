@@ -29,18 +29,18 @@ export class Equal extends AbstractActivity {
   }
 
   @Input(Equal.INPUT_NAME_INPUT2)
-  inputHandler2(inputValue: unknown): void {
+  inputHandler2(inputValue: unknown, runContext?: object): void {
     this.input2 = {
       value: inputValue,
       inputed: true,
     }
-    this.doCompaire()
+    this.doCompaire(runContext)
   }
 
-  private doCompaire = () => {
+  private doCompaire = (runContext?: object) => {
     if (this.input1?.inputed && this.input2?.inputed) {
       const flowTo = this.input1.value === this.input2.value ? "true" : "false";
-      this.next(this.input1.value, flowTo)
+      this.next(this.input1.value, runContext, flowTo)
     }
   }
 }

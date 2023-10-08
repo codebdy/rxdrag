@@ -6,7 +6,7 @@ import { IVariableConfig, VirableActivity } from "../VirableActivity";
 @Activity(ReadVariable.NAME)
 export class ReadVariable extends VirableActivity {
   public static NAME = "system-react.readVariable"
-  
+
   constructor(meta: INodeDefine<IVariableConfig>, context?: IVariableContext) {
     super(meta, context)
 
@@ -16,9 +16,9 @@ export class ReadVariable extends VirableActivity {
   }
 
   @Input()
-  inputHandler = () => {
+  inputHandler = (_: unknown, runContext?: object) => {
     if (this.meta.config?.variable) {
-      this.next(this.variableController.getVariable(this.meta.config.variable))
+      this.next(this.variableController.getVariable(this.meta.config.variable), runContext)
     }
   }
 }

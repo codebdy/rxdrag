@@ -21,10 +21,10 @@ export class Random extends AbstractActivity<IRandomConfig> {
   }
 
   @Input(Random.INPUT_NAME_STARTUP)
-  inputHandler = () => {
+  inputHandler = (_: unknown, runContext?: object) => {
     const min = this.minValue || this.meta.config?.minValue || 0
     const max = this.maxValue || (this.meta.config?.maxValue || 1) + 1
-    this.next(this.getRandomInteger(min, max))
+    this.next(this.getRandomInteger(min, max), runContext)
   }
 
   @Input(Random.INPUT_NAME_MIN_VALUE)

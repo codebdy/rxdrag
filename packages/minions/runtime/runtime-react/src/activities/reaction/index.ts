@@ -17,14 +17,14 @@ export class Reaction extends ControllerActivity<IReactionConfig> {
   }
 
   @DynamicInput
-  inputHandler = (inputName: string, inputValue: unknown) => {
+  inputHandler = (inputName: string, inputValue: unknown, runContext?: object) => {
     const reaction = this.context?.reactions?.[inputName]
     if (isFn(reaction)) {
       reaction(this.controller, inputValue)
     } else {
       console.error("reaction is error:", inputName)
     }
-    this.next(inputValue);
+    this.next(inputValue, runContext);
   };
 
 }

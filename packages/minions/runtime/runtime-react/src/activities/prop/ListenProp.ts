@@ -20,7 +20,7 @@ export class ListenProp extends ControllerActivity<IPropConfig> {
 
   valueHandler = (inputValue: unknown) => {
     if (this.meta.config?.prop) {
-      this.next(inputValue)
+      this.next(inputValue, {})
     }
   }
 }

@@ -16,10 +16,10 @@ export class SetVariable extends VirableActivity {
 
   }
   @Input()
-  inputHandler = (inputValue: string) => {
+  inputHandler = (inputValue: string, runContext?: object) => {
     if (this.meta.config?.variable) {
       this.variableController?.setVariable(this.meta.config.variable, inputValue)
     }
-    this.next(inputValue);
+    this.next(inputValue, runContext);
   }
 }

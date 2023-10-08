@@ -17,7 +17,7 @@ export class RouteTo extends AbstractActivity<IRouteToConfig, IReactContext> {
   }
 
   @Input()
-  inputHandler = (inputValue?: string) => {
+  inputHandler = (inputValue?: string, runContext?: object) => {
     let url = inputValue
     if (!this.meta.config?.fromInput) {
       url = this.meta.config?.url

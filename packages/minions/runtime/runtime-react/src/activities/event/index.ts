@@ -21,6 +21,6 @@ export class EventActivity extends ControllerActivity<IEventConfig> {
   }
 
   handleEvent = (args?: unknown[]) => {
-    this.next(args)
+    this.next(args, {})
   }
 }

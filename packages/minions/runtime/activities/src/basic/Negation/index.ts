@@ -10,7 +10,7 @@ export class Negation extends AbstractActivity {
   }
 
   @Input()
-  inputHandler = (inputValue?: boolean) => {
-    this.next(!inputValue)
+  inputHandler = (inputValue?: boolean, runContext?: object) => {
+    this.next(!inputValue, runContext)
   }
 }

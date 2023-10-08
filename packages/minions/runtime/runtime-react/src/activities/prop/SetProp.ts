@@ -19,10 +19,10 @@ export class SetProp extends ControllerActivity<IPropConfig> {
   }
 
   @Input()
-  inputHandler = (inputValue: string) => {
+  inputHandler = (inputValue: string, runContext?: object) => {
     if (this.meta.config?.prop) {
       this.controller?.setProp(this.meta.config?.prop, inputValue)
     }
-    this.next(inputValue);
+    this.next(inputValue, runContext);
   }
 }

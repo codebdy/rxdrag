@@ -18,16 +18,16 @@ export class Merge extends AbstractActivity<unknown> {
   }
 
   @DynamicInput
-  inputHandler = (inputName: string, inputValue: unknown) => {
+  inputHandler = (inputName: string, inputValue: unknown, runContext?: object) => {
     this.values[inputName] = inputValue;
-    this.noPassInputs = this.noPassInputs.filter(name=>name !== inputName)
+    this.noPassInputs = this.noPassInputs.filter(name => name !== inputName)
     if (this.noPassInputs.length === 0) {
-      this.next(this.values);
+      this.next(this.values, runContext);
       this.resetNoPassInputs();
     }
   };
 
-  resetNoPassInputs(){
+  resetNoPassInputs() {
     for (const input of this.meta.inPorts || []) {
       this.noPassInputs.push(input.name);
     }
