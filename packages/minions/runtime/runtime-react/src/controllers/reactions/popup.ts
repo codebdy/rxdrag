@@ -5,5 +5,6 @@ export const open: ControllerReaction = (controller: IController) => {
 }
 
 export const close: ControllerReaction = (controller: IController) => {
+  console.log("====>close")
   controller.setProp("open", false)
 }

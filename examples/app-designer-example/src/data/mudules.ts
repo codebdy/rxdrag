@@ -241,11 +241,22 @@ const mole = {
           "slots": {},
           "children": [
             {
-              "componentName": "Input",
+              "componentName": "Text",
+              "props": {
+                "value": "分数："
+              },
+              "slots": {},
+              "children": []
+            },
+            {
+              "componentName": "Text",
+              "props": {
+                "value": "-"
+              },
               "x-controller": {
-                "id": "tENE3RFA",
+                "id": "g1rEXDcH",
                 "enable": true,
-                "name": "记分器"
+                "name": "分数"
               },
               "slots": {},
               "children": []
@@ -317,7 +328,36 @@ const moleSetting = {
     "footer": {
       "componentName": "DialogFooter",
       "slots": {},
-      "children": []
+      "children": [
+        {
+          "componentName": "Button",
+          "props": {
+            "type": "default",
+            "title": "取消"
+          },
+          "x-controller": {
+            "id": "OfONgEFW",
+            "enable": true,
+            "name": "取消按钮"
+          },
+          "slots": {},
+          "children": []
+        },
+        {
+          "componentName": "Button",
+          "props": {
+            "type": "primary",
+            "title": "确认"
+          },
+          "x-controller": {
+            "id": "sghItTwt",
+            "enable": true,
+            "name": "确认按钮"
+          },
+          "slots": {},
+          "children": []
+        }
+      ]
     }
   },
   "children": []
@@ -375,7 +415,7 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
         {
           "id": "tAE2cmwc",
           "name": "时间间隔",
-          "defaultValue": 1000
+          "defaultValue": 2000
         },
         {
           "id": "UBbpfK7M",
