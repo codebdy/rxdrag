@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IControllerMeta } from "../interfaces";
-import { IController, EventHandlers, PropsListener, UnListener, PropListener, EventListener, CONTROLLER_EVENT_INIT, CONTROLLER_EVENT_DESTORY } from "../interfaces/controller";
+import { IController, EventHandlers, PropsListener, UnListener, PropListener, EventListener, CONTROLLER_EVENT_INIT, CONTROLLER_EVENT_DESTORY, EventsChangeListener } from "../interfaces/controller";
 
 export class ComponentController implements IController {
   id: string;
   name?: string;
-  events: EventHandlers = {};
   protected props: any = {};
 
   protected propListeners: Record<string, PropListener[]> = {}
   protected eventListeners: Record<string, EventListener[]> = {}
+  protected eventHandlersListeners: EventsChangeListener[] = []
 
   protected propsListeners: PropsListener[] = []
 
@@ -70,10 +70,35 @@ export class ComponentController implements IController {
       this.eventListeners[name] = []
     }
     this.eventListeners[name].push(listener)
-    console.log("===>订阅事件", name)
+    this.emitEvhentHandlers()
+    console.log("===>订阅事件", name, this.eventListeners)
     return () => {
       console.log("===>注销事件", name)
       this.eventListeners[name].splice(this.eventListeners[name].indexOf(listener), 1)
+      this.emitEvhentHandlers()
+    }
+  }
+
+  emitEvhentHandlers = () => {
+    const events: EventHandlers = {}
+    for (const name of Object.keys(this.eventListeners)) {
+      events[name] = (args?: unknown[]) => {
+        const listeners = this.eventListeners[name]
+        for (const listener of listeners) {
+          listener(args)
+        }
+      }
+    }
+
+    for (const listener of this.eventHandlersListeners) {
+      listener(events)
+    }
+  }
+
+  subscribeEventHandlersChange(listener: EventsChangeListener): UnListener {
+    this.eventHandlersListeners.push(listener)
+    return () => {
+      this.eventHandlersListeners.splice(this.eventHandlersListeners.indexOf(listener), 1)
     }
   }
 

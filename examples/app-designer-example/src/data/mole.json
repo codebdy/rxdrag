@@ -98,7 +98,8 @@
             }
           ],
           "config": {
-            "controllerId": "uQPenUqJ"
+            "controllerId": "uQPenUqJ",
+            "name": "onClick"
           },
           "x6Node": {
             "x": 70,
@@ -190,7 +191,8 @@
             }
           ],
           "config": {
-            "controllerId": "-V60Mne6"
+            "controllerId": "-V60Mne6",
+            "name": "onClick"
           },
           "x6Node": {
             "x": 60,
@@ -320,39 +322,6 @@
     "metas": {
       "lines": [
         {
-          "id": "PdjqGYvL",
-          "source": {
-            "nodeId": "4df3a6e4-affd-4ef2-b6e0-d2328a1a6467",
-            "portId": "sA1wfw3A"
-          },
-          "target": {
-            "nodeId": "96faabcc-cce5-4c79-999e-c3cde2ac46e4",
-            "portId": "hl-QMnwk"
-          }
-        },
-        {
-          "id": "npKawvoV",
-          "source": {
-            "nodeId": "96faabcc-cce5-4c79-999e-c3cde2ac46e4",
-            "portId": "cH4f9uR0"
-          },
-          "target": {
-            "nodeId": "fb331326-e46b-4af4-8e17-af581d1954c0",
-            "portId": "KBiUNbEf"
-          }
-        },
-        {
-          "id": "4ELBLSMC",
-          "source": {
-            "nodeId": "96faabcc-cce5-4c79-999e-c3cde2ac46e4",
-            "portId": "8lwUxiLJ"
-          },
-          "target": {
-            "nodeId": "3abb5412-8532-45c4-974d-139ff31872c4",
-            "portId": "WnJhSUQe"
-          }
-        },
-        {
           "id": "swhgPpdE",
           "source": {
             "nodeId": "445863cf-3e50-4eba-ab07-0ec7417c3b70",
@@ -441,17 +410,6 @@
           }
         },
         {
-          "id": "C_giRNpM",
-          "source": {
-            "nodeId": "1e7eb63f-a274-4545-98e2-0ad7d1087142",
-            "portId": "DvkNKqxb"
-          },
-          "target": {
-            "nodeId": "96faabcc-cce5-4c79-999e-c3cde2ac46e4",
-            "portId": "3OySi0VZ"
-          }
-        },
-        {
           "id": "jWanB5LK",
           "source": {
             "nodeId": "1e7eb63f-a274-4545-98e2-0ad7d1087142",
@@ -461,46 +419,53 @@
             "nodeId": "4df3a6e4-affd-4ef2-b6e0-d2328a1a6467",
             "portId": "JLUTlow_"
           }
+        },
+        {
+          "id": "C_giRNpM",
+          "source": {
+            "nodeId": "1e7eb63f-a274-4545-98e2-0ad7d1087142",
+            "portId": "DvkNKqxb"
+          },
+          "target": {
+            "nodeId": "1ea0c056-00ab-4041-aaee-50f7373d888f",
+            "portId": "kjWpTyiT"
+          }
+        },
+        {
+          "id": "PdjqGYvL",
+          "source": {
+            "nodeId": "4df3a6e4-affd-4ef2-b6e0-d2328a1a6467",
+            "portId": "sA1wfw3A"
+          },
+          "target": {
+            "nodeId": "1ea0c056-00ab-4041-aaee-50f7373d888f",
+            "portId": "7b2Iseof"
+          }
+        },
+        {
+          "id": "dN20tkSe",
+          "source": {
+            "nodeId": "1ea0c056-00ab-4041-aaee-50f7373d888f",
+            "portId": "yNjPsaWF"
+          },
+          "target": {
+            "nodeId": "fb331326-e46b-4af4-8e17-af581d1954c0",
+            "portId": "KBiUNbEf"
+          }
+        },
+        {
+          "id": "pITZSW85",
+          "source": {
+            "nodeId": "1ea0c056-00ab-4041-aaee-50f7373d888f",
+            "portId": "DuIyuzO0"
+          },
+          "target": {
+            "nodeId": "3abb5412-8532-45c4-974d-139ff31872c4",
+            "portId": "WnJhSUQe"
+          }
         }
       ],
       "nodes": [
-        {
-          "id": "96faabcc-cce5-4c79-999e-c3cde2ac46e4",
-          "label": "相等",
-          "type": "Activity",
-          "activityName": "system.condition",
-          "inPorts": [
-            {
-              "id": "3OySi0VZ",
-              "name": "input1",
-              "label": ""
-            },
-            {
-              "id": "hl-QMnwk",
-              "name": "input2",
-              "label": ""
-            }
-          ],
-          "outPorts": [
-            {
-              "id": "cH4f9uR0",
-              "name": "true",
-              "label": "是"
-            },
-            {
-              "id": "8lwUxiLJ",
-              "name": "false",
-              "label": "否"
-            }
-          ],
-          "config": {},
-          "x6Node": {
-            "x": 460,
-            "y": 140,
-            "width": 88,
-            "height": 32
-          }
-        },
         {
           "id": "4df3a6e4-affd-4ef2-b6e0-d2328a1a6467",
           "label": "读取当前索引",
@@ -598,7 +563,8 @@
             }
           ],
           "config": {
-            "controllerId": "NpLxKVZs"
+            "controllerId": "NpLxKVZs",
+            "name": "onClick"
           },
           "x6Node": {
             "x": 30,
@@ -860,6 +826,43 @@
             "width": 116,
             "height": 32
           }
+        },
+        {
+          "id": "1ea0c056-00ab-4041-aaee-50f7373d888f",
+          "label": "相等",
+          "type": "Activity",
+          "activityName": "system.equal",
+          "inPorts": [
+            {
+              "id": "kjWpTyiT",
+              "name": "input1",
+              "label": ""
+            },
+            {
+              "id": "7b2Iseof",
+              "name": "input2",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "yNjPsaWF",
+              "name": "true",
+              "label": "是"
+            },
+            {
+              "id": "DuIyuzO0",
+              "name": "false",
+              "label": "否"
+            }
+          ],
+          "config": {},
+          "x6Node": {
+            "x": 470,
+            "y": 110,
+            "width": 88,
+            "height": 32
+          }
         }
       ]
     }
@@ -897,7 +900,8 @@
             }
           ],
           "config": {
-            "controllerId": "FfF5nHpb"
+            "controllerId": "FfF5nHpb",
+            "name": "onClick"
           },
           "x6Node": {
             "x": 80,
@@ -946,28 +950,6 @@
     "metas": {
       "lines": [
         {
-          "id": "w5SYQOAF",
-          "source": {
-            "nodeId": "4d75e2b9-d9b0-4772-ae6b-80d6ead91bdd",
-            "portId": "c8kOrngB"
-          },
-          "target": {
-            "nodeId": "09e605b2-a78f-41d6-adc9-c7f0888c5513",
-            "portId": "C2Jtlj_C"
-          }
-        },
-        {
-          "id": "hV1wGv4D",
-          "source": {
-            "nodeId": "4d75e2b9-d9b0-4772-ae6b-80d6ead91bdd",
-            "portId": "c8kOrngB"
-          },
-          "target": {
-            "nodeId": "5eddbb01-3a69-4545-b5b9-a0cc62994883",
-            "portId": "JIQy92pX"
-          }
-        },
-        {
           "id": "sR-Q7QVr",
           "source": {
             "nodeId": "9c7cc48e-de44-454d-9977-12c37a642b88",
@@ -988,30 +970,31 @@
             "nodeId": "ca96c749-dbec-4fbd-b132-1e9094ad796b",
             "portId": "YtQBKwPf"
           }
+        },
+        {
+          "id": "-4KCZ_gn",
+          "source": {
+            "nodeId": "4831e71f-81b3-404c-a6c9-d6a3b16faff7",
+            "portId": "CURL86Ya"
+          },
+          "target": {
+            "nodeId": "09e605b2-a78f-41d6-adc9-c7f0888c5513",
+            "portId": "C2Jtlj_C"
+          }
+        },
+        {
+          "id": "0Ntt8Olw",
+          "source": {
+            "nodeId": "4831e71f-81b3-404c-a6c9-d6a3b16faff7",
+            "portId": "CURL86Ya"
+          },
+          "target": {
+            "nodeId": "5eddbb01-3a69-4545-b5b9-a0cc62994883",
+            "portId": "JIQy92pX"
+          }
         }
       ],
       "nodes": [
-        {
-          "id": "4d75e2b9-d9b0-4772-ae6b-80d6ead91bdd",
-          "type": "Activity",
-          "activityName": "system-react.event",
-          "outPorts": [
-            {
-              "id": "c8kOrngB",
-              "name": "onClick",
-              "label": "点击"
-            }
-          ],
-          "config": {
-            "controllerId": "uQPenUqJ"
-          },
-          "x6Node": {
-            "x": 140,
-            "y": 170,
-            "width": 116,
-            "height": 32
-          }
-        },
         {
           "id": "09e605b2-a78f-41d6-adc9-c7f0888c5513",
           "type": "Activity",
@@ -1080,7 +1063,8 @@
             }
           ],
           "config": {
-            "controllerId": "-V60Mne6"
+            "controllerId": "-V60Mne6",
+            "name": "onClick"
           },
           "x6Node": {
             "x": 120,
@@ -1141,6 +1125,28 @@
           "x6Node": {
             "x": 380,
             "y": 350,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "4831e71f-81b3-404c-a6c9-d6a3b16faff7",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "outPorts": [
+            {
+              "id": "CURL86Ya",
+              "name": "onClick",
+              "label": "点击"
+            }
+          ],
+          "config": {
+            "controllerId": "uQPenUqJ",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 80,
+            "y": 130,
             "width": 116,
             "height": 32
           }

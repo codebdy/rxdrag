@@ -9,6 +9,7 @@ export type VariableListener = (value: unknown) => void
 export type PropListener = (value: unknown) => void
 export type PropsListener = (name: string, value: unknown) => void
 export type EventListener = (args?: unknown[]) => void
+export type EventsChangeListener = (eventHandlers?: EventHandlers) => void
 export type UnListener = () => void
 
 export type EventHandler = (args?: unknown[]) => void
@@ -34,11 +35,11 @@ export interface IController extends IPropController {
   id: string,
   name?: string,
 
-  events: EventHandlers,
   initEvent: EventHandler,
   destroyEvent: EventHandler,
   subscribeToPropsChange(listener: PropsListener): UnListener,
   subscribeToEvent(name: string, listener: EventListener): UnListener,
+  subscribeEventHandlersChange(listener: EventsChangeListener): UnListener
 
   destroy(): void,
 }
