@@ -11,7 +11,7 @@ export class VirableActivity extends AbstractActivity<IVariableConfig, IVariable
   constructor(meta: INodeDefine<IVariableConfig>, public context?: IVariableContext) {
     super(meta, context)
     if (!context?.variableController) {
-      throw new Error("Can not find controller")
+      throw new Error("Can not find varialble controller")
     }
 
     this.variableController = context.variableController

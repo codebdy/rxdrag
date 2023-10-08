@@ -8,7 +8,7 @@ import { ControllerEngine } from "../LogicflowRuntime/ControllerEngine";
 
 export type MergedLogicFlowContext = IFieldyLogicFlowContext & IReactContext & IVariableContext & IFxContext
 
-export function useLogicFlowContext(engine?: ControllerEngine) {
+export function useLogicFlowContext(engine: ControllerEngine | null) {
   const navigate = useNavigate()
   const form = useForm()
   const urlParams = useParams()

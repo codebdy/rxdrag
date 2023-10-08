@@ -12,7 +12,7 @@ export class ControllerActivity<Config extends IControllerConfig = IControllerCo
     super(meta, context)
     const controller = context?.controllers?.[meta.config?.controllerId || ""]
     if (!controller) {
-      throw new Error("Can not find controller")
+      throw new Error("Can not find controller:" + meta.config?.controllerId)
     }
     this.controller = controller
   }

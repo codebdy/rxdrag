@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react"
+import React, { memo, useEffect, useRef } from "react"
 import { useState } from "react"
 import { ControllerEngineContext } from "../contexts"
 import { ControllerEngine } from "./ControllerEngine"
@@ -22,7 +22,9 @@ export const LogicflowRuntime = memo((props: {
   const { children, schema, ownerId, reactions, variables } = props
   const { flows, fxFlows, scripts, fxScripts, } = useLogicDefines() || {}
 
-  const [controllerEngine, setControllerEngine] = useState<ControllerEngine>()
+  const [controllerEngine, setControllerEngine] = useState<ControllerEngine | null>(null)
+  const engineRef = useRef(controllerEngine)
+  engineRef.current = controllerEngine
 
   const parent = useControllerEngine()
 
@@ -36,20 +38,27 @@ export const LogicflowRuntime = memo((props: {
         fxFlows
       }
     )
+    engineRef.current?.destroy()
     setControllerEngine(rtEngine)
-    return () => {
-      rtEngine.destroy()
-    }
   }, [fxFlows, parent, reactions, schema, variables])
+
+  useEffect(() => {
+    return () => {
+      engineRef.current?.destroy()
+    }
+  }, [])
+
   const logicFlowContext = useLogicFlowContext(controllerEngine);
 
   useEffect(() => {
-    const flowRuntimes = flows?.filter(flow => flow.ownerId === ownerId)?.map(flowMeta => {
-      return new LogicFlow(flowMeta, logicFlowContext)
-    })
+    if (logicFlowContext?.controllers) {
+      const flowRuntimes = flows?.filter(flow => flow.ownerId === ownerId)?.map(flowMeta => {
+        return new LogicFlow(flowMeta, logicFlowContext)
+      })
 
-    return () => {
-      flowRuntimes?.forEach(flow => flow.destroy())
+      return () => {
+        flowRuntimes?.forEach(flow => flow.destroy())
+      }
     }
   }, [flows, logicFlowContext, ownerId])
 
