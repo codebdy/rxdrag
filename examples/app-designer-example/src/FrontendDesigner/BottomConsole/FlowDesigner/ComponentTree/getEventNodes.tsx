@@ -8,6 +8,7 @@ import { createId } from "@rxdrag/shared";
 import { DraggableText } from "../DraggableText";
 import { IDesignerEngine } from "@rxdrag/core";
 import { eventMaterial } from "@rxdrag/minions-react-materials";
+import { DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
 
 export function getEventNodes(rNode: ReactionableNode, engine: IDesignerEngine | undefined, comMaterial?: IMaterial) {
   const ctrlMeta = rNode.node.meta?.["x-controller"]
@@ -28,7 +29,7 @@ export function getEventNodes(rNode: ReactionableNode, engine: IDesignerEngine |
             outPorts: [
               {
                 id: createId(),
-                name: event.name,
+                name: DEFAULT_OUTPUT_NAME,
                 label: label || "",
               },
             ],

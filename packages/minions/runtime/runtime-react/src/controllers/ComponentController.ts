@@ -71,9 +71,7 @@ export class ComponentController implements IController {
     }
     this.eventListeners[name].push(listener)
     this.emitEvhentHandlers()
-    console.log("===>订阅事件", name, this.eventListeners)
     return () => {
-      console.log("===>注销事件", name)
       this.eventListeners[name].splice(this.eventListeners[name].indexOf(listener), 1)
       this.emitEvhentHandlers()
     }
@@ -82,7 +80,7 @@ export class ComponentController implements IController {
   emitEvhentHandlers = () => {
     const events: EventHandlers = {}
     for (const name of Object.keys(this.eventListeners)) {
-      events[name] = (args?: unknown[]) => {
+      events[name] = (...args: unknown[]) => {
         const listeners = this.eventListeners[name]
         for (const listener of listeners) {
           listener(args)

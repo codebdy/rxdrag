@@ -46,7 +46,6 @@ export function withController(WrappedComponent: ReactComponent, meta: IControll
       return { ...props, ...events, ...changedProps }
     }, [changedProps, events, props]);
 
-    console.log("====>controller events", events)
     return (
       <ControllerContext.Provider value={controller}>
         <WrappedComponent {...newProps} />

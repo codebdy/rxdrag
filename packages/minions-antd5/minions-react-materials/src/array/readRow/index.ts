@@ -1,8 +1,7 @@
 import { createId } from "@rxdrag/shared"
 import { NodeType } from "@rxdrag/minions-schema"
 import { IControllerConfig, IControllerMeta, ReadRow } from "@rxdrag/minions-runtime-react"
-import { IRxDragActivityMaterial } from "../../interfaces"
-import { LogicflowContextParam } from "../../../types"
+import { IRxDragActivityMaterial, LogicflowContextParam } from "../../interfaces"
 import { getControllerComponentInfo } from "../../controller/utils"
 import { currentRowIcon } from "../../icons"
 
@@ -29,11 +28,11 @@ export const readRowMaterial: IRxDragActivityMaterial<IControllerConfig, Logicfl
   },
 
   color: (config?: IControllerConfig, context?: LogicflowContextParam) => {
-    const { material } = getControllerComponentInfo(config?.param, context?.engine)
+    const { material } = getControllerComponentInfo(config, context?.engine)
     return material?.resource?.color
   },
   subTitle: (config?: IControllerConfig, context?: LogicflowContextParam) => {
-    const { node, material } = getControllerComponentInfo(config?.param, context?.engine)
+    const { node, material } = getControllerComponentInfo(config, context?.engine)
     const ctrl = node?.meta["x-controller"] as IControllerMeta | undefined
     return ctrl?.name || material?.resource?.title || ctrl?.id
   },

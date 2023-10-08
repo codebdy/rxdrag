@@ -93,7 +93,7 @@
           "outPorts": [
             {
               "id": "SwZM1_RN",
-              "name": "onClick",
+              "name": "output",
               "label": "点击"
             }
           ],
@@ -186,7 +186,7 @@
           "outPorts": [
             {
               "id": "XP2sTYBg",
-              "name": "onClick",
+              "name": "output",
               "label": "点击"
             }
           ],
@@ -558,7 +558,7 @@
           "outPorts": [
             {
               "id": "OH0o9Fqs",
-              "name": "onClick",
+              "name": "output",
               "label": "点击"
             }
           ],
@@ -895,7 +895,7 @@
           "outPorts": [
             {
               "id": "1ouYiar8",
-              "name": "onClick",
+              "name": "output",
               "label": "点击"
             }
           ],
@@ -972,10 +972,10 @@
           }
         },
         {
-          "id": "-4KCZ_gn",
+          "id": "w3xM5NcL",
           "source": {
-            "nodeId": "4831e71f-81b3-404c-a6c9-d6a3b16faff7",
-            "portId": "CURL86Ya"
+            "nodeId": "f37215b4-7b67-43b9-9efd-78a962197600",
+            "portId": "0mRyMBxi"
           },
           "target": {
             "nodeId": "09e605b2-a78f-41d6-adc9-c7f0888c5513",
@@ -983,10 +983,10 @@
           }
         },
         {
-          "id": "0Ntt8Olw",
+          "id": "oCOaxx9u",
           "source": {
-            "nodeId": "4831e71f-81b3-404c-a6c9-d6a3b16faff7",
-            "portId": "CURL86Ya"
+            "nodeId": "f37215b4-7b67-43b9-9efd-78a962197600",
+            "portId": "0mRyMBxi"
           },
           "target": {
             "nodeId": "5eddbb01-3a69-4545-b5b9-a0cc62994883",
@@ -1058,7 +1058,7 @@
           "outPorts": [
             {
               "id": "0oIaz89X",
-              "name": "onClick",
+              "name": "output",
               "label": "点击"
             }
           ],
@@ -1130,13 +1130,13 @@
           }
         },
         {
-          "id": "4831e71f-81b3-404c-a6c9-d6a3b16faff7",
+          "id": "f37215b4-7b67-43b9-9efd-78a962197600",
           "type": "Activity",
           "activityName": "system-react.event",
           "outPorts": [
             {
-              "id": "CURL86Ya",
-              "name": "onClick",
+              "id": "0mRyMBxi",
+              "name": "output",
               "label": "点击"
             }
           ],
@@ -1145,8 +1145,8 @@
             "name": "onClick"
           },
           "x6Node": {
-            "x": 80,
-            "y": 130,
+            "x": 120,
+            "y": 160,
             "width": 116,
             "height": 32
           }
