@@ -1,10 +1,11 @@
-import React, { useContext, useMemo } from "react"
+import React, { useContext, useEffect, useMemo } from "react"
 import { Form, FormItemProps as AntdFormItemProps } from "antd";
 import { memo } from "react";
 import { FormLayoutContext } from "../contexts";
 import { isArray } from "lodash";
 import { useField, useFieldErrors } from "@rxdrag/react-fieldy";
 import styled from "styled-components";
+import { useController } from "@rxdrag/react-runner";
 
 const Error = styled.div`
   color: red;
@@ -30,6 +31,14 @@ export const FormItem: React.FC<FormItemProps> = memo((props) => {
       return { child: children }
     }
   }, [children])
+
+  const controller = useController()
+  useEffect(() => {
+    if (controller) {
+      controller.fieldyNode = field
+    }
+  }, [controller, field])
+
   return (
     <Form.Item
       {...formParams}

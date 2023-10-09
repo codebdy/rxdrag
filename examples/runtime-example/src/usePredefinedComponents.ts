@@ -1,7 +1,6 @@
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared";
 import { isStr } from "@rxdrag/shared";
 import { useMemo } from "react";
-import { Field } from "@rxdrag/react-antd-components";
 import { materials } from "example-common";
 import styled from "styled-components";
 
@@ -18,7 +17,6 @@ export function usePredefinedComponents() {
   const coms = useMemo(() => {
     const components: IReactComponents = {
       Root: RootComponent,
-      Field: Field,
     }
     for (const com of materials) {
       components[com.componentName] = com.component

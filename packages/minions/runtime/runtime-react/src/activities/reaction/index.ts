@@ -20,11 +20,11 @@ export class Reaction extends ControllerActivity<IReactionConfig> {
   inputHandler = (inputName: string, inputValue: unknown, runContext?: object) => {
     const reaction = this.context?.reactions?.[inputName]
     if (isFn(reaction)) {
-      reaction(this.controller, inputValue)
+      const newValue = reaction(this.controller, inputValue)
+      this.next(newValue === undefined ? inputValue : newValue, runContext)
     } else {
       console.error("reaction is error:", inputName)
     }
-    this.next(inputValue, runContext);
   };
 
 }

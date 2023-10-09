@@ -32,6 +32,7 @@
   "dependencies": {
     "@rxdrag/minions-schema": "workspace:*",
     "@rxdrag/minions-runtime": "workspace:*",
+    "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/shared": "workspace:*"
   }
 }

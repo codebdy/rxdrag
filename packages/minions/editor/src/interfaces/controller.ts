@@ -18,8 +18,6 @@ export interface IPropsMeta {
 export interface IReactionMeta {
   name: string,
   label?: string,
-  //这个不能放在设计器部分，需要放在运行时
-  //action: (options: { input: unknown, context: unknown, controller: IController }) => void
 }
 
 //控制器物料定义

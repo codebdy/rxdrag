@@ -1,7 +1,6 @@
 import { ComponentResourceWidget } from "@rxdrag/react-antd-shell"
-import { useSettersTranslate, useRegisterComponentMaterials } from "@rxdrag/react-core"
-import { memo, useEffect } from "react"
-import { FieldMaterial } from "@rxdrag/react-antd-materials"
+import { useSettersTranslate } from "@rxdrag/react-core"
+import { memo } from "react"
 import { ResourceCollapsePanel } from "./ResourceCollapsePanel"
 import styled from "styled-components"
 import { ResourceGroup } from "example-common"
@@ -20,11 +19,11 @@ export const ResourceWidget = memo((
 ) => {
   const { resources } = props;
   const t = useSettersTranslate()
-  const registerMaterial = useRegisterComponentMaterials()
+  //const registerMaterial = useRegisterComponentMaterials()
   //注册通用物料
-  useEffect(() => {
-    registerMaterial(FieldMaterial)
-  }, [registerMaterial])
+  // useEffect(() => {
+  //   registerMaterial(FieldMaterial)
+  // }, [registerMaterial])
 
   return (
     <Container>

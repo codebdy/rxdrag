@@ -1,7 +1,6 @@
 import { IMaterial } from "@rxdrag/react-core";
 import { ReactionableNode } from ".";
 import { ActivityResource, IActivityNode } from "@rxdrag/minions-logicflow-editor";
-import { IPropConfig } from "@rxdrag/minions-runtime-react";
 import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { createId } from "@rxdrag/shared";
 import { DraggableText } from "../DraggableText";
@@ -19,7 +18,7 @@ export function getReactionNodes(rNode: ReactionableNode, engine: IDesignerEngin
       title: <ActivityResource
         material={reactionMaterial as IActivityMaterial<React.ReactNode>}
         createNode={() => {
-          const node: IActivityNode<IPropConfig> = {
+          const node: IActivityNode = {
             id: createId(),
             //label: title,
             type: reactionMaterial.activityType,

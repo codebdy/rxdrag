@@ -1178,17 +1178,6 @@
     "metas": {
       "lines": [
         {
-          "id": "kosbjWf6",
-          "source": {
-            "nodeId": "669e2b80-5038-45cc-8318-43e81dbc03b5",
-            "portId": "1ouYiar8"
-          },
-          "target": {
-            "nodeId": "e6d990a4-ddf3-43ff-89ae-90f9147d09a3",
-            "portId": "jMs7oSII"
-          }
-        },
-        {
           "id": "iLB5Nn_U",
           "source": {
             "nodeId": "18b6608f-ea50-49a0-be4e-bf2e28e8a90f",
@@ -1208,6 +1197,72 @@
           "target": {
             "nodeId": "ef7fbb23-318a-4db5-a50d-d6b2c0da2c1d",
             "portId": "ahMdkgkk"
+          }
+        },
+        {
+          "id": "QlDl0N06",
+          "source": {
+            "nodeId": "669e2b80-5038-45cc-8318-43e81dbc03b5",
+            "portId": "1ouYiar8"
+          },
+          "target": {
+            "nodeId": "e29b686e-6ef9-4f67-a6f2-a71da759ecb4",
+            "portId": "hDPdE4TP"
+          }
+        },
+        {
+          "id": "i6V9XlD8",
+          "source": {
+            "nodeId": "669e2b80-5038-45cc-8318-43e81dbc03b5",
+            "portId": "1ouYiar8"
+          },
+          "target": {
+            "nodeId": "f30a83da-a020-4c88-8676-cd4bd8b31617",
+            "portId": "6ayCQwrt"
+          }
+        },
+        {
+          "id": "Hddh_AkZ",
+          "source": {
+            "nodeId": "e29b686e-6ef9-4f67-a6f2-a71da759ecb4",
+            "portId": "jIpjKPRE"
+          },
+          "target": {
+            "nodeId": "e1e1242e-ca41-4f94-8842-89f8f62bd3ac",
+            "portId": "a7durdwt"
+          }
+        },
+        {
+          "id": "iaqeUp_y",
+          "source": {
+            "nodeId": "f30a83da-a020-4c88-8676-cd4bd8b31617",
+            "portId": "7X4ztlfZ"
+          },
+          "target": {
+            "nodeId": "e1e1242e-ca41-4f94-8842-89f8f62bd3ac",
+            "portId": "zfcCQp49"
+          }
+        },
+        {
+          "id": "NH3jjBAi",
+          "source": {
+            "nodeId": "e1e1242e-ca41-4f94-8842-89f8f62bd3ac",
+            "portId": "RV56FLyY"
+          },
+          "target": {
+            "nodeId": "1596ab2a-59b6-4002-99ec-4a592256b923",
+            "portId": "ztlDkJv4"
+          }
+        },
+        {
+          "id": "nldAtCE5",
+          "source": {
+            "nodeId": "1596ab2a-59b6-4002-99ec-4a592256b923",
+            "portId": "_w9ByUF7"
+          },
+          "target": {
+            "nodeId": "e6d990a4-ddf3-43ff-89ae-90f9147d09a3",
+            "portId": "jMs7oSII"
           }
         }
       ],
@@ -1231,34 +1286,6 @@
             "x": 80,
             "y": 80,
             "width": 116,
-            "height": 32
-          }
-        },
-        {
-          "id": "e6d990a4-ddf3-43ff-89ae-90f9147d09a3",
-          "type": "Activity",
-          "activityName": "system-react.reaction",
-          "inPorts": [
-            {
-              "id": "jMs7oSII",
-              "name": "open",
-              "label": "打开"
-            }
-          ],
-          "outPorts": [
-            {
-              "id": "0lRDBUnq",
-              "name": "output",
-              "label": ""
-            }
-          ],
-          "config": {
-            "controllerId": "eu2MFGfi"
-          },
-          "x6Node": {
-            "x": 340,
-            "y": 40,
-            "width": 130,
             "height": 32
           }
         },
@@ -1360,6 +1387,154 @@
             "x": 270,
             "y": 290,
             "width": 130,
+            "height": 32
+          }
+        },
+        {
+          "id": "e29b686e-6ef9-4f67-a6f2-a71da759ecb4",
+          "label": "地鼠数量",
+          "type": "Activity",
+          "activityName": "system-react.readVariable",
+          "inPorts": [
+            {
+              "id": "hDPdE4TP",
+              "name": "input",
+              "label": "$read"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "jIpjKPRE",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "variable": "地鼠数量"
+          },
+          "x6Node": {
+            "x": 280,
+            "y": 10,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "f30a83da-a020-4c88-8676-cd4bd8b31617",
+          "label": "时间间隔",
+          "type": "Activity",
+          "activityName": "system-react.readVariable",
+          "inPorts": [
+            {
+              "id": "6ayCQwrt",
+              "name": "input",
+              "label": "$read"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "7X4ztlfZ",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "variable": "时间间隔"
+          },
+          "x6Node": {
+            "x": 280,
+            "y": 100,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "e1e1242e-ca41-4f94-8842-89f8f62bd3ac",
+          "label": "合并",
+          "type": "Activity",
+          "activityName": "system.merge",
+          "inPorts": [
+            {
+              "id": "a7durdwt",
+              "name": "count",
+              "label": "count",
+              "key": "a7durdwt"
+            },
+            {
+              "id": "zfcCQp49",
+              "name": "interval",
+              "label": "interval",
+              "key": "zfcCQp49"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "RV56FLyY",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {},
+          "x6Node": {
+            "x": 480,
+            "y": 50,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "e6d990a4-ddf3-43ff-89ae-90f9147d09a3",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "jMs7oSII",
+              "name": "open",
+              "label": "打开"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "0lRDBUnq",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "eu2MFGfi"
+          },
+          "x6Node": {
+            "x": 800,
+            "y": 60,
+            "width": 130,
+            "height": 32
+          }
+        },
+        {
+          "id": "1596ab2a-59b6-4002-99ec-4a592256b923",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "ztlDkJv4",
+              "name": "setValue",
+              "label": "赋值"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "_w9ByUF7",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "CF2PN88a"
+          },
+          "x6Node": {
+            "x": 630,
+            "y": 50,
+            "width": 116,
             "height": 32
           }
         }

@@ -29,5 +29,41 @@ export const FormMaterial: IMaterial = {
 
   behaviorRule: {
     droppable: true,
+  },
+  controller: {
+    props: [
+      {
+        name: "value",
+        label: "$value",
+      },
+      {
+        name: "defaultValue",
+        label: "$defaultValue",
+      },
+      {
+        name: "initialValue",
+        label: "$initialValue",
+      },
+    ],
+    events: [
+      {
+        name: "onChange",
+        label: "$onChange",
+      }
+    ],
+    reactions: [
+      {
+        name: "validate",
+        label: "$validate"
+      },
+      {
+        name: "readValue",
+        label: "$readValue",
+      },
+      {
+        name: "setValue",
+        label: "$setValue"
+      }
+    ]
   }
 }

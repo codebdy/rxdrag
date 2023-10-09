@@ -31,6 +31,13 @@ export function withController(WrappedComponent: ReactComponent, meta: IControll
     }, [controller?.events])
 
     useEffect(() => {
+      const ctrlProps = controller?.getProps()
+      if (ctrlProps) {
+        setChangeProps(ctrlProps)
+      }
+    }, [controller])
+
+    useEffect(() => {
       if (meta?.enable && controllerEngine) {
         const ctrl = controllerEngine.getController(meta.id)
         const unlistener = ctrl?.subscribeToPropsChange(handlePropsChange)

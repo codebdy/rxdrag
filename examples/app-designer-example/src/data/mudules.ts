@@ -360,7 +360,61 @@ const moleSetting = {
       ]
     }
   },
-  "children": []
+  "children": [
+    {
+      "componentName": "Form",
+      "props": {
+        "colon": false,
+        "labelCol": {
+          "offset": 6
+        }
+      },
+      "x-controller": {
+        "id": "CF2PN88a",
+        "enable": true,
+        "name": "设置Form"
+      },
+      "slots": {},
+      "children": [
+        {
+          "componentName": "FormItem",
+          "props": {
+            "label": "地鼠数量"
+          },
+          "locked": false,
+          "x-field": {
+            "name": "count"
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "InputNumber",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "componentName": "FormItem",
+          "props": {
+            "label": "时间间隔"
+          },
+          "locked": false,
+          "x-field": {
+            "name": "interval"
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "InputNumber",
+              "slots": {},
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 
 export const defaultModules: { [device: string]: IModule[] | undefined } = {

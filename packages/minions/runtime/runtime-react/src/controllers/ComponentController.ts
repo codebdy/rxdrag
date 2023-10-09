@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { IForm, IField } from "@rxdrag/fieldy";
 import { IControllerMeta } from "../interfaces";
 import { IController, PropsListener, UnListener, PropListener, EventListener, CONTROLLER_EVENT_INIT, CONTROLLER_EVENT_DESTORY, EventsChangeListener, EventHandler } from "../interfaces/controller";
 
@@ -14,7 +15,7 @@ export class ComponentController implements IController {
 
   protected propsListeners: PropsListener[] = []
 
-  constructor(public meta: IControllerMeta) {
+  constructor(public meta: IControllerMeta, public fieldyNode?: IForm | IField) {
     this.id = meta.id
     this.name = meta.name
   }
@@ -49,6 +50,11 @@ export class ComponentController implements IController {
     return this.props[name]
   }
 
+  getProps(): object | undefined {
+    return this.props;
+  }
+
+
   subscribeToPropChange(name: string, listener: PropListener): UnListener {
     if (!this.propListeners[name]) {
       this.propListeners[name] = []
@@ -79,7 +85,7 @@ export class ComponentController implements IController {
   }
 
   emitEvhentHandlers = () => {
-    this.events  = {}
+    this.events = {}
     for (const name of Object.keys(this.eventListeners)) {
       this.events[name] = (...args: unknown[]) => {
         const listeners = this.eventListeners[name]

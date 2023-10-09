@@ -1,3 +1,4 @@
+import { IField, IForm } from "@rxdrag/fieldy";
 import { IVariable } from "@rxdrag/minions-schema";
 
 export const CONTROLLER_EVENT_INIT = "onInit";
@@ -24,6 +25,7 @@ export interface IVariableController {
 export interface IPropController {
   setProp(name: string, value: unknown): void
   getProp(name: string): unknown,
+  getProps(): object | undefined,
   subscribeToPropChange(name: string, listener: PropListener): UnListener
 }
 
@@ -31,6 +33,7 @@ export interface IPropController {
 export interface IController extends IPropController {
   id: string,
   name?: string,
+  fieldyNode?: IForm | IField
 
   events?: Record<string, EventHandler>,
 
@@ -43,6 +46,6 @@ export interface IController extends IPropController {
   destroy(): void,
 }
 
-export type ControllerReaction = (controller: IController, inputValue?: unknown) => void
+export type ControllerReaction = (controller: IController, inputValue?: unknown) => unknown
 
 
