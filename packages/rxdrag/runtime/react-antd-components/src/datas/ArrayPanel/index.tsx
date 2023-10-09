@@ -14,6 +14,7 @@ export const ArrayPanel = memo((props: ArrayPanelProps) => {
   const value = useFieldValue() as unknown[] | undefined
   const field = useField()
   const { schema, childrenSchema } = useArraySchema()
+
   useEffect(() => {
     if (dataSource) {
       if (isNum(dataSource)) {

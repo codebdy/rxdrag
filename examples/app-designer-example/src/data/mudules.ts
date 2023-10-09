@@ -372,7 +372,7 @@ const moleSetting = {
       "x-controller": {
         "id": "CF2PN88a",
         "enable": true,
-        "name": "设置Form"
+        "name": "表单"
       },
       "slots": {},
       "children": [
