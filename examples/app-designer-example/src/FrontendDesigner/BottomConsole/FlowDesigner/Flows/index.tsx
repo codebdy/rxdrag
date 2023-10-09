@@ -31,8 +31,6 @@ export const Flows = memo((
   const { flows } = useQueryModuleFlows(module?.id)
   const getListNodes = useGetListNodes()
 
-  console.log("====>flows", flows)
-
   const getOneNode = useCallback((listNode: ListNode): DataNode => {
     const children = listNode.children?.map(child => getOneNode(child))
     const ctrlMeta = listNode.node.meta?.["x-controller"]

@@ -2284,5 +2284,80 @@
         }
       ]
     }
+  },
+  {
+    "id": "-0TOKXqA",
+    "name": "测试fx1",
+    "scope": "app",
+    "ownerId": "app1",
+    "type": "fx",
+    "metas": {
+      "lines": [],
+      "nodes": [
+        {
+          "id": "fab96691-af97-48a8-b299-29454e80989e",
+          "label": "输出",
+          "type": "End",
+          "activityName": "end",
+          "inPorts": [],
+          "outPorts": [],
+          "config": {},
+          "x6Node": {
+            "x": 500,
+            "y": 150,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "id": "90c12fbe-be12-456e-9970-6dfc52c28186",
+          "label": "输入1",
+          "type": "Start",
+          "activityName": "start",
+          "inPorts": [],
+          "outPorts": [],
+          "config": {},
+          "x6Node": {
+            "x": 130,
+            "y": 120,
+            "width": 20,
+            "height": 20
+          },
+          "name": "input1"
+        },
+        {
+          "id": "9f435c05-4996-4683-b84e-2dd2aa1e3417",
+          "label": "输入2",
+          "type": "Start",
+          "activityName": "start",
+          "inPorts": [],
+          "outPorts": [],
+          "config": {},
+          "x6Node": {
+            "x": 120,
+            "y": 200,
+            "width": 20,
+            "height": 20
+          },
+          "name": "input2"
+        },
+        {
+          "id": "92fa8e21-f982-4e61-8a74-84ad2f38b4d7",
+          "label": "输出2",
+          "type": "End",
+          "activityName": "end",
+          "inPorts": [],
+          "outPorts": [],
+          "config": {},
+          "x6Node": {
+            "x": 510,
+            "y": 240,
+            "width": 20,
+            "height": 20
+          },
+          "name": "output2"
+        }
+      ]
+    }
   }
 ]
