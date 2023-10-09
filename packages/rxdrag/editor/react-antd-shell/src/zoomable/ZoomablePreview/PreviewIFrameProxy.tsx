@@ -1,4 +1,4 @@
-import { IDesignerEngine } from "@rxdrag/core";
+import { IDesignerEngine, MouseClickDriver, MouseMoveDriver, ShellPart } from "@rxdrag/core";
 import { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy";
@@ -32,6 +32,22 @@ export const PreviewIFrameProxy = memo((
   useEffect(() => {
     setEngine(window.engine)
   }, [])
+
+  useEffect(() => {
+    if (engine) {
+      const part = new ShellPart(
+        engine,
+        [
+          MouseClickDriver,
+          MouseMoveDriver,
+        ]
+      )
+
+      return () => {
+        part.destroy()
+      }
+    }
+  }, [engine])
 
   return (
     <Fieldy>
