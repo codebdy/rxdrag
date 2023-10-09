@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IControllerMeta } from "../interfaces";
-import { IController, EventHandlers, PropsListener, UnListener, PropListener, EventListener, CONTROLLER_EVENT_INIT, CONTROLLER_EVENT_DESTORY, EventsChangeListener } from "../interfaces/controller";
+import { IController, PropsListener, UnListener, PropListener, EventListener, CONTROLLER_EVENT_INIT, CONTROLLER_EVENT_DESTORY, EventsChangeListener, EventHandler } from "../interfaces/controller";
 
 export class ComponentController implements IController {
   id: string;
   name?: string;
   protected props: any = {};
+  events?: Record<string, EventHandler>
 
   protected propListeners: Record<string, PropListener[]> = {}
   protected eventListeners: Record<string, EventListener[]> = {}
@@ -78,9 +79,9 @@ export class ComponentController implements IController {
   }
 
   emitEvhentHandlers = () => {
-    const events: EventHandlers = {}
+    this.events  = {}
     for (const name of Object.keys(this.eventListeners)) {
-      events[name] = (...args: unknown[]) => {
+      this.events[name] = (...args: unknown[]) => {
         const listeners = this.eventListeners[name]
         for (const listener of listeners) {
           listener(args)
@@ -89,7 +90,7 @@ export class ComponentController implements IController {
     }
 
     for (const listener of this.eventHandlersListeners) {
-      listener(events)
+      listener(this.events)
     }
   }
 

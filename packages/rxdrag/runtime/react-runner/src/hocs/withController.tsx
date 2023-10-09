@@ -2,7 +2,7 @@
 import { ReactComponent } from "@rxdrag/react-shared"
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { ControllerContext } from "../contexts"
-import { EventHandlers, IController, IControllerMeta } from "@rxdrag/minions-runtime-react"
+import { EventHandler, IController, IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { useControllerEngine } from "../hooks/useControllerEngine"
 
 export function withController(WrappedComponent: ReactComponent, meta: IControllerMeta | undefined): ReactComponent {
@@ -12,7 +12,7 @@ export function withController(WrappedComponent: ReactComponent, meta: IControll
 
   return memo((props: any) => {
     const [changedProps, setChangeProps] = useState<any>()
-    const [events, setEvents] = useState<EventHandlers>()
+    const [events, setEvents] = useState<Record<string, EventHandler>>()
     const [controller, setController] = useState<IController>()
     const controllerEngine = useControllerEngine();
 
@@ -22,9 +22,13 @@ export function withController(WrappedComponent: ReactComponent, meta: IControll
       })
     }, [])
 
-    const handleEventsChange = useCallback((eventHandlers?: EventHandlers) => {
+    const handleEventsChange = useCallback((eventHandlers?: Record<string, EventHandler>) => {
       setEvents(eventHandlers)
     }, [])
+
+    useEffect(() => {
+      setEvents(controller?.events)
+    }, [controller?.events])
 
     useEffect(() => {
       if (meta?.enable && controllerEngine) {

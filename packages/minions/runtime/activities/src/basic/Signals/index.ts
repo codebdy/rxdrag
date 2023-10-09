@@ -42,7 +42,6 @@ export class Signals extends AbstractActivity<IIntervalConfig> {
 
   @Input(Signals.INPUT_NAME_INTERVAL)
   intervalHandler = (interval?: number) => {
-    console.log("====>interval", interval)
     this.interval = interval
   }
 

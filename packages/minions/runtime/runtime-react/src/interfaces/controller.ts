@@ -9,13 +9,10 @@ export type VariableListener = (value: unknown) => void
 export type PropListener = (value: unknown) => void
 export type PropsListener = (name: string, value: unknown) => void
 export type EventListener = (args?: unknown[]) => void
-export type EventsChangeListener = (eventHandlers?: EventHandlers) => void
+export type EventsChangeListener = (eventHandlers?: Record<string, EventHandler>) => void
 export type UnListener = () => void
 
 export type EventHandler = (args?: unknown[]) => void
-export type EventHandlers = {
-  [name: string]: EventHandler | undefined
-}
 
 export interface IVariableController {
   setMetas(variableMetas?: IVariable[]): void,
@@ -34,6 +31,8 @@ export interface IPropController {
 export interface IController extends IPropController {
   id: string,
   name?: string,
+
+  events?: Record<string, EventHandler>,
 
   initEvent: EventHandler,
   destroyEvent: EventHandler,
