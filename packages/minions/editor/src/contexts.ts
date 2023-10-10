@@ -1,7 +1,7 @@
 import { Graph } from "@antv/x6";
 import { createContext } from "react";
 import { EditorStore } from "./classes/EditorStore";
-import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
+import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { IThemeToken } from "./interfaces";
 
 export const notMethod = () => { throw new Error("Not implement method") }
@@ -15,10 +15,7 @@ export type MaterialsState = [IActivityMaterial[], React.Dispatch<React.SetState
 export const MaterialsContext = createContext<MaterialsState>([[], notMethod])
 export const ThemeTokenContext = createContext<IThemeToken>({})
 
-export interface IFxFlowMetas {
-  fxFlowMetas?: ILogicFlowDefine[]
-}
 //全局上下文，主要用于getSubTitle
-export const LogicFlowContext = createContext<IFxFlowMetas | undefined>(undefined)
+export const LogicFlowContext = createContext<unknown|undefined>(undefined)
 
 

@@ -1,13 +1,11 @@
-import { IPortDefine, INodeDefine, NodeType, ILogicFlowConfig } from "@rxdrag/minions-schema";
+import { IPortDefine, INodeDefine } from "@rxdrag/minions-schema";
 import { useCallback } from "react";
 import { useThemeToken } from "./useThemeToken";
-import { useGetLogicFlowNodePorts } from "./useGetLogicFlowNodePorts";
 import { useTranslate } from "@rxdrag/react-locales";
 
 export function useTransformPorts() {
   const token = useThemeToken()
   const t = useTranslate()
-  const getLogicFlowPorts = useGetLogicFlowNodePorts();
   const doTransform = useCallback((ports: IPortDefine[] | undefined, group: 'in' | 'out') => {
     return ports?.map(
       port => ({
@@ -46,19 +44,10 @@ export function useTransformPorts() {
   }, [t, token.colorTextSecondary])
 
   const transform = useCallback((meta: INodeDefine) => {
-    if (meta.type === NodeType.LogicFlowActivity) {
-      const ins = doTransform(getLogicFlowPorts(meta as INodeDefine<ILogicFlowConfig>, 'in'), 'in') || []
-      const outs = doTransform(getLogicFlowPorts(meta as INodeDefine<ILogicFlowConfig>, 'out'), 'out') || []
-      return [...ins, ...outs]
-    } else {
-      const ins = doTransform(meta.inPorts, 'in') || []
-      const outs = doTransform(meta.outPorts, 'out') || []
-      return [...ins, ...outs]
-    }
-    // const ins = doTransform(meta.inPorts, 'in') || []
-    // const outs = doTransform(meta.outPorts, 'out') || []
-    // return [...ins, ...outs]
-  }, [doTransform, getLogicFlowPorts])
+    const ins = doTransform(meta.inPorts, 'in') || []
+    const outs = doTransform(meta.outPorts, 'out') || []
+    return [...ins, ...outs]
+  }, [doTransform])
 
   return transform
 }

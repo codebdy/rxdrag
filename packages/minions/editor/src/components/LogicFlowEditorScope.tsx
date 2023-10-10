@@ -1,12 +1,12 @@
 import { ReactNode, memo, useEffect, useMemo, useState } from "react"
-import { GraphContext, IFxFlowMetas, LogicFlowContext, LogicFlowEditorStoreContext, MaterialsContext, ThemeTokenContext } from "../contexts";
+import { GraphContext, LogicFlowContext, LogicFlowEditorStoreContext, MaterialsContext, ThemeTokenContext } from "../contexts";
 import { EditorStore } from "../classes";
 import { ThemeProvider } from "styled-components";
 import { IThemeToken } from "../interfaces";
 import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { Graph } from "@antv/x6";
 
-export type LogicFlowEditorScopeProps<T extends IFxFlowMetas = IFxFlowMetas> = {
+export type LogicFlowEditorScopeProps<T = unknown> = {
   themMode?: "dark" | "light",
   token: IThemeToken,
   materials: IActivityMaterial<ReactNode>[],

@@ -25,7 +25,7 @@ export const FXes = memo((
   const { display, selected, moduleFxes, deviceFxes, appFxes, onSelect } = props;
   const frontend = useAppFrontend()
   const module = useModule()
-  
+
   const treeData: DataNode[] = useMemo(() => [
     {
       key: 'module',
@@ -38,7 +38,7 @@ export const FXes = memo((
       children: moduleFxes?.map(fx => {
         return ({
           key: fx.id,
-          title: <FxLabel fx={fx} />,
+          title: <FxLabel selected={selected} fx={fx} />,
           icon: <FunctionOutlined />,
         })
       }),
@@ -54,7 +54,7 @@ export const FXes = memo((
       children: deviceFxes?.map(fx => {
         return ({
           key: fx.id,
-          title: <FxLabel fx={fx} />,
+          title: <FxLabel selected={selected} fx={fx} />,
           icon: <FunctionOutlined />,
         })
       }),
@@ -70,12 +70,12 @@ export const FXes = memo((
       children: appFxes?.map(fx => {
         return ({
           key: fx.id,
-          title: <FxLabel fx={fx} />,
+          title: <FxLabel selected={selected} fx={fx} />,
           icon: <FunctionOutlined />,
         })
       }),
     },
-  ], [appFxes, deviceFxes, frontend?.app?.id, module?.id, moduleFxes]);
+  ], [appFxes, deviceFxes, frontend?.app?.id, module?.id, moduleFxes, selected]);
 
   const handleSelect: DirectoryTreeProps['onSelect'] = useCallback((keys: React.Key[]) => {
     onSelect?.((keys?.[0] as ID | undefined) || "")
