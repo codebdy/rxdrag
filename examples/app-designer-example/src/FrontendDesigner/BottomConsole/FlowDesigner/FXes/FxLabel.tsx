@@ -5,6 +5,11 @@ import { DeleteOutlined } from "@ant-design/icons"
 import { useRemoveFlow } from "../../../../hooks/useRemoveFlow"
 import { FlowPopover } from "../FlowPopover"
 import { IFlow } from "../../../../interfaces/flow"
+import { ActivityResource } from "@rxdrag/minions-logicflow-editor"
+import { useTransMaterial } from "@rxdrag/logicflow-editor-antd5";
+import { IActivityMaterial } from "@rxdrag/minions-schema"
+import { fxFlowMaterial } from "@rxdrag/minions-react-materials"
+import { DraggableText } from "../DraggableText";
 
 export const FxLabel = memo((props: {
   fx: IFlow,
@@ -12,6 +17,7 @@ export const FxLabel = memo((props: {
   const { fx } = props;
   const [open, setOpen] = useState<boolean>()
   const [remove, { loading }] = useRemoveFlow()
+  const t = useTransMaterial()
 
   const handleRemove = useCallback(() => {
     remove(fx.id)
@@ -23,10 +29,10 @@ export const FxLabel = memo((props: {
       action={
         <Space>
           <FlowPopover
-            title = "编辑子流"
+            title="编辑子流"
             scope={fx.scope}
             ownerId={fx.ownerId}
-            type = {fx.type}
+            type={fx.type}
             open={open}
             flow={fx}
             onOpenChange={setOpen}
@@ -41,7 +47,22 @@ export const FxLabel = memo((props: {
         </Space>
       }
     >
-      {fx.name}
+      <ActivityResource
+        material={t(fxFlowMaterial as IActivityMaterial<React.ReactNode>)}
+        config={
+          {
+            fxId: fx.id
+          }
+        }
+      >
+        {
+          (onStartDrag) => {
+            return <DraggableText onMouseDown={onStartDrag}>
+              {fx.name}
+            </DraggableText>
+          }
+        }
+      </ActivityResource>
     </TreeNodeLabel>
   )
 })

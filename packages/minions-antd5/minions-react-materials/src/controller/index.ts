@@ -9,6 +9,7 @@ export * from "./event"
 export * from "./listenProp"
 export * from "./reaction"
 export * from "./setProp"
+export * from "./fxFlow"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const controllerActivities: IRxDragActivityMaterial<any, any>[] = [

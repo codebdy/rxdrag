@@ -1,17 +1,16 @@
 import { ReactNode, memo, useEffect, useMemo, useState } from "react"
-import { FxFlowMetasContext, GraphContext, LogicFlowContext, LogicFlowEditorStoreContext, MaterialsContext, ThemeTokenContext } from "../contexts";
+import { GraphContext, IFxFlowMetas, LogicFlowContext, LogicFlowEditorStoreContext, MaterialsContext, ThemeTokenContext } from "../contexts";
 import { EditorStore } from "../classes";
 import { ThemeProvider } from "styled-components";
 import { IThemeToken } from "../interfaces";
-import { IActivityMaterial, ILogicFlowDefine } from "@rxdrag/minions-schema";
+import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { Graph } from "@antv/x6";
 
-export type LogicFlowEditorScopeProps<T = unknown> = {
+export type LogicFlowEditorScopeProps<T extends IFxFlowMetas = IFxFlowMetas> = {
   themMode?: "dark" | "light",
   token: IThemeToken,
   materials: IActivityMaterial<ReactNode>[],
   logicFlowContext?: T,
-  fxFlowMetas?: ILogicFlowDefine[],
   children?: React.ReactNode
 }
 
@@ -19,7 +18,7 @@ export type LogicFlowEditorScopeProps<T = unknown> = {
 export const LogicFlowEditorScope = memo((
   props: LogicFlowEditorScopeProps,
 ) => {
-  const { themMode, token, materials, logicFlowContext, fxFlowMetas, children } = props;
+  const { themMode, token, materials, logicFlowContext, children } = props;
   const graphState = useState<Graph>()
   const materialsState = useState<IActivityMaterial[]>([])
   const [, setMaterials] = materialsState
@@ -48,11 +47,9 @@ export const LogicFlowEditorScope = memo((
         <ThemeTokenContext.Provider value={token}>
           <LogicFlowContext.Provider value={logicFlowContext}>
             <MaterialsContext.Provider value={materialsState}>
-              <FxFlowMetasContext.Provider value={fxFlowMetas || []}>
-                <GraphContext.Provider value={graphState}>
-                  {children}
-                </GraphContext.Provider>
-              </FxFlowMetasContext.Provider>
+              <GraphContext.Provider value={graphState}>
+                {children}
+              </GraphContext.Provider>
             </MaterialsContext.Provider>
           </LogicFlowContext.Provider>
         </ThemeTokenContext.Provider>

@@ -15,8 +15,10 @@ export type MaterialsState = [IActivityMaterial[], React.Dispatch<React.SetState
 export const MaterialsContext = createContext<MaterialsState>([[], notMethod])
 export const ThemeTokenContext = createContext<IThemeToken>({})
 
+export interface IFxFlowMetas {
+  fxFlowMetas?: ILogicFlowDefine[]
+}
 //全局上下文，主要用于getSubTitle
-export const LogicFlowContext = createContext<unknown>(undefined)
-//所有可以被引用的编排
-export const FxFlowMetasContext = createContext<ILogicFlowDefine[]>([])
+export const LogicFlowContext = createContext<IFxFlowMetas | undefined>(undefined)
+
 

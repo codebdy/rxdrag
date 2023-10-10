@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { FxFlowMetasContext } from "../contexts";
+import { LogicFlowContext } from "../contexts";
 
 export function useFxFlowMetas() {
-  return useContext(FxFlowMetasContext)
+  return useContext(LogicFlowContext)?.fxFlowMetas
 }

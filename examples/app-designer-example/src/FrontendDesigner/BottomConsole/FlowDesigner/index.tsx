@@ -18,12 +18,11 @@ import { FlowEditor } from "./FlowEditor"
 import { Variables } from "./Variables"
 import { useModule } from "../../hooks/useModule"
 import { useQueryFlow } from "../../../hooks/useQueryFlow"
-import { controllerActivities, arrayActivities, variableActivities, activityMaterialLocales, activityMaterialCategories, LogicflowContextParam } from "@rxdrag/minions-react-materials"
+import { controllerActivities, arrayActivities, variableActivities, activityMaterialLocales, activityMaterialCategories, LogicflowContextParam, fxFlowMaterial } from "@rxdrag/minions-react-materials"
 import { useAppFrontend } from "../../../hooks/useAppFrontend"
 import { useQueryFlows } from "../../../hooks/useQueryFlows"
 import { LogicType, FxScope } from "../../../interfaces/flow"
 import { variableIcon } from "@rxdrag/react-shared"
-
 
 const Content = styled.div`
   flex: 1;
@@ -61,7 +60,7 @@ export const FlowDesigner = memo(() => {
 
   const materials = useMemo(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const materials: IActivityMaterial<ReactNode>[] = [...(controllerActivities as any), ...arrayActivities, ...variableActivities]
+    const materials: IActivityMaterial<ReactNode>[] = [...(controllerActivities as any), ...arrayActivities, ...variableActivities, fxFlowMaterial]
     return materials.concat(...activityMaterialCategories.map(category => category.materials))
   }, [])
 
@@ -101,8 +100,9 @@ export const FlowDesigner = memo(() => {
 
   const logicFlowContextParam: LogicflowContextParam = useMemo(() => ({
     engine,
-    variables: module?.variables
-  }), [engine, module?.variables])
+    variables: module?.variables,
+    fxFlowMetas: allFxFlows,
+  }), [allFxFlows, engine, module?.variables])
 
   return (
     <LogicFlowEditorAntd5Scope
@@ -111,7 +111,6 @@ export const FlowDesigner = memo(() => {
       materials={materials}
       locales={activityMaterialLocales}
       logicFlowContext={logicFlowContextParam}
-      fxFlowMetas={allFxFlows}
     >
       <Container>
         <LeftNav>
