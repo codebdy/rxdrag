@@ -4,7 +4,7 @@ import { createId } from "@rxdrag/shared";
 import { IControllerMeta, IPropConfig, SetProp } from "@rxdrag/minions-runtime-react";
 import { IRxDragActivityMaterial, LogicflowContextParam } from "../../interfaces";
 import { getControllerComponentInfo } from "../utils";
-import { setPropIcon } from "../../icons";
+import { setPropIcon } from "@rxdrag/react-shared";
 
 export const setPropMaterial: IRxDragActivityMaterial<IPropConfig, LogicflowContextParam> = {
   label: "$setProp",

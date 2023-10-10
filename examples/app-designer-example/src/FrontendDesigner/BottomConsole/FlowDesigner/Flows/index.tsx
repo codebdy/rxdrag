@@ -10,10 +10,10 @@ import { ID } from "@rxdrag/shared";
 import { useGetListNodes } from "./useGetListNodes";
 import { ListNode } from "./ListNode";
 import { useQueryModuleFlows } from "../../../../hooks/useQueryModuleFlows";
-import { puzzleIcon } from "../../icons";
 import { SvgIcon } from "@rxdrag/react-antd-shell";
 import { useDesignerEngine } from "@rxdrag/react-core";
 import { ListNodeLabel } from "./ListNodeLabel";
+import { puzzleIcon } from "@rxdrag/react-shared";
 
 const { DirectoryTree } = Tree;
 

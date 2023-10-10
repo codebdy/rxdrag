@@ -4,7 +4,8 @@ import { IActivityMaterial } from "@rxdrag/minions-schema"
 import { createId } from "@rxdrag/shared"
 import { ReactionableNode } from "."
 import { DraggableText } from "../DraggableText"
-import { setPropMaterial, methodIcon } from "@rxdrag/minions-react-materials"
+import { setPropMaterial } from "@rxdrag/minions-react-materials"
+import { methodIcon } from "@rxdrag/react-shared"
 
 export function getSetPropsNode(rNode: ReactionableNode) {
   const ctrlMeta = rNode.node.meta?.["x-controller"]

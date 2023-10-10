@@ -2,9 +2,9 @@ import { createId } from "@rxdrag/shared";
 import { increaseSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
 import { IIncreaseConfig, Increase } from "@rxdrag/minions-activities";
-import { increaseIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
+import { increaseIcon } from "@rxdrag/react-shared";
 
 export const increaseMaterial: IRxDragActivityMaterial<IIncreaseConfig> = {
   icon: increaseIcon,

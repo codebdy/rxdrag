@@ -3,8 +3,8 @@ import { constValueSchema } from "./schema";
 import { ReactNode } from "react";
 import { NodeType, IActivityMaterial } from "@rxdrag/minions-schema";
 import { ConstValue } from "@rxdrag/minions-activities";
-import { fixedValueIcon } from "../../icons";
 import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
+import { fixedValueIcon } from "@rxdrag/react-shared";
 
 export const constValueMaterial: IActivityMaterial<ReactNode> = {
   activityName: ConstValue.NAME,

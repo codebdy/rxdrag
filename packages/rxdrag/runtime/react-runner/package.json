@@ -39,7 +39,6 @@
     "@rxdrag/minions-schema": "workspace:*",
     "@rxdrag/react-fieldy": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
-    "@rxdrag/fieldy-minions-activities": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",

@@ -8,14 +8,12 @@ import {
   LeftNavWidget,
   OutlineWidget,
   ThemeButton,
-  componentsIcon,
-  historyIcon,
-  outlineIcon,
 } from "@rxdrag/react-antd-shell"
 import { SaveButton } from "./widgets/SaveButton"
 import { PagesWidget } from "./PagesWidget"
 import { pages } from "./data"
 import { Logo, MenuButton, ResourceWidget, materials, setterLocales } from "example-common"
+import { componentsIcon, outlineIcon, historyIcon } from "@rxdrag/react-shared"
 
 export enum LeftNavType {
   pages = "pages",

@@ -1,2 +1,5 @@
 export * from "./types"
+export * from "./minion-icons"
+export * from "./shell-icons"
+export * from "./svgs"
 

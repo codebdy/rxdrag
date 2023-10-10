@@ -2,9 +2,9 @@ import { createId } from "@rxdrag/shared";
 import { schema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
 import { IIncreaseConfig, Negation } from "@rxdrag/minions-activities";
-import { negationIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
+import { negationIcon } from "@rxdrag/react-shared";
 
 export const negationMaterial: IRxDragActivityMaterial<IIncreaseConfig> = {
   icon: negationIcon,

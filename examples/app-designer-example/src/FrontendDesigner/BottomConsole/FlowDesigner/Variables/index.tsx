@@ -3,14 +3,14 @@ import { DataNode } from "antd/es/tree";
 import { memo, useMemo } from "react"
 import { useModule } from "../../../hooks/useModule";
 import { TreeContainer } from "../../common/TreeContainer";
-import { variableIcon, setPropIcon, listenPropIcon } from "../../icons";
 import { RootVarsLabel } from "./RootVarsLabel";
 import { VariableLabel } from "./VariableLabel";
 import { ActivityResource } from "@rxdrag/minions-logicflow-editor";
 import { IActivityMaterial } from "@rxdrag/minions-schema";
 import { createId } from "@rxdrag/shared";
 import { DraggableText } from "../DraggableText";
-import { listenVariableMaterial, readPropIcon, readVariableMaterial, setVariableMaterial } from "@rxdrag/minions-react-materials";
+import { listenVariableMaterial, readVariableMaterial, setVariableMaterial } from "@rxdrag/minions-react-materials";
+import { listenPropIcon, readPropIcon, setPropIcon, variableIcon } from "@rxdrag/react-shared";
 
 
 const { DirectoryTree } = Tree;

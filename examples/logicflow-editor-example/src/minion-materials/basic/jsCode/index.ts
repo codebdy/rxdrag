@@ -1,8 +1,8 @@
 import { createId } from "@rxdrag/shared";
 import { jsCodeSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
-import { jsIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
+import { jsIcon } from "@rxdrag/react-shared";
 
 export const jsCodeMaterial: IRxDragActivityMaterial = {
   icon: jsIcon,

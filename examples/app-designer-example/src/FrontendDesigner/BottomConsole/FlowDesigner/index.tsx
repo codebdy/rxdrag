@@ -15,12 +15,14 @@ import { ComponentTree } from "./ComponentTree"
 import { ID } from "@rxdrag/shared"
 import { NavButton } from "../common/NavButton"
 import { FlowEditor } from "./FlowEditor"
-import { variableIcon } from "../icons"
 import { Variables } from "./Variables"
 import { useModule } from "../../hooks/useModule"
 import { useQueryFlow } from "../../../hooks/useQueryFlow"
-import { controllerActivities, arrayActivities, variableActivities, activityMaterialLocales, activityMaterialCategories } from "@rxdrag/minions-react-materials"
-import { LogicflowContextParam } from "@rxdrag/minions-react-materials/src/interfaces"
+import { controllerActivities, arrayActivities, variableActivities, activityMaterialLocales, activityMaterialCategories, LogicflowContextParam } from "@rxdrag/minions-react-materials"
+import { useAppFrontend } from "../../../hooks/useAppFrontend"
+import { useQueryFlows } from "../../../hooks/useQueryFlows"
+import { LogicType, FxScope } from "../../../interfaces/flow"
+import { variableIcon } from "@rxdrag/react-shared"
 
 
 const Content = styled.div`
@@ -46,8 +48,16 @@ export const FlowDesigner = memo(() => {
   const { token } = theme.useToken()
   const themMode = useThemeMode()
   const module = useModule()
+  const frontend = useAppFrontend()
 
+  const { flows: moduleFxes } = useQueryFlows(module?.id, LogicType.fx, FxScope.module)
+  const { flows: deviceFxes } = useQueryFlows(frontend?.app?.id, LogicType.fx, FxScope.device)
+  const { flows: appFxes } = useQueryFlows(frontend?.app?.id, LogicType.fx, FxScope.app)
   console.log("===>module", module)
+
+  const allFxFlows = useMemo(() => [...moduleFxes || [], ...deviceFxes || [], ...appFxes || []],
+    [appFxes, deviceFxes, moduleFxes]
+  )
 
   const materials = useMemo(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -101,6 +111,7 @@ export const FlowDesigner = memo(() => {
       materials={materials}
       locales={activityMaterialLocales}
       logicFlowContext={logicFlowContextParam}
+      fxFlowMetas={allFxFlows}
     >
       <Container>
         <LeftNav>
@@ -212,6 +223,9 @@ export const FlowDesigner = memo(() => {
           />
           <FXes
             display={navType === NavType.fxes}
+            moduleFxes={moduleFxes}
+            deviceFxes={deviceFxes}
+            appFxes={appFxes}
             selected={selectedFx}
             onSelect={handleSelectFx}
           />

@@ -3,9 +3,9 @@ import { createId } from "@rxdrag/shared";
 import { randomSchema } from "./schema";
 import { IRandomConfig, Random } from "@rxdrag/minions-activities";
 import { NodeType } from "@rxdrag/minions-schema";
-import { randomIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
+import { randomIcon } from "@rxdrag/react-shared";
 
 export const randomMaterial: IRxDragActivityMaterial<IRandomConfig> = {
   icon: randomIcon,

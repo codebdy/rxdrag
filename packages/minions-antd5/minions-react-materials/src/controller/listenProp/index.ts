@@ -4,7 +4,7 @@ import { IControllerMeta, IPropConfig, ListenProp } from "@rxdrag/minions-runtim
 import { IRxDragActivityMaterial, LogicflowContextParam } from "../../interfaces";
 import { propSchema } from "../setProp/schema";
 import { getControllerComponentInfo } from "../utils";
-import { listenPropIcon } from "../../icons";
+import { listenPropIcon } from "@rxdrag/react-shared";
 
 export const listenPropMaterial: IRxDragActivityMaterial<IPropConfig, LogicflowContextParam> = {
   label: "$listenProp",

@@ -6,7 +6,6 @@ import { useModule } from "../../../hooks/useModule";
 import { IMaterial, useDesignerEngine } from "@rxdrag/react-core";
 import { ITreeNode } from "@rxdrag/core"
 import { IControllerMeta } from "@rxdrag/minions-runtime-react";
-import { puzzleIcon } from "../../icons";
 import { SvgIcon } from "@rxdrag/react-antd-shell";
 import { IFlow } from "../../../../interfaces/flow";
 import { IFieldMeta } from "@rxdrag/fieldy";
@@ -16,6 +15,7 @@ import { getListenPropNode } from "./getListenPropNode";
 import { getEventNodes } from "./getEventNodes";
 import { getReactionNodes } from "./getReactionNodes";
 import { useGetArrayNodes } from "./getArrayNodes";
+import { puzzleIcon } from "@rxdrag/react-shared";
 
 const { DirectoryTree } = Tree;
 

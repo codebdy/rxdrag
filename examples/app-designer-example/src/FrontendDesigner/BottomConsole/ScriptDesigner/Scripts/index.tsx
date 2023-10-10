@@ -11,9 +11,9 @@ import { useQueryModuleScripts } from "../../../../hooks/useQueryModuleScripts";
 import { ListNode } from "../../FlowDesigner/Flows/ListNode";
 import { useGetListNodes } from "../../FlowDesigner/Flows/useGetListNodes";
 import { SvgIcon } from "@rxdrag/react-antd-shell";
-import { puzzleIcon } from "../../icons";
 import { ListNodeLabel } from "./ListNodeLabel";
 import { useDesignerEngine } from "@rxdrag/react-core";
+import { puzzleIcon } from "@rxdrag/react-shared";
 
 const { DirectoryTree } = Tree;
 

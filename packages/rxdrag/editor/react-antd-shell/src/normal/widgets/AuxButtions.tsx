@@ -2,8 +2,8 @@ import { useDesignerEngine, useDocument, useSettersTranslate } from "@rxdrag/rea
 import { Button, Space, Tooltip } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import { SvgIcon } from "../../common/SvgIcon"
-import { lineIcon, marginIcon } from "../../icons"
 import { MARGIN_DECORATOR_NAME, LINE_DECORTOR_NAME, LineDecorator, MarginDecorator } from "@rxdrag/core"
+import { lineIcon, marginIcon } from "@rxdrag/react-shared"
 
 export const AuxButtions = memo(() => {
   const [margin, setMarin] = useState(false);

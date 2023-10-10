@@ -3,7 +3,7 @@ import { NodeType } from "@rxdrag/minions-schema"
 import { IControllerConfig, IControllerMeta, ReadIndex } from "@rxdrag/minions-runtime-react"
 import { IRxDragActivityMaterial, LogicflowContextParam } from "../../interfaces"
 import { getControllerComponentInfo } from "../../controller/utils"
-import { numIcon } from "../../icons"
+import { numIcon } from "@rxdrag/react-shared"
 
 export const readIndexMaterial: IRxDragActivityMaterial<IControllerConfig, LogicflowContextParam> = {
   label: "$readCurrentIndex",

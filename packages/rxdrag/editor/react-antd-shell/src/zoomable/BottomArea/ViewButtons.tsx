@@ -2,10 +2,10 @@ import { useSettersTranslate } from "@rxdrag/react-core"
 import { Button, Space, Tooltip } from "antd"
 import { memo, useCallback } from "react"
 import { SvgIcon } from "../../common"
-import { designIcon } from "../../icons"
 import { PlayCircleOutlined } from "@ant-design/icons"
 import { JsonCodeDialog } from "./JsonCodeDialog"
 import { usePreviewState } from "../contexts"
+import { designIcon } from "@rxdrag/react-shared"
 
 export const ViewButtons = memo(() => {
   const [preview, setPreview] = usePreviewState()

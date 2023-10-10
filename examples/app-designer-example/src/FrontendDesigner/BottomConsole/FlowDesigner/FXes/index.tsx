@@ -5,11 +5,10 @@ import { TreeContainer } from "../../common/TreeContainer";
 import { FunctionOutlined } from "@ant-design/icons";
 import { RootLabel } from "./RootLabel";
 import { useAppFrontend } from "../../../../hooks/useAppFrontend";
-import { useQueryFlows } from "../../../../hooks/useQueryFlows";
-import { FxScope, LogicType } from "../../../../interfaces/flow";
-import { useModule } from "../../../hooks/useModule";
+import { FxScope, IFlow } from "../../../../interfaces/flow";
 import { FxLabel } from "./FxLabel";
 import { ID } from "@rxdrag/shared";
+import { useModule } from "../../../hooks/useModule";
 
 const { DirectoryTree } = Tree;
 
@@ -18,16 +17,15 @@ export const FXes = memo((
     display?: boolean,
     selected?: ID,
     onSelect: (id: ID) => void,
+    moduleFxes?: IFlow[],
+    deviceFxes?: IFlow[],
+    appFxes?: IFlow[],
   }
 ) => {
-  const { display, selected, onSelect } = props;
+  const { display, selected, moduleFxes, deviceFxes, appFxes, onSelect } = props;
   const frontend = useAppFrontend()
   const module = useModule()
-
-  const { flows: moduleFxes } = useQueryFlows(module?.id, LogicType.fx, FxScope.module)
-  const { flows: deviceFxes } = useQueryFlows(frontend?.app?.id, LogicType.fx, FxScope.device)
-  const { flows: appFxes } = useQueryFlows(frontend?.app?.id, LogicType.fx, FxScope.app)
-
+  
   const treeData: DataNode[] = useMemo(() => [
     {
       key: 'module',

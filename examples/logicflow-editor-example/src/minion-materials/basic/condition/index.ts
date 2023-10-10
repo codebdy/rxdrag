@@ -2,7 +2,7 @@ import { createId } from "@rxdrag/shared";
 import { conditionSchema } from "./schema";
 import { ReactNode } from "react";
 import { NodeType, IActivityMaterial } from "@rxdrag/minions-schema";
-import { ifIcon } from "../../icons";
+import { ifIcon } from "@rxdrag/react-shared";
 
 export const conditionMaterial: IActivityMaterial<ReactNode> = {
   icon: ifIcon,

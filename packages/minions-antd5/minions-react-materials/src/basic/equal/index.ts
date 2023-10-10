@@ -2,7 +2,7 @@ import { createId } from "@rxdrag/shared";
 import { ReactNode } from "react";
 import { NodeType, IActivityMaterial } from "@rxdrag/minions-schema";
 import { Equal } from "@rxdrag/minions-activities";
-import { eqIcon } from "../../icons";
+import { eqIcon } from "@rxdrag/react-shared";
 
 export const equalMaterial: IActivityMaterial<ReactNode> = {
   icon: eqIcon,

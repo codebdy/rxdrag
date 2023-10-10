@@ -3,9 +3,9 @@ import { createId } from "@rxdrag/shared";
 import { debugSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
 import { DebugActivity, IDebugConfig } from "@rxdrag/minions-activities"
-import { debugIcon } from "../../icons";
 import { DEFAULT_INPUT_NAME } from "@rxdrag/minions-runtime";
 import { IRxDragActivityMaterial } from "../../interfaces";
+import { debugIcon } from "@rxdrag/react-shared";
 
 export const debugMaterial: IRxDragActivityMaterial<IDebugConfig> = {
   activityName: DebugActivity.NAME,

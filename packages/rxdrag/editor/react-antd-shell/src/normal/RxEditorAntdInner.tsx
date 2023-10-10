@@ -17,12 +17,12 @@ import { INodeSchema } from "@rxdrag/schema"
 import { Workbench } from "./panels"
 import { ILocales } from "@rxdrag/locales"
 import { useDesignerEngine, useThemeMode } from "@rxdrag/react-core"
-import { componentsIcon, outlineIcon, historyIcon } from "../icons"
 import { commonLocales } from "../locales"
 import { settingLocales, SettingsForm } from "../common"
 import styled from "styled-components"
 import classNames from "classnames"
 import { createId } from "@rxdrag/shared"
+import { componentsIcon, outlineIcon, historyIcon } from "@rxdrag/react-shared"
 
 const Container = styled.div`
   width: 100%;

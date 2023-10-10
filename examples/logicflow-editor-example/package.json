@@ -41,6 +41,8 @@
     "@rxdrag/react-fieldy": "workspace:*",
     "@rxdrag/logicflow-editor-antd5": "workspace:*",
     "@rxdrag/shared": "workspace:*",
+    "@rxdrag/schema": "workspace:*",
+    "@rxdrag/react-shared": "workspace:*",
     "example-common": "workspace:*",
     "antd": "^5.9.2",
     "classnames": "^2.3.2",

@@ -1,8 +1,8 @@
 import { Button } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
-import { marginIcon } from "../../icons"
 import { MARGIN_DECORATOR_NAME, MarginDecorator } from "@rxdrag/core";
 import { useDesignerEngine, useDocument } from "@rxdrag/react-core";
+import { marginIcon } from "@rxdrag/react-shared";
 
 export const AuxMarginButton = memo(() => {
   const [margin, setMarin] = useState(false);

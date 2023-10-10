@@ -8,7 +8,6 @@ import { mergeMaterial } from "./merge";
 import { randomMaterial } from "./random";
 import { IActivityMaterial, NodeType } from "@rxdrag/minions-schema";
 import { INodeSchema } from "@rxdrag/schema";
-import { endIcon, startIcon } from "../icons";
 import { splitArrayMaterial } from "./SplitArray";
 import { splitObjectMaterial } from "./SplitObject";
 import { sumArrayMaterial } from "./sumArray";
@@ -16,6 +15,7 @@ import { collectToArrayMaterial } from "./collectToArray";
 import { equalMaterial } from "./equal";
 import { increaseMaterial } from "./increase";
 import { negationMaterial } from "./negation";
+import { startIcon, endIcon } from "@rxdrag/react-shared";
 
 export const startEndSchema: INodeSchema = {
   componentName: "Fragment",

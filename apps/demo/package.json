@@ -11,7 +11,6 @@
   "dependencies": {
     "@ant-design/icons": "^5.1.0",
     "@rxdrag/core": "workspace:*",
-    "@rxdrag/fieldy-minions-materials": "workspace:*",
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/minions-react-materials": "workspace:*",
