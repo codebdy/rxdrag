@@ -28,6 +28,7 @@ export function useSaveScript(options?: {
       trigger(EVENT_DATA_CHANGED, Entities.Script)
       setLoading(false)
       setScript(script)
+      console.log("===>allScripts", allScripts)
       options?.onComplate?.()
     }, 300)
 

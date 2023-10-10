@@ -1876,52 +1876,6 @@
           }
         },
         {
-          "id": "08d94ecc-9d96-48f5-940e-12b3a75be714",
-          "label": "调试",
-          "type": "Activity",
-          "activityName": "system.debug",
-          "inPorts": [
-            {
-              "id": "GGKwYaLw",
-              "name": "input",
-              "label": ""
-            }
-          ],
-          "outPorts": [],
-          "config": {
-            "tip": "输出2"
-          },
-          "x6Node": {
-            "x": 450,
-            "y": -60,
-            "width": 88,
-            "height": 32
-          }
-        },
-        {
-          "id": "ecb25468-defb-4760-8dde-ab90f6a62c23",
-          "label": "调试",
-          "type": "Activity",
-          "activityName": "system.debug",
-          "inPorts": [
-            {
-              "id": "GGKwYaLw",
-              "name": "input",
-              "label": ""
-            }
-          ],
-          "outPorts": [],
-          "config": {
-            "tip": "输出1"
-          },
-          "x6Node": {
-            "x": 450,
-            "y": -120,
-            "width": 88,
-            "height": 32
-          }
-        },
-        {
           "id": "240ac88a-4db5-44e8-925f-6e9ff2dba424",
           "label": "活跃地鼠",
           "type": "Activity",
@@ -1979,6 +1933,52 @@
             "x": 260,
             "y": -90,
             "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "ecb25468-defb-4760-8dde-ab90f6a62c23",
+          "label": "调试",
+          "type": "Activity",
+          "activityName": "system.debug",
+          "inPorts": [
+            {
+              "id": "GGKwYaLw",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [],
+          "config": {
+            "tip": "子流程输出1"
+          },
+          "x6Node": {
+            "x": 450,
+            "y": -120,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "08d94ecc-9d96-48f5-940e-12b3a75be714",
+          "label": "调试",
+          "type": "Activity",
+          "activityName": "system.debug",
+          "inPorts": [
+            {
+              "id": "GGKwYaLw",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [],
+          "config": {
+            "tip": "子流程s输出2"
+          },
+          "x6Node": {
+            "x": 450,
+            "y": -60,
+            "width": 88,
             "height": 32
           }
         }

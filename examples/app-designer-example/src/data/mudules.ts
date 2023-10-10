@@ -1,6 +1,8 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { IModule, IModuleCategory } from "../interfaces/module";
 import { DeviceType } from "../interfaces";
+import mole from "./molepage.json"
+import moleSetting from "./molesettings.json"
 
 const rootNodeSchema: INodeSchema = {
   componentName: "Page"
@@ -98,324 +100,6 @@ const userList = {
   ]
 }
 
-const mole = {
-  "componentName": "Page",
-  "x-controller": {
-    "id": "PAG2t2Ur",
-    "enable": true,
-    "name": "页面"
-  },
-  "slots": {},
-  "children": [
-    {
-      "componentName": "Row",
-      "props": {
-        "gutter": 6,
-        "style": {
-          "marginTop": "16px",
-          "marginRight": "16px",
-          "marginBottom": "16px",
-          "marginLeft": "16px",
-          "paddingTop": "16px",
-          "paddingRight": "16px",
-          "paddingBottom": "16px",
-          "paddingLeft": "16px"
-        }
-      },
-      "slots": {},
-      "children": [
-        {
-          "componentName": "ArrayPanel",
-          "x-field": {
-            "type": "array",
-            "name": "container"
-          },
-          "x-controller": {
-            "id": "KiE-KrsA",
-            "enable": true,
-            "name": "数组容器"
-          },
-          "slots": {},
-          "children": [
-            {
-              "componentName": "Col",
-              "props": {
-                "span": 4,
-                "style": {
-                  "paddingTop": "16px",
-                  "paddingBottom": "16px"
-                }
-              },
-              "slots": {},
-              "children": [
-                {
-                  "componentName": "Button",
-                  "props": {
-                    "type": "primary",
-                    "title": "地鼠",
-                    "shape": "circle",
-                    "size": "large",
-                    "style": {
-                      "width": "80px",
-                      "height": "80px"
-                    }
-                  },
-                  "x-controller": {
-                    "id": "NpLxKVZs",
-                    "enable": true,
-                    "name": "地鼠"
-                  },
-                  "slots": {},
-                  "children": []
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "componentName": "Row",
-      "props": {
-        "style": {
-          "marginLeft": "16px",
-          "marginRight": "16px",
-          "paddingRight": "16px",
-          "paddingLeft": "16px"
-        }
-      },
-      "slots": {},
-      "children": [
-        {
-          "componentName": "Col",
-          "props": {
-            "span": 6
-          },
-          "slots": {},
-          "children": [
-            {
-              "componentName": "Space",
-              "props": {},
-              "selfRender": true,
-              "slots": {},
-              "children": [
-                {
-                  "componentName": "Button",
-                  "props": {
-                    "type": "primary",
-                    "title": "开始",
-                    "size": "large"
-                  },
-                  "x-controller": {
-                    "id": "uQPenUqJ",
-                    "enable": true,
-                    "name": "开始按钮"
-                  },
-                  "slots": {},
-                  "children": []
-                },
-                {
-                  "componentName": "Button",
-                  "props": {
-                    "type": "default",
-                    "title": "结束",
-                    "size": "large"
-                  },
-                  "x-controller": {
-                    "id": "-V60Mne6",
-                    "enable": true,
-                    "name": "结束按钮"
-                  },
-                  "slots": {},
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "componentName": "Col",
-          "props": {
-            "span": 6
-          },
-          "slots": {},
-          "children": [
-            {
-              "componentName": "Text",
-              "props": {
-                "value": "分数："
-              },
-              "slots": {},
-              "children": []
-            },
-            {
-              "componentName": "Text",
-              "props": {
-                "value": "-"
-              },
-              "x-controller": {
-                "id": "g1rEXDcH",
-                "enable": true,
-                "name": "分数"
-              },
-              "slots": {},
-              "children": []
-            }
-          ]
-        },
-        {
-          "componentName": "Col",
-          "props": {
-            "span": 6
-          },
-          "slots": {},
-          "children": [
-            {
-              "componentName": "Button",
-              "props": {
-                "type": "primary",
-                "title": "设置",
-                "size": "large"
-              },
-              "x-controller": {
-                "id": "FfF5nHpb",
-                "enable": true,
-                "name": "设置按钮"
-              },
-              "slots": {
-                "icon": {
-                  "componentName": "IconView",
-                  "props": {
-                    "icon": {
-                      "iconKey": "SettingOutlined"
-                    }
-                  },
-                  "slots": {},
-                  "children": []
-                }
-              },
-              "children": []
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-
-const moleSetting = {
-  "componentName": "Dialog",
-  "x-controller": {
-    "id": "eu2MFGfi",
-    "enable": true,
-    "name": "设置对话框"
-  },
-  "slots": {
-    "title": {
-      "componentName": "DialogTitle",
-      "slots": {},
-      "children": [
-        {
-          "componentName": "Text",
-          "props": {
-            "value": "游戏设置"
-          },
-          "slots": {},
-          "children": []
-        }
-      ]
-    },
-    "footer": {
-      "componentName": "DialogFooter",
-      "slots": {},
-      "children": [
-        {
-          "componentName": "Button",
-          "props": {
-            "type": "default",
-            "title": "取消"
-          },
-          "x-controller": {
-            "id": "OfONgEFW",
-            "enable": true,
-            "name": "取消按钮"
-          },
-          "slots": {},
-          "children": []
-        },
-        {
-          "componentName": "Button",
-          "props": {
-            "type": "primary",
-            "title": "确认"
-          },
-          "x-controller": {
-            "id": "sghItTwt",
-            "enable": true,
-            "name": "确认按钮"
-          },
-          "slots": {},
-          "children": []
-        }
-      ]
-    }
-  },
-  "children": [
-    {
-      "componentName": "Form",
-      "props": {
-        "colon": false,
-        "labelCol": {
-          "offset": 6
-        }
-      },
-      "x-controller": {
-        "id": "CF2PN88a",
-        "enable": true,
-        "name": "表单"
-      },
-      "slots": {},
-      "children": [
-        {
-          "componentName": "FormItem",
-          "props": {
-            "label": "地鼠数量"
-          },
-          "locked": false,
-          "x-field": {
-            "name": "count"
-          },
-          "slots": {},
-          "children": [
-            {
-              "componentName": "InputNumber",
-              "slots": {},
-              "children": []
-            }
-          ]
-        },
-        {
-          "componentName": "FormItem",
-          "props": {
-            "label": "时间间隔"
-          },
-          "locked": false,
-          "x-field": {
-            "name": "interval"
-          },
-          "slots": {},
-          "children": [
-            {
-              "componentName": "InputNumber",
-              "slots": {},
-              "children": []
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
 
 export const defaultModules: { [device: string]: IModule[] | undefined } = {
   [DeviceType.admin]: [
@@ -477,6 +161,22 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
           "defaultValue": false
         }
       ]
+    },
+    {
+      id: "mole-script",
+      title: "打地鼠(脚本)",
+      views: [
+        {
+          id: "main-page",
+          title: "主页面",
+          schema: mole,
+        },
+        {
+          id: "settings-diaglog",
+          title: "游戏设置",
+          schema: moleSetting,
+        }
+      ],
     },
     {
       id: "suppliers",
@@ -581,6 +281,10 @@ export const defaultModuleCategories: { [device: string]: IModuleCategory[] | un
           id: "mole",
           title: "打地鼠",
         },
+        {
+          id: "mole-script",
+          title: "打地鼠(脚本)",
+        }
       ]
     },
     {

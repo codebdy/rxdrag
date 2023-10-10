@@ -1,0 +1,10 @@
+[
+  {
+      "id": "a6t5H0f5",
+      "name": "主流程",
+      "ownerId": "mole-script",
+      "moduleId": "mole-script",
+      "type": "normal",
+      "code": "//打地鼠主流程 \r\ngetComponent(\"开始按钮\").onClick=()=>{\r\n    \r\n}"
+  }
+]
