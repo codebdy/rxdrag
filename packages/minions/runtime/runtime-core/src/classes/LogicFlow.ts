@@ -64,12 +64,15 @@ export class LogicFlow<LogicFlowContext = unknown> {
             }
             const activity = new activityClass(newMeta, this.context);
 
-            //构造Jointers
-            for (const out of activityMeta.outPorts || []) {
-              activity.jointers.addOutput(new Jointer(out.id, out.name))
-            }
-            for (const input of activityMeta.inPorts || []) {
-              activity.jointers.addInput(new Jointer(input.id, input.name))
+            //子编排不需要在这里构建端口
+            if (activityMeta.type !== NodeType.LogicFlowActivity) {
+              //构造Jointers
+              for (const out of activityMeta.outPorts || []) {
+                activity.jointers.addOutput(new Jointer(out.id, out.name))
+              }
+              for (const input of activityMeta.inPorts || []) {
+                activity.jointers.addInput(new Jointer(input.id, input.name))
+              }
             }
 
             //把input端口跟处理函数相连

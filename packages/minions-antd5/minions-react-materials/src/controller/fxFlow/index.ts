@@ -6,7 +6,7 @@ import { FxFlow, IFxFlowConfig } from "@rxdrag/minions-activities";
 
 export const fxFlowMaterial: IRxDragActivityMaterial<IFxFlowConfig, LogicflowContextParam> = {
   activityName: FxFlow.NAME,
-  label: "$reaction",
+  label: "$fxFlow",
   icon: methodIcon,
   color: "#58c622",
   activityType: NodeType.LogicFlowActivity,

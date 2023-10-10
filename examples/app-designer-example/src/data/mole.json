@@ -1343,32 +1343,32 @@
           }
         },
         {
-          "id": "G7vAwtQA",
+          "id": "VDFI7x7F",
           "source": {
             "nodeId": "240ac88a-4db5-44e8-925f-6e9ff2dba424",
             "portId": "Qsk13SdO"
           },
           "target": {
-            "nodeId": "093865c2-af3a-45c3-b233-25a651ad0ac0",
-            "portId": "XslhDpCx"
+            "nodeId": "32cc22a7-8063-4597-96b3-3fb6f8e7f8ea",
+            "portId": "90c12fbe-be12-456e-9970-6dfc52c28186"
           }
         },
         {
-          "id": "5B-qeXlt",
+          "id": "aa9prANG",
           "source": {
             "nodeId": "240ac88a-4db5-44e8-925f-6e9ff2dba424",
             "portId": "Qsk13SdO"
           },
           "target": {
-            "nodeId": "093865c2-af3a-45c3-b233-25a651ad0ac0",
-            "portId": "Gts-1GUw"
+            "nodeId": "32cc22a7-8063-4597-96b3-3fb6f8e7f8ea",
+            "portId": "9f435c05-4996-4683-b84e-2dd2aa1e3417"
           }
         },
         {
-          "id": "2tYQXN0a",
+          "id": "fyEZxf2a",
           "source": {
-            "nodeId": "093865c2-af3a-45c3-b233-25a651ad0ac0",
-            "portId": "sIhBTR5N"
+            "nodeId": "32cc22a7-8063-4597-96b3-3fb6f8e7f8ea",
+            "portId": "fab96691-af97-48a8-b299-29454e80989e"
           },
           "target": {
             "nodeId": "ecb25468-defb-4760-8dde-ab90f6a62c23",
@@ -1376,10 +1376,10 @@
           }
         },
         {
-          "id": "2_IxK8pj",
+          "id": "Mrv6XrmL",
           "source": {
-            "nodeId": "093865c2-af3a-45c3-b233-25a651ad0ac0",
-            "portId": "emOm4Zbi"
+            "nodeId": "32cc22a7-8063-4597-96b3-3fb6f8e7f8ea",
+            "portId": "92fa8e21-f982-4e61-8a74-84ad2f38b4d7"
           },
           "target": {
             "nodeId": "08d94ecc-9d96-48f5-940e-12b3a75be714",
@@ -1876,66 +1876,6 @@
           }
         },
         {
-          "id": "093865c2-af3a-45c3-b233-25a651ad0ac0",
-          "type": "LogicFlowActivity",
-          "activityName": "system-react.fxflow",
-          "inPorts": [
-            {
-              "id": "XslhDpCx",
-              "name": "input1",
-              "label": "输入1"
-            },
-            {
-              "id": "Gts-1GUw",
-              "name": "input2",
-              "label": "输入2"
-            }
-          ],
-          "outPorts": [
-            {
-              "id": "sIhBTR5N",
-              "name": "sIhBTR5N",
-              "label": "输出"
-            },
-            {
-              "id": "emOm4Zbi",
-              "name": "output2",
-              "label": "输出2"
-            }
-          ],
-          "config": {
-            "fxId": "-0TOKXqA"
-          },
-          "x6Node": {
-            "x": 260,
-            "y": -90,
-            "width": 60,
-            "height": 32
-          }
-        },
-        {
-          "id": "240ac88a-4db5-44e8-925f-6e9ff2dba424",
-          "label": "活跃地鼠",
-          "type": "Activity",
-          "activityName": "system-react.listenVariable",
-          "outPorts": [
-            {
-              "id": "Qsk13SdO",
-              "name": "output",
-              "label": "$valueChange"
-            }
-          ],
-          "config": {
-            "variable": "活跃地鼠"
-          },
-          "x6Node": {
-            "x": 20,
-            "y": -90,
-            "width": 116,
-            "height": 32
-          }
-        },
-        {
           "id": "08d94ecc-9d96-48f5-940e-12b3a75be714",
           "label": "调试",
           "type": "Activity",
@@ -1978,6 +1918,67 @@
             "x": 450,
             "y": -120,
             "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "240ac88a-4db5-44e8-925f-6e9ff2dba424",
+          "label": "活跃地鼠",
+          "type": "Activity",
+          "activityName": "system-react.listenVariable",
+          "outPorts": [
+            {
+              "id": "Qsk13SdO",
+              "name": "output",
+              "label": "$valueChange"
+            }
+          ],
+          "config": {
+            "variable": "活跃地鼠"
+          },
+          "x6Node": {
+            "x": 20,
+            "y": -100,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "32cc22a7-8063-4597-96b3-3fb6f8e7f8ea",
+          "label": "测试fx17",
+          "type": "LogicFlowActivity",
+          "activityName": "system-react.fxflow",
+          "inPorts": [
+            {
+              "id": "90c12fbe-be12-456e-9970-6dfc52c28186",
+              "name": "input1",
+              "label": "输入1"
+            },
+            {
+              "id": "9f435c05-4996-4683-b84e-2dd2aa1e3417",
+              "name": "input2",
+              "label": "输入2"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "fab96691-af97-48a8-b299-29454e80989e",
+              "name": "fab96691-af97-48a8-b299-29454e80989e",
+              "label": "输出"
+            },
+            {
+              "id": "92fa8e21-f982-4e61-8a74-84ad2f38b4d7",
+              "name": "output2",
+              "label": "输出2"
+            }
+          ],
+          "config": {
+            "fxId": "-0TOKXqA"
+          },
+          "x6Node": {
+            "x": 260,
+            "y": -90,
+            "width": 116,
             "height": 32
           }
         }

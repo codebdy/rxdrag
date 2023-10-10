@@ -28,6 +28,7 @@ export function useSaveFlow(options?: {
       trigger(EVENT_DATA_CHANGED, Entities.Flow)
       setLoading(false)
       setFlow(fxFlow)
+      console.log("===>allFlows", allFlows)
       options?.onComplate?.()
     }, 300)
 

@@ -64,11 +64,11 @@ export const FxLabel = memo((props: {
         createNode={() => {
           const node: IActivityNode = {
             id: createId(),
-            //label: title,
+            label: fx.label || fx.name,
             type: fxFlowMaterial.activityType,
             activityName: fxFlowMaterial.activityName,
             inPorts: fx.metas?.nodes.filter(node => node.type === NodeType.Start).map(nd => {
-              const portId = createId();
+              const portId = nd.id;
               return {
                 id: portId,
                 name: nd.name || portId,
@@ -76,7 +76,7 @@ export const FxLabel = memo((props: {
               }
             }),
             outPorts: fx.metas?.nodes.filter(node => node.type === NodeType.End).map(nd => {
-              const portId = createId();
+              const portId = nd.id;
               return {
                 id: portId,
                 name: nd.name || portId,
