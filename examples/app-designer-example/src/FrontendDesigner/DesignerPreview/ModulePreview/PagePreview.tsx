@@ -24,26 +24,32 @@ export const PagePreview = memo(() => {
   const frontend = useAppFrontend()
   const { moduleId } = useParams()
   const { module } = useQueryModule(device as DeviceType, moduleId || "")
-  const { flows } = useQueryModuleFlows(moduleId)
   const { scripts } = useQueryModuleScripts(moduleId)
 
-  const { flows: moduleFxes } = useQueryFlows(moduleId, LogicType.fx, FxScope.module)
-  const { flows: deviceFxes } = useQueryFlows(frontend?.app?.id, LogicType.fx, FxScope.device)
-  const { flows: appFxes } = useQueryFlows(frontend?.app?.id, LogicType.fx, FxScope.app)
+  const { flows: moduleFxes, } = useQueryFlows(moduleId, LogicType.fx, FxScope.module)
+  const { flows: deviceFxes, } = useQueryFlows(frontend?.app?.id, LogicType.fx, FxScope.device)
+  const { flows: appFxes, } = useQueryFlows(frontend?.app?.id, LogicType.fx, FxScope.app)
 
   const { scripts: moduleScriptFxes } = useQueryScripts(moduleId, LogicType.fx, FxScope.module)
   const { scripts: deviceScriptFxes } = useQueryScripts(frontend?.app?.id, LogicType.fx, FxScope.device)
   const { scripts: appScriptFxes } = useQueryScripts(frontend?.app?.id, LogicType.fx, FxScope.app)
+  const fxLoaded = Boolean(moduleFxes && deviceFxes && appFxes);
 
-  const fxFlows = useMemo(() => [...moduleFxes || [], ...deviceFxes || [], ...appFxes || []], [appFxes, deviceFxes, moduleFxes])
+
+  const { flows } = useQueryModuleFlows(fxLoaded ? moduleId : undefined)
+
   const fxScripts = useMemo(() => [...moduleScriptFxes || [], ...deviceScriptFxes || [], ...appScriptFxes || []], [appScriptFxes, deviceScriptFxes, moduleScriptFxes])
 
-  const defines: LogicDefines = useMemo(() => ({
-    flows,
-    scripts,
-    fxFlows,
-    fxScripts,
-  }), [flows, fxFlows, fxScripts, scripts])
+
+  const defines: LogicDefines | undefined = useMemo(() => {
+    return ({
+      flows,
+      scripts,
+      fxFlows: [...moduleFxes || [], ...deviceFxes || [], ...appFxes || []],
+      fxScripts,
+    })
+  },
+    [appFxes, deviceFxes, flows, fxScripts, moduleFxes, scripts])
 
   const components = useMemo(() => {
     const materials = pageMaterials[device]

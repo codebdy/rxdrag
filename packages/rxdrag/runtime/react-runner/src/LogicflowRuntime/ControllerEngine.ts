@@ -9,7 +9,7 @@ export type ControllerOptions = {
   variableMetas?: IVariable[],
   parent?: ControllerEngine,
   reactions?: Record<string, ControllerReaction>,
-  fxFlows?: ILogicFlowDefine[],
+  fxMetas?: ILogicFlowDefine[],
   loopScope?: ILoopScope
 }
 
@@ -17,7 +17,7 @@ export class ControllerEngine {
   controllers: Record<string, IController>
   variableController: IVariableController
   reactions?: Record<string, ControllerReaction>
-  fxFlows?: ILogicFlowDefine[]
+  fxMetas?: ILogicFlowDefine[]
   loopScope?: ILoopScope
 
   constructor(schema: IComponentRenderSchema,
@@ -26,7 +26,7 @@ export class ControllerEngine {
     console.log("创建控制器引擎")
     this.variableController = options?.parent?.variableController || new VariableController()
     this.reactions = options?.reactions
-    this.fxFlows = options?.fxFlows
+    this.fxMetas = options?.fxMetas
     this.variableController.setMetas(options?.variableMetas)
     this.controllers = this.getSchemaControllers(schema, { ...options?.parent?.controllers },)
     this.loopScope = options?.loopScope

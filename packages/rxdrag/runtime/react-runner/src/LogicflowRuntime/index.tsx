@@ -7,7 +7,7 @@ import { IComponentRenderSchema } from "../ComponentView"
 import { IVariable } from "@rxdrag/minions-schema"
 import { useControllerEngine } from "../hooks/useControllerEngine"
 import { ControllerReaction, useLogicDefines } from "@rxdrag/minions-runtime-react"
-import { ILoopScope, ILoopScopeContext, LogicFlow } from "@rxdrag/minions-runtime"
+import { ILoopScope, LogicFlow } from "@rxdrag/minions-runtime"
 
 export type LogicFlowOptions = {
   ownerId?: string,
@@ -42,7 +42,7 @@ export const LogicflowRuntime = memo((props: {
         parent,
         variableMetas: variables,
         reactions: { ...parent?.reactions, ...reactions },
-        fxFlows,
+        fxMetas: [...parent?.fxMetas || [], ...fxFlows || []],
         loopScope
       }
     )

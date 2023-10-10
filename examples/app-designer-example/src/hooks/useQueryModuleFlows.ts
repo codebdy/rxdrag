@@ -11,6 +11,9 @@ export function useQueryModuleFlows(moduleId: ID | undefined) {
   const [flows, sefFlows] = useState<IFlow[]>()
 
   const fillData = useCallback(() => {
+    if(!moduleId){
+      return
+    }
     setLoading(true)
     setTimeout(() => {
       sefFlows(allFlows.filter(fl => fl.moduleId === moduleId && fl.type === LogicType.normal))
