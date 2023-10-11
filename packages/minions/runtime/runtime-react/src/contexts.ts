@@ -6,7 +6,7 @@ export type LogicDefines = {
   flows?: IOwnedFlow[],
   scripts?: IOwnedScript[],
   fxFlows?: ILogicFlowDefine[],
-  fxScripts: IScriptDefine[],
+  fxScripts?: IScriptDefine[],
 }
 
 export const LogicDefinesContext = createContext<LogicDefines | undefined>(undefined)

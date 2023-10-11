@@ -10,7 +10,7 @@ import { PanelTitle } from "../common/PanelTitle"
 import { FXes } from "./FXes"
 import { ToolbarTitle } from "../common/ToolbarTitle"
 import { ID } from "@rxdrag/shared"
-import Editor from 'react-monaco-editor';
+import MonacoEditor from 'react-monaco-editor'
 import { useThemeMode } from "@rxdrag/react-core"
 import { NavButton } from "../common/NavButton"
 import { useQueryScript } from "../../../hooks/useQueryScript"
@@ -177,7 +177,7 @@ export const ScriptDesigner = memo(() => {
           </Button>
         </Toolbar>
         <EditorContainer>
-          <Editor
+          <MonacoEditor
             height="100%"
             language="javascript"
             value={inputValue}

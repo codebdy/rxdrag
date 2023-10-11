@@ -8,6 +8,8 @@ import { IVariable } from "@rxdrag/minions-schema"
 import { useControllerEngine } from "../hooks/useControllerEngine"
 import { ControllerReaction, useLogicDefines } from "@rxdrag/minions-runtime-react"
 import { ILoopScope, LogicFlow } from "@rxdrag/minions-runtime"
+import { ScriptRuntime } from "./script/ScriptRuntime"
+import { useParams } from "react-router-dom"
 
 export type LogicFlowOptions = {
   ownerId?: string,
@@ -32,6 +34,7 @@ export const LogicflowRuntime = memo((props: {
   const [controllerEngine, setControllerEngine] = useState<ControllerEngine | null>(null)
   const engineRef = useRef(controllerEngine)
   engineRef.current = controllerEngine
+  const urlParams = useParams()
 
   const parent = useControllerEngine()
 
@@ -69,6 +72,15 @@ export const LogicflowRuntime = memo((props: {
       }
     }
   }, [flows, logicFlowContext, ownerId])
+
+  useEffect(() => {
+    if (scripts?.length && controllerEngine) {
+      const scriptRuntim = new ScriptRuntime(scripts, fxScripts, controllerEngine, { urlParams })
+      return () => {
+        scriptRuntim.dispose()
+      }
+    }
+  }, [controllerEngine, fxScripts, scripts, urlParams])
 
   return (
     controllerEngine ?

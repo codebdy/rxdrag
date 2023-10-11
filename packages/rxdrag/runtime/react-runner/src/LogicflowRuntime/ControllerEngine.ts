@@ -59,7 +59,7 @@ export class ControllerEngine {
     return this.controllers[id];
   }
 
-  public getCongtrollerByName = (name: string): IController | undefined => {
+  public getControllerByName = (name: string): IController | undefined => {
     for (const key of Object.keys(this.controllers)) {
       if (this.controllers[key]?.name === name) {
         return this.controllers[key]
