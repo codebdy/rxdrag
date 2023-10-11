@@ -13,7 +13,11 @@ export class ScriptRuntime {
     private ownerId?: string,
   ) {
     this.variables = new ScriptVariables(controllerEngine?.variableController)
-    this.run()
+    try {
+      this.run()
+    } catch (e) {
+      console.error("Run script error", e)
+    }
   }
 
   run() {
@@ -24,6 +28,8 @@ export class ScriptRuntime {
     const scripts = this.controllerEngine?.logicDefines?.scripts?.filter(script => script.ownerId === this.ownerId)?.reduce((prev: string, cur: IScriptDefine) => {
       return prev + "\n" + cur.code
     }, "")
+
+    console.log("===>scripts", fxStrs + "\n" + scripts)
 
     const fn = new Function('get', 'variables', ...Object.keys(this.params || {}), fxStrs + "\n" + scripts);
     fn(this.getComponent, this.variables)

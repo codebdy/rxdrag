@@ -41,6 +41,7 @@ export interface IController extends IPropController {
   destroyEvent: EventHandler,
   subscribeToPropsChange(listener: PropsListener): UnListener,
   subscribeToEvent(name: string, listener: EventListener): UnListener,
+  unsubscribeEvent(name: string, listener: EventListener): void,
   subscribeEventHandlersChange(listener: EventsChangeListener): UnListener
 
   destroy(): void,

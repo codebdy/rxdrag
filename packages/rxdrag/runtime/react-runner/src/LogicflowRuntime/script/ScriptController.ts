@@ -1,4 +1,4 @@
-import { IController } from "@rxdrag/minions-runtime-react";
+import { IController, UnListener } from "@rxdrag/minions-runtime-react";
 import { ControllerEngine } from "../ControllerEngine";
 
 if (typeof Proxy == "undefined") {
@@ -7,12 +7,10 @@ if (typeof Proxy == "undefined") {
 
 export const getProxyHandler = (target: ScriptController, name: string, receiver: unknown) => {
   if (Reflect.has(target, name)) {
-    console.log("Getting non-existent property '" + name + "'");
     return Reflect.get(target, name, receiver);
   }
 
   const reaction = target.controllerEngine?.reactions?.[name]
-  console.log("====>get", name, reaction)
   if (reaction) {
     return (value?: unknown) => {
       reaction(target.controller, value)
@@ -22,22 +20,34 @@ export const getProxyHandler = (target: ScriptController, name: string, receiver
   }
 }
 
+export type EventHandler = (args?: unknown[]) => void
+
 export class ScriptController {
+  unListeners: UnListener[] = [];
 
   constructor(public name: string,
     public controller: IController,
     public controllerEngine: ControllerEngine | null,
   ) { }
 
-  on = (name?: string) => {
-    console.log("===>on")
+  on = (name: string | undefined, handler: EventHandler) => {
+    if (name) {
+      const unListerner = this.controller.subscribeToEvent(name, handler)
+      this.unListeners.push(unListerner)
+      return unListerner
+    }
   }
 
-  off = (name?: string) => {
-    console.log("===>off")
+  off = (name: string | undefined, handler: EventHandler) => {
+    if (name) {
+      this.controller.unsubscribeEvent(name, handler)
+    }
   }
 
   dispose = () => {
-    //
+    for (const unlistener of this.unListeners) {
+      unlistener?.()
+    }
+    this.unListeners = []
   }
 }

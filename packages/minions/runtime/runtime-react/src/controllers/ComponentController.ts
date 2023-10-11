@@ -72,16 +72,20 @@ export class ComponentController implements IController {
     }
   }
 
-  subscribeToEvent(name: string, listener: EventListener): UnListener {
+  subscribeToEvent = (name: string, listener: EventListener): UnListener => {
     if (!this.eventListeners[name]) {
       this.eventListeners[name] = []
     }
     this.eventListeners[name].push(listener)
     this.emitEvhentHandlers()
     return () => {
-      this.eventListeners[name].splice(this.eventListeners[name].indexOf(listener), 1)
-      this.emitEvhentHandlers()
+      this.unsubscribeEvent(name, listener)
     }
+  }
+
+  unsubscribeEvent = (name: string, listener: EventListener): void => {
+    this.eventListeners[name].splice(this.eventListeners[name].indexOf(listener), 1)
+    this.emitEvhentHandlers()
   }
 
   emitEvhentHandlers = () => {
