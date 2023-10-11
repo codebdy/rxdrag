@@ -1,15 +1,15 @@
 
 
-import { ComponentController, ControllerReaction, IController, IVariableController, VariableController } from "@rxdrag/minions-runtime-react"
+import { ComponentController, ControllerReaction, IController, IVariableController, LogicDefines, VariableController } from "@rxdrag/minions-runtime-react"
 import { IComponentRenderSchema } from "../ComponentView"
-import { ILogicFlowDefine, IVariable } from "@rxdrag/minions-schema"
+import { IVariable } from "@rxdrag/minions-schema"
 import { ILoopScope } from "@rxdrag/minions-runtime"
 
 export type ControllerOptions = {
   variableMetas?: IVariable[],
   parent?: ControllerEngine,
   reactions?: Record<string, ControllerReaction>,
-  fxMetas?: ILogicFlowDefine[],
+  logicDefines?: LogicDefines,
   loopScope?: ILoopScope
 }
 
@@ -17,7 +17,7 @@ export class ControllerEngine {
   controllers: Record<string, IController>
   variableController: IVariableController
   reactions?: Record<string, ControllerReaction>
-  fxMetas?: ILogicFlowDefine[]
+  logicDefines?: LogicDefines
   loopScope?: ILoopScope
 
   constructor(schema: IComponentRenderSchema,
@@ -26,7 +26,7 @@ export class ControllerEngine {
     console.log("创建控制器引擎")
     this.variableController = options?.parent?.variableController || new VariableController()
     this.reactions = options?.reactions
-    this.fxMetas = options?.fxMetas
+    this.logicDefines = options?.logicDefines
     this.variableController.setMetas(options?.variableMetas)
     this.controllers = this.getSchemaControllers(schema, { ...options?.parent?.controllers },)
     this.loopScope = options?.loopScope

@@ -18,7 +18,7 @@ export function useLogicFlowContext(engine: ControllerEngine | null) {
     urlParams,
     reactions: { ...predefinedReactions, ...engine?.reactions },
     variableController: engine?.variableController,
-    fxMetas: engine?.fxMetas,
+    fxMetas: engine?.logicDefines?.fxFlows,
     loopScope: engine?.loopScope,
   }), [engine, form, navigate, urlParams])
 

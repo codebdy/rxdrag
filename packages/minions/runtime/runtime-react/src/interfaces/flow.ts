@@ -11,3 +11,11 @@ export interface IOwnedFlow extends ILogicFlowDefine {
 export interface IOwnedScript extends IScriptDefine {
   ownerId: ID,
 }
+
+export type LogicDefines = {
+  flows?: IOwnedFlow[],
+  scripts?: IOwnedScript[],
+  fxFlows?: ILogicFlowDefine[],
+  fxScripts?: IScriptDefine[],
+}
+

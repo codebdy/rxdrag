@@ -1,4 +1,4 @@
-import { ComponentRender, LogicflowRoot, } from "@rxdrag/react-runner"
+import { ComponentRender } from "@rxdrag/react-runner"
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared"
 import { INodeSchema } from "@rxdrag/schema"
 import { Fragment, memo, useCallback, useEffect, useMemo, useState } from "react"
@@ -101,21 +101,18 @@ export const PagePreview = memo(() => {
   }, [engine, handleChange])
 
   return (
-    <LogicflowRoot defines={defines}>
-      {
-        tree
-          ? <ComponentRender
-            components={components}
-            schema={tree}
-            logicflowOptions={
-              {
-                variables: module?.variables,
-                ownerId: module?.id,
-              }
-            }
-          />
-          : <></>
-      }
-    </LogicflowRoot>
+    tree
+      ? <ComponentRender
+        components={components}
+        schema={tree}
+        logicflowOptions={
+          {
+            variables: module?.variables,
+            ownerId: module?.id,
+            logicDefines: defines
+          }
+        }
+      />
+      : <></>
   )
 })

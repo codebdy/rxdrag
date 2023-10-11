@@ -6,7 +6,7 @@ import { useLogicFlowContext } from "../hooks/useLogicFlowContext"
 import { IComponentRenderSchema } from "../ComponentView"
 import { IVariable } from "@rxdrag/minions-schema"
 import { useControllerEngine } from "../hooks/useControllerEngine"
-import { ControllerReaction, useLogicDefines } from "@rxdrag/minions-runtime-react"
+import { ControllerReaction, LogicDefines } from "@rxdrag/minions-runtime-react"
 import { ILoopScope, LogicFlow } from "@rxdrag/minions-runtime"
 import { ScriptRuntime } from "./script/ScriptRuntime"
 import { useParams } from "react-router-dom"
@@ -15,6 +15,7 @@ export type LogicFlowOptions = {
   ownerId?: string,
   reactions?: Record<string, ControllerReaction>,
   variables?: IVariable[],
+  logicDefines?: LogicDefines
 }
 
 export const LogicflowRuntime = memo((props: {
@@ -23,8 +24,8 @@ export const LogicflowRuntime = memo((props: {
   loopRow?: unknown,
   loopIndex?: number,
 } & LogicFlowOptions) => {
-  const { children, schema, ownerId, reactions, variables, loopRow, loopIndex } = props
-  const { flows, fxFlows, scripts, fxScripts, } = useLogicDefines() || {}
+  const { children, schema, ownerId, reactions, variables, loopRow, loopIndex, logicDefines } = props
+
   const loopScope: ILoopScope = useMemo(() => {
     return {
       value: loopRow,
@@ -39,19 +40,26 @@ export const LogicflowRuntime = memo((props: {
   const parent = useControllerEngine()
 
   useEffect(() => {
-    const rtEngine = new ControllerEngine(
-      schema,
-      {
-        parent,
-        variableMetas: variables,
-        reactions: { ...parent?.reactions, ...reactions },
-        fxMetas: [...parent?.fxMetas || [], ...fxFlows || []],
-        loopScope
-      }
-    )
-    engineRef.current?.destroy()
-    setControllerEngine(rtEngine)
-  }, [fxFlows, loopScope, parent, reactions, schema, variables])
+    if (logicDefines || parent?.logicDefines) {
+      const rtEngine = new ControllerEngine(
+        schema,
+        {
+          parent,
+          variableMetas: variables,
+          reactions: { ...parent?.reactions, ...reactions },
+          logicDefines: {
+            flows: [...logicDefines?.flows || [], ...parent?.logicDefines?.flows || []],
+            scripts: [...logicDefines?.scripts || [], ...parent?.logicDefines?.scripts || []],
+            fxFlows: [...logicDefines?.fxFlows || [], ...parent?.logicDefines?.fxFlows || []],
+            fxScripts: [...logicDefines?.fxScripts || [], ...parent?.logicDefines?.fxScripts || []],
+          },
+          loopScope
+        }
+      )
+      engineRef.current?.destroy()
+      setControllerEngine(rtEngine)
+    }
+  }, [logicDefines, loopScope, parent, reactions, schema, variables])
 
   useEffect(() => {
     return () => {
@@ -62,8 +70,8 @@ export const LogicflowRuntime = memo((props: {
   const logicFlowContext = useLogicFlowContext(controllerEngine);
 
   useEffect(() => {
-    if (logicFlowContext?.controllers) {
-      const flowRuntimes = flows?.filter(flow => flow.ownerId === ownerId)?.map(flowMeta => {
+    if (controllerEngine?.controllers) {
+      const flowRuntimes = controllerEngine?.logicDefines?.flows?.filter(flow => flow.ownerId === ownerId)?.map(flowMeta => {
         return new LogicFlow(flowMeta, logicFlowContext)
       })
 
@@ -71,16 +79,16 @@ export const LogicflowRuntime = memo((props: {
         flowRuntimes?.forEach(flow => flow.destroy())
       }
     }
-  }, [flows, logicFlowContext, ownerId])
+  }, [controllerEngine, logicFlowContext, ownerId])
 
   useEffect(() => {
-    if (scripts?.length && controllerEngine) {
-      const scriptRuntim = new ScriptRuntime(scripts, fxScripts, controllerEngine, { urlParams })
+    if (controllerEngine?.logicDefines?.scripts?.length && controllerEngine) {
+      const scriptRuntim = new ScriptRuntime(controllerEngine, { urlParams })
       return () => {
         scriptRuntim.dispose()
       }
     }
-  }, [controllerEngine, fxScripts, scripts, urlParams])
+  }, [controllerEngine, urlParams])
 
   return (
     controllerEngine ?
@@ -89,6 +97,6 @@ export const LogicflowRuntime = memo((props: {
           children
         }
       </ControllerEngineContext.Provider>
-      : <>can not create run time engine</>
+      : children
   )
 })
