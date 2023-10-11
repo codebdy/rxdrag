@@ -1,25 +1,42 @@
-import { IVariableController } from "@rxdrag/minions-runtime-react";
+import { IVariableController, UnListener, VariableListener } from "@rxdrag/minions-runtime-react";
 
 export class ScriptVariables {
+  unListeners: UnListener[] = [];
+
   constructor(private variablesController?: IVariableController) { }
 
   get = (name?: string) => {
-    console.log("===>ScriptVariables get", name)
+    if (name) {
+      return this.variablesController?.getVariable(name)
+    }
   }
 
   set = (name?: string, value?: unknown) => {
-    console.log("===>ScriptVariables set", name, value)
+    if (name) {
+      this.variablesController?.setVariable(name, value)
+    }
   }
 
-  on = (name?: string) => {
-    console.log("===>ScriptVariables on", name)
+  on = (name: string | undefined, listener: VariableListener) => {
+    if (name) {
+      const unListerner = this.variablesController?.subscribeToVariableChange(name, listener)
+      if (unListerner) {
+        this.unListeners.push(unListerner)
+      }
+      return unListerner
+    }
   }
 
-  off = (name?: string) => {
-    console.log("===>ScriptVariables off", name)
+  off = (name: string | undefined, listener: VariableListener) => {
+    if (name) {
+      return this.variablesController?.unsubscribeVariableChange(name, listener)
+    }
   }
 
   dispose = () => {
-    //
+    for (const unlistener of this.unListeners) {
+      unlistener?.()
+    }
+    this.unListeners = []
   }
 }

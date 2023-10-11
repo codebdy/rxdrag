@@ -13,7 +13,7 @@ export const getProxyHandler = (target: ScriptController, name: string, receiver
   const reaction = target.controllerEngine?.reactions?.[name]
   if (reaction) {
     return (value?: unknown) => {
-      reaction(target.controller, value)
+      return reaction(target.controller, value)
     }
   } else {
     console.error("Can not find react on controller", target.controllerEngine, target.name, name)
@@ -40,7 +40,13 @@ export class ScriptController {
 
   off = (name: string | undefined, handler: EventHandler) => {
     if (name) {
-      this.controller.unsubscribeEvent(name, handler)
+      return this.controller.unsubscribeEvent(name, handler)
+    }
+  }
+
+  setProp = (name: string | undefined, value: unknown) => {
+    if (name) {
+      this.controller.setProp(name, value)
     }
   }
 

@@ -59,8 +59,8 @@ export const FormItemMaterial: IMaterial = {
         label: "$validate"
       },
       {
-        name: "readValue",
-        label: "$readValue",
+        name: "getValue",
+        label: "$getValue",
       },
       {
         name: "setValue",

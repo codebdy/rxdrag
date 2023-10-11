@@ -25,7 +25,7 @@ export const LogicflowRuntime = memo((props: {
   loopIndex?: number,
 } & LogicFlowOptions) => {
   const { children, schema, ownerId, reactions, variables, loopRow, loopIndex, logicDefines } = props
-  console.log("====>LogicflowRuntime", reactions)
+
   const loopScope: ILoopScope = useMemo(() => {
     return {
       value: loopRow,

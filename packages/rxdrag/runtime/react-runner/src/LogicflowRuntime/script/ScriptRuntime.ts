@@ -25,14 +25,22 @@ export class ScriptRuntime {
       return prev + "\n" + cur.code
     }, "")
 
-    const scripts = this.controllerEngine?.logicDefines?.scripts?.filter(script => script.ownerId === this.ownerId)?.reduce((prev: string, cur: IScriptDefine) => {
-      return prev + "\n" + cur.code
-    }, "")
+    const scripts = this.controllerEngine?.logicDefines?.scripts?.filter(script => script.ownerId === this.ownerId)
 
     console.log("===>scripts", fxStrs + "\n" + scripts)
 
-    const fn = new Function('get', 'variables', ...Object.keys(this.params || {}), fxStrs + "\n" + scripts);
-    fn(this.getComponent, this.variables)
+    for (const script of scripts || []) {
+      if (script.code) {
+        const fn = new Function("loopScope", 'get', 'variables', ...Object.keys(this.params || {}), fxStrs + "\n" + script.code);
+        fn(
+          this.controllerEngine?.loopScope,
+          this.getComponent,
+          this.variables,
+          ...Object.values(this.params || {})
+        )
+      }
+    }
+
   }
 
   getComponent = (name?: string) => {

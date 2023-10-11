@@ -5,7 +5,7 @@ export const validate: ControllerReaction = (controller: IController,  inputValu
   return inputValue
 }
 
-export const readValue: ControllerReaction = (controller: IController) => {
+export const getValue: ControllerReaction = (controller: IController) => {
   return controller.fieldyNode?.getValue()
 }
 

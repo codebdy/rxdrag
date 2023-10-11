@@ -10,7 +10,7 @@ import { PanelTitle } from "../common/PanelTitle"
 import { FXes } from "./FXes"
 import { ToolbarTitle } from "../common/ToolbarTitle"
 import { ID } from "@rxdrag/shared"
-import MonacoEditor from 'react-monaco-editor'
+import MonacoEditor from '@monaco-editor/react'
 import { useThemeMode } from "@rxdrag/react-core"
 import { NavButton } from "../common/NavButton"
 import { useQueryScript } from "../../../hooks/useQueryScript"
@@ -50,7 +50,7 @@ export const ScriptDesigner = memo(() => {
   const [navType, setNavType] = useState<NavType | null>(NavType.flows)
   const [selectedScript, setSelectedScript] = useState<ID | null>(null)
   const [selectedFx, setSelectedFx] = useState<ID | null>(null)
-  const [inputValue, setInputValue] = useState<string>("")
+  const [inputValue, setInputValue] = useState<string>()
   const themeMode = useThemeMode()
   const { script } = useQueryScript(selectedScript || selectedFx || "")
   const [save, { loading: saving }] = useSaveScript()
@@ -82,7 +82,7 @@ export const ScriptDesigner = memo(() => {
     setSelectedFx(id)
   }, [])
 
-  const handleEditorChange = useCallback((value: string) => {
+  const handleEditorChange = useCallback((value?: string) => {
     setInputValue(value)
   }, [])
 

@@ -1688,7 +1688,7 @@
           "inPorts": [
             {
               "id": "qNADoleB",
-              "name": "readValue",
+              "name": "getValue",
               "label": "取值"
             }
           ],

@@ -5,7 +5,7 @@ export const filedyLocales = {
     initialValue: "初始值",
     onChange: "值变化",
     validate: "校验",
-    readValue: "取值",
+    getValue: "取值",
     setValue: "赋值",
 
   },
@@ -15,7 +15,7 @@ export const filedyLocales = {
     initialValue: "初始值",
     onChange: "值变化",
     validate: "校验",
-    readValue: "取值",
+    getValue: "取值",
     setValue: "赋值"
   }
 }

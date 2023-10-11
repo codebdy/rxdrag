@@ -20,6 +20,7 @@ export interface IVariableController {
   setVariable(name: string, value: unknown): void,
   getVariable(name: string): unknown,
   subscribeToVariableChange(name: string, listener: VariableListener): UnListener
+  unsubscribeVariableChange(name: string, listener: VariableListener): void
 }
 
 export interface IPropController {

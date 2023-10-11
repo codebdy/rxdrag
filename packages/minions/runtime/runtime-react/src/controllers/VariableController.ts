@@ -13,30 +13,35 @@ export class VariableController implements IVariableController {
     this.setMetas(variableMetas)
   }
 
-  setMetas(variableMetas?: IVariable[]){
+  setMetas = (variableMetas?: IVariable[]) => {
     for (const meta of variableMetas || []) {
       this.variables[meta.name] = meta.defaultValue
     }
   }
 
-  setVariable(name: string, value: unknown): void {
+  setVariable = (name: string, value: unknown): void => {
     this.variables[name] = value
     const listeners = this.variableListeners[name] || []
     for (const listener of listeners) {
       listener(value)
     }
   }
-  getVariable(name: string): unknown {
+  getVariable = (name: string): unknown => {
     return this.variables[name]
   }
-  subscribeToVariableChange(name: string, listener: VariableListener): UnListener {
+  subscribeToVariableChange = (name: string, listener: VariableListener): UnListener => {
     if (!this.variableListeners[name]) {
       this.variableListeners[name] = []
     }
+    listener?.(this.variables[name])
     this.variableListeners[name].push(listener)
     return () => {
-      this.variableListeners[name].splice(this.variableListeners[name].indexOf(listener), 1)
+      this.unsubscribeVariableChange(name, listener)
     }
+  }
+
+  unsubscribeVariableChange = (name: string, listener: VariableListener): void => {
+    this.variableListeners[name].splice(this.variableListeners[name].indexOf(listener), 1)
   }
 
 }
