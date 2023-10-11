@@ -27,8 +27,6 @@ export class ScriptRuntime {
 
     const scripts = this.controllerEngine?.logicDefines?.scripts?.filter(script => script.ownerId === this.ownerId)
 
-    console.log("===>scripts", fxStrs + "\n" + scripts)
-
     for (const script of scripts || []) {
       if (script.code) {
         const fn = new Function("loopScope", 'get', 'variables', ...Object.keys(this.params || {}), fxStrs + "\n" + script.code);
