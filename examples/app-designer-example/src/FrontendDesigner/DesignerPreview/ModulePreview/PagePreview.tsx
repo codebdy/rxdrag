@@ -109,7 +109,7 @@ export const PagePreview = memo(() => {
           {
             variables: module?.variables,
             ownerId: module?.id,
-            logicDefines: defines
+            logicDefines: defines,
           }
         }
       />

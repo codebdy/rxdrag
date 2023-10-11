@@ -10,6 +10,7 @@ export class ScriptRuntime {
   constructor(
     private controllerEngine: ControllerEngine | null,
     private params?: Record<string, unknown>,
+    private ownerId?: string,
   ) {
     this.variables = new ScriptVariables(controllerEngine?.variableController)
     this.run()
@@ -20,7 +21,7 @@ export class ScriptRuntime {
       return prev + "\n" + cur.code
     }, "")
 
-    const scripts = this.controllerEngine?.logicDefines?.scripts?.reduce((prev: string, cur: IScriptDefine) => {
+    const scripts = this.controllerEngine?.logicDefines?.scripts?.filter(script => script.ownerId === this.ownerId)?.reduce((prev: string, cur: IScriptDefine) => {
       return prev + "\n" + cur.code
     }, "")
 
