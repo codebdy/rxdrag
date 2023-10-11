@@ -1,12 +1,12 @@
 import { INodeSchema } from "@rxdrag/schema"
 import { attachFormItem } from "./attachFormItem"
 import { IFieldMeta } from "@rxdrag/fieldy"
-import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
+import { IControllerMeta } from "@rxdrag/minions-runtime-react"
 
 export interface IExpressionField {
   label: string,
   name: string,
-  valueInputSchema: INodeSchema<IFieldMeta, ILogicFlowControllerMeta>,
+  valueInputSchema: INodeSchema<IFieldMeta, IControllerMeta>,
 }
 
 export function transformExpressionField(expFields: IExpressionField[]) {

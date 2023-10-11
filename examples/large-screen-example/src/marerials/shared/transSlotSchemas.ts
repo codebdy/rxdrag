@@ -1,5 +1,5 @@
 import { IFieldMeta } from "@rxdrag/fieldy"
-import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
+import { IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { INodeSchema } from "@rxdrag/schema"
 
 export interface ISlotSchema {
@@ -7,7 +7,7 @@ export interface ISlotSchema {
   label?: string,
 }
 
-export function transSlotSchemas(schemas: ISlotSchema[]): INodeSchema<IFieldMeta, ILogicFlowControllerMeta>[] {
+export function transSlotSchemas(schemas: ISlotSchema[]): INodeSchema<IFieldMeta, IControllerMeta>[] {
   return schemas.map((schema) => ({
     componentName: "FormItem",
     props: {
