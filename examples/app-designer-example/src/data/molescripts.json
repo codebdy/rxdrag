@@ -5,6 +5,6 @@
       "ownerId": "mole-script",
       "moduleId": "mole-script",
       "type": "normal",
-      "code": "//打地鼠主流程 \r\n\r\n//开始按钮\r\nconst startButton = get(\"开始按钮\") \r\nstartButton.open()\r\n//结束按钮\r\nconst stopButton = get(\"结束按钮\")\r\n//urlParams\r\nconst activeMouse = variables.get(\"活跃地鼠\")\r\nvariables.set(\"活跃地鼠\", 10)\r\nconst off = variables.on(\"活跃地鼠\", ()=>{\r\n\r\n})\r\n\r\nconst handler = ()=>{\r\n\r\n}\r\n\r\nvariables.off(\"\", handler)"
+      "code": "//打地鼠主流程 \r\n\r\n//开始按钮\r\nconst settingsDialog = get(\"设置对话框\") \r\nsettingsDialog.open()\r\n//结束按钮\r\nconst stopButton = get(\"结束按钮\")\r\n//urlParams\r\nconst activeMouse = variables.get(\"活跃地鼠\")\r\nvariables.set(\"活跃地鼠\", 10)\r\nconst off = variables.on(\"活跃地鼠\", ()=>{\r\n\r\n})\r\n\r\nconst handler = ()=>{\r\n\r\n}\r\n\r\nvariables.off(\"\", handler)"
   }
 ]

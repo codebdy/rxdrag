@@ -17,6 +17,7 @@ export const ComponentRender = memo((props: {
   logicflowOptions?: LogicFlowOptions,
 }) => {
   const { schema, components, logicflowOptions } = props
+  console.log("====>ComponentRender", logicflowOptions?.reactions)
   const [node, setNode] = useState<IComponentRenderSchema>()
   useEffect(() => {
     if (schema) {

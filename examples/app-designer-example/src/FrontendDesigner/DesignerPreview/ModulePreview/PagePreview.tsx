@@ -35,21 +35,17 @@ export const PagePreview = memo(() => {
   const { scripts: appScriptFxes } = useQueryScripts(frontend?.app?.id, LogicType.fx, FxScope.app)
   const fxLoaded = Boolean(moduleFxes && deviceFxes && appFxes);
 
-
   const { flows } = useQueryModuleFlows(fxLoaded ? moduleId : undefined)
-
-  const fxScripts = useMemo(() => [...moduleScriptFxes || [], ...deviceScriptFxes || [], ...appScriptFxes || []], [appScriptFxes, deviceScriptFxes, moduleScriptFxes])
-
 
   const defines: LogicDefines | undefined = useMemo(() => {
     return ({
       flows,
       scripts,
       fxFlows: [...moduleFxes || [], ...deviceFxes || [], ...appFxes || []],
-      fxScripts,
+      fxScripts: [...moduleScriptFxes || [], ...deviceScriptFxes || [], ...appScriptFxes || []],
     })
   },
-    [appFxes, deviceFxes, flows, fxScripts, moduleFxes, scripts])
+    [appFxes, appScriptFxes, deviceFxes, deviceScriptFxes, flows, moduleFxes, moduleScriptFxes, scripts])
 
   const components = useMemo(() => {
     const materials = pageMaterials[device]

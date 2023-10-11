@@ -1,7 +1,7 @@
 import { IScriptDefine } from "@rxdrag/minions-schema";
 import { ControllerEngine } from "../ControllerEngine";
 import { ScriptVariables } from "./ScriptVariables";
-import { ScriptController } from "./ScriptController";
+import { ScriptController, getProxyHandler } from "./ScriptController";
 
 export class ScriptRuntime {
   variables: ScriptVariables
@@ -33,20 +33,22 @@ export class ScriptRuntime {
     if (!name) {
       return
     }
-    console.log("====>getComponent", name)
-    let ctrl = this.controllers.find(ctrl => ctrl.name === name)
+    const ctrl = this.controllers.find(ctrl => ctrl.name === name)
     if (ctrl) {
       return ctrl;
     }
     const comCtrl = this.controllerEngine?.getControllerByName(name)
-    console.log("====>getComponent3", name, this.controllerEngine, comCtrl)
 
     if (comCtrl) {
-      ctrl = new ScriptController(name, comCtrl)
+      const ctrl = new Proxy(
+        new ScriptController(name, comCtrl, this.controllerEngine),
+        {
+          get: getProxyHandler
+        },
+      )
       this.controllers.push(ctrl)
+      return ctrl
     }
-
-    return ctrl
   }
 
   dispose() {

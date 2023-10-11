@@ -6,7 +6,7 @@ import { useLogicFlowContext } from "../hooks/useLogicFlowContext"
 import { IComponentRenderSchema } from "../ComponentView"
 import { IVariable } from "@rxdrag/minions-schema"
 import { useControllerEngine } from "../hooks/useControllerEngine"
-import { ControllerReaction, LogicDefines } from "@rxdrag/minions-runtime-react"
+import { ControllerReaction, LogicDefines, predefinedReactions } from "@rxdrag/minions-runtime-react"
 import { ILoopScope, LogicFlow } from "@rxdrag/minions-runtime"
 import { ScriptRuntime } from "./script/ScriptRuntime"
 import { useParams } from "react-router-dom"
@@ -25,7 +25,7 @@ export const LogicflowRuntime = memo((props: {
   loopIndex?: number,
 } & LogicFlowOptions) => {
   const { children, schema, ownerId, reactions, variables, loopRow, loopIndex, logicDefines } = props
-
+  console.log("====>LogicflowRuntime", reactions)
   const loopScope: ILoopScope = useMemo(() => {
     return {
       value: loopRow,
@@ -40,13 +40,13 @@ export const LogicflowRuntime = memo((props: {
   const parent = useControllerEngine()
 
   useEffect(() => {
-    if (logicDefines || parent?.logicDefines) {
+    if (logicDefines || parent) {
       const rtEngine = new ControllerEngine(
         schema,
         {
           parent,
           variableMetas: variables,
-          reactions: { ...parent?.reactions, ...reactions },
+          reactions: { ...predefinedReactions, ...parent?.reactions, ...reactions },
           logicDefines: {
             flows: [...logicDefines?.flows || [], ...parent?.logicDefines?.flows || []],
             scripts: [...logicDefines?.scripts || [], ...parent?.logicDefines?.scripts || []],
@@ -83,12 +83,12 @@ export const LogicflowRuntime = memo((props: {
 
   useEffect(() => {
     if (controllerEngine?.logicDefines?.scripts?.length && controllerEngine) {
-      const scriptRuntim = new ScriptRuntime(controllerEngine, { urlParams })
+      const scriptRuntim = new ScriptRuntime(controllerEngine, { urlParams }, ownerId)
       return () => {
         scriptRuntim.dispose()
       }
     }
-  }, [controllerEngine, urlParams])
+  }, [controllerEngine, ownerId, urlParams])
 
   return (
     controllerEngine ?
