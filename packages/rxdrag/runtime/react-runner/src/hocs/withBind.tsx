@@ -1,7 +1,7 @@
 import React from "react"
 import { useField } from "@rxdrag/react-fieldy"
 import { ReactComponent } from "@rxdrag/react-shared"
-import { memo, useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { IFieldMeta } from "@rxdrag/fieldy"
 
 export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMeta): ReactComponent {
@@ -13,7 +13,7 @@ export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMet
 
   const propName = /*fieldMeta.params?.valuePropName || */"value"
 
-  return memo((props: { value?: unknown }) => {
+  return (props: { value?: unknown }) => {
     const [value, setValue] = useState<unknown>(props?.value)
     const field = useField()
 
@@ -38,5 +38,5 @@ export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMet
     }, [field])
 
     return <WrappedComponent {...props} {...{ [propName]: value, [trigger]: handleChange }} />
-  })
+  }
 }

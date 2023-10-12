@@ -14,7 +14,7 @@ export interface INodeMeta<
   selfRender?: boolean;
 
   //props的表达式
-  exprs?: Record<string, string|null>;
+  exprs?: Record<string, string | null>;
 }
 
 export interface INodeSchema<Field = unknown, NodeController = unknown>

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactComponent } from "@rxdrag/react-shared"
-import { memo, useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { ControllerContext } from "../contexts"
 import { EventHandler, IController, IControllerMeta } from "@rxdrag/minions-runtime-react"
 import { useControllerEngine } from "../hooks/useControllerEngine"
@@ -10,14 +10,14 @@ export function withController(WrappedComponent: ReactComponent, meta: IControll
     return WrappedComponent
   }
 
-  return memo((props: any) => {
-    const [changedProps, setChangeProps] = useState<any>()
+  return (props: any) => {
+    const [changedProps, setChangedProps] = useState<any>()
     const [events, setEvents] = useState<Record<string, EventHandler>>()
     const [controller, setController] = useState<IController>()
     const controllerEngine = useControllerEngine();
 
     const handlePropsChange = useCallback((name: string, value: any) => {
-      setChangeProps((changedProps: any) => {
+      setChangedProps((changedProps: any) => {
         return ({ ...changedProps, [name]: value })
       })
     }, [])
@@ -33,7 +33,7 @@ export function withController(WrappedComponent: ReactComponent, meta: IControll
     useEffect(() => {
       const ctrlProps = controller?.getProps()
       if (ctrlProps) {
-        setChangeProps(ctrlProps)
+        setChangedProps(ctrlProps)
       }
     }, [controller])
 
@@ -62,5 +62,5 @@ export function withController(WrappedComponent: ReactComponent, meta: IControll
         <WrappedComponent {...newProps} />
       </ControllerContext.Provider>
     )
-  })
+  }
 }
