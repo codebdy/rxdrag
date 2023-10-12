@@ -1300,9 +1300,6 @@
                           },
                           "x-field": {
                             "name": "name",
-                            "params": {
-                              "withBind": true
-                            },
                             "reactionMeta": {
                               "display": {},
                               "pattern": {},
@@ -1321,9 +1318,6 @@
                           },
                           "x-field": {
                             "name": "login_name",
-                            "params": {
-                              "withBind": true
-                            },
                             "reactionMeta": {
                               "display": {},
                               "pattern": {},
@@ -1389,9 +1383,6 @@
                                               "componentName": "Input",
                                               "props": {},
                                               "x-field": {
-                                                "params": {
-                                                  "withBind": true
-                                                },
                                                 "reactionMeta": {
                                                   "display": {},
                                                   "pattern": {},
@@ -1427,9 +1418,6 @@
                                               "componentName": "Input",
                                               "props": {},
                                               "x-field": {
-                                                "params": {
-                                                  "withBind": true
-                                                },
                                                 "reactionMeta": {
                                                   "display": {},
                                                   "pattern": {},

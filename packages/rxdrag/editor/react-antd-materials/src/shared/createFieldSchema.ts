@@ -39,10 +39,7 @@ export function transformExpressionField(expFields: IExpressionField[]) {
                 }
               },
               "x-field": {
-                name: "expression",
-                params: {
-                  withBind: true,
-                }
+                name: "expression"
               },
             }
           ]
@@ -54,20 +51,6 @@ export function transformExpressionField(expFields: IExpressionField[]) {
 
 export function createFieldSchema() {
   const reactionFields: IExpressionField[] = [
-    // 有可能会导致死循环，暂时不用value
-    // {
-    //   label: "$value",
-    //   name: "value",
-    //   valueInputSchema: {
-    //     componentName: "ValueInput",
-    //     "x-field": {
-    //       name: "value",
-    //       params: {
-    //         withBind: true,
-    //       }
-    //     },
-    //   },
-    // },
     {
       label: "$display",
       name: "display",
@@ -172,11 +155,7 @@ export function createFieldSchema() {
           {
             componentName: "Switch",
             "x-field": {
-              name: "value",
-              params: {
-                valuePropName: "checked",
-                withBind: true,
-              }
+              name: "value"
             },
           }
         ]

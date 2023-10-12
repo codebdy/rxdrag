@@ -15,9 +15,6 @@ export const postDataSchema: INodeSchema = {
           componentName: "Input",
           "x-field": {
             name: "config.rootUrl",
-            params: {
-              withBind: true,
-            }
           },
         }
       ]
@@ -32,9 +29,6 @@ export const postDataSchema: INodeSchema = {
           componentName: "Input",
           "x-field": {
             name: "config.entityName",
-            params: {
-              withBind: true,
-            }
           },
         }
       ]
@@ -49,9 +43,6 @@ export const postDataSchema: INodeSchema = {
           componentName: "Input",
           "x-field": {
             name: "config.dataPath",
-            params: {
-              withBind: true,
-            }
           },
         }
       ]

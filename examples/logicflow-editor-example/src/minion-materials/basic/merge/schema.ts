@@ -15,9 +15,6 @@ export const mergeSchema: INodeSchema = {
           componentName: "PortsInput",
           "x-field": {
             name: "inPorts",
-            params: {
-              withBind: true,
-            }
           },
           props: {
             title: "$configPorts",

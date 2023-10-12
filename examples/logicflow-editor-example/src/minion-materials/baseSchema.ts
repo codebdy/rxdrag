@@ -8,9 +8,6 @@ export const labelSchema = {
       componentName: "Input",
       "x-field": {
         name: "label",
-        params: {
-          withBind: true,
-        }
       },
     }
   ]
@@ -26,9 +23,6 @@ export const nameSchema = {
       componentName: "Input",
       "x-field": {
         name: "name",
-        params: {
-          withBind: true,
-        }
       },
     }
   ]

@@ -20,7 +20,7 @@ export function transPropSchemas(schemas: INodeSchema<IFieldMeta, IControllerMet
       expressionSetter: {
         componentName: "ExpressionInput",
         "x-field": {
-          name: "propExpressions." + propSchema["x-field"]?.name,
+          name: propSchema["x-field"]?.name,
         },
       }
     },

@@ -293,9 +293,6 @@
                           "x-field": {
                             "type": "normal",
                             "name": "username",
-                            "params": {
-                              "withBind": true
-                            },
                             "reactionMeta": {
                               "display": {},
                               "pattern": {},

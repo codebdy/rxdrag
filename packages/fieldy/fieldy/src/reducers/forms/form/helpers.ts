@@ -41,8 +41,8 @@ export class FormHelper {
     let currentValue: any = formValue;
     let parentField: FieldState | undefined = undefined
     for (const field of fields) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const fieldValue = parentField?.meta.type === "array" ? currentValue?.[parseInt(field.name!)] : currentValue?.[field.name!]
+
+      const fieldValue = parentField?.meta.type === "array" ? currentValue?.[field.name as number] : currentValue?.[field.name as string]
 
       currentValue = fieldValue
       parentField = field
@@ -76,7 +76,8 @@ export class FormHelper {
       newParentValue = [...newParentValue];
       (newParentValue as unknown[]).splice(parseInt(fieldName), 0, value)
     } else {
-      newParentValue = { ...newParentValue, [fieldName]: value }
+      newParentValue = { ...newParentValue }
+      newParentValue[fieldName] = value
     }
     return newParentValue
   }

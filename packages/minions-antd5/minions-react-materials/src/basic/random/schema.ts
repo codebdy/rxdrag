@@ -14,10 +14,7 @@ export const randomSchema: INodeSchema = {
         {
           componentName: "InputNumber",
           "x-field": {
-            name: `config.minValue`,
-            params: {
-              withBind: true,
-            }
+            name: `config.minValue`
           },
         }
       ]
@@ -31,10 +28,7 @@ export const randomSchema: INodeSchema = {
         {
           componentName: "InputNumber",
           "x-field": {
-            name: `config.maxValue`,
-            params: {
-              withBind: true,
-            }
+            name: `config.maxValue`
           },
         }
       ]

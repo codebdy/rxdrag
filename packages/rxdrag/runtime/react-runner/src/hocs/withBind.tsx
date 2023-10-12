@@ -36,6 +36,7 @@ export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMet
     useEffect(() => {
       setValue(field?.getValue())
     }, [field])
+
     return <WrappedComponent {...props} {...{ [propName]: value, [trigger]: handleChange }} />
   })
 }

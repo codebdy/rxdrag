@@ -319,20 +319,24 @@ export class FieldyEngineImpl implements IFieldyEngine {
 
   subscribeToFieldValueChange(formName: string, fieldPath: string, listener: FieldValueChangeListener): Unsubscribe {
     invariant(typeof listener === 'function', 'listener must be a function.')
-    const previousFormValue: FormValue | undefined = this.store.getState().forms[formName]?.value
-    const formState = this.getFormState(formName)
-    const formHelper = formState ? new FormHelper(formState) : undefined
+    let previousFormState = this.getFormState(formName)
 
     const handleChange = () => {
-      const nextFormValue = this.store.getState().forms[formName]?.value
+      const previousFormValue: FormValue | undefined = previousFormState?.value
+      const nextFormState = this.store.getState().forms[formName];
+      const nextFormValue = nextFormState?.value
       if (nextFormValue === previousFormValue) {
         return
       }
-      const prevValue = formHelper?.doGetValueByPath(previousFormValue, fieldPath)
-      const value = formHelper?.doGetValueByPath(nextFormValue, fieldPath)
+      const previousHelper = previousFormState ? new FormHelper(previousFormState) : undefined
+      const nextHelper = previousFormState ? new FormHelper(previousFormState) : undefined
+      const prevValue = previousHelper?.doGetValueByPath(nextFormState, fieldPath)
+      const value = nextHelper?.doGetValueByPath(nextFormValue, fieldPath)
+
       if (value !== prevValue) {
         listener(value, prevValue)
       }
+      previousFormState = nextFormState
     }
 
     return this.store.subscribe(handleChange)

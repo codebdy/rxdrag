@@ -14,11 +14,7 @@ export const mockSchema: INodeSchema = {
         {
           componentName: "Switch",
           "x-field": {
-            name: `config.isError`,
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
+            name: `config.isError`
           },
         }
       ]
@@ -32,10 +28,7 @@ export const mockSchema: INodeSchema = {
         {
           componentName: "InputNumber",
           "x-field": {
-            name: "config.duration",
-            params: {
-              withBind: true,
-            }
+            name: "config.duration"
           },
         }
       ]

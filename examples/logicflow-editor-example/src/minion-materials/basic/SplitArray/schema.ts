@@ -15,9 +15,6 @@ export const splitArraySchema: INodeSchema = {
           componentName: "PortsInput",
           "x-field": {
             name: "outPorts",
-            params: {
-              withBind: true,
-            }
           },
           props: {
             title: "$configPorts",

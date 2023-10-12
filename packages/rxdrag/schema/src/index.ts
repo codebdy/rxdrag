@@ -14,10 +14,6 @@ export interface INodeMeta<
   locked?: boolean;
   //自己渲染，引擎不渲染
   selfRender?: boolean;
-  //属性表达式，这算是低代码平台的扩展
-  propExpressions?: {
-    [key: string]: string | undefined;
-  };
 }
 
 export interface INodeSchema<Field = unknown, NodeController = unknown>

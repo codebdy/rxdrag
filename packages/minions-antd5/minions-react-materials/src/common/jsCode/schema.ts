@@ -14,10 +14,7 @@ export const jsCodeSchema: INodeSchema = {
         {
           componentName: "PortsInput",
           "x-field": {
-            name: "inPorts",
-            params: {
-              withBind: true,
-            }
+            name: "inPorts"
           },
           props: {
             title: "$configPorts",
@@ -36,10 +33,7 @@ export const jsCodeSchema: INodeSchema = {
         {
           componentName: "PortsInput",
           "x-field": {
-            name: "outPorts",
-            params: {
-              withBind: true,
-            }
+            name: "outPorts"
           },
           props: {
             title: "$configPorts",
@@ -58,10 +52,7 @@ export const jsCodeSchema: INodeSchema = {
         {
           componentName: "TextArea",
           "x-field": {
-            name: "config.expression",
-            params: {
-              withBind: true,
-            }
+            name: "config.expression"
           },
           props: {
             defaultValue:

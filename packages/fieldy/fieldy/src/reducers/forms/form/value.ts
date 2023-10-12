@@ -28,7 +28,6 @@ export function valueReduer(state: FormValue | undefined, action: IAction<unknow
       if (formHelper.getValueByPath(setFieldValuePayload.path) === undefined) {
         return formHelper.setValueByPath(setFieldValuePayload.path, setFieldValuePayload.value);
       }
-      return state;
   }
   return state
 }

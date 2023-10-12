@@ -40,9 +40,6 @@ export function transformExpressionField(expFields: IExpressionField[]) {
               },
               "x-field": {
                 name: "expression",
-                params: {
-                  withBind: true,
-                }
               },
             }
           ]
@@ -159,10 +156,6 @@ export function createFieldSchema() {
             componentName: "Switch",
             "x-field": {
               name: "value",
-              params: {
-                valuePropName: "checked",
-                withBind: true,
-              }
             },
           }
         ]
