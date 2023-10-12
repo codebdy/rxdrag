@@ -134,13 +134,15 @@ export interface IFormNode<T> extends IValidationSubscriber {
 export interface IForm<ValidateRules extends IValidateSchema = IValidateSchema> extends IFormNode<FormValue | undefined> {
   name: string
   getField(path: string): IField<ValidateRules> | undefined
+  queryField(pathExp: string): IField<ValidateRules> | undefined
   registerField(fieldSchema: IFieldSchema<ValidateRules>): IField
   unregisterField(path: string): void
 
   getFieldState(fieldPath: string): FieldState | undefined
 
   getFieldSchemas(): IFieldSchema<ValidateRules>[]
-  getRootFields(): IFieldSchema<ValidateRules>[]
+  getRootFieldSchemas(): IFieldSchema<ValidateRules>[]
+  getRootFields(): IField<ValidateRules>[]
 
   getExpContext(): Record<string, unknown> | undefined
   setExpContext(expContext?: Record<string, unknown> | undefined): void

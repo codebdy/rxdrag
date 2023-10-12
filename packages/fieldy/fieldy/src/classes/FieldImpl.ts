@@ -5,6 +5,7 @@ import { PropExpression } from "./PropExpression";
 import { ValidationSubscriber } from "./ValidationSubscriber";
 import { IValidateSchema, IValidationError } from "../interfaces";
 import { IFieldFeedback } from "../actions";
+import { getChildFields } from "../funcs/path";
 
 export function transformErrorsToFeedbacks(errors: IValidationError[], schemas: IFieldSchema[]): IFieldFeedback[] {
   const feedbacks: IFieldFeedback[] = []
@@ -37,10 +38,21 @@ export class FieldImpl implements IField {
   }
 
   getSiblings(): IField<IValidateSchema>[] {
-    throw new Error("Method not implemented.");
+    const fields: IField<IValidateSchema>[] = []
+    const fieldStates = getChildFields(this.fieldy.getFormState(this.form.name)?.fields || {}, this.basePath)
+    for (const fieldState of fieldStates) {
+      const field = this.form.getField(fieldState.basePath + "." + fieldState.name)
+      if (field) {
+        fields.push(field)
+      }
+    }
+    return fields
   }
+
   getParent(): IField<IValidateSchema> | undefined {
-    throw new Error("Method not implemented.");
+    if (this.basePath) {
+      return this.form.getField(this.basePath)
+    }
   }
 
   getSubFieldSchemas(): IFieldSchema[] | undefined {
@@ -69,7 +81,7 @@ export class FieldImpl implements IField {
     return this.fieldy.getFieldInitialValue(this.form.name, this.fieldPath)
   }
 
-  getState(): FieldState | undefined{
+  getState(): FieldState | undefined {
     return this.fieldy.getFieldState(this.form.name, this.fieldPath)
   }
   getValue() {

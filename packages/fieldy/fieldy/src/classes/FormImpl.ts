@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { IValidationError } from "../interfaces";
+import { IValidateSchema, IValidationError } from "../interfaces";
 import { ErrorListener, FieldState, FormValue, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
 import { FieldImpl, transformErrorsToFeedbacks } from "./FieldImpl";
 import { ValidationSubscriber } from "./ValidationSubscriber";
@@ -16,7 +16,7 @@ export class FormImpl implements IForm {
     public fieldy: IFieldyEngine,
     public name: string,
   ) { }
-  
+
   getExpContext(): Record<string, unknown> | undefined {
     return this.expContext
   }
@@ -59,6 +59,10 @@ export class FormImpl implements IForm {
 
   getField(path: string): IField | undefined {
     return this.fields[path]
+  }
+
+  queryField(pathExp: string): IField<IValidateSchema> | undefined {
+    throw new Error("Method not implemented.");
   }
 
   registerField(fieldSchema: IFieldSchema): IField {
@@ -152,7 +156,7 @@ export class FormImpl implements IForm {
     return this.fieldy.getFormState(this.name)?.fieldSchemas || []
   }
 
-  getRootFields() {
+  getRootFieldSchemas() {
     const fieldSchemas = this.fieldy.getFormState(this.name)?.fieldSchemas || []
     const children: IFieldSchema[] = []
     for (const child of fieldSchemas) {
@@ -161,6 +165,18 @@ export class FormImpl implements IForm {
       }
     }
     return children
+  }
+
+  getRootFields(): IField<IValidateSchema>[] {
+    const fields: IField<IValidateSchema>[] = []
+    const fieldStates = this.getRootFieldSchemas()
+    for (const fieldState of fieldStates) {
+      const field = this.getField(fieldState.path)
+      if (field) {
+        fields.push(field)
+      }
+    }
+    return fields
   }
 
 }

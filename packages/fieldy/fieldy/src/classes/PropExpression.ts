@@ -1,39 +1,38 @@
-import { getChildFields } from "../funcs/path";
-import { IField } from "../interfaces/fieldy";
+import { IField, IForm } from "../interfaces/fieldy";
 
 export class PropExpression {
   private previousValue: unknown
   constructor(
-    private field: IField,
+    private fieldyNode: IField | IForm,
     public propName: string,
     private expression: string,
     private params: Record<string, unknown> = {}
   ) { }
 
   public changedValue() {
-    const $self = this.field;
-    const $form = this.field.form;
-    const siblingFields = getChildFields(this.field.fieldy.getFormState(this.field.form.name)?.fields || {}, this.field.basePath);
-    const siblings: { [key: string]: IField | undefined } = {}
+    const $form = (this.fieldyNode as IField).form ?? this.fieldyNode;
+    const siblingFields = this.getSiblings() || [];
+    const siblings: Record<string, unknown> = {}
     for (const sibling of siblingFields) {
-      if (sibling.path !== this.field.path) {
-        siblings["$" + sibling.name] = this.field.form.getField(sibling.path);
+      if (sibling.meta?.name) {
+        siblings[sibling.meta?.name] = sibling.getValue();
       }
     }
+
     try {
       if (!this.expression?.trim()) {
         return
       }
       const fn = new Function(
-        "$self",
         "$form",
+        "parent",
         ...Object.keys(siblings),
         ...Object.keys(this.params),
         "return " + this.expression)
 
       const value = fn(
-        $self,
         $form,
+        (this.fieldyNode as IField).form ? (this.fieldyNode as IField).getParent()?.getValue() : undefined,
         ...Object.values(siblings),
         ...Object.values(this.params),
       )
@@ -47,5 +46,13 @@ export class PropExpression {
     }
 
     return { undefined, changed: false }
+  }
+
+  private getSiblings() {
+    if ((this.fieldyNode as IField)?.form) {
+      return (this.fieldyNode as IField).getSiblings()
+    } else if (this.fieldyNode) {
+      return (this.fieldyNode as IForm).getRootFields()
+    }
   }
 }
