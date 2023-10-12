@@ -30,9 +30,10 @@ export class FieldyEngineImpl implements IFieldyEngine {
     this.store = makeStoreInstance(debugMode || false)
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  createForm(_options?: IFormProps): IForm {
-    const name = _options?.name || makeId()
+  createForm(
+    formProps: IFormProps | undefined,
+  ): IForm {
+    const name = formProps?.name || makeId()
     this.dispatch({
       type: CREATE_FORM,
       payload: {

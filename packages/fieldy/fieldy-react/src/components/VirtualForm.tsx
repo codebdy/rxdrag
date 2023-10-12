@@ -9,20 +9,26 @@ export const VirtualForm = (props: {
   defaultValue?: FormValue | undefined,
   value?: FormValue | undefined,
   onValueChange?: (value?: FormValue | undefined) => void,
+  //表达式中用到的变量
+  expContext?: Record<string, unknown>,
   children?: React.ReactNode
 }) => {
-  const { name, initialValue, defaultValue, value, children, onValueChange } = props
+  const { name, initialValue, defaultValue, value, children, onValueChange, expContext } = props
   const [form, setForm] = useState<IForm>()
   const fieldy = useFieldy()
   useEffect(() => {
     if (fieldy) {
-      const form = fieldy.createForm({ name })
+      const form = fieldy.createForm({ name },)
       setForm(form)
       return () => {
         fieldy.removeForm(form.name)
       }
     }
   }, [fieldy, name])
+
+  useEffect(() => {
+    form?.setExpContext(expContext)
+  }, [expContext, form])
 
   useEffect(() => {
     if (fieldy && form) {

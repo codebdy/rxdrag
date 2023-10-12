@@ -3,7 +3,12 @@ import { IField } from "../interfaces/fieldy";
 
 export class PropExpression {
   private previousValue: unknown
-  constructor(private field: IField, public propName: string, private expression: string) { }
+  constructor(
+    private field: IField,
+    public propName: string,
+    private expression: string,
+    private params: Record<string, unknown> = {}
+  ) { }
 
   public changedValue() {
     const $self = this.field;
@@ -19,11 +24,20 @@ export class PropExpression {
       if (!this.expression?.trim()) {
         return
       }
-      const value = new Function("$self", "$form", ...Object.keys(siblings), "return " + this.expression)(
+      const fn = new Function(
+        "$self",
+        "$form",
+        ...Object.keys(siblings),
+        ...Object.keys(this.params),
+        "return " + this.expression)
+
+      const value = fn(
         $self,
         $form,
-        ...Object.values(siblings)
+        ...Object.values(siblings),
+        ...Object.values(this.params),
       )
+
       if (value !== this.previousValue) {
         this.previousValue = value
         return { value, changed: true }

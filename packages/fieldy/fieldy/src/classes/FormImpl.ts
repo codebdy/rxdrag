@@ -9,8 +9,21 @@ export class FormImpl implements IForm {
     [key: string]: IField | undefined
   } = {}
   validationSubscriber: ValidationSubscriber = new ValidationSubscriber()
+  //表达式中用到的变量
+  private expContext?: Record<string, unknown>
 
-  constructor(public fieldy: IFieldyEngine, public name: string) { }
+  constructor(
+    public fieldy: IFieldyEngine,
+    public name: string,
+  ) { }
+  
+  getExpContext(): Record<string, unknown> | undefined {
+    return this.expContext
+  }
+
+  setExpContext(expContext?: Record<string, unknown> | undefined): void {
+    this.expContext = expContext
+  }
 
   reset(): void {
     throw new Error("Method not implemented.");

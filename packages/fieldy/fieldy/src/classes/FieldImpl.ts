@@ -3,7 +3,7 @@ import { isStr } from "@rxdrag/shared";
 import { ErrorListener, FieldState, FormState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
 import { PropExpression } from "./PropExpression";
 import { ValidationSubscriber } from "./ValidationSubscriber";
-import { IValidationError } from "../interfaces";
+import { IValidateSchema, IValidationError } from "../interfaces";
 import { IFieldFeedback } from "../actions";
 
 export function transformErrorsToFeedbacks(errors: IValidationError[], schemas: IFieldSchema[]): IFieldFeedback[] {
@@ -34,6 +34,13 @@ export class FieldImpl implements IField {
       //form.fieldy.subscribeToFormInitialized(form.name, this.handleFieldReaction)
       form.fieldy.subscribeToFormChange(form.name, this.handleFieldReaction)
     }
+  }
+
+  getSiblings(): IField<IValidateSchema>[] {
+    throw new Error("Method not implemented.");
+  }
+  getParent(): IField<IValidateSchema> | undefined {
+    throw new Error("Method not implemented.");
   }
 
   getSubFieldSchemas(): IFieldSchema[] | undefined {

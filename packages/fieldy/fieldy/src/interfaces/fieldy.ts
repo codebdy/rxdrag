@@ -141,6 +141,9 @@ export interface IForm<ValidateRules extends IValidateSchema = IValidateSchema> 
 
   getFieldSchemas(): IFieldSchema<ValidateRules>[]
   getRootFields(): IFieldSchema<ValidateRules>[]
+
+  getExpContext(): Record<string, unknown> | undefined
+  setExpContext(expContext?: Record<string, unknown> | undefined): void
 }
 
 export interface IField<ValidateRules extends IValidateSchema = IValidateSchema> extends IFormNode<unknown> {
@@ -154,6 +157,8 @@ export interface IField<ValidateRules extends IValidateSchema = IValidateSchema>
   getFieldSchema(): IFieldSchema<ValidateRules>
   getSubFieldSchemas(): IFieldSchema<ValidateRules>[] | undefined
   getState(): FieldState | undefined
+  getSiblings(): IField[]
+  getParent(): IField | undefined
   destroy(): void
 }
 
