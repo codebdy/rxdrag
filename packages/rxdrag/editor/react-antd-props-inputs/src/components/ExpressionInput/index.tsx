@@ -2,29 +2,23 @@ import { DeleteOutlined, FunctionOutlined } from "@ant-design/icons"
 import Editor from 'react-monaco-editor';
 import { useThemeMode, useSettersTranslate } from "@rxdrag/react-core";
 import { Button, Drawer, Space } from "antd"
-import { memo, useCallback, useEffect, useMemo, useState } from "react"
+import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components";
-import { isString } from "lodash";
 
 const StyledDrawer = styled(Drawer)`
   .ant-drawer-body{
     padding: 12px 0 12px 0;
   }
 `
-
 export const ExpressionInput = memo((props: {
-  value?: string,
-  onChange?: (value?: string) => void,
+  value?: string | null,
+  onChange?: (value?: string | null) => void,
 }) => {
   const { value, onChange, ...other } = props;
-  const [inputValue, setInputValue] = useState<string>();
+  const [inputValue, setInputValue] = useState<string | null>();
   const [open, setOpen] = useState(false);
   const t = useSettersTranslate()
   const themeMode = useThemeMode();
-  console.log("====>value", value)
-  const isExp = useMemo(() => {
-    return isString(value) && value.trim().startsWith("{{") && value.trim().endsWith("}}")
-  }, [value])
 
   useEffect(() => {
     setInputValue(value)
@@ -43,22 +37,27 @@ export const ExpressionInput = memo((props: {
     setInputValue(newValue)
   }, [])
 
-  const handleConfirm = useCallback(() => {
-    onChange?.(inputValue)
-    setOpen(false);
-  }, [inputValue, onChange])
-
   const handleClear = useCallback(() => {
     if (inputValue) {
-      onChange?.(undefined)
-      setInputValue(undefined)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      onChange?.(null)
+      setInputValue(null)
       setOpen(false);
     }
   }, [inputValue, onChange])
 
+  const handleConfirm = useCallback(() => {
+    if (!inputValue) {
+      handleClear()
+    }
+    onChange?.(inputValue)
+    setOpen(false);
+  }, [handleClear, inputValue, onChange])
+
+
   return (
     <>
-      <Button type={isExp ? "link" : "text"} icon={<FunctionOutlined />} onClick={handleOpen} {...other} />
+      <Button type={value ? "link" : "text"} icon={<FunctionOutlined />} onClick={handleOpen} {...other} />
       <StyledDrawer
         title={t("ExpressionInput.DialogTitle")}
         width={500}
