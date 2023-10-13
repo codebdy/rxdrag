@@ -3,101 +3,11 @@ import { IModule, IModuleCategory } from "../interfaces/module";
 import { DeviceType } from "../interfaces";
 import mole from "./molepage.json"
 import moleSetting from "./molesettings.json"
+import userList from "./userList.json"
+import expression from "./expression.json"
 
 const rootNodeSchema: INodeSchema = {
   componentName: "Page"
-}
-
-const userList = {
-  "componentName": "Page",
-  "slots": {},
-  "children": [
-    {
-      "componentName": "Form",
-      "props": {
-        "colon": false
-      },
-      "x-controller": {
-        "id": "LlRDj22u",
-        "name": "查询表单",
-        "enable": true
-      },
-      "slots": {},
-      "children": [
-        {
-          "componentName": "Input",
-          "x-controller": {
-            "id": "Ddl53loc",
-            "name": "字段1",
-            "enable": true
-          },
-          "slots": {},
-          "children": []
-        },
-        {
-          "componentName": "Input",
-          "x-controller": {
-            "id": "ndwJ5LwA",
-            "name": "字段2",
-            "enable": true
-          },
-          "slots": {},
-          "children": []
-        }
-      ]
-    },
-    {
-      "componentName": "Table",
-      "selfRender": true,
-      "x-controller": {
-        "id": "JClydKG7",
-        "name": "用户列表",
-        "enable": true
-      },
-      "slots": {},
-      "children": [
-        {
-          "componentName": "TableColumn",
-          "props": {
-            "title": "Column1"
-          },
-          "slots": {},
-          "children": []
-        },
-        {
-          "componentName": "TableColumn",
-          "props": {
-            "title": "Column2"
-          },
-          "slots": {},
-          "children": []
-        },
-        {
-          "componentName": "TableColumn",
-          "props": {
-            "title": "Column3"
-          },
-          "slots": {},
-          "children": [
-            {
-              "componentName": "Button",
-              "props": {
-                "type": "primary",
-                "title": "编辑"
-              },
-              "x-controller": {
-                "id": "j4lFf--c",
-                "name": "编辑按钮",
-                "enable": true
-              },
-              "slots": {},
-              "children": []
-            }
-          ]
-        }
-      ]
-    }
-  ]
 }
 
 
@@ -117,6 +27,17 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
           title: "编辑对话框",
           schema: rootNodeSchema,
         }
+      ],
+    },
+    {
+      id: "expression-demo",
+      title: "表达式演示",
+      views: [
+        {
+          id: "expression-index",
+          title: "入口页",
+          schema: expression,
+        },
       ],
     },
     {
@@ -276,6 +197,10 @@ export const defaultModuleCategories: { [device: string]: IModuleCategory[] | un
         {
           id: "users",
           title: "用户管理",
+        },
+        {
+          id: "expression-demo",
+          title: "表达式示例",
         },
         {
           id: "mole",
