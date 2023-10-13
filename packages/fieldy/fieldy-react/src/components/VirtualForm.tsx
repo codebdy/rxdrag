@@ -50,15 +50,15 @@ export const VirtualForm = (props: {
 
   useEffect(() => {
     if (fieldy) {
-      const unsub = form?.onValueChange((value: FormValue | undefined) => {
+      const unsub = form?.onValueChange((val: FormValue | undefined) => {
         if (form.getModified()) {
-          onValueChange?.(value)
+          onValueChange?.(val)
         }
       })
       return unsub;
     }
 
-  }, [fieldy, form, onValueChange])
+  }, [fieldy, form, onValueChange, value])
 
   //form嵌套时要清空field树，添加一个FieldContext.Provider来完成
   return (

@@ -240,6 +240,7 @@ export function createFieldSchema() {
       "x-field": {
         name: "x-field.name",
         label: "$fieldName",
+        //defaultValue: "",
       },
     },
     {

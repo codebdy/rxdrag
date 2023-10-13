@@ -1,11 +1,10 @@
-import React from "react"
+import React, { memo } from "react"
 import { useField } from "@rxdrag/react-fieldy"
 import { ReactComponent } from "@rxdrag/react-shared"
 import { useCallback, useEffect, useState } from "react"
 import { IFieldMeta } from "@rxdrag/fieldy"
 
 export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMeta): ReactComponent {
-
   //数组跟对象类型不需要绑定
   if (fieldMeta?.type === "object" || fieldMeta?.type === "array" || !fieldMeta) {
     return WrappedComponent
@@ -13,7 +12,7 @@ export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMet
 
   const propName = /*fieldMeta.params?.valuePropName || */"value"
 
-  return (props: { value?: unknown }) => {
+  return memo((props: { value?: unknown }) => {
     const [value, setValue] = useState<unknown>(props?.value)
     const field = useField()
 
@@ -38,5 +37,5 @@ export function withBind(WrappedComponent: ReactComponent, fieldMeta?: IFieldMet
     }, [field])
 
     return <WrappedComponent {...props} {...{ [propName]: value, [trigger]: handleChange }} />
-  }
+  })
 }

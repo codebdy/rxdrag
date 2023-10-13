@@ -330,8 +330,8 @@ export class FieldyEngineImpl implements IFieldyEngine {
         return
       }
       const previousHelper = previousFormState ? new FormHelper(previousFormState) : undefined
-      const nextHelper = previousFormState ? new FormHelper(previousFormState) : undefined
-      const prevValue = previousHelper?.doGetValueByPath(nextFormState, fieldPath)
+      const nextHelper = nextFormState ? new FormHelper(nextFormState) : undefined
+      const prevValue = previousHelper?.doGetValueByPath(previousFormValue, fieldPath)
       const value = nextHelper?.doGetValueByPath(nextFormValue, fieldPath)
 
       if (value !== prevValue) {
