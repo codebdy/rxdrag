@@ -4,6 +4,10 @@ export interface IFxContext {
   fxMetas?: ILogicFlowDefine[]
 }
 
+export interface IExpContext {
+  expVariables?: Record<string, unknown>
+}
+
 export interface ILoopScope {
   index?: number,
   row?: unknown,

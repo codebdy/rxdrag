@@ -2,10 +2,10 @@ import { IReactContext, IVariableContext } from "@rxdrag/minions-runtime-react";
 import { useForm } from "@rxdrag/react-fieldy";
 import { useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { IFxContext, ILoopScopeContext } from "@rxdrag/minions-runtime";
+import { IExpContext, IFxContext, ILoopScopeContext } from "@rxdrag/minions-runtime";
 import { ControllerEngine } from "../LogicflowRuntime/ControllerEngine";
 
-export type MergedLogicFlowContext = IReactContext & IVariableContext & IFxContext & ILoopScopeContext
+export type MergedLogicFlowContext = IReactContext & IVariableContext & IFxContext & ILoopScopeContext &IExpContext
 
 export function useLogicFlowContext(engine: ControllerEngine | null) {
   const navigate = useNavigate()
@@ -20,6 +20,7 @@ export function useLogicFlowContext(engine: ControllerEngine | null) {
     variableController: engine?.variableController,
     fxMetas: engine?.logicDefines?.fxFlows,
     loopScope: engine?.loopScope,
+    
   }), [engine, form, navigate, urlParams])
 
   return logicFlowContext

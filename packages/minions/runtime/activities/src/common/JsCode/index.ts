@@ -1,4 +1,4 @@
-import { InputHandler, Activity, AbstractActivity, DynamicInput } from "@rxdrag/minions-runtime"
+import { InputHandler, Activity, AbstractActivity, DynamicInput, IExpContext } from "@rxdrag/minions-runtime"
 import { INodeDefine } from "@rxdrag/minions-schema"
 
 
@@ -7,14 +7,14 @@ export interface IJsCodeConfig {
 }
 
 @Activity(JsCode.NAME)
-export class JsCode extends AbstractActivity<IJsCodeConfig> {
+export class JsCode extends AbstractActivity<IJsCodeConfig, IExpContext> {
   public static NAME = "system.jsCode"
   private noPassInputs: string[] = []
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private inputs: any = {}
 
-  constructor(meta: INodeDefine<IJsCodeConfig>, options?: unknown) {
-    super(meta, options)
+  constructor(meta: INodeDefine<IJsCodeConfig>, context?: IExpContext) {
+    super(meta, context)
 
     for (const input of meta.inPorts || []) {
       this.noPassInputs.push(input.name)
@@ -35,12 +35,13 @@ export class JsCode extends AbstractActivity<IJsCodeConfig> {
     const expression = this.meta.config?.expression?.trim()
     if (expression) {
       const outputs: { [name: string]: InputHandler } = {}
-      for (const output of this.jointers.outputs) {
+      for (const output of this.jointers.getOutputs()) {
         outputs[output.name] = output.push
       }
 
+      const fn = new Function(...Object.keys(this.context?.expVariables || {}), "return " + expression)
       // eslint-disable-next-line no-new-func
-      new Function("return " + expression)()?.({ inputs, outputs })
+      fn()?.(...Object.values(this.context?.expVariables || {}), { inputs, outputs })
     }
   }
 

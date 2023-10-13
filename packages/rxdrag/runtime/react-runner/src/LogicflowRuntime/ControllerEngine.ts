@@ -10,7 +10,8 @@ export type ControllerOptions = {
   parent?: ControllerEngine,
   reactions?: Record<string, ControllerReaction>,
   logicDefines?: LogicDefines,
-  loopScope?: ILoopScope
+  loopScope?: ILoopScope,
+  expVariables?: Record<string, unknown>,
 }
 
 export class ControllerEngine {
@@ -19,6 +20,7 @@ export class ControllerEngine {
   reactions?: Record<string, ControllerReaction>
   logicDefines?: LogicDefines
   loopScope?: ILoopScope
+  expVariables?: Record<string, unknown>
 
   constructor(schema: IComponentRenderSchema,
     options?: ControllerOptions,
@@ -30,6 +32,7 @@ export class ControllerEngine {
     this.variableController.setMetas(options?.variableMetas)
     this.controllers = this.getSchemaControllers(schema, { ...options?.parent?.controllers },)
     this.loopScope = options?.loopScope
+    this.expVariables = options?.expVariables
   }
 
   getSchemaControllers = (schema: IComponentRenderSchema, controllers: Record<string, IController>) => {
