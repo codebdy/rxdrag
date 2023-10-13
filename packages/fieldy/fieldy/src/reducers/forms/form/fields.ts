@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-case-declarations */
 import { isStr } from "@rxdrag/shared";
-import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIELDS, RemoveFormFieldsPayload, FieldActionPayload, SetFieldValuePayload, SET_FORM_INITIAL_VALUE, SET_FORM_FIELDS_FEEDBACKS, SetFormFeedbacksPayload } from "../../../actions";
+import { SET_FORM_FIELDS, SetFormFieldsPayload, ADD_FORM_FIELDS, REMOVE_FORM_FIELD, RemoveFormFieldPayload, FieldActionPayload, SetFieldValuePayload, SET_FORM_INITIAL_VALUE, SET_FORM_FIELDS_FEEDBACKS, SetFormFeedbacksPayload } from "../../../actions";
 import { FieldsState, IAction, IFieldSchema } from "../../../interfaces/fieldy";
 import { fieldReduce } from "./field";
 import { DisplayType, Expression, PatternType } from "../../../interfaces";
@@ -23,11 +23,11 @@ export function fieldsReduer(state: FieldsState, action: IAction<unknown>): Fiel
     case ADD_FORM_FIELDS:
       const newFields = makeFields((action.payload as SetFormFieldsPayload).fieldSchemas)
       return { ...state, ...newFields }
-    case REMOVE_FORM_FIELDS:
-      const removeFieldValuePayload = action.payload as RemoveFormFieldsPayload
+    case REMOVE_FORM_FIELD:
+      const removeFieldValuePayload = action.payload as RemoveFormFieldPayload
       const leftFields = {} as FieldsState
       for (const key of Object.keys(state)) {
-        if (!removeFieldValuePayload.paths?.find(path => path === key)) {
+        if (removeFieldValuePayload.path !== key) {
           leftFields[key] = state[key]
         }
       }

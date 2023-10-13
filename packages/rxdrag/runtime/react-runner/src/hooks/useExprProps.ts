@@ -36,8 +36,10 @@ export function useExprProps(exprMetas: Record<string, string | null>) {
 
   useEffect(() => {
     const unsub = form?.onValueChange(handleFormValueChange)
+    const unsubContext = form?.onExpContextChange(handleFormValueChange)
     return () => {
       unsub?.()
+      unsubContext?.()
     }
   }, [form, handleFormValueChange])
 

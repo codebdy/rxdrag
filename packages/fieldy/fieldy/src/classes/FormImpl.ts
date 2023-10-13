@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { IValidateSchema, IValidationError } from "../interfaces";
-import { ErrorListener, FieldState, FormValue, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
+import { ErrorListener, ExpContextChangeListener, FieldState, FormValue, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
 import { FieldImpl, transformErrorsToFeedbacks } from "./FieldImpl";
 import { ValidationSubscriber } from "./ValidationSubscriber";
 
 export class FormImpl implements IForm {
-  fields: {
-    [key: string]: IField | undefined
-  } = {}
+  expContextListeners: ExpContextChangeListener[] = []
+  fields: Record<string, IField> = {}
   validationSubscriber: ValidationSubscriber = new ValidationSubscriber()
   //表达式中用到的变量
   private expContext?: Record<string, unknown>
@@ -23,6 +22,9 @@ export class FormImpl implements IForm {
 
   setExpContext(expContext?: Record<string, unknown> | undefined): void {
     this.expContext = expContext
+    for (const listener of this.expContextListeners) {
+      listener(this.expContext)
+    }
   }
 
   reset(): void {
@@ -90,7 +92,8 @@ export class FormImpl implements IForm {
     if (field) {
       field.refCount = field.refCount - 1
       if (field.refCount <= 0) {
-        this.fieldy.removeFields(this.name, path)
+        field.destroy()
+        this.fieldy.removeField(this.name, path)
         delete this.fields[path]
       }
     }
@@ -177,6 +180,14 @@ export class FormImpl implements IForm {
       }
     }
     return fields
+  }
+
+  onExpContextChange(listener: ExpContextChangeListener): Unsubscribe {
+    this.expContextListeners.push(listener)
+
+    return () => {
+      this.expContextListeners.splice(this.expContextListeners.indexOf(listener), 1)
+    }
   }
 
 }

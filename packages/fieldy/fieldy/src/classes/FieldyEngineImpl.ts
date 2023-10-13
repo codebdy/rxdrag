@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "@rxdrag/shared";
-import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SET_FIELD_INITIAL_VALUE, SET_FIELD_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SetFieldStatePayload, SET_FIELD_STATE, SET_FORM_INITIALIZED_FLAG, SET_FORM_DEFAULT_VALUE, SET_FIELD_DEFAULT_VALUE, INPUT_FIELD_VALUE, SET_FORM_FIELDS_FEEDBACKS, SetFormFeedbacksPayload, IFieldFeedback } from "../actions";
+import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPayload, REMOVE_FORM, REMOVE_FORM_FIELD, SetFieldValuePayload, SET_FIELD_INITIAL_VALUE, SET_FIELD_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SetFieldStatePayload, SET_FIELD_STATE, SET_FORM_INITIALIZED_FLAG, SET_FORM_DEFAULT_VALUE, SET_FIELD_DEFAULT_VALUE, INPUT_FIELD_VALUE, SET_FORM_FIELDS_FEEDBACKS, SetFormFeedbacksPayload, IFieldFeedback } from "../actions";
 import { FieldChangeListener, FieldState, FieldValueChangeListener, FormChangeListener, FormState, FormValue, FormValueChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Unsubscribe } from "../interfaces/fieldy";
 import { reduce, State } from "../reducers";
 import { FormImpl } from "./FormImpl";
@@ -66,12 +66,12 @@ export class FieldyEngineImpl implements IFieldyEngine {
       }
     })
   }
-  removeFields(formName: string, ...fieldPaths: string[]): void {
+  removeField(formName: string, fieldPath: string): void {
     this.dispatch({
-      type: REMOVE_FORM_FIELDS,
+      type: REMOVE_FORM_FIELD,
       payload: {
         formName: formName,
-        paths: fieldPaths,
+        path: fieldPath,
       }
     })
   }

@@ -26,14 +26,16 @@ export class FieldImpl implements IField {
   //发起变化标号，防止无限递归
   initiateExpressionChange = false;
   validationSubscriber: ValidationSubscriber = new ValidationSubscriber()
+  unsubValueChange?: Unsubscribe
+  unsubExpContextChange?: Unsubscribe
 
   constructor(public fieldy: IFieldyEngine, public form: IForm, private fieldPath: string) {
     if (this.meta?.reactionMeta) {
       this.makeExpressions();
       //计算一次联动
       this.handleFieldReaction()
-      //form.fieldy.subscribeToFormInitialized(form.name, this.handleFieldReaction)
-      form.fieldy.subscribeToFormChange(form.name, this.handleFieldReaction)
+      this.unsubValueChange = form.onValueChange(this.handleFieldReaction)
+      this.unsubExpContextChange = form.onExpContextChange(this.handleFieldReaction)
     }
   }
 
@@ -101,7 +103,8 @@ export class FieldImpl implements IField {
   }
 
   destroy(): void {
-    throw new Error("Method not implemented.");
+    this.unsubValueChange?.()
+    this.unsubValueChange?.()
   }
 
   setValue(value: unknown): void {
