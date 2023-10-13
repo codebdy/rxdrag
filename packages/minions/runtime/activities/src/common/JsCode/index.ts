@@ -31,7 +31,7 @@ export class JsCode extends AbstractActivity<IJsCodeConfig, IExpContext> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  outputHandler = (inputs: any) => {
+  outputHandler = (inputs: any, context?: unknown) => {
     const expression = this.meta.config?.expression?.trim()
     if (expression) {
       const outputs: { [name: string]: InputHandler } = {}
@@ -39,9 +39,8 @@ export class JsCode extends AbstractActivity<IJsCodeConfig, IExpContext> {
         outputs[output.name] = output.push
       }
 
-      const fn = new Function(...Object.keys(this.context?.expVariables || {}), "return " + expression)
-      // eslint-disable-next-line no-new-func
-      fn()?.(...Object.values(this.context?.expVariables || {}), { inputs, outputs })
+      const fn = new Function(...Object.keys(this.context?.expVariables || {}), "context", "inputs", "outputs", expression)
+      fn?.(...Object.values(this.context?.expVariables || {}), context, inputs, outputs)
     }
   }
 
