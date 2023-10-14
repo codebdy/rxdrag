@@ -10,7 +10,6 @@ export class PropExpression {
   ) { }
 
   public changedValue() {
-    const $form = (this.parentNode as IField).form ?? this.parentNode;
     const siblingFields = this.getSiblings() || [];
     const siblings: Record<string, unknown> = {}
     for (const sibling of siblingFields) {
@@ -24,14 +23,14 @@ export class PropExpression {
         return
       }
       const fn = new Function(
-        "$form",
+        "query",
         "parent",
         ...Object.keys(siblings),
         ...Object.keys(this.params),
         "return " + this.expression)
 
       const value = fn(
-        $form,
+        this.query,
         (this.parentNode as IField).form ? (this.parentNode as IField).getParent()?.getValue() : undefined,
         ...Object.values(siblings),
         ...Object.values(this.params),
@@ -54,5 +53,11 @@ export class PropExpression {
     } else if (this.parentNode) {
       return (this.parentNode as IForm).getRootFields()
     }
+  }
+
+  //目前仅支持绝对路径，以后改成相对路径可查
+  query = (path: string) => {
+    const form = (this.parentNode as IField).form ?? this.parentNode;
+    form.getField(path)?.getValue()
   }
 }

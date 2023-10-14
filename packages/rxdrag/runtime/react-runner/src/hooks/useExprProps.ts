@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IFieldMeta } from "@rxdrag/fieldy";
-import { PropExpression } from "@rxdrag/fieldy/src/classes/PropExpression";
+import { IFieldMeta, PropExpression } from "@rxdrag/fieldy";
 import { useField, useForm } from "@rxdrag/react-fieldy";
 import { useCallback, useEffect, useState } from "react";
 
