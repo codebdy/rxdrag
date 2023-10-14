@@ -3,14 +3,14 @@ import { IField, IForm } from "../interfaces/fieldy";
 export class PropExpression {
   private previousValue: unknown
   constructor(
-    private fieldyNode: IField | IForm,
+    private parentNode: IField | IForm,
     public propName: string,
     private expression: string,
     private params: Record<string, unknown> = {}
   ) { }
 
   public changedValue() {
-    const $form = (this.fieldyNode as IField).form ?? this.fieldyNode;
+    const $form = (this.parentNode as IField).form ?? this.parentNode;
     const siblingFields = this.getSiblings() || [];
     const siblings: Record<string, unknown> = {}
     for (const sibling of siblingFields) {
@@ -32,7 +32,7 @@ export class PropExpression {
 
       const value = fn(
         $form,
-        (this.fieldyNode as IField).form ? (this.fieldyNode as IField).getParent()?.getValue() : undefined,
+        (this.parentNode as IField).form ? (this.parentNode as IField).getParent()?.getValue() : undefined,
         ...Object.values(siblings),
         ...Object.values(this.params),
       )
@@ -49,10 +49,10 @@ export class PropExpression {
   }
 
   private getSiblings() {
-    if ((this.fieldyNode as IField)?.form) {
-      return (this.fieldyNode as IField).getSiblings()
-    } else if (this.fieldyNode) {
-      return (this.fieldyNode as IForm).getRootFields()
+    if ((this.parentNode as IField)?.form) {
+      return (this.parentNode as IField).getSubFields()
+    } else if (this.parentNode) {
+      return (this.parentNode as IForm).getRootFields()
     }
   }
 }

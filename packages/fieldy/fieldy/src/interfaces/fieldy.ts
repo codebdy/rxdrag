@@ -161,6 +161,7 @@ export interface IField<ValidateRules extends IValidateSchema = IValidateSchema>
   inputValue(value: unknown): void
   getFieldSchema(): IFieldSchema<ValidateRules>
   getSubFieldSchemas(): IFieldSchema<ValidateRules>[] | undefined
+  getSubFields(): IField<ValidateRules>[] | undefined
   getState(): FieldState | undefined
   getSiblings(): IField[]
   getParent(): IField | undefined

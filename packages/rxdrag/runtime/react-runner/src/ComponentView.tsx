@@ -35,7 +35,7 @@ export const ComponentView = memo((
           com,
           node["x-controller"] as IControllerMeta,
         ),
-        node.exprs,
+        node,
       ),
       node?.["x-field"],
     )

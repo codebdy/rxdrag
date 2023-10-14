@@ -1,6 +1,7 @@
 import { ReactComponent } from "@rxdrag/react-shared"
 import { useMemo } from "react"
 import { useExprProps } from "../hooks/useExprProps"
+import { IComponentRenderSchema } from "../ComponentView"
 
 //获取有效的表达式
 const getEffectiveExprs = (exprs: Record<string, string | null>) => {
@@ -17,8 +18,8 @@ const getEffectiveExprs = (exprs: Record<string, string | null>) => {
   }
 }
 
-export function withExprs(WrappedComponent: ReactComponent, exprs?: Record<string, string | null>): ReactComponent {
-
+export function withExprs(WrappedComponent: ReactComponent, node: IComponentRenderSchema): ReactComponent {
+  const exprs = node.exprs
   //数组跟对象类型不需要绑定
   if (!exprs) {
     return WrappedComponent
@@ -31,7 +32,7 @@ export function withExprs(WrappedComponent: ReactComponent, exprs?: Record<strin
   }
 
   return (props: { value?: unknown }) => {
-    const exprProps = useExprProps(effectiveExprs)
+    const exprProps = useExprProps(effectiveExprs, node["x-field"])
 
     const newProps = useMemo(() => {
       return { ...props, ...exprProps }

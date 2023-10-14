@@ -67,6 +67,19 @@ export class FieldImpl implements IField {
     return undefined
   }
 
+  getSubFields(): IField<IValidateSchema>[] | undefined {
+    const fields: IField<IValidateSchema>[] = []
+    for (const schema of this.getSubFieldSchemas() || []) {
+      const field = this.form.getField(schema.path)
+      if (field) {
+        fields.push(field)
+      }
+    }
+
+    return fields
+  }
+
+
   getFieldSchema(): IFieldSchema {
     return this.fieldy.getFormState(this.form.name)?.fieldSchemas.find(schema => schema.path === this.path) || { path: this.path, ...this.meta }
   }
@@ -184,14 +197,14 @@ export class FieldImpl implements IField {
         const exobj = this.meta.reactionMeta[key]
         const expressionText = (exobj as { expression?: string })?.expression
         if (expressionText) {
-          this.expressions.push(new PropExpression(this, key, expressionText))
+          this.expressions.push(new PropExpression(this.getParent() || this.form, key, expressionText))
         } else if (isStr(exobj)) {
           let expressionText = exobj.trim()
           if (expressionText.startsWith("{{") && expressionText.endsWith("}}")) {
             expressionText = expressionText.replace(/^\{\{/, "").replace(/\}\}$/, "");
           }
           if (expressionText) {
-            this.expressions.push(new PropExpression(this, key, expressionText))
+            this.expressions.push(new PropExpression(this.getParent() || this.form, key, expressionText))
           }
         }
       }

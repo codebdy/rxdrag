@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { IFieldMeta } from "@rxdrag/fieldy";
 import { PropExpression } from "@rxdrag/fieldy/src/classes/PropExpression";
 import { useField, useForm } from "@rxdrag/react-fieldy";
 import { useCallback, useEffect, useState } from "react";
 
-export function useExprProps(exprMetas: Record<string, string | null>) {
+export function useExprProps(exprMetas: Record<string, string | null>, fieldMeta?: IFieldMeta) {
   const [changedProps, setChangedProps] = useState<Record<string, unknown>>({})
   const [expressions, setExpressions] = useState<PropExpression[]>([])
 
@@ -11,19 +12,20 @@ export function useExprProps(exprMetas: Record<string, string | null>) {
   const field = useField()
 
   useEffect(() => {
-    const fieldyNode = field || form
-    if (fieldyNode) {
+    //如果本身是字段，则取父节点，否则直接取当前字段
+    const parentNode = (fieldMeta?.name ? field?.getParent() : field) || form
+    if (parentNode) {
       const exps: PropExpression[] = []
       for (const key of Object.keys(exprMetas || {})) {
         const expstr = exprMetas[key]
         if (expstr) {
-          exps.push(new PropExpression(fieldyNode, key, expstr, form?.getExpContext()))
+          exps.push(new PropExpression(parentNode, key, expstr, form?.getExpContext()))
         }
       }
       setExpressions(exps)
     }
 
-  }, [exprMetas, field, form])
+  }, [exprMetas, field, fieldMeta?.name, form])
 
   const handleFormValueChange = useCallback(() => {
     const props: Record<string, unknown> = {}
