@@ -4,7 +4,7 @@ import { Field } from "../Field"
 //动态增加字段用这个，否则不要碰它
 export const ObjectField = memo((
   props: {
-    name: string,
+    name: string | number,
     initialValue?: unknown,
     value?: unknown,
     defaultValue?: unknown,

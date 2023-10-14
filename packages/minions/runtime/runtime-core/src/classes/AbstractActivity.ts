@@ -1,6 +1,6 @@
 import { INodeDefine } from "@rxdrag/minions-schema";
 import { IActivity, IActivityJointers } from "../interfaces/activity";
-import { ActivityJointers } from "./ActivityJointer";
+import { ActivityJointers } from "./ActivityJointers";
 
 export abstract class AbstractActivity<ConfigMeta = unknown, LogicFlowContext = unknown> implements IActivity {
   id: string;
@@ -15,20 +15,7 @@ export abstract class AbstractActivity<ConfigMeta = unknown, LogicFlowContext = 
     //
   }
 
-  next = (inputValue: unknown, outputName = "output") => {
-    const input = this.jointers.inputs[0];
-    const runContext = input?.runContext || {};
-    // 如果给原件配置了上下文标识，自动把输出添加到上下文中
-    const contextId = (this.config as unknown as {contextId:string})?.['contextId']
-    if (contextId) {
-      runContext[contextId] = inputValue;
-    }
-    // 存在在多个输入时，合并上下文
-    if (this.jointers.inputs.length > 1) {
-      this.jointers.inputs.slice(1).forEach(item => {
-        Object.assign(runContext, item.runContext);
-      });
-    }
+  next = (inputValue: unknown, runContext?: object, outputName = "output") => {
     this.jointers.getOutput(outputName)?.push(inputValue, runContext)
   }
 }

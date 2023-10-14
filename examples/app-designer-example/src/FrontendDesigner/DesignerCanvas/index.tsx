@@ -32,7 +32,7 @@ export const DesignerCanvas = memo(() => {
   return (
     <CanvasProxy components={designers}>
       {
-        appFront?.frameSchema && layoutPart === LayoutPart.page
+        appFront?.frameSchema && layoutPart === LayoutPart.module
           ? <ModuleCanvas frameSchema={appFront?.frameSchema} />
           : <Canvas />
       }

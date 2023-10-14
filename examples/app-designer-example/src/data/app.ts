@@ -4,7 +4,7 @@ import adminFrame from "./adminFrame.json"
 import { defaultMenus } from "./menu";
 import { defaultModuleCategories } from "./mudules";
 
-export const app: IApp = {
+export const defaultApp: IApp = {
   id: "app1",
   title: "火星改造项目"
 }

@@ -2,13 +2,13 @@ import { colIcon } from "./icon";
 import { hCFLayoutLocales, hCFLayoutResourceLocales } from "./locales";
 import { hCFLayoutSchema } from "./schema";
 import { ContentMaterial } from "../Content";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { HCFLayout } from "@rxdrag/react-antd-components";
 import { LayoutHeaderMaterial } from "../LayoutHeader";
 import { LayoutFooterMaterial } from "../LayoutFooter";
 
 const name = "HCFLayout"
-export const HCFLayoutMaterial: IComponentMaterial = {
+export const HCFLayoutMaterial: IMaterial = {
   componentName: name,
   component: HCFLayout,
   designer: HCFLayout,

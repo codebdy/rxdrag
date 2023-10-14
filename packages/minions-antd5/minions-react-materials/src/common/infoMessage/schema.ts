@@ -14,10 +14,7 @@ export const infoMessageSchema: INodeSchema = {
         {
           componentName: "Select",
           "x-field": {
-            name: "config.type",
-            params: {
-              withBind: true,
-            }
+            name: "config.type"
           },
           props: {
             options: [
@@ -55,10 +52,7 @@ export const infoMessageSchema: INodeSchema = {
         {
           componentName: "InputNumber",
           "x-field": {
-            name: "config.duration",
-            params: {
-              withBind: true,
-            }
+            name: "config.duration"
           },
 
         }

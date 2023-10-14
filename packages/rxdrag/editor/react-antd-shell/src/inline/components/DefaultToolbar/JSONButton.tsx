@@ -1,8 +1,8 @@
 import { Button, Modal } from "antd"
 import { memo, useCallback, useState } from "react"
-import { jsonIcon } from "../../icons"
 import styled from "styled-components"
 import { JsonView, useSettersTranslate } from "@rxdrag/react-core"
+import { jsonIcon } from "@rxdrag/react-shared"
 
 const ContentContainter = styled.div`
   height: calc(100vh - 200px);

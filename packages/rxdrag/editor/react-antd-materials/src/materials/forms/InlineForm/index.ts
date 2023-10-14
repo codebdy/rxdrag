@@ -2,11 +2,11 @@ import { inlineFormIcon } from "./icon";
 import { inlineFormLocales, inlineFormResourceLocales } from "./locales";
 import { formSchema } from "./schema";
 import { Form as AntdForm } from "antd";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { InlineForm } from "@rxdrag/react-antd-components";
 
 const name = "InlineForm"
-export const InlineFormMaterial: IComponentMaterial = {
+export const InlineFormMaterial: IMaterial = {
   componentName: name,
   component: InlineForm,
   designer: AntdForm,

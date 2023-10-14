@@ -1,9 +1,9 @@
-import { IComponentMaterial, DefaultSlot } from "@rxdrag/react-core";
+import { IMaterial, DefaultSlot } from "@rxdrag/react-core";
 import { locales } from "./locales";
 import { slotSchema } from "./schema";
 
 const name = "Header"
-export const HeaderMaterial: IComponentMaterial = {
+export const HeaderMaterial: IMaterial = {
   componentName: name,
   component: DefaultSlot,
   designer: DefaultSlot,

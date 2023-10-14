@@ -18,28 +18,28 @@ export class Loop extends AbstractActivity<ILoopConfig> {
   }
 
   @Input()
-  inputHandler = (inputValue?: unknown) => {
+  inputHandler = (inputValue?: unknown, runContext?: object) => {
     let count = 0
     if (this.meta.config?.fromInput) {
       if (!_.isArray(inputValue)) {
         console.error("Loop input is not array")
       } else {
         for (const one of inputValue) {
-          this.output(one)
+          this.output(one, runContext)
           count++
         }
       }
     } else if (_.isNumber(this.meta.config?.times)) {
       for (let i = 0; i < (this.meta.config?.times || 0); i++) {
-        this.output(i)
+        this.output(i, runContext)
         count++
       }
     }
     //输出循环次数
-    this.next(count, Loop.PORT_FINISHED)
+    this.next(count, runContext, Loop.PORT_FINISHED)
   }
 
-  output = (value: unknown) => {
-    this.next(value, Loop.PORT_OUTPUT)
+  output = (value: unknown, runContext?: object) => {
+    this.next(value, runContext, Loop.PORT_OUTPUT)
   }
 }

@@ -23,3 +23,7 @@
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+.ant-tooltip{
+  pointer-events: none;
+}

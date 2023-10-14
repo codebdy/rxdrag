@@ -9,6 +9,7 @@ export const InlineForm = memo((
     initialValue?: FormValue,
     defaultValue?: FormValue,
     children?: React.ReactNode,
+    onChange?: (value?: FormValue) => void,
   } & FormProps
 ) => {
   const { children, ...other } = props;

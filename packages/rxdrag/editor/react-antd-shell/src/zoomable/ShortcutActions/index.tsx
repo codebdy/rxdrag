@@ -1,16 +1,16 @@
-import { Button, Divider, Space } from "antd"
+import { Button } from "antd"
 import { memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
 import { AimOutlined, FileAddOutlined, HistoryOutlined } from "@ant-design/icons"
 import { usePropertyWidthState } from "../contexts"
 import { ZoomButtons } from "./ZoomButtons"
 import { OperationHistory, OutlineTree, SvgIcon } from "../../common"
-import { outlineIcon } from "../../icons"
 import { DEFAULT_MARGIN } from "../consts"
 import { ExpandPanel } from "./ExpandPanel"
 import { useSettersTranslate } from "@rxdrag/react-core"
 import { WidgetTitle } from "../common/WidgetTitle"
 import { floatBigShadow } from "../../utils"
+import { outlineIcon } from "@rxdrag/react-shared"
 
 const Container = styled.div`
   position: absolute;
@@ -33,9 +33,6 @@ const Content = styled.div`
   overflow: auto;
 `
 
-const StyleSpace = styled(Space)`
-  pointer-events: all;
-`
 export const ShortcutActions = memo((
   props: {
     scrolled?: boolean,

@@ -1,11 +1,11 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { Cascader } from "antd";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "Cascader"
-export const CascaderMaterial: IComponentMaterial = {
+export const CascaderMaterial: IMaterial = {
   componentName: name,
   component: Cascader,
   designer: Cascader,

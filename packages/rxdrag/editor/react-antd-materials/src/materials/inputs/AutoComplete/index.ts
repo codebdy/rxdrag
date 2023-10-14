@@ -1,11 +1,11 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { AutoComplete } from "antd";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "AutoComplete"
-export const AutoCompleteMaterial: IComponentMaterial = {
+export const AutoCompleteMaterial: IMaterial = {
   componentName: name,
   component: AutoComplete,
   designer: AutoComplete,

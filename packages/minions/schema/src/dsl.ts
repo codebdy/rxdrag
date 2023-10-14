@@ -76,11 +76,22 @@ export interface ILineDefine {
 }
 
 //逻辑编排
-export interface ILogicFlowDefine extends ILogicFlowMetas {
+export interface ILogicFlowDefine {
   //唯一标识
   id: string;
   //名称
   name?: string;
   //显示文本
   label?: string;
+
+  metas?: ILogicFlowMetas,
+
+}
+
+//脚本定义
+export interface IScriptDefine {
+  id: string,
+  name?: string,
+  code?: string,
+
 }

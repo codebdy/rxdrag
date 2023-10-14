@@ -1,22 +1,8 @@
 import { memo } from "react"
-import styled from "styled-components"
 import { Divider, Space } from "antd"
 import { FlowRemoveButton, FlowUdredoButtons } from "@rxdrag/logicflow-editor-antd5"
-
-const StyledToolbar = styled.div`
-  display: flex;
-  padding-left: 8px;
-  height: 40px;
-  align-items: center;
-  width: 100%;
-`
-
-
-const Title = styled.div`
-  flex:1;
-  display: flex;
-  align-items: center;
-`
+import { StyledToolbar } from "../common/StyledToolbar"
+import { ToolbarTitle } from "../common/ToolbarTitle"
 
 export const Toolbar = memo((
   props: {
@@ -29,11 +15,11 @@ export const Toolbar = memo((
 
   return (
     <StyledToolbar className="logicflow-editor-antd5-toolbar">
-      <Title>
+      <ToolbarTitle>
         {
           title
         }
-      </Title>
+      </ToolbarTitle>
       <Space>
         <FlowUdredoButtons />
         <Divider type="vertical" />

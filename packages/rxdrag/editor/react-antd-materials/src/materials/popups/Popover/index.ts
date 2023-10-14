@@ -5,10 +5,10 @@ import { PopoverDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 
 const name = "Popover"
-export const PopoverMaterial: IComponentMaterial = {
+export const PopoverMaterial: IMaterial = {
   componentName: name,
   component: Popover,
   designer: PopoverDesigner,

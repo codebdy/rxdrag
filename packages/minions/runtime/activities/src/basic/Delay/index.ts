@@ -8,23 +8,21 @@ export interface IDelayConfig {
 @Activity(Delay.NAME)
 export class Delay extends AbstractActivity<IDelayConfig> {
   public static NAME = "system.delay"
-  inputValue?: any
   timeout?: NodeJS.Timeout
   constructor(meta: INodeDefine<IDelayConfig>) {
     super(meta)
   }
 
   @Input()
-  inputHandler = (inputValue?: any) => {
+  inputHandler = (inputValue?: unknown, runContext?: object) => {
     this.clear()
-    this.inputValue = inputValue
     if (this.meta.config?.time) {
-      this.timeout = setTimeout(this.outputHandler, this.meta.config?.time)
+      this.timeout = setTimeout(() => this.outputHandler(inputValue, runContext), this.meta.config?.time)
     }
   }
 
-  outputHandler = () => {
-    this.next(this.inputValue)
+  outputHandler = (inputValue?: unknown, runContext?: object) => {
+    this.next(inputValue, runContext)
   }
 
   clear = () => {

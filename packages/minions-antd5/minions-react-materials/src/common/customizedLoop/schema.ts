@@ -14,11 +14,7 @@ export const customizedLoopSchema: INodeSchema = {
         {
           componentName: "Switch",
           "x-field": {
-            name: "config.fromInput",
-            params:{
-              valuePropName: "checked",
-              withBind: true,
-            }
+            name: "config.fromInput"
           },
         }
       ]
@@ -32,10 +28,7 @@ export const customizedLoopSchema: INodeSchema = {
         {
           componentName: "InputNumber",
           "x-field": {
-            name: "config.times",
-            params: {
-              withBind: true,
-            }
+            name: "config.times"
           },
         }
       ]

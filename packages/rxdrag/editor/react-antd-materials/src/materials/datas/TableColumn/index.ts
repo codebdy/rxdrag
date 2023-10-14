@@ -1,12 +1,12 @@
 import { TableColumn } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { TableColumnDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "TableColumn"
-export const TableColumnMaterial: IComponentMaterial = {
+export const TableColumnMaterial: IMaterial = {
   componentName: name,
   component: TableColumn,
   designer: TableColumnDesigner,

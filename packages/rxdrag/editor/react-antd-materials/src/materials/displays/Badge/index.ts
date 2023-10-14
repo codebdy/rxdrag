@@ -1,4 +1,4 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { Badge } from "antd";
 import { BadgeDesigner } from "./designer";
 import { icon } from "./icon";
@@ -6,7 +6,7 @@ import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "Badge"
-export const BadgeMaterial: IComponentMaterial = {
+export const BadgeMaterial: IMaterial = {
   componentName: name,
   component: Badge,
   designer: BadgeDesigner,

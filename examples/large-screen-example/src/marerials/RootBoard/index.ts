@@ -1,10 +1,10 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { locales, setterLocales } from "./locales";
 import { schema } from "./schema";
 import { RootBoard } from "../../components/RootBoard";
 import { ThemeTokenSetter } from "./setters";
 
-export const RootBoardMaterial: IComponentMaterial = {
+export const RootBoardMaterial: IMaterial = {
   componentName: "RootBoard",
   component: RootBoard,
   designer: RootBoard,

@@ -886,10 +886,7 @@
                                         "style": {}
                                       },
                                       "x-field": {
-                                        "name": "title",
-                                        "params": {
-                                          "withBind": true
-                                        }
+                                        "name": "title"
                                       },
                                       "slots": {},
                                       "children": []
@@ -901,9 +898,6 @@
                                         "style": {}
                                       },
                                       "x-field": {
-                                        "params": {
-                                          "withBind": true
-                                        },
                                         "name": "description"
                                       },
                                       "slots": {},
@@ -1179,9 +1173,6 @@
                                     "value": "Link"
                                   },
                                   "x-field": {
-                                    "params": {
-                                      "withBind": true
-                                    },
                                     "name": "name"
                                   },
                                   "slots": {},
@@ -1204,22 +1195,12 @@
                                 {
                                   "componentName": "LoopPanel",
                                   "props": {},
-                                  "x-field": {
-                                    "params": {
-                                      "withBind": true
-                                    }
-                                  },
                                   "slots": {},
                                   "children": [
                                     {
                                       "componentName": "Tag",
                                       "props": {
                                         "value": "Tag"
-                                      },
-                                      "x-field": {
-                                        "params": {
-                                          "withBind": true
-                                        }
                                       },
                                       "slots": {},
                                       "children": []

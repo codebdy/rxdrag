@@ -26,9 +26,9 @@ export const Toolbox = memo((props: {
             {
               (onStartDrag) => {
                 return <ToolItem
-                  icon={material.icon}
+                  icon={material.icon as ReactNode}
                   title={material.label}
-                  color={material.color}
+                  color={material.color as string}
                   onMouseDown={onStartDrag}
                 />
               }

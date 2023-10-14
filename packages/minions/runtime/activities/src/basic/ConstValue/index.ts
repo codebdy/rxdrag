@@ -17,7 +17,7 @@ export class ConstValue extends AbstractActivity<IConstValueConfig> {
   }
 
   @Input()
-  inputHandler = (): void => {
-    this.next(this.meta.config?.value)
+  inputHandler = (_: unknown, runContext?: object): void => {
+    this.next(this.meta.config?.value, runContext)
   }
 }

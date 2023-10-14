@@ -15,7 +15,7 @@ export class SumArray extends AbstractActivity {
   }
 
   @Input()
-  inputHandler(inputValue?: number[]): void {
+  inputHandler(inputValue?: number[], runContext?: object): void {
     if (!inputValue) {
       console.warn("Not give input to SumArray")
       return;
@@ -25,6 +25,6 @@ export class SumArray extends AbstractActivity {
       result = result + one
     }
 
-    this.next(result)
+    this.next(result, runContext)
   }
 }

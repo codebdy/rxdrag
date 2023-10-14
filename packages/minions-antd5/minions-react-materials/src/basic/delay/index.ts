@@ -2,9 +2,9 @@ import { createId } from "@rxdrag/shared";
 import { delaySchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
 import { Delay, IDelayConfig } from "@rxdrag/minions-activities";
-import { delayIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
+import { delayIcon } from "@rxdrag/react-shared";
 
 export const delayMaterial: IRxDragActivityMaterial<IDelayConfig> = {
   icon: delayIcon,

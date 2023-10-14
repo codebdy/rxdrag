@@ -12,7 +12,7 @@ export type LogicFlowEditorAntd5InnerProps = {
   materialCategories: ActivityMaterialCategory<ReactNode>[],
   setters?: IReactComponents,
   logicFlowContext?: unknown,
-  canBeReferencedLogflowMetas?: ILogicFlowDefine[],
+  fxFlowMetas?: ILogicFlowDefine[],
   toolbar?: false | React.ReactNode,
   toolbox?: React.ReactNode | false,
 }

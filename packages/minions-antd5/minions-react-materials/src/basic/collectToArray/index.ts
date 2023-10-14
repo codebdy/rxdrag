@@ -3,9 +3,9 @@ import { createId } from "@rxdrag/shared";
 import { collectToArray } from "./schema";
 import { CollectToArray } from "@rxdrag/minions-activities";
 import { NodeType } from "@rxdrag/minions-schema";
-import { collectToArrayIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
+import { collectToArrayIcon } from "@rxdrag/react-shared";
 
 export const collectToArrayMaterial: IRxDragActivityMaterial = {
   icon: collectToArrayIcon,

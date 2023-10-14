@@ -1,11 +1,11 @@
 import { Paper } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { paperIcon } from "./icon";
 import { paperLocales, paperResourceLocales } from "./locales";
 import { paperSchema } from "./schema";
 
 const name = "Paper"
-export const PaperMaterial: IComponentMaterial = {
+export const PaperMaterial: IMaterial = {
   componentName: name,
   component: Paper,
   designer: Paper,

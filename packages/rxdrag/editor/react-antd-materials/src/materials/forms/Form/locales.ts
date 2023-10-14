@@ -1,4 +1,5 @@
 import { sizeLocales } from "../../locales"
+import { filedyLocales } from "../fieldyLoacles"
 
 export const formLocales = {
   "zh-CN": {
@@ -18,7 +19,8 @@ export const formLocales = {
       order: "顺序",
       pull: "左移",
       push: "右移",
-      ...sizeLocales["zh-CN"]
+      ...sizeLocales["zh-CN"],
+      ...filedyLocales["zh-CN"],
     }
 
   },
@@ -39,7 +41,8 @@ export const formLocales = {
       order: "Order",
       pull: "Pull",
       push: "Push",
-      ...sizeLocales["en-US"]
+      ...sizeLocales["en-US"],
+      ...filedyLocales["en-US"],
     }
   }
 }

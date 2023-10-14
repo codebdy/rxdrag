@@ -3,7 +3,7 @@ import { LogicFlowEditorScope, LogicFlowEditorScopeProps } from "@rxdrag/minions
 import { LocalesContext } from "@rxdrag/react-locales"
 import { memo, useEffect, useState } from "react"
 
-export type LogicFlowEditorAntd5ScopeProps = LogicFlowEditorScopeProps & {
+export type LogicFlowEditorAntd5ScopeProps<T = unknown> = LogicFlowEditorScopeProps<T> & {
   lang?: string,
   locales?: ILocales,
   children?: React.ReactNode,

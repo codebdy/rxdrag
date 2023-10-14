@@ -1,10 +1,10 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { locales, resourceLocales } from "./locales";
 import { PagePlaceholder } from "./PagePlaceholder";
 import { pageIcon } from "./icon";
 
 const name = "Page"
-export const PageMaterial: IComponentMaterial = {
+export const PageMaterial: IMaterial = {
   componentName: "Page",
   component: PagePlaceholder,
   designer: PagePlaceholder,

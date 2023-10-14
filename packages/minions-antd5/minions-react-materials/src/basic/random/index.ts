@@ -3,9 +3,9 @@ import { createId } from "@rxdrag/shared";
 import { randomSchema } from "./schema";
 import { IRandomConfig, Random } from "@rxdrag/minions-activities";
 import { NodeType } from "@rxdrag/minions-schema";
-import { randomIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
+import { randomIcon } from "@rxdrag/react-shared";
 
 export const randomMaterial: IRxDragActivityMaterial<IRandomConfig> = {
   icon: randomIcon,
@@ -16,7 +16,17 @@ export const randomMaterial: IRxDragActivityMaterial<IRandomConfig> = {
       {
         id: createId(),
         name: Random.INPUT_NAME_STARTUP,
-        label: "",
+        label: "$startUp",
+      },
+      {
+        id: createId(),
+        name: Random.INPUT_NAME_MIN_VALUE,
+        label: "$minValue",
+      },
+      {
+        id: createId(),
+        name: Random.INPUT_NAME_MAX_VALUE,
+        label: "$maxValue",
       },
     ],
     outPorts: [
@@ -30,8 +40,8 @@ export const randomMaterial: IRxDragActivityMaterial<IRandomConfig> = {
   schema: randomSchema,
   activityName: Random.NAME,
   subTitle: (config?: IRandomConfig) => {
-    if (config?.maxValue || config?.minValue) {
-      return `${config.minValue || ""} ~ ${config.maxValue || ""}`
+    if (config?.maxValue !== undefined || config?.minValue !== undefined) {
+      return `${config.minValue === undefined ? "" : config.minValue} ~ ${config.maxValue === undefined ? "" : config.maxValue}`
     }
   },
 }

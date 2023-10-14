@@ -1,12 +1,12 @@
 import { formItemIcon } from "./icon";
 import { formItemLocales, formItemResourceLocales } from "./locales";
 import { formItemSchema } from "./schema";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { FormItem } from "@rxdrag/react-antd-components";
 import { FormItemDesigner } from "./designer";
 
 const name = "FormItem"
-export const FormItemMaterial: IComponentMaterial = {
+export const FormItemMaterial: IMaterial = {
   componentName: name,
   component: FormItem,
   designer: FormItemDesigner,
@@ -31,5 +31,41 @@ export const FormItemMaterial: IComponentMaterial = {
     droppable: true,
     noRef: true,
     lockable: true,
+  },
+  controller: {
+    props: [
+      {
+        name: "value",
+        label: "$value",
+      },
+      {
+        name: "defaultValue",
+        label: "$defaultValue",
+      },
+      {
+        name: "initialValue",
+        label: "$initialValue",
+      },
+    ],
+    events: [
+      {
+        name: "onChange",
+        label: "$onChange",
+      }
+    ],
+    reactions: [
+      {
+        name: "validate",
+        label: "$validate"
+      },
+      {
+        name: "getValue",
+        label: "$getValue",
+      },
+      {
+        name: "setValue",
+        label: "$setValue"
+      }
+    ]
   }
 }

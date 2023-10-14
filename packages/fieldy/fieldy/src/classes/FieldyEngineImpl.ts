@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { invariant } from "@rxdrag/shared";
-import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPayload, REMOVE_FORM, REMOVE_FORM_FIELDS, SetFieldValuePayload, SET_FIELD_INITIAL_VALUE, SET_FIELD_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SetFieldStatePayload, SET_FIELD_STATE, SET_FORM_INITIALIZED_FLAG, SET_FORM_DEFAULT_VALUE, SET_FIELD_DEFAULT_VALUE, INPUT_FIELD_VALUE, SET_FORM_FIELDS_FEEDBACKS, SetFormFeedbacksPayload, IFieldFeedback } from "../actions";
+import { ADD_FORM_FIELDS, CREATE_FORM, FormActionPayload, REMOVE_FORM, REMOVE_FORM_FIELD, SetFieldValuePayload, SET_FIELD_INITIAL_VALUE, SET_FIELD_VALUE, SET_FORM_INITIAL_VALUE, SET_FORM_VALUE, SetFieldStatePayload, SET_FIELD_STATE, SET_FORM_INITIALIZED_FLAG, SET_FORM_DEFAULT_VALUE, SET_FIELD_DEFAULT_VALUE, INPUT_FIELD_VALUE, SET_FORM_FIELDS_FEEDBACKS, SetFormFeedbacksPayload, IFieldFeedback } from "../actions";
 import { FieldChangeListener, FieldState, FieldValueChangeListener, FormChangeListener, FormState, FormValue, FormValueChangeListener, IAction, IFieldSchema, IFieldyEngine, IForm, IFormProps, Unsubscribe } from "../interfaces/fieldy";
 import { reduce, State } from "../reducers";
 import { FormImpl } from "./FormImpl";
@@ -30,9 +30,10 @@ export class FieldyEngineImpl implements IFieldyEngine {
     this.store = makeStoreInstance(debugMode || false)
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  createForm(_options?: IFormProps): IForm {
-    const name = makeId()
+  createForm(
+    formProps: IFormProps | undefined,
+  ): IForm {
+    const name = formProps?.name || makeId()
     this.dispatch({
       type: CREATE_FORM,
       payload: {
@@ -65,12 +66,12 @@ export class FieldyEngineImpl implements IFieldyEngine {
       }
     })
   }
-  removeFields(formName: string, ...fieldPaths: string[]): void {
+  removeField(formName: string, fieldPath: string): void {
     this.dispatch({
-      type: REMOVE_FORM_FIELDS,
+      type: REMOVE_FORM_FIELD,
       payload: {
         formName: formName,
-        paths: fieldPaths,
+        path: fieldPath,
       }
     })
   }
@@ -319,20 +320,24 @@ export class FieldyEngineImpl implements IFieldyEngine {
 
   subscribeToFieldValueChange(formName: string, fieldPath: string, listener: FieldValueChangeListener): Unsubscribe {
     invariant(typeof listener === 'function', 'listener must be a function.')
-    const previousFormValue: FormValue | undefined = this.store.getState().forms[formName]?.value
-    const formState = this.getFormState(formName)
-    const formHelper = formState ? new FormHelper(formState) : undefined
+    let previousFormState = this.getFormState(formName)
 
     const handleChange = () => {
-      const nextFormValue = this.store.getState().forms[formName]?.value
+      const previousFormValue: FormValue | undefined = previousFormState?.value
+      const nextFormState = this.store.getState().forms[formName];
+      const nextFormValue = nextFormState?.value
       if (nextFormValue === previousFormValue) {
         return
       }
-      const prevValue = formHelper?.doGetValueByPath(previousFormValue, fieldPath)
-      const value = formHelper?.doGetValueByPath(nextFormValue, fieldPath)
+      const previousHelper = previousFormState ? new FormHelper(previousFormState) : undefined
+      const nextHelper = nextFormState ? new FormHelper(nextFormState) : undefined
+      const prevValue = previousHelper?.doGetValueByPath(previousFormValue, fieldPath)
+      const value = nextHelper?.doGetValueByPath(nextFormValue, fieldPath)
+
       if (value !== prevValue) {
         listener(value, prevValue)
       }
+      previousFormState = nextFormState
     }
 
     return this.store.subscribe(handleChange)

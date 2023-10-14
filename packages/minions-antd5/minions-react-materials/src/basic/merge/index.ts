@@ -1,9 +1,9 @@
 import { createId } from "@rxdrag/shared";
 import { mergeSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
-import { mergeIcon } from "../../icons";
 import { Merge } from "@rxdrag/minions-activities";
 import { IRxDragActivityMaterial } from "../../interfaces";
+import { mergeIcon } from "@rxdrag/react-shared";
 
 export const mergeMaterial: IRxDragActivityMaterial = {
   icon: mergeIcon,

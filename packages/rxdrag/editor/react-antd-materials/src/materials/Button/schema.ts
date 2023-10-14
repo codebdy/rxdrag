@@ -133,12 +133,6 @@ const scehmaOptions: SchemaOptions = {
       label: "$icon"
     }
   ],
-  events: [
-    {
-      name: "onClick",
-      label: "$onClick",
-    }
-  ],
 }
 
 export const buttonSchema: INodeSchema = createSchema(scehmaOptions)

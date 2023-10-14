@@ -1,11 +1,11 @@
 import { Paragraph } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";
 
 const name = "Paragraph"
-export const ParagraphMaterial: IComponentMaterial = {
+export const ParagraphMaterial: IMaterial = {
   componentName: name,
   component: Paragraph,
   designer: Paragraph,

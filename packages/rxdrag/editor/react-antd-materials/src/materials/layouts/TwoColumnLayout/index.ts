@@ -3,13 +3,13 @@ import { twoColumnLayoutLocales, twoColumnLayoutResourceLocales } from "./locale
 import { ContentMaterial } from "../Content";
 import { SiderMaterial } from "../Sider";
 import { prosLayoutSchema } from "./schema";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { TwoColumnLayout } from "@rxdrag/react-antd-components";
 import { LayoutHeaderMaterial } from "../LayoutHeader";
 import { LayoutFooterMaterial } from "../LayoutFooter";
 
 const name = "TwoColumnLayout"
-export const TwoColumnLayoutMaterial: IComponentMaterial = {
+export const TwoColumnLayoutMaterial: IMaterial = {
   componentName: name,
   component: TwoColumnLayout,
   designer: TwoColumnLayout,

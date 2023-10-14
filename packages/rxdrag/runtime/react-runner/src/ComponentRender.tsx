@@ -4,16 +4,20 @@ import { ComponentView, IComponentRenderSchema } from "./ComponentView"
 import { transToRenderSchema } from "./transform"
 import { IFieldMeta } from "@rxdrag/fieldy"
 import { IReactComponents } from "@rxdrag/react-shared"
-import { ControllerFactories, RuntimeRoot } from "./RuntimeRoot"
 import { ILocalesManager } from "@rxdrag/locales"
+import { PreviewComponentsContext } from "./contexts"
+import { LogicFlowOptions, LogicflowRuntime } from "./LogicflowRuntime"
+
 
 export const ComponentRender = memo((props: {
   schema: INodeSchema,
   components: IReactComponents | undefined
-  controllerFactories?: ControllerFactories,
+  //controllerFactories?: ControllerFactories,
   localesManager?: ILocalesManager,//@@ 暂时未用
+  logicflowOptions?: LogicFlowOptions,
 }) => {
-  const { schema, components, controllerFactories } = props
+  const { schema, components, logicflowOptions } = props
+
   const [node, setNode] = useState<IComponentRenderSchema>()
   useEffect(() => {
     if (schema) {
@@ -24,13 +28,17 @@ export const ComponentRender = memo((props: {
   }, [schema])
 
   return (
-    node ? <RuntimeRoot
-      components={components}
-      schema={node}
-      controllerFactories={controllerFactories}
-    >
-      {node && <ComponentView node={node} />}
-    </RuntimeRoot>
+    node
+      ? <LogicflowRuntime
+        schema={node}
+        {...logicflowOptions}
+      >
+        <PreviewComponentsContext.Provider
+          value={components || {}}
+        >
+          {node && <ComponentView node={node} />}
+        </PreviewComponentsContext.Provider>
+      </LogicflowRuntime>
       : <></>
   )
 })

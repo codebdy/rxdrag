@@ -1,36 +1,30 @@
-import { IActivity, IActivityJointers, LogicFlow, Activity } from "@rxdrag/minions-runtime";
+import { Activity, DynamicInput } from "@rxdrag/minions-runtime";
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IControllerContext } from "../../interfaces";
-import { IControllerConfig, IControllerParam } from "../AbstractControllerActivity";
-
-export interface IReactionParam extends IControllerParam {
-  logicFlowId?: string
-}
+import { IReactContext } from "../../interfaces";
+import { ControllerActivity, IControllerConfig } from "../ControllerActivity";
+import { isFn } from "@rxdrag/shared";
 
 export interface IReactionConfig extends IControllerConfig {
-  param?: IReactionParam
+  name?: string
 }
 
 @Activity(Reaction.NAME)
-export class Reaction implements IActivity {
+export class Reaction extends ControllerActivity<IReactionConfig> {
   public static NAME = "system-react.reaction"
-  id: string;
-  jointers: IActivityJointers;
-  config?: IReactionConfig;
-  logicFlow?: LogicFlow;
 
-  constructor(meta: INodeDefine<IReactionConfig>, context: IControllerContext) {
-    this.id = meta.id
-    const defineMeta = context?.controllers?.[meta?.config?.param?.controllerId || ""]?.meta.reactions?.find(reactionMeta => reactionMeta.id === meta.config?.param?.logicFlowId)
-    if (defineMeta) {
-      this.logicFlow = new LogicFlow(defineMeta, context)
-      this.jointers = this.logicFlow.jointers
+  constructor(meta: INodeDefine<IReactionConfig>, context: IReactContext) {
+    super(meta, context)
+  }
+
+  @DynamicInput
+  inputHandler = (inputName: string, inputValue: unknown, runContext?: object) => {
+    const reaction = this.context?.reactions?.[inputName]
+    if (isFn(reaction)) {
+      const newValue = reaction(this.controller, inputValue)
+      this.next(newValue === undefined ? inputValue : newValue, runContext)
     } else {
-      throw new Error("No implement on Controller reaction meta")
+      console.error("reaction is error:", inputName)
     }
-  }
-  destroy(): void {
-    this.logicFlow?.destroy();
-    this.logicFlow = undefined;
-  }
+  };
+
 }

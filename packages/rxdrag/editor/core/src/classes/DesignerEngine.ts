@@ -1,5 +1,5 @@
 import { State } from "../reducers";
-import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, INodeBehavior, AbleType, IComponentConfig, IResizable, IMoveable, IBehaviorManager } from "../interfaces";
+import { IDesignerEngine, IDesignerShell, IMonitor, IDocument, IResourceManager, ID, IComponentManager, IComponentMaterial, IBehaviorManager } from "../interfaces";
 import { Store } from "redux";
 import { ResourceManager } from "./ResourceManager";
 import { DocumentImpl } from "../classes/DocumentImpl";
@@ -11,7 +11,6 @@ import { CHANGE_ACTIVED_DOCUMENT, SET_LANGUAGE } from "../actions/registry";
 import { DefaultLang } from "../reducers/lang";
 import { ComponentManager } from "./ComponentManager";
 import { IPlugin, IPluginFactory } from "../interfaces/plugin";
-import { isFn } from "@rxdrag/shared";
 import { IDecoratorManager } from "../interfaces/decorator";
 import { DecoratorManager } from "./DecoratorManager";
 import { IViewSchema } from "@rxdrag/schema";
@@ -109,8 +108,9 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 	}
 
 	createDocument(documentSchema: IViewSchema): IDocument {
-		const doc = new DocumentImpl(documentSchema, this, this.store)
+		const doc = new DocumentImpl(documentSchema.id, this, this.store)
 		this.documentsById[doc.id] = doc
+		doc.initialize(documentSchema)
 		this.dispatch({
 			type: CHANGE_ACTIVED_DOCUMENT,
 			payload: doc.id
@@ -158,7 +158,7 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 		return this.plugins[name] || null
 	}
 
-	registerMaterials(materials: IComponentConfig<ComponentType, IconType>[]): void {
+	registerMaterials(materials: IComponentMaterial<ComponentType, IconType>[]): void {
 		for (const material of materials) {
 			//const designers = { [material.componentName]: material.designer }
 			const setters = material.setters
@@ -179,7 +179,7 @@ export class DesignerEngine<ComponentType = unknown, IconType = unknown> impleme
 				if (slotMaterial === true || slotMaterial === undefined || isStr(slotMaterial)) {
 					continue
 				}
-				this.registerMaterials([slotMaterial as IComponentConfig<ComponentType, IconType>])
+				this.registerMaterials([slotMaterial as IComponentMaterial<ComponentType, IconType>])
 			}
 
 			setters && this.setterManager.registerSetters(setters)

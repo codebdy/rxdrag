@@ -1,3 +1,4 @@
+export * from "./useArraySchema"
 export * from "./useComponentSchema"
 export * from "./useControllers"
 export * from "./useController"

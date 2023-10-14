@@ -13,8 +13,10 @@ export type ValueChangeListener = (value: any) => void
 export type ErrorListener = (errors: IValidationError[]) => void
 export type SuccessListener = (value: unknown) => void
 export type Unsubscribe = () => void
+export type ExpContextChangeListener = (expContext?: Record<string, unknown>) => void
 
 export interface IFormProps {
+  name?: string,
   value?: object,	//表单值	Object	{}
   initialValue?: object, 	//表单默认值	Object	{}
   pattern?: PatternType, //	表单交互模式	
@@ -48,7 +50,8 @@ export type FormValueChangeListener = (value: FormValue | undefined) => void
 export type FieldState = {
   //自动生成id，用于组件key值
   id: string;
-  name?: string;
+  //数组行数据是数字
+  name?: string | number;
   basePath?: string;
   path: string;
   initialized?: boolean;//字段是否已被初始化
@@ -132,13 +135,20 @@ export interface IFormNode<T> extends IValidationSubscriber {
 export interface IForm<ValidateRules extends IValidateSchema = IValidateSchema> extends IFormNode<FormValue | undefined> {
   name: string
   getField(path: string): IField<ValidateRules> | undefined
+  queryField(pathExp: string): IField<ValidateRules> | undefined
   registerField(fieldSchema: IFieldSchema<ValidateRules>): IField
   unregisterField(path: string): void
 
   getFieldState(fieldPath: string): FieldState | undefined
 
   getFieldSchemas(): IFieldSchema<ValidateRules>[]
-  getRootFields(): IFieldSchema<ValidateRules>[]
+  getRootFieldSchemas(): IFieldSchema<ValidateRules>[]
+  getRootFields(): IField<ValidateRules>[]
+
+  getExpContext(): Record<string, unknown> | undefined
+  setExpContext(expContext?: Record<string, unknown> | undefined): void
+
+  onExpContextChange(listener: ExpContextChangeListener): Unsubscribe
 }
 
 export interface IField<ValidateRules extends IValidateSchema = IValidateSchema> extends IFormNode<unknown> {
@@ -151,7 +161,10 @@ export interface IField<ValidateRules extends IValidateSchema = IValidateSchema>
   inputValue(value: unknown): void
   getFieldSchema(): IFieldSchema<ValidateRules>
   getSubFieldSchemas(): IFieldSchema<ValidateRules>[] | undefined
+  getSubFields(): IField<ValidateRules>[] | undefined
   getState(): FieldState | undefined
+  getSiblings(): IField[]
+  getParent(): IField | undefined
   destroy(): void
 }
 
@@ -168,7 +181,7 @@ export interface IFieldyEngine {
   setFormValue(name: string, value: FormValue | undefined): void
   //setFormFlatValue(name: string, flatValues: FormValue): void
   addFields(name: string, ...fieldSchemas: IFieldSchema[]): void
-  removeFields(formName: string, ...fieldPaths: string[]): void
+  removeField(formName: string, fieldPath: string): void
   setValidationFeedbacks(name: string, feedbacks: IFieldFeedback[]): void
 
   //field动作

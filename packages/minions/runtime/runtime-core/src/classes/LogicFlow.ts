@@ -1,5 +1,5 @@
 import { IActivity, IActivityJointers } from "../interfaces";
-import { ActivityJointers } from "./ActivityJointer";
+import { ActivityJointers } from "./ActivityJointers";
 import { Jointer } from "./Jointer";
 import { NodeType, INodeDefine, ILogicFlowDefine, ILogicFlowMetas } from "@rxdrag/minions-schema"
 import { activities } from "./activities";
@@ -9,15 +9,20 @@ export class LogicFlow<LogicFlowContext = unknown> {
   jointers: IActivityJointers = new ActivityJointers();
   activities: IActivity[] = [];
 
-  constructor(private flowMeta: ILogicFlowDefine, private context: LogicFlowContext) {
+  constructor(private flowDefine: ILogicFlowDefine, private context: LogicFlowContext) {
     //注意这个id的处理
-    this.id = flowMeta.id
+    this.id = flowDefine.id
 
     //第一步，解析节点
     this.constructActivities()
 
     //第二步， 构建连接关系
     this.contactLines()
+
+    //第三步，初始化需要初始化的节点
+    for (const activity of this.activities) {
+      activity?.init?.()
+    }
   }
 
   destroy(): void {
@@ -30,28 +35,22 @@ export class LogicFlow<LogicFlowContext = unknown> {
 
   //构建一个图的所有节点
   private constructActivities() {
-    for (const activityMeta of this.flowMeta.nodes) {
+    for (const activityMeta of this.flowDefine.metas?.nodes || []) {
       switch (activityMeta.type) {
         case NodeType.Start: {
           //start只有一个端口，可能会变成其它流程的端口，所以name谨慎处理
-          this.jointers.inputs.push(new Jointer(activityMeta.id, activityMeta.name || "input"));
+          this.jointers.addInput(new Jointer(activityMeta.id, activityMeta.name || "input"));
           break;
         }
-        case NodeType.End:{
+        case NodeType.End: {
           //end 只有一个端口，可能会变成其它流程的端口，所以name谨慎处理
           const endJointer = new Jointer(activityMeta.id, activityMeta.name || "output");
-          // 最后一个输出节点，执行回调函数
-          endJointer.connect((inputValue?:unknown)  => {
-            if (endJointer['outlets']?.length === 1 && endJointer?.runContext?.__runback) {
-              endJointer?.runContext.__runback(undefined, inputValue)
-            }
-          })
-          this.jointers.outputs.push(endJointer);
+          this.jointers.addOutput(endJointer);
           break;
         }
         case NodeType.Activity:
         case NodeType.EmbeddedFlow:
-        case NodeType.LogicFlowActivity:{
+        case NodeType.LogicFlowActivity: {
           if (activityMeta.activityName) {
             const activityInfo = activities[activityMeta.activityName]
             const activityClass = activityInfo?.target
@@ -65,12 +64,15 @@ export class LogicFlow<LogicFlowContext = unknown> {
             }
             const activity = new activityClass(newMeta, this.context);
 
-            //构造Jointers
-            for (const out of activityMeta.outPorts || []) {
-              activity.jointers.outputs.push(new Jointer(out.id, out.name))
-            }
-            for (const input of activityMeta.inPorts || []) {
-              activity.jointers.inputs.push(new Jointer(input.id, input.name))
+            //子编排不需要在这里构建端口
+            if (activityMeta.type !== NodeType.LogicFlowActivity) {
+              //构造Jointers
+              for (const out of activityMeta.outPorts || []) {
+                activity.jointers.addOutput(new Jointer(out.id, out.name))
+              }
+              for (const input of activityMeta.inPorts || []) {
+                activity.jointers.addInput(new Jointer(input.id, input.name))
+              }
             }
 
             //把input端口跟处理函数相连
@@ -88,7 +90,7 @@ export class LogicFlow<LogicFlowContext = unknown> {
               const handle = (activity as any)?.[activityInfo.dynamicMethod];
               const handleWithThis = handle?.bind(activity);
 
-              for (const input of activity.jointers.inputs) {
+              for (const input of activity.jointers.getInputs()) {
                 const handleWrapper = (inputValue: unknown) => {
                   return handleWithThis?.(input.name, inputValue)
                 }
@@ -106,29 +108,29 @@ export class LogicFlow<LogicFlowContext = unknown> {
 
   //连接一个图的所有节点，把所有的jointer连起来
   private contactLines() {
-    for (const lineMeta of this.flowMeta.lines) {
-      let sourceJointer = this.jointers.inputs.find(jointer => jointer.id === lineMeta.source.nodeId)
+    for (const lineMeta of this.flowDefine.metas?.lines || []) {
+      let sourceJointer = this.jointers.getInputs().find(jointer => jointer.id === lineMeta.source.nodeId)
       if (!sourceJointer && lineMeta.source.portId) {
-        sourceJointer = this.activities.find(reaction => reaction.id === lineMeta.source.nodeId)?.jointers?.outputs.find(output => output.id === lineMeta.source.portId)
+        sourceJointer = this.activities.find(reaction => reaction.id === lineMeta.source.nodeId)?.jointers?.getOutputs().find(output => output.id === lineMeta.source.portId)
       }
       if (!sourceJointer) {
         throw new Error("Can find source jointer")
       }
 
-      let targetJointer = this.jointers.outputs.find(jointer => jointer.id === lineMeta.target.nodeId)
+      let targetJointer = this.jointers.getOutputs().find(jointer => jointer.id === lineMeta.target.nodeId)
       if (!targetJointer && lineMeta.target.portId) {
-        targetJointer = this.activities.find(reaction => reaction.id === lineMeta.target.nodeId)?.jointers?.inputs.find(input => input.id === lineMeta.target.portId)
+        targetJointer = this.activities.find(reaction => reaction.id === lineMeta.target.nodeId)?.jointers?.getInputs().find(input => input.id === lineMeta.target.portId)
       }
 
       if (!targetJointer) {
         throw new Error("Can find target jointer")
       }
-      sourceJointer.connect(targetJointer.push, targetJointer)
+      sourceJointer.connect(targetJointer.push)
     }
   }
 
   getNode = (id: string) => {
-    return this.flowMeta?.nodes?.find(node => node.id === id)
+    return this.flowDefine?.metas?.nodes?.find(node => node.id === id)
   }
 
   //重新构造children，添加边界节点，修改连线

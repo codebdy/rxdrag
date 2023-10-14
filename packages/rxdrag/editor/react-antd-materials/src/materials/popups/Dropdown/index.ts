@@ -1,5 +1,5 @@
 import { Dropdown } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { ButtonMaterial } from "../../Button";
 import { DropdownMenuItemMaterial } from "../DropdownMenuItem";
 import { DropdownDesigner } from "./designer";
@@ -8,7 +8,7 @@ import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "Dropdown"
-export const DropdownMaterial: IComponentMaterial = {
+export const DropdownMaterial: IMaterial = {
   componentName: name,
   component: Dropdown,
   designer: DropdownDesigner,

@@ -2,9 +2,9 @@ import { createId } from "@rxdrag/shared";
 import { intervalSchema } from "./schema";
 import { IIntervalConfig, Signals } from "@rxdrag/minions-activities";
 import { NodeType } from "@rxdrag/minions-schema";
-import { intervalIcon } from "../../icons";
 import { DEFAULT_OUTPUT_NAME } from "@rxdrag/minions-runtime";
 import { IRxDragActivityMaterial } from "../../interfaces";
+import { intervalIcon } from "@rxdrag/react-shared";
 
 export const signalsMaterial: IRxDragActivityMaterial<IIntervalConfig> = {
   icon: intervalIcon,
@@ -21,6 +21,11 @@ export const signalsMaterial: IRxDragActivityMaterial<IIntervalConfig> = {
         id: createId(),
         name: Signals.INPUT_NAME_STOP,
         label: "$stop",
+      },
+      {
+        id: createId(),
+        name: Signals.INPUT_NAME_INTERVAL,
+        label: "$interval",
       },
     ],
     outPorts: [

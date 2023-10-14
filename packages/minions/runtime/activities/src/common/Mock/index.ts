@@ -3,7 +3,7 @@ import { INodeDefine } from "@rxdrag/minions-schema"
 
 export interface IMockDataConfig {
   isError?: boolean,
-  data?: any,
+  data?: unknown,
   duration?: number,
 }
 
@@ -16,18 +16,18 @@ export class Mock extends AbstractActivity<IMockDataConfig> {
   }
 
   @Input()
-  inputHandler = (inputValue?: any) => {
+  inputHandler = (inputValue?: unknown, runContext?: object) => {
     const portLoading = "loading"
-    this.next(true, portLoading)
+    this.next(true, runContext, portLoading)
     if (this.meta.config?.isError) {
       setTimeout(() => {
-        this.next(false, portLoading)
-        this.next("Read data error", "error")
+        this.next(false, runContext, portLoading)
+        this.next("Read data error", runContext, "error")
       }, this.meta.config.duration)
     } else {
       setTimeout(() => {
-        this.next(false, portLoading)
-        this.next(inputValue, "success")
+        this.next(false, runContext, portLoading)
+        this.next(inputValue, runContext, "success")
       }, this.meta.config?.duration)
     }
   }

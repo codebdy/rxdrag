@@ -1,4 +1,4 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { InputNumber } from "antd";
 import { inputLocales } from "../Input/locales";
 import { inputNumberIcon } from "./icon";
@@ -6,7 +6,7 @@ import { inputNumberResourceLocales } from "./locales";
 import { inputNumberSchema } from "./schema";
 
 const name = "InputNumber"
-export const InputNumberMaterial: IComponentMaterial = {
+export const InputNumberMaterial: IMaterial = {
   componentName: name,
   component: InputNumber,
   designer: InputNumber,

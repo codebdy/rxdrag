@@ -1,25 +1,23 @@
 import { Activity, AbstractActivity, Input } from "@rxdrag/minions-runtime"
 import { INodeDefine } from "@rxdrag/minions-schema"
+import { IReactContext } from "../../interfaces";
 
 export interface IRouteToConfig {
   url?: string,
   fromInput?: boolean,
 }
 
-export interface IRouteToContext {
-  navigate?: (url: string) => void
-}
 
 @Activity(RouteTo.NAME)
-export class RouteTo extends AbstractActivity<IRouteToConfig, IRouteToContext> {
+export class RouteTo extends AbstractActivity<IRouteToConfig, IReactContext> {
   public static NAME = "system-react.routeTo";
 
-  constructor(meta: INodeDefine<IRouteToConfig>, context?: IRouteToContext) {
+  constructor(meta: INodeDefine<IRouteToConfig>, context?: IReactContext) {
     super(meta, context)
   }
 
   @Input()
-  inputHandler = (inputValue?: string) => {
+  inputHandler = (inputValue?: string, runContext?: object) => {
     let url = inputValue
     if (!this.meta.config?.fromInput) {
       url = this.meta.config?.url

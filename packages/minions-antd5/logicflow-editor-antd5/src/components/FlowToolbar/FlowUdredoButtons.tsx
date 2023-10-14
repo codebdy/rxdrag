@@ -1,8 +1,8 @@
 import { memo } from "react"
 import { useRedo, useRedoList, useUndo, useUndoList } from "@rxdrag/minions-logicflow-editor"
-import { undoIcon, redoIcon } from "./icons"
 import { Button } from "antd"
 import styled from "styled-components"
+import { redoIcon, undoIcon } from "./icons"
 
 
 export const ToolbarButton = styled((props) => <Button type="text" size="small" {...props} />)`

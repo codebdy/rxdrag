@@ -1,4 +1,4 @@
-import {  FieldState, FormValue, IFieldSchema } from "../interfaces/fieldy"
+import { FieldState, FormValue, IFieldSchema } from "../interfaces/fieldy"
 
 export interface IFieldFeedback {
   path: string
@@ -19,15 +19,15 @@ export interface SetFormFieldsPayload extends FormActionPayload {
   fieldSchemas: IFieldSchema[]
 }
 
-export interface RemoveFormFieldsPayload extends FormActionPayload {
-  paths: string[]
+export interface RemoveFormFieldPayload extends FormActionPayload {
+  path: string
 }
 
 export interface SetFormValuePayload extends FormActionPayload {
   value: FormValue
 }
 
-export interface SetFormFeedbacksPayload  extends FormActionPayload {
+export interface SetFormFeedbacksPayload extends FormActionPayload {
   feedbacks: IFieldFeedback[]
 }
 

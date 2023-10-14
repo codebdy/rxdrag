@@ -1,24 +1,21 @@
-import { Dialog } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
-import { ButtonMaterial } from "../../Button";
-import { IconViewMaterial } from "../../displays/IconView";
-import { DialogContentMaterial } from "../DialogContent";
+import { IMaterial } from "@rxdrag/react-core";
 import { DialogFooterMaterial } from "../DialogFooter";
 import { DialogTitleMaterial } from "../DialogTitle";
 import { DialogDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
+import { Dialog } from "@rxdrag/react-antd-components";
 
 const name = "Dialog"
-export const DialogMaterial: IComponentMaterial = {
+export const DialogMaterial: IMaterial = {
   componentName: name,
   component: Dialog,
   designer: DialogDesigner,
   designerLocales: locales,
   propsSchema: materialSchema,
   designerProps: {
-    //readOnly: true,
+    open: true,
   },
   resource: {
     name: name,
@@ -31,42 +28,56 @@ export const DialogMaterial: IComponentMaterial = {
         slots: {
           title: {
             componentName: "DialogTitle",
-            children:[
+            children: [
               {
-                componentName:"Text",
+                componentName: "Text",
                 props: {
                   value: name,
                 }
               }
             ]
           },
-          content: {
-            componentName: "DialogContent",
-          },
           footer: {
             componentName: "DialogFooter",
           },
-          actionComponent: {
-            componentName: "Button",
-            props: {
-              title: name,
-            },
-          },
-          
         },
       }
     ]
   },
   slots: {
     title: DialogTitleMaterial,
-    content: DialogContentMaterial,
     footer: DialogFooterMaterial,
-    actionComponent: ButtonMaterial,
-    icon: IconViewMaterial,
   },
   behaviorRule: {
-    droppable: false,
-    noPlaceholder: true,
+    droppable: true,
+    noPlaceholder: false,
   },
-  logicalProps:["open"]
+  controller: {
+    props: [
+      {
+        name: "open",
+        label: "$open",
+      }
+    ],
+    events: [
+      {
+        name: "onOpen",
+        label: "$onOpen",
+      },
+      {
+        name: "onClose",
+        label: "$onClose",
+      },
+    ],
+    reactions:[
+      {
+        name: "open",
+        label: "$open",
+      },
+      {
+        name: "close",
+        label: "$close",
+      }
+    ]
+  }
 }

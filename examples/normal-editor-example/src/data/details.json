@@ -63,9 +63,6 @@
               "componentName": "Input",
               "props": {},
               "x-field": {
-                "params": {
-                  "withBind": true
-                },
                 "reactionMeta": {},
                 "name": "test1"
               },
@@ -76,9 +73,6 @@
               "componentName": "Input",
               "props": {},
               "x-field": {
-                "params": {
-                  "withBind": true
-                },
                 "reactionMeta": {
                   "display": {},
                   "pattern": {},

@@ -2,9 +2,9 @@ import { NodeType } from "@rxdrag/minions-schema";
 import { createId } from "@rxdrag/shared";
 import { DEFAULT_INPUT_NAME } from "@rxdrag/minions-runtime";
 import { IQueryActivityMaterial } from "../types";
-import { dataQueryIcon } from "../icons";
 import { dataQuerySchema } from "./schema";
 import { MultipleQuery } from "../../activities";
+import { dataQueryIcon } from "@rxdrag/react-shared";
 
 export const multipleQueryMaterial: IQueryActivityMaterial = {
   activityName: MultipleQuery.NAME,

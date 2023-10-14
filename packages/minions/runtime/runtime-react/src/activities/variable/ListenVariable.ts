@@ -1,40 +1,35 @@
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IController, IControllerContext } from "../../interfaces";
-import { AbstractControllerActivity } from "../AbstractControllerActivity";
-import { IVariableConfig } from "./SetVariable";
+import { IVariableContext } from "../../interfaces";
 import { Activity } from "@rxdrag/minions-runtime";
+import { IVariableConfig, VirableActivity } from "../VirableActivity";
 
 @Activity(ListenVariable.NAME)
-export class ListenVariable extends AbstractControllerActivity<IVariableConfig> {
+export class ListenVariable extends VirableActivity {
   public static NAME = "system-react.listenVariable"
 
-  controller: IController
-  constructor(meta: INodeDefine<IVariableConfig>, context?: IControllerContext) {
+  constructor(meta: INodeDefine<IVariableConfig>, context?: IVariableContext) {
     super(meta, context)
 
     if (Object.keys(meta.outPorts || {}).length !== 1) {
       throw new Error("ListenVariable outputs count error")
     }
 
-    if (!meta.config?.param?.controllerId) {
-      throw new Error("ListenVariable not set controller id")
-    }
-    const controller = context?.controllers?.[meta.config?.param?.controllerId]
-    if (!controller) {
-      throw new Error("Can not find controller")
-    }
-    this.controller = controller
-
-    if (meta.config?.param?.variable) {
-      this.controller?.subscribeToVariableChange(meta.config?.param.variable, this.valueHandler)
+    if (meta.config?.variable) {
+      this.variableController?.subscribeToVariableChange(meta.config.variable, this.valueHandler)
     } else {
       console.error("Not set variable to ListenVariableReaction")
     }
   }
 
+  init = () => {
+    if (this.meta.config?.variable) {
+      this.next(this.variableController.getVariable(this?.meta.config.variable), {})
+    }
+  }
+
   valueHandler = (inputValue: unknown) => {
-    if (this.meta.config?.param?.variable) {
-      this.next(inputValue)
+    if (this.meta.config?.variable) {
+      this.next(inputValue, {})
     }
   }
 }

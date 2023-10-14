@@ -13,7 +13,7 @@ export class CustomizedLoop extends AbstractActivity<ICustomizedLoopConfig> {
   public static PORT_INPUT = "input"
   public static PORT_OUTPUT = "output"
   public static PORT_FINISHED = "finished"
-  
+
   finished = false
 
   logicFlow?: LogicFlow;
@@ -25,27 +25,27 @@ export class CustomizedLoop extends AbstractActivity<ICustomizedLoopConfig> {
       this.logicFlow = new LogicFlow({ ...meta.children, id: meta.id }, undefined)
 
       //把子编排的出口，挂接到本地处理函数
-      const outputPortMeta = this.meta.outPorts?.find(port=>port.name === CustomizedLoop.PORT_OUTPUT)
-      if(outputPortMeta?.id){
+      const outputPortMeta = this.meta.outPorts?.find(port => port.name === CustomizedLoop.PORT_OUTPUT)
+      if (outputPortMeta?.id) {
         this.logicFlow?.jointers?.getOutput(outputPortMeta?.name)?.connect(this.oneOutputHandler)
-      }else{
+      } else {
         console.error("No output port in CustomizedLoop")
       }
 
-      const finishedPortMeta = this.meta.outPorts?.find(port=>port.name === CustomizedLoop.PORT_FINISHED)
-      if(finishedPortMeta?.id){
+      const finishedPortMeta = this.meta.outPorts?.find(port => port.name === CustomizedLoop.PORT_FINISHED)
+      if (finishedPortMeta?.id) {
         this.logicFlow?.jointers?.getOutput(finishedPortMeta?.id)?.connect(this.finishedHandler)
-      }else{
+      } else {
         console.error("No finished port in CustomizedLoop")
       }
-      
+
     } else {
       throw new Error("No implement on CustomizedLoop meta")
     }
   }
 
   @Input()
-  inputHandler = (inputValue?: unknown) => {
+  inputHandler = (inputValue?: unknown, runContext?: object) => {
     let count = 0
     if (this.meta.config?.fromInput) {
       if (!_.isArray(inputValue)) {
@@ -54,7 +54,7 @@ export class CustomizedLoop extends AbstractActivity<ICustomizedLoopConfig> {
         for (const one of inputValue) {
           this.getInput()?.push(one)
           count++
-          if(this.finished){
+          if (this.finished) {
             break
           }
         }
@@ -63,32 +63,32 @@ export class CustomizedLoop extends AbstractActivity<ICustomizedLoopConfig> {
       for (let i = 0; i < (this.meta.config?.times || 0); i++) {
         this.getInput()?.push(i)
         count++
-        if(this.finished){
+        if (this.finished) {
           break
         }
       }
     }
-    if(!this.finished){
-      this.next(count, CustomizedLoop.PORT_FINISHED)
+    if (!this.finished) {
+      this.next(count, runContext, CustomizedLoop.PORT_FINISHED)
     }
   }
 
-  getInput(){
+  getInput() {
     return this.logicFlow?.jointers?.getInput(CustomizedLoop.PORT_INPUT)
   }
 
-  oneOutputHandler = (value: unknown)=>{
+  oneOutputHandler = (value: unknown, runContext?: object) => {
     //输出到响应端口
-    this.output(value)
+    this.output(value, runContext)
   }
 
-  finishedHandler = (value: unknown)=>{
+  finishedHandler = (value: unknown, runContext?: object) => {
     this.finished = true
     //输出到响应端口
-    this.next(value, CustomizedLoop.PORT_FINISHED)
+    this.next(value, runContext, CustomizedLoop.PORT_FINISHED)
   }
 
-  output = (value: unknown) => {
-    this.next(value, CustomizedLoop.PORT_OUTPUT)
+  output = (value: unknown, runContext?: object) => {
+    this.next(value, runContext, CustomizedLoop.PORT_OUTPUT)
   }
 }

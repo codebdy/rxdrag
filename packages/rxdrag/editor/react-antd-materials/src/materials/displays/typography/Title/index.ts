@@ -1,11 +1,11 @@
 import { Title } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";
 
 const name = "Title"
-export const TitleMaterial: IComponentMaterial = {
+export const TitleMaterial: IMaterial = {
   componentName: name,
   component: Title,
   designer: Title,

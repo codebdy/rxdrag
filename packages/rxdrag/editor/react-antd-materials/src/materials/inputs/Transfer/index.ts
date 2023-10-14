@@ -1,11 +1,11 @@
 import { Transfer } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "Transfer"
-export const TransferMaterial: IComponentMaterial = {
+export const TransferMaterial: IMaterial = {
   componentName: name,
   component: Transfer,
   designer: Transfer,

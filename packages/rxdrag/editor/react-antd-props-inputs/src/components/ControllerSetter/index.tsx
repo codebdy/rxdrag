@@ -8,25 +8,30 @@ export const ControllerSetter = memo((
   props: {
     value?: IControllerMeta | null,
     onChange?: (value?: IControllerMeta | null) => void,
-    isArray?: boolean
   }
 ) => {
-  const { value, onChange, isArray } = props;
+  const { value, onChange } = props;
   const t = useSettersTranslate()
 
   const handleSwitch = useCallback((checked: boolean) => {
     if (checked) {
-      onChange?.({ ...value, id: createId(), isArray })
+      onChange?.({
+        ...value,
+        id: value?.id ? value.id : createId(),
+        enable: true,
+      })
     } else {
-      onChange?.(null)
+      if (value) {
+        onChange?.({ ...value, enable: false })
+      }
     }
-  }, [isArray, onChange, value])
+  }, [onChange, value])
 
   const handleNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (value) {
-      onChange?.({ ...value, name: e.target.value, isArray })
+      onChange?.({ ...value, name: e.target.value })
     }
-  }, [isArray, onChange, value])
+  }, [onChange, value])
 
   return (
     <>
@@ -34,7 +39,7 @@ export const ControllerSetter = memo((
         label={t("joinFlow")}
       >
         <Switch
-          checked={!!value?.id}
+          checked={value?.enable}
           onChange={handleSwitch}
         />
       </Form.Item>

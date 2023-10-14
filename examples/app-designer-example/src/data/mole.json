@@ -1,0 +1,2573 @@
+[
+  {
+    "id": "0_Jv917c",
+    "name": "主流程",
+    "ownerId": "mole",
+    "moduleId": "mole",
+    "type": "normal",
+    "metas": {
+      "lines": [
+        {
+          "id": "rFn-IqP6",
+          "source": {
+            "nodeId": "8678623f-32ed-43a0-ba44-83a842aaa725",
+            "portId": "SwZM1_RN"
+          },
+          "target": {
+            "nodeId": "748a3d7a-91a3-45c8-a450-d60ded58bc4a",
+            "portId": "jjFAdOP-"
+          }
+        },
+        {
+          "id": "-v00jBGR",
+          "source": {
+            "nodeId": "8678623f-32ed-43a0-ba44-83a842aaa725",
+            "portId": "SwZM1_RN"
+          },
+          "target": {
+            "nodeId": "afa1cc57-e624-4c80-b432-85906c8cc76e",
+            "portId": "e4RSkSW7"
+          }
+        },
+        {
+          "id": "rPPUZHXW",
+          "source": {
+            "nodeId": "64241bdd-be57-4e04-81d5-f9eb73ec5d84",
+            "portId": "XP2sTYBg"
+          },
+          "target": {
+            "nodeId": "afa1cc57-e624-4c80-b432-85906c8cc76e",
+            "portId": "ON_9QZxS"
+          }
+        },
+        {
+          "id": "RCP6Ficp",
+          "source": {
+            "nodeId": "afa1cc57-e624-4c80-b432-85906c8cc76e",
+            "portId": "_TdVMvHS"
+          },
+          "target": {
+            "nodeId": "64aa1596-bfce-4e29-b924-f5c3f5e7358b",
+            "portId": "39gmGTNW"
+          }
+        },
+        {
+          "id": "VXDZvrTm",
+          "source": {
+            "nodeId": "f0c3cbf8-b74c-4be9-868d-75eb16b25288",
+            "portId": "7-NGGkF9"
+          },
+          "target": {
+            "nodeId": "afa1cc57-e624-4c80-b432-85906c8cc76e",
+            "portId": "yC_kXYcZ"
+          }
+        },
+        {
+          "id": "u-c4SR5f",
+          "source": {
+            "nodeId": "c940213d-262d-4647-80bf-84feceec8077",
+            "portId": "yLD0-1uK"
+          },
+          "target": {
+            "nodeId": "64aa1596-bfce-4e29-b924-f5c3f5e7358b",
+            "portId": "2yGRi_65"
+          }
+        },
+        {
+          "id": "RGWp5w1K",
+          "source": {
+            "nodeId": "748a3d7a-91a3-45c8-a450-d60ded58bc4a",
+            "portId": "d8vEFHaO"
+          },
+          "target": {
+            "nodeId": "247ca3b6-9d3a-4d1e-b8c4-c288848d388d",
+            "portId": "bPSaCKIT"
+          }
+        },
+        {
+          "id": "ft1D6efx",
+          "source": {
+            "nodeId": "64aa1596-bfce-4e29-b924-f5c3f5e7358b",
+            "portId": "0-0B6jEY"
+          },
+          "target": {
+            "nodeId": "4a6b53d6-e06d-4755-b7c4-915bdafafcbb",
+            "portId": "HWNQk-4d"
+          }
+        },
+        {
+          "id": "dMQD2Tst",
+          "source": {
+            "nodeId": "6ab21621-310b-496f-9f50-7e5d5803e912",
+            "portId": "KGNUWAOp"
+          },
+          "target": {
+            "nodeId": "344c4daa-3e39-4ada-8981-632cc1fd7f79",
+            "portId": "88tGRYNk"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "id": "8678623f-32ed-43a0-ba44-83a842aaa725",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "outPorts": [
+            {
+              "id": "SwZM1_RN",
+              "name": "output",
+              "label": "点击"
+            }
+          ],
+          "config": {
+            "controllerId": "uQPenUqJ",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 70,
+            "y": 180,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "64241bdd-be57-4e04-81d5-f9eb73ec5d84",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "outPorts": [
+            {
+              "id": "XP2sTYBg",
+              "name": "output",
+              "label": "点击"
+            }
+          ],
+          "config": {
+            "controllerId": "-V60Mne6",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 60,
+            "y": 270,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "748a3d7a-91a3-45c8-a450-d60ded58bc4a",
+          "label": "常量",
+          "type": "Activity",
+          "activityName": "system.constValue",
+          "inPorts": [
+            {
+              "id": "jjFAdOP-",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "d8vEFHaO",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "value": 0
+          },
+          "x6Node": {
+            "x": 310,
+            "y": 160,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "afa1cc57-e624-4c80-b432-85906c8cc76e",
+          "label": "信号发生器",
+          "type": "Activity",
+          "activityName": "system.signals",
+          "inPorts": [
+            {
+              "id": "e4RSkSW7",
+              "name": "startUp",
+              "label": "启动"
+            },
+            {
+              "id": "ON_9QZxS",
+              "name": "stop",
+              "label": "停止"
+            },
+            {
+              "id": "yC_kXYcZ",
+              "name": "interval",
+              "label": "间隔"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "_TdVMvHS",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {},
+          "x6Node": {
+            "x": 320,
+            "y": 240,
+            "width": 130,
+            "height": 48
+          }
+        },
+        {
+          "id": "f0c3cbf8-b74c-4be9-868d-75eb16b25288",
+          "label": "时间间隔",
+          "type": "Activity",
+          "activityName": "system-react.listenVariable",
+          "outPorts": [
+            {
+              "id": "7-NGGkF9",
+              "name": "output",
+              "label": "$valueChange"
+            }
+          ],
+          "config": {
+            "variable": "时间间隔"
+          },
+          "x6Node": {
+            "x": 60,
+            "y": 360,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "c940213d-262d-4647-80bf-84feceec8077",
+          "label": "地鼠数量",
+          "type": "Activity",
+          "activityName": "system-react.listenVariable",
+          "outPorts": [
+            {
+              "id": "yLD0-1uK",
+              "name": "output",
+              "label": "$valueChange"
+            }
+          ],
+          "config": {
+            "variable": "地鼠数量"
+          },
+          "x6Node": {
+            "x": 340,
+            "y": 370,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "64aa1596-bfce-4e29-b924-f5c3f5e7358b",
+          "label": "随机数",
+          "type": "Activity",
+          "activityName": "system.random",
+          "inPorts": [
+            {
+              "id": "39gmGTNW",
+              "name": "startUp",
+              "label": "启动"
+            },
+            {
+              "id": "YjjWXhfb",
+              "name": "minValue",
+              "label": "最小值"
+            },
+            {
+              "id": "2yGRi_65",
+              "name": "maxValue",
+              "label": "最大值"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "0-0B6jEY",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "minValue": 0
+          },
+          "x6Node": {
+            "x": 550,
+            "y": 220,
+            "width": 102,
+            "height": 48
+          }
+        },
+        {
+          "id": "4a6b53d6-e06d-4755-b7c4-915bdafafcbb",
+          "label": "活跃地鼠",
+          "type": "Activity",
+          "activityName": "system-react.setVariable",
+          "inPorts": [
+            {
+              "id": "HWNQk-4d",
+              "name": "input",
+              "label": "$setValue"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "CnXq-wv-",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "variable": "活跃地鼠"
+          },
+          "x6Node": {
+            "x": 730,
+            "y": 260,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "247ca3b6-9d3a-4d1e-b8c4-c288848d388d",
+          "label": "成绩",
+          "type": "Activity",
+          "activityName": "system-react.setVariable",
+          "inPorts": [
+            {
+              "id": "bPSaCKIT",
+              "name": "input",
+              "label": "$setValue"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "j2FyhZk7",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "variable": "成绩"
+          },
+          "x6Node": {
+            "x": 520,
+            "y": 140,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "6ab21621-310b-496f-9f50-7e5d5803e912",
+          "label": "成绩",
+          "type": "Activity",
+          "activityName": "system-react.listenVariable",
+          "outPorts": [
+            {
+              "id": "KGNUWAOp",
+              "name": "output",
+              "label": "$valueChange"
+            }
+          ],
+          "config": {
+            "variable": "成绩"
+          },
+          "x6Node": {
+            "x": 40,
+            "y": 50,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "344c4daa-3e39-4ada-8981-632cc1fd7f79",
+          "type": "Activity",
+          "activityName": "system-react.setProp",
+          "inPorts": [
+            {
+              "id": "88tGRYNk",
+              "name": "input",
+              "label": "$props"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "ZWGATi1E",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "g1rEXDcH",
+            "prop": "value"
+          },
+          "x6Node": {
+            "x": 230,
+            "y": 60,
+            "width": 88,
+            "height": 48
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "flDIkz5T",
+    "name": "地鼠",
+    "ownerId": "KiE-KrsA",
+    "moduleId": "mole",
+    "type": "normal",
+    "metas": {
+      "lines": [
+        {
+          "id": "Dy_FT600",
+          "source": {
+            "nodeId": "ed2c7ea0-9627-43c3-bd58-b368b9b37780",
+            "portId": "UKiis6EF"
+          },
+          "target": {
+            "nodeId": "001a1e8d-b6ec-469d-a6a2-c662b00da219",
+            "portId": "sfS1Cdbt"
+          }
+        },
+        {
+          "id": "p2GlqBZl",
+          "source": {
+            "nodeId": "6a67f403-503c-4804-b9c5-04371db63c75",
+            "portId": "IbdW8WU8"
+          },
+          "target": {
+            "nodeId": "21a4301e-ad8a-45ee-9a54-443f9c7c8a8c",
+            "portId": "IHdqvqNa"
+          }
+        },
+        {
+          "id": "q74U8DNi",
+          "source": {
+            "nodeId": "21a4301e-ad8a-45ee-9a54-443f9c7c8a8c",
+            "portId": "UKiis6EF"
+          },
+          "target": {
+            "nodeId": "7da052c6-2146-40bf-b9ae-193ab77f2142",
+            "portId": "OZpX14ip"
+          }
+        },
+        {
+          "id": "PdjqGYvL",
+          "source": {
+            "nodeId": "4df3a6e4-affd-4ef2-b6e0-d2328a1a6467",
+            "portId": "sA1wfw3A"
+          },
+          "target": {
+            "nodeId": "1ea0c056-00ab-4041-aaee-50f7373d888f",
+            "portId": "7b2Iseof"
+          }
+        },
+        {
+          "id": "dN20tkSe",
+          "source": {
+            "nodeId": "1ea0c056-00ab-4041-aaee-50f7373d888f",
+            "portId": "yNjPsaWF"
+          },
+          "target": {
+            "nodeId": "fb331326-e46b-4af4-8e17-af581d1954c0",
+            "portId": "KBiUNbEf"
+          }
+        },
+        {
+          "id": "pITZSW85",
+          "source": {
+            "nodeId": "1ea0c056-00ab-4041-aaee-50f7373d888f",
+            "portId": "DuIyuzO0"
+          },
+          "target": {
+            "nodeId": "3abb5412-8532-45c4-974d-139ff31872c4",
+            "portId": "WnJhSUQe"
+          }
+        },
+        {
+          "id": "WlFr5uU4",
+          "source": {
+            "nodeId": "b71c53f5-7d6c-4121-beea-1431d50e36c3",
+            "portId": "JM5hf19k"
+          },
+          "target": {
+            "nodeId": "7982429f-868b-4e28-9fa9-54a23d1abf19",
+            "portId": "NZWh7a8w"
+          }
+        },
+        {
+          "id": "7dLiBqoF",
+          "source": {
+            "nodeId": "cefe3863-5002-4b41-ab41-571e5901c4e2",
+            "portId": "a59goUCn"
+          },
+          "target": {
+            "nodeId": "b71c53f5-7d6c-4121-beea-1431d50e36c3",
+            "portId": "TB_TCjgA"
+          }
+        },
+        {
+          "id": "VTDF0Pxb",
+          "source": {
+            "nodeId": "c7ba6a15-15fc-407c-863b-dca357417f3f",
+            "portId": "udgVoOYo"
+          },
+          "target": {
+            "nodeId": "1ea0c056-00ab-4041-aaee-50f7373d888f",
+            "portId": "kjWpTyiT"
+          }
+        },
+        {
+          "id": "GVyIMKMb",
+          "source": {
+            "nodeId": "c7ba6a15-15fc-407c-863b-dca357417f3f",
+            "portId": "udgVoOYo"
+          },
+          "target": {
+            "nodeId": "4df3a6e4-affd-4ef2-b6e0-d2328a1a6467",
+            "portId": "JLUTlow_"
+          }
+        },
+        {
+          "id": "kU_syGP6",
+          "source": {
+            "nodeId": "445863cf-3e50-4eba-ab07-0ec7417c3b70",
+            "portId": "OH0o9Fqs"
+          },
+          "target": {
+            "nodeId": "32069572-c492-4d3f-b4ef-31a32943d4a2",
+            "portId": "Lm9O1NWv"
+          }
+        },
+        {
+          "id": "05p_8dBD",
+          "source": {
+            "nodeId": "88110723-823e-4639-bb2b-25973da20732",
+            "portId": "k9wyTebq"
+          },
+          "target": {
+            "nodeId": "40c1bdf7-02f3-4261-b6c1-db99c9f7dbc3",
+            "portId": "Lm9O1NWv"
+          }
+        },
+        {
+          "id": "a17LC5kR",
+          "source": {
+            "nodeId": "88110723-823e-4639-bb2b-25973da20732",
+            "portId": "k9wyTebq"
+          },
+          "target": {
+            "nodeId": "c193ce98-ec82-4112-a99a-8f39570e7725",
+            "portId": "l0iefi1n"
+          }
+        },
+        {
+          "id": "Phgd5k95",
+          "source": {
+            "nodeId": "c193ce98-ec82-4112-a99a-8f39570e7725",
+            "portId": "W0aIK_N3"
+          },
+          "target": {
+            "nodeId": "ed2c7ea0-9627-43c3-bd58-b368b9b37780",
+            "portId": "IHdqvqNa"
+          }
+        },
+        {
+          "id": "2cb8_OZW",
+          "source": {
+            "nodeId": "c193ce98-ec82-4112-a99a-8f39570e7725",
+            "portId": "W0aIK_N3"
+          },
+          "target": {
+            "nodeId": "6a67f403-503c-4804-b9c5-04371db63c75",
+            "portId": "9FpaUfaD"
+          }
+        },
+        {
+          "id": "SvTf17mv",
+          "source": {
+            "nodeId": "445863cf-3e50-4eba-ab07-0ec7417c3b70",
+            "portId": "OH0o9Fqs"
+          },
+          "target": {
+            "nodeId": "3d2e2034-9a14-4cc8-81cc-de305bc15290",
+            "portId": "iXKjcA4y"
+          }
+        },
+        {
+          "id": "LANBpzoR",
+          "source": {
+            "nodeId": "3d2e2034-9a14-4cc8-81cc-de305bc15290",
+            "portId": "ceR0LddD"
+          },
+          "target": {
+            "nodeId": "0bed0dcf-cd64-4313-8826-2813d72d1a76",
+            "portId": "Lm9O1NWv"
+          }
+        },
+        {
+          "id": "y1pi9OI3",
+          "source": {
+            "nodeId": "3d2e2034-9a14-4cc8-81cc-de305bc15290",
+            "portId": "ceR0LddD"
+          },
+          "target": {
+            "nodeId": "88110723-823e-4639-bb2b-25973da20732",
+            "portId": "ZnINPHgX"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4df3a6e4-affd-4ef2-b6e0-d2328a1a6467",
+          "label": "读取当前索引",
+          "type": "Activity",
+          "activityName": "system-react.readArrayIndex",
+          "inPorts": [
+            {
+              "id": "JLUTlow_",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "sA1wfw3A",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "KiE-KrsA"
+          },
+          "x6Node": {
+            "x": 220,
+            "y": 230,
+            "width": 144,
+            "height": 48
+          }
+        },
+        {
+          "id": "fb331326-e46b-4af4-8e17-af581d1954c0",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "KBiUNbEf",
+              "name": "enable",
+              "label": "有效"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "qu-glyML",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "NpLxKVZs"
+          },
+          "x6Node": {
+            "x": 680,
+            "y": 80,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "3abb5412-8532-45c4-974d-139ff31872c4",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "WnJhSUQe",
+              "name": "disable",
+              "label": "无效"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "tTbgoL29",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "NpLxKVZs"
+          },
+          "x6Node": {
+            "x": 680,
+            "y": 160,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "445863cf-3e50-4eba-ab07-0ec7417c3b70",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "outPorts": [
+            {
+              "id": "OH0o9Fqs",
+              "name": "output",
+              "label": "点击"
+            }
+          ],
+          "config": {
+            "controllerId": "NpLxKVZs",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 30,
+            "y": 330,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "6a67f403-503c-4804-b9c5-04371db63c75",
+          "label": "延时",
+          "type": "Activity",
+          "activityName": "system.delay",
+          "inPorts": [
+            {
+              "id": "9FpaUfaD",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "IbdW8WU8",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "time": 500
+          },
+          "x6Node": {
+            "x": 600,
+            "y": 550,
+            "width": 88,
+            "height": 48
+          }
+        },
+        {
+          "id": "ed2c7ea0-9627-43c3-bd58-b368b9b37780",
+          "label": "常量",
+          "type": "Activity",
+          "activityName": "system.constValue",
+          "inPorts": [
+            {
+              "id": "IHdqvqNa",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "UKiis6EF",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "value": true
+          },
+          "x6Node": {
+            "x": 580,
+            "y": 410,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "21a4301e-ad8a-45ee-9a54-443f9c7c8a8c",
+          "label": "常量",
+          "type": "Activity",
+          "activityName": "system.constValue",
+          "inPorts": [
+            {
+              "id": "IHdqvqNa",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "UKiis6EF",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "value": false
+          },
+          "x6Node": {
+            "x": 750,
+            "y": 570,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "7da052c6-2146-40bf-b9ae-193ab77f2142",
+          "type": "Activity",
+          "activityName": "system-react.setProp",
+          "inPorts": [
+            {
+              "id": "OZpX14ip",
+              "name": "input",
+              "label": "$props"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "m_32oSv8",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "NpLxKVZs",
+            "prop": "danger"
+          },
+          "x6Node": {
+            "x": 870,
+            "y": 640,
+            "width": 88,
+            "height": 48
+          }
+        },
+        {
+          "id": "001a1e8d-b6ec-469d-a6a2-c662b00da219",
+          "type": "Activity",
+          "activityName": "system-react.setProp",
+          "inPorts": [
+            {
+              "id": "sfS1Cdbt",
+              "name": "input",
+              "label": "$props"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "hfMBb1qx",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "NpLxKVZs",
+            "prop": "danger"
+          },
+          "x6Node": {
+            "x": 720,
+            "y": 450,
+            "width": 88,
+            "height": 48
+          }
+        },
+        {
+          "id": "1ea0c056-00ab-4041-aaee-50f7373d888f",
+          "label": "相等",
+          "type": "Activity",
+          "activityName": "system.equal",
+          "inPorts": [
+            {
+              "id": "kjWpTyiT",
+              "name": "input1",
+              "label": ""
+            },
+            {
+              "id": "7b2Iseof",
+              "name": "input2",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "yNjPsaWF",
+              "name": "true",
+              "label": "是"
+            },
+            {
+              "id": "DuIyuzO0",
+              "name": "false",
+              "label": "否"
+            }
+          ],
+          "config": {},
+          "x6Node": {
+            "x": 470,
+            "y": 110,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "7982429f-868b-4e28-9fa9-54a23d1abf19",
+          "type": "Activity",
+          "activityName": "system-react.setProp",
+          "inPorts": [
+            {
+              "id": "NZWh7a8w",
+              "name": "input",
+              "label": "$props"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "MvRIlhzU",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "NpLxKVZs",
+            "prop": "disabled"
+          },
+          "x6Node": {
+            "x": 400,
+            "y": -40,
+            "width": 88,
+            "height": 48
+          }
+        },
+        {
+          "id": "b71c53f5-7d6c-4121-beea-1431d50e36c3",
+          "label": "逻辑非",
+          "type": "Activity",
+          "activityName": "system.negation",
+          "inPorts": [
+            {
+              "id": "TB_TCjgA",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "JM5hf19k",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {},
+          "x6Node": {
+            "x": 140,
+            "y": -30,
+            "width": 102,
+            "height": 32
+          }
+        },
+        {
+          "id": "cefe3863-5002-4b41-ab41-571e5901c4e2",
+          "label": "运行",
+          "type": "Activity",
+          "activityName": "system-react.listenVariable",
+          "outPorts": [
+            {
+              "id": "a59goUCn",
+              "name": "output",
+              "label": "$valueChange"
+            }
+          ],
+          "config": {
+            "variable": "运行"
+          },
+          "x6Node": {
+            "x": -20,
+            "y": -30,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "c7ba6a15-15fc-407c-863b-dca357417f3f",
+          "label": "活跃地鼠",
+          "type": "Activity",
+          "activityName": "system-react.listenVariable",
+          "outPorts": [
+            {
+              "id": "udgVoOYo",
+              "name": "output",
+              "label": "$valueChange"
+            }
+          ],
+          "config": {
+            "variable": "活跃地鼠"
+          },
+          "x6Node": {
+            "x": 10,
+            "y": 100,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "88110723-823e-4639-bb2b-25973da20732",
+          "label": "递增",
+          "type": "Activity",
+          "activityName": "system.increase",
+          "inPorts": [
+            {
+              "id": "ZnINPHgX",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "k9wyTebq",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "step": 1
+          },
+          "x6Node": {
+            "x": 330,
+            "y": 380,
+            "width": 88,
+            "height": 48
+          }
+        },
+        {
+          "id": "40c1bdf7-02f3-4261-b6c1-db99c9f7dbc3",
+          "label": "调试",
+          "type": "Activity",
+          "activityName": "system.debug",
+          "inPorts": [
+            {
+              "id": "Lm9O1NWv",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [],
+          "config": {
+            "tip": "递增成功"
+          },
+          "x6Node": {
+            "x": 480,
+            "y": 370,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "0bed0dcf-cd64-4313-8826-2813d72d1a76",
+          "label": "调试",
+          "type": "Activity",
+          "activityName": "system.debug",
+          "inPorts": [
+            {
+              "id": "Lm9O1NWv",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [],
+          "config": {
+            "tip": "读取成绩"
+          },
+          "x6Node": {
+            "x": 360,
+            "y": 300,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "c193ce98-ec82-4112-a99a-8f39570e7725",
+          "label": "成绩",
+          "type": "Activity",
+          "activityName": "system-react.setVariable",
+          "inPorts": [
+            {
+              "id": "l0iefi1n",
+              "name": "input",
+              "label": "$setValue"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "W0aIK_N3",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "variable": "成绩"
+          },
+          "x6Node": {
+            "x": 450,
+            "y": 490,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "3d2e2034-9a14-4cc8-81cc-de305bc15290",
+          "label": "成绩",
+          "type": "Activity",
+          "activityName": "system-react.readVariable",
+          "inPorts": [
+            {
+              "id": "iXKjcA4y",
+              "name": "input",
+              "label": "$read"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "ceR0LddD",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "variable": "成绩"
+          },
+          "x6Node": {
+            "x": 200,
+            "y": 360,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "32069572-c492-4d3f-b4ef-31a32943d4a2",
+          "label": "调试",
+          "type": "Activity",
+          "activityName": "system.debug",
+          "inPorts": [
+            {
+              "id": "Lm9O1NWv",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [],
+          "config": {
+            "tip": "地鼠点击"
+          },
+          "x6Node": {
+            "x": 200,
+            "y": 460,
+            "width": 104,
+            "height": 48
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "38nFrAIT",
+    "name": "设置",
+    "ownerId": "mole",
+    "moduleId": "mole",
+    "type": "normal",
+    "metas": {
+      "lines": [
+        {
+          "id": "iLB5Nn_U",
+          "source": {
+            "nodeId": "18b6608f-ea50-49a0-be4e-bf2e28e8a90f",
+            "portId": "J411CbFG"
+          },
+          "target": {
+            "nodeId": "61586e23-9b8b-4402-a622-9654f7c9ee56",
+            "portId": "t1kMtNA1"
+          }
+        },
+        {
+          "id": "FnbUnwZq",
+          "source": {
+            "nodeId": "8035b367-276a-40ce-a355-480fec5b19f7",
+            "portId": "4dAqsguK"
+          },
+          "target": {
+            "nodeId": "ef7fbb23-318a-4db5-a50d-d6b2c0da2c1d",
+            "portId": "ahMdkgkk"
+          }
+        },
+        {
+          "id": "QlDl0N06",
+          "source": {
+            "nodeId": "669e2b80-5038-45cc-8318-43e81dbc03b5",
+            "portId": "1ouYiar8"
+          },
+          "target": {
+            "nodeId": "e29b686e-6ef9-4f67-a6f2-a71da759ecb4",
+            "portId": "hDPdE4TP"
+          }
+        },
+        {
+          "id": "i6V9XlD8",
+          "source": {
+            "nodeId": "669e2b80-5038-45cc-8318-43e81dbc03b5",
+            "portId": "1ouYiar8"
+          },
+          "target": {
+            "nodeId": "f30a83da-a020-4c88-8676-cd4bd8b31617",
+            "portId": "6ayCQwrt"
+          }
+        },
+        {
+          "id": "Hddh_AkZ",
+          "source": {
+            "nodeId": "e29b686e-6ef9-4f67-a6f2-a71da759ecb4",
+            "portId": "jIpjKPRE"
+          },
+          "target": {
+            "nodeId": "e1e1242e-ca41-4f94-8842-89f8f62bd3ac",
+            "portId": "a7durdwt"
+          }
+        },
+        {
+          "id": "iaqeUp_y",
+          "source": {
+            "nodeId": "f30a83da-a020-4c88-8676-cd4bd8b31617",
+            "portId": "7X4ztlfZ"
+          },
+          "target": {
+            "nodeId": "e1e1242e-ca41-4f94-8842-89f8f62bd3ac",
+            "portId": "zfcCQp49"
+          }
+        },
+        {
+          "id": "NH3jjBAi",
+          "source": {
+            "nodeId": "e1e1242e-ca41-4f94-8842-89f8f62bd3ac",
+            "portId": "RV56FLyY"
+          },
+          "target": {
+            "nodeId": "1596ab2a-59b6-4002-99ec-4a592256b923",
+            "portId": "ztlDkJv4"
+          }
+        },
+        {
+          "id": "nldAtCE5",
+          "source": {
+            "nodeId": "1596ab2a-59b6-4002-99ec-4a592256b923",
+            "portId": "_w9ByUF7"
+          },
+          "target": {
+            "nodeId": "e6d990a4-ddf3-43ff-89ae-90f9147d09a3",
+            "portId": "jMs7oSII"
+          }
+        },
+        {
+          "id": "1Zeax84k",
+          "source": {
+            "nodeId": "e0927ac6-789a-4991-9ed1-65525e6137c2",
+            "portId": "vz8BsV7i"
+          },
+          "target": {
+            "nodeId": "dce23c49-32eb-41c4-9176-da77012d4012",
+            "portId": "qNADoleB"
+          }
+        },
+        {
+          "id": "1ZfErZZ0",
+          "source": {
+            "nodeId": "dce23c49-32eb-41c4-9176-da77012d4012",
+            "portId": "G7IEx7JE"
+          },
+          "target": {
+            "nodeId": "4af94fa2-1f69-42a4-96a5-86106489bd89",
+            "portId": "8X5W6xmP"
+          }
+        },
+        {
+          "id": "-zeNGlYF",
+          "source": {
+            "nodeId": "4af94fa2-1f69-42a4-96a5-86106489bd89",
+            "portId": "RDr9bp9G"
+          },
+          "target": {
+            "nodeId": "45a06f64-a37a-4a1e-925c-295c80468a9f",
+            "portId": "gQectFSG"
+          }
+        },
+        {
+          "id": "DPjbxQnn",
+          "source": {
+            "nodeId": "4af94fa2-1f69-42a4-96a5-86106489bd89",
+            "portId": "Xox5TZ2j"
+          },
+          "target": {
+            "nodeId": "8b291eca-b10b-4edc-9a1c-03c0ca161467",
+            "portId": "3s3ylosp"
+          }
+        },
+        {
+          "id": "npSR8DAm",
+          "source": {
+            "nodeId": "45a06f64-a37a-4a1e-925c-295c80468a9f",
+            "portId": "5KwxD8G9"
+          },
+          "target": {
+            "nodeId": "1d972737-68f1-4bc8-9442-128a218b6280",
+            "portId": "4LgYm4a3"
+          }
+        },
+        {
+          "id": "4mc3FAgV",
+          "source": {
+            "nodeId": "18b6608f-ea50-49a0-be4e-bf2e28e8a90f",
+            "portId": "J411CbFG"
+          },
+          "target": {
+            "nodeId": "57e22d4c-0d18-433b-bd8d-c54af40f7090",
+            "portId": "VC7Spag8"
+          }
+        },
+        {
+          "id": "tSqjPVJK",
+          "source": {
+            "nodeId": "dce23c49-32eb-41c4-9176-da77012d4012",
+            "portId": "G7IEx7JE"
+          },
+          "target": {
+            "nodeId": "895a67cb-a0a4-4d6e-a0ea-c64160e6ee55",
+            "portId": "S6UX3kdg"
+          }
+        },
+        {
+          "id": "VDFI7x7F",
+          "source": {
+            "nodeId": "240ac88a-4db5-44e8-925f-6e9ff2dba424",
+            "portId": "Qsk13SdO"
+          },
+          "target": {
+            "nodeId": "32cc22a7-8063-4597-96b3-3fb6f8e7f8ea",
+            "portId": "90c12fbe-be12-456e-9970-6dfc52c28186"
+          }
+        },
+        {
+          "id": "aa9prANG",
+          "source": {
+            "nodeId": "240ac88a-4db5-44e8-925f-6e9ff2dba424",
+            "portId": "Qsk13SdO"
+          },
+          "target": {
+            "nodeId": "32cc22a7-8063-4597-96b3-3fb6f8e7f8ea",
+            "portId": "9f435c05-4996-4683-b84e-2dd2aa1e3417"
+          }
+        },
+        {
+          "id": "fyEZxf2a",
+          "source": {
+            "nodeId": "32cc22a7-8063-4597-96b3-3fb6f8e7f8ea",
+            "portId": "fab96691-af97-48a8-b299-29454e80989e"
+          },
+          "target": {
+            "nodeId": "ecb25468-defb-4760-8dde-ab90f6a62c23",
+            "portId": "GGKwYaLw"
+          }
+        },
+        {
+          "id": "Mrv6XrmL",
+          "source": {
+            "nodeId": "32cc22a7-8063-4597-96b3-3fb6f8e7f8ea",
+            "portId": "92fa8e21-f982-4e61-8a74-84ad2f38b4d7"
+          },
+          "target": {
+            "nodeId": "08d94ecc-9d96-48f5-940e-12b3a75be714",
+            "portId": "GGKwYaLw"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "id": "669e2b80-5038-45cc-8318-43e81dbc03b5",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "outPorts": [
+            {
+              "id": "1ouYiar8",
+              "name": "output",
+              "label": "点击"
+            }
+          ],
+          "config": {
+            "controllerId": "FfF5nHpb",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 80,
+            "y": 80,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "18b6608f-ea50-49a0-be4e-bf2e28e8a90f",
+          "label": "地鼠数量",
+          "type": "Activity",
+          "activityName": "system-react.listenVariable",
+          "outPorts": [
+            {
+              "id": "J411CbFG",
+              "name": "output",
+              "label": "$valueChange"
+            }
+          ],
+          "config": {
+            "variable": "地鼠数量"
+          },
+          "x6Node": {
+            "x": 50,
+            "y": 170,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "61586e23-9b8b-4402-a622-9654f7c9ee56",
+          "type": "Activity",
+          "activityName": "system-react.setProp",
+          "inPorts": [
+            {
+              "id": "t1kMtNA1",
+              "name": "input",
+              "label": "$props"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "gD96lQ0g",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "KiE-KrsA",
+            "prop": "dataSource"
+          },
+          "x6Node": {
+            "x": 290,
+            "y": 170,
+            "width": 116,
+            "height": 48
+          }
+        },
+        {
+          "id": "8035b367-276a-40ce-a355-480fec5b19f7",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "outPorts": [
+            {
+              "id": "4dAqsguK",
+              "name": "output",
+              "label": "点击"
+            }
+          ],
+          "config": {
+            "controllerId": "OfONgEFW",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 40,
+            "y": 250,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "ef7fbb23-318a-4db5-a50d-d6b2c0da2c1d",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "ahMdkgkk",
+              "name": "close",
+              "label": "关闭"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "iEWXSxoP",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "eu2MFGfi"
+          },
+          "x6Node": {
+            "x": 270,
+            "y": 290,
+            "width": 130,
+            "height": 32
+          }
+        },
+        {
+          "id": "e29b686e-6ef9-4f67-a6f2-a71da759ecb4",
+          "label": "地鼠数量",
+          "type": "Activity",
+          "activityName": "system-react.readVariable",
+          "inPorts": [
+            {
+              "id": "hDPdE4TP",
+              "name": "input",
+              "label": "$read"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "jIpjKPRE",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "variable": "地鼠数量"
+          },
+          "x6Node": {
+            "x": 280,
+            "y": 10,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "f30a83da-a020-4c88-8676-cd4bd8b31617",
+          "label": "时间间隔",
+          "type": "Activity",
+          "activityName": "system-react.readVariable",
+          "inPorts": [
+            {
+              "id": "6ayCQwrt",
+              "name": "input",
+              "label": "$read"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "7X4ztlfZ",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "variable": "时间间隔"
+          },
+          "x6Node": {
+            "x": 280,
+            "y": 100,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "e1e1242e-ca41-4f94-8842-89f8f62bd3ac",
+          "label": "合并",
+          "type": "Activity",
+          "activityName": "system.merge",
+          "inPorts": [
+            {
+              "id": "a7durdwt",
+              "name": "count",
+              "label": "count",
+              "key": "a7durdwt"
+            },
+            {
+              "id": "zfcCQp49",
+              "name": "interval",
+              "label": "interval",
+              "key": "zfcCQp49"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "RV56FLyY",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {},
+          "x6Node": {
+            "x": 480,
+            "y": 50,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "e6d990a4-ddf3-43ff-89ae-90f9147d09a3",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "jMs7oSII",
+              "name": "open",
+              "label": "打开"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "0lRDBUnq",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "eu2MFGfi"
+          },
+          "x6Node": {
+            "x": 800,
+            "y": 60,
+            "width": 130,
+            "height": 32
+          }
+        },
+        {
+          "id": "1596ab2a-59b6-4002-99ec-4a592256b923",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "ztlDkJv4",
+              "name": "setValue",
+              "label": "赋值"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "_w9ByUF7",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "CF2PN88a"
+          },
+          "x6Node": {
+            "x": 630,
+            "y": 50,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "e0927ac6-789a-4991-9ed1-65525e6137c2",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "outPorts": [
+            {
+              "id": "vz8BsV7i",
+              "name": "output",
+              "label": "点击"
+            }
+          ],
+          "config": {
+            "controllerId": "sghItTwt",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 60,
+            "y": 360,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "dce23c49-32eb-41c4-9176-da77012d4012",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "qNADoleB",
+              "name": "getValue",
+              "label": "取值"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "G7IEx7JE",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "CF2PN88a"
+          },
+          "x6Node": {
+            "x": 280,
+            "y": 360,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "8b291eca-b10b-4edc-9a1c-03c0ca161467",
+          "label": "时间间隔",
+          "type": "Activity",
+          "activityName": "system-react.setVariable",
+          "inPorts": [
+            {
+              "id": "3s3ylosp",
+              "name": "input",
+              "label": "$setValue"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "av0wF5QT",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "variable": "时间间隔"
+          },
+          "x6Node": {
+            "x": 660,
+            "y": 410,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "45a06f64-a37a-4a1e-925c-295c80468a9f",
+          "label": "地鼠数量",
+          "type": "Activity",
+          "activityName": "system-react.setVariable",
+          "inPorts": [
+            {
+              "id": "gQectFSG",
+              "name": "input",
+              "label": "$setValue"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "5KwxD8G9",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "variable": "地鼠数量"
+          },
+          "x6Node": {
+            "x": 660,
+            "y": 300,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "4af94fa2-1f69-42a4-96a5-86106489bd89",
+          "label": "拆分对象",
+          "type": "Activity",
+          "activityName": "system.splitObject",
+          "inPorts": [
+            {
+              "id": "8X5W6xmP",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "RDr9bp9G",
+              "name": "count",
+              "label": "count",
+              "key": "RDr9bp9G"
+            },
+            {
+              "id": "Xox5TZ2j",
+              "name": "interval",
+              "label": "interval",
+              "key": "Xox5TZ2j"
+            }
+          ],
+          "config": {},
+          "x6Node": {
+            "x": 460,
+            "y": 360,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "1d972737-68f1-4bc8-9442-128a218b6280",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "4LgYm4a3",
+              "name": "close",
+              "label": "关闭"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "_vcPKly0",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "eu2MFGfi"
+          },
+          "x6Node": {
+            "x": 840,
+            "y": 310,
+            "width": 130,
+            "height": 32
+          }
+        },
+        {
+          "id": "57e22d4c-0d18-433b-bd8d-c54af40f7090",
+          "label": "调试",
+          "type": "Activity",
+          "activityName": "system.debug",
+          "inPorts": [
+            {
+              "id": "VC7Spag8",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [],
+          "config": {
+            "tip": "地鼠数量"
+          },
+          "x6Node": {
+            "x": 290,
+            "y": 240,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "895a67cb-a0a4-4d6e-a0ea-c64160e6ee55",
+          "label": "调试",
+          "type": "Activity",
+          "activityName": "system.debug",
+          "inPorts": [
+            {
+              "id": "S6UX3kdg",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [],
+          "config": {
+            "tip": "最新form值"
+          },
+          "x6Node": {
+            "x": 480,
+            "y": 430,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "240ac88a-4db5-44e8-925f-6e9ff2dba424",
+          "label": "活跃地鼠",
+          "type": "Activity",
+          "activityName": "system-react.listenVariable",
+          "outPorts": [
+            {
+              "id": "Qsk13SdO",
+              "name": "output",
+              "label": "$valueChange"
+            }
+          ],
+          "config": {
+            "variable": "活跃地鼠"
+          },
+          "x6Node": {
+            "x": 20,
+            "y": -100,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "32cc22a7-8063-4597-96b3-3fb6f8e7f8ea",
+          "label": "测试fx17",
+          "type": "LogicFlowActivity",
+          "activityName": "system-react.fxflow",
+          "inPorts": [
+            {
+              "id": "90c12fbe-be12-456e-9970-6dfc52c28186",
+              "name": "input1",
+              "label": "输入1"
+            },
+            {
+              "id": "9f435c05-4996-4683-b84e-2dd2aa1e3417",
+              "name": "input2",
+              "label": "输入2"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "fab96691-af97-48a8-b299-29454e80989e",
+              "name": "fab96691-af97-48a8-b299-29454e80989e",
+              "label": "输出"
+            },
+            {
+              "id": "92fa8e21-f982-4e61-8a74-84ad2f38b4d7",
+              "name": "output2",
+              "label": "输出2"
+            }
+          ],
+          "config": {
+            "fxId": "-0TOKXqA"
+          },
+          "x6Node": {
+            "x": 260,
+            "y": -90,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "ecb25468-defb-4760-8dde-ab90f6a62c23",
+          "label": "调试",
+          "type": "Activity",
+          "activityName": "system.debug",
+          "inPorts": [
+            {
+              "id": "GGKwYaLw",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [],
+          "config": {
+            "tip": "子流程输出1"
+          },
+          "x6Node": {
+            "x": 450,
+            "y": -120,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "08d94ecc-9d96-48f5-940e-12b3a75be714",
+          "label": "调试",
+          "type": "Activity",
+          "activityName": "system.debug",
+          "inPorts": [
+            {
+              "id": "GGKwYaLw",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [],
+          "config": {
+            "tip": "子流程s输出2"
+          },
+          "x6Node": {
+            "x": 450,
+            "y": -60,
+            "width": 88,
+            "height": 32
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "um5tMHhG",
+    "name": "按钮状态",
+    "ownerId": "mole",
+    "moduleId": "mole",
+    "type": "normal",
+    "metas": {
+      "lines": [
+        {
+          "id": "sR-Q7QVr",
+          "source": {
+            "nodeId": "9c7cc48e-de44-454d-9977-12c37a642b88",
+            "portId": "0oIaz89X"
+          },
+          "target": {
+            "nodeId": "8a9023a5-91d8-47c0-8fad-43d33969745d",
+            "portId": "nb2wDWbU"
+          }
+        },
+        {
+          "id": "bj5u_G3Z",
+          "source": {
+            "nodeId": "9c7cc48e-de44-454d-9977-12c37a642b88",
+            "portId": "0oIaz89X"
+          },
+          "target": {
+            "nodeId": "ca96c749-dbec-4fbd-b132-1e9094ad796b",
+            "portId": "YtQBKwPf"
+          }
+        },
+        {
+          "id": "w3xM5NcL",
+          "source": {
+            "nodeId": "f37215b4-7b67-43b9-9efd-78a962197600",
+            "portId": "0mRyMBxi"
+          },
+          "target": {
+            "nodeId": "09e605b2-a78f-41d6-adc9-c7f0888c5513",
+            "portId": "C2Jtlj_C"
+          }
+        },
+        {
+          "id": "oCOaxx9u",
+          "source": {
+            "nodeId": "f37215b4-7b67-43b9-9efd-78a962197600",
+            "portId": "0mRyMBxi"
+          },
+          "target": {
+            "nodeId": "5eddbb01-3a69-4545-b5b9-a0cc62994883",
+            "portId": "JIQy92pX"
+          }
+        },
+        {
+          "id": "RnyXTPoU",
+          "source": {
+            "nodeId": "f37215b4-7b67-43b9-9efd-78a962197600",
+            "portId": "0mRyMBxi"
+          },
+          "target": {
+            "nodeId": "d7c57b6b-3663-40fc-9d8e-3457f4e65db6",
+            "portId": "cttTB2JS"
+          }
+        },
+        {
+          "id": "sTaLquuS",
+          "source": {
+            "nodeId": "9c7cc48e-de44-454d-9977-12c37a642b88",
+            "portId": "0oIaz89X"
+          },
+          "target": {
+            "nodeId": "81e0a871-17f9-41b9-8d05-cefda06502b5",
+            "portId": "cttTB2JS"
+          }
+        },
+        {
+          "id": "fkVocJ2x",
+          "source": {
+            "nodeId": "d7c57b6b-3663-40fc-9d8e-3457f4e65db6",
+            "portId": "jFjJbCua"
+          },
+          "target": {
+            "nodeId": "c65de9a9-fb8b-4602-b1c5-196941289fa3",
+            "portId": "xZEoH4JB"
+          }
+        },
+        {
+          "id": "0OVwziMg",
+          "source": {
+            "nodeId": "81e0a871-17f9-41b9-8d05-cefda06502b5",
+            "portId": "jFjJbCua"
+          },
+          "target": {
+            "nodeId": "31ef0778-59e5-4f12-a32c-2f0553375bc2",
+            "portId": "_Jolbq_5"
+          }
+        },
+        {
+          "id": "j1040X4X",
+          "source": {
+            "nodeId": "9c7cc48e-de44-454d-9977-12c37a642b88",
+            "portId": "0oIaz89X"
+          },
+          "target": {
+            "nodeId": "a70119d5-da9c-4524-8384-c34a6035274f",
+            "portId": "0pRRQ98a"
+          }
+        },
+        {
+          "id": "BEhjeJHQ",
+          "source": {
+            "nodeId": "f37215b4-7b67-43b9-9efd-78a962197600",
+            "portId": "0mRyMBxi"
+          },
+          "target": {
+            "nodeId": "81b38bbf-3658-45d6-b7b4-15e8bd43892a",
+            "portId": "d-lVFlU9"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "id": "9c7cc48e-de44-454d-9977-12c37a642b88",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "outPorts": [
+            {
+              "id": "0oIaz89X",
+              "name": "output",
+              "label": "点击"
+            }
+          ],
+          "config": {
+            "controllerId": "-V60Mne6",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 120,
+            "y": 280,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "f37215b4-7b67-43b9-9efd-78a962197600",
+          "type": "Activity",
+          "activityName": "system-react.event",
+          "outPorts": [
+            {
+              "id": "0mRyMBxi",
+              "name": "output",
+              "label": "点击"
+            }
+          ],
+          "config": {
+            "controllerId": "uQPenUqJ",
+            "name": "onClick"
+          },
+          "x6Node": {
+            "x": 120,
+            "y": 160,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "ca96c749-dbec-4fbd-b132-1e9094ad796b",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "YtQBKwPf",
+              "name": "disable",
+              "label": "无效"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "LlFNEKbM",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "-V60Mne6"
+          },
+          "x6Node": {
+            "x": 380,
+            "y": 370,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "8a9023a5-91d8-47c0-8fad-43d33969745d",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "nb2wDWbU",
+              "name": "enable",
+              "label": "有效"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "F2EeVSlF",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "uQPenUqJ"
+          },
+          "x6Node": {
+            "x": 380,
+            "y": 320,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "81e0a871-17f9-41b9-8d05-cefda06502b5",
+          "label": "常量",
+          "type": "Activity",
+          "activityName": "system.constValue",
+          "inPorts": [
+            {
+              "id": "cttTB2JS",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "jFjJbCua",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "value": false
+          },
+          "x6Node": {
+            "x": 310,
+            "y": 250,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "31ef0778-59e5-4f12-a32c-2f0553375bc2",
+          "label": "运行",
+          "type": "Activity",
+          "activityName": "system-react.setVariable",
+          "inPorts": [
+            {
+              "id": "_Jolbq_5",
+              "name": "input",
+              "label": "$setValue"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "bGBj_RwW",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "variable": "运行"
+          },
+          "x6Node": {
+            "x": 500,
+            "y": 250,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "a70119d5-da9c-4524-8384-c34a6035274f",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "0pRRQ98a",
+              "name": "enable",
+              "label": "有效"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "spqpH1uP",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "FfF5nHpb"
+          },
+          "x6Node": {
+            "x": 370,
+            "y": 440,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "d7c57b6b-3663-40fc-9d8e-3457f4e65db6",
+          "label": "常量",
+          "type": "Activity",
+          "activityName": "system.constValue",
+          "inPorts": [
+            {
+              "id": "cttTB2JS",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "jFjJbCua",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "value": true
+          },
+          "x6Node": {
+            "x": 270,
+            "y": 20,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "09e605b2-a78f-41d6-adc9-c7f0888c5513",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "C2Jtlj_C",
+              "name": "disable",
+              "label": "无效"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "xcoz0QJo",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "uQPenUqJ"
+          },
+          "x6Node": {
+            "x": 330,
+            "y": 80,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "c65de9a9-fb8b-4602-b1c5-196941289fa3",
+          "label": "运行",
+          "type": "Activity",
+          "activityName": "system-react.setVariable",
+          "inPorts": [
+            {
+              "id": "xZEoH4JB",
+              "name": "input",
+              "label": "$setValue"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "1xfSpUAt",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "variable": "运行"
+          },
+          "x6Node": {
+            "x": 500,
+            "y": 10,
+            "width": 88,
+            "height": 32
+          }
+        },
+        {
+          "id": "5eddbb01-3a69-4545-b5b9-a0cc62994883",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "JIQy92pX",
+              "name": "enable",
+              "label": "有效"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "RryxgX2V",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "-V60Mne6"
+          },
+          "x6Node": {
+            "x": 380,
+            "y": 130,
+            "width": 116,
+            "height": 32
+          }
+        },
+        {
+          "id": "81b38bbf-3658-45d6-b7b4-15e8bd43892a",
+          "type": "Activity",
+          "activityName": "system-react.reaction",
+          "inPorts": [
+            {
+              "id": "d-lVFlU9",
+              "name": "disable",
+              "label": "无效"
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "VV4HuHpL",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "controllerId": "FfF5nHpb"
+          },
+          "x6Node": {
+            "x": 360,
+            "y": 190,
+            "width": 116,
+            "height": 32
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "-0TOKXqA",
+    "name": "测试fx17",
+    "scope": "app",
+    "ownerId": "app1",
+    "type": "fx",
+    "metas": {
+      "lines": [
+        {
+          "id": "egZlx4Vg",
+          "source": {
+            "nodeId": "90c12fbe-be12-456e-9970-6dfc52c28186"
+          },
+          "target": {
+            "nodeId": "92fa8e21-f982-4e61-8a74-84ad2f38b4d7"
+          }
+        },
+        {
+          "id": "jHRoWh6n",
+          "source": {
+            "nodeId": "9f435c05-4996-4683-b84e-2dd2aa1e3417"
+          },
+          "target": {
+            "nodeId": "24658fad-b27a-4e47-b0c6-c2152f877eb0",
+            "portId": "qKGvas0H"
+          }
+        },
+        {
+          "id": "lQouOONg",
+          "source": {
+            "nodeId": "24658fad-b27a-4e47-b0c6-c2152f877eb0",
+            "portId": "-V5Xjzzs"
+          },
+          "target": {
+            "nodeId": "fab96691-af97-48a8-b299-29454e80989e"
+          }
+        }
+      ],
+      "nodes": [
+        {
+          "id": "fab96691-af97-48a8-b299-29454e80989e",
+          "label": "输出",
+          "type": "End",
+          "activityName": "end",
+          "inPorts": [],
+          "outPorts": [],
+          "config": {},
+          "x6Node": {
+            "x": 500,
+            "y": 150,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "id": "90c12fbe-be12-456e-9970-6dfc52c28186",
+          "label": "输入1",
+          "type": "Start",
+          "activityName": "start",
+          "inPorts": [],
+          "outPorts": [],
+          "config": {},
+          "x6Node": {
+            "x": 130,
+            "y": 120,
+            "width": 20,
+            "height": 20
+          },
+          "name": "input1"
+        },
+        {
+          "id": "9f435c05-4996-4683-b84e-2dd2aa1e3417",
+          "label": "输入2",
+          "type": "Start",
+          "activityName": "start",
+          "inPorts": [],
+          "outPorts": [],
+          "config": {},
+          "x6Node": {
+            "x": 120,
+            "y": 200,
+            "width": 20,
+            "height": 20
+          },
+          "name": "input2"
+        },
+        {
+          "id": "92fa8e21-f982-4e61-8a74-84ad2f38b4d7",
+          "label": "输出2",
+          "type": "End",
+          "activityName": "end",
+          "inPorts": [],
+          "outPorts": [],
+          "config": {},
+          "x6Node": {
+            "x": 510,
+            "y": 240,
+            "width": 20,
+            "height": 20
+          },
+          "name": "output2"
+        },
+        {
+          "id": "24658fad-b27a-4e47-b0c6-c2152f877eb0",
+          "label": "常量",
+          "type": "Activity",
+          "activityName": "system.constValue",
+          "inPorts": [
+            {
+              "id": "qKGvas0H",
+              "name": "input",
+              "label": ""
+            }
+          ],
+          "outPorts": [
+            {
+              "id": "-V5Xjzzs",
+              "name": "output",
+              "label": ""
+            }
+          ],
+          "config": {
+            "value": 5
+          },
+          "x6Node": {
+            "x": 210,
+            "y": 200,
+            "width": 88,
+            "height": 32
+          }
+        }
+      ]
+    }
+  }
+]

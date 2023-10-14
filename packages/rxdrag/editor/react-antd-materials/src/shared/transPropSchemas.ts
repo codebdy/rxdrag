@@ -1,5 +1,5 @@
 import { IFieldMeta } from "@rxdrag/fieldy";
-import { ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react";
+import { IControllerMeta } from "@rxdrag/minions-runtime-react";
 import { INodeSchema } from "@rxdrag/schema";
 
 
@@ -7,10 +7,10 @@ export interface IPropSchema {
   name: string,
   label?: string,
   defaultValue?: unknown,
-  setter: INodeSchema<IFieldMeta, ILogicFlowControllerMeta>,
+  setter: INodeSchema<IFieldMeta, IControllerMeta>,
 }
 
-export function transPropSchemas(schemas: INodeSchema<IFieldMeta, ILogicFlowControllerMeta>[]): INodeSchema<IFieldMeta, ILogicFlowControllerMeta>[] {
+export function transPropSchemas(schemas: INodeSchema<IFieldMeta, IControllerMeta>[]): INodeSchema<IFieldMeta, IControllerMeta>[] {
   return schemas.map(propSchema => ({
     componentName: "PropLayout",
     props: {
@@ -20,7 +20,7 @@ export function transPropSchemas(schemas: INodeSchema<IFieldMeta, ILogicFlowCont
       expressionSetter: {
         componentName: "ExpressionInput",
         "x-field": {
-          name: "propExpressions." + propSchema["x-field"]?.name,
+          name: "exprs." + propSchema["x-field"]?.name,
         },
       }
     },

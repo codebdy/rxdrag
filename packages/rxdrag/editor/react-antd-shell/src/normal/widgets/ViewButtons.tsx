@@ -2,7 +2,7 @@ import { useDocumentViewTypeState, useActivedDocumentIdState, useActions, useSet
 import { Button, Space, Tooltip } from "antd"
 import { memo, useCallback, useEffect } from "react"
 import { SvgIcon } from "../../common/SvgIcon"
-import { designIcon, jsonIcon, playIcon } from "../../icons"
+import { designIcon, jsonIcon, playIcon } from "@rxdrag/react-shared"
 
 export const ViewButtons = memo(() => {
   const [viewType, setViewType] = useDocumentViewTypeState()

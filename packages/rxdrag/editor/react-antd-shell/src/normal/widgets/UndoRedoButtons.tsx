@@ -2,7 +2,7 @@ import { useUndo, useRedo, useSettersTranslate } from "@rxdrag/react-core"
 import { Button, Space, Tooltip } from "antd"
 import { memo } from "react"
 import { SvgIcon } from "../../common/SvgIcon"
-import { undoIcon, redoIcon } from "../../icons"
+import { redoIcon, undoIcon } from "@rxdrag/react-shared"
 
 export const UndoRedoButtons = memo(() => {
   const [canUndo, undo] = useUndo()

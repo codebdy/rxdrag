@@ -1,11 +1,11 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { Divider } from "antd";
 import { dividerIcon } from "./icon";
 import { dividerLocales, dividerResourceLocales } from "./locales";
 import { dividerSchema } from "./schema";
 
 const name = "Divider"
-export const DividerMaterial: IComponentMaterial = {
+export const DividerMaterial: IMaterial = {
   componentName: name,
   component: Divider,
   designer: Divider,

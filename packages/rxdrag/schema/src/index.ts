@@ -4,9 +4,7 @@ export interface INodeMeta<
 > {
   //特殊类型节点通过这个字段区别，比如Fragment，FreedomGroup
   componentName: string;
-  props?: {
-    [key: string]: unknown;
-  };
+  props?: Record<string, unknown>;
   'x-field'?: Field;
   //节点控制器，逻辑编排用
   'x-controller'?: NodeController;
@@ -14,10 +12,9 @@ export interface INodeMeta<
   locked?: boolean;
   //自己渲染，引擎不渲染
   selfRender?: boolean;
-  //属性表达式，这算是低代码平台的扩展
-  propExpressions?: {
-    [key: string]: string | undefined;
-  };
+
+  //props的表达式
+  exprs?: Record<string, string | null>;
 }
 
 export interface INodeSchema<Field = unknown, NodeController = unknown>
@@ -30,7 +27,7 @@ export interface INodeSchema<Field = unknown, NodeController = unknown>
 
 export enum ViewType {
   Main = "main",
-  Drawer = "drawwer",
+  Drawer = "drawer",
   Dialog = "dialog",
   RoutePage = "route-page",
 }

@@ -23,7 +23,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "@rxdrag/eslint-config-custom": "workspace:*",
-    "@rxdrag/fieldy-minions-materials": "workspace:*",
     "@rxdrag/tsconfig": "workspace:*",
     "@types/lodash": "^4.14.191",
     "typescript": "^4.9.4"
@@ -36,14 +35,12 @@
   "dependencies": {
     "@ant-design/icons": "^5.1.0",
     "@reduxjs/toolkit": "^1.9.3",
-    "@monaco-editor/react": "^4.4.6",
     "@rxdrag/core": "workspace:*",
     "@rxdrag/fieldy": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/minions-runtime": "workspace:*",
     "@rxdrag/react-antd-components": "workspace:*",
     "@rxdrag/react-antd-icons": "workspace:*",
-    "@rxdrag/controller-editor-antd5": "workspace:*",
     "@rxdrag/react-antd-props-inputs": "workspace:*",
     "@rxdrag/react-core": "workspace:*",
     "@rxdrag/react-fieldy": "workspace:*",
@@ -54,7 +51,6 @@
     "@rxdrag/react-runner": "workspace:*",
     "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/minions-logicflow-editor": "workspace:*",
-    "@rxdrag/minions-controller-editor": "workspace:*",
     "@rxdrag/schema": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "lodash": "^4.17.21",
@@ -64,6 +60,7 @@
     "insert-css": "^2.0.0",
     "react-color": "^2.19.3",
     "react-icons": "^4.7.1",
+    "react-monaco-editor": "^0.54.0",
     "redux": "^4.2.1",
     "styled-components": "^5.3.9"
   }

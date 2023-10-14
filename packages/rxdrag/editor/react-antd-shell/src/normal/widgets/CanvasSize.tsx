@@ -4,8 +4,7 @@ import { SvgIcon } from "../../common/SvgIcon"
 import { SlScreenDesktop, SlScreenTablet } from "react-icons/sl";
 import { CanvasWidthLimits } from "@rxdrag/core";
 import { useCanvasWidthLimitsState, useSettersTranslate } from "@rxdrag/react-core";
-import { mobileIcon, responsiveIcon } from "../../icons";
-
+import { mobileIcon, responsiveIcon } from "@rxdrag/react-shared";
 
 export enum ScreenType {
   Desktop = "desktop",

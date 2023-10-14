@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IActivity } from "../interfaces";
 export const DEFAULT_INPUT_NAME = "input"
 export const DEFAULT_OUTPUT_NAME = "output"

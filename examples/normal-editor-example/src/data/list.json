@@ -1297,9 +1297,6 @@
                           },
                           "x-field": {
                             "name": "name",
-                            "params": {
-                              "withBind": true
-                            },
                             "reactionMeta": {
                               "display": {},
                               "pattern": {},
@@ -1318,9 +1315,6 @@
                           },
                           "x-field": {
                             "name": "login_name",
-                            "params": {
-                              "withBind": true
-                            },
                             "reactionMeta": {
                               "display": {},
                               "pattern": {},
@@ -1353,7 +1347,7 @@
                               "slots": {},
                               "children": [
                                 {
-                                  "componentName": "Dialog",
+                                  "componentName": "DialogGroup",
                                   "props": {},
                                   "x-controller": {
                                     "id": "c62dc46f-3820-40a5-afc9-00c5f87a0bfc",
@@ -1386,9 +1380,6 @@
                                               "componentName": "Input",
                                               "props": {},
                                               "x-field": {
-                                                "params": {
-                                                  "withBind": true
-                                                },
                                                 "reactionMeta": {
                                                   "display": {},
                                                   "pattern": {},
@@ -1424,9 +1415,6 @@
                                               "componentName": "Input",
                                               "props": {},
                                               "x-field": {
-                                                "params": {
-                                                  "withBind": true
-                                                },
                                                 "reactionMeta": {
                                                   "display": {},
                                                   "pattern": {},

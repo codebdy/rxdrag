@@ -46,6 +46,7 @@ export interface IMonitor {
 	subscribeToDocumentViewChange(documentId: ID, listener: DocumentViewListener): Unsubscribe
 	subscribeToSelectionMode(documentId: ID, listener: SelectionModeListener): Unsubscribe
 	subscribeToDocumentTitle(documentId: ID, listener: DocumentTitleListener): Unsubscribe
+	subscribeToDocumentsChange(listener: Listener): Unsubscribe
 
 	//onViewPortResizeOrScroll(listener: Listener): Unsubscribe
 	getDraggingResouce(): DraggingResourceState | undefined

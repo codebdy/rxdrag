@@ -1,40 +1,26 @@
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IController, IControllerContext } from "../../interfaces";
-import { AbstractControllerActivity } from "../AbstractControllerActivity";
+import { IReactContext } from "../../interfaces";
+import { ControllerActivity } from "../ControllerActivity";
 import { Activity } from "@rxdrag/minions-runtime";
 import { IPropConfig } from "./SetProp";
 
 @Activity(ListenProp.NAME)
-export class ListenProp extends AbstractControllerActivity<IPropConfig> {
+export class ListenProp extends ControllerActivity<IPropConfig> {
   public static NAME = "system-react.listenProp"
 
-  controller: IController
-  constructor(meta: INodeDefine<IPropConfig>, context?: IControllerContext) {
+  constructor(meta: INodeDefine<IPropConfig>, context: IReactContext) {
     super(meta, context)
 
-    if (Object.keys(meta.outPorts || {}).length !== 1) {
-      throw new Error("ListenProp outputs count error")
-    }
-
-    if (!meta.config?.param?.controllerId) {
-      throw new Error("ListenProp not set controller id")
-    }
-    const controller = context?.controllers?.[meta.config?.param?.controllerId]
-    if (!controller) {
-      throw new Error("Can not find controller")
-    }
-    this.controller = controller
-
-    if (meta.config?.param?.prop) {
-      this.controller?.subscribeToPropChange(meta.config?.param.prop, this.valueHandler)
+    if (meta.config?.prop) {
+      this.controller?.subscribeToPropChange(meta.config?.prop, this.valueHandler)
     } else {
       console.error("Not set Prop to ListenPropReaction")
     }
   }
 
   valueHandler = (inputValue: unknown) => {
-    if (this.meta.config?.param?.prop) {
-      this.next(inputValue)
+    if (this.meta.config?.prop) {
+      this.next(inputValue, {})
     }
   }
 }

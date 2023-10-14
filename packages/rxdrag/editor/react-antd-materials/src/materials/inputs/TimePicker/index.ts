@@ -1,11 +1,11 @@
-import { forwardRefById, IComponentMaterial } from "@rxdrag/react-core";
+import { forwardRefById, IMaterial } from "@rxdrag/react-core";
 import { TimePicker } from "antd";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "TimePicker"
-export const TimePickerMaterial: IComponentMaterial = {
+export const TimePickerMaterial: IMaterial = {
   componentName: name,
   component: TimePicker,
   designer: forwardRefById(TimePicker, element => element?.parentElement?.parentElement),

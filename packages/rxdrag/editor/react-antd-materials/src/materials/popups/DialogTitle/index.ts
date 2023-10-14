@@ -1,10 +1,10 @@
 import { DialogTitle } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { locales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "DialogTitle"
-export const DialogTitleMaterial: IComponentMaterial = {
+export const DialogTitleMaterial: IMaterial = {
   componentName: name,
   component: DialogTitle,
   designer: DialogTitle,

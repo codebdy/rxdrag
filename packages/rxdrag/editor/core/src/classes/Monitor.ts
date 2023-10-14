@@ -456,6 +456,22 @@ export class Monitor implements IMonitor {
 		return this.store.subscribe(handleChange)
 	}
 
+	subscribeToDocumentsChange(listener: Listener): Unsubscribe {
+		invariant(typeof listener === 'function', 'listener must be a function.')
+
+		let previousState = this.store.getState().documentsById
+		const handleChange = () => {
+			const nextState = this.store.getState().documentsById
+			if (nextState === previousState) {
+				return
+			}
+			previousState = nextState
+			listener()
+		}
+		return this.store.subscribe(handleChange)
+	}
+
+
 	getDraggingResouce(): DraggingResourceState | undefined {
 		const state = this.store.getState()
 		return state.draggingResource

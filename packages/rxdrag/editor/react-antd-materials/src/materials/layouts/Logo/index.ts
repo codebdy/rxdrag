@@ -1,11 +1,11 @@
 import { Logo } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { logoIcon } from "./icon";
 import { logoLocales, logoResourceLocales } from "./locales";
 import { logoSchema } from "./schema";
 
 const name = "Logo"
-export const LogoMaterial: IComponentMaterial = {
+export const LogoMaterial: IMaterial = {
   componentName: name,
   component: Logo,
   designer: Logo,

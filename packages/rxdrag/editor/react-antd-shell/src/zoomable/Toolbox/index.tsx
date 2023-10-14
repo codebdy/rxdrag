@@ -6,7 +6,7 @@ import { floatShadow } from "../../utils"
 import { DEFAULT_MARGIN, MINI_WIDGET_WIDTH } from "../consts"
 import { CloseButton } from "../PropertyPanel"
 import { CanvasFloatButton } from "../common"
-import { toolboxIcon } from "../../icons"
+import { toolboxIcon } from "@rxdrag/react-shared"
 
 const maxWidth = 1000
 const minWidth = 300

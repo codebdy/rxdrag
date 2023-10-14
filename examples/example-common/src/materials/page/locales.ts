@@ -2,12 +2,14 @@ export const pageLocales = {
   "zh-CN": {
     title: "页面",
     settings: {
+      "onInit":"初始化"
     }
 
   },
   'en-US': {
     title: "Page",
     settings: {
+      "onInit":"OnInit"
     }
   }
 }

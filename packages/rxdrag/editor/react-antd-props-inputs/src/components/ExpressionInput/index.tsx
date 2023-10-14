@@ -1,5 +1,5 @@
-import { FunctionOutlined } from "@ant-design/icons"
-import Editor from "@monaco-editor/react";
+import { DeleteOutlined, FunctionOutlined } from "@ant-design/icons"
+import Editor from 'react-monaco-editor';
 import { useThemeMode, useSettersTranslate } from "@rxdrag/react-core";
 import { Button, Drawer, Space } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
@@ -10,13 +10,12 @@ const StyledDrawer = styled(Drawer)`
     padding: 12px 0 12px 0;
   }
 `
-
 export const ExpressionInput = memo((props: {
-  value?: string,
-  onChange?: (value?: string) => void,
+  value?: string | null,
+  onChange?: (value?: string | null) => void,
 }) => {
   const { value, onChange, ...other } = props;
-  const [inputValue, setInputValue] = useState<string>();
+  const [inputValue, setInputValue] = useState<string | null>();
   const [open, setOpen] = useState(false);
   const t = useSettersTranslate()
   const themeMode = useThemeMode();
@@ -38,22 +37,43 @@ export const ExpressionInput = memo((props: {
     setInputValue(newValue)
   }, [])
 
+  const handleClear = useCallback(() => {
+    if (inputValue) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      onChange?.(null)
+      setInputValue(null)
+      setOpen(false);
+    }
+  }, [inputValue, onChange])
+
   const handleConfirm = useCallback(() => {
+    if (!inputValue) {
+      handleClear()
+    }
     onChange?.(inputValue)
     setOpen(false);
-  }, [inputValue, onChange])
+  }, [handleClear, inputValue, onChange])
+
 
   return (
     <>
-      <Button icon={<FunctionOutlined />} onClick={handleOpen} {...other} />
+      <Button type={value ? "link" : "text"} icon={<FunctionOutlined />} onClick={handleOpen} {...other} />
       <StyledDrawer
         title={t("ExpressionInput.DialogTitle")}
+        width={500}
         mask={false}
         placement="right"
         onClose={handleClose}
         open={open}
         extra={
           <Space>
+            <Button
+              disabled={!inputValue}
+              icon={<DeleteOutlined />}
+              onClick={handleClear}
+            >
+              {t("clear")}
+            </Button>
             <Button onClick={handleClose}>{t("cancel")}</Button>
             <Button type="primary" onClick={handleConfirm}>
               {t("confirm")}

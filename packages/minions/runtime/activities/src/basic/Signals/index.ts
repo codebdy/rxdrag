@@ -10,20 +10,23 @@ export class Signals extends AbstractActivity<IIntervalConfig> {
   public static NAME = "system.signals"
   public static INPUT_NAME_STARTUP = "startUp"
   public static INPUT_NAME_STOP = "stop"
+  public static INPUT_NAME_INTERVAL = "interval"
 
   timer?: NodeJS.Timer
-  inputValue?: any
+  inputValue?: unknown
+  interval?: number
   constructor(meta: INodeDefine<IIntervalConfig>) {
     super(meta)
   }
 
   @Input(Signals.INPUT_NAME_STARTUP)
-  startUpHandler = (inputValue?: any) => {
+  startUpHandler = (inputValue?: unknown, runContext?: object) => {
     this.stopHandler()
     this.inputValue = inputValue
-    if (this.meta.config?.interval) {
-      this.timer = setInterval(this.handleOutput, this.meta.config?.interval)
-      console.log("启动定时器", this.timer)
+    const interval = this.interval || this.meta.config?.interval
+    if (interval) {
+      this.timer = setInterval(() => this.handleOutput(runContext), interval)
+      console.log("启动定时器", this.timer, interval)
     }
   }
 
@@ -36,8 +39,14 @@ export class Signals extends AbstractActivity<IIntervalConfig> {
     }
   }
 
-  handleOutput = () => {
-    this.next(this.inputValue)
+
+  @Input(Signals.INPUT_NAME_INTERVAL)
+  intervalHandler = (interval?: number) => {
+    this.interval = interval
+  }
+
+  handleOutput = (runContext?: object) => {
+    this.next(this.inputValue, runContext)
   }
 
   destroy = () => {

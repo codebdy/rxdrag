@@ -1,11 +1,11 @@
-import { IComponentMaterial, forwardRefById } from "@rxdrag/react-core";
+import { IMaterial, forwardRefById } from "@rxdrag/react-core";
 import { DatePicker } from "antd";
 import { rangePickerIcon } from "./icon";
 import { dateRangePickerLocales, dateRangePickerResourceLocales } from "./locales";
 import { dateRangePickerSchema } from "./schema";
 
 const name = "DateRangePicker"
-export const DateRangePickerMaterial: IComponentMaterial = {
+export const DateRangePickerMaterial: IMaterial = {
   componentName: name,
   component: DatePicker.RangePicker,
   designer: forwardRefById(DatePicker.RangePicker, element => {

@@ -15,8 +15,8 @@ export const ComponentField = memo((
   const view = useMemo(() => {
     if (fieldMeta?.name) {
       //自动渲染没有数组，所以可以这么处理
-      const initialValue = parsePathValue(parentField?.getInitialValue(), fieldMeta.name)
-      const defaultValue = parsePathValue(parentField?.getDefaultValue(), fieldMeta.name)
+      const initialValue = parsePathValue(parentField?.getInitialValue(), fieldMeta.name.toString())
+      const defaultValue = parsePathValue(parentField?.getDefaultValue(), fieldMeta.name.toString())
       return <XField
         fieldMeta={fieldMeta}
         initialValue={initialValue}

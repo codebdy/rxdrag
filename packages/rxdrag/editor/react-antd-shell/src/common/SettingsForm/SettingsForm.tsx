@@ -1,6 +1,6 @@
 import { CSSProperties, memo, useCallback, useEffect, useMemo } from "react"
 import { Form } from 'antd';
-import { useDesignerEngine, useCurrentNode, useChangeNodeMeta, useLanguage, useSetters } from "@rxdrag/react-core";
+import { useDesignerEngine, useCurrentNode, useChangeNodeMeta, useLanguage, useSetters, useNodeMeta } from "@rxdrag/react-core";
 import { VirtualForm } from "@rxdrag/react-fieldy";
 import { ComponentRender } from "@rxdrag/react-runner";
 import { INodeMeta } from "@rxdrag/schema";
@@ -16,6 +16,7 @@ const propertiesStyle: CSSProperties = {
 export const SettingsForm = memo(() => {
   const engine = useDesignerEngine()
   const currentNode = useCurrentNode()
+  const meta = useNodeMeta(currentNode?.id)
   const changeMeta = useChangeNodeMeta()
   const lang = useLanguage()
   const setters = useSetters()
@@ -33,22 +34,22 @@ export const SettingsForm = memo(() => {
     } else {
       return undefined
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentNode, engine, lang])
 
-  const handleMetaChange = useCallback((meta: INodeMeta) => {
-    if (currentNode) {
-      changeMeta(currentNode.id, meta)
+  const handleMetaChange = useCallback((mt: INodeMeta) => {
+    //第二个判断，解决切换节点时setvalue引发SettingsForm更新，如果SettingsForm中使用form的intialValue，也会有其它问题
+    if (currentNode && meta !== mt) {
+      changeMeta(currentNode.id, mt)
     }
-  }, [changeMeta, currentNode])
+  }, [changeMeta, currentNode, meta])
 
   return (
     <div style={propertiesStyle}>
       {
         currentNode &&
         <VirtualForm
-          initialValue={currentNode?.meta as unknown as FormValue | undefined}
+          value={meta as unknown as FormValue | undefined}
           onValueChange={handleMetaChange as unknown as (value: FormValue | undefined) => void}
         //key={currentNode.id}
         >

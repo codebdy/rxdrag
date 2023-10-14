@@ -3,7 +3,6 @@ import { IDesignerEngine, IDocument, ITreeNode } from "@rxdrag/core";
 import { ReactNode, createContext } from "react";
 import { IReactComponents } from "@rxdrag/react-shared";
 import { ActivityMaterialCategory } from "@rxdrag/minions-schema";
-import { IControllerDefine } from "./types";
 import { ICanvasConfig } from "./interfaces";
 
 export const DesignerEngineContext = createContext<IDesignerEngine | undefined>(undefined)
@@ -20,7 +19,7 @@ export interface IMinionOptions {
   materials?: ActivityMaterialCategory<ReactNode>[],
   locales?: ILocales,
   propSetters?: IReactComponents,
-  controllers?: IControllerDefine[]
+  //controllers?: IControllerDefine[]
 }
 
 export const MinionOptionContext = createContext<IMinionOptions | undefined>(undefined)

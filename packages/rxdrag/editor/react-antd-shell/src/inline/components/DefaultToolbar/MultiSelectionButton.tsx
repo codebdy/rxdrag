@@ -1,6 +1,6 @@
+import { moveIcon } from "@rxdrag/react-shared"
 import { Button } from "antd"
 import { memo } from "react"
-import { moveIcon } from "../../icons"
 
 export const MultiSelectionButton = memo(() => {
   return (

@@ -1,6 +1,6 @@
+import { designIcon } from "@rxdrag/react-shared"
 import { Button } from "antd"
 import { memo } from "react"
-import { designIcon } from "../../icons"
 
 export const DesignButton = memo(() => {
   return (

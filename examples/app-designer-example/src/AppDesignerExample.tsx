@@ -33,7 +33,7 @@ export const AppDesignerExample = memo(() => {
             </Route>
             <Route path={CANVAS_URL_PREFIX + '/:device/:layoutPart'} element={<DesignerCanvas />}>
             </Route>
-            <Route path={PREVIEW_URL_PREFIX + '/:device/:layoutPart'} element={<DesignerPreview />}>
+            <Route path={PREVIEW_URL_PREFIX + '/:device/:layoutPart/:moduleId'} element={<DesignerPreview />}>
             </Route>
           </Route>
         </Routes>

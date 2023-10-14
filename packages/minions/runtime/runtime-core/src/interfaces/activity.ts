@@ -1,7 +1,8 @@
 import type { Jointer } from "../classes";
 
 //数据推送接口
-export type InputHandler = (inputValue?: unknown, runContext?: IJointer["runContext"]) => void;
+export type InputHandler = (inputValue?: unknown, runContext?: object) => void;
+export type ConnectListener = (handler: InputHandler) => void
 
 export interface IJointer {
   //当key使用，不参与业务逻辑
@@ -11,14 +12,21 @@ export interface IJointer {
   push: InputHandler;
   //添加下游Jointer
   connect: (jointerInput: InputHandler, parent?: Jointer) => void;
-  runContext?: Record<string, unknown> & {__runback?: (error?: unknown, value?: unknown) => void}
 }
 
 export interface IActivityJointers {
   //入端口对应的连接器
-  inputs: Jointer[];
+  //inputs: Jointer[];
   //处端口对应的连接器
-  outputs: Jointer[];
+  //outputs: Jointer[];
+
+  addInput(input: Jointer): void;
+  addOutput(output: Jointer): void;
+  removeInput(input: Jointer): void;
+  removeOutput(output: Jointer): void;
+
+  getInputs(): Jointer[];
+  getOutputs(): Jointer[];
 
   //通过端口名获取出连接器
   getOutput(name: string): Jointer | undefined
@@ -33,6 +41,8 @@ export interface IActivity<ConfigMeta = unknown> {
   jointers: IActivityJointers,
   //元件节点配置，每个Activity的配置都不一样，故而用泛型
   config?: ConfigMeta;
+  //初始化，主要用于输出初始值
+  init?(): void;
   //销毁
   destroy(): void;
 }

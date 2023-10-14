@@ -3,7 +3,7 @@ import { Button, Form, Modal, Popconfirm } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
 import { DepTable } from "./DepTable"
-import Editor from "@monaco-editor/react"
+import Editor from "react-monaco-editor"
 import { SyncOutlined } from "@ant-design/icons"
 import { WhenType } from "@rxdrag/fieldy-yup-validation"
 

@@ -11,7 +11,7 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
     componentName: "CollapsePanel",
     props: {
       title: "$basic",
-      defaultExpand: true,
+      //defaultExpand: true,
     },
     children: [
       ...transPropSchemas(propSchemas) || []
@@ -36,9 +36,6 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
     children: [
       {
         componentName: "ControllerSetter",
-        props: {
-          isArray: options.isArray,
-        },
         "x-field": {
           name: "x-controller",
         },

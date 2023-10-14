@@ -1,7 +1,7 @@
 import { EditorScope } from "@rxdrag/react-antd-shell"
 import { memo } from "react"
 import { UiFrameDesignerInner } from "./UiFrameDesignerInner"
-import { setterLocales, minionsMaterialCategories, minionsLocales, controllerDefines, routes } from "example-common"
+import { setterLocales, routes } from "example-common"
 import { useAppThemeMode } from "../../hooks/useAppThemeMode"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
 import { frameMaterilas } from "./materials"
@@ -20,9 +20,6 @@ export const UiFrameDesigner = memo(() => {
       previewUrl={`${routes.appDesigner}/${PREVIEW_URL_PREFIX}/${device}/${LayoutPart.frame}`}
       themeMode={themeMode}
       minionOptions={{
-        materials: minionsMaterialCategories,
-        locales: minionsLocales,
-        controllers: controllerDefines,
       }}
 
       materials={frameMaterilas[frontend?.deviceType || ""]}

@@ -15,9 +15,6 @@ export const delaySchema: INodeSchema = {
           componentName: "InputNumber",
           "x-field": {
             name: `config.time`,
-            params: {
-              withBind: true,
-            }
           },
         }
       ]

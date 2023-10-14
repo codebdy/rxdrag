@@ -5,10 +5,10 @@ import { usePropertyWidthState } from "../contexts"
 import { floatShadow } from "../../utils"
 import { Button } from "antd"
 import { DEFAULT_MARGIN, MINI_WIDGET_WIDTH } from "../consts"
-import { propertyIcon } from "../../icons"
 import { MinusOutlined, PushpinOutlined } from "@ant-design/icons"
 import { useCurrentNode } from "@rxdrag/react-core"
 import { CanvasFloatButton } from "../common"
+import { propertyIcon } from "@rxdrag/react-shared"
 
 const maxWidth = 1000
 const minWidth = 300

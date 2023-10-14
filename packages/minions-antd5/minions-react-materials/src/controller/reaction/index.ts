@@ -1,22 +1,30 @@
-import { IReactionConfig, Reaction } from "@rxdrag/minions-runtime-react";
+import { IControllerMeta, IReactionConfig, Reaction } from "@rxdrag/minions-runtime-react";
 import { NodeType } from "@rxdrag/minions-schema";
-import { methodIcon } from "../../icons";
-import { IRxDragActivityMaterial } from "../../interfaces";
-import { reactionSchema } from "./schema";
-import { IControllerEditorContextParam } from "@rxdrag/minions-controller-editor";
+import { IRxDragActivityMaterial, LogicflowContextParam } from "../../interfaces";
+import { getControllerComponentInfo } from "../utils";
+import { methodIcon } from "@rxdrag/react-shared";
 
-export const reactionMaterial: IRxDragActivityMaterial<IReactionConfig, IControllerEditorContextParam> = {
+export const reactionMaterial: IRxDragActivityMaterial<IReactionConfig, LogicflowContextParam> = {
   activityName: Reaction.NAME,
-  icon: methodIcon,
   label: "$reaction",
-  activityType: NodeType.LogicFlowActivity,
+  activityType: NodeType.Activity,
   defaultPorts: {
   },
-  subTitle: (config?: IReactionConfig, context?: IControllerEditorContextParam) => {
-    const controller = context?.controllers?.find(controller => controller.id === config?.param?.controllerId)
-    const controllerName = controller?.name
-    const reaction = controller?.reactions?.find(reaction => reaction.id === config?.param?.logicFlowId)
-    return controllerName ? (controllerName + "/" + (reaction?.label || "")) : ""
+
+  icon: (config?: IReactionConfig, context?: LogicflowContextParam) => {
+    const { material } = getControllerComponentInfo(config, context?.engine)
+    return material?.resource?.icon || methodIcon
   },
-  schema: reactionSchema,
+
+  color: (config?: IReactionConfig, context?: LogicflowContextParam) => {
+    const { material } = getControllerComponentInfo(config, context?.engine)
+    return material?.resource?.color
+  },
+
+  title: (config?: IReactionConfig, context?: LogicflowContextParam) => {
+    const { node, material } = getControllerComponentInfo(config, context?.engine)
+    const ctrl = node?.meta["x-controller"] as IControllerMeta | undefined
+    return ctrl?.name || material?.resource?.title || ctrl?.id
+  },
+
 }

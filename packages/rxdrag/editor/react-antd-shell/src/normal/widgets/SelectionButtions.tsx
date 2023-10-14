@@ -3,7 +3,7 @@ import { useSelectionModeState, useSettersTranslate } from "@rxdrag/react-core"
 import { Button, Space, Tooltip } from "antd"
 import { memo, useCallback } from "react"
 import { SvgIcon } from "../../common/SvgIcon"
-import { moveIcon, selectionIcon } from "../../icons"
+import { moveIcon, selectionIcon } from "@rxdrag/react-shared"
 
 export const SelectionButtions = memo(() => {
   const [selectionMode, setSelectionMode] = useSelectionModeState()

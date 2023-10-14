@@ -1,4 +1,4 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { Tooltip } from "antd";
 import { TextMaterial } from "../../displays/typography/Text";
 import { TooltipDesigner } from "./designer";
@@ -7,7 +7,7 @@ import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "Tooltip"
-export const TooltipMaterial: IComponentMaterial = {
+export const TooltipMaterial: IMaterial = {
   componentName: name,
   component: Tooltip,
   designer: TooltipDesigner,

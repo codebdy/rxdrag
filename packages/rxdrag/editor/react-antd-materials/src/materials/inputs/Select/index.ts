@@ -1,10 +1,10 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { Select } from "antd";
 import { selectIcon } from "./icon";
 import { selectLocales, selectResourceLocales } from "./locales";
 import { selectSchema } from "./schema";
 
-export const SelectMaterial: IComponentMaterial = {
+export const SelectMaterial: IMaterial = {
   componentName: "Select",
   component: Select,
   designer: Select,

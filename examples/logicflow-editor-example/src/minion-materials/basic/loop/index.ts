@@ -1,8 +1,8 @@
 import { createId } from "@rxdrag/shared";
 import { loopSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
-import { loopIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
+import { loopIcon } from "@rxdrag/react-shared";
 
 export const loopMaterial: IRxDragActivityMaterial = {
   icon: loopIcon,

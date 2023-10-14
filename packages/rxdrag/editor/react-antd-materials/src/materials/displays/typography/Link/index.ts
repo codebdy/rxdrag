@@ -1,11 +1,11 @@
 import { Link } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { schema } from "./schema";
 
 const name = "Link"
-export const LinkMaterial: IComponentMaterial = {
+export const LinkMaterial: IMaterial = {
   componentName: name,
   component: Link,
   designer: Link,

@@ -6,9 +6,9 @@ import { Spring, SvgIcon, floatShadow } from "@rxdrag/react-antd-shell"
 import { NavButton } from "./NavButton"
 import { ModulesDrawer } from "./ModulesDrawer"
 import { Button } from "antd"
-import { codeIcon, menuIcon } from "./icons"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { MenusDrawer } from "./MenusDrawer"
+import { menuIcon, codeIcon } from "@rxdrag/react-shared"
 
 const Container = styled.div`
   position: relative;

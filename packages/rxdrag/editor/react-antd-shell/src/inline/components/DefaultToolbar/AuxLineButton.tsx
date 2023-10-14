@@ -1,8 +1,8 @@
 import { Button } from "antd"
 import { memo, useCallback, useEffect, useState } from "react"
-import { lineIcon } from "../../icons"
 import { useDesignerEngine, useDocument } from "@rxdrag/react-core";
 import { LINE_DECORTOR_NAME, LineDecorator } from "@rxdrag/core";
+import { lineIcon } from "@rxdrag/react-shared";
 
 export const AuxLineButton = memo(() => {
   const [line, setLine] = useState(false);

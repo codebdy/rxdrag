@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/minions-react-materials",
-  "version": "0.4.0",
+  "version": "0.4.4",
   "module": "index.ts",
   "files": [
     "dist"
@@ -43,7 +43,8 @@
     "@rxdrag/minions-runtime-react": "workspace:*",
     "@rxdrag/minions-runtime": "workspace:*",
     "@rxdrag/minions-logicflow-editor": "workspace:*",
-    "@rxdrag/minions-controller-editor": "workspace:*",
+    "@rxdrag/react-core": "workspace:*",
+    "@rxdrag/core": "workspace:*",
     "antd": "^5.9.2"
   }
 }

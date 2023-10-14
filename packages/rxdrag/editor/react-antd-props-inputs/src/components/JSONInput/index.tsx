@@ -1,5 +1,5 @@
 import { EditOutlined } from "@ant-design/icons"
-import Editor from "@monaco-editor/react"
+import Editor from "react-monaco-editor"
 import { Button, Drawer as AntdDrawer, Space, Typography } from "antd"
 import { useThemeMode, useSettersTranslate } from "@rxdrag/react-core"
 import { memo, useCallback, useEffect, useState } from "react"

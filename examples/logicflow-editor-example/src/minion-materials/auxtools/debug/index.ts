@@ -2,9 +2,9 @@
 import { createId } from "@rxdrag/shared";
 import { debugSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
-import { debugIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { DEFAULT_INPUT_NAME } from "../../consts";
+import { debugIcon } from "@rxdrag/react-shared";
 
 export interface IDebugConfig {
   tip?: string,

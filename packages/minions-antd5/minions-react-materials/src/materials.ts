@@ -3,25 +3,24 @@ import { ReactNode } from "react";
 import { basicActivities } from "./basic";
 import { auxActivities } from "./auxtools";
 import { commonActivities } from "./common";
-import { controllerActivities } from "./controller";
 
 export const basicActivityCategory: ActivityMaterialCategory<ReactNode> = {
-  name: '$basicReactions',
+  name: '$basicAcitivites',
   materials: basicActivities,
 }
 
 export const commonActivityCategory: ActivityMaterialCategory<ReactNode> = {
-  name: '$commonReactions',
+  name: '$advancedAcitivites',
   materials: commonActivities,
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const controllerActivityCategory: ActivityMaterialCategory<ReactNode, any, any, any> = {
-  name: '$componentControl',
-  materials: controllerActivities,
 }
 
 export const auxActivityCategory: ActivityMaterialCategory<ReactNode> = {
   name: "$auxTools",
   materials: auxActivities,
 }
+
+export const activityMaterialCategories: ActivityMaterialCategory<ReactNode>[] = [
+  basicActivityCategory,
+  commonActivityCategory,
+  auxActivityCategory
+]

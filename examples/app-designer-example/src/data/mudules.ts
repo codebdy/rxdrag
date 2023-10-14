@@ -1,84 +1,15 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { IModule, IModuleCategory } from "../interfaces/module";
 import { DeviceType } from "../interfaces";
+import mole from "./molepage.json"
+import moleSetting from "./molesettings.json"
+import userList from "./userList.json"
+import expression from "./expression.json"
 
 const rootNodeSchema: INodeSchema = {
   componentName: "Page"
 }
 
-const userList = {
-  "componentName": "Page",
-  "slots": {},
-  "children": [
-    {
-      "componentName": "Form",
-      "props": {
-        "colon": false
-      },
-      "x-controller": {
-        "id": "LlRDj22u",
-        "name": "查询表单"
-      },
-      "slots": {},
-      "children": [
-        {
-          "componentName": "Input",
-          "x-controller": {
-            "id": "Ddl53loc",
-            "name": "字段1"
-          },
-          "slots": {},
-          "children": []
-        },
-        {
-          "componentName": "Input",
-          "x-controller": {
-            "id": "ndwJ5LwA",
-            "name": "字段2"
-          },
-          "slots": {},
-          "children": []
-        }
-      ]
-    },
-    {
-      "componentName": "Table",
-      "selfRender": true,
-      "x-controller": {
-        "id": "JClydKG7",
-        "name": "用户列表",
-        "isArray": true,
-      },
-      "slots": {},
-      "children": [
-        {
-          "componentName": "TableColumn",
-          "props": {
-            "title": "Column1"
-          },
-          "slots": {},
-          "children": []
-        },
-        {
-          "componentName": "TableColumn",
-          "props": {
-            "title": "Column2"
-          },
-          "slots": {},
-          "children": []
-        },
-        {
-          "componentName": "TableColumn",
-          "props": {
-            "title": "Column3"
-          },
-          "slots": {},
-          "children": []
-        }
-      ]
-    }
-  ]
-}
 
 export const defaultModules: { [device: string]: IModule[] | undefined } = {
   [DeviceType.admin]: [
@@ -96,7 +27,77 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
           title: "编辑对话框",
           schema: rootNodeSchema,
         }
+      ],
+    },
+    {
+      id: "expression-demo",
+      title: "表达式演示",
+      views: [
+        {
+          id: "expression-index",
+          title: "入口页",
+          schema: expression,
+        },
+      ],
+    },
+    {
+      id: "mole",
+      title: "打地鼠",
+      views: [
+        {
+          id: "main-page",
+          title: "主页面",
+          schema: mole,
+        },
+        {
+          id: "settings-diaglog",
+          title: "游戏设置",
+          schema: moleSetting,
+        }
+      ],
+      variables: [
+        {
+          "id": "2AHnQ-ne",
+          "name": "活跃地鼠",
+          "defaultValue": -1
+        },
+        {
+          "id": "_G4SZqNV",
+          "name": "成绩",
+          "defaultValue": 0
+        },
+        {
+          "id": "_-uxpUk0",
+          "name": "地鼠数量",
+          "defaultValue": 9
+        },
+        {
+          "id": "tAE2cmwc",
+          "name": "时间间隔",
+          "defaultValue": 2000
+        },
+        {
+          "id": "UBbpfK7M",
+          "name": "运行",
+          "defaultValue": false
+        }
       ]
+    },
+    {
+      id: "mole-script",
+      title: "打地鼠(脚本)",
+      views: [
+        {
+          id: "main-page",
+          title: "主页面",
+          schema: mole,
+        },
+        {
+          id: "settings-diaglog",
+          title: "游戏设置",
+          schema: moleSetting,
+        }
+      ],
     },
     {
       id: "suppliers",
@@ -197,6 +198,18 @@ export const defaultModuleCategories: { [device: string]: IModuleCategory[] | un
           id: "users",
           title: "用户管理",
         },
+        {
+          id: "expression-demo",
+          title: "表达式示例",
+        },
+        {
+          id: "mole",
+          title: "打地鼠",
+        },
+        {
+          id: "mole-script",
+          title: "打地鼠(脚本)",
+        }
       ]
     },
     {

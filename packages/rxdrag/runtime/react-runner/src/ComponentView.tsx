@@ -6,11 +6,12 @@ import { withController } from "./hocs/withController"
 import { withBind } from "./hocs/withBind"
 import { ID } from "@rxdrag/shared"
 import { usePreviewComponent } from "./hooks"
-import { IOldControllerMeta, ILogicFlowControllerMeta } from "@rxdrag/minions-runtime-react"
 import { INodeSchema } from "@rxdrag/schema"
 import { IFieldMeta } from "@rxdrag/fieldy"
+import { IControllerMeta } from "@rxdrag/minions-runtime-react"
+import { withExprs } from "./hocs/withExprs"
 
-export interface IComponentRenderSchema extends INodeSchema<IFieldMeta, IOldControllerMeta> {
+export interface IComponentRenderSchema extends INodeSchema<IFieldMeta, IControllerMeta> {
   id: ID,
   children?: IComponentRenderSchema[]
   slots?: {
@@ -29,10 +30,12 @@ export const ComponentView = memo((
 
   const Component = useMemo(() => {
     return com && withBind(
-      withController(
-        com,
-        node["x-controller"] as ILogicFlowControllerMeta,
-        node.id,
+      withExprs(
+        withController(
+          com,
+          node["x-controller"] as IControllerMeta,
+        ),
+        node,
       ),
       node?.["x-field"],
     )

@@ -1,11 +1,11 @@
 
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { Col as AntdCol } from "antd";
 import { colIcon } from "./icon";
 import { colLocales, colResourceLocales } from "./locales";
 import { rowSchema } from "./schema";
 
-export const ColMaterial: IComponentMaterial = {
+export const ColMaterial: IMaterial = {
   componentName: "Col",
   component: AntdCol,
   designer: AntdCol,

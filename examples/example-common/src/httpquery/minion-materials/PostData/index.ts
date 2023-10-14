@@ -2,9 +2,9 @@ import { NodeType } from "@rxdrag/minions-schema";
 import { createId } from "@rxdrag/shared";
 import { DEFAULT_INPUT_NAME } from "@rxdrag/minions-runtime";
 import { IQueryActivityMaterial } from "../types";
-import { postDataIcon } from "../icons";
 import { postDataSchema } from "./schema";
 import { PostData } from "../../activities";
+import { postDataIcon } from "@rxdrag/react-shared";
 
 export const postDataMaterial: IQueryActivityMaterial = {
   activityName: PostData.NAME,

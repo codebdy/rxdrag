@@ -14,10 +14,7 @@ export const splitObjectSchema: INodeSchema = {
         {
           componentName: "PortsInput",
           "x-field": {
-            name: "outPorts",
-            params: {
-              withBind: true,
-            }
+            name: "outPorts"
           },
           props: {
             title: "$configPorts",

@@ -8,15 +8,12 @@ import {
   LeftNavWidget,
   OutlineWidget,
   ThemeButton,
-  componentsIcon,
-  historyIcon,
-  outlineIcon,
-  OldControllerSetter,
 } from "@rxdrag/react-antd-shell"
 import { SaveButton } from "./widgets/SaveButton"
 import { PagesWidget } from "./PagesWidget"
 import { pages } from "./data"
-import { Logo, MenuButton, ResourceWidget, controllerDefines, materials, minionsLocales, minionsMaterialCategories, setterLocales } from "example-common"
+import { Logo, MenuButton, ResourceWidget, materials, setterLocales } from "example-common"
+import { componentsIcon, outlineIcon, historyIcon } from "@rxdrag/react-shared"
 
 export enum LeftNavType {
   pages = "pages",
@@ -48,9 +45,6 @@ export const NormalEditorExample = memo(() => {
       previewUrl="/preview-render"
       themeMode='dark'
       minionOptions={{
-        materials: minionsMaterialCategories,
-        locales: minionsLocales,
-        controllers: controllerDefines,
       }}
       materials={materials}
       navPanel={
@@ -111,7 +105,7 @@ export const NormalEditorExample = memo(() => {
           onActive={handleActive}
         />
       }
-      setters={{ ControllerSetter: OldControllerSetter }}
+      setters={{  }}
     >
     </RxEditorAntd>
   )

@@ -1,21 +1,17 @@
 
 import { Activity, Input } from "@rxdrag/minions-runtime";
 import { INodeDefine } from "@rxdrag/minions-schema";
-import { IControllerContext } from "../../interfaces";
-import { AbstractControllerActivity, IControllerConfig, IControllerParam } from "../AbstractControllerActivity";
+import { IReactContext } from "../../interfaces";
+import { ControllerActivity, IControllerConfig } from "../ControllerActivity";
 
-export interface IPropParam extends IControllerParam {
+export interface IPropConfig extends IControllerConfig {
   prop?: string
 }
 
-export interface IPropConfig extends IControllerConfig {
-  param?: IPropParam
-}
-
 @Activity(SetProp.NAME)
-export class SetProp extends AbstractControllerActivity<IPropConfig> {
+export class SetProp extends ControllerActivity<IPropConfig> {
   public static NAME = "system-react.setProp"
-  constructor(meta: INodeDefine<IPropConfig>, context: IControllerContext) {
+  constructor(meta: INodeDefine<IPropConfig>, context: IReactContext) {
     super(meta, context)
     if (Object.keys(meta.inPorts || {}).length !== 1) {
       throw new Error("SetProp inputs count error")
@@ -23,10 +19,10 @@ export class SetProp extends AbstractControllerActivity<IPropConfig> {
   }
 
   @Input()
-  inputHandler = (inputValue: string) => {
-    if (this.meta.config?.param?.prop) {
-      this.controller?.setProp(this.meta.config?.param.prop, inputValue)
+  inputHandler = (inputValue: string, runContext?: object) => {
+    if (this.meta.config?.prop) {
+      this.controller?.setProp(this.meta.config?.prop, inputValue)
     }
-    this.next(inputValue);
+    this.next(inputValue, runContext);
   }
 }

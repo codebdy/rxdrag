@@ -1,9 +1,9 @@
 import { Button, Modal, Tooltip } from "antd";
 import { memo, useCallback, useState } from "react"
 import { SvgIcon } from "../../common";
-import { jsonIcon } from "../../icons";
 import { useActivedDocument, useSettersTranslate, useThemeMode } from "@rxdrag/react-core";
-import Editor from '@monaco-editor/react';
+import Editor from 'react-monaco-editor';
+import { jsonIcon } from "@rxdrag/react-shared";
 
 export const JsonCodeDialog = memo(() => {
   const [open, setOpen] = useState(false);

@@ -1,6 +1,6 @@
 {
   "name": "@rxdrag/minions-runtime-react",
-  "version": "0.4.1",
+  "version": "0.4.4",
   "module": "index.ts",
   "files": [
     "dist"
@@ -31,6 +31,8 @@
   },
   "dependencies": {
     "@rxdrag/minions-schema": "workspace:*",
-    "@rxdrag/minions-runtime": "workspace:*"
+    "@rxdrag/minions-runtime": "workspace:*",
+    "@rxdrag/fieldy": "workspace:*",
+    "@rxdrag/shared": "workspace:*"
   }
 }

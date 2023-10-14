@@ -34,7 +34,6 @@
     "react-router-dom": "^6.8.1"
   },
   "dependencies": {
-    "@monaco-editor/react": "^4.4.6",
     "@rxdrag/core": "workspace:*",
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/react-locales": "workspace:*",
@@ -45,6 +44,8 @@
     "@rxdrag/react-fieldy": "workspace:*",
     "@rxdrag/minions-schema": "workspace:*",
     "@rxdrag/minions-runtime-react": "workspace:*",
+    "@rxdrag/minions-logicflow-editor": "workspace:*",
+    "react-monaco-editor": "^0.54.0",
     "lodash": "^4.17.21",
     "styled-components": "^5.3.9"
   }

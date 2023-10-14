@@ -1,9 +1,9 @@
 import { Sider } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { siderLocales } from "./locales";
 import { siderSchema } from "./schema";
 
-export const SiderMaterial: IComponentMaterial = {
+export const SiderMaterial: IMaterial = {
   componentName: "Layout.Sider",
   component: Sider,
   designer: Sider,

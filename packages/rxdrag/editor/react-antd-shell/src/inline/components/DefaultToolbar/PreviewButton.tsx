@@ -1,6 +1,6 @@
+import { playIcon } from "@rxdrag/react-shared"
 import { Button, ButtonProps } from "antd"
 import { memo } from "react"
-import { playIcon } from "../../icons"
 
 export const PreviewButton = memo((
   props: ButtonProps

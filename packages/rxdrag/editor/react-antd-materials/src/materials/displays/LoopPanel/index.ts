@@ -1,12 +1,12 @@
 import { LoopPanel } from "@rxdrag/react-antd-components";
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { LoopPanelDesigner } from "./designer";
 import { icon } from "./icon";
 import { locales, resourceLocales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "LoopPanel"
-export const LoopPanelMaterial: IComponentMaterial = {
+export const LoopPanelMaterial: IMaterial = {
   componentName: name,
   component: LoopPanel,
   designer: LoopPanelDesigner,

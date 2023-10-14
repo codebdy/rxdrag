@@ -1,11 +1,11 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { Table } from "antd";
 import { TableSummaryDesigner } from "./Designer";
 import { locales } from "./locales";
 import { materialSchema } from "./schema";
 
 const name = "TableSummary"
-export const TableSummaryMaterial: IComponentMaterial = {
+export const TableSummaryMaterial: IMaterial = {
   componentName: name,
   component: Table.Summary,
   designer: TableSummaryDesigner,

@@ -38,7 +38,6 @@ export const ModuleCanvas = memo((
       <VirtualForm>
         <ComponentRender
           components={frameComponents}
-          //controllerFactories={controllerFactories}
           schema={frameSchema}
         />
       </VirtualForm>

@@ -1,4 +1,4 @@
-import { IComponentMaterial } from "@rxdrag/react-core";
+import { IMaterial } from "@rxdrag/react-core";
 import { logoIcon } from "./icon";
 import { menuLocales, logoResourceLocales } from "./locales";
 import { schema } from "./schema";
@@ -6,7 +6,7 @@ import { Menu } from "../../../../components/admin/Menu";
 import { MenuSelect } from "./setters/MenuSelect";
 
 const name = "Menu"
-export const MenuMaterial: IComponentMaterial = {
+export const MenuMaterial: IMaterial = {
   componentName: name,
   component: Menu,
   designer: Menu,

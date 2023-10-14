@@ -1,9 +1,9 @@
 import { createId } from "@rxdrag/shared";
 import { mockSchema } from "./schema";
 import { NodeType } from "@rxdrag/minions-schema";
-import { simulateIcon } from "../../icons";
 import { Mock } from "@rxdrag/minions-activities";
 import { IRxDragActivityMaterial } from "../../interfaces";
+import { simulateIcon } from "@rxdrag/react-shared";
 
 export const mockMaterial: IRxDragActivityMaterial = {
   icon: simulateIcon,

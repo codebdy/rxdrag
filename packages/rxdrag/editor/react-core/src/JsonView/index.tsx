@@ -1,5 +1,5 @@
 import { memo } from "react"
-import Editor from '@monaco-editor/react';
+import Editor from 'react-monaco-editor';
 import { useThemeMode, useDocument } from "../hooks";
 
 export const JsonView = memo(() => {
