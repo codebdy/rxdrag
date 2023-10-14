@@ -1,8 +1,8 @@
 import { Button } from "antd"
 import { memo, useCallback, useMemo, useState } from "react"
 import styled from "styled-components"
-import { AimOutlined, FileAddOutlined, HistoryOutlined } from "@ant-design/icons"
-import { usePropertyWidthState } from "../contexts"
+import { AimOutlined, HistoryOutlined, PlayCircleOutlined } from "@ant-design/icons"
+import { usePreviewState, usePropertyWidthState } from "../contexts"
 import { ZoomButtons } from "./ZoomButtons"
 import { OperationHistory, OutlineTree, SvgIcon } from "../../common"
 import { DEFAULT_MARGIN } from "../consts"
@@ -10,7 +10,7 @@ import { ExpandPanel } from "./ExpandPanel"
 import { useSettersTranslate } from "@rxdrag/react-core"
 import { WidgetTitle } from "../common/WidgetTitle"
 import { floatBigShadow } from "../../utils"
-import { outlineIcon } from "@rxdrag/react-shared"
+import { designIcon, outlineIcon } from "@rxdrag/react-shared"
 
 const Container = styled.div`
   position: absolute;
@@ -42,7 +42,14 @@ export const ShortcutActions = memo((
   }
 ) => {
   const { scrolled, zoom, onZoomChange, onResetScroll } = props
+  const [preview, setPreview] = usePreviewState()
+  const handleDesignClick = useCallback(() => {
+    setPreview(false)
+  }, [setPreview])
 
+  const handlePreviewClick = useCallback(() => {
+    setPreview(true)
+  }, [setPreview])
   const [outlineOpen, setOutlineOpen] = useState<boolean>()
   const [historyOpen, setHistoryOpen] = useState<boolean>()
   const [propertyWidth] = usePropertyWidthState()
@@ -97,7 +104,16 @@ export const ShortcutActions = memo((
         }
 
       </ExpandPanel>
-      <Button type="text" icon={<FileAddOutlined />} />
+      <Button
+        type="text"
+        icon={preview
+          ? <SvgIcon>
+            {designIcon}
+          </SvgIcon>
+          : <PlayCircleOutlined />
+        }
+        onClick={preview ? handleDesignClick : handlePreviewClick}
+      />
       <ZoomButtons zoom={zoom} onZoomChange={onZoomChange} />
       <Button type="text" disabled={!scrolled} icon={<AimOutlined />} onClick={onResetScroll} />
       <Button

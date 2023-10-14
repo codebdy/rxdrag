@@ -36,9 +36,7 @@ export const SettingsForm = memo(() => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentNode, engine, lang])
-
   const handleMetaChange = useCallback((mt: INodeMeta) => {
-    //第二个判断，解决切换节点时setvalue引发SettingsForm更新，如果SettingsForm中使用form的intialValue，也会有其它问题
     if (currentNode && meta !== mt) {
       changeMeta(currentNode.id, mt)
     }
@@ -47,9 +45,8 @@ export const SettingsForm = memo(() => {
   return (
     <div style={propertiesStyle}>
       {
-        currentNode &&
         <VirtualForm
-          value={meta as unknown as FormValue | undefined}
+          initialValue={meta as unknown as FormValue | undefined}
           onValueChange={handleMetaChange as unknown as (value: FormValue | undefined) => void}
         //key={currentNode.id}
         >
