@@ -38,6 +38,7 @@ export const commonLocales: ILocales = {
       design: "设计",
       jsonCode: "JSON 代码",
       preview: "预览",
+      addView: "添加视图",
       pointSelection: "点选",
       boxSelection: "框选",
       reset: "重置"
@@ -77,6 +78,7 @@ export const commonLocales: ILocales = {
       design: "Design",
       jsonCode: "JSON Code",
       preview: "Preview",
+      addView: "Add View",
       pointSelection: "Point selection",
       boxSelection: "Box selection",
       reset: "Reset",
