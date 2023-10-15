@@ -83,7 +83,10 @@ const options: SchemaOptions = {
       }
     },
   ],
-  canBindField: true,
+  field: {
+    hasField: true,
+    hasRules: true,
+  },
 }
 
 export const formItemSchema: INodeSchema = createSchema(options)

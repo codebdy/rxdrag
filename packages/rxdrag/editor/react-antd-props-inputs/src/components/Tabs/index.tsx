@@ -6,6 +6,7 @@ import { useComponentSchema } from "@rxdrag/react-runner";
 import { isArr } from "@rxdrag/shared";
 import React from "react";
 import styled from "styled-components";
+import { useCurrentNode, useGetNode } from "@rxdrag/react-core";
 
 export * from "./TabPanel"
 
@@ -37,25 +38,41 @@ const Container = styled.div`
 export const Tabs = memo(forwardRef<HTMLDivElement>((
   props: {
     className?: string,
-    children?: React.ReactNode
+    children?: React.ReactNode,
+    fieldContainer?: string[] | string
   },
   ref
 ) => {
-  const { children, className, ...other } = props
+  const { children, className, fieldContainer = "FormItem", ...other } = props
   const schema = useComponentSchema()
+  const node = useCurrentNode()
+  const getNode = useGetNode()
+
   const items = useMemo(() => {
     if (isArr(children)) {
-      return children.map(((child, index) => {
-        const childSchema = schema?.children?.[index]
-        const key = childSchema?.props?.title as any + index
+      return schema?.children?.filter(childSchema => {
+        //确定是否需要显示Field tab页
+        const parent = getNode(node?.parentId)
+        if (childSchema?.props?.isField) {
+          if (fieldContainer === parent?.meta.componentName) {
+            return false
+          } else if (isArr(fieldContainer)) {
+            if (fieldContainer.find(con => con === parent?.meta.componentName)) {
+              return false
+            }
+          }
+        }
+        return true
+      }).map(((childSchema, index) => {
+        const child = children?.[index]
         return {
           label: childSchema?.props?.title,
-          key: childSchema?.props?.id || key,
+          key: childSchema?.props?.key || index,
           children: child,
         }
       }))
     }
-  }, [children, schema?.children])
+  }, [children, fieldContainer, getNode, node?.parentId, schema?.children])
   return (
     <Container ref={ref} className={cls("rx-tabs", className)} {...other}>
       <AntdTabs

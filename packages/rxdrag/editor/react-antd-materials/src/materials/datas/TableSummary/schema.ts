@@ -53,7 +53,6 @@ const options: SchemaOptions = {
       name: "footer",
     },
   ],
-  canBindField: true,
 }
 
 export const materialSchema: INodeSchema = createSchema(options)

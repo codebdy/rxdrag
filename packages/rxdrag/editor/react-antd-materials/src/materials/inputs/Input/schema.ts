@@ -41,13 +41,9 @@ const inputSlots = [
 const options: SchemaOptions = {
   propSchemas:inputPros,
   slotSchemas:inputSlots,
-  canBindField: true,
-  events: [
-    {
-      name: "onChange",
-      label: "$onChange",
-    }
-  ],
+  field: {
+    hasField: true,
+  },
 }
 export const inputSchema: INodeSchema = createSchema(options)
 
@@ -61,6 +57,8 @@ const textareaOptions: SchemaOptions = {
     },
   },
   ],
-  canBindField: true,
+  field: {
+    hasField: true,
+  },
 }
 export const textAreaSchema: INodeSchema = createSchema(textareaOptions)

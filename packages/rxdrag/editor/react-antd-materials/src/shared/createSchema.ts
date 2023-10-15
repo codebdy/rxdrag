@@ -5,7 +5,7 @@ import { transPropSchemas } from "./transPropSchemas";
 import { transSlotSchemas } from "./transSlotSchemas";
 
 export function createSchema(options: SchemaOptions = {}): INodeSchema {
-  const { propSchemas, slotSchemas, canBindField } = options
+  const { propSchemas, slotSchemas, field } = options
 
   const propsSchemaBlock = propSchemas ? transPropSchemas(propSchemas) : []
 
@@ -16,6 +16,7 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
       componentName: "TabPanel",
       props: {
         title: "$properties",
+        key: "props",
       },
       children: [...propsSchemaBlock, ...slotSchemaBlock]
     }]
@@ -25,6 +26,7 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
     componentName: "TabPanel",
     props: {
       title: "$reaction",
+      key: "reaction"
     },
     children: [
       {
@@ -37,14 +39,15 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
   }];
 
 
-  const fieldTab = canBindField ? [
+  const fieldTab = field?.hasField ? [
     {
       componentName: "TabPanel",
       props: {
         title: "$field",
-        id: "data",
+        key: "data",
+        isField: true,
       },
-      children: createFieldSchema()
+      children: createFieldSchema(field)
     }] : []
 
   return {
@@ -61,7 +64,8 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
 const styleTab = {
   componentName: 'TabPanel',
   props: {
-    title: '$style'
+    title: '$style',
+    key: "style",
   },
   children: [
     {

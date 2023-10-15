@@ -1,8 +1,7 @@
+import { SchemaOptions, createSchema } from "@rxdrag/react-antd-materials";
 import { INodeSchema } from "@rxdrag/schema";
-import { SchemaOptions, createSchema } from "../shared";
 
 const scehmaOptions: SchemaOptions = {
-  noStyle: true,
   propSchemas: [
     {
       componentName: "Radio.Group",
