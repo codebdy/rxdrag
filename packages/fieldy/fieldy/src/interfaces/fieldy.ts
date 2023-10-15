@@ -1,6 +1,6 @@
 import { Action } from "redux"
 import { FormActionPayload, IFieldFeedback } from "../actions"
-import { DisplayType, IFieldMeta, IValidateSchema, PatternType } from "./meta"
+import { IFieldMeta, IValidateSchema } from "./meta"
 import { IValidationError, IValidator } from "./validator"
 
 export type Errors = {
@@ -19,15 +19,6 @@ export interface IFormProps {
   name?: string,
   value?: object,	//表单值	Object	{}
   initialValue?: object, 	//表单默认值	Object	{}
-  pattern?: PatternType, //	表单交互模式	
-  display?: DisplayType, //表单显隐	
-  hidden?: boolean, //	UI 隐藏	Boolean	true
-  visible?: boolean, //	显示 / 隐藏(数据隐藏)	Boolean	true
-  editable?: boolean, //	是否可编辑	Boolean	true
-  disabled?: boolean, //	是否禁用	Boolean	false
-  readOnly?: boolean, //	是否只读	Boolean	false
-  readPretty?: boolean, //	是否是优雅阅读态	Boolean	false
-  effects?: boolean, //	副作用逻辑，用于实现各种联动逻辑(form: Form)=> void
   validateFirst?: boolean, //	是否只校验第一个非法规则	Boolean
 }
 
@@ -59,11 +50,6 @@ export type FieldState = {
   unmounted?: boolean; //字段是否已卸载
   active?: boolean; //触发 onFocus 为 true，触发 onBlur 为 false
   visited?: boolean; //触发过 onFocus 则永远为 true
-  display?: DisplayType;
-  pattern?: PatternType;
-  hidden?: boolean;
-  disabled?: boolean;
-  readonly?: boolean;
   loading?: boolean;
   validating?: boolean;
   modified?: boolean;
@@ -84,8 +70,6 @@ export type FormState = {
   mounted?: boolean; //是否已挂载
   unmounted?: boolean; //是否已卸载
   initialized?: boolean;
-  display?: DisplayType;
-  pattern?: PatternType;
   loading?: boolean;
   validating?: boolean;
   modified?: boolean;

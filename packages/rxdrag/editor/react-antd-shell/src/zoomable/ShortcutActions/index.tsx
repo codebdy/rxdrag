@@ -10,7 +10,7 @@ import { ExpandPanel } from "./ExpandPanel"
 import { useSettersTranslate } from "@rxdrag/react-core"
 import { WidgetTitle } from "../common/WidgetTitle"
 import { floatBigShadow } from "../../utils"
-import { designIcon, outlineIcon } from "@rxdrag/react-shared"
+import { outlineIcon, stopIcon } from "@rxdrag/react-shared"
 
 const Container = styled.div`
   position: absolute;
@@ -108,7 +108,7 @@ export const ShortcutActions = memo((
         type="text"
         icon={preview
           ? <SvgIcon>
-            {designIcon}
+            {stopIcon}
           </SvgIcon>
           : <PlayCircleOutlined />
         }

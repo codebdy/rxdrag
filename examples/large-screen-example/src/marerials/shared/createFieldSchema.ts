@@ -50,138 +50,6 @@ export function transformExpressionField(expFields: IExpressionField[]) {
 }
 
 export function createFieldSchema() {
-  const reactionFields: IExpressionField[] = [
-    {
-      label: "$display",
-      name: "display",
-      valueInputSchema: {
-        componentName: "Select",
-        props: {
-          style: {
-            flex: 1,
-          },
-          options: [
-            {
-              value: '',
-              label: '',
-            },
-            {
-              value: 'none',
-              label: 'none',
-            },
-            {
-              value: 'hidden',
-              label: 'hidden',
-            },
-            {
-              value: 'visible',
-              label: 'visible',
-            },
-          ],
-        },
-        "x-field": {
-          name: "value",
-        },
-      },
-    },
-    {
-      label: "$pattern",
-      name: "pattern",
-      valueInputSchema: {
-        componentName: "Select",
-        props: {
-          style: {
-            flex: 1,
-          },
-          options: [
-            {
-              value: '',
-              label: '',
-            },
-            {
-              value: 'editable',
-              label: '$editable',
-            },
-            {
-              value: 'disabled',
-              label: '$disabled',
-            },
-            {
-              value: 'readOnly',
-              label: '$readonly',
-            },
-            {
-              value: 'readPretty',
-              label: '$readPretty',
-            },
-          ],
-        },
-        "x-field": {
-          name: "value",
-        },
-      },
-    },
-    {
-      label: "$hidden",
-      name: "hidden",
-      valueInputSchema: {
-        componentName: "div",
-        props: {
-          style: {
-            flex: 1,
-          }
-        },
-        children: [
-          {
-            componentName: "Switch",
-            "x-field": {
-              name: "value",
-            },
-          }
-        ]
-      },
-    },
-    {
-      label: "$disabled",
-      name: "disabled",
-      valueInputSchema: {
-        componentName: "div",
-        props: {
-          style: {
-            flex: 1,
-          }
-        },
-        children: [
-          {
-            componentName: "Switch",
-            "x-field": {
-              name: "value",
-            },
-          }
-        ]
-      },
-    },
-    {
-      label: "$readonly",
-      name: "readonly",
-      valueInputSchema: {
-        componentName: "div",
-        props: {
-          style: {
-            flex: 1,
-          }
-        },
-        children: [
-          {
-            componentName: "Switch",
-            "x-field": {
-              name: "value",
-            },
-          }
-        ]
-      },
-    },
-  ]
 
   const validationCollapse = [{
     componentName: "CollapsePanel",
@@ -198,17 +66,6 @@ export function createFieldSchema() {
     ]
   }]
 
-  const reactionCollapse = [{
-    componentName: "CollapsePanel",
-    "x-field": {
-      type: "object",
-      name: "x-field.reactionMeta",
-    },
-    props: {
-      title: "$fieldSettings"
-    },
-    children: transformExpressionField(reactionFields)
-  }]
 
   const fieldDefineFields = [
     {
@@ -260,6 +117,5 @@ export function createFieldSchema() {
       children: attachFormItem(fieldDefineFields)
     },
     ...validationCollapse,
-    ...reactionCollapse,
   ]
 }

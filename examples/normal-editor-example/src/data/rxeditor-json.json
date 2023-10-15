@@ -272,17 +272,6 @@
                       "props": {
                         "label": "FormItem"
                       },
-                      "x-field": {
-                        "type": "normal",
-                        "name": "",
-                        "reactionMeta": {
-                          "display": {},
-                          "pattern": {},
-                          "hidden": {},
-                          "disabled": {},
-                          "readonly": {}
-                        }
-                      },
                       "slots": {},
                       "children": [
                         {
@@ -292,14 +281,7 @@
                           },
                           "x-field": {
                             "type": "normal",
-                            "name": "username",
-                            "reactionMeta": {
-                              "display": {},
-                              "pattern": {},
-                              "hidden": {},
-                              "disabled": {},
-                              "readonly": {}
-                            }
+                            "name": "username"
                           },
                           "slots": {},
                           "children": []

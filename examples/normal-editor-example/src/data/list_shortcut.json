@@ -105,14 +105,7 @@
                               "props": {},
                               "x-field": {
                                 "name": "keywords",
-                                "params": {},
-                                "reactionMeta": {
-                                  "display": {},
-                                  "pattern": {},
-                                  "hidden": {},
-                                  "disabled": {},
-                                  "readonly": {}
-                                }
+                                "params": {}
                               },
                               "x-controller": {
                                 "id": "67ba7358-b919-4234-8ae9-b0a0d666d3c3",
@@ -1281,15 +1274,6 @@
                         "url": "/api/users",
                         "entityName": "User"
                       },
-                      "x-field": {
-                        "reactionMeta": {
-                          "display": {},
-                          "pattern": {},
-                          "hidden": {},
-                          "disabled": {},
-                          "readonly": {}
-                        }
-                      },
                       "bordered": false,
                       "slots": {},
                       "children": [
@@ -1299,14 +1283,7 @@
                             "title": "名称"
                           },
                           "x-field": {
-                            "name": "name",
-                            "reactionMeta": {
-                              "display": {},
-                              "pattern": {},
-                              "hidden": {},
-                              "disabled": {},
-                              "readonly": {}
-                            }
+                            "name": "name"
                           },
                           "slots": {},
                           "children": []
@@ -1317,14 +1294,7 @@
                             "title": "登录名称"
                           },
                           "x-field": {
-                            "name": "login_name",
-                            "reactionMeta": {
-                              "display": {},
-                              "pattern": {},
-                              "hidden": {},
-                              "disabled": {},
-                              "readonly": {}
-                            }
+                            "name": "login_name"
                           },
                           "slots": {},
                           "children": []
@@ -1368,29 +1338,13 @@
                                           },
                                           "locked": false,
                                           "x-field": {
-                                            "name": "login_name",
-                                            "reactionMeta": {
-                                              "display": {},
-                                              "pattern": {},
-                                              "hidden": {},
-                                              "disabled": {},
-                                              "readonly": {}
-                                            }
+                                            "name": "login_name"
                                           },
                                           "slots": {},
                                           "children": [
                                             {
                                               "componentName": "Input",
                                               "props": {},
-                                              "x-field": {
-                                                "reactionMeta": {
-                                                  "display": {},
-                                                  "pattern": {},
-                                                  "hidden": {},
-                                                  "disabled": {},
-                                                  "readonly": {}
-                                                }
-                                              },
                                               "slots": {},
                                               "children": []
                                             }
@@ -1403,29 +1357,13 @@
                                           },
                                           "locked": false,
                                           "x-field": {
-                                            "name": "name",
-                                            "reactionMeta": {
-                                              "display": {},
-                                              "pattern": {},
-                                              "hidden": {},
-                                              "disabled": {},
-                                              "readonly": {}
-                                            }
+                                            "name": "name"
                                           },
                                           "slots": {},
                                           "children": [
                                             {
                                               "componentName": "Input",
                                               "props": {},
-                                              "x-field": {
-                                                "reactionMeta": {
-                                                  "display": {},
-                                                  "pattern": {},
-                                                  "hidden": {},
-                                                  "disabled": {},
-                                                  "readonly": {}
-                                                }
-                                              },
                                               "slots": {},
                                               "children": []
                                             }

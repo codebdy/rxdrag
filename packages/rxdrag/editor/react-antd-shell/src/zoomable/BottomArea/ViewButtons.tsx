@@ -1,7 +1,7 @@
 import { useSettersTranslate } from "@rxdrag/react-core"
 import { Button, Space, Tooltip } from "antd"
 import { memo } from "react"
-import { PlusOutlined } from "@ant-design/icons"
+import { NumberOutlined } from "@ant-design/icons"
 import { JsonCodeDialog } from "./JsonCodeDialog"
 
 export const ViewButtons = memo(() => {
@@ -10,13 +10,13 @@ export const ViewButtons = memo(() => {
   return (
     <Space>
       <JsonCodeDialog />
-      <Tooltip title={t("addView")}>
+      <Tooltip title={t("views")}>
         <div>
           <Button
             type={"text"}
             size="small"
             icon={
-              <PlusOutlined />
+              <NumberOutlined />
             }
             //onClick={handlePreviewClick}
           />
