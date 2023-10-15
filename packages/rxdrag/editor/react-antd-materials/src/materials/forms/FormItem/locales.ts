@@ -13,6 +13,8 @@ export const formItemLocales = {
       order: "顺序",
       pull: "左移",
       push: "右移",
+      left: "左",
+      right: "右",
     }
 
   },
@@ -30,6 +32,8 @@ export const formItemLocales = {
       order: "Order",
       pull: "Pull",
       push: "Push",
+      left: "Left",
+      right: "Right",
     }
   }
 }
