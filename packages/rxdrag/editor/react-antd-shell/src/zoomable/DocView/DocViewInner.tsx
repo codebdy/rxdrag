@@ -74,9 +74,9 @@ export const DocViewInner = memo(() => {
           {doc?.getTitle()} - <em>{canvasConfig?.deviceName}</em>
         </CanvasTitle>
         <Spring />
-        <Space className="actions">
+        {/* <Space className="actions">
           <Button type="text" size="small" shape="circle" icon={<DeleteOutlined />} /> 
-        </Space>
+        </Space> */}
       </CanvasToolbar>
       <CanvasContent
         className="document-content"

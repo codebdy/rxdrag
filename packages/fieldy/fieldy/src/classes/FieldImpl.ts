@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { isStr } from "@rxdrag/shared";
-import { ErrorListener, FieldState, FormState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
+import { ErrorListener, FieldState, IField, IFieldSchema, IFieldyEngine, IForm, Listener, SuccessListener, Unsubscribe, ValueChangeListener } from "../interfaces/fieldy";
 import { PropExpression } from "./PropExpression";
 import { ValidationSubscriber } from "./ValidationSubscriber";
 import { IValidateSchema, IValidationError } from "../interfaces";
@@ -26,18 +24,8 @@ export class FieldImpl implements IField {
   //发起变化标号，防止无限递归
   initiateExpressionChange = false;
   validationSubscriber: ValidationSubscriber = new ValidationSubscriber()
-  unsubValueChange?: Unsubscribe
-  unsubExpContextChange?: Unsubscribe
 
-  constructor(public fieldy: IFieldyEngine, public form: IForm, private fieldPath: string) {
-    if (this.meta?.reactionMeta) {
-      this.makeExpressions();
-      //计算一次联动
-      this.handleFieldReaction()
-      this.unsubValueChange = form.onValueChange(this.handleFieldReaction)
-      this.unsubExpContextChange = form.onExpContextChange(this.handleFieldReaction)
-    }
-  }
+  constructor(public fieldy: IFieldyEngine, public form: IForm, private fieldPath: string) { }
 
   getSiblings(): IField<IValidateSchema>[] {
     const fields: IField<IValidateSchema>[] = []
@@ -116,8 +104,8 @@ export class FieldImpl implements IField {
   }
 
   destroy(): void {
-    this.unsubValueChange?.()
-    this.unsubValueChange?.()
+    // this.unsubValueChange?.()
+    // this.unsubValueChange?.()
   }
 
   setValue(value: unknown): void {
@@ -189,52 +177,5 @@ export class FieldImpl implements IField {
   }
   onValidateSuccess(listener: SuccessListener): Unsubscribe {
     return this.validationSubscriber.onValidateSuccess(listener)
-  }
-
-  private makeExpressions() {
-    if (this.meta?.reactionMeta) {
-      for (const key of Object.keys(this.meta.reactionMeta)) {
-        const exobj = this.meta.reactionMeta[key]
-        const expressionText = (exobj as { expression?: string })?.expression
-        if (expressionText) {
-          this.expressions.push(new PropExpression(this.getParent() || this.form, key, expressionText))
-        } else if (isStr(exobj)) {
-          let expressionText = exobj.trim()
-          if (expressionText.startsWith("{{") && expressionText.endsWith("}}")) {
-            expressionText = expressionText.replace(/^\{\{/, "").replace(/\}\}$/, "");
-          }
-          if (expressionText) {
-            this.expressions.push(new PropExpression(this.getParent() || this.form, key, expressionText))
-          }
-        }
-      }
-    }
-  }
-
-  /**
-   * 表单变化响应函数：处理联动
-   * @param form 
-   */
-  private handleFieldReaction = () => {
-    // if(!form.initialized){
-    //   return
-    // }
-    const updatedValues: { [key: string]: unknown } = {}
-    if (this.initiateExpressionChange) {
-      this.initiateExpressionChange = false;
-      return
-    }
-    for (const expression of this.expressions) {
-      const { value, changed } = expression.changedValue() || {}
-      if (changed) {
-        updatedValues[expression.propName] = value
-      }
-    }
-    if (Object.keys(updatedValues).length > 0) {
-      const oldFieldState = this.fieldy.getFieldState(this.form.name, this.fieldPath)
-      console.assert(oldFieldState, "FieldState is undefined!")
-      this.initiateExpressionChange = true;
-      oldFieldState && this.fieldy.setFieldState(this.form.name, { ...oldFieldState, ...updatedValues })
-    }
   }
 }
