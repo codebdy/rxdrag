@@ -1,10 +1,8 @@
 import { memo } from "react"
 import styled from "styled-components"
-import { Button, Space } from "antd"
 import { Spring, useCanvasUrl } from "../../common"
 import { IFrame, useActivedDocument, useCanvasConfig, useDocument } from "@rxdrag/react-core"
 import classNames from "classnames"
-import { DeleteOutlined } from "@ant-design/icons"
 
 const DocViewContainer = styled.div`
   position: relative;
