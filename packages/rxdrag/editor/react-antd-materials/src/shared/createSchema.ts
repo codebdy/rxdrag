@@ -11,13 +11,15 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
 
   const slotSchemaBlock = slotSchemas ? transSlotSchemas(slotSchemas) : []
 
-  const propsTab = [{
-    componentName: "TabPanel",
-    props: {
-      title: "$properties",
-    },
-    children: [...propsSchemaBlock, ...slotSchemaBlock]
-  }];
+  const propsTab = propsSchemaBlock.length || slotSchemaBlock.length
+    ? [{
+      componentName: "TabPanel",
+      props: {
+        title: "$properties",
+      },
+      children: [...propsSchemaBlock, ...slotSchemaBlock]
+    }]
+    : [];
 
   const reactionTab = [{
     componentName: "TabPanel",
