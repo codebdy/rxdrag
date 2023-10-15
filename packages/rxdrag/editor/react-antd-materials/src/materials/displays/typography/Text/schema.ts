@@ -13,7 +13,9 @@ const options: SchemaOptions = {
     },
     ...typographySchema,
   ],
-  canBindField: true,
+  field: {
+    hasField: true,
+  },
 }
 
 export const schema: INodeSchema = createSchema(options)

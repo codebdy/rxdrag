@@ -2,7 +2,6 @@ import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "@rxdrag/react-antd-materials";
 
 export const schemaOptions: SchemaOptions = {
-  canBindField: false,
   propSchemas: [
     {
       componentName: "MenuSelect",

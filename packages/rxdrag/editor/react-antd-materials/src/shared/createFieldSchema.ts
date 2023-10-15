@@ -1,6 +1,7 @@
+import { FieldOptions } from "./SchemaOptions"
 import { attachFormItem } from "./attachFormItem"
 
-export function createFieldSchema() {
+export function createFieldSchema(field: FieldOptions) {
   const fieldDefineFields = [
     {
       componentName: "Input",
@@ -20,11 +21,11 @@ export function createFieldSchema() {
   ]
   return [
     ...attachFormItem(fieldDefineFields) || [],
-    {
+    ...field.hasRules ? [{
       componentName: "YupRulesInput",
       "x-field": {
         name: "x-field.validateRules",
       },
-    }
+    }] : []
   ]
 }

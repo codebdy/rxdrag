@@ -97,13 +97,9 @@ const options: SchemaOptions = {
       label: "$summary",
     },
   ],
-  canBindField: false,
-  events: [
-    {
-      name: "onPageChange",
-      label: "$paginationChange",
-    }
-  ],
+  field: {
+    hasField: true,
+  },
 }
 
 export const materialSchema: INodeSchema = createSchema(options)

@@ -31,7 +31,9 @@ const options: SchemaOptions = {
       label: "$icon"
     }
   ],
-  canBindField: true,
+  field: {
+    hasField: true,
+  },
 }
 
 export const schema: INodeSchema = createSchema(options)

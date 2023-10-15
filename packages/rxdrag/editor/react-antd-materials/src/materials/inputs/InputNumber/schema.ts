@@ -43,7 +43,9 @@ const inputSlots = [
 const options: SchemaOptions = {
   propSchemas: inputNumberPros,
   slotSchemas: inputSlots,
-  canBindField: true,
+  field: {
+    hasField: true,
+  },
 }
 export const inputNumberSchema: INodeSchema = createSchema(options)
 
