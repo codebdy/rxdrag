@@ -33,6 +33,7 @@ export type ZoomableEditorInnerProps = {
   bottomConsole?: {
     items?: TabsProps['items'],
     extra?: React.ReactNode,
+    addon?: React.ReactNode,
   },
 }
 

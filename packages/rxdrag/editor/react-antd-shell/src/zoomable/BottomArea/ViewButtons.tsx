@@ -18,7 +18,7 @@ export const ViewButtons = memo(() => {
             icon={
               <NumberOutlined />
             }
-            //onClick={handlePreviewClick}
+          //onClick={handlePreviewClick}
           />
         </div>
       </Tooltip>

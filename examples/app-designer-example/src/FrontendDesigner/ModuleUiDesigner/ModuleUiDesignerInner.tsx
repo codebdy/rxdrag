@@ -1,13 +1,14 @@
 import { ZoomableEditor } from "@rxdrag/react-antd-shell"
-import { memo, useMemo } from "react"
+import { memo, useCallback, useMemo } from "react"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
 import { uiToolboxes } from "./config"
-import { TabsProps } from "antd"
+import { Button, TabsProps, Tooltip } from "antd"
 import styled from "styled-components"
 import { FlowDesigner } from "../BottomConsole/FlowDesigner"
 import { ScriptDesigner } from "../BottomConsole/ScriptDesigner"
-import { ModuleContext } from "../contexts"
+import { ModuleContext, useShowFrameState } from "../contexts"
 import { IModule } from "../../interfaces/module"
+import { LayoutOutlined } from "@ant-design/icons"
 
 const Label = styled.div`
   display: flex;
@@ -27,7 +28,11 @@ export const ModuleUiDesignerInner = memo((
   const { module } = props
   const device = useAppFrontend()?.deviceType
   const Toolbox = uiToolboxes[device || ""]
+  const [showFrame, setShowFrame] = useShowFrameState()
 
+  const handleShowFrameClick = useCallback(() => {
+    setShowFrame(show => !show)
+  }, [setShowFrame])
 
   const items: TabsProps['items'] = useMemo(() => {
     return [
@@ -64,7 +69,17 @@ export const ModuleUiDesignerInner = memo((
             }
             schemas={module?.views}
             bottomConsole={{
-              items
+              items,
+              addon: <Tooltip title={"UI框架"} placement="topLeft">
+                <div>
+                  <Button
+                    type={showFrame ? "link" : "text"}
+                    size="small"
+                    icon={<LayoutOutlined />}
+                    onClick={handleShowFrameClick}
+                  />
+                </div>
+              </Tooltip>
             }}
           />
           : <></>

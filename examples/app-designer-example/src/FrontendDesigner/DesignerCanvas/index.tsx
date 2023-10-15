@@ -11,6 +11,7 @@ import { ModuleCanvas } from "./ModuleCanvas"
 
 export const DesignerCanvas = memo(() => {
   const appFront = useAppFrontend()
+
   const { device = "", layoutPart } = useParams()
   const designers = useMemo(() => {
     const materials = layoutPart === LayoutPart.frame ? frameMaterilas[device] : pageMaterials[device]

@@ -7,6 +7,7 @@ import { DeviceType } from "../interfaces";
 
 export const FrontendRoot = memo(() => {
   const { device } = useParams();
+
   const app = useApp()
   const { frontend } = useQueryFrontend(app?.id, device as DeviceType | undefined)
   return (

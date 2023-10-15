@@ -76,6 +76,8 @@ const Toolbar = styled.div`
 
 const BottomActions = styled.div`
   pointer-events: all;
+  display: flex;
+  align-items: center;
 `
 
 const PinButton = styled(Button).attrs({ shape: "circle", size: "small", })`
@@ -100,9 +102,10 @@ export const BottomArea = memo((
   props: {
     items?: TabsProps['items'],
     extra?: React.ReactNode,
+    addon?: React.ReactNode,
   }
 ) => {
-  const { items, extra } = props;
+  const { items, addon, extra } = props;
   const [collapsed, setCollapsed] = useState(false)
   const [rightPinned, setRightPinned] = useState(false)
   const [leftPinned, setLeftPinned] = useState(false)
@@ -155,6 +158,21 @@ export const BottomArea = memo((
   }, [collapsed, leftPinned, toolboxMini, toolboxWidth])
 
 
+  const buttons = useMemo(() => {
+    return (
+      <BottomActions>
+        <ReundoIcons />
+        <Divider type="vertical" />
+        <AuxButtions />
+        <Divider type="vertical" />
+        <ViewButtons />
+        {
+          addon
+        }
+      </BottomActions>
+    )
+  }, [addon])
+
   return (
     items?.length
       ? <BottomShell
@@ -173,13 +191,7 @@ export const BottomArea = memo((
         </NavBar>
         <Toolbar>
           {
-            activedDocument && <BottomActions>
-              <ReundoIcons />
-              <Divider type="vertical" />
-              <AuxButtions />
-              <Divider type="vertical" />
-              <ViewButtons />
-            </BottomActions>
+            activedDocument && buttons
           }
         </Toolbar>
         {
@@ -241,13 +253,7 @@ export const BottomArea = memo((
         </NavBar>
         <Toolbar>
           {
-            activedDocument && <BottomActions>
-              <ReundoIcons />
-              <Divider type="vertical" />
-              <AuxButtions />
-              <Divider type="vertical" />
-              <ViewButtons />
-            </BottomActions>
+            activedDocument && buttons
           }
         </Toolbar>
       </MiniShell>
