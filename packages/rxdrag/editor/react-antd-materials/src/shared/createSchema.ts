@@ -16,6 +16,7 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
       componentName: "TabPanel",
       props: {
         title: "$properties",
+        key: "props",
       },
       children: [...propsSchemaBlock, ...slotSchemaBlock]
     }]
@@ -25,6 +26,7 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
     componentName: "TabPanel",
     props: {
       title: "$reaction",
+      key: "reaction"
     },
     children: [
       {
@@ -42,7 +44,8 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
       componentName: "TabPanel",
       props: {
         title: "$field",
-        id: "data",
+        key: "data",
+        isField: true,
       },
       children: createFieldSchema(field)
     }] : []
@@ -61,7 +64,8 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
 const styleTab = {
   componentName: 'TabPanel',
   props: {
-    title: '$style'
+    title: '$style',
+    key: "style",
   },
   children: [
     {
