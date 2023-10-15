@@ -11,7 +11,7 @@ import { CanvasFloatButton } from "../common"
 import { propertyIcon } from "@rxdrag/react-shared"
 
 const maxWidth = 1000
-const minWidth = 300
+const minWidth = 360
 
 const PanelShell = styled(ResizableColumn)`
   position: absolute;
