@@ -7,29 +7,20 @@ import { transSlotSchemas } from "./transSlotSchemas";
 export function createSchema(options: SchemaOptions = {}): INodeSchema {
   const { propSchemas, slotSchemas, canBindField } = options
 
-  const propsCollapse = propSchemas ? [{
-    componentName: "CollapsePanel",
-    props: {
-      title: "$basic",
-      //defaultExpand: true,
-    },
-    children: [
-      ...transPropSchemas(propSchemas) || []
-    ]
-  }] : []
+  const propsSchemaBlock = propSchemas ? transPropSchemas(propSchemas) : []
 
-  const slotCollapse = slotSchemas ? [{
-    componentName: "CollapsePanel",
-    props: {
-      title: "$slots",
-    },
-    children: [
-      ...transSlotSchemas(slotSchemas) || []
-    ]
-  }] : []
+  const slotSchemaBlock = slotSchemas ? transSlotSchemas(slotSchemas) : []
 
-  const controllerCollapse = {
-    componentName: "CollapsePanel",
+  const propsTab = [{
+    componentName: "TabPanel",
+    props: {
+      title: "$properties",
+    },
+    children: [...propsSchemaBlock, ...slotSchemaBlock]
+  }];
+
+  const reactionTab = [{
+    componentName: "TabPanel",
     props: {
       title: "$reaction",
     },
@@ -41,17 +32,6 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
         },
       }
     ]
-  }
-
-  const propsTab = [{
-    componentName: "TabPanel",
-    props: {
-      title: "$properties",
-      style: {
-        padding: 0,
-      }
-    },
-    children: [...propsCollapse, ...slotCollapse, controllerCollapse]
   }];
 
 
@@ -72,6 +52,7 @@ export function createSchema(options: SchemaOptions = {}): INodeSchema {
       ...propsTab,
       styleTab,
       ...fieldTab,
+      ...reactionTab
     ]
   }
 }
