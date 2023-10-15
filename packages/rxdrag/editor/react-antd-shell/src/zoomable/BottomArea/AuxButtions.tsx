@@ -4,6 +4,7 @@ import { memo, useCallback, useEffect, useState } from "react"
 import { SvgIcon } from "../../common/SvgIcon"
 import { MARGIN_DECORATOR_NAME, LINE_DECORTOR_NAME, LineDecorator, MarginDecorator } from "@rxdrag/core"
 import { lineIcon, marginIcon } from "@rxdrag/react-shared"
+import { LayoutOutlined } from "@ant-design/icons"
 
 export const AuxButtions = memo(() => {
   const [margin, setMarin] = useState(false);
@@ -64,6 +65,17 @@ export const AuxButtions = memo(() => {
               </SvgIcon>
             }
             onClick={handleMarginClick}
+          />
+        </div>
+      </Tooltip>
+
+      <Tooltip title={t("frame")}>
+        <div>
+          <Button
+            type={"default"}
+            size="small"
+            icon={<LayoutOutlined />}
+          //onClick={handleMarginClick}
           />
         </div>
       </Tooltip>

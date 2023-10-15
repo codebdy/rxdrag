@@ -161,33 +161,33 @@ export const ColInput = memo((props: ColInputProps) => {
       <FoldExtra >
         <Row gutter={8}>
           <Col span={12}>
-            <Form.Item label={subTitles?.span} labelAlign="right">
-              <InputNumber value={spanValue} max={24} onChange={handleSpanChange} />
+            <Form.Item label={subTitles?.span} labelAlign="right" labelCol={{ span: 10 }} wrapperCol={{ span: 14 }}>
+              <InputNumber style={{ width: "100%" }} value={spanValue} max={24} onChange={handleSpanChange} />
             </Form.Item>
           </Col>
           <Col span={12}>
-            <Form.Item label={subTitles?.flex} labelAlign="right">
-              <Input value={flexValue} onChange={handleFlexChange} />
+            <Form.Item label={subTitles?.flex} labelAlign="right" labelCol={{ span: 10 }} wrapperCol={{ span: 14 }}>
+              <Input style={{ width: "100%" }}  value={flexValue} onChange={handleFlexChange} />
             </Form.Item>
           </Col>
           <Col span={12}>
-            <Form.Item label={subTitles?.offset} labelAlign="right">
-              <InputNumber value={offsetValue} onChange={handleOffsetChange} />
+            <Form.Item label={subTitles?.offset} labelAlign="right" labelCol={{ span: 10 }} wrapperCol={{ span: 14 }}>
+              <InputNumber style={{ width: "100%" }}  value={offsetValue} onChange={handleOffsetChange} />
             </Form.Item>
           </Col>
           <Col span={12}>
-            <Form.Item label={subTitles?.order} labelAlign="right">
-              <InputNumber value={orderValue} onChange={handleOrderChange} />
+            <Form.Item label={subTitles?.order} labelAlign="right" labelCol={{ span: 10 }} wrapperCol={{ span: 14 }}>
+              <InputNumber style={{ width: "100%" }}  value={orderValue} onChange={handleOrderChange} />
             </Form.Item>
           </Col>
           <Col span={12}>
-            <Form.Item label={subTitles?.pull} labelAlign="right">
-              <InputNumber value={pullValue} onChange={handlePullChange} />
+            <Form.Item label={subTitles?.pull} labelAlign="right" labelCol={{ span: 10 }} wrapperCol={{ span: 14 }}>
+              <InputNumber style={{ width: "100%" }}  value={pullValue} onChange={handlePullChange} />
             </Form.Item>
           </Col>
           <Col span={12}>
-            <Form.Item label={subTitles?.push} labelAlign="right">
-              <InputNumber value={pushValue} onChange={handlePushChange} />
+            <Form.Item label={subTitles?.push} labelAlign="right" labelCol={{ span: 10 }} wrapperCol={{ span: 14 }}>
+              <InputNumber style={{ width: "100%" }}  value={pushValue} onChange={handlePushChange} />
             </Form.Item>
           </Col>
         </Row>
