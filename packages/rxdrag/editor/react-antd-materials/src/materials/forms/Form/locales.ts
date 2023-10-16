@@ -1,3 +1,4 @@
+import { fieldDisplayLocales } from "../../common/Form/locales"
 import { sizeLocales } from "../../locales"
 import { filedyLocales } from "../fieldyLoacles"
 
@@ -21,6 +22,7 @@ export const formLocales = {
       push: "右移",
       ...sizeLocales["zh-CN"],
       ...filedyLocales["zh-CN"],
+      ...fieldDisplayLocales["zh-CN"],
     }
 
   },
@@ -43,6 +45,7 @@ export const formLocales = {
       push: "Push",
       ...sizeLocales["en-US"],
       ...filedyLocales["en-US"],
+      ...fieldDisplayLocales["en-US"],
     }
   }
 }

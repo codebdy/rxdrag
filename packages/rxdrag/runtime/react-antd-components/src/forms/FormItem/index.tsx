@@ -6,6 +6,7 @@ import { isArray } from "lodash";
 import { useField, useFieldErrors } from "@rxdrag/react-fieldy";
 import styled from "styled-components";
 import { useComponentSchema, useController } from "@rxdrag/react-runner";
+import { DisplayProps } from "../types";
 
 const Error = styled.div`
   color: red;
@@ -15,11 +16,21 @@ export type FormItemProps = {
   value?: unknown,
   onChange?: (value?: unknown) => void,
   children?: React.ReactElement
-} & AntdFormItemProps
+} & AntdFormItemProps & DisplayProps
 
 //把输入输出事件，绑定到第一个元素
 export const FormItem: React.FC<FormItemProps> = memo((props) => {
-  const { value, onChange, children, required, extra, ...other } = props
+  const {
+    value,
+    onChange,
+    children,
+    required,
+    extra,
+    display,
+    pattern,
+    prettyComponent,
+    ...other
+  } = props
   const field = useField();
   const schema = useComponentSchema()
   const errors = useFieldErrors();

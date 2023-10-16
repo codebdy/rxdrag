@@ -1,5 +1,6 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
+import { fieldDisplaySchema } from "../../common";
 
 const options: SchemaOptions = {
   propSchemas: [
@@ -82,6 +83,7 @@ const options: SchemaOptions = {
         }
       }
     },
+    ...fieldDisplaySchema,
   ],
   field: {
     hasField: true,

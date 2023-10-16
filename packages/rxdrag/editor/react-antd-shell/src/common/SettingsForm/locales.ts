@@ -86,7 +86,7 @@ export const settingLocales = {
       visible: "可见",
       hidden: "隐藏",
       disabled: "禁用",
-      readonly: "只读",
+      readOnly: "只读",
       readPretty: "阅读",
 
       IconInput: {
@@ -192,7 +192,7 @@ export const settingLocales = {
       visible: "Visible",
       hidden: "Hidden",
       disabled: "Disabled",
-      readonly: "Readonly",
+      readOnly: "Read Only",
       readPretty: "readPretty",
 
       IconInput: {

@@ -1,3 +1,5 @@
+import { fieldDisplayLocales } from "../../common/Form/locales"
+
 export const formItemLocales = {
   "zh-CN": {
     title: "表单条目",
@@ -15,6 +17,7 @@ export const formItemLocales = {
       push: "右移",
       left: "左",
       right: "右",
+      ...fieldDisplayLocales["zh-CN"],
     }
 
   },
@@ -34,6 +37,7 @@ export const formItemLocales = {
       push: "Push",
       left: "Left",
       right: "Right",
+      ...fieldDisplayLocales["en-US"],
     }
   }
 }

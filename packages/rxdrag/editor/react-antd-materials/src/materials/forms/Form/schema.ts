@@ -1,6 +1,6 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
-import { containerSchema } from "../../common";
+import { containerSchema, fieldDisplaySchema } from "../../common";
 
 export const formOptions: SchemaOptions = {
   propSchemas: [
@@ -38,13 +38,13 @@ export const formOptions: SchemaOptions = {
         defaultValue: "horizontal",
       }
     },
-    {
-      "x-field": {
-        name: "disabled",
-        label: "$disabled",
-      },
-      componentName: "Switch"
-    },
+    // {
+    //   "x-field": {
+    //     name: "disabled",
+    //     label: "$disabled",
+    //   },
+    //   componentName: "Switch"
+    // },
     {
       componentName: "Radio.Group",
       "x-field": {
@@ -132,7 +132,8 @@ export const formOptions: SchemaOptions = {
         defaultValue: "middle",
       }
     },
-    ...containerSchema
+    ...containerSchema,
+    ...fieldDisplaySchema,
   ]
 }
 
