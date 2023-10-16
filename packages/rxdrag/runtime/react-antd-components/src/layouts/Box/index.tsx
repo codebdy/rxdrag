@@ -3,7 +3,7 @@ import React, { CSSProperties, ForwardedRef, forwardRef } from "react"
 export type BoxProps = {
   style?: CSSProperties,
   className?: string,
-  children?: React.ReactNode
+  children?: React.ReactNode,
 }
 
 export const Box = forwardRef((
