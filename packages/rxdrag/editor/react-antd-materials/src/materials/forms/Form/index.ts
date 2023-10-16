@@ -3,13 +3,13 @@ import { formLocales, formResourceLocales } from "./locales";
 import { formSchema } from "./schema";
 import { Form as AntdForm } from "antd";
 import { IMaterial } from "@rxdrag/react-core";
-import { Form } from "@rxdrag/react-antd-components";
+import { Form, withContainerLayout } from "@rxdrag/react-antd-components";
 
 const name = "Form"
 export const FormMaterial: IMaterial = {
   componentName: name,
   component: Form,
-  designer: AntdForm,
+  designer: withContainerLayout(AntdForm) ,
   designerLocales: formLocales,
   propsSchema: formSchema,
   resource: {

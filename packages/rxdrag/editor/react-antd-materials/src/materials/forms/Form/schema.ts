@@ -1,5 +1,6 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { SchemaOptions, createSchema } from "../../../shared";
+import { containerSchema } from "../../common";
 
 export const formOptions: SchemaOptions = {
   propSchemas: [
@@ -130,7 +131,8 @@ export const formOptions: SchemaOptions = {
         ],
         defaultValue: "middle",
       }
-    }
+    },
+    ...containerSchema
   ]
 }
 

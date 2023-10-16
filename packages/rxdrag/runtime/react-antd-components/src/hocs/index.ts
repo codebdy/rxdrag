@@ -1,2 +1,2 @@
 export * from "./mapComponent"
-export * from "./withBoxLayout"
+export * from "./withContainerLayout"

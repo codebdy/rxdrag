@@ -1,7 +1,7 @@
 import { ReactComponent } from "@rxdrag/react-shared";
 import { memo, forwardRef, CSSProperties, useMemo } from "react";
 
-export interface IBoxLayoutProps {
+export interface IContainerLayoutProps {
   p?: {
     pl?: number,
     pt?: number,
@@ -18,9 +18,9 @@ export interface IBoxLayoutProps {
 
 const step = 8
 
-export function withBoxLayout(WrappedComponent: ReactComponent) {
+export function withContainerLayout(WrappedComponent: ReactComponent) {
 
-  return memo(forwardRef<HTMLElement, IBoxLayoutProps & { style?: CSSProperties, children?: React.ReactNode }>((props, ref) => {
+  return memo(forwardRef<HTMLElement, IContainerLayoutProps & { style?: CSSProperties, children?: React.ReactNode }>((props, ref) => {
     const { p, m, style, ...rest } = props
     const { pl, pt, pr, pb, } = p || {}
     const { ml, mt, mr, mb, } = m || {}

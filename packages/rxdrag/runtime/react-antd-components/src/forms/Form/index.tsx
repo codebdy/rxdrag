@@ -4,9 +4,10 @@ import { Form as AntdForm, FormProps } from "antd"
 import _ from "lodash"
 import { FormValue } from "@rxdrag/fieldy"
 import { PassFormToController } from "./PassFormToController"
+import { withContainerLayout } from "../../hocs"
 
 // 内部加入一个组件，用于把Ifrom对象传递给外面的控制器
-export const Form = memo((
+export const FormImpl = memo((
   props: {
     initialValue?: FormValue,
     defaultValue?: FormValue,
@@ -35,3 +36,5 @@ export const Form = memo((
     </VirtualForm>
   )
 })
+
+export const Form = withContainerLayout(FormImpl)

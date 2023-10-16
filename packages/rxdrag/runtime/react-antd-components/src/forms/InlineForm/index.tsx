@@ -3,8 +3,9 @@ import { memo } from "react"
 import { Form } from "../Form";
 import { useFieldValue } from "@rxdrag/react-fieldy";
 import { FormValue } from "@rxdrag/fieldy";
+import { withContainerLayout } from "../../hocs";
 
-export const InlineForm = memo((
+const InlineFormImpl = memo((
   props: {
     initialValue?: FormValue,
     defaultValue?: FormValue,
@@ -21,3 +22,5 @@ export const InlineForm = memo((
     </Form>
   )
 })
+
+export const InlineForm = withContainerLayout(InlineFormImpl)

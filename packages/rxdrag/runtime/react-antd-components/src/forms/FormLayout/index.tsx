@@ -1,8 +1,9 @@
 import { forwardRef, memo, useMemo } from "react";
 import { FormLayoutContext, FormLayoutParams } from "../contexts";
 import classNames from "classnames"
+import { withContainerLayout } from "../../hocs";
 
-export const FormLayout = memo(forwardRef<HTMLDivElement, FormLayoutParams & {
+const FormLayoutImpl = memo(forwardRef<HTMLDivElement, FormLayoutParams & {
   className?: string,
   children?: React.ReactNode,
 }>((props, ref) => {
@@ -38,3 +39,5 @@ export const FormLayout = memo(forwardRef<HTMLDivElement, FormLayoutParams & {
   </div>
   )
 }))
+
+export const FormLayout = withContainerLayout(FormLayoutImpl)
