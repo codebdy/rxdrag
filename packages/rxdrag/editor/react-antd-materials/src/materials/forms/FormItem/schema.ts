@@ -11,7 +11,7 @@ const options: SchemaOptions = {
         label: "$colon",
       },
       props: {
-        defaultChecked: true
+        defaultChecked: false
       }
     },
     {

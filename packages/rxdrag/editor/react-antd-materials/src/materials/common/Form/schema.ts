@@ -15,7 +15,8 @@ export const fieldDisplaySchema = [
           value: "visible",
           label: "$visible"
         },
-      ]
+      ],
+      allowClear: true,
     },
     "x-field": {
       name: "display",
@@ -42,7 +43,8 @@ export const fieldDisplaySchema = [
           value: "readPretty",
           label: "$readPretty"
         },
-      ]
+      ],
+      allowClear: true,
     },
     "x-field": {
       name: "pattern",

@@ -12,6 +12,9 @@ export const FormItemMaterial: IMaterial = {
   designer: FormItemDesigner,
   designerLocales: formItemLocales,
   propsSchema: formItemSchema,
+  designerProps: {
+    display: "visible"
+  },
   resource: {
     name: name,
     icon: formItemIcon,
