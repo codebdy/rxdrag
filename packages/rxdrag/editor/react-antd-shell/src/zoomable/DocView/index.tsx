@@ -6,13 +6,14 @@ import { DocumentRoot } from "@rxdrag/react-core"
 
 export const DocView = memo((
   props: {
-    doc: IDocument
+    doc: IDocument,
+    params?: unknown,
   }
 ) => {
-  const { doc } = props
+  const { doc, params } = props
   return (
     <DocumentRoot doc={doc}>
-      <DocViewInner/>
+      <DocViewInner params={params} />
     </DocumentRoot>
   )
 })

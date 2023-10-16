@@ -8,6 +8,7 @@ import { ICanvasConfig } from "./interfaces";
 export const DesignerEngineContext = createContext<IDesignerEngine | undefined>(undefined)
 export const CanvasConfigContext = createContext<ICanvasConfig | undefined>(undefined)
 export const InIframeContext = createContext<boolean | undefined>(undefined)
+export const ParamsContext = createContext<unknown | undefined>(undefined)
 //IFrame中的Component不能跟engine中一套，所以必须要单独处理
 export const ComponentDesignersContext = createContext<IReactComponents>({})
 export const DocumentContext = createContext<IDocument | undefined>(undefined)

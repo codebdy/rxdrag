@@ -1,16 +1,17 @@
 import { IframeHTMLAttributes, useCallback, useEffect, useRef, useState } from "react"
 import { memo } from "react"
 import { useDesignerEngine } from "../../hooks";
-import { EVENT_DOC_CHANGE, EVENT_IFRAME_READY } from "./constants";
+import { EVENT_DOC_CHANGE, EVENT_IFRAME_READY, EVENT_PARAMS_CHANGE } from "./constants";
 import { IDocument } from "@rxdrag/core";
 
 //对iframe的封装，附加engine
 export const IFrame = memo((
   props: IframeHTMLAttributes<HTMLIFrameElement> & {
     doc: IDocument,
+    params?: unknown,
   }
 ) => {
-  const { doc, src, style, ...rest } = props;
+  const { doc, params, src, style, ...rest } = props;
   const ref = useRef<HTMLIFrameElement>(null)
   const engine = useDesignerEngine()
   const [ready, setReady] = useState<boolean>()
@@ -32,6 +33,14 @@ export const IFrame = memo((
       ref.current?.contentWindow?.postMessage({ name: EVENT_DOC_CHANGE });
     }
   }, [doc, ready])
+
+  useEffect(() => {
+    if (ref.current && ready) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (ref.current.contentWindow as any)["params"] = params
+      ref.current.contentWindow?.postMessage({ name: EVENT_PARAMS_CHANGE });
+    }
+  }, [engine, params, ready])
 
   return (
     <iframe

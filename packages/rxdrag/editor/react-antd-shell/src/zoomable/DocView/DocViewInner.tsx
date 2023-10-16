@@ -51,7 +51,12 @@ const CanvasTitle = styled.span`
   font-size: 13px;
 `
 
-export const DocViewInner = memo(() => {
+export const DocViewInner = memo((
+  props: {
+    params?: unknown,
+  }
+) => {
+  const { params } = props;
   const doc = useDocument()
   const canvasUrl = useCanvasUrl()
   const activedDoc = useActivedDocument()
@@ -86,6 +91,7 @@ export const DocViewInner = memo(() => {
           <IFrame
             doc={doc}
             src={canvasUrl}
+            params = {params}
           />
         }
       </CanvasContent>

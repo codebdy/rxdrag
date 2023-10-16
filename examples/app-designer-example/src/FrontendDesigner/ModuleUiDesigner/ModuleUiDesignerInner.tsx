@@ -1,12 +1,12 @@
 import { ZoomableEditor } from "@rxdrag/react-antd-shell"
-import { memo, useCallback, useMemo } from "react"
+import { memo, useCallback, useMemo, useState } from "react"
 import { useAppFrontend } from "../../hooks/useAppFrontend"
 import { uiToolboxes } from "./config"
 import { Button, TabsProps, Tooltip } from "antd"
 import styled from "styled-components"
 import { FlowDesigner } from "../BottomConsole/FlowDesigner"
 import { ScriptDesigner } from "../BottomConsole/ScriptDesigner"
-import { ModuleContext, useShowFrameState } from "../contexts"
+import { ModuleContext } from "../contexts"
 import { IModule } from "../../interfaces/module"
 import { LayoutOutlined } from "@ant-design/icons"
 
@@ -28,7 +28,7 @@ export const ModuleUiDesignerInner = memo((
   const { module } = props
   const device = useAppFrontend()?.deviceType
   const Toolbox = uiToolboxes[device || ""]
-  const [showFrame, setShowFrame] = useShowFrameState()
+  const [showFrame, setShowFrame] = useState<boolean>(true)
 
   const handleShowFrameClick = useCallback(() => {
     setShowFrame(show => !show)
@@ -59,6 +59,8 @@ export const ModuleUiDesignerInner = memo((
     ]
   }, [])
 
+  const params = useMemo(()=>({showFrame}),[showFrame])
+
   return (
     <ModuleContext.Provider value={module}>
       {
@@ -68,6 +70,7 @@ export const ModuleUiDesignerInner = memo((
               Toolbox && <Toolbox />
             }
             schemas={module?.views}
+            iFrameParams={params}
             bottomConsole={{
               items,
               addon: <Tooltip title={"UI框架"} placement="topLeft">
