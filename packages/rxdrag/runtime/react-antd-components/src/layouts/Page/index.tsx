@@ -1,5 +1,6 @@
 import React, { CSSProperties, forwardRef, memo } from "react"
 import styled from "styled-components"
+import { withBoxLayout } from "../../hocs"
 
 const PageContainer = styled.div`
   width: 100%;
@@ -14,7 +15,7 @@ export type PageProps = {
   className?: string
 }
 
-export const PagePreview = memo(forwardRef<HTMLDivElement, PageProps>((props, ref) => {
+export const PageImp = memo(forwardRef<HTMLDivElement, PageProps>((props, ref) => {
   const { children, ...rest } = props;
   return (<PageContainer ref={ref} {...rest}>
     {
@@ -22,3 +23,5 @@ export const PagePreview = memo(forwardRef<HTMLDivElement, PageProps>((props, re
     }
   </PageContainer>)
 }))
+
+export const Page = withBoxLayout(PageImp)

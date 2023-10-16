@@ -15,9 +15,10 @@ import { useQueryModuleScripts } from "../../../hooks/useQueryModuleScripts"
 import { useQueryScripts } from "../../../hooks/useQueryScripts"
 import { useQueryModule } from "../../../hooks/useQueryModule"
 import { DeviceType } from "../../../interfaces"
+import { Page, PageProps } from "@rxdrag/react-antd-components"
 
 //每次设计器画布修改，本预览组件都会刷新，后面要优化
-export const PagePreview = memo(() => {
+export const PagePreview = memo((props: PageProps) => {
   const [tree, setTree] = useState<INodeSchema>()
   const engine = useDesignerEngine()
   const { device = "" } = useParams()
@@ -97,18 +98,22 @@ export const PagePreview = memo(() => {
   }, [engine, handleChange])
 
   return (
-    tree
-      ? <ComponentRender
-        components={components}
-        schema={tree}
-        logicflowOptions={
-          {
-            variables: module?.variables,
-            ownerId: module?.id,
-            logicDefines: defines,
-          }
-        }
-      />
-      : <></>
+    <Page {...props}>
+      {
+        tree
+          ? <ComponentRender
+            components={components}
+            schema={tree}
+            logicflowOptions={
+              {
+                variables: module?.variables,
+                ownerId: module?.id,
+                logicDefines: defines,
+              }
+            }
+          />
+          : <></>
+      }
+    </Page>
   )
 })

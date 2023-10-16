@@ -1,10 +1,9 @@
+import { Page, PageProps } from "@rxdrag/react-antd-components";
 import { forwardRef, memo } from "react"
-import { PageProps, PagePreview } from "./Preview"
-
 
 export const PageDesigner = memo(forwardRef<HTMLDivElement, PageProps>((props, ref) => {
   const { children, ...rest } = props;
-  return (<PagePreview ref={ref} {...rest}>
+  return (<Page ref={ref} {...rest}>
     {children}
-  </PagePreview>)
+  </Page>)
 }))
