@@ -1,7 +1,8 @@
-import React from "react"
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { memo, useCallback, useMemo } from "react"
-import { Fold, FoldBase, FoldExtra } from "../Fold"
-import { SizeInput, SizeInputItem } from "../SizeInput"
+import { Fold, FoldBase, FoldExtra, FoldExtraItem } from "../Fold"
+import { marginTopIcon, marginRightIcon, marginLeftIcon, marginBottomIcon } from "./icons"
+import { InputNumber } from "antd"
 
 export const TetradInput = memo((props: {
   title?: string,
@@ -22,30 +23,30 @@ export const TetradInput = memo((props: {
     title2,
     title3,
     title4,
-    icon1,
-    icon2,
-    icon3,
-    icon4,
+    icon1 = marginTopIcon,
+    icon2 = marginRightIcon,
+    icon3 = marginLeftIcon,
+    icon4 = marginBottomIcon,
     value,
     onChange,
     keys
   } = props;
 
-  const handleChange1 = useCallback((value?: string | null) => {
-    onChange?.({ [keys[0]]: value || undefined })
-  }, [keys, onChange])
+  const handleChange1 = useCallback((val?: string | null) => {
+    onChange?.({ ...value, [keys[0]]: val || undefined })
+  }, [keys, onChange, value])
 
-  const handleChange2 = useCallback((value?: string | null) => {
-    onChange?.({ [keys[1]]: value || undefined })
-  }, [keys, onChange])
+  const handleChange2 = useCallback((val?: string | null) => {
+    onChange?.({ ...value, [keys[1]]: val || undefined })
+  }, [keys, onChange, value])
 
-  const handleChange4 = useCallback((value?: string | null) => {
-    onChange?.({ [keys[3]]: value || undefined })
-  }, [keys, onChange])
+  const handleChange3 = useCallback((val?: string | null) => {
+    onChange?.({ ...value, [keys[2]]: val || undefined })
+  }, [keys, onChange, value])
 
-  const handleChange3 = useCallback((value?: string | null) => {
-    onChange?.({ [keys[2]]: value || undefined })
-  }, [keys, onChange])
+  const handleChange4 = useCallback((val?: string | null) => {
+    onChange?.({ ...value, [keys[3]]: val || undefined })
+  }, [keys, onChange, value])
 
   const baseValue = useMemo(() => {
     if (value?.[keys[0]] === value?.[keys[1]]
@@ -72,32 +73,44 @@ export const TetradInput = memo((props: {
         <BaseInput value={baseValue} onChange={handleBaseChange} />
       </FoldBase>
       <FoldExtra>
-        <SizeInputItem
+        <FoldExtraItem span={12}
           title={title1}
           icon={icon1}
-          value={value?.[keys[0]]}
-          onChange={handleChange1}
-        />
-        <SizeInputItem
+        >
+          <InputNumber
+            value={value?.[keys[0]]}
+            onChange={handleChange1}
+          />
+        </FoldExtraItem>
+        <FoldExtraItem span={12}
           title={title2}
           icon={icon2}
-          value={value?.[keys[1]]}
-          onChange={handleChange2}
-        />
-        <SizeInputItem
+        >
+          <InputNumber
+            value={value?.[keys[1]]}
+            onChange={handleChange2}
+          />
+        </FoldExtraItem>
+        <FoldExtraItem span={12}
           marginTop={8}
           title={title3}
           icon={icon3}
-          value={value?.[keys[2]]}
-          onChange={handleChange3}
-        />
-        <SizeInputItem
+        >
+          <InputNumber
+            value={value?.[keys[2]]}
+            onChange={handleChange3}
+          />
+        </FoldExtraItem>
+        <FoldExtraItem span={12}
           marginTop={8}
           title={title4}
           icon={icon4}
-          value={value?.[keys[3]]}
-          onChange={handleChange4}
-        />
+        >
+          <InputNumber
+            value={value?.[keys[3]]}
+            onChange={handleChange4}
+          />
+        </FoldExtraItem>
       </FoldExtra>
     </Fold>
   )
@@ -107,8 +120,12 @@ export const BaseInput = memo((props: {
   value?: string,
   onChange?: (value?: string | null) => void
 }) => {
+  const { value, onChange } = props;
   return (
-    <SizeInput exclude={["inherit", "auto"]} {...props} />
+    <InputNumber
+      value={value}
+      onChange={onChange}
+    />
   )
 })
 

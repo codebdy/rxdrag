@@ -7,6 +7,7 @@ const PageContainer = styled.div`
   height: 100%;
   min-height: 100%;
   min-width: 100%;
+  box-sizing: border-box;
 `
 
 export type PageProps = {

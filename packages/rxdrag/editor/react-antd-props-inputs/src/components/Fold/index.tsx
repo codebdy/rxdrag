@@ -14,6 +14,7 @@ export type FoldProps = {
 }
 
 export * from "./FoldExtraItem"
+export * from "./TetradInput"
 
 export const Fold = memo((props: FoldProps) => {
   const [expand, setExpand] = useState<boolean>()
