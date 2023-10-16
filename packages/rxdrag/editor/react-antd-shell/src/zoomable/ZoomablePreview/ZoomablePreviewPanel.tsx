@@ -15,9 +15,10 @@ const ViewContainer = styled.div`
 export const ZoomablePreviewPanel = memo((
   props: {
     display?: boolean,
+    params?: unknown,
   }
 ) => {
-  const { display } = props;
+  const { display, params } = props;
   const canvasConfig = useCanvasConfig()
   const previewUrl = usePreviewUrl()
 
@@ -29,7 +30,7 @@ export const ZoomablePreviewPanel = memo((
         height: (canvasConfig?.canvasHeight || 800),
       }}
     >
-      <PreviewIFrame src={previewUrl} />
+      <PreviewIFrame src={previewUrl} params={params} />
     </ViewContainer>
   )
 })

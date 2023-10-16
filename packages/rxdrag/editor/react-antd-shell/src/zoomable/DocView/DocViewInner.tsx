@@ -1,10 +1,8 @@
 import { memo } from "react"
 import styled from "styled-components"
-import { Button, Space } from "antd"
 import { Spring, useCanvasUrl } from "../../common"
 import { IFrame, useActivedDocument, useCanvasConfig, useDocument } from "@rxdrag/react-core"
 import classNames from "classnames"
-import { DeleteOutlined } from "@ant-design/icons"
 
 const DocViewContainer = styled.div`
   position: relative;
@@ -53,7 +51,12 @@ const CanvasTitle = styled.span`
   font-size: 13px;
 `
 
-export const DocViewInner = memo(() => {
+export const DocViewInner = memo((
+  props: {
+    params?: unknown,
+  }
+) => {
+  const { params } = props;
   const doc = useDocument()
   const canvasUrl = useCanvasUrl()
   const activedDoc = useActivedDocument()
@@ -88,6 +91,7 @@ export const DocViewInner = memo(() => {
           <IFrame
             doc={doc}
             src={canvasUrl}
+            params = {params}
           />
         }
       </CanvasContent>

@@ -1,5 +1,5 @@
 import { memo, useState } from "react"
-import { PreviewContext, PropertyWidthContext, ToolboxWidthContext, defaultPreviewState, defaultPropertyWidthState, defaultToolboxState } from "../contexts"
+import { PreviewContext, PropertyWidthContext, ToolboxWidthContext, defaultPreviewState, defaultPropertyWidthState,  defaultToolboxState } from "../contexts"
 
 export const ZoomableRoot = memo((props: {
   children?: React.ReactNode

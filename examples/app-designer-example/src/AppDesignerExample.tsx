@@ -17,6 +17,7 @@ import { FrontendRoot } from "./FrontendRoot"
 
 export const AppDesignerExample = memo(() => {
   const { app } = useQueryApp("app1")
+
   return (
     <AppContext.Provider value={app}>
       {app &&
@@ -31,9 +32,13 @@ export const AppDesignerExample = memo(() => {
                 <Route path={NavType.menu + "/:menuId?"} element={<NavigationDesigner />}></Route>
               </Route>
             </Route>
-            <Route path={CANVAS_URL_PREFIX + '/:device/:layoutPart'} element={<DesignerCanvas />}>
+            <Route path={CANVAS_URL_PREFIX + '/:device/:layoutPart'}
+              element={<DesignerCanvas />}
+            >
             </Route>
-            <Route path={PREVIEW_URL_PREFIX + '/:device/:layoutPart/:moduleId'} element={<DesignerPreview />}>
+            <Route path={PREVIEW_URL_PREFIX + '/:device/:layoutPart/:moduleId'}
+              element={<DesignerPreview />}
+            >
             </Route>
           </Route>
         </Routes>

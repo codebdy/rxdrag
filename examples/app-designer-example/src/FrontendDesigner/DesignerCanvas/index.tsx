@@ -5,12 +5,11 @@ import { frameMaterilas } from "../UiFrameDesigner/materials"
 import { pageMaterials } from "../ModuleUiDesigner/materials"
 import { IReactComponents, ReactComponent } from "@rxdrag/react-shared"
 import { isStr } from "@rxdrag/shared"
-import { useAppFrontend } from "../../hooks/useAppFrontend"
-import { Canvas, CanvasProxy } from "@rxdrag/react-core"
-import { ModuleCanvas } from "./ModuleCanvas"
+import { CanvasProxy } from "@rxdrag/react-core"
+import { DesignerCanvasInner } from "./DesignerCanvasInner"
 
 export const DesignerCanvas = memo(() => {
-  const appFront = useAppFrontend()
+
   const { device = "", layoutPart } = useParams()
   const designers = useMemo(() => {
     const materials = layoutPart === LayoutPart.frame ? frameMaterilas[device] : pageMaterials[device]
@@ -31,11 +30,7 @@ export const DesignerCanvas = memo(() => {
 
   return (
     <CanvasProxy components={designers}>
-      {
-        appFront?.frameSchema && layoutPart === LayoutPart.module
-          ? <ModuleCanvas frameSchema={appFront?.frameSchema} />
-          : <Canvas />
-      }
+      <DesignerCanvasInner />
     </CanvasProxy>
   )
 })

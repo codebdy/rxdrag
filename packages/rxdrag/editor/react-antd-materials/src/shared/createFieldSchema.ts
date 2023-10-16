@@ -4,7 +4,7 @@ import { attachFormItem } from "./attachFormItem"
 export function createFieldSchema(field: FieldOptions) {
   const fieldDefineFields = [
     {
-      componentName: "Input",
+      componentName: "NameInput",
       "x-field": {
         name: "x-field.name",
         label: "$fieldName",

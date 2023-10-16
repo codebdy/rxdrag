@@ -30,14 +30,16 @@ export type ZoomableEditorInnerProps = {
   locales?: ILocales,
   schemas?: IViewSchema[],
   toolbox?: React.ReactNode,
+  iFrameParams?: unknown,
   bottomConsole?: {
     items?: TabsProps['items'],
     extra?: React.ReactNode,
+    addon?: React.ReactNode,
   },
 }
 
 export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
-  const { schemas, locales, toolbox, bottomConsole } = props
+  const { schemas, locales, toolbox, iFrameParams, bottomConsole } = props
   const [docs, setDocs] = useState<IDocument[]>([])
   const engine = useDesignerEngine()
   const [preview] = usePreviewState()
@@ -88,7 +90,7 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
             {
               docs.map(doc => {
                 return (
-                  <DocView key={doc.id} doc={doc} />
+                  <DocView key={doc.id} doc={doc} params={iFrameParams} />
                 )
               })
             }
@@ -96,6 +98,7 @@ export const ZoomableEditorInner = memo((props: ZoomableEditorInnerProps) => {
         }
         {
           preview && <ZoomablePreviewPanel
+            params={iFrameParams}
             display={preview}
           />
         }

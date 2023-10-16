@@ -2,9 +2,9 @@ import { IDesignerEngine, MouseClickDriver, MouseMoveDriver, ShellPart } from "@
 import { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
 import { Fieldy, VirtualForm } from "@rxdrag/react-fieldy";
-import { IFrameCanvasEvent, EVENT_IFRAME_READY, InIframeContext, DesignerEngineContext, Scroller } from "@rxdrag/react-core";
+import { IFrameCanvasEvent, EVENT_IFRAME_READY, InIframeContext, DesignerEngineContext, Scroller, EVENT_PARAMS_CHANGE, ParamsContext } from "@rxdrag/react-core";
 
-declare const window: Window & { engine?: IDesignerEngine };
+declare const window: Window & { engine?: IDesignerEngine, params?: unknown };
 
 //尽量放在Ifame的顶层
 export const PreviewIFrameProxy = memo((
@@ -13,12 +13,15 @@ export const PreviewIFrameProxy = memo((
   }
 ) => {
   const { children } = props;
+  const [params, setParams] = useState<unknown>()
   const [engine, setEngine] = useState<IDesignerEngine>()
   const receiveMessageFromParent = useCallback((event: MessageEvent<IFrameCanvasEvent>) => {
     // 监听父窗口 ready 事件
     if (event.data?.name === EVENT_IFRAME_READY) {
       console.log('RXDrag: preview iframeReady');
       setEngine(window.engine);
+    } else if (event.data?.name === EVENT_PARAMS_CHANGE) {
+      setParams(window.params)
     }
   }, [])
 
@@ -30,6 +33,7 @@ export const PreviewIFrameProxy = memo((
   }, [receiveMessageFromParent])
 
   useEffect(() => {
+    setParams(window.params)
     setEngine(window.engine)
   }, [])
 
@@ -52,12 +56,14 @@ export const PreviewIFrameProxy = memo((
   return (
     <Fieldy>
       <VirtualForm name="root">
-        <InIframeContext.Provider value={true}>
-          <DesignerEngineContext.Provider value={engine}>
-            {engine ? children : <></>}
-            <Scroller />
-          </DesignerEngineContext.Provider>
-        </InIframeContext.Provider>
+        <ParamsContext.Provider value={params}>
+          <InIframeContext.Provider value={true}>
+            <DesignerEngineContext.Provider value={engine}>
+              {engine ? children : <></>}
+              <Scroller />
+            </DesignerEngineContext.Provider>
+          </InIframeContext.Provider>
+        </ParamsContext.Provider>
       </VirtualForm>
     </Fieldy>
   )

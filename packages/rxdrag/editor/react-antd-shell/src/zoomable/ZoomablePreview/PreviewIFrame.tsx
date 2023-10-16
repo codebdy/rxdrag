@@ -1,13 +1,14 @@
-import { useDesignerEngine, EVENT_IFRAME_READY } from "@rxdrag/react-core";
-import { IframeHTMLAttributes, useCallback, useRef } from "react"
+import { useDesignerEngine, EVENT_IFRAME_READY, EVENT_PARAMS_CHANGE } from "@rxdrag/react-core";
+import { IframeHTMLAttributes, useCallback, useEffect, useRef } from "react"
 import { memo } from "react"
-
 
 //对iframe的封装，附加engine
 export const PreviewIFrame = memo((
-  props: IframeHTMLAttributes<HTMLIFrameElement> 
+  props: IframeHTMLAttributes<HTMLIFrameElement> & {
+    params?: unknown
+  }
 ) => {
-  const { src, style, ...rest } = props;
+  const { src, params, style, ...rest } = props;
   const ref = useRef<HTMLIFrameElement>(null)
   const engine = useDesignerEngine()
 
@@ -20,6 +21,13 @@ export const PreviewIFrame = memo((
     }
   }, [engine])
 
+  useEffect(() => {
+    if (ref.current && engine && ref.current.contentWindow) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (ref.current.contentWindow as any)["params"] = params
+      ref.current.contentWindow.postMessage({ name: EVENT_PARAMS_CHANGE });
+    }
+  }, [engine, params])
 
   return (
     <iframe
