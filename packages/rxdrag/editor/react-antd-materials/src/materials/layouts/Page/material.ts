@@ -1,12 +1,12 @@
 import { IMaterial } from "@rxdrag/react-core";
 import { PageDesigner } from "./Designer";
-import { PagePreview } from "./Preview";
 import { pageLocales } from "./locales";
 import { schema } from "./schema";
+import { Page } from "@rxdrag/react-antd-components";
 
 export const PageMaterial: IMaterial = {
   componentName: "Page",
-  component: PagePreview,
+  component: Page,
   designer: PageDesigner,
   propsSchema: schema,
   designerLocales: pageLocales,

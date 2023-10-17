@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useMemo } from "react"
 import { Form, FormItemProps as AntdFormItemProps } from "antd";
 import { memo } from "react";
-import { FormLayoutContext } from "../contexts";
+import { DisplayContext, FormLayoutContext } from "../contexts";
 import { isArray } from "lodash";
 import { useField, useFieldErrors } from "@rxdrag/react-fieldy";
 import styled from "styled-components";
-import { useComponentSchema, useController } from "@rxdrag/react-runner";
+import { useComponentSchema, useController, usePreviewComponent } from "@rxdrag/react-runner";
+import { DisplayProps, DisplayType, PatternType } from "../types";
+import { DefaultPretty } from "../DefaultPretty";
 
 const Error = styled.div`
   color: red;
@@ -15,15 +17,32 @@ export type FormItemProps = {
   value?: unknown,
   onChange?: (value?: unknown) => void,
   children?: React.ReactElement
-} & AntdFormItemProps
+} & AntdFormItemProps & DisplayProps
 
 //把输入输出事件，绑定到第一个元素
 export const FormItem: React.FC<FormItemProps> = memo((props) => {
-  const { value, onChange, children, required, extra, ...other } = props
+  const {
+    value,
+    onChange,
+    children,
+    required,
+    extra,
+    display,
+    pattern,
+    prettyComponent,
+    style,
+    ...other
+  } = props
   const field = useField();
   const schema = useComponentSchema()
   const errors = useFieldErrors();
   const formParams = useContext(FormLayoutContext);
+  const dispalyValue = useContext(DisplayContext);
+  const displayType = display || dispalyValue?.display;
+  const patternType = pattern || dispalyValue?.pattern;
+  const prettyComponentName = dispalyValue?.prettyComponent || prettyComponent;
+  const PrettyCom = usePreviewComponent(prettyComponentName) || DefaultPretty
+
   const { child, rest } = useMemo(() => {
     if (isArray(children)) {
       const [child, ...rest] = children
@@ -40,20 +59,35 @@ export const FormItem: React.FC<FormItemProps> = memo((props) => {
     }
   }, [controller, field, schema])
 
+  const readOnly = patternType === PatternType.readOnly;
+  const disabled = patternType === PatternType.disabled;
+
   return (
-    <Form.Item
-      {...formParams}
-      {...other}
-      validateStatus={errors?.length ? "error" : "success"}
-      extra={
-        errors?.length
-          ? <Error>{errors.join(",")}</Error >
-          : extra
-      }
-      required={required || field?.meta?.validateRules?.required}
-    >
-      {child && React.cloneElement(child, { value, onChange })}
-      {rest}
-    </Form.Item>
+    displayType !== DisplayType.none
+      ? <Form.Item
+        {...formParams}
+        {...other}
+        validateStatus={errors?.length ? "error" : "success"}
+        extra={
+          errors?.length
+            ? <Error>{errors.join(",")}</Error >
+            : extra
+        }
+        required={required || field?.meta?.validateRules?.required}
+        style={{
+          ...style,
+          display: displayType === DisplayType.hidden ? "none" : undefined
+        }}
+      >
+        {
+          patternType === PatternType.readPretty
+            ? <PrettyCom value={value} />
+            : <>
+              {child && React.cloneElement(child, { readOnly, disabled, value, onChange, })}
+              {rest}
+            </>
+        }
+      </Form.Item>
+      : <></>
   )
 })

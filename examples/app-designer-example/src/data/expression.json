@@ -1,58 +1,75 @@
 {
   "componentName": "Page",
+  "props": {
+    "p": {
+      "pt": 4,
+      "pr": 4,
+      "pl": 4,
+      "pb": 4
+    }
+  },
   "slots": {},
   "children": [
     {
-      "componentName": "FormItem",
+      "componentName": "Form",
       "props": {
-        "label": "FormItem"
-      },
-      "locked": false,
-      "x-field": {
-        "name": "name1"
+        "colon": false
       },
       "slots": {},
       "children": [
         {
-          "componentName": "Input",
-          "slots": {},
-          "children": []
-        }
-      ]
-    },
-    {
-      "componentName": "FormItem",
-      "props": {
-        "label": "FormItem"
-      },
-      "locked": false,
-      "x-field": {
-        "name": "name2"
-      },
-      "slots": {},
-      "children": [
-        {
-          "componentName": "Input",
-          "slots": {},
-          "children": []
-        }
-      ]
-    },
-    {
-      "componentName": "FormItem",
-      "props": {
-        "label": "FormItem"
-      },
-      "locked": false,
-      "slots": {},
-      "children": [
-        {
-          "componentName": "Switch",
-          "exprs": {
-            "disabled": "name1===\"xxx\""
+          "componentName": "FormItem",
+          "props": {
+            "label": "FormItem"
+          },
+          "locked": false,
+          "x-field": {
+            "name": "name1"
           },
           "slots": {},
-          "children": []
+          "children": [
+            {
+              "componentName": "Input",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "componentName": "FormItem",
+          "props": {
+            "label": "FormItem"
+          },
+          "locked": false,
+          "x-field": {
+            "name": "name2"
+          },
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Input",
+              "slots": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "componentName": "FormItem",
+          "props": {
+            "label": "FormItem"
+          },
+          "locked": false,
+          "slots": {},
+          "children": [
+            {
+              "componentName": "Switch",
+              "exprs": {
+                "disabled": "name1===\"xxx\""
+              },
+              "slots": {},
+              "children": []
+            }
+          ]
         }
       ]
     }

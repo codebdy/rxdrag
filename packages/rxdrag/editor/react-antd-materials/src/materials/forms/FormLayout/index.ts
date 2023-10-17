@@ -11,6 +11,9 @@ export const FormLayoutMaterial: IMaterial = {
   designer: FormLayout,
   designerLocales: locales,
   propsSchema: formLayoutSchema,
+  designerProps: {
+    display: "visible"
+  },
   resource: {
     name: name,
     icon: formIcon,

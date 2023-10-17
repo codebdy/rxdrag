@@ -12,6 +12,9 @@ export const InlineFormMaterial: IMaterial = {
   designer: AntdForm,
   designerLocales: inlineFormLocales,
   propsSchema: formSchema,
+  designerProps: {
+    display: "visible"
+  },
   resource: {
     name: name,
     icon: inlineFormIcon,

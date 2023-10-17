@@ -1,8 +1,10 @@
+import { Page, PageProps } from "@rxdrag/react-antd-components"
 import { Canvas } from "@rxdrag/react-core"
-import { memo } from "react"
 
-export const PageCanvas = memo(() => {
+export const PageCanvas = (props: PageProps) => {
   return (
-    <Canvas />
+    <Page {...props}>
+      <Canvas />
+    </Page>
   )
-})
+}
