@@ -13,7 +13,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path={routes.index} element={<NormalEditorExample />}>
+      <Route path={routes.normal} element={<NormalEditorExample />}>
       </Route>
       <Route path={routes.logicflow} element={<LogicflowEditorExample />}>
       </Route>
@@ -37,7 +37,7 @@ function App() {
       >
       </Route>
       <Route
-        path={routes.appDesigner + "/*"}
+        path={"/*"}
         element={
           <AppDesignerExample />}
       >
