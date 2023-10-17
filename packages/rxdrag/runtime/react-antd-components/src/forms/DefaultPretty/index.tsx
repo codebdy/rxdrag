@@ -7,6 +7,6 @@ export const DefaultPretty = memo((
 ) => {
   const { value } = props
   return (
-    <span>DefaultPretty</span>
+      (value as any)?.toString() || "N/A"
   )
 })
