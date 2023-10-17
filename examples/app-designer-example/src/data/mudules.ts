@@ -1,4 +1,4 @@
-import { INodeSchema } from "@rxdrag/schema";
+import { INodeSchema, ViewType } from "@rxdrag/schema";
 import { IModule, IModuleCategory } from "../interfaces/module";
 import { DeviceType } from "../interfaces";
 import mole from "./molepage.json"
@@ -10,7 +10,6 @@ const rootNodeSchema: INodeSchema = {
   componentName: "Page"
 }
 
-
 export const defaultModules: { [device: string]: IModule[] | undefined } = {
   [DeviceType.admin]: [
     {
@@ -20,12 +19,15 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
         {
           id: "user-index",
           title: "入口页",
+          viewType: ViewType.Main,
           schema: userList,
         },
         {
           id: "user-edit",
           title: "编辑对话框",
-          schema: rootNodeSchema,
+          schema: {
+            componentName: "Dialog"
+          },
         }
       ],
     },
@@ -36,6 +38,7 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
         {
           id: "expression-index",
           title: "入口页",
+          viewType: ViewType.Main,
           schema: expression,
         },
       ],
@@ -47,6 +50,7 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
         {
           id: "main-page",
           title: "主页面",
+          viewType: ViewType.Main,
           schema: mole,
         },
         {
@@ -116,6 +120,7 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
         {
           id: "h5-user-index",
           title: "入口页(h5)",
+          viewType: ViewType.Main,
           schema: rootNodeSchema,
         },
         {
@@ -142,6 +147,7 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
         {
           id: "website-user-index",
           title: "入口页(门户)",
+          viewType: ViewType.Main,
           schema: rootNodeSchema,
         },
         {
@@ -168,6 +174,7 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
         {
           id: "lg-user-index",
           title: "入口页(大屏)",
+          viewType: ViewType.Main,
           schema: rootNodeSchema,
         },
         {
