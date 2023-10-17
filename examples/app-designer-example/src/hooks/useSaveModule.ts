@@ -4,7 +4,7 @@ import { EVENT_DATA_CHANGED, trigger } from "./events";
 import { Entities } from "./events/entityName";
 import { defaultModules } from "../data/mudules";
 
-export function useSaveModule(options: {
+export function useSaveModule(options?: {
   onComplate?: () => void
 }): [(module: IModule) => void, { loading?: boolean, module?: IModule }] {
   const [module, setModuel] = useState<IModule>()
