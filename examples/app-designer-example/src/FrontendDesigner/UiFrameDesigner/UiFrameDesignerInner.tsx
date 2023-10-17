@@ -9,6 +9,7 @@ export const UiFrameDesignerInner = memo(() => {
 
   const schemas: (IViewSchema[]) | undefined = useMemo(() => appFront?.frameSchema ? [
     {
+      id:"frame",
       title: "页面框架",
       schema: appFront.frameSchema,
     },
