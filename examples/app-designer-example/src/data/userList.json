@@ -13,28 +13,7 @@
         "enable": true
       },
       "slots": {},
-      "children": [
-        {
-          "componentName": "Input",
-          "x-controller": {
-            "id": "Ddl53loc",
-            "name": "字段1",
-            "enable": true
-          },
-          "slots": {},
-          "children": []
-        },
-        {
-          "componentName": "Input",
-          "x-controller": {
-            "id": "ndwJ5LwA",
-            "name": "字段2",
-            "enable": true
-          },
-          "slots": {},
-          "children": []
-        }
-      ]
+      "children": []
     },
     {
       "componentName": "Table",
@@ -49,7 +28,7 @@
         {
           "componentName": "TableColumn",
           "props": {
-            "title": "Column1"
+            "title": "登录名"
           },
           "slots": {},
           "children": []
@@ -57,7 +36,7 @@
         {
           "componentName": "TableColumn",
           "props": {
-            "title": "Column2"
+            "title": "名称"
           },
           "slots": {},
           "children": []
@@ -65,23 +44,62 @@
         {
           "componentName": "TableColumn",
           "props": {
-            "title": "Column3"
+            "title": "操作"
           },
           "slots": {},
           "children": [
             {
-              "componentName": "Button",
-              "props": {
-                "type": "primary",
-                "title": "编辑"
-              },
-              "x-controller": {
-                "id": "j4lFf--c",
-                "name": "编辑按钮",
-                "enable": true
-              },
+              "componentName": "Space",
+              "props": {},
+              "selfRender": true,
               "slots": {},
-              "children": []
+              "children": [
+                {
+                  "componentName": "Button",
+                  "props": {
+                    "type": "default",
+                    "title": "删除"
+                  },
+                  "slots": {
+                    "icon": {
+                      "componentName": "IconView",
+                      "props": {
+                        "icon": {
+                          "iconKey": "DeleteOutlined"
+                        }
+                      },
+                      "slots": {},
+                      "children": []
+                    }
+                  },
+                  "children": []
+                },
+                {
+                  "componentName": "Button",
+                  "props": {
+                    "type": "primary",
+                    "title": "编辑"
+                  },
+                  "x-controller": {
+                    "id": "j4lFf--c",
+                    "name": "编辑按钮",
+                    "enable": true
+                  },
+                  "slots": {
+                    "icon": {
+                      "componentName": "IconView",
+                      "props": {
+                        "icon": {
+                          "iconKey": "FormOutlined"
+                        }
+                      },
+                      "slots": {},
+                      "children": []
+                    }
+                  },
+                  "children": []
+                }
+              ]
             }
           ]
         }

@@ -25,7 +25,9 @@ export const defaultModules: { [device: string]: IModule[] | undefined } = {
         {
           id: "user-edit",
           title: "编辑对话框",
-          schema: rootNodeSchema,
+          schema: {
+            componentName: "Dialog"
+          },
         }
       ],
     },

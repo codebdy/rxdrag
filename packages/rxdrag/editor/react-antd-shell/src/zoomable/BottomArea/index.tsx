@@ -9,7 +9,7 @@ import { DEFAULT_MARGIN, MINI_WIDGET_WIDTH } from "../consts"
 import { ReundoIcons } from "./ReundoIcons"
 import { useActivedDocument } from "@rxdrag/react-core"
 import { AuxButtions } from "./AuxButtions"
-import { ViewButtons } from "./ViewButtons"
+import { JsonCodeDialog } from "./JsonCodeDialog"
 
 const BottomShell = styled(ResizableRow)`
   position: absolute;
@@ -165,7 +165,7 @@ export const BottomArea = memo((
         <Divider type="vertical" />
         <AuxButtions />
         <Divider type="vertical" />
-        <ViewButtons />
+        <JsonCodeDialog />
         {
           addon
         }
