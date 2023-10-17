@@ -44,11 +44,13 @@ const TitleContent = styled.div`
 `
 
 const Content = styled.div`
+  flex:1;
   padding: 8px;
   .ant-tree{
     background-color: transparent;
     min-width: 200px;
   }
+  overflow: auto;
 `
 
 
