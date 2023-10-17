@@ -6,8 +6,8 @@ import { routes } from "./routes";
 
 const items: MenuProps['items'] = [
   {
-    label: <a href={routes.index}>常规编辑器</a>,
-    key: routes.index,
+    label: <a href={routes.normal}>常规编辑器</a>,
+    key: routes.normal,
   },
   // {
   //   label: 'IFrame内联编辑器',
