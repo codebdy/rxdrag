@@ -1,7 +1,6 @@
 import GraphiQL from "graphiql";
 import "graphiql/graphiql.css";
 import { memo, useMemo } from "react";
-import React from "react";
 import "./index.less";
 import { createGraphiQLFetcher } from "@graphiql/toolkit";
 import "./graphiql-dark-mode.css"
