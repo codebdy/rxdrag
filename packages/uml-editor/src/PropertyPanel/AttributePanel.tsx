@@ -1,17 +1,13 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { AttributeMeta } from "../meta/AttributeMeta";
-import { Types } from "../meta/Type";
-import { ClassMeta, StereoType } from "../meta/ClassMeta";
 import { useChangeAttribute } from "../hooks/useChangeAttribute";
-import { CONST_ID } from "../meta/Meta";
 import { useGetTypeLabel } from "../hooks/useGetTypeLabel";
 import { Form, Input, Switch } from "antd";
-import { useTranslation } from "react-i18next";
 import { AttributeTypeInput } from "./AttributeTypeInput";
-import { MultiLangInput } from "components/MultiLangInput";
-import { isStr } from "@formily/shared";
 import { useMetaId } from "../hooks/useMetaId";
 import { PannelContainer } from "./PannelContainer";
+import { useTranslate } from "@rxdrag/react-locales";
+import { isStr } from "@rxdrag/shared";
+import { AttributeMeta, ClassMeta, CONST_ID, StereoType, Types } from "@rxdrag/uml-schema";
 
 export const AttributePanel = (props: {
   attribute: AttributeMeta;
@@ -22,7 +18,7 @@ export const AttributePanel = (props: {
   const metaId = useMetaId();
   const changeAttribute = useChangeAttribute(metaId);
   const getTypeLabel = useGetTypeLabel(metaId);
-  const { t } = useTranslation();
+  const t = useTranslate();
   const [form] = Form.useForm()
 
   useEffect(() => {
@@ -79,7 +75,7 @@ export const AttributePanel = (props: {
             label={t("Label")}
             name="label"
           >
-            <MultiLangInput inline title={t("Label")} />
+            <Input />
           </Form.Item>
         }
 

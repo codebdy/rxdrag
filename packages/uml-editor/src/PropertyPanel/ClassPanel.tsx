@@ -1,14 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { ClassMeta, StereoType } from "../meta/ClassMeta";
 import { useChangeClass } from "../hooks/useChangeClass";
 import { Form, Input, Select, Switch } from "antd";
-import { useTranslation } from "react-i18next";
-import { MultiLangInput } from "components/MultiLangInput";
-import { useMetaId } from "../hooks/useMetaId";
-import { useParseLangMessage } from "plugin-sdk";
 import { packagesState } from "../recoil/atoms";
 import { useRecoilValue } from "recoil";
 import { PannelContainer } from "./PannelContainer";
+import { ClassMeta, StereoType } from "@rxdrag/uml-schema";
+import { useMetaId } from "../hooks/useMetaId";
+import { useTranslate } from "@rxdrag/react-locales";
 const { Option } = Select;
 
 export const ClassPanel = (props: { cls: ClassMeta }) => {
@@ -17,8 +15,7 @@ export const ClassPanel = (props: { cls: ClassMeta }) => {
   const metaId = useMetaId();
   const changeClass = useChangeClass(metaId);
   const packages = useRecoilValue(packagesState(metaId));
-  const { t } = useTranslation();
-  const p = useParseLangMessage();
+  const t = useTranslate();
   const [form] = Form.useForm()
 
   useEffect(() => {
@@ -31,7 +28,7 @@ export const ClassPanel = (props: { cls: ClassMeta }) => {
     },
     [cls, form]
   )
-  const handleChange = useCallback((formData: any) => {
+  const handleChange = useCallback((formData: ClassMeta) => {
     const errMsg = changeClass({ ...cls, ...formData });
     setNameError(errMsg)
   }, [changeClass, cls])
@@ -61,7 +58,7 @@ export const ClassPanel = (props: { cls: ClassMeta }) => {
           label={t("Label")}
           name="label"
         >
-          <MultiLangInput inline title={t("Label")} />
+          <Input />
         </Form.Item>
         <Form.Item
           label={t("UmlEditor.Package")}
@@ -71,7 +68,7 @@ export const ClassPanel = (props: { cls: ClassMeta }) => {
             {
               packages?.map(pkg => {
                 return (
-                  <Option key={pkg.uuid} value={pkg.uuid}>{p(pkg.name)}</Option>
+                  <Option key={pkg.uuid} value={pkg.uuid}>{pkg.name}</Option>
                 )
               })
             }

@@ -7,18 +7,17 @@ import {
   svgTwoWayAssociation,
   svgTwoWayCombination,
 } from "./constSvg";
-import { RelationType } from "../meta/RelationMeta";
 import { pressedLineTypeState, selectedElementState } from "../recoil/atoms";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { useCreateTempClassNodeForNew } from "../hooks/useCreateTempClassNodeForNew";
 import { ClassRect } from "./ClassRect";
-import { StereoType } from "../meta/ClassMeta";
 import { Collapse } from "antd";
-import { PRIMARY_COLOR } from "consts";
-import { useTranslation } from "react-i18next";
 import { useMetaId } from "../hooks/useMetaId";
 import { useDnd } from "../GraphCanvas/useDnd";
 import styled from "styled-components";
+import { StereoType, RelationType } from "@rxdrag/uml-schema";
+import { PRIMARY_COLOR } from "../consts";
+import { useTranslate } from "@rxdrag/react-locales";
 
 const Container = styled.div`
   display: flex;
@@ -80,7 +79,7 @@ export const ToolItem = memo(
 export const Toolbox = memo((props: { graph?: Graph }) => {
   const { graph } = props;
   const dnd = useDnd(graph)
-  const { t } = useTranslation();
+  const t = useTranslate();
   const metaId = useMetaId();
   const setSelemedElement = useSetRecoilState(selectedElementState(metaId))
   const [pressedLineType, setPressedLineType] = useRecoilState(

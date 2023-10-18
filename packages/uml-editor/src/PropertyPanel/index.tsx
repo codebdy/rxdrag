@@ -8,26 +8,16 @@ import { useClass } from "../hooks/useClass";
 import { useAttribute } from "../hooks/useAttribute";
 import { useRelation } from "../hooks/useRelation";
 import { Empty } from "antd";
-import { useTranslation } from "react-i18next";
-import { PropertyBox } from "common/ModelBoard/PropertyBox";
 import { useMetaId } from "../hooks/useMetaId";
-import { useSelectedScriptLogic } from "UmlEditor/hooks/useSelectedScriptLogic";
-import { ScriptPanel } from "./MethodPanel/ScriptPanel";
-import { useSelectedApi } from "UmlEditor/hooks/useSelectedApi";
-import { ApiPanel } from "./MethodPanel/ApiPanel";
-import { useSelectedCode } from "UmlEditor/hooks/useSelectedCode";
-import { CodePanel } from "./CodePanel";
-import { useSelectedGraphLogic } from "UmlEditor/hooks/useSelectedGraphLogic";
+import { useTranslate } from "@rxdrag/react-locales";
+import { PropertyBox } from "../ModelBoard/PropertyBox";
 
 export const PropertyPanel = memo(() => {
   const metaId = useMetaId();
   const selectedElement = useRecoilValue(selectedElementState(metaId));
   const selectedEntity = useClass(selectedElement || "", metaId);
-  const selecctedCode = useSelectedCode();
-  const selectedScript = useSelectedScriptLogic();
-  const selectedGraphLogic = useSelectedGraphLogic();
-  const selectedApi = useSelectedApi();
-  const { t } = useTranslation();
+
+  const t = useTranslate();
   const { cls: attributeCls, attribute } = useAttribute(
     selectedElement || "",
     metaId
@@ -42,10 +32,7 @@ export const PropertyPanel = memo(() => {
         <AttributePanel attribute={attribute} cls={attributeCls} />
       )}
       {relation && <RelationPanel relation={relation} />}
-      {selectedScript && <ScriptPanel scriptLogic={selectedScript} />}
-      {selectedApi && <ApiPanel api={selectedApi} />}
-      {selecctedCode && <CodePanel code={selecctedCode} />}
-      {!selectedElement && !selectedScript && !selectedGraphLogic && !selectedApi && !selecctedCode && (
+      {!selectedElement && (
         <div style={{ padding: "16px" }}>
           <Empty />
         </div>

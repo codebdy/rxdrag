@@ -1,11 +1,10 @@
 import React, { useMemo } from "react";
 import { Form } from "antd";
 import { memo } from "react";
-import { useTranslation } from "react-i18next";
-import { AttributeMeta } from "../meta/AttributeMeta";
-import { CONST_ID } from "../meta/Meta";
 import { TypeSelect } from "./TypeSelect";
-import { TypeUuidSelect } from "./TypeUuidSelect";
+import { TypeIdSelect } from "./TypeIdSelect";
+import { AttributeMeta, CONST_ID } from "@rxdrag/uml-schema";
+import { useTranslate } from "@rxdrag/react-locales";
 
 export const AttributeTypeInput = memo(
   (
@@ -14,7 +13,7 @@ export const AttributeTypeInput = memo(
     }
   ) => {
     const { attribute } = props;
-    const { t } = useTranslation();
+    const  t  = useTranslate();
     const isId = useMemo(() => attribute.name === CONST_ID, [attribute.name]);
 
     return (
@@ -25,7 +24,7 @@ export const AttributeTypeInput = memo(
         >
           <TypeSelect disabled={isId}></TypeSelect>
         </Form.Item>
-        <TypeUuidSelect type={attribute.type} withFormItem />
+        <TypeIdSelect type={attribute.type} withFormItem />
       </>
     );
   }

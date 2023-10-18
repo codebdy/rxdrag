@@ -1,4 +1,4 @@
-import { RelationType } from "../meta/RelationMeta";
+import { RelationType } from "@rxdrag/uml-schema";
 
 export interface LineAction {
   relationType: RelationType;

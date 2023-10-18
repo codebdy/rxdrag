@@ -1,15 +1,15 @@
 import { Form, Select } from "antd";
 import React, { useMemo } from "react"
 import { memo } from "react"
-import { useTranslation } from "react-i18next";
 import { useMetaId } from "../hooks/useMetaId";
 import { useEntities } from "../hooks/useEntities";
 import { useEnums } from "../hooks/useEnums";
 import { useValueObjects } from "../hooks/useValueObjects";
-import { Type, Types } from "../meta"
+import { Type, Types } from "@rxdrag/uml-schema";
+import { useTranslate } from "@rxdrag/react-locales";
 const { Option } = Select;
 
-export const TypeUuidSelect = memo((
+export const TypeIdSelect = memo((
   props: {
     type?: Type,
     withFormItem?: boolean,
@@ -23,7 +23,7 @@ export const TypeUuidSelect = memo((
   const enums = useEnums(metaId);
   const valueObjects = useValueObjects(metaId);
   const entities = useEntities(metaId);
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   const [title, classes] = useMemo(() => {
     if (type === Types.Enum ||
@@ -75,6 +75,6 @@ export const TypeUuidSelect = memo((
           })}
         </Select>
     )
-    :<></>
+      : <></>
   )
 })

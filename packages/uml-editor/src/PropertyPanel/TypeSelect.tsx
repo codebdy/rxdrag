@@ -1,8 +1,8 @@
+import { useTranslate } from "@rxdrag/react-locales";
+import { Type, Types } from "@rxdrag/uml-schema";
 import { Select } from "antd"
 import React, { useCallback } from "react"
 import { memo } from "react"
-import { useTranslation } from "react-i18next";
-import { Type, Types } from "../meta";
 const { Option } = Select;
 
 export const TypeSelect = memo((
@@ -15,7 +15,7 @@ export const TypeSelect = memo((
   }
 ) => {
   const { value, disabled, onChange, noEntity, style } = props
-  const { t } = useTranslation();
+  const  t  = useTranslate();
 
   const handleChange = useCallback((value:any) => {
     onChange && onChange(value)

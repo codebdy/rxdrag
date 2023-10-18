@@ -1,16 +1,11 @@
 import React, { useCallback, useEffect, useMemo } from "react";
-import {
-  RelationMeta,
-  RelationMultiplicity,
-  RelationType,
-} from "../meta/RelationMeta";
 import { useClass } from "../hooks/useClass";
 import { useChangeRelation } from "../hooks/useChangeRelation";
 import { Collapse, Form, Input, Select } from "antd";
-import { useTranslation } from "react-i18next";
-import { MultiLangInput } from "components/MultiLangInput";
 import { useMetaId } from "../hooks/useMetaId";
 import { PannelContainer } from "./PannelContainer";
+import { useTranslate } from "@rxdrag/react-locales";
+import { RelationMeta, RelationType, RelationMultiplicity } from "@rxdrag/uml-schema";
 
 const { Option } = Select;
 
@@ -20,7 +15,7 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
   const source = useClass(relation.sourceId, metaId);
   const target = useClass(relation.targetId, metaId);
   const changeRelation = useChangeRelation(metaId);
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   const [form] = Form.useForm()
 
@@ -37,7 +32,7 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
     [relation.relationType]
   );
 
-  const handleChange = useCallback((values: any) => {
+  const handleChange = useCallback((values: RelationMeta) => {
     changeRelation({
       ...relation,
       ...values,
@@ -99,7 +94,7 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
                           label={t("Label")}
                           name="labelOfSource"
                         >
-                          <MultiLangInput inline title={t("Label")} />
+                          <Input />
                         </Form.Item>
                         <Form.Item
                           label={t("UmlEditor.Description")}
@@ -134,7 +129,7 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
                       label={t("Label")}
                       name="labelOfTarget"
                     >
-                      <MultiLangInput inline title={t("Label")} />
+                      <Input />
                     </Form.Item>
                     <Form.Item
                       label={t("UmlEditor.Description")}
