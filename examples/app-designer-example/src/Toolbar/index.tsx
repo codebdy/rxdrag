@@ -23,10 +23,12 @@ const ToolbarShell = styled.div`
   box-shadow: ${floatShadow};
   z-index: 1;
   background-color: ${props => props.theme.token?.colorBgBase};
+  border-bottom: solid 1px ${props => props.theme.token?.colorBorder};
 `
 
 const TopMenu = styled(Menu)`
   background-color: transparent;
+  border-bottom: 0;
 `
 
 const ProjectTitle = styled.span`
