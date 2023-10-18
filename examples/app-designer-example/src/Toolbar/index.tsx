@@ -57,6 +57,9 @@ export const Toolbar = memo((
               </SvgIcon>
             }
           >模型</Button>
+          <Button type="text" icon={<SvgIcon>
+            <svg fill="currentColor" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M417.322667 629.333333l85.333333 85.333334H672v213.333333h-213.333333v-166.826667l-67.861334-67.861333L128 693.333333v-64h289.322667z m190.677333 149.333334h-85.333333v85.333333h85.333333v-85.333333z m341.333333-362.666667v213.333333h-213.333333V554.666667H128v-64h608v-74.666667h213.333333z m-64 64h-85.333333v85.333333h85.333333v-85.333333z m-213.333333-362.666667v213.333334h-172.8l-81.877333 81.92H128v-64l262.805333-0.021334 67.861334-67.861333V117.333333h213.333333z m-64 64h-85.333333v85.333334h85.333333v-85.333334z" key="7154"></path></svg>
+          </SvgIcon>}>服务扩展</Button>
           <Button type="text" icon={<ApiOutlined />}>接口</Button>
           <Button type="text" icon={<NodeIndexOutlined />}>工作流</Button>
           <Button type="text"
