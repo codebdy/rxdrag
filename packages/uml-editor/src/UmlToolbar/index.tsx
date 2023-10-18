@@ -19,7 +19,7 @@ import { mapIcon } from "./icons";
 import { CONST_ID } from "@rxdrag/uml-schema";
 import { ModelToolbar } from "../ModelBoard/ModelToolbar";
 
-export const ToolbarButton = styled((props) => <Button type="text" {...props} />)`
+export const ToolbarButton = styled((props) => <Button type="text" size="small" {...props} />)`
 `
 
 export const UmlToolbar = memo((

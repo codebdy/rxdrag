@@ -5,7 +5,7 @@ import { Entities } from "./events/entityName"
 import { appFronts } from "../data"
 
 export function useSaveFrontend(options: {
-  onComplate?: () => void
+  onComplete?: () => void
 }): [(frontend: IAppFrontend) => void, { loading?: boolean, frontend?: IAppFrontend }] {
   const [frontend, setFrontend] = useState<IAppFrontend>()
   const [loading, setLoading] = useState<boolean>()
@@ -20,7 +20,7 @@ export function useSaveFrontend(options: {
       trigger(EVENT_DATA_CHANGED, Entities.AppFrontend)
       setLoading(false)
       setFrontend(frontend)
-      options?.onComplate?.()
+      options?.onComplete?.()
     }, 300)
 
   }, [options])

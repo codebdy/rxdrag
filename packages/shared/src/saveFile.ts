@@ -8,7 +8,6 @@ export const pickerTypes = [
 
 
 export async function saveFile(name: string, content: string) {
-  //const handle = getHandle();
   // create a new handle
   try{
     const newHandle =  await (window as any).showSaveFilePicker({
@@ -24,8 +23,6 @@ export async function saveFile(name: string, content: string) {
 
     // close the file and write the contents to disk.
     await writableStream.close();
-
-    //setHandle(newHandle);    
 
     return newHandle.name;
   }

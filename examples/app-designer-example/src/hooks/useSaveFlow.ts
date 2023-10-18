@@ -5,7 +5,7 @@ import { IFlow } from "../interfaces/flow";
 import { allFlows } from "../data/logic";
 
 export function useSaveFlow(options?: {
-  onComplate?: () => void
+  onComplete?: () => void
 }): [(flow: IFlow) => void, { loading?: boolean, flow?: IFlow }] {
   const [flow, setFlow] = useState<IFlow>()
   const [loading, setLoading] = useState<boolean>()
@@ -30,7 +30,7 @@ export function useSaveFlow(options?: {
       setLoading(false)
       setFlow(fxFlow)
       console.log("===>allFlows", allFlows)
-      options?.onComplate?.()
+      options?.onComplete?.()
     }, 300)
 
   }, [options])

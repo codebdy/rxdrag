@@ -33,7 +33,7 @@ export const FlowEditor = memo((
 
   const { changeFlag, setChangeFlag } = useChangeFlag()
   const [save, { loading: saving }] = useSaveFlow({
-    onComplate: () => {
+    onComplete: () => {
       setChangeFlag(0)
     }
   })

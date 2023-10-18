@@ -22,7 +22,7 @@ export const ScriptPopover = memo((
   const [form] = Form.useForm()
 
   const [saveFx, { loading }] = useSaveScript({
-    onComplate: () => {
+    onComplete: () => {
       onOpenChange?.(false)
     }
   })

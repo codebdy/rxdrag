@@ -5,7 +5,7 @@ import { Entities } from "./events/entityName";
 import { defaultModules } from "../data/mudules";
 
 export function useSaveModule(options?: {
-  onComplate?: () => void
+  onComplete?: () => void
 }): [(module: IModule) => void, { loading?: boolean, module?: IModule }] {
   const [module, setModuel] = useState<IModule>()
   const [loading, setLoading] = useState<boolean>()
@@ -21,7 +21,7 @@ export function useSaveModule(options?: {
       trigger(EVENT_DATA_CHANGED, Entities.Module)
       setLoading(false)
       setModuel(module)
-      options?.onComplate?.()
+      options?.onComplete?.()
     }, 300)
 
   }, [options])

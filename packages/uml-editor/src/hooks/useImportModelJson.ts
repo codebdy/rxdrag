@@ -4,7 +4,7 @@ import { useSetRecoilState } from "recoil";
 import { useBackupSnapshot } from "./useBackupSnapshot";
 import { MetaContent } from "../interfaces";
 import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState } from "../recoil/atoms";
-import { getTheFiles } from "./useAppOpenFile";
+import { getTheFiles } from "@rxdrag/shared";
 
 export function useImportModelJson(metaId: string) {
   const backupSnapshot = useBackupSnapshot(metaId);

@@ -6,7 +6,7 @@ import { allFlows } from "../data/logic";
 
 export function useRemoveFlow(
   options?: {
-    onComplate?: () => void
+    onComplete?: () => void
   }
 ): [(id: ID) => void, { loading?: boolean }] {
   const [loading, setLoading] = useState<boolean>()
@@ -19,7 +19,7 @@ export function useRemoveFlow(
         trigger(EVENT_DATA_CHANGED, Entities.Flow)
       }
       setLoading(false)
-      options?.onComplate?.()
+      options?.onComplete?.()
     }, 300)
   }, [options])
 

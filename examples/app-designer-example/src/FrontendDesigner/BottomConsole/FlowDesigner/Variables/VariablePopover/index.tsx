@@ -20,7 +20,7 @@ export const VariablePopover = memo((
   const [form] = Form.useForm()
   const module = useModule()
   const [saveModule, { loading }] = useSaveModule({
-    onComplate: () => {
+    onComplete: () => {
       onOpenChange?.(false)
     }
   })

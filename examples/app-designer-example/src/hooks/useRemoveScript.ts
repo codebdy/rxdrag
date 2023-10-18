@@ -6,7 +6,7 @@ import { allScripts } from "../data/logic";
 
 export function useRemoveScript(
   options?: {
-    onComplate?: () => void
+    onComplete?: () => void
   }
 ): [(id: ID) => void, { loading?: boolean }] {
   const [loading, setLoading] = useState<boolean>()
@@ -19,7 +19,7 @@ export function useRemoveScript(
         trigger(EVENT_DATA_CHANGED, Entities.Script)
       }
       setLoading(false)
-      options?.onComplate?.()
+      options?.onComplete?.()
     }, 300)
   }, [options])
 

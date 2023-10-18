@@ -6,7 +6,7 @@ import { Entities } from "./events/entityName"
 import { defaultApp } from "../data"
 
 export function useSaveApp(options: {
-  onComplate?: () => void
+  onComplete?: () => void
 }): [(frontend: IApp) => void, { loading?: boolean, app?: IApp }] {
   const [app, setApp] = useState<IApp>()
   const [loading, setLoading] = useState<boolean>()
@@ -21,7 +21,7 @@ export function useSaveApp(options: {
       trigger(EVENT_DATA_CHANGED, Entities.App)
       setLoading(false)
       setApp(app)
-      options?.onComplate?.()
+      options?.onComplete?.()
     }, 300)
 
   }, [options])

@@ -13,7 +13,7 @@ export const FlowLabel = memo((props: {
   const [open, setOpen] = useState<boolean>()
 
   const [remove, { loading }] = useRemoveFlow({
-    onComplate: () => {
+    onComplete: () => {
       setOpen(false)
     }
   })
