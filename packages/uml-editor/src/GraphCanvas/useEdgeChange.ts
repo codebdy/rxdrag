@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Edge, Graph } from "@antv/x6";
 import { useCallback, useEffect } from "react";
 import _ from "lodash";
@@ -15,7 +16,7 @@ import {
   ROLE_SOURCE_TARGET_CONST,
 } from "./constLabelPosition";
 import { useBackupSnapshot } from "../hooks/useBackupSnapshot";
-import { ID } from "shared";
+import { ID } from "@rxdrag/shared";
 
 export function useEdgeChange(graph: Graph | undefined, metaId: ID) {
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));

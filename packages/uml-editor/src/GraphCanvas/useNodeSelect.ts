@@ -4,7 +4,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { selectedUmlDiagramState, selectedElementState } from "../recoil/atoms";
 import { useGetDiagramNode } from "../hooks/useGetDiagramNode";
 import { CONST_CANVAS_CLICK } from "../consts";
-import { ID } from "shared";
+import { ID } from "@rxdrag/shared";
 
 export function useNodeSelect(graph: Graph | undefined, metaId: ID) {
   const [selectedElement, setSelectedElement] =
@@ -16,8 +16,10 @@ export function useNodeSelect(graph: Graph | undefined, metaId: ID) {
     if (selectedElement) {
       graph?.cleanSelection();
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (graph?.getPlugin('transform') as any)?.onBlankMouseDown();
       const node = graph?.getNodes().find(nd => nd.id === selectedElement);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       node && (graph?.getPlugin('transform') as any)?.onNodeClick({ node: node })
 
       graph?.select(graph?.getCellById(selectedElement));

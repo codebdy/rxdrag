@@ -1,6 +1,5 @@
 import { Graph, Node } from "@antv/x6";
 import { useCallback, useEffect } from "react";
-import { ClassMeta } from "../meta/ClassMeta";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import {
   classesState,
@@ -10,7 +9,8 @@ import {
 } from "../recoil/atoms";
 import { useBackupSnapshot } from "../hooks/useBackupSnapshot";
 import { useCreateClassInnerId } from "../hooks/useCreateClassInnerId";
-import { ID } from "shared";
+import { ID } from "@rxdrag/shared";
+import { ClassMeta } from "@rxdrag/uml-schema";
 
 export function useNodeAdd(graph: Graph | undefined, metaId: ID) {
   const selectedDiagramUuid = useRecoilValue(selectedUmlDiagramState(metaId));

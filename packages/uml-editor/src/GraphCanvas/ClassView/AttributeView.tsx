@@ -7,11 +7,9 @@ import {
   onCanvasEvent,
 } from "../events";
 import { useMountRef } from "./useMountRef";
-import { CONST_ID } from "../../meta/Meta";
-import { AttributeMeta } from "../../meta/AttributeMeta";
-import { StereoType } from "../../meta/ClassMeta";
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button } from "antd";
+import { AttributeMeta, StereoType, CONST_ID } from "@rxdrag/uml-schema";
 
 export default function AttributeView(props: {
   attr: AttributeMeta;

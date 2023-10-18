@@ -1,15 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { memo } from "react";
 import { useBackupSnapshot } from "../../hooks/useBackupSnapshot";
-import { PackageMeta } from "../../meta/PackageMeta";
 import PackageAction from "./PackageAction";
-import TreeNodeLabel from "common/TreeNodeLabel";
 import { useSetRecoilState } from 'recoil';
 import { packagesState } from '../../recoil/atoms';
 import { useMetaId } from "../../hooks/useMetaId";
-import { useParseLangMessage } from "plugin-sdk";
 import { PackageDialog } from "./PackageDialog";
-import "./style.less";
+import { PackageMeta } from "@rxdrag/uml-schema";
+import TreeNodeLabel from "../TreeNodeLabel";
 
 const PackageLabel = memo((
   props: {
@@ -20,8 +18,6 @@ const PackageLabel = memo((
   const [name, setName] = useState(pkg.name);
   const [editing, setEditing] = useState(false);
   const [visible, setVisible] = useState(false);
-
-  const p = useParseLangMessage();
 
   useEffect(() => {
     setName(pkg.name)
@@ -60,7 +56,7 @@ const PackageLabel = memo((
       }
       onClick={e => editing ? e.stopPropagation() : undefined}
     >
-      <div>{p(name)}</div>
+      <div>{name}</div>
       {
         editing &&
         <PackageDialog pkg={pkg} open={editing} onClose={handleClose} onConfirm={handleEditFinish} />

@@ -1,8 +1,7 @@
-import { Form, Modal } from "antd"
+import { useTranslate } from "@rxdrag/react-locales";
+import { Form, Input, Modal } from "antd"
 import React, { memo, useCallback, useEffect } from "react"
-import { useTranslation } from "react-i18next"
-import { MultiLangInput } from "components/MultiLangInput"
-import { DiagramMeta } from "../../meta/DiagramMeta"
+import { DiagramMeta } from "../../interfaces";
 
 export const DiagramDialog = memo((
   props: {
@@ -17,7 +16,7 @@ export const DiagramDialog = memo((
   useEffect(() => {
     form.setFieldsValue(diagram)
   }, [form, diagram])
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   const handleConfirm = useCallback(() => {
     form.validateFields().then(changeValues => {
@@ -36,7 +35,8 @@ export const DiagramDialog = memo((
       centered
       wrapProps={
         {
-          onClick: (e:any) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          onClick: (e: any) => {
             e.stopPropagation()
           },
         }
@@ -54,7 +54,7 @@ export const DiagramDialog = memo((
           name="name"
           rules={[{ required: true, message: t("Required") }]}
         >
-          <MultiLangInput inline title={t("Name")} />
+          <Input />
         </Form.Item>
       </Form>
     </Modal>

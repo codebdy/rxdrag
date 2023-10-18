@@ -1,12 +1,11 @@
 import { Node } from "@antv/x6";
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
-import { ID } from "shared";
 import { useGetAllParentUuids } from "../hooks/useGetAllParentUuids";
 import { useGetClass } from "../hooks/useGetClass";
-import { StereoType } from "../meta/ClassMeta";
-import { RelationType } from "../meta/RelationMeta";
 import { drawingLineState, relationsState } from "../recoil/atoms";
+import { ID } from "@rxdrag/shared";
+import { RelationType, StereoType } from "@rxdrag/uml-schema";
 
 export function useCheckCanLinkTo(metaId: ID) {
   const drawingLine = useRecoilValue(drawingLineState(metaId));

@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Graph } from "@antv/x6";
 import { useCallback, useEffect, useRef } from "react";
 import { useSetRecoilState } from "recoil";
-import { ID } from "shared";
 import { useChangeClass } from "../hooks/useChangeClass";
 import { useCreateClassAttribute } from "../hooks/useCreateClassAttribute";
 import { useDeleteClass } from "../hooks/useDeleteClass";
@@ -9,6 +9,7 @@ import { useGetClass } from "../hooks/useGetClass";
 import { useHideClassFromDiagram } from "../hooks/useHideClassFromDiagram";
 import { selectedElementState } from "../recoil/atoms";
 import { ClassEvent, IClassEventData } from "./ClassView";
+import { ID } from "@rxdrag/shared";
 
 export function useClassAction(graph: Graph | undefined, metaId: ID) {
   const getClass = useGetClass(metaId);

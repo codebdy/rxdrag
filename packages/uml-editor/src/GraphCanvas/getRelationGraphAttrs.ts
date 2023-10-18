@@ -1,5 +1,5 @@
+import { RelationType } from "@rxdrag/uml-schema";
 import { GlobalToken } from "antd/es/theme/interface";
-import { RelationType } from "../meta/RelationMeta";
 
 const inheritMarker = "M 0,0 L 12,8 L 12,-8 L 0,0";
 const diamondMarker = "M 0,0 L 9,-5 L 18,0 L 9,5 z";

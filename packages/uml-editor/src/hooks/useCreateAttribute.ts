@@ -1,8 +1,7 @@
 import { useCallback } from "react";
-import { createUuid, ID } from "shared";
-import { AttributeMeta } from "../meta/AttributeMeta";
-import { Types } from "../meta/Type";
 import { useGetTypeLabel } from "./useGetTypeLabel";
+import { ID, createId } from "@rxdrag/shared";
+import { AttributeMeta, Types } from "@rxdrag/uml-schema";
 
 export function useCreateAttribute(metaId: ID, prefix?: string) {
   const getTypeName = useGetTypeLabel(metaId);
@@ -19,7 +18,7 @@ export function useCreateAttribute(metaId: ID, prefix?: string) {
       }
 
       const attr = {
-        uuid: createUuid(),
+        uuid: createId(),
         name: namePrefix + index,
         type: Types.String,
         typeLabel: getTypeName(Types.String),

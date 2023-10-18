@@ -32,11 +32,17 @@
   "dependencies": {
     "@ant-design/icons": "^5.1.0",
     "@antv/x6": "^2.5.2",
+    "@antv/x6-plugin-dnd": "^2.0.4",
+    "@antv/x6-plugin-minimap": "^2.0.2",
+    "@antv/x6-plugin-selection": "^2.1.5",
+    "@antv/x6-plugin-transform": "^2.1.6",
+    "@antv/x6-react-shape": "2.1.0",
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/react-locales": "workspace:*",
     "@rxdrag/shared": "workspace:*",
     "@rxdrag/uml-schema": "workspace:*",
     "antd": "^5.9.2",
+    "classnames": "^2.3.2",
     "recoil": "^0.7.4"
   }
 }

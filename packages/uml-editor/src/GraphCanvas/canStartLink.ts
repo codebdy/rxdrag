@@ -1,5 +1,4 @@
-import { ClassMeta, StereoType } from "../meta/ClassMeta";
-import { RelationType } from "../meta/RelationMeta";
+import { RelationType, ClassMeta, StereoType } from "@rxdrag/uml-schema";
 
 export function canStartLink(lineType: RelationType, classMeta: ClassMeta) {
   if (classMeta.stereoType === StereoType.Service ||

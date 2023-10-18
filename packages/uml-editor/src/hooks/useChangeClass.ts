@@ -1,17 +1,17 @@
 import { useCallback } from "react";
-import { useTranslation } from "react-i18next";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { ID } from "shared";
 import { EVENT_CLASS_CHANGED, triggerCanvasEvent } from "../GraphCanvas/events";
-import { ClassMeta } from "../meta/ClassMeta";
 import { classesState } from "../recoil/atoms";
 import { useBackupSnapshot } from "./useBackupSnapshot";
+import { useTranslate } from "@rxdrag/react-locales";
+import { ID } from "@rxdrag/shared";
+import { ClassMeta } from "@rxdrag/uml-schema";
 
 export function useChangeClass(metaId: ID) {
   const backupSnapshot = useBackupSnapshot(metaId);
   const setClasses = useSetRecoilState(classesState(metaId));
   const classes = useRecoilValue(classesState(metaId));
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   const changeClass = useCallback(
     (cls: ClassMeta) => {

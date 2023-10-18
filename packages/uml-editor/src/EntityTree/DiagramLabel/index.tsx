@@ -1,15 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { memo } from "react";
 import { useBackupSnapshot } from "../../hooks/useBackupSnapshot";
-import TreeNodeLabel from "common/TreeNodeLabel";
 import { useSetRecoilState } from 'recoil';
 import { diagramsState } from '../../recoil/atoms';
-import { DiagramMeta } from "../../meta/DiagramMeta";
 import DiagramAction from "./DiagramAction";
 import { useGetPackage } from "../../hooks/useGetPackage";
 import { useMetaId } from "../../hooks/useMetaId";
-import { useParseLangMessage } from "plugin-sdk";
 import { DiagramDialog } from "./DiagramDialog";
+import { DiagramMeta } from "../../interfaces";
+import TreeNodeLabel from "../TreeNodeLabel";
 
 const DiagramLabel = memo((
   props: {
@@ -20,7 +19,6 @@ const DiagramLabel = memo((
   const [name, setName] = useState(diagram.name);
   const [editing, setEditing] = useState(false);
   const [visible, setVisible] = useState(false);
-  const p = useParseLangMessage();
   const metaId = useMetaId();
   const backup = useBackupSnapshot(metaId);
   const setDiagrams = useSetRecoilState(diagramsState(metaId));
@@ -60,7 +58,7 @@ const DiagramLabel = memo((
       }
       onClick={e => editing ? e.stopPropagation() : undefined}
     >
-      <div>{p(name)}</div>
+      <div>{name}</div>
       {
         editing &&
         <DiagramDialog

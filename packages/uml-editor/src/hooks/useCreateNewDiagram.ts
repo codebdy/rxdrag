@@ -1,11 +1,11 @@
+import { useTranslate } from "@rxdrag/react-locales";
 import { useGetDiagramByName } from "./useGetDiagramByName";
 import { useCallback } from "react";
-import { createUuid, ID } from "shared";
-import { useTranslation } from "react-i18next";
+import { ID, createId } from "@rxdrag/shared";
 
 export function useCreateNewDiagram(metaId: ID) {
   const getDiagramByName = useGetDiagramByName(metaId);
-  const { t } = useTranslation();
+  const  t  = useTranslate();
 
   const getNewDiagramName = useCallback(() => {
     const prefix = t("UmlEditor.NewDiagram");
@@ -19,7 +19,7 @@ export function useCreateNewDiagram(metaId: ID) {
 
   const createNewDiagram = useCallback((packageUuid: string) => {
     const newDiagram = {
-      uuid: createUuid(),
+      uuid: createId(),
       name: getNewDiagramName(),
       packageUuid,
       nodes: [],

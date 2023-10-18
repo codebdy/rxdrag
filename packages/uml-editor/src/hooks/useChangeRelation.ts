@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 import { useSetRecoilState } from "recoil";
-import { ID } from "shared";
-import { RelationMeta } from "../meta/RelationMeta";
 import { relationsState } from "../recoil/atoms";
 import { useBackupSnapshot } from "./useBackupSnapshot";
+import { ID } from "@rxdrag/shared";
+import { RelationMeta } from "@rxdrag/uml-schema";
 
 export function useChangeRelation(metaId: ID) {
   const backupSnapshot = useBackupSnapshot(metaId);

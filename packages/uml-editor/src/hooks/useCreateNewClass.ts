@@ -1,10 +1,8 @@
 import { useCallback } from "react";
-import { Types } from "../meta/Type";
-import { ClassMeta, StereoType } from "../meta/ClassMeta";
-import { CONST_ID } from "../meta/Meta";
 import { useCreateClassInnerId } from "./useCreateClassInnerId";
 import { useGetClassByName } from "./useGetClassByName";
-import { createUuid, ID } from "shared";
+import { ID, createId } from "@rxdrag/shared";
+import { StereoType, ClassMeta, CONST_ID, Types } from "@rxdrag/uml-schema";
 
 export function useCreateNewClass(metaId: ID) {
   const getClassByName = useGetClassByName(metaId);
@@ -23,7 +21,7 @@ export function useCreateNewClass(metaId: ID) {
   const createNewClass = useCallback(
     (stereoType: StereoType, packageUuid: string) => {
       const newClass: ClassMeta = {
-        uuid: createUuid(),
+        uuid: createId(),
         innerId: createInnerId(),
         name: getNewClassName(),
         stereoType: stereoType,
@@ -36,7 +34,7 @@ export function useCreateNewClass(metaId: ID) {
             ? []
             : [
               {
-                uuid: createUuid(),
+                uuid: createId(),
                 name: CONST_ID,
                 type: Types.ID,
                 primary: true,

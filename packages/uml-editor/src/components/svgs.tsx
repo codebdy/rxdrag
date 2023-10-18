@@ -1,5 +1,9 @@
 import React, { memo } from "react";
-import { IconProps } from "icons/InterfaceIcon";
+
+export interface IconProps {
+  size?: string | number,
+  color?: string,
+}
 
 export const ClassIcon = memo((props: IconProps) => {
   return (

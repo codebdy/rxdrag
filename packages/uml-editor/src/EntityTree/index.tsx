@@ -1,44 +1,30 @@
 import { memo, useCallback, useMemo, } from "react";
 import { Graph } from "@antv/x6";
 import { Tree } from "antd";
-import SvgIcon from "common/SvgIcon";
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { packagesState, diagramsState, classesState, selectedUmlDiagramState, selectedElementState, editorOptionsState, selectedScriptLogicIdState, selectedGraphLogicIdState, selectedApiIdState, selectedCodeIdState } from './../recoil/atoms';
-import TreeNodeLabel from "common/TreeNodeLabel";
 import PackageLabel from "./PackageLabel";
-import { PackageMeta } from "../meta/PackageMeta";
-import { ClassMeta, StereoType } from "../meta/ClassMeta";
-import { ClassIcon } from "./svgs";
+import { ClassIcon } from "../components/svgs";
 import { useIsDiagram } from "../hooks/useIsDiagram";
-import { useIsElement } from "../hooks/useIsElement";
 import ClassLabel from "./ClassLabel";
-import { AttributeMeta } from './../meta/AttributeMeta';
 import { useParseRelationUuid } from "../hooks/useParseRelationUuid";
 import { useGetSourceRelations } from './../hooks/useGetSourceRelations';
 import { useGetTargetRelations } from './../hooks/useGetTargetRelations';
 import { useGetClass } from "../hooks/useGetClass";
 import AttributeLabel from "./AttributeLabel";
-import { PRIMARY_COLOR } from "consts";
 import AttributesLabel from "./AttributesLabel";
 import RelationLabel from "./RelationLabel";
-import { useTranslation } from "react-i18next";
-import PlugIcon from "icons/PlugIcon";
 import DiagramLabel from "./DiagramLabel";
 import { DataNode } from "antd/es/tree";
 import styled from "styled-components";
 import { useMetaId } from "../hooks/useMetaId";
 import { ModelRootAction } from "./ModelRootAction";
-import { APIRootAction } from "./APIRootAction";
-import { ScriptLogicRootAction } from "./ScriptLogicRootAction";
-import { CodeOutlined } from "@ant-design/icons";
-import { GraphLogicRootAction } from "./GraphLogicRootAction";
-import { useGetScriptNodes } from "./useGetScriptNodes";
-import { useGetGraphNodes } from "./useGetGraphNodes";
-import { useIsScriptLogic } from "UmlEditor/hooks/useIsScriptLogic";
-import { useIsGraphLogic } from "UmlEditor/hooks/useIsGraphLogic";
-import { useGetApiNodes } from "./useGetApiNodes";
-import { useIsApi } from "UmlEditor/hooks/useIsApi";
-import { useIsCode } from "UmlEditor/hooks/useIsCode";
+import { AttributeMeta, ClassMeta, StereoType, PackageMeta } from "@rxdrag/uml-schema";
+import { PRIMARY_COLOR } from "../consts";
+import { packagesState, diagramsState, classesState, selectedUmlDiagramState, selectedElementState } from "../recoil/atoms";
+import TreeNodeLabel from "./TreeNodeLabel";
+import { useTranslate } from "@rxdrag/react-locales";
+import { SvgIcon } from "../components/SvgIcon";
+import PlugIcon from "../components/PlugIcon";
 const { DirectoryTree } = Tree;
 
 const Container = styled.div`
@@ -62,31 +48,17 @@ const StyledDirectoryTree = styled(DirectoryTree)`
 export const EntityTree = memo((props: { graph?: Graph }) => {
   const { graph } = props;
   const metaId = useMetaId();
-  const options = useRecoilValue(editorOptionsState(metaId));
   const packages = useRecoilValue(packagesState(metaId));
   const diagrams = useRecoilValue(diagramsState(metaId));
   const classes = useRecoilValue(classesState(metaId));
-  const [selectedScriptId, setSelectedScriptId] = useRecoilState(selectedScriptLogicIdState(metaId));
-  const [selectedGraphLogicId, setSelectGraphLogicId] = useRecoilState(selectedGraphLogicIdState(metaId));
-  const [selectedCodeId, setSelectCodeId] = useRecoilState(selectedCodeIdState(metaId));
-  const [selectedApiId, setSelectApiId] = useRecoilState(selectedApiIdState(metaId));
   const isDiagram = useIsDiagram(metaId);
-  const isScriptLogic = useIsScriptLogic(metaId)
-  const isGraphLogic = useIsGraphLogic(metaId)
-  const isCode = useIsCode(metaId)
-  const isApi = useIsApi(metaId)
-  const isElement = useIsElement(metaId);
   const parseRelationUuid = useParseRelationUuid(metaId);
   const [selectedDiagramId, setSelecteDiagramId] = useRecoilState(selectedUmlDiagramState(metaId));
   const [selectedElement, setSelectedElement] = useRecoilState(selectedElementState(metaId));
   const getSourceRelations = useGetSourceRelations(metaId);
   const getTargetRelations = useGetTargetRelations(metaId);
   const getClass = useGetClass(metaId);
-  const { t } = useTranslation();
-
-  const getScriptLogicNodes = useGetScriptNodes()
-  const getMetaLogicNodes = useGetGraphNodes()
-  const getApiNodes = useGetApiNodes()
+  const t = useTranslate();
 
   const getAttributeNode = useCallback((attr: AttributeMeta) => {
     const color = selectedElement === attr.uuid ? PRIMARY_COLOR : undefined
@@ -174,8 +146,8 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
     }
     const color = selectedElement === cls.uuid ? PRIMARY_COLOR : undefined;
     return {
-      icon: cls.root ?
-        <PlugIcon size={"14px"} color={color} />
+      icon: cls.root
+        ? <PlugIcon size="14px" color={color} />
         : <SvgIcon><ClassIcon color={color} /></SvgIcon>,
       title: <ClassLabel cls={cls} graph={graph} />,
       key: cls.uuid,
@@ -249,106 +221,32 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
       children: getModelPackageNodes()
     }
 
-    const scriptNode: DataNode = {
-      icon: <CodeOutlined />,
-      title:
-        <TreeNodeLabel fixedAction action={<ScriptLogicRootAction />}>
-          <div>{t("UmlEditor.LogicScripts")}</div>
-        </TreeNodeLabel>,
-      key: "1",
-      children: getScriptLogicNodes()
-    }
-    const graphLogicsNode: DataNode = {
-      icon: <SvgIcon>
-        <svg style={{ width: "16px", height: "16px" }} viewBox="0 0 1024 1024" fill="currentColor">
-          <path d="M571.945277 122.592083 452.423113 122.592083c-49.502437 0-89.6406 40.139186-89.6406 89.6406 0 49.502437 40.139186 89.641623 89.6406 89.641623l119.521141 0c49.502437 0 89.641623-40.139186 89.641623-89.641623C661.585877 162.730245 621.446691 122.592083 571.945277 122.592083L571.945277 122.592083zM571.945277 242.113223 452.423113 242.113223c-16.434298 0-29.880541-13.446243-29.880541-29.880541 0-16.434298 13.446243-29.880541 29.880541-29.880541l119.521141 0c16.434298 0 29.880541 13.446243 29.880541 29.880541C601.824795 228.66698 588.379575 242.113223 571.945277 242.113223L571.945277 242.113223zM571.945277 421.395446 452.423113 421.395446c-49.502437 0-89.6406 40.139186-89.6406 89.6406 0 49.502437 40.139186 89.641623 89.6406 89.641623l119.521141 0c49.502437 0 89.641623-40.139186 89.641623-89.641623C661.585877 461.534632 621.446691 421.395446 571.945277 421.395446L571.945277 421.395446zM571.945277 540.916587 452.423113 540.916587c-16.434298 0-29.880541-13.446243-29.880541-29.880541 0-16.434298 13.446243-29.880541 29.880541-29.880541l119.521141 0c16.434298 0 29.880541 13.446243 29.880541 29.880541C601.824795 527.470343 588.379575 540.916587 571.945277 540.916587L571.945277 540.916587zM571.945277 720.198809 452.423113 720.198809c-49.502437 0-89.6406 40.139186-89.6406 89.6406s40.139186 89.6406 89.6406 89.6406l119.521141 0c49.502437 0 89.641623-40.139186 89.641623-89.6406S621.446691 720.198809 571.945277 720.198809L571.945277 720.198809zM571.945277 839.71995 452.423113 839.71995c-16.434298 0-29.880541-13.446243-29.880541-29.880541 0-16.434298 13.446243-29.880541 29.880541-29.880541l119.521141 0c16.434298 0 29.880541 13.446243 29.880541 29.880541C601.824795 826.273706 588.379575 839.71995 571.945277 839.71995L571.945277 839.71995zM243.261373 779.959891c-31.972179 0-61.951981-12.450567-84.561931-34.960233-22.509666-22.60995-34.960233-52.589752-34.960233-84.560908 0-31.972179 12.450567-61.951981 34.960233-84.561931 22.60995-22.60995 52.589752-34.960233 84.561931-34.960233l59.761082 0 0-59.761082-59.761082 0c-99.002828 0-179.282223 80.279395-179.282223 179.282223l0 0c0 99.002828 80.279395 179.282223 179.282223 179.282223l0 59.761082 89.6406-89.6406-89.6406-89.6406L243.261373 779.959891 243.261373 779.959891zM781.107017 182.352141l-59.761082 0 0 59.761082 59.761082 0c31.972179 0 61.951981 12.450567 84.560908 34.960233 22.60995 22.60995 34.960233 52.589752 34.960233 84.560908 0 31.972179-12.450567 61.951981-34.960233 84.561931-22.60995 22.509666-52.589752 34.960233-84.560908 34.960233l0-59.761082-89.6406 89.6406 89.6406 89.641623 0-59.761082c99.002828 0 179.282223-80.279395 179.282223-179.282223l0 0C960.38924 262.631536 880.110869 182.352141 781.107017 182.352141L781.107017 182.352141z"></path>
-        </svg>
-      </SvgIcon>,
-      title:
-        <TreeNodeLabel fixedAction action={<GraphLogicRootAction />}>
-          <div>{t("UmlEditor.GraphLogics")}</div>
-        </TreeNodeLabel>,
-      key: "2",
-      children: getMetaLogicNodes()
-    }
-
-    let apiNodes: DataNode[] = [scriptNode,
-      graphLogicsNode,]
-    if (options?.supportCustomizedApi) {
-      apiNodes = [{
-        icon: <SvgIcon>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="1rem" height="1rem" viewBox="0 0 24 24"><path d="M12,5.37L11.56,5.31L6,14.9C6.24,15.11 6.4,15.38 6.47,15.68H17.53C17.6,15.38 17.76,15.11 18,14.9L12.44,5.31L12,5.37M6.6,16.53L10.88,19.06C11.17,18.79 11.57,18.63 12,18.63C12.43,18.63 12.83,18.79 13.12,19.06L17.4,16.53H6.6M12,22A1.68,1.68 0 0,1 10.32,20.32L10.41,19.76L6.11,17.21C5.8,17.57 5.35,17.79 4.84,17.79A1.68,1.68 0 0,1 3.16,16.11C3.16,15.32 3.69,14.66 4.42,14.47V9.36C3.59,9.25 2.95,8.54 2.95,7.68A1.68,1.68 0 0,1 4.63,6C5.18,6 5.66,6.26 5.97,6.66L10.38,4.13L10.32,3.68C10.32,2.75 11.07,2 12,2C12.93,2 13.68,2.75 13.68,3.68L13.62,4.13L18.03,6.66C18.34,6.26 18.82,6 19.37,6A1.68,1.68 0 0,1 21.05,7.68C21.05,8.54 20.41,9.25 19.58,9.36V14.47C20.31,14.66 20.84,15.32 20.84,16.11A1.68,1.68 0 0,1 19.16,17.79C18.65,17.79 18.2,17.57 17.89,17.21L13.59,19.76L13.68,20.32A1.68,1.68 0 0,1 12,22M10.8,4.86L6.3,7.44L6.32,7.68C6.32,8.39 5.88,9 5.26,9.25L5.29,14.5L10.8,4.86M13.2,4.86L18.71,14.5L18.74,9.25C18.12,9 17.68,8.39 17.68,7.68L17.7,7.44L13.2,4.86Z" /></svg>
-        </SvgIcon>,
-        title:
-          <TreeNodeLabel fixedAction action={<APIRootAction />}>
-            <div>{t("UmlEditor.GraphqlAPIs")}</div>
-          </TreeNodeLabel>,
-        key: "3",
-        children: getApiNodes()
-      }]
-    }
     return [
       modelNode,
-      ...apiNodes,
 
     ]
-  }, [getApiNodes, getMetaLogicNodes, getModelPackageNodes, getScriptLogicNodes, options?.supportCustomizedApi, t]);
+  }, [getModelPackageNodes, t]);
 
   const handleSelect = useCallback((keys: string[]) => {
     for (const uuid of keys) {
       if (isDiagram(uuid)) {
         setSelecteDiagramId(uuid);
-        setSelectedScriptId(undefined);
-        setSelectGraphLogicId(undefined);
-        setSelectCodeId(undefined);
-        setSelectApiId(undefined);
-      } else if (isScriptLogic(uuid)) {
-        setSelecteDiagramId(undefined);
-        setSelectedScriptId(uuid);
-        setSelectGraphLogicId(undefined);
-        setSelectCodeId(undefined);
-        setSelectedElement(undefined);
-        setSelectApiId(undefined);
-      } else if (isGraphLogic(uuid)) {
-        setSelecteDiagramId(undefined);
-        setSelectedScriptId(undefined);
-        setSelectGraphLogicId(uuid);
-        setSelectCodeId(undefined);
-        setSelectedElement(undefined);
-        setSelectApiId(undefined);
-      } else if (isElement(uuid)) {
-        setSelectedElement(uuid);
-        setSelectedScriptId(undefined);
-        setSelectGraphLogicId(undefined);
-        setSelectCodeId(undefined);
-        setSelectApiId(undefined);
-      } else if (isApi(uuid)) {
-        setSelectedElement(undefined);
-        setSelectedScriptId(undefined);
-        setSelectGraphLogicId(undefined);
-        setSelectCodeId(undefined);
-        setSelectApiId(uuid);
-      } else if(isCode(uuid)){
-        setSelecteDiagramId(undefined);
-        setSelectedScriptId(undefined);
-        setSelectGraphLogicId(undefined);
-        setSelectCodeId(uuid);
-        setSelectedElement(undefined);
-        setSelectApiId(undefined);
-      }else {
+      } else {
         const relationUuid = parseRelationUuid(uuid);
         if (relationUuid) {
           setSelectedElement(relationUuid);
         }
       }
     }
-  }, [isApi, isCode, isDiagram, isElement, isGraphLogic, isScriptLogic, parseRelationUuid, setSelectApiId, setSelectCodeId, setSelectGraphLogicId, setSelecteDiagramId, setSelectedElement, setSelectedScriptId])
+  }, [isDiagram, parseRelationUuid, setSelecteDiagramId, setSelectedElement])
 
   return (
     <Container>
       <StyledDirectoryTree
         defaultExpandedKeys={["0"]}
-        selectedKeys={[selectedScriptId || selectedGraphLogicId || selectedCodeId || selectedApiId || selectedDiagramId] as any}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        selectedKeys={[selectedDiagramId] as any}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onSelect={handleSelect as any}
         treeData={treeData}
       />

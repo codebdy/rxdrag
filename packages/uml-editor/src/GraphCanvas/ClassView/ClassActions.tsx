@@ -1,9 +1,9 @@
 import { DeleteOutlined, EyeInvisibleOutlined, MoreOutlined, PlusOutlined } from '@ant-design/icons';
+import { useTranslate } from '@rxdrag/react-locales';
+import { ClassMeta, StereoType } from '@rxdrag/uml-schema';
 import { Button, Dropdown } from 'antd';
 import React, { memo, useState } from 'react';
 import { useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ClassMeta, StereoType } from '../../meta/ClassMeta';
 
 const ClassActions = memo((
   props: {
@@ -16,9 +16,9 @@ const ClassActions = memo((
 ) => {
   const { cls, onAddAttribute, onHidden, onDelete, onVisible } = props;
   const [visible, setVisible] = useState(false);
-  const { t } = useTranslation();
+  const t = useTranslate();
 
-  const handleMenuClick = useCallback((e: any) => {
+  const handleMenuClick = useCallback((e: { key: string }) => {
     setVisible(false);
     onVisible(false);
     if (e.key === 'addAttribute') {
@@ -32,7 +32,7 @@ const ClassActions = memo((
     }
   }, [onVisible, onAddAttribute, onHidden, onDelete]);
 
-  const handleVisibleChange = useCallback((flag: any) => {
+  const handleVisibleChange = useCallback((flag: boolean) => {
     setVisible(flag);
     onVisible(flag);
   }, [onVisible]);
@@ -51,7 +51,7 @@ const ClassActions = memo((
           type="text"
           onClick={onHidden}
         >
-          <EyeInvisibleOutlined  />
+          <EyeInvisibleOutlined />
         </Button>
       </div>
       <Dropdown

@@ -1,14 +1,14 @@
 import React, { useCallback } from "react"
 import { memo } from "react"
-import TreeNodeLabel from "common/TreeNodeLabel"
-import { PRIMARY_COLOR } from "consts";
 import { useRecoilValue } from 'recoil';
 import { selectedElementState } from '../recoil/atoms';
 import { Button } from "antd"
 import { DeleteOutlined } from "@ant-design/icons"
-import { RelationMeta } from "../meta/RelationMeta";
 import { useDeleteRelation } from "../hooks/useDeleteRelation";
 import { useMetaId } from "../hooks/useMetaId";
+import { RelationMeta } from "@rxdrag/uml-schema";
+import { PRIMARY_COLOR } from "../consts";
+import TreeNodeLabel from "./TreeNodeLabel";
 
 const RelationLabel = memo((
   props: {

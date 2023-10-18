@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
-import { ID } from "shared";
 import { relationsState } from "../recoil/atoms";
 import { useGetClass } from "./useGetClass";
+import { ID } from "@rxdrag/shared";
 
 export function useCheckClassPropertyName(metaId: ID) {
   const getClass = useGetClass(metaId);

@@ -8,7 +8,6 @@ import {
   ROLE_SOURCE_POSITION_CONST,
   ROLE_SOURCE_TARGET_CONST,
 } from "./constLabelPosition";
-import { RelationType } from "../meta/RelationMeta";
 import { useRecoilValue } from "recoil";
 import {
   drawingLineState,
@@ -16,9 +15,10 @@ import {
   selectedElementState,
 } from "../recoil/atoms";
 import { EdgeConfig, useDiagramEdges } from "../hooks/useDiagramEdges";
-import { ID } from "shared";
 import { GlobalToken } from "antd/es/theme/interface";
 import { useToken } from "antd/es/theme/internal";
+import { ID } from "@rxdrag/shared";
+import { RelationType } from "@rxdrag/uml-schema";
 
 export function useEdgesShow(graph: Graph | undefined, metaId: ID) {
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));

@@ -3,7 +3,7 @@ import { Graph, Node } from "@antv/x6";
 import { selectedUmlDiagramState, selectedElementState, x6NodesState } from "../recoil/atoms";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useBackupSnapshot } from "../hooks/useBackupSnapshot";
-import { ID } from "shared";
+import { ID } from "@rxdrag/shared";
 
 export function useNodeChange(graph: Graph | undefined, metaId: ID) {
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));

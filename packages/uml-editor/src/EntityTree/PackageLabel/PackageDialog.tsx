@@ -1,8 +1,7 @@
-import { Form, Modal } from "antd"
-import { memo, useCallback, useEffect } from "react"
-import { useTranslation } from "react-i18next"
-import { PackageMeta } from "../../meta/PackageMeta"
-import { MultiLangInput } from "components/MultiLangInput"
+import { useTranslate } from "@rxdrag/react-locales";
+import { PackageMeta } from "@rxdrag/uml-schema";
+import { Form, Input, Modal } from "antd"
+import React, { memo, useCallback, useEffect } from "react"
 
 export const PackageDialog = memo((
   props: {
@@ -17,7 +16,7 @@ export const PackageDialog = memo((
   useEffect(() => {
     form.setFieldsValue(pkg)
   }, [form, pkg])
-  const { t } = useTranslation();
+  const t = useTranslate();
 
   const handleConfirm = useCallback(() => {
     form.validateFields().then(changeValues => {
@@ -37,7 +36,7 @@ export const PackageDialog = memo((
       centered
       wrapProps={
         {
-          onClick: (e: any) => {
+          onClick: (e: React.MouseEvent) => {
             e.stopPropagation()
           },
         }
@@ -57,7 +56,7 @@ export const PackageDialog = memo((
           name="name"
           rules={[{ required: true, message: t("Required") }]}
         >
-          <MultiLangInput inline title={t("Name")} />
+          <Input />
         </Form.Item>
       </Form>
     </Modal>

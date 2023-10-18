@@ -1,5 +1,5 @@
-import { ClassMeta } from "../../meta/ClassMeta";
-import { X6NodeMeta } from "../../meta/X6NodeMeta";
+import { ClassMeta } from "@rxdrag/uml-schema";
+import { X6NodeMeta } from "../../interfaces";
 
 export type ClassNodeData = X6NodeMeta & ClassMeta & {
   packageName?: string;

@@ -4,7 +4,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { drawingLineState, selectedElementState } from "../recoil/atoms";
 import { useSelectedRelation } from "../hooks/useSelectedRelation";
 import { CONST_CANVAS_CLICK } from "../consts";
-import { ID } from "shared";
+import { ID } from "@rxdrag/shared";
 
 export function useEdgeSelect(graph: Graph|undefined, metaId :ID) {
   const drawingLine = useRecoilValue(drawingLineState(metaId));

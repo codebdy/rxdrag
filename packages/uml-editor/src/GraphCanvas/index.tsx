@@ -32,13 +32,17 @@ export const GraphCanvas = memo(
     useEffect(() => {
       const config = getGraphConfig(token);
       const aGraph = new Graph(config);
-      aGraph.use(
-        new MiniMap({
-          container: document.getElementById("mini-map")!,
-          width: 140,
-          height: 110
-        })
-      );
+      const container = document.getElementById("mini-map")
+      if (container) {
+        aGraph.use(
+          new MiniMap({
+            container: container,
+            width: 140,
+            height: 110
+          })
+        );
+      }
+
       aGraph.use(new Selection({
         enabled: true,
         multiple: false,
@@ -72,7 +76,7 @@ export const GraphCanvas = memo(
     useNodeAdd(graph, metaId);
     useEdgeHover(graph, metaId);
     useClassAction(graph, metaId);
-    
+
     return (
       <div
         id="container"

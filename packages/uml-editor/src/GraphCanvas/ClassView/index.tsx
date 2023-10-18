@@ -20,14 +20,11 @@ import {
 } from "../events";
 import { useMountRef } from "./useMountRef";
 import "./index.less"
-import { RelationType } from "../../meta/RelationMeta";
-import { StereoType } from "../../meta/ClassMeta";
-import { CONST_ID } from "../../meta/Meta";
 import ClassActions from "./ClassActions";
-import PlugIcon from "icons/PlugIcon";
-import { useParseLangMessage } from "plugin-sdk";
 import { Node } from "@antv/x6"
 import { ConfigProvider, theme } from "antd";
+import { CONST_ID, RelationType, StereoType } from "@rxdrag/uml-schema";
+import PlugIcon from "../../components/PlugIcon";
 
 export enum ClassEvent {
   attributeSelect = "attribute-select",
@@ -44,9 +41,7 @@ export interface IClassEventData {
 }
 
 export const ClassView = memo(
-  (props: {
-    node: Node;
-  }) => {
+  (props: { node: Node; }) => {
     const {
       node,
     } = props;
@@ -56,7 +51,7 @@ export const ClassView = memo(
     const [data, setData] = useState<ClassNodeData>();
     const [menuOpened, setMenuOpend] = useState(false);
     const [pressedLineType, setPressedLineType] = useState<RelationType>();
-    const p = useParseLangMessage();
+
     useEffect(() => {
       setData(node?.data);
     }, [node?.data]);
@@ -91,8 +86,9 @@ export const ClassView = memo(
     );
 
     const handleUndoRedo = useCallback(
-      (event: Event) => {
+      () => {
         if (mountRef.current) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           setData((data) => ({ ...data } as any));
         }
       },
@@ -154,7 +150,7 @@ export const ClassView = memo(
     }, []);
 
     const handleDelete = useCallback(() => {
-      document.dispatchEvent(new CustomEvent<IClassEventData>(ClassEvent.delete, { detail: { classId: data!.uuid } }))
+      document.dispatchEvent(new CustomEvent<IClassEventData>(ClassEvent.delete, { detail: { classId: data?.uuid || "" } }))
     }, [data]);
 
     const handleMenuVisible = useCallback((visable: boolean) => {
@@ -260,7 +256,7 @@ export const ClassView = memo(
               <div className={"nameItem"}>{data?.name}</div>
               {data?.packageName && (
                 <div className={classNames("nameItem", "smFont")}>
-                  <em>{p(data?.packageName)}</em>
+                  <em>{data?.packageName}</em>
                 </div>
               )}
               {((hover && !disableHover) || menuOpened) && data && (

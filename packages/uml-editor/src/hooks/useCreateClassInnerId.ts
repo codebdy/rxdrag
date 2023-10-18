@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
-import { ID } from "shared";
 import { classesState } from "../recoil/atoms";
+import { ID } from "@rxdrag/shared";
 
 export function useCreateClassInnerId(metaId: ID) {
   const entities = useRecoilValue(classesState(metaId));

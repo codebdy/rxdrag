@@ -2,17 +2,16 @@ import { MoreOutlined, EditOutlined, DeleteOutlined, FileAddOutlined, PlusSquare
 import { Dropdown, Button } from "antd";
 import { memo, useCallback, useState } from "react"
 import { useSetRecoilState } from 'recoil';
-import { classesState, diagramsState, selectedApiIdState, selectedGraphLogicIdState, selectedScriptLogicIdState, selectedUmlDiagramState } from "../../recoil/atoms";
-import { PackageMeta } from "../../meta/PackageMeta";
 import { useDeletePackage } from '../../hooks/useDeletePackage';
 import { useCreateNewClass } from "../../hooks/useCreateNewClass";
 import { useCreateNewDiagram } from "../../hooks/useCreateNewDiagram";
-import { StereoType } from "../../meta/ClassMeta";
 import { useBackupSnapshot } from "../../hooks/useBackupSnapshot";
-import { useTranslation } from "react-i18next";
 import { useMetaId } from "../../hooks/useMetaId";
-import { DiagramMeta } from "../../meta/DiagramMeta";
 import { DiagramDialog } from "../DiagramLabel/DiagramDialog";
+import { PackageMeta, StereoType } from "@rxdrag/uml-schema";
+import { DiagramMeta } from "../../interfaces";
+import { classesState, diagramsState, selectedUmlDiagramState } from "../../recoil/atoms";
+import { useTranslate } from "@rxdrag/react-locales";
 
 const PackageAction = memo((
   props: {
@@ -30,13 +29,10 @@ const PackageAction = memo((
   const setClasses = useSetRecoilState(classesState(metaId));
   const backupSnapshot = useBackupSnapshot(metaId);
   const setDiagrams = useSetRecoilState(diagramsState(metaId));
-  const { t } = useTranslation();
+  const t = useTranslate();
   const setSelectedDiagram = useSetRecoilState(
     selectedUmlDiagramState(metaId)
   );
-  const setSelectedScriptId = useSetRecoilState(selectedScriptLogicIdState(metaId));
-  const setSelectGraphLogicId = useSetRecoilState(selectedGraphLogicIdState(metaId));
-  const setSelectApiId = useSetRecoilState(selectedApiIdState(metaId));
 
   const handleDelete = useCallback(() => {
     deletePackage(pkg.uuid)
@@ -69,11 +65,8 @@ const PackageAction = memo((
     backupSnapshot();
     setDiagrams((diams) => [...diams, diagram]);
     setSelectedDiagram(diagram.uuid);
-    setSelectedScriptId(undefined);
-    setSelectGraphLogicId(undefined);
     setNewDiagram(undefined);
-    setSelectApiId(undefined);
-  }, [backupSnapshot, setDiagrams, setSelectApiId, setSelectGraphLogicId, setSelectedDiagram, setSelectedScriptId]);
+  }, [backupSnapshot, setDiagrams, setSelectedDiagram]);
 
 
   return (

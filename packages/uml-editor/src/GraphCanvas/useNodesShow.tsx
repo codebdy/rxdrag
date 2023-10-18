@@ -4,18 +4,17 @@ import { useEffect, useRef } from "react";
 import _ from "lodash";
 import { useRecoilValue } from "recoil";
 import {
-  selectedUmlDiagramState,
+  selectedUmlDiagramState, themeModeState,
 } from "../recoil/atoms";
 import { useDiagramNodes } from "../hooks/useDiagramNodes";
 import { useGetClass } from "../hooks/useGetClass";
 import { useGetDiagramNode } from "../hooks/useGetDiagramNode";
 import { useGetNode } from "../hooks/useGetNode";
 import { ClassNodeData } from "./ClassView/ClassNodeData";
-import { ID } from "shared";
 import { useGetPackage } from "../hooks/useGetPackage";
 import { useSelectedDiagramPackageUuid } from "../hooks/useSelectedDiagramPackageUuid";
 import { useToken } from "antd/es/theme/internal";
-import { themeModeState } from "recoil/atoms";
+import { ID } from "@rxdrag/shared";
 
 export function useNodesShow(graph: Graph | undefined, metaId: ID) {
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
@@ -67,7 +66,9 @@ export function useNodesShow(graph: Graph | undefined, metaId: ID) {
           node.width !== grahpNode.getSize().width ||
           node.height !== grahpNode.getSize().height
         ) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           grahpNode.setSize(node as any);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           grahpNode.setPosition(node as any);
         }
       } else {

@@ -1,15 +1,14 @@
 import React, { useCallback } from "react"
 import { memo } from "react"
-import TreeNodeLabel from "common/TreeNodeLabel"
-import { PRIMARY_COLOR } from "consts";
 import { useRecoilValue } from 'recoil';
 import { selectedElementState } from './../recoil/atoms';
 import { Button } from "antd"
 import { DeleteOutlined } from "@ant-design/icons"
-import { AttributeMeta } from './../meta/AttributeMeta';
 import { useDeleteAttribute } from "../hooks/useDeleteAttribute";
-import { CONST_ID } from "../meta/Meta";
-import { useMetaId } from "UmlEditor/hooks/useMetaId";
+import { AttributeMeta, CONST_ID } from "@rxdrag/uml-schema";
+import { PRIMARY_COLOR } from "../consts";
+import { useMetaId } from "../hooks/useMetaId";
+import TreeNodeLabel from "./TreeNodeLabel";
 
 const AttributeLabel = memo((
   props: {

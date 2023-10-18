@@ -1,12 +1,12 @@
 import React from "react"
 import { memo } from "react"
-import TreeNodeLabel from "common/TreeNodeLabel"
 import { Button } from "antd"
-import { ClassMeta } from "../meta/ClassMeta";
 import { PlusOutlined } from "@ant-design/icons";
 import { useCreateClassAttribute } from "../hooks/useCreateClassAttribute";
-import { useTranslation } from "react-i18next";
 import { useMetaId } from "../hooks/useMetaId";
+import { useTranslate } from "@rxdrag/react-locales";
+import { ClassMeta } from "@rxdrag/uml-schema";
+import TreeNodeLabel from "./TreeNodeLabel";
 
 const AttributesLabel = memo((
   props: {
@@ -14,10 +14,10 @@ const AttributesLabel = memo((
   }
 ) => {
   const { cls } = props;
-  const { t } = useTranslation();
+  const t = useTranslate();
   const metaId = useMetaId();
   const addAttribute = useCreateClassAttribute(metaId);
-  
+
   return (
     <TreeNodeLabel
       action={

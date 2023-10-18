@@ -2,7 +2,6 @@ import React, { useCallback, useEffect } from "react";
 import { LineAction } from "../recoil/LineAction";
 import { Edge, Graph, Node } from "@antv/x6";
 import { getRelationGraphAttrs } from "./getRelationGraphAttrs";
-import { RelationMultiplicity, RelationType } from "../meta/RelationMeta";
 import {
   drawingLineState,
   pressedLineTypeState,
@@ -18,9 +17,10 @@ import { useCreateRelationInnerId } from "../hooks/useCreateRelationInnerId";
 import { canStartLink } from "./canStartLink";
 import { EVENT_PREPARE_LINK_TO, triggerCanvasEvent } from "./events";
 import { useCheckCanLinkTo } from "./useCheckCanLinkTo";
-import { createUuid, ID } from "shared";
 import _ from "lodash";
 import { useToken } from "antd/es/theme/internal";
+import { ID, createId } from "@rxdrag/shared";
+import { RelationType, RelationMultiplicity } from "@rxdrag/uml-schema";
 
 export function useEdgeLineDraw(graph: Graph | undefined, metaId: ID) {
   const [drawingLine, setDrawingLine] = useRecoilState(
@@ -49,6 +49,7 @@ export function useEdgeLineDraw(graph: Graph | undefined, metaId: ID) {
         | Edge
         | undefined;
       if (tempEdge) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         tempEdge.setTarget(p as any);
       }
       if (p) {
@@ -91,7 +92,7 @@ export function useEdgeLineDraw(graph: Graph | undefined, metaId: ID) {
       }
 
       if (drawingLine && targetNode && drawingLine?.tempEdgeId) {
-        const relationId = createUuid();
+        const relationId = createId();
         const source = getClass(drawingLine.sourceNodeId);
         const target = getClass(targetNode.id);
         const isInherit = drawingLine.relationType === RelationType.INHERIT;

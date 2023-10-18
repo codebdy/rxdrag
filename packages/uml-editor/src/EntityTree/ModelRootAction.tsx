@@ -6,8 +6,8 @@ import { useSetRecoilState } from 'recoil';
 import { packagesState } from "../recoil/atoms";
 import { useBackupSnapshot } from "../hooks/useBackupSnapshot";
 import { PackageDialog } from "./PackageLabel/PackageDialog";
-import { PackageMeta } from "../meta/PackageMeta";
 import { useMetaId } from "../hooks/useMetaId";
+import { PackageMeta } from "@rxdrag/uml-schema";
 
 export const ModelRootAction = memo(() => {
   const metaId = useMetaId();

@@ -6,6 +6,7 @@ export const EVENT_UNDO_REDO = "undoRedo";
 
 export interface ICanvasEvent {
   name: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   detail?: any;
 }
 

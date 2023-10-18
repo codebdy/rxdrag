@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useRecoilValue } from "recoil";
-import { ID } from "shared";
 import { classesState } from "../recoil/atoms";
+import { ID } from "@rxdrag/shared";
 
 export function useAttribute(uuid: string, metaId: ID) {
   const classes = useRecoilValue(classesState(metaId));

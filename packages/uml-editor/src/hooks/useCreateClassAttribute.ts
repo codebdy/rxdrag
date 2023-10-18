@@ -1,8 +1,8 @@
 import { useCallback } from "react";
-import { ID } from "shared";
-import { ClassMeta } from "../meta/ClassMeta";
 import { useChangeClass } from "./useChangeClass";
 import { useCreateAttribute } from "./useCreateAttribute";
+import { ID } from "@rxdrag/shared";
+import { ClassMeta } from "@rxdrag/uml-schema";
 
 export function useCreateClassAttribute(metaId: ID) {
   const changeClass = useChangeClass(metaId);

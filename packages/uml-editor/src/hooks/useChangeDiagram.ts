@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 import { useSetRecoilState } from "recoil";
-import { ID } from "shared";
-import { DiagramMeta } from "../meta/DiagramMeta";
 import { diagramsState } from "../recoil/atoms";
 import { useBackupSnapshot } from "./useBackupSnapshot";
+import { ID } from "@rxdrag/shared";
+import { DiagramMeta } from "../interfaces";
 
 export function useChangeDiagram(metaId: ID) {
   const backupSnapshot = useBackupSnapshot(metaId);

@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
 import { useMetaId } from "./useMetaId";
-import { changedState } from "UmlEditor/recoil/atoms";
+import { changedState } from "../recoil/atoms";
 
 export function useChanged(){
   const metaId = useMetaId();

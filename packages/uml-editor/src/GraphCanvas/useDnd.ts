@@ -4,6 +4,7 @@ import { Graph } from "@antv/x6";
 
 
 export function useDnd(graph: Graph|undefined) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [dnd, setDnd] = React.useState<any>()
   useEffect(() => {
     const theDnd = graph

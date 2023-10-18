@@ -1,16 +1,15 @@
 import { useCallback } from "react";
-import { AttributeMeta } from "../meta/AttributeMeta";
-import { ClassMeta } from "../meta/ClassMeta";
 import { useChangeClass } from "./useChangeClass";
 import { useCheckClassPropertyName } from "./useCheckClassPropertyName";
-import { ID } from "shared";
-import { useTranslation } from "react-i18next";
+import { useTranslate } from "@rxdrag/react-locales";
+import { ID } from "@rxdrag/shared";
+import { AttributeMeta, ClassMeta } from "@rxdrag/uml-schema";
 
 export function useChangeAttribute(metaId: ID) {
   const changeEntity = useChangeClass(metaId);
   const chackName = useCheckClassPropertyName(metaId);
-  const { t } = useTranslation();
-  
+  const t = useTranslate();
+
   const changeAttribute = useCallback(
     (attr: AttributeMeta, cls: ClassMeta) => {
       if (!chackName(cls.uuid, attr.name, attr.uuid)) {
