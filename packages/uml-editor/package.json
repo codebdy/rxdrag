@@ -41,6 +41,7 @@
     "@rxdrag/locales": "workspace:*",
     "@rxdrag/react-locales": "workspace:*",
     "@rxdrag/shared": "workspace:*",
+    "@rxdrag/react-shared": "workspace:*",
     "@rxdrag/uml-schema": "workspace:*",
     "antd": "^5.9.2",
     "classnames": "^2.3.2",

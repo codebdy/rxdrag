@@ -1,20 +1,20 @@
 import React from "react"
 import { memo } from "react"
-import { ResizableColumn } from "../ResizableColumn"
 import { ModelContent } from "./ModelContent"
 import styled from "styled-components"
+import { ResizableColumn } from "@rxdrag/react-shared"
 
 const Container = styled.div`
   flex: 1;
   display: flex;
   flex-flow: row;
   height: calc(100vh - 48px);
-  background-color: ${props=>props.theme.token?.colorBgBase};
+  background-color: ${props => props.theme.token?.colorBgBase};
   .model-tree-shell{
     display: flex;
     flex-flow: column;
-    background-color: ${props=>props.theme.token?.colorBgBase};
-    border-right: solid 1px ${props=>props.theme.token?.colorBorder};
+    background-color: ${props => props.theme.token?.colorBgBase};
+    border-right: solid 1px ${props => props.theme.token?.colorBorder};
     width: 100%;
     height: 100%;
     overflow: auto;
@@ -24,7 +24,7 @@ const Container = styled.div`
     height: 100%;
     flex-flow: column;
     width: 300px;
-    background-color:${props=>props.theme.token?.colorBgBase};
+    background-color:${props => props.theme.token?.colorBgBase};
     .property-box{
       flex:1;
       display: flex;
